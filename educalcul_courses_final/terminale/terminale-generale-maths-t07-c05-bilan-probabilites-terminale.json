@@ -1,0 +1,290 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.727320+00:00",
+  "id": 719,
+  "code": "terminale-generale-maths-t07-c05",
+  "title": "Bilan - Probabilités Terminale",
+  "description": "Cours structuré Educalcul : Bilan - Probabilités Terminale.",
+  "subject": "Probabilités",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Probabilités",
+    "titre_du_cours": "Bilan - Probabilités Terminale",
+    "objectif_global": "Bilan - Probabilités Terminale",
+    "mini_lecons_imposees": [
+      "Modèles et théorèmes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités",
+      "lessons": [
+        {
+          "title": "Modèles et théorèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les espaces probabilisés et les probabilités conditionnelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "En Terminale, tu as rencontré la notion d'espace probabilisé comme un triplet $(\\Omega, \\mathcal{F}, P)$ où $\\Omega$ est l'ensemble des issues possibles, $\\mathcal{F}$ une tribu d'événements et $P$ une mesure de probabilité. Pour faire simple, on retient souvent que chaque expérience aléatoire se modélise par un ensemble de résultats élémentaires équipés de probabilités qui s'additionnent à $1$. La probabilité conditionnelle $P(A|B)$ quantifie la chance que $A$ se réalise sachant que $B$ est déjà survenu ; elle se calcule par la formule $P(A|B) = \\\\frac{P(A \\\\cap B)}{P(B)}$ dès que $P(B)>0$. Cette formule n'est pas qu'un outil de calcul : elle traduit l'idée que l'information « $B$ est arrivé » réduit l'univers des possibles à $B$ lui-même, et que la probabilité de $A$ doit être réévaluée à l'intérieur de ce nouvel univers. Le théorème de Bayes, qui en découle, $P(A|B) = \\\\frac{P(B|A)P(A)}{P(B)}$, devient alors un formidable levier pour inverser le conditionnement, par exemple dans les tests médicaux ou les filtres anti-spam. Prenons le temps de bien visualiser cette mise à jour de l'information : imagine que tu tires une carte d'un jeu de $52$ cartes. L'événement $A$ : « c'est un roi », $B$ : « c'est une figure ». Initialement $P(A)=\\\\frac{4}{52}$. Si on t'annonce que la carte est une figure ($B$ réalisé), l'espace se réduit aux $12$ figures, et $P(A|B)=\\\\frac{4}{12}=\\\\frac{1}{3}$. Cette intuition, tu la retrouveras tout au long de l'année, alors ancre-la solidement."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilités pour le test d'une maladie : branche « Malade » avec probabilité $0.01$, puis « Test + » avec $0.99$ ; branche « Sain » avec $0.99$, puis « Test + » avec $0.05$.",
+              "branches": [
+                {
+                  "label": "Malade",
+                  "probability": "0.01",
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": "0.99"
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": "0.01"
+                    }
+                  ]
+                },
+                {
+                  "label": "Sain",
+                  "probability": "0.99",
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": "0.05"
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": "0.95"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la mise à jour de l'information par le conditionnement est claire, nous pouvons passer à l'objet central de ce chapitre : les variables aléatoires. Elles permettent de traduire les résultats d'une expérience en nombres, ce qui ouvre la porte au calcul d'espérances, de variances et à l'utilisation des grandes lois classiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variables aléatoires et lois classiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une variable aléatoire $X$ associe un nombre réel à chaque issue $\\omega \\in \\Omega$. Quand $X$ prend un nombre fini ou dénombrable de valeurs, on dit qu'elle est discrète ; sa loi se décrit par les couples $(x_i, p_i)$ avec $p_i = P(X=x_i)$ et $\\\\sum p_i = 1$. L'espérance $E(X) = \\\\sum x_i p_i$ mesure le centre de gravité de la distribution, et la variance $V(X) = E((X-E(X))^2) = E(X^2)-E(X)^2$ quantifie la dispersion autour de ce centre. Parmi les lois discrètes indispensables, retiens la loi binomiale $\\mathcal{B}(n,p)$ (nombre de succès dans $n$ essais indépendants de probabilité $p$), la loi géométrique $\\mathcal{G}(p)$ (nombre d'essais jusqu'au premier succès) et la loi de Poisson $\\mathcal{P}(\\lambda)$ (modélise des événements rares sur un intervalle fixe). Pour les variables continues, la loi exponentielle $\\mathcal{E}(\\lambda)$ décrit les temps d'attente entre événements de Poisson, et la loi normale $\\mathcal{N}(\\mu, \\sigma^2)$ est omniprésente grâce au théorème central limite. Sa densité $f(x) = \\\\frac{1}{\\\\sigma\\\\sqrt{2\\\\pi}} e^{-\\\\frac{(x-\\\\mu)^2}{2\\\\sigma^2}}$ est cette fameuse courbe en cloche, symétrique, dont les paramètres $\\mu$ (moyenne) et $\\sigma$ (écart-type) pilotent position et étalement. La réduction centrée $Z = \\\\frac{X-\\\\mu}{\\\\sigma}$ suit $\\mathcal{N}(0,1)$, ce qui permet d'utiliser une unique table de la loi normale standard pour tous les calculs de probabilités. Pour bien saisir l'allure de cette courbe, observe le graphique ci-dessous : l'aire sous la courbe entre deux bornes donne exactement la probabilité que $X$ tombe dans cet intervalle."
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(2*pi)*exp(-x^2/2)",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Densité de la loi normale standard $\\mathcal{N}(0,1)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les principales lois en tête, nous abordons maintenant les deux piliers qui justifient l'usage intensif de la loi normale en statistique : la loi des grands nombres et le théorème central limite. Ils expliquent pourquoi, dès que l'échantillon est assez grand, la moyenne empirique se comporte « presque » comme une variable normale, peu importe la loi de départ."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorèmes limites et estimation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi des grands nombres affirme que pour une suite de variables aléatoires indépendantes et de même loi, de moyenne $\\mu$, la moyenne empirique $\\\\bar{X}_n = \\\\frac{1}{n}\\\\sum_{i=1}^n X_i$ converge presque sûrement vers $\\mu$ quand $n \\\\to \\\\infty$. Concrètement, si tu répètes une expérience un très grand nombre de fois, la fréquence observée se rapproche inexorablement de la probabilité théorique. Le théorème central limite va plus loin : il dit que $\\\\sqrt{n}(\\\\bar{X}_n - \\\\mu)/\\\\sigma$ converge en loi vers $\\mathcal{N}(0,1)$. En pratique, pour $n$ grand (souvent $n \\\\ge 30$), on approxime la distribution de $\\\\bar{X}_n$ par une normale $\\mathcal{N}(\\mu, \\\\sigma^2/n)$. C'est cette approximation qui sous-tend la construction des intervalles de confiance. Pour un paramètre $p$ (proportion), l'intervalle de confiance au niveau $1-\\\\alpha$ s'écrit $[\\\\hat{p} - z_{\\\\alpha/2}\\\\sqrt{\\\\hat{p}(1-\\\\hat{p})/n}, \\\\hat{p} + z_{\\\\alpha/2}\\\\sqrt{\\\\hat{p}(1-\\\\hat{p})/n}]$ où $\\\\hat{p}$ est la fréquence observée et $z_{\\\\alpha/2}$ le quantile de $\\mathcal{N}(0,1)$. Pour une moyenne $\\mu$ avec variance connue $\\sigma^2$, l'intervalle est $[\\\\bar{x} - z_{\\\\alpha/2}\\\\sigma/\\\\sqrt{n}, \\\\bar{x} + z_{\\\\alpha/2}\\\\sigma/\\\\sqrt{n}]$. Si $\\sigma$ est inconnue, on utilise l'estimateur $s$ et la loi de Student à $n-1$ degrés de liberté. Le graphique suivant illustre la répartition de la moyenne empirique autour de la vraie moyenne pour différents $n$ : plus $n$ augmente, plus la courbe se resserre."
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(2*pi*0.1^2)*exp(-(x-0.5)^2/(2*0.1^2))",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Distribution approchée de la moyenne empirique pour $n=100$, $\\mu=0.5$, $\\sigma=0.5$ (échelle réduite)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de parcourir les trois piliers du programme : modélisation par espaces probabilisés et conditionnement, description par variables aléatoires et lois usuelles, enfin passage à l'inférence grâce aux théorèmes limites. Chaque notion s'enchaîne naturellement : le conditionnement met à jour nos croyances, les variables aléatoires quantifient les phénomènes, et les théorèmes limites permettent de décider ou d'estimer à partir de données. Garde cette architecture en tête pour la suite de l'année et pour l'examen."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On teste une maladie qui touche $1\\%$ de la population. Le test est positif à $99\\%$ pour un malade et à $5\\%$ pour un sain. Quelle est la probabilité d'être malade sachant que le test est positif ?",
+              "answer": "$\\approx 0.167$ (soit $16.7\\%$)",
+              "hint": "Applique la formule de Bayes avec $P(M)=0.01$, $P(T+|M)=0.99$, $P(T+|\\\\bar{M})=0.05$.",
+              "explanation": "On calcule $P(T+) = P(T+|M)P(M) + P(T+|\\\\bar{M})P(\\\\bar{M}) = 0.99\\\\times0.01 + 0.05\\\\times0.99 = 0.0594$. Alors $P(M|T+) = \\\\frac{0.99\\\\times0.01}{0.0594} \\\\approx 0.1667$."
+            },
+            {
+              "question": "Soit $X \\\\sim \\\\mathcal{N}(10, 4)$. Calculer $P(8 \\\\le X \\\\le 12)$ en utilisant la loi normale standard.",
+              "answer": "$\\approx 0.6827$",
+              "hint": "Réduis $X$ en $Z = \\\\frac{X-10}{2}$ et utilise la table de $\\mathcal{N}(0,1)$.",
+              "explanation": "$P(8 \\\\le X \\\\le 12) = P(-1 \\\\le Z \\\\le 1) = \\\\Phi(1) - \\\\Phi(-1) \\\\approx 0.8413 - 0.1587 = 0.6826$."
+            },
+            {
+              "question": "Dans un échantillon de $n=400$ personnes, $120$ sont favorables à une mesure. Donner l'intervalle de confiance au niveau $95\\%$ pour la proportion $p$ de favorables dans la population.",
+              "answer": "$[0.252 ; 0.348]$",
+              "hint": "Utilise $\\\\hat{p}=0.3$, $z_{0.025}=1.96$ et la formule de l'intervalle de confiance pour une proportion.",
+              "explanation": "$\\\\hat{p}=120/400=0.3$. Marge d'erreur $= 1.96 \\\\times \\\\sqrt{0.3\\\\times0.7/400} \\\\approx 0.048$. Intervalle : $[0.3-0.048 ; 0.3+0.048] = [0.252 ; 0.348]$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les modèles de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce bilan, commençons par revisiter les fondements : tout problème de probabilités commence par la définition claire de l'expérience aléatoire et de son espace des issues $\\Omega$. Que tu affrontes un tirage d'urnes, un lancer de dés ou un questionnaire médical, la première étape consiste à lister les issues élémentaires et à leur attribuer des probabilités cohérentes (positives, somme égale à $1$). Ensuite, les événements sont des parties de $\\Omega$ ; leur probabilité s'obtient par addition des issues qui les composent. L'indépendance entre deux événements $A$ et $B$ se traduit par $P(A \\\\cap B) = P(A)P(B)$ : la survenue de l'un ne change pas la probabilité de l'autre. Le conditionnement, lui, met à jour les probabilités quand une information partielle arrive : $P(A|B) = P(A \\\\cap B)/P(B)$. Le théorème de Bayes permet d'inverser le sens du conditionnement, ce qui est crucial pour interpréter un test de dépistage ou un classifieur. Pour fixer les idées, imagine une urne contenant $3$ boules rouges et $7$ bleues. On tire deux boules sans remise. L'événement $A$ : « la première est rouge », $B$ : « la seconde est rouge ». Ces événements ne sont pas indépendants car le premier tirage modifie la composition de l'urne pour le second. Calculer $P(B|A)$ demande de raisonner sur l'urne restante : $2$ rouges sur $9$ boules, soit $2/9$. Ce type de raisonnement, simple en apparence, est la clé de nombreux problèmes plus complexes."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn illustrant deux événements $A$ et $B$ non indépendants, avec leur intersection et leurs probabilités respectives.",
+              "sets": [
+                {
+                  "label": "A",
+                  "fill": "blue",
+                  "opacity": 0.5
+                },
+                {
+                  "label": "B",
+                  "fill": "red",
+                  "opacity": 0.5
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir consolidé les bases du conditionnement et de l'indépendance, tournons-nous vers la description numérique des phénomènes aléatoires. C'est le rôle des variables aléatoires, qui transforment les issues qualitatives en grandeurs mesurables."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les variables aléatoires et leurs lois"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une variable aléatoire $X$ associe un nombre à chaque issue. Si elle est discrète, sa loi est un tableau de valeurs $(x_i, p_i)$. L'espérance $E(X)$ est la moyenne théorique, la variance $V(X)$ mesure l'écart type au carré. Pour les variables continues, on utilise une densité $f$ telle que $P(a \\\\le X \\\\le b) = \\\\int_a^b f(t) dt$. Parmi les lois discrètes, la binomiale $\\mathcal{B}(n,p)$ modélise un nombre de succès dans $n$ épreuves identiques et indépendantes ; sa moyenne est $np$, sa variance $np(1-p)$. La géométrique $\\mathcal{G}(p)$ compte le nombre d'essais jusqu'au premier succès (moyenne $1/p$). La loi de Poisson $\\mathcal{P}(\\lambda)$ approxime la binomiale quand $n$ est grand et $p$ petit ($np=\\lambda$). Côté continu, l'exponentielle $\\mathcal{E}(\\lambda)$ décrit les durées entre événements de Poisson (moyenne $1/\\lambda$, variance $1/\\lambda^2$). La normale $\\mathcal{N}(\\mu,\\\\sigma^2)$ est la star grâce au théorème central limite : toute somme de variables indépendantes de même loi tend vers une normale. Sa densité en cloche est entièrement déterminée par $\\mu$ et $\\sigma$. La réduction $Z=(X-\\\\mu)/\\\\sigma$ ramène tout calcul à la table de $\\mathcal{N}(0,1)$. Pour visualiser la binomiale, le graphique ci-dessous montre la masse de probabilité pour $n=20, p=0.3$ : on voit la forme en cloche discrète qui préfigure la normale."
+            },
+            {
+              "type": "graph",
+              "expression": "comb(20,k)*0.3^k*0.7^(20-k)",
+              "xmin": 0,
+              "xmax": 20,
+              "caption": "Distribution de probabilité de $\\mathcal{B}(20,0.3)$ (affichée en barres)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les principales lois sont rappelées, il est temps de voir comment les théorèmes limites nous autorisent à faire de l'inférence statistique : estimer un paramètre inconnu et construire des intervalles de confiance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les théorèmes limites et l'inférence"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi des grands nombres garantit que la moyenne empirique $\\\\bar{X}_n$ converge vers l'espérance $\\mu$ quand la taille de l'échantillon $n$ croît. Le théorème central limite quantifie la vitesse : $\\\\sqrt{n}(\\\\bar{X}_n-\\\\mu)/\\\\sigma$ suit approximativement $\\mathcal{N}(0,1)$ pour $n$ grand. C'est ce qui justifie les intervalles de confiance. Pour une proportion $p$, l'intervalle au niveau $95\\%$ est $\\\\hat{p} \\\\pm 1.96\\\\sqrt{\\\\hat{p}(1-\\\\hat{p})/n}$. Pour une moyenne $\\mu$ avec $\\sigma$ connue, c'est $\\\\bar{x} \\\\pm 1.96\\\\sigma/\\\\sqrt{n}$ ; sinon on utilise l'estimateur $s$ et la loi de Student. La droite numérique ci-dessous représente un intervalle de confiance pour une moyenne : la zone centrale (en bleu) correspond aux valeurs plausibles pour $\\mu$, tandis que les queues (en gris) sont les régions de rejet si l'on faisait un test d'hypothèse. Retenir que la largeur de l'intervalle diminue comme $1/\\\\sqrt{n}$ : quadrupler la taille de l'échantillon divise la marge d'erreur par deux. C'est la leçon pratique la plus importante pour la conception d'enquêtes ou d'expériences."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle de confiance à $95\\%$ pour une moyenne : $[\\\\bar{x}-1.96\\\\sigma/\\\\sqrt{n} ; \\\\bar{x}+1.96\\\\sigma/\\\\sqrt{n}]$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4.5,
+                  "label": "Borne inf"
+                },
+                {
+                  "value": 5.5,
+                  "label": "Borne sup"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 4.5,
+                  "end": 5.5,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un espace probabilisé et calculer des probabilités conditionnelles avec la formule de Bayes.",
+                "Je reconnais les situations d'indépendance et je sais utiliser $P(A\\\\cap B)=P(A)P(B)$.",
+                "Je sais identifier une variable aléatoire discrète ou continue et écrire sa loi (binomiale, géométrique, Poisson, exponentielle, normale).",
+                "Je calcule espérance et variance pour les lois usuelles et j'utilise la réduction centrée pour la normale.",
+                "J'applique la loi des grands nombres et le théorème central limite pour justifier l'approximation normale.",
+                "Je construis et j'interprète un intervalle de confiance pour une proportion ou une moyenne (variance connue ou inconnue).",
+                "Je sais formuler un test d'hypothèse (bilatéral/unilatéral), calculer la $p$-value et conclure au seuil donné."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une urne contient $5$ boules blanches et $3$ noires. On tire deux boules sans remise. Calculer la probabilité que la seconde soit blanche sachant que la première est noire.",
+              "answer": "$\\frac{5}{7}$",
+              "hint": "Après avoir retiré une boule noire, l'urne contient $5$ blanches et $2$ noires.",
+              "explanation": "Il reste $7$ boules dont $5$ blanches, donc $P(\\\\text{2e blanche} | \\\\text{1re noire}) = 5/7$."
+            },
+            {
+              "question": "Soit $X \\\\sim \\\\mathcal{B}(50, 0.2)$. Donner l'espérance et la variance de $X$. Approcher $P(X \\\\ge 15)$ par la loi normale.",
+              "answer": "$E(X)=10$, $V(X)=8$. $P(X \\\\ge 15) \\\\approx 0.040$",
+              "hint": "Utilise la correction de continuité : $P(X \\\\ge 15) \\\\approx P(Z \\\\ge \\\\frac{14.5-10}{\\\\sqrt{8}})$.",
+              "explanation": "$E=50\\\\times0.2=10$, $V=50\\\\times0.2\\\\times0.8=8$. $z = (14.5-10)/\\\\sqrt{8} \\\\approx 1.59$. $P(Z \\\\ge 1.59) \\\\approx 0.0559$ (table) ou $0.040$ avec correction plus précise."
+            },
+            {
+              "question": "On mesure la tension artérielle de $n=25$ patients. La moyenne observée est $130$ mmHg, l'écart-type échantillonnal $s=12$ mmHg. Donner l'intervalle de confiance à $95\\%$ pour la moyenne vraie $\\mu$ (loi de Student).",
+              "answer": "$[125.06 ; 134.94]$",
+              "hint": "Utilise $t_{0.025,24} \\\\approx 2.064$ et la formule $\\\\bar{x} \\\\pm t \\\\times s/\\\\sqrt{n}$.",
+              "explanation": "Marge $= 2.064 \\\\times 12/\\\\sqrt{25} = 2.064 \\\\times 2.4 = 4.95$. Intervalle : $[130-4.95 ; 130+4.95] = [125.05 ; 134.95]$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

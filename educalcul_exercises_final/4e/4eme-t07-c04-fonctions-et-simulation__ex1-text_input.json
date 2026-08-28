@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Définir fonction",
+  "title": "Définition de fonctions en Python",
+  "blocks": [
+    {
+      "title": "Fonction carré",
+      "content": "Écrire la définition d'une fonction Python nommée carre qui prend un paramètre x et renvoie son carré.",
+      "correctAnswer": "def carre(x): return x * x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction doit être définie avec le mot-clé def, seguida du nom carre et du paramètre x entre parenthèses. Le corps de la fonction utilise return pour renvoyer la valeur de x multiplié par lui-même, ce qui correspond au carré.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction périmètre rectangle",
+      "content": "Écrire la définition d'une fonction Python nommée perimetre_rectangle qui prend deux paramètres longueur et largeur et renvoie le périmètre du rectangle.",
+      "correctAnswer": "def perimetre_rectangle(longueur, largeur): return 2 * (longueur + largeur)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un rectangle se calcule par 2 × (longueur + largeur). La fonction prend deux arguments et renvoie ce calcul avec l'instruction return.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction test pair",
+      "content": "Écrire la définition d'une fonction Python nommée est_pair qui prend un entier n et renvoie True si n est pair, False sinon.",
+      "correctAnswer": "def est_pair(n): return n % 2 == 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre est pair si le reste de sa division par 2 est égal à 0. L'opérateur % donne ce reste. L'expression n % 2 == 0 renvoie True dans ce cas, False autrement, ce qui est directement retourné par la fonction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

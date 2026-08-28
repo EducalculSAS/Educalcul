@@ -1,0 +1,107 @@
+{
+  "_status": "done",
+  "_course_id": 155,
+  "_course_code": "ce2-t02-c04-fractions-equivalentes-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Reconnaître 1/2=2/4 sur dessin",
+  "title": "Quiz : Reconnaître l'égalité 1/2 = 2/4 sur dessin",
+  "questions": [
+    {
+      "text": "Regarde le cercle ci-dessous. Quelle fraction représente la partie colorée ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{4}$",
+        "$\\frac{2}{2}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Le cercle est divisé en 2 parties égales. Une seule partie est colorée. Cela correspond à la fraction un demi, que l'on écrit $\\frac{1}{2}$. Les autres propositions ne correspondent pas au partage en deux parties égales avec une partie prise.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Cercle divisé en 2, une partie colorée"
+      }
+    },
+    {
+      "text": "Voici une bande divisée en 4 parties égales. Deux parties sont colorées. Quelle fraction est représentée ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{4}$",
+        "$\\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{2}{4}$",
+      "explanation": "La bande est divisée en 4 parties égales (le dénominateur est 4). Comme 2 parties sont colorées, le numérateur est 2. La fraction lue directement sur le dessin est donc deux quarts, $\\frac{2}{4}$. On verra qu'elle est équivalente à un demi.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Bande divisée en 4, deux parties colorées"
+      }
+    },
+    {
+      "text": "Observe les deux bandes de fractions ci-dessous. La première montre un demi, la deuxième montre deux quarts. Que peux-tu dire de ces deux fractions ?",
+      "options": [
+        "Elles sont égales",
+        "La première est plus grande",
+        "La deuxième est plus grande",
+        "Elles n'ont rien en commun"
+      ],
+      "correctAnswer": "Elles sont égales",
+      "explanation": "Sur la première bande, une partie sur deux est prise ($\\frac{1}{2}$). Sur la deuxième, deux parties sur quatre sont prises ($\\frac{2}{4}$). Visuellement, la surface colorée est exactement la même sur les deux bandes. On dit que $\\frac{1}{2}$ et $\\frac{2}{4}$ sont des fractions équivalentes : elles représentent la même quantité.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison visuelle de 1/2 et 2/4"
+      }
+    },
+    {
+      "text": "Sur cette grille de 4 carrés, 2 carrés sont colorés. Quelle fraction de la grille est colorée ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{4}$",
+        "$\\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{2}{4}$",
+      "explanation": "La grille complète compte 4 carrés (le tout est divisé en 4). Il y a 2 carrés colorés. La fraction qui correspond exactement au dessin est donc 2 sur 4, soit $\\frac{2}{4}$. Comme 2 carrés sur 4 représentent la moitié de la grille, cette fraction est équivalente à $\\frac{1}{2}$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 2,
+        "highlighted": 2,
+        "caption": "Grille 2x2 avec 2 carrés colorés"
+      }
+    },
+    {
+      "text": "Léo a colorié 2 parts sur 4 d'un rectangle. Zoé a colorié 1 part sur 2 d'un rectangle identique. Qui a colorié la plus grande surface ?",
+      "options": [
+        "Léo",
+        "Zoé",
+        "Ils ont colorié la même surface",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Ils ont colorié la même surface",
+      "explanation": "Léo a colorié $\\frac{2}{4}$ de son rectangle. Zoé a colorié $\\frac{1}{2}$ du sien. Comme on a vu que $\\frac{2}{4} = \\frac{1}{2}$, les deux fractions représentent exactement la même quantité. Les rectangles sont identiques, donc la surface colorée est la même pour les deux enfants.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

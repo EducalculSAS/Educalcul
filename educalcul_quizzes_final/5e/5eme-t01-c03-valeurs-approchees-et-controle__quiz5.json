@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Arrondir",
+  "title": "Approfondissement : Arrondir",
+  "questions": [
+    {
+      "text": "On arrondit le nombre $3,47$ au dixième près. Quel résultat obtient-on ?",
+      "options": [
+        "$3,4$",
+        "$3,5$",
+        "$3,47$",
+        "$3$"
+      ],
+      "correctAnswer": "$3,5$",
+      "explanation": "Pour arrondir au dixième près, on regarde le chiffre des centièmes (ici $7$). Comme $7 \\ge 5$, on arrondit le chiffre des dixièmes ($4$) à la valeur supérieure ($5$). Le résultat est donc $3,5$. L'option $3,4$ correspond à une troncature, $3,47$ ne change pas la précision et $3$ est un arrondi à l'unité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi au centième près du nombre $0,049$ ?",
+      "options": [
+        "$0,04$",
+        "$0,05$",
+        "$0,049$",
+        "$0,1$"
+      ],
+      "correctAnswer": "$0,05$",
+      "explanation": "On regarde le chiffre des millièmes (ici $9$). Comme $9 \\ge 5$, on augmente le chiffre des centièmes ($4$) de $1$, ce qui donne $5$. L'arrondi est donc $0,05$. L'option $0,04$ est la troncature au centième, $0,049$ conserve tous les chiffres et $0,1$ est l'arrondi au dixième près.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre $x$ arrondi au dixième près vaut $7,2$. Quel encadrement rigoureux peut-on écrire pour $x$ ?",
+      "options": [
+        "$7,15 \\le x < 7,25$",
+        "$7,1 \\le x < 7,3$",
+        "$7,15 < x \\le 7,25$",
+        "$7,2 \\le x < 7,3$"
+      ],
+      "correctAnswer": "$7,15 \\le x < 7,25$",
+      "explanation": "L'arrondi au dixième près vaut $7,2$. La borne inférieure est le plus petit nombre qui s'arrondit à $7,2$, soit $7,15$ (inclus car la règle de l'arrondi fait monter $7,15$ à $7,2$). La borne supérieure est le plus petit nombre qui s'arrondit à $7,3$, soit $7,25$ (exclu car $7,25$ s'arrondit à $7,3$). L'encadrement est donc $7,15 \\le x < 7,25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le nombre $A = 12,345$. Quelle est la troncature de $A$ au centième près ?",
+      "options": [
+        "$12,35$",
+        "$12,34$",
+        "$12,3$",
+        "$12,345$"
+      ],
+      "correctAnswer": "$12,34$",
+      "explanation": "La troncature (ou partie décimale limitée) consiste à conserver uniquement les chiffres demandés sans modifier le dernier chiffre conservé, contrairement à l'arrondi. Au centième près, on garde deux chiffres après la virgule : $12,34$. L'option $12,35$ est l'arrondi au centième (car le chiffre suivant est $5$), $12,3$ est la troncature au dixième et $12,345$ est le nombre exact.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre $N$ positif arrondi à l'unité vaut $15$. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "L'encadrement de $N$ est $14,5 \\le N < 15,5$",
+        "$N$ peut être égal à $15,49$",
+        "$N$ peut être égal à $14,49$",
+        "La partie entière de $N$ peut être $14$ ou $15$"
+      ],
+      "correctAnswer": "$N$ peut être égal à $14,49$",
+      "explanation": "L'arrondi à l'unité vaut $15$, donc $N$ appartient à l'intervalle $[14,5 ; 15,5[$. La première affirmation est vraie (encadrement exact). $15,49$ appartient à cet intervalle (vrai). $14,49$ est strictement inférieur à $14,5$, il s'arrondirait à $14$ (affirmation fausse). La partie entière de $N$ vaut $14$ pour $N \\in [14,5 ; 15[$ et $15$ pour $N \\in [15 ; 15,5[$, donc la dernière affirmation est vraie.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

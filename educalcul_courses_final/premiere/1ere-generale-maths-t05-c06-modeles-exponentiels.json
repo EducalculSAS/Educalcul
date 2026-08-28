@@ -1,0 +1,492 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.371045+00:00",
+  "id": 600,
+  "code": "1ere-generale-maths-t05-c06",
+  "title": "Modèles exponentiels",
+  "description": "Cours structuré Educalcul : Modèles exponentiels.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Modèles exponentiels",
+    "objectif_global": "Modèles exponentiels",
+    "mini_lecons_imposees": [
+      "Croissance / décroissance.",
+      "Équations simples selon programme.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Croissance / décroissance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Croissance et décroissance exponentielles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau chapitre où nous allons explorer ensemble les modèles exponentiels, des outils puissants pour décrire des phénomènes qui évoluent très vite ou très lentement selon un facteur constant. Tu as déjà rencontré des suites géométriques au collège, et tu sais que chaque terme s'obtient en multipliant le précédent par un même nombre, appelé raison. Ici, nous prolongeons cette idée aux fonctions continues : au lieu de ne regarder que des valeurs entières, nous allons étudier une fonction définie pour tout nombre réel, ce qui nous permettra de modéliser des situations réelles comme la croissance d'une population, la désintégration radioactive ou encore l'évolution d'un capital placé à intérêts composés. Prends le temps de bien visualiser ce passage du discret au continu, car c'est la clé qui ouvrira la porte aux équations exponentielles et à leurs applications concrètes."
+            },
+            {
+              "type": "definition",
+              "term": "Modèle exponentiel",
+              "definition": "Une fonction de la forme $f(x)=a\\\\times b^{x}$ avec $a>0$, $b>0$ et $b\\\\neq1$, qui associe à chaque nombre réel $x$ une valeur obtenue en multipliant $a$ par $b$ élevé à la puissance $x$.",
+              "example": "Par exemple, $f(x)=3\\\\times2^{x}$ décrit une quantité qui triple à chaque fois que $x$ augmente de $1$."
+            },
+            {
+              "type": "graph",
+              "expression": "2^x",
+              "xmin": -2,
+              "xmax": 5,
+              "caption": "Courbe de croissance exponentielle pour $b=2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe la courbe : elle passe par le point $(0,1)$ car $2^{0}=1$, elle est strictement croissante et elle se rapproche de l'axe des abscisses quand $x$ devient très négatif sans jamais le toucher, cet axe étant une asymptote horizontale. Le domaine de la fonction est l'ensemble des réels $\\\\mathbb{R}$ et son ensemble d'images est l'intervalle ouvert $(0,+\\\\infty)$. Ces propriétés seront utiles plus tard pour résoudre des inéquations exponentielles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu à quoi ressemble une courbe exponentielle, nous allons décortiquer les deux paramètres qui la contrôlent : la valeur initiale et le facteur de croissance. Cette analyse te permettra de reconnaître immédiatement si une situation correspond à une croissance ou à une décroissance, rien qu'en regardant l'expression de la fonction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les deux paramètres a et b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Toute fonction exponentielle de référence s'écrit sous la forme $f(x) = a \\\\times b^{x}$ avec $a > 0$ et $b > 0$, $b \\\\neq 1$. Le coefficient $a$ représente la valeur de la fonction pour $x = 0$, c'est-à-dire le point de départ du phénomène que tu modèles. Le nombre $b$, quant à lui, est le facteur multiplicatif qui s'applique à chaque augmentation d'une unité de $x$. Si $b > 1$, chaque pas en avant multiplie la valeur par un nombre plus grand que $1$, ce qui fait grimper la courbe : c'est une croissance exponentielle. Si $0 < b < 1$, le facteur est une fraction, la valeur diminue à chaque pas et la courbe descend : c'est une décroissance exponentielle. Prends l'exemple d'une colonie de bactéries qui double toutes les heures : ici $a$ est le nombre initial de bactéries et $b = 2$. À l'inverse, un isotope radioactif qui perd la moitié de sa masse tous les ans correspond à $b = 0,5$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $a$ et $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le coefficient devant la puissance et la base de l'exposant dans l'expression donnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer $b$ à $1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $b>1$, c'est une croissance ; si $0<b<1$, c'est une décroissance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris une phrase qui décrit le phénomène : « La quantité double chaque heure » ou « La masse est divisée par deux chaque année »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=a\\\\times b^{x}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le paramètre $a$ fixe l'échelle du modèle : si tu doubles $a$, toute la courbe est étirée verticalement par le même facteur, mais la nature croissance ou décroissance ne change pas. Le paramètre $b$ contrôle la vitesse : plus $b$ est grand (au-dessus de $1$), plus la croissance est rapide ; plus $b$ est proche de $0$, plus la décroissance est brutale. Essaie de tracer mentalement $f(x)=5\\\\times1,2^{x}$ et $g(x)=5\\\\times0,8^{x}$ pour sentir la différence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié le type d'évolution, il est naturel de vouloir calculer des valeurs précises pour des instants donnés, par exemple pour prévoir la population après trois heures ou la masse restante après cinq ans. Nous allons voir comment substituer $x$ dans la formule et interpréter le résultat dans le contexte du problème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer et interpréter une valeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour obtenir $f(3)$ dans l'exemple des bactéries avec $a = 100$ et $b = 2$, tu remplaces $x$ par $3$ : $f(3) = 100 \\\\times 2^{3} = 100 \\\\times 8 = 800$. Cela signifie qu'après trois heures, la colonie compte $800$ individus. Si tu travailles avec une décroissance, par exemple $a = 500$ grammes et $b = 0,5$, alors $f(5) = 500 \\\\times 0,5^{5} = 500 \\\\times \\\\frac{1}{32} \\\\approx 15,6$ grammes. Remarque que le résultat n'est pas un entier, ce qui est parfaitement normal pour une fonction continue. Entraîne-toi à faire ce genre de calculs, car ils sont la base de la résolution d'équations exponentielles que nous aborderons dans la prochaine leçon."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu utilises une calculatrice, pense à utiliser la touche puissance (souvent notée $x^{y}$ ou $\\\\hat{\\\\ }$) et à bien mettre des parenthèses autour de la base quand elle est décimale, par exemple $(0,5)^{5}$. Vérifie aussi que tu es en mode degrés ou radians ? Ici, aucun angle n'intervient, donc le mode n'a pas d'importance, mais c'est une bonne habitude de vérifier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine si la fonction $f(x)=4\\\\times0,7^{x}$ correspond à une croissance ou à une décroissance exponentielle. Justifie ta réponse.",
+              "answer": "C'est une décroissance car le facteur $b=0,7$ est compris entre $0$ et $1$.",
+              "hint": "Regarde la valeur de $b$ par rapport à $1$.",
+              "explanation": "Dans un modèle exponentiel $f(x)=a\\\\times b^{x}$, si $b>1$ la fonction croît, si $0<b<1$ elle décroît. Ici $b=0,7<1$, donc décroissance."
+            },
+            {
+              "question": "Calcule $f(3)$ pour la fonction $f(x)=150\\\\times2^{x}$.",
+              "answer": "$f(3)=150\\\\times2^{3}=150\\\\times8=1200$.",
+              "hint": "Remplace $x$ par $3$ et calcule la puissance.",
+              "explanation": "La substitution donne $150\\\\times2^{3}=150\\\\times8=1200$."
+            },
+            {
+              "question": "Une masse radioactive suit $m(t)=800\\\\times0,5^{t}$ avec $t$ en années. Quelle masse reste-t-il après $4$ ans ?",
+              "answer": "$m(4)=800\\\\times0,5^{4}=800\\\\times\\\\frac{1}{16}=50$ grammes.",
+              "hint": "Calcule $0,5^{4}$ comme $\\\\frac{1}{2^{4}}$.",
+              "explanation": "0,5^4 = 1/16, 800/16 = 50."
+            }
+          ]
+        },
+        {
+          "title": "Équations simples selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des équations exponentielles simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous apprenons à résoudre les équations où l'inconnue se trouve dans l'exposant, une situation fréquente en modélisation. Tu sais déjà manipuler les puissances et les logarithmes ; ici, nous combinons ces outils pour isoler $x$ dans des égalités de la forme $a\\\\times b^{x}=c$ ou $b^{x}=k$. La méthode repose sur l'utilisation du logarithme naturel, noté $\\\\ln$, qui est l'inverse de la fonction exponentielle de base $e$. Prends le temps de bien comprendre chaque étape, car elle sera la base de tous les problèmes d'applications que nous verrons ensuite."
+            },
+            {
+              "type": "definition",
+              "term": "Logarithme naturel",
+              "definition": "Le logarithme naturel $\\\\ln(x)$ est la fonction réciproque de l'exponentielle $e^{x}$. Pour tout $x>0$, $\\\\ln(e^{x})=x$ et $e^{\\\\ln x}=x$. Il permet de faire descendre l'exposant : $\\\\ln(b^{x})=x\\\\ln b$.",
+              "example": "$\\\\ln(2^{5})=5\\\\ln2$."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -2,
+              "xmax": 3,
+              "caption": "Courbe de la fonction exponentielle $e^{x}$ et sa symétrique par rapport à la bissectrice (logarithme naturel)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La courbe de $y=e^{x}$ est strictement croissante, passe par $(0,1)$ et a l'axe des abscisses comme asymptote. Son inverse, le logarithme naturel, est défini seulement pour $x>0$, passe par $(1,0)$ et a l'axe des ordonnées comme asymptote. Cette relation d'inversion est la clé pour résoudre nos équations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as visualisé les deux fonctions inverses, nous allons détailler la méthode pas à pas pour résoudre une équation de la forme $a\\\\times b^{x}=c$ avec $a>0$, $b>0$, $b\\\\neq1$ et $c>0$. Cette procédure fonctionne pour toute base $b$, pas seulement pour $e$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas pour $a b^{x}=c$"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'idée est d'isoler la puissance $b^{x}$ puis d'appliquer le logarithme naturel des deux côtés. Comme $\\\\ln$ est une fonction strictement croissante, l'égalité est conservée. Voici les étapes dans l'ordre :"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diviser par $a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $b^{x} = \\\\frac{c}{a}$. Vérifie que le second membre est positif, sinon l'équation n'a pas de solution réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer $\\\\ln$ des deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\\\ln(b^{x}) = \\\\ln\\\\left(\\\\frac{c}{a}\\\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire descendre l'exposant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En utilisant la propriété $\\\\ln(b^{x}) = x\\\\ln b$, on a $x\\\\ln b = \\\\ln\\\\left(\\\\frac{c}{a}\\\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Isoler $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = \\\\frac{\\\\ln(c/a)}{\\\\ln b}$, à condition que $\\\\ln b \\\\neq 0$ (c'est-à-dire $b\\\\neq1$, déjà supposé)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x = \\\\frac{\\\\ln(c/a)}{\\\\ln b}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est important de vérifier que la solution trouvée appartient bien au domaine de définition de l'équation originale : le second membre $\\\\frac{c}{a}$ doit être strictement positif. Si $c$ et $a$ ont le même signe, c'est bon ; sinon, il n'y a pas de solution réelle. Essaie d'appliquer cette méthode à $3\\\\times5^{x}=75$ pour t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une forme encore plus simple apparaît quand le coefficient $a$ vaut $1$, c'est-à-dire les équations $b^{x}=k$ avec $k>0$. La résolution est alors un cas particulier de la méthode précédente, mais elle peut aussi se faire en reconnaissant directement une puissance entière si $k$ est une puissance évidente de $b$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations de la forme $b^{x}=k$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $k$ s'écrit comme $b^{n}$ avec $n$ entier, la solution est immédiate : $x=n$. Sinon, on utilise le logarithme naturel : $\\\\ln(b^{x}) = \\\\ln k$ donc $x\\\\ln b = \\\\ln k$ et $x = \\\\frac{\\\\ln k}{\\\\ln b}$. Cette formule est valable pour toute base $b>0$, $b\\\\neq1$. Note que $\\\\frac{\\\\ln k}{\\\\ln b}$ est exactement le logarithme de $k$ en base $b$, noté $\\\\log_{b}k$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier que $k>0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sinon, pas de solution réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chercher si $k$ est une puissance entière de $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si oui, écrire $k=b^{n}$ et conclure $x=n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Sinon, utiliser le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = \\\\frac{\\\\ln k}{\\\\ln b}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x = \\\\log_{b}(k) = \\\\frac{\\\\ln k}{\\\\ln b}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode est universelle : elle fonctionne même quand $b$ n'est pas un entier, par exemple pour résoudre $1,05^{x}=2$. Dans ce cas, $x = \\\\frac{\\\\ln 2}{\\\\ln 1,05} \\\\approx 14,21$. Tu verras dans la leçon d'applications comment ce type d'équation modélise le temps nécessaire pour doubler un capital."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation $5\\\\times3^{x}=135$.",
+              "answer": "$x=3$.",
+              "hint": "Divise par $5$ puis utilise le logarithme.",
+              "explanation": "Divise les deux côtés par $5$ : $3^{x}=27$. Puisque $27=3^{3}$, on a $x=3$. On peut aussi écrire $x=\\\\frac{\\\\ln 27}{\\\\ln 3}=3$."
+            },
+            {
+              "question": "Résous $2^{x}=32$.",
+              "answer": "$x=5$.",
+              "hint": "Exprime $32$ comme puissance de $2$.",
+              "explanation": "$32=2^{5}$, donc $x=5$. Avec logarithmes : $x=\\\\frac{\\\\ln 32}{\\\\ln 2}=5$."
+            },
+            {
+              "question": "Un capital de $1000$ euros est placé à un taux de $5\\\\%$ par an, capitalisation annuelle. Au bout de combien d'années le capital atteindra-t-il $1500$ euros ? Modèle : $C(t)=1000\\\\times1,05^{t}$.",
+              "answer": "$t\\\\approx 8,31$ ans, donc après $9$ ans le capital dépasse $1500$.",
+              "hint": "Résous $1000\\\\times1,05^{t}=1500$ en isolant $t$ avec le logarithme.",
+              "explanation": "Divise par $1000$ : $1,05^{t}=1,5$. Prends le logarithme naturel : $t\\\\ln1,05=\\\\ln1,5$, donc $t=\\\\frac{\\\\ln1,5}{\\\\ln1,05}\\\\approx8,31$. Comme $t$ doit être un nombre entier d'années, arrondis à l'entier supérieur : $9$ ans."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications des modèles exponentiels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce chapitre, où nous mettons en pratique tout ce que nous avons appris pour résoudre des problèmes concrets. Les modèles exponentiels sont omniprésents : en finance pour les intérêts composés, en physique pour la radioactivité, en biologie pour la croissance des populations. Chaque situation se ramène à une fonction de la forme $f(t)=a\\\\times b^{t}$ ou à une équation que nous savons maintenant résoudre. Lis attentivement chaque exemple, essaie de refaire les calculs par toi-même avant de regarder la solution, et n'hésite pas à revenir sur les leçons précédentes si une étape te semble floue."
+            },
+            {
+              "type": "definition",
+              "term": "Intérêts composés",
+              "definition": "Lorsque les intérêts générés chaque année sont ajoutés au capital initial pour produire eux-mêmes des intérêts l'année suivante, le capital après $t$ années vaut $C(t)=P(1+r)^{t}$, où $P$ est le capital initial et $r$ le taux annuel (exprimé en décimal).",
+              "example": "Avec $P=1000$ euros et $r=0,03$, $C(t)=1000\\\\times1,03^{t}$."
+            },
+            {
+              "type": "graph",
+              "expression": "2000*1.03^x",
+              "xmin": 0,
+              "xmax": 15,
+              "caption": "Évolution d'un capital de 2000 euros à 3% par an"
+            },
+            {
+              "type": "paragraph",
+              "content": "La courbe montre une croissance régulière et accélérée : au début, l'augmentation annuelle est modeste, mais au fil du temps, les intérêts sur les intérêts font grimper le capital de plus en plus vite. C'est la puissance de l'exponentielle. Remarque que l'axe des ordonnées commence à $2000$ pour $x=0$, ce qui correspond au capital de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un phénomène de décroissance : la désintégration radioactive. La demi-vie est le temps nécessaire pour que la moitié des atomes d'un échantillon se désintègrent. Si la demi-vie est $T$, la masse restante après $t$ années suit $m(t)=m_{0}\\\\times\\\\left(\\\\frac{1}{2}\\\\right)^{t/T}$. Ce modèle est une application directe de la décroissance exponentielle avec un facteur $b=\\\\frac{1}{2}$ tous les $T$ ans."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Demi-vie et décroissance radioactive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons un isotope dont la demi-vie est de $5$ ans et une masse initiale de $100$ grammes. Après $5$ ans, il reste $50$ g ; après $10$ ans, $25$ g ; après $15$ ans, $12,5$ g. La formule générale $m(t)=100\\\\times0,5^{t/5}$ permet de calculer la masse pour n'importe quel $t$, pas seulement les multiples de $5$. Essaie de calculer $m(7)$ pour t'entraîner."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $m_{0}$ et $T$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $m_{0}=100$ g et $T=5$ ans."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$m(t)=100\\\\times\\\\left(\\\\frac{1}{2}\\\\right)^{t/5}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer $t$ par la valeur demandée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $t=15$, $m(15)=100\\\\times0,5^{3}=12,5$ g."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "m(t)=m_{0}\\\\times\\\\left(\\\\frac{1}{2}\\\\right)^{t/T}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode s'applique à tout phénomène où une quantité est divisée par un facteur constant sur un intervalle de temps constant. Tu pourras l'utiliser pour la datation au carbone 14, la décroissance d'un médicament dans le sang, etc."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous terminons par un exemple de modélisation discrète qui mène naturellement à une suite géométrique, visualisable grâce à la toile d'araignée. Une culture de bactéries double chaque heure : si on note $u_{n}$ le nombre de bactéries après $n$ heures, on a $u_{n+1}=2u_{n}$ avec $u_{0}=50$. Cette relation de récurrence définit une suite géométrique de raison $2$, dont le terme général est $u_{n}=50\\\\times2^{n}$. La toile d'araignée permet de voir graphiquement comment les itérations de la fonction $f(x)=2x$ font évoluer la suite."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "2*x",
+              "u0": 50,
+              "iterations": 5,
+              "xMin": 0,
+              "xMax": 2000,
+              "caption": "Toile d'araignée pour la suite $u_{n+1}=2u_{n}$, $u_{0}=50$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe comment chaque point $(u_{n},u_{n+1})$ se déplace le long de la droite $y=2x$ et revient sur la bissectrice $y=x$ pour préparer l'itération suivante. Cette représentation visuelle aide à comprendre la convergence ou la divergence des suites récurrentes, un thème que tu approfondiras en terminale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une croissance ou une décroissance exponentielle à partir de l'expression $f(x)=a\\\\times b^{x}$.",
+                "Je sais résoudre une équation de la forme $a\\\\times b^{x}=c$ en utilisant le logarithme naturel.",
+                "Je sais appliquer le modèle d'intérêts composés $C(t)=P(1+r)^{t}$.",
+                "Je sais utiliser la formule de demi-vie $m(t)=m_{0}(1/2)^{t/T}$.",
+                "Je sais exprimer le terme général d'une suite géométrique issue d'un modèle exponentiel discret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un livret A verse un taux de $3\\\\%$ par an. Si tu verses $2000$ euros, quelle somme auras-tu après $10$ ans ?",
+              "answer": "$2000\\\\times1,03^{10}\\\\approx 2687,83$ euros.",
+              "hint": "Utilise la formule des intérêts composés $C=P(1+r)^{t}$.",
+              "explanation": "Remplace $P=2000$, $r=0,03$, $t=10$ : $2000\\\\times1,03^{10}\\\\approx2687,83$."
+            },
+            {
+              "question": "La demi-vie d'un isotope est de $5$ ans. Si tu pars de $100$ grammes, quelle masse reste après $15$ ans ?",
+              "answer": "$100\\\\times0,5^{15/5}=100\\\\times0,5^{3}=12,5$ grammes.",
+              "hint": "Le nombre de demi-vies écoulées est $15/5=3$.",
+              "explanation": "Chaque demi-vie divise la masse par deux. Après trois demi-vies, la masse est $100/2^{3}=12,5$ g."
+            },
+            {
+              "question": "Une culture de bactéries suit la relation de récurrence $u_{n+1}=2u_{n}$ avec $u_{0}=50$. Donne $u_{5}$ et trace les premiers termes à l'aide de la toile d'araignée.",
+              "answer": "$u_{5}=50\\\\times2^{5}=1600$.",
+              "hint": "Utilise la formule explicite $u_{n}=u_{0}\\\\times2^{n}$.",
+              "explanation": "La suite est géométrique de raison $2$. Donc $u_{5}=50\\\\times2^{5}=1600$. La toile d'araignée montre l'itération de la fonction $f(x)=2x$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

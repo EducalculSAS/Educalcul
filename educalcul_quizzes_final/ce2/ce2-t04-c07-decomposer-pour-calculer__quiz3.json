@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 175,
+  "_course_code": "ce2-t04-c07-decomposer-pour-calculer",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Comparer deux procédures",
+  "title": "Quiz : Comparer deux procédures de calcul mental (CE2)",
+  "questions": [
+    {
+      "text": "Pour calculer $47 + 38$, Ana utilise la procédure A : $47 + 30 = 77$, puis $77 + 8 = 85$. Ben utilise la procédure B : $47 + 40 = 87$, puis $87 - 2 = 85$. Quelle affirmation est vraie ?",
+      "options": [
+        "Seule la procédure A donne le bon résultat.",
+        "Seule la procédure B donne le bon résultat.",
+        "Les deux procédures donnent le même résultat correct.",
+        "Les deux procédures donnent un résultat faux."
+      ],
+      "correctAnswer": "Les deux procédures donnent le même résultat correct.",
+      "explanation": "La procédure A décompose 38 en 30 et 8 (ajout par paquets). La procédure B utilise la compensation : on arrondit 38 à 40 (plus facile à ajouter), puis on retire les 2 ajoutés en trop. Les deux méthodes mènent correctement à 85.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $65 - 28$, Léa fait : $65 - 20 = 45$, puis $45 - 8 = 37$. Tom utilise le comptage : $28 + 2 = 30$, $30 + 30 = 60$, $60 + 5 = 65$, donc $2 + 30 + 5 = 37$. Que peut-on dire de ces deux procédures ?",
+      "options": [
+        "Seule la procédure de Léa est correcte.",
+        "Seule la procédure de Tom est correcte.",
+        "Les deux procédures sont correctes et donnent 37.",
+        "La procédure de Tom est plus longue donc elle est fausse."
+      ],
+      "correctAnswer": "Les deux procédures sont correctes et donnent 37.",
+      "explanation": "Léa décompose le nombre à retrancher (28 en 20 puis 8). Tom utilise la stratégie du comptage (ou différence) en partant de 28 pour remonter à 65. Les deux sont des stratégies valides au CE2 et aboutissent au même résultat 37.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer $128 + 199$. Procédure 1 : $128 + 200 = 328$, puis $328 - 1 = 327$. Procédure 2 : $100 + 100 = 200$, $20 + 90 = 110$, $8 + 9 = 17$, puis $200 + 110 + 17 = 327$. Pourquoi la procédure 1 est-elle souvent préférée pour ce calcul précis ?",
+      "options": [
+        "Elle est la seule qui donne le bon résultat.",
+        "Elle utilise un nombre rond (200) ce qui rend le calcul mental plus rapide.",
+        "La procédure 2 est interdite au CE2.",
+        "Elle évite d'additionner les dizaines."
+      ],
+      "correctAnswer": "Elle utilise un nombre rond (200) ce qui rend le calcul mental plus rapide.",
+      "explanation": "199 est très proche de 200. L'arrondir à la centaine supérieure (compensation) simplifie beaucoup le calcul mental ($+200$ puis $-1$) par rapport à la décomposition posée complète de la procédure 2 qui demande plus d'étapes intermédiaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $54 + 37$, on compare deux procédures :\\nProcédure 1 : $50 + 30 = 80$, $4 + 7 = 11$, $80 + 11 = 91$.\\nProcédure 2 : $54 + 30 = 84$, $84 + 6 = 90$.\\nLaquelle de ces affirmations est exacte ?",
+      "options": [
+        "Les deux procédures sont correctes.",
+        "Seule la procédure 1 est correcte.",
+        "Seule la procédure 2 est correcte.",
+        "Les deux procédures sont fausses."
+      ],
+      "correctAnswer": "Seule la procédure 1 est correcte.",
+      "explanation": "La procédure 1 décompose correctement les deux nombres (dizaines et unités) et gère la retenue des unités (11) correctement. La procédure 2 commet une erreur à la dernière étape : on doit ajouter 7 (puisque 37 = 30 + 7) et non 6. $84 + 7 = 91$, alors que $84 + 6 = 90$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux procédures pour $42 \\times 5$ :\\nProcédure A : $42 \\times 10 = 420$, puis $420 \\div 2 = 210$.\\nProcédure B : $40 \\times 5 = 200$, $2 \\times 5 = 10$, puis $200 + 10 = 210$.\\nQuelle comparaison est la plus pertinente ?",
+      "options": [
+        "La procédure A est meilleure car multiplier par 10 est un automatisme et diviser par 2 est simple.",
+        "La procédure B est la seule valide car on ne doit pas diviser en CE2.",
+        "La procédure A donne un résultat faux car $420 \\div 2 = 205$.",
+        "Les deux procédures sont fausses car on ne peut pas décomposer une multiplication."
+      ],
+      "correctAnswer": "La procédure A est meilleure car multiplier par 10 est un automatisme et diviser par 2 est simple.",
+      "explanation": "Les deux procédures sont mathématiquement correctes et donnent 210. La procédure A (multiplier par 10 puis diviser par 2) est souvent plus rapide mentalement car multiplier par 10 (ajouter un 0) et trouver la moitié d'un nombre pair (210) sont des automatismes forts au CE2. La procédure B (décomposition distributive) est aussi valide mais demande plus d'étapes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

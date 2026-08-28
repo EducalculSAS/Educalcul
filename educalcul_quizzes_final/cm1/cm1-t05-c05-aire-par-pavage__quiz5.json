@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unité d'aire",
+  "title": "Approfondissement : Unité d'aire",
+  "questions": [
+    {
+      "text": "On pave une surface avec des carrés de côté $1$ cm. Quel est le nom de l'unité d'aire correspondante ?",
+      "options": [
+        "Le centimètre (cm)",
+        "Le centimètre carré (cm²)",
+        "Le mètre carré (m²)",
+        "Le mètre (m)"
+      ],
+      "correctAnswer": "Le centimètre carré (cm²)",
+      "explanation": "L'unité d'aire correspond à un carré de $1$ cm de côté. On l'appelle le centimètre carré et on note cm². Le centimètre (cm) est une unité de longueur, pas d'aire. Le mètre carré (m²) correspond à un carré de $1$ m de côté, ce qui est beaucoup plus grand.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 1,
+        "caption": "Un carré de 1 cm de côté représente 1 cm²"
+      }
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie pour comparer le centimètre carré (cm²) et le décimètre carré (dm²) ?",
+      "options": [
+        "$1$ dm² = $10$ cm²",
+        "$1$ dm² = $100$ cm²",
+        "$1$ dm² = $1000$ cm²",
+        "$1$ cm² = $100$ dm²"
+      ],
+      "correctAnswer": "$1$ dm² = $100$ cm²",
+      "explanation": "Un décimètre (dm) vaut $10$ cm. Un carré de $1$ dm de côté a une aire de $10 \\times 10 = 100$ cm². Donc $1$ dm² = $100$ cm². L'option $10$ cm² oublie qu'il faut multiplier les deux dimensions. L'option $1000$ cm² confond avec le volume (dm³).",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 10,
+            "height": 10,
+            "label": "1 dm² = 100 cm²"
+          }
+        ],
+        "caption": "Un carré de 1 dm de côté contient 100 carrés de 1 cm de côté"
+      }
+    },
+    {
+      "text": "On veut mesurer l'aire d'une feuille de papier A4 (environ $21$ cm $\\times$ $29,7$ cm). Quelle unité d'aire est la plus adaptée ?",
+      "options": [
+        "Le millimètre carré (mm²)",
+        "Le centimètre carré (cm²)",
+        "Le mètre carré (m²)",
+        "Le kilomètre carré (km²)"
+      ],
+      "correctAnswer": "Le centimètre carré (cm²)",
+      "explanation": "La feuille A4 a des dimensions en centimètres. Son aire sera de l'ordre de $600$ cm². Le mm² donnerait un nombre trop grand ($60\\,000$ mm²). Le m² donnerait un nombre décimal trop petit ($0,06$ m²). Le km² est totalement inadapté pour un objet aussi petit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une aire de $12$ dm². On exprime cette aire en centimètres carrés. Quelle est la bonne écriture ?",
+      "options": [
+        "$120$ cm²",
+        "$1200$ cm²",
+        "$12\\,000$ cm²",
+        "$1,2$ cm²"
+      ],
+      "correctAnswer": "$1200$ cm²",
+      "explanation": "Puisque $1$ dm² = $100$ cm², on multiplie le nombre de dm² par $100$ pour obtenir le nombre de cm². $12 \\times 100 = 1200$. Donc $12$ dm² = $1200$ cm². L'erreur $120$ cm² correspond à une multiplication par $10$ (comme pour les longueurs). L'erreur $1,2$ cm² correspond à une division par $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une salle de classe a une aire d'environ $50$ m². Si on exprime cette aire en décimètres carrés, quel nombre obtiendra-t-on environ ?",
+      "options": [
+        "$500$ dm²",
+        "$5\\,000$ dm²",
+        "$50\\,000$ dm²",
+        "$500\\,000$ dm²"
+      ],
+      "correctAnswer": "$50\\,000$ dm²",
+      "explanation": "Il faut connaître le lien : $1$ m = $10$ dm, donc $1$ m² = $10 \\times 10 = 100$ dm². Pour passer de m² à dm², on multiplie par $100$. $50 \\times 100 = 5\\,000$ dm². Attention : $500$ dm² correspond à $5$ m². $50\\,000$ dm² correspondrait à $500$ m². $500\\,000$ dm² correspondrait à $5\\,000$ m².",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 10,
+            "height": 10,
+            "label": "1 m² = 100 dm²"
+          }
+        ],
+        "caption": "Conversion m² vers dm² : multiplier par 100"
+      }
+    }
+  ]
+}

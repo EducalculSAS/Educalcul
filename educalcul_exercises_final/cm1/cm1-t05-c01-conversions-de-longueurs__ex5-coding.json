@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 241,
+  "_course_code": "cm1-t05-c01-conversions-de-longueurs",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unités usuelles",
+  "title": "Conversions de longueurs - Approfondissement : Unités usuelles",
+  "blocks": [
+    {
+      "title": "Algorithme de conversion mètre → centimètre",
+      "content": "Écrire un algorithme (ou une suite d'instructions structurée) qui prend en entrée une longueur exprimée en mètres (nombre entier) et affiche la même longueur exprimée en centimètres.",
+      "correctAnswer": "Algorithme :\\n1. Lire la valeur M (entier) en mètres.\\n2. Calculer C = M * 100.\\n3. Afficher C suivi de l'unité \"cm\".\\n\\nExemple : si M = 3 alors C = 300 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la relation $1 m = 100 cm$. Multiplier le nombre de mètres par 100 donne le nombre de centimètres. L'algorithme lit l'entrée, effectue le produit et affiche le résultat avec l'unité appropriée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de conversion kilomètre → mètre et centimètre",
+      "content": "Écrire un algorithme qui prend en entrée une longueur en kilomètres (nombre entier) et affiche successivement la longueur en mètres puis en centimètres.",
+      "correctAnswer": "Algorithme :\\n1. Lire la valeur K (entier) en kilomètres.\\n2. Calculer M = K * 1000 (conversion km → m).\\n3. Calculer C = M * 100 (conversion m → cm) ou C = K * 100000.\\n4. Afficher M suivi de \"m\" puis C suivi de \"cm\".\\n\\nExemple : si K = 2 alors M = 2000 m et C = 200000 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les relations usuelles sont $1 km = 1000 m$ et $1 m = 100 cm$. On convertit d'abord en mètres en multipliant par 1000, puis en centimètres en multipliant le résultat par 100 (ou directement par 100000). L'algorithme affiche les deux résultats avec leurs unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de conversion mètre décimal → centimètre",
+      "content": "Écrire un algorithme qui prend en entrée une longueur en mètres pouvant contenir une partie décimale (par exemple $2,5 m$) et affiche la longueur équivalente en centimètres (nombre entier).",
+      "correctAnswer": "Algorithme :\\n1. Lire la valeur M (nombre décimal) en mètres.\\n2. Calculer C = M * 100.\\n3. Convertir C en entier (la partie décimale disparaît car $1 m = 100 cm$ exact).\\n4. Afficher C suivi de \"cm\".\\n\\nExemple : si M = 2,5 alors C = 250 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Même avec un nombre décimal, la conversion utilise $1 m = 100 cm$. Multiplier par 100 décale la virgule de deux rangs vers la droite, ce qui donne un nombre entier de centimètres. L'algorithme effectue cette multiplication et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

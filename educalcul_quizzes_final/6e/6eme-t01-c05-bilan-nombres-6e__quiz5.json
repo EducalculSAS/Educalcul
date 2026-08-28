@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 335,
+  "_course_code": "6eme-t01-c05-bilan-nombres-6e",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Numération, décimaux, droite",
+  "title": "Approfondissement : Numération, décimaux, droite",
+  "questions": [
+    {
+      "text": "Dans le nombre $345,67$, que représente le chiffre $6$ ?",
+      "options": [
+        "six dixièmes",
+        "six centièmes",
+        "six unités",
+        "six dizaines"
+      ],
+      "correctAnswer": "six dixièmes",
+      "explanation": "Le chiffre 6 se trouve juste après la virgule, c'est la position des dixièmes, donc il vaut six dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comparer les deux nombres décimaux $0,45$ et $0,5$. Quelle relation est vraie ?",
+      "options": [
+        "$0,45 > 0,5$",
+        "$0,45 < 0,5$",
+        "$0,45 = 0,5$",
+        "impossible de comparer"
+      ],
+      "correctAnswer": "$0,45 < 0,5$",
+      "explanation": "On aligne les virgules : $0,45$ a 4 dixièmes et 5 centièmes, $0,5$ a 5 dixièmes. Comme 4 dixièmes < 5 dixièmes, $0,45$ est plus petit que $0,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écrire en toutes lettres le nombre décimal $12,304$.",
+      "options": [
+        "douze virgule trois zéro quatre",
+        "douze virgule trois cent quatre",
+        "douze virgule trente-quatre",
+        "douze virgule trois quatre"
+      ],
+      "correctAnswer": "douze virgule trois zéro quatre",
+      "explanation": "Après la virgule, on lit chaque chiffre séparément : 3, 0, 4 -> trois zéro quatre. On ne groupe pas les chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite numérique ci-dessous, entre quelles deux graduations se situe le nombre $0,67$ ?",
+      "options": [
+        "entre $0,6$ et $0,7$",
+        "entre $0,7$ et $0,8$",
+        "exactement sur $0,6$",
+        "exactement sur $0,7$"
+      ],
+      "correctAnswer": "entre $0,6$ et $0,7$",
+      "explanation": "Le nombre $0,67$ est supérieur à $0,6$ (6 dixièmes) et inférieur à $0,7$ (7 dixièmes), il se place donc entre ces deux graduations.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérique de 0 à 1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.6,
+            "label": "0,6"
+          },
+          {
+            "value": 0.7,
+            "label": "0,7"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Arrondir $3,46$ au dixième le plus proche.",
+      "options": [
+        "$3,4$",
+        "$3,5$",
+        "$3,46$",
+        "$3,6$"
+      ],
+      "correctAnswer": "$3,5$",
+      "explanation": "Le chiffre des centièmes est 6, supérieur ou égal à 5, donc on augmente le chiffre des dixièmes (4) d'une unité, ce qui donne $3,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

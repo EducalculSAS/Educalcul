@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Lire / produire",
+  "title": "Algorithmes et traitement de données",
+  "blocks": [
+    {
+      "title": "Trouver la valeur maximale",
+      "content": "On dispose d'un tableau contenant les notes d'un élève : $[12, 8, 15, 10, 14]$. Écris un algorithme (en langage naturel ou style Python simplifié) qui permet de trouver la plus grande note de ce tableau. L'algorithme doit utiliser une variable `maximum` initialisée avec la première note, puis parcourir les notes une par une.",
+      "correctAnswer": "Algorithme :\\n1. notes ← [12, 8, 15, 10, 14]\\n2. maximum ← notes[0]  (première note : 12)\\n3. Pour chaque note dans notes :\\n4.     Si note > maximum alors\\n5.         maximum ← note\\n6. Fin si\\n7. Fin pour\\n8. Afficher maximum\\nRésultat attendu : 15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par supposer que la première note (12) est la plus grande. On compare ensuite chaque note suivante à cette valeur stockée dans `maximum`. Si on trouve une note plus grande (15), on met `maximum` à jour. À la fin, `maximum` contient la plus grande valeur du tableau, ici 15.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la somme et la moyenne",
+      "content": "Voici les hauteurs (en centimètres) de cinq élèves : $130, 125, 135, 128, 132$. Écris un algorithme qui calcule la somme de ces hauteurs, puis leur moyenne. Utilise une variable `somme` initialisée à $0$ et une boucle pour ajouter chaque hauteur. À la fin, divise la somme par le nombre d'élèves ($5$) pour obtenir la moyenne.",
+      "correctAnswer": "Algorithme :\\n1. hauteurs ← [130, 125, 135, 128, 132]\\n2. somme ← 0\\n3. Pour chaque h dans hauteurs :\\n4.     somme ← somme + h\\n5. Fin pour\\n6. moyenne ← somme / 5\\n7. Afficher \"Somme :\", somme\\n8. Afficher \"Moyenne :\", moyenne\\nRésultat : Somme = 650, Moyenne = 130",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable `somme` accumule le total : $130 + 125 + 135 + 128 + 132 = 650$. On divise ensuite ce total par le nombre de valeurs ($5$) pour trouver la moyenne : $650 / 5 = 130$. La moyenne des hauteurs est donc $130$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter les valeurs supérieures à un seuil",
+      "content": "On a relevé le nombre de livres lus par six élèves pendant les vacances : $[3, 7, 2, 5, 8, 4]$. Écris un algorithme qui compte combien d'élèves ont lu $5$ livres ou plus. Utilise une variable `compteur` initialisée à $0$ et une condition `Si ... Alors` à l'intérieur de la boucle.",
+      "correctAnswer": "Algorithme :\\n1. livres ← [3, 7, 2, 5, 8, 4]\\n2. compteur ← 0\\n3. Pour chaque n dans livres :\\n4.     Si n >= 5 alors\\n5.         compteur ← compteur + 1\\n6.     Fin si\\n7. Fin pour\\n8. Afficher compteur\\nRésultat : 3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt la liste : 3 (non), 7 (oui, compteur=1), 2 (non), 5 (oui, compteur=2), 8 (oui, compteur=3), 4 (non). Trois valeurs (7, 5, 8) sont supérieures ou égales à 5. L'algorithme affiche donc 3.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

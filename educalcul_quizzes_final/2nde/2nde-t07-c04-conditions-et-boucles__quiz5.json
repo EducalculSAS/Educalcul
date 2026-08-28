@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : If",
+  "title": "Approfondissement : If",
+  "questions": [
+    {
+      "text": "Dans un algorithme, quelle instruction permet d'exécuter une action uniquement si la condition $x > 0$ est vraie ?",
+      "options": [
+        "Si $x > 0$ alors action",
+        "Tant que $x > 0$ faire action",
+        "Pour $i$ de 1 à 10 faire action",
+        "Répéter jusqu'à $x > 0$ action"
+      ],
+      "correctAnswer": "Si $x > 0$ alors action",
+      "explanation": "La structure « Si … alors … » exécute l'instruction suivante seulement lorsque la condition est vraie. « Tant que » crée une boucle, « Pour » une boucle bornée, et « Répéter jusqu'à » une boucle avec condition de sortie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la condition d'un « Si … alors … sinon … » est fausse, que se passe-t-il ?",
+      "options": [
+        "Rien ne se passe",
+        "Le bloc « sinon » est exécuté",
+        "Le programme s'arrête",
+        "La condition est réévaluée"
+      ],
+      "correctAnswer": "Le bloc « sinon » est exécuté",
+      "explanation": "Dans une structure conditionnelle complète, lorsque la condition est fausse, l'algorithme exécute les instructions placées après le mot‑clé « sinon ». Les autres options décrivent des comportements incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez l'algorithme suivant :\\nSi $a > 0$ alors\\n    Si $b > 0$ alors\\n        afficher \"A\"\\n    sinon\\n        afficher \"B\"\\nsinon\\n    afficher \"C\"\\nAvec $a = 5$ et $b = -3$, quelle lettre est affichée ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Rien"
+      ],
+      "correctAnswer": "B",
+      "explanation": "Puisque $a = 5 > 0$, le premier « Si » est vrai, on entre dans le bloc interne. La condition $b > 0$ est fausse ($-3 > 0$ est faux), donc le « sinon » interne s'exécute et affiche \"B\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des conditions suivantes est vraie exactement quand $x$ appartient à l'intervalle $[10, 20]$ ?",
+      "options": [
+        "$x > 10$ et $x < 20$",
+        "$x >= 10$ et $x <= 20$",
+        "$x > 10$ ou $x < 20$",
+        "$x >= 10$ ou $x <= 20$"
+      ],
+      "correctAnswer": "$x >= 10$ et $x <= 20$",
+      "explanation": "L'intervalle fermé $[10,20]$ inclut les bornes. Il faut donc tester $x \\ge 10$ ET $x \\le 20$. La première option exclut les bornes, la troisième et la quatrième utilisent « ou » qui élargit la condition à tous les réels.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme utilise la chaîne de « Sinon si » suivante :\\nSi $note \\ge 16$ alors mention \"Très bien\"\\nSinon si $note \\ge 14$ alors mention \"Bien\"\\nSinon si $note \\ge 12$ alors mention \"Assez bien\"\\nSinon mention \"Passable\"\\nQuelle mention est affichée pour $note = 13$ ?",
+      "options": [
+        "Très bien",
+        "Bien",
+        "Assez bien",
+        "Passable"
+      ],
+      "correctAnswer": "Assez bien",
+      "explanation": "Les tests sont évalués dans l'ordre. $13 \\ge 16$ faux, $13 \\ge 14$ faux, $13 \\ge 12$ vrai → la troisième branche s'exécute et affiche \"Assez bien\".",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

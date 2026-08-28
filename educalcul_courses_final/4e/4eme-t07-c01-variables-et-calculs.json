@@ -1,0 +1,517 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.887879+00:00",
+  "id": 450,
+  "code": "4eme-t07-c01",
+  "title": "Variables et calculs",
+  "description": "Cours structuré Educalcul : Variables et calculs.",
+  "subject": "Algorithmique et programmation",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Algorithmique et programmation",
+    "titre_du_cours": "Variables et calculs",
+    "objectif_global": "Variables et calculs",
+    "mini_lecons_imposees": [
+      "Affectations.",
+      "Expressions.",
+      "Tracer état."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et programmation",
+      "lessons": [
+        {
+          "title": "Affectations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une variable ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une étiquette collée sur une boîte. L'étiquette porte un nom, par exemple $x$, et la boîte peut contenir une valeur numérique. Au début la boîte est vide, puis tu y glisses un nombre. Plus tard tu peux remplacer ce nombre par un autre, l'étiquette ne change pas, seul le contenu évolue. C'est exactement ce que fait une variable en algorithmique : elle réserve un espace mémoire, lui donne un identifiant et permet d'y stocker une information qui pourra être modifiée au fil du programme."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Un emplacement nommé dans la mémoire de l'ordinateur qui peut contenir une valeur et dont le contenu peut changer pendant l'exécution.",
+              "example": "Dans $x \\leftarrow 7$, la variable $x$ reçoit la valeur $7$."
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\leftarrow 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as visualisé la boîte, regardons comment on écrit l'action de mettre une valeur dedans. L'instruction d'affectation utilise une flèche qui pointe vers la variable, ce qui montre bien le sens du déplacement de la valeur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'instruction d'affectation"
+            },
+            {
+              "type": "paragraph",
+              "content": "En programmation, on n'écrit pas $x = 5$ comme en mathématiques, car le signe égal signifie une égalité permanente. On utilise plutôt la flèche d'affectation $\\leftarrow$ (ou parfois le symbole $:=$). L'instruction $x \\leftarrow 5$ se lit : « la variable $x$ reçoit la valeur $5$ ». Le côté droit est évalué d'abord, puis le résultat est placé dans la variable du côté gauche. Cette règle d'ordre est essentielle pour éviter les confusions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : calculer l'expression de droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'expression contient des opérations, on les résout selon les priorités habituelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : stocker le résultat dans la variable de gauche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La valeur obtenue remplace l'ancien contenu de la variable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\leftarrow a + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand plusieurs affectations se suivent, l'ordre d'exécution devient crucial. Chaque ligne modifie l'état mémoire avant que la suivante ne soit lue. Observons cela sur un petit exemple concret."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Affectations successives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le fragment suivant : $x \\leftarrow 4$ ; $y \\leftarrow x + 2$ ; $x \\leftarrow y - 1$. La première ligne place $4$ dans $x$. La seconde lit la valeur actuelle de $x$ (qui est $4$), ajoute $2$ et met $6$ dans $y$. La troisième lit $y$ (maintenant $6$), soustrait $1$ et range $5$ dans $x$. Remarque que $x$ a changé deux fois, et que la seconde lecture de $x$ a utilisé la valeur mise à jour par la première instruction."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Instruction",
+                "x",
+                "y"
+              ],
+              "rows": [
+                [
+                  "Début",
+                  "",
+                  ""
+                ],
+                [
+                  "x \\leftarrow 4",
+                  "4",
+                  ""
+                ],
+                [
+                  "y \\leftarrow x + 2",
+                  "4",
+                  "6"
+                ],
+                [
+                  "x \\leftarrow y - 1",
+                  "5",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège classique consiste à confondre l'affectation avec l'égalité mathématique. En mathématiques $x = x + 1$ est impossible, alors qu'en algorithmique $x \\leftarrow x + 1$ signifie : prends la valeur actuelle de $x$, ajoute $1$, et remets le résultat dans $x$. C'est ainsi qu'on incrémente un compteur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ne jamais écrire $x = x + 1$ dans un programme, cela serait interprété comme une comparaison ou une erreur de syntaxe selon le langage. Utilise toujours la flèche $\\leftarrow$ (ou $:=$) pour signifier le stockage. De plus, attention à ne pas inverser les côtés : $5 \\leftarrow x$ n'a pas de sens car la partie gauche doit être une variable."
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\leftarrow x + 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle valeur contient la variable $p$ après l'instruction $p \\leftarrow 12$ ?",
+              "answer": "12",
+              "hint": "L'affectation place la valeur de droite dans la variable de gauche.",
+              "explanation": "L'instruction $p \\leftarrow 12$ signifie que la variable $p$ reçoit la valeur $12$. Il n'y a pas de calcul à faire, la valeur est directement stockée."
+            },
+            {
+              "question": "Si $a \\leftarrow 5$ puis $a \\leftarrow a + 4$, quelle est la valeur finale de $a$ ?",
+              "answer": "9",
+              "hint": "Évalue l'expression de droite avec la valeur actuelle de $a$ avant de stocker.",
+              "explanation": "Au début $a$ vaut $5$. La seconde instruction calcule $5 + 4 = 9$ et range $9$ dans $a$. L'ancienne valeur $5$ est remplacée."
+            },
+            {
+              "question": "Complète le tableau de trace pour les instructions : $u \\leftarrow 3$ ; $v \\leftarrow u \\times 2$ ; $u \\leftarrow v - 4$.",
+              "answer": "u=3, v=6 puis u=2, v=6",
+              "hint": "Suis l'ordre ligne par ligne, note les valeurs après chaque instruction.",
+              "explanation": "Après $u \\leftarrow 3$, $u=3$. Ensuite $v \\leftarrow u \\times 2$ donne $v=6$. Enfin $u \\leftarrow v - 4$ calcule $6-4=2$ et met $u=2$. $v$ reste $6$."
+            },
+            {
+              "question": "Pourquoi l'écriture $x = x + 1$ est-elle incorrecte en algorithmique ?",
+              "answer": "Le symbole $=$ désigne une égalité, pas un stockage. On doit utiliser $\\leftarrow$ pour affecter.",
+              "hint": "Rappelle-toi la différence entre égalité mathématique et affectation.",
+              "explanation": "En algorithmique, $x = x + 1$ serait lu comme une comparaison (vrai ou faux) ou provoquerait une erreur. L'affectation utilise $\\leftarrow$ pour indiquer que la nouvelle valeur de $x$ devient l'ancienne valeur plus $1$."
+            }
+          ]
+        },
+        {
+          "title": "Expressions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les expressions numériques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une expression est une recette qui combine des nombres, des variables et des opérateurs pour produire une valeur. Par exemple $7 + 3 \\times 2$ est une expression numérique. Pour la calculer, on respecte les priorités : la multiplication avant l'addition. Donc on fait $3 \\times 2 = 6$, puis $7 + 6 = 13$. Les parenthèses permettent de forcer un ordre différent, comme dans $(7 + 3) \\times 2 = 20$."
+            },
+            {
+              "type": "definition",
+              "term": "expression",
+              "definition": "Une suite de symboles (nombres, variables, opérateurs, parenthèses) qui peut être évaluée pour obtenir une valeur.",
+              "example": "$x \\times (y + 2)$ est une expression."
+            },
+            {
+              "type": "display_math",
+              "latex": "7 + 3 \\times 2 = 13"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les expressions deviennent plus intéressantes quand elles contiennent des variables. La valeur de l'expression dépend alors des valeurs actuelles de ces variables. C'est ce qui permet d'écrire des calculs génériques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expressions avec variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que $x \\leftarrow 4$ et $y \\leftarrow 5$. L'expression $x + y \\times 2$ se calcule en remplaçant $x$ par $4$ et $y$ par $5$, puis en appliquant les priorités : $5 \\times 2 = 10$, ensuite $4 + 10 = 14$. Si plus tard $x$ change, la même expression donnera un autre résultat. C'est la puissance des variables : le même texte de programme peut traiter des données différentes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : substituer chaque variable par sa valeur actuelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x$ et $y$ par les nombres stockés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : appliquer les priorités opératoires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplications et divisions avant additions et soustractions, parenthèses d'abord."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : obtenir le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre obtenu est la valeur de l'expression."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x + y \\times 2 = 14"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, pour éviter toute ambiguïté, on utilise des parenthèses même quand elles ne sont pas strictement nécessaires. Cela rend le programme plus lisible et évite les erreurs de priorité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rôle des parenthèses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Compare $a + b \\times c$ et $(a + b) \\times c$. Avec $a=2$, $b=3$, $c=4$, la première donne $2 + 3 \\times 4 = 2 + 12 = 14$. La seconde force l'addition d'abord : $(2 + 3) \\times 4 = 5 \\times 4 = 20$. Les parenthèses modifient donc le résultat. Il est bon de les ajouter quand l'ordre souhaité diffère des règles par défaut."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a + b) \\times c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être certain de ne pas se tromper, on peut tracer l'évaluation pas à pas, comme on le fait pour un calcul à la main. Cette méthode aide à repérer les erreurs de priorité ou de substitution."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Évaluation pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $z \\leftarrow 6$ et l'expression $(z - 2) \\times (z + 1) \\div 2$. Étape 1 : substituer $z$ par $6$ → $(6 - 2) \\times (6 + 1) \\div 2$. Étape 2 : calculer les parenthèses → $4 \\times 7 \\div 2$. Étape 3 : multiplication et division de gauche à droite → $28 \\div 2 = 14$. Le résultat final est $14$. Cette décomposition montre chaque micro‑calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "(z - 2) \\times (z + 1) \\div 2 = 14"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur de l'expression $8 + 4 \\times 3$.",
+              "answer": "20",
+              "hint": "Multiplication avant addition.",
+              "explanation": "On fait $4 \\times 3 = 12$, puis $8 + 12 = 20$."
+            },
+            {
+              "question": "Si $m \\leftarrow 3$ et $n \\leftarrow 7$, quelle est la valeur de $m + n \\times 2$ ?",
+              "answer": "17",
+              "hint": "Remplace les variables, puis applique les priorités.",
+              "explanation": "Substitution : $3 + 7 \\times 2$. Multiplication d'abord : $7 \\times 2 = 14$. Addition : $3 + 14 = 17$."
+            },
+            {
+              "question": "Évalue $(p + q) \\times r$ pour $p=2$, $q=5$, $r=3$.",
+              "answer": "21",
+              "hint": "Calcule d'abord la parenthèse.",
+              "explanation": "Parenthèse : $2 + 5 = 7$. Multiplication : $7 \\times 3 = 21$."
+            },
+            {
+              "question": "Décompose l'évaluation de $(k - 3) \\times (k + 2) \\div 5$ pour $k = 8$.",
+              "answer": "Substitution → (8-3)×(8+2)÷5 = 5×10÷5 = 50÷5 = 10",
+              "hint": "Suis les trois étapes : substitution, parenthèses, puis multiplications/divisions de gauche à droite.",
+              "explanation": "Remplace $k$ par $8$ : $(8-3) \\times (8+2) \\div 5$. Parenthèses : $5 \\times 10 \\div 5$. De gauche à droite : $5 \\times 10 = 50$, puis $50 \\div 5 = 10$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer état.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter l'état mémoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour suivre l'exécution d'un algorithme, on dresse un tableau qui liste toutes les variables et leur valeur après chaque instruction. C'est comme un carnet de bord : à chaque ligne du programme, on note ce qui a changé. Cette technique s'appelle le trace d'état. Elle permet de vérifier que le programme fait ce qu'on attend."
+            },
+            {
+              "type": "definition",
+              "term": "trace d'état",
+              "definition": "Un tableau qui montre la valeur de chaque variable après chaque étape d'un algorithme.",
+              "example": "Ligne 1 : $a=5$ ; Ligne 2 : $a=5, b=12$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "a",
+                "b"
+              ],
+              "rows": [
+                [
+                  "Début",
+                  "",
+                  ""
+                ],
+                [
+                  "a \\leftarrow 5",
+                  "5",
+                  ""
+                ],
+                [
+                  "b \\leftarrow a + 7",
+                  "5",
+                  "12"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, appliquons le trace sur un algorithme un peu plus long, avec une boucle simple. On verra comment la table s'allonge à chaque itération."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un algorithme avec boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère cet algorithme : $i \\leftarrow 1$ ; $s \\leftarrow 0$ ; Tant que $i \\le 3$ faire : $s \\leftarrow s + i$ ; $i \\leftarrow i + 1$ ; Fin tant que. On commence avec $i=1, s=0$. Première itération : $s$ devient $0+1=1$, $i$ devient $2$. Deuxième : $s=1+2=3$, $i=3$. Troisième : $s=3+3=6$, $i=4$. La condition $i \\le 3$ devient fausse, la boucle s'arrête. Le trace montre clairement l'évolution."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Itération",
+                "i",
+                "s"
+              ],
+              "rows": [
+                [
+                  "Avant boucle",
+                  "1",
+                  "0"
+                ],
+                [
+                  "1",
+                  "2",
+                  "1"
+                ],
+                [
+                  "2",
+                  "3",
+                  "3"
+                ],
+                [
+                  "3",
+                  "4",
+                  "6"
+                ],
+                [
+                  "Fin",
+                  "4",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le trace d'état n'est pas seulement un exercice scolaire ; c'est un outil de débogage. Quand un programme ne donne pas le résultat attendu, on compare le trace théorique avec ce que le programme affiche réellement. La première différence révèle l'instruction fautive."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le trace pour déboguer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu aies écrit $s \\leftarrow s + 2$ au lieu de $s \\leftarrow s + i$ dans la boucle précédente. Le trace théorique donnerait $s=2,4,6$ alors que le trace réel (avec $i$) donne $1,3,6$. En comparant les deux tableaux, tu vois dès la première itération que $s$ vaut $2$ au lieu de $1$. L'erreur est localisée immédiatement."
+            },
+            {
+              "type": "display_math",
+              "latex": "s \\leftarrow s + i"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, résumons les trois idées clés de ce cours : une variable est une boîte nommée, l'affectation remplit la boîte en respectant l'ordre droit‑vers‑gauche, et le trace d'état permet de visualiser chaque changement. Avec ces outils, tu peux lire, écrire et corriger des algorithmes simples en toute confiance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as découvert comment nommer une donnée, lui donner une valeur, combiner des valeurs dans des expressions, et suivre pas à pas l'évolution de la mémoire. Chaque notion s'appuie sur la précédente, comme les marches d'un escalier. Continue à t'entraîner avec de petits programmes, trace‑les sur papier, et tu verras la logique s'installer naturellement."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais déclarer une variable et lui affecter une valeur avec $\\leftarrow$.",
+                "Je sais évaluer une expression en respectant les priorités et les parenthèses.",
+                "Je sais construire un tableau de trace d'état pour un algorithme simple.",
+                "Je sais repérer une erreur en comparant le trace attendu et le trace réel."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le trace pour : $x \\leftarrow 10$ ; $y \\leftarrow x - 4$ ; $x \\leftarrow y + 2$.",
+              "answer": "Étape 1 : x=10 ; Étape 2 : x=10, y=6 ; Étape 3 : x=8, y=6",
+              "hint": "Note les valeurs après chaque ligne, en utilisant les valeurs déjà mises à jour.",
+              "explanation": "Après $x \\leftarrow 10$, $x=10$. Ensuite $y \\leftarrow x - 4$ donne $y=6$. Enfin $x \\leftarrow y + 2$ calcule $6+2=8$ et met $x=8$. $y$ reste $6$."
+            },
+            {
+              "question": "Trace l'algorithme : $c \\leftarrow 0$ ; $d \\leftarrow 5$ ; Tant que $d > 0$ faire : $c \\leftarrow c + d$ ; $d \\leftarrow d - 2$ ; Fin tant que.",
+              "answer": "Avant: c=0,d=5 ; It1: c=5,d=3 ; It2: c=8,d=1 ; It3: c=9,d=-1 ; Fin: c=9,d=-1",
+              "hint": "Exécute la boucle tant que la condition est vraie, note $c$ et $d$ à chaque tour.",
+              "explanation": "Initialement $c=0,d=5$. 1er tour : $c=0+5=5$, $d=5-2=3$. 2e tour : $c=5+3=8$, $d=3-2=1$. 3e tour : $c=8+1=9$, $d=1-2=-1$. Condition $d>0$ fausse, boucle stoppe."
+            },
+            {
+              "question": "Dans le trace ci‑dessus, quelle instruction a provoqué le passage de $d$ à $-1$ ?",
+              "answer": "$d \\leftarrow d - 2$ lors de la troisième itération.",
+              "hint": "Regarde la dernière ligne du tableau avant la fin.",
+              "explanation": "À la troisième itération, $d$ valait $1$. L'instruction $d \\leftarrow d - 2$ calcule $1-2=-1$ et stocke $-1$ dans $d$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

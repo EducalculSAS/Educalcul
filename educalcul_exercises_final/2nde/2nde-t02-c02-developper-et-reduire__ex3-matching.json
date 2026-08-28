@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Réduire",
+  "title": "Entraînement : Réduire des expressions algébriques",
+  "blocks": [
+    {
+      "title": "Réduction simple : regrouper les termes semblables",
+      "content": "Relie chaque expression à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2x + 3x + 5$",
+          "right": "$5x + 5$"
+        },
+        {
+          "left": "$4x^2 - 2x^2 + x$",
+          "right": "$2x^2 + x$"
+        },
+        {
+          "left": "$7 - 3x + 2x - 1$",
+          "right": "$6 - x$"
+        },
+        {
+          "left": "$5y^2 + 3y - 2y^2 - y$",
+          "right": "$3y^2 + 2y$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour réduire une expression, on regroupe les termes qui ont la même partie littérale (même variable avec le même exposant).\\n- $2x + 3x = 5x$, donc $2x + 3x + 5 = 5x + 5$.\\n- $4x^2 - 2x^2 = 2x^2$, donc $4x^2 - 2x^2 + x = 2x^2 + x$.\\n- $-3x + 2x = -x$ et $7 - 1 = 6$, donc $7 - 3x + 2x - 1 = 6 - x$.\\n- $5y^2 - 2y^2 = 3y^2$ et $3y - y = 2y$, donc $5y^2 + 3y - 2y^2 - y = 3y^2 + 2y$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réduction après développement",
+      "content": "Relie chaque expression développée à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3(2x + 1) - 4(x - 2)$",
+          "right": "$2x + 11$"
+        },
+        {
+          "left": "$5(x - 3) + 2(2x + 1)$",
+          "right": "$9x - 13$"
+        },
+        {
+          "left": "$x(2x + 3) - 2x(x - 1)$",
+          "right": "$5x$"
+        },
+        {
+          "left": "$(x + 2)(x - 2) - (x - 1)^2$",
+          "right": "$2x - 5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut d'abord développer chaque produit puis regrouper les termes semblables.\\n- $3(2x+1)-4(x-2) = 6x+3-4x+8 = 2x+11$.\\n- $5(x-3)+2(2x+1) = 5x-15+4x+2 = 9x-13$.\\n- $x(2x+3)-2x(x-1) = 2x^2+3x-2x^2+2x = 5x$.\\n- En utilisant les identités remarquables : $(x+2)(x-2)=x^2-4$ et $(x-1)^2=x^2-2x+1$. La différence donne $x^2-4-(x^2-2x+1) = x^2-4-x^2+2x-1 = 2x-5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification de fractions algébriques",
+      "content": "Relie chaque fraction à sa forme simplifiée (pour les valeurs admises de la variable).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\frac{6x^2}{3x}$",
+          "right": "$2x$"
+        },
+        {
+          "left": "$\\frac{x^2-4}{x+2}$",
+          "right": "$x-2$"
+        },
+        {
+          "left": "$\\frac{3x+6}{x+2}$",
+          "right": "$3$"
+        },
+        {
+          "left": "$\\frac{x^2+5x+6}{x+3}$",
+          "right": "$x+2$"
+        }
+      ],
+      "items": [],
+      "explanation": "On factorise numérateur et dénominateur pour simplifier par les facteurs communs non nuls.\\n- $\\frac{6x^2}{3x} = \\frac{3x \\times 2x}{3x} = 2x$ (pour $x \\neq 0$).\\n- $x^2-4 = (x-2)(x+2)$, donc $\\frac{x^2-4}{x+2} = \\frac{(x-2)(x+2)}{x+2} = x-2$ (pour $x \\neq -2$).\\n- $3x+6 = 3(x+2)$, donc $\\frac{3x+6}{x+2} = \\frac{3(x+2)}{x+2} = 3$ (pour $x \\neq -2$).\\n- $x^2+5x+6 = (x+2)(x+3)$, donc $\\frac{x^2+5x+6}{x+3} = \\frac{(x+2)(x+3)}{x+3} = x+2$ (pour $x \\neq -3$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

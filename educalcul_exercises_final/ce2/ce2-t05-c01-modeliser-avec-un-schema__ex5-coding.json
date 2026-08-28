@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Choisir barres ou dessin",
+  "title": "Choisir entre barres et dessin : algorithmes progressifs",
+  "blocks": [
+    {
+      "title": "Choix de la représentation simple",
+      "content": "Voici un problème : « Marie a $12$ pommes. Elle en donne $5$ à son frère. Combien lui reste-t-il ? » Écris un algorithme en langage naturel qui explique comment choisir entre un schéma en barres et un dessin pour résoudre ce problème.",
+      "correctAnswer": "Algorithme :\\n1. Lire le problème et identifier les grandeurs connues ($12$ pommes au départ, $5$ données).\\n2. Repérer l'opération demandée (soustraction : reste = total - donné).\\n3. Si le problème met en relation une quantité totale et une partie à retirer, choisir le schéma en barres (barre totale, partie retirée, partie restante).\\n4. Si le problème demande de représenter des objets concrets un par un (par exemple dessiner chaque pomme), choisir un dessin.\\n5. Ici, comme on compare une totalité et une partie, le schéma en barres est plus adapté.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème présente une quantité totale ($12$) et une partie soustraite ($5$). La modélisation en barres permet de visualiser la relation partie‑partie‑total et de trouver la partie manquante par soustraction. Un dessin serait possible mais moins efficace pour ce type de structure additive.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix avec plusieurs grandeurs",
+      "content": "Voici un problème : « Dans une classe, il y a $18$ garçons et $14$ filles. Combien y a-t-il d'élèves au total ? » Écris un algorithme qui décide si l'on doit utiliser des barres ou un dessin pour représenter la situation.",
+      "correctAnswer": "Algorithme :\\n1. Lire le problème et relever les deux quantités connues ($18$ garçons, $14$ filles).\\n2. Identifier la question : trouver le total (addition de deux groupes disjoints).\\n3. Vérifier si les groupes sont de même nature (élèves) et s'ils forment un tout sans chevauchement.\\n4. Si oui, utiliser un schéma en barres : une barre pour les garçons, une barre pour les filles, une barre totale qui les réunit.\\n5. Si le problème demandait de montrer chaque élève individuellement, un dessin serait pertinent, mais pour un total numérique le schéma en barres est préféré.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il s'agit d'une addition de deux ensembles disjoints (garçons et filles). Le schéma en barres montre clairement la composition du total à partir de deux parties, ce qui facilite le calcul $18 + 14$. Le dessin serait trop chargé et n'apporterait pas de structure mathématique supplémentaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme sous forme de code",
+      "content": "Écris un court programme en pseudo‑code (style Python) qui reçoit le type de problème (« addition », « soustraction », « comparaison », « partage ») et affiche « barres » ou « dessin » selon la règle apprise en classe.",
+      "correctAnswer": "def choisir_representation(type_probleme):\\n    if type_probleme in (\"addition\", \"soustraction\", \"comparaison\"):\\n        return \"barres\"\\n    elif type_probleme == \"partage\":\\n        return \"dessin\"\\n    else:\\n        return \"inconnu\"\\n\\n# Exemple d'utilisation\\nprint(choisir_representation(\"addition\"))   # affiche barres\\nprint(choisir_representation(\"partage\"))    # affiche dessin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En CE2, les problèmes d'addition, de soustraction et de comparaison se modélisent efficacement avec des barres (partie‑partie‑total ou comparaison de deux barres). Les problèmes de partage (répartition équitable) sont plus naturels à représenter par un dessin ou un diagramme de partage (cercles, groupes). Le pseudo‑code traduit cette règle de décision.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

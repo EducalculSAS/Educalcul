@@ -1,0 +1,421 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.822457+00:00",
+  "id": 427,
+  "code": "4eme-t02-c03",
+  "title": "Équations du premier degré",
+  "description": "Cours structuré Educalcul : Équations du premier degré.",
+  "subject": "Calcul littéral et équations",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Calcul littéral et équations",
+    "titre_du_cours": "Équations du premier degré",
+    "objectif_global": "Équations du premier degré",
+    "mini_lecons_imposees": [
+      "Égalité.",
+      "Opérations sur les deux membres.",
+      "Vérifier solution."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et équations",
+      "lessons": [
+        {
+          "title": "Égalité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une égalité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une égalité est une phrase mathématique qui affirme que deux expressions ont la même valeur. Par exemple, $7 = 7$ est vraie, tout comme $3 + 4 = 7$. Trois propriétés fondamentales la gouvernent : la réflexivité (toute expression est égale à elle-même), la symétrie (si $a = b$ alors $b = a$) et la transitivité (si $a = b$ et $b = c$ alors $a = c$). Ces règles permettent de transformer une égalité sans en changer le sens, ce qui est la base de toute résolution d'équation."
+            },
+            {
+              "type": "definition",
+              "term": "égalité",
+              "definition": "Relation qui unit deux expressions ayant la même valeur numérique. On l'écrit avec le symbole $=$.",
+              "example": "$5 + 2 = 7$ est une égalité vraie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre une équation simple comme $x + 3 = 7$, on cherche la valeur de $x$ qui rend l'égalité exacte. L'idée centrale est de faire la même chose des deux côtés pour conserver l'équilibre. Si on retire $3$ à gauche, il faut aussi retirer $3$ à droite, ce qui donne $x = 4$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'opération qui touche l'inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $x + 3 = 7$, l'inconnue $x$ est augmentée de $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer l'opération inverse des deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On soustrait $3$ à gauche et à droite : $x + 3 - 3 = 7 - 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce qui donne $x = 4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais isoler l'inconnue, voyons comment vérifier que la valeur trouvée est bien la bonne. La vérification consiste à remplacer $x$ par le nombre obtenu dans l'équation d'origine et à constater que les deux membres sont égaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "x+3=7 \\Rightarrow 4+3=7 \\Rightarrow 7=7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un exemple où l'inconnue est multipliée. Dans $2x = 10$, l'opération inverse est la division par $2$. On divise les deux membres par $2$ et on obtient $x = 5$. Une rapide substitution confirme que $2 \\times 5 = 10$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'inconnue $x$ est multipliée par $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser les deux membres par $2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\frac{2x}{2} = \\frac{10}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = 5$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Laquelle des égalités suivantes est fausse ? $6 = 6$, $4+2 = 7$, $9-3 = 6$.",
+              "answer": "$4+2 = 7$",
+              "hint": "Calcule chaque membre de l'égalité.",
+              "explanation": "$4+2$ vaut $6$, pas $7$. Donc $4+2 = 7$ est fausse."
+            },
+            {
+              "question": "Résous l'équation $x + 5 = 12$.",
+              "answer": "$x = 7$",
+              "hint": "Soustrais $5$ des deux côtés.",
+              "explanation": "On fait $x + 5 - 5 = 12 - 5$, ce qui donne $x = 7$."
+            },
+            {
+              "question": "Vérifie que $x = 5$ est bien la solution de $2x = 10$.",
+              "answer": "Vrai",
+              "hint": "Remplace $x$ par $5$ dans l'équation.",
+              "explanation": "$2 \\times 5 = 10$, les deux membres sont égaux, donc la solution est correcte."
+            }
+          ]
+        },
+        {
+          "title": "Opérations sur les deux membres.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Opérations autorisées sur les deux membres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une égalité est vraie, on peut ajouter, soustraire, multiplier ou diviser le même nombre des deux côtés sans la fausser. C'est le principe de l'équilibre : imagine une balance à deux plateaux, si on pose le même poids sur chaque plateau, l'équilibre ne change pas. Attention toutefois : la division par zéro est interdite, car elle n'a pas de sens."
+            },
+            {
+              "type": "definition",
+              "term": "opération sur les deux membres",
+              "definition": "Action consistant à appliquer la même opération arithmétique (addition, soustraction, multiplication, division par un nombre non nul) aux deux côtés d'une égalité.",
+              "example": "Si $a = b$, alors $a + 4 = b + 4$ et $\\frac{a}{2} = \\frac{b}{2}$ (si $2 \\neq 0$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'équation $3x - 4 = 11$. L'inconnue $x$ est d'abord multipliée par $3$, puis on retranche $4$. Pour la dégager, on commence par annuler la soustraction : on ajoute $4$ des deux côtés. Cela donne $3x = 15$. Ensuite, on annule la multiplication en divisant par $3$, ce qui donne $x = 5$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Éliminer le terme constant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $4$ à gauche et à droite : $3x - 4 + 4 = 11 + 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $3x = 15$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Isoler $x$ par division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise les deux membres par $3$ : $\\frac{3x}{3} = \\frac{15}{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = 5$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'équation contient des fractions. Par exemple $\\frac{x}{4} + 2 = 5$. On commence par soustraire $2$ des deux côtés, ce qui donne $\\frac{x}{4} = 3$. Ensuite, on multiplie par $4$ pour lever le dénominateur : $x = 12$. La multiplication par le dénominateur est une division inversée, toujours autorisée car $4 \\neq 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{x}{4}+2=5 \\Rightarrow \\frac{x}{4}=3 \\Rightarrow x=12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent est d'oublier la condition de non‑nullité lors d'une division. Si l'équation est $5x = 0$, on divise par $5$ (non nul) et on trouve $x = 0$. Mais si on avait $0 \\cdot x = 5$, la division par $0$ serait impossible et l'équation n'a pas de solution. Garde toujours en tête : on ne divise jamais par une expression qui pourrait être nulle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le diviseur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant de diviser, assure‑toi que le nombre ou l'expression n'est pas zéro."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer la division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le diviseur est non nul, divise les deux membres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous $4x + 7 = 23$.",
+              "answer": "$x = 4$",
+              "hint": "Commence par soustraire $7$ des deux côtés.",
+              "explanation": "$4x + 7 - 7 = 23 - 7$ donne $4x = 16$. En divisant par $4$, $x = 4$."
+            },
+            {
+              "question": "Trouve $x$ dans $\\frac{x}{3} - 1 = 2$.",
+              "answer": "$x = 9$",
+              "hint": "Ajoute $1$ puis multiplie par $3$.",
+              "explanation": "$\\frac{x}{3} - 1 + 1 = 2 + 1$ donne $\\frac{x}{3} = 3$. Multiplie par $3$ : $x = 9$."
+            },
+            {
+              "question": "Pourquoi ne peut‑on pas diviser les deux membres de $0 \\cdot x = 7$ par $0$ ?",
+              "answer": "La division par zéro n'est pas définie.",
+              "hint": "Rappelle‑toi la règle : on ne divise jamais par zéro.",
+              "explanation": "Diviser par $0$ n'a pas de sens mathématique, donc l'équation n'a pas de solution."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier solution.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier une solution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir résolu une équation, il est indispensable de vérifier que la valeur trouvée satisfait bien l'équation d'origine. Cette étape évite les erreurs de calcul ou les solutions parasites qui peuvent apparaître quand on multiplie ou divise par une expression contenant l'inconnue. La vérification se fait par substitution : on remplace l'inconnue par la valeur proposée et on calcule les deux membres."
+            },
+            {
+              "type": "definition",
+              "term": "vérification",
+              "definition": "Procédure qui consiste à substituer la valeur trouvée à l'inconnue dans l'équation initiale pour s'assurer que l'égalité reste vraie.",
+              "example": "Pour $x = 4$ dans $2x + 1 = 9$, on calcule $2 \\times 4 + 1 = 9$, ce qui est vrai."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'équation $3(x - 2) = 9$. Après distribution, on a $3x - 6 = 9$. En ajoutant $6$, $3x = 15$, puis $x = 5$. Pour vérifier, on replace $x$ par $5$ dans l'équation de départ : $3(5 - 2) = 3 \\times 3 = 9$. Les deux membres donnent $9$, la solution est correcte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'équation originale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde l'équation de départ sous les yeux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Substituer la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque occurrence de l'inconnue par le nombre trouvé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les deux membres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les opérations dans l'ordre habituel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux résultats sont égaux, la solution est validée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une manipulation algébrique introduit une solution qui ne convient pas à l'équation de départ. C'est le cas quand on multiplie les deux membres par une expression qui peut être nulle. Par exemple, en partant de $\\frac{x}{x-1} = 2$, on multiplie par $x-1$ et on obtient $x = 2x - 2$, soit $x = 2$. Mais si on teste $x = 1$, le dénominateur initial devient zéro, ce qui est impossible. La vérification révèle donc que $x = 1$ n'est pas acceptable, alors que $x = 2$ l'est."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{x}{x-1}=2 \\Rightarrow x=2x-2 \\Rightarrow x=2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, essaie de vérifier les solutions proposées sans refaire toute la résolution. C'est un excellent moyen de gagner du temps lors d'un contrôle. Rappelle‑toi : une vérification bien faite vaut mieux qu'une résolution rapide mais non contrôlée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une égalité et citer ses trois propriétés.",
+                "Je sais appliquer la même opération aux deux membres d'une équation.",
+                "Je sais résoudre une équation du premier degré à une inconnue.",
+                "Je sais vérifier une solution par substitution.",
+                "Je repère les pièges comme la division par zéro ou les solutions parasites."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si $x = 3$ est solution de $2x + 4 = 10$.",
+              "answer": "Oui",
+              "hint": "Remplace $x$ par $3$ et calcule.",
+              "explanation": "$2 \\times 3 + 4 = 6 + 4 = 10$, l'égalité est vraie."
+            },
+            {
+              "question": "L'équation $\\frac{x}{x-2} = 3$ admet‑elle $x = 2$ comme solution ?",
+              "answer": "Non",
+              "hint": "Regarde le dénominateur quand $x = 2$.",
+              "explanation": "Pour $x = 2$, le dénominateur $x-2$ vaut $0$, la fraction n'est pas définie. Donc $x = 2$ n'est pas une solution."
+            },
+            {
+              "question": "Après avoir résolu $5(x-1) = 20$, tu trouves $x = 5$. Vérifie cette solution.",
+              "answer": "Correcte",
+              "hint": "Substitue $5$ dans l'équation de départ.",
+              "explanation": "$5(5-1) = 5 \\times 4 = 20$, les deux membres sont égaux."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

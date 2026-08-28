@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Bilan - Géométrie plane 6e",
+  "title": "Bilan - Géométrie plane 6e",
+  "questions": [
+    {
+      "text": "Quelle est la mesure de l'angle représenté sur la figure ?",
+      "options": [
+        "$90°$",
+        "$45°$",
+        "$60°$",
+        "$120°$"
+      ],
+      "correctAnswer": "$90°$",
+      "explanation": "L'angle affiché est un angle droit, sa mesure est $90°$. Les autres valeurs correspondent à des angles aigus ou obtus.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Angle droit"
+      }
+    },
+    {
+      "text": "Dans un triangle, deux angles mesurent $50°$ et $70°$. Quelle est la mesure du troisième angle ?",
+      "options": [
+        "$60°$",
+        "$50°$",
+        "$70°$",
+        "$80°$"
+      ],
+      "correctAnswer": "$60°$",
+      "explanation": "La somme des angles d'un triangle est $180°$. Le troisième angle vaut $180° - 50° - 70° = 60°$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les quadrilatères suivants, lequel a quatre côtés égaux et quatre angles droits ?",
+      "options": [
+        "Carré",
+        "Rectangle",
+        "Losange",
+        "Parallélogramme"
+      ],
+      "correctAnswer": "Carré",
+      "explanation": "Le carré est le seul quadrilatère qui possède à la fois quatre côtés de même longueur et quatre angles droits. Le rectangle a quatre angles droits mais pas forcément quatre côtés égaux, le losange a quatre côtés égaux mais pas d'angles droits, le parallélogramme n'a aucune de ces deux propriétés garanties.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le rayon d'un cercle mesure $5$ cm, quelle est la longueur de son diamètre ?",
+      "options": [
+        "$10$ cm",
+        "$5$ cm",
+        "$15$ cm",
+        "$2,5$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le diamètre d'un cercle est le double du rayon : $d = 2 × r = 2 × 5 = 10$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de rayon 5 cm"
+      }
+    },
+    {
+      "text": "Pour tracer la médiatrice d'un segment, quel outil utilise-t-on en plus de la règle ?",
+      "options": [
+        "Le compas",
+        "Le rapporteur",
+        "L'équerre",
+        "Le compas et l'équerre"
+      ],
+      "correctAnswer": "Le compas",
+      "explanation": "La construction de la médiatrice nécessite la règle pour tracer le segment et le compas pour reporter des longueurs égales de part et d'autre du segment. Le rapporteur et l'équerre ne sont pas indispensables pour cette construction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

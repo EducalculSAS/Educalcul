@@ -1,0 +1,445 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.815187+00:00",
+  "id": 425,
+  "code": "4eme-t02-c01",
+  "title": "Développer et réduire",
+  "description": "Cours structuré Educalcul : Développer et réduire.",
+  "subject": "Calcul littéral et équations",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Calcul littéral et équations",
+    "titre_du_cours": "Développer et réduire",
+    "objectif_global": "Développer et réduire",
+    "mini_lecons_imposees": [
+      "Distributivité.",
+      "Double distributivité si prévue.",
+      "Réduire."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et équations",
+      "lessons": [
+        {
+          "title": "Distributivité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La distributivité : qu’est‑ce que c’est ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon sur la distributivité, une règle fondamentale qui te permet de transformer un produit contenant une somme ou une différence en une somme de produits. Imagine que tu as trois sacs, chacun contenant quatre pommes et cinq oranges. Au lieu de compter tous les fruits sac par sac, tu peux multiplier le nombre de sacs par le nombre de pommes, puis par le nombre d’oranges, et ajouter les deux résultats. C’est exactement ce que fait la distributivité : elle répartit la multiplication sur chaque terme à l’intérieur des parenthèses."
+            },
+            {
+              "type": "definition",
+              "term": "distributivité",
+              "definition": "Propriété qui permet de multiplier un nombre par une somme ou une différence en le multipliant par chaque terme puis en ajoutant ou soustrayant les résultats.",
+              "example": "$3\\times(4+5)=3\\times4+3\\times5$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le dire avec des symboles, la distributivité s’écrit $a\\times(b+c)=a\\times b+a\\times c$. Le coefficient $a$ est multiplié par chaque terme qui se trouve entre les parenthèses, et les deux produits obtenus sont ensuite additionnés. Cette écriture compacte évite de devoir ouvrir les parenthèses à chaque fois et rend les calculs plus rapides, surtout quand les nombres deviennent grands ou quand des lettres remplacent les chiffres."
+            },
+            {
+              "type": "display_math",
+              "latex": "a\\times(b+c)=a\\times b+a\\times c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde ce qui se passe quand une soustraction se cache à l’intérieur des parenthèses, car la règle reste exactement la même : le signe moins est traité comme l’addition d’un nombre négatif, donc la multiplication se distribue aussi sur la différence."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l’exemple $2\\times(7-3)$. D’après la distributivité, on multiplie 2 par 7, puis 2 par 3, et on soustrait le second produit du premier. Concrètement, $2\\times7=14$ et $2\\times3=6$, donc $14-6=8$. Si tu calcules d’abord la parenthèse, $7-3=4$, puis $2\\times4=8$, tu retrouves le même résultat, ce qui prouve que la règle fonctionne aussi avec le signe moins."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\times(7-3)=2\\times7-2\\times3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec des lettres, car c’est là que la distributivité devient vraiment puissante pour l’algèbre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit l’expression $x(y+z)$. Ici $x$ joue le rôle du coefficient qui doit être multiplié par $y$ et par $z$. En appliquant la règle, on obtient $xy+xz$. Note bien que l’ordre des facteurs n’a pas d’importance grâce à la commutativité de la multiplication, donc $xy$ et $yx$ désignent le même produit. Cette écriture te servira tout au long du collège pour développer des expressions littérales."
+            },
+            {
+              "type": "display_math",
+              "latex": "x(y+z)=xy+xz"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un cas subtil à bien maîtriser : quand le coefficient qui se trouve devant la parenthèse est lui‑même négatif, les signes des produits changent et il faut rester vigilant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde $-4(a+b)$. Le moins devant le 4 signifie que l’on multiplie $-4$ par $a$ et par $b$. Cela donne $-4a-4b$. Si tu oublies le signe moins sur le second terme, tu obtiendras $-4a+4b$, ce qui est faux. Une astuce pour ne pas te tromper : écris d’abord $-4\\times a$ et $-4\\times b$ séparément, puis regroupe les signes."
+            },
+            {
+              "type": "display_math",
+              "latex": "-4(a+b)=-4a-4b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe l'expression $3\\times(4+5)$.",
+              "answer": "$27$",
+              "hint": "Multiplie 3 par chaque terme à l'intérieur des parenthèses.",
+              "explanation": "On calcule $3\\times4=12$ et $3\\times5=15$, puis $12+15=27$."
+            },
+            {
+              "question": "Développe $2\\times(7-3)$.",
+              "answer": "$8$",
+              "hint": "Distribue la multiplication sur la soustraction.",
+              "explanation": "$2\\times7=14$, $2\\times3=6$, $14-6=8$."
+            },
+            {
+              "question": "Écris sous forme développée $x(y+z)$.",
+              "answer": "$xy+xz$",
+              "hint": "Applique la distributivité avec une lettre.",
+              "explanation": "Le coefficient $x$ multiplie $y$ et $z$."
+            },
+            {
+              "question": "Développe $-4(a+b)$.",
+              "answer": "$-4a-4b$",
+              "hint": "Attention au signe moins devant le 4.",
+              "explanation": "$-4\\times a=-4a$ et $-4\\times b=-4b$."
+            }
+          ]
+        },
+        {
+          "title": "Double distributivité si prévue.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La double distributivité : produit de deux sommes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons découvrir la double distributivité, qui permet de développer le produit de deux sommes ou de deux différences. Imagine que tu veux calculer la surface d’un rectangle dont les longueurs sont elles‑mêmes des sommes, par exemple $(a+b)$ mètres de large et $(c+d)$ mètres de long. La surface totale se trouve en multipliant chaque terme de la première somme par chaque terme de la seconde, ce qui donne quatre produits qu’on additionne ensuite."
+            },
+            {
+              "type": "definition",
+              "term": "double distributivité",
+              "definition": "Règle qui permet de développer un produit de deux parenthèses en multipliant chaque terme de la première par chaque terme de la seconde.",
+              "example": "$(a+b)(c+d)=ac+ad+bc+bd$"
+            },
+            {
+              "type": "paragraph",
+              "content": "En notation algébrique, la règle s’écrit $(a+b)(c+d)=ac+ad+bc+bd$. On appelle souvent cette méthode « FOIL » en référence aux initiales anglaises First, Outer, Inner, Last, qui désignent l’ordre des quatre multiplications. Cette mnemonic aide à ne rien oublier, mais le principe reste purement la distributivité appliquée deux fois de suite."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(c+d)=ac+ad+bc+bd"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t’aider à ne jamais sauter une multiplication, voici une procédure pas à pas que tu pourras suivre à chaque fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : First",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les premiers termes de chaque parenthèse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Outer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le terme extérieur gauche par le terme extérieur droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Inner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le terme intérieur gauche par le terme intérieur droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Last",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les derniers termes de chaque parenthèse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Additionne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les quatre produits en respectant les signes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons maintenant la méthode sur des nombres concrets pour vérifier que le résultat correspond bien au produit direct."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons $(2+3)(4+5)$. Selon la double distributivité, on obtient $2\\times4+2\\times5+3\\times4+3\\times5$. Cela fait $8+10+12+15=45$. Si on additionne d’abord les parenthèses, $(2+3)=5$ et $(4+5)=9$, puis $5\\times9=45$, le même résultat. Cette vérification numérique te montre que la règle est fiable."
+            },
+            {
+              "type": "display_math",
+              "latex": "(2+3)(4+5)=2\\times4+2\\times5+3\\times4+3\\times5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La double distributivité fonctionne aussi quand des signes moins apparaissent, il faut simplement respecter les règles des signes à chaque multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développons $(x-2)(y+3)$. On multiplie $x$ par $y$ (premier), $x$ par $3$ (extérieur), $-2$ par $y$ (intérieur) et $-2$ par $3$ (dernier). Cela donne $xy+3x-2y-6$. Remarque que le produit des deux termes négatifs $-2\\times3$ donne $-6$, tandis que $-2\\times y$ donne $-2y$. En respectant l’ordre FOIL, tu évites les erreurs de signe."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x-2)(y+3)=xy+3x-2y-6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de développer $(m+n)(p+q)$ en suivant les mêmes étapes, pour t’assurer que la méthode est bien acquise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe $(a+b)(c+d)$ en utilisant la double distributivité.",
+              "answer": "$ac+ad+bc+bd$",
+              "hint": "Multiplie chaque terme de la première parenthèse par chaque terme de la seconde.",
+              "explanation": "First: $a\\times c$, Outer: $a\\times d$, Inner: $b\\times c$, Last: $b\\times d$."
+            },
+            {
+              "question": "En suivant la méthode FOIL, développe $(m+n)(p+q)$.",
+              "answer": "$mp+mq+np+nq$",
+              "hint": "First, Outer, Inner, Last.",
+              "explanation": "First $m\\times p$, Outer $m\\times q$, Inner $n\\times p$, Last $n\\times q$."
+            },
+            {
+              "question": "Calcule $(2+3)(4+5)$ en développant.",
+              "answer": "$45$",
+              "hint": "Développe puis additionne les quatre produits.",
+              "explanation": "$2\\times4=8$, $2\\times5=10$, $3\\times4=12$, $3\\times5=15$, somme $45$."
+            },
+            {
+              "question": "Développe $(x-2)(y+3)$.",
+              "answer": "$xy+3x-2y-6$",
+              "hint": "Respecte les signes lors de chaque multiplication.",
+              "explanation": "First $x\\times y=xy$, Outer $x\\times3=3x$, Inner $-2\\times y=-2y$, Last $-2\\times3=-6$."
+            }
+          ]
+        },
+        {
+          "title": "Réduire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réduire une expression littérale"
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière leçon de ce cours porte sur la réduction d’une expression littérale, c’est‑à‑dire le fait de regrouper les termes semblables pour obtenir une écriture plus courte et plus claire. Imagine que tu as trois boîtes de crayons bleus et cinq boîtes de crayons rouges, puis tu reçois encore deux boîtes bleues et quatre boîtes rouges. Au lieu de lister chaque boîte, tu peux dire que tu as $3+2=5$ boîtes bleues et $5+4=9$ boîtes rouges. En algèbre, on fait exactement la même chose avec les termes qui portent la même lettre."
+            },
+            {
+              "type": "definition",
+              "term": "réduire",
+              "definition": "Regrouper les termes semblables d’une expression en additionnant ou soustrayant leurs coefficients.",
+              "example": "$3x+5x=8x$"
+            },
+            {
+              "type": "definition",
+              "term": "termes semblables",
+              "definition": "Termes qui ont exactement la même partie littérale (même lettre, même exposant).",
+              "example": "$2a$ et $-4a$ sont semblables ; $3b$ et $5b$ le sont aussi."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réduire, on identifie d’abord les termes qui ont exactement la même partie littérale, c’est‑à‑dire la même lettre élevée à la même puissance. Ensuite, on additionne ou on soustrait leurs coefficients numériques. Par exemple, $3x+5x$ devient $(3+5)x=8x$. Si un terme n’a pas de partenaire semblable, il reste tel quel dans l’expression finale."
+            },
+            {
+              "type": "display_math",
+              "latex": "3x+5x=8x"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une méthode simple en trois étapes que tu pourras appliquer systématiquement pour réduire n’importe quelle expression littérale sans oublier de terme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Souligne ou surligne les termes qui ont la même partie littérale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque groupe, additionne les nombres devant la lettre (attention aux signes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réécrire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l’expression réduite en mettant chaque groupe sous la forme coefficient × lettre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant sur une expression qui contient plusieurs termes différents, certains positifs, d’autres négatifs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère $2a+3b-4a+5b$. Les termes en $a$ sont $2a$ et $-4a$ ; leur somme est $(-2)a$. Les termes en $b$ sont $3b$ et $5b$ ; leur somme est $8b$. L’expression réduite s’écrit donc $-2a+8b$. Note que l’ordre des termes n’a pas d’importance, tu peux écrire $8b-2a$ tout aussi bien."
+            },
+            {
+              "type": "display_math",
+              "latex": "2a+3b-4a+5b=-2a+8b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, il faut d’abord développer des parenthèses avant de pouvoir réduire, comme dans l’exemple suivant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développe et réduis $3(x+2)+4(x-1)$. D’abord, utilise la distributivité sur chaque produit : $3x+6+4x-4$. Ensuite, regroupe les termes en $x$ : $3x+4x=7x$, et les constants : $6-4=2$. Le résultat final est $7x+2$. Cette deux‑étape (développer puis réduire) est la routine standard pour simplifier toute expression algébrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "3(x+2)+4(x-1)=3x+6+4x-4=7x+2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, essaie de réduire $4m-7n+2m+3n$ en appliquant la méthode en trois étapes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer une expression avec la distributivité simple.",
+                "Je sais appliquer la double distributivité (FOIL).",
+                "Je sais réduire une expression en regroupant les termes semblables.",
+                "Je sais développer puis réduire une expression contenant des parenthèses."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réduis $3x+5x$.",
+              "answer": "$8x$",
+              "hint": "Additionne les coefficients des termes semblables.",
+              "explanation": "$3+5=8$, donc $8x$."
+            },
+            {
+              "question": "Réduis $2a+3b-4a+5b$.",
+              "answer": "$-2a+8b$",
+              "hint": "Regroupe les $a$ entre eux et les $b$ entre eux.",
+              "explanation": "$2a-4a=-2a$, $3b+5b=8b$."
+            },
+            {
+              "question": "Réduis $4m-7n+2m+3n$.",
+              "answer": "$6m-4n$",
+              "hint": "Mets ensemble les $m$ et les $n$.",
+              "explanation": "$4m+2m=6m$, $-7n+3n=-4n$."
+            },
+            {
+              "question": "Développe puis réduis $3(x+2)+4(x-1)$.",
+              "answer": "$7x+2$",
+              "hint": "Distribue d’abord, puis regroupe les termes en $x$ et les nombres.",
+              "explanation": "$3x+6+4x-4 = 7x+2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

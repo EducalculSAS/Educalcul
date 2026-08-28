@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Lire des étapes",
+  "title": "Lire des étapes et écrire des algorithmes",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme simple",
+      "content": "Un robot se trouve sur une grille. Il effectue les étapes suivantes : avance de trois cases, tourne à droite, avance de deux cases, tourne à gauche, avance d'une case. Écris l'algorithme correspondant en utilisant les instructions AVANCE, TOURNE_DROITE, TOURNE_GAUCHE.",
+      "correctAnswer": "AVANCE $3$\\nTOURNE_DROITE\\nAVANCE $2$\\nTOURNE_GAUCHE\\nAVANCE $1$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme retranscrit exactement la séquence des étapes : le robot avance de trois cases, puis tourne à droite, avance de deux cases, tourne à gauche et enfin avance d'une case. Chaque instruction est écrite sur une ligne.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Utiliser une boucle pour répéter une séquence",
+      "content": "Un robot part du point de départ. Il doit répéter quatre fois la séquence suivante : avance de deux cases, tourne à droite. Écris l'algorithme en utilisant l'instruction REPETE.",
+      "correctAnswer": "REPETE $4$ FOIS\\n    AVANCE $2$\\n    TOURNE_DROITE\\nFIN REPETE",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme la même séquence de deux instructions est répétée quatre fois, on utilise une boucle REPETE. Le nombre de répétitions est quatre. À l'intérieur de la boucle, on place les instructions AVANCE $2$ et TOURNE_DROITE. La boucle se termine par FIN REPETE.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un algorithme pour tracer un rectangle",
+      "content": "On veut programmer un robot pour qu'il trace un rectangle de longueur quatre cases et de largeur deux cases. Le robot commence par avancer le long de la longueur, puis tourne à droite, avance le long de la largeur, tourne à droite, et ainsi de suite jusqu'à refermer le rectangle. Écris l'algorithme en utilisant deux boucles REPETE pour éviter de répéter les mêmes instructions.",
+      "correctAnswer": "REPETE $2$ FOIS\\n    AVANCE $4$\\n    TOURNE_DROITE\\n    AVANCE $2$\\n    TOURNE_DROITE\\nFIN REPETE",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un rectangle a deux longueurs et deux largeurs. On peut répéter deux fois le bloc qui trace une longueur et une largeur : AVANCE $4$ (longueur), TOURNE_DROITE, AVANCE $2$ (largeur), TOURNE_DROITE. Après deux répétitions, le rectangle est fermé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

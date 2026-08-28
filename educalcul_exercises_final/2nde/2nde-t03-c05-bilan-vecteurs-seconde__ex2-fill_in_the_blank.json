@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Checklist",
+  "title": "Bilan Vecteurs : Checklist essentielle",
+  "blocks": [
+    {
+      "title": "1. Égalité de vecteurs",
+      "content": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont égaux s'ils ont la même {{1}}, le même {{2}} et la même {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "direction",
+        "sens",
+        "norme|longueur"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux vecteurs sont égaux si et seulement s'ils ont la même direction (droites porteuses parallèles ou confondues), le même sens (vers le même côté sur la droite) et la même norme (longueur). C'est la définition fondamentale de l'égalité vectorielle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "2. Coordonnées et opérations",
+      "content": "Dans un repère, le vecteur $\\vec{AB}$ a pour coordonnées {{1}}. La relation de Chasles s'écrit $\\vec{AB} + \\vec{BC} =$ {{2}}. Si $\\vec{u} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$, alors $3\\vec{u} =$ {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "$x_B - x_A ; y_B - y_A$|$x_B-x_A;y_B-y_A$",
+        "$\\vec{AC}$",
+        "$\\begin{pmatrix} 6 \\\\ -3 \\end{pmatrix}$|$\\left(\\begin{smallmatrix}6\\\\-3\\end{smallmatrix}\\right)$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées de $\\vec{AB}$ s'obtiennent par différence des coordonnées des points : $(x_B-x_A ; y_B-y_A)$. La relation de Chasles stipule que la somme de deux vecteurs successifs ($\\vec{AB}$ puis $\\vec{BC}$) est le vecteur $\\vec{AC}$. La multiplication d'un vecteur par un réel $k=3$ multiplie chaque coordonnée par 3 : $3 \\times (2 ; -1) = (6 ; -3)$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "3. Colinéarité et centre de gravité",
+      "content": "Deux vecteurs non nuls sont colinéaires si et seulement si leurs coordonnées sont {{1}}. Le milieu $I$ de $[AB]$ a pour vecteur position $\\vec{OI} =$ {{2}}. Dans un triangle $ABC$, les médianes sont concourantes au centre de gravité $G$ qui vérifie $\\vec{GA} + \\vec{GB} + \\vec{GC} =$ {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "proportionnelles",
+        "$\\frac{1}{2}(\\vec{OA}+\\vec{OB})$|$(\\vec{OA}+\\vec{OB})/2$",
+        "$\\vec{0}$|vecteur nul"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le critère de colinéarité par les coordonnées : $\\vec{u}(x;y)$ et $\\vec{v}(x';y')$ sont colinéaires s'il existe $k$ tel que $x'=kx$ et $y'=ky$, c'est-à-dire que les coordonnées sont proportionnelles ($xy' - x'y = 0$). Le vecteur position du milieu $I$ est la moyenne des vecteurs positions des extrémités : $\\vec{OI} = \\frac{\\vec{OA}+\\vec{OB}}{2}$. La propriété caractéristique du centre de gravité $G$ est que la somme des vecteurs depuis $G$ vers les sommets est nulle : $\\vec{GA}+\\vec{GB}+\\vec{GC}=\\vec{0}$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

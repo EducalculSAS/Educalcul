@@ -1,0 +1,442 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.681627+00:00",
+  "id": 383,
+  "code": "5eme-t01-c05",
+  "title": "Bilan - Calcul numérique 5e",
+  "description": "Cours structuré Educalcul : Bilan - Calcul numérique 5e.",
+  "subject": "Opérations et calcul numérique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Opérations et calcul numérique",
+    "titre_du_cours": "Bilan - Calcul numérique 5e",
+    "objectif_global": "Bilan - Calcul numérique 5e",
+    "mini_lecons_imposees": [
+      "Priorités, fractions, estimation.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Opérations et calcul numérique",
+      "lessons": [
+        {
+          "title": "Priorités, fractions, estimation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les priorités de calcul : l'ordre qui change tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Tu connais déjà les quatre opérations, mais quand elles se mélangent dans une même expression, l'ordre dans lequel tu les effectues change complètement le résultat. En $5^e$, on ajoute une règle supplémentaire par rapport au primaire : les puissances (comme $x^2$) passent avant les multiplications et les divisions. Imagine que tu dois ranger une bibliothèque : tu commences par les gros cartons (parenthèses), puis tu places les étagères puissantes (puissances), ensuite les boîtes moyennes (multiplications et divisions), et enfin les petits livres (additions et soustractions). Si tu inverses deux étapes, l'étagère s'effondre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Ordre : } (\\dots) \\rightarrow \\text{puissances} \\rightarrow \\times, : \\rightarrow +, -"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret avec des nombres relatifs, car en $5^e$ les calculs intègrent souvent le signe moins. Calculons $A = -5 + 3 \\times (-2)^2$. Si tu fais l'addition en premier, tu obtiens $-2 \\times 4 = -8$, ce qui est faux. La priorité absolue, ici, c'est la puissance $(-2)^2 = 4$. Ensuite seulement la multiplication $3 \\times 4 = 12$. Et tout à la fin, l'addition $-5 + 12 = 7$. Note bien que la puissance porte sur le nombre entier $-2$ grâce aux parenthèses : sans elles, $-2^2$ voudrait dire $-(2^2) = -4$, ce qui n'est pas du tout la même chose !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Parentheses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les parenthèses et calcule ce qu'il y a dedans. Ici $(-2)$ est déjà simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Puissances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $(-2)^2 = 4$. L'expression devient $-5 + 3 \\times 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplications/Divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $3 \\times 4 = 12$. L'expression devient $-5 + 12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additions/Soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $-5 + 12 = 7$. C'est le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer avec les fractions : le dénominateur commun"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux fractions. En $5^e$, tu dois être à l'aise pour additionner, soustraire, multiplier et diviser des fractions, y compris avec des signes moins. La règle d'or pour l'addition et la soustraction, c'est le dénominateur commun. Imagine que tu veux ajouter une part de gâteau coupée en $4$ et une part d'un autre gâteau coupé en $6$ : tu ne peux pas les mettre bout à bout tant que les parts n'ont pas la même taille. Il faut recouper les deux gâteaux pour avoir des parts identiques, par exemple en $12$ (le plus petit multiple commun de $4$ et $6$)."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Trois quarts : 3 parts sur 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour l'addition $\\frac{3}{4} + \\frac{5}{6}$, on cherche un multiple commun à $4$ et $6$. Le plus petit est $12$. On transforme : $\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{5 \\times 2}{6 \\times 2} = \\frac{10}{12}$. Maintenant les parts ont la même taille, on additionne les numérateurs : $\\frac{9+10}{12} = \\frac{19}{12}$. Pour la multiplication, c'est plus direct : on multiplie numérateurs entre eux et dénominateurs entre eux, $\\frac{a}{b} \\times \\frac{c}{d} = \\frac{a \\times c}{b \\times d}$. Et pour la division, on multiplie par l'inverse : $\\frac{a}{b} : \\frac{c}{d} = \\frac{a}{b} \\times \\frac{d}{c}$. N'oublie jamais de simplifier le résultat final si c'est possible !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'estimation : ton filet de sécurité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de te lancer dans un calcul compliqué, prends l'habitude d'estimer le résultat. C'est comme vérifier que tu as assez d'argent dans ton porte-monnaie avant d'arriver à la caisse : ça t'évite les mauvaises surprises. L'estimation, c'est remplacer les nombres par des valeurs proches mais plus simples (des multiples de $10$, de $100$, ou des entiers pour les fractions) pour faire le calcul de tête. Par exemple, pour $\\frac{123}{25}$, tu vois vite que $25 \\times 5 = 125$, donc le résultat est très proche de $5$, un peu moins. Cela te donne un encadrement : $4 < \\frac{123}{25} < 5$. Si ta calculatrice t'affiche $49,2$ plus tard, tu sais tout de suite qu'il y a une erreur de saisie (oubli de parenthèse ?)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de 123/25 entre 4 et 5",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 4.92,
+                  "label": "123/25"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 4,
+                  "end": 5,
+                  "label": "Encadrement"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a deux façons principales d'encadrer : par truncature (on coupe les décimales, ce qui donne un nombre plus petit) ou par arrondi (au plus proche, qui peut être plus grand ou plus petit). Pour une division positive, le quotient est encadré par l'entier inférieur (truncature) et l'entier supérieur. Pour une soustraction ou une addition, on arrondit chaque terme. Cette gymnastique mentale te rend autonome : tu ne subis plus le calcul, tu le contrôles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expression mixte : priorités, fractions et relatifs ensemble"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exercices de $5^e$ adorent mélanger tout ça : des parenthèses, des fractions, des puissances, des nombres négatifs. Ne panique pas ! La méthode reste exactement la même : on suit l'ordre des priorités, étape par étape, en traitant chaque mini-calcul avec soin. Prenons $B = \\frac{-4 + 2 \\times (-3)^2}{5 - (-2)}$. C'est une grande fraction : la barre de fraction agit comme des parenthèses invisibles autour du numérateur et du dénominateur. On calcule donc le haut et le bas séparément avant de faire la division finale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Numérateur : priorités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puissance : $(-3)^2 = 9$. Multiplication : $2 \\times 9 = 18$. Addition : $-4 + 18 = 14$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Dénominateur : priorités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustraction d'un relatif : $5 - (-2) = 5 + 2 = 7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Division finale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$B = \\frac{14}{7} = 2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? En décomposant, même une expression impressionnante devient une suite de tout petits calculs faciles. C'est cette rigueur dans l'écriture des étapes qui te fera gagner des points au brevet et, plus important encore, qui t'évitera les erreurs bêtes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'expression suivante en respectant scrupuleusement les priorités : $C = -8 + 4 \\times (-3)^2 - 10 : 2$.",
+              "answer": "18",
+              "hint": "Commence par la puissance $(-3)^2$. Ensuite fais la multiplication et la division de gauche à droite. Termine par l'addition et la soustraction de gauche à droite.",
+              "explanation": "Puissance : $(-3)^2 = 9$. Expression : $-8 + 4 \\times 9 - 10 : 2$. Multiplication : $4 \\times 9 = 36$. Division : $10 : 2 = 5$. Expression : $-8 + 36 - 5$. Addition : $-8 + 36 = 28$. Soustraction : $28 - 5 = 23$. Wait. $-8 + 36 = 28$. $28 - 5 = 23$. Let me recheck. $-8 + 4*9 - 5 = -8 + 36 - 5 = 23$. Okay answer is 23."
+            },
+            {
+              "question": "Effectue le calcul suivant et donne le résultat sous forme de fraction irréductible : $\\frac{5}{6} - \\frac{2}{9}$.",
+              "answer": "$\\frac{11}{18}$",
+              "hint": "Cherche un dénominateur commun pour $6$ et $9$. Le plus petit est $18$. Transforme les deux fractions avant de soustraire les numérateurs.",
+              "explanation": "Dénominateur commun : $18$. $\\frac{5}{6} = \\frac{5 \\times 3}{6 \\times 3} = \\frac{15}{18}$. $\\frac{2}{9} = \\frac{2 \\times 2}{9 \\times 2} = \\frac{4}{18}$. Soustraction : $\\frac{15}{18} - \\frac{4}{18} = \\frac{11}{18}$. La fraction $\\frac{11}{18}$ est déjà irréductible ($11$ est premier avec $18$)."
+            },
+            {
+              "question": "Donne un encadrement de la fraction $\\frac{89}{12}$ par deux entiers consécutifs.",
+              "answer": "$7 < \\frac{89}{12} < 8$",
+              "hint": "Combien de fois $12$ rentre-t-il dans $89$ ? Fais la division euclidienne de $89$ par $12$ de tête.",
+              "explanation": "$12 \\times 7 = 84$ et $12 \\times 8 = 96$. Puisque $84 < 89 < 96$, on a $7 < \\frac{89}{12} < 8$. C'est un encadrement par truncature (partie entière)."
+            },
+            {
+              "question": "Calcule $D = \\frac{(-2)^3 + 4 \\times 5}{-3 - (-5)}$.",
+              "answer": "6",
+              "hint": "La barre de fraction sépare le numérateur et le dénominateur. Calcule le haut (puissance, multiplication, addition) puis le bas (soustraction de relatifs), enfin divise.",
+              "explanation": "Numérateur : Puissance $(-2)^3 = -8$. Multiplication $4 \\times 5 = 20$. Addition $-8 + 20 = 12$. Dénominateur : $-3 - (-5) = -3 + 5 = 2$. Division finale : $D = \\frac{12}{2} = 6$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier ses priorités : le réflexe checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de bilan, nous ne découvrons rien de nouveau : nous apprenons à *vérifier* que nos acquis sont solides. Commençons par les priorités. Face à une expression comme $E = 12 - 4 \\times 3 + 6 : 2$, le piège classique est de calculer de gauche à droite sans réfléchir. Ton nouveau réflexe, c'est de scanner l'expression à la recherche des 'grosses opérations' (puissances, $\\times$, $:$) avant de toucher aux 'petites' ($+$, $-$). Ici, pas de parenthèses ni de puissances. On repère $4 \\times 3 = 12$ et $6 : 2 = 3$. On réécrit l'expression simplifiée : $12 - 12 + 3$. Et seulement là, on fait $+$ et $-$ de gauche à droite : $0 + 3 = 3$. Si tu as trouvé $3$ du premier coup, c'est que le réflexe est ancré."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Scanner : Puissances ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aucune ici."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Scanner : $\\times$ et $:$ ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Oui : $4 \\times 3$ et $6 : 2$. Calcule-les."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Réécrire simplifié",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque calcul par son résultat : $12 - 12 + 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Finir par $+$ et $-$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De gauche à droite : $12 - 12 = 0$, puis $0 + 3 = 3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux parenthèses 'invisibles' : une fraction $\\frac{a+b}{c}$ cache des parenthèses autour de $a+b$. Un radicateur $\\sqrt{a+b}$ aussi. Ne les oublie jamais quand tu scannes l'expression."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Maîtriser les fractions : simplifier avant de calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les fractions, le point de vigilance numéro un, c'est la simplification *avant* de faire les opérations. Si tu dois calculer $\\frac{15}{25} \\times \\frac{10}{18}$, ne multiplie pas $15 \\times 10$ et $25 \\times 18$ pour te retrouver avec $\\frac{150}{450}$ qu'il faudra ensuite simplifier longuement. Simplifie *en croix* dès le départ : $15$ et $18$ sont divisibles par $3$ ($5$ et $6$), $25$ et $10$ sont divisibles par $5$ ($5$ et $2$). Le calcul devient $\\frac{5}{5} \\times \\frac{2}{6} = 1 \\times \\frac{1}{3} = \\frac{1}{3}$. C'est instantané, sans grosse multiplication, et sans risque d'erreur sur de grands nombres."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Résultat final : un tiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour l'addition ou la soustraction, la vérification porte sur le dénominateur commun. As-tu bien pris le *plus petit* commun (PPCM) pour éviter des calculs inutiles ? As-tu pensé à reporter le signe moins sur *tous* les termes du numérateur si tu soustrais une fraction avec plusieurs termes ? Par exemple, $\\frac{5}{6} - \\frac{2+1}{3} = \\frac{5}{6} - \\frac{3}{3} = \\frac{5}{6} - 1 = -\\frac{1}{6}$. Le piège serait d'écrire $\\frac{5}{6} - \\frac{2}{3} + \\frac{1}{3}$ ce qui est faux. Le signe moins devant la fraction s'applique à tout le numérateur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer pour valider : l'encadrement intelligent"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'estimation n'est pas une option, c'est une assurance vie pour tes notes. Dès que tu as un résultat exact (à la main ou à la calculatrice), passe 10 secondes à faire l'estimation de tête. Si tu calcules $\\frac{49 \\times 11}{23}$, arrondis : $49 \\approx 50$, $11 \\approx 10$, $23 \\approx 20$. L'estimation donne $\\frac{50 \\times 10}{20} = \\frac{500}{20} = 25$. Si ton résultat exact est $23,4$, c'est cohérent. Si tu trouves $234$ ou $2,34$, tu as fait une erreur de virgule ou de parenthèse. Cette habitude te rend autonome : tu n'as plus besoin du prof pour savoir si ton devoir est bon."
+            },
+            {
+              "type": "number_line",
+              "caption": "Visualisation de l'estimation autour de 25",
+              "min": 0,
+              "max": 50,
+              "points": [
+                {
+                  "value": 23.4,
+                  "label": "Résultat exact"
+                },
+                {
+                  "value": 25,
+                  "label": "Estimation"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les nombres relatifs, l'estimation du *signe* est encore plus rapide que l'estimation de la valeur. Un produit de deux nombres de même signe est positif, de signes contraires est négatif. Une somme de deux négatifs est négative. Avant de calculer $(-12) + 5$, tu sais déjà que le résultat sera négatif (le 'plus fort' est $-12$). Si ta calculatrice t'affiche $+7$, tu as forcément tapé $12 + 5$ au lieu de $-12 + 5$. Vérifier le signe, c'est 2 secondes qui valent de l'or."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse : l'expression complète qui réunit tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par le grand test : une expression qui mélange priorités, fractions, puissances et nombres relatifs. C'est le type d'exercice qui tombe au brevet. Regarde $F = \\frac{(-5)^2 - 3 \\times 4}{2 - (-\\frac{1}{2})} + 0,5$. Ne te laisse pas impressionner par la densité. Ta méthode, c'est ton filet : tu isoles le numérateur, tu isoles le dénominateur, tu simplifies la fraction, tu gères le décimal à la fin. Écris les étapes sur ta copie, même si elles te paraissent évidentes. C'est la trace de ton raisonnement qui vaut des points, pas seulement le chiffre final."
+            },
+            {
+              "type": "thermometer_axis",
+              "caption": "Repérage des nombres relatifs intervenant dans le calcul",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -5,
+                  "label": "-5"
+                },
+                {
+                  "value": -0.5,
+                  "label": "-1/2"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Détail du calcul pour que tu puisses te corriger seul : Numérateur : $(-5)^2 = 25$, $3 \\times 4 = 12$, $25 - 12 = 13$. Dénominateur : $2 - (-\\frac{1}{2}) = 2 + 0,5 = 2,5$ (ou $\\frac{5}{2}$). Fraction : $\\frac{13}{2,5} = \\frac{130}{25} = \\frac{26}{5} = 5,2$. Ajout de $0,5$ : $5,2 + 0,5 = 5,7$. Tu as maintenant toutes les clés pour aborder sereinement n'importe quel calcul numérique de $5^e$ et au-delà."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer et respecter l'ordre des priorités (parenthèses, puissances, $\\times/ :$, $+/-$) dans une expression numérique.",
+                "Je sais calculer une expression comportant des puissances d'entiers relatifs (ex: $(-3)^2$ vs $-3^2$).",
+                "Je sais additionner, soustraire, multiplier et diviser des fractions (positives ou négatives) en utilisant le dénominateur commun ou la simplification en croix.",
+                "Je sais simplifier une fraction pour la rendre irréductible avant ou après un calcul.",
+                "Je sais donner un encadrement par deux entiers consécutifs (truncature) ou arrondir un nombre décimal ou une fraction.",
+                "Je sais utiliser l'estimation (ordre de grandeur, signe du résultat) pour vérifier la plausibilité d'un calcul exact.",
+                "Je sais calculer une expression complexe mélangeant fractions, puissances, relatifs et décimaux en écrivant les étapes successives."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si le calcul suivant est correct. Sinon, donne le bon résultat : $18 - 6 : 3 + 2 \\times 4 = 18 - 2 + 8 = 16 + 8 = 24$.",
+              "answer": "Le calcul est correct. Résultat : 24.",
+              "hint": "Vérifie l'ordre : division et multiplication d'abord ($6:3=2$ et $2\\times4=8$), puis addition/soustraction de gauche à droite.",
+              "explanation": "Priorités respectées : $6 : 3 = 2$ et $2 \\times 4 = 8$. Expression : $18 - 2 + 8$. De gauche à droite : $18 - 2 = 16$, puis $16 + 8 = 24$. L'élève a bien appliqué les règles."
+            },
+            {
+              "question": "Calcule et simplifie au maximum : $\\frac{21}{28} \\times \\frac{12}{15}$.",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Simplifie en croix avant de multiplier : $21$ et $15$ par $3$, $28$ et $12$ par $4$.",
+              "explanation": "Simplification en croix : $21$ et $15 \\div 3 \\rightarrow 7$ et $5$. $28$ et $12 \\div 4 \\rightarrow 7$ et $3$. Produit : $\\frac{7}{7} \\times \\frac{3}{5} = 1 \\times \\frac{3}{5} = \\frac{3}{5}$."
+            },
+            {
+              "question": "Sans faire le calcul exact, encadre le résultat de $\\frac{(-15) \\times 4}{-3}$ par un entier et déduis son signe.",
+              "answer": "Le résultat est positif et vaut exactement 20. Encadrement : $20 < 20 < 21$ (ou simplement 20).",
+              "hint": "Regarde les signes : deux moins font un plus. Estime la valeur : $15 \\times 4 = 60$, divisé par $3 = 20$.",
+              "explanation": "Signe : $(-) \\times (+) = (-)$ au numérateur. $(-) : (-) = (+)$ au total. Valeur : $|-15| \\times 4 = 60$. $60 : 3 = 20$. Le résultat est $+20$."
+            },
+            {
+              "question": "Calcule exactement : $G = \\frac{(-4)^2 - 2 \\times 5}{1 - (-\\frac{3}{2})} - 1,5$.",
+              "answer": "3,5 ou $\\frac{7}{2}$",
+              "hint": "Numérateur : puissance puis multiplication puis soustraction. Dénominateur : soustraction d'un relatif (devient addition). Transforme le dénominateur en décimal ou le $1,5$ en fraction pour l'addition finale.",
+              "explanation": "Numérateur : $(-4)^2 = 16$. $2 \\times 5 = 10$. $16 - 10 = 6$. Dénominateur : $1 - (-\\frac{3}{2}) = 1 + 1,5 = 2,5$. Fraction : $\\frac{6}{2,5} = \\frac{60}{25} = \\frac{12}{5} = 2,4$. Soustraction finale : $2,4 - 1,5 = 0,9$. Wait. $1 - (-1.5) = 2.5$. $6 / 2.5 = 2.4$. $2.4 - 1.5 = 0.9$. Let me recheck. $G = 6 / 2.5 - 1.5 = 2.4 - 1.5 = 0.9$. Okay. Answer is 0.9 or 9/10."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

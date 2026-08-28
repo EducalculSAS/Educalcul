@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 158,
+  "_course_code": "ce2-t02-c07-premieres-ecritures-a-virgule",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Comparer des écritures simples",
+  "title": "Comparer des nombres décimaux simples",
+  "questions": [
+    {
+      "text": "On veut comparer les deux nombres $3,4$ et $3,8$. Regarde le tableau de position ci-dessous. Lequel de ces deux nombres est le plus grand ?",
+      "options": [
+        "$3,4$",
+        "$3,8$",
+        "Ils sont égaux",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "$3,8$",
+      "explanation": "Pour comparer $3,4$ et $3,8$, on regarde d'abord le chiffre des unités : les deux ont $3$ unités. On regarde ensuite le chiffre des dixièmes : $3,4$ a $4$ dixièmes et $3,8$ a $8$ dixièmes. Comme $8$ est plus grand que $4$, $3,8$ est plus grand que $3,4$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.8,
+        "caption": "Décomposition de 3,8 : 3 unités et 8 dixièmes"
+      }
+    },
+    {
+      "text": "Compare les deux nombres suivants : $12,5$ et $10,9$. Quelle affirmation est vraie ?",
+      "options": [
+        "$12,5 < 10,9$",
+        "$12,5 > 10,9$",
+        "$12,5 = 10,9$",
+        "$10,9 > 12,5$ car 9 est plus grand que 5"
+      ],
+      "correctAnswer": "$12,5 > 10,9$",
+      "explanation": "On compare d'abord la partie entière (avant la virgule). $12$ est plus grand que $10$. Donc $12,5$ est plus grand que $10,9$, peu importe les chiffres après la virgule. Le dernier choix est un piège : on ne compare pas seulement les dixièmes sans regarder les unités avant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres ci-dessous, lequel est le plus petit ? $4,25$ ; $4,3$ ; $4,2$ ; $4,08$",
+      "options": [
+        "$4,25$",
+        "$4,3$",
+        "$4,2$",
+        "$4,08$"
+      ],
+      "correctAnswer": "$4,08$",
+      "explanation": "Tous ont $4$ unités. On compare les dixièmes : $4,25$ a $2$ dixièmes, $4,3$ a $3$ dixièmes, $4,2$ a $2$ dixièmes, $4,08$ a $0$ dixième. Comme $0$ est le plus petit chiffre des dixièmes, $4,08$ est le plus petit nombre. Attention : $4,25$ a plus de chiffres après la virgule mais ce n'est pas le plus petit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare $0,6$ et $0,58$. Choisis le bon signe pour compléter : $0,6$ ... $0,58$",
+      "options": [
+        "<",
+        ">",
+        "=",
+        "On ne peut pas comparer car ils n'ont pas le même nombre de chiffres après la virgule"
+      ],
+      "correctAnswer": ">",
+      "explanation": "Pour comparer facilement, on peut ajouter un zéro pour avoir le même nombre de chiffres après la virgule : $0,6 = 0,60$. On compare $0,60$ et $0,58$. Les dixièmes sont $6$ et $5$. Comme $6 > 5$, alors $0,60 > 0,58$, donc $0,6 > 0,58$. Le dernier choix est une erreur fréquente : on a toujours le droit de comparer, il suffit d'aligner les virgules.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 0.6,
+        "caption": "0,6 vaut 0,60 : 6 dixièmes et 0 centième"
+      }
+    },
+    {
+      "text": "Quel nombre se trouve entre $2,4$ et $2,5$ ?",
+      "options": [
+        "$2,3$",
+        "$2,45$",
+        "$2,55$",
+        "$2,6$"
+      ],
+      "correctAnswer": "$2,45$",
+      "explanation": "On cherche un nombre strictement plus grand que $2,4$ et strictement plus petit que $2,5$. $2,3$ est plus petit que $2,4$. $2,55$ et $2,6$ sont plus grands que $2,5$. $2,45$ a $4$ dixièmes comme $2,4$, mais il a $5$ centièmes, donc il est plus grand que $2,4$ (qui vaut $2,40$). Et comme il a $4$ dixièmes, il est plus petit que $2,5$ (qui a $5$ dixièmes). Donc $2,4 < 2,45 < 2,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

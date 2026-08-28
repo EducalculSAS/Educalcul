@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Répéter expérience",
+  "title": "Quiz : Répéter une expérience aléatoire",
+  "questions": [
+    {
+      "text": "Si on répète un grand nombre de fois l'expérience de lancer un dé équilibré, que se passe-t-il pour la fréquence d'apparition du $6$ ?",
+      "options": [
+        "Elle reste toujours égale à $1/6$",
+        "Elle se rapproche de $1/6$",
+        "Elle devient $0$",
+        "Elle devient $1$"
+      ],
+      "correctAnswer": "Elle se rapproche de $1/6$",
+      "explanation": "Lorsqu'on répète beaucoup de fois une expérience aléatoire, la loi des grands nombres dit que la fréquence expérimentale tend vers la probabilité théorique. Pour un dé équilibré, la probabilité d'obtenir un $6$ est $1/6$. La fréquence ne reste pas figée à $1/6$ à chaque essai, elle fluctue mais se stabilise autour de cette valeur quand le nombre d'essais augmente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après $60$ lancers, le $6$ est apparu $12$ fois. Quelle est la fréquence expérimentale d'apparition du $6$ ?",
+      "options": [
+        "$1/5$",
+        "$1/6$",
+        "$1/4$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$1/5$",
+      "explanation": "La fréquence expérimentale se calcule en divisant le nombre de succès par le nombre total d'essais : $12/60 = 1/5$. Les autres fractions ne correspondent pas à ce quotient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En $20$ lancers, le $6$ sort $5$ fois. La fréquence expérimentale est $5/20 = 1/4$, alors que la probabilité théorique est $1/6$. Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "La fréquence expérimentale est toujours égale à la probabilité théorique",
+        "La fréquence expérimentale peut être différente de la probabilité théorique, surtout pour un petit nombre d'essais",
+        "La fréquence expérimentale ne peut jamais être supérieure à la probabilité théorique",
+        "La fréquence expérimentale est toujours $0$"
+      ],
+      "correctAnswer": "La fréquence expérimentale peut être différente de la probabilité théorique, surtout pour un petit nombre d'essais",
+      "explanation": "Avec peu d'essais, le hasard produit des fluctuations importantes. La fréquence observée ($1/4$) diffère de la probabilité théorique ($1/6$). En augmentant le nombre d'essais, l'écart tend à diminuer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On répète l'expérience $200$ fois et on observe $30$ fois le $6$. Quelle est la fréquence expérimentale ?",
+      "options": [
+        "$3/20$",
+        "$1/6$",
+        "$1/5$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$3/20$",
+      "explanation": "La fréquence expérimentale est $30/200 = 3/20$. Elle est proche de la probabilité théorique $1/6$ mais pas exactement égale, ce qui est normal pour un nombre fini d'essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pourquoi est-il important de répéter une expérience aléatoire de nombreuses fois ?",
+      "options": [
+        "Pour obtenir exactement la probabilité théorique à chaque essai",
+        "Pour réduire l'écart entre la fréquence expérimentale et la probabilité théorique",
+        "Pour que la fréquence expérimentale devienne $0$",
+        "Pour que la fréquence expérimentale devienne $1$"
+      ],
+      "correctAnswer": "Pour réduire l'écart entre la fréquence expérimentale et la probabilité théorique",
+      "explanation": "Répéter l'expérience permet, grâce à la loi des grands nombres, de faire converger la fréquence observée vers la probabilité théorique. On ne cherche pas à obtenir la valeur exacte à chaque essai, mais à diminuer l'incertitude due au hasard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

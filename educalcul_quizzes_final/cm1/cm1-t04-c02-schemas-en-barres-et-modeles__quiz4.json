@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 235,
+  "_course_code": "cm1-t04-c02-schemas-en-barres-et-modeles",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Application : Schémas en barres et modèles",
+  "title": "Schémas en barres et modèles",
+  "questions": [
+    {
+      "text": "Dans le schéma en barres, une bande est partagée en deux parties : $12$ et $15$. Quel est le total ?",
+      "options": [
+        "$27$",
+        "$3$",
+        "$30$",
+        "$180$"
+      ],
+      "correctAnswer": "$27$",
+      "explanation": "Le total est $12 + 15 = 27$. L'option $3$ est la différence $15 - 12$, $30$ est obtenu en ajoutant $3$ au total, et $180$ est le produit $12 × 15$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie A",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie B",
+            "value": 15,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Schéma en barres avec deux parties"
+      }
+    },
+    {
+      "text": "Un schéma en barres montre un total de $58$ cases. Une partie contient $24$ cases. Combien de cases contient la partie manquante ?",
+      "options": [
+        "$34$",
+        "$82$",
+        "$24$",
+        "$44$"
+      ],
+      "correctAnswer": "$34$",
+      "explanation": "La partie manquante est $58 - 24 = 34$. L'option $82$ est la somme $58 + 24$, $24$ est la partie connue, et $44$ est une soustraction incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un modèle en barres représente $48$ billes réparties en $6$ parties égales. Combien de billes dans une partie ?",
+      "options": [
+        "$8$",
+        "$6$",
+        "$42$",
+        "$54$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Une partie vaut $48 ÷ 6 = 8$. L'option $6$ est le nombre de parties, $42$ est $48 - 6$, et $54$ est $48 + 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un schéma en barres montre $3$ boîtes de $12$ crayons et $7$ crayons en vrac. Combien de crayons au total ?",
+      "options": [
+        "$43$",
+        "$36$",
+        "$19$",
+        "$21$"
+      ],
+      "correctAnswer": "$43$",
+      "explanation": "Les boîtes donnent $3 × 12 = 36$ crayons. Avec les $7$ crayons en vrac, le total est $36 + 7 = 43$. L'option $36$ oublie les crayons en vrac, $19$ est $12 + 7$, et $21$ est $3 × 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un schéma comparatif, la barre de Léa vaut $27$ billes. La barre de Tom est $15$ billes de plus. Combien de billes a Tom ?",
+      "options": [
+        "$42$",
+        "$12$",
+        "$27$",
+        "$15$"
+      ],
+      "correctAnswer": "$42$",
+      "explanation": "Tom a $27 + 15 = 42$ billes. L'option $12$ est la différence $27 - 15$, $27$ est la quantité de Léa, et $15$ est seulement l'écart.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

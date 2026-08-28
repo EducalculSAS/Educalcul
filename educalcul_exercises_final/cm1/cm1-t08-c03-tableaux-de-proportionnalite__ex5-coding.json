@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 265,
+  "_course_code": "cm1-t08-c03-tableaux-de-proportionnalite",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Approfondissement : Compléter par multiplication / division",
+  "title": "Algorithmes de proportionnalité",
+  "blocks": [
+    {
+      "title": "Le coefficient multiplicateur",
+      "content": "Pour compléter un tableau de proportionnalité, on cherche souvent un nombre multiplicateur. Si on passe de $2$ kg de pommes à $4$ kg de pommes, et que le prix passe de $3$ euros à $6$ euros, écris le raisonnement structuré pour trouver le nouveau prix. Utilise la forme : Nouveau prix = Ancien prix $\\times$ coefficient.",
+      "correctAnswer": "On cherche le coefficient : $4 \\div 2 = 2$. Le coefficient est $2$. Calcul : $3 \\times 2 = 6$. Le nouveau prix est $6$ euros.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le poids a été multiplié par $2$ ($4 \\div 2 = 2$), donc le prix doit aussi être multiplié par $2$. $3 \\times 2 = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'algorithme de division",
+      "content": "Dans un tableau, $10$ Cahiers coûtent $15$ euros. On veut savoir combien coûtent $5$ Cahiers. Écris un algorithme étape par étape pour trouver ce prix en utilisant une division.",
+      "correctAnswer": "Étape $1$ : On cherche combien de fois $5$ est contenu dans $10$. Calcul : $10 \\div 5 = 2$. Étape $2$ : On divise le prix total par ce résultat. Calcul : $15 \\div 2 = 7,5$. Le prix est $7,5$ euros.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme la quantité est divisée par $2$ ($5$ est la moitié de $10$), le prix est également divisé par $2$. $15 \\div 2 = 7,5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Code de calcul général",
+      "content": "Imaginons un programme informatique qui calcule le prix d'un article en fonction de la quantité. Si $3$ articles coûtent $12$ euros, écris la formule ou le code logique pour calculer le prix pour n'importe quelle quantité $Q$.",
+      "correctAnswer": "Étape $1$ : Calculer le prix d'un seul article. Prix unitaire = $12 \\div 3 = 4$. Étape $2$ : Multiplier le prix unitaire par la quantité désirée. Formule : Prix = $Q \\times 4$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On trouve d'abord la valeur pour une unité (le prix unitaire) en divisant $12$ par $3$, ce qui donne $4$. Ensuite, on multiplie ce prix unitaire par la quantité $Q$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

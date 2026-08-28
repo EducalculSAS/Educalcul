@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 435,
+  "_course_code": "4eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation de la moyenne, médiane et étendue",
+  "questions": [
+    {
+      "text": "Que représente la moyenne d'une série statistique ?",
+      "options": [
+        "La valeur la plus fréquente",
+        "La somme des valeurs divisée par le nombre de valeurs",
+        "La valeur centrale quand les données sont triées",
+        "La différence entre la plus grande et la plus petite valeur"
+      ],
+      "correctAnswer": "La somme des valeurs divisée par le nombre de valeurs",
+      "explanation": "La moyenne est la somme de toutes les valeurs divisée par le nombre total de valeurs. La valeur la plus fréquente correspond au mode, la valeur centrale à la médiane, et la différence entre le maximum et le minimum à l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une série de $7$ notes, la médiane est $14$. Que signifie cette information ?",
+      "options": [
+        "Il y a $3$ notes inférieures à $14$ et $3$ notes supérieures à $14$",
+        "La note la plus fréquente est $14$",
+        "La moyenne des notes est $14$",
+        "L'étendue des notes est $14$"
+      ],
+      "correctAnswer": "Il y a $3$ notes inférieures à $14$ et $3$ notes supérieures à $14$",
+      "explanation": "Avec $7$ valeurs triées, la médiane est la $4^{\\text{ème}}$ valeur ; il y a donc $3$ valeurs avant et $3$ valeurs après. Le mode correspond à la valeur la plus fréquente, la moyenne à la somme divisée par $7$, et l'étendue à la différence entre le maximum et le minimum.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en boîte ci‑dessous représente une série de notes. Quelle affirmation est correcte ?",
+      "options": [
+        "$25\\%$ des valeurs sont comprises entre $10$ et $12$",
+        "$50\\%$ des valeurs sont comprises entre $10$ et $15$",
+        "La médiane est $10$",
+        "L'étendue est $5$"
+      ],
+      "correctAnswer": "$50\\%$ des valeurs sont comprises entre $10$ et $15$",
+      "explanation": "Dans un diagramme en boîte, le premier quartile $Q_1$ vaut $10$, la médiane $12$ et le troisième quartile $Q_3$ vaut $15$. L'intervalle interquartile $[Q_1;Q_3]$ contient $50\\%$ des données, soit entre $10$ et $15$. L'option A correspond à $25\\%$ des données entre $Q_1$ et la médiane, la médiane est $12$ et non $10$, et l'étendue est $20-5=15$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Boîte à moustaches de la série",
+        "min": 5,
+        "q1": 10,
+        "median": 12,
+        "q3": 15,
+        "max": 20
+      }
+    },
+    {
+      "text": "Une classe a une moyenne de $12$, une médiane de $13$ et une étendue de $8$. On ajoute une note très élevée de $20$. Que se passe-t-il ?",
+      "options": [
+        "La moyenne augmente, la médiane ne change pas, l'étendue augmente",
+        "La moyenne diminue, la médiane augmente, l'étendue diminue",
+        "La moyenne augmente, la médiane augmente, l'étendue ne change pas",
+        "La moyenne ne change pas, la médiane ne change pas, l'étendue augmente"
+      ],
+      "correctAnswer": "La moyenne augmente, la médiane ne change pas, l'étendue augmente",
+      "explanation": "L'ajout d'une valeur extrême élevée tire la moyenne vers le haut. La médiane, qui dépend de la position centrale, reste souvent inchangée si le nombre d'élèves est suffisant. L'étendue, différence entre le maximum et le minimum, augmente car le nouveau maximum devient $20$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux groupes A et B ont la même moyenne $15$ mais des étendues différentes : le groupe A a une étendue de $4$ et le groupe B une étendue de $12$. Que peut-on en déduire ?",
+      "options": [
+        "Les notes du groupe A sont plus dispersées que celles du groupe B",
+        "Les notes du groupe B sont plus dispersées que celles du groupe A",
+        "Les médianes des deux groupes sont égales",
+        "Les deux groupes ont la même étendue"
+      ],
+      "correctAnswer": "Les notes du groupe B sont plus dispersées que celles du groupe A",
+      "explanation": "L'étendue mesure la dispersion totale : plus elle est grande, plus les valeurs sont éloignées les unes des autres. Comme l'étendue du groupe B ($12$) est supérieure à celle du groupe A ($4$), les notes de B sont plus dispersées. La moyenne identique ne garantit pas des médianes égales ni une même étendue.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Trouver / compléter une case",
+  "title": "Compléter un tableau à double entrée",
+  "blocks": [
+    {
+      "title": "Case unique",
+      "content": "Observe le tableau. Complète la case vide pour les pommes rouges : {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La ligne « Pommes » a un total de $5$. La case « Vert » contient $3$. La case « Rouge » vaut donc $5 - 3 = 2$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rouge",
+          "Vert",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "",
+            "3",
+            "5"
+          ],
+          [
+            "Poires",
+            "2",
+            "4",
+            "6"
+          ],
+          [
+            "Total",
+            "4",
+            "7",
+            "11"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Deux cases",
+      "content": "Observe le tableau. Complète les cases vides : Chat / Eau = {{1}} et Poisson / Air = {{2}}",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour le chat, le total de la ligne est $7$, la case « Terre » vaut $5$ et la case « Air » vaut $0$, donc « Eau » = $7 - 5 - 0 = 2$. Pour le poisson, le total de la ligne est $6$, la case « Terre » vaut $0$ et la case « Eau » vaut $4$, donc « Air » = $6 - 0 - 4 = 2$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Terre",
+          "Eau",
+          "Air",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Chat",
+            "5",
+            "",
+            "0",
+            "7"
+          ],
+          [
+            "Poisson",
+            "0",
+            "4",
+            "",
+            "6"
+          ],
+          [
+            "Oiseau",
+            "2",
+            "1",
+            "3",
+            "6"
+          ],
+          [
+            "Total",
+            "7",
+            "7",
+            "5",
+            "19"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Trois cases",
+      "content": "Observe le tableau. Complète les cases vides : Lucas / Livres = {{1}}, Emma / BD = {{2}}, Noah / Livres = {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "4",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour Lucas, le total de la ligne est $5$ et la case « BD » vaut $2$, donc « Livres » = $5 - 2 = 3$. Pour Emma, le total de la ligne est $7$ et la case « Livres » vaut $3$, donc « BD » = $7 - 3 = 4$. Pour Noah, le total de la ligne est $5$ et la case « BD » vaut $1$, donc « Livres » = $5 - 1 = 4$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Livres",
+          "BD",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Lucas",
+            "",
+            "2",
+            "5"
+          ],
+          [
+            "Emma",
+            "3",
+            "",
+            "7"
+          ],
+          [
+            "Noah",
+            "",
+            "1",
+            "5"
+          ],
+          [
+            "Total",
+            "10",
+            "7",
+            "17"
+          ]
+        ]
+      }
+    }
+  ]
+}

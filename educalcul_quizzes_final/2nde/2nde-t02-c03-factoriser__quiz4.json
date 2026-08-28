@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Factoriser",
+  "title": "Quiz : Applications de la factorisation (Seconde)",
+  "questions": [
+    {
+      "text": "Factorisez l'expression $x^2 - 9$.",
+      "options": [
+        "$(x-3)(x+3)$",
+        "$(x-9)(x+1)$",
+        "$(x-3)^2$",
+        "$(x+3)^2$"
+      ],
+      "correctAnswer": "$(x-3)(x+3)$",
+      "explanation": "L'expression $x^2 - 9$ est une différence de carrés : $x^2 - 3^2 = (x-3)(x+3)$. Les autres options correspondent à des erreurs de factorisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez $4x^2 - 25$.",
+      "options": [
+        "$(2x-5)(2x+5)$",
+        "$(4x-5)(x+5)$",
+        "$(2x-5)^2$",
+        "$(2x+5)^2$"
+      ],
+      "correctAnswer": "$(2x-5)(2x+5)$",
+      "explanation": "On reconnaît $4x^2 - 25 = (2x)^2 - 5^2$, différence de carrés, donc $(2x-5)(2x+5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $x^2 - 5x + 6 = 0$ en factorisant le trinôme.",
+      "options": [
+        "$x=2$ et $x=3$",
+        "$x=1$ et $x=6$",
+        "$x=-2$ et $x=-3$",
+        "$x=0$ et $x=5$"
+      ],
+      "correctAnswer": "$x=2$ et $x=3$",
+      "explanation": "Factorisons $x^2 - 5x + 6 = (x-2)(x-3)$. Les solutions sont $x=2$ et $x=3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez $x^3 - 8$.",
+      "options": [
+        "$(x-2)(x^2+2x+4)$",
+        "$(x-2)(x^2-2x+4)$",
+        "$(x+2)(x^2-2x+4)$",
+        "$(x-2)^3$"
+      ],
+      "correctAnswer": "$(x-2)(x^2+2x+4)$",
+      "explanation": "C'est une différence de cubes : $x^3 - 2^3 = (x-2)(x^2+2x+4)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'aire d'un rectangle est donnée par $A = x^2 + 7x + 12$. Factorisez pour trouver les dimensions possibles.",
+      "options": [
+        "$(x+3)(x+4)$",
+        "$(x+2)(x+6)$",
+        "$(x+1)(x+12)$",
+        "$(x+7)(x+12)$"
+      ],
+      "correctAnswer": "$(x+3)(x+4)$",
+      "explanation": "On cherche deux nombres dont le produit est $12$ et la somme $7$ : $3$ et $4$. Donc $x^2+7x+12 = (x+3)(x+4)$, dimensions $x+3$ et $x+4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

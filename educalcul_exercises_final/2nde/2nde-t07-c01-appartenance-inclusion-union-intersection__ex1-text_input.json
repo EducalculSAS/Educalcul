@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 534,
+  "_course_code": "2nde-t07-c01-appartenance-inclusion-union-intersection",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Notations",
+  "title": "Notations ensemblistes : extension, réunion, intersection",
+  "blocks": [
+    {
+      "title": "Écriture en extension",
+      "content": "Soit $E = \\{0, 1, 2, 3, 4, 5\\}$. Écrire en extension l'ensemble $A = \\{x \\in E \\mid x^2 < 10\\}$.",
+      "correctAnswer": "{0, 1, 2, 3}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste chaque élément de $E$ : $0^2=0<10$, $1^2=1<10$, $2^2=4<10$, $3^2=9<10$, $4^2=16\\not<10$, $5^2=25\\not<10$. Les éléments vérifiant la condition sont $0, 1, 2, 3$. Donc $A = \\{0, 1, 2, 3\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réunion de deux ensembles",
+      "content": "Soient $A = \\{1, 2, 3\\}$ et $B = \\{2, 3, 4, 5\\}$. Écrire en extension l'ensemble $A \\cup B$.",
+      "correctAnswer": "{1, 2, 3, 4, 5}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La réunion $A \\cup B$ contient tous les éléments qui appartiennent à $A$ ou à $B$ (ou aux deux). On rassemble les éléments des deux ensembles sans répétition : $1, 2, 3$ (de $A$) et $4, 5$ (de $B$ seulement). Donc $A \\cup B = \\{1, 2, 3, 4, 5\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection d'intervalles",
+      "content": "Soient $I = [0, 5]$ et $J = [3, 7]$ deux intervalles de $\\mathbb{R}$. Écrire l'intersection $I \\cap J$ sous forme d'intervalle.",
+      "correctAnswer": "[3, 5]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intersection $I \\cap J$ est l'ensemble des réels appartenant à la fois à $I$ et à $J$. $I$ va de $0$ à $5$, $J$ va de $3$ à $7$. La partie commune commence au plus grand des deux bornes inférieures ($\\max(0, 3) = 3$) et finit au plus petit des deux bornes supérieures ($\\min(5, 7) = 5$). Les deux bornes sont incluses (crochets) car elles le sont dans les deux intervalles. Donc $I \\cap J = [3, 5]$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

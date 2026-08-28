@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Somme / produit",
+  "title": "Parité : sommes et produits",
+  "blocks": [
+    {
+      "title": "Somme de deux entiers pairs",
+      "content": "La somme de deux entiers pairs est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "paire|un entier pair"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux nombres pairs s'écrit $2k + 2l = 2(k+l)$, ce qui est un multiple de $2$, donc un entier pair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit d'un entier pair et d'un entier impair",
+      "content": "Le produit d'un entier pair et d'un entier impair est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "pair|un entier pair"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un entier pair s'écrit $2k$, un impair $2l+1$. Leur produit est $2k(2l+1) = 2[k(2l+1)]$, multiple de $2$, donc pair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Parité d'une somme impaire",
+      "content": "Si $a$ et $b$ sont deux entiers tels que $a+b$ est impair, alors l'un des deux est {{1}} et l'autre est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "pair|un entier pair",
+        "impair|un entier impair"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux entiers de même parité est toujours paire (pair+pair=pair, impair+impair=pair). Pour obtenir une somme impaire, il faut nécessairement un entier pair et un entier impair.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

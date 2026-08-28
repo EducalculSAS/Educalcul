@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Construire un diagramme",
+  "title": "Construction de diagrammes en bâtons",
+  "questions": [
+    {
+      "text": "Quelle échelle faut-il choisir pour représenter les nombres $2$, $5$, $8$ et $10$ dans un diagramme en bâtons où chaque unité correspond à un carré ?",
+      "options": [
+        "$1$ carré = $1$ unité",
+        "$1$ carré = $2$ unités",
+        "$1$ carré = $5$ unités",
+        "$1$ carré = $10$ unités"
+      ],
+      "correctAnswer": "$1$ carré = $1$ unité",
+      "explanation": "L'échelle $1$ carré = $1$ unité permet de représenter directement chaque valeur par le même nombre de carrés. Les autres échelles ne correspondent pas aux valeurs données.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un diagramme en bâtons, la valeur $7$ est représentée par une barre de hauteur $7$ carrés. Si l'échelle est 1 carré = $2$ unités, quelle hauteur en carrés faut-il tracer pour la valeur $10$ ?",
+      "options": [
+        "$5$ carrés",
+        "$4$ carrés",
+        "$6$ carrés",
+        "$3$ carrés"
+      ],
+      "correctAnswer": "$5$ carrés",
+      "explanation": "Avec l'échelle 1 carré = $2$ unités, la hauteur en carrés se calcule en divisant la valeur par $2$. $10 / 2 = 5$, donc $5$ carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un diagramme en bâtons à partir du tableau suivant :\\nFruit : Pommes, Poires, Bananes\\nNombre : $8$, $5$, $12$\\nQuelle est l'ordre correct des barres de la plus haute à la plus basse ?",
+      "options": [
+        "Bananes, Pommes, Poires",
+        "Pommes, Bananes, Poires",
+        "Poires, Pommes, Bananes",
+        "Bananes, Poires, Pommes"
+      ],
+      "correctAnswer": "Bananes, Pommes, Poires",
+      "explanation": "La valeur la plus grande est $12$ (Bananes), puis $8$ (Pommes), puis $5$ (Poires). L'ordre décroissant est donc Bananes, Pommes, Poires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel erreur se trouve dans le diagramme ci‑dessous ?",
+      "options": [
+        "La barre B est trop courte",
+        "La barre A est trop haute",
+        "L'échelle n'est pas indiquée",
+        "Les étiquettes sont inversées"
+      ],
+      "correctAnswer": "La barre B est trop courte",
+      "explanation": "Le diagramme montre une barre B de hauteur $5$ carrés alors que la valeur associée est $6$. La barre B est donc trop courte par rapport à l'échelle choisie.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons avec une erreur sur la barre B",
+        "bars": [
+          {
+            "label": "A",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "C",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Tu dois tracer un diagramme en bâtons pour les données suivantes :\\nJour : Lundi, Mardi, Mercredi\\nNombre de livres lus : $3$, $6$, $4$\\nQuelle sera la hauteur de la barre pour Mardi si l'échelle choisie est 1 carré = $1$ unité ?",
+      "options": [
+        "$3$ carrés",
+        "$6$ carrés",
+        "$4$ carrés",
+        "$5$ carrés"
+      ],
+      "correctAnswer": "$6$ carrés",
+      "explanation": "Avec une échelle 1 carré = $1$ unité, la hauteur de la barre correspond exactement à la valeur. Pour Mardi, la valeur est $6$, donc la barre aura $6$ carrés de hauteur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

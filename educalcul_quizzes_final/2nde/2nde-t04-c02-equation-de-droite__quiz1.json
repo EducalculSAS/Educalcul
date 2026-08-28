@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Reconnaître",
+  "title": "Quiz : Reconnaître l'équation d'une droite",
+  "questions": [
+    {
+      "text": "On donne une droite de pente $2$ et d'ordonnée à l'origine $3$. Laquelle des équations suivantes correspond à cette droite ?",
+      "options": [
+        "$y = 2x + 3$",
+        "$y = 3x + 2$",
+        "$y = 2x - 3$",
+        "$y = -2x + 3$"
+      ],
+      "correctAnswer": "$y = 2x + 3$",
+      "explanation": "L'équation réduite d'une droite est $y = mx + b$ où $m$ est la pente et $b$ l'ordonnée à l'origine. Avec $m=2$ et $b=3$, on obtient $y = 2x + 3$. Les autres options inversent la pente et l'ordonnée, changent le signe de l'ordonnée ou changent le signe de la pente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite passe par les points $A(0;1)$ et $B(2;5)$. Quelle est son équation sous forme réduite ?",
+      "options": [
+        "$y = 2x + 1$",
+        "$y = 2x - 1$",
+        "$y = 0,5x + 1$",
+        "$y = 2x + 3$"
+      ],
+      "correctAnswer": "$y = 2x + 1$",
+      "explanation": "La pente est $m = \\frac{5-1}{2-0} = 2$. Comme le point $A$ a pour abscisse $0$, son ordonnée $1$ est l'ordonnée à l'origine. L'équation est donc $y = 2x + 1$. Les distracteurs correspondent à une erreur sur l'ordonnée à l'origine, une inversion de la pente ou une mauvaise lecture du point $B$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'équation cartésienne $3x - 4y + 12 = 0$ représente une droite. Laquelle des équations réduites suivantes est équivalente ?",
+      "options": [
+        "$y = \\frac{3}{4}x + 3$",
+        "$y = \\frac{3}{4}x - 3$",
+        "$y = -\\frac{3}{4}x + 3$",
+        "$y = \\frac{3}{4}x + 4$"
+      ],
+      "correctAnswer": "$y = \\frac{3}{4}x + 3$",
+      "explanation": "On isole $y$ : $-4y = -3x - 12$ puis $y = \\frac{3}{4}x + 3$. Les autres options proviennent d'erreurs de signe sur le terme constant, d'inversion du signe de la pente ou d'une mauvaise division du terme constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le graphique ci-dessous. Quelle est l'équation réduite de la droite tracée ?",
+      "options": [
+        "$y = 2x - 2$",
+        "$y = 2x + 2$",
+        "$y = -2x - 2$",
+        "$y = 0,5x - 2$"
+      ],
+      "correctAnswer": "$y = 2x - 2$",
+      "explanation": "La droite coupe l'axe des ordonnées en $-2$ (ordonnée à l'origine). En prenant un second point, par exemple $(2;2)$, la pente est $\\frac{2-(-2)}{2-0}=2$. L'équation est donc $y = 2x - 2$. Les distracteurs correspondent à un mauvais signe pour l'ordonnée à l'origine, un signe de pente inversé ou une pente mal calculée.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x-2",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Droite passant par (0,-2) et (2,2)"
+      }
+    },
+    {
+      "text": "Une droite a pour pente $-3$ et passe par le point $C(1;4)$. Laquelle des équations suivantes est son équation réduite ?",
+      "options": [
+        "$y = -3x + 7$",
+        "$y = -3x + 1$",
+        "$y = 3x + 7$",
+        "$y = -3x - 7$"
+      ],
+      "correctAnswer": "$y = -3x + 7$",
+      "explanation": "On utilise la forme point-pente : $y - 4 = -3(x - 1)$. En développant : $y - 4 = -3x + 3$, donc $y = -3x + 7$. Les autres options proviennent d'erreurs sur l'ordonnée à l'origine (oubli du $+3$), d'inversion du signe de la pente ou d'une mauvaise gestion du signe lors du passage de la forme point-pente à la forme réduite.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

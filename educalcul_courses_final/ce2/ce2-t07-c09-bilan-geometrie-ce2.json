@@ -1,0 +1,496 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.114886+00:00",
+  "id": 204,
+  "code": "ce2-t07-c09",
+  "title": "Bilan - Géométrie CE2",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie CE2.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Bilan - Géométrie CE2",
+    "objectif_global": "Bilan - Géométrie CE2",
+    "mini_lecons_imposees": [
+      "Reconnaître, décrire, construire.",
+      "Utiliser instruments.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître, décrire, construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les figures qu'on retrouve partout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde autour de toi : la porte de la classe, une fenêtre, ton cahier, un timbre-poste. Toutes ces formes ont quelque chose en commun. Ce sont des $quadrilatères$, c'est-à-dire des figures fermées qui possèdent exactement $4$ côtés. Aujourd'hui, on va apprendre à les reconnaître rien qu'en les observant, sans même avoir besoin de les mesurer."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Figure plane fermée qui a exactement $4$ côtés et $4$ sommets.",
+              "example": "Un carré, un rectangle, un losange, un trapèze sont des quadrilatères."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c",
+                "d"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Un quadrilatère ABCD avec un angle droit en A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rectangle et le carré, deux stars"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parmi les quadrilatères, le $rectangle$ et le $carré$ sont les plus faciles à repérer. Un rectangle a $4$ angles droits. Ses côtés deux à deux opposés ont la même longueur. Le carré est un rectangle très particulier : en plus d'avoir $4$ angles droits, ses $4$ côtés ont tous la même longueur. Pour les distinguer, il suffit de comparer les longueurs : si les $4$ côtés sont égaux, c'est un carré ; sinon, c'est un rectangle."
+            },
+            {
+              "type": "display_math",
+              "latex": "Carr\\acute{e} : 4 c\\^ot\\'es \\'egaux + 4 angles droits"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Comparer des longueurs : le carré a 4 parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décrire un triangle avec des mots justes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les triangles ont $3$ côtés et $3$ sommets. Pour bien les décrire, on regarde leurs angles et leurs côtés. Un $triangle rectangle$ a un angle droit. Un $triangle isocèle$ a deux côtés de même longueur. Un $triangle équilatéral$ a ses trois côtés égaux. Parfois, un triangle peut être les deux à la fois : rectangle et isocèle ! C'est le cas quand l'angle droit est entre les deux côtés égaux."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "5 cm",
+                "7 cm"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle rectangle isocèle en A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un carré pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un carré de côté $4$ cm, on commence par un segment $[AB]$ de $4$ cm. À l'équerre, on trace une perpendiculaire en $A$ et on reporte $4$ cm pour obtenir $D$. Même chose en $B$ pour obtenir $C$. Il ne reste plus qu'à relier $C$ et $D$. Vérifie : les $4$ côtés mesurent $4$ cm et les $4$ angles sont droits. Ton carré est parfait !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment $[AB]$ de $4$ cm à la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les deux perpendiculaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre en $A$ et trace la perpendiculaire. Reporte $4$ cm pour placer $D$. Fais pareil en $B$ pour placer $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fermer le carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $C$ et $D$. Vérifie que $[CD]$ mesure $4$ cm."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures, lesquelles sont des quadrilatères ? (Il y a plusieurs réponses possibles.)",
+              "answer": "Les figures fermées à 4 côtés : le carré, le rectangle, le losange, le trapèze.",
+              "hint": "Compte les côtés de chaque figure. Un quadrilatère en a exactement 4.",
+              "explanation": "Un quadrilatère est une figure fermée à 4 côtés. Le triangle en a 3, le pentagone en a 5. Seuls le carré, le rectangle, le losange et le trapèze correspondent."
+            },
+            {
+              "question": "Un rectangle a des côtés de $6$ cm et $4$ cm. Est-ce un carré ?",
+              "answer": "Non, ce n'est pas un carré.",
+              "hint": "Rappelle-toi : dans un carré, les 4 côtés ont la même longueur.",
+              "explanation": "Dans un carré, les 4 côtés sont égaux. Ici, deux côtés font $6$ cm et deux autres font $4$ cm. C'est donc un rectangle, mais pas un carré."
+            },
+            {
+              "question": "Un triangle a deux côtés de $5$ cm et un angle droit entre eux. Comment l'appelle-t-on ?",
+              "answer": "Triangle rectangle isocèle.",
+              "hint": "Regarde : a-t-il un angle droit ? A-t-il deux côtés égaux ?",
+              "explanation": "Il a un angle droit → rectangle. Il a deux côtés égaux → isocèle. C'est donc un triangle rectangle isocèle."
+            },
+            {
+              "question": "Tu construis un carré de côté $3$ cm. Quelle longueur doit faire le dernier côté que tu traces ?",
+              "answer": "$3$ cm.",
+              "hint": "Tous les côtés d'un carré ont la même longueur.",
+              "explanation": "Dans un carré, les 4 côtés sont égaux. Si les trois premiers font $3$ cm, le dernier doit aussi faire $3$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser instruments.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle, ton amie pour les longueurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais la règle depuis le CP, mais en CE2 on l'utilise avec plus de précision. Pour mesurer un segment, place le zéro de la règle exactement sur un bout du segment. Lis la graduation qui tombe sur l'autre bout. Attention : ton œil doit être bien au-dessus de la graduation, pas de côté, sinon tu te trompes de $1$ ou $2$ millimètres !"
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 7,
+              "unit": "cm",
+              "caption": "Mesurer un segment de 7 cm : aligner le zéro sur le point de départ"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un segment d'une longueur donnée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un segment de $5$ cm, pose ta règle sur la feuille. Fais un petit trait au $0$ et un autre au $5$. Enlève la règle, relie les deux traits au crayon à papier en t'aidant du bord de la règle. Écris la longueur au-dessus du segment : $5$ cm. Vérifie en remesurant : si tu tombes sur $5$ cm, c'est gagné !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Marquer les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la règle. Fais un point au 0 et un point à la graduation demandée (ici 5 cm)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relier proprement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enlève la règle. Replace-la sur les deux points. Trace le segment en appuyant bien sur la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter et vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la mesure au-dessus. Remesure pour être sûr."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équerre, championne des angles droits"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équerre est un triangle rectangle en plastique ou en métal. Elle sert à deux choses : vérifier si un angle est droit, et tracer une perpendiculaire. Pour vérifier, place l'angle droit de l'équerre sur le sommet de l'angle. Si les deux côtés de l'équerre coïncident parfaitement avec les côtés de l'angle, c'est un angle droit. Sinon, c'est plus grand ou plus petit."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 1,
+              "caption": "Vérifier l'angle droit en B avec l'équerre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer une perpendiculaire avec l'équerre"
+            },
+            {
+              "type": "paragraph",
+              "content": "On veut tracer une droite perpendiculaire à une droite $(d)$ passant par un point $A$ sur $(d)$. Place l'équerre : un côté le long de $(d)$, l'angle droit sur $A$. Trace le long de l'autre côté de l'équerre. Tu as ta perpendiculaire ! Si le point $A$ n'est pas sur la droite, on fait glisser l'équerre le long d'une règle jusqu'à ce que l'angle droit passe par $A$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(d) \\perp (d') \\text{ en } A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu mesures un segment. Le zéro de la règle est bien au départ, mais la graduation tombe entre $4$ cm et $5$ cm, plus près de $5$ cm. Quelle longueur donnes-tu ?",
+              "answer": "$5$ cm (au centimètre près).",
+              "hint": "Regarde la graduation la plus proche. Est-ce plus près de 4 ou de 5 ?",
+              "explanation": "On arrondit au centimètre le plus proche. Si c'est plus près de $5$ cm, on note $5$ cm."
+            },
+            {
+              "question": "Trace un segment $[EF]$ de $6$ cm. Quelle est la première chose à faire ?",
+              "answer": "Poser la règle et marquer un point au 0 et un point au 6.",
+              "hint": "Il faut deux repères avant de tracer le trait.",
+              "explanation": "On marque d'abord les deux bornes (0 et 6 cm), puis on relie les deux points en s'aidant de la règle."
+            },
+            {
+              "question": "Comment vérifier si l'angle d'un coin de table est droit avec une équerre ?",
+              "answer": "Poser l'angle droit de l'équerre sur le coin. Si les deux bords coïncident, c'est un angle droit.",
+              "hint": "L'équerre a un angle droit parfait. Elle sert de modèle.",
+              "explanation": "On superpose l'angle droit de l'équerre à l'angle à tester. Coïncidence parfaite = angle droit."
+            },
+            {
+              "question": "Tu dois tracer une perpendiculaire à une droite $(d)$ passant par un point $A$ sur $(d)$. Où places-tu l'angle droit de l'équerre ?",
+              "answer": "Sur le point $A$.",
+              "hint": "La perpendiculaire doit passer par A. L'angle droit de l'équerre marque le point de passage.",
+              "explanation": "L'angle droit de l'équerre se place exactement sur le point A. Un côté le long de (d), l'autre trace la perpendiculaire."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ce que tu sais faire maintenant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as parcouru tout le programme de géométrie du CE2. Prends un moment pour regarder tout le chemin fait depuis la rentrée. Tu sais maintenant reconnaître, nommer et décrire les figures planes les plus courantes. Tu sais utiliser tes instruments avec précision. Cette checklist va t'aider à voir ce qui est bien acquis et ce qu'il te reste à revoir tranquillement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Relis chaque item calmement. Si tu peux l'expliquer à un copain avec tes propres mots et un exemple, c'est que c'est maîtrisé. Sinon, note-le sur un papier pour t'entraîner encore un peu. Il n'y a aucune urgence : la géométrie, c'est comme apprendre à faire du vélo, ça vient avec la pratique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Figures planes : reconnaître et décrire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais dire si une figure est un triangle, un quadrilatère, un pentagone. Tu sais repérer un carré, un rectangle, un losange, un trapèze parmi d'autres quadrilatères. Tu sais dire : « Ce triangle a un angle droit, c'est un triangle rectangle » ou « Ce triangle a deux côtés égaux, c'est un triangle isocèle ». Tu connais le vocabulaire : côté, sommet, angle droit, côtés opposés, côtés consécutifs."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de côtés par figure",
+              "bars": [
+                {
+                  "label": "Triangle",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Quadrilatère",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pentagone",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire avec la règle et l'équerre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais mesurer un segment au centimètre près, tracer un segment d'une longueur donnée, vérifier un angle droit, tracer une perpendiculaire passant par un point sur une droite. Tu sais construire un carré quand on te donne la longueur du côté, et un rectangle quand on te donne les deux longueurs de côtés. Tu prends le temps de bien poser ta règle, de bien placer ton équerre, et tu vérifies toujours tes tracés."
+            },
+            {
+              "type": "number_line",
+              "caption": "Longueurs usuelles en cm",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Petit carré"
+                },
+                {
+                  "value": 6,
+                  "label": "Rectangle moyen"
+                },
+                {
+                  "value": 10,
+                  "label": "Grand rectangle"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire précis, ton atout"
+            },
+            {
+              "type": "paragraph",
+              "content": "En géométrie, les mots ont un sens exact. Tu sais maintenant la différence entre un côté et un segment, entre un sommet et un point, entre des côtés opposés et des côtés consécutifs. Tu sais écrire $[AB]$ pour le segment, $(AB)$ pour la droite, $[AB)$ pour la demi-droite. Tu sais lire et écrire $AB = 5$ cm. Ce vocabulaire te permettra de comprendre les énoncés du CM1 sans te perdre."
+            },
+            {
+              "type": "definition",
+              "term": "Côtés consécutifs",
+              "definition": "Deux côtés qui se touchent (ils ont un sommet en commun).",
+              "example": "Dans un carré ABCD, [AB] et [BC] sont consécutifs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ta checklist personnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici ta liste de contrôle. Coche mentalement ce que tu sais faire seul, sans aide. Ce qui n'est pas coché n'est pas un échec, c'est juste un entraînement en plus à prévoir. La géométrie, c'est de l'observation et de la précision : plus tu t'exerces, plus c'est facile. Tu es prêt pour le CM1 !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître et nommer triangle, carré, rectangle, losange, trapèze, pentagone.",
+                "Je sais décrire un triangle (rectangle, isocèle, équilatéral) et un quadrilatère.",
+                "Je sais mesurer un segment à la règle au centimètre près.",
+                "Je sais tracer un segment d'une longueur donnée à la règle.",
+                "Je sais vérifier un angle droit avec l'équerre.",
+                "Je sais tracer une perpendiculaire passant par un point sur une droite.",
+                "Je sais construire un carré et un rectangle aux dimensions données.",
+                "Je connais le vocabulaire : côté, sommet, angle droit, côtés opposés, côtés consécutifs, segment, droite, demi-droite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une figure a 5 côtés et 5 sommets. Comment s'appelle-t-elle ?",
+              "answer": "Un pentagone.",
+              "hint": "Penta- veut dire 5, comme dans pentagone.",
+              "explanation": "Une figure à 5 côtés est un pentagone. Tri- = 3, Quadri- = 4, Penta- = 5."
+            },
+            {
+              "question": "Tu dois construire un rectangle de $7$ cm sur $4$ cm. Quelle est la première chose à tracer ?",
+              "answer": "Un segment de $7$ cm (ou $4$ cm) pour le premier côté.",
+              "hint": "Choisis une longueur pour commencer. Le rectangle a deux paires de côtés égaux.",
+              "explanation": "On trace d'abord un côté (par exemple $7$ cm), puis les deux perpendiculaires de $4$ cm aux extrémités, puis le dernier côté de $7$ cm."
+            },
+            {
+              "question": "Dans un carré $ABCD$, les côtés $[AB]$ et $[CD]$ sont-ils consécutifs ou opposés ?",
+              "answer": "Opposés.",
+              "hint": "Se touchent-ils ? Ont-ils un sommet en commun ?",
+              "explanation": "Les côtés consécutifs se touchent (un sommet commun). [AB] et [CD] ne se touchent pas, ce sont des côtés opposés."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

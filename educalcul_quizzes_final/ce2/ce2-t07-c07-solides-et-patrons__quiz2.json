@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître un patron de cube / pavé simple",
+  "title": "Quiz : Reconnaître un patron de cube ou de pavé droit",
+  "questions": [
+    {
+      "text": "Lequel de ces patrons permet de former un cube ?",
+      "options": [
+        "Une suite de 5 carrés alignés avec un carré attaché au milieu",
+        "Une croix formée de 4 carrés alignés avec un carré de chaque côté du deuxième carré",
+        "Un rectangle divisé en 6 carrés de même taille",
+        "Quatre carrés formant un grand carré (2 par 2) avec un carré attaché sur le côté"
+      ],
+      "correctAnswer": "Une croix formée de 4 carrés alignés avec un carré de chaque côté du deuxième carré",
+      "explanation": "Un cube a 6 faces carrées. Le patron en croix (4 carrés en ligne, un de chaque côté du 2e) est un des 11 patrons possibles du cube. La suite de 5 carrés alignés ne se replie pas sans chevauchement. Le rectangle de 6 carrés n'est pas un patron de cube (formes différentes). Le grand carré de 4 carrés avec un 5e attaché ne fait que 5 faces.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces patrons correspond à un pavé droit (une boîte rectangulaire) ?",
+      "options": [
+        "6 carrés identiques en forme de croix",
+        "3 paires de rectangles de dimensions différentes : deux $4\\times3$, deux $4\\times2$, deux $3\\times2$",
+        "4 triangles et un carré",
+        "8 carrés identiques en deux groupes de 4"
+      ],
+      "correctAnswer": "3 paires de rectangles de dimensions différentes : deux $4\\times3$, deux $4\\times2$, deux $3\\times2$",
+      "explanation": "Un pavé droit a 6 faces rectangulaires : 3 paires de faces opposées identiques. L'option correcte décrit ces 3 paires de rectangles. La croix de 6 carrés est un patron de cube. Les triangles et le carré forment une pyramide. 8 carrés ne correspondent à aucun pavé droit (6 faces seulement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le patron ci-dessous. Peut-on replier ce patron pour former un cube ?",
+      "options": [
+        "Oui, c'est un patron de cube valide.",
+        "Non, il manque une face pour faire un cube.",
+        "Non, deux faces se superposeraient en se repliant.",
+        "Non, ce patron forme un pavé droit."
+      ],
+      "correctAnswer": "Oui, c'est un patron de cube valide.",
+      "explanation": "Le patron affiché est un patron classique de cube (en forme de T ou d'échelle selon l'orientation générée). Il comporte exactement 6 faces carrées qui se replient sans chevauchement ni trou pour former un cube. Les autres réponses décrivent des erreurs qui ne s'appliquent pas à cette figure.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Parmi ces descriptions, laquelle correspond à un patron qui NE PEUT PAS former un cube ?",
+      "options": [
+        "Quatre carrés alignés, un carré attaché au-dessus du deuxième, un carré attaché au-dessus du troisième",
+        "Cinq carrés alignés, un carré attaché au-dessus du troisième",
+        "Trois carrés alignés, un carré attaché au-dessus de chacun des trois",
+        "Trois carrés alignés, un carré attaché au-dessus du premier, un au-dessus du deuxième, un au-dessus du troisième"
+      ],
+      "correctAnswer": "Cinq carrés alignés, un carré attaché au-dessus du troisième",
+      "explanation": "Un patron de cube ne peut pas contenir 5 carrés alignés. En repliant, les faces se chevaucheraient ou il manquerait une face pour fermer le volume. Les trois autres descriptions correspondent à des patrons valides de cube (formes en T, en escalier, en croix décalée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit a des dimensions $5$ cm, $3$ cm et $2$ cm. Lequel de ces patrons pourrait être le sien ?",
+      "options": [
+        "6 carrés de $3$ cm de côté",
+        "Deux rectangles $5\\times3$, deux rectangles $5\\times2$, deux rectangles $3\\times2$",
+        "Quatre rectangles $5\\times3$ et deux carrés $2\\times2$",
+        "Six rectangles $5\\times3$"
+      ],
+      "correctAnswer": "Deux rectangles $5\\times3$, deux rectangles $5\\times2$, deux rectangles $3\\times2$",
+      "explanation": "Un pavé droit de dimensions $5$, $3$, $2$ a trois paires de faces opposées : deux faces $5\\times3$, deux faces $5\\times2$ et deux faces $3\\times2$. L'option 1 est un cube. L'option 3 a des dimensions incohérentes (carrés $2\\times2$ au lieu de rectangles $3\\times2$). L'option 4 n'a qu'un type de face.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

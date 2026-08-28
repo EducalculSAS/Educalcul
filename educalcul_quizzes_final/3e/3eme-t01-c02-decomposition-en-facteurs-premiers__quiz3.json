@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Applications",
+  "title": "Applications de la décomposition en facteurs premiers",
+  "questions": [
+    {
+      "text": "On donne les décompositions en facteurs premiers : $252 = 2^2 \\times 3^2 \\times 7$ et $378 = 2 \\times 3^3 \\times 7$. Quelle est la fraction irréductible égale à $\\dfrac{252}{378}$ ?",
+      "options": [
+        "$\\dfrac{2}{3}$",
+        "$\\dfrac{4}{6}$",
+        "$\\dfrac{14}{21}$",
+        "$\\dfrac{12}{18}$"
+      ],
+      "correctAnswer": "$\\dfrac{2}{3}$",
+      "explanation": "Pour simplifier la fraction, on divise le numérateur et le dénominateur par leur PGCD. Le PGCD se construit en prenant les facteurs communs avec les plus petits exposants : $2^1 \\times 3^2 \\times 7^1 = 126$. En divisant $252$ et $378$ par $126$, on obtient $\\dfrac{2}{3}$. Les autres propositions sont des fractions équivalentes mais non irréductibles car leur numérateur et dénominateur ont encore des diviseurs communs ($2$ pour $\\frac{4}{6}$, $7$ pour $\\frac{14}{21}$, $6$ pour $\\frac{12}{18}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'entier naturel $n$ dont la décomposition en facteurs premiers est $n = 2^3 \\times 3^2 \\times 5 \\times 11$ ?",
+      "options": [
+        "3960",
+        "1980",
+        "7920",
+        "3600"
+      ],
+      "correctAnswer": "3960",
+      "explanation": "On calcule le produit étape par étape : $2^3 = 8$, $3^2 = 9$. $8 \\times 9 = 72$. $72 \\times 5 = 360$. $360 \\times 11 = 3960$. L'option 1980 correspond à l'oubli du facteur $2$ (soit $2^2$ au lieu de $2^3$), 7920 correspond à un facteur $2$ en trop ($2^4$), et 3600 correspond à l'oubli du facteur $11$ et à un facteur $5$ en trop ($5^2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a = 2^4 \\times 3^2 \\times 5$ et $b = 2^2 \\times 3^3 \\times 7$. Quelle est la couple (PGCD, PPCM) de $a$ et $b$ ?",
+      "options": [
+        "PGCD = $36$ et PPCM = $15120$",
+        "PGCD = $72$ et PPCM = $7560$",
+        "PGCD = $18$ et PPCM = $30240$",
+        "PGCD = $108$ et PPCM = $5040$"
+      ],
+      "correctAnswer": "PGCD = $36$ et PPCM = $15120$",
+      "explanation": "Le PGCD prend les facteurs communs avec le plus petit exposant : $2^2 \\times 3^2 = 4 \\times 9 = 36$. Le PPCM prend tous les facteurs avec le plus grand exposant : $2^4 \\times 3^3 \\times 5 \\times 7 = 16 \\times 27 \\times 35 = 15120$. On vérifie la relation $a \\times b = \\text{PGCD} \\times \\text{PPCM}$ : $a \\times b = (2^6 \\times 3^5 \\times 5 \\times 7) = 36 \\times 15120$. L'option B inverse les exposants pour le PGCD/PPCM sur le $2$, l'option C prend le min sur le $3$ mais oublie le $2^2$ au PGCD, l'option D prend le max pour le PGCD.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simplifier $\\sqrt{1250}$ à l'aide de la décomposition en facteurs premiers. Quelle est la forme simplifiée exacte ?",
+      "options": [
+        "$25\\sqrt{2}$",
+        "$5\\sqrt{50}$",
+        "$25\\sqrt{5}$",
+        "$50\\sqrt{5}$"
+      ],
+      "correctAnswer": "$25\\sqrt{2}$",
+      "explanation": "On décompose $1250$ : $1250 = 125 \\times 10 = 5^3 \\times 2 \\times 5 = 2 \\times 5^4 = 2 \\times (5^2)^2$. Alors $\\sqrt{1250} = \\sqrt{2 \\times (5^2)^2} = 5^2 \\sqrt{2} = 25\\sqrt{2}$. L'option $5\\sqrt{50}$ n'est pas simplifiée car $50$ contient le carré $25$. L'option $25\\sqrt{5}$ vient d'une erreur sur l'exposant de $5$ (croire que $5^4 = 5^2 \\times 5$ au lieu de $(5^2)^2$). L'option $50\\sqrt{5}$ correspond à $5^2 \\times 2 \\times \\sqrt{5}$, confusion entre facteur sorti et resté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus petit entier naturel non nul multiple de $18$ et qui possède exactement $10$ diviseurs ?",
+      "options": [
+        "162",
+        "144",
+        "90",
+        "324"
+      ],
+      "correctAnswer": "162",
+      "explanation": "Un multiple de $18 = 2 \\times 3^2$ doit contenir au moins $2^1$ et $3^2$ dans sa décomposition. Le nombre de diviseurs $d(n)$ pour $n = p_1^{\\alpha_1} \\dots$ est $(\\alpha_1+1)\\dots$. On veut $d(n)=10$. Les factorisations de $10$ sont $10=10\\times1$ (forme $p^9$) ou $10=5\\times2$ (forme $p^4 q^1$). La forme $p^9$ ne convient pas (impossible d'avoir $2$ et $3$). Pour la forme $p^4 q$, il faut placer les $2$ et $3$. Si $p=3, q=2$ : $n = 3^4 \\times 2^1 = 81 \\times 2 = 162$. $d(162) = (4+1)(1+1)=10$. C'est un multiple de $18$. Si $p=2, q=3$ : $n=2^4 \\times 3 = 48$, pas multiple de $9$. $144 = 2^4 \\times 3^2$ a $5 \\times 3 = 15$ diviseurs. $90 = 2 \\times 3^2 \\times 5$ a $2 \\times 3 \\times 2 = 12$ diviseurs. $324 = 2^2 \\times 3^4$ a $3 \\times 5 = 15$ diviseurs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

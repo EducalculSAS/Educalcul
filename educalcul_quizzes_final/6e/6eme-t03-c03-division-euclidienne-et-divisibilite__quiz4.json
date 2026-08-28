@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Application : Division euclidienne et divisibilité",
+  "title": "Quiz : Applications de la division euclidienne et de la divisibilité (6e)",
+  "questions": [
+    {
+      "text": "Quel est le quotient de la division euclidienne de $56$ par $8$ ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La division euclidienne de $56$ par $8$ s'écrit $56 = 8 \\times 7 + 0$. Le quotient est donc $7$ et le reste $0$. Les autres options correspondent à des erreurs de calcul du quotient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la division euclidienne de $123$ par $11$, quel est le reste ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "On calcule $11 \\times 11 = 121$. Le reste est $123 - 121 = 2$. Les distracteurs proviennent d'une mauvaise multiplication ou d'une soustraction incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des nombres suivants est divisible par $9$ ?",
+      "options": [
+        "$123$",
+        "$234$",
+        "$345$",
+        "$456$"
+      ],
+      "correctAnswer": "$234$",
+      "explanation": "Un nombre est divisible par $9$ si la somme de ses chiffres est un multiple de $9$. Pour $234$, $2+3+4 = 9$, qui est multiple de $9$. Les autres nombres donnent des sommes $6$, $12$, $15$, non multiples de $9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un professeur a $97$ cahiers à distribuer équitablement entre $6$ élèves. Combien de cahiers chaque élève reçoit-il et combien en reste-t-il ?",
+      "options": [
+        "Chaque élève reçoit $16$ cahiers, reste $1$",
+        "Chaque élève reçoit $15$ cahiers, reste $7$",
+        "Chaque élève reçoit $16$ cahiers, reste $0$",
+        "Chaque élève reçoit $15$ cahiers, reste $1$"
+      ],
+      "correctAnswer": "Chaque élève reçoit $16$ cahiers, reste $1$",
+      "explanation": "La division euclidienne de $97$ par $6$ donne $97 = 6 \\times 16 + 1$. Chaque élève reçoit $16$ cahiers et il reste $1$ cahier. Les autres réponses correspondent à des erreurs sur le quotient ou le reste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche un entier $n$ tel que la division euclidienne de $n$ par $7$ donne un quotient de $12$ et un reste de $5$. Quelle est la valeur de $n$ ?",
+      "options": [
+        "$84$",
+        "$89$",
+        "$94$",
+        "$99$"
+      ],
+      "correctAnswer": "$89$",
+      "explanation": "D'après la relation de la division euclidienne, $n = 7 \\times 12 + 5 = 84 + 5 = 89$. Les autres options proviennent d'oublier d'ajouter le reste ($84$), d'ajouter $10$ au lieu de $5$ ($94$) ou d'ajouter $15$ ($99$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

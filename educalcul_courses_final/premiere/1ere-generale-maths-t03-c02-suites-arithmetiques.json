@@ -1,0 +1,346 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.314427+00:00",
+  "id": 583,
+  "code": "1ere-generale-maths-t03-c02",
+  "title": "Suites arithmétiques",
+  "description": "Cours structuré Educalcul : Suites arithmétiques.",
+  "subject": "Suites et modèles discrets",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Suites et modèles discrets",
+    "titre_du_cours": "Suites arithmétiques",
+    "objectif_global": "Suites arithmétiques",
+    "mini_lecons_imposees": [
+      "Raison.",
+      "Terme général.",
+      "Somme si programme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Suites et modèles discrets",
+      "lessons": [
+        {
+          "title": "Raison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une suite arithmétique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier rendez-vous avec les suites arithmétiques. Imagine une liste de nombres qui avance comme les marches d'un escalier : chaque marche est plus haute que la précédente d'une hauteur fixe. En mathématiques, on appelle cette hauteur fixe la raison, et la liste entière une suite arithmétique. Pour la définir précisément, on dit qu'une suite $(u_n)$ est arithmétique s'il existe un nombre réel $r$, appelé raison, tel que pour tout entier naturel $n$, le terme suivant s'obtient en ajoutant $r$ au terme courant : $u_{n+1}=u_n+r$. Cette propriété simple cache une grande puissance : dès que l'on connaît le premier terme $u_0$ (ou $u_1$ selon la convention) et la raison $r$, on peut reconstruire toute la suite sans jamais avoir à deviner. Prenons un exemple concret : supposons que tu déposes $10$ euros sur un livret le premier mois et que tu ajoutes $5$ euros chaque mois suivant. Les montants successifs $10, 15, 20, 25, …$ forment une suite arithmétique de raison $5$. Le terme $u_0$ vaut $10$, le terme $u_1$ vaut $15$, et ainsi de suite. Remarque que la raison peut être négative, ce qui correspond à une suite qui décroît, comme une température qui baisse de $2$ degrés chaque jour. Dans ce cours, nous allons apprendre à repérer cette raison, à l'exprimer sous forme de formule récursive, et à reconnaître une suite arithmétique rien qu'en observant quelques termes ou un graphique."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "x+2",
+              "u0": 3,
+              "iterations": 5,
+              "xMin": 0,
+              "xMax": 10,
+              "caption": "Visualisation de la récurrence $u_{n+1}=u_n+2$ avec $u_0=3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée de raison est en place, passons à la façon de l'écrire mathématiquement. La définition récursive nous donne un mode de construction pas à pas : on connaît le premier terme, puis on applique la même règle pour obtenir le suivant. C'est exactement ce que fait un algorithme simple : tant qu'on veut un nouveau terme, on ajoute la raison au terme précédent. Cette vue algorithmique est très utile quand on programme ou quand on veut générer les premiers termes sans calculer de formule close."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La définition récursive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite arithmétique se décrit par deux informations : le premier terme $u_0$ (ou $u_1$) et la raison $r$. La relation de récurrence s'écrit $u_{n+1}=u_n+r$ pour tout $n\\in\\mathbb{N}$. Cela signifie que si je connais $u_3$, je trouve $u_4$ en ajoutant $r$. Par exemple, avec $u_0=7$ et $r=-3$, on obtient $u_1=4$, $u_2=1$, $u_3=-2$, $u_4=-5$, etc. La raison négative fait décroître la suite. Cette définition récursive est la base de tout calcul itératif : elle ne nécessite pas de connaître l'expression explicite du terme général, ce qui est un atout quand on découvre la suite pour la première fois. On peut aussi lire cette relation comme une fonction définie par $f(x)=x+r$ ; chaque itération applique $f$ au résultat précédent. C'est cette vision qui sous-tend les suites définies par récurrence dans de nombreux problèmes de modélisation discrète."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1}=u_n+r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment construire la suite pas à pas, il est temps d'apprendre à la reconnaître sans avoir à générer tous les termes. Si on te donne une liste de nombres, par exemple $3, 8, 13, 18, 23$, tu peux vérifier si les différences successives sont constantes : $8-3=5$, $13-8=5$, $18-13=5$, $23-18=5$. Comme la différence ne change pas, la suite est arithmétique de raison $5$. Sur un graphique, les points $(n, u_n)$ s'alignent sur une droite, ce qui est une signature visuelle immédiate. Cette propriété géométrique permet de décider très vite si une suite est arithmétique, même quand on ne connaît que quelques termes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une suite arithmétique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tester une suite, calcule les différences $u_{n+1}-u_n$ pour plusieurs $n$ consécutifs. Si toutes ces différences sont égales à un même nombre $r$, alors la suite est arithmétique de raison $r$. Si une seule différence diffère, la suite n'est pas arithmétique. Sur un repère, trace les points $(0,u_0), (1,u_1), (2,u_2), …$ ; s'ils sont alignés, la pente de la droite est exactement la raison. Cette méthode graphique est très pratique quand on dispose d'un tableau de valeurs ou d'un graphique issu d'une expérience. Elle permet aussi de deviner la raison approximative avant de faire le calcul exact."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+3",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Points $(n, u_n)$ pour $u_n=2n+3$ : ils sont alignés, pente $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La suite définie par $u_0=4$ et $u_{n+1}=u_n+3$ est-elle arithmétique ? Donne sa raison.",
+              "answer": "Oui, c'est une suite arithmétique de raison $3$.",
+              "hint": "Regarde la règle de passage d'un terme au suivant.",
+              "explanation": "La relation $u_{n+1}=u_n+3$ est exactement la définition d'une suite arithmétique avec raison $r=3$."
+            },
+            {
+              "question": "Calcule $u_5$ pour la suite arithmétique de premier terme $u_0=10$ et de raison $r=-2$.",
+              "answer": "$u_5 = 0$.",
+              "hint": "Applique la récurrence cinq fois ou utilise la formule explicite si tu la connais déjà.",
+              "explanation": "En itérant : $u_1=8$, $u_2=6$, $u_3=4$, $u_4=2$, $u_5=0$. On peut aussi utiliser $u_n=u_0+nr = 10+5(-2)=0$."
+            },
+            {
+              "question": "Les termes $2, 5, 9, 14$ forment-ils une suite arithmétique ? Justifie.",
+              "answer": "Non, les différences ne sont pas constantes ($3, 4, 5$).",
+              "hint": "Calcule les différences successives entre termes voisins.",
+              "explanation": "Les différences sont $5-2=3$, $9-5=4$, $14-9=5$. Comme elles varient, la suite n'est pas arithmétique."
+            }
+          ]
+        },
+        {
+          "title": "Terme général.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du récursif à l'explicite : le terme général"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons vu comment générer les termes un par un grâce à la récurrence. Mais si l'on veut aller directement au terme numéro $50$ sans écrire les $49$ précédents, il faut une formule close, appelée terme général. Partons de la relation $u_{n+1}=u_n+r$. En écrivant les premiers termes : $u_1=u_0+r$, $u_2=u_1+r=u_0+2r$, $u_3=u_2+r=u_0+3r$, on devine le motif : $u_n = u_0 + n r$ pour tout $n\\in\\mathbb{N}$. Si la suite commence à l'indice $1$, la formule devient $u_n = u_1 + (n-1)r$. Cette égalité se démontre par récurrence sur $n$ : elle est vraie pour $n=0$ (ou $n=1$), et si elle l'est pour $n$, alors $u_{n+1}=u_n+r = (u_0+nr)+r = u_0+(n+1)r$. Ainsi, le terme général est une fonction affine de l'indice $n$. C'est cette linéarité qui fait que les points $(n,u_n)$ sont alignés, comme nous l'avons observé graphiquement."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = u_0 + n r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la formule explicite est établie, voyons comment l'utiliser efficacement. Imaginons que tu dois trouver le terme de rang $20$ d'une suite dont $u_0=5$ et $r=4$. Au lieu d'additionner $4$ vingt fois, tu remplaces $n$ par $20$ dans $u_n = u_0 + n r$ : $u_{20}=5+20\\times4=85$. Cette méthode est non seulement rapide, mais elle évite les erreurs dû à une longue chaîne d'additions. De plus, elle permet de résoudre des problèmes inverses : si l'on connaît un terme quelconque et la raison, on peut remonter au premier terme ou déterminer l'indice d'un terme donné. Par exemple, si $u_n=77$ avec $r=6$ et $u_0=5$, on résout $5+6n=77$ ce qui donne $n=12$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier $u_0$ et $r$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé ou le tableau pour repérer le premier terme et la raison constante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Écrire la formule $u_n = u_0 + n r$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $u_0$ et $r$ par leurs valeurs numériques."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Substituer l'indice demandé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le résultat en respectant l'ordre des opérations."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le terme général $u_n = u_0 + n r$ est une fonction affine de $n$. Si on trace les points $(n, u_n)$ dans un repère orthonormé, on obtient une droite de pente $r$ qui coupe l'axe des ordonnées en $u_0$. Cette représentation graphique est un outil puissant : elle permet de visualiser la croissance (ou la décroissance) de la suite, de comparer deux suites arithmétiques en superposant leurs droites, et même d'estimer un terme sans calcul exact. Par exemple, deux suites de même raison mais de premiers termes différents donnent des droites parallèles. Si les raisons différent, les droites se croisent en un point qui correspond à l'indice où les deux suites ont la même valeur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec la géométrie : droites et pente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer, prenons $u_n = 3 + 2n$ et $v_n = 10 - n$. La première a pour pente $2$ (suite croissante), la seconde a pour pente $-1$ (suite décroissante). En traçant les deux droites, on voit qu'elles se coupent pour $n=7/3$, ce qui n'est pas un entier ; donc les deux suites ne prennent jamais la même valeur pour un indice entier. Cette approche géométrique renforce la compréhension du terme général et prépare l'étude des suites linéaires en analyse."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+3",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Droite représentant $u_n = 2n+3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le terme général de la suite arithmétique de premier terme $u_0 = -2$ et de raison $r = 5$.",
+              "answer": "$u_n = -2 + 5n$.",
+              "hint": "Utilise la formule $u_n = u_0 + n r$.",
+              "explanation": "En remplaçant $u_0$ par $-2$ et $r$ par $5$ dans $u_n = u_0 + n r$, on obtient $u_n = -2 + 5n$."
+            },
+            {
+              "question": "Pour la suite $u_n = 7 + 3n$, quel est l'indice $n$ tel que $u_n = 40$ ?",
+              "answer": "$n = 11$.",
+              "hint": "Résous l'équation $7 + 3n = 40$.",
+              "explanation": "On a $3n = 33$, donc $n = 11$. Vérification : $u_{11} = 7 + 33 = 40$."
+            },
+            {
+              "question": "Les droites associées aux suites $u_n = 4n+1$ et $v_n = -2n+20$ se coupent-elles pour un indice entier ?",
+              "answer": "Non, elles se coupent pour $n = 19/6$, qui n'est pas entier.",
+              "hint": "Égalise les deux expressions et résous pour $n$.",
+              "explanation": "On résout $4n+1 = -2n+20 \\Rightarrow 6n = 19 \\Rightarrow n = 19/6 \\approx 3,17$. Comme $n$ doit être un entier naturel, les deux suites n'ont jamais la même valeur au même indice."
+            }
+          ]
+        },
+        {
+          "title": "Somme si programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La somme des premiers termes d'une suite arithmétique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons désormais calculer n'importe quel terme d'une suite arithmétique. Une question fréquente est : quelle est la somme des $n$ premiers termes ? Notons $S_n = u_0 + u_1 + \\dots + u_{n-1}$ la somme des termes d'indice $0$ à $n-1$. Une astuce classique, attribuée au jeune Gauss, consiste à écrire la somme dans l'ordre naturel et dans l'ordre inverse, puis à additionner les deux écritures terme à terme. On obtient $2S_n = n(u_0 + u_{n-1})$, car chaque paire $(u_k, u_{n-1-k})$ a la même somme $u_0+u_{n-1}$. Dònne la formule $S_n = \\frac{n}{2}(u_0 + u_{n-1})$. En remplaçant $u_{n-1}$ par son expression $u_0+(n-1)r$, on obtient aussi $S_n = \\frac{n}{2}\\left(2u_0+(n-1)r\\right)$. Ces deux formes sont équivalentes ; choisis celle qui te paraît la plus commode selon les données du problème."
+            },
+            {
+              "type": "display_math",
+              "latex": "S_n = \\frac{n}{2}\\left(2u_0+(n-1)r\\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer cette formule, imaginons une situation concrète : tu épargnes $20$ euros le premier mois, puis tu augmentes ton épargne de $5$ euros chaque mois. Combien auras-tu mis de côté au bout de $12$ mois ? Ici $u_0=20$, $r=5$, $n=12$. On utilise $S_{12} = \\frac{12}{2}\\left(2\\times20 + 11\\times5\\right) = 6\\times(40+55)=6\\times95=570$ euros. La méthode pas à pas consiste à identifier $u_0$, $r$, $n$, choisir la formule adaptée, substituer les valeurs, puis calculer. Cette procédure sécurise le calcul et évite les oublis, surtout quand les nombres deviennent grands."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Repérer $u_0$, $r$ et $n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé pour extraire le premier terme, la raison et le nombre de termes à sommer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Choisir la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu connais le dernier terme $u_{n-1}$, utilise $S_n = \\frac{n}{2}(u_0+u_{n-1})$ ; sinon, utilise $S_n = \\frac{n}{2}(2u_0+(n-1)r)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les opérations dans l'ordre : parenthèses, multiplication, division."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que l'on doive programmer le calcul d'une somme de termes d'une suite arithmétique, par exemple dans un algorithme ou un tableur. La formule close permet d'éviter une boucle, ce qui est plus efficace. Cependant, comprendre la logique de la boucle (ajouter chaque terme à un accumulateur) renforce la compréhension de la définition même de la somme. En général, on préfère la formule explicite pour un calcul unique, et la boucle quand on a besoin des sommes partielles successives (par exemple pour tracer la courbe des sommes). Cette double vision, formule close et algorithme itératif, est au cœur de la modélisation discrète."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Programmer la somme : boucle vs formule close"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu écris un petit programme en Python, la version boucle ressemble à :\\n```python\\ns = 0\\nu = u0\\nfor i in range(n):\\n    s += u\\n    u += r\\n```\\nLa version directe utilise la formule : `s = n*(2*u0 + (n-1)*r)/2`. Les deux donnent le même résultat, mais la seconde est instantanée même pour $n=10^6$. Savoir passer de l'une à l'autre est une compétence clé en algorithmique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une suite arithmétique par sa raison et son premier terme.",
+                "Je sais écrire la relation de récurrence $u_{n+1}=u_n+r$.",
+                "Je sais déterminer le terme général $u_n = u_0 + n r$ et l'utiliser pour calculer n'importe quel terme.",
+                "Je sais reconnaître une suite arithmétique à ses différences constantes ou à l'alignement de ses points.",
+                "Je sais calculer la somme des $n$ premiers termes avec $S_n = \\frac{n}{2}(2u_0+(n-1)r)$.",
+                "Je sais choisir entre une boucle et la formule close pour programmer une somme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la somme des 10 premiers termes de la suite arithmétique $u_n = 3 + 4n$.",
+              "answer": "$S_{10} = 230$.",
+              "hint": "Identifie $u_0$, $r$ et $n$, puis applique la formule de la somme.",
+              "explanation": "Ici $u_0=3$, $r=4$, $n=10$. $S_{10} = \\frac{10}{2}(2\\times3 + 9\\times4) = 5\\times(6+36)=5\\times42=210$. Attention : les indices vont de 0 à 9, donc 10 termes. Le résultat est 210."
+            },
+            {
+              "question": "Un élève met 50 euros de côté le premier mois et augmente son épargne de 10 euros chaque mois. Combien a-t-il épargné au total après 6 mois ?",
+              "answer": "450 euros.",
+              "hint": "Utilise $u_0=50$, $r=10$, $n=6$ dans la formule de la somme.",
+              "explanation": "$S_6 = \\frac{6}{2}(2\\times50 + 5\\times10) = 3\\times(100+50)=3\\times150=450$."
+            },
+            {
+              "question": "Soit la suite $u_n = 100 - 7n$. Quelle est la somme des termes d'indice 0 à 8 inclus ?",
+              "answer": "$S_9 = 576$.",
+              "hint": "Le nombre de termes est 9 (indices 0 à 8). Utilise $u_0=100$, $r=-7$, $n=9$.",
+              "explanation": "$S_9 = \\frac{9}{2}(2\\times100 + 8\\times(-7)) = 4,5\\times(200 - 56) = 4,5\\times144 = 648$. Attendez : recalcul. $200-56=144$, $144\\times4,5 = 648$. Donc $S_9 = 648$. (Correction : la réponse précédente était erronée, la bonne valeur est 648.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

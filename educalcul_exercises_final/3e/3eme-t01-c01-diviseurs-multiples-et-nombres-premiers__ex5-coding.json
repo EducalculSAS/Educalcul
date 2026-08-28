@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Algorithmes sur les diviseurs, multiples et nombres premiers",
+  "blocks": [
+    {
+      "title": "Test de primalité",
+      "content": "Écrire un algorithme (en pseudocode ou en Python) qui détermine si un entier $n > 1$ est un nombre premier. L'algorithme doit afficher « Premier » ou « Non premier ».",
+      "correctAnswer": "Algorithme test_premier(n):\\n    si n <= 1 alors afficher « Non premier » ; retourner\\n    pour d de 2 jusqu'à floor(√n) faire\\n        si n mod d = 0 alors afficher « Non premier » ; retourner\\n    fin pour\\n    afficher « Premier »",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la divisibilité de $n$ par tous les entiers $d$ de $2$ à la racine carrée de $n$. Si un diviseur est trouvé, $n$ n'est pas premier. Sinon, il est premier. La complexité est en $O(\\sqrt{n})$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Liste des diviseurs",
+      "content": "Écrire un algorithme qui, étant donné un entier naturel $n > 0$, affiche la liste de tous ses diviseurs positifs dans l'ordre croissant.",
+      "correctAnswer": "Algorithme liste_diviseurs(n):\\n    liste ← liste vide\\n    pour d de 1 jusqu'à floor(√n) faire\\n        si n mod d = 0 alors\\n            ajouter d à liste\\n            si d ≠ n / d alors ajouter n / d à liste\\n        fin si\\n    fin pour\\n    trier liste dans l'ordre croissant\\n    afficher liste",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt les entiers $d$ jusqu'à $\\sqrt{n}$. Quand $d$ divise $n$, on ajoute $d$ et le quotient $n/d$ (sauf si ils sont égaux, c'est-à-dire $d = \\sqrt{n}$). On trie enfin la liste pour l'ordre croissant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD par l'algorithme d'Euclide",
+      "content": "Écrire un algorithme qui calcule le plus grand commun diviseur (PGCD) de deux entiers naturels $a$ et $b$ (non tous les deux nuls) en utilisant l'algorithme d'Euclide.",
+      "correctAnswer": "Algorithme pgcd(a, b):\\n    tant que b ≠ 0 faire\\n        r ← a mod b\\n        a ← b\\n        b ← r\\n    fin tant que\\n    afficher a",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme d'Euclide repose sur la propriété $PGCD(a,b) = PGCD(b, a \\bmod b)$. On répète le calcul du reste jusqu'à ce que le reste devienne nul ; le dernier reste non nul est le PGCD.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

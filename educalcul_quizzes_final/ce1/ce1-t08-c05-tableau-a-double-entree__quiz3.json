@@ -1,0 +1,186 @@
+{
+  "_status": "done",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Interpréter plusieurs critères",
+  "title": "Lire un tableau à double entrée : plusieurs critères",
+  "questions": [
+    {
+      "text": "Regarde le tableau ci-dessous. Combien d'élèves de la classe CE1 A aiment les bananes ?",
+      "options": [
+        "$2$ élèves",
+        "$5$ élèves",
+        "$3$ élèves",
+        "$4$ élèves"
+      ],
+      "correctAnswer": "$3$ élèves",
+      "explanation": "Dans le tableau, il faut croiser la ligne \"CE1 A\" et la colonne \"Bananes\". Le nombre inscrit à cette intersection est $3$. Les autres nombres correspondent à d'autres cases : $2$ pour les fraises en CE1 A, $5$ pour les pommes en CE1 B, $4$ pour les pommes en CE1 A.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Bananes",
+          "Fraises"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "4",
+            "3",
+            "2"
+          ],
+          [
+            "CE1 B",
+            "5",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "En regardant le même tableau, quel est le nombre total d'élèves qui aiment les pommes (les deux classes confondues) ?",
+      "options": [
+        "$9$ élèves",
+        "$7$ élèves",
+        "$6$ élèves",
+        "$4$ élèves"
+      ],
+      "correctAnswer": "$9$ élèves",
+      "explanation": "Pour trouver le total des élèves qui aiment les pommes, il faut additionner les nombres de la colonne \"Pommes\" : $4$ (CE1 A) $+$ $5$ (CE1 B) $= 9$. L'option $4$ correspond seulement à la classe CE1 A, l'option $5$ à la classe CE1 B, et $7$ est une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Bananes",
+          "Fraises"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "4",
+            "3",
+            "2"
+          ],
+          [
+            "CE1 B",
+            "5",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Dans la classe CE1 B, quel est le fruit le plus aimé ?",
+      "options": [
+        "Les pommes",
+        "Les bananes",
+        "Les fraises",
+        "Les pommes et les fraises"
+      ],
+      "correctAnswer": "Les pommes",
+      "explanation": "Il faut lire la ligne \"CE1 B\" et comparer les trois nombres : $5$ pour les pommes, $1$ pour les bananes, $4$ pour les fraises. Le plus grand nombre est $5$, donc les pommes sont le fruit le plus aimé dans cette classe. Les fraises arrivent en deuxième position avec $4$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Bananes",
+          "Fraises"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "4",
+            "3",
+            "2"
+          ],
+          [
+            "CE1 B",
+            "5",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Compare le nombre d'élèves de CE1 A qui aiment les pommes et le nombre d'élèves de CE1 B qui aiment les fraises. Quelle affirmation est vraie ?",
+      "options": [
+        "Ils sont égaux",
+        "Il y a plus d'élèves en CE1 A pour les pommes",
+        "Il y a plus d'élèves en CE1 B pour les fraises",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Ils sont égaux",
+      "explanation": "Dans le tableau, la case (CE1 A, Pommes) contient $4$. La case (CE1 B, Fraises) contient aussi $4$. Les deux nombres sont donc égaux. Il ne faut pas confondre avec la case (CE1 A, Fraises) qui est $2$ ou (CE1 B, Pommes) qui est $5$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Bananes",
+          "Fraises"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "4",
+            "3",
+            "2"
+          ],
+          [
+            "CE1 B",
+            "5",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il d'élèves au total dans ce sondage (les deux classes et les trois fruits) ?",
+      "options": [
+        "$19$ élèves",
+        "$15$ élèves",
+        "$12$ élèves",
+        "$9$ élèves"
+      ],
+      "correctAnswer": "$19$ élèves",
+      "explanation": "Il faut additionner tous les nombres du tableau. Ligne CE1 A : $4 + 3 + 2 = 9$. Ligne CE1 B : $5 + 1 + 4 = 10$. Total : $9 + 10 = 19$. On peut aussi additionner les totaux des colonnes : Pommes ($9$) + Bananes ($3+1=4$) + Fraises ($2+4=6$) : $9+4+6=19$. L'option $9$ est le total des pommes seulement, $15$ et $12$ sont des erreurs de somme.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Bananes",
+          "Fraises"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "4",
+            "3",
+            "2"
+          ],
+          [
+            "CE1 B",
+            "5",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    }
+  ]
+}

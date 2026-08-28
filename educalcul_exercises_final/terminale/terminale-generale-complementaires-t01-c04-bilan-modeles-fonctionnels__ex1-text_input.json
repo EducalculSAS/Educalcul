@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 640,
+  "_course_code": "terminale-generale-complementaires-t01-c04-bilan-modeles-fonctionnels",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Choix d'outil",
+  "title": "Choix de modèles fonctionnels",
+  "blocks": [
+    {
+      "title": "Modèle de croissance",
+      "content": "Une population de bactéries augmente de $5 \\%$ toutes les heures. Quel type de fonction doit on utiliser pour modéliser l'évolution de cette population au cours du temps : une fonction affine ou une fonction exponentielle ?",
+      "correctAnswer": "fonction exponentielle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une augmentation proportionnelle à la valeur actuelle (un pourcentage constant) correspond à une croissance géométrique, modélisée par une fonction exponentielle de la forme $f(t) = a \\times (1 + r)^{t}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modèle de consommation",
+      "content": "Le réservoir d'un véhicule contient initialement $60$ litres. La consommation est constante et s'élève à $6$ litres pour $100$ kilomètres. Quelle expression mathématique modélise le volume $V(d)$ restant en fonction de la distance $d$ parcourue en kilomètres ?",
+      "correctAnswer": "V(d) = 60 - 0,06d",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La consommation est constante par kilomètre, soit $6 \\div 100 = 0,06$ litre par kilomètre. Le volume diminue donc de manière linéaire : $V(d) = 60 - 0,06 \\times d$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modèle de saturation",
+      "content": "On étudie la température $T(t)$ d'un objet refroidissant dans une pièce à $20$ degrés. On observe que l'écart entre la température de l'objet et celle de la pièce diminue de moitié toutes les dix minutes. Quel outil mathématique est le plus approprié pour modéliser cet écart : une fonction affine ou une fonction exponentielle ?",
+      "correctAnswer": "fonction exponentielle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le fait que l'écart se réduise d'un facteur constant (division par deux) sur un intervalle de temps régulier caractérise un déclin exponentiel.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

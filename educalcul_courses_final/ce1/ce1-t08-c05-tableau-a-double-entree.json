@@ -1,0 +1,559 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.919853+00:00",
+  "id": 140,
+  "code": "ce1-t08-c05",
+  "title": "Tableau à double entrée",
+  "description": "Cours structuré Educalcul : Tableau à double entrée.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Tableau à double entrée",
+    "objectif_global": "Tableau à double entrée",
+    "mini_lecons_imposees": [
+      "Repérer ligne et colonne.",
+      "Trouver / compléter une case.",
+      "Interpréter plusieurs critères."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Repérer ligne et colonne.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les lignes et les colonnes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es dans ta classe et que les tables sont rangées en rangées. Chaque rangée est une ligne, et chaque colonne est une file de tables qui va de l’avant vers l’arrière. Dans un tableau à double entrée, les lignes vont horizontalement et les colonnes verticalement."
+            },
+            {
+              "type": "definition",
+              "term": "ligne",
+              "definition": "Une ligne est une suite de cases placées horizontalement, de gauche à droite.",
+              "example": "La première ligne du tableau montre les prénoms."
+            },
+            {
+              "type": "definition",
+              "term": "colonne",
+              "definition": "Une colonne est une suite de cases placées verticalement, du haut vers le bas.",
+              "example": "La première colonne du tableau montre les âges."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 5,
+              "caption": "Tableau 3 lignes × 4 colonnes, la case 5 (ligne 2, colonne 2) est mise en évidence."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : trouver la ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l’en‑tête de gauche, repère le nom de la ligne que tu cherches."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : trouver la colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l’en‑tête du haut, repère le nom de la colonne qui t’intéresse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : aller à l’intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suis la ligne horizontalement et la colonne verticalement jusqu’à la case où elles se croisent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer une ligne et une colonne, nous allons apprendre à lire les en‑têtes pour savoir de quoi parle chaque ligne et chaque colonne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les en‑têtes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessus. La première ligne porte le nom “Prénom” et la première colonne porte le nom “Âge”. Pour trouver l’âge de Léa, tu cherches d’abord la ligne “Léa”, puis la colonne “Âge”, et tu lis la case où elles se croisent."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Âge",
+                "Couleur préférée",
+                "Animal"
+              ],
+              "rows": [
+                [
+                  "Prénom",
+                  "7 ans",
+                  "Bleu",
+                  "Chat"
+                ],
+                [
+                  "Léa",
+                  "8 ans",
+                  "Rose",
+                  "Chien"
+                ],
+                [
+                  "Tom",
+                  "7 ans",
+                  "Vert",
+                  "Lapin"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de dire quel animal préfère Tom en suivant sa ligne jusqu’à la colonne “Animal”. C’est un petit exercice pour vérifier que tu as bien compris."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un autre tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un nouveau tableau avec les fruits préférés de trois amis. Les lignes sont les prénoms, les colonnes sont les fruits. Observe bien la disposition avant de répondre."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 9,
+              "caption": "Tableau 3 lignes × 4 colonnes, la case 9 (ligne 3, colonne 1) est mise en évidence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous verrons comment compléter une case vide quand une information manque."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le premier tableau, quelle est la couleur préférée de Léa ?",
+              "answer": "Rose",
+              "hint": "Trouve la ligne “Léa” puis la colonne “Couleur préférée”.",
+              "explanation": "La ligne “Léa” croise la colonne “Couleur préférée” sur la case “Rose”."
+            },
+            {
+              "question": "Quel âge a Tom selon le tableau ?",
+              "answer": "7 ans",
+              "hint": "Cherche la ligne “Tom” et la colonne “Âge”.",
+              "explanation": "L’intersection de la ligne “Tom” et de la colonne “Âge” donne “7 ans”."
+            },
+            {
+              "question": "Quel fruit préfère l’ami de la troisième ligne ?",
+              "answer": "Pomme",
+              "hint": "Regarde la troisième ligne et la première colonne de fruits.",
+              "explanation": "La case mise en évidence correspond à “Pomme”."
+            }
+          ]
+        },
+        {
+          "title": "Trouver / compléter une case.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver une case vide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois une case du tableau n’est pas remplie. Pour la compléter, tu utilises les mêmes repères : la ligne et la colonne. Regarde l’exemple où l’âge de Sam manque."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Âge",
+                "Couleur",
+                "Sport"
+              ],
+              "rows": [
+                [
+                  "Prénom",
+                  "8 ans",
+                  "Bleu",
+                  "Foot"
+                ],
+                [
+                  "Sam",
+                  "",
+                  "Vert",
+                  "Natation"
+                ],
+                [
+                  "Mia",
+                  "7 ans",
+                  "Rose",
+                  "Danse"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer la ligne de Sam",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La ligne “Sam” est la deuxième ligne du tableau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : repérer la colonne “Âge”",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La colonne “Âge” est la deuxième colonne en partant de la gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire l’information connue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si on sait que Sam a 8 ans, on écrit “8 ans” dans la case vide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de compléter une ligne entière quand plusieurs cases manquent. C’est comme remplir une fiche d’identité pour un nouveau camarade."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléter une ligne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que Léa arrive dans la classe. On connaît son prénom, son âge (8 ans), sa couleur préférée (Jaune) et son sport (Tennis). Il faut écrire ces quatre informations sur sa ligne."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Âge",
+                "Couleur",
+                "Sport"
+              ],
+              "rows": [
+                [
+                  "Prénom",
+                  "8 ans",
+                  "Bleu",
+                  "Foot"
+                ],
+                [
+                  "Léa",
+                  "8 ans",
+                  "Jaune",
+                  "Tennis"
+                ],
+                [
+                  "Mia",
+                  "7 ans",
+                  "Rose",
+                  "Danse"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment compléter une colonne quand on a la même information pour plusieurs enfants. Par exemple, tous les élèves de la classe ont 7 ans cette année."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléter une colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "On écrit “7 ans” dans chaque case de la colonne “Âge” pour chaque ligne. C’est plus rapide que de le faire un par un."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Âge",
+                "Couleur",
+                "Sport"
+              ],
+              "rows": [
+                [
+                  "Prénom",
+                  "7 ans",
+                  "Bleu",
+                  "Foot"
+                ],
+                [
+                  "Sam",
+                  "7 ans",
+                  "Vert",
+                  "Natation"
+                ],
+                [
+                  "Mia",
+                  "7 ans",
+                  "Rose",
+                  "Danse"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous apprendrons à lire plusieurs critères à la fois dans un même tableau."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel âge faut‑il écrire dans la case vide de Sam ?",
+              "answer": "8 ans",
+              "hint": "Regarde la ligne de Sam et la colonne “Âge”.",
+              "explanation": "La case à l’intersection de la ligne “Sam” et de la colonne “Âge” reçoit “8 ans”."
+            },
+            {
+              "question": "Complète la ligne de Léa avec les bonnes informations.",
+              "answer": "Âge : 8 ans, Couleur : Jaune, Sport : Tennis",
+              "hint": "Utilise les données données dans l’énoncé.",
+              "explanation": "Chaque case de la ligne “Léa” correspond à un critère : âge, couleur, sport."
+            },
+            {
+              "question": "Si tous les élèves ont 7 ans, que dois‑tu écrire dans la colonne “Âge” ?",
+              "answer": "7 ans dans chaque case",
+              "hint": "La même valeur se répète pour chaque ligne.",
+              "explanation": "La colonne “Âge” reçoit la valeur “7 ans” pour Sam, Léa et Mia."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter plusieurs critères.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire deux critères en même temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau à double entrée peut montrer deux critères à la fois, par exemple le fruit préféré et la couleur préférée de chaque enfant. Chaque case combine les deux informations."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Pomme",
+                "Banane",
+                "Fraise"
+              ],
+              "rows": [
+                [
+                  "Rouge",
+                  "2",
+                  "1",
+                  "0"
+                ],
+                [
+                  "Bleu",
+                  "0",
+                  "2",
+                  "1"
+                ],
+                [
+                  "Vert",
+                  "1",
+                  "0",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir la couleur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la ligne qui correspond à la couleur demandée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : choisir le fruit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la colonne qui correspond au fruit demandé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La case à l’intersection donne le nombre d’enfants qui aiment ce fruit et cette couleur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, réponds à des questions qui demandent de croiser les deux critères. C’est comme chercher un trésor sur une carte à deux dimensions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Questions croisées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Combien d’enfants aiment la fraise et le vert ? Regarde la ligne “Vert” et la colonne “Fraise”. Le nombre affiché est la réponse."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d’enfants par fruit pour la couleur verte.",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Banane",
+                  "value": 0,
+                  "tone": "green"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 2,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, construis ton propre petit tableau à double entrée à partir d’une histoire. Invente trois couleurs et trois fruits, puis compte combien de camarades choisissent chaque paire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Crée ton tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écris les couleurs en lignes et les fruits en colonnes. Demande à deux amis leurs préférences et remplis les cases avec les chiffres $1$ ou $2$. Tu viens de faire un vrai tableau à double entrée !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer une ligne et une colonne dans un tableau.",
+                "Je sais trouver ou compléter une case vide.",
+                "Je sais lire deux critères croisés et répondre à des questions.",
+                "Je peux créer un petit tableau à double entrée tout seul."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d’enfants aiment la pomme et le rouge ?",
+              "answer": "2",
+              "hint": "Regarde la ligne “Rouge” et la colonne “Pomme”.",
+              "explanation": "La case à l’intersection de “Rouge” et “Pomme” contient le chiffre 2."
+            },
+            {
+              "question": "Combien d’enfants aiment la fraise et le vert ?",
+              "answer": "2",
+              "hint": "Cherche la ligne “Vert” et la colonne “Fraise”.",
+              "explanation": "La case correspondante affiche 2."
+            },
+            {
+              "question": "Si tu as 3 amis qui aiment la banane bleue et 1 ami qui aime la pomme verte, que notes‑tu dans le tableau ?",
+              "answer": "Case (Bleu, Banane) = 3, case (Vert, Pomme) = 1",
+              "hint": "Chaque paire couleur‑fruit a sa propre case.",
+              "explanation": "On écrit le nombre d’amis pour chaque combinaison dans la case correspondante."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

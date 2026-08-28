@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Ordre de calcul",
+  "title": "Quiz : Ordre de calcul (Priorités et parenthèses)",
+  "questions": [
+    {
+      "text": "Quel est le résultat du calcul $12 + 5 \\times 3$ ?",
+      "options": [
+        "$27$",
+        "$51$",
+        "$17$",
+        "$36$"
+      ],
+      "correctAnswer": "$27$",
+      "explanation": "On applique la priorité de la multiplication sur l'addition. On calcule d'abord $5 \\times 3 = 15$, puis on ajoute $12$ : $12 + 15 = 27$. Le distracteur $51$ correspond à l'erreur de calculer de gauche à droite sans priorité ($12+5=17$ puis $17\\times3=51$). Le distracteur $17$ est le résultat de la seule addition $12+5$. Le distracteur $36$ correspond à $12\\times3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue le calcul $20 - 12 \\div 4$. Quelle est la bonne réponse ?",
+      "options": [
+        "$17$",
+        "$2$",
+        "$8$",
+        "$5$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "La division est prioritaire sur la soustraction. On calcule d'abord $12 \\div 4 = 3$, puis on soustrait : $20 - 3 = 17$. Le distracteur $2$ provient de l'erreur de faire la soustraction en premier : $(20-12) \\div 4 = 8 \\div 4 = 2$. Le distracteur $8$ est le résultat de la soustraction $20-12$ seule. Le distracteur $5$ correspond à $20 \\div 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $7 + 6 \\times 2 - 8$ en respectant l'ordre des opérations.",
+      "options": [
+        "$11$",
+        "$18$",
+        "$19$",
+        "$26$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "La multiplication est prioritaire : $6 \\times 2 = 12$. L'expression devient $7 + 12 - 8$. On calcule ensuite de gauche à droite : $7 + 12 = 19$, puis $19 - 8 = 11$. Le distracteur $18$ correspond à un calcul strictement de gauche à droite sans priorité ($7+6=13$, $13\\times2=26$, $26-8=18$). Le distracteur $19$ oublie la soustraction finale. Le distracteur $26$ correspond à $(7+6)\\times2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sélectionne le résultat de $(15 - 7) \\times 2 + 10$.",
+      "options": [
+        "$26$",
+        "$11$",
+        "$96$",
+        "$16$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "Les parenthèses sont prioritaires : $15 - 7 = 8$. L'expression devient $8 \\times 2 + 10$. La multiplication est prioritaire sur l'addition : $8 \\times 2 = 16$. Enfin $16 + 10 = 26$. Le distracteur $11$ ignore les parenthèses et calcule $15 - 7 \\times 2 + 10 = 15 - 14 + 10 = 11$. Le distracteur $96$ étend les parenthèses à tort : $(15-7) \\times (2+10) = 8 \\times 12 = 96$. Le distracteur $16$ oublie l'addition finale $+10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $20 - (5 + 3) \\times 2$ ?",
+      "options": [
+        "$4$",
+        "$21$",
+        "$36$",
+        "$12$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "On commence par les parenthèses : $5 + 3 = 8$. L'expression devient $20 - 8 \\times 2$. La multiplication est prioritaire : $8 \\times 2 = 16$. On termine par la soustraction : $20 - 16 = 4$. Le distracteur $21$ ignore les parenthèses : $20 - 5 + 3 \\times 2 = 20 - 5 + 6 = 21$. Le distracteur $36$ place les parenthèses autour de tout le début : $(20 - 5 + 3) \\times 2 = 18 \\times 2 = 36$. Le distracteur $12$ fait la parenthèse $5+3=8$, puis $20-8=12$ en oubliant la multiplication par $2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

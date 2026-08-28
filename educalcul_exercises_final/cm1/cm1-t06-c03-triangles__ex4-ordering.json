@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 250,
+  "_course_code": "cm1-t06-c03-triangles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Application : Triangles",
+  "title": "Mise en ordre : Les triangles",
+  "blocks": [
+    {
+      "title": "Construire un triangle aux trois côtés",
+      "content": "Range les étapes dans l'ordre chronologique pour construire un triangle dont on connaît les trois longueurs de côtés à la règle et au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer un segment de la longueur du premier côté.",
+        "Régler le compas sur la longueur du second côté et tracer un arc de cercle centré sur un extrémité du segment.",
+        "Régler le compas sur la longueur du troisième côté et tracer un arc de cercle centré sur l'autre extrémité du segment.",
+        "Marquer le point d'intersection des deux arcs de cercle : c'est le troisième sommet du triangle.",
+        "Relier ce sommet aux deux extrémités du segment initial pour fermer le triangle."
+      ],
+      "explanation": "La construction d'un triangle aux trois côtés suit un protocole précis : on commence par tracer la base (un des côtés), puis on utilise le compas pour reporter les longueurs des deux autres côtés depuis les extrémités de la base. L'intersection des arcs détermine le troisième sommet. Enfin, on trace les deux côtés restants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer les triangles selon leurs côtés",
+      "content": "Range ces types de triangles dans l'ordre croissant du nombre de côtés de même longueur (du moins de côtés égaux au plus grand nombre de côtés égaux).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Triangle quelconque (aucun côté de même longueur)",
+        "Triangle isocèle (deux côtés de même longueur)",
+        "Triangle équilatéral (trois côtés de même longueur)"
+      ],
+      "explanation": "Un triangle quelconque n'a pas de côtés de même longueur. Un triangle isocèle en a exactement deux de même longueur. Un triangle équilatéral en a trois de même longueur. L'ordre croissant du nombre de côtés égaux est donc : quelconque, isocèle, équilatéral.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier si un triangle est rectangle",
+      "content": "Range les étapes dans l'ordre pour vérifier à l'aide d'une équerre si un triangle est rectangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Placer l'équerre sur un sommet du triangle en faisant coïncider le bord de l'équerre avec un côté du triangle.",
+        "Vérifier si l'autre bord de l'équerre passe exactement par le troisième sommet (le long de l'autre côté).",
+        "Si c'est le cas, l'angle est droit et le triangle est rectangle.",
+        "Sinon, recommencer la vérification sur les deux autres sommets du triangle."
+      ],
+      "explanation": "Pour détecter un angle droit, on teste chaque sommet. On aligne l'équerre sur un côté, on regarde si le deuxième côté coïncide avec l'autre branche de l'équerre. Si aucun des trois angles ne coïncide avec l'équerre, le triangle n'est pas rectangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

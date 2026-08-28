@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 75,
+  "_course_code": "ce1-t01-c08-encadrer-entre-deux-dizaines-ou-centaines",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Trouver dizaines voisines",
+  "title": "Trouver les dizaines voisines - Approfondissement",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écris les deux dizaines voisines du nombre $47$.",
+      "correctAnswer": "Les dizaines voisines de $47$ sont $40$ et $50$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver les dizaines voisines, on regarde la dizaine inférieure (le multiple de $10$ juste avant) et la dizaine supérieure (le multiple de $10$ juste après). Pour $47$, la dizaine inférieure est $40$ et la dizaine supérieure est $50$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Propose un algorithme (en langage naturel ou pseudo‑code) qui, étant donné un nombre entier entre $0$ et $99$, renvoie ses deux dizaines voisines.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre n.\\n2. Calculer la dizaine inférieure : dInf = (n // 10) * 10.\\n3. Calculer la dizaine supérieure : dSup = dInf + 10.\\n4. Afficher dInf et dSup.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division entière par $10$ pour obtenir le chiffre des dizaines, puis on multiplie par $10$ pour retrouver le multiple de $10$ inférieur ou égal au nombre. La dizaine supérieure est simplement ce multiple plus $10$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Applique ton algorithme aux nombres $12$, $85$ et $99$ et donne les dizaines voisines pour chacun.",
+      "correctAnswer": "Pour $12$ : dizaines voisines $10$ et $20$.\\nPour $85$ : dizaines voisines $80$ et $90$.\\nPour $99$ : dizaines voisines $90$ et $100$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique l'algorithme : pour $12$, dInf = (12 // 10)*10 = 10, dSup = 20. Pour $85$, dInf = 80, dSup = 90. Pour $99$, dInf = 90, dSup = 100.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

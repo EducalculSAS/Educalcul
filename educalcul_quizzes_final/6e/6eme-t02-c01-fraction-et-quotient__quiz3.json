@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 336,
+  "_course_code": "6eme-t02-c01-fraction-et-quotient",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Écriture",
+  "title": "Écriture des fractions et quotients",
+  "questions": [
+    {
+      "text": "La figure ci-dessous représente une fraction. Quelle est son écriture ?",
+      "options": [
+        "$\\frac{3}{7}$",
+        "$\\frac{7}{3}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{4}{7}$"
+      ],
+      "correctAnswer": "$\\frac{3}{7}$",
+      "explanation": "La figure montre une barre divisée en 7 parties égales (le dénominateur), dont 3 sont colorées (le numérateur). L'écriture fractionnaire est donc $\\frac{3}{7}$. L'option $\\frac{7}{3}$ inverse les nombres, $\\frac{3}{10}$ compte mal le total de parties, et $\\frac{4}{7}$ compte les parties non colorées.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 7,
+        "shape": "bar",
+        "caption": "Fraction représentant 3 parties sur 7"
+      }
+    },
+    {
+      "text": "Quelle écriture fractionnaire correspond exactement à la division $15 \\div 6$ ?",
+      "options": [
+        "$\\frac{6}{15}$",
+        "$\\frac{15}{6}$",
+        "$15 \\times 6$",
+        "$6 \\div 15$"
+      ],
+      "correctAnswer": "$\\frac{15}{6}$",
+      "explanation": "Une division $a \\div b$ s'écrit en fraction $\\frac{a}{b}$. Le dividende (15) devient le numérateur, le diviseur (6) devient le dénominateur. L'option $\\frac{6}{15}$ inverse les termes, les deux dernières ne sont pas des écritures fractionnaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $\\frac{11}{3}$ est le résultat de quelle division ?",
+      "options": [
+        "$11 \\div 3$",
+        "$3 \\div 11$",
+        "$11 \\times 3$",
+        "$11 + 3$"
+      ],
+      "correctAnswer": "$11 \\div 3$",
+      "explanation": "La fraction $\\frac{a}{b}$ représente le quotient de la division de $a$ par $b$, soit $a \\div b$. Ici $a=11$ et $b=3$, donc $11 \\div 3$. L'option $3 \\div 11$ correspondrait à $\\frac{3}{11}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment nomme-t-on correctement la fraction $\\frac{7}{10}$ en toutes lettres ?",
+      "options": [
+        "Sept dixièmes",
+        "Dix septièmes",
+        "Sept sur dix",
+        "Dix sur sept"
+      ],
+      "correctAnswer": "Sept dixièmes",
+      "explanation": "En français, on nomme une fraction en donnant le numérateur en chiffre cardinal (sept) et le dénominateur en ordinal (dixièmes). 'Sept sur dix' est une lecture orale possible mais pas l'écriture en toutes lettres standard. 'Dix septièmes' correspondrait à $\\frac{10}{7}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On divise un gâteau en huit parts égales. Léa en prend trois et Marc en prend deux. Quelle fraction représente la part restante du gâteau ?",
+      "options": [
+        "$\\frac{3}{8}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{2}{8}$",
+        "$\\frac{8}{3}$"
+      ],
+      "correctAnswer": "$\\frac{3}{8}$",
+      "explanation": "Le gâteau entier est divisé en 8 parts (dénominateur 8). Léa et Marc prennent ensemble $3+2=5$ parts. Il reste $8-5=3$ parts. La fraction restante est donc $\\frac{3}{8}$. L'option $\\frac{5}{8}$ est la part mangée, $\\frac{2}{8}$ est la part de Marc seul, $\\frac{8}{3}$ est une inversion sans sens ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

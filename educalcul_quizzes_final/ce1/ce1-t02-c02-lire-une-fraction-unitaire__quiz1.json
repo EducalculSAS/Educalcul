@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 80,
+  "_course_code": "ce1-t02-c02-lire-une-fraction-unitaire",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Relier 1/n à une part parmi n",
+  "title": "Relier la fraction unitaire 1/n à une part parmi n",
+  "questions": [
+    {
+      "text": "On partage un rectangle en $4$ parties égales. On colorie une seule partie. Quelle fraction représente la partie coloriée ?",
+      "options": [
+        "La fraction $1/4$",
+        "La fraction $1/3$",
+        "La fraction $4/1$",
+        "La fraction $1/2$"
+      ],
+      "correctAnswer": "La fraction $1/4$",
+      "explanation": "Le rectangle est divisé en $4$ parties égales (le dénominateur est $4$). Une seule partie est coloriée (le numérateur est $1$). La fraction unitaire correspondante est donc $1/4$. L'erreur $1/3$ correspond à un partage en $3$ parties. L'erreur $4/1$ inverse le numérateur et le dénominateur. L'erreur $1/2$ correspond à un partage en $2$ moitiés.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Rectangle divisé en 4 parties égales, une partie coloriée"
+      }
+    },
+    {
+      "text": "Regarde le cercle ci-dessous. Quelle fraction unitaire correspond à la part coloriée ?",
+      "options": [
+        "La fraction $1/5$",
+        "La fraction $1/6$",
+        "La fraction $1/4$",
+        "La fraction $5/1$"
+      ],
+      "correctAnswer": "La fraction $1/6$",
+      "explanation": "Le cercle est divisé en $6$ parts égales (on compte $6$ parts au total). Une seule part est coloriée. La fraction unitaire est donc $1/6$ (une part sur six). La réponse $1/5$ serait juste s'il y avait $5$ parts. La réponse $1/4$ correspond à un partage en quarts. La réponse $5/1$ inverse les nombres.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 6,
+        "shape": "circle",
+        "caption": "Cercle divisé en 6 parts égales, une part coloriée"
+      }
+    },
+    {
+      "text": "Léo a une barre de chocolat qu'il partage équitablement avec $2$ copains (soit $3$ enfants au total). Quelle fraction de la barre chaque enfant reçoit-il ?",
+      "options": [
+        "La fraction $1/3$",
+        "La fraction $1/2$",
+        "La fraction $3/1$",
+        "La fraction $1/4$"
+      ],
+      "correctAnswer": "La fraction $1/3$",
+      "explanation": "Il y a $3$ enfants au total (Léo + 2 copains). La barre est divisée en $3$ parts égales. Chaque enfant reçoit une de ces $3$ parts, c'est-à-dire un tiers, noté $1/3$. La réponse $1/2$ correspondrait à un partage entre $2$ enfants seulement. La réponse $3/1$ ne représente pas une part mais le nombre total de parts. La réponse $1/4$ correspondrait à $4$ enfants.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          }
+        ],
+        "caption": "Barre divisée en 3 parts égales représentant le partage pour 3 enfants"
+      }
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle correspond à l'énoncé : \"Une part sur huit parts égales\" ?",
+      "options": [
+        "La fraction $1/8$",
+        "La fraction $8/1$",
+        "La fraction $1/7$",
+        "La fraction $1/9$"
+      ],
+      "correctAnswer": "La fraction $1/8$",
+      "explanation": "L'expression \"une part sur huit parts égales\" se traduit directement en fraction : le numérateur (le haut) est $1$ (une part) et le dénominateur (le bas) est $8$ (huit parts au total). On écrit donc $1/8$. La fraction $8/1$ lit \"huit sur un\" ce qui est l'inverse. Les fractions $1/7$ et $1/9$ correspondent à un nombre de parts différent (sept ou neuf).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bande de papier est pliée en deux, puis en deux encore, puis en deux une troisième fois. On déplie et on colorie un seul petit rectangle obtenu. Quelle fraction est coloriée ?",
+      "options": [
+        "La fraction $1/8$",
+        "La fraction $1/6$",
+        "La fraction $1/4$",
+        "La fraction $1/3$"
+      ],
+      "correctAnswer": "La fraction $1/8$",
+      "explanation": "Chaque pli en deux double le nombre de parties. Au départ : 1 partie. 1er pli : $2$ parties (demi, $1/2$). 2e pli : $4$ parties (quarts, $1/4$). 3e pli : $8$ parties (huitièmes, $1/8$). Il y a donc $8$ petits rectangles égaux. Un seul est colorié, c'est $1/8$. La réponse $1/4$ correspond à seulement $2$ plis. La réponse $1/6$ ne s'obtient pas en pliant en deux successivement. La réponse $1/3$ ne correspond pas à des plis en deux.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 8
+          }
+        ],
+        "caption": "Bande pliée 3 fois (8 parties égales), une partie coloriée"
+      }
+    }
+  ]
+}

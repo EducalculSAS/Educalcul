@@ -1,0 +1,158 @@
+{
+  "_status": "done",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Lecture graphique",
+  "title": "Quiz Lecture graphique - Seconde",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de ventes pour quatre mois. Quel mois a enregistré le plus grand nombre de ventes ?",
+      "options": [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril"
+      ],
+      "correctAnswer": "Février",
+      "explanation": "La barre la plus haute correspond à Février avec une valeur de 15, supérieure à celles de Janvier (10), Mars (12) et Avril (8).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de ventes par mois",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 15,
+            "tone": "gold"
+          },
+          {
+            "label": "Mars",
+            "value": 12,
+            "tone": "green"
+          },
+          {
+            "label": "Avril",
+            "value": 8,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le camembert ci-dessous montre la répartition des voix entre quatre listes. Quelle liste a obtenu 30 % des voix ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La part marquée 30 % est étiquetée A ; les autres parts valent 25 % (B et D) et 20 % (C).",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Répartition des voix",
+        "slices": [
+          {
+            "label": "A",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 25,
+            "tone": "gold"
+          },
+          {
+            "label": "C",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "D",
+            "value": 25,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Soit la fonction $f(x)=2x+1$ dont le graphique est tracé. Quelle est la valeur de $f(3)$ ?",
+      "options": [
+        "cinq",
+        "sept",
+        "neuf",
+        "onze"
+      ],
+      "correctAnswer": "sept",
+      "explanation": "En remplaçant $x$ par 3 on obtient $f(3)=2\\times3+1=7$, soit sept.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction $f(x)=2x+1$"
+      }
+    },
+    {
+      "text": "Sur la droite numérique ci-dessous, les points A, B et C sont placés aux abscisses -2, 1 et 3. Quel point appartient à l'intervalle $[-1,2]$ ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Aucun"
+      ],
+      "correctAnswer": "B",
+      "explanation": "L'intervalle $[-1,2]$ contient tous les nombres entre -1 et 2 inclus. Le point B d'abscisse 1 s'y trouve, contrairement à A (-2) et C (3).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérique avec points A, B, C",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -2,
+            "label": "A"
+          },
+          {
+            "value": 1,
+            "label": "B"
+          },
+          {
+            "value": 3,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Le graphique de la fonction $g(x)=-x^2+4x-3$ est représenté. Quelles sont les coordonnées du sommet de cette parabole ?",
+      "options": [
+        "$(2,1)$",
+        "$(2,-1)$",
+        "$(-2,1)$",
+        "$(1,2)$"
+      ],
+      "correctAnswer": "$(2,1)$",
+      "explanation": "Le sommet d'une parabole $ax^2+bx+c$ a pour abscisse $x_v=-b/(2a)$. Ici $a=-1$, $b=4$, donc $x_v=2$. En remplaçant : $g(2)=-4+8-3=1$. Le sommet est $(2,1)$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-x^2+4*x-3",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction $g(x)=-x^2+4x-3$"
+      }
+    }
+  ]
+}

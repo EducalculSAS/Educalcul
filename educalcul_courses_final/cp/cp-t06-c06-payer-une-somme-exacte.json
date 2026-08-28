@@ -1,0 +1,312 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.642850+00:00",
+  "id": 52,
+  "code": "cp-t06-c06",
+  "title": "Payer une somme exacte",
+  "description": "Cours structuré Educalcul : Payer une somme exacte.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Payer une somme exacte",
+    "objectif_global": "Payer une somme exacte",
+    "mini_lecons_imposees": [
+      "Choisir pièces et billets.",
+      "Trouver plusieurs décompositions.",
+      "Vérifier le total."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Choisir pièces et billets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les pièces et les billets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ton porte-monnaie imaginaire ! Aujourd'hui, on apprend à reconnaître l'argent pour payer tout seul comme un grand. En France, on utilise des pièces en métal et des billets en papier. Les pièces, c'est $1$ euro, $2$ euros, et aussi $5$ euros, $10$ euros, $20$ euros, $50$ euros. Les billets, ce sont les grands rectangles : $5$ euros, $10$ euros, $20$ euros et $50$ euros. Touche-les, regarde-les : chaque pièce a une couleur, une taille et un dessin différents."
+            },
+            {
+              "type": "definition",
+              "term": "Pièce",
+              "definition": "Monnaie en métal, ronde, avec une valeur écrite dessus.",
+              "example": "Une pièce de $2$ euros est brillante et a deux couleurs."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 300,
+              "caption": "Clique sur les pièces pour faire $3$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu veux acheter une peluche à $7$ euros. Tu as des pièces de $1$, $2$ et $5$ euros devant toi. Comment faire ? Tu peux prendre une pièce de $5$ euros, puis une pièce de $2$ euros. Ensemble, ça fait $7$ euros ! Essaie aussi avec d'autres combinaisons : cinq pièces de $1$ euro et une de $2$ euros, ça marche aussi. L'important, c'est que le total tombe juste."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 700,
+              "caption": "Trouve une façon de payer $7$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les pièces sont lourdes dans la poche. Heureusement, il y a les billets ! Un billet de $10$ euros vaut la même chose que dix pièces de $1$ euro, mais il est beaucoup plus léger. Regarde : si tu dois payer $10$ euros, tu peux sortir un seul billet au lieu de compter dix pièces. C'est plus vite, et ça ne déchire pas le fond de ton sac. Essaie de deviner : combien de pièces de $2$ euros faut-il pour faire un billet de $10$ euros ?"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5,
+                5
+              ],
+              "right": [
+                10
+              ],
+              "caption": "Deux pièces de $5$ euros équilibrent un billet de $10$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle pièce dois-tu prendre pour payer $2$ euros ?",
+              "answer": "Une pièce de $2$ euros.",
+              "hint": "Regarde le chiffre écrit sur la pièce.",
+              "explanation": "La pièce de $2$ euros porte le nombre $2$. C'est celle qu'il faut donner."
+            },
+            {
+              "question": "Tu as une pièce de $5$ euros et une pièce de $2$ euros. Combien as-tu en tout ?",
+              "answer": "$7$ euros.",
+              "hint": "Compte sur tes doigts : $5$, puis $6$, $7$.",
+              "explanation": "$5$ euros plus $2$ euros font $7$ euros. C'est le prix de la peluche."
+            },
+            {
+              "question": "Combien de pièces de $2$ euros font un billet de $10$ euros ?",
+              "answer": "Cinq pièces.",
+              "hint": "Ajoute $2$ euros plusieurs fois jusqu'à $10$.",
+              "explanation": "$2 + 2 + 2 + 2 + 2 = 10$. Cinq pièces de $2$ euros valent $10$ euros."
+            }
+          ]
+        },
+        {
+          "title": "Trouver plusieurs décompositions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une somme, plusieurs façons de payer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà choisir des pièces pour payer. Mais sais-tu qu'on peut souvent payer le même prix de plusieurs manières différentes ? C'est comme pour faire un dessin : il y a plein de chemins pour arriver au même résultat. Prenons $10$ euros. Tu peux donner un billet de $10$ euros, c'est le plus simple. Mais tu peux aussi donner deux pièces de $5$ euros, ou cinq pièces de $2$ euros, ou même dix pièces de $1$ euro. Toutes ces façons font exactement $10$ euros !"
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 1000,
+              "caption": "Essaie de faire $10$ euros de trois façons différentes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec une somme un peu plus grande : $13$ euros. Tu as des billets de $10$ euros et des pièces de $1$, $2$, $5$ euros. Une première idée : un billet de $10$ euros, une pièce de $2$ euros et une pièce de $1$ euro. Ça fait $10 + 2 + 1 = 13$. Une autre idée : deux pièces de $5$ euros, une pièce de $2$ euros et une pièce de $1$ euro. $5 + 5 + 2 + 1 = 13$ aussi. Et si tu n'as que des pièces de $2$ euros et de $1$ euro ? Six pièces de $2$ euros font $12$, plus une pièce de $1$ euro, total $13$ !"
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 1300,
+              "caption": "Trouve deux façons de payer $13$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Amusons-nous à trouver toutes les façons de payer une petite somme, comme $4$ euros. Sors tes pièces de $1$ et $2$ euros. Première façon : quatre pièces de $1$ euro. Deuxième façon : deux pièces de $2$ euros. Troisième façon : une pièce de $2$ euros et deux pièces de $1$ euro. Tu vois ? Même avec peu de pièces, il y a déjà trois possibilités. C'est comme un jeu : à chaque fois, tu comptes le total pour être sûr que ça fait bien $4$ euros. Essaie de les aligner sur la table pour bien voir."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "$4$ pièces de $1$ euro",
+                "$2$ pièces de $2$ euros",
+                "$1$ pièce de $2$ euros et $2$ pièces de $1$ euro"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne deux façons différentes de payer $10$ euros avec des pièces.",
+              "answer": "Deux pièces de $5$ euros, ou cinq pièces de $2$ euros.",
+              "hint": "Pense aux pièces de $5$ et de $2$ euros.",
+              "explanation": "$5 + 5 = 10$ et $2 + 2 + 2 + 2 + 2 = 10$. Les deux donnent $10$ euros."
+            },
+            {
+              "question": "Tu as un billet de $10$ euros, une pièce de $2$ euros et une pièce de $1$ euro. Quelle somme peux-tu payer exactement ?",
+              "answer": "$13$ euros.",
+              "hint": "Additionne les valeurs : $10 + 2 + 1$.",
+              "explanation": "Le billet vaut $10$, la pièce $2$, la pièce $1$. Total : $13$ euros."
+            },
+            {
+              "question": "Combien de façons différentes de payer $4$ euros avec des pièces de $1$ et $2$ euros ?",
+              "answer": "Trois façons.",
+              "hint": "Essaie toutes les combinaisons possibles.",
+              "explanation": "1) Quatre $1$ euros. 2) Deux $2$ euros. 3) Un $2$ euros et deux $1$ euros."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier le total.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier que le total est bon"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as choisi tes pièces et tes billets pour payer. Avant de les donner au marchand, prends le temps de vérifier. C'est comme relire un mot avant de l'envoyer : on évite les erreurs ! Pose ton argent sur la table, groupe les pièces par valeur. Par exemple, tu as deux pièces de $2$ euros et trois pièces de $1$ euro. Compte en touchant chaque pièce : $2$, $4$ pour les premières, puis $5$, $6$, $7$ pour les suivantes. Tu as $7$ euros au total. Si le prix est $7$ euros, c'est parfait !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                2,
+                2,
+                1,
+                1,
+                1
+              ],
+              "right": [
+                7
+              ],
+              "caption": "Vérifie : $2+2+1+1+1 = 7$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a beaucoup de pièces et c'est facile de se tromper. Une astuce : fais des petits paquets de $10$ euros. Regroupe une pièce de $5$ euros, une de $2$ euros, deux de $1$ euro et une de $2$ euros... ça fait $10$ ! Mets ce paquet de côté. Continue avec le reste. À la fin, compte les paquets de $10$ euros et ajoute ce qui reste. C'est plus rapide que de tout compter un par un. Essaie avec $10$ euros, $5$ euros, $2$ euros, $2$ euros, $1$ euro : un paquet de $10$, plus $5+2+2+1 = 10$, total $20$ euros."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "10",
+                "5",
+                "2",
+                "2",
+                "1"
+              ],
+              "result": "20",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine maintenant que tu achètes un jeu à $12$ euros. Tu donnes un billet de $10$ euros et une pièce de $2$ euros. Le marchand prend l'argent, il compte : $10$, $12$. Il te rend ton ticket. Toi aussi, tu peux recompter dans ta tête : $10$ plus $2$ font $12$. Si le marchand te rend de la monnaie, vérifie-la aussi ! C'est ton droit de vérifier. Aujourd'hui, tu as appris à choisir, à varier les combinaisons et à contrôler le total. Tu es prêt pour faire tes courses tout seul !"
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 1200,
+              "caption": "Paie $12$ euros avec un billet de $10$ et une pièce de $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître les pièces de $1$, $2$, $5$ euros et les billets de $10$ euros.",
+                "Je sais payer une somme exacte en choisissant les bonnes pièces.",
+                "Je sais trouver au moins deux façons différentes de payer le même prix.",
+                "Je sais vérifier le total en comptant ou en regroupant par $10$ euros."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as deux pièces de $2$ euros et trois pièces de $1$ euro. Combien as-tu en tout ?",
+              "answer": "$7$ euros.",
+              "hint": "Compte : $2$, $4$, puis $5$, $6$, $7$.",
+              "explanation": "$2+2=4$, puis $4+1+1+1=7$. Le total est $7$ euros."
+            },
+            {
+              "question": "Tu donnes un billet de $10$ euros, une pièce de $5$ euros et une pièce de $2$ euros. Quel est le total ?",
+              "answer": "$17$ euros.",
+              "hint": "Additionne $10 + 5 + 2$.",
+              "explanation": "$10 + 5 = 15$, $15 + 2 = 17$. Tu as payé $17$ euros."
+            },
+            {
+              "question": "Tu achètes un livre à $12$ euros. Tu donnes un billet de $10$ euros et une pièce de $2$ euros. Le total est-il correct ?",
+              "answer": "Oui, $10 + 2 = 12$ euros.",
+              "hint": "Vérifie que la somme donnée égale le prix.",
+              "explanation": "Le billet de $10$ euros plus la pièce de $2$ euros font exactement $12$ euros, le prix du livre."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

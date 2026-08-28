@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation du parallélisme et de l'intersection",
+  "blocks": [
+    {
+      "title": "Position relative de deux droites",
+      "content": "Relie chaque paire d'équations à la position relative des droites correspondantes.",
+      "pairs": [
+        {
+          "left": "$y = 2x + 1$ et $y = 2x - 3$",
+          "right": "Droites parallèles distinctes"
+        },
+        {
+          "left": "$y = -x + 2$ et $y = 3x - 1$",
+          "right": "Droites sécantes"
+        },
+        {
+          "left": "$2x + y = 4$ et $4x + 2y = 8$",
+          "right": "Droites confondues"
+        },
+        {
+          "left": "$x = 1$ et $x = -2$",
+          "right": "Droites parallèles à l'axe des ordonnées"
+        }
+      ],
+      "explanation": "Deux droites de la forme $y = ax + b$ sont parallèles si elles ont le même coefficient directeur $a$ et des ordonnées à l'origine $b$ différentes (cas 1). Elles sont sécantes si leurs coefficients directeurs sont différents (cas 2). Elles sont confondues si une équation est un multiple de l'autre, ce qui donne le même coefficient directeur et la même ordonnée à l'origine (cas 3). Les équations de la forme $x = k$ représentent des droites verticales, parallèles à l'axe des ordonnées (cas 4).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de solutions d'un système",
+      "content": "Relie chaque situation géométrique au nombre de solutions du système d'équations associé.",
+      "pairs": [
+        {
+          "left": "Deux droites sécantes",
+          "right": "Une unique solution"
+        },
+        {
+          "left": "Deux droites parallèles distinctes",
+          "right": "Aucune solution"
+        },
+        {
+          "left": "Deux droites confondues",
+          "right": "Une infinité de solutions"
+        },
+        {
+          "left": "Une droite parallèle à l'axe des abscisses et une droite parallèle à l'axe des ordonnées",
+          "right": "Une unique solution"
+        }
+      ],
+      "explanation": "Le nombre de solutions d'un système de deux équations du premier degré à deux inconnues correspond au nombre de points d'intersection des droites associées. Droites sécantes = 1 point d'intersection = 1 solution. Droites parallèles distinctes = 0 point commun = 0 solution. Droites confondues = une infinité de points communs = une infinité de solutions. Une droite horizontale ($y = c$) et une droite verticale ($x = k$) se coupent toujours en un unique point $(k; c)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Paramètres et position relative",
+      "content": "On considère les droites $(d_1) : y = 2x + 1$ et $(d_2) : y = mx + p$. Relie chaque condition sur $m$ et $p$ à la position relative de $(d_1)$ et $(d_2)$.",
+      "pairs": [
+        {
+          "left": "$m = 2$ et $p = 1$",
+          "right": "Droites confondues"
+        },
+        {
+          "left": "$m = 2$ et $p \\neq 1$",
+          "right": "Droites parallèles distinctes"
+        },
+        {
+          "left": "$m \\neq 2$",
+          "right": "Droites sécantes"
+        },
+        {
+          "left": "$m = -\\frac{1}{2}$",
+          "right": "Droites perpendiculaires"
+        }
+      ],
+      "explanation": "La droite $(d_1)$ a pour coefficient directeur $2$. Pour $(d_2)$ : si $m = 2$ et $p = 1$, les deux équations sont identiques, les droites sont confondues. Si $m = 2$ et $p \\neq 1$, les coefficients directeurs sont égaux mais les ordonnées à l'origine diffèrent, les droites sont parallèles distinctes. Si $m \\neq 2$, les coefficients directeurs sont différents, les droites se coupent en un point (sécantes). Deux droites sont perpendiculaires si le produit de leurs coefficients directeurs vaut $-1$ ; ici $2 \\times (-\\frac{1}{2}) = -1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

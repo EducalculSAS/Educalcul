@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 221,
+  "_course_code": "cm1-t02-c03-fractions-equivalentes",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Agrandir / réduire une représentation",
+  "title": "Algorithmes pour agrandir et réduire une fraction",
+  "blocks": [
+    {
+      "title": "Agrandir une fraction",
+      "content": "Écris un algorithme (en langage naturel ou pseudo‑code) qui, étant donné une fraction $a/b$ et un entier $k > 0$, calcule la fraction équivalente obtenue en multipliant le numérateur et le dénominateur par $k$.",
+      "correctAnswer": "Algorithme AgrandirFraction(a, b, k) :\\n1. Si k ≤ 0 alors arrêter (erreur).\\n2. nouveauNumerateur ← a × k\\n3. nouveauDenominateur ← b × k\\n4. Retourner (nouveauNumerateur, nouveauDenominateur).",
+      "explanation": "Multiplier le numérateur et le dénominateur par le même entier non nul ne change pas la valeur de la fraction, car on effectue le même changement d'échelle sur les deux termes. L'algorithme applique simplement cette règle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réduire une fraction",
+      "content": "Écris un algorithme qui, étant donné une fraction $a/b$ avec $a$ et $b$ entiers positifs, trouve le plus grand commun diviseur de $a$ et $b$ (PGCD) puis divise le numérateur et le dénominateur par ce PGCD pour obtenir la fraction irréductible.",
+      "correctAnswer": "Algorithme ReduireFraction(a, b) :\\n1. Calculer pgcd ← PGCD(a, b) (par l'algorithme d'Euclide : tant que b ≠ 0 faire (a, b) ← (b, a mod b) ; pgcd ← a).\\n2. numerateurReduit ← a ÷ pgcd\\n3. denominateurReduit ← b ÷ pgcd\\n4. Retourner (numerateurReduit, denominateurReduit).",
+      "explanation": "La fraction irréductible s'obtient en divisant les deux termes par leur plus grand commun diviseur. L'algorithme d'Euclide permet de trouver ce PGCD efficacement, puis on effectue les divisions entières.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Agrandir puis réduire",
+      "content": "Propose un algorithme complet qui prend en entrée une fraction $a/b$ et un entier $k > 0$, agrandit la fraction par $k$, puis la réduit à sa forme irréductible. Écris les étapes principales.",
+      "correctAnswer": "Algorithme AgrandirEtReduire(a, b, k) :\\n1. Si k ≤ 0 alors arrêter (erreur).\\n2. numerateurAgrandi ← a × k\\n3. denominateurAgrandi ← b × k\\n4. pgcd ← PGCD(numerateurAgrandi, denominateurAgrandi) (algorithme d'Euclide).\\n5. numerateurFinal ← numerateurAgrandi ÷ pgcd\\n6. denominateurFinal ← denominateurAgrandi ÷ pgcd\\n7. Retourner (numerateurFinal, denominateurFinal).",
+      "explanation": "On commence par agrandir la fraction en multipliant les deux termes par $k$. La fraction obtenue peut ne pas être irréductible, donc on calcule le PGCD du nouveau numérateur et du nouveau dénominateur, puis on divise les deux par ce PGCD pour obtenir la forme réduite.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

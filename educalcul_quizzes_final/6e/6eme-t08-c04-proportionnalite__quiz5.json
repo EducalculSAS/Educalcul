@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Proportionnalité : Reconnaître une situation proportionnelle",
+  "questions": [
+    {
+      "text": "Parmi les situations suivantes, laquelle correspond à une proportionnalité ?",
+      "options": [
+        "Le prix à payer en fonction du nombre d'articles achetés au même prix unitaire",
+        "L'âge d'une personne en fonction du nombre d'années écoulées depuis sa naissance",
+        "La surface d'un carré en fonction de la longueur de son côté",
+        "Le temps mis pour parcourir une distance fixe en fonction de la vitesse"
+      ],
+      "correctAnswer": "Le prix à payer en fonction du nombre d'articles achetés au même prix unitaire",
+      "explanation": "Dans une situation proportionnelle, les grandeurs varient de manière à conserver un rapport constant (coefficient de proportionnalité). Si chaque article coûte le même prix, le prix total est le nombre d'articles multiplié par le prix unitaire : le rapport prix/nombre est constant. L'âge augmente de 1 par an mais ne part pas de 0 au sens multiplicatif (relation affine). La surface d'un carré varie comme le carré du côté (relation quadratique). Le temps pour une distance fixe est inversement proportionnel à la vitesse (produit constant).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau de valeurs. Dans lequel les grandeurs sont-elles proportionnelles ?",
+      "options": [
+        "x : 2, 4, 6, 8 ; y : 6, 12, 18, 24",
+        "x : 1, 2, 3, 4 ; y : 3, 5, 7, 9",
+        "x : 2, 3, 4, 5 ; y : 4, 9, 16, 25",
+        "x : 5, 10, 15, 20 ; y : 10, 15, 20, 25"
+      ],
+      "correctAnswer": "x : 2, 4, 6, 8 ; y : 6, 12, 18, 24",
+      "explanation": "Pour reconnaître la proportionnalité dans un tableau, on vérifie si le rapport y/x est constant pour toutes les lignes. Pour la première option : 6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. Le coefficient de proportionnalité est 3. La deuxième option donne des rapports 3, 2,5, 2,33... (non constant, relation affine y=2x+1). La troisième option donne des rapports 2, 3, 4, 5 (relation y=x²). La quatrième option donne des rapports 2, 1,5, 1,33... (relation affine y=x+5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On représente graphiquement deux grandeurs. Quel graphique montre une proportionnalité ?",
+      "options": [
+        "Une droite passant par l'origine du repère",
+        "Une droite ne passant pas par l'origine",
+        "Une courbe parabolique passant par l'origine",
+        "Une ligne horizontale"
+      ],
+      "correctAnswer": "Une droite passant par l'origine du repère",
+      "explanation": "Graphiquement, deux grandeurs sont proportionnelles si et seulement si les points alignés forment une droite qui passe par l'origine (0 ; 0). Cela traduit le fait que si une grandeur vaut 0, l'autre vaut aussi 0 (y = kx). Une droite ne passant pas par l'origine correspond à une relation affine (y = ax + b avec b ≠ 0). Une courbe parabolique correspond à une relation quadratique (y = ax²). Une ligne horizontale signifie que y est constant, indépendant de x.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture roule à vitesse constante. On regarde la distance parcourue en fonction du temps. Est-ce une situation proportionnelle ?",
+      "options": [
+        "Oui, car la distance est le produit de la vitesse par le temps",
+        "Non, car la vitesse peut changer",
+        "Non, car le temps ne commence pas à zéro",
+        "Oui, mais seulement si la distance est en kilomètres"
+      ],
+      "correctAnswer": "Oui, car la distance est le produit de la vitesse par le temps",
+      "explanation": "La définition de la vitesse constante est : vitesse = distance / temps, soit distance = vitesse × temps. Comme la vitesse est un nombre fixe (coefficient de proportionnalité), la distance est proportionnelle au temps. Le rapport distance/temps est constant. Les autres options sont des distracteurs : la vitesse est donnée constante, le temps commence bien à 0 au départ, et l'unité de mesure (km, m, cm) ne change pas la nature proportionnelle de la relation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour faire un gâteau, il faut 200 g de farine pour 4 personnes. Laquelle de ces affirmations permet de dire que la masse de farine est proportionnelle au nombre de personnes ?",
+      "options": [
+        "Si on multiplie le nombre de personnes par 3, on multiplie la farine par 3",
+        "Si on ajoute 2 personnes, on ajoute 100 g de farine",
+        "Le rapport farine/personnes vaut 50 seulement pour 4 personnes",
+        "La farine augmente quand le nombre de personnes augmente"
+      ],
+      "correctAnswer": "Si on multiplie le nombre de personnes par 3, on multiplie la farine par 3",
+      "explanation": "C'est la propriété fondamentale de la proportionnalité : si l'on multiplie (ou divise) une grandeur par un nombre, l'autre grandeur est multipliée (ou divisée) par le même nombre. Ici, pour 12 personnes (4×3), il faut 600 g (200×3). La deuxième option décrit une relation affine (ajout constant), pas une multiplication constante (le coefficient est 50 g/pers, donc 2 pers = 100 g, mais cela ne prouve pas la proportionnalité pour tout nombre). La troisième est fausse (le rapport est constant pour toutes les valeurs). La quatrième est trop vague (vrai aussi pour des relations non proportionnelles).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

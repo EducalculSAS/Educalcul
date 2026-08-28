@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 351,
+  "_course_code": "6eme-t04-c05-bilan-algebre-6e",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Application : Bilan - Algèbre 6e",
+  "title": "Bilan Algèbre 6e - Applications",
+  "questions": [
+    {
+      "text": "Marie a $x$ billes. Elle en reçoit cinq de plus. Quelle expression représente le nombre total de billes ?",
+      "options": [
+        "$x + 5$",
+        "$5x$",
+        "$x - 5$",
+        "$5 - x$"
+      ],
+      "correctAnswer": "$x + 5$",
+      "explanation": "Le nombre initial est $x$. On ajoute cinq billes, ce qui se traduit par l'addition $x + 5$. L'option $5x$ correspond à une multiplication, les deux autres à des soustractions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule la valeur de l'expression $3x - 4$ pour $x = 6$.",
+      "options": [
+        "$14$",
+        "$22$",
+        "$6$",
+        "$10$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "On remplace $x$ par $6$ : $3 \\times 6 - 4 = 18 - 4 = 14$. L'erreur $22$ vient de $3 \\times 6 + 4$, l'erreur $6$ d'un oubli de multiplication ($6 - 4$), l'erreur $10$ d'un calcul $3 \\times 6 - 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $x + 7 = 15$.",
+      "options": [
+        "$x = 8$",
+        "$x = 22$",
+        "$x = 7$",
+        "$x = 15$"
+      ],
+      "correctAnswer": "$x = 8$",
+      "explanation": "Pour isoler $x$, on retire $7$ des deux côtés : $x = 15 - 7 = 8$. On vérifie : $8 + 7 = 15$. L'option $22$ correspond à une addition ($15+7$), les autres ne vérifient pas l'équation.",
+      "points": 1,
+      "figure": {
+        "type": "equation_balancer",
+        "leftTerms": [
+          "x",
+          "+7"
+        ],
+        "rightTerms": [
+          "15"
+        ],
+        "caption": "Équation à résoudre : x + 7 = 15"
+      }
+    },
+    {
+      "text": "Un rectangle a une longueur de dix centimètres et une largeur de $x$ centimètres. Son périmètre est de trente-six centimètres. Quelle équation permet de trouver $x$ ?",
+      "options": [
+        "$2 \\times (10 + x) = 36$",
+        "$10 + x = 36$",
+        "$2 \\times 10 + x = 36$",
+        "$10 \\times x = 36$"
+      ],
+      "correctAnswer": "$2 \\times (10 + x) = 36$",
+      "explanation": "Le périmètre d'un rectangle est $2 \\times (longueur + largeur)$. Ici, $2 \\times (10 + x) = 36$. L'option $10+x=36$ oublie le facteur $2$, l'option $2\\times10+x=36$ ne met pas la largeur entre parenthèses, l'option $10\\times x$ calcule l'aire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $2x + 6 = 18$.",
+      "options": [
+        "$x = 6$",
+        "$x = 12$",
+        "$x = 3$",
+        "$x = 9$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On soustrait $6$ des deux côtés : $2x = 12$. On divise par $2$ : $x = 6$. Vérification : $2 \\times 6 + 6 = 12 + 6 = 18$. L'erreur $12$ correspond à $2x=12$ sans diviser par $2$, l'erreur $3$ à une division par $4$, l'erreur $9$ à une soustraction incorrecte ($18-6=12$ puis erreur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

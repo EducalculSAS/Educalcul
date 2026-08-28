@@ -1,0 +1,284 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.611378+00:00",
+  "id": 683,
+  "code": "terminale-generale-maths-t02-c06",
+  "title": "Bilan - Géométrie espace",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie espace.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Bilan - Géométrie espace",
+    "objectif_global": "Bilan - Géométrie espace",
+    "mini_lecons_imposees": [
+      "Droites, plans, orthogonalité.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Droites, plans, orthogonalité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter une droite dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan de géométrie dans l'espace. Nous allons revoir ensemble les outils fondamentaux pour décrire les droites, les plans et leurs relations d'orthogonalité. C'est un terrain que tu connais déjà, mais nous allons prendre le temps de tout remettre à plat avec des exemples concrets pour que chaque notion devienne une évidence. Commençons par la droite. Dans l'espace, une droite ne se définit pas par une seule équation cartésienne comme dans le plan, mais par un système de deux équations ou, plus commodément, par une représentation paramétrique. Rappelle-toi : une droite est entièrement déterminée par un point $A(x_A, y_A, z_A)$ et un vecteur directeur $\\vec{u}(a, b, c)$ non nul. Les coordonnées de tout point $M(x, y, z)$ de la droite s'écrivent alors :"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} x = x_A + t a \\\\ y = y_A + t b \\\\ z = z_A + t c \\end{cases}, \\quad t \\in \\mathbb{R}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le paramètre $t$ parcourt tous les réels : quand $t=0$, on est en $A$ ; quand $t=1$, on est au point $A+\\vec{u}$ ; quand $t=-1$, on est du côté opposé. Cette écriture est très souple : elle permet de retrouver aisément les coordonnées d'un point pour une valeur donnée de $t$, ou de vérifier si un point appartient à la droite en cherchant s'il existe un $t$ commun aux trois équations. Par exemple, la droite passant par $A(1,2,-1)$ et de vecteur directeur $\\vec{u}(2,-1,3)$ a pour représentation paramétrique : $x=1+2t,\\; y=2-t,\\; z=-1+3t$. Si on te demande si le point $B(5,0,5)$ appartient à cette droite, tu résous $1+2t=5 \\Rightarrow t=2$, puis tu vérifies $2-2=0$ et $-1+6=5$ : c'est bon, $B$ est sur la droite pour $t=2$. Cette méthode est ton premier réflexe à avoir en main."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision claire de la représentation paramétrique. Mais il arrive souvent qu'on te donne une droite sous forme cartésienne, c'est-à-dire comme intersection de deux plans. C'est la deuxième facette que nous devons maîtriser pour passer aisément de l'une à l'autre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations cartésiennes d'une droite et passage paramétrique ↔ cartésien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une droite dans l'espace peut être décrite comme l'intersection de deux plans non parallèles. Chaque plan a une équation cartésienne de la forme $\\alpha x + \\beta y + \\gamma z + \\delta = 0$. La droite est donc définie par un système de deux équations linéaires : $\\begin{cases} a_1 x + b_1 y + c_1 z + d_1 = 0 \\\\ a_2 x + b_2 y + c_2 z + d_2 = 0 \\end{cases}$. Pour passer de la forme paramétrique à la forme cartésienne, on élimine le paramètre $t$. Reprenons l'exemple précédent : $x=1+2t,\\; y=2-t,\\; z=-1+3t$. On exprime $t$ depuis la première : $t = \\frac{x-1}{2}$. On substitue dans les deux autres : $y = 2 - \\frac{x-1}{2} = \\frac{5-x}{2}$ et $z = -1 + 3\\frac{x-1}{2} = \\frac{3x-5}{2}$. On obtient ainsi deux équations cartésiennes : $x + 2y - 5 = 0$ et $3x - 2z - 5 = 0$. Réciproquement, si on te donne le système cartésien, tu choisis l'une des variables comme paramètre (souvent $x$ ou $y$ ou $z$ selon les coefficients) et tu exprimes les deux autres en fonction. C'est une gymnastique algébrique qu'il faut savoir faire sans hésiter. Entraînons-nous sur un cas un peu plus subtil."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant naviguer entre les deux descriptions d'une droite. Passons aux plans : ils sont les surfaces planes infinies, et leur étude est tout aussi cruciale pour la suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter un plan : paramétrique, cartésien et vecteur normal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un plan dans l'espace peut être défini de trois manières équivalentes. La première, paramétrique, utilise un point $A$ et deux vecteurs non colinéaires $\\vec{u}$ et $\\vec{v}$ : $M \\in (P) \\iff \\exists (s,t) \\in \\mathbb{R}^2, \\; \\overrightarrow{AM} = s\\vec{u} + t\\vec{v}$. Cela donne $x = x_A + s u_1 + t v_1$, $y = y_A + s u_2 + t v_2$, $z = z_A + s u_3 + t v_3$. La seconde, cartésienne, est une unique équation linéaire : $ax + by + cz + d = 0$. Le vecteur $\\vec{n}(a,b,c)$ est un vecteur normal au plan : il est orthogonal à tout vecteur directeur du plan. La troisième utilise précisément ce vecteur normal : le plan passant par $A$ et de normale $\\vec{n}$ a pour équation $a(x-x_A) + b(y-y_A) + c(z-z_A) = 0$, soit $ax+by+cz + d = 0$ avec $d = -(ax_A+by_A+cz_A)$. C'est souvent la forme la plus pratique quand on connaît un vecteur normal. Par exemple, le plan passant par $A(1,2,3)$ et orthogonal à $\\vec{n}(2,-1,4)$ a pour équation $2(x-1) -1(y-2) + 4(z-3) = 0$, c'est-à-dire $2x - y + 4z - 12 = 0$. Vérifions : $A$ satisfait bien $2-2+12-12=0$. Pour passer du paramétrique au cartésien, on cherche un vecteur normal orthogonal aux deux vecteurs directeurs : on résout $\\vec{n} \\cdot \\vec{u} = 0$ et $\\vec{n} \\cdot \\vec{v} = 0$, ce qui donne un système homogène de deux équations à trois inconnues. On choisit une solution non nulle. À l'inverse, à partir de l'équation cartésienne, on trouve deux vecteurs directeurs en cherchant deux solutions indépendantes de $ax+by+cz=0$. C'est une manipulation classique que tu dois pouvoir faire les yeux fermés."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{n} \\cdot \\vec{u} = 0 \\quad \\text{et} \\quad \\vec{n} \\cdot \\vec{v} = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant les outils pour décrire droites et plans. La suite naturelle est d'étudier leurs positions relatives, et en particulier l'orthogonalité, qui est au cœur de nombreux problèmes de géométrie dans l'espace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Orthogonalité : droite-perpendiculaire-au-plan, plans-perpendiculaires, angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'orthogonalité en géométrie spatiale repose sur le produit scalaire. Une droite $\\Delta$ de vecteur directeur $\\vec{u}$ est perpendiculaire à un plan $(P)$ de vecteur normal $\\vec{n}$ si et seulement si $\\vec{u}$ est colinéaire à $\\vec{n}$, c'est-à-dire $\\vec{u} = k \\vec{n}$ pour un $k \\neq 0$. En pratique, pour vérifier qu'une droite est perpendiculaire à un plan, il suffit de comparer leur vecteur directeur et un vecteur normal du plan. Si la droite est donnée paramétriquement et le plan cartésien, tu as tout de suite les composantes. Deux plans $(P_1)$ et $(P_2)$ de normales $\\vec{n_1}$ et $\\vec{n_2}$ sont perpendiculaires si et seulement si $\\vec{n_1} \\cdot \\vec{n_2} = 0$. L'angle entre une droite et un plan est l'angle complémentaire de l'angle entre la droite et sa projection orthogonale sur le plan. Si $\\theta$ est l'angle entre la droite (directeur $\\vec{u}$) et le plan (normale $\\vec{n}$), alors $\\sin \\theta = \\frac{|\\vec{u} \\cdot \\vec{n}|}{\\|\\vec{u}\\| \\|\\vec{n}\\|}$. L'angle entre deux plans est l'angle entre leurs normales (ou son supplémentaire) : $\\cos \\varphi = \\frac{|\\vec{n_1} \\cdot \\vec{n_2}|}{\\|\\vec{n_1}\\| \\|\\vec{n_2}\\|}$. Ces formules sont tes alliées pour calculer des angles dans l'espace. Prenons le temps de dérouler la méthode pour trouver la projection orthogonale d'un point sur un plan, car c'est une compétence clé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier un vecteur normal du plan",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le plan est donné par $ax+by+cz+d=0$, alors $\\vec{n}(a,b,c)$ est un vecteur normal. Si le plan est paramétrique, on calcule $\\vec{n}$ orthogonal aux deux vecteurs directeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la droite passant par le point et de direction $\\vec{n}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La droite $\\Delta$ orthogonal au plan et passant par le point $M_0(x_0,y_0,z_0)$ a pour représentation paramétrique : $x = x_0 + a t$, $y = y_0 + b t$, $z = z_0 + c t$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver l'intersection de cette droite avec le plan",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On substitue les coordonnées paramétriques dans l'équation cartésienne du plan. On obtient une équation en $t$ qu'on résout. La valeur de $t$ donne le point projeté $H$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point $H$ est la projection orthogonale de $M_0$ sur le plan. La distance $M_0H$ est la distance du point au plan."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre étapes est robuste : elle marche à tous les coups, que le plan soit donné sous forme cartésienne ou paramétrique. Elle te permet aussi de calculer la distance d'un point à un plan via la formule $d(M_0, P) = \\frac{|ax_0+by_0+cz_0+d|}{\\sqrt{a^2+b^2+c^2}}$. Nous allons maintenant t'entraîner sur un exercice qui mobilise l'orthogonalité et les angles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour aborder sereinement les problèmes de droites, plans et orthogonalité. La prochaine leçon sera un bilan synthétique sous forme de checklist pour t'assurer que rien n'a été oublié."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donner une représentation paramétrique de la droite passant par $A(2,-1,3)$ et de vecteur directeur $\\vec{u}(1,4,-2)$. Le point $B(4,7,-1)$ appartient-il à cette droite ?",
+              "answer": "Paramétrique : $\\begin{cases} x = 2 + t \\\\ y = -1 + 4t \\\\ z = 3 - 2t \\end{cases}$. Pour $B$ : $2+t=4 \\Rightarrow t=2$ ; $y=-1+8=7$ ok ; $z=3-4=-1$ ok. Donc $B$ appartient à la droite (pour $t=2$).",
+              "hint": "Utilise la définition de la représentation paramétrique. Vérifie s'il existe un même $t$ pour les trois coordonnées de $B$.",
+              "explanation": "On écrit les équations paramétriques à partir du point $A$ et du vecteur $\\vec{u}$. Pour tester l'appartenance de $B$, on résout la première équation pour $t$ et on vérifie la cohérence avec les deux autres."
+            },
+            {
+              "question": "La droite $\\Delta$ est donnée par $\\begin{cases} x = 3 - t \\\\ y = 1 + 2t \\\\ z = -2 + t \\end{cases}$. Trouver un système de deux équations cartésiennes pour $\\Delta$.",
+              "answer": "On élimine $t$ : $t = 3-x$. Alors $y = 1 + 2(3-x) = 7 - 2x$ et $z = -2 + (3-x) = 1 - x$. Système : $\\begin{cases} 2x + y - 7 = 0 \\\\ x + z - 1 = 0 \\end{cases}$.",
+              "hint": "Exprime $t$ à partir de la première équation et substitue dans les deux autres.",
+              "explanation": "L'élimination du paramètre se fait en isolant $t$ depuis l'équation la plus simple, puis en remplaçant dans les autres. On obtient deux relations linéaires entre $x,y,z$ qui définissent la droite comme intersection de deux plans."
+            },
+            {
+              "question": "Déterminer une équation cartésienne du plan $(P)$ passant par $A(1,0,-2)$ et engendré par les vecteurs $\\vec{u}(2,1,0)$ et $\\vec{v}(-1,3,1)$.",
+              "answer": "On cherche $\\vec{n}(a,b,c)$ tel que $\\vec{n}\\cdot\\vec{u}=0$ et $\\vec{n}\\cdot\\vec{v}=0$ : $2a+b=0$ et $-a+3b+c=0$. On choisit $a=1$, alors $b=-2$, $c=-7$. $\\vec{n}(1,-2,-7)$. Équation : $1(x-1) -2(y-0) -7(z+2)=0 \\Rightarrow x - 2y - 7z - 15 = 0$.",
+              "hint": "Résous le système homogène pour trouver un vecteur normal non nul, puis utilise la forme point-normale.",
+              "explanation": "Le vecteur normal est orthogonal aux deux vecteurs directeurs. On pose un système à deux équations, on choisit une valeur commode pour une inconnue (ici $a=1$) et on déduit les autres. On écrit ensuite l'équation cartésienne avec le point $A$."
+            },
+            {
+              "question": "Soit le plan $(P) : 2x - y + 3z - 4 = 0$ et le point $M(1,2,-1)$. Calculer la projection orthogonale $H$ de $M$ sur $(P)$ et la distance $d(M, P)$.",
+              "answer": "Vecteur normal $\\vec{n}(2,-1,3)$. Droite $\\Delta$ : $x=1+2t,\\; y=2-t,\\; z=-1+3t$. Intersection : $2(1+2t) - (2-t) + 3(-1+3t) -4 = 0 \\Rightarrow 2+4t-2+t-3+9t-4=0 \\Rightarrow 14t-7=0 \\Rightarrow t=0.5$. $H(2,1.5,0.5)$. Distance $MH = \\sqrt{(1)^2+(-0.5)^2+(1.5)^2} = \\sqrt{3.5} = \\frac{\\sqrt{14}}{2}$. Ou par formule : $\\frac{|2-2-3-4|}{\\sqrt{14}} = \\frac{7}{\\sqrt{14}} = \\frac{\\sqrt{14}}{2}$.",
+              "hint": "Utilise la méthode en quatre étapes : normale, droite orthogonale, intersection, distance.",
+              "explanation": "On construit la droite passant par $M$ et de direction $\\vec{n}$. Son intersection avec le plan donne $H$. La distance est la longueur $MH$, qu'on peut aussi calculer directement avec la formule de distance point-plan."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan synthétique : les indispensables de la géométrie dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. L'objectif n'est pas d'apprendre de nouvelles notions, mais de consolider tout ce que nous avons vu en le structurant sous forme de points de repère clairs. Imagine que tu prépares une fiche de révision pour l'oral du bac ou pour un devoir : tu veux avoir sous les yeux les définitions précises, les critères à vérifier, les formules à connaître par cœur et les pièges à éviter. C'est exactement ce que nous allons faire maintenant, en reprenant chaque grand thème avec un exemple neuf, différent de ceux de la leçon précédente, pour que ton cerveau crée de nouveaux liens."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les droites. Une droite dans l'espace admet deux descriptions équivalentes : la représentation paramétrique (un point + un vecteur directeur) et la représentation cartésienne (intersection de deux plans). Le passage de l'une à l'autre se fait par élimination du paramètre ou par choix d'un paramètre libre. Attention : si le vecteur directeur a une composante nulle, l'élimination demande un peu d'attention (on ne peut pas diviser par zéro). Dans ce cas, on isole le paramètre depuis une autre équation. Garde en tête qu'une droite n'a pas d'équation cartésienne unique : le système n'est pas unique, mais il définit toujours la même droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux plans. Un plan se décrit soit paramétriquement (un point + deux vecteurs directeurs non colinéaires), soit cartésiennement ($ax+by+cz+d=0$). Le vecteur normal $\\vec{n}(a,b,c)$ est orthogonal au plan. Pour passer du paramétrique au cartésien, on cherche $\\vec{n}$ solution de $\\vec{n}\\cdot\\vec{u}=0$ et $\\vec{n}\\cdot\\vec{v}=0$. Pour passer du cartésien au paramétrique, on trouve deux vecteurs directeurs en résolvant $ax+by+cz=0$ (on met une variable à 1, l'autre à 0, etc.). Un piège fréquent : croire qu'un plan n'a qu'un seul vecteur normal. En réalité, tout multiple non nul de $\\vec{n}$ est aussi un vecteur normal. L'équation cartésienne n'est pas unique non plus (on peut multiplier par une constante non nulle)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'orthogonalité est le cœur de la géométrie métrique dans l'espace. Les critères sont simples mais puissants : une droite est perpendiculaire à un plan si son vecteur directeur est colinéaire à un vecteur normal du plan. Deux plans sont perpendiculaires si leurs vecteurs normaux sont orthogonaux (produit scalaire nul). L'angle entre une droite et un plan se calcule via le sinus : $\\sin \\theta = \\frac{|\\vec{u}\\cdot\\vec{n}|}{\\|\\vec{u}\\|\\|\\vec{n}\\|}$. L'angle entre deux plans se calcule via le cosinus de l'angle entre leurs normales : $\\cos \\varphi = \\frac{|\\vec{n_1}\\cdot\\vec{n_2}|}{\\|\\vec{n_1}\\|\\|\\vec{n_2}\\|}$. La projection orthogonale d'un point sur un plan s'obtient par intersection de la droite portée par la normale et passant par le point avec le plan. La distance point-plan est alors la longueur du segment joignant le point à sa projection, ou directement $\\frac{|ax_0+by_0+cz_0+d|}{\\sqrt{a^2+b^2+c^2}}$. Ces formules sont à connaître par cœur, mais elles découlent toutes du même principe : le produit scalaire mesure l'orthogonalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublie pas les positions relatives : deux droites peuvent être sécantes, parallèles ou non coplanaires. Deux plans peuvent être sécants (intersection = droite), parallèles ou confondus. Une droite et un plan peuvent être sécants, parallèles ou la droite contenue dans le plan. Pour déterminer la position relative, on compare les vecteurs directeurs/normaux et on résout les systèmes d'équations. Si le système a une solution unique : intersection en un point (droite-plane) ou en une droite (plan-plan). S'il n'a pas de solution : parallélisme strict. S'il a une infinité de solutions non paramétrables par un seul paramètre : inclusion. C'est la logique algébrique qui guide la géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru l'essentiel du programme de géométrie dans l'espace pour la terminale. Ce bilan t'a permis de réactiver les définitions, les critères, les méthodes de calcul et les pièges classiques. Pour t'assurer que tout est bien ancré, voici une checklist récapitulative que tu peux cocher mentalement ou sur papier avant un contrôle."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire la représentation paramétrique d'une droite connaissant un point et un vecteur directeur.",
+                "Je sais passer d'une représentation paramétrique à un système d'équations cartésiennes (et inversement).",
+                "Je sais déterminer une équation cartésienne d'un plan à partir d'un point et de deux vecteurs directeurs (ou d'un vecteur normal).",
+                "Je sais trouver un vecteur normal d'un plan donné paramétriquement.",
+                "Je connais le critère de perpendicularité d'une droite et d'un plan (colinéarité directeur/normale).",
+                "Je connais le critère de perpendicularité de deux plans (produit scalaire des normales nul).",
+                "Je sais calculer l'angle entre une droite et un plan (formule du sinus).",
+                "Je sais calculer l'angle entre deux plans (formule du cosinus des normales).",
+                "Je sais construire la projection orthogonale d'un point sur un plan en 4 étapes.",
+                "Je sais utiliser la formule de distance d'un point à un plan.",
+                "Je sais discuter les positions relatives de deux droites, de deux plans, d'une droite et d'un plan."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La droite $\\Delta$ a pour équations cartésiennes $\\begin{cases} x - 2y + z = 1 \\\\ 2x + y - z = 3 \\end{cases}$. Donner une représentation paramétrique de $\\Delta$.",
+              "answer": "On pose $z = t$. Alors $x - 2y = 1 - t$ et $2x + y = 3 + t$. On résout : multiplier la deuxième par 2 : $4x+2y=6+2t$. Additionner à la première : $5x = 7 + t \\Rightarrow x = \\frac{7+t}{5}$. Puis $y = 3+t-2x = 3+t-\\frac{14+2t}{5} = \\frac{15+5t-14-2t}{5} = \\frac{1+3t}{5}$. Paramétrique : $\\begin{cases} x = \\frac{7}{5} + \\frac{1}{5}t \\\\ y = \\frac{1}{5} + \\frac{3}{5}t \\\\ z = t \\end{cases}$.",
+              "hint": "Choisis une variable comme paramètre (ici $z$) et résous le système de deux équations à deux inconnues.",
+              "explanation": "On élimine une variable en choisissant le paramètre. Ici $z=t$ simplifie le système. On résout ensuite pour $x$ et $y$ en fonction de $t$."
+            },
+            {
+              "question": "Le plan $(P)$ a pour équation cartésienne $3x - 4y + 2z + 5 = 0$. Trouver deux vecteurs directeurs non colinéaires de $(P)$ et une représentation paramétrique passant par le point $A(0,0,-\\frac{5}{2})$.",
+              "answer": "Vecteur normal $\\vec{n}(3,-4,2)$. On cherche $\\vec{u},\\vec{v}$ tels que $\\vec{n}\\cdot\\vec{u}=0$. Par exemple $\\vec{u}(4,3,0)$ (car $12-12+0=0$) et $\\vec{v}(2,0,-3)$ (car $6+0-6=0$). Paramétrique : $x = 4s+2t$, $y = 3s$, $z = -\\frac{5}{2} - 3t$.",
+              "hint": "Trouve deux solutions indépendantes de $3a-4b+2c=0$ pour obtenir des directeurs.",
+              "explanation": "On résout l'équation homogène associée au plan pour trouver deux vecteurs directeurs. On choisit des valeurs simples pour deux composantes et on déduit la troisième. On écrit ensuite la paramétrisation avec le point donné."
+            },
+            {
+              "question": "Soit le plan $(P) : x + 2y - 2z + 1 = 0$ et la droite $\\Delta$ paramétrique : $x = 1 + t,\\; y = -1 + 2t,\\; z = 2 - 2t$. Déterminer la position relative de $\\Delta$ et $(P)$. Si elles sont sécantes, donner le point d'intersection.",
+              "answer": "Vecteur directeur $\\vec{u}(1,2,-2)$. Normale $\\vec{n}(1,2,-2)$. $\\vec{u}$ est colinéaire à $\\vec{n}$ (mêmes composantes), donc $\\Delta$ est orthogonale à $(P)$. On cherche l'intersection : $(1+t) + 2(-1+2t) -2(2-2t) +1 = 0 \\Rightarrow 1+t-2+4t-4+4t+1=0 \\Rightarrow 9t-4=0 \\Rightarrow t=\\frac{4}{9}$. Point d'intersection : $\\left(\\frac{13}{9}, -\\frac{1}{9}, \\frac{10}{9}\\right)$.",
+              "hint": "Vérifie d'abord l'orthogonalité en comparant $\\vec{u}$ et $\\vec{n}$. Ensuite substitue le paramétrique dans l'équation du plan.",
+              "explanation": "La droite est orthogonale au plan car son vecteur directeur est proportionnel à la normale. Elle est donc sécante (pas parallèle). L'intersection se trouve en résolvant l'équation obtenue après substitution."
+            },
+            {
+              "question": "Calculer la distance entre les deux plans parallèles $(P_1) : 2x - y + 3z + 4 = 0$ et $(P_2) : 4x - 2y + 6z - 5 = 0$.",
+              "answer": "Les normales sont $\\vec{n_1}(2,-1,3)$ et $\\vec{n_2}(4,-2,6) = 2\\vec{n_1}$, donc les plans sont parallèles. On prend un point de $(P_1)$ : par exemple $A(0,0,-\\frac{4}{3})$ (en posant $x=y=0$). Distance $d(A, P_2) = \\frac{|4\\cdot0 -2\\cdot0 +6(-\\frac{4}{3}) -5|}{\\sqrt{4^2+(-2)^2+6^2}} = \\frac{|-8-5|}{\\sqrt{56}} = \\frac{13}{2\\sqrt{14}} = \\frac{13\\sqrt{14}}{28}$.",
+              "hint": "Vérifie le parallélisme via les normales. Choisis un point simple sur l'un des plans et utilise la formule distance point-plan vers l'autre.",
+              "explanation": "Deux plans sont parallèles si leurs vecteurs normaux sont colinéaires. La distance entre eux est la distance de n'importe quel point de l'un à l'autre plan. On choisit un point commode sur $(P_1)$ et on applique la formule."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

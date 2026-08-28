@@ -1,0 +1,286 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.589583+00:00",
+  "id": 351,
+  "code": "6eme-t04-c05",
+  "title": "Bilan - Algèbre 6e",
+  "description": "Cours structuré Educalcul : Bilan - Algèbre 6e.",
+  "subject": "Algèbre et problèmes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algèbre et problèmes",
+    "titre_du_cours": "Bilan - Algèbre 6e",
+    "objectif_global": "Bilan - Algèbre 6e",
+    "mini_lecons_imposees": [
+      "Formules et inconnues.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algèbre et problèmes",
+      "lessons": [
+        {
+          "title": "Formules et inconnues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reprenons confiance avec les formules"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as deja rencontre des formules depuis le CM1, sans toujours les appeler ainsi. Quand on ecrit $A = L \\times l$ pour calculer l'aire d'un rectangle, on utilise une formule. C'est une regle ecrite avec des lettres qui marche pour tous les rectangles du monde. Aujourd'hui, on remet tout a plat pour que tu te sentes completement a l'aise : une formule n'est qu'une phrase mathematique où les lettres tiennent la place des nombres qu'on ne connait pas encore."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une recette de cuisine : \"Mets $x$ grammes de farine, $y$ grammes de sucre, melange.\" Tant que tu ne sais pas combien de grammes mettre, la recette attend. Des que tu decides $x = 200$ et $y = 100$, la recette devient concrete et tu peux faire ton gateau. En mathematiques, les lettres comme $x$, $y$, $L$ ou $l$ sont des emplacements reserves pour des nombres futurs. On les appelle des variables ou des inconnues selon qu'elles peuvent changer ou qu'on cherche leur valeur precise."
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Une lettre qui represente un nombre qui peut changer ou prendre plusieurs valeurs differentes.",
+              "example": "Dans $P = 4 \\times c$, la lettre $c$ est une variable : elle peut valoir $3$, $5,2$, $10$... selon la taille du carre."
+            },
+            {
+              "type": "display_math",
+              "latex": "P = 4 \\times c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idee de variable est posee, regardons comment on utilise une formule concrètement. Quand on connait les valeurs des variables, on les remplace par leurs nombres dans la formule, puis on calcule. C'est ce qu'on appelle evaluer une formule. Prenons l'exemple du perimetre d'un carre : $P = 4 \\times c$. Si on sait que le cote $c$ mesure $7$ cm, on ecrit $P = 4 \\times 7$, ce qui donne $P = 28$ cm. L'operation est simple, mais il faut respecter l'ordre : on remplace d'abord, on calcule apres. C'est comme lire une notice de montage : on suit les etapes dans l'ordre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une formule un peu plus riche : l'aire d'un rectangle $A = L \\times l$. Supposons $L = 12$ cm et $l = 5$ cm. On remplace : $A = 12 \\times 5$. On calcule : $A = 60$ cm$^2$. Remarque l'unite : comme on multiplie des centimetres par des centimetres, on obtient des centimetres carres. C'est un detail important qui t'evitera des erreurs plus tard. Si la formule contient une addition ou une soustraction, comme $P = 2 \\times (L + l)$ pour le perimetre, n'oublie pas les parentheses : on fait d'abord ce qui est dedans."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier les variables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repere les lettres dans la formule et note leur valeur donnee."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Substituer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque lettre par son nombre, en gardant les signes d'operation et les parentheses."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les operations dans l'ordre : parentheses, multiplications/divisions, additions/soustractions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Ecrire la reponse avec l'unite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N'oublie pas $cm$, $cm^2$, $m$, $kg$... selon ce que la formule calcule."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, c'est l'inverse qui se passe : on connait le resultat de la formule et on doit retrouver la valeur d'une variable. C'est ce qu'on appelle resoudre une equation simple. Par exemple, on sait qu'un rectangle a une aire de $56$ cm$^2$ et une longueur de $8$ cm. On cherche la largeur $l$. La formule $A = L \\times l$ devient $56 = 8 \\times l$. Tu te demandes : \"Quel nombre multiplie par $8$ donne $56$ ?\" C'est $7$, donc $l = 7$ cm. Ce raisonnement, tu le fais deja naturellement quand tu cherches le nombre manquant dans une multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas ou la variable est dans une addition. Le perimetre d'un rectangle est $30$ cm, sa longueur est $9$ cm. La formule $P = 2 \\times (L + l)$ donne $30 = 2 \\times (9 + l)$. On commence par diviser les deux cotes par $2$ : $15 = 9 + l$. Puis on soustrait $9$ : $l = 6$ cm. A chaque etape, on fait la meme chose des deux cotes de l'egalite pour garder l'equilibre. C'est le principe de la balance : si on enleve le meme poids des deux plateaux, la balance reste equilibree."
+            },
+            {
+              "type": "number_line",
+              "caption": "Recherche de l'inconnue : on part de 30, on divise par 2, on retire 9",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 30,
+                  "label": "P = 30"
+                },
+                {
+                  "value": 15,
+                  "label": "/ 2"
+                },
+                {
+                  "value": 6,
+                  "label": "- 9 = l"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette lecon, rappelons un point qui aide a ne pas se melanger les pinceaux : la difference entre une formule et une equation. Une formule est une regle generale qui relie plusieurs grandeurs, comme $A = L \\times l$. Une equation est une egalite qui contient une inconnue et qu'on cherche a resoudre pour trouver cette inconnue, comme $56 = 8 \\times l$. Dans les deux cas, les lettres representent des nombres, mais l'intention n'est pas la meme : l'une sert a calculer quand tout est connu, l'autre sert a retrouver ce qui manque. Tu as maintenant toutes les cles pour manipuler les formules avec assurance, que ce soit pour evaluer ou pour resoudre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La formule du perimetre d'un carre est $P = 4 \\times c$. Si le cote $c$ mesure $6$ cm, quelle est la valeur de $P$ ?",
+              "answer": "$24$ cm",
+              "hint": "Remplace $c$ par $6$ dans la formule, puis calcule la multiplication.",
+              "explanation": "On substitue : $P = 4 \\times 6 = 24$. Le perimetre est de $24$ cm."
+            },
+            {
+              "question": "Un rectangle a une longueur $L = 15$ cm et une largeur $l = 4$ cm. Calcule son aire $A$ avec la formule $A = L \\times l$.",
+              "answer": "$60$ cm$^2$",
+              "hint": "Multiplie la longueur par la largeur. N'oublie pas l'unite d'aire.",
+              "explanation": "On remplace : $A = 15 \\times 4 = 60$. L'aire est de $60$ cm$^2$."
+            },
+            {
+              "question": "L'aire d'un rectangle est $72$ cm$^2$. Sa longueur est $9$ cm. Trouve sa largeur $l$ en utilisant la formule $A = L \\times l$.",
+              "answer": "$8$ cm",
+              "hint": "Tu as $72 = 9 \\times l$. Quel nombre multiplie par $9$ donne $72$ ?",
+              "explanation": "On cherche $l$ tel que $9 \\times l = 72$. C'est $8$ car $9 \\times 8 = 72$. Donc $l = 8$ cm."
+            },
+            {
+              "question": "Le perimetre d'un rectangle est $26$ cm. Sa longueur est $8$ cm. Retrouve la largeur $l$ avec la formule $P = 2 \\times (L + l)$.",
+              "answer": "$5$ cm",
+              "hint": "Divise d'abord le perimetre par $2$, puis soustrait la longueur.",
+              "explanation": "$26 = 2 \\times (8 + l)$. On divise par $2$ : $13 = 8 + l$. On soustrait $8$ : $l = 5$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : tout ce que tu sais faire maintenant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voila arrives au terme de ce parcours algebre. Prends un instant pour regarder le chemin parcouru : au debut de l'annee, les lettres dans les calculs pouvaient sembler etranges, presque comme un code secret. Aujourd'hui, tu sais qu'une lettre n'est qu'un tiroir qui attend un nombre. Tu as appris a lire une formule comme une phrase, a remplacer les variables par des valeurs concretes, a respecter l'ordre des operations, et meme a raisonner a l'envers pour retrouver un nombre inconnu. C'est une veritable progression, et tu peux en etre fier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Revisons ensemble les trois grandes competences que tu maitrises desormais. Premiere competence : identifier les variables dans une formule et comprendre ce qu'elles representent. Par exemple, dans $V = L \\times l \\times h$ pour le volume d'un pavé droit, $L$, $l$ et $h$ sont les trois dimensions. Deuxieme competence : evaluer une formule en substituant des nombres. Si $L = 10$, $l = 4$, $h = 3$, tu sais calculer $V = 10 \\times 4 \\times 3 = 120$ cm$^3$ sans te tromper. Troisieme competence : resoudre une equation simple issue d'une formule. Si $V = 120$ et $L = 10$, $l = 4$, tu retrouves $h = 3$ en divisant $120$ par $10$, puis par $4$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Competence",
+                "Exemple",
+                "Astuce"
+              ],
+              "rows": [
+                [
+                  "Lire une formule",
+                  "$P = 2 \\times (L + l)$",
+                  "Repere les lettres et les operations"
+                ],
+                [
+                  "Evaluer (calculer)",
+                  "$L=6, l=2 \\Rightarrow P=16$",
+                  "Remplace, puis calcule dans l'ordre"
+                ],
+                [
+                  "Resoudre (chercher)",
+                  "$P=20, L=7 \\Rightarrow l=3$",
+                  "Fais l'operation inverse des deux cotes"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a un dernier point sur lequel je veux insister, car c'est souvent la ou les erreurs se glissent : les unites. Une formule ne donne pas juste un nombre, elle donne une grandeur physique avec son unite. Si tu calcules un perimetre, la reponse est en $cm$, $m$ ou $km$. Si tu calcules une aire, c'est en $cm^2$, $m^2$... Si tu calcules un volume, c'est en $cm^3$, $m^3$... Quand tu substitutes des valeurs, verifie que toutes les mesures sont dans la meme unite avant de calculer. Si $L = 2$ m et $l = 50$ cm, il faut convertir : $50$ cm $= 0,5$ m, puis $A = 2 \\times 0,5 = 1$ m$^2$. Cette attention aux unites, c'est ce qui distingue un calcul correct d'un calcul qui a du sens."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer cette habitude. Un jardinier veut poser une bordure autour d'un massif rectangulaire. Le massif fait $3$ m de long et $120$ cm de large. Combien de metres de bordure lui faut-il ? La formule du perimetre est $P = 2 \\times (L + l)$. On convertit $120$ cm en $1,2$ m. On calcule : $P = 2 \\times (3 + 1,2) = 2 \\times 4,2 = 8,4$ m. Le jardinier achetera $8,4$ m de bordure. Vois comme la conversion d'unites a evite une erreur enorme : sans conversion, on aurait fait $2 \\times (3 + 120) = 246$, ce qui n'a aucun sens !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelle-toi que l'algebre n'est pas une matiere separee des maths que tu faisais avant. C'est simplement un langage plus puissant pour exprimer des raisonnements que tu faisais deja en arithmetique. Quand tu cherchais \"le nombre qu'il faut ajouter a $7$ pour faire $15$\", tu faisais de l'algebre sans le savoir : $7 + x = 15$. Maintenant, tu as les outils pour l'ecrire, le manipuler, et le generaliser. Cette boite a outils, tu l'emportes avec toi au college, au lycee, et bien au-dela. Chaque nouvelle formule que tu rencontreras fonctionnera sur le meme modele : des variables, une relation, et la possibilite de calculer ou de chercher."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les variables dans une formule (les lettres qui representent des nombres).",
+                "Je sais evaluer une formule en remplacant les variables par des valeurs donnees.",
+                "Je respecte l'ordre des operations (parentheses, multiplications/divisions, additions/soustractions).",
+                "Je sais resoudre une equation simple issue d'une formule pour retrouver une inconnue.",
+                "Je verifie toujours que les mesures sont dans la meme unite avant de calculer.",
+                "J'ecris ma reponse finale avec l'unite appropriee (cm, cm^2, cm^3, m, kg...).",
+                "Je sais expliquer a voix haute ce que je fais a chaque etape d'un calcul avec une formule."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la formule du volume d'un pavé droit $V = L \\times l \\times h$, quelles sont les variables ? Que representent-elles ?",
+              "answer": "Les variables sont $L$, $l$ et $h$. Elles representent la longueur, la largeur et la hauteur du pavé.",
+              "hint": "Regarde les lettres presentes dans la formule. Chacune correspond a une dimension.",
+              "explanation": "Une formule ecrit une relation entre plusieurs grandeurs. Ici, $L$ = longueur, $l$ = largeur, $h$ = hauteur. Ce sont les trois variables."
+            },
+            {
+              "question": "Un bac rectangulaire mesure $50$ cm de long, $30$ cm de large et $20$ cm de haut. Calcule son volume en cm$^3$ avec la formule $V = L \\times l \\times h$.",
+              "answer": "$30\\,000$ cm$^3$",
+              "hint": "Multiplie les trois dimensions. Toutes sont deja en cm, pas besoin de conversion.",
+              "explanation": "$V = 50 \\times 30 \\times 20 = 1\\,500 \\times 20 = 30\\,000$ cm$^3$."
+            },
+            {
+              "question": "Une piece rectangulaire a une aire de $24$ m$^2$. Sa longueur est $6$ m. Quelle est sa largeur ?",
+              "answer": "$4$ m",
+              "hint": "Utilise la formule $A = L \\times l$. Tu connais $A$ et $L$, cherche $l$.",
+              "explanation": "$24 = 6 \\times l$. Le nombre qui multiplie par $6$ donne $24$ est $4$. Donc $l = 4$ m."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

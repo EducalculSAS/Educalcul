@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_course_id": 121,
+  "_course_code": "ce1-t06-c05-euros-et-centimes",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Euros et centimes",
+  "title": "Quiz : Application Euros et centimes",
+  "questions": [
+    {
+      "text": "Paul achète un crayon à $2€$ et une gomme à $3€$. Combien paie-t-il au total ?",
+      "options": [
+        "$4€$",
+        "$5€$",
+        "$6€$",
+        "$7€$"
+      ],
+      "correctAnswer": "$5€$",
+      "explanation": "Il faut additionner le prix du crayon ($2€$) et le prix de la gomme ($3€$). $2 + 3 = 5$. Paul paie donc $5€$ au total.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          300
+        ],
+        "target": 500,
+        "caption": "Achats de Paul"
+      }
+    },
+    {
+      "text": "Julie achète un cahier à $4€$. Elle donne un billet de $10€$. Combien la caissière doit-elle lui rendre ?",
+      "options": [
+        "$5€$",
+        "$6€$",
+        "$7€$",
+        "$8€$"
+      ],
+      "correctAnswer": "$6€$",
+      "explanation": "Pour trouver la monnaie, on soustrait le prix du cahier ($4€$) de la somme donnée ($10€$). $10 - 4 = 6$. La caissière rend $6€$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de centimes dans $3€$ ?",
+      "options": [
+        "$30$ centimes",
+        "$300$ centimes",
+        "$3\\,000$ centimes",
+        "$3$ centimes"
+      ],
+      "correctAnswer": "$300$ centimes",
+      "explanation": "Un euro vaut $100$ centimes. Donc $3$ euros valent $3 \\times 100 = 300$ centimes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il faut payer $1,70€$. Quelle série de pièces permet de payer le montant exact avec le moins de pièces possible ?",
+      "options": [
+        "$1€ + 50c + 20c$",
+        "$1€ + 50c + 10c + 10c$",
+        "$2€$",
+        "$1€ + 20c + 20c + 20c + 10c$"
+      ],
+      "correctAnswer": "$1€ + 50c + 20c$",
+      "explanation": "Il faut faire $1,70€$. La pièce de $1€$ fait $1€$. Il reste $70c$. La plus grosse pièce possible est $50c$ (reste $20c$), puis une pièce de $20c$. Cela fait 3 pièces. Les autres propositions utilisent plus de pièces ou donnent un montant différent.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100,
+          50,
+          20
+        ],
+        "target": 170,
+        "caption": "Paiement de 1,70€"
+      }
+    },
+    {
+      "text": "On compare deux montants : Montant A = $2€ + 50c$ et Montant B = $3€$. Lequel est le plus grand ?",
+      "options": [
+        "Le montant A",
+        "Le montant B",
+        "Ils sont égaux",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le montant B",
+      "explanation": "Le montant A vaut $2,50€$ ($2€ + 50c$). Le montant B vaut $3€$. Comme $3 > 2,50$, le montant B est plus grand.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

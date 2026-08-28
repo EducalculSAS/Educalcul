@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Application : Addition posée jusqu'à 10 000",
+  "title": "Quiz : Applications de l'addition posée jusqu'à 10 000",
+  "questions": [
+    {
+      "text": "Au zoo, il y a $342$ singes et $215$ oiseaux. Combien y a-t-il d'animaux au total ?",
+      "options": [
+        "557",
+        "567",
+        "556",
+        "457"
+      ],
+      "correctAnswer": "557",
+      "explanation": "On pose l'addition $342 + 215$. Unités : $2 + 5 = 7$. Dizaines : $4 + 1 = 5$. Centaines : $3 + 2 = 5$. Le total est $557$. Les distracteurs correspondent à des erreurs de retenue ou d'addition sur une colonne (ex: $4+1=6$ pour $567$, $2+5=6$ pour $556$, $3+2=4$ pour $457$).",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "342",
+          "215"
+        ],
+        "result": "557",
+        "carries": []
+      }
+    },
+    {
+      "text": "Une bibliothécaire range $123$ romans, $245$ albums et $312$ documentaires. Combien de livres range-t-elle au total ?",
+      "options": [
+        "680",
+        "670",
+        "690",
+        "580"
+      ],
+      "correctAnswer": "680",
+      "explanation": "On additionne les trois nombres : $123 + 245 + 312$. Unités : $3 + 5 + 2 = 10$, j'écris $0$ et je retiens $1$. Dizaines : $2 + 4 + 1 + 1 (\\text{retenue}) = 8$. Centaines : $1 + 2 + 3 = 6$. Le résultat est $680$. L'erreur $670$ vient de l'oubli de la retenue des unités. L'erreur $690$ vient d'une mauvaise addition des dizaines. L'erreur $580$ vient d'une erreur aux centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un magasin a vendu $2\\,456$ pommes le matin et $3\\,589$ pommes l'après-midi. Combien de pommes ont été vendues dans la journée ?",
+      "options": [
+        "6 045",
+        "5 935",
+        "6 035",
+        "5 045"
+      ],
+      "correctAnswer": "6 045",
+      "explanation": "On pose $2\\,456 + 3\\,589$. Unités : $6+9=15$ ($5$, retenue $1$). Dizaines : $5+8+1=14$ ($4$, retenue $1$). Centaines : $4+5+1=10$ ($0$, retenue $1$). Milliers : $2+3+1=6$. Résultat : $6\\,045$. $5\\,935$ correspond à l'oubli de toutes les retenues. $6\\,035$ correspond à l'oubli de la retenue des dizaines. $5\\,045$ correspond à l'oubli de la retenue des centaines vers les milliers.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "2456",
+          "3589"
+        ],
+        "result": "6045",
+        "carries": [
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Pour aller à la mer, la famille Dupont parcourt $1\\,250$ km l'aller et $1\\,250$ km le retour. Quelle distance totale parcourent-ils ?",
+      "options": [
+        "2 500 km",
+        "2 400 km",
+        "2 510 km",
+        "2 600 km"
+      ],
+      "correctAnswer": "2 500 km",
+      "explanation": "Il faut additionner $1\\,250 + 1\\,250$. Unités : $0+0=0$. Dizaines : $5+5=10$, j'écris $0$ et je retiens $1$. Centaines : $2+2+1=5$. Milliers : $1+1=2$. Le total est $2\\,500$ km. $2\\,400$ km oublie la retenue des dizaines. $2\\,510$ km ajoute $10$ au lieu de reporter la retenue. $2\\,600$ km fait une erreur sur les centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un collectionneur a $4\\,321$ timbres. Il en achète $2\\,689$ de plus, puis en reçoit $500$ en cadeau. Combien a-t-il de timbres maintenant ?",
+      "options": [
+        "7 510",
+        "7 410",
+        "7 500",
+        "6 910"
+      ],
+      "correctAnswer": "7 510",
+      "explanation": "On peut faire en deux étapes. 1) $4\\,321 + 2\\,689 = 7\\,010$ (retenues successives). 2) $7\\,010 + 500 = 7\\,510$. $7\\,410$ correspond à l'erreur $4\\,321+2\\,689=6\\,910$ (oubli des retenues) puis $+500$. $7\\,500$ oublie les $10$ du total intermédiaire. $6\\,910$ est le résultat de la première addition sans aucune retenue.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître les transformations et leurs compositions",
+  "blocks": [
+    {
+      "title": "Reconnaître une transformation simple",
+      "content": "Relie chaque description à la transformation du plan correspondante.",
+      "pairs": [
+        {
+          "left": "Transformation qui conserve les distances, les angles et l'orientation",
+          "right": "Translation"
+        },
+        {
+          "left": "Transformation qui conserve les distances et les angles mais change l'orientation",
+          "right": "Symétrie axiale"
+        },
+        {
+          "left": "Transformation qui conserve les angles, multiplie les distances par un rapport $k \\neq 1$ et conserve l'orientation",
+          "right": "Homothétie"
+        },
+        {
+          "left": "Transformation qui conserve les distances et les angles, admet un unique point invariant et change l'orientation",
+          "right": "Rotation d'angle 180° (symétrie centrale)"
+        }
+      ],
+      "explanation": "La translation conserve toutes les mesures et l'orientation (pas de retournement). La symétrie axiale conserve distances et angles mais inverse l'orientation (retournement). L'homothétie conserve les angles et multiplie les longueurs par $k$. La rotation de 180° (symétrie centrale) conserve distances et angles, a un centre unique invariant et inverse l'orientation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identifier la transformation par ses invariants",
+      "content": "Relie chaque propriété d'invariance à la transformation qui la caractérise.",
+      "pairs": [
+        {
+          "left": "Une droite $(d)$ est globalement invariante et tous ses points sont fixes",
+          "right": "Symétrie axiale d'axe $(d)$"
+        },
+        {
+          "left": "Un unique point $O$ est invariant, toute droite passant par $O$ est globalement invariante",
+          "right": "Symétrie centrale de centre $O$"
+        },
+        {
+          "left": "Un point $O$ est invariant, toute droite passant par $O$ est globalement invariante, les distances sont multipliées par $k$",
+          "right": "Homothétie de centre $O$ et rapport $k$"
+        },
+        {
+          "left": "Aucun point n'est invariant (sauf cas particulier), toutes les droites sont globalement invariantes par translation",
+          "right": "Translation"
+        }
+      ],
+      "explanation": "En symétrie axiale, l'axe est une droite de points fixes. En symétrie centrale, seul le centre est fixe, les droites par le centre sont invariantes globalement. En homothétie, le centre est fixe, les droites par le centre sont invariantes et les longueurs changent. En translation, il n'y a généralement pas de point fixe (sauf vecteur nul), les droites sont déplacées parallèlement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître le résultat d'une composition",
+      "content": "Relie chaque composition de deux transformations à la transformation résultante.",
+      "pairs": [
+        {
+          "left": "Composition de deux symétries axiales d'axes parallèles",
+          "right": "Translation"
+        },
+        {
+          "left": "Composition de deux symétries axiales d'axes sécants",
+          "right": "Rotation"
+        },
+        {
+          "left": "Composition de deux translations",
+          "right": "Translation"
+        },
+        {
+          "left": "Composition de deux homothéties de même centre",
+          "right": "Homothétie"
+        }
+      ],
+      "explanation": "La composition de deux symétries axiales d'axes parallèles donne une translation (vecteur double de la distance entre axes, perpendiculaire aux axes). La composition de deux symétries axiales d'axes sécants donne une rotation (centre à l'intersection, angle double de l'angle entre axes). La composition de deux translations est une translation (vecteur somme). La composition de deux homothéties de même centre est une homothétie de même centre et de rapport produit.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

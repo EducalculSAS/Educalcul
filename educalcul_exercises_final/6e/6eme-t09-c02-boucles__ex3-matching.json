@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Prédire",
+  "title": "Prédire le résultat de boucles",
+  "blocks": [
+    {
+      "title": "Valeur finale d'un compteur simple",
+      "content": "Relie chaque algorithme à la valeur finale de la variable $c$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialiser $c$ à $0$ \\n Répéter $4$ fois \\n   Ajouter $1$ à $c$",
+          "right": "$4$"
+        },
+        {
+          "left": "Initialiser $c$ à $3$ \\n Répéter $2$ fois \\n   Ajouter $2$ à $c$",
+          "right": "$7$"
+        },
+        {
+          "left": "Initialiser $c$ à $10$ \\n Répéter $3$ fois \\n   Retrancher $1$ à $c$",
+          "right": "$7$"
+        },
+        {
+          "left": "Initialiser $c$ à $1$ \\n Répéter $5$ fois \\n   Multiplier $c$ par $2$",
+          "right": "$32$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour chaque algorithme, on simule l'exécution pas à pas. 1) $c$ commence à $0$, on ajoute $1$ quatre fois : $0+1+1+1+1=4$. 2) $c$ commence à $3$, on ajoute $2$ deux fois : $3+2+2=7$. 3) $c$ commence à $10$, on retranche $1$ trois fois : $10-1-1-1=7$. 4) $c$ commence à $1$, on multiplie par $2$ cinq fois : $1 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme et produit dans une boucle 'Pour'",
+      "content": "Relie chaque algorithme à la valeur finale affichée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialiser $s$ à $0$ \\n Pour $i$ de $1$ à $4$ \\n   Ajouter $i$ à $s$ \\n Afficher $s$",
+          "right": "$10$"
+        },
+        {
+          "left": "Initialiser $p$ à $1$ \\n Pour $i$ de $1$ à $3$ \\n   Multiplier $p$ par $i$ \\n Afficher $p$",
+          "right": "$6$"
+        },
+        {
+          "left": "Initialiser $s$ à $0$ \\n Pour $i$ de $1$ à $5$ \\n   Ajouter $2$ à $s$ \\n Afficher $s$",
+          "right": "$10$"
+        },
+        {
+          "left": "Initialiser $s$ à $0$ \\n Pour $i$ de $2$ à $5$ \\n   Ajouter $i$ à $s$ \\n Afficher $s$",
+          "right": "$14$"
+        }
+      ],
+      "items": [],
+      "explanation": "On calcule le résultat de la boucle 'Pour'. 1) Somme des entiers de $1$ à $4$ : $1+2+3+4=10$. 2) Produit des entiers de $1$ à $3$ (factorielle) : $1 \\times 2 \\times 3 = 6$. 3) On ajoute $2$ cinq fois (pour $i=1,2,3,4,5$) : $5 \\times 2 = 10$. 4) Somme des entiers de $2$ à $5$ : $2+3+4+5=14$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles imbriquées et instructions conditionnelles",
+      "content": "Relie chaque suite d'instructions à la valeur finale de la variable $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialiser $n$ à $0$ \\n Répéter $3$ fois \\n   Répéter $2$ fois \\n     Ajouter $1$ à $n$",
+          "right": "$6$"
+        },
+        {
+          "left": "Initialiser $n$ à $5$ \\n Répéter $2$ fois \\n   Ajouter $3$ à $n$ \\n Répéter $2$ fois \\n   Retrancher $1$ à $n$",
+          "right": "$9$"
+        },
+        {
+          "left": "Initialiser $n$ à $1$ \\n Pour $i$ de $1$ à $3$ \\n   Multiplier $n$ par $2$",
+          "right": "$8$"
+        },
+        {
+          "left": "Initialiser $n$ à $0$ \\n Pour $i$ de $1$ à $4$ \\n   Si $i$ est pair \\n     Ajouter $1$ à $n$",
+          "right": "$2$"
+        }
+      ],
+      "items": [],
+      "explanation": "On analyse la structure de contrôle. 1) Boucle imbriquée : la boucle intérieure s'exécute $2$ fois pour chacun des $3$ tours de la boucle extérieure, soit $3 \\times 2 = 6$ ajouts de $1$. 2) Deux boucles successives : $n=5$, puis $+3+3=11$, puis $-1-1=9$. 3) Boucle 'Pour' multiplicative : $n=1$, puis $\\times 2$ trois fois : $1 \\times 2 \\times 2 \\times 2 = 8$. 4) Condition dans la boucle : $i$ prend les valeurs $1,2,3,4$. Seuls $2$ et $4$ sont pairs, donc $n$ est incrémenté deux fois : $0+1+1=2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

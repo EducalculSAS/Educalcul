@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 408,
+  "_course_code": "5eme-t06-c04-probabilite-d-un-evenement-simple",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Calcul de probabilités simples",
+  "blocks": [
+    {
+      "title": "Probabilité d'un événement simple - Boules",
+      "content": "Un sac contient 3 boules rouges, 2 boules bleues et 5 boules vertes. On tire une boule au hasard. La probabilité de tirer une boule rouge est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3/10|0,3|30%"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il y a 3 boules rouges sur un total de 10 boules. La probabilité est le nombre de cas favorables divisé par le nombre total de cas possibles, soit $3/10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'un événement simple - Dé",
+      "content": "On lance un dé à six faces équilibré. La probabilité d'obtenir un nombre pair est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1/2|0,5|50%"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les faces d'un dé sont numérotées de 1 à 6. Les nombres pairs sont 2, 4 et 6, soit 3 cas favorables sur 6 cas possibles. La probabilité vaut $3/6 = 1/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'événements mutuellement exclusifs - Billes",
+      "content": "Une urne contient 4 billes jaunes, 6 billes noires et 10 billes blanches. On tire une bille au hasard. La probabilité de tirer une bille jaune est {{1}}, celle de tirer une bille noire est {{2}}, et la probabilité de tirer une bille jaune ou noire est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1/5|4/20|0,2|20%",
+        "3/10|6/20|0,3|30%",
+        "1/2|10/20|0,5|50%"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total des billes est $4+6+10 = 20$. Pour une bille jaune : $4/20 = 1/5$. Pour une bille noire : $6/20 = 3/10$. Les événements « jaune » et « noire » sont incompatibles, donc la probabilité de l'union est la somme : $(4+6)/20 = 10/20 = 1/2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Choisir propriété",
+  "title": "Géométrie du triangle : Choisir la propriété adaptée",
+  "questions": [
+    {
+      "text": "Dans un triangle ABC, on sait que les angles $\\widehat{B}$ et $\\widehat{C}$ ont la même mesure. Quelle propriété permet de conclure que les côtés AB et AC ont la même longueur ?",
+      "options": [
+        "Dans un triangle isocèle, les angles à la base sont égaux.",
+        "Si un triangle a deux angles égaux, alors c'est un triangle isocèle.",
+        "Dans un triangle équilatéral, tous les angles mesurent $60^{\\circ}$.",
+        "La somme des angles d'un triangle vaut $180^{\\circ}$."
+      ],
+      "correctAnswer": "Si un triangle a deux angles égaux, alors c'est un triangle isocèle.",
+      "explanation": "L'hypothèse donne deux angles égaux ($\\widehat{B} = \\widehat{C}$) et la conclusion porte sur l'égalité des côtés opposés (AB = AC). C'est exactement la réciproque de la propriété des angles à la base : « Si un triangle a deux angles égaux, alors c'est un triangle isocèle ». La première option est la propriété directe (côtés égaux $\\Rightarrow$ angles égaux), qui ne permet pas de conclure dans ce sens. Les deux dernières sont vraies mais sans lien avec la démonstration demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle DEF rectangle en D. On trace la médiane issue de D. Quelle propriété permet d'affirmer que cette médiane a pour longueur la moitié de l'hypoténuse EF ?",
+      "options": [
+        "Théorème de Pythagore.",
+        "Dans un triangle rectangle, la médiane issue de l'angle droit mesure la moitié de l'hypoténuse.",
+        "Dans un triangle isocèle, la médiane issue du sommet principal est aussi une hauteur.",
+        "La somme des angles d'un triangle vaut $180^{\\circ}$."
+      ],
+      "correctAnswer": "Dans un triangle rectangle, la médiane issue de l'angle droit mesure la moitié de l'hypoténuse.",
+      "explanation": "C'est une propriété caractéristique du triangle rectangle : le milieu de l'hypoténuse est le centre du cercle circonscrit, donc équidistant des trois sommets. La médiane issue de l'angle droit joint ce sommet au milieu de l'hypoténuse, sa longueur est donc le rayon, soit la moitié de l'hypoténuse. Le théorème de Pythagore permet de calculer l'hypoténuse mais pas directement la médiane. La troisième option concerne le triangle isocèle, pas le triangle rectangle quelconque. La somme des angles ne donne aucune information sur les longueurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle GHI a ses trois côtés de même longueur. Quelle propriété permet de déterminer la mesure de chacun de ses angles ?",
+      "options": [
+        "Dans un triangle isocèle, les angles à la base sont égaux.",
+        "Si un triangle a deux côtés égaux, c'est un triangle isocèle.",
+        "Dans un triangle équilatéral, tous les angles mesurent $60^{\\circ}$.",
+        "Dans tout triangle, l'angle le plus grand est opposé au plus grand côté."
+      ],
+      "correctAnswer": "Dans un triangle équilatéral, tous les angles mesurent $60^{\\circ}$.",
+      "explanation": "Un triangle ayant ses trois côtés égaux est, par définition, un triangle équilatéral. La propriété spécifique à ce triangle est que ses trois angles sont égaux et, puisque leur somme vaut $180^{\\circ}$, chacun vaut $60^{\\circ}$. Les deux premières options concernent le triangle isocèle (deux côtés égaux seulement) et ne donnent pas la valeur numérique. La dernière option compare les angles entre eux mais ne donne pas leur mesure précise.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Peut-on construire un triangle avec des côtés mesurant cinq centimètres, huit centimètres et douze centimètres ? Quelle propriété faut-il vérifier ?",
+      "options": [
+        "Théorème de Pythagore.",
+        "Dans un triangle, la somme de deux côtés quelconques est supérieure au troisième côté.",
+        "Dans un triangle, l'angle le plus grand est opposé au plus grand côté.",
+        "La somme des angles d'un triangle vaut $180^{\\circ}$."
+      ],
+      "correctAnswer": "Dans un triangle, la somme de deux côtés quelconques est supérieure au troisième côté.",
+      "explanation": "L'existence d'un triangle à partir de trois longueurs est régie par les inégalités triangulaires : chaque côté doit être strictement inférieur à la somme des deux autres. Ici, $5 + 8 = 13 > 12$, $5 + 12 = 17 > 8$, $8 + 12 = 20 > 5$, les inégalités sont vérifiées, le triangle existe. Le théorème de Pythagore ne s'applique qu'aux triangles rectangles. La relation angles-côtés suppose que le triangle existe déjà. La somme des angles ne concerne pas les longueurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle MNP ci-dessous, on sait que $\\angle M = 50^{\\circ}$ et $\\angle N = 60^{\\circ}$. Quelle propriété permet d'affirmer que le côté MN est plus grand que le côté MP ?",
+      "options": [
+        "Dans un triangle, la somme de deux côtés est supérieure au troisième.",
+        "Dans un triangle, l'angle le plus grand est opposé au plus grand côté.",
+        "Dans un triangle isocèle, les angles à la base sont égaux.",
+        "La médiane d'un triangle partage l'aire en deux parties égales."
+      ],
+      "correctAnswer": "Dans un triangle, l'angle le plus grand est opposé au plus grand côté.",
+      "explanation": "On calcule d'abord le troisième angle : $\\angle P = 180^{\\circ} - 50^{\\circ} - 60^{\\circ} = 70^{\\circ}$. L'angle le plus grand est $\\angle P = 70^{\\circ}$, il est opposé au côté MN. Le deuxième angle est $\\angle N = 60^{\\circ}$, il est opposé au côté MP. Puisque $70^{\\circ} > 60^{\\circ}$, le côté opposé au plus grand angle (MN) est plus grand que le côté opposé au deuxième angle (MP). C'est l'application directe de la propriété : « Dans un triangle, l'angle le plus grand est opposé au plus grand côté » (ou sa réciproque). Les autres propriétés ne permettent pas de comparer ces deux longueurs.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle MNP avec angle M = 50° et angle N = 60°",
+        "vertexLabels": [
+          "M",
+          "N",
+          "P"
+        ],
+        "sideLabels": [
+          "p",
+          "m",
+          "n"
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

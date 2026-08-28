@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Justifier une réponse",
+  "title": "Justifier ses réponses en résolution de problèmes",
+  "blocks": [
+    {
+      "title": "Choisir l'opération et la justifier",
+      "content": "Relie chaque problème à la phrase qui justifie le calcul à effectuer.",
+      "pairs": [
+        {
+          "left": "Il y a vingt-huit billes dans un sac. On en ajoute quinze. Combien y a-t-il de billes au total ?",
+          "right": "On additionne car on réunit deux quantités : $28 + 15 = 43$."
+        },
+        {
+          "left": "Paul a quarante-cinq cartes. Il en donne dix-huit à son frère. Combien lui en reste-t-il ?",
+          "right": "On soustrait car on retire une quantité : $45 - 18 = 27$."
+        },
+        {
+          "left": "Une boîte contient six paquets de quatre crayons. Combien y a-t-il de crayons en tout ?",
+          "right": "On multiplie car il y a plusieurs groupes de même taille : $6 \\times 4 = 24$."
+        }
+      ],
+      "explanation": "Dans le premier problème, on ajoute des billes : c'est une réunion, donc une addition. Dans le second, on en donne : c'est un retrait, donc une soustraction. Dans le troisième, il y a 6 groupes de 4 crayons : c'est une multiplication.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Valider ou corriger un calcul",
+      "content": "Relie la réponse de l'élève à la justification du professeur.",
+      "pairs": [
+        {
+          "left": "L'élève écrit : $34 + 27 = 61$.",
+          "right": "Juste. L'élève a correctement géré la retenue des unités ($4 + 7 = 11$)."
+        },
+        {
+          "left": "L'élève écrit : $50 - 23 = 33$.",
+          "right": "Faux. Il a soustrait $3$ à $0$ aux unités au lieu de faire une retenue. Le résultat est $27$."
+        },
+        {
+          "left": "L'élève écrit : $5 \\times 12 = 55$.",
+          "right": "Faux. Il a oublié de multiplier les dizaines ($5 \\times 10 = 50$). Le résultat est $60$."
+        }
+      ],
+      "explanation": "Pour $34+27$, $4+7=11$ (1 unité, 1 dizaine de retenue), $3+2+1=6$ dizaines, résultat $61$. Pour $50-23$, on ne peut pas faire $0-3$, il faut retenir une dizaine : $10-3=7$ unités, $4-2=2$ dizaines, résultat $27$. Pour $5 \\times 12$, $5 \\times 2 = 10$ et $5 \\times 10 = 50$, soit $60$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Justifier le résultat d'un partage",
+      "content": "Relie chaque affirmation à sa justification pour ce problème : « Il y a trente-cinq bonbons. On veut les partager équitablement entre cinq enfants. »",
+      "pairs": [
+        {
+          "left": "Chaque enfant reçoit sept bonbons.",
+          "right": "Vrai car $35 = 5 \\times 7$ (ou $35 \\div 5 = 7$)."
+        },
+        {
+          "left": "Il reste deux bonbons.",
+          "right": "Faux car trente-cinq est un multiple de cinq, le partage est exact."
+        },
+        {
+          "left": "On a fait une division.",
+          "right": "Vrai car on partage une quantité en parts égales : $35 \\div 5$."
+        }
+      ],
+      "explanation": "Le partage équitable de 35 par 5 correspond à la division $35 \\div 5$. Comme $5 \\times 7 = 35$, le quotient est 7 et le reste est 0. Il n'y a donc pas de bonbons qui restent.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.448586+00:00",
+  "id": 306,
+  "code": "cm2-t05-c04",
+  "title": "Aires du carré et du rectangle",
+  "description": "Cours structuré Educalcul : Aires du carré et du rectangle.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Aires du carré et du rectangle",
+    "objectif_global": "Aires du carré et du rectangle",
+    "mini_lecons_imposees": [
+      "Formules.",
+      "Unités d'aire.",
+      "Conversions simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Formules.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que l'aire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu poses une feuille de papier sur une table. L'aire, c'est la quantité de surface que cette feuille couvre, sans tenir compte de son épaisseur. En classe, on mesure l'aire en comptant combien de petits carrés de même taille peuvent tenir à l'intérieur d'une figure. C'est une façon concrète de voir combien d'espace une forme occupe, un peu comme si tu recouvrais le sol avec des dalles identiques."
+            },
+            {
+              "type": "definition",
+              "term": "aire",
+              "definition": "L'aire d'une figure plane est la mesure de sa surface. On l'exprime en unités d'aire comme le centimètre carré ($cm^2$) ou le mètre carré ($m^2$).",
+              "example": "Un carré de $3$ cm de côté a une aire de $9$ $cm^2$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un rectangle, il suffit de connaître sa longueur et sa largeur. Si tu as un rectangle qui mesure $5$ cm de long et $3$ cm de large, tu peux imaginer $5$ rangées de $3$ petits carrés chacune. En tout, cela fait $5 \\times 3 = 15$ petits carrés, donc $15$ $cm^2$. Cette image de rangées et de colonnes aide à visualiser pourquoi on multiplie les deux mesures."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = L \\\\times l"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère la longueur ($L$) et la largeur ($l$).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la figure ou la description du problème et note les deux mesures qui correspondent aux côtés perpendiculaires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie $L$ par $l$ pour obtenir l'aire $A$.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la multiplication $L \\\\times l$ ; le résultat s'exprime dans l'unité d'aire choisie (par exemple $cm^2$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment faire pour un rectangle, regardons le cas particulier du carré où les deux côtés sont égaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un carré est un rectangle dont tous les côtés ont la même mesure, qu'on appelle le côté $c$. Si $c = 4$ cm, on a $4$ rangées de $4$ carrés, soit $4 \\\\times 4 = 16$ $cm^2$. La formule devient donc très simple : on multiplie le côté par lui‑même."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = c \\\\times c"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Note la mesure du côté $c$.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la longueur d'un côté du carré dans l'énoncé ou sur le dessin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie $c$ par lui‑même ($c \\\\times c$) pour trouver l'aire.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $c \\\\times c$ ; le résultat donne l'aire en unités d'aire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner à comparer des surfaces, observons un rectangle de $6$ cm sur $2$ cm et un carré de $4$ cm de côté."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des aires",
+              "bars": [
+                {
+                  "label": "Rectangle 6×2",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Carré 4×4",
+                  "value": 16,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'aire d'un rectangle de $7$ cm de long et $4$ cm de large.",
+              "answer": "$28$ $cm^2$",
+              "hint": "Multiplie la longueur par la largeur.",
+              "explanation": "La formule $A = L \\\\times l$ donne $7 \\\\times 4 = 28$."
+            },
+            {
+              "question": "Quel est l'aire d'un carré dont le côté mesure $5$ cm ?",
+              "answer": "$25$ $cm^2$",
+              "hint": "Utilise $c \\\\times c$.",
+              "explanation": "$5 \\\\times 5 = 25$."
+            },
+            {
+              "question": "Lequel a la plus grande aire : un rectangle $8$ cm × $2$ cm ou un carré de $5$ cm de côté ?",
+              "answer": "Le carré ($25$ $cm^2$) est plus grand que le rectangle ($16$ $cm^2$).",
+              "hint": "Calcule chaque aire puis compare.",
+              "explanation": "Rectangle $8 \\\\times 2 = 16$, carré $5 \\\\times 5 = 25$."
+            }
+          ]
+        },
+        {
+          "title": "Unités d'aire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités d'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on mesure une surface, on n'utilise pas la même unité pour une feuille de papier et pour un terrain de football. Les unités d'aire les plus courantes sont le centimètre carré ($cm^2$), le décimètre carré ($dm^2$), le mètre carré ($m^2$) et le kilomètre carré ($km^2$). Chaque unité correspond à un carré dont le côté mesure $1$ cm, $1$ dm, $1$ m ou $1$ km. Choisir l'unité adaptée évite d'écrire des nombres trop grands ou trop petits."
+            },
+            {
+              "type": "definition",
+              "term": "unité d'aire",
+              "definition": "Une unité d'aire est la surface d'un carré de côté $1$ unité de longueur. Par exemple, $1$ $cm^2$ est la surface d'un carré de $1$ cm de côté.",
+              "example": "Une carte postale fait environ $150$ $cm^2$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Côté du carré",
+                "Équivalence en $cm^2$"
+              ],
+              "rows": [
+                [
+                  "$cm^2$",
+                  "$1$ cm",
+                  "$1$"
+                ],
+                [
+                  "$dm^2$",
+                  "$1$ dm ($10$ cm)",
+                  "$100$"
+                ],
+                [
+                  "$m^2$",
+                  "$1$ m ($100$ cm)",
+                  "$10\\,000$"
+                ],
+                [
+                  "$km^2$",
+                  "$1$ km ($1000$ m)",
+                  "$1\\,000\\,000\\,000$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relations entre les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer d'une unité à l'autre, il suffit de savoir combien de fois le côté du grand carré contient le côté du petit carré. Par exemple, $1$ m = $10$ dm, donc $1$ $m^2$ = $10 \\\\times 10 = 100$ $dm^2$. De même, $1$ $dm^2$ = $10 \\\\times 10 = 100$ $cm^2$. Ces relations reposent toujours sur le facteur $10$ entre deux unités de longueur consécutives."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,m^2 = 100\\,dm^2 = 10\\,000\\,cm^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie l'unité de départ et l'unité d'arrivée.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux unités mentionnées dans l'exercice (par exemple $m^2$ vers $dm^2$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte le nombre de sauts de $10$ entre les deux unités.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque saut correspond à un changement d'unité de longueur (cm → dm → m → km). Deux sauts signifient un facteur $10 \\\\times 10 = 100$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplie ou divise par $10$ à chaque saut (donc par $100$ pour deux sauts).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu vas vers une unité plus petite, multiplie ; vers une plus grande, divise."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'unité adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une petite étiquette, on utilisera $cm^2$. Pour la surface d'une salle de classe, $m^2$ est plus pratique. Pour un grand champ, $km^2$ évite d'écrire des nombres énormes. Choisir la bonne unité rend les calculs plus lisibles et limite les risques d'erreur."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples d'aires selon l'unité",
+              "bars": [
+                {
+                  "label": "Étiquette",
+                  "value": 150,
+                  "tone": "red"
+                },
+                {
+                  "label": "Salle de classe",
+                  "value": 45,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Champ",
+                  "value": 2,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité d'aire utiliserais‑tu pour mesurer la surface d'un timbre‑poste ?",
+              "answer": "$cm^2$",
+              "hint": "Pense à la taille d'un timbre.",
+              "explanation": "Un timbre fait quelques centimètres carrés, donc $cm^2$ est adapté."
+            },
+            {
+              "question": "Convertis $3$ $m^2$ en $dm^2$.",
+              "answer": "$300$ $dm^2$",
+              "hint": "Combien de $dm^2$ dans $1$ $m^2$ ?",
+              "explanation": "$1$ $m^2 = 100$ $dm^2$, donc $3 \\\\times 100 = 300$."
+            },
+            {
+              "question": "Un terrain mesure $2$ $km^2$. Exprime cette aire en $m^2$.",
+              "answer": "$2\\,000\\,000$ $m^2$",
+              "hint": "Combien de mètres dans un kilomètre ?",
+              "explanation": "$1$ $km = 1000$ $m$, donc $1$ $km^2 = 1000 \\\\times 1000 = 1\\,000\\,000$ $m^2$. Multiplie par $2$."
+            }
+          ]
+        },
+        {
+          "title": "Conversions simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir vers une unité plus petite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on passe d'une grande unité à une plus petite, le nombre d'unités augmente. Par exemple, pour transformer $2$ $m^2$ en $dm^2$, on sait que $1$ $m^2 = 100$ $dm^2$. Il suffit de multiplier $2$ par $100$ pour obtenir $200$ $dm^2$. Cette règle vaut pour chaque passage à l'unité inférieure : on multiplie par $100$ (car le côté est multiplié par $10$, donc la surface par $10 \\\\times 10$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\,m^2 = 2 \\\\times 100 = 200\\,dm^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouve le facteur de conversion (ici $100$).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le tableau des unités : $1$ $m^2 = 100$ $dm^2$, $1$ $dm^2 = 100$ $cm^2$, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie la valeur de départ par ce facteur.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la multiplication ; le résultat s'exprime dans l'unité cible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir vers une unité plus grande"
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'inverse, pour aller d'une petite unité vers une plus grande, le nombre diminue. Si tu as $5000$ $cm^2$ et que tu veux des $m^2$, rappelle‑toi que $1$ $m^2 = 10\\,000$ $cm^2$. Divise $5000$ par $10\\,000$ ce qui donne $0,5$ $m^2$. Le principe est le même : chaque saut vers une unité plus grande divise par $100$."
+            },
+            {
+              "type": "display_math",
+              "latex": "5000\\,cm^2 = 5000 \\\\div 10\\,000 = 0,5\\,m^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie le facteur de conversion (ici $10\\,000$).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les sauts entre $cm^2$ et $m^2$ : deux sauts ($cm^2 \\\\rightarrow dm^2 \\\\rightarrow m^2$), donc $100 \\\\times 100 = 10\\,000$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Divise la valeur de départ par ce facteur.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la division ; le quotient est l'aire dans l'unité plus grande."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conversions en plusieurs étapes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut enchaîner deux conversions. Pour passer de $3$ $dm^2$ en $cm^2$, on peut d'abord aller aux $m^2$ puis aux $cm^2$, mais il est plus direct de savoir que $1$ $dm^2 = 100$ $cm^2$. Donc $3$ $dm^2 = 3 \\\\times 100 = 300$ $cm^2$. Si tu devais aller jusqu'au $m^2$, tu diviserais $300$ par $10\\,000$ pour obtenir $0,03$ $m^2$. Cette flexibilité te permet de choisir le chemin le plus simple."
+            },
+            {
+              "type": "display_math",
+              "latex": "3\\,dm^2 = 300\\,cm^2 = 0,03\\,m^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Convertis $dm^2$ en $cm^2$ (multiplie par $100$).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique le facteur $100$ pour passer à l'unité immédiatement plus petite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Si besoin, convertis $cm^2$ en $m^2$ (divise par $10\\,000$).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise le facteur $10\\,000$ pour remonter de deux unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifie que le résultat est cohérent avec la taille de l'objet.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un résultat trop grand ou trop petit signale souvent une erreur de facteur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer l'aire d'un rectangle avec $L \\\\times l$.",
+                "Je sais calculer l'aire d'un carré avec $c \\\\times c$.",
+                "Je connais les unités $cm^2$, $dm^2$, $m^2$, $km^2$ et leurs liens.",
+                "Je sais convertir une aire vers une unité plus petite (multiplier).",
+                "Je sais convertir une aire vers une unité plus grande (diviser).",
+                "Je choisis l'unité la plus adaptée à la situation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Transforme $4$ $m^2$ en $dm^2$.",
+              "answer": "$400$ $dm^2$",
+              "hint": "Combien de $dm^2$ dans $1$ $m^2$ ?",
+              "explanation": "$1$ $m^2 = 100$ $dm^2$, donc $4 \\\\times 100 = 400$."
+            },
+            {
+              "question": "Exprime $2500$ $cm^2$ en $m^2$.",
+              "answer": "$0,25$ $m^2$",
+              "hint": "Divise par $10\\,000$.",
+              "explanation": "$2500 \\\\div 10\\,000 = 0,25$."
+            },
+            {
+              "question": "Convertis $6$ $dm^2$ en $cm^2$ puis en $m^2$.",
+              "answer": "$600$ $cm^2$ et $0,06$ $m^2$",
+              "hint": "D'abord multiplie par $100$, puis divise par $10\\,000$.",
+              "explanation": "$6 \\\\times 100 = 600$ $cm^2$. $600 \\\\div 10\\,000 = 0,06$ $m^2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

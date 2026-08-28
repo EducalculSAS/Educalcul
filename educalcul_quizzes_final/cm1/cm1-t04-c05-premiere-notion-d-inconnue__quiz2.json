@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 238,
+  "_course_code": "cm1-t04-c05-premiere-notion-d-inconnue",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Exprimer une relation simple",
+  "title": "Exprimer une relation simple",
+  "questions": [
+    {
+      "text": "Voici un tableau de proportionnalité. Quelle opération permet de passer de la ligne \"Nombre\" à la ligne \"Résultat\" ?\\n\\nNombre : 2 | 4 | 6 | 8\\nRésultat : 7 | 9 | 11 | 13",
+      "options": [
+        "Ajouter 5",
+        "Multiplier par 5",
+        "Ajouter 3",
+        "Multiplier par 3"
+      ],
+      "correctAnswer": "Ajouter 5",
+      "explanation": "On observe les couples de valeurs : pour obtenir 7 à partir de 2, on ajoute 5 ($2 + 5 = 7$). On vérifie sur les autres colonnes : $4 + 5 = 9$, $6 + 5 = 11$, $8 + 5 = 13$. La règle est bien « ajouter 5 ». Multiplier ne fonctionne pas car $2 \\times 5 = 10 \\neq 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la relation pour cette machine à calculer :\\n\\nEntrée : 3 → Sortie : 12\\nEntrée : 5 → Sortie : 20\\nEntrée : 7 → Sortie : 28",
+      "options": [
+        "Multiplier par 4",
+        "Ajouter 9",
+        "Multiplier par 3",
+        "Ajouter 4"
+      ],
+      "correctAnswer": "Multiplier par 4",
+      "explanation": "On teste les opérations : $3 \\times 4 = 12$, $5 \\times 4 = 20$, $7 \\times 4 = 28$. La multiplication par 4 fonctionne pour toutes les entrées. L'addition ne convient pas car le nombre à ajouter changerait selon l'entrée ($+9$ pour 3, $+15$ pour 5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a 12 billes. Il en gagne quelques-unes. Maintenant, il en a 20. Quelle écriture traduit exactement cette situation pour trouver le nombre de billes gagnées ?",
+      "options": [
+        "$12 + \\square = 20$",
+        "$20 - 12 = \\square$",
+        "$12 - \\square = 20$",
+        "$\\square - 12 = 20$"
+      ],
+      "correctAnswer": "$12 + \\square = 20$",
+      "explanation": "L'histoire décrit une augmentation : on part de 12 (départ), on ajoute une quantité inconnue (gagnées), on arrive à 20 (arrivée). La relation directe est donc $12 + \\square = 20$. L'option $20 - 12 = \\square$ est le calcul pour trouver la réponse, pas la traduction de l'histoire. Les deux autres sont fausses (soustraction ou ordre inversé).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient 45 bonbons. On en mange quelques-uns. Il en reste 28. Quelle écriture permet de représenter la situation pour trouver le nombre de bonbons mangés ?",
+      "options": [
+        "$45 - \\square = 28$",
+        "$45 + \\square = 28$",
+        "$28 + \\square = 45$",
+        "$45 - 28 = \\square$"
+      ],
+      "correctAnswer": "$45 - \\square = 28$",
+      "explanation": "On part de 45 (quantité initiale), on retire une quantité inconnue (mangés), il reste 28 (quantité finale). La relation de soustraction est $45 - \\square = 28$. L'option $28 + \\square = 45$ est l'opération inverse (addition manquante) et $45 - 28 = \\square$ est le calcul numérique pour résoudre le problème, pas l'écriture de la relation initiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa choisit un nombre. Elle le multiplie par 4, puis elle ajoute 6. Le résultat final est 30. Quelle écriture correspond à ce programme de calcul ?",
+      "options": [
+        "$4 \\times \\square + 6 = 30$",
+        "$4 \\times (\\square + 6) = 30$",
+        "$\\square \\times 4 + 6 = 30$",
+        "$4 + \\square \\times 6 = 30$"
+      ],
+      "correctAnswer": "$4 \\times \\square + 6 = 30$",
+      "explanation": "L'ordre des opérations est crucial : d'abord « multiplier par 4 » ($4 \\times \\square$), ensuite « ajouter 6 » ($+ 6$). Le résultat final est 30. L'écriture standard est $4 \\times \\square + 6 = 30$. La deuxième option ajouterait 6 avant de multiplier (parenthèses). La troisième, bien que mathématiquement équivalente par commutativité, ne respecte pas l'ordre énoncé « multiplie par 4 ». La dernière ne correspond pas au programme.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

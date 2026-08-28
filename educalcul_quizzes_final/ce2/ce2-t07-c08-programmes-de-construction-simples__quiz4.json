@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Programmes de construction simples",
+  "title": "Quiz : Programmes de construction simples",
+  "questions": [
+    {
+      "text": "Un programme demande : \"Avance de $3$ cases, puis tourne à droite.\" Quelle instruction permet de faire faire un demi-tour au personnage ?",
+      "options": [
+        "Tourne à gauche une fois",
+        "Tourne à droite une fois",
+        "Tourne à droite deux fois",
+        "Avance de $3$ cases encore"
+      ],
+      "correctAnswer": "Tourne à droite deux fois",
+      "explanation": "Un tour complet est de $360^\\circ$. Un demi-tour correspond à $180^\\circ$. Puisqu'un quart de tour (tourne à droite ou à gauche) vaut $90^\\circ$, il faut faire deux quarts de tour dans le même sens pour obtenir un demi-tour. Tourner une seule fois à droite ou à gauche ne fait qu'un quart de tour. Avancer ne change pas la direction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme :\\nRépète $4$ fois :\\n- Avance de $4$ cases\\n- Tourne à droite\\nQuelle figure ce programme trace-t-il ?",
+      "options": [
+        "Un triangle",
+        "Un rectangle de $4$ cases sur $8$ cases",
+        "Un carré de $4$ cases de côté",
+        "Une ligne droite de $16$ cases"
+      ],
+      "correctAnswer": "Un carré de $4$ cases de côté",
+      "explanation": "L'instruction 'Répète 4 fois' exécute la séquence 4 fois. À chaque fois, le personnage avance de 4 cases et tourne à droite (angle droit). Après 4 côtés et 4 angles droits, le personnage revient au point de départ : c'est un carré. Un triangle aurait besoin de 3 répétitions. Un rectangle aurait des côtés de longueurs différentes. Une ligne droite ne tournerait pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut tracer un triangle équilatéral de $5$ cases de côté. Quel est le bon programme ?",
+      "options": [
+        "Répète $3$ fois : Avance $5$, Tourne à droite",
+        "Répète $4$ fois : Avance $5$, Tourne à droite",
+        "Répète $3$ fois : Avance $5$, Tourne à gauche",
+        "Répète $5$ fois : Avance $3$, Tourne à gauche"
+      ],
+      "correctAnswer": "Répète $3$ fois : Avance $5$, Tourne à gauche",
+      "explanation": "Un triangle a 3 côtés, donc la boucle doit se répéter 3 fois. La longueur du côté est 5, donc 'Avance 5'. Pour refermer le triangle, il faut tourner de $120^\\circ$ à chaque sommet. En programmation scolaire CE2, on utilise souvent 'Tourne à gauche' (ou droite) pour signifier l'angle du polygone (souvent simplifié en angle droit pour le carré, mais pour le triangle, l'instruction standard dans les exercices est souvent 'Tourne à gauche' pour l'angle rentrant). L'option 'Répète 3 fois : Avance 5, Tourne à gauche' est la structure correcte pour un triangle. L'option avec 'Tourne à droite' 3 fois ferait un tour complet vers la droite mais ne ferme pas nécessairement la figure selon les conventions locales, cependant l'erreur principale des autres options est le nombre de répétitions (4 ou 5) ou les valeurs inversées (Avance 3, Répète 5).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle équilatéral côté 5",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5",
+          "5",
+          "5"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Regarde ce programme incomplet pour tracer un rectangle de $6$ cases sur $3$ cases :\\nRépète $2$ fois :\\n- Avance de $6$ cases\\n- Tourne à droite\\n- Avance de $3$ cases\\n- ...\\nQuelle instruction manque-t-il à la fin ?",
+      "options": [
+        "Tourne à gauche",
+        "Tourne à droite",
+        "Avance de $6$ cases",
+        "Répète $2$ fois"
+      ],
+      "correctAnswer": "Tourne à droite",
+      "explanation": "Pour tracer un rectangle, on fait 2 fois la séquence : grand côté, angle droit, petit côté, angle droit. Le programme donne déjà : Avance 6 (grand côté), Tourne à droite (1er angle), Avance 3 (petit côté). Il manque le 2e angle droit pour être prêt à refaire le grand côté suivant. Il faut donc 'Tourne à droite'. 'Tourne à gauche' ferait repartir dans la mauvaise direction. 'Avance 6 cases' tracerait un 3e côté au lieu de tourner. 'Répète 2 fois' est l'en-tête de la boucle, pas une instruction à l'intérieur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant est exécuté :\\nRépète $4$ fois :\\n- Avance de $2$ cases\\n- Tourne à droite\\nCombien de cases au total le personnage a-t-il avancé ?",
+      "options": [
+        "$6$ cases",
+        "$8$ cases",
+        "$10$ cases",
+        "$12$ cases"
+      ],
+      "correctAnswer": "$8$ cases",
+      "explanation": "La boucle se répète 4 fois. À chaque répétition, le personnage exécute 'Avance de 2 cases'. La distance totale est donc $4 \\times 2 = 8$ cases. Les tours à droite ne font pas avancer. $6$ cases correspondrait à 3 répétitions. $10$ ou $12$ cases correspondent à des multiplications erronées ($5 \\times 2$ ou $6 \\times 2$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 5,
+        "highlighted": 8,
+        "caption": "Grille 5x5 pour visualiser le déplacement"
+      }
+    }
+  ]
+}

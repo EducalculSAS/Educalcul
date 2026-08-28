@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Automatismes",
+  "title": "Quiz Automatismes - Spécial DNB 3e",
+  "questions": [
+    {
+      "text": "Calculer l'expression $12 + 3 \\times 4 - 8 \\div 2$ en respectant l'ordre des opérations.",
+      "options": [
+        "$20$",
+        "$16$",
+        "$22$",
+        "$18$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "On applique la règle de priorité : les multiplications et divisions avant les additions et soustractions. $3 \\times 4 = 12$ et $8 \\div 2 = 4$. L'expression devient $12 + 12 - 4$. On calcule de gauche à droite : $12 + 12 = 24$, puis $24 - 4 = 20$. Les distracteurs correspondent à des erreurs d'ordre (ex: $12+3=15$, $15\\times4=60$...) ou de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire l'expression $(x - 5)(x + 5)$.",
+      "options": [
+        "$x^2 - 25$",
+        "$x^2 + 25$",
+        "$x^2 - 10x - 25$",
+        "$x^2 - 10x + 25$"
+      ],
+      "correctAnswer": "$x^2 - 25$",
+      "explanation": "Il s'agit de l'identité remarquable $(a-b)(a+b) = a^2 - b^2$. Ici $a=x$ et $b=5$, donc $x^2 - 5^2 = x^2 - 25$. L'option $x^2 + 25$ oublie le signe moins. Les options avec $10x$ correspondent au développement de $(x-5)^2$ ou $(x+5)^2$, ce qui n'est pas l'expression donnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Ecrire le nombre $0,000045$ en notation scientifique.",
+      "options": [
+        "$4,5 \\times 10^{-5}$",
+        "$4,5 \\times 10^{-4}$",
+        "$45 \\times 10^{-6}$",
+        "$0,45 \\times 10^{-4}$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^{-5}$",
+      "explanation": "La notation scientifique s'écrit $a \\times 10^n$ avec $1 \\le a < 10$. Il faut décaler la virgule de 5 crans vers la droite pour obtenir $4,5$, d'où l'exposant $-5$. L'option $45 \\times 10^{-6}$ a un coefficient $\\ge 10$. L'option $0,45 \\times 10^{-4}$ a un coefficient $< 1$. L'option $4,5 \\times 10^{-4}$ correspond à $0,00045$ (un décalage de moins).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle ABC, rectangle en A, on donne $AB = 6$ cm et $AC = 8$ cm. Calculer la longueur $BC$.",
+      "options": [
+        "$10$ cm",
+        "$14$ cm",
+        "$7$ cm",
+        "$100$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "On applique le théorème de Pythagore : $BC^2 = AB^2 + AC^2$. Donc $BC^2 = 6^2 + 8^2 = 36 + 64 = 100$. Donc $BC = \\sqrt{100} = 10$ cm. L'option $14$ cm est la somme des deux côtés. L'option $7$ cm est une approximation de la moyenne. L'option $100$ cm oublie de prendre la racine carrée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On execute l'algorithme suivant :\\n$x \\leftarrow 3$\\n$y \\leftarrow 5$\\n$¿$ $x \\times 2 > y$ $\\text{ALORS}$\\n\\quad $x \\leftarrow x + 1$\\n$¿$ $\\text{SINON}$\\n\\quad $y \\leftarrow y - 1$\\n$¿$ $\\text{FIN SI}$\\nQuelles sont les valeurs finales de $x$ et $y$ ?",
+      "options": [
+        "$x = 4$ et $y = 5$",
+        "$x = 3$ et $y = 4$",
+        "$x = 4$ et $y = 4$",
+        "$x = 3$ et $y = 5$"
+      ],
+      "correctAnswer": "$x = 4$ et $y = 5$",
+      "explanation": "On teste la condition : $x \\times 2 = 3 \\times 2 = 6$. Est-ce que $6 > 5$ ? Oui, la condition est vraie. On execute donc l'instruction $\\text{ALORS}$ : $x$ devient $3 + 1 = 4$. L'instruction $\\text{SINON}$ est ignorée, $y$ garde sa valeur initiale $5$. Résultat final : $x=4$, $y=5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 285,
+  "_course_code": "cm2-t02-c04-additionner-et-soustraire-des-fractions-simples",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter des sommes et différences de fractions",
+  "blocks": [
+    {
+      "title": "La tablette de chocolat",
+      "content": "Lucas mange $\\frac{2}{8}$ d'une tablette de chocolat le lundi et $\\frac{3}{8}$ le mardi. Au total, il a mangé {{1}} de la tablette.",
+      "correctAnswer": "5/8",
+      "blanks": [
+        "$\\frac{5}{8}$|5/8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver la quantité totale, on additionne les numérateurs car les dénominateurs sont identiques : $2 + 3 = 5$. Le résultat est donc $\\frac{5}{8}$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 8,
+        "shape": "bar",
+        "caption": "Parties consommées de la tablette"
+      }
+    },
+    {
+      "title": "Le réservoir d'essence",
+      "content": "Un réservoir était rempli aux $\\frac{7}{10}$ de sa capacité. Après un trajet, il reste $\\frac{3}{10}$ d'essence. La consommation pour ce trajet est de {{1}} du réservoir.",
+      "correctAnswer": "4/10",
+      "blanks": [
+        "$\\frac{4}{10}$|4/10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer la consommation, on soustrait la quantité restante de la quantité initiale : $7 - 3 = 4$. La consommation est de $\\frac{4}{10}$ du réservoir.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le jardin potager",
+      "content": "Dans un jardin, $\\frac{4}{12}$ de la surface sont plantés de tomates et $\\frac{5}{12}$ de carottes. La part du jardin occupée par ces deux légumes est de $\\frac{9}{12}$. La part du jardin qui reste libre est donc de {{1}}.",
+      "correctAnswer": "3/12",
+      "blanks": [
+        "$\\frac{3}{12}$|3/12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le jardin entier représente l'unité, soit $\\frac{12}{12}$. Pour trouver la part libre, on soustrait la part occupée de l'unité : $12 - 9 = 3$. Il reste $\\frac{3}{12}$ de surface libre.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 9,
+        "denominator": 12,
+        "shape": "circle",
+        "caption": "Surface occupée par les légumes"
+      }
+    }
+  ]
+}

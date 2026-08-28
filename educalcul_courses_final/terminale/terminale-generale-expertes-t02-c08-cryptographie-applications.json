@@ -1,0 +1,602 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.797926+00:00",
+  "id": 745,
+  "code": "terminale-generale-expertes-t02-c08",
+  "title": "Cryptographie / applications",
+  "description": "Cours structuré Educalcul : Cryptographie / applications.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Cryptographie / applications",
+    "objectif_global": "Cryptographie / applications",
+    "mini_lecons_imposees": [
+      "Congruences.",
+      "Coder / décoder.",
+      "Limites du modèle."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Congruences.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une congruence ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une horloge à $12$ heures : quand il est $10$ heures et que j'ajoute $5$ heures, l'aiguille indique $3$ heures, pas $15$. En mathématiques, on dit que $15$ est congru à $3$ modulo $12$, et on écrit $15 \\equiv 3 \\pmod{12}$. Cette idée simple mais puissante est au cœur de l'arithmétique modulaire, un outil indispensable en cryptographie moderne. Deux entiers $a$ et $b$ sont congrus modulo $n$ (avec $n>0$) s'ils ont le même reste dans la division euclidienne par $n$, ce qui s'écrit $a \\equiv b \\pmod{n}$ et signifie que $n$ divise $a-b$."
+            },
+            {
+              "type": "definition",
+              "term": "Congruence modulo n",
+              "definition": "Soient $a,b,n \\in \\mathbb{Z}$ avec $n>0$. On dit que $a$ est congru à $b$ modulo $n$, et on note $a \\equiv b \\pmod{n}$, si $n \\mid (a-b)$, c'est-à-dire s'il existe un entier $k$ tel que $a-b = kn$.",
+              "example": "$23 \\equiv 2 \\pmod{7}$ car $23-2=21=3\\times7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La relation de congruence modulo $n$ est une relation d'équivalence : elle est réflexive ($a\\equiv a$), symétrique ($a\\equiv b \\Rightarrow b\\equiv a$) et transitive ($a\\equiv b$ et $b\\equiv c \\Rightarrow a\\equiv c$). Elle partitionne l'ensemble des entiers en $n$ classes d'équivalence, notées $\\overline{0}, \\overline{1}, \\dots, \\overline{n-1}$. Chaque classe contient tous les entiers qui donnent le même reste modulo $n$. Par exemple, modulo $5$, la classe $\\overline{2}$ contient $\\{\\dots, -8, -3, 2, 7, 12, \\dots\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{Z}/5\\mathbb{Z} = \\{\\overline{0},\\overline{1},\\overline{2},\\overline{3},\\overline{4}\\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut définir une addition et une multiplication sur ces classes en posant $\\overline{a}+\\overline{b}=\\overline{a+b}$ et $\\overline{a}\\times\\overline{b}=\\overline{ab}$. Ces opérations sont bien définies (indépendantes des représentants choisis) et hérentent des propriétés habituelles : associativité, commutativité, distributivité. L'ensemble $\\mathbb{Z}/n\\mathbb{Z}$ muni de ces opérations forme un anneau commutatif unitaire. Voici par exemple les tables d'addition et de multiplication modulo $5$ :"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "+",
+                "$\\overline{0}$",
+                "$\\overline{1}$",
+                "$\\overline{2}$",
+                "$\\overline{3}$",
+                "$\\overline{4}$"
+              ],
+              "rows": [
+                [
+                  "$\\overline{0}$",
+                  "$\\overline{0}$",
+                  "$\\overline{1}$",
+                  "$\\overline{2}$",
+                  "$\\overline{3}$",
+                  "$\\overline{4}$"
+                ],
+                [
+                  "$\\overline{1}$",
+                  "$\\overline{1}$",
+                  "$\\overline{2}$",
+                  "$\\overline{3}$",
+                  "$\\overline{4}$",
+                  "$\\overline{0}$"
+                ],
+                [
+                  "$\\overline{2}$",
+                  "$\\overline{2}$",
+                  "$\\overline{3}$",
+                  "$\\overline{4}$",
+                  "$\\overline{0}$",
+                  "$\\overline{1}$"
+                ],
+                [
+                  "$\\overline{3}$",
+                  "$\\overline{3}$",
+                  "$\\overline{4}$",
+                  "$\\overline{0}$",
+                  "$\\overline{1}$",
+                  "$\\overline{2}$"
+                ],
+                [
+                  "$\\overline{4}$",
+                  "$\\overline{4}$",
+                  "$\\overline{0}$",
+                  "$\\overline{1}$",
+                  "$\\overline{2}$",
+                  "$\\overline{3}$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons manipuler les classes de congruence, nous pouvons nous attaquer à la résolution d'équations dans $\\mathbb{Z}/n\\mathbb{Z}$. Une congruence linéaire s'écrit $ax \\equiv b \\pmod{n}$ où $a,b,n$ sont donnés et $x$ est l'inconnue. Contrairement aux équations dans $\\mathbb{R}$, une telle congruence peut avoir zéro, une ou plusieurs solutions modulo $n$. La clé est le plus grand commun diviseur de $a$ et $n$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une congruence linéaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $d = \\gcd(a,n)$. La congruence $ax \\equiv b \\pmod{n}$ admet des solutions si et seulement si $d \\mid b$. Si cette condition est satisfaite, on peut diviser toute la congruence par $d$ : on obtient $a'x \\equiv b' \\pmod{n'}$ avec $a'=a/d$, $b'=b/d$, $n'=n/d$ et $\\gcd(a',n')=1$. Alors $a'$ est inversible modulo $n'$ et l'unique solution modulo $n'$ est $x \\equiv a'^{-1}b' \\pmod{n'}$. Cela donne $d$ solutions distinctes modulo $n$ : $x_0, x_0+n', x_0+2n', \\dots, x_0+(d-1)n'$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $d = \\gcd(a,n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez l'algorithme d'Euclide pour trouver $d$. Par exemple, pour $a=14$, $n=35$, on a $35=2\\times14+7$, $14=2\\times7+0$, donc $d=7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la divisibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $d$ ne divise pas $b$, il n'y a pas de solution. Si $d\\mid b$, continuez."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier la congruence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez $a$, $b$, $n$ par $d$ pour obtenir $a'$, $b'$, $n'$ premiers entre eux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Trouver l'inverse de $a'$ modulo $n'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez l'algorithme d'Euclide étendu pour obtenir $u,v$ tels que $a'u+n'v=1$. Alors $u$ est l'inverse de $a'$ modulo $n'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Écrire les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution particulière est $x_0 \\equiv u b' \\pmod{n'}$. Les $d$ solutions modulo $n$ sont $x_0 + k n'$ pour $k=0,\\dots,d-1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : résolvons $6x \\equiv 9 \\pmod{15}$. Ici $a=6$, $b=9$, $n=15$. Le pgcd est $d=\\gcd(6,15)=3$. Comme $3\\mid9$, il y a des solutions. On divise par $3$ : $2x \\equiv 3 \\pmod{5}$. L'inverse de $2$ modulo $5$ est $3$ car $2\\times3=6\\equiv1\\pmod{5}$. Donc $x_0 \\equiv 3\\times3=9\\equiv4\\pmod{5}$. Les $3$ solutions modulo $15$ sont $4$, $4+5=9$, $4+10=14$. On vérifie : $6\\times4=24\\equiv9$, $6\\times9=54\\equiv9$, $6\\times14=84\\equiv9$ modulo $15$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment résoudre une seule congruence. Mais en cryptographie, on rencontre souvent des systèmes de plusieurs congruences simultanées. Le théorème chinois, connu depuis l'Antiquité en Chine (problème des œufs de Sun Tzu), donne une méthode élégante pour résoudre un système de congruences à deux à deux premiers entre eux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème chinois"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $n_1, n_2, \\dots, n_k$ des entiers $>1$ deux à deux premiers entre eux. Pour tous entiers $a_1, a_2, \\dots, a_k$, le système $\\begin{cases} x \\equiv a_1 \\pmod{n_1} \\\\ x \\equiv a_2 \\pmod{n_2} \\\\ \\vdots \\\\ x \\equiv a_k \\pmod{n_k} \\end{cases}$ admet une unique solution modulo $N = n_1 n_2 \\cdots n_k$. La construction explicite utilise les inverses modulaires : on pose $N_i = N/n_i$, on calcule $M_i$ l'inverse de $N_i$ modulo $n_i$, et la solution est $x \\equiv \\sum_{i=1}^k a_i N_i M_i \\pmod{N}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\equiv \\sum_{i=1}^k a_i \\frac{N}{n_i} \\left(\\left(\\frac{N}{n_i}\\right)^{-1} \\bmod n_i\\right) \\pmod{N}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple classique : trouver $x$ tel que $x\\equiv2\\pmod{3}$, $x\\equiv3\\pmod{5}$, $x\\equiv2\\pmod{7}$. Ici $n_1=3$, $n_2=5$, $n_3=7$, $N=105$. On calcule $N_1=35$, inverse de $35$ modulo $3$ : $35\\equiv2$, inverse de $2$ modulo $3$ est $2$ car $2\\times2=4\\equiv1$. Donc $M_1=2$. $N_2=21$, $21\\equiv1\\pmod{5}$, inverse est $1$. $N_3=15$, $15\\equiv1\\pmod{7}$, inverse est $1$. Alors $x \\equiv 2\\times35\\times2 + 3\\times21\\times1 + 2\\times15\\times1 = 140+63+30=233 \\equiv 233-2\\times105 = 23 \\pmod{105}$. Vérification : $23\\equiv2\\pmod{3}$, $23\\equiv3\\pmod{5}$, $23\\equiv2\\pmod{7}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant les outils arithmétiques de base pour aborder la cryptographie : congruences, arithmétique modulaire, résolution d'équations et systèmes de congruences. Dans la prochaine leçon, nous verrons comment ces notions permettent de construire des systèmes de chiffrement, tant symétriques qu'asymétriques, et notamment le célèbre algorithme RSA."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer si les congruences suivantes sont vraies ou fausses : $27 \\equiv 5 \\pmod{11}$, $-13 \\equiv 2 \\pmod{5}$, $100 \\equiv 1 \\pmod{33}$.",
+              "answer": "Vrai, Faux, Vrai.",
+              "hint": "Calculez la différence et vérifiez la divisibilité par le modulo.",
+              "explanation": "$27-5=22=2\\times11$ donc vrai. $-13-2=-15$ qui n'est pas multiple de $5$ (car $-15=-3\\times5$ ? Attendez, $-15$ est bien multiple de $5$, donc c'est vrai ! Correction : $-13 \\equiv 2 \\pmod{5}$ car $-13-2=-15=-3\\times5$. $100-1=99=3\\times33$ donc vrai. Donc les trois sont vraies."
+            },
+            {
+              "question": "Résoudre la congruence $12x \\equiv 8 \\pmod{20}$.",
+              "answer": "$x \\equiv 4 \\pmod{5}$, c'est-à-dire $x \\equiv 4, 9, 14, 19 \\pmod{20}$.",
+              "hint": "Calculez $\\gcd(12,20)$ et simplifiez.",
+              "explanation": "$d=\\gcd(12,20)=4$. Comme $4\\mid8$, on divise : $3x \\equiv 2 \\pmod{5}$. L'inverse de $3$ modulo $5$ est $2$ ($3\\times2=6\\equiv1$). Donc $x_0 \\equiv 2\\times2=4 \\pmod{5}$. Les $4$ solutions modulo $20$ sont $4, 9, 14, 19$."
+            },
+            {
+              "question": "Résoudre le système : $x \\equiv 1 \\pmod{4}$, $x \\equiv 2 \\pmod{5}$, $x \\equiv 3 \\pmod{7}$.",
+              "answer": "$x \\equiv 17 \\pmod{140}$.",
+              "hint": "Appliquez la formule du théorème chinois avec $N=140$.",
+              "explanation": "$N=4\\times5\\times7=140$. $N_1=35$, inverse de $35$ mod $4$ : $35\\equiv3$, inverse de $3$ mod $4$ est $3$ ($3\\times3=9\\equiv1$). $N_2=28$, $28\\equiv3$ mod $5$, inverse de $3$ mod $5$ est $2$. $N_3=20$, $20\\equiv6$ mod $7$, inverse de $6$ mod $7$ est $6$ ($6\\times6=36\\equiv1$). $x = 1\\times35\\times3 + 2\\times28\\times2 + 3\\times20\\times6 = 105+112+360=577 \\equiv 577-4\\times140=577-560=17 \\pmod{140}$."
+            }
+          ]
+        },
+        {
+          "title": "Coder / décoder.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chiffrement symétrique : de César à Vigenère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant l'ère numérique, les messages secrets étaient chiffrés à la main. Le plus ancien exemple connu est le chiffre de César, utilisé par Jules César pour ses correspondances militaires. Le principe est d'une simplicité déconcertante : on décale chaque lettre de l'alphabet d'un nombre fixe de positions. Si le décalage est $k=3$, A devient D, B devient E, ..., X devient A, Y devient B, Z devient C. Mathématiquement, on associe à chaque lettre un nombre ($A=0, B=1, \\dots, Z=25$) et le chiffrement s'écrit $c \\equiv m + k \\pmod{26}$, le déchiffrement $m \\equiv c - k \\pmod{26}$."
+            },
+            {
+              "type": "definition",
+              "term": "Chiffre de César",
+              "definition": "Chiffrement par substitution mono-alphabétique où chaque lettre est remplacée par celle qui se trouve $k$ positions plus loin dans l'alphabet, $k$ étant la clé secrète (un entier entre $1$ et $25$).",
+              "example": "Avec $k=3$, le message \"VENI VIDI VICI\" devient \"YHQL YLGL YLFL\"."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le chiffre de César est trivial à casser : il suffit d'essayer les $25$ décalages possibles (attaque par force brute) ou d'analyser les fréquences des lettres (le E est la plus fréquente en français). Pour renforcer la sécurité, on a imaginé le chiffre affine : $c \\equiv a m + b \\pmod{26}$ avec $\\gcd(a,26)=1$ pour que $a$ soit inversible. Cela donne $12 \\times 26 = 312$ clés possibles, mais l'analyse fréquentielle reste efficace car la substitution reste mono-alphabétique."
+            },
+            {
+              "type": "display_math",
+              "latex": "c \\equiv a m + b \\pmod{26}, \\quad \\gcd(a,26)=1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le grand pas en avant est le chiffre de Vigenère (XVIe siècle), qui utilise une clé mot-clé répétée pour réaliser une substitution polyalphabétique. Si la clé est \"CLE\", on chiffre la première lettre avec un décalage $C=2$, la deuxième avec $L=11$, la troisième avec $E=4$, la quatrième à nouveau avec $C=2$, etc. Mathématiquement, pour un message $m_1 m_2 \\dots$ et une clé $k_1 k_2 \\dots k_\\ell$ répétée, $c_i \\equiv m_i + k_{((i-1)\\bmod \\ell)+1} \\pmod{26}$. Cela masque les fréquences pendant longtemps, mais la méthode de Kasiski (1863) et l'indice de coïncidence de Friedman (1920) permettent de retrouver la longueur de la clé puis de réduire le problème à plusieurs chiffres de César."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Clé",
+                "C",
+                "L",
+                "E",
+                "C",
+                "L",
+                "E"
+              ],
+              "rows": [
+                [
+                  "Message",
+                  "A",
+                  "T",
+                  "T",
+                  "A",
+                  "Q",
+                  "U",
+                  "E"
+                ],
+                [
+                  "Code",
+                  "C=2",
+                  "L=11",
+                  "E=4",
+                  "C=2",
+                  "L=11",
+                  "E=4",
+                  "C=2"
+                ],
+                [
+                  "Chiffré",
+                  "C",
+                  "E",
+                  "X",
+                  "C",
+                  "B",
+                  "Y",
+                  "G"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tous ces systèmes symétriques partagent un défaut majeur : la clé doit être échangée secrètement avant toute communication. Si Alice et Bob n'ont pas de canal sûr pour partager la clé, ils ne peuvent pas l'utiliser. C'est le problème de la distribution de clés, résolu en 1976 par Diffie et Hellman avec l'échange de clés à secret partagé, puis en 1977 par Rivest, Shamir et Adleman avec le chiffrement asymétrique RSA. Dans RSA, chaque utilisateur possède une clé publique (pour chiffrer) et une clé privée (pour déchiffrer). La clé publique peut être diffusée à tous sans compromettre la sécurité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cryptosystème RSA"
+            },
+            {
+              "type": "paragraph",
+              "content": "RSA repose sur la difficulté de factoriser de grands entiers. Voici la génération des clés : 1) Choisir deux grands nombres premiers distincts $p$ et $q$ (typiquement $1024$ bits chacun). 2) Calculer $n = p q$ (le module public) et $\\varphi(n) = (p-1)(q-1)$. 3) Choisir un exposant public $e$ tel que $1 < e < \\varphi(n)$ et $\\gcd(e, \\varphi(n)) = 1$ (souvent $e=65537$). 4) Calculer l'exposant privé $d$ tel que $e d \\equiv 1 \\pmod{\\varphi(n)}$ (inverse modulaire de $e$). La clé publique est $(n,e)$, la clé privée est $(n,d)$. Les nombres $p,q,\\varphi(n),d$ doivent rester secrets."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir $p$ et $q$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionnez deux grands nombres premiers aléatoires de taille similaire. Leur produit $n$ sera difficile à factoriser."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $n$ et $\\varphi(n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$n = p q$, $\\varphi(n) = (p-1)(q-1)$. Ces valeurs déterminent l'espace des messages et des clés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir $e$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenez $e$ premier avec $\\varphi(n)$. La valeur $65537 = 2^{16}+1$ est courante car elle est rapide pour l'exponentiation modulaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer $d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez l'algorithme d'Euclide étendu pour trouver $d$ tel que $e d \\equiv 1 \\pmod{\\varphi(n)}$. C'est la clé de déchiffrement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le chiffrement d'un message $m$ (entier $0 \\le m < n$) est $c \\equiv m^e \\pmod{n}$. Le déchiffrement est $m \\equiv c^d \\pmod{n}$. Pourquoi cela fonctionne-t-il ? Par le théorème d'Euler, si $\\gcd(m,n)=1$, $m^{\\varphi(n)} \\equiv 1 \\pmod{n}$. Comme $ed = 1 + k\\varphi(n)$, $c^d \\equiv (m^e)^d = m^{ed} = m^{1+k\\varphi(n)} \\equiv m \\cdot (m^{\\varphi(n)})^k \\equiv m \\pmod{n}$. Si $\\gcd(m,n)\\neq1$, le résultat tient aussi grâce au théorème chinois."
+            },
+            {
+              "type": "display_math",
+              "latex": "c \\equiv m^e \\pmod{n}, \\quad m \\equiv c^d \\pmod{n}, \\quad ed \\equiv 1 \\pmod{\\varphi(n)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer sans ordinateur, prenons un exemple avec de petits nombres : $p=11$, $q=13$. Alors $n=143$, $\\varphi(n)=10\\times12=120$. Choisissons $e=7$ (premier avec $120$). Calculons $d$ : $7d\\equiv1\\pmod{120}$. L'algorithme d'Euclide étendu donne $d=103$ ($7\\times103=721=6\\times120+1$). Clé publique $(143,7)$, privée $(143,103)$. Chiffrons $m=9$ : $c \\equiv 9^7 \\pmod{143}$. $9^2=81$, $9^4\\equiv81^2=6561\\equiv92$, $9^7=9^4\\times9^2\\times9\\equiv92\\times81\\times9=67068\\equiv48\\pmod{143}$. Déchiffrons : $48^{103} \\pmod{143}$. On utilise l'exponentiation rapide modulo $143$ pour retrouver $9$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def rsa_encrypt(m, e, n):\\n    return pow(m, e, n)\\n\\ndef rsa_decrypt(c, d, n):\\n    return pow(c, d, n)\\n\\n# Exemple avec petits nombres\\np, q = 11, 13\\nn = p * q\\nphi = (p-1)*(q-1)\\ne = 7\\nd = pow(e, -1, phi)  # inverse modulaire Python 3.8+\\nm = 9\\nc = rsa_encrypt(m, e, n)\\nm_dec = rsa_decrypt(c, d, n)\\nprint(f\"Clé publique: ({n},{e})\")\\nprint(f\"Clé privée: ({n},{d})\")\\nprint(f\"Message: {m}, Chiffré: {c}, Déchiffré: {m_dec}\")",
+              "language": "python",
+              "caption": "Implémentation simplifiée de RSA en Python (pour illustration seulement, non sécurisée pour de vrais usages)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "RSA permet aussi de signer numériquement : Alice chiffre un hachage de son message avec sa clé privée ($s \\equiv h(m)^d \\pmod{n}$), n'importe qui peut vérifier avec sa clé publique ($h(m) \\equiv s^e \\pmod{n}$). Cela garantit l'authenticité, l'intégrité et la non-répudiation. Cependant, RSA brut est malléable et vulnérable à des attaques par canaux auxiliaires. Dans la pratique, on utilise des schémas de rembourrage comme OAEP pour le chiffrement et PSS pour la signature. La prochaine leçon examinera les limites fondamentales et pratiques de ces modèles mathématiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Chiffrer le message \"MATH\" avec le chiffre de Vigenère et la clé \"CLE\" (A=0,...,Z=25).",
+              "answer": "Le chiffré est \"OELE\" (M=12+2=14=O, A=0+11=11=L, T=19+4=23=X? Attendez : M(12)+C(2)=14=O, A(0)+L(11)=11=L, T(19)+E(4)=23=X, H(7)+C(2)=9=J -> OLXJ. Recalcul : M=12, A=0, T=19, H=7. Clé C=2, L=11, E=4, C=2. 12+2=14=O, 0+11=11=L, 19+4=23=X, 7+2=9=J. Donc OLXJ.",
+              "hint": "Convertir lettres en nombres, additionner modulo 26, reconvertir.",
+              "explanation": "M(12)+C(2)=14=O, A(0)+L(11)=11=L, T(19)+E(4)=23=X, H(7)+C(2)=9=J. Résultat : OLXJ."
+            },
+            {
+              "question": "Dans RSA, si $p=17$, $q=19$, $e=5$, calculer $n$, $\\varphi(n)$ et $d$.",
+              "answer": "$n=323$, $\\varphi(n)=288$, $d=173$.",
+              "hint": "Calculez $n=pq$, $\\varphi(n)=(p-1)(q-1)$, puis l'inverse de $e$ modulo $\\varphi(n)$.",
+              "explanation": "$n=17\\times19=323$. $\\varphi(n)=16\\times18=288$. $e=5$. Inverse de $5$ modulo $288$ : $5\\times173=865=3\\times288+1$, donc $d=173$."
+            },
+            {
+              "question": "Avec les clés de l'exercice précédent, chiffrer $m=42$ et vérifier le déchiffrement.",
+              "answer": "$c \\equiv 42^5 \\equiv 256 \\pmod{323}$, déchiffrement $256^{173} \\equiv 42 \\pmod{323}$.",
+              "hint": "Utilisez l'exponentiation modulaire rapide.",
+              "explanation": "$42^2=1764\\equiv1764-5\\times323=1764-1615=149$. $42^4\\equiv149^2=22201\\equiv22201-68\\times323=22201-21964=237$. $42^5\\equiv237\\times42=9954\\equiv9954-30\\times323=9954-9690=256$. Pour déchiffrer, $256^{173} \\pmod{323}$ redonne $42$ par construction de $d$."
+            }
+          ]
+        },
+        {
+          "title": "Limites du modèle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Hypothèses de sécurité et difficulté algorithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La sécurité de RSA ne repose pas sur une impossibilité mathématique absolue, mais sur une conjecture de difficulté algorithmique : factoriser un grand entier $n=pq$ (produit de deux grands nombres premiers) est difficile pour les algorithmes classiques. Plus précisément, le problème RSA (trouver $m$ sachant $c=m^e \\bmod n$ sans connaître $d$) est considéré comme équivalent au problème de factorisation, bien que cette équivalence ne soit pas prouvée dans tous les cas. De même, la sécurité de Diffie-Hellman et des courbes elliptiques repose sur la difficulté du logarithme discret dans un groupe cyclique. Ces hypothèses sont le socle de la cryptographie à clé publique moderne."
+            },
+            {
+              "type": "definition",
+              "term": "Problème de factorisation (IFP)",
+              "definition": "Donné un entier composé $n$ produit de deux grands nombres premiers de taille comparable, trouver $p$ et $q$. Aucun algorithme classique en temps polynomial n'est connu pour ce problème.",
+              "example": "Factoriser $n=10^{200}+...$ (un nombre de $2048$ bits) est hors de portée des ordinateurs actuels."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les meilleures algorithmes classiques de factorisation sont le crible quadratique (QS) et le crible des corps de nombres généralisé (GNFS). Leur complexité est sous-exponentielle : $L_n[1/3, c] = \\exp\\big((c+o(1))(\\ln n)^{1/3}(\\ln\\ln n)^{2/3}\\big)$. Pour $n$ de $2048$ bits, cela représente environ $2^{112}$ opérations, ce qui est considéré comme sécurisé jusqu'à une trentaine d'années. Mais cette sécurité est conditionnelle : un progrès algorithmique soudain (comme un nouveau crible plus efficace) ou l'avènement de l'ordinateur quantique changerait la donne."
+            },
+            {
+              "type": "display_math",
+              "latex": "L_n[\\alpha, c] = \\exp\\big((c+o(1))(\\ln n)^\\alpha(\\ln\\ln n)^{1-\\alpha}\\big)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'ordinateur quantique, s'il devient réalisable à grande échelle, bouleverse complètement le paysage. En 1994, Peter Shor a découvert un algorithme quantique qui factorise les entiers et calcule les logarithmes discrets en temps polynomial (complexité $O((\\log n)^3)$). Cela signifie que RSA, Diffie-Hellman, ECC (courbes elliptiques) et tous les systèmes basés sur ces problèmes deviennent cassables dès qu'un ordinateur quantique tolérant aux fautes avec suffisamment de qubits existe. Actuellement, les plus grands nombres factorisés par l'algorithme de Shor sur un vrai ordinateur quantique sont de l'ordre de $21=3\\times7$, mais la recherche progresse vite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La menace quantique : algorithme de Shor"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algorithme de Shor utilise la transformée de Fourier quantique pour trouver la période d'une fonction modulaire. Pour factoriser $n$, on choisit un $a$ aléatoire premier avec $n$, on trouve la période $r$ de la fonction $f(x)=a^x \\bmod n$. Si $r$ est pair et $a^{r/2} \\not\\equiv -1 \\pmod{n}$, alors $\\gcd(a^{r/2}\\pm1, n)$ donne un facteur non trivial. La partie quantique (recherche de période) est exponentiellement plus rapide que toute méthode classique. Pour le logarithme discret sur une courbe elliptique, l'idée est similaire : on réduit le problème à la recherche de période d'une fonction à deux variables."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x) = a^x \\bmod n, \\quad \\text{période } r : a^r \\equiv 1 \\pmod{n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "En attendant l'ordinateur quantique, les implémentations réelles de RSA souffrent de nombreuses vulnérabilités pratiques. Les attaques par canaux auxiliaires (timing, consommation d'énergie, rayonnement électromagnétique) exploitent les fuites d'information physiques pendant le calcul de $m^d \\bmod n$. Par exemple, si l'exponentiation modulaire utilise l'algorithme « square-and-multiply » sans protection, le temps d'exécution ou la consommation de courant révèle les bits de $d$. Les attaques par faute (fault injection) en perturbant le matériel pendant le calcul peuvent aussi révéler la clé privée. De plus, un mauvais rembourrage (padding) comme PKCS#1 v1.5 ouvre la voie à l'attaque de Bleichenbacher (oracle de rembourrage) qui permet de déchiffrer n'importe quel chiffré en quelques milliers de requêtes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Attaque de Bleichenbacher (oracle PKCS#1 v1.5)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le serveur déchiffre un chiffré $c$ et vérifie si le message déchiffré commence par les octets 0x00 0x02. S'il répond différemment selon le résultat (erreur ou succès), l'attaquant peut envoyer des milliers de chiffrés modifiés et, par dichotomie sur l'intervalle des messages valides, récupérer le message original."
+                    }
+                  ]
+                },
+                {
+                  "title": "Contre-mesures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utiliser OAEP (Optimal Asymmetric Encryption Padding) pour le chiffrement et PSS pour la signature. Implémenter l'exponentiation modulaire en temps constant (constant-time) et masquer les données sensibles (blinding)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à la menace quantique, la communauté cryptographique travaille depuis des années sur la cryptographie post-quantique (PQC). Le NIST a lancé en 2016 un processus de standardisation qui a abouti en 2024 à la sélection de quatre algorithmes : CRYSTALS-Kyber (échange de clés / chiffrement, basé sur les réseaux euclidiens / LWE), CRYSTALS-Dilithium (signature, réseaux), SPHINCS+ (signature, basée sur les fonctions de hachage) et FALCON (signature, réseaux). Ces algorithmes sont conçus pour résister aux attaques quantiques connues. Leur déploiement progressif (hybridation avec RSA/ECC) est déjà en cours dans TLS 1.3, SSH, et les navigateurs. La transition sera longue car elle touche à toute l'infrastructure de clé publique mondiale."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Algorithme",
+                "Type",
+                "Base mathématique",
+                "Statut NIST 2024"
+              ],
+              "rows": [
+                [
+                  "CRYSTALS-Kyber",
+                  "KEM / Chiffrement",
+                  "Réseaux (MLWE)",
+                  "Standard principal"
+                ],
+                [
+                  "CRYSTALS-Dilithium",
+                  "Signature",
+                  "Réseaux (MLWE)",
+                  "Standard principal"
+                ],
+                [
+                  "SPHINCS+",
+                  "Signature",
+                  "Hachage (stateless)",
+                  "Standard principal"
+                ],
+                [
+                  "FALCON",
+                  "Signature",
+                  "Réseaux (NTRU)",
+                  "Standard principal"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce cours sur la cryptographie et ses applications. Nous avons parcouru les fondements arithmétiques (congruences, théorème chinois), les systèmes historiques et modernes (symétriques, RSA), et les limites actuelles (factorisation, quantique, attaques physiques, post-quantique). La cryptographie est un domaine vivant où les mathématiques pures rencontrent l'ingénierie la plus pointue, et où la confiance numérique repose sur des hypothèses que l'on teste sans cesse. Continuez à explorer, car les secrets d'aujourd'hui sont les leçons de demain."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la congruence modulo n et manipuler les classes d'équivalence.",
+                "Je sais résoudre une congruence linéaire et un système d'équations congruentes (théorème chinois).",
+                "Je comprends le fonctionnement du chiffre de César, du chiffre affine et de Vigenère.",
+                "Je connais les étapes de génération de clés RSA, le chiffrement et le déchiffrement.",
+                "Je peux expliquer pourquoi RSA fonctionne (théorème d'Euler / chinois).",
+                "Je connais les hypothèses de sécurité (factorisation, logarithme discret) et leurs limites.",
+                "Je sais ce qu'est l'algorithme de Shor et son impact sur la cryptographie à clé publique.",
+                "Je connais les principales attaques par canaux auxiliaires et les contre-mesures (OAEP, constant-time).",
+                "Je connais les algorithmes post-quantiques standardisés par le NIST (Kyber, Dilithium, SPHINCS+, FALCON)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la complexité asymptotique du GNFS pour factoriser un entier $n$ ?",
+              "answer": "$L_n[1/3, (64/9)^{1/3}] \\approx \\exp(1.923 (\\ln n)^{1/3} (\\ln\\ln n)^{2/3})$.",
+              "hint": "Rappelez-vous la notation $L_n[\\alpha, c]$.",
+              "explanation": "Le crible des corps de nombres généralisé (GNFS) a une complexité sous-exponentielle avec $\\alpha=1/3$ et $c = (64/9)^{1/3} \\approx 1.923$."
+            },
+            {
+              "question": "Expliquer en une phrase le principe de l'algorithme de Shor pour la factorisation.",
+              "answer": "Shor réduit la factorisation à la recherche de la période de la fonction $f(x)=a^x \\bmod n$ grâce à la transformée de Fourier quantique, ce qui permet de trouver un facteur non trivial en temps polynomial.",
+              "hint": "Pensez à la recherche de période et à la transformée de Fourier quantique.",
+              "explanation": "L'algorithme choisit $a$ aléatoire, trouve la période $r$ de $x \\mapsto a^x \\bmod n$ sur un ordinateur quantique, puis en déduit un facteur via $\\gcd(a^{r/2}\\pm1, n)$."
+            },
+            {
+              "question": "Citer deux contre-mesures essentielles contre les attaques par canaux auxiliaires sur RSA.",
+              "explanation": "Implémentation en temps constant (constant-time exponentiation) et masquage aléatoire des données (blinding) ; utilisation de rembourrages robustes comme OAEP/PSS.",
+              "hint": "Pensez aux fuites temporelles et aux injections de fautes.",
+              "answer": "Exponentiation modulaire en temps constant et blinding (masquage) ; rembourrage OAEP pour le chiffrement, PSS pour la signature."
+            },
+            {
+              "question": "Lequel des algorithmes post-quantiques suivants est basé uniquement sur les fonctions de hachage ?",
+              "answer": "SPHINCS+.",
+              "hint": "Rappelez-vous les quatre algorithmes standardisés par le NIST.",
+              "explanation": "SPHINCS+ est un schéma de signature sans état (stateless) dont la sécurité repose seulement sur la résistance aux collisions et aux pré-images de la fonction de hachage utilisée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

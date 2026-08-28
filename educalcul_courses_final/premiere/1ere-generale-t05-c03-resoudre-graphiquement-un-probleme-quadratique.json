@@ -1,0 +1,488 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.239571+00:00",
+  "id": 563,
+  "code": "1ere-generale-t05-c03",
+  "title": "Résoudre graphiquement un problème quadratique",
+  "description": "Cours structuré Educalcul : Résoudre graphiquement un problème quadratique.",
+  "subject": "Modélisation quadratique",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Modélisation quadratique",
+    "titre_du_cours": "Résoudre graphiquement un problème quadratique",
+    "objectif_global": "Résoudre graphiquement un problème quadratique",
+    "mini_lecons_imposees": [
+      "Intersections.",
+      "Seuils.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Modélisation quadratique",
+      "lessons": [
+        {
+          "title": "Intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersections d'une parabole avec l'axe des abscisses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce premier volet nous allons découvrir comment une fonction quadratique se traduit visuellement sur un repère orthonormé. Imagine que tu lances un ballon : sa hauteur au cours du temps dessine une courbe en forme de U renversé, appelée parabole. Comprendre où cette courbe coupe l'axe horizontal te permet de savoir à quels instants le ballon touche le sol. Nous allons donc apprendre à repérer ces points de rencontre, appelés intersections, en utilisant le graphique et un peu d'algèbre."
+            },
+            {
+              "type": "definition",
+              "term": "Parabole",
+              "definition": "Courbe obtenue comme représentation graphique d'une fonction du second degré $f(x)=ax^{2}+bx+c$ avec $a\\neq0$. Elle possède un axe de symétrie vertical passant par son sommet.",
+              "example": "La fonction $f(x)=x^{2}-4x+3$ trace une parabole dont le sommet se trouve en $x=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour visualiser concrètement, regardons la fonction $f(x)=x^{2}-4x+3$. Son coefficient directeur $a=1$ est positif, donc la parabole s'ouvre vers le haut. Le sommet, point le plus bas, s'obtient par la formule $x_{s}=-\\frac{b}{2a}=2$ ; en remplaçant on trouve $f(2)=-1$. Les points où la courbe rencontre l'axe des abscisses correspondent aux solutions de $f(x)=0$, c'est-à-dire aux racines de l'équation $x^{2}-4x+3=0$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4x+3",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Graphique de $f(x)=x^{2}-4x+3$ avec ses intersections sur l'axe $x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'équation $f(x)=0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $x^{2}-4x+3=0$. C'est une équation du second degré classique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le discriminant $\\Delta=b^{2}-4ac$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $a=1$, $b=-4$, $c=3$. Donc $\\Delta=(-4)^{2}-4\\times1\\times3=16-12=4$. Comme $\\Delta>0$, il y a deux intersections distinctes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver les racines avec la formule quadratique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les solutions sont $x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}=\\frac{4\\pm2}{2}$, soit $x_{1}=1$ et $x_{2}=3$. Ce sont les abscisses des points d'intersection."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment déterminer les points où la parabole coupe l'axe horizontal, intéressons-nous aux rencontres avec une droite horizontale quelconque, c'est-à-dire à la résolution graphique de $f(x)=k$ où $k$ est un nombre réel."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersections avec une droite horizontale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit la même parabole $f(x)=x^{2}-4x+3$ et la droite $y=2$. Graphiquement, il s'agit de superposer la courbe et la ligne horizontale $y=2$ et de lire les abscisses des points communs. Cela revient à résoudre $x^{2}-4x+3=2$, c'est-à-dire $x^{2}-4x+1=0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^{2}-4x+1=0"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4x+3",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Parabole $f(x)=x^{2}-4x+3$ et droite horizontale $y=2$ (en pointillés)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Ramener à zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $x^{2}-4x+1=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Discriminant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\Delta=(-4)^{2}-4\\times1\\times1=16-4=12>0$, donc deux intersections."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x=\\frac{4\\pm\\sqrt{12}}{2}=2\\pm\\sqrt{3}$. Les abscisses approximatives sont $0,27$ et $3,73$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, observons comment le signe du discriminant nous informe directement sur le nombre d'intersections sans même tracer le graphique. C'est un outil puissant pour anticiper la forme de la solution."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nombre d'intersections et discriminant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons que pour une équation $ax^{2}+bx+c=0$ le discriminant $\\Delta=b^{2}-4ac$ gouverne le nombre de solutions réelles : si $\\Delta>0$ il y a deux points distincts, si $\\Delta=0$ la parabole est tangente à l'axe (un seul point double), si $\\Delta<0$ il n'y a aucune intersection. Cette règle vaut pour toute droite horizontale $y=k$ en remplaçant $c$ par $c-k$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour savoir rapidement si une droite $y=k$ coupe la parabole, calcule $\\Delta_{k}=b^{2}-4a(c-k)$. Le signe de $\\Delta_{k}$ te donne la réponse."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour déterminer graphiquement et algébriquement les intersections d'une parabole avec n'importe quelle droite horizontale. La prochaine leçon exploitera cette idée pour résoudre des inéquations quadratiques en identifiant des seuils."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer les intersections de la parabole $f(x)=2x^{2}-8x+6$ avec l'axe des abscisses.",
+              "answer": "$x=1$ et $x=3$",
+              "hint": "Calcule le discriminant $\\Delta$ puis utilise la formule quadratique.",
+              "explanation": "On a $a=2$, $b=-8$, $c=6$. $\\Delta=(-8)^{2}-4\\times2\\times6=64-48=16>0$. Les racines sont $x=\\frac{8\\pm4}{4}$, soit $1$ et $3$."
+            },
+            {
+              "question": "Trouver les abscisses des points d'intersection entre $f(x)=-x^{2}+4x-1$ et la droite $y=2$.",
+              "answer": "$x=1$ et $x=3$",
+              "hint": "Remplace $f(x)$ par $2$ et ramène l'équation à zero.",
+              "explanation": "L'équation $-x^{2}+4x-1=2$ devient $-x^{2}+4x-3=0$ ou $x^{2}-4x+3=0$. $\\Delta=16-12=4$, racines $x=\\frac{4\\pm2}{2}=1,3$."
+            },
+            {
+              "question": "Pour la fonction $g(x)=3x^{2}+6x+5$, dire sans calculer les racines si la parabole coupe l'axe des abscisses.",
+              "answer": "Non, elle ne coupe pas l'axe des abscisses.",
+              "hint": "Regarde le signe du discriminant $\\Delta=b^{2}-4ac$.",
+              "explanation": "Ici $a=3$, $b=6$, $c=5$. $\\Delta=36-60=-24<0$, donc aucune solution réelle, pas d'intersection."
+            }
+          ]
+        },
+        {
+          "title": "Seuils.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Seuils et inéquations quadratiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons utiliser le graphique d'une fonction du second degré pour résoudre des inéquations du type $f(x)>k$ ou $f(x)\\le k$. Le nombre $k$ agit comme un seuil : la courbe se trouve soit au‑dessus, soit au‑dessous de la ligne horizontale $y=k$. En identifiant les intervalles d'abscisses où la parabole respecte la condition, nous obtenons l'ensemble des solutions."
+            },
+            {
+              "type": "definition",
+              "term": "Seuil",
+              "definition": "Valeur de référence $k$ comparée aux valeurs d'une fonction quadratique pour définir une inéquation $f(x)>k$, $f(x)\\ge k$, $f(x)<k$ ou $f(x)\\le k$.",
+              "example": "Pour $f(x)=x^{2}-4x+3$, le seuil $k=2$ donne l'inéquation $x^{2}-4x+3>2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la parabole $f(x)=x^{2}-4x+3$ et le seuil $k=2$. Sur le graphique, la droite $y=2$ coupe la courbe en deux points d'abscisses $2-\\sqrt{3}$ et $2+\\sqrt{3}$. Entre ces deux abscisses, la parabole se trouve en dessous de la droite (valeurs $<2$), tandis qu'à l'extérieur elle est au‑dessus (valeurs $>2$)."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4x+3",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Parabole $f(x)=x^{2}-4x+3$ et seuil $y=2$ ; zone $f(x)>2$ hachurée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Résoudre l'équation $f(x)=k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On trouve les abscisses limites en résolvant $x^{2}-4x+3=2$, soit $x^{2}-4x+1=0$. Les solutions sont $2\\pm\\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tester un point à l'intérieur de l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis $x=2$ (le sommet). $f(2)=-1<2$, donc entre les deux racines $f(x)<k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déduire l'ensemble solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)>2$, les solutions sont $x<2-\\sqrt{3}$ ou $x>2+\\sqrt{3}$. Pour $f(x)\\le2$, c'est l'intervalle $[2-\\sqrt{3},\\,2+\\sqrt{3}]$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode est claire, voyons comment représenter ces ensembles de solutions sur une droite graduée à l'aide d'un constructeur d'intervalles. Cela permet de visualiser immédiatement les bornes incluses ou exclues."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Détermination des intervalles solutions"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intervalle solution d'une inéquation quadratique se lit directement sur le graphique : il s'agit de la projection sur l'axe des abscisses de la partie de la courbe qui satisfait l'inégalité. Lorsque l'inéquation est large ($\\ge$ ou $\\le$), les bornes correspondent aux points d'intersection et sont incluses ; lorsqu'elle est stricte ($>$ ou $<$), les bornes sont exclues."
+            },
+            {
+              "type": "interval_builder",
+              "min": -2,
+              "max": 6,
+              "lowerBound": 0.2679,
+              "upperBound": 3.7321,
+              "lowerOpen": true,
+              "upperOpen": true,
+              "caption": "Représentation de l'ensemble $\\{x\\mid x<2-\\sqrt{3}\\ \\text{ou}\\ x>2+\\sqrt{3}\\}$ pour $f(x)>2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste à bien distinguer les cas où l'inégalité est stricte de ceux où elle est large. Une erreur fréquente est d'oublier d'inclure ou d'exclure les bornes. Le graphique nous aide : un point d'intersection appartient à la solution seulement si l'inégalité admet l'égalité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inéquations strictes ou larges"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $f(x)\\ge k$, les points où la parabole touche la droite $y=k$ font partie de la solution, donc les bornes sont fermées. Pour $f(x)>k$, ces mêmes points sont exclus, les bornes sont ouvertes. Cette nuance se voit immédiatement sur le graphique : un trait plein sur la courbe au niveau du seuil signifie inclusion, un trait pointillé signifie exclusion."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne confonds pas le sens de l'inégalité avec la concavité de la parabole. Une parabole tournée vers le haut ($a>0$) est au‑dessus du seuil à l'extérieur des racines, tandis qu'une parabole tournée vers le bas ($a<0$) est au‑dessus entre les racines."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant la résolution graphique des inéquations quadratiques en identifiant les seuils et en lisant les intervalles sur le graphique. La dernière leçon te montrera comment interpréter ces résultats dans un contexte concret."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre graphiquement l'inéquation $x^{2}-6x+8<0$.",
+              "answer": "$x\\in(2,\\,4)$",
+              "hint": "Trouve les racines de $x^{2}-6x+8=0$ et regarde où la parabole est négative.",
+              "explanation": "Les racines sont $2$ et $4$. Comme $a=1>0$, la parabole est au‑dessous de l'axe entre les racines, donc $2<x<4$."
+            },
+            {
+              "question": "Donner l'ensemble des solutions de $-2x^{2}+8x-6\\ge 0$.",
+              "answer": "$x\\in[1,\\,3]$",
+              "hint": "Divise par $-2$ pour obtenir une parabole à concavité vers le haut, puis utilise le discriminant.",
+              "explanation": "L'inéquation équivaut à $x^{2}-4x+3\\le0$. Racines $1$ et $3$, parabole vers le haut, donc solution entre les bornes incluses."
+            },
+            {
+              "question": "Pour $f(x)=3x^{2}-12x+9$, déterminer les $x$ tels que $f(x)>12$.",
+              "answer": "$x<1-\\sqrt{5}$ ou $x>1+\\sqrt{5}$",
+              "hint": "Résous $3x^{2}-12x+9=12$ et teste la position de la parabole par rapport à $y=12$.",
+              "explanation": "Équation $3x^{2}-12x-3=0$ -> $x^{2}-4x-1=0$. Racines $2\\pm\\sqrt{5}$. Parabole vers le haut, donc $f(x)>12$ à l'extérieur des racines."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser un problème réel par une fonction quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un ballon lancé verticalement depuis une hauteur de $1,5\\,\\text{m}$ avec une vitesse initiale de $12\\,\\text{m/s}$. Sa hauteur $h$ (en mètres) en fonction du temps $t$ (en secondes) se modélise par $h(t)=-5t^{2}+12t+1,5$. Le coefficient $-5$ vient de l'approximation $-\\frac{g}{2}$ avec $g\\approx10\\,\\text{m/s}^{2}$. Ce modèle quadratique nous permet de répondre à des questions concrètes : quelle est la hauteur maximale ? À quel moment le ballon retombe‑t‑il au sol ?"
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation quadratique",
+              "definition": "Représentation d'un phénomène réel par une fonction du second degré $f(t)=at^{2}+bt+c$, où les coefficients ont une signification physique (accélération, vitesse initiale, position initiale).",
+              "example": "Le lancement d'un projectile sans frottement donne $h(t)=-\\frac{g}{2}t^{2}+v_{0}t+h_{0}$."
+            },
+            {
+              "type": "graph",
+              "expression": "-5*x^2+12*x+1.5",
+              "xmin": 0,
+              "xmax": 3,
+              "caption": "Hauteur du ballon en fonction du temps. Le sommet correspond à la hauteur maximale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le sommet de la parabole",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'abscisse du sommet est $t_{s}=-\\frac{b}{2a}=-\\frac{12}{2\\times(-5)}=1,2\\,\\text{s}$. C'est l'instant où la hauteur est maximale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la hauteur maximale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On évalue $h(1,2)=-5(1,2)^{2}+12(1,2)+1,5=8,7\\,\\text{m}$. Le ballon monte jusqu'à $8,7\\,\\text{m}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver l'instant de retomber au sol",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On résout $h(t)=0$, soit $-5t^{2}+12t+1,5=0$. Le discriminant $\\Delta=144+30=174$. La racine positive est $t=\\frac{-12+\\sqrt{174}}{-10}\\approx2,58\\,\\text{s}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir déterminé les grandeurs caractéristiques (sommet, zéros), il est souvent nécessaire de lire des valeurs précises sur le graphique, par exemple la hauteur à un instant donné ou l'instant où le ballon atteint une certaine hauteur. Le graphique interactif permet de placer un curseur et de lire les coordonnées directement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire des valeurs précises sur le graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'on veuille savoir à quelle hauteur se trouve le ballon après $0,8\\,\\text{s}$. On place le curseur à $t=0,8$ sur la courbe $h(t)=-5t^{2}+12t+1,5$ et on lit l'ordonnée : environ $7,34\\,\\text{m}$. Inversement, pour connaître les instants où le ballon est à $5\\,\\text{m}$, on trace la droite horizontale $y=5$ et on repère les deux intersections, qui donnent deux temps : un à la montée, un à la descente."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "-5*x^2+12*x+1.5",
+              "x0": 1.2,
+              "xMin": 0,
+              "xMax": 3,
+              "caption": "Tangente au sommet ($t=1,2\\,\\text{s}$) montrant la vitesse nulle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière étape consiste à formuler la réponse en langage courant, en précisant les unités et en vérifiant la cohérence physique. Par exemple, on ne donnera pas un temps négatif ni une hauteur supérieure à la hauteur maximale trouvée. Cette interprétation clôture la résolution graphique d'un problème quadratique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter et communiquer la réponse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du ballon. La hauteur maximale est $8,7\\,\\text{m}$ atteinte à $1,2\\,\\text{s}$. Le ballon touche le sol après environ $2,58\\,\\text{s}$. Si l'on demande « À partir de quand le ballon est‑il plus haut que $6\\,\\text{m}$ ? », on résout $-5t^{2}+12t+1,5>6$, ce qui donne un intervalle de temps $(0,4\\,\\text{s},\\,1,6\\,\\text{s})$. La réponse finale s'écrit : « Le ballon dépasse $6\\,\\text{m}$ entre $0,4\\,\\text{s}$ et $1,6\\,\\text{s}$ après le lancer. »"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais tracer la parabole d'une fonction quadratique et repérer son sommet.",
+                "Je sais trouver les intersections avec l'axe des abscisses et avec une droite horizontale.",
+                "Je sais résoudre une inéquation quadratique graphiquement en identifiant les seuils.",
+                "Je sais modéliser un problème concret (projectile, aire, revenue) par une fonction du second degré.",
+                "Je sais lire des valeurs précises sur le graphique et formuler la réponse avec les bonnes unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un projectile suit la loi $h(t)=-4,9t^{2}+15t+2$. Quelle est sa hauteur maximale et à quel instant est‑elle atteinte ?",
+              "answer": "Hauteur maximale $≈13,5\\,\\text{m}$ à $t≈1,53\\,\\text{s}$.",
+              "hint": "Calcule $t_{s}=-b/(2a)$ puis évalue $h(t_{s})$.",
+              "explanation": "$a=-4,9$, $b=15$. $t_{s}=15/(9,8)≈1,53$. $h(1,53)≈-4,9(2,34)+22,95+2≈13,5$."
+            },
+            {
+              "question": "Pour le même projectile, déterminer l'intervalle de temps pendant lequel il se trouve au‑dessus de $10\\,\\text{m}$.",
+              "answer": "$t\\in(0,78\\,\\text{s},\\,2,28\\,\\text{s})$",
+              "hint": "Résous $-4,9t^{2}+15t+2>10$ et utilise le discriminant.",
+              "explanation": "Inéquation $-4,9t^{2}+15t-8>0$ → $4,9t^{2}-15t+8<0$. Discriminant $225-156,8=68,2$. Racines $(15±√68,2)/(9,8)≈0,78$ et $2,28$. Parabole vers le haut, solution entre les racines."
+            },
+            {
+              "question": "Expliquer en une phrase pourquoi le coefficient du terme $t^{2}$ est négatif dans le modèle de hauteur d'un projectile.",
+              "answer": "Parce que la gravité accélère le projectile vers le bas, ce qui courbe la trajectoire vers le bas (concavité vers le bas).",
+              "hint": "Rappelle le signe de l'accélération de la pesanteur.",
+              "explanation": "L'accélération de la pesanteur est dirigée vers le bas, donc $a=-g/2<0$, ce qui donne un coefficient négatif devant $t^{2}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

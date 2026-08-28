@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Valeur positionnelle",
+  "title": "Approfondissement : Valeur positionnelle - Algorithmes",
+  "blocks": [
+    {
+      "title": "Décomposition en valeurs de position",
+      "content": "Écrire un algorithme (en pseudo‑code ou style Python) qui prend en entrée un nombre décimal (par exemple $47,35$) et affiche la décomposition en valeurs de position : unités, dixièmes, centièmes, etc. L'algorithme doit traiter la partie entière et la partie décimale séparément.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre sous forme de chaîne de caractères.\\n2. Séparer la chaîne en deux parties au niveau de la virgule : partieEntiere, partieDecimale.\\n3. Pour chaque caractère de partieEntiere, de gauche à droite, afficher le chiffre suivi de sa position (unités, dizaines, centaines, …) en multipliant par la puissance de 10 correspondante.\\n4. Pour chaque caractère de partieDecimale, de gauche à droite, afficher le chiffre suivi de sa position (dixièmes, centièmes, millièmes, …) en divisant par la puissance de 10 correspondante.\\n5. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la représentation textuelle pour accéder à chaque chiffre. La partie entière est lue de gauche à droite, chaque position correspond à une puissance de 10 croissante (10^0, 10^1, …). La partie décimale est lue de gauche à droite, chaque position correspond à une puissance de 10 négative (10^-1, 10^-2, …). Ainsi pour $47,35$ on obtient : $4 \\times 10^1 + 7 \\times 10^0 + 3 \\times 10^{-1} + 5 \\times 10^{-2}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Valeur d'un chiffre à une position donnée",
+      "content": "Écrire une fonction (en pseudo‑code ou style Python) nommée valeurPosition(nombre, position) qui renvoie la valeur du chiffre situé à la position indiquée. La position 0 correspond aux unités, les positions positives aux dizaines, centaines, … et les positions négatives aux dixièmes, centièmes, … Par exemple, valeurPosition($47,35$, -2) doit renvoyer $5 \\times 10^{-2}$ soit $0,05$.",
+      "correctAnswer": "Fonction valeurPosition(nombre, position) :\\n1. Convertir nombre en chaîne de caractères.\\n2. Trouver l'index de la virgule (ou du point).\\n3. Si position >= 0 : l'index du chiffre dans la partie entière est (longueurPartieEntiere - 1 - position). Si cet index est valide, extraire le chiffre, sinon retourner 0.\\n4. Si position < 0 : l'index dans la partie décimale est (-position - 1). Si cet index est valide, extraire le chiffre, sinon retourner 0.\\n5. Retourner chiffre * 10^position.\\nFin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction localise la virgule pour séparer partie entière et partie décimale. Pour une position positive, on compte depuis la droite de la partie entière (unités = index longueur-1). Pour une position négative, on compte depuis la gauche de la partie décimale (dixièmes = index 0). Le chiffre extrait est multiplié par 10^position pour obtenir sa valeur réelle. Pour $47,35$ et position -2, le chiffre est 5, 10^{-2}=0,01, produit = 0,05.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux nombres décimaux",
+      "content": "Écrire un algorithme qui compare deux nombres décimaux donnés sous forme de chaînes de caractères (par exemple $12,307$ et $12,31$) et affiche lequel est le plus grand. L'algorithme doit aligner les virgules, compléter par des zéros à droite si nécessaire, puis comparer chiffre par chiffre de la gauche vers la droite.",
+      "correctAnswer": "Algorithme comparer(nombre1, nombre2) :\\n1. Séparer chaque nombre en partieEntiere1, partieDecimale1 et partieEntiere2, partieDecimale2.\\n2. Compléter la partie entière la plus courte avec des zéros à gauche pour avoir même longueur.\\n3. Compléter la partie décimale la plus courte avec des zéros à droite pour avoir même longueur.\\n4. Concaténer partieEntiere et partieDecimale pour former deux chaînes de même longueur.\\n5. Parcourir les chaînes de gauche à droite :\\n   - Si chiffre1 > chiffre2 : afficher nombre1 est plus grand, arrêter.\\n   - Si chiffre1 < chiffre2 : afficher nombre2 est plus grand, arrêter.\\n6. Si tous les chiffres sont égaux : afficher les deux nombres sont égaux.\\nFin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme normalise les deux nombres en leur donnant la même longueur de partie entière et de partie décimale. Ainsi $12,307$ devient partie entière $12$, partie décimale $307$ ; $12,31$ devient partie entière $12$, partie décimale $310$ après ajout d'un zéro. La comparaison lexicographique chiffre à chiffre donne $3=3$, $0<1$ donc $12,31$ est plus grand que $12,307$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

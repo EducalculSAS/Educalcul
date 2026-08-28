@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 151,
+  "_course_code": "ce2-t01-c10-bilan-numeration-ce2",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Lecture, écriture, position",
+  "title": "Quiz - Lecture, écriture et position des nombres (CE2)",
+  "questions": [
+    {
+      "text": "Comment écrit-on en lettres le nombre $408$ ?",
+      "options": [
+        "Quatre cent huit",
+        "Quatre cents huit",
+        "Quarante-huit",
+        "Quatre cent zéro huit"
+      ],
+      "correctAnswer": "Quatre cent huit",
+      "explanation": "Le nombre $408$ se décompose en $4$ centaines et $8$ unités. En lettres, on écrit « quatre cent huit ». Le mot « cent » ne prend pas de « s » car il n'est pas multiplié (il n'y a pas plusieurs centaines sans autre chiffre derrière) et il n'est pas à la fin du nombre suivi d'un autre nombre. « Quarante-huit » correspond à $48$ et « quatre cent zéro huit » n'est pas l'écriture conventionnelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre correspond à l'écriture en lettres : « six cent trois » ?",
+      "options": [
+        "$603$",
+        "$630$",
+        "$63$",
+        "$6003$"
+      ],
+      "correctAnswer": "$603$",
+      "explanation": "« Six cent trois » signifie $6$ centaines ($600$) et $3$ unités ($3$). Il n'y a pas de dizaines, donc on met un $0$ au chiffre des dizaines : $603$. L'option $630$ correspond à « six cent trente », $63$ à « soixante-trois » et $6003$ à « six mille trois ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $752$, que représente le chiffre $5$ ?",
+      "options": [
+        "$5$ unités",
+        "$5$ dizaines",
+        "$5$ centaines",
+        "$55$"
+      ],
+      "correctAnswer": "$5$ dizaines",
+      "explanation": "Dans le nombre $752$, les chiffres ont une valeur selon leur position : $7$ est le chiffre des centaines ($700$), $5$ est le chiffre des dizaines ($50$) et $2$ est le chiffre des unités ($2$). Le chiffre $5$ représente donc $5$ dizaines, soit $50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre est représenté par l'ensemble de matériel ci-dessous ?",
+      "options": [
+        "$37$",
+        "$307$",
+        "$370$",
+        "$3007$"
+      ],
+      "correctAnswer": "$307$",
+      "explanation": "On compte $3$ plaques de centaines ($300$), $0$ barres de dizaines ($0$) et $7$ cubes d'unités ($7$). Le nombre est donc $300 + 0 + 7 = 307$. L'absence de barres de dizaines impose un chiffre $0$ à la position des dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 3,
+        "tens": 0,
+        "units": 7,
+        "caption": "Représentation en matériel de base 10 : 3 centaines, 0 dizaine, 7 unités"
+      }
+    },
+    {
+      "text": "Sur la graduée ci-dessous, quel nombre est repéré par le point $A$ ?",
+      "options": [
+        "$300$",
+        "$302$",
+        "$305$",
+        "$310$"
+      ],
+      "correctAnswer": "$305$",
+      "explanation": "La graduée va de $300$ à $310$. Les graduations principales séparent les dizaines. Le point $A$ est placé exactement au milieu entre $300$ et $310$, ce qui correspond à $305$ (la moitié de $10$ est $5$).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Graduée de 300 à 310 avec point A à 305",
+        "min": 300,
+        "max": 310,
+        "points": [
+          {
+            "value": 305,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

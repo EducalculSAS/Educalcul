@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 99,
+  "_course_code": "ce1-t04-c02-complements-a-10-et-a-la-dizaine-superieure",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Complément à 10",
+  "title": "Complément à 10 : algorithme et application",
+  "blocks": [
+    {
+      "title": "Étape 1 : Description de la méthode",
+      "content": "Décris avec tes mots les étapes à suivre pour trouver le complément à 10 d'un nombre entier compris entre 0 et 10.",
+      "correctAnswer": "1. Prendre le nombre donné.\\n2. Soustraire ce nombre de 10.\\n3. Le résultat est le complément à 10.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le complément à 10 d'un nombre n est la quantité qu'il faut ajouter à n pour obtenir 10. On calcule donc 10 - n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape 2 : Écriture de l'algorithme",
+      "content": "Écris l'algorithme sous forme de pseudo-code simple pour calculer le complément à 10 d'une variable $n$.",
+      "correctAnswer": "Algorithme ComplementA10(n)\\n    Si n < 0 ou n > 10 alors\\n        Afficher \"Nombre hors intervalle\"\\n    Sinon\\n        complement ← 10 - n\\n        Afficher complement\\n    Fin Si\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie d'abord que le nombre est dans l'intervalle [0,10]. Ensuite on calcule 10 - n et on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape 3 : Application de l'algorithme",
+      "content": "Applique l'algorithme aux nombres $3$, $7$ et $10$ et indique les compléments à 10 correspondants.",
+      "correctAnswer": "Pour n = 3 : complement = 10 - 3 = 7.\\nPour n = 7 : complement = 10 - 7 = 3.\\nPour n = 10 : complement = 10 - 10 = 0.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On substitue chaque valeur de n dans l'expression 10 - n. Pour 3 on obtient 7, pour 7 on obtient 3, pour 10 on obtient 0.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Tester",
+  "title": "Algorithmique : Les tests conditionnels",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : $x$ nombre entier\\nDébut\\n  $x \\leftarrow 7$\\n  Si $x > 5$ Alors\\n    $x \\leftarrow x + 3$\\n  Sinon\\n    $x \\leftarrow x - 2$\\n  Fin Si\\n  Afficher $x$\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "10",
+        "5",
+        "4",
+        "12"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La variable $x$ vaut initialement 7. La condition $x > 5$ est vraie (7 est strictement supérieur à 5). On exécute donc l'instruction du 'Alors' : $x \\leftarrow 7 + 3 = 10$. L'instruction du 'Sinon' est ignorée. La valeur finale affichée est 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'instruction conditionnelle :\\nSi $(a \\geq 10)$ ET $(b < 5)$ Alors\\n  Afficher \"OK\"\\nSinon\\n  Afficher \"KO\"\\nFin Si\\nPour quel couple $(a ; b)$ l'affichage sera-t-il \"OK\" ?",
+      "options": [
+        "(10 ; 5)",
+        "(9 ; 4)",
+        "(12 ; 3)",
+        "(10 ; 6)"
+      ],
+      "correctAnswer": "(12 ; 3)",
+      "explanation": "Pour afficher \"OK\", les deux conditions doivent être vraies simultanément (opérateur ET).\\n- (10 ; 5) : $a \\geq 10$ est vrai, mais $b < 5$ est faux (5 n'est pas strictement inférieur à 5).\\n- (9 ; 4) : $a \\geq 10$ est faux.\\n- (12 ; 3) : $12 \\geq 10$ (vrai) ET $3 < 5$ (vrai) -> VRAI.\\n- (10 ; 6) : $b < 5$ est faux.\\nSeul le couple (12 ; 3) satisfait les deux conditions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant :\\nVariables : $n$ entier\\nDébut\\n  $n \\leftarrow -4$\\n  Si $n \\times n > 10$ Alors\\n    $n \\leftarrow n + 10$\\n  Sinon\\n    Si $n < 0$ Alors\\n      $n \\leftarrow n - 5$\\n    Sinon\\n      $n \\leftarrow n + 5$\\n    Fin Si\\n  Fin Si\\n  Afficher $n$\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "-9",
+        "6",
+        "1",
+        "-14"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Au départ $n = -4$. On teste la première condition : $n \\times n = (-4) \\times (-4) = 16$. Comme $16 > 10$, la condition est vraie. On exécute $n \\leftarrow -4 + 10 = 6$. Le bloc 'Sinon' (avec le test imbriqué) est entièrement sauté. La valeur affichée est 6.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel test permet de vérifier si un nombre entier $x$ est pair ?",
+      "options": [
+        "Si $x / 2 = 0$ Alors",
+        "Si $x \\times 2 = 0$ Alors",
+        "Si $x \\% 2 = 0$ Alors",
+        "Si $x - 2 = 0$ Alors"
+      ],
+      "correctAnswer": "Si $x \\% 2 = 0$ Alors",
+      "explanation": "Un nombre est pair s'il est divisible par 2, c'est-à-dire si le reste de sa division euclidienne par 2 est nul. En algorithmique, l'opérateur modulo (souvent noté $\\%$ ou `mod`) donne ce reste. La condition correcte est donc $x \\% 2 = 0$. Les autres options testent respectivement : la moitié nulle, le double nul, ou si $x$ vaut 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire un algorithme qui affiche \"Positif\" si un nombre $x$ est strictement positif, \"Négatif\" s'il est strictement négatif, et \"Nul\" s'il vaut 0. Quelle structure de test imbriqué est correcte ?",
+      "options": [
+        "Si $x > 0$ Alors Afficher \"Positif\" Sinon Afficher \"Négatif\" Fin Si Si $x = 0$ Alors Afficher \"Nul\" Fin Si",
+        "Si $x > 0$ Alors Afficher \"Positif\" Sinon Si $x < 0$ Alors Afficher \"Négatif\" Sinon Afficher \"Nul\" Fin Si Fin Si",
+        "Si $x > 0$ Alors Afficher \"Positif\" Si $x < 0$ Alors Afficher \"Négatif\" Si $x = 0$ Alors Afficher \"Nul\" Fin Si Fin Si Fin Si",
+        "Si $x \\geq 0$ Alors Afficher \"Positif\" Sinon Afficher \"Négatif\" Fin Si"
+      ],
+      "correctAnswer": "Si $x > 0$ Alors Afficher \"Positif\" Sinon Si $x < 0$ Alors Afficher \"Négatif\" Sinon Afficher \"Nul\" Fin Si Fin Si",
+      "explanation": "Il faut tester les trois cas mutuellement exclusifs ($>0$, $<0$, $=0$) sans en oublier et sans en tester plusieurs fois inutilement. La bonne structure utilise un premier 'Si' pour $x>0$, puis un 'Sinon Si' pour $x<0$, et un 'Sinon' final qui ne peut correspondre qu'à $x=0$. La première option affiche deux messages si $x=0$. La troisième option (sans Sinon) teste toutes les conditions à chaque fois. La quatrième option confond positif et nul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

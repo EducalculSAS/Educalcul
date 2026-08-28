@@ -1,0 +1,47 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Signe",
+  "title": "Signe de fonctions - résolution graphique",
+  "blocks": [
+    {
+      "title": "Signe d'une fonction affine",
+      "content": "Sur le graphique de la fonction $f(x)=2x-4$, la courbe coupe l'axe des abscisses au point d'abscisse {{1}}. Pour $x<2$, la fonction est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "négative|strictement négative"
+      ],
+      "explanation": "La fonction $f(x)=2x-4$ s'annule pour $2x-4=0$, soit $x=2$. Comme le coefficient directeur est positif ($2>0$), la fonction est croissante. Donc pour $x<2$, les valeurs de $f(x)$ sont inférieures à $0$, c'est-à-dire négatives (strictement négatives).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Signe d'une fonction quadratique",
+      "content": "La fonction $g(x)=x^2-5x+6$ admet deux zéros : $x=2$ et $x=3$. Sur l'intervalle $]2;3[$, la fonction est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "négative|strictement négative"
+      ],
+      "explanation": "Le trinôme $g(x)=x^2-5x+6$ se factorise en $(x-2)(x-3)$. Le coefficient de $x^2$ est positif, donc la parabole est tournée vers le haut. Entre les deux racines $2$ et $3$, le produit $(x-2)(x-3)$ est négatif, donc $g(x)$ est strictement négative sur $]2;3[$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Signe d'une fonction rationnelle",
+      "content": "Pour la fonction $h(x)=\\frac{x+1}{x-2}$, le signe de $h(x)$ sur l'intervalle $]-1;2[$ est {{1}} et sur $]2;+\\infty[$ il est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "négatif|strictement négatif",
+        "positif|strictement positif"
+      ],
+      "explanation": "Le numérateur $x+1$ s'annule en $x=-1$, le dénominateur $x-2$ s'annule en $x=2$ (asymptote verticale). On construit un tableau de signes :\\n- Sur $]-\\infty;-1[$ : numérateur négatif, dénominateur négatif → quotient positif.\\n- Sur $]-1;2[$ : numérateur positif, dénominateur négatif → quotient négatif.\\n- Sur $]2;+\\infty[$ : numérateur positif, dénominateur positif → quotient positif.\\nAinsi $h(x)$ est négative sur $]-1;2[$ et positive sur $]2;+\\infty[$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

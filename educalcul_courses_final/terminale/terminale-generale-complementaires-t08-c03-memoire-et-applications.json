@@ -1,0 +1,370 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.564934+00:00",
+  "id": 667,
+  "code": "terminale-generale-complementaires-t08-c03",
+  "title": "Mémoire et applications",
+  "description": "Cours structuré Educalcul : Mémoire et applications.",
+  "subject": "Temps d'attente",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Temps d'attente",
+    "titre_du_cours": "Mémoire et applications",
+    "objectif_global": "Mémoire et applications",
+    "mini_lecons_imposees": [
+      "Propriété.",
+      "Calcul.",
+      "Contexte."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Temps d'attente",
+      "lessons": [
+        {
+          "title": "Propriété.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La propriété d'absence de mémoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré à la loi exponentielle et à sa caractéristique la plus fascinante : l'absence de mémoire. Tu as déjà rencontré cette loi en première, mais ici nous allons en explorer la profondeur avec le niveau d'exigence de la Terminale. Imagine un composant électronique qui fonctionne depuis $1000$ heures : la probabilité qu'il tienne encore $200$ heures de plus est exactement la même que s'il était neuf. C'est contre-intuitif, et pourtant c'est une réalité mathématique rigoureuse. Nous allons la démontrer, la comprendre et l'utiliser."
+            },
+            {
+              "type": "definition",
+              "term": "Loi exponentielle",
+              "definition": "Une variable aléatoire $X$ suit une loi exponentielle de paramètre $\\lambda > 0$ si sa densité de probabilité est $f_X(x) = \\lambda e^{-\\lambda x} \\mathbf{1}_{[0, +\\infty[}(x)$. Sa fonction de répartition est $F_X(x) = 1 - e^{-\\lambda x}$ pour $x \\ge 0$.",
+              "example": "Le temps d'attente avant l'arrivée d'un bus, si les bus passent en moyenne toutes les $10$ minutes, suit une loi exponentielle de paramètre $\\lambda = 0,1$ (en minutes)."
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété d'absence de mémoire s'énonce ainsi : pour tout $s, t \\ge 0$, $\\mathbb{P}(X > s + t \\mid X > s) = \\mathbb{P}(X > t)$. En mots, sachant que l'événement n'est pas encore survenu après un temps $s$, la durée supplémentaire à attendre suit la même loi que la durée totale au départ. Le passé n'influence pas l'avenir. C'est ce qui rend la loi exponentielle unique parmi les lois continues."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(X > s + t \\mid X > s) = \\frac{\\mathbb{P}(X > s + t)}{\\mathbb{P}(X > s)} = \\frac{e^{-\\lambda(s+t)}}{e^{-\\lambda s}} = e^{-\\lambda t} = \\mathbb{P}(X > t)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la probabilité conditionnelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par définition, $\\mathbb{P}(X > s + t \\mid X > s) = \\frac{\\mathbb{P}(X > s + t \\text{ et } X > s)}{\\mathbb{P}(X > s)}$. Comme $s+t > s$, l'événement $\\{X > s+t\\}$ est inclus dans $\\{X > s\\}$, donc l'intersection est simplement $\\{X > s+t\\}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la fonction de répartition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une loi exponentielle, $\\mathbb{P}(X > x) = 1 - F_X(x) = e^{-\\lambda x}$. On substitue : $\\mathbb{P}(X > s+t) = e^{-\\lambda(s+t)}$ et $\\mathbb{P}(X > s) = e^{-\\lambda s}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le quotient devient $\\frac{e^{-\\lambda(s+t)}}{e^{-\\lambda s}} = e^{-\\lambda t}$, qui est exactement $\\mathbb{P}(X > t)$. La propriété est prouvée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la propriété est démontrée, posons-nous une question réciproque : si une variable aléatoire positive continue vérifie cette propriété, est-elle nécessairement exponentielle ? La réponse est oui, et c'est un théorème fort qui justifie l'utilisation massive de cette loi en modélisation. Nous allons en esquisser l'idée, car elle montre la puissance du raisonnement par équation fonctionnelle."
+            },
+            {
+              "type": "definition",
+              "term": "Équation fonctionnelle de Cauchy",
+              "definition": "Une fonction $g : [0, +\\infty[ \\to \\mathbb{R}$ telle que $g(x+y) = g(x) + g(y)$ pour tous $x,y \\ge 0$, et qui est continue en un point, est nécessairement de la forme $g(x) = cx$ pour une certaine constante $c$.",
+              "example": "Si on pose $g(x) = -\\ln \\mathbb{P}(X > x)$, l'absence de mémoire donne $g(s+t) = g(s) + g(t)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $X$ une variable aléatoire à valeurs dans $[0, +\\infty[$ admettant une densité continue. Si $\\mathbb{P}(X > s+t \\mid X > s) = \\mathbb{P}(X > t)$ pour tout $s,t \\ge 0$, alors en posant $\\bar{F}(x) = \\mathbb{P}(X > x)$, on obtient $\\bar{F}(s+t) = \\bar{F}(s)\\bar{F}(t)$. La fonction $\\bar{F}$ est continue, strictement positive, décroissante, avec $\\bar{F}(0)=1$. En posant $g(x) = -\\ln \\bar{F}(x)$, on trouve $g(s+t) = g(s)+g(t)$. Par continuité, $g(x) = \\lambda x$, donc $\\bar{F}(x) = e^{-\\lambda x}$ : c'est bien une loi exponentielle. Cette caractérisation explique pourquoi on la rencontre dès qu'un phénomène n'a pas de \"vieillissement\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer l'intuition, regardons une représentation graphique. La densité exponentielle est une courbe qui décroît exponentiellement. L'aire sous la courbe à droite de $s+t$ divisée par l'aire à droite de $s$ est indépendante de $s$. C'est une propriété d'homothétie : le \"reste de vie\" a toujours la même forme, juste décalé. Cela se voit bien sur un graphique où l'on superpose la densité conditionnelle et la densité originale."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*exp(-0.5*x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Densité d'une loi exponentielle de paramètre $\\lambda = 0,5$. L'aire ombrée à droite de $s=2$ a la même forme relative que l'aire totale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir la définition, la preuve, la caractérisation et une illustration graphique de l'absence de mémoire. Cette propriété est le cœur de la modélisation des temps d'attente. Dans la prochaine leçon, nous passerons aux calculs concrets : espérance, variance, probabilités conditionnelles et quantiles, pour devenir à l'aise avec les formules numériques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X$ une variable aléatoire suivant une loi exponentielle de paramètre $\\lambda = 0,2$. Calculer $\\mathbb{P}(X > 5)$ et $\\mathbb{P}(X > 10 \\mid X > 5)$. Vérifier numériquement la propriété d'absence de mémoire.",
+              "answer": "$\\mathbb{P}(X > 5) = e^{-0,2 \\times 5} = e^{-1} \\approx 0,3679$. $\\mathbb{P}(X > 10 \\mid X > 5) = \\mathbb{P}(X > 5) = e^{-1} \\approx 0,3679$. La propriété est vérifiée.",
+              "hint": "Utilise la formule $\\mathbb{P}(X > x) = e^{-\\lambda x}$ et la propriété démontrée.",
+              "explanation": "On applique directement la fonction de survie. La probabilité conditionnelle est égale à la probabilité inconditionnelle de dépasser $5$, ce qui illustre l'absence de mémoire."
+            },
+            {
+              "question": "Une ampoule a une durée de vie modélisée par une loi exponentielle de paramètre $\\lambda = 0,001$ (en heures). Sachant qu'elle fonctionne déjà depuis $500$ heures, quelle est la probabilité qu'elle fonctionne encore au moins $200$ heures de plus ?",
+              "answer": "$\\mathbb{P}(X > 700 \\mid X > 500) = \\mathbb{P}(X > 200) = e^{-0,001 \\times 200} = e^{-0,2} \\approx 0,8187$.",
+              "hint": "Utilise la propriété d'absence de mémoire : le passé n'influence pas l'avenir.",
+              "explanation": "Grâce à l'absence de mémoire, la durée de vie résiduelle suit la même loi exponentielle. On calcule simplement la probabilité de dépasser $200$ heures."
+            },
+            {
+              "question": "On trace la densité $f(x) = 2e^{-2x}$ pour $x \\ge 0$. Sur le graphique, on représente l'aire correspondant à $\\mathbb{P}(X > 1)$ et l'aire correspondant à $\\mathbb{P}(X > 2 \\mid X > 1)$. Que remarque-t-on sur les deux aires ombrées ?",
+              "answer": "Les deux aires sont égales. L'aire conditionnelle (à droite de $2$ sachant $X>1$) est exactement la même proportion de l'aire à droite de $1$ que l'aire totale à droite de $1$ par rapport à l'aire totale. Visuellement, la forme relative est identique.",
+              "hint": "Pense au quotient des aires et à la propriété d'absence de mémoire.",
+              "explanation": "Graphiquement, l'absence de mémoire se traduit par une invariance d'échelle : la densité conditionnelle knowing $X>1$ est simplement la densité originale décalée et renormalisée, ce qui donne la même aire relative."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs usuels avec la loi exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la propriété d'absence de mémoire est bien ancrée, passons aux calculs quotidiens. En Terminale, on attend de toi non seulement de connaître les formules, mais aussi de savoir les manipuler avec aisance : espérance, variance, quantiles, et probabilités conditionnelles un peu plus complexes. Nous allons revoir chaque notion avec des exemples concrets, pour que tu puisses les retrouver instinctivement le jour de l'examen."
+            },
+            {
+              "type": "definition",
+              "term": "Espérance et variance de la loi exponentielle",
+              "definition": "Si $X \\sim \\mathcal{E}(\\lambda)$, alors $\\mathbb{E}(X) = \\frac{1}{\\lambda}$ et $\\operatorname{Var}(X) = \\frac{1}{\\lambda^2}$. L'écart-type est donc aussi $\\frac{1}{\\lambda}$.",
+              "example": "Pour $\\lambda = 0,5$, l'espérance est $2$ et la variance est $4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces formules s'obtiennent par intégration par parties. L'espérance $\\int_0^\\infty x \\lambda e^{-\\lambda x} dx = \\frac{1}{\\\\lambda}$ est un classique. La variance $\\mathbb{E}(X^2) - \\mathbb{E}(X)^2$ donne $\\frac{2}{\\lambda^2} - \\frac{1}{\\lambda^2} = \\frac{1}{\\lambda^2}$. Retiens que l'écart-type égale l'espérance : c'une particularité de l'exponentielle (coefficient de variation égal à $1$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calcul de $\\mathbb{E}(X)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{E}(X) = \\int_0^\\infty x \\lambda e^{-\\lambda x} dx$. Intégration par parties : $u=x$, $dv=\\lambda e^{-\\lambda x}dx$, $du=dx$, $v=-e^{-\\lambda x}$. La primitive évaluée donne $\\left[-x e^{-\\lambda x}\\right]_0^\\infty + \\int_0^\\infty e^{-\\lambda x} dx = 0 + \\frac{1}{\\lambda}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Calcul de $\\mathbb{E}(X^2)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{E}(X^2) = \\int_0^\\infty x^2 \\lambda e^{-\\lambda x} dx$. Deux intégrations par parties successives donnent $\\frac{2}{\\lambda^2}$. Donc $\\operatorname{Var}(X) = \\frac{2}{\\lambda^2} - \\frac{1}{\\lambda^2} = \\frac{1}{\\lambda^2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des moments d'ordre 1 et 2, il est crucial de savoir calculer des probabilités de la forme $\\mathbb{P}(a < X < b)$ ou des quantiles. La fonction de répartition $F(x) = 1 - e^{-\\lambda x}$ s'inverse aisément : le quantile d'ordre $\\alpha$ (avec $0<\\alpha<1$) est $q_\\alpha = -\\frac{\\ln(1-\\alpha)}{\\lambda}$. Cette formule permet de répondre à des questions comme : \"Au bout de combien de temps y a-t-il $95\\%$ de chances que l'événement se soit produit ?\"."
+            },
+            {
+              "type": "display_math",
+              "latex": "q_\\alpha = -\\frac{\\ln(1-\\alpha)}{\\lambda}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les probabilités conditionnelles plus générales se gèrent aussi grâce à l'absence de mémoire. Par exemple, $\\mathbb{P}(X > s+t \\mid X > s) = \\mathbb{P}(X > t)$ nous a déjà servi. Mais on peut aussi calculer $\\mathbb{P}(X < s+t \\mid X > s) = 1 - e^{-\\lambda t}$. Ou encore $\\mathbb{P}(X \\in [a,b] \\mid X > c)$ pour divers cas. La clé est toujours de réécrire l'événement conditionnel en utilisant la définition de la probabilité conditionnelle et la fonction de survie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre outil puissant est la transformation en loi uniforme. Si $X \\sim \\mathcal{E}(\\lambda)$, alors $F_X(X) = 1 - e^{-\\lambda X}$ suit une loi uniforme sur $[0,1]$. Réciproquement, si $U \\sim \\mathcal{U}([0,1])$, alors $-\\frac{1}{\\lambda}\\ln(1-U)$ suit $\\mathcal{E}(\\lambda)$. C'est la base de la simulation de variables exponentielles par ordinateur. Nous allons voir comment l'utiliser pour générer des échantillons et estimer des probabilités par méthode de Monte-Carlo."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\nimport math\\n\\ndef exponential_sample(lambd, n):\\n    return [-math.log(1 - random.random()) / lambd for _ in range(n)]\\n\\n# Exemple : 10 tirages avec lambda = 0.5\\nprint(exponential_sample(0.5, 10))",
+              "caption": "Simulation de variables exponentielles par la méthode de la transformée inverse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublions pas les inégalités de concentration. Pour une variable exponentielle, l'inégalité de Markov donne $\\mathbb{P}(X \\ge a) \\le \\frac{\\mathbb{E}(X)}{a} = \\frac{1}{\\lambda a}$, mais on a la valeur exacte $e^{-\\lambda a}$ qui est bien plus précise. L'inégalité de Tchebychev donne $\\mathbb{P}(|X - \\frac{1}{\\lambda}| \\ge k \\frac{1}{\\lambda}) \\le \\frac{1}{k^2}$. Ces bornes sont utiles quand on ne connaît pas la loi exacte, mais ici nous la connaissons ! Nous verrons dans la prochaine leçon comment tout cela s'applique à des problèmes concrets de files d'attente, de fiabilité et de télécommunications."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X \\sim \\mathcal{E}(0,25)$. Calculer : (a) $\\mathbb{E}(X)$ et $\\sigma(X)$ ; (b) $\\mathbb{P}(X > 6)$ ; (c) le quartile d'ordre $0,75$ (le troisième quartile).",
+              "answer": "(a) $\\mathbb{E}(X) = 4$, $\\sigma(X) = 4$. (b) $\\mathbb{P}(X > 6) = e^{-0,25 \\times 6} = e^{-1,5} \\approx 0,2231$. (c) $q_{0,75} = -\\frac{\\ln(0,25)}{0,25} = 4\\ln 4 \\approx 5,545$.",
+              "hint": "Utilise les formules $\\mathbb{E}(X)=1/\\lambda$, $\\mathbb{P}(X>x)=e^{-\\lambda x}$, $q_\\alpha = -\\ln(1-\\alpha)/\\lambda$.",
+              "explanation": "Application directe des formules du cours. Le quartile d'ordre 0,75 correspond à $\\alpha=0,75$, donc $1-\\alpha=0,25$."
+            },
+            {
+              "question": "On suppose $X \\sim \\mathcal{E}(\\lambda)$. Calculer $\\mathbb{P}(X > 2 \\mid X > 1)$ en fonction de $\\lambda$. Ensuite, calculer $\\mathbb{P}(1 < X < 3 \\mid X > 1)$.",
+              "answer": "$\\mathbb{P}(X > 2 \\mid X > 1) = \\mathbb{P}(X > 1) = e^{-\\lambda}$. $\\mathbb{P}(1 < X < 3 \\mid X > 1) = \\mathbb{P}(X < 3 \\mid X > 1) = 1 - e^{-2\\lambda}$.",
+              "hint": "Utilise l'absence de mémoire pour le premier. Pour le second, note que $\\{1 < X < 3\\} \\cap \\{X > 1\\} = \\{1 < X < 3\\}$ et divise par $\\mathbb{P}(X>1)$.",
+              "explanation": "Le premier est une application directe de la propriété. Le second utilise $\\mathbb{P}(1 < X < 3 \\mid X > 1) = \\frac{\\mathbb{P}(1 < X < 3)}{\\mathbb{P}(X > 1)} = \\frac{e^{-\\lambda} - e^{-3\\lambda}}{e^{-\\lambda}} = 1 - e^{-2\\lambda}$."
+            },
+            {
+              "question": "Écrire un algorithme en Python qui simule $1000$ valeurs d'une loi exponentielle de paramètre $2$, puis calcule la moyenne empirique et la compare à l'espérance théorique.",
+              "answer": "Voir code ci-dessous. La moyenne empirique devrait être proche de $0,5$.",
+              "hint": "Utilise random.random() et la transformée inverse : $X = -\\ln(1-U)/\\lambda$.",
+              "explanation": "La simulation par transformée inverse est exacte en loi. Avec $1000$ tirages, la loi des grands nombres assure que la moyenne empirique approche $1/\\lambda = 0,5$."
+            }
+          ]
+        },
+        {
+          "title": "Contexte.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes : files d'attente, fiabilité, télécommunications"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur de la modélisation : comment la loi exponentielle et son absence de mémoire s'invitent dans des situations réelles. Que ce soit pour dimensionner un centre d'appels, prévoir la durée de vie d'un satellite, ou analyser le trafic routier, les mêmes outils mathématiques reviennent. Cette leçon est l'occasion de voir la puissance d'un modèle simple, mais aussi ses limites. Prends le temps de lire chaque exemple, imagine la scène, et fais le lien avec les formules que nous avons travaillées."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le modèle $M/M/1$, la file d'attente la plus élémentaire. Les clients arrivent selon un processus de Poisson (donc les intervalles d'arrivée sont exponentiels), le service suit une loi exponentielle, et il y a un seul serveur. L'absence de mémoire des deux lois exponentielles rend le processus markovien : l'état futur ne dépend que du nombre de clients présents, pas de leurs temps d'attente ou de service déjà écoulés. C'est ce qui permet d'écrire des équations d'équilibre et de calculer la longueur moyenne de la file, le temps d'attente moyen, etc."
+            },
+            {
+              "type": "definition",
+              "term": "Processus de Poisson",
+              "definition": "Un processus de Poisson d'intensité $\\lambda$ est un processus de comptage $N_t$ tel que : $N_0=0$ ; les accroissements sont indépendants ; pour tout $s<t$, $N_t - N_s$ suit une loi de Poisson de paramètre $\\lambda(t-s)$. Les intervalles entre arrivées successives sont i.i.d. suivant $\\mathcal{E}(\\lambda)$.",
+              "example": "Les appels entrants dans un centre d'appels, si ils arrivent au hasard avec une moyenne constante, forment un processus de Poisson."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(N_t = k) = e^{-\\lambda t} \\frac{(\\lambda t)^k}{k!}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la fiabilité. Un composant a une durée de vie $X \\sim \\mathcal{E}(\\lambda)$. Sa fonction de fiabilité est $R(t) = \\mathbb{P}(X > t) = e^{-\\lambda t}$. Le taux de défaillance instantané (hazard rate) est $h(t) = \\frac{f(t)}{R(t)} = \\lambda$, constant. C'est exactement l'absence de mémoire : le composant ne vieillit pas, sa probabilité de casser dans l'instant suivant ne dépend pas de son âge. Pour un système en série de $n$ composants indépendants de même $\\lambda$, la durée de vie du système est le minimum des $n$ durées, qui suit $\\mathcal{E}(n\\lambda)$. En parallèle, c'est le maximum, dont la loi n'est plus exponentielle mais on peut calculer sa fonction de répartition."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Système en série : durée de vie = min",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $X_1, \\dots, X_n$ sont i.i.d. $\\mathcal{E}(\\lambda)$, alors $\\mathbb{P}(\\min X_i > t) = \\prod \\mathbb{P}(X_i > t) = (e^{-\\lambda t})^n = e^{-n\\lambda t}$. Donc $\\min X_i \\sim \\mathcal{E}(n\\lambda)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Système en parallèle : durée de vie = max",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{P}(\\max X_i \\le t) = (1 - e^{-\\lambda t})^n$. La densité s'obtient par dérivation. L'espérance du maximum est $\\frac{1}{\\lambda}\\sum_{k=1}^n \\frac{1}{k}$ (somme harmonique)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "En télécommunications, le modèle de trafic Erlang utilise la loi exponentielle pour la durée des communications. Si les appels arrivent selon un processus de Poisson d'intensité $\\lambda$ et durent en moyenne $1/\\mu$, le nombre de canaux nécessaires pour bloquer moins de $1\\%$ des appels se calcule avec la formule d'Erlang-B : $B(c, \\lambda/\\mu) = \\frac{(\\lambda/\\mu)^c / c!}{\\sum_{k=0}^c (\\lambda/\\mu)^k / k!}$. C'est une application directe où l'absence de mémoire des durées d'appel et des intervalles d'arrivée justifie l'utilisation des probabilités stationnaires d'une chaîne de Markov à temps continu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, soulignons les limites du modèle. L'absence de mémoire implique que la durée résiduelle a la même loi que la durée totale. Dans la réalité, beaucoup de phénomènes vieillissent : une ampoule a plus de chances de griller après $1000$ heures qu'au début. Dans ce cas, la loi de Weibull (avec paramètre de forme $\\neq 1$) est plus adaptée. De même, les arrivées ne sont pas toujours poissonniennes : il peut y avoir des pics périodiques. Le statisticien doit toujours confronter le modèle aux données (test d'adéquation, graphique Q-Q). C'est cette démarche critique qui fait la différence entre un calcul scolaire et une modélisation professionnelle."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer et démontrer la propriété d'absence de mémoire de la loi exponentielle.",
+                "Je sais calculer espérance, variance, quantiles et probabilités conditionnelles pour une loi exponentielle.",
+                "Je sais simuler une variable exponentielle par la méthode de la transformée inverse.",
+                "Je sais modéliser une file d'attente simple $M/M/1$ et en interpréter les paramètres.",
+                "Je sais analyser la fiabilité d'un système en série ou en parallèle avec des composants exponentiels.",
+                "Je connais la formule d'Erlang-B pour le dimensionnement de canaux de communication.",
+                "Je sais identifier les situations où l'absence de mémoire est une hypothèse réaliste ou non."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un centre d'appels, les appels arrivent selon un processus de Poisson d'intensité $30$ par heure. La durée de service suit une loi exponentielle de moyenne $1,5$ minute. Le système est un $M/M/1$. Calculer le taux de charge $\\rho$ et dire si la file est stable. Si elle l'est, donner le nombre moyen de clients dans le système.",
+              "answer": "$\\lambda = 30$ par heure $= 0,5$ par minute. $\\mu = 1/1,5 = 2/3$ par minute. $\\rho = \\lambda/\\mu = 0,5 / (2/3) = 0,75 < 1$, la file est stable. Nombre moyen de clients $L = \\rho/(1-\\rho) = 0,75/0,25 = 3$.",
+              "hint": "Convertis les unités pour avoir $\\lambda$ et $\\mu$ dans la même unité de temps. La stabilité nécessite $\\rho < 1$.",
+              "explanation": "Le modèle $M/M/1$ est stable si $\\rho = \\lambda/\\mu < 1$. Le nombre moyen de clients en régime stationnaire est $L = \\rho/(1-\\rho)$."
+            },
+            {
+              "question": "Un système est composé de $3$ composants en série, chacun ayant une durée de vie exponentielle de paramètre $\\lambda = 0,01$ (en heures). Quelle est la probabilité que le système fonctionne encore après $50$ heures ? Quelle est l'espérance de la durée de vie du système ?",
+              "answer": "Le minimum suit $\\mathcal{E}(3\\lambda) = \\mathcal{E}(0,03)$. $\\mathbb{P}(X_{\\min} > 50) = e^{-0,03 \\times 50} = e^{-1,5} \\approx 0,2231$. Espérance $= 1/(3\\lambda) = 100/3 \\approx 33,33$ heures.",
+              "hint": "La durée de vie du système en série est le minimum des durées de vie. Le minimum de $n$ exponentielles i.i.d. de paramètre $\\lambda$ suit $\\mathcal{E}(n\\lambda)$.",
+              "explanation": "En série, le système tombe en panne dès que le premier composant tombe. Le minimum de variables exponentielles indépendantes est exponentiel de paramètre somme des paramètres."
+            },
+            {
+              "question": "On dispose de $c = 10$ canaux. Le trafic offert est $A = 8$ Erlangs. Calculer la probabilité de blocage $B(10, 8)$ avec la formule d'Erlang-B (on peut utiliser une calculatrice ou un tableur). Interpréter le résultat.",
+              "answer": "$B(10, 8) \\approx 0,121$. Environ $12,1\\%$ des appels sont bloqués. Pour réduire ce taux sous $1\\%$, il faudrait augmenter le nombre de canaux.",
+              "hint": "La formule d'Erlang-B est $B(c,A) = \\frac{A^c/c!}{\\sum_{k=0}^c A^k/k!}$. Calcule les termes pour $c=10, A=8$.",
+              "explanation": "Erlang-B donne la probabilité qu'un arrivant trouve tous les canaux occupés dans un système sans file d'attente (pertes et effacements). C'est une application classique en téléphonie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

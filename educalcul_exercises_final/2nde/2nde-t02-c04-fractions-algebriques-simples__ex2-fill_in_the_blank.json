@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Simplifier",
+  "title": "Simplification de fractions algébriques",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Simplifie la fraction algébrique $\\frac{2x^2y}{4xy^2}$ : {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "\\frac{x}{2y}"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On factorise le numérateur et le dénominateur : $2x^2y = 2 \\cdot x \\cdot x \\cdot y$ et $4xy^2 = 2 \\cdot 2 \\cdot x \\cdot y \\cdot y$. On supprime les facteurs communs $2$, $x$ et $y$. Il reste $\\frac{x}{2y}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Simplifie la fraction algébrique $\\frac{x^2-9}{x^2-6x+9}$ : {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "\\frac{x+3}{x-3}"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le numérateur est une différence de carrés : $x^2-9 = (x-3)(x+3)$. Le dénominateur est un trinôme carré parfait : $x^2-6x+9 = (x-3)^2$. On annule le facteur commun $(x-3)$ (pour $x \\neq 3$) et on obtient $\\frac{x+3}{x-3}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Simplifie la fraction algébrique $\\frac{3a^2b - 6ab^2}{9ab}$ : {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "\\frac{a-2b}{3}"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On factorise le numérateur : $3a^2b - 6ab^2 = 3ab(a - 2b)$. Le dénominateur s'écrit $9ab = 3ab \\cdot 3$. On simplifie par le facteur commun $3ab$ (pour $a \\neq 0, b \\neq 0$) et il reste $\\frac{a-2b}{3}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

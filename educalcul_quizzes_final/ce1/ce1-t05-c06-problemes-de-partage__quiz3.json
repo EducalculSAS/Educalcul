@@ -1,0 +1,247 @@
+{
+  "_status": "done",
+  "_course_id": 113,
+  "_course_code": "ce1-t05-c06-problemes-de-partage",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Interpréter la taille d'une part",
+  "title": "Quiz : Interpréter la taille d'une part (CE1)",
+  "questions": [
+    {
+      "text": "On partage $12$ bonbons équitablement entre $3$ enfants. Combien de bonbons reçoit chaque enfant ?",
+      "options": [
+        "4 bonbons",
+        "9 bonbons",
+        "15 bonbons",
+        "3 bonbons"
+      ],
+      "correctAnswer": "4 bonbons",
+      "explanation": "Pour trouver la taille d'une part, on divise le total ($12$) par le nombre de parts ($3$). $12 \\div 3 = 4$. L'option '9 bonbons' correspond à une soustraction ($12 - 3$), '15 bonbons' à une addition ($12 + 3$) et '3 bonbons' confond le nombre de parts avec la taille d'une part.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Part 1",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Part 2",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Part 3",
+            "value": 4,
+            "tone": "green"
+          }
+        ],
+        "caption": "Partage de 12 en 3 parts égales"
+      }
+    },
+    {
+      "text": "On a $12$ billes. Dans le premier cas, on les partage entre $2$ enfants. Dans le deuxième cas, on les partage entre $4$ enfants. Dans quel cas la part d'un enfant est-elle la plus grande ?",
+      "options": [
+        "Quand on partage entre 2 enfants",
+        "Quand on partage entre 4 enfants",
+        "La part est de la même taille dans les deux cas",
+        "On ne peut pas le savoir"
+      ],
+      "correctAnswer": "Quand on partage entre 2 enfants",
+      "explanation": "Pour un total identique ($12$ billes), plus le nombre de parts est grand, plus chaque part est petite. Partager entre $2$ donne $12 \\div 2 = 6$ billes par enfant. Partager entre $4$ donne $12 \\div 4 = 3$ billes par enfant. $6 > 3$, donc la part est plus grande avec $2$ enfants.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total 12",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "2 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "2 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "4 parts de 3",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "4 parts de 3",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "4 parts de 3",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "4 parts de 3",
+            "value": 3,
+            "tone": "red"
+          }
+        ],
+        "caption": "Comparaison : 2 parts vs 4 parts pour 12"
+      }
+    },
+    {
+      "text": "Léa a $15$ cartes. Elle veut les ranger équitablement dans $3$ pochettes. Combien de cartes mettra-t-elle dans chaque pochette ?",
+      "options": [
+        "5 cartes",
+        "12 cartes",
+        "18 cartes",
+        "3 cartes"
+      ],
+      "correctAnswer": "5 cartes",
+      "explanation": "Il s'agit d'un partage équitable de $15$ objets en $3$ groupes. La division est $15 \\div 3 = 5$. L'erreur '12 cartes' vient de $15 - 3$, '18 cartes' de $15 + 3$, et '3 cartes' confond le nombre de pochettes (le diviseur) avec le résultat (le quotient).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 5,
+        "highlighted": 15,
+        "caption": "15 cartes rangées en 3 lignes de 5"
+      }
+    },
+    {
+      "text": "Il y a $20$ crayons. On veut faire des paquets de $4$ crayons chacun. Combien de paquets pourra-t-on faire ?",
+      "options": [
+        "5 paquets",
+        "16 paquets",
+        "24 paquets",
+        "4 paquets"
+      ],
+      "correctAnswer": "5 paquets",
+      "explanation": "C'est un partage par groupe (division quotitive) : on connaît la taille de la part ($4$) et on cherche le nombre de parts. $20 \\div 4 = 5$. On peut faire $5$ paquets. '16' et '24' sont des erreurs de calcul (soustraction/addition). '4 paquets' confond la taille du paquet avec le nombre de paquets.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total 20",
+            "value": 20,
+            "tone": "blue"
+          },
+          {
+            "label": "Paquet 1",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Paquet 2",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Paquet 3",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Paquet 4",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Paquet 5",
+            "value": 4,
+            "tone": "green"
+          }
+        ],
+        "caption": "20 crayons groupés par 4"
+      }
+    },
+    {
+      "text": "Paul partage $24$ billes entre $4$ copains. Julie partage $24$ billes entre $6$ copains. Laquelle des affirmations est vraie ?",
+      "options": [
+        "La part de Paul est plus grande que celle de Julie",
+        "La part de Julie est plus grande que celle de Paul",
+        "Ils ont la même taille de part",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "La part de Paul est plus grande que celle de Julie",
+      "explanation": "Paul : $24 \\div 4 = 6$ billes par copain. Julie : $24 \\div 6 = 4$ billes par copain. Comme $6 > 4$, la part de Paul est plus grande. À total égal, moins il y a de partageurs, plus la part est grande.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paul : 24 billes",
+            "value": 24,
+            "tone": "blue"
+          },
+          {
+            "label": "4 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "4 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "4 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "4 parts de 6",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Julie : 24 billes",
+            "value": 24,
+            "tone": "blue"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "6 parts de 4",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Comparaison des parts pour 24 billes"
+      }
+    }
+  ]
+}

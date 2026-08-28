@@ -1,0 +1,434 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.759559+00:00",
+  "id": 731,
+  "code": "terminale-generale-expertes-t01-c05",
+  "title": "Argument",
+  "description": "Cours structuré Educalcul : Argument.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Argument",
+    "objectif_global": "Argument",
+    "mini_lecons_imposees": [
+      "Angle.",
+      "Détermination.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Angle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un argument ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on place un nombre complexe non nul dans le plan, on peut tracer le segment qui joint l'origine à ce point. L'angle que ce segment forme avec la demi-droite positive des réels, mesuré dans le sens direct, est ce que l'on appelle l'argument du nombre complexe. Cette notion permet de décrire la direction d'un vecteur dans le plan sans se soucier de sa longueur. Contrairement au module qui donne la distance à l'origine, l'argument renseigne uniquement sur l'orientation. C'est une grandeur angulaire, exprimée en radians, qui peut prendre une infinité de valeurs car ajouter un tour complet, soit $2\\\\pi$, ne change pas la direction. Pour lever cette ambiguïté, on définit l'argument principal, noté $\\\\operatorname{Arg}(z)$, qui est l'unique valeur de l'argument comprise dans un intervalle de longueur $2\\\\pi$, généralement $]-\\\\pi,\\\\pi]$ ou $[0,2\\\\pi[$. Dans la suite de ce cours, nous adopterons la convention $]-\\\\pi,\\\\pi]$, ce qui place l'argument principal entre $-\\\\pi$ (exclus) et $\\\\pi$ (inclus). Imaginez que vous tournez une aiguille autour d'un cadran : chaque position correspond à un argument possible. Le fait d'ajouter $2\\\\pi$ revient à faire un tour complet et à retrouver la même aiguille. C'est pourquoi l'argument est une classe d'équivalence modulo $2\\\\pi$. Le choix de l'intervalle principal n'est qu'une convention commode pour travailler avec un représentant unique. Dans les applications physiques, comme l'étude des oscillations, l'argument principal correspond souvent à la phase d'un signal."
+            },
+            {
+              "type": "definition",
+              "term": "argument",
+              "definition": "L'argument d'un nombre complexe non nul $z$ est l'ensemble des angles $\\\\theta$ tels que $z = |z|(\\\\cos\\\\theta + i\\\\sin\\\\theta)$. On note $\\\\arg(z)$ cet ensemble et $\\\\operatorname{Arg}(z)$ l'unique élément de $\\\\arg(z)$ appartenant à l'intervalle principal choisi.",
+              "example": "Pour $z = 1 + i$, $\\\\arg(z) = \\\\{\\\\frac{\\\\pi}{4} + 2k\\\\pi \\\\mid k \\\\in \\\\mathbb{Z}\\\\}$ et $\\\\operatorname{Arg}(z) = \\\\frac{\\\\pi}{4}$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 1,
+              "im": 1,
+              "caption": "Représentation du nombre complexe $1+i$ et de son argument principal $\\\\frac{\\\\pi}{4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'argument principal et son intervalle"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'argument principal est la valeur unique que l'on retient pour représenter l'argument d'un nombre complexe. En choisissant l'intervalle $]-\\\\pi,\\\\pi]$, on s'assure que tout nombre complexe non nul possède un argument principal bien défini. Cet intervalle est symétrique par rapport à zéro et a une longueur exactement égale à $2\\\\pi$. Si un calcul donne un angle en dehors de cet intervalle, on ajoute ou soustrait un multiple de $2\\\\pi$ pour le ramener dans $]-\\\\pi,\\\\pi]$. Par exemple, un angle de $\\\\frac{3\\\\pi}{2}$ est équivalent à $-\\\\frac{\\\\pi}{2}$ modulo $2\\\\pi$, et c'est cette dernière valeur qui sera l'argument principal. Cette convention simplifie la comparaison des arguments et évite les ambiguïtés dans les formules ultérieures, notamment lors de l'utilisation de la formule d'Euler ou du théorème de De Moivre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle de l'argument principal $]-\\\\pi,\\\\pi]$",
+              "min": -3.1416,
+              "max": 3.1416,
+              "points": [
+                {
+                  "value": 1.5708,
+                  "label": "$\\\\pi/2$"
+                },
+                {
+                  "value": -1.5708,
+                  "label": "$-\\\\pi/2$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales de l'argument"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'argument possède des propriétés algébriques qui en font un outil puissant pour manipuler les nombres complexes. Pour deux nombres complexes non nuls $z_1$ et $z_2$, l'argument de leur produit est la somme de leurs arguments modulo $2\\\\pi$ : $\\\\arg(z_1 z_2) = \\\\arg(z_1) + \\\\arg(z_2) \\\\pmod{2\\\\pi}$. De même, l'argument du quotient est la différence : $\\\\arg(z_1 / z_2) = \\\\arg(z_1) - \\\\arg(z_2) \\\\pmod{2\\\\pi}$. Pour une puissance entière $n$, on a $\\\\arg(z^n) = n\\\\arg(z) \\\\pmod{2\\\\pi}$. Ces règles découlent directement de l'écriture trigonométrique ou exponentielle et permettent de transformer des multiplications en additions d'angles, ce qui est au cœur de nombreuses applications en physique et en traitement du signal."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\arg(z_1 z_2) = \\\\arg(z_1) + \\\\arg(z_2) \\\\pmod{2\\\\pi}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple de calcul d'argument"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre complexe $z = -1 + i$. Son module est $\\\\sqrt{(-1)^2 + 1^2} = \\\\sqrt{2}$. Le point correspondant se trouve dans le deuxième quadrant. L'angle de référence (angle aigu avec l'axe des abscisses) est $\\\\arctan\\\\left(\\\\frac{|1|}{|-1|}\\\\right) = \\\\frac{\\\\pi}{4}$. Comme le point est dans le quadrant II, l'argument principal est $\\\\pi - \\\\frac{\\\\pi}{4} = \\\\frac{3\\\\pi}{4}$. On vérifie que $\\\\frac{3\\\\pi}{4}$ appartient bien à $]-\\\\pi,\\\\pi]$. Ainsi $\\\\operatorname{Arg}(-1+i) = \\\\frac{3\\\\pi}{4}$. Cet exemple illustre la méthode générale : déterminer le quadrant, calculer l'angle de référence, puis ajuster selon le quadrant pour obtenir l'argument principal."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": -1,
+              "im": 1,
+              "caption": "Point $-1+i$ et son argument principal $\\\\frac{3\\\\pi}{4}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous verrons dans la prochaine leçon comment déterminer systématiquement l'argument de tout nombre complexe à l'aide de la fonction arctan et de ses variantes, puis nous explorerons les implications géométriques de cette notion."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la définition de l'argument d'un nombre complexe non nul.",
+              "answer": "L'argument est l'ensemble des angles $\\\\theta$ tels que $z = |z|(\\\\cos\\\\theta + i\\\\sin\\\\theta)$. On note $\\\\arg(z)$ cet ensemble.",
+              "hint": "Rappelez-vous la relation avec le segment joignant l'origine au point.",
+              "explanation": "L'argument correspond à l'angle que forme le vecteur avec l'axe réel positif, modulo $2\\\\pi$."
+            },
+            {
+              "question": "Dans quel intervalle se situe l'argument principal selon la convention adoptée dans ce cours ?",
+              "answer": "L'argument principal appartient à $]-\\\\pi,\\\\pi]$.",
+              "hint": "Pensez à la longueur de l'intervalle.",
+              "explanation": "Par convention, on choisit l'intervalle de longueur $2\\\\pi$ symétrique par rapport à zéro."
+            },
+            {
+              "question": "Si $z_1$ et $z_2$ sont deux nombres complexes non nuls, exprimez $\\\\arg(z_1 z_2)$ en fonction de $\\\\arg(z_1)$ et $\\\\arg(z_2)$.",
+              "answer": "$\\\\arg(z_1 z_2) = \\\\arg(z_1) + \\\\arg(z_2) \\\\pmod{2\\\\pi}$.",
+              "hint": "Utilisez la propriété de l'argument d'un produit.",
+              "explanation": "L'argument d'un produit est la somme des arguments modulo $2\\\\pi$."
+            }
+          ]
+        },
+        {
+          "title": "Détermination.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déterminer l'argument à partir des coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver l'argument principal d'un nombre complexe $z = x + iy$ avec $(x,y) \\\\neq (0,0)$, on procède par étapes successives. La première consiste à calculer le module $|z| = \\\\sqrt{x^2 + y^2}$, qui permet de normaliser les coordonnées. Ensuite, on détermine l'angle de référence $\\\\alpha = \\\\arctan\\\\left(\\\\frac{|y|}{|x|}\\\\right)$, qui est toujours un angle aigu entre $0$ et $\\\\frac{\\\\pi}{2}$. La troisième étape, cruciale, est d'identifier le quadrant dans lequel se trouve le point $(x,y)$ pour ajuster $\\\\alpha$ et obtenir l'argument principal $\\\\theta$ dans $]-\\\\pi,\\\\pi]$. Si $x>0$ et $y\\\\ge0$ (quadrant I), $\\\\theta = \\\\alpha$. Si $x<0$ (quadrants II et III), $\\\\theta = \\\\pi - \\\\alpha$ pour $y\\\\ge0$ et $\\\\theta = -\\\\pi + \\\\alpha$ pour $y<0$. Si $x>0$ et $y<0$ (quadrant IV), $\\\\theta = -\\\\alpha$. Cette procédure garantit de trouver l'unique argument principal sans ambiguïté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $|z| = \\\\sqrt{x^2 + y^2}$. Cette distance sert à vérifier que le point n'est pas l'origine et à normaliser les coordonnées pour obtenir le cosinus et le sinus de l'argument."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Angle de référence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\\\alpha = \\\\arctan\\\\left(\\\\frac{|y|}{|x|}\\\\right)$. Cet angle aigu est la même pour les quatre quadrants et ne dépend que des valeurs absolues des coordonnées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajuster selon le quadrant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez le quadrant du point $(x,y)$ et appliquez la règle correspondante : Quadrant I ($x>0,y\\\\ge0$) : $\\\\theta = \\\\alpha$ ; Quadrant II ($x<0,y\\\\ge0$) : $\\\\theta = \\\\pi - \\\\alpha$ ; Quadrant III ($x<0,y<0$) : $\\\\theta = -\\\\pi + \\\\alpha$ ; Quadrant IV ($x>0,y<0$) : $\\\\theta = -\\\\alpha$. Le résultat est l'argument principal."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": -2,
+              "im": 3,
+              "caption": "Exemple dans le quadrant II : $z = -2 + 3i$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fonction atan2 et l'argument principal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreux langages de programmation et sur les calculatrices avancées, la fonction $\\\\operatorname{atan2}(y,x)$ renvoie directement l'argument principal dans $]-\\\\pi,\\\\pi]$ en tenant compte des signes de $x$ et $y$. Elle évite ainsi la discussion de cas fastidieuse. Mathématiquement, $\\\\operatorname{atan2}(y,x)$ est définie par : si $x>0$, $\\\\operatorname{atan2}(y,x) = \\\\arctan(y/x)$ ; si $x<0$ et $y\\\\ge0$, $\\\\operatorname{atan2}(y,x) = \\\\arctan(y/x) + \\\\pi$ ; si $x<0$ et $y<0$, $\\\\operatorname{atan2}(y,x) = \\\\arctan(y/x) - \\\\pi$ ; si $x=0$ et $y>0$, $\\\\operatorname{atan2}(y,x) = \\\\pi/2$ ; si $x=0$ et $y<0$, $\\\\operatorname{atan2}(y,x) = -\\\\pi/2$. Cette fonction est donc l'outil idéal pour déterminer l'argument principal de manière algorithmique et sans erreur de quadrant."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\operatorname{atan2}(y,x) = \\\\begin{cases} \\\\arctan(y/x) & x>0 \\\\\\\\ \\\\arctan(y/x) + \\\\pi & x<0, y\\\\ge0 \\\\\\\\ \\\\arctan(y/x) - \\\\pi & x<0, y<0 \\\\\\\\ \\\\pi/2 & x=0, y>0 \\\\\\\\ -\\\\pi/2 & x=0, y<0 \\\\end{cases}"
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention au quadrant",
+              "paragraphs": [
+                "L'utilisation de $\\\\arctan(y/x)$ seule ne suffit pas car elle ne distingue pas les quadrants I et III, ni II et IV. Vérifiez toujours les signes de $x$ et $y$ ou utilisez $\\\\operatorname{atan2}$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples de détermination d'argument"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode à quelques nombres complexes. Pour $z_1 = 2 - 2i$, le module est $\\\\sqrt{8}=2\\\\sqrt{2}$, l'angle de référence est $\\\\arctan(1) = \\\\pi/4$, le point est dans le quadrant IV, donc $\\\\operatorname{Arg}(z_1) = -\\\\pi/4$. Pour $z_2 = -\\\\sqrt{3} + i$, le module est $2$, l'angle de référence est $\\\\arctan(1/\\\\sqrt{3}) = \\\\pi/6$, quadrant II, donc $\\\\operatorname{Arg}(z_2) = \\\\pi - \\\\pi/6 = 5\\\\pi/6$. Pour $z_3 = -1 - i\\\\sqrt{3}$, module $2$, angle de référence $\\\\arctan(\\\\sqrt{3}) = \\\\pi/3$, quadrant III, donc $\\\\operatorname{Arg}(z_3) = -\\\\pi + \\\\pi/3 = -2\\\\pi/3$. Ces exemples montrent la régularité de la procédure et l'importance de bien identifier le quadrant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arguments principaux des exemples : $-\\\\pi/4$, $5\\\\pi/6$, $-2\\\\pi/3$",
+              "min": -3.1416,
+              "max": 3.1416,
+              "points": [
+                {
+                  "value": -0.7854,
+                  "label": "$-\\\\pi/4$"
+                },
+                {
+                  "value": 2.618,
+                  "label": "$5\\\\pi/6$"
+                },
+                {
+                  "value": -2.094,
+                  "label": "$-2\\\\pi/3$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons déterminer l'argument, nous allons explorer sa signification géométrique profonde et son rôle central dans la forme exponentielle des nombres complexes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la première étape pour déterminer l'argument d'un nombre complexe $z = x + iy$ ?",
+              "answer": "Calculer le module $|z| = \\\\sqrt{x^2 + y^2}$.",
+              "hint": "Le module est la distance à l'origine.",
+              "explanation": "Le module sert à normaliser les coordonnées pour obtenir le cosinus et le sinus de l'argument."
+            },
+            {
+              "question": "Comment la fonction $\\\\operatorname{atan2}(y,x)$ permet-elle d'obtenir directement l'argument principal ?",
+              "answer": "Elle retourne l'angle dans $]-\\\\pi,\\\\pi]$ en tenant compte du quadrant.",
+              "hint": "Rappelez-vous la définition de atan2.",
+              "explanation": "atan2 évite les ambiguïtés de l'arctan usuel en examinant les signes de x et y."
+            },
+            {
+              "question": "Déterminez l'argument principal de $z = -\\\\sqrt{3} + i$.",
+              "answer": "$\\\\frac{5\\\\pi}{6}$.",
+              "hint": "Identifiez le quadrant et utilisez les valeurs remarquables.",
+              "explanation": "Le point se trouve dans le deuxième quadrant, son angle de référence est $\\\\pi/6$, donc l'argument principal est $\\\\pi - \\\\pi/6 = 5\\\\pi/6$."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique de l'argument"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'argument d'un nombre complexe n'est pas seulement un angle abstrait : il décrit une rotation dans le plan. Multiplier un nombre complexe $z$ par un complexe de module $1$, c'est-à-dire par $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$, effectue une rotation d'angle $\\\\theta$ autour de l'origine sans changer le module de $z$. Cette propriété est au cœur de nombreuses applications, de la représentation des oscillations en physique à la synthèse d'images en informatique graphique. Si l'on écrit $z = |z| e^{i\\\\operatorname{Arg}(z)}$, le module $|z|$ donne l'échelle (homotéthie) et l'argument $\\\\operatorname{Arg}(z)$ donne la rotation. Ainsi, tout nombre complexe non nul peut être vu comme la composition d'une homothéie de rapport $|z|$ et d'une rotation d'angle $\\\\operatorname{Arg}(z)$. Cette décomposition est unique dès que l'on fixe l'intervalle de l'argument principal."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $z = x+iy$, calculez $r = |z| = \\\\sqrt{x^2+y^2}$. Ce nombre réel positif est le facteur d'échelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer l'argument principal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la méthode de la leçon précédente (ou $\\\\operatorname{atan2}$) pour trouver $\\\\theta = \\\\operatorname{Arg}(z) \\\\in ]-\\\\pi,\\\\pi]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la forme exponentielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Alors $z = r e^{i\\\\theta}$. Cette écriture est appelée forme exponentielle ou forme polaire exponentielle. Elle condense toute l'information géométrique en deux nombres réels : $r$ et $\\\\theta$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 0.5,
+              "im": 0.8660254,
+              "caption": "Point sur le cercle unité d'argument $\\\\pi/3$ : $e^{i\\\\pi/3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Formule d'Euler et forme exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule d'Euler, $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$, établit un lien fondamental entre l'analyse (exponentielle) et la géométrie (trigonométrie). Elle permet de transformer toute expression trigonométrique en expression exponentielle, ce qui simplifie considérablement les calculs de produits, quotients, puissances et racines. Par exemple, $e^{i\\\\alpha} e^{i\\\\beta} = e^{i(\\\\alpha+\\\\\\beta)}$ traduit immédiatement la propriété additive des arguments. De même, $(e^{i\\\\theta})^n = e^{i n\\\\\\theta}$ donne le théorème de De Moivre sous une forme élégante. Cette formule est également la porte d'entrée vers l'étude des séries de Fourier, des équations différentielles et de la transformée de Fourier, outils indispensables en mathématiques appliquées et en ingénierie."
+            },
+            {
+              "type": "display_math",
+              "latex": "e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : puissances et racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce à la forme exponentielle, calculer la $n$-ième puissance d'un nombre complexe devient trivial : $z^n = r^n e^{i n\\\\theta}$. En revanche, l'extraction de la $n$-ième racine introduit une multiplicité : un nombre complexe non nul a exactement $n$ racines $n$-ièmes distinctes. Si $z = r e^{i\\\\theta}$ avec $\\\\theta = \\\\operatorname{Arg}(z)$, alors les racines sont $\\\\sqrt[n]{r} \\\\, e^{i(\\\\theta + 2k\\\\pi)/n}$ pour $k = 0, 1, \\\\dots, n-1$. Ces racines sont les sommets d'un polygone régulier à $n$ côtés inscrit dans le cercle de rayon $\\\\sqrt[n]{r}$, centré à l'origine. Leurs arguments sont répartis uniformément sur l'intervalle de longueur $2\\\\pi$, chacun décalé de $2\\\\pi/n$. Cette structure géométrique est la clé de la résolution des équations polynomiales et de la construction des polygones réguliers à la règle et au compas."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arguments des 4 racines quatrièmes de $1$ : $0$, $\\\\pi/2$, $\\\\pi$, $-\\\\pi/2$ (ou $3\\\\pi/2$).",
+              "min": -3.1416,
+              "max": 3.1416,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "$0$"
+                },
+                {
+                  "value": 1.5708,
+                  "label": "$\\\\pi/2$"
+                },
+                {
+                  "value": 3.1416,
+                  "label": "$\\\\pi$"
+                },
+                {
+                  "value": -1.5708,
+                  "label": "$-\\\\pi/2$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'argument d'un nombre complexe.",
+                "Je sais déterminer l'argument principal d'un nombre complexe donné.",
+                "Je connais les propriétés de l'argument pour le produit, le quotient et la puissance.",
+                "Je sais interpréter géométriquement la multiplication par un complexe de module 1.",
+                "Je sais utiliser la formule d'Euler pour passer de la forme cartésienne à la forme exponentielle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Que se passe-t-il géométriquement lorsqu'on multiplie un nombre complexe par $e^{i\\\\theta}$ ?",
+              "answer": "Cela effectue une rotation d'angle $\\\\theta$ autour de l'origine sans changer le module.",
+              "hint": "Rappelez-vous la forme exponentielle.",
+              "explanation": "La multiplication par un complexe de module 1 correspond à une rotation."
+            },
+            {
+              "question": "Écrivez la formule d'Euler reliant l'exponentielle complexe aux fonctions trigonométriques.",
+              "answer": "$e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$.",
+              "hint": "C'est la définition de l'exponentielle complexe.",
+              "explanation": "Cette formule est le pont entre l'analyse et la géométrie."
+            },
+            {
+              "question": "Combien de racines $n$-ièmes distinctes a un nombre complexe non nul ?",
+              "answer": "Exactement $n$ racines distinctes.",
+              "hint": "Pensez à la division de l'argument par $n$.",
+              "explanation": "Les arguments des racines sont $\\\\frac{\\\\operatorname{Arg}(z) + 2k\\\\pi}{n}$ pour $k=0,\\\\dots,n-1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

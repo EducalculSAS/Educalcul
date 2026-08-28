@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Conditions",
+  "title": "Quiz : Conditions - Application",
+  "questions": [
+    {
+      "text": "Si le nombre est pair, afficher \"Pair\", sinon afficher \"Impair\". Que fait le programme pour le nombre 7 ?",
+      "options": [
+        "Affiche Pair",
+        "Affiche Impair",
+        "Ne fait rien",
+        "Affiche 7"
+      ],
+      "correctAnswer": "Affiche Impair",
+      "explanation": "Le nombre 7 n'est pas divisible par 2, donc la condition « pair » est fausse. Le programme exécute la branche « sinon » et affiche \"Impair\". Les autres options correspondent à une mauvaise évaluation de la parité ou à une absence d'action.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le bloc suivant, si $x > 10$ alors $y = 20$ sinon $y = 5$. Quelle est la valeur de $y$ quand $x = 12$ ?",
+      "options": [
+        "20",
+        "5",
+        "12",
+        "0"
+      ],
+      "correctAnswer": "20",
+      "explanation": "La condition $x > 10$ est vraie pour $x = 12$, donc l'instruction $y = 20$ est exécutée. La valeur 5 correspond au cas où la condition serait fausse, 12 et 0 n'ont aucun lien avec l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a > 5$ alors (si $b < 3$ alors $c = 1$ sinon $c = 2$) sinon $c = 3$. Pour $a = 6$ et $b = 4$, quelle est la valeur de $c$ ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "La première condition $a > 5$ est vraie (6 > 5), on entre dans le bloc interne. La seconde condition $b < 3$ est fausse (4 n'est pas < 3), donc on exécute le « sinon » interne qui affecte $c = 2$. Les valeurs 1 et 3 correspondent aux autres branches non prises, 4 n'est jamais assignée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme répète : tant que $n < 5$, afficher $n$ et augmenter $n$ de 1. Si $n$ commence à 2, quels nombres sont affichés ?",
+      "options": [
+        "2 3 4",
+        "2 3 4 5",
+        "3 4 5",
+        "1 2 3 4"
+      ],
+      "correctAnswer": "2 3 4",
+      "explanation": "La boucle affiche la valeur actuelle de $n$ tant que $n < 5$. Début $n=2$ : affiche 2, $n=3$ ; affiche 3, $n=4$ ; affiche 4, $n=5$. À $n=5$ la condition $n < 5$ devient fausse, la boucle s'arrête. Donc les nombres affichés sont 2, 3, 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme doit afficher \"Grand\" si $age \\ge 18$ sinon \"Petit\". Le code écrit : si $age > 18$ alors \"Grand\" sinon \"Petit\". Pour $age = 18$, que affiche le programme ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "Erreur",
+        "Rien"
+      ],
+      "correctAnswer": "Petit",
+      "explanation": "La condition programmée est $age > 18$, qui est fausse pour $age = 18$ (18 n'est pas strictement supérieur à 18). Le programme prend donc la branche « sinon » et affiche \"Petit\". La spécification voulait $age \\ge 18$, mais le code utilise >, d'où l'erreur logique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire axes",
+  "title": "Algorithmes pour lire les axes d'un graphique à barres",
+  "blocks": [
+    {
+      "title": "Lire une valeur sur l'axe vertical",
+      "content": "Voici un graphique à barres montrant le nombre de livres lus par les élèves de CE2 chaque jour de la semaine. Écris un algorithme sous forme d'instructions simples pour trouver le nombre de livres lus le mardi.",
+      "correctAnswer": "1. Regarder l'axe horizontal (axe des abscisses) et repérer la barre au-dessus de 'Mardi'.\\n2. Suivre le haut de cette barre vers la gauche jusqu'à l'axe vertical (axe des ordonnées).\\n3. Lire le nombre indiqué sur l'axe vertical à cette hauteur.\\n4. Afficher ce nombre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour lire une valeur sur un graphique à barres, on part de la catégorie sur l'axe horizontal, on monte jusqu'au sommet de la barre correspondante, puis on va horizontalement vers l'axe vertical pour lire la quantité. Ici, l'algorithme décrit ces trois étapes de repérage et de lecture.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeudi",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Vendredi",
+            "value": 7,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Trouver la valeur maximale",
+      "content": "En te servant du même graphique, écris un algorithme qui permet de trouver le jour où les élèves ont lu le plus grand nombre de livres. Tu pourras utiliser une variable 'max' pour mémoriser la plus grande valeur trouvée et une variable 'jour_max' pour le nom du jour.",
+      "correctAnswer": "max = 0\\njour_max = ''\\nPour chaque jour dans [Lundi, Mardi, Mercredi, Jeudi, Vendredi] :\\n    valeur = lire_hauteur_barre(jour)\\n    Si valeur > max :\\n        max = valeur\\n        jour_max = jour\\nAfficher 'Le jour avec le plus de livres est', jour_max, 'avec', max, 'livres.'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme parcourt toutes les barres (boucle 'Pour chaque'). Pour chaque jour, il lit la hauteur de la barre (comme dans l'exercice précédent). Il compare cette valeur au maximum actuel stocké dans 'max'. Si elle est plus grande, il met à jour 'max' et retient le nom du jour dans 'jour_max'. À la fin, il affiche le résultat. Sur le graphique, le maximum est $8$ le mardi.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Calculer une différence entre deux valeurs",
+      "content": "Écris un algorithme pour calculer combien de livres de plus ont été lus le mardi par rapport au mercredi. L'algorithme doit lire les deux valeurs sur l'axe vertical, faire la soustraction et afficher le résultat.",
+      "correctAnswer": "valeur_mardi = lire_hauteur_barre('Mardi')\\nvaleur_mercredi = lire_hauteur_barre('Mercredi')\\ndifference = valeur_mardi - valeur_mercredi\\nAfficher 'Il y a', difference, 'livres de plus mardi que mercredi.'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire la valeur pour 'Mardi' ($8$ livres) et la valeur pour 'Mercredi' ($3$ livres) en utilisant la méthode de lecture de l'axe vertical. Il stocke ces nombres dans des variables. Il effectue ensuite la soustraction $8 - 3 = 5$ et affiche la différence. Cela montre comment utiliser les lectures d'axes pour faire un calcul.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

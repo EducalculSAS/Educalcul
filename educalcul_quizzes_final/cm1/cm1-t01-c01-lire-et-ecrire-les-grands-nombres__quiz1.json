@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 211,
+  "_course_code": "cm1-t01-c01-lire-et-ecrire-les-grands-nombres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Classes milliers / millions selon attendus",
+  "title": "Quiz : Classes des milliers et des millions (CM1)",
+  "questions": [
+    {
+      "text": "Dans le nombre $452\\ 318$, dans quelle classe se trouve le chiffre $5$ ?",
+      "options": [
+        "Classe des unités",
+        "Classe des milliers",
+        "Classe des millions",
+        "Classe des centaines"
+      ],
+      "correctAnswer": "Classe des milliers",
+      "explanation": "Le nombre $452\\ 318$ se décompose ainsi : $452$ milliers et $318$ unités. En partant de la droite, les trois premiers chiffres ($318$) forment la classe des unités. Les trois suivants ($452$) forment la classe des milliers. Le chiffre $5$ est le chiffre des dizaines de milliers, il appartient donc à la classe des milliers. La classe des centaines n'existe pas (les centaines sont à l'intérieur d'une classe).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 452318,
+        "caption": "Tableau de position pour 452 318"
+      }
+    },
+    {
+      "text": "Comment s'écrit en chiffres le nombre : six cent quatre-vingt-douze mille trois cent cinq ?",
+      "options": [
+        "$692\\ 305$",
+        "$6\\ 923\\ 05$",
+        "$692\\ 35$",
+        "$6\\ 92\\ 305$"
+      ],
+      "correctAnswer": "$692\\ 305$",
+      "explanation": "Six cent quatre-vingt-douze mille s'écrit $692\\ 000$ (attention au $92$ : quatre-vingt-douze). Trois cent cinq s'écrit $305$ (ne pas oublier le $0$ des dizaines). En les regroupant par classes de trois chiffres en partant de la droite, on obtient $692\\ 305$. L'option B place mal l'espace, l'option C oublie le $0$ des dizaines d'unités, l'option D sépare mal les classes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $3\\ 405\\ 200$ est décomposé correctement dans laquelle de ces propositions ?",
+      "options": [
+        "3 millions, 405 milliers, 200 unités",
+        "34 millions, 5 milliers, 200 unités",
+        "3 millions, 40 milliers, 5200 unités",
+        "3405 milliers, 200 unités"
+      ],
+      "correctAnswer": "3 millions, 405 milliers, 200 unités",
+      "explanation": "On sépare le nombre en classes de trois chiffres en partant de la droite : $3\\ 405\\ 200$. La classe de gauche est celle des millions : $3$ millions. La classe du milieu est celle des milliers : $405$ milliers. La classe de droite est celle des unités : $200$ unités. L'option B lit mal le nombre des millions ($34$ au lieu de $3$). L'option C mélange les classes. L'option D donne le nombre total de milliers mais ne respecte pas la décomposition en classes (millions, milliers, unités).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le nombre qui s'écrit : deux millions cent trois mille quarante ?",
+      "options": [
+        "$2\\ 103\\ 040$",
+        "$2\\ 130\\ 040$",
+        "$2\\ 103\\ 40$",
+        "$2\\ 100\\ 340$"
+      ],
+      "correctAnswer": "$2\\ 103\\ 040$",
+      "explanation": "Deux millions = $2\\ 000\\ 000$. Cent trois mille = $103\\ 000$ (attention : cent trois s'écrit $103$, pas $130$ ni $100\\ 3$). Quarante = $40$ (il faut un $0$ pour les unités). En additionnant : $2\\ 000\\ 000 + 103\\ 000 + 40 = 2\\ 103\\ 040$. L'option B confond cent trois et cent trente. L'option C n'a pas mis le $0$ des centaines d'unités (format incorrect à 7 chiffres au lieu de groupes de 3). L'option D décompose mal les milliers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de milliers dans le nombre $1\\ 250\\ 000$ ?",
+      "options": [
+        "1 250 milliers",
+        "1 250 000 milliers",
+        "125 milliers",
+        "250 milliers"
+      ],
+      "correctAnswer": "1 250 milliers",
+      "explanation": "Pour trouver le nombre de milliers, on peut supprimer les trois derniers chiffres (la classe des unités) ou diviser par $1\\ 000$. $1\\ 250\\ 000 \\div 1\\ 000 = 1\\ 250$. Il y a donc $1\\ 250$ milliers dans ce nombre. On peut aussi le voir sur le tableau de position : la partie 'milliers et millions' forme le nombre $1\\ 250$. L'option B correspond au nombre d'unités. L'option C correspond au nombre de dizaines de milliers. L'option D ne prend que la classe des milliers simple sans les millions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

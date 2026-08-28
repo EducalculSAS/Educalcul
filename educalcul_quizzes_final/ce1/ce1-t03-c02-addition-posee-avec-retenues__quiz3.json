@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 89,
+  "_course_code": "ce1-t03-c02-addition-posee-avec-retenues",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Vérifier le résultat",
+  "title": "Quiz : Vérifier le résultat d'une addition posée",
+  "questions": [
+    {
+      "text": "Pour vérifier le résultat d'une addition, quelle opération inverse utilise-t-on ?",
+      "options": [
+        "La soustraction",
+        "La multiplication",
+        "La division",
+        "Une autre addition"
+      ],
+      "correctAnswer": "La soustraction",
+      "explanation": "L'opération inverse de l'addition est la soustraction. Pour vérifier $a + b = c$, on calcule $c - b$ et on doit retrouver $a$ (ou $c - a$ pour retrouver $b$). La multiplication et la division ne permettent pas de vérifier directement une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a calculé $25 + 38 = 63$. Quelle soustraction permet de vérifier ce résultat ?",
+      "options": [
+        "$63 - 38 = 25$",
+        "$63 + 38 = 101$",
+        "$38 - 25 = 13$",
+        "$63 - 25 = 38$"
+      ],
+      "correctAnswer": "$63 - 38 = 25$",
+      "explanation": "Pour vérifier $25 + 38 = 63$, on soustrait l'un des termes au total. $63 - 38 = 25$ redonne le premier terme. L'option $63 - 25 = 38$ est aussi une vérification possible, mais parmi les choix proposés, seule la première correspond à une soustraction correcte qui valide le calcul (les autres sont des additions ou donnent de mauvais résultats).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier rapidement si le résultat $83$ pour l'addition $47 + 36$ est plausible, on arrondit les nombres à la dizaine la plus proche. Que peut-on conclure ?",
+      "options": [
+        "Le résultat est exact car $50 + 40 = 90$.",
+        "Le résultat est faux car $50 + 40 = 90$.",
+        "Le résultat est plausible car $50 + 40 = 90$ est proche de $83$.",
+        "On ne peut pas vérifier par estimation."
+      ],
+      "correctAnswer": "Le résultat est plausible car $50 + 40 = 90$ est proche de $83$.",
+      "explanation": "En arrondissant $47$ à $50$ et $36$ à $40$, on estime la somme à $90$. Le résultat trouvé $83$ est proche de $90$, ce qui indique qu'il est plausible (et il est d'ailleurs exact). L'estimation ne prouve pas l'exactitude au chiffre près, mais elle permet de détecter une grosse erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'addition posée ci-contre. Le résultat affiché est $65$. Comment s'apercevoir qu'il y a une erreur ?",
+      "options": [
+        "En refaisant l'addition de gauche à droite.",
+        "En faisant $65 - 29$ et en trouvant $36$.",
+        "En faisant $65 - 29$ et en trouvant $46$.",
+        "En arrondissant $46$ à $50$ et $29$ à $30$."
+      ],
+      "correctAnswer": "En faisant $65 - 29$ et en trouvant $36$.",
+      "explanation": "L'addition exacte est $46 + 29 = 75$ (retenue de $1$ sur les dizaines oubliée dans le résultat $65$). Pour vérifier, on soustrait un terme au total trouvé : $65 - 29 = 36$. Comme on ne retrouve pas l'autre terme ($46$), on prouve que le résultat $65$ est faux. L'estimation ($50+30=80$) montre aussi que $65$ est trop petit, mais la soustraction est la preuve formelle.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "46",
+          "29"
+        ],
+        "result": "65",
+        "carries": [
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Lucas a $48$ billes. Il en gagne $27$ de plus. Il compte son total et trouve $75$ billes. Quelle soustraction lui permet de vérifier son compte ?",
+      "options": [
+        "$75 + 27 = 102$",
+        "$75 - 48 = 27$",
+        "$48 - 27 = 21$",
+        "$75 + 48 = 123$"
+      ],
+      "correctAnswer": "$75 - 48 = 27$",
+      "explanation": "Le total est $75$. Pour vérifier, on soustrait le nombre de départ ($48$) au total : $75 - 48 = 27$. On retrouve bien le nombre de billes gagnées. Les autres options sont des additions ou des soustractions qui ne correspondent pas à la vérification du problème.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

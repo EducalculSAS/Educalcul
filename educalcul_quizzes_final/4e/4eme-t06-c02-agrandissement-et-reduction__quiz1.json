@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 446,
+  "_course_code": "4eme-t06-c02-agrandissement-et-reduction",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Rapport",
+  "title": "Quiz : Le rapport d'une transformation",
+  "questions": [
+    {
+      "text": "Une figure initiale est transformée par un agrandissement de rapport $k = 3$. Quelle affirmation est vraie concernant les longueurs de la figure image par rapport à la figure initiale ?",
+      "options": [
+        "Elles sont multipliées par $3$",
+        "Elles sont divisées par $3$",
+        "Elles sont augmentées de $3$ unités",
+        "Elles sont multipliées par $\\frac{1}{3}$"
+      ],
+      "correctAnswer": "Elles sont multipliées par $3$",
+      "explanation": "Le rapport $k$ d'un agrandissement ou d'une réduction est le coefficient multiplicatif qui relie les longueurs de l'image aux longueurs de la figure initiale. Si $k = 3$, c'est un agrandissement : toute longueur de l'image vaut $3$ fois la longueur correspondante de l'initiale. L'option 'divisées par 3' correspond à $k = 1/3$. L'option 'augmentées de 3 unités' confond addition et multiplication (erreur additive).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle $ABC$ a un côté $AB = 5\\,\\text{cm}$. Il est transformé par une réduction de rapport $k = 0,4$. Quelle est la longueur de l'image $A'B'$ de ce côté ?",
+      "options": [
+        "$2\\,\\text{cm}$",
+        "$12,5\\,\\text{cm}$",
+        "$5,4\\,\\text{cm}$",
+        "$1,25\\,\\text{cm}$"
+      ],
+      "correctAnswer": "$2\\,\\text{cm}$",
+      "explanation": "Pour trouver la longueur image, on multiplie la longueur initiale par le rapport $k$. Calcul : $5 \\times 0,4 = 2$. L'option $12,5\\,\\text{cm}$ correspond à une division par $0,4$ (inverse du rapport). L'option $5,4\\,\\text{cm}$ correspond à une addition ($5 + 0,4$), erreur additive classique. L'option $1,25\\,\\text{cm}$ correspond à $5 \\times 0,25$ (mauvaise lecture du chiffre des dixièmes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle de longueur $12\\,\\text{cm}$ et de largeur $8\\,\\text{cm}$ est l'image d'un rectangle initial par un agrandissement de rapport $k = 1,5$. Quelles sont les dimensions du rectangle initial ?",
+      "options": [
+        "Longueur $8\\,\\text{cm}$ et largeur $5,\\overline{3}\\,\\text{cm}$",
+        "Longueur $18\\,\\text{cm}$ et largeur $12\\,\\text{cm}$",
+        "Longueur $10,5\\,\\text{cm}$ et largeur $6,5\\,\\text{cm}$",
+        "Longueur $24\\,\\text{cm}$ et largeur $16\\,\\text{cm}$"
+      ],
+      "correctAnswer": "Longueur $8\\,\\text{cm}$ et largeur $5,\\overline{3}\\,\\text{cm}$",
+      "explanation": "L'image est connue, on cherche l'initiale. Il faut diviser les dimensions de l'image par le rapport $k$. Longueur initiale : $12 \\div 1,5 = 8$. Largeur initiale : $8 \\div 1,5 = 16/3 = 5,\\overline{3}$. L'option $18$ et $12$ correspond à une multiplication par $1,5$ (on a refait l'agrandissement). L'option $10,5$ et $6,5$ correspond à une soustraction de $1,5$ (erreur additive). L'option $24$ et $16$ correspond à une multiplication par $2$ (confusion possible avec $k=2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure $F_1$ est transformée en figure $F_2$ par un agrandissement de rapport $k = 2,5$. Quelle est la valeur du rapport des aires $\\frac{\\text{Aire}(F_2)}{\\text{Aire}(F_1)}$ ?",
+      "options": [
+        "$6,25$",
+        "$5$",
+        "$2,5$",
+        "$0,4$"
+      ],
+      "correctAnswer": "$6,25$",
+      "explanation": "Le rapport des aires est le carré du rapport des longueurs ($k^2$). Ici $k = 2,5$, donc $k^2 = 2,5 \\times 2,5 = 6,25$. L'option $5$ correspond à $2 \\times k$ (erreur additive ou confusion périmètre/aire). L'option $2,5$ confond le rapport des longueurs et le rapport des aires. L'option $0,4$ est l'inverse du rapport des longueurs ($1/k$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cube de volume $27\\,\\text{cm}^3$ est transformé par une réduction de rapport $k = \\frac{2}{3}$. Quel est le volume du cube image ?",
+      "options": [
+        "$8\\,\\text{cm}^3$",
+        "$18\\,\\text{cm}^3$",
+        "$40,5\\,\\text{cm}^3$",
+        "$12\\,\\text{cm}^3$"
+      ],
+      "correctAnswer": "$8\\,\\text{cm}^3$",
+      "explanation": "Le rapport des volumes est le cube du rapport des longueurs ($k^3$). Ici $k = 2/3$, donc $k^3 = (2/3)^3 = 8/27$. Volume image = Volume initial $\\times k^3 = 27 \\times 8/27 = 8$. On peut aussi calculer le côté initial ($3\\,\\text{cm}$), le côté image ($3 \\times 2/3 = 2\\,\\text{cm}$) et le volume image ($2^3 = 8$). L'option $18$ correspond à $27 \\times 2/3$ (application du rapport $k$ au lieu de $k^3$). L'option $40,5$ correspond à $27 \\times 1,5$ (utilisation de l'inverse $3/2$). L'option $12$ ne correspond à aucune règle standard simple.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

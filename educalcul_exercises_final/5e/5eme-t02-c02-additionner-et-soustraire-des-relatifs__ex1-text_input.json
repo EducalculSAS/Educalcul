@@ -1,0 +1,103 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 385,
+  "_course_code": "5eme-t02-c02-additionner-et-soustraire-des-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Sens déplacement",
+  "title": "Sens d'un déplacement sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Déplacement vers la droite",
+      "content": "Sur une droite graduée, le point A se trouve à l'abscisse $-3$. On effectue un déplacement de $5$ unités vers la droite. Quelle est l'abscisse du point d'arrivée ?",
+      "correctAnswer": "2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un déplacement vers la droite correspond à une addition. On part de $-3$ et on ajoute $5$ : $-3 + 5 = 2$. L'abscisse d'arrivée est $2$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Départ à -3, déplacement de 5 vers la droite",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          {
+            "start": -3,
+            "end": 2,
+            "label": "+5"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Vecteur displacement",
+      "content": "Un déplacement commence à l'abscisse $4$ et se termine à l'abscisse $-2$. Quel est le vecteur de ce déplacement (sens et nombre d'unités) ? Réponds sous la forme d'un nombre relatif.",
+      "correctAnswer": "-6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le vecteur déplacement est la différence entre l'abscisse d'arrivée et l'abscisse de départ : $-2 - 4 = -6$. Le signe négatif indique un déplacement vers la gauche de $6$ unités.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Déplacement de 4 vers -2",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": 4,
+            "label": "Départ"
+          },
+          {
+            "value": -2,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 4,
+            "end": -2,
+            "label": "-6"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Recherche du point de départ",
+      "content": "Après un déplacement de $7$ unités vers la gauche, on arrive à l'abscisse $-1$. Quelle était l'abscisse de départ ?",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un déplacement vers la gauche correspond à une soustraction. Soit $x$ l'abscisse de départ. On a $x - 7 = -1$. En ajoutant $7$ des deux côtés, on trouve $x = -1 + 7 = 6$. Le départ était à l'abscisse $6$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Arrivée à -1 après déplacement de 7 vers la gauche",
+        "min": -2,
+        "max": 8,
+        "points": [
+          {
+            "value": -1,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 6,
+            "end": -1,
+            "label": "-7"
+          }
+        ]
+      }
+    }
+  ]
+}

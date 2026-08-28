@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Approfondissement : a et b",
+  "title": "Algorithme et fonction affine : coefficients a et b",
+  "blocks": [
+    {
+      "title": "Algorithme de calcul d'une fonction affine",
+      "content": "Écrire un algorithme (en pseudo‑code ou en syntaxe Python) qui, étant donnés les nombres $a$ et $b$ et une valeur $x$, affiche la valeur de la fonction affine $f(x)=ax+b$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, x\\n2. Calculer y = a * x + b\\n3. Afficher y\\n\\nEn Python :\\ndef f(x, a, b):\\n    return a * x + b\\n\\na = float(input('a = '))\\nb = float(input('b = '))\\nx = float(input('x = '))\\nprint(f(x, a, b))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction affine s'exprime par $f(x)=ax+b$. L'algorithme doit lire les trois nombres, effectuer le calcul $a \\times x + b$ et afficher le résultat. La version Python montre une fonction réutilisable et la lecture des entrées utilisateur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de a et b à partir de deux points",
+      "content": "La fonction affine $f$ passe par les points $A(2,5)$ et $B(4,9)$. Déterminer les coefficients $a$ et $b$, puis écrire un algorithme qui calcule $f(x)$ pour tout $x$.",
+      "correctAnswer": "Calcul de $a$ : $a = \\frac{9-5}{4-2} = \\frac{4}{2} = 2$.\\nCalcul de $b$ : en utilisant $A(2,5)$, $5 = 2 \\times 2 + b \\Rightarrow b = 5 - 4 = 1$.\\nDonc $f(x)=2x+1$.\\n\\nAlgorithme :\\n1. Lire x\\n2. Calculer y = 2 * x + 1\\n3. Afficher y\\n\\nEn Python :\\ndef f(x):\\n    return 2 * x + 1\\n\\nx = float(input('x = '))\\nprint(f(x))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ est le taux d'accroissement entre les deux points : $(y_B - y_A)/(x_B - x_A)$. Une fois $a$ connu, on substitue les coordonnées d'un point pour trouver $b$. L'algorithme utilise ensuite l'expression $2x+1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau et programmer la fonction affine",
+      "content": "Le tableau ci‑dessous donne des valeurs d'une fonction affine $f$. Compléter les cases vides, déterminer $a$ et $b$, puis proposer un algorithme qui renvoie $f(x)$ pour une entrée $x$.\\n\\nx : -1   0   2   5\\nf(x) : ?   3   ?   13",
+      "correctAnswer": "Puisque $f(0)=3$, on a $b=3$.\\nAvec $f(5)=13$ : $a \\times 5 + 3 = 13 \\Rightarrow a = 2$.\\nDonc $f(x)=2x+3$.\\nValeurs manquantes : $f(-1)=2(-1)+3=1$ et $f(2)=2\\times2+3=7$.\\n\\nAlgorithme :\\n1. Lire x\\n2. Calculer y = 2 * x + 3\\n3. Afficher y\\n\\nEn Python :\\ndef f(x):\\n    return 2 * x + 3\\n\\nx = float(input('x = '))\\nprint(f(x))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur pour $x=0$ donne directement l'ordonnée à l'origine $b$. En utilisant un autre couple $(x, f(x))$, on résout $a$. On vérifie ensuite les autres lignes du tableau. L'algorithme final applique la formule $2x+3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

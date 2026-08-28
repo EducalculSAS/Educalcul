@@ -1,0 +1,552 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.665461+00:00",
+  "id": 698,
+  "code": "terminale-generale-maths-t04-c09",
+  "title": "Dérivation avancée et convexité",
+  "description": "Cours structuré Educalcul : Dérivation avancée et convexité.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Dérivation avancée et convexité",
+    "objectif_global": "Dérivation avancée et convexité",
+    "mini_lecons_imposees": [
+      "Dérivée seconde.",
+      "Convexité / concavité.",
+      "Point d'inflexion."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Dérivée seconde.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La dérivée seconde : définition et notation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon consacrée à la dérivée seconde, un outil qui prolonge l'idée de la dérivée première en mesurant la façon dont la pente elle‑même varie. Imaginez que vous conduisiez une voiture : la dérivée première donne votre vitesse à un instant donné, tandis que la dérivée seconde vous indique si vous accélérez ou si vous freinez, c'est‑à‑dire comment la vitesse change au fil du temps. En mathématiques, si une fonction $f$ est dérivable sur un intervalle, on peut dériver sa fonction dérivée $f'$ pour obtenir une nouvelle fonction, notée $f''$ ou $\\frac{d^2f}{dx^2}$, que l'on appelle la dérivée seconde de $f$. Cette notation de Leibniz rappelle que l'on dérive deux fois par rapport à la variable $x$. La dérivée seconde existe chaque fois que $f'$ est elle‑même dérivable ; on dit alors que $f$ est deux fois dérivable, ou de classe $C^2$, sur l'intervalle considéré. Ce concept est fondamental pour analyser la courbure d'une courbe, pour repérer les points d'inflexion et pour écrire les développements limités d'ordre deux, qui sont au cœur de nombreux problèmes d'optimisation et de physique."
+            },
+            {
+              "type": "definition",
+              "term": "dérivée seconde",
+              "definition": "La dérivée seconde d'une fonction $f$ en un point $x$ est la dérivée de la fonction dérivée $f'$ en ce même point, notée $f''(x)$ ou $\\frac{d^2f}{dx^2}(x)$. Elle mesure le taux de variation de la pente de la tangente.",
+              "example": "Pour $f(x)=x^3$, on a $f'(x)=3x^2$ et $f''(x)=6x$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple simple de la fonction $f(x)=x^3$. Sa dérivée première est $f'(x)=3x^2$, obtenue en appliquant la règle de la puissance. En dérivant une seconde fois, on trouve $f''(x)=6x$. Remarquez que la dérivée seconde est une fonction linéaire, ce qui signifie que le taux de variation de la pente croît proportionnellement à $x$. Pour $x>0$, la pente devient de plus en plus raide (accélération positive), tandis que pour $x<0$, la pente s'adoucit (décélération). Cette observation préfigure la notion de convexité que nous étudierons dans la leçon suivante."
+            },
+            {
+              "type": "display_math",
+              "latex": "f'(x)=3x^2,\\quad f''(x)=6x"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la dérivée première",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez les règles habituelles de dérivation (puissance, somme, produit, quotient, chaîne) pour obtenir $f'(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver la fonction obtenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traitez $f'(x)$ comme une nouvelle fonction et dérivez‑la une seconde fois pour obtenir $f''(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réduisez l'expression finale en factorisant ou en regroupant les termes semblables."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment calculer une dérivée seconde, intéressons‑nous à ce que son signe nous révèle sur la forme de la courbe. Le signe de $f''(x)$ indique en effet si la courbe se courbe vers le haut ou vers le bas, une idée que nous formaliserons sous les noms de convexité et de concavité. Avant d'aborder cette théorie, entraînons‑nous à déterminer le signe de la dérivée seconde sur des intervalles concrets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signe de la dérivée seconde et courbure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe de la dérivée seconde est un indicateur direct de la façon dont la courbe se courbe. Si $f''(x)>0$ sur un intervalle, la pente de la tangente augmente lorsque $x$ augmente : la courbe se courbe vers le haut, on dit qu'elle est convexe. Si $f''(x)<0$, la pente diminue, la courbe se courbe vers le bas, elle est concave. Pour $f(x)=x^3$, nous avons $f''(x)=6x$ ; le signe change en $x=0$. À gauche de zéro la dérivée seconde est négative (concave), à droite elle est positive (convexe). Ce changement de signe signale un point d'inflexion, notion que nous approfondirons plus tard."
+            },
+            {
+              "type": "number_line",
+              "caption": "Signe de $f''(x)=6x$ pour $f(x)=x^3$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dérivée seconde n'est qu'un premier pas vers les dérivées d'ordre supérieur. En continuant le processus, on obtient la dérivée troisième $f^{(3)}$, la quatrième $f^{(4)}$, et ainsi de suite. La notation de Leibniz s'étend naturellement : $\\frac{d^3y}{dx^3}$, $\\frac{d^4y}{dx^4}$, etc. Ces dérivées d'ordre supérieur apparaissent dans les formules de Taylor, qui permettent d'approcher une fonction par un polynôme au voisinage d'un point. Par exemple, le développement d'ordre trois de $\\sin x$ en $0$ fait intervenir $f^{(3)}(0)=-1$. Comprendre comment calculer et interpréter ces dérivées successives est indispensable pour aborder les équations différentielles et l'analyse numérique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivées d'ordre supérieur et notation de Leibniz"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer, considérons $f(x)=\\sin x$. Sa dérivée première est $f'(x)=\\cos x$, la seconde $f''(x)=-\\sin x$, la troisième $f^{(3)}(x)=-\\cos x$ et la quatrième $f^{(4)}(x)=\\sin x$, retrouvant la fonction initiale. Ce cycle de période quatre est caractéristique des fonctions trigonométriques. La notation $f^{(n)}(x)$ ou $\\frac{d^n f}{dx^n}(x)$ est commode pour exprimer la dérivée d'ordre $n$ sans écrire de multiples primes."
+            },
+            {
+              "type": "display_math",
+              "latex": "f^{(3)}(x)=-\\cos x,\\quad f^{(4)}(x)=\\sin x"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dériver successivement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $f'$, puis $f''$, puis $f^{(3)}$ en appliquant les règles de dérivation à chaque étape."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer la périodicité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observez si les expressions se répètent après un certain nombre de dérivations ; cela simplifie le calcul d'ordres élevés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la formule générale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprimez $f^{(n)}(x)$ en fonction de $n$ modulo la période identifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Les développements limités d'ordre deux, aussi appelés formules de Taylor‑Young, utilisent la valeur de la fonction, de sa dérivée première et de sa dérivée seconde en un point pour construire un polynôme d'approximation quadratique. Cette approximation est précieuse en physique pour modéliser le mouvement près d'un équilibre, en économie pour estimer des coûts marginaux, ou en algorithmique pour analyser la convergence de méthodes numériques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application : développement limité d'ordre deux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une fonction $f$ de classe $C^2$ au voisinage de $a$, le développement limité d'ordre deux s'écrit $f(a+h)=f(a)+h f'(a)+\\frac{h^2}{2}f''(a)+o(h^2)$. Le terme $\\frac{h^2}{2}f''(a)$ corrige l'approximation affine par la courbure locale. Si $f''(a)>0$, le graphe de $f$ se trouve au‑dessus de sa tangente (convexe) ; si $f''(a)<0$, il se trouve en‑dessous (concave). Cette formule est la base de la méthode de Newton pour la recherche de zéros et de l'analyse de stabilité des points critiques."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(a+h)=f(a)+h f'(a)+\\frac{h^2}{2}f''(a)+o(h^2)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez la dérivée seconde de la fonction $f(x)=4x^5-3x^2+7$.",
+              "answer": "$f''(x)=80x^3-6$",
+              "hint": "Dérivez deux fois en utilisant la règle de la puissance.",
+              "explanation": "La première dérivée est $f'(x)=20x^4-6x$. En dérivant à nouveau, on obtient $f''(x)=80x^3-6$."
+            },
+            {
+              "question": "Pour la fonction $f(x)=x^3$, déterminez les intervalles sur lesquels $f''(x)$ est positif, négatif ou nul.",
+              "answer": "$f''(x)=6x$ ; positif sur $]0,+\\infty[$, négatif sur $]-\\infty,0[$, nul en $x=0$.",
+              "hint": "Étudiez le signe de l'expression affine $6x$.",
+              "explanation": "Comme $6>0$, le signe de $6x$ est celui de $x$. Donc $f''(x)>0$ pour $x>0$, $f''(x)<0$ pour $x<0$, et $f''(0)=0$."
+            },
+            {
+              "question": "Calculez la dérivée troisième de $f(x)=\\cos x$.",
+              "answer": "$f^{(3)}(x)=\\sin x$",
+              "hint": "Dérivez successivement : $f'(x)=-\\sin x$, $f''(x)=-\\cos x$, $f^{(3)}(x)=\\sin x$.",
+              "explanation": "En appliquant la dérivée trois fois, on passe de $\\cos$ à $-\\sin$, puis à $-\\cos$, puis à $\\sin$."
+            },
+            {
+              "question": "Écrivez le développement limité d'ordre deux de $f(x)=e^x$ au voisinage de $0$.",
+              "answer": "$e^x = 1 + x + \\frac{x^2}{2} + o(x^2)$",
+              "hint": "Utilisez $f(0)=1$, $f'(0)=1$, $f''(0)=1$.",
+              "explanation": "La fonction exponentielle a toutes ses dérivées égales à $1$ en $0$. En les insérant dans la formule de Taylor d'ordre deux, on obtient $1 + x + \\frac{x^2}{2}$."
+            }
+          ]
+        },
+        {
+          "title": "Convexité / concavité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convexité et concavité : définitions et test de la dérivée seconde"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous donnons un sens géométrique précis au signe de la dérivée seconde. Une fonction $f$ est dite convexe sur un intervalle $I$ si, pour tout couple de points $x_1,x_2 \\in I$ et tout $\\lambda \\in [0,1]$, on a $f(\\lambda x_1+(1-\\lambda)x_2) \\le \\lambda f(x_1)+(1-\\lambda)f(x_2)$. En termes plus visuels, la corde joignant deux points du graphe se situe toujours au‑dessus (ou sur) du graphe. La concavité est la propriété symétrique : la corde se trouve en‑dessous du graphe. Ces définitions globales sont difficiles à vérifier directement, mais le théorème de la dérivée seconde offre un critère local simple et puissant."
+            },
+            {
+              "type": "definition",
+              "term": "convexité",
+              "definition": "Une fonction $f$ est convexe sur un intervalle $I$ si son graphe se trouve toujours en‑dessous de ses cordes, équivalent à $f''(x) \\ge 0$ sur $I$ lorsque $f$ est de classe $C^2$.",
+              "example": "La fonction $f(x)=x^2$ est convexe sur $\\mathbb{R}$ car $f''(x)=2>0$."
+            },
+            {
+              "type": "definition",
+              "term": "concavité",
+              "definition": "Une fonction $f$ est concave sur un intervalle $I$ si son graphe se trouve toujours au‑dessus de ses cordes, équivalent à $f''(x) \\le 0$ sur $I$ lorsque $f$ est de classe $C^2$.",
+              "example": "La fonction $f(x)=-x^2$ est concave sur $\\mathbb{R}$ car $f''(x)=-2<0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique $f(x)=x^2$. Sa dérivée seconde est la constante $2$, strictement positive. Selon le test, $f$ est convexe sur tout $\\mathbb{R}$. Son graphe est une parabole tournée vers le haut, et toute corde reliant deux points de la parabole passe au‑dessus de la courbe. À l'inverse, $g(x)=-x^2$ a pour dérivée seconde $-2$, strictement négative ; elle est donc concave, son graphe est une parabole tournée vers le bas et les cordes passent en‑dessous. Ces deux cas illustrent parfaitement la liaison entre le signe de $f''$ et la forme du graphe."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Graphe de $f(x)=x^2$ (convexe)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème fondamental relie le signe de la dérivée seconde à la convexité ou à la concavité. Soit $f$ une fonction de classe $C^2$ sur un intervalle ouvert $I$. Si $f''(x) \\ge 0$ pour tout $x \\in I$, alors $f$ est convexe sur $I$. Si $f''(x) \\le 0$ pour tout $x \\in I$, alors $f$ est concave sur $I$. La réciproque est vraie si l'on suppose de plus que $f''$ est continue. La démonstration s'appuie sur le théorème de la valeur finie appliqué à la dérivée première : la monotonie de $f'$ (croissante si $f''\\ge0$, décroissante si $f''\\le0$) entraîne la position relative des cordes par rapport au graphe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème du test de la dérivée seconde"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la régularité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez‑vous que $f$ est deux fois dérivable sur l'intervalle considéré, c'est‑à‑dire $f \\in C^2(I)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $f''$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez l'expression analytique de la dérivée seconde."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Étudier le signe de $f''$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez l'inéquation $f''(x) \\ge 0$ (convexité) ou $f''(x) \\le 0$ (concavité) sur $I$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après le théorème, le signe constant de $f''$ sur un sous‑intervalle garantit la convexité ou la concavité de $f$ sur ce sous‑intervalle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Certaines fonctions usuelles présentent une convexité ou une concavité globale, d'autres changent de comportement. La fonction exponentielle $e^x$ a pour dérivée seconde $e^x$, toujours positive ; elle est donc strictement convexe sur $\\mathbb{R}$. Le logarithme népérien $\\ln x$ (défini sur $]0,+\\infty[$) a pour dérivée seconde $-1/x^2$, toujours négative ; il est strictement concave. Les fonctions puissances $x^\\alpha$ offrent une variété de cas selon $\\alpha$ : pour $\\alpha \\ge 1$ ou $\\alpha \\le 0$, elles sont convexes sur $]0,+\\infty[$ ; pour $0<\\alpha<1$, elles sont concaves. Cette classification est utile en optimisation pour garantir l'unicité des minima ou maxima."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples classiques : exponentielle, logarithme, puissances"
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Graphe de $e^x$ (strictement convexe)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "La convexité se conserve sous certaines opérations. La somme de deux fonctions convexes est convexe ; la multiplication par un scalaire positif préserve la convexité. La composition $f \\circ g$ est convexe si $f$ est convexe et croissante et $g$ est convexe, ou si $f$ est convexe et décroissante et $g$ est concave. Ces règles permettent de bâtir des fonctions convexes complexes à partir de briques élémentaires, ce qui est au cœur de l'optimisation convexe moderne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stabilité de la convexité par opérations"
+            },
+            {
+              "type": "display_math",
+              "latex": "f,g \\text{ convexes } \\Rightarrow f+g \\text{ convexe}; \\quad \\lambda>0, \\lambda f \\text{ convexe}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminez la convexité ou la concavité de $f(x)=3x^4-4x^3+2$ sur $\\mathbb{R}$.",
+              "answer": "Convexe sur $\\mathbb{R}$ car $f''(x)=36x^2-24x=12x(3x-2)$ est positif hors de l'intervalle $[0,2/3]$ où il peut être négatif ; en fait $f''$ change de signe, donc $f$ n'est ni globalement convexe ni globalement concave. Elle est convexe sur $]-\\infty,0] \\cup [2/3,+\\infty[$ et concave sur $[0,2/3]$.",
+              "hint": "Calculez $f''$ et étudiez son signe à l'aide d'un tableau de signes.",
+              "explanation": "On trouve $f'(x)=12x^3-12x^2$, puis $f''(x)=36x^2-24x=12x(3x-2)$. Les zéros sont $0$ et $2/3$. Le trinôme est positif en dehors des racines, négatif entre elles."
+            },
+            {
+              "question": "En utilisant le test de la dérivée seconde, montrez que $g(x)=\\ln(x^2+1)$ est convexe sur $\\mathbb{R}$.",
+              "answer": "$g''(x)=\\frac{2(1-x^2)}{(x^2+1)^2}$ ; cette expression est positive pour $|x|<1$ et négative pour $|x|>1$. Donc $g$ n'est pas convexe sur tout $\\mathbb{R}$.",
+              "hint": "Calculez $g'$ puis $g''$ et factorisez le numérateur.",
+              "explanation": "On a $g'(x)=\\frac{2x}{x^2+1}$. En dérivant, $g''(x)=\\frac{2(x^2+1)-4x^2}{(x^2+1)^2}=\\frac{2-2x^2}{(x^2+1)^2}=\\frac{2(1-x^2)}{(x^2+1)^2}$. Le signe dépend de $1-x^2$."
+            },
+            {
+              "question": "Vérifiez que la fonction $h(x)=e^{2x}$ est strictement convexe sur $\\mathbb{R}$.",
+              "answer": "$h''(x)=4e^{2x}>0$ pour tout $x$, donc $h$ est strictement convexe.",
+              "hint": "Dérivez deux fois l'exponentielle en utilisant la règle de la chaîne.",
+              "explanation": "La première dérivée est $h'(x)=2e^{2x}$. La seconde est $h''(x)=4e^{2x}$, toujours strictement positive."
+            },
+            {
+              "question": "Soit $p(x)=x^3-3x$. Déterminez les intervalles de convexité et de concavité de $p$.",
+              "answer": "$p''(x)=6x$. Convexe sur $]0,+\\infty[$, concave sur $]-\\infty,0[$.",
+              "hint": "Calculez $p''$ et étudiez son signe.",
+              "explanation": "On a $p'(x)=3x^2-3$, puis $p''(x)=6x$. Le signe de $6x$ est celui de $x$."
+            }
+          ]
+        },
+        {
+          "title": "Point d'inflexion.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Point d'inflexion : définition et caractérisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un point d'inflexion est un point du graphe d'une fonction où la courbure change de sens : la fonction passe de convexe à concave ou de concave à convexe. En termes analytiques, si $f$ est de classe $C^2$ au voisinage de $c$, un point d'inflexion en $c$ se caractérise par le fait que $f''(c)=0$ (ou $f''$ n'existe pas) et que $f''$ change de signe en $c$. Ce changement de signe signifie que la dérivée première $f'$ passe d'une monotonie à l'autre : elle cesse de croître pour commencer à décroître, ou l'inverse. Géométriquement, la tangente au point d'inflexion coupe le graphe (sauf cas particuliers où elle l'effleure)."
+            },
+            {
+              "type": "definition",
+              "term": "point d'inflexion",
+              "definition": "Point $c$ appartenant au domaine de $f$ tel que $f$ change de convexité en $c$. Si $f$ est $C^2$ près de $c$, cela équivaut à $f''(c)=0$ et $f''$ change de signe en $c$.",
+              "example": "Pour $f(x)=x^3$, $f''(x)=6x$ ; $f''(0)=0$ et le signe change en $0$, donc $0$ est un point d'inflexion."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de $f(x)=x^3$. Sa dérivée seconde est $f''(x)=6x$. En $x=0$, $f''(0)=0$. Pour $x<0$, $f''(x)<0$ (concave) ; pour $x>0$, $f''(x)>0$ (convexe). Le graphe passe donc de concave à convexe en l'origine. La tangente en $0$ est l'axe des abscisses $y=0$, qui coupe effectivement la courbe en ce point. C'est le prototype du point d'inflexion : une tangente croisant la courbe."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Graphe de $x^3$ avec tangente en l'origine (point d'inflexion)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour repérer systématiquement les points d'inflexion d'une fonction $C^2$, on suit une procédure en trois temps. Premièrement, on calcule la dérivée seconde $f''$. Deuxièmement, on résout l'équation $f''(x)=0$ et on identifie les points où $f''$ n'existe pas. Troisièmement, on étudie le signe de $f''$ de part et d'autre de chaque candidat : un changement de signe confirme un point d'inflexion, l'absence de changement l'infirme. Cette méthode est robuste et s'applique à toute fonction deux fois dérivable par morceaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas pour trouver les points d'inflexion"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $f''$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dérivez deux fois la fonction en utilisant les règles usuelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver les candidats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez $f''(x)=0$ et notez les points où $f''$ n'est pas définie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tableau de signes de $f''$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Placez les candidats sur une droite graduée, testez le signe de $f''$ dans chaque intervalle. Un changement de signe valide le point d'inflexion."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Coordonnées du point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $f(c)$ pour chaque point d'inflexion $c$ afin d'obtenir ses coordonnées $(c, f(c))$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La présence d'un point d'inflexion a une conséquence visuelle forte : la tangente en ce point traverse le graphe. Pour $f(x)=x^3$, la tangente en $0$ est $y=0$ ; elle coupe la courbe en passant du quadrant III au quadrant I. En général, si $f$ est $C^2$ et admet un point d'inflexion en $c$ avec $f''(c)=0$ et $f'''$ non nul, la tangente coupe le graphe et l'écart entre la courbe et sa tangente est d'ordre trois. Cette propriété est utilisée en architecture pour concevoir des courbes à transition douce (les « courbes en S ») et en économie pour modéliser des changements de régime."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Géométrie de la tangente en un point d'inflexion"
+            },
+            {
+              "type": "graph",
+              "expression": "x^3",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Tangente $y=0$ coupant le graphe de $x^3$ en l'origine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'une fonction ait une dérivée seconde nulle en un point sans changer de signe ; ce n'est alors pas un point d'inflexion. Par exemple, $f(x)=x^4$ a $f''(x)=12x^2$, qui s'annule en $0$ mais reste positif de part et d'autre. La courbe est convexe de part et d'autre, la tangente $y=0$ ne coupe pas le graphe (elle le touche simplement). De même, une fonction peut avoir un point d'inflexion sans que $f''$ existe (exemple : $f(x)=x^{1/3}$ en $0$, où $f''$ n'est pas définie mais la convexité change). Il faut donc toujours vérifier le changement de convexité, pas seulement l'annulation de $f''$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et pièges à éviter"
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=x^4 \\Rightarrow f''(x)=12x^2 \\ge 0 \\text{ (pas d'inflexion en }0)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la dérivée seconde et la calculer pour une fonction polynôme, trigonométrique ou exponentielle.",
+                "Je sais utiliser le signe de la dérivée seconde pour décider de la convexité ou de la concavité d'une fonction sur un intervalle.",
+                "Je connais la définition d'un point d'inflexion et la méthode pour le repérer (annulation de $f''$ et changement de signe).",
+                "Je sais interpréter géométriquement un point d'inflexion : la tangente coupe le graphe.",
+                "Je sais identifier les pièges : $f''=0$ sans changement de signe, ou point d'inflexion sans $f''$ définie."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouvez les points d'inflexion de $f(x)=x^3-3x^2+2$.",
+              "answer": "Point d'inflexion en $x=1$, coordonnées $(1,0)$.",
+              "hint": "Calculez $f''(x)=6x-6$, résolvez $f''(x)=0$ et vérifiez le changement de signe.",
+              "explanation": "On a $f'(x)=3x^2-6x$, $f''(x)=6x-6$. L'équation $6x-6=0$ donne $x=1$. Pour $x<1$, $f''<0$ (concave) ; pour $x>1$, $f''>0$ (convexe). Donc $x=1$ est un point d'inflexion. $f(1)=1-3+2=0$."
+            },
+            {
+              "question": "Déterminez les points d'inflexion de $g(x)=x^4-4x^3$.",
+              "answer": "Points d'inflexion en $x=0$ et $x=2$, coordonnées $(0,0)$ et $(2,-16)$.",
+              "hint": "Calculez $g''(x)=12x^2-24x=12x(x-2)$ et étudiez son signe.",
+              "explanation": "Les zéros de $g''$ sont $0$ et $2$. Le trinôme $12x(x-2)$ est positif pour $x<0$, négatif entre $0$ et $2$, positif pour $x>2$. Il y a donc changement de signe en $0$ et en $2$. Les ordonnées sont $g(0)=0$ et $g(2)=16-32=-16$."
+            },
+            {
+              "question": "Vérifiez que la tangente au graphe de $h(x)=x^3$ en son point d'inflexion coupe la courbe.",
+              "answer": "La tangente en $0$ est $y=0$ ; elle intersecte la courbe en $x=0$ (triple racine) et ne la rencontre pas ailleurs, ce qui signifie qu'elle la coupe en passant de $y<0$ à $y>0$.",
+              "hint": "Écrivez l'équation de la tangente en $0$ et comparez avec $h(x)$.",
+              "explanation": "La dérivée $h'(x)=3x^2$, donc $h'(0)=0$. La tangente est $y=0$. La différence $h(x)-0 = x^3$ change de signe en $0$, confirmant que la tangente coupe la courbe."
+            },
+            {
+              "question": "La fonction $k(x)=x^4$ a-t-elle un point d'inflexion en $0$ ? Justifiez.",
+              "answer": "Non, car $k''(x)=12x^2$ ne change pas de signe en $0$ (toujours $\\ge 0$).",
+              "hint": "Étudiez le signe de $k''$ de part et d'autre de $0$.",
+              "explanation": "Bien que $k''(0)=0$, $k''(x)=12x^2$ est positif pour tout $x\\neq0$. La convexité ne change pas, donc pas de point d'inflexion."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 84,
+  "_course_code": "ce1-t02-c06-ajouter-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Réunir des parts de même taille",
+  "title": "Addition de fractions simples de même dénominateur - Algorithme",
+  "blocks": [
+    {
+      "title": "Question 1 : Addition de deux fractions",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo‑code) qui permet d'additionner deux fractions ayant le même dénominateur. Par exemple, pour calculer $1/4 + 2/4$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux fractions $a/b$ et $c/b$ (même dénominateur $b$).\\n2. Additionner les numérateurs : $s = a + c$.\\n3. Écrire le résultat $s/b$.\\n4. Si possible, simplifier la fraction.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour additionner deux fractions de même dénominateur, on conserve le dénominateur commun et on additionne les numérateurs. Dans l'exemple $1/4 + 2/4$, on additionne $1 + 2 = 3$ et on obtient $3/4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Addition de trois fractions",
+      "content": "Adapte l'algorithme précédent pour additionner trois fractions ayant le même dénominateur. Par exemple, pour calculer $1/5 + 2/5 + 1/5$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les trois fractions $a/b$, $c/b$, $d/b$ (même dénominateur $b$).\\n2. Additionner les trois numérateurs : $s = a + c + d$.\\n3. Écrire le résultat $s/b$.\\n4. Simplifier si nécessaire.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne tous les numérateurs tout en gardant le dénominateur commun. Pour $1/5 + 2/5 + 1/5$, la somme des numérateurs est $1+2+1=4$, donc le résultat est $4/5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Généralisation à n fractions",
+      "content": "Propose un algorithme général qui additionne un nombre quelconque $n$ de fractions ayant toutes le même dénominateur. Utilise une boucle ou une somme indicée.",
+      "correctAnswer": "Algorithme général :\\n1. Lire le dénominateur commun $b$ et le nombre $n$ de fractions.\\n2. Initialiser $s = 0$.\\n3. Pour $i$ de $1$ à $n$ :\\n   - Lire le numérateur $a_i$.\\n   - Faire $s = s + a_i$.\\n4. Afficher le résultat $s/b$.\\n5. Simplifier si possible.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une boucle pour accumuler la somme des numérateurs. Quel que soit le nombre de fractions, tant qu'elles partagent le même dénominateur, la règle reste : somme des numérateurs sur le dénominateur commun.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

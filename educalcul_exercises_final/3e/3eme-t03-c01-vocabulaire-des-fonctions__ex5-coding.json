@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 467,
+  "_course_code": "3eme-t03-c01-vocabulaire-des-fonctions",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Approfondissement : Image / antécédent",
+  "title": "Algorithmes images et antécédents",
+  "blocks": [
+    {
+      "title": "Image d'une valeur pour une fonction affine",
+      "content": "On considère la fonction affine $f$ définie par $f(x)=2x+3$. Écrire un algorithme (en langage naturel ou sous forme de code style Python) qui, étant donné une valeur $x$, affiche l'image $f(x)$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Calculer y = $2 * x + 3$\\n3. Afficher y",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit la valeur d'entrée $x$, applique la formule de la fonction affine $f(x)=2x+3$ en effectuant la multiplication par $2$ puis l'addition de $3$, puis affiche le résultat qui est l'image de $x$ par $f$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Antécédent d'une valeur pour la même fonction affine",
+      "content": "Toujours avec la fonction $f(x)=2x+3$, écrire un algorithme qui, étant donné une valeur $y$, détermine et affiche l'antécédent $x$ tel que $f(x)=y$.",
+      "correctAnswer": "Algorithme :\\n1. Lire y\\n2. Calculer x = $(y - 3) / 2$\\n3. Afficher x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver l'antécédent, on résout l'équation $2x+3=y$ ce qui donne $x=(y-3)/2$. L'algorithme lit $y$, effectue la soustraction de $3$ puis la division par $2$, et affiche $x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Images et antécédents pour une fonction quadratique",
+      "content": "Soit la fonction $g$ définie par $g(x)=x^2-4x+5$. Écrire un algorithme qui, pour une valeur $x$ donnée, affiche l'image $g(x)$, puis pour une valeur $y$ donnée, affiche les antécédents réels (s'ils existent) de $y$ par $g$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Calculer img = $x^2 - 4x + 5$\\n3. Afficher img\\n4. Lire y\\n5. Calculer delta = $16 - 4 * (5 - y)$\\n6. Si delta < 0 alors afficher \"Aucun antécédent réel\"\\n7. Sinon si delta = 0 alors afficher $2$\\n8. Sinon afficher $(4 - sqrt(delta))/2$ et $(4 + sqrt(delta))/2$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'image s'obtient directement en évaluant le polynôme $g(x)=x^2-4x+5$. Pour les antécédents, on résout $x^2-4x+5=y$ soit $x^2-4x+(5-y)=0$. Le discriminant est $\\Delta = (-4)^2 - 4(5-y) = 16 -20 +4y = 4y-4$. L'algorithme calcule $\\Delta$ et selon son signe affiche zéro, un ou deux antécédents en utilisant la formule quadratique $x = (4 \\pm \\sqrt{\\Delta})/2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

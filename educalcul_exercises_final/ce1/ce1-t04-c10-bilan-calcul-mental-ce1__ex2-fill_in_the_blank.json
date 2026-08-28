@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 107,
+  "_course_code": "ce1-t04-c10-bilan-calcul-mental-ce1",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Choix de stratégie",
+  "title": "Choix de stratégies en calcul mental",
+  "blocks": [
+    {
+      "title": "Addition : passage par la dizaine",
+      "content": "Pour calculer $8 + 6$, j'utilise la stratégie du {{1}}. Je sais que $8 + {{2}} = 10$, il me reste à ajouter {{3}} pour trouver le résultat $14$.",
+      "correctAnswer": "",
+      "blanks": [
+        "complément à dix|passage par la dizaine",
+        "2",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La stratégie du complément à dix (ou passage par la dizaine) consiste à décomposer le second nombre pour faire une dizaine avec le premier. Ici, $6 = 2 + 4$. On fait $8 + 2 = 10$, puis $10 + 4 = 14$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Soustraction : passage par la dizaine",
+      "content": "Pour calculer $13 - 5$, j'utilise la stratégie du {{1}}. J'enlève d'abord {{2}} pour retomber sur $10$, puis j'enlève encore {{3}} pour obtenir $8$.",
+      "correctAnswer": "",
+      "blanks": [
+        "passage par la dizaine|complément à dix",
+        "3",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour soustraire $5$ à $13$, on décompose $5$ en $3 + 2$. On retire $3$ pour aller à la dizaine inférieure ($13 - 3 = 10$), puis on retire le reste ($10 - 2 = 8$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition : ajout de dizaines",
+      "content": "Pour calculer $45 + 30$, la meilleure stratégie est d'ajouter les {{1}}. Je sais que $4 + 3 = 7$, donc $40 + 30 = {{2}}$, et le résultat final est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "dizaines",
+        "70",
+        "75"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quand on ajoute un nombre de dizaines (comme $30$) à un nombre à deux chiffres, on n'ajoute que les dizaines. $45$ contient $4$ dizaines, $30$ en contient $3$. $4 + 3 = 7$ dizaines, soit $70$. On garde les $5$ unités : $70 + 5 = 75$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

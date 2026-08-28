@@ -1,0 +1,137 @@
+{
+  "_status": "done",
+  "_course_id": 83,
+  "_course_code": "ce1-t02-c05-comparer-des-fractions-simples-dans-des-cas-accessibles",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Justifier à l'aide d'une représentation",
+  "title": "Comparer des fractions : justifier par une représentation",
+  "questions": [
+    {
+      "text": "Regarde les deux bandes de fractions ci-dessous. Laquelle des affirmations suivantes est juste ?",
+      "options": [
+        "Un demi est plus petit qu'un quart car 2 est plus petit que 4.",
+        "Un demi est plus grand qu'un quart car la partie colorée est plus grande.",
+        "Un demi est égal à un quart car les deux bandes ont la même longueur.",
+        "On ne peut pas comparer car les dénominateurs sont différents."
+      ],
+      "correctAnswer": "Un demi est plus grand qu'un quart car la partie colorée est plus grande.",
+      "explanation": "Sur la figure, la bande du haut est divisée en 2 parts égales (demi) et celle du bas en 4 parts égales (quart). La partie colorée d'un demi ($\\frac{1}{2}$) couvre la moitié de la bande. La partie colorée d'un quart ($\\frac{1}{4}$) couvre un quart de la bande. Visuellement, la zone colorée pour $\\frac{1}{2}$ est deux fois plus grande que celle pour $\\frac{1}{4}$. L'erreur classique est de comparer seulement les chiffres du dénominateur (2 vs 4) sans regarder la taille des parts.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison visuelle de 1/2 et 1/4"
+      }
+    },
+    {
+      "text": "Sur la figure, deux cercles de même taille sont partagés. Le cercle A est divisé en 3 parts égales, une part est colorée. Le cercle B est divisé en 4 parts égales, une part est colorée. Que peux-tu dire ?",
+      "options": [
+        "La part colorée du cercle A est plus grande que celle du cercle B.",
+        "La part colorée du cercle B est plus grande que celle du cercle A.",
+        "Les deux parts colorées ont la même taille car il y en a une dans chaque cercle.",
+        "On ne peut pas savoir car les cercles n'ont pas le même nombre de parts."
+      ],
+      "correctAnswer": "La part colorée du cercle A est plus grande que celle du cercle B.",
+      "explanation": "Le cercle A représente $\\frac{1}{3}$ (un tiers) et le cercle B représente $\\frac{1}{4}$ (un quart). Quand on divise un même tout en 3 parts, chaque part est plus grande que quand on le divise en 4 parts. Visuellement, la part colorée du cercle A occupe plus de place que celle du cercle B. Donc $\\frac{1}{3} > \\frac{1}{4}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Cercle A : 1/3 coloré"
+      }
+    },
+    {
+      "text": "Deux rectangles identiques sont représentés. Le rectangle 1 a $\\frac{1}{2}$ de sa surface colorée en bleu. Le rectangle 2 a $\\frac{2}{4}$ de sa surface colorée en rouge. Quelle phrase justifie correctement la comparaison ?",
+      "options": [
+        "Le bleu est plus grand car 1 est plus petit que 2.",
+        "Le rouge est plus grand car 4 est plus grand que 2.",
+        "Le bleu et le rouge ont la même taille car les parties colorées recouvrent exactement la même surface.",
+        "On ne peut pas comparer car les couleurs sont différentes."
+      ],
+      "correctAnswer": "Le bleu et le rouge ont la même taille car les parties colorées recouvrent exactement la même surface.",
+      "explanation": "La figure montre l'équivalence $\\frac{1}{2} = \\frac{2}{4}$. Le rectangle 1 est coupé en 2, une partie est bleue. Le rectangle 2 est coupé en 4, deux parties sont rouges. Si on superpose les deux rectangles, la zone bleue et la zone rouge se recouvrent parfaitement. C'est la notion d'égalité de fractions : même surface colorée pour un même tout.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison de 1/2 et 2/4"
+      }
+    },
+    {
+      "text": "Sur une droite numérotée de 0 à 1, on a placé $\\frac{1}{2}$ et $\\frac{3}{4}$. Laquelle de ces phrases est la bonne justification ?",
+      "options": [
+        "$\\frac{3}{4}$ est avant $\\frac{1}{2}$ car 3 est plus grand que 1.",
+        "$\\frac{1}{2}$ et $\\frac{3}{4}$ sont au même endroit car ce sont des fractions.",
+        "$\\frac{3}{4}$ est après $\\frac{1}{2}$ (vers 1) car la portion de 0 à $\\frac{3}{4}$ est plus longue que la portion de 0 à $\\frac{1}{2}$.",
+        "$\\frac{1}{2}$ est après $\\frac{3}{4}$ car le dénominateur 2 est plus petit que 4."
+      ],
+      "correctAnswer": "$\\frac{3}{4}$ est après $\\frac{1}{2}$ (vers 1) car la portion de 0 à $\\frac{3}{4}$ est plus longue que la portion de 0 à $\\frac{1}{2}$.",
+      "explanation": "Sur la droite graduée, $\\frac{1}{2}$ se trouve exactement au milieu entre 0 et 1. $\\frac{3}{4}$ se trouve entre $\\frac{1}{2}$ et 1, plus près de 1. La distance de 0 à $\\frac{3}{4}$ est plus grande que la distance de 0 à $\\frac{1}{2}$. Donc $\\frac{3}{4} > \\frac{1}{2}$. La représentation sur la droite numérique montre l'ordre des nombres : plus on va vers la droite (vers 1), plus le nombre est grand.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérique avec 1/2 et 3/4",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.5,
+            "label": "1/2"
+          },
+          {
+            "value": 0.75,
+            "label": "3/4"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Léo a mangé $\\frac{1}{3}$ d'une tablette de chocolat. Mia a mangé $\\frac{1}{2}$ de la même tablette. Le dessin montre les deux parts mangées. Qui a mangé le plus et pourquoi ?",
+      "options": [
+        "Léo a mangé plus car 3 est plus grand que 2.",
+        "Mia a mangé plus car sa part ($\\frac{1}{2}$) est visuellement plus grande que la part de Léo ($\\frac{1}{3}$).",
+        "Ils ont mangé la même chose car chacun a mangé une part.",
+        "On ne sait pas car on ne connaît pas le nombre de carrés de la tablette."
+      ],
+      "correctAnswer": "Mia a mangé plus car sa part ($\\frac{1}{2}$) est visuellement plus grande que la part de Léo ($\\frac{1}{3}$).",
+      "explanation": "La figure représente une même tablette (même tout) divisée différemment. La part de Mia ($\\frac{1}{2}$) correspond à la moitié de la tablette. La part de Léo ($\\frac{1}{3}$) correspond à un tiers. En divisant en 2, les parts sont plus grosses qu'en divisant en 3. Visuellement, la zone de Mia couvre plus de surface que celle de Léo. Donc $\\frac{1}{2} > \\frac{1}{3}$, Mia a mangé plus.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          }
+        ],
+        "caption": "Parts de chocolat : Mia (1/2) et Léo (1/3)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "_status": "done",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Repérer hausse / baisse",
+  "title": "Repérer hausse et baisse sur un graphique",
+  "questions": [
+    {
+      "text": "Observe le graphique ci-dessous. Il représente le nombre de pommes récoltées chaque mois. Entre janvier et février, comment évolue la récolte ?",
+      "options": [
+        "C'est une hausse",
+        "C'est une baisse",
+        "C'est stable",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "C'est une hausse",
+      "explanation": "En janvier, la barre monte jusqu'à $10$. En février, elle monte jusqu'à $15$. Comme $15$ est plus grand que $10$, la récolte augmente : c'est une hausse. Une baisse serait une barre plus basse. Stable voudrait dire la même hauteur.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Récolte de pommes (en kg)",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Mars",
+            "value": 12,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Regarde ce graphique sur le nombre de livres lus par semaine. Que se passe-t-il entre le lundi et le mardi ?",
+      "options": [
+        "Une hausse",
+        "Une baisse",
+        "Une stabilité",
+        "Une forte hausse"
+      ],
+      "correctAnswer": "Une stabilité",
+      "explanation": "La barre du lundi s'arrête à $5$ et celle du mardi s'arrête aussi à $5$. Les deux barres ont la même hauteur, le nombre de livres n'a pas changé : c'est une stabilité. Il n'y a ni hausse (plus haut) ni baisse (plus bas).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Mardi",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 8,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le graphique montre le nombre d'élèves dans l'école sur trois années. Entre quelles deux années la hausse du nombre d'élèves est-elle la plus forte ?",
+      "options": [
+        "Entre 2020 et 2021",
+        "Entre 2021 et 2022",
+        "La hausse est la même",
+        "Il y a une baisse"
+      ],
+      "correctAnswer": "Entre 2020 et 2021",
+      "explanation": "En 2020, il y a $20$ élèves. En 2021, $30$ élèves : la hausse est de $10$ ($30 - 20 = 10$). En 2022, $35$ élèves : la hausse est de $5$ ($35 - 30 = 5$). $10$ est plus grand que $5$, donc la plus forte hausse est entre 2020 et 2021.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs de l'école",
+        "bars": [
+          {
+            "label": "2020",
+            "value": 20,
+            "tone": "navy"
+          },
+          {
+            "label": "2021",
+            "value": 30,
+            "tone": "navy"
+          },
+          {
+            "label": "2022",
+            "value": 35,
+            "tone": "navy"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Léo note le nombre de kilomètres qu'il court chaque mois. En septembre il court $8$ km, en octobre $12$ km et en novembre $9$ km. Quelle phrase décrit correctement l'évolution ?",
+      "options": [
+        "Ça augmente tout le temps",
+        "Ça diminue tout le temps",
+        "Ça augmente puis ça diminue",
+        "Ça reste stable"
+      ],
+      "correctAnswer": "Ça augmente puis ça diminue",
+      "explanation": "De septembre ($8$) à octobre ($12$), le nombre augmente ($12 > 8$). D'octobre ($12$) à novembre ($9$), le nombre diminue ($9 < 12$). L'évolution n'est pas toujours dans le même sens : elle monte puis elle descend.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur ce graphique, on voit le nombre de billes dans une boîte semaine après semaine. De combien le nombre de billes a-t-il augmenté entre la semaine 1 et la semaine 2 ?",
+      "options": [
+        "$10$",
+        "$15$",
+        "$20$",
+        "$5$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La barre de la semaine 1 monte à $50$. Celle de la semaine 2 monte à $65$. Pour trouver l'augmentation, on fait la différence : $65 - 50 = 15$. Il y a $15$ billes de plus la semaine 2.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes",
+        "bars": [
+          {
+            "label": "Semaine 1",
+            "value": 50,
+            "tone": "red"
+          },
+          {
+            "label": "Semaine 2",
+            "value": 65,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

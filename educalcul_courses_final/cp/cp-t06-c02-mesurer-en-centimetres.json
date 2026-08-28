@@ -1,0 +1,337 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.631687+00:00",
+  "id": 48,
+  "code": "cp-t06-c02",
+  "title": "Mesurer en centimètres",
+  "description": "Cours structuré Educalcul : Mesurer en centimètres.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Mesurer en centimètres",
+    "objectif_global": "Mesurer en centimètres",
+    "mini_lecons_imposees": [
+      "Placer correctement la règle.",
+      "Lire une graduation en cm.",
+      "Tracer un segment de longueur donnée."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Placer correctement la règle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la règle et le centimètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux savoir la longueur de ton crayon. Tu as une règle graduée en centimètres. Le centimètre, on l'écrit $cm$, c'est une toute petite unité de mesure. Sur la règle, chaque trait avec un chiffre indique un centimètre de plus. Le tout premier trait, celui où il y a le chiffre $0$, est le point de départ."
+            },
+            {
+              "type": "number_line",
+              "caption": "La règle mesure le crayon de $0$ à $10$ $cm$.",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Départ"
+                },
+                {
+                  "value": 10,
+                  "label": "Fin du crayon"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons pourquoi il est si important de bien placer le zéro de la règle exactement au tout début de l'objet que tu mesures."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Aligner le zéro sans se tromper"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu ne mets pas le zéro de la règle exactement au bord de ton crayon, ta mesure sera fausse. Imagine que tu démarres au trait $1$ au lieu de $0$ : tu compteras un centimètre de trop ! Pour bien faire, tu poses la règle bien à plat, tu fais coïncider le trait zéro avec le bout de l'objet, et tu regardes où se termine l'autre bout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un dernier secret pour une mesure parfaite : la règle ne doit pas être penchée, elle doit rester bien parallèle à l'objet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Garder la règle bien droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tiends ta règle bien droite le long de l'objet, comme un petit train sur ses rails. Si elle est de travers, le trait que tu lis sera plus loin que la vraie fin de l'objet. Appuie doucement sur la règle avec une main pendant que tu regardes le chiffre avec l'autre œil."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde la règle ci-dessus. Le crayon commence au trait $0$ et se termine au trait $10$. Combien de centimètres mesure le crayon ?",
+              "answer": "$10$ $cm$",
+              "hint": "Compte les traits numérotés depuis le zéro jusqu'à la fin du crayon.",
+              "explanation": "Le crayon commence au zéro et finit au trait $10$, donc il mesure $10$ $cm$."
+            },
+            {
+              "question": "Tu mesures un livre. Tu places le trait $2$ de la règle au début du livre et tu lis $15$ $cm$ à la fin. Quelle est la vraie longueur du livre ?",
+              "answer": "$13$ $cm$",
+              "hint": "Souviens-toi : la mesure commence toujours à $0$. Si tu as commencé à $2$, il faut retirer $2$ $cm$.",
+              "explanation": "Comme tu as commencé au trait $2$, tu as ajouté $2$ $cm$ de trop. La vraie longueur est $15 - 2 = 13$ $cm$."
+            },
+            {
+              "question": "Vrai ou faux ? Pour bien mesurer, je peux incliner un peu la règle si c'est plus commode.",
+              "answer": "Faux",
+              "hint": "Une règle penchée donne une mesure plus grande que la réalité.",
+              "explanation": "La règle doit être parfaitement parallèle à l'objet. Sinon, la distance entre les traits ne correspond plus aux vrais centimètres."
+            }
+          ]
+        },
+        {
+          "title": "Lire une graduation en cm.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le chiffre au bon endroit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ta règle est bien placée, il faut lire le chiffre. Regarde le trait qui tombe juste au bout de ton objet. Le chiffre écrit au-dessus de ce trait te donne la longueur en centimètres. Si ton objet s'arrête pile sur le trait $7$, alors il mesure $7$ $cm$."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'objet s'arrête sur le trait $7$, il mesure $7$ $cm$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Départ"
+                },
+                {
+                  "value": 7,
+                  "label": "Fin de l'objet"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'objet ne s'arrête pas pile sur un trait. Que fait-on alors ? Il arrive que le bout de ton objet se trouve entre deux traits, par exemple entre $4$ et $5$. À ton niveau, on lit le trait le plus proche. Si c'est plus près de $4$, on dit $4$ $cm$ ; si c'est plus près de $5$, on dit $5$ $cm$. C'est ce qu'on appelle arrondir au centimètre le plus proche."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous à lire plusieurs mesures. Regarde une règle imaginaire : un trombone s'arrête au trait $2$, un cure-dent au trait $6$, une allumette au trait $4$. À chaque fois, tu notes le chiffre du trait où se termine l'objet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la règle, un bâtonnet s'arrête exactement sur le trait $5$. Quelle est sa longueur ?",
+              "answer": "$5$ $cm$",
+              "hint": "Regarde le chiffre au-dessus du trait où se termine le bâtonnet.",
+              "explanation": "Le trait $5$ indique $5$ centimètres depuis le zéro."
+            },
+            {
+              "question": "Une gomme se termine entre le trait $3$ et le trait $4$, mais un tout petit peu plus près du trait $3$. Quelle longueur donnes-tu ?",
+              "answer": "$3$ $cm$",
+              "hint": "Choisis le trait le plus proche de la fin de la gomme.",
+              "explanation": "Comme la gomme est plus proche du trait $3$, on arrondit à $3$ $cm$."
+            },
+            {
+              "question": "Voici trois objets mesurés : un trombone à $2$ $cm$, un cure-dent à $6$ $cm$, une allumette à $4$ $cm$. Lequel est le plus long ?",
+              "answer": "Le cure-dent",
+              "hint": "Compare les nombres : $2$, $6$, $4$. Le plus grand nombre correspond à l'objet le plus long.",
+              "explanation": "Le cure-dent mesure $6$ $cm$, c'est plus que $4$ $cm$ et $2$ $cm$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer un segment de longueur donnée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les étapes pour tracer un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessiner un segment d'une longueur précise, c'est comme tracer un chemin entre deux points. Voici la marche à suivre :"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ta règle sur la feuille, bien à plat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais un petit trait au niveau du zéro : c'est le point de départ, appelle-le $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le chiffre de la longueur demandée, par exemple $5$ $cm$, et fais un petit trait à ce niveau : c'est le point $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Retire la règle et relie les points $A$ et $B$ avec un trait de crayon bien droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu as tracé un segment $[AB]$ de $5$ $cm$ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Tracer un segment de $5$ $cm$ : point $A$ au zéro, point $B$ au $5$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 5,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges ! Même si tu connais les étapes, deux erreurs sont fréquentes : ne pas commencer au zéro, et tracer le trait final sans règle ce qui fait un segment tout tordu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Éviter les erreurs classiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première erreur : ne pas commencer au zéro. Si tu poses ton point $A$ au trait $1$, ton segment sera plus court d'un centimètre. La deuxième erreur : tracer le trait final sans règle, ce qui fait un segment tout tordu. Garde la règle en place pour relier $A$ et $B$, ou utilise le bord de la règle comme guide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de jouer avec différentes longueurs ! Essaie de tracer des segments de $3$ $cm$, $7$ $cm$, $10$ $cm$. À chaque fois, répète les gestes : zéro, point $A$, chiffre demandé, point $B$, trait droit. Tu verras, c'est comme un jeu de pointillés qui devient un vrai segment."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais placer ma règle en commençant par le zéro.",
+                "Je sais lire la graduation où se termine l'objet.",
+                "Je sais tracer un segment en marquant le point de départ au zéro et le point d'arrivée au chiffre demandé.",
+                "Je vérifie que ma règle est bien droite avant de mesurer ou de tracer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu veux tracer un segment de $4$ $cm$. Après avoir fait le point $A$ au zéro, sur quel chiffre fais-tu le point $B$ ?",
+              "answer": "Sur le chiffre $4$",
+              "hint": "La longueur demandée est $4$ $cm$, donc le point $B$ se place au trait $4$.",
+              "explanation": "Le point de départ est à $0$, le point d'arrivée doit être à $4$ pour avoir une longueur de $4$ $cm$."
+            },
+            {
+              "question": "Léa veut tracer un segment de $6$ $cm$. Elle place le point $A$ au trait $2$ et le point $B$ au trait $8$. Est-ce correct ?",
+              "answer": "Non, le point de départ doit être au zéro.",
+              "hint": "Pour tracer un segment de $6$ $cm$, le point $A$ doit être au $0$ et le point $B$ au $6$.",
+              "explanation": "Si tu commences au $2$, tu ne respectes pas la consigne qui demande de partir du début de la règle."
+            },
+            {
+              "question": "Parmi ces segments tracés, lequel correspond à une longueur de $5$ $cm$ ? Segment 1 : point $A$ au $0$, point $B$ au $5$. Segment 2 : point $A$ au $1$, point $B$ au $6$. Segment 3 : point $A$ au $0$, point $B$ au $4$.",
+              "answer": "Segment 1",
+              "hint": "Vérifie que le point $A$ est au zéro et que le point $B$ est au chiffre $5$.",
+              "explanation": "Le segment 1 commence au zéro et finit au $5$, donc il mesure exactement $5$ $cm$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

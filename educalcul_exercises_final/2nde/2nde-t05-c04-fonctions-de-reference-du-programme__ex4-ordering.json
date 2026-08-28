@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Fonctions de référence du programme",
+  "title": "Ordonner : valeurs, résolution et croissance des fonctions de référence",
+  "blocks": [
+    {
+      "title": "Comparer des valeurs images",
+      "content": "Soient les fonctions de référence $f(x)=x$, $g(x)=\\sqrt{x}$, $h(x)=x^2$ et $k(x)=\\frac{1}{x}$ définies sur $[1; +\\infty[$. Classez les nombres $f(4)$, $g(4)$, $h(4)$ et $k(4)$ par ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$k(4) = 0,25$",
+        "$g(4) = 2$",
+        "$f(4) = 4$",
+        "$h(4) = 16$"
+      ],
+      "explanation": "On calcule chaque image : $k(4) = \\frac{1}{4} = 0,25$, $g(4) = \\sqrt{4} = 2$, $f(4) = 4$, $h(4) = 4^2 = 16$. L'ordre croissant est donc $0,25 < 2 < 4 < 16$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étapes de résolution d'une inéquation",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour résoudre l'inéquation $x^2 - 4 \\leqslant 0$ sur $\\mathbb{R}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Factoriser l'expression : $(x-2)(x+2) \\leqslant 0$.",
+        "Trouver les racines : $x = -2$ et $x = 2$.",
+        "Construire un tableau de signes des facteurs puis du produit.",
+        "Conclure : l'ensemble des solutions est l'intervalle $[-2 ; 2]$."
+      ],
+      "explanation": "La méthode standard est : 1. Factoriser (différence de deux carrés). 2. Identifier les zéros des facteurs. 3. Étudier le signe du produit sur $\\mathbb{R}$ grâce à un tableau de signes (règle des signes). 4. Lire les solutions où le produit est négatif ou nul.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre de croissance à l'infini",
+      "content": "Classez les fonctions de référence suivantes par ordre de croissance croissant sur l'intervalle $[1 ; +\\infty[$ (de la plus lente à la plus rapide).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$x \\mapsto \\frac{1}{x}$ (décroissante, tend vers $0$)",
+        "$x \\mapsto \\sqrt{x}$ (croissante, croissance lente)",
+        "$x \\mapsto x$ (croissante, croissance linéaire)",
+        "$x \\mapsto x^2$ (croissante, croissance quadratique)",
+        "$x \\mapsto x^3$ (croissante, croissance cubique)"
+      ],
+      "explanation": "Sur $[1; +\\infty[$ : l'inverse est décroissante (donc croissance minimale), la racine carrée croît plus vite que l'inverse mais plus lentement que l'identité, puis viennent les puissances entières dans l'ordre des exposants : $x < x^2 < x^3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

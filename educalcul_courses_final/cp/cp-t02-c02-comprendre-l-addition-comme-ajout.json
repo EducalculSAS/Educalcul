@@ -1,0 +1,311 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.536233+00:00",
+  "id": 16,
+  "code": "cp-t02-c02",
+  "title": "Comprendre l'addition comme ajout",
+  "description": "Cours structuré Educalcul : Comprendre l'addition comme ajout.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Comprendre l'addition comme ajout",
+    "objectif_global": "Comprendre l'addition comme ajout",
+    "mini_lecons_imposees": [
+      "Partir d'une quantité et ajouter.",
+      "Représenter l'ajout.",
+      "Choisir l'addition dans une situation concrète."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Partir d'une quantité et ajouter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partir d'une quantité et ajouter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ pommes dans ton panier. Tu vas au jardin et tu en cueilles $2$ de plus. Combien as-tu de pommes maintenant ? Tu as commencé avec une quantité, tu en as ajouté une autre, et tu as obtenu un total plus grand. C'est ça, l'addition : on part de ce qu'on a, on rajoute, et on regarde ce que ça fait ensemble."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                2
+              ],
+              "right": [
+                5
+              ],
+              "caption": "Sur le plateau de gauche, je pose $3$ cubes puis $2$ cubes. Sur le plateau de droite, je pose $5$ cubes. La balance est en équilibre : $3$ et $2$ ensemble, ça fait $5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec d'autres objets. Tu as $4$ billes dans ta poche. Ton ami te donne $3$ billes. Pour savoir combien tu as en tout, tu peux poser $4$ cubes d'un côté de la balance et $3$ de l'autre, puis chercher le nombre qui équilibre. Tu verras que $4$ et $3$ font $7$. L'addition, c'est simplement l'action de mettre ensemble deux groupes pour en former un plus grand."
+            },
+            {
+              "type": "number_line",
+              "caption": "Je commence à $4$, je fais un saut de $3$ et j'arrive à $7$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Départ"
+                },
+                {
+                  "value": 7,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 4,
+                  "end": 7,
+                  "label": "+3"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais partir d'une quantité et en ajouter une autre. Dans la prochaine leçon, nous allons apprendre à représenter cet ajout avec des dessins, des traits ou des signes mathématiques, pour ne plus avoir besoin de manipuler des objets à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $2$ bonbons. Tu en reçois $3$ de plus. Combien as-tu de bonbons en tout ?",
+              "answer": "$5$",
+              "hint": "Compte sur tes doigts : deux doigts, puis trois doigts de plus.",
+              "explanation": "On part de $2$, on ajoute $3$, on obtient $5$. C'est une addition : $2 + 3 = 5$."
+            },
+            {
+              "question": "Sur la droite numérique, je suis au $5$. Je fais un saut de $2$. Sur quel nombre j'arrive ?",
+              "answer": "$7$",
+              "hint": "Compte deux cases après le $5$ : $6$, $7$.",
+              "explanation": "Partir de $5$ et ajouter $2$, c'est avancer de deux cases sur la droite numérique : on arrive à $7$."
+            },
+            {
+              "question": "Complète : $4 + \\square = 6$",
+              "answer": "$2$",
+              "hint": "Combien faut-il ajouter à $4$ pour obtenir $6$ ?",
+              "explanation": "Si on a $4$ et qu'on veut $6$, il manque $2$. Donc $4 + 2 = 6$."
+            }
+          ]
+        },
+        {
+          "title": "Représenter l'ajout.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter l'ajout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Hier, nous avons utilisé des cubes et une balance pour voir l'addition. Aujourd'hui, nous allons apprendre à la dessiner sur papier. C'est très utile quand on n'a pas d'objets sous la main. Regarde : pour montrer $3 + 2$, je peux tracer trois petits ronds, puis deux autres ronds à côté. Ensuite, j'entoure tout et je compte : $1, 2, 3, 4, 5$. Le dessin garde la trace de ce qu'on a fait."
+            },
+            {
+              "type": "number_line",
+              "caption": "Je représente $3 + 2$ par un départ à $3$ et un saut de $2$ jusqu'à $5$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Départ"
+                },
+                {
+                  "value": 5,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 3,
+                  "end": 5,
+                  "label": "+2"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les mathématiciens ont inventé des signes pour écrire cela plus vite. Le signe « $+$ » veut dire « et » ou « j'ajoute ». Le signe « $=$ » veut dire « ça fait » ou « c'est égal à ». Au lieu de dire « trois et deux font cinq », on écrit : $3 + 2 = 5$. C'est une phrase mathématique, une égalité. Le $+$ montre l'action d'ajouter, le $=$ montre le résultat."
+            },
+            {
+              "type": "definition",
+              "term": "Le signe +",
+              "definition": "Il se lit « plus ». Il signifie qu'on ajoute une quantité à une autre.",
+              "example": "Dans $4 + 1$, on ajoute $1$ à $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Le signe =",
+              "definition": "Il se lit « égal » ou « ça fait ». Il montre que les deux côtés ont la même valeur.",
+              "example": "$4 + 1 = 5$ : la somme de $4$ et $1$ a la même valeur que $5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi représenter une addition avec ses doigts. Pour $4 + 3$, je lève $4$ doigts d'une main, $3$ de l'autre, et je compte tous les doigts levés. C'est une représentation avec mon corps ! Dans la prochaine leçon, nous verrons comment reconnaître tout seul quand une petite histoire demande une addition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine (ou imagine) $2$ ronds, puis $3$ ronds. Écris l'addition correspondante avec les signes $+$ et $=$.",
+              "answer": "$2 + 3 = 5$",
+              "hint": "Compte le total de ronds pour trouver le résultat après le signe $=$.",
+              "explanation": "Deux ronds et trois ronds font cinq ronds. On écrit $2 + 3 = 5$."
+            },
+            {
+              "question": "Quelle addition correspond à ce saut sur la droite numérique ? Départ $1$, saut de $4$, arrivée $5$.",
+              "answer": "$1 + 4 = 5$",
+              "hint": "Le nombre de départ est le premier terme, la taille du saut est le deuxième terme.",
+              "explanation": "On part de $1$, on ajoute $4$, on arrive à $5$. L'addition est $1 + 4 = 5$."
+            },
+            {
+              "question": "Écris avec des chiffres et des signes : « Cinq plus deux font sept ».",
+              "answer": "$5 + 2 = 7$",
+              "hint": "Remplace « plus » par $+$ et « font » par $=$.",
+              "explanation": "« Cinq » s'écrit $5$, « plus » est le signe $+$, « deux » est $2$, « font » est le signe $=$, « sept » est $7$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir l'addition dans une situation concrète.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'addition dans une situation concrète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ajouter et l'écrire, il faut savoir repérer tout seul quand une situation demande une addition. Écoute cette histoire : « Léa a $3$ euros dans sa tirelire. Son grand-père lui donne $2$ euros. Combien a-t-elle maintenant ? » Ici, une quantité de départ ($3$ euros) augmente parce qu'on lui en donne encore ($2$ euros). C'est un ajout, donc c'est une addition."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                100,
+                100,
+                200,
+                200
+              ],
+              "target": 700,
+              "caption": "Léa a $3$ euros ($100+100+100$). Elle reçoit $2$ euros ($200$). En tout, elle a $5$ euros. L'addition est $3 + 2 = 5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'ajout n'est pas un cadeau. Cela peut être une pousse qui grandit, des voitures qui arrivent sur un parking, ou des pages qu'on lit en plus. Chaque fois qu'une quantité initiale devient plus grande parce qu'on y met quelque chose en plus, on utilise l'addition. Regarde ce graphique : la barre bleue montre le nombre de fleurs au début, la barre verte montre les fleurs plantées en plus, et la barre dorée montre le total."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Au début : $4$ fleurs. Plantées en plus : $3$ fleurs. Total : $7$ fleurs. L'addition : $4 + 3 = 7$.",
+              "bars": [
+                {
+                  "label": "Au début",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ajoutées",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention ! Si l'histoire dit « Léa a $5$ euros, elle en dépense $2$ », la quantité diminue. Ce n'est pas une addition, ce sera une soustraction qu'on apprendra plus tard. Pour l'instant, retiens ce repère : les mots « en tout », « ensemble », « ajoutés », « reçus », « de plus » sont des indices qu'il faut additionner. Tu es prêt à t'exercer tout seul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partir d'une quantité et en ajouter une autre avec des objets.",
+                "Je sais représenter une addition sur une droite numérique ou avec un dessin.",
+                "J'écris une addition avec les signes $+$ et $=$.",
+                "Je reconnais une situation d'ajout (quantité qui augmente) dans une petite histoire."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Paul a $4$ voitures. Il en achète $2$ de plus. Combien a-t-il de voitures maintenant ? Écris l'addition.",
+              "answer": "$4 + 2 = 6$",
+              "hint": "La quantité de voitures augmente. C'est un ajout.",
+              "explanation": "Paul avait $4$ voitures, il en ajoute $2$. En tout, il a $6$ voitures. L'addition est $4 + 2 = 6$."
+            },
+            {
+              "question": "Sur le graphique à barres, la barre bleue vaut $5$, la barre verte vaut $3$. Quelle est l'addition pour trouver la barre dorée ?",
+              "answer": "$5 + 3 = 8$",
+              "hint": "Le total, c'est la somme des deux premières barres.",
+              "explanation": "La barre bleue ($5$) et la barre verte ($3$) ensemble forment la barre dorée. $5 + 3 = 8$."
+            },
+            {
+              "question": "Dans quelle histoire fait-on une addition ? A) Tom a $6$ billes, il en perd $2$. B) Ana a $3$ autocollants, elle en reçoit $4$.",
+              "answer": "B",
+              "hint": "Cherche l'histoire où la quantité augmente.",
+              "explanation": "Dans l'histoire B, Ana reçoit des autocollants, sa quantité augmente : c'est un ajout, donc une addition ($3 + 4$). Dans A, Tom perd des billes, la quantité diminue."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

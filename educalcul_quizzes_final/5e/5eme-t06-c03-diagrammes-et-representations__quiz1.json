@@ -1,0 +1,236 @@
+{
+  "_status": "done",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Lire",
+  "title": "Lire des diagrammes et des tableaux",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par les élèves d'une classe pendant les vacances.\\nCombien d'élèves ont lu exactement $2$ livres ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Sur le diagramme, la barre correspondante à « 2 livres » monte jusqu'à la graduation $4$ sur l'axe vertical. Cela signifie que $4$ élèves ont lu exactement $2$ livres. Les autres valeurs correspondent aux autres barres : $3$ élèves pour $0$ livre, $5$ élèves pour $1$ livre et $2$ élèves pour $3$ livres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus pendant les vacances",
+        "bars": [
+          {
+            "label": "0 livre",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "1 livre",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "2 livres",
+            "value": 4,
+            "tone": "navy"
+          },
+          {
+            "label": "3 livres",
+            "value": 2,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme circulaire montre les sports préférés des élèves de 5e.\\nQuelle fraction des élèves a choisi le football ?",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{10}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "Le total des élèves est $12 + 8 + 5 + 5 = 30$. Le football compte $12$ élèves. La fraction est $\\frac{12}{30} = \\frac{2}{5}$. L'option $\\frac{1}{3}$ correspondrait à $10$ élèves, $\\frac{1}{2}$ à $15$ élèves et $\\frac{3}{10}$ à $9$ élèves.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sport préféré des élèves de 5e",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Basket",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Natation",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Handball",
+            "value": 5,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous indique le nombre de plats servis à la cantine chaque jour de la semaine.\\nCombien de plats ont été servis le jeudi ?",
+      "options": [
+        "$20$",
+        "$22$",
+        "$19$",
+        "$18$"
+      ],
+      "correctAnswer": "$22$",
+      "explanation": "Dans le tableau, la ligne « Jeudi » et la colonne « Plat » se croisent sur la valeur $22$. Les autres valeurs correspondent aux autres jours : $20$ pour lundi, $18$ pour mardi et $19$ pour vendredi.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Entrée",
+          "Plat",
+          "Dessert"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "20",
+            "20",
+            "20"
+          ],
+          [
+            "Mardi",
+            "18",
+            "18",
+            "18"
+          ],
+          [
+            "Mercredi",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "Jeudi",
+            "22",
+            "22",
+            "22"
+          ],
+          [
+            "Vendredi",
+            "19",
+            "19",
+            "19"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres représente les températures maximales (en °C) relevées sur une semaine.\\nQuel jour a connu la température la plus élevée ?",
+      "options": [
+        "Mardi",
+        "Jeudi",
+        "Samedi",
+        "Vendredi"
+      ],
+      "correctAnswer": "Jeudi",
+      "explanation": "On compare la hauteur de toutes les barres. La barre la plus haute correspond à « Jeudi » avec une valeur de $18$ °C. Mardi est à $16$ °C, Samedi à $17$ °C et Vendredi à $15$ °C.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures maximales de la semaine",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Mercredi",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeudi",
+            "value": 18,
+            "tone": "navy"
+          },
+          {
+            "label": "Vendredi",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Samedi",
+            "value": 17,
+            "tone": "blue"
+          },
+          {
+            "label": "Dimanche",
+            "value": 13,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme ci-dessous montre les ventes de glaces (en dizaines) du lundi au vendredi.\\nQuelle est la différence entre les ventes du jour le plus fort et celles du jour le plus faible ?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$10$",
+        "$3$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Le jour le plus fort est jeudi avec $10$ dizaines de glaces. Le jour le plus faible est mercredi avec $3$ dizaines. La différence est $10 - 3 = 7$ dizaines. L'option $10$ est la valeur max, $3$ la valeur min, $5$ est une autre valeur (lundi).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Ventes de glaces en dizaines",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Mercredi",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeudi",
+            "value": 10,
+            "tone": "navy"
+          },
+          {
+            "label": "Vendredi",
+            "value": 6,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

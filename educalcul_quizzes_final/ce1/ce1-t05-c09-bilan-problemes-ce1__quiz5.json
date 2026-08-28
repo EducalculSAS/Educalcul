@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 116,
+  "_course_code": "ce1-t05-c09-bilan-problemes-ce1",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Choisir un modèle",
+  "title": "Choisir le bon modèle pour résoudre un problème",
+  "questions": [
+    {
+      "text": "Léa a $12$ billes. Elle en donne $5$ à Tom. Combien de billes lui reste-t-il ? Quel modèle choisir pour représenter cette situation ?",
+      "options": [
+        "Le modèle « Enlever » (Avant / Après)",
+        "Le modèle « Rassembler »",
+        "Le modèle « Comparer »",
+        "Le modèle « Partager »"
+      ],
+      "correctAnswer": "Le modèle « Enlever » (Avant / Après)",
+      "explanation": "L'énoncé décrit une transformation : une quantité de départ ($12$) diminue car on en retire une partie ($5$). On cherche l'état final. C'est la structure classique du modèle « Enlever » ou « Avant / Après » : Tout au départ - Partie enlevée = Reste. Le modèle « Rassembler » sert pour une addition (union de deux ensembles disjoints). Le modèle « Comparer » sert pour trouver la différence entre deux quantités existantes simultanément. Le modèle « Partager » concerne la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $15$ cartes. Lucie en a $9$. Combien Paul a-t-il de cartes de plus que Lucie ? Quel est le modèle adapté ?",
+      "options": [
+        "Le modèle « Comparer » (deux barres alignées)",
+        "Le modèle « Rassembler »",
+        "Le modèle « Enlever »",
+        "Le modèle « Partie-Partie-Tout »"
+      ],
+      "correctAnswer": "Le modèle « Comparer » (deux barres alignées)",
+      "explanation": "Il s'agit de comparer deux quantités distinctes ($15$ et $9$) qui existent en même temps (pas d'action de donner ou d'enlever). On cherche l'écart (la différence) entre les deux. Le modèle « Comparer » représente deux barres alignées au départ ; la partie qui dépasse la plus courte barre correspond à la différence. « Rassembler » et « Enlever » impliquent une action qui modifie une quantité unique. « Partie-Partie-Tout » lie un tout et ses parties, mais ici il n'y a pas de « tout » commun aux deux enfants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, il y a $24$ élèves. $13$ sont des filles. Combien y a-t-il de garçons ? Quel modèle permet de visualiser le mieux la relation entre les nombres ?",
+      "options": [
+        "Le modèle « Partie-Partie-Tout » (chercher une partie)",
+        "Le modèle « Enlever »",
+        "Le modèle « Comparer »",
+        "Le modèle « Rassembler »"
+      ],
+      "correctAnswer": "Le modèle « Partie-Partie-Tout » (chercher une partie)",
+      "explanation": "C'est une situation statique : le total ($24$) est composé de deux parties (filles $13$ et garçons ?) qui coexistent sans action de transformation. On connaît le tout et une partie, on cherche l'autre partie. C'est la définition du modèle « Partie-Partie-Tout ». Bien que le calcul soit une soustraction ($24 - 13$), le modèle « Enlever » suggérerait à tort que les filles sont parties de la classe. « Comparer » opposerait deux groupes distincts sans notion de total commun. « Rassembler » irait de les parties vers le tout, or le tout est déjà connu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marc a $20$ €. Il achète un livre à $8$ € et un stylo à $3$ €. Combien lui reste-t-il ? Quelle suite de modèles choisir pour résoudre ce problème en deux étapes ?",
+      "options": [
+        "D'abord le modèle « Rassembler » pour additionner les prix, puis le modèle « Enlever » pour trouver le reste",
+        "D'abord le modèle « Enlever » deux fois de suite",
+        "Le modèle « Comparer » puis le modèle « Partager »",
+        "Le modèle « Partie-Partie-Tout » une seule fois"
+      ],
+      "correctAnswer": "D'abord le modèle « Rassembler » pour additionner les prix, puis le modèle « Enlever » pour trouver le reste",
+      "explanation": "La résolution la plus claire sépare les deux opérations logiques. Étape 1 : On met ensemble (on « Rassemble ») le prix du livre ($8$) et du stylo ($3$) pour trouver le total dépensé ($11$). Étape 2 : On « Enlève » ce total dépensé ($11$) de la somme de départ ($20$) pour trouver le reste ($9$). Faire deux « Enlever » de suite ($20 - 8 = 12$, puis $12 - 3 = 9$) est possible mais correspond à une modélisation séquentielle moins structurante pour comprendre le « total dépensé ». Les autres options ne correspondent pas aux opérations nécessaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a reçu quelques bonbons. Elle en a mangé $4$. Il lui en reste $6$. Combien en avait-elle au début ? Quel modèle choisir pour trouver le nombre de départ ?",
+      "options": [
+        "Le modèle « Rassembler » (on connaît les deux parties, on cherche le tout)",
+        "Le modèle « Enlever » (car il y a « mangé » donc on enlève)",
+        "Le modèle « Comparer »",
+        "Le modèle « Partager »"
+      ],
+      "correctAnswer": "Le modèle « Rassembler » (on connaît les deux parties, on cherche le tout)",
+      "explanation": "C'est un problème « à trous » où l'état initial est inconnu. On connaît les deux parties qui composent le total initial : la partie « mangée » ($4$) et la partie « restante » ($6$). Pour retrouver le tout (le nombre de départ), il faut « Rassembler » ces deux parties : $4 + 6 = 10$. Choisir « Enlever » parce qu'on lit « mangé » est l'erreur classique : on ne peut pas enlever $4$ d'un nombre qu'on ne connaît pas encore. « Comparer » et « Partager » ne correspondent à aucune relation décrite.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

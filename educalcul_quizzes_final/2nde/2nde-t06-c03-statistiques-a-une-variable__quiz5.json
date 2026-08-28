@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Moyenne / médiane / quartiles selon programme",
+  "title": "Approfondissement : Moyenne, médiane et quartiles",
+  "questions": [
+    {
+      "text": "On considère la série statistique suivante : $12 ; 15 ; 18 ; 20 ; 50$. Laquelle des affirmations suivantes est exacte ?",
+      "options": [
+        "La moyenne vaut $23$ et la médiane vaut $18$, la moyenne est supérieure à la médiane.",
+        "La moyenne vaut $18$ et la médiane vaut $23$, la médiane est supérieure à la moyenne.",
+        "La moyenne et la médiane sont toutes deux égales à $23$.",
+        "La moyenne et la médiane sont toutes deux égales à $18$."
+      ],
+      "correctAnswer": "La moyenne vaut $23$ et la médiane vaut $18$, la moyenne est supérieure à la médiane.",
+      "explanation": "La somme des valeurs est $12 + 15 + 18 + 20 + 50 = 115$. L'effectif total est $5$. La moyenne est donc $115 / 5 = 23$. Comme l'effectif est impair ($5$), la médiane est la valeur centrale une fois la série ordonnée, soit la $3^{\\text{ème}}$ valeur : $18$. La valeur $50$ est une valeur aberrante qui tire la moyenne vers le haut, la rendant supérieure à la médiane. Les autres options inversent les valeurs ou les égalisent à tort.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la série ordonnée : $2 ; 4 ; 6 ; 8 ; 10 ; 12 ; 14 ; 16$. Quelles sont les valeurs du premier quartile $Q_1$ et du troisième quartile $Q_3$ selon la méthode du programme de Seconde (médianes des deux moitiés) ?",
+      "options": [
+        "$Q_1 = 5$ et $Q_3 = 13$",
+        "$Q_1 = 4$ et $Q_3 = 14$",
+        "$Q_1 = 6$ et $Q_3 = 12$",
+        "$Q_1 = 5$ et $Q_3 = 12$"
+      ],
+      "correctAnswer": "$Q_1 = 5$ et $Q_3 = 13$",
+      "explanation": "L'effectif total est $n = 8$ (pair). La médiane (deuxième quartile) est la moyenne des deux valeurs centrales : $(8 + 10) / 2 = 9$. La série se divise en deux moitiés de $4$ valeurs chacune. La moitié inférieure est $2 ; 4 ; 6 ; 8$. Son médiane ($Q_1$) est $(4 + 6) / 2 = 5$. La moitié supérieure est $10 ; 12 ; 14 ; 16$. Son médiane ($Q_3$) est $(12 + 14) / 2 = 13$. L'option B correspond aux extrémités des moitiés, l'option C aux valeurs centrales de la série totale, l'option D mélange une moitié correcte et une erreur sur l'autre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On représente une série statistique par la boîte à moustaches ci-dessous. Quelle affirmation est nécessairement vraie ?",
+      "options": [
+        "50 % des valeurs de la série sont comprises entre 20 et 40.",
+        "La moyenne de la série est exactement 30.",
+        "L'étendue totale de la série est 30.",
+        "Le premier quartile est 10."
+      ],
+      "correctAnswer": "50 % des valeurs de la série sont comprises entre 20 et 40.",
+      "explanation": "Sur une boîte à moustaches, la boîte représente l'intervalle interquartile $[Q_1 ; Q_3]$. D'après la figure, $Q_1 = 20$ et $Q_3 = 40$. Par définition des quartiles, 25 % des valeurs sont inférieures à $Q_1$, 25 % sont supérieures à $Q_3$, donc 50 % sont comprises entre $Q_1$ et $Q_3$. La médiane (trait dans la boîte) est 30, mais la moyenne n'est pas déterminée par la boîte (option B fausse). L'étendue totale est $\\text{Max} - \\text{Min} = 50 - 10 = 40$ (option C fausse). Le premier quartile est le bord gauche de la boîte, soit 20, et non le minimum 10 (option D fausse).",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Boîte à moustaches de la série",
+        "min": 10,
+        "q1": 20,
+        "median": 30,
+        "q3": 40,
+        "max": 50
+      }
+    },
+    {
+      "text": "Deux classes passent le même contrôle. Classe A : moyenne $12$, médiane $12$, $Q_1 = 10$, $Q_3 = 14$. Classe B : moyenne $12$, médiane $11$, $Q_1 = 8$, $Q_3 = 15$. Que peut-on conclure sur la dispersion des notes ?",
+      "options": [
+        "La classe A est plus homogène que la classe B car son intervalle interquartile est plus petit.",
+        "La classe B est plus homogène que la classe A car sa médiane est plus proche de la moyenne.",
+        "Les deux classes ont la même dispersion car elles ont la même moyenne.",
+        "On ne peut pas comparer la dispersion sans connaître l'écart-type."
+      ],
+      "correctAnswer": "La classe A est plus homogène que la classe B car son intervalle interquartile est plus petit.",
+      "explanation": "L'homogénéité (faible dispersion) se mesure par l'intervalle interquartile (IIQ) $= Q_3 - Q_1$. Pour la classe A : $IIQ = 14 - 10 = 4$. Pour la classe B : $IIQ = 15 - 8 = 7$. L'intervalle interquartile de la classe A est plus petit, ce qui signifie que les 50 % centraux des notes sont moins écartés : la classe A est plus homogène. La moyenne ne renseigne pas sur la dispersion (option C fausse). La proximité médiane/moyenne indique une symétrie, pas une faible dispersion (option B fausse). L'écart-type n'est pas nécessaire pour comparer la dispersion via l'IIQ (option D fausse).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la série ordonnée : $5 ; 8 ; x ; 12 ; 15 ; 20$. On sait que la médiane de cette série est $11$. Quelle est la valeur de $x$ ?",
+      "options": [
+        "10",
+        "11",
+        "9",
+        "12"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La série comporte $6$ valeurs (effectif pair). La médiane est la moyenne des deux valeurs centrales, ici la $3^{\\text{ème}}$ ($x$) et la $4^{\\text{ème}}$ ($12$). On a donc $(x + 12) / 2 = 11$. Il vient $x + 12 = 22$, donc $x = 10$. On vérifie l'ordre : $5 < 8 < 10 < 12 < 15 < 20$, la série reste bien ordonnée. Si $x=11$, la médiane serait $11,5$. Si $x=9$, la médiane serait $10,5$. Si $x=12$, la médiane serait $12$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

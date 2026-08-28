@@ -1,0 +1,493 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.336916+00:00",
+  "id": 590,
+  "code": "1ere-generale-maths-t04-c02",
+  "title": "Forme canonique",
+  "description": "Cours structuré Educalcul : Forme canonique.",
+  "subject": "Second degré et fonctions",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Second degré et fonctions",
+    "titre_du_cours": "Forme canonique",
+    "objectif_global": "Forme canonique",
+    "mini_lecons_imposees": [
+      "Sommet.",
+      "Variations.",
+      "Passer d'une forme à l'autre."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Second degré et fonctions",
+      "lessons": [
+        {
+          "title": "Sommet.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sommet d'une parabole"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur la forme canonique. Nous allons découvrir ensemble comment repérer le sommet d'une parabole, ce point si particulier qui est soit le plus bas, soit le plus haut de la courbe. Pas de panique : chaque étape sera illustrée par des exemples concrets, et tu verras que la logique derrière est tout à fait accessible. Prends le temps de lire, de visualiser et d'essayer les exercices proposés ; c'est en manipulant les nombres que la notion devient évidente."
+            },
+            {
+              "type": "definition",
+              "term": "forme canonique",
+              "definition": "Une fonction du second degré est sous forme canonique lorsqu'elle s'écrit $f(x)=a(x-h)^2+k$ avec $a\\neq0$. Le couple $(h,k)$ est alors le sommet de la parabole.",
+              "example": "Par exemple $f(x)=2(x-3)^2+5$ a pour sommet $(3,5)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand la fonction est déjà donnée sous forme canonique, le sommet saute aux yeux : il suffit de lire les valeurs $h$ et $k$ dans l'expression. Le coefficient $a$ indique seulement l'ouverture et le sens de la parabole, mais ne change pas la position du sommet. C'est une lecture directe, sans calcul compliqué."
+            },
+            {
+              "type": "display_math",
+              "latex": "(h,k) = \\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple numérique : $f(x) = -4(x+1)^2 + 7$. Ici $h = -1$ et $k = 7$, donc le sommet est $S(-1,7)$. Le coefficient $a = -4$ est négatif, la parabole est tournée vers le bas, le sommet est donc le point le plus haut. Essaie de visualiser : la courbe passe par $(-1,7)$ et s'incline de part et d'autre."
+            },
+            {
+              "type": "graph",
+              "expression": "-4*(x+1)^2+7",
+              "xmin": -5,
+              "xmax": 3,
+              "caption": "Parabole de sommet (-1,7) avec a=-4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, supposons que la fonction soit présentée sous la forme développée $f(x)=ax^2+bx+c$. Le sommet n'est plus lisible directement, mais une formule simple permet de le retrouver. Nous allons décomposer la méthode en trois étapes claires, que tu pourras réutiliser à chaque fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans la forme développée $f(x)=ax^2+bx+c$, repère $a$, $b$ et $c$. Par exemple pour $f(x)=2x^2-8x+7$, on a $a=2$, $b=-8$, $c=7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'abscisse du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $x_S = -\\frac{b}{2a}$. Avec nos nombres : $x_S = -\\frac{-8}{2\\times2} = \\frac{8}{4} = 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'ordonnée du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue $f(x_S)$ pour obtenir $y_S$. Ici $f(2) = 2\\times4 - 8\\times2 + 7 = 8 - 16 + 7 = -1$. Le sommet est donc $S(2,-1)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x",
+                "f(x)"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "-1"
+                ],
+                [
+                  "3",
+                  "1"
+                ]
+              ],
+              "caption": "Valeurs autour du sommet pour $f(x)=2x^2-8x+7$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième situation : on connaît le sommet et le coefficient $a$, et on veut écrire la forme canonique. C'est l'opération inverse, tout aussi simple. Il suffit de placer les valeurs dans le modèle $f(x)=a(x-h)^2+k$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la structure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On part de $f(x)=a(x-h)^2+k$ avec le sommet $(h,k)$ connu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer $a$, $h$, $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a=2$ et le sommet est $(3,5)$, on obtient $f(x)=2(x-3)^2+5$. Si $a=-1$ et le sommet $(-2,4)$, on a $f(x)=-(x+2)^2+4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois façons d'accéder au sommet : lecture directe en forme canonique, calcul par la formule en forme développée, et construction de la forme canonique à partir du sommet. Ces outils seront la base pour étudier les variations et pour passer d'une forme à l'autre dans les prochaines leçons."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le sommet de la fonction $f(x)=3(x+2)^2-4$.",
+              "answer": "(-2,-4)",
+              "hint": "Repère h et k dans l'expression.",
+              "explanation": "La forme canonique est $a(x-h)^2+k$, donc le sommet est $(h,k)$. Ici $h=-2$, $k=-4$."
+            },
+            {
+              "question": "Pour $f(x)=2x^2-8x+7$, détermine le sommet.",
+              "answer": "(2,-1)",
+              "hint": "Utilise $x_S=-b/(2a)$.",
+              "explanation": "a=2, b=-8 => x_S = 8/4=2. f(2)=2*4-16+7=-1."
+            },
+            {
+              "question": "Écris la forme canonique de la parabole de sommet $(1,3)$ avec $a=-2$.",
+              "answer": "$f(x)=-2(x-1)^2+3$",
+              "hint": "Remplace h, k, a dans $a(x-h)^2+k$.",
+              "explanation": "On substitue directement : $a=-2$, $h=1$, $k=3$."
+            }
+          ]
+        },
+        {
+          "title": "Variations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variations d'une fonction du second degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons comprendre comment une parabole monte et descend. Les variations décrivent exactement ce comportement : sur quels intervalles la fonction augmente, sur quels intervalles elle diminue. C'est une lecture visuelle que tu pourras faire rien qu'en regardant le signe du coefficient $a$ et la position du sommet. Rassure-toi, la méthode est systématique et ne demande qu'un peu d'organisation."
+            },
+            {
+              "type": "definition",
+              "term": "variations",
+              "definition": "Les variations d'une fonction indiquent sur quels intervalles elle est croissante (les valeurs augmentent quand $x$ augmente) ou décroissante (les valeurs diminuent quand $x$ augmente).",
+              "example": "Pour $f(x)=x^2$, la fonction est décroissante sur $]-\\infty,0]$ et croissante sur $[0,+\\infty[$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe de $a$ dans la forme canonique $f(x)=a(x-h)^2+k$ décide de la convexité : si $a>0$, la parabole est tournée vers le haut (convexe), le sommet est un minimum ; si $a<0$, elle est tournée vers le bas (concave), le sommet est un maximum. À partir de là, les variations s'écrivent presque toutes seules : de moins l'infini jusqu'à l'abscisse du sommet, la fonction fait l'inverse de ce qu'elle fait après le sommet."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Intervalle",
+                "Variation"
+              ],
+              "rows": [
+                [
+                  "$]-\\infty, h]$",
+                  "décroissante si $a>0$, croissante si $a<0$"
+                ],
+                [
+                  "$[h, +\\infty[$",
+                  "croissante si $a>0$, décroissante si $a<0$"
+                ]
+              ],
+              "caption": "Tableau de variations type selon le signe de a"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire toi-même un tableau de variations à partir d'une forme canonique, suis ces étapes : identifie $a$ et $h$, décide du sens de variation avant et après $h$, puis remplis le tableau. C'est une routine qui devient automatique avec un peu d'entraînement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire $a$ et $h$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $f(x)=a(x-h)^2+k$, note le signe de $a$ et la valeur de $h$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déduire les variations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a>0$ : décroissante sur $]-\\infty,h]$, croissante sur $[h,+\\infty[$. Si $a<0$ : croissante sur $]-\\infty,h]$, décroissante sur $[h,+\\infty[$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une ligne avec les intervalles et les flèches correspondantes. N'oublie pas d'indiquer la valeur du sommet $k$ si on te le demande."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode à $f(x)=-(x-4)^2+2$. Ici $a=-1<0$ et $h=4$. Donc la fonction est croissante sur $]-\\infty,4]$ et décroissante sur $[4,+\\infty[$. Le sommet $S(4,2)$ est un maximum. Essaie de dessiner mentalement la courbe : elle monte jusqu'à $x=4$, atteint $2$, puis redescend."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la fonction est donnée sous forme développée. Il faut d'abord trouver le sommet (comme nous l'avons vu dans la leçon précédente) pour connaître $h$, puis appliquer la même règle selon le signe de $a$. C'est une simple combinaison des deux compétences que tu maîtrises déjà."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*(x+3)^2-2",
+              "xmin": -8,
+              "xmax": 2,
+              "caption": "Parabole de sommet (-3,-2), convexe, variations décroissante puis croissante"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire et construire les variations d'une fonction du second degré, quelle que soit sa forme. Cette compétence est essentielle pour tracer des graphes, résoudre des inéquations ou étudier des problèmes d'optimisation. La prochaine leçon te montrera comment passer aisément d'une forme à l'autre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x)=-(x-4)^2+2$. Décris les variations de f.",
+              "answer": "Croissante sur $]-\\infty,4]$, décroissante sur $[4,+\\infty[$.",
+              "hint": "Regarde le signe de a.",
+              "explanation": "a=-1<0 donc parabole tournée vers le bas, sommet en 4."
+            },
+            {
+              "question": "Pour $f(x)=2x^2+4x-1$, construis le tableau de variations.",
+              "answer": "Décroissante sur $]-\\infty,-1]$, croissante sur $[-1,+\\infty[$.",
+              "hint": "Trouve le sommet d'abord.",
+              "explanation": "a=2>0, sommet à x=-b/2a=-4/4=-1."
+            },
+            {
+              "question": "Trace un schéma qualitatif de la parabole $f(x)=0.5(x+3)^2-2$ en indiquant le sommet et le sens de variation.",
+              "answer": "Sommet (-3,-2), convexe, décroissante puis croissante.",
+              "hint": "Utilise la forme canonique.",
+              "explanation": "a=0.5>0, sommet (-3,-2)."
+            }
+          ]
+        },
+        {
+          "title": "Passer d'une forme à l'autre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la forme développée à la forme canonique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. L'objectif est de devenir à l'aise avec la transformation entre les deux écritures d'une fonction du second degré : la forme développée $ax^2+bx+c$ et la forme canonique $a(x-h)^2+k$. Cette manipulation, appelée complétion du carré, est un outil puissant que tu utiliseras tout au long de l'année, notamment pour résoudre des équations, trouver des extremums ou intégrer des fonctions. Pas de stress : nous allons la décomposer pas à pas, avec des exemples variés."
+            },
+            {
+              "type": "definition",
+              "term": "complétion du carré",
+              "definition": "Technique algébrique qui consiste à réécrire un trinôme $ax^2+bx+c$ sous la forme $a(x-h)^2+k$ en ajoutant et soustrayant le carré approprié à l'intérieur de l'expression.",
+              "example": "$x^2-6x+5 = (x-3)^2-4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'idée centrale est de créer un carré parfait à partir des termes en $x^2$ et $x$. On factorise $a$ devant les deux premiers termes, on ajoute et soustrait le carré de la moitié du coefficient de $x$, puis on regroupe. C'est une gymnastique algébrique qui devient fluide avec la pratique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Factoriser $a$ sur les termes en $x^2$ et $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)=ax^2+bx+c$, écris $f(x)=a\\left(x^2+\\frac{b}{a}x\\right)+c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compléter le carré à l'intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute et soustrait $\\left(\\frac{b}{2a}\\right)^2$ : $a\\left[\\left(x+\\frac{b}{2a}\\right)^2-\\left(\\frac{b}{2a}\\right)^2\\right]+c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier pour obtenir la forme canonique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Développe : $a\\left(x+\\frac{b}{2a}\\right)^2 - a\\left(\\frac{b}{2a}\\right)^2 + c$. On a alors $h=-\\frac{b}{2a}$ et $k = c - \\frac{b^2}{4a}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=a\\left(x+\\frac{b}{2a}\\right)^2 + \\left(c-\\frac{b^2}{4a}\\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse, passer de la forme canonique à la forme développée, est plus directe : il suffit de développer le carré et de distribuer $a$. C'est un bon exercice de vérification pour t'assurer que tu n'as pas fait d'erreur dans la complétion."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Développer le carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)=a(x-h)^2+k$, écris $(x-h)^2 = x^2 - 2hx + h^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier par $a$ et ajouter $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $f(x)=ax^2 - 2ahx + ah^2 + k$. Identifie alors $b=-2ah$ et $c=ah^2+k$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=-3(x+2)^2+7$. Développons : $(x+2)^2 = x^2+4x+4$. Multiplions par $-3$ : $-3x^2-12x-12$. Ajoutons $7$ : $-3x^2-12x-5$. La forme développée est donc $f(x)=-3x^2-12x-5$. Vérifie que le sommet retrouvé par la formule $-\\frac{b}{2a}$ donne bien $x=-2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, si on te donne le sommet et le coefficient $a$, tu peux écrire directement la forme canonique sans passer par la forme développée. C'est la méthode la plus rapide pour modéliser une situation où l'on connaît l'extremum et l'ouverture de la parabole."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter $a$, $h$, $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le sommet est $(h,k)$, le coefficient directeur est $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire $f(x)=a(x-h)^2+k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace simplement les lettres par les valeurs données. Attention au signe de $h$ : si le sommet a pour abscisse $-2$, alors $h=-2$ et le terme devient $(x+2)^2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*(x+2)^2+4",
+              "xmin": -6,
+              "xmax": 2,
+              "caption": "Parabole de sommet (-2,4) avec a=0.5, même courbe sous les deux formes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le sommet d'une parabole sous forme canonique.",
+                "Je sais déterminer les variations d'une fonction du second degré.",
+                "Je sais passer de la forme développée à la forme canonique par complétion du carré.",
+                "Je sais retrouver la forme canonique connaissant le sommet et le coefficient a."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Mets sous forme canonique : $f(x)=x^2-6x+5$.",
+              "answer": "$f(x)=(x-3)^2-4$",
+              "hint": "Complète le carré.",
+              "explanation": "$x^2-6x = (x-3)^2-9$, donc $+5$ donne $-4$."
+            },
+            {
+              "question": "Développe $f(x)=-3(x+2)^2+7$ sous forme développée.",
+              "answer": "$f(x)=-3x^2-12x-5$",
+              "hint": "Développe le carré puis distribue.",
+              "explanation": "$(-3)(x^2+4x+4)+7 = -3x^2-12x-12+7 = -3x^2-12x-5$."
+            },
+            {
+              "question": "Trouve la forme canonique de la parabole de sommet $(-2,4)$ avec $a=1/2$.",
+              "answer": "$f(x)=\\frac{1}{2}(x+2)^2+4$",
+              "hint": "Remplace h, k, a.",
+              "explanation": "$h=-2 \\Rightarrow x-(-2)=x+2$, $a=1/2$, $k=4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

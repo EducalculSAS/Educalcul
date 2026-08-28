@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Lire une fonction graphiquement",
+  "title": "Lire une fonction graphiquement",
+  "questions": [
+    {
+      "text": "Sur le graphique de la fonction $f(x)=2x+1$, quelle est la valeur de $f(3)$ ?",
+      "options": [
+        "5",
+        "7",
+        "9",
+        "11"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Pour $x=3$, on calcule $f(3)=2\\times3+1=6+1=7$. Les autres options correspondent à des erreurs de calcul ou de lecture de l'ordonnée.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=2x+1$"
+      }
+    },
+    {
+      "text": "D'après le même graphique, quelle valeur de $x$ donne $f(x)=5$ ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On résout $2x+1=5$, soit $2x=4$, donc $x=2$. Sur le graphique, le point d'abscisse 2 a pour ordonnée 5.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=2x+1$"
+      }
+    },
+    {
+      "text": "La fonction représentée est-elle croissante, décroissante, constante ou aucune de ces trois ?",
+      "options": [
+        "croissante",
+        "décroissante",
+        "constante",
+        "ni l'une ni l'autre"
+      ],
+      "correctAnswer": "croissante",
+      "explanation": "Le coefficient directeur de $f(x)=2x+1$ est $2>0$, donc la fonction est strictement croissante sur $\\mathbb{R}$. Le graphique monte de gauche à droite.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=2x+1$"
+      }
+    },
+    {
+      "text": "Quelles sont les coordonnées de l'intersection de la courbe avec l'axe des ordonnées ?",
+      "options": [
+        "(0,1)",
+        "(0,2)",
+        "(1,0)",
+        "(2,0)"
+      ],
+      "correctAnswer": "(0,1)",
+      "explanation": "L'ordonnée à l'origine s'obtient pour $x=0$ : $f(0)=2\\times0+1=1$. Le point est donc $(0,1)$. Les autres options confondent abscisse et ordonnée ou donnent l'intersection avec l'axe des abscisses.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=2x+1$"
+      }
+    },
+    {
+      "text": "Pour la fonction $g(x)=x^2-4$ tracée ci-dessous, quelles sont les racines (zéros) de la fonction ?",
+      "options": [
+        "-2 et 2",
+        "-4 et 4",
+        "-1 et 1",
+        "0 et 4"
+      ],
+      "correctAnswer": "-2 et 2",
+      "explanation": "On résout $x^2-4=0$, soit $x^2=4$, donc $x=-2$ ou $x=2$. Sur le graphique, la coupe l'axe des abscisses en ces deux points. Les autres paires ne satisfont pas l'équation.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $g(x)=x^2-4$"
+      }
+    }
+  ]
+}

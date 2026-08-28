@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 220,
+  "_course_code": "cm1-t02-c02-fractions-superieures-a-1",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Plusieurs unités",
+  "title": "Fractions supérieures à 1 : Plusieurs unités",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. Quel nombre mixte représente la zone colorée ?",
+      "options": [
+        "$2\\ 3/4$",
+        "$2\\ 1/4$",
+        "$3\\ 3/4$",
+        "$1\\ 3/4$"
+      ],
+      "correctAnswer": "$2\\ 3/4$",
+      "explanation": "La figure montre deux unités entières complètement colorées (deux fois $1$) et une troisième unité colorée aux trois quarts ($3/4$). On additionne : $1 + 1 + 3/4 = 2\\ 3/4$. L'option $2\\ 1/4$ correspondrait à deux unités et un quart. L'option $3\\ 3/4$ compte trois unités entières. L'option $1\\ 3/4$ ne compte qu'une unité entière.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 1
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Deux unités entières et trois quarts d'unité"
+      }
+    },
+    {
+      "text": "Écris la fraction $11/4$ sous la forme d'un nombre mixte.",
+      "options": [
+        "$2\\ 3/4$",
+        "$1\\ 7/4$",
+        "$2\\ 1/4$",
+        "$3\\ 1/4$"
+      ],
+      "correctAnswer": "$2\\ 3/4$",
+      "explanation": "Pour convertir $11/4$ en nombre mixte, on cherche combien de fois le dénominateur $4$ rentre dans le numérateur $11$. $4 \\times 2 = 8$. Il reste $11 - 8 = 3$. Le quotient $2$ est la partie entière, le reste $3$ est le numérateur de la partie fractionnaire, le dénominateur reste $4$. On obtient $2\\ 3/4$. L'option $1\\ 7/4$ n'est pas un nombre mixte simplifié (la partie fractionnaire est supérieure à 1). L'option $2\\ 1/4$ correspond à $9/4$. L'option $3\\ 1/4$ correspond à $13/4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite numérale graduée ci-dessous, quel nombre mixte correspond au point A ?",
+      "options": [
+        "$2\\ 1/2$",
+        "$1\\ 1/2$",
+        "$3\\ 1/2$",
+        "$2\\ 1/4$"
+      ],
+      "correctAnswer": "$2\\ 1/2$",
+      "explanation": "La droite numérale va de $0$ à $3$. Les graduations principales sont les entiers $0, 1, 2, 3$. Le point A est placé exactement au milieu entre $2$ et $3$. La moitié de $1$ est $1/2$. Le point A correspond donc à $2 + 1/2 = 2\\ 1/2$ (ou $5/2$). L'option $1\\ 1/2$ se situerait entre $1$ et $2$. L'option $3\\ 1/2$ serait après $3$. L'option $2\\ 1/4$ serait plus près de $2$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérale de 0 à 3",
+        "min": 0,
+        "max": 3,
+        "points": [
+          {
+            "value": 2.5,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Paul a $3$ litres de jus d'orange. Il verse $3/4$ de litre dans un verre. Quelle quantité de jus reste-t-il dans la bouteille ?",
+      "options": [
+        "$2\\ 1/4$",
+        "$2\\ 3/4$",
+        "$3\\ 1/4$",
+        "$1\\ 3/4$"
+      ],
+      "correctAnswer": "$2\\ 1/4$",
+      "explanation": "Il faut calculer $3 - 3/4$. On décompose l'entier $3$ en $2 + 1$. On transforme l'unité $1$ en quarts : $1 = 4/4$. On a alors $2 + 4/4$. On soustrait $3/4$ à $4/4$ : $4/4 - 3/4 = 1/4$. Il reste $2 + 1/4 = 2\\ 1/4$ litres. L'option $2\\ 3/4$ serait le résultat de $3 - 1/4$. L'option $3\\ 1/4$ est plus grande que la quantité de départ. L'option $1\\ 3/4$ correspond à $3 - 1\\ 1/4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les nombres suivants par ordre croissant : $7/3$, $2\\ 1/3$, $8/3$, $1\\ 2/3$.",
+      "options": [
+        "$1\\ 2/3 < 2\\ 1/3 < 2\\ 2/3$",
+        "$2\\ 1/3 < 1\\ 2/3 < 2\\ 2/3$",
+        "$2\\ 2/3 < 2\\ 1/3 < 1\\ 2/3$",
+        "$1\\ 2/3 < 2\\ 2/3 < 2\\ 1/3$"
+      ],
+      "correctAnswer": "$1\\ 2/3 < 2\\ 1/3 < 2\\ 2/3$",
+      "explanation": "On convertit tout en nombres mixtes pour comparer facilement les parties entières. $7/3 = 2\\ 1/3$ (car $3\\times2=6$, reste $1$). $8/3 = 2\\ 2/3$ (car $3\\times2=6$, reste $2$). $1\\ 2/3$ a pour partie entière $1$. $2\\ 1/3$ et $2\\ 2/3$ ont pour partie entière $2$. Le plus petit est donc $1\\ 2/3$. Entre $2\\ 1/3$ et $2\\ 2/3$, on compare les parties fractionnaires : $1/3 < 2/3$. L'ordre est donc $1\\ 2/3 < 2\\ 1/3 < 2\\ 2/3$. L'option correcte utilise l'équivalence $7/3 = 2\\ 1/3$ et $8/3 = 2\\ 2/3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

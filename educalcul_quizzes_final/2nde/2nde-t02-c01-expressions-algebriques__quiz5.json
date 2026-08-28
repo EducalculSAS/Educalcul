@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Structure",
+  "title": "Quiz : Structure des expressions algebriques (Seconde)",
+  "questions": [
+    {
+      "text": "Quelle est la factorisation de l'expression $x^2 - 9$ ?",
+      "options": [
+        "$(x-3)(x+3)$",
+        "$(x-3)^2$",
+        "$(x+3)^2$",
+        "$x(x-9)$"
+      ],
+      "correctAnswer": "$(x-3)(x+3)$",
+      "explanation": "L'expression $x^2 - 9$ est une difference de deux carres : $x^2 - 3^2 = (x-3)(x+3)$. Les autres options correspondent a un carre parfait ou a une factorisation partielle incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $2x^2 + 4x + 3x + 6$ par regroupement.",
+      "options": [
+        "$(2x+3)(x+2)$",
+        "$(2x+2)(x+3)$",
+        "$(2x+6)(x+1)$",
+        "$(2x+3)(x+3)$"
+      ],
+      "correctAnswer": "$(2x+3)(x+2)$",
+      "explanation": "En regroupant les termes : $(2x^2+4x)+(3x+6)=2x(x+2)+3(x+2)=(2x+3)(x+2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Developpez et simplifiez $(3x-2)^2$.",
+      "options": [
+        "$9x^2 -12x +4$",
+        "$9x^2 -6x +4$",
+        "$9x^2 -12x -4$",
+        "$3x^2 -12x +4$"
+      ],
+      "correctAnswer": "$9x^2 -12x +4$",
+      "explanation": "En utilisant $(a-b)^2 = a^2 -2ab + b^2$ avec $a=3x$, $b=2$, on obtient $9x^2 -12x +4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes est un trinome carre parfait equivalent a $4x^2 + 12x + 9$ ?",
+      "options": [
+        "$(2x+3)^2$",
+        "$(2x-3)^2$",
+        "$(4x+3)^2$",
+        "$(x+3)^2$"
+      ],
+      "correctAnswer": "$(2x+3)^2$",
+      "explanation": "Le trinome $4x^2 + 12x + 9$ s'ecrit $(2x)^2 + 2\\cdot 2x \\cdot 3 + 3^2 = (2x+3)^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez la fraction rationnelle $(x^2-4)/(x^2-2x-8)$ en factorisant le numerateur et le denominateur.",
+      "options": [
+        "$(x-2)/(x-4)$",
+        "$(x+2)/(x-4)$",
+        "$(x-2)/(x+4)$",
+        "$(x+2)/(x+4)$"
+      ],
+      "correctAnswer": "$(x-2)/(x-4)$",
+      "explanation": "Factorisons : $x^2-4 = (x-2)(x+2)$ et $x^2-2x-8 = (x-4)(x+2)$. Apres simplification du facteur commun $(x+2)$ (pour $x\\neq -2$), on obtient $(x-2)/(x-4)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

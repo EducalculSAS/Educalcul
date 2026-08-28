@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître un triangle",
+  "title": "Quiz : Reconnaître un triangle (CE1)",
+  "questions": [
+    {
+      "text": "Combien de côtés et de sommets a un triangle ?",
+      "options": [
+        "$3$ côtés et $3$ sommets",
+        "$4$ côtés et $4$ sommets",
+        "$3$ côtés et $4$ sommets",
+        "$0$ côté et $0$ sommet"
+      ],
+      "correctAnswer": "$3$ côtés et $3$ sommets",
+      "explanation": "Un triangle est un polygone qui a exactement $3$ côtés (qui sont des segments de droite) et $3$ sommets (les points où les côtés se rejoignent). L'option avec $4$ côtés correspond à un quadrilatère (carré, rectangle). L'option avec $0$ côté correspond à un cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe la figure ci-dessous. Quel est son nom ?",
+      "options": [
+        "Un triangle",
+        "Un carré",
+        "Un rectangle",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un triangle",
+      "explanation": "La figure présentée a trois côtés droits et trois sommets. C'est la définition même d'un triangle. Un carré a $4$ côtés égaux et $4$ angles droits. Un rectangle a $4$ côtés et $4$ angles droits. Un cercle n'a pas de côtés droits ni de sommets.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Les côtés d'un triangle sont toujours :",
+      "options": [
+        "Des segments de droite",
+        "Des courbes",
+        "Des lignes brisées",
+        "Des points"
+      ],
+      "correctAnswer": "Des segments de droite",
+      "explanation": "Par définition, les côtés d'un triangle sont des segments de droite (des portions de droites limitées par deux sommets). Si les côtés étaient des courbes, ce ne serait pas un polygone. Une ligne brisée est une suite de segments non fermés. Un point n'a pas de dimension.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces descriptions ne correspond PAS à un triangle ?",
+      "options": [
+        "Une figure à $4$ côtés",
+        "Une figure à $3$ côtés",
+        "Une figure à $3$ sommets",
+        "Une figure fermée à $3$ côtés"
+      ],
+      "correctAnswer": "Une figure à $4$ côtés",
+      "explanation": "Un triangle a obligatoirement $3$ côtés et $3$ sommets. Une figure à $4$ côtés est un quadrilatère (carré, rectangle, losange...). Les trois autres options décrivent correctement les propriétés d'un triangle (trois côtés, trois sommets, figure fermée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle reste un triangle même s'il est :",
+      "options": [
+        "Tourné ou de couleur différente",
+        "Ouvert sur un côté",
+        "Transformé en carré",
+        "Effacé"
+      ],
+      "correctAnswer": "Tourné ou de couleur différente",
+      "explanation": "La forme géométrique (triangle) ne change pas si on la fait pivoter (rotation) ou si on change sa couleur. En revanche, s'il est ouvert sur un côté, ce n'est plus un polygone fermé donc plus un triangle. S'il est transformé en carré, il a $4$ côtés. S'il est effacé, il n'y a plus de figure.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

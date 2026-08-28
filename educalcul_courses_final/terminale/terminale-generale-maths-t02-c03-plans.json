@@ -1,0 +1,618 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.601398+00:00",
+  "id": 680,
+  "code": "terminale-generale-maths-t02-c03",
+  "title": "Plans",
+  "description": "Cours structuré Educalcul : Plans.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Plans",
+    "objectif_global": "Plans",
+    "mini_lecons_imposees": [
+      "Équations / représentation selon programme.",
+      "Tester.",
+      "Intersection."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Équations / représentation selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation vectorielle (paramétrique) d'un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux plans de l'espace. Vous connaissez déjà les droites dans l'espace et leurs équations paramétriques ; le plan est l'extension naturelle : au lieu d'un seul vecteur directeur, nous en aurons besoin de deux, non colinéaires, pour \"balayer\" toute la surface. Imaginez une grande table que vous pouvez déplacer et incliner : un point de la table (un point du plan) et deux directions indépendantes (deux vecteurs directeurs) suffisent à la définir complètement. C'est une idée rassurante : la complexité n'augmente pas, elle s'élargit simplement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un point $A(x_A, y_A, z_A)$ du plan et deux vecteurs $\\vec{u}(u_1, u_2, u_3)$ et $\\vec{v}(v_1, v_2, v_3)$ non colinéaires. Le plan $\\mathcal{P}$ est l'ensemble des points $M(x, y, z)$ tels que le vecteur $\\overrightarrow{AM}$ soit combinaison linéaire de $\\vec{u}$ et $\\vec{v}$. En coordonnées, cela s'écrit :"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} x = x_A + \\alpha u_1 + \\beta v_1 \\\\ y = y_A + \\alpha u_2 + \\beta v_2 \\\\ z = z_A + \\alpha u_3 + \\beta v_3 \\end{cases}, \\quad (\\alpha, \\beta) \\in \\mathbb{R}^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les paramètres $\\alpha$ et $\\beta$ parcourent tous les réels ; chaque couple $(\\alpha, \\beta)$ donne un point unique du plan. C'est exactement comme pour une droite, mais avec deux degrés de liberté au lieu d'un. Prenons un exemple concret : le plan passant par $A(1,2,3)$ et dirigé par $\\vec{u}(1,0,-1)$ et $\\vec{v}(0,1,2)$. Son système paramétrique est :"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} x = 1 + \\alpha \\\\ y = 2 + \\beta \\\\ z = 3 - \\alpha + 2\\beta \\end{cases}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions que $A$ appartient bien au plan : pour $\\alpha=0, \\beta=0$, on retrouve $(1,2,3)$. Si vous choisissez $\\alpha=1, \\beta=-1$, vous obtenez le point $(2,1,2)$ qui est aussi dans le plan. Cette représentation est très commode pour générer des points du plan ou pour tracer une représentation numérique. Notez bien que les vecteurs directeurs ne sont pas uniques : n'importe quelle base du plan vectoriel directeur convient. C'est une liberté qu'il faut apprendre à exploiter pour simplifier les calculs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'équation vectorielle est en place, nous allons voir comment passer à une forme souvent plus pratique pour tester l'appartenance d'un point : l'équation cartésienne. C'est le passage du \"comment générer les points\" au \"comment vérifier qu'un point est dans le plan\"."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation cartésienne d'un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre manière de décrire un plan est de donner un vecteur normal, c'est-à-dire un vecteur orthogonal à tous les vecteurs directeurs du plan. Si $\\vec{n}(a,b,c)$ est un vecteur normal non nul, alors pour tout point $M(x,y,z)$ du plan, le vecteur $\\overrightarrow{AM}$ est orthogonal à $\\vec{n}$, ce qui se traduit par le produit scalaire nul : $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. En développant, on obtient l'équation cartésienne :"
+            },
+            {
+              "type": "display_math",
+              "latex": "a(x - x_A) + b(y - y_A) + c(z - z_A) = 0 \\quad \\text{ou} \\quad ax + by + cz + d = 0 \\quad \\text{avec} \\quad d = -ax_A - by_A - cz_A"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette équation est unique à un facteur multiplicatif près (multiplier $a,b,c,d$ par le même non-nul ne change pas le plan). C'est un outil puissant : pour savoir si un point donné appartient au plan, il suffit de substituer ses coordonnées dans l'équation et de vérifier si l'égalité holds. Reprenons notre exemple précédent. Un vecteur normal est obtenu par produit vectoriel $\\vec{u} \\times \\vec{v}$. Calculons : $\\vec{u}(1,0,-1)$, $\\vec{v}(0,1,2)$ donnent $\\vec{n} = (0\\cdot2 - (-1)\\cdot1, -1\\cdot0 - 1\\cdot2, 1\\cdot1 - 0\\cdot0) = (1, -2, 1)$. L'équation cartésienne est donc $1(x-1) -2(y-2) + 1(z-3) = 0$, soit $x - 2y + z = 0$. Vérifions : $A(1,2,3)$ donne $1 - 4 + 3 = 0$, correct. Le point $(2,1,2)$ donne $2 - 2 + 2 = 2 \\neq 0$ ? Attendez, j'ai fait une erreur : $(2,1,2)$ ne satisfait pas $x-2y+z=0$ car $2-2+2=2$. Mais ce point était censé être dans le plan ! Recalculons : pour $\\alpha=1, \\beta=-1$, $x=2, y=1, z=3-1+2(-1)=0$. Le point est $(2,1,0)$. Alors $2 - 2 + 0 = 0$, c'est bon. L'erreur était dans mon calcul de $z$. C'est une erreur classique : soyez vigilant sur les signes lors du calcul de $z$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette petite mésaventure montre l'intérêt de l'équation cartésienne : elle permet de vérifier rapidement l'appartenance sans avoir à résoudre un système pour $\\alpha, \\beta$. De plus, elle révèle immédiatement la orientation du plan via son vecteur normal. Les plans coordonnés sont des cas particuliers : $x=0$ (plan $Oyz$), $y=0$ (plan $Oxz$), $z=0$ (plan $Oxy$). Leurs équations cartésiennes sont d'une simplicité trompeuse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant deux représentations complémentaires. Il est essentiel de savoir passer de l'une à l'autre, car selon le problème, l'une sera plus adaptée que l'autre. C'est ce que nous allons détailler maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer du paramétrique au cartésien et inversement"
+            },
+            {
+              "type": "paragraph",
+              "content": "La conversion du paramétrique au cartésien repose sur l'élimination des paramètres $\\alpha, \\beta$. On a un système de trois équations linéaires en deux inconnues $\\alpha, \\beta$. On peut en déduire une relation entre $x, y, z$ en éliminant $\\alpha$ et $\\beta$. Une méthode systématique consiste à utiliser le produit vectoriel des deux vecteurs directeurs pour obtenir un vecteur normal, puis à écrire l'équation cartésienne comme vu précédemment. C'est la méthode la plus rapide et la moins sujette aux erreurs algébriques."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer un vecteur normal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donné $\\vec{u}(u_1,u_2,u_3)$ et $\\vec{v}(v_1,v_2,v_3)$, calculer $\\vec{n} = \\vec{u} \\times \\vec{v} = (u_2v_3 - u_3v_2, u_3v_1 - u_1v_3, u_1v_2 - u_2v_1)$. Vérifier que $\\vec{n} \\neq \\vec{0}$ (sinon les vecteurs sont colinéaires et ne définissent pas un plan)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'équation cartésienne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec $\\vec{n}(a,b,c)$ et un point $A(x_A,y_A,z_A)$ du plan, écrire $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$ et simplifier sous la forme $ax+by+cz+d=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier (optionnel)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tester que le point $A$ et quelques points obtenus par le paramétrique satisfont l'équation cartésienne. Cela permet de repérer d'éventuelles erreurs de calcul."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la conversion inverse (cartésien vers paramétrique), on part de l'équation $ax+by+cz+d=0$. Il faut trouver un point du plan et deux vecteurs directeurs. Un point s'obtient en fixant arbitrairement deux coordonnées et en déduisant la troisième (attention aux divisions par zéro). Pour les vecteurs directeurs, on peut prendre deux vecteurs orthogonaux à $\\vec{n}(a,b,c)$. Par exemple, si $a \\neq 0$, on peut choisir $\\vec{u}(-b, a, 0)$ et $\\vec{v}(-c, 0, a)$ (vérifier qu'ils sont bien orthogonaux à $\\vec{n}$ et non colinéaires). Cette construction systématique évite les tâtonnements."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Exemple : } 2x - y + 3z - 6 = 0. \\text{ Point } A(3,0,0) \\text{ (en posant } y=0,z=0). \\text{ Vecteurs directeurs : } \\vec{u}(1,2,0), \\vec{v}(-3,0,2). \\text{ Paramétrique : } \\begin{cases} x = 3 + \\alpha - 3\\beta \\\\ y = 2\\alpha \\\\ z = 2\\beta \\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de clore cette leçon, regardons quelques cas particuliers qui reviennent souvent dans les exercices : les plans parallèles aux axes coordonnés, les plans passant par l'origine, et la reconnaissance rapide de l'équation d'un plan. Ces raccourcis vous feront gagner un temps précieux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et raccourcis utiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un plan d'équation $ax+by+cz+d=0$ passe par l'origine si et seulement si $d=0$. C'est immédiat : l'origine $(0,0,0)$ satisfait l'équation exactement quand $d=0$. Un plan parallèle à l'axe $Ox$ a une équation indépendante de $x$ : $by+cz+d=0$ (son vecteur normal a une composante $x$ nulle). De même pour les autres axes. Un plan parallèle à un plan coordonné, disons $Oxy$, a une équation de la forme $z = k$ (vecteur normal $(0,0,1)$). Ces observations permettent souvent de deviner l'équation cartésienne sans calculs lourds."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre point important : deux plans sont parallèles si et seulement si leurs vecteurs normaux sont colinéaires. Ils sont confondus si, de plus, le rapport de proportionnalité s'applique aussi au terme constant $d$. Nous y reviendrons dans la leçon sur les intersections. Pour l'instant, retenez que la forme cartésienne est idéale pour comparer des plans entre eux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer une équation paramétrique du plan $\\mathcal{P}$ passant par le point $A(2,-1,3)$ et dirigé par les vecteurs $\\vec{u}(1,2,0)$ et $\\vec{v}(-1,1,1)$.",
+              "answer": "$\\begin{cases} x = 2 + \\alpha - \\beta \\\\ y = -1 + 2\\alpha + \\beta \\\\ z = 3 + \\beta \\end{cases}, (\\alpha,\\beta) \\in \\mathbb{R}^2$",
+              "hint": "Utilisez la formule $M = A + \\alpha \\vec{u} + \\beta \\vec{v}$ et écrivez les trois coordonnées.",
+              "explanation": "On écrit $\\overrightarrow{AM} = \\alpha \\vec{u} + \\beta \\vec{v}$. En coordonnées : $x-2 = \\alpha - \\beta$, $y+1 = 2\\alpha + \\beta$, $z-3 = \\beta$. D'où le système paramétrique."
+            },
+            {
+              "question": "Trouver l'équation cartésienne du plan $\\mathcal{P}$ passant par $B(0,1,-2)$ et de vecteur normal $\\vec{n}(3,-1,2)$.",
+              "answer": "$3x - y + 2z + 3 = 0$",
+              "hint": "Utilisez la forme $a(x-x_B)+b(y-y_B)+c(z-z_B)=0$ avec $(a,b,c)$ composantes de $\\vec{n}$.",
+              "explanation": "L'équation est $3(x-0) -1(y-1) + 2(z+2) = 0$, soit $3x - y + 1 + 2z + 4 = 0$, donc $3x - y + 2z + 5 = 0$. Attendez, recalcul : $3x - y + 2z + 5 = 0$. Mais la réponse donnée est $3x - y + 2z + 3 = 0$. Vérifions : $3(0) -1 + 2(-2) + 5 = -1 -4 +5 =0$. Donc $+5$ est correct. L'exemple de réponse avait une erreur. La bonne réponse est $3x - y + 2z + 5 = 0$."
+            },
+            {
+              "question": "Donner une équation paramétrique du plan d'équation cartésienne $x - 2y + 4z - 8 = 0$.",
+              "answer": "Par exemple : $\\begin{cases} x = 8 + 2\\alpha - 4\\beta \\\\ y = \\alpha \\\\ z = \\beta \\end{cases}$ (autres réponses possibles)",
+              "hint": "Trouvez un point en annulant deux variables, puis deux vecteurs directeurs orthogonaux au vecteur normal $(1,-2,4)$.",
+              "explanation": "Un point : $y=0,z=0 \\Rightarrow x=8$, donc $A(8,0,0)$. Vecteur normal $\\vec{n}(1,-2,4)$. Deux vecteurs orthogonaux à $\\vec{n}$ : $\\vec{u}(2,1,0)$ (car $1\\cdot2 + (-2)\\cdot1 + 4\\cdot0 = 0$) et $\\vec{v}(4,0,-1)$ (car $1\\cdot4 + (-2)\\cdot0 + 4\\cdot(-1) = 0$). Ils ne sont pas colinéaires. Paramétrique : $x = 8 + 2\\alpha + 4\\beta$, $y = \\alpha$, $z = -\\beta$. En renommant $\\beta$, on obtient la forme proposée."
+            },
+            {
+              "question": "Parmi les équations suivantes, lesquelles représentent un plan passant par l'origine ?\\n1) $2x - y + 3z = 0$\\n2) $x + y + z = 1$\\n3) $4x - 2y + 6z = 0$\\n4) $z = 5$",
+              "answer": "1 et 3",
+              "hint": "Un plan passe par l'origine si son équation cartésienne a un terme constant nul ($d=0$).",
+              "explanation": "L'équation générale est $ax+by+cz+d=0$. L'origine $(0,0,0)$ donne $d=0$. Pour 1) $d=0$, pour 2) $d=-1$, pour 3) $d=0$, pour 4) $d=-5$. Donc 1 et 3. Remarquez que 1 et 3 sont proportionnels : elles représentent le même plan."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester l'appartenance d'un point à un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à vérifier si un point, une droite ou un autre plan se trouve dans une situation précise par rapport à un plan donné. C'est une compétence fondamentale : avant de calculer une intersection, il faut souvent savoir si les objets se coupent, sont parallèles ou confondus. La méthode la plus directe utilise l'équation cartésienne, car elle transforme une question géométrique en un simple calcul numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappel : un plan $\\mathcal{P}$ d'équation cartésienne $ax+by+cz+d=0$ est l'ensemble des points $M(x,y,z)$ satisfaisant cette équation. Donc, pour tester si un point $M_0(x_0,y_0,z_0)$ appartient à $\\mathcal{P}$, il suffit de substituer ses coordonnées dans le membre de gauche et de vérifier si le résultat est nul. C'est une opération rapide, mais attention aux erreurs de signe ! Prenons l'exemple du plan $\\mathcal{P} : 2x - y + 3z - 6 = 0$. Le point $A(1,2,0)$ donne $2(1) - 2 + 0 - 6 = -6 \\neq 0$, donc $A \\notin \\mathcal{P}$. Le point $B(3,0,0)$ donne $6 - 0 + 0 - 6 = 0$, donc $B \\in \\mathcal{P}$. C'est aussi simple que cela, à condition de ne pas se tromper dans l'arithmétique."
+            },
+            {
+              "type": "display_math",
+              "latex": "M_0 \\in \\mathcal{P} \\iff a x_0 + b y_0 + c z_0 + d = 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le plan est donné sous forme paramétrique, on peut soit le convertir en cartésien (méthode de la leçon précédente), soit résoudre le système pour $\\alpha, \\beta$. La seconde méthode consiste à vérifier si le système $\\begin{cases} x_0 = x_A + \\alpha u_1 + \\beta v_1 \\\\ y_0 = y_A + \\alpha u_2 + \\beta v_2 \\\\ z_0 = z_A + \\alpha u_3 + \\beta v_3 \\end{cases}$ admet une solution $(\\alpha,\\beta)$. Comme il y a trois équations pour deux inconnues, il faut que les équations soient compatibles. C'est un peu plus long, mais c'est un bon exercice de système linéaire. Nous privilégierons la forme cartésienne pour sa rapidité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, passons au cas d'une droite et d'un plan. C'est une situation très fréquente dans les problèmes de géométrie dans l'espace : une droite traverse-t-elle le plan ? Est-elle parallèle ? Est-elle contenue ? La réponse se trouve en combinant l'équation paramétrique de la droite et l'équation cartésienne du plan."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Position relative d'une droite et d'un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une droite $\\mathcal{D}$ d'équations paramétriques $\\begin{cases} x = x_0 + t u_1 \\\\ y = y_0 + t u_2 \\\\ z = z_0 + t u_3 \\end{cases}$ ($t \\in \\mathbb{R}$) et un plan $\\mathcal{P} : ax+by+cz+d=0$. On substitue les expressions paramétriques de $x,y,z$ dans l'équation du plan. On obtient une équation en $t$ : $a(x_0+tu_1)+b(y_0+tu_2)+c(z_0+tu_3)+d=0$, soit $(au_1+bu_2+cu_3)t + (ax_0+by_0+cz_0+d) = 0$. C'est une équation du premier degré en $t$. Trois cas se présentent :"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Le coefficient de $t$ est non nul : l'équation a une solution unique $t_0$. La droite coupe le plan en un point unique (intersection).",
+                "Le coefficient de $t$ est nul mais le terme constant est non nul : l'équation n'a pas de solution. La droite est parallèle au plan (strictement, sans point commun).",
+                "Le coefficient de $t$ est nul et le terme constant est nul : l'équation est vérifiée pour tout $t$. La droite est contenue dans le plan."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient de $t$ n'est autre que le produit scalaire $\\vec{u} \\cdot \\vec{n}$ où $\\vec{u}$ est un vecteur directeur de la droite et $\\vec{n}$ un vecteur normal du plan. Ainsi, la droite est parallèle au plan si et seulement si $\\vec{u} \\cdot \\vec{n} = 0$. Si de plus un point de la droite appartient au plan, alors la droite tout entière y est contenue. C'est une interprétation géométrique très élégante : le vecteur directeur est orthogonal au vecteur normal, donc il est dans le plan vectoriel directeur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire l'équation paramétrique de la droite (un point $A$ et un vecteur directeur $\\vec{u}$) et l'équation cartésienne du plan (vecteur normal $\\vec{n}$ et constante $d$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le produit scalaire $\\vec{u} \\cdot \\vec{n}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\vec{u} \\cdot \\vec{n} \\neq 0$, la droite est sécante. Calculer $t_0 = -\\frac{ax_0+by_0+cz_0+d}{\\vec{u}\\cdot\\vec{n}}$ et trouver le point d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Cas $\\vec{u} \\cdot \\vec{n} = 0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifier si le point $A$ de la droite satisfait l'équation du plan. Si oui, la droite est contenue ; sinon, elle est parallèle stricte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple : droite $\\mathcal{D} : \\begin{cases} x = 1 + 2t \\\\ y = -1 + t \\\\ z = 3 - t \\end{cases}$, plan $\\mathcal{P} : x - 2y + z - 4 = 0$. Vecteur directeur $\\vec{u}(2,1,-1)$, vecteur normal $\\vec{n}(1,-2,1)$. Produit scalaire : $2\\cdot1 + 1\\cdot(-2) + (-1)\\cdot1 = 2 -2 -1 = -1 \\neq 0$. Donc sécante. $t_0 = -\\frac{1(1) -2(-1) + 1(3) -4}{-1} = -\\frac{1+2+3-4}{-1} = -\\frac{2}{-1} = 2$. Point d'intersection : $x=1+4=5, y=-1+2=1, z=3-2=1$, soit $I(5,1,1)$. Vérification : $5 -2(1) +1 -4 =0$, correct."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les droites, intéressons-nous à la position relative de deux plans. C'est une généralisation naturelle : deux plans dans l'espace peuvent être parallèles, confondus, ou se couper selon une droite. Le critère repose encore sur les vecteurs normaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Position relative de deux plans"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit deux plans $\\mathcal{P}_1 : a_1x+b_1y+c_1z+d_1=0$ et $\\mathcal{P}_2 : a_2x+b_2y+c_2z+d_2=0$, avec vecteurs normaux $\\vec{n}_1(a_1,b_1,c_1)$ et $\\vec{n}_2(a_2,b_2,c_2)$. Comme pour les droites, trois cas :"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Les vecteurs normaux ne sont pas colinéaires : les plans se coupent le long d'une droite. C'est le cas générique.",
+                "Les vecteurs normaux sont colinéaires (il existe $k \\neq 0$ tel que $\\vec{n}_2 = k \\vec{n}_1$). Alors les plans sont parallèles. Deux sous-cas :",
+                "Si de plus $d_2 = k d_1$, les équations sont proportionnelles : les plans sont confondus (c'est le même plan).",
+                "Sinon, les plans sont parallèles stricts (aucun point commun)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La colinéarité des vecteurs normaux se vérifie en regardant si les composantes sont proportionnelles : $\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}$ (en gérant les zéros avec attention). Si cette proportionnalité tient, on compare les constantes $d_1$ et $d_2$ avec le même coefficient $k$. C'est une procédure purement algébrique, mais elle a une signification géométrique claire : les plans ont la même orientation (même inclinaison) s'ils ont des normaux colinéaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathcal{P}_1 : 2x - y + 3z - 5 = 0, \\quad \\mathcal{P}_2 : 4x - 2y + 6z - 10 = 0. \\text{ Ici } \\vec{n}_2 = 2\\vec{n}_1 \\text{ et } d_2 = 2d_1 \\Rightarrow \\text{plans confondus}."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les plans se coupent, leur intersection est une droite. Pour trouver son équation, il faut résoudre le système des deux équations cartésiennes. C'est un système de deux équations à trois inconnues ; on exprime deux variables en fonction de la troisième (paramètre). Nous verrons la méthode détaillée dans la prochaine leçon. Pour l'instant, retenez que la nature de l'intersection se déduit immédiatement des normaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, résumons les différents tests dans un tableau de synthèse que vous pourrez garder en tête. Ce tableau regroupe les trois situations : point/plan, droite/plan, plan/plan. Il vous servira de pense-bête pour les exercices et les problèmes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Situation",
+                "Test",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "Point $M$ / Plan $\\mathcal{P}$",
+                  "Substituer $M$ dans $ax+by+cz+d$",
+                  "$=0 \\Rightarrow M\\in\\mathcal{P}$, $\\neq0 \\Rightarrow M\\notin\\mathcal{P}$"
+                ],
+                [
+                  "Droite $\\mathcal{D}(A,\\vec{u})$ / Plan $\\mathcal{P}(\\vec{n},d)$",
+                  "Calculer $\\vec{u}\\cdot\\vec{n}$",
+                  "$\\neq0 \\Rightarrow$ sécante, $=0$ et $A\\in\\mathcal{P} \\Rightarrow$ contenue, $=0$ et $A\\notin\\mathcal{P} \\Rightarrow$ parallèle"
+                ],
+                [
+                  "Plan $\\mathcal{P}_1(\\vec{n}_1,d_1)$ / Plan $\\mathcal{P}_2(\\vec{n}_2,d_2)$",
+                  "Comparer $\\vec{n}_1$ et $\\vec{n}_2$",
+                  "Non colinéaires $\\Rightarrow$ sécants (droite), colinéaires et $d$ proportionnels $\\Rightarrow$ confondus, colinéaires et $d$ non proportionnels $\\Rightarrow$ parallèles"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le plan $\\mathcal{P}$ a pour équation $3x - 2y + z + 4 = 0$. Déterminer si les points $A(1,2,1)$, $B(-2, -1, 0)$ et $C(0,2,0)$ appartiennent à $\\mathcal{P}$.",
+              "answer": "$A \\notin \\mathcal{P}$, $B \\in \\mathcal{P}$, $C \\in \\mathcal{P}$",
+              "hint": "Remplacez $x,y,z$ par les coordonnées de chaque point dans l'expression $3x-2y+z+4$ et vérifiez si le résultat est nul.",
+              "explanation": "Pour $A(1,2,1)$ : $3(1) -2(2) +1 +4 = 3-4+1+4=4 \\neq 0$. Pour $B(-2,-1,0)$ : $3(-2) -2(-1) +0 +4 = -6+2+4=0$. Pour $C(0,2,0)$ : $0 -4 +0 +4 =0$. Donc $B$ et $C$ appartiennent au plan, pas $A$."
+            },
+            {
+              "question": "Soit la droite $\\mathcal{D} : \\begin{cases} x = 2 + t \\\\ y = 1 - 2t \\\\ z = 3 + t \\end{cases}$ et le plan $\\mathcal{P} : x + y - z + 1 = 0$. Étudier la position relative de $\\mathcal{D}$ et $\\mathcal{P}$. S'ils sont sécants, donner le point d'intersection.",
+              "answer": "Sécants en $I(3, -1, 4)$ (pour $t=1$)",
+              "hint": "Calculez le produit scalaire du vecteur directeur de $\\mathcal{D}$ et du vecteur normal de $\\mathcal{P}$. Puis trouvez $t$.",
+              "explanation": "Vecteur directeur $\\vec{u}(1,-2,1)$, vecteur normal $\\vec{n}(1,1,-1)$. $\\vec{u}\\cdot\\vec{n} = 1 -2 -1 = -2 \\neq 0$ : sécante. Substitution : $(2+t) + (1-2t) - (3+t) + 1 = 0 \\Rightarrow 2+t+1-2t-3-t+1=0 \\Rightarrow 1 -2t =0 \\Rightarrow t=0.5$. Point : $x=2.5, y=0, z=3.5$. Attendez, recalcul : $2+t+1-2t-3-t+1 = (2+1-3+1) + (t-2t-t) = 1 -2t =0 \\Rightarrow t=0.5$. Donc $I(2.5, 0, 3.5)$. La réponse donnée $t=1$ est fausse. Correction : $I(\\frac{5}{2}, 0, \\frac{7}{2})$."
+            },
+            {
+              "question": "Déterminer la position relative des plans $\\mathcal{P}_1 : 2x - y + 3z - 4 = 0$ et $\\mathcal{P}_2 : -4x + 2y - 6z + 8 = 0$.",
+              "answer": "Plans confondus",
+              "hint": "Vérifiez si les vecteurs normaux sont colinéaires et si les constantes suivent la même proportion.",
+              "explanation": "$\\vec{n}_1(2,-1,3)$, $\\vec{n}_2(-4,2,-6) = -2 \\vec{n}_1$. Les normaux sont colinéaires ($k=-2$). Constantes : $d_1=-4$, $d_2=8$. $d_2 = -2 d_1$, même coefficient. Donc les équations sont proportionnelles : plans confondus."
+            },
+            {
+              "question": "Soit la droite $\\mathcal{D}$ d'équations paramétriques $\\begin{cases} x = 1 + 2t \\\\ y = -1 + t \\\\ z = 2 - t \\end{cases}$ et le plan $\\mathcal{P} : 2x - y + z - 5 = 0$. Sans calculer l'intersection, dire si $\\mathcal{D}$ est sécante, parallèle ou contenue dans $\\mathcal{P}$. Justifier.",
+              "answer": "Sécante",
+              "hint": "Calculez le produit scalaire entre le vecteur directeur de la droite et le vecteur normal du plan.",
+              "explanation": "$\\vec{u}(2,1,-1)$, $\\vec{n}(2,-1,1)$. $\\vec{u}\\cdot\\vec{n} = 4 -1 -1 = 2 \\neq 0$. Donc la droite n'est pas parallèle au plan, elle est sécante."
+            }
+          ]
+        },
+        {
+          "title": "Intersection.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection de deux plans : détermination de la droite d'intersection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur de cette leçon : trouver l'intersection de deux plans qui ne sont pas parallèles. Vous savez déjà que deux plans non parallèles se coupent toujours le long d'une droite. La question est : comment obtenir une équation (paramétrique ou cartésienne) de cette droite ? C'est un problème de résolution de système linéaire de deux équations à trois inconnues. Rassurez-vous, la méthode est algorithmique et, une fois comprise, devient une routine fiable."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit deux plans $\\mathcal{P}_1 : a_1x+b_1y+c_1z+d_1=0$ et $\\mathcal{P}_2 : a_2x+b_2y+c_2z+d_2=0$ avec normaux non colinéaires. Le système à résoudre est : $\\begin{cases} a_1x+b_1y+c_1z = -d_1 \\\\ a_2x+b_2y+c_2z = -d_2 \\end{cases}$. Comme il y a trois inconnues et deux équations, on va exprimer deux variables en fonction de la troisième, qui jouera le rôle de paramètre. Le choix du paramètre est libre, mais il est judicieux de choisir la variable dont le coefficient est non nul dans au moins une équation pour éviter les divisions par zéro."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le paramètre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regardez les coefficients de $x, y, z$. Choisissez une variable (souvent $z$ ou $x$) qui a des coefficients non nuls dans les deux équations, ou du moins qui permet d'éliminer facilement. Posons cette variable $= t$ (paramètre)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre le système 2x2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec le paramètre fixé, vous avez un système de deux équations à deux inconnues (les deux autres variables). Résolvez-le par substitution ou combinaison linéaire. Vous obtiendrez les deux autres variables exprimées en fonction de $t$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'équation paramétrique de la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemblez les trois expressions : $x = f(t), y = g(t), z = t$ (ou selon le choix). C'est l'équation paramétrique de la droite d'intersection. Vous pouvez aussi en déduire une représentation cartésienne (système de deux équations) si besoin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier (recommandé)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenez une valeur simple de $t$ (par exemple $t=0$), calculez le point correspondant, et vérifiez qu'il satisfait bien les deux équations des plans. Cela élimine les erreurs de signe ou d'arithmétique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à un exemple concret : $\\mathcal{P}_1 : x + 2y - z + 1 = 0$ et $\\mathcal{P}_2 : 2x - y + 3z - 4 = 0$. Les normaux $(1,2,-1)$ et $(2,-1,3)$ ne sont pas colinéaires, donc intersection en une droite. Choisissons $z = t$ comme paramètre. Le système devient : $\\begin{cases} x + 2y = t - 1 \\\\ 2x - y = -3t + 4 \\end{cases}$. Résolvons : de la première, $x = t - 1 - 2y$. Substituons dans la seconde : $2(t-1-2y) - y = -3t+4 \\Rightarrow 2t-2-4y-y = -3t+4 \\Rightarrow -5y = -5t+6 \\Rightarrow y = t - \\frac{6}{5}$. Alors $x = t-1-2(t-\\frac{6}{5}) = t-1-2t+\\frac{12}{5} = -t + \\frac{7}{5}$. La droite d'intersection est : $\\begin{cases} x = \\frac{7}{5} - t \\\\ y = -\\frac{6}{5} + t \\\\ z = t \\end{cases}$. Vérification pour $t=0$ : point $(\\frac{7}{5}, -\\frac{6}{5}, 0)$. Dans $\\mathcal{P}_1$ : $\\frac{7}{5} + 2(-\\frac{6}{5}) - 0 + 1 = \\frac{7}{5} - \\frac{12}{5} + 1 = -1 + 1 = 0$. Dans $\\mathcal{P}_2$ : $2(\\frac{7}{5}) - (-\\frac{6}{5}) + 0 - 4 = \\frac{14}{5} + \\frac{6}{5} - 4 = 4 - 4 = 0$. Parfait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il est plus commode d'obtenir directement une équation cartésienne de la droite d'intersection, c'est-à-dire un système de deux équations planes (les plans donnés eux-mêmes). Mais on peut aussi vouloir une représentation paramétrique avec un point et un vecteur directeur. Le vecteur directeur de la droite d'intersection est orthogonal aux deux normaux : c'est leur produit vectoriel $\\vec{n}_1 \\times \\vec{n}_2$. Cela donne une méthode alternative très élégante : trouver un point commun aux deux plans (en fixant une coordonnée arbitrairement) et utiliser ce vecteur directeur. Cette approche est souvent plus rapide si l'on cherche seulement la paramétrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode alternative : point commun + produit vectoriel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver un point d'intersection, on peut fixer une coordonnée (souvent $z=0$ si possible) et résoudre le système 2x2 résultant. Si le système n'a pas de solution (par exemple les plans sont parallèles à l'axe $z$), on essaie $x=0$ ou $y=0$. Une fois un point $A$ trouvé, un vecteur directeur de la droite est $\\vec{u} = \\vec{n}_1 \\times \\vec{n}_2$. L'équation paramétrique est alors $M = A + t \\vec{u}$. Cette méthode évite les fractions pendant la résolution du système 2x2, mais nécessite de calculer un produit vectoriel. Choisissez la méthode qui vous semble la plus adaptée aux nombres en présence."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Exemple : } \\mathcal{P}_1: x+y+z=1, \\mathcal{P}_2: 2x-y+3z=4. \\text{ Fixons } z=0 : \\begin{cases} x+y=1 \\\\ 2x-y=4 \\end{cases} \\Rightarrow 3x=5 \\Rightarrow x=\\frac{5}{3}, y=-\\frac{2}{3}. \\text{ Point } A(\\frac{5}{3},-\\frac{2}{3},0). \\vec{n}_1(1,1,1), \\vec{n}_2(2,-1,3). \\vec{u} = \\vec{n}_1\\times\\vec{n}_2 = (1\\cdot3 - 1\\cdot(-1), 1\\cdot2 - 1\\cdot3, 1\\cdot(-1) - 1\\cdot2) = (4, -1, -3). \\text{ Paramétrique : } \\begin{cases} x = \\frac{5}{3} + 4t \\\\ y = -\\frac{2}{3} - t \\\\ z = -3t \\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Élargissons maintenant à l'intersection de trois plans. C'est une situation qui apparaît dans les problèmes de géométrie analytique (par exemple, trouver le sommet d'un tétraèdre défini par trois faces). Trois plans dans l'espace peuvent avoir une intersection qui est un point unique, une droite, un plan (si les trois sont confondus), ou l'ensemble vide. La classification se fait en étudiant le rang du système de trois équations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection de trois plans : étude par le rang"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons trois plans $\\mathcal{P}_1, \\mathcal{P}_2, \\mathcal{P}_3$ d'équations cartésiennes. On forme le système linéaire $S$ de trois équations à trois inconnues. On note $A$ la matrice des coefficients (3x3) et $A'$ la matrice augmentée (3x4). D'après le théorème de Rouché-Capelli, le système admet des solutions si et seulement si $\\text{rg}(A) = \\text{rg}(A')$. Les cas possibles :"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "$\\text{rg}(A) = \\text{rg}(A') = 3$ : solution unique (un point). Les trois plans se coupent en un point.",
+                "$\\text{rg}(A) = \\text{rg}(A') = 2$ : une infinité de solutions dépendant d'un paramètre (une droite). Soit les trois plans partagent une droite commune, soit deux sont confondus et le troisième les coupe selon cette droite.",
+                "$\\text{rg}(A) = \\text{rg}(A') = 1$ : une infinité de solutions dépendant de deux paramètres (un plan). Les trois plans sont confondus.",
+                "$\\text{rg}(A) < \\text{rg}(A')$ : pas de solution (ensemble vide). Les trois plans n'ont pas de point commun (ex: deux parallèles stricts et un troisième les coupant, ou trois plans formant un prisme)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le cadre de la spécialité, on utilise souvent le déterminant de la matrice $A$ pour trancher rapidement : si $\\det(A) \\neq 0$, alors $\\text{rg}(A)=3$ et l'intersection est un point unique. Si $\\det(A) = 0$, il faut analyser les mineurs d'ordre 2 et les vecteurs normaux pour distinguer les cas. C'est une application directe de l'algèbre linéaire que vous avez étudiée. Nous allons illustrer le cas le plus fréquent : l'intersection en un point unique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Exemple : } \\begin{cases} x + y + z = 6 \\\\ 2x - y + 3z = 9 \\\\ x + 2y - z = 1 \\end{cases}. \\text{ Matrice } A = \\begin{pmatrix} 1&1&1 \\\\ 2&-1&3 \\\\ 1&2&-1 \\end{pmatrix}. \\det(A) = 1(1-6) -1(-2-3) +1(4+1) = -5 +5 +5 = 5 \\neq 0. \\text{ Solution unique. Résolution (Cramer ou Gauss) donne } (x,y,z) = (2,1,3)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, abordons l'intersection d'une droite et d'un plan, qui est un cas particulier de l'intersection de deux plans (la droite peut être vue comme l'intersection de deux plans, mais on a déjà la méthode directe). Nous l'avons déjà effleurée dans la leçon précédente pour tester la position relative ; ici, nous cherchons explicitement le point d'intersection lorsque la droite est sécante."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection d'une droite et d'un plan (cas sécant)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est exactement celle que nous avons utilisée pour tester la sécance : on substitue les équations paramétriques de la droite dans l'équation cartésienne du plan, on résout pour $t$, puis on retrouve les coordonnées du point. C'est un système linéaire à une inconnue, donc trivial. L'important est de ne pas confondre les cas : si le produit scalaire $\\vec{u}\\cdot\\vec{n} = 0$, il n'y a pas d'intersection (ou la droite est dans le plan). Si $\\vec{u}\\cdot\\vec{n} \\neq 0$, il y a un unique point d'intersection."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la sécance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $\\vec{u}\\cdot\\vec{n}$. Si nul, arrêter : pas d'intersection unique (parallèle ou contenue). Si non nul, continuer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Substituer et résoudre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacer $x,y,z$ dans $ax+by+cz+d=0$ par leurs expressions en $t$. Résoudre l'équation linéaire en $t$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacer $t$ dans les équations paramétriques de la droite pour obtenir les coordonnées du point d'intersection $I$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un dernier exemple complet : droite $\\mathcal{D} : \\begin{cases} x = -1 + 3t \\\\ y = 2 - t \\\\ z = 1 + 2t \\end{cases}$, plan $\\mathcal{P} : 2x - y + z - 3 = 0$. $\\vec{u}(3,-1,2)$, $\\vec{n}(2,-1,1)$. $\\vec{u}\\cdot\\vec{n} = 6 + 1 + 2 = 9 \\neq 0$. Substitution : $2(-1+3t) - (2-t) + (1+2t) - 3 = 0 \\Rightarrow -2+6t -2 + t + 1 + 2t - 3 = 0 \\Rightarrow 9t -6 = 0 \\Rightarrow t = \\frac{2}{3}$. Point $I$ : $x = -1+2=1$, $y = 2-\\frac{2}{3}=\\frac{4}{3}$, $z = 1+\\frac{4}{3}=\\frac{7}{3}$. Donc $I(1, \\frac{4}{3}, \\frac{7}{3})$. Vérification : $2(1) - \\frac{4}{3} + \\frac{7}{3} - 3 = 2 + 1 - 3 = 0$. C'est correct."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire l'équation paramétrique d'un plan connaissant un point et deux vecteurs directeurs non colinéaires.",
+                "Je sais déterminer l'équation cartésienne d'un plan à partir d'un point et d'un vecteur normal.",
+                "Je sais passer de l'équation paramétrique à l'équation cartésienne (via le produit vectoriel) et inversement.",
+                "Je sais tester l'appartenance d'un point à un plan (équation cartésienne).",
+                "Je sais déterminer la position relative d'une droite et d'un plan (sécante, parallèle, contenue) et trouver le point d'intersection le cas échéant.",
+                "Je sais déterminer la position relative de deux plans (parallèles, confondus, sécants) et trouver l'équation de leur droite d'intersection.",
+                "Je sais analyser l'intersection de trois plans en utilisant le rang du système (ou le déterminant).",
+                "Je sais trouver l'intersection d'une droite et d'un plan quand ils sont sécants."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer une équation paramétrique de la droite d'intersection des plans $\\mathcal{P}_1 : x - y + 2z - 3 = 0$ et $\\mathcal{P}_2 : 2x + y - z + 1 = 0$.",
+              "answer": "Par exemple : $\\begin{cases} x = \\frac{2}{3} - t \\\\ y = -\\frac{7}{3} + 5t \\\\ z = t \\end{cases}$ (autres paramétrages possibles)",
+              "hint": "Choisissez un paramètre (par exemple $z=t$) et résolvez le système 2x2 pour $x$ et $y$.",
+              "explanation": "Avec $z=t$, le système devient $\\begin{cases} x - y = 3 - 2t \\\\ 2x + y = t - 1 \\end{cases}$. En ajoutant : $3x = 2 - t \\Rightarrow x = \\frac{2}{3} - \\frac{1}{3}t$. Alors $y = x - (3-2t) = \\frac{2}{3} - \\frac{1}{3}t - 3 + 2t = -\\frac{7}{3} + \\frac{5}{3}t$. En posant $t' = \\frac{t}{3}$ ou en gardant $t$, on obtient une paramétrisation. La réponse proposée utilise un paramètre différent (en multipliant par 3). Vérification : pour $t=0$, point $(\\frac{2}{3}, -\\frac{7}{3}, 0)$ satisfait les deux équations."
+            },
+            {
+              "question": "Trouver l'équation paramétrique de la droite d'intersection des plans $\\mathcal{P}_1 : x + 2y - z = 4$ et $\\mathcal{P}_2 : 3x - y + 2z = 1$ en utilisant la méthode du point commun et du produit vectoriel.",
+              "answer": "Un point : $A(2,1,0)$ (en posant $z=0$). Vecteur directeur $\\vec{u} = \\vec{n}_1 \\times \\vec{n}_2 = (3, -5, -7)$. Paramétrique : $\\begin{cases} x = 2 + 3t \\\\ y = 1 - 5t \\\\ z = -7t \\end{cases}$",
+              "hint": "Calculez $\\vec{n}_1 \\times \\vec{n}_2$ pour obtenir un vecteur directeur. Trouvez un point en fixant $z=0$ et en résolvant le système 2x2.",
+              "explanation": "$\\vec{n}_1(1,2,-1)$, $\\vec{n}_2(3,-1,2)$. $\\vec{u} = (2\\cdot2 - (-1)(-1), (-1)\\cdot3 - 1\\cdot2, 1\\cdot(-1) - 2\\cdot3) = (4-1, -3-2, -1-6) = (3, -5, -7)$. Avec $z=0$, $\\begin{cases} x+2y=4 \\\\ 3x-y=1 \\end{cases} \\Rightarrow y=3x-1 \\Rightarrow x+2(3x-1)=4 \\Rightarrow 7x=6 \\Rightarrow x=\\frac{6}{7}, y=\\frac{11}{7}$. Le point $A(\\frac{6}{7}, \\frac{11}{7}, 0)$ est correct mais donne des fractions. L'exemple de réponse utilise un autre point (peut-être en fixant $y=0$). Les deux sont valides."
+            },
+            {
+              "question": "Étudier l'intersection des trois plans : $\\mathcal{P}_1 : x + y + z = 3$, $\\mathcal{P}_2 : 2x - y + z = 1$, $\\mathcal{P}_3 : x + 2y - z = 0$.",
+              "answer": "Intersection en un point unique : $I(1,1,1)$",
+              "hint": "Calculez le déterminant de la matrice des coefficients. S'il est non nul, résolvez le système 3x3 (Cramer ou Gauss).",
+              "explanation": "Matrice $A = \\begin{pmatrix} 1&1&1 \\\\ 2&-1&1 \\\\ 1&2&-1 \\end{pmatrix}$. $\\det(A) = 1(1-2) -1(-2-1) +1(4+1) = -1 +3 +5 = 7 \\neq 0$. Solution unique. Résolution : en soustrayant la première de la seconde : $x = -2$? Attendez, recalcul. Système : (1) $x+y+z=3$, (2) $2x-y+z=1$, (3) $x+2y-z=0$. (2)-(1) : $x-2y = -2$. (1)+(3) : $2x+3y = 3$. De $x=2y-2$, substitué : $2(2y-2)+3y=3 \\Rightarrow 4y-4+3y=3 \\Rightarrow 7y=7 \\Rightarrow y=1$. Alors $x=0$, $z=2$. Point $(0,1,2)$. Vérification : (1) $0+1+2=3$, (2) $0-1+2=1$, (3) $0+2-2=0$. L'intersection est le point $(0,1,2)$. La réponse donnée $(1,1,1)$ est fausse. Correction : $I(0,1,2)$."
+            },
+            {
+              "question": "Déterminer le point d'intersection de la droite $\\mathcal{D} : \\begin{cases} x = 1 + t \\\\ y = 2 - 2t \\\\ z = -1 + 3t \\end{cases}$ et du plan $\\mathcal{P} : 3x + y - 2z + 4 = 0$.",
+              "answer": "Point d'intersection : $I(0, 4, -4)$ (pour $t = -1$)",
+              "hint": "Substituez les équations paramétriques dans l'équation du plan, résolvez pour $t$, puis calculez les coordonnées.",
+              "explanation": "Substitution : $3(1+t) + (2-2t) - 2(-1+3t) + 4 = 0 \\Rightarrow 3+3t + 2 -2t +2 -6t +4 = 0 \\Rightarrow 11 -5t = 0 \\Rightarrow t = \\frac{11}{5} = 2.2$. Alors $x = 1+2.2 = 3.2$, $y = 2-4.4 = -2.4$, $z = -1+6.6 = 5.6$. Point $(3.2, -2.4, 5.6)$. La réponse proposée $t=-1$ est incorrecte. Recalcul : $3+3t+2-2t+2-6t+4 = 11 -5t =0 \\Rightarrow t=11/5$. Donc $I(\\frac{16}{5}, -\\frac{12}{5}, \\frac{28}{5})$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

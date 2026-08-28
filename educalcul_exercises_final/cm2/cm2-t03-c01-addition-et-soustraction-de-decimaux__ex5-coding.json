@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 289,
+  "_course_code": "cm2-t03-c01-addition-et-soustraction-de-decimaux",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Approfondissement : Aligner rangs",
+  "title": "L'algorithme de l'alignement des décimaux",
+  "blocks": [
+    {
+      "title": "Étape de préparation",
+      "content": "Pour additionner deux nombres décimaux, on doit d'abord les préparer pour qu'ils aient le même nombre de chiffres après la virgule.\\n\\nÉcris le raisonnement structuré pour préparer le calcul de $12,5 + 3,47$. Que faut îl faire pour que les rangs soient bien alignés ?",
+      "correctAnswer": "On identifie le nombre ayant le plus de chiffres après la virgule, ici $3,47$ avec deux chiffres. On ajoute un zéro inutile à droite de $12,5$ pour obtenir $12,50$. Ainsi, les deux nombres ont deux chiffres après la virgule.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour aligner les rangs (dixièmes sous dixièmes, centièmes sous centièmes), il est indispensable d'égaliser le nombre de décimales en ajoutant des zéros à droite de la partie décimale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'algorithme de pose",
+      "content": "Une fois les nombres préparés, on les pose en colonne. \\n\\nDécris l'algorithme de placement des chiffres et de la virgule pour l'opération $12,50 + 3,47$. Précise bien la règle d'alignement.",
+      "correctAnswer": "1. On aligne les virgules verticalement.\\n2. On place les unités sous les unités, les dixièmes sous les dixièmes et les centièmes sous les centièmes.\\n3. On place la virgule du résultat exactement sur la même ligne verticale que les virgules des opérandes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle d'or pour l'addition et la soustraction de décimaux est l'alignement vertical des virgules, ce qui garantit que chaque rang est additionné avec le rang correspondant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pseudo-code de calcul",
+      "content": "Imagine que tu dois créer un programme informatique pour calculer la somme de deux nombres décimaux $A$ et $B$.\\n\\nÉcris les étapes logiques (pseudo-code) que le programme doit suivre pour garantir que les rangs sont respectés avant d'effectuer l'addition.",
+      "correctAnswer": "Début\\n1. Compter le nombre de chiffres après la virgule pour $A$.\\n2. Compter le nombre de chiffres après la virgule pour $B$.\\n3. Trouver le maximum entre ces deux nombres.\\n4. Ajouter des zéros à la fin de la partie décimale du nombre le plus court pour atteindre ce maximum.\\n5. Aligner les virgules et additionner rang par rang en partant de la droite.\\n6. Placer la virgule dans le résultat.\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un algorithme doit être décomposé en étapes simples et séquentielles. Ici, la comparaison du nombre de décimales et le complément par des zéros permettent de simuler l'alignement des rangs effectué manuellement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 234,
+  "_course_code": "cm1-t04-c01-problemes-a-plusieurs-etapes",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Organiser données",
+  "title": "Algorithmes pour organiser des données",
+  "blocks": [
+    {
+      "title": "Trouver le maximum d'une liste",
+      "content": "Écris un algorithme qui permet de trouver le plus grand nombre dans la liste $5, 12, 7, 20, 3$.",
+      "correctAnswer": "Initialiser max avec le premier élément de la liste. Pour chaque nombre suivant, si le nombre est plus grand que max, remplacer max par ce nombre. À la fin, max contient le plus grand nombre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par supposer que le premier nombre est le maximum. On compare ensuite chaque nombre suivant au maximum actuel. Si un nombre est plus grand, il devient le nouveau maximum. Après avoir parcouru toute la liste, le maximum final est $20$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la somme et la moyenne",
+      "content": "Écris un algorithme qui calcule la somme et la moyenne des nombres de la liste $4, 8, 10, 6$.",
+      "correctAnswer": "Initialiser somme à $0$. Pour chaque nombre de la liste, ajouter le nombre à somme. Après la boucle, diviser somme par le nombre d'éléments pour obtenir la moyenne.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne chaque nombre pour obtenir la somme totale $28$. Comme il y a $4$ nombres, la moyenne est $28 / 4 = 7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme des nombres pairs",
+      "content": "Écris un algorithme qui sélectionne les nombres pairs dans la liste $3, 14, 9, 22, 5, 8$ et calcule leur somme.",
+      "correctAnswer": "Initialiser somme à $0$. Pour chaque nombre de la liste, si le nombre est pair (le reste de la division par $2$ est $0$), ajouter le nombre à somme. À la fin, afficher somme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les nombres pairs de la liste sont $14, 22, 8$. Leur somme est $14 + 22 + 8 = 44$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

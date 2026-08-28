@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 424,
+  "_course_code": "4eme-t01-c05-bilan-nombres-4e",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Relatifs, fractions, puissances",
+  "title": "Algorithmes : relatifs, fractions et puissances",
+  "blocks": [
+    {
+      "title": "Puissance d'une fraction",
+      "content": "Écrire un algorithme (en pseudo‑code ou syntaxe Python) qui prend en entrée trois entiers $a$, $b$ (avec $b \\neq 0$) et $n$ (entier relatif) et qui affiche la fraction irréductible égale à $\\left(\\frac{a}{b}\\right)^n$. L'algorithme doit gérer les cas $n>0$, $n=0$ et $n<0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, n.\\n2. Si n = 0 alors afficher 1/1 et arrêter.\\n3. Si n > 0 alors\\n      num <- a^n\\n      den <- b^n\\n   Sinon (n < 0)\\n      num <- b^{|n|}\\n      den <- a^{|n|}\\n4. Calculer pgcd <- PGCD(|num|, |den|).\\n5. num <- num / pgcd ; den <- den / pgcd.\\n6. Si den < 0 alors num <- -num ; den <- -den.\\n7. Afficher num '/' den.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la définition de la puissance d'une fraction : pour n positif, on élève numérateur et dénominateur ; pour n négatif, on inverse la fraction et on prend la puissance opposée. Le cas n=0 donne 1. La simplification se fait par le PGCD des valeurs absolues, et on s'assure que le dénominateur soit positif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une fraction par l'algorithme d'Euclide",
+      "content": "Écrire un algorithme qui reçoit deux entiers $p$ et $q$ ($q \\neq 0$) représentant une fraction $\\frac{p}{q}$ et qui affiche cette fraction sous forme irréductible. L'algorithme doit utiliser l'algorithme d'Euclide pour calculer le PGCD.",
+      "correctAnswer": "Algorithme :\\n1. Lire p, q.\\n2. a <- |p| ; b <- |q|.\\n3. Tant que b \\neq 0 faire\\n      r <- a modulo b\\n      a <- b\\n      b <- r\\n   Fin tant que\\n4. pgcd <- a.\\n5. num <- p / pgcd ; den <- q / pgcd.\\n6. Si den < 0 alors num <- -num ; den <- -den.\\n7. Afficher num '/' den.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme d'Euclide calcule le PGCD de |p| et |q| par divisions successives. On divise ensuite numérateur et dénominateur par ce PGCD. On force le dénominateur à être positif en changeant les signes si nécessaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évaluation d'une expression mêlant relatifs, fractions et puissances",
+      "content": "Proposer un algorithme qui évalue une expression arithmétique donnée sous forme de chaîne de caractères, contenant des nombres relatifs, des fractions (écrites 'a/b'), des puissances (symbole '^'), les quatre opérations +, -, *, / et des parenthèses. L'algorithme doit respecter la priorité des opérateurs (puissances, puis * et /, puis + et -) et renvoyer le résultat sous forme de fraction irréductible.",
+      "correctAnswer": "Algorithme (principe de la pile d'opérateurs et de valeurs) :\\n1. Convertir la chaîne en jetons (nombres, fractions, opérateurs, parenthèses).\\n2. Pour chaque jeton :\\n   - Si nombre ou fraction : pousser la fraction correspondante sur la pile valeurs.\\n   - Si opérateur : tant que la pile opérateurs n'est pas vide et que l'opérateur au sommet a une priorité >= priorité(jeton) faire appliquer_opérateur().\\n     Puis pousser l'opérateur sur la pile opérateurs.\\n   - Si '(' : pousser sur pile opérateurs.\\n   - Si ')' : tant que sommet pile opérateurs != '(' faire appliquer_opérateur(). Dépiler '('.\\n3. Après lecture de tous les jetons, tant que pile opérateurs non vide faire appliquer_opérateur().\\n4. Résultat = sommet pile valeurs ; simplifier par PGCD ; afficher.\\nFonction appliquer_opérateur() :\\n   op <- dépiler opérateurs ; b <- dépiler valeurs ; a <- dépiler valeurs.\\n   Selon op :\\n      '+' -> pousser a+b ; '-' -> pousser a-b ; '*' -> pousser a*b ; '/' -> pousser a/b ; '^' -> pousser a^b (exposant entier).\\n   Chaque opération sur fractions utilise les règles de calcul sur fractions et simplifie le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise l'algorithme de Dijkstra (shunting-yard) avec deux piles pour respecter les priorités. Les fractions sont représentées par un couple (numérateur, dénominateur) et toutes les opérations élémentaires (addition, soustraction, multiplication, division, puissance entière) sont codées directement sur ces couples, suivies d'une simplification par PGCD. La gestion des parenthèses assure le bon ordre d'évaluation.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

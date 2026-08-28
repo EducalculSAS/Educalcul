@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Applications géométriques",
+  "title": "Applications géométriques de la colinéarité",
+  "blocks": [
+    {
+      "title": "Conditions de colinéarité",
+      "content": "Relie chaque condition à sa formulation vectorielle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Deux vecteurs non nuls sont colinéaires",
+          "right": "Il existe un réel $k$ tel que $\\vec{u}=k\\vec{v}$"
+        },
+        {
+          "left": "Trois points $A$, $B$, $C$ sont alignés",
+          "right": "Les vecteurs $\\vec{AB}$ et $\\vec{AC}$ sont colinéaires"
+        },
+        {
+          "left": "Le déterminant de deux vecteurs du plan est nul",
+          "right": "Les deux vecteurs sont colinéaires"
+        },
+        {
+          "left": "Le produit vectoriel (en 2D) de deux vecteurs est nul",
+          "right": "Les deux vecteurs sont colinéaires"
+        }
+      ],
+      "explanation": "Deux vecteurs sont colinéaires ssi l'un est multiple de l'autre. L'alignement de trois points équivaut à la colinéarité des vecteurs formés. En coordonnées, le déterminant nul ou le produit vectoriel nul expriment la même condition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Configurations géométriques et relations vectorielles",
+      "content": "Relie chaque configuration à la relation vectorielle qui la caractérise.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Milieu $I$ du segment $[AB]$",
+          "right": "$\\vec{AI}=\\frac{1}{2}\\vec{AB}$"
+        },
+        {
+          "left": "Centre de gravité $G$ du triangle $ABC$",
+          "right": "$\\vec{AG}=\\frac{1}{3}(\\vec{AB}+\\vec{AC})$"
+        },
+        {
+          "left": "Parallélogramme $ABCD$",
+          "right": "$\\vec{AB}=\\vec{DC}$ et $\\vec{AD}=\\vec{BC}$"
+        },
+        {
+          "left": "Points $A$, $B$, $C$ alignés avec $B$ entre $A$ et $C$",
+          "right": "$\\vec{AB}+\\vec{BC}=\\vec{AC}$ et $\\vec{AB}$, $\\vec{BC}$ ont même sens"
+        }
+      ],
+      "explanation": "Le milieu divise le segment en deux vecteurs égaux. Le centre de gravité est le barycentre de masses égales aux sommets. Dans un parallélogramme, les côtés opposés sont égaux et parallèles. L'alignement avec ordre donne la relation de Chasles et la colinéarité avec même sens.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Propriétés et conséquences de la colinéarité",
+      "content": "Relie chaque affirmation à sa conclusion correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $\\vec{u}$ et $\\vec{v}$ sont colinéaires, alors",
+          "right": "Il existe $k\\in\\mathbb{R}$ tel que $\\vec{u}=k\\vec{v}$"
+        },
+        {
+          "left": "Si trois points $A$, $B$, $C$ sont alignés, alors",
+          "right": "Le déterminant $\\det(\\vec{AB},\\vec{AC})=0$"
+        },
+        {
+          "left": "Si $\\vec{AB}=2\\vec{AC}$, alors",
+          "right": "Les points $A$, $B$, $C$ sont alignés et $B$ est le milieu de $[AC]$"
+        },
+        {
+          "left": "Dans un triangle, les médiatrices sont concourantes",
+          "right": "Ce point est le centre du cercle circonscrit, non lié directement à la colinéarité"
+        }
+      ],
+      "explanation": "La colinéarité se traduit par l'existence d'un coefficient de proportionnalité. L'alignement de trois points implique le déterminant nul. L'égalité $\\vec{AB}=2\\vec{AC}$ signifie que $B$ est le milieu de $AC$ (vecteur double). La concourance des médiatrices est une propriété du cercle circonscrit, sans lien direct avec la colinéarité.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

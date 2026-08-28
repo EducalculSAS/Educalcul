@@ -1,0 +1,478 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.897714+00:00",
+  "id": 454,
+  "code": "4eme-t07-c05",
+  "title": "Bilan - Algorithmique 4e",
+  "description": "Cours structuré Educalcul : Bilan - Algorithmique 4e.",
+  "subject": "Algorithmique et programmation",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Algorithmique et programmation",
+    "titre_du_cours": "Bilan - Algorithmique 4e",
+    "objectif_global": "Bilan - Algorithmique 4e",
+    "mini_lecons_imposees": [
+      "Programmer et déboguer.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et programmation",
+      "lessons": [
+        {
+          "title": "Programmer et déboguer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un programme : les bases du langage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon qui fait le point sur tout ce que tu as appris en algorithmique cette année. On ne découvre pas de notion nouvelle aujourd'hui, on consolide : tu vas voir que programmer, c'est avant tout raconter une histoire très précise à l'ordinateur, avec des mots qu'il ne peut pas mal comprendre. Rappelle-toi : une variable, c'est comme une boîte étiquetée où l'on range une valeur. Le nom de la boîte (l'identifiant) ne change pas, mais le contenu peut être remplacé autant de fois qu'on veut. En 4e, on manipule principalement quatre types de contenus : les entiers (comme $5$ ou $-3$), les réels (comme $3,14$), les chaînes de caractères (du texte entre guillemets, comme $\"Bonjour\"$) et les booléens (vrai ou faux). C'est la base de tout programme."
+            },
+            {
+              "type": "definition",
+              "term": "Affectation",
+              "definition": "L'action de mettre une valeur dans une variable. On note souvent avec une flèche : $x \\\\leftarrow 5$ se lit \"$x$ prend la valeur $5$\". L'ancienne valeur de $x$ est effacée.",
+              "example": "Si $x$ vaut $10$, après $x \\\\leftarrow x + 2$, $x$ vaut $12$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un tout petit algorithme ensemble pour remettre les idées en place. Imagine que tu veux calculer le périmètre d'un carré dont tu connais le côté. Tu as besoin de demander la mesure, de la stocker, de faire le calcul, puis d'afficher le résultat. Chaque étape correspond à une instruction claire. C'est exactement ce que fait l'ordinateur : il exécute les lignes les unes après les autres, dans l'ordre, sans en sauter aucune, sauf si tu lui dis explicitement de faire un choix ou de répéter. C'est cette rigueur qui fait la force du programme, mais aussi la source des erreurs si l'on n'est pas attentif."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Instruction",
+                "Valeur de $cote$",
+                "Valeur de $perimetre$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Lire $cote$",
+                  "$5$",
+                  "?"
+                ],
+                [
+                  "2",
+                  "$perimetre \\\\leftarrow 4 \\\\times cote$",
+                  "$5$",
+                  "$20$"
+                ],
+                [
+                  "3",
+                  "Afficher $perimetre$",
+                  "$5$",
+                  "$20$"
+                ]
+              ],
+              "caption": "Table de trace pour un calcul de périmètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau s'appelle une table de trace. C'est ton outil numéro un pour vérifier qu'un programme fait ce que tu attends. On y note la valeur de chaque variable après chaque ligne. Si tu sais faire ça sur papier, tu as déjà fait la moitié du travail de débogage. Essaie maintenant sur un exemple très proche mais avec des nombres différents."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire des choix : la structure conditionnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un programme qui fait toujours la même chose, c'est un peu limité. La puissance de l'informatique, c'est de pouvoir adapter son comportement selon la situation. C'est le rôle du \"Si... Alors... Sinon... Fin Si\". Attention, la condition testée doit toujours être une expression booléenne : quelque chose qui ne peut répondre que par VRAI ou FAUX. Par exemple, $age \\\\ge 18$ est une condition. $age$ tout seul n'en est pas une. C'est une erreur très fréquente en 4e : écrire \"Si $age$ Alors...\" au lieu de \"Si $age \\\\ge 18$ Alors...\". Le vocabulaire précis compte : on parle de \"branche alors\" (ce qui se passe si c'est vrai) et de \"branche sinon\" (ce qui se passe si c'est faux). La branche \"Sinon\" est optionnelle : si tu ne mets rien, le programme continue simplement sa route si la condition est fausse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la question à laquelle le programme doit répondre par oui ou non. Exemple : \"Le nombre est-il positif ?\" $\\rightarrow$ $x > 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplir la branche Alors",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les instructions qui ne doivent s'exécuter que si la réponse est OUI (VRAI)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir la branche Sinon (si besoin)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les instructions pour le cas NON (FAUX). Si rien ne doit se passer, tu peux omettre le Sinon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un programme qui demande un nombre et affiche \"Positif\" ou \"Négatif ou nul\". Si tu testes avec $7$, la condition $x > 0$ est vraie, on exécute la branche Alors. Si tu testes avec $-2$, elle est fausse, on saute à la branche Sinon. C'est mécanique, prévisible, et c'est pour ça qu'on peut le tracer sur papier. Passons à l'exercice pour t'entraîner à lire ce genre de structure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répéter sans s'ennuyer : les boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième grande idée de l'algorithmique, c'est la répétition. Au lieu d'écrire dix fois la même ligne, on dit \"Répète 10 fois\" ou \"Tant que... Faire...\". En 4e, tu connais deux grandes familles. La boucle \"Pour\" (ou \"Répète\") quand on sait d'avance combien de tours on va faire : par exemple, afficher les tables de multiplication de $1$ à $10$. La variable qui compte les tours (souvent appelée $i$ ou $k$) prend la valeur $1$, puis $2$, jusqu'à $10$. À chaque tour, le bloc d'instructions à l'intérieur s'exécute. L'autre famille, c'est \"Tant que\" : on continue tant qu'une condition reste vraie. Là, le nombre de tours n'est pas connu au départ. C'est pratique pour demander un mot de passe jusqu'à ce qu'il soit bon, ou pour calculer une somme jusqu'à dépasser un seuil."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège classique avec \"Tant que\", c'est la boucle infinie. Si la condition ne devient jamais fausse à l'intérieur de la boucle, le programme tourne indéfiniment. Il faut toujours vérifier qu'une variable modifiée dans la boucle finit par rendre la condition fausse. Regarde cet exemple : on veut additionner les entiers $1 + 2 + 3 + ...$ jusqu'à ce que la somme dépasse $20$. La variable $somme$ augmente à chaque tour, donc tôt ou tard elle dépassera $20$, la condition $somme \\\\le 20$ deviendra fausse, et la boucle s'arrêtera. C'est cette logique qu'il faut avoir en tête avant de coder."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "$i$",
+                "$somme$ (avant)",
+                "$somme$ (après)",
+                "Condition $somme \\\\le 20$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "$1$",
+                  "$0$",
+                  "$1$",
+                  "VRAI"
+                ],
+                [
+                  "2",
+                  "$2$",
+                  "$1$",
+                  "$3$",
+                  "VRAI"
+                ],
+                [
+                  "3",
+                  "$3$",
+                  "$3$",
+                  "$6$",
+                  "VRAI"
+                ],
+                [
+                  "4",
+                  "$4$",
+                  "$6$",
+                  "$10$",
+                  "VRAI"
+                ],
+                [
+                  "5",
+                  "$5$",
+                  "$10$",
+                  "$15$",
+                  "VRAI"
+                ],
+                [
+                  "6",
+                  "$6$",
+                  "$15$",
+                  "$21$",
+                  "FAUX (stop)"
+                ]
+              ],
+              "caption": "Trace d'une boucle TantQue : somme des entiers jusqu'à dépasser 20"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe bien la table : la condition est testée *avant* chaque tour. Au tour 6, on ajoute $6$ à $15$, on obtient $21$. Comme $21 > 20$, le test suivant sera faux et on sort. Essaie de prédire le comportement d'une boucle légèrement modifiée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chasseur de bugs : méthodes de débogage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même les meilleurs programmeurs font des erreurs. Un \"bug\", ce n'est pas une faute, c'est juste un écart entre ce que tu *veux* que le programme fasse et ce qu'il *fait* vraiment. Il y a trois grandes familles. Les erreurs de syntaxe : tu as mal écrit un mot-clé (\"Ssi\" au lieu de \"Si\"), oublié un \"Fin Si\", mis une virgule au lieu d'un point. L'ordinateur te crie dessus immédiatement, il ne lance même pas le programme. Les erreurs à l'exécution (plantage) : le programme démarre, mais s'arrête en cours de route (division par zéro, indice de tableau hors limites). Et les plus sournoises : les erreurs logiques. Le programme tourne, ne plante pas, mais donne un mauvais résultat. C'est là que la table de trace devient ton meilleur allié."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Méthode du canard en plastique",
+              "paragraphs": [
+                "Explique ton code, ligne par ligne, à un objet inanimé (un canard, un stylo, peu importe). En l'oralisant, tu entends les incohérences que ton œil ne voit plus. Ça marche incroyablement bien."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode pro, c'est le test unitaire : tu choisis une entrée simple, tu calcules toi-même le résultat attendu sur papier, tu lances le programme, tu compares. Si ça ne matche pas, tu fais une trace pas à pas (à la main ou avec le mode \"debug\" de ton logiciel) jusqu'à la ligne où la variable diverge de ton calcul. C'est systématique, ça prend du temps, mais ça paie à tous les coups. On va s'entraîner à repérer une erreur logique sur un petit algorithme de calcul de moyenne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la table de trace pour cet algorithme avec l'entrée $cote = 7$ :\\n1. Lire $cote$\\n2. $aire \\\\leftarrow cote \\\\times cote$\\n3. Afficher $aire$",
+              "answer": "Étape 1 : $cote=7$, $aire=?$ ; Étape 2 : $cote=7$, $aire=49$ ; Étape 3 : $cote=7$, $aire=49$ (affiché).",
+              "hint": "Suis l'ordre des lignes. La multiplication a lieu à l'étape 2 seulement.",
+              "explanation": "À l'étape 1, on lit $7$, $aire$ n'existe pas encore. À l'étape 2, on calcule $7 \\\\times 7 = 49$ et on stocke dans $aire$. À l'étape 3, on affiche $49$. Les variables ne changent plus après."
+            },
+            {
+              "question": "Quel sera l'affichage de ce programme si l'utilisateur entre $-5$ ?\\nLire $x$\\nSi $x > 0$ Alors\\n    Afficher \"A\"\\nSinon\\n    Afficher \"B\"\\nFin Si",
+              "answer": "B",
+              "hint": "Évalue la condition $x > 0$ avec $x = -5$. Est-elle vraie ou fausse ?",
+              "explanation": "Avec $x = -5$, la condition $-5 > 0$ est FAUSSE. On exécute donc la branche Sinon, qui affiche \"B\". La branche Alors est ignorée."
+            },
+            {
+              "question": "Combien de fois la boucle suivante affichera-t-elle \"Tour\" ?\\n$i \\\\leftarrow 1$\\nTant que $i < 4$ Faire\\n    Afficher \"Tour\"\\n    $i \\\\leftarrow i + 1$\\nFin TantQue",
+              "answer": "3 fois",
+              "hint": "Simule les tours un par un : note la valeur de $i$ au début de chaque tour et vérifie la condition.",
+              "explanation": "Tour 1 : $i=1$, $1<4$ vrai $\\rightarrow$ affiche, $i$ devient $2$. Tour 2 : $i=2$, $2<4$ vrai $\\rightarrow$ affiche, $i$ devient $3$. Tour 3 : $i=3$, $3<4$ vrai $\\rightarrow$ affiche, $i$ devient $4$. Tour 4 : $i=4$, $4<4$ faux $\\rightarrow$ stop. Donc 3 affichages."
+            },
+            {
+              "question": "Cet algorithme doit calculer la moyenne de 3 notes. Il y a une erreur logique. Laquelle ?\\nLire $n1, n2, n3$\\n$moyenne \\\\leftarrow n1 + n2 + n3$\\nAfficher $moyenne$",
+              "answer": "Il manque la division par 3. La ligne 2 devrait être : $moyenne \\\\leftarrow (n1 + n2 + n3) / 3$.",
+              "hint": "Rappelle-toi la définition de la moyenne : somme des valeurs divisée par le nombre de valeurs.",
+              "explanation": "L'algorithme calcule la *somme* des notes, pas la moyenne. Pour obtenir la moyenne, il faut diviser cette somme par $3$ (le nombre de notes). C'est une erreur logique classique : le programme tourne, affiche un nombre, mais ce n'est pas le bon."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : Variables, types et expressions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon de synthèse est l'occasion de prendre de la hauteur. Tu as manipulé des variables tout au long de l'année, mais sais-tu expliquer clairement pourquoi on ne peut pas ajouter un nombre à un mot ? C'est la question des *types*. En algorithmique, chaque variable a un type fixé (souvent au moment de sa déclaration ou de sa première affectation). Une variable de type Entier ne contiendra jamais $3,5$. Une variable de type Chaîne contient du texte, même si ce texte est composé de chiffres comme $\"123\"$. Si tu essaies de faire $x \\\\leftarrow \"123\" + 1$, le programme plantera ou donnera un résultat absurde selon le langage. La rigueur sur les types, c'est ce qui évite les surprises à l'exécution."
+            },
+            {
+              "type": "definition",
+              "term": "Type de variable",
+              "definition": "Catégorie de données qu'une variable peut contenir. Les quatre types de base en 4e : Entier (nombre sans virgule), Réel (nombre avec virgule), Chaîne (texte), Booléen (Vrai/Faux).",
+              "example": "âge (Entier), prix (Réel), nom (Chaîne), estMajeur (Booléen)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu écris un programme qui calcule le prix TTC d'un article. Tu as le prix HT (un réel, ex: $19,99$) et le taux de TVA (un réel, ex: $0,20$ pour 20%). Le calcul $prixTTC \\\\leftarrow prixHT \\\\times (1 + tva)$ produit un réel. Si tu veux l'afficher proprement avec deux décimales, tu devras peut-être le convertir en chaîne de caractères pour ajouter le symbole euro. Cette conversion explicite (casting) est une habitude à prendre. Maintenant, teste ta compréhension sur un choix de types."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : Conditions imbriquées et logique booléenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "On a vu le \"Si... Alors... Sinon\". Mais la vraie vie, c'est souvent des choix à l'intérieur d'autres choix. Imagine un jeu vidéo : si le joueur a une clé *ET* s'il est devant la porte, alors la porte s'ouvre. Si tu codes ça avec deux \"Si\" séparés, tu risques d'ouvrir la porte même si le joueur n'a pas la clé mais est devant la porte (premier Si vrai) puis s'il a la clé mais n'est pas devant (deuxième Si vrai). Il faut *imbriquer* : Si (aClé) Alors Si (devantPorte) Alors Ouvrir Fin Si Fin Si. Ou utiliser l'opérateur logique ET : Si (aClé ET devantPorte) Alors Ouvrir Fin Si. C'est plus compact, mais il faut bien maîtriser les tables de vérité : VRAI ET VRAI = VRAI, tout le reste = FAUX. VRAI OU FAUX = VRAI, FAUX OU FAUX = FAUX. NON VRAI = FAUX."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les conditions simples",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décompose la phrase complexe en questions binaires. Ex: \"Le nombre est pair ET positif\" $\\rightarrow$ Condition 1 : $x \\\\% 2 = 0$. Condition 2 : $x > 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le connecteur (ET / OU)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\"ET\" : les deux doivent être vraies (plus restrictif). \"OU\" : au moins une doit être vraie (plus permissif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la condition complète",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combine avec les parenthèses pour lever toute ambiguïté : $(cond1 \\\\text{ ET } cond2)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent en 4e : confondre l'opérateur d'affectation ($\\\\leftarrow$) et l'opérateur de comparaison ($=$ ou $==$ selon les langages). Dans une condition, on teste toujours l'égalité avec $=$ (ou $==$), jamais avec la flèche. Écrire \"Si $x \\\\leftarrow 5$ Alors\" signifie \"Mets 5 dans $x$, et comme ça a marché, c'est vrai\", ce qui change la valeur de $x$ ! C'est une source de bugs terribles. Fais attention à ce détail dans l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : Maîtriser les boucles et les invariants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une boucle, ce n'est pas juste \"ça tourne\". C'est un mécanisme précis avec un début, une condition d'arrêt, et un corps qui modifie l'état. Pour être sûr qu'une boucle fait ce qu'on veut, les informaticiens utilisent la notion d'*invariant de boucle* : une propriété qui est vraie *avant* le premier tour, qui *reste vraie* à chaque tour, et qui donc est vraie *à la fin*. Par exemple, pour une boucle qui calcule la somme des $n$ premiers entiers : l'invariant est \"$somme$ vaut la somme des entiers de $1$ à $i-1$\". Au début, $i=1$, la somme de $1$ à $0$ est $0$, c'est vrai. À chaque tour, on ajoute $i$ à $somme$, puis on incrémente $i$. La propriété reste vraie. À la fin, $i = n+1$, donc $somme$ est la somme de $1$ à $n$. C'est une preuve de correction ! En 4e, on ne te demande pas d'écrire la preuve formelle, mais de *penser* en termes d'invariant : \"Qu'est-ce qui est vrai à chaque tour ?\" C'est ça qui te permet d'écrire des boucles justes du premier coup."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "$i$",
+                "$produit$ (avant)",
+                "Action",
+                "$produit$ (après)",
+                "Invariant : $produit = 2^{i-1}$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "$1$",
+                  "$1$ (init)",
+                  "$produit \\\\leftarrow produit \\\\times 2$",
+                  "$2$",
+                  "VRAI ($2 = 2^{1-1}? Non, 2^0=1. Attendez.)"
+                ],
+                [
+                  "Correction",
+                  "",
+                  "",
+                  "Invariant : $produit = 2^i$ ?",
+                  "",
+                  ""
+                ],
+                [
+                  "1",
+                  "$1$",
+                  "$1$",
+                  "$\\\\times 2$",
+                  "$2$",
+                  "VRAI ($2 = 2^1$)"
+                ],
+                [
+                  "2",
+                  "$2$",
+                  "$2$",
+                  "$\\\\times 2$",
+                  "$4$",
+                  "VRAI ($4 = 2^2$)"
+                ],
+                [
+                  "3",
+                  "$3$",
+                  "$4$",
+                  "$\\\\times 2$",
+                  "$8$",
+                  "VRAI ($8 = 2^3$)"
+                ]
+              ],
+              "caption": "Recherche de l'invariant pour une boucle de calcul de puissance de 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : j'ai dû corriger mon invariant initial. C'est normal ! Trouver le bon invariant demande parfois quelques essais. L'important, c'est de vérifier qu'il tient la route au premier tour, et qu'une itération le préserve. Si tu as ça en tête, tu ne feras plus d'erreurs de \"off-by-one\" (boucle qui tourne une fois de trop ou pas assez). Essaie d'identifier le problème dans une boucle mal bornée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Approche globale : Comprendre, Planifier, Coder, Tester"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons la méthode professionnelle pour aborder n'importe quel problème algorithmique, du brevet aux concours. Première phase : *Comprendre*. Lis l'énoncé deux fois. Identifie les entrées (données), les sorties (résultats attendus), et les contraintes. Fais un exemple à la main avec des chiffres. Deuxième phase : *Planifier*. Écris l'algorithme en français structuré (pseudo-code) sur papier, sans te soucier de la syntaxe exacte. Découpe en sous-problèmes : \"Lire les données\", \"Calculer\", \"Afficher\". Troisième phase : *Coder*. Traduis ton pseudo-code dans le langage (Python, Scratch, AlgoBox...). Quatrième phase : *Tester*. Ne teste pas seulement le cas \"normal\". Teste les cas limites : zéro, nombre négatif, très grand nombre, chaîne vide. C'est là qu'on trouve 90% des bugs logiques. Si tu appliques cette discipline, tu gagnes un temps fou et tes programmes sont fiables."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention aux cas limites",
+              "paragraphs": [
+                "Un programme qui marche pour $10$ ne marche pas forcément pour $0$ ou $-5$. Teste toujours : la valeur minimale, la valeur maximale, une valeur au milieu, et une valeur invalide (si le programme doit la rejeter)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main pour réussir ton bilan algorithmique. La dernière étape, c'est de valider tes acquis un par un. La checklist qui suit te permet de faire le point sereinement, sans stress. Chaque item correspond à une compétence du programme de 4e. Si tu peux cocher la case en te disant \"Oui, je sais faire ça et je pourrais l'expliquer à un camarade\", c'est acquis. Sinon, tu sais exactement quoi réviser. C'est ton outil de pilotage pour les prochains contrôles."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais déclarer une variable adaptée au type de donnée (entier, réel, chaîne, booléen).",
+                "J'utilise correctement l'affectation ($\\\\leftarrow$) et je la distingue de l'égalité mathématique ($=$).",
+                "Je construis une condition simple (comparaison) et composée (ET, OU, NON) sans confusion.",
+                "J'écris une structure conditionnelle complète (Si... Alors... Sinon... Fin Si) en gérant l'imbrication.",
+                "Je choisis la boucle adaptée : \"Pour\" (nombre de tours connu) ou \"Tant que\" (condition d'arrêt).",
+                "Je trace l'exécution d'un algorithme pas à pas avec une table de variables (trace).",
+                "J'identifie les trois types d'erreurs : syntaxe, exécution, logique.",
+                "J'applique la méthode de débogage : test unitaire, trace pas à pas, explication orale (canard).",
+                "Je respecte les conventions d'écriture : indentation, noms de variables clairs, commentaires utiles.",
+                "Je résous un problème en 4 étapes : Comprendre (exemple à la main), Planifier (pseudo-code), Coder, Tester (cas limites)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour stocker les informations suivantes, quel type de variable choisis-tu ?\\n1. Le nombre d'élèves dans la classe.\\n2. La note de maths sur 20 (avec demi-points possibles).\\n3. Le nom du professeur.\\n4. La réponse à la question \"As-tu ton carnet de correspondance ?\"",
+              "answer": "1. Entier. 2. Réel. 3. Chaîne de caractères. 4. Booléen.",
+              "hint": "Un nombre à virgule $\\rightarrow$ Réel. Un oui/non $\\rightarrow$ Booléen. Du texte $\\rightarrow$ Chaîne. Un compteur $\\rightarrow$ Entier.",
+              "explanation": "Le nombre d'élèves est un compte entier. La note peut être $12,5$ donc un réel. Le nom est du texte (chaîne). La réponse est Vrai ou Faux (booléen)."
+            },
+            {
+              "question": "Corrige l'erreur dans cette condition pour qu'elle affiche \"Gagné\" si $x$ vaut $5$ OU $10$ :\\nSi $x = 5$ OU $10$ Alors Afficher \"Gagné\" Fin Si",
+              "answer": "Si $(x = 5)$ OU $(x = 10)$ Alors Afficher \"Gagné\" Fin Si",
+              "hint": "L'opérateur OU relie deux conditions complètes. $x = 5$ est une condition. $10$ tout seul n'en est pas une.",
+              "explanation": "L'écriture \"$x = 5$ OU $10$\" est incorrecte car \"$10$\" n'est pas une expression booléenne. Il faut comparer $x$ à $10$ : \"$x = 10$\". Les parenthèses clarifient la priorité."
+            },
+            {
+              "question": "Cette boucle doit afficher les nombres de $1$ à $5$. Pourquoi ne fonctionne-t-elle pas ?\\n$i \\\\leftarrow 1$\\nTant que $i < 5$ Faire\\n    Afficher $i$\\nFin TantQue",
+              "answer": "Deux erreurs : 1. La condition $i < 5$ s'arrête à $4$ (exclut $5$), il faut $i \\\\le 5$. 2. Il manque l'incrémentation $i \\\\leftarrow i + 1$ dans la boucle (sinon boucle infinie).",
+              "hint": "Vérifie deux choses : la condition d'arrêt inclut-elle la dernière valeur ? La variable de boucle change-t-elle à l'intérieur ?",
+              "explanation": "Sans $i \\\\leftarrow i + 1$, $i$ reste $1$ pour toujours : boucle infinie. Avec l'incrémentation mais condition $i < 5$, on affiche $1, 2, 3, 4$ et on s'arrête avant $5$. Il faut $i \\\\le 5$ ou $i < 6$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

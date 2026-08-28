@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 120,
+  "_course_code": "ce1-t06-c04-decouvrir-les-contenances",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Comparer des récipients",
+  "title": "Comparer des récipients : algorithmes",
+  "blocks": [
+    {
+      "title": "Comparer deux récipients",
+      "content": "On a deux récipients A et B. La contenance de A est $250$ ml et celle de B est $300$ ml. Écris un algorithme en langage naturel qui permet de déterminer lequel des deux récipients a la plus grande contenance.",
+      "correctAnswer": "Lire la contenance du premier récipient. Lire la contenance du deuxième récipient. Comparer les deux valeurs. Si la première valeur est plus grande que la deuxième, afficher que le premier récipient a la plus grande contenance. Sinon si la deuxième valeur est plus grande, afficher que le deuxième récipient a la plus grande contenance. Sinon afficher que les deux récipients ont la même contenance.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire les deux contenances connues. Il compare ensuite les deux nombres : si le premier est plus grand, le récipient A est le plus grand ; si le second est plus grand, le récipient B est le plus grand ; sinon ils sont égaux. Cette structure conditionnelle couvre tous les cas possibles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer trois récipients",
+      "content": "On dispose de trois récipients C1, C2 et C3 dont les contenances sont respectivement $150$ ml, $400$ ml et $250$ ml. Écris un algorithme qui classe ces trois récipients du plus petit au plus grand et affiche l'ordre.",
+      "correctAnswer": "Lire les trois contenances. Les placer dans une liste. Trier la liste dans l'ordre croissant. Afficher les récipients dans l'ordre de la liste triée.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On récupère les trois valeurs, on les met dans une collection (liste) puis on applique un tri croissant. Le résultat donne directement l'ordre des récipients du plus petit volume au plus grand.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux bouteilles avec un verre référence",
+      "content": "Tu as un verre gradué de $200$ ml et deux bouteilles dont tu ne connais pas la contenance. Décris pas à pas un algorithme pour savoir laquelle des deux bouteilles a la plus grande contenance en utilisant seulement le verre gradué.",
+      "correctAnswer": "Remplir le verre gradué et le verser dans la première bouteille jusqu'à ce qu'elle soit pleine, en comptant le nombre de verres nécessaires. Faire la même chose pour la deuxième bouteille. Comparer les deux nombres de verres. Si le premier nombre est plus grand, la première bouteille a la plus grande contenance. Si le second nombre est plus grand, la deuxième bouteille a la plus grande contenance. Sinon, elles ont la même contenance.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le verre de référence comme unité de mesure. En comptant combien de verres il faut pour remplir chaque bouteille, on obtient une mesure proportionnelle à leur contenance. La comparaison de ces deux compteurs indique quelle bouteille est la plus grande.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 87,
+  "_course_code": "ce1-t02-c09-bilan-fractions-ce1",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Lire et représenter",
+  "title": "Algorithmes pour lire et représenter des fractions",
+  "blocks": [
+    {
+      "title": "Lire et représenter 2/5",
+      "content": "Écris les étapes (un algorithme simple) pour lire la fraction $2/5$ et la représenter avec une barre divisée en parties égales.",
+      "correctAnswer": "1. Identifier le numérateur (2) et le dénominateur (5).\\n2. Dessiner une barre.\\n3. Diviser la barre en 5 parties égales.\\n4. Colorier 2 parties sur les 5.\\n5. Écrire la fraction $2/5$ sous la barre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décrit la lecture de la fraction : le numérateur indique le nombre de parties prises, le dénominateur le nombre total de parties. On dessine ensuite une barre, on la partage en 5 parties égales, on en colore 2 et on note la fraction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Représenter 3/4 sur un cercle",
+      "content": "Propose un algorithme pour convertir la fraction $3/4$ en une représentation sur un cercle (camembert).",
+      "correctAnswer": "1. Identifier le numérateur (3) et le dénominateur (4).\\n2. Dessiner un cercle.\\n3. Diviser le cercle en 4 parts égales (quart de cercle).\\n4. Colorier 3 parts sur les 4.\\n5. Légender le dessin avec la fraction $3/4$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le principe est le même que pour la barre : le dénominateur donne le nombre de parts égales du cercle, le numérateur le nombre de parts colorées. On obtient ainsi une représentation visuelle de la fraction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour toute fraction",
+      "content": "Écris un algorithme en langage simple qui, étant donné un numérateur $n$ et un dénominateur $d$, affiche les instructions pour représenter la fraction $n/d$ sous forme de barre.",
+      "correctAnswer": "ALGORITHME RepresenterFractionBarre\\nENTRÉES : n (numérateur), d (dénominateur)\\nDÉBUT\\n    AFFICHER \"Dessiner une barre.\"\\n    AFFICHER \"Diviser la barre en\", d, \"parties égales.\"\\n    AFFICHER \"Colorier\", n, \"parties sur\", d, \".\"\\n    AFFICHER \"Écrire la fraction\", n, \"/\", d, \"sous la barre.\"\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme prend en entrée les deux nombres de la fraction et génère pas à pas les consignes de dessin. Il illustre la structure d'un algorithme : entrées, traitement, sorties.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

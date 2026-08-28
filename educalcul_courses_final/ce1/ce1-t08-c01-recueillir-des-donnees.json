@@ -1,0 +1,382 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.908722+00:00",
+  "id": 136,
+  "code": "ce1-t08-c01",
+  "title": "Recueillir des données",
+  "description": "Cours structuré Educalcul : Recueillir des données.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Recueillir des données",
+    "objectif_global": "Recueillir des données",
+    "mini_lecons_imposees": [
+      "Définir une question.",
+      "Faire un relevé.",
+      "Compter les effectifs."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Définir une question.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définir une question"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue ! Aujourd'hui, nous allons apprendre à poser une question pour recueillir des informations. Imagine que tu veux savoir quel fruit tes camarades préfèrent. Une bonne question est courte, claire et attend une seule réponse. Prends ton temps, on avance ensemble."
+            },
+            {
+              "type": "definition",
+              "term": "question",
+              "definition": "Une phrase qui demande une information précise et qui peut recevoir une réponse unique.",
+              "example": "Quel est ton fruit préféré ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment formuler une question sans ambiguïté. Utilise des mots simples, évite les doubles sens et choisis un sujet concret. Par exemple, \"Quel jeu aimes-tu ?\" est plus clair que \"Qu'est-ce que tu aimes ?\"."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le sujet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide ce que tu veux savoir : fruit, couleur, jeu, animal…"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Commence par \"Quel\", \"Quelle\", \"Combien\" ou \"Est-ce que\" selon le type de réponse attendu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que la question n'admet qu'une seule réponse possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, regarde ce tableau qui compare une question bien posée et une question floue. Repère les différences et retiens la règle : une seule idée par question."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Question claire",
+                "Question floue"
+              ],
+              "rows": [
+                [
+                  "Quel est ton fruit préféré ?",
+                  "Qu'est-ce que tu aimes ?"
+                ],
+                [
+                  "Combien de frères as-tu ?",
+                  "Tu as des frères ?"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une question pour savoir la couleur préférée de ton ami.",
+              "answer": "Quelle est ta couleur préférée ?",
+              "hint": "Commence par \"Quelle\" et termine par un point d'interrogation.",
+              "explanation": "La question est courte, porte sur un seul sujet (la couleur) et attend une réponse unique."
+            },
+            {
+              "question": "Transforme la phrase \"Tu aimes les animaux ?\" en une question précise sur un animal.",
+              "answer": "Quel est ton animal préféré ?",
+              "hint": "Remplace le verbe par \"Quel est\" et ajoute le mot \"préféré\".",
+              "explanation": "La nouvelle question cible un seul animal et évite une réponse oui/non."
+            },
+            {
+              "question": "Choisis la question la plus claire parmi les deux : \"Quel sport pratiques-tu ?\" ou \"Tu fais du sport ?\"",
+              "answer": "Quel sport pratiques-tu ?",
+              "hint": "Regarde laquelle demande une réponse précise.",
+              "explanation": "La première attend le nom d'un sport, la seconde seulement oui ou non."
+            }
+          ]
+        },
+        {
+          "title": "Faire un relevé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire un relevé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu sais maintenant poser une question. Voyons comment noter les réponses de tes camarades. Un relevé, c'est simplement la liste de toutes les réponses recueillies. On utilise souvent des traits pour compter vite, comme des petites marques sur une feuille."
+            },
+            {
+              "type": "definition",
+              "term": "relevé",
+              "definition": "Ensemble des réponses obtenues après avoir posé une question à plusieurs personnes.",
+              "example": "Trois élèves répondent \"pomme\", deux répondent \"banane\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas perdre le fil, on utilise la méthode des traits : chaque réponse ajoute un trait. Au cinquième trait, on fait une barre transversale pour former un groupe de $5$. Cela rend le comptage plus rapide et évite les erreurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer la feuille",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la question en haut et laisse de la place pour chaque réponse possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter chaque réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque camarade, trace un trait dans la case correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regrouper par $5$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les $5$ traits, fais une barre oblique pour former un paquet."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau de relevé déjà rempli. Il montre les réponses de $10$ élèves à la question \"Quel fruit aimes-tu ?\". Les traits sont groupés par $5$ pour lire vite les effectifs."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Traits"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "|||| |"
+                ],
+                [
+                  "Banane",
+                  "||||"
+                ],
+                [
+                  "Fraise",
+                  "|||"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de traits dois-tu tracer si $4$ élèves disent \"pomme\" ?",
+              "answer": "$4$",
+              "hint": "Chaque élève ajoute un trait.",
+              "explanation": "Quatre réponses \"pomme\" donnent quatre traits verticaux."
+            },
+            {
+              "question": "Après avoir noté $7$ réponses \"banane\", à quoi ressemblent les traits ?",
+              "answer": "|||| ||",
+              "hint": "Groupe les traits par $5$.",
+              "explanation": "Les cinq premiers forment un paquet barré, les deux suivants restent simples."
+            },
+            {
+              "question": "Dans le tableau, quel fruit a le plus de traits ?",
+              "answer": "Pomme",
+              "hint": "Compare le nombre de traits pour chaque ligne.",
+              "explanation": "La ligne Pomme montre $6$ traits, plus que Banane ($4$) et Fraise ($3$)."
+            }
+          ]
+        },
+        {
+          "title": "Compter les effectifs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les effectifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as fait ton relevé. Maintenant, il faut compter combien de fois chaque réponse apparaît. Ce nombre s'appelle l'effectif. C'est comme compter les paquets de traits que tu as faits."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre de fois qu'une réponse a été donnée dans un relevé.",
+              "example": "Si \"pomme\" a $6$ traits, l'effectif de pomme est $6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer des traits aux effectifs, suis cette méthode simple : compte les paquets de $5$ (chaque paquet vaut $5$), puis ajoute les traits restants. Écris le total dans une colonne à côté du tableau."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les paquets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque barre oblique représente $5$ réponses."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les traits seuls",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les traits verticaux qui ne font pas partie d'un paquet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les deux nombres et note le résultat."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce diagramme en barres qui montre les effectifs des trois fruits. La hauteur de chaque barre correspond au nombre d'élèves ayant choisi ce fruit. C'est une façon visuelle de comparer rapidement."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs des fruits préférés",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais poser une question claire pour recueillir des données.",
+                "Je sais noter les réponses avec des traits groupés par $5$.",
+                "Je sais compter les effectifs à partir d'un relevé.",
+                "Je sais lire un diagramme en barres pour comparer les effectifs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l'effectif de \"pomme\" si tu as $6$ traits ?",
+              "answer": "$6$",
+              "hint": "Chaque trait compte pour $1$.",
+              "explanation": "Six traits donnent un effectif de six."
+            },
+            {
+              "question": "Si tu as un paquet de $5$ traits et $2$ traits seuls pour \"banane\", quel est l'effectif ?",
+              "answer": "$7$",
+              "hint": "Ajoute $5$ et $2$.",
+              "explanation": "Un paquet vaut $5$, plus $2$ traits isolés font $7$."
+            },
+            {
+              "question": "Dans le diagramme, quelle barre est la plus haute ?",
+              "answer": "Pomme",
+              "hint": "Compare les valeurs $6$, $4$ et $3$.",
+              "explanation": "La barre Pomme atteint $6$, c'est la plus grande."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

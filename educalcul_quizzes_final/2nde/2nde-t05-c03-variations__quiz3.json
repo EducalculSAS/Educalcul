@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Lire extrema",
+  "title": "Quiz : Lire les extrema d'une fonction",
+  "questions": [
+    {
+      "text": "On donne ci-dessous la représentation graphique d'une fonction $f$ définie sur l'intervalle $[-3 ; 5]$. Quel est le maximum de $f$ sur cet intervalle ?",
+      "options": [
+        "Le maximum est $4$ et il est atteint en $x = 1$",
+        "Le maximum est $1$ et il est atteint en $x = 4$",
+        "Le maximum est $5$ et il est atteint en $x = -3$",
+        "Le maximum est $-3$ et il est atteint en $x = 5$"
+      ],
+      "correctAnswer": "Le maximum est $4$ et il est atteint en $x = 1$",
+      "explanation": "Sur le graphique, le point le plus haut a pour coordonnées $(1 ; 4)$. La valeur maximale (l'ordonnée) est donc $4$, atteinte pour $x = 1$ (l'abscisse). L'option B confond l'abscisse et l'ordonnée. L'option C donne l'extrémité de l'intervalle de définition, pas la valeur de la fonction. L'option D donne des valeurs négatives qui ne correspondent pas au sommet de la courbe.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-(x-1)^2+4",
+        "xmin": -3,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f sur [-3 ; 5]"
+      }
+    },
+    {
+      "text": "Soit une fonction $g$ définie sur $[0 ; 10]$ par le tableau de valeurs suivant :\\n$x$ : 0 ; 2 ; 4 ; 6 ; 8 ; 10\\n$g(x)$ : 3 ; 7 ; 1 ; 5 ; 9 ; 2\\nQuel est le minimum de $g$ sur $[0 ; 10]$ ?",
+      "options": [
+        "Le minimum est $1$ atteint pour $x = 4$",
+        "Le minimum est $0$ atteint pour $x = 0$",
+        "Le minimum est $9$ atteint pour $x = 8$",
+        "Le minimum est $4$ atteint pour $x = 1$"
+      ],
+      "correctAnswer": "Le minimum est $1$ atteint pour $x = 4$",
+      "explanation": "On parcourt la seconde ligne du tableau ($g(x)$) pour trouver la plus petite valeur. Les valeurs sont $3, 7, 1, 5, 9, 2$. La plus petite est $1$, elle correspond à $x = 4$ (troisième colonne). L'option B confond la borne de l'intervalle de définition ($x=0$) avec la valeur de la fonction. L'option C donne le maximum. L'option D inverse les lignes du tableau.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La courbe représentative d'une fonction $h$ définie sur $[-2 ; 6]$ est tracée ci-dessous. La fonction admet un minimum local en $x = 3$ de valeur $-2$ et un maximum global en $x = -1$ de valeur $5$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "Le minimum global de $h$ sur $[-2 ; 6]$ est $-2$",
+        "Le maximum global de $h$ sur $[-2 ; 6]$ est atteint en $x = 3$",
+        "La fonction n'admet pas de minimum global car elle n'est pas continue",
+        "Le minimum global de $h$ sur $[-2 ; 6]$ est $-2$ atteint en $x = 3$"
+      ],
+      "correctAnswer": "Le minimum global de $h$ sur $[-2 ; 6]$ est $-2$ atteint en $x = 3$",
+      "explanation": "Un extremum global est le plus grand (maximum) ou le plus petit (minimum) sur tout l'intervalle. Ici, le minimum local en $x=3$ (valeur $-2$) est aussi la valeur la plus basse jamais prise par la fonction sur $[-2;6]$, c'est donc le minimum global. L'option A est incomplète : un extremum se caractérise par sa valeur ET l'abscisse où il est atteint. L'option B confond maximum et minimum et leurs abscisses. L'option C est fausse : une fonction définie sur un intervalle fermé admet toujours des extrema globaux (théorème des valeurs extrêmes), la continuité n'est pas nécessaire pour l'existence si on lit sur un graphique donné.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "(x-3)^2-2",
+        "xmin": -2,
+        "xmax": 6,
+        "caption": "Graphique de la fonction h sur [-2 ; 6] avec maximum en (-1;5) et minimum en (3;-2)"
+      }
+    },
+    {
+      "text": "On considère le tableau de variation suivant pour une fonction $k$ définie sur $]-5 ; 5[$ :\\n$k$ varie de $+\\infty$ (en $-5$) à $3$ (en $-1$), puis de $3$ (en $-1$) à $-4$ (en $2$), puis de $-4$ (en $2$) à $+\\infty$ (en $5$).\\nQuels sont les extrema de $k$ sur son ensemble de définition ?",
+      "options": [
+        "Maximum global $3$ en $x=-1$ ; minimum global $-4$ en $x=2$",
+        "Maximum local $3$ en $x=-1$ ; minimum local $-4$ en $x=2$",
+        "Pas de maximum global ; minimum global $-4$ en $x=2$",
+        "Maximum global $+\\infty$ ; minimum global $-\\infty$"
+      ],
+      "correctAnswer": "Pas de maximum global ; minimum global $-4$ en $x=2$",
+      "explanation": "L'ensemble de définition est l'intervalle **ouvert** $]-5 ; 5[$. Les bornes $-5$ et $5$ n'appartiennent pas au domaine. La fonction tend vers $+\\infty$ près de ces bornes, elle n'atteint jamais de valeur maximale finie : il n'y a **pas de maximum global** (le $3$ en $-1$ n'est qu'un maximum local car la fonction prend des valeurs supérieures près des bords). En revanche, la valeur $-4$ atteinte en $x=2$ est la plus petite valeur prise sur tout l'intervalle : c'est le **minimum global**. L'option A oublie que l'intervalle est ouvert. L'option B ne précise pas la nature globale du minimum. L'option D confond limites et valeurs atteintes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La hauteur (en mètres) d'une balle lancée verticalement est modélisée par la fonction $h(t) = -5t^2 + 20t + 2$ pour $t \\in [0 ; 4]$ ($t$ en secondes). Quelle phrase interprète correctement le maximum de cette fonction ?",
+      "options": [
+        "La hauteur maximale atteinte par la balle est de $22$ mètres, au bout de $2$ secondes.",
+        "La balle met $22$ secondes pour atteindre sa hauteur maximale de $2$ mètres.",
+        "La hauteur maximale est $20$ mètres, atteinte à $t = 5$ secondes.",
+        "Il n'y a pas de maximum car la fonction est décroissante."
+      ],
+      "correctAnswer": "La hauteur maximale atteinte par la balle est de $22$ mètres, au bout de $2$ secondes.",
+      "explanation": "La fonction est un trinôme du second degré $a=-5 < 0$, elle admet un maximum au sommet de sa parabole. L'abscisse du sommet est $t = -b/(2a) = -20/(2 \\times -5) = 2$ secondes. La valeur maximale est $h(2) = -5 \\times 4 + 20 \\times 2 + 2 = -20 + 40 + 2 = 22$ mètres. Comme $t=2$ appartient à l'intervalle $[0;4]$, c'est bien le maximum global. L'option B inverse la valeur et l'abscisse. L'option C utilise le coefficient $b$ comme hauteur et calcule mal l'abscisse. L'option D est fausse : la fonction est croissante puis décroissante.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

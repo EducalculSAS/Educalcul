@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Bilan - Algèbre 3e",
+  "title": "Bilan d'algèbre : Associations",
+  "blocks": [
+    {
+      "title": "Factorisation et développement",
+      "content": "Relie chaque expression factorisée à son expression développée et réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$(x + 3)(x - 3)$",
+          "right": "$x^2 - 9$"
+        },
+        {
+          "left": "$(2x + 5)^2$",
+          "right": "$4x^2 + 20x + 25$"
+        },
+        {
+          "left": "$(x - 4)(x + 2)$",
+          "right": "$x^2 - 2x - 8$"
+        },
+        {
+          "left": "$(3x - 1)(3x + 1)$",
+          "right": "$9x^2 - 1$"
+        }
+      ],
+      "items": [],
+      "explanation": "On utilise les identités remarquables : $(a+b)(a-b)=a^2-b^2$ pour les deux premières et la dernière, et $(a+b)^2=a^2+2ab+b^2$ pour la deuxième. Pour $(x-4)(x+2)$, on fait la distributivité : $x^2+2x-4x-8 = x^2-2x-8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'équations du premier degré",
+      "content": "Relie chaque équation à sa solution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3x - 7 = 2x + 5$",
+          "right": "$x = 12$"
+        },
+        {
+          "left": "$2(3x - 4) = 5x + 1$",
+          "right": "$x = 9$"
+        },
+        {
+          "left": "$\\frac{x}{2} + 3 = \\frac{x}{3} + 5$",
+          "right": "$x = 12$"
+        },
+        {
+          "left": "$4 - x = 2x + 10$",
+          "right": "$x = -2$"
+        }
+      ],
+      "items": [],
+      "explanation": "1) $3x-2x=5+7 \\Rightarrow x=12$. 2) $6x-8=5x+1 \\Rightarrow x=9$. 3) On multiplie par 6 : $3x+18=2x+30 \\Rightarrow x=12$. 4) $-x-2x=10-4 \\Rightarrow -3x=6 \\Rightarrow x=-2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'inéquations",
+      "content": "Relie chaque inéquation à son ensemble de solutions.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2x + 3 \\ge 7$",
+          "right": "$[2 ; +\\infty[$"
+        },
+        {
+          "left": "$-3x + 5 < 2$",
+          "right": "$]1 ; +\\infty[$"
+        },
+        {
+          "left": "$4x - 1 \\le 3x + 5$",
+          "right": "$]-\\infty ; 6]$"
+        },
+        {
+          "left": "$-2(x - 3) > 4$",
+          "right": "$]-\\infty ; 1[$"
+        }
+      ],
+      "items": [],
+      "explanation": "1) $2x \\ge 4 \\Rightarrow x \\ge 2$, soit $[2;+\\infty[$. 2) $-3x < -3$, on divise par -3 en changeant le sens : $x > 1$, soit $]1;+\\infty[$. 3) $x \\le 6$, soit $]-\\infty;6]$. 4) $-2x+6 > 4 \\Rightarrow -2x > -2 \\Rightarrow x < 1$, soit $]-\\infty;1[$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

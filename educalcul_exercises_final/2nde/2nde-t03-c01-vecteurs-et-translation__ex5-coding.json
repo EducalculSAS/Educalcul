@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Algorithmes de translation vectorielle",
+  "blocks": [
+    {
+      "title": "Vecteur de translation entre deux points",
+      "content": "Écrire un algorithme (ou une fonction en syntaxe Python) qui prend en entrée les coordonnées de deux points $A(x_A, y_A)$ et $B(x_B, y_B)$ et qui renvoie les coordonnées du vecteur $\\overrightarrow{AB}$.",
+      "correctAnswer": "def vecteur_translation(A, B):\\n    xA, yA = A\\n    xB, yB = B\\n    return (xB - xA, yB - yA)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le vecteur $\\overrightarrow{AB}$ a pour coordonnées la différence des coordonnées de $B$ et $A$ : $(x_B - x_A, y_B - y_A)$. L'algorithme implémente directement cette définition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Image d'un point par une translation",
+      "content": "Écrire un algorithme qui prend en entrée un vecteur $\\vec{v}(v_x, v_y)$ et un point $P(x_P, y_P)$ et qui renvoie les coordonnées du point $P'$, image de $P$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "def image_translation(v, P):\\n    vx, vy = v\\n    xP, yP = P\\n    return (xP + vx, yP + vy)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation de vecteur $\\vec{v}$ ajoute les composantes du vecteur aux coordonnées du point : $P'(x_P + v_x, y_P + v_y)$. La fonction realise cette addition composante par composante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Translation d'une liste de points",
+      "content": "Écrire un programme qui prend en entrée une liste de points $[(x_1, y_1), (x_2, y_2), \\dots, (x_n, y_n)]$ et un vecteur $\\vec{v}(v_x, v_y)$, et qui renvoie la liste des images de ces points par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "def translation_liste(points, v):\\n    vx, vy = v\\n    return [(x + vx, y + vy) for (x, y) in points]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la formule de l'image d'un point à chaque élément de la liste. Une compréhension de liste en Python permet de construire directement la liste des points translatés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

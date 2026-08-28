@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 128,
+  "_course_code": "ce1-t07-c03-carre-et-rectangle",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Carré et rectangle",
+  "title": "Quiz : Applications sur le carré et le rectangle",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. Parmi les quatre quadrilatères tracés sur le quadrillage, lequel est un carré ?",
+      "options": [
+        "La figure A",
+        "La figure B",
+        "La figure C",
+        "La figure D"
+      ],
+      "correctAnswer": "La figure C",
+      "explanation": "Un carré est un quadrilatère qui a quatre côtés de même longueur et quatre angles droits. Sur le quadrillage, la figure C est la seule à présenter quatre côtés mesurant exactement 3 cases de longueur et des angles droits visibles par l'alignement sur la grille. La figure A est un rectangle (deux longueurs différentes), la figure B est un losange (côtés égaux mais pas d'angles droits), la figure D est un trapèze.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 8,
+        "highlighted": 12,
+        "caption": "Quatre quadrilatères A, B, C, D sur un quadrillage. A : rectangle 4x2. B : losange penché. C : carré 3x3. D : trapèze."
+      }
+    },
+    {
+      "text": "Un carré a un côté qui mesure $5$ cm. Quelle est la longueur des trois autres côtés ?",
+      "options": [
+        "Ils mesurent tous $5$ cm",
+        "Deux mesurent $5$ cm et un mesure $10$ cm",
+        "Ils mesurent $3$ cm, $4$ cm et $5$ cm",
+        "On ne peut pas le savoir"
+      ],
+      "correctAnswer": "Ils mesurent tous $5$ cm",
+      "explanation": "Par définition, un carré a quatre côtés de même longueur. Si un côté mesure $5$ cm, les trois autres côtés mesurent nécessairement $5$ cm chacun. C'est la propriété fondamentale du carré qui le distingue du rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un rectangle. Sa longueur mesure $8$ cm et sa largeur mesure $3$ cm. Quelles sont les mesures des deux côtés manquants ?",
+      "options": [
+        "Longueur $8$ cm et largeur $3$ cm",
+        "Longueur $3$ cm et largeur $8$ cm",
+        "Longueur $11$ cm et largeur $5$ cm",
+        "Longueur $5$ cm et largeur $5$ cm"
+      ],
+      "correctAnswer": "Longueur $8$ cm et largeur $3$ cm",
+      "explanation": "Dans un rectangle, les côtés opposés ont la même longueur. Il y a deux longueurs égales et deux largeurs égales. Si une longueur est de $8$ cm, la longueur opposée est aussi de $8$ cm. Si une largeur est de $3$ cm, la largeur opposée est aussi de $3$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 10,
+        "highlighted": 24,
+        "caption": "Rectangle 8 cases par 3 cases. Côté du haut : 8 cm. Côté de gauche : 3 cm. Côtés du bas et de droite pointillés avec point d'interrogation."
+      }
+    },
+    {
+      "text": "Parmi ces affirmations, laquelle est vraie pour tout rectangle ?",
+      "options": [
+        "Il a quatre côtés de même longueur",
+        "Il a quatre angles droits",
+        "Ses diagonales sont perpendiculaires",
+        "Il a trois angles droits et un angle aigu"
+      ],
+      "correctAnswer": "Il a quatre angles droits",
+      "explanation": "La définition du rectangle impose qu'il ait quatre angles droits. La première affirmation décrit un carré (cas particulier de rectangle). La troisième est fausse (c'est une propriété du losange/carré). La quatrième est impossible : la somme des angles d'un quadrilatère est $360^\\circ$, trois angles droits font déjà $270^\\circ$, il ne reste que $90^\\circ$ pour le quatrième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa trace un rectangle sur sa feuille. Elle mesure un grand côté : il fait $10$ cm. Elle mesure un petit côté adjacent : il fait $4$ cm. Quelle est la longueur du côté opposé au grand côté mesuré ?",
+      "options": [
+        "$4$ cm",
+        "$6$ cm",
+        "$10$ cm",
+        "$14$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Dans un rectangle, les côtés opposés sont égaux deux à deux. Le grand côté mesuré ($10$ cm) est une longueur. Le côté opposé à cette longueur est l'autre longueur, elle doit donc mesurer exactement $10$ cm. Les $4$ cm correspondent à la largeur, les $6$ cm et $14$ cm n'ont pas de lien avec les propriétés du rectangle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

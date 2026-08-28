@@ -1,0 +1,393 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.917025+00:00",
+  "id": 139,
+  "code": "ce1-t08-c04",
+  "title": "Construire un diagramme en bâtons",
+  "description": "Cours structuré Educalcul : Construire un diagramme en bâtons.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Construire un diagramme en bâtons",
+    "objectif_global": "Construire un diagramme en bâtons",
+    "mini_lecons_imposees": [
+      "Choisir une échelle simple.",
+      "Tracer des barres.",
+      "Ajouter titre et catégories."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Choisir une échelle simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une échelle simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as compté les bonbons de tes amis : Léa en a $5$, Sam en a $3$ et toi tu en as $4$. Si tu veux montrer ça sur une feuille, tu ne peux pas coller les vrais bonbons ! On va utiliser un diagramme en bâtons. Mais avant de tracer, il faut décider : combien de bonbons représente un petit carré de ton quadrillage ? C'est ça, l'échelle."
+            },
+            {
+              "type": "definition",
+              "term": "échelle",
+              "definition": "C'est la valeur que représente un carré (ou un trait) sur l'axe vertical. Si l'échelle est $1$, un carré = $1$ bonbon. Si l'échelle est $2$, un carré = $2$ bonbons.",
+              "example": "Pour $5$ bonbons avec échelle $1$, on monte de $5$ carrés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand les nombres sont petits, comme ici entre $3$ et $5$, on choisit l'échelle la plus simple : $1$ carré pour $1$ objet. C'est le plus facile à lire, tu n'as pas à faire de calcul dans ta tête pour savoir la hauteur. Regarde comme le diagramme est clair avec cette échelle."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Bonbons des amis (échelle 1)",
+              "bars": [
+                {
+                  "label": "Léa",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Sam",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Toi",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que la classe a voté pour la sortie de fin d'année : $12$ voix pour le zoo, $8$ pour la ferme, $10$ pour le musée. Si tu gardes l'échelle $1$, tu vas monter jusqu'à $12$ carrés ! Ton diagramme risque de ne pas tenir sur la feuille, ou d'être tout petit en bas. Il faut grandir l'échelle : essayons $2$ par carré. $12$ voix, ça fait $6$ carrés. $8$ voix, $4$ carrés. C'est bien plus raisonnable."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Choix",
+                "Voix",
+                "Carrés (échelle 2)"
+              ],
+              "rows": [
+                [
+                  "Zoo",
+                  "12",
+                  "6"
+                ],
+                [
+                  "Ferme",
+                  "8",
+                  "4"
+                ],
+                [
+                  "Musée",
+                  "10",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment être sûr que ton échelle est la bonne ? Tu regardes le plus grand nombre de tes données. Tu essaies l'échelle $1$ : ça tient ? Non ? Tu passes à $2$. Ça tient ? Oui ? C'est gagné ! Parfois $5$ ou $10$ sont utiles pour de très grands nombres, mais au CE1, on reste souvent sur $1$, $2$ ou $5$. L'important, c'est que le plus grand bâton tienne bien dans la page sans être écrasé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as compté des billes : $2$ rouges, $4$ bleues, $3$ vertes. Quelle échelle choisis-tu pour ton diagramme ?",
+              "answer": "Échelle $1$ (un carré = une bille).",
+              "hint": "Regarde le plus grand nombre. Est-il petit ou grand ?",
+              "explanation": "Le maximum est $4$. Avec l'échelle $1$, la plus haute barre fera $4$ carrés. C'est parfait pour une feuille, pas besoin de compliquer."
+            },
+            {
+              "question": "Pour un recensement d'oiseaux, on a vu $14$ mésanges, $10$ moineaux, $6$ rouges-gorges. L'échelle $1$ est-elle une bonne idée ?",
+              "answer": "Non, c'est trop grand. On choisit l'échelle $2$.",
+              "hint": "Combien de carrés pour $14$ avec l'échelle $1$ ? Et avec l'échelle $2$ ?",
+              "explanation": "Avec l'échelle $1$, il faut $14$ carrés de haut. Avec l'échelle $2$, seulement $7$ carrés. Le diagramme tient mieux sur la feuille."
+            },
+            {
+              "question": "Vrai ou faux : On doit toujours utiliser la même échelle pour tous les diagrammes.",
+              "answer": "Faux.",
+              "hint": "L'échelle dépend des nombres que tu as à représenter.",
+              "explanation": "L'échelle s'adapte aux données. Petits nombres = échelle $1$. Grands nombres = échelle $2$, $5$ ou $10$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer des barres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer des barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as choisi ton échelle, bravo ! Maintenant, il faut construire les bâtons. Pense à une tour de kapla : chaque carré colorié, c'est une brique. Pour $4$ pommes avec l'échelle $1$, tu colors $4$ carrés les uns au-dessus des autres, bien droit. On commence toujours depuis la ligne de base, en bas, comme pour poser les fondations d'une maison."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre pour la première catégorie (par exemple $3$ vélos)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ton crayon, compte $3$ carrés vers le haut depuis la ligne du bas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais une petite marque au sommet du $3^{\\text{ème}}$ carré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Dessiner et colorier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie cette marque à la base avec une règle, puis colorie tout l'intérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid_painter",
+              "rows": 6,
+              "cols": 4,
+              "highlighted": 9,
+              "caption": "Entraîne-toi : colorie 3 carrés de haut sur la 1ère colonne (échelle 1)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, un piège fréquent : les barres doivent avoir toutes la même largeur ! Si tu fais une barre large et une barre fine, on croira qu'il y a plus de choses dans la large, même si la hauteur est identique. Sur ton quadrillage, utilise toujours le même nombre de colonnes pour chaque barre, par exemple $2$ cases de large. Et laisse un petit espace vide entre deux barres pour bien les séparer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Barres bien régulières : même largeur, même espace.",
+              "bars": [
+                {
+                  "label": "Lundi",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mardi",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Mercredi",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que ce soit bien net, tu as le droit d'utiliser ta règle ! Elle t'aide à tracer les côtés verticaux bien droits, sans trembler. Si tu n'as pas de règle, appuie bien sur le bord du quadrillage pour guider ton crayon. Une barre bien propre, c'est une barre qu'on lit du premier coup d'œil. C'est ton travail de graphiste en herbe : la précision, c'est joli et c'est utile."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un quadrillage, tu dois tracer une barre pour $5$ voitures (échelle $1$). Combien de carrés couleurs-tu ?",
+              "answer": "$5$ carrés.",
+              "hint": "Échelle $1$ veut dire $1$ carré = $1$ voiture.",
+              "explanation": "La valeur est $5$. L'échelle est $1$. Donc hauteur = $5 \\div 1 = 5$ carrés."
+            },
+            {
+              "question": "Tu as tracé trois barres. La première fait $2$ cases de large, la deuxième $3$ cases, la troisième $2$ cases. Quel est le problème ?",
+              "answer": "Les largeurs ne sont pas identiques.",
+              "hint": "Regarde la largeur de chaque barre. Sont-elles pareilles ?",
+              "explanation": "Pour comparer les hauteurs, les barres doivent avoir la même largeur. Ici, la barre du milieu est plus large, ce qui trompe l'œil."
+            },
+            {
+              "question": "Pourquoi laisse-t-on un espace entre les barres ?",
+              "answer": "Pour bien les distinguer et ne pas les confondre.",
+              "hint": "Imagine deux barres collées : on ne voit plus où finit l'une et commence l'autre.",
+              "explanation": "L'espace vide sépare les catégories. Sans espace, on croit voir une seule grande barre, ce qui fausse la lecture."
+            }
+          ]
+        },
+        {
+          "title": "Ajouter titre et catégories.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter titre et catégories"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce diagramme : des barres bleues, rouges, vertes, bien droites, bien colorées... Mais sans rien d'écrit à côté, c'est un mystère ! Personne ne sait de quoi il parle. Est-ce des notes ? Des bonbons ? Des chaussettes ? Pour que ton travail serve à quelque chose, il lui faut une identité. C'est le moment d'écrire le titre et les noms des catégories."
+            },
+            {
+              "type": "definition",
+              "term": "titre",
+              "definition": "Une phrase courte, en haut du diagramme, qui dit de quoi il s'agit.",
+              "example": "Nombre de livres lus par les élèves de CE1 en janvier."
+            },
+            {
+              "type": "definition",
+              "term": "catégories",
+              "definition": "Les noms écrits en bas (ou sur le côté), un pour chaque barre. Ils disent ce que chaque barre représente.",
+              "example": "Lundi, Mardi, Mercredi... ou Léa, Sam, Tom..."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le titre, on l'écrit bien au centre, en haut, avec une écriture soignée. Il doit répondre à la question : \"Qu'est-ce qu'on a compté ?\" et \"Pour qui ?\" ou \"Quand ?\". Pas la peine d'écrire un roman, une phrase claire suffit. Par exemple : \"Fruits préférés de la classe\" ou \"Météo de la semaine\". C'est comme la couverture d'un livre : ça donne envie de regarder dedans."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Diagramme avec titre clair.",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 7,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, les catégories. Sous chaque barre, tu écris le nom du groupe concerné. Si tu as compté les vélos par couleur, tu écris : \"Bleu\", \"Rouge\", \"Vert\". Si c'est les points par équipe, tu écris : \"Équipe A\", \"Équipe B\". Écris bien à l'horizontale, bien au milieu sous la barre. Si les mots sont longs, tu peux les écrire un peu en biais, mais reste lisible ! C'est grâce à eux qu'on sait quelle barre parle de qui."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Catégories bien placées sous chaque bâton.",
+              "bars": [
+                {
+                  "label": "Lundi",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mardi",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Mercredi",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les pièces du puzzle : l'échelle choisie, les barres tracées proprement, le titre qui annonce le sujet, les catégories qui nomment chaque barre. Ton diagramme est fini et il parle tout seul ! N'importe qui peut le regarder et comprendre l'histoire des nombres en un clin d'œil. C'est ça, la magie de l'organisation des données : transformer une liste de chiffres en une image qui se comprend toute seule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir une échelle adaptée (1, 2 ou 5) selon les nombres.",
+                "Je sais tracer des barres de même largeur, bien droites, depuis la base.",
+                "Je sais écrire un titre clair en haut du diagramme.",
+                "Je sais nommer les catégories sous chaque barre.",
+                "Je peux lire un diagramme en bâtons pour retrouver les valeurs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un diagramme montre des barres pour $8$, $5$, $9$. Il n'y a pas de titre. Lequel est le meilleur ?",
+              "answer": "Nombre de dents de lait perdues par les élèves ce trimestre.",
+              "hint": "Le titre doit dire QUOI, POUR QUI et QUAND si possible.",
+              "explanation": "Les autres choix sont trop vagues (\"Graphique\", \"Mes barres\"). Celui-ci donne le sujet, le groupe et la période."
+            },
+            {
+              "question": "Tu as fait un diagramme sur les animaux de la ferme : $4$ vaches, $6$ poules, $2$ cochons. Que dois-tu écrire sous les trois barres ?",
+              "answer": "Vaches, Poules, Cochons (dans l'ordre des barres).",
+              "hint": "Chaque barre correspond à un animal. Écris le nom de l'animal sous sa barre.",
+              "explanation": "Les catégories identifient ce que représente chaque barre. Sans elles, on ne sait pas quelle hauteur correspond à quel animal."
+            },
+            {
+              "question": "Regarde ce diagramme complet. Quelle information manque-t-il encore pour le lire parfaitement ? (Échelle : 1 carré = 2 unités)",
+              "answer": "L'indication de l'échelle (1 carré = 2 unités) sur l'axe vertical.",
+              "hint": "Si je vois une barre de 3 carrés, ça fait 3 ou 6 ? Il faut l'écrire quelque part.",
+              "explanation": "Même avec titre et catégories, sans l'échelle notée sur le côté, on ne peut pas retrouver les vrais nombres. C'est la légende de l'axe."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

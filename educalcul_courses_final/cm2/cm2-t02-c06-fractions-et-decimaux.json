@@ -1,0 +1,370 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.391038+00:00",
+  "id": 287,
+  "code": "cm2-t02-c06",
+  "title": "Fractions et décimaux",
+  "description": "Cours structuré Educalcul : Fractions et décimaux.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions et décimaux",
+    "objectif_global": "Fractions et décimaux",
+    "mini_lecons_imposees": [
+      "Fractions décimales.",
+      "Passage à virgule.",
+      "Comparer écritures."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Fractions décimales.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une fraction décimale ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu partages une barre de chocolat en dix parts égales. Si tu en prends trois, tu as trois dixièmes de la barre. En mathématiques, on écrit cela $\\frac{3}{10}$. Le dénominateur 10 est une puissance de 10 (10, 100, 1000…). Toute fraction dont le dénominateur est 10, 100, 1000, etc., s'appelle une fraction décimale. C'est très pratique car on peut la transformer facilement en nombre à virgule, ce que nous verrons tout à l'heure."
+            },
+            {
+              "type": "definition",
+              "term": "fraction décimale",
+              "definition": "Fraction dont le dénominateur est une puissance de 10 (10, 100, 1000…). Elle se convertit directement en écriture décimale.",
+              "example": "$\\frac{7}{10}$, $\\frac{45}{100}$, $\\frac{375}{1000}$"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Un dixième (en haut) et un centième (en bas) : le centième est dix fois plus petit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer une fraction décimale, voyons comment l'écrire avec une virgule. C'est la clé pour passer du monde des fractions au monde des nombres décimaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une fraction décimale en notation virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la fraction $\\frac{7}{10}$. Le dénominateur 10 nous dit qu'il y a une seule case après la virgule : la case des dixièmes. On place donc le chiffre 7 dans cette case et on obtient $0,7$. Si le dénominateur est 100, il y a deux cases après la virgule (dixièmes et centièmes). Pour $\\frac{45}{100}$, on écrit 4 dans les dixièmes et 5 dans les centièmes : $0,45$. C'est comme remplir un tableau de numération où chaque colonne a un nom précis."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.3,
+              "caption": "Le nombre 0,3 : 0 unités, 3 dixièmes, 0 centièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, deux fractions décimales différentes représentent la même quantité. Par exemple, $\\frac{5}{10}$ et $\\frac{1}{2}$ valent toutes les deux $0,5$. Savoir les repérer t'aide à simplifier tes calculs et à comparer plus vite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître des fractions décimales équivalentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour voir si deux fractions décimales sont équivalentes, tu peux soit les simplifier, soit les convertir en nombre à virgule. Prenons $\\frac{5}{10}$ : en divisant numérateur et dénominateur par 5, on obtient $\\frac{1}{2}$. En décimal, les deux donnent $0,5$. Une astuce : si le dénominateur est 10, 100 ou 1000, regarde le nombre de zéros ; il te dit combien de chiffres après la virgule tu auras."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de 0,5 et 0,3 : la barre 0,5 est plus longue.",
+              "bars": [
+                {
+                  "label": "0,5",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "0,3",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les fractions décimales et leur écriture à virgule. Dans la prochaine leçon, nous allons pratiquer le passage de la fraction au nombre décimal en détail, avec des divisions simples et des astuces pour ne jamais te tromper."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les fractions suivantes, lesquelles sont des fractions décimales ? $\\frac{3}{10}$, $\\frac{7}{3}$, $\\frac{45}{100}$, $\\frac{2}{5}$",
+              "answer": "$\\frac{3}{10}$ et $\\frac{45}{100}$",
+              "hint": "Regarde le dénominateur : est‑il une puissance de 10 ?",
+              "explanation": "Une fraction décimale a un dénominateur qui est 10, 100, 1000… Seules 3/10 et 45/100 remplissent cette condition."
+            },
+            {
+              "question": "Écris en notation virgule la fraction $\\frac{7}{10}$.",
+              "answer": "$0,7$",
+              "hint": "Le dénominateur 10 signifie un chiffre après la virgule.",
+              "explanation": "On place le numérateur 7 dans la colonne des dixièmes, ce qui donne 0,7."
+            },
+            {
+              "question": "Laquelle de ces fractions est équivalente à $0,5$ ? $\\frac{5}{10}$, $\\frac{1}{4}$, $\\frac{2}{5}$",
+              "answer": "$\\frac{5}{10}$",
+              "hint": "Convertis chaque fraction en décimal ou simplifie.",
+              "explanation": "$5/10 = 0,5$, $1/4 = 0,25$, $2/5 = 0,4$."
+            }
+          ]
+        },
+        {
+          "title": "Passage à virgule.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la fraction au nombre décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu que $\\frac{7}{10}$ devient $0,7$. Mais comment faire quand le numérateur a plusieurs chiffres, comme $\\frac{23}{100}$ ? La règle est simple : le nombre de zéros du dénominateur te donne le nombre de chiffres après la virgule. Pour 100, il y a deux zéros, donc deux chiffres après la virgule. Tu écris le numérateur 23 en comblant les cases des dixièmes et des centièmes : $0,23$. C'est exactement comme si tu faisais la division 23 divisé par 100, mais la méthode du décalage de virgule est beaucoup plus rapide."
+            },
+            {
+              "type": "definition",
+              "term": "virgule",
+              "definition": "Signe qui sépare la partie entière d'un nombre de sa partie décimale. En France, on utilise la virgule (,$)$, pas le point.",
+              "example": "Dans $12,34$, la virgule sépare 12 (entier) et 34 (partie décimale)."
+            },
+            {
+              "type": "column_operation",
+              "operator": "/",
+              "operands": [
+                "23",
+                "100"
+              ],
+              "result": "0,23",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un dénominateur 1000. Trois zéros signifient trois chiffres après la virgule. Si tu as $\\frac{375}{1000}$, tu écris 375 en remplissant les dixièmes, centièmes et millièmes : $0,375$. Parfois, le numérateur a moins de chiffres que le nombre de zéros. Par exemple $\\frac{6}{1000}$ : tu ajoutes des zéros devant pour occuper toutes les cases, ce qui donne $0,006$. C'est comme ajouter des zéros à gauche dans un tableau de numération."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.375,
+              "caption": "Le nombre 0,375 : 0 unités, 3 dixièmes, 7 centièmes, 5 millièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse est tout aussi utile : partir d'un nombre à virgule pour retrouver sa fraction décimale. Regarde $0,6$. Il y a un chiffre après la virgule, donc le dénominateur sera 10. Le chiffre 6 devient le numérateur : $\\frac{6}{10}$. Si tu as $0,42$, deux chiffres après la virgule → dénominateur 100, numérateur 42 → $\\frac{42}{100}$. Tu peux ensuite simplifier la fraction si tu le souhaites."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 6,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 42,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Bandons visuels pour 6/10 et 42/100 : même longueur, même valeur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant passer de la fraction au décimal et du décimal à la fraction. La prochaine leçon te montrera comment comparer ces écritures entre elles, pour savoir laquelle est la plus grande ou pour les ranger dans l'ordre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Transforme $\\frac{23}{100}$ en nombre décimal.",
+              "answer": "$0,23$",
+              "hint": "Le dénominateur 100 donne deux chiffres après la virgule.",
+              "explanation": "On écrit 23 dans les centièmes : 0,23."
+            },
+            {
+              "question": "Quel est le nombre décimal correspondant à $\\frac{375}{1000}$ ?",
+              "answer": "$0,375$",
+              "hint": "Trois zéros au dénominateur → trois chiffres après la virgule.",
+              "explanation": "On place 375 dans les millièmes : 0,375."
+            },
+            {
+              "question": "Écris $0,6$ sous forme de fraction décimale.",
+              "answer": "$\\frac{6}{10}$",
+              "hint": "Un chiffre après la virgule → dénominateur 10.",
+              "explanation": "Le 6 est dans la colonne des dixièmes, donc 6/10."
+            }
+          ]
+        },
+        {
+          "title": "Comparer écritures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer $0,42$ et $0,4$, aligne les virgules verticalement. Écris $0,40$ sous $0,42$ pour avoir le même nombre de chiffres après la virgule. Compare ensuite chiffre par chiffre en partant de la gauche : les unités sont égales (0), les dixièmes sont égaux (4), aux centièmes $2 > 0$. Donc $0,42$ est plus grand que $0,4$. Cette méthode marche pour tous les nombres décimaux, même s'ils ont beaucoup de chiffres après la virgule."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de 0,4 et 0,42 sur une droite graduée.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.4,
+                  "label": "0,4"
+                },
+                {
+                  "value": 0.42,
+                  "label": "0,42"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu dois comparer une fraction décimale et un nombre à virgule. La stratégie est de mettre les deux sous la même forme. Convertis la fraction en décimal (ou l'inverse) puis compare comme avant. Par exemple, $\\frac{3}{10}$ devient $0,3$. Face à $0,28$, aligne : $0,30$ et $0,28$. Aux dixièmes, $3 > 2$, donc $\\frac{3}{10}$ est plus grand."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison visuelle de 0,3 et 0,28.",
+              "bars": [
+                {
+                  "label": "0,3",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "0,28",
+                  "value": 28,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, ranger plusieurs nombres dans l'ordre croissant ou décroissant demande de les mettre tous sous forme décimale avec le même nombre de chiffres après la virgule. Pour $0,75$, $\\frac{4}{5}$ et $0,7$, transforme $\\frac{4}{5}$ en $0,8$. Écris $0,70$, $0,75$, $0,80$. L'ordre croissant est $0,7 < 0,75 < 0,8$. Tu peux aussi utiliser un tableau pour bien aligner les chiffres."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Dixièmes",
+                "Centièmes"
+              ],
+              "rows": [
+                [
+                  "0,7",
+                  "7",
+                  "0"
+                ],
+                [
+                  "0,75",
+                  "7",
+                  "5"
+                ],
+                [
+                  "0,8",
+                  "8",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une fraction décimale (dénominateur 10, 100, 1000…).",
+                "Je sais convertir une fraction décimale en nombre à virgule et inversement.",
+                "Je sais comparer deux nombres décimaux en alignant les virgules.",
+                "Je sais comparer une fraction décimale et un nombre décimal en les mettant sous la même forme.",
+                "Je sais ranger une liste de nombres décimaux et fractions décimales dans l'ordre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $0,42$ et $0,4$ en utilisant $<$, $>$ ou $=$.",
+              "answer": "$0,42 > 0,4$",
+              "hint": "Aligne les virgules et compare chiffre par chiffre.",
+              "explanation": "0,42 a 4 dixièmes et 2 centièmes, 0,4 a 4 dixièmes et 0 centièmes, donc 0,42 est plus grand."
+            },
+            {
+              "question": "Lequel est plus grand : $\\frac{3}{10}$ ou $0,28$ ?",
+              "answer": "$\\frac{3}{10}$",
+              "hint": "Convertis la fraction en décimal.",
+              "explanation": "$3/10 = 0,3$, et $0,3 > 0,28$."
+            },
+            {
+              "question": "Range dans l'ordre croissant : $0,75$, $\\frac{4}{5}$, $0,7$.",
+              "answer": "$0,7 < 0,75 < \\frac{4}{5}$",
+              "hint": "Transforme tout en décimal pour comparer.",
+              "explanation": "$4/5 = 0,8$, donc l'ordre est 0,7 ; 0,75 ; 0,8."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

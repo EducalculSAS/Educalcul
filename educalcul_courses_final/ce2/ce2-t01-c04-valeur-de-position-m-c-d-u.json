@@ -1,0 +1,394 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.933787+00:00",
+  "id": 145,
+  "code": "ce2-t01-c04",
+  "title": "Valeur de position M-C-D-U",
+  "description": "Cours structuré Educalcul : Valeur de position M-C-D-U.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Valeur de position M-C-D-U",
+    "objectif_global": "Valeur de position M-C-D-U",
+    "mini_lecons_imposees": [
+      "Identifier la valeur de chaque chiffre.",
+      "Échanger entre unités de numération.",
+      "Expliquer l'effet d'un zéro."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Identifier la valeur de chaque chiffre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La place du chiffre, c'est son adresse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une rue où chaque maison a un numéro précis. Dans un nombre, c'est pareil : chaque chiffre habite une colonne bien à lui. La colonne la plus à droite, c'est la maison des $unités$. Juste à côté, la maison des $dizaines$, puis celle des $centaines$, et tout au bout, la grande maison des $milliers$. Si le chiffre $5$ habite la maison des unités, il vaut simplement $5$. Mais s'il déménage dans la maison des dizaines, il vaut $50$ ! C'est la place qui décide de sa valeur, pas le chiffre tout seul."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Milliers",
+                  "value": 2,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Centaines",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dizaines",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Unités",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Le nombre 2 345 décomposé en barres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois les maisons, regardons ce qui se passe à l'intérieur. Dans le nombre $2 345$, le $2$ n'est pas tout seul : il représente $2$ milliers, soit $2 000$. Le $3$ représente $3$ centaines, soit $300$. Le $4$ fait $4$ dizaines, soit $40$. Et le $5$ reste $5$ unités. On peut écrire cela comme une addition géante : $2 000 + 300 + 40 + 5$. C'est ce qu'on appelle la décomposition du nombre. Chaque morceau garde sa valeur propre grâce à sa colonne."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\ 345 = 2\\times1\\ 000 + 3\\times100 + 4\\times10 + 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on jouait à cache-cache avec le même chiffre ? Prends le chiffre $3$. Dans $30$, il est dans la maison des dizaines : il vaut $30$. Dans $300$, il a déménagé aux centaines : il vaut $300$. Dans $3 000$, il est aux milliers : il vaut $3 000$. Plus il va vers la gauche, plus sa valeur est multipliée par $10$. C'est comme s'il grandissait à chaque pas ! Sur une droite numérique, $30$ est tout près de zéro, mais $3 000$ est très, très loin. La distance change tout."
+            },
+            {
+              "type": "number_line",
+              "caption": "Où se trouvent 30, 300 et 3 000 ?",
+              "min": 0,
+              "max": 3500,
+              "points": [
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 3000,
+                  "label": "3 000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $4 128$, quelle est la valeur du chiffre $1$ ?",
+              "answer": "$100$",
+              "hint": "Regarde dans quelle colonne (maison) le $1$ est écrit : unités, dizaines, centaines ou milliers ?",
+              "explanation": "Le $1$ est dans la colonne des centaines. Il représente donc $1$ centaine, soit $100$."
+            },
+            {
+              "question": "Écris la décomposition de $3 056$ en addition (exemple : $2 000 + 300 + 40 + 5$).",
+              "answer": "$3 000 + 0 + 50 + 6$ ou $3 000 + 50 + 6$",
+              "hint": "Décompose chiffre par chiffre : milliers, centaines, dizaines, unités. Attention au zéro !",
+              "explanation": "$3$ milliers = $3 000$. $0$ centaine = $0$. $5$ dizaines = $50$. $6$ unités = $6$. On peut écrire le $0$ ou ne pas l'écrire."
+            },
+            {
+              "question": "Le chiffre $7$ vaut $700$ dans quel nombre parmi ceux-ci : $78$, $782$, $7 821$ ?",
+              "answer": "$782$",
+              "hint": "Pour valoir $700$, le $7$ doit être dans la colonne des centaines. Compte les colonnes depuis la droite.",
+              "explanation": "Dans $78$, le $7$ est aux dizaines ($70$). Dans $782$, il est aux centaines ($700$). Dans $7 821$, il est aux milliers ($7 000$)."
+            }
+          ]
+        },
+        {
+          "title": "Échanger entre unités de numération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le grand jeu de l'échange : 10 pour 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais le jeu où on échange $10$ petites billes contre $1$ grosse bille ? En numération, c'est exactement la même règle ! $10$ unités, ça fait exactement $1$ dizaine. On peut les regrouper, les \"échanger\". Regarde avec des jetons : si tu as $13$ jetons unités, tu peux faire un paquet de $10$ (une dizaine) et il te reste $3$ unités. Tu as maintenant $1$ dizaine et $3$ unités. Le total n'a pas changé, mais c'est beaucoup plus facile à compter !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 13,
+              "caption": "13 unités = 1 dizaine et 3 unités (avant échange)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette règle marche à tous les étages de la grande tour des nombres. $10$ dizaines, ça fait $1$ centaine. $10$ centaines, ça fait $1$ mille. C'est comme une cascade : dès qu'il y a $10$ dans une colonne, on les regroupe pour en faire $1$ dans la colonne d'à côté, à gauche. Si tu as $15$ dizaines, tu fais un échange : $10$ dizaines deviennent $1$ centaine, il te reste $5$ dizaines. Tu as maintenant $1$ centaine et $5$ dizaines, soit $150$. C'est magique, mais c'est juste de l'ordre !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "10 dizaines",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "deviennent",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "1 centaine",
+                  "value": 1,
+                  "tone": "navy"
+                }
+              ],
+              "caption": "L'échange de 10 dizaines contre 1 centaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a envie de faire l'échange à l'envers : casser un gros paquet pour en faire des petits. C'est très utile pour les soustractions ! Si tu as $1$ centaine et $0$ dizaine, mais que tu as besoin de dizaines, tu peux \"casser\" la centaine. $1$ centaine, ça fait $10$ dizaines. Si tu as $1$ mille, ça fait $10$ centaines. On appelle ça \"détacher\" ou \"répartir\". Le nombre $2 300$, par exemple, c'est $23$ centaines. Ou bien $230$ dizaines. La valeur totale ne bouge pas, on change juste la façon de la ranger dans les colonnes."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 10,
+              "units": 0,
+              "caption": "1 centaine échangée contre 10 dizaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout cela nous prépare à poser les opérations comme les grands. Quand on fait $28 + 37$ en ligne, on additionne les unités : $8 + 7 = 15$. $15$ unités, c'est $1$ dizaine et $5$ unités. On écrit le $5$ au total des unités, et on \"porte\" la dizaine au-dessus de la colonne des dizaines. C'est exactement l'échange qu'on vient de faire avec les jetons ! La petite note qu'on écrit en haut, c'est le paquet de $10$ qu'on a monté à l'étage supérieur. C'est la même logique, juste écrit plus vite."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "37"
+              ],
+              "result": "65",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de dizaines y a-t-il dans $140$ unités ?",
+              "answer": "$14$ dizaines",
+              "hint": "Fais des groupes de $10$ unités. $100$ unités font $10$ dizaines, et $40$ unités font $4$ dizaines.",
+              "explanation": "$140 = 100 + 40$. $100$ unités = $10$ dizaines. $40$ unités = $4$ dizaines. Total : $14$ dizaines."
+            },
+            {
+              "question": "Échange $12$ centaines en milliers et centaines.",
+              "answer": "$1$ mille et $2$ centaines",
+              "hint": "Regroupe $10$ centaines pour faire $1$ mille. Il en reste combien ?",
+              "explanation": "$10$ centaines = $1$ mille. Il reste $2$ centaines. Donc $12$ centaines = $1$ mille $2$ centaines ($1 200$)."
+            },
+            {
+              "question": "Tu as $3$ milliers. Tu casses $1$ mille en centaines. Combien as-tu de centaines maintenant ?",
+              "answer": "$10$ centaines (plus les $2$ milliers qui restent)",
+              "hint": "Rappelle-toi : $1$ mille = $10$ centaines. Fais le échange pour un seul mille.",
+              "explanation": "Tu gardes $2$ milliers. Le $3\\text{ème}$ mille devient $10$ centaines. Tu as donc $2$ milliers et $10$ centaines."
+            },
+            {
+              "question": "Pour l'addition posée $46 + 28$, quelle est la retenue au-dessus des dizaines ?",
+              "answer": "$1$",
+              "hint": "Additionne les unités : $6 + 8$. Combien font-elles ? Faut-il faire un échange ?",
+              "explanation": "$6 + 8 = 14$. $14$ unités = $1$ dizaine et $4$ unités. On écrit $4$, on retient $1$ dizaine."
+            }
+          ]
+        },
+        {
+          "title": "Expliquer l'effet d'un zéro.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro, le gardien silencieux des maisons vides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le zéro est un chiffre un peu spécial. Il ne vaut rien tout seul, mais il a un pouvoir immense : il tient la place. Imagine une maison vide dans la rue des centaines. Si personne ne la garde, les dizaines et les unités risquent de glisser et de se tromper de colonne ! Le zéro, c'est le gardien qui dit : \"Ici, il n'y a pas de centaines, mais la maison existe.\" Sans lui, $105$ deviendrait $15$ (quinze) au lieu de cent cinq. Le zéro empêche les autres chiffres de bouger."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 5,
+              "caption": "105 : 1 centaine, 0 dizaine, 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a plusieurs maisons vides à la suite. Dans $1 005$, il y a $1$ mille, $0$ centaine, $0$ dizaine et $5$ unités. Les deux zéros sont comme deux gardiens qui se tiennent la main pour garder les deux maisons vides (centaines et dizaines) bien droites. Si tu les oublies, le $1$ mille croit qu'il est une centaine et le $5$ croit qu'il est une dizaine : tu obtiens $15$ ! Pour lire ce nombre, on dit bien \"mille cinq\", mais en l'écrivant, les deux zéros sont obligatoires pour que le $1$ reste au bon étage."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 mille",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "0 centaine",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "0 dizaine",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "5 unités",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "1 005 : les zéros gardent les places vides"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le zéro a aussi un super-pouvoir quand il se met à la fin d'un nombre. Regarde : $5$, puis $50$, puis $500$, puis $5 000$. À chaque fois qu'un zéro arrive à la fin, tous les chiffres décalent d'une maison vers la gauche ! C'est comme s'ils prenaient l'ascenseur pour monter d'un étage. Leur valeur est multipliée par $10$. Le zéro de la fin n'est pas un gardien de maison vide, c'est un propulseur ! Il dit : \"Tout le monde monte !\" C'est pour ça que multiplier par $10$, $100$ ou $1 000$, c'est juste ajouter des zéros à la fin."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'effet ascenseur du zéro final : 5, 50, 500",
+              "min": 0,
+              "max": 600,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'oral, on ne dit pas les zéros du milieu (on dit \"mille cinq\", pas \"mille zéro cent zéro cinq\"), mais à l'écrit, ils sont indispensables. Quand on te dicte \"deux mille trente\", tu entends \"deux mille\" et \"trente\". Il manque les centaines ! Tu dois écrire $2 030$. Le zéro des centaines est là pour dire : \"Attention, il n'y a pas de centaines, ne montez pas les dizaines à leur place !\" C'est ton filet de sécurité pour ne pas te tromper de colonne."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\ 030 = 2\\times1\\ 000 + 0\\times100 + 3\\times10 + 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire la valeur d'un chiffre selon sa colonne (unités, dizaines, centaines, milliers).",
+                "Je sais échanger 10 unités contre 1 dizaine, 10 dizaines contre 1 centaine, 10 centaines contre 1 mille.",
+                "Je sais casser une centaine en 10 dizaines ou un mille en 10 centaines.",
+                "Je sais pourquoi le zéro est important dans un nombre (garder la place ou multiplier par 10).",
+                "J'arrive à écrire un nombre dicté comme 4 007 ou 5 080 sans oublier les zéros."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres : trois mille quatre.",
+              "answer": "$3 004$",
+              "hint": "Il y a 3 milliers. Pas de centaines, pas de dizaines. 4 unités. Il faut deux zéros gardiens !",
+              "explanation": "$3$ milliers = $3 000$. $0$ centaine, $0$ dizaine = $00$. $4$ unités = $4$. Total : $3 004$."
+            },
+            {
+              "question": "Dans le nombre $6 070$, quel est le rôle du zéro des dizaines ?",
+              "answer": "Il indique qu'il n'y a aucune dizaine (gardien de place).",
+              "hint": "Regarde la décomposition : 6 milliers, 0 centaines, 7 dizaines, 0 unités. Attends, relis le nombre...",
+              "explanation": "$6 070$ : $6$ milliers, $0$ centaine, $7$ dizaines, $0$ unité. Le zéro des dizaines n'existe pas ici, c'est le zéro des centaines qui est gardien. Le zéro des unités marque qu'il n'y a pas d'unité."
+            },
+            {
+              "question": "Par quel nombre faut-il multiplier $45$ pour obtenir $4 500$ ?",
+              "answer": "$100$",
+              "hint": "Combien de zéros as-tu ajoutés à la fin de $45$ pour faire $4 500$ ? Chaque zéro = $\\times 10$.",
+              "explanation": "$45 \\rightarrow 450$ (un zéro, $\\times 10$). $450 \\rightarrow 4 500$ (deuxième zéro, $\\times 10$). Total $\\times 100$."
+            },
+            {
+              "question": "Complète : $5 000 + \\dots + 80 + 2 = 5 382$",
+              "answer": "$300$",
+              "hint": "Regarde le chiffre des centaines dans le résultat $5 382$.",
+              "explanation": "Dans $5 382$, le chiffre des centaines est $3$. Cela vaut $3$ centaines, soit $300$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

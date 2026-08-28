@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Dérivée",
+  "title": "Étude des variations d'un modèle",
+  "blocks": [
+    {
+      "title": "Calcul de la dérivée",
+      "content": "Soit une fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 2x^{3} - 5x^{2} + 4$. Déterminez l'expression de sa fonction dérivée $f'(x)$.",
+      "correctAnswer": "6x^2 - 10x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En utilisant les règles de dérivation, la dérivée de $x^{n}$ est $nx^{n-1}$. On a donc $f'(x) = 2 \\times 3x^{2} - 5 \\times 2x + 0$, ce qui donne $f'(x) = 6x^{2} - 10x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de points critiques",
+      "content": "On considère la fonction $g$ définie sur $]0 ; {\\infty}[$ par $g(x) = x^{2} - 8 \\ln(x)$. Pour quelle valeur de $x$ la dérivée $g'(x)$ est elle nulle ?",
+      "correctAnswer": "2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La dérivée de $g$ est $g'(x) = 2x - \\frac{8}{x}$. Pour trouver quand $g'(x) = 0$, on résout $2x = \\frac{8}{x}$, soit $2x^{2} = 8$, donc $x^{2} = 4$. Puisque $x$ est strictement positif, on a $x = 2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation du signe",
+      "content": "Une fonction $h$ est définie sur $\\mathbb{R}$ et sa dérivée est $h'(x) = (x - 3)(x + 1)$. Sur quel intervalle la fonction $h$ est elle décroissante ?",
+      "correctAnswer": "[-1 ; 3]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction $h$ est décroissante lorsque sa dérivée est négative. Le produit $(x - 3)(x + 1)$ est négatif entre les racines $-1$ et $3$. L'intervalle de décroissance est donc $[-1 ; 3]$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

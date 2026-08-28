@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Choisir une échelle simple",
+  "title": "Choisir l'échelle d'un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Échelle 1 : Petites valeurs",
+      "content": "On veut représenter les nombres d'animaux vus au zoo : $3$ lions, $5$ singes, $2$ éléphants, $6$ girafes, $4$ zèbres. Écris les étapes de raisonnement pour choisir l'échelle la plus simple du diagramme en bâtons.",
+      "correctAnswer": "Étape 1 : Chercher la plus grande valeur. Ici, la plus grande valeur est $6$. Étape 2 : Comme $6$ est inférieur ou égal à $10$, on choisit l'échelle $1$ (une graduation pour $1$ animal).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur maximale est $6$. Pour des valeurs jusqu'à $10$, l'échelle par défaut est $1$, ce qui permet de lire facilement le diagramme sans graduation vide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échelle 2 : Valeurs moyennes",
+      "content": "On veut représenter les scores d'un jeu : $12$, $18$, $15$, $20$, $10$. Écris un algorithme simple (liste d'instructions) pour déterminer l'échelle à utiliser.",
+      "correctAnswer": "1. Trouver le maximum : $20$. 2. Comparer le maximum à $10$. 3. Comme $20 > 10$, on ne peut pas utiliser l'échelle $1$. 4. On teste l'échelle $2$ : $20 \\div 2 = 10$ graduations. C'est bon. On choisit l'échelle $2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le maximum est $20$. L'échelle $1$ ferait $20$ graduations, ce qui est trop grand pour une feuille. L'échelle $2$ fait $10$ graduations, c'est une taille standard. L'échelle $5$ marcherait aussi ($4$ graduations) mais $2$ est plus précis pour lire les valeurs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général : Choisir l'échelle",
+      "content": "Complète cet algorithme pour choisir l'échelle automatiquement selon la valeur maximale $M$ :\\nSI $M \\le 10$ ALORS échelle $\\leftarrow 1$\\nSINON SI $M \\le 20$ ALORS échelle $\\leftarrow \\dots$\\nSINON SI $M \\le 50$ ALORS échelle $\\leftarrow \\dots$\\nSINON échelle $\\leftarrow 10$",
+      "correctAnswer": "SINON SI $M \\le 20$ ALORS échelle $\\leftarrow 2$\\nSINON SI $M \\le 50$ ALORS échelle $\\leftarrow 5$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les échelles standards simples sont $1, 2, 5, 10$. Pour $M$ jusqu'à $20$, l'échelle $2$ donne au plus $10$ barres. Pour $M$ jusqu'à $50$, l'échelle $5$ donne au plus $10$ barres. Au-delà, on prend $10$ pour limiter le nombre de graduations.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

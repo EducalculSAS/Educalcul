@@ -1,0 +1,458 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.786184+00:00",
+  "id": 741,
+  "code": "terminale-generale-expertes-t02-c04",
+  "title": "Bézout",
+  "description": "Cours structuré Educalcul : Bézout.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Bézout",
+    "objectif_global": "Bézout",
+    "mini_lecons_imposees": [
+      "Énoncé.",
+      "Trouver coefficients.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Énoncé.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'identité de Bézout : une rencontre entre deux entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au théorème de Bézout. Imagine deux entiers relatifs, disons $a = 56$ et $b = 42$. Ils ont chacun leurs diviseurs, mais ce qui nous intéresse ici, c'est leur plus grand commun diviseur, noté $\\gcd(a,b)$ ou parfois $\\mathrm{pgcd}(a,b)$. Pour $56$ et $42$, le $\\gcd$ est $14$. Le théorème de Bézout nous dit quelque chose d'assez surprenant : on peut toujours écrire ce $\\gcd$ comme une combinaison linéaire des deux nombres de départ. Autrement dit, il existe deux entiers $u$ et $v$ tels que $56u + 42v = 14$. C'est une propriété fondamentale de l'arithmétique des entiers, et elle va nous accompagner tout au long de ce cours."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall a,b \\in \\mathbb{Z},\\ \\exists u,v \\in \\mathbb{Z},\\ au+bv = \\gcd(a,b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le temps de bien comprendre l'énoncé. Les lettres $u$ et $v$ sont ce qu'on appelle les coefficients de Bézout. Ils ne sont pas uniques : si $(u,v)$ convient, alors $(u + k\\frac{b}{\\gcd(a,b)}, v - k\\frac{a}{\\gcd(a,b)})$ convient aussi pour n'importe quel entier $k$. Mais l'existence d'au moins un couple est garantie. Cette existence est constructive : l'algorithme d'Euclide, que tu connais déjà pour calculer le $\\gcd$, permet aussi de retrouver $u$ et $v$. Nous allons voir comment dans la prochaine leçon. Pour l'instant, concentrons-nous sur la signification de cette égalité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le pgcd par l'algorithme d'Euclide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquons l'algorithme d'Euclide à $a = 56$ et $b = 42$. On effectue les divisions successives : $56 = 42 \\times 1 + 14$, puis $42 = 14 \\times 3 + 0$. Le dernier reste non nul est $14$, donc $\\gcd(56,42) = 14$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remonter les égalités pour exprimer le pgcd",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de la première division, on a $14 = 56 - 42 \\times 1$. On voit déjà apparaître une combinaison de $56$ et $42$ qui donne $14$. Ainsi $u = 1$ et $v = -1$ conviennent : $56 \\times 1 + 42 \\times (-1) = 14$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que cette écriture n'est pas unique. Si j'ajoute $42$ au coefficient de $56$ et que je retire $56$ du coefficient de $42$, l'égalité reste vraie : $56 \\times (1+3) + 42 \\times (-1-4) = 56 \\times 4 + 42 \\times (-5) = 224 - 210 = 14$. Tu peux vérifier que cela fonctionne pour tout entier $k$. Cette flexibilité sera utile plus tard."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def pgcd(a, b):\\n    while b != 0:\\n        a, b = b, a % b\\n    return a\\n\\nprint(pgcd(56, 42))  # Affiche 14",
+              "language": "python",
+              "caption": "Fonction Python simple pour le pgcd (algorithme d'Euclide)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce petit programme illustre la boucle de l'algorithme d'Euclide. Note que la version récursive est aussi très élégante : `pgcd(a, b) = a if b == 0 else pgcd(b, a % b)`. Nous allons maintenant tester ta compréhension avec un premier exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple un peu plus grand pour bien ancrer la mécanique. Considérons $a = 144$ et $b = 89$. Ce sont des nombres de Fibonacci consécutifs, et leur $\\gcd$ est $1$ (ils sont premiers entre eux). L'algorithme d'Euclide donne : $144 = 89 \\times 1 + 55$, $89 = 55 \\times 1 + 34$, $55 = 34 \\times 1 + 21$, $34 = 21 \\times 1 + 13$, $21 = 13 \\times 1 + 8$, $13 = 8 \\times 1 + 5$, $8 = 5 \\times 1 + 3$, $5 = 3 \\times 1 + 2$, $3 = 2 \\times 1 + 1$, $2 = 1 \\times 2 + 0$. Le dernier reste non nul est $1$. En remontant, on peut exprimer $1$ en fonction de $144$ et $89$. C'est un peu long à faire à la main, mais c'est un excellent exercice pour comprendre la structure de la preuve."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 = 144 \\times 34 - 89 \\times 55"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux vérifier que $144 \\times 34 = 4896$ et $89 \\times 55 = 4895$, la différence est bien $1$. Les coefficients $34$ et $-55$ sont des coefficients de Bézout pour $(144, 89)$. Note qu'ils sont relativement grands par rapport aux nombres de départ. C'est typique quand les nombres sont des termes consécutifs de la suite de Fibonacci : l'algorithme d'Euclide prend le maximum d'étapes, et les coefficients de Bézout sont les nombres de Fibonacci précédents. Nous verrons dans la prochaine leçon une méthode systématique pour les trouver sans avoir à remonter manuellement toutes les égalités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de clore cette leçon, soulignons une conséquence importante : si $a$ et $b$ sont premiers entre eux (leur $\\gcd$ vaut $1$), alors il existe $u,v$ tels que $au + bv = 1$. Cela signifie que $u$ est l'inverse de $a$ modulo $b$, et $v$ est l'inverse de $b$ modulo $a$. Cette propriété est au cœur de la cryptographie RSA, par exemple. Nous y reviendrons dans la leçon sur les applications. Pour l'instant, retiens que l'identité de Bézout est un pont entre la division euclidienne et les combinaisons linéaires, et qu'elle garantit l'existence d'une écriture du $\\gcd$ comme combinaison des deux nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $a = 48$ et $b = 18$. Calculer $\\gcd(a,b)$ par l'algorithme d'Euclide et trouver un couple de coefficients de Bézout $(u,v)$ tel que $48u + 18v = \\gcd(48,18)$.",
+              "answer": "$\\gcd(48,18) = 6$. Un couple possible : $u = -1$, $v = 3$ car $48 \\times (-1) + 18 \\times 3 = -48 + 54 = 6$.",
+              "hint": "Effectue les divisions : $48 = 18 \\times 2 + 12$, $18 = 12 \\times 1 + 6$, $12 = 6 \\times 2 + 0$. Le pgcd est $6$. Remonte l'égalité $6 = 18 - 12 \\times 1$ et remplace $12$ par $48 - 18 \\times 2$.",
+              "explanation": "L'algorithme d'Euclide donne $\\gcd(48,18)=6$. En remontant : $6 = 18 - 12$. Or $12 = 48 - 18 \\times 2$. Donc $6 = 18 - (48 - 18 \\times 2) = 18 \\times 3 - 48$. Donc $u = -1$, $v = 3$."
+            },
+            {
+              "question": "Vérifier que pour $a = 144$ et $b = 89$, le couple $(u,v) = (34, -55)$ satisfait bien l'identité de Bézout. Donner un autre couple de coefficients de Bézout pour cette même paire.",
+              "answer": "Vérification : $144 \\times 34 + 89 \\times (-55) = 4896 - 4895 = 1 = \\gcd(144,89)$. Un autre couple : $(u,v) = (34 + 89k, -55 - 144k)$ pour tout entier $k$. Par exemple $k=1$ donne $(123, -199)$.",
+              "hint": "Calcule les produits. Pour un autre couple, utilise la formule générale avec $k=1$ ou $k=-1$.",
+              "explanation": "On vérifie l'égalité numérique. La forme générale des coefficients de Bézout est $(u_0 + k\\frac{b}{d}, v_0 - k\\frac{a}{d})$ où $d = \\gcd(a,b)$. Ici $d=1$, donc $(34 + 89k, -55 - 144k)$."
+            },
+            {
+              "question": "Soit $a = 100$ et $b = 35$. Sans faire tout l'algorithme d'Euclide, dire si l'équation $100x + 35y = 5$ a des solutions entières. Justifier.",
+              "answer": "Oui, car $\\gcd(100,35) = 5$ et $5$ divise $5$. L'identité de Bézout garantit l'existence de solutions.",
+              "hint": "Calcule $\\gcd(100,35)$. Rappelle-toi la condition nécessaire et suffisante pour qu'une équation diophantienne $ax+by=c$ ait des solutions.",
+              "explanation": "L'équation $ax+by=c$ a des solutions entières si et seulement si $\\gcd(a,b)$ divise $c$. Ici $\\gcd(100,35)=5$ et $5$ divise $5$, donc il y a des solutions. L'identité de Bézout donne un couple $(u,v)$ tel que $100u+35v=5$, ce qui fournit une solution particulière."
+            }
+          ]
+        },
+        {
+          "title": "Trouver coefficients.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode systématique : algorithme d'Euclide étendu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons vu comment remonter les divisions d'Euclide à la main pour trouver $u$ et $v$. Cette méthode fonctionne, mais elle devient fastidieuse quand le nombre d'étapes est grand. Heureusement, il existe une version étendue de l'algorithme d'Euclide qui calcule $u$ et $v$ en même temps que le $\\gcd$, sans avoir à faire de back-substitution manuelle. C'est ce que nous allons découvrir maintenant. L'idée est de maintenir à chaque étape une relation de la forme $r_i = a u_i + b v_i$, où $r_i$ est le reste courant. Au départ, on a $r_{-1}=a = a\\times1 + b\\times0$ et $r_0=b = a\\times0 + b\\times1$. Ensuite, chaque division $r_{i-1} = q_i r_i + r_{i+1}$ permet de mettre à jour les coefficients."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $r_{-1}=a$, $u_{-1}=1$, $v_{-1}=0$ et $r_0=b$, $u_0=0$, $v_0=1$. Ainsi $r_{-1} = a u_{-1} + b v_{-1}$ et $r_0 = a u_0 + b v_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Itération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que $r_i \\neq 0$, on effectue la division euclidienne $r_{i-1} = q_i r_i + r_{i+1}$ avec $0 \\le r_{i+1} < |r_i|$. On met à jour : $u_{i+1} = u_{i-1} - q_i u_i$ et $v_{i+1} = v_{i-1} - q_i v_i$. On incrémente $i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Terminaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand $r_{i+1}=0$, le dernier reste non nul est $r_i = \\gcd(a,b)$. Les coefficients correspondants $u_i, v_i$ sont des coefficients de Bézout : $a u_i + b v_i = \\gcd(a,b)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à notre exemple $a=56$, $b=42$. Initialisation : $r_{-1}=56, u_{-1}=1, v_{-1}=0$ ; $r_0=42, u_0=0, v_0=1$. Première division : $56 = 42 \\times 1 + 14$, donc $q_1=1$, $r_1=14$. Mise à jour : $u_1 = u_{-1} - q_1 u_0 = 1 - 1\\times0 = 1$, $v_1 = v_{-1} - q_1 v_0 = 0 - 1\\times1 = -1$. On a $14 = 56\\times1 + 42\\times(-1)$. Deuxième division : $42 = 14 \\times 3 + 0$, donc $q_2=3$, $r_2=0$. On s'arrête. Le $\\gcd$ est $r_1=14$, avec $u_1=1, v_1=-1$. C'est exactement ce qu'on avait trouvé."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def bezout(a, b):\\n    u_prev, u = 1, 0\\n    v_prev, v = 0, 1\\n    while b != 0:\\n        q = a // b\\n        a, b = b, a % b\\n        u_prev, u = u, u_prev - q * u\\n        v_prev, v = v, v_prev - q * v\\n    return a, u_prev, v_prev\\n\\ng, u, v = bezout(56, 42)\\nprint(f'pgcd={g}, u={u}, v={v}')  # pgcd=14, u=1, v=-1",
+              "language": "python",
+              "caption": "Algorithme d'Euclide étendu en Python"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce code est très compact. Remarque que les variables `u_prev` et `v_prev` stockent les coefficients du reste précédent, qui deviennent les coefficients de Bézout à la fin. La boucle met à jour `a` et `b` comme dans l'algorithme classique, et met à jour les coefficients selon les formules $u_{i+1} = u_{i-1} - q_i u_i$. Essaie de le tracer pas à pas sur papier pour bien comprendre la mécanique. C'est un excellent exercice pour ancrer l'algorithme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons maintenant sur un exemple où les coefficients ne sont pas triviaux : $a = 221$, $b = 91$. Faisons l'algorithme d'Euclide étendu ensemble. Initialisation : $r_{-1}=221, u_{-1}=1, v_{-1}=0$ ; $r_0=91, u_0=0, v_0=1$. Division 1 : $221 = 91 \\times 2 + 39$, $q_1=2$, $r_1=39$. $u_1 = 1 - 2\\times0 = 1$, $v_1 = 0 - 2\\times1 = -2$. Vérification : $221\\times1 + 91\\times(-2) = 221 - 182 = 39$. Division 2 : $91 = 39 \\times 2 + 13$, $q_2=2$, $r_2=13$. $u_2 = 0 - 2\\times1 = -2$, $v_2 = 1 - 2\\times(-2) = 5$. Vérification : $221\\times(-2) + 91\\times5 = -442 + 455 = 13$. Division 3 : $39 = 13 \\times 3 + 0$, $q_3=3$, $r_3=0$. On s'arrête. Le $\\gcd$ est $13$, avec $u=-2$, $v=5$. Donc $221 \\times (-2) + 91 \\times 5 = 13$."
+            },
+            {
+              "type": "display_math",
+              "latex": "221 \\times (-2) + 91 \\times 5 = 13"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux vérifier que $-442 + 455 = 13$. Note que les coefficients peuvent être négatifs, c'est normal. Si tu préfères des coefficients positifs, tu peux ajouter $91/13=7$ à $u$ et soustraire $221/13=17$ à $v$ : $u' = -2+7=5$, $v' = 5-17=-12$. Alors $221\\times5 + 91\\times(-12) = 1105 - 1092 = 13$. Les deux couples sont valides. Cette flexibilité est utile quand on cherche des solutions dans $\\mathbb{N}$ par exemple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une présentation tabulaire de l'algorithme d'Euclide étendu, souvent appelée « tableau de Bézout » ou « algorithme du tableau ». Elle consiste à écrire les quotients $q_i$ et à calculer les coefficients par récurrence. C'est exactement le même calcul, mais présenté sous forme de colonnes. Cette méthode est très pratique pour les examens car elle organise le travail et réduit les erreurs. Nous allons la voir maintenant."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "i",
+                "q_i",
+                "r_i",
+                "u_i",
+                "v_i"
+              ],
+              "rows": [
+                [
+                  "-1",
+                  "",
+                  "221",
+                  "1",
+                  "0"
+                ],
+                [
+                  "0",
+                  "",
+                  "91",
+                  "0",
+                  "1"
+                ],
+                [
+                  "1",
+                  "2",
+                  "39",
+                  "1",
+                  "-2"
+                ],
+                [
+                  "2",
+                  "2",
+                  "13",
+                  "-2",
+                  "5"
+                ],
+                [
+                  "3",
+                  "3",
+                  "0",
+                  "7",
+                  "-12"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce tableau, les colonnes $u_i$ et $v_i$ sont obtenues par la règle : $u_{i} = u_{i-2} - q_{i-1} u_{i-1}$ (et de même pour $v$). La dernière ligne non nulle ($i=2$) donne le $\\gcd=13$ et les coefficients $u=-2, v=5$. La ligne suivante ($i=3$) donne les coefficients pour le reste nul, qui sont $u=7, v=-12$ ; ils correspondent au couple suivant dans la famille des solutions. Cette présentation visuelle aide à ne pas se perdre dans les indices. Nous allons t'entraîner avec un exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, rappelons que l'algorithme d'Euclide étendu a une complexité logarithmique en la taille des entrées, ce qui le rend extrêmement efficace même pour des entiers de plusieurs centaines de chiffres. C'est l'algorithme utilisé dans les bibliothèques cryptographiques pour calculer les inverses modulaires. Dans la prochaine leçon, nous verrons comment utiliser les coefficients de Bézout pour résoudre des équations diophantiennes, calculer des inverses modulo $n$, et démontrer des théorèmes comme le théorème chinois. Mais avant cela, assure-toi d'être à l'aise avec le calcul des coefficients."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Utiliser l'algorithme d'Euclide étendu pour trouver des coefficients de Bézout pour $a = 123$ et $b = 45$. Donner le pgcd et un couple $(u,v)$.",
+              "answer": "$\\gcd(123,45)=3$. Un couple : $u=-5, v=14$ car $123\\times(-5)+45\\times14 = -615+630=15$ ? Attends, recalculons. $123=45\\times2+33$, $45=33\\times1+12$, $33=12\\times2+9$, $12=9\\times1+3$, $9=3\\times3+0$. Remontée : $3=12-9$, $9=33-12\\times2$, $12=45-33$, $33=123-45\\times2$. Donc $3 = 12 - (33-12\\times2) = 3\\times12 - 33 = 3\\times(45-33) - 33 = 3\\times45 - 4\\times33 = 3\\times45 - 4\\times(123-45\\times2) = -4\\times123 + 11\\times45$. Donc $u=-4, v=11$. Vérification : $-492+495=3$.",
+              "hint": "Applique l'algorithme pas à pas : initialisation, divisions successives, mise à jour des coefficients. Vérifie à chaque étape que $r_i = a u_i + b v_i$.",
+              "explanation": "L'algorithme donne : $123=45\\times2+33$ ($q_1=2$), $45=33\\times1+12$ ($q_2=1$), $33=12\\times2+9$ ($q_3=2$), $12=9\\times1+3$ ($q_4=1$), $9=3\\times3+0$. Les coefficients finaux sont $u=-4, v=11$."
+            },
+            {
+              "question": "Compléter le tableau de Bézout pour $a=144, b=89$ (nombres de Fibonacci). On donne les premières lignes : $i=-1: r=144, u=1, v=0$ ; $i=0: r=89, u=0, v=1$. Calculer les lignes suivantes jusqu'au reste nul.",
+              "answer": "Les quotients sont tous $1$ jusqu'à la fin. Le tableau : $i=1: q=1, r=55, u=1, v=-1$ ; $i=2: q=1, r=34, u=-1, v=2$ ; $i=3: q=1, r=21, u=2, v=-3$ ; $i=4: q=1, r=13, u=-3, v=5$ ; $i=5: q=1, r=8, u=5, v=-8$ ; $i=6: q=1, r=5, u=-8, v=13$ ; $i=7: q=1, r=3, u=13, v=-21$ ; $i=8: q=1, r=2, u=-21, v=34$ ; $i=9: q=1, r=1, u=34, v=-55$ ; $i=10: q=2, r=0, u=-55, v=89$. Le pgcd est $1$, coefficients $(34,-55)$.",
+              "hint": "Les divisions successives de nombres de Fibonacci consécutifs donnent toujours quotient $1$ (sauf le dernier). Les coefficients suivent la suite de Fibonacci avec signes alternés.",
+              "explanation": "C'est la propriété bien connue : pour $F_{n+1}, F_n$, les coefficients de Bézout sont $(F_{n-1}, -F_{n-2})$ (à signe près). Ici $144=F_{12}, 89=F_{11}$, donc $u=F_{10}=55?$ Attendez, $F_{10}=55$, mais nous avons trouvé $34$. Vérification : $F_{12}=144, F_{11}=89, F_{10}=55, F_9=34, F_8=21...$ L'identité est $F_{n+1}F_{n-1} - F_n F_n = (-1)^n$. Pour $n=11$: $144\\times34 - 89\\times55 = -1$. Donc $u=34, v=-55$ donnent $-1$. Pour obtenir $+1$, on prend $u=-34, v=55$. Dans notre tableau, nous avons $u=34, v=-55$ avec $r=1$ ? Recalcul : $144\\times34 + 89\\times(-55) = 4896-4895=1$. Oui, c'est correct. Le signe alterne selon la parité du nombre d'étapes."
+            },
+            {
+              "question": "Soient $a=252$ et $b=198$. Trouver $u,v$ tels que $252u+198v=\\gcd(252,198)$ en utilisant l'algorithme d'Euclide étendu. Vérifier votre résultat.",
+              "answer": "$\\gcd(252,198)=18$. $252=198\\times1+54$, $198=54\\times3+36$, $54=36\\times1+18$, $36=18\\times2+0$. Remontée : $18=54-36$, $36=198-54\\times3$, $54=252-198$. Donc $18 = 54 - (198-54\\times3) = 4\\times54 - 198 = 4\\times(252-198) - 198 = 4\\times252 - 5\\times198$. Donc $u=4, v=-5$. Vérification : $1008 - 990 = 18$.",
+              "hint": "Fais les divisions, note les quotients, puis remonte ou utilise le tableau. Vérifie l'égalité finale.",
+              "explanation": "L'algorithme donne directement $u=4, v=-5$. On peut aussi utiliser le tableau : $i=-1: (252,1,0)$, $i=0: (198,0,1)$, $i=1: q=1, r=54, u=1, v=-1$, $i=2: q=3, r=36, u=-3, v=4$, $i=3: q=1, r=18, u=4, v=-5$, $i=4: q=2, r=0, u=-11, v=14$. Le pgcd est $18$ avec $u=4, v=-5$."
+            },
+            {
+              "question": "Expliquer pourquoi l'algorithme d'Euclide étendu termine toujours et donne bien des coefficients de Bézout. (Réponse en quelques phrases.)",
+              "answer": "L'algorithme termine car la suite des restes $r_i$ est strictement décroissante et positive, donc elle atteint $0$ en un nombre fini d'étapes. À chaque étape, on maintient l'invariant $r_i = a u_i + b v_i$. Quand $r_{k+1}=0$, $r_k$ est le pgcd et $u_k, v_k$ satisfont l'identité de Bézout.",
+              "hint": "Rappelle la propriété de décroissance stricte des restes dans l'algorithme d'Euclide, et l'invariant de combinaison linéaire.",
+              "explanation": "La terminaison est garantie par le fait que les restes forment une suite d'entiers naturels strictement décroissante. La correction vient de l'invariant $r_i = a u_i + b v_i$ vérifié par récurrence sur les étapes. À la fin, $r_k = \\gcd(a,b)$ et $u_k, v_k$ sont les coefficients cherchés."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations diophantiennes linéaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours, où nous allons voir concrètement à quoi sert l'identité de Bézout. La première application majeure est la résolution des équations diophantiennes linéaires de la forme $ax + by = c$, où $a,b,c$ sont des entiers donnés et on cherche des solutions entières $(x,y)$. Tu as déjà rencontré la condition nécessaire et suffisante : cette équation a des solutions si et seulement si $\\gcd(a,b)$ divise $c$. Si c'est le cas, l'identité de Bézout nous donne une solution particulière, et toutes les solutions s'en déduisent par une formule paramétrique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la condition de solubilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $d = \\gcd(a,b)$. Si $d$ ne divise pas $c$, il n'y a aucune solution entière. Si $d$ divise $c$, on continue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver une solution particulière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utiliser l'algorithme d'Euclide étendu pour trouver $u,v$ tels que $au + bv = d$. Multiplier par $c/d$ : $x_0 = u \\cdot (c/d)$, $y_0 = v \\cdot (c/d)$. Alors $ax_0 + by_0 = c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la solution générale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toutes les solutions sont de la forme $x = x_0 + k \\frac{b}{d}$, $y = y_0 - k \\frac{a}{d}$, où $k \\in \\mathbb{Z}$. Vérifier que cela donne bien toutes les solutions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple concret : résoudre $56x + 42y = 28$. D'abord, $\\gcd(56,42)=14$. $14$ divise $28$ (car $28=14\\times2$), donc il y a des solutions. Nous avons déjà trouvé $u=1, v=-1$ pour $56u+42v=14$. Multiplions par $2$ : $x_0 = 2$, $y_0 = -2$. Vérification : $56\\times2 + 42\\times(-2) = 112 - 84 = 28$. La solution générale est $x = 2 + k \\frac{42}{14} = 2 + 3k$, $y = -2 - k \\frac{56}{14} = -2 - 4k$, $k \\in \\mathbb{Z}$. Pour $k=0$, on a $(2,-2)$ ; pour $k=1$, $(5,-6)$ ; pour $k=-1$, $(-1,2)$, etc. Tu peux tester n'importe quel $k$, l'égalité tient."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = 2 + 3k,\\quad y = -2 - 4k,\\quad k \\in \\mathbb{Z}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on cherche des solutions naturelles (positives ou nulles). Il suffit alors de trouver les valeurs de $k$ qui rendent $x \\ge 0$ et $y \\ge 0$. Ici, $2+3k \\ge 0 \\Rightarrow k \\ge -2/3$, donc $k \\ge 0$ (entier). Et $-2-4k \\ge 0 \\Rightarrow k \\le -1/2$, donc $k \\le -1$. Il n'y a pas d'entier $k$ satisfaisant les deux : pas de solutions dans $\\mathbb{N}^2$. C'est une situation courante : l'équation a des solutions entières mais pas naturelles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième grande application est le calcul de l'inverse modulaire. Si $a$ et $n$ sont premiers entre eux ($\\gcd(a,n)=1$), alors il existe $u$ tel que $au \\equiv 1 \\pmod n$. Ce $u$ est l'inverse de $a$ modulo $n$. L'algorithme d'Euclide étendu le trouve directement : on calcule $u,v$ tels que $au + nv = 1$, alors $u \\bmod n$ est l'inverse cherché. C'est la base du chiffrement RSA : on a besoin de calculer $d = e^{-1} \\bmod \\varphi(N)$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def modinv(a, n):\\n    g, u, v = bezout(a, n)\\n    if g != 1:\\n        raise ValueError('Pas d\\'inverse modulaire')\\n    return u % n\\n\\ndef bezout(a, b):\\n    u_prev, u = 1, 0\\n    v_prev, v = 0, 1\\n    while b != 0:\\n        q = a // b\\n        a, b = b, a % b\\n        u_prev, u = u, u_prev - q * u\\n        v_prev, v = v, v_prev - q * v\\n    return a, u_prev, v_prev\\n\\nprint(modinv(3, 11))  # 4 car 3*4=12≡1 mod 11\\nprint(modinv(17, 3120))  # RSA example",
+              "language": "python",
+              "caption": "Calcul de l'inverse modulaire via Bézout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de calculer à la main l'inverse de $7$ modulo $31$. $\\gcd(7,31)=1$. Algorithme d'Euclide : $31 = 7\\times4 + 3$, $7 = 3\\times2 + 1$, $3 = 1\\times3 + 0$. Remontée : $1 = 7 - 3\\times2 = 7 - (31 - 7\\times4)\\times2 = 7\\times9 - 31\\times2$. Donc $u=9$, $v=-2$. L'inverse de $7$ modulo $31$ est $9$ (car $7\\times9=63=31\\times2+1$). Vérification : $63 \\equiv 1 \\pmod{31}$. C'est une opération qu'on fait souvent en cryptographie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième application : le théorème chinois (aussi appelé théorème des restes chinois). Il permet de résoudre un système de congruences $x \\equiv a_1 \\pmod{n_1}$, $x \\equiv a_2 \\pmod{n_2}$, ..., avec les $n_i$ deux à deux premiers entre eux. La solution s'écrit $x = \\sum a_i M_i y_i$ où $M_i = N/n_i$ ($N$ produit des $n_i$) et $y_i$ est l'inverse de $M_i$ modulo $n_i$. Les inverses $y_i$ se calculent grâce à Bézout. C'est une utilisation élégante qui combine plusieurs identités de Bézout."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Exemple : $x \\equiv 2 \\pmod{3}$, $x \\equiv 3 \\pmod{5}$, $x \\equiv 2 \\pmod{7}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les modulos $3,5,7$ sont premiers entre eux. $N = 105$. $M_1 = 35$, inverse de $35$ mod $3$ : $35 \\equiv 2 \\pmod{3}$, inverse de $2$ mod $3$ est $2$ (car $2\\times2=4\\equiv1$). Donc $y_1=2$. $M_2 = 21$, inverse de $21$ mod $5$ : $21\\equiv1$, inverse est $1$. $y_2=1$. $M_3 = 15$, inverse de $15$ mod $7$ : $15\\equiv1$, inverse est $1$. $y_3=1$. Solution : $x = 2\\times35\\times2 + 3\\times21\\times1 + 2\\times15\\times1 = 140 + 63 + 30 = 233 \\equiv 23 \\pmod{105}$. Vérification : $23\\equiv2\\pmod3$, $23\\equiv3\\pmod5$, $23\\equiv2\\pmod7$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que les coefficients de Bézout apparaissent à chaque calcul d'inverse modulaire. C'est pourquoi maîtriser l'algorithme d'Euclide étendu est indispensable. Une dernière application : la simplification de fractions. Pour simplifier $\\frac{a}{b}$, on calcule $d = \\gcd(a,b)$ et on divise numérateur et dénominateur par $d$. L'identité de Bézout garantit que la fraction simplifiée est irréductible, car si $a' = a/d$ et $b' = b/d$, alors $a'u + b'v = 1$, donc $\\gcd(a',b')=1$. C'est une justification théorique de la méthode usuelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons que l'identité de Bézout est un outil universel en arithmétique. Elle relie la division euclidienne, les combinaisons linéaires, les inverses modulaires, les équations diophantiennes et le théorème chinois. Tout au long de ce cours, nous avons vu comment la trouver (algorithme d'Euclide étendu), comment l'utiliser, et pourquoi elle est si puissante. Garde précieusement la méthode du tableau ou le code Python : ils te seront utiles en mathématiques supérieures et en informatique. Félicitations pour avoir suivi ce cours jusqu'au bout !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer le théorème de Bézout et expliquer ce que sont les coefficients de Bézout.",
+                "Je sais appliquer l'algorithme d'Euclide étendu (à la main ou en Python) pour trouver $u$ et $v$ tels que $au+bv=\\gcd(a,b)$.",
+                "Je sais résoudre une équation diophantienne linéaire $ax+by=c$ : condition d'existence, solution particulière, solution générale.",
+                "Je sais calculer l'inverse d'un entier $a$ modulo $n$ (si $\\gcd(a,n)=1$) en utilisant Bézout.",
+                "Je connais le principe du théorème chinois et le rôle de Bézout dans le calcul des inverses modulaires intermédiaires."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre l'équation diophantienne $221x + 91y = 26$. Donner la solution générale.",
+              "answer": "$\\gcd(221,91)=13$. $13$ divise $26$ ($26=13\\times2$). Une solution particulière de $221u+91v=13$ est $u=-2, v=5$ (vu en leçon 2). Multiplier par $2$ : $x_0=-4, y_0=10$. Solution générale : $x = -4 + 7k$, $y = 10 - 17k$, $k\\in\\mathbb{Z}$.",
+              "hint": "Utilise les coefficients de Bézout trouvés précédemment pour $221$ et $91$. Multiplie par $c/d$. La solution générale utilise $b/d$ et $a/d$.",
+              "explanation": "On a $d=13$, $c/d=2$. Coefficients de Bézout pour $13$ : $(-2,5)$. Solution particulière : $(-4,10)$. Solution générale : $x = -4 + k\\cdot(91/13) = -4+7k$, $y = 10 - k\\cdot(221/13) = 10-17k$."
+            },
+            {
+              "question": "Calculer l'inverse de $13$ modulo $55$. Vérifier votre résultat.",
+              "answer": "$\\gcd(13,55)=1$. Algorithme d'Euclide : $55=13\\times4+3$, $13=3\\times4+1$, $3=1\\times3+0$. Remontée : $1 = 13 - 3\\times4 = 13 - (55-13\\times4)\\times4 = 13\\times17 - 55\\times4$. Donc $u=17$. L'inverse de $13$ modulo $55$ est $17$ (car $13\\times17=221=55\\times4+1$). Vérification : $221 \\equiv 1 \\pmod{55}$.",
+              "hint": "Applique l'algorithme d'Euclide étendu à $13$ et $55$. Le coefficient $u$ obtenu (modulo $55$) est l'inverse.",
+              "explanation": "L'algorithme donne $u=17, v=-4$. Comme $13\\times17 + 55\\times(-4) = 1$, on a $13\\times17 \\equiv 1 \\pmod{55}$. Donc l'inverse est $17$."
+            },
+            {
+              "question": "Résoudre le système de congruences : $x \\equiv 1 \\pmod{4}$, $x \\equiv 2 \\pmod{5}$, $x \\equiv 3 \\pmod{7}$.",
+              "answer": "$N=140$. $M_1=35$, inverse de $35$ mod $4$ : $35\\equiv3$, inverse de $3$ mod $4$ est $3$ ($3\\times3=9\\equiv1$). $y_1=3$. $M_2=28$, inverse de $28$ mod $5$ : $28\\equiv3$, inverse de $3$ mod $5$ est $2$ ($3\\times2=6\\equiv1$). $y_2=2$. $M_3=20$, inverse de $20$ mod $7$ : $20\\equiv6$, inverse de $6$ mod $7$ est $6$ ($6\\times6=36\\equiv1$). $y_3=6$. $x = 1\\times35\\times3 + 2\\times28\\times2 + 3\\times20\\times6 = 105 + 112 + 360 = 577 \\equiv 577-4\\times140 = 17 \\pmod{140}$. Vérification : $17\\equiv1\\pmod4$, $17\\equiv2\\pmod5$, $17\\equiv3\\pmod7$. Solution : $x \\equiv 17 \\pmod{140}$.",
+              "hint": "Calcule $N$, les $M_i$, puis les inverses $y_i$ de $M_i$ modulo $n_i$ grâce à Bézout. Applique la formule $x = \\sum a_i M_i y_i$.",
+              "explanation": "Application directe du théorème chinois. Les inverses modulaires sont trouvés via Bézout (ou par inspection car les nombres sont petits). La solution unique modulo $140$ est $17$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,43 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 188,
+  "_course_code": "ce2-t06-c02-masses-g-et-kg",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Lire une masse",
+  "title": "Algorithmes pour lire et comparer des masses",
+  "blocks": [
+    {
+      "title": "Lecture sur balance numérique",
+      "content": "Une balance numérique affiche $1250$ et l'unité $g$ clignote. Écris l'algorithme en trois étapes pour lire correctement cette masse et l'exprimer en kilogrammes et grammes ($kg$ $g$).",
+      "correctAnswer": "Étape 1 : Je lis le nombre affiché : $1250$.\\nÉtape 2 : Je relève l'unité : grammes ($g$).\\nÉtape 3 : Je convertis en $kg$ $g$ : $1000 g = 1 kg$, donc $1250 g = 1 kg 250 g$.",
+      "explanation": "L'algorithme structure la lecture : d'abord la valeur numérique, ensuite l'unité, enfin la conversion en unités usuelles ($kg$ $g$) en faisant des groupes de $1000 g$.",
+      "points": 2,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          1250
+        ],
+        "right": [],
+        "caption": "Balance numérique affichant 1250 g"
+      }
+    },
+    {
+      "title": "Lecture sur balance à aiguille",
+      "content": "Sur une balance à aiguille graduée en kilogrammes, l'aiguille se trouve sur le $3$e trait après $2 kg$. Il y a $10$ traits entre deux kilogrammes. Écris l'algorithme pour déterminer la masse en $kg$ $g$.",
+      "correctAnswer": "Étape 1 : Je repère le kilogramme entier précédent : $2 kg$.\\nÉtape 2 : Je calcule la valeur d'un trait : $1 kg = 1000 g$, $1000 / 10 = 100 g$ par trait.\\nÉtape 3 : Je compte les traits après $2 kg$ : $3$ traits $\\times 100 g = 300 g$.\\nÉtape 4 : J'écris la masse : $2 kg 300 g$.",
+      "explanation": "Il faut d'abord trouver la graduation principale, puis la valeur du petit trait (division de $1000 g$ par le nombre de traits), multiplier par le nombre de traits franchis et ajouter au kilogramme entier.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux masses",
+      "content": "On a deux masses : $M_1 = 1 kg 400 g$ et $M_2 = 1350 g$. Écris l'algorithme pour les comparer et dire laquelle est la plus grande.",
+      "correctAnswer": "Étape 1 : Je convertis les deux masses dans la même unité (le gramme).\\nÉtape 2 : $M_1 = 1 kg 400 g = 1000 g + 400 g = 1400 g$.\\nÉtape 3 : $M_2 = 1350 g$ (déjà en grammes).\\nÉtape 4 : Je compare les nombres : $1400 > 1350$.\\nÉtape 5 : Conclusion : $M_1$ est plus grande que $M_2$.",
+      "explanation": "Pour comparer, il est obligatoire de convertir dans la même unité. On choisit le gramme car $M_2$ l'est déjà. On décompose $M_1$ en $1000 g + 400 g$, on additionne, puis on compare les deux nombres entiers obtenus.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

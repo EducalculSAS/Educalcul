@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Approfondissement : Calculer le coefficient directeur",
+  "blocks": [
+    {
+      "title": "Algorithme de calcul du coefficient directeur",
+      "content": "Écrire un algorithme, en langage naturel ou en pseudo‑code, qui calcule le coefficient directeur d'une droite passant par deux points distincts A($x_A$, $y_A$) et B($x_B$, $y_B$). L'algorithme doit tester si la droite est verticale et, dans ce cas, afficher un message approprié.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_A$, $y_A$, $x_B$, $y_B$.\\n2. Si $x_B = x_A$ alors afficher \"Droite verticale, coefficient directeur non défini\" et arrêter.\\n3. Sinon calculer $m = (y_B - y_A) / (x_B - x_A)$.\\n4. Afficher $m$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur d'une droite passant par deux points distincts est le quotient de la différence des ordonnées sur la différence des abscisses. Si les abscisses sont égales, la droite est verticale et le coefficient directeur n'existe pas (division par zéro). L'algorithme teste cette condition avant d'effectuer la division.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une fonction Python",
+      "content": "Compléter la fonction Python suivante pour qu'elle renvoie le coefficient directeur de la droite passant par les points A($x_A$, $y_A$) et B($x_B$, $y_B$). La fonction doit lever une exception ValueError avec le message \"Droite verticale\" si $x_A = x_B$.\\n\\ndef coefficient_directeur(xA, yA, xB, yB):\\n    # À compléter\\n    pass",
+      "correctAnswer": "def coefficient_directeur(xA, yA, xB, yB):\\n    if xB == xA:\\n        raise ValueError(\"Droite verticale\")\\n    return (yB - yA) / (xB - xA)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction teste d'abord l'égalité des abscisses. Si elles sont égales, la droite est verticale et on lève une exception ValueError avec le message demandé. Sinon, on applique la formule du coefficient directeur $(y_B - y_A) / (x_B - x_A)$ et on renvoie le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un algorithme donné",
+      "content": "On donne l'algorithme suivant :\\n1. Lire $x_A$, $y_A$, $x_B$, $y_B$.\\n2. Calculer $m = (y_B - y_A) / (x_B - x_A)$.\\n3. Afficher $m$.\\nCet algorithme calcule‑t‑il correctement le coefficient directeur pour tous les couples de points distincts ? Justifier votre réponse.",
+      "correctAnswer": "Non, l'algorithme n'est pas correct pour tous les couples de points distincts. Si $x_A = x_B$ (droite verticale), la division par zéro se produit à l'étape 2, ce qui provoque une erreur. Il manque un test préalable pour détecter ce cas et afficher un message d'erreur ou traiter le cas séparément.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme omet le test $x_A = x_B$. Pour deux points distincts ayant la même abscisse, la droite est verticale et le coefficient directeur n'est pas défini. Sans ce test, l'exécution tente une division par zéro, ce qui est une erreur. Un algorithme correct doit inclure une condition avant la division.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 276,
+  "_course_code": "cm2-t01-c02-valeur-de-position-dans-les-entiers",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Décomposer",
+  "title": "Algorithmes de décomposition des nombres",
+  "blocks": [
+    {
+      "title": "La règle de décomposition",
+      "content": "Imagine que tu crées un programme pour décomposer un nombre entier. Pour le nombre $452$, le programme doit identifier le chiffre des centaines, celui des dizaines et celui des unités. Écris le raisonnement structuré que le programme doit suivre pour transformer $452$ en une somme de produits comme ceci : $(4 \\times 100) + (5 \\times 10) + 2$.",
+      "correctAnswer": "1. Identifier le chiffre des centaines : $4$. Multiplier $4$ par $100$\\n2. Identifier le chiffre des dizaines : $5$. Multiplier $5$ par $10$\\n3. Identifier le chiffre des unités : $2$. Garder $2$ tel quel\\n4. Additionner les trois résultats : $(4 \\times 100) + (5 \\times 10) + 2$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour décomposer un nombre, on multiplie chaque chiffre par la valeur de sa position (centaines, dizaines, unités) puis on additionne le tout.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposition d'un grand nombre",
+      "content": "Le programme doit maintenant traiter le nombre $7\\ 803$. Attention, il y a un zéro dans le nombre. Écris l'algorithme de décomposition étape par étape pour obtenir le résultat final sous forme d'addition de produits.",
+      "correctAnswer": "1. Milliers : $7 \\times 1000$\\n2. Centaines : $8 \\times 100$\\n3. Dizaines : $0 \\times 10$\\n4. Unités : $3$\\nRésultat : $(7 \\times 1000) + (8 \\times 100) + (0 \\times 10) + 3$ ou $(7 \\times 1000) + (8 \\times 100) + 3$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le zéro représente l'absence de dizaines, on peut donc l'écrire $0 \\times 10$ ou simplement l'ignorer dans la somme finale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Code de reconstruction",
+      "content": "L'algorithme inverse doit transformer une décomposition en un nombre entier. Voici le code d'entrée : $(6 \\times 10\\ 000) + (3 \\times 1\\ 000) + (9 \\times 100) + (2 \\times 10) + 7$. Quel est le raisonnement pour trouver le nombre final et quel est ce nombre ?",
+      "correctAnswer": "Calculer chaque produit : $60\\ 000$, $3\\ 000$, $900$, $20$ et $7$. Additionner tous ces résultats pour obtenir $63\\ 927$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On effectue d'abord les multiplications pour retrouver la valeur de chaque position, puis on somme tout pour reconstruire le nombre entier.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

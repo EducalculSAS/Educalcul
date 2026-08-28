@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Ajouter titre et catégories",
+  "title": "Compléter un diagramme en bâtons : titre et catégories",
+  "questions": [
+    {
+      "text": "À quoi sert le titre d'un diagramme en bâtons ?",
+      "options": [
+        "Indiquer la hauteur de chaque bâtons",
+        "Dire de quoi parle le diagramme",
+        "Colorier les bâtons avec de belles couleurs",
+        "Écrire les nombres sur l'axe vertical"
+      ],
+      "correctAnswer": "Dire de quoi parle le diagramme",
+      "explanation": "Le titre informe le lecteur sur le sujet représenté par le diagramme (par exemple : « Les fruits préférés de la classe »). Les hauteurs des bâtons montrent les quantités, les catégories sont écrites à la base des bâtons, et les nombres sont sur l'axe vertical.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un diagramme en bâtons vertical, où écrit-on généralement les catégories (les noms des groupes) ?",
+      "options": [
+        "Au sommet de chaque bâtons",
+        "Sur l'axe vertical (celui qui monte)",
+        "Sur l'axe horizontal (à la base des bâtons)",
+        "À l'intérieur du titre principal"
+      ],
+      "correctAnswer": "Sur l'axe horizontal (à la base des bâtons)",
+      "explanation": "Les catégories (comme 'Chien', 'Chat', 'Oiseau') s'écrivent sur l'axe horizontal, sous chaque bâtons correspondant. L'axe vertical porte les chiffres (l'échelle des effectifs). Le sommet du bâtons indique la quantité, pas le nom de la catégorie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde ce diagramme. Quel élément important manque-t-il pour le comprendre ?",
+      "options": [
+        "Les bâtons pour représenter les nombres",
+        "Les catégories sous les bâtons",
+        "Le titre au-dessus du diagramme",
+        "Les couleurs sur les bâtons"
+      ],
+      "correctAnswer": "Le titre au-dessus du diagramme",
+      "explanation": "Le diagramme affiche des bâtons de hauteur $4$, $2$ et $5$ avec des catégories 'Pommes', 'Poires', 'Bananes' à la base. On voit bien les catégories et les bâtons. Il n'y a pas d'intitulé général expliquant ce que représente cet ensemble (par exemple 'Fruits préférés'). C'est le titre qui manque.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 2,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 5,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "La classe a voté pour son sport préféré. Les résultats sont : Natation $6$, Football $8$, Vélo $4$. Quel est le meilleur titre pour le diagramme ?",
+      "options": [
+        "Les sports",
+        "Les nombres $6$, $8$, $4$",
+        "Sports préférés des élèves de la classe",
+        "L'axe vertical et l'axe horizontal"
+      ],
+      "correctAnswer": "Sports préférés des élèves de la classe",
+      "explanation": "Un bon titre doit être une phrase ou un groupe nominal complet qui résume l'information : quoi (sports), qui (élèves de la classe), et quel choix (préférés). 'Les sports' est trop vague. Les nombres sont des données, pas un titre. Les axes sont des parties techniques du graphique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a fait ce diagramme pour montrer les animaux de la ferme. Titre : « Nombre d'animaux ». Catégories écrites : « $5$, $3$, $2$ ». Bâtons de hauteur $5$, $3$, $2$. Quelle est l'erreur ?",
+      "options": [
+        "Le titre devrait être « La ferme »",
+        "Les catégories sont des nombres au lieu d'être des noms d'animaux",
+        "Les bâtons sont trop hauts",
+        "Il faut colorier les bâtons en rouge"
+      ],
+      "correctAnswer": "Les catégories sont des nombres au lieu d'être des noms d'animaux",
+      "explanation": "Les catégories (sur l'axe horizontal) doivent nommer les groupes : 'Vaches', 'Moutons', 'Poules'. Les nombres $5$, $3$, $2$ sont les effectifs (la hauteur des bâtons), ils vont sur l'axe vertical. L'élève a confondu les étiquettes des catégories et les valeurs numériques.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

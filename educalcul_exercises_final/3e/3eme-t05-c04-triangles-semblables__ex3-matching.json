@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Applications",
+  "title": "Applications des triangles semblables",
+  "blocks": [
+    {
+      "title": "Calcul de longueurs",
+      "content": "Les triangles $ABC$ et $A'B'C'$ sont semblables. On donne $AB = 4$ cm, $BC = 5$ cm, $CA = 6$ cm et $A'B' = 10$ cm. Relie chaque grandeur à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Coefficient de similitude $k$",
+          "right": "$2,5$"
+        },
+        {
+          "left": "Longueur $B'C'$",
+          "right": "$12,5$ cm"
+        },
+        {
+          "left": "Longueur $A'C'$",
+          "right": "$15$ cm"
+        }
+      ],
+      "items": [],
+      "explanation": "Le coefficient de similitude $k$ est le rapport des côtés homologues : $k = \\frac{A'B'}{AB} = \\frac{10}{4} = 2,5$. Pour trouver $B'C'$, on multiplie $BC$ par $k$ : $5 \\times 2,5 = 12,5$ cm. Pour $A'C'$, on multiplie $AC$ par $k$ : $6 \\times 2,5 = 15$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rapports d'aires et de volumes",
+      "content": "Deux solides sont semblables avec un rapport de longueurs $k = 3$. Relie chaque rapport à sa valeur numérique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Rapport des longueurs",
+          "right": "$3$"
+        },
+        {
+          "left": "Rapport des aires",
+          "right": "$9$"
+        },
+        {
+          "left": "Rapport des volumes",
+          "right": "$27$"
+        },
+        {
+          "left": "Volume du grand si le petit est $10$ cm$^3$",
+          "right": "$270$ cm$^3$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour des figures semblables, le rapport des aires vaut $k^2 = 3^2 = 9$ et le rapport des volumes vaut $k^3 = 3^3 = 27$. Si le volume du petit solide est $10$ cm$^3$, celui du grand est $10 \\times 27 = 270$ cm$^3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de l'ombre",
+      "content": "Un bâton vertical de $1,50$ m de haut projette une ombre de $2$ m. Au même moment, un arbre projette une ombre de $6$ m. On suppose que les rayons du soleil sont parallèles. Relie chaque mesure à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Hauteur du bâton",
+          "right": "$1,50$ m"
+        },
+        {
+          "left": "Longueur de l'ombre du bâton",
+          "right": "$2$ m"
+        },
+        {
+          "left": "Longueur de l'ombre de l'arbre",
+          "right": "$6$ m"
+        },
+        {
+          "left": "Hauteur de l'arbre",
+          "right": "$4,50$ m"
+        }
+      ],
+      "items": [],
+      "explanation": "Les triangles formés par le bâton/son ombre et l'arbre/sa ombre sont semblables (Thalès). Le coefficient de proportionnalité est $\\frac{6}{2} = 3$. La hauteur de l'arbre est donc $1,50 \\times 3 = 4,50$ m.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

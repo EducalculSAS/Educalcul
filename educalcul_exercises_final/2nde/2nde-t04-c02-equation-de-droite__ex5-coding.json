@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Reconnaissance d'équations de droites",
+  "blocks": [
+    {
+      "title": "Appartenance d'un point à une droite",
+      "content": "Écrire un algorithme qui, étant donnés les coefficients $a$ et $b$ d'une droite d'équation $y = ax + b$ et les coordonnées $(x_0, y_0)$ d'un point, détermine si ce point appartient à la droite. L'algorithme renvoie Vrai si le point est sur la droite, Faux sinon.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, x0, y0.\\n2. Calculer y_calcule = a * x0 + b.\\n3. Si y_calcule == y0 alors afficher \"Vrai\" sinon afficher \"Faux\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On substitue l'abscisse $x_0$ dans l'équation de la droite pour obtenir l'ordonnée théorique $y = a x_0 + b$. Si cette ordonnée calculée est égale à l'ordonnée donnée $y_0$, le point vérifie l'équation et appartient donc à la droite. Sinon, il n'y appartient pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation de la droite par deux points et test d'un troisième point",
+      "content": "Écrire un algorithme qui, à partir des coordonnées de deux points distincts $A(x_A, y_A)$ et $B(x_B, y_B)$, calcule les coefficients $a$ et $b$ de l'équation réduite $y = ax + b$ de la droite $(AB)$, puis teste si un troisième point $C(x_C, y_C)$ appartient à cette droite.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, xB, yB, xC, yC.\\n2. Si xA == xB alors la droite est verticale : équation $x = xA$ ; tester si xC == xA.\\n3. Sinon calculer a = (yB - yA) / (xB - xA).\\n4. Calculer b = yA - a * xA.\\n5. Calculer y_theorique = a * xC + b.\\n6. Si y_theorique == yC alors afficher \"Vrai\" sinon afficher \"Faux\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ est le quotient de la différence des ordonnées sur la différence des abscisses. L'ordonnée à l'origine $b$ s'obtient en utilisant l'un des points connus. Pour une droite verticale ($x_A = x_B$), l'équation est $x = x_A$ et le test se fait sur l'abscisse. Enfin, on vérifie si le point $C$ satisfait l'équation trouvée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position relative de deux droites données sous forme générale",
+      "content": "Écrire un algorithme qui, donnés les coefficients $A_1, B_1, C_1$ et $A_2, B_2, C_2$ de deux droites d'équations $A_1x + B_1y + C_1 = 0$ et $A_2x + B_2y + C_2 = 0$, détermine si les droites sont parallèles, confondues ou sécantes.",
+      "correctAnswer": "Algorithme :\\n1. Lire A1, B1, C1, A2, B2, C2.\\n2. Calculer det = A1 * B2 - A2 * B1.\\n3. Si det != 0 alors afficher \"Sécantes\".\\n4. Sinon (det == 0) :\\n   - Calculer k1 = A1 * C2 - A2 * C1.\\n   - Calculer k2 = B1 * C2 - B2 * C1.\\n   - Si k1 == 0 et k2 == 0 alors afficher \"Confondues\" sinon afficher \"Parallèles\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le déterminant $A_1B_2 - A_2B_1$ indique si les droites sont parallèles (determinant nul) ou sécantes (determinant non nul). Si elles sont parallèles, on vérifie la proportionnalité des coefficients constants : si $A_1C_2 - A_2C_1 = 0$ et $B_1C_2 - B_2C_1 = 0$, les droites sont confondues, sinon elles sont parallèles distinctes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

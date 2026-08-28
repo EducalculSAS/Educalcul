@@ -1,0 +1,417 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.053517+00:00",
+  "id": 511,
+  "code": "2nde-t03-c02",
+  "title": "Somme de vecteurs",
+  "description": "Cours structuré Educalcul : Somme de vecteurs.",
+  "subject": "Vecteurs et géométrie",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Vecteurs et géométrie",
+    "titre_du_cours": "Somme de vecteurs",
+    "objectif_global": "Somme de vecteurs",
+    "mini_lecons_imposees": [
+      "Relation de Chasles.",
+      "Construction.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Vecteurs et géométrie",
+      "lessons": [
+        {
+          "title": "Relation de Chasles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La relation de Chasles : l'addition comme enchaînement de déplacements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginez que vous partiez de votre domicile, point $A$, pour vous rendre au lycée, point $B$. Ensuite, vous allez chez un ami, point $C$. Le déplacement total qui vous a mené directement de $A$ à $C$ est la somme des deux déplacements effectués l'un après l'autre : d'abord $\\overrightarrow{AB}$, puis $\\overrightarrow{BC}$. C'est exactement l'idée fondamentale de la relation de Chasles : pour trois points quelconques $A$, $B$, $C$ du plan, on a toujours $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$. Remarquez l'ordre des lettres : le point d'arrivée du premier vecteur ($B$) est le point de départ du second. C'est cette continuité qui permet d'additionner les vecteurs comme on additionne des étapes d'un voyage."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Sur une feuille quadrillée, placez $A(0,0)$, $B(3,1)$ et $C(5,4)$. Le vecteur $\\overrightarrow{AB}$ a pour coordonnées $(3,1)$ et $\\overrightarrow{BC}$ a pour coordonnées $(2,3)$. Leur somme, selon Chasles, doit être $\\overrightarrow{AC}$ dont les coordonnées sont $(5,4)$. Vérifions : $(3,1)+(2,3)=(5,4)$. L'égalité tient. Cette relation n'est pas une simple convention : elle traduit le fait qu'un déplacement composé de deux étapes successives équivaut au déplacement direct entre le point de départ initial et le point d'arrivée final. C'est une propriété géométrique qui deviendra un outil de calcul puissant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les trois points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez le point de départ du premier vecteur, le point commun (arrivée du premier, départ du second) et le point d'arrivée du second vecteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la relation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$ en respectant l'ordre des lettres : le point du milieu ($B$) doit apparaître en deuxième position du premier vecteur et en première position du second."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une somme de plusieurs vecteurs présente des points intermédiaires qui s'enchaînent, appliquez Chasles plusieurs fois de suite pour réduire l'expression à un seul vecteur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la règle d'enchaînement est claire, essayons de l'appliquer sur un cas simple pour vérifier que vous l'avez bien intégrée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Généralisation à plusieurs vecteurs et simplification d'expressions"
+            },
+            {
+              "type": "paragraph",
+              "content": "La relation de Chasles ne se limite pas à deux vecteurs. Si vous avez une suite de points $A_1, A_2, A_3, \\dots, A_n$, alors la somme des vecteurs successifs $\\overrightarrow{A_1A_2} + \\overrightarrow{A_2A_3} + \\dots + \\overrightarrow{A_{n-1}A_n}$ se simplifie en $\\overrightarrow{A_1A_n}$. C'est comme un voyage avec plusieurs escales : le bilan final ne dépend que du départ et de l'arrivée. Cette propriété est extrêmement utile pour simplifier des expressions littérales. Par exemple, $\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CD} + \\overrightarrow{DE}$ devient directement $\\overrightarrow{AE}$. Il suffit de vérifier que l'arrivée de chaque vecteur coïncide avec le départ du suivant. Si ce n'est pas le cas, on ne peut pas appliquer Chasles directement et il faut réordonner ou introduire des points intermédiaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overrightarrow{A_1A_2} + \\overrightarrow{A_2A_3} + \\dots + \\overrightarrow{A_{n-1}A_n} = \\overrightarrow{A_1A_n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple un peu plus subtil : simplifier $\\overrightarrow{MN} + \\overrightarrow{NP} + \\overrightarrow{PQ} + \\overrightarrow{QM}$. Ici, les points s'enchaînent parfaitement : $N$ arrive puis repart, $P$ arrive puis repart, $Q$ arrive puis repart, et on revient à $M$. La somme est donc $\\overrightarrow{MM}$, c'est-à-dire le vecteur nul $\\vec{0}$. C'est une façon élégante de montrer que la somme des vecteurs d'un polygone fermé est nulle. Autre cas fréquent : $\\overrightarrow{AB} + \\overrightarrow{CD}$. Les points ne s'enchaînent pas ($B \\neq C$). On ne peut pas appliquer Chasles tel quel. En revanche, si on connaît un point $O$ quelconque, on peut écrire $\\overrightarrow{AB} = \\overrightarrow{AO} + \\overrightarrow{OB}$ et $\\overrightarrow{CD} = \\overrightarrow{CO} + \\overrightarrow{OD}$, puis regrouper. C'est une technique qu'on utilisera plus tard avec les coordonnées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vecteur opposé, soustraction et relation de Chasles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, il faut comprendre le lien entre la relation de Chasles et le vecteur opposé. Par définition, le vecteur opposé de $\\overrightarrow{AB}$ est $\\overrightarrow{BA}$. Ils ont même direction, même norme, mais sens contraire. En appliquant Chasles à $\\overrightarrow{AB} + \\overrightarrow{BA}$, on obtient $\\overrightarrow{AA} = \\vec{0}$. Donc $\\overrightarrow{BA} = -\\overrightarrow{AB}$. Cette égalité permet de transformer une soustraction en addition : $\\overrightarrow{AB} - \\overrightarrow{CB} = \\overrightarrow{AB} + (-\\overrightarrow{CB}) = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$. C'est une astuce fondamentale : pour soustraire deux vecteurs, on ajoute le premier à l'opposé du second, puis on utilise Chasles en faisant coïncider les points. Par exemple, si on vous demande de simplifier $\\overrightarrow{MN} - \\overrightarrow{PN}$, réécrivez $-\\overrightarrow{PN}$ comme $\\overrightarrow{NP}$. La somme devient $\\overrightarrow{MN} + \\overrightarrow{NP} = \\overrightarrow{MP}$. Vous voyez que la soustraction de vecteurs se ramène toujours à une addition grâce à l'opposé, puis à une simplification par Chasles."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overrightarrow{BA} = -\\overrightarrow{AB} \\quad \\text{et} \\quad \\vec{u} - \\vec{v} = \\vec{u} + (-\\vec{v})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un piège classique : $\\overrightarrow{AB} - \\overrightarrow{AC}$ ne donne pas $\\overrightarrow{BC}$ directement. Il faut écrire $-\\overrightarrow{AC} = \\overrightarrow{CA}$, puis $\\overrightarrow{AB} + \\overrightarrow{CA}$. Les points ne s'enchaînent pas ($B \\neq C$). On peut cependant introduire un point $O$ ou utiliser la relation $\\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{CB}$ (démontrée par Chasles : $\\overrightarrow{AB} = \\overrightarrow{AC} + \\overrightarrow{CB}$ donc $\\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{CB}$). Cette identité, souvent appelée « relation de Chasles pour la différence », est très utile : la différence de deux vecteurs ayant même origine est le vecteur qui relie l'arrivée du second à l'arrivée du premier. Retenez-la : $\\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{CB}$. Elle évite bien des détours."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant la relation de Chasles, son extension à plusieurs vecteurs, et son interplay avec l'opposé et la soustraction. Ces outils purement géométriques vont nous permettre, dans la prochaine leçon, de construire graphiquement la somme de deux vecteurs, sans coordonnées, en utilisant la règle du triangle et la règle du parallélogramme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $A$, $B$, $C$, $D$ quatre points du plan. Simplifiez l'expression $\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CD}$.",
+              "answer": "\\overrightarrow{AD}",
+              "hint": "Appliquez la relation de Chasles deux fois de suite : d'abord aux trois premiers points, puis au résultat avec le dernier vecteur.",
+              "explanation": "Par Chasles, $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$. Ensuite, $\\overrightarrow{AC} + \\overrightarrow{CD} = \\overrightarrow{AD}$. La somme totale est donc le vecteur qui relie directement le point de départ $A$ au point d'arrivée final $D$."
+            },
+            {
+              "question": "Simplifiez $\\overrightarrow{PQ} + \\overrightarrow{QR} + \\overrightarrow{RS} + \\overrightarrow{ST} + \\overrightarrow{TP}$.",
+              "answer": "\\vec{0}",
+              "hint": "Les points s'enchaînent-ils parfaitement jusqu'au retour au point de départ ?",
+              "explanation": "La suite des points est $P \\to Q \\to R \\to S \\to T \\to P$. C'est un chemin fermé. Par Chasles généralisé, la somme vaut $\\overrightarrow{PP}$, c'est-à-dire le vecteur nul $\\vec{0}$."
+            },
+            {
+              "question": "Écrivez $\\overrightarrow{MN} - \\overrightarrow{PN}$ sous la forme d'un seul vecteur.",
+              "answer": "\\overrightarrow{MP}",
+              "hint": "Transformez la soustraction en addition du vecteur opposé, puis appliquez Chasles.",
+              "explanation": "$\\overrightarrow{MN} - \\overrightarrow{PN} = \\overrightarrow{MN} + (-\\overrightarrow{PN}) = \\overrightarrow{MN} + \\overrightarrow{NP}$. Les points s'enchaînent ($N$ arrive puis repart), donc par Chasles $\\overrightarrow{MN} + \\overrightarrow{NP} = \\overrightarrow{MP}$."
+            }
+          ]
+        },
+        {
+          "title": "Construction.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construction de la somme : la règle du triangle (ou règle de la chaîne)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant qu'additionner deux vecteurs, c'est les mettre bout à bout. La construction graphique de cette addition s'appelle la règle du triangle. Donnons-nous deux vecteurs $\\vec{u}$ et $\\vec{v}$ représentés par des flèches. Pour construire $\\vec{u}+\\vec{v}$, on place l'origine de $\\vec{v}$ à l'extrémité de $\\vec{u}$. Le vecteur somme est alors la flèche qui part de l'origine de $\\vec{u}$ et arrive à l'extrémité de $\\vec{v}$. C'est exactement la relation de Chasles : si $\\vec{u} = \\overrightarrow{AB}$ et $\\vec{v} = \\overrightarrow{BC}$, alors $\\vec{u}+\\vec{v} = \\overrightarrow{AC}$. Cette construction ne dépend pas de l'emplacement initial des vecteurs : on peut transporter $\\vec{v}$ par translation pour que son origine coïncide avec l'extrémité de $\\vec{u}$. Le vecteur obtenu a une direction, un sens et une norme qui sont le résultat géométrique de la composition des deux déplacements."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": 1,
+              "vx": 1,
+              "vy": 2,
+              "caption": "Règle du triangle : placez l'origine de $\\vec{v}$ à l'extrémité de $\\vec{u}$, la somme est le vecteur rouge."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez bien la figure interactive ci-dessus. Vous pouvez déplacer les vecteurs $\\vec{u}$ et $\\vec{v}$ (en bleu et vert) et voir comment leur somme (en rouge) change. Notez que l'ordre n'a pas d'importance pour le résultat final : si vous placez $\\vec{u}$ au bout de $\\vec{v}$, vous obtenez le même vecteur somme. C'est la commutativité de l'addition, que nous vérifierons par calcul plus tard. Pour l'instant, retenez la procédure : 1) Dessinez le premier vecteur. 2) À son extrémité, dessinez le second vecteur (même direction, même sens, même longueur). 3) Reliez l'origine du premier à l'extrémité du second : c'est la somme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier vecteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez l'origine et l'extrémité de $\\vec{u}$. Tracez la flèche correspondante avec une règle et un compas si nécessaire pour respecter la longueur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transporter le second vecteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'extrémité de $\\vec{u}$, construisez un vecteur équivalent à $\\vec{v}$ (même direction, même sens, même norme). Utilisez le parallélisme et le report de longueur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reliez l'origine de $\\vec{u}$ à l'extrémité du $\\vec{v}$ transporté. Cette flèche représente $\\vec{u}+\\vec{v}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construction de la somme : la règle du parallélogramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une deuxième méthode graphique, tout aussi valable, pour additionner deux vecteurs : la règle du parallélogramme. Cette fois, on place les deux vecteurs $\\vec{u}$ et $\\vec{v}$ de manière qu'ils aient la même origine (on les met « queue à queue »). On construit ensuite le parallélogramme qui a $\\vec{u}$ et $\\vec{v}$ comme deux côtés adjacents. La diagonale de ce parallélogramme qui part de l'origine commune représente la somme $\\vec{u}+\\vec{v}$. Pourquoi cela fonctionne-t-il ? Parce que dans un parallélogramme, les côtés opposés sont parallèles et de même longueur. Le vecteur $\\vec{v}$ transporté à l'extrémité de $\\vec{u}$ coïncide exactement avec le côté opposé. La diagonale est donc le même vecteur que celui obtenu par la règle du triangle. Les deux constructions sont équivalentes ; choisissez celle qui vous semble la plus commode selon la figure."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}+\\vec{v} = \\text{diagonale du parallélogramme construit sur } \\vec{u} \\text{ et } \\vec{v} \\text{ (même origine)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Soient $\\vec{u}$ horizontal vers la droite, de longueur $4\\,cm$, et $\\vec{v}$ à $60^\\circ$ vers le haut, de longueur $3\\,cm$. Pour la règle du parallélogramme : tracez $\\vec{u}$ et $\\vec{v}$ partir du même point $O$. À l'extrémité de $\\vec{u}$, tracez une parallèle à $\\vec{v}$ de même longueur. À l'extrémité de $\\vec{v}$, tracez une parallèle à $\\vec{u}$ de même longueur. Les deux parallèles se coupent en un point $S$. Le vecteur $\\overrightarrow{OS}$ est la somme. Pour la règle du triangle : tracez $\\vec{u}$ depuis $O$, puis depuis son extrémité tracez $\\vec{v}$. Le vecteur de $O$ à l'extrémité finale est le même $\\overrightarrow{OS}$. Vous voyez que les deux méthodes donnent exactement le même résultat, ce qui confirme la cohérence géométrique de l'addition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Somme de trois vecteurs ou plus : construction itérative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour additionner trois vecteurs $\\vec{u}, \\vec{v}, \\vec{w}$, on procède par étapes successives. On commence par construire $\\vec{u}+\\vec{v}$ (par triangle ou parallélogramme), ce qui donne un vecteur intermédiaire $\\vec{s}$. Ensuite, on additionne $\\vec{s}$ et $\\vec{w}$ par la même méthode. Graphiquement, cela revient à placer les trois vecteurs bout à bout : origine de $\\vec{v}$ à l'extrémité de $\\vec{u}$, origine de $\\vec{w}$ à l'extrémité de $\\vec{v}$. Le vecteur somme final relie l'origine de $\\vec{u}$ à l'extrémité de $\\vec{w}$. C'est l'extension naturelle de la relation de Chasles à la construction. On peut aussi utiliser le parallélogramme de manière itérative : sommer $\\vec{u}$ et $\\vec{v}$ par parallélogramme, puis sommer le résultat à $\\vec{w}$ par un autre parallélogramme. Le résultat est indépendant de l'ordre des additions (associativité), mais la construction graphique la plus simple reste la chaîne de triangles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire $\\vec{u}+\\vec{v}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la règle du triangle : placez $\\vec{v}$ au bout de $\\vec{u}$, tracez la somme partielle $\\vec{s}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter $\\vec{w}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Placez l'origine de $\\vec{w}$ à l'extrémité de $\\vec{s}$. La somme totale relie l'origine de $\\vec{u}$ à l'extrémité de $\\vec{w}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vous pouvez changer l'ordre des vecteurs (commuter, associer différemment) : le vecteur final obtenu aura même origine, même direction, même sens, même norme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant construire graphiquement la somme de deux ou plusieurs vecteurs, que ce soit par la règle du triangle ou par la règle du parallélogramme. Ces méthodes géométriques sont précieuses pour visualiser, mais elles manquent de précision numérique. Dans la prochaine leçon, nous passerons au calcul algébrique des sommes grâce aux coordonnées, ce qui vous donnera une exactitude parfaite et ouvrira la voie à la résolution de problèmes plus complexes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne deux vecteurs $\\vec{u}$ et $\\vec{v}$ non nuls et non colinéaires. Décrivez la construction de $\\vec{u}+\\vec{v}$ par la règle du parallélogramme.",
+              "answer": "On place $\\vec{u}$ et $\\vec{v}$ avec la même origine $O$. On trace la parallèle à $\\vec{v}$ passant par l'extrémité de $\\vec{u}$, et la parallèle à $\\vec{u}$ passant par l'extrémité de $\\vec{v}$. Ces deux droites se coupent en $S$. Le vecteur $\\overrightarrow{OS}$ est la somme $\\vec{u}+\\vec{v}$.",
+              "hint": "Rappelez-vous les propriétés du parallélogramme : côtés opposés parallèles et de même longueur.",
+              "explanation": "La construction du parallélogramme utilise le fait que le vecteur $\\vec{v}$ transporté à l'extrémité de $\\vec{u}$ coïncide avec le côté opposé. La diagonale issue de l'origine commune est donc le vecteur somme, exactement comme dans la règle du triangle."
+            },
+            {
+              "question": "Soient $\\vec{a}$ horizontal vers la droite ($2\\,cm$) et $\\vec{b}$ vertical vers le haut ($3\\,cm$). Construisez $\\vec{a}+\\vec{b}$ par la règle du triangle. Quelles sont les coordonnées approximatives de la somme si l'origine est $(0,0)$ ?",
+              "answer": "Le vecteur somme a pour coordonnées $(2,3)$.",
+              "hint": "Placez $\\vec{b}$ au bout de $\\vec{a}$ ; l'extrémité finale a pour abscisse $2$ et ordonnée $3$.",
+              "explanation": "Par construction, $\\vec{a}$ mène de $(0,0)$ à $(2,0)$. $\\vec{b}$ placé au bout mène de $(2,0)$ à $(2,3)$. Le vecteur somme relie $(0,0)$ à $(2,3)$, donc ses coordonnées sont $(2,3)$."
+            },
+            {
+              "question": "On a trois vecteurs $\\vec{u}, \\vec{v}, \\vec{w}$. Expliquez comment construire $\\vec{u}+\\vec{v}+\\vec{w}$ par la méthode de la chaîne (règle du triangle itérée).",
+              "answer": "On trace $\\vec{u}$, puis on place l'origine de $\\vec{v}$ à l'extrémité de $\\vec{u}$, puis l'origine de $\\vec{w}$ à l'extrémité de $\\vec{v}$. Le vecteur qui relie l'origine de $\\vec{u}$ à l'extrémité de $\\vec{w}$ est la somme $\\vec{u}+\\vec{v}+\\vec{w}$.",
+              "hint": "Prolongez l'idée du triangle à trois vecteurs en les mettant bout à bout.",
+              "explanation": "C'est l'application directe de la relation de Chasles généralisée : $\\overrightarrow{AB}+\\overrightarrow{BC}+\\overrightarrow{CD} = \\overrightarrow{AD}$. Ici $A$ est l'origine de $\\vec{u}$, $B$ l'extrémité de $\\vec{u}$ (origine de $\\vec{v}$), $C$ l'extrémité de $\\vec{v}$ (origine de $\\vec{w}$), $D$ l'extrémité de $\\vec{w}$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de la somme par les coordonnées : définition et première propriété"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons manipulé les vecteurs de façon géométrique : construction à la règle et au compas, relation de Chasles. Pour passer au calcul exact, nous avons besoin d'un repère orthonormé du plan (ou simplement d'un repère affine). Dans un tel repère, tout vecteur $\\vec{u}$ est entièrement déterminé par ses coordonnées $(x,y)$, qui sont les nombres mesurant son déplacement horizontal et vertical. Si $\\vec{u}$ a pour coordonnées $(x_1, y_1)$ et $\\vec{v}$ pour coordonnées $(x_2, y_2)$, alors la somme $\\vec{u}+\\vec{v}$ a pour coordonnées $(x_1+x_2,\\, y_1+y_2)$. C'est une définition fondamentale : l'addition des vecteurs se fait composante par composante. Cette règle est valable dans tout repère affine, pas seulement orthonormé. Elle transforme une opération géométrique en une simple addition de nombres, ce qui est d'une puissance immense pour résoudre des problèmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\vec{u}(x_1,y_1) \\text{ et } \\vec{v}(x_2,y_2), \\text{ alors } \\vec{u}+\\vec{v}(x_1+x_2,\\, y_1+y_2)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple numérique simple. Soit $\\vec{u}(3,-2)$ et $\\vec{v}(-1,5)$. Leurs coordonnées s'additionnent : $3+(-1)=2$ pour l'abscisse, $-2+5=3$ pour l'ordonnée. Donc $\\vec{u}+\\vec{v} = (2,3)$. Vérifions géométriquement : $\\vec{u}$ va $3$ à droite et $2$ en bas ; $\\vec{v}$ va $1$ à gauche et $5$ en haut. Le bilan horizontal est $3-1=2$ à droite, le bilan vertical est $-2+5=3$ en haut. Le résultat coïncide. Cette méthode par coordonnées est non seulement exacte, mais elle permet aussi de traiter des sommes de nombreux vecteurs sans aucune construction graphique. C'est l'outil principal que vous utiliserez en classe de seconde et au-delà."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés algébriques de l'addition : commutativité, associativité, neutre, opposé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce aux coordonnées, nous pouvons démontrer rigoureusement les propriétés algébriques de l'addition vectorielle, qui sont les mêmes que celles de l'addition des nombres réels, mais composante par composante. La commutativité : $\\vec{u}+\\vec{v} = \\vec{v}+\\vec{u}$ car $x_1+x_2 = x_2+x_1$ et $y_1+y_2 = y_2+y_1$. L'associativité : $(\\vec{u}+\\vec{v})+\\vec{w} = \\vec{u}+(\\vec{v}+\\vec{w})$ car l'addition des réels est associative. L'élément neutre : le vecteur nul $\\vec{0}(0,0)$ tel que $\\vec{u}+\\vec{0} = \\vec{u}$. L'opposé : pour $\\vec{u}(x,y)$, son opposé est $-\\vec{u}(-x,-y)$ et $\\vec{u}+(-\\vec{u}) = \\vec{0}$. Ces propriétés font de l'ensemble des vecteurs du plan un groupe abélien (ou espace vectoriel sur $\\mathbb{R}$ quand on ajoute la multiplication par un scalaire). Elles justifient pourquoi on peut réorganiser les termes d'une somme vectorielle sans changer le résultat, exactement comme pour des nombres."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}+\\vec{v} = \\vec{v}+\\vec{u} \\quad (\\vec{u}+\\vec{v})+\\vec{w} = \\vec{u}+(\\vec{v}+\\vec{w}) \\quad \\vec{u}+\\vec{0} = \\vec{u} \\quad \\vec{u}+(-\\vec{u}) = \\vec{0}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple à trois vecteurs : $\\vec{a}(2,1)$, $\\vec{b}(-3,4)$, $\\vec{c}(1,-2)$. Calculons $(\\vec{a}+\\vec{b})+\\vec{c}$ : $\\vec{a}+\\vec{b} = (-1,5)$, puis $(-1,5)+(1,-2) = (0,3)$. Maintenant $\\vec{a}+(\\vec{b}+\\vec{c})$ : $\\vec{b}+\\vec{c} = (-2,2)$, puis $(2,1)+(-2,2) = (0,3)$. Même résultat. Pour la commutativité : $\\vec{a}+\\vec{b} = (-1,5)$ et $\\vec{b}+\\vec{a} = (-1,5)$. Ces vérifications numériques vous rassurent sur la validité des manipulations littérales que vous ferez par la suite. Vous pouvez désormais écrire des égalités vectorielles et les simplifier en utilisant ces propriétés, exactement comme en algèbre classique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : milieu, centre de gravité, et résolution de problèmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le calcul vectoriel par coordonnées devient un outil de résolution de problèmes géométriques. Prenons le cas classique du milieu $I$ d'un segment $[AB]$. On sait que $\\overrightarrow{AI} = \\frac{1}{2}\\overrightarrow{AB}$. En coordonnées, si $A(x_A,y_A)$ et $B(x_B,y_B)$, alors $\\overrightarrow{AB}(x_B-x_A,\\, y_B-y_A)$ et $\\overrightarrow{AI}(\\frac{x_B-x_A}{2},\\, \\frac{y_B-y_A}{2})$. Les coordonnées de $I$ sont donc $x_I = x_A + \\frac{x_B-x_A}{2} = \\frac{x_A+x_B}{2}$ et $y_I = \\frac{y_A+y_B}{2}$. C'est la formule du milieu, obtenue purement par calcul vectoriel. De même, le centre de gravité $G$ d'un triangle $ABC$ vérifie $\\overrightarrow{AG} = \\frac{1}{3}(\\overrightarrow{AB}+\\overrightarrow{AC})$. En coordonnées, $G(\\frac{x_A+x_B+x_C}{3},\\, \\frac{y_A+y_B+y_C}{3})$. Ces formules, que vous connaissez peut-être déjà, trouvent ici leur démonstration naturelle dans le cadre du calcul vectoriel. Vous voyez que la somme de vecteurs, combinée à la multiplication par un scalaire (que nous verrons plus tard), permet de déterminer des points remarquables sans aucune construction graphique."
+            },
+            {
+              "type": "display_math",
+              "latex": "I\\left(\\frac{x_A+x_B}{2},\\frac{y_A+y_B}{2}\\right) \\quad G\\left(\\frac{x_A+x_B+x_C}{3},\\frac{y_A+y_B+y_C}{3}\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un problème synthétique. Soit un quadrilatère $ABCD$. On note $E$ le milieu de $[AB]$, $F$ le milieu de $[BC]$, $G$ le milieu de $[CD]$, $H$ le milieu de $[DA]$. Montrons que $EFGH$ est un parallélogramme. En vecteurs : $\\overrightarrow{EF} = \\overrightarrow{EB} + \\overrightarrow{BF} = \\frac{1}{2}\\overrightarrow{AB} + \\frac{1}{2}\\overrightarrow{BC} = \\frac{1}{2}(\\overrightarrow{AB}+\\overrightarrow{BC}) = \\frac{1}{2}\\overrightarrow{AC}$. De même, $\\overrightarrow{HG} = \\overrightarrow{HD} + \\overrightarrow{DG} = \\frac{1}{2}\\overrightarrow{AD} + \\frac{1}{2}\\overrightarrow{DC} = \\frac{1}{2}(\\overrightarrow{AD}+\\overrightarrow{DC}) = \\frac{1}{2}\\overrightarrow{AC}$. Donc $\\overrightarrow{EF} = \\overrightarrow{HG}$, ce qui prouve que $EFGH$ est un parallélogramme (côtés opposés égaux et parallèles). Cette démonstration élégante montre la puissance du calcul vectoriel : on a réduit une propriété géométrique à une égalité de sommes de vecteurs, puis à une égalité de coordonnées si on veut. Vous avez maintenant toutes les clés pour aborder sereinement les exercices de ce chapitre et ceux des chapitres suivants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer et appliquer la relation de Chasles pour trois points et pour une chaîne de vecteurs.",
+                "Je sais simplifier une expression vectorielle en utilisant Chasles et le vecteur opposé.",
+                "Je sais construire la somme de deux vecteurs par la règle du triangle et par la règle du parallélogramme.",
+                "Je sais calculer les coordonnées de la somme de deux vecteurs donnés par leurs coordonnées.",
+                "Je connais les propriétés algébriques de l'addition : commutativité, associativité, neutre, opposé.",
+                "Je sais utiliser le calcul vectoriel pour déterminer les coordonnées d'un milieu ou d'un centre de gravité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez les coordonnées de $\\vec{u}+\\vec{v}$ si $\\vec{u}(4,-3)$ et $\\vec{v}(-2,7)$.",
+              "answer": "(2,4)",
+              "hint": "Additionnez les abscisses entre elles et les ordonnées entre elles.",
+              "explanation": "$4+(-2)=2$ pour l'abscisse, $-3+7=4$ pour l'ordonnée. Donc $\\vec{u}+\\vec{v}(2,4)$."
+            },
+            {
+              "question": "Vérifiez la commutativité pour $\\vec{a}(-1,2)$ et $\\vec{b}(3,-5)$ en calculant $\\vec{a}+\\vec{b}$ et $\\vec{b}+\\vec{a}$.",
+              "answer": "Les deux sommes donnent $(2,-3)$.",
+              "hint": "Calculez les deux sommes composante par composante.",
+              "explanation": "$\\vec{a}+\\vec{b} = (-1+3,\\, 2+(-5)) = (2,-3)$. $\\vec{b}+\\vec{a} = (3+(-1),\\, -5+2) = (2,-3)$. Elles sont égales, ce qui illustre la commutativité."
+            },
+            {
+              "question": "Soit un triangle $A(1,2)$, $B(5,4)$, $C(3,8)$. Calculez les coordonnées du centre de gravité $G$ de ce triangle.",
+              "answer": "G(3, 14/3) ou environ G(3, 4,67)",
+              "hint": "Utilisez la formule $G\\left(\\frac{x_A+x_B+x_C}{3},\\frac{y_A+y_B+y_C}{3}\\right)$.",
+              "explanation": "$x_G = \\frac{1+5+3}{3} = \\frac{9}{3}=3$. $y_G = \\frac{2+4+8}{3} = \\frac{14}{3}$. Donc $G(3,\\frac{14}{3})$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

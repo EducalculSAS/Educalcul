@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Configuration",
+  "title": "Quiz Thalès : Approfondissement Configuration",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, la droite $DE$ est parallèle à $BC$ avec $D$ sur $AB$ et $E$ sur $AC$. Quelle égalité de proportions exprime le théorème de Thalès pour les segments issus du sommet $A$ ?",
+      "options": [
+        "$\\frac{AD}{AB} = \\frac{AE}{AC}$",
+        "$\\frac{AD}{DB} = \\frac{AE}{EC}$",
+        "$\\frac{AB}{AD} = \\frac{AC}{AE}$",
+        "$\\frac{AD}{AE} = \\frac{DB}{EC}$"
+      ],
+      "correctAnswer": "$\\frac{AD}{AB} = \\frac{AE}{AC}$",
+      "explanation": "Le théorème de Thalès affirme que dans un triangle, une droite parallèle à un côté coupe les deux autres côtés en segments proportionnels aux côtés entiers. Ici, les segments issus du sommet $A$ sont $AD$ sur $AB$ et $AE$ sur $AC$, donc $\\frac{AD}{AB} = \\frac{AE}{AC}$. Les autres égalités correspondent soit à la forme avec les parties internes ($\\frac{AD}{DB} = \\frac{AE}{EC}$) qui est aussi vraie mais ne relie pas les segments issus du sommet, soit à des inverses ou des mélanges incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le même triangle $ABC$, on a $AD = 3$, $DB = 2$ et $AE = 4,5$. La droite $DE$ est parallèle à $BC$. Calcule la longueur $EC$.",
+      "options": [
+        "$3$",
+        "$2,5$",
+        "$4$",
+        "$6$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Puisque $DE \\parallel BC$, le théorème de Thalès donne $\\frac{AD}{DB} = \\frac{AE}{EC}$. En remplaçant : $\\frac{3}{2} = \\frac{4,5}{EC}$. On obtient $EC = \\frac{4,5 \\times 2}{3} = 3$. Les autres valeurs ne satisfont pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux droites sécantes se coupent en $O$. Sur l'une, on a les points $A$ et $B$ (dans cet ordre) et sur l'autre $C$ et $D$. Si $OA = 4$, $OB = 6$ et $OC = 5$, quelle est la longueur $OD$ pour que les triangles $OAC$ et $OBD$ soient semblables par Thalès ?",
+      "options": [
+        "$7,5$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$7,5$",
+      "explanation": "La configuration de Thalès pour deux sécantes impose $\\frac{OA}{OB} = \\frac{OC}{OD}$. Donc $\\frac{4}{6} = \\frac{5}{OD}$, ce qui donne $OD = \\frac{5 \\times 6}{4} = 7,5$. Les autres longueurs ne respectent pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, une droite $DE$ coupe $AB$ en $D$ et $AC$ en $E$ mais n'est pas parallèle à $BC$. Laquelle des affirmations suivantes est fausse ?",
+      "options": [
+        "Les triangles $ADE$ et $ABC$ ne sont pas nécessairement semblables.",
+        "On a toujours $\\frac{AD}{AB} = \\frac{AE}{AC}$.",
+        "Les angles $\\angle ADE$ et $\\angle ABC$ ne sont pas égaux.",
+        "La relation $\\frac{AD}{DB} = \\frac{AE}{EC}$ n'est pas garantie."
+      ],
+      "correctAnswer": "On a toujours $\\frac{AD}{AB} = \\frac{AE}{AC}$.",
+      "explanation": "Le théorème de Thalès ne s'applique que si $DE \\parallel BC$. Sans parallélisme, les triangles $ADE$ et $ABC$ ne sont pas semblables, les angles correspondants ne sont pas égaux et les proportions ne sont pas assurées. L'affirmation \"On a toujours $\\frac{AD}{AB} = \\frac{AE}{AC}$\" prétend une proportion universelle, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considère la figure où deux triangles $ABC$ et $A'B'C'$ partagent le même angle en $A$ et les droites $BC$ et $B'C'$ sont parallèles. On sait $AB = 8$, $AC = 12$, $AB' = 6$. Quelle est la longueur $AC'$ ?",
+      "options": [
+        "$9$",
+        "$8$",
+        "$10$",
+        "$11$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Comme $BC \\parallel B'C'$ et que l'angle en $A$ est commun, les triangles sont semblables par Thalès. On a $\\frac{AB}{AB'} = \\frac{AC}{AC'}$, soit $\\frac{8}{6} = \\frac{12}{AC'}$. Donc $AC' = \\frac{12 \\times 6}{8} = 9$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

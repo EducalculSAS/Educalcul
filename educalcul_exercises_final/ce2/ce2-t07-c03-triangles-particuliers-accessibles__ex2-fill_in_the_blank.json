@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 198,
+  "_course_code": "ce2-t07-c03-triangles-particuliers-accessibles",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Isocèle par observation",
+  "title": "Reconnaître un triangle isocèle par observation",
+  "blocks": [
+    {
+      "title": "Définition par l'observation",
+      "content": "Un triangle isocèle est un triangle qui a {{1}} de {{2}}.",
+      "blanks": [
+        "deux côtés|2 côtés",
+        "la même longueur|même longueur|même mesure"
+      ],
+      "explanation": "Par définition, un triangle isocèle possède au moins deux côtés de même longueur. On le repère visuellement grâce aux petits traits (repères) placés sur les côtés concernés.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle isocèle avec repères sur deux côtés",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "title": "Identifier les côtés égaux",
+      "content": "Observe le triangle $ABC$. Les côtés {{1}} et {{2}} portent le même repère. Ils ont donc la même longueur.",
+      "blanks": [
+        "AB|AC",
+        "AC|AB"
+      ],
+      "explanation": "Sur la figure, les côtés $AB$ et $AC$ sont marqués d'un petit trait unique. Cela signifie qu'ils ont la même longueur. Le triangle $ABC$ est donc isocèle en $A$.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "title": "Conclure sur la nature du triangle",
+      "content": "Dans le triangle $DEF$, les côtés {{1}} et {{2}} ont la même longueur. Ce triangle est donc {{3}}.",
+      "blanks": [
+        "DE|DF",
+        "DF|DE",
+        "isocèle"
+      ],
+      "explanation": "Si un triangle a deux côtés de même longueur (ici $DE$ et $DF$ repérés par le même symbole), c'est un triangle isocèle. Le sommet commun aux deux côtés égaux ($D$) est appelé le sommet principal.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF isocèle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

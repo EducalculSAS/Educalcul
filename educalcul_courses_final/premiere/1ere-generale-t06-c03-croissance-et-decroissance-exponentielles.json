@@ -1,0 +1,418 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.260356+00:00",
+  "id": 568,
+  "code": "1ere-generale-t06-c03",
+  "title": "Croissance et décroissance exponentielles",
+  "description": "Cours structuré Educalcul : Croissance et décroissance exponentielles.",
+  "subject": "Variation exponentielle",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Variation exponentielle",
+    "titre_du_cours": "Croissance et décroissance exponentielles",
+    "objectif_global": "Croissance et décroissance exponentielles",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Lire graphe.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Variation exponentielle",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une variation exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu observes une population de bactéries qui double toutes les heures. Au début, tu as $100$ individus, une heure plus tard $200$, puis $400$, $800$ et ainsi de suite. Ce qui frappe, ce n'est pas seulement l'augmentation rapide, mais le fait que le rapport entre deux valeurs successives reste constant : ici, il vaut $2$. C'est la signature d'une variation exponentielle. Dans ce cours, nous allons apprendre à repérer cette régularité, que la quantité croisse ou qu'elle décroisse, et à l'exprimer avec une formule simple."
+            },
+            {
+              "type": "definition",
+              "term": "Variation exponentielle",
+              "definition": "Une grandeur varie de façon exponentielle lorsque son taux de variation relatif est constant au cours du temps. Autrement dit, le rapport entre deux valeurs successives séparées d'un même intervalle de temps ne change pas.",
+              "example": "Si une somme d'argent rapporte $5\\%$ par an, le montant est multiplié par $1,05$ chaque année : c'est une croissance exponentielle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mathématiquement, cette propriété se traduit par une fonction de la forme $y = a \\, e^{k t}$ ou, équivalentement, $y = a \\, b^{x}$ avec $b > 0$ et $b \\neq 1$. Le coefficient $a$ correspond à la valeur initiale (au temps $t = 0$ ou $x = 0$). Le paramètre $k$ (ou $\\ln b$) est le taux de variation continu : s'il est positif, la fonction croît ; s'il est négatif, elle décroît. La base $b$ est le facteur de multiplication pour une augmentation d'une unité de la variable $x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la variable indépendante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la variable qui joue le rôle du temps ou du nombre d'étapes (souvent notée $t$ ou $x$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les rapports successifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une suite de valeurs $y_0, y_1, y_2, \\dots$ associées à des pas égaux de la variable, calcule $y_{1}/y_{0}, \\, y_{2}/y_{1}, \\, y_{3}/y_{2}$. Si tous ces rapports sont égaux (à une approximation près), la variation est exponentielle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déduire les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le rapport commun donne le facteur $b$ (ou $e^{k}$). La première valeur donne $a$. Tu peux alors écrire la formule explicite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "y = a \\, e^{k t} \\quad \\text{ou} \\quad y = a \\, b^{x}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Une culture de levure commence avec $50$ mg et sa masse est multipliée par $1,3$ chaque jour. Après $0$ jour : $50$ mg. Après $1$ jour : $50 \\times 1,3 = 65$ mg. Après $2$ jours : $65 \\times 1,3 = 84,5$ mg. Les rapports $65/50 = 1,3$ et $84,5/65 = 1,3$ sont constants, donc la masse suit une croissance exponentielle de formule $m(t) = 50 \\times 1,3^{t}$ avec $t$ en jours."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer le rapport constant, regardons comment distinguer visuellement une croissance d'une décroissance sur un graphique."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -2,
+              "xmax": 3,
+              "caption": "Graphique d'une croissance exponentielle $y = e^{x}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, la courbe s'élève de plus en plus vite à mesure que $x$ augmente. Si le facteur $b$ est compris entre $0$ et $1$, la courbe descend en se rapprochant de l'axe des abscisses sans jamais le toucher : c'est une décroissance exponentielle. L'axe des abscisses est une asymptote horizontale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, entraînes-toi à reconnaître une variation exponentielle à partir d'un tableau de valeurs numériques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le tableau ci-dessous donne la valeur d'un capital placé à intérêts composés. Détermine si la variation est exponentielle et, le cas échéant, donne la formule $C(t) = a \\, b^{t}$.\\n\\n$t$ (années) : $0$, $1$, $2$, $3$\\n$C$ (euros) : $1000$, $1050$, $1102,5$, $1157,625$",
+              "answer": "Oui, variation exponentielle. $a = 1000$, $b = 1,05$. Formule : $C(t) = 1000 \\times 1,05^{t}$.",
+              "hint": "Calcule les rapports $C(1)/C(0)$, $C(2)/C(1)$, $C(3)/C(2)$.",
+              "explanation": "Les trois rapports valent $1,05$, ils sont constants. La valeur initiale est $1000$. Donc $b = 1,05$ et $a = 1000$."
+            },
+            {
+              "question": "Parmi les deux courbes ci-dessous, laquelle correspond à une décroissance exponentielle ? Justifie ta réponse en utilisant la notion d'asymptote.\\n\\nCourbe A : $y = 2^{x}$\\nCourbe B : $y = (1/2)^{x}$",
+              "answer": "La courbe B correspond à une décroissance exponentielle.",
+              "hint": "Regarde la base de l'exponentielle : si elle est entre $0$ et $1$, la fonction décroît.",
+              "explanation": "Pour la courbe A, la base $2 > 1$ donc la fonction croît. Pour la courbe B, la base $1/2$ est comprise entre $0$ et $1$, la fonction décroît et admet l'axe des abscisses comme asymptote horizontale."
+            },
+            {
+              "question": "Un chimiste mesure la concentration d'un réactif toutes les minutes : $80$, $64$, $51,2$, $40,96$ (en mmol/L). La variation est-elle exponentielle ? Si oui, donne le facteur de multiplication par minute.",
+              "answer": "Oui, variation exponentielle. Facteur $b = 0,8$.",
+              "hint": "Divise chaque valeur par la précédente.",
+              "explanation": "Les rapports $64/80 = 0,8$, $51,2/64 = 0,8$, $40,96/51,2 = 0,8$ sont constants. Le facteur de multiplication est $0,8$ (décroissance de $20\\%$ par minute)."
+            }
+          ]
+        },
+        {
+          "title": "Lire graphe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un graphe exponentiel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un graphique est souvent le premier outil dont on dispose pour comprendre une situation réelle : évolution d'une population, décroissance radioactive, croissance d'un investissement. Savoir extraire les paramètres clés d'une courbe exponentielle te permet de passer de l'image à la formule, et donc de faire des prévisions précises. Dans cette leçon, nous allons détailler pas à pas la lecture d'un tel graphique."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur initiale",
+              "definition": "C'est la valeur de la fonction pour $x = 0$ (ou $t = 0$). Sur le graphique, c'est l'ordonnée du point d'intersection avec l'axe des ordonnées.",
+              "example": "Sur $y = 200 \\times 1,04^{x}$, la valeur initiale est $200$."
+            },
+            {
+              "type": "definition",
+              "term": "Facteur de croissance (ou de décroissance)",
+              "definition": "C'est le multiplicateur appliqué à la grandeur lorsque la variable augmente d'une unité. Sur le graphique, il se lit en comparant les ordonnées de deux points dont les abscisses diffèrent de $1$.",
+              "example": "Si le point $(1, 208)$ et le point $(0, 200)$ appartiennent à la courbe, le facteur est $208/200 = 1,04$."
+            },
+            {
+              "type": "definition",
+              "term": "Asymptote horizontale",
+              "definition": "Droite que la courbe approche indéfiniment sans jamais la croiser. Pour une exponentielle de la forme $y = a b^{x}$ avec $a>0$, l'asymptote est l'axe des abscisses ($y=0$) si $b>0$.",
+              "example": "La courbe $y = 50 \\times 0,7^{x}$ a pour asymptote l'axe $y=0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'ordonnée à l'origine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Localise le point où la courbe coupe l'axe des ordonnées. Son ordonnée est la valeur initiale $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir deux points d'abscisses consécutives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends par exemple les points d'abscisses $x=0$ et $x=1$, ou $x=2$ et $x=3$. Lis leurs ordonnées $y_0$ et $y_1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le facteur $b$ vaut $y_1 / y_0$. Si $b>1$, c'est une croissance ; si $0<b<1$, c'est une décroissance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec $a$ et $b$ connus, la fonction est $y = a \\, b^{x}$ (ou $y = a \\, e^{k x}$ avec $k = \\ln b$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "200*exp(0.0392*x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Exemple de courbe exponentielle $y = 200 \\, e^{0,0392 x}$ (croissance d'environ $4\\%$ par unité)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, le point $(0, 200)$ donne directement la valeur initiale. Le point $(1, 208)$ (environ) permet de calculer le facteur $208/200 = 1,04$. La courbe s'éloigne de l'axe des abscisses vers le haut, confirmant une croissance. L'asymptote $y=0$ est visible en bas à gauche."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le graphique ne passe pas par des abscisses entières pratiques. Il faut alors utiliser deux points quelconques dont on connaît les coordonnées approximatives."
+            },
+            {
+              "type": "display_math",
+              "latex": "b = \\left(\\frac{y_2}{y_1}\\right)^{\\frac{1}{x_2 - x_1}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule généralise le calcul du facteur : on prend le rapport des ordonnées et on en extrait la racine d'ordre égal à la différence des abscisses. Elle fonctionne aussi bien pour la croissance que pour la décroissance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il arrive qu'on doive estimer la valeur initiale quand le graphique ne montre pas l'axe des ordonnées. On utilise alors la formule obtenue pour remonter à $x=0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le graphique ci-dessous représente l'évolution d'une population bactérienne. On lit les points $(0, 150)$ et $(2, 240)$. Détermine la formule de la fonction sous la forme $P(t) = a \\, b^{t}$.",
+              "answer": "$a = 150$, $b = \\sqrt{240/150} = \\sqrt{1,6} \\approx 1,265$. Formule : $P(t) = 150 \\times 1,265^{t}$.",
+              "hint": "Utilise la formule $b = (y_2/y_1)^{1/(x_2-x_1)}$ avec $(x_1,y_1)=(0,150)$ et $(x_2,y_2)=(2,240)$.",
+              "explanation": "La valeur initiale est l'ordonnée du point d'abscisse $0$, soit $150$. Le facteur sur deux unités de temps est $240/150 = 1,6$. Le facteur par unité de temps est la racine carrée de $1,6$, environ $1,265$."
+            },
+            {
+              "question": "Une courbe exponentielle passe par les points $(1, 80)$ et $(4, 20)$. Sans tracer le graphique, décide s'il s'agit d'une croissance ou d'une décroissance et calcule le facteur $b$.",
+              "answer": "Décroissance. $b = (20/80)^{1/3} = (0,25)^{1/3} \\approx 0,63$.",
+              "hint": "Le rapport $y_2/y_1$ est inférieur à $1$, donc décroissance. Applique la formule du facteur.",
+              "explanation": "Comme $20/80 = 0,25 < 1$, la fonction décroît. La différence d'abscisses est $3$, donc $b = 0,25^{1/3} \\approx 0,63$."
+            },
+            {
+              "question": "Sur un graphique, on ne voit que la partie pour $x \\ge 2$. On lit les points $(2, 500)$ et $(5, 6250)$. Retrouve la valeur initiale $a$ (pour $x=0$).",
+              "answer": "$b = (6250/500)^{1/3} = (12,5)^{1/3} \\approx 2,32$. $a = 500 / b^{2} \\approx 500 / 5,38 \\approx 93$.",
+              "hint": "Calcule d'abord $b$ avec les deux points connus, puis remonte à $x=0$ en divisant par $b^{2}$.",
+              "explanation": "Le facteur sur $3$ unités est $12,5$, donc $b = 12,5^{1/3} \\approx 2,32$. La valeur en $x=2$ vaut $a b^{2} = 500$, d'où $a = 500 / b^{2} \\approx 93$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter une situation exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reconnaître une exponentielle et lire ses paramètres sur un graphique sont des compétences précieuses, mais elles prennent tout leur sens quand on les relie à une situation concrète : croissance démographique, intérêt composé, radioactivité, propagation d'un virus, amortissement d'un bien. Dans cette leçon, nous allons apprendre à traduire les nombres en phrases claires, à calculer des durées caractéristiques comme le temps de doublement ou la demi-vie, et à exprimer le taux de variation en pourcentage."
+            },
+            {
+              "type": "definition",
+              "term": "Temps de doublement",
+              "definition": "Durée nécessaire pour que la quantité double. Pour une croissance $y = a e^{k t}$ avec $k>0$, il vaut $t_{\\text{double}} = \\frac{\\ln 2}{k}$.",
+              "example": "Si $k = 0,07$ par an, le doublement prend $\\ln 2 / 0,07 \\approx 9,9$ ans."
+            },
+            {
+              "type": "definition",
+              "term": "Demi-vie",
+              "definition": "Durée nécessaire pour que la quantité soit divisée par deux. Pour une décroissance $y = a e^{k t}$ avec $k<0$, elle vaut $t_{1/2} = \\frac{\\ln 2}{-k}$.",
+              "example": "Un isotope de demi-vie $5$ ans a $k = -\\ln 2 / 5 \\approx -0,1386$ par an."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine si la situation décrit une croissance (augmentation) ou une décroissance (diminution) et note la formule appropriée $y = a e^{k t}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Extraire les données chiffrées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la valeur initiale $a$, le taux $k$ (ou le facteur $b$), et l'unité de temps utilisée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les grandeurs caractéristiques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si on te demande le temps de doublement, utilise $\\ln 2 / k$. Si on te demande la demi-vie, utilise $\\ln 2 / (-k)$. Pour un taux en pourcentage, rappelle que $k \\approx \\ln(1 + \\tau)$ avec $\\tau$ le taux relatif par unité de temps."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Rédiger l'interprétation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris une phrase complète : « La population double tous les $9,9$ ans » ou « La masse radioactive se divise par deux tous les $5$ ans ». Ajoute le contexte (unité, grandeur)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "t_{\\text{double}} = \\frac{\\ln 2}{k} \\qquad t_{1/2} = \\frac{\\ln 2}{-k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un placement à $3,5\\%$ d'intérêts composés annuels. Le capital suit $C(t) = C_0 \\times 1,035^{t}$. Le taux continu équivalent est $k = \\ln 1,035 \\approx 0,0344$. Le temps de doublement est $\\ln 2 / 0,0344 \\approx 20,1$ ans. On peut donc dire : « À ce taux, le capital double en un peu plus de vingt ans. »"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, les énoncés donnent un pourcentage de variation par période (par an, par mois, par jour). Il faut savoir passer de ce pourcentage au paramètre $k$ ou au facteur $b$."
+            },
+            {
+              "type": "display_math",
+              "latex": "b = 1 + \\frac{\\tau}{100} \\quad \\text{et} \\quad k = \\ln b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, une décroissance de $12\\%$ par an correspond à $b = 0,88$ et $k = \\ln 0,88 \\approx -0,1278$. La demi-vie sera $\\ln 2 / 0,1278 \\approx 5,4$ ans. Cette conversion est indispensable pour comparer des situations dont les unités de temps diffèrent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, modéliser une situation réelle demande de vérifier la pertinence du modèle exponentiel : la hypothèse de taux constant doit être raisonnable sur l'intervalle considéré. Si le contexte change (ressources limitées, saturation), un autre modèle (logistique par exemple) sera plus adapté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une variation exponentielle à partir d'un tableau ou d'une formule.",
+                "Je sais lire la valeur initiale, le facteur et l'asymptote sur un graphique exponentiel.",
+                "Je sais calculer le temps de doublement ou la demi-vie à partir du paramètre $k$.",
+                "Je sais convertir un taux en pourcentage en facteur $b$ et en taux continu $k$.",
+                "Je sais interpréter concrètement les paramètres d'un modèle exponentiel dans une situation réelle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une population de lapins augmente de $8\\%$ par an. Exprime la croissance sous la forme $P(t) = P_0 e^{k t}$, donne $k$ arrondi au millième, et calcule le temps de doublement (arrondi au dixième d'année).",
+              "answer": "$b = 1,08$, $k = \\ln 1,08 \\approx 0,077$, temps de doublement $\\approx \\ln 2 / 0,077 \\approx 9,0$ ans.",
+              "hint": "Convertis le pourcentage en facteur $b$, puis $k = \\ln b$. Utilise $\\ln 2 \\approx 0,693$.",
+              "explanation": "Le facteur annuel est $1,08$. Le taux continu $k = \\ln 1,08 \\approx 0,07696$. Le doublement demande $\\ln 2 / k \\approx 0,693 / 0,07696 \\approx 9,0$ ans."
+            },
+            {
+              "question": "Un médicament est éliminé de l'organisme selon une décroissance exponentielle de demi-vie $6$ heures. Quelle fraction de la dose initiale reste-t-il après $24$ heures ? Donne le résultat en pourcentage arrondi à l'entier.",
+              "answer": "Après $24$ h (4 demi-vies), la fraction restante est $(1/2)^4 = 1/16 = 6,25\\%$, soit $6\\%$ arrondi.",
+              "hint": "Combien de demi-vies dans $24$ heures ? Applique la division par deux à chaque demi-vie.",
+              "explanation": "24 heures correspondent à $24/6 = 4$ demi-vies. À chaque demi-vie la quantité est divisée par deux, donc facteur $(1/2)^4 = 1/16 = 0,0625 = 6,25\\%$."
+            },
+            {
+              "question": "Un investissement de $5000$ euros rapporte $4,2\\%$ par an, intérêts composés. Écrit la formule du capital $C(t)$ après $t$ années. Combien d'années faut-il pour que le capital atteigne au moins $8000$ euros ? (Arrondi à l'année supérieure.)",
+              "answer": "$C(t) = 5000 \\times 1,042^{t}$. Il faut $t \\ge 12$ ans (car $5000 \\times 1,042^{11} \\approx 7950$, $5000 \\times 1,042^{12} \\approx 8280$).",
+              "hint": "Utilise la formule $C(t) = C_0 b^{t}$ avec $b = 1,042$. Teste des valeurs entières de $t$ jusqu'à dépasser $8000$.",
+              "explanation": "Le facteur annuel est $1,042$. On calcule $5000 \\times 1,042^{t}$ pour $t=11,12,...$ jusqu'à dépasser $8000$. Le premier entier qui convient est $12$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

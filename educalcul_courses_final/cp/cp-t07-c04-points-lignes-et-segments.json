@@ -1,0 +1,295 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.662834+00:00",
+  "id": 59,
+  "code": "cp-t07-c04",
+  "title": "Points, lignes et segments",
+  "description": "Cours structuré Educalcul : Points, lignes et segments.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Points, lignes et segments",
+    "objectif_global": "Points, lignes et segments",
+    "mini_lecons_imposees": [
+      "Repérer un point.",
+      "Tracer un segment.",
+      "Distinguer ligne et segment."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Repérer un point.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un point est une toute petite marque que l'on fait avec la pointe du crayon. Il n'a ni largeur ni longueur, seulement une position. On le repère en lui donnant un nom, toujours une lettre majuscule comme $A$ ou $B$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Point $A$ sur la graduation 2",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "A"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons voir comment donner un nom à chaque point pour ne pas les confondre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque point porte une étiquette, une lettre capitale écrite juste à côté. Ainsi, le point $A$ se trouve à la graduation $2$ et le point $B$ à la graduation $4$. Cette étiquette permet de parler du point sans ambiguïté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, nous découvrirons comment trouver facilement la position exacte d'un point sur une droite graduée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la position d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour localiser un point, on part du zéro et on compte les graduations une par une. Si le point $C$ est sur la graduation $5$, on a compté cinq traits depuis le début. C'est ainsi que l'on sait où se trouve le point."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place le point $A$ sur la graduation $2$ de la droite.",
+              "answer": "Le point $A$ se trouve sur la graduation $2$.",
+              "hint": "Compte deux traits à partir de zéro.",
+              "explanation": "On part de zéro et on avance de deux unités pour atteindre la graduation $2$."
+            },
+            {
+              "question": "Quel est le nom du point que tu as placé sur la graduation $4$ ?",
+              "answer": "$B$",
+              "hint": "Regarde la lettre écrite à côté du point.",
+              "explanation": "Chaque point porte une lettre majuscule pour l'identifier."
+            },
+            {
+              "question": "Combien de graduations séparent le point $A$ (graduation $2$) du point $B$ (graduation $5$) ?",
+              "answer": "$3$ graduations.",
+              "hint": "Compte les espaces entre les deux points.",
+              "explanation": "On compte les intervalles : de $2$ à $3$, de $3$ à $4$, de $4$ à $5$, soit trois espaces."
+            }
+          ]
+        },
+        {
+          "title": "Tracer un segment.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un segment est la partie d'une droite qui relie deux points précis, comme un petit bout de chemin. On l'appelle par ses deux extrémités, par exemple $C$ et $D$. Contrairement à une ligne qui continue sans fin, le segment s'arrête exactement à ces deux points."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                1
+              ],
+              "right": [
+                1
+              ],
+              "caption": "Les deux extrémités du segment"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment tracer soigneusement ce segment sur le papier à l'aide d'une règle graduée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer le segment avec une règle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose la règle de façon que le zéro coïncide exactement avec le point $E$. Vérifie que la règle est bien droite. Ensuite, trace un trait droit jusqu'au point $F$ qui se trouve à la graduation $6$. Le trait obtenu est le segment $EF$, bien net et droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mesurons avec attention la longueur du segment que nous venons de tracer ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer la longueur d'un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque graduation sur la règle correspond à un centimètre. Pour connaître la longueur, on compte le nombre d'espaces entre les deux extrémités. Ici, entre la graduation $1$ et la graduation $6$, il y a cinq espaces, donc le segment mesure $5$ centimètres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les deux points qui délimitent le segment montré sur la balance ?",
+              "answer": "Les points $C$ et $D$.",
+              "hint": "Regarde les plateaux de la balance.",
+              "explanation": "Un segment a deux extrémités, ici les deux plateaux représentent ces points."
+            },
+            {
+              "question": "Trace un segment entre les points $E$ (graduation $1$) et $F$ (graduation $6$) sur une droite.",
+              "answer": "Le segment $EF$ relie la graduation $1$ à la graduation $6$.",
+              "hint": "Utilise une règle pour relier les deux points.",
+              "explanation": "On place la règle sur les deux points et on tire un trait droit."
+            },
+            {
+              "question": "Quelle est la longueur du segment $EF$ si chaque graduation vaut $1$ cm ?",
+              "answer": "$5$ cm.",
+              "hint": "Compte le nombre de graduations entre $1$ et $6$.",
+              "explanation": "Il y a cinq intervalles de $1$ cm, donc la longueur est de $5$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer ligne et segment.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distinguer ligne et segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une ligne est un chemin qui n'a pas de fin, elle continue indéfiniment dans les deux directions. On la dessine avec des flèches aux deux bouts pour montrer qu'elle ne s'arrête jamais. Un segment, lui, a un début et une fin bien marqués."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200,
+                500
+              ],
+              "target": 800,
+              "caption": "Une ligne continue comme une suite de pièces"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant comment on écrit ces deux figures avec des symboles mathématiques précis pour les distinguer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les symboles de la ligne et du segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour noter une ligne qui passe par $G$ et $H$, on écrit $GH$ avec une double flèche au-dessus. Pour un segment, on met un trait horizontal au-dessus des deux lettres, comme $\\overline{GH}$. Ces signes permettent de reconnaître tout de suite de quoi il s'agit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, associons chaque situation du quotidien à la bonne figure, qu'il s'agisse d'une ligne ou d'un segment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples du quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le bord d'une table est un segment car il a deux coins. Le chemin d'un avion dans le ciel ressemble à une ligne qui ne s'arrête pas. Le trait que tu fais avec ton crayon sur une feuille est aussi un segment."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un point sur une droite.",
+                "Je sais tracer un segment entre deux points.",
+                "Je sais dire si une figure est une ligne ou un segment."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une ligne a-t-elle une fin ?",
+              "answer": "Non, elle continue sans s'arrêter.",
+              "hint": "Imagine un chemin qui ne s'arrête jamais.",
+              "explanation": "Une ligne est infinie dans les deux directions."
+            },
+            {
+              "question": "Quel symbole utilise-t-on pour noter un segment entre $G$ et $H$ ?",
+              "answer": "$\\overline{GH}$",
+              "hint": "Regarde le trait au-dessus des deux lettres.",
+              "explanation": "Le trait horizontal au-dessus des lettres indique un segment."
+            },
+            {
+              "question": "Dans la liste, coche les situations qui correspondent à un segment : le bord d'une table, le chemin d'un avion, le trait d'un crayon.",
+              "answer": "Le bord d'une table et le trait d'un crayon sont des segments.",
+              "hint": "Un segment a deux extrémités visibles.",
+              "explanation": "Le bord de la table et le trait de crayon ont un début et une fin, contrairement au chemin de l'avion qui continue."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

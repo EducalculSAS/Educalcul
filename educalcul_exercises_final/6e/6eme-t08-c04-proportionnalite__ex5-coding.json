@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Exercices sur la reconnaissance de la proportionnalité",
+  "blocks": [
+    {
+      "title": "Reconnaître une table de proportionnalité",
+      "content": "Le tableau associe à $x = 2$ la valeur $y = 6$, à $x = 5$ la valeur $y = 15$, à $x = 8$ la valeur $y = 24$. Écrire un algorithme en langage naturel ou en pseudo code qui permet de vérifier si les grandeurs $x$ et $y$ sont proportionnelles.",
+      "correctAnswer": "Algorithme :\\n1. Pour chaque ligne du tableau, calculer le quotient $q = y / x$.\\n2. Comparer tous les quotients obtenus.\\n3. Si tous les quotients sont égaux, alors $x$ et $y$ sont proportionnelles ; sinon elles ne le sont pas.\\nIci, les quotients sont $6 / 2 = 3$, $15 / 5 = 3$, $24 / 8 = 3$, tous égaux à $3$, donc c'est une proportionnalité avec coefficient $k = 3$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la proportionnalité en vérifiant que le rapport $y / x$ est constant pour toutes les paires de valeurs. Dans le tableau donné, les trois rapports valent $3$, donc la relation est proportionnelle avec un coefficient de proportionnalité $k = 3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer le coefficient de proportionnalité",
+      "content": "Soit deux couples de valeurs $(3 ; 9)$ et $(7 ; 21)$. Écrire une formule ou un algorithme qui calcule le coefficient de proportionnalité $k$ et qui vérifie si le couple $(10 ; 30)$ appartient à la même proportionnalité.",
+      "correctAnswer": "Formule : $k = y / x$ pour tout couple $(x ; y)$ de la proportionnalité.\\nAlgorithme :\\n1. Calculer $k_1 = 9 / 3 = 3$.\\n2. Calculer $k_2 = 21 / 7 = 3$.\\n3. Si $k_1 = k_2$, alors $k = k_1 = 3$.\\n4. Vérifier le couple $(10 ; 30)$ : calculer $30 / 10 = 3$.\\n5. Comme ce quotient vaut $k$, le couple appartient à la proportionnalité.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient de proportionnalité est le rapport constant $y / x$. On le calcule à partir de deux couples connus ; s'ils donnent le même quotient, la relation est proportionnelle. On vérifie ensuite un troisième couple en testant si son rapport $y / x$ égale ce coefficient.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme de calcul de valeurs proportionnelles",
+      "content": "Écrire un algorithme en pseudo code qui prend en entrée un coefficient $k$ et une liste de nombres $x$, puis affiche la liste des $y$ correspondants pour la relation proportionnelle $y = k × x$.",
+      "correctAnswer": "Algorithme :\\nEntrée : $k$ (nombre), listeX (liste de nombres)\\nSortie : listeY (liste de nombres)\\nDébut\\n  listeY ← liste vide\\n  Pour chaque x dans listeX faire\\n    y ← k × x\\n    ajouter y à la fin de listeY\\n  Fin pour\\n  Afficher listeY\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt chaque valeur $x$ de la liste d'entrée, calcule le produit $k × x$ et stocke le résultat dans une liste de sortie. À la fin, il affiche la liste des $y$. Cela illustre la définition d'une proportionnalité : $y$ est obtenu en multipliant $x$ par le coefficient constant $k$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

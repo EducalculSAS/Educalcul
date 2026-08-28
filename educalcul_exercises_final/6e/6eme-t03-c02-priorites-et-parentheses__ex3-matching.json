@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Justifier",
+  "title": "Justifier les priorités opératoires",
+  "blocks": [
+    {
+      "title": "Identifier la priorité",
+      "content": "Relie chaque calcul à l'opération qui doit être effectuée en premier.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12 + 4 \\times 3$",
+          "right": "La multiplication $4 \\times 3$"
+        },
+        {
+          "left": "$18 - 6 \\div 2$",
+          "right": "La division $6 \\div 2$"
+        },
+        {
+          "left": "$(5 + 2) \\times 4$",
+          "right": "L'addition dans la parenthèse $5 + 2$"
+        },
+        {
+          "left": "$20 \\div 5 + 3$",
+          "right": "La division $20 \\div 5$"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique les règles de priorité : les parenthèses sont prioritaires, puis les multiplications et divisions (dans l'ordre de gauche à droite), enfin les additions et soustractions. Pour $12 + 4 \\times 3$, la multiplication $4 \\times 3$ est prioritaire sur l'addition. Pour $18 - 6 \\div 2$, la division $6 \\div 2$ est prioritaire sur la soustraction. Pour $(5 + 2) \\times 4$, la parenthèse impose de faire $5 + 2$ en premier. Pour $20 \\div 5 + 3$, la division $20 \\div 5$ est prioritaire sur l'addition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire la première ligne de calcul",
+      "content": "Relie chaque expression à sa première ligne de calcul correcte après avoir effectué l'opération prioritaire.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$7 \\times (4 + 2)$",
+          "right": "$7 \\times 6$"
+        },
+        {
+          "left": "$15 - 3 \\times 2$",
+          "right": "$15 - 6$"
+        },
+        {
+          "left": "$24 \\div (6 - 2)$",
+          "right": "$24 \\div 4$"
+        },
+        {
+          "left": "$5 + 8 \\div 4$",
+          "right": "$5 + 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut effectuer l'opération prioritaire et recopier le reste. Pour $7 \\times (4 + 2)$, la parenthèse donne $4+2=6$, d'où $7 \\times 6$. Pour $15 - 3 \\times 2$, la multiplication $3 \\times 2 = 6$ est prioritaire, d'où $15 - 6$. Pour $24 \\div (6 - 2)$, la parenthèse donne $6-2=4$, d'où $24 \\div 4$. Pour $5 + 8 \\div 4$, la division $8 \\div 4 = 2$ est prioritaire, d'où $5 + 2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le résultat final",
+      "content": "Relie chaque expression à son résultat final.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$10 - 2 \\times 3$",
+          "right": "$4$"
+        },
+        {
+          "left": "$(10 - 2) \\times 3$",
+          "right": "$24$"
+        },
+        {
+          "left": "$18 \\div 3 + 3$",
+          "right": "$9$"
+        },
+        {
+          "left": "$18 \\div (3 + 3)$",
+          "right": "$3$"
+        }
+      ],
+      "items": [],
+      "explanation": "Calcul complet en respectant les priorités. $10 - 2 \\times 3 = 10 - 6 = 4$. $(10 - 2) \\times 3 = 8 \\times 3 = 24$ (la parenthèse change l'ordre). $18 \\div 3 + 3 = 6 + 3 = 9$ (division avant addition). $18 \\div (3 + 3) = 18 \\div 6 = 3$ (parenthèse avant division).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

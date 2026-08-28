@@ -1,0 +1,491 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.834735+00:00",
+  "id": 431,
+  "code": "4eme-t03-c02",
+  "title": "Vitesse et grandeurs composées",
+  "description": "Cours structuré Educalcul : Vitesse et grandeurs composées.",
+  "subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+    "titre_du_cours": "Vitesse et grandeurs composées",
+    "objectif_global": "Vitesse et grandeurs composées",
+    "mini_lecons_imposees": [
+      "Formule.",
+      "Conversions.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+      "lessons": [
+        {
+          "title": "Formule.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la vitesse ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu montes à vélo sur une route droite. La vitesse, c'est la manière de dire à quelle allure tu avances : combien de kilomètres tu parcours en une heure. C'est une grandeur composée car elle mélange une distance et un temps. Dans ce cours, nous allons poser les bases pour la manipuler avec aisance."
+            },
+            {
+              "type": "definition",
+              "term": "Vitesse",
+              "definition": "Rapport entre une distance parcourue et le temps mis pour la parcourir. Elle s'exprime en unités de distance par unité de temps (par exemple $km/h$ ou $m/s$).",
+              "example": "Si tu fais $30$ km en $1$ h, ta vitesse est de $30\\,km/h$."
+            },
+            {
+              "type": "definition",
+              "term": "Distance",
+              "definition": "Longueur du chemin parcouru entre le point de départ et le point d'arrivée. On la note souvent $d$ et on l'exprime en mètres ($m$), kilomètres ($km$), etc.",
+              "example": "Le trajet de l'école à la maison mesure $2,5\\,km$."
+            },
+            {
+              "type": "definition",
+              "term": "Temps",
+              "definition": "Durée mise pour effectuer le trajet. On la note $t$ et on l'exprime en secondes ($s$), minutes ($min$), heures ($h$), etc.",
+              "example": "Tu mets $15\\,min$ pour aller à l'école."
+            },
+            {
+              "type": "display_math",
+              "latex": "v = \\\\frac{d}{t}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule $v = \\frac{d}{t}$ est le cœur de toute la notion. Elle dit simplement : vitesse égale distance divisée par temps. Si tu connais deux des trois grandeurs, tu peux toujours retrouver la troisième. C'est une relation de proportionnalité : quand la distance double et le temps reste identique, la vitesse double aussi."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère ce que l'énoncé te donne : une distance, un temps, ou une vitesse. Note-les avec leurs unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu cherches la vitesse, utilise $v = d/t$. Si tu cherches la distance, transforme en $d = v \\times t$. Si tu cherches le temps, transforme en $t = d/v$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la division ou la multiplication en respectant les unités. Si les unités ne concordent pas, convertis-les d'abord (nous verrons cela dans la prochaine leçon)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le résultat est plausible : une vitesse de $500\\,km/h$ à vélo n'est pas réaliste, par exemple."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction",
+              "numerator": 30,
+              "denominator": 1,
+              "shape": "bar",
+              "caption": "Exemple : $30\\,km$ en $1\\,h$ donne $30\\,km/h$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer une vitesse, voyons comment retrouver une distance quand la vitesse et le temps sont connus. La formule $d = v \\times t$ s'obtient en multipliant les deux membres de $v = d/t$ par $t$. C'est la même relation, juste réorganisée."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de distances pour une vitesse fixe de $20\\,km/h$.",
+              "bars": [
+                {
+                  "label": "0,5 h",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 h",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "2 h",
+                  "value": 40,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi qu'on connaisse la distance et la vitesse, et qu'on veuille savoir combien de temps le trajet a duré. On utilise alors $t = d/v$. Attention : le résultat peut être une fraction d'heure ; il faudra parfois le convertir en minutes pour le rendre plus parlant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Durée en heures pour $90\\,km$ à $45\\,km/h$.",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2 h"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un cycliste parcourt $120\\,km$ en $2\\,h$. Quelle est sa vitesse moyenne en $km/h$ ?",
+              "answer": "$60\\,km/h$",
+              "hint": "Utilise la formule $v = d/t$ avec $d = 120$ et $t = 2$.",
+              "explanation": "On divise la distance $120\\,km$ par le temps $2\\,h$ : $120/2 = 60$. La vitesse moyenne est donc $60\\,km/h$."
+            },
+            {
+              "question": "Une voiture roule à $30\\,km/h$ pendant $1,5\\,h$. Quelle distance a-t-elle parcourue ?",
+              "answer": "$45\\,km$",
+              "hint": "Applique $d = v \\times t$ avec $v = 30$ et $t = 1,5$.",
+              "explanation": "On multiplie $30\\,km/h$ par $1,5\\,h$ : $30 \\times 1,5 = 45$. La distance parcourue est $45\\,km$."
+            },
+            {
+              "question": "Un train met $2\\,h$ pour aller d'une gare à une autre en roulant à $45\\,km/h$. Quelle est la distance entre les deux gares ?",
+              "answer": "$90\\,km$",
+              "hint": "Utilise $d = v \\times t$ avec $v = 45$ et $t = 2$.",
+              "explanation": "La distance vaut $45 \\times 2 = 90\\,km$."
+            }
+          ]
+        },
+        {
+          "title": "Conversions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi convertir les unités de vitesse ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, on croise des vitesses en kilomètres par heure ($km/h$) sur les panneaux routiers, mais en sciences on utilise souvent les mètres par seconde ($m/s$). Savoir passer de l'un à l'autre te permet de comparer des données venues de contextes différents et d'éviter les erreurs de calcul."
+            },
+            {
+              "type": "definition",
+              "term": "Kilomètre par heure",
+              "definition": "Unité de vitesse qui indique combien de kilomètres sont parcourus en une heure. Symbole : $km/h$.",
+              "example": "La limite en ville est souvent $50\\,km/h$."
+            },
+            {
+              "type": "definition",
+              "term": "Mètre par seconde",
+              "definition": "Unité de vitesse du Système International. Elle indique combien de mètres sont parcourus en une seconde. Symbole : $m/s$.",
+              "example": "Un sprinter court à environ $10\\,m/s$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,km/h = \\\\frac{1000\\,m}{3600\\,s} = \\\\frac{5}{18}\\,m/s"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le facteur de conversion exact est $\\frac{5}{18}$. Pour passer de $km/h$ à $m/s$, on multiplie par $\\frac{5}{18}$ ; pour faire l'inverse, on multiplie par $\\frac{18}{5}$ (soit $3,6$). Retiens cette fraction, elle est la clé de tous les changements d'unité."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 18,
+              "shape": "bar",
+              "caption": "Facteur de conversion $\\frac{5}{18}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'unité de départ et l'unité voulue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si tu as des $km/h$ et que tu veux des $m/s$, ou l'inverse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le bon facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu vas vers $m/s$, multiplie par $\\frac{5}{18}$. Si tu vas vers $km/h$, multiplie par $\\frac{18}{5}$ (ou $3,6$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la multiplication en gardant les unités pour voir qu'elles s'annulent correctement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Arrondir si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En général, on garde deux décimales pour les $m/s$ et un entier pour les $km/h$, sauf consigne contraire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Équivalences usuelles entre $km/h$ et $m/s$.",
+              "bars": [
+                {
+                  "label": "36 km/h",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "54 km/h",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "72 km/h",
+                  "value": 20,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la vitesse est donnée en $m/s$ dans un énoncé de physique, alors que la question demande un temps en minutes pour un trajet en kilomètres. Il faut alors convertir la vitesse en $km/h$ d'abord, ou convertir la distance en mètres et le temps en secondes. Les deux chemins donnent le même résultat, choisis celui qui te semble le plus simple."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 3.6,
+              "exponent": 0,
+              "caption": "Rappel : $1\\,m/s = 3,6\\,km/h$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi à passer d'une unité à l'autre avec des nombres variés. Plus tu le feras, plus ce réflexe deviendra automatique et tu gagneras du temps lors des contrôles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $72\\,km/h$ en $m/s$.",
+              "answer": "$20\\,m/s$",
+              "hint": "Multiplie $72$ par $\\frac{5}{18}$.",
+              "explanation": "$72 \\times \\frac{5}{18} = \\frac{360}{18} = 20$. Donc $72\\,km/h = 20\\,m/s$."
+            },
+            {
+              "question": "Convertis $15\\,m/s$ en $km/h$.",
+              "answer": "$54\\,km/h$",
+              "hint": "Multiplie $15$ par $3,6$ (ou $\\frac{18}{5}$).",
+              "explanation": "$15 \\times 3,6 = 54$. Donc $15\\,m/s = 54\\,km/h$."
+            },
+            {
+              "question": "Une voiture affiche $90\\,km/h$. Quelle est sa vitesse en $m/s$ (arrondi au dixième) ?",
+              "answer": "$25,0\\,m/s$",
+              "hint": "Utilise le facteur $\\frac{5}{18}$.",
+              "explanation": "$90 \\times \\frac{5}{18} = \\frac{450}{18} = 25$. La vitesse est exactement $25\\,m/s$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème de vitesse complet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes mêlent souvent distance, temps et vitesse, et parfois il faut convertir les unités avant de calculer. La méthode en quatre étapes que nous avons vue reste valable : lire, identifier, convertir si besoin, calculer, vérifier. Prenons le temps de bien lire l'énoncé pour ne pas confondre les grandeurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire et souligner les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la distance, le temps, la vitesse. Note les unités de chaque grandeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Uniformiser les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la distance est en $km$ et le temps en $min$, convertis le temps en $h$ (divise par $60$) ou la distance en $m$ et le temps en $s$. Choisis la conversion la plus commode."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la grandeur cherchée, utilise $v = d/t$, $d = v \\times t$ ou $t = d/v$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remets le résultat dans l'unité demandée par la question (souvent $km/h$ pour une vitesse, $h$ ou $min$ pour un temps). Vérifie que l'ordre de grandeur est plausible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple concret : un automobiliste parcourt $150\\,km$ en $2\\,h\\,30\\,min$. On veut sa vitesse moyenne en $km/h$. D'abord, $2\\,h\\,30\\,min = 2,5\\,h$. Ensuite $v = 150 / 2,5 = 60\\,km/h$. C'est une vitesse courante sur route nationale."
+            },
+            {
+              "type": "number_line",
+              "caption": "Durée $2,5\\,h$ repérée sur une graduation horaire.",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 2.5,
+                  "label": "2,5 h"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la vitesse est donnée en $m/s$ et le temps en minutes. Il faut alors convertir le temps en secondes (multiplier par $60$) ou la vitesse en $km/h$ (multiplier par $3,6$). Les deux approches mènent au même résultat ; choisis celle qui te paraît la plus naturelle."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distance parcourue en $10\\,min$ à différentes vitesses.",
+              "bars": [
+                {
+                  "label": "10 m/s",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12 m/s",
+                  "value": 7.2,
+                  "tone": "green"
+                },
+                {
+                  "label": "15 m/s",
+                  "value": 9,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il arrive qu'on doive trouver le temps nécessaire pour un trajet connu, avec une vitesse donnée. On utilise $t = d/v$. Si le temps obtenu est en heures décimales, n'hésite pas à le reconvertir en heures et minutes pour la réponse finale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire la formule $v = d/t$ et en déduire $d = v \\times t$ et $t = d/v$.",
+                "Je sais convertir une vitesse entre $km/h$ et $m/s$ en utilisant $\\frac{5}{18}$ ou $3,6$.",
+                "Je sais résoudre un problème complet : identifier les données, uniformiser les unités, calculer, interpréter.",
+                "Je vérifie toujours la plausibilité de mon résultat avant de le donner."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un cycliste parcourt $150\\,km$ en $2\\,h\\,30\\,min$. Quelle est sa vitesse moyenne en $km/h$ ?",
+              "answer": "$60\\,km/h$",
+              "hint": "Transforme $2\\,h\\,30\\,min$ en heures ($2,5\\,h$) puis divise la distance par le temps.",
+              "explanation": "$2\\,h\\,30\\,min = 2,5\\,h$. Vitesse $= 150 / 2,5 = 60\\,km/h$."
+            },
+            {
+              "question": "Un sprinter court à $12\\,m/s$ pendant $10\\,min$. Quelle distance a-t-il parcourue en kilomètres ?",
+              "answer": "$7,2\\,km$",
+              "hint": "Convertis $10\\,min$ en secondes ($600\\,s$), calcule la distance en mètres, puis passe en kilomètres.",
+              "explanation": "$10\\,min = 600\\,s$. Distance $= 12 \\times 600 = 7200\\,m = 7,2\\,km$."
+            },
+            {
+              "question": "Un train roule à $80\\,km/h$ pour couvrir $300\\,km$. Combien de temps mettra-t-il ? Exprime le résultat en heures et minutes.",
+              "answer": "$3\\,h\\,45\\,min$",
+              "hint": "Utilise $t = d/v$ puis convertis la partie décimale d'heure en minutes.",
+              "explanation": "$t = 300 / 80 = 3,75\\,h$. $0,75\\,h = 45\\,min$. Donc $3\\,h\\,45\\,min$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Techniques, priorités, estimation",
+  "title": "Quiz Calcul 6e : Techniques, priorités, estimation",
+  "questions": [
+    {
+      "text": "Calcule $12 + 4 \\times 5$ en respectant les règles de priorité.",
+      "options": [
+        "32",
+        "80",
+        "21",
+        "60"
+      ],
+      "correctAnswer": "32",
+      "explanation": "La multiplication est prioritaire sur l'addition. On calcule d'abord $4 \\times 5 = 20$, puis $12 + 20 = 32$. L'option 80 correspond à l'erreur de calculer de gauche à droite : $(12 + 4) \\times 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $(18 - 6) \\div 3 + 2 \\times 4$ ?",
+      "options": [
+        "12",
+        "24",
+        "2",
+        "10"
+      ],
+      "correctAnswer": "12",
+      "explanation": "On commence par la parenthèse : $18 - 6 = 12$. Ensuite les multiplications et divisions : $12 \\div 3 = 4$ et $2 \\times 4 = 8$. Enfin l'addition : $4 + 8 = 12$. L'option 24 s'obtient si on oublie les parenthèses ou si on calcule de gauche à droite après la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donne l'ordre de grandeur (puissance de 10 la plus proche) du produit $29 \\times 31$.",
+      "options": [
+        "1000",
+        "100",
+        "10000",
+        "10"
+      ],
+      "correctAnswer": "1000",
+      "explanation": "On arrondit les nombres : $29 \\approx 30$ et $31 \\approx 30$. Le produit estimé est $30 \\times 30 = 900$. La puissance de 10 la plus proche de 900 est 1000 ($10^3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $25 \\times 16$ en utilisant une technique de calcul mental efficace.",
+      "options": [
+        "400",
+        "350",
+        "425",
+        "256"
+      ],
+      "correctAnswer": "400",
+      "explanation": "On peut décomposer 16 en $4 \\times 4$ : $25 \\times 4 = 100$, puis $100 \\times 4 = 400$. Ou encore $25 \\times 8 = 200$ et $200 \\times 2 = 400$. Les autres résultats correspondent à des erreurs de tables ou de décomposition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la soustraction posée $5000 - 2347$.",
+      "options": [
+        "2653",
+        "2753",
+        "3653",
+        "2643"
+      ],
+      "correctAnswer": "2653",
+      "explanation": "On pose la soustraction en gérant les retenues sur les zéros : aux unités $10 - 7 = 3$, aux dizaines $9 - 4 = 5$, aux centaines $9 - 3 = 6$, aux milliers $4 - 2 = 2$. Le résultat est 2653. L'option 2753 oublie une retenue aux centaines, 3653 oublie les retenues sur les zéros, 2643 se trompe aux unités.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

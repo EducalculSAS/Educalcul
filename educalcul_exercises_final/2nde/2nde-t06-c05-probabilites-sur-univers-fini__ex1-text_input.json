@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Événements",
+  "title": "Événements et opérations sur un univers fini",
+  "blocks": [
+    {
+      "title": "Identification d'un événement",
+      "content": "On considère l'expérience aléatoire : « lancer un dé équilibré à six faces numérotées de 1 à 6 ». L'univers est $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Écrire en extension l'ensemble des résultats correspondant à l'événement $E$ : « obtenir un nombre supérieur ou égal à 4 ».",
+      "correctAnswer": "{4, 5, 6}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'événement « obtenir un nombre supérieur ou égal à 4 » correspond aux faces 4, 5 et 6. En écriture ensembliste, cela donne $E = \\{4, 5, 6\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection d'événements",
+      "content": "On définit les événements $A$ : « obtenir un multiple de 2 » et $B$ : « obtenir un multiple de 3 » dans le même univers $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Déterminer l'ensemble $A \\cap B$.",
+      "correctAnswer": "{6}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'événement $A$ correspond à $\\{2, 4, 6\\}$ et $B$ à $\\{3, 6\\}$. L'intersection $A \\cap B$ est l'ensemble des éléments communs à $A$ et $B$, soit $\\{6\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'une réunion",
+      "content": "Avec les mêmes événements $A$ et $B$, calculer la probabilité $P(A \\cup B)$. Donner le résultat sous forme de fraction simplifiée.",
+      "correctAnswer": "2/3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La réunion $A \\cup B = \\{2, 3, 4, 6\\}$ contient 4 éléments. Comme le dé est équilibré, chaque résultat a une probabilité de $1/6$. Donc $P(A \\cup B) = 4 \\times (1/6) = 4/6 = 2/3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

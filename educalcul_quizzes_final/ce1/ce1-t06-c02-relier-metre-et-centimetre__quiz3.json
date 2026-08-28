@@ -1,0 +1,136 @@
+{
+  "_status": "done",
+  "_course_id": 118,
+  "_course_code": "ce1-t06-c02-relier-metre-et-centimetre",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Résoudre une petite situation",
+  "title": "Quiz : Résoudre une petite situation (mètre et centimètre)",
+  "questions": [
+    {
+      "text": "Luc mesure $1~m~20~cm$. Combien cela fait-il en centimètres seulement ?",
+      "options": [
+        "12 cm",
+        "102 cm",
+        "120 cm",
+        "1002 cm"
+      ],
+      "correctAnswer": "120 cm",
+      "explanation": "On sait que $1~m = 100~cm$. Donc $1~m~20~cm = 100~cm + 20~cm = 120~cm$. L'option 12 cm oublie les 100 cm du mètre. L'option 102 cm ajoute 100 et 2 au lieu de 20. L'option 1002 cm colle les chiffres sans conversion.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "1 m",
+            "value": 100,
+            "tone": "blue"
+          },
+          {
+            "label": "20 cm",
+            "value": 20,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Taille de Luc : 1 m 20 cm"
+      }
+    },
+    {
+      "text": "Une corde bleue mesure $80~cm$ et une corde rouge mesure $50~cm$. On les met bout à bout. Quelle est la longueur totale en mètres et centimètres ?",
+      "options": [
+        "1 m 30 cm",
+        "13 m",
+        "1 m 3 cm",
+        "130 m"
+      ],
+      "correctAnswer": "1 m 30 cm",
+      "explanation": "On additionne les centimètres : $80 + 50 = 130~cm$. On sait que $100~cm = 1~m$. Donc $130~cm = 100~cm + 30~cm = 1~m~30~cm$. L'option 13 m confond cm et m. L'option 1 m 3 cm oublie le zéro des dizaines. L'option 130 m ne convertit pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban mesure $1~m$. On coupe $40~cm$. Quelle longueur reste-t-il ?",
+      "options": [
+        "60 cm",
+        "1 m 40 cm",
+        "40 cm",
+        "1 m 60 cm"
+      ],
+      "correctAnswer": "60 cm",
+      "explanation": "Le ruban initial fait $1~m = 100~cm$. On retire $40~cm$. Il faut faire la soustraction : $100 - 40 = 60~cm$. L'option 1 m 40 cm correspond à une addition. L'option 40 cm est la longueur coupée, pas le reste. L'option 1 m 60 cm est une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Ruban total",
+            "value": 100,
+            "tone": "blue"
+          },
+          {
+            "label": "Coupé",
+            "value": 40,
+            "tone": "red"
+          },
+          {
+            "label": "Restant",
+            "value": 60,
+            "tone": "green"
+          }
+        ],
+        "caption": "Ruban de 1 m, 40 cm coupé"
+      }
+    },
+    {
+      "text": "Une table mesure $1~m$ de long. Un bureau mesure 2 fois plus long que la table. Quelle est la longueur du bureau en mètres ?",
+      "options": [
+        "2 m",
+        "200 m",
+        "1 m 2 cm",
+        "2 cm"
+      ],
+      "correctAnswer": "2 m",
+      "explanation": "Le bureau fait 2 fois la longueur de la table. La table fait $1~m$. Donc $2 \\times 1~m = 2~m$. L'option 200 m multiplie par 100 au lieu de 2. L'option 1 m 2 cm ajoute 2 cm au lieu de multiplier. L'option 2 cm confond les unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a un fil de $2~m$. Il coupe un premier morceau de $50~cm$, puis un second de $30~cm$. Combien de fil lui reste-t-il ?",
+      "options": [
+        "1 m 20 cm",
+        "1 m 50 cm",
+        "1 m 80 cm",
+        "12 cm"
+      ],
+      "correctAnswer": "1 m 20 cm",
+      "explanation": "Le fil initial fait $2~m = 200~cm$. Total coupé : $50 + 30 = 80~cm$. Reste : $200 - 80 = 120~cm$. On convertit : $120~cm = 100~cm + 20~cm = 1~m~20~cm$. L'option 1 m 50 cm soustrait seulement le premier morceau. L'option 1 m 80 cm fait $200 - 20$. L'option 12 cm oublie les centaines.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Fil total",
+            "value": 200,
+            "tone": "blue"
+          },
+          {
+            "label": "1er morceau",
+            "value": 50,
+            "tone": "red"
+          },
+          {
+            "label": "2e morceau",
+            "value": 30,
+            "tone": "red"
+          },
+          {
+            "label": "Restant",
+            "value": 120,
+            "tone": "green"
+          }
+        ],
+        "caption": "Fil de 2 m, coupes de 50 cm et 30 cm"
+      }
+    }
+  ]
+}

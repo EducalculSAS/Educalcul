@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Représentations et variations",
+  "title": "Approfondissement : Représentations et variations",
+  "questions": [
+    {
+      "text": "La fonction $f$ est définie sur $\\mathbb{R}$ par $f(x)=2x+3$. Quelle est sa variation sur $\\mathbb{R}$ ?",
+      "options": [
+        "strictement croissante",
+        "strictement décroissante",
+        "constante",
+        "ni croissante ni décroissante"
+      ],
+      "correctAnswer": "strictement croissante",
+      "explanation": "Le coefficient directeur de $f$ est $2$, qui est strictement positif. Donc $f$ est strictement croissante sur $\\mathbb{R}$. Les autres options correspondent à un coefficient négatif, nul ou à une fonction non monotone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $g$ définie par $g(x)=-x^2+4x-3$. Sur quel intervalle $g$ est-elle croissante ?",
+      "options": [
+        "$(-\\infty,2]$",
+        "$[2,+\\infty)$",
+        "$(-\\infty,2)$",
+        "$(2,+\\infty)$"
+      ],
+      "correctAnswer": "$(-\\infty,2]$",
+      "explanation": "Le trinôme $g(x)=-x^2+4x-3$ a un coefficient principal négatif, son sommet est à l'abscisse $x=2$. La parabole s'ouvre vers le bas, donc $g$ est croissante avant le sommet, c'est-à-dire sur $(-\\infty,2]$. Les autres intervalles correspondent à la partie décroissante ou excluent le sommet.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant donne des valeurs de la fonction $h(x)=x^3-3x$ :\\n x | -2 | -1 | 0 | 1 | 2\\n h(x) | -2 | 2 | 0 | -2 | 2. D'après ce tableau, que peut-on dire de la variation de $h$ sur l'intervalle $[-1,1]$ ?",
+      "options": [
+        "strictement croissante",
+        "strictement décroissante",
+        "ni croissante ni décroissante",
+        "constante"
+      ],
+      "correctAnswer": "strictement décroissante",
+      "explanation": "D'après le tableau, $h(-1)=2$, $h(0)=0$, $h(1)=-2$. Les valeurs diminuent strictement quand $x$ augmente de $-1$ à $1$, donc $h$ est strictement décroissante sur $[-1,1]$. Les autres options ne correspondent pas aux valeurs observées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $f$ est définie par $f(x)=\\sqrt{x-1}$. Quel est son ensemble de définition et sa variation sur cet ensemble ?",
+      "options": [
+        "Domaine $[1,+\\infty)$, strictement croissante",
+        "Domaine $[1,+\\infty)$, strictement décroissante",
+        "Domaine $(-\\infty,1]$, strictement croissante",
+        "Domaine $(-\\infty,1]$, strictement décroissante"
+      ],
+      "correctAnswer": "Domaine $[1,+\\infty)$, strictement croissante",
+      "explanation": "La racine carrée impose $x-1\\ge0$, donc $x\\ge1$ : le domaine est $[1,+\\infty)$. La fonction racine carrée est strictement croissante sur son domaine, et la translation $x\\mapsto x-1$ ne change pas la monotonie. Donc $f$ est strictement croissante sur $[1,+\\infty)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $p$ est définie par $p(x)=-(x-1)^2+1$. Quelle est sa variation sur l'intervalle $[0,2]$ ?",
+      "options": [
+        "strictement croissante",
+        "strictement décroissante",
+        "croissante puis décroissante",
+        "décroissante puis croissante"
+      ],
+      "correctAnswer": "croissante puis décroissante",
+      "explanation": "Le sommet de la parabole $p$ est au point $(1,1)$ et le coefficient principal est négatif, donc la parabole s'ouvre vers le bas. Sur $[0,1]$ la fonction augmente jusqu'au sommet, puis sur $[1,2]$ elle diminue. Sa variation sur $[0,2]$ est donc croissante puis décroissante.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

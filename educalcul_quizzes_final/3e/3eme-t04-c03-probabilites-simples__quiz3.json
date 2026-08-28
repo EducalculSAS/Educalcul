@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Quiz : Calcul de probabilités simples",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de 1 à 6. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "L'univers est équiprobable avec six issues possibles. Les nombres pairs sont 2, 4 et 6, soit trois issues favorables. La probabilité est $3/6 = 1/2$. Les autres options correspondent à une issue ($1/6$), deux issues ($1/3$) ou quatre issues ($2/3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient 5 boules rouges, 3 boules bleues et 2 boules vertes. On prélève une boule au hasard. Quelle est la probabilité qu'elle ne soit pas rouge ?",
+      "options": [
+        "$1/2$",
+        "$3/10$",
+        "$1/5$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Il y a $5 + 3 + 2 = 10$ boules au total. Les boules non rouges sont les 3 bleues et les 2 vertes, soit 5 boules. La probabilité est $5/10 = 1/2$. L'option $3/10$ correspond aux bleues seules, $1/5$ aux vertes seules, $2/5$ à 4 boules sur 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tourne la flèche du disque ci-dessous, secteur équiprobable. Quelle est la probabilité de tomber sur une couleur primaire (rouge, bleu, jaune) ?",
+      "options": [
+        "$3/4$",
+        "$7/8$",
+        "$5/8$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$7/8$",
+      "explanation": "Le disque comporte 8 secteurs égaux : 3 rouges, 2 bleus, 2 jaunes, 1 vert. Les couleurs primaires (rouge, bleu, jaune) représentent $3 + 2 + 2 = 7$ secteurs. La probabilité est $7/8$. L'option $3/4$ correspond à 6 secteurs, $5/8$ à 5 secteurs, $1/2$ à 4 secteurs.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Disque à 8 secteurs équiprobables",
+        "slices": [
+          {
+            "label": "Rouge",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Jaune",
+            "value": 2,
+            "tone": "gold"
+          },
+          {
+            "label": "Vert",
+            "value": 1,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance deux dés à six faces équilibrés. Quelle est la probabilité que la somme des résultats soit égale à 7 ?",
+      "options": [
+        "$1/12$",
+        "$1/6$",
+        "$1/4$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$1/6$",
+      "explanation": "Il y a $6 \\times 6 = 36$ couples ordonnés équiprobables. Les couples donnant la somme 7 sont : (1,6), (2,5), (3,4), (4,3), (5,2), (6,1), soit 6 couples. La probabilité est $6/36 = 1/6$. L'option $1/12$ correspondrait à 3 couples, $1/4$ à 9 couples, $1/3$ à 12 couples.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 30 élèves, 18 jouent au football, 12 jouent au basket-ball et 5 pratiquent les deux sports. On choisit un élève au hasard. Quelle est la probabilité qu'il joue au football ou au basket-ball (ou aux deux) ?",
+      "options": [
+        "$3/5$",
+        "$5/6$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$5/6$",
+      "explanation": "On utilise la formule de l'union : $P(F \\cup B) = P(F) + P(B) - P(F \\cap B)$. En effectifs : $18 + 12 - 5 = 25$ élèves pratiquent au moins un des deux sports. La probabilité est $25/30 = 5/6$. L'option $3/5$ correspond à 18/30 (foot seulement), $1/2$ à 15/30, $2/3$ à 20/30.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

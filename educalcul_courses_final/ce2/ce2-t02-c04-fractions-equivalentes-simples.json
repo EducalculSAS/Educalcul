@@ -1,0 +1,430 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.965953+00:00",
+  "id": 155,
+  "code": "ce2-t02-c04",
+  "title": "Fractions équivalentes simples",
+  "description": "Cours structuré Educalcul : Fractions équivalentes simples.",
+  "subject": "Fractions et nombres décimaux en contexte",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Fractions et nombres décimaux en contexte",
+    "titre_du_cours": "Fractions équivalentes simples",
+    "objectif_global": "Fractions équivalentes simples",
+    "mini_lecons_imposees": [
+      "Reconnaître 1/2=2/4 sur dessin.",
+      "Produire une équivalence par partage.",
+      "Vérifier visuellement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions et nombres décimaux en contexte",
+      "lessons": [
+        {
+          "title": "Reconnaître 1/2=2/4 sur dessin.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les fractions équivalentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pizza bien ronde que tu partages avec un ami. Tu la coupes en $2$ parts égales. Chacun prend une part : vous avez tous les deux $1/2$ de la pizza. Regarde le dessin : la partie colorée montre exactement la moitié."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "circle",
+              "caption": "La moitié de la pizza : $1/2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, suppose que deux autres amis arrivent. Vous recoupez chaque moitié en deux. La pizza est maintenant en $4$ parts égales. Toi et ton premier ami, vous avez chacun $2$ parts. Ensemble, vous avez $2/4$ de la pizza. Regarde : la surface colorée est exactement la même qu'avant."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Deux quarts de la pizza : $2/4$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? $1/2$ et $2/4$ recouvrent la même quantité de pizza. On dit que ce sont des fractions équivalentes. Elles s'écrivent différemment mais elles désignent le même partage."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction équivalente",
+              "definition": "Deux fractions sont équivalentes quand elles représentent la même quantité, même si les nombres au-dessus et en dessous du trait ne sont pas les mêmes.",
+              "example": "$1/2$ et $2/4$ sont équivalentes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec une barre de chocolat. Si tu la coupes en $2$ parts égales, tu as $1/2$. Si tu recoups chaque part en deux, tu obtiens $4$ parts au total. Combien de parts as-tu si tu prends la même quantité qu'au début ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Une barre partagée en deux : $1/2$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La même barre partagée en quatre : $2/4$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les deux barres. La partie colorée a la même longueur. C'est la preuve visuelle que $1/2 = 2/4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, observe ce dessin : un rectangle divisé en $4$ parts égales, dont $2$ sont coloriées. Quelle fraction cela représente-t-il ? Et si je te dis que c'est la même chose qu'un demi, comment l'écriras-tu ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Rectangle partagé en quatre, deux parts coloriées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le dessin, entoure la fraction qui correspond à la partie colorée : $1/2$ ou $2/4$ ?",
+              "answer": "$2/4$",
+              "hint": "Compte le nombre total de parts et le nombre de parts colorées.",
+              "explanation": "Le cercle est divisé en $4$ parts égales, $2$ sont colorées. Cela fait $2/4$. Comme $2/4$ est équivalent à $1/2$, les deux réponses sont justes, mais le dessin montre $2/4$."
+            },
+            {
+              "question": "Une barre est partagée en $2$ parts égales. Une part est coloriée. Si on partage chaque part en deux, combien de parts au total ? Combien de parts coloriées ?",
+              "answer": "4 parts au total, 2 parts coloriées",
+              "hint": "Chaque demi devient deux quarts.",
+              "explanation": "Au départ : $1/2$. Après partage : chaque moitié donne $2$ parts, donc $4$ parts en tout. La partie coloriée devient $2$ parts sur $4$, soit $2/4$."
+            },
+            {
+              "question": "Colorie $2/4$ de ce rectangle. Écris la fraction équivalente avec un dénominateur $2$.",
+              "answer": "$1/2$",
+              "hint": "Regarde la quantité colorée : c'est la moitié du rectangle.",
+              "explanation": "Quand tu couleurs $2$ parts sur $4$, tu coloriés exactement la moitié. La fraction équivalente à $2/4$ avec dénominateur $2$ est $1/2$."
+            }
+          ]
+        },
+        {
+          "title": "Produire une équivalence par partage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Créer des fractions équivalentes en partageant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà que $1/2$ et $2/4$ sont équivalents. Mais comment passer de l'un à l'autre sans dessin tout fait ? On utilise le partage. Prends une feuille de papier. Plie-la en deux : tu as $1/2$. Maintenant, déplie et replie chaque moitié en deux. Combien de parts as-tu maintenant ?"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1/2",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1/2",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Une feuille pliée en deux : deux moitiés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque moitié est devenue deux parts. Au total, tu as $4$ parts. La partie qui était $1/2$ est maintenant composée de $2$ parts sur $4$. Tu as créé une nouvelle fraction : $2/4$. C'est le même morceau de papier, juste découpé plus fin."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis une fraction de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple $1/3$. Imagine un rectangle divisé en $3$ parts égales, une part est prise."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Partage chaque part en $k$ parts égales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu choisis $k=2$, chaque tiers devient deux parts. Le rectangle a maintenant $3 \\times 2 = 6$ parts."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compte les parts prises",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au départ, tu avais $1$ part sur $3$. Après partage, tu as $2$ parts sur $6$. La nouvelle fraction est $2/6$. Elle est équivalente à $1/3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "Partage",
+              "definition": "Diviser chaque part d'une fraction en un même nombre de sous-parts égales. Le nombre total de parts est multiplié, et le nombre de parts prises est multiplié par le même nombre.",
+              "example": "Partager $1/3$ en $2$ donne $2/6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une autre fraction : $1/4$. Si tu partages chaque quart en $3$ parts égales, combien de parts au total ? Et combien de parts pour représenter la même quantité ?"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1/4",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "3/4",
+                  "value": 3,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Un rectangle en quarts, un quart coloré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque quart devient $3$ parts. Le total passe de $4$ à $12$ parts. La part colorée devient $3$ parts sur $12$. La nouvelle fraction est $3/12$. Elle est équivalente à $1/4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu vas créer toi-même une fraction équivalente. Choisis une fraction simple comme $1/2$, $1/3$ ou $1/4$. Décide en combien de parts tu veux partager chaque part (par exemple $2$, $3$ ou $4$). Écris la nouvelle fraction obtenue."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Reglettes pour comparer $1/2$ et $2/4$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Partez de $1/3$. Partagez chaque tiers en $2$. Écrivez la fraction équivalente obtenue.",
+              "answer": "$2/6$",
+              "hint": "Le dénominateur $3$ devient $3 \\times 2 = 6$. Le numérateur $1$ devient $1 \\times 2 = 2$.",
+              "explanation": "En partageant chaque part en $2$, on multiplie le numérateur et le dénominateur par $2$. $1/3 = 2/6$."
+            },
+            {
+              "question": "Partez de $1/4$. Partagez chaque quart en $3$. Quelle est la nouvelle fraction ?",
+              "answer": "$3/12$",
+              "hint": "Multiplie le numérateur et le dénominateur par $3$.",
+              "explanation": "$1/4$ devient $3/12$ car $1 \\times 3 = 3$ et $4 \\times 3 = 12$."
+            },
+            {
+              "question": "Choisis $1/2$ et partage chaque demi en $4$. Écris la fraction équivalente.",
+              "answer": "$4/8$",
+              "hint": "Combien de parts au total ? Combien de parts pour la moitié ?",
+              "explanation": "Chaque demi donne $4$ parts, donc $8$ parts au total. La moitié correspond à $4$ parts. La fraction est $4/8$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier visuellement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier si deux fractions sont équivalentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as appris à créer des fractions équivalentes. Maintenant, comment être sûr que deux fractions sont bien équivalentes sans refaire le partage à chaque fois ? On peut comparer visuellement avec des réglettes ou des diagrammes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 6
+                }
+              ],
+              "caption": "Reglettes superposées : $1/2$, $2/4$, $3/6$ ont la même longueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les trois bandes. Elles sont alignées à gauche. La partie colorée s'arrête exactement au même endroit pour les trois. Cela prouve que $1/2$, $2/4$ et $3/6$ représentent la même quantité. C'est une vérification visuelle simple et sûre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on n'a pas de réglettes sous la main. On peut alors utiliser un diagramme en barres. Dessine deux rectangles de même longueur. Divise le premier en $3$ parts, colore $2$ parts. Divise le second en $6$ parts, colore $4$ parts. Compare les parties colorées."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "2/3",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1/3",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Premier rectangle : $2/3$ colorié"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "4/6",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "2/6",
+                  "value": 2,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Second rectangle : $4/6$ colorié"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux parties colorées ont la même longueur. Donc $2/3$ et $4/6$ sont équivalentes. Cette méthode marche pour toutes les fractions : il suffit de dessiner deux figures de même taille et de comparer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus vite, on peut aussi regarder les nombres. Si on multiplie le numérateur et le dénominateur d'une fraction par le même nombre, on obtient une fraction équivalente. Par exemple, $2/3 \\times 2 = 4/6$. C'est la règle du partage, mais écrite en calcul. Vérifions avec un dernier exemple : $3/5$ et $6/10$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "$3/5$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 6,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "$6/10$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux barres colorées s'arrêtent au même trait. $3/5 = 6/10$. Tu as maintenant trois façons de vérifier : les réglettes, le diagramme en barres, et la multiplication du numérateur et du dénominateur par le même nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître deux fractions équivalentes sur un dessin.",
+                "Je sais créer une fraction équivalente en partageant chaque part.",
+                "Je sais vérifier l'équivalence avec des réglettes ou un diagramme en barres.",
+                "Je sais que multiplier le numérateur et le dénominateur par le même nombre donne une fraction équivalente."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde les réglettes. Les fractions $2/5$ et $4/10$ sont-elles équivalentes ?",
+              "answer": "Oui",
+              "hint": "Compare la longueur des parties colorées.",
+              "explanation": "Sur les réglettes, $2/5$ et $4/10$ ont exactement la même longueur colorée. Elles sont équivalentes."
+            },
+            {
+              "question": "Dessine deux rectangles de même taille. Divise l'un en $4$ parts, colore $3$ parts. Divise l'autre en $8$ parts, colore $6$ parts. Les fractions sont-elles équivalentes ?",
+              "answer": "Oui, $3/4 = 6/8$",
+              "hint": "Regarde si les parties colorées ont la même longueur.",
+              "explanation": "Les deux parties colorées occupent la même place dans le rectangle. $3/4$ et $6/8$ sont équivalentes."
+            },
+            {
+              "question": "Sans dessin, dis si $2/7$ et $6/21$ sont équivalentes. Explique.",
+              "answer": "Oui, car $2 \\times 3 = 6$ et $7 \\times 3 = 21$.",
+              "hint": "Cherche par quel nombre le numérateur et le dénominateur ont été multipliés.",
+              "explanation": "On a multiplié le numérateur $2$ et le dénominateur $7$ par $3$. La règle du partage donne une fraction équivalente : $6/21$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

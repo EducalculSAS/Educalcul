@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 190,
+  "_course_code": "ce2-t06-c04-monnaie-avec-nombres-decimaux",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Lire prix",
+  "title": "Algorithmes pour lire et manipuler les prix",
+  "blocks": [
+    {
+      "title": "Séparer euros et centimes",
+      "content": "Écris un algorithme (suite d'instructions) qui permet, à partir d'un prix donné en euros (par exemple $12,45$), d'afficher le nombre d'euros et le nombre de centimes séparément. Utilise les mots-clés : Debut, Fin, Afficher, PartieEntiere, PartieDecimale.",
+      "correctAnswer": "Debut\\n  Lire prix\\n  euros = PartieEntiere(prix)\\n  centimes = PartieDecimale(prix) * 100\\n  Afficher \"Euros :\", euros\\n  Afficher \"Centimes :\", centimes\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire le prix. La fonction PartieEntiere récupère la partie avant la virgule (les euros). La fonction PartieDecimale récupère la partie après la virgule (ex: $0,45$) qu'on multiplie par $100$ pour obtenir le nombre de centimes ($45$). On affiche ensuite les deux résultats.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux prix",
+      "content": "Écris un algorithme qui compare deux prix (prixA et prixB) et affiche le plus grand des deux. Par exemple pour $8,50$ et $8,05$, l'algorithme doit identifier $8,50$ comme le plus cher. Utilise les mots-clés : Debut, Fin, Si, Alors, Sinon, Afficher.",
+      "correctAnswer": "Debut\\n  Lire prixA, prixB\\n  Si prixA > prixB Alors\\n    Afficher \"Le plus cher est :\", prixA\\n  Sinon\\n    Afficher \"Le plus cher est :\", prixB\\n  FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit les deux prix. La structure conditionnelle Si...Alors...Sinon compare les deux nombres décimaux. Comme $8,50 > 8,05$, la condition est vraie et on affiche prixA. Si les prix sont égaux, le Sinon affiche prixB (peu importe car ils sont identiques).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Additionner deux prix",
+      "content": "Écris un algorithme qui calcule le total de deux articles. On additionne séparément les euros et les centimes. Si les centimes dépassent $99$, on convertit $100$ centimes en $1$ euro. Exemple : article1 = $4,20$, article2 = $3,90$. Total attendu : $8,10$.",
+      "correctAnswer": "Debut\\n  Lire prix1, prix2\\n  euros1 = PartieEntiere(prix1)\\n  centimes1 = PartieDecimale(prix1) * 100\\n  euros2 = PartieEntiere(prix2)\\n  centimes2 = PartieDecimale(prix2) * 100\\n  totalEuros = euros1 + euros2\\n  totalCentimes = centimes1 + centimes2\\n  Si totalCentimes >= 100 Alors\\n    totalEuros = totalEuros + 1\\n    totalCentimes = totalCentimes - 100\\n  FinSi\\n  Afficher \"Total :\", totalEuros, \",\", totalCentimes\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décompose chaque prix en euros et centimes (questions précédentes). On additionne les euros entre eux et les centimes entre eux. Ici $20 + 90 = 110$ centimes. Comme $110 \\ge 100$, on ajoute $1$ euro au total des euros ($4+3+1=8$) et on retranche $100$ aux centimes ($110-100=10$). Le total est $8,10$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

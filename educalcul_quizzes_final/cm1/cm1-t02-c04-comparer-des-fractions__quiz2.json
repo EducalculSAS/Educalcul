@@ -1,0 +1,110 @@
+{
+  "_status": "done",
+  "_course_id": 222,
+  "_course_code": "cm1-t02-c04-comparer-des-fractions",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Même numérateur",
+  "title": "Comparer des fractions : même numérateur",
+  "questions": [
+    {
+      "text": "Parmi les fractions suivantes, laquelle est la plus grande ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Lorsque le numérateur est le même (ici 1), la fraction la plus grande est celle qui a le plus petit dénominateur. En effet, partager en 2 parts donne des parts plus grandes que partager en 3, 4 ou 5 parts. Donc $\\frac{1}{2} > \\frac{1}{3} > \\frac{1}{4} > \\frac{1}{5}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 5
+          }
+        ],
+        "caption": "Comparaison de fractions de numérateur 1"
+      }
+    },
+    {
+      "text": "Complète la comparaison : $\\frac{3}{4}$ ... $\\frac{3}{8}$.",
+      "options": [
+        "$>$",
+        "$<$",
+        "$=$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$>$",
+      "explanation": "Les deux fractions ont le même numérateur (3). On compare les dénominateurs : 4 est plus petit que 8. Cela signifie que les parts de $\\frac{3}{4}$ (des quarts) sont plus grandes que les parts de $\\frac{3}{8}$ (des huitièmes). Donc $\\frac{3}{4} > \\frac{3}{8}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range ces fractions du plus petit au plus grand : $\\frac{2}{3}$, $\\frac{2}{5}$, $\\frac{2}{7}$.",
+      "options": [
+        "$\\frac{2}{7} < \\frac{2}{5} < \\frac{2}{3}$",
+        "$\\frac{2}{3} < \\frac{2}{5} < \\frac{2}{7}$",
+        "$\\frac{2}{5} < \\frac{2}{7} < \\frac{2}{3}$",
+        "$\\frac{2}{7} < \\frac{2}{3} < \\frac{2}{5}$"
+      ],
+      "correctAnswer": "$\\frac{2}{7} < \\frac{2}{5} < \\frac{2}{3}$",
+      "explanation": "Le numérateur est fixe à 2. Plus le dénominateur est grand, plus la fraction est petite. On ordonne les dénominateurs du plus grand au plus petit : 7 > 5 > 3. L'ordre des fractions est donc l'inverse : $\\frac{2}{7} < \\frac{2}{5} < \\frac{2}{3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa partage une barre de chocolat en $5$ parts égales et en prend $2$. Max partage la même barre en $10$ parts égales et en prend $2$. Qui a la plus grande part ?",
+      "options": [
+        "Léa",
+        "Max",
+        "Ils ont la même quantité",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Léa",
+      "explanation": "Léa a $\\frac{2}{5}$ de la barre, Max a $\\frac{2}{10}$. Même numérateur (2), dénominateurs différents. Comme 5 < 10, les cinquièmes sont plus grands que les dixièmes. Donc $\\frac{2}{5} > \\frac{2}{10}$, Léa a plus de chocolat.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 2,
+            "denominator": 5
+          },
+          {
+            "numerator": 2,
+            "denominator": 10
+          }
+        ],
+        "caption": "Parts de Léa (2/5) et Max (2/10)"
+      }
+    },
+    {
+      "text": "Quel nombre manque dans la case pour que la comparaison soit vraie ? $\\frac{4}{5} > \\frac{4}{\\square}$",
+      "options": [
+        "$3$",
+        "$4$",
+        "$6$",
+        "$2$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Pour que $\\frac{4}{5} > \\frac{4}{\\square}$ avec le même numérateur, il faut que le dénominateur de la deuxième fraction soit plus grand que 5. Parmi les choix, seul 6 est strictement supérieur à 5. On a bien $\\frac{4}{5} > \\frac{4}{6}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

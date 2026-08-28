@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 285,
+  "_course_code": "cm2-t02-c04-additionner-et-soustraire-des-fractions-simples",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Même dénominateur ou cas prévus",
+  "title": "Addition et soustraction de fractions",
+  "questions": [
+    {
+      "text": "Quel est le résultat du calcul suivant : $\\frac{2}{7} + \\frac{3}{7}$ ?",
+      "options": [
+        "$\\frac{5}{14}$",
+        "$\\frac{5}{7}$",
+        "$\\frac{1}{7}$",
+        "$\\frac{6}{7}$"
+      ],
+      "correctAnswer": "$\\frac{5}{7}$",
+      "explanation": "Pour additionner des fractions qui ont le même dénominateur, on additionne les numérateurs et on garde le dénominateur commun. Ici, $2 + 3 = 5$, donc le résultat est $\\frac{5}{7}$. L'erreur $\\frac{5}{14}$ provient de l'addition erronée des dénominateurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule la soustraction suivante : $\\frac{8}{11} - \\frac{5}{11}$",
+      "options": [
+        "$\\frac{3}{0}$",
+        "$\\frac{13}{11}$",
+        "$\\frac{3}{11}$",
+        "$\\frac{3}{22}$"
+      ],
+      "correctAnswer": "$\\frac{3}{11}$",
+      "explanation": "Pour soustraire des fractions avec le même dénominateur, on soustrait les numérateurs tout en conservant le dénominateur. Ici, $8 - 5 = 3$, ce qui donne $\\frac{3}{11}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a mangé $\\frac{1}{8}$ d'un gâteau le matin et $\\frac{3}{8}$ le soir. Quelle fraction du gâteau a t elle mangée en tout ?",
+      "options": [
+        "$\\frac{4}{8}$",
+        "$\\frac{2}{8}$",
+        "$\\frac{4}{16}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{4}{8}$",
+      "explanation": "On additionne les deux parts : $\\frac{1}{8} + \\frac{3}{8} = \\frac{1+3}{8} = \\frac{4}{8}$. Bien que $\\frac{4}{8}$ soit égal à $\\frac{1}{2}$, la question demande la fraction totale basée sur les huitièmes.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 4,
+        "denominator": 8,
+        "shape": "circle",
+        "caption": "Le gâteau total"
+      }
+    },
+    {
+      "text": "Complète l'égalité suivante : $\\frac{4}{9} + ... = \\frac{7}{9}$",
+      "options": [
+        "$\\frac{11}{9}$",
+        "$\\frac{3}{0}$",
+        "$\\frac{3}{18}$",
+        "$\\frac{3}{9}$"
+      ],
+      "correctAnswer": "$\\frac{3}{9}$",
+      "explanation": "Pour trouver le nombre manquant, on peut soustraire la fraction connue du résultat : $\\frac{7}{9} - \\frac{4}{9} = \\frac{7-4}{9} = \\frac{3}{9}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un réservoir d eau était rempli aux $\\frac{10}{12}$ de sa capacité. Après un arrosage, il reste $\\frac{3}{12}$ d eau. Quelle fraction du réservoir a été utilisée ?",
+      "options": [
+        "$\\frac{13}{12}$",
+        "$\\frac{7}{12}$",
+        "$\\frac{7}{24}$",
+        "$\\frac{7}{0}$"
+      ],
+      "correctAnswer": "$\\frac{7}{12}$",
+      "explanation": "On calcule la différence entre le niveau initial et le niveau final : $\\frac{10}{12} - \\frac{3}{12} = \\frac{10-3}{12} = \\frac{7}{12}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

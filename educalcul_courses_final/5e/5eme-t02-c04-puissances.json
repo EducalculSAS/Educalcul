@@ -1,0 +1,488 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.693615+00:00",
+  "id": 387,
+  "code": "5eme-t02-c04",
+  "title": "Puissances",
+  "description": "Cours structuré Educalcul : Puissances.",
+  "subject": "Nombres relatifs, rationnels et puissances",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Nombres relatifs, rationnels et puissances",
+    "titre_du_cours": "Puissances",
+    "objectif_global": "Puissances",
+    "mini_lecons_imposees": [
+      "Notation.",
+      "Puissances de 10.",
+      "Calculs simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, rationnels et puissances",
+      "lessons": [
+        {
+          "title": "Notation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une puissance ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois multiplier le même nombre plusieurs fois de suite. Au lieu d'écrire $2 \\times 2 \\times 2$, les mathématiciens ont inventé une écriture plus compacte : on note $2^{3}$. Le petit chiffre en haut, ici $3$, s'appelle l'exposant. Il indique combien de fois le nombre de base, ici $2$, doit être utilisé comme facteur. Cette écriture s'appelle une puissance. Elle permet de gagner de la place et surtout de voir tout de suite la structure du calcul."
+            },
+            {
+              "type": "definition",
+              "term": "Puissance",
+              "definition": "Une puissance est le produit d'un nombre par lui-même répété un certain nombre de fois. On l'écrit $a^{n}$ où $a$ est la base et $n$ l'exposant.",
+              "example": "$5^{4} = 5 \\times 5 \\times 5 \\times 5 = 625$"
+            },
+            {
+              "type": "definition",
+              "term": "Base",
+              "definition": "Le nombre qui est multiplié par lui-même. Dans $7^{2}$, la base est $7$.",
+              "example": ""
+            },
+            {
+              "type": "definition",
+              "term": "Exposant",
+              "definition": "Le petit chiffre écrit en haut à droite de la base. Il compte le nombre de facteurs identiques. Dans $7^{2}$, l'exposant est $2$.",
+              "example": ""
+            },
+            {
+              "type": "display_math",
+              "latex": "a^{n} = \\underbrace{a \\times a \\times \\dots \\times a}_{n \\text{ fois}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est une puissance, voyons comment la lire à voix haute et comment l'écrire correctement. C'est une habitude qui te servira tout au long du collège, surtout quand les nombres deviennent grands."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment lire et écrire une puissance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire $3^{5}$, on dit \"trois puissance cinq\" ou \"trois exposant cinq\". Le chiffre du bas (la base) se prononce normalement, le petit chiffre en haut se prononce \"puissance\" suivi de sa valeur. Quand l'exposant vaut $2$, on a l'habitude de dire \"au carré\", et quand il vaut $3$, \"au cube\". Par exemple $4^{2}$ se lit \"quatre au carré\" et $4^{3}$ se lit \"quatre au cube\". Pour les autres exposants, on garde la formulation \"puissance\"."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nombre principal, celui qui est écrit en grand. C'est lui qui sera multiplié."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'exposant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le petit chiffre placé en haut à droite. Il te dit combien de fois la base apparaît dans le produit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le produit développé si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'exercice te demande de développer, recopie la base autant de fois que l'exposant l'indique, en mettant un signe de multiplication entre chaque copie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste deux situations particulières qui reviennent souvent : l'exposant $1$ et l'exposant $0$. Elles ont des règles simples mais il faut les connaître par cœur pour ne pas hésiter devant un exercice."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les cas particuliers : exposant 1 et exposant 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand l'exposant vaut $1$, la puissance ne contient qu'un seul facteur, donc $a^{1} = a$ pour n'importe quel nombre $a$. C'est logique : multiplier une seule fois ne change rien. Quand l'exposant vaut $0$, la convention mathématique décide que $a^{0} = 1$ pour tout $a$ non nul. Cette règle permet de conserver la cohérence des propriétés des puissances que nous verrons plus tard. Attention : $0^{0}$ n'est pas défini, on ne l'utilise pas au collège."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "À retenir",
+              "paragraphs": [
+                "Pour tout nombre $a$ : $a^{1} = a$.",
+                "Pour tout nombre $a \\neq 0$ : $a^{0} = 1$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris sous forme de puissance : $6 \\times 6 \\times 6 \\times 6$.",
+              "answer": "$6^{4}$",
+              "hint": "Compte le nombre de fois où le chiffre $6$ apparaît.",
+              "explanation": "Il y a quatre facteurs $6$, donc la base est $6$ et l'exposant est $4$. On écrit $6^{4}$."
+            },
+            {
+              "question": "Lis à voix haute la puissance $9^{2}$ et donne son valeur.",
+              "answer": "Neuf au carré, valeur $81$.",
+              "hint": "Rappelle-toi le mot spécial pour l'exposant $2$.",
+              "explanation": "L'exposant $2$ se dit \"au carré\". $9^{2} = 9 \\times 9 = 81$."
+            },
+            {
+              "question": "Calcule $12^{0}$ et $7^{1}$.",
+              "answer": "$12^{0} = 1$ et $7^{1} = 7$.",
+              "hint": "Utilise les deux règles des cas particuliers.",
+              "explanation": "Toute puissance d'exposant $0$ (base non nulle) vaut $1$. Toute puissance d'exposant $1$ vaut la base elle-même."
+            }
+          ]
+        },
+        {
+          "title": "Puissances de 10.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les puissances de 10 et l'écriture décimale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les puissances de $10$ sont les plus faciles à manipuler car elles correspondent exactement à notre système de numération. $10^{1}=10$, $10^{2}=100$, $10^{3}=1000$, et ainsi de suite. Chaque fois qu'on augmente l'exposant de $1$, on ajoute un zéro à la fin du nombre. Cette régularité permet de lire et d'écrire les grands nombres sans effort."
+            },
+            {
+              "type": "display_math",
+              "latex": "10^{n} = 1\\underbrace{00\\dots0}_{n \\text{ zéros}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on multiplie un nombre décimal par une puissance de $10$, la virgule se décale vers la droite d'autant de rangs que l'exposant. Par exemple, $3,14 \\times 10^{2} = 314$. À l'inverse, diviser par $10^{n}$ décale la virgule vers la gauche. C'est une astuce précieuse pour changer d'unité de mesure (mètres en centimètres, grammes en kilogrammes) sans refaire une multiplication longue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'exposant de la puissance de 10",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as $10^{3}$, l'exposant est $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déplacer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une multiplication, décale la virgule de $3$ rangs vers la droite. Pour une division, décale-la de $3$ rangs vers la gauche. Ajoute des zéros si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le nombre de chiffres après la virgule correspond à ce que tu attends."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les puissances de $10$ permettent aussi d'écrire les nombres très grands ou très petits de façon compacte grâce à l'écriture scientifique. C'est la forme $a \\times 10^{n}$ avec $1 \\le a < 10$. Cette écriture est utilisée en sciences pour exprimer des distances astronomiques ou des tailles microscopiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écriture scientifique : passer du nombre usuel à la forme $a \\times 10^{n}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer $45000$ en écriture scientifique, on place la virgule après le premier chiffre non nul : $4,5$. On a déplacé la virgule de $4$ rangs vers la gauche, donc l'exposant est $4$. On obtient $4,5 \\times 10^{4}$. Pour un nombre petit comme $0,0032$, on déplace la virgule vers la droite jusqu'à obtenir $3,2$ ; ici on a bougé de $3$ rangs, l'exposant devient $-3$ : $3,2 \\times 10^{-3}$. L'exposant négatif indique un décalage vers la gauche, c'est-à-dire une division par une puissance de $10$."
+            },
+            {
+              "type": "display_math",
+              "latex": "45000 = 4,5 \\times 10^{4} \\quad ; \\quad 0,0032 = 3,2 \\times 10^{-3}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il est utile de savoir comparer deux nombres écrits en notation scientifique. On regarde d'abord l'exposant : celui qui a le plus grand exposant est le plus grand nombre. Si les exposants sont égaux, on compare les parties décimales $a$. Cette méthode évite de réécrire les nombres en entier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer et ordonner des nombres en notation scientifique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $2,7 \\times 10^{5}$ et $9,1 \\times 10^{4}$. L'exposant $5$ est plus grand que $4$, donc le premier nombre est plus grand, peu importe que $9,1$ soit plus grand que $2,7$. Si on compare $5,3 \\times 10^{3}$ et $5,3 \\times 10^{3}$, ils sont égaux. Si on compare $6,2 \\times 10^{2}$ et $4,9 \\times 10^{2}$, les exposants sont égaux, on compare $6,2$ et $4,9$ : le premier est plus grand."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Règle de comparaison",
+              "paragraphs": [
+                "1. Comparer les exposants $n$.",
+                "2. Si égalité, comparer les coefficients $a$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue le calcul : $0,045 \\times 10^{3}$.",
+              "answer": "$45$",
+              "hint": "Décale la virgule de trois rangs vers la droite.",
+              "explanation": "On part de $0,045$. Trois rangs vers la droite donnent $45$ (on ajoute un zéro pour le troisième rang)."
+            },
+            {
+              "question": "Écris $0,00078$ en notation scientifique.",
+              "answer": "$7,8 \\times 10^{-4}$",
+              "hint": "Déplace la virgule jusqu'à avoir un chiffre non nul avant la virgule.",
+              "explanation": "Il faut déplacer la virgule de $4$ rangs vers la droite pour obtenir $7,8$. L'exposant est donc $-4$."
+            },
+            {
+              "question": "Lequel est le plus grand : $3,4 \\times 10^{6}$ ou $8,9 \\times 10^{5}$ ?",
+              "answer": "$3,4 \\times 10^{6}$",
+              "hint": "Regarde d'abord les exposants.",
+              "explanation": "L'exposant $6$ est plus grand que $5$, donc le premier nombre est plus grand, peu importe les coefficients."
+            }
+          ]
+        },
+        {
+          "title": "Calculs simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produit de puissances de même base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on multiplie deux puissances qui ont la même base, on peut garder la base et additionner les exposants. Par exemple $2^{3} \\times 2^{4} = 2^{3+4} = 2^{7}$. Cette propriété vient du fait qu'on juxtapose les facteurs : $2^{3}$ donne trois $2$, $2^{4}$ en donne quatre, au total sept $2$. C'est une règle très puissante qui simplifie les calculs sans avoir à développer."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^{m} \\times a^{n} = a^{m+n} \\quad (a \\neq 0)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier que les bases sont identiques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les bases diffèrent, la règle ne s'applique pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la somme $m+n$ et écris la puissance résultante $a^{m+n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la valeur si on te le demande",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Développe la puissance finale ou utilise une calculatrice."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La division suit une logique symétrique : quand on divise deux puissances de même base, on soustrait l'exposant du diviseur à celui du dividende. Ainsi $5^{6} \\div 5^{2} = 5^{6-2} = 5^{4}$. On peut le voir en écrivant les produits et en barrant les facteurs communs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient de puissances de même base"
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété s'écrit $a^{m} \\div a^{n} = a^{m-n}$ pour $a \\neq 0$. Attention : l'exposant du numérateur doit être supérieur ou égal à celui du dénominateur pour rester dans les entiers positifs. Si $m<n$, on obtient une puissance à exposant négatif, ce qui sera étudié plus tard. Pour l'instant, on s'entraîne avec $m \\ge n$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a^{m}}{a^{n}} = a^{m-n} \\quad (a \\neq 0, \\, m \\ge n)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Même base ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le numérateur et le dénominateur ont la même base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $m-n$ et écris $a^{m-n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le nouvel exposant est $0$, le résultat vaut $1$. Si c'est $1$, le résultat vaut la base."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste une dernière règle fondamentale : la puissance d'une puissance. Quand on élève une puissance à un autre exposant, on multiplie les exposants. Par exemple $(3^{2})^{4} = 3^{2 \\times 4} = 3^{8}$. Cela correspond à répéter le produit $3^{2}$ quatre fois, ce qui donne huit facteurs $3$ au total."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Puissance d'une puissance"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule générale est $(a^{m})^{n} = a^{m \\times n}$. Elle vaut pour tout nombre $a$ non nul et tous entiers $m,n$. C'est une règle qu'on utilise souvent pour simplifier des expressions comme $(10^{3})^{2} = 10^{6}$, ce qui nous ramène aux puissances de $10$ vues précédemment."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a^{m})^{n} = a^{m \\times n}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la base intérieure et les deux exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $(x^{3})^{5}$, la base intérieure est $x$, l'exposant intérieur $3$, l'exposant extérieur $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $3 \\times 5 = 15$ et écris $x^{15}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier avec un développement si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $(x^{3})^{5} = x^{3} \\times x^{3} \\times x^{3} \\times x^{3} \\times x^{3}$ et compte les $x$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une puissance et identifier sa base et son exposant.",
+                "Je connais les règles pour $a^{1}$ et $a^{0}$.",
+                "Je sais multiplier et diviser des puissances de même base en additionnant ou soustrayant les exposants.",
+                "Je sais calculer une puissance d'une puissance en multipliant les exposants.",
+                "Je sais utiliser les puissances de 10 pour déplacer la virgule et écrire en notation scientifique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie $4^{3} \\times 4^{5}$ sous la forme d'une seule puissance.",
+              "answer": "$4^{8}$",
+              "hint": "Additionne les exposants car la base est la même.",
+              "explanation": "La base $4$ est commune, on additionne $3+5=8$, donc $4^{3} \\times 4^{5} = 4^{8}$."
+            },
+            {
+              "question": "Calcule $\\frac{7^{9}}{7^{4}}$.",
+              "answer": "$7^{5}$",
+              "hint": "Soustrait l'exposant du dénominateur à celui du numérateur.",
+              "explanation": "Même base $7$, on fait $9-4=5$, donc le quotient vaut $7^{5}$."
+            },
+            {
+              "question": "Écris $(2^{4})^{3}$ sous la forme $2^{n}$ et donne $n$.",
+              "answer": "$2^{12}$, donc $n=12$.",
+              "hint": "Multiplie les deux exposants.",
+              "explanation": "On applique la règle $(a^{m})^{n}=a^{m\\times n}$ : $4 \\times 3 = 12$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

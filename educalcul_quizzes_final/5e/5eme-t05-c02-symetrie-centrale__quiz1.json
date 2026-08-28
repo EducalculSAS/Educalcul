@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Construction",
+  "title": "Quiz : Construction de la symétrie centrale (5e)",
+  "questions": [
+    {
+      "text": "On veut construire le point $A'$, symétrique du point $A$ par rapport au centre $O$, à la règle et au compas. Quelle étape est correcte ?",
+      "options": [
+        "Tracer le cercle de centre $O$ passant par $A$, puis tracer la droite $OA$ ; l'autre intersection du cercle avec la droite est $A'$.",
+        "Tracer le cercle de centre $A$ passant par $O$, puis tracer la droite $OA$ ; l'intersection est $A'$.",
+        "Tracer le segment $OA$, puis prolonger $OA$ au-delà de $O$ de la même longueur.",
+        "Tracer la médiatrice du segment $OA$, son intersection avec $OA$ donne $A'$."
+      ],
+      "correctAnswer": "Tracer le cercle de centre $O$ passant par $A$, puis tracer la droite $OA$ ; l'autre intersection du cercle avec la droite est $A'$.",
+      "explanation": "La symétrie centrale de centre $O$ envoie $A$ sur $A'$ tel que $O$ soit le milieu de $AA'$. La construction classique utilise le cercle de centre $O$ et de rayon $OA$ ; la droite $OA$ coupe ce cercle en $A$ et en $A'$, ce qui garantit $OA = OA'$ et donc $O$ est le milieu de $AA'$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un segment $AB$ et un centre $O$. Comment construire le segment $A'B'$, image de $AB$ par la symétrie centrale de centre $O$ ?",
+      "options": [
+        "Construire les points $A'$ et $B'$, symétriques de $A$ et $B$ par rapport à $O$, puis tracer le segment $A'B'$.",
+        "Tracer un unique cercle de centre $O$ passant par $A$ et $B$, puis tracer les droites $OA$ et $OB$ ; les intersections donnent $A'$ et $B'$.",
+        "Tracer la médiatrice du segment $AB$, puis refléter $O$ par rapport à cette médiatrice.",
+        "Translater le segment $AB$ par le vecteur $OO$."
+      ],
+      "correctAnswer": "Construire les points $A'$ et $B'$, symétriques de $A$ et $B$ par rapport à $O$, puis tracer le segment $A'B'$.",
+      "explanation": "L'image d'un segment par une symétrie centrale est le segment dont les extrémités sont les images des extrémités initiales. Il suffit donc de construire $A'$ et $B'$ comme au point 1, puis de les relier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une droite $d$ et un point $O$ n'appartenant pas à $d$. Quelle méthode permet de construire la droite $d'$, symétrique de $d$ par rapport à $O$ ?",
+      "options": [
+        "Choisir deux points sur $d$, construire leurs symétriques par rapport à $O$, puis tracer la droite passant par ces deux points symétriques.",
+        "Tracer la perpendiculaire issue de $O$ à $d$, puis refléter $O$ par rapport à $d$.",
+        "Tracer un cercle de centre $O$ coupant $d$ en deux points, puis tracer la droite passant par ces deux points d'intersection.",
+        "Translater la droite $d$ par le vecteur $OO$."
+      ],
+      "correctAnswer": "Choisir deux points sur $d$, construire leurs symétriques par rapport à $O$, puis tracer la droite passant par ces deux points symétriques.",
+      "explanation": "La symétrie centrale transforme une droite en une droite parallèle. Pour la construire, on prend deux points quelconques sur $d$, on construit leurs images par la symétrie, et la droite passant par ces images est $d'$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle $ABC$ et un centre $O$. Quelle affirmation décrit correctement la construction du triangle $A'B'C'$, image de $ABC$ par la symétrie centrale de centre $O$ ?",
+      "options": [
+        "Construire les points $A'$, $B'$, $C'$, symétriques de $A$, $B$, $C$ par rapport à $O$, puis tracer les segments $A'B'$, $B'C'$, $C'A'$.",
+        "Effectuer une rotation de 180 degrés du triangle $ABC$ autour de $O$ à l'aide d'un rapporteur.",
+        "Réfléchir le triangle $ABC$ par rapport à la droite passant par $O$ et perpendiculaire à un côté.",
+        "Translater le triangle $ABC$ par le vecteur $OO$."
+      ],
+      "correctAnswer": "Construire les points $A'$, $B'$, $C'$, symétriques de $A$, $B$, $C$ par rapport à $O$, puis tracer les segments $A'B'$, $B'C'$, $C'A'$.",
+      "explanation": "La symétrie centrale d'un polygone s'obtient en appliquant la symétrie à chaque sommet. Le triangle image a pour sommets $A'$, $B'$, $C'$ et ses côtés sont les segments $A'B'$, $B'C'$, $C'A'$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève trace le cercle de centre $O$ et de rayon $OA$, puis la droite $OA$ et marque le second intersection $A'$. Il trace le segment $AA'$ et affirme que $O$ est le milieu de $AA'$. Cette affirmation est-elle correcte ?",
+      "options": [
+        "Oui, par définition de la symétrie centrale, $O$ est le milieu de $AA'$.",
+        "Non, $O$ est le centre du cercle mais pas nécessairement le milieu de $AA'$.",
+        "Oui, seulement si le cercle a été tracé avec un compas précis.",
+        "Non, le milieu de $AA'$ est l'intersection de la médiatrice de $AA'$ avec $AA'$."
+      ],
+      "correctAnswer": "Oui, par définition de la symétrie centrale, $O$ est le milieu de $AA'$.",
+      "explanation": "Dans une symétrie centrale de centre $O$, le point $O$ est par définition le milieu du segment joignant un point et son image. La construction du cercle de centre $O$ et de rayon $OA$ assure $OA = OA'$, donc $O$ est bien le milieu de $AA'$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

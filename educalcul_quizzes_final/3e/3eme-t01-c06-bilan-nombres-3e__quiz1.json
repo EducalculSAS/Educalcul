@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 460,
+  "_course_code": "3eme-t01-c06-bilan-nombres-3e",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Arithmétique et puissances",
+  "title": "Quiz Arithmétique et puissances - 3e",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $2^3 \\times 2^4$.",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$8^7$",
+        "$16^3$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "Lorsqu'on multiplie des puissances de même base, on additionne les exposants : $2^3 \\times 2^4 = 2^{3+4} = 2^7$. Les autres options correspondent à des erreurs fréquentes : multiplier les exposants, changer la base ou élever le résultat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $0,00056$ en notation scientifique.",
+      "options": [
+        "$5,6 \\times 10^{-4}$",
+        "$5,6 \\times 10^{-3}$",
+        "$56 \\times 10^{-5}$",
+        "$0,56 \\times 10^{-3}$"
+      ],
+      "correctAnswer": "$5,6 \\times 10^{-4}$",
+      "explanation": "Il faut placer une seule chiffre non nul avant la virgule : $0,00056 = 5,6 \\times 10^{-4}$. Les autres réponses ont soit un exposant incorrect, soit plus d'un chiffre avant la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le PGCD de $84$ et $126$ ?",
+      "options": [
+        "42",
+        "21",
+        "14",
+        "6"
+      ],
+      "correctAnswer": "42",
+      "explanation": "Décomposition en facteurs premiers : $84 = 2^2 \\times 3 \\times 7$, $126 = 2 \\times 3^2 \\times 7$. Le PGCD prend les puissances minimales communes : $2^1 \\times 3^1 \\times 7^1 = 42$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction $\\frac{2^5 \\times 3^2}{2^3 \\times 3^4}$.",
+      "options": [
+        "$\\frac{4}{9}$",
+        "$\\frac{8}{27}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{1}{6}$"
+      ],
+      "correctAnswer": "$\\frac{4}{9}$",
+      "explanation": "On soustrait les exposants de même base : $\\frac{2^5}{2^3}=2^{5-3}=2^2=4$ et $\\frac{3^2}{3^4}=3^{2-4}=3^{-2}=\\frac{1}{9}$. Le produit donne $\\frac{4}{9}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $(-3)^4 \\div (-3)^2$.",
+      "options": [
+        "9",
+        "-9",
+        "81",
+        "-81"
+      ],
+      "correctAnswer": "9",
+      "explanation": "On soustrait les exposants : $(-3)^4 \\div (-3)^2 = (-3)^{4-2} = (-3)^2 = 9$. Le signe reste positif car l'exposant final est pair.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

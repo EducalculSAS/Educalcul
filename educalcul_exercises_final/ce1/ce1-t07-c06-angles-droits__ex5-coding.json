@@ -1,0 +1,65 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 131,
+  "_course_code": "ce1-t07-c06-angles-droits",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître un angle droit",
+  "title": "Algorithmes et angles droits",
+  "blocks": [
+    {
+      "title": "Procédure de vérification",
+      "content": "Pour vérifier si un angle est un angle droit, on utilise une équerre. Écris les étapes de l'algorithme (la recette) dans l'ordre en commençant par : Je pose l'équerre sur le sommet de l'angle.",
+      "correctAnswer": "1. Je pose l'équerre sur le sommet de l'angle.\\n2. Je cale un côté de l'équerre sur un côté de l'angle.\\n3. Je regarde si l'autre côté de l'angle coïncide avec l'autre côté de l'équerre.\\n4. Si ça coïncide exactement, c'est un angle droit. Sinon, ce n'est pas un angle droit.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décrit la procédure standard au CE1 : placer le sommet de l'équerre sur le sommet de l'angle, aligner un bord, puis observer la coïncidence du second bord. La conclusion utilise un test simple (Si... Sinon...).",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Test conditionnel",
+      "content": "Complète l'algorithme suivant en langage naturel pour tester un angle :\\nDÉBUT\\n    Je place mon équerre sur l'angle.\\n    SI _______________________________ ALORS\\n        J'affiche : \"C'est un angle droit.\"\\n    SINON\\n        J'affiche : \"_______________________________.\"\\nFIN",
+      "correctAnswer": "SI l'autre côté de l'angle coïncide exactement avec l'équerre ALORS\\n        J'affiche : \"Ce n'est pas un angle droit.\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition 'SI' teste la coïncidence parfaite entre l'angle et l'équerre. Si c'est vrai (ALORS), c'est un angle droit. Sinon (SINON), l'angle est plus ouvert ou plus fermé qu'un angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Code de déplacement",
+      "content": "Sur le quadrillage ci-dessous, le robot doit aller de la case DEPART (en bas à gauche) à la case ARRIVEE (en haut à droite) en passant par le coin. Écris le programme (la suite d'instructions) en utilisant seulement : AVANCE $n$ cases, TOURNE À DROITE, TOURNE À GAUCHE. Les tours sont des angles droits.",
+      "correctAnswer": "AVANCE 3 cases\\nTOURNE À GAUCHE\\nAVANCE 2 cases",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le robot part vers la droite (par défaut). Il avance de 3 cases pour atteindre le coin. Il doit tourner à gauche (angle droit) pour monter. Il avance alors de 2 cases pour arriver. Chaque tour correspond à un angle droit.",
+      "points": 3,
+      "figure": {
+        "type": "grid_painter",
+        "caption": "Parcours du robot : 3 cases à droite, 2 cases en haut",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 5
+      }
+    }
+  ]
+}

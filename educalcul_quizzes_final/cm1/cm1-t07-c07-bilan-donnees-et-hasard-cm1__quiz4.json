@@ -1,0 +1,126 @@
+{
+  "_status": "done",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Bilan - Données et hasard CM1",
+  "title": "Bilan - Données et hasard CM1",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous montre les couleurs préférées des élèves de la classe. Combien d'élèves ont choisi le bleu ?",
+      "options": [
+        "5",
+        "8",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La barre correspondant au bleu atteint la valeur 8, ce qui indique que 8 élèves ont choisi cette couleur. Les autres barres indiquent 5 pour le rouge, 3 pour le vert et 4 pour le jaune.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Couleurs préférées des élèves",
+        "bars": [
+          {
+            "label": "Rouge",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans un sondage, 12 élèves ont un chien, 7 un chat, 5 un oiseau et 3 un poisson. Quel est le nombre total d'élèves interrogés ?",
+      "options": [
+        "27",
+        "25",
+        "22",
+        "30"
+      ],
+      "correctAnswer": "27",
+      "explanation": "On additionne les effectifs : $12 + 7 + 5 + 3 = 27$. Les autres propositions correspondent à des erreurs d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient 4 boules rouges, 6 boules bleues et 5 boules vertes. On tire une boule au hasard. Quelle est la probabilité d'obtenir une boule rouge ?",
+      "options": [
+        "$4/15$",
+        "$6/15$",
+        "$5/15$",
+        "$4/10$"
+      ],
+      "correctAnswer": "$4/15$",
+      "explanation": "Le nombre total de boules est $4 + 6 + 5 = 15$. La probabilité de tirer une boule rouge est le nombre de boules rouges divisé par le total, soit $4/15$. Les autres fractions correspondent aux autres couleurs ou à un total erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme circulaire ci-dessous représente la répartition des matières préférées des élèves. Quelle matière a la plus grande part ?",
+      "options": [
+        "Maths",
+        "Français",
+        "Histoire",
+        "Sciences"
+      ],
+      "correctAnswer": "Maths",
+      "explanation": "La part la plus grande correspond à la valeur 30 pour les Maths, alors que Français et Sciences sont à 25 et Histoire à 20.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Matières préférées",
+        "slices": [
+          {
+            "label": "Maths",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Français",
+            "value": 25,
+            "tone": "green"
+          },
+          {
+            "label": "Histoire",
+            "value": 20,
+            "tone": "red"
+          },
+          {
+            "label": "Sciences",
+            "value": 25,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Voici les notes obtenues par un groupe d'élèves : 12, 14, 12, 15, 14, 12, 13. Quelle est la note la plus fréquente (le mode) ?",
+      "options": [
+        "12",
+        "14",
+        "13",
+        "15"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La note 12 apparaît trois fois, alors que 14 apparaît deux fois, 13 et 15 une seule fois. Le mode est donc 12.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

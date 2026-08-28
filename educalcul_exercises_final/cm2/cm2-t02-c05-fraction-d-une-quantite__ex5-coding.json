@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 286,
+  "_course_code": "cm2-t02-c05-fraction-d-une-quantite",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Algorithmes pour calculer la fraction d'une quantité",
+  "blocks": [
+    {
+      "title": "La recette du calcul",
+      "content": "Pour calculer la fraction d'une quantité, on peut suivre un raisonnement logique. Écris les deux étapes de calcul nécessaires pour trouver les $\\frac{3}{4}$ de $120$ euros. Écris ton raisonnement comme un petit programme : \\nÉtape $1$ : ...\\nÉtape $2$ : ...",
+      "correctAnswer": "Étape $1$ : $120 \\div 4 = 30$\\nÉtape $2$ : $30 \\times 3 = 90$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer $\\frac{3}{4}$ de $120$, on divise d'abord la quantité par le dénominateur $4$ pour trouver la valeur d'une part, soit $120 \\div 4 = 30$. Ensuite, on multiplie ce résultat par le numérateur $3$ pour avoir trois parts, soit $30 \\times 3 = 90$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Créer une formule générale",
+      "content": "Imagine que tu dois créer une formule mathématique simple pour aider un robot à calculer la fraction d'une quantité. Si on appelle $Q$ la quantité, $n$ le numérateur et $d$ le dénominateur, comment le robot doit-il écrire ? Propose une expression utilisant les symboles $\\div$ et $\\times$.",
+      "correctAnswer": "Résultat $= (Q \\div d) \\times n$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle générale pour calculer la fraction d'une quantité consiste à diviser la quantité $Q$ par le dénominateur $d$ pour obtenir l'unité fractionnaire, puis à multiplier ce résultat par le numérateur $n$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pseudo-code de calcul",
+      "content": "Écris un petit algorithme en français pour calculer $\\frac{5}{8}$ de $200$ grammes de farine. Ton algorithme doit ressembler à ceci :\\n1. Prendre la quantité ...\\n2. La diviser par ...\\n3. Multiplier le résultat par ...\\n4. Donner le résultat final.",
+      "correctAnswer": "1. Prendre la quantité $200$\\n2. La diviser par $8$\\n3. Multiplier le résultat par $5$\\n4. Donner le résultat final qui est $125$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la méthode : $200$ divisé par $8$ égale $25$. Puis $25$ multiplié par $5$ égale $125$. Le résultat est donc $125$ grammes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

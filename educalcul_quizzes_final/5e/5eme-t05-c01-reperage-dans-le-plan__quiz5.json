@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Coordonnées relatifs",
+  "title": "Approfondissement : Coordonnées relatives",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé, le point A a pour abscisse $-3$ et pour ordonnée $4$. Quelles sont les coordonnées du point A ?",
+      "options": [
+        "(-3 ; 4)",
+        "(4 ; -3)",
+        "(3 ; -4)",
+        "(-4 ; 3)"
+      ],
+      "correctAnswer": "(-3 ; 4)",
+      "explanation": "Les coordonnées d'un point s'écrivent toujours dans l'ordre : (abscisse ; ordonnée). Ici, l'abscisse est $-3$ (sur l'axe des abscisses, à gauche de l'origine) et l'ordonnée est $4$ (sur l'axe des ordonnées, au-dessus de l'origine). La réponse correcte est donc $(-3 ; 4)$. L'option $(4 ; -3)$ inverse l'ordre. Les options $(3 ; -4)$ et $(-4 ; 3)$ comportent des erreurs de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point B a pour coordonnées $(5 ; -2)$. Dans quel quadrant se trouve le point B ?",
+      "options": [
+        "Premier quadrant",
+        "Deuxième quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Quatrième quadrant",
+      "explanation": "Les quadrants se numérotent dans le sens trigonométrique (inverse des aiguilles d'une montre) en partant du quadrant où abscisse et ordonnée sont positives. Premier quadrant : $(+ ; +)$. Deuxième quadrant : $(- ; +)$. Troisième quadrant : $(- ; -)$. Quatrième quadrant : $(+ ; -)$. Comme l'abscisse de B est $5$ (positive) et son ordonnée $-2$ (négative), B est dans le quatrième quadrant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point C a pour coordonnées $(-2 ; 3)$. Quel sont les coordonnées du point D, symétrique de C par rapport à l'axe des ordonnées (l'axe des y) ?",
+      "options": [
+        "(2 ; 3)",
+        "(-2 ; -3)",
+        "(2 ; -3)",
+        "(-3 ; 2)"
+      ],
+      "correctAnswer": "(2 ; 3)",
+      "explanation": "La symétrie par rapport à l'axe des ordonnées conserve l'ordonnée et change le signe de l'abscisse. L'abscisse de C est $-2$, elle devient $2$. L'ordonnée reste $3$. Les coordonnées de D sont donc $(2 ; 3)$. L'option $(-2 ; -3)$ correspond à une symétrie par rapport à l'origine. L'option $(2 ; -3)$ correspond à une symétrie par rapport à l'axe des abscisses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trois sommets d'un rectangle dont les côtés sont parallèles aux axes sont E$(-4 ; -1)$, F$(3 ; -1)$ et G$(3 ; 5)$. Quelles sont les coordonnées du quatrième sommet H ?",
+      "options": [
+        "(-4 ; 5)",
+        "(4 ; 5)",
+        "(-4 ; -5)",
+        "(3 ; -4)"
+      ],
+      "correctAnswer": "(-4 ; 5)",
+      "explanation": "Dans un rectangle aligné sur les axes, les sommets opposés partagent soit la même abscisse, soit la même ordonnée. E et F ont la même ordonnée $-1$ (côté horizontal). F et G ont la même abscisse $3$ (côté vertical). Le sommet H doit avoir la même abscisse que E ($-4$) et la même ordonnée que G ($5$). Donc H$(-4 ; 5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points I$(-6 ; 2)$ et J$(3 ; 2)$ sont alignés horizontalement. Quelle est la distance IJ ?",
+      "options": [
+        "3",
+        "9",
+        "6",
+        "5"
+      ],
+      "correctAnswer": "9",
+      "explanation": "Deux points alignés horizontalement ont la même ordonnée (ici $2$). La distance entre eux est la différence de leurs abscisses en valeur absolue. Abscisse de J : $3$. Abscisse de I : $-6$. Distance $= |3 - (-6)| = |3 + 6| = 9$. L'erreur frequente est de faire $3 - 6 = -3$ ou $|3| + |-6| = 9$ (qui marche ici mais pas toujours) ou de ne pas gérer le signe négatif.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

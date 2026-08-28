@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 412,
+  "_course_code": "5eme-t07-c03-echelles-et-vitesses-simples",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Formules",
+  "title": "Formules : échelles et vitesses",
+  "questions": [
+    {
+      "text": "Quelle formule permet de calculer la vitesse $v$ si l'on connaît la distance $d$ et le temps $t$ ?",
+      "options": [
+        "$v = d \\times t$",
+        "$v = d / t$",
+        "$v = t / d$",
+        "$v = d + t$"
+      ],
+      "correctAnswer": "$v = d / t$",
+      "explanation": "La vitesse est le quotient de la distance par le temps : $v = d / t$. Les autres options correspondent à des erreurs courantes : multiplication, inversion ou addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste roule à $15$ km/h pendant $2$ heures. Quelle distance parcourt-il ?",
+      "options": [
+        "$30$ km",
+        "$7,5$ km",
+        "$17$ km",
+        "$22,5$ km"
+      ],
+      "correctAnswer": "$30$ km",
+      "explanation": "La distance se calcule par $d = v \\times t = 15 \\times 2 = 30$ km. $7,5$ km correspondrait à une division, $17$ km à une addition, $22,5$ km à une multiplication par $1,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une carte est à l'échelle $1/50000$. Si deux villes sont séparées de $8$ cm sur la carte, quelle est la distance réelle en kilomètres ?",
+      "options": [
+        "$4$ km",
+        "$40$ km",
+        "$0,4$ km",
+        "$400$ km"
+      ],
+      "correctAnswer": "$4$ km",
+      "explanation": "Distance réelle = distance sur la carte × dénominateur de l'échelle : $8 \\times 50000 = 400000$ cm = $4$ km. Les autres valeurs correspondent à des erreurs de conversion (oubli de passer en km, facteur 10, 100).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une carte au $1/20000$, une route mesure $6$ km dans la réalité. Quelle longueur mesure-t-elle sur la carte en centimètres ?",
+      "options": [
+        "$30$ cm",
+        "$3$ cm",
+        "$300$ cm",
+        "$0,3$ cm"
+      ],
+      "correctAnswer": "$30$ cm",
+      "explanation": "Distance sur la carte = distance réelle / dénominateur : $6$ km = $600000$ cm, $600000 / 20000 = 30$ cm. $3$ cm correspond à une division par $200000$, $300$ cm à une multiplication, $0,3$ cm à une erreur de conversion km/cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un train parcourt $120$ km en $1$ h $30$ min. Quelle est sa vitesse moyenne en km/h ?",
+      "options": [
+        "$80$ km/h",
+        "$90$ km/h",
+        "$75$ km/h",
+        "$180$ km/h"
+      ],
+      "correctAnswer": "$80$ km/h",
+      "explanation": "Temps en heures : $1$ h $30$ min = $1,5$ h. Vitesse = distance / temps = $120 / 1,5 = 80$ km/h. $90$ km/h correspond à $120 / 1,33$, $75$ km/h à $120 / 1,6$, $180$ km/h à une multiplication par $1,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

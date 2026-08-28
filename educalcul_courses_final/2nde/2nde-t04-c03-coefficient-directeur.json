@@ -1,0 +1,498 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.072187+00:00",
+  "id": 517,
+  "code": "2nde-t04-c03",
+  "title": "Coefficient directeur",
+  "description": "Cours structuré Educalcul : Coefficient directeur.",
+  "subject": "Droites du plan et géométrie repérée",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Droites du plan et géométrie repérée",
+    "titre_du_cours": "Coefficient directeur",
+    "objectif_global": "Coefficient directeur",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Interpréter.",
+      "Tracer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Droites du plan et géométrie repérée",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que le coefficient directeur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au coefficient directeur. C'est une notion centrale en géométrie repérée : elle permet de quantifier l'inclinaison d'une droite. Imagine que tu marches sur un sentier de montagne ; la pente te dit si tu montes fort, si tu descends doucement ou si tu es sur du plat. En mathématiques, le coefficient directeur joue exactement ce rôle : c'est un nombre qui mesure la raideur d'une droite dans un repère."
+            },
+            {
+              "type": "definition",
+              "term": "Coefficient directeur",
+              "definition": "Soit une droite $D$ non parallèle à l'axe des ordonnées. On appelle coefficient directeur de $D$ le nombre réel $a$ tel que pour tout point $M(x,y)$ de $D$, on a $y = ax + b$, où $b$ est un réel (l'ordonnée à l'origine).",
+              "example": "Pour la droite d'équation $y = 2x + 3$, le coefficient directeur est $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Concrètement, si tu prends deux points distincts $A(x_A, y_A)$ et $B(x_B, y_B)$ sur une droite non verticale, le coefficient directeur $a$ se calcule par la formule fondamentale : $a = \\frac{y_B - y_A}{x_B - x_A}$. C'est le rapport de la variation de l'ordonnée (le « haut ») sur la variation de l'abscisse (le « droit »). Ce quotient ne dépend pas du choix des deux points : c'est une caractéristique intrinsèque de la droite."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite $y = 2x + 1$ : le coefficient directeur est $2$. Pour $1$ unité à droite, on monte de $2$ unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons ce graphique. La droite coupe l'axe des ordonnées en $y=1$. Si tu te places sur le point $(0,1)$ et que tu avances de $1$ vers la droite (abscisse $+1$), tu montes de $2$ (ordonnée $+2$) pour atterrir sur $(1,3)$. Ce déplacement de $1$ en $x$ et $2$ en $y$ illustre parfaitement le coefficient $2$. Essaie de prendre deux autres points sur la droite, par exemple $(-2,-3)$ et $(2,5)$ : le calcul donne $\\frac{5 - (-3)}{2 - (-2)} = \\frac{8}{4} = 2$. Le résultat est identique, quelle que soit la paire choisie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer deux points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis deux points $A$ et $B$ distincts sur la droite. Privilégie des points aux coordonnées entières pour simplifier les calculs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les variations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\Delta y = y_B - y_A$ (variation d'ordonnée) et $\\Delta x = x_B - x_A$ (variation d'abscisse). Attention à l'ordre : il faut soustraire les coordonnées du même point dans le numérateur et le dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le coefficient directeur est $a = \\frac{\\Delta y}{\\Delta x}$. Simplifie la fraction si possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à un exemple complet. Soit la droite passant par $A(-3, 4)$ et $B(2, -1)$. On calcule $\\Delta y = -1 - 4 = -5$ et $\\Delta x = 2 - (-3) = 5$. Donc $a = \\frac{-5}{5} = -1$. Le coefficient directeur est $-1$. Cela signifie que pour chaque pas de $1$ vers la droite, on descend de $1$. La droite « descend » en allant vers la droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment retrouver le coefficient directeur quand on connaît l'équation cartésienne de la droite. C'est souvent plus rapide : il suffit d'identifier le nombre devant le $x$ lorsque l'équation est mise sous la forme réduite $y = ax + b$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le coefficient dans l'équation réduite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Toute droite non verticale admet une équation de la forme $y = ax + b$. Le réel $a$ est exactement le coefficient directeur. Si l'équation n'est pas encore sous cette forme (par exemple $3x - 2y + 6 = 0$), il faut isoler $y$ : $-2y = -3x - 6$, donc $y = \\frac{3}{2}x + 3$. Le coefficient directeur est alors $\\frac{3}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "3x - 2y + 6 = 0 \\iff -2y = -3x - 6 \\iff y = \\frac{3}{2}x + 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : si la droite est parallèle à l'axe des ordonnées (équation $x = k$), elle n'a pas de coefficient directeur (on dit parfois qu'il est « infini » car $\\Delta x = 0$). C'est le seul cas où la notion ne s'applique pas. Pour une droite horizontale ($y = k$), le coefficient directeur est $0$ car $\\Delta y = 0$."
+            },
+            {
+              "type": "graph",
+              "expression": "1.5*x+3",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite $y = 1.5x + 3$ : coefficient directeur $1.5 = \\frac{3}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi qu'on te donne un vecteur directeur de la droite. Rappelle-toi : un vecteur $\\vec{u}(x_u, y_u)$ est directeur d'une droite si et seulement si le coefficient directeur de cette droite vaut $\\frac{y_u}{x_u}$ (à condition que $x_u \\neq 0$). C'est un lien direct avec le chapitre sur les vecteurs."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur directeur",
+              "definition": "Un vecteur $\\vec{u} \\neq \\vec{0}$ est directeur d'une droite $D$ si $\\vec{u}$ est parallèle à $D$. Si $\\vec{u} = \\begin{pmatrix} x_u \\\\ y_u \\end{pmatrix}$ avec $x_u \\neq 0$, alors le coefficient directeur de $D$ est $\\frac{y_u}{x_u}$.",
+              "example": "Le vecteur $\\vec{u} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$ est directeur d'une droite de coefficient directeur $\\frac{3}{2}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple : on te dit qu'une droite $D$ a pour vecteur directeur $\\vec{v} = \\begin{pmatrix} -4 \\\\ 6 \\end{pmatrix}$. Son coefficient directeur est $\\frac{6}{-4} = -\\frac{3}{2}$. Si on te donne un vecteur directeur avec une abscisse nulle, comme $\\begin{pmatrix} 0 \\\\ 5 \\end{pmatrix}$, la droite est verticale et n'a pas de coefficient directeur. Cette connexion vecteur/pente est très utile pour passer d'une représentation paramétrique à une équation cartésienne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, abordons un cas pratique fréquent : déterminer le coefficient directeur d'une droite passant par deux points dont les coordonnées sont des fractions ou des nombres relatifs. La méthode ne change pas, mais la vigilance sur les signes est cruciale. Par exemple, avec $A(\\frac{1}{2}, -3)$ et $B(-\\frac{3}{2}, 2)$, on a $\\Delta y = 2 - (-3) = 5$ et $\\Delta x = -\\frac{3}{2} - \\frac{1}{2} = -2$. Le coefficient est $a = \\frac{5}{-2} = -\\frac{5}{2}$. Prends le temps de bien écrire chaque étape ; c'est le secret pour éviter les erreurs de signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le coefficient directeur de la droite passant par les points $A(2, 5)$ et $B(6, 13)$.",
+              "answer": "2",
+              "hint": "Utilise la formule $a = \\frac{y_B - y_A}{x_B - x_A}$.",
+              "explanation": "$\\Delta y = 13 - 5 = 8$, $\\Delta x = 6 - 2 = 4$, donc $a = 8/4 = 2$."
+            },
+            {
+              "question": "Une droite a pour équation $4x - 5y + 10 = 0$. Quel est son coefficient directeur ?",
+              "answer": "$\\frac{4}{5}$",
+              "hint": "Mets l'équation sous la forme $y = ax + b$.",
+              "explanation": "On isole $y$ : $-5y = -4x - 10$, donc $y = \\frac{4}{5}x + 2$. Le coefficient directeur est $\\frac{4}{5}$."
+            },
+            {
+              "question": "Un vecteur directeur d'une droite est $\\vec{u} = \\begin{pmatrix} 3 \\\\ -7 \\end{pmatrix}$. Donne le coefficient directeur de cette droite.",
+              "answer": "$-\\frac{7}{3}$",
+              "hint": "Le coefficient directeur est le quotient de l'ordonnée du vecteur sur son abscisse.",
+              "explanation": "$a = \\frac{y_u}{x_u} = \\frac{-7}{3} = -\\frac{7}{3}$."
+            },
+            {
+              "question": "Détermine le coefficient directeur de la droite passant par $C(-2, -3)$ et $D(1, -3)$.",
+              "answer": "0",
+              "hint": "Calcule $\\Delta y$ et $\\Delta x$. Que vaut $\\Delta y$ ?",
+              "explanation": "$\\Delta y = -3 - (-3) = 0$, $\\Delta x = 1 - (-2) = 3$. Donc $a = 0/3 = 0$. La droite est horizontale."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe du coefficient : monte, descend ou plat ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer un coefficient directeur, il est temps de comprendre ce qu'il raconte sur la droite. Le signe de $a$ est une information visuelle immédiate : il te dit si la droite « monte », « descend » ou reste « plate » quand on la parcourt de la gauche vers la droite. C'est la première lecture intuitive que tu dois avoir en voyant un nombre $a$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $a > 0$, la droite est croissante : quand $x$ augmente, $y$ augmente aussi. Visuellement, la droite part du bas à gauche vers le haut à droite. Si $a < 0$, la droite est décroissante : quand $x$ augmente, $y$ diminue. Elle part du haut à gauche vers le bas à droite. Si $a = 0$, la droite est horizontale (parallèle à l'axe des abscisses) : $y$ ne change pas, quelle que soit la valeur de $x$."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*x-2",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite de coefficient $0.5 > 0$ : elle monte."
+            },
+            {
+              "type": "graph",
+              "expression": "-1.5*x+1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite de coefficient $-1.5 < 0$ : elle descend."
+            },
+            {
+              "type": "graph",
+              "expression": "3",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite de coefficient $0$ : horizontale $y=3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ces trois graphiques. Le premier ($a=0.5$) monte doucement. Le second ($a=-1.5$) descend assez raide. Le troisième ($a=0$) est parfaitement plat. Essaie d'imaginer le ressenti : un coefficient positif, c'est une côte à vélo ; un coefficient négatif, c'est une descente ; zéro, c'est du plat. Cette image mentale t'aidera à vérifier la cohérence de tes calculs : si tu trouves $a = -2$ pour une droite qui monte visiblement sur ton dessin, tu as fait une erreur de signe quelque part."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà du signe, la valeur absolue $|a|$ mesure la raideur, c'est-à-dire la vitesse de variation de $y$ par rapport à $x$. Plus $|a|$ est grand, plus la droite est « raide » (proche de la verticale). Plus $|a|$ est petit (proche de $0$), plus la droite est « plate » (proche de l'horizontale). C'est une notion de pente au sens physique : une pente de $10\\%$ correspond à $a = 0.1$, une pente de $100\\%$ à $a = 1$, une pente de $200\\%$ à $a = 2$."
+            },
+            {
+              "type": "definition",
+              "term": "Raideur (pente en pourcentage)",
+              "definition": "Pour un coefficient directeur $a$, la pente en pourcentage est $100 \\times |a|$. Elle exprime le gain d'altitude (en mètres) pour $100$ mètres d'horizontale.",
+              "example": "Une route avec un panneau « 12 % » a un coefficient directeur de $0.12$ (ou $-0.12$ selon le sens)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons trois droites : $y = 0.2x$ (très plate), $y = x$ (diagonale du premier quadrant, angle de $45^\\circ$), $y = 5x$ (très raide). Sur le graphique ci-dessous, tu vois que pour un même déplacement horizontal ($\\Delta x = 1$), le déplacement vertical est $0.2$, puis $1$, puis $5$. Le coefficient directeur est exactement ce déplacement vertical pour un pas horizontal de $1$. C'est pour cela qu'on dit qu'il est le « taux de variation » de la fonction affine associée."
+            },
+            {
+              "type": "graph",
+              "expression": "0.2*x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "$y = 0.2x$ : coefficient $0.2$, très peu raide."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "$y = x$ : coefficient $1$, angle de $45^\\circ$."
+            },
+            {
+              "type": "graph",
+              "expression": "5*x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "$y = 5x$ : coefficient $5$, très raide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Interpréter le coefficient directeur, c'est aussi le relier à des situations concrètes : vitesse, tarif, débit, etc. Dans une fonction affine $f(x) = ax + b$ qui modélise un phénomène réel, $a$ est le taux de variation unitaire. Par exemple, si un plombier facture $40 \\, \\text{\\euros}$ de déplacement plus $50 \\, \\text{\\euros}$ de l'heure, le prix total $P$ en fonction du nombre d'heures $h$ est $P(h) = 50h + 40$. Le coefficient directeur $50$ signifie : « chaque heure supplémentaire coûte $50 \\, \\text{\\euros}$ ». C'est une lecture quantitative directe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple : une voiture roule à vitesse constante. La distance $d$ (en km) en fonction du temps $t$ (en h) est $d(t) = 90t$ (si elle part de l'origine). Le coefficient $90$ est la vitesse : $90 \\, \\text{km/h}$. Ici, le coefficient directeur a une unité : $\\text{km/h}$. En mathématiques pures, $x$ et $y$ sont des nombres sans unité, mais en sciences, le coefficient directeur porte le sens physique du phénomène. C'est ce qui rend la notion si puissante : elle relie géométrie et grandeurs mesurables."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, sache que le coefficient directeur est lié à l'angle que la droite fait avec l'axe des abscisses (orienté positivement). Si $\\alpha$ est cet angle (avec $0^\\circ \\le \\alpha < 180^\\circ$, $\\alpha \\neq 90^\\circ$), alors $a = \\tan(\\alpha)$. C'est la définition trigonométrique de la pente. Pour $a=1$, $\\alpha = 45^\\circ$ ; pour $a=\\sqrt{3}$, $\\alpha = 60^\\circ$ ; pour $a=-1$, $\\alpha = 135^\\circ$. Cette relation sera approfondie en première, mais tu peux déjà l'utiliser pour visualiser : un coefficient très grand (en valeur absolue) correspond à un angle proche de $90^\\circ$ (droite presque verticale)."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = \\tan(\\alpha) \\quad (\\alpha \\in [0^\\circ, 180^\\circ[ \\setminus \\{90^\\circ\\})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le coefficient directeur d'une droite est $-3$. Cette droite est-elle croissante ou décroissante ?",
+              "answer": "Décroissante",
+              "hint": "Regarde le signe du coefficient.",
+              "explanation": "Comme $a = -3 < 0$, la droite est décroissante : quand $x$ augmente, $y$ diminue."
+            },
+            {
+              "question": "Parmi les droites de coefficients $0.2$, $-4$, $1.5$ et $-0.8$, laquelle est la plus raide (la plus pentue) ?",
+              "answer": "Celle de coefficient $-4$",
+              "hint": "Compare les valeurs absolues.",
+              "explanation": "Les valeurs absolues sont $0.2$, $4$, $1.5$, $0.8$. La plus grande est $4$, donc la droite de coefficient $-4$ est la plus raide."
+            },
+            {
+              "question": "Un abonnement téléphonique coûte $15 \\, \\text{\\euros}$ par mois plus $0.10 \\, \\text{\\euros}$ par minute d'appel. Si $x$ est le nombre de minutes et $P(x)$ le prix total, quel est le coefficient directeur de la fonction $P$ et que représente-t-il ?",
+              "answer": "Le coefficient directeur est $0.10$. Il représente le prix d'une minute d'appel (en euros).",
+              "hint": "Écris l'expression de $P(x)$ sous la forme $ax + b$.",
+              "explanation": "$P(x) = 0.10x + 15$. Le coefficient de $x$ est $0.10$. C'est l'augmentation du prix pour une minute supplémentaire."
+            },
+            {
+              "question": "Une droite forme un angle de $135^\\circ$ avec le demi-axe des abscisses positif. Quel est son coefficient directeur ?",
+              "answer": "-1",
+              "hint": "Utilise la relation $a = \\tan(\\alpha)$.",
+              "explanation": "$a = \\tan(135^\\circ) = \\tan(180^\\circ - 45^\\circ) = -\\tan(45^\\circ) = -1$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer une droite connaissant un point et le coefficient directeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon : passer du nombre au tracé. On te donne souvent un point $A$ et le coefficient directeur $a$, ou bien l'équation réduite $y = ax + b$. L'objectif est de dessiner la droite avec précision dans le repère. La méthode la plus simple et la plus robuste utilise la définition même du coefficient : « pour $1$ en $x$, $a$ en $y$ »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer le point connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le point $A(x_A, y_A)$ sur la feuille. Si tu as l'équation $y = ax + b$, le point le plus facile est l'intersection avec l'axe des ordonnées : $A(0, b)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser le coefficient comme un déplacement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis $A$, déplace-toi de $1$ unité vers la droite (si $a>0$) ou vers la gauche (si $a<0$, mais on préfère aller à droite et descendre). Ensuite, déplace-toi de $|a|$ unités vers le haut (si $a>0$) ou vers le bas (si $a<0$). Tu obtiens un second point $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la droite passant par $A$ et $B$ à la règle. Prolonge-la dans les deux sens. Vérifie éventuellement avec un troisième point."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple : trace la droite de coefficient directeur $a = -\\frac{2}{3}$ passant par $A(2, 4)$. Depuis $A$, avance de $3$ unités vers la droite (le dénominateur) pour aller en abscisse $5$. Puis descend de $2$ unités (le numérateur, avec le signe moins) pour aller en ordonnée $2$. Tu obtiens $B(5, 2)$. Trace la droite $(AB)$. Pourquoi avancer de $3$ ? Parce que le coefficient est une fraction : pour un déplacement horizontal de $3$, le vertical est $-2$. C'est plus précis que d'avancer de $1$ quand $a$ n'est pas un entier."
+            },
+            {
+              "type": "graph",
+              "expression": "-2/3*x + 16/3",
+              "xmin": -2,
+              "xmax": 8,
+              "caption": "Droite passant par $A(2,4)$ de coefficient $-2/3$. Le point $B(5,2)$ est obtenu par un déplacement de $+3$ en $x$ et $-2$ en $y$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand l'équation est donnée sous la forme réduite $y = ax + b$, la méthode est encore plus rapide : le point $A(0, b)$ est déjà sur la droite (c'est l'ordonnée à l'origine). Tu n'as qu'à le placer, puis à appliquer le déplacement « $1$ en $x$, $a$ en $y$ » (ou « dénominateur en $x$, numérateur en $y$ » si $a$ est fractionnaire). C'est la méthode standard pour tracer une fonction affine."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $y = -1.5x + 2$. Ici $b=2$, donc $A(0,2)$. Le coefficient $a = -1.5 = -\\frac{3}{2}$. Depuis $A$, avance de $2$ (dénominateur) vers la droite : abscisse $2$. Descend de $3$ (numérateur) : ordonnée $-1$. Point $B(2, -1)$. Trace la droite. Vérifie : quand $x=2$, $y = -1.5 \\times 2 + 2 = -3 + 2 = -1$. Cela correspond. Cette vérification est un bon réflexe pour être sûr de ton tracé."
+            },
+            {
+              "type": "graph",
+              "expression": "-1.5*x+2",
+              "xmin": -3,
+              "xmax": 5,
+              "caption": "Tracé de $y = -1.5x + 2$ par la méthode du pas : $A(0,2)$, $B(2,-1)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te demande de tracer une droite parallèle à une droite donnée et passant par un point. Deux droites sont parallèles si et seulement si elles ont le même coefficient directeur (ou si toutes deux sont verticales). Donc, tu récupères le coefficient $a$ de la droite donnée, et tu traces la droite passant par le point imposé avec ce même $a$. C'est une application directe de ce qu'on vient de faire."
+            },
+            {
+              "type": "definition",
+              "term": "Droites parallèles",
+              "definition": "Deux droites non verticales sont parallèles si et seulement si elles ont le même coefficient directeur. Deux droites verticales sont parallèles.",
+              "example": "Les droites $y = 2x + 1$ et $y = 2x - 5$ sont parallelles (même coefficient $2$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : trace la droite parallèle à $y = \\frac{1}{2}x - 3$ passant par $C(-4, 1)$. Le coefficient directeur est $a = \\frac{1}{2}$. Place $C(-4, 1)$. Puisque $a = \\frac{1}{2}$, avance de $2$ en $x$ (abscisse $-2$) et monte de $1$ en $y$ (ordonnée $2$) pour obtenir $D(-2, 2)$. Trace $(CD)$. Facile, non ? La propriété de parallélisme transforme un problème de position en un simple tracé avec coefficient connu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "N'oublie pas les cas particuliers : tracer une droite horizontale ($a=0$) ou verticale (pas de coefficient). Pour $y = k$, c'est une horizontale passant par $(0,k)$. Pour $x = k$, c'est une verticale passant par $(k,0)$. Ces droites se tracent en un coup de règle, sans calcul de déplacement. Elles sont les « garde-fous » du repère : l'une ne monte jamais, l'autre ne va ni à gauche ni à droite."
+            },
+            {
+              "type": "graph",
+              "expression": "3",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite horizontale $y = 3$ (coefficient $0$)."
+            },
+            {
+              "type": "graph",
+              "expression": "1000*(x+2)",
+              "xmin": -3,
+              "xmax": -1,
+              "caption": "Approximation visuelle d'une droite verticale $x = -2$ (pente très grande)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, un conseil d'organisation : quand tu traces plusieurs droites dans le même repère (par exemple pour résoudre un système graphiquement), utilise des couleurs différentes ou des traits pointillés / trait plein. Note l'équation à côté de chaque droite. Un schéma propre et lisible vaut mieux qu'un dessin brouillon où l'on ne distingue plus rien. La géométrie repérée, c'est aussi de la communication visuelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le coefficient directeur à partir de deux points : $a = \\frac{y_B - y_A}{x_B - x_A}$.",
+                "Je sais identifier le coefficient directeur dans l'équation réduite $y = ax + b$.",
+                "Je sais déduire le coefficient directeur d'un vecteur directeur $\\vec{u}(x_u, y_u)$ : $a = \\frac{y_u}{x_u}$ (si $x_u \\neq 0$).",
+                "J'interprète le signe de $a$ : $a>0$ croissante, $a<0$ décroissante, $a=0$ horizontale.",
+                "J'interprète la valeur absolue $|a|$ comme la raideur (pente).",
+                "Je relie le coefficient directeur à un taux de variation dans un contexte concret (vitesse, prix unitaire...).",
+                "Je sais tracer une droite connaissant un point et le coefficient directeur (méthode du pas).",
+                "Je sais tracer une droite à partir de son équation réduite $y = ax + b$ (point $A(0,b)$ + pas).",
+                "Je sais tracer une droite parallèle à une droite donnée passant par un point (même coefficient).",
+                "Je gère les cas particuliers : horizontale ($a=0$) et verticale (pas de coefficient)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace la droite de coefficient directeur $2$ passant par le point $A(1, -1)$. Donne les coordonnées d'un second point utilisé pour le tracé.",
+              "answer": "Un second point est $B(2, 1)$ (ou $B(0, -3)$ en allant vers la gauche).",
+              "hint": "Depuis $A$, avance de $1$ en $x$ et monte de $2$ en $y$ (car $a=2$).",
+              "explanation": "Depuis $A(1,-1)$, $+1$ en $x \\to 2$, $+2$ en $y \\to 1$. Donc $B(2,1)$. La droite passe par $A$ et $B$."
+            },
+            {
+              "question": "Trace la droite d'équation $y = -\\frac{3}{4}x + 1$. Quels sont les points utilisés ?",
+              "answer": "Point $A(0,1)$ (ordonnée à l'origine) et point $B(4, -2)$ (en avançant de $4$ en $x$ et descendant de $3$ en $y$).",
+              "hint": "Identifie $b$ pour le premier point. Utilise le dénominateur et le numérateur de $a$ pour le déplacement.",
+              "explanation": "$b=1 \\Rightarrow A(0,1)$. $a=-\\frac{3}{4} \\Rightarrow$ déplacement $+4$ en $x$, $-3$ en $y$. $B(4, -2)$."
+            },
+            {
+              "question": "Trace la droite parallèle à $y = -2x + 5$ passant par $C(3, 0)$. Donne un second point de cette droite.",
+              "answer": "La droite a pour coefficient $-2$. Un second point est $D(4, -2)$ (ou $D(2, 2)$).",
+              "hint": "Les parallèles ont même coefficient. Utilise la méthode du pas depuis $C$.",
+              "explanation": "Coefficient $a = -2$. Depuis $C(3,0)$, $+1$ en $x \\to 4$, $-2$ en $y \\to -2$. Donc $D(4,-2)$."
+            },
+            {
+              "question": "Quelle est l'équation de la droite horizontale passant par le point $E(-2, 7)$ ? Trace-la.",
+              "answer": "L'équation est $y = 7$. C'est une horizontale passant par tous les points d'ordonnée $7$.",
+              "hint": "Une horizontale a pour coefficient $0$ et pour équation $y = \\text{constante}$.",
+              "explanation": "Le coefficient directeur est $0$. L'équation est $y = 7$. Le tracé est une ligne horizontale passant par $E$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

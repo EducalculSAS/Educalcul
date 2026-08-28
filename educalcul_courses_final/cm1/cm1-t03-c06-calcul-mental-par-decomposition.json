@@ -1,0 +1,418 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.197691+00:00",
+  "id": 231,
+  "code": "cm1-t03-c06",
+  "title": "Calcul mental par décomposition",
+  "description": "Cours structuré Educalcul : Calcul mental par décomposition.",
+  "subject": "Calcul mental et quatre opérations",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Calcul mental et quatre opérations",
+    "titre_du_cours": "Calcul mental par décomposition",
+    "objectif_global": "Calcul mental par décomposition",
+    "mini_lecons_imposees": [
+      "Distributivité intuitive.",
+      "Compensation.",
+      "Choisir stratégie."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et quatre opérations",
+      "lessons": [
+        {
+          "title": "Distributivité intuitive.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer pour multiplier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ boîtes de crayons. Dans chaque boîte, il y a $14$ crayons. Pour savoir combien tu as de crayons au total, tu pourrais les compter un par un, mais cela prendrait trop de temps. Heureusement, tu sais déjà décomposer les nombres : $14$, c'est $10$ et $4$. Tu peux donc calculer les dizaines d'un côté et les unités de l'autre."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 4,
+              "caption": "Le nombre 14 : 1 dizaine et 4 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la décomposition : $14 = 10 + 4$. Si tu as $3$ fois $14$, tu as en réalité $3$ fois $10$ et $3$ fois $4$. C'est la distributivité : tu partages la multiplication sur les deux parties du nombre. Tu calcules $3 \\times 10 = 30$ et $3 \\times 4 = 12$. Il ne te reste plus qu'à additionner : $30 + 12 = 42$. Tu as trouvé $42$ crayons au total sans avoir rien compté un par un."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sépare le nombre à deux chiffres en dizaines et unités. Pour $14$, c'est $10$ et $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le multiplicateur par les dizaines, puis par les unités. Ici $3 \\times 10$ et $3 \\times 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets bout à bout les deux résultats : $30 + 12 = 42$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche aussi si le nombre à décomposer est le second. Prenons $5 \\times 12$. Tu vois tout de suite que $12$ fait $10 + 2$. Tu vas donc faire $5 \\times 10$ et $5 \\times 2$. C'est souvent plus facile de multiplier par $10$ : il suffit d'ajouter un zéro au chiffre des unités. $5 \\times 10 = 50$. Et $5 \\times 2 = 10$. En ajoutant $50 + 10$, tu trouves $60$. Essaie de visualiser les paquets de $10$ et les petits morceaux qui restent."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 12,
+              "caption": "12 se décompose en 1 dizaine et 2 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque comme le tableau de numération aide à voir les dizaines et les unités distinctement. Quand tu décomposes $12$ en $10 + 2$, tu transformes une multiplication un peu difficile en deux toutes petites multiplications que tu connais par cœur. C'est exactement comme si tu partageais un gros sac de billes en deux plus petits sacs faciles à porter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, c'est l'autre nombre qu'on a envie de décomposer. Regarde $6 \\times 14$. Tu peux voir $14$ comme $10 + 4$, mais tu peux aussi voir $6$ comme $5 + 1$ si tu sais bien ta table de $5$. Essaie les deux façons : $6 \\times (10 + 4)$ donne $60 + 24 = 84$. Et $(5 + 1) \\times 14$ donne $70 + 14 = 84$. Les deux chemins mènent au même résultat. Choisis celui qui te semble le plus simple selon les tables que tu maîtrises le mieux."
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\times (b + c) = a \\times b + a \\times c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir un outil puissant : découper un calcul en morceaux plus petits. Dans la prochaine leçon, nous verrons une autre astuce qui consiste à arrondir les nombres pour rendre le calcul encore plus rapide, avant de corriger le tir."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $4 \\times 13$ en décomposant $13$ en $10 + 3$.",
+              "answer": "52",
+              "hint": "Fais $4 \\times 10$ puis $4 \\times 3$ et additionne.",
+              "explanation": "$13 = 10 + 3$. Donc $4 \\times 13 = 4 \\times 10 + 4 \\times 3 = 40 + 12 = 52$."
+            },
+            {
+              "question": "Calcule $6 \\times 12$ en décomposant $12$.",
+              "answer": "72",
+              "hint": "Décompose $12$ en $10 + 2$. Multiplie $6$ par chaque partie.",
+              "explanation": "$12 = 10 + 2$. $6 \\times 10 = 60$. $6 \\times 2 = 12$. $60 + 12 = 72$."
+            },
+            {
+              "question": "Pour $7 \\times 15$, propose deux décompositions différentes et donne le résultat.",
+              "answer": "105",
+              "hint": "Tu peux décomposer $15$ en $10+5$ ou $7$ en $5+2$.",
+              "explanation": "Méthode 1 : $7 \\times (10+5) = 70+35=105$. Méthode 2 : $(5+2) \\times 15 = 75+30=105$."
+            },
+            {
+              "question": "Un paquet contient $16$ feutres. Combien de feutres dans $3$ paquets ? Utilise la décomposition.",
+              "answer": "48",
+              "hint": "Décompose $16$ en $10 + 6$. Multiplie par $3$.",
+              "explanation": "$16 = 10 + 6$. $3 \\times 10 = 30$. $3 \\times 6 = 18$. $30 + 18 = 48$ feutres."
+            }
+          ]
+        },
+        {
+          "title": "Compensation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La stratégie de compensation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un nombre est tout près d'une dizaine facile à multiplier, comme $9$, $19$ ou $29$. Au lieu de le décomposer, on peut l'arrondir à la dizaine supérieure, faire le calcul facile, puis retirer ce qu'on a ajouté en trop. C'est ce qu'on appelle la compensation. C'est comme si tu empruntais quelques unités pour faire une dizaine ronde, puis tu les rendais après le calcul."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "On arrondit 9 à 10 pour calculer plus vite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $7 \\times 9$. Multiplier par $9$ n'est pas toujours immédiat. Mais multiplier par $10$, c'est enfantin : $7 \\times 10 = 70$. Comme on a ajouté $1$ fois $7$ en arrondissant $9$ à $10$, il faut retirer ce $1 \\times 7 = 7$. Le calcul final devient $70 - 7 = 63$. Tu as transformé une multiplication un peu difficile en une multiplication par $10$ suivie d'une soustraction simple."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Arrondir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nombre proche d'une dizaine (9, 19, 29...). Arrondis-le à la dizaine supérieure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le multiple arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la multiplication facile avec la dizaine. Exemple : $7 \\times 10 = 70$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compenser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Retire ce que tu as ajouté en trop. Ici, on a ajouté $1 \\times 7$, donc on retire $7$. $70 - 7 = 63$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette astuce marche aussi quand le nombre est juste au-dessus d'une dizaine, comme $11$, $21$ ou $31$. Là, on arrondit à la dizaine inférieure. Pour $8 \\times 11$, on pense $8 \\times 10 = 80$. Mais on a oublié $1$ fois $8$ car $11$ c'est $10 + 1$. Il faut donc ajouter ce $8$ manquant : $80 + 8 = 88$. Tu as compensé dans l'autre sens : tu as enlevé trop au début, tu remets ce qui manque."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 90,
+              "points": [
+                {
+                  "value": 80,
+                  "label": "8 x 10"
+                },
+                {
+                  "value": 88,
+                  "label": "8 x 11"
+                }
+              ],
+              "intervals": [],
+              "caption": "On part de 80 (8x10) et on saute 8 de plus pour atteindre 88 (8x11)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec des nombres plus grands, la compensation devient encore plus impressionnante. Essaie $4 \\times 19$. Arrondis $19$ à $20$. $4 \\times 20 = 80$. Comme $19$ c'est $20 - 1$, tu as ajouté $1$ fois $4$ en trop. Tu retires $4$ : $80 - 4 = 76$. Regarde comme le tableau de numération montre bien que $19$ n'est qu'à un pas de $20$. C'est souvent plus rapide que de décomposer $19$ en $10 + 9$ et de faire deux multiplications."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 19,
+              "caption": "19 est tout proche de 20 (2 dizaines)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment savoir si la compensation est la meilleure idée ? Regarde le chiffre des unités. S'il est $9$ (ou $8$ parfois), arrondis à la dizaine supérieure et soustrais. S'il est $1$ (ou $2$), arrondis à la dizaine inférieure et ajoute. Pour les autres chiffres ($3, 4, 5, 6, 7$), la décomposition vue dans la leçon précédente est souvent plus naturelle. Tu as maintenant deux outils dans ta boîte à outils."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $6 \\times 9$ par compensation (arrondis $9$ à $10$).",
+              "answer": "54",
+              "hint": "Fais $6 \\times 10$ puis retire $1 \\times 6$.",
+              "explanation": "$6 \\times 10 = 60$. On a ajouté $1 \\times 6 = 6$. $60 - 6 = 54$."
+            },
+            {
+              "question": "Calcule $5 \\times 11$ par compensation (arrondis $11$ à $10$).",
+              "answer": "55",
+              "hint": "Fais $5 \\times 10$ puis ajoute $1 \\times 5$.",
+              "explanation": "$5 \\times 10 = 50$. Il manquait $1 \\times 5 = 5$. $50 + 5 = 55$."
+            },
+            {
+              "question": "Calcule $8 \\times 19$ par compensation.",
+              "answer": "152",
+              "hint": "Arrondis $19$ à $20$. $8 \\times 20 = 160$. Retire ce qui est en trop.",
+              "explanation": "$19 → 20$. $8 \\times 20 = 160$. On a ajouté $1 \\times 8 = 8$. $160 - 8 = 152$."
+            },
+            {
+              "question": "Lequel de ces calculs est le plus adapté à la compensation : $7 \\times 13$ ou $7 \\times 19$ ? Justifie et calcule le bon.",
+              "answer": "$7 \\times 19 = 133$",
+              "hint": "Regarde le chiffre des unités : 3 ou 9 ? Lequel est tout près d'une dizaine ?",
+              "explanation": "$19$ finit par $9$, il est tout près de $20$. On compense : $7 \\times 20 = 140$, on retire $7$, résultat $133$. Pour $13$, la décomposition ($10+3$) est plus simple."
+            }
+          ]
+        },
+        {
+          "title": "Choisir stratégie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quelle stratégie choisir ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant deux super-pouvoirs pour le calcul mental : la décomposition (leçon 1) et la compensation (leçon 2). Le vrai défi, maintenant, c'est de savoir lequel sortir de ta poche selon le calcul qui t'attend. C'est comme un bricoleur qui choisit entre un marteau et un tournevis : les deux sont utiles, mais pas pour la même vis."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Calcul",
+                "Stratégie idéale",
+                "Pourquoi ?"
+              ],
+              "rows": [
+                [
+                  "$6 \\times 14$",
+                  "Décomposition",
+                  "$14 = 10 + 4$, facile à découper"
+                ],
+                [
+                  "$6 \\times 19$",
+                  "Compensation",
+                  "$19$ tout près de $20$, on arrondit"
+                ],
+                [
+                  "$8 \\times 12$",
+                  "Décomposition",
+                  "$12 = 10 + 2$, tables simples"
+                ],
+                [
+                  "$8 \\times 21$",
+                  "Compensation",
+                  "$21$ tout près de $20$, on arrondit"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le tableau : quand le chiffre des unités est $0, 1, 2, 5$, la décomposition est souvent reine car les tables de $2$ et $5$ sont faciles. Quand le chiffre des unités est $8$ ou $9$, la compensation brille car on est à un ou deux pas d'une dizaine ronde. Pour $3, 4, 6, 7$, les deux marchent, mais la décomposition est souvent plus sûre car elle ne demande pas de soustraction ou d'addition finale en plus."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous à flairer la bonne méthode. Devant $7 \\times 18$, que vois-tu ? Le $8$ des unités te crie \"Arrondis-moi à $20$ !\". C'est de la compensation : $7 \\times 20 = 140$, moins $2 \\times 7 = 14$, fait $126$. Devant $5 \\times 24$, le $4$ ne crie pas fort. Mais $5$ adore les dizaines. Décompose $24$ en $20 + 4$ : $5 \\times 20 = 100$, $5 \\times 4 = 20$, total $120$. Tu sens la différence ? L'un t'invite à arrondir, l'autre à découper."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Facilité perçue selon le chiffre des unités (1=dur, 5=facile)",
+              "bars": [
+                {
+                  "label": "Unités 1,2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Unités 3,4,6,7",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Unités 5",
+                  "value": 5,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Unités 8,9",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux stratégies donnent le même travail. Pour $4 \\times 25$, tu peux décomposer $25$ en $20 + 5$ ($80 + 20 = 100$) ou compenser $25$ vers $20$ ou $30$ (moins naturel). Là, la décomposition gagne car $25$ est un quart de $100$ et $4 \\times 25$ fait $100$ direct si tu connais ce repère. L'essentiel, c'est d'avoir le choix. Tu n'es plus obligé de poser l'opération pour tout calcul un peu grand. Tu gagnes du temps et de la confiance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en dizaines et unités pour multiplier (ex: $14 \\times 3$).",
+                "Je sais arrondir un nombre à la dizaine proche et compenser (ex: $19 \\times 4$).",
+                "Je sais choisir la meilleure stratégie selon le chiffre des unités.",
+                "Je calcule mentalement des multiplications comme $7 \\times 12$ ou $6 \\times 18$ sans les poser."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $8 \\times 13$, quelle stratégie choisis-tu ? Calcule.",
+              "answer": "104 (Décomposition : $8 \\times 10 + 8 \\times 3 = 80 + 24 = 104$)",
+              "hint": "Regarde le chiffre des unités de $13$. Est-il près de $10$ ou de $20$ ?",
+              "explanation": "$13$ finit par $3$. Pas près d'une dizaine ronde. Décomposition $10+3$ idéale. $80+24=104$."
+            },
+            {
+              "question": "Pour $9 \\times 19$, quelle stratégie choisis-tu ? Calcule.",
+              "answer": "171 (Compensation : $9 \\times 20 - 9 = 180 - 9 = 171$)",
+              "hint": "$19$ est très proche de $20$. Arrondis et compense.",
+              "explanation": "$19 → 20$. $9 \\times 20 = 180$. Retire $1 \\times 9 = 9$. $180 - 9 = 171$."
+            },
+            {
+              "question": "Un carnet a $16$ pages. Combien de pages dans $5$ carnets ? Choisis ta méthode et explique ton choix en une phrase.",
+              "answer": "80 pages (Décomposition : $5 \\times 10 + 5 \\times 6 = 50 + 30 = 80$)",
+              "hint": "Décompose $16$ ou arrondis ? $16$ finit par $6$.",
+              "explanation": "$16 = 10 + 6$. $5 \\times 10 = 50$, $5 \\times 6 = 30$. $50+30=80$. La décomposition est naturelle car $6$ n'est pas près de $10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

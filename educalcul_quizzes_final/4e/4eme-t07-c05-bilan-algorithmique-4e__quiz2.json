@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Checklist",
+  "title": "Quiz Algorithmique 4e : La Checklist de Verification",
+  "questions": [
+    {
+      "text": "A quoi sert principalement une checklist en algorithmique avant de programmer ?",
+      "options": [
+        "Verifier uniquement la syntaxe du code ecrit",
+        "Executer le programme pas a pas pour trouver les bugs",
+        "Verifier la logique, la structure et les variables avant de coder",
+        "Dessiner le diagramme de flux correspondant"
+      ],
+      "correctAnswer": "Verifier la logique, la structure et les variables avant de coder",
+      "explanation": "La checklist est une liste de points de controle utilissee lors de la conception (sur papier) pour s'assurer que l'algorithme est correct logiquement : initialisation des variables, conditions de boucles, modifications des compteurs, instructions de sortie, etc. Elle precede l'ecriture du code dans un langage de programmation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer la somme des entiers de $1$ a $N$. Voici le debut de l'algorithme :\\nSOMME <- ...\\nPOUR I DE 1 A N FAIRE\\n    SOMME <- SOMME + I\\nFIN POUR\\nAFFICHER SOMME\\nQuel point de la checklist est oublie ici et rend l'algorithme incorrect ?",
+      "options": [
+        "L'initialisation de la variable I",
+        "La condition d'arret de la boucle POUR",
+        "L'initialisation de la variable SOMME a $0$",
+        "L'incrementation de I dans la boucle"
+      ],
+      "correctAnswer": "L'initialisation de la variable SOMME a $0$",
+      "explanation": "Avant d'accumuler des valeurs dans une variable accumulateur (SOMME), il est obligatoire de l'initialiser a la valeur neutre de l'operation, ici $0$ pour l'addition. Sans cela, SOMME contient une valeur indeterminee (souvent $0$ par defaut mais pas garantie), ce qui fausse le resultat. La boucle POUR gere automatiquement l'initialisation, la condition et l'incrementation de I.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Analysez cet algorithme avec une boucle TANT QUE :\\nI <- 0\\nTANT QUE I < 10 FAIRE\\n    AFFICHER I\\n    I <- I + 2\\nFIN TANT QUE\\nCombien de fois l'instruction AFFICHER est-elle executee ?",
+      "options": [
+        "10 fois",
+        "5 fois",
+        "9 fois",
+        "Une infinite de fois (boucle infinie)"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "La checklist impose de verifier la coherence entre l'initialisation (I=0), la condition (I<10) et la modification (I+2). Les valeurs de I sont : 0, 2, 4, 6, 8 (affichage), puis I devient 10, la condition I<10 devient fausse, la boucle s'arrete. Il y a donc 5 iterations. L'erreur frequente est de penser que l'incrementation est de 1 (donc 10 fois) ou de ne pas verifier que la condition devient bien fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel point de la checklist permet de detecter le risque de boucle infinie dans l'algorithme suivant ?\\nX <- 10\\nTANT QUE X > 0 FAIRE\\n    AFFICHER X\\n    X <- X + 1\\nFIN TANT QUE",
+      "options": [
+        "Verifier le type de la variable X",
+        "Verifier que la modification de X dans la boucle tend vers la condition d'arret",
+        "Verifier l'initialisation de X avant la boucle",
+        "Verifier la presence d'une instruction AFFICHER"
+      ],
+      "correctAnswer": "Verifier que la modification de X dans la boucle tend vers la condition d'arret",
+      "explanation": "La condition d'arret est X > 0 (on veut que X devienne <= 0). Or, dans la boucle, on fait X <- X + 1, ce qui eloigne X de 0 (X grandit : 10, 11, 12...). La checklist doit controler que l'instruction de modification du compteur (ou de la variable de controle) fait converger l'algorithme vers la fin de la boucle. Ici, il fallait decrementer (X <- X - 1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour verifier un algorithme complet calculant la moyenne de 5 notes, dans quel ordre logique appliquer les points principaux de la checklist ?",
+      "options": [
+        "1. Affichage final -> 2. Calcul moyenne -> 3. Boucle lecture/somme -> 4. Initialisation somme",
+        "1. Initialisation somme -> 2. Structure boucle (init, cond, modif) -> 3. Calcul dans boucle -> 4. Calcul final -> 5. Affichage",
+        "1. Syntaxe exacte des mots-cles -> 2. Indentation -> 3. Noms des variables -> 4. Logique",
+        "1. Condition d'arret -> 2. Initialisation -> 3. Incrementation -> 4. Instructions hors boucle"
+      ],
+      "correctAnswer": "1. Initialisation somme -> 2. Structure boucle (init, cond, modif) -> 3. Calcul dans boucle -> 4. Calcul final -> 5. Affichage",
+      "explanation": "La checklist suit l'ordre d'execution logique du programme (flux descendant). On commence par l'etat initial (initialisation des accumulateurs), puis on controle la structure iterative (initialisation index, condition arret, modification index), ensuite le traitement a l'interieur de la boucle (somme), puis les calculs post-boucle (moyenne), et enfin la sortie (affichage). Les options 1 et 4 melangent l'ordre, l'option 3 concerne la forme (syntaxe) pas la logique algorithmique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

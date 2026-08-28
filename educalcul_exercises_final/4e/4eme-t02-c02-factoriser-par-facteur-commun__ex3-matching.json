@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Vérifier en développant",
+  "title": "Factorisation : Vérifier en développant",
+  "blocks": [
+    {
+      "title": "Niveau 1 : Développements simples",
+      "content": "Relie chaque expression factorisée à sa forme développée correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3(x + 4)$",
+          "right": "$3x + 12$"
+        },
+        {
+          "left": "$5(2y - 3)$",
+          "right": "$10y - 15$"
+        },
+        {
+          "left": "$-2(a + 7)$",
+          "right": "$-2a - 14$"
+        },
+        {
+          "left": "$x(x + 5)$",
+          "right": "$x^2 + 5x$"
+        },
+        {
+          "left": "$4(3m - 2n)$",
+          "right": "$12m - 8n$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour vérifier une factorisation, on développe l'expression factorisée en appliquant la distributivité : $k(a + b) = ka + kb$. Attention aux signes : moins fois plus donne moins, moins fois moins donne plus. Pour $x(x+5)$, on obtient $x \\times x + x \\times 5 = x^2 + 5x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 2 : Coefficients et signes délicats",
+      "content": "Relie chaque expression factorisée à sa forme développée correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$-4(2x - 5)$",
+          "right": "$-8x + 20$"
+        },
+        {
+          "left": "$3x(2x + 1)$",
+          "right": "$6x^2 + 3x$"
+        },
+        {
+          "left": "$-y(5 - y)$",
+          "right": "$-5y + y^2$"
+        },
+        {
+          "left": "$2a(3a - 4b)$",
+          "right": "$6a^2 - 8ab$"
+        },
+        {
+          "left": "$-3(2m + n - 4)$",
+          "right": "$-6m - 3n + 12$"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique la distributivité en gérant soigneusement les signes. Exemple : $-4(2x - 5) = -4 \\times 2x -4 \\times (-5) = -8x + 20$. Pour $-y(5 - y)$, on a $-y \\times 5 - y \\times (-y) = -5y + y^2$. Le terme $-3 \\times (-4)$ donne bien $+12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 3 : Factorisation inverse (reconnaissance)",
+      "content": "Relie chaque forme développée à son expression factorisée (le facteur commun est mis en évidence).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$10x^2 - 15x$",
+          "right": "$5x(2x - 3)$"
+        },
+        {
+          "left": "$-8y - 6$",
+          "right": "$-2(4y + 3)$"
+        },
+        {
+          "left": "$6a^2 + 15ab$",
+          "right": "$3a(2a + 5b)$"
+        },
+        {
+          "left": "$-x^2 + 6x$",
+          "right": "$-x(x - 6)$"
+        },
+        {
+          "left": "$8m - 12n + 4$",
+          "right": "$4(2m - 3n + 1)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Ici, on part de la forme développée pour retrouver la forme factorisée. On cherche le plus grand facteur commun aux coefficients et aux variables. Pour $10x^2 - 15x$, le facteur commun est $5x$, d'où $5x(2x - 3)$. Pour $-8y - 6$, on peut factoriser par $-2$ pour obtenir $-2(4y + 3)$. Vérifie toujours en redéveloppant : $-x(x - 6) = -x^2 + 6x$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

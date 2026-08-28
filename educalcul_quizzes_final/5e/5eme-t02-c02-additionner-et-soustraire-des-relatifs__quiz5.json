@@ -1,0 +1,144 @@
+{
+  "_status": "done",
+  "_course_id": 385,
+  "_course_code": "5eme-t02-c02-additionner-et-soustraire-des-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Sens déplacement",
+  "title": "Quiz : Sens des déplacements avec les nombres relatifs",
+  "questions": [
+    {
+      "text": "On se place sur la graduation $0$ d'une droite graduée. On effectue un déplacement de $+3$ puis un déplacement de $+4$. Sur quelle graduation arrive-t-on ?",
+      "options": [
+        "On arrive sur la graduation $7$.",
+        "On arrive sur la graduation $-7$.",
+        "On arrive sur la graduation $1$.",
+        "On arrive sur la graduation $-1$."
+      ],
+      "correctAnswer": "On arrive sur la graduation $7$.",
+      "explanation": "Un déplacement positif correspond à un déplacement vers la droite (dans le sens croissant). En partant de $0$, on avance de $3$ graduations vers la droite (on arrive à $3$), puis on avance encore de $4$ graduations vers la droite. On se trouve donc à la graduation $3 + 4 = 7$. Les autres options correspondent à des erreurs de sens (vers la gauche) ou de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Déplacements successifs +3 puis +4 depuis 0",
+        "min": -2,
+        "max": 10,
+        "points": [
+          {
+            "value": 0,
+            "label": "Départ"
+          },
+          {
+            "value": 3,
+            "label": "Étape 1"
+          },
+          {
+            "value": 7,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On se trouve sur la graduation $2$. On ajoute le nombre relatif $-5$. Quel déplacement effectue-t-on et où arrive-t-on ?",
+      "options": [
+        "On se déplace de $5$ graduations vers la droite et on arrive sur $7$.",
+        "On se déplace de $5$ graduations vers la gauche et on arrive sur $-3$.",
+        "On se déplace de $2$ graduations vers la gauche et on arrive sur $0$.",
+        "On se déplace de $3$ graduations vers la droite et on arrive sur $5$."
+      ],
+      "correctAnswer": "On se déplace de $5$ graduations vers la gauche et on arrive sur $-3$.",
+      "explanation": "Ajouter un nombre relatif négatif (ici $-5$) correspond à un déplacement vers la gauche (dans le sens décroissant) d'une longueur égale à la valeur absolue de ce nombre, soit $5$ graduations. En partant de $2$, on recule de $5$ : $2 - 5 = -3$. L'option A confond le signe (déplacement à droite), l'option C utilise le nombre de départ comme longueur de déplacement, et l'option D fait une erreur de calcul et de sens.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Ajouter -5 en partant de 2",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": 2,
+            "label": "Départ"
+          },
+          {
+            "value": -3,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Comment représenter l'opération $4 - 6$ par un déplacement sur une droite graduée ?",
+      "options": [
+        "On part de $4$ et on avance de $6$ graduations vers la droite.",
+        "On part de $4$ et on recule de $6$ graduations vers la gauche.",
+        "On part de $-4$ et on avance de $6$ graduations vers la droite.",
+        "On part de $6$ et on recule de $4$ graduations vers la gauche."
+      ],
+      "correctAnswer": "On part de $4$ et on recule de $6$ graduations vers la gauche.",
+      "explanation": "Soustraire un nombre relatif positif (ici $6$) revient à ajouter son opposé ($-6$). Cela correspond à un déplacement vers la gauche de $6$ graduations. Le point de départ est le premier nombre de l'opération, soit $4$. On arrive donc sur $4 - 6 = -2$. L'option A correspond à l'addition $4 + 6$. L'option C change le point de départ. L'option D inverse les nombres de l'opération.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Représentation de 4 - 6",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": 4,
+            "label": "Départ"
+          },
+          {
+            "value": -2,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quel déplacement correspond à l'opération $-2 - (-3)$ ?",
+      "options": [
+        "On part de $-2$ et on recule de $3$ graduations vers la gauche.",
+        "On part de $-2$ et on avance de $3$ graduations vers la droite.",
+        "On part de $-2$ et on avance de $5$ graduations vers la droite.",
+        "On reste sur $-2$ car soustraire un négatif ne change rien."
+      ],
+      "correctAnswer": "On part de $-2$ et on avance de $3$ graduations vers la droite.",
+      "explanation": "Soustraire un nombre relatif négatif ($-3$) revient à ajouter son opposé, c'est-à-dire $+3$. L'opération $-2 - (-3)$ est équivalente à $-2 + 3$. On part donc de $-2$ et on effectue un déplacement de $+3$, soit $3$ graduations vers la droite. On arrive sur $1$. L'option A correspond à $-2 + (-3)$ ou $-2 - 3$. L'option C additionne les valeurs absolues. L'option D est une confusion fréquente sur le signe de l'opération.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Représentation de -2 - (-3)",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -2,
+            "label": "Départ"
+          },
+          {
+            "value": 1,
+            "label": "Arrivée"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Un mobile se trouve au point $-4$ sur une droite graduée. Il effectue successivement les déplacements $+6$, puis $-3$, puis $-(-2)$. Sur quelle graduation se trouve-t-il à la fin ?",
+      "options": [
+        "Il se trouve sur la graduation $1$.",
+        "Il se trouve sur la graduation $-1$.",
+        "Il se trouve sur la graduation $3$.",
+        "Il se trouve sur la graduation $-9$."
+      ],
+      "correctAnswer": "Il se trouve sur la graduation $1$.",
+      "explanation": "On calcule la position finale en additionnant les déplacements au point de départ : $-4 + 6 - 3 - (-2)$. On simplifie les signes : $-4 + 6 - 3 + 2$. On calcule par étapes : $-4 + 6 = 2$ ; $2 - 3 = -1$ ; $-1 + 2 = 1$. Le mobile arrive sur la graduation $1$. L'option $-1$ correspond à l'oubli du dernier déplacement $-(-2)=+2$. L'option $3$ correspond à une erreur de signe sur le deuxième déplacement ($+3$ au lieu de $-3$). L'option $-9$ correspond à une erreur de sens sur tous les déplacements.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

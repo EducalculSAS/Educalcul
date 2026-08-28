@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unité d'aire",
+  "title": "Algorithmes pour calculer l'aire d'un rectangle",
+  "blocks": [
+    {
+      "title": "Question 1 : Compléter un algorithme simple",
+      "content": "On veut écrire un algorithme qui calcule l'aire d'un rectangle en pavant avec des carrés de 1 cm de côté. L'algorithme demande la longueur et la largeur en centimètres, puis affiche l'aire en cm².\\nComplète les lignes manquantes (représentées par ...) pour que l'algorithme fonctionne correctement.\\n\\nALGORITHME AireRectangle\\n    Demander longueur\\n    Demander largeur\\n    aire ← ...\\n    Afficher aire\\nFIN",
+      "correctAnswer": "aire ← longueur × largeur",
+      "explanation": "Pour calculer l'aire d'un rectangle par pavage, on compte le nombre de carrés unitaires qui le recouvrent. Ce nombre s'obtient en multipliant le nombre de carrés sur la longueur par le nombre de carrés sur la largeur. Dans l'algorithme, l'instruction d'affectation utilise la flèche ← pour stocker le résultat du calcul dans la variable 'aire'. La formule mathématique est donc $longueur \\times largeur$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Écrire un algorithme complet avec unité",
+      "content": "Écris un algorithme complet (avec les mots-clés DEBUT, FIN, variables, calcul et affichage) qui :\\n- Demande à l'utilisateur la longueur $L$ et la largeur $l$ d'un rectangle en mètres.\\n- Calcule l'aire $A$ en mètres carrés ($m^2$).\\n- Affiche le résultat sous la forme : \"L'aire est de ... m²\".\\n\\nUtilise une syntaxe simple style Python ou pseudo-code structuré.",
+      "correctAnswer": "DEBUT\\n    Afficher \"Entrez la longueur en mètres : \"\\n    Lire L\\n    Afficher \"Entrez la largeur en mètres : \"\\n    Lire l\\n    A ← L * l\\n    Afficher \"L'aire est de \", A, \" m²\"\\nFIN",
+      "explanation": "Un algorithme complet commence par DEBUT et finit par FIN. On utilise des variables (L, l, A) pour stocker les valeurs. L'instruction 'Lire' permet de récupérer la saisie utilisateur. Le calcul de l'aire utilise la multiplication ($L \\times l$). L'affichage final concatène du texte et la valeur de la variable A pour indiquer le résultat avec son unité ($m^2$).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Algorithme avec condition sur l'unité",
+      "content": "On souhaite améliorer l'algorithme précédent pour qu'il gère deux unités : le mètre (m) et le centimètre (cm).\\nL'algorithme doit :\\n1. Demander l'unité choisie (saisir \"m\" ou \"cm\").\\n2. Demander la longueur et la largeur dans cette unité.\\n3. Calculer l'aire.\\n4. Afficher le résultat avec la bonne unité d'aire ($m^2$ ou $cm^2$).\\n\\nÉcris cet algorithme en utilisant une structure conditionnelle (SI ... ALORS ... SINON ... FIN SI).",
+      "correctAnswer": "DEBUT\\n    Afficher \"Choisissez l'unité (m ou cm) : \"\\n    Lire unite\\n    Afficher \"Entrez la longueur : \"\\n    Lire L\\n    Afficher \"Entrez la largeur : \"\\n    Lire l\\n    A ← L * l\\n    SI unite = \"m\" ALORS\\n        Afficher \"L'aire est de \", A, \" m²\"\\n    SINON\\n        Afficher \"L'aire est de \", A, \" cm²\"\\n    FIN SI\\nFIN",
+      "explanation": "Cet algorithme introduit une variable 'unite' pour stocker le choix de l'utilisateur. La structure conditionnelle SI...ALORS...SINON...FIN SI permet d'exécuter un affichage différent selon la valeur de 'unite'. Le calcul de l'aire ($A \\leftarrow L \\times l$) reste identique car il ne dépend que des valeurs numériques saisies. C'est l'affichage final qui s'adapte pour écrire l'unité d'aire correcte ($m^2$ ou $cm^2$).",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

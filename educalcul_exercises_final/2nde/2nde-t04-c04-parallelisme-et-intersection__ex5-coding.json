@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Comparer pentes",
+  "title": "Approfondissement : Comparer pentes",
+  "blocks": [
+    {
+      "title": "Comparaison de pentes à partir d'équations cartésiennes",
+      "content": "Les droites $d_1$ et $d_2$ ont pour équations respectives $2x - 3y + 5 = 0$ et $4x - 6y - 7 = 0$. Déterminer si les droites sont parallèles, confondues ou sécantes en comparant leurs pentes.",
+      "correctAnswer": "On met les équations sous forme réduite $y = ax + b$. Pour $d_1$ : $3y = 2x + 5$ donc $y = \\frac{2}{3}x + \\frac{5}{3}$, pente $a_1 = \\frac{2}{3}$. Pour $d_2$ : $6y = 4x - 7$ donc $y = \\frac{2}{3}x - \\frac{7}{6}$, pente $a_2 = \\frac{2}{3}$. Les pentes sont égales, les droites sont parallèles. Comme les ordonnées à l'origine sont différentes ($\\frac{5}{3} \\neq -\\frac{7}{6}$), les droites sont distinctes, donc parallèles non confondues.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On transforme chaque équation en forme réduite $y = ax + b$ pour lire directement la pente $a$. Si les pentes sont différentes, les droites sont sécantes. Si elles sont égales, on compare les ordonnées à l'origine $b$ : si elles sont égales, les droites sont confondues ; sinon elles sont parallèles distinctes. Ici $a_1 = a_2 = 2/3$ et $b_1 = 5/3$, $b_2 = -7/6$, donc parallèles distinctes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de pentes à partir de points",
+      "content": "On donne les points $A(1;2)$, $B(4;5)$ et $C(-2;0)$, $D(1;3)$. Calculer les pentes des droites $(AB)$ et $(CD)$ et conclure sur leur position relative.",
+      "correctAnswer": "Pente de $(AB)$ : $\\frac{5-2}{4-1} = \\frac{3}{3}=1$. Pente de $(CD)$ : $\\frac{3-0}{1-(-2)} = \\frac{3}{3}=1$. Les pentes sont égales, les droites sont parallèles. Vérifier si elles sont confondues : l'équation de $(AB)$ : $y-2 = 1(x-1)$ soit $y = x+1$. Pour $C(-2;0)$ : $0 = -2+1 = -1$ faux, donc $C$ n'appartient pas à $(AB)$. Les droites sont parallèles distinctes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La pente d'une droite passant par deux points $(x_1,y_1)$ et $(x_2,y_2)$ est $\\frac{y_2-y_1}{x_2-x_1}$. On calcule les deux pentes ; elles sont toutes deux égales à 1, donc les droites sont parallèles. Pour savoir si elles sont confondues, on vérifie si un point de la seconde droite satisfait l'équation de la première. Le point $C$ ne satisfait pas $y = x+1$, donc les droites sont distinctes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de comparaison de deux droites",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée les coefficients $a_1,b_1,c_1$ et $a_2,b_2,c_2$ de deux droites $d_1 : a_1x + b_1y + c_1 = 0$ et $d_2 : a_2x + b_2y + c_2 = 0$ (avec $b_1 \\neq 0$ et $b_2 \\neq 0$) et qui affiche \"confondues\", \"parallèles\" ou \"sécantes\" selon leur position relative. L'algorithme doit comparer les pentes $-\\frac{a_1}{b_1}$ et $-\\frac{a_2}{b_2}$ et, le cas échéant, les ordonnées à l'origine.",
+      "correctAnswer": "Algorithme :\\n1. Lire a1, b1, c1, a2, b2, c2.\\n2. Calculer m1 = -a1 / b1, m2 = -a2 / b2.\\n3. Si m1 != m2 alors afficher \"sécantes\".\\n4. Sinon (m1 == m2) : calculer y0_1 = -c1 / b1, y0_2 = -c2 / b2.\\n5. Si y0_1 == y0_2 alors afficher \"confondues\" sinon afficher \"parallèles\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La pente d'une droite $ax+by+c=0$ (avec $b\\neq0$) est $-a/b$. On compare d'abord les pentes : si elles diffèrent, les droites se coupent (sécantes). Si elles sont égales, les droites sont parallèles ; pour distinguer le cas confondu, on compare les ordonnées à l'origine $-c/b$. Si elles sont égales, les deux droites coïncident ; sinon elles sont parallèles distinctes. L'algorithme implémente exactement ce raisonnement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

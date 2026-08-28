@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Effet sur longueurs",
+  "title": "Quiz : Effet d'une homothétie sur les longueurs",
+  "questions": [
+    {
+      "text": "Un segment $AB$ mesure $6$ cm. Il est transformé par une homothétie de centre $O$ et de rapport $2$. Quelle est la longueur de l'image $A'B'$ ?",
+      "options": [
+        "3 cm",
+        "6 cm",
+        "12 cm",
+        "24 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "L'homothétie multiplie toutes les longueurs par la valeur absolue du rapport. Ici $|2| = 2$, donc $6 \\times 2 = 12$ cm. Les autres options correspondent à une division par 2, à l'absence de changement ou à une multiplication par 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une homothétie de rapport $-3$ est appliquée à un segment de longueur $4$ cm. Quelle est la longueur de son image ?",
+      "options": [
+        "-12 cm",
+        "12 cm",
+        "4/3 cm",
+        "4 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "Le signe du rapport n'influence pas la longueur, seule sa valeur absolue compte. $|{-3}| = 3$, donc $4 \\times 3 = 12$ cm. L'option « -12 cm » confond longueur et vecteur, « 4/3 cm » correspond à l'inverse du rapport, et « 4 cm » à l'absence de transformation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, le côté $BC$ mesure $10$ cm. Une homothétie de centre $A$ et de rapport $\\frac{1}{2}$ est effectuée. Quelle est la longueur de $B'C'$ ?",
+      "options": [
+        "2,5 cm",
+        "5 cm",
+        "10 cm",
+        "20 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "Le rapport $\\frac{1}{2}$ divise les longueurs par 2. Ainsi $10 \\times \\frac{1}{2} = 5$ cm. Les distracteurs correspondent à une division par 4, à l'absence de changement et à une multiplication par 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique successivement deux homothéties de même centre : la première de rapport $2$, la seconde de rapport $\\frac{3}{2}$. Un segment initial mesure $5$ cm. Quelle est sa longueur finale ?",
+      "options": [
+        "5 cm",
+        "10 cm",
+        "15 cm",
+        "30 cm"
+      ],
+      "correctAnswer": "15 cm",
+      "explanation": "Le rapport global est le produit des rapports : $2 \\times \\frac{3}{2} = 3$. La longueur finale est $5 \\times 3 = 15$ cm. « 5 cm » ignore les transformations, « 10 cm » ne prend en compte que la première, et « 30 cm » multiplie par 6 au lieu de 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après une homothétie de rapport $3$, l'image d'un segment mesure $18$ cm. Quelle était la longueur du segment initial ?",
+      "options": [
+        "6 cm",
+        "9 cm",
+        "12 cm",
+        "24 cm"
+      ],
+      "correctAnswer": "6 cm",
+      "explanation": "Pour retrouver la longueur initiale, on divise la longueur de l'image par la valeur absolue du rapport : $18 \\div 3 = 6$ cm. « 9 cm » correspond à une division par 2, « 12 cm » à une division par 1,5 et « 24 cm » à une multiplication par $\\frac{4}{3}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

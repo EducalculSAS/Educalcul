@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 73,
+  "_course_code": "ce1-t01-c06-decomposer-et-recomposer-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Décomposer et recomposer jusqu'à 1 000",
+  "title": "Quiz : Décomposer et recomposer jusqu'à 1 000",
+  "questions": [
+    {
+      "text": "Observe la représentation en matériel de numération. Quelle est la décomposition en centaines, dizaines et unités du nombre représenté ?",
+      "options": [
+        "4 centaines, 3 dizaines, 7 unités",
+        "4 centaines, 7 dizaines, 3 unités",
+        "3 centaines, 4 dizaines, 7 unités",
+        "43 dizaines, 7 unités"
+      ],
+      "correctAnswer": "4 centaines, 3 dizaines, 7 unités",
+      "explanation": "Le matériel montre 4 plaques de centaines (400), 3 barres de dizaines (30) et 7 cubes d'unités (7). Le nombre est donc $400 + 30 + 7 = 437$. La décomposition canonique est 4 centaines, 3 dizaines, 7 unités. L'option 2 inverse les dizaines et les unités. L'option 3 confond les centaines et les dizaines. L'option 4 est une décomposition possible mais non canonique (43 dizaines = 430).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 4,
+        "tens": 3,
+        "units": 7,
+        "caption": "Représentation de 437"
+      }
+    },
+    {
+      "text": "Quel nombre correspond à la décomposition suivante : 6 centaines, 0 dizaine, 8 unités ?",
+      "options": [
+        "68",
+        "608",
+        "680",
+        "806"
+      ],
+      "correctAnswer": "608",
+      "explanation": "6 centaines font 600, 0 dizaine fait 0, 8 unités font 8. En recomposant : $600 + 0 + 8 = 608$. L'option 1 oublie la centaine et la dizaine. L'option 3 place le 8 au rang des dizaines. L'option 4 inverse les centaines et les unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces décompositions, laquelle est FAUSSE pour le nombre 503 ?",
+      "options": [
+        "5 centaines, 0 dizaine, 3 unités",
+        "4 centaines, 10 dizaines, 3 unités",
+        "50 dizaines, 3 unités",
+        "5 centaines, 1 dizaine, 3 unités"
+      ],
+      "correctAnswer": "5 centaines, 1 dizaine, 3 unités",
+      "explanation": "Calculons chaque option : A) $500 + 0 + 3 = 503$ (vrai). B) $400 + 100 + 3 = 503$ (vrai, 10 dizaines = 1 centaine). C) $500 + 3 = 503$ (vrai, 50 dizaines = 5 centaines). D) $500 + 10 + 3 = 513$, ce qui n'est pas 503. C'est la fausse décomposition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'égalité : 4 centaines + $...$ dizaines + 6 unités = 476",
+      "options": [
+        "7",
+        "6",
+        "17",
+        "70"
+      ],
+      "correctAnswer": "7",
+      "explanation": "On a 4 centaines (400) et 6 unités (6). Il manque les dizaines pour arriver à 476. $476 - 400 - 6 = 70$. 70 correspond à 7 dizaines. L'option 2 reprend le chiffre des unités. L'option 3 confond le nombre de dizaines (17 dizaines = 170). L'option 4 donne la valeur des dizaines (70) et non le nombre de dizaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a 3 boîtes de 100 billes, 12 sachets de 10 billes et 4 billes en vrac. Combien a-t-il de billes au total ?",
+      "options": [
+        "3124",
+        "424",
+        "324",
+        "434"
+      ],
+      "correctAnswer": "424",
+      "explanation": "3 boîtes de 100 = 300 billes. 12 sachets de 10 = 120 billes (soit 1 centaine et 2 dizaines). 4 billes = 4 unités. Total : $300 + 120 + 4 = 424$. On peut recomposer : 3 centaines + 12 dizaines + 4 unités = 4 centaines + 2 dizaines + 4 unités = 424. L'option 1 concatène les nombres. L'option 3 oublie de convertir 10 dizaines en 1 centaine (3 centaines + 2 dizaines + 4 unités). L'option 4 ajoute une centaine de trop.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

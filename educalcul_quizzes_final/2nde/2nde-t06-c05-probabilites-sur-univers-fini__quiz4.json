@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Probabilités sur univers fini",
+  "title": "Probabilités sur univers fini - Applications",
+  "questions": [
+    {
+      "text": "Une urne contient 3 boules rouges, 5 boules bleues et 2 boules vertes. On tire une boule au hasard. Quelle est la probabilité d'obtenir une boule rouge ?",
+      "options": [
+        "$3/10$",
+        "$3/8$",
+        "$5/10$",
+        "$2/10$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "L'univers comporte 3 + 5 + 2 = 10 boules. L'événement \"boule rouge\" contient 3 issues favorables. La probabilité est donc 3/10. Les autres options correspondent à des dénominateurs erronés ou à d'autres couleurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé équilibré à six faces. Soit A l'événement \"résultat pair\" et B l'événement \"résultat strictement supérieur à 3\". Quelle est la probabilité de l'événement A ∪ B ?",
+      "options": [
+        "$2/3$",
+        "$1/2$",
+        "$5/6$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$2/3$",
+      "explanation": "A = {2,4,6}, B = {4,5,6}. L'union A ∪ B = {2,4,5,6} contient 4 issues sur 6. La probabilité est 4/6 = 2/3. L'option 1/2 correspond à P(A) seule, 5/6 à une union mal comptée, 1/3 à l'intersection.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 30 élèves, 18 étudient l'espagnol, 12 l'allemand et 5 les deux langues. On choisit un élève au hasard. Quelle est la probabilité qu'il étudie l'espagnol ou l'allemand (ou les deux) ?",
+      "options": [
+        "$5/6$",
+        "$3/5$",
+        "$2/3$",
+        "$7/10$"
+      ],
+      "correctAnswer": "$5/6$",
+      "explanation": "Par inclusion-exclusion : 18 + 12 - 5 = 25 élèves étudient au moins une des deux langues. La probabilité est 25/30 = 5/6. Les autres fractions correspondent à des calculs sans soustraction de l'intersection ou à des approximations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac contient 4 boules blanches et 6 boules noires. On tire deux boules sans remise. Quelle est la probabilité que les deux boules soient blanches ?",
+      "options": [
+        "$2/15$",
+        "$4/25$",
+        "$1/5$",
+        "$3/10$"
+      ],
+      "correctAnswer": "$2/15$",
+      "explanation": "Probabilité première blanche = 4/10. Après ce tirage, il reste 3 blanches sur 9 boules, donc 3/9. Le produit (4/10)*(3/9) = 12/90 = 2/15. L'option 4/25 correspond à un tirage avec remise, 1/5 à 4/10 simplifié, 3/10 à une seule tirage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux fois une pièce équilibrée. Soit C l'événement \"au moins un face\". Quelle est la probabilité de C ?",
+      "options": [
+        "$3/4$",
+        "$1/2$",
+        "$1/4$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "Les 4 issues équivalentes sont : FF, FP, PF, PP (F = face, P = pile). L'événement C contient les trois premières, donc 3/4. L'option 1/2 correspond à exactement une face, 1/4 à deux faces, 2/3 n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

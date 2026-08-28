@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Définir",
+  "title": "Définition de fonctions simples en Python",
+  "blocks": [
+    {
+      "title": "Fonction carré",
+      "content": "Écris la définition en Python d'une fonction nommée $carre$ qui prend en paramètre un nombre $x$ et qui renvoie le carré de ce nombre.",
+      "correctAnswer": "def carre(x):\\n    return x * x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour définir une fonction en Python, on utilise le mot-clé $def$ suivi du nom de la fonction et des parenthèses contenant le ou les paramètres. Le corps de la fonction est indenté (décalé vers la droite). Le mot-clé $return$ permet de renvoyer la valeur calculée. Ici, le carré de $x$ s'écrit $x * x$ (ou $x ** 2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction moyenne de deux nombres",
+      "content": "Écris la définition en Python d'une fonction nommée $moyenne$ qui prend deux paramètres $a$ et $b$ (des nombres) et qui renvoie leur moyenne arithmétique.",
+      "correctAnswer": "def moyenne(a, b):\\n    return (a + b) / 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction prend deux paramètres séparés par une virgule dans les parenthèses. La moyenne arithmétique de $a$ et $b$ se calcule par $(a + b) / 2$. Les parenthèses autour de $a + b$ sont importantes pour que l'addition soit effectuée avant la division. L'indentation (quatre espaces ou une tabulation) est obligatoire pour délimiter le corps de la fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction test de parité",
+      "content": "Écris la définition en Python d'une fonction nommée $est\\_pair$ qui prend en paramètre un entier $n$ et qui renvoie $True$ si $n$ est pair, $False$ sinon.",
+      "correctAnswer": "def est_pair(n):\\n    return n % 2 == 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'opérateur $\\%$ (modulo) donne le reste de la division entière. Un entier $n$ est pair si et seulement si le reste de sa division par $2$ est nul, c'est-à-dire si $n \\% 2 == 0$. Cette expression de comparaison renvoie directement une valeur booléenne ($True$ ou $False$), ce qui permet de l'utiliser directement après $return$ sans structure $if/else$ supplémentaire.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

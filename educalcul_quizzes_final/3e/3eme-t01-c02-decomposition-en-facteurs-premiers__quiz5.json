@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Décomposer",
+  "title": "Approfondissement : Décomposition en facteurs premiers",
+  "questions": [
+    {
+      "text": "Quelle est la décomposition en facteurs premiers de $252$ ?",
+      "options": [
+        "$2^2 \\times 3^2 \\times 7$",
+        "$2 \\times 3^2 \\times 7$",
+        "$2^2 \\times 3 \\times 7$",
+        "$2^3 \\times 3^2 \\times 7$"
+      ],
+      "correctAnswer": "$2^2 \\times 3^2 \\times 7$",
+      "explanation": "On divise successivement par les nombres premiers : $252 = 2 \\times 126 = 2 \\times 2 \\times 63 = 2^2 \\times 3 \\times 21 = 2^2 \\times 3 \\times 3 \\times 7 = 2^2 \\times 3^2 \\times 7$. L'option B oublie un facteur 2, l'option C oublie un facteur 3, l'option D ajoute un facteur 2 en trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Décomposez $1050$ en produit de facteurs premiers.",
+      "options": [
+        "$2 \\times 3 \\times 5^2 \\times 7$",
+        "$2 \\times 3^2 \\times 5^2 \\times 7$",
+        "$2 \\times 3 \\times 5 \\times 7^2$",
+        "$2^2 \\times 3 \\times 5^2 \\times 7$"
+      ],
+      "correctAnswer": "$2 \\times 3 \\times 5^2 \\times 7$",
+      "explanation": "On termine par les diviseurs évidents : $1050 = 10 \\times 105 = (2 \\times 5) \\times (5 \\times 21) = 2 \\times 5^2 \\times 3 \\times 7 = 2 \\times 3 \\times 5^2 \\times 7$. L'option B ajoute un 3 en trop, l'option C met le 7 au carré au lieu du 5, l'option D met le 2 au carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $360 = 2^3 \\times 3^2 \\times 5$ et $504 = 2^3 \\times 3^2 \\times 7$. Quelle est la fraction $\\frac{360}{504}$ simplifiée ?",
+      "options": [
+        "$\\frac{5}{7}$",
+        "$\\frac{5}{6}$",
+        "$\\frac{6}{7}$",
+        "$\\frac{15}{21}$"
+      ],
+      "correctAnswer": "$\\frac{5}{7}$",
+      "explanation": "Le PGCD de 360 et 504 est le produit des facteurs communs avec les plus petits exposants : $2^3 \\times 3^2 = 8 \\times 9 = 72$. En divisant le numérateur et le dénominateur par 72, on obtient $\\frac{360 \\div 72}{504 \\div 72} = \\frac{5}{7}$. La fraction $\\frac{15}{21}$ n'est pas irréductible (divisible par 3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre entier a pour décomposition en facteurs premiers $2^3 \\times 3 \\times 5^2$. Quel est ce nombre ?",
+      "options": [
+        "300",
+        "600",
+        "900",
+        "1200"
+      ],
+      "correctAnswer": "600",
+      "explanation": "Il suffit de calculer le produit : $2^3 = 8$, $5^2 = 25$. Le nombre vaut $8 \\times 3 \\times 25 = 24 \\times 25 = 600$. On peut aussi calculer $8 \\times 75 = 600$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus petit entier naturel non nul qui est à la fois multiple de $18$ et de $28$ ?",
+      "options": [
+        "126",
+        "252",
+        "504",
+        "756"
+      ],
+      "correctAnswer": "252",
+      "explanation": "On cherche le PPCM de 18 et 28. $18 = 2 \\times 3^2$ et $28 = 2^2 \\times 7$. Le PPCM est le produit des facteurs premiers avec les plus grands exposants : $2^2 \\times 3^2 \\times 7 = 4 \\times 9 \\times 7 = 252$. 126 n'est pas multiple de 28, 504 et 756 sont des multiples communs mais pas les plus petits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

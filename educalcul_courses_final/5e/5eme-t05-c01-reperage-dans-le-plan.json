@@ -1,0 +1,545 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.738949+00:00",
+  "id": 400,
+  "code": "5eme-t05-c01",
+  "title": "Repérage dans le plan",
+  "description": "Cours structuré Educalcul : Repérage dans le plan.",
+  "subject": "Repérage, transformations et géométrie dans l'espace",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Repérage, transformations et géométrie dans l'espace",
+    "titre_du_cours": "Repérage dans le plan",
+    "objectif_global": "Repérage dans le plan",
+    "mini_lecons_imposees": [
+      "Coordonnées relatifs.",
+      "Placer.",
+      "Lire déplacement."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Repérage, transformations et géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Coordonnées relatifs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le plan et ses axes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau chapitre où nous allons apprendre à nous repérer dans un plan grâce à des nombres, y compris des nombres négatifs. Imagine une grande feuille quadrillée qui s'étend à l'infini dans toutes les directions : à droite, à gauche, en haut et en bas. Au centre de cette feuille, nous plaçons un point spécial que l'on appelle l'origine, noté $O$. De l'origine partent deux droites perpendiculaires : l'axe horizontal, que l'on nomme l'axe des abscisses, et l'axe vertical, que l'on nomme l'axe des ordonnées. Chaque point du plan peut alors être désigné par deux nombres : le premier indique à quelle distance il se trouve de l'origine vers la droite (positif) ou vers la gauche (négatif), le second indique la distance vers le haut (positif) ou vers le bas (négatif). C'est exactement comme donner une adresse avec une rue et un numéro, sauf que là nous avons deux numéros. Prends le temps de visualiser cette grande croix au milieu de la page ; elle sera ton repère pour tout le reste du cours."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses avec valeurs positives et négatives",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 2,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu l'axe horizontal, nous allons donner un nom précis à chaque nombre qui compose l'adresse d'un point."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Abscisse et ordonnée"
+            },
+            {
+              "type": "definition",
+              "term": "abscisse",
+              "definition": "L'abscisse d'un point est sa coordonnée horizontale, c'est-à-dire le nombre qui indique sa position sur l'axe des abscisses par rapport à l'origine.",
+              "example": "Pour le point $A(3; -2)$, l'abscisse est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "ordonnée",
+              "definition": "L'ordonnée d'un point est sa coordonnée verticale, c'est-à-dire le nombre qui indique sa position sur l'axe des ordonnées par rapport à l'origine.",
+              "example": "Pour le point $A(3; -2)$, l'ordonnée est $-2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque point du plan s'écrit donc sous la forme d'un couple ordonné $(x ; y)$ où $x$ est l'abscisse et $y$ l'ordonnée. Le point $O$ lui-même a pour coordonnées $(0 ; 0)$. Si tu te déplaces de $4$ unités vers la droite puis de $5$ unités vers le haut, tu arrives au point de coordonnées $(4 ; 5)$. Si tu vas vers la gauche, l'abscisse devient négative ; si tu descends, l'ordonnée devient négative. Essaie d'imaginer le point $(-2 ; 3)$ : tu pars de l'origine, tu vas deux cases à gauche, puis trois cases vers le haut. C'est exactement la même logique que pour les nombres relatifs sur une droite, simplement appliquée dans deux directions."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x ; y)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant nous concentrer sur la lecture des nombres négatifs sur l'axe vertical, ce qui te permettra de situer des points situés en dessous de l'origine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coordonnées négatives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'axe des ordonnées, les nombres positifs se trouvent au-dessus de l'origine et les nombres négatifs en dessous. C'est comme un thermomètre : le zéro est au milieu, le chaud (positif) monte, le froid (négatif) descend. Pour bien t'en convaincre, regarde la graduation verticale ci-dessous. Le point $C$ a pour ordonnée $-4$ ; il se trouve quatre unités sous l'origine. De même, un point d'abscisse $-5$ se trouve cinq unités à gauche de l'origine. Les signes moins ne sont pas des erreurs, ils indiquent simplement la direction opposée à la direction positive choisie au départ. Quand tu lis un couple $(x ; y)$, le premier nombre te dit gauche/droite, le second te dit bas/haut. Essaie de placer mentalement le point $(-3 ; -1)$ : trois cases à gauche, une case en bas. C'est un exercice de représentation mentale très utile pour la suite."
+            },
+            {
+              "type": "thermometer_axis",
+              "caption": "Axe des ordonnées (thermomètre) avec valeurs négatives",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -4,
+                  "label": "C"
+                },
+                {
+                  "value": 3,
+                  "label": "D"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons apprendre une méthode simple pour lire les coordonnées d'un point quand il est déjà placé sur un quadrillage."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les coordonnées d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine qu'un point $E$ est déjà dessiné sur ton papier quadrillé. Pour connaître son abscisse, trace une ligne verticale imaginaire qui passe par $E$ jusqu'à l'axe horizontal ; le nombre lu sur cet axe est l'abscisse. Pour l'ordonnée, trace une ligne horizontale imaginaire jusqu'à l'axe vertical ; le nombre lu est l'ordonnée. Cette technique fonctionne pour tous les points, qu'ils soient dans le quadrant positif, négatif ou mélangé. Prends l'habitude de toujours donner l'abscisse en premier, puis l'ordonnée, séparées par un point-virgule dans l'écriture française. Si tu as un doute, revérifie en comptant les cases depuis l'origine. C'est une habitude qui évite bien des confusions plus tard."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette le point sur l'axe horizontal et lis le nombre correspondant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette le point sur l'axe vertical et lis le nombre correspondant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le couple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le couple $(abscisse ; ordonnée)$ en respectant l'ordre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe des abscisses ci-dessus, quel est l'abscisse du point A ?",
+              "answer": "-3",
+              "hint": "Regarde la graduation où se trouve le point A.",
+              "explanation": "Le point A est placé sur la graduation -3, donc son abscisse est -3."
+            },
+            {
+              "question": "Pour le point de coordonnées (3 ; -2), donne l'abscisse et l'ordonnée.",
+              "answer": "Abscisse = 3, Ordonnée = -2",
+              "hint": "Le premier nombre du couple est l'abscisse, le second l'ordonnée.",
+              "explanation": "Dans le couple (3 ; -2), 3 est l'abscisse (horizontal) et -2 est l'ordonnée (vertical)."
+            },
+            {
+              "question": "Le point C a pour ordonnée -4. Est-il au-dessus ou en dessous de l'origine ?",
+              "answer": "En dessous de l'origine",
+              "hint": "Les ordonnées négatives se trouvent en dessous du zéro.",
+              "explanation": "Une ordonnée négative signifie que le point est situé en dessous de l'origine sur l'axe vertical."
+            },
+            {
+              "question": "Un point est placé trois cases à gauche de l'origine et deux cases au-dessus. Quelles sont ses coordonnées ?",
+              "answer": "(-3 ; 2)",
+              "hint": "Gauche = abscisse négative, haut = ordonnée positive.",
+              "explanation": "Trois cases à gauche donne -3 pour l'abscisse, deux cases au-dessus donne 2 pour l'ordonnée."
+            }
+          ]
+        },
+        {
+          "title": "Placer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un point à coordonnées positives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire des coordonnées, nous allons apprendre à faire l'inverse : partir de deux nombres pour tracer le point correspondant sur le quadrillage. C'est une compétence essentielle, car elle te permettra de construire des figures, de représenter des données ou de résoudre des problèmes géométriques. La méthode est très simple et ne demande qu'un peu d'entraînement pour devenir automatique. Imagine que tu reçois l'adresse $(2 ; 3)$. Tu commences toujours par l'origine $O$. Le premier nombre, $2$, te dit de te déplacer horizontalement : comme il est positif, tu vas vers la droite de deux unités. Une fois arrivé sur la verticale passant par $2$, tu regardes le second nombre, $3$. Il est positif aussi, donc tu montes verticalement de trois unités. Le point où tu t'arrêtes est exactement le point de coordonnées $(2 ; 3)$. Essaie de le faire sur ton cahier : trace les axes, marque l'origine, compte les cases. Tu verras que le point se trouve dans le quadrant en haut à droite, celui où les deux coordonnées sont positives."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses pour placer l'abscisse 2",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "Abscisse 2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Se placer sur l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis l'origine, déplace-toi horizontalement du nombre d'unités indiqué par l'abscisse (vers la droite si positif, vers la gauche si négatif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Monter ou descendre selon l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis la position atteinte, déplace-toi verticalement du nombre d'unités indiqué par l'ordonnée (vers le haut si positif, vers le bas si négatif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Marquer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point final est le point cherché ; note ses coordonnées à côté pour vérification."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les coordonnées peuvent aussi être négatives. La méthode reste identique, il faut seulement faire attention au sens du déplacement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer avec des coordonnées négatives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'on te demande de placer le point $(-2 ; -4)$. Tu pars de l'origine. L'abscisse est $-2$ : tu vas donc deux unités vers la gauche. Tu te trouves maintenant sur la verticale qui passe par $-2$. L'ordonnée est $-4$ : tu descends quatre unités. Le point obtenu se situe dans le quadrant en bas à gauche, où les deux coordonnées sont négatives. C'est exactement le même raisonnement que pour les nombres relatifs sur une droite, mais appliqué dans deux dimensions. Prends le temps de visualiser le trajet : gauche, puis bas. Si tu inverses l'ordre (d'abord bas puis gauche), tu arrives au même endroit, mais l'habitude de faire d'abord l'horizontale puis la verticale évite les erreurs quand les exercices deviennent plus complexes. Entraîne-toi avec plusieurs couples négatifs pour que le geste devienne naturel."
+            },
+            {
+              "type": "thermometer_axis",
+              "caption": "Axe des ordonnées pour placer l'ordonnée -4",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -4,
+                  "label": "Ordonnée -4"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Abscisse négative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déplace-toi vers la gauche du nombre d'unités indiqué par la valeur absolue de l'abscisse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ordonnée négative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déplace-toi vers le bas du nombre d'unités indiqué par la valeur absolue de l'ordonnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Point final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Marque le point et vérifie que ses coordonnées correspondent bien au couple de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent qu'un point ait une abscisse positive et une ordonnée négative, ou l'inverse. La méthode ne change pas, seule la direction de chaque déplacement varie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer des points aux signes mélangés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple du point $(-3 ; 5)$. L'abscisse $-3$ t'envoie trois cases à gauche. Une fois là, l'ordonnée $+5$ te fait monter de cinq cases. Le point se retrouve dans le quadrant en haut à gauche. Inversement, le point $(4 ; -2)$ se place quatre cases à droite puis deux cases en bas, dans le quadrant en bas à droite. Pour ne pas te tromper, répète mentalement : « abscisse d'abord, ordonnée ensuite ». Si tu as un doute, trace leggerement les deux segments de déplacement au crayon à papier avant de poser le point définitif. Cette habitude de vérifier visuellement te sera très utile quand nous aborderons les vecteurs et les déplacements dans la prochaine leçon. Essaie de placer plusieurs points variés sur une même figure pour voir comment ils se répartissent dans les quatre quadrants."
+            },
+            {
+              "type": "display_math",
+              "latex": "(-3 ; 5), (4 ; -2)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place le point de coordonnées (2 ; 3) en suivant les étapes. Donne la description du trajet.",
+              "answer": "Depuis l'origine, aller 2 cases à droite puis 3 cases vers le haut.",
+              "hint": "Abscisse positive = droite, ordonnée positive = haut.",
+              "explanation": "L'abscisse 2 indique un déplacement horizontal vers la droite, l'ordonnée 3 un déplacement vertical vers le haut."
+            },
+            {
+              "question": "Place le point (-2 ; -4). Quel quadrant contient ce point ?",
+              "answer": "Quadrant en bas à gauche (troisième quadrant).",
+              "hint": "Les deux coordonnées sont négatives.",
+              "explanation": "Abscisse négative = gauche, ordonnée négative = bas, donc le point est dans le quadrant où x<0 et y<0."
+            },
+            {
+              "question": "Place le point (-3 ; 5) et indique dans quel quadrant il se trouve.",
+              "answer": "Quadrant en haut à gauche (deuxième quadrant).",
+              "hint": "Abscisse négative, ordonnée positive.",
+              "explanation": "L'abscisse -3 place le point à gauche, l'ordonnée 5 le place en haut, donc deuxième quadrant."
+            }
+          ]
+        },
+        {
+          "title": "Lire déplacement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un déplacement ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici nous avons appris à repérer des points fixes. Mais en mathématiques, on s'intéresse aussi au mouvement d'un point vers un autre. Ce mouvement s'appelle un déplacement, et on le représente par une flèche qui part du point de départ pour aller vers le point d'arrivée. Ce qui est formidable, c'est que ce déplacement peut être décrit uniquement par deux nombres : la variation d'abscisse et la variation d'ordonnée. En d'autres termes, pour aller du point $A$ au point $B$, il suffit de savoir combien de cases on avance horizontalement et combien de cases on monte ou descend verticalement. Cette idée est la base des vecteurs que tu rencontreras plus tard. Pour bien la comprendre, imagine que tu es sur une case d'un jeu de plateau et que tu dois aller sur une autre case : tu comptes les cases à droite ou à gauche, puis les cases en haut ou en bas. Ces deux nombres forment ce qu'on appelle le vecteur déplacement."
+            },
+            {
+              "type": "definition",
+              "term": "vecteur déplacement",
+              "definition": "Le vecteur déplacement d'un point A vers un point B est le couple de nombres (variation d'abscisse ; variation d'ordonnée) qui permet de passer de A à B.",
+              "example": "Si A(1 ; 2) et B(4 ; 5), le vecteur déplacement est (3 ; 3)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Variation horizontale de A à B",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "A"
+                },
+                {
+                  "value": 4,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant apprendre à calculer ces deux nombres à partir des coordonnées des points."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer les composantes du déplacement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit deux points $A(x_A ; y_A)$ et $B(x_B ; y_B)$. Le déplacement de $A$ vers $B$ se décompose en une partie horizontale et une partie verticale. La variation d'abscisse (composante horizontale) s'obtient en soustrayant l'abscisse de départ de l'abscisse d'arrivée : $x_B - x_A$. La variation d'ordonnée (composante verticale) s'obtient de la même façon : $y_B - y_A$. Le vecteur déplacement s'écrit donc $\\overrightarrow{AB} = (x_B - x_A ; y_B - y_A)$. Attention à l'ordre : c'est toujours arrivée moins départ. Si tu inverses, tu obtiens le déplacement inverse, c'est-à-dire le vecteur $\\overrightarrow{BA}$. Essaie sur l'exemple $A(1 ; 2)$ et $B(4 ; 5)$ : $4-1 = 3$ pour l'horizontale, $5-2 = 3$ pour la verticale, ce qui donne bien $(3 ; 3)$. Cette formule marche pour tous les nombres, positifs ou négatifs."
+            },
+            {
+              "type": "number_line",
+              "caption": "Variation verticale de A à B",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "A"
+                },
+                {
+                  "value": 5,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $x_A, y_A$ pour le point de départ et $x_B, y_B$ pour le point d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la variation d'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $x_B - x_A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la variation d'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $y_B - y_A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le vecteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur déplacement est $(x_B - x_A ; y_B - y_A)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer les composantes, nous allons voir comment écrire ce vecteur avec la notation fléchée et comment l'interpréter géométriquement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le vecteur déplacement"
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, on note le vecteur qui va de $A$ à $B$ par une flèche au-dessus des deux lettres : $\\overrightarrow{AB}$. Ses coordonnées sont exactement les deux nombres que nous venons de calculer. On peut aussi le représenter graphiquement par une flèche qui part de $A$ et arrive en $B$. La longueur de la flèche et son inclinaison donnent une image visuelle du déplacement, mais ce sont les deux nombres qui portent l'information précise. Si tu as $\\overrightarrow{AB} = (3 ; -2)$, cela signifie : avance de 3 cases vers la droite, puis descends de 2 cases. Le point $B$ se trouve donc à droite et en bas par rapport à $A$. Cette notation est très pratique pour additionner des déplacements plus tard : si tu fais $\\overrightarrow{AB}$ puis $\\overrightarrow{BC}$, le déplacement total est $\\overrightarrow{AC}$ et ses coordonnées s'additionnent composante par composante. C'est une propriété fondamentale que tu retrouveras en physique et en informatique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\overrightarrow{AB} = (x_B - x_A ; y_B - y_A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un point grâce à ses coordonnées (abscisse ; ordonnée), y compris avec des nombres négatifs.",
+                "Je sais placer un point sur un repère orthonormé en suivant l'abscisse puis l'ordonnée.",
+                "Je sais calculer le vecteur déplacement entre deux points à partir de leurs coordonnées.",
+                "J'utilise correctement la notation $\\overrightarrow{AB}$ et je connais le sens (arrivée moins départ)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le vecteur déplacement de A(1 ; 2) vers B(4 ; 5).",
+              "answer": "(3 ; 3)",
+              "hint": "Calcule 4-1 et 5-2.",
+              "explanation": "Variation d'abscisse = 4-1 = 3, variation d'ordonnée = 5-2 = 3."
+            },
+            {
+              "question": "Si A(-2 ; 3) et B(1 ; -1), quel est le vecteur $\\overrightarrow{AB}$ ?",
+              "answer": "(3 ; -4)",
+              "hint": "Fais attention aux signes lors des soustractions.",
+              "explanation": "x_B - x_A = 1 - (-2) = 3, y_B - y_A = -1 - 3 = -4."
+            },
+            {
+              "question": "Écris le vecteur déplacement de C(0 ; 0) vers D(-3 ; 4) avec la notation fléchée.",
+              "answer": "$\\overrightarrow{CD} = (-3 ; 4)$",
+              "hint": "Le départ est l'origine, donc les coordonnées du vecteur sont celles de D.",
+              "explanation": "Puisque C est l'origine (0 ; 0), le vecteur $\\overrightarrow{CD}$ a pour composantes les coordonnées de D : (-3 ; 4)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

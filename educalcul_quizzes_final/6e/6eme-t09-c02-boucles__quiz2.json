@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Compter",
+  "title": "Quiz Algorithmique : Compter avec des boucles",
+  "questions": [
+    {
+      "text": "Dans un algorithme, on veut compter le nombre de fois qu'une instruction est exécutée à l'intérieur d'une boucle. Quelle instruction doit-on écrire AVANT le début de la boucle pour initialiser le compteur ?",
+      "options": [
+        "Compteur ← 1",
+        "Compteur ← 0",
+        "Compteur ← Compteur + 1",
+        "Afficher Compteur"
+      ],
+      "correctAnswer": "Compteur ← 0",
+      "explanation": "Pour compter correctement, le compteur doit partir de zéro avant la première itération. L'option 'Compteur ← 1' fausserait le total en ajoutant 1 dès le départ. 'Compteur ← Compteur + 1' est l'incrémentation qui se fait À L'INTÉRIEUR de la boucle, pas avant. 'Afficher Compteur' sert à montrer le résultat final.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On execute l'algorithme suivant :\\nPour i allant de $1$ à $12$ faire\\n    Fin pour\\nCombien de fois le corps de la boucle (ici vide) est-il executé ?",
+      "options": [
+        "$11$",
+        "$12$",
+        "$13$",
+        "$10$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Une boucle 'Pour i allant de $a$ à $b$' s'exécute exactement $b - a + 1$ fois. Ici $12 - 1 + 1 = 12$. Les valeurs prises par $i$ sont $1, 2, 3, ..., 12$, soit $12$ valeurs différentes. L'erreur classique est de calculer $12 - 1 = 11$ en oubliant d'ajouter 1 pour inclure la borne de départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère cet algorithme :\\n$n \\leftarrow 20$\\nTant que $n > 5$ faire\\n    $n \\leftarrow n - 3$\\nFin tant que\\nCombien de fois la condition $n > 5$ est-elle testée comme vraie (combien de tours de boucle) ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Suivons la variable $n$ :\\nDépart $n=20$.\\n1er tour : $20>5$ vrai, $n$ devient $17$.\\n2ème : $17>5$ vrai, $n$ devient $14$.\\n3ème : $14>5$ vrai, $n$ devient $11$.\\n4ème : $11>5$ vrai, $n$ devient $8$.\\n5ème : $8>5$ vrai, $n$ devient $5$.\\n6ème test : $5>5$ est FAUX, on sort. La boucle a donc tourné $5$ fois. L'erreur $4$ correspond à l'arrêt prématuré, $6$ à compter le test final faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On execute l'algorithme imbriqué suivant :\\nPour $i$ de $1$ à $4$ faire\\n    Pour $j$ de $1$ à $3$ faire\\n        Fin pour\\n    Fin pour\\nCombien de fois l'instruction située à l'intérieur de la deuxième boucle est-elle executée au total ?",
+      "options": [
+        "$7$",
+        "$12$",
+        "$10$",
+        "$8$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La boucle extérieure ($i$) tourne $4$ fois (valeurs $1, 2, 3, 4$). Pour CHAQUE tour de la boucle extérieure, la boucle intérieure ($j$) tourne complètement $3$ fois (valeurs $1, 2, 3$). Le nombre total d'exécutions est le produit : $4 \\times 3 = 12$. L'option $7$ correspond à une addition ($4+3$), $8$ à $4 \\times 2$ et $10$ n'a pas de logique simple ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle valeur est affichée par cet algorithme ?\\n$c \\leftarrow 0$\\nPour $k$ de $1$ à $8$ faire\\n    $c \\leftarrow c + 2$\\nFin pour\\nAfficher $c$",
+      "options": [
+        "$8$",
+        "$10$",
+        "$16$",
+        "$6$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "Le compteur $c$ est initialisé à $0$. La boucle 'Pour $k$ de $1$ à $8$' effectue exactement $8$ itérations. À chaque tour, on ajoute $2$ à $c$. La valeur finale est donc $8 \\times 2 = 16$. L'option $8$ correspond au nombre de tours sans tenir compte de l'incrément de $2$. L'option $10$ pourrait venir d'une boucle de $1$ à $5$. L'option $6$ ne correspond à aucun calcul simple ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

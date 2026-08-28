@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 351,
+  "_course_code": "6eme-t04-c05-bilan-algebre-6e",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Bilan - Algèbre 6e",
+  "title": "Bilan d'algèbre : Associations",
+  "blocks": [
+    {
+      "title": "Priorités opératoires",
+      "content": "Relie chaque expression numérique à son résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12 + 5 \\times 3$",
+          "right": "$27$"
+        },
+        {
+          "left": "$20 - 4 \\times 2$",
+          "right": "$12$"
+        },
+        {
+          "left": "$(8 + 2) \\times 3$",
+          "right": "$30$"
+        },
+        {
+          "left": "$50 - 10 \\div 2$",
+          "right": "$45$"
+        }
+      ],
+      "items": [],
+      "explanation": "On respecte l'ordre des priorités : les parenthèses d'abord, puis les multiplications et divisions, enfin les additions et soustractions. Pour $12 + 5 \\times 3$, on calcule $5 \\times 3 = 15$ puis $12 + 15 = 27$. Pour $(8 + 2) \\times 3$, la parenthèse donne $10$, puis $10 \\times 3 = 30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul littéral : substitution",
+      "content": "Soit $x = 5$. Relie chaque expression littérale à sa valeur numérique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2 \\times x + 3$",
+          "right": "$13$"
+        },
+        {
+          "left": "$4 \\times (x - 2)$",
+          "right": "$12$"
+        },
+        {
+          "left": "$30 \\div x$",
+          "right": "$6$"
+        },
+        {
+          "left": "$x + x + x$",
+          "right": "$15$"
+        }
+      ],
+      "items": [],
+      "explanation": "On remplace la lettre $x$ par le nombre $5$ dans chaque expression, puis on calcule en respectant les priorités. Exemple : $2 \\times x + 3 = 2 \\times 5 + 3 = 10 + 3 = 13$. Pour $4 \\times (x - 2)$, on fait la parenthèse : $5 - 2 = 3$, puis $4 \\times 3 = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Traduction en langage algébrique",
+      "content": "Relie chaque phrase à l'expression algébrique correspondante (on note $n$ le nombre choisi).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le triple d'un nombre augmenté de 4",
+          "right": "$3 \\times n + 4$"
+        },
+        {
+          "left": "Le triple de la somme d'un nombre et de 4",
+          "right": "$3 \\times (n + 4)$"
+        },
+        {
+          "left": "La moitié d'un nombre diminué de 7",
+          "right": "$n \\div 2 - 7$"
+        },
+        {
+          "left": "La moitié de la différence d'un nombre et de 7",
+          "right": "$(n - 7) \\div 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les mots 'somme', 'différence', 'triple de', 'moitié de' indiquent souvent l'utilisation de parenthèses. 'Le triple d'un nombre augmenté de 4' signifie $(3 \\times n) + 4$. 'Le triple de la somme...' signifie $3 \\times (n + 4)$. De même, 'la moitié de la différence' impose la parenthèse : $(n - 7) \\div 2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

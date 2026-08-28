@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Approfondissement : Équation / lecture",
+  "title": "Algorithmes et seuils de fonctions",
+  "blocks": [
+    {
+      "title": "Recherche par dichotomie",
+      "content": "On considère une fonction $f$ continue et strictement croissante sur un intervalle $[a, b]$. On souhaite trouver l'instant $t$ tel que $f(t) = S$ où $S$ est un seuil donné, avec une précision de $0,01$. Écrire un algorithme en langage Python permettant de déterminer cet instant $t$ par la méthode de la dichotomie.",
+      "correctAnswer": "def seuil(a, b, S, f):\\n    while (b - a) > 0.01:\\n        m = (a + b) / 2\\n        if f(m) < S:\\n            a = m\\n        else:\\n            b = m\\n    return (a + b) / 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la dichotomie. On calcule le milieu $m$ de l'intervalle $[a, b]$. Si $f(m)$ est inférieur au seuil $S$, la solution se trouve dans l'intervalle $[m, b]$, donc on pose $a = m$. Sinon, elle se trouve dans $[a, m]$, donc on pose $b = m$. Le processus s'arrête quand l'amplitude de l'intervalle est inférieure ou égale à $0,01$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche par balayage",
+      "content": "On souhaite déterminer le premier entier $n$ tel que $u_{n} \\ge S$ pour une suite $u_{n}$ définie par $u_{0} = 2$ et $u_{n+1} = 1,05 \\times u_{n}$. Le seuil $S$ est égal à $100$. Écrire un algorithme utilisant une boucle pour trouver cette valeur de $n$.",
+      "correctAnswer": "n = 0\\nu = 2\\nwhile u < 100:\\n    u = 1.05 * u\\n    n = n + 1\\nprint(n)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise le rang $n$ à $0$ et la valeur $u$ à $2$. Tant que $u$ est strictement inférieur au seuil $100$, on calcule le terme suivant de la suite et on incrémente $n$ de $1$. Lorsque la boucle s'arrête, $n$ correspond au premier indice où le seuil est atteint ou dépassé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation du pas de lecture",
+      "content": "On cherche à résoudre $f(x) = S$ sur l'intervalle $[0, 10]$ par un balayage avec un pas de $0,1$. L'algorithme s'arrête dès que le signe de $f(x) - S$ change entre deux valeurs successives $x_{i}$ et $x_{i+1}$. Expliquer le raisonnement structuré pour identifier l'intervalle de longueur $0,1$ contenant la solution et proposer la condition d'arrêt du code.",
+      "correctAnswer": "Le raisonnement consiste à calculer la différence $d = f(x) - S$ pour chaque valeur de $x$ augmentée du pas. On mémorise la valeur précédente $d_{prec}$. L'intervalle contenant la solution est celui où le produit $d_{prec} \\times d$ est strictement inférieur à $0$, ce qui indique un changement de signe. La condition d'arrêt est : si $(f(x) - S) \\times (f(x + 0.1) - S) \\le 0$ alors on s'arrête.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le changement de signe de la fonction $g(x) = f(x) - S$ indique, d'après le théorème des valeurs intermédiaires, l'existence d'une racine sur l'intervalle $[x_{i}, x_{i+1}]$. Le produit de deux nombres de signes opposés est toujours négatif, ce qui permet de détecter le passage du seuil sans connaître le sens de variation de la fonction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

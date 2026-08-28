@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Justifier",
+  "title": "Fractions irréductibles - Justifier",
+  "blocks": [
+    {
+      "title": "Simplification d'une fraction",
+      "content": "La fraction $\\frac{12}{18}$ n'est pas irréductible car $12$ et $18$ ont un diviseur commun {{1}}. En divisant le numérateur et le dénominateur par ce diviseur, on obtient la fraction irréductible {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "6",
+        "2/3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de $12$ et $18$ est $6$. En divisant les deux par $6$, on obtient $\\frac{2}{3}$ qui est irréductible car $2$ et $3$ sont premiers entre eux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Justifier qu'une fraction est irréductible",
+      "content": "La fraction $\\frac{35}{48}$ est irréductible car le plus grand commun diviseur de $35$ et $48$ est {{1}}. On dit alors que $35$ et $48$ sont {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "premiers entre eux"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les diviseurs de $35$ sont $1, 5, 7, 35$ et ceux de $48$ sont $1, 2, 3, 4, 6, 8, 12, 16, 24, 48$. Le seul diviseur commun est $1$, donc le PGCD est $1$. Ainsi $35$ et $48$ sont premiers entre eux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réduction par étapes",
+      "content": "Pour rendre la fraction $\\frac{56}{72}$ irréductible, on peut diviser le numérateur et le dénominateur par $8$ pour obtenir $\\frac{7}{9}$. On justifie cette simplification car $8$ est un {{1}} de $56$ et $72$. La fraction obtenue est irréductible car $7$ et $9$ sont {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "diviseur commun",
+        "premiers entre eux"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "$56 = 8 \\times 7$ et $72 = 8 \\times 9$, donc $8$ est un diviseur commun. $7$ et $9$ n'ont aucun diviseur commun autre que $1$, ils sont premiers entre eux, donc la fraction $\\frac{7}{9}$ est irréductible.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

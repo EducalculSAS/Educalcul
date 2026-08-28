@@ -1,0 +1,523 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.623133+00:00",
+  "id": 687,
+  "code": "terminale-generale-maths-t03-c04",
+  "title": "Théorèmes de convergence prévus",
+  "description": "Cours structuré Educalcul : Théorèmes de convergence prévus.",
+  "subject": "Suites",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Suites",
+    "titre_du_cours": "Théorèmes de convergence prévus",
+    "objectif_global": "Théorèmes de convergence prévus",
+    "mini_lecons_imposees": [
+      "Monotone bornée.",
+      "Comparaison.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Suites",
+      "lessons": [
+        {
+          "title": "Monotone bornée.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suite monotone"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce premier volet, nous allons explorer la notion de suite monotone, c'est-à-dire une suite dont les termes évoluent toujours dans le même sens, soit en augmentant, soit en diminuant, sans jamais faire marche arrière. Imaginez un escalier que vous graviriez marche après marche sans jamais redescendre : chaque marche correspond à un terme de la suite, et la hauteur totale ne fait que croître. Formellement, une suite $(u_n)$ est dite croissante si pour tout indice naturel $n$ on a $u_{n+1} \\ge u_n$, et décroissante si $u_{n+1} \\le u_n$. Cette définition simple cache une puissance remarquable : elle permet de prédire le comportement à l'infini sans calculer une infinité de termes. Pour vous mettre en confiance, retenez que la monotonie est une propriété que l'on peut souvent vérifier par une simple soustraction $u_{n+1}-u_n$ ou par un quotient $u_{n+1}/u_n$ lorsque les termes sont positifs. Nous allons maintenant illustrer cette idée avec un exemple concret, puis nous formaliserons le vocabulaire à l'aide d'une fiche de définition."
+            },
+            {
+              "type": "definition",
+              "term": "suite monotone",
+              "definition": "Une suite est monotone si elle est soit croissante (chaque terme est supérieur ou égal au précédent) soit décroissante (chaque terme est inférieur ou égal au précédent).",
+              "example": "Par exemple $u_n=n$ est croissante, $v_n=-n$ est décroissante."
+            },
+            {
+              "type": "number_line",
+              "caption": "Premiers termes de la suite croissante $u_n = 1 - \\frac{1}{n}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "u_1"
+                },
+                {
+                  "value": 0.5,
+                  "label": "u_2"
+                },
+                {
+                  "value": 0.6666666667,
+                  "label": "u_3"
+                },
+                {
+                  "value": 0.75,
+                  "label": "u_4"
+                },
+                {
+                  "value": 0.8,
+                  "label": "u_5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez reconnaître une suite qui ne fait que monter ou qui ne fait que descendre, il est naturel de se demander si cette marche infinie peut s'arrêter quelque part ou si elle s'envole sans limite. C'est ici qu'intervient la notion de bornitude : une suite est majorée s'il existe un nombre réel $M$ tel que $u_n \\le M$ pour tout $n$, et minorée s'il existe $m$ avec $m \\le u_n$ pour tout $n$. Une suite bornée est à la fois majorée et minorée, ce qui signifie qu'elle reste enfermée dans un intervalle fini. Imaginez un couloir dont les murs sont les bornes : la suite peut avancer, mais elle ne peut pas franchir les parois. Nous allons poser ces définitions sur une fiche, puis nous verrons pourquoi la combinaison monotonie + bornitude garantit l'existence d'une limite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suite bornée"
+            },
+            {
+              "type": "definition",
+              "term": "majorée",
+              "definition": "Une suite $(u_n)$ est majorée s'il existe un réel $M$ tel que $u_n \\le M$ pour tout $n$.",
+              "example": "La suite $u_n = 1 - \\frac{1}{n}$ est majorée par $1$."
+            },
+            {
+              "type": "definition",
+              "term": "minorée",
+              "definition": "Une suite $(u_n)$ est minorée s'il existe un réel $m$ tel que $m \\le u_n$ pour tout $n$.",
+              "example": "La suite $v_n = -\\frac{1}{n}$ est minorée par $-1$."
+            },
+            {
+              "type": "definition",
+              "term": "bornée",
+              "definition": "Une suite est bornée si elle est à la fois majorée et minorée.",
+              "example": "La suite $w_n = \\frac{(-1)^n}{n}$ est bornée car $|w_n| \\le 1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Théorème : Toute suite monotone et bornée converge dans } \\mathbb{R}."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Suite croissante et majorée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $(u_n)$ une suite croissante et majorée. L'ensemble des valeurs $\\{u_n\\mid n\\in\\mathbb{N}\\}$ est non vide et majoré, donc il admet un supremum $L = \\sup\\{u_n\\}$ dans $\\mathbb{R}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : $L$ est une valeur d'adhérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par définition du supremum, pour tout $\\varepsilon>0$ il existe un indice $N$ tel que $L-\\varepsilon < u_N \\le L$. Comme la suite est croissante, pour tout $n\\ge N$ on a $L-\\varepsilon < u_n \\le L$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convergence vers $L$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ainsi $|u_n-L| < \\varepsilon$ pour tout $n\\ge N$, ce qui signifie exactement $\\lim_{n\\to\\infty} u_n = L$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Cas décroissant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la suite est décroissante et minorée, on applique le même raisonnement à $(-u_n)$ qui est croissante et majorée, ou on utilise l'infimum."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous mettons en pratique le théorème sur un exemple classique qui illustre toute la puissance de la méthode. Considérons la suite définie par $u_n = 1 - \\frac{1}{n}$ pour $n \\ge 1$. Nous avons déjà vu qu'elle est croissante car $u_{n+1}-u_n = \\frac{1}{n(n+1)} > 0$, et qu'elle est majorée par $1$. D'après le théorème, elle converge. Sa limite est le supremum de l'ensemble des valeurs, c'est-à-dire $1$. Vous pouvez vérifier numériquement : $u_1=0$, $u_2=0,5$, $u_3\\approx0,667$, $u_{10}=0,9$, les termes se rapprochent inexorablement de $1$ sans jamais l'atteindre. Cet exemple montre comment la théorie s'applique concrètement pour trouver une limite sans avoir à deviner."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{n\\to\\infty} \\left(1-\\frac{1}{n}\\right) = 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminez si la suite $a_n = \\frac{n}{n+1}$ est monotone. Justifiez votre réponse.",
+              "answer": "La suite est croissante car $a_{n+1}-a_n = \\frac{1}{(n+1)(n+2)} > 0$ pour tout $n$.",
+              "hint": "Calculez la différence $a_{n+1}-a_n$ et observez son signe.",
+              "explanation": "La différence est positive pour tout $n$, donc la suite est strictement croissante."
+            },
+            {
+              "question": "La suite $b_n = (-1)^n$ est-elle bornée ? Majorée ? Minorée ?",
+              "answer": "Elle est bornée car $|b_n|=1$, majorée par $1$, minorée par $-1$.",
+              "hint": "Regardez les valeurs possibles de $(-1)^n$.",
+              "explanation": "Les termes ne prennent que les valeurs $1$ et $-1$, donc la suite est majorée par $1$ et minorée par $-1$."
+            },
+            {
+              "question": "En utilisant le théorème de la suite monotone bornée, trouvez la limite de $c_n = \\frac{2n+1}{n+2}$.",
+              "answer": "La suite est croissante et majorée par $2$, sa limite est $2$.",
+              "hint": "Montrez que $c_{n+1}>c_n$ et $c_n<2$.",
+              "explanation": "On calcule $c_{n+1}-c_n = \\frac{1}{(n+2)(n+3)}>0$, donc croissante. De plus $c_n = 2 - \\frac{3}{n+2} < 2$. Le supremum est $2$, donc la limite est $2$."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de comparaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous abordons un outil fondamental pour décider de la convergence d'une suite sans en connaître la limite exacte : le théorème de comparaison. L'idée est simple mais puissante : si une suite positive est dominée terme à terme par une autre suite qui tend vers zéro, alors la première suite tend également vers zéro. Imaginez deux coureurs sur une piste, l'un toujours devant l'autre ; si le coureur de tête s'arrête à la ligne d'arrivée, le second ne peut pas le dépasser et s'arrête aussi. Formellement, si $0 \\le a_n \\le b_n$ pour tout $n$ et si $\\lim_{n\\to\\infty} b_n = 0$, alors $\\lim_{n\\to\\infty} a_n = 0$. Ce résultat repose sur la définition $\\varepsilon$-$N$ de la limite et nous allons le démontrer pas à pas. Avant cela, posons le vocabulaire sur une fiche pour bien ancrer les termes."
+            },
+            {
+              "type": "definition",
+              "term": "comparaison",
+              "definition": "On dit qu'une suite $(a_n)$ est comparée à une suite $(b_n)$ si $0 \\le a_n \\le b_n$ pour tout $n$ (ou l'inverse).",
+              "example": "Par exemple $a_n = \\frac{1}{n^2}$ et $b_n = \\frac{1}{n}$ satisfont $0 \\le a_n \\le b_n$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } 0 \\le a_n \\le b_n \\text{ et } \\lim b_n = 0, \\text{ alors } \\lim a_n = 0."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Donnée $\\varepsilon>0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $\\varepsilon>0$. Comme $\\lim b_n = 0$, il existe $N$ tel que pour tout $n\\ge N$, $|b_n| < \\varepsilon$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour ces $n$, on a $0 \\le a_n \\le b_n < \\varepsilon$, donc $|a_n| < \\varepsilon$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ainsi $\\lim a_n = 0$ par définition de la limite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment une suite plus petite qu'une suite convergente vers zéro converge aussi vers zéro. Mais que se passe-t-il lorsque deux suites encadrent une troisième et que les deux extérieures convergent vers la même limite ? C'est le célèbre théorème des gendarmes, aussi appelé théorème d'encadrement. Il affirme que si $a_n \\le b_n \\le c_n$ pour tout $n$ et que $\\lim a_n = \\lim c_n = L$, alors $\\lim b_n = L$. L'image des deux gendarmes qui escortent un prisonnier est parlante : le prisonnier ne peut pas s'échapper car les gendarmes convergent vers le même point. Nous allons énoncer ce théorème, le démontrer rigoureusement, puis l'illustrer sur un axe numérique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème des gendarmes (encadrement)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème d'encadrement est un corollaire direct du théorème de comparaison appliqué aux suites $b_n-a_n$ et $c_n-b_n$. En effet, si $a_n \\le b_n \\le c_n$, alors $0 \\le b_n-a_n \\le c_n-a_n$ et $0 \\le c_n-b_n \\le c_n-a_n$. Comme $c_n-a_n$ tend vers $0$, les deux suites de différences tendent vers $0$, ce qui force $b_n$ à avoir la même limite que $a_n$ et $c_n$. Cette argumentation montre la robuste chaîne logique qui relie les trois suites. Nous allons maintenant écrire la preuve formelle en étapes, puis visualiser l'encadrement sur une droite graduée."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } a_n \\le b_n \\le c_n \\text{ et } \\lim a_n = \\lim c_n = L, \\text{ alors } \\lim b_n = L."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Différences positives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Posons $d_n = b_n - a_n \\ge 0$ et $e_n = c_n - b_n \\ge 0$. On a $d_n + e_n = c_n - a_n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convergence de $c_n-a_n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\lim a_n = \\lim c_n = L$, on a $\\lim (c_n - a_n) = 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Application du théorème de comparaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les suites $d_n$ et $e_n$ sont positives et majorées par $c_n-a_n$ qui tend vers $0$, donc $\\lim d_n = \\lim e_n = 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Limite de $b_n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enfin $b_n = a_n + d_n$, donc $\\lim b_n = L + 0 = L$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement visuel : $a_n \\le b_n \\le c_n$ convergent vers $L$",
+              "min": -1,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "L"
+                },
+                {
+                  "value": -0.2,
+                  "label": "a_n"
+                },
+                {
+                  "value": 0.1,
+                  "label": "b_n"
+                },
+                {
+                  "value": 0.3,
+                  "label": "c_n"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, appliquons le théorème des gendarmes à une limite classique qui embête souvent les étudiants : la suite $\\frac{\\sin n}{n}$. On sait que $-1 \\le \\sin n \\le 1$ pour tout $n$, donc en divisant par $n>0$ on obtient $-\\frac{1}{n} \\le \\frac{\\sin n}{n} \\le \\frac{1}{n}$. Les deux suites extérieures tendent vers $0$, donc par encadrement la suite centrale tend aussi vers $0$. Cette méthode évite tout calcul de limite compliqué et montre la force de l'argument d'encadrement. Nous allons maintenant vous proposer un exercice pour vous entraîner à repérer les bonnes inégalités."
+            },
+            {
+              "type": "display_math",
+              "latex": "-\\frac{1}{n} \\le \\frac{\\sin n}{n} \\le \\frac{1}{n} \\quad \\Rightarrow \\quad \\lim_{n\\to\\infty} \\frac{\\sin n}{n} = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $a_n = \\frac{\\cos n}{n^2}$. En utilisant le théorème de comparaison, déterminez la limite de $(a_n)$.",
+              "answer": "La limite est $0$.",
+              "hint": "Utilisez $-\\frac{1}{n^2} \\le a_n \\le \\frac{1}{n^2}$ et le fait que $\\frac{1}{n^2} \\to 0$.",
+              "explanation": "Puisque $-\\frac{1}{n^2} \\le \\frac{\\cos n}{n^2} \\le \\frac{1}{n^2}$ et que les deux bornes tendent vers $0$, le théorème de comparaison (ou encadrement) donne $\\lim a_n = 0$."
+            },
+            {
+              "question": "Soient $u_n = \\frac{1}{n}$, $v_n = \\frac{2+(-1)^n}{n}$, $w_n = \\frac{3}{n}$. Vérifiez que $u_n \\le v_n \\le w_n$ et déduisez la limite de $(v_n)$.",
+              "answer": "La limite de $(v_n)$ est $0$.",
+              "hint": "Comparez les numérateurs : $1 \\le 2+(-1)^n \\le 3$.",
+              "explanation": "Pour tout $n$, $1 \\le 2+(-1)^n \\le 3$, donc en divisant par $n>0$ on a $u_n \\le v_n \\le w_n$. Comme $u_n$ et $w_n$ tendent vers $0$, le théorème des gendarmes donne $\\lim v_n = 0$."
+            },
+            {
+              "question": "Montrez que la suite $x_n = \\frac{\\sin(n^2)}{n}$ converge et donnez sa limite.",
+              "answer": "La limite est $0$.",
+              "hint": "Utilisez $-\\frac{1}{n} \\le x_n \\le \\frac{1}{n}$.",
+              "explanation": "Puisque $-1 \\le \\sin(n^2) \\le 1$, on a $-\\frac{1}{n} \\le x_n \\le \\frac{1}{n}$. Les bornes tendent vers $0$, donc par encadrement $\\lim x_n = 0$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution de suites récurrentes par monotonie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon vous montre comment combiner les théorèmes précédents pour résoudre concrètement des suites définies par récurrence. La stratégie type consiste à prouver que la suite est monotone (souvent croissante) et bornée, puis à conclure qu'elle converge grâce au théorème de la suite monotone bornée. Une fois la convergence assurée, la limite $L$ satisfait l'équation obtenue en passant à la limite dans la relation de récurrence. C'est une méthode systématique qui fonctionne pour de nombreuses suites classiques, comme la suite de Héron pour la racine carrée ou la suite logistique. Nous allons détailler chaque étape, de la conjecture de monotonie à la résolution de l'équation limite, en passant par la vérification de la bornitude. Gardez à l'esprit que la rigueur de chaque étape est essentielle pour obtenir une démonstration complète."
+            },
+            {
+              "type": "definition",
+              "term": "suite récurrente",
+              "definition": "Une suite est définie par récurrence si chaque terme $u_{n+1}$ s'exprime en fonction du ou des termes précédents, par exemple $u_{n+1}=f(u_n)$.",
+              "example": "La suite $u_{n+1} = \\sqrt{2+u_n}$ avec $u_0=0$ est une suite récurrente."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Conjecturer la monotonie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $u_{n+1}-u_n$ ou le rapport $u_{n+1}/u_n$ pour deviner si la suite est croissante ou décroissante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Prouver la monotonie par récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrez que si $u_n \\le u_{n+1}$ alors $u_{n+1} \\le u_{n+2}$ (ou l'inverse) en utilisant la fonction $f$ définissant la récurrence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver une borne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez un majorant (ou minorant) constant $M$ tel que $u_n \\le M$ pour tout $n$, souvent en résolvant $f(x) \\le x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure la convergence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La suite est monotone et bornée, donc convergente. Soit $L$ sa limite. Passez à la limite dans $u_{n+1}=f(u_n)$ pour obtenir $L=f(L)$ et résolvez."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1} = \\sqrt{2+u_n},\\quad u_0=0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une application plus subtile où le théorème d'encadrement permet de trouver des limites qui ne sont pas accessibles par la seule monotonie. Prenons la suite célèbre $a_n = \\left(1+\\frac{1}{n}\\right)^n$. On sait qu'elle est croissante et majorée, mais la borne supérieure n'est pas évidente à deviner. Une astuce classique utilise l'inégalité $\\left(1+\\frac{1}{n}\\right)^n < 3$ pour tout $n$, puis l'encadrement par des suites plus simples pour montrer que la limite existe et vaut le nombre d'Euler $e$. Nous allons présenter une preuve élémentaire basée sur le développement du binôme et l'encadrement par des séries géométriques. Cette démonstration illustre comment les théorèmes de convergence s'entrelacent pour résoudre des problèmes historiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utilisation de l'encadrement pour des limites délicates"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la suite $a_n = \\left(1+\\frac{1}{n}\\right)^n$. En développant par la formule du binôme de Newton, on obtient $a_n = \\sum_{k=0}^{n} \\binom{n}{k} \\frac{1}{n^k}$. Chaque terme est positif et on peut majorer $\\binom{n}{k} \\frac{1}{n^k} \\le \\frac{1}{k!}$. Ainsi $a_n \\le \\sum_{k=0}^{n} \\frac{1}{k!} < \\sum_{k=0}^{\\infty} \\frac{1}{k!} = e$. D'autre part, $a_n$ est croissante (on peut le montrer par le rapport $a_{n+1}/a_n > 1$). La suite est donc monotone et majorée par $e$, elle converge. Sa limite est par définition le nombre $e$. Cette approche montre la puissance de l'encadrement combiné à la monotonie pour identifier des constantes fondamentales."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\left(1+\\frac{1}{n}\\right)^n \\le \\sum_{k=0}^{n} \\frac{1}{k!} < e"
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def suite_euler(n):\\n    return (1 + 1/n) ** n\\n\\nfor i in range(1, 11):\\n    print(i, suite_euler(i))",
+              "language": "python",
+              "caption": "Calcul des premiers termes de $\\left(1+\\frac{1}{n}\\right)^n$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce cours, nous vous proposons une série d'exercices mixtes qui récapitulent l'ensemble des outils étudiés : monotonie, bornitude, comparaison et encadrement. Chaque problème demande d'identifier le théorème approprié, de justifier les hypothèses et de conclure sur la convergence et, si possible, sur la limite. Ces exercices sont conçus pour renforcer votre aisance à choisir la bonne stratégie face à une suite inconnue. Prenez le temps de relire les démonstrations précédentes si vous hésitez, et n'oubliez pas que la rigueur dans la vérification des conditions (positivité, majoration, monotonie) est la clé de la réussite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exercices mixtes de convergence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici trois suites à étudier : $(p_n) = \\frac{n^2+1}{n^2+3}$, $(q_n) = \\frac{(-1)^n}{\\sqrt{n}}$, $(r_n)$ définie par $r_1=1$ et $r_{n+1} = \\frac{1}{2}\\left(r_n + \\frac{2}{r_n}\\right)$. Pour chacune, déterminez si elle converge, et le cas échéant calculez sa limite en utilisant les théorèmes vus. Vous devrez tour à tour prouver la monotonie, trouver des bornes, appliquer la comparaison ou l'encadrement. Cet entraînement final vous préparera aux questions types du baccalauréat et aux épreuves de spécialité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une suite monotone et prouver sa monotonie.",
+                "Je sais définir majorée, minorée, bornée et donner des exemples.",
+                "J'applique le théorème : suite monotone bornée ⇒ convergente.",
+                "J'utilise le théorème de comparaison pour montrer qu'une suite tend vers 0.",
+                "J'applique le théorème des gendarmes (encadrement) pour trouver une limite.",
+                "Je résous une suite récurrente en prouvant monotonie et bornitude puis en résolvant l'équation limite.",
+                "Je sais encadrer $\\left(1+\\frac{1}{n}\\right)^n$ pour montrer sa convergence vers $e$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{3}{u_n}\\right)$. Montrez que $(u_n)$ converge et calculez sa limite.",
+              "answer": "La suite converge vers $\\sqrt{3}$.",
+              "hint": "Montrez que $u_n \\ge \\sqrt{3}$ pour $n\\ge1$ et que la suite est décroissante.",
+              "explanation": "On prouve par récurrence que $u_n \\ge \\sqrt{3}$ et $u_{n+1} \\le u_n$. La suite est décroissante et minorée par $\\sqrt{3}$, donc convergente. En passant à la limite dans la récurrence, $L = \\frac{1}{2}(L + 3/L)$ donne $L^2 = 3$, donc $L = \\sqrt{3}$ (positif)."
+            },
+            {
+              "question": "En utilisant l'encadrement, montrez que la suite $v_n = \\left(1+\\frac{2}{n}\\right)^n$ converge et donnez sa limite.",
+              "answer": "La limite est $e^2$.",
+              "hint": "Écrivez $v_n = \\left(\\left(1+\\frac{2}{n}\\right)^{n/2}\\right)^2$ et utilisez la limite de $\\left(1+\\frac{1}{m}\\right)^m$.",
+              "explanation": "Posons $m = n/2$. Alors $v_n = \\left(1+\\frac{1}{m}\\right)^{2m} = \\left(\\left(1+\\frac{1}{m}\\right)^m\\right)^2$. Comme $\\left(1+\\frac{1}{m}\\right)^m \\to e$, on a $v_n \\to e^2$."
+            },
+            {
+              "question": "Étudiez la convergence de la suite $w_n = \\frac{\\ln(n+1)}{n}$.",
+              "answer": "La suite converge vers $0$.",
+              "hint": "Utilisez l'inégalité $\\ln(1+x) \\le x$ pour $x>0$ avec $x=1/n$.",
+              "explanation": "Pour $n\\ge1$, $\\ln(n+1) = \\ln n + \\ln(1+1/n) \\le \\ln n + 1/n$. Mais plus simplement, $\\ln(n+1) \\le n$ pour $n$ grand, donc $0 \\le w_n \\le \\frac{n}{n}=1$. Une majoration plus fine : $\\ln(n+1) \\le \\sqrt{n}$ pour $n$ assez grand, donc $w_n \\le \\frac{\\sqrt{n}}{n} = \\frac{1}{\\sqrt{n}} \\to 0$. Par comparaison, $\\lim w_n = 0$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

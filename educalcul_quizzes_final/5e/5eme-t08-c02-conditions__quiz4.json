@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Conditions",
+  "title": "Quiz : Application des conditions (5e)",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariable $x$ en nombre\\n$x \\leftarrow 7$\\nSi $x > 5$ Alors\\n   Afficher \"Grand\"\\nSinon\\n   Afficher \"Petit\"\\nFin Si\\nQue l'algorithme affiche-t-il ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "7",
+        "Rien"
+      ],
+      "correctAnswer": "Grand",
+      "explanation": "La variable $x$ vaut $7$. La condition $x > 5$ est vraie car $7$ est strictement supérieur à $5$. Le programme exécute donc l'instruction sous 'Alors' et affiche \"Grand\". La branche 'Sinon' est ignorée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme :\\n$a \\leftarrow 12$\\n$b \\leftarrow 8$\\nSi $a < b$ Alors\\n   Afficher \"A est plus petit\"\\nSinon\\n   Afficher \"A n'est pas plus petit\"\\nFin Si\\nQuel est le résultat de l'exécution ?",
+      "options": [
+        "A est plus petit",
+        "A n'est pas plus petit",
+        "12",
+        "8"
+      ],
+      "correctAnswer": "A n'est pas plus petit",
+      "explanation": "La variable $a$ vaut $12$ et $b$ vaut $8$. La condition $a < b$ signifie « $a$ est strictement inférieur à $b$ ». Comme $12$ n'est pas inférieur à $8$, la condition est fausse. Le programme exécute la branche 'Sinon' et affiche \"A n'est pas plus petit\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire une condition qui est vraie si un nombre entier $n$ est **à la fois** pair **et** multiple de $3$. Laquelle des conditions suivantes est correcte (syntaxe usuelle) ?",
+      "options": [
+        "($n \\% 2 = 0$) ET ($n \\% 3 = 0$)",
+        "($n \\% 2 = 0$) OU ($n \\% 3 = 0$)",
+        "($n \\% 5 = 0$) ET ($n \\% 3 = 0$)",
+        "($n \\% 2 = 1$) ET ($n \\% 3 = 0$)"
+      ],
+      "correctAnswer": "($n \\% 2 = 0$) ET ($n \\% 3 = 0$)",
+      "explanation": "Un nombre est pair si le reste de sa division par $2$ est $0$ ($n \\% 2 = 0$). Il est multiple de $3$ si le reste de sa division par $3$ est $0$ ($n \\% 3 = 0$). Le mot « et » impose que les deux conditions soient vraies simultanément, d'où l'opérateur logique ET. L'option OU serait vraie si une seule des deux l'est. Les autres options testent la divisibilité par $5$ ou l'impair ($\\% 2 = 1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme ci-dessous. Complétez le tableau de trace pour déterminer la valeur finale affichée.\\n$x \\leftarrow 10$\\nSi $x > 5$ Alors\\n   $x \\leftarrow x - 3$\\nSinon\\n   $x \\leftarrow x + 2$\\nFin Si\\nAfficher $x$",
+      "options": [
+        "7",
+        "13",
+        "10",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Au départ $x = 10$. La condition $x > 5$ est vraie ($10 > 5$). On exécute l'affectation $x \\leftarrow x - 3$, soit $x \\leftarrow 10 - 3 = 7$. La branche 'Sinon' est sautée. L'instruction finale affiche la valeur actuelle de $x$, qui est $7$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Étape",
+          "Valeur de x"
+        ],
+        "rows": [
+          [
+            "Début",
+            "10"
+          ],
+          [
+            "Test x > 5",
+            "Vrai"
+          ],
+          [
+            "x ← x - 3",
+            "7"
+          ],
+          [
+            "Afficher x",
+            "7"
+          ]
+        ],
+        "caption": "Tableau de trace de l'algorithme"
+      }
+    },
+    {
+      "text": "Un élève a écrit l'algorithme suivant pour afficher \"Pair\" si le nombre saisi $n$ est pair, et \"Impair\" sinon.\\nSaisir $n$\\nSi $n \\% 2 = 1$ Alors\\n   Afficher \"Pair\"\\nSinon\\n   Afficher \"Impair\"\\nFin Si\\nLors du test avec $n = 4$, l'algorithme affiche \"Impair\". Quelle est l'erreur ?",
+      "options": [
+        "La condition est inversée : elle teste si le nombre est impair.",
+        "Il faut remplacer ET par OU dans la condition.",
+        "La variable $n$ n'est pas initialisée avant le test.",
+        "L'algorithme est correct, $4$ est impair."
+      ],
+      "correctAnswer": "La condition est inversée : elle teste si le nombre est impair.",
+      "explanation": "L'opérateur modulo $\\%$ donne le reste de la division entière. $n \\% 2 = 1$ signifie que le reste de la division par $2$ est $1$, ce qui caractérise un nombre **impair**. Pour tester la parité (nombre pair), il faut vérifier $n \\% 2 = 0$. Avec $n=4$, $4 \\% 2 = 0$, la condition $n \\% 2 = 1$ est fausse, donc le programme va dans le 'Sinon' et affiche \"Impair\" au lieu de \"Pair\". Les branches 'Alors' et 'Sinon' sont inversées par rapport à l'intention.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

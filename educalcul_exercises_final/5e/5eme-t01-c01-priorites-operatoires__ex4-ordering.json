@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Application : Priorités opératoires",
+  "title": "Priorités opératoires : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Évaluation d'une expression avec parenthèses",
+      "content": "Remets dans l'ordre les étapes pour calculer l'expression $4 \\times (5 + 2) - 8 \\div 2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la parenthèse : $5 + 2 = 7$",
+        "Effectuer la multiplication : $4 \\times 7 = 28$",
+        "Effectuer la division : $8 \\div 2 = 4$",
+        "Effectuer la soustraction : $28 - 4 = 24$"
+      ],
+      "explanation": "On commence par la parenthèse $5+2=7$. Ensuite, les multiplications et divisions ont la priorité sur l'addition et la soustraction, on les traite de gauche à droite : $4 \\times 7 = 28$ puis $8 \\div 2 = 4$. Enfin, on fait la soustraction $28 - 4 = 24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression avec deux parenthèses",
+      "content": "Range les opérations dans l'ordre de priorité pour évaluer $(12 - 4) \\times 3 + 18 \\div (2 + 1)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la première parenthèse : $12 - 4 = 8$",
+        "Calculer la seconde parenthèse : $2 + 1 = 3$",
+        "Effectuer la multiplication : $8 \\times 3 = 24$",
+        "Effectuer la division : $18 \\div 3 = 6$",
+        "Effectuer l'addition : $24 + 6 = 30$"
+      ],
+      "explanation": "Les parenthèses sont prioritaires : on calcule $12-4=8$ et $2+1=3$. Ensuite, multiplication et division avant addition : $8 \\times 3 = 24$ et $18 \\div 3 = 6$. Enfin, l'addition $24+6=30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Priorités sans parenthèses",
+      "content": "Remets dans l'ordre les étapes pour calculer $20 - 5 + 3 \\times 2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Effectuer la multiplication : $3 \\times 2 = 6$",
+        "Effectuer la soustraction : $20 - 5 = 15$",
+        "Effectuer l'addition : $15 + 6 = 21$"
+      ],
+      "explanation": "La multiplication est prioritaire : $3 \\times 2 = 6$. Ensuite, on traite l'addition et la soustraction de gauche à droite : $20 - 5 = 15$ puis $15 + 6 = 21$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

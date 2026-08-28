@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Comparer carrés",
+  "title": "Comparer les carrés pour classifier un triangle",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Les longueurs des côtés d'un triangle sont $5$, $12$ et $13$. En comparant les carrés de ces longueurs, détermine la nature de ce triangle (rectangle, acutangle ou obtusangle).",
+      "correctAnswer": "rectangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $5^2 + 12^2 = 25 + 144 = 169$ et $13^2 = 169$. Comme la somme des carrés des deux plus petits côtés est égale au carré du plus grand côté, le triangle est rectangle d'après la réciproque du théorème de Pythagore.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Un triangle a pour côtés $7$, $8$ et $10$. Compare les carrés de ces longueurs pour dire si le triangle est rectangle, acutangle ou obtusangle.",
+      "correctAnswer": "acutangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $7^2 + 8^2 = 49 + 64 = 113$ et $10^2 = 100$. La somme des carrés des deux plus petits côtés ($113$) est supérieure au carré du plus grand côté ($100$), donc le triangle est acutangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Soit un triangle de côtés $6$, $9$ et $13$. En comparant les carrés, précise sa nature : rectangle, acutangle ou obtusangle.",
+      "correctAnswer": "obtusangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $6^2 + 9^2 = 36 + 81 = 117$ et $13^2 = 169$. La somme des carrés des deux plus petits côtés ($117$) est inférieure au carré du plus grand côté ($169$), donc le triangle est obtusangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

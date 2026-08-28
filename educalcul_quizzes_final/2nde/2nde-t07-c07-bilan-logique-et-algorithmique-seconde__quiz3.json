@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Bilan - Logique et algorithmique Seconde",
+  "title": "Quiz Bilan - Logique et algorithmique Seconde",
+  "questions": [
+    {
+      "text": "La proposition « Si $x$ est pair alors $x^2$ est pair » est-elle vraie ?",
+      "options": [
+        "Vrai",
+        "Faux",
+        "Dépend de $x$",
+        "Ne peut pas être déterminé"
+      ],
+      "correctAnswer": "Vrai",
+      "explanation": "Si $x$ est pair, il existe un entier $k$ tel que $x = 2k$. Alors $x^2 = (2k)^2 = 4k^2 = 2(2k^2)$, ce qui est un multiple de 2, donc pair. La proposition est donc toujours vraie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la négation de la proposition « Pour tout $x \\in ℝ$, $x^2 ≥ 0$ » ?",
+      "options": [
+        "Il existe $x \\in ℝ$ tel que $x^2 < 0$",
+        "Pour tout $x \\in ℝ$, $x^2 < 0$",
+        "Il existe $x \\in ℝ$ tel que $x^2 ≥ 0$",
+        "Pour tout $x \\in ℝ$, $x^2 ≤ 0$"
+      ],
+      "correctAnswer": "Il existe $x \\in ℝ$ tel que $x^2 < 0$",
+      "explanation": "La négation d'un quantificateur universel « pour tout » devient un quantificateur existentiel « il existe » et l'inégalité est inversée. Donc la négation correcte est : il existe un réel $x$ tel que $x^2 < 0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $A = \\{1,2,3,4\\}$ et $B = \\{3,4,5,6\\}$. Quelle est $A ∩ B$ ?",
+      "options": [
+        "{3,4}",
+        "{1,2,5,6}",
+        "{1,2,3,4,5,6}",
+        "∅"
+      ],
+      "correctAnswer": "{3,4}",
+      "explanation": "L'intersection $A ∩ B$ contient les éléments qui appartiennent à la fois à $A$ et à $B$. Les éléments communs sont 3 et 4, donc $A ∩ B = \\{3,4\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'algorithme suivant affiche quelle valeur ?\\n$x \\leftarrow 0$\\nPour $i$ de $1$ à $5$ faire\\n $x \\leftarrow x + i$\\nFin pour\\nAfficher $x$",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "La boucle ajoute successivement les entiers de 1 à 5 à $x$. La somme $1+2+3+4+5 = 15$. Donc la valeur affichée est 15.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme ci‑dessous, quelle condition permet d'afficher « Pair » pour un entier $n$ ?\\nSi ( … ) Alors\\n Afficher \"Pair\"\\nSinon\\n Afficher \"Impair\"\\nFin Si",
+      "options": [
+        "$n mod 2 = 0$",
+        "$n mod 2 = 1$",
+        "$n / 2 = 0$",
+        "$n * 2 = 0$"
+      ],
+      "correctAnswer": "$n mod 2 = 0$",
+      "explanation": "Un entier est pair si et seulement si le reste de sa division par 2 est 0, c'est-à-dire $n \\bmod 2 = 0$. Les autres conditions correspondent à un nombre impair, à une division exacte par 2 donnant 0 (impossible pour un entier non nul) ou à un produit nul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

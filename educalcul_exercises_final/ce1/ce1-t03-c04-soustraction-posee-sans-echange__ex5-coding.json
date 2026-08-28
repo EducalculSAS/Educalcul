@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 91,
+  "_course_code": "ce1-t03-c04-soustraction-posee-sans-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Aligner les chiffres",
+  "title": "Algorithme de la soustraction posée : aligner les chiffres",
+  "blocks": [
+    {
+      "title": "Les étapes de la pose",
+      "content": "On veut calculer $45 - 23$ en soustraction posée. Écris les étapes dans l'ordre pour bien placer les chiffres les uns sous les autres avant de calculer. Utilise les mots : unités, dizaines, trait, dessous.",
+      "correctAnswer": "1. J'écris le premier nombre $45$. 2. J'écris le deuxième nombre $23$ dessous en alignant les unités sous les unités (le 3 sous le 5) et les dizaines sous les dizaines (le 2 sous le 4). 3. Je trace un trait de séparation sous le deuxième nombre. 4. Je soustrais les unités : $5 - 3 = 2$, j'écris 2 sous le trait. 5. Je soustrais les dizaines : $4 - 2 = 2$, j'écris 2 sous le trait. Résultat : $22$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour poser une soustraction, il faut d'abord écrire le nombre du haut. Ensuite, on écrit le nombre du bas en faisant très attention : le chiffre des unités doit être exactement sous le chiffre des unités du haut, et le chiffre des dizaines sous le chiffre des dizaines. C'est l'alignement. On trace un trait, puis on calcule colonne par colonne en partant des unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Repérer l'erreur d'alignement",
+      "content": "Léa a posé la soustraction $56 - 32$ de cette façon :\\n$56$\\n$ 32$ (le 3 est écrit sous le 6)\\nElle a fait une erreur d'alignement. Explique son erreur et réécris la soustraction correctement alignée avec le résultat.",
+      "correctAnswer": "Erreur : Léa a mis le chiffre des dizaines du deuxième nombre (le 3) sous le chiffre des unités du premier nombre (le 6). Il faut aligner les unités sous les unités (le 2 sous le 6) et les dizaines sous les dizaines (le 3 sous le 5).\\nPose correcte :\\n$56$\\n$- 32$\\n$---\\n$24$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'alignement est la règle la plus importante. Si les chiffres ne sont pas bien rangés en colonnes (unités sous unités, dizaines sous dizaines), le calcul donne un résultat faux. Ici, Léa a décalé le 3 vers la droite. Il faut le décaler vers la gauche pour qu'il soit sous le 5. Ensuite, on calcule $6 - 2 = 4$ (unités) et $5 - 3 = 2$ (dizaines), ce qui donne $24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire l'algorithme complet",
+      "content": "Écris un algorithme (une suite d'instructions claires et numérotées) pour calculer une soustraction posée sans échange entre deux nombres à deux chiffres. Tu peux utiliser des mots comme : SI, ALORS, FAIRE, ÉCRIRE, CALCULER.",
+      "correctAnswer": "Algorithme SoustractionPoséeSansÉchange :\\n1. ÉCRIRE le premier nombre (NombreA).\\n2. ÉCRIRE le deuxième nombre (NombreB) SOUS le premier en alignant : unités sous unités, dizaines sous dizaines.\\n3. TRACER un trait horizontal sous NombreB.\\n4. CALCULER la différence des unités : UnitésA - UnitésB. ÉCRIRE le résultat sous le trait dans la colonne des unités.\\n5. CALCULER la différence des dizaines : DizainesA - DizainesB. ÉCRIRE le résultat sous le trait dans la colonne des dizaines.\\n6. LIRE le nombre formé par les chiffres sous le trait : c'est le résultat final.\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un algorithme décrit la procédure pas à pas. Pour la soustraction posée sans échange (CE1), les étapes fixes sont : la pose avec alignement strict des colonnes, le trait de séparation, le calcul des unités puis des dizaines (toujours dans cet ordre), et la lecture du résultat. L'alignement (étape 2) est la condition indispensable pour que les étapes 4 et 5 fonctionnent correctement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

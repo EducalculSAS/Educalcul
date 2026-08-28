@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Inéquations",
+  "title": "Quiz - Applications d'inéquations (Seconde)",
+  "questions": [
+    {
+      "text": "Un rectangle a une longueur supérieure de 3 cm à sa largeur. Son périmètre est au plus 30 cm. Quelle inéquation permet de trouver la largeur x ?",
+      "options": [
+        "$2(x + (x+3)) \\le 30$",
+        "$2(x + (x+3)) < 30$",
+        "$2x + (x+3) \\le 30$",
+        "$x + (x+3) \\le 30$"
+      ],
+      "correctAnswer": "$2(x + (x+3)) \\le 30$",
+      "explanation": "Le périmètre d'un rectangle vaut 2 × (longueur + largeur). Ici la largeur est x et la longueur x+3, donc le périmètre est 2(x + x+3) = 2(2x+3). La condition « au plus 30 cm » se traduit par ≤ 30, d'où l'inéquation 2(x + (x+3)) ≤ 30. Les autres options oublient le facteur 2, utilisent un signe strict ou ne regroupent pas correctement les termes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $3x - 7 \\ge 2x + 5$.",
+      "options": [
+        "$x \\ge 12$",
+        "$x \\le 12$",
+        "$x \\ge -12$",
+        "$x \\le -12$"
+      ],
+      "correctAnswer": "$x \\ge 12$",
+      "explanation": "On soustrait 2x des deux côtés : $x - 7 \\ge 5$. On ajoute 7 : $x \\ge 12$. Les autres réponses correspondent à une inversion du signe ou à une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un vendeur gagne un salaire fixe de 1200 € plus 5 % de ses ventes. Il veut gagner au moins 1800 €. Quelle inéquation sur le chiffre d'affaires v traduit cette situation ?",
+      "options": [
+        "$1200 + 0,05 v \\ge 1800$",
+        "$1200 + 5 v \\ge 1800$",
+        "$1200 + 0,5 v \\ge 1800$",
+        "$1200 + 0,05 v > 1800$"
+      ],
+      "correctAnswer": "$1200 + 0,05 v \\ge 1800$",
+      "explanation": "5 % s'écrit 0,05 en notation décimale. Le gain total est 1200 + 0,05 v. « Au moins 1800 € » signifie supérieur ou égal, d'où le signe ≥. Les distracteurs confondent le pourcentage (5 au lieu de 0,05), utilisent 0,5 (50 %) ou un signe strict >.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation double $-2 \\le 3x + 1 < 7$.",
+      "options": [
+        "$-1 \\le x < 2$",
+        "$-1 < x \\le 2$",
+        "$-1 \\le x \\le 2$",
+        "$-1 < x < 2$"
+      ],
+      "correctAnswer": "$-1 \\le x < 2$",
+      "explanation": "On soustrait 1 aux trois membres : $-3 \\le 3x < 6$. On divise par 3 (positif, le sens des inégalités ne change pas) : $-1 \\le x < 2$. Les autres options inversent l'un des signes ou remplacent le signe large par un signe strict.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un abonnement mensuel est de 15 €. Chaque séance supplémentaire coûte 4 €. Combien de séances supplémentaires au maximum peut-on prendre pour ne pas dépasser 50 € ?",
+      "options": [
+        "8 séances",
+        "9 séances",
+        "7 séances",
+        "10 séances"
+      ],
+      "correctAnswer": "8 séances",
+      "explanation": "Soit n le nombre de séances supplémentaires. Le coût total est $15 + 4n$. La condition « ne pas dépasser 50 € » donne $15 + 4n \\le 50$, soit $4n \\le 35$, donc $n \\le 8,75$. Comme n doit être un entier, le maximum est 8 séances. 9 séances coûteraient 51 €, 7 séances ne sont pas le maximum, 10 séances coûtent 55 €.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

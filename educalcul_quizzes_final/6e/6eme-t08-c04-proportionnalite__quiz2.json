@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Passage unité",
+  "title": "Quiz : Passage à l'unité (Proportionnalité)",
+  "questions": [
+    {
+      "text": "Cinq stylos identiques coûtent $10$ euros. Quel est le prix d'un seul stylo ?",
+      "options": [
+        "$2$ euros",
+        "$5$ euros",
+        "$15$ euros",
+        "$50$ euros"
+      ],
+      "correctAnswer": "$2$ euros",
+      "explanation": "Pour passer à l'unité, on divise le prix total par le nombre d'articles : $10 \\div 5 = 2$. L'option $5$ euros correspond à une soustraction, $15$ euros à une addition et $50$ euros à une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix au kilogramme de pommes est de $2$ euros. Combien coûteront $3$ kilogrammes de pommes ?",
+      "options": [
+        "$6$ euros",
+        "$5$ euros",
+        "$1$ euro",
+        "$0,67$ euro"
+      ],
+      "correctAnswer": "$6$ euros",
+      "explanation": "Une fois le prix à l'unité connu ($2$ euros pour $1$ kg), on multiplie par la quantité désirée : $2 \\times 3 = 6$. L'option $1$ euro correspond à une division, $5$ euros à une addition et $0,67$ euro à une division inversée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cahier coûte $3$ euros. Avec $15$ euros, combien de cahiers peut-on acheter ?",
+      "options": [
+        "$5$ cahiers",
+        "$3$ cahiers",
+        "$12$ cahiers",
+        "$45$ cahiers"
+      ],
+      "correctAnswer": "$5$ cahiers",
+      "explanation": "On divise le budget total par le prix unitaire : $15 \\div 3 = 5$. L'option $3$ cahiers confond le prix et le nombre, $12$ cahiers correspond à une soustraction et $45$ cahiers à une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt $35$ kilomètres en $5$ heures. Quelle distance parcourt-il en $1$ heure s'il roule à vitesse constante ?",
+      "options": [
+        "$7$ km",
+        "$30$ km",
+        "$40$ km",
+        "$175$ km"
+      ],
+      "correctAnswer": "$7$ km",
+      "explanation": "La vitesse (distance par heure) s'obtient en divisant la distance par le temps : $35 \\div 5 = 7$. L'option $30$ km correspond à une soustraction, $40$ km à une addition et $175$ km à une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau de proportionnalité ci-dessous indique le prix de pommes de terre selon la masse. Quel est le prix pour $5$ kg ?",
+      "options": [
+        "$7,50$ euros",
+        "$4,50$ euros",
+        "$9,00$ euros",
+        "$1,50$ euros"
+      ],
+      "correctAnswer": "$7,50$ euros",
+      "explanation": "On calcule d'abord le prix au kilogramme (passage à l'unité) : $4,50 \\div 3 = 1,50$ euro/kg. Puis on multiplie par $5$ : $1,50 \\times 5 = 7,50$ euros. L'option $1,50$ euros est le prix à l'unité, pas le prix final. $4,50$ euros est le prix initial pour $3$ kg. $9,00$ euros correspond au double du prix initial.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Masse (kg)",
+          "Prix (euros)"
+        ],
+        "rows": [
+          [
+            "3",
+            "4,50"
+          ],
+          [
+            "1",
+            ""
+          ],
+          [
+            "5",
+            ""
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Simuler une expérience",
+  "title": "Quiz : Simuler une expérience aléatoire",
+  "questions": [
+    {
+      "text": "En algorithmique (pseudocode), quelle instruction permet de simuler un lancer de dé équilibré à 6 faces et d'obtenir un entier entre $1$ et $6$ ?",
+      "options": [
+        "ALEA() × 6",
+        "ENT(ALEA() × 6)",
+        "ENT(ALEA() × 6) + 1",
+        "ALEA.ENTRE.BORNES(1;6)"
+      ],
+      "correctAnswer": "ENT(ALEA() × 6) + 1",
+      "explanation": "La fonction ALEA() renvoie un nombre décimal aléatoire entre $0$ (inclus) et $1$ (exclus). En le multipliant par $6$, on obtient un nombre entre $0$ et $5,999...$. La partie entière ENT() donne alors un entier parmi $0, 1, 2, 3, 4, 5$. En ajoutant $1$, on décale l'intervalle vers $1, 2, 3, 4, 5, 6$. L'option ALEA.ENTRE.BORNES est une fonction de tableur, pas du pseudocode standard. Les deux premières options donnent des intervalles incorrects ($0$ à $5$ ou décimaux).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule une expérience aléatoire consistant à lancer un dé. On compare la fréquence d'apparition du « 6 » obtenue après $10$ lancers, puis après $1000$ lancers. Quelle affirmation est correcte ?",
+      "options": [
+        "La fréquence est exactement égale à $1/6$ dans les deux cas.",
+        "La fréquence est généralement plus proche de $1/6$ après $1000$ lancers qu'après $10$ lancers.",
+        "La fréquence est généralement plus proche de $1/6$ après $10$ lancers qu'après $1000$ lancers.",
+        "La fréquence ne change pas quand on augmente le nombre d'essais."
+      ],
+      "correctAnswer": "La fréquence est généralement plus proche de $1/6$ après $1000$ lancers qu'après $10$ lancers.",
+      "explanation": "C'est l'illustration de la loi des grands nombres : lorsque le nombre d'essais d'une expérience aléatoire augmente, la fréquence observée d'un événement tend à se rapprocher de sa probabilité théorique. Avec seulement $10$ lancers, le hasard fait que la fréquence peut être très éloignée de $1/6$ (par exemple $0$ ou $0,3$). Avec $1000$ lancers, les fluctuations s'annulent et la fréquence se stabilise autour de $0,166...$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableur, les résultats de $N$ lancers de dé sont enregistrés dans la colonne A (valeurs entières de $1$ à $6$). Quelle formule écrire en B1 pour compter combien de fois le résultat « 4 » est apparu ?",
+      "options": [
+        "=NB.SI(A:A; 4)",
+        "=SI(A1=4; 1; 0)",
+        "=SOMME(A:A)",
+        "=ALEA.ENTRE.BORNES(1;6)"
+      ],
+      "correctAnswer": "=NB.SI(A:A; 4)",
+      "explanation": "La fonction NB.SI(plage; critère) compte le nombre de cellules dans la plage (ici la colonne entière A:A) qui satisfont au critère (ici la valeur 4). La fonction SI ne fait qu'un test sur une seule cellule (A1). SOMME additionne les valeurs (donnerait la somme des faces, pas le compte). ALEA.ENTRE.BORNES génère un nouveau nombre aléatoire, elle ne compte pas les existants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : n, i, compteur, resultat\\nDébut\\n  compteur ← 0\\n  Pour i de 1 à 100 faire\\n     resultat ← ENT(ALEA() × 6) + 1\\n     Si resultat = 6 Alors\\n        compteur ← compteur + 1\\n     Fin Si\\n  Fin Pour\\n  Afficher compteur\\nFin\\nQue représente la valeur affichée à la fin ?",
+      "options": [
+        "La probabilité d'obtenir un 6.",
+        "Le nombre de fois où le 6 est apparu sur les 100 lancers.",
+        "La fréquence d'apparition du 6.",
+        "La moyenne des résultats obtenus."
+      ],
+      "correctAnswer": "Le nombre de fois où le 6 est apparu sur les 100 lancers.",
+      "explanation": "La variable 'compteur' est initialisée à $0$ et incrémentée de $1$ à chaque fois que la condition 'resultat = 6' est vraie dans la boucle. La boucle tourne exactement $100$ fois. Donc 'compteur' contient l'effectif (le nombre brut) de succès (le nombre de 6). La fréquence serait ce nombre divisé par $100$. La probabilité est la valeur théorique $1/6$. La moyenne nécessiterait d'additionner tous les résultats.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous montre la fréquence d'apparition du « 3 » lors de simulations de lancers de dé pour trois nombres d'essais différents.\\n\\nQu'illustre ce graphique ?",
+      "options": [
+        "La fréquence s'éloigne de la probabilité théorique quand le nombre d'essais augmente.",
+        "La fréquence reste constante quel que soit le nombre d'essais.",
+        "La fréquence se rapproche de la probabilité théorique $1/6$ quand le nombre d'essais augmente.",
+        "La fréquence devient exactement égale à $1/6$ dès $100$ essais."
+      ],
+      "correctAnswer": "La fréquence se rapproche de la probabilité théorique $1/6$ quand le nombre d'essais augmente.",
+      "explanation": "On observe sur le graphique que pour $10$ essais la fréquence est de $0,20$ (éloignée de $0,166...$), pour $100$ essais elle descend à $0,18$ (plus proche), et pour $1000$ essais elle est à $0,167$ (très proche de $1/6 \\approx 0,1667$). Cela illustre la convergence de la fréquence vers la probabilité théorique lorsque le nombre d'essais croît (loi des grands nombres). La fréquence n'est jamais exactement égale à la probabilité, elle fluctue autour.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fréquence du 3 selon le nombre de lancers",
+        "bars": [
+          {
+            "label": "10 essais",
+            "value": 0.2,
+            "tone": "blue"
+          },
+          {
+            "label": "100 essais",
+            "value": 0.18,
+            "tone": "blue"
+          },
+          {
+            "label": "1000 essais",
+            "value": 0.167,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

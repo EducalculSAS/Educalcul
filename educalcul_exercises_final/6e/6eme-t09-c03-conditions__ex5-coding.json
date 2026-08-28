@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Tester",
+  "title": "Tester des conditions en algorithmique",
+  "blocks": [
+    {
+      "title": "Test du signe d'un nombre",
+      "content": "Écrire un algorithme qui demande un nombre à l'utilisateur et qui affiche \"Positif\" si le nombre est strictement supérieur à $0$, \"Négatif\" s'il est strictement inférieur à $0$, et \"Nul\" s'il est égal à $0$.",
+      "correctAnswer": "Début\\n    Lire nombre\\n    Si nombre > 0 Alors\\n        Afficher \"Positif\"\\n    Sinon Si nombre < 0 Alors\\n        Afficher \"Négatif\"\\n    Sinon\\n        Afficher \"Nul\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire la valeur entrée. La structure conditionnelle Si ... Sinon Si ... Sinon ... Fin Si permet de tester les trois cas possibles : supérieur à zéro, inférieur à zéro, ou égal à zéro. Chaque branche affiche le message correspondant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de parité",
+      "content": "Écrire un algorithme qui demande un entier à l'utilisateur et qui affiche \"Pair\" si cet entier est divisible par $2$, sinon affiche \"Impair\".",
+      "correctAnswer": "Début\\n    Lire entier\\n    Si entier % 2 = 0 Alors\\n        Afficher \"Pair\"\\n    Sinon\\n        Afficher \"Impair\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise l'opérateur modulo % pour obtenir le reste de la division par 2. Si le reste est 0, l'entier est pair, sinon il est impair. La condition Si ... Sinon ... Fin Si dirige l'affichage vers le bon message.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux nombres",
+      "content": "Écrire un algorithme qui demande deux nombres $a$ et $b$ et qui affiche le plus grand des deux, ou le message \"Égaux\" si les deux nombres sont identiques.",
+      "correctAnswer": "Début\\n    Lire a\\n    Lire b\\n    Si a > b Alors\\n        Afficher a\\n    Sinon Si b > a Alors\\n        Afficher b\\n    Sinon\\n        Afficher \"Égaux\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après la lecture des deux nombres, on teste d'abord si a est strictement plus grand que b. Si c'est faux, on teste si b est strictement plus grand que a. Si aucune des deux conditions n'est vraie, les nombres sont égaux et on affiche le message correspondant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

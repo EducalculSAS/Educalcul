@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Théorème de Pythagore",
+  "title": "Quiz : Application du théorème de Pythagore",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $3$ cm et $4$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "On applique le théorème de Pythagore : $3^2 + 4^2 = 9 + 16 = 25$, donc l'hypoténuse vaut $5$ cm car $25$ est le carré de $5$. Les autres valeurs correspondent à des erreurs fréquentes : addition des longueurs ($3+4=7$), double du plus grand côté ($2\\times4=8$) ou confusion avec le périmètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle a pour hypoténuse $10$ cm et un côté de l'angle droit de $6$ cm. Calcule la longueur de l'autre côté.",
+      "options": [
+        "$8$ cm",
+        "$7$ cm",
+        "$9$ cm",
+        "$5$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "D'après le théorème de Pythagore, $6^2 + x^2 = 10^2$, soit $36 + x^2 = 100$. Donc $x^2 = 64$ et $x = 8$ cm. Les distracteurs correspondent à une soustraction erronée ($10-3=7$), à une addition ($6+3=9$) ou à la moitié de l'hypoténuse ($10/2=5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5$ m est posée contre un mur, son pied est à $3$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$4$ m",
+        "$3,5$ m",
+        "$4,5$ m",
+        "$5$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "On a un triangle rectangle avec hypoténuse $5$ m et base $3$ m. Le théorème de Pythagore donne $3^2 + h^2 = 5^2$, soit $9 + h^2 = 25$, donc $h^2 = 16$ et $h = 4$ m. Les autres valeurs viennent d'erreurs courantes : utiliser $3,5$ comme moyenne, ajouter $1$ à la base, ou croire que l'échelle est verticale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $7$ cm, $24$ cm et $25$ cm. Est-ce un triangle rectangle ?",
+      "options": [
+        "Oui, c'est un triangle rectangle",
+        "Non, ce n'est pas un triangle rectangle",
+        "On ne peut pas savoir",
+        "C'est un triangle équilatéral"
+      ],
+      "correctAnswer": "Oui, c'est un triangle rectangle",
+      "explanation": "On vérifie la relation de Pythagore : $7^2 + 24^2 = 49 + 576 = 625 = 25^2$. L'égalité est vérifiée, donc le triangle est rectangle. Les autres réponses correspondent à une méconnaissance du test ou à une confusion avec un triangle équilatéral.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $9$ cm et $12$ cm. Quelle est l'aire de ce triangle ?",
+      "options": [
+        "Aire = $54$ cm²",
+        "Aire = $27$ cm²",
+        "Aire = $108$ cm²",
+        "Aire = $45$ cm²"
+      ],
+      "correctAnswer": "Aire = $54$ cm²",
+      "explanation": "L'aire d'un triangle rectangle est $(9 \\times 12) / 2 = 54$ cm². Le calcul utilise la formule $(base \\times hauteur) / 2$. Les distracteurs proviennent d'erreurs : oublier la division par $2$ ($9\\times12=108$), diviser par $4$ au lieu de $2$ ($27$), ou multiplier $9$ par $5$ ($45$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

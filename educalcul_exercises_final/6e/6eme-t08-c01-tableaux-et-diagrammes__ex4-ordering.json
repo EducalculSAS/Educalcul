@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Application : Tableaux et diagrammes",
+  "title": "Ordre des procédures : tableaux et diagrammes",
+  "blocks": [
+    {
+      "title": "Construction d'un diagramme en bâtons",
+      "content": "Range les étapes dans l'ordre chronologique pour construire un diagramme en bâtons à partir de données brutes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Recueillir les données et les organiser dans un tableau.",
+        "Choisir une échelle adaptée pour l'axe des effectifs.",
+        "Dessiner les axes et les graduations.",
+        "Tracer les bâtons proportionnels aux effectifs.",
+        "Légender le diagramme (titre, axes)."
+      ],
+      "explanation": "On commence par organiser les données brutes dans un tableau pour y voir clair. Ensuite, on choisit une échelle pour que le diagramme tienne sur la feuille. On trace alors les axes et on les gradue. On dessine les bâtons dont la hauteur correspond aux effectifs. Enfin, on ajoute le titre et les noms des axes pour que le diagramme soit compréhensible.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des pourcentages pour un diagramme circulaire",
+      "content": "Range les étapes dans l'ordre pour calculer les pourcentages nécessaires à la construction d'un diagramme circulaire (camembert).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le total des effectifs.",
+        "Diviser chaque effectif partiel par le total.",
+        "Multiplier le résultat par 100 pour obtenir le pourcentage.",
+        "Calculer l'angle du secteur (pourcentage $\\times$ 3,6) ou utiliser un tableau de proportionnalité.",
+        "Tracer les secteurs sur le cercle à l'aide d'un rapporteur."
+      ],
+      "explanation": "La première étape est de sommer tous les effectifs pour obtenir le total. Chaque effectif partiel est ensuite divisé par ce total pour obtenir une fréquence. On multiplie par 100 pour passer au pourcentage. Pour le tracé, on convertit le pourcentage en angle (car 100 % = 360$^{\\circ}$, donc 1 % = 3,6$^{\\circ}$) ou on utilise la proportionnalité. Enfin, on trace les angles au rapporteur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de la médiane dans un tableau",
+      "content": "Range les étapes dans l'ordre pour déterminer la médiane d'une série statistique présentée dans un tableau de valeurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ordonner les valeurs par ordre croissant en tenant compte des effectifs.",
+        "Compter le nombre total de valeurs $N$ (somme des effectifs).",
+        "Si $N$ est impair, la médiane est la valeur au rang $\\frac{N+1}{2}$.",
+        "Si $N$ est pair, la médiane est la moyenne des deux valeurs aux rangs $\\frac{N}{2}$ et $\\frac{N}{2}+1$.",
+        "Écrire la réponse en conclusion avec une phrase."
+      ],
+      "explanation": "Il faut d'abord ranger les données dans l'ordre croissant en répétant chaque valeur selon son effectif. On calcule $N$, le nombre total de données. Selon la parité de $N$, la règle change : si $N$ est impair, la médiane est la valeur centrale (rang $\\frac{N+1}{2}$) ; si $N$ est pair, c'est la moyenne des deux valeurs centrales (rangs $\\frac{N}{2}$ et $\\frac{N}{2}+1$). On termine par une phrase de conclusion.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

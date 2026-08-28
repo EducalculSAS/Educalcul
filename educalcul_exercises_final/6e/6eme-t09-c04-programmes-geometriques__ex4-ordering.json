@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Programmes géométriques",
+  "title": "Programmes géométriques : mise en ordre",
+  "blocks": [
+    {
+      "title": "Construction de la médiatrice",
+      "content": "Remets les étapes du programme de construction de la médiatrice du segment $AB$ dans l'ordre chronologique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trace le segment $AB$.",
+        "Place le compas en $A$ et trace un arc de rayon supérieur à la moitié de $AB$.",
+        "Sans changer l'ouverture, place le compas en $B$ et trace un arc qui coupe le premier en deux points.",
+        "Trace la droite passant par les deux points d'intersection.",
+        "Cette droite est la médiatrice de $AB$."
+      ],
+      "explanation": "La construction commence par tracer le segment. Ensuite on trace des arcs de même rayon depuis les deux extrémités pour obtenir deux points d'intersection. La droite qui les relie est la médiatrice.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction de la bissectrice",
+      "content": "Remets les étapes du programme de construction de la bissectrice de l'angle $XOY$ dans l'ordre chronologique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trace l'angle $XOY$.",
+        "Place le compas au sommet $O$ et trace un arc qui coupe les deux côtés en $A$ et $B$.",
+        "Sans changer l'ouverture, place le compas en $A$ et trace un arc à l'intérieur de l'angle.",
+        "Même ouverture, place le compas en $B$ et trace un arc qui coupe le précédent en $C$.",
+        "Trace la demi-droite $OC$, c'est la bissectrice de l'angle."
+      ],
+      "explanation": "On commence par tracer l'angle. Un arc centré en $O$ donne les points $A$ et $B$. Des arcs de même rayon depuis $A$ et $B$ se coupent en $C$. La droite $OC$ partage l'angle en deux parties égales.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une parallèle",
+      "content": "Remets les étapes du programme de construction d'une droite parallèle à la droite $d$ passant par le point $P$ (extérieur à $d$) dans l'ordre chronologique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trace la droite $d$ et le point $P$ extérieur.",
+        "Trace une droite quelconque passant par $P$ et coupant $d$ en $A$.",
+        "Au point $A$, construis l'angle égal à l'angle formé par la droite $PA$ et $d$ (en reproduisant l'angle avec le compas).",
+        "Trace la droite passant par $P$ et le sommet de l'angle reproduit.",
+        "Cette droite est parallèle à $d$."
+      ],
+      "explanation": "On trace d'abord la droite et le point. Une sécante par $P$ coupe $d$ en $A$. En reproduisant l'angle à $A$ du côté de $P$, on obtient une droite passant par $P$ qui forme des angles correspondants égaux, donc parallèle à $d$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

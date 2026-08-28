@@ -1,0 +1,269 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.665497+00:00",
+  "id": 60,
+  "code": "cp-t07-c05",
+  "title": "Alignement",
+  "description": "Cours structuré Educalcul : Alignement.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Alignement",
+    "objectif_global": "Alignement",
+    "mini_lecons_imposees": [
+      "Reconnaître des points alignés.",
+      "Utiliser une règle pour vérifier.",
+      "Placer un point sur un alignement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Reconnaître des points alignés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître des points alignés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bonjour ! Aujourd'hui, nous allons jouer aux détectives des lignes droites. Imagine que tu poses trois billes sur une table. Si tu peux passer un fil tendu qui touche les trois billes sans les déplacer, alors elles sont **alignées**. C'est comme si elles faisaient la queue, bien sagement, les unes derrière les autres sur une ligne toute droite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien cette image : tu vois trois petits points, $A$, $B$ et $C$. Si tu poses ta règle dessus et que le bord de la règle passe pile sur les trois en même temps, sans forcer, alors ils sont alignés. S'il y en a un qui dépasse ou qui reste en dessous, c'est qu'il a décidé de faire cavalier seul !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Trois points alignés sur une droite",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "A"
+                },
+                {
+                  "value": 5,
+                  "label": "B"
+                },
+                {
+                  "value": 8,
+                  "label": "C"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les points font semblant d'être alignés mais l'un d'eux fait un petit écart. C'est comme dans une file d'attente à la cantine : si tout le monde est bien derrière l'autre, la file est droite. Mais si Pierre s'écarte pour regarder par la fenêtre, la file n'est plus alignée ! Ton œil de lynx va apprendre à repérer l'intrus qui ne joue pas le jeu."
+            },
+            {
+              "type": "grid_painter",
+              "caption": "Repère les points alignés sur la grille",
+              "rows": 4,
+              "cols": 5,
+              "highlighted": 6
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu commences à avoir l'œil. Dans la prochaine leçon, nous allons sortir un outil magique : la règle. Elle sera notre meilleure amie pour vérifier sans se tromper si les points sont bien sages sur leur ligne. Prêt à devenir un expert de l'alignement ?"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces trois groupes de points, lequel montre des points alignés ? Regarde bien la position de chaque point.",
+              "answer": "Le groupe où les trois points sont sur la même ligne droite.",
+              "hint": "Imagine que tu tires un fil tendu entre le premier et le dernier point. Le point du milieu touche-t-il le fil ?",
+              "explanation": "Les points alignés sont comme des perles sur un fil tendu : ils se touchent tous sur une même ligne droite."
+            },
+            {
+              "question": "Sur cette grille, coche les trois points qui sont alignés. Il y a une seule bonne réponse.",
+              "answer": "Les points (1,1), (2,2), (3,3) sont alignés sur la diagonale.",
+              "hint": "Cherche trois points qui forment une ligne bien droite, horizontale, verticale ou en diagonale.",
+              "explanation": "Quand trois points se suivent sur une même ligne sans faire de zigzag, ils sont alignés."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser une règle pour vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser une règle pour vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans l'atelier du vérificateur ! Tu as maintenant un super pouvoir : ta règle. Elle n'est pas seulement faite pour mesurer des longueurs en $cm$. Elle sert aussi de **guide** pour tes yeux. Pose-la délicatement sur ta feuille, bien à plat, et regarde si son bord droit passe exactement sur tes points."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la méthode en trois temps, facile comme bonjour : d'abord, tu poses ta règle de façon à ce que son bord touche le premier point et le dernier point. Ensuite, tu regardes attentivement le point du milieu. Est-ce qu'il colle au bord de la règle ? Si oui, c'est gagné, ils sont alignés ! S'il y a un petit jour, un espace, même tout petit, alors ils ne le sont pas."
+            },
+            {
+              "type": "ruler_measurer",
+              "caption": "Vérifier l'alignement avec une règle graduée",
+              "segmentLength": 12,
+              "unit": "cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, petit piège ! Parfois, on a envie de pencher la règle pour qu'elle passe sur tous les points. Mais non, la règle doit rester bien droite, elle ne doit pas tourner. C'est comme quand tu traces un trait : tu poses la règle, tu la tiens fermement avec ta main qui n'écrit pas, et tu vérifies. Si le point du milieu ne veut pas coller au bord, c'est qu'il a décidé de partir en promenade tout seul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le bord de la règle sur le point de départ et le point d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarder le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe si le point du milieu touche le bord de la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ça touche : alignés ! Si y a un espace : pas alignés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens vraiment fort ! Maintenant que tu sais vérifier avec ta règle, nous allons passer à l'étape d'après : toi, tu vas devenir le chef d'orchestre et placer toi-même un point exactement là où il faut pour qu'il soit aligné avec les autres. C'est toi qui décides où il va s'asseoir sur la ligne !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as posé ta règle sur les points A et C. Le point B touche-t-il le bord de la règle ? Réponds par oui ou non.",
+              "answer": "Oui, le point B touche le bord de la règle.",
+              "hint": "Regarde s'il y a un espace entre le point B et le bord de la règle.",
+              "explanation": "Quand le bord de la règle passe sur les trois points sans espace, ils sont alignés."
+            },
+            {
+              "question": "Sur ton cahier, trois points sont tracés. Tu poses ta règle sur le premier et le troisième. Le deuxième point est à 2 mm du bord. Sont-ils alignés ?",
+              "answer": "Non, ils ne sont pas alignés car il y a un espace.",
+              "hint": "Même un tout petit espace veut dire que le point n'est pas sur la ligne.",
+              "explanation": "Pour être alignés, tous les points doivent toucher exactement le bord de la règle, sans le moindre écart."
+            }
+          ]
+        },
+        {
+          "title": "Placer un point sur un alignement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un point sur un alignement"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est à toi de jouer, petit architecte ! Tu as deux points, disons $M$ et $N$. Ils attendent un copain pour faire une belle ligne droite à trois. Ta mission : poser un troisième point, appelons-le $P$, pile sur la ligne qui passe par $M$ et $N$. C'est comme inviter un ami à se mettre exactement dans le prolongement de la file."
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment faire ? Sors ta règle ! Pose son bord bien droit sur $M$ et $N$. Tiens-la fort pour qu'elle ne bouge pas. Maintenant, avec ton crayon, fais une toute petite marque sur le bord de la règle, entre $M$ et $N$ ou un peu plus loin, peu importe. Cette marque, c'est ton point $P$. Il est garanti aligné avec les deux autres parce qu'il est né sur le bord de la règle !"
+            },
+            {
+              "type": "grid_painter",
+              "caption": "Place un point aligné avec les deux premiers",
+              "rows": 5,
+              "cols": 6,
+              "highlighted": 4
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi t'amuser à en placer plusieurs, un après l'autre, comme des petits soldats. Essaie d'en mettre un entre $M$ et $N$, un autre avant $M$, un autre après $N$. Tous les points que tu traces le long du bord de ta règle sont **alignés** entre eux. C'est toute une famille qui se tient par la main sur la même ligne !"
+            },
+            {
+              "type": "ruler_measurer",
+              "caption": "Trace des points alignés le long de la règle",
+              "segmentLength": 15,
+              "unit": "cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme tu as grandi ! Au début, tu regardais simplement si des points étaient alignés. Ensuite, tu as appris à vérifier avec ta règle comme un vrai contrôleur. Et maintenant, tu sais **créer** l'alignement toi-même, en posant des points exactement où il faut. C'est tout un parcours, et tu l'as fait avec brio."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire si des points sont alignés en les regardant.",
+                "Je sais utiliser ma règle pour vérifier l'alignement.",
+                "Je sais placer un point aligné avec deux autres points."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur ton cahier, deux points A et B sont tracés. Pose ta règle dessus et place un point C aligné avec eux, entre A et B.",
+              "answer": "Le point C est sur le bord de la règle, entre A et B.",
+              "hint": "Pose la règle sur A et B, tiens-la bien, et marque un point sur le bord entre les deux.",
+              "explanation": "Tout point placé sur le bord de la règle qui passe par A et B est aligné avec eux."
+            },
+            {
+              "question": "Tu as trois points alignés. Si tu en ajoutes un quatrième sur le même bord de règle, sont-ils tous les quatre alignés ?",
+              "answer": "Oui, tous les points posés sur le même bord de règle sont alignés entre eux.",
+              "hint": "La règle trace une ligne droite. Tous les points sur cette ligne sont alignés.",
+              "explanation": "Une droite peut contenir une infinité de points alignés. Tant qu'ils sont sur le bord de la règle, ils le sont."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

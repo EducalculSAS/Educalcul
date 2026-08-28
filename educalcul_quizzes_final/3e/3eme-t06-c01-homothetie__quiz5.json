@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Rapport",
+  "title": "Homothétie : Approfondissement sur le rapport",
+  "questions": [
+    {
+      "text": "Dans une homothétie de centre $O$ et de rapport $k = 2$, le point $A$ est tel que $OA = 3$ cm. Quelle est la longueur $OA'$ de l'image $A'$ de $A$ ?",
+      "options": [
+        "$1,5$ cm",
+        "$3$ cm",
+        "$6$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Dans une homothétie, les distances au centre sont multipliées par la valeur absolue du rapport. Ici $|k| = 2$, donc $OA' = 2 \\times OA = 2 \\times 3 = 6$ cm. Les autres options correspondent à une division par 2, à l'absence de changement ou à une multiplication par 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une homothétie de centre $O$ et de rapport $k = -\\frac{1}{2}$. Si $OA = 8$ cm, quelle est la longueur $OA'$ ?",
+      "options": [
+        "$2$ cm",
+        "$4$ cm",
+        "$8$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$4$ cm",
+      "explanation": "Le rapport $k = -1/2$ a une valeur absolue $|k| = 1/2$. La longueur $OA'$ vaut $|k| \\times OA = 0,5 \\times 8 = 4$ cm. Le signe négatif indique seulement que $A'$ se trouve du côté opposé de $O$ par rapport à $A$, mais ne change pas la longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure plane d'aire $5$ cm$^2$ est transformée par une homothétie de rapport $k = 3$. Quelle est l'aire de l'image ?",
+      "options": [
+        "$15$ cm$^2$",
+        "$25$ cm$^2$",
+        "$45$ cm$^2$",
+        "$5$ cm$^2$"
+      ],
+      "correctAnswer": "$45$ cm$^2$",
+      "explanation": "L'aire est multipliée par $k^2$. Ici $k^2 = 9$, donc l'aire image est $9 \\times 5 = 45$ cm$^2$. L'option $15$ correspond à une multiplication par $k$, $25$ à $k^2$ avec $k=5$, et $5$ à l'absence de changement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue deux homothéties successives de même centre $O$ avec les rapports $k_1 = 2$ et $k_2 = 3$. Quel est le rapport de l'homothétie composée ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$1$",
+        "$1,5$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La composition de deux homothéties de même centre est une homothétie de même centre dont le rapport est le produit des rapports : $k = k_1 \\times k_2 = 2 \\times 3 = 6$. L'addition donnerait $5$, l'inverse $1$, et la moyenne $1,5$ sont des erreurs classiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un segment $AB$ de longueur $4$ cm devient un segment $A'B'$ de longueur $12$ cm par une homothétie. Quel est le rapport $k$ de cette homothétie ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le rapport $k$ est le quotient de la longueur de l'image par la longueur de l'antécédent : $k = \\frac{A'B'}{AB} = \\frac{12}{4} = 3$. L'option $2$ correspondrait à une multiplication par 2, $4$ à une multiplication par 4, et $1/3$ à l'inverse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

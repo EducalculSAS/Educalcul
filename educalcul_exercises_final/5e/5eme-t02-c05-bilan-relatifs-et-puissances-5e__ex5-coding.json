@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 388,
+  "_course_code": "5eme-t02-c05-bilan-relatifs-et-puissances-5e",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Repérage, calculs, rationnels",
+  "title": "Algorithmes sur les nombres rationnels",
+  "blocks": [
+    {
+      "title": "Opposé d'un rationnel",
+      "content": "Écrire un algorithme qui demande un nombre rationnel sous la forme d'un numérateur et d'un dénominateur (entiers) et qui affiche son opposé.",
+      "correctAnswer": "Algorithme OpposeRationnel\\nVariables : num, den : entiers\\nDébut\\n  Afficher \"Entrez le numérateur : \"\\n  Lire num\\n  Afficher \"Entrez le dénominateur : \"\\n  Lire den\\n  Si den = 0 Alors\\n    Afficher \"Dénominateur nul, impossible\"\\n  Sinon\\n    num ← -num\\n    Afficher \"L'opposé est \", num, \"/\", den\\n  FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit le numérateur et le dénominateur. Si le dénominateur est nul, il signale une erreur. Sinon, il change le signe du numérateur pour obtenir l'opposé du rationnel, car l'opposé de a/b est -a/b. Il affiche ensuite le résultat sous forme de fraction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de deux rationnels",
+      "content": "Écrire un algorithme qui lit deux nombres rationnels (chacun donné par un numérateur et un dénominateur) et qui affiche leur somme sous forme de fraction irréductible.",
+      "correctAnswer": "Algorithme SommeRationnels\\nVariables : n1, d1, n2, d2, num, den, pgcd : entiers\\nDébut\\n  Afficher \"Premier rationnel : numérateur et dénominateur\"\\n  Lire n1, d1\\n  Afficher \"Second rationnel : numérateur et dénominateur\"\\n  Lire n2, d2\\n  Si d1 = 0 Ou d2 = 0 Alors\\n    Afficher \"Dénominateur nul, impossible\"\\n  Sinon\\n    num ← n1 * d2 + n2 * d1\\n    den ← d1 * d2\\n    pgcd ← PGCD(|num|, |den|)\\n    num ← num / pgcd\\n    den ← den / pgcd\\n    Si den < 0 Alors\\n      num ← -num\\n      den ← -den\\n    FinSi\\n    Afficher \"La somme est \", num, \"/\", den\\n  FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme calcule la somme de deux fractions a/b + c/d = (ad+bc)/(bd). Il simplifie ensuite la fraction en divisant numérateur et dénominateur par leur PGCD. Il s'assure que le dénominateur est positif en changeant les signes si nécessaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tri de trois rationnels",
+      "content": "Écrire un algorithme qui lit trois nombres rationnels et qui les affiche dans l'ordre croissant.",
+      "correctAnswer": "Algorithme TriTroisRationnels\\nVariables : n1, d1, n2, d2, n3, d3 : entiers\\n         v1, v2, v3 : réels\\n         temp : réel\\n         étiquettes : tableau de 3 chaînes\\nDébut\\n  Pour i de 1 à 3 faire\\n    Afficher \"Rationnel \", i, \" : numérateur et dénominateur\"\\n    Lire n, d\\n    Si d = 0 Alors\\n      Afficher \"Dénominateur nul, impossible\"\\n      Fin\\n    FinSi\\n    v[i] ← n / d\\n    étiquettes[i] ← n, \"/\", d\\n  FinPour\\n  // Tri simple par sélection\\n  Pour i de 1 à 2 faire\\n    Pour j de i+1 à 3 faire\\n      Si v[i] > v[j] Alors\\n        temp ← v[i]; v[i] ← v[j]; v[j] ← temp\\n        tempStr ← étiquettes[i]; étiquettes[i] ← étiquettes[j]; étiquettes[j] ← tempStr\\n      FinSi\\n    FinPour\\n  FinPour\\n  Afficher \"Ordre croissant : \"\\n  Pour i de 1 à 3 faire\\n    Afficher étiquettes[i]\\n  FinPour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme convertit chaque fraction en valeur décimale pour pouvoir les comparer facilement. Il stocke aussi la représentation textuelle de chaque fraction. Ensuite, il effectue un tri simple (tri par sélection) sur les trois valeurs, en déplaçant les étiquettes correspondantes. Finalement, il affiche les fractions dans l'ordre croissant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

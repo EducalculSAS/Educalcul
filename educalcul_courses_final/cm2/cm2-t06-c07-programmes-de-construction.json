@@ -1,0 +1,503 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.489407+00:00",
+  "id": 316,
+  "code": "cm2-t06-c07",
+  "title": "Programmes de construction",
+  "description": "Cours structuré Educalcul : Programmes de construction.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Programmes de construction",
+    "objectif_global": "Programmes de construction",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Exécuter.",
+      "Écrire un programme simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un programme de construction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu donnes à un ami la recette exacte pour dessiner une maison : d'abord un carré de $5$ $cm$ de côté pour les murs, ensuite un triangle au-dessus pour le toit, puis deux petits carrés pour les fenêtres. Eh bien, un programme de construction, c'est exactement ça : une liste d'instructions précises, dans un ordre bien défini, qui permet à n'importe qui de reproduire la même figure géométrique sans la voir au préalable. C'est comme un code secret que tu déchiffres avec ta règle, ton compas et ton équerre."
+            },
+            {
+              "type": "definition",
+              "term": "Programme de construction",
+              "definition": "Suite ordonnée d'instructions géométriques (tracer un segment, reporter une longueur, construire un angle, tracer un cercle...) qui permet de réaliser une figure précise.",
+              "example": "Exemple : 1. Tracer un segment $[AB]$ de $6$ $cm$. 2. Construire l'angle $\\widehat{BAC} = 60^{\\circ}$. 3. Tracer le cercle de centre $A$ et de rayon $4$ $cm$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les instructions dans l'ordre"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première règle, c'est de lire le programme de la première ligne à la dernière, sans sauter d'étape. Chaque instruction s'appuie sur la précédente : si tu traces le cercle avant d'avoir placé son centre, tu ne sais pas où le mettre ! Prends le temps de visualiser mentalement ce que chaque phrase te demande de faire. Par exemple, « Tracer le segment $[AB]$ de $8$ $cm$ » te dit trois choses : le nom des points ($A$ et $B$), l'outil (règle graduée), et la longueur ($8$ $cm$)."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Figure obtenue par le programme : segment $[AB]$, angle $60^{\\circ}$ en $A$, cercle centre $A$ rayon $4$ $cm$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "8 cm",
+                "?",
+                "?"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les consignes principales, regardons de plus près le vocabulaire spécifique qui revient tout le temps dans les programmes. Connaître ces mots par cœur, c'est comme avoir les clés pour ouvrir n'importe quelle énigme géométrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire des outils et des figures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un programme, tu rencontreras souvent ces termes : « tracer » signifie dessiner un trait avec la règle ; « construire » implique l'équerre ou le compas pour obtenir une figure exacte (un angle droit, un angle de $60^{\\circ}$, une médiatrice) ; « reporter » veut dire prendre une longueur avec le compas et la reproduire ailleurs ; « cercle de centre $O$ et de rayon $R$ » te donne le point fixe $O$ et la distance $R$ à reporter tout autour. Un « segment $[AB]$ » a deux extrémités $A$ et $B$, une « droite $(AB)$ » continue indéfiniment, une « demi-droite $[AB)$ » part de $A$ vers $B$ sans s'arrêter."
+            },
+            {
+              "type": "definition",
+              "term": "Reporter une longueur",
+              "definition": "Prélever une distance avec le compas sur une figure ou une règle, puis la reproduire à un autre endroit sans changer l'écartement du compas.",
+              "example": "Reporter la longueur $AB$ sur la demi-droite $[AC)$ pour placer le point $D$ tel que $AD = AB$."
+            },
+            {
+              "type": "definition",
+              "term": "Médiatrice",
+              "definition": "Droite qui coupe un segment en son milieu et qui lui est perpendiculaire (angle droit).",
+              "example": "La médiatrice de $[AB]$ passe par le milieu de $AB$ et forme un angle de $90^{\\circ}$ avec $AB$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à être à l'aise avec le vocabulaire. Il reste une compétence essentielle : comprendre pourquoi l'ordre des étapes ne peut pas être changé. C'est ce qui fait la différence entre une figure réussie et un dessin approximatif."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'ordre des opérations : une logique implacable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pense à la construction d'une cabane en bois : tu ne peux pas poser le toit avant d'avoir monté les murs ! En géométrie, c'est pareil. Si le programme dit : 1. Tracer $[AB]$. 2. Construire la médiatrice de $[AB]$. 3. Placer $C$ sur cette médiatrice à $5$ $cm$ de $A$. Tu ne peux pas faire l'étape 3 avant l'étape 2, car le point $C$ doit être sur la médiatrice qui n'existe pas encore. Essaie de lire un programme à voix haute en mimant les gestes avec tes doigts sur la table : cela t'aide à sentir l'enchaînement naturel."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les points de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les points donnés d'emblée (souvent $A$, $B$...) et les longueurs ou angles imposés dès la première instruction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Suivre l'enchaînement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque nouvelle instruction utilise ce qui vient d'être tracé (un point, une droite, un cercle). Coche mentalement ce qui est déjà fait avant de passer à la suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Visualiser le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant de sortir tes instruments, ferme les yeux et imagine la figure complète. Cela t'évite les surprises et les erreurs de placement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un programme : 1. Tracer un segment $[AB]$ de $7$ $cm$. 2. Construire l'angle $\\widehat{BAC} = 50^{\\circ}$. 3. Tracer le cercle de centre $A$ et de rayon $4$ $cm$. 4. Le cercle coupe la demi-droite $[AC)$ en $D$. Quelles sont les trois informations contenues dans l'instruction 1 ?",
+              "answer": "Les points $A$ et $B$, l'outil (règle graduée), la longueur $7$ $cm$.",
+              "hint": "Relis l'explication sur « Tracer le segment $[AB]$ de $8$ $cm$ » dans le cours.",
+              "explanation": "L'instruction 1 donne le nom du segment ($[AB]$), l'instrument à utiliser (la règle pour tracer un segment) et sa mesure ($7$ $cm$)."
+            },
+            {
+              "question": "Associe chaque terme à sa définition : (a) Reporter une longueur, (b) Médiatrice, (c) Tracer un cercle. Définitions : 1. Droite perpendiculaire au milieu d'un segment. 2. Prendre une mesure au compas et la reproduire. 3. Utiliser le compas avec un centre et un rayon donnés.",
+              "answer": "a-2, b-1, c-3",
+              "hint": "Regarde les fiches « Définition » du cours pour chaque mot.",
+              "explanation": "Reporter = compas pour copier une longueur. Médiatrice = perpendiculaire au milieu. Tracer un cercle = compas avec centre et rayon fixés."
+            },
+            {
+              "question": "Dans le programme ci-dessous, quelle instruction ne peut PAS être faite en premier ? 1. Tracer le segment $[AB] = 6$ $cm$. 2. Construire la médiatrice de $[AB]$. 3. Placer $C$ sur la médiatrice à $4$ $cm$ de $A$.",
+              "answer": "L'instruction 3 ne peut pas être faite en premier.",
+              "hint": "Demande-toi : qu'est-ce qui doit exister avant de placer $C$ sur la médiatrice ?",
+              "explanation": "Pour placer $C$ sur la médiatrice, il faut que la médiatrice existe (instruction 2). Pour tracer la médiatrice, il faut que le segment $[AB]$ existe (instruction 1). Donc l'ordre 1 → 2 → 3 est obligatoire."
+            }
+          ]
+        },
+        {
+          "title": "Exécuter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Préparer son matériel comme un pro"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de te lancer dans l'exécution d'un programme, prends une minute pour installer ton espace de travail. Une feuille blanche bien plate, une règle graduée en bon état (vérifie que le zéro n'est pas usé !), un compas bien serré qui ne glisse pas, un crayon à papier bien taillé (mine HB, ni trop dure ni trop molle) et une équerre pour les angles droits. C'est comme un cuisinier qui sort tous ses ingrédients avant de commencer la recette : ça évite les allers-retours et les erreurs de précipitation."
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce de pro : trace toujours tes traits de construction (les traits qui servent à placer les points, les arcs de cercle du compas) avec un crayon très fin et assez clair. Tu pourras les gommer proprement à la fin pour ne garder que la figure finale. Les traits définis du programme (segments, côtés de la figure) seront repassés plus appuyés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exécuter la première instruction : tracer un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un programme concret : 1. Tracer un segment $[AB]$ de $6$ $cm$. 2. Construire l'angle $\\widehat{BAC} = 60^{\\circ}$ en $A$. 3. Reporter la longueur $AB$ sur $[AC)$ pour obtenir $D$. Pour l'étape 1, pose ta règle, marque un point $A$ au zéro, puis un point $B$ à la graduation $6$. Trace le trait entre $A$ et $B$ en appuyant modérément. N'oublie pas d'écrire les lettres $A$ et $B$ tout près des points, sinon tu ne sauras plus lequel est lequel dans deux minutes !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "6",
+                "0"
+              ],
+              "result": "6",
+              "carries": [],
+              "caption": "Vérification : le segment $[AB]$ mesure bien $6$ $cm$ de $A$ (0) à $B$ (6)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le segment est là, bien net. Maintenant, il faut construire un angle de $60^{\\circ}$ à l'extrémité $A$. C'est là que l'équerre et le rapporteur (ou le compas pour la méthode classique) entrent en jeu. Observe bien la différence entre « tracer » (règle seulement) et « construire » (équerre, rapporteur ou compas)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un angle avec le rapporteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place le centre du rapporteur exactement sur le point $A$, avec la base du rapporteur alignée sur la droite $(AB)$. Repère la graduation $60$ (il y en a deux, choisis celle qui donne un angle du côté où tu veux ta figure). Fais un petit trait de crayon à cet endroit, appelle ce point $C$, puis retire le rapporteur et trace la demi-droite $[AC)$ avec ta règle. Vérifie visuellement : l'angle a l'air plus ouvert qu'un angle droit ($90^{\\circ}$) mais moins qu'un angle plat ($180^{\\circ}$), c'est cohérent pour $60^{\\circ}$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Construction de l'angle $\\widehat{BAC} = 60^{\\circ}$ : rapporteur centré en $A$, base sur $(AB)$, point $C$ repéré à $60^{\\circ}$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "6 cm",
+                "?",
+                "?"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent, ton angle est construit. L'étape 3 demande de « reporter la longueur $AB$ sur $[AC)$ ». Cela veut dire : ouvre ton compas à la longueur exacte de $AB$ (pointe sur $A$, mine sur $B$), sans toucher à l'écartement, pose la pointe sur $A$ et trace un petit arc de cercle qui coupe la demi-droite $[AC)$. Le point d'intersection, c'est $D$. Regarde comme c'est malin : tu as transféré une longueur sans la mesurer en $cm$ !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Prendre la mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe du compas sur $A$, mine sur $B$. L'écartement du compas mémorise maintenant la longueur $AB = 6$ $cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter sans changer l'écartement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe sur $A$ (le même point de départ), trace un arc qui coupe $[AC)$. Ne serre pas le compas entre-temps !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nommer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intersection de l'arc et de la demi-droite est le point $D$. Écris $D$ à côté. Tu as maintenant $AD = AB = 6$ $cm$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as exécuté ton premier programme complet ! Regarde ta figure : un segment $[AB]$, un angle de $60^{\\circ}$ en $A$, et un point $D$ tel que $AD = AB$. C'est souvent le début d'un triangle équilatéral. La dernière touche, c'est le nettoyage : gomme les traits de construction (l'arc de cercle, la graduation du rapporteur) et repasse les traits définitifs ($[AB]$, $[AC]$, $[AD]$) plus foncés. Ta figure est maintenant claire, précise et prête à être montrée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier sa figure : le contrôle final"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de ranger ton matériel, relis le programme une dernière fois et coche chaque instruction sur ta feuille. Le segment $[AB]$ fait-il bien $6$ $cm$ ? L'angle $\\widehat{BAC}$ est-il bien à $60^{\\circ}$ (tu peux revérifier vite fait avec le rapporteur) ? La longueur $AD$ est-elle égale à $AB$ (compas pour comparer) ? Ce petit rituel de vérification, c'est ce qui transforme un élève appliqué en un géomètre rigoureux. Et si tu as une petite différence de $1$ $mm$, ne t'inquiète pas : en géométrie au compas, la précision parfaite n'existe pas, on vise la justesse !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu dois tracer un segment $[EF]$ de $5,5$ $cm$. Où places-tu le point $E$ sur la règle ? Et le point $F$ ?",
+              "answer": "$E$ sur la graduation $0$ (ou n'importe quelle graduation de départ), $F$ sur la graduation $5,5$.",
+              "hint": "Le zéro de la règle correspond au point de départ du segment.",
+              "explanation": "On aligne le zéro de la règle avec le point de départ $E$. La longueur $5,5$ $cm$ se lit sur la graduation $5,5$ pour placer $F$."
+            },
+            {
+              "question": "Pour construire l'angle $\\widehat{XYZ} = 45^{\\circ}$ avec un rapporteur, sur quel point places-tu le centre du rapporteur ? Sur quelle graduation alignes-tu la base ?",
+              "answer": "Centre sur le sommet $Y$. Base alignée sur la droite $(YX)$ (ou $(YZ)$ selon le sens).",
+              "hint": "Le sommet de l'angle est le point central du rapporteur. Un des côtés sert de référence (zéro).",
+              "explanation": "Le rapporteur se centre sur le sommet $Y$. On aligne le trait de base (zéro) sur l'un des côtés de l'angle (ici $(YX)$), puis on repère $45^{\\circ}$ pour placer l'autre côté."
+            },
+            {
+              "question": "Tu as tracé $[AB] = 4$ $cm$. Tu ouvres le compas sur $AB$. Sans le refermer, tu poses la pointe sur $A$ et tu traces un arc qui coupe une droite en $C$. Que peux-tu affirmer sur $AC$ ?",
+              "answer": "$AC = AB = 4$ $cm$.",
+              "hint": "Le compas a gardé l'écartement de $AB$. Ce même écartement a servi à tracer $AC$.",
+              "explanation": "Reporter une longueur au compas conserve l'écartement. Donc la nouvelle longueur $AC$ est exactement égale à la longueur originale $AB$."
+            },
+            {
+              "question": "Programme : 1. $[KL] = 5$ $cm$. 2. $\\widehat{LKM} = 90^{\\circ}$. 3. Cercle centre $K$ rayon $3$ $cm$ coupant $[KM)$ en $N$. Dessine la figure sur papier (pas ici) et dis : quelle est la longueur de $KN$ ?",
+              "answer": "$KN = 3$ $cm$.",
+              "hint": "Regarde l'instruction 3 : « cercle centre $K$ rayon $3$ $cm$ ». Le rayon, c'est la distance du centre au point sur le cercle.",
+              "explanation": "Le cercle a pour centre $K$ et pour rayon $3$ $cm$. Le point $N$ est sur ce cercle, donc la distance $KN$ vaut exactement le rayon : $3$ $cm$."
+            }
+          ]
+        },
+        {
+          "title": "Écrire un programme simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la figure au programme : l'ingénierie à l'envers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, tu as lu des programmes et tu les as exécutés. Maintenant, on change de côté : tu as une figure devant les yeux (ou dans la tête), et tu dois écrire le programme qui permet de la construire. C'est le travail d'un architecte qui dessine les plans avant de donner les instructions aux maçons. Pas de panique, tu as déjà tous les outils : tu sais tracer des segments, construire des angles, reporter des longueurs, tracer des cercles. Il suffit de les ordonner logiquement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette figure simple : un triangle rectangle $ABC$ rectangle en $A$, avec $AB = 4$ $cm$ et $AC = 3$ $cm$. Pour écrire son programme, demande-toi : « Quelle est la toute première chose que je dessine ? » Souvent, c'est un segment qui sert de base. Ici, je choisis $[AB] = 4$ $cm$. C'est mon point de départ, mon ancrage."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle $ABC$ rectangle en $A$, $AB = 4$ $cm$, $AC = 3$ $cm$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "4 cm",
+                "5 cm",
+                "3 cm"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu as identifié le premier segment. Maintenant, il faut construire l'angle droit en $A$ pour pouvoir placer le deuxième côté $[AC]$. Comment écrire cette instruction de façon claire ? « Construire l'angle $\\widehat{BAC} = 90^{\\circ}$ » ou « Tracer la perpendiculaire à $(AB)$ passant par $A$ ». Les deux sont correctes, la seconde est plus « langage géomètre ». Choisis celle qui te semble la plus naturelle, l'important c'est que n'importe qui la comprenne sans ambiguity."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger des instructions précises et complètes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une bonne instruction de programme contient toujours trois ingrédients : l'ACTION (tracer, construire, reporter, placer), l'OBJET (segment, angle, cercle, point, droite), et les CARACTÉRISTIQUES (longueur, angle, centre, rayon, nom des points). Par exemple : « Reporter la longueur $AB$ sur la demi-droite $[AC)$ pour obtenir le point $C $ tel que $AC = 3$ $cm$ ». Action = reporter, Objet = longueur $AB$, Caractéristiques = sur $[AC)$, résultat $AC = 3$ $cm$. Si tu oublies un ingrédient, ton programme devient flou."
+            },
+            {
+              "type": "definition",
+              "term": "Demi-droite",
+              "definition": "Partie de droite qui a un origine (un point de départ) et qui s'étend indéfiniment dans un sens. Notation : $[AB)$ parte de $A$ vers $B$.",
+              "example": "La demi-droite $[AC)$ part de $A$ et passe par $C$, elle continue au-delà de $C$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre triangle rectangle. Après avoir tracé $[AB] = 4$ $cm$ et construit l'angle droit en $A$, il reste à placer $C$ sur la perpendiculaire à $3$ $cm$ de $A$. Deux façons de l'écrire : « Tracer le cercle de centre $A$ et de rayon $3$ $cm$ ; il coupe la perpendiculaire en $C $ » OU « Reporter la longueur $3$ $cm$ sur la perpendiculaire pour obtenir $C $ ». La première utilise le compas (cercle), la seconde utilise la règle (reporter une mesure). Les deux donnent le même résultat. C'est ça, la richesse de la géométrie : plusieurs chemins mènent au même but."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie un segment facile à tracer en premier (souvent un côté connu). Écris : « Tracer le segment $[AB] = 4$ $cm$. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire les angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque angle de la figure, écris l'instruction de construction (rapporteur, équerre, ou compas pour $60^{\\circ}$). Ici : « Construire la perpendiculaire à $(AB)$ en $A$. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer les autres sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise le compas (cercle ou report de longueur) pour positionner les points restants à leurs distances exactes. Ici : « Tracer le cercle centre $A$ rayon $3$ $cm$ coupant la perpendiculaire en $C$. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Compléter la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les derniers tracés pour fermer la figure (segments, arcs). Ici : « Tracer les segments $[BC]$ et $[AC]$. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il te reste une dernière compétence pour être au top : tester ton propre programme. Donne-le à un camarade (ou exécute-le toi-même sur une feuille neuve en faisant comme si tu ne connaissais pas la figure). Si ton camarade obtient exactement la même figure que toi, sans poser de question, ton programme est parfait ! S'il hésite (« Attends, je trace le cercle avant ou après la perpendiculaire ? »), c'est qu'une instruction manque de clarté ou que l'ordre n'est pas assez logique. Réécris-la."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter quand on écrit un programme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier piège : oublier de nommer les points au fur et à mesure. Si tu écris « Tracer un cercle de rayon $3$ $cm$ » sans dire « centre $A$ », personne ne sait où mettre le compas. Deuxième piège : utiliser un point qui n'existe pas encore. « Tracer $[CD]$ » alors que $C$ et $D$ n'ont pas été définis aux étapes précédentes, c'est impossible. Troisième piège : donner une longueur en $cm$ pour un report de longueur au compas sans avoir mesuré avant. Sois précis, complet, et teste toujours !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un programme de construction et identifier chaque instruction dans l'ordre.",
+                "Je sais exécuter un programme étape par étape avec ma règle, mon compas et mon équerre.",
+                "Je sais écrire un programme clair et complet pour construire une figure simple (triangle, quadrilatère).",
+                "Je vérifie toujours que mes instructions nomment les points, donnent les longueurs ou angles, et suivent un ordre logique.",
+                "Je teste mon programme en le faisant exécuter par quelqu'un d'autre (ou moi-même sur feuille neuve)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un carré $ABCD$ de côté $4$ $cm$. Écris la première instruction du programme de construction.",
+              "answer": "Tracer le segment $[AB] = 4$ $cm$. (ou $[AD] = 4$ $cm$, ou $[BC] = 4$ $cm$, ou $[CD] = 4$ $cm$)",
+              "hint": "Choisis un côté comme base. Tous les côtés font $4$ $cm$.",
+              "explanation": "Un carré a quatre côtés égaux. On commence par tracer l'un d'eux, par exemple $[AB]$, en donnant sa longueur."
+            },
+            {
+              "question": "Pour le carré $ABCD$ de côté $4$ $cm$, après avoir tracé $[AB] = 4$ $cm$, quelle instruction permet de placer le sommet $D$ ?",
+              "answer": "Construire la perpendiculaire à $(AB)$ passant par $A$, puis reporter $4$ $cm$ sur cette perpendiculaire pour obtenir $D$ (ou tracer le cercle centre $A$ rayon $4$ $cm$ coupant la perpendiculaire en $D$).",
+              "hint": "L'angle en $A$ est un angle droit. $AD = 4$ $cm$ et $AD \\perp AB$.",
+              "explanation": "Dans un carré, les angles sont droits. On construit donc la perpendiculaire en $A$, puis on place $D$ à $4$ $cm$ de $A$ sur cette perpendiculaire (compas ou report de longueur)."
+            },
+            {
+              "question": "Écris le programme complet pour construire un triangle $MNP$ tel que $MN = 5$ $cm$, $MP = 4$ $cm$ et $NP = 3$ $cm$.",
+              "answer": "1. Tracer $[MN] = 5$ $cm$. 2. Tracer le cercle centre $M$ rayon $4$ $cm$. 3. Tracer le cercle centre $N$ rayon $3$ $cm$. 4. Les cercles se coupent en $P$ (choisir l'un des deux points). 5. Tracer $[MP]$ et $[NP]$.",
+              "hint": "Commence par la base $[MN]$. Les deux autres sommets sont à distances connues de $M$ et de $N$ : utilise deux cercles.",
+              "explanation": "On trace la base $[MN]$. Le point $P$ est à $4$ $cm$ de $M$ (cercle centre $M$ rayon $4$) ET à $3$ $cm$ de $N$ (cercle centre $N$ rayon $3$). L'intersection des deux cercles donne $P$."
+            },
+            {
+              "question": "Ton ami a écrit ce programme : 1. Tracer le cercle centre $O$ rayon $3$ $cm$. 2. Tracer le diamètre $[AB]$. 3. Tracer la médiatrice de $[AB]$. Est-ce correct ? Pourquoi ?",
+              "answer": "Non, l'ordre n'est pas logique. On ne peut pas tracer le diamètre $[AB]$ (instruction 2) avant d'avoir le cercle (instruction 1) — mais ici le cercle est bien en 1. En fait, le problème est qu'on ne peut pas tracer la médiatrice de $[AB]$ (instruction 3) sans avoir les points $A$ et $B$ définis par le diamètre. Mais le diamètre demande de choisir deux points opposés sur le cercle. Le programme est réalisable MAIS l'instruction 2 « Tracer le diamètre $[AB]$ » est floue : comment choisir $A$ et $B$ ? Mieux vaut : 1. Tracer un cercle centre $O$ rayon $3$ $cm$. 2. Tracer une droite passant par $O$ coupant le cercle en $A$ et $B$. 3. $[AB]$ est un diamètre. 4. Tracer la médiatrice de $[AB]$ (qui passe par $O$).",
+              "hint": "Relis l'instruction 2 : « Tracer le diamètre $[AB]$ ». Comment sait-on où sont $A$ et $B$ sur le cercle ?",
+              "explanation": "Un diamètre est un segment passant par le centre et dont les extrémités sont sur le cercle. L'instruction « Tracer le diamètre $[AB]$ » suppose qu'on a déjà placé $A$ et $B$. Il faut d'abord tracer une droite passant par $O$ pour obtenir $A$ et $B$, puis dire que $[AB]$ est un diamètre."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

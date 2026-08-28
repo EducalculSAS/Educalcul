@@ -1,0 +1,317 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.688872+00:00",
+  "id": 68,
+  "code": "ce1-t01-c01",
+  "title": "Construire la centaine",
+  "description": "Cours structuré Educalcul : Construire la centaine.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Construire la centaine",
+    "objectif_global": "Construire la centaine",
+    "mini_lecons_imposees": [
+      "Regrouper 10 dizaines.",
+      "Relier 100 unités, 10 dizaines et 1 centaine.",
+      "Reconnaître une centaine dans différents matériels."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Regrouper 10 dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la centaine par les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons explorer un grand nombre : la centaine. Tu connais déjà les dizaines : $10$, $20$, $30$... jusqu'à $90$. Imagine que tu as dix paquets de dix bâtonnets. Si tu les mets tous ensemble, tu obtiens un gros paquet de cent bâtonnets. C'est exactement ce que nous allons faire avec nos cubes et nos barres."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "Une plaque de cent : c'est 10 barres de dix rassemblées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette plaque. Elle est formée de $10$ barres de dix collées les unes aux autres. Chaque barre vaut $10$ unités. Donc la plaque vaut $10 \\times 10 = 100$ unités. On dit qu'elle représente une centaine."
+            },
+            {
+              "type": "definition",
+              "term": "Centaine",
+              "definition": "Une centaine est un groupe de 10 dizaines, soit 100 unités. On l'écrit $100$.",
+              "example": "10 barres de dix forment 1 plaque de cent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de compter par dizaines jusqu'à cent. Nous allons utiliser un quadrillage de $10$ cases sur $10$ pour visualiser ce regroupement."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 10,
+              "cols": 10,
+              "highlighted": 100,
+              "caption": "Un carré de 100 petites cases : 10 lignes de 10 cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque ligne du quadrillage contient $10$ cases. Il y a $10$ lignes. En tout, cela fait $10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 = 100$ cases. C'est une autre façon de voir les 10 dizaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien retenir, on peut se dire : \"Dix fois dix fait cent.\" C'est comme avoir dix boîtes de dix crayons. Si on verse toutes les boîtes dans un grand sac, on a cent crayons. Écrivons cette égalité importante."
+            },
+            {
+              "type": "display_math",
+              "latex": "10 \\times 10 = 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette écriture signifie : 10 groupes de 10 donnent 100. C'est la base de la centaine. Dans la prochaine leçon, nous verrons comment les unités, les dizaines et la centaine sont liées entre elles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de barres de dix faut-il pour former une plaque de cent ?",
+              "answer": "10",
+              "hint": "Regarde la plaque : elle est faite de 10 barres collées.",
+              "explanation": "Une plaque de cent (une centaine) est exactement composée de 10 barres de dix. Donc il faut 10 barres."
+            },
+            {
+              "question": "Sur le quadrillage 10x10, combien y a-t-il de cases au total ?",
+              "answer": "100",
+              "hint": "Compte les lignes : 10 lignes de 10 cases.",
+              "explanation": "Il y a 10 lignes et chaque ligne a 10 cases. 10 fois 10 cases font 100 cases en tout."
+            },
+            {
+              "question": "Complète l'égalité : $10 \\times \\square = 100$",
+              "answer": "10",
+              "hint": "Combien de fois 10 faut-il additionner pour obtenir 100 ?",
+              "explanation": "10 fois 10 font 100. Le nombre manquant est 10."
+            }
+          ]
+        },
+        {
+          "title": "Relier 100 unités, 10 dizaines et 1 centaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unités, dizaines, centaine : le lien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant que 10 dizaines font une centaine. Mais comment passer des toutes petites unités à cette grande centaine ? Imagine que tu as 100 petits cubes en bois, chacun de la taille d'un dé. Si tu les ranges par paquets de 10, tu obtiens 10 barres. Et si tu rassembles ces 10 barres, tu formes une plaque."
+            },
+            {
+              "type": "definition",
+              "term": "Unité",
+              "definition": "C'est le plus petit élément de comptage : 1 cube, 1 bâtonnet, 1 objet seul.",
+              "example": "Un cube tout seul vaut 1 unité."
+            },
+            {
+              "type": "definition",
+              "term": "Dizaine",
+              "definition": "Un groupe de 10 unités attaché ensemble. On l'écrit 10.",
+              "example": "Une barre de 10 cubes vaut 1 dizaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons de suivre le cheminement : on part de 100 unités séparées. On les regroupe par 10 pour faire des dizaines. Combien de dizaines obtient-on ? Exactement 10 dizaines. Puis on regroupe ces 10 dizaines pour faire 1 centaine. C'est comme un jeu de poupées russes : l'unité est dans la dizaine, la dizaine est dans la centaine."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "1 centaine = 10 dizaines = 100 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'image, la plaque représente à la fois 1 centaine, 10 dizaines et 100 unités. C'est le même objet vu à trois échelles différentes. On peut écrire cette chaîne d'égalité :"
+            },
+            {
+              "type": "display_math",
+              "latex": "1 \\text{ centaine} = 10 \\text{ dizaines} = 100 \\text{ unités}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer l'idée, prenons un exemple concret : une boîte de 100 trombones. Si tu les comptes un par un, tu comptes 100 unités. Si tu fais des petits tas de 10 trombones, tu as 10 tas (10 dizaines). Si tu mets tous les tas dans un grand sachet, tu as 1 sachet de 100 (1 centaine). C'est toujours la même quantité, juste groupée différemment."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Retiens bien cette équivalence : 100 unités, 10 dizaines, 1 centaine, c'est exactement la même quantité. Dans la dernière leçon, nous allons t'entraîner à repérer une centaine dans plein de matériels différents : cubes, barres, plaques, mais aussi argent, grilles, etc."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'unités y a-t-il dans une dizaine ?",
+              "answer": "10",
+              "hint": "Une barre de dix est faite de 10 cubes.",
+              "explanation": "Par définition, 1 dizaine = 10 unités."
+            },
+            {
+              "question": "Combien de dizaines y a-t-il dans une centaine ?",
+              "answer": "10",
+              "hint": "Une plaque de cent est faite de 10 barres de dix.",
+              "explanation": "1 centaine = 10 dizaines."
+            },
+            {
+              "question": "Si j'ai 100 billes et que je les range par paquets de 10, combien de paquets fais-je ?",
+              "answer": "10",
+              "hint": "100 divisé par 10 fait 10.",
+              "explanation": "100 unités groupées par 10 donnent 10 dizaines."
+            },
+            {
+              "question": "Complète : 1 centaine = \\square dizaines = \\square unités",
+              "answer": "10 dizaines = 100 unités",
+              "hint": "Repense à la plaque de cent et aux barres.",
+              "explanation": "1 centaine vaut 10 dizaines et 100 unités."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître une centaine dans différents matériels.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître la centaine partout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est une centaine, jouons à la repérer dans différents matériels. En classe, tu as peut-être vu des plaques en plastique (les plaques de cent), des barres de dix, des cubes unités. Mais il y a aussi les jetons, les boutons, les paquets de crayons, les grilles de cent cases, et même l'argent !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "La plaque de cent (matériel de base dix)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette plaque. Elle est plate, carrée, et elle ne se démonte pas. Quand tu la vois, tu sais tout de suite : c'est 1 centaine. Pas besoin de compter, tu la reconnais comme tu reconnais une pièce de 1 euro."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre matériel : les billets et les pièces. En euros, 1 euro vaut 100 centimes. Une pièce de 1 euro représente donc une centaine de centimes. Si tu as 10 pièces de 10 centimes, tu as aussi 1 euro. C'est exactement comme 10 barres de dix qui font une plaque."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "target": 100,
+              "caption": "10 pièces de 10 centimes = 1 euro (100 centimes)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'image, tu vois 10 pièces de 10 centimes. Ensemble, elles valent 100 centimes, soit 1 euro. C'est une centaine de centimes ! Tu peux aussi penser à une grille de 100 cases (10 par 10) que tu coloriés entièrement : le carré plein, c'est une centaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la centaine est cachée dans un plus grand nombre. Par exemple, le nombre 132 contient 1 centaine, 3 dizaines et 2 unités. Mais pour l'instant, concentre-toi sur l'objet « centaine » seul. Si tu vois un paquet de 100 feuilles, une boîte de 100 trombones, une grille entièrement coloriée, une plaque de base dix, ou 1 euro : c'est toujours une centaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais regrouper 10 dizaines pour former une centaine.",
+                "Je sais que 1 centaine = 10 dizaines = 100 unités.",
+                "Je reconnais une centaine dans une plaque de base dix, une grille 10x10 pleine, 1 euro ou un paquet de 100 objets."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lequel représente une centaine ? (Choisis la bonne réponse) : une barre de dix, une plaque de cent, un cube unité.",
+              "answer": "une plaque de cent",
+              "hint": "La plaque est le grand carré qui vaut 100.",
+              "explanation": "La plaque de cent (ou plaque de base dix) est la représentation visuelle d'une centaine."
+            },
+            {
+              "question": "Combien de pièces de 10 centimes faut-il pour faire 1 euro ?",
+              "answer": "10",
+              "hint": "1 euro = 100 centimes. 100 divisé par 10 = 10.",
+              "explanation": "10 pièces de 10 centimes font 100 centimes = 1 euro. C'est une centaine de centimes."
+            },
+            {
+              "question": "Si je colorie toutes les cases d'une grille 10 par 10, combien de cases sont coloriées ?",
+              "answer": "100",
+              "hint": "10 lignes de 10 cases.",
+              "explanation": "Une grille 10x10 entièrement coloriée contient 100 cases : c'est une centaine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

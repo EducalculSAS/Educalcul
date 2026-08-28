@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 387,
+  "_course_code": "5eme-t02-c04-puissances",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Application : Puissances",
+  "title": "Application des puissances",
+  "questions": [
+    {
+      "text": "Quelle est la valeur de $2^3 \\times 2^4$ ?",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$4^7$",
+        "$2^{3 \\times 4}$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "Lorsque l'on multiplie deux puissances de même base, on additionne les exposants : $2^3 \\times 2^4 = 2^{3+4} = 2^7$. Les autres options correspondent à des erreurs fréquentes : multiplier les exposants ($2^{12}$), changer la base ($4^7$) ou multiplier les exposants au lieu de les additionner ($2^{3\\times4}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $(5^2)^3$.",
+      "options": [
+        "$5^6$",
+        "$5^5$",
+        "$5^8$",
+        "$5^{2+3}$"
+      ],
+      "correctAnswer": "$5^6$",
+      "explanation": "La règle de la puissance d'une puissance dit de multiplier les exposants : $(5^2)^3 = 5^{2\\times3}=5^6$. L'option $5^5$ correspond à l'addition des exposants, $5^8$ à une confusion avec $2^3$, et $5^{2+3}$ est une autre façon d'écrire $5^5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $1000$ comme une puissance de $10$.",
+      "options": [
+        "$10^3$",
+        "$10^2$",
+        "$10^4$",
+        "$10^5$"
+      ],
+      "correctAnswer": "$10^3$",
+      "explanation": "$1000 = 10 \\times 10 \\times 10 = 10^3$. Les autres puissances donnent $100$, $10000$ et $100000$ respectivement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a=2$, calcule $a^5 / a^2$.",
+      "options": [
+        "$2^3$",
+        "$2^7$",
+        "$2^{5/2}$",
+        "$2^{5 \\times 2}$"
+      ],
+      "correctAnswer": "$2^3$",
+      "explanation": "En divisant deux puissances de même base, on soustrait les exposants : $a^5 / a^2 = a^{5-2}=a^3$. Avec $a=2$, cela donne $2^3$. Les distracteurs correspondent à l'addition ($2^7$), la division des exposants ($2^{5/2}$) et la multiplication des exposants ($2^{5\\times2}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une population de bactéries double chaque heure. En partant de $5$ bactéries, combien y en a-t-il après $4$ heures ?",
+      "options": [
+        "$80$",
+        "$40$",
+        "$160$",
+        "$20$"
+      ],
+      "correctAnswer": "$80$",
+      "explanation": "Chaque heure la population est multipliée par $2$. Après $4$ heures : $5 \\times 2^4 = 5 \\times 16 = 80$. L'option $40$ correspond à $5 \\times 2^3$, $160$ à $5 \\times 2^5$ et $20$ à $5 \\times 2^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

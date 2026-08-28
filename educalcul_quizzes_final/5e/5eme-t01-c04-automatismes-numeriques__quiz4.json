@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 382,
+  "_course_code": "5eme-t01-c04-automatismes-numeriques",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Application : Automatismes numériques",
+  "title": "Quiz Automatismes numériques - Application",
+  "questions": [
+    {
+      "text": "Calcule $12 + 8 × 2$ en respectant l'ordre des opérations.",
+      "options": [
+        "$28$",
+        "$20$",
+        "$40$",
+        "$36$"
+      ],
+      "correctAnswer": "$28$",
+      "explanation": "On effectue d'abord la multiplication $8 × 2 = 16$, puis l'addition $12 + 16 = 28$. Les autres réponses correspondent à des erreurs d'ordre : $20$ si l'on additionne avant de multiplier, $40$ si l'on multiplie $12 + 8$ par $2$, $36$ si l'on multiplie $12$ par $2$ puis on ajoute $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle expression est équivalente à $5 × (12 + 3)$ grâce à la distributivité ?",
+      "options": [
+        "$5 × 12 + 5 × 3$",
+        "$5 × 12 + 3$",
+        "$5 + 12 × 3$",
+        "$5 × 12 × 3$"
+      ],
+      "correctAnswer": "$5 × 12 + 5 × 3$",
+      "explanation": "La distributivité donne $5 × (12 + 3) = 5 × 12 + 5 × 3$. Les autres options omettent une multiplication ou changent l'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $18 ÷ (3 + 3) × 2$.",
+      "options": [
+        "$6$",
+        "$12$",
+        "$3$",
+        "$9$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "On commence par la parenthèse $3 + 3 = 6$, puis la division $18 ÷ 6 = 3$, enfin la multiplication $3 × 2 = 6$. $12$ correspond à $18 ÷ 3 + 3 × 2$, $3$ à l'oubli de la dernière multiplication, $9$ à $18 ÷ 3 + 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En arrondissant chaque facteur à la dizaine la plus proche, donne une valeur approchée de $49 × 51$.",
+      "options": [
+        "$2500$",
+        "$2450$",
+        "$2600$",
+        "$2400$"
+      ],
+      "correctAnswer": "$2500$",
+      "explanation": "$49$ s'arrondit à $50$ et $51$ à $50$, donc $50 × 50 = 2500$. $2450$ serait $49 × 50$, $2600$ serait $52 × 50$, $2400$ serait $48 × 50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $125 × 8$ en décomposant $125$ en $100 + 25$.",
+      "options": [
+        "$1000$",
+        "$800$",
+        "$200$",
+        "$1200$"
+      ],
+      "correctAnswer": "$1000$",
+      "explanation": "$125 × 8 = (100 + 25) × 8 = 100 × 8 + 25 × 8 = 800 + 200 = 1000$. $800$ correspond à $100 × 8$ seul, $200$ à $25 × 8$ seul, $1200$ à une addition erronée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

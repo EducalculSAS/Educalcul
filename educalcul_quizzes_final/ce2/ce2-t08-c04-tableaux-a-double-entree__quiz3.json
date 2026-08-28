@@ -1,0 +1,251 @@
+{
+  "_status": "done",
+  "_course_id": 208,
+  "_course_code": "ce2-t08-c04-tableaux-a-double-entree",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Croiser ligne et colonne",
+  "title": "Quiz : Croiser ligne et colonne dans un tableau",
+  "questions": [
+    {
+      "text": "Regarde le tableau ci-dessous. Combien de pommes Lucie a-t-elle mangées ?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$4$",
+        "$1$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Pour trouver la réponse, il faut croiser la ligne correspondant à Lucie et la colonne des Pommes. À l'intersection, on lit le nombre $3$. Les autres nombres correspondent à d'autres fruits ou d'autres enfants.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Poires",
+          "Bananes"
+        ],
+        "rows": [
+          [
+            "Lucie",
+            "3",
+            "2",
+            "4"
+          ],
+          [
+            "Tom",
+            "1",
+            "5",
+            "2"
+          ],
+          [
+            "Ana",
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "Max",
+            "2",
+            "3",
+            "5"
+          ]
+        ],
+        "caption": "Nombre de fruits mangés par chaque enfant"
+      }
+    },
+    {
+      "text": "Dans le même tableau, quel enfant a mangé $5$ bananes ?",
+      "options": [
+        "Lucie",
+        "Tom",
+        "Ana",
+        "Max"
+      ],
+      "correctAnswer": "Max",
+      "explanation": "On regarde la colonne Bananes et on cherche la case qui contient le nombre $5$. Cette case se trouve sur la ligne de Max. Lucie en a mangé $4$, Tom $2$ et Ana $3$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Poires",
+          "Bananes"
+        ],
+        "rows": [
+          [
+            "Lucie",
+            "3",
+            "2",
+            "4"
+          ],
+          [
+            "Tom",
+            "1",
+            "5",
+            "2"
+          ],
+          [
+            "Ana",
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "Max",
+            "2",
+            "3",
+            "5"
+          ]
+        ],
+        "caption": "Nombre de fruits mangés par chaque enfant"
+      }
+    },
+    {
+      "text": "Combien de poires Tom a-t-il mangées ?",
+      "options": [
+        "$5$",
+        "$1$",
+        "$3$",
+        "$2$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On croise la ligne de Tom et la colonne des Poires. Le nombre à l'intersection est $5$. C'est la plus grande valeur de cette colonne.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Poires",
+          "Bananes"
+        ],
+        "rows": [
+          [
+            "Lucie",
+            "3",
+            "2",
+            "4"
+          ],
+          [
+            "Tom",
+            "1",
+            "5",
+            "2"
+          ],
+          [
+            "Ana",
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "Max",
+            "2",
+            "3",
+            "5"
+          ]
+        ],
+        "caption": "Nombre de fruits mangés par chaque enfant"
+      }
+    },
+    {
+      "text": "Ana a mangé $4$ fruits d'un même type. De quel fruit s'agit-il ?",
+      "options": [
+        "Pommes",
+        "Poires",
+        "Bananes",
+        "Aucun"
+      ],
+      "correctAnswer": "Pommes",
+      "explanation": "On regarde la ligne d'Ana : elle a mangé $4$ pommes, $1$ poire et $3$ bananes. Le seul fruit dont la quantité est $4$ est la pomme.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Poires",
+          "Bananes"
+        ],
+        "rows": [
+          [
+            "Lucie",
+            "3",
+            "2",
+            "4"
+          ],
+          [
+            "Tom",
+            "1",
+            "5",
+            "2"
+          ],
+          [
+            "Ana",
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "Max",
+            "2",
+            "3",
+            "5"
+          ]
+        ],
+        "caption": "Nombre de fruits mangés par chaque enfant"
+      }
+    },
+    {
+      "text": "Qui a mangé le plus grand nombre de bananes ?",
+      "options": [
+        "Lucie",
+        "Tom",
+        "Ana",
+        "Max"
+      ],
+      "correctAnswer": "Max",
+      "explanation": "On compare les nombres de la colonne Bananes : Lucie $4$, Tom $2$, Ana $3$, Max $5$. Le maximum est $5$, corresponding à Max.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pommes",
+          "Poires",
+          "Bananes"
+        ],
+        "rows": [
+          [
+            "Lucie",
+            "3",
+            "2",
+            "4"
+          ],
+          [
+            "Tom",
+            "1",
+            "5",
+            "2"
+          ],
+          [
+            "Ana",
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "Max",
+            "2",
+            "3",
+            "5"
+          ]
+        ],
+        "caption": "Nombre de fruits mangés par chaque enfant"
+      }
+    }
+  ]
+}

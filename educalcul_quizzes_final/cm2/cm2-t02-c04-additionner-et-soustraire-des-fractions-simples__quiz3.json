@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 285,
+  "_course_code": "cm2-t02-c04-additionner-et-soustraire-des-fractions-simples",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Vérifier",
+  "title": "Vérifier des calculs de fractions",
+  "questions": [
+    {
+      "text": "Léo a écrit que $\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{14}$. Son résultat est",
+      "options": [
+        "Correct",
+        "Incorrect car il a additionné les dénominateurs",
+        "Incorrect car il a additionné les numérateurs",
+        "Incorrect car le résultat devrait être $\\frac{1}{7}$"
+      ],
+      "correctAnswer": "Incorrect car il a additionné les dénominateurs",
+      "explanation": "Pour additionner des fractions de même dénominateur, on additionne uniquement les numérateurs et on garde le dénominateur commun. Le calcul correct est $\\frac{2+3}{7} = \\frac{5}{7}$ et non $\\frac{5}{14}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sarah a calculé $\\frac{9}{10} - \\frac{4}{10} = \\frac{5}{10}$. Ce résultat est",
+      "options": [
+        "Faux, le résultat est $\\frac{13}{10}$",
+        "Faux, le dénominateur devrait être $0$",
+        "Correct",
+        "Faux, le résultat est $\\frac{5}{0}$"
+      ],
+      "correctAnswer": "Correct",
+      "explanation": "Pour soustraire des fractions de même dénominateur, on soustrait les numérateurs : $9 - 4 = 5$. On conserve le dénominateur $10$. Le résultat $\\frac{5}{10}$ est donc juste.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 10,
+        "shape": "bar",
+        "caption": "Représentation du résultat"
+      }
+    },
+    {
+      "text": "Un élève propose que $\\frac{3}{8} + \\frac{2}{8} = \\frac{5}{8}$. Pour vérifier ce résultat avec un schéma, quelle fraction doit être colorée à la fin",
+      "options": [
+        "$\\frac{2}{8}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{5}{16}$",
+        "$\\frac{5}{8}$"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$",
+      "explanation": "L'addition de $\\frac{3}{8}$ et $\\frac{2}{8}$ donne $\\frac{5}{8}$. Pour vérifier visuellement, on colorie trois huitièmes, puis deux huitièmes supplémentaires, ce qui fait un total de cinq huitièmes colorés sur un tout divisé en huit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On examine le calcul suivant : $\\frac{11}{12} - \\frac{7}{12} = \\frac{4}{12}$. Ce calcul est",
+      "options": [
+        "Juste",
+        "Faux, car $11 - 7$ ne fait pas $4$",
+        "Faux, car le dénominateur doit devenir $0$",
+        "Faux, car on ne peut pas soustraire des douzièmes"
+      ],
+      "correctAnswer": "Juste",
+      "explanation": "Le calcul est correct puisque $11 - 7 = 4$ pour les numérateurs et que le dénominateur $12$ reste inchangé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie écrit $\\frac{4}{5} + \\frac{2}{5} = \\frac{6}{5}$. Elle pense que c'est impossible car le numérateur est plus grand que le dénominateur. a t elle raison",
+      "options": [
+        "Oui, une fraction doit toujours avoir un numérateur plus petit",
+        "Non, car $\\frac{6}{5}$ est égal à $1 + \\frac{1}{5}$",
+        "Oui, car le résultat devrait être $\\frac{6}{10}$",
+        "Non, car le résultat devrait être $\\frac{2}{5}$"
+      ],
+      "correctAnswer": "Non, car $\\frac{6}{5}$ est égal à $1 + \\frac{1}{5}$",
+      "explanation": "Le calcul est correct : $4 + 2 = 6$. Le résultat $\\frac{6}{5}$ est une fraction supérieure à l'unité (un entier), ce qui est tout à fait possible en mathématiques.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

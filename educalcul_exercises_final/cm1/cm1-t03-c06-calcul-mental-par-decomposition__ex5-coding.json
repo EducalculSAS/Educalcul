@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 231,
+  "_course_code": "cm1-t03-c06-calcul-mental-par-decomposition",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Distributivité intuitive",
+  "title": "Algorithme de multiplication par décomposition (distributivité)",
+  "blocks": [
+    {
+      "title": "Décomposition simple",
+      "content": "Écris un algorithme étape par étape pour calculer $12 \\times 15$ en décomposant $15$ en $10 + 5$ et en utilisant la distributivité de la multiplication sur l'addition.",
+      "correctAnswer": "1. Décomposer 15 en 10 + 5.\\n2. Calculer 12 × 10 = 120.\\n3. Calculer 12 × 5 = 60.\\n4. Additionner les résultats : 120 + 60 = 180.\\n5. Afficher 180.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la propriété distributive : $12 \\times (10 + 5) = 12 \\times 10 + 12 \\times 5$. Les produits partiels sont faciles à calculer mentalement, puis on les additionne pour obtenir le résultat final 180.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction générique en pseudo‑code",
+      "content": "Propose un algorithme sous forme de fonction (style Python) qui prend deux entiers a et b, décompose b en dizaines et unités, puis retourne le produit a × b en appliquant la distributivité.",
+      "correctAnswer": "def multiplier_par_decomposition(a, b):\\n    dizaines = b // 10\\n    unites = b % 10\\n    partie1 = a * (dizaines * 10)\\n    partie2 = a * unites\\n    return partie1 + partie2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction récupère le chiffre des dizaines et le chiffre des unités de b. Elle calcule ensuite a × (dizaines × 10) et a × unités, ce qui correspond à $a \\times (10 \\times \\text{dizaines} + \\text{unités}) = a \\times 10 \\times \\text{dizaines} + a \\times \\text{unités}$. La somme des deux produits partiels donne le produit total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Double décomposition (FOIL)",
+      "content": "Écris un algorithme complet pour calculer $23 \\times 47$ en décomposant les deux nombres ($23 = 20 + 3$, $47 = 40 + 7$) et en appliquant la distributivité deux fois (méthode FOIL). Indique chaque produit partiel et la somme finale.",
+      "correctAnswer": "1. Décomposer 23 en 20 + 3.\\n2. Décomposer 47 en 40 + 7.\\n3. Calculer les quatre produits partiels :\\n   - 20 × 40 = 800\\n   - 20 × 7 = 140\\n   - 3 × 40 = 120\\n   - 3 × 7 = 21\\n4. Additionner tous les produits partiels : 800 + 140 + 120 + 21 = 1081.\\n5. Afficher 1081.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la distributivité deux fois : $(20+3) \\times (40+7) = 20\\times40 + 20\\times7 + 3\\times40 + 3\\times7$. Chaque produit partiel est simple à calculer mentalement. La somme de 800, 140, 120 et 21 donne 1081, qui est le produit exact de 23 par 47.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

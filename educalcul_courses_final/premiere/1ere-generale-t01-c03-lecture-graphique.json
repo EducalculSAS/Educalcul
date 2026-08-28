@@ -1,0 +1,646 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.170132+00:00",
+  "id": 543,
+  "code": "1ere-generale-t01-c03",
+  "title": "Lecture graphique",
+  "description": "Cours structuré Educalcul : Lecture graphique.",
+  "subject": "Automatismes",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Automatismes",
+    "titre_du_cours": "Lecture graphique",
+    "objectif_global": "Lecture graphique",
+    "mini_lecons_imposees": [
+      "Images.",
+      "Variations.",
+      "Intersections."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Automatismes",
+      "lessons": [
+        {
+          "title": "Images.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une image ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une machine qui transforme un nombre en un autre selon une règle précise. En mathématiques, cette machine s'appelle une fonction. Quand on donne à la fonction une valeur $x$, elle nous renvoie une valeur $y$ que l'on note $f(x)$. Cette valeur $y$ est ce qu'on appelle l'image de $x$ par la fonction $f$. Pour bien visualiser, pensons à la fonction $f(x)=2x+1$. Si tu choisis $x=3$, la machine calcule $2\\times3+1=7$ ; donc $7$ est l'image de $3$. Sur le graphique de la fonction, chaque point a pour abscisse le nombre de départ et pour ordonnée son image."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphique de la fonction $f(x)=2x+1$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe horizontal, trouve le nombre dont tu veux l'image, par exemple $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : monter jusqu'à la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace mentalement une ligne verticale depuis cette abscisse jusqu'à ce qu'elle rencontre la courbe. Le point de rencontre a pour coordonnées $(3, f(3))$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette ce point sur l'axe vertical. La valeur lue est l'image cherchée, ici $7$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une image unique, passons à la recherche de l'antécédent, c'est-à-dire du ou des nombres qui donnent une valeur imposée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'antécédent d'une valeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on connaît le résultat et on veut retrouver le ou les nombres d'origine. Pour la même fonction $f(x)=2x+1$, supposons qu'on te donne l'image $9$. Il faut résoudre $2x+1=9$, ce qui donne $x=4$. Sur le graphique, cela correspond à tracer une ligne horizontale à la hauteur $9$ jusqu'à la courbe, puis à projeter le point d'intersection sur l'axe des abscisses. Si la ligne horizontale coupe la courbe en plusieurs points, la fonction admet plusieurs antécédents pour cette valeur."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Recherche de l'antécédent de $9$ sur $f(x)=2x+1$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : tracer l'horizontale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la valeur $9$ sur l'axe vertical et imagine une ligne horizontale à cette hauteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : trouver les intersections",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe où cette horizontale rencontre la courbe. Chaque rencontre donne un antécédent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette chaque point d'intersection sur l'axe horizontal. Les abscisses lues sont les antécédents recherchés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, voyons comment extraire plusieurs couples de valeurs directement depuis le graphique, ce qui est très utile pour dresser un tableau de valeurs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau de valeurs à partir du graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis plusieurs abscisses régulières, par exemple $-2, -1, 0, 1, 2$. Pour chacune, applique la méthode de lecture de l'image décrite plus haut. Note les résultats dans un tableau à deux colonnes : la première pour $x$, la seconde pour $f(x)$. Cela te donne une vision numérique de la fonction qui complète la vision graphique."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "$f(x)$"
+              ],
+              "rows": [
+                [
+                  "-2",
+                  "-3"
+                ],
+                [
+                  "-1",
+                  "-1"
+                ],
+                [
+                  "0",
+                  "1"
+                ],
+                [
+                  "1",
+                  "3"
+                ],
+                [
+                  "2",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne un ensemble d'abscisses régulièrement espacées pour bien couvrir l'intervalle d'intérêt."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : lire chaque image",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque abscisse, monte verticalement jusqu'à la courbe et note l'ordonnée correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rédige le tableau en alignant chaque $x$ avec son image $f(x)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la fonction $f(x)=2x+1$, donne l'image de $x=-4$.",
+              "answer": "-7",
+              "hint": "Remplace $x$ par $-4$ dans l'expression $2x+1$.",
+              "explanation": "En calculant $2\\times(-4)+1 = -8+1 = -7$, on obtient l'image de $-4$."
+            },
+            {
+              "question": "Quel est l'antécédent de $5$ par la fonction $f(x)=2x+1$ ?",
+              "answer": "2",
+              "hint": "Résous l'équation $2x+1=5$.",
+              "explanation": "L'équation donne $2x=4$ donc $x=2$. C'est l'unique antécédent de $5$."
+            },
+            {
+              "question": "Complète le tableau de valeurs pour $f(x)=2x+1$ avec $x = -3, 0, 4$.",
+              "answer": "-5, 1, 9",
+              "hint": "Calcule $f(-3)$, $f(0)$ et $f(4)$.",
+              "explanation": "On trouve $f(-3)=-5$, $f(0)=1$, $f(4)=9$."
+            }
+          ]
+        },
+        {
+          "title": "Variations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les intervalles de croissance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction est dite croissante sur un intervalle lorsque, si l'on prend deux nombres $x_1 < x_2$ dans cet intervalle, on a toujours $f(x_1) < f(x_2)$. Graphiquement, cela signifie que la courbe monte quand on se déplace de la gauche vers la droite. Pour t'en convaincre, observe le graphique de la fonction $g(x)=x^2-4x+3$. Sur la partie gauche du sommet, la courbe descend ; sur la partie droite, elle monte. L'intervalle de croissance commence à l'abscisse du sommet."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4*x+3",
+              "xmin": -2,
+              "xmax": 6,
+              "caption": "Graphique de $g(x)=x^2-4x+3$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : localiser le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le sommet du parabole $g$ a pour abscisse $x = -b/(2a) = 4/2 = 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : tester un point de chaque côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis $x=1$ (à gauche) et $x=3$ (à droite). Calcule $g(1)=0$ et $g(3)=0$. La valeur ne change pas au sommet, mais pour $x>2$ la courbe remonte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction est croissante sur $[2, +\\infty[$ et décroissante sur $]-\\infty, 2]$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié où la fonction monte, il est tout aussi important de savoir où elle descend et de repérer les extrema."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intervalles de décroissance et extremums"
+            },
+            {
+              "type": "paragraph",
+              "content": "La décroissance est le contraire de la croissance : si $x_1 < x_2$ alors $f(x_1) > f(x_2)$. Sur le graphique, la courbe descend quand on avance vers la droite. Le point où la fonction passe de la croissance à la décroissance (ou inversement) est un extremum. Pour $g(x)=x^2-4x+3$, le sommet en $x=2$ est un minimum car la courbe passe de décroissante à croissante. La valeur minimale est $g(2) = -1$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4*x+3",
+              "xmin": -2,
+              "xmax": 6,
+              "caption": "Zoom sur le minimum de $g$ en $x=2$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : déterminer le sens de variation de chaque côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace mentalement des flèches le long de la courbe : vers le bas à gauche du sommet, vers le haut à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : identifier le type d'extremum",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les flèches pointent vers le bas puis vers le haut, c'est un minimum. Si elles pointent vers le haut puis vers le bas, c'est un maximum."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : noter les intervalles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'intervalle de décroissance $]-\\infty, 2]$ et l'intervalle de croissance $[2, +\\infty[$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, entraînons-nous à lire directement sur un graphique les intervalles de variation et les valeurs extrêmes sans calcul algébrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lecture graphique complète des variations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique d'une fonction inconnue mais tracée. Repère visuellement les portions où la courbe monte et celles où elle descend. Marque les points les plus hauts (maximums) et les plus bas (minimums) visibles. Ensuite, écris les intervalles correspondants en utilisant des crochets pour les bornes incluses et des parenthèses pour les bornes exclues. Cette compétence te sera précieuse pour analyser n'importe quelle fonction représentée graphiquement."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -6.28,
+              "xmax": 6.28,
+              "caption": "Fonction sinus sur deux périodes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer les montées et descentes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suis la courbe de gauche à droite ; note chaque changement de direction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : localiser les extrema",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les sommets des bosses sont des maximums ($y=1$), les creux des vallées sont des minimums ($y=-1$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire les intervalles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, croissante sur $[-\\pi/2, \\pi/2]$, décroissante sur $[\\pi/2, 3\\pi/2]$, etc."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'intervalle $[0,4]$, la fonction $g(x)=x^2-4x+3$ est-elle croissante ou décroissante ?",
+              "answer": "Décroissante sur $[0,2]$ puis croissante sur $[2,4]$.",
+              "hint": "Utilise le sommet en $x=2$ pour couper l'intervalle.",
+              "explanation": "Le sommet divise l'intervalle ; à gauche de $2$ la fonction décroît, à droite elle croît."
+            },
+            {
+              "question": "Quelle est la valeur minimale de $g(x)=x^2-4x+3$ et pour quel $x$ est-elle atteinte ?",
+              "answer": "Minimum $-1$ atteint en $x=2$.",
+              "hint": "Calcule $g(2)$.",
+              "explanation": "En remplaçant $x$ par $2$, on obtient $4-8+3=-1$. C'est le minimum global."
+            },
+            {
+              "question": "Donne un intervalle de croissance de la fonction sinus sur $[-\\pi, \\pi]$.",
+              "answer": "$[-\\pi/2, \\pi/2]$",
+              "hint": "Observe où la courbe monte entre $-\\pi$ et $\\pi$.",
+              "explanation": "Le sinus croît de $-\\pi/2$ à $\\pi/2$ où il passe de $-1$ à $1$."
+            }
+          ]
+        },
+        {
+          "title": "Intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre l'intersection de deux courbes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque deux fonctions $f$ et $g$ sont tracées dans le même repère, les points où leurs courbes se croisent sont appelés intersections. À chaque intersection, les deux fonctions prennent la même valeur pour la même abscisse $x$, c'est-à-dire $f(x)=g(x)$. Résoudre graphiquement l'équation $f(x)=g(x)$ consiste donc à lire les abscisses de ces points communs. C'est une méthode visuelle très puissante, surtout quand les expressions algébriques sont complexes."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Courbe de $f(x)=x^2-2$"
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Courbe de $g(x)=2x+1$ superposée"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : tracer les deux courbes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine $f(x)=x^2-2$ (parabole) et $g(x)=2x+1$ (droite) dans le même repère."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : repérer les points communs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe où la parabole et la droite se croisent. Il y a deux intersections visibles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette chaque point d'intersection sur l'axe des abscisses. Les valeurs approchées sont $x \\approx -1$ et $x \\approx 3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais localiser les intersections, voyons comment affiner la lecture pour obtenir des valeurs plus précises, notamment quand les courbes sont proches."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Affiner la lecture des intersections"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les intersections ne tombent pas exactement sur des graduations, on peut zoomer sur la zone concernée ou utiliser une règle graduée sur l'écran. Une autre astuce consiste à tracer une grille fine mentalement : repère les lignes verticales les plus proches du croisement, puis estime la position entre deux graduations. Pour les fonctions $f(x)=x^2-2$ et $g(x)=2x+1$, un zoom autour de $x=3$ montre que l'abscisse est proche de $3.0$ alors qu'autour de $x=-1$ elle est proche de $-1.0$. Dans d'autres cas, les valeurs peuvent être irrationnelles ; on donne alors une approximation décimale."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-2",
+              "xmin": 2.5,
+              "xmax": 3.5,
+              "caption": "Zoom près de l'intersection $x\\approx3$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir une fenêtre resserrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Règle les bornes $x_{min}$ et $x_{max}$ autour de l'intersection suspectée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : lire avec plus de précision",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les graduations deviennent plus fines ; note l'abscisse au dixième ou au centième près."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : vérifier par calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x$ dans les deux expressions pour confirmer que les images sont égales à la précision voulue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, abordons le cas où les courbes ne se croisent pas ou se touchent seulement. Cela correspond à des équations sans solution ou à une solution double."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : pas d'intersection ou tangence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les deux courbes ne se rencontrent jamais, l'équation $f(x)=g(x)$ n'a pas de solution réelle. Par exemple, $f(x)=x^2+1$ (parabole au-dessus de l'axe) et $g(x)=-2$ (droite horizontale) n'ont aucun point commun. Si elles se touchent en un seul point sans se croiser, on parle de tangence ; l'équation admet alors une solution double. Graphiquement, la droite est tangente à la parabole. Savoir distinguer ces situations rien qu'en regardant le dessin est un atout majeur pour l'analyse de fonctions."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2+1",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole $f(x)=x^2+1$ et droite $g(x)=-2$ sans intersection"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : observer la position relative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les valeurs minimales de $f$ et la constante $g$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : conclure sur l'existence de solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le minimum de $f$ est strictement supérieur à $g$, il n'y a pas d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : identifier la tangence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une droite touche la courbe en un unique point sans la traverser, c'est une tangence ; l'équation a une racine double."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'image d'un nombre sur le graphique d'une fonction.",
+                "Je sais trouver l'antécédent d'une valeur en traçant une horizontale.",
+                "Je sais construire un tableau de valeurs à partir d'une courbe.",
+                "Je repère les intervalles de croissance et de décroissance d'une fonction.",
+                "Je localise les maximums et minimums sur un graphique.",
+                "Je détermine les intersections de deux courbes et j'en déduis les solutions de $f(x)=g(x)$.",
+                "Je distingue les cas sans intersection et le cas de tangence."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'intersections y a-t-il entre $f(x)=x^2-2$ et $g(x)=2x+1$ ? Donne leurs abscisses approximatives.",
+              "answer": "Deux intersections vers $x\\approx -1$ et $x\\approx 3$.",
+              "hint": "Trace les deux courbes et compte les croisements.",
+              "explanation": "La parabole et la droite se coupent en deux points ; la lecture graphique donne environ $-1$ et $3$."
+            },
+            {
+              "question": "Pour la même paire de fonctions, affine la lecture de l'intersection positive au dixième près.",
+              "answer": "3.0",
+              "hint": "Zoom sur l'intervalle $[2.8,3.2]$ et lis l'abscisse.",
+              "explanation": "Le zoom montre que le croisement se produit presque exactement à $x=3$."
+            },
+            {
+              "question": "L'équation $x^2+1 = -2$ a-t-elle des solutions réelles ? Justifie graphiquement.",
+              "answer": "Non, aucune solution réelle.",
+              "hint": "Compare le minimum de $x^2+1$ avec $-2$.",
+              "explanation": "Le minimum de $x^2+1$ est $1$, qui est strictement supérieur à $-2$ ; les courbes ne se croisent pas."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

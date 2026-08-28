@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Bilan - Fonctions Seconde",
+  "title": "Bilan fonctions : Mise en ordre de procédures",
+  "blocks": [
+    {
+      "title": "Détermination d'un ensemble de définition",
+      "content": "On considère la fonction $f$ définie par $f(x) = \\frac{\\sqrt{x-3}}{x-5}$. Rangez dans l'ordre chronologique les étapes pour déterminer l'ensemble de définition $D_f$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les conditions de définition : le radicande doit être positif ou nul et le dénominateur non nul.",
+        "Résoudre l'inéquation $x-3 \\ge 0$ ce qui donne $x \\ge 3$.",
+        "Résoudre l'inéquation $x-5 \\neq 0$ ce qui donne $x \\neq 5$.",
+        "Combiner les conditions : $x \\ge 3$ et $x \\neq 5$.",
+        "Écrire l'ensemble de définition sous forme d'intervalles : $D_f = [3; 5[ \\cup ]5; +\\infty[$."
+      ],
+      "explanation": "Pour une fonction quotient contenant une racine carrée, il faut d'abord lister les contraintes : l'expression sous la racine (radicande) doit être $\\ge 0$ et le dénominateur doit être $\\neq 0$. On résout ensuite chaque condition séparément ($x \\ge 3$ et $x \\neq 5$), on les combine (intersection), et on écrit le résultat final en notation d'intervalles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un tableau de variations",
+      "content": "On veut construire le tableau de variations de la fonction $f(x) = -x^2 + 4x - 1$ sur $\\mathbb{R}$. Rangez les étapes dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la fonction dérivée $f'(x) = -2x + 4$.",
+        "Déterminer le signe de $f'(x)$ en résolvant $f'(x) = 0$ ce qui donne $x = 2$.",
+        "Étudier le signe de $f'(x)$ sur les intervalles $]-\\infty; 2]$ et $[2; +\\infty[$ : positif puis négatif.",
+        "En déduire les variations de $f$ : croissante sur $]-\\infty; 2]$, décroissante sur $[2; +\\infty[$.",
+        "Calculer les limites aux bornes (ici $-\\infty$ aux deux bornes) et la valeur au point critique $f(2)=3$ pour compléter le tableau."
+      ],
+      "explanation": "La méthode standard pour un polynôme du second degré (ou toute fonction dérivable) est : 1. Dériver. 2. Trouver les zéros de la dérivée (points critiques). 3. Faire un tableau de signes de la dérivée. 4. En déduire les variations (croissante si $f'>0$, décroissante si $f'<0$). 5. Calculer les valeurs aux points critiques et les limites pour remplir le tableau de variations complet.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution graphique d'une inéquation",
+      "content": "Soit $f$ une fonction dont la courbe représentative $C_f$ est tracée dans un repère. On veut résoudre graphiquement l'inéquation $f(x) \\le 2$. Rangez les étapes dans l'ordre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer la droite d'équation $y = 2$ (horizontale) dans le repère.",
+        "Repérer les points d'intersection entre la courbe $C_f$ et la droite $y=2$ ; noter leurs abscisses.",
+        "Identifier sur l'axe des abscisses les intervalles où la courbe $C_f$ se trouve en dessous ou sur la droite $y=2$.",
+        "Écrire l'ensemble solution $S$ en utilisant les abscisses trouvées (intervalles fermés car l'inégalité est large)."
+      ],
+      "explanation": "La résolution graphique de $f(x) \\le k$ suit toujours ce protocole : 1. Tracer la ligne horizontale $y=k$. 2. Trouver les abscisses des intersections (solutions de $f(x)=k$). 3. Observer où la courbe est 'sous' la droite (pour $\\le$). 4. Traduire visuellement en ensemble d'intervalles sur l'axe des $x$. L'inégalité large ($\\le$) implique des crochets fermés aux bornes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Variables simples",
+  "title": "Application des variables simples",
+  "questions": [
+    {
+      "text": "Un programme informatique crée une variable nommée Score. Au début du jeu, Score vaut $0$. Le joueur gagne $10$ points. Quelle est la nouvelle valeur de la variable Score ?",
+      "options": [
+        "$0$",
+        "$10$",
+        "Score",
+        "Dix"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Le score initial est de $0$. On ajoute $10$ points, donc $0 + 10 = 10$. La variable Score contient maintenant la valeur $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a une variable nommée Age qui vaut $9$. Le programme exécute l'instruction : Age = Age + $1$. Quelle valeur est désormais stockée dans la variable Age ?",
+      "options": [
+        "$1$",
+        "$9$",
+        "$10$",
+        "$91$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "L'instruction Age = Age + $1$ signifie que l'on prend la valeur actuelle de Age, qui est $9$, et qu'on lui ajoute $1$. Donc, $9 + 1 = 10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise deux variables : PanierA vaut $5$ et PanierB vaut $8$. Si on change la valeur de PanierA pour qu'elle devienne égale à la valeur de PanierB, quelle sera la valeur de PanierA ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$13$",
+        "$0$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "L'instruction consiste à copier la valeur de PanierB dans PanierA. Comme PanierB vaut $8$, PanierA prendra la même valeur, soit $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une variable nommée Nombre vaut $20$. Le programme effectue l'opération suivante : Nombre = Nombre - $7$. Quelle est la valeur finale de Nombre ?",
+      "options": [
+        "$7$",
+        "$27$",
+        "$13$",
+        "$20$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "On part de la valeur $20$ et on soustrait $7$. Le calcul est $20 - 7 = 13$. La variable Nombre vaut donc $13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde les étapes suivantes : \\n$1$. Variable X = $2$\\n$2$. Variable Y = $3$\\n$3$. Variable X = X + Y\\nQuelle est la valeur finale de la variable X ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "D'abord X vaut $2$ et Y vaut $3$. À l'étape $3$, on additionne la valeur de X et la valeur de Y, soit $2 + 3 = 5$. Ce résultat est ensuite enregistré dans la variable X.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

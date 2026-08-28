@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 345,
+  "_course_code": "6eme-t03-c04-calcul-mental-et-ordre-de-grandeur",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Stratégies",
+  "title": "Stratégies de calcul mental",
+  "questions": [
+    {
+      "text": "Pour calculer mentalement $47 + 36$, quelle décomposition est la plus efficace ?",
+      "options": [
+        "Ajouter 3 à 47 pour faire 50, puis ajouter 33",
+        "Ajouter 40 à 47, puis retirer 4",
+        "Calculer $40 + 30$ puis $7 + 6$ et additionner les résultats",
+        "Doubler 47 puis soustraire 11"
+      ],
+      "correctAnswer": "Calculer $40 + 30$ puis $7 + 6$ et additionner les résultats",
+      "explanation": "La stratégie standard en 6e pour une addition à deux chiffres est la décomposition par valeur de position : on additionne les dizaines ($40 + 30 = 70$) puis les unités ($7 + 6 = 13$), et on regroupe ($70 + 13 = 83$). L'option A fonctionne mais demande de savoir décomposer 36 en 3 et 33, ce qui est moins direct. L'option B ajoute 40 (trop) puis retire 4, ce qui est une stratégie de compensation pour $+36$ mais plus complexe que la décomposition simple. L'option D n'a pas de sens direct pour cette addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle stratégie permet de trouver rapidement le résultat de $100 - 37$ ?",
+      "options": [
+        "Soustraire 40 puis ajouter 3",
+        "Chercher le complément à 100 : $37 + ? = 100$",
+        "Enlever 30 puis enlever 7",
+        "Faire $99 - 37$ puis ajouter 1"
+      ],
+      "correctAnswer": "Chercher le complément à 100 : $37 + ? = 100$",
+      "explanation": "La stratégie du complément (ou 'différence') est la plus rapide pour une soustraction à partir d'une centaine : on cherche ce qu'il faut ajouter à 37 pour faire 100. On complète les unités à 10 ($37 + 3 = 40$) puis les dizaines à 100 ($40 + 60 = 100$), le résultat est $63$. L'option A (compensation) marche aussi mais en deux étapes distinctes. L'option C (soustraction par parties) est correcte mais souvent plus lente mentalement car elle demande de retenir une retenue potentielle. L'option D est une astuce pour éviter les retenues à l'écrit, moins pertinente en pur mental.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $25 \\times 12$ mentalement, quelle stratégie utilise la propriété de la double moitié ?",
+      "options": [
+        "Calculer $25 \\times 10$ puis ajouter $25 \\times 2$",
+        "Diviser 25 par 2 et multiplier 12 par 2",
+        "Multiplier 25 par 2 et diviser 12 par 2",
+        "Calculer $25 \\times 4 \\times 3$"
+      ],
+      "correctAnswer": "Multiplier 25 par 2 et diviser 12 par 2",
+      "explanation": "La stratégie de la double-moitié (ou 'doubler-diviser par 2') consiste à doubler un facteur et à diviser l'autre par 2 sans changer le produit. Ici, $25 \\times 2 = 50$ (facile) et $12 \\div 2 = 6$. Le calcul devient $50 \\times 6 = 300$. L'option A utilise la distributivité (décomposition de 12), c'est une autre bonne stratégie mais pas la 'double-moitié'. L'option B est impossible car 25 n'est pas divisible par 2 en nombre entier. L'option D utilise l'associativité ($12 = 4 \\times 3$) : $25 \\times 4 = 100$, puis $100 \\times 3 = 300$, c'est efficace mais différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel raisonnement permet de trouver $135 \\div 5$ rapidement ?",
+      "options": [
+        "Diviser 135 par 10 puis multiplier par 2",
+        "Multiplier 135 par 2 puis diviser par 10",
+        "Diviser 150 par 5 puis retirer 15",
+        "Faire $135 \\div 3$ puis diviser le résultat par 2"
+      ],
+      "correctAnswer": "Multiplier 135 par 2 puis diviser par 10",
+      "explanation": "Diviser par 5 revient à multiplier par 2 puis diviser par 10 (car $5 = 10 \\div 2$). $135 \\times 2 = 270$, puis $270 \\div 10 = 27$. C'est la stratégie standard pour diviser par 5 mentalement. L'option A fait l'inverse (diviser par 10 puis $\\times 2$) : $13,5 \\times 2 = 27$, cela marche mais manipule un décimal, moins confortable en 6e. L'option C utilise une compensation ($150 - 15$) : $150 \\div 5 = 30$, $30 - 3 = 27$, correct mais plus long. L'option D divise par 6 ($3 \\times 2$), ce qui ne donne pas le quotient par 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour estimer un ordre de grandeur de $49 \\times 51$, quelle approximation est la meilleure ?",
+      "options": [
+        "$50 \\times 50 = 2\\,500$",
+        "$49 \\times 50 = 2\\,450$",
+        "$50 \\times 51 = 2\\,550$",
+        "$40 \\times 60 = 2\\,400$"
+      ],
+      "correctAnswer": "$50 \\times 50 = 2\\,500$",
+      "explanation": "L'ordre de grandeur cherche une valeur approchée simple à calculer. Arrondir les deux nombres au même multiple de 10 proche (ici 50) utilise la formule $(a-b)(a+b) \\approx a^2$. $50 \\times 50 = 2\\,500$ se calcule instantanément. Le résultat exact est $2\\,499$, l'erreur est de 1. L'option B et C ne sont pas des arrondis symétriques et demandent un calcul un peu plus lourd. L'option D arrondit trop grossièrement (à la dizaine inférieure pour l'un, supérieure pour l'autre), l'erreur est de 99.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

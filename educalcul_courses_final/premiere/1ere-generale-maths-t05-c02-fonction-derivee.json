@@ -1,0 +1,392 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.355352+00:00",
+  "id": 596,
+  "code": "1ere-generale-maths-t05-c02",
+  "title": "Fonction dérivée",
+  "description": "Cours structuré Educalcul : Fonction dérivée.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Fonction dérivée",
+    "objectif_global": "Fonction dérivée",
+    "mini_lecons_imposees": [
+      "Dérivées usuelles prévues.",
+      "Règles.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Dérivées usuelles prévues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une dérivée ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu suis le trajet d'une voiture sur une route. À chaque instant, la vitesse de la voiture correspond à la pente de la courbe qui représente sa position en fonction du temps. En mathématiques, cette pente instantanée est ce que l'on appelle la dérivée d'une fonction en un point. Plus précisément, si $f$ est une fonction définie sur un intervalle, la dérivée de $f$ en $a$, notée $f'(a)$, est la limite, quand $h$ tend vers $0$, du taux d'accroissement $\\frac{f(a+h)-f(a)}{h}$, pourvu que cette limite existe. Cette définition formelle peut sembler abstraite, mais elle capture exactement l'idée de variation locale : on regarde comment la valeur de la fonction change quand on déplace imperceptiblement l'abscisse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour visualiser ce concept, trace le graphe de $f(x)=x^{2}$ et place un point $A$ d'abscisse $1$. La tangente à la courbe en $A$ est la droite qui « colle » le mieux à la courbe près de $A$. Sa pente vaut $2$, ce qui est précisément $f'(1)$. En déplaçant le point $A$ le long de la courbe, tu observes que la pente de la tangente change continûment : c'est la fonction dérivée $f'(x)=2x$. Cette image géométrique est le point de départ de tout le calcul différentiel et te permettra de comprendre pourquoi les formules que nous allons rencontrer fonctionnent."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "x^2",
+              "x0": 1,
+              "xMin": -3,
+              "xMax": 3,
+              "caption": "Tangente à la parabole $y=x^{2}$ en $x=1$ ; la pente affichée est la dérivée $f'(1)=2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dérivées des fonctions puissances"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions puissances $x \\mapsto x^{n}$, avec $n$ entier naturel, sont les premières dont on apprend à dériver. La règle fondamentale, que l'on démontre à partir de la définition du taux d'accroissement, s'énonce ainsi : pour tout entier $n \\ge 1$, la dérivée de $x^{n}$ est $n x^{n-1}$. Par exemple, la dérivée de $x^{3}$ est $3x^{2}$, celle de $x^{5}$ est $5x^{4}$, et ainsi de suite. Cette formule reste valide pour $n=0$ si l'on convient que $x^{0}=1$ (fonction constante) dont la dérivée est $0$. Elle s'étend même aux exposants réels, mais au programme de Première on se limite aux entiers naturels."
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la règle à un cas concret : $f(x)=x^{4}$. D'après la formule, $f'(x)=4x^{3}$. Si tu veux connaître la pente de la tangente en $x=2$, tu calcules $f'(2)=4 \\times 2^{3}=32$. Essaie de tracer mentalement la courbe de $x^{4}$ : elle est très plate près de $0$ (pente proche de $0$) et devient de plus en plus raide à mesure que $|x|$ grandit, exactement ce que traduit la dérivée $4x^{3}$. Cette cohérence entre la forme de la courbe et l'expression de la dérivée est un excellent moyen de vérifier tes calculs."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{d}{dx}(x^{n}) = n x^{n-1}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivées des fonctions exponentielle, logarithmique et trigonométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le programme de Première impose de connaître par cœur les dérivées de trois familles de fonctions usuelles : l'exponentielle, le logarithme népérien et les fonctions trigonométriques de base. Pour l'exponentielle, la propriété remarquable est que la fonction $x \\mapsto e^{x}$ est sa propre dérivée : $\\frac{d}{dx}e^{x}=e^{x}$. Cela signifie que la pente de la tangente à la courbe $y=e^{x}$ en un point vaut exactement l'ordonnée de ce point. Pour le logarithme népérien, on a $\\frac{d}{dx}\\ln x = \\frac{1}{x}$ sur $]0,+\\infty[$. Enfin, pour le sinus et le cosinus, les formules sont $\\frac{d}{dx}\\sin x = \\cos x$ et $\\frac{d}{dx}\\cos x = -\\sin x$. Ces quatre formules constituent la « boîte à outils » de base pour toute dérivation ultérieure."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de $g(x)=\\sin x$. Sa dérivée est $g'(x)=\\cos x$. En $x=0$, la pente de la tangente vaut $\\cos 0 = 1$, ce qui correspond au fait que la courbe du sinus sort de l'origine avec une inclinaison de $45^{\\circ}$ (pente $1$). De même, pour $h(x)=e^{2x}$, on ne peut pas appliquer directement la formule de l'exponentielle car l'argument n'est pas $x$ mais $2x$ ; il faudra attendre la règle de la chaîne (vue dans la prochaine leçon) pour obtenir $h'(x)=2e^{2x}$. Pour l'instant, retiens simplement les quatre formules de base et entraîne-toi à les reconnaître instantanément."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{d}{dx}e^{x}=e^{x},\\quad \\frac{d}{dx}\\ln x=\\frac{1}{x},\\quad \\frac{d}{dx}\\sin x=\\cos x,\\quad \\frac{d}{dx}\\cos x=-\\sin x"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la dérivée de la fonction $f(x)=x^{7}$.",
+              "answer": "$f'(x)=7x^{6}$",
+              "hint": "Applique la règle de dérivation des puissances : l'exposant descend devant et diminue de $1$.",
+              "explanation": "Pour $f(x)=x^{7}$, l'exposant $7$ devient coefficient et le nouvel exposant est $7-1=6$, d'où $f'(x)=7x^{6}$."
+            },
+            {
+              "question": "Calcule la dérivée de $g(x)=x^{3}+5x^{2}-2$.",
+              "answer": "$g'(x)=3x^{2}+10x$",
+              "hint": "Dérive chaque terme séparément ; la dérivée d'une constante est $0$.",
+              "explanation": "La dérivée de $x^{3}$ est $3x^{2}$, celle de $5x^{2}$ est $10x$, et la constante $-2$ donne $0$. En additionnant, on obtient $3x^{2}+10x$."
+            },
+            {
+              "question": "Quelle est la dérivée de $h(x)=\\cos x$ en $x=\\frac{\\pi}{2}$ ?",
+              "answer": "$h'(\\frac{\\pi}{2})=-1$",
+              "hint": "Rappelle-toi que $(\\cos x)'=-\\sin x$ et évalue en $\\frac{\\pi}{2}$.",
+              "explanation": "La dérivée de $\\cos x$ est $-\\sin x$. En $x=\\frac{\\pi}{2}$, $\\sin(\\frac{\\pi}{2})=1$, donc $h'(\\frac{\\pi}{2})=-1$."
+            }
+          ]
+        },
+        {
+          "title": "Règles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Linéarité de la dérivation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La dérivation est une opération linéaire : la dérivée d'une somme est la somme des dérivées, et la dérivée d'un multiple par une constante est ce même multiple de la dérivée. En symboles, si $u$ et $v$ sont dérivables en $a$ et $\\lambda \\in \\mathbb{R}$, alors $(u+v)'(a)=u'(a)+v'(a)$ et $(\\lambda u)'(a)=\\lambda u'(a)$. Cette propriété découle directement de la définition du taux d'accroissement et de la linéarité de la limite. Elle te permet de décomposer une fonction compliquée en morceaux simples, de dériver chaque morceau, puis de recombiner les résultats."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $f(x)=3x^{4}+5\\sin x$. Grâce à la linéarité, $f'(x)=3\\cdot (x^{4})' + 5\\cdot (\\sin x)' = 3\\cdot 4x^{3} + 5\\cos x = 12x^{3}+5\\cos x$. Remarque que le coefficient $3$ reste inchangé devant la dérivée de $x^{4}$, et de même pour $5$ devant $\\cos x$. Essaie maintenant mentalement sur $g(x)=-2e^{x}+7\\ln x$ : la dérivée sera $-2e^{x}+\\frac{7}{x}$. Cette mécanique devient vite automatique avec un peu d'entraînement."
+            },
+            {
+              "type": "display_math",
+              "latex": "(u+v)' = u' + v',\\quad (\\lambda u)' = \\lambda u'"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règle du produit et règle du quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque deux fonctions sont multipliées, la dérivée n'est pas le produit des dérivées. La formule correcte, appelée règle du produit, s'écrit $(uv)' = u'v + uv'$. Pour la retenir, imagine que tu dérives le premier facteur en laissant le second intact, puis tu dérives le second en laissant le premier intact, et tu additionnes les deux résultats. La règle du quotient s'en déduit en écrivant $\\frac{u}{v}=u \\cdot v^{-1}$ et en appliquant le produit et la chaîne, ce qui donne $\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^{2}}$, pourvu que $v$ ne s'annule pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $f(x)=x^{2}\\cos x$. Ici $u(x)=x^{2}$ et $v(x)=\\cos x$. On a $u'(x)=2x$ et $v'(x)=-\\sin x$. La règle du produit donne $f'(x)=2x\\cos x + x^{2}(-\\sin x) = 2x\\cos x - x^{2}\\sin x$. Pour le quotient, considere $g(x)=\\frac{\\sin x}{x}$ sur $\\mathbb{R}^{*}$. Avec $u=\\sin x$, $v=x$, on obtient $g'(x)=\\frac{\\cos x \\cdot x - \\sin x \\cdot 1}{x^{2}} = \\frac{x\\cos x - \\sin x}{x^{2}}$. Vérifie que le dénominateur $x^{2}$ est bien strictement positif hors de $0$, ce qui garantit que la dérivée existe partout où $g$ est définie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $u$ et $v$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux fonctions dont le produit ou le quotient forme l'expression à dériver."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $u'$ et $v'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les dérivées usuelles (puissances, trigonométrie, exponentielle, logarithme) à chaque facteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un produit : $u'v+uv'$. Pour un quotient : $\\frac{u'v-uv'}{v^{2}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes semblables, factorise si cela rend l'expression plus lisible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règle de la chaîne (fonction composée)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle de la chaîne est l'outil indispensable pour dériver une fonction composée $f(g(x))$. Elle stipule que $(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)$. En mots : on dérive la fonction extérieure en laissant l'intérieur intact, puis on multiplie par la dérivée de l'intérieur. Cette règle reflète l'idée que la variation de la composition est le produit de la variation de l'extérieur évaluée à l'intérieur par la variation de l'intérieur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple classique : $h(x)=\\cos(3x)$. La fonction extérieure est $\\cos$, l'intérieur est $3x$. La dérivée de $\\cos$ est $-\\sin$, donc $h'(x) = -\\sin(3x) \\cdot (3x)' = -\\sin(3x) \\cdot 3 = -3\\sin(3x)$. Autre exemple : $k(x)=e^{x^{2}}$. Extérieure $e^{u}$, intérieure $u=x^{2}$. Dérivée : $k'(x)=e^{x^{2}} \\cdot 2x = 2x e^{x^{2}}$. Remarque que la chaîne s'applique aussi quand il y a plusieurs niveaux d'imbrication : on répète le processus de l'extérieur vers l'intérieur."
+            },
+            {
+              "type": "display_math",
+              "latex": "(f \\circ g)'(x) = f'(g(x)) \\cdot g'(x)"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x^2)",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Graphe de $y=\\sin(x^{2})$ et de sa dérivée $y'=2x\\cos(x^{2})$ ; observe comment les zéros de la dérivée correspondent aux extrema de la fonction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dérive $f(x)=4x^{3}-7\\cos x+2$.",
+              "answer": "$f'(x)=12x^{2}+7\\sin x$",
+              "hint": "Utilise la linéarité : dérive terme à terme, rappelle $(\\cos x)'=-\\sin x$.",
+              "explanation": "La dérivée de $4x^{3}$ est $12x^{2}$, celle de $-7\\cos x$ est $-7(-\\sin x)=7\\sin x$, la constante $2$ donne $0$. Somme : $12x^{2}+7\\sin x$."
+            },
+            {
+              "question": "Calcule la dérivée de $g(x)=\\frac{x^{2}+1}{\\sin x}$ sur un intervalle où $\\sin x \\neq 0$.",
+              "answer": "$g'(x)=\\frac{2x\\sin x - (x^{2}+1)\\cos x}{\\sin^{2} x}$",
+              "hint": "Applique la règle du quotient avec $u=x^{2}+1$, $v=\\sin x$.",
+              "explanation": "$u'=2x$, $v'=\\cos x$. Quotient : $\\frac{u'v-uv'}{v^{2}} = \\frac{2x\\sin x - (x^{2}+1)\\cos x}{\\sin^{2} x}$."
+            },
+            {
+              "question": "Trouve la dérivée de $h(x)=\\ln(\\cos x)$ pour $x$ tel que $\\cos x>0$.",
+              "answer": "$h'(x)=-\\tan x$",
+              "hint": "Chaîne : dérivée de $\\ln u$ est $\\frac{u'}{u}$, ici $u=\\cos x$.",
+              "explanation": "$u'=-\\sin x$, donc $h'(x)=\\frac{-\\sin x}{\\cos x} = -\\tan x$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée d'un polynôme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un polynôme est une somme finie de monômes de la forme $a_{k}x^{k}$. Grâce à la linéarité et à la règle des puissances, sa dérivée s'obtient en dérivant chaque monôme indépendamment : $(a_{k}x^{k})' = a_{k} k x^{k-1}$. Le degré du polynôme diminue de $1$ à chaque dérivation, et le coefficient dominant est multiplié par l'ancien degré. Cette mécanique est si systématique qu'on peut la programmer mentalement : il suffit de « faire descendre l'exposant » et de multiplier par le coefficient."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $P(x)=5x^{4}-3x^{3}+2x-7$. Dérivons terme à terme : $(5x^{4})'=20x^{3}$, $(-3x^{3})'=-9x^{2}$, $(2x)'=2$, $(-7)'=0$. La dérivée est $P'(x)=20x^{3}-9x^{2}+2$. Remarque que le terme constant a disparu, ce qui est normal car une constante ne varie pas. Si tu dérives une seconde fois, tu obtiens $P''(x)=60x^{2}-18x$, et ainsi de suite jusqu'à obtenir $0$ après suffisamment de dérivations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le polynôme sous forme développée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère chaque monôme $a_{k}x^{k}$, y compris les termes de degré $1$ et $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle $a_{k}k x^{k-1}$ à chaque monôme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le coefficient par l'exposant, puis diminue l'exposant de $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes de même degré s'il y en a, sinon laisse la somme telle quelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée d'une fonction rationnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction rationnelle est un quotient de deux polynômes $R(x)=\\frac{P(x)}{Q(x)}$ avec $Q(x)\\neq 0$. Pour la dériver, on utilise la règle du quotient : $R'(x)=\\frac{P'(x)Q(x)-P(x)Q'(x)}{Q(x)^{2}}$. Comme $P$ et $Q$ sont des polynômes, leurs dérivées $P'$ et $Q'$ sont faciles à obtenir grâce à la méthode du polynôme vue précédemment. Le dénominateur $Q(x)^{2}$ reste strictement positif là où $Q$ ne s'annule pas, donc la dérivée existe sur le même ensemble de définition que $R$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $R(x)=\\frac{x^{2}+3x-1}{x-2}$. On a $P(x)=x^{2}+3x-1$, $Q(x)=x-2$. Alors $P'(x)=2x+3$, $Q'(x)=1$. La formule donne $R'(x)=\\frac{(2x+3)(x-2)-(x^{2}+3x-1)(1)}{(x-2)^{2}}$. Développons le numérateur : $(2x+3)(x-2)=2x^{2}-4x+3x-6=2x^{2}-x-6$. En soustrayant $x^{2}+3x-1$, on obtient $2x^{2}-x-6 - x^{2} -3x +1 = x^{2} -4x -5$. Donc $R'(x)=\\frac{x^{2}-4x-5}{(x-2)^{2}}$. Factoriser le numérateur en $(x-5)(x+1)$ peut aider à étudier le signe de la dérivée plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\left(\\frac{P}{Q}\\right)' = \\frac{P'Q - PQ'}{Q^{2}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée d'une fonction composée trigonométrique-exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions qui mêlent exponentielle et trigonométrie, comme $f(x)=e^{\\sin x}$ ou $g(x)=\\cos(e^{x})$, sont des compositions à deux niveaux. La règle de la chaîne s'applique de l'extérieur vers l'intérieur : on dérive la fonction la plus externe, on la évalue en l'expression interne, puis on multiplie par la dérivée de cette expression interne. Si l'interne est elle-même une composition, on répète l'opération. C'est un processus itératif qui devient fluide avec de la pratique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=e^{\\sin x}$. La fonction externe est $u \\mapsto e^{u}$, sa dérivée est $e^{u}$. L'interne est $u=\\sin x$, dont la dérivée est $\\cos x$. Donc $f'(x)=e^{\\sin x} \\cdot \\cos x$. En $x=0$, $\\sin 0=0$ et $\\cos 0=1$, donc $f'(0)=e^{0}\\cdot 1 = 1$. La tangente à la courbe en $0$ a pour équation $y = x + 1$ (car $f(0)=1$). Essaie maintenant $g(x)=\\cos(e^{x})$ : externe $\\cos$, dérivée $-\\sin$ ; interne $e^{x}$, dérivée $e^{x}$. Résultat : $g'(x)=-\\sin(e^{x}) \\cdot e^{x} = -e^{x}\\sin(e^{x})$. La présence du facteur $e^{x}$ montre que la variation s'amplifie très vite pour $x$ grand."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "exp(sin(x))",
+              "x0": 0,
+              "xMin": -3,
+              "xMax": 3,
+              "caption": "Tangente à $y=e^{\\sin x}$ en $x=0$ ; la pente affichée vaut $1$, confirmant $f'(0)=1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dériver une fonction puissance, une exponentielle, un logarithme, un sinus et un cosinus.",
+                "J'applique la linéarité pour dériver une somme ou un multiple par une constante.",
+                "J'utilise la règle du produit $(uv)'=u'v+uv'$ et la règle du quotient $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^{2}}$.",
+                "Je mets en œuvre la règle de la chaîne $(f\\circ g)' = f'(g)\\cdot g'$ pour toute fonction composée.",
+                "Je calcule la dérivée d'un polynôme, d'une fraction rationnelle et d'une composition exponentielle-trigonométrique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dérive le polynôme $P(x)=2x^{5}-4x^{3}+x-9$.",
+              "answer": "$P'(x)=10x^{4}-12x^{2}+1$",
+              "hint": "Applique la règle des puissances à chaque monôme, la constante disparaît.",
+              "explanation": "$(2x^{5})'=10x^{4}$, $(-4x^{3})'=-12x^{2}$, $(x)'=1$, $(-9)'=0$. Somme : $10x^{4}-12x^{2}+1$."
+            },
+            {
+              "question": "Calcule la dérivée de $R(x)=\\frac{3x^{2}-2}{x^{2}+1}$.",
+              "answer": "$R'(x)=\\frac{10x}{(x^{2}+1)^{2}}$",
+              "hint": "Utilise la règle du quotient avec $P=3x^{2}-2$, $Q=x^{2}+1$ ; simplifie le numérateur.",
+              "explanation": "$P'=6x$, $Q'=2x$. Quotient : $\\frac{6x(x^{2}+1)-(3x^{2}-2)2x}{(x^{2}+1)^{2}} = \\frac{6x^{3}+6x-6x^{3}+4x}{(x^{2}+1)^{2}} = \\frac{10x}{(x^{2}+1)^{2}}$."
+            },
+            {
+              "question": "Trouve $f'(x)$ pour $f(x)=\\sin(e^{2x})$.",
+              "answer": "$f'(x)=2e^{2x}\\cos(e^{2x})$",
+              "hint": "Chaîne double : externe $\\sin$, interne $e^{2x}$, et encore interne $2x$.",
+              "explanation": "Dérivée de $\\sin$ est $\\cos$, évaluée en $e^{2x}$ donne $\\cos(e^{2x})$. Dérivée de $e^{2x}$ est $2e^{2x}$ (chaîne sur $2x$). Produit : $2e^{2x}\\cos(e^{2x})$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Relier euros et centimes",
+  "title": "Relier euros et centimes : algorithmes",
+  "blocks": [
+    {
+      "title": "Conversion euros-centimes",
+      "content": "Écris un algorithme simple (suite d'instructions) qui permet de convertir une somme donnée en euros et centimes en un nombre total de centimes. Par exemple, pour $2$ euros et $35$ centimes, l'algorithme doit donner $235$ centimes.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre d'euros (E) et le nombre de centimes (C).\\n2. Calculer total = E * 100 + C.\\n3. Afficher total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On sait qu'1 euro vaut 100 centimes. Pour obtenir le total en centimes, on multiplie le nombre d'euros par 100 puis on ajoute les centimes restants. L'exemple $2$ euros $35$ centimes donne $2 × 100 + 35 = 235$ centimes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion centimes en euros et centimes",
+      "content": "Écris un algorithme qui, à partir d'un nombre total de centimes, donne le nombre d'euros et le nombre de centimes restants. Par exemple, pour $487$ centimes, l'algorithme doit afficher $4$ euros et $87$ centimes.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total de centimes (T).\\n2. Calculer euros = partie entière de T / 100.\\n3. Calculer centimes = reste de la division de T par 100.\\n4. Afficher euros et centimes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division euclidienne par 100 sépare les euros (quotient) et les centimes (reste). Pour $487$, $487 = 4 × 100 + 87$, donc $4$ euros et $87$ centimes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de deux sommes en euros et centimes",
+      "content": "Écris un algorithme qui additionne deux montants exprimés en euros et centimes et affiche le résultat en euros et centimes. Par exemple, ajoute $1$ euro $75$ centimes et $2$ euros $40$ centimes.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux montants : (E1, C1) et (E2, C2).\\n2. Convertir chaque montant en centimes : T1 = E1 * 100 + C1, T2 = E2 * 100 + C2.\\n3. Calculer total = T1 + T2.\\n4. Convertir total en euros et centimes : euros = total // 100, centimes = total % 100.\\n5. Afficher euros et centimes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ramène d'abord chaque somme en centimes, on additionne, puis on revient à l'écriture euros/centimes par division euclidienne. Pour l'exemple : $1×100+75=175$, $2×100+40=240$, total $=415$ centimes, soit $4$ euros $15$ centimes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

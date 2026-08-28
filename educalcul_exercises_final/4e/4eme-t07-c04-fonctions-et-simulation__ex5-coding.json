@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Définir fonction",
+  "title": "Définir une fonction en algorithmique",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme qui définit une fonction nommée double prenant un nombre en paramètre et renvoyant le double de ce nombre.",
+      "correctAnswer": "Fonction double(x)\\n    Retourner 2 * x\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction double prend un paramètre x. Elle calcule 2 multiplié par x et renvoie ce résultat. L'instruction Retourner permet de donner la valeur de sortie de la fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui définit une fonction nommée maximum prenant deux nombres a et b en paramètres et renvoyant le plus grand des deux.",
+      "correctAnswer": "Fonction maximum(a, b)\\n    Si a > b Alors\\n        Retourner a\\n    Sinon\\n        Retourner b\\n    Fin Si\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction maximum compare a et b. Si a est strictement supérieur à b, elle renvoie a, sinon elle renvoie b. Cela couvre aussi le cas où ils sont égaux (renvoie b).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui définit une fonction aire_rectangle prenant la longueur L et la largeur l en paramètres et renvoyant l'aire du rectangle. Ensuite, utiliser cette fonction pour calculer l'aire d'un rectangle de longueur $7$ et de largeur $4$.",
+      "correctAnswer": "Fonction aire_rectangle(L, l)\\n    Retourner L * l\\nFin Fonction\\n\\n// Appel de la fonction\\nAire = aire_rectangle(7, 4)\\nAfficher Aire",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction aire_rectangle multiplie la longueur L par la largeur l et renvoie le produit. L'appel aire_rectangle(7, 4) calcule $7 * 4 = 28$ et l'affichage montre le résultat 28.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

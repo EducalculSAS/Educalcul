@@ -1,0 +1,411 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.659984+00:00",
+  "id": 58,
+  "code": "cp-t07-c03",
+  "title": "Reconnaître carré, rectangle, triangle et cercle",
+  "description": "Cours structuré Educalcul : Reconnaître carré, rectangle, triangle et cercle.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Reconnaître carré, rectangle, triangle et cercle",
+    "objectif_global": "Reconnaître carré, rectangle, triangle et cercle",
+    "mini_lecons_imposees": [
+      "Identifier visuellement.",
+      "Nommer la figure.",
+      "Trier des figures."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Identifier visuellement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien ce carré : il a quatre côtés de la même longueur et quatre angles droits. Tu peux le reconnaître facilement dans une fenêtre ou un carreau de sol."
+            },
+            {
+              "type": "definition",
+              "term": "carré",
+              "definition": "Figure à quatre côtés égaux et quatre angles droits.",
+              "example": "Un carreau de sol."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observe une figure qui a aussi quatre côtés mais dont les longueurs ne sont pas toutes égales."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le rectangle possède quatre côtés et quatre angles droits, mais seuls les côtés opposés ont la même longueur. Pense à une porte ou à un livre fermé."
+            },
+            {
+              "type": "definition",
+              "term": "rectangle",
+              "definition": "Figure à quatre côtés avec les côtés opposés égaux et quatre angles droits.",
+              "example": "Une porte."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 6,
+              "caption": "Un rectangle de 2 lignes et 3 colonnes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, découvre une figure qui n'a que trois côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un triangle est formé de trois segments qui se rejoignent. Il a trois angles et trois côtés, comme une part de pizza."
+            },
+            {
+              "type": "definition",
+              "term": "triangle",
+              "definition": "Figure à trois côtés et trois angles.",
+              "example": "Une part de pizza."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1,
+              "caption": "Un triangle quelconque"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, regarde une forme toute ronde sans aucun côté."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cercle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cercle est une ligne courbe où tous les points sont à la même distance du centre. Tu le vois sur une assiette ou une roue."
+            },
+            {
+              "type": "definition",
+              "term": "cercle",
+              "definition": "Figure ronde sans côté, tous les points à même distance du centre.",
+              "example": "Une assiette."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 1,
+              "shape": "circle",
+              "caption": "Un cercle complet"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle figure a quatre côtés tous égaux ?",
+              "answer": "Carré",
+              "hint": "Regarde les côtés.",
+              "explanation": "Le carré a quatre côtés de la même longueur."
+            },
+            {
+              "question": "Quelle figure a quatre côtés avec les côtés opposés égaux ?",
+              "answer": "Rectangle",
+              "hint": "Les côtés opposés sont pareils.",
+              "explanation": "Le rectangle a deux paires de côtés égaux."
+            },
+            {
+              "question": "Combien de côtés a un triangle ?",
+              "answer": "$3$",
+              "hint": "Compte les côtés.",
+              "explanation": "Un triangle a trois côtés."
+            },
+            {
+              "question": "Quelle figure n'a pas de côtés ?",
+              "answer": "Cercle",
+              "hint": "C'est une forme ronde.",
+              "explanation": "Le cercle est une ligne continue sans côté."
+            }
+          ]
+        },
+        {
+          "title": "Nommer la figure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire le nom du carré et du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître les formes, apprenons à les nommer correctement. Le carré se dit « carré » et le rectangle se dit « rectangle ». Répète ces deux mots plusieurs fois pour les fixer dans ta mémoire. Tu peux aussi pointer du doigt chaque figure en disant son nom pour renforcer le lien visuel."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Figure",
+                "Nom"
+              ],
+              "rows": [
+                [
+                  "Carré",
+                  "carré"
+                ],
+                [
+                  "Rectangle",
+                  "rectangle"
+                ]
+              ],
+              "caption": "Noms du carré et du rectangle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après le carré et le rectangle, tournons-nous vers le triangle qui possède seulement trois côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire le nom du triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le triangle porte le nom de « triangle ». Quand tu le vois, dis-le à haute voix : « triangle ». Entraîne-toi à l'écrire dans ton cahier pour bien l'associer à sa forme. Dessine un petit triangle sur une feuille et écris son nom à côté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, découvrons le cercle, une figure toute ronde sans aucun côté."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire le nom du cercle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cercle s'appelle « cercle ». C'est la seule figure qui n'a pas de côté droit, alors prends le temps de bien retenir ce mot unique. Trace un cercle au compas et écris « cercle » dessous."
+            },
+            {
+              "type": "clock",
+              "hours": 12,
+              "minutes": 0,
+              "caption": "Un cadran rond comme un cercle",
+              "interactive": false
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment s'appelle la figure à quatre côtés égaux ?",
+              "answer": "Carré",
+              "hint": "Tous les côtés sont pareils.",
+              "explanation": "C'est le carré."
+            },
+            {
+              "question": "Comment s'appelle la figure à trois côtés ?",
+              "answer": "Triangle",
+              "hint": "Compte les côtés.",
+              "explanation": "Le triangle a trois côtés."
+            },
+            {
+              "question": "Comment s'appelle la figure toute ronde ?",
+              "answer": "Cercle",
+              "hint": "Aucun côté droit.",
+              "explanation": "Le cercle n'a pas de côté."
+            }
+          ]
+        },
+        {
+          "title": "Trier des figures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trier selon le nombre de côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par trier les figures selon le nombre de côtés. Le carré et le rectangle en ont quatre, le triangle en a trois et le cercle n'en a aucun. Observe bien cette différence. Compte les côtés sur chaque dessin pour être sûr."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de côtés par figure",
+              "bars": [
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Triangle",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Cercle",
+                  "value": 0,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, séparons les figures qui ont des côtés droits de celle qui est toute courbe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Séparer les côtés droits et les courbes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les côtés droits forment des lignes droites, comme sur le carré, le rectangle et le triangle. Le cercle, lui, n'a que des courbes. Place chaque figure dans le bon groupe. Utilise tes doigts pour suivre le contour de chaque figure."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Côtés droits vs courbes",
+              "sets": [
+                {
+                  "label": "Côtés droits",
+                  "items": [
+                    "Carré",
+                    "Rectangle",
+                    "Triangle"
+                  ],
+                  "tone": "blue"
+                },
+                {
+                  "label": "Courbes",
+                  "items": [
+                    "Cercle"
+                  ],
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, range chaque figure avec les autres figures qui lui ressemblent exactement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Grouper les figures identiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regroupe tous les carrés ensemble, tous les rectangles ensemble, tous les triangles ensemble et tous les cercles ensemble. Ainsi, chaque famille de formes est bien identifiable. Tu verras que chaque groupe forme une belle collection."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un carré, un rectangle, un triangle et un cercle.",
+                "Je sais nommer chaque figure.",
+                "Je sais trier les figures selon leurs propriétés."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Classe le carré, le rectangle, le triangle et le cercle selon le nombre de côtés.",
+              "answer": "Carré $4$, Rectangle $4$, Triangle $3$, Cercle $0$",
+              "hint": "Compte les côtés de chaque figure.",
+              "explanation": "Le carré et le rectangle ont $4$ côtés, le triangle $3$, le cercle $0$."
+            },
+            {
+              "question": "Mets les figures à côtés droits d'un côté et celle à courbe de l'autre.",
+              "answer": "Côtés droits : carré, rectangle, triangle. Courbe : cercle.",
+              "hint": "Regarde si les côtés sont droits.",
+              "explanation": "Le carré, le rectangle et le triangle ont des côtés droits, le cercle est courbe."
+            },
+            {
+              "question": "Range chaque figure avec les autres figures identiques.",
+              "answer": "Deux groupes : les carrés ensemble, les rectangles ensemble, les triangles ensemble, les cercles ensemble.",
+              "hint": "Regarde la forme.",
+              "explanation": "Chaque figure rejoint son groupe."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Valeur absolue et distance",
+  "title": "Applications de la valeur absolue et distance",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Rangez les étapes dans l'ordre correct pour résoudre l'équation $|x - 3| = 5$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les deux équations $x - 3 = 5$ et $x - 3 = -5$.",
+        "Résoudre chaque équation pour obtenir les valeurs de $x$.",
+        "Rassembler les solutions dans l'ensemble solution."
+      ],
+      "explanation": "La valeur absolue $|x-3|=5$ signifie que la distance entre $x$ et $3$ est $5$. Cela donne deux cas : $x-3=5$ (donc $x=8$) et $x-3=-5$ (donc $x=-2$). L'ensemble solution est $\\{-2; 8\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Rangez les nombres $-1$, $4$, $0$, $5$ par distance croissante par rapport à $2$ sur la droite numérique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "0",
+        "4",
+        "-1",
+        "5"
+      ],
+      "explanation": "Les distances à $2$ sont : $|0-2|=2$, $|4-2|=2$, $|-1-2|=3$, $|5-2|=3$. Les deux premiers ont la distance minimale $2$ ; on les range par ordre croissant ($0$ puis $4$). Les deux suivants ont distance $3$ ; on les range aussi par ordre croissant ($-1$ puis $5$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Rangez les étapes dans l'ordre correct pour démontrer l'inégalité triangulaire $|a+b| \\le |a|+|b|$ pour tous réels $a,b$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les encadrements $-|a| \\le a \\le |a|$ et $-|b| \\le b \\le |b|$.",
+        "Additionner les inégalités pour obtenir $-(|a|+|b|) \\le a+b \\le |a|+|b|$.",
+        "Conclure que $|a+b| \\le |a|+|b|$ par définition de la valeur absolue."
+      ],
+      "explanation": "On utilise la propriété $-|x| \\le x \\le |x|$ pour $x=a$ et $x=b$. En ajoutant, on encadre $a+b$ entre $-(|a|+|b|)$ et $|a|+|b|$, ce qui signifie exactement que la valeur absolue de $a+b$ ne dépasse pas $|a|+|b|$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

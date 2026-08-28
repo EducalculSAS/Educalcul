@@ -1,0 +1,376 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.723924+00:00",
+  "id": 718,
+  "code": "terminale-generale-maths-t07-c04",
+  "title": "Concentration / loi des grands nombres dans le cadre prévu",
+  "description": "Cours structuré Educalcul : Concentration / loi des grands nombres dans le cadre prévu.",
+  "subject": "Probabilités",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Probabilités",
+    "titre_du_cours": "Concentration / loi des grands nombres dans le cadre prévu",
+    "objectif_global": "Concentration / loi des grands nombres dans le cadre prévu",
+    "mini_lecons_imposees": [
+      "Énoncé.",
+      "Interprétation.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités",
+      "lessons": [
+        {
+          "title": "Énoncé.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le hasard finit par se ranger : l'intuition derrière la convergence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie équilibrée un grand nombre de fois. Au début, la fréquence de \"face\" peut osciller sauvagement : $1$ sur $1$, puis $1$ sur $2$, puis $2$ sur $3$... Mais si tu continues longtemps, très longtemps, tu as le sentiment profond que cette fréquence va se stabiliser autour de $0,5$. C'est exactement l'intuition que la loi des grands nombres vient formaliser. En terminale spécialité, nous ne nous contentons pas de dire \"ça tend vers\", nous donnons un sens mathématique précis à cette stabilisation. Nous allons parler de convergence en probabilité, un mode de convergence qui dit : \"la probabilité que l'écart soit grand devient aussi petite qu'on veut, pourvu d'attendre assez longtemps\". C'est une idée puissante car elle ne promet pas que \\textit{chaque} réalisation sera proche de la moyenne, mais que le \\textit{risque} d'une grande déviation devient négligeable."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être rigoureux, posons le décor. Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles définies sur un même espace probabilisé $(\\Omega, \\mathcal{F}, \\mathbb{P})$. On dit que $X_n$ converge en probabilité vers une constante $c \\in \\mathbb{R}$ si, pour tout $\\varepsilon > 0$, $\\lim_{n \\to +\\infty} \\mathbb{P}(|X_n - c| > \\varepsilon) = 0$. On note $X_n \\xrightarrow{\\mathbb{P}} c$. Remarque bien la nuance : $c$ est un nombre fixe, pas une variable aléatoire. Cela veut dire que la masse de probabilité de $X_n$ se concentre de plus en plus autour de $c$ quand $n$ grandit. C'est ce qu'on appelle un phénomène de \\textit{concentration}."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(-n*x^2/2)",
+              "xmin": "-1",
+              "xmax": "1",
+              "caption": "Densité approchée de la moyenne de n variables (théorème central limite) : concentration autour de 0 quand n croît"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée de convergence en probabilité est posée, nous avons besoin d'un outil pour la prouver concrètement. C'est là qu'intervient une inégalité fondamentale, élégante et terriblement efficace : l'inégalité de Bienaymé-Tchebychev. Elle ne demande qu'une chose : que la variable aléatoire ait une variance finie. En échange, elle donne une borne majeure sur la probabilité de s'éloigner de l'espérance, sans connaître la loi exacte de la variable. C'est un peu comme savoir qu'un inconnu se trouve dans un rayon de $100$ mètres autour de la tour Eiffel sans savoir exactement où : c'est imparfait, mais souvent suffisant pour conclure."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(|X - \\mathbb{E}(X)| \\ge \\varepsilon) \\le \\frac{\\operatorname{Var}(X)}{\\varepsilon^2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Inégalité de Markov",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une variable positive $Y$ et $a>0$, $\\mathbb{P}(Y \\ge a) \\le \\frac{\\mathbb{E}(Y)}{a}$. On l'applique à $Y = (X - \\mathbb{E}(X))^2$ et $a = \\varepsilon^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Passage à Tchebychev",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{P}(|X - \\mathbb{E}(X)| \\ge \\varepsilon) = \\mathbb{P}((X - \\mathbb{E}(X))^2 \\ge \\varepsilon^2) \\le \\frac{\\mathbb{E}((X - \\mathbb{E}(X))^2)}{\\varepsilon^2} = \\frac{\\operatorname{Var}(X)}{\\varepsilon^2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Armés de cette inégalité, nous pouvons maintenant énoncer et démontrer la loi faible des grands nombres dans son cadre le plus classique : celui de variables indépendantes et identiquement distribuées (i.i.d.) à variance finie. C'est le théorème que tu utiliseras le plus souvent. Soit $(X_n)$ une suite de v.a. i.i.d. d'espérance $\\mu$ et de variance $\\sigma^2 < +\\infty$. On note $S_n = X_1 + \\dots + X_n$ et $M_n = S_n / n$ la moyenne empirique. Alors $M_n$ converge en probabilité vers $\\mu$. La démonstration tient en trois lignes grâce à Tchebychev : $\\operatorname{Var}(M_n) = \\sigma^2/n$, donc $\\mathbb{P}(|M_n - \\mu| > \\varepsilon) \\le \\sigma^2/(n\\varepsilon^2) \\to 0$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random, statistics\\n\\ndef simulate_lln(trials=1000, max_n=500):\\n    means = []\\n    for n in range(1, max_n+1):\\n        sample = [random.random() for _ in range(n)]  # Uniforme [0,1], espérance 0.5\\n        means.append(statistics.mean(sample))\\n    return means\\n\\nprint(\"Moyennes empiriques pour n=10, 100, 1000:\")\\nfor n in [10, 100, 1000]:\\n    sample = [random.random() for _ in range(n)]\\n    print(f\"n={n}: {statistics.mean(sample):.4f}\")",
+              "language": "python",
+              "caption": "Simulation de la convergence de la moyenne empirique vers 0.5 (loi uniforme)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette première leçon, il est crucial de distinguer la loi faible que nous venons de voir de sa grande sœur, la loi forte des grands nombres. La loi faible dit : \"pour tout $\\varepsilon$, la probabilité d'être loin de $\\mu$ tend vers $0$\". La loi forte dit : \"l'ensemble des tirages pour lesquels $M_n$ \\textit{ne} converge \\textit{pas} vers $\\mu$ a une probabilité nulle\". En d'autres termes, \\textit{presque sûrement}, la suite $(M_n(\\omega))$ converge vers $\\mu$. C'est une convergence ponctuelle quasi-sûre, bien plus forte. Elle nécessite les mêmes hypothèses (i.i.d., espérance finie), mais sa démonstration sort du cadre du programme (elle utilise le lemme de Borel-Cantelli). Retiens simplement : la loi faible contrôle le risque d'erreur \\textit{à un instant donné} $n$, la loi forte garantit que \\textit{finalement}, la trajectoire ne s'éloignera plus."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère une suite de variables aléatoires $(X_n)$ telles que $\\mathbb{P}(X_n = 1/n) = 1/n$ et $\\mathbb{P}(X_n = 0) = 1 - 1/n$. Montrer que $X_n$ converge en probabilité vers $0$. Converge-t-elle presque sûrement vers $0$ ?",
+              "answer": "Pour tout $\\varepsilon > 0$, pour $n > 1/\\varepsilon$, $\\mathbb{P}(|X_n| > \\varepsilon) = \\mathbb{P}(X_n = 1/n) = 1/n \\to 0$. Donc convergence en probabilité vers 0. En revanche, $\\sum \\mathbb{P}(X_n = 1/n) = \\sum 1/n = +\\infty$. Les événements sont indépendants (si on le suppose), par Borel-Cantelli, une infinité de $X_n$ valent $1/n$ p.s., donc $X_n$ ne converge p.s. pas vers 0.",
+              "hint": "Calcule $\\mathbb{P}(|X_n - 0| > \\varepsilon)$ pour $n$ grand. Pour la convergence p.s., pense à Borel-Cantelli.",
+              "explanation": "La convergence en probabilité ne regarde que les marges une par une. La convergence p.s. regarde la trajectoire globale. Ici, les 'pics' à 1/n arrivent trop souvent (série harmonique divergente) pour disparaître presque sûrement."
+            },
+            {
+              "question": "Soit $X$ une variable aléatoire d'espérance $\\mu = 10$ et de variance $\\sigma^2 = 4$. En utilisant l'inégalité de Bienaymé-Tchebychev, majorer $\\mathbb{P}(|X - 10| \\ge 3)$.",
+              "answer": "$\\mathbb{P}(|X - 10| \\ge 3) \\le \\frac{4}{9} \\approx 0,444$.",
+              "hint": "Applique directement la formule $\\frac{\\sigma^2}{\\varepsilon^2}$ avec $\\varepsilon = 3$.",
+              "explanation": "Tchebychev donne une borne grossière mais universelle. Ici, elle dit que la probabilité d'être à plus de 3 de la moyenne est au plus 44%. La vraie probabilité est souvent bien plus petite (ex: pour une loi normale, elle est ~3%)."
+            },
+            {
+              "question": "On lance $n$ fois un dé équilibré. On note $M_n$ la moyenne des résultats. En utilisant la loi faible des grands nombres, que peut-on dire de $M_n$ quand $n \\to +\\infty$ ? Calculer l'espérance et la variance d'un lancer.",
+              "answer": "Espérance $\\mu = 3,5$, Variance $\\sigma^2 = 35/12 \\approx 2,92$. $M_n \\xrightarrow{\\mathbb{P}} 3,5$.",
+              "hint": "Espérance = somme des valeurs / 6. Variance = $\\mathbb{E}(X^2) - \\mathbb{E}(X)^2$.",
+              "explanation": "La moyenne empirique des lancers de dé se concentre autour de 3.5. Pour $n=100$, l'écart-type de $M_n$ est $\\sigma/\\sqrt{n} \\approx 0,17$."
+            },
+            {
+              "question": "Expliquer en une phrase la différence fondamentale entre la loi faible et la loi forte des grands nombres pour une suite i.i.d. d'espérance $\\mu$.",
+              "answer": "La loi faible assure que pour $n$ fixé grand, $M_n$ est probablement proche de $\\mu$ ; la loi forte assure que la suite $(M_n)$ converge vers $\\mu$ pour presque tous les tirages (trajectoires).",
+              "hint": "Contraste 'probabilité pour un n grand' vs 'comportement de la suite pour presque tout $\\omega$'.",
+              "explanation": "Faible : $\\forall \\varepsilon, \\lim_n \\mathbb{P}(|M_n-\\mu|>\\varepsilon)=0$. Forte : $\\mathbb{P}(\\lim_n M_n = \\mu) = 1$. La forte implique la faible, l'inverse est faux."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'erreur a une taille : l'échelle racine-n et les fluctuations"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi faible nous dit que $M_n$ se rapproche de $\\mu$. Mais en pratique, quand on fait une expérience avec $n=100$ ou $n=1000$, on a besoin de savoir \\textit{à quelle distance} on est probablement de la vérité. L'inégalité de Bienaymé-Tchebychev nous donne une première réponse : $\\mathbb{P}(|M_n - \\mu| > \\varepsilon) \\le \\frac{\\sigma^2}{n\\varepsilon^2}$. Si on retourne cette inégalité, on obtient : avec une probabilité au moins $1-\\alpha$, l'erreur $|M_n - \\mu|$ est inférieure à $\\frac{\\sigma}{\\sqrt{n\\alpha}}$. Remarque le facteur déterminant : $\\frac{1}{\\sqrt{n}}$. C'est la \\textit{vitesse de convergence}. Doubler la précision (diviser l'erreur par 2) demande de multiplier le nombre d'observations par 4. C'est la loi universelle de la racine carrée : le hasard se réduit lentement, mais sûrement."
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(x)",
+              "xmin": "1",
+              "xmax": "1000",
+              "caption": "Vitesse de convergence typique de l'erreur : proportionnelle à 1/√n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'inégalité de Tchebychev est universelle (elle marche pour toute loi à variance finie), mais elle est souvent pessimiste. Si l'on sait que les variables sont \\textit{bornées} (par exemple, un sondage où les réponses sont 0 ou 1), on peut faire beaucoup mieux avec l'inégalité de Hoeffding. Elle affirme que pour des v.a. i.i.d. telles que $a \\le X_i \\le b$ presque sûrement, $\\mathbb{P}(|M_n - \\mu| > \\varepsilon) \\le 2 \\exp\\left(-\\frac{2n\\varepsilon^2}{(b-a)^2}\\right)$. Cette borne \\textit{exponentielle} en $n$ est spectaculaire : la probabilité d'erreur chute bien plus vite qu'en $1/n$. C'est pour cela qu'en pratique, pour les sondages ou le contrôle qualité, on préfère Hoeffding (ou sa version binomial exacte) à Tchebychev."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(|M_n - \\mu| > \\varepsilon) \\le 2 \\exp\\left(-\\frac{2n\\varepsilon^2}{(b-a)^2}\\right)"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des bornes supérieures pour l'erreur (n=100, epsilon=0.1, variance=0.25)",
+              "bars": [
+                {
+                  "label": "Tchebychev",
+                  "value": 25,
+                  "tone": "red"
+                },
+                {
+                  "label": "Hoeffding",
+                  "value": 0.27,
+                  "tone": "green"
+                },
+                {
+                  "label": "Normale (CLT)",
+                  "value": 0.045,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette vitesse $\\sqrt{n}$ n'est pas un artefact de nos inégalités, c'est la réalité profonde des fluctuations. Si l'on regarde la variable centrée-réduite $Z_n = \\frac{M_n - \\mu}{\\sigma/\\sqrt{n}}$, le théorème central limite (que tu verras ou as vu en parallèle) nous dit que sa loi tend vers la loi normale standard $\\mathcal{N}(0,1)$. Cela signifie que les fluctuations de $M_n$ autour de $\\mu$ sont \\textit{typiquement} de l'ordre de $\\sigma/\\sqrt{n}$. L'inégalité de Tchebychev majorait la queue de distribution par $\\sigma^2/(n\\varepsilon^2)$, ce qui correspond à dire que l'écart-type est l'échelle naturelle. Comprendre cette échelle $\\sqrt{n}$ est la clé pour dimensionner correctement une expérience, un sondage ou une simulation de Monte Carlo."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import numpy as np\\nimport matplotlib.pyplot as plt\\n\\n# Simulation de 1000 trajectoires de moyennes empiriques\\nnp.random.seed(42)\\nn_max = 500\\nn_traj = 20\\nmeans = np.zeros((n_traj, n_max))\\nfor i in range(n_traj):\\n    samples = np.random.exponential(scale=1.0, size=n_max)  # Exp(1), moy=1, var=1\\n    means[i] = np.cumsum(samples) / np.arange(1, n_max+1)\\n\\n# Affichage des enveloppes théorétiques +/- 2*sigma/sqrt(n)\\nenvelope = 2 / np.sqrt(np.arange(1, n_max+1))\\nprint(\"Enveloppe 2*sigma/sqrt(n) pour n=10, 100, 500:\")\\nfor n in [10, 100, 500]:\\n    print(f\"n={n}: +/- {envelope[n-1]:.3f}\")",
+              "language": "python",
+              "caption": "Simulation de trajectoires de moyennes empiriques (Loi Exponentielle) et enveloppe de fluctuation 2/√n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout cela nous mène naturellement à la construction d'intervalles de confiance, qui sont l'application concrète n°1 de la loi des grands nombres. Un intervalle de confiance au niveau $1-\\alpha$ pour $\\mu$ est un intervalle aléatoire $I_n = [M_n - u_{1-\\alpha/2} \\frac{\\sigma}{\\sqrt{n}}, M_n + u_{1-\\alpha/2} \\frac{\\sigma}{\\sqrt{n}}]$ (si $\\sigma$ connu, sinon on utilise l'estimateur de la variance et la loi de Student). L'interprétation fréquentiste est subtile mais essentielle : si on répète l'expérience une infinité de fois, la proportion d'intervalles qui contiennent la vraie valeur $\\mu$ tend vers $1-\\alpha$. Ce n'est \\textit{pas} la probabilité que $\\mu$ soit dans \\textit{notre} intervalle calculé (car $\\mu$ est fixe, pas aléatoire). C'est la garantie que notre \\textit{méthode} de construction fonctionne dans $100(1-\\alpha)\\%$ des cas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut estimer la moyenne $\\mu$ d'une population d'écart-type $\\sigma = 2$ avec une précision $\\varepsilon = 0,1$ et une confiance $95\\%$ (borne de Tchebychev : $\\alpha = 0,05$). Quel échantillon minimal $n$ faut-il prévoir ?",
+              "answer": "D'après Tchebychev : $\\frac{\\sigma^2}{n\\varepsilon^2} \\le \\alpha \\Rightarrow n \\ge \\frac{\\sigma^2}{\\alpha \\varepsilon^2} = \\frac{4}{0,05 \\times 0,01} = 8000$.",
+              "hint": "Utilise la borne $\\mathbb{P}(|M_n-\\mu|>\\varepsilon) \\le \\frac{\\sigma^2}{n\\varepsilon^2}$ et impose qu'elle soit $\\le \\alpha$.",
+              "explanation": "Tchebychev est très conservateur : il demande $n=8000$. Avec la normale (CLT), $n \\approx (1,96 \\times 2 / 0,1)^2 \\approx 1537$. La différence montre le prix de l'universalité."
+            },
+            {
+              "question": "Soit $X_1, \\dots, X_n$ i.i.d. uniformes sur $[0,1]$. On veut $\\mathbb{P}(|M_n - 0,5| > 0,01) < 0,01$. Comparer le $n$ nécessaire avec Tchebychev et avec Hoeffding.",
+              "answer": "Tchebychev : $\\sigma^2 = 1/12$. $n \\ge \\frac{1/12}{0,01 \\times 0,0001} \\approx 833\\,333$. Hoeffding ($a=0, b=1$) : $2e^{-2n(0,01)^2} \\le 0,01 \\Rightarrow n \\ge \\frac{\\ln(200)}{2 \\times 10^{-4}} \\approx 26\\,500$. Hoeffding demande 30 fois moins d'observations.",
+              "hint": "Pour Tchebychev : $\\frac{\\sigma^2}{n\\varepsilon^2} \\le \\alpha$. Pour Hoeffding : $2e^{-2n\\varepsilon^2} \\le \\alpha$.",
+              "explanation": "L'exponentielle de Hoeffding écrase le polynôme de Tchebychev dès qu'on a des variables bornées. C'est pour cela qu'en sondage (variables 0/1), on utilise des bornes de type Hoeffding/Clopper-Pearson."
+            },
+            {
+              "question": "On simule $1000$ fois la moyenne $M_{100}$ de $100$ variables $\\mathcal{N}(0,1)$. On trace l'histogramme de $\\sqrt{100} M_{100}$. Quelle forme doit avoir cet histogramme ? Pourquoi ?",
+              "answer": "L'histogramme doit ressembler à une cloche de Gauss centrée en 0, d'écart-type 1 (loi $\\mathcal{N}(0,1)$). Car $\\sqrt{n}(M_n - \\mu)/\\sigma$ converge en loi vers $\\mathcal{N}(0,1)$ (TCL).",
+              "hint": "Théorème Central Limite : $\\frac{M_n - \\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{\\mathcal{L}} \\mathcal{N}(0,1)$.",
+              "explanation": "C'est la justification théorique de l'échelle $\\sqrt{n}$. Les fluctuations *sont* gaussiennes à l'échelle $\\sqrt{n}$."
+            },
+            {
+              "question": "Un intervalle de confiance à $95\\%$ pour $\\mu$ a été calculé : $[12,3 ; 15,7]$. Laquelle de ces phrases est correcte ? A) La probabilité que $\\mu \\in [12,3 ; 15,7]$ est $0,95$. B) La méthode utilisée pour construire cet intervalle produit un intervalle contenant $\\mu$ dans $95\\%$ des cas.",
+              "answer": "B uniquement.",
+              "hint": "Rappelle-toi : $\\mu$ est un paramètre fixe (inconnu mais constant), pas une variable aléatoire. L'aléatoire, c'est l'échantillon et donc l'intervalle.",
+              "explanation": "C'est le piège classique d'interprétation. Une fois l'échantillon tiré, l'intervalle est fixé. $\\mu$ est soit dedans, soit dehors. Le $95\\%$ qualifie la fiabilité de la \\textit{procédure} de construction sur le long terme."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sondages d'opinion : la science de demander à peu de gens ce que tout le monde pense"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'application historique et la plus médiatique de la loi des grands nombres. Un institut de sondage interroge $n$ personnes (échantillon) pour estimer la proportion $p$ de l'électorat qui votera pour un candidat. Chaque personne interrogée est une variable de Bernoulli de paramètre $p$. La moyenne empirique $M_n$ est la fréquence observée. D'après la loi des grands nombres, $M_n \\xrightarrow{\\mathbb{P}} p$. Mais le client veut une \\textit{marge d'erreur} $\\varepsilon$ et un \\textit{niveau de confiance} $1-\\alpha$. On utilise l'inégalité de Hoeffding (variables dans $[0,1]$) ou l'approximation normale (CLT) pour déterminer $n$. La formule pratique issue de la normale est $n \\ge \\left(\\frac{u_{1-\\alpha/2}}{\\varepsilon}\\right)^2 p(1-p)$. Comme on ne connaît pas $p$ avant le sondage, on prend le pire cas $p(1-p) \\le 1/4$, ce qui donne la fameuse règle : $n \\ge \\frac{1}{\\varepsilon^2}$ pour $\\alpha=5\\%$ (avec $u_{0,975} \\approx 2$)."
+            },
+            {
+              "type": "graph",
+              "expression": "1/(x^2)",
+              "xmin": "0.01",
+              "xmax": "0.1",
+              "caption": "Taille d'échantillon n nécessaire en fonction de la marge d'erreur ε (règle 1/ε² pour IC 95%)"
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def sample_size_poll(margin_error, confidence=0.95, p=0.5):\\n    \"\"\"Calcul n pour sondage (approximation normale).\"\"\"\\n    from scipy.stats import norm\\n    alpha = 1 - confidence\\n    z = norm.ppf(1 - alpha/2)\\n    n = (z**2 * p * (1-p)) / (margin_error**2)\\n    return int(np.ceil(n))\\n\\nimport numpy as np\\nprint(\"Taille d'échantillon pour marge d'erreur 1%, 2%, 3%, 5% (IC 95%):\")\\nfor e in [0.01, 0.02, 0.03, 0.05]:\\n    print(f\"  ε={e*100:.0f}% -> n = {sample_size_poll(e)}\")\\nprint(\"\\nRègle approximative 1/ε² :\")\\nfor e in [0.01, 0.02, 0.03, 0.05]:\\n    print(f\"  ε={e*100:.0f}% -> n ≈ {int(1/e**2)}\")",
+              "language": "python",
+              "caption": "Calcul de la taille d'échantillon pour un sondage (formule normale vs règle 1/ε²)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à une tout autre application, fascinante et contre-intuitive : la méthode de Monte Carlo. L'idée est d'utiliser le hasard pour calculer des quantités \\textit{déterministes}, comme une intégrale ou le nombre $\\pi$. Supposons qu'on veuille calculer $I = \\int_0^1 f(x) dx$. Si on tire $U_1, \\dots, U_n$ i.i.d. uniformes sur $[0,1]$, alors $f(U_i)$ sont i.i.d. d'espérance $I$. La moyenne $\\frac{1}{n} \\sum f(U_i)$ converge vers $I$ presque sûrement (loi forte). C'est la méthode de Monte Carlo par moyenne. L'erreur est encore en $1/\\sqrt{n}$, indépendante de la dimension ! C'est pourquoi on l'utilise pour les intégrales multidimensionnelles (finance, physique statistique) où les méthodes déterministes (quadratures) explosent en coût."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "4/(1+x^2)",
+              "xmin": "0",
+              "xmax": "1",
+              "rectangles": 20,
+              "caption": "Estimation de π par Monte Carlo : ∫₀¹ 4/(1+x²) dx = π. Les rectangles illustrent l'intégrale, le Monte Carlo tire des points au hasard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième terrain de jeu industriel : le contrôle qualité par acceptation d'échantillonnage. Une usine reçoit un lot de $N$ pièces. Elle ne peut pas toutes les tester (destructif ou trop long). Elle en tire $n$ au hasard, compte le nombre $D$ de défectueuses. Si $D \\le c$ (seuil d'acceptation), le lot est accepté, sinon refusé. La loi des grands nombres garantit que $D/n$ est proche de la vraie proportion de défauts $p$ du lot. On construit alors la \\textit{courbe caractéristique de fonctionnement} (CCF) : probabilité d'accepter le lot en fonction de $p$. C'est une application directe de la loi binomiale (ou de son approximation normale/Poisson) rendue fiable par la concentration. Le producteur veut que les lots bons ($p$ faible) soient acceptés (risque producteur $\\alpha$), le client veut que les lots mauvais ($p$ élevé) soient refusés (risque client $\\beta$). Le choix de $n$ et $c$ résout ce compromis."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de décision pour un plan d'échantillonnage simple (n=20, c=1) : accepter si 0 ou 1 défaut",
+              "branches": [
+                {
+                  "label": "Pièce 1",
+                  "probability": "p",
+                  "children": [
+                    {
+                      "label": "Défaut",
+                      "probability": "p"
+                    },
+                    {
+                      "label": "OK",
+                      "probability": "1-p"
+                    }
+                  ]
+                },
+                {
+                  "label": "Pièce 2...",
+                  "probability": "..."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : le nombre, ce grand dompteur du hasard"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce parcours. Retiens l'essentiel : la loi des grands nombres n'est pas une curiosité théorique, c'est le socle mathématique qui autorise la statistique, les sondages, la simulation numérique, le contrôle qualité, l'assurance, la finance. Elle nous dit que si le comportement individuel est imprévisible, le comportement collectif devient prévisible dès que le nombre d'observations est grand. La concentration (Tchebychev, Hoeffding) quantifie cette prévisibilité : elle donne des bornes concrètes sur l'erreur commise. La vitesse $\\sqrt{n}$ est la règle d'or pour dimensionner tes expériences. Et surtout, distingue toujours la convergence en probabilité (loi faible, risque instantané) de la convergence presque sûre (loi forte, destin final de la trajectoire)."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la convergence en probabilité et la distinguer de la convergence presque sûre.",
+                "Je sais énoncer et démontrer l'inégalité de Bienaymé-Tchebychev et l'appliquer pour majorer une probabilité d'écart.",
+                "Je connais l'énoncé de la loi faible des grands nombres (variables i.i.d. à variance finie) et je sais l'appliquer à la moyenne empirique.",
+                "J'interprète la vitesse de convergence en $1/\\sqrt{n}$ et je sais l'utiliser pour calculer une taille d'échantillon (sondage, Monte Carlo).",
+                "Je connais l'inégalité de Hoeffding pour variables bornées et je sais pourquoi elle est plus précise que Tchebychev.",
+                "Je sais construire et interpréter correctement un intervalle de confiance asymptotique pour une moyenne ou une proportion.",
+                "Je peux modéliser un problème concret (sondage, Monte Carlo, contrôle qualité) en identifiant les v.a. i.i.d. et en appliquant la LGN."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un sondage prévoit une marge d'erreur de $2\\%$ pour un niveau de confiance $95\\%$. En utilisant la règle approximative $n = 1/\\varepsilon^2$, quelle taille d'échantillon faut-il ? Si on utilise la formule exacte avec $p=0,5$ et $u_{0,975}=1,96$, quel $n$ obtient-on ?",
+              "answer": "Règle $1/\\varepsilon^2$ : $n = 1/0,0004 = 2500$. Formule exacte : $n = (1,96^2 \\times 0,25) / 0,0004 \\approx 2401$.",
+              "hint": "$\\varepsilon = 0,02$. Formule exacte : $n = \\frac{u^2 p(1-p)}{\\varepsilon^2}$.",
+              "explanation": "La règle $1/\\varepsilon^2$ arrondit $1,96^2 \\approx 4$ au numérateur. Elle surestime légèrement $n$, ce qui est prudent."
+            },
+            {
+              "question": "On veut estimer $I = \\int_0^1 e^{-x^2} dx$ par Monte Carlo avec $n=10^6$ tirages. On sait que $\\operatorname{Var}(e^{-U^2}) \\approx 0,08$ pour $U \\sim \\mathcal{U}[0,1]$. Donner un intervalle de confiance approximatif à $95\\%$ pour $I$ si la moyenne observée est $0,7468$.",
+              "answer": "IC : $[0,7468 - 1,96 \\times \\sqrt{0,08/10^6}, 0,7468 + 1,96 \\times \\sqrt{0,08/10^6}] \\approx [0,74674, 0,74686]$.",
+              "hint": "Erreur standard = $\\sqrt{\\hat{\\sigma}^2/n}$. IC = $M_n \\pm 1,96 \\times$ erreur standard.",
+              "explanation": "La précision est de l'ordre de $10^{-4}$ pour $10^6$ tirages. C'est typique du Monte Carlo : convergence lente ($1/\\sqrt{n}$) mais dimensionnellement robuste."
+            },
+            {
+              "question": "Dans un plan d'échantillonnage, on tire $n=50$ pièces dans un lot de $1000$. Le lot est accepté s'il y a au plus $1$ défectueuse. Si le lot contient vraiment $5\\%$ de défauts ($p=0,05$), quel est le risque producteur (probabilité de refuser un lot bon) ? Utiliser l'approximation de Poisson ($np=2,5$).",
+              "answer": "Risque producteur = $1 - \\mathbb{P}(D \\le 1) = 1 - (e^{-2,5} + 2,5 e^{-2,5}) = 1 - 3,5 e^{-2,5} \\approx 1 - 0,287 = 0,713$. Risque très élevé (71%) ! Le plan est trop sévère pour $p=5\\%$.",
+              "hint": "$D \\sim \\mathcal{B}(50, 0,05) \\approx \\mathcal{P}(2,5)$. Calculer $\\mathbb{P}(D \\ge 2)$.",
+              "explanation": "Ce calcul montre l'intérêt de la LGN/approximations pour négocier les plans de contrôle : ici, avec $p=5\\%$, on refuse 3 lots sur 4. Il faut augmenter $c$ ou diminuer $n$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

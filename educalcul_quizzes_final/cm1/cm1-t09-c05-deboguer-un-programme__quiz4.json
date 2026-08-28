@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Déboguer un programme",
+  "title": "Application : Déboguer un programme",
+  "questions": [
+    {
+      "text": "Qu'est ce que le débogage dans un programme informatique ?",
+      "options": [
+        "L'action d'ajouter des images au programme",
+        "Le fait de chercher et de corriger des erreurs dans un programme",
+        "L'action d'effacer tout le code pour recommencer",
+        "Le fait de partager son programme avec des amis"
+      ],
+      "correctAnswer": "Le fait de chercher et de corriger des erreurs dans un programme",
+      "explanation": "Déboguer signifie identifier un bug, c'est à dire une erreur qui empêche le programme de fonctionner comme prévu, et le corriger pour que le résultat soit correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot doit avancer de $3$ cases, mais il avance de $4$ cases. Quelle est la méthode la plus efficace pour déboguer ce programme ?",
+      "options": [
+        "Relancer le programme sans rien changer",
+        "Supprimer toutes les instructions du robot",
+        "Relire les instructions pas à pas pour trouver l'erreur",
+        "Changer la couleur du robot"
+      ],
+      "correctAnswer": "Relire les instructions pas à pas pour trouver l'erreur",
+      "explanation": "Pour déboguer, il faut analyser le programme étape par étape. Ici, on s'aperçoit qu'il y a une instruction Avancer en trop ou que le nombre est incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a écrit un programme pour dessiner un carré :\\n1. Avancer de $10$ cm\\n2. Tourner à droite de $90$ degrés\\n3. Avancer de $10$ cm\\n4. Tourner à droite de $90$ degrés\\n5. Avancer de $10$ cm\\n\\nPourquoi le programme est il incorrect ?",
+      "options": [
+        "Le robot avance trop vite",
+        "Il manque une instruction de tournage et une instruction d'avancement",
+        "Le robot tourne dans le mauvais sens",
+        "La distance de $10$ cm est trop petite"
+      ],
+      "correctAnswer": "Il manque une instruction de tournage et une instruction d'avancement",
+      "explanation": "Un carré a $4$ côtés et $4$ angles. Le programme de Léa ne contient que $3$ avancements et $2$ tournants. Le robot s'arrête après avoir tracé seulement trois côtés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un programme, on utilise une boucle pour répéter une action $5$ fois. Mais l'action est répétée $6$ fois. Quel est le bug ?",
+      "options": [
+        "L'action est trop difficile pour le robot",
+        "Le robot a oublié de tourner",
+        "La valeur du compteur de la boucle est mal réglée",
+        "Le programme est trop long"
+      ],
+      "correctAnswer": "La valeur du compteur de la boucle est mal réglée",
+      "explanation": "Le bug se trouve dans le paramètre de la boucle. Si l'action est répétée $6$ fois au lieu de $5$, c'est que le chiffre indiqué dans la boucle est $6$ au lieu de $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un algorithme pour préparer un goûter :\\n1. Prendre un verre\\n2. Verser du jus d'orange\\n3. Boire le jus\\n4. Poser le verre\\n\\nSi on inverse les étapes $2$ et $3$, que se passe t il ?",
+      "options": [
+        "Le goûter est prêt plus rapidement",
+        "Le programme fonctionne toujours normalement",
+        "Le robot essaie de boire avant d'avoir versé le jus, c'est un bug",
+        "Le verre se remplit tout seul"
+      ],
+      "correctAnswer": "Le robot essaie de boire avant d'avoir versé le jus, c'est un bug",
+      "explanation": "L'ordre des instructions est crucial en informatique. Si on boit avant de verser, l'action est impossible. C'est une erreur de logique qu'il faut déboguer.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

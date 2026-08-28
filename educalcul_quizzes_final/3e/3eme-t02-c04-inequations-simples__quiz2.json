@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 464,
+  "_course_code": "3eme-t02-c04-inequations-simples",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Représenter sur droite",
+  "title": "Représenter les solutions d'inéquations sur une droite",
+  "questions": [
+    {
+      "text": "Comment représente-t-on l'inéquation $x > 3$ sur une droite graduée ?",
+      "options": [
+        "Point vide à 3 et flèche vers la droite",
+        "Point plein à 3 et flèche vers la droite",
+        "Point vide à 3 et flèche vers la gauche",
+        "Point plein à 3 et flèche vers la gauche"
+      ],
+      "correctAnswer": "Point vide à 3 et flèche vers la droite",
+      "explanation": "L'inéquation est stricte ($>$), donc le point est vide (3 n'est pas solution). Les solutions sont supérieures à 3, donc la flèche part vers la droite (vers les nombres plus grands).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces représentations correspond à l'inéquation $x \\le -1$ ?",
+      "options": [
+        "Point plein à -1 et flèche vers la gauche",
+        "Point vide à -1 et flèche vers la gauche",
+        "Point plein à 1 et flèche vers la gauche",
+        "Point plein à -1 et flèche vers la droite"
+      ],
+      "correctAnswer": "Point plein à -1 et flèche vers la gauche",
+      "explanation": "Le symbole $\\le$ signifie 'inférieur ou égal', donc -1 est solution : le point est plein. Les solutions sont inférieures à -1, la flèche va vers la gauche (vers les nombres plus petits). L'option C place le point à 1 au lieu de -1. L'option D inverse le sens de la flèche.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a tracé un point vide à 4 avec une flèche vers la gauche. Quelle inéquation cela représente-t-il ?",
+      "options": [
+        "$x < 4$",
+        "$x \\le 4$",
+        "$x > 4$",
+        "$x \\ge 4$"
+      ],
+      "correctAnswer": "$x < 4$",
+      "explanation": "Un point vide signifie que la borne (4) n'est pas incluse (inéquation stricte $<$ ou $>$). Une flèche vers la gauche indique les nombres inférieurs à 4. C'est donc $x < 4$. L'option B correspondrait à un point plein. Les options C et D correspondent à une flèche vers la droite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle inéquation correspond à l'intervalle représenté sur la figure ci-dessous ?",
+      "options": [
+        "$-3 \\le x < 2$",
+        "$-3 < x \\le 2$",
+        "$-3 \\le x \\le 2$",
+        "$-3 < x < 2$"
+      ],
+      "correctAnswer": "$-3 \\le x < 2$",
+      "explanation": "Sur la figure, le point à -3 est plein (borne incluse, symbole $\\le$) et le point à 2 est vide (borne exclue, symbole $<$). L'intervalle va de -3 à 2. Cela s'écrit $-3 \\le x < 2$.",
+      "points": 1,
+      "figure": {
+        "type": "interval_builder",
+        "min": -5,
+        "max": 5,
+        "lowerBound": -3,
+        "upperBound": 2,
+        "lowerOpen": false,
+        "upperOpen": true,
+        "caption": "Intervalle de -3 inclus à 2 exclu"
+      }
+    },
+    {
+      "text": "Comment représenter l'ensemble des solutions de $1 < x \\le 4$ ?",
+      "options": [
+        "Point vide à 1, point plein à 4, trait plein entre les deux",
+        "Point plein à 1, point vide à 4, trait plein entre les deux",
+        "Point vide à 1, point plein à 4, flèches vers l'extérieur",
+        "Point plein à 1, point vide à 4, flèches vers l'extérieur"
+      ],
+      "correctAnswer": "Point vide à 1, point plein à 4, trait plein entre les deux",
+      "explanation": "L'inéquation est une double inégalité bornée. 1 est exclu ($<$ strict) donc point vide. 4 est inclus ($\\le$ large) donc point plein. Les solutions sont comprises entre les deux, on trace un segment (trait plein) entre eux, pas de flèches qui indiqueraient l'infini.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

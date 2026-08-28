@@ -1,0 +1,387 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.759579+00:00",
+  "id": 90,
+  "code": "ce1-t03-c03",
+  "title": "Soustraire comme retirer ou chercher un écart",
+  "description": "Cours structuré Educalcul : Soustraire comme retirer ou chercher un écart.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Soustraire comme retirer ou chercher un écart",
+    "objectif_global": "Soustraire comme retirer ou chercher un écart",
+    "mini_lecons_imposees": [
+      "Distinguer deux sens.",
+      "Choisir une représentation.",
+      "Relier au calcul."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Distinguer deux sens.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distinguer deux sens"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as huit billes dans ta main. Tu en donnes trois à ton ami. C’est le sens « retirer » : on enlève une partie d’un tout pour voir ce qui reste. C’est comme quand tu partages tes bonbons et que tu regardes ce qui reste dans ta main."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi penser à un panier de huit pommes dont tu retires trois pour les manger. Le nombre qui reste est la réponse de la soustraction. Chaque pomme que tu croques diminue le total, et le compte final te donne le résultat."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "Huit unités avant de retirer trois"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pense à Paul qui a dix bonbons et Léa qui en a six. Pour savoir combien de bonbons Paul a de plus, on cherche l’écart entre les deux quantités. Imagine les deux tas de bonbons côte à côte, tu comptes combien il en manque pour que le petit tas atteigne le grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "C’est le deuxième sens de la soustraction : on ne retire rien, on compare deux nombres pour trouver leur différence. Cette comparaison est très utile quand tu veux savoir qui a gagné le plus de points à un jeu."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paul",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparer les bonbons de Paul et Léa"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie de tous les jours, tu croises les deux situations. Si tu lis « Marie a douze crayons, elle en prête quatre », tu dois retirer. Le mot « prête » ou « donne » signale souvent qu’on enlève quelque chose."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu lis « Tom a quinze billes, Ana en a neuf », tu cherches l’écart. Le mot « a » ou « possède » pour deux personnes signale qu’on compare. Repérer le bon sens t’aide à choisir la bonne méthode."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux sens de la soustraction",
+              "bars": [
+                {
+                  "label": "Retirer",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Écart",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $8$ billes. Tu en donnes $3$. Combien te reste‑t‑il ?",
+              "answer": "$5$",
+              "hint": "Compte les billes qui restent après avoir enlevé $3$.",
+              "explanation": "On retire $3$ de $8$, il reste $5$."
+            },
+            {
+              "question": "Paul a $10$ bonbons, Léa en a $6$. Combien de bonbons Paul a‑t‑il de plus que Léa ?",
+              "answer": "$4$",
+              "hint": "Compare les deux quantités pour trouver l’écart.",
+              "explanation": "L’écart entre $10$ et $6$ est $4$."
+            },
+            {
+              "question": "Dans chaque phrase, dis si on retire ou si on cherche l’écart : a) Jules a $12$ autocollants, il en donne $5$. b) Emma a $9$ livres, Lucas en a $4$.",
+              "answer": "a) Retirer. b) Chercher l’écart.",
+              "hint": "Regarde si une quantité diminue ou si on compare deux quantités.",
+              "explanation": "La première phrase enlève une partie, la seconde compare deux totaux."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une représentation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite numérique est une ligne où chaque nombre a sa place. Pour soustraire, tu te places sur le nombre de départ et tu avances vers la gauche. Tu peux tracer la droite sur ton cahier et y poser des petits points pour chaque nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque pas vers la gauche enlève un. Si tu pars de neuf et que tu fais quatre pas, tu arrives sur cinq. C’est une façon visuelle de voir la soustraction. Essaie avec d’autres nombres, comme douze moins cinq, pour t’habituer au mouvement."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 9,
+                  "label": "Départ"
+                },
+                {
+                  "value": 5,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [],
+              "caption": "Reculer de 4 depuis 9"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres, ou tape diagram, montre deux longueurs côte à côte. La plus longue représente le total, la plus courte la partie connue. Les couleurs différentes aident à voir tout de suite quelle barre est la plus grande."
+            },
+            {
+              "type": "paragraph",
+              "content": "L’espace qui dépasse entre les deux barres est exactement l’écart que tu cherches. En mesurant cet espace, tu trouves le résultat de la soustraction. Si les deux barres ont la même longueur, l’écart est zéro."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie",
+                  "value": 7,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Différence entre 12 et 7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les jetons de base dix regroupent des unités en paquets de dix. Pour soustraire, tu peux casser un paquet si tu n’as pas assez d’unités. Les jetons sont souvent en plastique coloré, ce qui rend le travail amusant."
+            },
+            {
+              "type": "paragraph",
+              "content": "C’est très pratique pour les nombres comme quinze moins six. Tu transforms une dizaine en dix unités, tu retires six, et il te reste neuf unités. Quand tu as fini, tu peux recompter les unités pour vérifier ton résultat."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "Quinze : une dizaine et cinq unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite numérique, pars de $9$ et recule de $4$. Sur quel nombre arrives‑tu ?",
+              "answer": "$5$",
+              "hint": "Compte les sauts vers la gauche.",
+              "explanation": "En reculant de $4$ depuis $9$, on tombe sur $5$."
+            },
+            {
+              "question": "Le diagramme montre deux barres : l’une de $12$, l’autre de $7$. Quelle est la différence ?",
+              "answer": "$5$",
+              "hint": "Regarde la partie qui dépasse.",
+              "explanation": "La barre de $12$ dépasse de $5$ la barre de $7$."
+            },
+            {
+              "question": "Représente $15$ avec des dizaines et des unités, puis retire $6$. Combien d’unités restent ?",
+              "answer": "$9$",
+              "hint": "Échange une dizaine contre dix unités si besoin.",
+              "explanation": "On casse une dizaine pour avoir $15$ unités, on retire $6$, il reste $9$."
+            }
+          ]
+        },
+        {
+          "title": "Relier au calcul.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier au calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as neuf crayons et que tu en donnes quatre, tu peux d’abord les poser sur la table avec des jetons. Chaque crayon que tu donnes disparaît de la pile, ce qui rend la soustraction concrète."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, tu écris la soustraction posée : le neuf au-dessus, le quatre en dessous, et tu lis le résultat cinq. Vérifie en recomptant les jetons qui restent sur la table."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 9,
+              "caption": "Neuf unités"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "9",
+                "4"
+              ],
+              "result": "5",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour treize moins sept, tu as une dizaine et trois unités. Comme sept unités ne peuvent pas être retirées de trois, tu échanges la dizaine contre dix unités. Cet échange s’appelle « prêter une dizaine » et c’est la clé de la retenue."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant treize unités, tu en retires sept et il te reste six. La colonne des dizaines devient vide, ce qui s’écrit zéro. Note le zéro au-dessus de la colonne des dizaines pour ne pas l’oublier."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "Treize : une dizaine et trois unités"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "13",
+                "7"
+              ],
+              "result": "6",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sarah a quatorze pommes dans son panier. Elle en mange cinq et veut savoir combien il en reste. Le verbe « manger » indique qu’on retire une partie du tout."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu représentes le total avec une barre de quatorze, la partie mangée avec une barre de cinq, et la différence est la barre restante de neuf. En coloriant les deux barres différemment, tu vois tout de suite l’écart."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mangées",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Pommes de Sarah"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "14",
+                "5"
+              ],
+              "result": "9",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais distinguer le sens « retirer » du sens « écart ».",
+                "Je sais choisir une représentation adaptée (droite numérique, diagramme en barres, jetons).",
+                "Je sais écrire une soustraction posée simple.",
+                "Je sais écrire une soustraction posée avec retenue.",
+                "Je sais résoudre un problème de soustraction en lien avec le calcul."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la soustraction posée $9 - 4$.",
+              "answer": "$5$",
+              "hint": "Place les chiffres en colonnes.",
+              "explanation": "On écrit $9$ au-dessus de $4$, on retire, il reste $5$."
+            },
+            {
+              "question": "Calcule $13 - 7$ en posant l’opération.",
+              "answer": "$6$",
+              "hint": "Emprunte une dizaine pour avoir assez d’unités.",
+              "explanation": "On transforme la dizaine en $10$ unités, on a $13$ unités, on retire $7$, il reste $6$."
+            },
+            {
+              "question": "Sarah a $14$ pommes. Elle en mange $5$. Écris la soustraction posée et donne le résultat.",
+              "answer": "$14 - 5 = 9$",
+              "hint": "Identifie le tout et la partie retirée.",
+              "explanation": "Le tout est $14$, la partie retirée $5$, la différence est $9$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

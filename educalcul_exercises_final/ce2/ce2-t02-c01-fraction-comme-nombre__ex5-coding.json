@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 152,
+  "_course_code": "ce2-t02-c01-fraction-comme-nombre",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Lire une fraction",
+  "title": "Approfondissement : Lire une fraction - Algorithmes",
+  "blocks": [
+    {
+      "title": "Lecture d'une fraction simple",
+      "content": "Écrire un algorithme (en pseudo-code) qui prend en entrée le numérateur et le dénominateur d'une fraction (par exemple $3$ et $4$) et affiche la lecture de la fraction en toutes lettres (par exemple \"trois quarts\").",
+      "correctAnswer": "Algorithme :\\n1. Lire numérateur, dénominateur.\\n2. Convertir numérateur en lettres (ex: $3$ -> \"trois\").\\n3. Convertir dénominateur en lettres ordinales (ex: $4$ -> \"quarts\").\\n4. Afficher numérateur_en_lettres + \" \" + dénominateur_en_lettres.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit les deux nombres, les convertit en mots selon les règles de lecture des fractions (numérateur en cardinal, dénominateur en ordinal au pluriel si numérateur $> 1$), puis concatène les deux parties.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer le type de fraction",
+      "content": "Écrire un algorithme qui, étant donné un numérateur et un dénominateur, détermine si la fraction est propre (numérateur $<$ dénominateur) ou impropre (numérateur $≥$ dénominateur) et affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Lire numérateur, dénominateur.\\n2. Si numérateur $<$ dénominateur alors afficher \"Fraction propre\".\\n3. Sinon afficher \"Fraction impropre\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare simplement les deux nombres. Si le numérateur est strictement inférieur au dénominateur, la fraction est propre, sinon elle est impropre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion d'une fraction en division",
+      "content": "Écrire un algorithme qui lit une fraction (numérateur et dénominateur) et affiche l'expression de la division correspondante (par exemple pour $3/4$ afficher \"$3 ÷ 4$\").",
+      "correctAnswer": "Algorithme :\\n1. Lire numérateur, dénominateur.\\n2. Afficher numérateur + \" $÷$ \" + dénominateur.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fraction représente une division du numérateur par le dénominateur. L'algorithme se contente d'afficher les deux nombres séparés par le symbole de division.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,507 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.974453+00:00",
+  "id": 482,
+  "code": "3eme-t05-c04",
+  "title": "Triangles semblables",
+  "description": "Cours structuré Educalcul : Triangles semblables.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Triangles semblables",
+    "objectif_global": "Triangles semblables",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Rapports.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que des triangles semblables ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une photo de toi toute petite, et que tu l'agrandis pour en faire un poster. Les traits de ton visage gardent exactement les mêmes proportions : la distance entre tes yeux, la forme de ton nez, tout est multiplié par le même nombre. En géométrie, on appelle cela des figures semblables. Pour les triangles, cela veut dire qu'ils ont la même forme, mais pas nécessairement la même taille. Concrètement, deux triangles sont semblables s'ils ont les trois angles deux à deux égaux, et si leurs côtés correspondants sont proportionnels. C'est comme si l'un était une photocopie agrandie ou réduite de l'autre, sans aucune déformation."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "caption": "Triangle ABC de référence"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A'",
+                "B'",
+                "C'"
+              ],
+              "sideLabels": [
+                "a'",
+                "b'",
+                "c'"
+              ],
+              "caption": "Triangle A'B'C' image de ABC par une homothétie de rapport 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les deux triangles ci-dessus. Le premier a des côtés de longueurs $3\\,cm$, $4\\,cm$ et $5\\,cm$. Le second a des côtés de $6\\,cm$, $8\\,cm$ et $10\\,cm$. Si tu divises chaque côté du grand par le côté correspondant du petit, tu tombes toujours sur $2$. C'est ce qu'on appelle le coefficient de similitude. Mais attention : avoir des côtés proportionnels ne suffit pas s'il n'y a pas égalité des angles. Nous allons voir comment reconnaître cette ressemblance sans mesurer tous les côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois critères de ressemblance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Heureusement, tu n'as pas besoin de vérifier les six égalités (trois angles et trois rapports de côtés) à chaque fois. Les mathématiciens ont démontré qu'il suffit de trois cas précis, que tu vas pouvoir utiliser comme des outils fiables. Le premier critère, le plus utilisé, est le critère AA : si deux angles d'un triangle sont respectivement égaux à deux angles d'un autre triangle, alors les triangles sont semblables. Pourquoi ? Parce que la somme des angles d'un triangle vaut toujours $180^{\\circ}$, le troisième angle est automatiquement égal. C'est un gain de temps énorme !"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\triangle ABC \\sim \\triangle A'B'C' \\iff \\widehat{A} = \\widehat{A'} \\text{ et } \\widehat{B} = \\widehat{B'}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le deuxième critère est le critère SAS (côté-angle-côté) : si deux côtés sont proportionnels et que l'angle compris entre eux est égal, les triangles sont semblables. Imagine que tu as deux baguettes de longueurs différentes mais que tu les ouvres avec le même angle : les triangles formés seront nécessairement semblables. Le troisième critère, SSS (côté-côté-côté), demande que les trois rapports de côtés correspondants soient égaux. C'est le plus long à vérifier, mais parfois c'est le seul qu'on peut utiliser quand on ne connaît pas les angles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les informations données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le schéma : quels angles sont marqués égaux ? Quels côtés ont des longueurs indiquées ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le critère adapté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as deux angles égaux → AA. Si tu as deux côtés proportionnels et l'angle entre eux → SAS. Si tu as les trois côtés → SSS."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la ressemblance en ordonnant les sommets correspondants : $\\triangle ABC \\sim \\triangle DEF$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire précis et la notation"
+            },
+            {
+              "type": "definition",
+              "term": "Triangles semblables",
+              "definition": "Deux triangles sont semblables s'ils ont les mêmes angles (dans le même ordre) et si leurs côtés correspondants sont proportionnels. On note $\\sim$ la relation de similitude.",
+              "example": "$\\triangle ABC \\sim \\triangle DEF$ signifie $\\widehat{A}=\\widehat{D}$, $\\widehat{B}=\\widehat{E}$, $\\widehat{C}=\\widehat{F}$ et $\\frac{AB}{DE}=\\frac{BC}{EF}=\\frac{CA}{FD}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'ordre des lettres dans l'écriture $\\triangle ABC \\sim \\triangle DEF$ n'est pas anodin : il indique quels sommets correspondent. Le premier sommet du premier triangle correspond au premier du second, etc. Si tu écris $\\triangle ABC \\sim \\triangle EFD$, tu changes les correspondances et tu risques de faire des erreurs dans les calculs de rapports. Prends l'habitude de toujours nommer les triangles dans le même ordre : angle par angle, côté par côté."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Quand tu traces deux triangles semblables, utilise la même couleur pour les angles égaux (par exemple un arc rouge pour le premier angle, un double arc bleu pour le second). Cela t'aide à voir les correspondances d'un coup d'œil."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Piège à éviter : ressemblance vs isométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent est de confondre triangles semblables et triangles isométriques (superposables). Deux triangles isométriques sont obligatoirement semblables (avec un coefficient de ressemblance égal à $1$), mais l'inverse est faux. Si on te dit « ces deux triangles ont les mêmes angles », tu ne peux pas conclure qu'ils sont isométriques : ils peuvent avoir des tailles différentes. La ressemblance est une notion plus large, plus souple. Dans la prochaine leçon, nous allons exploiter cette souplesse pour calculer des longueurs inaccessibles grâce aux rapports."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les triangles $ABC$ et $DEF$ ont $\\widehat{A} = 40^{\\circ}$, $\\widehat{B} = 70^{\\circ}$, $\\widehat{D} = 40^{\\circ}$, $\\widehat{E} = 70^{\\circ}$. Sont-ils semblables ? Justifie.",
+              "answer": "Oui, ils sont semblables par le critère AA (deux angles égaux).",
+              "hint": "Calcule le troisième angle de chaque triangle. Que remarques-tu ?",
+              "explanation": "La somme des angles d'un triangle est $180^{\\circ}$. Pour $ABC$, $\\widehat{C} = 180 - 40 - 70 = 70^{\\circ}$. Pour $DEF$, $\\widehat{F} = 180 - 40 - 70 = 70^{\\circ}$. Les trois angles sont deux à deux égaux : $\\widehat{A}=\\widehat{D}$, $\\widehat{B}=\\widehat{E}$, $\\widehat{C}=\\widehat{F}$. Donc $\\triangle ABC \\sim \\triangle DEF$ par AA."
+            },
+            {
+              "question": "Dans le triangle $ABC$, $AB = 6\\,cm$, $AC = 9\\,cm$, $\\widehat{A} = 50^{\\circ}$. Dans $DEF$, $DE = 4\\,cm$, $DF = 6\\,cm$, $\\widehat{D} = 50^{\\circ}$. Les triangles sont-ils semblables ?",
+              "answer": "Oui, par le critère SAS : $\\frac{AB}{DE} = \\frac{6}{4} = 1,5$ et $\\frac{AC}{DF} = \\frac{9}{6} = 1,5$, et l'angle compris $\\widehat{A} = \\widehat{D} = 50^{\\circ}$.",
+              "hint": "Calcule les deux rapports de côtés correspondants et vérifie l'angle entre eux.",
+              "explanation": "Les côtés $AB$ et $AC$ correspondent à $DE$ et $DF$. Les rapports sont égaux ($1,5$) et l'angle inclus est égal. Le critère SAS est satisfait : $\\triangle ABC \\sim \\triangle DEF$."
+            },
+            {
+              "question": "On a $\\triangle GHI \\sim \\triangle JKL$. Les angles sont $\\widehat{G}=30^{\\circ}$, $\\widehat{H}=80^{\\circ}$, $\\widehat{I}=70^{\\circ}$. Quels angles de $JKL$ valent $30^{\\circ}$, $80^{\\circ}$, $70^{\\circ}$ ?",
+              "answer": "$\\widehat{J}=30^{\\circ}$, $\\widehat{K}=80^{\\circ}$, $\\widehat{L}=70^{\\circ}$.",
+              "hint": "L'ordre des lettres dans la similitude donne les correspondances.",
+              "explanation": "Puisque $\\triangle GHI \\sim \\triangle JKL$, le premier sommet $G$ correspond à $J$, $H$ à $K$, $I$ à $L$. Donc $\\widehat{J}=\\widehat{G}=30^{\\circ}$, $\\widehat{K}=\\widehat{H}=80^{\\circ}$, $\\widehat{L}=\\widehat{I}=70^{\\circ}$."
+            },
+            {
+              "question": "Vrai ou faux ? « Deux triangles qui ont les trois angles égaux sont nécessairement isométriques. » Justifie ta réponse.",
+              "answer": "Faux. Ils sont semblables, mais pas forcément isométriques (ils peuvent avoir des tailles différentes).",
+              "hint": "Pense à une photo et son agrandissement : les angles ne changent pas, mais les longueurs oui.",
+              "explanation": "L'isométrie impose l'égalité des longueurs (coefficient $1$). La similitude n'impose que la proportionnalité. Deux triangles équilatéraux de côtés $2\\,cm$ et $5\\,cm$ ont les mêmes angles ($60^{\\circ}$) mais ne sont pas isométriques."
+            }
+          ]
+        },
+        {
+          "title": "Rapports.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le coefficient de similitude : la clé des calculs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître des triangles semblables, tu vas pouvoir faire des calculs concrets. Le coefficient de similitude, qu'on note souvent $k$, est le nombre par lequel on multiplie les longueurs du premier triangle pour obtenir les longueurs du second. Si $k > 1$, le second triangle est plus grand (agrandissement). Si $0 < k < 1$, il est plus petit (réduction). Ce coefficient est constant pour tous les couples de côtés correspondants. C'est une propriété puissante : dès que tu connais $k$ et une longueur d'un triangle, tu trouves immédiatement la longueur correspondante dans l'autre."
+            },
+            {
+              "type": "definition",
+              "term": "Coefficient de similitude (rapport de similitude)",
+              "definition": "Si $\\triangle ABC \\sim \\triangle A'B'C'$, le coefficient de similitude $k$ est le rapport $\\frac{A'B'}{AB} = \\frac{B'C'}{BC} = \\frac{C'A'}{CA}$. C'est le facteur d'agrandissement ou de réduction.",
+              "example": "Si $AB=3$ et $A'B'=7,5$, alors $k = \\frac{7,5}{3} = 2,5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : un architecte a dessiné le plan d'une pièce triangulaire. Sur le plan, les côtés mesurent $4\\,cm$, $5\\,cm$ et $6\\,cm$. La pièce réelle a un côté correspondant de $8\\,m$ pour le côté de $4\\,cm$ sur le plan. Quel est le coefficient de similitude ? Il faut d'abord mettre les unités en cohérence : $8\\,m = 800\\,cm$. Alors $k = \\frac{800}{4} = 200$. La pièce réelle est 200 fois plus grande que le dessin. Les autres côtés réels seront $5 \\times 200 = 1000\\,cm = 10\\,m$ et $6 \\times 200 = 1200\\,cm = 12\\,m$."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "4 cm",
+                "5 cm",
+                "6 cm"
+              ],
+              "caption": "Triangle sur le plan (cm)"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A'",
+                "B'",
+                "C'"
+              ],
+              "sideLabels": [
+                "8 m",
+                "10 m",
+                "12 m"
+              ],
+              "caption": "Triangle réel (m) - coefficient k = 200"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas pour trouver une longueur manquante"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Identifier les triangles semblables et le coefficient $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la similitude dans l'ordre des sommets correspondants. Calcule $k = \\frac{\\text{côté connu du grand}}{\\text{côté correspondant du petit}}$ (ou l'inverse selon ce que tu cherches)."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Appliquer le coefficient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu cherches un côté du grand triangle : multiplie le côté correspondant du petit par $k$. Si tu cherches un côté du petit : divise le côté connu du grand par $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat doit être positif et plausible (par exemple, un côté ne peut pas être plus grand que la somme des deux autres)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble : $\\triangle MNP \\sim \\triangle M'N'P'$ avec $k = 1,8$. On sait que $MN = 5\\,cm$. Quelle est la longueur de $M'N'$ ? Comme $M'N'$ correspond à $MN$ et que le second triangle est plus grand ($k>1$), on multiplie : $M'N' = 5 \\times 1,8 = 9\\,cm$. Simple, non ? Maintenant, si on connaît $M'N' = 9\\,cm$ et qu'on cherche $MN$, on divise : $MN = 9 \\div 1,8 = 5\\,cm$. La division est l'opération inverse de la multiplication, ça marche dans les deux sens."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les rapports de périmètres et d'aires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient de similitude ne sert pas qu'aux côtés. Si tu augmentes toutes les longueurs d'un triangle par $k$, son périmètre est aussi multiplié par $k$. C'est logique : le périmètre est une somme de longueurs, et chaque longueur est multipliée par $k$, donc la somme l'est aussi. En revanche, pour l'aire, c'est différent : l'aire est une surface, elle dépend de deux dimensions (base et hauteur). Si les deux sont multipliées par $k$, l'aire est multipliée par $k \\times k = k^2$. C'est une propriété fondamentale que tu retrouveras en physique (échelle de modèles réduits) et en géométrie dans l'espace."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{\\mathcal{P}_2}{\\mathcal{P}_1} = k \\quad \\text{et} \\quad \\frac{\\mathcal{A}_2}{\\mathcal{A}_1} = k^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux triangles semblables de coefficient $k = 3$. Le petit a un périmètre de $12\\,cm$ et une aire de $6\\,cm^2$. Le grand aura un périmètre de $12 \\times 3 = 36\\,cm$ et une aire de $6 \\times 3^2 = 6 \\times 9 = 54\\,cm^2$. Remarque que l'aire augmente beaucoup plus vite que le périmètre. C'est pour cela qu'un modèle réduit à l'échelle $1/100$ a une surface au sol divisée par $10\\,000$ !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application : les échelles sur les cartes et les plans"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les cartes géographiques et les plans d'architectes utilisent exactement cette idée de similitude. L'échelle $1/25\\,000$ signifie que $1\\,cm$ sur la carte représente $25\\,000\\,cm = 250\\,m$ dans la réalité. Le coefficient de similitude de la carte vers le terrain est $25\\,000$ (agrandissement), et du terrain vers la carte c'est $1/25\\,000$ (réduction). Si tu mesures $3,5\\,cm$ entre deux villages sur une carte au $1/25\\,000$, la distance réelle est $3,5 \\times 250 = 875\\,m$. C'est une application directe des triangles semblables : la carte et le terrain sont des figures semblables (à condition de négliger la courbure de la Terre sur de petites distances). Dans la prochaine leçon, nous verrons comment utiliser ces rapports pour mesurer des hauteurs inaccessibles, comme celle d'un arbre ou d'un bâtiment, sans avoir à grimper dessus."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux triangles semblables ont un coefficient de similitude $k = 0,6$. Le grand triangle a un côté de $15\\,cm$. Quelle est la longueur du côté correspondant dans le petit triangle ?",
+              "answer": "$9\\,cm$",
+              "hint": "Le coefficient est $<1$, donc le second triangle est plus petit. Multiplie ou divise ?",
+              "explanation": "Puisque $k=0,6$ est le rapport $\\frac{\\text{petit}}{\\text{grand}}$, on multiplie la longueur du grand par $k$ : $15 \\times 0,6 = 9\\,cm$. On peut aussi diviser par $1/0,6$, mais la multiplication est plus directe."
+            },
+            {
+              "question": "Dans $\\triangle ABC \\sim \\triangle DEF$, on a $AB = 8\\,cm$, $DE = 12\\,cm$, $BC = 10\\,cm$. Calcule $EF$.",
+              "answer": "$EF = 15\\,cm$",
+              "hint": "Calcule d'abord le coefficient $k = \\frac{DE}{AB}$, puis applique-le à $BC$.",
+              "explanation": "$k = \\frac{12}{8} = 1,5$. Le côté $EF$ correspond à $BC$, donc $EF = BC \\times k = 10 \\times 1,5 = 15\\,cm$."
+            },
+            {
+              "question": "Deux triangles semblables ont un coefficient $k = 4$. Le petit a un périmètre de $18\\,cm$ et une aire de $10\\,cm^2$. Quels sont le périmètre et l'aire du grand ?",
+              "answer": "Périmètre = $72\\,cm$, Aire = $160\\,cm^2$.",
+              "hint": "Périmètre : $\\times k$. Aire : $\\times k^2$.",
+              "explanation": "Périmètre grand = $18 \\times 4 = 72\\,cm$. Aire grande = $10 \\times 4^2 = 10 \\times 16 = 160\\,cm^2$."
+            },
+            {
+              "question": "Sur une carte au $1/50\\,000$, la distance entre deux villes est de $6,2\\,cm$. Quelle est la distance réelle en kilomètres ?",
+              "answer": "$3,1\\,km$",
+              "hint": "$1\\,cm$ sur la carte = $50\\,000\\,cm = 500\\,m$ en réalité.",
+              "explanation": "$6,2 \\times 500 = 3100\\,m = 3,1\\,km$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer l'inaccessible : la méthode de l'ombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as sûrement déjà joué avec ton ombre par une belle journée d'été. Si tu te tiens droit, ton ombre forme un triangle rectangle avec le sol et le rayon de soleil qui passe par ta tête. Eh bien, le même rayon de soleil crée l'ombre d'un arbre, d'un lampadaire ou d'un immeuble. Comme les rayons du soleil sont parallèles (le soleil est très loin), les triangles formés par toi et ton ombre, et par l'arbre et son ombre, sont semblables ! C'est une application directe du critère AA : ils ont tous les deux un angle droit (sol vertical) et l'angle au soleil est le même (rayons parallèles)."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "S",
+                "T",
+                "O"
+              ],
+              "sideLabels": [
+                "",
+                "1,70 m",
+                "1,20 m"
+              ],
+              "rightAngleAt": 1,
+              "caption": "Triangle personne-ombre (S=soleil, T=tête, O=ombre)"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "S",
+                "A",
+                "B"
+              ],
+              "sideLabels": [
+                "",
+                "h",
+                "8 m"
+              ],
+              "rightAngleAt": 1,
+              "caption": "Triangle arbre-ombre (mêmes angles au soleil)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu mesures $1,70\\,m$ et que ton ombre fasse $1,20\\,m$. L'ombre de l'arbre fait $8\\,m$. Quelle est la hauteur $h$ de l'arbre ? Les triangles sont semblables, donc les rapports de côtés correspondants sont égaux : $\\frac{h}{1,70} = \\frac{8}{1,20}$. On en déduit $h = 1,70 \\times \\frac{8}{1,20} \\approx 11,33\\,m$. L'arbre mesure environ $11,3\\,m$. C'est la méthode de Thalès, que nous allons formaliser tout de suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de Thalès : une configuration particulière de triangles semblables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème de Thalès n'est pas une nouvelle théorie, c'est un cas précis de triangles semblables où deux droites sécantes sont coupées par des droites parallèles. Imagine deux droites qui se croisent en un point $O$. Deux parallèles coupent ces droites en $A, B$ sur l'une et $C, D$ sur l'autre. Alors les triangles $OAC$ et $OBD$ sont semblables (critère AA : angle au sommet commun, angles correspondants alternes-internes égaux grâce aux parallèles). Les rapports de longueurs sur une même droite sont égaux : $\\frac{OA}{OB} = \\frac{OC}{OD} = \\frac{AC}{BD}$. C'est exactement la propriété des triangles semblables appliquée à cette figure en « X » ou en « V »."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{OA}{OB} = \\frac{OC}{OD} = \\frac{AC}{BD}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : le théorème de Thalès ne s'applique que si les droites $(AC)$ et $(BD)$ sont parallèles. Si elles ne le sont pas, les triangles ne sont pas semblables et les rapports ne sont pas égaux. Vérifie toujours la condition de parallélisme (donnée par l'énoncé ou prouvée par des angles alternes-internes égaux) avant d'écrire les égalités de rapports. C'est une condition d'application cruciale."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne confonds pas les deux formes de la figure : en « V » (sommet commun) et en « X » (sommet distinct). Dans les deux cas, les rapports s'écrivent de la même façon, mais il faut bien identifier les segments correspondants. Dessine toujours un schéma clair avec les parallèles marquées de traits hachurés."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modèles réduits, maquettes et agrandissements photos"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les architectes, les ingénieurs et les designers utilisent les triangles semblables (et plus généralement les figures semblables) pour passer du plan à la réalité. Une maquette d'avion au $1/50$ est semblable à l'avion réel : toutes ses dimensions linéaires sont divisées par $50$. Si l'envergure de l'avion réel est de $30\\,m$, celle de la maquette sera de $30 \\div 50 = 0,6\\,m = 60\\,cm$. De même, si tu veux agrandir une photo de $10\\,cm \\times 15\\,cm$ pour en faire un poster de largeur $60\\,cm$, le coefficient d'agrandissement est $k = 60/10 = 6$. La hauteur du poster sera $15 \\times 6 = 90\\,cm$. La photo et le poster sont des rectangles semblables (donc des triangles semblables si on les coupe en diagonale)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier exemple amusant : les miroirs. Si tu places un petit miroir au sol à $2\\,m$ d'un arbre, et que tu recules jusqu'à voir le sommet de l'arbre dans le miroir (disons à $1,5\\,m$ du miroir), tes yeux sont à $1,60\\,m$ du sol. Les triangles formés par le rayon lumineux (arbre-miroir-œil) sont semblables (loi de la réflexion : angle d'incidence = angle de réflexion). Tu peux alors calculer la hauteur de l'arbre : $\\frac{h}{1,60} = \\frac{2}{1,5} \\Rightarrow h \\approx 2,13\\,m$. La géométrie est partout autour de toi, il suffit de la repérer !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : ce que tu as acquis"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as traversé les trois piliers des triangles semblables : reconnaître la similitude grâce aux critères AA, SAS, SSS ; maîtriser le coefficient de similitude pour calculer n'importe quelle longueur, périmètre ou aire ; et appliquer tout cela à des situations concrètes comme les ombres, le théorème de Thalès, les échelles de cartes ou les maquettes. Tu as maintenant une boîte à outils complète pour aborder sereinement les exercices du brevet et, plus tard, la trigonométrie en seconde. Rappelle-toi toujours : la similitude, c'est la conservation de la forme malgré le changement de taille. C'est une idée simple mais d'une puissance incroyable."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir deux triangles semblables (angles égaux et côtés proportionnels).",
+                "Je connais les trois critères de similitude (AA, SAS, SSS) et je sais lequel utiliser selon les données.",
+                "Je sais écrire une similitude dans le bon ordre des sommets correspondants.",
+                "Je calcule le coefficient de similitude $k$ et je l'utilise pour trouver une longueur manquante.",
+                "Je connais les rapports de périmètres ($k$) et d'aires ($k^2$) entre triangles semblables.",
+                "J'applique le théorème de Thalès en vérifiant la condition de parallélisme.",
+                "Je résous des problèmes concrets (ombres, échelles, maquettes) en modélisant par des triangles semblables."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un poteau vertical de $2,50\\,m$ projette une ombre de $1,80\\,m$. Au même moment, un arbre projette une ombre de $7,20\\,m$. Quelle est la hauteur de l'arbre ?",
+              "answer": "$10\\,m$",
+              "hint": "Les triangles poteau-ombre et arbre-ombre sont semblables. Écris l'égalité des rapports.",
+              "explanation": "Les rayons du soleil sont parallèles, donc les triangles sont semblables (AA). $\\frac{h}{2,50} = \\frac{7,20}{1,80} = 4$. Donc $h = 2,50 \\times 4 = 10\\,m$."
+            },
+            {
+              "question": "Sur la figure, les droites $(AC)$ et $(BD)$ sont parallèles. $O, A, B$ sont alignés dans cet ordre, $O, C, D$ aussi. $OA = 3\\,cm$, $OB = 7,5\\,cm$, $OC = 4\\,cm$. Calcule $OD$.",
+              "answer": "$OD = 10\\,cm$",
+              "hint": "Utilise le théorème de Thalès : $\\frac{OA}{OB} = \\frac{OC}{OD}$.",
+              "explanation": "$\\frac{3}{7,5} = \\frac{4}{OD} \\Rightarrow OD = 4 \\times \\frac{7,5}{3} = 4 \\times 2,5 = 10\\,cm$."
+            },
+            {
+              "question": "Une maquette de voiture est à l'échelle $1/18$. La vraie voiture mesure $4,50\\,m$ de long. Quelle est la longueur de la maquette en centimètres ?",
+              "answer": "$25\\,cm$",
+              "hint": "Le coefficient de similitude maquette/réel est $1/18$. Convertis les mètres en centimètres.",
+              "explanation": "$4,50\\,m = 450\\,cm$. Longueur maquette = $450 \\times \\frac{1}{18} = 25\\,cm$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

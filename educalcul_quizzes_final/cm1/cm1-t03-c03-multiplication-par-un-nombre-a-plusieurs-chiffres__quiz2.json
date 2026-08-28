@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 228,
+  "_course_code": "cm1-t03-c03-multiplication-par-un-nombre-a-plusieurs-chiffres",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Technique posée",
+  "title": "Quiz : La multiplication posée (CM1)",
+  "questions": [
+    {
+      "text": "Quelle est le résultat de la multiplication posée $23 \\times 4$ ?",
+      "options": [
+        "82",
+        "92",
+        "812",
+        "68"
+      ],
+      "correctAnswer": "92",
+      "explanation": "On calcule $3 \\times 4 = 12$, on écrit $2$ et on retient $1$. Ensuite $2 \\times 4 = 8$, on ajoute la retenue $1$ ce qui fait $9$. Le résultat est $92$. L'option $82$ correspond à l'oubli de la retenue, $812$ à une erreur d'écriture de la retenue, $68$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule $36 \\times 5$ en posé. Quel est le bon résultat ?",
+      "options": [
+        "150",
+        "180",
+        "1530",
+        "183"
+      ],
+      "correctAnswer": "180",
+      "explanation": "$6 \\times 5 = 30$, on écrit $0$ on retient $3$. $3 \\times 5 = 15$, plus la retenue $3$ fait $18$. Résultat $180$. $150$ oublie la retenue, $1530$ écrit la retenue comme un chiffre, $183$ ajoute mal la retenue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la multiplication $214 \\times 3$.",
+      "options": [
+        "632",
+        "642",
+        "6124",
+        "6420"
+      ],
+      "correctAnswer": "642",
+      "explanation": "$4 \\times 3 = 12$ (écrit $2$, retient $1$). $1 \\times 3 = 3$, plus $1 = 4$. $2 \\times 3 = 6$. Résultat $642$. $632$ oublie la retenue sur les dizaines, $6124$ note les retenues à la suite, $6420$ ajoute un zéro parasite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule le produit $24 \\times 12$ en utilisant la technique posée.",
+      "options": [
+        "72",
+        "288",
+        "268",
+        "488"
+      ],
+      "correctAnswer": "288",
+      "explanation": "On multiplie $24$ par $2$ (unités de $12$) : $48$. On multiplie $24$ par $1$ (dizaines de $12$) : $24$, qu'on décale d'un cran (ou on met un $0$ aux unités) : $240$. On additionne : $48 + 240 = 288$. $72$ correspond à l'oubli du décalage ($48+24$), $268$ et $488$ sont des erreurs de calcul ou d'alignement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la multiplication posée ci-contre. Quelle erreur a été commise ?",
+      "options": [
+        "Oubli de la retenue sur les dizaines",
+        "Mauvaise multiplication des unités",
+        "Oubli du décalage",
+        "Erreur d'addition finale"
+      ],
+      "correctAnswer": "Oubli de la retenue sur les dizaines",
+      "explanation": "Le calcul montre $34 \\times 5$. On a bien mis la retenue $2$ au-dessus du $3$ (car $4 \\times 5 = 20$), mais on a écrit $15$ pour les dizaines ($3 \\times 5 = 15$) sans ajouter la retenue $2$. Le bon résultat est $170$. C'est bien un oubli de la retenue sur les dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "\\times",
+        "operands": [
+          "34",
+          "5"
+        ],
+        "result": "150",
+        "carries": [
+          "2"
+        ]
+      }
+    }
+  ]
+}

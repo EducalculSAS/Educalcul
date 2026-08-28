@@ -1,0 +1,267 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.616166+00:00",
+  "id": 45,
+  "code": "cp-t05-c07",
+  "title": "Problèmes à deux étapes très simples",
+  "description": "Cours structuré Educalcul : Problèmes à deux étapes très simples.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes à deux étapes très simples",
+    "objectif_global": "Problèmes à deux étapes très simples",
+    "mini_lecons_imposees": [
+      "Trouver une première information.",
+      "Réutiliser ce résultat.",
+      "Écrire une réponse complète."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Trouver une première information.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la première information"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau cours ! Aujourd'hui, on va apprendre à lire un problème qui cache deux questions. Parfois, l'énoncé ne demande qu'une seule chose à la fin, mais il faut faire un petit calcul avant pour connaître un nombre qu'on ne nous donne pas. C'est comme une chasse au trésor : il faut d'abord trouver la première clé avant d'ouvrir le coffre final."
+            },
+            {
+              "type": "definition",
+              "term": "Problème à deux étapes",
+              "definition": "C'est un problème où il faut faire deux calculs l'un après l'autre pour répondre à la question finale. La première étape donne un nombre qu'on ne connaissait pas au départ.",
+              "example": "Par exemple : « Léa a 12 autocollants. Elle en donne 4 à son frère. Combien lui en reste-t-il ? » C'est la première étape. Ensuite, on pourrait demander : « Elle en achète 3 de plus. Combien en a-t-elle maintenant ? »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une histoire concrète. Tom a $8$ billes dans sa poche. Il en perd $3$ en jouant. Le problème demande : « Combien de billes Tom a-t-il encore ? » C'est la première information à trouver. On ne nous demande pas encore ce qui se passe après, mais on doit déjà savoir faire ce premier calcul pour la suite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Je lis bien l'histoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je repère les nombres donnés : $8$ billes au départ, $3$ billes perdues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Je cherche ce qu'on me demande en premier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La question « Combien lui en reste-t-il ? » porte sur ce qui se passe juste après la perte. C'est ma première étape."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Je choisis l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tom perd des billes, son nombre diminue : c'est une soustraction. Je calcule $8 - 3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "8 billes au départ"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 3,
+              "caption": "3 billes perdues"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de jouer ! Lis bien le petit problème ci-dessous et trouve la première information demandée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as trouvé le premier nombre caché. Dans la prochaine leçon, on verra comment réutiliser ce résultat pour finir le problème."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Mia a $10$ bonbons. Elle en mange $4$. Combien de bonbons lui reste-t-il après en avoir mangé ? (C'est la première étape du problème.)",
+              "answer": "$6$ bonbons",
+              "hint": "Mia avait $10$ bonbons, elle en a mangé $4$. Est-ce qu'elle en a plus ou moins qu'au début ? Quelle opération faire ?",
+              "explanation": "On fait $10 - 4 = 6$. Mia a $6$ bonbons après la première étape. Ce nombre $6$ sera utile pour la suite du problème."
+            }
+          ]
+        },
+        {
+          "title": "Réutiliser ce résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réutiliser ce résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Super, tu sais maintenant trouver la première information ! Mais un problème à deux étapes ne s'arrête pas là. Une fois qu'on a ce premier résultat, il faut le garder bien au chaud dans sa tête (ou sur son ardoise) pour l'utiliser dans le deuxième calcul. C'est comme quand on construit une tour : le premier étage sert de base pour le deuxième."
+            },
+            {
+              "type": "definition",
+              "term": "Résultat intermédiaire",
+              "definition": "C'est le nombre qu'on trouve après la première étape. Il n'est pas la réponse finale, mais il est indispensable pour continuer.",
+              "example": "Dans l'histoire de Tom, le résultat intermédiaire est $5$ billes (après avoir perdu $3$ billes sur $8$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'histoire de Tom. Il lui reste $5$ billes. Maintenant, le problème continue : « Tom trouve $2$ billes par terre. Combien de billes a-t-il au total maintenant ? » Pour répondre, je dois repartir de $5$ (mon résultat intermédiaire) et ajouter $2$. Je ne repars pas de $8$ ! C'est l'erreur la plus fréquente : recommencer depuis le début au lieu de continuer avec le nouveau nombre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Je note le résultat de la première étape",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "J'écris $5$ billes sur mon ardoise. C'est mon point de départ pour la suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Je lis la suite de l'histoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tom trouve $2$ billes. Son nombre de billes augmente : c'est une addition."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Je calcule avec le résultat intermédiaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je fais $5 + 2 = 7$. Tom a maintenant $7$ billes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "5",
+                "2"
+              ],
+              "result": "7",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Le $5$ vient du premier calcul, et on l'utilise tout de suite pour le second. Essaie maintenant sur un autre exemple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Tu sais chaîner les deux calculs. Il ne reste plus qu'à apprendre à écrire la réponse comme un grand."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Paul a $9$ voitures. Il en prête $3$ à son ami. Puis il en achète $2$ nouvelles. Combien de voitures Paul a-t-il à la fin ?",
+              "answer": "$8$ voitures",
+              "hint": "D'abord, calcule combien Paul a après avoir prêté $3$ voitures. Ensuite, ajoute les $2$ voitures achetées à ce nouveau nombre.",
+              "explanation": "Première étape : $9 - 3 = 6$ voitures. Deuxième étape : $6 + 2 = 8$ voitures. Paul a $8$ voitures à la fin."
+            }
+          ]
+        },
+        {
+          "title": "Écrire une réponse complète.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une réponse complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as fait le plus dur : trouver les bonnes opérations et les enchaîner. Mais en mathématiques, on ne répond pas seulement par un chiffre. Une réponse complète, c'est une phrase qui dit exactement ce que le nombre veut dire, avec les mots du problème. Comme ça, n'importe qui peut comprendre ta réponse sans relire l'énoncé."
+            },
+            {
+              "type": "definition",
+              "term": "Réponse complète",
+              "definition": "C'est une phrase qui contient le nombre trouvé, l'unité (ce qu'on compte) et qui répond à la question posée.",
+              "example": "Question : « Combien de billes Tom a-t-il ? » Réponse complète : « Tom a 7 billes. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la différence. Si j'écris juste « $7$ », on ne sait pas si ce sont des billes, des bonbons ou des euros. Si j'écris « Il en a 7 », on ne sait pas qui est « il ». Mais « Tom a 7 billes » est clair, précis et poli. C'est ce que ton maître ou ta maîtresse attend."
+            },
+            {
+              "type": "paragraph",
+              "content": "Petit truc pour ne rien oublier : reprends les mots de la question finale. Si la question est « Combien de voitures Paul a-t-il à la fin ? », ta réponse commence par « Paul a ... voitures à la fin. » Tu n'as plus qu'à mettre le nombre au bon endroit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu viens de terminer ce cours sur les problèmes à deux étapes. Tu sais maintenant repérer la première info, la réutiliser et écrire une belle réponse. Tu es prêt pour des problèmes un peu plus longs !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un problème et trouver la première question cachée.",
+                "Je sais faire le premier calcul et garder le résultat.",
+                "Je sais utiliser ce résultat pour faire le deuxième calcul.",
+                "J'écris ma réponse finale en phrase complète avec l'unité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une réponse complète pour ce problème : « Zoé a 15 crayons. Elle en casse 5. Puis elle en retrouve 3 dans son sac. Combien de crayons Zoé a-t-elle maintenant ? »",
+              "answer": "Zoé a 13 crayons maintenant.",
+              "hint": "Fais les deux calculs : 15 - 5 = 10, puis 10 + 3 = 13. Reprends les mots de la question pour écrire ta phrase.",
+              "explanation": "La réponse complète doit dire qui (Zoé), combien (13), quoi (crayons) et quand (maintenant). La phrase « Zoé a 13 crayons maintenant » est parfaite."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

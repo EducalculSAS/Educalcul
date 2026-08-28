@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "PGCD / simplification selon programme",
+  "title": "PGCD et simplification de fractions",
+  "blocks": [
+    {
+      "title": "PGCD de deux nombres",
+      "content": "Le PGCD de 84 et 126 est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "42"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La décomposition en facteurs premiers donne 84 = 2^2 × 3 × 7 et 126 = 2 × 3^2 × 7. Le PGCD est le produit des facteurs communs avec les plus petits exposants : 2^1 × 3^1 × 7^1 = 42.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une fraction",
+      "content": "Simplifiez la fraction $\\frac{180}{252}$ en utilisant le PGCD. La fraction irréductible obtenue est $\\frac{{{1}}}{{{2}}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "7"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "180 = 2^2 × 3^2 × 5 et 252 = 2^2 × 3^2 × 7. Le PGCD est 2^2 × 3^2 = 36. En divisant numérateur et dénominateur par 36, on obtient 5/7.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD à partir des décompositions",
+      "content": "Soit les nombres $a = 2^3 \\times 3^2 \\times 5$ et $b = 2^2 \\times 3^3 \\times 7$. Le PGCD de $a$ et $b$ s'écrit sous la forme $2^{{{1}}} \\times 3^{{{2}}}$. Complétez les exposants.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour le PGCD, on prend chaque facteur premier commun avec l'exposant minimal. Pour 2 : min(3,2) = 2. Pour 3 : min(2,3) = 2. Les facteurs 5 et 7 ne sont pas communs. Donc PGCD = 2^2 × 3^2.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Comparer représentations",
+  "title": "Quiz : Comparer les représentations d'une fonction",
+  "questions": [
+    {
+      "text": "La fonction $f$ est définie par $f(x)=2x+3$. Quel tableau de valeurs correspond à cette fonction ?",
+      "options": [
+        "x = -1, 0, 1 ; f(x) = 1, 3, 5",
+        "x = -1, 0, 1 ; f(x) = -1, 3, 7",
+        "x = -1, 0, 1 ; f(x) = 5, 3, 1",
+        "x = -1, 0, 1 ; f(x) = 1, 5, 9"
+      ],
+      "correctAnswer": "x = -1, 0, 1 ; f(x) = 1, 3, 5",
+      "explanation": "En remplaçant $x$ par -1, 0 et 1 dans $f(x)=2x+3$, on obtient $f(-1)=1$, $f(0)=3$, $f(1)=5$. Seule la première option donne ces trois couples.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction linéaire $g$. Quelle est l'expression de $g(x)$ ?\\nx = 0, 2, 4 ; g(x) = 5, 9, 13",
+      "options": [
+        "$g(x)=2x+5$",
+        "$g(x)=3x+5$",
+        "$g(x)=2x+3$",
+        "$g(x)=4x+5$"
+      ],
+      "correctAnswer": "$g(x)=2x+5$",
+      "explanation": "L'ordonnée à l'origine est $g(0)=5$. Le coefficient directeur est $(9-5)/(2-0)=2$. Donc $g(x)=2x+5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction affine $h$. Quelle est son expression ?",
+      "options": [
+        "$h(x)=2x-2$",
+        "$h(x)=2x+2$",
+        "$h(x)=-2x-2$",
+        "$h(x)=x-2$"
+      ],
+      "correctAnswer": "$h(x)=2x-2$",
+      "explanation": "La droite passe par $(0,-2)$ (ordonnée à l'origine $-2$) et par $(2,2)$. Le coefficient directeur est $(2-(-2))/(2-0)=2$. L'équation est donc $h(x)=2x-2$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2x-2",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de la fonction affine h"
+      }
+    },
+    {
+      "text": "Parmi les représentations suivantes, laquelle correspond à la fonction $k(x)=-3x+4$ ?",
+      "options": [
+        "Tableau : x = 0, 1, 2 ; k(x) = 4, 1, -2",
+        "Graphique : droite passant par (0,4) et (1,2)",
+        "Formule : $k(x)=3x+4$",
+        "Tableau : x = -1, 0, 1 ; k(x) = 1, 4, 7"
+      ],
+      "correctAnswer": "Tableau : x = 0, 1, 2 ; k(x) = 4, 1, -2",
+      "explanation": "Pour $k(x)=-3x+4$, on a $k(0)=4$, $k(1)=1$, $k(2)=-2$. La première option donne exactement ces valeurs. La deuxième option correspond à une pente $-2$, la troisième a un coefficient directeur positif, la quatrième donne des valeurs inversées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est vraie pour une fonction strictement décroissante sur $\\mathbb{R}$ ?",
+      "options": [
+        "Son tableau de valeurs montre des images qui augmentent quand $x$ augmente.",
+        "Son graphique est une droite qui monte de la gauche vers la droite.",
+        "Sa formule affine a un coefficient directeur négatif.",
+        "Son graphique est une parabole tournée vers le haut."
+      ],
+      "correctAnswer": "Sa formule affine a un coefficient directeur négatif.",
+      "explanation": "Une fonction affine strictement décroissante a un coefficient directeur (pente) strictement négatif. Les trois autres affirmations décrivent une fonction croissante ou une parabole, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

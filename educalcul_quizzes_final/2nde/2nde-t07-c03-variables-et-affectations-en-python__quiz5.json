@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Approfondissement : Lire (input) en Python",
+  "questions": [
+    {
+      "text": "Que renvoie toujours la fonction $input()$ en Python, quelle que soit la saisie de l'utilisateur au clavier ?",
+      "options": [
+        "Un entier (type int)",
+        "Un nombre à virgule (type float)",
+        "Une chaîne de caractères (type str)",
+        "Un booléen (type bool)"
+      ],
+      "correctAnswer": "Une chaîne de caractères (type str)",
+      "explanation": "La fonction $input()$ capture ce que l'utilisateur tape au clavier et le renvoie systématiquement sous forme de chaîne de caractères (type $str$). Même si l'utilisateur tape $42$ ou $3.14$, Python considère cela comme du texte : $'42'$ ou $'3.14'$. Pour obtenir un nombre, il faut obligatoirement convertir le résultat avec $int()$ ou $float()$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n$age = input(\"Quel est votre âge ? \")$\\nL'utilisateur tape $17$ et valide par Entrée.\\nQuelle est la valeur et le type de la variable $age$ ?",
+      "options": [
+        "Valeur : 17, Type : int",
+        "Valeur : '17', Type : str",
+        "Valeur : 17.0, Type : float",
+        "Valeur : True, Type : bool"
+      ],
+      "correctAnswer": "Valeur : '17', Type : str",
+      "explanation": "Comme expliqué précédemment, $input()$ renvoie une chaîne. La variable $age$ contient donc la chaîne de caractères $'17'$ (avec les guillemets implicites), et son type est $str$. L'option \"Valeur : 17, Type : int\" correspond à ce qu'obtiendrait $age = int(input(...))$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction permet de lire un nombre entier saisi au clavier et de l'affecter directement à la variable $n$ en tant qu'entier (type $int$) ?",
+      "options": [
+        "$n = input(int())$",
+        "$n = int(input())$",
+        "$n = input().int()$",
+        "$n = read.int()$"
+      ],
+      "correctAnswer": "$n = int(input())$",
+      "explanation": "Il faut imbriquer les appels : $input()$ lit la chaîne, puis $int(...)$ convertit cette chaîne en entier. L'ordre est donc $int(input())$. La syntaxe $input(int())$ est invalide car $input$ attend un message (chaîne) en argument, pas un entier. La méthode $.int()$ n'existe pas sur les chaînes, et $read.int()$ n'existe pas en Python standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute :\\n$a = input()$\\n$b = input()$\\nL'utilisateur tape $5$ puis $3$.\\nQue affiche $print(a + b)$ ?",
+      "options": [
+        "8",
+        "53",
+        "Erreur TypeError",
+        "5 3"
+      ],
+      "correctAnswer": "53",
+      "explanation": "Les variables $a$ et $b$ sont des chaînes ($'5'$ et $'3'$). L'opérateur $+$ sur des chaînes réalise une concaténation (collage), pas une addition arithmétique. Le résultat affiché est donc la chaîne $'53'$ (sans espace). Pour obtenir $8$, il fallait écrire $print(int(a) + int(b))$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour lire deux nombres entiers saisis sur une même ligne, séparés par un espace (ex: $10$ $20$), quelle instruction correcte permet d'affecter les deux entiers aux variables $x$ et $y$ ?",
+      "options": [
+        "$x, y = input().split()$",
+        "$x, y = map(int, input().split())$",
+        "$x, y = int(input().split())$",
+        "$x, y = input().split(int)$"
+      ],
+      "correctAnswer": "$x, y = map(int, input().split())$",
+      "explanation": "La méthode $.split()$ découpe la chaîne lue en une liste de chaînes (ex: $['10', '20']$). L'affectation multiple $x, y = ...$ récupère ces deux chaînes, mais elles restent de type $str$. La fonction $map(int, ...)$ applique $int$ à chaque élément de la liste, les convertissant en entiers avant l'affectation. Les autres options provoquent des erreurs : $int$ ne s'applique pas à une liste, et $.split(int)$ est une syntaxe invalide.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

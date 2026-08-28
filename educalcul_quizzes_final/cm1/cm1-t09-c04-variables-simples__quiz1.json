@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Stocker une valeur",
+  "title": "Quiz : Stocker une valeur (Variables)",
+  "questions": [
+    {
+      "text": "Dans la pensée informatique, à quoi ressemble une variable pour stocker une valeur ?",
+      "options": [
+        "Une boîte étiquetée qui peut contenir une seule valeur à la fois",
+        "Une feuille de calcul avec plusieurs lignes",
+        "Un calcul mathématique sans résultat",
+        "Une image qui ne change jamais"
+      ],
+      "correctAnswer": "Une boîte étiquetée qui peut contenir une seule valeur à la fois",
+      "explanation": "Une variable est comme une boîte avec une étiquette (son nom). On y met une valeur (un nombre, un texte). Elle ne contient qu'une seule valeur à la fois : si on en met une nouvelle, l'ancienne est remplacée. Ce n'est pas une feuille de calcul, ni un calcul, ni une image fixe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'instruction : $score \\leftarrow 15$. Que se passe-t-il ?",
+      "options": [
+        "Le programme affiche le nombre 15 à l'écran",
+        "La variable \"score\" reçoit la valeur 15 pour la stocker",
+        "Le programme ajoute 15 à la valeur précédente de \"score\"",
+        "La variable \"score\" est effacée"
+      ],
+      "correctAnswer": "La variable \"score\" reçoit la valeur 15 pour la stocker",
+      "explanation": "La flèche $\\leftarrow$ (ou le signe = selon les langages) signifie « affectation ». On range la valeur 15 dans la boîte nommée \"score\". Ce n'est pas un affichage, ni une addition, ni une suppression.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute ces deux instructions l'une après l'autre :\\n$age \\leftarrow 8$\\n$age \\leftarrow 10$\\nQuelle est la valeur finale stockée dans la variable $age$ ?",
+      "options": [
+        "8",
+        "18",
+        "10",
+        "810"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La première instruction met 8 dans la boîte \"age\". La seconde instruction écrase cette valeur en mettant 10 à la place. Une variable ne garde que la dernière valeur affectée. Ce n'est pas une addition (18) ni une concaténation (810).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux variables : $a \\leftarrow 6$ et $b \\leftarrow 4$.\\nOn exécute : $c \\leftarrow a + b$.\\nQuelle valeur est stockée dans $c$ ?",
+      "options": [
+        "64",
+        "10",
+        "2",
+        "6"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Le programme va chercher la valeur de $a$ (qui est 6) et la valeur de $b$ (qui est 4), fait l'addition $6 + 4 = 10$, et stocke le résultat 10 dans la variable $c$. Ce n'est pas l'écriture des chiffres côte à côte (64), ni une soustraction (2), ni la valeur de $a$ seulement (6).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute :\\n$x \\leftarrow 7$\\n$y \\leftarrow x$\\n$x \\leftarrow 9$\\nQuelle est la valeur de $y$ à la fin ?",
+      "options": [
+        "9",
+        "7",
+        "16",
+        "97"
+      ],
+      "correctAnswer": "7",
+      "explanation": "D'abord $x$ vaut 7. Ensuite $y \\leftarrow x$ copie la valeur de $x$ (donc 7) dans $y$. Enfin on change $x$ pour 9, mais $y$ garde sa propre copie (7). Les variables sont indépendantes : modifier $x$ après la copie ne change pas $y$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

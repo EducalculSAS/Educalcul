@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 353,
+  "_course_code": "6eme-t05-c02-perimetres",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Formules",
+  "title": "Quiz Périmètres - Formules (6e)",
+  "questions": [
+    {
+      "text": "Quelle est la formule du périmètre d'un rectangle de longueur $L$ et de largeur $l$ ?",
+      "options": [
+        "$2(L+l)$",
+        "$L+l$",
+        "$2L+l$",
+        "$L \\times l$"
+      ],
+      "correctAnswer": "$2(L+l)$",
+      "explanation": "Le périmètre est la somme des quatre côtés : deux longueurs et deux largeurs, soit $L+L+l+l = 2L+2l = 2(L+l)$. L'option $L+l$ ne compte qu'un seul couple de côtés, $2L+l$ oublie une largeur, et $L \\times l$ correspond à l'aire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la formule du périmètre d'un carré de côté $a$ ?",
+      "options": [
+        "$4a$",
+        "$a^2$",
+        "$2a$",
+        "$a+4$"
+      ],
+      "correctAnswer": "$4a$",
+      "explanation": "Un carré a quatre côtés égaux, donc le périmètre est $a+a+a+a = 4a$. L'option $a^2$ donne l'aire, $2a$ ne compte que deux côtés, et $a+4$ n'a pas de sens géométrique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la formule du périmètre d'un triangle dont les côtés mesurent $a$, $b$ et $c$ ?",
+      "options": [
+        "$a+b+c$",
+        "$2(a+b+c)$",
+        "$a \\times b \\times c$",
+        "$a+b$"
+      ],
+      "correctAnswer": "$a+b+c$",
+      "explanation": "Le périmètre d'un triangle est la somme de ses trois côtés. L'option $2(a+b+c)$ doublerait la somme, $a \\times b \\times c$ est un volume, et $a+b$ oublie le troisième côté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur de $12$ cm et une largeur de $5$ cm. Quel est son périmètre ?",
+      "options": [
+        "$34$ cm",
+        "$24$ cm",
+        "$17$ cm",
+        "$60$ cm"
+      ],
+      "correctAnswer": "$34$ cm",
+      "explanation": "On applique la formule $2(L+l) = 2(12+5) = 2 \\times 17 = 34$ cm. $24$ cm correspond à $2 \\times 12$, $17$ cm à $12+5$ (demi-périmètre), et $60$ cm à $12 \\times 5$ (aire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a un périmètre de $30$ cm et une longueur de $8$ cm. Quelle est sa largeur ?",
+      "options": [
+        "$7$ cm",
+        "$14$ cm",
+        "$15$ cm",
+        "$22$ cm"
+      ],
+      "correctAnswer": "$7$ cm",
+      "explanation": "D'après $P = 2(L+l)$, on a $30 = 2(8+l)$ donc $15 = 8+l$ et $l = 7$ cm. $14$ cm serait la demi-somme $L+l$, $15$ cm le demi-périmètre, et $22$ cm n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

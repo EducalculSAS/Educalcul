@@ -1,0 +1,356 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.613188+00:00",
+  "id": 44,
+  "code": "cp-t05-c06",
+  "title": "Problèmes de comparaison simple",
+  "description": "Cours structuré Educalcul : Problèmes de comparaison simple.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de comparaison simple",
+    "objectif_global": "Problèmes de comparaison simple",
+    "mini_lecons_imposees": [
+      "Comprendre de plus / de moins.",
+      "Comparer deux quantités.",
+      "Chercher l'écart dans de petits cas."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Comprendre de plus / de moins.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine deux paniers de pommes sur la table. Dans le premier, il y a $5$ pommes. Dans le second, il y a $3$ pommes. Regarde bien : le premier panier a plus de pommes que le second. On dit qu'il y a \"de plus\" dans le premier. C'est comme si le premier panier était plus lourd, plus rempli."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5
+              ],
+              "right": [
+                3
+              ],
+              "caption": "5 pommes d'un côté, 3 de l'autre : le plateau de gauche descend"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tournons la situation. Si tu as $2$ bonbons et que ton ami en a $6$, toi tu as moins de bonbons. Ton ami en a plus. Le mot \"moins\" veut dire que ta quantité est plus petite, pas aussi grande. C'est l'inverse de \"plus\"."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                2
+              ],
+              "right": [
+                6
+              ],
+              "caption": "2 bonbons à gauche, 6 à droite : le plateau de droite est plus bas"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux côtés ont exactement la même chose. Si tu as $4$ billes et ton camarade aussi $4$ billes, personne n'a plus. On dit qu'il y a \"autant\" des deux côtés. Les deux plateaux de la balance restent au même niveau, ils sont en équilibre."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                4
+              ],
+              "right": [
+                4
+              ],
+              "caption": "4 billes de chaque côté : la balance ne penche pas"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec des pièces. Pose $1$ euro d'un côté, $2$ euros de l'autre. Le côté avec $2$ euros est plus lourd, il a plus. Si tu mets $3$ euros partout, c'est pareil. Tu vois, \"plus\", \"moins\", \"autant\" : ces mots racontent ce que la balance te montre."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                200
+              ],
+              "target": 300,
+              "caption": "Compare 1 euro et 2 euros, puis 3 euros et 3 euros"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le premier panier il y a $5$ pommes, dans le second $3$. Lequel a plus de pommes ?",
+              "answer": "Le premier panier",
+              "hint": "Regarde quel côté de la balance descend.",
+              "explanation": "Le premier panier a $5$ pommes, le second en a $3$. $5$ est plus grand que $3$, donc le premier a plus."
+            },
+            {
+              "question": "Tu as $2$ bonbons, ton ami en a $6$. Qui a moins de bonbons ?",
+              "answer": "Toi",
+              "hint": "Compare les deux nombres : $2$ et $6$.",
+              "explanation": "$2$ est plus petit que $6$. Tu as donc moins de bonbons que ton ami."
+            },
+            {
+              "question": "Tu as $4$ billes, ton camarade en a $4$. Que peux-tu dire ?",
+              "answer": "Il y a autant de billes des deux côtés",
+              "hint": "Les deux nombres sont identiques.",
+              "explanation": "$4$ et $4$, c'est la même quantité. On dit qu'il y a autant."
+            },
+            {
+              "question": "Compare $1$ euro et $2$ euros. Lequel est plus ?",
+              "answer": "$2$ euros",
+              "hint": "Lequel fait pencher la balance ?",
+              "explanation": "$2$ euros vaut plus que $1$ euro. Le plateau avec $2$ euros descend."
+            }
+          ]
+        },
+        {
+          "title": "Comparer deux quantités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, on compare deux groupes d'objets sans balance. Regarde ce quadrillage : $3$ cases colorées en bleu, $5$ cases en vert. Compte chaque groupe. Le groupe vert a plus de cases que le groupe bleu. Tu le vois tout de suite avec les yeux."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 4,
+              "highlighted": 8,
+              "caption": "3 cases bleues et 5 cases vertes : compare les deux groupes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prends des cubes ou des jetons. Fais une tour de $4$ cubes et une tour de $7$ cubes. Pose-les côte à côte. La tour de $7$ monte plus haut. Elle a plus de cubes. La tour de $4$ est plus basse, elle a moins de cubes. C'est une comparaison facile à voir."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "Tour de 7 cubes à côté d'une tour de 4 cubes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une histoire : Léa a $6$ voitures miniatures. Paul en a $2$. Dessine deux barres : une longue pour Léa, une courte pour Paul. La barre de Léa est plus longue, elle a plus de voitures. La barre de Paul est plus courte, il en a moins. Le dessin t'aide à comparer sans compter longuement."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Voitures de Léa et de Paul",
+              "bars": [
+                {
+                  "label": "Léa",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paul",
+                  "value": 2,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te demande : \"Qui a plus ?\" ou \"Qui a moins ?\". Relis bien la question. Si on demande qui a plus, cherche le plus grand nombre. Si on demande qui a moins, cherche le plus petit. Essaie avec $8$ crayons et $3$ crayons : $8$ est plus grand, $3$ est plus petit."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                8
+              ],
+              "right": [
+                3
+              ],
+              "caption": "8 crayons contre 3 crayons : compare les deux quantités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le quadrillage, il y a $3$ cases bleues et $5$ cases vertes. Quelle couleur a plus de cases ?",
+              "answer": "Vert",
+              "hint": "Compte les cases de chaque couleur.",
+              "explanation": "Il y a $5$ cases vertes et $3$ cases bleues. $5$ est plus grand que $3$, donc le vert a plus."
+            },
+            {
+              "question": "Une tour de $4$ cubes et une tour de $7$ cubes. Laquelle est plus haute ?",
+              "answer": "La tour de $7$ cubes",
+              "hint": "Compare les nombres $4$ et $7$.",
+              "explanation": "$7$ cubes font une tour plus haute que $4$ cubes. $7$ est plus grand que $4$."
+            },
+            {
+              "question": "Léa a $6$ voitures, Paul en a $2$. Qui a moins de voitures ?",
+              "answer": "Paul",
+              "hint": "Regarde quelle barre est la plus courte.",
+              "explanation": "Paul a $2$ voitures, Léa en a $6$. $2$ est plus petit que $6$, donc Paul a moins."
+            },
+            {
+              "question": "Compare $8$ crayons et $3$ crayons. Quel nombre est le plus petit ?",
+              "answer": "$3$",
+              "hint": "Lequel fait pencher la balance du côté le plus léger ?",
+              "explanation": "$3$ est plus petit que $8$. La quantité de $3$ crayons est plus petite."
+            }
+          ]
+        },
+        {
+          "title": "Chercher l'écart dans de petits cas.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on veut savoir \"combien de plus\" ou \"combien de moins\". C'est l'écart entre les deux quantités. Prenons $5$ et $3$. Sur une droite numérotée, pose ton doigt sur $3$. Compte les sauts pour aller à $5$ : un saut vers $4$, un saut vers $5$. Tu as fait $2$ sauts. L'écart est de $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "De 3 à 5, il y a 2 sauts",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre façon : aligne des jetons. Pose $6$ jetons en haut, $4$ jetons en dessous, bien en face l'un de l'autre. Chaque jeton du haut touche un jeton du bas. Il reste $2$ jetons du haut sans partenaire. Ces $2$ jetons, c'est l'écart. Il y a $2$ jetons de plus en haut."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 6,
+              "highlighted": 10,
+              "caption": "6 jetons au-dessus, 4 en-dessous : 2 jetons sans partenaire"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie une soustraction posée toute simple. Tu as $7$ autocollants, tu donnes $4$ autocollants à ton frère. Combien t'en reste-t-il ? Écris $7$ au-dessus, $4$ en dessous, tire un trait. $7$ moins $4$ fait $3$. L'écart entre $7$ et $4$, c'est $3$. Tu as $3$ autocollants de plus que ton frère maintenant."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "7",
+                "4"
+              ],
+              "result": "3",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier petit défi : dans une boîte, il y a $9$ billes rouges et $5$ billes bleues. Combien y a-t-il de billes rouges de plus que de billes bleues ? Tu peux compter sur les doigts, dessiner des traits, ou faire $9$ moins $5$. L'écart est de $4$. Bravo, tu sais trouver la différence !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 4,
+              "denominator": 9,
+              "shape": "bar",
+              "caption": "Sur 9 billes, 4 rouges de plus que les bleues"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire qui a plus ou qui a moins entre deux groupes.",
+                "Je sais comparer deux quantités avec des objets ou un dessin.",
+                "Je sais trouver l'écart entre deux petits nombres.",
+                "J'utilise les mots plus, moins, autant pour comparer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite, va de $3$ à $5$. Combien de sauts as-tu faits ?",
+              "answer": "$2$ sauts",
+              "hint": "Compte les cases entre $3$ et $5$.",
+              "explanation": "De $3$ à $4$ (1 saut), de $4$ à $5$ (2e saut). L'écart entre $3$ et $5$ est de $2$."
+            },
+            {
+              "question": "Aligne $6$ jetons au-dessus de $4$ jetons. Combien de jetons du haut n'ont pas de partenaire ?",
+              "answer": "$2$ jetons",
+              "hint": "Associe chaque jeton du bas à un jeton du haut.",
+              "explanation": "4 paires se forment. Il reste $6 - 4 = 2$ jetons seuls en haut. L'écart est de $2$."
+            },
+            {
+              "question": "Tu as $7$ autocollants, tu en donnes $4$. Combien t'en reste-t-il ?",
+              "answer": "$3$ autocollants",
+              "hint": "Fais la soustraction $7 - 4$.",
+              "explanation": "$7$ moins $4$ égal $3$. L'écart entre $7$ et $4$ est de $3$."
+            },
+            {
+              "question": "Il y a $9$ billes rouges et $5$ billes bleues. Combien de billes rouges de plus ?",
+              "answer": "$4$ billes",
+              "hint": "Calcule $9 - 5$ ou compte sur tes doigts.",
+              "explanation": "$9$ moins $5$ fait $4$. Il y a $4$ billes rouges de plus que de billes bleues."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

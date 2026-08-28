@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 126,
+  "_course_code": "ce1-t07-c01-decrire-cube-et-pave",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Décrire cube et pavé",
+  "title": "Quiz : Décrire le cube et le pavé droit",
+  "questions": [
+    {
+      "text": "Combien de faces a un cube ?",
+      "options": [
+        "$6$ faces",
+        "$8$ faces",
+        "$12$ faces",
+        "$4$ faces"
+      ],
+      "correctAnswer": "$6$ faces",
+      "explanation": "Un cube est un solide qui possède exactement $6$ faces, toutes de forme carrée. Il a aussi $8$ sommets et $12$ arêtes. Les distracteurs correspondent au nombre de sommets ($8$), au nombre d'arêtes ($12$) ou au nombre de faces d'une pyramide à base carrée ($4$ faces latérales + base).",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Combien de sommets a un pavé droit ?",
+      "options": [
+        "$6$ sommets",
+        "$8$ sommets",
+        "$12$ sommets",
+        "$10$ sommets"
+      ],
+      "correctAnswer": "$8$ sommets",
+      "explanation": "Le pavé droit, comme le cube, possède $8$ sommets (les coins du solide). Il a $6$ faces et $12$ arêtes. L'erreur '$6$' confond avec le nombre de faces, '$12$' avec le nombre d'arêtes.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 3,
+        "depth": 2,
+        "caption": "Patron d'un pavé droit"
+      }
+    },
+    {
+      "text": "Quelle est la forme de l'ensemble des faces d'un cube ?",
+      "options": [
+        "Toutes les faces sont des carrés",
+        "Toutes les faces sont des rectangles",
+        "Quatre faces sont des carrés et deux sont des rectangles",
+        "Les faces sont des triangles"
+      ],
+      "correctAnswer": "Toutes les faces sont des carrés",
+      "explanation": "Par définition, un cube a $6$ faces identiques qui sont toutes des carrés. C'est ce qui le distingue du pavé droit dont les faces sont des rectangles (parfois carrés pour deux faces opposées).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de carrés sont nécessaires pour former un patron de cube ?",
+      "options": [
+        "$5$ carrés",
+        "$6$ carrés",
+        "$7$ carrés",
+        "$8$ carrés"
+      ],
+      "correctAnswer": "$6$ carrés",
+      "explanation": "Un patron est une figure plane qui se replie pour former le solide. Comme le cube a $6$ faces, son patron est composé de $6$ carrés attachés les uns aux autres. Il existe $11$ patrons différents pour le cube, tous formés de $6$ carrés.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Exemple de patron de cube"
+      }
+    },
+    {
+      "text": "Lequel de ces objets du quotidien a la forme d'un pavé droit ?",
+      "options": [
+        "Un dé",
+        "Une boîte de chaussures",
+        "Une balle de tennis",
+        "Un cône de signalisation"
+      ],
+      "correctAnswer": "Une boîte de chaussures",
+      "explanation": "Un dé a la forme d'un cube (faces carrées). Une balle de tennis est une sphère. Un cône de signalisation est un cône. Une boîte de chaussures a six faces rectangulaires : c'est un pavé droit.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

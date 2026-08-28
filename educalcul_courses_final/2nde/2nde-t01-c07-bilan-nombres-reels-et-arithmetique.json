@@ -1,0 +1,183 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.030326+00:00",
+  "id": 502,
+  "code": "2nde-t01-c07",
+  "title": "Bilan - Nombres réels et arithmétique",
+  "description": "Cours structuré Educalcul : Bilan - Nombres réels et arithmétique.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Bilan - Nombres réels et arithmétique",
+    "objectif_global": "Bilan - Nombres réels et arithmétique",
+    "mini_lecons_imposees": [
+      "Ensembles, intervalles, arithmétique.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Ensembles, intervalles, arithmétique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ranges tes affaires dans des boîtes. Tu as une petite boîte pour tes stylos, que tu places dans une boîte moyenne pour tes fournitures, elle-même rangée dans un grand carton pour ton bureau. En mathématiques, les nombres fonctionnent exactement de la même manière. On ne se contente pas de dire qu'un nombre est un nombre, on cherche à savoir dans quelle boîte précise il appartient. Pourquoi est-ce utile ? Parce que selon la boîte où se trouve un nombre, on peut utiliser des outils différents. Par exemple, si on sait qu'un résultat doit être un entier naturel $\\mathbb{N}$, on sait qu'on ne trouvera jamais de nombre négatif ou de virgule. C'est comme créer une carte d'identité pour chaque valeur numérique. Que ce soit pour calculer la trajectoire d'une fusée, gérer un budget ou programmer un jeu vidéo, savoir si on manipule un nombre entier, une fraction ou un nombre réel comme $\\pi$ change radicalement la manière dont l'ordinateur ou le mathématicien traite l'information. C'est ce voyage à travers les différentes familles de nombres que nous allons explorer ici, en partant du plus simple, les nombres que l'on utilise pour compter, jusqu'aux nombres les plus complexes qui remplissent toute la droite numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le monde des nombres est organisé en ensembles imbriqués. Tout commence avec $\\mathbb{N}$, l'ensemble des entiers naturels : $0, 1, 2, 3...$ Ce sont les nombres positifs sans virgule. Si on ajoute les nombres négatifs, on obtient $\\mathbb{Z}$, les entiers relatifs. Tout nombre de $\\mathbb{N}$ est donc aussi dans $\\mathbb{Z}$. Ensuite, on rencontre $\\mathbb{D}$, les nombres décimaux. Un nombre est décimal s'il peut s'écrire sous la forme $\\frac{a}{10^n}$ avec $a$ un entier et $n$ un naturel. Concrètement, ce sont les nombres dont l'écriture décimale s'arrête (elle est finie). Mais certaines divisions ne s'arrêtent jamais, comme $1$ divisé par $3$. Ces nombres appartiennent à $\\mathbb{Q}$, les rationnels. Un rationnel est tout nombre qui peut s'écrire comme le quotient de deux entiers $\\frac{p}{q}$ avec $q$ non nul. Enfin, il existe des nombres qu'on ne peut absolument pas écrire sous forme de fraction, comme $\\pi$ ou $\\sqrt{2}$. On les appelle les irrationnels. L'ensemble de tous ces nombres, sans exception, forme $\\mathbb{R}$, l'ensemble des nombres réels. On a donc la chaîne d'inclusion suivante : $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{D} \\subset \\mathbb{Q} \\subset \\mathbb{R}$. Chaque ensemble est une extension du précédent pour répondre à un nouveau besoin mathématique."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Hiérarchie des ensembles de nombres",
+              "sets": [
+                {
+                  "label": "\\mathbb{N}",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "\\mathbb{Z}",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "\\mathbb{D}",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "\\mathbb{Q}",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "\\mathbb{R}",
+                  "value": 5,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer l'ensemble le plus petit (le plus précis) auquel appartient un nombre, je te suggère d'appliquer ce filtre successif. Première étape : regarde si le nombre est positif et n'a pas de partie décimale. Si c'est le cas, c'est un entier naturel $\\mathbb{N}$. Deuxième étape : si le nombre a une partie décimale nulle mais qu'il est négatif, c'est un entier relatif $\\mathbb{Z}$. Troisième étape : si le nombre a une virgule, regarde si les chiffres après la virgule s'arrêtent. Si c'est le cas, c'est un nombre décimal $\\mathbb{D}$. Par exemple, $0.75$ s'arrête, c'est un décimal. Quatrième étape : si la virgule ne s'arrête jamais mais qu'elle finit par se répéter de façon régulière (une période), c'est un nombre rationnel $\\mathbb{Q}$. Par exemple, $0.333...$ vient de $1/3$, c'est un rationnel. Cinquième étape : si le nombre ne peut pas s'écrire sous forme de fraction et que sa suite de chiffres est infinie et irrégulière, alors c'est un nombre irrationnel, et son seul ensemble global est $\\mathbb{R}$. Cette méthode permet d'éviter les erreurs en testant les conditions de la plus restrictive à la plus large."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre $-5$. Appliquons notre méthode. Est-il dans $\\mathbb{N}$ ? Non, car il est négatif. Est-il dans $\\mathbb{Z}$ ? Oui, c'est un nombre entier sans virgule, même s'il est négatif. On pourrait dire qu'il est aussi dans $\\mathbb{R}$, mais l'ensemble le plus petit est $\\mathbb{Z}$. Maintenant, regardons $2.25$. Est-il dans $\\mathbb{N}$ ou $\\mathbb{Z}$ ? Non, il y a une virgule. Est-il dans $\\mathbb{D}$ ? Oui, car l'écriture s'arrête après deux chiffres. On peut d'ailleurs l'écrire $\\frac{225}{100}$. Enfin, analysons $1/3$. C'est une fraction d'entiers, donc c'est a priori un rationnel $\\mathbb{Q}$. Si on calcule sa valeur, on obtient $0.333...$ La suite de $3$ est infinie, donc ce n'est pas un décimal $\\mathbb{D}$. L'ensemble le plus précis pour $1/3$ est donc $\\mathbb{Q}$. On voit bien ici que chaque nombre a sa place spécifique selon sa nature profonde, et non selon la façon dont on l'écrit au premier abord."
+            },
+            {
+              "type": "paragraph",
+              "content": "Examinons des cas un peu plus subtils pour bien maîtriser la notion. Prenons $\\sqrt{16}$. À première vue, le symbole racine carrée peut faire peur et nous pousser vers $\\mathbb{R}$. Mais attention, $\\sqrt{16}$ est égal à $4$. Et $4$ est un entier naturel $\\mathbb{N}$. Il faut donc toujours simplifier l'expression avant de classer le nombre. Ensuite, considérons $\\sqrt{2}$. Si tu tapes cela sur ta calculatrice, tu verras $1.41421356...$ Les chiffres ne s'arrêtent jamais et ne se répètent pas périodiquement. On ne peut pas écrire $\\sqrt{2}$ sous la forme d'une fraction de deux entiers. C'est donc un nombre irrationnel. Son ensemble le plus restrictif est $\\mathbb{R}$. Un dernier exemple : $-1.5$. C'est un nombre avec virgule, l'écriture s'arrête. C'est donc un nombre décimal $\\mathbb{D}$. Note bien qu'il appartient aussi à $\\mathbb{Q}$ et $\\mathbb{R}$, mais $\\mathbb{D}$ est la réponse la plus précise. On remarque que la simplification est la clé pour ne pas se tromper de boîte."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est de croire que tout nombre avec une virgule est un nombre décimal $\\mathbb{D}$. C'est faux. Le nombre $0.333...$ a une virgule, mais comme elle ne s'arrête jamais, il n'est pas décimal, il est seulement rationnel $\\mathbb{Q}$. Rappelle-toi : décimal signifie que le nombre de chiffres après la virgule est fini. Un autre piège classique est d'oublier que les ensembles sont imbriqués. Si on te demande si $5$ est un nombre réel $\\mathbb{R}$, la réponse est oui ! Tout nombre entier est aussi un rationnel, un décimal et un réel. Cependant, dans les exercices, on te demande souvent l'ensemble le plus petit. Dire que $5$ est un réel est vrai, mais dire qu'il est un entier naturel $\\mathbb{N}$ est beaucoup plus précis. Enfin, méfie-toi des écritures fractionnaires. $\\frac{10}{2}$ ressemble à un rationnel $\\mathbb{Q}$ car c'est une fraction, mais $\\frac{10}{2} = 5$, donc c'est en réalité un entier naturel $\\mathbb{N}$. Ne juge jamais un nombre sur son apparence, mais sur sa valeur simplifiée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les nombres suivants, lequel n'est PAS un nombre décimal $\\mathbb{D}$ : $0.5$ ; $-3$ ; $1/3$ ; $4.12$ ?",
+              "answer": "1/3",
+              "hint": "Vérifie si la division s'arrête ou si elle est infinie.",
+              "explanation": "$0.5$ s'arrête, $-3$ est un entier (donc décimal), $4.12$ s'arrête. En revanche, $1/3$ donne $0.333...$ qui est une suite infinie de chiffres, ce n'est donc pas un décimal."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois définir une zone de livraison pour un colis. Le livreur te dit qu'il peut livrer partout entre le kilomètre $2$ et le kilomètre $10$ de ta route. Mais il y a un détail : peut-il livrer exactement au point $2$ ? Et exactement au point $10$ ? Si on lui dit que le point $2$ est inclus, mais que le point $10$ est exclu, on a besoin d'une manière mathématique très précise de l'écrire pour éviter toute dispute. C'est là qu'interviennent les intervalles. Un intervalle, c'est simplement un morceau de la droite numérique. Au lieu d'écrire une liste infinie de nombres (car entre $2$ et $3$, il y a une infinité de nombres comme $2.1, 2.01, 2.001...$), on utilise des crochets. Ces crochets sont comme des portes : soit elles sont fermées et on peut entrer dans le nombre, soit elles sont ouvertes et on s'en approche sans jamais le toucher. C'est un outil indispensable en seconde pour résoudre des inéquations ou définir le domaine de définition d'une fonction. C'est une manière élégante et rapide de décrire une infinité de valeurs en seulement quelques symboles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un intervalle est l'ensemble des nombres réels compris entre deux bornes $a$ et $b$. On utilise des crochets pour indiquer si les bornes font partie de l'ensemble. Si le crochet est tourné vers le nombre, on dit qu'il est fermé : $[a, b]$. Cela signifie que $a$ et $b$ sont inclus. Si le crochet est tourné vers l'extérieur, on dit qu'il est ouvert : $]a, b[$. Cela signifie que on prend tous les nombres entre $a$ et $b$, mais pas $a$ ni $b$ eux-mêmes. Il existe aussi des intervalles semi-ouverts, comme $[a, b[$, où $a$ est inclus mais pas $b$. Parfois, l'intervalle ne s'arrête pas. Si on veut tous les nombres plus grands que $2$, on écrit $[2, {\\infty}[$. Le symbole $\\infty$ représente l'infini. Une règle d'or absolue : le crochet est TOUJOURS ouvert du côté de $\\infty$ ou $-\\infty$, car l'infini n'est pas un nombre que l'on peut atteindre ou inclure. On écrit donc toujours $]-\\infty, a]$ ou $]b, {\\infty}[$. La notation d'intervalle est l'équivalent visuel des inégalités : $[a, b]$ correspond à $a \\le x \\le b$, tandis que $]a, b[$ correspond à $a < x < b$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'intervalle [-1, 3[ ",
+              "min": -2,
+              "max": 4,
+              "points": [
+                {
+                  "value": -1,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour traduire une condition mathématique en intervalle, suis ces trois étapes simples. Étape $1$ : identifie les bornes. Regarde quel est le plus petit nombre et le plus grand nombre mentionnés dans l'inégalité. Par exemple, pour $x \\ge -3$ et $x < 4$, les bornes sont $-3$ et $4$. Étape $2$ : détermine le sens des crochets. Regarde le symbole d'inégalité. S'il y a un trait dessous ($\\le$ ou $\\ge$), le nombre est inclus, donc le crochet est fermé vers le nombre. S'il n'y a pas de trait ($<$ ou $>$), le nombre est exclu, donc le crochet est ouvert. Dans notre exemple, pour $-3$ on a $\\ge$ (fermé $\\rightarrow$ $[$), et pour $4$ on a $<$ (ouvert $\\rightarrow$ $[$). Étape $3$ : assemble le tout. On écrit donc $[-3, 4[$. Si l'inégalité ne donne qu'une seule borne, comme $x > 5$, la deuxième borne est forcément l'infini. On écrit alors $]5, {\\infty}[$. Pense bien à vérifier l'infini : il doit toujours avoir un crochet ouvert. C'est un réflexe qui t'évitera des points perdus bêtement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'ensemble des nombres $x$ tels que $x$ soit compris entre $-2$ et $5$, inclusivement. Le mot inclusivement nous indique que les bornes font partie de l'ensemble. On a donc l'inégalité $-2 \\le x \\le 5$. Pour traduire cela en intervalle, on place la borne inférieure à gauche et la borne supérieure à droite. Puisque $-2$ est inclus, on ouvre le crochet vers lui : $[-2$. Puisque $5$ est inclus, on ferme le crochet vers lui : $5]$. On obtient l'intervalle $[-2, 5]$. Si on veut représenter cela sur une droite graduée, on colorie tout le segment entre $-2$ et $5$ et on marque les extrémités par des points pleins pour montrer qu'elles appartiennent bien à notre zone. C'est l'exemple le plus simple de l'intervalle fermé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas plus complexe : on veut tous les nombres $x$ strictement supérieurs à $-1$ mais inférieurs ou égaux à $3$. Ici, nous avons deux conditions différentes. La condition strictement supérieur à $-1$ s'écrit $x > -1$. Le crochet sera donc ouvert : $]-1$. La condition inférieur ou égal à $3$ s'écrit $x \\le 3$. Le crochet sera donc fermé : $3]$. L'intervalle final est $]-1, 3]$. Maintenant, imaginons que nous voulions tous les nombres strictement inférieurs à $0$. Cela signifie que $x < 0$. Ici, il n'y a pas de borne inférieure, donc on part de $-\\infty$. Le crochet est toujours ouvert pour l'infini : $]-\\infty$. La borne supérieure est $0$, et comme c'est strictement inférieur, le crochet est ouvert : $0[$. On obtient donc l'intervalle $]-\\infty, 0[$. On voit bien que la logique reste la même, peu importe si on utilise des nombres positifs, négatifs ou l'infini."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus redoutable est le crochet de l'infini. Beaucoup d'élèves écrivent $[-\\infty, a]$ par habitude de fermer les crochets. C'est une erreur grave en mathématiques car l'infini n'est pas un nombre réel, c'est un concept de direction. On ne peut jamais l'attraper, donc on ne peut jamais fermer le crochet. Souviens-toi : $\\infty$ est toujours ouvert. Un autre piège est l'inversion des bornes. On écrit toujours l'intervalle du plus petit au plus grand nombre. Écrire $[5, 2]$ n'a aucun sens mathématique et sera compté comme faux. On écrit toujours $[2, 5]$. Enfin, attention à la confusion entre strictement supérieur ($>$) et supérieur ou égal ($\\ge$). Un seul trait signifie crochet ouvert, deux traits (le signe égal dessous) signifie crochet fermé. Prends une seconde pour bien regarder le symbole avant de dessiner ton crochet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Traduis l'inégalité $-4 < x \\le 7$ sous forme d'intervalle.",
+              "answer": "]-4, 7]",
+              "hint": "Regarde bien si le crochet doit être ouvert ou fermé pour chaque borne.",
+              "explanation": "Le symbole $<$ pour $-4$ indique que la borne est exclue (crochet ouvert), et le symbole $\\le$ pour $7$ indique que la borne est incluse (crochet fermé). On obtient donc $]-4, 7]$."
+            },
+            {
+              "question": "L'intervalle $[2, {\\infty}[$ correspond-il à $x > 2$ ou $x \\ge 2$ ?",
+              "answer": "x \\ge 2",
+              "hint": "Le crochet fermé signifie que le nombre fait partie de l'ensemble.",
+              "explanation": "Le crochet est fermé en $2$, ce qui signifie que $2$ est inclus. L'inégalité correcte est donc $x \\ge 2$ (supérieur ou égal)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

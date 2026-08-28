@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Graphique",
+  "title": "Quiz : Graphiques des fonctions affines",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé, on trace la droite d'équation $y = 2x - 3$. Par quel point cette droite passe-t-elle obligatoirement ?",
+      "options": [
+        "A(0 ; -3)",
+        "A(0 ; 3)",
+        "A(-3 ; 0)",
+        "A(3 ; 0)"
+      ],
+      "correctAnswer": "A(0 ; -3)",
+      "explanation": "L'équation réduite d'une droite est $y = ax + b$. Le coefficient $b$ est l'ordonnée à l'origine, c'est-à-dire l'ordonnée du point d'intersection avec l'axe des ordonnées (abscisse 0). Ici $b = -3$, donc la droite passe par le point de coordonnées $(0 ; -3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite $(d)$ passe par les points $A(1 ; 2)$ et $B(3 ; 6)$. Quel est le coefficient directeur de $(d)$ ?",
+      "options": [
+        "2",
+        "0,5",
+        "-2",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Le coefficient directeur $a$ se calcule par la formule $a = \\frac{y_B - y_A}{x_B - x_A}$. On a $a = \\frac{6 - 2}{3 - 1} = \\frac{4}{2} = 2$. L'option 0,5 correspond à l'inverse (erreur d'inversion), -2 à un signe oublié, et 4 à la différence des ordonnées seule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction affine $f(x) = -0,5x + 4$. Laquelle des affirmations suivantes est vraie concernant la représentation graphique de $f$ ?",
+      "options": [
+        "La droite coupe l'axe des ordonnées au point de coordonnées (0 ; 4).",
+        "La droite coupe l'axe des abscisses au point de coordonnées (0 ; 4).",
+        "La droite est croissante.",
+        "La droite passe par l'origine du repère."
+      ],
+      "correctAnswer": "La droite coupe l'axe des ordonnées au point de coordonnées (0 ; 4).",
+      "explanation": "L'ordonnée à l'origine est $b = 4$, donc la droite coupe l'axe des ordonnées (où $x=0$) au point $(0 ; 4)$. Le coefficient directeur $a = -0,5$ est négatif, donc la fonction est décroissante (pas croissante). Elle ne passe pas par l'origine car $b \\neq 0$. L'axe des abscisses correspond à $y=0$, ce qui donne $x=8$, pas $(0;4)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux droites $(d_1)$ et $(d_2)$ ont pour équations respectives $y = 3x - 1$ et $y = -2x + 5$. Quelles sont les coordonnées de leur point d'intersection ?",
+      "options": [
+        "(1,2 ; 2,6)",
+        "(1 ; 2)",
+        "(2 ; 5)",
+        "(0,8 ; 1,4)"
+      ],
+      "correctAnswer": "(1,2 ; 2,6)",
+      "explanation": "On résout le système : $3x - 1 = -2x + 5 \\iff 5x = 6 \\iff x = 1,2$. On calcule $y = 3 \\times 1,2 - 1 = 3,6 - 1 = 2,6$. Le point d'intersection est donc $(1,2 ; 2,6)$. L'option $(1;2)$ correspond à une erreur de calcul ($3x-1=2$ pour $x=1$ mais $-2x+5=3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction affine $g$. On lit sur le graphique que la droite passe par les points de coordonnées $(0 ; -2)$ et $(2 ; 1)$. Quelle est l'expression de $g(x)$ ?",
+      "options": [
+        "$g(x) = 1,5x - 2$",
+        "$g(x) = -1,5x - 2$",
+        "$g(x) = 0,6x - 2$",
+        "$g(x) = 1,5x + 2$"
+      ],
+      "correctAnswer": "$g(x) = 1,5x - 2$",
+      "explanation": "L'ordonnée à l'origine est lue directement : $b = -2$. Le coefficient directeur est $a = \\frac{1 - (-2)}{2 - 0} = \\frac{3}{2} = 1,5$. L'expression est donc $g(x) = 1,5x - 2$. L'option $0,6x$ inverse le numérateur et le dénominateur. L'option $-1,5x$ oublie que la droite monte. L'option $+2$ confond l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "1.5*x - 2",
+        "xmin": -1,
+        "xmax": 3,
+        "caption": "Graphique d'une droite passant par (0;-2) et (2;1)"
+      }
+    }
+  ]
+}

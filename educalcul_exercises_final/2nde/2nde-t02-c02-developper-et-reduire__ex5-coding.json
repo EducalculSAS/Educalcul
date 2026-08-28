@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Distributivité",
+  "title": "Approfondissement : Distributivité - Algorithmes",
+  "blocks": [
+    {
+      "title": "Produit de deux binômes",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui développe le produit $(a+b)(c+d)$ en appliquant la distributivité. L'algorithme doit afficher chaque terme intermédiaire et le résultat final sous la forme $ac+ad+bc+bd$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs de a, b, c, d.\\n2. Calculer t1 = a * c.\\n3. Calculer t2 = a * d.\\n4. Calculer t3 = b * c.\\n5. Calculer t4 = b * d.\\n6. Afficher t1, t2, t3, t4.\\n7. Résultat = t1 + t2 + t3 + t4.\\n8. Afficher le polynôme développé : $ac + ad + bc + bd$.",
+      "explanation": "On applique la distributivité : chaque terme du premier binôme multiplie chaque terme du second. Les quatre produits partiels sont $ac$, $ad$, $bc$, $bd$. Leur somme donne le développement $ac+ad+bc+bd$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Développement d'un trinôme par un binôme",
+      "content": "Écrire un algorithme qui développe l'expression $(x+2)(x^2-3x+4)$. L'algorithme doit utiliser une boucle pour multiplier chaque terme du binôme par chaque terme du trinôme et afficher le polynôme final sous la forme $x^3 - x^2 - 2x + 8$.",
+      "correctAnswer": "Algorithme :\\n1. Définir les coefficients du binôme : b1 = 1 (coeff de x), b0 = 2.\\n2. Définir les coefficients du trinôme : t2 = 1 (x^2), t1 = -3 (x), t0 = 4.\\n3. Initialiser un dictionnaire res pour stocker les coefficients du résultat (degrés 0 à 3).\\n4. Pour chaque terme du binôme (i = 0,1) :\\n   Pour chaque terme du trinôme (j = 0,1,2) :\\n       deg = i + j\\n       coeff = (b1 si i==1 sinon b0) * (t2 si j==2 sinon (t1 si j==1 sinon t0))\\n       res[deg] = res.get(deg,0) + coeff\\n5. Construire la chaîne du polynôme à partir de res[3], res[2], res[1], res[0].\\n6. Afficher : $x^3 - x^2 - 2x + 8$.",
+      "explanation": "Le binôme a deux termes ($x$ et $2$), le trinôme en a trois ($x^2$, $-3x$, $4$). En croisant chaque terme, on obtient six produits partiels : $x \\cdot x^2 = x^3$, $x \\cdot (-3x) = -3x^2$, $x \\cdot 4 = 4x$, $2 \\cdot x^2 = 2x^2$, $2 \\cdot (-3x) = -6x$, $2 \\cdot 4 = 8$. En regroupant les degrés identiques : $x^3 + (-3+2)x^2 + (4-6)x + 8 = x^3 - x^2 - 2x + 8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction d'un algorithme erroné",
+      "content": "L'algorithme suivant prétend développer $(2x-5)(3x+7)$ mais contient des erreurs. Identifiez les erreurs et proposez la version corrigée.\\n\\nAlgorithme original :\\n1. a = 2 ; b = -5 ; c = 3 ; d = 7\\n2. t1 = a * c\\n3. t2 = a * d\\n4. t3 = b * c\\n5. t4 = b * d\\n6. Résultat = t1 + t2 + t3 + t4\\n7. Afficher Résultat\\n\\nIndiquez les corrections nécessaires pour obtenir le développement correct $6x^2 - x - 35$.",
+      "correctAnswer": "Erreurs :\\n- L'algorithme traite a, b, c, d comme des nombres alors qu'ils sont des coefficients de $x$. Il faut distinguer les parties coefficients de $x$ et les constantes.\\n- Les produits partiels doivent tenir compte des puissances de $x$ : $(2x)(3x) = 6x^2$, $(2x)\\cdot7 = 14x$, $(-5)(3x) = -15x$, $(-5)\\cdot7 = -35$.\\n- La somme des termes en $x$ donne $14x - 15x = -x$.\\n\\nAlgorithme corrigé :\\n1. coeff_x1 = 2 ; const1 = -5\\n2. coeff_x2 = 3 ; const2 = 7\\n3. t_x2 = coeff_x1 * coeff_x2          # coefficient de $x^2$\\n4. t_x1 = coeff_x1 * const2 + const1 * coeff_x2  # coefficient de $x$\\n5. t_const = const1 * const2            # terme constant\\n6. Afficher : $t_x2 x^2 + t_x1 x + t_const$\\n7. Résultat : $6x^2 - x - 35$.",
+      "explanation": "Le produit de deux binômes $(ax+b)(cx+d)$ donne $ac x^2 + (ad+bc) x + bd$. Ici $a=2$, $b=-5$, $c=3$, $d=7$. Donc $ac=6$, $ad+bc = 2\\cdot7 + (-5)\\cdot3 = 14 -15 = -1$, $bd = -35$. L'algorithme original additionnait simplement les quatre produits sans regrouper les degrés, ce qui ne produit pas un polynôme structuré.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

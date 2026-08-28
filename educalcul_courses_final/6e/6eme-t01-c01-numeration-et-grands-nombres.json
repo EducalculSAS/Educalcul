@@ -1,0 +1,515 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.529854+00:00",
+  "id": 331,
+  "code": "6eme-t01-c01",
+  "title": "Numération et grands nombres",
+  "description": "Cours structuré Educalcul : Numération et grands nombres.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Numération et grands nombres",
+    "objectif_global": "Numération et grands nombres",
+    "mini_lecons_imposees": [
+      "Lire / écrire.",
+      "Décomposer.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Lire / écrire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les classes de numération : unités, milliers, millions, milliards"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des grands nombres ! En 6e, tu vas manipuler des nombres qui peuvent avoir beaucoup de chiffres, comme la population de la Terre (environ $8\\ 000\\ 000\\ 000$ d'habitants) ou la distance de la Terre au Soleil (environ $150\\ 000\\ 000$ km). Pour ne pas te perdre, on regroupe les chiffres par paquets de trois, en partant de la droite. Chaque paquet forme une **classe**. La première classe, à droite, c'est la classe des **unités** (chiffres des unités, dizaines, centaines). La classe d'après, c'est les **milliers** (unités de mille, dizaines de mille, centaines de mille). Puis viennent les **millions**, les **milliards**, et ainsi de suite. C'est comme si on rangeait des briques par boîtes de trois : ça rend la lecture beaucoup plus facile."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 1234567890,
+              "caption": "Table de numération pour 1 234 567 890 : chaque colonne porte le nom de sa valeur de position."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la table ci-dessus : le chiffre $1$ est dans la colonne des milliards, le $2$ dans les centaines de millions, le $3$ dans les dizaines de millions, etc. Quand tu écris un grand nombre, tu laisses un petit espace entre chaque classe (ou un point dans certains pays). Essaie de lire ce nombre à voix haute : « un milliard deux cent trente-quatre millions cinq cent soixante-sept mille huit cent quatre-vingt-dix ». Tu vois ? On lit chaque groupe de trois chiffres comme un nombre à trois chiffres, puis on dit le nom de sa classe (sauf pour la classe des unités)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un grand nombre sans se tromper : la méthode pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire correctement un nombre comme $56\\ 789\\ 012$, suis ces étapes tranquillement :"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Séparer en classes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En partant de la droite, compte trois chiffres, fais un espace, recompte trois chiffres, fais un espace, etc. Ici : $56\\ 789\\ 012$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le nom de chaque classe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De gauche à droite : millions, milliers, unités. (Si le nombre est plus grand, tu ajoutes milliards, etc.)"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire chaque groupe de trois chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« cinquante-six » (millions), « sept cent quatre-vingt-neuf » (milliers), « douze » (unités). Attention : on ne dit pas « zéro douze », on dit simplement « douze »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Assembler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Cinquante-six millions sept cent quatre-vingt-neuf mille douze ». C'est fait !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un grand nombre en chiffres : partir de la gauche"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'opération inverse. On te dit : « trois cent quatre millions vingt mille six ». Comment l'écrire en chiffres ? D'abord, repère les classes mentionnées : millions, milliers, unités. Écris le nombre de millions : $304$. Puis le nombre de milliers : $020$ (il faut trois chiffres, donc on met un zéro devant pour faire $020$). Enfin les unités : $006$ (trois chiffres aussi). On assemble en mettant des espaces : $304\\ 020\\ 006$. Vérifie : as-tu bien trois chiffres par classe ? Oui. C'est la règle d'or : **chaque classe (sauf éventuellement la plus à gauche) doit contenir exactement trois chiffres**, en complétant par des zéros à gauche si besoin."
+            },
+            {
+              "type": "display_math",
+              "latex": "304\\ 020\\ 006 = 3\\times10^8 + 4\\times10^6 + 2\\times10^4 + 6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que les zéros « invisibles » à l'oral (comme les centaines de milliers ou les dizaines d'unités) deviennent indispensables à l'écrit pour garder les bonnes places. C'est comme les cases d'un parking : si une case est vide, elle existe quand même et réserve la place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire en lettres : la graphie des nombres composés"
+            },
+            {
+              "type": "paragraph",
+              "content": "En français, les nombres composés s'écrivent avec des traits d'union entre chaque mot, sauf autour de « million », « milliard » et « mille » qui restent invariables et sans trait d'union. Par exemple : $72$ s'écrit « soixante-douze » (trait d'union), $1\\ 000$ s'écrit « mille » (pas de « s »), $2\\ 000\\ 000$ s'écrit « deux millions » (pas de trait d'union, mais un « s » à millions car il y en a plusieurs). Entraîne-toi : $45\\ 080\\ 301$ devient « quarante-cinq millions quatre-vingt mille trois cent un ». Note le « s » à « quatre-vingt » ? Non, « quatre-vingt » prend un « s » seulement quand il est multiplié et non suivi d'un autre chiffre (ex: « quatre-vingts » mais « quatre-vingt-un »). Ici, il est suivi de « mille », donc pas de « s ». C'est subtil, mais avec un peu d'entraînement ça devient naturel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sépare en classes et lis à voix haute le nombre $7\\ 845\\ 210$.",
+              "answer": "7 845 210 se lit : sept millions huit cent quarante-cinq mille deux cent dix.",
+              "hint": "Compte trois chiffres à partir de la droite, espace, trois chiffres, espace.",
+              "explanation": "Le nombre s'écrit $7\\ 845\\ 210$. La classe des millions contient $7$, la classe des milliers $845$, la classe des unités $210$. On lit : « sept millions huit cent quarante-cinq mille deux cent dix »."
+            },
+            {
+              "question": "Applique la méthode en 4 étapes pour lire $908\\ 007\\ 600$.",
+              "answer": "Neuf cent huit millions sept mille six cents.",
+              "hint": "Attention aux zéros au milieu : ils ne se prononcent pas mais ils occupent leur place.",
+              "explanation": "Séparation : $908\\ 007\\ 600$. Classes : millions ($908$), milliers ($007$), unités ($600$). Lecture : « neuf cent huit millions sept mille six cents ». Le groupe $007$ se lit « sept » (pas « zéro zéro sept »). Le groupe $600$ se lit « six cents » (avec un s à cent car il est multiplié et non suivi d'autre chiffre)."
+            },
+            {
+              "question": "Écris en chiffres : « six cent deux millions trente mille quatre ».",
+              "answer": "602 030 004",
+              "hint": "Pense à compléter chaque classe à trois chiffres avec des zéros à gauche si besoin.",
+              "explanation": "Millions : $602$. Milliers : $030$ (trois chiffres). Unités : $004$ (trois chiffres). Résultat : $602\\ 030\\ 004$."
+            },
+            {
+              "question": "Écris en lettres : $1\\ 000\\ 000\\ 001$.",
+              "answer": "Un milliard un.",
+              "hint": "Combien de classes ? Regarde les espaces. Le mot « milliard » ne prend pas de s au singulier.",
+              "explanation": "Le nombre a quatre classes : milliards ($1$), millions ($000$), milliers ($000$), unités ($001$). Les classes millions et milliers sont nulles, on ne les prononce pas. On lit : « un milliard un ». Pas de trait d'union, pas de « s » à milliard."
+            }
+          ]
+        },
+        {
+          "title": "Décomposer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi décomposer ? Comprendre la valeur de chaque chiffre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais lire et écrire les grands nombres. Maintenant, on va les **décomposer** pour voir ce que « vaut » vraiment chaque chiffre selon sa position. C'est comme démonter un moteur pour comprendre comment il tourne ! Prenons $3\\ 456$. Le $3$ n'est pas juste « trois », il est dans la colonne des **milliers** : il vaut $3\\ 000$ (trois mille). Le $4$ est dans les **centaines** : il vaut $400$. Le $5$ dans les **dizaines** : $50$. Le $6$ dans les **unités** : $6$. En additionnant : $3\\ 000 + 400 + 50 + 6 = 3\\ 456$. C'est la **décomposition additive en puissances de 10** : chaque chiffre est multiplié par sa valeur de position ($1$, $10$, $100$, $1\\ 000$, etc.)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Chiffre",
+                "Position",
+                "Valeur de position",
+                "Produit"
+              ],
+              "rows": [
+                [
+                  "3",
+                  "milliers",
+                  "$1\\ 000$",
+                  "$3 \\times 1\\ 000 = 3\\ 000$"
+                ],
+                [
+                  "4",
+                  "centaines",
+                  "$100$",
+                  "$4 \\times 100 = 400$"
+                ],
+                [
+                  "5",
+                  "dizaines",
+                  "$10$",
+                  "$5 \\times 10 = 50$"
+                ],
+                [
+                  "6",
+                  "unités",
+                  "$1$",
+                  "$6 \\times 1 = 6$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette décomposition est unique : un nombre ne s'écrit qu'une seule façon comme somme de multiples de puissances de 10. C'est la base de notre système de numération **décimal** (base 10). Remarque que les puissances de 10 s'écrivent $10^0=1$, $10^1=10$, $10^2=100$, $10^3=1\\ 000$, etc. L'exposant indique le nombre de zéros qui suivent le 1."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition par classes : regrouper pour simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on préfère regrouper les chiffres par classe entière. Pour $12\\ 345$, au lieu de faire $1\\times10\\ 000 + 2\\times1\\ 000 + 3\\times100 + 4\\times10 + 5$, on peut écrire : **$12$ milliers $+ 345$ unités**. C'est la **décomposition par classes**. Elle est très utile pour faire des calculs mentalement : $12\\ 345 + 2\\ 000 = 14\\ 345$ (j'ajoute $2$ milliers aux $12$ milliers). Essaie de décomposer $4\\ 506\\ 780$ par classes : millions ? milliers ? unités ? Tu trouves $4$ millions $+ 506$ milliers $+ 780$ unités. Vérifie : $4\\ 000\\ 000 + 506\\ 000 + 780 = 4\\ 506\\ 780$. C'est exact !"
+            },
+            {
+              "type": "display_math",
+              "latex": "4\\ 506\\ 780 = 4 \\times 10^6 + 506 \\times 10^3 + 780 \\times 10^0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Note que dans la classe des milliers, le nombre $506$ est un nombre à trois chiffres (avec un zéro au milieu). C'est normal : chaque classe contient un nombre entre $0$ et $999$. Si une classe est nulle, on l'omet souvent dans l'écriture (on ne dit pas « zéro million »), mais elle existe quand même dans la structure du nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition multiplicative et additive : les deux faces d'une même pièce"
+            },
+            {
+              "type": "paragraph",
+              "content": "On parle souvent de **décomposition additive** (somme de termes) et de **décomposition multiplicative** (produit chiffre $\\times$ valeur de position). En fait, ce sont les mêmes informations présentées différemment. Pour $7\\ 809$ :\\n- Additive : $7\\ 000 + 800 + 0 + 9$ (on peut omettre le $0$).\\n- Multiplicative : $7\\times1\\ 000 + 8\\times100 + 0\\times10 + 9\\times1$.\\nLes deux disent la même chose. La forme multiplicative montre explicitement le rôle de chaque chiffre. C'est celle qu'on utilise quand on veut expliquer **pourquoi** une multiplication par $10$ décale les chiffres vers la gauche : chaque chiffre change de valeur de position (son exposant de 10 augmente de 1)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode : Décomposer un nombre en écriture multiplicative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Écris le nombre dans un tableau de numération (ou repère mentalement la position de chaque chiffre).\\n2. Pour chaque chiffre non nul, écris le produit : chiffre $\\times$ valeur de position (puissance de 10).\\n3. Si un chiffre est zéro, tu peux l'omettre ou l'écrire $0\\times...$ pour bien montrer la place.\\n4. Relie les termes par des $+$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la décomposition pour calculer astucieusement"
+            },
+            {
+              "type": "paragraph",
+              "content": "La décomposition n'est pas un exercice de style, c'est un outil puissant. Imagine que tu dois calculer $25 \\times 4\\ 002$ mentalement. Décompose $4\\ 002$ en $4\\ 000 + 2$. Alors $25 \\times 4\\ 002 = 25 \\times 4\\ 000 + 25 \\times 2 = 100\\ 000 + 50 = 100\\ 050$. C'est la **distributivité** de la multiplication sur l'addition, et elle repose entièrement sur la décomposition additive. De même, pour comparer deux nombres très grands, décompose-les par classes : tu compares d'abord les millions, puis les milliers, etc. Tu verras ça dans la prochaine leçon ! Pour l'instant, retiens que **décomposer, c'est rendre visible la structure intérieure du nombre**, ce qui te donne le pouvoir de le manipuler à ta guise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose $52\\ 307$ en écriture additive (somme de multiples de puissances de 10).",
+              "answer": "50 000 + 2 000 + 300 + 7",
+              "hint": "Repère la valeur de position de chaque chiffre non nul : 5 dizaine de mille, 2 mille, 3 cents, 7 unités.",
+              "explanation": "Le chiffre 5 est dans les dizaines de mille ($10^4$) : $5\\times10\\ 000 = 50\\ 000$. Le 2 dans les milliers ($10^3$) : $2\\times1\\ 000 = 2\\ 000$. Le 3 dans les centaines ($10^2$) : $3\\times100 = 300$. Le 0 dans les dizaines ne donne rien. Le 7 dans les unités ($10^0$) : $7\\times1 = 7$. Somme : $50\\ 000 + 2\\ 000 + 300 + 7$."
+            },
+            {
+              "question": "Décompose $1\\ 050\\ 000$ par classes (millions, milliers, unités).",
+              "answer": "1 million + 50 milliers + 0 unités (ou simplement 1 million + 50 milliers)",
+              "hint": "Sépare en classes : 1 | 050 | 000. Chaque classe donne un nombre à trois chiffres.",
+              "explanation": "Le nombre s'écrit $1\\ 050\\ 000$. Classe des millions : $1$ → $1$ million. Classe des milliers : $050$ → $50$ milliers. Classe des unités : $000$ → $0$ unité (on omet). Donc $1$ million $+ 50$ milliers."
+            },
+            {
+              "question": "Écris la décomposition multiplicative de $604\\ 090$.",
+              "answer": "6 x 100 000 + 0 x 10 000 + 4 x 1 000 + 0 x 100 + 9 x 10 + 0 x 1",
+              "hint": "Six chiffres : centaines de mille, dizaines de mille, milliers, centaines, dizaines, unités. N'oublie pas les zéros pour marquer les places.",
+              "explanation": "Positions : 6 → $10^5$ (100 000), 0 → $10^4$ (10 000), 4 → $10^3$ (1 000), 0 → $10^2$ (100), 9 → $10^1$ (10), 0 → $10^0$ (1). Produits : $6\\times100\\ 000 + 0\\times10\\ 000 + 4\\times1\\ 000 + 0\\times100 + 9\\times10 + 0\\times1$. On peut simplifier en omettant les termes nuls : $6\\times100\\ 000 + 4\\times1\\ 000 + 9\\times10$."
+            },
+            {
+              "question": "Calcule $12 \\times 3\\ 004$ en utilisant une décomposition additive de $3\\ 004$.",
+              "answer": "36 048",
+              "hint": "Décompose 3 004 en 3 000 + 4. Distribue la multiplication par 12.",
+              "explanation": "$3\\ 004 = 3\\ 000 + 4$. Alors $12 \\times 3\\ 004 = 12 \\times 3\\ 000 + 12 \\times 4 = 36\\ 000 + 48 = 36\\ 048$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle d'or pour comparer : d'abord le nombre de chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer deux grands nombres, c'est comme décider qui est le plus grand entre deux tours de cubes : on compte les étages ! La règle est simple et infaillible : **le nombre qui a le plus de chiffres est le plus grand**. Pourquoi ? Parce que chaque chiffre supplémentaire à gauche correspond à une classe supérieure (milliers, millions...), qui vaut au minimum $1\\ 000$ fois plus que la classe précédente. Par exemple, $9\\ 999$ (4 chiffres) est plus petit que $10\\ 000$ (5 chiffres), même si ses chiffres sont tous des $9$. Le nombre de chiffres l'emporte toujours sur la valeur des chiffres. C'est la première chose à regarder, et ça règle souvent l'affaire tout de suite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position relative de 9 999 et 10 000 : le nombre de chiffres fait tout.",
+              "min": 9000,
+              "max": 11000,
+              "points": [
+                {
+                  "value": 9999,
+                  "label": "9 999"
+                },
+                {
+                  "value": 10000,
+                  "label": "10 000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, tu vois que $10\\ 000$ est à droite de $9\\ 999$, donc plus grand. Pourtant $9\\ 999$ a l'air « plus plein » de chiffres non nuls. Ne te laisse pas tromper par l'apparence : **compte les chiffres** (ou les classes) avant tout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même nombre de chiffres ? On compare chiffre par chiffre, de gauche à droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les deux nombres ont exactement le même nombre de chiffres (donc la même classe la plus haute), on ne peut pas trancher tout de suite. Il faut alors **aligner les chiffres** (grâce à un tableau de numération ou en les écrivant l'un sous l'autre) et comparer **le premier chiffre à gauche où ils diffèrent**. C'est comme une course : le premier qui a un chiffre plus grand gagne, et les chiffres d'après n'ont plus d'importance. Exemple : $456\\ 789$ et $456\\ 798$. Ils ont tous les deux 6 chiffres. On compare : $4=4$, $5=5$, $6=6$, $7=7$, puis $8$ vs $9$ : $9 > 8$, donc $456\\ 798 > 456\\ 789$. Le chiffre des unités a décidé !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Centaines de mille",
+                "Dizaines de mille",
+                "Mille",
+                "Centaines",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9"
+                ],
+                [
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "9",
+                  "8"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce : si tu as du mal à aligner mentalement, trace un petit tableau de numération sur ton brouillon. Ça t'évitera de décaler les chiffres par erreur. C'est la méthode des pros !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des nombres écrits en lettres ou décomposés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les nombres ne sont pas écrits en chiffres : « trois millions deux cent mille » vs « 3 150 000 ». Pas de panique ! Convertis-les dans la même forme (de préférence en chiffres avec classes) pour comparer. « Trois millions deux cent mille » = $3\\ 200\\ 000$. L'autre est $3\\ 150\\ 000$. Même nombre de chiffres (7). Compare : millions $3=3$, centaines de mille $2 > 1$, donc $3\\ 200\\ 000 > 3\\ 150\\ 000$. De même, si on te donne une décomposition : $5\\times10^5 + 4\\times10^3$ vs $5\\times10^5 + 3\\times10^4$. Reconstitue les nombres : $500\\ 000 + 4\\ 000 = 504\\ 000$ et $500\\ 000 + 30\\ 000 = 530\\ 000$. Ici, $530\\ 000 > 504\\ 000$. La décomposition peut même aider : on voit que le premier a $4$ milliers, le second $30$ milliers (soit $3$ dizaines de mille). La classe des dizaines de mille l'emporte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode universelle pour comparer deux grands nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Si les nombres sont en lettres ou décomposés, réécris-les en chiffres (avec espaces entre classes).\\n2. Compte le nombre de chiffres (ou de classes) de chaque nombre.\\n3. Si l'un en a plus, c'est le plus grand. C'est fini.\\n4. Sinon (même nombre de chiffres), aligne-les dans un tableau de numération.\\n5. Parcours de gauche à droite jusqu'au premier chiffre différent.\\n6. Le nombre qui a le chiffre le plus grand à cette position est le plus grand.\\n7. Écris le résultat avec le symbole $>$ (plus grand que) ou $<$ (plus petit que)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner une liste de nombres : du plus petit au plus grand"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comparer deux nombres, tu peux en ordonner plusieurs. La stratégie : **applique la méthode deux par deux** ou, mieux, **classe-les d'un coup en regardant les classes**. Prenons : $4\\ 500$, $45\\ 000$, $405\\ 000$, $4\\ 050$. D'abord, compte les chiffres : $4\\ 500$ (4), $45\\ 000$ (5), $405\\ 000$ (6), $4\\ 050$ (4). Les deux à 4 chiffres : $4\\ 050$ et $4\\ 500$. Compare-les : $4\\ 050 < 4\\ 500$. Puis $45\\ 000$ (5 chiffres) vient après. Enfin $405\\ 000$ (6 chiffres) est le plus grand. Ordre croissant : $4\\ 050 < 4\\ 500 < 45\\ 000 < 405\\ 000$. C'est comme ranger des boîtes par taille : d'abord par nombre d'étages (chiffres), puis par contenu à l'étage le plus haut."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison visuelle des quatre nombres : la hauteur montre la valeur.",
+              "bars": [
+                {
+                  "label": "4 050",
+                  "value": 4050,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4 500",
+                  "value": 4500,
+                  "tone": "green"
+                },
+                {
+                  "label": "45 000",
+                  "value": 45000,
+                  "tone": "gold"
+                },
+                {
+                  "label": "405 000",
+                  "value": 405000,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique en barres le montre bien : la différence de classe (nombre de chiffres) crée des écarts énormes. $405\\ 000$ est cent fois plus grand que $4\\ 050$ ! C'est la puissance de la numération de position. Tu as maintenant toutes les clés pour lire, décomposer et comparer n'importe quel grand nombre. Bravo pour ton travail !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire un grand nombre jusqu'au milliard en le séparant en classes de trois chiffres.",
+                "Je sais décomposer un nombre en écriture additive (somme de multiples de puissances de 10) et en écriture multiplicative (chiffre × valeur de position).",
+                "Je sais décomposer un nombre par classes (millions, milliers, unités).",
+                "Je sais comparer deux grands nombres : d'abord par le nombre de chiffres, puis chiffre par chiffre de gauche à droite.",
+                "Je sais ordonner une liste de nombres du plus petit au plus grand (ordre croissant) ou du plus grand au plus petit (ordre décroissant).",
+                "J'utilise un tableau de numération pour m'aider à aligner les chiffres quand je compare ou décompose."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $987\\ 654$ et $987\\ 645$ en utilisant la méthode du premier chiffre différent.",
+              "answer": "987 654 > 987 645",
+              "hint": "Les six premiers chiffres sont identiques. Regarde le septième (les dizaines).",
+              "explanation": "Les deux nombres ont 6 chiffres. Alignés : 9=9, 8=8, 7=7, 6=6, 5 vs 4 → 5 > 4. Donc le premier nombre est plus grand."
+            },
+            {
+              "question": "Lequel est plus grand : « deux millions cent mille » ou $2\\ 010\\ 000$ ?",
+              "answer": "Deux millions cent mille (2 100 000) > 2 010 000",
+              "hint": "Convertis le nombre en lettres en chiffres : 2 100 000. Compare les centaines de mille.",
+              "explanation": "\"Deux millions cent mille\" = $2\\ 100\\ 000$. L'autre = $2\\ 010\\ 000$. Même nombre de chiffres (7). Millions : 2=2. Centaines de mille : 1 > 0. Donc $2\\ 100\\ 000 > 2\\ 010\\ 000$."
+            },
+            {
+              "question": "Ordonne ces nombres du plus petit au plus grand : $56\\ 000$, $5\\ 600$, $560\\ 000$, $5\\ 060$.",
+              "answer": "5 060 < 5 600 < 56 000 < 560 000",
+              "hint": "Commence par classer selon le nombre de chiffres (4, 4, 5, 6).",
+              "explanation": "Nombre de chiffres : $5\\ 600$ (4), $5\\ 060$ (4), $56\\ 000$ (5), $560\\ 000$ (6). Parmi les 4 chiffres : compare $5\\ 060$ et $5\\ 600$ : centaines 0 < 6 → $5\\ 060 < 5\\ 600$. Puis $56\\ 000$ (5 chiffres) puis $560\\ 000$ (6 chiffres)."
+            },
+            {
+              "question": "Compare $4\\times10^5 + 7\\times10^3$ et $4\\times10^5 + 6\\times10^4$.",
+              "answer": "4 x 10^5 + 6 x 10^4 > 4 x 10^5 + 7 x 10^3",
+              "hint": "Reconstitue les nombres ou compare les termes de plus haute puissance de 10 qui diffèrent.",
+              "explanation": "Premier : $400\\ 000 + 7\\ 000 = 407\\ 000$. Second : $400\\ 000 + 60\\ 000 = 460\\ 000$. Même puissance $10^5$ (400 000). Au rang $10^4$ : premier a 0, second a 6 → second plus grand. Ou directement : $60\\ 000 > 7\\ 000$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

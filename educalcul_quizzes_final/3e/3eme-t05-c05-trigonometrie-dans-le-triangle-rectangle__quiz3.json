@@ -1,0 +1,146 @@
+{
+  "_status": "done",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Calcul angle",
+  "title": "Quiz - Calcul d'angle dans le triangle rectangle",
+  "questions": [
+    {
+      "text": "Dans le triangle rectangle $ABC$ rectangle en $B$, on a $AB = 3$ cm et $BC = 4$ cm. Calcule la mesure de l'angle $\\widehat{A}$.",
+      "options": [
+        "Environ $53^\\circ$",
+        "Environ $37^\\circ$",
+        "Environ $45^\\circ$",
+        "Environ $30^\\circ$"
+      ],
+      "correctAnswer": "Environ $53^\\circ$",
+      "explanation": "L'angle $\\widehat{A}$ a pour côté opposé $BC = 4$ et pour côté adjacent $AB = 3$. Donc $\\tan(\\widehat{A}) = \\frac{4}{3}$. En utilisant la fonction arctangente, $\\widehat{A} = \\arctan(\\frac{4}{3}) \\approx 53,13^\\circ$, soit environ $53^\\circ$. Les autres valeurs correspondent à des confusions avec l'angle complémentaire ($37^\\circ$) ou à des angles remarquables.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle ABC rectangle en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "AB=3",
+          "BC=4",
+          "AC=5"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans le triangle rectangle $DEF$ rectangle en $E$, on connaît $DE = 5$ cm et $DF = 13$ cm (hypoténuse). Détermine la mesure de l'angle $\\widehat{D}$.",
+      "options": [
+        "Environ $67^\\circ$",
+        "Environ $23^\\circ$",
+        "Environ $45^\\circ$",
+        "Environ $30^\\circ$"
+      ],
+      "correctAnswer": "Environ $67^\\circ$",
+      "explanation": "On calcule d'abord le côté $EF$ par le théorème de Pythagore : $EF = \\sqrt{DF^2 - DE^2} = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$ cm. Ensuite $\\sin(\\widehat{D}) = \\frac{EF}{DF} = \\frac{12}{13}$. Donc $\\widehat{D} = \\arcsin(\\frac{12}{13}) \\approx 67,38^\\circ$, soit environ $67^\\circ$. L'angle $23^\\circ$ est l'angle complémentaire.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle DEF rectangle en E",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "DE=5",
+          "EF=12",
+          "DF=13"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans le triangle rectangle $JKL$ rectangle en $K$, les côtés de l'angle droit mesurent $JK = 7$ cm et $KL = 24$ cm. Calcule l'angle $\\widehat{J}$.",
+      "options": [
+        "Environ $74^\\circ$",
+        "Environ $16^\\circ$",
+        "Environ $45^\\circ$",
+        "Environ $30^\\circ$"
+      ],
+      "correctAnswer": "Environ $74^\\circ$",
+      "explanation": "L'angle $\\widehat{J}$ a pour côté opposé $KL = 24$ et pour côté adjacent $JK = 7$. Ainsi $\\tan(\\widehat{J}) = \\frac{24}{7} \\approx 3,4286$. L'arctangente donne $\\widehat{J} \\approx 73,74^\\circ$, arrondi à $74^\\circ$. La valeur $16^\\circ$ correspond à l'angle complémentaire.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle JKL rectangle en K",
+        "vertexLabels": [
+          "J",
+          "K",
+          "L"
+        ],
+        "sideLabels": [
+          "JK=7",
+          "KL=24",
+          "JL=25"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans le triangle rectangle $PQR$ rectangle en $Q$, on a $PQ = 8$ cm (côté adjacent à $\\widehat{P}$) et $PR = 17$ cm (hypoténuse). Trouve la mesure de $\\widehat{P}$.",
+      "options": [
+        "Environ $62^\\circ$",
+        "Environ $28^\\circ$",
+        "Environ $45^\\circ$",
+        "Environ $30^\\circ$"
+      ],
+      "correctAnswer": "Environ $62^\\circ$",
+      "explanation": "On utilise le cosinus : $\\cos(\\widehat{P}) = \\frac{PQ}{PR} = \\frac{8}{17} \\approx 0,4706$. L'arccosinus donne $\\widehat{P} \\approx 61,93^\\circ$, soit environ $62^\\circ$. L'angle $28^\\circ$ est l'angle complémentaire.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle PQR rectangle en Q",
+        "vertexLabels": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sideLabels": [
+          "PQ=8",
+          "QR=15",
+          "PR=17"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Une échelle de $5$ m est appuyée contre un mur. Son pied est à $3$ m du mur. Quel est l'angle formé par l'échelle et le mur ?",
+      "options": [
+        "Environ $37^\\circ$",
+        "Environ $53^\\circ$",
+        "Environ $45^\\circ$",
+        "Environ $30^\\circ$"
+      ],
+      "correctAnswer": "Environ $37^\\circ$",
+      "explanation": "Le triangle formé a pour hypoténuse l'échelle ($5$ m) et pour côté adjacent au mur la distance du pied au mur ($3$ m). L'angle entre l'échelle et le mur a pour sinus $\\frac{3}{5} = 0,6$. Donc cet angle vaut $\\arcsin(0,6) \\approx 36,87^\\circ$, arrondi à $37^\\circ$. L'angle $53^\\circ$ est l'angle avec le sol.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Echelle de 5 m, pied a 3 m du mur",
+        "vertexLabels": [
+          "Pied",
+          "Mur",
+          "Echelle"
+        ],
+        "sideLabels": [
+          "3 m",
+          "4 m",
+          "5 m"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

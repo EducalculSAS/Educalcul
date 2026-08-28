@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Encadrer entre deux graduations",
+  "title": "Encadrer un nombre décimal entre deux graduations",
+  "questions": [
+    {
+      "text": "On souhaite encadrer le nombre $7,3$ par deux nombres entiers consécutifs. Quelles sont les deux graduations entières qui l'encadrent ?",
+      "options": [
+        "7 et 8",
+        "7,3 et 7,4",
+        "7,2 et 7,3",
+        "6 et 7"
+      ],
+      "correctAnswer": "7 et 8",
+      "explanation": "Le nombre $7,3$ est un nombre décimal qui a une partie entière égale à $7$ et une partie décimale égale à $3$ dixièmes. Il est donc strictement supérieur à $7$ et strictement inférieur à $8$. Les deux nombres entiers consécutifs qui l'encadrent sont donc $7$ et $8$. L'option \"7,3 et 7,4\" correspondrait à un encadrement au dixième près, pas à l'unité près.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $4,26$ doit être encadré par deux nombres décimaux au dixième près (une décimale). Quelle est la bonne écriture de cet encadrement ?",
+      "options": [
+        "4,2 et 4,3",
+        "4,26 et 4,27",
+        "4 et 5",
+        "4,25 et 4,26"
+      ],
+      "correctAnswer": "4,2 et 4,3",
+      "explanation": "Pour encadrer $4,26$ au dixième près, on regarde le chiffre des dixièmes qui est $2$. Le nombre est donc compris entre $4,2$ (soit $4,20$) et $4,3$ (soit $4,30$). En effet, $4,20 < 4,26 < 4,30$. L'option \"4,26 et 4,27\" est un encadrement au centième près. L'option \"4 et 5\" est un encadrement à l'unité près.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, les grandes graduations représentent les entiers. Le point A est placé sur le nombre $5,8$. Entre quelles deux graduations entières se trouve le point A ?",
+      "options": [
+        "5 et 6",
+        "5,8 et 5,9",
+        "6 et 7",
+        "5,7 et 5,8"
+      ],
+      "correctAnswer": "5 et 6",
+      "explanation": "La droite est graduée au pas de $1$ (les entiers). Le point A correspond à $5,8$. Ce nombre est plus grand que $5$ et plus petit que $6$. Il se situe donc entre la graduation $5$ et la graduation $6$. Les autres propositions mélangent les échelles (dixièmes au lieu d'entiers) ou décalent l'intervalle.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée des entiers de 0 à 10 avec point A à 5,8",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 5.8,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur cette droite, les grandes graduations indiquent les dixièmes (0,5 ; 0,6 ; 0,7...). Le point B représente le nombre $0,64$. Entre quelles deux graduations de dixièmes le point B est-il encadré ?",
+      "options": [
+        "0,6 et 0,7",
+        "0,64 et 0,65",
+        "0,5 et 0,6",
+        "6 et 7"
+      ],
+      "correctAnswer": "0,6 et 0,7",
+      "explanation": "Les graduations principales valent $0,5$, $0,6$, $0,7$, etc. Le nombre $0,64$ a $6$ dixièmes et $4$ centièmes. Il est donc plus grand que $0,6$ (soit $0,60$) et plus petit que $0,7$ (soit $0,70$). Il est encadré par les graduations $0,6$ et $0,7$. L'option \"0,64 et 0,65\" correspond aux graduations des centièmes qui ne sont pas les grandes graduations ici. L'option \"6 et 7\" confond les dixièmes et les entiers.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée des dixièmes de 0,5 à 0,8 avec point B à 0,64",
+        "min": 0.5,
+        "max": 0.8,
+        "points": [
+          {
+            "value": 0.64,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Un nombre décimal est encadré par $12,3$ et $12,4$. Parmi les propositions suivantes, lequel peut être ce nombre ?",
+      "options": [
+        "$12,35$",
+        "$12,29$",
+        "$12,41$",
+        "$12,5$"
+      ],
+      "correctAnswer": "$12,35$",
+      "explanation": "L'encadrement par $12,3$ et $12,4$ signifie que le nombre cherché est strictement supérieur à $12,3$ (soit $12,30$) et strictement inférieur à $12,4$ (soit $12,40$). Seule la valeur $12,35$ vérifie cette double inégalité : $12,30 < 12,35 < 12,40$. $12,29$ est trop petit (inférieur à $12,3$). $12,41$ et $12,5$ sont trop grands (supérieurs ou égaux à $12,4$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

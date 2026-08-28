@@ -1,0 +1,180 @@
+{
+  "_status": "done",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Trouver / compléter une case",
+  "title": "Tableau à double entrée : trouver et compléter une case",
+  "questions": [
+    {
+      "text": "Observe le tableau ci-dessous. Il montre les animaux préférés des élèves de CE1.\\n\\nCombien de filles ont choisi le chat ?",
+      "options": [
+        "4",
+        "6",
+        "3",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Pour trouver la réponse, il faut repérer la ligne \"Filles\" et la colonne \"Chat\". La case à l'intersection de cette ligne et de cette colonne contient le nombre 6. Les autres nombres correspondent aux chiens (4 pour les filles, 5 pour les garçons) ou aux chats choisis par les garçons (3).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Chien",
+          "Chat"
+        ],
+        "rows": [
+          [
+            "Garçons",
+            "5",
+            "3"
+          ],
+          [
+            "Filles",
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Voici un tableau sur les moyens de transport pour aller à l'école.\\n\\nLa case qui contient le nombre 8 correspond à :",
+      "options": [
+        "Les garçons qui viennent à vélo",
+        "Les filles qui viennent à pied",
+        "Les garçons qui viennent à pied",
+        "Les filles qui viennent à vélo"
+      ],
+      "correctAnswer": "Les garçons qui viennent à pied",
+      "explanation": "Je cherche le nombre 8 dans le tableau. Il se trouve sur la ligne \"Garçons\" et dans la colonne \"À pied\". Donc cette case représente les garçons qui viennent à pied. Les filles à pied sont 10, les garçons à vélo sont 4 et les filles à vélo sont 3.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "À pied",
+          "À vélo"
+        ],
+        "rows": [
+          [
+            "Garçons",
+            "8",
+            "4"
+          ],
+          [
+            "Filles",
+            "10",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On a interrogé des enfants sur leur fruit préféré. Voici les résultats :\\n- 7 garçons aiment la pomme, 5 garçons aiment la banane.\\n- 6 filles aiment la pomme, 4 filles aiment la banane.\\n\\nLe tableau ci-dessous est incomplet. Quel nombre faut-il écrire dans la case vide \"Filles / Pomme\" ?",
+      "options": [
+        "6",
+        "7",
+        "5",
+        "4"
+      ],
+      "correctAnswer": "6",
+      "explanation": "D'après le texte, 6 filles aiment la pomme. Dans le tableau, il faut aller sur la ligne \"Filles\" et dans la colonne \"Pomme\". C'est là qu'on écrit le nombre 6. Le 7 correspond aux garçons qui aiment la pomme, le 5 aux garçons qui aiment la banane et le 4 aux filles qui aiment la banane.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pomme",
+          "Banane"
+        ],
+        "rows": [
+          [
+            "Garçons",
+            "7",
+            "5"
+          ],
+          [
+            "Filles",
+            "",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Regarde ce tableau avec des totaux. Une case est vide.\\n\\nCombien y a-t-il de chats blancs ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "3"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Je peux utiliser les totaux. Sur la ligne \"Chats\", le total est 9. Je sais qu'il y a 5 chats noirs (case \"Chats / Noirs\"). Pour trouver les chats blancs, je fais $9 - 5 = 4$. Je vérifie avec la colonne \"Blancs\" : le total est 10, il y a 6 chiens blancs, donc $10 - 6 = 4$ chats blancs. Les deux calculs donnent 4.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Noirs",
+          "Blancs",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Chiens",
+            "3",
+            "6",
+            "9"
+          ],
+          [
+            "Chats",
+            "5",
+            "",
+            "9"
+          ],
+          [
+            "Total",
+            "8",
+            "10",
+            "18"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Ce tableau présente les jeux préférés des enfants de deux classes (CE1 A et CE1 B).\\n\\nQuel est le nombre d'élèves de CE1 B qui préfèrent le jeu de cartes ?",
+      "options": [
+        "8",
+        "12",
+        "5",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Je repère la ligne \"CE1 B\" et la colonne \"Jeu de cartes\". La case à l'intersection affiche le nombre 5. Le 8 correspond au CE1 A pour les cartes, le 12 au CE1 B pour le ballon, et le 10 au CE1 A pour le ballon.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Ballon",
+          "Jeu de cartes"
+        ],
+        "rows": [
+          [
+            "CE1 A",
+            "10",
+            "8"
+          ],
+          [
+            "CE1 B",
+            "12",
+            "5"
+          ]
+        ]
+      }
+    }
+  ]
+}

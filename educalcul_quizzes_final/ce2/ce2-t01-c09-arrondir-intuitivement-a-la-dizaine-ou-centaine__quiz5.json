@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Repérer les deux repères voisins",
+  "title": "Quiz : Repérer les deux repères voisins (dizaines et centaines)",
+  "questions": [
+    {
+      "text": "Quels sont les deux repères voisins à la dizaine du nombre $63$ ?",
+      "options": [
+        "$50$ et $60$",
+        "$60$ et $70$",
+        "$70$ et $80$",
+        "$50$ et $70$"
+      ],
+      "correctAnswer": "$60$ et $70$",
+      "explanation": "Le nombre $63$ est compris entre $60$ et $70$. La dizaine précédente est $60$ (six dizaines) et la dizaine suivante est $70$ (sept dizaines). Les autres propositions mélangent les dizaines ou sautent une dizaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour le nombre $284$, quels sont les deux repères voisins à la centaine ?",
+      "options": [
+        "$200$ et $300$",
+        "$280$ et $290$",
+        "$200$ et $400$",
+        "$100$ et $200$"
+      ],
+      "correctAnswer": "$200$ et $300$",
+      "explanation": "À la centaine, on regarde le chiffre des centaines : $2$ (deux cents). Le repère inférieur est $200$ et le repère supérieur est $300$. L'option $280$ et $290$ correspond aux dizaines, pas aux centaines. $200$ et $400$ sautent une centaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $505$ se situe entre quelles deux centaines ?",
+      "options": [
+        "$400$ et $500$",
+        "$500$ et $600$",
+        "$50$ et $60$",
+        "$500$ et $510$"
+      ],
+      "correctAnswer": "$500$ et $600$",
+      "explanation": "Le nombre $505$ a $5$ centaines. Il est donc supérieur à $500$ et inférieur à $600$. Ses repères voisins à la centaine sont $500$ et $600$. L'option $400$ et $500$ correspond au nombre $405$ par exemple. Les deux dernières options confondent centaines et dizaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, un point est placé sur le nombre $346$. Quels sont ses deux repères voisins à la dizaine ?",
+      "options": [
+        "$340$ et $350$",
+        "$300$ et $400$",
+        "$346$ et $350$",
+        "$340$ et $346$"
+      ],
+      "correctAnswer": "$340$ et $350$",
+      "explanation": "Sur la droite, on voit les graduations des dizaines : $340$, $350$. Le point $A$ ($346$) se situe entre ces deux graduations. Les repères voisins à la dizaine sont donc $340$ et $350$. Les centaines ($300$ et $400$) sont trop espacées, et un nombre ne peut pas être son propre repère.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 340 à 350",
+        "min": 340,
+        "max": 350,
+        "points": [
+          {
+            "value": 346,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Un nombre mystère a pour repères voisins à la centaine $700$ et $800$. Lequel de ces nombres peut correspondre à ce nombre mystère ?",
+      "options": [
+        "$650$",
+        "$700$",
+        "$752$",
+        "$800$"
+      ],
+      "correctAnswer": "$752$",
+      "explanation": "Les repères voisins à la centaine $700$ et $800$ encadrent tous les nombres strictement compris entre $700$ et $800$. $752$ est bien entre $700$ et $800$. $650$ est entre $600$ et $700$. $700$ et $800$ sont eux-mêmes les repères, pas des nombres situés entre eux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

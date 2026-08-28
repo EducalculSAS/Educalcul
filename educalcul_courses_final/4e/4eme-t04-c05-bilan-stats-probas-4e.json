@@ -1,0 +1,428 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.857373+00:00",
+  "id": 439,
+  "code": "4eme-t04-c05",
+  "title": "Bilan - Stats-probas 4e",
+  "description": "Cours structuré Educalcul : Bilan - Stats-probas 4e.",
+  "subject": "Statistiques et probabilités",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Bilan - Stats-probas 4e",
+    "objectif_global": "Bilan - Stats-probas 4e",
+    "mini_lecons_imposees": [
+      "Indicateurs et hasard.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Indicateurs et hasard.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les indicateurs de position : moyenne et médiane"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet du bilan statistiques‑probabilités de quatrième. Aujourd'hui, nous allons revoir comment résumer une série de nombres par quelques valeurs repères. Imagine que tu as relevé les notes de ton dernier contrôle : $12$, $15$, $9$, $14$, $16$. Pour avoir une idée rapide du niveau de la classe, on cherche un nombre « typique ». La première idée qui vient est la moyenne : on additionne toutes les valeurs et on divise par le nombre de valeurs. Ici, la somme vaut $66$ et il y a $5$ notes, donc la moyenne est $\\frac{66}{5}=13,2$. C'est un indicateur très utilisé, mais il peut être trompé par une valeur extrême."
+            },
+            {
+              "type": "definition",
+              "term": "Moyenne",
+              "definition": "La moyenne d'une série statistique est la somme de toutes les valeurs divisée par l'effectif total. Elle se note souvent $\\bar{x}$.",
+              "example": "Pour la série $12, 15, 9, 14, 16$, la moyenne est $\\bar{x}=13,2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit la somme $12+15+9+14+16 = 66$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter l'effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il y a $5$ notes, donc l'effectif $n=5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $\\frac{66}{5}=13,2$. C'est la moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une note très basse ou très haute tire la moyenne vers le bas ou vers le haut. Pour éviter cet effet, on utilise la médiane : la valeur qui coupe la série en deux parties égales après l'avoir rangée. Rangeons nos notes : $9$, $12$, $14$, $15$, $16$. Comme l'effectif est impair ($5$), la médiane est la valeur du milieu, ici $14$. Si l'effectif était pair, on prendrait la moyenne des deux valeurs centrales."
+            },
+            {
+              "type": "definition",
+              "term": "Médiane",
+              "definition": "La médiane est la valeur qui sépare la série ordonnée en deux parties de même effectif. Pour un effectif impair, c'est la valeur centrale ; pour un effectif pair, c'est la moyenne des deux valeurs centrales.",
+              "example": "Série $9, 12, 14, 15, 16$ → médiane $=14$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison moyenne et médiane pour la série de notes",
+              "bars": [
+                {
+                  "label": "Moyenne",
+                  "value": 13.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Médiane",
+                  "value": 14,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons vu comment situer le centre d'une série, intéressons‑nous à la valeur qui apparaît le plus souvent : le mode. C'est l'indicateur le plus simple à repérer, il suffit de compter les occurrences. Reprenons une nouvelle série : $3$, $5$, $3$, $7$, $3$, $5$, $8$. Le nombre $3$ revient trois fois, c'est donc le mode. Une série peut avoir plusieurs modes (bimodale) ou aucun si toutes les valeurs sont différentes."
+            },
+            {
+              "type": "definition",
+              "term": "Mode",
+              "definition": "Le mode est la valeur (ou les valeurs) qui apparaît le plus grand nombre de fois dans la série.",
+              "example": "Dans $3,5,3,7,3,5,8$, le mode est $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour compléter le tableau, il est utile de savoir dans quel intervalle les données s'étalent. L'étendue (ou amplitude) donne cette information : c'est la différence entre la valeur maximale et la valeur minimale. Dans notre exemple, le maximum est $8$ et le minimum $3$, donc l'étendue vaut $8-3=5$. Cet indicateur ne dit rien sur la forme de la distribution, mais il signale rapidement la dispersion."
+            },
+            {
+              "type": "definition",
+              "term": "Étendue",
+              "definition": "L'étendue est la différence entre la plus grande et la plus petite valeur de la série : $\\text{étendue} = x_{\\max} - x_{\\min}$.",
+              "example": "Pour $3,5,3,7,3,5,8$, étendue $=8-3=5$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fréquences de la série $3,5,3,7,3,5,8$",
+              "slices": [
+                {
+                  "label": "3",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "5",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "7",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "8",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au hasard. En quatrième, on commence à modéliser des expériences aléatoires simples : lancer un dé équilibré, tirer une boule dans une urne, etc. L'espace des issues possibles s'appelle l'univers $\\Omega$. Pour un dé à six faces, $\\Omega = \\{1,2,3,4,5,6\\}$. Un événement est une partie de $\\Omega$, par exemple « obtenir un nombre pair » correspond à $A = \\{2,4,6\\}$. La probabilité de $A$ se calcule comme le rapport du nombre d'issues favorables sur le nombre total d'issues, à condition que toutes les issues soient équiprobables."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité (équiprobable)",
+              "definition": "Si l'univers $\\Omega$ contient $N$ issues équiprobables et qu'un événement $A$ en contient $k$, alors $P(A) = \\frac{k}{N}$.",
+              "example": "Pour un dé, $P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}$."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilités pour deux lancers de dé (résumé)",
+              "branches": [
+                {
+                  "label": "Premier lancer",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Pair",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "Impair",
+                      "probability": 0.5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne et la médiane de la série suivante : $8$, $11$, $9$, $14$, $10$, $12$.",
+              "answer": "Moyenne $=10,67$ (arrondi à $10,7$) ; Médiane $=10,5$.",
+              "hint": "Range d'abord la série dans l'ordre croissant, puis additionne les six nombres.",
+              "explanation": "La somme vaut $64$, l'effectif $6$, donc moyenne $=64/6 \\approx 10,67$. La série ordonnée est $8,9,10,11,12,14$ ; les deux valeurs centrales sont $10$ et $11$, leur moyenne donne $10,5$."
+            },
+            {
+              "question": "Dans la série $4$, $4$, $7$, $7$, $7$, $9$, $10$, détermine le mode et l'étendue.",
+              "answer": "Mode $=7$ ; Étendue $=6$.",
+              "hint": "Compte les occurrences de chaque valeur pour le mode ; soustrais le minimum du maximum pour l'étendue.",
+              "explanation": "Le nombre $7$ apparaît trois fois, c'est le mode. Le maximum est $10$, le minimum $4$, donc étendue $=10-4=6$."
+            },
+            {
+              "question": "On lance un dé équilibré. Quelle est la probabilité d'obtenir un multiple de $3$ ?",
+              "answer": "$\\frac{1}{3}$.",
+              "hint": "Identifie les faces multiples de $3$ sur un dé à six faces.",
+              "explanation": "Les multiples de $3$ sont $3$ et $6$, soit $2$ issues favorables sur $6$ issues équiprobables. Donc $P = 2/6 = 1/3$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Révision synthétique : indicateurs et probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous faisons le point sur tout ce que nous avons manipulé. L'idée est de t'offrir un panorama clair, avec de nouveaux exemples pour que chaque notion s'ancre différemment de la première leçon. Nous allons revisiter la moyenne, la médiane, le mode, l'étendue, puis les probabilités simples, en changeant de contexte à chaque fois : cette fois, ce seront des durées de trajet, des scores de jeu vidéo, des tirages de cartes. Ainsi, tu verras que les mêmes outils s'adaptent à des situations variées."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la moyenne. Supposons que tu notes le temps (en minutes) que tu mets pour aller au collège pendant une semaine : $22$, $18$, $25$, $20$, $19$. La somme est $104$, l'effectif $5$, donc la moyenne est $20,8$ minutes. Cela te donne une référence pour comparer tes trajets quotidiens. Si un jour tu mets $35$ minutes à cause d'un bouchon, la nouvelle moyenne grimpe à $23$ minutes, montrant la sensibilité de la moyenne aux valeurs extrêmes."
+            },
+            {
+              "type": "definition",
+              "term": "Moyenne (rappel)",
+              "definition": "Somme des valeurs divisée par l'effectif. Notation $\\bar{x} = \\frac{\\sum x_i}{n}$.",
+              "example": "Trajet : $22,18,25,20,19$ → $\\bar{x}=20,8$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$22+18+25+20+19 = 104$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par $5$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$104 \\div 5 = 20,8$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la moyenne sur l'axe des durées",
+              "min": 15,
+              "max": 30,
+              "points": [
+                {
+                  "value": 20.8,
+                  "label": "Moyenne"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Intéressons‑nous maintenant à la médiane avec des scores de jeu vidéo. Tu as enregistré tes cinq dernières parties : $1200$, $950$, $1300$, $1100$, $1250$. Rangeons-les : $950$, $1100$, $1200$, $1250$, $1300$. L'effectif est impair, la médiane est la troisième valeur, $1200$. Contrairement à la moyenne ($1160$), la médiane n'est pas influencée par le score très bas de $950$. C'est pour cela qu'on la préfère parfois pour décrire un « score typique »."
+            },
+            {
+              "type": "definition",
+              "term": "Médiane (rappel)",
+              "definition": "Valeur centrale d'une série ordonnée. Si $n$ pair, moyenne des deux valeurs centrales.",
+              "example": "Scores ordonnés $950,1100,1200,1250,1300$ → médiane $=1200$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison moyenne et médiane des scores",
+              "bars": [
+                {
+                  "label": "Moyenne",
+                  "value": 1160,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Médiane",
+                  "value": 1200,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons au mode et à l'étendue avec un exemple de tirages de cartes. Tu as noté la couleur de dix cartes tirées avec remise : Cœur, Carreau, Cœur, Trèfle, Pique, Cœur, Carreau, Cœur, Trèfle, Pique. La couleur « Cœur » apparaît quatre fois, c'est le mode. L'étendue n'a pas de sens pour des données qualitatives, mais on peut compter le nombre de modalités différentes : ici $4$ (Cœur, Carreau, Trèfle, Pique). Cela montre que le mode s'applique aussi aux catégories."
+            },
+            {
+              "type": "definition",
+              "term": "Mode (qualitatif)",
+              "definition": "Catégorie la plus fréquente dans une série de données non numériques.",
+              "example": "Cœur (4 occurrences sur 10)."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des couleurs tirées",
+              "slices": [
+                {
+                  "label": "Cœur",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Carreau",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Trèfle",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pique",
+                  "value": 2,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, révisons la probabilité avec une urne contenant $3$ boules rouges, $2$ boules bleues et $5$ boules vertes, soit $10$ boules au total. Toutes les boules ont la même chance d'être tirées. L'événement « tirer une boule rouge ou bleue » regroupe $3+2=5$ issues favorables. La probabilité est donc $\\frac{5}{10} = \\frac{1}{2}$. Si tu tires deux boules avec remise, la probabilité d'avoir deux rouges successives est $\\frac{3}{10} \\times \\frac{3}{10} = \\frac{9}{100}$."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité (rappel)",
+              "definition": "Rapport entre le nombre d'issues favorables et le nombre total d'issues équiprobables. Pour deux événements indépendants avec remise, on multiplie les probabilités.",
+              "example": "Urne $3R,2B,5V$ : $P(\\text{rouge ou bleu}) = 5/10 = 1/2$."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux tirages avec remise (rouge puis rouge)",
+              "branches": [
+                {
+                  "label": "Premier tirage",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Rouge",
+                      "probability": 0.3
+                    },
+                    {
+                      "label": "Autre",
+                      "probability": 0.7
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la moyenne d'une série numérique.",
+                "Je sais déterminer la médiane après avoir ordonné les valeurs.",
+                "Je reconnais le mode (valeur ou catégorie la plus fréquente).",
+                "Je calcule l'étendue comme différence max‑min.",
+                "Je définis l'univers $\\Omega$ d'une expérience aléatoire simple.",
+                "Je calcule une probabilité quand les issues sont équiprobables.",
+                "J'applique la multiplication pour des événements indépendants avec remise."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne des durées de trajet (en minutes) : $15$, $22$, $18$, $20$, $17$.",
+              "answer": "Moyenne $=18,4$ minutes.",
+              "hint": "Additionne les cinq nombres puis divise par $5$.",
+              "explanation": "La somme vaut $92$, l'effectif $5$, donc $92/5 = 18,4$."
+            },
+            {
+              "question": "Pour les scores $850$, $900$, $950$, $1000$, $1050$, donne la médiane.",
+              "answer": "Médiane $=950$.",
+              "hint": "Range les scores dans l'ordre croissant et prends la valeur du milieu.",
+              "explanation": "La série est déjà ordonnée, l'effectif $5$ est impair, la troisième valeur est $950$."
+            },
+            {
+              "question": "Dans la série de couleurs : Rouge, Bleu, Rouge, Vert, Rouge, Bleu, Jaune, quel est le mode ?",
+              "answer": "Rouge.",
+              "hint": "Compte combien de fois chaque couleur apparaît.",
+              "explanation": "Rouge apparaît $3$ fois, Bleu $2$, Vert $1$, Jaune $1$. Le mode est Rouge."
+            },
+            {
+              "question": "Une urne contient $4$ boules blanches et $6$ boules noires. On tire une boule, on la remet, on tire une seconde. Quelle est la probabilité d'obtenir deux boules blanches ?",
+              "answer": "$\\frac{4}{25}$ ou $0,16$.",
+              "hint": "Calcule la probabilité d'une boule blanche au premier tirage, puis multiplie par la même probabilité au second tirage (remise).",
+              "explanation": "Probabilité blanc = $4/10 = 2/5$. Deux tirages indépendants avec remise : $(2/5) \\times (2/5) = 4/25 = 0,16$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

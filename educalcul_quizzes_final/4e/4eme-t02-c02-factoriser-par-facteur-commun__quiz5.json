@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Repérer facteur",
+  "title": "Quiz - Repérer le facteur commun",
+  "questions": [
+    {
+      "text": "Quel est le facteur commun le plus grand des deux termes de l'expression $6x + 9$ ?",
+      "options": [
+        "3",
+        "3x",
+        "6",
+        "9"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Les coefficients 6 et 9 sont tous les deux divisibles par 3, et il n'y a pas de variable commune aux deux termes. Le plus grand diviseur commun est donc 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Identifie le facteur commun de l'expression $4x^2 + 8x$.",
+      "options": [
+        "4",
+        "4x",
+        "x",
+        "8"
+      ],
+      "correctAnswer": "4x",
+      "explanation": "Chaque terme contient le facteur 4 et au moins un facteur x. Le terme $4x^2$ s'écrit $4x \\cdot x$ et $8x$ s'écrit $4x \\cdot 2$. Le facteur commun le plus grand est donc $4x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus grand facteur commun de $12ab + 18a^2b^2$ ?",
+      "options": [
+        "6",
+        "6a",
+        "6ab",
+        "12ab"
+      ],
+      "correctAnswer": "6ab",
+      "explanation": "Les coefficients 12 et 18 ont pour PGCD 6. Les deux termes contiennent au moins un facteur a et un facteur b. Le terme $12ab = 6ab \\cdot 2$ et $18a^2b^2 = 6ab \\cdot 3ab$. Le facteur commun maximal est $6ab$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine le facteur commun de $5x^3y - 10x^2y^2 + 15xy^3$.",
+      "options": [
+        "5",
+        "5x",
+        "5xy",
+        "5xy^2"
+      ],
+      "correctAnswer": "5xy",
+      "explanation": "Le PGCD des coefficients 5, 10, 15 est 5. Chaque terme contient au moins un facteur x et un facteur y. Le plus petit exposant de x est 1, celui de y est 1. Le facteur commun le plus grand est donc $5xy$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $2(x+3) + 4(x+3)$, quel est le facteur commun maximal ?",
+      "options": [
+        "2",
+        "(x+3)",
+        "2(x+3)",
+        "6"
+      ],
+      "correctAnswer": "2(x+3)",
+      "explanation": "Les deux termes partagent le facteur numérique 2 et le facteur algébrique $(x+3)$. Le premier terme vaut $2 \\cdot (x+3)$ et le second $4 \\cdot (x+3) = 2 \\cdot 2 \\cdot (x+3)$. Le plus grand facteur commun est donc le produit $2(x+3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

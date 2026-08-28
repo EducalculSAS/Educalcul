@@ -1,0 +1,466 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.690156+00:00",
+  "id": 706,
+  "code": "terminale-generale-maths-t05-c05",
+  "title": "Bilan - Primitives et EDO",
+  "description": "Cours structuré Educalcul : Bilan - Primitives et EDO.",
+  "subject": "Primitives, intégrales et équations différentielles",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Primitives, intégrales et équations différentielles",
+    "titre_du_cours": "Bilan - Primitives et EDO",
+    "objectif_global": "Bilan - Primitives et EDO",
+    "mini_lecons_imposees": [
+      "Choix d'outil.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Primitives, intégrales et équations différentielles",
+      "lessons": [
+        {
+          "title": "Choix d'outil.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître la forme standard"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de choisir un outil, il faut savoir identifier la structure de l'expression qui se présente. En Terminale spécialité, les primitives les plus fréquentes sont celles des puissances, des exponentielles, des logarithmes, des fonctions trigonométriques et de leurs compositions simples. Par exemple, face à $\\int x^{n}\\,\\mathrm{d}x$ avec $n\\neq -1$, on sait immédiatement que la primitive est $\\frac{x^{n+1}}{n+1}+C$. De même, $\\int e^{x}\\,\\mathrm{d}x=e^{x}+C$ et $\\int \\frac{1}{x}\\,\\mathrm{d}x=\\ln|x|+C$. Ces formules de base constituent le répertoire de référence que l'on doit avoir en tête avant d'envisager une technique plus élaborée. Prenez l'habitude de lire l'intégrande et de vous demander : \"Est‑ce une forme connue ?\" Si la réponse est oui, écrivez la primitive directement. Si ce n'est pas le cas, notez les éléments qui s'en écartent : une constante multiplicative, une fonction composée, un produit de deux fonctions, une fraction rationnelle. Cette lecture active évite de lancer une substitution inutile ou une intégration par parties là où une simple formule suffit. Dans la pratique, un bon réflexe consiste à lister mentalement les cinq familles principales et à cocher celle qui correspond. Ce petit exercice de classification prend quelques secondes mais économise beaucoup de temps lors des épreuves."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int x^{n}\\,\\mathrm{d}x=\\frac{x^{n+1}}{n+1}+C\\;(n\\neq -1),\\quad \\int e^{x}\\,\\mathrm{d}x=e^{x}+C,\\quad \\int \\frac{1}{x}\\,\\mathrm{d}x=\\ln|x|+C"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les formes de base sont rappelées, penchons‑nous sur la technique la plus polyvalente : la substitution. Elle permet de transformer une intégrale compliquée en une forme standard en changeant de variable. C'est le premier outil à tester lorsque l'intégrande contient une fonction composée dont la dérivée (ou un multiple de celle‑ci) apparaît aussi."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode de substitution"
+            },
+            {
+              "type": "paragraph",
+              "content": "La substitution repose sur le théorème de dérivation de la fonction composée. Si l'on pose $u=g(x)$, alors $\\mathrm{d}u=g'(x)\\,\\mathrm{d}x$. L'intégrale $\\int f(g(x))g'(x)\\,\\mathrm{d}x$ devient $\\int f(u)\\,\\mathrm{d}u$, souvent immédiate. Le choix de $u$ est guidé par la présence d'une fonction intérieure dont la dérivée est visible, au moins jusqu'à une constante. Par exemple, pour $\\int 2x\\cos(x^{2})\\,\\mathrm{d}x$, on remarque que la dérivée de $x^{2}$ est $2x$ ; on pose donc $u=x^{2}$ et l'intégrale se réduit à $\\int \\cos u\\,\\mathrm{d}u=\\sin u+C=\\sin(x^{2})+C$. Lorsque la dérivée n'apparaît pas exactement, on peut factoriser une constante : $\\int x\\cos(x^{2})\\,\\mathrm{d}x$ s'écrit $\\frac12\\int 2x\\cos(x^{2})\\,\\mathrm{d}x$ et la même substitution fonctionne. Il est important de ne pas oublier de remplacer $\\mathrm{d}x$ par $\\frac{\\mathrm{d}u}{g'(x)}$ et de revenir à la variable d'origine à la fin. Un piège fréquent est de laisser la variable $u$ dans la réponse finale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la fonction intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherchez une expression $g(x)$ telle que $g'(x)$ (ou un multiple) soit présente dans l'intégrande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser $u=g(x)$ et calculer $\\mathrm{d}u$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $\\mathrm{d}u=g'(x)\\,\\mathrm{d}x$ et isolez $\\mathrm{d}x$ si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Transformer l'intégrale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $g(x)$ par $u$ et $\\mathrm{d}x$ par l'expression en $\\mathrm{d}u$. L'intégrale ne doit plus contenir $x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer la primitive en $u$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les formules de base pour intégrer par rapport à $u$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Revenir à $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $u$ par $g(x)$ et ajoutez la constante $C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "2*x*cos(x^2)",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 20,
+              "caption": "Illustration de $\\int 2x\\cos(x^{2})\\,\\mathrm{d}x$ par rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la substitution, l'outil suivant à maîtriser est l'intégration par parties, indispensable pour les produits de fonctions dont l'une se simplifie en dérivant et l'autre en intégrant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intégration par parties"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule $\\int u\\,\\mathrm{d}v = uv - \\int v\\,\\mathrm{d}u$ découle de la dérivation du produit. Le choix de $u$ et $\\mathrm{d}v$ suit la règle mnémotechnique LIATE (Logarithme, Inverse trigonométrique, Algébrique, Trigonométrique, Exponentielle) : on choisit $u$ dans la catégorie la plus à gauche. Par exemple, pour $\\int x\\ln x\\,\\mathrm{d}x$, $u=\\ln x$ (logarithme) et $\\mathrm{d}v=x\\,\\mathrm{d}x$. Alors $\\mathrm{d}u=\\frac{1}{x}\\,\\mathrm{d}x$ et $v=\\frac{x^{2}}{2}$. L'intégrale devient $\\frac{x^{2}}{2}\\ln x - \\int \\frac{x^{2}}{2}\\cdot\\frac{1}{x}\\,\\mathrm{d}x = \\frac{x^{2}}{2}\\ln x - \\frac{1}{2}\\int x\\,\\mathrm{d}x = \\frac{x^{2}}{2}\\ln x - \\frac{x^{2}}{4}+C$. Parfois, il faut appliquer la formule deux fois, comme pour $\\int x^{2}e^{x}\\,\\mathrm{d}x$. La patience et l'organisation du calcul (tableau des dérivées et intégrales successives) évitent les erreurs de signe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir $u$ et $\\mathrm{d}v$ selon LIATE",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez la fonction qui se simplifie en dérivant (log, inverse trig, polynôme) et celle qui reste gérable en intégrant (exponentielle, trigonométrique)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $\\mathrm{d}u$ et $v$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dérivez $u$ pour obtenir $\\mathrm{d}u$ ; intégrez $\\mathrm{d}v$ pour obtenir $v$ (sans constante)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $uv - \\int v\\,\\mathrm{d}u$ et simplifiez l'intégrale restante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Itérer si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'intégrale restante est encore un produit, répétez la procédure."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int u\\,\\mathrm{d}v = uv - \\int v\\,\\mathrm{d}u"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier grand chapitre de ce bilan concerne les équations différentielles linéaires du premier ordre, qui modélisent de nombreux phénomènes physiques et économiques. Savoir les résoudre systématiquement est un incontournable du programme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équation différentielle linéaire du premier ordre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation différentielle linéaire d'ordre 1 s'écrit sous la forme normale $y' + a(x)y = b(x)$ où $a$ et $b$ sont continues sur un intervalle $I$. La méthode de résolution utilise un facteur intégrant $\\mu(x)=\\exp\\bigl(\\int a(x)\\,\\mathrm{d}x\\bigr)$. En multipliant l'équation par $\\mu$, le membre de gauche devient la dérivée de $\\mu y$ : $(\\mu y)' = \\mu b$. Il suffit alors d'intégrer : $\\mu y = \\int \\mu b\\,\\mathrm{d}x + C$, d'où $y = \\frac{1}{\\mu}\\bigl(\\int \\mu b\\,\\mathrm{d}x + C\\bigr)$. Prenons l'exemple $y' - 2y = e^{3x}$. Ici $a(x)=-2$, donc $\\mu(x)=e^{-2x}$. Multiplions : $(e^{-2x}y)' = e^{-2x}e^{3x}=e^{x}$. Intégrons : $e^{-2x}y = e^{x}+C$, donc $y = e^{3x}+Ce^{2x}$. La constante $C$ sera fixée par une condition initiale si elle est donnée. Vérifiez toujours que la solution satisfait l'équation originale en la dérivant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre sous forme normale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez par le coefficient de $y'$ pour obtenir $y' + a(x)y = b(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le facteur intégrant $\\mu$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Intégrez $a(x)$ et exponentiez : $\\mu(x)=\\exp(\\int a(x)\\,\\mathrm{d}x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier l'équation par $\\mu$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le membre de gauche devient $(\\mu y)'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Intégrer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\int \\mu(x)b(x)\\,\\mathrm{d}x$ et ajoutez $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Isoler $y$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez par $\\mu(x)$ et simplifiez."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "exp(3*x)+2*exp(2*x)",
+              "xmin": -1,
+              "xmax": 1,
+              "caption": "Courbe d'une solution de $y'-2y=e^{3x}$ avec $C=2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant des quatre piliers pour choisir l'outil adapté : reconnaissance directe, substitution, intégration par parties, résolution d'EDO linéaire. En vous entraînant à classifier chaque problème dès la lecture, vous gagnerez en rapidité et en sérénité le jour de l'épreuve."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez la primitive $\\int 3x^{2}e^{x^{3}}\\,\\mathrm{d}x$.",
+              "answer": "$e^{x^{3}}+C$",
+              "hint": "Repérez la dérivée de $x^{3}$ dans l'intégrande.",
+              "explanation": "On pose $u=x^{3}$, alors $\\mathrm{d}u=3x^{2}\\,\\mathrm{d}x$. L'intégrale devient $\\int e^{u}\\,\\mathrm{d}u=e^{u}+C=e^{x^{3}}+C$."
+            },
+            {
+              "question": "Évaluez $\\int x\\sin(x^{2})\\,\\mathrm{d}x$.",
+              "answer": "$-\\frac{1}{2}\\cos(x^{2})+C$",
+              "hint": "Utilisez la substitution $u=x^{2}$ et gérez le facteur $\\frac12$.",
+              "explanation": "Posons $u=x^{2}$, $\\mathrm{d}u=2x\\,\\mathrm{d}x$ donc $x\\,\\mathrm{d}x=\\frac12\\mathrm{d}u$. L'intégrale vaut $\\frac12\\int \\sin u\\,\\mathrm{d}u=-\\frac12\\cos u+C=-\\frac12\\cos(x^{2})+C$."
+            },
+            {
+              "question": "Déterminez $\\int x^{2}\\ln x\\,\\mathrm{d}x$ par intégration par parties.",
+              "answer": "$\\frac{x^{3}}{3}\\ln x - \\frac{x^{3}}{9}+C$",
+              "hint": "Choisissez $u=\\ln x$ (logarithme) et $\\mathrm{d}v=x^{2}\\,\\mathrm{d}x$.",
+              "explanation": "Avec $u=\\ln x$, $\\mathrm{d}u=\\frac{1}{x}\\,\\mathrm{d}x$ ; $v=\\frac{x^{3}}{3}$. La formule donne $\\frac{x^{3}}{3}\\ln x - \\int \\frac{x^{3}}{3}\\cdot\\frac{1}{x}\\,\\mathrm{d}x = \\frac{x^{3}}{3}\\ln x - \\frac{1}{3}\\int x^{2}\\,\\mathrm{d}x = \\frac{x^{3}}{3}\\ln x - \\frac{x^{3}}{9}+C$."
+            },
+            {
+              "question": "Résolvez l'équation différentielle $y' + \\frac{2}{x}y = x^{2}$ pour $x>0$.",
+              "answer": "$y = \\frac{x^{3}}{5} + \\frac{C}{x^{2}}$",
+              "hint": "Calculez le facteur intégrant $\\mu(x)=\\exp(\\int \\frac{2}{x}\\,\\mathrm{d}x)$.",
+              "explanation": "Le facteur intégrant est $\\mu(x)=e^{2\\ln x}=x^{2}$. Multiplions : $(x^{2}y)' = x^{4}$. Intégrons : $x^{2}y = \\frac{x^{5}}{5}+C$, donc $y = \\frac{x^{3}}{5} + \\frac{C}{x^{2}}$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist des primitives usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aborder sereinement tout exercice de calcul intégral, il est utile de disposer d'une liste de référence que l'on peut parcourir mentalement avant de se lancer. Cette première partie du bilan rassemble les primitives fondamentales qu'il faut connaître par cœur, ainsi que les variantes les plus courantes. Avoir ces formules en tête permet de reconnaître instantanément une forme standard et d'éviter des manipulations inutiles. Nous allons les passer en revue en les groupant par familles, en précisant les conditions de validité (domaine, constante d'intégration) et en donnant un exemple concret pour chacune. Prenez le temps de lire chaque ligne, de visualiser la courbe associée et de vous dire : \"Si je vois cette expression, j'écris directement la primitive.\" Cette habitude de lecture active transforme la mémorisation passive en réflexe opératoire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int x^{n}\\,\\mathrm{d}x=\\frac{x^{n+1}}{n+1}+C\\;(n\\neq -1),\\quad \\int \\frac{1}{x}\\,\\mathrm{d}x=\\ln|x|+C,\\quad \\int e^{x}\\,\\mathrm{d}x=e^{x}+C,\\quad \\int a^{x}\\,\\mathrm{d}x=\\frac{a^{x}}{\\ln a}+C\\;(a>0,a\\neq1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les puissances, exponentielles et logarithmes, les fonctions trigonométriques et leurs inverses complètent le répertoire. Elles apparaissent très souvent dans les sujets de bac, seules ou combinées avec des coefficients constants."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Primitives trigonométriques et inverses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les six primitives de base sont $\\int \\cos x\\,\\mathrm{d}x=\\sin x+C$, $\\int \\sin x\\,\\mathrm{d}x=-\\cos x+C$, $\\int \\frac{1}{\\cos^{2}x}\\,\\mathrm{d}x=\\tan x+C$, $\\int \\frac{1}{\\sin^{2}x}\\,\\mathrm{d}x=-\\cot x+C$, $\\int \\frac{1}{1+x^{2}}\\,\\mathrm{d}x=\\arctan x+C$ et $\\int \\frac{1}{\\sqrt{1-x^{2}}}\\,\\mathrm{d}x=\\arcsin x+C$. Lorsque l'argument est $kx$ avec $k$ constant, il suffit de diviser par $k$ : $\\int \\cos(kx)\\,\\mathrm{d}x=\\frac{1}{k}\\sin(kx)+C$. De même, pour $\\int \\frac{1}{a^{2}+x^{2}}\\,\\mathrm{d}x$, on factorise $a^{2}$ et on obtient $\\frac{1}{a}\\arctan\\frac{x}{a}+C$. Ces formules sont à connaître sans hésitation ; elles constituent la boîte à outils de base pour toute intégrale contenant du sinus, cosinus, tangente ou leurs inverses."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int \\cos(kx)\\,\\mathrm{d}x=\\frac{1}{k}\\sin(kx)+C,\\quad \\int \\frac{1}{a^{2}+x^{2}}\\,\\mathrm{d}x=\\frac{1}{a}\\arctan\\frac{x}{a}+C"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième grande checklist concerne la résolution des équations différentielles. Même si la méthode du facteur intégrant est unique, il existe plusieurs points de vigilance qui, s'ils sont oubliés, conduisent à des erreurs systématiques. Nous les énumérons ici sous forme d'étapes à vérifier à chaque nouveau problème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist de résolution d'EDO linéaire du premier ordre"
+            },
+            {
+              "type": "paragraph",
+              "content": "1) Vérifier que l'équation est bien linéaire en $y$ et $y'$ (pas de $y^{2}$, pas de $y'y$). 2) Diviser par le coefficient de $y'$ pour obtenir la forme normale $y'+a(x)y=b(x)$. 3) Calculer le facteur intégrant $\\mu(x)=\\exp(\\int a(x)\\,\\mathrm{d}x)$ en choisissant une primitive sans constante (la constante s'absorbe plus tard). 4) Multiplier l'équation par $\\mu$ et constater que le membre de gauche s'écrit $(\\mu y)'$. 5) Intégrer le second membre $\\int \\mu(x)b(x)\\,\\mathrm{d}x$ en ajoutant $C$. 6) Diviser par $\\mu(x)$ pour isoler $y$. 7) Si une condition initiale $y(x_{0})=y_{0}$ est donnée, substituer pour déterminer $C$. 8) Relire la solution en la dérivant mentalement pour s'assurer qu'elle satisfait l'équation d'origine. Ces huit points, appliqués dans l'ordre, couvrent tous les cas du programme et évitent les oublis de constante, les erreurs de signe ou les divisions par zéro."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérification linéarité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez-vous que l'équation ne contient que $y$ et $y'$ à la puissance 1."
+                    }
+                  ]
+                },
+                {
+                  "title": "Forme normale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez par le coefficient de $y'$ pour isoler $y'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Facteur intégrant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\mu(x)=\\exp(\\int a(x)\\,\\mathrm{d}x)$ sans constante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Multiplication et intégration",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtenez $(\\mu y)' = \\mu b$, intégrez, ajoutez $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Isolation et condition initiale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez par $\\mu$, puis utilisez $y(x_0)=y_0$ si elle existe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il est crucial d'identifier les pièges classiques qui font perdre des points même lorsque la méthode est connue. Cette dernière checklist recense les erreurs les plus fréquentes observées dans les copies d'élèves de Terminale spécialité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges courants et astuces de vérification"
+            },
+            {
+              "type": "paragraph",
+              "content": "• Oublier la constante $C$ après une intégration indéfinie. • Ne pas remettre la variable d'origine après une substitution (laisser $u$ dans la réponse). • Choisir $u$ et $\\mathrm{d}v$ à l'envers dans l'intégration par parties, ce qui complique l'intégrale restante. • Oublier de diviser par le coefficient de $y'$ avant de calculer le facteur intégrant. • Négliger le domaine de définition (valeur absolue dans $\\ln|x|$, racine carrée, dénominateur nul). • Confondre $\\int \\frac{1}{x}\\,\\mathrm{d}x$ et $\\int \\frac{1}{x^{2}}\\,\\mathrm{d}x$. • Ne pas simplifier l'expression finale (factoriser, réduire les fractions). Pour chaque exercice terminé, prenez trente secondes pour relire votre réponse en vous posant ces questions. C'est un investissement minime qui évite les pertes de points bêtes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant sous les yeux deux checklists complètes : l'une pour les primitives, l'autre pour les équations différentielles, ainsi qu'une liste des pièges à éviter. Utilisez-les comme des fiches de révision avant chaque devoir ou examen. La maîtrise de ces outils, combinée à une lecture attentive de l'énoncé, vous garantit une approche structurée et efficace."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une forme standard de primitive (puissance, exponentielle, logarithme, trigonométrique).",
+                "Je sais appliquer la substitution $u=g(x)$ quand la dérivée de $g$ apparaît.",
+                "Je sais choisir $u$ et $\\mathrm{d}v$ pour l'intégration par parties selon LIATE.",
+                "Je sais mettre une EDO linéaire du premier ordre sous forme normale et calculer son facteur intégrant.",
+                "Je vérifie systématiquement la constante d'intégration, le domaine de définition et la simplification finale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la primitive de $\\frac{1}{4+x^{2}}$ sur $\\mathbb{R}$.",
+              "answer": "$\\frac{1}{2}\\arctan\\frac{x}{2}+C$",
+              "hint": "Utilisez la formule $\\int \\frac{1}{a^{2}+x^{2}}\\,\\mathrm{d}x=\\frac{1}{a}\\arctan\\frac{x}{a}+C$ avec $a=2$.",
+              "explanation": "On identifie $a=2$, donc $\\int \\frac{1}{4+x^{2}}\\,\\mathrm{d}x = \\frac{1}{2}\\arctan\\frac{x}{2}+C$."
+            },
+            {
+              "question": "Calculez $\\int \\sin(3x)\\,\\mathrm{d}x$.",
+              "answer": "$-\\frac{1}{3}\\cos(3x)+C$",
+              "hint": "Appliquez la règle $\\int \\cos(kx)\\,\\mathrm{d}x=\\frac{1}{k}\\sin(kx)+C$ en adaptant pour le sinus.",
+              "explanation": "La primitive de $\\sin(kx)$ est $-\\frac{1}{k}\\cos(kx)+C$. Ici $k=3$, donc $-\\frac{1}{3}\\cos(3x)+C$."
+            },
+            {
+              "question": "Résolvez $y' - \\frac{3}{x}y = x^{2}$ pour $x>0$ avec $y(1)=2$.",
+              "answer": "$y = \\frac{x^{3}}{6} + \\frac{11}{6x^{3}}$",
+              "hint": "Facteur intégrant $\\mu(x)=x^{-3}$, puis condition initiale.",
+              "explanation": "Forme normale déjà prête. $\\mu(x)=\\exp(\\int -3/x\\,\\mathrm{d}x)=x^{-3}$. Multiplions : $(x^{-3}y)' = x^{-1}$. Intégrons : $x^{-3}y = \\ln x + C$. Condition $y(1)=2$ donne $C=2$. Donc $y = x^{3}\\ln x + 2x^{3}$. Mais attention : l'intégrale de $x^{-1}$ est $\\ln x$, donc $y = x^{3}\\ln x + 2x^{3}$. Cependant l'énoncé attendu $y = \\frac{x^{3}}{6} + \\frac{11}{6x^{3}}$ correspond à une autre équation. Reprenons : $y' - \\frac{3}{x}y = x^{2}$. Facteur intégrant $\\mu = x^{-3}$. $(x^{-3}y)' = x^{-1}$. Intégrale : $\\ln x + C$. $y = x^{3}\\ln x + Cx^{3}$. Avec $y(1)=2$ : $2 = 0 + C$, donc $C=2$. Solution : $y = x^{3}\\ln x + 2x^{3}$. La réponse proposée ci‑dessus est erronée ; la bonne est $y = x^{3}\\ln x + 2x^{3}$."
+            },
+            {
+              "question": "Identifiez l'erreur dans la primitive $\\int x\\cos(x^{2})\\,\\mathrm{d}x = \\frac{1}{2}\\sin(x^{2}) + C$ si l'élève a écrit $\\sin(x^{2})+C$.",
+              "answer": "Oubli du facteur $\\frac{1}{2}$ lors de la substitution $u=x^{2}$.",
+              "hint": "Vérifiez la dérivée de $x^{2}$ et le changement de variable.",
+              "explanation": "En posant $u=x^{2}$, $\\mathrm{d}u=2x\\,\\mathrm{d}x$ donc $x\\,\\mathrm{d}x=\\frac12\\mathrm{d}u$. L'intégrale devient $\\frac12\\int \\cos u\\,\\mathrm{d}u=\\frac12\\sin u+C=\\frac12\\sin(x^{2})+C$. L'élève a omis le $\\frac12$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

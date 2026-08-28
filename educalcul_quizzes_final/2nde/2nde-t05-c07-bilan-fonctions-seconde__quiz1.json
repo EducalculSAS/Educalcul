@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Représentations et variations",
+  "title": "Quiz : Représentations et variations",
+  "questions": [
+    {
+      "text": "On donne ci-dessous la représentation graphique de la fonction $f$ définie par $f(x) = x^2 - 2x - 3$ sur $[-3 ; 5]$. Quelle est l'image de $0$ par $f$ ?",
+      "options": [
+        "$-3$",
+        "$3$",
+        "$-1$",
+        "$1$"
+      ],
+      "correctAnswer": "$-3$",
+      "explanation": "L'image de $0$ est $f(0)$. On calcule $f(0) = 0^2 - 2 \\times 0 - 3 = -3$. Graphiquement, c'est l'ordonnée du point de la courbe d'abscisse $0$, qui coupe l'axe des ordonnées en $-3$. Les autres valeurs correspondent aux racines ($-1$ et $3$) ou à l'image de $2$ ($f(2) = -3$ aussi, mais $1$ n'est pas une image remarquable ici).",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2 - 2x - 3",
+        "xmin": -3,
+        "xmax": 5,
+        "caption": "Courbe de $f(x) = x^2 - 2x - 3$"
+      }
+    },
+    {
+      "text": "Soit la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = -4x + 7$. Quel est le sens de variation de $g$ sur $\\mathbb{R}$ ?",
+      "options": [
+        "Strictement croissante",
+        "Strictement décroissante",
+        "Constante",
+        "Ni croissante ni décroissante"
+      ],
+      "correctAnswer": "Strictement décroissante",
+      "explanation": "La fonction $g$ est une fonction affine de coefficient directeur $a = -4$. Comme $a < 0$, la fonction est strictement décroissante sur $\\mathbb{R}$. Une fonction affine est croissante si $a > 0$, décroissante si $a < 0$ et constante si $a = 0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $h$ est définie sur $\\mathbb{R}$ par $h(x) = (x + 1)^2 - 5$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "$h$ est décroissante sur $]-\\infty ; -1]$ et croissante sur $[-1 ; +\\infty[$",
+        "$h$ est croissante sur $]-\\infty ; -1]$ et décroissante sur $[-1 ; +\\infty[$",
+        "$h$ est croissante sur $\\mathbb{R}$",
+        "$h$ est décroissante sur $\\mathbb{R}$"
+      ],
+      "correctAnswer": "$h$ est décroissante sur $]-\\infty ; -1]$ et croissante sur $[-1 ; +\\infty[$",
+      "explanation": "La fonction $h$ est un trinôme du second degré sous forme canonique : $h(x) = (x - (-1))^2 - 5$. Son sommet a pour abscisse $-1$ et le coefficient de $x^2$ est positif ($1$), donc la parabole est tournée vers le haut. Elle décroche avant le sommet et croît après. L'option 2 correspondrait à un coefficient négatif. Les options 3 et 4 sont fausses car une fonction du second degré n'est jamais monotone sur $\\mathbb{R}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau de variation ci-dessous concerne une fonction $k$ définie sur $\\mathbb{R}$.\\n$\\begin{array}{c|cccc|c} x & -\\infty & & 2 & & +\\infty \\\\ \\hline k(x) & +\\infty & \\searrow & -3 & \\nearrow & +\\infty \\end{array}$\\nLaquelle des affirmations suivantes est fausse ?",
+      "options": [
+        "La fonction $k$ admet un minimum en $2$",
+        "La fonction $k$ est strictement décroissante sur $]-\\infty ; 2]$",
+        "L'équation $k(x) = 0$ admet exactement deux solutions",
+        "La fonction $k$ est positive sur $]-\\infty ; 2[$"
+      ],
+      "correctAnswer": "La fonction $k$ est positive sur $]-\\infty ; 2[$",
+      "explanation": "D'après le tableau : $k$ décroît de $+\\infty$ à $-3$ sur $]-\\infty ; 2]$, puis croît de $-3$ à $+\\infty$ sur $[2 ; +\\infty[$. Le minimum est bien $-3$ en $2$ (affirmation vraie). $k$ est bien strictement décroissante sur $]-\\infty ; 2]$ (vraie). Comme le minimum est $-3 < 0$ et les limites sont $+\\infty$, l'équation $k(x)=0$ a deux solutions (vraie). En revanche, sur $]-\\infty ; 2[$, $k$ prend des valeurs positives (au début) mais devient négative en approchant de $2$ (puisque $k(2)=-3$), donc $k$ n'est pas positive sur tout l'intervalle (affirmation fausse).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une fonction $p$ définie sur $[0 ; 5]$ par $p(x) = -x^2 + 4x - 2$. On trace sa courbe dans un repère orthogonal. Quelles sont les coordonnées du sommet de cette parabole ?",
+      "options": [
+        "$(2 ; 2)$",
+        "$(2 ; -2)$",
+        "$(-2 ; 2)$",
+        "$(4 ; 2)$"
+      ],
+      "correctAnswer": "$(2 ; 2)$",
+      "explanation": "La fonction $p(x) = -x^2 + 4x - 2$ est un trinôme du second degré avec $a=-1$, $b=4$, $c=-2$. L'abscisse du sommet est $x_s = -b/(2a) = -4/(2 \\times -1) = 2$. L'ordonnée est $p(2) = -2^2 + 4 \\times 2 - 2 = -4 + 8 - 2 = 2$. Le sommet est donc $(2 ; 2)$. Comme $a<0$, c'est un maximum. L'option $(2 ; -2)$ confond le signe de l'ordonnée. L'option $(4 ; 2)$ prend $b$ comme abscisse. L'option $(-2 ; 2)$ inverse le signe de l'abscisse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

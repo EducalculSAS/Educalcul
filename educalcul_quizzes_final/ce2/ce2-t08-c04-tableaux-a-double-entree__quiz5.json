@@ -1,0 +1,212 @@
+{
+  "_status": "done",
+  "_course_id": 208,
+  "_course_code": "ce2-t08-c04-tableaux-a-double-entree",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Repérer deux critères",
+  "title": "Tableaux à double entrée : Repérer deux critères",
+  "questions": [
+    {
+      "text": "Observe le tableau ci-dessous. Il montre les fruits préférés des élèves de la classe.\\nCombien de filles ont choisi les pommes ?",
+      "options": [
+        "3",
+        "5",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Pour trouver la réponse, il faut croiser deux critères : la ligne \"Pommes\" et la colonne \"Filles\". À l'intersection de cette ligne et de cette colonne, on trouve le nombre 3. Le nombre 5 correspond aux garçons qui aiment les pommes, 2 aux garçons qui aiment les bananes et 4 aux filles qui aiment les bananes.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Garçons",
+          "Filles"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "5",
+            "3"
+          ],
+          [
+            "Bananes",
+            "2",
+            "4"
+          ],
+          [
+            "Poires",
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Regarde ce tableau sur les animaux de compagnie des élèves de l'école.\\nCombien d'élèves de CE2 ont un chien ?",
+      "options": [
+        "3",
+        "6",
+        "5",
+        "1"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Il faut repérer la ligne \"CE2\" (premier critère) et la colonne \"Chiens\" (deuxième critère). La case à l'intersection contient le chiffre 3. Le 6 est le nombre d'élèves de CE2 qui ont un chat, le 5 celui des élèves de CE1 qui ont un chien, et le 1 celui des élèves de CE2 qui ont un lapin.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Chats",
+          "Chiens",
+          "Lapins"
+        ],
+        "rows": [
+          [
+            "CP",
+            "4",
+            "2",
+            "1"
+          ],
+          [
+            "CE1",
+            "3",
+            "5",
+            "2"
+          ],
+          [
+            "CE2",
+            "6",
+            "3",
+            "1"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Voici un tableau indiquant le nombre d'élèves inscrits à chaque sport selon le jour de la semaine.\\nQuel jour y a-t-il le plus d'élèves à la natation ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Vendredi"
+      ],
+      "correctAnswer": "Lundi",
+      "explanation": "On regarde la colonne \"Natation\" et on compare les nombres pour chaque jour (lignes). Lundi : 8, Mardi : 6, Mercredi : 4. Le plus grand nombre est 8, qui correspond au Lundi. Vendredi n'apparaît pas dans le tableau.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Natation",
+          "Football",
+          "Danse"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "8",
+            "10",
+            "5"
+          ],
+          [
+            "Mardi",
+            "6",
+            "7",
+            "9"
+          ],
+          [
+            "Mercredi",
+            "4",
+            "5",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Ce tableau récapitule le matériel de classe dans trois classes.\\nDans quelle classe y a-t-il le plus de stylos ?",
+      "options": [
+        "Classe A",
+        "Classe B",
+        "Classe C",
+        "Classe A et Classe C"
+      ],
+      "correctAnswer": "Classe A",
+      "explanation": "On observe la colonne \"Stylos\" pour les trois lignes. Classe A : 15 stylos. Classe B : 8 stylos. Classe C : 10 stylos. Le maximum est 15, donc c'est la Classe A. La Classe C en a 10, ce qui est moins que 15.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Stylos",
+          "Crayons",
+          "Gommes"
+        ],
+        "rows": [
+          [
+            "Classe A",
+            "15",
+            "10",
+            "5"
+          ],
+          [
+            "Classe B",
+            "8",
+            "12",
+            "6"
+          ],
+          [
+            "Classe C",
+            "10",
+            "8",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le tableau suivant classe des formes géométriques selon leur couleur et leur forme.\\nCombien y a-t-il de carrés bleus ?",
+      "options": [
+        "5",
+        "3",
+        "2",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Il faut croiser la ligne \"Bleu\" (critère couleur) et la colonne \"Carré\" (critère forme). La case correspondante affiche 5. Le 3 correspond aux ronds bleus, le 2 aux carrés rouges et le 10 au total des formes bleues (3+5+2).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rond",
+          "Carré",
+          "Triangle"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "4",
+            "2",
+            "1"
+          ],
+          [
+            "Bleu",
+            "3",
+            "5",
+            "2"
+          ],
+          [
+            "Vert",
+            "1",
+            "3",
+            "4"
+          ]
+        ]
+      }
+    }
+  ]
+}

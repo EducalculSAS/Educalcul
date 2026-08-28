@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire axe et catégories",
+  "title": "Quiz : Lire l'axe et les catégories d'un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous. Quel fruit correspond à la barre la plus haute ?",
+      "options": [
+        "Pommes",
+        "Bananes",
+        "Oranges",
+        "Raisins"
+      ],
+      "correctAnswer": "Pommes",
+      "explanation": "La barre la plus haute représente la valeur la plus grande. Ici, la barre des pommes monte jusqu'à $6$, c'est la plus haute. Les bananes sont à $4$, les oranges à $5$ et les raisins à $3$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "D'après le diagramme, combien d'élèves ont choisi la banane comme fruit préféré ?",
+      "options": [
+        "$3$ élèves",
+        "$4$ élèves",
+        "$5$ élèves",
+        "$6$ élèves"
+      ],
+      "correctAnswer": "$4$ élèves",
+      "explanation": "Il faut lire la hauteur de la barre 'Bananes' sur l'axe vertical. Elle s'arrête au niveau du chiffre $4$. Donc $4$ élèves ont choisi la banane.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien de catégories différentes (de fruits) sont représentées sur l'axe horizontal de ce diagramme ?",
+      "options": [
+        "$3$ catégories",
+        "$4$ catégories",
+        "$5$ catégories",
+        "$6$ catégories"
+      ],
+      "correctAnswer": "$4$ catégories",
+      "explanation": "L'axe horizontal (en bas) affiche les noms des fruits : Pommes, Bananes, Oranges, Raisins. Il y a donc $4$ catégories distinctes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel fruit a été choisi par exactement 5 élèves ?",
+      "options": [
+        "Pommes",
+        "Bananes",
+        "Oranges",
+        "Raisins"
+      ],
+      "correctAnswer": "Oranges",
+      "explanation": "On cherche la barre qui monte jusqu'à $5$ sur l'axe vertical. La barre des oranges s'arrête à $5$. Les pommes sont à $6$, les bananes à $4$, les raisins à $3$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Que indiquent les graduations (les chiffres) sur l'axe vertical du diagramme ?",
+      "options": [
+        "Le nom des fruits",
+        "Le nombre d'élèves",
+        "La taille des fruits",
+        "Le prix des fruits"
+      ],
+      "correctAnswer": "Le nombre d'élèves",
+      "explanation": "L'axe vertical est l'axe des valeurs. Les chiffres ($1$, $2$, $3$, $4$, $5$, $6$) indiquent la quantité, ici le nombre d'élèves qui ont voté pour chaque fruit. L'axe horizontal donne les catégories (noms des fruits).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

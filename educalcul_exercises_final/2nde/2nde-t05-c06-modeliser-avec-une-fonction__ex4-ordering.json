@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Modéliser avec une fonction",
+  "title": "Modéliser avec une fonction : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Modélisation d'un bénéfice linéaire",
+      "content": "Voici les étapes pour modéliser le bénéfice d'une entreprise vendant des t-shirts. Remets-les dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Définir la variable $x$ : nombre de t-shirts vendus.",
+        "Écrire la fonction chiffre d'affaires $CA(x) = 15x$.",
+        "Écrire la fonction coût total $CT(x) = 200 + 5x$.",
+        "Déduire la fonction bénéfice $B(x) = CA(x) - CT(x) = 10x - 200$ et préciser son domaine $x \\in \\mathbb{N}$."
+      ],
+      "explanation": "On commence par choisir la variable indépendante (le nombre de t-shirts). Ensuite on exprime le chiffre d'affaires (prix unitaire × quantité). Puis le coût total (coûts fixes + coût variable × quantité). Enfin on soustrait pour obtenir le bénéfice et on indique le domaine (entiers naturels).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Hauteur maximale d'un projectile",
+      "content": "La hauteur d'un projectile est modélisée par $h(t) = -5t^2 + 20t + 2$. Ordonne les étapes pour trouver la hauteur maximale.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Reconnaître une fonction quadratique à coefficient directeur négatif (parabole tournée vers le bas).",
+        "Calculer l'abscisse du sommet $t = -\\frac{b}{2a} = -\\frac{20}{2 \\times (-5)} = 2$ secondes.",
+        "Évaluer $h(2) = -5 \\times 2^2 + 20 \\times 2 + 2 = 22$ mètres.",
+        "Conclure : la hauteur maximale est 22 m, atteinte après 2 s."
+      ],
+      "explanation": "La fonction est quadratique : $h(t) = -5t^2 + 20t + 2$. Le coefficient de $t^2$ est négatif, donc la parabole a un maximum au sommet. L'abscisse du sommet est $t = -b/(2a) = 2$. En remplaçant, on obtient $h(2)=22$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation exponentielle d'une population",
+      "content": "Une population de bactéries double toutes les 3 heures. Initialement 100 bactéries. Remets dans l'ordre les étapes pour obtenir la fonction modélisant la population en fonction du temps $t$ (en heures).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir la variable $t$ : temps en heures ($t \\ge 0$).",
+        "Déterminer le facteur de croissance horaire : $2^{1/3}$ (puisque doublement en 3 h).",
+        "Écrire la fonction exponentielle $P(t) = 100 \\times 2^{t/3}$.",
+        "Préciser le domaine : $t \\in [0, +\\infty[$.",
+        "Calculer la population après 6 heures : $P(6) = 100 \\times 2^{6/3} = 100 \\times 4 = 400$."
+      ],
+      "explanation": "On définit d'abord la variable temps. Comme la population double en 3 h, le facteur horaire est $2^{1/3}$. La fonction s'écrit $P(t)=100 \\cdot 2^{t/3}$. Le domaine est $t\\ge0$. Pour $t=6$, $2^{6/3}=2^2=4$, donc 400 bactéries.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

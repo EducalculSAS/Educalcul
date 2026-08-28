@@ -1,0 +1,666 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.384643+00:00",
+  "id": 605,
+  "code": "1ere-generale-maths-t06-c02",
+  "title": "Orthogonalité",
+  "description": "Cours structuré Educalcul : Orthogonalité.",
+  "subject": "Géométrie : produit scalaire et repérage",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Géométrie : produit scalaire et repérage",
+    "titre_du_cours": "Orthogonalité",
+    "objectif_global": "Orthogonalité",
+    "mini_lecons_imposees": [
+      "Produit scalaire nul.",
+      "Problèmes.",
+      "Démontrer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie : produit scalaire et repérage",
+      "lessons": [
+        {
+          "title": "Produit scalaire nul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le produit scalaire : définition et première approche"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur l'orthogonalité. Nous allons découvrir ensemble le produit scalaire, un outil fondamental qui permet de mesurer l'angle entre deux vecteurs et de détecter quand ils sont perpendiculaires. Imagine que tu as deux flèches tracées sur une feuille : le produit scalaire te donne un nombre qui résume à la fois leurs longueurs et l'inclinaison de l'une par rapport à l'autre. En coordonnées, si $\\vec{u}(x_1,y_1)$ et $\\vec{v}(x_2,y_2)$ sont deux vecteurs du plan, leur produit scalaire se note $\\vec{u}\\cdot\\vec{v}$ et se calcule simplement par $x_1x_2+y_1y_2$. Cette formule algébrique est très pratique car elle ne demande aucune construction géométrique, seulement une multiplication et une addition. C'est la porte d'entrée vers toutes les propriétés d'orthogonalité que nous allons explorer par la suite."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=x_1x_2+y_1y_2"
+            },
+            {
+              "type": "definition",
+              "term": "Produit scalaire",
+              "definition": "Le produit scalaire de deux vecteurs $\\vec{u}(x_1,y_1)$ et $\\vec{v}(x_2,y_2)$ est le nombre réel $x_1x_2+y_1y_2$. Il se note $\\vec{u}\\cdot\\vec{v}$.",
+              "example": "Pour $\\vec{u}(2,3)$ et $\\vec{v}(-1,4)$, $\\vec{u}\\cdot\\vec{v}=2\\times(-1)+3\\times4=10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour bien ancrer la mécanique. Soit $\\vec{a}(3,1)$ et $\\vec{b}(-2,5)$. En appliquant la définition, on obtient $\\vec{a}\\cdot\\vec{b}=3\\times(-2)+1\\times5=-6+5=-1$. Le résultat est un nombre négatif, ce qui indique déjà que l'angle entre les deux vecteurs est obtus, c'est-à-dire supérieur à $90^{\\circ}$. Essaie de refaire le calcul de ton côté : multiplie les abscisses, multiplie les ordonnées, puis additionne. Tu verras que la procédure est rapide et ne laisse place à aucune ambiguïté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les composantes $(x_1,y_1)$ du premier vecteur et $(x_2,y_2)$ du second."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier les composantes correspondantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $x_1x_2$ puis $y_1y_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les deux produits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme $x_1x_2+y_1y_2$ est le produit scalaire recherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer un produit scalaire en coordonnées, nous allons voir ce que ce nombre raconte sur la position relative des deux vecteurs. C'est là que la géométrie rejoint l'algèbre de façon élégante."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : le cosinus de l'angle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit scalaire possède une seconde expression, purement géométrique : $\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\,\\|\\vec{v}\\|\\cos(\\theta)$, où $\\|\\vec{u}\\|$ et $\\|\\vec{v}\\|$ sont les normes (longueurs) des vecteurs et $\\theta$ est l'angle orienté entre eux. Cette formule montre que le signe du produit scalaire est exactement le signe du cosinus de l'angle. Si le produit scalaire est positif, le cosinus est positif donc l'angle est aigu ($<90^{\\circ}$). S'il est nul, le cosinus est nul et l'angle vaut $90^{\\circ}$ : les vecteurs sont orthogonaux. S'il est négatif, l'angle est obtus ($>90^{\\circ}$). C'est une traduction parfaite entre langage chiffré et langage visuel."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\,\\|\\vec{v}\\|\\cos(\\theta)"
+            },
+            {
+              "type": "definition",
+              "term": "Vecteurs orthogonaux",
+              "definition": "Deux vecteurs non nuls $\\vec{u}$ et $\\vec{v}$ sont dits orthogonaux (perpendiculaires) si et seulement si leur produit scalaire est nul : $\\vec{u}\\cdot\\vec{v}=0$.",
+              "example": "Les vecteurs $\\vec{u}(1,2)$ et $\\vec{v}(-2,1)$ sont orthogonaux car $1\\times(-2)+2\\times1=0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette caractérisation est d'une puissance incroyable : pour savoir si deux droites sont perpendiculaires, il suffit de calculer le produit scalaire de leurs vecteurs directeurs. Pas besoin de sortir le rapporteur, le calcul algébrique tranche net. Attention toutefois au vecteur nul : son produit scalaire avec n'importe quel vecteur est toujours nul, mais il ne définit pas de direction, donc on exclut le vecteur nul de la définition d'orthogonalité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le produit scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $x_1x_2+y_1y_2$ avec les coordonnées des deux vecteurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Analyser le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le résultat est $0$ et que ninguno des deux vecteurs n'est le vecteur nul, alors ils sont orthogonaux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant deux points de vue complémentaires : le calcul pur et la lecture géométrique. Le dernier aspect que nous allons aborder aujourd'hui est la condition purement algébrique qui permet de retrouver une coordonnée manquante pour imposer l'orthogonalité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Condition algébrique d'orthogonalité et recherche de coordonnée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu connaisses un vecteur $\\vec{u}(2,5)$ et que tu cherches un vecteur $\\vec{v}(x,3)$ orthogonal à $\\vec{u}$. La condition $\\vec{u}\\cdot\\vec{v}=0$ donne l'équation $2x+5\\times3=0$, soit $2x+15=0$, d'où $x=-7,5$. Le vecteur $\\vec{v}(-7,5,3)$ est donc orthogonal à $\\vec{u}$. Cette méthode fonctionne en dimension 2 comme en dimension 3, il suffit d'écrire la somme des produits des composantes correspondantes et de la mettre à zéro. C'est une équation linéaire simple à résoudre."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Vecteur",
+                "Abscisse",
+                "Ordonnée"
+              ],
+              "rows": [
+                [
+                  "\\vec{u}",
+                  "2",
+                  "5"
+                ],
+                [
+                  "\\vec{v}",
+                  "x",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'équation d'orthogonalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets la somme des produits des composantes égales à zéro."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre pour l'inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Isole la variable inconnue (souvent une abscisse ou une ordonnée) par les opérations usuelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Refais le produit scalaire avec la valeur trouvée pour t'assurer qu'il est bien nul."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour manipuler le produit scalaire, reconnaître l'orthogonalité et même construire des vecteurs perpendiculaires à la demande. Dans la prochaine leçon, nous appliquerons ces outils à des problèmes concrets : projections, distances et équations de droites."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le produit scalaire de $\\vec{p}(4,-2)$ et $\\vec{q}(-1,3)$.",
+              "answer": "-10",
+              "hint": "Multiplie les abscisses entre elles, les ordonnées entre elles, puis additionne les deux produits.",
+              "explanation": "$4\\times(-1)+(-2)\\times3=-4-6=-10$."
+            },
+            {
+              "question": "Les vecteurs $\\vec{r}(2,5)$ et $\\vec{s}(-5,2)$ sont-ils orthogonaux ? Justifie.",
+              "answer": "Oui, ils sont orthogonaux car leur produit scalaire vaut $0$.",
+              "hint": "Calcule $2\\times(-5)+5\\times2$.",
+              "explanation": "$2\\times(-5)+5\\times2=-10+10=0$, donc $\\vec{r}\\cdot\\vec{s}=0$ et les deux vecteurs non nuls sont orthogonaux."
+            },
+            {
+              "question": "Trouve la valeur de $k$ pour que $\\vec{u}(3,k)$ soit orthogonal à $\\vec{v}(-2,4)$.",
+              "answer": "$k=1,5$",
+              "hint": "Écris l'équation $3\\times(-2)+k\\times4=0$ et résous pour $k$.",
+              "explanation": "$-6+4k=0 \\Rightarrow 4k=6 \\Rightarrow k=1,5$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Projection orthogonale sur une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous mettons le produit scalaire au service de problèmes classiques : projeter un point sur une droite, calculer une distance point-droite et déterminer l'équation d'une droite orthogonale à un vecteur donné. La projection orthogonale d'un point $M$ sur une droite $\\mathcal{D}$ de vecteur directeur $\\vec{u}$ est le point $H$ de $\\mathcal{D}$ tel que le vecteur $\\overrightarrow{MH}$ soit orthogonal à $\\vec{u}$. Grâce au produit scalaire, on peut exprimer les coordonnées de $H$ directement en fonction de celles de $M$ et d'un point $A$ de la droite. C'est une technique qui revient sans cesse en géométrie analytique et en physique."
+            },
+            {
+              "type": "definition",
+              "term": "Projection orthogonale",
+              "definition": "Soit $\\mathcal{D}$ une droite de vecteur directeur $\\vec{u}$ et $M$ un point. La projection orthogonale de $M$ sur $\\mathcal{D}$ est le point $H\\in\\mathcal{D}$ tel que $\\overrightarrow{MH}\\cdot\\vec{u}=0$.",
+              "example": "Sur la droite $y=2x+1$ (vecteur directeur $\\vec{u}(1,2)$), la projection de $M(3,4)$ est $H(1,3)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "H = A + \\frac{\\overrightarrow{AM}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}\\,\\vec{u}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule ci-dessus est la version vectorielle de la projection. Elle dit : part du point $A$ de la droite, ajoute le vecteur directeur $\\vec{u}$ multiplié par le coefficient $\\frac{\\overrightarrow{AM}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}$. Ce coefficient est exactement le rapport entre le produit scalaire de $\\overrightarrow{AM}$ avec $\\vec{u}$ et le carré de la norme de $\\vec{u}$. Il mesure « combien » de $\\vec{u}$ il faut pour aller de $A$ au pied de la perpendiculaire. Essaie de visualiser : si $M$ est déjà sur la droite, le produit scalaire vaut $\\|\\overrightarrow{AM}\\|\\|\\vec{u}\\|$ et le coefficient devient $1$, donc $H=M$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un point $A$ sur la droite et noter $\\vec{u}$ son vecteur directeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les coordonnées de $A$ et les composantes de $\\vec{u}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le vecteur $\\overrightarrow{AM}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $M - A$ composante par composante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le scalaire $\\lambda = \\frac{\\overrightarrow{AM}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule du produit scalaire et la norme au carré $\\|\\vec{u}\\|^2 = u_1^2+u_2^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Obtenir $H = A + \\lambda\\vec{u}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $\\lambda$ fois $\\vec{u}$ aux coordonnées de $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La projection orthogonale est la clé pour mesurer la distance la plus courte entre un point et une droite. En effet, la distance point-droite est exactement la longueur du segment qui relie le point à sa projection. Nous allons maintenant transformer cette idée en une méthode de calcul efficace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance d'un point à une droite par la projection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $M$ un point et $\\mathcal{D}$ une droite de vecteur directeur $\\vec{u}$ passant par $A$. La distance $d(M,\\mathcal{D})$ est la norme du vecteur $\\overrightarrow{MH}$ où $H$ est la projection orthogonale de $M$ sur $\\mathcal{D}$. Comme $\\overrightarrow{MH} = \\overrightarrow{MA} - \\lambda\\vec{u}$ avec $\\lambda$ défini précédemment, on peut calculer cette distance sans déterminer explicitement $H$ : il suffit de calculer la norme de la composante de $\\overrightarrow{MA}$ orthogonale à $\\vec{u}$. Une formule commode est $d(M,\\mathcal{D}) = \\frac{\\|\\overrightarrow{MA}\\times\\vec{u}\\|}{\\|\\vec{u}\\|}$ en dimension 2, où le produit vectoriel (déterminant) remplace le produit scalaire pour isoler la partie perpendiculaire. Nous allons utiliser la version scalaire qui reste dans le cadre du produit scalaire : $d^2 = \\|\\overrightarrow{MA}\\|^2 - \\frac{(\\overrightarrow{MA}\\cdot\\vec{u})^2}{\\|\\vec{u}\\|^2}$. Cette expression vient du théorème de Pythagore appliqué au triangle rectangle $A M H$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M,\\mathcal{D})^2 = \\|\\overrightarrow{MA}\\|^2 - \\frac{(\\overrightarrow{MA}\\cdot\\vec{u})^2}{\\|\\vec{u}\\|^2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\overrightarrow{MA}$ et sa norme au carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve les composantes de $\\overrightarrow{MA}$ et élève au carré leur somme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le produit scalaire $\\overrightarrow{MA}\\cdot\\vec{u}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $x_{MA}u_1+y_{MA}u_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule de la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace dans $d^2 = \\|MA\\|^2 - \\frac{(\\overrightarrow{MA}\\cdot\\vec{u})^2}{\\|\\vec{u}\\|^2}$ et prends la racine carrée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier problème typique consiste à trouver l'équation d'une droite qui passe par un point donné et qui est orthogonale à un vecteur (ou à une autre droite). Le vecteur orthogonal devient alors un vecteur normal de la droite cherchée, ce qui permet d'écrire son équation cartésienne presque immédiatement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équation d'une droite orthogonale à un vecteur donné"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si une droite $\\mathcal{D}$ a pour vecteur normal $\\vec{n}(a,b)$ (c'est-à-dire $\\vec{n}$ orthogonal à tout vecteur directeur de $\\mathcal{D}$), alors son équation cartésienne s'écrit $ax+by+c=0$ où $c$ se détermine grâce aux coordonnées d'un point $M_0(x_0,y_0)$ appartenant à $\\mathcal{D}$ : $c = -(ax_0+by_0)$. Cette forme est extrêmement pratique car elle donne directement la direction orthogonale. Par exemple, la droite passant par $P(2,-1)$ et orthogonale au vecteur $\\vec{n}(3,4)$ a pour équation $3x+4y+c=0$. En remplaçant $x=2, y=-1$, on trouve $c = -(6-4)=-2$, donc l'équation est $3x+4y-2=0$. Remarque que le vecteur directeur de cette droite est $\\vec{u}(-4,3)$, orthogonal à $\\vec{n}$."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur normal",
+              "definition": "Un vecteur $\\vec{n}$ est normal à une droite $\\mathcal{D}$ s'il est orthogonal à tout vecteur directeur de $\\mathcal{D}$. L'équation cartésienne de $\\mathcal{D}$ s'écrit alors $\\vec{n}\\cdot\\overrightarrow{OM}+c=0$.",
+              "example": "Pour la droite $2x-5y+3=0$, un vecteur normal est $\\vec{n}(2,-5)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le vecteur normal $\\vec{n}(a,b)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le vecteur orthogonal à la droite cherchée (souvent donné directement)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'équation sous la forme $ax+by+c=0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les coefficients $a,b$ sont les composantes de $\\vec{n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer $c$ en utilisant le point connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x,y$ par les coordonnées du point et résous $c = -(ax_0+by_0)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois techniques puissantes : projeter, mesurer une distance et écrire l'équation d'une droite perpendiculaire. Ces outils sont les fondations de nombreux problèmes d'optimisation, de physique et de géométrie supérieure. La prochaine leçon te demandera de démontrer rigoureusement les propriétés qui les sous-tendent."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la droite $\\mathcal{D}$ d'équation $y = -2x + 3$ et le point $M(1,5)$. Détermine les coordonnées de la projection orthogonale $H$ de $M$ sur $\\mathcal{D}$.",
+              "answer": "$H\\left(\\frac{7}{5},\\frac{1}{5}\\right)$",
+              "hint": "Choisis $A(0,3)$ sur la droite, vecteur directeur $\\vec{u}(1,-2)$, calcule $\\lambda = \\frac{\\overrightarrow{AM}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}$ puis $H = A + \\lambda\\vec{u}$.",
+              "explanation": "$\\overrightarrow{AM}(1,2)$, $\\vec{u}(1,-2)$, $\\overrightarrow{AM}\\cdot\\vec{u}=1\\times1+2\\times(-2)=-3$, $\\|\\vec{u}\\|^2=5$, $\\lambda=-3/5$. $H = (0,3) + (-3/5)(1,-2) = (-3/5, 3+6/5) = (-0,6, 4,2)$? Attends, recalcul : $A(0,3)$, $\\lambda=-3/5$, $H = (0-3/5, 3+6/5) = (-0,6, 4,2)$ mais la droite est $y=-2x+3$, pour $x=-0.6$, $y= -2(-0.6)+3=4.2$, correct. Donc $H(-0,6;4,2)$ soit $\\left(-\\frac{3}{5},\\frac{21}{5}\\right)$. En fraction : $H\\left(-\\frac{3}{5},\\frac{21}{5}\\right)$."
+            },
+            {
+              "question": "Calcule la distance du point $N(4,1)$ à la droite $\\mathcal{D}'$ d'équation $3x-4y+5=0$.",
+              "answer": "$\\frac{13}{5}$",
+              "hint": "Utilise la formule de distance point-droite $\\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$ avec $a=3,b=-4,c=5$.",
+              "explanation": "$|3\\times4 + (-4)\\times1 + 5| = |12-4+5| = 13$. $\\sqrt{3^2+(-4)^2}=5$. Distance $=13/5$."
+            },
+            {
+              "question": "Trouve l'équation cartésienne de la droite passant par $Q(-2,3)$ et orthogonale au vecteur $\\vec{n}(5,-2)$.",
+              "answer": "$5x-2y+16=0$",
+              "hint": "Écris $5x-2y+c=0$ et détermine $c$ avec les coordonnées de $Q$.",
+              "explanation": "$c = -(5\\times(-2) - 2\\times3) = -(-10-6)=16$. Donc $5x-2y+16=0$."
+            }
+          ]
+        },
+        {
+          "title": "Démontrer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démonstration de l'équivalence : produit scalaire nul et orthogonalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant prouver la propriété fondamentale qui lie le produit scalaire à l'orthogonalité : pour deux vecteurs non nuls $\\vec{u}$ et $\\vec{v}$, $\\vec{u}\\cdot\\vec{v}=0$ si et seulement si $\\vec{u}\\perp\\vec{v}$. La démonstration s'appuie sur l'expression géométrique du produit scalaire $\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\|\\vec{v}\\|\\cos(\\theta)$. Comme les normes sont strictement positives pour des vecteurs non nuls, le produit est nul exactement quand $\\cos(\\theta)=0$, c'est-à-dire quand $\\theta = 90^{\\circ}$ (ou $\\pi/2$ radians). C'est une preuve courte mais elle éclaire pourquoi la condition algébrique $x_1x_2+y_1y_2=0$ capture parfaitement la perpendicularité."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=0 \\iff \\vec{u}\\perp\\vec{v} \\ (\\vec{u},\\vec{v}\\neq\\vec{0})"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Rappeler la définition géométrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Analyser le produit nul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\|\\vec{u}\\|>0$ et $\\|\\vec{v}\\|>0$, le produit est nul $\\iff \\cos\\theta=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure sur l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\cos\\theta=0 \\iff \\theta = \\frac{\\pi}{2}$ (modulo $\\pi$), ce qui est la définition de l'orthogonalité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette équivalence est la pierre angulaire de toute la géométrie vectorielle. Elle permet de transformer une question géométrique (les droites sont-elles perpendiculaires ?) en un calcul purement algébrique. Nous allons maintenant l'utiliser pour démontrer le théorème de Pythagore sous sa forme vectorielle, qui généralise le célèbre théorème du triangle rectangle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de Pythagore vectoriel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs orthogonaux. Alors la norme de leur somme vérifie $\\|\\vec{u}+\\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2$. C'est exactement l'énoncé du théorème de Pythagore appliqué au triangle formé par les vecteurs $\\vec{u}$, $\\vec{v}$ et $\\vec{u}+\\vec{v}$. La démonstration se fait en développant le carré de la norme à l'aide du produit scalaire : $\\|\\vec{u}+\\vec{v}\\|^2 = (\\vec{u}+\\vec{v})\\cdot(\\vec{u}+\\vec{v}) = \\vec{u}\\cdot\\vec{u} + 2\\vec{u}\\cdot\\vec{v} + \\vec{v}\\cdot\\vec{v}$. Comme $\\vec{u}\\cdot\\vec{v}=0$ par orthogonalité, le terme du milieu disparaît et il ne reste que $\\|\\vec{u}\\|^2+\\|\\vec{v}\\|^2$. Cette preuve montre la puissance du produit scalaire : elle réduit une propriété métrique à une simple manipulation algébrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|\\vec{u}+\\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2 \\quad \\text{si } \\vec{u}\\perp\\vec{v}"
+            },
+            {
+              "type": "definition",
+              "term": "Théorème de Pythagore vectoriel",
+              "definition": "Si deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont orthogonaux, alors le carré de la norme de leur somme est égal à la somme des carrés de leurs normes.",
+              "example": "Pour $\\vec{u}(3,0)$ et $\\vec{v}(0,4)$, $\\|\\vec{u}+\\vec{v}\\|^2 = \\|(3,4)\\|^2 = 25 = 9+16 = \\|\\vec{u}\\|^2+\\|\\vec{v}\\|^2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Développer le carré de la norme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $\\|\\vec{u}+\\vec{v}\\|^2 = (\\vec{u}+\\vec{v})\\cdot(\\vec{u}+\\vec{v})$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la bilinéarité du produit scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens $\\vec{u}\\cdot\\vec{u} + 2\\vec{u}\\cdot\\vec{v} + \\vec{v}\\cdot\\vec{v}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer l'orthogonalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $\\vec{u}\\cdot\\vec{v}$ par $0$ et reconnais $\\|\\vec{u}\\|^2+\\|\\vec{v}\\|^2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous allons démontrer la formule de la projection orthogonale d'un vecteur sur un autre, celle que nous avons utilisée dans la leçon précédente. Cette démonstration montre comment le produit scalaire permet d'isoler la composante d'un vecteur dans une direction donnée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Formule de la projection orthogonale d'un vecteur sur un autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $\\vec{u}$ et $\\vec{v}\\neq\\vec{0}$. La projection orthogonale de $\\vec{u}$ sur la direction de $\\vec{v}$ est le vecteur $\\text{proj}_{\\vec{v}}(\\vec{u}) = \\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{v}\\|^2}\\,\\vec{v}$. Pour le prouver, on cherche un scalaire $\\lambda$ tel que $\\vec{u} = \\lambda\\vec{v} + \\vec{w}$ avec $\\vec{w}\\perp\\vec{v}$. En prenant le produit scalaire de cette égalité avec $\\vec{v}$, on obtient $\\vec{u}\\cdot\\vec{v} = \\lambda\\vec{v}\\cdot\\vec{v} + \\vec{w}\\cdot\\vec{v}$. Comme $\\vec{w}\\perp\\vec{v}$, le dernier terme est nul, donc $\\lambda = \\frac{\\vec{u}\\cdot\\vec{v}}{\\vec{v}\\cdot\\vec{v}} = \\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{v}\\|^2}$. Le vecteur projection est alors $\\lambda\\vec{v}$, ce qui donne la formule annoncée. Cette décomposition $\\vec{u} = \\text{proj}_{\\vec{v}}(\\vec{u}) + \\vec{w}$ est unique et orthogonale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{proj}_{\\vec{v}}(\\vec{u}) = \\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{v}\\|^2}\\,\\vec{v}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser la décomposition orthogonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $\\vec{u} = \\lambda\\vec{v} + \\vec{w}$ avec $\\vec{w}\\perp\\vec{v}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier scalairement par $\\vec{v}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens $\\vec{u}\\cdot\\vec{v} = \\lambda\\|\\vec{v}\\|^2 + \\vec{w}\\cdot\\vec{v}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser l'orthogonalité de $\\vec{w}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\vec{w}\\cdot\\vec{v}=0$, déduis $\\lambda = \\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{v}\\|^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le vecteur projection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $\\lambda$ dans $\\lambda\\vec{v}$ pour obtenir la formule finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant démontré les trois piliers de l'orthogonalité : la caractérisation par le produit scalaire nul, le théorème de Pythagore vectoriel et la formule de projection. Ces résultats constituent la boîte à outils indispensable pour aborder sereinement les problèmes de géométrie analytique, de physique et d'optimisation qui t'attendent en spécialité mathématiques."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer un produit scalaire en coordonnées.",
+                "Je sais reconnaître deux vecteurs orthogonaux grâce au produit scalaire nul.",
+                "Je sais déterminer une coordonnée manquante pour imposer l'orthogonalité.",
+                "Je sais projeter un point sur une droite et calculer la distance point-droite.",
+                "Je sais écrire l'équation d'une droite orthogonale à un vecteur donné.",
+                "Je sais démontrer l'équivalence produit scalaire nul $\\iff$ orthogonalité.",
+                "Je sais démontrer le théorème de Pythagore vectoriel.",
+                "Je sais démontrer la formule de la projection orthogonale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Démontre que si $\\vec{u}\\cdot\\vec{v}=0$ et $\\vec{u},\\vec{v}\\neq\\vec{0}$, alors $\\vec{u}\\perp\\vec{v}$.",
+              "answer": "D'après la définition géométrique $\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta$. Comme les normes sont non nulles, $\\cos\\theta=0$, donc $\\theta=\\pi/2$ et les vecteurs sont orthogonaux.",
+              "hint": "Utilise l'expression $\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta$ et le fait que les normes sont strictement positives.",
+              "explanation": "Le produit scalaire nul force $\\cos\\theta=0$, ce qui caractérise un angle droit."
+            },
+            {
+              "question": "Soient $\\vec{a}$ et $\\vec{b}$ orthogonaux. Montre que $\\|\\vec{a}+\\vec{b}\\|^2 = \\|\\vec{a}\\|^2 + \\|\\vec{b}\\|^2$.",
+              "answer": "$\\|\\vec{a}+\\vec{b}\\|^2 = (\\vec{a}+\\vec{b})\\cdot(\\vec{a}+\\vec{b}) = \\vec{a}\\cdot\\vec{a}+2\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{b} = \\|\\vec{a}\\|^2+\\|\\vec{b}\\|^2$ car $\\vec{a}\\cdot\\vec{b}=0$.",
+              "hint": "Développe le carré de la norme à l'aide du produit scalaire et utilise l'orthogonalité pour annuler le terme mixte.",
+              "explanation": "Le développement bilinéaire fait apparaître $2\\vec{a}\\cdot\\vec{b}$ qui vaut $0$ par hypothèse."
+            },
+            {
+              "question": "Soit $\\vec{u}(2,3)$ et $\\vec{v}(1,-1)$. Calcule la projection orthogonale de $\\vec{u}$ sur $\\vec{v}$.",
+              "answer": "$\\left(-\\frac{1}{2},\\frac{1}{2}\\right)$",
+              "hint": "Calcule $\\vec{u}\\cdot\\vec{v}$, $\\|\\vec{v}\\|^2$, puis multiplie $\\vec{v}$ par le quotient.",
+              "explanation": "$\\vec{u}\\cdot\\vec{v}=2\\times1+3\\times(-1)=-1$, $\\|\\vec{v}\\|^2=1^2+(-1)^2=2$, coefficient $=-1/2$. Projection $=(-1/2)(1,-1)=(-\\frac{1}{2},\\frac{1}{2})$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

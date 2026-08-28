@@ -1,0 +1,482 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.656217+00:00",
+  "id": 374,
+  "code": "6eme-t09-c01",
+  "title": "Variables et affectations",
+  "description": "Cours structuré Educalcul : Variables et affectations.",
+  "subject": "Algorithmique",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algorithmique",
+    "titre_du_cours": "Variables et affectations",
+    "objectif_global": "Variables et affectations",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Modifier.",
+      "Tracer l'état."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est‑ce qu'une variable ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une petite boîte en carton sur ton bureau. Sur le couvercle, tu as écrit un nom, par exemple $age$. À l'intérieur, tu glisses un papier sur lequel est écrit un nombre, ici $12$. Cette boîte, c'est exactement ce qu'on appelle une variable en algorithmique : un conteneur qui porte un nom et qui peut garder une valeur. Tu pourras plus tard ouvrir la boîte, lire le nombre, le changer ou même en créer d'autres avec des noms différents. C'est une idée simple, mais elle est au cœur de tous les programmes que tu écriras."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Un nom que l'on donne à une case mémoire pour y stocker une valeur. Le nom permet de retrouver la valeur plus tard.",
+              "example": "Dans $age = 12$, $age$ est le nom de la variable et $12$ sa valeur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien fixer le vocabulaire, retenons le mot variable. C'est le nom que tu donnes à ta boîte, comme $age$, $note$, $prenom$ ou $score$. La valeur, c'est le contenu actuel de la boîte, par exemple $12$ pour $age$ ou $Marie$ pour $prenom$. Quand tu écris un programme, tu décides quelles variables tu as besoin et quelle valeur chacune contient au départ. C'est un peu comme préparer tes fournitures avant de commencer un devoir : tu sais exactement ce que tu as sous la main."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Variable",
+                "Valeur"
+              ],
+              "rows": [
+                [
+                  "age",
+                  "12"
+                ],
+                [
+                  "prenom",
+                  "Léa"
+                ]
+              ],
+              "caption": "Exemple de deux variables avec leurs valeurs de départ"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant comment on peut lire ce qui se trouve dans la boîte. Lire une variable, c'est simplement demander au programme d'afficher sa valeur à l'écran. Si ton programme contient l'instruction « afficher $age$ », l'ordinateur ouvre la boîte $age$, voit le $12$ qui s'y trouve et l'écrit pour que tu puisses le voir. C'est la même chose que quand tu lis l'étiquette d'un pot de confiture : tu regardes ce qui est écrit et tu le dis à voix haute."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer le nom",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le nom de la variable qui suit le mot afficher."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : chercher la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Va dans la mémoire du programme et trouve la valeur associée à ce nom."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : afficher",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris cette valeur à l'écran pour que l'utilisateur la voie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de lire plusieurs variables les unes après les autres. Supposons que tu aies deux boîtes, $age$ avec $12$ et $prenom$ avec $Léa$. Si ton programme dit « afficher $age$ » puis « afficher $prenom$ », l'écran montrera d'abord $12$ puis $Léa$. L'ordre est important : chaque instruction de lecture ne fait qu'observer la valeur actuelle, elle ne la modifie pas. C'est comme feuilleter un album photo : tu regardes chaque image sans la changer."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Instruction",
+                "Affichage"
+              ],
+              "rows": [
+                [
+                  "afficher age",
+                  "12"
+                ],
+                [
+                  "afficher prenom",
+                  "Léa"
+                ]
+              ],
+              "caption": "Lecture successive de deux variables"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant vu comment créer une variable dans ta tête, lui donner une valeur de départ et la lire pour la montrer. Dans la prochaine leçon, nous apprendrons à changer le contenu d'une boîte déjà existante, ce qui s'appelle une affectation. Mais avant de passer à la suite, entraîne‑toi avec les exercices ci‑dessus pour bien sentir le mécanisme de lecture."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si la variable $age$ contient $10$, que va afficher l'instruction « afficher $age$ » ?",
+              "answer": "10",
+              "hint": "Regarde la valeur stockée dans la boîte $age$.",
+              "explanation": "L'instruction de lecture ouvre la boîte $age$ et montre son contenu, ici $10$."
+            },
+            {
+              "question": "Tu as deux variables : $note = 14$ et $matiere = \"Maths\"$. Écris les deux instructions pour afficher d'abord la note puis la matière.",
+              "answer": "afficher $note$ ; afficher $matiere$",
+              "hint": "Utilise le mot afficher devant chaque nom de variable.",
+              "explanation": "Chaque instruction affiche la valeur actuelle de la variable indiquée, dans l'ordre où elles sont écrites."
+            },
+            {
+              "question": "Si tu as trois variables $a=5$, $b=2$, $c=8$, quel ordre d'affichage donne la suite $5$, $8$, $2$ ?",
+              "answer": "afficher $a$ ; afficher $c$ ; afficher $b$",
+              "hint": "Choisis l'ordre des instructions selon les valeurs voulues.",
+              "explanation": "Chaque instruction affiche la variable demandée ; en les écrivant dans l'ordre $a$, $c$, $b$, tu obtiens $5$, $8$, $2$."
+            }
+          ]
+        },
+        {
+          "title": "Modifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changer la valeur d'une variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici nous avons seulement regardé ce qu'il y a dans nos boîtes. Mais un programme intéressant doit pouvoir modifier ce contenu. Imagine que tu as noté ton âge $12$ sur un papier dans la boîte $age$. L'an prochain, tu voudras remplacer ce $12$ par $13$ sans créer une nouvelle boîte. C'est exactement ce que permet l'affectation : on prend une variable existante et on y place une nouvelle valeur, l'ancienne étant effacée."
+            },
+            {
+              "type": "definition",
+              "term": "affectation",
+              "definition": "Opération qui donne une nouvelle valeur à une variable. On écrit le nom de la variable, un signe égal, puis la nouvelle valeur ou une expression.",
+              "example": "$score = 20$ remplace l'ancien contenu de $score$ par $20$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre variable $age$. Au début elle vaut $12$. Si j'écris $age = 13$, le programme calcule la partie de droite (ici simplement $13$) et range ce résultat dans la boîte $age$. L'ancien $12$ disparaît. C'est comme gommer le chiffre sur ton papier et écrire le nouveau à la place. Essaie de visualiser la boîte avant et après l'opération pour bien sentir le changement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : évaluer l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule ce qui se trouve à droite du signe égal en utilisant les valeurs actuelles des variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : stocker le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le résultat obtenu dans la variable indiquée à gauche, en écrasant l'ancienne valeur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent un programme contient plusieurs affectations qui s'enchaînent. L'ordre compte beaucoup : chaque instruction voit les valeurs qui existent à ce moment‑là. Par exemple, si tu as $x = 4$ puis $x = x + 3$, la deuxième ligne utilise le $4$ qui est déjà dans $x$ pour calculer $7$, puis range ce $7$ à la place du $4$. C'est comme si tu prenais ton papier, ajoutais $3$ au nombre écrit, puis réécrivais le total."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Instruction",
+                "Valeur de x après"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "x = 4",
+                  "4"
+                ],
+                [
+                  "2",
+                  "x = x + 3",
+                  "7"
+                ]
+              ],
+              "caption": "Effet de deux affectations successives sur la même variable"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la variable modifiée, tu peux bien sûr la relire pour vérifier le nouveau contenu. Reprenons l'exemple : après $x = 7$, l'instruction « afficher $x$ » montrera $7$. C'est la preuve que l'affectation a vraiment changé la boîte. Essaie d'imaginer la scène : tu ouvres la boîte, tu vois le nouveau nombre, tu le lis à voix haute. Cette alternance lecture‑modification‑lecture est le rythme de base de tout algorithme."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = 7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant donner une valeur à une variable, la changer avec une affectation et la relire pour contrôler le résultat. La prochaine leçon te montrera comment suivre pas à pas l'évolution de plusieurs variables tout au long d'un programme, ce qu'on appelle tracer l'état. Prends le temps de t'exercer sur les trois activités ci‑dessus avant de continuer."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction qui met la valeur $20$ dans la variable $score$.",
+              "answer": "$score = 20$",
+              "hint": "Le nom de la variable à gauche, le signe égal, puis la nouvelle valeur.",
+              "explanation": "L'affectation $score = 20$ replace l'ancien contenu de $score$ par $20$."
+            },
+            {
+              "question": "Au départ $x = 4$. Après l'instruction $x = x + 3$, quelle est la nouvelle valeur de $x$ ?",
+              "answer": "$7$",
+              "hint": "Calcule la partie droite avec la valeur actuelle de $x$ avant de stocker le résultat.",
+              "explanation": "Le programme évalue $x + 3$ en utilisant $4$, ce qui donne $7$, puis range $7$ dans $x$."
+            },
+            {
+              "question": "Voici deux instructions : $y = 10$ ; $y = y - 4$. Quelle valeur contient $y$ à la fin ?",
+              "answer": "$6$",
+              "hint": "Traite les instructions l'une après l'autre.",
+              "explanation": "La première met $10$ dans $y$. La seconde calcule $10 - 4 = 6$ et remet $6$ dans $y$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer l'état.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suivre l'état du programme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand un programme contient plusieurs lignes, il est très utile de savoir exactement ce que contiennent toutes les variables après chaque instruction. C'est ce qu'on appelle tracer l'état : on note, étape par étape, le nom de chaque variable et sa valeur actuelle. Imagine que tu es un observateur qui regarde le contenu des boîtes à chaque instant et qui consigne tout dans un carnet. Cette habitude t'aidera à comprendre pourquoi ton programme donne tel ou tel résultat."
+            },
+            {
+              "type": "definition",
+              "term": "état",
+              "definition": "L'ensemble des valeurs de toutes les variables à un moment donné de l'exécution du programme.",
+              "example": "Après $a = 2$ ; $b = 5$, l'état est : $a=2$, $b=5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un petit programme de trois lignes : $a = 2$ ; $b = a + 3$ ; $a = 5$. Au tout début, aucune variable n'a de valeur. Après la première ligne, la boîte $a$ contient $2$. La deuxième ligne lit $a$ (donc $2$), ajoute $3$ et range $5$ dans $b$. La troisième ligne écrase $a$ avec $5$. Si on note tout dans un tableau, on voit clairement l'évolution."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Instruction",
+                "a",
+                "b"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "début",
+                  "—",
+                  "—"
+                ],
+                [
+                  "1",
+                  "a = 2",
+                  "2",
+                  "—"
+                ],
+                [
+                  "2",
+                  "b = a + 3",
+                  "2",
+                  "5"
+                ],
+                [
+                  "3",
+                  "a = 5",
+                  "5",
+                  "5"
+                ]
+              ],
+              "caption": "Trace de l'état pour un programme à deux variables"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les programmes réels utilisent souvent plusieurs variables qui interagissent. Prenons $x = 1$ ; $y = 2$ ; $x = x + y$ ; $y = x - 1$. Ici $x$ et $y$ changent tous les deux, et la seconde affectation de $x$ utilise la valeur actuelle de $y$. Pour ne pas se perdre, on remplit un tableau ligne par ligne, exactement comme on l'a fait pour $a$ et $b$. C'est un travail de détective : chaque indice (la valeur d'une variable) sert à calculer le suivant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer avec deux variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrivons le trace complet du programme précédent. Au départ $x=1$, $y=2$. Après $x = x + y$, $x$ devient $3$ (car $1+2=3$) tandis que $y$ reste $2$. Enfin $y = x - 1$ utilise le nouveau $x=3$ pour donner $y=2$. Le tableau ci‑dessus résume ces quatre étapes. Remarque que la valeur de $y$ n'a pas changé à la fin, mais qu'elle a été recalculée à partir de $x$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Instruction",
+                "x",
+                "y"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "début",
+                  "—",
+                  "—"
+                ],
+                [
+                  "1",
+                  "x = 1",
+                  "1",
+                  "—"
+                ],
+                [
+                  "2",
+                  "y = 2",
+                  "1",
+                  "2"
+                ],
+                [
+                  "3",
+                  "x = x + y",
+                  "3",
+                  "2"
+                ],
+                [
+                  "4",
+                  "y = x - 1",
+                  "3",
+                  "2"
+                ]
+              ],
+              "caption": "Trace détaillée d'un programme à deux variables"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier ton propre trace, tu peux suivre une méthode simple en trois temps. D'abord, recopie le programme ligne par ligne. Ensuite, pour chaque ligne, note le nom de la variable modifiée et calcule la nouvelle valeur en utilisant les valeurs déjà écrites dans ton tableau. Enfin, compare ton tableau avec celui d'un camarade ou avec la correction : si tout correspond, ton trace est bon. Cette vérification systématique évite les erreurs de lecture ou de calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : recopier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque instruction du programme sur une ligne séparée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : calculer et noter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque ligne, évalue l'expression à droite avec les valeurs connues, puis inscrit le résultat dans la colonne de la variable concernée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis ton tableau et assure‑toi qu'aucune valeur ne contredit une ligne précédente."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais créer une variable et lui donner une valeur de départ.",
+                "Je sais lire (afficher) la valeur d'une variable.",
+                "Je sais modifier une variable avec une affectation.",
+                "Je sais tracer l'état d'un programme étape par étape pour plusieurs variables."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace l'état du programme : $a = 2$ ; $b = 0$ ; $b = a + 3$ ; $a = 5$. Donne les valeurs de $a$ et $b$ après chaque ligne.",
+              "answer": "Étape 1 : a=2, b=0 ; Étape 2 : a=2, b=0 ; Étape 3 : a=2, b=5 ; Étape 4 : a=5, b=5",
+              "hint": "Remplis un tableau avec une colonne par variable et une ligne par instruction.",
+              "explanation": "La première affectation donne $a=2$. La deuxième initialise $b=0$. La troisième calcule $a+3=5$ et met $5$ dans $b$. La quatrième écrase $a$ avec $5$."
+            },
+            {
+              "question": "Programme : $x = 1$ ; $y = 2$ ; $x = x + y$ ; $y = x - 1$. Quelles sont les valeurs finales de $x$ et $y$ ?",
+              "answer": "x=3, y=2",
+              "hint": "Suis l'ordre des instructions et mets à jour les variables au fur et à mesure.",
+              "explanation": "Après $x=1$, $y=2$, l'instruction $x=x+y$ donne $x=3$. Ensuite $y=x-1$ utilise $x=3$ donc $y=2$."
+            },
+            {
+              "question": "Écris un court programme qui commence avec $p = 4$, puis double $p$, puis ajoute $3$, et enfin affiche $p$.",
+              "answer": "$p = 4$ ; $p = p * 2$ ; $p = p + 3$ ; afficher $p$",
+              "hint": "Utilise l'affectation pour modifier $p$ à chaque étape.",
+              "explanation": "Chaque affectation remplace la valeur précédente : $4$ → $8$ → $11$, puis l'affichage montre $11$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

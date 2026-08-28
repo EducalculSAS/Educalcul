@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Événements",
+  "title": "Algorithmes et événements : union, intersection, contraire",
+  "blocks": [
+    {
+      "title": "Écriture d'un algorithme pour l'union de deux événements",
+      "content": "On considère un univers fini $\\Omega$ muni d'une probabilité équiprobable. Deux événements $A$ et $B$ sont représentés par des listes (tableaux) contenant les indices des issues élémentaires qui leur appartiennent. Par exemple, si $\\Omega = \\{\\omega_1, \\omega_2, \\omega_3, \\omega_4, \\omega_5\\}$, l'événement $A = \\{\\omega_1, \\omega_3\\}$ est codé par la liste `[1, 3]`. Écris un algorithme (en langage naturel structuré ou syntaxe Python) qui prend en entrée les deux listes `liste_A` et `liste_B` et qui renvoie la liste représentant l'événement $A \\cup B$ (l'union). La liste résultat ne doit pas contenir de doublons.",
+      "correctAnswer": "Algorithme Union(liste_A, liste_B) :\\n    liste_union ← liste_A copiée\\n    Pour chaque élément x dans liste_B :\\n        Si x n'est pas dans liste_union :\\n            Ajouter x à liste_union\\n    Renvoyer liste_union\\n\\nEn Python :\\n```python\\ndef union(liste_A, liste_B):\\n    liste_union = liste_A.copy()\\n    for x in liste_B:\\n        if x not in liste_union:\\n            liste_union.append(x)\\n    return liste_union\\n```",
+      "explanation": "L'union $A \\cup B$ contient tous les éléments qui appartiennent à $A$ ou à $B$ (ou aux deux). L'algorithme parcourt les éléments de $B$ et les ajoute à une copie de $A$ seulement s'ils n'y sont pas déjà, ce qui évite les doublons. En Python, on pourrait aussi utiliser les ensembles (`set`) : `list(set(liste_A) | set(liste_B))`, mais l'exercice demande généralement une écriture algorithmique explicite avec des boucles et des conditions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour l'intersection et test d'incompatibilité",
+      "content": "Reprenons le même codage des événements par des listes d'indices. Écris un algorithme qui prend en entrée `liste_A` et `liste_B` et qui :\\n1. Calcule et renvoie la liste représentant l'événement $A \\cap B$ (l'intersection).\\n2. Renvoie également un booléen (Vrai/Faux) indiquant si les événements $A$ et $B$ sont incompatibles (c'est-à-dire si $A \\cap B = \\varnothing$).",
+      "correctAnswer": "Algorithme IntersectionEtIncompatibles(liste_A, liste_B) :\\n    liste_inter ← liste vide\\n    Pour chaque élément x dans liste_A :\\n        Si x est dans liste_B :\\n            Ajouter x à liste_inter\\n    Si liste_inter est vide :\\n        incompatibles ← Vrai\\n    Sinon :\\n        incompatibles ← Faux\\n    Renvoyer liste_inter, incompatibles\\n\\nEn Python :\\n```python\\ndef inter_et_incompatibles(liste_A, liste_B):\\n    liste_inter = []\\n    for x in liste_A:\\n        if x in liste_B:\\n            liste_inter.append(x)\\n    incompatibles = (len(liste_inter) == 0)\\n    return liste_inter, incompatibles\\n```",
+      "explanation": "L'intersection $A \\cap B$ ne contient que les éléments communs aux deux listes. On parcourt la première liste et on garde l'élément seulement s'il se trouve dans la seconde. Les événements sont incompatibles (disjoints) si et seulement si leur intersection est vide. Le booléen est donc Vrai si la liste d'intersection est vide, Faux sinon.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet : probabilité de l'événement contraire",
+      "content": "On considère un univers $\\Omega$ à $N$ issues équiprobables ($N$ est un entier naturel non nul donné). Un événement $A$ est donné par la liste `liste_A` des indices de ses issues. Écris un algorithme complet qui calcule et affiche la probabilité de l'événement contraire $\\overline{A}$ (noté parfois $A^c$ ou $\\Omega \\setminus A$). L'algorithme doit inclure la lecture de $N$ et de `liste_A` (tu peux supposer une fonction `lire_liste()` pour la saisie de la liste).",
+      "correctAnswer": "Algorithme ProbaContre :\\n    // Entrées\\n    Afficher \"Entrez le cardinal N de l'univers : \"\\n    N ← Lire_Nombre_Entier()\\n    Afficher \"Entrez la liste des indices de A : \"\\n    liste_A ← Lire_Liste()\\n    \\n    // Calcul\\n    card_A ← Longueur(liste_A)  // Nombre d'éléments dans la liste\\n    p_A ← card_A / N\\n    p_contre_A ← 1 - p_A\\n    \\n    // Sortie\\n    Afficher \"P(Ā) = \", p_contre_A\\n\\nEn Python :\\n```python\\ndef proba_contre():\\n    N = int(input(\"Cardinal N de l'univers : \"))\\n    # On suppose que l'utilisateur entre les indices séparés par des espaces\\n    saisie = input(\"Indices de A (séparés par des espaces) : \")\\n    liste_A = [int(x) for x in saisie.split()] if saisie else []\\n    \\n    card_A = len(liste_A)\\n    p_contre_A = 1 - card_A / N\\n    \\n    print(f\"P(Ā) = {p_contre_A}\")\\n```",
+      "explanation": "Dans un univers équiprobable à $N$ issues, $P(A) = \\frac{\\text{Card}(A)}{N}$. L'événement contraire $\\overline{A}$ est constitué des issues de $\\Omega$ qui ne sont pas dans $A$. Sa cardinalité est $N - \\text{Card}(A)$. Donc $P(\\overline{A}) = \\frac{N - \\text{Card}(A)}{N} = 1 - \\frac{\\text{Card}(A)}{N} = 1 - P(A)$. L'algorithme compte le nombre d'éléments de la liste (Card(A)), calcule $P(A)$, puis en déduit $P(\\overline{A})$ par la formule des contraires.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 365,
+  "_course_code": "6eme-t07-c03-vues-et-perspectives",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter des vues en perspective",
+  "blocks": [
+    {
+      "title": "Vocabulaire des vues",
+      "content": "Pour représenter un solide en géométrie, on utilise trois vues principales : la vue de {{1}}, la vue de {{2}} et la vue de {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "face|devant",
+        "profil|côté|latérale",
+        "dessus|haut|supérieure"
+      ],
+      "explanation": "Les trois vues orthographiques standard pour décrire un solide dans l'espace sont : la vue de face (ou vue de devant), qui montre ce qu'on voit en regardant droit devant ; la vue de profil (ou vue de côté), qui montre ce qu'on voit depuis le côté ; et la vue de dessus (ou vue de haut), qui montre ce qu'on voit en regardant depuis le sommet.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vues d'une tour de cubes",
+      "content": "On empile quatre cubes identiques pour former une tour verticale. La vue de face de cette tour est un {{1}} composé de quatre petits carrés alignés verticalement. La vue de dessus est un unique {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "rectangle",
+        "carré"
+      ],
+      "explanation": "Une tour de quatre cubes empilés verticalement forme un pavé droit de hauteur 4 cubes et de base 1 cube sur 1 cube. Vu de face, on voit les quatre cubes les uns au-dessus des autres, ce qui forme un rectangle de 4 petits carrés de haut sur 1 de large. Vu de dessus, on ne voit que le cube du sommet, qui présente une face carrée. La vue de profil est identique à la vue de face : un rectangle de 4 carrés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconstituer un solide à partir de ses vues",
+      "content": "Un solide est constitué de cubes unités. Sa vue de face montre un rectangle de $3$ cubes de large sur $2$ cubes de haut. Sa vue de profil montre un rectangle de $2$ cubes de large sur $2$ cubes de haut. Sa vue de dessus montre un rectangle de $3$ cubes de large sur $2$ cubes de long. Le nombre minimal de cubes nécessaires pour construire ce solide est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12"
+      ],
+      "explanation": "La vue de dessus nous donne la forme de la base : un rectangle de $3$ cubes sur $2$, soit $6$ emplacements au sol. La vue de face indique que la hauteur maximale sur la largeur ($3$ cubes) est de $2$ cubes. La vue de profil indique que la hauteur maximale sur la longueur ($2$ cubes) est aussi de $2$ cubes. Pour satisfaire les trois vues avec le minimum de cubes, chaque colonne de la base doit avoir une hauteur égale au minimum des hauteurs imposées par la face et le profil pour cette position. Ici, la face impose une hauteur de $2$ partout sur la largeur, et le profil impose une hauteur de $2$ partout sur la longueur. Toutes les $6$ colonnes font donc $2$ cubes de haut. Le total minimal est $6 \\times 2 = 12$ cubes. Il s'agit d'un pavé droit plein de dimensions $3 \\times 2 \\times 2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

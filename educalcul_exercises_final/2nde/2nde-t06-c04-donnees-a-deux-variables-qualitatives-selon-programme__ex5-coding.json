@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Tableau croisé",
+  "title": "Approfondissement : Tableau croisé - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul des effectifs marginaux",
+      "content": "On considère un tableau croisé à deux variables qualitatives avec $r$ lignes et $c$ colonnes. Les effectifs observés sont notés $n_{ij}$ pour $i=1..r$, $j=1..c$. Écrire un algorithme (en langage naturel ou pseudo‑code) qui calcule les totaux de ligne $n_{i+}$, les totaux de colonne $n_{+j}$ et le total général $n_{++}$.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser un tableau ligneTotals de taille r à 0.\\n2. Initialiser un tableau colTotals de taille c à 0.\\n3. totalGeneral = 0.\\n4. Pour i de 1 à r :\\n   Pour j de 1 à c :\\n       ligneTotals[i] = ligneTotals[i] + n_{ij}\\n       colTotals[j] = colTotals[j] + n_{ij}\\n       totalGeneral = totalGeneral + n_{ij}\\n5. Afficher ligneTotals, colTotals, totalGeneral.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt chaque cellule du tableau une seule fois, accumulant les sommes par ligne, par colonne et le total global. La complexité est en $O(r \\times c)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fréquences conditionnelles par ligne",
+      "content": "À partir du même tableau croisé, écrire une fonction (syntaxe type Python) qui reçoit la matrice des effectifs $n_{ij}$ et renvoie une matrice des pourcentages par ligne, c'est‑à‑dire $f_{ij} = \\frac{n_{ij}}{n_{i+}} \\times 100$ pour chaque cellule, où $n_{i+}$ est le total de la ligne $i$.",
+      "correctAnswer": "def frequences_ligne(matrice):\\n    r = len(matrice)\\n    c = len(matrice[0])\\n    # calcul des totaux de ligne\\n    totaux_ligne = [sum(matrice[i]) for i in range(r)]\\n    # matrice résultat\\n    resultat = []\\n    for i in range(r):\\n        ligne = []\\n        for j in range(c):\\n            if totaux_ligne[i] != 0:\\n                pourcentage = matrice[i][j] / totaux_ligne[i] * 100\\n            else:\\n                pourcentage = 0\\n            ligne.append(pourcentage)\\n        resultat.append(ligne)\\n    return resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction calcule d'abord les totaux de chaque ligne, puis divise chaque effectif par le total de sa ligne et multiplie par 100 pour obtenir un pourcentage. On gère le cas où le total de ligne est nul pour éviter une division par zéro.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Statistique du chi‑carré d'indépendance",
+      "content": "Écrire un algorithme qui, à partir des effectifs observés $n_{ij}$ et des effectifs théoriques sous hypothèse d'indépendance $e_{ij} = \\frac{n_{i+}\\times n_{+j}}{n_{++}}$, calcule la statistique du chi‑carré $\\chi^2 = \\sum_{i=1}^{r}\\sum_{j=1}^{c} \\frac{(n_{ij}-e_{ij})^2}{e_{ij}}$. L'algorithme doit renvoyer la valeur de $\\chi^2$.",
+      "correctAnswer": "Algorithme :\\n1. Calculer les totaux de ligne n_i_plus, totaux de colonne n_plus_j et total général n_plus_plus (comme dans la question 1).\\n2. Initialiser chi2 = 0.\\n3. Pour i de 1 à r :\\n   Pour j de 1 à c :\\n       e_ij = (n_i_plus[i] * n_plus_j[j]) / n_plus_plus\\n       si e_ij > 0 :\\n           chi2 = chi2 + (n_ij - e_ij)^2 / e_ij\\n4. Retourner chi2.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On réutilise les totaux marginaux pour obtenir les effectifs théoriques $e_{ij}$. La somme des contributions $(n_{ij}-e_{ij})^2/e_{ij}$ donne la statistique du chi‑carré. On vérifie que $e_{ij}>0$ pour éviter une division par zéro.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

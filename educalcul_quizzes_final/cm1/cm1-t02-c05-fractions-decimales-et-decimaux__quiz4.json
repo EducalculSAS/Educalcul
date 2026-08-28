@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 223,
+  "_course_code": "cm1-t02-c05-fractions-decimales-et-decimaux",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Application : Fractions décimales et décimaux",
+  "title": "Quiz : Applications fractions décimales et nombres décimaux",
+  "questions": [
+    {
+      "text": "Quelle est l'écriture en nombre décimal de la fraction décimale $37/10$ ?",
+      "options": [
+        "$3,7$",
+        "$0,37$",
+        "$37,0$",
+        "$3,07$"
+      ],
+      "correctAnswer": "$3,7$",
+      "explanation": "La fraction $37/10$ signifie 37 dixièmes. On sépare les unités (30 dixièmes = 3 unités) et les dixièmes restants (7 dixièmes). On écrit donc 3 unités, virgule, 7 dixièmes : $3,7$. L'option $0,37$ correspond à $37/100$, $37,0$ à $370/10$ et $3,07$ à $3 + 7/100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres décimaux suivants, lequel est égal à la fraction $405/100$ ?",
+      "options": [
+        "$4,05$",
+        "$40,5$",
+        "$0,405$",
+        "$4,5$"
+      ],
+      "correctAnswer": "$4,05$",
+      "explanation": "La fraction $405/100$ représente 405 centièmes. Cela fait 4 unités (400 centièmes) et 5 centièmes. En écriture décimale, on note les unités, puis la virgule, puis les dixièmes (0 ici) et les centièmes (5) : $4,05$. $40,5$ vaut $405/10$, $0,405$ vaut $405/1000$ et $4,5$ vaut $45/10$ ou $450/100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la décomposition correcte du nombre décimal $12,34$ ?",
+      "options": [
+        "$12 + 3/10 + 4/100$",
+        "$10 + 2 + 3/10 + 4/100$",
+        "$1 + 2 + 3/10 + 4/100$",
+        "$10 + 2 + 34/100$"
+      ],
+      "correctAnswer": "$10 + 2 + 3/10 + 4/100$",
+      "explanation": "On décompose chaque chiffre selon sa valeur de position : 1 dizaine ($10$), 2 unités ($2$), 3 dixièmes ($3/10$) et 4 centièmes ($4/100$). La première option regroupe les unités ($12$) ce qui n'est pas la décomposition par valeur de position standard. La troisième option décompose mal la dizaine en unités. La dernière option regroupe les dixièmes et centièmes en $34/100$ au lieu de les séparer.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 12.34,
+        "caption": "Tableau de position pour 12,34"
+      }
+    },
+    {
+      "text": "Compare les deux nombres décimaux : $0,8$ ... $0,12$",
+      "options": [
+        "$0,8 < 0,12$",
+        "$0,8 > 0,12$",
+        "$0,8 = 0,12$",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$0,8 > 0,12$",
+      "explanation": "Pour comparer, on aligne la virgule et on complète avec des zéros pour avoir le même nombre de décimales : $0,80$ et $0,12$. On compare les parties entières (0 = 0), puis les dixièmes : 8 dixièmes contre 1 dixième. Comme 8 > 1, $0,80 > 0,12$, donc $0,8 > 0,12$. L'erreur fréquente est de comparer 8 et 12 comme des nombres entiers en oubliant la valeur de position (diantièmes vs centièmes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une corde mesure $2,45$ m. On en coupe un morceau de $1,2$ m. Quelle longueur reste-t-il ?",
+      "options": [
+        "$1,25$ m",
+        "$1,35$ m",
+        "$2,33$ m",
+        "$1,15$ m"
+      ],
+      "correctAnswer": "$1,25$ m",
+      "explanation": "Il faut effectuer la soustraction $2,45 - 1,2$. On aligne les virgules et on ajoute un zéro pour avoir le même nombre de décimales : $2,45 - 1,20$. On soustrait : $5 - 0 = 5$ centièmes, $4 - 2 = 2$ dixièmes, $2 - 1 = 1$ unité. Le résultat est $1,25$ m. $1,35$ m correspond à une addition. $2,33$ m correspond à une soustraction chiffre à chiffre sans respecter les positions. $1,15$ m est une erreur de retenue.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

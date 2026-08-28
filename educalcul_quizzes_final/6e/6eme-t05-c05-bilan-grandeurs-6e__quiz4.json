@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 356,
+  "_course_code": "6eme-t05-c05-bilan-grandeurs-6e",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Bilan - Grandeurs 6e",
+  "title": "Quiz : Bilan Grandeurs 6e",
+  "questions": [
+    {
+      "text": "On veut exprimer une longueur de $4,5\\text{ km}$ en mètres. Quelle est la bonne conversion ?",
+      "options": [
+        "45 m",
+        "450 m",
+        "4500 m",
+        "45000 m"
+      ],
+      "correctAnswer": "4500 m",
+      "explanation": "Pour convertir des kilomètres en mètres, on multiplie par 1000 car $1\\text{ km} = 1000\\text{ m}$. On calcule $4,5 \\times 1000 = 4500$. La bonne réponse est donc $4500\\text{ m}$. Les autres propositions correspondent à des erreurs de placement de la virgule (multiplication par 10, 100 ou 10000).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $2,5\\text{ kg}$ de farine. On utilise $800\\text{ g}$ pour faire un gâteau. Quelle masse de farine reste-t-il dans la boîte, exprimée en grammes ?",
+      "options": [
+        "170 g",
+        "1700 g",
+        "2420 g",
+        "3300 g"
+      ],
+      "correctAnswer": "1700 g",
+      "explanation": "Il faut d'abord mettre tout dans la même unité : les grammes. $2,5\\text{ kg} = 2,5 \\times 1000 = 2500\\text{ g}$. On soustrait la masse utilisée : $2500 - 800 = 1700\\text{ g}$. L'option 170 g correspond à une erreur de conversion ($2,5\\text{ kg} = 250\\text{ g}$). L'option 2420 g correspond à une soustraction mal alignée ($2500 - 80$). L'option 3300 g correspond à une addition au lieu d'une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un aquarium a la forme d'un pavé droit. Ses dimensions intérieures sont : longueur $80\\text{ cm}$, largeur $40\\text{ cm}$, hauteur $50\\text{ cm}$. Quel volume d'eau (en litres) peut-il contenir au maximum ?",
+      "options": [
+        "160 L",
+        "1600 L",
+        "16000 L",
+        "16 L"
+      ],
+      "correctAnswer": "160 L",
+      "explanation": "Le volume en $\\text{cm}^3$ est $80 \\times 40 \\times 50 = 160\\ 000\\text{ cm}^3$. On sait que $1\\text{ L} = 1\\text{ dm}^3 = 1000\\text{ cm}^3$. Pour passer en litres, on divise par 1000 : $160\\ 000 \\div 1000 = 160\\text{ L}$. On peut aussi convertir en dm d'abord : $8\\text{ dm} \\times 4\\text{ dm} \\times 5\\text{ dm} = 160\\text{ dm}^3 = 160\\text{ L}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un film commence à $14\\text{h}25$ et se termine à $16\\text{h}10$. Quelle est la durée du film ?",
+      "options": [
+        "1 h 15 min",
+        "1 h 45 min",
+        "2 h 15 min",
+        "2 h 45 min"
+      ],
+      "correctAnswer": "1 h 45 min",
+      "explanation": "On calcule la durée par paliers : de $14\\text{h}25$ à $15\\text{h}25$, il s'écoule $1\\text{ h}$. De $15\\text{h}25$ à $16\\text{h}10$, il s'écoule $45\\text{ min}$ (35 min pour arriver à $16\\text{h}$ + 10 min). Au total : $1\\text{ h } 45\\text{ min}$. L'erreur classique est de soustraire les heures et les minutes séparément ($16-14=2$ et $25-10=15$) ce qui donne $2\\text{ h }15\\text{ min}$, ce qui est faux car on ne peut pas soustraire 25 minutes à 10 minutes sans retenir.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt $180\\text{ km}$ en $2\\text{ h}$. En conservant la même vitesse, quelle distance parcourra-t-elle en $3\\text{ h}$ ?",
+      "options": [
+        "90 km",
+        "180 km",
+        "270 km",
+        "360 km"
+      ],
+      "correctAnswer": "270 km",
+      "explanation": "On calcule d'abord la vitesse : $180 \\div 2 = 90\\text{ km/h}$. En $3\\text{ h}$, la distance parcourue est $90 \\times 3 = 270\\text{ km}$. On peut aussi raisonner par proportionnalité : le temps est multiplié par $1,5$ ($3 \\div 2 = 1,5$), donc la distance est aussi multipliée par $1,5$ : $180 \\times 1,5 = 270\\text{ km}$. L'option 90 km est la vitesse, 180 km est la distance initiale, 360 km correspond à un doublement du temps ($4\\text{ h}$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

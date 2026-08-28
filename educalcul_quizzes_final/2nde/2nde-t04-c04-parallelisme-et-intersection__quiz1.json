@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Comparer pentes",
+  "title": "Quiz : Comparer les pentes",
+  "questions": [
+    {
+      "text": "On considère les deux droites d'équations $y = 2x + 1$ et $y = 0,5x - 3$. Laquelle de ces droites est la plus pentue (la plus raide) ?",
+      "options": [
+        "La droite $y = 2x + 1$",
+        "La droite $y = 0,5x - 3$",
+        "Les deux droites ont la même pente",
+        "On ne peut pas comparer sans tracer le graphique"
+      ],
+      "correctAnswer": "La droite $y = 2x + 1$",
+      "explanation": "Le coefficient directeur (la pente) de la première droite est $2$, celui de la seconde est $0,5$. La pente mesure la raideur : plus la valeur absolue du coefficient directeur est grande, plus la droite est pentue. Comme $|2| > |0,5|$, la première droite est plus raide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare les pentes de deux droites : l'une a pour coefficient directeur $-3$, l'autre a pour coefficient directeur $1$. Quelle affirmation est exacte ?",
+      "options": [
+        "La droite de pente $-3$ est plus pentue que celle de pente $1$",
+        "La droite de pente $1$ est plus pentue que celle de pente $-3$",
+        "Les deux droites ont la même inclinaison",
+        "La droite de pente $-3$ est horizontale"
+      ],
+      "correctAnswer": "La droite de pente $-3$ est plus pentue que celle de pente $1$",
+      "explanation": "Pour comparer la raideur (la pente au sens géométrique), on compare les valeurs absolues des coefficients directeurs. $|-3| = 3$ et $|1| = 1$. Comme $3 > 1$, la droite de coefficient directeur $-3$ est plus inclinée (plus pentue) que celle de coefficient directeur $1$, bien qu'elle soit descendante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite $(d_1)$ passe par les points $A(1 ; 2)$ et $B(3 ; 6)$. La droite $(d_2)$ passe par les points $C(0 ; 0)$ et $D(2 ; 5)$. Laquelle de ces droites est la plus pentue ?",
+      "options": [
+        "La droite $(d_1)$",
+        "La droite $(d_2)$",
+        "Les deux droites sont parallèles",
+        "Les deux droites sont perpendiculaires"
+      ],
+      "correctAnswer": "La droite $(d_2)$",
+      "explanation": "On calcule les pentes. Pour $(d_1)$ : $m_1 = \\frac{6-2}{3-1} = \\frac{4}{2} = 2$. Pour $(d_2)$ : $m_2 = \\frac{5-0}{2-0} = \\frac{5}{2} = 2,5$. On compare $|2|$ et $|2,5|$. Comme $2,5 > 2$, la droite $(d_2)$ est plus pentue que $(d_1)$. Elles ne sont pas parallèles (pentes différentes) ni perpendiculaires ($2 \\times 2,5 \\neq -1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la droite $(d_1)$ d'équation $y = -2x + 4$ et la droite $(d_2)$ passant par les points $E(0 ; 0)$ et $F(2 ; -4)$. Quelle est la position relative de ces deux droites ?",
+      "options": [
+        "Les droites sont parallèles",
+        "Les droites se coupent à l'origine",
+        "Les droites sont perpendiculaires",
+        "Les droites sont confondues"
+      ],
+      "correctAnswer": "Les droites sont parallèles",
+      "explanation": "Le coefficient directeur de $(d_1)$ est $-2$. Pour $(d_2)$, on calcule la pente : $m_2 = \\frac{-4-0}{2-0} = \\frac{-4}{2} = -2$. Les deux droites ont le même coefficient directeur ($-2$), donc elles sont parallèles. Elles ne sont pas confondues car leurs ordonnées à l'origine sont différentes ($4$ pour $(d_1)$ et $0$ pour $(d_2)$). Elles ne se coupent pas à l'origine car $(d_1)$ ne passe pas par $(0;0)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne deux droites : $(d_1) : 3x - y + 2 = 0$ et $(d_2) : x + 2y - 4 = 0$. Laquelle des affirmations suivantes est vraie concernant leurs pentes ?",
+      "options": [
+        "La droite $(d_1)$ est plus pentue que $(d_2)$",
+        "La droite $(d_2)$ est plus pentue que $(d_1)$",
+        "Les deux droites ont la même pente",
+        "La droite $(d_1)$ est montante et $(d_2)$ est descendante, on ne peut pas comparer"
+      ],
+      "correctAnswer": "La droite $(d_1)$ est plus pentue que $(d_2)$",
+      "explanation": "On met les équations sous forme réduite $y = ax + b$. Pour $(d_1)$ : $3x - y + 2 = 0 \\iff y = 3x + 2$, pente $a_1 = 3$. Pour $(d_2)$ : $x + 2y - 4 = 0 \\iff 2y = -x + 4 \\iff y = -0,5x + 2$, pente $a_2 = -0,5$. On compare les valeurs absolues : $|3| = 3$ et $|-0,5| = 0,5$. Comme $3 > 0,5$, $(d_1)$ est plus pentue que $(d_2)$. Le fait qu'une soit montante et l'autre descendante n'empêche pas la comparaison de la raideur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 156,
+  "_course_code": "ce2-t02-c05-comparer-des-fractions-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Même numérateur dans cas accessibles",
+  "title": "Comparer des fractions de même numérateur",
+  "blocks": [
+    {
+      "title": "Comparer à l'aide de bandes",
+      "content": "Observe les bandes de fractions ci-dessous. On compare $\\frac{1}{2}$ et $\\frac{1}{3}$. La fraction $\\frac{1}{2}$ est {{1}} que la fraction $\\frac{1}{3}$ car quand on partage un entier en {{2}} parts égales, les parts sont plus grandes que quand on le partage en 3 parts égales.",
+      "blanks": [
+        "plus grande",
+        "2|deux"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque deux fractions ont le même numérateur (ici 1), la plus grande est celle qui a le plus petit dénominateur. En effet, partager en 2 parts donne des parts plus grosses que partager en 3 parts. Donc 1/2 > 1/3.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          }
+        ],
+        "caption": "Comparaison visuelle de 1/2 et 1/3"
+      }
+    },
+    {
+      "title": "Compléter l'inégalité",
+      "content": "Les fractions $\\frac{2}{5}$ et $\\frac{2}{3}$ ont le même numérateur. Complète l'inégalité en choisissant le bon signe : $\\frac{2}{5}$ {{1}} $\\frac{2}{3}$.",
+      "blanks": [
+        "<"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les numérateurs sont identiques (2), on compare les dénominateurs. 5 est plus grand que 3, donc les parts de 1/5 sont plus petites que les parts de 1/3. Par conséquent, 2/5 est plus petit que 2/3. On écrit : 2/5 < 2/3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de partage",
+      "content": "Deux gâteaux identiques sont partagés. Arthur mange $\\frac{3}{4}$ du premier gâteau. Chloé mange $\\frac{3}{8}$ du second gâteau. C'est {{1}} qui a mangé la plus grande quantité car $\\frac{3}{4}$ est {{2}} que $\\frac{3}{8}$.",
+      "blanks": [
+        "Arthur",
+        "plus grande"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Les deux fractions ont le même numérateur (3). On compare les dénominateurs : 4 est plus petit que 8. Les quarts sont plus grands que les huitièmes. Donc 3/4 est plus grand que 3/8. Arthur a mangé plus que Chloé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Domaine",
+  "title": "Quiz : Domaine des fractions algébriques simples",
+  "questions": [
+    {
+      "text": "Quel est le domaine de définition de la fraction algébrique $\\frac{x+2}{x-3}$ ?",
+      "options": [
+        "Tous les réels",
+        "Tous les réels sauf 3",
+        "Tous les réels sauf -2",
+        "Tous les réels sauf -2 et 3"
+      ],
+      "correctAnswer": "Tous les réels sauf 3",
+      "explanation": "Le dénominateur $x-3$ s'annule pour $x=3$. Une fraction algébrique n'est pas définie lorsque son dénominateur est nul. Le numérateur n'influence pas le domaine. Donc le domaine est l'ensemble des réels sauf 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le domaine de définition de la fraction algébrique $\\frac{x^2-4}{x^2-9}$ ?",
+      "options": [
+        "Tous les réels",
+        "Tous les réels sauf -3 et 3",
+        "Tous les réels sauf -2 et 2",
+        "Tous les réels sauf -3, -2, 2 et 3"
+      ],
+      "correctAnswer": "Tous les réels sauf -3 et 3",
+      "explanation": "Le dénominateur $x^2-9$ se factorise en $(x-3)(x+3)$ et s'annule pour $x=3$ et $x=-3$. Le numérateur $x^2-4$ s'annule pour $x=\\pm2$ mais cela ne retire pas ces valeurs du domaine. Le domaine est donc $\\mathbb{R}\\setminus\\{-3,3\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le domaine de définition de la fraction algébrique $\\frac{x^2+1}{x^2+4}$ ?",
+      "options": [
+        "Tous les réels",
+        "Tous les réels sauf 0",
+        "Tous les réels sauf 2",
+        "Tous les réels sauf -2 et 2"
+      ],
+      "correctAnswer": "Tous les réels",
+      "explanation": "Le dénominateur $x^2+4$ est toujours strictement positif pour tout réel $x$ car $x^2\\ge0$ donc $x^2+4\\ge4>0$. Il ne s'annule jamais. La fraction est définie pour tout réel.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le domaine de définition de la fraction algébrique $\\frac{x-5}{(x-5)(x+1)}$ ?",
+      "options": [
+        "Tous les réels sauf -1",
+        "Tous les réels sauf 5",
+        "Tous les réels sauf -1 et 5",
+        "Tous les réels"
+      ],
+      "correctAnswer": "Tous les réels sauf -1 et 5",
+      "explanation": "Le dénominateur est le produit $(x-5)(x+1)$. Il s'annule pour $x=5$ et $x=-1$. Même si le facteur $x-5$ se simplifie avec le numérateur, la fraction originale n'est pas définie en $x=5$ car le dénominateur initial est nul. Le domaine exclut donc $-1$ et $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fraction algébrique $\\frac{2x+1}{x^2-4x+4}$. Quel est son domaine de définition ?",
+      "options": [
+        "Tous les réels",
+        "Tous les réels sauf 2",
+        "Tous les réels sauf -2",
+        "Tous les réels sauf 1 et 2"
+      ],
+      "correctAnswer": "Tous les réels sauf 2",
+      "explanation": "Le dénominateur $x^2-4x+4$ est un trinôme carré : $(x-2)^2$. Il s'annule uniquement pour $x=2$. La fraction n'est pas définie en ce point. Le domaine est l'ensemble des réels sauf 2.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

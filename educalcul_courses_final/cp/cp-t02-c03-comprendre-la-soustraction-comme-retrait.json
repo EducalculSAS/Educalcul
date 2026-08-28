@@ -1,0 +1,336 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.539247+00:00",
+  "id": 17,
+  "code": "cp-t02-c03",
+  "title": "Comprendre la soustraction comme retrait",
+  "description": "Cours structuré Educalcul : Comprendre la soustraction comme retrait.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Comprendre la soustraction comme retrait",
+    "objectif_global": "Comprendre la soustraction comme retrait",
+    "mini_lecons_imposees": [
+      "Retirer une partie d'une collection.",
+      "Écrire une soustraction simple.",
+      "Interpréter le résultat comme ce qui reste."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Retirer une partie d'une collection.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer une partie d'une collection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $5$ pommes bien brillantes dans un panier. Tu en donnes $2$ à ton ami qui a faim. Combien de pommes restent dans le panier ? Prends le temps de visualiser la scène avant de compter."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "5 objets au départ"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les cubes : il y a $5$ unités au début. Quand tu en retires $2$, il ne reste que $3$ unités. Tu vois bien que le retrait, c'est enlever une partie pour voir ce qui reste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas te tromper quand il y a plus d'objets, suis ces trois étapes simples : d'abord compte le total, ensuite compte ce que tu retires, enfin compte ce qui reste."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compte le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte tous les objets que tu as au début."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte ce que tu retires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les objets que tu donnes ou que tu enlèves."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compte ce qui reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre qui reste est le résultat de la soustraction."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec des crayons de couleur : tu as $6$ crayons, tu en prêtes $3$ à ton camarade. Combien de crayons te reste-t-il pour dessiner ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi voir le retrait sur une balance : le plateau de gauche baisse quand on enlève des objets, et le plateau de droite montre ce qui reste. C'est une image qui aide à comprendre."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5
+              ],
+              "right": [
+                3
+              ],
+              "caption": "Après avoir retiré 2, il reste 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as découvert que retirer, c'est faire une soustraction. Tu es prêt à écrire tes premières soustractions."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $5$ billes. Tu en donnes $2$ à ton copain. Combien de billes te reste-t-il ?",
+              "answer": "$3$",
+              "hint": "Compte les billes qui ne sont plus là.",
+              "explanation": "On part de $5$, on retire $2$, il reste $3$."
+            },
+            {
+              "question": "Il y a $6$ crayons dans la boîte. Tu en prêtes $3$. Combien de crayons restent dans la boîte ?",
+              "answer": "$3$",
+              "hint": "Enlève les crayons prêtés du total.",
+              "explanation": "$6$ moins $3$ font $3$."
+            },
+            {
+              "question": "Sur la balance, il y a $7$ jetons à gauche. Tu en retires $4$. Combien de jetons restent à gauche ?",
+              "answer": "$3$",
+              "hint": "Regarde le plateau de gauche après le retrait.",
+              "explanation": "$7$ moins $4$ font $3$."
+            }
+          ]
+        },
+        {
+          "title": "Écrire une soustraction simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une soustraction simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà retirer des objets concrets. Maintenant, on va écrire cette action avec un signe spécial : le trait d'union qui veut dire « moins ». C'est comme un petit trait qui sépare ce qu'on a au début de ce qu'on enlève."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 - 2 = 3",
+              "caption": "La soustraction s'écrit avec le signe moins"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu écris une soustraction, tu mets d'abord le nombre de départ, puis le signe moins, puis le nombre que tu retires. Le résultat s'écrit après le signe égal. Essaie d'écrire : $8$ bonbons, tu en manges $3$."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                100,
+                100,
+                100,
+                100
+              ],
+              "target": 300,
+              "caption": "Tu as 5 euros, tu donnes 2 euros, il te reste 3 euros"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on lit la soustraction à l'envers pour vérifier : on part du résultat et on ajoute ce qu'on a retiré. Sur une droite numérique, on fait des sauts en arrière pour voir où l'on arrive."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "départ"
+                },
+                {
+                  "value": 3,
+                  "label": "arrivée"
+                }
+              ],
+              "caption": "Sur la droite numérique, on recule de 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant écrire une soustraction comme un grand ! Continue à t'entraîner avec tes jouets ou tes fruits."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la soustraction pour : tu as $8$ bonbons, tu en manges $3$.",
+              "answer": "$8 - 3 = 5$",
+              "hint": "Le nombre de départ est 8, tu retires 3.",
+              "explanation": "On écrit 8 moins 3 égal 5."
+            },
+            {
+              "question": "Avec la bourse, tu as $5$ euros. Tu donnes $2$ euros. Combien te reste-t-il ? Écris la soustraction.",
+              "answer": "$5 - 2 = 3$",
+              "hint": "Utilise les pièces pour t'aider.",
+              "explanation": "5 euros moins 2 euros font 3 euros."
+            },
+            {
+              "question": "Sur la droite numérique, tu es sur $7$. Tu recules de $4$. Où arrives-tu ? Écris la soustraction.",
+              "answer": "$7 - 4 = 3$",
+              "hint": "Compte les sauts en arrière.",
+              "explanation": "7 moins 4 font 3."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter le résultat comme ce qui reste.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter le résultat comme ce qui reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après une soustraction, le nombre que tu obtiens n'est pas un nouveau nombre magique, c'est simplement ce qui reste dans tes mains. Imagine que tu as une poignée de billes et que tu en donnes quelques-unes : ce qui reste dans ta main est exactement le résultat."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                8
+              ],
+              "right": [
+                5
+              ],
+              "caption": "Au départ 8, après retrait 3, il reste 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr de ne pas te tromper, tu peux recompter ce qui reste ou ajouter ce que tu as retiré au résultat. Si tu as $8$ bonbons et que tu en donnes $3$, tu comptes les $5$ qui restent, ou tu fais $5 + 3 = 8$ pour vérifier."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison du total et du reste",
+              "bars": [
+                {
+                  "label": "Au départ",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Restant",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilise le reste pour résoudre un petit problème du quotidien : si tu as $9$ autocollants dans ton album et que tu en donnes $4$ à ton frère, combien d'autocollants te reste-t-il pour décorer ta page ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations, tu maîtrises le retrait et son résultat ! Tu peux maintenant aider tes amis à partager leurs jouets en utilisant la soustraction."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais retirer des objets d'une collection.",
+                "Je sais écrire une soustraction avec le signe moins.",
+                "Je sais lire le résultat comme ce qui reste."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $8$ billes. Tu en perds $3$. Combien te reste-t-il ?",
+              "answer": "$5$",
+              "hint": "Retire 3 du total.",
+              "explanation": "8 moins 3 font 5, c'est ce qui reste."
+            },
+            {
+              "question": "Il y a $10$ livres sur l'étagère. Tu en donnes $4$. Combien de livres restent sur l'étagère ?",
+              "answer": "$6$",
+              "hint": "Compte les livres qui ne sont plus là.",
+              "explanation": "10 moins 4 font 6, le reste."
+            },
+            {
+              "question": "Tu as $9$ autocollants. Tu en donnes $4$ à ton frère. Combien t'en reste-t-il ?",
+              "answer": "$5$",
+              "hint": "Fais la soustraction 9 - 4.",
+              "explanation": "9 moins 4 font 5 autocollants restants."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

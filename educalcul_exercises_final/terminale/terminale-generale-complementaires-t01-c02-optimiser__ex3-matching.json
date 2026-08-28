@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Conclure dans le contexte",
+  "title": "Optimisation et Conclusion dans le Contexte",
+  "blocks": [
+    {
+      "title": "Interprétation du maximum",
+      "content": "Une entreprise modélise son profit par la fonction $P(x) = -2x^2 + 120x - 500$ où $x$ est le nombre d'unités produites. Relie chaque élément mathématique à sa signification concrète.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "La valeur $x = 30$",
+          "right": "La quantité d'unités à produire pour maximiser le profit"
+        },
+        {
+          "left": "L'image $P(30) = 1300$",
+          "right": "Le profit maximal atteignable"
+        },
+        {
+          "left": "L'ordonnée à l'origine $P(0) = -500$",
+          "right": "Les coûts fixes quand aucune unité n'est produite"
+        }
+      ],
+      "explanation": "Le sommet de la parabole se trouve en $x = \\frac{-b}{2a} = \\frac{-120}{2 \\times (-2)} = 30$. Cette valeur représente l'abscisse du maximum, soit la quantité optimale. L'image $P(30)$ est la valeur maximale du profit. $P(0)$ représente la valeur de la fonction sans production.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse de coût minimal",
+      "content": "Le coût de fabrication d'un emballage est donné par $C(x) = 4x + \\frac{100}{x}$ pour $x > 0$. Relie chaque conclusion à l'analyse mathématique correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le coût est minimal pour $x = 5$",
+          "right": "La dérivée $C'(x)$ s'annule pour $x = 5$"
+        },
+        {
+          "left": "Le coût minimal est de $40$ euros",
+          "right": "La valeur de la fonction $C(5)$ est $40$"
+        },
+        {
+          "left": "Le coût augmente si $x$ dépasse $5$",
+          "right": "La fonction $C$ est croissante sur l'intervalle $[5, +\\infty[$"
+        }
+      ],
+      "explanation": "On a $C'(x) = 4 - \\frac{100}{x^2}$. $C'(x) = 0$ quand $x^2 = 25$, soit $x = 5$ car $x > 0$. Le coût minimal est alors $C(5) = 4 \\times 5 + \\frac{100}{5} = 20 + 20 = 40$. Comme $C'(x) > 0$ pour $x > 5$, la fonction est croissante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation d'une aire",
+      "content": "Un agriculteur dispose de $100$ mètres de clôture pour créer un enclos rectangulaire contre un mur. L'aire est $A(x) = x(100 - 2x)$ où $x$ est la largeur. Relie chaque résultat à sa conclusion.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x = 25$",
+          "right": "La largeur permettant d'obtenir l'aire maximale"
+        },
+        {
+          "left": "$A(25) = 1250$",
+          "right": "L'aire maximale de l'enclos en mètres carrés"
+        },
+        {
+          "left": "L'intervalle $]0, 50[$",
+          "right": "L'ensemble des valeurs possibles pour la largeur $x$"
+        }
+      ],
+      "explanation": "L'aire est $A(x) = -2x^2 + 100x$. Le maximum est atteint pour $x = \\frac{-100}{2 \\times (-2)} = 25$. L'aire maximale est $A(25) = 25 \\times (100 - 50) = 25 \\times 50 = 1250$. La largeur $x$ doit être positive et la longueur $100 - 2x$ doit être positive, donc $x$ doit être compris entre $0$ et $50$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

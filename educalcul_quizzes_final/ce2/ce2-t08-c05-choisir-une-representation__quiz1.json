@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 209,
+  "_course_code": "ce2-t08-c05-choisir-une-representation",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer tableau et diagramme",
+  "title": "Comparer tableau et diagramme",
+  "questions": [
+    {
+      "text": "Quelle représentation permet de comparer le plus facilement les quantités de chaque fruit ?",
+      "options": [
+        "Tableau",
+        "Diagramme en barres",
+        "Diagramme circulaire",
+        "Liste"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "Le diagramme en barres utilise des barres de longueurs proportionnelles aux valeurs, ce qui permet une comparaison visuelle immédiate des quantités. Le tableau nécessite une lecture chiffre par chiffre, le diagramme circulaire montre des parts d'un tout mais pas des comparaisons directes entre catégories, et une liste n'offre aucune représentation graphique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau, les nombres de fruits sont : Pommes 12, Poires 8, Bananes 15. Dans le diagramme en barres correspondant, la barre la plus haute représente les bananes. Que cela indique-t-il ?",
+      "options": [
+        "Les bananes sont les moins nombreuses",
+        "Les bananes sont les plus nombreuses",
+        "Les pommes sont les plus nombreuses",
+        "Les poires sont égales aux bananes"
+      ],
+      "correctAnswer": "Les bananes sont les plus nombreuses",
+      "explanation": "La hauteur de la barre est proportionnelle à la quantité. Comme la barre des bananes est la plus haute, cela signifie que la quantité de bananes (15) est supérieure à celles des pommes (12) et des poires (8).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 15,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un diagramme circulaire montre les parts de trois couleurs : Rouge 50 %, Bleu 30 %, Vert 20 %. Quelle representation rend le plus évident que le rouge représente la moitié du total ?",
+      "options": [
+        "Tableau",
+        "Diagramme en barres",
+        "Diagramme circulaire",
+        "Liste"
+      ],
+      "correctAnswer": "Diagramme circulaire",
+      "explanation": "Le diagramme circulaire (camembert) divise un cercle en secteurs angulaires proportionnels aux pourcentages. Un secteur de 50 % occupe exactement la moitié du cercle, ce qui est immédiatement visible. Le tableau et le diagramme en barres nécessitent une lecture numérique, et une liste n'offre aucune vue graphique.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Répartition des couleurs",
+        "slices": [
+          {
+            "label": "Rouge",
+            "value": 50,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 20,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour connaître le nombre exact d'élèves qui aiment le football dans une enquête, quelle representation est la plus adaptée ?",
+      "options": [
+        "Diagramme en barres",
+        "Diagramme circulaire",
+        "Tableau",
+        "Dessin"
+      ],
+      "correctAnswer": "Tableau",
+      "explanation": "Le tableau présente les données brutes sous forme de nombres précis, permettant de lire directement la valeur exacte. Les diagrammes (barres ou circulaire) donnent une idée visuelle mais pas la valeur chiffrée exacte sans lecture d'échelle, et un dessin n'est pas une représentation de données structurée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un enseignant affiche un diagramme en barres et un tableau avec les mêmes données. La barre « Livre » atteint 7 alors que le tableau indique 8 pour « Livre ». Que doit faire l'élève ?",
+      "options": [
+        "Croire le diagramme",
+        "Croire le tableau",
+        "Vérifier les deux sources",
+        "Ignorer la différence"
+      ],
+      "correctAnswer": "Vérifier les deux sources",
+      "explanation": "Lorsqu'une incohérence apparaît entre deux représentations, la démarche correcte est de comparer les sources, de chercher l'erreur possible (lecture d'échelle, saisie) et de corriger si nécessaire. Croire aveuglément l'un ou l'autre ou ignorer la différence ne permet pas de garantir l'exactitude de l'information.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

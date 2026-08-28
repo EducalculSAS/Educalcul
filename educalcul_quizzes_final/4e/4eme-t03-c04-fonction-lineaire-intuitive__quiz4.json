@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Application : Fonction linéaire intuitive",
+  "title": "Quiz : Applications de la fonction linéaire intuitive",
+  "questions": [
+    {
+      "text": "On considère la fonction linéaire $f(x)=3x+2$. Quelle est la valeur de $f(4)$ ?",
+      "options": [
+        "$14$",
+        "$12$",
+        "$10$",
+        "$16$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Pour $x=4$, on calcule $3\\times4+2=12+2=14$. Les autres valeurs correspondent à des erreurs de calcul ou de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction linéaire $f$. Quelle est l'expression de $f(x)$ ?",
+      "options": [
+        "$3x+5$",
+        "$3x+2$",
+        "$5x+3$",
+        "$2x+5$"
+      ],
+      "correctAnswer": "$3x+5$",
+      "explanation": "On observe que $f(0)=5$, donc l'ordonnée à l'origine est $5$. L'augmentation de $x$ de $1$ fait augmenter $f(x)$ de $3$, donc le coefficient directeur est $3$. L'expression est $f(x)=3x+5$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "0",
+            "5"
+          ],
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "11"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction linéaire passant par les points $(0,4)$ et $(2,10)$. Quelle est son équation ?",
+      "options": [
+        "$y=3x+4$",
+        "$y=2x+4$",
+        "$y=3x+2$",
+        "$y=4x+3$"
+      ],
+      "correctAnswer": "$y=3x+4$",
+      "explanation": "Le coefficient directeur est $\\frac{10-4}{2-0}=3$. L'ordonnée à l'origine est $4$. L'équation est donc $y=3x+4$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "3x+4",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction lineaire"
+      }
+    },
+    {
+      "text": "Un taxi facture un forfait de $5$ € plus $2$ € par kilomètre. Quelle fonction donne le prix $P$ en fonction de la distance $d$ en kilomètres ?",
+      "options": [
+        "$P(d)=2d+5$",
+        "$P(d)=5d+2$",
+        "$P(d)=2d-5$",
+        "$P(d)=5d-2$"
+      ],
+      "correctAnswer": "$P(d)=2d+5$",
+      "explanation": "Le forfait correspond à l'ordonnée à l'origine ($5$) et le coût par kilomètre au coefficient directeur ($2$). Donc $P(d)=2d+5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction linéaire passe par les points $(1,7)$ et $(3,13)$. Quelle est la valeur de cette fonction pour $x=5$ ?",
+      "options": [
+        "$19$",
+        "$16$",
+        "$22$",
+        "$13$"
+      ],
+      "correctAnswer": "$19$",
+      "explanation": "Le coefficient directeur est $\\frac{13-7}{3-1}=3$. L'équation est $y=3x+4$ (car $7=3\\times1+4$). Pour $x=5$, $y=3\\times5+4=19$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 640,
+  "_course_code": "terminale-generale-complementaires-t01-c04-bilan-modeles-fonctionnels",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Checklist",
+  "title": "Checklist des modèles fonctionnels",
+  "blocks": [
+    {
+      "title": "Choix du modèle",
+      "content": "Pour modéliser l'évolution d'une grandeur, je dois d'abord identifier si la croissance est additive, ce qui conduit à un modèle {{1}}, ou si la croissance est proportionnelle à la valeur actuelle, ce qui conduit à un modèle {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "linéaire|affine",
+        "exponentiel"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une croissance additive signifie qu'on ajoute une constante à chaque intervalle de temps, caractérisant une fonction affine. Une croissance proportionnelle signifie que la valeur est multipliée par un coefficient, caractérisant une fonction exponentielle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Paramètres et variables",
+      "content": "Dans un modèle de type $f(x) = a \\cdot e^{kx}$, le paramètre $a$ correspond à la {{1}} (valeur pour $x = 0$) et le signe de $k$ détermine si la fonction est {{2}} ou décroissante.",
+      "correctAnswer": "",
+      "blanks": [
+        "valeur initiale",
+        "croissante"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "En remplaçant $x$ par $0$ dans $f(x) = a \\cdot e^{kx}$, on obtient $f(0) = a \\cdot e^{0} = a$. Le signe de $k$ influence la variation : si $k > 0$, la fonction est croissante ; si $k < 0$, elle est décroissante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Validation du modèle",
+      "content": "Une fois le modèle établi, je dois vérifier sa cohérence en calculant {{1}} entre les valeurs réelles observées et les valeurs {{2}} par la fonction, puis vérifier si le domaine de définition est adapté au contexte.",
+      "correctAnswer": "",
+      "blanks": [
+        "l'écart|la différence",
+        "théoriques|prédites"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La validation d'un modèle consiste à comparer les données expérimentales (réelles) avec les valeurs données par le modèle (théoriques ou prédites) pour évaluer la précision du modèle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

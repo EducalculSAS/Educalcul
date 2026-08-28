@@ -1,0 +1,66 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Nommer inconnue",
+  "title": "Nommer l'inconnue dans la modélisation",
+  "blocks": [
+    {
+      "title": "Nommer l'inconnue dans un problème simple",
+      "content": "Dans le problème suivant : « Paul a $8$ billes. Il en perd quelques-unes. Il lui en reste $3$. Combien en a-t-il perdu ? » On note la quantité inconnue par la lettre {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "x|X"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans ce problème, la quantité cherchée (le nombre de billes perdues) est l'inconnue. En mathématiques, on représente souvent une inconnue par une lettre, généralement $x$ (ou $X$). On écrit donc : inconnue $= x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nommer l'inconnue sur un schéma en barres",
+      "content": "Le schéma en barres ci-dessous montre une quantité totale de $20$ bonbons. Une partie connue vaut $12$ bonbons, l'autre partie est inconnue. Pour modéliser ce problème, on appelle l'inconnue {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "x|X|y|Y"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le schéma en barres (ou diagramme en bandes) sépare le total en deux parties : une connue ($12$) et une inconnue. Pour écrire l'équation correspondante, on donne un nom à la partie inconnue, par exemple $x$ ou $y$. Toute lettre convient.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Connue",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Inconnue",
+            "value": 0,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Schéma en barres : total 20, partie connue 12, partie inconnue"
+      }
+    },
+    {
+      "title": "Écrire l'équation avec l'inconnue",
+      "content": "Pour résoudre le problème, on écrit l'équation $12 + {{1}} = 20$. Quelle lettre utilise-t-on pour noter l'inconnue ?",
+      "correctAnswer": "",
+      "blanks": [
+        "x|X"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation $12 + x = 20$ montre que l'on ajoute la partie inconnue ($x$) à la partie connue ($12$) pour obtenir le total ($20$). La lettre $x$ (ou $X$) est traditionnellement utilisée pour désigner l'inconnue.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

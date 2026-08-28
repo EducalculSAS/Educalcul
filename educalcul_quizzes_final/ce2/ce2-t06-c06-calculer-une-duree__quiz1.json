@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 192,
+  "_course_code": "ce2-t06-c06-calculer-une-duree",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Heure de début / fin",
+  "title": "Quiz : Heure de début et heure de fin",
+  "questions": [
+    {
+      "text": "Regarde l'horloge. Il est $10\\,\\text{h}\\,15$. Une activité dure $20$ minutes. À quelle heure se termine-t-elle ?",
+      "options": [
+        "$10\\,\\text{h}\\,35$",
+        "$10\\,\\text{h}\\,25$",
+        "$10\\,\\text{h}\\,45$",
+        "$10\\,\\text{h}\\,05$"
+      ],
+      "correctAnswer": "$10\\,\\text{h}\\,35$",
+      "explanation": "On ajoute les $20$ minutes aux $15$ minutes de l'heure de début : $15 + 20 = 35$ minutes. L'heure ne change pas car le total est inférieur à $60$ minutes. L'heure de fin est donc $10\\,\\text{h}\\,35$. L'option $10\\,\\text{h}\\,25$ correspond à une addition de $10$ minutes seulement. L'option $10\\,\\text{h}\\,45$ correspond à une addition de $30$ minutes. L'option $10\\,\\text{h}\\,05$ correspond à une soustraction de $10$ minutes.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 10,
+        "minutes": 15,
+        "caption": "Heure de début : 10h15",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un goûter commence à $14\\,\\text{h}\\,50$ et dure $25$ minutes. À quelle heure se termine-t-il ?",
+      "options": [
+        "$15\\,\\text{h}\\,15$",
+        "$14\\,\\text{h}\\,75$",
+        "$15\\,\\text{h}\\,05$",
+        "$14\\,\\text{h}\\,25$"
+      ],
+      "correctAnswer": "$15\\,\\text{h}\\,15$",
+      "explanation": "On ajoute $25$ minutes à $14\\,\\text{h}\\,50$. $50 + 25 = 75$ minutes. Comme $75$ minutes $= 1$ heure $15$ minutes, on ajoute $1$ heure à $14$ heures (ce qui fait $15$ heures) et on garde $15$ minutes. L'heure de fin est $15\\,\\text{h}\\,15$. L'option $14\\,\\text{h}\\,75$ est une écriture incorrecte (il faut convertir les minutes en heures). L'option $15\\,\\text{h}\\,05$ correspond à une addition de $15$ minutes seulement. L'option $14\\,\\text{h}\\,25$ correspond à une soustraction de $25$ minutes.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 14,
+        "minutes": 50,
+        "caption": "Heure de début : 14h50",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un film se termine à $16\\,\\text{h}\\,30$. Il a duré $45$ minutes. À quelle heure a-t-il commencé ?",
+      "options": [
+        "$15\\,\\text{h}\\,45$",
+        "$16\\,\\text{h}\\,75$",
+        "$15\\,\\text{h}\\,15$",
+        "$17\\,\\text{h}\\,15$"
+      ],
+      "correctAnswer": "$15\\,\\text{h}\\,45$",
+      "explanation": "Pour trouver l'heure de début, on soustrait la durée à l'heure de fin. On ne peut pas retirer $45$ minutes à $30$ minutes. On décompose $16\\,\\text{h}\\,30$ en $15\\,\\text{h}\\,90$ (on prend $1$ heure $= 60$ minutes). On soustrait : $90 - 45 = 45$ minutes. L'heure de début est $15\\,\\text{h}\\,45$. L'option $16\\,\\text{h}\\,75$ est une écriture impossible. L'option $15\\,\\text{h}\\,15$ correspond à une erreur de retenue (soustraire $45$ à $30$ sans convertir l'heure). L'option $17\\,\\text{h}\\,15$ correspond à une addition au lieu d'une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie commence ses devoirs à $9\\,\\text{h}\\,20$ et les finit à $10\\,\\text{h}\\,05$. Combien de temps a-t-elle mis ?",
+      "options": [
+        "$45$ minutes",
+        "$35$ minutes",
+        "$55$ minutes",
+        "$1$ heure $25$ minutes"
+      ],
+      "correctAnswer": "$45$ minutes",
+      "explanation": "On calcule la durée entre $9\\,\\text{h}\\,20$ et $10\\,\\text{h}\\,05$. De $9\\,\\text{h}\\,20$ à $10\\,\\text{h}\\,20$ il y a $1$ heure ($60$ minutes). Mais on s'arrête à $10\\,\\text{h}\\,05$, soit $15$ minutes avant $10\\,\\text{h}\\,20$. La durée est donc $60 - 15 = 45$ minutes. On peut aussi compter : $40$ minutes pour aller à $10\\,\\text{h}$ ($20 + 40 = 60$) puis $5$ minutes de plus, soit $45$ minutes. L'option $35$ minutes oublie de convertir l'heure en minutes ($5 - 20$ sans retenue). L'option $55$ minutes ajoute $10$ minutes. L'option $1$ heure $25$ minutes additionne les deux horaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une séance de cinéma commence à $14\\,\\text{h}\\,10$. Il y a $15$ minutes de bandes-annonces puis le film dure $1$ heure $30$ minutes. À quelle heure la séance se termine-t-elle ?",
+      "options": [
+        "$15\\,\\text{h}\\,55$",
+        "$15\\,\\text{h}\\,40$",
+        "$16\\,\\text{h}\\,55$",
+        "$15\\,\\text{h}\\,25$"
+      ],
+      "correctAnswer": "$15\\,\\text{h}\\,55$",
+      "explanation": "On additionne les deux durées à l'heure de début. D'abord les bandes-annonces : $14\\,\\text{h}\\,10 + 15$ minutes $= 14\\,\\text{h}\\,25$. Ensuite le film : $14\\,\\text{h}\\,25 + 1$ heure $= 15\\,\\text{h}\\,25$, puis $+ 30$ minutes $= 15\\,\\text{h}\\,55$. L'option $15\\,\\text{h}\\,40$ correspond à l'oubli des $15$ minutes de bandes-annonces ($14\\,\\text{h}\\,10 + 1\\,\\text{h}\\,30$). L'option $16\\,\\text{h}\\,55$ correspond à l'addition de $2$ heures $30$ au lieu de $1\\,\\text{h}\\,30$ (ou une erreur de conversion). L'option $15\\,\\text{h}\\,25$ correspond à l'oubli des $30$ minutes du film (ajout de $1$ heure seulement).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

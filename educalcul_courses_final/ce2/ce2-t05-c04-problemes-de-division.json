@@ -1,0 +1,529 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.047016+00:00",
+  "id": 181,
+  "code": "ce2-t05-c04",
+  "title": "Problèmes de division",
+  "description": "Cours structuré Educalcul : Problèmes de division.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de division",
+    "objectif_global": "Problèmes de division",
+    "mini_lecons_imposees": [
+      "Partage.",
+      "Groupement.",
+      "Interpréter quotient et reste."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Partage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le partage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $12$ bonbons et que tu veux les donner à $3$ copains pour que chacun ait la même quantité. C'est ce qu'on appelle un partage : on répartit un total en parts égales. Ici, le total c'est $12$, le nombre de parts c'est $3$. On se demande : combien de bonbons par part ?"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Part 1",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 3",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Partage de $12$ en $3$ parts égales : $4$ par part"
+            },
+            {
+              "type": "paragraph",
+              "content": "On écrit cette division ainsi : $12 \\div 3 = 4$. Le nombre qu'on partage ($12$) s'appelle le dividende. Le nombre de parts ($3$) est le diviseur. Le résultat ($4$) est le quotient. Retiens bien ces trois mots, ils reviennent tout le temps."
+            },
+            {
+              "type": "definition",
+              "term": "Dividende",
+              "definition": "Le nombre total qu'on veut partager ou répartir.",
+              "example": "Dans $12 \\div 3 = 4$, le dividende est $12$."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Le nombre de parts ou la taille d'un groupe selon le problème.",
+              "example": "Dans $12 \\div 3 = 4$, le diviseur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient",
+              "definition": "Le résultat de la division : ce que contient chaque part ou le nombre de groupes.",
+              "example": "Dans $12 \\div 3 = 4$, le quotient est $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le partage ne tombe pas juste. Suppose que tu as $13$ bonbons pour $3$ copains. Tu donnes $4$ bonbons à chacun, il t'en reste $1$. Ce bonbon qui ne peut pas être partagé équitablement, c'est le reste. On note : $13 \\div 3 = 4$ reste $1$. Le reste est toujours plus petit que le diviseur."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 13,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Part 1",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 3",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Reste",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Partage de $13$ en $3$ parts : $4$ par part et $1$ reste"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre un problème de partage, suis ces étapes : lis le problème, repère le total (dividende) et le nombre de parts (diviseur), fais la division, écris la réponse en phrase. Si tu bloques, dessine un schéma en barres comme ceux qu'on vient de voir, ça aide à visualiser."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le nombre de départ : Combien d'objets au total ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le nombre de parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de personnes ou de groupes doivent recevoir la même chose ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le total par le nombre de parts. Note le quotient et le reste s'il y en a un."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répondre en phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque part reçoit ... (quotient). Il reste ... (reste)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $15$ billes et tu veux les partager équitablement entre $5$ amis. Combien de billes reçoit chaque ami ?",
+              "answer": "Chaque ami reçoit $3$ billes.",
+              "hint": "Fais la division $15 \\div 5$.",
+              "explanation": "$15$ divisé par $5$ fait $3$. Il n'y a pas de reste."
+            },
+            {
+              "question": "Partage $17$ crayons entre $4$ camarades. Combien de crayons par camarade et combien en reste-t-il ?",
+              "answer": "Chaque camarade reçoit $4$ crayons, il reste $1$ crayon.",
+              "hint": "Calcule $17 \\div 4$. Le quotient est le nombre de crayons par camarade, le reste est ce qui ne peut pas être distribué.",
+              "explanation": "$4 \\times 4 = 16$, donc $17 - 16 = 1$ reste."
+            },
+            {
+              "question": "Un pâtissier a $28$ gâteaux. Il les met dans $6$ boîtes en mettant le même nombre dans chaque boîte. Combien de gâteaux par boîte ? Combien de gâteaux restent sur la table ?",
+              "answer": "Il y a $4$ gâteaux par boîte et $4$ gâteaux restent sur la table.",
+              "hint": "Effectue $28 \\div 6$. Le quotient donne le nombre par boîte, le reste ceux qui ne rentrent pas.",
+              "explanation": "$6 \\times 4 = 24$, $28 - 24 = 4$."
+            }
+          ]
+        },
+        {
+          "title": "Groupement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le groupement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons d'histoire. Tu as $20$ crayons et tu veux faire des paquets de $4$ crayons chacun. Combien de paquets vas-tu pouvoir faire ? Cette fois, on ne connaît pas le nombre de parts, on connaît la taille de chaque groupe. C'est un groupement : on forme des groupes de même taille."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 1",
+                  "value": 4,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Groupe 2",
+                  "value": 4,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 4,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Groupe 4",
+                  "value": 4,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Groupe 5",
+                  "value": 4,
+                  "tone": "orange"
+                }
+              ],
+              "caption": "Groupement de $20$ en groupes de $4$ : $5$ groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'écriture est la même : $20 \\div 4 = 5$. Mais le sens change : le diviseur ($4$) est la taille d'un groupe, le quotient ($5$) est le nombre de groupes. C'est l'autre visage de la division."
+            },
+            {
+              "type": "definition",
+              "term": "Groupement",
+              "definition": "On forme des groupes de même taille à partir d'un total. Le diviseur est la taille du groupe, le quotient est le nombre de groupes.",
+              "example": "$20$ crayons, groupes de $4$ $\\rightarrow$ $20 \\div 4 = 5$ groupes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le total ne se range pas parfaitement ? Tu as $22$ élèves et tu veux faire des équipes de $5$ pour un jeu. Tu formes $4$ équipes de $5$ ($20$ élèves), il reste $2$ élèves qui ne forment pas une équipe complète. On écrit : $22 \\div 5 = 4$ reste $2$. Le reste, ce sont les élèves en attente."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 22,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Équipe 1",
+                  "value": 5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Équipe 2",
+                  "value": 5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Équipe 3",
+                  "value": 5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Équipe 4",
+                  "value": 5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Reste",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Groupement de $22$ en groupes de $5$ : $4$ groupes et $2$ restants"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre un problème de groupement, la méthode est très proche : identifie le total, identifie la taille d'un groupe (le diviseur), divise pour trouver le nombre de groupes (le quotient), et n'oublie pas le reste s'il y en a un. Dessine des petits tas ou des barres si ça t'aide à voir les groupes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Quel est le total ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien d'objets ou de personnes au départ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Quelle est la taille d'un groupe ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le problème dit : \"des groupes de ...\" ou \"par paquets de ...\""
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Divise pour compter les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Total divisé par taille du groupe = nombre de groupes (quotient). Note le reste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Réponds à la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On peut faire ... groupes complets. Il en reste ..."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $24$ autocollants. Tu les ranges par paquets de $6$. Combien de paquets fais-tu ?",
+              "answer": "Tu fais $4$ paquets.",
+              "hint": "Divise $24$ par $6$.",
+              "explanation": "$24 \\div 6 = 4$. Il n'y a pas de reste."
+            },
+            {
+              "question": "Une classe de $29$ élèves part en sortie. Le car prend $8$ élèves par voyage. Combien de voyages le car doit-il faire pour emmener tout le monde ?",
+              "answer": "Le car fait $3$ voyages complets et il reste $5$ élèves pour un quatrième voyage.",
+              "hint": "Calcule $29 \\div 8$. Le quotient donne les voyages complets, le reste ceux qui attendent.",
+              "explanation": "$8 \\times 3 = 24$, $29 - 24 = 5$. Il faut un voyage de plus pour les $5$ restants."
+            },
+            {
+              "question": "Un boulanger a $35$ baguettes. Il les met dans des sacs de $4$. Combien de sacs pleins ? Combien de baguettes sans sac ?",
+              "answer": "Il fait $8$ sacs pleins et il reste $3$ baguettes.",
+              "hint": "Effectue $35 \\div 4$.",
+              "explanation": "$4 \\times 8 = 32$, $35 - 32 = 3$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter quotient et reste.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter quotient et reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant faire des divisions. Mais le quotient et le reste, qu'est-ce qu'ils veulent dire vraiment dans l'histoire ? C'est ça, interpréter : remettre les nombres dans le concret pour répondre juste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des $29$ élèves et du car de $8$ places. La division donne $29 \\div 8 = 3$ reste $5$. Le quotient $3$, ce sont les voyages complets. Le reste $5$, ce sont les élèves qui n'ont pas de place dans ces $3$ voyages. La question : \"Combien de voyages pour emmener tout le monde ?\" La réponse n'est pas $3$, c'est $4$ voyages, car les $5$ restants ont aussi besoin d'un car."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Si la question demande \"combien de groupes complets ?\", le quotient suffit. Si elle demande \"combien de groupes en tout pour que personne ne reste ?\", il faut ajouter $1$ s'il y a un reste."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le reste ne s'utilise pas de la même façon. Imagine $31$ œufs à mettre dans des boîtes de $6$. $31 \\div 6 = 5$ reste $1$. Si on demande \"combien de boîtes pleines ?\", la réponse est $5$ (le quotient). Si on demande \"combien de boîtes pour tous les œufs ?\", il faut $6$ boîtes (quotient $+1$). Et l'œuf tout seul ? Il ira dans la sixième boîte, qui ne sera pas pleine."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 31,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 1",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 4",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 5",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 6 (incomplète)",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Groupement de $31$ œufs en boîtes de $6$ : $5$ pleines, $1$ incomplète"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a aussi les partages où le reste a du sens. $17$ bonbons partagés entre $4$ enfants : $17 \\div 4 = 4$ reste $1$. Chaque enfant a $4$ bonbons, il en reste $1$. Que fait-on du dernier ? On peut le couper en $4$ (mais ce n'est plus des bonbons entiers), le donner à un cinquième ami, ou le garder pour plus tard. Le problème dit souvent quoi en faire."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne jette jamais le reste sans réfléchir ! Relis la question : \"combien par part ?\" $\\rightarrow$ quotient. \"Combien de parts pleines ?\" $\\rightarrow$ quotient. \"Combien de parts en tout ?\" $\\rightarrow$ quotient $+1$ s'il y a un reste."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons : dans un problème de division, identifie si c'est un partage (nombre de parts connu) ou un groupement (taille du groupe connue). Fais la division. Regarde le quotient et le reste. Relis la question pour décider ce que deviennent le quotient et le reste. C'est comme être détective : les nombres sont des indices, la question est l'énigme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un problème de partage (on connaît le nombre de parts).",
+                "Je sais reconnaître un problème de groupement (on connaît la taille du groupe).",
+                "Je sais écrire la division correspondante : dividende ÷ diviseur = quotient reste reste.",
+                "Je sais interpréter le quotient : nombre d'objets par part OU nombre de groupes.",
+                "Je sais interpréter le reste : objets qui ne rentrent pas dans un groupe complet ou qui ne peuvent pas être partagés équitablement.",
+                "Je sais adapter ma réponse selon la question : quotient seul, quotient + 1, ou quotient avec reste."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un instituteur a $37$ cahiers. Il veut les distribuer équitablement à $6$ élèves. Combien de cahiers chaque élève reçoit-il ? Combien de cahiers restent dans le tiroir ?",
+              "answer": "Chaque élève reçoit $6$ cahiers. Il reste $1$ cahier dans le tiroir.",
+              "hint": "C'est un partage : $37 \\div 6$. Le quotient est le nombre par élève, le reste ceux qui restent.",
+              "explanation": "$6 \\times 6 = 36$, $37 - 36 = 1$."
+            },
+            {
+              "question": "Une ferme a $43$ pommes. On les met en sacs de $5$. Combien de sacs pleins ? Combien de pommes en trop ?",
+              "answer": "On fait $8$ sacs pleins. Il reste $3$ pommes.",
+              "hint": "Groupement : $43 \\div 5$. Quotient = sacs pleins, reste = pommes en trop.",
+              "explanation": "$5 \\times 8 = 40$, $43 - 40 = 3$."
+            },
+            {
+              "question": "Pour une kermesse, $52$ enfants doivent être assis sur des bancs de $8$ places. Combien de bancs faut-il prévoir ?",
+              "answer": "Il faut $7$ bancs.",
+              "hint": "Groupement : $52 \\div 8 = 6$ reste $4$. Comme il reste $4$ enfants, il faut un banc de plus.",
+              "explanation": "$8 \\times 6 = 48$, $52 - 48 = 4$. $6$ bancs pleins + $1$ banc pour les $4$ restants = $7$ bancs."
+            },
+            {
+              "question": "Un fleuriste a $61$ roses. Il fait des bouquets de $7$ roses. Combien de bouquets peut-il faire ? Combien de roses lui reste-t-il pour un petit bouquet ?",
+              "answer": "Il fait $8$ bouquets de $7$ roses. Il lui reste $5$ roses pour un petit bouquet.",
+              "hint": "Groupement : $61 \\div 7$. Le quotient est le nombre de gros bouquets, le reste les roses restantes.",
+              "explanation": "$7 \\times 8 = 56$, $61 - 56 = 5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

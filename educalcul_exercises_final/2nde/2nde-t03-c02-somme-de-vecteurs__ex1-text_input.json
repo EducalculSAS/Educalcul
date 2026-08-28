@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Relation de Chasles",
+  "title": "Exercices sur la relation de Chasles",
+  "blocks": [
+    {
+      "title": "Application directe de la relation de Chasles",
+      "content": "Soient $A$, $B$, $C$ trois points du plan. Exprimez le vecteur $\\overrightarrow{AC}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{BC}$.",
+      "correctAnswer": "$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la relation de Chasles, pour trois points $A$, $B$, $C$ on a $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC}$. C'est la définition même de la somme de deux vecteurs successifs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vecteur opposé dans un triangle",
+      "content": "Dans le triangle $ABC$, on pose $\\overrightarrow{AB} = \\vec{u}$ et $\\overrightarrow{BC} = \\vec{v}$. Déterminez $\\overrightarrow{CA}$ en fonction de $\\vec{u}$ et $\\vec{v}$.",
+      "correctAnswer": "$\\overrightarrow{CA} = -\\vec{u} - \\vec{v}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a $\\overrightarrow{CA} = -\\overrightarrow{AC}$. Par la relation de Chasles, $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\vec{u} + \\vec{v}$. Donc $\\overrightarrow{CA} = -(\\vec{u} + \\vec{v}) = -\\vec{u} - \\vec{v}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de plusieurs vecteurs dans un quadrilatère",
+      "content": "Soit $ABCD$ un quadrilatère. On note $\\overrightarrow{AB} = \\vec{a}$, $\\overrightarrow{BC} = \\vec{b}$, $\\overrightarrow{CD} = \\vec{c}$. Exprimez $\\overrightarrow{AD}$ à l'aide de $\\vec{a}$, $\\vec{b}$, $\\vec{c}$.",
+      "correctAnswer": "$\\overrightarrow{AD} = \\vec{a} + \\vec{b} + \\vec{c}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En appliquant la relation de Chasles successivement : $\\overrightarrow{AD} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CD} = \\vec{a} + \\vec{b} + \\vec{c}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

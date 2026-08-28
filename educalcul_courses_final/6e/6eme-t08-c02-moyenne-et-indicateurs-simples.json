@@ -1,0 +1,387 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.642176+00:00",
+  "id": 369,
+  "code": "6eme-t08-c02",
+  "title": "Moyenne et indicateurs simples",
+  "description": "Cours structuré Educalcul : Moyenne et indicateurs simples.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Moyenne et indicateurs simples",
+    "objectif_global": "Moyenne et indicateurs simples",
+    "mini_lecons_imposees": [
+      "Calculer moyenne.",
+      "Interpréter.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Calculer moyenne.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la moyenne : une idée simple et puissante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une classe de $6^e$ où cinq élèves passent un petit contrôle de calcul mental. Les notes tombent : $12$, $14$, $16$, $10$ et $18$. Si le prof veut donner une seule note qui résume la performance du groupe, quelle note choisirait-il ? C'est là qu'intervient la moyenne. Elle permet de remplacer plusieurs valeurs par une seule qui en est comme le « point d'équilibre ». Aujourd'hui, tu vas apprendre à la calculer pas à pas, sans te presser."
+            },
+            {
+              "type": "definition",
+              "term": "Moyenne",
+              "definition": "La moyenne d'une série de nombres est la somme de toutes les valeurs divisée par le nombre de valeurs. Elle donne une valeur représentative de l'ensemble.",
+              "example": "Pour les notes $12$, $14$, $16$, $10$, $18$ : la somme est $70$, il y a $5$ notes, donc la moyenne est $70 \\div 5 = 14$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des notes. Pour trouver la moyenne, on suit toujours les mêmes deux étapes : d'abord additionner toutes les valeurs, ensuite diviser le total par le nombre de valeurs. C'est une recette qui marche à tous les coups, que ce soit pour des notes, des tailles, des temps de course ou des prix."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner toutes les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit la somme : $12 + 14 + 16 + 10 + 18$. On peut regrouper malin : $(12+18) + (14+16) + 10 = 30 + 30 + 10 = 70$. Le total est $70$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter le nombre de valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il y a $5$ notes dans la liste. On note souvent cet effectif par la lettre $n$. Ici $n = 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser la somme par l'effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $70 \\div 5 = 14$. La moyenne de la série est $14$. On peut l'écrire : $\\text{Moyenne} = \\frac{\\text{Somme des valeurs}}{\\text{Nombre de valeurs}}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Notes des cinq élèves et ligne de moyenne à 14",
+              "bars": [
+                {
+                  "label": "Élève 1",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Élève 2",
+                  "value": 14,
+                  "tone": "green"
+                },
+                {
+                  "label": "Élève 3",
+                  "value": 16,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Élève 4",
+                  "value": 10,
+                  "tone": "red"
+                },
+                {
+                  "label": "Élève 5",
+                  "value": 18,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique : la barre de la moyenne ($14$) coupe l'ensemble des barres en deux groupes. Deux notes sont au-dessus, deux sont en dessous, et une est pile dessus. C'est cette propriété d'équilibre qui fait tout le sens de la moyenne. Essaie maintenant de calculer une moyenne toi-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de calculer ta première moyenne ! Remarque comme la méthode est toujours la même : additionner, compter, diviser. Dans la prochaine leçon, on verra ce que la moyenne raconte vraiment sur un groupe de données, et pourquoi elle peut parfois nous surprendre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un boulanger pèse cinq baguettes : $250\\,g$, $260\\,g$, $240\\,g$, $255\\,g$ et $245\\,g$. Calcule la masse moyenne d'une baguette.",
+              "answer": "$250\\,g$",
+              "hint": "Additionne les cinq masses, puis divise par $5$.",
+              "explanation": "La somme est $250+260+240+255+245 = 1250$. Il y a $5$ baguettes. $1250 \\div 5 = 250$. La masse moyenne est $250\\,g$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Que raconte vraiment la moyenne ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer une moyenne. Mais sais-tu l'interpréter ? La moyenne n'est pas qu'un nombre : c'est un résumé qui dit « voilà la valeur typique du groupe ». Pourtant, elle a ses secrets. Prenons deux classes qui ont toutes les deux une moyenne de $12$ au même contrôle. Dans la première, les notes sont $11$, $12$, $12$, $13$, $12$. Dans la seconde : $4$, $10$, $14$, $16$, $16$. Même moyenne, mais des réalités bien différentes !"
+            },
+            {
+              "type": "definition",
+              "term": "Interpréter une moyenne",
+              "definition": "Dire ce que la moyenne signifie dans la situation concrète : valeur centrale, point d'équilibre, indicateur de tendance. Attention : la moyenne ne décrit pas la dispersion des valeurs.",
+              "example": "Moyenne de $12$ : « En général, les élèves ont obtenu environ $12$ ». Mais ça ne dit pas si tous sont proches de $12$ ou s'ils sont très écartés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons à nos deux classes. Dans la première, tout le monde est serré autour de $12$ : la moyenne est très représentative. Dans la seconde, les notes sont éparpillées : un élève a $4$, un autre $16$. La moyenne $12$ ne correspond à la note d'aucun élève ! C'est le piège : la moyenne peut masquer de grandes différences. Pour bien interpréter, il faut toujours se demander : « Les valeurs sont-elles groupées ou éparpillées autour de la moyenne ? »"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de deux classes même moyenne (12) mais dispersion différente",
+              "bars": [
+                {
+                  "label": "Classe A - Élève 1",
+                  "value": 11,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe A - Élève 2",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe A - Élève 3",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe A - Élève 4",
+                  "value": 13,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe A - Élève 5",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe B - Élève 1",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Classe B - Élève 2",
+                  "value": 10,
+                  "tone": "red"
+                },
+                {
+                  "label": "Classe B - Élève 3",
+                  "value": 14,
+                  "tone": "red"
+                },
+                {
+                  "label": "Classe B - Élève 4",
+                  "value": 16,
+                  "tone": "red"
+                },
+                {
+                  "label": "Classe B - Élève 5",
+                  "value": 16,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe les deux groupes de barres. La classe A (bleu) forme un petit paquet serré. La classe B (rouge) s'étale large. Pourtant, la ligne de moyenne à $12$ traverse les deux. C'est pour cela qu'on ne doit jamais se contenter de la moyenne seule : elle donne le centre, mais pas l'étendue. Dans la vie courante, pense aux salaires : la moyenne peut être tirée vers le haut par quelques très gros salaires, sans que le salaire « typique » ne change. C'est là qu'on voit tout l'intérêt d'apprendre à comparer, ce qu'on fera dans la dernière leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu que la moyenne est un indicateur de position : elle situe le centre du groupe. Mais elle ne dit rien de l'écart entre les valeurs. Pour aller plus loin, il faut comparer des moyennes entre elles, et aussi regarder comment les valeurs sont réparties autour. C'est exactement ce qu'on va faire maintenant."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux groupes d'élèves courent $100\\,m$. Groupe 1 : temps $14$, $15$, $14$, $15$, $14$ (en secondes). Groupe 2 : temps $10$, $12$, $16$, $18$, $14$. Les deux groupes ont la même moyenne. Laquelle des affirmations est juste ?",
+              "answer": "La moyenne est identique mais le groupe 2 est plus hétérogène (plus dispersé) que le groupe 1.",
+              "hint": "Calcule les deux moyennes, puis regarde l'écart entre les valeurs extrêmes de chaque groupe.",
+              "explanation": "Groupe 1 : somme $72$, moyenne $72\\div5 = 14,4\\,s$. Groupe 2 : somme $70$, moyenne $14\\,s$. Moyennes proches. Mais groupe 1 : valeurs entre $14$ et $15$ (écart $1$). Groupe 2 : valeurs entre $10$ et $18$ (écart $8$). Le groupe 2 est bien plus dispersé."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des groupes grâce à la moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer et interpréter une moyenne, tu vas pouvoir comparer deux groupes ou plus. C'est une compétence clé : on l'utilise pour comparer des classes, des équipes sportives, des marques de piles, des rendements de cultures... La moyenne donne un premier verdict, mais il faut savoir l'affiner en observant aussi la dispersion."
+            },
+            {
+              "type": "definition",
+              "term": "Comparer deux séries statistiques",
+              "definition": "Calculer la moyenne de chaque série, comparer ces moyennes, puis observer la dispersion (étendue, valeurs extrêmes) pour nuancer la comparaison.",
+              "example": "Équipe A : moyenne $12\\,m$ au lancer de poids, valeurs entre $11$ et $13$. Équipe B : moyenne $11,5\\,m$, valeurs entre $9$ et $14$. L'équipe A a meilleure moyenne ET plus de régularité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux marques de piles testées en laboratoire. Marque Soleil : durées $8$, $9$, $9$, $10$, $9$ heures. Marque Éclair : durées $7$, $8$, $11$, $12$, $7$ heures. Calculons les moyennes. Pour Soleil : somme $45$, moyenne $9\\,h$. Pour Éclair : somme $45$, moyenne $9\\,h$ aussi. Égalité parfaite ! Pourtant, si tu pars en rando, quelle marque choisis-tu ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les deux moyennes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soleil : $(8+9+9+10+9) \\div 5 = 45 \\div 5 = 9$. Éclair : $(7+8+11+12+7) \\div 5 = 45 \\div 5 = 9$. Les moyennes sont égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer les valeurs extrêmes (étendue)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soleil : minimum $8$, maximum $10$, étendue $2$. Éclair : minimum $7$, maximum $12$, étendue $5$. Soleil est beaucoup plus régulière."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure en contexte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Même moyenne, mais Soleil est plus fiable : aucune pile ne descend sous $8\\,h$. Éclair a des piles qui tiennent $12\\,h$ (super) mais aussi $7\\,h$ (risqué). Pour une rando, la régularité de Soleil rassure davantage."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Durée de vie de deux marques de piles (même moyenne 9h)",
+              "bars": [
+                {
+                  "label": "Soleil 1",
+                  "value": 8,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Soleil 2",
+                  "value": 9,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Soleil 3",
+                  "value": 9,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Soleil 4",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Soleil 5",
+                  "value": 9,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Éclair 1",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Éclair 2",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Éclair 3",
+                  "value": 11,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Éclair 4",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Éclair 5",
+                  "value": 7,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre bien la différence : les barres Soleil (or) forment un bloc compact, tandis que les barres Éclair (bleu) s'étagent de $7$ à $12$. Comparer, ce n'est pas seulement dire « la moyenne de A est plus grande que celle de B ». C'est aussi regarder la forme de la distribution. C'est ce qui rend les statistiques vivantes et utiles au quotidien !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de terminer le cours sur la moyenne et les indicateurs simples. Tu sais maintenant calculer une moyenne, l'interpréter comme un centre de gravité des données, et comparer deux groupes en allant au-delà du simple chiffre. Ces outils te serviront tout au long de ta scolarité et bien après, pour lire des graphiques, comprendre des études, ou simplement faire des choix éclairés. Voici un récapitulatif de ce que tu as acquis :"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la moyenne d'une série de nombres : additionner les valeurs, compter l'effectif, diviser.",
+                "Je sais interpréter la moyenne comme une valeur représentative du groupe, un point d'équilibre.",
+                "Je sais que la moyenne ne dit pas tout : elle masque la dispersion, il faut regarder les valeurs extrêmes.",
+                "Je sais comparer deux groupes en comparant leurs moyennes ET en observant leur régularité (étendue).",
+                "Je sais utiliser un diagramme en barres pour visualiser une série et sa moyenne."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux profs comparent leurs classes au brevet blanc. Classe 1 : moyennes $11$, $12$, $13$, $12$, $12$. Classe 2 : moyennes $10$, $11$, $14$, $13$, $12$. Quelle classe a la meilleure moyenne ? Laquelle est la plus homogène ?",
+              "answer": "Classe 1 : moyenne $12$, étendue $2$ (de $11$ à $13$). Classe 2 : moyenne $12$, étendue $4$ (de $10$ à $14$). Moyennes égales, mais classe 1 plus homogène.",
+              "hint": "Calcule la somme de chaque classe, divise par $5$. Puis note le minimum et le maximum de chaque classe.",
+              "explanation": "Classe 1 : somme $60$, moyenne $12$. Min $11$, max $13$, étendue $2$. Classe 2 : somme $60$, moyenne $12$. Min $10$, max $14$, étendue $4$. Même moyenne, classe 1 plus serrée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

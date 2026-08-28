@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Repère, milieu et distance",
+  "title": "Application : Repère, milieu et distance",
+  "questions": [
+    {
+      "text": "Les points A et B ont pour coordonnées respectives $A(2,3)$ et $B(8,7)$. Quelles sont les coordonnées du milieu du segment $[AB]$ ?",
+      "options": [
+        "$(5,5)$",
+        "$(4,5)$",
+        "$(5,4)$",
+        "$(6,5)$"
+      ],
+      "correctAnswer": "$(5,5)$",
+      "explanation": "Le milieu d'un segment d'extrémités $(x_1,y_1)$ et $(x_2,y_2)$ a pour coordonnées $\\left(\\frac{x_1+x_2}{2},\\frac{y_1+y_2}{2}\\right)$. Ici $\\frac{2+8}{2}=5$ et $\\frac{3+7}{2}=5$, donc le milieu est $(5,5)$. Les autres options correspondent à des erreurs de calcul sur l'une des coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez la distance entre les points $C(-1,2)$ et $D(3,-4)$. Donnez la réponse sous forme simplifiée.",
+      "options": [
+        "$2\\sqrt{13}$",
+        "$\\sqrt{52}$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$2\\sqrt{13}$",
+      "explanation": "La distance est $\\sqrt{(3-(-1))^2+(-4-2)^2}=\\sqrt{4^2+(-6)^2}=\\sqrt{16+36}=\\sqrt{52}=2\\sqrt{13}$. L'option $\\sqrt{52}$ n'est pas simplifiée, $6$ et $8$ sont des valeurs approximatives incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $E(1,1)$, $F(4,5)$ et $G(7,9)$ sont-ils alignés ?",
+      "options": [
+        "Oui, elles sont alignées",
+        "Non, elles ne sont pas alignées",
+        "Seulement E et F sont alignées",
+        "Seulement F et G sont alignées"
+      ],
+      "correctAnswer": "Oui, elles sont alignées",
+      "explanation": "La pente $EF$ est $\\frac{5-1}{4-1}=\\frac{4}{3}$. La pente $FG$ est $\\frac{9-5}{7-4}=\\frac{4}{3}$. Les deux pentes sont égales, donc les trois points sont alignés. Les autres affirmations sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un point $H$ a pour coordonnées $(x, 2x+1)$. Si la distance de $H$ à l'origine est $\\sqrt{5}$, quelle est la valeur positive de $x$ ?",
+      "options": [
+        "$\\frac{-2+2\\sqrt{6}}{5}$",
+        "$\\frac{-2-2\\sqrt{6}}{5}$",
+        "$1$",
+        "$-1$"
+      ],
+      "correctAnswer": "$\\frac{-2+2\\sqrt{6}}{5}$",
+      "explanation": "La distance au carré donne $x^2+(2x+1)^2=5$, soit $5x^2+4x-4=0$. Le discriminant est $96$, donc $x=\\frac{-4\\pm\\sqrt{96}}{10}=\\frac{-2\\pm2\\sqrt{6}}{5}$. La valeur positive correspond au signe plus, soit $\\frac{-2+2\\sqrt{6}}{5}$. Les autres options sont la racine négative ou des nombres entiers ne satisfaisant pas l'équation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $I(-3,4)$ et $J(5,-2)$. Quelles sont les coordonnées du milieu $K$ du segment $[IJ]$ ?",
+      "options": [
+        "$(1,1)$",
+        "$(2,1)$",
+        "$(1,2)$",
+        "$(0,0)$"
+      ],
+      "correctAnswer": "$(1,1)$",
+      "explanation": "Le milieu a pour abscisse $\\frac{-3+5}{2}=1$ et pour ordonnée $\\frac{4+(-2)}{2}=1$. Donc $K(1,1)$. Les autres options résultent d'erreurs sur l'une des coordonnées.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

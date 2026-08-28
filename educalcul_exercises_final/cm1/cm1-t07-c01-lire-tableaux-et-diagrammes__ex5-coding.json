@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Effectifs",
+  "title": "Approfondissement : Effectifs - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul du total des effectifs",
+      "content": "Voici un tableau donnant les effectifs de quatre couleurs préférées des élèves :\\nBleu : $12$\\nRouge : $9$\\nVert : $7$\\nJaune : $5$\\nÉcris un algorithme (ou un code simple) qui calcule le total des effectifs.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser total à 0.\\n2. Pour chaque effectif dans la liste [12, 9, 7, 5] :\\n   total ← total + effectif\\n3. Afficher total.\\nRésultat attendu : $33$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne successivement les quatre effectifs : $12 + 9 = 21$, $21 + 7 = 28$, $28 + 5 = 33$. L'algorithme parcourt la liste des effectifs et accumule la somme dans la variable total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de la couleur la plus choisie",
+      "content": "En utilisant le même tableau (Bleu $12$, Rouge $9$, Vert $7$, Jaune $5$), écris un algorithme qui détermine la couleur ayant le plus grand effectif (le mode).",
+      "correctAnswer": "Algorithme :\\n1. Créer deux listes parallèles : couleurs = [\"Bleu\", \"Rouge\", \"Vert\", \"Jaune\"] et effectifs = [12, 9, 7, 5].\\n2. Initialiser max_effectif ← effectifs[0] et couleur_max ← couleurs[0].\\n3. Pour i de 1 à 3 :\\n   Si effectifs[i] > max_effectif alors\\n      max_effectif ← effectifs[i]\\n      couleur_max ← couleurs[i]\\n4. Afficher couleur_max.\\nRésultat attendu : \"Bleu\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare chaque effectif au maximum courant. Le premier effectif (12) est le maximum initial. Les suivants (9, 7, 5) sont tous inférieurs, donc la couleur associée au maximum reste \"Bleu\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des pourcentages",
+      "content": "Toujours avec le même tableau (Bleu $12$, Rouge $9$, Vert $7$, Jaune $5$), écris un algorithme qui calcule le pourcentage de chaque couleur par rapport au total des effectifs et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. effectifs ← [12, 9, 7, 5]\\n2. total ← somme des éléments de effectifs (33)\\n3. couleurs ← [\"Bleu\", \"Rouge\", \"Vert\", \"Jaune\"]\\n4. Pour i de 0 à 3 :\\n   pourcentage ← (effectifs[i] / total) * 100\\n   Afficher couleurs[i] + \" : \" + arrondir(pourcentage, 1) + \"%\"\\nRésultats attendus :\\nBleu : $36.4\\%$\\nRouge : $27.3\\%$\\nVert : $21.2\\%$\\nJaune : $15.2\\%$ (arrondis à un chiffre après la virgule).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total des effectifs est $33$. Pour chaque couleur, on divise son effectif par $33$ puis on multiplie par $100$ pour obtenir le pourcentage. On arrondit à un chiffre après la virgule pour la lisibilité.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

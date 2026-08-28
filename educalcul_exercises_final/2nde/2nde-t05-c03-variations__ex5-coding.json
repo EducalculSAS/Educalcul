@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Croissante / décroissante",
+  "title": "Algorithmes pour étudier les variations d'une fonction",
+  "blocks": [
+    {
+      "title": "Test de monotonie par balayage",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui reçoit en entrée une fonction $f$, un intervalle $[a,b]$ et un pas $h>0$. L'algorithme doit tester si $f$ est croissante sur $[a,b]$ en comparant $f(x)$ et $f(x+h)$ pour $x$ variant de $a$ à $b-h$. Il affiche \"croissante\" si la condition est vérifiée pour tout $x$, sinon \"non croissante\".",
+      "correctAnswer": "Algorithme :\\n1. Entrées : fonction f, réels a, b, h (h > 0).\\n2. Pour x de a à b - h par pas h faire\\n     Si f(x + h) < f(x) alors\\n         Afficher \"non croissante\"\\n         Arrêter\\n     Fin Si\\n   Fin Pour\\n3. Afficher \"croissante\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt l'intervalle par pas de h. Si on trouve un couple (x, x+h) tel que f(x+h) < f(x), la fonction n'est pas croissante. Si la boucle se termine sans trouver un tel couple, la fonction est croissante sur l'intervalle donné.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification pour une fonction affine",
+      "content": "Soit la fonction affine $f(x)=2x+3$ définie sur $[0,5]$. Écrire une fonction Python `est_croissante(f, a, b)` qui renvoie `True` si $f$ est croissante sur $[a,b]$ et `False` sinon. Utiliser le fait qu'une fonction affine de coefficient directeur positif est croissante sur $\\mathbb{R}$.",
+      "correctAnswer": "def est_croissante(f, a, b):\\n    # Pour une fonction affine f(x)=mx+p, il suffit de tester le signe de m.\\n    # Ici on suppose que f est donnée sous forme de lambda ou fonction.\\n    # On évalue la dérivée numérique ou on compare deux points.\\n    return f(b) > f(a)\\n\\n# Test\\nf = lambda x: 2*x + 3\\nprint(est_croissante(f, 0, 5))  # Affiche True",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour une fonction affine $f(x)=mx+p$, la variation est déterminée par le signe de $m$. Ici $m=2>0$, donc $f$ est strictement croissante sur tout intervalle. La fonction Python compare simplement $f(b)$ et $f(a)$ ; comme $b>a$ et $m>0$, le test renvoie `True`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination des intervalles de variation pour un trinôme",
+      "content": "Écrire un algorithme (pseudo‑code) qui, étant donnés les coefficients réels $a$, $b$, $c$ d'un trinôme $f(x)=ax^2+bx+c$ avec $a \\neq 0$, détermine les intervalles sur lesquels $f$ est croissante ou décroissante. L'algorithme doit calculer le sommet $x_0 = -b/(2a)$ et afficher les intervalles de variation en fonction du signe de $a$.",
+      "correctAnswer": "Algorithme :\\n1. Entrées : a, b, c (a ≠ 0).\\n2. Calculer x0 = -b / (2*a).\\n3. Si a > 0 alors\\n       Afficher \"f est décroissante sur ]-∞, x0]\"\\n       Afficher \"f est croissante sur [x0, +∞[\"\\n   Sinon\\n       Afficher \"f est croissante sur ]-∞, x0]\"\\n       Afficher \"f est décroissante sur [x0, +∞[\"\\n   Fin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La dérivée de $f$ est $f'(x)=2ax+b$. Elle s'annule en $x_0=-b/(2a)$. Le signe de $a$ détermine le signe de $f'$ de part et d'autre de $x_0$ : si $a>0$, $f'$ est négatif avant $x_0$ et positif après, donc $f$ décroît puis croît ; si $a<0$, c'est l'inverse. L'algorithme affiche directement ces intervalles.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

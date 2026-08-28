@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Ensembles de nombres",
+  "title": "Ensembles de nombres : mise en ordre",
+  "blocks": [
+    {
+      "title": "Inclusion des ensembles",
+      "content": "Range les ensembles suivants par ordre d'inclusion, du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$\\mathbb{N}$",
+        "$\\mathbb{Z}$",
+        "$\\mathbb{Q}$",
+        "$\\mathbb{R}$"
+      ],
+      "explanation": "L'ensemble des entiers naturels $\\mathbb{N}$ est contenu dans les entiers relatifs $\\mathbb{Z}$, qui est contenu dans les rationnels $\\mathbb{Q}$, lui-même contenu dans les réels $\\mathbb{R}$. L'ordre correct est donc $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant de nombres",
+      "content": "Classe les nombres suivants par ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$-3$",
+        "$-\\frac{1}{2}$",
+        "$0$",
+        "$\\sqrt{2}$",
+        "$5$"
+      ],
+      "explanation": "On compare les valeurs : $-3 < -\\frac{1}{2} < 0 < \\sqrt{2} \\approx 1,41 < 5$. L'ordre croissant est donc $-3$, $-\\frac{1}{2}$, $0$, $\\sqrt{2}$, $5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des intervalles",
+      "content": "Ordonne les intervalles suivants selon leur borne inférieure, de la plus petite à la plus grande.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "(-∞, -2]",
+        "$(-2, 0)$",
+        "$[0, 3)$",
+        "$[3, +\\infty)$"
+      ],
+      "explanation": "La borne inférieure de $(-\\infty, -2]$ est $-\\infty$, celle de $(-2,0)$ est $-2$, celle de $[0,3)$ est $0$, et celle de $[3,+\\infty)$ est $3$. L'ordre des bornes inférieures croissantes donne la suite $(-\\infty, -2]$, $(-2,0)$, $[0,3)$, $[3,+\\infty)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

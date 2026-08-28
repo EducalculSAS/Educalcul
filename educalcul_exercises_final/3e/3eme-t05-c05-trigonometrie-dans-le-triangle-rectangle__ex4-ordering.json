@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Trigonométrie dans le triangle rectangle",
+  "title": "Exercices de mise en ordre : Trigonométrie dans le triangle rectangle",
+  "blocks": [
+    {
+      "title": "Trouver un angle à partir des longueurs",
+      "content": "Dans le triangle rectangle ABC, rectangle en B, on sait que AB = 6 cm et BC = 8 cm. Range les étapes dans l'ordre pour déterminer la mesure de l'angle $\\widehat{BAC}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les côtés par rapport à l'angle $\\widehat{BAC}$ : l'hypoténuse AC, le côté adjacent AB et le côté opposé BC.",
+        "Choisir le rapport trigonométrique adapté : $\\tan(\\widehat{BAC}) = \\frac{\\text{opposé}}{\\text{adjacent}} = \\frac{BC}{AB}$.",
+        "Calculer la valeur du rapport : $\\frac{8}{6} = \\frac{4}{3} \\approx 1,333$.",
+        "Utiliser la touche $\\tan^{-1}$ (ou $\\arctan$) de la calculatrice pour obtenir l'angle.",
+        "Arrondir la mesure de l'angle au degré près : $\\widehat{BAC} \\approx 53^{\\circ}$."
+      ],
+      "explanation": "On identifie d'abord les côtés par rapport à l'angle cherché. Comme on connaît le côté opposé (BC = 8 cm) et le côté adjacent (AB = 6 cm), on utilise la tangente. Le rapport vaut 8/6 = 4/3 ≈ 1,333. En appliquant la fonction arctangente sur la calculatrice, on trouve l'angle d'environ 53 degrés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer une longueur inconnue",
+      "content": "Dans le triangle rectangle DEF, rectangle en E, l'angle $\\widehat{EDF}$ mesure $30^{\\circ}$ et le côté adjacent DF vaut 10 cm. Range les étapes pour calculer la longueur du côté opposé DE.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer l'angle connu $\\widehat{EDF}=30^{\\circ}$ et les côtés par rapport à cet angle : adjacent DF, opposé DE, hypoténuse EF.",
+        "Choisir le rapport trigonométrique qui lie l'adjacent et l'opposé : $\\tan(30^{\\circ}) = \\frac{\\text{opposé}}{\\text{adjacent}} = \\frac{DE}{DF}$.",
+        "Remplacer les valeurs connues : $\\tan(30^{\\circ}) = \\frac{DE}{10}$.",
+        "Calculer $\\tan(30^{\\circ}) = \\frac{\\sqrt{3}}{3} \\approx 0,577$ puis résoudre $DE = 10 \\times \\tan(30^{\\circ})$.",
+        "Obtenir la longueur $DE \\approx 5,77$ cm (arrondi au centième)."
+      ],
+      "explanation": "On repère l'angle de 30° et les côtés adjacents et opposés. La tangente relie l'opposé à l'adjacent. On substitue la valeur de l'adjacent (10 cm) et la valeur exacte de tan 30° = √3/3 ≈ 0,577. En multipliant, on trouve DE ≈ 5,77 cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème concret : échelle contre un mur",
+      "content": "Une échelle de 5 m est appuyée contre un mur vertical. Le pied de l'échelle est à 3 m du mur. Range les étapes pour trouver l'angle que l'échelle forme avec le sol.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Modéliser la situation par un triangle rectangle : l'échelle est l'hypoténuse (5 m), la distance au mur est le côté adjacent (3 m), la hauteur sur le mur est le côté opposé.",
+        "Identifier l'angle cherché : l'angle entre l'échelle et le sol, dont le côté adjacent est la distance au mur.",
+        "Choisir le cosinus : $\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypoténuse}} = \\frac{3}{5}$.",
+        "Calculer $\\frac{3}{5}=0,6$ puis utiliser $\\cos^{-1}$ sur la calculatrice.",
+        "Lire l'angle : $\\theta \\approx 53^{\\circ}$ (arrondi au degré près)."
+      ],
+      "explanation": "On modélise par un triangle rectangle où l'échelle est l'hypoténuse (5 m) et la distance au mur le côté adjacent (3 m). L'angle avec le sol a pour cosinus adjacent/hypoténuse = 3/5 = 0,6. En appliquant la fonction arccosinus, on obtient θ ≈ 53°.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

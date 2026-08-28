@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Quiz : Moyenne - Approfondissement Calculer",
+  "questions": [
+    {
+      "text": "Calcule la moyenne de la série statistique suivante : $12 ; 15 ; 9 ; 14 ; 10$.",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La somme des valeurs est $12 + 15 + 9 + 14 + 10 = 60$. Il y a $5$ valeurs. La moyenne est le quotient de la somme par le nombre de valeurs : $60 \\div 5 = 12$. Les autres options correspondent à des erreurs de calcul de la somme ou du nombre de valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau de valeurs et d'effectifs. Quelle est la moyenne de cette série ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On calcule la somme totale en multipliant chaque valeur par son effectif : $(3 \\times 2) + (5 \\times 4) + (7 \\times 2) = 6 + 20 + 14 = 40$. L'effectif total est $2 + 4 + 2 = 8$. La moyenne est $40 \\div 8 = 5$. L'option 4 oublie de pondérer par les effectifs, l'option 6 est la médiane, l'option 7 est la valeur maximale.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Valeur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "3",
+            "2"
+          ],
+          [
+            "5",
+            "4"
+          ],
+          [
+            "7",
+            "2"
+          ]
+        ],
+        "caption": "Tableau de valeurs et d'effectifs"
+      }
+    },
+    {
+      "text": "La moyenne de cinq nombres est $12$. Quatre de ces nombres sont $10$, $14$, $11$ et $13$. Quel est le cinquième nombre ?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La somme des cinq nombres est $12 \\times 5 = 60$. La somme des quatre nombres connus est $10 + 14 + 11 + 13 = 48$. Le cinquième nombre est la différence : $60 - 48 = 12$. Les autres options sont des valeurs déjà présentes ou proches mais ne permettant pas d'obtenir la bonne somme totale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un groupe de $10$ élèves a une moyenne de $14$ à un contrôle. Un autre groupe de $15$ élèves a une moyenne de $10$. Quelle est la moyenne de l'ensemble des $25$ élèves ?",
+      "options": [
+        "11",
+        "11,6",
+        "12",
+        "12,4"
+      ],
+      "correctAnswer": "11,6",
+      "explanation": "La somme des notes du premier groupe est $10 \\times 14 = 140$. Celle du second est $15 \\times 10 = 150$. La somme totale est $140 + 150 = 290$. La moyenne globale est $290 \\div 25 = 11,6$. L'option 11 est la moyenne des deux moyennes (erreur classique), les options 12 et 12,4 sont des approximations incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a obtenu une moyenne de $15$ sur ses quatre premiers devoirs. Quelle note doit-il obtenir au cinquième devoir pour avoir une moyenne de $16$ sur les cinq devoirs ?",
+      "options": [
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "correctAnswer": "20",
+      "explanation": "La somme des quatre premières notes est $15 \\times 4 = 60$. Pour avoir une moyenne de $16$ sur cinq devoirs, la somme totale visée est $16 \\times 5 = 80$. La note nécessaire au cinquième devoir est $80 - 60 = 20$. Les autres options correspondent à des erreurs sur le calcul de la somme cible ou de la somme actuelle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

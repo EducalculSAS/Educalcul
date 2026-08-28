@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Simulations probabilistes",
+  "title": "Algorithmes de simulation probabiliste",
+  "blocks": [
+    {
+      "title": "Simulation simple : un lancer de dé",
+      "content": "Rangez les instructions dans l'ordre logique pour écrire un algorithme qui simule un lancer de dé à six faces et affiche le résultat obtenu.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Début de l'algorithme",
+        "Affecter à la variable $x$ un entier aléatoire entre $1$ et $6$",
+        "Afficher la valeur de $x$",
+        "Fin de l'algorithme"
+      ],
+      "explanation": "Un algorithme commence toujours par 'Début'. L'instruction clé est la génération d'un nombre aléatoire (souvent notée ALEA ou randint) pour simuler le hasard du dé. On stocke ce résultat dans une variable ($x$). On affiche ensuite cette variable. L'algorithme se termine par 'Fin'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation répétitive : compter les succès",
+      "content": "Rangez les étapes pour écrire un algorithme qui simule $N$ lancers de dé, compte combien de fois on obtient un $6$, et affiche ce compteur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Saisir le nombre de lancers $N$",
+        "Initialiser le compteur à $0$",
+        "Répéter $N$ fois : tirer un entier aléatoire entre $1$ et $6$",
+        "Si le résultat est $6$, augmenter le compteur de $1$",
+        "Afficher la valeur du compteur"
+      ],
+      "explanation": "Il faut d'abord demander le nombre d'essais $N$. Avant la boucle, le compteur de succès doit être initialisé à zéro. La structure 'Répéter $N$ fois' gère la boucle. À l'intérieur, on tire le dé et on teste si c'est un $6$ pour incrémenter le compteur. Enfin, on affiche le résultat total après la boucle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Estimation de probabilité par Monte Carlo",
+      "content": "Rangez les instructions pour écrire un algorithme qui estime la probabilité d'obtenir une somme égale à $7$ en lançant deux dés, en effectuant $N$ simulations.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Saisir le nombre de simulations $N$",
+        "Initialiser le nombre de succès à $0$",
+        "Répéter $N$ fois : simuler deux lancers de dé et calculer leur somme",
+        "Si la somme vaut $7$, augmenter le nombre de succès de $1$",
+        "Calculer et afficher la fréquence relative (nombre de succès divisé par $N$)"
+      ],
+      "explanation": "La méthode de Monte Carlo consiste à répéter l'expérience un grand nombre de fois $N$. On initialise le nombre de succès. Dans la boucle, on simule les deux dés (deux tirages aléatoires entre $1$ et $6$), on fait la somme et on teste l'égalité à $7$. À la fin, la fréquence relative (success / $N$) est une estimation de la probabilité.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

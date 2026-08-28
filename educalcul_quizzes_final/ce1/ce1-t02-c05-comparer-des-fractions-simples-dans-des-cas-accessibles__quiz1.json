@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 83,
+  "_course_code": "ce1-t02-c05-comparer-des-fractions-simples-dans-des-cas-accessibles",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Comparer avec même dénominateur",
+  "title": "Comparer des fractions même dénominateur",
+  "questions": [
+    {
+      "text": "Regarde les deux bandes de fractions ci-dessous. Laquelle des comparaisons suivantes est correcte ?",
+      "options": [
+        "$1/4 < 3/4$",
+        "$1/4 > 3/4$",
+        "$1/4 = 3/4$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$1/4 < 3/4$",
+      "explanation": "Les deux fractions ont le même dénominateur (4), cela veut dire que le tout est découpé en 4 parts égales. On compare donc les numérateurs : 1 part est plus petite que 3 parts. Donc $1/4$ est plus petit que $3/4$, on écrit $1/4 < 3/4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison visuelle de 1/4 et 3/4"
+      }
+    },
+    {
+      "text": "Compare les deux fractions $2/5$ et $4/5$. Quel signe faut-il mettre entre elles ?",
+      "options": [
+        "$<$",
+        "$>$",
+        "$=$",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "$<$",
+      "explanation": "Les dénominateurs sont identiques (5). On regarde les numérateurs : 2 est plus petit que 4. La fraction $2/5$ est donc plus petite que $4/5$. Le signe correct est $<$ (plus petit que).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 5,
+        "shape": "circle",
+        "caption": "Représentation de 2/5"
+      }
+    },
+    {
+      "text": "Paul a mangé $2/3$ d'une tablette de chocolat. Léa a mangé $1/3$ de la même tablette. Qui en a mangé le plus ?",
+      "options": [
+        "Paul car $2/3 > 1/3$",
+        "Léa car $1/3 > 2/3$",
+        "Ils ont mangé la même quantité",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Paul car $2/3 > 1/3$",
+      "explanation": "Même dénominateur (3) : le chocolat est partagé en 3 parts égales. Paul en a pris 2, Léa en a pris 1. Comme 2 est plus grand que 1, $2/3$ est plus grand que $1/3$. C'est donc Paul qui en a mangé le plus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Classe ces trois fractions du plus petit au plus grand : $1/6$, $5/6$, $3/6$.",
+      "options": [
+        "$1/6 < 3/6 < 5/6$",
+        "$5/6 < 3/6 < 1/6$",
+        "$3/6 < 1/6 < 5/6$",
+        "$1/6 < 5/6 < 3/6$"
+      ],
+      "correctAnswer": "$1/6 < 3/6 < 5/6$",
+      "explanation": "Toutes les fractions ont le dénominateur 6. Il suffit d'ordonner les numérateurs : 1, 3, 5. Le plus petit numérateur donne la plus petite fraction. L'ordre est donc $1/6$ (le plus petit), puis $3/6$, puis $5/6$ (le plus grand).",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 6
+          },
+          {
+            "numerator": 3,
+            "denominator": 6
+          },
+          {
+            "numerator": 5,
+            "denominator": 6
+          }
+        ],
+        "caption": "Ordre des fractions 1/6, 3/6, 5/6"
+      }
+    },
+    {
+      "text": "Complète la comparaison : $4/8$ ... $6/8$.",
+      "options": [
+        "$<$",
+        "$>$",
+        "$=$",
+        "?"
+      ],
+      "correctAnswer": "$<$",
+      "explanation": "Même dénominateur (8). On compare 4 et 6. 4 est strictement plus petit que 6. Donc $4/8$ est strictement plus petit que $6/8$. Le symbole à écrire est $<$ .",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

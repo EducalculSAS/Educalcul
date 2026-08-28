@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Domaine",
+  "title": "Détermination du domaine de définition",
+  "blocks": [
+    {
+      "title": "Fonction rationnelle simple",
+      "content": "Soit la fonction $f$ définie par $f(x) = \\frac{2x + 1}{x - 3}$. Déterminer l'ensemble de définition $D_f$ de cette fonction. Exprimer le résultat sous forme d'intervalle ou de réunion d'intervalles.",
+      "correctAnswer": "]-\\infty; 3[ \\cup ]3; +\\infty[",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction rationnelle est définie pour tous les réels sauf ceux qui annulent le dénominateur. Ici, le dénominateur est $x - 3$. Il s'annule pour $x = 3$. Le domaine est donc l'ensemble des réels privés de 3 : $\\mathbb{R} \\setminus \\{3\\}$, ce qui s'écrit $]-\\infty; 3[ \\cup ]3; +\\infty[$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction racine carrée",
+      "content": "Soit la fonction $g$ définie par $g(x) = \\sqrt{5 - 2x}$. Déterminer l'ensemble de définition $D_g$ de cette fonction. Exprimer le résultat sous forme d'intervalle.",
+      "correctAnswer": "]-\\infty; 2,5]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction racine carrée $\\sqrt{u(x)}$ est définie si et seulement si l'expression sous le radical est positive ou nulle : $u(x) \\ge 0$. Ici, il faut résoudre $5 - 2x \\ge 0$. On obtient $-2x \\ge -5$, soit $x \\le \\frac{5}{2}$ (en changeant le sens de l'inégalité car on divise par un négatif). Le domaine est donc l'intervalle $]-\\infty; 2,5]$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction quotient avec racine",
+      "content": "Soit la fonction $h$ définie par $h(x) = \\frac{\\sqrt{x + 4}}{x + 1}$. Déterminer l'ensemble de définition $D_h$ de cette fonction. Exprimer le résultat sous forme de réunion d'intervalles.",
+      "correctAnswer": "[-4; -1[ \\cup ]-1; +\\infty[",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction $h$ est un quotient dont le numérateur contient une racine carrée. Deux conditions doivent être satisfaites simultanément :\\n1. L'expression sous la racine doit être positive ou nulle : $x + 4 \\ge 0 \\iff x \\ge -4$.\\n2. Le dénominateur doit être non nul : $x + 1 \\neq 0 \\iff x \\neq -1$.\\nL'intersection de ces conditions donne $x \\in [-4; +\\infty[$ en excluant $-1$. Comme $-1 \\in [-4; +\\infty[$, on écrit $D_h = [-4; -1[ \\cup ]-1; +\\infty[$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Transformations et compositions simples",
+  "title": "Composition de transformations du plan",
+  "blocks": [
+    {
+      "title": "Composition de deux translations",
+      "content": "Range dans l'ordre logique les étapes pour déterminer la transformation résultant de la composition de deux translations.",
+      "items": [
+        "Repérer les vecteurs $\\vec{u}$ et $\\vec{v}$ des deux translations.",
+        "Calculer le vecteur somme $\\vec{u} + \\vec{v}$.",
+        "Conclure que la transformation composée est la translation de vecteur $\\vec{u} + \\vec{v}$."
+      ],
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des vecteurs des deux translations initiales. On identifie d'abord les vecteurs, on effectue l'addition vectorielle, puis on énonce le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux symétries axiales d'axes parallèles",
+      "content": "Ordonne les étapes pour démontrer que la composition de deux symétries axiales d'axes parallèles est une translation.",
+      "items": [
+        "Vérifier que les axes $(d_1)$ et $(d_2)$ sont parallèles.",
+        "Déterminer le vecteur $\\vec{w}$ perpendiculaire aux axes, orienté de $(d_1)$ vers $(d_2)$, de norme deux fois la distance entre les axes.",
+        "Affirmer que la composée est la translation de vecteur $\\vec{w}$."
+      ],
+      "explanation": "La composition de deux symétries axiales d'axes parallèles $(d_1)$ et $(d_2)$ est une translation. Le vecteur de cette translation est perpendiculaire aux axes, orienté du premier axe vers le second, et sa longueur vaut le double de la distance entre les axes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux rotations de même centre",
+      "content": "Range dans l'ordre les étapes pour trouver la transformation composée de deux rotations de même centre $O$.",
+      "items": [
+        "Noter $\\alpha$ et $\\beta$ les angles des deux rotations de centre $O$.",
+        "Calculer la somme des angles $\\alpha + \\beta$.",
+        "La transformation obtenue est la rotation de centre $O$ et d'angle $\\alpha + \\beta$."
+      ],
+      "explanation": "La composition de deux rotations ayant le même centre $O$ est une rotation de centre $O$ dont l'angle est la somme algébrique des angles des deux rotations. On note les angles, on les additionne, puis on caractérise la rotation résultante.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

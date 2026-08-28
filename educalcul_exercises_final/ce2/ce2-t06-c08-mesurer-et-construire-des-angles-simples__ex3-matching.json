@@ -1,0 +1,107 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 194,
+  "_course_code": "ce2-t06-c08-mesurer-et-construire-des-angles-simples",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Utiliser équerre",
+  "title": "Utiliser l'équerre : repérage et constructions",
+  "blocks": [
+    {
+      "title": "Vocabulaire de l'équerre",
+      "content": "Relie chaque élément de l'équerre à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'angle droit de l'équerre",
+          "right": "Mesure $90$ degrés"
+        },
+        {
+          "left": "L'hypoténuse",
+          "right": "Le côté le plus long"
+        },
+        {
+          "left": "Les deux côtés de l'angle droit",
+          "right": "Sont perpendiculaires entre eux"
+        }
+      ],
+      "items": [],
+      "explanation": "L'équerre est un triangle rectangle. Son angle droit mesure exactement $90^\\circ$. Le côté opposé à cet angle est l'hypoténuse, c'est le plus grand côté. Les deux autres côtés forment l'angle droit, ils sont donc perpendiculaires.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Une équerre (triangle rectangle)",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "côtés de l'angle droit",
+          "hypoténuse",
+          "côtés de l'angle droit"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Classifier les angles avec l'équerre",
+      "content": "Relie chaque situation à la nature de l'angle observé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'angle est plus petit que l'angle de l'équerre",
+          "right": "Angle aigu"
+        },
+        {
+          "left": "L'angle coïncide exactement avec l'angle de l'équerre",
+          "right": "Angle droit"
+        },
+        {
+          "left": "L'angle est plus grand que l'angle de l'équerre",
+          "right": "Angle obtus"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour classer un angle, on superpose l'angle droit de l'équerre sur l'angle à tester. Si l'angle est plus petit, c'est un angle aigu (inférieur à $90^\\circ$). Si les côtés coïncident parfaitement, c'est un angle droit ($90^\\circ$). Si l'angle est plus grand, c'est un angle obtus (supérieur à $90^\\circ$).",
+      "points": 2,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 45,
+        "caption": "Exemple d'angle aigu (plus petit que l'équerre)"
+      }
+    },
+    {
+      "title": "Constructions et vérifications",
+      "content": "Relie chaque action à la bonne manière d'utiliser l'équerre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Vérifier si deux droites sont perpendiculaires",
+          "right": "Placer l'angle droit de l'équerre à l'intersection des droites"
+        },
+        {
+          "left": "Tracer une droite perpendiculaire à une droite donnée",
+          "right": "Aligner un côté de l'angle droit sur la droite et tracer le long de l'autre côté"
+        },
+        {
+          "left": "Tracer un segment de longueur donnée",
+          "right": "Utiliser le bord gradué de l'hypoténuse comme une règle"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour vérifier la perpendicularité, on place le sommet de l'angle droit de l'équerre sur le point d'intersection : les côtés de l'équerre doivent coïncider avec les droites. Pour tracer une perpendiculaire, on cale un côté de l'angle droit sur la droite de base et on trace le long de l'autre côté. L'hypoténuse étant souvent graduée, elle sert de règle pour mesurer ou tracer des longueurs.",
+      "points": 2,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Utiliser l'hypoténuse graduée pour mesurer une longueur"
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Conditions",
+  "title": "L'ordre des conditions informatique",
+  "blocks": [
+    {
+      "title": "L'algorithme du parapluie",
+      "content": " an robot doit décider s'il prend son parapluie. Remets dans l'ordre les étapes de son raisonnement logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Regarder s'il pleut dehors",
+        "SI il pleut, ALORS prendre le parapluie",
+        "SINON, ne pas prendre le parapluie"
+      ],
+      "explanation": "Pour prendre une décision, le robot doit d'abord observer la donnée (la pluie), puis tester la condition avec SI, et enfin prévoir l'alternative avec SINON.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le contrôle d'accès",
+      "content": "Un programme vérifie l'âge d'un utilisateur pour entrer dans un jeu. Remets les instructions dans l'ordre correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Demander l'âge de l'utilisateur",
+        "SI l'âge est supérieur ou égal à $10$ ans, ALORS autoriser l'entrée",
+        "SINON, afficher un message d'erreur",
+        "Fin du programme"
+      ],
+      "explanation": "Le programme doit d'abord obtenir l'information (l'âge), comparer cette valeur à $10$ pour décider de l'action, traiter le cas contraire, puis s'arrêter.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "La gestion des scores",
+      "content": "Un jeu vidéo doit attribuer une médaille selon le score. Remets les étapes de ce test imbriqué dans l'ordre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "SI le score est supérieur à $100$, ALORS donner la médaille d'or",
+        "SINON, SI le score est supérieur à $50$, ALORS donner la médaille d'argent",
+        "SINON, donner la médaille de bronze"
+      ],
+      "explanation": "Dans un test imbriqué, on vérifie d'abord la condition la plus restrictive (le score le plus haut), puis on descend progressivement vers les conditions suivantes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

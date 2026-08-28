@@ -1,0 +1,453 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.787468+00:00",
+  "id": 100,
+  "code": "ce1-t04-c03",
+  "title": "Doubles et moitiés",
+  "description": "Cours structuré Educalcul : Doubles et moitiés.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Doubles et moitiés",
+    "objectif_global": "Doubles et moitiés",
+    "mini_lecons_imposees": [
+      "Doubles jusqu'aux nombres usuels.",
+      "Moitiés de nombres pairs.",
+      "Relier double et moitié."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Doubles jusqu'aux nombres usuels.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le double, c'est deux fois la même quantité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ pommes dans une main et $3$ pommes dans l'autre. Si tu les réunis, tu obtiens $6$ pommes. On dit que $6$ est le double de $3$. C'est comme si tu avais deux groupes identiques. Avec tes doigts, tu peux le vérifier : lève $3$ doigts d'un côté, $3$ de l'autre, et compte le total."
+            },
+            {
+              "type": "definition",
+              "term": "Double",
+              "definition": "Le double d'un nombre, c'est ce nombre ajouté à lui-même. Par exemple, le double de $4$ est $4+4=8$.",
+              "example": "Double de $5$ : $5+5=10$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 6,
+              "caption": "Le double de 3 : deux rangées de 3 cases, soit 6 cases en tout"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons les doubles des nombres de $1$ à $10$. Tu vas voir qu'ils sont faciles à retenir si tu les imagine avec des dominos ou des dés. Par exemple, le double de $4$, c'est comme un domino avec $4$ points de chaque côté : $4+4=8$. Le double de $5$, c'est les deux mains ouvertes : $5+5=10$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Double"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "4"
+                ],
+                [
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "8"
+                ],
+                [
+                  "5",
+                  "10"
+                ],
+                [
+                  "6",
+                  "12"
+                ],
+                [
+                  "7",
+                  "14"
+                ],
+                [
+                  "8",
+                  "16"
+                ],
+                [
+                  "9",
+                  "18"
+                ],
+                [
+                  "10",
+                  "20"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller un peu plus loin, on peut aussi chercher le double de nombres comme $11$ ou $12$. C'est utile quand tu joues à la marchande et que tu dois payer deux fois le même prix. Par exemple, un bonbon coûte $11$ centimes, deux bonbons coûtent $22$ centimes. Tu peux le trouver en décomposant : $11+11 = (10+10) + (1+1) = 20+2 = 22$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Doubles des nombres de 1 à 10",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "7",
+                  "value": 14,
+                  "tone": "green"
+                },
+                {
+                  "label": "8",
+                  "value": 16,
+                  "tone": "green"
+                },
+                {
+                  "label": "9",
+                  "value": 18,
+                  "tone": "green"
+                },
+                {
+                  "label": "10",
+                  "value": 20,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le double de $4$ ?",
+              "answer": "8",
+              "hint": "Compte sur tes doigts : $4$ d'un côté, $4$ de l'autre.",
+              "explanation": "Le double de $4$, c'est $4+4$. $4+4=8$."
+            },
+            {
+              "question": "Complète : le double de $7$ est $\\square$.",
+              "answer": "14",
+              "hint": "Pense aux dominos : $7$ points plus $7$ points.",
+              "explanation": "$7+7=14$. Le double de $7$ est $14$."
+            },
+            {
+              "question": "Un livre coûte $12$ euros. Combien coûtent deux livres ?",
+              "answer": "24 euros",
+              "hint": "Double de $12$ : $10+10=20$ et $2+2=4$, donc $20+4=24$.",
+              "explanation": "Deux fois $12$ euros, c'est le double de $12$. $12+12=24$ euros."
+            }
+          ]
+        },
+        {
+          "title": "Moitiés de nombres pairs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La moitié, c'est partager en deux parts égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $8$ bonbons et que tu veux les partager équitablement avec ton ami. Tu donnes un bonbon à ton ami, un pour toi, un pour lui, un pour toi... jusqu'à ce qu'il n'en reste plus. Chacun a $4$ bonbons. On dit que $4$ est la moitié de $8$. Ça marche seulement si le nombre de départ est pair, sinon il en reste un tout seul."
+            },
+            {
+              "type": "definition",
+              "term": "Moitié",
+              "definition": "La moitié d'un nombre pair, c'est l'une des deux parts égales quand on le partage en deux. Par exemple, la moitié de $6$ est $3$ car $3+3=6$.",
+              "example": "Moitié de $10$ : $5$ car $5+5=10$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "La moitié, c'est une part sur deux parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons ensemble les moitiés des nombres pairs jusqu'à $20$. Tu vas remarquer un lien magique avec les doubles : si tu sais que $6+6=12$, alors tu sais déjà que la moitié de $12$ est $6$. C'est comme faire le chemin en arrière. Essayons : moitié de $14$ ? Comme $7+7=14$, la moitié c'est $7$. Moitié de $18$ ? $9+9=18$, donc $9$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre pair",
+                "Moitié"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "1"
+                ],
+                [
+                  "4",
+                  "2"
+                ],
+                [
+                  "6",
+                  "3"
+                ],
+                [
+                  "8",
+                  "4"
+                ],
+                [
+                  "10",
+                  "5"
+                ],
+                [
+                  "12",
+                  "6"
+                ],
+                [
+                  "14",
+                  "7"
+                ],
+                [
+                  "16",
+                  "8"
+                ],
+                [
+                  "18",
+                  "9"
+                ],
+                [
+                  "20",
+                  "10"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on peut trouver la moitié en décomposant le nombre. Prenons $24$ : c'est $20+4$. La moitié de $20$ est $10$, la moitié de $4$ est $2$, donc la moitié de $24$ est $10+2=12$. C'est très pratique pour les nombres un peu plus grands. Essaie avec $26$ : moitié de $20$ est $10$, moitié de $6$ est $3$, total $13$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 6,
+              "highlighted": 6,
+              "caption": "Moitié de 12 : sur 12 cases, on en colorie 6 (la moitié)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la moitié de $8$ ?",
+              "answer": "4",
+              "hint": "Partage $8$ objets en deux tas égaux.",
+              "explanation": "$8$ partagé en deux parts égales donne $4$ et $4$. La moitié de $8$ est $4$."
+            },
+            {
+              "question": "Complète : la moitié de $16$ est $\\square$.",
+              "answer": "8",
+              "hint": "Quel nombre ajouté à lui-même fait $16$ ?",
+              "explanation": "$8+8=16$, donc la moitié de $16$ est $8$."
+            },
+            {
+              "question": "Tu as $20$ crayons. Tu donnes la moitié à ta sœur. Combien lui donnes-tu ?",
+              "answer": "10 crayons",
+              "hint": "Moitié de $20$ : $10+10=20$.",
+              "explanation": "La moitié de $20$ est $10$. Tu donnes $10$ crayons."
+            }
+          ]
+        },
+        {
+          "title": "Relier double et moitié.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Double et moitié : deux opérations qui s'annulent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux super-pouvoirs : doubler et prendre la moitié. Le plus drôle, c'est qu'ils sont inverses l'un de l'autre. Si tu doubles $5$, tu obtiens $10$. Si tu prends la moitié de $10$, tu retrouves $5$. C'est comme aller à l'école le matin et rentrer à la maison le soir : tu reviens au point de départ."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, $6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcule son double",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$6+6=12$. Le double de $6$ est $12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calcule la moitié de ce double",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Moitié de $12$ : $6+6=12$, donc c'est $6$. Tu as retrouvé ton nombre de départ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette relation marche dans les deux sens. Si tu connais la moitié d'un nombre, tu peux retrouver le nombre initial en le doublant. Par exemple, on te dit : « La moitié de mon nombre secret est $7$ ». Tu doubles $7$ : $7+7=14$. Le nombre secret est $14$. C'est très utile pour résoudre des petites énigmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\frac{n}{2}=m \\text{ alors } n=2\\times m"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine une balance. D'un côté, tu mets le double d'un nombre, de l'autre le nombre lui-même. La balance est en équilibre seulement si tu as bien calculé. Essaie avec $9$ : double $=18$. Moitié de $18 =9$. L'équilibre est parfait. Tu peux aussi inventer tes propres paires double-moitié et les vérifier avec des jetons."
+            },
+            {
+              "type": "number_line",
+              "caption": "Aller-retour entre un nombre et son double",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Départ"
+                },
+                {
+                  "value": 10,
+                  "label": "Double"
+                },
+                {
+                  "value": 5,
+                  "label": "Retour"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le double d'un nombre jusqu'à 20.",
+                "Je sais trouver la moitié d'un nombre pair jusqu'à 20.",
+                "Je comprends que doubler puis prendre la moitié me ramène au nombre de départ.",
+                "Je peux utiliser le double pour retrouver un nombre dont on me donne la moitié."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Je double $6$, puis je prends la moitié du résultat. Quel nombre j'obtiens ?",
+              "answer": "6",
+              "hint": "Double de $6$ = $12$. Moitié de $12$ = ?",
+              "explanation": "$6 \\rightarrow$ double $=12 \\rightarrow$ moitié $=6$. On retrouve le départ."
+            },
+            {
+              "question": "La moitié d'un nombre secret est $8$. Quel est ce nombre ?",
+              "answer": "16",
+              "hint": "Double la moitié pour retrouver le nombre.",
+              "explanation": "Si moitié $=8$, alors le nombre $=8+8=16$."
+            },
+            {
+              "question": "Vrai ou faux ? Le double de $9$ est $18$, donc la moitié de $18$ est $9$.",
+              "answer": "Vrai",
+              "hint": "Vérifie : $9+9=18$ et $18$ partagé en deux fait $9$.",
+              "explanation": "C'est vrai. Double et moitié sont des opérations inverses."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 182,
+  "_course_code": "ce2-t05-c05-problemes-a-deux-etapes",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Planifier",
+  "title": "Planifier la résolution de problèmes à deux étapes",
+  "questions": [
+    {
+      "text": "Léa a 45 billes. Elle en donne 12 à son frère, puis elle achète un sachet de 20 billes. Pour savoir combien de billes elle a à la fin, quelle est la première opération à programmer ?",
+      "options": [
+        "Faire 45 + 12",
+        "Faire 45 - 12",
+        "Faire 12 + 20",
+        "Faire 45 + 20"
+      ],
+      "correctAnswer": "Faire 45 - 12",
+      "explanation": "Le problème se déroule dans l'ordre chronologique : Léa possède 45 billes, elle en donne 12 (soustraction), puis elle en achète 20 (addition). La première étape est donc de retrancher les 12 billes données : 45 - 12 = 33. Les autres options correspondent à des erreurs d'ordre (ajouter les billes données) ou de lecture (mélanger les nombres).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a 60 baguettes. Il en vend 25 le matin et 18 l'après-midi. Pour trouver le nombre de baguettes qu'il lui reste, quel plan de résolution est correct ?",
+      "options": [
+        "Étape 1 : 25 + 18 = 43. Étape 2 : 60 - 43 = 17.",
+        "Étape 1 : 60 - 25 = 35. Étape 2 : 35 - 18 = 17.",
+        "Étape 1 : 60 - 18 = 42. Étape 2 : 42 - 25 = 17.",
+        "Étape 1 : 25 + 18 = 43. Étape 2 : 43 - 60 = -17."
+      ],
+      "correctAnswer": "Étape 1 : 25 + 18 = 43. Étape 2 : 60 - 43 = 17.",
+      "explanation": "La méthode la plus efficace pour 'combien il reste' après plusieurs retraits est d'abord d'additionner les quantités parties (total vendu = 25 + 18 = 43), puis de soustraire ce total à la quantité initiale (60 - 43 = 17). Les options 2 et 3 fonctionnent aussi arithmétiquement (soustractions successives) mais l'option 1 est la planification standard qui regroupe les données de même nature (les ventes) avant de comparer au stock initial. L'option 4 inverse l'ordre de la soustraction finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une sortie scolaire, il faut prévoir des sandwichs. Il y a 3 classes de 25 élèves chacune et 8 accompagnateurs. Chaque personne mange 1 sandwich. Quel plan permet de calculer le nombre total de sandwichs à commander ?",
+      "options": [
+        "Étape 1 : 25 + 8 = 33. Étape 2 : 33 x 3 = 99.",
+        "Étape 1 : 25 x 3 = 75. Étape 2 : 75 + 8 = 83.",
+        "Étape 1 : 3 x 8 = 24. Étape 2 : 24 + 25 = 49.",
+        "Étape 1 : 25 x 3 = 75. Étape 2 : 75 x 8 = 600."
+      ],
+      "correctAnswer": "Étape 1 : 25 x 3 = 75. Étape 2 : 75 + 8 = 83.",
+      "explanation": "Il faut d'abord calculer le nombre total d'élèves : 3 classes de 25 élèves, donc une multiplication 25 x 3 = 75 élèves. Ensuite, on ajoute les 8 accompagnateurs (addition) car eux aussi mangent un sandwich : 75 + 8 = 83 sandwichs au total. L'option 1 ajoute les accompagnateurs à une seule classe avant de multiplier. L'option 3 multiplie les classes par les accompagnateurs. L'option 4 multiplie le nombre d'élèves par le nombre d'accompagnateurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jardinier plante 8 rangées de 6 tulipes. Il lui reste 15 bulbes non plantés. Pour savoir combien de bulbes il avait au départ, quelle suite d'opérations faut-il programmer ?",
+      "options": [
+        "Étape 1 : 8 + 6 = 14. Étape 2 : 14 + 15 = 29.",
+        "Étape 1 : 8 x 6 = 48. Étape 2 : 48 - 15 = 33.",
+        "Étape 1 : 8 x 6 = 48. Étape 2 : 48 + 15 = 63.",
+        "Étape 1 : 8 x 15 = 120. Étape 2 : 120 + 6 = 126."
+      ],
+      "correctAnswer": "Étape 1 : 8 x 6 = 48. Étape 2 : 48 + 15 = 63.",
+      "explanation": "Le nombre de bulbes plantés se trouve par multiplication : 8 rangées de 6 tulipes = 8 x 6 = 48 bulbes utilisés. Au départ, il avait les bulbes plantés PLUS les bulbes restants. Il faut donc additionner : 48 + 15 = 63 bulbes au total. L'option 1 utilise une addition au lieu d'une multiplication pour les rangées. L'option 2 soustrait les restants au lieu de les ajouter. L'option 4 mélange les nombres sans logique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte de 100 feutres est partagée entre 4 tables. Chaque table reçoit le même nombre de feutres. Il en reste 4 dans la boîte. Combien de feutres y a-t-il sur chaque table ? Choisis le bon plan.",
+      "options": [
+        "Étape 1 : 100 - 4 = 96. Étape 2 : 96 : 4 = 24.",
+        "Étape 1 : 100 : 4 = 25. Étape 2 : 25 - 4 = 21.",
+        "Étape 1 : 100 - 4 = 96. Étape 2 : 96 x 4 = 384.",
+        "Étape 1 : 100 : 4 = 25. Étape 2 : 25 + 4 = 29."
+      ],
+      "correctAnswer": "Étape 1 : 100 - 4 = 96. Étape 2 : 96 : 4 = 24.",
+      "explanation": "Les 4 feutres restants dans la boîte n'ont pas été distribués. Il faut d'abord les retrancher du total pour trouver le nombre de feutres réellement partagés : 100 - 4 = 96. Ensuite, on divise ce nombre par le nombre de tables (4) pour connaître la part de chacune : 96 : 4 = 24. L'option 2 divise le total avant d'enlever le reste, ce qui fausse le partage. L'option 3 multiplie au lieu de diviser. L'option 4 ajoute le reste à la part théorique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

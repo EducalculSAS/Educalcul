@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 94,
+  "_course_code": "ce1-t03-c07-propriete-commutative-de-la-multiplication",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Comparer 3×4 et 4×3",
+  "title": "La commutativité de la multiplication : 3×4 et 4×3",
+  "questions": [
+    {
+      "text": "On veut calculer le nombre total de points dans un rectangle de 3 lignes et 4 colonnes. Quelle multiplication correspond à ce rectangle ?",
+      "options": [
+        "$3 \\times 4$",
+        "$4 \\times 3$",
+        "$3 + 4$",
+        "$4 - 3$"
+      ],
+      "correctAnswer": "$3 \\times 4$",
+      "explanation": "Le rectangle a 3 lignes et 4 colonnes. On compte 3 groupes de 4 points, ce qui s'écrit $3 \\times 4$. L'option $4 \\times 3$ correspondrait à 4 lignes de 3 points. L'addition et la soustraction ne permettent pas de compter des groupes égaux.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Rectangle de 3 lignes et 4 colonnes"
+      }
+    },
+    {
+      "text": "On retourne le rectangle précédent. Il a maintenant 4 lignes et 3 colonnes. Quelle multiplication écrit-on maintenant ?",
+      "options": [
+        "$4 \\times 3$",
+        "$3 \\times 4$",
+        "$4 + 3$",
+        "$12 \\times 1$"
+      ],
+      "correctAnswer": "$4 \\times 3$",
+      "explanation": "Après rotation, le rectangle a 4 lignes et 3 colonnes. On a donc 4 groupes de 3 points, ce qui s'écrit $4 \\times 3$. Le nombre total de points (12) ne change pas, mais l'ordre des facteurs est inversé.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 3,
+        "highlighted": 12,
+        "caption": "Rectangle de 4 lignes et 3 colonnes (rotation)"
+      }
+    },
+    {
+      "text": "Compare les résultats des deux multiplications $3 \\times 4$ et $4 \\times 3$. Quelle affirmation est vraie ?",
+      "options": [
+        "Les deux donnent le même résultat : 12",
+        "$3 \\times 4$ donne 12 et $4 \\times 3$ donne 11",
+        "$3 \\times 4$ donne 7 et $4 \\times 3$ donne 12",
+        "Les deux donnent des résultats différents"
+      ],
+      "correctAnswer": "Les deux donnent le même résultat : 12",
+      "explanation": "C'est la propriété commutative de la multiplication : on peut changer l'ordre des facteurs sans changer le produit. $3 \\times 4 = 12$ et $4 \\times 3 = 12$. Les autres réponses confondent avec l'addition ($3+4=7$) ou inventent des résultats faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa calcule $3 \\times 4$ en comptant par 4 : \"4, 8, 12\". Tom calcule $4 \\times 3$ en comptant par 3 : \"3, 6, 9, 12\". Qui a raison ?",
+      "options": [
+        "Les deux ont raison, ils trouvent 12",
+        "Seule Léa a raison car elle compte plus vite",
+        "Seul Tom a raison car il fait plus de sauts",
+        "Personne n'a raison car les résultats sont différents"
+      ],
+      "correctAnswer": "Les deux ont raison, ils trouvent 12",
+      "explanation": "Léa fait 3 sauts de 4 ($3 \\times 4$) et Tom fait 4 sauts de 3 ($4 \\times 3$). Tous les deux arrivent à 12. La méthode de comptage (par 3 ou par 4) change, mais le résultat final est identique grâce à la commutativité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quelle situation utilise-t-on la multiplication $4 \\times 3$ et non $3 \\times 4$ ?",
+      "options": [
+        "4 boîtes contenant chacune 3 billes",
+        "3 boîtes contenant chacune 4 billes",
+        "Une boîte de 3 billes et une boîte de 4 billes",
+        "3 amis qui partagent 4 billes"
+      ],
+      "correctAnswer": "4 boîtes contenant chacune 3 billes",
+      "explanation": "$4 \\times 3$ signifie 4 groupes de 3 objets (4 boîtes de 3 billes). $3 \\times 4$ signifie 3 groupes de 4 objets (3 boîtes de 4 billes). La troisième option est une addition ($3+4$) et la dernière est un partage (division).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Approfondissement : Définir la valeur absolue et la distance",
+  "questions": [
+    {
+      "text": "Laquelle des expressions suivantes définit correctement la valeur absolue $|x|$ d'un nombre réel $x$ ?",
+      "options": [
+        "$|x| = x$ si $x \\ge 0$, sinon $|x| = -x$",
+        "$|x| = x^2$",
+        "$|x| = 1/x$",
+        "$|x| = -x$ pour tout $x$"
+      ],
+      "correctAnswer": "$|x| = x$ si $x \\ge 0$, sinon $|x| = -x$",
+      "explanation": "La définition de la valeur absolue est : $|x| = x$ lorsque $x \\ge 0$ et $|x| = -x$ lorsque $x < 0$. Les autres options sont fausses : $x^2$ n'est pas la valeur absolue, $1/x$ n'est pas définie pour $x=0$, et $-x$ ne vaut pas $|x|$ pour les $x$ positifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de $|-7|$ ?",
+      "options": [
+        "7",
+        "-7",
+        "0",
+        "1/7"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La valeur absolue d'un nombre négatif est son opposé : $|-7| = 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la distance entre les points $a = -3$ et $b = 5$ sur la droite réelle ?",
+      "options": [
+        "2",
+        "8",
+        "-8",
+        "3"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La distance est $|a-b| = |-3-5| = |-8| = 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes sur la valeur absolue, laquelle est fausse ?",
+      "options": [
+        "$|x| \\ge 0$ pour tout $x$",
+        "$|x| = 0$ si et seulement si $x = 0$",
+        "$|x| = -x$ pour tout $x$",
+        "$|x| = x$ pour $x \\ge 0$"
+      ],
+      "correctAnswer": "$|x| = -x$ pour tout $x$",
+      "explanation": "La propriété $|x| = -x$ n'est vraie que pour $x \\le 0$. Pour $x > 0$, $|x| = x$. Les trois autres affirmations sont vraies.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $|x-4| = 3$.",
+      "options": [
+        "$x = 1$ ou $x = 7$",
+        "$x = -1$ ou $x = 7$",
+        "$x = 1$ ou $x = -7$",
+        "$x = 4 \\pm 3$"
+      ],
+      "correctAnswer": "$x = 1$ ou $x = 7$",
+      "explanation": "L'équation $|x-4|=3$ donne deux cas : $x-4=3$ donc $x=7$, ou $x-4=-3$ donc $x=1$. L'option $4 \\pm 3$ n'est pas une écriture standard de solution.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

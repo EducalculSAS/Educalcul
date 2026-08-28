@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Bilan - Algorithmique 4e",
+  "title": "Bilan Algorithmique 4e",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant : $a \\leftarrow 0$ ; Pour $i$ de $1$ à $5$ faire $a \\leftarrow a + i$ ; FinPour ; Afficher $a$. Quelle valeur est affichée ?",
+      "options": [
+        "$10$",
+        "$15$",
+        "$20$",
+        "$5$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La boucle ajoute les entiers de $1$ à $5$ à la variable $a$ initialisée à $0$. La somme $1+2+3+4+5 = 15$ est donc stockée dans $a$ et affichée. Les autres options correspondent à des erreurs de comptage ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme : $x \\leftarrow 7$ ; Si $x > 10$ alors $y \\leftarrow 20$ Sinon $y \\leftarrow 30$ FinSi ; Afficher $y$. Quelle valeur est affichée ?",
+      "options": [
+        "$20$",
+        "$30$",
+        "$7$",
+        "$10$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "Comme $x$ vaut $7$, la condition $x > 10$ est fausse, donc l'instruction du Sinon est exécutée et $y$ reçoit la valeur $30$. L'affichage donne $30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien d'itérations la boucle suivante effectue-t-elle ? Pour $i$ de $0$ à $10$ pas $2$ faire ... FinPour",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$10$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Les valeurs successives de $i$ sont $0, 2, 4, 6, 8, 10$, soit $6$ valeurs. Donc la boucle s'exécute $6$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution de l'algorithme suivant, que affiche-t-on ? $a \\leftarrow 5$ ; $b \\leftarrow 12$ ; $temp \\leftarrow a$ ; $a \\leftarrow b$ ; $b \\leftarrow temp$ ; Afficher $a$, $b$",
+      "options": [
+        "$5$ $12$",
+        "$12$ $5$",
+        "$5$ $5$",
+        "$12$ $12$"
+      ],
+      "correctAnswer": "$12$ $5$",
+      "explanation": "La variable $temp$ conserve la valeur initiale de $a$ ($5$). Ensuite $a$ prend la valeur de $b$ ($12$) et $b$ reçoit la valeur de $temp$ ($5$). L'affichage donne donc $12$ puis $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction $carre(n)$ qui renvoie $n \\times n$. Quel est le résultat de l'expression $carre(4) + carre(3)$ ?",
+      "options": [
+        "$7$",
+        "$12$",
+        "$25$",
+        "$49$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "$carre(4)$ vaut $4 \\times 4 = 16$ et $carre(3)$ vaut $3 \\times 3 = 9$. Leur somme est $16 + 9 = 25$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "_status": "done",
+  "_course_id": 84,
+  "_course_code": "ce1-t02-c06-ajouter-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Réunir des parts de même taille",
+  "title": "Quiz : Réunir des parts de même taille (CE1)",
+  "questions": [
+    {
+      "text": "Une barre de chocolat est divisée en $4$ parts égales. Lucas mange $1$ part et Léa en mange $2$. Quelle fraction de la barre ont-ils mangée ensemble ?",
+      "options": [
+        "$1/4$",
+        "$2/4$",
+        "$3/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "Lucas mange $1/4$ de la barre et Léa en mange $2/4$. Comme les parts sont de même taille (même dénominateur), on additionne le nombre de parts : $1 + 2 = 3$ parts sur $4$, soit $3/4$. L'option $1/4$ correspond seulement à la part de Lucas, $2/4$ à celle de Léa, et $4/4$ serait la barre entière.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Mangées",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Restantes",
+            "value": 1,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Barre de chocolat divisée en 4 parts"
+      }
+    },
+    {
+      "text": "On réunit deux parts de même taille : $1/3$ et $1/3$. Quelle fraction obtient-on ?",
+      "options": [
+        "$1/3$",
+        "$2/3$",
+        "$2/6$",
+        "$3/3$"
+      ],
+      "correctAnswer": "$2/3$",
+      "explanation": "Lorsque l'on met ensemble des parts de même taille, le dénominateur (le nombre de parts totales) ne change pas, on additionne seulement les numérateurs (le nombre de parts prises). $1 + 1 = 2$, donc $2/3$. L'option $1/3$ ne compte qu'une part, $2/6$ est l'erreur classique qui consiste à additionner les dénominateurs, et $3/3$ correspond au cercle entier.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Deux tiers d'un cercle"
+      }
+    },
+    {
+      "text": "Dans un paquet de bonbons, $2/5$ sont rouges et $1/5$ sont jaunes. Le reste sont verts. Quelle fraction des bonbons sont rouges ou jaunes ?",
+      "options": [
+        "$3/5$",
+        "$3/10$",
+        "$2/5$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$3/5$",
+      "explanation": "Les fractions ont le même dénominateur ($5$), cela signifie que les parts sont de même taille. On additionne les numérateurs : $2 + 1 = 3$. La fraction des bonbons rouges ou jaunes est donc $3/5$. L'option $3/10$ correspond à l'erreur d'additionner les dénominateurs ($5+5=10$). Les options $2/5$ et $1/5$ ne prennent en compte qu'une seule couleur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'addition : $2/6 + \\square = 5/6$. Quel nombre manque-t-il ?",
+      "options": [
+        "$2/6$",
+        "$3/6$",
+        "$4/6$",
+        "$5/6$"
+      ],
+      "correctAnswer": "$3/6$",
+      "explanation": "Pour trouver le terme manquant, on peut soustraire la part connue du total : $5/6 - 2/6 = 3/6$. On peut aussi chercher ce qu'il faut ajouter à $2$ pour obtenir $5$ en gardant le dénominateur $6$ : $2 + 3 = 5$. Donc le nombre manquant est $3/6$. L'option $2/6$ est le premier terme, $4/6$ donnerait un total de $6/6$, et $5/6$ est le total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle est divisé en $8$ parts égales. $3$ parts sont bleues et $2$ parts sont rouges. Quelle fraction du rectangle est colorée (bleue ou rouge) ?",
+      "options": [
+        "$5/8$",
+        "$5/16$",
+        "$3/8$",
+        "$2/8$"
+      ],
+      "correctAnswer": "$5/8$",
+      "explanation": "Il y a $3$ parts bleues et $2$ parts rouges, soit $3 + 2 = 5$ parts colorées au total. Le rectangle est divisé en $8$ parts égales, donc la fraction colorée est $5/8$. L'option $5/16$ est l'erreur qui consiste à additionner les dénominateurs ($8+8=16$). L'option $3/8$ ne compte que les parts bleues, et $2/8$ seulement les parts rouges.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Bleu",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 2,
+            "tone": "red"
+          },
+          {
+            "label": "Blanc",
+            "value": 3,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Rectangle divisé en 8 parts"
+      }
+    }
+  ]
+}

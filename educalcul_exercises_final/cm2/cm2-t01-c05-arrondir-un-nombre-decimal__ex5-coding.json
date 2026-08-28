@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Repères voisins",
+  "title": "Algorithmes des repères voisins",
+  "blocks": [
+    {
+      "title": "Trouver l'entier inférieur",
+      "content": "On veut créer un programme qui trouve l'entier immédiatement inférieur à un nombre décimal donné $N$. Par exemple, pour $7,42$, le programme doit répondre $7$. \\n\\nÉcris l'étape de raisonnement ou la formule permettant d'obtenir cet entier inférieur.",
+      "correctAnswer": "On supprime toute la partie décimale du nombre $N$ pour ne garder que la partie entière.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'entier immédiatement inférieur à un nombre décimal est sa partie entière. Pour $7,42$, on ignore tout ce qui est après la virgule, ce qui donne $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver l'entier supérieur",
+      "content": "On souhaite maintenant compléter l'algorithme pour trouver l'entier immédiatement supérieur à un nombre décimal $N$. \\n\\nSi on sait déjà trouver l'entier inférieur, quelle opération doit on ajouter pour obtenir l'entier supérieur ?",
+      "correctAnswer": "On calcule l'entier inférieur et on lui ajoute $1$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'entier immédiatement supérieur est toujours égal à la partie entière plus une unité. Par exemple, pour $7,42$, la partie entière est $7$, et $7 + 1 = 8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de choix du repère",
+      "content": "On veut écrire un code pour arrondir un nombre $N$ à l'unité. \\n\\nL'algorithme doit suivre cette règle : \\n1. Trouver l'entier inférieur $I$ et l'entier supérieur $S$. \\n2. Regarder le chiffre des dixièmes de $N$. \\n\\nComplète la suite logique du raisonnement pour décider si on choisit $I$ ou $S$.",
+      "correctAnswer": "Si le chiffre des dixièmes est inférieur à $5$, on choisit l'entier inférieur $I$. Si le chiffre des dixièmes est égal ou supérieur à $5$, on choisit l'entier supérieur $S$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est la règle standard de l'arrondi : on regarde le premier chiffre après la virgule. S'il est petit ($0$, $1$, $2$, $3$, $4$), on arrondit vers le bas. S'il est grand ($5$, $6$, $7$, $8$, $9$), on arrondit vers le haut.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

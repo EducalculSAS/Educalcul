@@ -1,0 +1,577 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.436126+00:00",
+  "id": 622,
+  "code": "terminale-generale-t02-c01",
+  "title": "Lire une courbe",
+  "description": "Cours structuré Educalcul : Lire une courbe.",
+  "subject": "Fonctions et lecture de graphiques",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Fonctions et lecture de graphiques",
+    "titre_du_cours": "Lire une courbe",
+    "objectif_global": "Lire une courbe",
+    "mini_lecons_imposees": [
+      "Axes.",
+      "Valeurs.",
+      "Variations."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions et lecture de graphiques",
+      "lessons": [
+        {
+          "title": "Axes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le repère orthonormé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à lire une courbe en commençant par son socle : le repère orthonormé. Imagine un grand quadrillage qui s'étend à l'infini dans toutes les directions, comme une immense feuille de papier millimétré. Sur cette feuille, deux droites perpendiculaires se croisent en un point central que l'on appelle l'origine. La droite horizontale porte le nom d'axe des abscisses, et la droite verticale celui d'axe des ordonnées. Chaque point du plan peut alors être repéré par deux nombres : sa distance à l'axe des ordonnées (l'abscisse) et sa distance à l'axe des abscisses (l'ordonnée). Ce système de coordonnées est la clé qui nous permettra, par la suite, de lire n'importe quelle courbe tracée sur ce repère. Prends le temps de visualiser cette scène : un carrefour au centre, deux routes droites qui se coupent à angle droit, et des graduations régulières qui rythment chaque route. C'est exactement ce que nous allons manipuler maintenant."
+            },
+            {
+              "type": "definition",
+              "term": "abscisse",
+              "definition": "L'abscisse d'un point est sa coordonnée horizontale, c'est-à-dire la distance signée entre ce point et l'axe des ordonnées. Elle est notée $x$.",
+              "example": "Pour le point $A(3;2)$, l'abscisse est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "ordonnée",
+              "definition": "L'ordonnée d'un point est sa coordonnée verticale, c'est-à-dire la distance signée entre ce point et l'axe des abscisses. Elle est notée $y$.",
+              "example": "Pour le point $A(3;2)$, l'ordonnée est $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux axes sont gradués de la même manière : chaque trait représente une unité de longueur. À droite de l'origine, les abscisses sont positives ; à gauche, elles sont négatives. De même, au-dessus de l'origine les ordonnées sont positives, et en dessous elles sont négatives. Cette convention de signe est essentielle car elle permet de situer un point dans l'un des quatre quadrants du repère. Par exemple, un point de coordonnées $(-4;5)$ se trouve dans le deuxième quadrant (abscisse négative, ordonnée positive). Lorsque tu regardes une courbe, la première chose à faire est d'identifier les axes, leur échelle et l'origine. Si l'échelle n'est pas marquée, tu peux la déduire en repérant deux graduations consécutives et en comptant la distance qui les sépare. C'est une habitude à prendre dès maintenant : observe toujours le repère avant de t'intéresser à la courbe elle-même."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses gradué de -5 à 5",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 2,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le point sur le graphique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Localise le point dont tu veux connaître l'abscisse. Regarde sa position par rapport à l'axe vertical."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Projeter le point sur l'axe des abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace mentalement (ou avec ton crayon) une ligne parallèle à l'axe des ordonnées qui passe par le point et coupe l'axe horizontal."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la graduation correspondante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre indiqué au point de coupe est l'abscisse. Note son signe : positif à droite de l'origine, négatif à gauche."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une abscisse, nous allons faire la même chose pour l'ordonnée. La méthode est symétrique : on projette le point sur l'axe vertical cette fois-ci. Prends le temps de bien visualiser le mouvement de projection, car c'est cette geste mentale qui te permettra de lire n'importe quel point par la suite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le point sur la courbe ou sur le graphique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Projeter sur l'axe des ordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une ligne parallèle à l'axe des abscisses qui passe par le point et coupe l'axe vertical."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La graduation au point d'intersection donne l'ordonnée. Positive au-dessus de l'origine, négative en dessous."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la lecture complète d'un point : il faut associer son abscisse et son ordonnée pour obtenir le couple $(x;y)$. Cette notation ordonnée est universelle en mathématiques. Lorsque tu vois un point marqué sur une courbe, commence par lire son abscisse comme nous venons de le faire, puis son ordonnée, et écris le couple dans l'ordre $(x;y)$. C'est cette paire de nombres qui te permettra, dans les prochaines leçons, de retrouver la valeur de la fonction pour un $x$ donné, ou de repérer les intervalles où la courbe monte ou descend."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire l'abscisse $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette le point sur l'axe horizontal et note la valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'ordonnée $y$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette le même point sur l'axe vertical et note la valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Former le couple $(x;y)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'abscisse en premier, puis l'ordonnée, séparées par un point-virgule à l'intérieur de parenthèses."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant lire les axes d'un repère, déterminer l'abscisse et l'ordonnée d'un point, et former le couple de coordonnées. Ces compétences sont les fondations sur lesquelles nous construirons la lecture des valeurs d'une fonction et l'analyse de ses variations. Avant de passer à la suite, relis mentalement les trois étapes de projection : elles seront tes meilleures alliées pour chaque exercice à venir."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe des abscisses gradué de $-5$ à $5$, le point $A$ est placé sur la graduation $-3$. Quelle est l'abscisse du point $A$ ?",
+              "answer": "-3",
+              "hint": "Regarde la graduation sur laquelle se trouve le point et note son signe.",
+              "explanation": "Le point $A$ se trouve sur la graduation $-3$ de l'axe horizontal, donc son abscisse est $-3$."
+            },
+            {
+              "question": "Le point $B$ a pour coordonnées $(2;-4)$. Donne l'ordonnée de $B$.",
+              "answer": "-4",
+              "hint": "L'ordonnée est le second nombre du couple de coordonnées.",
+              "explanation": "Dans le couple $(2;-4)$, le premier nombre $2$ est l'abscisse, le second $-4$ est l'ordonnée."
+            },
+            {
+              "question": "Un point $C$ est représenté sur le repère. Sa projection sur l'axe horizontal coupe la graduation $1$, et sa projection sur l'axe vertical coupe la graduation $-2$. Écris les coordonnées de $C$.",
+              "answer": "(1;-2)",
+              "hint": "Rappelle-toi l'ordre : abscisse puis ordonnée.",
+              "explanation": "L'abscisse lue sur l'axe horizontal est $1$, l'ordonnée lue sur l'axe vertical est $-2$. Le couple s'écrit $(1;-2)$."
+            }
+          ]
+        },
+        {
+          "title": "Valeurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les valeurs d'une fonction sur sa courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons voir comment une courbe nous donne directement les valeurs d'une fonction. Rappelle-toi : une fonction $f$ associe à chaque nombre $x$ de son ensemble de définition un unique nombre $y$, que l'on note $f(x)$. Sur le repère, le graphique de $f$ est l'ensemble des points de coordonnées $(x;f(x))$. Ainsi, si tu choisis une abscisse $x_0$ sur l'axe horizontal, il te suffit de monter (ou descendre) verticalement jusqu'à rencontrer la courbe : l'ordonnée du point d'intersection est exactement la valeur $f(x_0)$. C'est une lecture visuelle immédiate, à condition de bien repérer l'échelle sur les deux axes. Nous allons travailler cette gymnastique plusieurs fois pour qu'elle devienne automatique."
+            },
+            {
+              "type": "definition",
+              "term": "image",
+              "definition": "L'image d'un nombre $x$ par la fonction $f$ est la valeur $f(x)$ obtenue en appliquant la règle de la fonction à $x$.",
+              "example": "Si $f(x)=x^2$, l'image de $3$ est $9$."
+            },
+            {
+              "type": "definition",
+              "term": "antécédent",
+              "definition": "Un antécédent d'un nombre $y$ par la fonction $f$ est une valeur $x$ telle que $f(x)=y$. Une même valeur peut avoir plusieurs antécédents.",
+              "example": "Pour $f(x)=x^2$, les antécédents de $9$ sont $3$ et $-3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons la courbe de la fonction carrée $f(x)=x^2$ tracée sur un repère dont les axes vont de $-4$ à $4$ en abscisses et de $0$ à $16$ en ordonnées. Si tu veux connaître $f(2)$, tu repères $2$ sur l'axe des abscisses, tu montes verticalement jusqu'à la courbe, puis tu lis l'ordonnée du point rencontré : tu trouveras $4$. De même, pour $f(-3)$, tu vas à $-3$ sur l'axe horizontal, tu montes jusqu'à la courbe et tu lis $9$. Note que la courbe est symétrique par rapport à l'axe des ordonnées : les images de $x$ et de $-x$ sont égales. Cette symétrie est une propriété visuelle très utile pour vérifier tes lectures."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Courbe de la fonction $f(x)=x^2$ sur $[-4;4]$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'abscisse $x_0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la valeur $x_0$ sur l'axe horizontal en tenant compte de l'échelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Monter verticalement jusqu'à la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une ligne parallèle à l'axe des ordonnées passant par $x_0$ ; elle coupe la courbe en un point unique (si $x_0$ appartient au domaine)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'ordonnée du point d'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette ce point sur l'axe vertical ; la graduation lue est $f(x_0)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on a besoin de plusieurs valeurs pour se faire une idée du comportement de la fonction. On construit alors un tableau de valeurs : on choisit quelques abscisses représentatives (par exemple $-3,-2,-1,0,1,2,3$), on lit les images correspondantes sur la courbe, et on remplit le tableau. Ce tableau devient un résumé numérique de la courbe, très pratique pour comparer des valeurs ou pour tracer soi‑même la courbe sur un autre papier. Apprenons à organiser cette lecture systématique."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "$f(x)$"
+              ],
+              "rows": [
+                [
+                  "-3",
+                  "9"
+                ],
+                [
+                  "-2",
+                  "4"
+                ],
+                [
+                  "-1",
+                  "1"
+                ],
+                [
+                  "0",
+                  "0"
+                ],
+                [
+                  "1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "4"
+                ],
+                [
+                  "3",
+                  "9"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une liste d'abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne des valeurs régulières ou pertinentes par rapport au domaine visible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire chaque image sur la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la méthode des trois étapes précédente pour chaque $x$ choisi."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les couples $(x;f(x))$ dans les deux colonnes du tableau."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, voyons comment interpréter ces valeurs dans une situation concrète. Supposons que la courbe représente la température (en degrés Celsius) au cours d'une journée, l'abscisse étant l'heure (en heures). Lire $f(14)=22$ signifie qu'à 14 heures il fait 22 °C. Si tu observes que la courbe monte entre 6 h et 14 h, tu en déduis que la température augmente pendant cette période. Cette lecture contextuelle est exactement ce que nous approfondirons dans la prochaine leçon sur les variations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour extraire des valeurs numériques d'une courbe : repérer l'abscisse, monter jusqu'à la courbe, lire l'ordonnée, et organiser ces données dans un tableau. Entraîne-toi sur différentes courbes (droite, parabole, courbe quelconque) pour gagner en rapidité et en confiance. La prochaine leçon transformera ces valeurs en informations sur le sens de variation de la fonction."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la courbe de $f(x)=x^2$ tracée ci‑dessus, quelle est la valeur de $f(-2)$ ?",
+              "answer": "4",
+              "hint": "Repère $-2$ sur l'axe des abscisses, monte jusqu'à la courbe, lis l'ordonnée.",
+              "explanation": "Le point d'abscisse $-2$ sur la courbe $y=x^2$ a pour ordonnée $(-2)^2=4$."
+            },
+            {
+              "question": "Complète le tableau de valeurs pour la fonction $f(x)=x^2$ aux abscisses $-1$, $0$, $2$.",
+              "answer": "f(-1)=1, f(0)=0, f(2)=4",
+              "hint": "Utilise la méthode de lecture point par point.",
+              "explanation": "Pour $x=-1$, l'image est $1$ ; pour $x=0$, l'image est $0$ ; pour $x=2$, l'image est $4$."
+            },
+            {
+              "question": "La courbe ci‑dessus modélise la hauteur (en mètres) d'une balle lancée en fonction du temps (en secondes). Si le point de la courbe à l'abscisse $1,5$ a pour ordonnée $4,2$, que représente cette valeur dans la situation ?",
+              "answer": "La hauteur de la balle après 1,5 seconde est de 4,2 mètres.",
+              "hint": "Identifie ce que représentent les axes : abscisse = temps, ordonnée = hauteur.",
+              "explanation": "L'abscisse $1,5$ correspond au temps $1,5\\,s$, l'ordonnée $4,2$ correspond à la hauteur $4,2\\,m$."
+            }
+          ]
+        },
+        {
+          "title": "Variations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Analyser les variations d'une fonction à partir de sa courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici arrivés à la dernière leçon de ce cours : comprendre comment une courbe nous informe sur les variations d'une fonction. Quand on regarde un graphique, on voit immédiatement si la courbe monte, descend ou reste plate. Ces mouvements correspondent à des propriétés mathématiques précises : une fonction est croissante sur un intervalle si, lorsque $x$ grandit, $f(x)$ grandit aussi ; elle est décroissante si $f(x)$ diminue quand $x$ augmente ; elle est constante si $f(x)$ ne change pas. Sur une courbe, cela se traduit visuellement : une branche qui s'oriente vers le haut‑droit indique une croissance, vers le bas‑droit une décroissance, et un segment horizontal une constance. Apprenons à formaliser cette lecture visuelle en langage mathématique."
+            },
+            {
+              "type": "definition",
+              "term": "croissante",
+              "definition": "Une fonction $f$ est croissante sur un intervalle $I$ si pour tous $x_1<x_2$ dans $I$, on a $f(x_1) \\le f(x_2)$. Sur la courbe, cela se voit par une montée vers la droite.",
+              "example": "La fonction $f(x)=2x+1$ est croissante sur $\\mathbb{R}$."
+            },
+            {
+              "type": "definition",
+              "term": "décroissante",
+              "definition": "Une fonction $f$ est décroissante sur un intervalle $I$ si pour tous $x_1<x_2$ dans $I$, on a $f(x_1) \\ge f(x_2)$. Sur la courbe, cela se voit par une descente vers la droite.",
+              "example": "La fonction $f(x)=-3x+4$ est décroissante sur $\\mathbb{R}$."
+            },
+            {
+              "type": "definition",
+              "term": "maximum et minimum",
+              "definition": "Un maximum (resp. minimum) local est une valeur $f(x_0)$ telle que la courbe passe d'une croissance à une décroissance (resp. d'une décroissance à une croissance) en $x_0$. C'est un sommet ou un creux de la courbe.",
+              "example": "Pour $f(x)=-(x-2)^2+5$, le maximum est $5$ atteint en $x=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décrire les variations de manière rigoureuse, on utilise un tableau de variation. Ce tableau résume, intervalle par intervalle, le sens de variation (flèche montante $\\nearrow$, descendante $\\searrow$, ou horizontale $\\rightarrow$) et les valeurs remarquables (maximum, minimum, valeurs aux bornes). C'est un outil standard au lycée et au-delà, car il condense toute l'information de la courbe sous une forme compacte et exploitable pour résoudre des inéquations ou étudier le signe de $f(x)-k$. Nous allons construire ensemble un tel tableau à partir d'une courbe donnée."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Tableau de variation d'une fonction exemple",
+              "variable": "x",
+              "intervals": [
+                {
+                  "start": "-inf",
+                  "end": "-1",
+                  "variation": "up",
+                  "values": {}
+                },
+                {
+                  "start": "-1",
+                  "end": "2",
+                  "variation": "down",
+                  "values": {}
+                },
+                {
+                  "start": "2",
+                  "end": "inf",
+                  "variation": "up",
+                  "values": {}
+                }
+              ],
+              "extrema": [
+                {
+                  "x": -1,
+                  "type": "max",
+                  "y": 3
+                },
+                {
+                  "x": 2,
+                  "type": "min",
+                  "y": -2
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les intervalles de monotonie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parcourt la courbe de gauche à droite. Note les abscisses où le sens change : ce sont les extrémums locaux ou les points où la courbe devient horizontale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer le sens sur chaque intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre deux abscisses de changement, observe si la courbe monte ($\\nearrow$), descend ($\\searrow$) ou reste plate ($\\rightarrow$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relever les valeurs aux points de changement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis les ordonnées des points où le sens change (maximums, minimums) ainsi que les valeurs aux bornes du domaine visible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Remplir le tableau de variation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les abscisses dans la première ligne, les flèches de variation dans la deuxième, et les valeurs de $f$ dans la troisième."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire un tableau de variation, voyons comment l'exploiter. Si tu cherches les solutions de $f(x) > 3$, tu regardes dans le tableau les intervalles où la valeur de la fonction dépasse $3$. Les flèches te disent si la fonction est au‑dessus ou au‑dessous de ce seuil, et les valeurs aux extrémums te donnent les bornes exactes. C'est la puissance du tableau de variation : il transforme une lecture graphique en un raisonnement algébrique précis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons que la lecture des variations est une compétence transversale : elle sert en physique (vitesse, accélération), en économie (coûts, revenus), en biologie (croissance de population). Chaque fois qu'une courbe apparaît, ton premier réflexe doit être : « Quels sont les intervalles de montée ? De descente ? Où sont les sommets et les creux ? ». Avec de l'entraînement, ce questionnement devient instantané."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as parcouru les trois étapes essentielles de la lecture d'une courbe : comprendre les axes, extraire des valeurs précises, et analyser les variations. Ces trois piliers te permettront d'aborder sereinement tout graphique, qu'il s'agisse d'une fonction scolaire, d'une courbe expérimentale ou d'un graphique de presse. Continue à t'exercer sur des courbes variées pour ancrer ces automatismes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer l'origine, les axes et l'échelle d'un repère.",
+                "Je sais lire l'abscisse et l'ordonnée d'un point et former le couple $(x;y)$.",
+                "Je sais trouver l'image $f(x_0)$ d'une abscisse donnée sur une courbe.",
+                "Je sais construire un tableau de valeurs à partir d'une courbe.",
+                "Je sais identifier les intervalles où une fonction est croissante, décroissante ou constante.",
+                "Je sais construire et lire un tableau de variation.",
+                "Je sais utiliser un tableau de variation pour résoudre des inéquations simples."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la courbe ci‑dessous, la fonction monte de $x=-3$ à $x=0$, puis descend de $x=0$ à $x=2$, puis remonte après $x=2$. Donne les intervalles de croissance et de décroissance.",
+              "answer": "Croissante sur $[-3;0]$ et $[2;+\\infty[$ ; décroissante sur $[0;2]$.",
+              "hint": "Repère les points où le sens change (ici $0$ et $2$).",
+              "explanation": "Le changement de sens en $x=0$ (maximum) et $x=2$ (minimum) découpe le domaine en trois intervalles avec les variations indiquées."
+            },
+            {
+              "question": "Complète le tableau de variation pour une fonction qui a un maximum $4$ en $x=-1$ et un minimum $-1$ en $x=3$, définie sur $\\mathbb{R}$, croissante avant $-1$, décroissante entre $-1$ et $3$, croissante après $3$.",
+              "answer": "x : -∞  -1  3  +∞ ; f : -∞ ↗ 4 ↘ -1 ↗ +∞",
+              "hint": "Place les flèches selon le sens de variation et les valeurs aux extrémums.",
+              "explanation": "Le tableau de variation s'écrit avec les bornes $-∞$ et $+∞$, les points de changement $-1$ et $3$, les flèches ↗ et ↘, et les valeurs $4$ (max) et $-1$ (min)."
+            },
+            {
+              "question": "À l'aide du tableau de variation de l'exercice précédent, détermine l'ensemble des $x$ tels que $f(x) > 2$.",
+              "answer": "]-\\infty; -1[ \\cup ]3; +\\infty[ (environ)",
+              "hint": "Regarde où la valeur de la fonction dépasse $2$ : avant le maximum et après le minimum.",
+              "explanation": "Puisque $f$ atteint $4$ en $-1$ et $-1$ en $3$, elle est supérieure à $2$ sur une partie de l'intervalle de croissance avant $-1$ et sur toute la croissance après $3$. Les bornes exactes demandent de résoudre $f(x)=2$, mais qualitativement ce sont ces deux zones."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

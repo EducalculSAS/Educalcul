@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Algorithme",
+  "title": "Algorithmes de simulation - Seconde",
+  "blocks": [
+    {
+      "title": "Instruction aléatoire",
+      "content": "Complétez l'instruction suivante pour simuler un lancer de dé équilibré à six faces : $dé ←$ ______ .",
+      "correctAnswer": "aléatoire(1,6)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction aléatoire(1,6) renvoie un entier uniformément distribué entre 1 et 6, ce qui modélise un lancer de dé équilibré.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre d'itérations",
+      "content": "On exécute l'algorithme suivant :\\n$compteur ← 0$\\nRépéter $100$ fois :\\n Générer un entier aléatoire $x$ entre $1$ et $2$.\\n Si $x = 1$ alors $compteur ← compteur + 1$.\\nAfficher $compteur$.\\nCombien d'itérations la boucle de répétition effectue-t-elle ?",
+      "correctAnswer": "100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle « Répéter 100 fois » s'exécute exactement 100 fois, une fois pour chaque itération.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comptage de succès",
+      "content": "Soit $L = [2, 5, 6, 1, 6, 3, 6, 4, 6, 2]$. On initialise $somme = 0$. Pour $k$ de $1$ à $10$ faire :\\n Si $L_k = 6$ alors $somme ← somme + 1$.\\nFin pour\\nAfficher $somme$.\\nQuelle valeur est affichée ?",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La liste contient quatre occurrences de la valeur 6 (aux positions 3, 5, 7, 9). La boucle incrémente $somme$ à chaque occurrence, donc la valeur finale affichée est 4.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.561076+00:00",
+  "id": 25,
+  "code": "cp-t03-c03",
+  "title": "Compléments à 10",
+  "description": "Cours structuré Educalcul : Compléments à 10.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Compléments à 10",
+    "objectif_global": "Compléments à 10",
+    "mini_lecons_imposees": [
+      "Mémoriser les paires qui font 10.",
+      "Trouver le complément d'un nombre.",
+      "Utiliser le complément pour calculer."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Mémoriser les paires qui font 10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les amis du 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $10$ bonbons dans ta main. Si tu en donnes $3$ à ton ami, combien t'en reste-t-il ? $7$ bien sûr ! Les deux nombres $3$ et $7$ sont des copains : ensemble, ils refont exactement $10$. Aujourd'hui, nous allons rencontrer tous ces duos inséparables. Pas de stress, c'est comme apprendre une comptine : on les répète, on les visualise, et bientôt tu les connaîtras par cœur."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "Une dizaine, c'est $10$ unités réunies."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce bloc bleu : il représente une dizaine, soit $10$ petits cubes. Si on le défait, on retrouve $10$ unités. Maintenant, sépare-les en deux groupes : $1$ d'un côté, $9$ de l'autre. $1$ et $9$ font $10$. Essaie avec $2$ et $8$, puis $3$ et $7$. Chaque fois, les deux tas réunis reconstruisent la dizaine complète. C'est magique : il y a toujours deux nombres qui s'emboîtent parfaitement pour former $10$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as trouvé le premier duo. Maintenant, jouons avec une balance : pose $4$ cubes dans le plateau de gauche. Combien en faut-il à droite pour que la balance soit en équilibre avec $10$ au milieu ? C'est exactement la même idée : chercher le copain qui complète le premier nombre pour atteindre $10$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                4
+              ],
+              "right": [
+                6
+              ],
+              "caption": "$4$ à gauche, $6$ à droite : la balance est équilibrée sur $10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? $4$ et $6$ sont équilibrés. À ton tour de tester d'autres paires. Chaque fois que la balance ne penche pas, tu as trouvé une paire d'amis du $10$. C'est une façon concrète de vérifier sans compter sur tes doigts à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu commences à reconnaître les paires. Pour les fixer dans ta mémoire, on va faire un petit jeu de cartes : chaque carte montre un nombre de $1$ à $9$. Ton but ? Dire tout de suite son copain pour faire $10$. Au début, tu peux regarder tes doigts ou la balance, mais très vite tu n'auras plus besoin de rien. C'est comme apprendre à faire du vélo : au début on a des roulettes, puis on file tout seul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète : $1 + \\square = 10$",
+              "answer": "9",
+              "hint": "Utilise tes doigts : plie $1$ doigt, compte ceux qui restent levés.",
+              "explanation": "Si tu as $1$ et que tu veux $10$, il te faut $9$ de plus. $1$ et $9$ sont amis."
+            },
+            {
+              "question": "Sur la balance, il y a $2$ à gauche. Quel nombre mettre à droite pour équilibrer sur $10$ ?",
+              "answer": "8",
+              "hint": "Pense aux paires qui font $10$ : $2$ et ... ?",
+              "explanation": "$2 + 8 = 10$. La balance ne penche plus, les deux côtés sont égaux."
+            },
+            {
+              "question": "Donne le copain de $5$ pour faire $10$.",
+              "answer": "5",
+              "hint": "Deux fois le même nombre ? Oui, $5 + 5 = 10$.",
+              "explanation": "$5$ est son propre ami : $5 + 5 = 10$. C'est la seule paire où les deux nombres sont identiques."
+            }
+          ]
+        },
+        {
+          "title": "Trouver le complément d'un nombre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver le complément tout seul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les paires, on va apprendre à trouver le complément d'un nombre tout seul, comme un grand. Imagine que tu as $6$ billes dans ta poche. Tu veux en avoir $10$ au total. Combien t'en manque-t-il ? Au lieu de recompter à partir de $1$, tu peux utiliser ce que tu sais déjà : $6$ et $4$ font $10$. Donc il te faut $4$ billes. C'est ça, le complément : le petit nombre qu'il faut ajouter pour atteindre $10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce de pro : utilise tes deux mains. Étale tes $10$ doigts. Si on te donne le nombre $6$, baisse $6$ doigts. Regarde ceux qui restent levés : $4$ ! C'est ton complément. Essaie avec $8$ : baisse $8$ doigts, il en reste $2$ levés. Cette méthode marche à tous les coups et tu l'as toujours avec toi."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien utilisé tes doigts. Maintenant, essayons sans les doigts, juste avec les paires que tu as mémorisées. Si je dis $3$, tu penses immédiatement à $7$ car $3+7=10$. C'est comme un réflexe : le cerveau fait le lien tout seul. Pour t'entraîner, on va jouer à \"devine le nombre caché\" : je te donne un nombre, tu me donnes son copain le plus vite possible."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                7
+              ],
+              "right": [
+                3
+              ],
+              "caption": "$7$ et $3$ : la balance confirme le complément."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la balance : $7$ d'un côté, $3$ de l'autre. Elle est stable. Si je cache le $3$ avec un cache-cache, tu sais quand même qu'il est là parce que $7$ a besoin de $3$ pour faire $10$. C'est la force de la mémorisation : tu n'as plus besoin de compter, tu sais."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre de départ est $0$ ? Eh bien, le complément de $0$ pour faire $10$, c'est $10$ lui-même ! Et pour $10$, le complément c'est $0$. Ces deux cas un peu spéciaux sont utiles quand on fait des calculs plus tard. Allez, encore un petit entraînement mixte avec tous les nombres de $0$ à $10$, et tu seras prêt pour la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le complément de $4$ pour faire $10$ ?",
+              "answer": "6",
+              "hint": "Pense à la paire : $4$ et ... ?",
+              "explanation": "$4 + 6 = 10$, donc le complément de $4$ est $6$."
+            },
+            {
+              "question": "Complète : $9 + \\square = 10$",
+              "answer": "1",
+              "hint": "Utilise tes doigts ou la balance : $9$ a besoin de peu pour arriver à $10$.",
+              "explanation": "$9 + 1 = 10$. Le complément de $9$ est $1$."
+            },
+            {
+              "question": "Trouve le complément de $0$ pour faire $10$.",
+              "answer": "10",
+              "hint": "Si tu n'as rien, il te faut tout le $10$.",
+              "explanation": "$0 + 10 = 10$. Le complément de $0$ est $10$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser le complément pour calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer malin avec le complément à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant trouver les compléments à $10$ super vite. Devine quoi ? Ça va te servir à calculer plus facilement des additions un peu plus grandes, comme $8 + 5$ ou $7 + 6$. L'idée, c'est de fabriquer une dizaine pour simplifier. Regarde : pour $8 + 5$, on sait que $8$ a besoin de $2$ pour faire $10$. Alors on casse le $5$ en $2$ et $3$. On fait $8 + 2 = 10$, et il reste le $3$. Du coup, $8 + 5 = 10 + 3 = 13$. C'est comme faire une pause sur la dizaine, c'est beaucoup plus simple que de compter $5$ fois après $8$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "$8 + 5$ : on fait une dizaine ($10$) et il reste $3$ unités $\\rightarrow 13$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'image, tu vois la dizaine formée par $8+2$ (le gros bloc bleu) et les $3$ unités restantes. Le total, c'est $13$. Essaie maintenant avec $7 + 6$ : $7$ a besoin de $3$ pour faire $10$. On casse $6$ en $3$ et $3$. $7+3=10$, plus le $3$ restant, ça fait $13$ aussi. Tu vois le truc ? On cherche toujours le complément du premier nombre pour atteindre $10$, on prend ce qu'il faut dans le deuxième nombre, et le tour est joué."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as réussi ta première addition \"en passant par 10\". Maintenant, essayons une où le premier nombre est plus petit : $4 + 9$. $4$ a besoin de $6$ pour faire $10$. Dans le $9$, on prend $6$, il reste $3$. $4+6=10$, plus $3$ = $13$. C'est symétrique : ça marche dans les deux sens. Essaie aussi $6 + 7$ : $6$ veut $4$, on prend $4$ dans le $7$, il reste $3$, total $13$. Tu remarques que beaucoup de résultats donnent $13$ ? C'est parce qu'on tourne autour de $10+3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens vraiment fort ! Pour t'assurer que la méthode est bien ancrée, on va faire trois petites additions de suite. Prends ton temps, décompose le deuxième nombre pour compléter le premier à $10$, puis ajoute le reste. C'est comme construire un escalier : une marche pour aller à $10$, puis les marches restantes. Allez, c'est parti pour l'entraînement final."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je connais par cœur les paires de nombres qui font 10 (1+9, 2+8, 3+7, 4+6, 5+5).",
+                "Je sais trouver le complément d'un nombre entre 0 et 10 pour faire 10.",
+                "J'utilise le complément à 10 pour calculer des additions comme 8+5 ou 7+6 en passant par la dizaine."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $8 + 5$ en passant par 10. Décompose : $8 + 2 = 10$, il reste $3$. $10 + 3 = \\square$",
+              "answer": "13",
+              "hint": "Combien faut-il ajouter à 8 pour faire 10 ? Prends-le dans le 5.",
+              "explanation": "8 a besoin de 2 pour faire 10. On casse 5 en 2 et 3. 8+2=10, 10+3=13."
+            },
+            {
+              "question": "Calcule $7 + 6$ avec la même méthode. $7 + \\square = 10$, il reste $\\square$. $10 + \\square = \\square$",
+              "answer": "13",
+              "hint": "Le complément de 7 est 3. Prends 3 dans le 6, il reste 3.",
+              "explanation": "7+3=10, 6-3=3, 10+3=13."
+            },
+            {
+              "question": "Calcule $4 + 9$ en passant par 10.",
+              "answer": "13",
+              "hint": "4 a besoin de 6 pour faire 10. Dans 9, enlève 6, il reste 3.",
+              "explanation": "4+6=10, 9-6=3, 10+3=13."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

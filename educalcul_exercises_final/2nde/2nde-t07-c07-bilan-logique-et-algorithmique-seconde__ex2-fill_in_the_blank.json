@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Logique, ensembles et algorithmique",
+  "blocks": [
+    {
+      "title": "Inclusion d'ensembles",
+      "content": "Pour démontrer qu'un ensemble $A$ est inclus dans un ensemble $B$ (soit $A \\subset B$), la méthode standard consiste à : prendre un élément $x$ quelconque dans {{1}}, puis montrer que cet élément appartient à {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "$A$",
+        "$B$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La définition de l'inclusion $A \\subset B$ est : $\\forall x, (x \\in A \\implies x \\in B)$. La démarche de preuve directe consiste donc à supposer $x \\in A$ (premier trou) et à en déduire $x \\in B$ (deuxième trou).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Validité d'une boucle algorithmique",
+      "content": "Avant d'exécuter une boucle \"Tant que\", il faut vérifier l'{{1}} des variables concernées. À chaque itération, on doit s'assurer que l'{{2}} de boucle est conservée. Enfin, pour garantir la terminaison, la condition d'arrêt doit devenir {{3}} après un nombre fini d'étapes.",
+      "correctAnswer": "",
+      "blanks": [
+        "initialisation",
+        "invariante",
+        "vraie"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La checklist d'une boucle \"Tant que\" repose sur trois piliers : 1. L'initialisation correcte des variables avant l'entrée dans la boucle. 2. L'invariante de boucle, propriété qui reste vraie avant et après chaque itération. 3. La condition d'arrêt qui doit devenir vraie (le contraire de la condition \"Tant que\") pour sortir de la boucle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Structure d'une preuve par récurrence",
+      "content": "Une démonstration par récurrence suit une checklist rigoureuse en trois étapes : d'abord l'{{1}} (on vérifie la propriété pour la valeur initiale, souvent $0$ ou $1$), ensuite on pose l'{{2}} (on suppose la propriété vraie pour un entier $k$ quelconque), et enfin on réalise l'{{3}} (on prouve que la propriété pour $k$ entraîne sa vérité pour $k+1$).",
+      "correctAnswer": "",
+      "blanks": [
+        "initialisation",
+        "hypothèse de récurrence",
+        "hérésie"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les trois étapes obligatoires sont : 1. L'initialisation (ou base de la récurrence). 2. L'hypothèse de récurrence (supposition pour un $k \\ge n_0$). 3. L'hérésie (passage de $k$ à $k+1$). L'oubli de l'une de ces étapes invalide la démonstration.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

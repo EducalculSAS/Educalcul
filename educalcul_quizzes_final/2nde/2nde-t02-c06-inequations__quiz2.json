@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Intervalles",
+  "title": "Quiz sur les intervalles",
+  "questions": [
+    {
+      "text": "Quelle notation d'intervalle correspond à l'ensemble des $x$ tels que $x > 2$ et $x \\le 5$ ?",
+      "options": [
+        "$]2;5]$",
+        "$[2;5[$",
+        "$]2;5[$",
+        "$[2;5]$"
+      ],
+      "correctAnswer": "$]2;5]$",
+      "explanation": "L'inégalité $x > 2$ exclut 2 (parenthèse ouverte) et $x \\le 5$ inclut 5 (crochet fermé). L'intervalle est donc $]2;5]$. Les autres options inversent l'ouverture ou la fermeture d'un des bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel appartient à l'intervalle $[-3;1[$ ?",
+      "options": [
+        "-3",
+        "-2",
+        "1",
+        "2"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "L'intervalle $[-3;1[$ contient -3 (borne fermée) et tous les nombres strictement inférieurs à 1. -2 satisfait ces conditions, alors que 1 est exclu et 2 est hors intervalle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'intersection des intervalles $]-\\infty;0]$ et $[-2;+\\infty[$ ?",
+      "options": [
+        "$[-2;0]$",
+        "$]-2;0[$",
+        "$[-2;0[$",
+        "$]-2;0]$"
+      ],
+      "correctAnswer": "$[-2;0]$",
+      "explanation": "Le premier intervalle contient tous les nombres $\\le 0$ (0 inclus). Le second contient tous les nombres $\\ge -2$ (-2 inclus). Leur intersection contient donc les nombres de -2 à 0, bornes incluses : $[-2;0]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $2x - 4 < 6$ et exprimez l'ensemble solution sous forme d'intervalle.",
+      "options": [
+        "$]-\\infty;5]$",
+        "$]-\\infty;5[$",
+        "$[5;+\\infty[$",
+        "$]5;+\\infty[$"
+      ],
+      "correctAnswer": "$]-\\infty;5[$",
+      "explanation": "On ajoute 4 des deux côtés : $2x < 10$. On divise par 2 : $x < 5$. L'ensemble des solutions est l'intervalle ouvert à droite en 5 : $]-\\infty;5[$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le complémentaire dans $\\mathbb{R}$ de l'intervalle $]1;4]$ ?",
+      "options": [
+        "$]-\\infty;1[ \\cup ]4;+\\infty[$",
+        "$]-\\infty;1] \\cup [4;+\\infty[$",
+        "$[1;4[$",
+        "$]1;4[$"
+      ],
+      "correctAnswer": "$]-\\infty;1] \\cup [4;+\\infty[$",
+      "explanation": "Le complémentaire de $]1;4]$ dans $\\mathbb{R}$ comprend les nombres $\\le 1$ (1 inclus car 1 n'est pas dans l'intervalle) et les nombres $\\ge 4$ (4 inclus car 4 appartient à l'intervalle). Cela donne $]-\\infty;1] \\cup [4;+\\infty[$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

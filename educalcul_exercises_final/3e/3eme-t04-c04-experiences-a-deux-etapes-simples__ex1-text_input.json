@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Arbre / tableau si prévu",
+  "title": "Expériences à deux étapes : arbre et tableau",
+  "blocks": [
+    {
+      "title": "Probabilité d'un résultat composé",
+      "content": "On lance une pièce équilibrée puis on lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir « face » et un nombre pair ?",
+      "correctAnswer": "1/4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La probabilité d'obtenir face est $1/2$. La probabilité d'obtenir un nombre pair (2, 4 ou 6) au dé est $3/6 = 1/2$. Comme les deux expériences sont indépendantes, on multiplie : $1/2 \\times 1/2 = 1/4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arbre de probabilité avec remise",
+      "content": "Un sac contient 3 boules rouges et 2 boules bleues. On tire une boule, on note sa couleur, on la replace, puis on tire une seconde boule. Quelle est la probabilité que les deux boules tirées soient rouges ?",
+      "correctAnswer": "9/25",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "À chaque tirage, la probabilité de rouge est $3/5$. Avec remise, les tirages sont indépendants. La probabilité des deux rouges est $3/5 \\times 3/5 = 9/25$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tableau à double entrée pour deux étapes",
+      "content": "On choisit au hasard un jour de la semaine (7 jours équiproables) puis une lettre parmi A, B, C (3 lettres équiproables). Quelle est la probabilité que le jour soit un samedi ou un dimanche et que la lettre soit A ?",
+      "correctAnswer": "2/21",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il y a 2 jours de week-end sur 7, donc probabilité $2/7$. La probabilité de tirer A est $1/3$. Les deux choix sont indépendants, donc la probabilité cherchée est $2/7 \\times 1/3 = 2/21$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

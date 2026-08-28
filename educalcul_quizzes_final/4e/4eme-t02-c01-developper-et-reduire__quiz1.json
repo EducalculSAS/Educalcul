@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 425,
+  "_course_code": "4eme-t02-c01-developper-et-reduire",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Distributivité",
+  "title": "Quiz : Distributivité (4e)",
+  "questions": [
+    {
+      "text": "Développez l'expression $3(x+4)$.",
+      "options": [
+        "$3x+12$",
+        "$3x+4$",
+        "$3x+7$",
+        "$x+12$"
+      ],
+      "correctAnswer": "$3x+12$",
+      "explanation": "On applique la distributivité : $3 \\times x = 3x$ et $3 \\times 4 = 12$, donc $3(x+4)=3x+12$. Les autres réponses oublient de multiplier le 4, ajoutent les termes ou ne multiplient que la variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez l'expression $-2(5y-3)$.",
+      "options": [
+        "$-10y+6$",
+        "$-10y-6$",
+        "$10y-6$",
+        "$-10y+3$"
+      ],
+      "correctAnswer": "$-10y+6$",
+      "explanation": "On distribue $-2$ : $-2 \\times 5y = -10y$ et $-2 \\times (-3) = +6$. L'erreur fréquente est de garder le signe moins devant le 3, ce qui donnerait $-10y-6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduisez l'expression $4a+2(3a-5)$.",
+      "options": [
+        "$10a-10$",
+        "$7a-10$",
+        "$10a+10$",
+        "$7a+10$"
+      ],
+      "correctAnswer": "$10a-10$",
+      "explanation": "D'abord développer : $2 \\times 3a = 6a$ et $2 \\times (-5) = -10$, ce qui donne $4a+6a-10$. Ensuite regrouper les termes en $a$ : $4a+6a = 10a$. Le résultat final est $10a-10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle expression est équivalente à $5(2x-3)+4x$ ?",
+      "options": [
+        "$14x-15$",
+        "$14x-3$",
+        "$10x-15$",
+        "$14x+15$"
+      ],
+      "correctAnswer": "$14x-15$",
+      "explanation": "Développer $5(2x-3)$ donne $10x-15$. En ajoutant $4x$ on obtient $10x+4x-15 = 14x-15$. Les distracteurs correspondent à une omission du terme $4x$, une erreur de signe sur le constant ou un signe opposé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En développant $-(x-7)$, un élève écrit $-x-7$. Quelle est la bonne développement ?",
+      "options": [
+        "$-x+7$",
+        "$-x-7$",
+        "$x-7$",
+        "$x+7$"
+      ],
+      "correctAnswer": "$-x+7$",
+      "explanation": "Le signe moins devant la parenthèse change le signe de chaque terme : $-1 \\times x = -x$ et $-1 \\times (-7) = +7$. L'élève a oublié de changer le signe du $-7$, d'où l'erreur $-x-7$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

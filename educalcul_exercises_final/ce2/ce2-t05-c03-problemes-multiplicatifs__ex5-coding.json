@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 180,
+  "_course_code": "ce2-t05-c03-problemes-multiplicatifs",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Groupes égaux",
+  "title": "Algorithmes et groupes égaux",
+  "blocks": [
+    {
+      "title": "Calculer le total",
+      "content": "Écris un algorithme qui permet de trouver le nombre total d'objets quand on connaît le nombre de groupes et le nombre d'objets dans chaque groupe. L'algorithme doit demander le nombre de groupes (variable $nbGroupes$) et le nombre d'objets par groupe (variable $objetsParGroupe$), calculer le total et l'afficher.",
+      "correctAnswer": "Variables : nbGroupes, objetsParGroupe, total en entier\\nDébut\\n  Afficher \"Entrez le nombre de groupes : \"\\n  Saisir nbGroupes\\n  Afficher \"Entrez le nombre d'objets par groupe : \"\\n  Saisir objetsParGroupe\\n  total ← nbGroupes × objetsParGroupe\\n  Afficher \"Le total est : \", total\\nFin",
+      "explanation": "L'algorithme utilise deux variables d'entrée : le nombre de groupes et le nombre d'objets dans chaque groupe. La multiplication ($nbGroupes \\times objetsParGroupe$) donne le total. On stocke le résultat dans la variable 'total' avant de l'afficher.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver le nombre de groupes",
+      "content": "Écris un algorithme qui permet de trouver le nombre de groupes quand on connaît le nombre total d'objets et le nombre d'objets dans chaque groupe. L'algorithme doit demander le total (variable $total$) et le nombre d'objets par groupe (variable $objetsParGroupe$), calculer le nombre de groupes et l'afficher.",
+      "correctAnswer": "Variables : total, objetsParGroupe, nbGroupes en entier\\nDébut\\n  Afficher \"Entrez le total d'objets : \"\\n  Saisir total\\n  Afficher \"Entrez le nombre d'objets par groupe : \"\\n  Saisir objetsParGroupe\\n  nbGroupes ← total / objetsParGroupe\\n  Afficher \"Le nombre de groupes est : \", nbGroupes\\nFin",
+      "explanation": "Pour trouver le nombre de groupes, on effectue un partage (division) du total par le nombre d'objets dans chaque groupe. L'opération est $total / objetsParGroupe$. Le résultat est stocké dans 'nbGroupes' puis affiché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter l'algorithme",
+      "content": "Voici un algorithme incomplet pour résoudre un problème de groupes égaux. Complète la ligne manquante (remplace les points de suspension) pour qu'il calcule correctement le nombre d'objets dans chaque groupe.\\n\\nAlgorithme :\\nDébut\\n  Lire $total$  (nombre total d'objets)\\n  Lire $nbGroupes$  (nombre de groupes)\\n  ...  (calculer $objetsParGroupe$)\\n  Afficher $objetsParGroupe$\\nFin",
+      "correctAnswer": "objetsParGroupe ← total / nbGroupes",
+      "explanation": "Pour trouver le nombre d'objets dans chaque groupe (la taille du groupe), on divise le total par le nombre de groupes. L'instruction manquante est donc l'affectation du résultat de la division $total / nbGroupes$ à la variable $objetsParGroupe$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

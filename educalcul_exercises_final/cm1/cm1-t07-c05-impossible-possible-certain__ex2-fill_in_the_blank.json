@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 260,
+  "_course_code": "cm1-t07-c05-impossible-possible-certain",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Justifier",
+  "title": "Justifier impossible, possible, certain",
+  "blocks": [
+    {
+      "title": "Événement impossible",
+      "content": "Si on lance un dé à $6$ faces numérotées de $1$ à $6$, l'obtention d'un $7$ est {{1}} car {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "impossible",
+        "il n'y a pas de face 7|le dé ne comporte que les nombres 1 à 6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'obtention d'un 7 est impossible car un dé à six faces ne porte que les nombres 1, 2, 3, 4, 5 et 6. Il n'existe aucune face avec le numéro 7, donc cet événement ne peut jamais se produire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Événement possible",
+      "content": "Dans un sac contenant $3$ billes rouges et $2$ billes bleues, tirer une bille rouge est {{1}} car {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "possible",
+        "il y a des billes rouges dans le sac|il y a 3 billes rouges sur 5 au total"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Tirer une bille rouge est possible car le sac contient effectivement des billes rouges (3 sur 5). Ce n'est pas certain car on pourrait aussi tirer une bille bleue, et ce n'est pas impossible car il y a au moins une bille rouge.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Événement certain",
+      "content": "Si on place une balle dans une boîte fermée et qu'on la secoue, la balle est {{1}} dans la boîte car {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "certaine",
+        "la boîte est fermée et la balle ne peut pas en sortir|elle ne peut pas sortir de la boîte fermée"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La balle est certaine de se trouver dans la boîte car la boîte est fermée, ce qui empêche la balle d'en sortir. Quel que soit le mouvement, la balle reste à l'intérieur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 408,
+  "_course_code": "5eme-t06-c04-probabilite-d-un-evenement-simple",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Issues équiprobables accessibles",
+  "title": "Algorithmes et probabilités : issues équiprobables",
+  "blocks": [
+    {
+      "title": "Calcul de probabilité par algorithme",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui demande à l'utilisateur le nombre total d'issues possibles $N$ et le nombre d'issues favorables $F$ à un événement, puis qui affiche la probabilité de cet événement sous la forme d'une fraction et d'un nombre décimal. On suppose que les issues sont équiprobables.",
+      "correctAnswer": "Algorithme :\\n1. Demander N (entier positif)\\n2. Demander F (entier positif, F ≤ N)\\n3. Calculer probabilité_fraction = F / N (ou afficher \"F/N\")\\n4. Calculer probabilité_decimal = F / N\\n5. Afficher \"Probabilité : \" + F + \"/\" + N + \" = \" + probabilité_decimal",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit la définition de la probabilité pour des issues équiprobables : $P = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$. La conversion en décimal se fait par la division $F \\div N$. Les variables $N$ et $F$ sont des entiers, la division pour l'affichage décimal doit être une division réelle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'une expérience aléatoire",
+      "content": "Une urne contient $3$ boules rouges et $2$ boules bleues, indiscernables au toucher. On tire une boule au hasard, on note sa couleur, on la remet. Écrire un algorithme qui simule $100$ tirages et qui affiche la fréquence d'apparition de la couleur rouge. Utiliser une fonction `aleatoire()` qui renvoie un nombre au hasard entre $0$ et $1$.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser compteur_rouge = 0\\n2. Répéter 100 fois :\\n   a. tirage = aleatoire()\\n   b. Si tirage < 0.6 alors (car 3/5 = 0.6)\\n        compteur_rouge = compteur_rouge + 1\\n3. frequence = compteur_rouge / 100\\n4. Afficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La probabilité théorique de tirer une boule rouge est $\\frac{3}{5} = 0,6$. L'algorithme utilise un nombre aléatoire uniforme entre $0$ et $1$. Si ce nombre est strictement inférieur à $0,6$, on considère que l'événement « boule rouge » se réalise. La fréquence est le quotient du nombre de succès par le nombre total d'essais ($100$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'un événement composé à deux étapes",
+      "content": "On lance deux fois une pièce de monnaie équilibrée. Écrire un algorithme qui détermine la probabilité d'obtenir « au moins une face » en listant toutes les issues possibles équiprobables de l'expérience à deux étapes.",
+      "correctAnswer": "Algorithme :\\n1. Créer une liste issues = [\"FF\", \"FP\", \"PF\", \"PP\"] (F=Face, P=Pile)\\n2. Initialiser favorables = 0\\n3. Pour chaque issue dans issues :\\n      Si \"F\" est dans issue alors\\n           favorables = favorables + 1\\n4. probabilite = favorables / longueur(issues)\\n5. Afficher probabilite (soit 3/4 ou 0,75)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expérience à deux étapes a $2 \\times 2 = 4$ issues équiprobables : (Face, Face), (Face, Pile), (Pile, Face), (Pile, Pile). L'événement « au moins une Face » correspond aux trois premières issues. La probabilité est donc $\\frac{3}{4} = 0,75$. L'algorithme parcourt la liste des issues et compte celles contenant au moins un « F ».",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

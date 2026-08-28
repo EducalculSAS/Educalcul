@@ -1,0 +1,674 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.158160+00:00",
+  "id": 541,
+  "code": "1ere-generale-t01-c01",
+  "title": "Calcul numérique utile",
+  "description": "Cours structuré Educalcul : Calcul numérique utile.",
+  "subject": "Automatismes",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Automatismes",
+    "titre_du_cours": "Calcul numérique utile",
+    "objectif_global": "Calcul numérique utile",
+    "mini_lecons_imposees": [
+      "Fractions / puissances simples.",
+      "Pourcentages.",
+      "Ordres de grandeur."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Automatismes",
+      "lessons": [
+        {
+          "title": "Fractions / puissances simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les fractions : rappel et manipulation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu partages une pizza entre quatre amis. Chaque personne reçoit une part qui correspond à un quart de la pizza. En mathématiques, on écrit cette part sous la forme d'une fraction : le nombre du haut, appelé numérateur, indique combien de parts on prend, et le nombre du bas, le dénominateur, montre en combien de parts égales l'ensemble a été découpé. Ainsi, $\\frac{1}{4}$ signifie « une part sur quatre ». Ce vocabulaire va nous accompagner tout au long du chapitre, alors prends le temps de bien visualiser la situation."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Une pizza coupée en quatre parts égales, une part colorée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le numérateur et le dénominateur peuvent être n'importe quels nombres entiers positifs, à condition que le dénominateur ne soit pas zéro. Par exemple, $\\frac{3}{5}$ représente trois parts sur cinq. Si le numérateur est plus grand que le dénominateur, comme dans $\\frac{7}{4}$, la fraction est dite impropre et elle vaut plus de un entier. On peut alors la transformer en nombre mixte : $1 \\frac{3}{4}$."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction ; il compte le nombre de parts considérées.",
+              "example": "Dans $\\frac{5}{8}$, le numérateur est $5$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre écrit au-dessous de la barre de fraction ; il indique en combien de parts égales l'unité a été divisée.",
+              "example": "Dans $\\frac{5}{8}$, le dénominateur est $8$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifier une fraction consiste à diviser le numérateur et le dénominateur par un même diviseur commun, le plus grand possible, pour obtenir une fraction équivalente mais plus simple. Par exemple, $\\frac{12}{18}$ se simplifie en $\\frac{2}{3}$ car $12$ et $18$ sont tous les deux divisibles par $6$. Cette opération ne change pas la valeur de la fraction, elle la rend simplement plus facile à lire et à utiliser dans les calculs suivants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver un diviseur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le plus grand nombre qui divise à la fois le numérateur et le dénominateur. Pour $\\frac{12}{18}$, c'est $6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser les deux nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le numérateur et le dénominateur par ce diviseur : $12 \\div 6 = 2$ et $18 \\div 6 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la fraction simplifiée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fraction équivalente simplifiée est $\\frac{2}{3}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu es à l'aise avec la simplification, nous allons voir comment les puissances simples s'écrivent et se calculent. Une puissance est une multiplication répétée d'un même nombre par lui-même. Par exemple, $2^3$ signifie $2 \\times 2 \\times 2$. Le petit chiffre en haut, l'exposant, indique combien de fois la base apparaît dans le produit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Puissances simples : écrire et calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu as une feuille de papier que tu plies en deux, puis tu replies le résultat en deux, et tu recommences une troisième fois. À chaque pli, le nombre de couches double. Après trois plis, tu as $2^3 = 8$ couches. Cette image mentale aide à retenir que l'exposant compte le nombre de multiplications successives."
+            },
+            {
+              "type": "display_math",
+              "latex": "2^3 = 2 \\times 2 \\times 2 = 8"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les règles de base pour manipuler les puissances sont faciles à retenir si on les relie à cette idée de répétition. Quand on multiplie deux puissances de même base, on additionne les exposants : $a^m \\times a^n = a^{m+n}$. Quand on divise, on soustrait les exposants : $\\frac{a^m}{a^n} = a^{m-n}$ (à condition que $a \\neq 0$). Et quand on élève une puissance à une autre puissance, on multiplie les exposants : $(a^m)^n = a^{m \\times n}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la base commune",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $3^2 \\times 3^4$, la base commune est $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $2 + 4 = 6$, donc $3^2 \\times 3^4 = 3^6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier si on peut simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $3^6 = 729$, mais souvent on laisse la forme puissance pour la suite des calculs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent de croiser fractions et puissances dans une même expression. Par exemple, $\\left(\\frac{2}{3}\\right)^2$ signifie qu'on multiplie la fraction $\\frac{2}{3}$ par elle-même : $\\frac{2}{3} \\times \\frac{2}{3} = \\frac{4}{9}$. La règle générale est $\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$, à condition que $b \\neq 0$. Cette propriété permet de traiter les fractions élevées à une puissance exactement comme des nombres entiers, en appliquant la puissance au numérateur et au dénominateur séparément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mélanger fractions et puissances"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\left(\\frac{2}{3}\\right)^2 = \\frac{2^2}{3^2} = \\frac{4}{9}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas un peu plus riche : $\\left(\\frac{5}{2}\\right)^3$. On élève le numérateur $5$ au cube ($125$) et le dénominateur $2$ au cube ($8$), ce qui donne $\\frac{125}{8}$. Si le résultat est une fraction impropre, on peut le convertir en nombre mixte : $15 \\frac{5}{8}$. Cette conversion est utile pour donner une idée concrète de la taille du nombre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Appliquer la puissance au numérateur et au dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $5^3 = 125$ et $2^3 = 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la fraction résultante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $\\frac{125}{8}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convertir en nombre mixte si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$125 \\div 8 = 15$ reste $5$, donc $15 \\frac{5}{8}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour simplifier des fractions, calculer des puissances simples et combiner les deux. Dans la prochaine leçon, nous verrons comment les pourcentages s'appuient sur ces mêmes idées de parties d'un tout."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $\\frac{24}{36}$.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Cherche le plus grand diviseur commun de $24$ et $36$.",
+              "explanation": "Le PGCD de $24$ et $36$ est $12$. En divisant numérateur et dénominateur par $12$, on obtient $\\frac{24 \\div 12}{36 \\div 12} = \\frac{2}{3}$."
+            },
+            {
+              "question": "Calcule $4^2 \\times 4^3$ et donne le résultat sous forme de puissance.",
+              "answer": "$4^5$",
+              "hint": "Utilise la règle d'addition des exposants pour une même base.",
+              "explanation": "Comme la base est identique ($4$), on additionne les exposants : $2 + 3 = 5$. Donc $4^2 \\times 4^3 = 4^5$."
+            },
+            {
+              "question": "Évalue $\\left(\\frac{3}{4}\\right)^2$ et écris le résultat sous forme de fraction simplifiée.",
+              "answer": "$\\frac{9}{16}$",
+              "hint": "Élève le numérateur et le dénominateur au carré séparément.",
+              "explanation": "On applique la règle $\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$ : $\\frac{3^2}{4^2} = \\frac{9}{16}$. La fraction est déjà simplifiée."
+            }
+          ]
+        },
+        {
+          "title": "Pourcentages.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le pourcentage comme une fraction sur 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot « pourcentage » vient de l'expression « pour cent », ce qui signifie littéralement « pour cent parties ». Un pourcentage est donc une façon commode d'exprimer une fraction dont le dénominateur est $100$. Par exemple, $25\\%$ se lit « vingt-cinq pour cent » et correspond à la fraction $\\frac{25}{100}$, qui se simplifie en $\\frac{1}{4}$. Cette liaison directe entre pourcentage et fraction est la clé pour passer de l'un à l'autre sans difficulté."
+            },
+            {
+              "type": "display_math",
+              "latex": "25\\% = \\frac{25}{100} = \\frac{1}{4}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, on rencontre les pourcentages partout : soldes en magasin, taux d'intérêt à la banque, résultats d'enquêtes. Savoir convertir un pourcentage en fraction ou en nombre décimal permet de faire des calculs exacts au lieu d'estimer. Par exemple, une réduction de $30\\%$ sur un article à $50\\,\\text{euros}$ signifie que tu paies $70\\%$ du prix initial, soit $0,7 \\times 50 = 35\\,\\text{euros}$."
+            },
+            {
+              "type": "definition",
+              "term": "Pourcentage",
+              "definition": "Nombre suivi du symbole $\\%$ qui exprime une proportion sur $100$.",
+              "example": "$60\\% = \\frac{60}{100} = 0,6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer d'un pourcentage à un nombre décimal, il suffit de diviser par $100$, c'est-à-dire de décaler la virgule de deux rangs vers la gauche. Inversement, pour transformer un décimal en pourcentage, on multiplie par $100$ (décalage de deux rangs vers la droite) et on ajoute le symbole $\\%$. Par exemple, $0,45 = 45\\%$ et $12\\% = 0,12$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le pourcentage comme fraction sur 100",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$37\\% = \\frac{37}{100}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser le numérateur par 100",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$37 \\div 100 = 0,37$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajouter le symbole % si on repart du décimal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$0,37 \\times 100 = 37\\%$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la conversion est claire, voyons comment calculer un pourcentage d'une quantité. La méthode la plus sûre consiste à transformer le pourcentage en décimal, puis à multiplier par la quantité considérée. Si tu veux savoir combien font $20\\%$ de $150$, tu écris $20\\% = 0,2$ et tu calcules $0,2 \\times 150 = 30$. Cette approche fonctionne pour n'importe quel pourcentage, même s'il n'est pas un nombre rond."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un pourcentage d'une quantité"
+            },
+            {
+              "type": "display_math",
+              "latex": "20\\% \\times 150 = 0,2 \\times 150 = 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'exercice demande de trouver le pourcentage que représente une partie par rapport à un tout. Dans ce cas, on forme la fraction $\\frac{\\text{partie}}{\\text{tout}}$, on la convertit en décimal, puis en pourcentage. Par exemple, dans une classe de $28$ élèves, $7$ portent des lunettes. La fraction est $\\frac{7}{28} = \\frac{1}{4} = 0,25$, donc $25\\%$ des élèves portent des lunettes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la fraction partie/tout",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\frac{7}{28}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier la fraction si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\frac{7}{28} = \\frac{1}{4}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convertir en décimal puis en pourcentage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$0,25 = 25\\%$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les variations de pourcentage (augmentation ou diminution) sont très utilisées en économie et en sciences. Pour augmenter une quantité de $p\\%$, on la multiplie par $1 + \\frac{p}{100}$. Pour la diminuer de $p\\%$, on multiplie par $1 - \\frac{p}{100}$. Par exemple, un salaire de $2000\\,\\text{euros}$ augmenté de $5\\%$ devient $2000 \\times 1,05 = 2100\\,\\text{euros}$. Une diminution de $10\\%$ sur le même salaire donnerait $2000 \\times 0,9 = 1800\\,\\text{euros}$. Ces formules évitent de calculer le montant de la variation séparément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Augmentation et diminution par un pourcentage"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Nouvelle valeur} = \\text{Valeur initiale} \\times \\left(1 \\pm \\frac{p}{100}\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : si on applique une augmentation de $20\\%$ puis une diminution de $20\\%$ sur le nouveau montant, on ne retrouve pas la valeur de départ. En effet, $100 \\times 1,2 = 120$, puis $120 \\times 0,8 = 96$. L'ordre et la base de calcul changent le résultat. C'est un piège classique qu'il faut garder en tête."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le sens de la variation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Augmentation → facteur $1 + p/100$ ; diminution → facteur $1 - p/100$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le facteur multiplicateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $p = 15\\%$, facteur d'augmentation $= 1,15$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier la valeur initiale par ce facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$400 \\times 1,15 = 460$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant convertir, calculer et appliquer des pourcentages dans des situations variées. La prochaine leçon abordera les ordres de grandeur, qui permettent d'estimer rapidement la taille d'un nombre sans faire de calcul exact."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $68\\%$ en nombre décimal.",
+              "answer": "$0,68$",
+              "hint": "Divise $68$ par $100$ ou décale la virgule de deux rangs vers la gauche.",
+              "explanation": "$68 \\div 100 = 0,68$. Donc $68\\% = 0,68$."
+            },
+            {
+              "question": "Calcule $35\\%$ de $240$.",
+              "answer": "$84$",
+              "hint": "Transforme $35\\%$ en décimal ($0,35$) puis multiplie par $240$.",
+              "explanation": "$35\\% = 0,35$. $0,35 \\times 240 = 84$."
+            },
+            {
+              "question": "Un prix de $80\\,\\text{euros}$ est augmenté de $12\\%$. Quel est le nouveau prix ?",
+              "answer": "$89,60\\,\\text{euros}$",
+              "hint": "Utilise le facteur multiplicateur $1 + 12/100 = 1,12$.",
+              "explanation": "Facteur $= 1,12$. $80 \\times 1,12 = 89,6$. Le nouveau prix est $89,60\\,\\text{euros}$."
+            }
+          ]
+        },
+        {
+          "title": "Ordres de grandeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un ordre de grandeur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un ordre de grandeur donne une idée approximative de la taille d'un nombre en le ramenant à la puissance de dix la plus proche. Par exemple, la population de la France est d'environ $67\\,\\text{millions}$ d'habitants. On dit que son ordre de grandeur est $10^7$ (dix millions), car $67\\,\\text{millions} = 6,7 \\times 10^7$ et la puissance de dix qui domine est $10^7$. Cette notion est précieuse quand on n'a pas besoin d'une valeur exacte mais seulement de comparer des grandeurs très différentes, comme la distance Terre-Lune ($\\approx 3,8 \\times 10^5\\,\\text{km}$) et la taille d'un atome ($\\approx 10^{-10}\\,\\text{m}$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "67\\,\\text{millions} \\approx 6,7 \\times 10^7 \\Rightarrow \\text{ordre de grandeur } 10^7"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer l'ordre de grandeur d'un nombre positif, on l'écrit en notation scientifique $a \\times 10^n$ avec $1 \\le a < 10$. L'entier $n$ est alors l'ordre de grandeur. Si $a \\ge \\sqrt{10} \\approx 3,16$, on arrondit parfois à $10^{n+1}$ pour rester du bon côté, mais en première approximation on garde $10^n$. Par exemple, $4\\,500 = 4,5 \\times 10^3$ a pour ordre de grandeur $10^3$ (mille), alors que $8\\,200 = 8,2 \\times 10^3$ est plus proche de $10^4$ (dix mille) si on affine."
+            },
+            {
+              "type": "definition",
+              "term": "Notation scientifique",
+              "definition": "Écriture d'un nombre sous la forme $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier.",
+              "example": "$0,0042 = 4,2 \\times 10^{-3}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les puissances de dix négatives servent pour les nombres très petits. $0,000\\,56 = 5,6 \\times 10^{-4}$ a un ordre de grandeur $10^{-4}$. Cela signifie que la quantité est de l'ordre du dix-millième. En chimie, la concentration d'un ion peut être de l'ordre de $10^{-6}\\,\\text{mol/L}$, ce qu'on appelle le micromolaire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le nombre en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $92\\,000$, on obtient $9,2 \\times 10^4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'exposant de la puissance de dix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'exposant est $4$, donc l'ordre de grandeur est $10^4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$92\\,000$ est de l'ordre de la dizaine de milliers."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer des ordres de grandeur permet de classer des phénomènes sans calculer précisément. Imagine que tu dois ranger ces distances : épaisseur d'un cheveu ($\\approx 7 \\times 10^{-5}\\,\\text{m}$), hauteur d'un immeuble de 10 étages ($\\approx 3 \\times 10^1\\,\\text{m}$), distance Paris-New York ($\\approx 5,8 \\times 10^6\\,\\text{m}$). Les exposants $-5$, $1$, $6$ montrent immédiatement que l'épaisseur du cheveu est microscopique, l'immeuble est à l'échelle de la dizaine de mètres, et le vol transatlantique se mesure en millions de mètres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer et classer des ordres de grandeur"
+            },
+            {
+              "type": "number_line",
+              "caption": "Position approximative des trois distances sur une échelle logarithmique",
+              "min": -6,
+              "max": 7,
+              "points": [
+                {
+                  "value": -5,
+                  "label": "Cheveu"
+                },
+                {
+                  "value": 1,
+                  "label": "Immeuble"
+                },
+                {
+                  "value": 6,
+                  "label": "Paris-NY"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite numérique logarithmique, chaque graduation correspond à une multiplication par $10$. Les trois points apparaissent très éloignés, ce qui illustre la puissance des ordres de grandeur pour saisir des échelles disparates. C'est exactement ce que font les scientifiques quand ils parlent d'échelles de longueur, de temps ou d'énergie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Exprimer chaque quantité en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cheveu : $7 \\times 10^{-5}\\,\\text{m}$ ; Immeuble : $3 \\times 10^1\\,\\text{m}$ ; Paris-NY : $5,8 \\times 10^6\\,\\text{m}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relever l'exposant de chaque puissance de dix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ordres de grandeur : $10^{-5}$, $10^1$, $10^6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Classer du plus petit au plus grand exposant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$10^{-5} < 10^1 < 10^6$, donc cheveu < immeuble < Paris-NY."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les ordres de grandeur servent à estimer rapidement le résultat d'un calcul sans entrer dans les détails. Si tu multiplies $3 \\times 10^4$ par $2 \\times 10^{-2}$, les puissances de dix s'additionnent : $10^{4 + (-2)} = 10^2$. Le produit des coefficients $3 \\times 2 = 6$ donne $6 \\times 10^2 = 600$. L'ordre de grandeur du résultat est donc $10^2$ (cent). Cette technique est la base du calcul mental scientifique et t'évitera bien des erreurs de virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer un produit ou un quotient par les ordres de grandeur"
+            },
+            {
+              "type": "display_math",
+              "latex": "(3 \\times 10^4) \\times (2 \\times 10^{-2}) = 6 \\times 10^{2} = 600"
+            },
+            {
+              "type": "paragraph",
+              "content": "De même, pour une division $\\frac{9 \\times 10^5}{3 \\times 10^2}$, on soustrait les exposants : $10^{5-2} = 10^3$, et $9/3 = 3$, ce qui donne $3 \\times 10^3 = 3000$. L'ordre de grandeur est $10^3$ (mille). Cette méthode marche aussi pour des nombres non écrits en notation scientifique : il suffit de les y convertir mentalement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre chaque nombre en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4500 = 4,5 \\times 10^3$ et $0,006 = 6 \\times 10^{-3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier les coefficients et additionner les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4,5 \\times 6 = 27$ ; $10^{3 + (-3)} = 10^0 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réécrire le résultat en notation scientifique si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$27 = 2,7 \\times 10^1$, donc le produit final est $2,7 \\times 10^1 = 27$. Ordre de grandeur $10^1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour manipuler fractions, puissances, pourcentages et ordres de grandeur. Ces outils numériques te suivront tout au long de l'année en enseignement scientifique et au-delà."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais simplifier une fraction et la mettre sous forme irréductible.",
+                "Je sais calculer une puissance simple et appliquer les règles des exposants.",
+                "Je sais convertir un pourcentage en fraction et en nombre décimal.",
+                "Je sais calculer un pourcentage d'une quantité et appliquer une variation en pourcentage.",
+                "Je sais déterminer l'ordre de grandeur d'un nombre écrit en notation scientifique.",
+                "Je sais comparer plusieurs grandeurs en utilisant leurs ordres de grandeur.",
+                "Je sais estimer le résultat d'un produit ou d'un quotient par les ordres de grandeur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'ordre de grandeur de $0,000\\,83$.",
+              "answer": "$10^{-4}$",
+              "hint": "Écris le nombre en notation scientifique $a \\times 10^n$ avec $1 \\le a < 10$.",
+              "explanation": "$0,000\\,83 = 8,3 \\times 10^{-4}$. L'exposant est $-4$, donc l'ordre de grandeur est $10^{-4}$."
+            },
+            {
+              "question": "Classe par ordre de grandeur croissant : $5 \\times 10^3$, $2 \\times 10^{-2}$, $9 \\times 10^6$.",
+              "answer": "$2 \\times 10^{-2} < 5 \\times 10^3 < 9 \\times 10^6$",
+              "hint": "Compare les exposants des puissances de dix.",
+              "explanation": "Les exposants sont $-2$, $3$, $6$. L'ordre croissant des exposants donne l'ordre croissant des grandeurs."
+            },
+            {
+              "question": "Estime l'ordre de grandeur du produit $(4 \\times 10^5) \\times (3 \\times 10^{-3})$.",
+              "answer": "$10^3$",
+              "hint": "Additionne les exposants des puissances de dix.",
+              "explanation": "Produit des coefficients $4 \\times 3 = 12 \\approx 1,2 \\times 10^1$. Exposants $5 + (-3) = 2$. Total $1,2 \\times 10^{3}$, donc ordre de grandeur $10^3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

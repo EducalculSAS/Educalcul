@@ -1,0 +1,561 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.532604+00:00",
+  "id": 332,
+  "code": "6eme-t01-c02",
+  "title": "Nombres décimaux",
+  "description": "Cours structuré Educalcul : Nombres décimaux.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Nombres décimaux",
+    "objectif_global": "Nombres décimaux",
+    "mini_lecons_imposees": [
+      "Valeur positionnelle.",
+      "Comparer.",
+      "Intercaler."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Valeur positionnelle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la partie décimale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les nombres entiers : $1$, $42$, $300$. Mais comment écrire une longueur de $3$ mètres et $50$ centimètres ? Ou le prix d'un livre qui coûte $12$ euros et $50$ centimes ? C'est là qu'interviennent les nombres décimaux. Ils permettent d'exprimer des quantités qui ne sont pas des nombres entiers, en ajoutant une partie après la virgule. Cette petite virgule change tout : elle sépare la partie entière (à gauche) de la partie décimale (à droite). C'est comme une frontière entre ce qui est compté en unités entières et ce qui est mesuré en fractions d'unité."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 12.5,
+              "caption": "Le nombre $12,5$ dans un tableau de numération : $1$ dizaine, $2$ unités, $5$ dixièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci-dessus. À gauche de la virgule, on retrouve les colonnes habituelles : les unités, les dizaines, les centaines. Mais à droite, de nouvelles colonnes apparaissent. La première juste après la virgule, c'est la colonne des dixièmes. Un dixième, c'est ce qu'on obtient quand on partage $1$ unité en $10$ parts égales. Si tu as $5$ dixièmes, tu as la moitié d'une unité, soit $0,5$. Plus on va vers la droite, plus les parts sont petites : après les dixièmes viennent les centièmes ($1$ unité divisée en $100$), puis les millièmes ($1$ unité divisée en $1000$). Chaque colonne vaut $10$ fois moins que sa voisine de gauche."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre décimal",
+              "definition": "Un nombre qui s'écrit avec un nombre fini de chiffres après la virgule. Il est composé d'une partie entière (à gauche de la virgule) et d'une partie décimale (à droite).",
+              "example": "$3,14$ est un nombre décimal. Sa partie entière est $3$, sa partie décimale est $14$ (ce qui signifie $14$ centièmes)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer les chiffres selon leur position"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois la structure, apprenons à donner le nom exact de chaque chiffre. C'est essentiel pour lire, écrire et comparer les nombres sans te tromper. Prenons l'exemple du nombre $403,207$. Le $4$ est dans la colonne des centaines, le $0$ dans les dizaines, le $3$ dans les unités. Après la virgule, le $2$ est dans les dixièmes, le second $0$ dans les centièmes, et le $7$ dans les millièmes. Remarque bien le zéro des dizaines et le zéro des centièmes : ils sont indispensables pour garder les autres chiffres à leur bonne place. Sans eux, $403,207$ deviendrait $43,27$, ce qui n'est pas du tout la même valeur !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom sur l'intervalle $[0, 1]$ pour visualiser dixièmes, centièmes et millièmes",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.1,
+                  "label": "1/10"
+                },
+                {
+                  "value": 0.01,
+                  "label": "1/100"
+                },
+                {
+                  "value": 0.001,
+                  "label": "1/1000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée ci-dessus t'aide à visualiser : l'espace entre $0$ et $1$ est découpé en $10$ parts égales (les dixièmes). Chaque dixième est lui-même découpé en $10$ (les centièmes), et ainsi de suite. C'est pour cela qu'un centième est $10$ fois plus petit qu'un dixième. Quand tu lis un nombre à voix haute, tu nommes la partie entière normalement, tu dis « virgule », puis tu énumères les chiffres de la partie décimale un par un : $403,207$ se lit « quatre cent trois virgule deux zéro sept ». On ne dit jamais « quatre cent trois virgule deux cent sept » car après la virgule, ce ne sont plus des centaines ni des dizaines, mais des dixièmes, centièmes, millièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer et recomposer un nombre décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Décomposer un nombre, c'est l'écrire comme une somme où chaque chiffre est multiplié par la valeur de sa colonne. C'est une façon de « voir » la valeur réelle de chaque chiffre. Pour $52,34$, on écrit : $52,34 = 5 \\times 10 + 2 \\times 1 + 3 \\times 0,1 + 4 \\times 0,01$. On peut aussi utiliser les fractions : $3 \\times \\frac{1}{10} + 4 \\times \\frac{1}{100}$. Cette écriture montre bien que le $3$ vaut $3$ dixièmes et le $4$ vaut $4$ centièmes. C'est très utile pour additionner ou soustraire plus tard, car on aligne les colonnes qui ont la même valeur."
+            },
+            {
+              "type": "display_math",
+              "latex": "52,34 = 5 \\times 10 + 2 \\times 1 + 3 \\times 0,1 + 4 \\times 0,01"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux zéros ! Dans $52,34$, il n'y a pas de centaines ni de millièmes. Si on veut être exhaustif, on peut écrire $0 \\times 100 + 5 \\times 10 + 2 \\times 1 + 3 \\times 0,1 + 4 \\times 0,01 + 0 \\times 0,001$. Mais en général, on ne note que les colonnes non nulles. L'exercice inverse, recomposer, consiste à faire le calcul pour retrouver le nombre initial. C'est un excellent entraînement pour vérifier que tu as bien compris la valeur de chaque position."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un nombre dicté ou nommé en lettres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, entraînons-nous à passer de l'oral à l'écrit. Si on te dicte : « trois unités, six dixièmes, huit centièmes », tu dois placer le $3$ dans la colonne des unités, le $6$ dans les dixièmes, le $8$ dans les centièmes. Cela donne $3,68$. Si on te dit « deux cent cinq virgule zéro quatre », écris $205,04$. Le zéro des dizaines de la partie entière et le zéro des dixièmes de la partie décimale sont obligatoires. Un piège fréquent : « douze millièmes ». Ce n'est pas $0,12$ (qui est douze centièmes), mais $0,012$ : zéro unité, zéro dixième, un centième, deux millièmes. Prends le temps de visualiser le tableau de numération dans ta tête avant d'écrire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $205,307$, quel est le chiffre des centièmes ?",
+              "answer": "0",
+              "hint": "Regarde la deuxième colonne après la virgule.",
+              "explanation": "Le nombre s'écrit dans le tableau : $2$ (centaines), $0$ (dizaines), $5$ (unités), virgule, $3$ (dixièmes), $0$ (centièmes), $7$ (millièmes). Le chiffre des centièmes est donc $0$."
+            },
+            {
+              "question": "Complète la décomposition : $40,08 = 4 \\times 10 + \\dots + 8 \\times 0,01$",
+              "answer": "$0 \\times 1 + 0 \\times 0,1$",
+              "hint": "N'oublie pas les zéros pour les unités et les dixièmes.",
+              "explanation": "Il y a $4$ dizaines, $0$ unité, $0$ dixième et $8$ centièmes. La décomposition complète est $4 \\times 10 + 0 \\times 1 + 0 \\times 0,1 + 8 \\times 0,01$."
+            },
+            {
+              "question": "Écris en chiffres : « sept unités, trois dixièmes, cinq millièmes ».",
+              "answer": "$7,305$",
+              "hint": "Il n'y a pas de centièmes, il faut mettre un zéro à cette place.",
+              "explanation": "Unités : $7$. Dixièmes : $3$. Centièmes : $0$ (car absent). Millièmes : $5$. Donc $7,305$."
+            },
+            {
+              "question": "Quel nombre correspond à la décomposition $3 \\times 100 + 5 \\times 1 + 2 \\times 0,1 + 9 \\times 0,001$ ?",
+              "answer": "$305,209$",
+              "hint": "Repère les colonnes manquantes (dizaines, centièmes).",
+              "explanation": "Il y a $3$ centaines, $0$ dizaine, $5$ unités, $2$ dixièmes, $0$ centième, $9$ millièmes. Le nombre est $305,209$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle d'or : comparer les parties entières d'abord"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer deux nombres décimaux, c'est décider lequel est le plus grand ou le plus petit. La méthode est simple et logique : on commence toujours par regarder la partie entière, à gauche de la virgule. C'est elle qui donne l'ordre de grandeur principal. Si un nombre a $5$ unités et l'autre $12$ unités, pas besoin d'aller plus loin : $12,001$ est plus grand que $5,999$. La partie décimale, aussi longue soit-elle, ne peut jamais rattraper une unité de différence. Imagine deux piles de livres : l'une a $12$ livres entiers, l'autre $5$ livres et quelques feuilles. La première est forcément plus haute."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $5,999$ et $12,001$ : l'écart des parties entières domine",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 5.999,
+                  "label": "5,999"
+                },
+                {
+                  "value": 12.001,
+                  "label": "12,001"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, tu vois bien que $12,001$ est très loin à droite de $5,999$. Donc, premier réflexe : compare le nombre de chiffres de la partie entière. Celui qui en a le plus est le plus grand. Si elles ont le même nombre de chiffres, compare chiffre par chiffre de gauche à droite (centaines, puis dizaines, puis unités) jusqu'à trouver une différence. C'est exactement la même méthode que pour les nombres entiers. Seulement si les parties entières sont identiques, tu as le droit de passer de l'autre côté de la virgule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même partie entière : la bataille des dixièmes, puis centièmes..."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant le cas où les parties entières sont égales. Par exemple $14,35$ et $14,28$. Les deux ont $14$ unités. On regarde alors la première colonne après la virgule : les dixièmes. Le premier a $3$ dixièmes, le second en a $2$. Comme $3 > 2$, on sait déjà que $14,35 > 14,28$. Inutile de regarder les centièmes ! La règle est immuable : on compare colonne par colonne, de gauche à droite, et on s'arrête dès qu'un chiffre est différent. C'est le premier chiffre différent qui décide de l'ordre."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 14.35,
+              "caption": "Alignement de $14,35$ et $14,28$ : la différence se joue aux dixièmes ($3$ contre $2$)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les nombres n'ont pas le même nombre de chiffres après la virgule. Compare $4,6$ et $4,58$. Le premier a $1$ chiffre décimal, le second en a $2$. Pour ne pas te tromper, tu as le droit d'ajouter des zéros « fantômes » à droite du nombre le plus court sans changer sa valeur. $4,6$ devient $4,60$. Maintenant, les deux ont deux chiffres après la virgule. On compare : unités $4=4$, dixièmes $6 > 5$. Donc $4,60 > 4,58$, c'est-à-dire $4,6 > 4,58$. Ce petit truc des zéros ajoutés évite bien des erreurs, comme de croire que $4,58$ est plus grand que $4,6$ parce que $58 > 6$ !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner une liste de nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comparer deux nombres, tu peux en ranger plusieurs dans l'ordre. On te demandera souvent de les classer par ordre croissant (du plus petit au plus grand) ou décroissant (du plus grand au plus petit). La méthode : aligne-les tous dans un tableau de numération virtuel, ajoute des zéros pour qu'ils aient tous le même nombre de décimales, puis compare colonne par colonne. Prenons $0,5$ ; $0,42$ ; $0,503$ ; $0,49$. Uniformisons à $3$ décimales : $0,500$ ; $0,420$ ; $0,503$ ; $0,490$. Regarde les dixièmes : $0,420$ et $0,490$ ont $4$ dixièmes (les plus petits). Entre eux, aux centièmes : $2 < 9$, donc $0,42 < 0,49$. Les deux autres ont $5$ dixièmes. Aux centièmes : $0 < 0$ (égaux). Aux millièmes : $0 < 3$, donc $0,5 < 0,503$. L'ordre final : $0,42 < 0,49 < 0,5 < 0,503$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison visuelle des valeurs $0,42$, $0,49$, $0,5$, $0,503$",
+              "bars": [
+                {
+                  "label": "0,42",
+                  "value": 42,
+                  "tone": "blue"
+                },
+                {
+                  "label": "0,49",
+                  "value": 49,
+                  "tone": "green"
+                },
+                {
+                  "label": "0,50",
+                  "value": 50,
+                  "tone": "gold"
+                },
+                {
+                  "label": "0,503",
+                  "value": 50.3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique en barres confirme l'ordre : les barres grandissent de gauche à droite. Note bien que $0,5$ et $0,500$ sont au même niveau (même hauteur), ce qui prouve qu'ajouter des zéros à droite ne change pas la valeur. Pour l'ordre décroissant, il suffit de lire la liste à l'envers. Prends l'habitude d'écrire les nombres les uns sous les autres, virgule sous virgule, c'est le meilleur moyen de ne pas mélanger les colonnes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer un nombre : le situer entre deux consécutifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une dernière compétence clé : encadrer un nombre décimal par deux nombres entiers consécutifs, ou par deux nombres à un chiffre après la virgule, etc. Par exemple, encadrer $7,8$ par des entiers consécutifs. La partie entière est $7$, l'entier suivant est $8$. Donc $7 < 7,8 < 8$. Encadrer $7,8$ par des nombres à un chiffre après la virgule ? C'est lui-même ! Mais pour $7,83$, les nombres à un dixième consécutifs sont $7,8$ et $7,9$. On a $7,8 < 7,83 < 7,9$. C'est comme zoomer sur la droite graduée : plus l'encadrement est précis, plus l'intervalle est petit. Cette notion prépare le terrain pour la leçon suivante : l'intercalation."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de $7,83$ entre $7,8$ et $7,9$",
+              "min": 7.8,
+              "max": 7.9,
+              "points": [
+                {
+                  "value": 7.8,
+                  "label": "7,8"
+                },
+                {
+                  "value": 7.83,
+                  "label": "7,83"
+                },
+                {
+                  "value": 7.9,
+                  "label": "7,9"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 7.8,
+                  "end": 7.9
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $23,7$ et $23,68$ en utilisant les signes $<$ ou $>$.",
+              "answer": "$23,7 > 23,68$",
+              "hint": "Ajoute un zéro à $23,7$ pour avoir le même nombre de décimales.",
+              "explanation": "$23,7 = 23,70$. On compare : parties entières $23=23$. Dixièmes : $7 > 6$. Donc $23,70 > 23,68$."
+            },
+            {
+              "question": "Range par ordre croissant : $0,6$ ; $0,58$ ; $0,605$ ; $0,5$.",
+              "answer": "$0,5 < 0,58 < 0,6 < 0,605$",
+              "hint": "Uniformise à $3$ décimales : $0,600$ ; $0,580$ ; $0,605$ ; $0,500$.",
+              "explanation": "Avec $3$ décimales : $0,500 < 0,580 < 0,600 < 0,605$. Donc $0,5 < 0,58 < 0,6 < 0,605$."
+            },
+            {
+              "question": "Parmi $12,04$ ; $12,4$ ; $12,004$ ; $12,044$, lequel est le plus grand ?",
+              "answer": "$12,4$",
+              "hint": "Compare les dixièmes après avoir aligné les virgules.",
+              "explanation": "Parties entières égales ($12$). Dixièmes : $0$ pour les trois premiers, $4$ pour $12,4$. Donc $12,4$ est le plus grand."
+            },
+            {
+              "question": "Encadre le nombre $5,27$ par deux nombres entiers consécutifs, puis par deux nombres à un chiffre après la virgule.",
+              "answer": "Entiers : $5 < 5,27 < 6$. À un dixième : $5,2 < 5,27 < 5,3$.",
+              "hint": "Regarde la partie entière pour les entiers. Regarde le chiffre des dixièmes pour l'encadrement au dixième.",
+              "explanation": "Partie entière $5$, suivant $6$. Chiffre des dixièmes $2$, dixième suivant $3$. Donc $5,2 < 5,27 < 5,3$."
+            }
+          ]
+        },
+        {
+          "title": "Intercaler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Il y a toujours de la place entre deux nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une règle graduée. Tu vois les traits pour $0$, $1$, $2$... Entre $0$ et $1$, il y a des traits plus petits pour les dixièmes : $0,1$, $0,2$, etc. Mais si tu regardes de plus près, entre $0,1$ et $0,2$, il y a encore de la place pour les centièmes : $0,11$, $0,12$... Et entre $0,11$ et $0,12$, les millièmes trouvent leur place. C'est une propriété fondamentale des nombres décimaux : **entre deux nombres décimaux distincts, il en existe toujours au moins un autre**. On dit que l'ensemble des nombres décimaux est « dense ». Il n'y a pas de « voisin immédiat » comme pour les entiers (où $5$ suit $4$ directement). Ici, entre $4$ et $5$, il y a $4,1$, $4,01$, $4,001$, et une infinité d'autres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom successif : entre $4$ et $5$, puis entre $4,1$ et $4,2$, place pour $4,15$",
+              "min": 4,
+              "max": 5,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 4.1,
+                  "label": "4,1"
+                },
+                {
+                  "value": 4.15,
+                  "label": "4,15"
+                },
+                {
+                  "value": 4.2,
+                  "label": "4,2"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite numériquée ci-dessus montre ce « zoom ». Entre $4$ et $5$, on place $4,1$ et $4,2$. Mais regarde, il reste de l'espace entre $4,1$ et $4,2$ ! On peut y glisser $4,15$. Et entre $4,15$ et $4,16$, on pourrait mettre $4,155$. Cette idée est cruciale : quand on te demande d'intercaler un nombre entre deux bornes, tu as une infinité de bonnes réponses possibles. Il suffit d'en trouver une qui respecte l'ordre. C'est une liberté qui fait peur au début, mais qui est très puissante une fois qu'on a la méthode."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode 1 : La moyenne, le nombre pile au milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus sûre pour trouver un nombre exactement au centre de deux bornes, c'est de calculer leur moyenne. Tu additionnes les deux nombres et tu divises la somme par $2$. C'est comme trouver le point d'équilibre sur une balance. Par exemple, intercale un nombre entre $1,2$ et $1,4$. Somme : $1,2 + 1,4 = 2,6$. Moitié : $2,6 / 2 = 1,3$. Le nombre $1,3$ est pile au milieu. Vérification : $1,2 < 1,3 < 1,4$. Ça marche à tous les coups, même avec des nombres compliqués. Entre $0,123$ et $0,124$ ? Somme $0,247$, moitié $0,1235$. C'est un nombre décimal (fini) qui convient parfaitement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner les deux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux nombres l'un sous l'autre, virgule alignée. Fais l'addition posée. N'oublie pas d'ajouter des zéros pour avoir le même nombre de décimales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser le résultat par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la division par $2$ (division posée ou calcul mental si c'est simple). Le quotient est ton nombre intercalaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le nombre trouvé est bien strictement supérieur à la borne inférieure et strictement inférieur à la borne supérieure."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode a un gros avantage : elle donne un nombre qui est garanti d'être entre les deux, et qui est souvent « joli » (peu de chiffres après la virgule). C'est la méthode de référence quand on te demande « donne un nombre compris entre... » sans autre précision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode 2 : Allonger la partie décimale (plus rapide parfois)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la moyenne donne un nombre avec beaucoup de décimales (ex: entre $0,1$ et $0,2$, moyenne $= 0,15$, c'est simple. Mais entre $0,123$ et $0,124$, moyenne $= 0,1235$). Une autre astuce consiste à regarder les deux bornes. Si elles ont le même nombre de chiffres après la virgule et ne diffèrent que sur le dernier chiffre, tu peux juste ajouter un chiffre au milieu. Exemple : entre $3,4$ et $3,5$, écris $3,45$. Entre $7,82$ et $7,83$, écris $7,825$. Tu prends l'écriture de la borne inférieure et tu ajoutes un chiffre non nul (souvent $5$ ou $1$) à la fin. Attention : cela ne marche que si la borne supérieure est exactement le « suivant » au dernier chiffre considéré. Si on te demande un nombre entre $2,1$ et $2,9$, tu ne peux pas faire $2,15$ ? Si, tu peux ! $2,1 < 2,15 < 2,9$. Ici, tu as juste allongé $2,1$ en $2,15$. C'est souvent plus rapide que la moyenne."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intercaler $3,45$ entre $3,4$ et $3,5$ en ajoutant un chiffre",
+              "min": 3.4,
+              "max": 3.5,
+              "points": [
+                {
+                  "value": 3.4,
+                  "label": "3,4"
+                },
+                {
+                  "value": 3.45,
+                  "label": "3,45"
+                },
+                {
+                  "value": 3.5,
+                  "label": "3,5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention au piège : si les bornes sont $1,29$ et $1,3$, tu ne peux pas écrire $1,295$ en te basant seulement sur $1,29$ ? Si, car $1,3 = 1,30$. Donc $1,29 < 1,295 < 1,30$. Ça marche. Mais si les bornes sont $1,2$ et $1,21$ ? $1,2 = 1,20$. Un nombre entre $1,20$ et $1,21$ pourrait être $1,205$. La règle générale : ajoute des zéros à la borne la plus courte pour les aligner, puis insère un chiffre entre les deux derniers chiffres alignés. C'est une technique de « zoom » manuel sur l'écriture."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver plusieurs nombres ou remplir un intervalle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'exercice demande : « Donne trois nombres décimaux entre $0,4$ et $0,5$ ». Pas de panique ! Tu as l'embarras du choix. Tu peux utiliser la méthode de l'allongement : $0,41$, $0,42$, $0,43$... jusqu'à $0,49$. Il y en a $9$ rien qu'avec deux décimales. Ou bien tu peux prendre la moyenne pour en avoir un au milieu ($0,45$), puis la moyenne entre $0,4$ et $0,45$ ($0,425$), et entre $0,45$ et $0,5$ ($0,475$). Tu as ainsi trois nombres bien répartis : $0,425$, $0,45$, $0,475$. L'important est de vérifier à chaque fois que tes nombres sont dans l'ordre et bien strictement entre les bornes. Si on te demande « tous les nombres à deux décimales entre $1,2$ et $1,3$ », là c'est une liste finie : $1,21$, $1,22$, ..., $1,29$. Tu les écris en les comptant."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition de trois nombres intercalaires entre $0,4$ et $0,5$",
+              "bars": [
+                {
+                  "label": "0,4",
+                  "value": 40,
+                  "tone": "gray"
+                },
+                {
+                  "label": "0,425",
+                  "value": 42.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "0,45",
+                  "value": 45,
+                  "tone": "gold"
+                },
+                {
+                  "label": "0,475",
+                  "value": 47.5,
+                  "tone": "green"
+                },
+                {
+                  "label": "0,5",
+                  "value": 50,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre trois nombres bien espacés dans l'intervalle. Tu vois que $0,425$ est plus près de $0,4$, $0,475$ plus près de $0,5$, et $0,45$ pile au centre. Cette leçon termine notre travail sur les nombres décimaux. Tu sais maintenant les lire, les décomposer, les comparer, les ordonner et en trouver entre deux bornes. Ce sont les bases solides pour aborder sereinement les calculs avec les décimaux (addition, soustraction, multiplication, division) au prochain chapitre. Bravo pour ton travail sérieux et ta progression !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire, écrire et décomposer un nombre décimal (identifier dixièmes, centièmes, millièmes).",
+                "Je sais comparer deux nombres décimaux en alignant les virgules et en ajoutant des zéros si besoin.",
+                "Je sais ranger une liste de nombres décimaux par ordre croissant ou décroissant.",
+                "Je sais encadrer un nombre décimal par des entiers consécutifs ou par des nombres à 1 ou 2 décimales.",
+                "Je sais intercaler un nombre entre deux bornes (par la moyenne ou en ajoutant un chiffre).",
+                "Je sais donner plusieurs nombres intercalaires dans un intervalle donné."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne un nombre décimal compris entre $4,5$ et $4,6$.",
+              "answer": "$4,55$ (ou $4,51$, $4,52$... $4,59$)",
+              "hint": "Ajoute un chiffre des centièmes entre $0$ et $10$.",
+              "explanation": "Comme $4,5 = 4,50$ et $4,6 = 4,60$, tous les nombres de $4,51$ à $4,59$ conviennent. La moyenne est $4,55$."
+            },
+            {
+              "question": "Calcule la moyenne de $12,4$ et $12,8$ pour trouver le nombre pile au milieu.",
+              "answer": "$12,6$",
+              "hint": "Additionne puis divise par $2$. Pense à aligner la virgule : $12,4 + 12,8 = 25,2$.",
+              "explanation": "$12,4 + 12,8 = 25,2$. $25,2 / 2 = 12,6$. Vérification : $12,4 < 12,6 < 12,8$."
+            },
+            {
+              "question": "Donne trois nombres décimaux à deux chiffres après la virgule compris entre $0,7$ et $0,8$.",
+              "answer": "$0,71 ; 0,75 ; 0,79$ (exemples parmi $0,71$ à $0,79$)",
+              "hint": "Écris $0,70$ et $0,80$. Choisis trois nombres entre les deux.",
+              "explanation": "Les nombres à deux décimales entre $0,70$ et $0,80$ sont $0,71$, $0,72$, ..., $0,79$. Tu peux en choisir n'importe lesquels."
+            },
+            {
+              "question": "Trouve un nombre décimal entre $0,09$ et $0,1$.",
+              "answer": "$0,095$ (ou $0,091$, $0,092$... $0,099$)",
+              "hint": "Écris $0,1$ sous la forme $0,10$ pour aligner les décimales.",
+              "explanation": "$0,1 = 0,10$. Les nombres entre $0,09$ ($=0,090$) et $0,10$ sont $0,091$ à $0,099$. La moyenne est $0,095$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

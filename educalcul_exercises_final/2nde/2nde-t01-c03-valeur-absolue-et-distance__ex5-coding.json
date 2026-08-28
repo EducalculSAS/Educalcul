@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Algorithmes et valeur absolue",
+  "blocks": [
+    {
+      "title": "Définition algorithmique de la valeur absolue",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui calcule la valeur absolue d\\'un nombre réel $x$ en utilisant la définition : $|x| = x$ si $x \\ge 0$ et $|x| = -x$ sinon.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Si x >= 0 alors\\n       resultat <- x\\n   Sinon\\n       resultat <- -x\\n3. Afficher resultat\\n\\nEn Python :\\n\\ndef valeur_absolue(x):\\n    if x >= 0:\\n        return x\\n    else:\\n        return -x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur absolue est définie par cas selon le signe de $x$. L\\'algorithme teste la condition $x \\ge 0$ et renvoie $x$ dans ce cas, sinon $-x$. La fonction Python reproduit exactement ce raisonnement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction distance entre deux réels",
+      "content": "Écrire une fonction Python `distance(a, b)` qui renvoie la distance entre deux nombres réels $a$ et $b$ en utilisant la valeur absolue. La distance est définie par $d(a,b)=|a-b|$.",
+      "correctAnswer": "def distance(a, b):\\n    return abs(a - b)\\n\\nOu sans la fonction abs :\\n\\ndef distance(a, b):\\n    diff = a - b\\n    if diff >= 0:\\n        return diff\\n    else:\\n        return -diff",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distance entre $a$ et $b$ est la valeur absolue de leur différence. En Python, `abs` calcule directement cette valeur. La version sans `abs` reprend la définition par cas de la valeur absolue.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Distance maximale dans une liste",
+      "content": "Soit une liste non vide de nombres réels. Écrire un algorithme qui détermine la plus grande distance entre deux éléments de la liste. Rappel : la distance maximale vaut la différence entre le maximum et le minimum de la liste.",
+      "correctAnswer": "Algorithme :\\n1. Lire la liste L\\n2. max_val <- L[0]\\n   min_val <- L[0]\\n3. Pour chaque x dans L faire\\n       Si x > max_val alors max_val <- x\\n       Si x < min_val alors min_val <- x\\n4. distance_max <- max_val - min_val\\n5. Afficher distance_max\\n\\nEn Python :\\n\\ndef distance_max_liste(L):\\n    max_val = L[0]\\n    min_val = L[0]\\n    for x in L:\\n        if x > max_val:\\n            max_val = x\\n        if x < min_val:\\n            min_val = x\\n    return max_val - min_val",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La plus grande distance entre deux éléments d\\'une liste est atteinte par le couple (maximum, minimum). L\\'algorithme parcourt la liste une fois pour trouver ces deux extrêmes, puis calcule leur différence, qui est positive et égale à la distance maximale.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

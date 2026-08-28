@@ -1,0 +1,176 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.099943+00:00",
+  "id": 526,
+  "code": "2nde-t05-c07",
+  "title": "Bilan - Fonctions Seconde",
+  "description": "Cours structuré Educalcul : Bilan - Fonctions Seconde.",
+  "subject": "Fonctions, représentations et variations",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Fonctions, représentations et variations",
+    "titre_du_cours": "Bilan - Fonctions Seconde",
+    "objectif_global": "Bilan - Fonctions Seconde",
+    "mini_lecons_imposees": [
+      "Représentations et variations.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions, représentations et variations",
+      "lessons": [
+        {
+          "title": "Représentations et variations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu observes le tracé du parcours d'un randonneur qui grimpe une montagne. Parfois, il monte raide, parfois il redescend dans une vallée, et parfois il marche sur un plateau bien plat. En mathématiques, on appelle cela une fonction. Une fonction, c'est comme une machine : tu lui donnes un nombre en entrée (l'antécédent), et elle te renvoie un résultat unique en sortie (l'image). Mais ce qui nous intéresse vraiment ici, c'est l'allure de son voyage sur un graphique. Quand tu regardes la courbe de gauche à droite, comme on lit un livre, tu peux voir si la valeur augmente, diminue ou reste stable. C'est exactement cela l'étude des variations. Que ce soit pour suivre l'évolution de la température durant une journée ou le prix d'une action en bourse, comprendre comment une variable évolue par rapport à une autre est essentiel. On ne se contente pas de dire que 'ça monte', on cherche à définir précisément sur quel intervalle de $x$ la fonction $f$ grimpe ou descend. C'est l'outil principal pour modéliser le monde qui nous entoure, et c'est ce que nous allons maîtriser ensemble avec rigueur et simplicité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien comprendre les fonctions en $2nde$, il faut d'abord maîtriser le vocabulaire. Soit une fonction $f$ définie sur un intervalle $I$. Pour tout nombre $x$ appartenant à $I$, on note $f(x)$ l'image de $x$ par $f$. Réciproquement, si $y = f(x)$, on dit que $x$ est un antécédent de $y$. Graphiquement, l'antécédent se lit sur l'axe des abscisses (l'axe horizontal) et l'image sur l'axe des ordonnées (l'axe vertical). Concernant les variations, on dit qu'une fonction $f$ est croissante sur un intervalle $I$ si, pour tous nombres $a$ et $b$ de cet intervalle tels que $a < b$, on a $f(a) \u001b f(b)$. Cela signifie que si l'on augmente la valeur de $x$, la valeur de $f(x)$ augmente aussi. À l'inverse, $f$ est décroissante si, pour tout $a < b$, on a $f(a) \u001b f(b)$. Si la valeur de l'image reste constante, la fonction est dite constante. On utilise souvent un tableau de variations pour résumer ces informations : c'est un tableau simplifié où l'on place les valeurs de $x$ et où l'on trace des flèches montantes ou descendantes pour indiquer le sens de variation de la fonction sur chaque segment de son domaine de définition."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3-3*x",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Courbe d'une fonction présentant un maximum et un minimum locales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer les variations d'une fonction à partir de sa courbe représentative, suis scrupuleusement ces étapes. Premièrement, place ton doigt sur l'axe des abscisses tout à gauche du domaine de définition. Deuxièmement, déplace ton doigt vers la droite le long de la courbe. Pendant ce mouvement, observe exclusively si la courbe monte ou descend. Si la courbe s'élève au fur et à mesure que tu avances vers la droite, la fonction est croissante. Si elle descend, elle est décroissante. Troisièmement, repère les points de 'sommet' ou de 'creux' : ce sont les extremums. Un maximum est le point le plus haut d'une zone, et un minimum est le point le plus bas. Quatrièmement, note les intervalles de $x$ correspondants. Par exemple, si la courbe monte entre $x = -2$ et $x = 3$, tu écriras que $f$ est croissante sur l'intervalle $[-2 ; 3]$. Enfin, reporte ces informations dans un tableau de variations en indiquant les valeurs des extremums pour plus de précision. N'oublie jamais que le sens de variation se définit toujours par rapport aux valeurs de $x$ (les abscisses) et non par rapport à la hauteur $y$ seule."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons une fonction $f$ dont la courbe passe par les points $A(-1 ; 2)$, $B(0 ; 5)$ et $C(2 ; 1)$. Nous voulons trouver l'image de $0$ et l'antécédent de $2$. Pour l'image de $0$, nous cherchons $f(0)$. On regarde sur l'axe des abscisses la valeur $x = 0$, on monte verticalement jusqu'à la courbe, et on lit l'ordonnée correspondante : c'est $5$. Donc $f(0) = 5$. Pour l'antécédent de $2$, nous cherchons le ou les $x$ tels que $f(x) = 2$. On trace une ligne horizontale à la hauteur $y = 2$ sur l'axe des ordonnées. Cette ligne coupe la courbe au point $A$. L'abscisse de $A$ est $-1$. L'antécédent de $2$ est donc $-1$. Concernant les variations entre $A$ et $B$, on voit que lorsque $x$ passe de $-1$ à $0$, l'image passe de $2$ à $5$. Comme les valeurs augmentent, la fonction est croissante sur $[-1 ; 0]$. C'est un exemple simple qui montre que l'image est le résultat final et l'antécédent est la valeur de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons une fonction $g$ plus complexe sur l'intervalle $[-4 ; 4]$. La courbe descend de $x = -4$ (où $g(-4) = 10$) jusqu'à un point minimum $M(-1 ; -2)$, puis elle remonte jusqu'à un point maximum $S(2 ; 8)$, et enfin elle redescend jusqu'à $x = 4$ (où $g(4) = 3)$. Pour décrire les variations, nous découpons l'étude en trois phases. Sur l'intervalle $[-4 ; -1]$, la courbe descend : la fonction $g$ est donc décroissante. Elle passe de la valeur $10$ à $-2$. Sur l'intervalle $[-1 ; 2]$, la courbe monte : la fonction $g$ est croissante. Elle passe de la valeur $-2$ à $8$. Enfin, sur l'intervalle $[2 ; 4]$, la courbe redescend : la fonction $g$ est décroissante, passant de $8$ à $3$. Le tableau de variations aurait donc une flèche descendante de $10$ vers $-2$, une flèche montante de $-2$ vers $8$, et une flèche descendante de $8$ vers $3$. On remarque ici que la fonction change de sens de variation deux fois, aux points $x = -1$ et $x = 2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est de confondre l'image et l'antécédent. Rappelle-toi : l'antécédent est l'entrée (axe $x$), l'image est la sortie (axe $y$). Un piège classique consiste aussi à dire qu'une fonction est croissante simplement parce que la courbe est 'en haut' du graphique. C'est faux ! Une fonction peut être très haute sur le graphique mais être en train de descendre. La croissance concerne la pente, pas la position. Un autre point de vigilance concerne les intervalles. Les élèves oublient souvent de préciser l'intervalle sur lequel la fonction varie. On ne dit pas 'la fonction est croissante', mais 'la fonction est croissante sur l'intervalle $[a ; b]$'. Enfin, attention à la lecture du tableau de variations : la ligne du haut concerne toujours les $x$ et la ligne du bas les images $f(x)$. Ne confonds jamais les deux, car cela fausserait toute ton analyse de la fonction et tes réponses aux problèmes de modélisation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit une fonction $f$ définie sur $[-3 ; 3]$. On sait que $f(-2) = 4$ et $f(1) = -2$. Si la fonction est strictement décroissante sur l'intervalle $[-2 ; 1]$, peut-on affirmer que $f(0)$ est compris entre $-2$ et $4$ ? Justifie ta réponse.",
+              "answer": "Oui, $f(0)$ est compris entre $-2$ et $4$.",
+              "hint": "Si la fonction descend sans jamais remonter entre $x = -2$ et $x = 1$, où se situent les valeurs entre ces deux points ?",
+              "explanation": "Puisque la fonction est strictement décroissante sur $[-2 ; 1]$, pour tout $x$ compris entre $-2$ et $1$, la valeur $f(x)$ doit être strictement inférieure à $f(-2) = 4$ et strictement supérieure à $f(1) = -2$. Comme $0$ est bien compris entre $-2$ et $1$, alors $-2 < f(0) < 4$."
+            },
+            {
+              "question": "Sur un graphique, on observe que la courbe d'une fonction $g$ part du point $A(0 ; 2)$, monte jusqu'au point $B(2 ; 7)$ puis descend jusqu'au point $C(5 ; 3)$. Donne l'intervalle où la fonction est croissante et l'intervalle où elle est décroissante.",
+              "answer": "Croissante sur $[0 ; 2]$, décroissante sur $[2 ; 5]$.",
+              "hint": "Regarde les valeurs de $x$ où la courbe monte et où elle descend.",
+              "explanation": "La courbe monte entre l'abscisse $x = 0$ et l'abscisse $x = 2$, donc $g$ est croissante sur $[0 ; 2]$. Elle descend ensuite entre l'abscisse $x = 2$ et l'abscisse $x = 5$, donc $g$ est décroissante sur $[2 ; 5]$. "
+            },
+            {
+              "question": "Une fonction $h$ est constante sur l'intervalle $[1 ; 4]$. Si $h(2) = 5$, quelle est la valeur de $h(3)$ et de $h(4)$ ?",
+              "answer": "$h(3) = 5$ et $h(4) = 5$.",
+              "hint": "Que signifie 'constante' pour les valeurs d'une fonction ?",
+              "explanation": "Une fonction constante prend la même valeur pour tous les points de l'intervalle. Si elle vaut $5$ en un point de l'intervalle $[1 ; 4]$, elle vaut $5$ partout sur cet intervalle, donc $h(3) = 5$ et $h(4) = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu es arrivé au bout de ce chapitre sur les fonctions ! C'est le moment idéal pour prendre un peu de hauteur et vérifier que toutes les pièces du puzzle s'emboîtent parfaitement. Apprendre les fonctions, c'est un peu comme apprendre une nouvelle langue : au début, on confond les mots, mais avec de la pratique, on commence à voir des motifs. Le secret pour réussir tes évaluations, ce n'est pas d'apprendre des formules par cœur, mais de savoir passer d'une représentation à l'autre. Est-ce que je peux transformer l'expression mathématique en courbe ? Est-ce que je peux traduire cette courbe en tableau de variations ? C'est cette gymnastique mentale qui fait la différence. Ne panique pas si certains points te semblent encore flous, c'est tout à fait normal. Ce bilan est conçu pour te rassurer, te montrer que tu as progressé et te donner les derniers outils pour aborder n'importe quel exercice avec confiance. On va ensemble passer en revue les points clés, sans stress, comme un check-up final avant le grand saut."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'essence des fonctions en $2nde$ réside dans la triple représentation. D'abord, il y a l'expression algébrique, comme $f(x) = 2x + 3$, qui est la règle de calcul. Ensuite, il y a la représentation graphique, la courbe, qui permet de visualiser instantanément le comportement de la fonction. Enfin, il y a le tableau de variations, qui est un résumé analytique des montées et des descentes. Il est crucial de comprendre que ces trois formes sont des traductions de la même réalité. Par exemple, si l'expression algébrique nous montre que $f(x)$ augmente quand $x$ augmente, la courbe montera et la flèche du tableau sera dirigée vers le haut. On doit aussi savoir manipuler les notions de maximum et minimum globaux. Un maximum global est la valeur la plus haute atteinte par la fonction sur tout son domaine. On le distingue du maximum local, qui est juste le point le plus haut d'une petite bosse. La rigueur dans la notation est primordiale : on écrit $f$ pour désigner la fonction elle-même, et $f(x)$ pour désigner la valeur numérique (l'image) pour un $x$ donné."
+            },
+            {
+              "type": "display_math",
+              "latex": "f: x \\mapsto f(x)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour valider ton travail sur un exercice de fonction, je te conseille d'adopter une stratégie de vérification croisée. Étape $1$ : Vérifie la cohérence entre ton tableau de variations et ta courbe. Si ton tableau indique que la fonction est décroissante sur $[1 ; 3]$ mais que ta courbe monte sur cet intervalle, il y a une erreur. Étape $2$ : Teste des points simples. Choisis une valeur de $x$ facile (comme $0$, $1$ ou $-1$), calcule son image avec l'expression algébrique, et vérifie que le point $(x ; f(x))$ se trouve bien sur ta courbe et respecte ton tableau. Étape $3$ : Contrôle les bornes de tes intervalles. Assure-toi que ton domaine de définition est bien respecté et que tu n'as pas prolongé la courbe au-delà des limites imposées. Étape $4$ : Relis tes notations. Vérifie que tu n'as pas écrit $f$ à la place de $f(x)$ dans un calcul, et que tu as bien utilisé les crochets $[ ]$ pour les intervalles fermés. Cette routine de vérification transforme un résultat 'probable' en un résultat 'certain'."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fonction $f(x) = x^2$ sur l'intervalle $[-2 ; 2]$. Analysons-la sous toutes ses formes. Algébriquement, si on prend $x = -2$, $f(-2) = (-2)^2 = 4$. Si on prend $x = 0$, $f(0) = 0$. Si on prend $x = 2$, $f(2) = 4$. Graphiquement, on obtient une parabole qui descend de $(-2 ; 4)$ jusqu'à $(0 ; 0)$ puis remonte jusqu'à $(2 ; 4)$. Pour le tableau de variations, on note donc deux phases. Sur l'intervalle $[-2 ; 0]$, la fonction est décroissante, passant de $4$ à $0$. Sur l'intervalle $[0 ; 2]$, la fonction est croissante, passant de $0$ à $4$. On identifie ici que le point $(0 ; 0)$ est le minimum global de la fonction sur cet intervalle. En liant les trois représentations, on voit que le passage du signe négatif au signe positif pour $x$ change totalement le sens de variation de l'image, car le carré rend tout positif. C'est l'exemple parfait d'une fonction qui n'est pas monotone sur son domaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Étudions maintenant la fonction affine $g(x) = -3x + 1$ sur l'intervalle $[-1 ; 3]$. Ici, l'expression est plus simple. Comme le coefficient devant $x$ (le coefficient directeur) est $-3$, qui est un nombre négatif, on peut prédire immédiatement que la fonction sera décroissante sur tout son domaine. Vérifions-le. Pour $x = -1$, $g(-1) = -3(-1) + 1 = 3 + 1 = 4$. Pour $x = 3$, $g(3) = -3(3) + 1 = -9 + 1 = -8$. La valeur de l'image a chuté de $4$ à $-8$ alors que $x$ augmentait. La courbe est donc une droite qui descend. Le tableau de variations est très simple : une seule flèche descendante sur tout l'intervalle $[-1 ; 3]$, partant de la valeur $4$ pour arriver à $-8$. Contrairement à l'exemple précédent, cette fonction est dite monotone car elle ne change jamais de sens de variation. Elle ne possède ni maximum local ni minimum local, seulement un maximum global en $x = -1$ et un minimum global en $x = 3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'un des pièges les plus insidieux est la confusion entre la fonction et son image. Écrire 'la fonction $f$ est égale à $5$' est une erreur grave ; on doit écrire 'l'image de $x$ par $f$ est $5$' ou '$f(x) = 5$'. $f$ est l'objet mathématique (la règle), $f(x)$ est le nombre. Un autre piège concerne la lecture des variations sur des fonctions avec des ruptures ou des asymptotes. Certains élèves essaient de relier des points qui ne sont pas connectés, créant ainsi une variation imaginaire. Toujours se fier au tracé réel de la courbe. Enfin, attention à l'utilisation des termes 'croissant' et 'décroissant' pour des valeurs isolées. On ne peut pas dire qu'une fonction est 'croissante en $x = 2$', car la croissance est une propriété qui s'observe sur un intervalle, pas en un seul point. Il faut toujours mentionner l'étendue du mouvement pour que la phrase ait un sens mathématique. Garde toujours en tête que le sens de variation est une question de comparaison entre deux points distincts."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne la fonction $f(x) = x^2 - 4$. Calcule $f(-3)$, $f(0)$ et $f(3)$. Que peux-tu en déduire sur la symétrie de la fonction et son sens de variation sur $[-3 ; 0]$ et $[0 ; 3]$ ?",
+              "answer": "$f(-3)=5, f(0)=-4, f(3)=5$. Décroissante sur $[-3 ; 0]$, croissante sur $[0 ; 3]$.",
+              "hint": "Calcule les valeurs et observe si elles montent ou descendent en allant de $-3$ vers $3$.",
+              "explanation": "$f(-3) = (-3)^2 - 4 = 9 - 4 = 5$. $f(0) = 0^2 - 4 = -4$. $f(3) = 3^2 - 4 = 5$. De $x = -3$ à $x = 0$, les images passent de $5$ à $-4$ (décroissance). De $x = 0$ à $x = 3$, les images passent de $-4$ à $5$ (croissance)."
+            },
+            {
+              "question": "Une fonction $g$ est définie par $g(x) = -2x + 5$. Est-elle croissante ou décroissante sur $\\mathbb{R}$ ? Justifie par un calcul avec deux valeurs $a = 1$ et $b = 2$.",
+              "answer": "Décroissante.",
+              "hint": "Compare $g(1)$ et $g(2)$. Si $g(1) > g(2)$, alors elle descend.",
+              "explanation": "$g(1) = -2(1) + 5 = 3$. $g(2) = -2(2) + 5 = 1$. On a $1 < 2$ et $g(1) > g(2)$ (car $3 > 1$), donc la fonction est décroissante."
+            },
+            {
+              "question": "Dans un tableau de variations, on voit une flèche montante sur $[2 ; 5]$ partant de $-1$ et arrivant à $4$. Quelle est l'image de $2$ et l'image de $5$ ? La fonction est-elle croissante ou décroissante sur cet intervalle ?",
+              "answer": "$f(2) = -1$, $f(5) = 4$, croissante.",
+              "hint": "La ligne du haut correspond aux $x$ et la ligne du bas aux images.",
+              "explanation": "Le point de départ de la flèche est en $x = 2$ avec une valeur d'image $-1$, donc $f(2) = -1$. Le point d'arrivée est en $x = 5$ avec une valeur d'image $4$, donc $f(5) = 4$. La flèche monte, donc la fonction est croissante."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Organiser les essais",
+  "title": "Quiz : Organiser ses essais pour résoudre des problèmes",
+  "questions": [
+    {
+      "text": "Deux nombres ont une somme de $12$ et une différence de $4$. Quels sont ces deux nombres ?",
+      "options": [
+        "$8$ et $4$",
+        "$9$ et $3$",
+        "$10$ et $2$",
+        "$7$ et $5$"
+      ],
+      "correctAnswer": "$8$ et $4$",
+      "explanation": "On cherche deux nombres dont la somme fait $12$. On teste les couples : $8+4=12$ et $8-4=4$, cela correspond. $9+3=12$ mais $9-3=6$ (différence trop grande). $10+2=12$ mais $10-2=8$. $7+5=12$ mais $7-5=2$. Seul le couple $8$ et $4$ respecte les deux conditions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $15$ euros. Il achète un cahier à $6$ euros et veut acheter le plus grand nombre possible de stylos à $2$ euros l'unité. Combien de stylos peut-il acheter ?",
+      "options": [
+        "$4$ stylos",
+        "$5$ stylos",
+        "$3$ stylos",
+        "$6$ stylos"
+      ],
+      "correctAnswer": "$4$ stylos",
+      "explanation": "Paul dépense $6$ euros pour le cahier, il lui reste $15-6=9$ euros. Chaque stylo coûte $2$ euros. On teste : $4$ stylos coûtent $4\\times2=8$ euros (possible, il reste $1$ euro). $5$ stylos coûtent $10$ euros (impossible, pas assez d'argent). $3$ stylos coûtent $6$ euros (possible mais pas le maximum). $6$ stylos coûtent $12$ euros (impossible). Le maximum est donc $4$ stylos.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une cour, il y a des poules et des lapins. On compte $8$ têtes et $22$ pattes en tout. Combien y a-t-il de lapins ?",
+      "options": [
+        "$3$ lapins",
+        "$4$ lapins",
+        "$5$ lapins",
+        "$2$ lapins"
+      ],
+      "correctAnswer": "$3$ lapins",
+      "explanation": "Il y a $8$ animaux au total (une tête par animal). Si c'étaient toutes des poules, il y aurait $8\\times2=16$ pattes. Il y a $22-16=6$ pattes en trop. Chaque lapin a $2$ pattes de plus qu'une poule. Il y a donc $6\\div2=3$ lapins. Vérification : $3$ lapins ($12$ pattes) + $5$ poules ($10$ pattes) = $22$ pattes et $3+5=8$ têtes. Les autres réponses ne donnent pas le bon total de pattes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Je pense à un nombre pair, plus grand que $20$ et plus petit que $30$. La somme de ses chiffres vaut $8$. Quel est ce nombre ?",
+      "options": [
+        "$26$",
+        "$24$",
+        "$28$",
+        "$22$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "On liste les nombres pairs entre $20$ et $30$ : $22$, $24$, $26$, $28$. On calcule la somme des chiffres pour chacun : $22 \\rightarrow 2+2=4$ ; $24 \\rightarrow 2+4=6$ ; $26 \\rightarrow 2+6=8$ ; $28 \\rightarrow 2+8=10$. Seul $26$ a une somme des chiffres égale à $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Alice a $18$ billes. Elle les partage en $3$ tas. Le premier tas a $2$ billes de plus que le deuxième. Le troisième tas a $4$ billes de moins que le premier. Quelle proposition correspond à la bonne répartition ?",
+      "options": [
+        "2e tas : 6, 1er tas : 8, 3e tas : 4",
+        "2e tas : 5, 1er tas : 7, 3e tas : 3",
+        "2e tas : 7, 1er tas : 9, 3e tas : 5",
+        "2e tas : 4, 1er tas : 6, 3e tas : 2"
+      ],
+      "correctAnswer": "2e tas : 6, 1er tas : 8, 3e tas : 4",
+      "explanation": "On note le nombre de billes du 2e tas. Le 1er en a 2 de plus, le 3e en a 4 de moins que le 1er (donc 2 de moins que le 2e). On teste les propositions : 1) 2e=6, 1er=8 (+2), 3e=4 (-4 par rapport au 1er). Total $6+8+4=18$. C'est correct. 2) Total $5+7+3=15$. 3) Total $7+9+5=21$. 4) Total $4+6+2=12$. Seule la première ligne donne un total de $18$ billes en respectant les écarts demandés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

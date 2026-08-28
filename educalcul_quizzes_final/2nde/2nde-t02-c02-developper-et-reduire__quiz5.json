@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Distributivité",
+  "title": "Approfondissement : Distributivité",
+  "questions": [
+    {
+      "text": "Développez l'expression $2(x+3)$.",
+      "options": [
+        "$2x+3$",
+        "$2x+6$",
+        "$2x-6$",
+        "$2x+5$"
+      ],
+      "correctAnswer": "$2x+6$",
+      "explanation": "On applique la distributivité : $2 \\times x = 2x$ et $2 \\times 3 = 6$, donc $2(x+3)=2x+6$. Les autres réponses correspondent à une omission du produit $2 \\times 3$ ou à une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez l'expression $-3(2x-5)$.",
+      "options": [
+        "$-6x-15$",
+        "$-6x+15$",
+        "$6x-15$",
+        "$6x+15$"
+      ],
+      "correctAnswer": "$-6x+15$",
+      "explanation": "On distribue $-3$ : $-3 \\times 2x = -6x$ et $-3 \\times (-5) = +15$. Le signe moins devant la parenthèse change le signe du second terme. Les distracteurs proviennent d'oublis de changement de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez le produit $(x+4)(x-2)$.",
+      "options": [
+        "$x^2+2x-8$",
+        "$x^2+6x-8$",
+        "$x^2+2x+8$",
+        "$x^2-2x-8$"
+      ],
+      "correctAnswer": "$x^2+2x-8$",
+      "explanation": "On utilise la double distributivité (FOIL) : $x \\times x = x^2$, $x \\times (-2) = -2x$, $4 \\times x = 4x$, $4 \\times (-2) = -8$. En regroupant $-2x+4x = 2x$, on obtient $x^2+2x-8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez le produit $(2a-3b)(4a+5b)$.",
+      "options": [
+        "$8a^2+22ab-15b^2$",
+        "$8a^2-2ab-15b^2$",
+        "$8a^2+2ab-15b^2$",
+        "$8a^2-22ab-15b^2$"
+      ],
+      "correctAnswer": "$8a^2-2ab-15b^2$",
+      "explanation": "On multiplie chaque terme : $2a \\times 4a = 8a^2$, $2a \\times 5b = 10ab$, $-3b \\times 4a = -12ab$, $-3b \\times 5b = -15b^2$. La somme des termes en $ab$ donne $10ab-12ab = -2ab$, d'où $8a^2-2ab-15b^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez l'expression $3(x+2y) - 2(2x - y)$.",
+      "options": [
+        "$-x+8y$",
+        "$x+8y$",
+        "$-x-8y$",
+        "$x-8y$"
+      ],
+      "correctAnswer": "$-x+8y$",
+      "explanation": "On développe : $3x+6y -4x+2y$. On regroupe les $x$ : $3x-4x = -x$, et les $y$ : $6y+2y = 8y$. Résultat $-x+8y$. Les autres choix proviennent d'erreurs de signe lors de la soustraction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

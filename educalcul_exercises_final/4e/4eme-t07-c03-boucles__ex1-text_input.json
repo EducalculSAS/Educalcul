@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "For / while simple",
+  "title": "Boucles simples : for / while",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "On exécute l'algorithme suivant :\\nPour i de $1$ à $5$ faire\\n    $S$ ← $S$ + $i$\\nFin pour\\nQuelle est la valeur finale de $S$ ?",
+      "correctAnswer": "15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $S$ est initialisée à $0$. La boucle ajoute successivement $1$, $2$, $3$, $4$, $5$ ; la somme vaut $1+2+3+4+5 = 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "On initialise $x$ ← $10$. Tant que $x$ > $0$ faire\\n    $x$ ← $x$ - $3$\\nFin tant que\\nQuelle est la valeur de $x$ à la fin de la boucle ?",
+      "correctAnswer": "-2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les itérations successives donnent $x = 7$, $4$, $1$, $-2$ ; la condition $x > 0$ devient fausse, donc la valeur finale est $-2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Pour $k$ de $2$ à $10$ step $2$ faire\\n    $A$ ← $A$ + $k$\\nFin pour\\nSi $A$ est initialisé à $0$, quelle est la valeur finale de $A$ ?",
+      "correctAnswer": "30",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les valeurs de $k$ sont $2, 4, 6, 8, 10$ ; leur somme est $2+4+6+8+10 = 30$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Applications",
+  "title": "Applications de la décomposition en facteurs premiers",
+  "blocks": [
+    {
+      "title": "Simplification de fractions",
+      "content": "Relie chaque fraction à sa forme irréductible en utilisant la décomposition en facteurs premiers.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\frac{126}{168}$",
+          "right": "$\\frac{3}{4}$"
+        },
+        {
+          "left": "$\\frac{220}{330}$",
+          "right": "$\\frac{2}{3}$"
+        },
+        {
+          "left": "$\\frac{135}{225}$",
+          "right": "$\\frac{3}{5}$"
+        },
+        {
+          "left": "$\\frac{180}{252}$",
+          "right": "$\\frac{5}{7}$"
+        }
+      ],
+      "items": [],
+      "explanation": "On décompose numérateur et dénominateur en facteurs premiers pour simplifier :\\n- $126 = 2 \\times 3^2 \\times 7$ et $168 = 2^3 \\times 3 \\times 7$, d'où $\\frac{126}{168} = \\frac{3}{4}$.\\n- $220 = 2^2 \\times 5 \\times 11$ et $330 = 2 \\times 3 \\times 5 \\times 11$, d'où $\\frac{220}{330} = \\frac{2}{3}$.\\n- $135 = 3^3 \\times 5$ et $225 = 3^2 \\times 5^2$, d'où $\\frac{135}{225} = \\frac{3}{5}$.\\n- $180 = 2^2 \\times 3^2 \\times 5$ et $252 = 2^2 \\times 3^2 \\times 7$, d'où $\\frac{180}{252} = \\frac{5}{7}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD et PPCM",
+      "content": "Relie chaque couple de nombres à son PGCD et son PPCM trouvés par décomposition en facteurs premiers.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$48$ et $180$",
+          "right": "PGCD = $12$ et PPCM = $720$"
+        },
+        {
+          "left": "$56$ et $98$",
+          "right": "PGCD = $14$ et PPCM = $392$"
+        },
+        {
+          "left": "$75$ et $120$",
+          "right": "PGCD = $15$ et PPCM = $600$"
+        },
+        {
+          "left": "$63$ et $105$",
+          "right": "PGCD = $21$ et PPCM = $315$"
+        }
+      ],
+      "items": [],
+      "explanation": "On décompose chaque nombre :\\n- $48 = 2^4 \\times 3$, $180 = 2^2 \\times 3^2 \\times 5$. PGCD = $2^2 \\times 3 = 12$. PPCM = $2^4 \\times 3^2 \\times 5 = 720$.\\n- $56 = 2^3 \\times 7$, $98 = 2 \\times 7^2$. PGCD = $2 \\times 7 = 14$. PPCM = $2^3 \\times 7^2 = 392$.\\n- $75 = 3 \\times 5^2$, $120 = 2^3 \\times 3 \\times 5$. PGCD = $3 \\times 5 = 15$. PPCM = $2^3 \\times 3 \\times 5^2 = 600$.\\n- $63 = 3^2 \\times 7$, $105 = 3 \\times 5 \\times 7$. PGCD = $3 \\times 7 = 21$. PPCM = $3^2 \\times 5 \\times 7 = 315$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Carrés parfaits et nombre de diviseurs",
+      "content": "Relie chaque nombre écrit sous forme de produit de facteurs premiers à sa propriété (carré parfait avec sa racine, ou non-carré avec son nombre de diviseurs).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2^4 \\times 3^2$",
+          "right": "Carré parfait, racine = $12$"
+        },
+        {
+          "left": "$2^3 \\times 5$",
+          "right": "Non carré, nb diviseurs = $8$"
+        },
+        {
+          "left": "$3^2 \\times 7^4$",
+          "right": "Carré parfait, racine = $147$"
+        },
+        {
+          "left": "$2^2 \\times 3 \\times 5^2$",
+          "right": "Non carré, nb diviseurs = $18$"
+        }
+      ],
+      "items": [],
+      "explanation": "Un entier est un carré parfait si tous les exposants de sa décomposition sont pairs.\\n- $2^4 \\times 3^2$ : exposants pairs (4, 2). C'est un carré. Racine = $2^{4/2} \\times 3^{2/2} = 2^2 \\times 3 = 12$.\\n- $2^3 \\times 5$ : exposants 3 (impair) et 1 (impair). Non carré. Nb diviseurs = $(3+1)(1+1) = 4 \\times 2 = 8$.\\n- $3^2 \\times 7^4$ : exposants pairs (2, 4). C'est un carré. Racine = $3^{2/2} \\times 7^{4/2} = 3 \\times 7^2 = 147$.\\n- $2^2 \\times 3 \\times 5^2$ : exposant de 3 impair (1). Non carré. Nb diviseurs = $(2+1)(1+1)(2+1) = 3 \\times 2 \\times 3 = 18$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

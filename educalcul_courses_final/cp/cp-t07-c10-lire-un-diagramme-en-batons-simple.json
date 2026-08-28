@@ -1,0 +1,344 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.679911+00:00",
+  "id": 65,
+  "code": "cp-t07-c10",
+  "title": "Lire un diagramme en bâtons simple",
+  "description": "Cours structuré Educalcul : Lire un diagramme en bâtons simple.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Lire un diagramme en bâtons simple",
+    "objectif_global": "Lire un diagramme en bâtons simple",
+    "mini_lecons_imposees": [
+      "Associer barre et catégorie.",
+      "Lire une hauteur entière.",
+      "Comparer deux effectifs."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Associer barre et catégorie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu arrives dans une classe et que tu vois un joli dessin sur le tableau. Ce dessin, c'est un diagramme en bâtons. Chaque bâton coloré représente quelque chose : par exemple, les fruits préférés des enfants. Regarde bien : il y a une barre rouge, une barre bleue et une barre verte. La barre rouge, c'est pour les pommes. La barre bleue, c'est pour les bananes. La barre verte, c'est pour les fraises. Chaque barre a son étiquette en bas, comme un petit nom qui dit de quoi il s'agit."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés : pommes, bananes, fraises",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraises",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? La barre la plus haute, c'est celle des pommes. Elle monte jusqu'au chiffre $5$. La barre des bananes s'arrête au chiffre $3$. Et la barre des fraises arrive au chiffre $4$. Pour savoir quelle barre parle de quel fruit, il suffit de regarder l'étiquette tout en bas. C'est comme si chaque barre portait un badge avec son nom. Essaie de montrer du doigt la barre des fraises. Bravo, tu l'as trouvée !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons de sujet. Regardons les animaux de compagnie. Il y a une barre orange pour les chats, une barre marron pour les chiens et une barre jaune pour les poissons. Les étiquettes sont toujours en bas. Parfois, les barres sont couchées, comme des bâtons posés sur une table. Mais le principe reste le même : chaque barre a sa couleur et son étiquette. La barre la plus longue, c'est celle des chats. Elle va jusqu'au chiffre $6$. Les chiens sont au chiffre $4$. Les poissons sont au chiffre $2$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Animaux de compagnie : chats, chiens, poissons",
+              "bars": [
+                {
+                  "label": "Chats",
+                  "value": 6,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Chiens",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poissons",
+                  "value": 2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as remarqué ? Que les barres soient debout ou couchées, l'étiquette en bas (ou sur le côté) te dit toujours de quoi il s'agit. C'est la première chose à faire : lire l'étiquette pour connaître la catégorie. Ensuite, tu regardes la hauteur ou la longueur de la barre. C'est un peu comme lire une étiquette sur un pot de confiture : tu sais tout de suite ce qu'il y a dedans. Essaie de dire à voix haute : la barre orange, c'est les chats. La barre marron, c'est les chiens. La barre jaune, c'est les poissons."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, jouons à un petit jeu. Imagine un diagramme avec quatre barres : une rose pour les vélos, une bleue pour les trottinettes, une verte pour les rollers et une rouge pour les skateboards. Les étiquettes sont bien visibles. La barre des vélos monte à $7$. Celle des trottinettes s'arrête à $5$. Les rollers sont à $3$. Les skateboards sont à $4$. Tu sais maintenant associer chaque barre à sa catégorie rien qu'en lisant l'étiquette. C'est ta première clé pour comprendre les diagrammes. Tu es prêt pour la suite ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde le diagramme des fruits. Quelle est la couleur de la barre qui représente les bananes ?",
+              "answer": "La barre des bananes est bleue.",
+              "hint": "Regarde l'étiquette en bas de chaque barre et sa couleur.",
+              "explanation": "Sur le diagramme, la barre qui s'arrête au chiffre $3$ porte l'étiquette « Bananes ». Elle est coloriée en bleu."
+            },
+            {
+              "question": "Dans le diagramme des animaux, quelle barre est la plus longue ?",
+              "answer": "La barre des chats est la plus longue.",
+              "hint": "Compare les longueurs des trois barres.",
+              "explanation": "La barre orange (chats) va jusqu'à $6$. La barre marron (chiens) va jusqu'à $4$. La barre jaune (poissons) va jusqu'à $2$. La plus longue est donc celle des chats."
+            },
+            {
+              "question": "Si tu vois une barre verte avec l'étiquette « Rollers », que représente cette barre ?",
+              "answer": "Cette barre représente le nombre d'enfants qui ont des rollers.",
+              "hint": "L'étiquette donne la catégorie, la barre donne le nombre.",
+              "explanation": "L'étiquette « Rollers » te dit la catégorie. La hauteur de la barre verte (ici $3$) te dit combien d'enfants ont des rollers."
+            }
+          ]
+        },
+        {
+          "title": "Lire une hauteur entière.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons apprendre à lire le nombre tout en haut d'une barre. C'est ce qu'on appelle la hauteur de la barre. Regarde le diagramme des fruits de tout à l'heure. La barre rouge des pommes monte jusqu'au trait qui porte le chiffre $5$. Cela veut dire qu'il y a $5$ enfants qui aiment les pommes. La barre bleue des bananes s'arrête au trait du chiffre $3$. Il y a donc $3$ enfants qui préfèrent les bananes. La barre verte des fraises arrive au trait du chiffre $4$. Il y a $4$ enfants pour les fraises. C'est simple : tu suis la barre du doigt jusqu'en haut, et tu lis le chiffre sur l'échelle à gauche."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés avec échelle de $1$ en $1$",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraises",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'échelle, c'est la colonne de chiffres sur le côté. Elle monte de $1$ en $1$ : $1$, $2$, $3$, $4$, $5$, $6$... Chaque trait correspond à un chiffre. Quand le sommet de la barre touche un trait, tu lis le chiffre juste à côté. Essaie avec ton doigt : pose-le sur le haut de la barre des pommes, glisse-le vers la gauche jusqu'à l'échelle. Tu arrives sur $5$. C'est le nombre d'enfants. Fais la même chose pour les bananes. Tu arrives sur $3$. Et pour les fraises ? Tu arrives sur $4$. Tu viens de lire trois hauteurs entières. Bravo !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'échelle saute des chiffres. Regarde ce nouveau diagramme. Il montre le nombre de livres lus pendant les vacances. L'échelle sur le côté monte de $2$ en $2$ : $0$, $2$, $4$, $6$, $8$, $10$. La barre violette pour Léa monte jusqu'au trait du $6$. Léa a lu $6$ livres. La barre orange pour Max s'arrête au trait du $4$. Max a lu $4$ livres. La barre rose pour Nina arrive au trait du $10$. Nina a lu $10$ livres. Même si les chiffres sautent, le principe ne change pas : tu suis le sommet de la barre vers l'échelle et tu lis le chiffre indiqué."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Livres lus pendant les vacances, échelle de $2$ en $2$",
+              "bars": [
+                {
+                  "label": "Léa",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Max",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Nina",
+                  "value": 10,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Fais attention : le sommet de la barre doit bien toucher le trait de l'échelle. Si la barre s'arrête entre deux traits, ce n'est pas un nombre entier. Mais dans nos diagrammes de CP, les barres s'arrêtent toujours pile sur un trait. Regarde la barre de Max : elle touche exactement le trait du $4$. Pas au-dessus, pas en dessous. C'est ça, une hauteur entière. Essaie de dire : « La barre de Léa monte à $6 $, celle de Max à $4 $, celle de Nina à $10 $. » Tu as bien retenu ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner encore, regardons les scores d'un jeu de quilles. Trois enfants ont joué : Tom, Zoé et Sami. L'échelle monte de $1$ en $1$ jusqu'à $8$. La barre bleue de Tom monte à $7$. La barre rouge de Zoé monte à $5$. La barre verte de Sami monte à $8$. Sami a le score le plus haut, sa barre est la plus grande. Tom est deuxième. Zoé est troisième. Lis chaque hauteur à voix haute : « Tom : $7 $, Zoé : $5 $, Sami : $8 $ ». Maintenant, tu sais lire une hauteur entière sur n'importe quel diagramme en bâtons, que l'échelle monte de $1$ en $1$ ou de $2$ en $2 $. C'est une grande étape !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le diagramme des fruits, combien d'enfants aiment les fraises ?",
+              "answer": "$4$ enfants aiment les fraises.",
+              "hint": "Suis le sommet de la barre verte vers l'échelle de gauche.",
+              "explanation": "La barre verte (fraises) touche le trait du chiffre $4$ sur l'échelle. Cela signifie que $4$ enfants ont choisi les fraises."
+            },
+            {
+              "question": "Dans le diagramme des livres, qui a lu $6$ livres ?",
+              "answer": "C'est Léa qui a lu $6$ livres.",
+              "hint": "Cherche la barre qui monte jusqu'au trait du $6$ sur l'échelle.",
+              "explanation": "La barre violette de Léa s'arrête exactement sur le trait du $6$. L'échelle monte de $2$ en $2$, mais le principe est le même : on lit le chiffre au sommet de la barre."
+            },
+            {
+              "question": "Quel est le score de Zoé au jeu de quilles ?",
+              "answer": "Zoé a fait $5$ points.",
+              "hint": "Regarde la hauteur de la barre rouge de Zoé.",
+              "explanation": "La barre rouge (Zoé) touche le trait du $5$ sur l'échelle qui monte de $1$ en $1$. Son score est donc $5$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer deux effectifs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire chaque barre, amusons-nous à les comparer. Comparer, c'est regarder deux barres et dire laquelle est plus grande, laquelle est plus petite, ou si elles sont égales. Reprenons le diagramme des fruits. La barre des pommes (rouge) monte à $5$. La barre des bananes (bleue) monte à $3$. Laquelle est la plus haute ? La barre rouge, bien sûr ! $5$ est plus grand que $3$. On dit : « Il y a plus d'enfants qui aiment les pommes que les bananes. » Regarde l'écart entre les deux sommets : il y a deux traits d'écart. Cela veut dire qu'il y a $2$ enfants de plus pour les pommes."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparer pommes ($5$) et bananes ($3$) : différence de $2$",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraises",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de comparer les bananes ($3$) et les fraises ($4$). La barre verte des fraises est plus haute que la barre bleue des bananes. $4$ est plus grand que $3$. Il y a un enfant de plus qui préfère les fraises. Et si tu compares les pommes ($5$) et les fraises ($4$) ? La barre rouge dépasse la barre verte d'un tout petit peu. Un seul trait les sépare. Il y a $1$ enfant de plus pour les pommes. Tu vois ? Pour comparer, tu regardes les deux hauteurs, tu lis les deux chiffres, et tu dis lequel est le plus grand. C'est comme une course : la barre qui monte le plus haut gagne !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut savoir exactement de combien une barre dépasse l'autre. On compte les traits d'écart sur l'échelle. Regarde le diagramme des animaux : les chats sont à $6$, les chiens à $4$. Combien de chats de plus que de chiens ? Pose ton doigt sur le $4$ (chiens) et compte en montant : $5$, $6$. Tu as compté $2$ traits. Il y a $2$ chats de plus que de chiens. Essaie avec les chiens ($4$) et les poissons ($2$). Compte à partir de $2$ : $3$, $4$. Encore $2$ traits d'écart. Il y a $2$ chiens de plus que de poissons. C'est une soustraction, mais tu n'as pas besoin de la faire : tu comptes sur l'échelle, c'est visuel et ça marche à tous les coups !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Chats ($6$), chiens ($4$), poissons ($2$) : comparer les écarts",
+              "bars": [
+                {
+                  "label": "Chats",
+                  "value": 6,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Chiens",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poissons",
+                  "value": 2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si deux barres ont la même hauteur ? Regarde ce diagramme des couleurs préférées. Le bleu monte à $5$. Le rouge monte aussi à $5$. Les deux barres sont exactement au même niveau. On dit : « Autant d'enfants aiment le bleu que le rouge. » Les effectifs sont égaux. C'est comme une course où les deux arrivent main dans la main. Essaie de trouver deux barres de même hauteur sur le diagramme des livres : Léa ($6$) et... personne d'autre n'est à $6$. Max ($4$) et... personne à $4$. Nina ($10$) est seule tout en haut. Parfois il y a des égalités, parfois non. À toi d'observer !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce cours en beauté, faisons une grande comparaison sur le diagramme des quilles. Sami ($8$), Tom ($7$), Zoé ($5$). Qui a gagné ? Sami, sa barre est la plus haute. De combien Sami a-t-il gagné face à Tom ? Compte : $8$ moins $7$, c'est $1$ trait d'écart. Un seul point d'avance ! Et face à Zoé ? Compte depuis $5$ : $6$, $7$, $8$. Trois traits d'écart. Sami a $3$ points de plus que Zoé. Tom face à Zoé ? Depuis $5$ : $6$, $7$. Deux traits. Tom a $2$ points de plus que Zoé. Tu sais maintenant associer une barre à sa catégorie, lire sa hauteur, et comparer deux barres entre elles. Tu es devenu un vrai détective des diagrammes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais associer chaque barre à sa catégorie en lisant l'étiquette.",
+                "Je sais lire la hauteur d'une barre en suivant le sommet vers l'échelle.",
+                "Je sais comparer deux barres : dire laquelle est plus grande et de combien.",
+                "Je sais repérer quand deux barres ont la même hauteur (effectifs égaux)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le diagramme des fruits, y a-t-il plus d'enfants pour les pommes ou pour les bananes ? De combien ?",
+              "answer": "Plus pour les pommes. Il y a $2$ enfants de plus pour les pommes ($5$) que pour les bananes ($3$).",
+              "hint": "Compare les deux hauteurs $5$ et $3$. Compte les traits d'écart sur l'échelle.",
+              "explanation": "La barre des pommes est à $5$, celle des bananes à $3$. En comptant de $3$ à $5$ sur l'échelle, on trouve $2$ traits d'écart. Donc $2$ enfants de plus pour les pommes."
+            },
+            {
+              "question": "Dans le diagramme des animaux, compare les chats ($6$) et les poissons ($2$). Combien y a-t-il de chats de plus ?",
+              "answer": "Il y a $4$ chats de plus que de poissons.",
+              "hint": "Pose ton doigt sur $2$ (poissons) et compte jusqu'à $6$ (chats).",
+              "explanation": "De $2$ à $6$, on compte $4$ traits : $3$, $4$, $5$, $6$. L'écart est de $4$."
+            },
+            {
+              "question": "Au jeu de quilles, qui a le plus petit score ? Quel est ce score ?",
+              "answer": "C'est Zoé avec $5$ points.",
+              "hint": "Cherche la barre la plus basse.",
+              "explanation": "Les barres sont : Sami $8$, Tom $7$, Zoé $5$. La plus basse est celle de Zoé à $5$. C'est le plus petit score."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

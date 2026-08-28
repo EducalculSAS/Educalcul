@@ -1,0 +1,192 @@
+{
+  "_status": "done",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire une information",
+  "title": "Quiz - Lire une information dans un tableau",
+  "questions": [
+    {
+      "text": "Combien y a-t-il de pommes ?",
+      "options": [
+        "$5$",
+        "$3$",
+        "$4$",
+        "$2$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Dans le tableau, la ligne « Pommes » indique la quantité $5$. Les autres nombres correspondent aux poires, aux bananes ou sont incorrects.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Quantité"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "5"
+          ],
+          [
+            "Poires",
+            "3"
+          ],
+          [
+            "Bananes",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel jour y a-t-il le plus d'élèves ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi"
+      ],
+      "correctAnswer": "Mardi",
+      "explanation": "On compare les nombres d'élèves : Lundi $12$, Mardi $15$, Mercredi $10$, Jeudi $14$. Le maximum est $15$ le mardi.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "12"
+          ],
+          [
+            "Mardi",
+            "15"
+          ],
+          [
+            "Mercredi",
+            "10"
+          ],
+          [
+            "Jeudi",
+            "14"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il de billes bleues ?",
+      "options": [
+        "$9$",
+        "$7$",
+        "$8$",
+        "$5$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "La ligne « Bleu » du tableau affiche $9$ billes. Les autres valeurs correspondent aux autres couleurs.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Nombre de billes"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "7"
+          ],
+          [
+            "Bleu",
+            "9"
+          ],
+          [
+            "Vert",
+            "5"
+          ],
+          [
+            "Jaune",
+            "8"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel animal a 0 pattes ?",
+      "options": [
+        "Chien",
+        "Oiseau",
+        "Araignée",
+        "Serpent"
+      ],
+      "correctAnswer": "Serpent",
+      "explanation": "Dans le tableau, le serpent est associé au nombre $0$ de pattes, alors que le chien en a $4$, l'oiseau $2$ et l'araignée $8$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Nombre de pattes"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "4"
+          ],
+          [
+            "Oiseau",
+            "2"
+          ],
+          [
+            "Araignée",
+            "8"
+          ],
+          [
+            "Serpent",
+            "0"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "De combien de degrés la température augmente-t-elle de Janvier à Avril ?",
+      "options": [
+        "$7$",
+        "$6$",
+        "$8$",
+        "$5$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La température moyenne en Janvier est $5$ °C et en Avril $12$ °C. La différence est $12 - 5 = 7$ degrés.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Mois",
+          "Température moyenne (°C)"
+        ],
+        "rows": [
+          [
+            "Janvier",
+            "5"
+          ],
+          [
+            "Février",
+            "6"
+          ],
+          [
+            "Mars",
+            "9"
+          ],
+          [
+            "Avril",
+            "12"
+          ]
+        ]
+      }
+    }
+  ]
+}

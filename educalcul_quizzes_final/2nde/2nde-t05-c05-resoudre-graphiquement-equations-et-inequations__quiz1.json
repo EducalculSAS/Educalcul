@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Intersections",
+  "title": "Quiz : Intersections graphiques",
+  "questions": [
+    {
+      "text": "On considère les fonctions $f(x)=2x+1$ et $g(x)=-x+4$. Quelle est l'abscisse du point d'intersection de leurs représentations graphiques ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "On résout $2x+1 = -x+4$, ce qui donne $3x = 3$, donc $x = 1$. Les autres valeurs ne satisfont pas l'égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les graphes des fonctions $f(x)=x^2$ et $g(x)=2x+3$ se coupent en combien de points ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "L'équation $x^2 = 2x+3$ se ramène à $x^2-2x-3=0$, soit $(x-3)(x+1)=0$, qui admet deux solutions réelles $x=-1$ et $x=3$. Donc deux points d'intersection.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $f(x)=x^2-4$. En utilisant la représentation graphique, on cherche l'ensemble des $x$ tels que $f(x) > 0$. Quel intervalle correspond à cette inéquation ?",
+      "options": [
+        "$x < -2$ ou $x > 2$",
+        "$-2 < x < 2$",
+        "$x < -2$",
+        "$x > 2$"
+      ],
+      "correctAnswer": "$x < -2$ ou $x > 2$",
+      "explanation": "Le graphe de $f$ est une parabole qui coupe l'axe des abscisses en $x=-2$ et $x=2$. Elle est au-dessus de l'axe (donc $f(x)>0$) pour $x<-2$ et $x>2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les fonctions $f(x)= -x^2 + 4$ et $g(x)= x + 2$. Déterminer les abscisses des points d'intersection de leurs courbes.",
+      "options": [
+        "$-2$ et $1$",
+        "$-1$ et $2$",
+        "$-2$ et $2$",
+        "$-1$ et $1$"
+      ],
+      "correctAnswer": "$-2$ et $1$",
+      "explanation": "On résout $-x^2+4 = x+2$ soit $-x^2 - x + 2 = 0$ ou $x^2 + x - 2 = 0$. Les racines sont $x = 1$ et $x = -2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons les fonctions $f(x)= \\sqrt{x}$ (définie sur $[0;+\\infty[$) et $g(x)= x-2$. Combien de points d'intersection ont leurs graphes ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "On résout $\\sqrt{x} = x-2$. En élevant au carré : $x = (x-2)^2 = x^2 -4x +4$, soit $x^2 -5x +4 = 0$, solutions $x=1$ et $x=4$. Mais il faut vérifier dans l'équation initiale : pour $x=1$, $\\sqrt{1}=1$ et $1-2=-1$, faux. Pour $x=4$, $\\sqrt{4}=2$ et $4-2=2$, vrai. Donc un seul point d'intersection.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

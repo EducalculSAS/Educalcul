@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Tester",
+  "title": "Quiz - Tester en Python",
+  "questions": [
+    {
+      "text": "Quelle est la valeur de l'expression $3 > 5$ en Python ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correctAnswer": "False",
+      "explanation": "L'opérateur > compare les deux nombres. Comme 3 n'est pas strictement supérieur à 5, l'expression renvoie False.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de l'expression $5 == 5$ en Python ?",
+      "options": [
+        "True",
+        "False",
+        "5",
+        "Erreur"
+      ],
+      "correctAnswer": "True",
+      "explanation": "L'opérateur == teste l'égalité. 5 est égal à 5, donc le résultat est True.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de l'expression $True and False$ en Python ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correctAnswer": "False",
+      "explanation": "L'opérateur logique and renvoie True seulement si les deux opérandes sont vrais. Ici le second est False, donc le résultat est False.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le code suivant : a = $10$ ; b = $3$ ; result = (a % b == $1$) and (a // b > $2$). Quelle est la valeur de result ?",
+      "options": [
+        "True",
+        "False",
+        "Erreur",
+        "None"
+      ],
+      "correctAnswer": "True",
+      "explanation": "a % b vaut 1, donc a % b == 1 est True. a // b vaut 3, qui est strictement supérieur à 2, donc la seconde condition est True. Le and de deux True donne True.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit x = $-4$. On exécute le bloc conditionnel :\\nif x > 0:\\n    y = 1\\nelif x == 0:\\n    y = 0\\nelse:\\n    y = -1\\nQuelle est la valeur de y après ce bloc ?",
+      "options": [
+        "1",
+        "0",
+        "-1",
+        "Erreur"
+      ],
+      "correctAnswer": "-1",
+      "explanation": "x vaut -4, donc la condition x > 0 est fausse, x == 0 est fausse, le bloc else est exécuté et affecte -1 à y.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

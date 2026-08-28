@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Image d'un point",
+  "title": "Exercices sur l'image d'un point par translation",
+  "blocks": [
+    {
+      "title": "Algorithme de translation d'un point",
+      "content": "On donne un point $A(x_A; y_A)$ et un vecteur de translation $\\vec{v}(a; b)$. Écris un algorithme (ou une fonction en Python) qui renvoie les coordonnées de l'image $A'$ de $A$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "Algorithme :\\nEntrée : xA, yA, a, b\\nCalculer xA_prime = xA + a\\nCalculer yA_prime = yA + b\\nSortie : (xA_prime, yA_prime)\\nEn Python :\\ndef image_translation(xA, yA, a, b):\\n    return (xA + a, yA + b)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation ajoute les composantes du vecteur aux coordonnées du point. L'abscisse de l'image est la somme des abscisses, l'ordonnée de l'image est la somme des ordonnées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique de l'algorithme",
+      "content": "Soit $A(3; -2)$ et $\\vec{v}(4; 5)$. En utilisant l'algorithme de la question précédente, détermine les coordonnées de $A'$.",
+      "correctAnswer": "$A'(7; 3)$ car $3+4=7$ et $-2+5=3$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne l'abscisse du point et la composante horizontale du vecteur, puis l'ordonnée du point et la composante verticale du vecteur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux translations",
+      "content": "On considère deux translations successives : la première de vecteur $\\vec{v_1}(2; -3)$ et la seconde de vecteur $\\vec{v_2}(-1; 4)$. Écris un algorithme qui, étant donné les coordonnées d'un point $A$, renvoie son image après les deux translations. Donne aussi le vecteur résultant de la composition.",
+      "correctAnswer": "Algorithme :\\nEntrée : xA, yA\\nx1 = xA + 2\\ny1 = yA - 3\\nx2 = x1 - 1\\ny2 = y1 + 4\\nSortie : (x2, y2)\\nLe vecteur composé est $\\vec{v}(1; 1)$ car $(2-1; -3+4) = (1; 1)$.\\nEn Python :\\ndef compose_translations(xA, yA):\\n    x = xA + 2 - 1\\n    y = yA - 3 + 4\\n    return (x, y)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. On peut appliquer les translations l'une après l'autre ou additionner directement les vecteurs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.032342+00:00",
+  "id": 503,
+  "code": "2nde-t02-c01",
+  "title": "Expressions algébriques",
+  "description": "Cours structuré Educalcul : Expressions algébriques.",
+  "subject": "Calcul algébrique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Calcul algébrique",
+    "titre_du_cours": "Expressions algébriques",
+    "objectif_global": "Expressions algébriques",
+    "mini_lecons_imposees": [
+      "Structure.",
+      "Substitution.",
+      "Transformer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul algébrique",
+      "lessons": [
+        {
+          "title": "Structure.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles créer un programme informatique pour calculer le prix total d'une commande de pizzas. Chaque pizza coûte $12$ euros, mais il y a des frais de livraison fixes de $5$ euros, peu importe le nombre de pizzas commandées. Au lieu d'écrire un calcul différent pour $1$ pizza, $2$ pizzas ou $10$ pizzas, tu vas utiliser un code secret, une sorte de modèle mathématique. C'est là qu'intervient l'algèbre. En remplaçant le nombre de pizzas par une lettre, comme $x$, tu crées une expression qui fonctionne pour absolument toutes les situations possibles. Cette lettre n'est pas là pour nous embêter, elle est au contraire un outil de liberté. Elle nous permet de parler de quantités que nous ne connaissons pas encore ou qui peuvent changer. En seconde, on passe d'un calcul numérique classique à un calcul littéral. C'est un saut passionnant car on ne cherche plus seulement un résultat unique, mais on étudie la structure même d'une relation mathématique. C'est comme passer de la lecture d'une page précise d'un livre à la compréhension de la grammaire complète de la langue. Tu vas découvrir que les lettres sont des boîtes vides que l'on peut remplir avec n'importe quel nombre selon les besoins du problème."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une expression algébrique est une combinaison de nombres, de lettres et d'opérations mathématiques. Ces lettres, que l'on appelle des variables, représentent des quantités inconnues ou variables. Par exemple, dans l'expression $4x - 7$, le nombre $4$ est le coefficient de la variable $x$, et $-7$ est une constante. La structure d'une expression est régie par des règles strictes de priorité. On commence toujours par les calculs à l'intérieur des parenthèses, puis les puissances, ensuite les multiplications et divisions, et enfin les additions et soustractions. Il est crucial de comprendre que l'écriture algébrique est une forme simplifiée. Quand on écrit $3x$, c'est une façon rapide de dire $3 \\times x$. On supprime le signe de multiplication pour éviter toute confusion avec la lettre $x$. De même, $x^2$ signifie $x \\times x$. L'expression peut être un simple monôme, comme $5y$, ou un polynôme, qui est une somme de plusieurs termes comme $3x^2 + 2x - 1$. Chaque terme est séparé par un signe $+$ ou $-$. Apprendre à identifier ces composants est la base fondamentale pour tout le reste du programme de lycée, car cela permet de manipuler des formules complexes sans se perdre dans les symboles."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Expression} = \\text{Coefficient} \\times \\text{Variable}^{\\text{Exposant}} + \\text{Constante}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour analyser et comprendre la structure d'une expression algébrique, je te propose de suivre systématiquement ces trois étapes. Première étape, l'identification des variables et des constantes. Regarde l'expression et liste toutes les lettres présentes. Ce sont tes variables. Repère ensuite les nombres qui sont seuls, sans lettre attachée, ce sont tes constantes. Deuxième étape, le découpage en termes. Un terme est un bloc séparé par un signe $+$ ou $-$. Par exemple, dans l'expression $5x^2 - 3x + 8$, il y a trois termes distincts : $5x^2$, $-3x$ et $8$. Attention, le signe devant le nombre fait partie intégrante du terme. Troisième étape, l'analyse des coefficients et des puissances. Pour chaque terme contenant une variable, identifie le nombre qui la multiplie. Dans $5x^2$, le coefficient est $5$ et l'exposant est $2$. Si tu vois un $x$ tout seul, son coefficient est implicitement $1$. Si tu vois $-x$, son coefficient est $-1$. Enfin, vérifie la présence de parenthèses. Elles indiquent que tout le bloc à l'intérieur doit être considéré comme une seule unité avant d'être multiplié par ce qui se trouve devant. Cette approche méthodique évite les erreurs de lecture et permet de préparer le terrain pour les transformations futures."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression $A = 7x + 12$. C'est l'un des modèles les plus simples, appelé expression linéaire. Analysons-la ensemble. Ici, nous avons une seule variable, $x$. Cette variable est multipliée par le nombre $7$, ce qui signifie que le coefficient est $7$. Le nombre $12$ est ajouté à ce produit, c'est donc notre constante. Si nous voulons interpréter cela concrètement, imagine que tu gagnes $7$ euros par heure de travail et que tu as déjà $12$ euros dans ta tirelire. Le montant total $A$ dépendra du nombre d'heures $x$ que tu travailleras. On voit bien que la structure est simple : un produit suivi d'une addition. Il n'y a pas de parenthèses, donc on suit l'ordre classique des priorités. Le terme $7x$ et le terme $12$ ne peuvent pas être additionnés ensemble pour donner $19x$, car ils n'ont pas la même nature. L'un dépend de $x$, l'autre est fixe. C'est une distinction fondamentale en algèbre : on ne mélange jamais les familles de termes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Montons d'un cran avec l'expression $B = 3(2x^2 - 5x) + 10$. Ici, la structure est plus riche. On remarque d'abord la présence de parenthèses. Cela nous indique que le groupe $(2x^2 - 5x)$ est lié. À l'intérieur de ces parenthèses, nous avons deux termes : $2x^2$ avec un coefficient de $2$ et un exposant de $2$, et $-5x$ avec un coefficient de $-5$. Ce bloc entier est multiplié par le coefficient extérieur $3$. Enfin, on ajoute la constante $10$. Pour bien visualiser la structure, on peut imaginer que le $3$ distribue son influence sur tout ce qui est dans la parenthèse. On a donc un terme composé (le produit) et un terme simple (la constante). Si on devait décrire cette expression, on dirait que c'est la somme d'un triple produit et d'une constante. Cette structure est typique des fonctions du second degré que tu étudieras plus tard. L'important ici est de ne pas oublier que le signe moins devant le $5x$ appartient au terme, et que le $3$ s'applique à tout le contenu entre parenthèses, pas seulement au premier terme."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante, et c'est presque un classique, est de vouloir additionner des termes de natures différentes. De nombreux élèves écrivent $2x + 3 = 5x$. C'est strictement interdit ! Imagine que $x$ représente des pommes. $2x + 3$ signifie $2$ pommes et $3$ euros. Tu ne peux pas dire que tu as $5$ pommes ou $5$ euros. On ne peut additionner que des termes semblables, c'est-à-dire ceux qui ont la même variable et le même exposant. Un autre piège redoutable concerne la gestion des signes devant les parenthèses. Quand on a un signe moins devant une parenthèse, comme $-(x + 2)$, ce signe agit comme un multiplicateur $-1$ qui change le signe de TOUS les termes à l'intérieur. Beaucoup d'élèves oublient de changer le signe du deuxième terme. Enfin, méfie-toi de la confusion entre $x^2$ et $2x$. $x^2$ est une surface (le nombre multiplié par lui-même), alors que $2x$ est une longueur doublée (le nombre additionné à lui-même). Ce sont deux mondes totalement différents. Prends toujours le temps de bien identifier la puissance avant de lancer tes calculs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'expression $E = -4x^3 + 7x - 9$, quels sont les coefficients des termes contenant la variable $x$ ?",
+              "answer": "Les coefficients sont $-4$ et $7$.",
+              "hint": "Cherche les nombres qui multiplient les lettres $x$, n'oublie pas le signe devant.",
+              "explanation": "Le terme $-4x^3$ a pour coefficient $-4$. Le terme $7x$ a pour coefficient $7$. Le nombre $-9$ est une constante, pas un coefficient de variable."
+            },
+            {
+              "question": "Est-il possible de simplifier l'expression $3x + 5x + 2$ en une seule expression plus courte ? Si oui, laquelle ?",
+              "answer": "Oui, $8x + 2$.",
+              "hint": "Regarde si certains termes appartiennent à la même famille (ceux avec $x$).",
+              "explanation": "$3x$ et $5x$ sont des termes semblables, on peut donc les additionner : $3x + 5x = 8x$. Le nombre $2$ est une constante et ne peut pas être ajouté à $8x$."
+            },
+            {
+              "question": "Identifie le nombre de termes dans l'expression $F = 2(x+1) - 5x^2 + 3$.",
+              "answer": "Il y a $3$ termes principaux.",
+              "hint": "Un terme est un bloc séparé par un signe $+$ ou $-$. Le bloc avec parenthèses compte pour un seul terme avant développement.",
+              "explanation": "Les termes sont : $2(x+1)$, $-5x^2$ et $3$. Même si $2(x+1)$ contient deux éléments à l'intérieur, l'ensemble forme un seul terme produit."
+            }
+          ]
+        },
+        {
+          "title": "Substitution.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues à un jeu vidéo et que ton score est calculé par une formule magique : $\\text{Score} = 10 \\times \\text{Niveau} + 50 \\times \\text{Bonus}$. Tant que tu n'as pas fini la partie, le score est une expression algébrique, car on ne connaît pas encore ton niveau final ni tes bonus. Mais dès que la partie s'arrête, paf ! On remplace le mot Niveau par ton score réel, disons $5$, et le mot Bonus par $2$. Soudain, la formule devient un calcul simple : $10 \\times 5 + 50 \\times 2$. C'est exactement cela que l'on appelle la substitution en mathématiques. C'est l'action de donner vie à une expression abstraite en y injectant des valeurs concrètes. C'est le pont essentiel entre l'algèbre (le monde des lettres) et l'arithmétique (le monde des nombres). Dans la vie courante, on fait cela sans s'en rendre compte : quand tu calcules le prix de $3$ kilos de pommes à $2,50$ euro le kilo, tu substitutes la variable quantité par le nombre $3$ dans l'expression $\\text{Prix} = 2,50 \\times \\text{quantité}$. C'est une opération puissante qui nous permet de tester des hypothèses et de prédire des résultats."
+            },
+            {
+              "type": "paragraph",
+              "content": "La substitution consiste à remplacer chaque occurrence d'une variable dans une expression algébrique par un nombre spécifique, puis à simplifier l'expression résultante pour trouver une valeur numérique. On note souvent cela avec une notation particulière : si on a une expression $E(x)$, et qu'on veut calculer sa valeur pour $x = a$, on écrit $E(a)$. Le point crucial ici est que la variable $x$ agit comme un espace réservé. Lorsque nous effectuons la substitution, nous ne changeons pas la structure de l'expression, nous changeons seulement le contenu de cet espace. Par exemple, si l'expression est $3x^2$, et que nous substituons $x$ par $4$, l'expression devient $3 \\times 4^2$. Il est impératif de respecter les ordres de priorité opératoire après la substitution. Le fait de remplacer la lettre par un chiffre ne nous dispense pas des règles de base : les puissances passent avant les multiplications, qui passent elles-mêmes avant les additions. La substitution permet de transformer une relation générale en un résultat particulier. C'est l'outil principal pour résoudre des équations ou pour tracer des graphiques de fonctions, où l'on substitue plusieurs valeurs de $x$ pour obtenir les points correspondants."
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeur de x=4 aboutissant au résultat 12",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "x"
+                },
+                {
+                  "value": 12,
+                  "label": "f(x)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réussir une substitution sans faire d'erreur, je te conseille d'adopter une méthode rigoureuse en quatre étapes. Première étape, la préparation. Réécris l'expression en remplaçant chaque variable par des parenthèses vides. Par exemple, si tu as $2x^2 - 3x$, écris $2( )^2 - 3( )$. Cela crée des zones de dépôt sécurisées. Deuxième étape, l'injection. Place la valeur donnée à l'intérieur de chaque parenthèse. Si $x = -2$, ton expression devient $2(-2)^2 - 3(-2)$. L'utilisation des parenthèses est absolument vitale, surtout avec les nombres négatifs, pour ne pas confondre un signe d'opération avec un signe de nombre. Troisième étape, le traitement des puissances. Calcule d'abord tout ce qui est exposé. Dans notre exemple, $(-2)^2$ devient $4$. L'expression est maintenant $2(4) - 3(-2)$. Quatrième étape, la simplification finale. Effectue les multiplications, puis les additions ou soustractions. On obtient $8 + 6$, ce qui donne $14$. En suivant cet ordre, tu élimines quasiment tous les risques d'erreurs de signes, qui sont les fautes les plus fréquentes à ce niveau."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'expression $f(x) = 5x - 8$. Nous voulons calculer la valeur de cette expression pour $x = 4$. Appliquons notre méthode. D'abord, on remplace $x$ par des parenthèses : $f(4) = 5( ) - 8$. Ensuite, on injecte la valeur $4$ : $f(4) = 5(4) - 8$. Ici, le calcul est simple car il n'y a pas de puissances. On effectue la multiplication en priorité : $5 \\times 4 = 20$. L'expression devient donc $20 - 8$. Enfin, on termine par la soustraction : $20 - 8 = 12$. Le résultat de la substitution de $x$ par $4$ dans l'expression $5x - 8$ est donc $12$. C'est un résultat net et précis. Pour bien comprendre, on peut dire que si notre variable $x$ représentait un nombre d'heures de travail et que l'expression calculait un gain après une taxe fixe de $8$ euros, avec $4$ heures de travail, le gain final serait de $12$ euros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas plus délicat où la variable est négative : $g(x) = -2x^2 + 7x - 3$ pour $x = -3$. C'est ici que la méthode des parenthèses montre toute son utilité. Étape 1 : $g(-3) = -2( )^2 + 7( ) - 3$. Étape 2 : on insère $-3$ partout : $g(-3) = -2(-3)^2 + 7(-3) - 3$. Étape 3 : on gère la puissance. Attention, $(-3)^2$ signifie $(-3) \\times (-3)$, ce qui donne $+9$. L'expression devient $g(-3) = -2(9) + 7(-3) - 3$. Étape 4 : on effectue les multiplications. $-2 \\times 9 = -18$ et $7 \\times (-3) = -21$. Nous avons alors $g(-3) = -18 - 21 - 3$. Enfin, on additionne les nombres négatifs : $-18 - 21 = -39$, et $-39 - 3 = -42$. Le résultat final est $-42$. On voit bien que sans les parenthèses, on aurait pu se tromper sur le signe du carré ou sur le produit $7 \\times (-3)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège absolu, celui qui fait perdre le plus de points, est la gestion du carré d'un nombre négatif. Beaucoup d'élèves écrivent $-3^2 = 9$, ce qui est faux ! En mathématiques, $-3^2$ sans parenthèses signifie $-(3 \\times 3) = -9$. Pour avoir $9$, il faut absolument écrire $(-3)^2$. C'est pour cela que je t'ai conseillé de toujours mettre des parenthèses lors de la substitution. Un autre piège est l'oubli de substituer la variable partout. Si $x$ apparaît trois fois dans l'expression, tu dois le remplacer trois fois par la même valeur. Certains élèves ne le font qu'une seule fois et laissent les autres $x$ tels quels, ce qui rend le calcul impossible. Enfin, attention aux signes lors de la multiplication. Un produit de deux nombres négatifs donne un résultat positif, tandis qu'un produit d'un positif et d'un négatif donne un résultat négatif. Un petit conseil : quand tu vois un signe moins devant une variable que tu substitues, comme $-x$ avec $x = -5$, cela devient $-(-5)$, ce qui se transforme en $+5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur de l'expression $A = 3x^2 - 5x + 2$ pour $x = 2$.",
+              "answer": "$4$",
+              "hint": "Remplace $x$ par $2$ et calcule d'abord le carré.",
+              "explanation": "$A = 3(2)^2 - 5(2) + 2 = 3(4) - 10 + 2 = 12 - 10 + 2 = 2 + 2 = 4$."
+            },
+            {
+              "question": "Quelle est la valeur de $B = -x^2 + 4x$ pour $x = -1$ ?",
+              "answer": "$-5$",
+              "hint": "Fais attention au signe : $-(-1)^2$ n'est pas la même chose que $(-1)^2$.",
+              "explanation": "$B = -(-1)^2 + 4(-1) = -(1) - 4 = -1 - 4 = -5$."
+            },
+            {
+              "question": "Si $C = \\frac{x+10}{2}$, quelle est la valeur de $C$ lorsque $x = 6$ ?",
+              "answer": "$8$",
+              "hint": "Calcule d'abord tout le numérateur (le haut de la fraction) avant de diviser.",
+              "explanation": "$C = \\frac{6+10}{2} = \\frac{16}{2} = 8$."
+            }
+          ]
+        },
+        {
+          "title": "Transformer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà essayé de résumer un long texte pour n'en garder que l'essentiel sans perdre l'information ? En algèbre, on fait exactement la même chose. Parfois, une expression est écrite de façon trop étalée (elle est développée), et on aimerait la condenser pour y voir plus clair (on la factorise). D'autres fois, elle est trop compacte et on a besoin de l'ouvrir pour pouvoir manipuler ses composants (on la développe). C'est comme un accordéon : on peut l'étirer ou le refermer. Transformer une expression, ce n'est pas changer sa valeur, c'est juste changer son apparence. C'est une compétence fondamentale car, selon la forme de l'expression, certains calculs deviennent soudainement très faciles. Par exemple, pour calculer la valeur d'une expression pour un nombre très grand, la forme factorisée est souvent bien plus rapide. Maîtriser ces transformations, c'est comme apprendre à jongler avec les nombres et les lettres. Tu vas découvrir comment distribuer un nombre dans une parenthèse ou comment extraire un élément commun pour simplifier une écriture. C'est l'étape où l'algèbre devient vraiment un outil de résolution de problèmes puissant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Transformer une expression signifie passer d'une forme à une autre sans modifier le résultat final. Il existe deux opérations principales : le développement et la factorisation. Le développement consiste à transformer un produit en une somme. On utilise pour cela la distributivité. La distributivité simple suit la règle $a(b+c) = ab + ac$. Le nombre $a$ est distribué à chacun des termes à l'intérieur des parenthèses. La double distributivité, plus avancée, s'applique quand on multiplie deux parenthèses entre elles : $(a+b)(c+d) = ac + ad + bc + bd$. On distribue chaque terme de la première parenthèse sur chaque terme de la seconde. À l'inverse, la factorisation consiste à transformer une somme en un produit. C'est l'opération inverse du développement. On cherche un facteur commun, c'est-à-dire un nombre ou une lettre qui divise tous les termes de l'expression. Par exemple, dans $3x + 6$, on voit que $3$ divise à la fois $3x$ et $6$. On peut donc écrire $3(x + 2)$. La factorisation est cruciale pour simplifier des fractions algébriques ou pour trouver les racines d'un polynôme, car un produit s'annule dès que l'un de ses facteurs est nul."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 4,
+                  "height": 3,
+                  "label": "12x"
+                },
+                {
+                  "width": 1,
+                  "height": 3,
+                  "label": "3"
+                }
+              ],
+              "caption": "Représentation visuelle de la distributivité : 3(4x + 1) = 12x + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour développer une expression, je te suggère la méthode des flèches. Pour une distributivité simple comme $a(b+c)$, trace une flèche de $a$ vers $b$, puis une flèche de $a$ vers $c$. Calcule chaque produit séparément, puis additionne les résultats. Sois très vigilant avec les signes : un coefficient négatif multiplié par un terme négatif devient positif. Pour la double distributivité $(a+b)(c+d)$, imagine un tournoi : chaque élément de la première équipe rencontre chaque élément de la seconde. $a$ rencontre $c$, puis $a$ rencontre $d$, puis $b$ rencontre $c$, et enfin $b$ rencontre $d$. Tu obtiens ainsi quatre produits que tu simplifies à la fin. Pour la factorisation, la méthode est différente. D'abord, observe tous les termes et cherche le plus grand diviseur commun. Demande-toi : quel nombre ou quelle lettre est présent partout ? Une fois ce facteur trouvé, place-le devant une parenthèse. Pour trouver ce qu'il reste dans la parenthèse, divise chaque terme original par le facteur commun. Par exemple, pour factoriser $5x^2 + 10x$, le facteur commun est $5x$. On divise $5x^2$ par $5x$ pour obtenir $x$, et on divise $10x$ par $5x$ pour obtenir $2$. Le résultat est $5x(x+2)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développons l'expression $A = 4(3x - 5)$. Nous appliquons la simple distributivité. On distribue le $4$ sur le terme $3x$, puis sur le terme $-5$. Premier calcul : $4 \\times 3x = 12x$. Deuxième calcul : $4 \\times (-5) = -20$. On assemble les deux morceaux : $A = 12x - 20$. L'expression est maintenant développée car elle n'a plus de parenthèses et se présente sous la forme d'une somme (ou différence) de termes. On voit bien que le $4$ a agi comme un amplificateur pour tout ce qui était à l'intérieur. Si on avait voulu calculer $A$ pour $x=2$, on aurait pu utiliser la forme initiale $4(6-5)=4(1)=4$ ou la forme développée $12(2)-20 = 24-20 = 4$. Les deux donnent le même résultat, ce qui prouve que notre transformation est correcte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la double distributivité avec l'expression $B = (x + 3)(2x - 1)$. Suivons la règle du tournoi. Première étape : on distribue $x$. $x$ fois $2x$ donne $2x^2$. $x$ fois $-1$ donne $-x$. Deuxième étape : on distribue $3$. $3$ fois $2x$ donne $6x$. $3$ fois $-1$ donne $-3$. Maintenant, on rassemble tous les morceaux : $B = 2x^2 - x + 6x - 3$. Mais attention, on ne s'arrête pas là ! Il y a des termes semblables : $-x$ et $6x$. On les simplifie : $-1x + 6x = 5x$. Le résultat final simplifié est $B = 2x^2 + 5x - 3$. On a transformé un produit de deux binômes en un trinôme du second degré. C'est une opération classique que tu utiliseras tout au long de ton année de seconde et en première."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant dans le développement est l'oubli de distribuer le signe moins. Si tu as $-3(x - 2)$, beaucoup d'élèves écrivent $-3x - 6$. C'est une erreur ! Le $-3$ multiplie le $-2$, ce qui donne $+6$. Le résultat correct est $-3x + 6$. Un autre piège classique en double distributivité est l'oubli du terme central. Certains élèves multiplient le premier terme de chaque parenthèse et le dernier terme de chaque parenthèse, en oubliant les croisements. Ils écriraient $(x+2)(x+3) = x^2 + 6$ au lieu de $x^2 + 5x + 6$. N'oublie jamais les quatre multiplications ! Enfin, en factorisation, le piège est de ne pas prendre le facteur commun le plus grand possible. Par exemple, pour $12x + 18$, on peut factoriser par $2$, mais c'est incomplet. Le plus grand facteur commun est $6$, ce qui donne $6(2x + 3)$. Prends toujours l'habitude de vérifier si tu peux encore simplifier l'intérieur de la parenthèse après avoir factorisé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe et simplifie l'expression $D = 5(2x - 3) + 7$.",
+              "answer": "$10x - 8$",
+              "hint": "Distribue d'abord le 5, puis ajoute le 7 à la fin.",
+              "explanation": "$D = 5 \\times 2x + 5 \\times (-3) + 7 = 10x - 15 + 7 = 10x - 8$."
+            },
+            {
+              "question": "Développe l'expression $E = (x - 4)(x + 5)$.",
+              "answer": "$x^2 + x - 20$",
+              "hint": "Utilise la double distributivité et simplifie les termes en x.",
+              "explanation": "$E = x \\times x + x \\times 5 - 4 \\times x - 4 \\times 5 = x^2 + 5x - 4x - 20 = x^2 + x - 20$."
+            },
+            {
+              "question": "Factorise l'expression $F = 8x^2 - 12x$.",
+              "answer": "$4x(2x - 3)$",
+              "hint": "Cherche le plus grand diviseur commun entre 8 and 12, et regarde si x est commun.",
+              "explanation": "Le plus grand diviseur de 8 et 12 est 4. Les deux termes ont aussi un x. Le facteur commun est donc 4x. En divisant, on a $4x(2x - 3)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

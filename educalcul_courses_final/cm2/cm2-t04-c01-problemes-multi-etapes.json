@@ -1,0 +1,508 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.420676+00:00",
+  "id": 296,
+  "code": "cm2-t04-c01",
+  "title": "Problèmes multi-étapes",
+  "description": "Cours structuré Educalcul : Problèmes multi-étapes.",
+  "subject": "Problèmes et initiation à l'algèbre",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Problèmes et initiation à l'algèbre",
+    "titre_du_cours": "Problèmes multi-étapes",
+    "objectif_global": "Problèmes multi-étapes",
+    "mini_lecons_imposees": [
+      "Planifier.",
+      "Calculs intermédiaires.",
+      "Contrôle."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Problèmes et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Planifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et comprendre le problème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu ouvres un problème à plusieurs étapes, la première chose à faire est de le lire calmement, comme si tu écoutais une histoire. Repère les nombres importants : ici $45$, $12$ et $20$. Demande‑toi ce que l'histoire te demande à la fin : « Combien a‑t‑elle maintenant ? » C'est la question principale, celle qui guidera tout ton travail. Ne te précipite pas pour calculer ; prends le temps de bien visualiser la situation, imagine les billes qui changent de main, cela t'aidera à ne rien oublier."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Question",
+                "Opération"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Combien de billes restent après le don ?",
+                  "Soustraction"
+                ],
+                [
+                  "2",
+                  "Combien de billes après l'achat ?",
+                  "Addition"
+                ],
+                [
+                  "3",
+                  "Réponse finale",
+                  "—"
+                ]
+              ],
+              "caption": "Modèle de plan pour le problème des billes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment repérer la question principale, passons à la détection des sous‑questions. Chaque action décrite dans le texte correspond souvent à une petite question cachée : « Combien reste‑t‑il après avoir donné ? » puis « Combien y a‑t‑il après avoir acheté ? ». Apprends à les isoler une par une, comme si tu découpais une recette en plusieurs étapes. Cela transforme un gros problème en plusieurs mini‑problèmes faciles à gérer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les sous‑questions"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Souligne les verbes d'action",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans le texte, les verbes « donne » et « achète » signalent deux actions distinctes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écris la question liée à chaque action",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Combien de billes après avoir donné ? » et « Combien de billes après avoir acheté ? »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Range les questions dans l'ordre du récit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La première question précède la seconde, car l'histoire se déroule chronologiquement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir listé les sous‑questions, il faut décider quelle opération correspond à chacune. Donner des billes, c'est enlever : on soustrait. Acheter des billes, c'est ajouter : on additionne. L'ordre est crucial : on ne peut pas ajouter avant d'avoir enlevé, sinon le résultat serait faux. Prends l'habitude d'écrire l'opération à côté de chaque sous‑question, cela te servira de guide pendant les calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir les opérations et l'ordre"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sous‑question",
+                "Opération",
+                "Expression"
+              ],
+              "rows": [
+                [
+                  "Après le don",
+                  "Soustraction",
+                  "$45 - 12$"
+                ],
+                [
+                  "Après l'achat",
+                  "Addition",
+                  "résultat + $20$"
+                ]
+              ],
+              "caption": "Correspondance entre actions et opérations"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier cycle de cette leçon consiste à rédiger ton plan complet. Écris chaque calcul sur une ligne distincte, note le résultat intermédiaire, puis la réponse finale. Un plan clair te permet de suivre ton raisonnement et de le relire sans te perdre. C'est comme tracer une carte avant de partir en randonnée : tu sais où tu vas à chaque étape."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire ton plan"
+            },
+            {
+              "type": "definition",
+              "term": "Plan de résolution",
+              "definition": "Liste ordonnée des calculs à effectuer pour répondre à la question principale d'un problème.",
+              "example": "1) $45 - 12 = 33$ 2) $33 + 20 = 53$ 3) Réponse : $53$ billes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le problème suivant, quelle est la question principale ? Marie a $45$ billes. Elle en donne $12$ à Paul, puis achète $20$ nouvelles billes. Combien a‑t‑elle maintenant ?",
+              "answer": "Combien de billes Marie a‑t‑elle à la fin ?",
+              "hint": "Cherche la phrase qui se termine par un point d'interrogation.",
+              "explanation": "La question principale est la dernière phrase du problème, celle qui demande le résultat final."
+            },
+            {
+              "question": "Quelles sont les deux étapes à faire pour résoudre le problème ?",
+              "answer": "D'abord soustraire $12$ de $45$, ensuite ajouter $20$ au résultat.",
+              "hint": "Pense à ce qui se passe dans l'ordre du récit.",
+              "explanation": "Le problème raconte deux actions successives : donner puis acheter, ce qui donne deux calculs à enchaîner."
+            },
+            {
+              "question": "Quelle opération faut‑il faire en premier ?",
+              "answer": "La soustraction $45 - 12$.",
+              "hint": "La première action est de donner des billes.",
+              "explanation": "Donner correspond à enlever, donc on soustrait avant d'ajouter."
+            },
+            {
+              "question": "Écris ton plan en trois lignes : 1) ... 2) ... 3) ...",
+              "answer": "1) Calculer $45 - 12 = 33$. 2) Calculer $33 + 20 = 53$. 3) Répondre : Marie a $53$ billes.",
+              "hint": "Note chaque calcul sur une ligne.",
+              "explanation": "Le plan montre les calculs intermédiaires et la réponse finale, dans l'ordre chronologique."
+            }
+          ]
+        },
+        {
+          "title": "Calculs intermédiaires.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effectuer un calcul intermédiaire et le noter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ton plan est prêt, il est temps de passer aux calculs. Chaque ligne du plan correspond à un calcul intermédiaire. Pour ne pas te tromper, écris le calcul en entier, par exemple $45 - 12 = 33$, puis note le résultat bien lisible à côté. Si tu fais le calcul dans ta tête, vérifie-le en le refaisant à l'envers : $33 + 12$ doit redonner $45$. Cette petite vérification t'évite les erreurs bêtes et te donne confiance pour la suite."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "45",
+                "12"
+              ],
+              "result": "33",
+              "carries": [],
+              "caption": "Soustraction posée pour le premier calcul intermédiaire"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un problème demande de combiner plusieurs opérations dans une même ligne, comme $ (45 - 12) + 20 $. Les parenthèses indiquent ce qu'il faut faire en premier. Apprends à les lire comme des petites boîtes qui isolent un calcul. Résous d'abord ce qui est à l'intérieur, note le résultat, puis continue. C'est la même idée que de suivre ton plan étape par étape, mais écrit en une seule expression."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les parenthèses pour ordonner"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calcule l'intérieur des parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$45 - 12 = 33$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplace la parenthèse par son résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'expression devient $33 + 20$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Termine le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$33 + 20 = 53$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après chaque calcul intermédiaire, prends l'habitude de le relire et de te demander : « Ce nombre a‑t‑il du sens dans l'histoire ? ». Si tu as $33$ billes après le don, est‑ce plausible ? Oui, car $45 - 12$ ne peut pas donner un nombre négatif ni un nombre plus grand que $45$. Ce contrôle rapide, appelé « contrôle de cohérence », t'évite de poursuivre avec une erreur qui s'amplifierait."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier chaque calcul avant de continuer"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de contrôle",
+              "paragraphs": [
+                "Refais le calcul à l'envers (opération inverse) ou estime le résultat à la louche. Si les deux concordent, continue."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois tous les calculs intermédiaires validés, rassemble les résultats pour écrire la réponse finale. Relis la question principale : « Combien a‑t‑elle maintenant ? » et complète la phrase avec le dernier nombre obtenu. Présente ta réponse clairement, par exemple : « Marie a $53$ billes. » C'est la touche finale qui montre que tu as suivi tout le chemin sans te perdre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Regrouper les résultats pour la réponse finale"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Calcul intermédiaire",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "$45 - 12$",
+                  "$33$"
+                ],
+                [
+                  "$33 + 20$",
+                  "$53$"
+                ]
+              ],
+              "caption": "Récapitulatif des calculs intermédiaires"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue le premier calcul intermédiaire du plan : $45 - 12$.",
+              "answer": "$33$",
+              "hint": "Pose la soustraction ou compte à rebours depuis $45$.",
+              "explanation": "En enlevant $12$ à $45$, on obtient $33$. Vérifie : $33 + 12 = 45$."
+            },
+            {
+              "question": "Calcule $(45 - 12) + 20$ en respectant les parenthèses.",
+              "answer": "$53$",
+              "hint": "Commence par la soustraction entre parenthèses, puis ajoute $20$.",
+              "explanation": "Parenthèses d'abord : $45 - 12 = 33$. Ensuite $33 + 20 = 53$."
+            },
+            {
+              "question": "Après avoir trouvé $33$ billes, comment vérifier vite que ce nombre est cohérent ?",
+              "answer": "Vérifier que $33 + 12 = 45$ ou estimer que le résultat doit être inférieur à $45$.",
+              "hint": "Utilise l'opération inverse ou une estimation grossière.",
+              "explanation": "L'addition inverse confirme la soustraction ; l'estimation assure que le nombre reste plausible."
+            },
+            {
+              "question": "Rédige la réponse finale complète pour le problème des billes.",
+              "answer": "Marie a $53$ billes.",
+              "hint": "Reprends le dernier résultat de ton plan et formule une phrase.",
+              "explanation": "Le dernier calcul donne $53$ ; la question demande combien elle a maintenant, donc on répond par une phrase claire."
+            }
+          ]
+        },
+        {
+          "title": "Contrôle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer la réponse avant de calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de te lancer dans les calculs précis, prends quelques secondes pour estimer le résultat. Dans le problème des billes, Marie commence avec $45$, elle en donne une dizaine, puis en ajoute une vingtaine. Tu peux t'attendre à un nombre un peu plus grand que $45$, peut‑être autour de $50$ ou $55$. Cette estimation te donne un repère : si ton calcul final donne $200$ ou $5$, tu sauras tout de suite qu'il y a une erreur quelque part."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation du résultat final sur une droite numérique",
+              "min": 30,
+              "max": 70,
+              "points": [
+                {
+                  "value": 45,
+                  "label": "Départ"
+                },
+                {
+                  "value": 53,
+                  "label": "Résultat attendu"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le calcul effectué, la méthode la plus sûre pour le contrôler est de refaire le chemin à l'envers. Si tu as fait $45 - 12 = 33$ puis $33 + 20 = 53$, reprends le résultat $53$ et annule la dernière opération : $53 - 20 = 33$. Ensuite annule la première : $33 + 12 = 45$. Si tu retrouves le nombre de départ, ton travail est correct. C'est comme défaire un nœud pour vérifier qu'il était bien fait."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Refaire le calcul à l'envers (opération inverse)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Soustrais le dernier nombre ajouté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$53 - 20 = 33$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute le nombre qui avait été enlevé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$33 + 12 = 45$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare avec le départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On retrouve $45$, le nombre initial. Le contrôle est bon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, même avec un calcul correct, la réponse peut sembler bizarre dans le contexte. Imagine que le problème parle de nombre d'élèves dans une classe et que ton résultat est $150$. Ce n'est pas impossible, mais c'est peu probable pour une classe ordinaire. Compare ton résultat à ce que tu connais de la vie réelle : une classe a généralement entre $20$ et $35$ élèves. Si ton nombre sort de cette fourchette, relis le problème et tes calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer avec une réponse raisonnable"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison du résultat obtenu avec une fourchette plausible",
+              "bars": [
+                {
+                  "label": "Résultat calculé",
+                  "value": 53,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fourchette attendue (40‑60)",
+                  "value": 50,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour résoudre un problème à plusieurs étapes : planifier, calculer pas à pas, contrôler par estimation, par l'inverse et par le bon sens. À chaque nouveau problème, répète ce cycle et tu verras que les erreurs deviennent rares. Félicitations pour ton sérieux !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan et checklist"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un problème et repérer la question principale.",
+                "Je sais décomposer le problème en sous‑questions dans l'ordre.",
+                "Je sais choisir l'opération adaptée à chaque sous‑question.",
+                "Je sais écrire un plan clair avec les calculs intermédiaires.",
+                "Je sais effectuer chaque calcul et le noter soigneusement.",
+                "Je sais vérifier mes calculs par l'opération inverse.",
+                "Je sais estimer le résultat et comparer avec le bon sens."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Estime le résultat final du problème des billes avant de calculer.",
+              "answer": "Environ $50$ à $55$ billes.",
+              "hint": "Pense : on enlève une dizaine, puis on ajoute une vingtaine.",
+              "explanation": "En partant de $45$, retirer environ $10$ donne $35$, puis ajouter $20$ donne environ $55$."
+            },
+            {
+              "question": "Vérifie le calcul $45 - 12 = 33$ en utilisant l'opération inverse.",
+              "answer": "$33 + 12 = 45$, donc le calcul est correct.",
+              "hint": "Ajoute le nombre soustrait au résultat obtenu.",
+              "explanation": "L'addition inverse confirme que la soustraction a été bien faite."
+            },
+            {
+              "question": "Ton résultat final est $53$ billes. Est‑ce une réponse raisonnable pour ce problème ?",
+              "answer": "Oui, car $53$ se situe entre $40$ et $60$, ce qui correspond à l'estimation.",
+              "hint": "Compare le nombre obtenu à l'estimation faite au début.",
+              "explanation": "L'estimation initiale prévoyait un nombre autour de $50$‑$55$ ; $53$ y correspond parfaitement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

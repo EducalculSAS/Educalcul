@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Compter",
+  "title": "Quiz : Compter - Simulations probabilistes",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces équilibrées et on lance une pièce de monnaie. Combien y a-t-il de résultats possibles au total ?",
+      "options": [
+        "6",
+        "12",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Le dé a 6 issues possibles et la pièce en a 2. Selon le principe de multiplication, le nombre total de couples (résultat du dé, résultat de la pièce) est 6 × 2 = 12.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 5 élèves, on veut choisir 2 délégués. De combien de façons différentes peut-on former ce duo ?",
+      "options": [
+        "10",
+        "20",
+        "5",
+        "15"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Il s'agit d'une combinaison de 2 éléments parmi 5, sans ordre : C(5,2) = 5! / (2!·3!) = (5·4)/(2·1) = 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de façons de ranger 3 livres distincts sur une étagère ?",
+      "options": [
+        "6",
+        "9",
+        "3",
+        "12"
+      ],
+      "correctAnswer": "6",
+      "explanation": "C'est une permutation de 3 objets distincts : 3! = 3·2·1 = 6.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux dés à six faces. Combien de résultats ordonnés donnent une somme égale à 7 ?",
+      "options": [
+        "6",
+        "5",
+        "4",
+        "3"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Les couples (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) sont les 6 possibilités. Chaque dé est distinct, donc on compte les couples ordonnés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de codes à 4 chiffres peut-on former avec les chiffres 0 à 9, sans répétition, et dont le premier chiffre n'est pas 0 ?",
+      "options": [
+        "4536",
+        "5040",
+        "3024",
+        "4032"
+      ],
+      "correctAnswer": "4536",
+      "explanation": "Premier chiffre : 9 choix (1 à 9). Il reste 9 chiffres disponibles (0 à 9 sauf le premier). Deuxième : 9 choix, troisième : 8, quatrième : 7. Total = 9 × 9 × 8 × 7 = 4536.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

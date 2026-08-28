@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 351,
+  "_course_code": "6eme-t04-c05-bilan-algebre-6e",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Formules et inconnues",
+  "title": "Approfondissement : Formules et inconnues",
+  "questions": [
+    {
+      "text": "Dans la formule $P = 4 \\times c$ qui permet de calculer le périmètre d'un carré, que représente la lettre $c$ ?",
+      "options": [
+        "L'aire du carré",
+        "La longueur d'un côté",
+        "Le périmètre du carré",
+        "Le nombre de côtés"
+      ],
+      "correctAnswer": "La longueur d'un côté",
+      "explanation": "La formule du périmètre d'un carré est $P = 4 \\times c$. La lettre $P$ représente le périmètre et la lettre $c$ représente la longueur d'un côté (c pour côté). L'aire se note généralement $A$ et se calcule par $c \\times c$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise la formule $A = L \\times l$ pour calculer l'aire d'un rectangle. Si $L = 7$ et $l = 4$, quelle est la valeur de $A$ ?",
+      "options": [
+        "$11$",
+        "$22$",
+        "$28$",
+        "$24$"
+      ],
+      "correctAnswer": "$28$",
+      "explanation": "Il faut remplacer les lettres par leurs valeurs dans la formule : $A = 7 \\times 4$. Le produit de $7$ par $4$ est $28$. L'option $11$ correspond à l'addition $7+4$, l'option $22$ au périmètre $2 \\times (7+4)$ et l'option $24$ à $6 \\times 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix total $P$ en euros pour $n$ stylos à $3$ euros l'unité est donné par la formule $P = 3 \\times n$. Si le prix total est de $27$ euros, combien de stylos a-t-on achetés ?",
+      "options": [
+        "$7$",
+        "$9$",
+        "$24$",
+        "$30$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "On sait que $P = 27$. La formule donne $27 = 3 \\times n$. Il faut trouver le nombre qui, multiplié par $3$, donne $27$. C'est $9$ car $3 \\times 9 = 27$. L'option $7$ donne $21$, l'option $24$ correspond à $27-3$ et l'option $30$ à $27+3$.",
+      "points": 1,
+      "figure": {
+        "type": "equation_balancer",
+        "leftTerms": [
+          "3",
+          "x",
+          "n"
+        ],
+        "rightTerms": [
+          "27"
+        ],
+        "caption": "Équation pour trouver le nombre de stylos"
+      }
+    },
+    {
+      "text": "Pour calculer le périmètre $P$ d'un rectangle de longueur $L$ et de largeur $l$, on utilise la formule $P = 2 \\times (L + l)$. Si $L = 8$ et $l = 5$, quelle expression permet de trouver $P$ ?",
+      "options": [
+        "$P = 2 \\times 8 + 5$",
+        "$P = 2 \\times (8 + 5)$",
+        "$P = 8 + 5 \\times 2$",
+        "$P = (8 + 5) \\div 2$"
+      ],
+      "correctAnswer": "$P = 2 \\times (8 + 5)$",
+      "explanation": "Il faut substituer les valeurs dans la formule exacte en respectant les parenthèses : $P = 2 \\times (8 + 5)$. La première option oublie les parenthèses et ferait $16+5=21$ au lieu de $2 \\times 13 = 26$. La troisième option ne respecte pas l'ordre des opérations ni la formule. La quatrième utilise une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a pour périmètre $36$ cm. On note $c$ la longueur de son côté en cm. Quelle équation permet de trouver $c$ et quelle est la valeur de $c$ ?",
+      "options": [
+        "$4 \\times c = 36$ donc $c = 7$",
+        "$4 \\times c = 36$ donc $c = 9$",
+        "$c + 4 = 36$ donc $c = 32$",
+        "$c \\div 4 = 36$ donc $c = 144$"
+      ],
+      "correctAnswer": "$4 \\times c = 36$ donc $c = 9$",
+      "explanation": "Le périmètre d'un carré est $4$ fois la longueur d'un côté : $P = 4 \\times c$. Comme $P = 36$, l'équation est $4 \\times c = 36$. Pour trouver $c$, on divise $36$ par $4$ : $c = 36 \\div 4 = 9$. L'option A se trompe dans la division ($36 \\div 4 = 9$ pas $7$). Les options C et D n'utilisent pas la bonne formule du périmètre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

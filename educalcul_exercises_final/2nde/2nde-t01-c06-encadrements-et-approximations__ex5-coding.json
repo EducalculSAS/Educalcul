@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Arrondis",
+  "title": "Approfondissement : Arrondis - Algorithmes",
+  "blocks": [
+    {
+      "title": "Arrondi à n décimales",
+      "content": "Écrire un algorithme (en pseudocode ou en syntaxe Python) qui prend en entrée un nombre réel $x$ et un entier naturel $n$ et qui renvoie l'arrondi de $x$ à $n$ décimales selon la règle de l'arrondi au plus proche (avec les demi‑unités arrondies au supérieur).",
+      "correctAnswer": "Algorithme Arrondi(x, n) :\\n1. factor ← 10^n\\n2. y ← x * factor\\n3. Si y ≥ 0 alors\\n      arrondi ← floor(y + 0.5)\\n   Sinon\\n      arrondi ← ceil(y - 0.5)\\n4. Résultat ← arrondi / factor\\n5. Retourner Résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie $x$ par $10^n$ pour décaler la virgule de $n$ rangs. On ajoute $0,5$ (ou on soustrait $0,5$ si le nombre est négatif) puis on prend la partie entière (floor) pour réaliser l'arrondi au plus proche avec les demi‑unités au supérieur. Enfin on divise par $10^n$ pour remettre la virgule à sa place.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Erreur maximale d'arrondi sur une liste",
+      "content": "Soit une liste de mesures réelles $L = [m_1, m_2, \\dots, m_p]$. Écrire un algorithme qui calcule pour chaque mesure son arrondi à $2$ décimales (selon la même règle que précédemment) et qui détermine l'erreur absolue maximale $|m_i - \\text{arrondi}(m_i,2)|$ parmi toutes les mesures.",
+      "correctAnswer": "Algorithme ErreurMax(L) :\\n1. maxErreur ← 0\\n2. Pour chaque m dans L faire\\n      a ← Arrondi(m, 2)          // utilise l'algorithme de la question 1\\n      e ← valeur_absolue(m - a)\\n      Si e > maxErreur alors\\n         maxErreur ← e\\n3. Retourner maxErreur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On réutilise la fonction Arrondi pour obtenir chaque valeur arrondie à deux décimales. On calcule l'écart absolu entre la valeur exacte et sa version arrondie, on conserve le plus grand écart rencontré. La valeur absolue garantit une erreur positive.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au multiple de 10^{-k} par arithmétique entière",
+      "content": "Écrire une fonction qui, étant donné un réel strictement positif $a$ et un entier $k \\ge 0$, renvoie l'arrondi de $a$ au multiple le plus proche de $10^{-k}$ (c'est‑à‑dire à $k$ décimales) en n'utilisant que des opérations entières (multiplication, addition, division euclidienne).",
+      "correctAnswer": "Fonction ArrondiEntier(a, k) :\\n1. factor ← 10^k                     // entier\\n2. n ← partie_entiere(a * factor)   // partie entière du produit\\n3. r ← (a * factor) - n             // partie fractionnaire (réelle)\\n4. Si r * 2 ≥ 1 alors\\n      n ← n + 1\\n5. Résultat ← n / factor            // division réelle pour retrouver le nombre arrondi\\n6. Retourner Résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décalle la virgule de $k$ rangs en multipliant par $10^k$. La partie entière $n$ correspond au multiple inférieur. La partie fractionnaire $r$ indique la distance au multiple supérieur. Si $2r \\ge 1$ (c'est‑à‑dire $r \\ge 0,5$) on incrémente $n$ pour arrondir au supérieur. La division finale par $10^k$ replace la virgule. Toutes les décisions se font avec des comparaisons sur des nombres réels mais l'incrémentation et la multiplication utilisent des entiers.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

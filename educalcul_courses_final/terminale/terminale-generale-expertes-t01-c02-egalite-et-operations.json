@@ -1,0 +1,474 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.751976+00:00",
+  "id": 728,
+  "code": "terminale-generale-expertes-t01-c02",
+  "title": "Égalité et opérations",
+  "description": "Cours structuré Educalcul : Égalité et opérations.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Égalité et opérations",
+    "objectif_global": "Égalité et opérations",
+    "mini_lecons_imposees": [
+      "Addition.",
+      "Produit.",
+      "Inverse / quotient selon programme."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Addition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Introduction aux nombres complexes"
+            },
+            {
+              "type": "paragraph",
+              "content": "En terminale experte, nous manipulons les nombres complexes comme des objets à part entière, non plus seulement comme des paires de réels. Un nombre complexe s'écrit sous la forme $z = a + i b$ où $a$ et $b$ sont des nombres réels et $i$ est l'unité imaginaire vérifiant $i^2 = -1$. La partie réelle de $z$ est $a$, notée $\\Re(z)$, et la partie imaginaire est $b$, notée $\\Im(z)$. Deux nombres complexes sont égaux si et seulement si leurs parties réelles sont égales et leurs parties imaginaires sont égales : $a + i b = c + i d \\iff a = c \\text{ et } b = d$. Cette définition d'égalité est la pierre angulaire qui permet de définir ensuite toutes les opérations."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre complexe",
+              "definition": "Un nombre complexe est une expression de la forme $a + i b$ avec $a,b \\in \\mathbb{R}$ et $i^2 = -1$. La partie réelle est $a$, la partie imaginaire est $b$.",
+              "example": "$3 + 4i$, $-2 - 5i$, $0 + i$ sont des nombres complexes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition algébrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition de deux nombres complexes s'effectue composante par composante, exactement comme pour les vecteurs du plan. Si $z_1 = a + i b$ et $z_2 = c + i d$, leur somme est $z_1 + z_2 = (a + c) + i(b + d)$. Cette règle découle directement de la distributivité de l'addition sur les réels et de la définition de $i$. Prenons un exemple concret : $z_1 = 2 + 3i$ et $z_2 = -1 + 4i$. En additionnant les parties réelles, $2 + (-1) = 1$, et les parties imaginaires, $3 + 4 = 7$, on obtient $z_1 + z_2 = 1 + 7i$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z_1 + z_2 = (a+c) + i(b+d)"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : addition vectorielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque nombre complexe peut être identifié au point de coordonnées $(a,b)$ dans le plan muni d'un repère orthonormé, ou encore au vecteur $\\vec{u} = (a,b)$. L'addition complexe correspond alors à l'addition vectorielle usuelle : on place le second vecteur au bout du premier, et le vecteur somme joint l'origine au bout du second. Cette vision géométrique explique immédiatement la commutativité et l'associativité de l'addition, car l'addition vectorielle possède ces propriétés. De plus, le neutre additif est $0 = 0 + 0i$, représenté par le vecteur nul, et l'opposé de $z = a + i b$ est $-z = -a - i b$, le vecteur opposé."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 2,
+              "im": 3,
+              "caption": "Représentation de $z_1 = 2+3i$ (vecteur bleu) et $z_2 = -1+4i$ (vecteur rouge) ; leur somme $z_1+z_2 = 1+7i$ est le vecteur vert."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les parties réelles et imaginaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire $z_1 = a + i b$ et $z_2 = c + i d$ en relevants $a,b,c,d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les parties réelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $a + c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les parties imaginaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $b + d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme est $(a+c) + i(b+d)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la mécanique de l'addition est claire, nous allons explorer ses propriétés fondamentales. La commutativité, l'associativité, l'existence d'un neutre et d'opposés ne sont pas des surprises : elles découlent de la structure d'espace vectoriel de dimension 2 sur $\\mathbb{R}$. Nous allons les vérifier sur un exemple numérique pour ancrer l'intuition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de l'addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $z_1 = 5 - 2i$, $z_2 = -3 + 6i$ et $z_3 = 1 + i$. On calcule $(z_1 + z_2) + z_3$ et $z_1 + (z_2 + z_3)$ pour constater l'associativité. On vérifie aussi que $z_1 + z_2 = z_2 + z_1$ (commutativité) et que $z_1 + 0 = z_1$. Enfin, l'opposé de $z_1$ est $-5 + 2i$ et leur somme donne bien $0$. Ces vérifications renforcent la confiance dans la manipulation algébrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition permet aussi de résoudre des équations simples où l'inconnue est un nombre complexe. L'idée est d'isoler l'inconnue en ajoutant l'opposé du terme connu des deux côtés, exactement comme dans $\\mathbb{R}$. Cette technique sera la base pour aborder plus tard les équations quadratiques à coefficients complexes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations par addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'équation $z + (2 + 3i) = 5 - i$. Pour isoler $z$, on ajoute l'opposé de $2+3i$, c'est-à-dire $-2-3i$, des deux côtés : $z = (5 - i) + (-2 - 3i) = 3 - 4i$. On vérifie en remplaçant : $(3 - 4i) + (2 + 3i) = 5 - i$, ce qui est correct. Cette méthode s'applique à toute équation linéaire de la forme $z + a = b$ avec $a,b \\in \\mathbb{C}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer la somme $z_1 + z_2$ pour $z_1 = 4 - 5i$ et $z_2 = -2 + 3i$.",
+              "answer": "$2 - 2i$",
+              "hint": "Additionnez les parties réelles entre elles et les parties imaginaires entre elles.",
+              "explanation": "La partie réelle : $4 + (-2) = 2$. La partie imaginaire : $-5 + 3 = -2$. Donc $z_1+z_2 = 2 - 2i$."
+            },
+            {
+              "question": "Vérifier la commutativité de l'addition pour $z_1 = 1 + 2i$ et $z_2 = -3 + 4i$ en calculant $z_1+z_2$ et $z_2+z_1$.",
+              "answer": "Les deux sommes valent $-2 + 6i$.",
+              "hint": "Effectuez les deux additions composante par composante.",
+              "explanation": "$z_1+z_2 = (1-3) + i(2+4) = -2+6i$. $z_2+z_1 = (-3+1) + i(4+2) = -2+6i$. Les résultats coïncident."
+            },
+            {
+              "question": "Résoudre l'équation $z + (-4 + 7i) = 2 - 3i$.",
+              "answer": "$z = 6 - 10i$",
+              "hint": "Ajoutez l'opposé de $-4+7i$ des deux côtés.",
+              "explanation": "L'opposé de $-4+7i$ est $4-7i$. $z = (2-3i) + (4-7i) = 6 - 10i$."
+            }
+          ]
+        },
+        {
+          "title": "Produit.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition du produit de deux nombres complexes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé l'addition, nous abordons la multiplication. Le produit de $z_1 = a + i b$ et $z_2 = c + i d$ s'obtient en développant $(a+ib)(c+id)$ avec la distributivité, puis en remplaçant $i^2$ par $-1$. On trouve $z_1 z_2 = (ac - bd) + i(ad + bc)$. Cette formule est la clé de toutes les manipulations ultérieures, qu'il s'agisse de calculer des puissances, des inverses ou de passer à la forme polaire."
+            },
+            {
+              "type": "definition",
+              "term": "Produit de nombres complexes",
+              "definition": "Pour $z_1 = a+ib$ et $z_2 = c+id$, le produit est $z_1 z_2 = (ac-bd) + i(ad+bc)$.",
+              "example": "$(2+3i)(1-4i) = 2 -8i +3i -12i^2 = 14 -5i$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z_1 z_2 = (ac-bd) + i(ad+bc)"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : module et argument"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque nombre complexe non nul possède un module $|z| = \\sqrt{a^2+b^2}$ (sa distance à l'origine) et un argument $\\arg(z)$ (l'angle orienté du vecteur avec l'axe des abscisses). La multiplication a une traduction géométrique élégante : le module du produit est le produit des modules, et l'argument du produit est la somme des arguments (modulo $2\\pi$). En symboles, $|z_1 z_2| = |z_1|\\,|z_2|$ et $\\arg(z_1 z_2) \\equiv \\arg(z_1) + \\arg(z_2) \\pmod{2\\pi}$. Cette propriété transforme la multiplication en une homothétie-rotation : on dilate par le facteur $|z_2|$ et on tourne de l'angle $\\arg(z_2)$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 2,
+              "im": 1,
+              "caption": "Multiplication de $z_1 = 2+i$ (module $\\sqrt{5}$, argument $\\approx 26.6^\\circ$) par $z_2 = 1+2i$ (module $\\sqrt{5}$, argument $\\approx 63.4^\\circ$) ; le produit a module $5$ et argument $\\approx 90^\\circ$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $a,b,c,d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire $z_1 = a+ib$, $z_2 = c+id$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la partie réelle $ac - bd$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier $a$ par $c$ et $b$ par $d$, puis soustraire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la partie imaginaire $ad + bc$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier $a$ par $d$ et $b$ par $c$, puis additionner."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Assembler le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit est $(ac-bd) + i(ad+bc)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés algébriques de la multiplication (commutativité, associativité, distributivité par rapport à l'addition, existence d'un neutre $1 = 1+0i$) découlent directement de la définition et des propriétés des réels. Nous allons les illustrer sur un triplet de nombres complexes pour que ces abstractions deviennent concrètes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés algébriques du produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $z_1 = 1+2i$, $z_2 = 3-i$, $z_3 = -2+4i$. On vérifie que $(z_1 z_2) z_3 = z_1 (z_2 z_3)$ (associativité), que $z_1 z_2 = z_2 z_1$ (commutativité) et que $z_1(z_2+z_3) = z_1 z_2 + z_1 z_3$ (distributivité). Ces égalités se contrôlent par un calcul direct en utilisant la formule du produit. Elles garantissent que l'ensemble $\\mathbb{C}$ muni de l'addition et de la multiplication est un corps commutatif."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme polaire (ou exponentielle) simplifie considérablement les calculs de produits, surtout lorsque les arguments sont des angles remarquables. Si $z_1 = r_1 e^{i\\theta_1}$ et $z_2 = r_2 e^{i\\theta_2}$, alors $z_1 z_2 = (r_1 r_2) e^{i(\\theta_1+\\theta_2)}$. Cette règle est la traduction exacte de la propriété géométrique énoncée plus haut et elle évite les développements fastidieux en coordonnées cartésiennes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication en forme polaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $z_1 = 2 e^{i\\pi/6}$ et $z_2 = 3 e^{i\\pi/3}$. Leur produit est $6 e^{i(\\pi/6+\\pi/3)} = 6 e^{i\\pi/2} = 6i$. En cartésien, $z_1 = \\sqrt{3}+i$, $z_2 = \\frac{3}{2}+i\\frac{3\\sqrt{3}}{2}$ ; le produit direct donne bien $6i$. La forme polaire est donc un outil puissant pour les puissances et les racines, que nous retrouverons dans le chapitre sur l'exponentielle complexe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer le produit $(3-2i)(-1+4i)$ sous forme algébrique.",
+              "answer": "$5 + 14i$",
+              "hint": "Utilisez la formule $(ac-bd) + i(ad+bc)$ avec $a=3,b=-2,c=-1,d=4$.",
+              "explanation": "Partie réelle : $3\\times(-1) - (-2)\\times4 = -3 + 8 = 5$. Partie imaginaire : $3\\times4 + (-2)\\times(-1) = 12 + 2 = 14$. Donc $5+14i$."
+            },
+            {
+              "question": "Vérifier la distributivité pour $z_1 = 2+i$, $z_2 = 1-3i$, $z_3 = -2+2i$ en calculant $z_1(z_2+z_3)$ et $z_1z_2+z_1z_3$.",
+              "answer": "Les deux expressions valent $-4+8i$.",
+              "hint": "Calculez d'abord $z_2+z_3$, puis multipliez par $z_1$ ; ensuite calculez les deux produits séparément et additionnez.",
+              "explanation": "$z_2+z_3 = -1 - i$. $z_1(z_2+z_3) = (2+i)(-1-i) = -2-2i -i -i^2 = -1 -3i$. $z_1z_2 = (2+i)(1-3i) = 2-6i+i-3i^2 = 5-5i$. $z_1z_3 = (2+i)(-2+2i) = -4+4i-2i+2i^2 = -6+2i$. Somme : $(5-5i)+(-6+2i) = -1-3i$. Les résultats coïncident."
+            },
+            {
+              "question": "Exprimer le produit $z_1 z_2$ sous forme polaire pour $z_1 = 4 e^{i\\pi/4}$ et $z_2 = 2 e^{-i\\pi/6}$.",
+              "answer": "$8 e^{i\\pi/12}$",
+              "hint": "Multipliez les modules et additionnez les arguments.",
+              "explanation": "Module : $4 \\times 2 = 8$. Argument : $\\pi/4 + (-\\pi/6) = (3\\pi-2\\pi)/12 = \\pi/12$. Donc $8 e^{i\\pi/12}$."
+            }
+          ]
+        },
+        {
+          "title": "Inverse / quotient selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inverse d'un nombre complexe non nul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un corps, tout élément non nul possède un inverse multiplicatif. Pour un nombre complexe $z = a+ib \\neq 0$, son inverse $z^{-1}$ est le nombre complexe qui satisfait $z \\cdot z^{-1} = 1$. On l'obtient en multipliant le numérateur et le dénominateur par le conjugué $\\overline{z} = a - ib$ : $z^{-1} = \\frac{\\overline{z}}{|z|^2} = \\frac{a - ib}{a^2+b^2}$. Cette formule montre que l'inverse a pour module $1/|z|$ et pour argument $-\\arg(z)$, ce qui correspond géométriquement à une inversion par rapport au cercle unité suivie d'une réflexion par rapport à l'axe réel."
+            },
+            {
+              "type": "definition",
+              "term": "Conjugué d'un nombre complexe",
+              "definition": "Le conjugué de $z = a+ib$ est $\\overline{z} = a-ib$. Il a même module que $z$ et argument opposé.",
+              "example": "Si $z = 3+4i$, alors $\\overline{z} = 3-4i$ et $|z| = 5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z^{-1} = \\frac{\\overline{z}}{|z|^2} = \\frac{a-ib}{a^2+b^2}"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient de deux nombres complexes"
+            },
+            {
+              "type": "paragraph",
+              "content": "La division $z_1 / z_2$ (avec $z_2 \\neq 0$) se définit comme le produit $z_1 \\cdot z_2^{-1}$. En utilisant la formule de l'inverse, on obtient $\\frac{z_1}{z_2} = \\frac{z_1 \\overline{z_2}}{|z_2|^2}$. En coordonnées, si $z_1 = a+ib$ et $z_2 = c+id$, le quotient s'écrit $\\frac{(ac+bd) + i(bc-ad)}{c^2+d^2}$. Cette expression permet de ramener tout quotient à une écriture cartésienne standard."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{z_1}{z_2} = \\frac{z_1 \\overline{z_2}}{|z_2|^2} = \\frac{(ac+bd) + i(bc-ad)}{c^2+d^2}"
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 1,
+              "caption": "Division de $z_1 = 3+i$ (module $\\sqrt{10}$, argument $\\approx 18.4^\\circ$) par $z_2 = 1+2i$ (module $\\sqrt{5}$, argument $\\approx 63.4^\\circ$) ; le quotient a module $\\sqrt{2}$ et argument $\\approx -45^\\circ$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le conjugué du dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $z_2 = c+id$, alors $\\overline{z_2} = c-id$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier le numérateur par ce conjugué",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectuer le produit $z_1 \\overline{z_2}$ avec la règle du produit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le carré du module du dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$|z_2|^2 = c^2 + d^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser les parties réelle et imaginaire par $|z_2|^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le quotient est $\\frac{\\Re(z_1\\overline{z_2})}{|z_2|^2} + i\\frac{\\Im(z_1\\overline{z_2})}{|z_2|^2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme polaire rend la division encore plus transparente : si $z_1 = r_1 e^{i\\theta_1}$ et $z_2 = r_2 e^{i\\theta_2}$, alors $\\frac{z_1}{z_2} = \\frac{r_1}{r_2} e^{i(\\theta_1-\\theta_2)}$. On divise les modules et on soustrait les arguments. Cette règle est particulièrement utile pour calculer des puissances négatives ou des racines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Division en forme polaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $z_1 = 8 e^{i\\pi/3}$ et $z_2 = 2 e^{i\\pi/6}$. Le quotient est $4 e^{i(\\pi/3-\\pi/6)} = 4 e^{i\\pi/6}$. En cartésien, $z_1 = 4+4i\\sqrt{3}$, $z_2 = \\sqrt{3}+i$ ; la division directe avec la méthode du conjugué conduit au même résultat $4(\\cos\\frac{\\pi}{6}+i\\sin\\frac{\\pi}{6}) = 2\\sqrt{3}+2i$. La forme polaire évite les fractions compliquées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la maîtrise de l'inverse et du quotient permet de résoudre des équations où l'inconnue apparaît au dénominateur, par exemple $\\frac{z}{1+i} = 2-3i$. On multiplie les deux membres par $1+i$ (ou on utilise directement la formule du quotient) pour isoler $z$. Cette technique s'étend aux équations rationnelles complexes, un outil indispensable pour l'étude des fonctions rationnelles à coefficients complexes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations faisant intervenir le quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons $\\frac{z}{2-i} = 1+3i$. On multiplie par $2-i$ : $z = (1+3i)(2-i) = 2 - i + 6i -3i^2 = 5 + 5i$. Vérification : $\\frac{5+5i}{2-i} = \\frac{(5+5i)(2+i)}{5} = \\frac{10+5i+10i+5i^2}{5} = \\frac{5+15i}{5} = 1+3i$. La méthode est fiable et systématique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner deux nombres complexes sous forme algébrique et géométrique.",
+                "Je sais multiplier deux nombres complexes et utiliser la forme polaire pour simplifier.",
+                "Je sais calculer l'inverse d'un nombre complexe non nul et effectuer une division.",
+                "Je sais résoudre des équations linéaires et rationnelles simples dans $\\mathbb{C}$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer l'inverse de $z = 3 - 4i$.",
+              "answer": "$\\frac{3}{25} + \\frac{4}{25}i$",
+              "hint": "Utilisez la formule $z^{-1} = \\frac{\\overline{z}}{|z|^2}$.",
+              "explanation": "$\\overline{z} = 3+4i$, $|z|^2 = 3^2+(-4)^2 = 25$. Donc $z^{-1} = (3+4i)/25 = 3/25 + 4i/25$."
+            },
+            {
+              "question": "Effectuer la division $\\frac{5+2i}{1-3i}$ et donner le résultat sous forme $a+ib$.",
+              "answer": "$-\\frac{1}{10} + \\frac{17}{10}i$",
+              "hint": "Multipliez numérateur et dénominateur par le conjugué de $1-3i$.",
+              "explanation": "$\\overline{1-3i}=1+3i$. Numérateur : $(5+2i)(1+3i)=5+15i+2i+6i^2=-1+17i$. Dénominateur : $1^2+(-3)^2=10$. Résultat : $-1/10 + 17i/10$."
+            },
+            {
+              "question": "Résoudre l'équation $\\frac{z}{4+2i} = 3 - i$.",
+              "answer": "$z = 14 + 2i$",
+              "hint": "Multipliez les deux membres par $4+2i$ et développez.",
+              "explanation": "$z = (3-i)(4+2i) = 12+6i-4i-2i^2 = 14+2i$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

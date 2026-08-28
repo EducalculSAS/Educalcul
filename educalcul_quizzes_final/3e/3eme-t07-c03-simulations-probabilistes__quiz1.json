@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Répéter",
+  "title": "Algorithmique : La boucle Répéter en simulation",
+  "questions": [
+    {
+      "text": "Quelle instruction permet de répéter un bloc d'instructions exactement $100$ fois avec une boucle « Pour » ?",
+      "options": [
+        "Pour i de 1 à 100 faire",
+        "Pour i de 0 à 100 faire",
+        "Pour i de 1 à 99 faire",
+        "Tant que i < 100 faire"
+      ],
+      "correctAnswer": "Pour i de 1 à 100 faire",
+      "explanation": "La structure « Pour i de 1 à n faire » exécute la boucle n fois. Pour $100$ répétitions, il faut écrire « Pour i de 1 à 100 faire ». L'option « Pour i de 0 à 100 » ferait $101$ tours (de 0 à 100 inclus). « Pour i de 1 à 99 » ne fait que $99$ tours. « Tant que » est une boucle conditionnelle, pas une boucle à nombre fixe de tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simuler des lancers de dé jusqu'à obtenir trois fois le résultat 6. La variable `six` compte le nombre de 6 obtenus. Quelle condition écrire dans l'en-tête de la boucle « Tant que » ?",
+      "options": [
+        "Tant que six < 3 faire",
+        "Tant que six > 3 faire",
+        "Tant que six = 3 faire",
+        "Tant que six ≠ 3 faire"
+      ],
+      "correctAnswer": "Tant que six < 3 faire",
+      "explanation": "La boucle « Tant que » continue tant que la condition est vraie. On veut arrêter dès qu'on a obtenu $3$ fois le 6, c'est-à-dire quand `six` vaut $3$. Il faut donc continuer *tant que* `six` est *strictement inférieur à 3*. Si on mettait `six ≠ 3`, la boucle s'arrêterait aussi si on dépassait 3 (ce qui n'arrive pas ici mais n'est pas la logique standard). `six > 3` est faux au début. `six = 3` est faux au début, la boucle ne se lancerait pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un algorithme de simulation, on initialise `gagné ← 0`. Une boucle « Pour i de 1 à 50 faire » contient un test : si le joueur gagne, on fait `gagné ← gagné + 1`. Après la boucle, on affiche `gagné / 50`. Quelle valeur est affichée ?",
+      "options": [
+        "Le nombre de parties gagnées",
+        "La probabilité de gagner",
+        "La fréquence de gain",
+        "Le nombre de parties perdues"
+      ],
+      "correctAnswer": "La fréquence de gain",
+      "explanation": "La variable `gagné` compte le nombre de succès sur les $50$ essais. La division `gagné / 50` calcule le quotient du nombre de succès sur le nombre total d'essais, c'est la définition de la fréquence observée. Ce n'est pas la probabilité théorique (inconnue), ni le nombre brut de gains, ni le nombre de pertes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n`compteur ← 0`\\n`Pour i de 1 à 20 faire`\\n`  Si événement Alors compteur ← compteur + 1`\\n`Fin Pour`\\n`Afficher compteur / 20`\\nSi l'événement s'est produit $12$ fois pendant la boucle, que affiche l'algorithme ?",
+      "options": [
+        "12",
+        "0,6",
+        "0,12",
+        "8"
+      ],
+      "correctAnswer": "0,6",
+      "explanation": "La variable `compteur` vaut $12$ à la fin de la boucle. L'instruction `Afficher compteur / 20` effectue la division $12 / 20 = 0,6$. C'est la fréquence de l'événement. L'option $12$ est la valeur du compteur avant division. $0,12$ correspondrait à $12/100$. $8$ est le nombre d'échecs ($20-12$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pourquoi augmente-t-on le nombre de répétitions $N$ dans une simulation probabiliste (par exemple passer de $N=100$ à $N=10000$) ?",
+      "options": [
+        "Pour obtenir la probabilité exacte",
+        "Pour réduire le temps de calcul",
+        "Pour obtenir une fréquence plus proche de la probabilité théorique",
+        "Pour changer la valeur de la graine aléatoire"
+      ],
+      "correctAnswer": "Pour obtenir une fréquence plus proche de la probabilité théorique",
+      "explanation": "C'est la loi des grands nombres : lorsque le nombre d'essais $N$ augmente, la fréquence observée fluctue moins et converge vers la probabilité théorique. On n'obtient jamais la probabilité *exacte* par simulation (option fausse). Augmenter $N$ *augmente* le temps de calcul (option fausse). La graine aléatoire est indépendante de $N$ (option fausse).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

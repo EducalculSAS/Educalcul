@@ -1,0 +1,192 @@
+{
+  "_status": "done",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Répondre",
+  "title": "Quiz : Lire et répondre à partir de tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "Voici un tableau indiquant les animaux de compagnie des élèves d'une classe. Combien d'élèves ont un chat ?",
+      "options": [
+        "8",
+        "12",
+        "5",
+        "3"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Dans le tableau, la ligne \"Chat\" correspond à la valeur $12$. Il suffit de lire la case à l'intersection de la ligne \"Chat\" et de la colonne \"Nombre\". Les autres valeurs correspondent aux autres animaux : $8$ pour les chiens, $5$ pour les lapins et $3$ pour les oiseaux.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Nombre"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "8"
+          ],
+          [
+            "Chat",
+            "12"
+          ],
+          [
+            "Lapin",
+            "5"
+          ],
+          [
+            "Oiseau",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous montre les fruits préférés des élèves. Quel fruit est choisi par exactement $6$ élèves ?",
+      "options": [
+        "Pomme",
+        "Banane",
+        "Fraise",
+        "Raisin"
+      ],
+      "correctAnswer": "Banane",
+      "explanation": "Il faut lire la hauteur de chaque barre. La barre \"Banane\" s'arrête à $6$. La barre \"Pomme\" monte à $10$, la barre \"Fraise\" monte à $14$. Le raisin n'apparaît pas sur le diagramme.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Banane",
+            "value": 6,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraise",
+            "value": 14,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un élève note le nombre de livres qu'il lit chaque mois dans un tableau. Combien de livres a-t-il lus au total sur les quatre mois ?",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "correctAnswer": "14",
+      "explanation": "Il faut additionner les valeurs de la colonne \"Livres lus\" : $4 + 3 + 5 + 2 = 14$. L'option $13$ correspond à une omission d'un livre, $12$ à une erreur de calcul et $15$ à l'ajout d'un livre imaginaire.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Mois",
+          "Livres lus"
+        ],
+        "rows": [
+          [
+            "Janvier",
+            "4"
+          ],
+          [
+            "Février",
+            "3"
+          ],
+          [
+            "Mars",
+            "5"
+          ],
+          [
+            "Avril",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres représente les points marqués par trois équipes. De combien de points l'équipe des Bleus a-t-elle devancé l'équipe des Rouges ?",
+      "options": [
+        "5",
+        "7",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "7",
+      "explanation": "L'équipe des Bleus a $25$ points, l'équipe des Rouges en a $18$. La différence se calcule par une soustraction : $25 - 18 = 7$. L'option $5$ sous-estime l'écart, $8$ et $10$ le surestiment.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Points par équipe",
+        "bars": [
+          {
+            "label": "Bleus",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouges",
+            "value": 18,
+            "tone": "red"
+          },
+          {
+            "label": "Verts",
+            "value": 22,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un magasin note ses ventes de vélos pour la semaine. Le total est de $50$ vélos. Combien de vélos ont été vendus mercredi ?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": "13",
+      "explanation": "On connaît le total ($50$) et les ventes des trois autres jours : $15 + 12 + 10 = 37$. Pour trouver les ventes de mercredi, on soustrait cette somme du total : $50 - 37 = 13$. L'option $10$ reprend la valeur du jeudi, $12$ celle du mardi, $11$ est une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Vélos vendus"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "15"
+          ],
+          [
+            "Mardi",
+            "12"
+          ],
+          [
+            "Mercredi",
+            "?"
+          ],
+          [
+            "Jeudi",
+            "10"
+          ],
+          [
+            "Total",
+            "50"
+          ]
+        ]
+      }
+    }
+  ]
+}

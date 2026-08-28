@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 242,
+  "_course_code": "cm1-t05-c02-masses-et-contenances",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unités",
+  "title": "Masses et contenances : algorithmes sur les unités",
+  "blocks": [
+    {
+      "title": "Convertir une masse",
+      "content": "Écris un algorithme qui lit une masse en $kg$ et affiche cette masse en $g$.",
+      "correctAnswer": "Algorithme : convertir des kilogrammes en grammes\\nLIRE $M$\\n$G = M × 1000$\\nAFFICHER $G$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans cet algorithme, $M$ représente la masse en kilogrammes et $G$ représente la masse en grammes. Comme $1 kg = 1000 g$, on calcule $G = M × 1000$, puis on affiche $G$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux masses",
+      "content": "Écris un algorithme qui lit une masse en $g$ et une masse en $kg$, puis affiche la masse la plus grande en $g$, ou égalité si les deux masses sont égales.",
+      "correctAnswer": "Algorithme : comparer deux masses en grammes\\nLIRE $m$, $M$\\n$T = M × 1000$\\nSI $m > T$ ALORS AFFICHER $m$\\nSINON SI $m < T$ ALORS AFFICHER $T$\\nSINON AFFICHER égalité",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ici, $m$ est la masse en grammes et $M$ est la masse en kilogrammes. On convertit $M$ en grammes avec $T = M × 1000$. Ensuite, on compare $m$ et $T$. Si $m > T$, on affiche $m$. Si $m < T$, on affiche $T$. Si $m = T$, on affiche égalité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Additionner des contenances",
+      "content": "Écris un algorithme qui lit une contenance en $L$ et une contenance en $mL$, puis affiche la contenance totale en $mL$.",
+      "correctAnswer": "Algorithme : additionner des contenances en millilitres\\nLIRE $L$, $m$\\n$T = L × 1000 + m$\\nAFFICHER $T$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans cet algorithme, $L$ est la contenance en litres et $m$ est la contenance en millilitres. Comme $1 L = 1000 mL$, on convertit $L$ en millilitres avec $L × 1000$, puis on ajoute $m$. On obtient $T = L × 1000 + m$, qui est la contenance totale en millilitres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Algorithme",
+  "title": "Quiz : Simulation - Approfondissement Algorithmique",
+  "questions": [
+    {
+      "text": "On souhaite simuler le lancer d'un dé équilibré à six faces à l'aide d'un algorithme. Quelle instruction permet d'obtenir un entier aléatoire entre 1 et 6 inclus ?",
+      "options": [
+        "Affecter à X la valeur : partie_entiere(6 * alea()) + 1",
+        "Affecter à X la valeur : partie_entiere(6 * alea())",
+        "Affecter à X la valeur : partie_entiere(5 * alea()) + 1",
+        "Affecter à X la valeur : alea() * 6 + 1"
+      ],
+      "correctAnswer": "Affecter à X la valeur : partie_entiere(6 * alea()) + 1",
+      "explanation": "La fonction alea() renvoie un nombre réel uniforme dans [0 ; 1[. En le multipliant par 6, on obtient un nombre dans [0 ; 6[. La partie entière donne un entier dans {0, 1, 2, 3, 4, 5}. En ajoutant 1, on obtient un entier dans {1, 2, 3, 4, 5, 6}, ce qui correspond aux faces du dé. L'option sans +1 donne 0 à 5. L'option avec 5 donne 1 à 5. L'option sans partie_entiere donne un nombre décimal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez l'algorithme suivant :\\nVariables : N, i, S, X en entiers\\nDebut\\n  S <- 0\\n  Pour i de 1 a N faire\\n     X <- partie_entiere(6 * alea()) + 1\\n     Si X = 6 alors\\n        S <- S + 1\\n     Fin si\\n  Fin pour\\n  Afficher S / N\\nFin\\nQue représente la valeur affichée à la fin de l'exécution si N vaut 1000 ?",
+      "options": [
+        "La fréquence d'apparition du 6 sur 1000 lancers simulés",
+        "La probabilité théorique d'obtenir un 6",
+        "Le nombre total de 6 obtenus sur 1000 lancers",
+        "La moyenne des valeurs obtenues aux 1000 lancers"
+      ],
+      "correctAnswer": "La fréquence d'apparition du 6 sur 1000 lancers simulés",
+      "explanation": "La variable S compte le nombre de fois où l'événement 'X = 6' se produit (c'est un compteur). La boucle s'exécute N fois (1000 fois). À la fin, on affiche S / N, qui est le quotient du nombre de succès par le nombre total d'essais. C'est la définition de la fréquence observée. Ce n'est pas la probabilité théorique (1/6), ni le nombre brut de 6 (ce serait S), ni la moyenne des faces (ce serait la somme des X divisée par N).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer par simulation la probabilité d'obtenir au moins un 6 en lançant deux dés. On écrit l'algorithme :\\nVariables : N, i, j, X, Y, compteur en entiers\\nDebut\\n  compteur <- 0\\n  Pour i de 1 a N faire\\n     X <- partie_entiere(6 * alea()) + 1\\n     Y <- partie_entiere(6 * alea()) + 1\\n     Si (X = 6) OU (Y = 6) alors\\n        compteur <- compteur + 1\\n     Fin si\\n  Fin pour\\n  Afficher compteur / N\\nFin\\nQuelle est l'erreur logique dans la condition 'Si (X = 6) OU (Y = 6)' pour le problème posé ?",
+      "options": [
+        "Il n'y a pas d'erreur, la condition est correcte",
+        "Il faut utiliser 'ET' au lieu de 'OU'",
+        "Il faut tester si X + Y = 6",
+        "Il faut tester si X * Y = 6"
+      ],
+      "correctAnswer": "Il n'y a pas d'erreur, la condition est correcte",
+      "explanation": "L'événement 'obtenir au moins un 6' signifie que le premier dé fait 6 OU le second dé fait 6 (ou les deux). L'opérateur logique 'OU' (disjonction inclusive) correspond exactement à cette condition. L'opérateur 'ET' correspondrait à 'les deux dés font 6' (un double 6). Tester la somme ou le produit ne correspond pas à l'événement étudié.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un algorithme de simulation, on répète N fois une expérience aléatoire. On stocke le nombre de succès dans une variable C. Quelle instruction doit-on placer DANS la boucle pour mettre à jour C correctement lorsque l'expérience est un succès ?",
+      "options": [
+        "C <- C + 1",
+        "C <- 1",
+        "C <- C + N",
+        "C <- 0"
+      ],
+      "correctAnswer": "C <- C + 1",
+      "explanation": "C est un compteur (accumulateur). Au début, il vaut 0. À chaque succès, on doit l'incrémenter de 1. L'instruction 'C <- C + 1' prend la valeur actuelle de C, y ajoute 1, et stocke le résultat dans C. 'C <- 1' remettrait le compteur à 1 à chaque succès. 'C <- C + N' ajouterait le nombre total d'essais. 'C <- 0' le remettrait à zéro.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute un algorithme de simulation pour estimer une probabilité. On obtient une fréquence f = 0,32 pour N = 100 essais. On relance l'algorithme avec N = 10 000 essais. Que peut-on dire de la nouvelle fréquence f' obtenue ?",
+      "options": [
+        "f' sera plus proche de la probabilité théorique que f",
+        "f' sera exactement égale à la probabilité théorique",
+        "f' sera nécessairement égale à 0,32",
+        "f' sera plus éloignée de la probabilité théorique que f"
+      ],
+      "correctAnswer": "f' sera plus proche de la probabilité théorique que f",
+      "explanation": "C'est une illustration de la loi des grands nombres : lorsque le nombre d'essais N augmente, la fréquence observée a tendance à se stabiliser autour de la probabilité théorique. Avec N = 100, les fluctuations sont importantes. Avec N = 10 000, l'estimation est beaucoup plus précise. Elle n'est jamais exactement égale à la probabilité (sauf cas trivial), ni figée à la valeur précédente, ni systématiquement moins précise.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

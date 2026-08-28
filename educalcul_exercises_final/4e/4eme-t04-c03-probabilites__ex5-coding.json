@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Univers simple",
+  "title": "Algorithmes et univers probabiliste simple",
+  "blocks": [
+    {
+      "title": "Simulation d'une expérience à équiprobabilité",
+      "content": "Une urne contient $3$ boules rouges et $2$ boules bleues. On effectue $N$ tirages successifs avec remise. Écrire un algorithme (en pseudo-code ou syntaxe Python) qui simule ces $N$ tirages et affiche la fréquence d'obtention d'une boule rouge. On supposera disponible une fonction `aleatoire(a, b)` renvoyant un entier au hasard entre $a$ et $b$ inclus.",
+      "correctAnswer": "Algorithme :\\nVariables : N, i, compteur, tirage (entiers)\\nDebut\\n    Afficher \"Entrer le nombre de tirages N : \"\\n    Saisir N\\n    compteur <- 0\\n    Pour i de 1 a N faire\\n        tirage <- aleatoire(1, 5)\\n        Si tirage <= 3 alors\\n            compteur <- compteur + 1\\n        Fin Si\\n    Fin Pour\\n    Afficher \"Frequence rouge : \", compteur / N\\nFin",
+      "explanation": "On modélise les $5$ boules par les entiers de $1$ à $5$. Par convention, les entiers $1$, $2$, $3$ correspondent aux boules rouges (trois issues favorables) et $4$, $5$ aux boules bleues. La boucle répète l'expérience $N$ fois. Le compteur enregistre le nombre de succès. La fréquence finale est le quotient du compteur par $N$. Elle approche la probabilité théorique $3/5 = 0,6$ quand $N$ est grand.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction de l'univers par boucles imbriquées",
+      "content": "On lance une pièce de monnaie équilibrée (Face ou Pile) et un dé à $6$ faces numérotées de $1$ à $6$. L'algorithme suivant doit lister tous les résultats possibles de l'expérience (l'univers $\\Omega$) dans une liste `resultats`. Compléter les parties manquantes (lignes pointillées).\\n\\n```\\nresultats <- []\\nPour face dans [\"Face\", \"Pile\"] faire\\n    Pour nombre dans [1, 2, 3, 4, 5, 6] faire\\n        ...  # Ajouter le couple (face, nombre) a la liste\\n    Fin Pour\\nFin Pour\\nAfficher resultats\\n```",
+      "correctAnswer": "Ligne à compléter :\\n    resultats.ajouter( (face, nombre) )\\n\\nRésultat affiché :\\n[('Face', 1), ('Face', 2), ('Face', 3), ('Face', 4), ('Face', 5), ('Face', 6), ('Pile', 1), ('Pile', 2), ('Pile', 3), ('Pile', 4), ('Pile', 5), ('Pile', 6)]",
+      "explanation": "L'univers $\\Omega$ est le produit cartésien de l'ensemble des issues de la pièce $\\{\\text{Face}, \\text{Pile}\\}$ et de l'ensemble des issues du dé $\\{1,2,3,4,5,6\\}$. La boucle externe parcourt les $2$ faces, la boucle interne les $6$ nombres. L'instruction d'ajout crée un couple (tuple) pour chaque combinaison possible. On obtient $2 \\times 6 = 12$ issues équiprobables.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Calcul exact de probabilité par énumération",
+      "content": "On reprend la liste `resultats` construite à la question précédente (les $12$ couples (face, nombre)). Écrire la suite de l'algorithme qui compte le nombre de couples correspondants à l'événement $A$ : \"Obtenir Pile et un nombre pair\", puis qui calcule et affiche la probabilité exacte $p(A)$ sous forme de fraction simplifiée (numérateur et dénominateur).",
+      "correctAnswer": "compteur_A <- 0\\nPour couple dans resultats faire\\n    Si couple[0] = \"Pile\" et couple[1] % 2 = 0 alors\\n        compteur_A <- compteur_A + 1\\n    Fin Si\\nFin Pour\\ntotal <- longueur(resultats)  # vaut 12\\npgcd <- PGCD(compteur_A, total)\\nAfficher \"Probabilite = \", compteur_A/pgcd, \" / \", total/pgcd",
+      "explanation": "On parcourt la liste des $12$ issues. La condition `couple[0] = \"Pile\"` teste la face, `couple[1] % 2 = 0` teste si le nombre est pair (multiple de $2$). Les couples favorables sont : (Pile, 2), (Pile, 4), (Pile, 6) soit $3$ cas. La probabilité est $3/12$. Le calcul du PGCD (Plus Grand Commun Diviseur) permet d'afficher la fraction simplifiée $1/4$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "_status": "done",
+  "_course_id": 209,
+  "_course_code": "ce2-t08-c05-choisir-une-representation",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Comparer tableau et diagramme",
+  "title": "Quiz : Comparer tableau et diagramme (CE2)",
+  "questions": [
+    {
+      "text": "Quel type de diagramme permet de comparer facilement les quantités de chaque catégorie ?",
+      "options": [
+        "Diagramme en barres",
+        "Diagramme en secteurs",
+        "Graphique en lignes",
+        "Tableau de données"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "Le diagramme en barres montre visuellement la hauteur de chaque barre proportionnelle à la quantité, ce qui facilite la comparaison entre catégories. Le diagramme en secteurs montre des parts d'un tout, le graphique en lignes montre une évolution dans le temps, et le tableau présente les nombres sans comparaison visuelle immédiate.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme en barres ci-dessous. Quel tableau correspond aux données affichées ?",
+      "options": [
+        "Pommes : $5$, Poires : $3$, Bananes : $4$",
+        "Pommes : $4$, Poires : $5$, Bananes : $3$",
+        "Pommes : $3$, Poires : $4$, Bananes : $5$",
+        "Pommes : $5$, Poires : $4$, Bananes : $3$"
+      ],
+      "correctAnswer": "Pommes : $5$, Poires : $3$, Bananes : $4$",
+      "explanation": "Le diagramme montre une barre de hauteur $5$ pour les pommes, $3$ pour les poires et $4$ pour les bananes. Seule l'option A reprend exactement ces valeurs.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits préférés",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie au sujet des tableaux et des diagrammes ?",
+      "options": [
+        "Un tableau permet une lecture rapide des valeurs exactes, tandis qu'un diagramme donne une vue d'ensemble visuelle.",
+        "Un diagramme est toujours plus précis qu'un tableau.",
+        "Un tableau ne peut pas contenir plus de trois catégories.",
+        "Un diagramme en barres ne peut représenter que des nombres pairs."
+      ],
+      "correctAnswer": "Un tableau permet une lecture rapide des valeurs exactes, tandis qu'un diagramme donne une vue d'ensemble visuelle.",
+      "explanation": "Le tableau donne les chiffres exacts, le diagramme permet de voir rapidement les différences. Les autres affirmations sont fausses : un diagramme n'est pas plus précis, un tableau peut avoir beaucoup de catégories, et un diagramme en barres représente n'importe quel nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le diagramme en secteurs ci-dessous qui représente les votes de $20$ élèves pour quatre jeux. Quel tableau donne le nombre exact de votes pour chaque jeu ?",
+      "options": [
+        "Cache-cache : $8$, Chat perché : $5$, Marelle : $4$, Saut à la corde : $3$",
+        "Cache-cache : $7$, Chat perché : $6$, Marelle : $4$, Saut à la corde : $3$",
+        "Cache-cache : $8$, Chat perché : $4$, Marelle : $5$, Saut à la corde : $3$",
+        "Cache-cache : $6$, Chat perché : $5$, Marelle : $5$, Saut à la corde : $4$"
+      ],
+      "correctAnswer": "Cache-cache : $8$, Chat perché : $5$, Marelle : $4$, Saut à la corde : $3$",
+      "explanation": "Le diagramme en secteurs montre des parts proportionnelles aux valeurs $8$, $5$, $4$, $3$ qui totalisent $20$. L'option A reproduit exactement ces nombres.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Répartition des votes",
+        "slices": [
+          {
+            "label": "Cache-cache",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat perché",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Marelle",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Saut à la corde",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour présenter le nombre de livres lus par chaque élève de la classe sur un mois, quelle représentation est la plus adaptée ?",
+      "options": [
+        "Diagramme en barres",
+        "Diagramme en secteurs",
+        "Graphique en lignes",
+        "Tableau à double entrée"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "Chaque élève est une catégorie distincte et on veut comparer les quantités ; le diagramme en barres permet cette comparaison visuelle. Le diagramme en secteurs montre des parts d'un total, le graphique en lignes montre une évolution dans le temps, et le tableau à double entrée est utilisé pour croiser deux variables.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

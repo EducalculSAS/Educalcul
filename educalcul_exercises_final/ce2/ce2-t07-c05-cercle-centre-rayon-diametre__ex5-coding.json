@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 200,
+  "_course_code": "ce2-t07-c05-cercle-centre-rayon-diametre",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Nommer éléments",
+  "title": "Approfondissement : Nommer les éléments du cercle - Algorithmes",
+  "blocks": [
+    {
+      "title": "Identifier les éléments sur une figure",
+      "content": "Voici un cercle de centre $O$ et de rayon $4~cm$. Écris un algorithme (une suite d'instructions ordonnées) qui permet d'identifier et de nommer le centre, un rayon et le diamètre sur cette figure.",
+      "correctAnswer": "1. Observer la figure fournie.\\n2. Repérer le point situé exactement au milieu du cercle : le nommer centre $O$.\\n3. Repérer un segment qui relie le centre $O$ à un point du cercle : le nommer rayon (par exemple $[OA]$).\\n4. Repérer un segment qui relie deux points du cercle en passant par le centre $O$ : le nommer diamètre (par exemple $[BC]$).\\n5. Afficher la liste : centre $O$, rayon $[OA]$, diamètre $[BC]$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur la figure, le point central est le centre noté $O$. Un segment joignant le centre à un point du cercle est un rayon (ici $[OA]$ mesure $4~cm$). Un segment joignant deux points du cercle et passant par le centre est un diamètre (ici $[BC]$ mesure $8~cm$). L'algorithme décrit la procédure de lecture de la figure pour nommer ces éléments.",
+      "points": 2,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et de rayon 4 cm"
+      }
+    },
+    {
+      "title": "Algorithme de construction d'un cercle",
+      "content": "Tu dois programmer un robot traceur pour qu'il dessine un cercle de centre $O$ et de rayon $3~cm$. Écris l'algorithme de construction sous forme d'instructions numérotées en utilisant le vocabulaire précis : pointe, mine (ou crayon), écarter, tour complet.",
+      "correctAnswer": "1. Placer la pointe du compas sur le point $O$ (le centre).\\n2. Écarter l'ouverture du compas pour qu'elle mesure exactement $3~cm$ (le rayon).\\n3. Poser la mine (le crayon) du compas sur la feuille.\\n4. Faire tourner le compas d'un tour complet autour du centre $O$ sans déplacer la pointe.\\n5. Le cercle de centre $O$ et de rayon $3~cm$ est tracé.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction d'un cercle suit toujours la même logique algorithmique : fixer le centre, régler le rayon, puis effectuer la rotation. L'instruction 'écarter' correspond à la prise de mesure du rayon. Le 'tour complet' garantit que tous les points du cercle sont à la même distance du centre.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Calculer le diamètre à partir du rayon",
+      "content": "On considère un cercle de rayon $R = 5~cm$. Écris un algorithme de calcul qui détermine la longueur du diamètre $D$ à partir de la valeur du rayon, en utilisant la relation mathématique $D = 2 \\times R$. L'algorithme doit afficher le résultat final avec son unité.",
+      "correctAnswer": "Algorithme Calcul_Diametre :\\nEntrée : Rayon $R = 5$ (en cm).\\nTraitement : $D \\leftarrow 2 \\times R$.\\nSortie : Afficher \"Le diamètre mesure \" + $D$ + \" cm\".\\nRésultat : Le diamètre mesure $10~cm$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La relation entre le diamètre et le rayon est une propriété fondamentale : le diamètre est le double du rayon ($D = 2R$). L'algorithme prend la valeur du rayon ($5$), applique la formule ($2 \\times 5 = 10$) et affiche le résultat avec l'unité (centimètres).",
+      "points": 3,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et de rayon 5 cm"
+      }
+    }
+  ]
+}

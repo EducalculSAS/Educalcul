@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Programme de calcul",
+  "title": "Quiz : Programme de calcul",
+  "questions": [
+    {
+      "text": "On choisit un nombre, on lui ajoute 5, puis on multiplie le résultat par 3. Quelle expression littérale correspond à ce programme de calcul ?",
+      "options": [
+        "$x + 5 \\times 3$",
+        "$(x + 5) \\times 3$",
+        "$x \\times 3 + 5$",
+        "$3x + 5$"
+      ],
+      "correctAnswer": "$(x + 5) \\times 3$",
+      "explanation": "Le programme dit : 1. Choisir un nombre $x$. 2. Lui ajouter 5 $\\rightarrow x + 5$. 3. Multiplier le résultat par 3 $\\rightarrow (x + 5) \\times 3$. Les parenthèses sont obligatoires car l'addition doit être effectuée avant la multiplication. L'option $x + 5 \\times 3$ ne fait pas l'addition en premier (priorité à la multiplication). Les options $x \\times 3 + 5$ et $3x + 5$ correspondent à un autre programme : multiplier par 3 puis ajouter 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le programme de calcul : \"Choisir un nombre, le multiplier par 4, puis soustraire 7\". Si on choisit le nombre 10, quel est le résultat final ?",
+      "options": [
+        "12",
+        "33",
+        "17",
+        "43"
+      ],
+      "correctAnswer": "33",
+      "explanation": "On applique le programme étape par étape avec le nombre de départ 10. 1. Multiplier par 4 : $10 \\times 4 = 40$. 2. Soustraire 7 : $40 - 7 = 33$. L'option 12 correspond à $10 - 7$ puis $\\times 4$ (mauvais ordre). L'option 17 correspond à $10 + 7$. L'option 43 correspond à $10 \\times 4 + 3$ ou une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant est donné : \"Choisir un nombre $x$, ajouter 2, multiplier par $x$\". Quelle expression littérale traduit ce programme ?",
+      "options": [
+        "$x + 2 \\times x$",
+        "$(x + 2) \\times x$",
+        "$x^2 + 2$",
+        "$2x + x$"
+      ],
+      "correctAnswer": "$(x + 2) \\times x$",
+      "explanation": "Les étapes sont : 1. Choisir $x$. 2. Ajouter 2 $\\rightarrow x + 2$. 3. Multiplier le résultat par $x$ $\\rightarrow (x + 2) \\times x$. Les parenthèses sont indispensables pour indiquer que la somme $x+2$ est multipliée par $x$. Sans parenthèses, $x + 2 \\times x$ signifie $x + (2 \\times x)$ (priorité à la multiplication), ce qui correspond à un autre programme. L'expression développée serait $x^2 + 2x$, qui n'est pas proposée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère ce programme : \"Choisir un nombre, le multiplier par lui-même, ajouter 6 fois le nombre de départ, puis ajouter 9\". Quelle expression littérale correspond à ce programme ?",
+      "options": [
+        "$x^2 + 6x + 9$",
+        "$x^2 + 6 + 9$",
+        "$(x + 3)^2$",
+        "$x \\times x + 6 \\times x + 9$"
+      ],
+      "correctAnswer": "$x^2 + 6x + 9$",
+      "explanation": "Traduction pas à pas : 1. Multiplier le nombre par lui-même $\\rightarrow x \\times x = x^2$. 2. Ajouter 6 fois le nombre $\\rightarrow + 6x$. 3. Ajouter 9 $\\rightarrow + 9$. L'expression finale est $x^2 + 6x + 9$. L'option $x^2 + 6 + 9$ oublie la variable $x$ dans le terme du milieu. L'option $(x + 3)^2$ est la forme factorisée (équivalente mais pas la traduction directe du programme énoncé dans l'ordre). L'option $x \\times x + 6 \\times x + 9$ est correcte mathématiquement mais utilise la notation $\\times$ au lieu de l'écriture simplifiée $x^2$ et $6x$ attendue en 5e.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux programmes de calcul sont proposés :\\nProgramme A : \"Choisir un nombre, multiplier par 3, ajouter 4.\"\\nProgramme B : \"Choisir un nombre, ajouter 4, multiplier par 3.\"\\nPour quel nombre de départ les deux programmes donnent-ils le même résultat ?",
+      "options": [
+        "Aucun nombre",
+        "0",
+        "-4",
+        "Tous les nombres"
+      ],
+      "correctAnswer": "Aucun nombre",
+      "explanation": "Posons $x$ le nombre de départ. Programme A : $3x + 4$. Programme B : $3(x + 4) = 3x + 12$. Pour qu'ils donnent le même résultat, il faut $3x + 4 = 3x + 12$, ce qui revient à $4 = 12$, ce qui est faux. Il n'existe donc aucun nombre de départ pour lequel les résultats sont égaux. L'option 0 donne 4 pour A et 12 pour B. L'option -4 donne -8 pour A et 0 pour B.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

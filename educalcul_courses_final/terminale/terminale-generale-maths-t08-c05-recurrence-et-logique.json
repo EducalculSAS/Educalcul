@@ -1,0 +1,588 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.741466+00:00",
+  "id": 724,
+  "code": "terminale-generale-maths-t08-c05",
+  "title": "Récurrence et logique",
+  "description": "Cours structuré Educalcul : Récurrence et logique.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Récurrence et logique",
+    "objectif_global": "Récurrence et logique",
+    "mini_lecons_imposees": [
+      "Structure preuve.",
+      "Quantificateurs informels.",
+      "Contre-exemple."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Structure preuve.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la structure d'une démonstration"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon qui pose les bases de toute argumentation mathématique rigoureuse. En terminale spécialité, tu vas rencontrer des énoncés qu'il faut non seulement comprendre, mais aussi justifier avec une logique impeccable. Une démonstration n'est pas une suite de phrases jetées au hasard ; c'est une construction où chaque affirmation repose sur une hypothèse, une définition ou un résultat déjà établi. Imagine un architecte qui dessine les plans d'un bâtiment : chaque mur, chaque poutre a sa place précise et soutient l'ensemble. De la même manière, une preuve bien structurée guide le lecteur pas à pas, sans laisser de zone d'ombre. Dans ce cours, nous allons distinguer trois grandes formes de raisonnement : la preuve directe, la preuve par contraposée et la preuve par l'absurde. Chacune a ses propres règles d'écriture, mais toutes partagent le même squelette : on annonce ce que l'on va montrer, on énonce les hypothèses, on déroule le raisonnement en étapes claires, et on conclut par la thèse. Prendre l'habitude de respecter ce canevas te permettra non seulement de gagner des points à l'examen, mais aussi de développer une pensée critique qui te servira bien au-delà des mathématiques. Nous allons maintenant examiner la première forme, la plus intuitive, avant d'explorer les deux autres qui sont souvent plus puissantes lorsque l'énoncé direct semble difficile à attaquer."
+            },
+            {
+              "type": "display_math",
+              "latex": "P \\Rightarrow Q \\quad\\text{se lit : si } P \\text{ alors } Q"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Énoncer l'hypothèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On commence par écrire explicitement ce que l'on suppose vrai. Par exemple : « Soit $x$ un réel tel que $x>2$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver des conséquences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de l'hypothèse, on utilise des propriétés connues (propriétés de l'ordre, calculs algébriques, théorèmes déjà prouvés) pour obtenir de nouvelles égalités ou inégalités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Atteindre la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On montre que la thèse $Q$ est satisfaite. On termine par un mot-clé comme « Donc » ou « CQFD » pour signaler la fin de la preuve."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment s'écrit une preuve directe, tournons-nous vers une technique qui renverse l'implication pour la rendre plus facile à manipuler."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La preuve par contraposée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'implication $P \\Rightarrow Q$ est ardue à prouver directement, alors que son contraposée $\\neg Q \\Rightarrow \\neg P$ devient presque évidente. Rappelle-toi qu'en logique classique, une implication et sa contraposée sont équivalentes : elles ont exactement la même table de vérité. Concrètement, au lieu de partir de $P$ pour arriver à $Q$, on suppose que $Q$ est faux et on démontre que $P$ doit alors être faux. Cette astuce est particulièrement utile quand la conclusion $Q$ est une inégalité simple ou une propriété de divisibilité, car nier $Q$ donne souvent une condition plus maniable. Par exemple, pour montrer « Si $n^2$ est pair alors $n$ est pair », on préfère supposer « $n$ est impair » et en déduire que $n^2$ est impair, ce qui est immédiat par le calcul $(2k+1)^2 = 4k^2+4k+1$. L'écriture formelle suit le même canevas que la preuve directe, mais les rôles de l'hypothèse et de la thèse sont inversés. Il est crucial d'annoncer clairement que l'on va prouver la contraposée, sinon le correcteur pourrait penser que tu as confondu le sens de l'implication."
+            },
+            {
+              "type": "display_math",
+              "latex": "(P \\Rightarrow Q) \\iff (\\neg Q \\Rightarrow \\neg P)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Formuler la contraposée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris explicitement $\\neg Q \\Rightarrow \\neg P$. Par exemple : « Si $n$ n'est pas pair, alors $n^2$ n'est pas pair »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Supposer $\\neg Q$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends l'hypothèse $\\neg Q$ comme point de départ. Ici : « Supposons que $n$ est impair, donc $n=2k+1$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Démontrer $\\neg P$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enchaîne les déductions jusqu'à obtenir $\\neg P$. Dans l'exemple : $n^2 = (2k+1)^2 = 4k^2+4k+1 = 2(2k^2+2k)+1$, donc $n^2$ est impair."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque la contraposée est prouvée, l'implication originale $P \\Rightarrow Q$ est vraie. Termine par « Donc, par contraposée, si $n^2$ est pair alors $n$ est pair. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière grande méthode, la preuve par l'absurde, est souvent la plus spectaculaire car elle part d'une supposition contraire pour aboutir à une contradiction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La preuve par l'absurde"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le principe est simple : pour prouver une proposition $P$, on suppose qu'elle est fausse ($\\neg P$) et on en déduit une contradiction logique, c'est-à-dire une affirmation qui ne peut pas être vraie (par exemple $0=1$, ou « $x$ est à la fois pair et impair »). Dès qu'une contradiction apparaît, l'hypothèse $\\neg P$ est impossible, donc $P$ est nécessairement vraie. Cette technique brille quand l'énoncé est une existence (« il existe un nombre premier plus grand que tout entier donné ») ou une unicité. L'écriture demande de bien signaler le début de la supposition (« Supposons par l'absurde que… ») et de marquer clairement la contradiction (« Ce qui est absurde » ou « Contradiction »). Attention : la contradiction doit être incontestable, pas simplement une situation improbable. Une fois la contradiction obtenue, on clôture par « Donc $P$ est vraie ». C'est un outil puissant, mais il ne faut pas en abuser ; parfois une preuve directe ou par contraposée est plus élégante et plus courte."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\neg P \\text{ entraîne une contradiction, alors } P \\text{ est vraie.}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Supposer le contraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « Supposons que $P$ est faux. » Par exemple, pour montrer que $\\sqrt{2}$ est irrationnel, on suppose qu'il est rationnel : $\\sqrt{2} = \\frac{a}{b}$ avec $a,b$ entiers premiers entre eux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver des conséquences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise l'hypothèse pour obtenir des égalités ou des propriétés. Ici : $2 = \\frac{a^2}{b^2}$, donc $a^2 = 2b^2$, ce qui montre que $a^2$ est pair, donc $a$ est pair."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Atteindre la contradiction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Poursuis le raisonnement jusqu'à contredire une hypothèse de départ. Si $a=2k$, alors $4k^2 = 2b^2$, donc $b^2 = 2k^2$ et $b$ est pair. Or $a$ et $b$ étaient supposés premiers entre eux : contradiction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La supposition initiale est impossible, donc $P$ est vraie. Termine par « Par conséquent, $\\sqrt{2}$ est irrationnel. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu disposes maintenant des trois piliers de la démonstration mathématique. Entraîne-toi à les reconnaître dans les sujets d'examen et à choisir la plus adaptée à chaque situation."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $n$ un entier naturel. Montre par preuve directe que si $n$ est pair alors $n^2$ est pair.",
+              "answer": "Si $n$ est pair, il existe $k\\in\\mathbb{N}$ tel que $n=2k$. Alors $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$, qui est un multiple de $2$, donc pair.",
+              "hint": "Utilise la définition d'un nombre pair : $n=2k$. Calcule $n^2$ et factorise par $2$.",
+              "explanation": "On part de l'hypothèse « $n$ pair », on écrit $n=2k$, on élève au carré et on factorise $2$ pour obtenir la forme $2 \\times \\text{entier}$, ce qui prouve que $n^2$ est pair."
+            },
+            {
+              "question": "Prouve par contraposée : pour tout entier $n$, si $n^2$ est impair alors $n$ est impair.",
+              "answer": "Contraposée : si $n$ n'est pas impair (c'est-à-dire $n$ pair), alors $n^2$ n'est pas impair (c'est-à-dire $n^2$ pair). Soit $n=2k$. Alors $n^2 = 4k^2 = 2(2k^2)$ est pair. Donc la contraposée est vraie, donc l'implication originale l'est aussi.",
+              "hint": "Écris la contraposée de l'énoncé, suppose que $n$ est pair et montre que $n^2$ est pair.",
+              "explanation": "La contraposée de « $n^2$ impair $\\Rightarrow$ $n$ impair » est « $n$ pair $\\Rightarrow$ $n^2$ pair », qui se démontre directement en posant $n=2k$."
+            },
+            {
+              "question": "Montre par l'absurde qu'il n'existe pas de plus grand nombre premier.",
+              "answer": "Supposons qu'il existe un plus grand nombre premier $p$. Considérons $N = p! + 1$. Tout nombre premier $\\le p$ divise $p!$, donc ne divise pas $N$. Or $N>1$ a au moins un diviseur premier, qui serait $>p$, contradiction. Donc l'ensemble des nombres premiers est infini.",
+              "hint": "Suppose l'existence d'un maximum $p$, construis $p!+1$ et examine ses diviseurs premiers.",
+              "explanation": "L'hypothèse d'un plus grand premier mène à un nombre $p!+1$ qui n'est divisible par aucun premier $\\le p$, donc possède un diviseur premier strictement plus grand, contredisant la maximalité de $p$."
+            }
+          ]
+        },
+        {
+          "title": "Quantificateurs informels.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quantificateurs universel et existentiel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quantificateurs sont les mots-clés qui permettent de parler de « tous » ou de « certains » objets d'un ensemble. En terminale, tu les rencontreras sous la forme symbolique $\\forall$ (pour tout) et $\\exists$ (il existe). Bien les manipuler est indispensable pour lire, écrire et nier correctement des propositions mathématiques. Imagine que tu dois vérifier une propriété pour chaque élève d'une classe : c'est un quantificateur universel. Si tu cherches seulement un élève qui a obtenu la note maximale, c'est un quantificateur existentiel. La nuance est cruciale : une affirmation $\\forall x \\in E, P(x)$ est fausse dès qu'un seul contre-exemple existe, alors que $\\exists x \\in E, P(x)$ devient vraie dès qu'un unique exemple la satisfait. Dans cette leçon, nous allons d'abord fixer le vocabulaire, puis voir comment les combiner, et enfin apprendre à les nier sans se tromper. Prends le temps de bien visualiser la portée de chaque quantificateur : l'ordre dans lequel ils apparaissent change radicalement le sens de la phrase."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall x \\in E, P(x) \\quad\\text{et}\\quad \\exists x \\in E, P(x)"
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Illustration : l'ensemble des $x$ vérifiant $P(x)$ (zone bleue) à l'intérieur de $E$ (cercle gris). Pour $\\forall$, la zone bleue doit couvrir tout $E$ ; pour $\\exists$, elle doit être non vide.",
+              "sets": [
+                {
+                  "label": "E",
+                  "elements": []
+                },
+                {
+                  "label": "P(x)",
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les symboles de base sont posés, voyons comment ils s'imbriquent pour former des énoncés plus complexes, comme ceux que l'on trouve dans les définitions de limite ou de continuité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Imbrication de quantificateurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un énoncé mathématique avancé contient souvent plusieurs quantificateurs les uns dans les autres. Par exemple, la définition de la limite d'une suite $(u_n)$ : $\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\ge N, |u_n - L| < \\varepsilon$. L'ordre est capital : le $\\forall \\varepsilon$ est externe, le $\\exists N$ dépend de $\\varepsilon$, et le $\\forall n$ dépend de $N$. Si tu permutes deux quantificateurs, tu changes la proposition. Pour t'en convaincre, compare $\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, y > x$ (vrai : pour chaque réel il y a un plus grand) avec $\\exists y \\in \\mathbb{R}, \\forall x \\in \\mathbb{R}, y > x$ (faux : il n'existe pas de réel plus grand que tous les réels). Une bonne habitude consiste à lire la phrase de gauche à droite en explicitant les dépendances : « pour tout $\\varepsilon$, je peux trouver un $N$ (qui dépend de $\\varepsilon$) tel que pour tout $n \\ge N$… ». Cette lecture à voix haute aide à ne pas inverser l'ordre par mégarde."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\ge N, |u_n - L| < \\varepsilon"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le quantificateur le plus externe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le premier symbole en partant de la gauche. C'est lui qui fixe le cadre global de la propriété."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter les dépendances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque quantificateur suivant peut dépendre des variables introduites précédemment. Écris ces dépendances explicitement (ex: $N = N(\\varepsilon)$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'énoncé en langage naturel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traduis symboliquement en phrase française complète pour vérifier que le sens correspond à l'intuition."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment construire des énoncés quantifiés, il est tout aussi important de savoir les nier correctement, car la négation d'une propriété universelle devient une propriété existentielle et vice‑versa."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Négation des quantificateurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle de base est simple et symétrique : la négation de $\\forall x, P(x)$ est $\\exists x, \\neg P(x)$, et la négation de $\\exists x, P(x)$ est $\\forall x, \\neg P(x)$. Quand les quantificateurs sont imbriqués, on applique la règle de l'extérieur vers l'intérieur en changeant chaque quantificateur et en niant le prédicat final. Par exemple, la négation de $\\forall \\varepsilon > 0, \\exists N, \\forall n \\ge N, |u_n-L| < \\varepsilon$ devient $\\exists \\varepsilon > 0, \\forall N, \\exists n \\ge N, |u_n-L| \\ge \\varepsilon$. Remarque que l'inégalité stricte $<$ se transforme en $\\ge$. Cette manipulation est au cœur de la démonstration par l'absurde de la non‑convergence d'une suite. Il est essentiel de ne pas oublier de nier le prédicat final après avoir inversé tous les quantificateurs. Un entraînement régulier sur des exemples variés (suites, fonctions, ensembles) ancre ce réflexe."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\neg(\\forall x, P(x)) \\iff \\exists x, \\neg P(x) \\quad\\text{et}\\quad \\neg(\\exists x, P(x)) \\iff \\forall x, \\neg P(x)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la formule avec tous les quantificateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la négation devant l'ensemble de la formule : $\\neg(\\forall \\varepsilon>0, \\exists N, \\forall n\\ge N, |u_n-L|<\\varepsilon)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire pénétrer la négation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Change chaque quantificateur en son dual ($\\forall \\leftrightarrow \\exists$) en avançant vers l'intérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nier le prédicat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $|u_n-L|<\\varepsilon$ par sa négation $|u_n-L|\\ge\\varepsilon$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Lire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $\\exists \\varepsilon>0, \\forall N, \\exists n\\ge N, |u_n-L|\\ge\\varepsilon$, ce qui signifie exactement que la suite ne converge pas vers $L$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant le langage des quantificateurs, leur imbrication et leur négation. Ces outils sont la grammaire de l'analyse et de la logique mathématique ; ils te serviront à chaque chapitre de terminale et bien au-delà."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en langage naturel la proposition : $\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, y^2 = x$.",
+              "answer": "Pour tout réel $x$, il existe un réel $y$ tel que $y^2 = x$.",
+              "hint": "Traduis $\\forall$ par « pour tout » et $\\exists$ par « il existe ».",
+              "explanation": "On lit les quantificateurs dans l'ordre : d'abord « pour tout $x$ dans $\\mathbb{R}$ », ensuite « il existe $y$ dans $\\mathbb{R}$ » et enfin la propriété $y^2=x$."
+            },
+            {
+              "question": "Donne la négation de : $\\exists n \\in \\mathbb{N}, \\forall m \\in \\mathbb{N}, m \\le n$.",
+              "answer": "$\\forall n \\in \\mathbb{N}, \\exists m \\in \\mathbb{N}, m > n$.",
+              "hint": "Applique la règle : $\\neg(\\exists n, \\forall m, P) \\iff \\forall n, \\exists m, \\neg P$. Nier $m \\le n$ donne $m > n$.",
+              "explanation": "On inverse le quantificateur existentiel en universel et le quantificateur universel en existentiel, puis on nie la relation d'ordre."
+            },
+            {
+              "question": "La proposition « $\\forall \\varepsilon > 0, \\exists \\delta > 0, \\forall x \\in \\mathbb{R}, |x-a| < \\delta \\Rightarrow |f(x)-f(a)| < \\varepsilon$ » est-elle la définition de la continuité en $a$ ? Justifie.",
+              "answer": "Oui, c'est exactement la définition $\\varepsilon-\\delta$ de la continuité de $f$ au point $a$.",
+              "hint": "Rappelle la définition formelle de la continuité en un point.",
+              "explanation": "La structure quantificateurs $\\forall \\varepsilon \\exists \\delta \\forall x$ avec l'implication $|x-a|<\\delta \\Rightarrow |f(x)-f(a)|<\\varepsilon$ correspond point par point à la définition standard."
+            }
+          ]
+        },
+        {
+          "title": "Contre-exemple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un contre‑exemple ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un contre‑exemple est un objet précis qui contredit une affirmation universelle. Si l'énoncé dit « Pour tout $x$ dans $E$, la propriété $P(x)$ est vraie », il suffit de trouver un unique $x_0 \\in E$ tel que $P(x_0)$ soit fausse pour que l'ensemble de la proposition s'effondre. C'est l'arme la plus efficace pour montrer qu'une conjecture est fausse, car elle ne demande pas de raisonnement long : un seul cas concret suffit. En terminale, tu seras souvent amené à tester une propriété sur des exemples numériques avant de tenter une preuve. Si tu tombes sur un cas qui ne marche pas, tu as déjà ton contre‑exemple et tu peux arrêter tes recherches. Attention toutefois : un contre‑exemple ne prouve jamais qu'une proposition existentielle est fausse ; pour cela, il faut une argumentation générale. Dans cette leçon, nous allons apprendre à repérer les affirmations universelles, à construire méthodiquement un contre‑exemple et à l'utiliser pour invalider une conjecture."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\forall x \\in E, P(x) \\text{ est faux, alors } \\exists x_0 \\in E, \\neg P(x_0)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme universelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les mots « pour tout », « tout », « chaque » ou le symbole $\\forall$. L'affirmation doit porter sur tous les éléments d'un ensemble."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chercher un candidat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Teste des valeurs simples, des cas limites (zéro, un, nombres négatifs, irrationnels) ou des configurations géométriques particulières (triangle rectangle, triangle équilatéral)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la violation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montre explicitement que pour ce candidat, la propriété $P$ n'est pas satisfaite. Écris le calcul ou l'argument qui prouve $\\neg P(x_0)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Affirme : « Puisque $x_0 \\in E$ et $\\neg P(x_0)$, l'énoncé $\\forall x \\in E, P(x)$ est faux. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment un contre‑exemple peut être construit pour une affirmation portant sur les fonctions, en utilisant une représentation graphique pour rendre la chose visuelle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contre‑exemple sur une propriété de fonctions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère l'affirmation : « Toute fonction continue sur $\\mathbb{R}$ est dérivable sur $\\mathbb{R}$ ». C'est une proposition universelle sur l'ensemble des fonctions continues. Pour la réfuter, il suffit d'exhiber une fonction continue qui ne l'est pas en au moins un point. La fonction valeur absolue $f(x)=|x|$ est continue partout, mais elle n'est pas dérivable en $0$ car les taux d'accroissement à gauche et à droite sont différents ($-1$ et $+1$). Le graphique de $f$ montre un angle rentrant à l'origine, ce qui est la signature visuelle de l'absence de tangente. Ce seul exemple suffit à prouver que l'énoncé est faux. Note que l'inverse (toute fonction dérivable est continue) est vrai, ce qui illustre bien que l'implication ne fonctionne que dans un sens."
+            },
+            {
+              "type": "graph",
+              "expression": "abs(x)",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Graphique de $f(x)=|x|$ : continu en $0$ mais non dérivable (angle)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons l'utilisation du contre‑exemple dans le cadre d'une démonstration par l'absurde : on suppose l'affirmation universelle vraie, on en déduit une propriété qui contredit un fait connu, ce qui fournit implicitement un contre‑exemple à l'hypothèse de départ."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contre‑exemple et raisonnement par l'absurde"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne trouve pas directement un contre‑exemple, mais on peut montrer que l'existence d'un tel contre‑exemple est inévitable si l'on suppose la proposition fausse. Prenons l'exemple classique : « Tout entier naturel pair supérieur à $2$ est somme de deux nombres premiers » (conjecture de Goldbach). Pour tenter de la réfuter par l'absurde, on supposerait qu'il existe un entier pair $N>2$ qui n'est pas somme de deux premiers. Si l'on parvient à démontrer que cette supposition entraîne une contradiction avec un théorème connu (par exemple, la densité des nombres premiers), on a indirectement prouvé qu'aucun tel $N$ n'existe, c'est-à-dire que la conjecture est vraie. Bien que la conjecture de Goldbach soit toujours ouverte, cette méthode illustre comment le contre‑exemple et l'absurde s'entrelacent. En pratique, pour un exercice de terminale, on te demandera souvent de donner un contre‑exemple explicite pour une fausse affirmation, ou de montrer qu'une affirmation est vraie en prouvant qu'aucun contre‑exemple ne peut exister (par l'absurde). Maîtriser les deux approches te donne une grande souplesse."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\neg(\\forall x, P(x)) \\text{ mène à une contradiction, alors } \\forall x, P(x) \\text{ est vraie.}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Supposer l'existence d'un contre‑exemple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « Supposons qu'il existe $x_0 \\in E$ tel que $\\neg P(x_0)$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : En déduire des conséquences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les propriétés de $x_0$ pour arriver à une affirmation qui contredit un théorème, une définition ou un fait évident."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure l'impossibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La contradiction montre que l'hypothèse d'existence est fausse, donc $\\forall x \\in E, P(x)$ est vraie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître une affirmation universelle, construire un contre‑exemple concret, l'illustrer graphiquement et l'articuler avec un raisonnement par l'absurde. Ces compétences sont au cœur de l'esprit critique mathématique."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une proposition universelle et son quantificateur.",
+                "Je sais construire un contre‑exemple explicite pour la réfuter.",
+                "Je sais utiliser un graphique pour visualiser un contre‑exemple sur une fonction.",
+                "Je sais articuler contre‑exemple et preuve par l'absurde."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne un contre‑exemple à l'affirmation : « Tout entier impair est premier ».",
+              "answer": "$9$ est impair et n'est pas premier car $9 = 3 \\times 3$.",
+              "hint": "Cherche un impair composite, par exemple un carré d'un nombre impair.",
+              "explanation": "L'énoncé est universel sur les impairs. Un seul impair non premier suffit. $9$ est le plus petit impair composite."
+            },
+            {
+              "question": "La fonction $f(x) = x^{2/3}$ est-elle dérivable en $0$ ? Justifie par un contre‑exemple à l'affirmation « Toute fonction continue est dérivable ».",
+              "answer": "Non, $f$ est continue en $0$ mais sa dérivée $f'(x) = \\frac{2}{3}x^{-1/3}$ n'est pas définie en $0$ (pente verticale). C'est un contre‑exemple.",
+              "hint": "Calcule la dérivée pour $x \\neq 0$ et examine la limite en $0$.",
+              "explanation": "La continuité ne garantit pas la dérivabilité. $f(x)=x^{2/3}$ est continue partout, mais la tangente en $0$ est verticale, donc la dérivée n'existe pas."
+            },
+            {
+              "question": "Montre par l'absurde que l'affirmation « Il existe un plus grand entier naturel » est fausse.",
+              "answer": "Supposons qu'il existe un plus grand entier $M$. Alors $M+1$ est un entier naturel strictement plus grand que $M$, contradiction. Donc aucun plus grand entier n'existe.",
+              "hint": "Ajoute $1$ à l'entier supposé maximal.",
+              "explanation": "L'hypothèse d'existence d'un maximum entraîne la construction d'un entier plus grand, ce qui contredit la maximalité. C'est une preuve par l'absurde qui montre l'inexistence de contre‑exemple à l'infinitude de $\\mathbb{N}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

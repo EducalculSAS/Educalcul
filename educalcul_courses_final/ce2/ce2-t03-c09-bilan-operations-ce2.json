@@ -1,0 +1,398 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.012311+00:00",
+  "id": 168,
+  "code": "ce2-t03-c09",
+  "title": "Bilan - Opérations CE2",
+  "description": "Cours structuré Educalcul : Bilan - Opérations CE2.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Bilan - Opérations CE2",
+    "objectif_global": "Bilan - Opérations CE2",
+    "mini_lecons_imposees": [
+      "Techniques opératoires.",
+      "Choix d'opération.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Techniques opératoires.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette révision des techniques opératoires. Aujourd'hui nous allons revoir comment poser une addition, une soustraction et une multiplication simple. Prends ton cahier et suis chaque étape avec moi."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour additionner deux nombres à deux chiffres, on écrit les unités sous les unités et les dizaines sous les dizaines. On commence par additionner les unités. Si le total dépasse neuf, on écrit le chiffre des unités et on retient une dizaine que l'on ajoute aux dizaines. Par exemple, avec $27 + 35$, on ajoute $7 + 5 = 12$. On écrit $2$ sous la colonne des unités et on retient $1$ dizaine."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "27",
+                "35"
+              ],
+              "result": "62",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'addition posée est claire, passons à la soustraction qui utilise le même alignement mais avec un emprunt quand l'unité du haut est plus petite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraction posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour soustraire $52 - 18$, on place les chiffres comme pour l'addition. On ne peut pas enlever $8$ de $2$, donc on emprunte une dizaine au $5$ qui devient $4$. Les unités deviennent $12$. On calcule $12 - 8 = 4$. Puis on soustrait les dizaines : $4 - 1 = 3$. Le résultat est $34$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "52",
+                "18"
+              ],
+              "result": "34",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication posée suit la même idée de décomposition. On sépare le nombre à deux chiffres en dizaines et unités, on multiplie chaque partie par le chiffre simple, puis on additionne les résultats partiels."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $4 \\times 12$. On décompose $12$ en $10 + 2$. On calcule $4 \\times 10 = 40$ et $4 \\times 2 = 8$. On additionne $40 + 8 = 48$. C'est plus rapide que d'ajouter $12$ quatre fois de suite."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "12 = 1 dizaine et 2 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $27 + 35$.",
+              "answer": "$62$",
+              "hint": "Ajoute les unités, puis les dizaines.",
+              "explanation": "On additionne 7 et 5 = 12, on écrit 2 et on retient 1 dizaine. Ensuite 2 + 3 + 1 = 6 dizaines."
+            },
+            {
+              "question": "Calcule $52 - 18$.",
+              "answer": "$34$",
+              "hint": "Emprunte une dizaine si besoin.",
+              "explanation": "On ne peut pas enlever 8 de 2, on emprunte 1 dizaine, 12 - 8 = 4. Il reste 4 dizaines - 1 = 3 dizaines."
+            },
+            {
+              "question": "Calcule $4 \\times 12$.",
+              "answer": "$48$",
+              "hint": "Décompose 12 en 10 et 2.",
+              "explanation": "4 x 10 = 40, 4 x 2 = 8, 40 + 8 = 48."
+            }
+          ]
+        },
+        {
+          "title": "Choix d'opération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'addition ou la soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un problème, il faut repérer l'action décrite. Si l'on met ensemble deux groupes, on additionne. Si l'on enlève une partie ou que l'on cherche la différence, on soustrait. Imagine que Paul a $5$ pommes et que Léa lui en donne $3$ : on met les deux groupes ensemble."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paul",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Mise ensemble de deux groupes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le texte parle de groupes égaux, on pense à la multiplication. Par exemple, $4$ boîtes contenant chacune $6$ crayons forment $4$ groupes de $6$. On peut le voir comme une répétition de la même quantité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot « chaque » ou « par » signale souvent des groupes identiques. On compte le nombre de groupes et la taille d'un groupe, puis on multiplie. C'est plus rapide que d'additionner plusieurs fois le même nombre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "4 groupes de 6 crayons",
+              "bars": [
+                {
+                  "label": "Boîte 1",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 4",
+                  "value": 6,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, le partage équitable mène à la division. Si $12$ bonbons sont distribués de façon identique à $3$ enfants, chaque enfant reçoit la même part. On divise le total par le nombre de parts."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la division"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les expressions « partagés équitablement », « chacun reçoit » ou « divisé en » indiquent une division. On sépare le total en autant de parts égales que nécessaire."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Enfant 1",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Enfant 2",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Enfant 3",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Partage de 12 bonbons entre 3 enfants"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Paul a $5$ pommes, Léa lui en donne $3$. Combien en a-t-il maintenant ?",
+              "answer": "$8$",
+              "hint": "C'est une mise ensemble.",
+              "explanation": "On additionne 5 + 3 = 8."
+            },
+            {
+              "question": "Il y a $4$ boîtes de $6$ crayons chacune. Combien de crayons au total ?",
+              "answer": "$24$",
+              "hint": "Groupes égaux.",
+              "explanation": "4 x 6 = 24."
+            },
+            {
+              "question": "$12$ bonbons sont partagés équitablement entre $3$ enfants. Combien chacun reçoit-il ?",
+              "answer": "$4$",
+              "hint": "Partage égal.",
+              "explanation": "12 divisé par 3 = 4."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Révision addition et soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les deux opérations de base. L'addition sert à rassembler, la soustraction à enlever ou comparer. Entraîne-toi à poser les calculs correctement, en alignant les unités et les dizaines."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $38 + 27$, on ajoute les unités $8 + 7 = 15$, on écrit $5$ et on retient $1$ dizaine. Ensuite $3 + 2 + 1 = 6$ dizaines. Le résultat est $65$. Pour $56 - 29$, on emprunte une dizaine au $5$, les unités deviennent $16$, $16 - 9 = 7$, il reste $4 - 2 = 2$ dizaines, donc $27$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples d'addition et soustraction",
+              "bars": [
+                {
+                  "label": "38 + 27",
+                  "value": 65,
+                  "tone": "blue"
+                },
+                {
+                  "label": "56 - 29",
+                  "value": 27,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la multiplication et la division. La multiplication regroupe des quantités identiques, la division les répartit. Rappelle-toi les tables de multiplication jusqu'à $10$ et utilise la décomposition pour les calculs posés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Révision multiplication et division"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $7 \\times 8$, on connaît le résultat $56$ par cœur. Si tu l'as oublié, décompose $8$ en $5 + 3$ : $7 \\times 5 = 35$, $7 \\times 3 = 21$, $35 + 21 = 56$. Pour $48 \\div 6$, cherche combien de fois $6$ rentre dans $48$ : $6 \\times 8 = 48$, donc le quotient est $8$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples de multiplication et division",
+              "bars": [
+                {
+                  "label": "7 x 8",
+                  "value": 56,
+                  "tone": "green"
+                },
+                {
+                  "label": "48 ÷ 6",
+                  "value": 8,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, mélangeons les quatre opérations dans de petits problèmes. Lis bien l'énoncé, identifie l'action (mettre ensemble, enlever, grouper, partager) et choisis l'opération qui correspond. C'est comme choisir le bon outil dans une boîte à outils."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes mixtes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : « Marie a $12$ autocollants. Elle en donne $4$ à son frère, puis elle achète $3$ paquets de $5$ autocollants chacun. Combien en a-t-elle à la fin ? » D'abord soustraction $12 - 4 = 8$, puis multiplication $3 \\times 5 = 15$, enfin addition $8 + 15 = 23$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner deux nombres à deux chiffres.",
+                "Je sais soustraire avec emprunt.",
+                "Je sais multiplier un nombre à un chiffre par un nombre à deux chiffres.",
+                "Je sais diviser un nombre à deux chiffres par un chiffre.",
+                "Je choisis l'opération adaptée à un problème."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $38 + 27$.",
+              "answer": "$65$",
+              "hint": "Addition posée.",
+              "explanation": "8 + 7 = 15, on écrit 5, on retient 1. 3 + 2 + 1 = 6 dizaines."
+            },
+            {
+              "question": "Calcule $56 - 29$.",
+              "answer": "$27$",
+              "hint": "Soustraction posée.",
+              "explanation": "On emprunte une dizaine, 16 - 9 = 7, 4 - 2 = 2 dizaines."
+            },
+            {
+              "question": "Calcule $7 \\times 8$.",
+              "answer": "$56$",
+              "hint": "Table de multiplication.",
+              "explanation": "7 x 8 = 56 (ou 7 x 5 = 35, 7 x 3 = 21, 35 + 21 = 56)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

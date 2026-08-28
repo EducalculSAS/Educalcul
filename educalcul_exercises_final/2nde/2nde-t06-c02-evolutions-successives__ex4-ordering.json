@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Évolutions successives",
+  "title": "Évolutions successives : mise en ordre",
+  "blocks": [
+    {
+      "title": "Prix après trois variations",
+      "content": "Range les étapes dans l'ordre chronologique pour calculer le prix final d'un article initially à $100\\ \\text{€}$ après une augmentation de $10\\%$, une diminution de $20\\%$ puis une augmentation de $5\\%$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le multiplicateur de la première augmentation ($1 + 10/100 = 1,10$).",
+        "Calculer le multiplicateur de la diminution ($1 - 20/100 = 0,80$).",
+        "Calculer le multiplicateur de la deuxième augmentation ($1 + 5/100 = 1,05$).",
+        "Multiplier les trois multiplicateurs par le prix initial pour obtenir le prix final."
+      ],
+      "explanation": "On commence par convertir chaque variation en multiplicateur : $+10\\%$ donne $1,10$, $-20\\%$ donne $0,80$, $+5\\%$ donne $1,05$. Ensuite on multiplie ces trois multiplicateurs entre eux : $1,10 \\times 0,80 \\times 1,05 = 0,924$. Enfin on multiplie ce produit par le prix initial $100\\ \\text{€}$ pour obtenir $92,40\\ \\text{€}$. L'ordre des étapes est donc : calcul des trois multiplicateurs, puis multiplication finale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Taux global de trois variations successives",
+      "content": "Range les étapes pour déterminer le taux global équivalent à une augmentation de $15\\%$, puis une diminution de $10\\%$, puis une augmentation de $20\\%$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Convertir chaque pourcentage en multiplicateur ($1,15$ ; $0,90$ ; $1,20$).",
+        "Multiplier les trois multiplicateurs entre eux ($1,15 \\times 0,90 \\times 1,20$).",
+        "Soustraire 1 au produit obtenu pour avoir le taux global ($1,242 - 1 = 0,242$).",
+        "Exprimer le taux global en pourcentage ($24,2\\%$)."
+      ],
+      "explanation": "Les multiplicateurs sont $1+15/100=1,15$, $1-10/100=0,90$, $1+20/100=1,20$. Leur produit est $1,15 \\times 0,90 \\times 1,20 = 1,242$. Le taux global est $1,242-1 = 0,242$, soit $24,2\\%$. L'ordre logique est : conversion, multiplication, soustraction de 1, conversion en pourcentage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Population après trois années",
+      "content": "Range les étapes pour trouver la population d'une commune de $5000$ habitants après une hausse de $8\\%$, une baisse de $5\\%$ puis une hausse de $12\\%$ sur trois années consécutives.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Appliquer la première variation à la population initiale ($5000 \\times 1,08$).",
+        "Appliquer la deuxième variation au résultat obtenu ($5400 \\times 0,95$).",
+        "Appliquer la troisième variation au nouveau résultat ($5130 \\times 1,12$).",
+        "Lire la population finale ($5745,6 \\approx 5746$ habitants)."
+      ],
+      "explanation": "On commence avec $5000$. Après $+8\\%$ : $5000 \\times 1,08 = 5400$. Après $-5\\%$ : $5400 \\times 0,95 = 5130$. Après $+12\\%$ : $5130 \\times 1,12 = 5745,6$, arrondi à $5746$. L'ordre des étapes suit l'ordre chronologique des années.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

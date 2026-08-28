@@ -1,0 +1,610 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.559549+00:00",
+  "id": 665,
+  "code": "terminale-generale-complementaires-t08-c01",
+  "title": "Modéliser une attente",
+  "description": "Cours structuré Educalcul : Modéliser une attente.",
+  "subject": "Temps d'attente",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Temps d'attente",
+    "titre_du_cours": "Modéliser une attente",
+    "objectif_global": "Modéliser une attente",
+    "mini_lecons_imposees": [
+      "Essais répétés.",
+      "Premier succès.",
+      "Variable."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Temps d'attente",
+      "lessons": [
+        {
+          "title": "Essais répétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'expérience de Bernoulli : une étape fondamentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie. Il n'y a que deux issues possibles : \"pile\" ou \"face\". Si tu décides que \"pile\" est un succès, alors cet unique lancer est ce que les mathématiciens appellent une expérience de Bernoulli. C'est la brique élémentaire de tout ce que nous allons construire : une épreuve aléatoire qui ne peut produire que deux résultats, que nous codons généralement par $1$ (succès) et $0$ (échec). La probabilité de succès, notée $p$, est un nombre compris entre $0$ et $1$. La probabilité d'échec est alors $1-p$, souvent notée $q$. Rien de bien mystérieux jusqu'ici, mais c'est sur cette simplicité que repose la modélisation de situations bien plus complexes."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience de Bernoulli",
+              "definition": "Une épreuve aléatoire qui admet exactement deux issues possibles : \"succès\" (probabilité $p$) et \"échec\" (probabilité $1-p$).",
+              "example": "Lancer un dé et observer si on obtient un $6$ (succès, $p=\\frac{1}{6}$) ou pas (échec, $q=\\frac{5}{6}$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que cette modélisation soit utile, il faut pouvoir la répéter. Supposons que tu effectues $n$ fois de suite la même expérience de Bernoulli, en t'assurant que chaque répétition est indépendante des autres : le résultat du premier lancer n'influence en rien le second, ni le troisième, etc. C'est l'hypothèse d'indépendance, cruciale pour la suite. Nous nous intéressons alors au nombre total de succès obtenus au cours de ces $n$ essais. Ce nombre est une variable aléatoire, que nous noterons $X$. Elle prend des valeurs entières allant de $0$ (aucun succès) à $n$ (succès à tous les coups)."
+            },
+            {
+              "type": "display_math",
+              "latex": "X \\sim \\mathcal{B}(n,p)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette notation signifie : $X$ suit une loi binomiale de paramètres $n$ (nombre d'essais) et $p$ (probabilité de succès à chaque essai). C'est la première grande loi de probabilité que tu rencontres qui modélise un comptage sur un nombre fixé d'essais répétés. Pour bien visualiser, prenons un exemple concret : un contrôle qualité dans une usine. Sur une chaîne de production, $2\\%$ des pièces sont défectueuses. On prélève au hasard $n=50$ pièces. Le nombre $X$ de pièces défectueuses dans l'échantillon suit une loi $\\mathcal{B}(50; 0,02)$. Ici, un \"succès\" (au sens probabiliste) est malheureusement une pièce défectueuse !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer les probabilités : la formule du binôme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment calculer la probabilité d'obtenir exactement $k$ succès sur $n$ essais ? Il faut raisonner en deux temps. D'abord, choisissons quels sont les $k$ essais qui seront des succès parmi les $n$ : il y a $\\binom{n}{k}$ façons de faire ce choix (c'est le coefficient binomial, nombre de parties à $k$ éléments d'un ensemble à $n$ éléments). Ensuite, pour une suite précise de $k$ succès et $n-k$ échecs, la probabilité est $p^k (1-p)^{n-k}$ grâce à l'indépendance. En sommant sur toutes les suites possibles, on obtient la formule fondamentale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(X=k) = \\binom{n}{k} p^k (1-p)^{n-k} \\quad \\text{pour } k=0,1,\\dots,n"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérer $n$ (nombre total d'essais) et $p$ (probabilité de succès à un essai). Vérifier l'indépendance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$, puis multiplier par $p^k$ et $(1-p)^{n-k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est une probabilité, donc un nombre entre $0$ et $1$. Vérifier l'ordre de grandeur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de l'usine : quelle est la probabilité de trouver exactement $2$ pièces défectueuses dans l'échantillon de $50$ ? On a $n=50$, $p=0,02$, $k=2$. Le coefficient binomial est $\\binom{50}{2} = \\frac{50 \\times 49}{2} = 1225$. La probabilité vaut $1225 \\times (0,02)^2 \\times (0,98)^{48} \\approx 0,264$. Il y a environ une chance sur quatre d'avoir exactement deux défauts. Note que la calculatrice (ou Python) fait ce calcul instantanément avec la fonction `binompdf` ou `binomiale`."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "from math import comb\\n\\ndef binomiale_pmf(n, p, k):\\n    return comb(n, k) * (p**k) * ((1-p)**(n-k))\\n\\n# Exemple usine\\nn = 50\\np = 0.02\\nfor k in range(6):\\n    print(f\"P(X={k}) = {binomiale_pmf(n, p, k):.5f}\")",
+              "language": "python",
+              "caption": "Calcul des probabilités binomiales en Python"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance et variance : résumer la distribution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une variable aléatoire suivant une loi binomiale $\\mathcal{B}(n,p)$, il existe des formules très simples pour l'espérance et la variance. Elles s'obtiennent en remarquant que $X$ est la somme de $n$ variables aléatoires indépendantes $X_i$ (chacune valant $1$ si le $i$-ième essai est un succès, $0$ sinon). Chaque $X_i$ suit une loi de Bernoulli d'espérance $p$ et de variance $p(1-p)$. Par linéarité de l'espérance et additivité des variances pour des variables indépendantes, on obtient immédiatement les résultats."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}(X) = np \\qquad \\mathrm{Var}(X) = np(1-p) \\qquad \\sigma(X) = \\sqrt{np(1-p)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'exemple de l'usine, le nombre moyen de pièces défectueuses attendues est $\\mathbb{E}(X) = 50 \\times 0,02 = 1$. L'écart-type est $\\sigma(X) = \\sqrt{50 \\times 0,02 \\times 0,98} \\approx 0,99$. Cela veut dire qu'en répétant beaucoup de fois le prélèvement de $50$ pièces, on observe en moyenne $1$ défaut, avec une dispersion typique d'environ $1$ pièce autour de cette moyenne. C'est une information précieuse pour le contrôle qualité : si on observe $5$ défauts, c'est un événement inhabituel (plus de $4$ écarts-types au-dessus de la moyenne), qui doit alerter."
+            },
+            {
+              "type": "graph",
+              "expression": "binom_pmf(x, 50, 0.02)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Distribution binomiale B(50; 0.02) : probabilités pour k=0 à 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la loi binomiale pour prendre des décisions"
+            },
+            {
+              "type": "paragraph",
+              "content": "La modélisation par une loi binomiale ne sert pas seulement à calculer des probabilités isolées. Elle permet de répondre à des questions de décision : \"À partir de combien de défauts observé dans l'échantillon de $50$ pièces dois-je arrêter la chaîne car le taux de défaut a probablement augmenté ?\" C'est le cœur des tests d'hypothèses que tu verras plus tard. Pour l'instant, sachons calculer des probabilités cumulées : $\\mathbb{P}(X \\le k)$ ou $\\mathbb{P}(X \\ge k)$. La calculatrice propose `binomcdf` (fonction de répartition) pour $\\mathbb{P}(X \\le k)$. Pour $\\mathbb{P}(X \\ge k)$, on utilise le complémentaire : $1 - \\mathbb{P}(X \\le k-1)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple de décision médicale. Un nouveau traitement a une probabilité de succès $p=0,7$ sur chaque patient. On l'administre à $n=20$ patients. Quel est le nombre minimal de succès pour être raisonnablement sûr que le traitement est efficace (seuil $5\\%$) ? On cherche le plus petit $k$ tel que $\\mathbb{P}(X \\ge k) \\le 0,05$ sous l'hypothèse $p=0,7$. En testant : $\\mathbb{P}(X \\ge 18) \\approx 0,0009$, $\\mathbb{P}(X \\ge 17) \\approx 0,004$, $\\mathbb{P}(X \\ge 16) \\approx 0,016$, $\\mathbb{P}(X \\ge 15) \\approx 0,048$, $\\mathbb{P}(X \\ge 14) \\approx 0,11$. Le seuil $5\\%$ est franchi entre $14$ et $15$. Si on observe $15$ succès ou plus, on peut rejeter l'hypothèse que le traitement ne vaut pas mieux que $p=0,5$ (par exemple)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé équilibré $10$ fois. On note $X$ le nombre de fois où on obtient un $6$. Quelle loi suit $X$ ? Donne ses paramètres.",
+              "answer": "$X$ suit une loi binomiale $\\mathcal{B}(10; \\frac{1}{6})$.",
+              "hint": "Identifie $n$ (nombre de lancers) et $p$ (probabilité d'obtenir un 6 à un lancer).",
+              "explanation": "Chaque lancer est une expérience de Bernoulli indépendante avec succès = \"obtenir un 6\" (probabilité 1/6). On répète l'expérience n=10 fois. Le nombre de succès suit une loi binomiale B(10; 1/6)."
+            },
+            {
+              "question": "Dans l'exemple de l'usine (n=50, p=0,02), calcule la probabilité qu'il y ait au plus 1 pièce défectueuse dans l'échantillon. Arrondis à $10^{-3}$ près.",
+              "answer": "$0,736$",
+              "hint": "Calcule P(X=0) + P(X=1) ou utilise la fonction de répartition binomiale.",
+              "explanation": "P(X=0) = (0,98)^50 ≈ 0,364. P(X=1) = 50 × 0,02 × (0,98)^49 ≈ 0,372. Somme ≈ 0,736. Ou directement binomcdf(50; 0,02; 1)."
+            },
+            {
+              "question": "Une enquête d'opinion interroge $n=1000$ personnes. On suppose que $52\\%$ de la population soutient le candidat A. Quelle est l'espérance et l'écart-type du nombre de soutiens dans l'échantillon ?",
+              "answer": "Espérance = 520, Écart-type ≈ 15,8",
+              "hint": "Utilise les formules E(X)=np et σ(X)=√(np(1-p)).",
+              "explanation": "n=1000, p=0,52. E(X) = 1000 × 0,52 = 520. Var(X) = 1000 × 0,52 × 0,48 = 249,6. σ(X) = √249,6 ≈ 15,8."
+            },
+            {
+              "question": "On reprend l'exemple du traitement médical (n=20, p=0,7). Calcule la probabilité d'observer au moins 15 succès. Arrondis à $10^{-3}$ près.",
+              "answer": "$0,048$",
+              "hint": "P(X ≥ 15) = 1 - P(X ≤ 14). Utilise la fonction de répartition.",
+              "explanation": "P(X ≤ 14) ≈ 0,952 (via binomcdf). Donc P(X ≥ 15) = 1 - 0,952 = 0,048. C'est juste sous le seuil de 5%."
+            }
+          ]
+        },
+        {
+          "title": "Premier succès.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changer de perspective : attendre le premier succès"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous fixions le nombre $n$ d'essais à l'avance et comptions les succès. Ici, nous inversons la logique : nous répétons l'expérience de Bernoulli indéfiniment jusqu'à obtenir le \\emph{premier} succès. Le nombre d'essais nécessaires devient alors la variable aléatoire d'intérêt. C'est une situation naturelle : combien de fois dois-je lancer un dé pour obtenir mon premier $6$ ? Combien de CV dois-je envoyer avant d'obtenir un entretien ? Combien de coups de téléphone avant qu'on me réponde ? Dans tous ces cas, le nombre d'essais n'est pas fixé à l'avance, c'est l'attente qui compte."
+            },
+            {
+              "type": "definition",
+              "term": "Loi géométrique",
+              "definition": "Loi de probabilité du nombre d'essais indépendants de Bernoulli (de paramètre $p$) nécessaires pour obtenir le premier succès. Elle est notée $\\mathcal{G}(p)$.",
+              "example": "Lancer un dé jusqu'au premier 6. Le nombre de lancers suit une loi $\\mathcal{G}(1/6)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $X$ le nombre d'essais jusqu'au premier succès (inclus). $X$ prend des valeurs dans $\\mathbb{N}^* = \\{1, 2, 3, \\dots\\}$. Pour que $X=k$, il faut que les $k-1$ premiers essais soient des échecs et que le $k$-ième soit un succès. Par indépendance, la probabilité de cette suite précise est $(1-p)^{k-1} p$. C'est la fonction de masse de la loi géométrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(X=k) = (1-p)^{k-1} p \\quad \\text{pour } k \\ge 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions que les probabilités somment bien à $1$ : $\\sum_{k=1}^{\\infty} (1-p)^{k-1}p = p \\sum_{j=0}^{\\infty} (1-p)^j = p \\cdot \\frac{1}{1-(1-p)} = 1$. C'est une série géométrique convergente car $|1-p| < 1$ (sauf cas trivial $p=1$). Cette somme à $1$ est rassurante : on est certain d'obtenir un succès \\emph{éventuellement}, même si cela peut prendre beaucoup d'essais quand $p$ est petit."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des premiers essais pour une loi géométrique G(p)",
+              "branches": [
+                {
+                  "label": "Succès (p)",
+                  "probability": "p",
+                  "children": []
+                },
+                {
+                  "label": "Échec (1-p)",
+                  "probability": "1-p",
+                  "children": [
+                    {
+                      "label": "Succès (p)",
+                      "probability": "p",
+                      "children": []
+                    },
+                    {
+                      "label": "Échec (1-p)",
+                      "probability": "1-p",
+                      "children": [
+                        {
+                          "label": "Succès (p)",
+                          "probability": "p",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance et variance : combien d'essais en moyenne ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'espérance d'une loi géométrique $\\mathcal{G}(p)$ a une formule élégante : $\\mathbb{E}(X) = \\frac{1}{p}$. Cela a un sens très intuitif : si la probabilité de succès est $p = \\frac{1}{6}$ (un dé), il faut en moyenne $6$ lancers pour obtenir un $6$. Si $p = 0,01$ (une chance sur cent), il faut en moyenne $100$ essais. La démonstration utilise soit la somme $\\sum k(1-p)^{k-1}p$ (dérivée de série géométrique), soit un argument de conditionnement astucieux : après le premier essai, soit on a réussi (proba $p$, total $1$ essai), soit on a échoué (proba $1-p$) et on \\emph{recommence} avec la même espérance, ce qui donne $\\mathbb{E}(X) = p \\cdot 1 + (1-p)(1+\\mathbb{E}(X))$, d'où $\\mathbb{E}(X) = 1/p$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}(X) = \\frac{1}{p} \\qquad \\mathrm{Var}(X) = \\frac{1-p}{p^2} \\qquad \\sigma(X) = \\frac{\\sqrt{1-p}}{p}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La variance $\\frac{1-p}{p^2}$ montre que la dispersion est grande quand $p$ est petit : l'écart-type vaut environ $1/p$ pour $p$ petit, c'est-à-dire du même ordre que la moyenne ! Cela signifie que le nombre d'essais nécessaire est très imprévisible quand les succès sont rares. Pour $p=0,01$, moyenne $=100$, écart-type $\\approx 99,5$ : on peut très bien réussir au $10$-ième essai comme au $300$-ième. Cette forte variabilité est une caractéristique clé des temps d'attente pour des événements rares."
+            },
+            {
+              "type": "graph",
+              "expression": "geom_pmf(x, 0.2)",
+              "xmin": 1,
+              "xmax": 20,
+              "caption": "Loi géométrique G(0.2) : probabilités pour k=1 à 20"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La propriété sans mémoire : l'avenir ne dépend pas du passé"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi géométrique possède une propriété fascinante et contre-intuitive : la \\emph{propriété sans mémoire} (ou propriété de Markov). Cela signifie que, conditionnellement au fait d'avoir déjà échoué $m$ fois, le nombre d'essais \\emph{supplémentaires} nécessaires pour obtenir le premier succès suit \\emph{exactement la même loi géométrique} $\\mathcal{G}(p)$, indépendante de $m$. En d'autres termes, le processus \"oublie\" combien d'échecs on a déjà accumulés. Mathématiquement : $\\mathbb{P}(X > m+n \\mid X > m) = \\mathbb{P}(X > n)$ pour tout $m,n \\ge 0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Démonstration de la propriété sans mémoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $\\mathbb{P}(X > k) = \\sum_{j=k+1}^{\\infty} (1-p)^{j-1}p = (1-p)^k$ (somme géométrique)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Calcul de la probabilité conditionnelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{P}(X > m+n \\mid X > m) = \\frac{\\mathbb{P}(X > m+n)}{\\mathbb{P}(X > m)} = \\frac{(1-p)^{m+n}}{(1-p)^m} = (1-p)^n = \\mathbb{P}(X > n)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Interprétation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La distribution du temps d'attente restant ne dépend pas du temps déjà écoulé sans succès."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété a des conséquences pratiques importantes. Imagine que tu attends un bus qui passe en moyenne toutes les $10$ minutes (modélisé par une loi géométrique en temps discret). Tu attends déjà depuis $20$ minutes. La propriété sans mémoire dit que ton temps d'attente \\emph{supplémentaire} suit encore la même loi : tu n'es pas \"plus près\" du bus qu'il y a $20$ minutes ! C'est valable pour la géométrique (temps discret) et l'exponentielle (temps continu), mais \\emph{pas} pour toutes les lois d'attente. C'est ce qui fait de ces lois des modèles privilégiés pour des phénomènes sans \"usure\" ni \"vieillissement\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes : modéliser des situations d'attente"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi géométrique modélise parfaitement les situations où l'on cherche le \\emph{premier} événement favorable dans une séquence d'essais indépendants. Exemples classiques : fiabilité (nombre de composants testés avant de trouver le premier défectueux), marketing (nombre d'appels avant une vente), biologie (nombre de générations avant une mutation), informatique (nombre de paquets envoyés avant acquittement). Dans chaque cas, il faut vérifier l'hypothèse d'indépendance et de probabilité constante $p$ à chaque essai. Si $p$ change au cours du temps (apprentissage, fatigue, usure), la géométrique n'est plus adaptée."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\n\\ndef simuler_geometrique(p, essais=100000):\\n    \"\"\"Simule une loi géométrique et retourne la moyenne empirique.\"\"\"\\n    total = 0\\n    for _ in range(essais):\\n        k = 1\\n        while random.random() > p:\\n            k += 1\\n        total += k\\n    return total / essais\\n\\n# Test pour p = 0.2\\np = 0.2\\nmoyenne_empirique = simuler_geometrique(p)\\nmoyenne_theorique = 1 / p\\nprint(f\"p = {p}\")\\nprint(f\"Moyenne empirique : {moyenne_empirique:.2f}\")\\nprint(f\"Moyenne théorique : {moyenne_theorique:.2f}\")\\nprint(f\"Propriété sans mémoire : P(X>5+3|X>5) = P(X>3) = {(1-p)**3:.4f}\")",
+              "language": "python",
+              "caption": "Simulation de la loi géométrique et vérification de la propriété sans mémoire"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance une pièce de monnaie équilibrée jusqu'à obtenir le premier \"pile\". Quelle est la probabilité qu'il faille exactement 4 lancers ?",
+              "answer": "$\\frac{1}{16}$",
+              "hint": "Identifie p (probabilité de pile) et utilise la formule P(X=k) = (1-p)^{k-1}p.",
+              "explanation": "p = 1/2. P(X=4) = (1/2)^3 × (1/2) = (1/2)^4 = 1/16."
+            },
+            {
+              "question": "Un joueur de basket réussit ses lancers francs avec une probabilité p=0,8. Quelle est l'espérance du nombre de lancers nécessaires pour marquer son premier panier ? Quel est l'écart-type ?",
+              "answer": "Espérance = 1,25, Écart-type ≈ 0,56",
+              "hint": "Utilise E(X)=1/p et σ(X)=√(1-p)/p.",
+              "explanation": "E(X) = 1/0,8 = 1,25. Var(X) = (1-0,8)/0,8² = 0,2/0,64 = 0,3125. σ(X) = √0,3125 ≈ 0,559."
+            },
+            {
+              "question": "Soit X suivant une loi G(0,3). Calcule P(X > 5 | X > 2). Vérifie la propriété sans mémoire.",
+              "answer": "$0,343$",
+              "hint": "P(X > k) = (1-p)^k. La propriété sans mémoire donne P(X > 5 | X > 2) = P(X > 3).",
+              "explanation": "P(X > 3) = (0,7)^3 = 0,343. Par propriété sans mémoire, P(X > 5 | X > 2) = P(X > 3) = 0,343."
+            },
+            {
+              "question": "Dans un centre d'appels, la probabilité qu'un client réponde au premier essai est p=0,15. On appelle jusqu'à ce qu'un client réponde. Quelle est la probabilité qu'il faille plus de 10 appels ? Arrondis à $10^{-3}$ près.",
+              "answer": "$0,197$",
+              "hint": "P(X > 10) = (1-p)^{10}.",
+              "explanation": "P(X > 10) = (0,85)^{10} ≈ 0,19687 ≈ 0,197. C'est la probabilité que les 10 premiers appels soient sans réponse."
+            }
+          ]
+        },
+        {
+          "title": "Variable.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du discret au continu : modéliser le temps d'attente réel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons compté des \\emph{essais} : nombre de lancers, nombre d'appels, nombre de pièces contrôlées. C'est une modélisation en \\emph{temps discret}. Mais dans la réalité, le temps s'écoule de façon continue. Si les appels téléphoniques arrivent selon un processus aléatoire, le temps d'attente avant le premier appel est une variable aléatoire \\emph{continue}, prenant des valeurs dans $\\mathbb{R}_+$. Pour passer du discret au continu, on imagine qu'on divise le temps en intervalles très petits $\\Delta t$, et qu'à chaque intervalle, il y a une petite probabilité $p = \\lambda \\Delta t$ qu'un événement survienne (un appel, une désintégration radioactive, l'arrivée d'un client). En faisant tendre $\\Delta t$ vers $0$ tout en gardant $\\lambda$ constant, la loi géométrique converge vers la \\emph{loi exponentielle}."
+            },
+            {
+              "type": "definition",
+              "term": "Loi exponentielle",
+              "definition": "Loi de probabilité continue modélisant un temps d'attente avant le premier événement dans un processus de Poisson. Paramètre $\\lambda > 0$ (taux d'arrivée). Densité $f(t) = \\lambda e^{-\\lambda t}$ pour $t \\ge 0$.",
+              "example": "Temps d'attente avant le prochain bus si les bus passent en moyenne toutes les 10 minutes : $\\lambda = 0,1$ min$^{-1}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(t) = \\lambda e^{-\\lambda t} \\mathbf{1}_{[0,+\\infty[}(t) \\qquad F(t) = \\mathbb{P}(T \\le t) = 1 - e^{-\\lambda t}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction de répartition $F(t) = 1 - e^{-\\lambda t}$ donne directement la probabilité que le temps d'attente $T$ soit inférieur à $t$. La probabilité d'attendre \\emph{plus} de $t$ est $\\mathbb{P}(T > t) = e^{-\\lambda t}$. Remarque la similitude frappante avec la loi géométrique : $\\mathbb{P}(X > k) = (1-p)^k$. En posant $p = 1 - e^{-\\lambda}$ (ou $\\lambda \\approx p$ pour $p$ petit), on retrouve la même structure. C'est la version continue de la propriété sans mémoire : $\\mathbb{P}(T > s+t \\mid T > s) = \\mathbb{P}(T > t)$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "0.5 * exp(-0.5 * x)",
+              "xmin": 0,
+              "xmax": 10,
+              "rectangles": 20,
+              "caption": "Densité de la loi exponentielle λ=0,5 : aire sous la courbe = probabilité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance, variance et paramètre d'échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une variable aléatoire $T$ suivant une loi exponentielle de paramètre $\\lambda$, l'espérance et la variance se calculent par intégration. L'espérance $\\mathbb{E}(T) = \\int_0^\\infty t \\lambda e^{-\\lambda t} dt = \\frac{1}{\\lambda}$. C'est très intuitif : $\\lambda$ est le \\emph{taux} d'événements par unité de temps (par exemple $0,1$ bus par minute), donc le temps moyen entre événements est $1/\\lambda$ (ici $10$ minutes). La variance est $\\mathrm{Var}(T) = \\frac{1}{\\lambda^2}$, donc l'écart-type vaut aussi $1/\\lambda$ : pour une exponentielle, l'écart-type \\emph{est égal} à l'espérance. Le coefficient de variation (écart-type / moyenne) vaut toujours $1$, ce qui caractérise la dispersion relative constante de cette loi."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}(T) = \\frac{1}{\\lambda} \\qquad \\mathrm{Var}(T) = \\frac{1}{\\lambda^2} \\qquad \\sigma(T) = \\frac{1}{\\lambda}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette égalité moyenne = écart-type est une signature de la loi exponentielle. Elle signifie que le temps d'attente est \\emph{très variable} : il n'est pas rare d'attendre deux fois plus que la moyenne, ou deux fois moins. Comparons avec la loi normale (où l'écart-type est typiquement bien plus petit que la moyenne) ou la loi uniforme. L'exponentielle est la loi d'attente \\emph{par excellence} pour des événements qui surviennent \"au hasard\" dans le temps, sans régularité ni mémoire."
+            },
+            {
+              "type": "graph",
+              "expression": "1 - exp(-0.2 * x)",
+              "xmin": 0,
+              "xmax": 30,
+              "caption": "Fonction de répartition F(t) = 1 - e^(-λt) pour λ=0,2 (temps moyen = 5)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le lien profond : processus de Poisson et loi exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi exponentielle n'apparaît pas seule : elle est inséparable du \\emph{processus de Poisson}. Si les événements (appels, arrivées de clients, désintégrations) se produisent selon un processus de Poisson de taux $\\lambda$, alors : (1) le nombre d'événements dans un intervalle de longueur $t$ suit une loi de Poisson $\\mathcal{P}(\\lambda t)$ ; (2) les temps d'attente entre événements successifs sont des variables aléatoires \\emph{indépendantes} suivant une loi exponentielle $\\mathcal{E}(\\lambda)$. C'est un couple indissociable : le processus de Poisson compte les événements, l'exponentielle mesure les intervalles entre eux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Processus de Poisson de taux λ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Indépendance des intervalles disjoints. 2. Nombre d'événements dans un intervalle de longueur t ~ Poisson(λt). 3. Temps entre événements ~ Exponentielle(λ), indépendants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification de la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si on attend un temps T ~ Exp(λ), le nombre d'événements dans [0, t] est 0 si T > t, 1 si T ≤ t. P(0 événement) = P(T > t) = e^{-λt} = probabilité Poisson(λt) de 0 événement. Cohérent !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Généralisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le temps d'attente du k-ième événement suit une loi Gamma (somme de k exponentielles indépendantes). Pour k=1, on retrouve l'exponentielle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette structure explique pourquoi l'exponentielle est \\emph{la} loi d'attente sans mémoire. C'est la seule loi continue (avec la loi géométrique pour le discret) à posséder cette propriété. Si tu observes des temps d'attente réels et que tu veux tester s'ils suivent une exponentielle, tu peux vérifier graphiquement si $\\ln \\mathbb{P}(T > t)$ est une droite (paper probabiliste exponentiel) ou tester la propriété sans mémoire empiriquement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir le bon modèle : binomiale, géométrique, exponentielle, Poisson ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant trois modèles principaux pour l'attente : la binomiale (nombre de succès dans $n$ essais fixés), la géométrique (nombre d'essais pour le premier succès, temps discret), l'exponentielle (temps d'attente continu pour le premier événement). S'y ajoute la loi de Poisson (nombre d'événements dans un intervalle de temps continu fixé). Le choix dépend de la question posée et de la nature du temps (discret / continu) et de ce qui est fixé (nombre d'essais / durée d'observation)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Question posée",
+                "Variable aléatoire",
+                "Loi adaptée",
+                "Paramètre(s)"
+              ],
+              "rows": [
+                [
+                  "Nombre de succès dans n essais fixés",
+                  "X = nb succès",
+                  "Binomiale $\\mathcal{B}(n,p)$",
+                  "$n, p$"
+                ],
+                [
+                  "Nombre d'essais jusqu'au 1er succès (discret)",
+                  "X = nb essais",
+                  "Géométrique $\\mathcal{G}(p)$",
+                  "$p$"
+                ],
+                [
+                  "Temps d'attente jusqu'au 1er événement (continu)",
+                  "T = temps",
+                  "Exponentielle $\\mathcal{E}(\\lambda)$",
+                  "$\\lambda$"
+                ],
+                [
+                  "Nombre d'événements dans un intervalle de temps t",
+                  "N = nb événements",
+                  "Poisson $\\mathcal{P}(\\lambda t)$",
+                  "$\\lambda t$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple de choix : une centrale nucléaire surveille les rayons cosmiques. (a) On compte le nombre de particules détectées en $1$ heure $\\to$ Poisson. (b) On mesure le temps entre deux détections successives $\\to$ Exponentielle. (c) On effectue $100$ mesures de $1$ minute chacune et on compte combien de minutes ont au moins une détection $\\to$ Binomiale (avec $p = 1-e^{-\\lambda}$). (d) On attend la première détection de la journée $\\to$ Exponentielle (ou Géométrique si on discrétise par secondes). La modélisation, c'est l'art de traduire une question concrète en choix mathématique pertinent."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import numpy as np\\nimport matplotlib.pyplot as plt\\n\\n# Simulation processus de Poisson\\ndef processus_poisson(lambda_, T_max):\\n    \"\"\"Retourne les temps d'arrivée d'un processus de Poisson sur [0, T_max].\"\"\"\\n    temps = []\\n    t = 0\\n    while t < T_max:\\n        # Temps inter-arrivée ~ Exp(lambda)\\n        inter = np.random.exponential(1/lambda_)\\n        t += inter\\n        if t < T_max:\\n            temps.append(t)\\n    return temps\\n\\nlambda_ = 2.0  # 2 événements par unité de temps\\nT_max = 10\\narrivees = processus_poisson(lambda_, T_max)\\nprint(f\"Nombre d'événements dans [0, {T_max}] : {len(arrivees)}\")\\nprint(f\"Théorique (Poisson({lambda_*T_max})) : moyenne = {lambda_*T_max}\")\\nprint(f\"Temps inter-arrivées (moyenne) : {np.mean(np.diff([0]+arrivees)):.3f} (théo 1/λ = {1/lambda_:.3f})\")\\n\\n# Histogramme des temps inter-arrivées\\ninters = np.diff([0] + arrivees)\\nplt.hist(inters, bins=30, density=True, alpha=0.7, label='Empirique')\\nx = np.linspace(0, 5, 100)\\nplt.plot(x, lambda_ * np.exp(-lambda_ * x), 'r-', label=f'Exponentielle(λ={lambda_})')\\nplt.legend()\\nplt.title('Temps inter-arrivées : simulation vs théorie')\\nplt.show()",
+              "language": "python",
+              "caption": "Simulation d'un processus de Poisson et vérification de la loi exponentielle des intervalles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une expérience de Bernoulli et ses paramètres.",
+                "Je sais modéliser un nombre de succès fixé par une loi binomiale et calculer des probabilités.",
+                "Je connais l'espérance et la variance de la loi binomiale.",
+                "Je sais modéliser l'attente du premier succès en temps discret par une loi géométrique.",
+                "Je connais la propriété sans mémoire de la loi géométrique et son interprétation.",
+                "Je sais passer du discret au continu : loi géométrique → loi exponentielle.",
+                "Je connais la densité, la fonction de répartition, l'espérance et la variance de l'exponentielle.",
+                "Je sais que l'exponentielle est la loi des intervalles d'un processus de Poisson.",
+                "Je sais choisir entre binomiale, géométrique, exponentielle et Poisson selon la situation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le temps d'attente avant qu'un client n'arrive à une caisse suit une loi exponentielle de paramètre λ = 0,5 client par minute. Quelle est la probabilité d'attendre plus de 3 minutes ? Arrondis à $10^{-3}$ près.",
+              "answer": "$0,223$",
+              "hint": "P(T > t) = e^{-λt}.",
+              "explanation": "P(T > 3) = e^{-0,5 × 3} = e^{-1,5} ≈ 0,22313 ≈ 0,223."
+            },
+            {
+              "question": "Même situation (λ = 0,5). Quelle est l'espérance et l'écart-type du temps d'attente ?",
+              "answer": "Espérance = 2 minutes, Écart-type = 2 minutes",
+              "hint": "Pour une exponentielle, E(T) = 1/λ et σ(T) = 1/λ.",
+              "explanation": "E(T) = 1/0,5 = 2 min. σ(T) = 1/0,5 = 2 min. L'écart-type égale la moyenne."
+            },
+            {
+              "question": "Un processus de Poisson a un taux λ = 3 événements par heure. Quelle est la probabilité qu'il n'y ait aucun événement dans les 20 prochaines minutes ?",
+              "answer": "$e^{-1} \\approx 0,368$",
+              "hint": "20 min = 1/3 heure. Nombre d'événements ~ Poisson(λt) = Poisson(1). P(N=0) = e^{-1}.",
+              "explanation": "t = 1/3 h. λt = 3 × 1/3 = 1. N ~ Poisson(1). P(N=0) = e^{-1} ≈ 0,3679. Équivalent à P(T > 1/3) pour T ~ Exp(3)."
+            },
+            {
+              "question": "On observe des temps d'attente : 2, 5, 1, 8, 3, 12, 4, 6, 2, 7 (en minutes). On suppose une loi exponentielle. Donne l'estimateur du maximum de vraisemblance de λ et sa valeur numérique.",
+              "answer": "$\\hat{\\lambda} = 1/\\bar{t} = 0,2$ min$^{-1}$",
+              "hint": "Pour l'exponentielle, l'estimateur du MLE de λ est l'inverse de la moyenne empirique.",
+              "explanation": "Moyenne empirique = (2+5+1+8+3+12+4+6+2+7)/10 = 50/10 = 5. λ_hat = 1/5 = 0,2. Temps moyen = 5 min, taux = 0,2 par min."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,161 @@
+{
+  "_status": "done",
+  "_course_id": 436,
+  "_course_code": "4eme-t04-c02-effectifs-et-frequences",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Diagrammes",
+  "title": "Quiz Diagrammes - 4e",
+  "questions": [
+    {
+      "text": "Dans le diagramme en barres ci‑dessous, quelle catégorie a l'effectif le plus grand ?",
+      "options": [
+        "Pommes",
+        "Poires",
+        "Bananes",
+        "Cerises"
+      ],
+      "correctAnswer": "Bananes",
+      "explanation": "Les hauteurs des barres indiquent les effectifs : Pommes $12$, Poires $8$, Bananes $15$, Cerises $5$. La valeur la plus grande est $15$, correspondant à la catégorie Bananes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 15,
+            "tone": "red"
+          },
+          {
+            "label": "Cerises",
+            "value": 5,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en secteurs représente la répartition des couleurs préférées d'un groupe de $200$ élèves. Quelle est l'effectif de la catégorie \"Vert\" ?",
+      "options": [
+        "trente",
+        "quarante",
+        "cinquante",
+        "soixante"
+      ],
+      "correctAnswer": "quarante",
+      "explanation": "La part \"Vert\" occupe $20\\%$ du cercle. $20\\%$ de $200$ élèves correspond à $0,20 \\times 200 = 40$ élèves, soit quarante.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées",
+        "slices": [
+          {
+            "label": "Rouge",
+            "value": 30,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 25,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres ci‑dessous montre le nombre de ventes par jour. Quel est le total des effectifs sur les quatre jours ?",
+      "options": [
+        "quarante",
+        "quarante-quatre",
+        "quarante-huit",
+        "cinquante-deux"
+      ],
+      "correctAnswer": "quarante-quatre",
+      "explanation": "Les effectifs sont : Lundi $10$, Mardi $12$, Mercredi $8$, Jeudi $14$. La somme est $10+12+8+14 = 44$, soit quarante‑quatre.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Ventes par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 10,
+            "tone": "navy"
+          },
+          {
+            "label": "Mardi",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Mercredi",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Jeudi",
+            "value": 14,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel élément manque souvent dans un diagramme en secteurs pour qu'il soit complet et compréhensible ?",
+      "options": [
+        "Le titre",
+        "Les pourcentages",
+        "La légende",
+        "L'échelle"
+      ],
+      "correctAnswer": "La légende",
+      "explanation": "Un diagramme en secteurs doit indiquer à quoi correspond chaque secteur. La légende associe chaque couleur ou motif à sa catégorie, ce qui est indispensable pour la lecture.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le diagramme en barres ci‑dessous, la catégorie \"E\" a une hauteur de $6$ unités. Si chaque unité correspond à $5$ élèves, quel est l'effectif de la catégorie \"E\" ?",
+      "options": [
+        "vingt-cinq",
+        "trente",
+        "trente-cinq",
+        "quarante"
+      ],
+      "correctAnswer": "trente",
+      "explanation": "L'effectif se calcule en multipliant la hauteur par la valeur d'une unité : $6 \\times 5 = 30$, soit trente élèves.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectif de la catégorie E",
+        "bars": [
+          {
+            "label": "E",
+            "value": 6,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

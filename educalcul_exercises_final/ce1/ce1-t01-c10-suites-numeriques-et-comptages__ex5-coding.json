@@ -1,0 +1,77 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 77,
+  "_course_code": "ce1-t01-c10-suites-numeriques-et-comptages",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Compter de 2, 5, 10",
+  "title": "Algorithmes et comptages par 2, 5 et 10",
+  "blocks": [
+    {
+      "title": "Lire un algorithme de comptage par 2",
+      "content": "Voici un algorithme écrit en langage naturel :\\n\\nDEBUT\\nnombre <- 0\\nREPETER 6 FOIS\\n    AFFICHER nombre\\n    nombre <- nombre + 2\\nFIN REPETER\\nFIN\\n\\nSur la droite numérique ci-dessous, les nombres affichés par cet algorithme sont repérés par des points bleus. Quels sont ces six nombres ?",
+      "correctAnswer": "Les nombres affichés sont : 0, 2, 4, 6, 8, 10.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence avec la variable 'nombre' égale à $0$. La boucle 'REPETER 6 FOIS' execute deux instructions : afficher la valeur actuelle, puis ajouter $2$ a cette valeur. Les valeurs successives de 'nombre' au moment de l'affichage sont donc : $0$ (depart), $2$, $4$, $6$, $8$, $10$. Cela correspond au comptage de 2 en 2 partir de zero.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Comptage de 2 en 2 jusqu'à 20",
+        "min": 0,
+        "max": 20,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 2,
+            "label": "2"
+          },
+          {
+            "value": 4,
+            "label": "4"
+          },
+          {
+            "value": 6,
+            "label": "6"
+          },
+          {
+            "value": 8,
+            "label": "8"
+          },
+          {
+            "value": 10,
+            "label": "10"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Ecrire un algorithme pour compter de 5 en 5",
+      "content": "Ecris un algorithme en langage naturel (style pseudo-code) qui permet d'afficher les nombres du comptage de 5 en 5, depuis $0$ jusqu'a $50$ inclus.\\n\\nUtilise les mots-cles : DEBUT, FIN, nombre, REPETER, FOIS, AFFICHER, <- (affectation), + (addition).",
+      "correctAnswer": "DEBUT\\nnombre <- 0\\nREPETER 11 FOIS\\n    AFFICHER nombre\\n    nombre <- nombre + 5\\nFIN REPETER\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour aller de $0$ a $50$ par pas de $5$, il y a $11$ nombres : $0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50$. L'algorithme initialise 'nombre' a $0$. La boucle doit se repeter $11$ fois. A chaque tour, on affiche la valeur puis on ajoute $5$ pour preparer la suivante. Si on ecrivait 'REPETER 10 FOIS', on s'arreterait a $45$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Corriger un algorithme de comptage par 10",
+      "content": "Un eleve a ecrit cet algorithme pour afficher les nombres $10, 20, 30, 40, 50$ :\\n\\nDEBUT\\nnombre <- 0\\nREPETER 5 FOIS\\n    nombre <- nombre + 1\\n    AFFICHER nombre\\nFIN REPETER\\nFIN\\n\\nCet algorithme ne fonctionne pas correctement. Identifie les deux erreurs et propose la version corrigee complete.",
+      "correctAnswer": "Erreurs : 1. L'initialisation 'nombre <- 0' avec l'incrementation '+ 1' donne $1, 2, 3, 4, 5$. Il faut initialiser a $10$ OU incrementer de $10$. 2. L'ordre des instructions dans la boucle : on incremente AVANT d'afficher, donc la premiere valeur affichee est $1$ (ou $10$ si increment de 10). Pour avoir $10$ en premier, il faut AFFICHER puis incremente.\\n\\nVersion corrigee :\\nDEBUT\\nnombre <- 10\\nREPETER 5 FOIS\\n    AFFICHER nombre\\n    nombre <- nombre + 10\\nFIN REPETER\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme original a deux problemes majeurs. Premièrement, il compte de $1$ en $1$ (instruction 'nombre <- nombre + 1') au lieu de $10$ en $10$. Deuxièmement, l'ordre des instructions dans la boucle place l'incrementation AVANT l'affichage : la variable 'nombre' passe de $0$ a $1$ avant le premier affichage, donc on manque le $10$ de depart. La correction consiste a demarrer a $10$ (ou $0$ avec increment $10$ et affichage avant increment), incrementer de $10$, et afficher AVANT de modifier la variable pour la suite. Avec 'nombre <- 10' et '+ 10', la boucle 'REPETER 5 FOIS' affiche bien $10, 20, 30, 40, 50$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

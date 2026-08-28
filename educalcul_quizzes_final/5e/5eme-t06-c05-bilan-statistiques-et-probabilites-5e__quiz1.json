@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 409,
+  "_course_code": "5eme-t06-c05-bilan-statistiques-et-probabilites-5e",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Données et hasard",
+  "title": "Quiz : Données et hasard (5e)",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par cinq élèves pendant les vacances. Combien d'élèves ont lu au moins 3 livres ?",
+      "options": [
+        "2 élèves",
+        "3 élèves",
+        "4 élèves",
+        "5 élèves"
+      ],
+      "correctAnswer": "3 élèves",
+      "explanation": "On lit les valeurs sur le diagramme : Alice a lu 2 livres, Bob 4 livres, Charlie 3 livres, David 1 livre et Eve 5 livres. Les élèves ayant lu au moins 3 livres sont Bob (4), Charlie (3) et Eve (5), soit 3 élèves au total.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par cinq élèves",
+        "bars": [
+          {
+            "label": "Alice",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Bob",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Charlie",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "David",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "Eve",
+            "value": 5,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Les notes obtenues par un élève à cinq contrôles sont : $12$, $15$, $10$, $14$, $14$. Quelle est la moyenne de ces notes ?",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "correctAnswer": "13",
+      "explanation": "La moyenne se calcule en faisant la somme des valeurs divisée par le nombre de valeurs. La somme est $12 + 15 + 10 + 14 + 14 = 65$. Il y a 5 notes. La moyenne est $65 \\div 5 = 13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quel qualificatif convient à l'événement « obtenir un nombre strictement supérieur à $6$ » ?",
+      "options": [
+        "Certain",
+        "Probable",
+        "Impossible",
+        "Hasard"
+      ],
+      "correctAnswer": "Impossible",
+      "explanation": "Les faces du dé portent les nombres $1$, $2$, $3$, $4$, $5$, $6$. Aucun nombre n'est strictement supérieur à $6$. Cet événement ne peut jamais se réaliser, il est donc impossible. Un événement certain se réalise à coup sûr, un événement probable a une chance de se réaliser sans être certain.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $3$ boules rouges, $4$ boules bleues et $5$ boules vertes. On prélève une boule au hasard. Quelle est la probabilité d'obtenir une boule bleue ?",
+      "options": [
+        "$1/4$",
+        "$1/3$",
+        "$4/5$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "Il y a au total $3 + 4 + 5 = 12$ boules. L'événement favorable est « tirer une boule bleue », il y a 4 boules bleues. La probabilité est le quotient du nombre de cas favorables sur le nombre de cas possibles : $4/12 = 1/3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul lance une pièce de monnaie équilibrée $100$ fois et obtient $60$ faces. Julie lance la même pièce $100$ fois et obtient $48$ faces. Laquelle des affirmations suivantes est correcte ?",
+      "options": [
+        "La pièce de Paul est truquée car il a obtenu plus de faces que de piles.",
+        "La pièce de Julie est truquée car elle n'a pas obtenu exactement $50$ faces.",
+        "Les deux résultats sont possibles car le hasard fait varier les fréquences autour de $1/2$.",
+        "La probabilité d'obtenir face change à chaque lancer."
+      ],
+      "correctAnswer": "Les deux résultats sont possibles car le hasard fait varier les fréquences autour de $1/2$.",
+      "explanation": "Même avec une pièce équilibrée (probabilité de face = $1/2$), la fréquence observée sur un nombre fini de lancers ($100$ ici) fluctue autour de la probabilité théorique. Obtenir $60$ faces ou $48$ faces sont des résultats tout à fait plausibles dus au hasard. Ce n'est qu'en augmentant beaucoup le nombre de lancers que la fréquence se stabilise près de $1/2$ (loi des grands nombres).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

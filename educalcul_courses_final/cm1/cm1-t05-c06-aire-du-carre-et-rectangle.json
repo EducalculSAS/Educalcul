@@ -1,0 +1,467 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.239844+00:00",
+  "id": 246,
+  "code": "cm1-t05-c06",
+  "title": "Aire du carré et rectangle",
+  "description": "Cours structuré Educalcul : Aire du carré et rectangle.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Aire du carré et rectangle",
+    "objectif_global": "Aire du carré et rectangle",
+    "mini_lecons_imposees": [
+      "Construire la formule.",
+      "Calculer.",
+      "Résoudre problème."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Construire la formule.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que l'aire d'une surface ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux recouvrir le sol de ta chambre avec des carreaux de $1\\,cm$ de côté. L'aire, c'est exactement le nombre de ces petits carreaux qu'il faut poser sans les faire se chevaucher pour couvrir toute la surface. On compte en unités d'aire : le centimètre carré ($cm^2$), le mètre carré ($m^2$), etc. C'est comme une grande mosaïque où chaque petit carré est une unité de mesure."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "■",
+                  "■",
+                  "■",
+                  "■"
+                ],
+                [
+                  "2",
+                  "■",
+                  "■",
+                  "■",
+                  "■"
+                ],
+                [
+                  "3",
+                  "■",
+                  "■",
+                  "■",
+                  "■"
+                ]
+              ],
+              "caption": "Un rectangle de $3$ rangées sur $4$ colonnes : $12$ carrés unitaires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au lieu de compter un par un les petits carrés, on a découvert une astuce formidable. Regarde le tableau : il y a $3$ rangées (la largeur) et $4$ colonnes (la longueur). Le total, c'est $3 \\times 4 = 12$. Pour n'importe quel rectangle, il suffit de multiplier la longueur par la largeur. On note souvent $L$ la longueur et $l$ la largeur, et $A$ l'aire."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = L \\\\times l"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les mesures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis bien l'énoncé ou regarde la figure : quelle est la longueur $L$ ? Quelle est la largeur $l$ ? Vérifie qu'elles sont dans la même unité ($cm$, $m$...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $L \\times l$. Le résultat donne l'aire en unités carrées ($cm^2$, $m^2$...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Termine par une phrase : \"L'aire de ce rectangle est de ... $cm^2$.\""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le carré : un rectangle très spécial"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un carré, c'est un rectangle dont les quatre côtés ont la même longueur. On appelle cette longueur le côté, noté $c$. Comme longueur $=$ largeur $= c$, la formule devient encore plus simple : on multiplie le côté par lui-même. C'est ce qu'on appelle le carré du nombre."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = c \\\\times c"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, un carré de côté $5\\,cm$ a une aire de $5 \\times 5 = 25\\,cm^2$. Tu peux le vérifier en dessinant une grille de $5$ par $5$ : tu compteras bien $25$ petits carrés. C'est une formule qu'on retient très vite parce qu'elle est si courte !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu viens de construire les deux formules essentielles ! Dans la prochaine leçon, on va t'entraîner à les utiliser avec plein de nombres différents, y compris quand il faut convertir les unités avant de multiplier."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle mesure $6\\,cm$ de long et $4\\,cm$ de large. Quelle est son aire ?",
+              "answer": "$24\\,cm^2$",
+              "hint": "Utilise la formule $A = L \\\\times l$.",
+              "explanation": "On multiplie la longueur par la largeur : $6 \\\\times 4 = 24$. L'aire est de $24\\,cm^2$."
+            },
+            {
+              "question": "Un carré a un côté de $7\\,cm$. Calcule son aire.",
+              "answer": "$49\\,cm^2$",
+              "hint": "La formule du carré est $A = c \\\\times c$.",
+              "explanation": "On fait $7 \\\\times 7 = 49$. L'aire vaut $49\\,cm^2$."
+            },
+            {
+              "question": "Parmi ces figures, laquelle a la plus grande aire ? Un rectangle $8\\,cm \\\\times 3\\,cm$ ou un carré de côté $5\\,cm$ ?",
+              "answer": "Le rectangle ($24\\,cm^2$ contre $25\\,cm^2$) — le carré est plus grand.",
+              "hint": "Calcule l'aire de chaque figure puis compare.",
+              "explanation": "Rectangle : $8 \\\\times 3 = 24\\,cm^2$. Carré : $5 \\\\times 5 = 25\\,cm^2$. Le carré a l'aire la plus grande."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer l'aire d'un rectangle avec des nombres entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais la formule $A = L \\\\times l$, on va l'appliquer à des mesures variées. Parfois la longueur et la largeur sont données en centimètres, parfois en mètres. L'important, c'est que les deux mesures soient dans la même unité avant de multiplier. Si l'énoncé donne $L = 12\\,cm$ et $l = 8\\,cm$, tu fais simplement $12 \\\\times 8$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "\\\\times",
+              "operands": [
+                "12",
+                "8"
+              ],
+              "result": "96",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois la multiplication posée ? Elle donne $96$. L'aire est donc $96\\,cm^2$. N'oublie jamais d'écrire l'unité carrée à la fin : $cm^2$ si c'était des centimètres, $m^2$ si c'était des mètres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer l'aire d'un carré : le carré d'un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le carré, c'est encore plus rapide : on multiplie le côté par lui-même. C'est ce qu'on appelle \"élever au carré\". Si le côté mesure $9\\,cm$, tu calcules $9 \\\\times 9 = 81$. L'aire est $81\\,cm^2$. Essaie de mémoriser quelques carrés utiles : $6^2=36$, $7^2=49$, $8^2=64$, $9^2=81$, $10^2=100$. Ça te fera gagner du temps !"
+            },
+            {
+              "type": "display_math",
+              "latex": "6^2 = 36,\\\\quad 7^2 = 49,\\\\quad 8^2 = 64,\\\\quad 9^2 = 81"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand il faut convertir les unités avant de calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, piège fréquent ! Parfois la longueur est en mètres et la largeur en centimètres. Par exemple : $L = 2\\,m$ et $l = 50\\,cm$. Tu ne peux pas multiplier $2 \\\\times 50$ directement. Il faut d'abord mettre tout dans la même unité. Ici, le plus simple est de passer tout en centimètres : $2\\,m = 200\\,cm$. Alors $A = 200 \\\\times 50 = 10\\,000\\,cm^2$. Tu peux aussi tout passer en mètres : $50\\,cm = 0,5\\,m$, puis $2 \\\\times 0,5 = 1\\,m^2$. Les deux résultats sont équivalents : $1\\,m^2 = 10\\,000\\,cm^2$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Équivalence"
+              ],
+              "rows": [
+                [
+                  "$1\\,m$",
+                  "$100\\,cm$"
+                ],
+                [
+                  "$1\\,m^2$",
+                  "$10\\,000\\,cm^2$"
+                ],
+                [
+                  "$1\\,dm$",
+                  "$10\\,cm$"
+                ],
+                [
+                  "$1\\,dm^2$",
+                  "$100\\,cm^2$"
+                ]
+              ],
+              "caption": "Repères pour convertir les unités d'aire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème inverse : retrouver une dimension manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on connaît l'aire et une seule dimension, et on doit trouver l'autre. C'est une division ! Si un rectangle a une aire de $56\\,cm^2$ et une longueur de $8\\,cm$, sa largeur est $56 \\\\div 8 = 7\\,cm$. Pour un carré, si l'aire est $64\\,cm^2$, le côté est le nombre qui, multiplié par lui-même, donne $64$. C'est $8$ car $8 \\\\times 8 = 64$. On dit qu'on extrait la racine carrée, mais pour l'instant tu cherches dans tes tables de multiplication."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier ce qu'on connaît",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aire connue, une dimension connue (longueur ou largeur pour un rectangle, côté pour un carré)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rectangle : division (aire ÷ dimension connue). Carré : chercher quel nombre multiplié par lui-même donne l'aire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Refais la multiplication pour retomber sur l'aire de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu sais maintenant calculer des aires dans tous les sens. La prochaine leçon te proposera des problèmes concrets où il faudra lire, comprendre, choisir la bonne formule et parfois faire plusieurs étapes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'aire d'un rectangle de longueur $15\\,cm$ et de largeur $6\\,cm$.",
+              "answer": "$90\\,cm^2$",
+              "hint": "Multiplie $15$ par $6$.",
+              "explanation": "$15 \\\\times 6 = 90$. L'aire est $90\\,cm^2$."
+            },
+            {
+              "question": "Un carré a un côté de $12\\,cm$. Quelle est son aire ?",
+              "answer": "$144\\,cm^2$",
+              "hint": "Calcule $12 \\\\times 12$.",
+              "explanation": "$12 \\\\times 12 = 144$. L'aire vaut $144\\,cm^2$."
+            },
+            {
+              "question": "Un rectangle a une longueur de $3\\,m$ et une largeur de $80\\,cm$. Donne son aire en $cm^2$.",
+              "answer": "$24\\,000\\,cm^2$",
+              "hint": "Convertis $3\\,m$ en centimètres avant de multiplier.",
+              "explanation": "$3\\,m = 300\\,cm$. $300 \\\\times 80 = 24\\,000\\,cm^2$."
+            },
+            {
+              "question": "L'aire d'un rectangle est $72\\,cm^2$. Sa largeur est $8\\,cm$. Trouve sa longueur.",
+              "answer": "$9\\,cm$",
+              "hint": "Fais la division $72 \\\\div 8$.",
+              "explanation": "$72 \\\\div 8 = 9$. La longueur est $9\\,cm$. Vérification : $9 \\\\times 8 = 72$."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre problème.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un problème pour en extraire les données utiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un problème, les nombres ne sont pas toujours alignés gentiment. Il faut lire calmement, souligner les mesures données et la question. Par exemple : \"Le jardin rectangulaire de Mamie mesure $12\\,m$ de long et $8\\,m$ de large. Elle veut poser du gazon. Combien de mètres carrés de gazon doit-elle acheter ?\" Ici, on repère $L = 12\\,m$, $l = 8\\,m$, et la question porte sur l'aire en $m^2$. C'est une multiplication directe."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Visualisation des dimensions du jardin.",
+              "bars": [
+                {
+                  "label": "Longueur",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Largeur",
+                  "value": 8,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème à deux étapes : calculer puis comparer ou compléter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le problème demande un peu plus de réflexion. \"Une salle de classe carrée a un côté de $7\\,m$. On veut la carreler avec des carreaux de $1\\,m^2$ chacun. Combien de carreaux faut-il ?\" Première étape : aire de la salle $= 7 \\\\times 7 = 49\\,m^2$. Deuxième étape : comme chaque carreau fait $1\\,m^2$, il faut exactement $49$ carreaux. Le nombre de carreaux est égal à l'aire en $m^2$ parce que l'unité du carreau correspond à l'unité d'aire."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = 7 \\\\times 7 = 49\\\\,m^2 \\\\Rightarrow 49 \\\\text{ carreaux}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème avec figure composée : découper pour mieux calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un défi amusant : une figure en forme de L, comme deux rectangles collés. On ne peut pas appliquer la formule directement sur la figure entière. L'astuce, c'est de la couper en deux rectangles (ou un rectangle et un carré), de calculer l'aire de chaque morceau, puis d'additionner les deux aires. C'est la méthode de la décomposition. Elle marche à tous les coups !"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Schéma d'une figure en L découpée en rectangle A ($6\\\\times4$) et rectangle B ($3\\\\times2$).",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "6",
+                "4",
+                "3"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde : le grand rectangle A fait $6\\,m \\\\times 4\\,m = 24\\,m^2$. Le petit rectangle B fait $3\\,m \\\\times 2\\,m = 6\\,m^2$. L'aire totale est $24 + 6 = 30\\,m^2$. Tu peux aussi découper autrement, le total restera le même. C'est la magie de l'aire : elle ne change pas si on réarrange les pièces sans les faire se chevaucher."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour aborder sereinement n'importe quel problème d'aire au CM1. Relis bien les énoncés, fais un petit schéma si ça t'aide, choisis la bonne formule, vérifie les unités, et n'hésite pas à découper les figures compliquées. Tu es prêt pour le bilan !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est l'aire avec mes mots.",
+                "Je connais la formule de l'aire du rectangle : $A = L \\\\times l$.",
+                "Je connais la formule de l'aire du carré : $A = c \\\\times c$.",
+                "Je sais convertir les unités de longueur ($m$, $dm$, $cm$) avant de calculer une aire.",
+                "Je sais retrouver une dimension manquante connaissant l'aire (division ou recherche du carré).",
+                "Je sais résoudre un problème en décomposant une figure en rectangles ou carrés."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un terrain rectangulaire mesure $25\\,m$ de long et $15\\,m$ de large. Quelle est sa surface en $m^2$ ?",
+              "answer": "$375\\,m^2$",
+              "hint": "Multiplie la longueur par la largeur.",
+              "explanation": "$25 \\\\times 15 = 375$. La surface est de $375\\,m^2$."
+            },
+            {
+              "question": "Une nappe carrée a un côté de $1,50\\,m$. On veut la border avec un ruban. Quelle longueur de ruban faut-il ? (Indice : ce n'est pas l'aire qu'on cherche ici.)",
+              "answer": "$6\\,m$",
+              "hint": "Le ruban fait le tour du carré : c'est le périmètre. $4 \\\\times$ côté.",
+              "explanation": "Attention, le problème demande le périmètre, pas l'aire ! Périmètre $= 4 \\\\times 1,50 = 6\\,m$."
+            },
+            {
+              "question": "Une figure en L est formée d'un rectangle de $10\\,cm \\\\times 6\\,cm$ et d'un carré de côté $4\\,cm$ collés ensemble sans se chevaucher. Calcule l'aire totale.",
+              "answer": "$76\\,cm^2$",
+              "hint": "Calcule l'aire de chaque morceau puis additionne.",
+              "explanation": "Rectangle : $10 \\\\times 6 = 60\\,cm^2$. Carré : $4 \\\\times 4 = 16\\,cm^2$. Total : $60 + 16 = 76\\,cm^2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 247,
+  "_course_code": "cm1-t05-c07-bilan-grandeurs-cm1",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Conversions, temps, périmètre, aire",
+  "title": "Algorithmes : conversions, temps, périmètre et aire",
+  "blocks": [
+    {
+      "title": "Conversion de longueurs",
+      "content": "Écris un algorithme (en pseudo-code ou syntaxe Python simplifiée) qui demande à l'utilisateur une longueur en mètres, la convertit en centimètres puis en millimètres, et affiche les deux résultats. On rappelle que $1 \\text{ m} = 100 \\text{ cm}$ et $1 \\text{ cm} = 10 \\text{ mm}$.",
+      "correctAnswer": "DEBUT\\n  AFFICHER \"Entrez la longueur en mètres : \"\\n  LIRE metres\\n  centimetres = metres * 100\\n  millimetres = centimetres * 10\\n  AFFICHER \"En centimètres : \", centimetres, \" cm\"\\n  AFFICHER \"En millimètres : \", millimetres, \" mm\"\\nFIN",
+      "explanation": "L'algorithme suit trois étapes : la saisie de la valeur de départ en mètres, les calculs de conversion successifs (multiplication par 100 pour passer aux centimètres, puis par 10 pour passer aux millimètres), et l'affichage clair des deux résultats avec leurs unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'une durée",
+      "content": "Écris un algorithme qui calcule la durée en minutes entre deux horaires donnés le même jour. L'algorithme demande l'heure et les minutes de début, puis l'heure et les minutes de fin. Il affiche la durée totale en minutes. On suppose que l'heure de fin est postérieure à l'heure de début.",
+      "correctAnswer": "DEBUT\\n  AFFICHER \"Heure de début : \"\\n  LIRE h_debut\\n  AFFICHER \"Minutes de début : \"\\n  LIRE min_debut\\n  AFFICHER \"Heure de fin : \"\\n  LIRE h_fin\\n  AFFICHER \"Minutes de fin : \"\\n  LIRE min_fin\\n  total_debut = h_debut * 60 + min_debut\\n  total_fin = h_fin * 60 + min_fin\\n  duree = total_fin - total_debut\\n  AFFICHER \"La durée est de \", duree, \" minutes\"\\nFIN",
+      "explanation": "Pour comparer ou soustraire des horaires, la méthode standard consiste à tout convertir en minutes depuis minuit (heures $\\times$ 60 + minutes). La soustraction du total de fin moins le total de début donne directement la durée en minutes, ce qui évite les erreurs de retenue sur les heures.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Périmètre et aire d'un rectangle",
+      "content": "Écris un algorithme qui demande la longueur et la largeur d'un rectangle (en centimètres), calcule son périmètre et son aire, puis affiche les deux résultats avec leurs unités. On rappelle les formules : Périmètre = $(L + l) \\times 2$ et Aire = $L \\times l$.",
+      "correctAnswer": "DEBUT\\n  AFFICHER \"Entrez la longueur (cm) : \"\\n  LIRE L\\n  AFFICHER \"Entrez la largeur (cm) : \"\\n  LIRE l\\n  perimetre = (L + l) * 2\\n  aire = L * l\\n  AFFICHER \"Périmètre : \", perimetre, \" cm\"\\n  AFFICHER \"Aire : \", aire, \" cm²\"\\nFIN",
+      "explanation": "L'algorithme applique directement les formules géométriques du rectangle. Le périmètre est la somme des longueurs des quatre côtés, calculée ici par $(L + l) \\times 2$. L'aire est le produit de la longueur par la largeur. L'affichage précise l'unité linéaire (cm) pour le périmètre et l'unité surfacique (cm²) pour l'aire.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

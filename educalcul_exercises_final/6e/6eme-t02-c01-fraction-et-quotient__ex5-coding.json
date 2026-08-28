@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 336,
+  "_course_code": "6eme-t02-c01-fraction-et-quotient",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Sens",
+  "title": "Algorithmes et sens de la fraction comme quotient",
+  "blocks": [
+    {
+      "title": "Algorithme de calcul du quotient",
+      "content": "Écris un algorithme (ou un programme Python) qui demande à l'utilisateur un numérateur et un dénominateur (entiers, dénominateur non nul), puis qui affiche le résultat de la division sous forme décimale. Par exemple, pour $3$ et $4$, il affiche $0,75$.",
+      "correctAnswer": "Algorithme :\\n1. Demander numérateur\\n2. Demander dénominateur\\n3. Si dénominateur = 0 alors afficher \"Erreur\" sinon afficher numérateur / dénominateur\\n\\nEn Python :\\nnum = int(input(\"Numérateur : \"))\\nden = int(input(\"Dénominateur : \"))\\nif den != 0:\\n    print(num / den)\\nelse:\\n    print(\"Division par zéro impossible\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $\\frac{a}{b}$ est le quotient de $a$ par $b$. L'algorithme effectue simplement la division décimale $a \\div b$. On doit vérifier que le dénominateur n'est pas nul pour éviter une erreur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer une fraction à 1",
+      "content": "Écris un algorithme qui prend un numérateur $a$ et un dénominateur $b$ (entiers positifs) et qui affiche : \"Supérieur à 1\" si $\\frac{a}{b} > 1$, \"Égal à 1\" si $\\frac{a}{b} = 1$, \"Inférieur à 1\" sinon.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b\\n2. Si a > b alors afficher \"Supérieur à 1\"\\n3. Sinon si a = b alors afficher \"Égal à 1\"\\n4. Sinon afficher \"Inférieur à 1\"\\n\\nEn Python :\\na = int(input(\"Numérateur : \"))\\nb = int(input(\"Dénominateur : \"))\\nif a > b:\\n    print(\"Supérieur à 1\")\\nelif a == b:\\n    print(\"Égal à 1\")\\nelse:\\n    print(\"Inférieur à 1\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fraction $\\frac{a}{b}$ (avec $b>0$) est supérieure à 1 si le numérateur est plus grand que le dénominateur ($a>b$), égale à 1 s'ils sont égaux ($a=b$), et inférieure à 1 si le numérateur est plus petit ($a<b$). C'est une application directe du sens quotient : on compare le dividende au diviseur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer une fraction d'une quantité",
+      "content": "Écris un algorithme qui calcule $\\frac{a}{b}$ d'une quantité $Q$ (nombre décimal). L'algorithme demande $a$, $b$ et $Q$, puis affiche le résultat. Rappel : $\\frac{a}{b} \\times Q = (Q \\div b) \\times a$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, Q\\n2. Si b = 0 alors afficher \"Erreur\"\\n3. Sinon calculer partie = Q / b\\n4. Calculer resultat = partie * a\\n5. Afficher resultat\\n\\nEn Python :\\na = int(input(\"Numérateur : \"))\\nb = int(input(\"Dénominateur : \"))\\nQ = float(input(\"Quantité : \"))\\nif b != 0:\\n    resultat = (Q / b) * a\\n    print(resultat)\\nelse:\\n    print(\"Dénominateur nul\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer la fraction $\\frac{a}{b}$ d'une quantité $Q$, on utilise le sens quotient : on divise $Q$ en $b$ parts égales ($Q \\div b$) puis on en prend $a$ ($\\times a$). L'algorithme traduit cette procédure en deux étapes de calcul successives.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

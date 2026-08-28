@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 427,
+  "_course_code": "4eme-t02-c03-equations-du-premier-degre",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Égalité",
+  "title": "Approfondissement : Propriétés de l'égalité",
+  "questions": [
+    {
+      "text": "Soit l'égalité $5x - 3 = 12$. Quelle opération faut-il effectuer sur les deux membres pour isoler le terme en $x$ ?",
+      "options": [
+        "Ajouter $3$ aux deux membres",
+        "Soustraire $3$ aux deux membres",
+        "Diviser les deux membres par $5$",
+        "Multiplier les deux membres par $5$"
+      ],
+      "correctAnswer": "Ajouter $3$ aux deux membres",
+      "explanation": "Pour isoler le terme $5x$, il faut faire disparaître le $-3$ du premier membre. L'opération inverse de la soustraction est l'addition. On ajoute donc $3$ des deux côtés : $5x - 3 + 3 = 12 + 3$, ce qui donne $5x = 15$. Les autres options correspondent à des étapes ultérieures (division par 5) ou à des erreurs de signe (soustraire 3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a l'égalité $7 = 2y + 1$. Après avoir soustrait $1$ aux deux membres, on obtient $6 = 2y$. Quelle est l'étape suivante pour trouver $y$ ?",
+      "options": [
+        "Multiplier les deux membres par $2$",
+        "Diviser les deux membres par $2$",
+        "Ajouter $2$ aux deux membres",
+        "Soustraire $2$ aux deux membres"
+      ],
+      "correctAnswer": "Diviser les deux membres par $2$",
+      "explanation": "L'égalité $6 = 2y$ signifie que $2$ multiplié par $y$ donne $6$. Pour isoler $y$, il faut effectuer l'opération inverse de la multiplication, c'est-à-dire la division. On divise donc les deux membres par $2$ : $6 / 2 = 2y / 2$, ce qui donne $y = 3$. Multiplier par 2 donnerait $12 = 4y$, ce qui complique l'équation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est fausse ?",
+      "options": [
+        "Si $a = b$, alors $a + 5 = b + 5$",
+        "Si $a = b$, alors $a - 5 = b - 5$",
+        "Si $a = b$, alors $a \\times 0 = b \\times 0$",
+        "Si $a = b$, alors $a / 0 = b / 0$"
+      ],
+      "correctAnswer": "Si $a = b$, alors $a / 0 = b / 0$",
+      "explanation": "Les trois premières propositions sont des propriétés vraies de l'égalité : on peut ajouter, soustraire ou multiplier par un même nombre (y compris 0) les deux membres d'une égalité sans la changer. En revanche, la division par zéro est interdite en mathématiques : elle n'a pas de sens. L'égalité $a / 0 = b / 0$ est donc fausse (et sans signification).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On part de l'égalité $4x + 8 = 20$. Un élève propose les deux étapes suivantes : 1) Diviser par 4 : $x + 8 = 5$. 2) Soustraire 8 : $x = -3$. Où est l'erreur ?",
+      "options": [
+        "L'erreur est à l'étape 1 : il faut diviser tous les termes du premier membre par 4",
+        "L'erreur est à l'étape 2 : il faut ajouter 8 et non soustraire",
+        "L'erreur est à l'étape 1 : il faut d'abord soustraire 8 avant de diviser",
+        "Il n'y a pas d'erreur, le résultat $x = -3$ est correct"
+      ],
+      "correctAnswer": "L'erreur est à l'étape 1 : il faut diviser tous les termes du premier membre par 4",
+      "explanation": "Lorsqu'on divise les deux membres d'une égalité par un nombre, il faut diviser **chaque terme** de chaque membre. L'élève a divisé $4x$ par 4 (ce qui donne $x$) et $20$ par 4 (ce qui donne $5$), mais il a oublié de diviser $+8$ par 4. L'étape 1 correcte est : $(4x + 8) / 4 = 20 / 4$, soit $x + 2 = 5$. On trouve alors $x = 3$. L'ordre des opérations (soustraire puis diviser, ou diviser correctement puis soustraire) n'importe pas tant que les règles sont respectées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut résoudre l'équation $3(x - 2) = 15$. Quelle est la première transformation correcte à appliquer ?",
+      "options": [
+        "Distribuer le 3 : $3x - 6 = 15$",
+        "Diviser les deux membres par 3 : $x - 2 = 5$",
+        "Ajouter 2 aux deux membres : $3x = 17$",
+        "Soustraire 3 aux deux membres : $x - 2 = 12$"
+      ],
+      "correctAnswer": "Diviser les deux membres par 3 : $x - 2 = 5$",
+      "explanation": "Les deux méthodes (distribuer ou diviser par 3) sont mathématiquement correctes et mènent au même résultat. Cependant, diviser par 3 en premier est plus simple et rapide car cela évite de manipuler des nombres plus grands ($3x - 6 = 15$). C'est la méthode privilégiée lors de l'approfondissement pour aller à l'essentiel. L'option 'Ajouter 2' est une erreur car le 2 est à l'intérieur de la parenthèse, lié au $x$. L'option 'Soustraire 3' confond le coefficient 3 avec un terme à part entière.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

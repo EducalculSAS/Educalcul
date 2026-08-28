@@ -1,0 +1,289 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.729403+00:00",
+  "id": 81,
+  "code": "ce1-t02-c03",
+  "title": "Numérateur et dénominateur",
+  "description": "Cours structuré Educalcul : Numérateur et dénominateur.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Numérateur et dénominateur",
+    "objectif_global": "Numérateur et dénominateur",
+    "mini_lecons_imposees": [
+      "Identifier les deux nombres.",
+      "Relier dénominateur au nombre de parts.",
+      "Relier numérateur au nombre de parts prises."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Identifier les deux nombres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons rencontrer une écriture très spéciale : la fraction. Regarde bien : il y a un trait horizontal, un nombre au-dessus et un nombre en-dessous. C'est comme un petit étage à deux niveaux !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "circle",
+              "caption": "La fraction un demi : $1$ au-dessus, $2$ en-dessous."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois les deux nombres ? Le premier, tout en haut, s'appelle le numérateur. Le second, tout en bas, s'appelle le dénominateur. Ce sont des mots un peu longs, mais tu vas vite les adopter. Dis-les tout haut : nu-mé-ra-teur, dé-no-mi-na-teur. Bravo !"
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre écrit au-dessus du trait de la fraction.",
+              "example": "Dans $\\frac{3}{4}$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre écrit en-dessous du trait de la fraction.",
+              "example": "Dans $\\frac{3}{4}$, le dénominateur est $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, entraîne ton œil ! Regarde cette nouvelle fraction. Le trait est bien là, bien horizontal. Le nombre du haut est-il plus grand ou plus petit que celui du bas ? Peu importe, ce qui compte c'est de les repérer à coup sûr."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Une fraction avec $3$ au numérateur et $5$ au dénominateur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, le numérateur est $3$ et le dénominateur est $5$. Essaie de le dire dans l'ordre : d'abord le numérateur, puis le dénominateur. C'est comme une petite chorégraphie : haut, bas, haut, bas. Tu as le rythme ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette première rencontre, jouons à cache-cache. Je te montre une fraction, tu me dis quel nombre se cache en haut et quel nombre se cache en bas. C'est parti, sois attentif !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Fraction mystère : deux nombres à identifier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la fraction $\\frac{1}{2}$, quel est le numérateur ?",
+              "answer": "$1$",
+              "hint": "Regarde le nombre écrit au-dessus du trait.",
+              "explanation": "Le numérateur est le nombre du haut. Ici, c'est $1$."
+            },
+            {
+              "question": "Dans la fraction $\\frac{3}{5}$, quel est le dénominateur ?",
+              "answer": "$5$",
+              "hint": "Regarde le nombre écrit en-dessous du trait.",
+              "explanation": "Le dénominateur est le nombre du bas. Ici, c'est $5$."
+            },
+            {
+              "question": "Complète : dans la fraction $\\frac{2}{3}$, le numérateur est $\\ldots$ et le dénominateur est $\\ldots$.",
+              "answer": "numérateur $2$, dénominateur $3$",
+              "hint": "Haut = numérateur, bas = dénominateur.",
+              "explanation": "Au-dessus du trait on a $2$ (numérateur), en-dessous $3$ (dénominateur)."
+            }
+          ]
+        },
+        {
+          "title": "Relier dénominateur au nombre de parts.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans la deuxième leçon ! Aujourd'hui, nous allons découvrir le secret du dénominateur. Imagine une barre de chocolat que tu veux partager équitablement. Le dénominateur, c'est le nombre de parts égales dans lesquelles tu coupes la barre."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Une barre coupée en $4$ parts égales. Le dénominateur est $4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la barre : elle est divisée en $4$ morceaux de la même taille. Le dénominateur, c'est $4$. Il nous dit : \"Attention, le tout a été découpé en $4$ parts identiques !\" Si tu coupes en $3$ parts, le dénominateur devient $3$. Si tu coupes en $8$ parts, il devient $8$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un disque maintenant. Un gâteau rond, c'est sympa aussi ! Si je le coupe en $6$ parts égales pour mes $6$ copains, quel sera le dénominateur de la fraction qui représente une part ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "circle",
+              "caption": "Un disque divisé en $6$ parts égales. Le dénominateur est $6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exactement, le dénominateur est $6$. Le nombre de parts totales est écrit en bas. C'est la règle d'or : le dénominateur compte le nombre de parts du partage équitable. Plus le dénominateur est grand, plus les parts sont petites !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, piège ! Pour que le dénominateur ait du sens, toutes les parts doivent avoir la même taille. Si je coupe un gâteau en deux grosses parts et une toute petite, ce n'est pas un partage équitable. On ne peut pas écrire un dénominateur propre. Le dénominateur exige la justice : parts égales obligatoire !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Trois parts égales : dénominateur $3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une barre est coupée en $5$ parts égales. Quel est le dénominateur ?",
+              "answer": "$5$",
+              "hint": "Compte le nombre total de parts égales.",
+              "explanation": "Le dénominateur indique en combien de parts égales le tout est divisé. Ici, $5$ parts, donc dénominateur $5$."
+            },
+            {
+              "question": "Un cercle est divisé en $8$ parts égales. Écrit le dénominateur.",
+              "answer": "$8$",
+              "hint": "Regarde en combien de parts le disque est coupé.",
+              "explanation": "Le cercle est partagé en $8$ parts identiques, le dénominateur est donc $8$."
+            },
+            {
+              "question": "Parmi ces dessins, lequel montre un dénominateur de $4$ ?",
+              "answer": "Le dessin divisé en $4$ parts égales.",
+              "hint": "Cherche le partage en $4$ parts de même taille.",
+              "explanation": "Le dénominateur $4$ correspond à un tout divisé en $4$ parts égales."
+            }
+          ]
+        },
+        {
+          "title": "Relier numérateur au nombre de parts prises.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière leçon de notre aventure ! Nous connaissons le dénominateur (le nombre de parts totales). Maintenant, intéressons-nous au numérateur, le nombre du haut. Lui, il compte les parts qu'on prend, qu'on colore ou qu'on mange !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Barre en $4$ parts : $3$ sont colorées. Le numérateur est $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde : la barre est coupée en $4$ (dénominateur $4$). J'ai colorié $3$ parts sur les $4$. Le numérateur, c'est $3$. Il répond à la question : \"Combien de parts ai-je prises ?\" C'est comme quand tu prends $3$ bonbons dans un sachet de $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Amusons-nous à faire varier le numérateur pendant que le dénominateur reste fixe. Même gâteau coupé en $6$ (dénominateur $6$). Si je mange $1$ part, numérateur $1$. Si je mange $2$ parts, numérateur $2$. Et si je mange tout le gâteau ? Numérateur $6$ ! La fraction devient $\\frac{6}{6}$, ça fait $1$ gâteau entier."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 6,
+              "shape": "circle",
+              "caption": "Disque en $6$ parts : $2$ parts prises. Numérateur $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, toi qui deviens expert, tu sais lire une fraction complète. Le numérateur (en haut) dit : \"J'ai pris tant de parts.\" Le dénominateur (en bas) dit : \"Le tout était coupé en tant de parts.\" Ensemble, ils racontent une histoire de partage. C'est ton tour de raconter l'histoire !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "Fraction $\\frac{5}{8}$ : $5$ parts prises sur $8$ parts au total."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer le numérateur (en haut) et le dénominateur (en bas) dans une fraction.",
+                "Je sais que le dénominateur donne le nombre de parts égales du tout.",
+                "Je sais que le numérateur donne le nombre de parts prises ou coloriées.",
+                "Je peux écrire la fraction correspondante à un dessin partagé."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une barre coupée en $4$ parts égales, $3$ parts sont coloriées. Quel est le numérateur ?",
+              "answer": "$3$",
+              "hint": "Compte les parts coloriées.",
+              "explanation": "Le numérateur compte les parts prises ou coloriées. Ici, $3$ parts sont coloriées, donc numérateur $3$."
+            },
+            {
+              "question": "Un disque est divisé en $6$ parts égales. $2$ parts sont hachurées. Écris la fraction.",
+              "answer": "$\\frac{2}{6}$",
+              "hint": "Numérateur = parts hachurées, dénominateur = parts totales.",
+              "explanation": "Il y a $6$ parts en tout (dénominateur $6$) et $2$ parts hachurées (numérateur $2$). La fraction est $\\frac{2}{6}$."
+            },
+            {
+              "question": "Complète : dans la fraction $\\frac{5}{8}$, le numérateur $\\ldots$ signifie que l'on a pris $\\ldots$ parts sur $\\ldots$ parts au total.",
+              "answer": "est $5$ ; $5$ ; $8$",
+              "hint": "Relis la définition du numérateur et du dénominateur.",
+              "explanation": "Le numérateur $5$ indique le nombre de parts prises. Le dénominateur $8$ indique le nombre total de parts."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

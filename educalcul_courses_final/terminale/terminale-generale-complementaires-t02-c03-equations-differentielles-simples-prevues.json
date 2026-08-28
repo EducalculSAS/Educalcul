@@ -1,0 +1,497 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.496354+00:00",
+  "id": 643,
+  "code": "terminale-generale-complementaires-t02-c03",
+  "title": "Équations différentielles simples prévues",
+  "description": "Cours structuré Educalcul : Équations différentielles simples prévues.",
+  "subject": "Modèles d'évolution",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Modèles d'évolution",
+    "titre_du_cours": "Équations différentielles simples prévues",
+    "objectif_global": "Équations différentielles simples prévues",
+    "mini_lecons_imposees": [
+      "Forme.",
+      "Solution type.",
+      "Modélisation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Modèles d'évolution",
+      "lessons": [
+        {
+          "title": "Forme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une équation différentielle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu observes une population de bactéries dans une boîte de Pétri. Tu ne connais pas le nombre exact de bactéries à chaque instant, mais tu sais une chose fondamentale : plus il y a de bactéries, plus la population augmente vite. En langage mathématique, si $y(t)$ désigne la population à l'instant $t$, sa vitesse de variation $y'(t)$ est proportionnelle à $y(t)$ itself. On écrit alors $y' = k y$, avec $k > 0$. C'est là un exemple typique d'équation différentielle : une équation qui lie une fonction inconnue et sa dérivée. En Terminale mathématiques complémentaires, nous nous concentrons sur des équations dites \"simples prévues\", c'est-à-dire des équations du premier ordre dont la forme permet une résolution explicite et complète. Tu verras que ces outils modélisent une multitude de phénomènes réels : refroidissement d'un café, décharge d'un condensateur, croissance d'un capital avec intérêts continus."
+            },
+            {
+              "type": "display_math",
+              "latex": "y' = f(x, y)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme la plus générale associe la dérivée $y'$ à une expression faisant intervenir la variable indépendante $x$ (souvent le temps $t$) et la fonction inconnue $y$. Dans ce cours, nous allons maîtriser deux grandes familles parfaitement identifiées par le programme : les équations à variables séparables et les équations linéaires du premier ordre à coefficients constants, c'est-à-dire de la forme $y' = a y + b$ avec $a$ et $b$ réels, $a \\neq 0$. La reconnaissance de la forme est la toute première étape : avant de calculer, on observe. Est-ce que le second membre ne dépend que de $x$ ? Que de $y$ ? Est-ce une somme de terme en $y$ et d'un constant ? Cette lecture attentive t'évitera bien des erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation homogène $y' = a y$ : l'exponentielle reine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le cas le plus épuré : $b = 0$. L'équation devient $y' = a y$. Tu as déjà croisé cette situation en Première avec la fonction exponentielle. Rappelle-toi : la dérivée de $e^{ax}$ est $a e^{ax}$. Si on cherche une fonction qui soit proportionnelle à sa propre dérivée, l'exponentielle s'impose naturellement. Plus généralement, toute fonction de la forme $y(x) = C e^{a x}$, où $C$ est une constante quelconque, convient. On appelle cette famille l'ensemble des solutions de l'équation différentielle. Le paramètre $C$ représente la \"liberté\" qui reste tant qu'on n'a pas fixé une condition initiale (par exemple la population au départ). Si $a > 0$, les solutions croissent exponentiellement ; si $a < 0$, elles décroissent vers zéro. C'est le modèle de Malthus pour la croissance, ou de la décroissance radioactive."
+            },
+            {
+              "type": "graph",
+              "expression": "C*exp(0.5*x)",
+              "xmin": -2,
+              "xmax": 3,
+              "caption": "Famille de solutions $y = C e^{0.5x}$ pour $C = -2, -1, 0, 1, 2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation non homogène $y' = a y + b$ : la solution constante particulière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ajoutons maintenant le terme constant $b$. L'équation $y' = a y + b$ modélise des situations où un phénomène proportionnel ($a y$) est perturbé par un apport ou une perte constante ($b$). Pense à un compte bancaire qui rapporte des intérêts proportionnels au capital ($a y$) mais sur lequel tu verses un salaire fixe chaque mois ($b$). La grande astuce, c'est de chercher d'abord une solution *constante*, notée $y_p$. Si $y$ est constante, sa dérivée est nulle : $0 = a y_p + b$, d'où $y_p = -\\frac{b}{a}$. Cette solution particulière est un équilibre : si la fonction l'atteint, elle y reste. C'est une valeur cible vers laquelle les autres solutions tendent souvent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $a$ et $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'équation sous la forme canonique $y' = a y + b$. Repère les coefficients numériques $a$ (coefficient de $y$) et $b$ (terme constant)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver la solution particulière constante $y_p$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous $0 = a y_p + b$, ce qui donne $y_p = -\\frac{b}{a}$ (si $a \\neq 0$). Cette fonction constante est une solution de l'équation différentielle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation homogène associée $y' = a y$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les solutions sont $y_h(x) = C e^{a x}$, $C \\in \\mathbb{R}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Superposer pour obtenir la solution générale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toute solution de $y' = a y + b$ s'écrit $y(x) = y_h(x) + y_p = C e^{a x} - \\frac{b}{a}$. C'est la structure fondamentale : solution générale = solution de l'homogène + une solution particulière."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le problème de Cauchy : figer la constante $C$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation différentielle admet une infinité de solutions (autant que de valeurs de $C$). Pour n'en garder qu'une, il faut une condition initiale : on impose que la courbe passe par un point donné $(x_0, y_0)$. C'est le problème de Cauchy. Concrètement, on remplace $x$ par $x_0$ et $y$ par $y_0$ dans la formule générale $y(x) = C e^{a x} - \\frac{b}{a}$, ce qui donne une équation simple pour déterminer $C$. Une fois $C$ connu, la solution est unique et définie sur tout $\\mathbb{R}$ (car l'exponentielle ne pose jamais de problème de domaine). C'est cette solution unique qui décrit réellement l'évolution du système physique ou biologique que tu modélises."
+            },
+            {
+              "type": "graph",
+              "expression": "2*exp(-x) + 3",
+              "xmin": 0,
+              "xmax": 5,
+              "caption": "Solution du problème de Cauchy $y' = -y + 3, y(0)=5$ : elle tend vers l'équilibre $y=3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les équations suivantes, lesquelles sont de la forme $y' = a y + b$ avec $a, b \\in \\mathbb{R}$, $a \\neq 0$ ?\\n1. $y' = 3y - 2$\\n2. $y' = x y$\\n3. $y' = -5$\\n4. $y' = 2y + \\sin x$\\n5. $y' = 0.5 y + 10$",
+              "answer": "1 et 5",
+              "hint": "Cherche une équation où le second membre est une combinaison linéaire de $y$ et d'une constante, sans $x$ apparent ni fonction de $y$ non linéaire.",
+              "explanation": "L'équation 1 s'écrit $y' = 3y + (-2)$ donc $a=3, b=-2$. L'équation 5 s'écrit $y' = 0.5y + 10$ donc $a=0.5, b=10$. L'équation 2 a un coefficient $x$ devant $y$ (non constant). L'équation 3 n'a pas de terme en $y$ ($a=0$ exclu). L'équation 4 contient $\\sin x$ qui dépend de $x$."
+            },
+            {
+              "question": "Résous l'équation différentielle $y' = -2y$ sur $\\mathbb{R}$. Donne l'ensemble des solutions.",
+              "answer": "$y(x) = C e^{-2x}, \\quad C \\in \\mathbb{R}$",
+              "hint": "Rappelle-toi que la dérivée de $e^{kx}$ est $k e^{kx}$. Quel $k$ donne un facteur $-2$ devant l'exponentielle ?",
+              "explanation": "On cherche $y$ telle que $y' = -2y$. Les fonctions $C e^{-2x}$ conviennent car leur dérivée est $C(-2)e^{-2x} = -2y$. C'est l'ensemble complet des solutions sur $\\mathbb{R}$."
+            },
+            {
+              "question": "Trouve la solution générale de l'équation $y' = 4y - 8$.",
+              "answer": "$y(x) = C e^{4x} + 2, \\quad C \\in \\mathbb{R}$",
+              "hint": "Applique la méthode en 4 étapes : identifie $a$ et $b$, trouve la solution particulière constante $y_p$, résous $y' = 4y$, puis additionne.",
+              "explanation": "Ici $a=4, b=-8$. Solution particulière : $0 = 4y_p - 8 \\Rightarrow y_p = 2$. Homogène : $y_h = C e^{4x}$. Générale : $y = C e^{4x} + 2$."
+            },
+            {
+              "question": "Résous le problème de Cauchy : $y' = 3y + 6$, avec la condition initiale $y(0) = 1$.",
+              "answer": "$y(x) = 3 e^{3x} - 2$",
+              "hint": "Trouve d'abord la solution générale (forme $C e^{3x} + y_p$), puis utilise $y(0)=1$ pour calculer $C$.",
+              "explanation": "Solution générale : $y = C e^{3x} - 2$ (car $y_p = -6/3 = -2$). Condition $y(0)=1$ : $1 = C e^0 - 2 \\Rightarrow C = 3$. Solution unique : $y(x) = 3 e^{3x} - 2$."
+            }
+          ]
+        },
+        {
+          "title": "Solution type.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations à variables séparables : la méthode du \"séparer pour intégrer\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les équations linéaires à coefficients constants, voici la deuxième grande famille au programme : les équations où l'on peut écrire la dérivée sous la forme d'un produit d'une fonction de $x$ et d'une fonction de $y$, c'est-à-dire $y' = f(x) g(y)$. L'idée directrice est algébrique : on traite la dérivée $y'$ comme un quotient $\\frac{dy}{dx}$ (notation de Leibniz) et on \"passe\" les $dx$ à droite et les $dy$ à gauche. On obtient $\\frac{dy}{g(y)} = f(x) dx$. Il ne reste plus qu'à intégrer les deux membres. Attention toutefois : cette manipulation n'est rigoureuse que si $g(y) \\neq 0$. Les zéros de $g$ donnent des solutions constantes qu'il ne faut pas oublier ! C'est un piège classique en examen."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire sous forme $y' = f(x) g(y)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Factorise le second membre pour faire apparaître explicitement le produit d'une fonction de $x$ seul et d'une fonction de $y$ seul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Rechercher les solutions constantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous $g(y) = 0$. Chaque racine $y = c$ donne une solution constante $y(x) = c$ (car alors $y'=0$ et $f(x)g(c)=0$). Note-les soigneusement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Séparer les variables (pour $g(y) \\neq 0$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $\\frac{dy}{g(y)} = f(x) dx$ et intègre : $\\int \\frac{dy}{g(y)} = \\int f(x) dx$. Tu obtiens une relation implicite $G(y) = F(x) + C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Exprimer $y$ en fonction de $x$ si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous l'équation $G(y) = F(x) + C$ pour obtenir $y = \\varphi(x, C)$. Vérifie le domaine de définition (dénominateurs, arguments de logarithme, radicaux pairs)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du facteur intégrant : résolution systématique de $y' + p(x)y = q(x)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour l'équation linéaire du premier ordre sous forme normale $y' + p(x)y = q(x)$ (où $p$ et $q$ sont continues sur un intervalle), il existe une méthode universelle qui ne repose pas sur l'astuce de la solution particulière constante. On cherche un facteur intégrant $\\mu(x) = e^{\\int p(x) dx}$ tel que, en multipliant l'équation par $\\mu$, le membre de gauche devienne la dérivée d'un produit : $(\\mu y)' = \\mu q$. C'est une technique d'une puissance redoutable qui fonctionne même si les coefficients ne sont pas constants. Dans notre cadre de \"simples prévues\", $p(x) = a$ (constant), donc $\\mu(x) = e^{a x}$. On retrouve alors exactement la structure $y = e^{-ax}(\\int q(x) e^{ax} dx + C)$. Maîtriser cette démonstration te donne une assurance totale face à n'importe quelle équation linéaire d'ordre 1."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mu(x) = e^{\\int p(x) dx} \\quad \\Rightarrow \\quad (\\mu y)' = \\mu q"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Étude qualitative sans résoudre : signe de la dérivée et monotonie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, en modélisation, on n'a pas besoin de la formule explicite de $y(x)$, mais seulement de son allure : est-elle croissante ? Décroissante ? A-t-elle une asymptote horizontale ? Pour $y' = a y + b$, le signe de la dérivée dépend seulement de la position de $y$ par rapport à l'équilibre $y_p = -b/a$. Si $a > 0$ : pour $y > y_p$, $y' > 0$ (croissante) ; pour $y < y_p$, $y' < 0$ (décroissante). L'équilibre est instable (les solutions s'en éloignent). Si $a < 0$ : c'est l'inverse, l'équilibre est stable (attractif), toutes les solutions tendent vers $y_p$ quand $x \\to +\\infty$. Cette analyse par un tableau de signes de $y'$ (qui est une fonction de $y$ seulement !) est rapide et ne nécessite aucune intégration."
+            },
+            {
+              "type": "sign_table",
+              "caption": "Signe de $y' = -2y + 4$ (donc $a=-2<0$, équilibre $y_p=2$ stable)",
+              "intervals": [
+                {
+                  "min": "-Infinity",
+                  "max": 2,
+                  "sign": "+"
+                },
+                {
+                  "min": 2,
+                  "max": "Infinity",
+                  "sign": "-"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Domaine maximal de définition d'une solution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une solution d'équation différentielle n'est pas une formule algébrique vague : c'est une fonction définie sur un *intervalle* maximal. Pour les équations linéaires $y' = a y + b$ avec $a,b$ constants, les solutions sont des combinaisons d'exponentielles et de constantes : elles sont définies sur tout $\\mathbb{R}$, le domaine maximal est toujours $\\mathbb{R}$. En revanche, pour les équations à variables séparées, l'intégration introduit souvent des logarithmes ($\\ln|y|$) ou des racines carrées, ce qui restreint le domaine. De plus, le théorème de Cauchy-Lipschitz garantit l'unicité sur un intervalle où le second membre est régulier. Si la solution frôle une singularité (dénominateur nul, argument de log nul), l'intervalle maximal s'arrête juste avant. C'est un point de rigueur exigé au baccalauréat : ne donne jamais une formule sans préciser son intervalle de validité maximal."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Déterminer l'ensemble de définition de l'expression trouvée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exclus les valeurs où l'expression n'a pas de sens (division par 0, log d'un négatif, racine carrée d'un négatif...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Garder l'intervalle contenant l'abscisse initiale $x_0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le domaine maximal est le plus grand intervalle contenu dans l'ensemble de définition et qui contient $x_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Vérifier la continuité du second membre $f(x,y)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur cet intervalle, $f(x, y(x))$ doit être continue pour que l'équation ait un sens classique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation différentielle $y' = 2x y$ sur $\\mathbb{R}$.",
+              "answer": "$y(x) = C e^{x^2}, \\quad C \\in \\mathbb{R}$",
+              "hint": "C'est une équation à variables séparables : $f(x)=2x$, $g(y)=y$. N'oublie pas la solution constante $y=0$ (incluse dans la formule pour $C=0$).",
+              "explanation": "Séparation : $dy/y = 2x dx$. Intégration : $\\ln|y| = x^2 + C$. Donc $|y| = e^C e^{x^2}$. En posant $K = \\pm e^C$, on a $y = K e^{x^2}$. La solution $y=0$ correspond à $K=0$. Ensemble des solutions : $y(x) = C e^{x^2}, C \\in \\mathbb{R}$."
+            },
+            {
+              "question": "Résous $y' - 3y = 6x$ par la méthode du facteur intégrant.",
+              "answer": "$y(x) = -2x - \\frac{2}{3} + C e^{3x}$",
+              "hint": "Identifie $p(x) = -3$. Le facteur intégrant est $\\mu = e^{-3x}$. Multiplie l'équation par $\\mu$ et intègre $(\\mu y)'$.",
+              "explanation": "$p(x)=-3 \\Rightarrow \\mu = e^{-3x}$. $(\\mu y)' = 6x e^{-3x}$. Intégration par parties : $\\int 6x e^{-3x} dx = -2x e^{-3x} - \\frac{2}{3} e^{-3x} + C$. Donc $y = e^{3x}(-2x e^{-3x} - \\frac{2}{3} e^{-3x} + C) = -2x - \\frac{2}{3} + C e^{3x}$."
+            },
+            {
+              "question": "Pour l'équation $y' = y(4 - y)$, détermine les solutions constantes et le sens de variation des autres solutions selon la valeur initiale $y(0)$.",
+              "answer": "Solutions constantes : $y=0$ et $y=4$. Si $y(0) < 0$ : décroissante vers $-\\infty$. Si $0 < y(0) < 4$ : croissante vers 4. Si $y(0) > 4$ : décroissante vers 4.",
+              "hint": "Factorise le second membre : $y' = y(4-y)$. Les zéros donnent les solutions constantes. Étudie le signe du produit $y(4-y)$ sur les intervalles déterminés par ces zéros.",
+              "explanation": "Zéros : $y=0, y=4$. Signe de $y' = y(4-y)$ : $]-\\infty,0[$ : $y'<0$ (décroît) ; $]0,4[$ : $y'>0$ (croît) ; $]4,+\\infty[$ : $y'<0$ (décroît). L'équilibre 0 est instable, 4 est stable (attractif)."
+            },
+            {
+              "question": "Détermine le domaine maximal de la solution du problème de Cauchy : $y' = y^2$, $y(0) = 1$.",
+              "answer": "Domaine maximal : $]-\\infty, 1[$. Solution : $y(x) = \\frac{1}{1-x}$.",
+              "hint": "Résous par séparation ($dy/y^2 = dx$), trouve la constante avec $y(0)=1$, puis regarde où l'expression est définie et contient 0.",
+              "explanation": "Séparation : $\\int y^{-2} dy = \\int dx \\Rightarrow -1/y = x + C$. Condition $y(0)=1$ : $-1 = C$. Donc $-1/y = x - 1 \\Rightarrow y = 1/(1-x)$. L'expression n'est pas définie en $x=1$. L'intervalle maximal contenant 0 est $]-\\infty, 1[$."
+            }
+          ]
+        },
+        {
+          "title": "Modélisation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modèle de Malthus et modèle logistique : la dynamique des populations"
+            },
+            {
+              "type": "paragraph",
+              "content": "La modélisation par équations différentielles, c'est l'art de traduire une histoire en équation. Prenons le cas classique de la démographie. Thomas Malthus, à la fin du XVIII$^e$ siècle, propose l'hypothèse la plus simple : le taux de croissance d'une population est constant. Si $P(t)$ est la population, $\\frac{P'}{P} = k$, soit $P' = kP$. C'est l'équation $y' = ay$ vue en Leçon 1. La solution $P(t) = P_0 e^{kt}$ prédit une explosion exponentielle. Mais dans la réalité, les ressources (nourriture, espace) sont limitées. Verhulst corrige le tir en 1838 : le taux de croissance décroît linéairement avec la population. On obtient $P' = k P (1 - \\frac{P}{K})$, où $K$ est la capacité biologique du milieu. C'est l'équation logistique. Remarque sa forme : c'est une équation à variables séparables ($f(P) = kP(1-P/K)$). Elle admet deux solutions constantes : $P=0$ (éteinte) et $P=K$ (équilibre stable). Toute population initiale positive tend vers $K$. C'est un modèle universel, valable pour les bactéries, les forêts, mais aussi la diffusion d'une rumeur ou l'adoption d'une innovation technologique."
+            },
+            {
+              "type": "graph",
+              "expression": "1000/(1+99*exp(-0.5*x))",
+              "xmin": 0,
+              "xmax": 20,
+              "caption": "Courbe logistique : population initiale 10, capacité K=1000, taux k=0.5. Forme en S caractéristique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi de refroidissement de Newton : quand le café atteint la température de la pièce"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu verses un café brûlant à $90^{\\circ}\\text{C}$ dans une pièce à $20^{\\circ}\\text{C}$. Newton a observé que la vitesse de refroidissement est proportionnelle à l'écart de température avec l'ambiance. Si $T(t)$ est la température du café, $T'(t) = -k (T(t) - T_{\\text{ext}})$ avec $k > 0$. Remets sous forme standard : $T' = -k T + k T_{\\text{ext}}$. C'est exactement une équation linéaire $y' = a y + b$ avec $a = -k < 0$ et $b = k T_{\\text{ext}}$. La solution particulière constante est $T_p = T_{\\text{ext}} = 20^{\\circ}\\text{C}$ : c'est la température d'équilibre, inévitable. La solution générale est $T(t) = (T_0 - T_{\\text{ext}}) e^{-kt} + T_{\\text{ext}}$. L'exponentielle négative garantit une convergence monotone vers la température de la pièce. Ce modèle s'applique aussi au réchauffement d'une boisson froide, à la thermorégulation du corps humain, ou au refroidissement d'un composant électronique."
+            },
+            {
+              "type": "display_math",
+              "latex": "T(t) = (T_0 - T_{\\text{ext}}) e^{-k t} + T_{\\text{ext}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes de mélange : le réservoir à saumure (chimie et environnement)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un réservoir de $V = 1000$ litres contenant initialement $10$ kg de sel dissous. De l'eau salée à $20$ g/L entre à $10$ L/min, et le mélange (parfaitement homogène) sort au même débit. Quelle est la masse de sel $m(t)$ à l'instant $t$ ? Le volume reste constant ($1000$ L). La variation de la masse de sel : entrée moins sortie. Entrée : $10 \\text{ L/min} \\times 20 \\text{ g/L} = 200 \\text{ g/min} = 0.2 \\text{ kg/min}$. Sortie : le débit sortant ($10$ L/min) emporte une concentration $m(t)/1000$ kg/L, donc $10 \\times m/1000 = m/100$ kg/min. L'équation différentielle est $m' = 0.2 - m/100$, soit $m' = -0.01 m + 0.2$. Encore une équation $y' = a y + b$ avec $a = -0.01 < 0$ ! L'équilibre est $m_p = 0.2 / 0.01 = 20$ kg. La solution : $m(t) = (10 - 20) e^{-0.01t} + 20 = 20 - 10 e^{-0.01t}$. La masse de sel augmente depuis $10$ kg vers $20$ kg. Ce schéma (entrée constante, sortie proportionnelle à la quantité présente) modélise aussi la pollution d'un lac, la pharmacocinétique (médicament dans le sang), ou le $CO_2$ dans l'atmosphère."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Identifier la quantité inconnue $Q(t)$ (masse, nombre, concentration)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Définis clairement ce que $Q$ représente et son unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Exprimer le débit entrant (apport) et le débit sortant (perte)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entrée = débit volumique $\\times$ concentration entrante. Sortie = débit volumique $\\times$ concentration dans le réservoir ($Q/\\text{Volume}$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Écrire l'équation $Q' = \\text{Entrée} - \\text{Sortie}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets sous forme $Q' = a Q + b$. Identifie $a$ (souvent négatif) et $b$ (positif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Résoudre et interpréter l'équilibre $Q_p = -b/a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est la valeur vers laquelle le système tend spontanément. Vérifie qu'elle a du sens physiquement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse : du problème concret à l'équation, et retour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète pour aborder la modélisation en Terminale. La démarche est toujours la même : 1) Nommer les variables (quoi ? quelle unité ?). 2) Traduire le énoncé physique en relation entre variation et état (le \"raisonnement infinitésimal\" : pendant un tout petit $dt$, que se passe-t-il ?). 3) Identifier la forme de l'équation différentielle obtenue (séparable ? linéaire $y'=ay+b$ ?). 4) Choisir la méthode de résolution adaptée (séparation, facteur intégrant, ou structure homogène+particulière). 5) Résoudre le problème de Cauchy (condition initiale). 6) Interpréter la solution : domaine, limites, asymptotes, sens de variation, valeur d'équilibre. 7) Répondre à la question posée (temps pour atteindre tel seuil, valeur maximale, etc.). Cette rigueur dans la chaîne de modélisation est ce qui fait la force des mathématiques appliquées : tu ne fais pas que calculer, tu donnes du sens aux nombres."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une équation différentielle du premier ordre à variables séparables et une équation linéaire $y' = ay + b$.",
+                "Je sais résoudre $y' = ay$ (solution $Ce^{ax}$) et $y' = ay + b$ (solution $Ce^{ax} - b/a$).",
+                "Je sais appliquer la méthode de séparation des variables (et ne pas oublier les solutions constantes).",
+                "Je sais utiliser le facteur intégrant pour $y' + p(x)y = q(x)$.",
+                "Je sais résoudre un problème de Cauchy (condition initiale) et préciser le domaine maximal de la solution.",
+                "Je sais modéliser une croissance (Malthus, logistique), un refroidissement (Newton) ou un mélange (réservoir).",
+                "Je sais faire l'étude qualitative (monotonie, équilibre, stabilité) sans résoudre explicitement l'équation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une population suit le modèle logistique $P' = 0.1 P (1 - P/5000)$ avec $P(0) = 100$. Quelle est la capacité biologique $K$ ? Vers quelle valeur la population tend-elle quand $t \\to +\\infty$ ?",
+              "answer": "$K = 5000$. La population tend vers $5000$.",
+              "hint": "Identifie $K$ dans le terme $(1 - P/K)$. L'équilibre stable non nul est $K$.",
+              "explanation": "L'équation s'écrit $P' = 0.1 P (1 - P/5000)$. On lit directement $K = 5000$. Les solutions constantes sont $P=0$ (instable) et $P=5000$ (stable). Comme $P(0)=100 > 0$, la solution tend vers l'équilibre stable $5000$."
+            },
+            {
+              "question": "Un corps à $100^{\\circ}\\text{C}$ est placé dans un four maintenu à $200^{\\circ}\\text{C}$. La constante de refroidissement/réchauffement est $k = 0.05 \\text{ min}^{-1}$. Donne l'équation différentielle satisfaite par la température $T(t)$ et sa solution avec la condition initiale.",
+              "answer": "Équation : $T' = 0.05(200 - T)$. Solution : $T(t) = 200 - 100 e^{-0.05 t}$.",
+              "hint": "La loi de Newton : $T' = k(T_{\\text{ext}} - T)$ car le corps se réchauffe vers l'extérieur. $T_{\\text{ext}}=200$, $T_0=100$.",
+              "explanation": "Le corps est plus froid que le four, il se réchauffe : $T' = k(T_{\\text{ext}} - T) = 0.05(200 - T) = -0.05 T + 10$. Forme $y' = ay+b$ avec $a=-0.05, b=10$. Équilibre $T_p = 200$. Solution générale $T = C e^{-0.05t} + 200$. Condition $T(0)=100 \\Rightarrow C = -100$. Donc $T(t) = 200 - 100 e^{-0.05t}$."
+            },
+            {
+              "question": "Un réservoir de $200$ L contient $5$ kg de sel. Une saumure à $50$ g/L entre à $5$ L/min ; le mélange sort à $5$ L/min. Établis l'équation différentielle pour la masse de sel $m(t)$ (en kg) et donne la masse de sel à l'équilibre.",
+              "answer": "Équation : $m' = 0.25 - 0.025 m$. Masse à l'équilibre : $10$ kg.",
+              "hint": "Calcule l'apport en kg/min (entrée) et la perte en kg/min (sortie proportionnelle à $m/200$). L'équilibre s'obtient pour $m'=0$.",
+              "explanation": "Entrée : $5 \\text{ L/min} \\times 0.050 \\text{ kg/L} = 0.25 \\text{ kg/min}$. Sortie : $5 \\text{ L/min} \\times (m/200) \\text{ kg/L} = 0.025 m \\text{ kg/min}$. Équation : $m' = 0.25 - 0.025 m$. Équilibre : $0 = 0.25 - 0.025 m_{\\infty} \\Rightarrow m_{\\infty} = 10$ kg."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

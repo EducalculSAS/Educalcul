@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 436,
+  "_course_code": "4eme-t04-c02-effectifs-et-frequences",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Tableaux",
+  "title": "Quiz : Tableaux d'effectifs et fréquences (4e)",
+  "questions": [
+    {
+      "text": "Voici un tableau des notes sur 20 : Note $10$ → effectif $3$, Note $12$ → effectif $5$, Note $14$ → effectif $2$, Note $16$ → effectif $4$. Quel est le nombre total d'élèves ?",
+      "options": [
+        "$12$",
+        "$14$",
+        "$15$",
+        "$13$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Le total d'élèves est la somme des effectifs : $3 + 5 + 2 + 4 = 14$. Les autres propositions correspondent à des erreurs d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le même tableau, quelle est la fréquence de la note $12$ ?",
+      "options": [
+        "$5/14$",
+        "$5/20$",
+        "$3/14$",
+        "$2/7$"
+      ],
+      "correctAnswer": "$5/14$",
+      "explanation": "La fréquence d'une valeur est son effectif divisé par l'effectif total. Ici $5 / 14 = 5/14$. $5/20$ utiliserait un total erroné, $3/14$ correspond à la note $10$, $2/7$ est une simplification incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'effectif cumulé pour les notes inférieures ou égales à $14$ ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$9$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "L'effectif cumulé jusqu'à $14$ ajoute les effectifs des notes $10$, $12$ et $14$ : $3 + 5 + 2 = 10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau présente les effectifs suivants : Valeur A $6$, Valeur B $?$, Valeur C $4$. Le total est $15$. Quel est l'effectif manquant pour la valeur B ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "L'effectif manquant s'obtient par $15 - (6 + 4) = 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la fréquence en pourcentage de la note $16$ (effectif $4$) par rapport au total $14$ ?",
+      "options": [
+        "$28,6\\%$",
+        "$30\\%$",
+        "$25\\%$",
+        "$28\\%$"
+      ],
+      "correctAnswer": "$28,6\\%$",
+      "explanation": "Le pourcentage est $(4 / 14) \\times 100 \\approx 28,57\\%$, arrondi à $28,6\\%$. $30\\%$ et $25\\%$ sont des approximations grossières, $28\\%$ correspond à un arrondi au entier inférieur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Calcul",
+  "title": "Algorithmes pour moyenne, médiane et étendue",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Écrire un algorithme (sous forme de fonction Python) qui prend en paramètre une liste de nombres non vide et qui renvoie la moyenne arithmétique de cette liste. On rappelle que la moyenne est la somme des valeurs divisée par le nombre de valeurs.",
+      "correctAnswer": "def moyenne(liste):\\n    somme = 0\\n    for valeur in liste:\\n        somme = somme + valeur\\n    return somme / len(liste)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise une variable somme à 0. Il parcourt chaque élément de la liste et l'ajoute à somme. À la fin, il divise la somme totale par le nombre d'éléments (len(liste)) pour obtenir la moyenne. Cette méthode correspond à la formule $\\frac{\\sum x_i}{n}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la médiane",
+      "content": "Écrire un algorithme (fonction Python) qui prend en paramètre une liste de nombres et qui renvoie la médiane. La liste peut avoir un nombre pair ou impair d'éléments. Il faut d'abord trier la liste. Si le nombre d'éléments est impair, la médiane est la valeur du milieu. S'il est pair, c'est la moyenne des deux valeurs centrales.",
+      "correctAnswer": "def mediane(liste):\\n    liste_triee = sorted(liste)\\n    n = len(liste_triee)\\n    if n % 2 == 1:\\n        return liste_triee[n // 2]\\n    else:\\i = n // 2\\n        return (liste_triee[i - 1] + liste_triee[i]) / 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On trie d'abord la liste avec sorted(). On calcule la longueur $n$. Si $n$ est impair (test $n \\% 2 == 1$), l'indice du milieu est $n // 2$ (division entière). Si $n$ est pair, les deux indices centraux sont $n/2 - 1$ et $n/2$ ; on fait la moyenne de ces deux valeurs. Cela respecte la définition statistique de la médiane.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction statistiques complète",
+      "content": "Écrire une fonction Python statistiques(liste) qui renvoie un dictionnaire contenant trois clés : 'moyenne', 'mediane', 'etendue'. L'étendue est la différence entre le maximum et le minimum de la liste. On pourra réutiliser les fonctions précédentes ou tout recalculer.",
+      "correctAnswer": "def statistiques(liste):\\n    # moyenne\\n    moy = sum(liste) / len(liste)\\n    # médiane\\n    tri = sorted(liste)\\n    n = len(tri)\\n    if n % 2 == 1:\\n        med = tri[n // 2]\\n    else:\\n        i = n // 2\\n        med = (tri[i - 1] + tri[i]) / 2\\n    # étendue\\n    etendue = max(liste) - min(liste)\\n    return {'moyenne': moy, 'mediane': med, 'etendue': etendue}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction calcule les trois indicateurs. La moyenne utilise sum() et len(). La médiane suit le même principe que l'exercice précédent. L'étendue se calcule simplement par max(liste) - min(liste). Le dictionnaire regroupe les résultats avec des clés explicites. Cela permet d'obtenir toutes les mesures de position et de dispersion en un seul appel.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

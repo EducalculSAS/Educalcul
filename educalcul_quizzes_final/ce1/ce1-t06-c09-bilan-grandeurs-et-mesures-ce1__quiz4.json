@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 125,
+  "_course_code": "ce1-t06-c09-bilan-grandeurs-et-mesures-ce1",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Bilan - Grandeurs et mesures CE1",
+  "title": "Bilan Grandeurs et Mesures CE1",
+  "questions": [
+    {
+      "text": "Parmi ces longueurs, laquelle est la plus grande ?",
+      "options": [
+        "$1$ m",
+        "$50$ cm",
+        "$1$ m $20$ cm",
+        "$90$ cm"
+      ],
+      "correctAnswer": "$1$ m $20$ cm",
+      "explanation": "On convertit tout en centimètres pour comparer : $1$ m = $100$ cm, $1$ m $20$ cm = $120$ cm, $90$ cm = $90$ cm, $50$ cm = $50$ cm. La plus grande valeur est $120$ cm, soit $1$ m $20$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La balance ci-dessous est en équilibre. Les masses sont exprimées en grammes. Quelle est la valeur de chaque masse de droite ?",
+      "options": [
+        "$250$ g",
+        "$500$ g",
+        "$750$ g",
+        "$1$ kg"
+      ],
+      "correctAnswer": "$750$ g",
+      "explanation": "La masse totale à gauche est $1000 + 500 = 1500$ g. Comme la balance est en équilibre, la masse totale à droite est aussi $1500$ g. Il y a deux masses identiques à droite, donc chacune vaut $1500 \\div 2 = 750$ g.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          1000,
+          500
+        ],
+        "right": [
+          750,
+          750
+        ],
+        "caption": "Balance en équilibre"
+      }
+    },
+    {
+      "text": "Quelle heure indique l'horloge ci-dessous ?",
+      "options": [
+        "$4$ h $15$",
+        "$3$ h $15$",
+        "$4$ h $30$",
+        "$15$ h $04$"
+      ],
+      "correctAnswer": "$4$ h $15$",
+      "explanation": "La petite aiguille (heures) est sur le $4$ (ou légèrement après) et la grande aiguille (minutes) est sur le $3$, ce qui correspond à $15$ minutes. Il est donc $4$ h $15$.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 15,
+        "caption": "Horloge analogique",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Voici le contenu d'une tirelire. Quelle est la somme totale en euros ?",
+      "options": [
+        "$3,90$ €",
+        "$39$ €",
+        "$3,09$ €",
+        "$390$ €"
+      ],
+      "correctAnswer": "$3,90$ €",
+      "explanation": "On additionne les valeurs en centimes : $200 + 100 + 50 + 20 + 10 + 10 = 390$ centimes. $390$ centimes = $3$ euros et $90$ centimes, soit $3,90$ €.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          100,
+          50,
+          20,
+          10,
+          10
+        ],
+        "target": 390,
+        "caption": "Contenu de la tirelire en centimes"
+      }
+    },
+    {
+      "text": "Le thermomètre indique une température négative. Laquelle ?",
+      "options": [
+        "$-5$ °C",
+        "$5$ °C",
+        "$-10$ °C",
+        "$0$ °C"
+      ],
+      "correctAnswer": "$-5$ °C",
+      "explanation": "Le repère (le liquide rouge ou le curseur) se trouve sur la graduation $-5$. C'est une température négative, inférieure à zéro.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": -5,
+            "label": "A"
+          }
+        ],
+        "caption": "Thermomètre"
+      }
+    }
+  ]
+}

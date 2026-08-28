@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Vérifier",
+  "title": "Quiz : Vérifier les propriétés des triangles",
+  "questions": [
+    {
+      "text": "Les longueurs suivantes peuvent-elles être les côtés d'un triangle ?",
+      "options": [
+        "2 cm, 3 cm, 6 cm",
+        "5 cm, 5 cm, 11 cm",
+        "4 cm, 7 cm, 12 cm",
+        "6 cm, 8 cm, 10 cm"
+      ],
+      "correctAnswer": "6 cm, 8 cm, 10 cm",
+      "explanation": "Pour former un triangle, la somme de deux côtés doit être strictement supérieure au troisième. Pour 2, 3, 6 : 2+3=5 < 6. Pour 5, 5, 11 : 5+5=10 < 11. Pour 4, 7, 12 : 4+7=11 < 12. Pour 6, 8, 10 : 6+8=14 > 10, 6+10=16 > 8, 8+10=18 > 6, donc c'est possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les triangles dont les longueurs des côtés sont données ci-dessous, lequel est rectangle ?",
+      "options": [
+        "3 cm, 4 cm, 5 cm",
+        "5 cm, 5 cm, 7 cm",
+        "6 cm, 7 cm, 9 cm",
+        "8 cm, 8 cm, 8 cm"
+      ],
+      "correctAnswer": "3 cm, 4 cm, 5 cm",
+      "explanation": "Un triangle est rectangle si le carré du plus grand côté est égal à la somme des carrés des deux autres (théorème de Pythagore). Pour 3, 4, 5 : $3^2+4^2=9+16=25=5^2$. Les autres triplets ne vérifient pas cette égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne un triangle dont les côtés mesurent 9 cm, 9 cm et 12 cm. Quelle affirmation est vraie ?",
+      "options": [
+        "Le triangle est équilatéral.",
+        "Le triangle est isocèle.",
+        "Le triangle est rectangle.",
+        "Le triangle est quelconque."
+      ],
+      "correctAnswer": "Le triangle est isocèle.",
+      "explanation": "Un triangle isocèle a au moins deux côtés de même longueur. Ici, deux côtés mesurent 9 cm, donc il est isocèle. Il n'est pas équilatéral (trois côtés égaux), ni rectangle (9^2+9^2=162 ≠ 12^2=144), ni quelconque (car il a une propriété particulière).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier que la médiane issue du sommet A d'un triangle ABC passe par le milieu de BC, quelle méthode est correcte ?",
+      "options": [
+        "Mesurer la longueur de la médiane et la comparer à la moitié de BC.",
+        "Construire le milieu de BC à la règle et au compas, puis tracer la droite passant par A et ce milieu.",
+        "Vérifier que la médiane est perpendiculaire à BC.",
+        "Calculer l'aire du triangle et la diviser par deux."
+      ],
+      "correctAnswer": "Construire le milieu de BC à la règle et au compas, puis tracer la droite passant par A et ce milieu.",
+      "explanation": "La médiane est par définition la droite qui relie un sommet au milieu du côté opposé. Pour la vérifier, on construit le milieu de BC avec la règle et le compas, puis on trace la droite (A, milieu). Si elle coïncide avec la médiane tracée, la vérification est faite. Les autres options correspondent à des propriétés différentes (hauteur, aire) ou sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, on sait que AB = AC. Quelle propriété permet de vérifier que le triangle est isocèle en A ?",
+      "options": [
+        "Les angles à la base sont égaux : angle B = angle C.",
+        "La hauteur issue de A est aussi médiane.",
+        "Les côtés AB et AC ont la même longueur.",
+        "La médiane issue de A est perpendiculaire à BC."
+      ],
+      "correctAnswer": "Les côtés AB et AC ont la même longueur.",
+      "explanation": "La définition d'un triangle isocèle en A est que les deux côtés issus de A, soit AB et AC, sont égaux. Les autres affirmations sont des conséquences ou des propriétés particulières (cas du triangle isocèle rectangle), mais ce n'est pas la définition qui permet de vérifier l'isocèle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

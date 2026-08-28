@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Hypothèses",
+  "title": "Quiz : Hypothèses du théorème de Pythagore et de sa réciproque",
+  "questions": [
+    {
+      "text": "Dans l'énoncé du théorème direct de Pythagore, quelle est l'hypothèse de départ ?",
+      "options": [
+        "Le triangle est rectangle.",
+        "Le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.",
+        "Le triangle est isocèle.",
+        "Les trois côtés ont des longueurs entières."
+      ],
+      "correctAnswer": "Le triangle est rectangle.",
+      "explanation": "Le théorème direct de Pythagore s'énonce : 'Si un triangle est rectangle, alors le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.' L'hypothèse (le 'Si') est donc que le triangle est rectangle. L'option B correspond à la conclusion (le 'alors'). Les options C et D sont des propriétés sans lien avec l'hypothèse du théorème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'énoncé de la réciproque du théorème de Pythagore, quelle est l'hypothèse ?",
+      "options": [
+        "Le triangle est rectangle.",
+        "Le carré du plus grand côté est égal à la somme des carrés des deux autres côtés.",
+        "Le triangle a un angle de 90 degrés.",
+        "L'hypoténuse est le plus grand côté."
+      ],
+      "correctAnswer": "Le carré du plus grand côté est égal à la somme des carrés des deux autres côtés.",
+      "explanation": "La réciproque s'énonce : 'Si dans un triangle le carré de la longueur du plus grand côté est égal à la somme des carrés des longueurs des deux autres côtés, alors ce triangle est rectangle.' L'hypothèse est donc l'égalité sur les carrés des longueurs (option B). Les options A et C correspondent à la conclusion. L'option D est une propriété vraie dans tout triangle rectangle mais ce n'est pas l'hypothèse de la réciproque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère un triangle dont les longueurs des côtés sont 3, 4 et 5. Quelle affirmation est correcte au sujet de la réciproque du théorème de Pythagore ?",
+      "options": [
+        "L'hypothèse n'est pas vérifiée car $3^2 + 4^2 \\neq 5^2$.",
+        "L'hypothèse est vérifiée car $3^2 + 4^2 = 5^2$, donc le triangle est rectangle.",
+        "L'hypothèse est vérifiée car $3 + 4 = 5$, donc le triangle est rectangle.",
+        "On ne peut pas utiliser la réciproque car les longueurs ne sont pas des entiers."
+      ],
+      "correctAnswer": "L'hypothèse est vérifiée car $3^2 + 4^2 = 5^2$, donc le triangle est rectangle.",
+      "explanation": "On calcule les carrés : $3^2 = 9$, $4^2 = 16$, $5^2 = 25$. On a bien $9 + 16 = 25$, soit $3^2 + 4^2 = 5^2$. L'hypothèse de la réciproque (égalité des carrés) est donc vérifiée, ce qui permet de conclure que le triangle est rectangle. L'option A est fausse car l'égalité est vraie. L'option C confond addition des longueurs et addition des carrés. L'option D est fausse car la réciproque s'applique quel que soit le type de nombres (entiers, décimaux...).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés 6 cm, 8 cm et 10 cm. Peut-on affirmer qu'il est rectangle ?",
+      "options": [
+        "Non, car $6^2 + 8^2 = 36 + 64 = 100$ et $10^2 = 100$, l'égalité n'est pas respectée.",
+        "Oui, car $6^2 + 10^2 = 8^2$.",
+        "Oui, car $6^2 + 8^2 = 10^2$, l'hypothèse de la réciproque est vérifiée.",
+        "Non, car l'hypoténuse doit être le côté de 8 cm."
+      ],
+      "correctAnswer": "Oui, car $6^2 + 8^2 = 10^2$, l'hypothèse de la réciproque est vérifiée.",
+      "explanation": "Le plus grand côté est 10 cm. On vérifie l'hypothèse de la réciproque : $6^2 + 8^2 = 36 + 64 = 100$ et $10^2 = 100$. L'égalité $6^2 + 8^2 = 10^2$ est vraie, l'hypothèse est vérifiée, donc le triangle est rectangle. L'option A fait le bon calcul mais conclut à l'inverse. L'option B utilise les mauvais côtés (l'hypoténuse est le plus grand côté). L'option D identifie mal l'hypoténuse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour pouvoir utiliser la réciproque du théorème de Pythagore sur un triangle ABC, quelle est la première étape indispensable ?",
+      "options": [
+        "Vérifier que l'angle A est un angle droit.",
+        "Identifier le plus grand côté et vérifier si le carré de sa longueur est égal à la somme des carrés des deux autres longueurs.",
+        "Vérifier que la somme des deux plus petits côtés est supérieure au plus grand côté.",
+        "Calculer l'aire du triangle."
+      ],
+      "correctAnswer": "Identifier le plus grand côté et vérifier si le carré de sa longueur est égal à la somme des carrés des deux autres longueurs.",
+      "explanation": "La réciproque ne s'applique que si l'on teste l'égalité sur le plus grand côté (candidat au rôle d'hypoténuse). L'option A correspond au théorème direct (on connaît déjà l'angle droit). L'option C est l'inégalité triangulaire, nécessaire pour l'existence du triangle mais ce n'est pas l'hypothèse de Pythagore. L'option D est sans rapport avec le théorème.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

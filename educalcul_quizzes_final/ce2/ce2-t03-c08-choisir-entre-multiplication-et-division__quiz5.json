@@ -1,0 +1,146 @@
+{
+  "_status": "done",
+  "_course_id": 167,
+  "_course_code": "ce2-t03-c08-choisir-entre-multiplication-et-division",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Identifier la structure",
+  "title": "Approfondissement : Identifier la structure pour choisir l'opération",
+  "questions": [
+    {
+      "text": "Observe le schéma à barres. Il représente 4 groupes de même taille. Chaque groupe contient 6 billes. Quelle opération permet de trouver le nombre total de billes ?",
+      "options": [
+        "L'addition $6 + 6 + 6 + 6$",
+        "La multiplication $4 \\times 6$",
+        "La division $24 \\div 4$",
+        "La soustraction $24 - 6$"
+      ],
+      "correctAnswer": "La multiplication $4 \\times 6$",
+      "explanation": "Le schéma montre une structure de répétition de groupes identiques (4 groupes de 6). C'est la définition même de la multiplication : nombre de groupes $\\times$ taille d'un groupe. L'addition $6+6+6+6$ donne le même résultat mais la multiplication est l'opération propre à cette structure. La division et la soustraction correspondent à d'autres structures (partage ou recherche de complément).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "4 groupes de 6 billes"
+      }
+    },
+    {
+      "text": "Léa a 20 cartes. Elle veut les partager équitablement entre 4 amis. Quelle structure de division correspond à cette situation ?",
+      "options": [
+        "Le partage (on connait le nombre de parts, on cherche la taille de chaque part)",
+        "Le groupement (on connait la taille des parts, on cherche le nombre de parts)",
+        "La multiplication (on connait le nombre de groupes et la taille, on cherche le total)",
+        "La soustraction (on retire des cartes jusqu'à zéro)"
+      ],
+      "correctAnswer": "Le partage (on connait le nombre de parts, on cherche la taille de chaque part)",
+      "explanation": "Ici, le total (20) et le nombre de parts (4 amis) sont connus. La question est : \"Combien chaque ami reçoit-il ?\" On cherche la taille de chaque part. C'est la structure du partage (division partition). Le groupement serait : \"Léa fait des paquets de 4 cartes, combien de paquets ?\". La multiplication chercherait le total. La soustraction n'est pas la structure de base ici.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total 20",
+            "value": 20,
+            "tone": "blue"
+          }
+        ],
+        "caption": "20 cartes à partager en 4 parts égales"
+      }
+    },
+    {
+      "text": "Un maître range 24 cahiers dans des boîtes. Il met 6 cahiers dans chaque boîte. Quelle phrase décrit la structure du problème pour trouver le nombre de boîtes ?",
+      "options": [
+        "On connait le total et la taille des groupes, on cherche le nombre de groupes : c'est un groupement (division).",
+        "On connait le nombre de groupes et la taille, on cherche le total : c'est une multiplication.",
+        "On connait le total et le nombre de groupes, on cherche la taille : c'est un partage (division).",
+        "On connait le total et on retire des groupes de 6 : c'est une soustraction répétée."
+      ],
+      "correctAnswer": "On connait le total et la taille des groupes, on cherche le nombre de groupes : c'est un groupement (division).",
+      "explanation": "Le total est 24 cahiers. La taille de chaque groupe (boîte) est fixée à 6 cahiers. L'inconnue est le nombre de boîtes (nombre de groupes). C'est la définition exacte de la structure de groupement (division quotitive). L'option B décrit une multiplication. L'option C décrit un partage. L'option D décrit une méthode de calcul (soustraction répétée) mais pas la structure mathématique du problème.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Boîte 1",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 2",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 3",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 4",
+            "value": 6,
+            "tone": "green"
+          }
+        ],
+        "caption": "Groupes de 6 cahiers, combien de groupes pour faire 24 ?"
+      }
+    },
+    {
+      "text": "Compare ces deux problèmes :\\nProblème A : \"Il y a 5 pots de fleurs. Dans chaque pot il y a 3 fleurs. Combien de fleurs en tout ?\"\\nProblème B : \"Il y a 15 fleurs. On veut les mettre dans des pots de 3 fleurs. Combien de pots faut-il ?\"\\nQuelle affirmation est vraie ?",
+      "options": [
+        "Les deux problèmes se résolvent par une multiplication car les nombres sont les mêmes.",
+        "Le problème A est une multiplication (groupes connus), le problème B est une division groupement (taille des groupes connue).",
+        "Le problème A est une division partage, le problème B est une multiplication.",
+        "Les deux problèmes sont des divisions car il faut séparer les fleurs."
+      ],
+      "correctAnswer": "Le problème A est une multiplication (groupes connus), le problème B est une division groupement (taille des groupes connue).",
+      "explanation": "Dans A, on connait le nombre de groupes (5 pots) et la taille (3 fleurs) : on cherche le total $\\rightarrow$ Multiplication $5 \\times 3$. Dans B, on connait le total (15 fleurs) et la taille des groupes (3 fleurs par pot) : on cherche le nombre de groupes (pots) $\\rightarrow$ Division groupement $15 \\div 3$. Les données numériques sont liées (table de 3) mais les structures (inconnues) sont différentes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour résoudre ce problème, quelle est la première question à se poser pour identifier la structure ?\\n\"Un boulanger a fait 36 croissants. Il les met dans des sacs de 4. Combien de sacs remplit-il ?\"",
+      "options": [
+        "Est-ce que je connais le total ?",
+        "Est-ce que je cherche le total ou le nombre de groupes ou la taille d'un groupe ?",
+        "Est-ce que les nombres sont grands ?",
+        "Est-ce que je dois additionner ou soustraire ?"
+      ],
+      "correctAnswer": "Est-ce que je cherche le total ou le nombre de groupes ou la taille d'un groupe ?",
+      "explanation": "Identifier la structure, c'est identifier l'inconnue par rapport aux données connues. Ici, on connait le total (36) et la taille du groupe (4 par sac). L'inconnue est le nombre de groupes (sacs) $\\rightarrow$ Division groupement. Se demander si on cherche le total, le nombre de groupes ou la taille du groupe permet de choisir entre multiplication (chercher total), partage (chercher taille) ou groupement (chercher nombre). Les autres questions ne permettent pas de distinguer les structures.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total 36",
+            "value": 36,
+            "tone": "gold"
+          }
+        ],
+        "caption": "36 croissants regroupés par 4 dans des sacs"
+      }
+    }
+  ]
+}

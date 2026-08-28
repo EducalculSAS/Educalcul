@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 75,
+  "_course_code": "ce1-t01-c08-encadrer-entre-deux-dizaines-ou-centaines",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Trouver dizaines voisines",
+  "title": "Trouver les dizaines voisines",
+  "questions": [
+    {
+      "text": "Le nombre $47$ est encadré par quelles deux dizaines ?",
+      "options": [
+        "$30$ et $40$",
+        "$40$ et $50$",
+        "$50$ et $60$",
+        "$40$ et $60$"
+      ],
+      "correctAnswer": "$40$ et $50$",
+      "explanation": "Pour trouver les dizaines voisines, on regarde la chiffre des dizaines du nombre. Pour $47$, la chiffre des dizaines est $4$, donc la dizaine inférieure est $40$. La dizaine supérieure est la dizaine suivante, soit $50$. Le nombre $47$ est bien plus grand que $40$ et plus petit que $50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A représente le nombre $53$. Quelles sont les deux dizaines qui encadrent ce nombre ?",
+      "options": [
+        "$40$ et $50$",
+        "$50$ et $60$",
+        "$50$ et $70$",
+        "$40$ et $60$"
+      ],
+      "correctAnswer": "$50$ et $60$",
+      "explanation": "Le point A est placé sur $53$. On cherche la dizaine juste avant (inférieure) et la dizaine juste après (supérieure). La dizaine précédente est $50$ et la suivante est $60$. Le nombre $53$ se situe donc entre $50$ et $60$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 40 à 60",
+        "min": 40,
+        "max": 60,
+        "points": [
+          {
+            "value": 53,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Complète la phrase : La dizaine inférieure à $82$ est ... et la dizaine supérieure est ...",
+      "options": [
+        "$80$ et $90$",
+        "$70$ et $80$",
+        "$80$ et $100$",
+        "$70$ et $90$"
+      ],
+      "correctAnswer": "$80$ et $90$",
+      "explanation": "La dizaine inférieure est la dizaine qui ne dépasse pas le nombre. Pour $82$, c'est $80$ (8 dizaines). La dizaine supérieure est la dizaine qui suit immédiatement, c'est-à-dire $90$ (9 dizaines). Attention à ne pas confondre avec la centaine supérieure ($100$) ou la dizaine précédente ($70$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est encadré par les dizaines $60$ et $70$ ?",
+      "options": [
+        "$58$",
+        "$65$",
+        "$72$",
+        "$60$"
+      ],
+      "correctAnswer": "$65$",
+      "explanation": "Un nombre encadré par $60$ et $70$ doit être strictement plus grand que $60$ et strictement plus petit que $70$. $58$ est entre $50$ et $60$. $72$ est entre $70$ et $80$. $60$ est exactement une dizaine, il n'est pas *entre* deux dizaines. $65$ est bien compris entre $60$ et $70$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre est strictement compris entre $30$ et $40$. Sa chiffre des unités est $8$. De quel nombre s'agit-il ?",
+      "options": [
+        "$28$",
+        "$38$",
+        "$48$",
+        "$30$"
+      ],
+      "correctAnswer": "$38$",
+      "explanation": "Le nombre cherché est plus grand que $30$ et plus petit que $40$. Sa dizaine est donc $3$ (trente). Comme sa chiffre des unités est $8$, le nombre est $38$. $28$ est entre $20$ et $30$, $48$ est entre $40$ et $50$, et $30$ est la dizaine inférieure, pas un nombre entre les deux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

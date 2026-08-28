@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Repérer facteur",
+  "title": "Algorithme de factorisation par facteur commun",
+  "blocks": [
+    {
+      "title": "Étape 1 : Identifier le facteur commun",
+      "content": "On considère l'expression $E = 12x^2 + 18x$.\\nÉcris un algorithme (en langage naturel ou pseudo-code) qui permet de déterminer le plus grand facteur commun aux deux termes de $E$.\\nL'algorithme doit afficher ce facteur commun.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer les coefficients en facteurs premiers : $12 = 2^2 \\times 3$ et $18 = 2 \\times 3^2$.\\n2. Identifier les facteurs premiers communs aux coefficients : $2$ et $3$.\\n3. Prendre la plus petite puissance pour chaque facteur commun : $2^1 \\times 3^1 = 6$.\\n4. Regarder la partie littérale : $x^2$ et $x^1$. Le facteur commun est $x$ (plus petit exposant).\\n5. Le facteur commun total est $6x$.\\n6. Afficher $6x$.",
+      "explanation": "Pour trouver le facteur commun, on décompose les coefficients ($12$ et $18$) et on garde les facteurs communs avec le plus petit exposant : $2 \\times 3 = 6$. Pour la partie littérale, on garde $x$ avec le plus petit exposant ($1$). Le facteur commun est donc $6x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape 2 : Factoriser l'expression",
+      "content": "À partir du facteur commun trouvé à l'étape précédente ($6x$), écris un algorithme qui factorise l'expression $E = 12x^2 + 18x$.\\nL'algorithme doit afficher l'expression factorisée sous la forme $k \\times (\\dots)$.",
+      "correctAnswer": "Algorithme :\\n1. Prendre le facteur commun $F = 6x$.\\n2. Diviser chaque terme de $E$ par $F$ :\\n   - $12x^2 \\div 6x = 2x$\\n   - $18x \\div 6x = 3$\\n3. Écrire la somme entre parenthèses : $(2x + 3)$.\\n4. Écrire le produit final : $6x \\times (2x + 3)$.\\n5. Afficher $6x(2x + 3)$.",
+      "explanation": "On divise chaque terme par le facteur commun $6x$ : $12x^2 / 6x = 2x$ et $18x / 6x = 3$. On met la somme obtenue entre parenthèses et on la multiplie par le facteur commun. On obtient $6x(2x + 3)$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Étape 3 : Généraliser pour une expression à trois termes",
+      "content": "On considère maintenant l'expression $F = 24a^3b - 16a^2b^2 + 8ab$.\\nÉcris un algorithme complet qui :\\n1. Détermine le facteur commun aux trois termes.\\n2. Factorise l'expression $F$.\\n3. Affiche le résultat final.",
+      "correctAnswer": "Algorithme :\\n1. Coefficients : $24 = 2^3 \\times 3$, $16 = 2^4$, $8 = 2^3$. Facteur commun des coefficients : $2^3 = 8$.\\n2. Partie littérale en $a$ : exposants $3, 2, 1$ -> garder $a^1 = a$.\\n3. Partie littérale en $b$ : exposants $1, 2, 1$ -> garder $b^1 = b$.\\n4. Facteur commun total : $8ab$.\\n5. Divisions :\\n   - $24a^3b \\div 8ab = 3a^2$\\n   - $-16a^2b^2 \\div 8ab = -2ab$\\n   - $8ab \\div 8ab = 1$\\n6. Expression factorisée : $8ab \\times (3a^2 - 2ab + 1)$.\\n7. Afficher $8ab(3a^2 - 2ab + 1)$.",
+      "explanation": "On cherche le PGCD des coefficients ($8$). Pour les variables, on prend le plus petit exposant pour $a$ ($1$) et pour $b$ ($1$). Le facteur commun est $8ab$. On divise chaque terme par $8ab$ et on écrit le produit du facteur commun par la somme des quotients.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

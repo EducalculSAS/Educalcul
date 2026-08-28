@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 382,
+  "_course_code": "5eme-t01-c04-automatismes-numeriques",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Mental",
+  "title": "Approfondissement mental : algorithmes de calcul",
+  "blocks": [
+    {
+      "title": "Produit par décomposition",
+      "content": "Écrire un algorithme (en pseudo‑code) pour calculer mentalement le produit $25 × 16$ en décomposant les nombres.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer 16 en 10 + 6.\\n2. Calculer 25 × 10 = 250.\\n3. Calculer 25 × 6 = 150 (car 25 × 2 = 50, puis ×3 = 150).\\n4. Additionner 250 + 150 = 400.\\nRésultat : 400.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la distributivité : $25 × 16 = 25 × (10 + 6) = 25 × 10 + 25 × 6 = 250 + 150 = 400$. Cette méthode permet un calcul mental rapide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition par compensation",
+      "content": "Proposer un raisonnement structuré pour additionner mentalement $498 + 257$.",
+      "correctAnswer": "Raisonnement :\\n1. Arrondir 498 à 500 en ajoutant 2.\\n2. Soustraire 2 à 257 pour compenser : 257 - 2 = 255.\\n3. Additionner 500 + 255 = 755.\\nRésultat : 755.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode de compensation consiste à modifier un terme pour obtenir un nombre rond, puis à compenser sur l'autre terme. $498 + 257 = (498 + 2) + (257 - 2) = 500 + 255 = 755$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division euclidienne par soustractions successives",
+      "content": "Écrire un algorithme simple (en pseudo‑code) qui calcule le quotient et le reste de la division euclidienne de $123$ par $7$ en utilisant uniquement des soustractions successives.",
+      "correctAnswer": "Algorithme (pseudo‑code) :\\nq ← 0\\nn ← 123\\ntant que n ≥ 7 faire\\n    n ← n - 7\\n    q ← q + 1\\nfin tant que\\nafficher q, n\\nRésultat : quotient = 17, reste = 4.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On soustrait successivement le diviseur 7 au dividende 123 jusqu'à ce que le reste soit inférieur à 7. Le nombre de soustractions effectuées donne le quotient (17) et la valeur finale de n est le reste (4).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

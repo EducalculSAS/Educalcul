@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Indicateurs et probabilités",
+  "title": "Algorithmes pour indicateurs statistiques et probabilités",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée une liste de nombres réels et renvoie leur moyenne arithmétique. On notera $n$ le nombre d'éléments et $x_i$ les valeurs.",
+      "correctAnswer": "Algorithme Moyenne(Liste) :\\n    somme ← 0\\n    Pour chaque x dans Liste faire\\n        somme ← somme + x\\n    FinPour\\n    moyenne ← somme / longueur(Liste)\\n    Retourner moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt la liste, accumule la somme des éléments, puis divise par le nombre d'éléments $n$ pour obtenir la moyenne $\\frac{1}{n}\\sum_{i=1}^{n} x_i$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la médiane",
+      "content": "Écrire un algorithme qui reçoit une liste de nombres réels, la trie dans l'ordre croissant et renvoie la médiane. Rappel : si $n$ est impair, la médiane est l'élément central ; si $n$ est pair, c'est la moyenne des deux éléments centraux.",
+      "correctAnswer": "Algorithme Mediane(Liste) :\\n    Trier Liste dans l'ordre croissant\\n    n ← longueur(Liste)\\n    Si n mod 2 = 1 alors\\n        mediane ← Liste[n // 2]\\n    Sinon\\n        mediane ← (Liste[n // 2 - 1] + Liste[n // 2]) / 2\\n    FinSi\\n    Retourner mediane",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après tri, on distingue les deux cas selon la parité de $n$. Pour $n$ impair, l'indice central est $n//2$ (indexation à partir de 0). Pour $n$ pair, on moyenne les indices $n/2-1$ et $n/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation d'une probabilité par simulation",
+      "content": "Écrire un algorithme qui simule $N$ lancers d'un dé équilibré à six faces et estime la probabilité d'obtenir un 6. L'algorithme doit afficher la fréquence observée.",
+      "correctAnswer": "Algorithme EstimerProbaSix(N) :\\n    compteur ← 0\\n    Pour i de 1 à N faire\\n        lancer ← entier_aleatoire(1, 6)\\n        Si lancer = 6 alors\\n            compteur ← compteur + 1\\n        FinSi\\n    FinPour\\n    frequence ← compteur / N\\n    Afficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On répète $N$ fois l'expérience aléatoire, on compte le nombre de succès (face 6), puis on calcule la fréquence $\\frac{\\text{compteur}}{N}$ qui tend vers la probabilité théorique $\\frac{1}{6}$ quand $N$ grandit.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

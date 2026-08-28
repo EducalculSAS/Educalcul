@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 196,
+  "_course_code": "ce2-t07-c01-polygones-et-vocabulaire",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Nommer triangles et quadrilatères",
+  "title": "Nommer les triangles et les quadrilatères",
+  "questions": [
+    {
+      "text": "Observe le triangle ci-dessous. Comment s'appelle ce triangle ?",
+      "options": [
+        "Triangle rectangle",
+        "Triangle isocèle",
+        "Triangle équilatéral",
+        "Triangle quelconque"
+      ],
+      "correctAnswer": "Triangle rectangle",
+      "explanation": "Le triangle présente un angle droit (le petit carré dans l'angle au sommet B). Un triangle qui a un angle droit s'appelle un triangle rectangle. Ce n'est pas forcément isocèle (deux côtés égaux) ni équilatéral (trois côtés égaux).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec angle droit en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Un triangle a ses trois côtés de même longueur. Quel est son nom précis ?",
+      "options": [
+        "Triangle équilatéral",
+        "Triangle isocèle",
+        "Triangle rectangle",
+        "Triangle quelconque"
+      ],
+      "correctAnswer": "Triangle équilatéral",
+      "explanation": "Par définition, un triangle équilatéral a ses trois côtés de même longueur. Un triangle isocèle n'en a que deux de même longueur. Un triangle rectangle est défini par son angle droit, pas par ses côtés. Un triangle quelconque n'a aucune particularité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un quadrilatère a quatre angles droits et ses quatre côtés ont la même longueur. Comment nomme-t-on ce quadrilatère ?",
+      "options": [
+        "Carré",
+        "Rectangle",
+        "Losange",
+        "Parallélogramme"
+      ],
+      "correctAnswer": "Carré",
+      "explanation": "Le carré est le seul quadrilatère qui possède à la fois quatre angles droits (comme le rectangle) et quatre côtés de même longueur (comme le losange). Le rectangle n'a pas forcément quatre côtés égaux. Le losange n'a pas forcément d'angles droits. Le parallélogramme n'a ni angles droits obligatoires, ni côtés égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces quadrilatères a ses quatre côtés de même longueur, mais n'a pas nécessairement d'angle droit ?",
+      "options": [
+        "Losange",
+        "Carré",
+        "Rectangle",
+        "Trapèze"
+      ],
+      "correctAnswer": "Losange",
+      "explanation": "Le losange se définit par ses quatre côtés de même longueur. Ses angles ne sont pas obligatoirement droits (s'il en a, c'est un carré). Le rectangle a quatre angles droits mais pas forcément quatre côtés égaux. Le trapèze n'a qu'une seule paire de côtés parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces quadrilatères, lequel a exactement une seule paire de côtés parallèles ?",
+      "options": [
+        "Trapèze",
+        "Parallélogramme",
+        "Carré",
+        "Rectangle"
+      ],
+      "correctAnswer": "Trapèze",
+      "explanation": "La définition du trapèze (au sens inclusif enseigné au primaire) est un quadrilatère qui a au moins une paire de côtés parallèles. Dans ce quiz, on cherche celui qui a *exactement* une seule paire (le trapèze quelconque). Le parallélogramme, le carré et le rectangle ont deux paires de côtés parallèles.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

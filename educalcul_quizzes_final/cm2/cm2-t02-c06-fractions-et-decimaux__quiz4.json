@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 287,
+  "_course_code": "cm2-t02-c06-fractions-et-decimaux",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Application : Fractions et décimaux",
+  "title": "Fractions et nombres décimaux",
+  "questions": [
+    {
+      "text": "Comment s'écrit la fraction $\\frac{7}{10}$ sous forme de nombre décimal ?",
+      "options": [
+        "$0,7$",
+        "$7,0$",
+        "$0,07$",
+        "$7,10$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "Une fraction avec un dénominateur égal à $10$ représente des dixièmes. $\\frac{7}{10}$ correspond donc à sept dixièmes, ce qui s'écrit $0,7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'écriture fractionnaire du nombre décimal $2,5$ ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{25}{10}$",
+        "$\\frac{25}{100}$",
+        "$\\frac{5}{2}$"
+      ],
+      "correctAnswer": "$\\frac{25}{10}$",
+      "explanation": "Le nombre $2,5$ possède un chiffre après la virgule, il s'agit donc de dixièmes. On peut l'écrire $\\frac{25}{10}$ car $25$ divisé par $10$ égale $2,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a la fraction $\\frac{125}{100}$. Quel nombre décimal lui correspond ?",
+      "options": [
+        "$1,25$",
+        "$12,5$",
+        "$0,125$",
+        "$125,0$"
+      ],
+      "correctAnswer": "$1,25$",
+      "explanation": "Le dénominateur est $100$, on compte donc en centièmes. $125$ centièmes correspondent à une unité entière et $25$ centièmes, soit $1,25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces nombres décimaux est égal à la fraction $\\frac{3}{4}$ ?",
+      "options": [
+        "$0,34$",
+        "$0,3$",
+        "$0,75$",
+        "$0,43$"
+      ],
+      "correctAnswer": "$0,75$",
+      "explanation": "Pour transformer $\\frac{3}{4}$ en nombre décimal, on peut multiplier le numérateur et le dénominateur par $25$ pour obtenir une fraction sur $100$. On a $\\frac{3 \\times 25}{4 \\times 25} = \\frac{75}{100} = 0,75$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Représentation de trois quarts d'un disque"
+      }
+    },
+    {
+      "text": "Un ruban mesure $\\frac{15}{10}$ de mètre. Quelle est sa longueur en mètres ?",
+      "options": [
+        "$0,15$ mètre",
+        "$1,5$ mètre",
+        "$15$ mètres",
+        "$1,05$ mètre"
+      ],
+      "correctAnswer": "$1,5$ mètre",
+      "explanation": "La fraction $\\frac{15}{10}$ signifie que le ruban mesure quinze dixièmes de mètre. Comme $10$ dixièmes forment $1$ mètre entier, il reste $5$ dixièmes. On obtient donc $1,5$ mètre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

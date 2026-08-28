@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Contrôler",
+  "title": "Quiz : Contrôler les arrondis et valeurs approchées",
+  "questions": [
+    {
+      "text": "On veut encadrer le nombre $12,68$ par deux nombres décimaux au dixième près. Quel encadrement est correct ?",
+      "options": [
+        "$12,6 < 12,68 < 12,7$",
+        "$12,7 < 12,68 < 12,8$",
+        "$12,6 < 12,68 < 12,6$",
+        "$12,5 < 12,68 < 12,6$"
+      ],
+      "correctAnswer": "$12,6 < 12,68 < 12,7$",
+      "explanation": "Pour encadrer $12,68$ au dixième près, on regarde le chiffre des dixièmes qui est $6$. Le nombre est donc compris entre $12,6$ (inclus) et $12,7$ (exclu). L'encadrement correct est $12,6 \\le 12,68 < 12,7$, ce qui s'écrit souvent $12,6 < 12,68 < 12,7$ pour les encadrements stricts au niveau 6e. Les autres propositions placent mal le nombre ou ont des bornes incohérentes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a arrondi $45,62$ à l'unité. Il a écrit $45$. Comment vérifier si sa réponse est correcte ?",
+      "options": [
+        "Regarder le chiffre des dixièmes : il est $6 \\ge 5$, donc on arrondit à $46$. La réponse $45$ est fausse.",
+        "Regarder le chiffre des centièmes : il est $2 < 5$, donc on arrondit à $45$. La réponse est correcte.",
+        "Regarder le chiffre des unités : il est $5$, donc on ne change rien. La réponse est correcte.",
+        "Regarder le chiffre des dizaines : il est $4$, donc on arrondit à $40$. La réponse est fausse."
+      ],
+      "correctAnswer": "Regarder le chiffre des dixièmes : il est $6 \\ge 5$, donc on arrondit à $46$. La réponse $45$ est fausse.",
+      "explanation": "La règle de l'arrondi à l'unité demande de regarder le chiffre des dixièmes (le premier après la virgule). Ici, ce chiffre est $6$. Comme $6 \\ge 5$, on arrondit à l'entier supérieur : $46$. L'élève a tort car il a regardé les centièmes ($2$) ou a tronqué le nombre. Les options B, C et D correspondent à des erreurs classiques : regarder le mauvais chiffre, ne pas arrondir, ou arrondir à la dizaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour arrondir $7,849$ au centième près, Léa écrit $7,84$. Quelle vérification montre son erreur ?",
+      "options": [
+        "Le chiffre des millièmes est $9 \\ge 5$, donc il faut arrondir le centième $4$ à $5$, ce qui donne $7,85$.",
+        "Le chiffre des dixièmes est $8$, donc on arrondit à $7,8$.",
+        "Le chiffre des centièmes est $4 < 5$, donc on garde $7,84$. Léa a raison.",
+        "On supprime tous les chiffres après la virgule, ce qui donne $7$."
+      ],
+      "correctAnswer": "Le chiffre des millièmes est $9 \\ge 5$, donc il faut arrondir le centième $4$ à $5$, ce qui donne $7,85$.",
+      "explanation": "L'arrondi au centième près se décide en regardant le chiffre des millièmes (le 3e après la virgule). Ici, les millièmes valent $9$. Comme $9 \\ge 5$, on augmente le chiffre des centièmes ($4$) d'une unité, ce qui donne $5$. Le résultat correct est $7,85$. Léa a probablement tronqué le nombre ou regardé le mauvais chiffre. L'option B confond arrondi au dixième et au centième. L'option C applique la règle 'chiffre < 5' sur le centième lui-même au lieu du millième. L'option D est un arrondi à l'unité par troncature.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier l'ordre de grandeur du produit $24 \\times 3,9$, on remplace les nombres par des valeurs approchées. Quel calcul approché est le plus pertinent ?",
+      "options": [
+        "$20 \\times 4 = 80$",
+        "$25 \\times 4 = 100$",
+        "$24 \\times 4 = 96$",
+        "$30 \\times 4 = 120$"
+      ],
+      "correctAnswer": "$25 \\times 4 = 100$",
+      "explanation": "Pour contrôler un ordre de grandeur, on arrondit chaque nombre de manière simple et proche. $24$ s'arrondit à $25$ (au multiple de $5$ ou $10$ le plus proche) et $3,9$ s'arrondit à $4$ (à l'unité). Le calcul $25 \\times 4 = 100$ est facile à faire mentalement et donne un résultat très proche du produit exact ($93,6$). L'option A ($20 \\times 4$) s'éloigne trop ($80$). L'option C n'arrondit pas $24$. L'option D arrondit $24$ à $30$ ce qui est trop grossier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre arrondi au dixième près donne $5,3$. Parmi les nombres suivants, lequel ne peut PAS être le nombre de départ ?",
+      "options": [
+        "$5,28$",
+        "$5,31$",
+        "$5,34$",
+        "$5,24$"
+      ],
+      "correctAnswer": "$5,24$",
+      "explanation": "Un nombre qui s'arrondit à $5,3$ au dixième près doit appartenir à l'intervalle $[5,25 ; 5,35[$. On teste chaque option : $5,28$ est dans l'intervalle (dixièmes $2$, centièmes $8 \\ge 5 \\to 5,3$). $5,31$ est dans l'intervalle (dixièmes $3$, centièmes $1 < 5 \\to 5,3$). $5,34$ est dans l'intervalle (dixièmes $3$, centièmes $4 < 5 \\to 5,3$). $5,24$ a pour chiffre des centièmes $4 < 5$, il s'arrondit donc à $5,2$ et non $5,3$. C'est le seul impossible.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 213,
+  "_course_code": "cm1-t01-c03-comparer-ranger-et-encadrer-les-entiers",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Arrondir dans des cas simples",
+  "title": "Quiz : Arrondir les nombres entiers (cas simples)",
+  "questions": [
+    {
+      "text": "Quel est l'arrondi de $43$ à la dizaine la plus proche ?",
+      "options": [
+        "$30$",
+        "$40$",
+        "$50$",
+        "$43$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "Pour arrondir $43$ à la dizaine, on regarde le chiffre des unités qui est $3$. Comme $3$ est strictement inférieur à $5$, on arrondit à la dizaine inférieure, soit $40$. L'option $30$ correspond à la dizaine précédente, $50$ à la dizaine supérieure, et $43$ n'est pas un arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut arrondir $367$ à la centaine la plus proche. Quel résultat obtient-on ?",
+      "options": [
+        "$300$",
+        "$360$",
+        "$370$",
+        "$400$"
+      ],
+      "correctAnswer": "$400$",
+      "explanation": "Pour arrondir à la centaine, on observe le chiffre des dizaines qui est $6$. Comme $6$ est supérieur ou égal à $5$, on arrondit à la centaine supérieure. $367$ se situe entre $300$ et $400$, il est plus proche de $400$. Les options $360$ et $370$ correspondent à un arrondi à la dizaine, pas à la centaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donnez l'arrondi de $2\\,450$ au millier le plus proche.",
+      "options": [
+        "$2\\,000$",
+        "$2\\,400$",
+        "$2\\,500$",
+        "$3\\,000$"
+      ],
+      "correctAnswer": "$2\\,000$",
+      "explanation": "Pour arrondir au millier, on regarde le chiffre des centaines qui est $4$. Comme $4$ est strictement inférieur à $5$, on arrondit au millier inférieur, soit $2\\,000$. L'option $2\\,400$ est un arrondi à la centaine, $2\\,500$ correspond à la moitié exacte (mais la règle de l'arrondi au plus proche avec chiffre des centaines $<5$ donne le millier inférieur), et $3\\,000$ serait l'arrondi si le chiffre des centaines était $5$ ou plus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour arrondir $58$ à la dizaine, entre quelles deux dizaines ce nombre se situe-t-il ?",
+      "options": [
+        "$50$ et $60$",
+        "$50$ et $55$",
+        "$55$ et $60$",
+        "$0$ et $100$"
+      ],
+      "correctAnswer": "$50$ et $60$",
+      "explanation": "Un nombre à deux chiffres comme $58$ se situe toujours entre la dizaine inférieure ($50$) et la dizaine supérieure ($60$) pour un arrondi à la dizaine. Le milieu est $55$, mais l'encadrement se fait par les dizaines entières. $58$ est compris entre $50$ et $60$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position de 58 entre 50 et 60",
+        "min": 50,
+        "max": 60,
+        "points": [
+          {
+            "value": 58,
+            "label": "58"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Un stade affiche $1\\,234$ spectateurs. Quel est ce nombre arrondi à la centaine ?",
+      "options": [
+        "$1\\,000$",
+        "$1\\,200$",
+        "$1\\,230$",
+        "$1\\,300$"
+      ],
+      "correctAnswer": "$1\\,200$",
+      "explanation": "Pour arrondir $1\\,234$ à la centaine, on regarde le chiffre des dizaines qui est $3$. Comme $3 < 5$, on arrondit à la centaine inférieure. Les centaines encadrantes sont $1\\,200$ et $1\\,300$. Le nombre est plus proche de $1\\,200$. L'option $1\\,000$ est l'arrondi au millier, $1\\,230$ à la dizaine, et $1\\,300$ serait l'arrondi si le chiffre des dizaines était $5$ ou plus.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

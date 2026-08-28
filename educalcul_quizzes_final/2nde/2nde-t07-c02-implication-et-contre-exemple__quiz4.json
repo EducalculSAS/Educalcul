@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Implication et contre-exemple",
+  "title": "Quiz : Implication et contre-exemple - Applications",
+  "questions": [
+    {
+      "text": "Laquelle des valeurs suivantes est un contre-exemple à l'implication : $«$ Si un entier est pair, alors il est divisible par $4$ $»$ ?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Un contre-exemple doit rendre l'hypothèse vraie et la conclusion fausse. $2$ est pair (hypothèse vraie) mais n'est pas divisible par $4$ (conclusion fausse). Les autres nombres sont soit non pairs, soit divisibles par $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons l'implication : $«$ Pour tout réel $x$, si $x^2 = 4$ alors $x = 2$ $»$. Laquelle des valeurs suivantes est un contre-exemple ?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$0$",
+        "$4$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "Pour $x = -2$, l'hypothèse $x^2 = 4$ est vraie, mais la conclusion $x = 2$ est fausse. Les autres valeurs ne satisfont pas l'hypothèse ou vérifient la conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'implication $«$ Si un triangle est équilatéral, alors il est isocèle $»$ est vraie. Quelle affirmation constitue un contre-exemple à sa réciproque $«$ Si un triangle est isocèle, alors il est équilatéral $»$ ?",
+      "options": [
+        "Un triangle isocèle non équilatéral",
+        "Un triangle équilatéral",
+        "Un triangle rectangle isocèle",
+        "Un triangle quelconque"
+      ],
+      "correctAnswer": "Un triangle isocèle non équilatéral",
+      "explanation": "La réciproque affirme que tout triangle isocèle est équilatéral. Un triangle isocèle qui n'est pas équilatéral (par exemple côtés $5,5,8$) rend l'hypothèse vraie et la conclusion fausse, c'est donc un contre-exemple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les implications suivantes sur les ensembles, laquelle est toujours vraie ?",
+      "options": [
+        "Si $x \\in A \\cup B$ alors $x \\in A$",
+        "Si $x \\in A$ alors $x \\in A \\cap B$",
+        "Si $x \\in A \\cap B$ alors $x \\in A$",
+        "Si $x \\in A$ alors $x \\in B$"
+      ],
+      "correctAnswer": "Si $x \\in A \\cap B$ alors $x \\in A$",
+      "explanation": "Par définition de l'intersection, tout élément de $A \\cap B$ appartient à $A$. Les autres implications sont fausses en général (contre‑exemples faciles).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme termine et affiche un résultat incorrect. Quelle affirmation logique cela contredit‑il ?",
+      "options": [
+        "Si l'algorithme termine, alors le résultat est correct",
+        "Si le résultat est correct, alors l'algorithme termine",
+        "L'algorithme ne termine pas",
+        "Le résultat est correct"
+      ],
+      "correctAnswer": "Si l'algorithme termine, alors le résultat est correct",
+      "explanation": "L'observation « l'algorithme termine et le résultat est incorrect » rend l'hypothèse « l'algorithme termine » vraie et la conclusion « le résultat est correct » fausse. C'est exactement un contre‑exemple à l'implication « Si l'algorithme termine, alors le résultat est correct ».",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

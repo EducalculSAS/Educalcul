@@ -1,0 +1,325 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.795875+00:00",
+  "id": 103,
+  "code": "ce1-t04-c06",
+  "title": "Tables de multiplication par 10",
+  "description": "Cours structuré Educalcul : Tables de multiplication par 10.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Tables de multiplication par 10",
+    "objectif_global": "Tables de multiplication par 10",
+    "mini_lecons_imposees": [
+      "Relier dizaines et ×10.",
+      "Calculer rapidement.",
+      "Distinguer ×10 et +10."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Relier dizaines et ×10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier dizaines et ×10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu comptes par paquets de dix, tu formes une dizaine. Une dizaine, c’est exactement dix unités regroupées ensemble. Imagine que tu as trois paquets de dix bonbons : tu possèdes en tout trente bonbons, ce que l’on écrit $3 \\\\times 10 = 30$. Ce lien entre les paquets et la multiplication est la clé pour comprendre la table de dix."
+            },
+            {
+              "type": "definition",
+              "term": "Dizaine",
+              "definition": "Un groupe de dix unités. On l’écrit souvent avec un chiffre des dizaines suivi d’un zéro des unités.",
+              "example": "Par exemple, $20$ représente deux dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 0,
+              "caption": "3 dizaines = 30 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier n’importe quel chiffre par dix, la règle est simple : tu écris le chiffre et tu colles un zéro derrière. Essaie avec le chiffre quatre : $4 \\\\times 10 = 40$. Le zéro montre qu’il n’y a plus d’unités seules, seulement des dizaines. C’est comme si le chiffre glissait d’une case vers la gauche sur le tableau de numération."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 1,
+              "cols": 10,
+              "highlighted": 10,
+              "caption": "Une rangée de 10 cases"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme le zéro signale le changement de rang : le chiffre passe des unités aux dizaines. Ce principe fonctionne pour tous les chiffres de un à neuf, donc $1 \\\\times 10 = 10$, $2 \\\\times 10 = 20$, jusqu’à $9 \\\\times 10 = 90$. À chaque fois, le zéro final te dit « ici il y a des dizaines »."
+            },
+            {
+              "type": "number_line",
+              "caption": "Le point 30 sur la ligne",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 30,
+                  "label": "30"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $2 \\\\times 10$.",
+              "answer": "$20$",
+              "hint": "Écris le chiffre $2$ et ajoute un zéro.",
+              "explanation": "$2 \\\\times 10 = 20$ car deux dizaines font vingt unités."
+            },
+            {
+              "question": "Combien font $5 \\\\times 10$ ?",
+              "answer": "$50$",
+              "hint": "Pense au nombre de dizaines.",
+              "explanation": "$5 \\\\times 10 = 50$, cinq groupes de dix."
+            },
+            {
+              "question": "Complète : $7 \\\\times 10 = \\\\_\\\\_$",
+              "answer": "$70$",
+              "hint": "Ajoute un zéro après le $7$.",
+              "explanation": "$7 \\\\times 10 = 70$, sept dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Calculer rapidement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer rapidement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais qu’un zéro à la fin signifie dix fois plus, tu peux répondre très vite sans compter sur tes doigts. Prends le chiffre six, ajoute un zéro et tu obtiens soixante, écrit $6 \\\\times 10 = 60$. C’est un automatisme qui te fera gagner du temps pendant les exercices."
+            },
+            {
+              "type": "definition",
+              "term": "Multiple de 10",
+              "definition": "Un nombre qui se termine par un zéro. Il est obtenu en multipliant un entier par $10$.",
+              "example": "$70$ est un multiple de $10$ car $7 \\\\times 10 = 70$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 0,
+              "caption": "6 dizaines = 60"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec le chiffre huit. Écris le huit et colle un zéro derrière : le résultat est quatre-vingts, $8 \\\\times 10 = 80$. Sur le tableau de numération, le huit passe de la case des unités à la case des dizaines, exactement comme un déménagement."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 8,
+              "cols": 10,
+              "highlighted": 80,
+              "caption": "8 rangées de 10 cases"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec le neuf, la même astuce donne quatre-vingt-dix, $9 \\\\times 10 = 90$. Plus le chiffre de départ est grand, plus le nombre de dizaines augmente, mais la règle ne change jamais : un zéro ajouté à la fin."
+            },
+            {
+              "type": "number_line",
+              "caption": "Le point 90 sur la ligne",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 90,
+                  "label": "90"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $4 \\\\times 10$.",
+              "answer": "$40$",
+              "hint": "Ajoute un zéro après le $4$.",
+              "explanation": "$4 \\\\times 10 = 40$, quatre dizaines."
+            },
+            {
+              "question": "Quel est le résultat de $8 \\\\times 10$ ?",
+              "answer": "$80$",
+              "hint": "Pense au nombre de dizaines.",
+              "explanation": "$8 \\\\times 10 = 80$, huit groupes de dix."
+            },
+            {
+              "question": "Complète : $9 \\\\times 10 = \\\\_\\\\_$",
+              "answer": "$90$",
+              "hint": "Écris $9$ puis un zéro.",
+              "explanation": "$9 \\\\times 10 = 90$, neuf dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer ×10 et +10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distinguer ×10 et +10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on mélange ajouter dix et multiplier par dix. Si tu as cinq bonbons et tu en ajoutes dix, tu as quinze bonbons en tout, ce que l’on écrit $5 + 10 = 15$. Si tu multiplies cinq par dix, tu obtiens cinquante bonbons, $5 \\\\times 10 = 50$. Les deux opérations ne donnent pas le même total."
+            },
+            {
+              "type": "definition",
+              "term": "Addition",
+              "definition": "Mettre ensemble deux quantités pour en trouver le total.",
+              "example": "$5 + 10 = 15$."
+            },
+            {
+              "type": "definition",
+              "term": "Multiplication",
+              "definition": "Répéter une même quantité plusieurs fois.",
+              "example": "$5 \\\\times 10 = 50$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5,
+                10
+              ],
+              "right": [
+                15
+              ],
+              "caption": "Addition : 5 + 10 = 15"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une balance. À gauche, tu places le groupe de cinq et le groupe de dix ensemble, l’aiguille marque quinze. À droite, tu places cinq groupes de dix, l’aiguille marque cinquante. La balance montre bien la différence entre addition et multiplication."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5,
+                10
+              ],
+              "right": [
+                50
+              ],
+              "caption": "Multiplication : 5 × 10 = 50"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis un énoncé, cherche les mots « fois » ou « groupes de » pour savoir qu’il faut multiplier. Si tu vois « de plus » ou « ajoutés », c’est une addition. Essaie de repérer le mot‑clé avant de choisir l’opération."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparer +10 et ×10",
+              "min": 0,
+              "max": 60,
+              "points": [
+                {
+                  "value": 15,
+                  "label": "+10"
+                },
+                {
+                  "value": 50,
+                  "label": "×10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais relier une dizaine à une multiplication par 10.",
+                "Je calcule rapidement n’importe quel chiffre fois 10.",
+                "Je fais la différence entre ajouter 10 et multiplier par 10."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu as $3$ pommes et tu en ajoutes $10$, combien as-tu ?",
+              "answer": "$13$",
+              "hint": "C’est une addition.",
+              "explanation": "$3 + 10 = 13$, tu as ajouté dix pommes."
+            },
+            {
+              "question": "Si tu as $3$ groupes de $10$ pommes, combien as-tu ?",
+              "answer": "$30$",
+              "hint": "C’est une multiplication.",
+              "explanation": "$3 \\\\times 10 = 30$, trois groupes de dix."
+            },
+            {
+              "question": "Choisis l’opération : $6$ bonbons, tu en gagnes $10$ de plus.",
+              "answer": "$6 + 10 = 16$",
+              "hint": "Le mot « de plus » signale l’addition.",
+              "explanation": "On ajoute $10$ à $6$, donc $6 + 10 = 16$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

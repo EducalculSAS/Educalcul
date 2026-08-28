@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.709189+00:00",
+  "id": 75,
+  "code": "ce1-t01-c08",
+  "title": "Encadrer entre deux dizaines ou centaines",
+  "description": "Cours structuré Educalcul : Encadrer entre deux dizaines ou centaines.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Encadrer entre deux dizaines ou centaines",
+    "objectif_global": "Encadrer entre deux dizaines ou centaines",
+    "mini_lecons_imposees": [
+      "Trouver dizaines voisines.",
+      "Trouver centaines voisines.",
+      "Choisir un encadrement adapté."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Trouver dizaines voisines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dizaines voisines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $23$ bonbons. Pour savoir entre quelles dizaines se trouve ce nombre, regarde le chiffre des dizaines : c'est $2$. La dizaine du dessous est donc $20$ et la dizaine du dessus est $30$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : $2$ dizaines et $3$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la dizaine inférieure, garde le chiffre des dizaines et remplace les unités par $0$. Ainsi $23$ devient $20$. C'est la première borne de ton encadrement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le chiffre des dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $23$, le chiffre des dizaines est $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écris la dizaine du dessous",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets $2$ suivi de $0$ : $20$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris la dizaine du dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $1$ au chiffre des dizaines : $3$, puis $0$ : $30$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un autre nombre. Prends $47$ : le chiffre des dizaines est $4$, donc la dizaine du dessous est $40$ et celle du dessus est $50$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de $47$ entre $40$ et $50$",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 47,
+                  "label": "47"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer la méthode, reprends $56$. Le chiffre des dizaines est $5$, la dizaine inférieure est $50$ et la supérieure $60$. Tu vois le même schéma à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Entre quelles deux dizaines se trouve le nombre $34$ ?",
+              "answer": "$30$ et $40$",
+              "hint": "Regarde le chiffre des dizaines de $34$.",
+              "explanation": "Le chiffre des dizaines est $3$, donc la dizaine du dessous est $30$ et celle du dessus $40$."
+            },
+            {
+              "question": "Encadre $61$ entre deux dizaines.",
+              "answer": "$60$ et $70$",
+              "hint": "Quel est le chiffre des dizaines de $61$ ?",
+              "explanation": "Le chiffre des dizaines est $6$, donc $60$ et $70$."
+            },
+            {
+              "question": "Quel est l'encadrement de $89$ ?",
+              "answer": "$80$ et $90$",
+              "hint": "Compte les dizaines dans $89$.",
+              "explanation": "Le chiffre des dizaines est $8$, donc $80$ et $90$."
+            }
+          ]
+        },
+        {
+          "title": "Trouver centaines voisines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines voisines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons un nombre plus grand : $237$. Le chiffre des centaines est $2$. La centaine du dessous est $200$ et celle du dessus est $300$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 7,
+              "caption": "$237$ : $2$ centaines, $3$ dizaines, $7$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la centaine inférieure, garde le chiffre des centaines et mets $0$ aux dizaines et aux unités. $237$ devient $200$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie le chiffre des centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $237$, c'est $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écris la centaine du dessous",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2$ suivi de deux zéros : $200$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris la centaine du dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $1$ au chiffre des centaines : $3$, puis deux zéros : $300$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $452$. Le chiffre des centaines est $4$, donc la centaine du dessous est $400$ et celle du dessus $500$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de $452$ entre $400$ et $500$",
+              "min": 300,
+              "max": 600,
+              "points": [
+                {
+                  "value": 400,
+                  "label": "400"
+                },
+                {
+                  "value": 452,
+                  "label": "452"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier exemple : $789$. Le chiffre des centaines est $7$, la centaine inférieure $700$, la supérieure $800$. Le principe ne change pas, quel que soit le nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Entre quelles deux centaines se trouve $315$ ?",
+              "answer": "$300$ et $400$",
+              "hint": "Regarde le chiffre des centaines de $315$.",
+              "explanation": "Le chiffre des centaines est $3$, donc $300$ et $400$."
+            },
+            {
+              "question": "Encadre $642$ entre deux centaines.",
+              "answer": "$600$ et $700$",
+              "hint": "Quel est le chiffre des centaines de $642$ ?",
+              "explanation": "Le chiffre des centaines est $6$, donc $600$ et $700$."
+            },
+            {
+              "question": "Quel est l'encadrement de $908$ ?",
+              "answer": "$900$ et $1000$",
+              "hint": "Compte les centaines dans $908$.",
+              "explanation": "Le chiffre des centaines est $9$, donc $900$ et $1000$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir un encadrement adapté.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'encadrement adapté"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on veut arrondir à la dizaine, parfois à la centaine. Tout dépend de ce qu'on cherche : une estimation rapide ou une précision plus fine."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as $47$ pommes et que tu veux savoir combien de sacs de $10$ pommes tu peux remplir, l'encadrement à la dizaine ($40$ et $50$) est parfait."
+            },
+            {
+              "type": "fraction",
+              "numerator": 47,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "$47$ pommes partagées par paquets de $10$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine maintenant que tu as $237$ billes et que tu veux les ranger dans des boîtes de $100$ billes. L'encadrement à la centaine ($200$ et $300$) te donne tout de suite le nombre de boîtes nécessaires."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 7,
+              "caption": "$237$ billes : $2$ boîtes de $100$ et un reste"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décider, demande-toi : \"Est-ce que je compte par paquets de $10$ ou par paquets de $100$ ?\" Si c'est par $10$, choisis les dizaines voisines ; si c'est par $100$, choisis les centaines voisines."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie l'unité de regroupement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Paquets de $10$ ? Paquets de $100$ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouve les bornes correspondantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dizaines voisines pour $10$, centaines voisines pour $100$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note la borne du dessous et la borne du dessus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver les dizaines voisines d'un nombre.",
+                "Je sais trouver les centaines voisines d'un nombre.",
+                "Je sais choisir l'encadrement adapté selon le contexte."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $56$ crayons et tu veux les mettre dans des boîtes de $10$. Quel encadrement utilises-tu ?",
+              "answer": "$50$ et $60$",
+              "hint": "Pense aux paquets de $10$.",
+              "explanation": "On regroupe par $10$, donc on cherche les dizaines voisines : $50$ et $60$."
+            },
+            {
+              "question": "Tu as $482$ bonbons et tu veux les ranger dans des sachets de $100$. Quel encadrement choisis-tu ?",
+              "answer": "$400$ et $500$",
+              "hint": "Pense aux paquets de $100$.",
+              "explanation": "On regroupe par $100$, donc on cherche les centaines voisines : $400$ et $500$."
+            },
+            {
+              "question": "Pour $73$ billes, quel encadrement donnes-tu si tu comptes par $10$ ? Et si tu comptes par $100$ ?",
+              "answer": "Par $10$ : $70$ et $80$ ; par $100$ : $0$ et $100$",
+              "hint": "Regarde le chiffre des dizaines et le chiffre des centaines.",
+              "explanation": "Le chiffre des dizaines est $7$ -> $70$ et $80$. Le chiffre des centaines est $0$ -> $0$ et $100$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

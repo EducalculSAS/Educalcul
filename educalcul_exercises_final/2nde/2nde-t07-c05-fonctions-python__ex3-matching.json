@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Utiliser",
+  "title": "Utiliser des fonctions en Python",
+  "blocks": [
+    {
+      "title": "Fonctions simples sans paramètre",
+      "content": "Relie chaque fragment de code à ce qu'il affiche à l'écran.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "def dire_bonjour():\\n    print(\"Bonjour\")\\ndire_bonjour()",
+          "right": "Bonjour"
+        },
+        {
+          "left": "def somme():\\n    return 3 + 5\\nprint(somme())",
+          "right": "$8$"
+        },
+        {
+          "left": "def test():\\n    x = 10\\n    return x * 2\\nprint(test())",
+          "right": "$20$"
+        },
+        {
+          "left": "def rien():\\n    pass\\nprint(rien())",
+          "right": "None"
+        }
+      ],
+      "items": [],
+      "explanation": "La première fonction affiche directement \"Bonjour\" avec print. La deuxième utilise return pour renvoyer le résultat du calcul $3+5=8$, qui est ensuite affiché par print. La troisième calcule $10 \\times 2 = 20$ et le renvoie. La quatrième n'a pas d'instruction return, donc elle renvoie implicitement la valeur None, qui est affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonctions avec paramètres et retour",
+      "content": "Relie chaque définition de fonction et son appel à la valeur affichée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "def carre(x):\\n    return x * x\\nprint(carre(4))",
+          "right": "$16$"
+        },
+        {
+          "left": "def saluer(prenom):\\n    return \"Salut \" + prenom\\nprint(saluer(\"Ana\"))",
+          "right": "Salut Ana"
+        },
+        {
+          "left": "def max_deux(a, b):\\n    if a > b:\\n        return a\\n    else:\\n        return b\\nprint(max_deux(7, 3))",
+          "right": "$7$"
+        },
+        {
+          "left": "def pythagore(a, b):\\n    return (a**2 + b**2)**0.5\\nprint(pythagore(3, 4))",
+          "right": "$5.0$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fonction carre calcule $4 \\times 4 = 16$. La fonction saluer concatène les chaînes de caractères. La fonction max_deux compare $7$ et $3$ et renvoie le plus grand, $7$. La fonction pythagore applique le théorème de Pythagore : $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5.0$ (type float en Python).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Portée des variables et effets de bord",
+      "content": "Relie chaque fragment de code à la valeur finale de la variable affichée à la fin.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "x = 5\\ndef f():\\n    x = 10\\nf()\\nprint(x)",
+          "right": "$5$"
+        },
+        {
+          "left": "x = 5\\ndef f():\\n    global x\\n    x = 10\\nf()\\nprint(x)",
+          "right": "$10$"
+        },
+        {
+          "left": "L = [1, 2]\\ndef f(liste):\\n    liste.append(3)\\nf(L)\\nprint(L)",
+          "right": "[1, 2, 3]"
+        },
+        {
+          "left": "L = [1, 2]\\ndef f(liste):\\n    liste = [4, 5]\\nf(L)\\nprint(L)",
+          "right": "[1, 2]"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans le premier cas, x=10 crée une variable locale x qui ne modifie pas la variable globale x (reste 5). Dans le second, global x force la modification de la variable globale (devient 10). Dans le troisième, liste est une référence vers la même liste L ; append modifie l'objet en place (effet de bord). Dans le quatrième, liste = [4, 5] réassigne la variable locale liste vers un nouvel objet, ce qui ne modifie pas la liste originale L.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

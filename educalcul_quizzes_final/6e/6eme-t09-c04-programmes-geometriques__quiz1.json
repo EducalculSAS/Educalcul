@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Coordonnées",
+  "title": "Quiz Coordonnées - 6e",
+  "questions": [
+    {
+      "text": "Sur un repère orthogonal, le point A a pour abscisse 3 et pour ordonnée 2. Quelles sont les coordonnées du point A ?",
+      "options": [
+        "$(3; 2)$",
+        "$(2; 3)$",
+        "$(3; 3)$",
+        "$(2; 2)$"
+      ],
+      "correctAnswer": "$(3; 2)$",
+      "explanation": "Dans un repère, les coordonnées d'un point s'écrivent toujours dans l'ordre : abscisse (position sur l'axe horizontal) puis ordonnée (position sur l'axe vertical), entre parenthèses et séparées par un point-virgule. Ici, l'abscisse est 3 et l'ordonnée est 2, donc les coordonnées sont $(3; 2)$. L'option $(2; 3)$ inverse l'ordre, ce qui est l'erreur la plus fréquente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on le premier nombre dans un couple de coordonnées, par exemple le 4 dans $(4; 7)$ ?",
+      "options": [
+        "L'abscisse",
+        "L'ordonnée",
+        "L'origine",
+        "Le repère"
+      ],
+      "correctAnswer": "L'abscisse",
+      "explanation": "Le vocabulaire est précis : le premier nombre est l'abscisse (mesure sur l'axe des abscisses, horizontal), le second est l'ordonnée (mesure sur l'axe des ordonnées, vertical). L'origine est le point $(0; 0)$ et le repère est l'ensemble des deux axes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point B a pour coordonnées $(5; 1)$. Laquelle de ces affirmations est exacte ?",
+      "options": [
+        "Son abscisse est 5 et son ordonnée est 1",
+        "Son abscisse est 1 et son ordonnée est 5",
+        "Il se trouve sur l'axe des ordonnées",
+        "Il se trouve à l'origine"
+      ],
+      "correctAnswer": "Son abscisse est 5 et son ordonnée est 1",
+      "explanation": "Par définition, pour un point de coordonnées $(x; y)$, $x$ est l'abscisse et $y$ est l'ordonnée. Pour $(5; 1)$, l'abscisse vaut donc 5 et l'ordonnée vaut 1. Un point est sur l'axe des ordonnées si son abscisse est 0, et à l'origine si ses deux coordonnées sont nulles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelles sont les coordonnées de l'origine du repère, notée O ?",
+      "options": [
+        "$(0; 0)$",
+        "$(1; 1)$",
+        "$(0; 1)$",
+        "$(1; 0)$"
+      ],
+      "correctAnswer": "$(0; 0)$",
+      "explanation": "L'origine du repère est le point d'intersection des deux axes. Par définition, sa distance à l'axe des ordonnées (abscisse) est 0 et sa distance à l'axe des abscisses (ordonnée) est 0. Ses coordonnées sont donc $(0; 0)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points A$(2; 1)$, B$(2; 4)$ et C$(5; 4)$ sont trois sommets d'un rectangle ABCD. Quelles sont les coordonnées du quatrième sommet D ?",
+      "options": [
+        "$(5; 1)$",
+        "$(1; 5)$",
+        "$(5; 5)$",
+        "$(1; 1)$"
+      ],
+      "correctAnswer": "$(5; 1)$",
+      "explanation": "Dans un rectangle, les côtés opposés sont parallèles et de même longueur. A et B ont la même abscisse (2) : le segment [AB] est vertical. B et C ont la même ordonnée (4) : le segment [BC] est horizontal. Le sommet D doit avoir la même abscisse que C (5) pour que [CD] soit vertical, et la même ordonnée que A (1) pour que [AD] soit horizontal. Donc D est $(5; 1)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

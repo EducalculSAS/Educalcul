@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 277,
+  "_course_code": "cm2-t01-c03-dixiemes-centiemes-et-milliemes",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Position après virgule",
+  "title": "Algorithmes et positions décimales",
+  "blocks": [
+    {
+      "title": "Identification du chiffre",
+      "content": "Imagine un programme informatique qui reçoit un nombre décimal. Écris les étapes de raisonnement (l'algorithme) pour que le programme puisse identifier et afficher uniquement le chiffre des centièmes du nombre $45,678$.",
+      "correctAnswer": "Étape $1$. Localiser la virgule dans le nombre. \\nÉtape $2$. Compter deux positions vers la droite après la virgule. \\nÉtape $3$. Identifier le chiffre situé à cette deuxième position. \\nLe chiffre des centièmes de $45,678$ est $7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver les centièmes, on regarde le deuxième chiffre après la virgule : le premier est celui des dixièmes ($6$) et le deuxième est celui des centièmes ($7$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Transformation de valeur",
+      "content": "Crée une formule ou un raisonnement structuré pour transformer un nombre entier représentant des millièmes en un nombre décimal. Exemple : si le programme reçoit le nombre $345$ millièmes, comment doit-il calculer pour afficher $0,345$ ?",
+      "correctAnswer": "Prendre le nombre entier donné. \\nDiviser ce nombre par $1000$. \\nPlacer la virgule trois rangs vers la gauche à partir de la fin du nombre. \\nCalcul : $345 \\div 1000 = 0,345$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un millième correspond à une division par $1000$. Pour convertir des millièmes en nombre décimal, on déplace la virgule de trois positions vers la gauche.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de comparaison",
+      "content": "Écris un algorithme permettant de comparer deux nombres décimaux, $A$ et $B$, pour savoir lequel est le plus grand. Utilise le raisonnement basé sur la position des chiffres (unités, puis dixièmes, puis centièmes).",
+      "correctAnswer": "Étape $1$. Comparer la partie entière de $A$ et de $B$. Si l'une est plus grande, ce nombre est le plus grand. \\nÉtape $2$. Si les parties entières sont égales, comparer le chiffre des dixièmes. \\nÉtape $3$. Si les dixièmes sont égaux, comparer le chiffre des centièmes. \\nÉtape $4$. Continuer ainsi jusqu'à trouver une différence ou jusqu'aux millièmes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La comparaison de nombres décimaux se fait toujours de gauche à droite, en commençant par le rang le plus élevé (les unités, puis les dixièmes, etc.) pour déterminer lequel est supérieur.",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

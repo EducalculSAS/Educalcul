@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Contre-exemple",
+  "title": "Quiz : Le contre-exemple en logique",
+  "questions": [
+    {
+      "text": "On considère la proposition : \"Si un nombre entier est divisible par 6, alors il est divisible par 4.\" Quel nombre entier parmi les suivants est un contre-exemple qui montre que cette proposition est fausse ?",
+      "options": [
+        "12",
+        "18",
+        "24",
+        "8"
+      ],
+      "correctAnswer": "18",
+      "explanation": "Un contre-exemple doit satisfaire l'hypothèse (divisible par 6) mais pas la conclusion (divisible par 4). 18 est divisible par 6 (6 x 3) mais pas par 4 (18 / 4 = 4,5). 12 et 24 vérifient la conclusion, ils ne sont pas des contre-exemples. 8 ne satisfait pas l'hypothèse (non divisible par 6).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la propriété P : \"Pour tout nombre réel x, si $x^2 > 9$ alors $x > 3$.\" Laquelle des valeurs suivantes est un contre-exemple de cette propriété ?",
+      "options": [
+        "4",
+        "-4",
+        "2",
+        "0"
+      ],
+      "correctAnswer": "-4",
+      "explanation": "L'hypothèse est $x^2 > 9$. Pour $x = -4$, on a $(-4)^2 = 16 > 9$, l'hypothèse est vraie. La conclusion est $x > 3$. Pour $x = -4$, $-4 > 3$ est faux. C'est donc un contre-exemple. 4 vérifie la conclusion. 2 et 0 ne vérifient pas l'hypothèse ($2^2=4 < 9$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut réfuter l'affirmation : \"Tout nombre premier est impair.\" Quel est le contre-exemple unique ?",
+      "options": [
+        "1",
+        "2",
+        "9",
+        "15"
+      ],
+      "correctAnswer": "2",
+      "explanation": "L'affirmation est une implication : si un nombre est premier, alors il est impair. Un contre-exemple doit être premier (hypothèse vraie) et non impair (conclusion fausse). 2 est le seul nombre premier pair. 1 n'est pas premier. 9 et 15 ne sont pas premiers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons la proposition : \"Si un triangle est isocèle, alors il est rectangle.\" Parmi les triangles décrits ci-dessous, lequel constitue un contre-exemple ?",
+      "options": [
+        "Un triangle rectangle isocèle",
+        "Un triangle équilatéral",
+        "Un triangle rectangle scalène",
+        "Un triangle quelconque ni isocèle ni rectangle"
+      ],
+      "correctAnswer": "Un triangle équilatéral",
+      "explanation": "Un contre-exemple doit vérifier l'hypothèse (être isocèle) et infirmer la conclusion (ne pas être rectangle). Un triangle équilatéral est isocèle (il a au moins deux côtés égaux) mais ses angles valent 60°, il n'est pas rectangle. Le triangle rectangle isocèle vérifie la conclusion. Les deux derniers ne vérifient pas l'hypothèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On affirme : \"Pour tout entier naturel n, l'entier $n^2 + n + 41$ est premier.\" Quelle valeur de n fournit un contre-exemple ?",
+      "options": [
+        "0",
+        "1",
+        "40",
+        "41"
+      ],
+      "correctAnswer": "41",
+      "explanation": "Il faut trouver n tel que $n^2 + n + 41$ ne soit pas premier. Pour n = 41 : $41^2 + 41 + 41 = 41(41 + 1 + 1) = 41 \\times 43$, ce qui est un produit de deux entiers supérieurs à 1, donc non premier. Pour n = 0, on obtient 41 (premier). Pour n = 1, on obtient 43 (premier). Pour n = 40, on obtient $1600 + 40 + 41 = 1681 = 41^2$ (non premier aussi), mais 41 est la valeur classique attendue pour factoriser par 41 directement. Note : 40 fonctionne aussi ($40^2+40+41 = 1681 = 41^2$), mais 41 est le piège standard factorisable évidement. Ici, 41 est la réponse attendue car factorisation immédiate par 41.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

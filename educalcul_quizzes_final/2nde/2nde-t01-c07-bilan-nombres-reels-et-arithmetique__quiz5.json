@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Ensembles, intervalles, arithmétique",
+  "title": "Approfondissement : Ensembles, intervalles, arithmétique",
+  "questions": [
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est vraie ?",
+      "options": [
+        "$\\sqrt{2} \\in \\mathbb{Q}$",
+        "$\\mathbb{Z} \\subset \\mathbb{N}$",
+        "$-\\frac{5}{2} \\in \\mathbb{D}$",
+        "$\\pi \\in \\mathbb{Q}$"
+      ],
+      "correctAnswer": "$-\\frac{5}{2} \\in \\mathbb{D}$",
+      "explanation": "$\\sqrt{2}$ est un nombre irrationnel, donc il n'appartient pas à $\\mathbb{Q}$. L'ensemble $\\mathbb{Z}$ contient les entiers relatifs (négatifs, nul, positifs) alors que $\\mathbb{N}$ ne contient que les entiers naturels (positifs ou nuls), donc $\\mathbb{Z}$ n'est pas inclus dans $\\mathbb{N}$. Le nombre $\\pi$ est irrationnel, il n'appartient pas à $\\mathbb{Q}$. Le nombre $-\\frac{5}{2} = -2,5$ est un nombre décimal relatif, donc il appartient bien à $\\mathbb{D}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'intervalle $I = [2; 5[$ correspond à quel ensemble ?",
+      "options": [
+        "$\\{x \\in \\mathbb{R} \\mid 2 < x < 5\\}$",
+        "$\\{x \\in \\mathbb{R} \\mid 2 \\le x \\le 5\\}$",
+        "$\\{x \\in \\mathbb{R} \\mid 2 \\le x < 5\\}$",
+        "$\\{x \\in \\mathbb{R} \\mid 2 < x \\le 5\\}$"
+      ],
+      "correctAnswer": "$\\{x \\in \\mathbb{R} \\mid 2 \\le x < 5\\}$",
+      "explanation": "La notation $[2; 5[$ signifie que la borne inférieure $2$ est incluse (crochet ferme) et que la borne supérieure $5$ est exclue (crochet ouvert). L'ensemble des réels $x$ tels que $2 \\le x < 5$ correspond exactement à cette définition. La première option exclut les deux bornes, la deuxième les inclut toutes les deux, la quatrième inverse l'inclusion/exclusion.",
+      "points": 1,
+      "figure": {
+        "type": "interval_builder",
+        "min": 0,
+        "max": 6,
+        "lowerBound": 2,
+        "upperBound": 5,
+        "lowerOpen": false,
+        "upperOpen": true,
+        "caption": "Représentation de l'intervalle [2; 5["
+      }
+    },
+    {
+      "text": "Soient $A = ]-3; 4]$ et $B = [1; 7[$. Quelle est l'intersection $A \\cap B$ ?",
+      "options": [
+        "$] -3; 7[$",
+        "$[1; 4]$",
+        "$] -3; 1[ \\cup ]4; 7[$",
+        "$\\varnothing$"
+      ],
+      "correctAnswer": "$[1; 4]$",
+      "explanation": "L'intersection $A \\cap B$ est l'ensemble des nombres appartenant à la fois à $A$ et à $B$. $A$ va de $-3$ (exclu) à $4$ (inclus). $B$ va de $1$ (inclus) à $7$ (exclu). La partie commune commence au maximum des bornes inférieures, ici $1$ (inclus car dans $B$), et se termine au minimum des bornes supérieures, ici $4$ (inclus car dans $A$). L'intersection est donc l'intervalle $[1; 4]$. La première option est la réunion, la troisième est le complémentaire de l'intersection dans la réunion, la quatrième serait vraie si les intervalles étaient disjoints.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère les nombres $a = 2^3 \\times 3^2 \\times 5$ et $b = 2^2 \\times 3 \\times 7$. Quelle est la décomposition en facteurs premiers du PGCD de $a$ et $b$ ?",
+      "options": [
+        "$2^3 \\times 3^2 \\times 5 \\times 7$",
+        "$2^2 \\times 3$",
+        "$2^3 \\times 3^2$",
+        "$2^2 \\times 3 \\times 5 \\times 7$"
+      ],
+      "correctAnswer": "$2^2 \\times 3$",
+      "explanation": "Le PGCD de deux nombres décomposés en facteurs premiers s'obtient en prenant les facteurs communs avec le plus petit exposant. Les facteurs communs à $a$ et $b$ sont $2$ et $3$. Pour $2$, les exposants sont $3$ et $2$, le minimum est $2$. Pour $3$, les exposants sont $2$ et $1$, le minimum est $1$. Les facteurs $5$ et $7$ ne sont pas communs aux deux nombres. Le PGCD est donc $2^2 \\times 3^1 = 2^2 \\times 3$. La première option correspond au PPCM, la troisième prend les plus grands exposants pour les facteurs communs seulement, la quatrième mélange facteurs communs et non communs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $n$ un entier naturel. On sait que $n$ est divisible par $6$ et par $9$. Laquelle des affirmations suivantes est **toujours** vraie ?",
+      "options": [
+        "$n$ est divisible par $54$",
+        "$n$ est divisible par $18$",
+        "$n$ est divisible par $36$",
+        "$n$ est divisible par $27$"
+      ],
+      "correctAnswer": "$n$ est divisible par $18$",
+      "explanation": "Si $n$ est divisible par $6$ et par $9$, alors $n$ est un multiple de $6$ et de $9$. $n$ est donc un multiple de leur plus petit commun multiple (PPCM). $6 = 2 \\times 3$ et $9 = 3^2$. Le PPCM est $2 \\times 3^2 = 18$. Donc $n$ est obligatoirement divisible par $18$. En revanche, $n=18$ est divisible par $6$ et $9$ mais pas par $54$, $36$ ni $27$. Ces trois dernières affirmations ne sont pas toujours vraies.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

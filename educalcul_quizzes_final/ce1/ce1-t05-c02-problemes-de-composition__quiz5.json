@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 109,
+  "_course_code": "ce1-t05-c02-problemes-de-composition",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Chercher le tout",
+  "title": "Problèmes de composition : Chercher le tout",
+  "questions": [
+    {
+      "text": "Marie a $4$ pommes rouges et $3$ pommes vertes. Combien de pommes a-t-elle en tout ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$12$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Pour trouver le total, on additionne les deux parties : $4 + 3 = 7$. L'option $6$ correspond à $4 + 2$ (erreur de comptage), $8$ à $4 + 4$ (doublon d'une partie) et $12$ à $4 \\times 3$ (multiplication au lieu d'addition).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la cour de récréation, il y a $12$ garçons et $8$ filles. Combien d'enfants y a-t-il au total ?",
+      "options": [
+        "$18$",
+        "$20$",
+        "$21$",
+        "$4$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "Le tout est la somme des garçons et des filles : $12 + 8 = 20$. L'option $18$ vient d'une erreur de retenue ($12+6$), $21$ d'une erreur d'addition ($12+9$), et $4$ correspond à la différence $12 - 8$ (soustraction au lieu d'addition).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban est coupé en deux morceaux. Le premier mesure $25$ cm et le second $35$ cm. Quelle était la longueur totale du ruban au départ ?",
+      "options": [
+        "$50$ cm",
+        "$60$ cm",
+        "$55$ cm",
+        "$10$ cm"
+      ],
+      "correctAnswer": "$60$ cm",
+      "explanation": "La longueur totale est la somme des deux parties : $25 + 35 = 60$ cm. L'option $50$ cm oublie la dizaine de la retenue ($20+30$), $55$ cm fait une erreur sur les unités ($25+30$), et $10$ cm correspond à la différence $35 - 25$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Morceau 1",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Morceau 2",
+            "value": 35,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Le ruban coupé en deux morceaux"
+      }
+    },
+    {
+      "text": "Dans une trousse, il y a $15$ crayons rouges, $10$ crayons bleus et $5$ crayons verts. Combien y a-t-il de crayons dans la trousse ?",
+      "options": [
+        "$25$",
+        "$30$",
+        "$35$",
+        "$20$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "Il faut additionner les trois parties : $15 + 10 + 5 = 30$. L'option $25$ correspond à $15 + 10$ (oubli des verts), $35$ à $15 + 10 + 10$ (doublon des bleus), et $20$ à $15 + 5$ (oubli des bleus).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La bibliothèque de l'école possède $45$ romans et $38$ bandes dessinées. Combien y a-t-il de livres au total ?",
+      "options": [
+        "$73$",
+        "$83$",
+        "$77$",
+        "$87$"
+      ],
+      "correctAnswer": "$83$",
+      "explanation": "On additionne les deux quantités : $45 + 38 = 83$. L'option $73$ est l'erreur classique d'oubli de la retenue sur les dizaines ($40+30+5+8$ sans retenir la dizaine des unités), $77$ correspond à $45+32$ (erreur sur les dizaines du second nombre), et $87$ à $45+42$ (erreur sur les dizaines).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

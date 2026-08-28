@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Décrire généralisation simple",
+  "title": "Suites et motifs : Décrire une régularité",
+  "blocks": [
+    {
+      "title": "Suites numériques additives",
+      "content": "Relie chaque suite de nombres à la règle qui permet de la construire.",
+      "pairs": [
+        {
+          "left": "$2, 4, 6, 8, 10$",
+          "right": "Ajouter $2$"
+        },
+        {
+          "left": "$5, 10, 15, 20, 25$",
+          "right": "Ajouter $5$"
+        },
+        {
+          "left": "$10, 20, 30, 40, 50$",
+          "right": "Ajouter $10$"
+        },
+        {
+          "left": "$3, 6, 9, 12, 15$",
+          "right": "Ajouter $3$"
+        }
+      ],
+      "explanation": "Pour trouver la règle, on observe la différence entre deux termes consécutifs. Pour la première suite, $4-2=2$, $6-4=2$ : on ajoute $2$. Pour la deuxième, $10-5=5$ : on ajoute $5$. Pour la troisième, $20-10=10$ : on ajoute $10$. Pour la quatrième, $6-3=3$ : on ajoute $3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suites de figures géométriques",
+      "content": "Relie chaque description de suite de figures à la règle de construction correspondante.",
+      "pairs": [
+        {
+          "left": "Cercle, Carré, Cercle, Carré, Cercle...",
+          "right": "Alterner cercle et carré"
+        },
+        {
+          "left": "Triangle, Triangle, Carré, Triangle, Triangle, Carré...",
+          "right": "Répéter le motif : deux triangles puis un carré"
+        },
+        {
+          "left": "Croix, Rond, Carré, Croix, Rond, Carré...",
+          "right": "Répéter le motif : croix, rond, carré"
+        },
+        {
+          "left": "Losange, Losange, Losange, Cercle, Losange, Losange, Losange, Cercle...",
+          "right": "Répéter le motif : trois losanges puis un cercle"
+        }
+      ],
+      "explanation": "Il faut identifier le motif de base qui se répète. La première suite alterne deux figures différentes. La deuxième groupe deux triangles suivis d'un carré. La troisième enchaîne trois figures distinctes. La quatrième groupe trois losanges suivis d'un cercle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Suites numériques multiplicatives et soustractives",
+      "content": "Relie chaque suite de nombres à la règle qui permet de la construire.",
+      "pairs": [
+        {
+          "left": "$2, 4, 8, 16, 32$",
+          "right": "Multiplier par $2$"
+        },
+        {
+          "left": "$3, 9, 27, 81$",
+          "right": "Multiplier par $3$"
+        },
+        {
+          "left": "$50, 45, 40, 35, 30$",
+          "right": "Retrancher $5$ (ou ajouter $-5$)"
+        },
+        {
+          "left": "$100, 90, 80, 70, 60$",
+          "right": "Retrancher $10$ (ou ajouter $-10$)"
+        }
+      ],
+      "explanation": "On teste les opérations. Pour $2, 4, 8...$ : $2 \\times 2 = 4$, $4 \\times 2 = 8$ : on multiplie par $2$. Pour $3, 9, 27...$ : $3 \\times 3 = 9$, $9 \\times 3 = 27$ : on multiplie par $3$. Pour les suites qui diminuent, on soustrait : $50 - 45 = 5$ (on retranche $5$) et $100 - 90 = 10$ (on retranche $10$).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

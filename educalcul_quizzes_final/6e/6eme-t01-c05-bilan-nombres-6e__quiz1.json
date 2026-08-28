@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 335,
+  "_course_code": "6eme-t01-c05-bilan-nombres-6e",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Numération, décimaux, droite",
+  "title": "Quiz - Numération, décimaux, droite (6e)",
+  "questions": [
+    {
+      "text": "Quel nombre décimal correspond au point A sur la droite graduée ?",
+      "options": [
+        "$1,3$",
+        "$1,03$",
+        "$1,33$",
+        "$1,23$"
+      ],
+      "correctAnswer": "$1,3$",
+      "explanation": "Le point A est placé à la graduation 1,3 sur la droite qui va de 0 à 2. Les autres valeurs ne correspondent pas à cette position : 1,03 est plus proche de 1, 1,33 et 1,23 sont soit au‑dessus soit au‑dessous de 1,3.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 2",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.3,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Dans le nombre $45,67$, quel chiffre représente les dixièmes ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Dans un nombre décimal, le premier chiffre après la virgule est le chiffre des dixièmes. Pour $45,67$, les chiffres après la virgule sont $6$ (dixièmes) et $7$ (centièmes). Donc le chiffre des dixièmes est $6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des nombres suivants est le plus grand ?",
+      "options": [
+        "$0,45$",
+        "$0,5$",
+        "$0,405$",
+        "$0,49$"
+      ],
+      "correctAnswer": "$0,5$",
+      "explanation": "On compare les nombres en alignant la virgule : $0,50$, $0,45$, $0,405$, $0,49$. Le plus grand est $0,50$ c'est‑à‑dire $0,5$. Les autres sont inférieurs car leur partie dixième est $4$ ou $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris en chiffres le nombre : trois unités, deux dixièmes et cinq centièmes.",
+      "options": [
+        "$3,25$",
+        "$3,025$",
+        "$32,5$",
+        "$3,52$"
+      ],
+      "correctAnswer": "$3,25$",
+      "explanation": "Trois unités donnent $3$. Deux dixièmes donnent $0,2$. Cinq centièmes donnent $0,05$. En additionnant : $3 + 0,2 + 0,05 = 3,25$. Les autres options correspondent à des erreurs de placement de la virgule ou d'ordre des chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $1$, où se trouve le nombre $0,75$ ?",
+      "options": [
+        "Entre $0,5$ et $0,6$",
+        "Entre $0,7$ et $0,8$",
+        "Entre $0,8$ et $0,9$",
+        "Exactement sur $0,7$"
+      ],
+      "correctAnswer": "Entre $0,7$ et $0,8$",
+      "explanation": "Le nombre $0,75$ est supérieur à $0,7$ et inférieur à $0,8$. Il se situe donc entre ces deux graduations. Il n'est pas entre $0,5$ et $0,6$, ni entre $0,8$ et $0,9$, et il n'est pas exactement sur $0,7$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

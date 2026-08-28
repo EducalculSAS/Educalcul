@@ -1,0 +1,46 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Compter",
+  "title": "Compter avec une boucle",
+  "blocks": [
+    {
+      "title": "Boucle simple",
+      "content": "On exécute l'algorithme suivant :\\n\\neffacer l'écran\\ncompteur ← 0\\npour i de 1 à 10 faire\\n    compteur ← compteur + 1\\nfin pour\\nafficher compteur\\n\\nÀ la fin de l'exécution, la valeur affichée est {{1}}.",
+      "blanks": [
+        "10"
+      ],
+      "correctAnswer": "",
+      "explanation": "La boucle « pour i de 1 à 10 faire » exécute les instructions qu'elle contient exactement 10 fois (pour i = 1, 2, 3, ..., 10). À chaque tour, la variable « compteur » est augmentée de 1. Elle vaut 0 au départ, donc après 10 tours elle vaut 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle avec condition",
+      "content": "On exécute l'algorithme suivant :\\n\\neffacer l'écran\\ncompteur ← 0\\npour i de 1 à 20 faire\\n    si i mod 3 = 0 alors\\n        compteur ← compteur + 1\\n    fin si\\nfin pour\\nafficher compteur\\n\\nÀ la fin de l'exécution, la valeur affichée est {{1}}.",
+      "blanks": [
+        "6"
+      ],
+      "correctAnswer": "",
+      "explanation": "La boucle parcourt les entiers de 1 à 20. La condition « i mod 3 = 0 » est vraie quand i est un multiple de 3. Les multiples de 3 entre 1 et 20 sont : 3, 6, 9, 12, 15, 18. Il y en a 6. Le compteur est incrémenté 6 fois, sa valeur finale est 6.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter et accumuler",
+      "content": "On exécute l'algorithme suivant :\\n\\neffacer l'écran\\nsomme ← 0\\ncompteur ← 0\\npour i de 1 à 5 faire\\n    somme ← somme + i\\n    compteur ← compteur + 1\\nfin pour\\nafficher somme, compteur\\n\\nÀ la fin de l'exécution, les valeurs affichées sont {{1}} et {{2}}.",
+      "blanks": [
+        "15",
+        "5"
+      ],
+      "correctAnswer": "",
+      "explanation": "La boucle effectue 5 tours (i = 1 à 5). La variable « compteur » compte le nombre de tours : elle vaut 5 à la fin. La variable « somme » accumule la valeur de i à chaque tour : 1 + 2 + 3 + 4 + 5 = 15. L'affichage donne donc 15 puis 5.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

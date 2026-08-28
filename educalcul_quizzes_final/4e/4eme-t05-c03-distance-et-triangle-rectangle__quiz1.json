@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Problèmes",
+  "title": "Évaluation distance et triangle rectangle - Problèmes",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $3$ cm et $4$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "On applique le théorème de Pythagore : $3^2 + 4^2 = 9 + 16 = 25$. La racine carrée de $25$ est $5$, donc l'hypoténuse mesure $5$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle a pour hypoténuse $13$ cm et un côté de l'angle droit de $5$ cm. Détermine la longueur de l'autre côté.",
+      "options": [
+        "$12$ cm",
+        "$10$ cm",
+        "$8$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$12$ cm",
+      "explanation": "D'après le théorème de Pythagore, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. On a $13^2 - 5^2 = 169 - 25 = 144$. La racine carrée de $144$ est $12$, donc l'autre côté mesure $12$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $10$ m est appuyée contre un mur. Son pied est à $6$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$8$ m",
+        "$7$ m",
+        "$9$ m",
+        "$6$ m"
+      ],
+      "correctAnswer": "$8$ m",
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'hypoténuse est l'échelle ($10$ m) et un côté de l'angle droit est la distance du pied au mur ($6$ m). La hauteur cherchée est l'autre côté : $10^2 - 6^2 = 100 - 36 = 64$, racine carrée de $64$ est $8$, donc la hauteur est $8$ m.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule la distance entre les points $A(2;3)$ et $B(5;7)$ dans un repère orthonormé.",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La distance entre deux points $A(x_A;y_A)$ et $B(x_B;y_B)$ est la racine carrée de $(x_B-x_A)^2+(y_B-y_A)^2$. Ici $(5-2)^2+(7-3)^2 = 3^2+4^2 = 9+16 = 25$, racine carrée de $25$ est $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle a une aire de $30$ cm² et un côté de l'angle droit de $12$ cm. Trouve la longueur de l'autre côté.",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$8$ cm",
+        "$10$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "L'aire d'un triangle rectangle est la moitié du produit des deux côtés de l'angle droit : $1/2 × a × b = 30$. Donc $a × b = 60$. Sachant $a = 12$, on a $b = 60 / 12 = 5$. L'autre côté mesure $5$ cm.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

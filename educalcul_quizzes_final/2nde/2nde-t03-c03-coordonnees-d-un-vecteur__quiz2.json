@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 512,
+  "_course_code": "2nde-t03-c03-coordonnees-d-un-vecteur",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter les coordonnées d'un vecteur",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé, le vecteur AB a pour coordonnées $(4; -3)$. Quelle est l'abscisse de ce vecteur ?",
+      "options": [
+        "$4$",
+        "$-3$",
+        "$3$",
+        "$-4$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "L'abscisse d'un vecteur est sa première coordonnée. Ici les coordonnées sont $(4; -3)$, donc l'abscisse est $4$. Les autres options correspondent à l'ordonnée ($-3$) ou à des erreurs de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le vecteur $v$ a pour coordonnées $(-2; 5)$ et représente un déplacement. Quel est le sens de ce déplacement ?",
+      "options": [
+        "deux unités vers la gauche et cinq unités vers le haut",
+        "deux unités vers la droite et cinq unités vers le haut",
+        "deux unités vers la gauche et cinq unités vers le bas",
+        "deux unités vers la droite et cinq unités vers le bas"
+      ],
+      "correctAnswer": "deux unités vers la gauche et cinq unités vers le haut",
+      "explanation": "Les coordonnées $(-2; 5)$ indiquent un déplacement de $2$ unités vers la gauche (abscisse négative) et $5$ unités vers le haut (ordonnée positive). La bonne description est « deux unités vers la gauche et cinq unités vers le haut ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit les points $A(1;2)$ et $B(4;6)$. Quelles sont les coordonnées du vecteur $AB$ ?",
+      "options": [
+        "$(3; 4)$",
+        "$(5; 8)$",
+        "$(-3; -4)$",
+        "$(4; 6)$"
+      ],
+      "correctAnswer": "$(3; 4)$",
+      "explanation": "Le vecteur $AB$ a pour coordonnées $(x_B - x_A ; y_B - y_A) = (4-1 ; 6-2) = (3 ; 4)$. Les autres options correspondent à des erreurs de calcul ou d'ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un vecteur $w$ a pour coordonnées $(-6; 8)$. Quelle est sa norme (longueur) ?",
+      "options": [
+        "$10$",
+        "$14$",
+        "$2$",
+        "$6$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La norme d'un vecteur $(x;y)$ est $\\sqrt{x^2 + y^2}$. Pour $(-6; 8)$, $\\sqrt{(-6)^2 + 8^2} = \\sqrt{36+64} = \\sqrt{100} = 10$. Les autres valeurs sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $u = (2; -1)$ et $v = (-3; 4)$, quelles sont les coordonnées de $u + v$ ?",
+      "options": [
+        "$(-1; 3)$",
+        "$(5; -5)$",
+        "$(-1; -3)$",
+        "$(5; 3)$"
+      ],
+      "correctAnswer": "$(-1; 3)$",
+      "explanation": "L'addition de deux vecteurs s'effectue composante par composante : $u + v = (2 + (-3) ; -1 + 4) = (-1 ; 3)$. Les autres options résultent d'erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

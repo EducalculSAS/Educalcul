@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 72,
+  "_course_code": "ce1-t01-c05-centaines-dizaines-et-unites",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Échanger 10 dizaines contre 1 centaine",
+  "title": "Échanger 10 dizaines contre 1 centaine",
+  "questions": [
+    {
+      "text": "Regarde la figure. Combien de $100$ (centaines) peut-on former avec ces $10$ barres de $10$ (dizaines) ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$10$",
+        "$100$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Chaque barre représente une dizaine ($10$ unités). Lorsque l'on rassemble $10$ barres de $10$, on obtient un paquet de $100$ unités, c'est-à-dire $1$ centaine. Les autres réponses correspondent au nombre de barres ($10$), au nombre d'unités dans une centaine ($100$) ou à rien ($0$).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 10,
+        "units": 0,
+        "caption": "10 barres de dizaines"
+      }
+    },
+    {
+      "text": "Complète l'égalité : $10$ dizaines $=$ ... centaine(s).",
+      "options": [
+        "$0$",
+        "$1$",
+        "$10$",
+        "$100$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Par définition, $1$ centaine vaut exactement $10$ dizaines ($10 \\times 10 = 100$). L'échange de $10$ dizaines contre $1$ centaine est la base de la numération décimale de position. Les distracteurs confondent le nombre de dizaines ($10$), la valeur en unités ($100$) ou l'absence de centaine ($0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de numération, on a écrit $10$ dans la colonne des dizaines. Que doit-on faire pour respecter la règle d'écriture (un seul chiffre par case) ?",
+      "options": [
+        "Rien, c'est correct",
+        "Écrire $10$ dans la colonne des centaines",
+        "Mettre un $0$ aux dizaines et un $1$ aux centaines",
+        "Effacer le $10$"
+      ],
+      "correctAnswer": "Mettre un $0$ aux dizaines et un $1$ aux centaines",
+      "explanation": "On ne peut pas écrire un nombre à deux chiffres ($10$) dans une seule colonne. $10$ dizaines forment $1$ centaine. On place donc le chiffre $1$ dans la colonne des centaines et le chiffre $0$ dans la colonne des dizaines pour marquer qu'il ne reste plus aucune dizaine. C'est la procédure de retenue ou d'échange.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $6$ dizaines. Il en reçoit $4$ de plus. Il décide d'échanger. Combien a-t-il de centaines et de dizaines après l'échange ?",
+      "options": [
+        "$10$ dizaines",
+        "$1$ centaine et $0$ dizaine",
+        "$1$ centaine et $4$ dizaines",
+        "$100$ dizaines"
+      ],
+      "correctAnswer": "$1$ centaine et $0$ dizaine",
+      "explanation": "Paul avait $6$ dizaines, il en ajoute $4$ : $6 + 4 = 10$ dizaines. Comme $10$ dizaines s'échangent contre $1$ centaine, il obtient exactement $1$ centaine. Il ne lui reste plus aucune dizaine ($0$ dizaine). La réponse '$10$ dizaines' est l'état avant échange, '$1$ centaine et $4$ dizaines' ferait $14$ dizaines au total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure. On a déjà échangé $10$ dizaines contre $1$ centaine. Quel nombre est représenté ?",
+      "options": [
+        "$135$",
+        "$1035$",
+        "$1305$",
+        "$315$"
+      ],
+      "correctAnswer": "$135$",
+      "explanation": "La figure montre $1$ plaque de centaine ($100$), $3$ barres de dizaines ($30$) et $5$ cubes d'unités ($5$). Le nombre s'écrit $135$. Les autres options correspondent à des erreurs de lecture de position : $1035$ (ajoute un zéro inutile), $1305$ (confond dizaines et centaines), $315$ (inverse centaines et dizaines).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 1,
+        "tens": 3,
+        "units": 5,
+        "caption": "Représentation de 135 après échange"
+      }
+    }
+  ]
+}

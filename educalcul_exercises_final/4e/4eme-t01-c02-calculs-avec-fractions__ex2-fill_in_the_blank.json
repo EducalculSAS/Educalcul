@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 421,
+  "_course_code": "4eme-t01-c02-calculs-avec-fractions",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Simplification",
+  "title": "Simplification de fractions",
+  "blocks": [
+    {
+      "title": "Simplification simple",
+      "content": "Simplifie la fraction $\\frac{24}{36}$ en divisant le numérateur et le dénominateur par leur PGCD {{1}}. La fraction irréductible obtenue est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12",
+        "\\frac{2}{3}"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de 24 et 36 est 12. En divisant le numérateur et le dénominateur par 12, on obtient $\\frac{24 \\div 12}{36 \\div 12} = \\frac{2}{3}$. La fraction $\\frac{2}{3}$ est irréductible car 2 et 3 sont premiers entre eux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fraction négative",
+      "content": "Donne la forme irréductible de la fraction $\\frac{-40}{60}$. On peut diviser les deux termes par {{1}} pour obtenir {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "20",
+        "-\\frac{2}{3}"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de 40 et 60 est 20. En divisant par 20 : $\\frac{-40 \\div 20}{60 \\div 20} = \\frac{-2}{3} = -\\frac{2}{3}$. Le signe moins reste au numérateur (ou devant la fraction). La fraction $-\\frac{2}{3}$ est irréductible.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fraction irréductible",
+      "content": "Quelle est la fraction irréductible égale à $\\frac{63}{84}$ ? C'est la fraction $\\frac{{{1}}}{{{2}}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le PGCD de 63 et 84. $63 = 3 \\times 21 = 3 \\times 3 \\times 7 = 3^2 \\times 7$. $84 = 4 \\times 21 = 2^2 \\times 3 \\times 7$. Le PGCD est $3 \\times 7 = 21$. En divisant numérateur et dénominateur par 21 : $\\frac{63 \\div 21}{84 \\div 21} = \\frac{3}{4}$. La fraction $\\frac{3}{4}$ est irréductible.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

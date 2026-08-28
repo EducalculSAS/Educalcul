@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 405,
+  "_course_code": "5eme-t06-c01-effectifs-et-frequences",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Tableau",
+  "title": "Effectifs et fréquences : Tableaux",
+  "questions": [
+    {
+      "text": "Le tableau ci‑dessous donne les effectifs des notes obtenues par une classe de cinquième à un contrôle de mathématiques : note $10$ → $4$, note $12$ → $6$, note $14$ → $5$, note $16$ → $3$. Quel est l'effectif total de la classe ?",
+      "options": [
+        "$18$",
+        "$19$",
+        "$20$",
+        "$21$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "L'effectif total est la somme de tous les effectifs : $4 + 6 + 5 + 3 = 18$. Les autres valeurs correspondent à des erreurs d'addition ou de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le tableau suivant, les fréquences relatives (en pour cent) sont indiquées pour chaque modalité. La somme des fréquences doit être $100$. Les fréquences connues sont : Rouge $30$, Vert $25$, Jaune $20$. Quelle est la fréquence manquante pour la modalité « Bleu » ?",
+      "options": [
+        "$20$",
+        "$25$",
+        "$30$",
+        "$35$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "La somme des fréquences connues est $30 + 25 + 20 = 75$. Pour atteindre $100$, il faut ajouter $100 - 75 = 25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci‑dessous présente les effectifs cumulés croissants pour les hauteurs (en cm) d'un groupe d'élèves. Hauteur $140$‑$145$ : effectif cumulé $3$ ; hauteur $145$‑$150$ : effectif cumulé $7$ ; hauteur $150$‑$155$ : effectif cumulé $12$ ; hauteur $155$‑$160$ : effectif cumulé $15$. Quel est l'effectif de la classe « $150$‑$155$ » ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "L'effectif d'une classe est la différence entre l'effectif cumulé de cette classe et celui de la classe précédente : $12 - 7 = 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant répertorie les effectifs des couleurs préférées d'une classe. Couleur Rouge : $8$ ; Bleu : $12$ ; Vert : $5$ ; Jaune : $9$. Quelle est la classe modale (la couleur la plus choisie) ?",
+      "options": [
+        "Rouge",
+        "Bleu",
+        "Vert",
+        "Jaune"
+      ],
+      "correctAnswer": "Bleu",
+      "explanation": "La classe modale correspond à l'effectif le plus grand. Ici, l'effectif maximal est $12$ pour la couleur Bleu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "À partir du tableau de répartition des notes (effectifs) ci‑dessous, calculez la moyenne des notes de la classe. Note $10$ : effectif $2$ ; note $12$ : effectif $5$ ; note $14$ : effectif $4$ ; note $16$ : effectif $3$. Donnez le résultat arrondi au dixième.",
+      "options": [
+        "$13,1$",
+        "$13,2$",
+        "$13,3$",
+        "$13,4$"
+      ],
+      "correctAnswer": "$13,1$",
+      "explanation": "La moyenne est la somme des produits note × effectif divisée par l'effectif total. Somme des produits : $10 × 2 + 12 × 5 + 14 × 4 + 16 × 3 = 20 + 60 + 56 + 48 = 184$. Effectif total : $2 + 5 + 4 + 3 = 14$. Moyenne = $184 / 14 = 13,142857...$. Arrondie au dixième, on obtient $13,1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

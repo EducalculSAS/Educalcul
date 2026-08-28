@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 399,
+  "_course_code": "5eme-t04-c05-bilan-geometrie-plane-5e",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Angles, triangles, parallélogrammes",
+  "title": "Quiz : Angles, triangles et parallélogrammes",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ isocèle en $A$, l'angle $\\widehat{BAC}$ mesure $40^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{ABC}$ ?",
+      "options": [
+        "$40^{\\circ}$",
+        "$70^{\\circ}$",
+        "$110^{\\circ}$",
+        "$140^{\\circ}$"
+      ],
+      "correctAnswer": "$70^{\\circ}$",
+      "explanation": "Dans un triangle isocèle en $A$, les angles à la base $\\widehat{ABC}$ et $\\widehat{ACB}$ sont égaux. La somme des angles d'un triangle vaut $180^{\\circ}$. Donc $2 \\times \\widehat{ABC} + 40^{\\circ} = 180^{\\circ}$, soit $2 \\times \\widehat{ABC} = 140^{\\circ}$, donc $\\widehat{ABC} = 70^{\\circ}$. L'option $40^{\\circ}$ confond l'angle au sommet et les angles à la base. L'option $110^{\\circ}$ correspond à l'angle extérieur. L'option $140^{\\circ}$ est la somme des deux angles à la base.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Peut-on construire un triangle avec des segments de longueurs $5\\,\\text{cm}$, $8\\,\\text{cm}$ et $14\\,\\text{cm}$ ?",
+      "options": [
+        "Oui, car $5 + 8 > 14$",
+        "Non, car $5 + 8 < 14$",
+        "Oui, car $5 + 14 > 8$",
+        "Non, car $8 + 14 > 5$"
+      ],
+      "correctAnswer": "Non, car $5 + 8 < 14$",
+      "explanation": "Dans tout triangle, la somme de deux côtés doit être strictement supérieure au troisième côté (inégalité triangulaire). Ici, les deux plus petits côtés sont $5$ et $8$. Leur somme est $13$, qui est strictement inférieure au plus grand côté $14$. La construction est donc impossible. Les autres options utilisent de mauvaises inégalités ou inversent la conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $ABCD$ un parallélogramme. Ses diagonales se coupent en $O$. Si $OA = 4\\,\\text{cm}$, quelle est la longueur de la diagonale $[AC]$ ?",
+      "options": [
+        "$2\\,\\text{cm}$",
+        "$4\\,\\text{cm}$",
+        "$8\\,\\text{cm}$",
+        "$16\\,\\text{cm}$"
+      ],
+      "correctAnswer": "$8\\,\\text{cm}$",
+      "explanation": "Dans un parallélogramme, les diagonales se coupent en leur milieu. Le point $O$ est donc le milieu de $[AC]$. La longueur $AC$ est le double de $OA$ : $AC = 2 \\times 4\\,\\text{cm} = 8\\,\\text{cm}$. L'option $2\\,\\text{cm}$ correspond à une division par 2 au lieu d'une multiplication. L'option $4\\,\\text{cm}$ confond la demi-diagonale et la diagonale entière. L'option $16\\,\\text{cm}$ multiplie par 4 au lieu de 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes permet de démontrer que deux droites sont parallèles ?",
+      "options": [
+        "Si deux droites sont parallèles, alors les angles correspondants sont égaux.",
+        "Si deux angles alternes-internes sont égaux, alors les deux droites sont parallèles.",
+        "Si deux angles adjacents sont supplémentaires, alors les deux droites sont parallèles.",
+        "Si deux droites sont perpendiculaires à une même droite, alors elles sont sécantes."
+      ],
+      "correctAnswer": "Si deux angles alternes-internes sont égaux, alors les deux droites sont parallèles.",
+      "explanation": "C'est la propriété réciproque des angles alternes-internes : l'égalité des angles alternes-internes est une condition suffisante pour affirmer que les droites sont parallèles. La première option est la propriété directe (nécessaire mais pas suffisante pour démontrer le parallélisme). La troisième option concerne les angles adjacents sur une même droite, pas le parallélisme. La quatrième option est fausse : deux droites perpendiculaires à une même droite sont parallèles entre elles, pas sécantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le parallélogramme $ABCD$, l'angle $\\widehat{DAB}$ mesure $70^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{ABC}$ ?",
+      "options": [
+        "$70^{\\circ}$",
+        "$110^{\\circ}$",
+        "$180^{\\circ}$",
+        "$20^{\\circ}$"
+      ],
+      "correctAnswer": "$110^{\\circ}$",
+      "explanation": "Dans un parallélogramme, deux angles consécutifs sont supplémentaires (leur somme vaut $180^{\\circ}$). Les angles $\\widehat{DAB}$ et $\\widehat{ABC}$ sont consécutifs. Donc $\\widehat{ABC} = 180^{\\circ} - 70^{\\circ} = 110^{\\circ}$. L'option $70^{\\circ}$ correspond aux angles opposés (égaux), pas aux consécutifs. L'option $180^{\\circ}$ est la somme des deux angles. L'option $20^{\\circ}$ est l'angle complémentaire de $70^{\\circ}$ (somme $90^{\\circ}$), ce qui n'est pas la propriété du parallélogramme.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Choisir forme",
+  "title": "Quiz : Choisir la forme de factorisation",
+  "questions": [
+    {
+      "text": "Quelle est la forme de factorisation à privilégier pour l'expression $4x^2 - 25$ ?",
+      "options": [
+        "Mise en facteur commun",
+        "Différence de deux carrés",
+        "Identité remarquable $(a+b)^2$",
+        "Factorisation d'un trinôme par recherche de la somme et du produit"
+      ],
+      "correctAnswer": "Différence de deux carrés",
+      "explanation": "L'expression $4x^2 - 25$ s'écrit $(2x)^2 - 5^2$. C'est une différence de deux carrés de la forme $a^2 - b^2$ qui se factorise en $(a-b)(a+b)$, ici $(2x-5)(2x+5)$. Il n'y a pas de facteur commun aux deux termes, ce n'est pas une somme au carré $(a+b)^2$ car le signe central est un moins, et ce n'est pas un trinôme classique à trois termes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour factoriser $9x^2 + 12x + 4$, quelle structure faut-il identifier ?",
+      "options": [
+        "Différence de deux carrés",
+        "Identité remarquable $(a-b)^2$",
+        "Identité remarquable $(a+b)^2$",
+        "Factorisation par regroupement"
+      ],
+      "correctAnswer": "Identité remarquable $(a+b)^2$",
+      "explanation": "On reconnaît un trinôme parfait : $9x^2 = (3x)^2$, $4 = 2^2$ et le terme du milieu $12x = 2 \\times (3x) \\times 2$. Comme les signes sont tous positifs, c'est l'identité $(a+b)^2 = a^2 + 2ab + b^2$ avec $a=3x$ et $b=2$. Ce n'est pas une différence de carrés (trois termes), ce n'est pas $(a-b)^2$ car le terme du milieu serait négatif, et le regroupement est inutile ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle méthode appliquer en premier pour factoriser $3x^2 - 12$ ?",
+      "options": [
+        "Différence de deux carrés directement",
+        "Mise en facteur commun puis différence de deux carrés",
+        "Identité remarquable $(a-b)^2$",
+        "Factorisation par regroupement"
+      ],
+      "correctAnswer": "Mise en facteur commun puis différence de deux carrés",
+      "explanation": "Les termes $3x^2$ et $-12$ ont un facteur commun $3$. Il faut d'abord le mettre en évidence : $3(x^2 - 4)$. Ensuite, l'expression entre parenthèses $x^2 - 4$ est une différence de deux carrés $x^2 - 2^2$ qui se factorise en $(x-2)(x+2)$. On ne peut pas appliquer la différence de carrés directement sur $3x^2 - 12$ car $3x^2$ n'est pas un carré parfait (le coefficient 3 n'est pas un carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces expressions se factorise par regroupement (factorisation par blocs) ?",
+      "options": [
+        "$x^2 - 9$",
+        "$x^2 + 6x + 9$",
+        "$x^2 + 2x + 3x + 6$",
+        "$4x^2 - 12x$"
+      ],
+      "correctAnswer": "$x^2 + 2x + 3x + 6$",
+      "explanation": "La factorisation par regroupement s'applique à une expression à quatre termes que l'on peut regrouper deux par deux pour faire apparaître un facteur commun. Pour $x^2 + 2x + 3x + 6$, on regroupe $(x^2+2x) + (3x+6) = x(x+2) + 3(x+2) = (x+2)(x+3)$. Les autres options sont : une différence de deux carrés ($x^2-9$), un carré parfait $(x+3)^2$ ($x^2+6x+9$), et une mise en facteur commun simple $4x(x-3)$ ($4x^2-12x$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour factoriser complètement $16x^4 - 81$, quelle suite d'étapes est correcte ?",
+      "options": [
+        "C'est une identité $(a-b)^2$",
+        "Différence de deux carrés une seule fois",
+        "Mise en facteur commun puis différence de deux carrés",
+        "Différence de deux carrés puis factorisation supplémentaire du second facteur"
+      ],
+      "correctAnswer": "Différence de deux carrés puis factorisation supplémentaire du second facteur",
+      "explanation": "On reconnaît $16x^4 - 81 = (4x^2)^2 - 9^2$. C'est une différence de deux carrés : $(4x^2 - 9)(4x^2 + 9)$. Le premier facteur $4x^2 - 9$ est lui-même une différence de deux carrés : $(2x)^2 - 3^2 = (2x-3)(2x+3)$. Le second facteur $4x^2+9$ est une somme de carrés, non factorisable dans $\\mathbb{R}$. La factorisation complète est $(2x-3)(2x+3)(4x^2+9)$. Il ne s'agit pas d'une mise en facteur commun (coefficients 16 et 81 premiers entre eux) ni d'un carré parfait.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

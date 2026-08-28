@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 372,
+  "_course_code": "6eme-t08-c05-pourcentages-et-echelles",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Échelles",
+  "title": "Quiz : Les échelles",
+  "questions": [
+    {
+      "text": "Sur une carte au $1/100\\,000$, que représente le numérateur $1$ ?",
+      "options": [
+        "1 cm sur la carte correspond à 100 000 cm en réalité",
+        "1 km sur la carte correspond à 100 000 km en réalité",
+        "1 cm en réalité correspond à 100 000 cm sur la carte",
+        "100 000 cm sur la carte correspondent à 1 cm en réalité"
+      ],
+      "correctAnswer": "1 cm sur la carte correspond à 100 000 cm en réalité",
+      "explanation": "L'échelle $1/100\\,000$ signifie que les distances sur la carte sont 100 000 fois plus petites que les distances réelles. Le numérateur $1$ concerne la mesure sur le document (la carte), le dénominateur $100\\,000$ concerne la réalité. Donc 1 cm sur la carte équivaut à 100 000 cm au sol.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une carte a pour échelle $1/50\\,000$. Deux villes sont séparées de $4\\ \\text{cm}$ sur cette carte. Quelle est la distance réelle entre ces deux villes en kilomètres ?",
+      "options": [
+        "2 km",
+        "20 km",
+        "200 km",
+        "0,2 km"
+      ],
+      "correctAnswer": "2 km",
+      "explanation": "On multiplie la distance sur la carte par le dénominateur de l'échelle : $4 \\times 50\\,000 = 200\\,000\\ \\text{cm}$. Pour convertir en kilomètres, on divise par 100 000 (car 1 km = 100 000 cm) : $200\\,000 / 100\\,000 = 2\\ \\text{km}$. Les autres réponses correspondent à des erreurs de conversion (oubli de diviser par 100, division par 1000 au lieu de 100 000).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un plan au $1/200\\,000$, on veut représenter une route longue de $10\\ \\text{km}$. Quelle longueur doit-on tracer sur le plan en centimètres ?",
+      "options": [
+        "5 cm",
+        "0,5 cm",
+        "50 cm",
+        "2 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "Il faut diviser la distance réelle par le dénominateur de l'échelle. On convertit d'abord 10 km en centimètres : $10 \\times 100\\,000 = 1\\,000\\,000\\ \\text{cm}$. Ensuite on divise par 200 000 : $1\\,000\\,000 / 200\\,000 = 5\\ \\text{cm}$. L'option 0,5 cm correspond à une division par 1000 en trop, 50 cm à un oubli de conversion km/cm, 2 cm à une inversion du calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux cartes représentent la même région. La carte A est au $1/25\\,000$ et la carte B est au $1/100\\,000$. Laquelle des deux cartes montre le plus de détails (chemins, petits ruisseaux, bâtiments) ?",
+      "options": [
+        "La carte A",
+        "La carte B",
+        "Les deux montrent le même niveau de détail",
+        "On ne peut pas le savoir sans voir les cartes"
+      ],
+      "correctAnswer": "La carte A",
+      "explanation": "Plus le dénominateur de l'échelle est petit, plus l'échelle est grande (on dit 'grande échelle'), et plus la carte est 'zoomée', donc détaillée. $1/25\\,000$ est une plus grande échelle que $1/100\\,000$ (car $1/25\\,000 > 1/100\\,000$). La carte A représente une plus petite surface mais avec plus de précision.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un architecte dessine un plan de maison à l'échelle $1/100$. Sur le plan, un mur mesure $3,5\\ \\text{cm}$. Quelle est la longueur réelle de ce mur en mètres ?",
+      "options": [
+        "3,5 m",
+        "35 m",
+        "350 m",
+        "0,35 m"
+      ],
+      "correctAnswer": "3,5 m",
+      "explanation": "Distance réelle = distance sur le plan $\\times$ dénominateur. $3,5 \\times 100 = 350\\ \\text{cm}$. Pour passer en mètres, on divise par 100 : $350 / 100 = 3,5\\ \\text{m}$. Remarque : comme l'échelle est $1/100$, la valeur numérique en centimètres sur le plan donne directement la valeur numérique en mètres dans la réalité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

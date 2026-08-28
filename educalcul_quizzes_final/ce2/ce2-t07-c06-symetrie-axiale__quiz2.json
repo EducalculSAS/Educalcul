@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 201,
+  "_course_code": "ce2-t07-c06-symetrie-axiale",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Construire symétrique sur quadrillage",
+  "title": "Construire un symétrique sur quadrillage",
+  "questions": [
+    {
+      "text": "Pour construire le symétrique d'un point A par rapport à une droite d (axe de symétrie) sur un quadrillage, quelle propriété géométrique doit-on obligatoirement respecter ?",
+      "options": [
+        "Le segment [AA'] est parallèle à l'axe d.",
+        "Le segment [AA'] est perpendiculaire à l'axe d et l'axe d passe par le milieu de [AA'].",
+        "Le point A' est à la même distance de l'axe que A, mais du même côté de l'axe.",
+        "L'axe d passe par le point A."
+      ],
+      "correctAnswer": "Le segment [AA'] est perpendiculaire à l'axe d et l'axe d passe par le milieu de [AA'].",
+      "explanation": "La symétrie axiale se définit par deux conditions : la droite (AA') est perpendiculaire à l'axe de symétrie, et l'axe coupe le segment [AA'] en son milieu. L'option A est fausse car le segment joignant un point à son symétrique est toujours perpendiculaire à l'axe, jamais parallèle. L'option C est fausse car le symétrique se trouve du côté opposé de l'axe. L'option D n'est vraie que si A appartient déjà à l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, un point A est placé à $3$ cases à gauche d'une droite verticale qui sert d'axe de symétrie. Où doit-on placer le point A', symétrique de A par rapport à cet axe ?",
+      "options": [
+        "À $3$ cases à gauche de l'axe.",
+        "À $6$ cases à gauche de l'axe.",
+        "À $3$ cases à droite de l'axe.",
+        "À $6$ cases à droite de l'axe."
+      ],
+      "correctAnswer": "À $3$ cases à droite de l'axe.",
+      "explanation": "En symétrie axiale, le symétrique d'un point est à la même distance de l'axe que le point de départ, mais de l'autre côté. Comme A est à $3$ cases à gauche, A' doit être à $3$ cases à droite. L'option A place A' au même endroit que A. L'option B double la distance du mauvais côté. L'option D double la distance du bon côté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut tracer le symétrique d'un segment [AB] par rapport à une droite verticale. Les points A et B sont tous les deux situés à gauche de l'axe. Quelle est la méthode correcte ?",
+      "options": [
+        "On trace le symétrique du point A et le symétrique du point B, puis on relie ces deux nouveaux points.",
+        "On prolonge le segment [AB] jusqu'à ce qu'il touche l'axe de symétrie.",
+        "On tourne le segment [AB] d'un demi-tour autour de l'axe.",
+        "On mesure la longueur de [AB] et on la reporte sur l'axe de symétrie."
+      ],
+      "correctAnswer": "On trace le symétrique du point A et le symétrique du point B, puis on relie ces deux nouveaux points.",
+      "explanation": "Le symétrique d'un segment est le segment dont les extrémités sont les symétriques des extrémités du segment initial. Il faut donc construire A' (symétrique de A) et B' (symétrique de B), puis tracer le segment [A'B']. L'option B ne construit pas le symétrique. L'option C décrit une symétrie centrale (rotation), pas axiale. L'option D ne permet pas de positionner le segment symétrique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo construit le symétrique d'un point A par rapport à une droite verticale. Le point A est à $4$ cases à gauche de l'axe. Léo compte $4$ cases à partir de l'axe vers la gauche et place A' à cet endroit. Quelle erreur a-t-il commise ?",
+      "options": [
+        "Il a compté le mauvais nombre de cases.",
+        "Il a compté parallèlement à l'axe au lieu de perpendiculairement.",
+        "Il a placé A' du même côté que A au lieu du côté opposé.",
+        "Il n'a pas tracé la perpendiculaire à l'axe passant par A."
+      ],
+      "correctAnswer": "Il a placé A' du même côté que A au lieu du côté opposé.",
+      "explanation": "La symétrie axiale change de côté par rapport à l'axe : si A est à gauche, A' doit être à droite (et inversement). Léo a respecté la distance ($4$ cases) et la direction (perpendiculaire à l'axe, car il a compté horizontalement pour un axe vertical), mais il est resté du même côté. L'option A est fausse car le nombre de cases est correct. L'option B est fausse car sur quadrillage, compter horizontalement face à un axe vertical, c'est bien compter perpendiculairement. L'option D n'est pas l'erreur principale sur quadrillage où le tracé de la perpendiculaire est implicite dans le comptage des cases.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique d'une maison dessinée sur quadrillage (un carré pour le corps, un triangle pour le toit, un rectangle pour la porte) par rapport à une droite verticale, par quelle étape commence-t-on le plus efficacement ?",
+      "options": [
+        "On trace le symétrique de chaque sommet (coins du carré, pointe du triangle, coins de la porte).",
+        "On trace le symétrique du milieu de la porte.",
+        "On recopie la maison exactement au même endroit de l'autre côté de la feuille.",
+        "On efface l'axe de symétrie pour ne plus le voir."
+      ],
+      "correctAnswer": "On trace le symétrique de chaque sommet (coins du carré, pointe du triangle, coins de la porte).",
+      "explanation": "Une figure polygonale sur quadrillage est définie par ses sommets. La méthode standard et la plus rigoureuse consiste à construire le symétrique de chaque sommet (en respectant la distance perpendiculaire à l'axe), puis à relier ces sommets symétriques dans le même ordre pour reformer les côtés de la figure. L'option B ne suffit pas pour toute la figure. L'option C est une approximation visuelle, pas une construction géométrique. L'option D empêche de vérifier la construction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

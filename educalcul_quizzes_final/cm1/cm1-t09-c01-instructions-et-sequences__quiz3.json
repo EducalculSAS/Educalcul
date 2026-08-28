@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Corriger une séquence",
+  "title": "Corriger une séquence informatique",
+  "questions": [
+    {
+      "text": "Un robot doit avancer de $3$ cases. La séquence actuelle est : Avancer, Avancer. Que faut-il faire pour corriger cette séquence ?",
+      "options": [
+        "Supprimer une instruction Avancer",
+        "Ajouter une instruction Avancer",
+        "Remplacer Avancer par Tourner",
+        "Ne rien changer"
+      ],
+      "correctAnswer": "Ajouter une instruction Avancer",
+      "explanation": "Le robot doit avancer $3$ fois mais il ne le fait que $2$ fois. Pour corriger l'erreur, on doit ajouter une troisième instruction Avancer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour dessiner un carré, un programme utilise la séquence : Avancer, Tourner, Avancer, Tourner, Avancer, Tourner. Quelle instruction manque-t-il pour terminer la figure ?",
+      "options": [
+        "Une instruction Tourner",
+        "Une instruction Avancer et une instruction Tourner",
+        "Une instruction Avancer",
+        "Une instruction Reculer"
+      ],
+      "correctAnswer": "Une instruction Avancer et une instruction Tourner",
+      "explanation": "Un carré possède $4$ côtés égaux. La séquence actuelle ne contient que $3$ instructions Avancer. Il faut ajouter un dernier segment et un dernier angle pour fermer le carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un personnage doit aller à la case $(2, 2)$ depuis la case $(0, 0)$. La séquence est : Avancer vers la droite, Avancer vers le haut, Avancer vers la droite, Avancer vers la droite. Quelle est l'erreur ?",
+      "options": [
+        "Il manque une instruction vers le haut",
+        "Il y a une instruction vers la droite en trop",
+        "Il y a une instruction vers le haut en trop",
+        "Il faut tout supprimer"
+      ],
+      "correctAnswer": "Il y a une instruction vers la droite en trop",
+      "explanation": "Pour atteindre la case $(2, 2)$, il faut $2$ déplacements vers la droite et $2$ vers le haut. Ici, il y a $3$ déplacements vers la droite et seulement $1$ vers le haut. On doit enlever un Avancer vers la droite et ajouter un Avancer vers le haut.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une séquence doit répéter l'action suivante $4$ fois : Avancer, Tourner. Si le programme s'arrête après $3$ répétitions, comment appelle-t-on l'action de trouver et corriger cette erreur ?",
+      "options": [
+        "Le codage",
+        "Le débogage",
+        "L'algorithme",
+        "La boucle"
+      ],
+      "correctAnswer": "Le débogage",
+      "explanation": "Le débogage est l'étape où l'on cherche les erreurs (les bogues) dans une séquence d'instructions pour les supprimer ou les corriger.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme doit déplacer un objet de la position $10$ à la position $20$ sur une ligne. La séquence est : Ajouter $5$, Ajouter $5$, Ajouter $5$. Quelle est la correction nécessaire ?",
+      "options": [
+        "Ajouter une instruction Ajouter $5$",
+        "Supprimer une instruction Ajouter $5$",
+        "Remplacer un Ajouter $5$ par un Ajouter $10$",
+        "Remplacer tout par Ajouter $20$"
+      ],
+      "correctAnswer": "Supprimer une instruction Ajouter $5$",
+      "explanation": "L'écart entre $10$ et $20$ est de $10$. La séquence actuelle fait $5 + 5 + 5 = 15$. On arrive donc à la position $25$ au lieu de $20$. Il faut supprimer une unité de $5$ pour obtenir un total de $10$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

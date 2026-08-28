@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Pair / impair",
+  "title": "Parité : pair ou impair",
+  "blocks": [
+    {
+      "title": "Parité d'un nombre donné",
+      "content": "Soit $n = 27$. Le nombre $n$ est-il pair ou impair ?",
+      "correctAnswer": "impair",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On écrit $27 = 2 \\times 13 + 1$. Comme le reste de la division par 2 est 1, le nombre est impair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de deux entiers pairs",
+      "content": "Soient $a$ et $b$ deux entiers pairs. La somme $a+b$ est-elle paire ou impaire ?",
+      "correctAnswer": "paire",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On peut écrire $a = 2m$ et $b = 2n$ avec $m,n$ entiers. Alors $a+b = 2m+2n = 2(m+n)$, qui est un multiple de 2, donc la somme est paire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Parité de l'expression $k^2+k$",
+      "content": "Pour tout entier $k$, déterminer la parité de $k^2 + k$.",
+      "correctAnswer": "paire",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On factorise $k^2+k = k(k+1)$. Parmi deux entiers consécutifs $k$ et $k+1$, l'un est obligatoirement pair. Leur produit est donc un multiple de 2, ce qui signifie que l'expression est toujours paire.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

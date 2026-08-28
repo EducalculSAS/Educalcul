@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 242,
+  "_course_code": "cm1-t05-c02-masses-et-contenances",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unités",
+  "title": "Approfondissement : Unités de masses et contenances",
+  "questions": [
+    {
+      "text": "Combien de grammes y a-t-il dans $2$ kg $500$ g ?",
+      "options": [
+        "$250$ g",
+        "$2 500$ g",
+        "$2 050$ g",
+        "$25 000$ g"
+      ],
+      "correctAnswer": "$2 500$ g",
+      "explanation": "Pour convertir en grammes, on transforme les kilogrammes en grammes : $1$ kg $= 1 000$ g. Donc $2$ kg $= 2 \\times 1 000 = 2 000$ g. On ajoute les $500$ g : $2 000 + 500 = 2 500$ g. L'option $250$ g correspond à une erreur de facteur 10, $2 050$ g à une erreur de placement du chiffre 5 (confusion avec $2$ kg $50$ g) et $25 000$ g à une erreur de facteur 100.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces masses est la plus grande ?",
+      "options": [
+        "$2$ kg $300$ g",
+        "$2 030$ g",
+        "$2,03$ kg",
+        "$230$ g"
+      ],
+      "correctAnswer": "$2$ kg $300$ g",
+      "explanation": "On convertit tout en grammes pour comparer : $2$ kg $300$ g $= 2 300$ g ; $2 030$ g reste $2 030$ g ; $2,03$ kg $= 2,03 \\times 1 000 = 2 030$ g ; $230$ g reste $230$ g. La plus grande valeur est $2 300$ g, soit $2$ kg $300$ g. Les distracteurs $2 030$ g et $2,03$ kg sont égaux mais plus petits, et $230$ g est bien plus petit.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          2300
+        ],
+        "right": [
+          2030
+        ],
+        "caption": "Comparaison de 2 kg 300 g (gauche) et 2 030 g (droite) en grammes"
+      }
+    },
+    {
+      "text": "Un sac de farine pèse $1$ kg $200$ g. On y ajoute $800$ g de farine. Quelle est la masse totale du sac ?",
+      "options": [
+        "$1$ kg $1 000$ g",
+        "$2$ kg",
+        "$2$ kg $100$ g",
+        "$2 000$ g"
+      ],
+      "correctAnswer": "$2$ kg",
+      "explanation": "On additionne les grammes : $200$ g $+ 800$ g $= 1 000$ g. Or $1 000$ g $= 1$ kg. On a donc $1$ kg (initial) $+ 1$ kg (provenant des grammes) $= 2$ kg. L'écriture $1$ kg $1 000$ g n'est pas normalisée (on regroupe les $1 000$ g en $1$ kg). $2 000$ g est la valeur exacte en grammes mais l'unité demandée implicitement ou l'écriture normalisée en kg est $2$ kg. $2$ kg $100$ g correspondrait à une addition $200 + 800 = 1 000$ puis erreur de report.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille contient $1,5$ L de jus. On verse $750$ mL dans un verre. Quel volume de jus reste-t-il dans la bouteille ?",
+      "options": [
+        "$750$ mL",
+        "$75$ mL",
+        "$0,075$ L",
+        "$7,5$ L"
+      ],
+      "correctAnswer": "$750$ mL",
+      "explanation": "On convertit tout en millilitres : $1,5$ L $= 1,5 \\times 1 000 = 1 500$ mL. On soustrait le volume versé : $1 500 - 750 = 750$ mL. On peut aussi raisonner en litres : $750$ mL $= 0,75$ L, donc $1,5 - 0,75 = 0,75$ L $= 750$ mL. Les autres options correspondent à des erreurs de conversion (facteur 10 ou 100) ou de virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un camion transporte $2$ t $500$ kg de sable. On en décharge $1 200$ kg. Quelle est la masse restante exprimée en tonnes et kilogrammes ?",
+      "options": [
+        "$1$ t $300$ kg",
+        "$1 300$ kg",
+        "$1$ t $30$ kg",
+        "$1 030$ kg"
+      ],
+      "correctAnswer": "$1$ t $300$ kg",
+      "explanation": "On convertit la masse initiale en kilogrammes : $2$ t $= 2 000$ kg, donc $2 000 + 500 = 2 500$ kg. On soustrait la masse déchargée : $2 500 - 1 200 = 1 300$ kg. On reconvertit en tonnes et kilogrammes : $1 300$ kg $= 1 000$ kg $+ 300$ kg $= 1$ t $300$ kg. La question demande l'expression en tonnes et kilogrammes, donc $1$ t $300$ kg est la réponse attendue. $1 300$ kg est la valeur correcte mais pas dans l'unité demandée. $1$ t $30$ kg et $1 030$ kg correspondent à des erreurs de décomposition de $1 300$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

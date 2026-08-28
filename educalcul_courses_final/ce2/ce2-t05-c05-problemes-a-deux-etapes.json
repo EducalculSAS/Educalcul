@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.050248+00:00",
+  "id": 182,
+  "code": "ce2-t05-c05",
+  "title": "Problèmes à deux étapes",
+  "description": "Cours structuré Educalcul : Problèmes à deux étapes.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes à deux étapes",
+    "objectif_global": "Problèmes à deux étapes",
+    "mini_lecons_imposees": [
+      "Planifier.",
+      "Calculer résultat intermédiaire.",
+      "Rédiger réponse."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Planifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le problème et repérer les deux questions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ouvres un livre d'énigmes. Le texte te donne une petite histoire : « Marie a 12 pommes. Elle en donne 4 à son frère, puis elle achète 6 pommes de plus. Combien de pommes a‑t‑elle à la fin ? » Tu vois deux actions : donner et acheter. La première question cachée est : combien Marie a‑t‑elle après avoir donné ? La deuxième question est : combien a‑t‑elle après avoir acheté ? Repérer ces deux questions, c'est comme trouver les deux marches d'un escalier avant de monter."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Étape 1 : donner",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Étape 2 : acheter",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Le problème en deux parties"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment séparer les deux questions, tu vas t'entraîner à faire la même chose sur un autre énoncé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier les nombres connus et les inconnues"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'exemple, tu connais le nombre de pommes au départ ($12$), le nombre donné ($4$) et le nombre acheté ($6$). Ce que tu ne sais pas encore, ce sont les deux résultats intermédiaires : le nombre après le don et le nombre final. Note-les dans un petit tableau pour ne rien oublier. Cela t'aide à voir clair avant de calculer."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Nombre connu",
+                "Inconnue"
+              ],
+              "rows": [
+                [
+                  "Départ",
+                  "12",
+                  "—"
+                ],
+                [
+                  "Don",
+                  "4",
+                  "Après don"
+                ],
+                [
+                  "Achat",
+                  "6",
+                  "Total final"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode pour lister ce que tu sais et ce que tu cherches. Essaie de le faire tout seul sur un nouveau problème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire ton plan en phrases simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bon plan se dit avec des mots de tous les jours. Tu peux écrire : « D'abord, je soustrais 4 de 12 pour savoir combien il reste. Ensuite, j'ajoute 6 à ce résultat pour obtenir le total final. » Chaque phrase correspond à une étape. Relis ton plan à voix haute pour vérifier qu'il suit l'ordre de l'histoire."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Première phrase : opération de la première étape",
+                "Deuxième phrase : opération de la deuxième étape",
+                "Troisième phrase : résultat final"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un problème : « Lucas a 15 billes. Il en perd 5, puis il en gagne 8. Combien de billes a‑t‑il à la fin ? » Quelles sont les deux questions cachées ?",
+              "answer": "Première question : combien de billes Lucas a‑t‑il après avoir perdu 5 ? Deuxième question : combien a‑t‑il après avoir gagné 8 ?",
+              "hint": "Repère les deux actions : perdre et gagner.",
+              "explanation": "Le problème raconte deux actions successives. Chaque action cache une question sur le nombre de billes à ce moment‑là."
+            },
+            {
+              "question": "Complète le tableau pour le problème de Lucas. Étape | Nombre connu | Inconnue",
+              "answer": "Départ | 15 | — ; Perte | 5 | Après perte ; Gain | 8 | Total final",
+              "hint": "Note le nombre de départ, le nombre perdu et le nombre gagné.",
+              "explanation": "Le tableau organise les données : ce qu'on sait et ce qu'on cherche à chaque étape."
+            },
+            {
+              "question": "Écris ton plan en trois phrases pour résoudre le problème de Lucas.",
+              "answer": "D'abord, je soustrais 5 de 15 pour savoir combien il reste. Ensuite, j'ajoute 8 à ce résultat. Enfin, j'obtiens le nombre total de billes.",
+              "hint": "Utilise les mots « d'abord », « ensuite », « enfin ».",
+              "explanation": "Un plan clair décrit chaque opération dans l'ordre de l'histoire."
+            }
+          ]
+        },
+        {
+          "title": "Calculer résultat intermédiaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'opération de la première étape"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'histoire de Lucas. La première action est : il perd 5 billes. Perdre, donner, enlever, cela veut dire que l'on doit retirer. Donc l'opération à faire est une soustraction. Tu écris $15-5$. Si l'action était « il reçoit » ou « il achète », ce serait une addition. Regarde bien le verbe de la phrase pour décider."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "15",
+                "5"
+              ],
+              "result": "10",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as identifié la bonne opération. Passons maintenant au calcul proprement dit et à l'écriture du résultat intermédiaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effectuer le calcul et noter le résultat intermédiaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Fais la soustraction $15-5$. Tu peux utiliser des jetons ou dessiner des dizaines et des unités. 15, c'est 1 dizaine et 5 unités. Enlève 5 unités, il te reste 1 dizaine, donc 10. Écris ce chiffre 10 à côté de la première étape dans ton tableau. C'est ton résultat intermédiaire, il te servira pour la suite."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "15 représenté par 1 dizaine et 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le calcul est fait. Vérifions maintenant que ce nombre a du sens dans l'histoire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier que le résultat intermédiaire est cohérent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une droite numérique qui va de 0 à 15. Le départ est à 15. Après avoir perdu 5, tu dois te retrouver plus près de 0. Le point 10 est bien entre 0 et 15, plus proche de 15 que de 0. Cela correspond à l'idée « il en a encore beaucoup ». Si tu avais obtenu 20, ce serait impossible car on a enlevé des billes. La droite numérique t'aide à voir si ton chiffre est plausible."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position du résultat intermédiaire sur la droite",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "Après perte"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la première étape du problème de Lucas (perdre 5 billes), quelle opération faut‑il faire ?",
+              "answer": "Une soustraction : $15-5$.",
+              "hint": "Perdre signifie enlever.",
+              "explanation": "Quand on perd ou on donne, on utilise la soustraction."
+            },
+            {
+              "question": "Calcule le résultat intermédiaire : $15-5$.",
+              "answer": "$10$.",
+              "hint": "Compte en arrière depuis 15.",
+              "explanation": "15 moins 5 donne 10. C'est le nombre de billes après la perte."
+            },
+            {
+              "question": "Sur une droite numérique de 0 à 15, place le point qui correspond au résultat intermédiaire.",
+              "answer": "Le point se place sur 10.",
+              "hint": "Le résultat intermédiaire est 10.",
+              "explanation": "La droite numérique montre que 10 est bien entre 0 et 15, plus proche de 15."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger réponse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le résultat intermédiaire pour répondre à la question finale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as trouvé qu'après la perte Lucas a 10 billes. La deuxième action dit qu'il en gagne 8. Gagner, acheter, recevoir, cela s'exprime par une addition. Tu prends le résultat intermédiaire 10 et tu ajoutes 8. Écris l'addition $10+8$ et calcule le total. Ce total est la réponse à la question « Combien de billes a‑t‑il à la fin ? »."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Après perte",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Gain",
+                  "value": 8,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Deuxième étape : additionner le gain"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le calcul est fait. Il reste à formuler la réponse de façon claire et complète."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une phrase complète avec l'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une réponse bien rédigée dit qui, combien et quoi. Pour Lucas, tu écris : « Lucas a 18 billes à la fin. » Le mot « billes » est l'unité, elle est indispensable. Sans unité, le nombre 18 ne veut rien dire tout seul. Relis ta phrase à haute voix pour t'assurer qu'elle sonne naturel."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Exemple de phrase finale",
+              "paragraphs": [
+                "Lucas a 18 billes à la fin."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Faisons un dernier tour d'horizon pour être sûr que tout est en ordre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relire toute la solution pour t'assurer qu'elle est claire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprends ton plan : d'abord soustraction, ensuite addition, enfin phrase finale. Vérifie que chaque étape suit l'ordre de l'histoire. Regarde ton tableau des nombres connus et inconnues : tout est rempli. Regarde tes calculs : $15-5=10$ et $10+8=18$. Tout correspond. Si tu as un doute, refais le calcul sur une feuille à part. La relecture est la clé pour éviter les petites erreurs."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Opération",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "$15-5$",
+                  "$10$"
+                ],
+                [
+                  "2",
+                  "$10+8$",
+                  "$18$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les deux questions d'un problème à deux étapes.",
+                "Je sais calculer le résultat intermédiaire avec la bonne opération.",
+                "Je sais rédiger la réponse finale avec l'unité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Avec le résultat intermédiaire 10, calcule le total final après avoir gagné 8 billes.",
+              "answer": "$10+8=18$.",
+              "hint": "Ajoute le nombre gagné au résultat intermédiaire.",
+              "explanation": "La deuxième étape est une addition : 10 plus 8 donne 18."
+            },
+            {
+              "question": "Écris la réponse finale sous forme de phrase complète avec l'unité.",
+              "answer": "Lucas a 18 billes à la fin.",
+              "hint": "N'oublie pas le mot « billes ».",
+              "explanation": "Une réponse complète dit qui, combien et quoi."
+            },
+            {
+              "question": "Relis les trois étapes (plan, calcul intermédiaire, réponse) et dis si l'ordre est respecté.",
+              "answer": "Oui, l'ordre est : soustraction, addition, phrase finale.",
+              "hint": "Vérifie que chaque étape suit l'histoire.",
+              "explanation": "Le respect de l'ordre garantit que la solution suit le récit du problème."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

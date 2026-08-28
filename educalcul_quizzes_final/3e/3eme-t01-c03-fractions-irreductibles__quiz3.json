@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Calculs",
+  "title": "Quiz : Fractions irréductibles - Calculs",
+  "questions": [
+    {
+      "text": "Simplifie la fraction $48/60$ sous sa forme irréductible.",
+      "options": [
+        "4/5",
+        "8/10",
+        "12/15",
+        "24/30"
+      ],
+      "correctAnswer": "4/5",
+      "explanation": "On divise le numérateur et le dénominateur par leur PGCD, qui est $12$. $48 ÷ 12 = 4$ et $60 ÷ 12 = 5$, donc la fraction irréductible est $4/5$. Les autres choix sont des simplifications partielles mais pas irréductibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $3/8 + 5/12$ et donne le résultat sous forme irréductible.",
+      "options": [
+        "19/24",
+        "8/20",
+        "1/2",
+        "17/24"
+      ],
+      "correctAnswer": "19/24",
+      "explanation": "Le PPCM de $8$ et $12$ est $24$. $3/8 = 9/24$ et $5/12 = 10/24$. La somme est $19/24$, déjà irréductible car $19$ est premier avec $24$. Les autres options correspondent à des erreurs de dénominateur commun ou de simplification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue le produit $7/9 \\times 6/14$ et simplifie le résultat.",
+      "options": [
+        "1/3",
+        "2/9",
+        "7/18",
+        "5/12"
+      ],
+      "correctAnswer": "1/3",
+      "explanation": "On simplifie avant de multiplier : $6/14 = 3/7$. Le produit devient $7/9 \\times 3/7 = 21/63 = 1/3$ après division par $21$. Les distracteurs proviennent d'oubli de simplification ou d'erreurs de multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Divise $5/6$ par $10/21$ et exprime le quotient sous forme irréductible.",
+      "options": [
+        "7/4",
+        "5/7",
+        "21/12",
+        "1/2"
+      ],
+      "correctAnswer": "7/4",
+      "explanation": "Diviser par une fraction revient à multiplier par son inverse : $5/6 ÷ 10/21 = 5/6 \\times 21/10 = 105/60$. En simplifiant par $15$, on obtient $7/4$. Les autres réponses correspondent à des inverses mal pris ou à des simplifications incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est la plus grande ? $13/18$, $7/10$, $5/7$, $11/15$.",
+      "options": [
+        "11/15",
+        "13/18",
+        "5/7",
+        "7/10"
+      ],
+      "correctAnswer": "11/15",
+      "explanation": "On compare en les ramenant au même dénominateur (par exemple $630$) ou en calculant leur valeur décimale : $13/18 \\approx 0,722$, $7/10 = 0,7$, $5/7 \\approx 0,714$, $11/15 \\approx 0,733$. La plus grande est $11/15$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

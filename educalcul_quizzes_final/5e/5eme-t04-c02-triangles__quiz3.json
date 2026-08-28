@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 396,
+  "_course_code": "5eme-t04-c02-triangles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Inégalités / somme des angles selon programme",
+  "title": "Quiz : Inégalités et somme des angles dans un triangle",
+  "questions": [
+    {
+      "text": "Dans un triangle ABC, l'angle $\\widehat{A}$ mesure $50^{\\circ}$ et l'angle $\\widehat{B}$ mesure $60^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{C}$ ?",
+      "options": [
+        "$70^{\\circ}$",
+        "$60^{\\circ}$",
+        "$110^{\\circ}$",
+        "$170^{\\circ}$"
+      ],
+      "correctAnswer": "$70^{\\circ}$",
+      "explanation": "La somme des angles d'un triangle vaut toujours $180^{\\circ}$. On calcule $180 - (50 + 60) = 180 - 110 = 70$. L'option $110^{\\circ}$ correspond à l'erreur d'additionner les deux angles donnés sans les soustraire à $180$. L'option $170^{\\circ}$ correspond à une soustraction incorrecte ($180 - 10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les triplets de longueurs suivants, lequel ne peut pas correspondre aux côtés d'un triangle ?",
+      "options": [
+        "$3\\text{ cm}, 4\\text{ cm}, 5\\text{ cm}$",
+        "$2\\text{ cm}, 3\\text{ cm}, 6\\text{ cm}$",
+        "$5\\text{ cm}, 5\\text{ cm}, 8\\text{ cm}$",
+        "$4\\text{ cm}, 6\\text{ cm}, 7\\text{ cm}$"
+      ],
+      "correctAnswer": "$2\\text{ cm}, 3\\text{ cm}, 6\\text{ cm}$",
+      "explanation": "Dans tout triangle, la longueur du plus grand côté doit être strictement inférieure à la somme des deux autres (inégalité triangulaire). Pour $2, 3, 6$ : $2 + 3 = 5$ qui est strictement inférieur à $6$, ce triplet ne peut pas former un triangle. Les autres triplet satisfont l'inégalité : $3+4>5$, $5+5>8$, $4+6>7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux côtés d'un triangle mesurent $7\\text{ cm}$ et $12\\text{ cm}$. Quelle inégalité encadre la longueur $x$ du troisième côté ?",
+      "options": [
+        "$5 < x < 19$",
+        "$5 \\le x \\le 19$",
+        "$12 < x < 19$",
+        "$7 < x < 12$"
+      ],
+      "correctAnswer": "$5 < x < 19$",
+      "explanation": "D'après l'inégalité triangulaire, le troisième côté $x$ doit être strictement supérieur à la différence des deux côtés connus ($12 - 7 = 5$) et strictement inférieur à leur somme ($12 + 7 = 19$). On obtient donc $5 < x < 19$. Les inégalités larges (option 2) sont fausses car l'égalité correspondrait à un triangle aplati. Les options 3 et 4 ne respectent pas les bornes correctes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle DEF, on sait que $\\widehat{D} = 80^{\\circ}$, $\\widehat{E} = 50^{\\circ}$ et $\\widehat{F} = 50^{\\circ}$. Quel côté est le plus grand ?",
+      "options": [
+        "[DE]",
+        "[EF]",
+        "[DF]",
+        "Les trois côtés ont la même longueur"
+      ],
+      "correctAnswer": "[EF]",
+      "explanation": "Dans un triangle, le plus grand côté est opposé au plus grand angle. L'angle le plus grand est $\\widehat{D} = 80^{\\circ}$. Le côté opposé à $\\widehat{D}$ est le côté $[EF]$. Les angles $\\widehat{E}$ et $\\widehat{F}$ sont égaux ($50^{\\circ}$), donc les côtés opposés $[DF]$ et $[DE]$ sont égaux entre eux, mais plus petits que $[EF]$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF avec angles indiqués",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "f",
+          "d",
+          "e"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Un triangle isocèle a pour base un côté de $10\\text{ cm}$. Les deux autres côtés ont la même longueur, exprimée en centimètres par un nombre entier. Quelle est la plus petite longueur possible pour l'un de ces côtés égaux ?",
+      "options": [
+        "$5\\text{ cm}$",
+        "$6\\text{ cm}$",
+        "$10\\text{ cm}$",
+        "$11\\text{ cm}$"
+      ],
+      "correctAnswer": "$6\\text{ cm}$",
+      "explanation": "Soit $x$ la longueur des côtés égaux. L'inégalité triangulaire impose $x + x > 10$, soit $2x > 10$, donc $x > 5$. Comme $x$ est un nombre entier, la plus petite valeur possible est $6$. La valeur $5$ donnerait un triangle aplati ($5+5=10$), ce qui n'est pas un triangle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

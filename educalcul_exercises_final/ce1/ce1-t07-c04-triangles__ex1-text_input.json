@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître un triangle",
+  "title": "Reconnaître un triangle",
+  "blocks": [
+    {
+      "title": "Nombre de côtés",
+      "content": "Combien de côtés a un triangle ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle est un polygone qui a exactement $3$ côtés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Observation d'une figure",
+      "content": "Observe la figure ci-dessous. Cette figure est-elle un triangle ? Réponds par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La figure présentée a $3$ côtés et $3$ sommets, c'est donc un triangle.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Différencier les figures",
+      "content": "Une figure a $4$ côtés. Est-ce un triangle ? Réponds par oui ou non.",
+      "correctAnswer": "non",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle a exactement $3$ côtés. Une figure à $4$ côtés est un quadrilatère (comme un carré ou un rectangle), ce n'est pas un triangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

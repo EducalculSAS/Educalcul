@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Passer entre formule, tableau et graphique",
+  "title": "Passer entre formule, tableau et graphique : mise en ordre",
+  "blocks": [
+    {
+      "title": "De la formule au graphique",
+      "content": "Rangez les étapes dans l'ordre logique pour tracer la représentation graphique de la fonction affine $f(x) = 2x - 3$ dans un repère orthonormé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir plusieurs valeurs de $x$ et les inscrire dans un tableau de valeurs.",
+        "Calculer les images $f(x)$ correspondantes pour chaque $x$ choisi à l'aide de la formule.",
+        "Reporter les points de coordonnées $(x ; f(x))$ dans le repère orthonormé.",
+        "Relier les points obtenus par une droite pour obtenir le graphique de la fonction."
+      ],
+      "explanation": "La procédure standard pour tracer une fonction affine à partir de sa formule est : 1) Construire un tableau en choisissant des abscisses $x$ (par exemple $-1, 0, 1, 2$). 2) Calculer les ordonnées $f(x)$ grâce à l'expression $2x - 3$. 3) Placer les points $(x ; f(x))$ dans le repère. 4) Les points sont alignés, on trace la droite qui les relie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Du graphique à la formule",
+      "content": "Rangez les étapes dans l'ordre pour déterminer l'expression algébrique d'une fonction affine dont on a le graphique (une droite) dans un repère orthonormé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer deux points distincts $A$ et $B$ appartenant à la droite sur le graphique.",
+        "Lire les coordonnées $(x_A ; y_A)$ et $(x_B ; y_B)$ de ces deux points.",
+        "Calculer le coefficient directeur $a = \\frac{y_B - y_A}{x_B - x_A}$.",
+        "Déterminer l'ordonnée à l'origine $b$ (soit par lecture graphique sur l'axe des ordonnées, soit par calcul $b = y_A - a x_A$).",
+        "Écrire l'expression finale sous la forme $f(x) = ax + b$."
+      ],
+      "explanation": "Pour retrouver la formule $f(x) = ax + b$ à partir du graphique : on commence par choisir deux points faciles à lire sur la droite (étape 1). On note leurs coordonnées (étape 2). Le coefficient directeur $a$ est le quotient de la différence des ordonnées par la différence des abscisses (étape 3). L'ordonnée à l'origine $b$ est l'ordonnée du point d'intersection avec l'axe des ordonnées (abscisse 0) ou se calcule avec les coordonnées d'un point connu (étape 4). On rédige enfin la formule (étape 5).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Du tableau au graphique",
+      "content": "On donne un tableau de valeurs. Rangez les étapes pour vérifier si la fonction est affine, trouver sa formule et tracer son graphique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les taux d'accroissement $\\frac{\\Delta y}{\\Delta x}$ entre chaque paire de valeurs successives du tableau.",
+        "Vérifier si ces taux d'accroissement sont tous égaux (constance du taux).",
+        "Si le taux est constant, identifier le coefficient directeur $a$ (égal à ce taux) et calculer l'ordonnée à l'origine $b$ à l'aide d'une ligne du tableau ($b = y - ax$).",
+        "Écrire l'expression de la fonction $f(x) = ax + b$.",
+        "Tracer la droite représentative dans un repère en utilisant $a$ et $b$ ou deux points du tableau."
+      ],
+      "explanation": "L'analyse d'un tableau pour une fonction affine suit ce cheminement : 1) On calcule les variations $\\Delta y / \\Delta x$ entre lignes successives. 2) L'égalité de ces taux prouve que la fonction est affine (propriété caractéristique). 3) Le taux constant donne $a$ ; on en déduit $b$ en remplaçant $x$ et $y$ par les valeurs d'une ligne. 4) On écrit la formule. 5) Le tracé utilise soit la pente $a$ et l'origine $b$, soit deux points connus du tableau.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

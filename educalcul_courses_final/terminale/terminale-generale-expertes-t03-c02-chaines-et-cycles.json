@@ -1,0 +1,663 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.806098+00:00",
+  "id": 748,
+  "code": "terminale-generale-expertes-t03-c02",
+  "title": "Chaînes et cycles",
+  "description": "Cours structuré Educalcul : Chaînes et cycles.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Chaînes et cycles",
+    "objectif_global": "Chaînes et cycles",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Construire.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une chaîne dans un graphe ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux chaînes et aux cycles. Tu vas voir que ces notions, bien qu'abstraites au premier abord, modélisent des situations très concrètes : un itinéraire sur une carte, une suite de transferts de données dans un réseau, ou encore le parcours d'un facteur qui distribue le courrier. Pour commencer, posons les bases avec précision, sans nous presser."
+            },
+            {
+              "type": "definition",
+              "term": "Chaîne",
+              "definition": "Dans un graphe $G = (V, E)$, une chaîne est une suite finie de sommets $(v_0, v_1, \\dots, v_k)$ telle que pour tout $i$ entre $0$ et $k-1$, l'arête $\\{v_i, v_{i+1}\\}$ appartient à $E$. Le nombre $k$ est la longueur de la chaîne.",
+              "example": "Dans un graphe à sommets $\\{A, B, C, D\\}$ et arêtes $\\{AB, BC, CD, AD\\}$, la suite $(A, B, C, D)$ est une chaîne de longueur $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque bien la différence avec le langage courant : une chaîne peut passer plusieurs fois par le même sommet ou emprunter plusieurs fois la même arête. C'est cette liberté qui la rend si souple pour modéliser des parcours réels, où l'on peut revenir sur ses pas. Si tu imagines un réseau routier, une chaîne correspond simplement à un itinéraire valide, peu importe qu'on repasse par le même carrefour."
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({A: [B, D], B: [A, C], C: [B, D], D: [A, C]})",
+              "xmin": -2,
+              "xmax": 2,
+              "ymin": -2,
+              "ymax": 2,
+              "caption": "Graphe exemple : un cycle à 4 sommets. La chaîne (A, B, C, D) est tracée en bleu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chaîne simple, chemin, cycle et circuit : faire le tri"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est une chaîne, il faut affiner le vocabulaire. En mathématiques expertes, la précision des termes n'est pas une coquetterie : elle conditionne la validité des démonstrations. Prenons le temps de distinguer quatre notions proches mais distinctes."
+            },
+            {
+              "type": "definition",
+              "term": "Chaîne simple (ou chemin)",
+              "definition": "Une chaîne dont tous les sommets sont deux à deux distincts. Autrement dit, on ne passe jamais deux fois par le même sommet.",
+              "example": "Dans le graphe précédent, $(A, B, C)$ est une chaîne simple. $(A, B, A)$ n'en est pas une."
+            },
+            {
+              "type": "definition",
+              "term": "Cycle",
+              "definition": "Une chaîne simple de longueur au moins $3$ dont le premier et le dernier sommet coïncident : $v_0 = v_k$, et les autres sommets sont distincts. C'est un « tour » qui revient au point de départ sans se répéter otherwise.",
+              "example": "La suite $(A, B, C, D, A)$ est un cycle de longueur $4$ dans notre graphe carré."
+            },
+            {
+              "type": "definition",
+              "term": "Circuit",
+              "definition": "Une chaîne (pas nécessairement simple) dont le premier et le dernier sommet coïncident : $v_0 = v_k$. Un circuit peut donc repasser par des sommets intermédiaires. Tout cycle est un circuit, mais l'inverse est faux.",
+              "example": "La suite $(A, B, A, D, A)$ est un circuit de longueur $4$, mais pas un cycle car le sommet $A$ apparaît trois fois."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Relations entre les types de chaînes",
+              "sets": [
+                {
+                  "label": "Chaînes",
+                  "elements": [
+                    "(A,B,C)",
+                    "(A,B,A)",
+                    "(A,B,C,D,A)",
+                    "(A,B,A,D,A)"
+                  ]
+                },
+                {
+                  "label": "Chaînes simples",
+                  "elements": [
+                    "(A,B,C)",
+                    "(A,B,C,D,A)"
+                  ]
+                },
+                {
+                  "label": "Cycles",
+                  "elements": [
+                    "(A,B,C,D,A)"
+                  ]
+                },
+                {
+                  "label": "Circuits",
+                  "elements": [
+                    "(A,B,C,D,A)",
+                    "(A,B,A,D,A)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Longueur, distance et connexité"
+            },
+            {
+              "type": "paragraph",
+              "content": "La longueur d'une chaîne, c'est simplement le nombre d'arêtes qu'elle emprunte. C'est un entier naturel. Cette notion permet de définir la distance entre deux sommets dans un graphe connexe : c'est la longueur minimale parmi toutes les chaînes reliant ces deux sommets. S'il n'existe aucune chaîne entre $x$ et $y$, on pose par convention $d(x, y) = +\\infty$."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe connexe",
+              "definition": "Un graphe non orienté est connexe s'il existe au moins une chaîne entre n'importe quels deux sommets. Pour un graphe orienté, on parle de connexité forte (chaîne dans les deux sens) ou faible (chaîne en ignorant l'orientation).",
+              "example": "Un graphe en deux composantes séparées n'est pas connexe : impossible d'aller de l'une à l'autre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette définition de la distance est fondamentale : elle transforme un graphe en espace métrique. Toutes les propriétés usuelles (triangulaire, symétrie, séparation) en découlent. C'est ce qui permettra plus tard d'étudier des algorithmes de plus court chemin, comme celui de Dijkstra, que tu retrouveras en algorithmique."
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({A: [B], B: [A, C], C: [B, D], D: [C, E], E: [D]})",
+              "xmin": -3,
+              "xmax": 3,
+              "ymin": -1,
+              "ymax": 1,
+              "caption": "Graphe en ligne : la distance entre A et E est 4. Il n'y a qu'une seule chaîne simple les reliant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représentation matricielle : la puissance de la matrice d'adjacence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons cette leçon par un outil puissant qui relie algèbre linéaire et théorie des graphes. Soit $A$ la matrice d'adjacence d'un graphe $G$ à $n$ sommets (orienté ou non). Le coefficient $(A^k)_{ij}$ compte exactement le nombre de chaînes de longueur $k$ allant du sommet $i$ au sommet $j$. C'est une propriété stupéfiante : la multiplication matricielle encode la concaténation des chaînes !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Matrice d'adjacence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Construis la matrice $A$ d'ordre $n$ où $A_{ij} = 1$ s'il y a une arête de $i$ vers $j$, $0$ sinon."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Puissance $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $A^k = A \\times A \\times \\dots \\times A$ ($k$ fois). Le coefficient $(i,j)$ de cette matrice donne le nombre de chaînes de longueur $k$ de $i$ à $j$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interprétation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $(A^k)_{ii} > 0$, il existe au moins un circuit de longueur $k$ passant par $i$. La trace de $A^k$ compte les circuits fermés de longueur $k$ (avec multiplicité)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(A^k)_{ij} = \\sum_{v_1, \\dots, v_{k-1}} A_{i v_1} A_{v_1 v_2} \\dots A_{v_{k-1} j}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule montre que chaque terme du produit correspond à un choix de sommets intermédiaires, c'est-à-dire à une chaîne. C'est une porte d'entrée vers la combinatoire énumérative et l'algèbre spectrale des graphes, que tu approfondiras si tu poursuis en mathématiques supérieures."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le graphe à sommets $\\{1,2,3,4\\}$ et arêtes $\\{12, 23, 34, 41, 13\\}$, la suite $(1,3,4,1,2)$ est-elle une chaîne ? Une chaîne simple ? Un cycle ? Un circuit ? Justifie chaque réponse.",
+              "answer": "C'est une chaîne (longueur 4). Ce n'est pas une chaîne simple car le sommet 1 apparaît deux fois. Ce n'est pas un cycle car ce n'est pas une chaîne simple. C'est un circuit car le premier et le dernier sommet sont différents ? Non, le premier est 1 et le dernier est 2, donc ce n'est pas un circuit non plus. Correction : ce n'est pas un circuit car $v_0 \\neq v_4$.",
+              "hint": "Vérifie la définition de chaque terme : chaîne (arêtes consécutives), chaîne simple (sommets distincts), cycle (chaîne simple fermée, longueur ≥ 3), circuit (chaîne fermée).",
+              "explanation": "La suite $(1,3,4,1,2)$ : les arêtes $13, 34, 41, 12$ existent toutes, donc c'est une chaîne de longueur 4. Le sommet 1 est répété, donc pas chaîne simple. Puisque pas chaîne simple, pas cycle. Premier sommet 1, dernier 2, différents, donc pas circuit."
+            },
+            {
+              "question": "Soit $G$ un graphe non orienté connexe à 5 sommets. Peut-on affirmer qu'il existe toujours un cycle dans $G$ ? Si non, donne un contre-exemple. Si oui, démontre-le.",
+              "answer": "Non. Un arbre (graphe connexe sans cycle) à 5 sommets est un contre-exemple. Par exemple, une étoile : un sommet central relié aux 4 autres. Il est connexe, a 4 arêtes, et ne contient aucun cycle.",
+              "hint": "Rappelle-toi la relation entre nombre de sommets, nombre d'arêtes et existence de cycles dans un graphe connexe. Un arbre à $n$ sommets a exactement $n-1$ arêtes et aucun cycle.",
+              "explanation": "Un graphe connexe sans cycle s'appelle un arbre. Tout arbre à $n$ sommets a exactement $n-1$ arêtes. Réciproquement, un graphe connexe à $n$ sommets et $n-1$ arêtes est un arbre (donc sans cycle). L'étoile à 5 sommets (1 centre + 4 feuilles) est connexe, a 4 arêtes, et ne contient aucun cycle."
+            },
+            {
+              "question": "Dans un graphe non orienté, on note $d(x,y)$ la distance entre $x$ et $y$. Prouve que pour tous sommets $x, y, z$, on a $d(x,z) \\le d(x,y) + d(y,z)$ (inégalité triangulaire).",
+              "answer": "Soit $C_1$ une chaîne de longueur $d(x,y)$ entre $x$ et $y$, et $C_2$ une chaîne de longueur $d(y,z)$ entre $y$ et $z$. La concaténation $C_1 \\cdot C_2$ est une chaîne entre $x$ et $z$ de longueur $d(x,y)+d(y,z)$. La distance $d(x,z)$ est le minimum des longueurs de telles chaînes, donc $d(x,z) \\le d(x,y)+d(y,z)$.",
+              "hint": "Utilise la définition de la distance comme minimum des longueurs de chaînes. Concatène une chaîne optimale $x \\to y$ et une chaîne optimale $y \\to z$.",
+              "explanation": "Par définition, $d(x,y)$ est la longueur d'une plus courte chaîne $x \\to y$, et $d(y,z)$ celle d'une plus courte chaîne $y \\to z$. En les mettant bout à bout, on obtient une chaîne $x \\to z$ de longueur $d(x,y)+d(y,z)$. Puisque $d(x,z)$ est le minimum sur toutes les chaînes $x \\to z$, il est nécessairement $\\le$ à cette longueur particulière."
+            },
+            {
+              "question": "Soit $A = \\begin{pmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \\end{pmatrix}$ la matrice d'adjacence du graphe complet $K_3$. Calcule $A^2$ et $A^3$. Interprète les coefficients diagonaux de $A^3$.",
+              "answer": "$A^2 = \\begin{pmatrix} 2 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 1 & 2 \\\\end{pmatrix}$, $A^3 = \\begin{pmatrix} 2 & 3 & 3 \\\\ 3 & 2 & 3 \\\\ 3 & 3 & 2 \\\\end{pmatrix}$. Les coefficients diagonaux de $A^3$ valent $2$ : il y a exactement 2 cycles de longueur 3 passant par chaque sommet (les deux sens de parcours du triangle).",
+              "hint": "Calcule les produits matriciels. Rappelle-toi que $(A^k)_{ii}$ compte les circuits de longueur $k$ fermés au sommet $i$. Dans $K_3$, un circuit de longueur 3 qui revient au départ est nécessairement un cycle (triangle).",
+              "explanation": "Dans $K_3$, chaque sommet est relié aux deux autres. $A^2$ : pour aller de $i$ à $i$ en 2 étapes, on doit aller chez un voisin et revenir : 2 choix. Pour $i \\ne j$ en 2 étapes : on doit passer par le troisième sommet : 1 seul chemin. $A^3 = A^2 \\times A$ : diagonale $(A^3)_{ii} = \\sum_k (A^2)_{ik} A_{ki} = 2\\cdot1 + 1\\cdot1 + 1\\cdot1 = 4$ ? Recalcul : $(A^2)_{ii}=2$, $(A^2)_{ij}=1$. $(A^3)_{ii} = 2\\cdot0 + 1\\cdot1 + 1\\cdot1 = 2$. Oui, 2 circuits de longueur 3 fermés en $i$ : les deux orientations du triangle $i \\to j \\to k \\to i$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire des chaînes : des algorithmes aux preuves par récurrence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître les chaînes, passons à l'action : comment les construire systématiquement ? Que tu doives trouver un chemin entre deux sommets, lister tous les cycles d'un graphe, ou prouver qu'une chaîne existe avec certaines propriétés, tu auras besoin de méthodes rigoureuses. C'est ce que nous allons explorer ensemble, pas à pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction algorithmique de chaînes est au cœur de l'informatique théorique. Le parcours en largeur (BFS) et le parcours en profondeur (DFS) sont les deux piliers. Le BFS explore le graphe par « couches » successives depuis un sommet source : il garantit de trouver une plus courte chaîne (en nombre d'arêtes) vers chaque sommet accessible. Le DFS, lui, va le plus loin possible avant de faire machine arrière : il est idéal pour détecter des cycles ou construire des arbres couvrants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Parcours en largeur (BFS) – Construction d'une plus courte chaîne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Initialise une file avec le sommet source $s$, marque $s$ comme visité, et note $\\text{parent}[s] = \\text{None}$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Tant que la file n'est pas vide : dépile un sommet $u$. Pour chaque voisin $v$ non visité : marque $v$, enregistre $\\text{parent}[v] = u$, enfile $v$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Pour reconstruire la plus courte chaîne $s \\to t$ : remonte les $\\text{parent}$ depuis $t$ jusqu'à $s$, puis inverse la liste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Parcours en profondeur (DFS) – Détection de cycle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Utilise une pile (récursion ou explicite). Marque les sommets en trois états : non visité (blanc), en cours (gris), terminé (noir)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Depuis un sommet $u$, pour chaque voisin $v$ : si $v$ est gris, tu as trouvé un cycle (arête retour). Si $v$ est blanc, lance DFS($v$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Quand tous les voisins sont traités, marque $u$ noir et dépile."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({A: [B, C], B: [A, D, E], C: [A, F], D: [B], E: [B, F], F: [C, E]})",
+              "xmin": -3,
+              "xmax": 3,
+              "ymin": -2,
+              "ymax": 2,
+              "caption": "Graphe pour illustrer BFS et DFS. Depuis A, BFS vers F donne A-C-F (longueur 2). DFS peut donner A-B-E-F (longueur 3)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démontrer l'existence par récurrence sur la longueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des algorithmes, les mathématiques expertes exigent souvent des preuves d'existence constructives ou non. La récurrence sur la longueur d'une chaîne est un outil redoutable. L'idée : si une propriété est vraie pour les chaînes de longueur $0$ (sommet unique) et si elle se propage quand on ajoute une arête, alors elle est vraie pour toutes les chaînes. C'est le principe même de la définition inductive des chaînes."
+            },
+            {
+              "type": "definition",
+              "term": "Définition inductive des chaînes",
+              "definition": "L'ensemble des chaînes d'un graphe est le plus petit ensemble tel que : (1) pour tout sommet $v$, la suite $(v)$ est une chaîne de longueur $0$ ; (2) si $(v_0, \\dots, v_k)$ est une chaîne et $\\{v_k, v_{k+1}\\} \\in E$, alors $(v_0, \\dots, v_k, v_{k+1})$ est une chaîne de longueur $k+1$.",
+              "example": "C'est cette définition qui justifie les preuves par récurrence sur la longueur : on prouve la propriété pour les chaînes de longueur 0 (initialisation), puis on montre que si elle vaut pour longueur $k$, elle vaut pour $k+1$ en ajoutant une arête (hérence)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple classique : montrer que dans tout graphe non orienté, s'il existe une chaîne entre $x$ et $y$, alors il existe une chaîne simple entre $x$ et $y$. La preuve par récurrence sur la longueur d'une chaîne $x \\to y$ est élégante : si la chaîne a des sommets répétés, on peut « raccourcir » en supprimant la boucle entre deux occurrences du même sommet, ce qui donne une chaîne plus courte. En répétant, on obtient une chaîne simple. La récurrence garantit que le processus termine."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Preuve : toute chaîne contient une chaîne simple entre ses extrémités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Initialisation : longueur 0 ou 1. La chaîne est déjà simple (0 ou 1 arête, pas de répétition possible)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "Hérence : soit une chaîne $C = (v_0, \\dots, v_k)$ de longueur $k \\ge 2$. Si tous les $v_i$ sont distincts, $C$ est simple, c'est fait. Sinon, il existe $i < j$ avec $v_i = v_j$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "Construction : la suite $C' = (v_0, \\dots, v_i, v_{j+1}, \\dots, v_k)$ est une chaîne de $v_0$ à $v_k$ de longueur strictement inférieure à $k$ (on a supprimé au moins l'arête $v_i v_{i+1}$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "Conclusion : par récurrence (forte) sur la longueur, $C'$ contient une chaîne simple entre $v_0$ et $v_k$, qui est aussi une chaîne simple contenue dans $C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire des cycles : condition de Dirac et algorithmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire un cycle, c'est plus délicat qu'une chaîne : il faut refermer la boucle. Un théorème célèbre, celui de Dirac (1952), donne une condition suffisante simple sur les degrés des sommets pour garantir l'existence d'un cycle hamiltonien (qui passe par tous les sommets exactement une fois). C'est un résultat magnifique qui montre comment une condition locale (degrés) impose une structure globale."
+            },
+            {
+              "type": "definition",
+              "term": "Cycle hamiltonien",
+              "definition": "Un cycle qui visite chaque sommet du graphe exactement une fois (sauf le premier/dernier qui coïncident). Un graphe qui en possède un est dit hamiltonien.",
+              "example": "Tout graphe complet $K_n$ pour $n \\ge 3$ est hamiltonien. Le graphe du pavé (cube) est hamiltonien."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Théorème de Dirac : Si } G \\text{ est un graphe simple d'ordre } n \\ge 3 \\text{ et } \\delta(G) \\ge \\frac{n}{2}, \\text{ alors } G \\text{ est hamiltonien.}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici $\\delta(G)$ désigne le degré minimum des sommets. La preuve utilise l'idée de « rotation » d'un chemin maximal : on prend un plus long chemin simple $P = (v_1, \\dots, v_k)$, et on montre que les voisins de $v_1$ et $v_k$ sur $P$ permettent de former un cycle, puis d'étendre jusqu'à couvrir tous les sommets grâce à la condition sur les degrés. C'est une démonstration type que tu dois savoir reproduire."
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({1: [2,3,4,5], 2: [1,3,4,5], 3: [1,2,4,5], 4: [1,2,3,5], 5: [1,2,3,4]})",
+              "xmin": -2,
+              "xmax": 2,
+              "ymin": -2,
+              "ymax": 2,
+              "caption": "$K_5$ : degré minimum 4 $\\ge 5/2$. Dirac garantit un cycle hamiltonien (ici 1-2-3-4-5-1)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Matrices et dénombrement : construire toutes les chaînes d'une longueur donnée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons à la matrice d'adjacence $A$. Nous avons vu que $(A^k)_{ij}$ compte les chaînes de longueur $k$ de $i$ à $j$. Mais on peut aller plus loin : la matrice $(I - xA)^{-1} = \\sum_{k \\ge 0} A^k x^k$ (série formelle) est la fonction génératrice des chaînes. Son coefficient en $x^k$ donne la matrice des chaînes de longueur $k$. C'est un pont vers l'analyse complexe et la théorie spectrale : les pôles de cette fonction rationnelle sont les inverses des valeurs propres de $A$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Concrètement, pour lister explicitement toutes les chaînes de longueur $k$ entre deux sommets, on peut utiliser un algorithme récursif simple : pour chaque voisin $v$ du sommet de départ, on construit récursivement les chaînes de longueur $k-1$ de $v$ à l'arrivée, et on préfixe le sommet de départ. La complexité est proportionnelle au nombre de chaînes, qui peut être exponentiel (ex: graphe complet). C'est pourquoi on préfère souvent travailler avec les matrices pour des raisons de complexité."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{k=0}^\\infty (A^k)_{ij} x^k = ((I - xA)^{-1})_{ij}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette identité formelle est valable dans l'anneau des séries formelles. Elle devient une identité analytique pour $|x| < 1/\\rho(A)$ où $\\rho(A)$ est le rayon spectral. C'est une fenêtre ouverte sur la théorie des graphes aléatoires et l'énumération de chemins, des sujets de recherche actuels."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Applique l'algorithme BFS sur le graphe de la figure (sommets A,B,C,D,E,F ; arêtes : AB, AC, BD, BE, CF, EF) depuis le sommet A pour trouver une plus courte chaîne vers F. Donne l'arbre BFS et la chaîne trouvée.",
+              "answer": "File : [A]. Visite A, voisins B,C → file [B,C], parent[B]=A, parent[C]=A. Visite B, voisins D,E (A déjà visité) → file [C,D,E], parent[D]=B, parent[E]=B. Visite C, voisin F → file [D,E,F], parent[F]=C. On a atteint F. Remontée : F ← C ← A. Chaîne : (A, C, F) de longueur 2.",
+              "hint": "Simule l'algorithme pas à pas : file, marquage, parent. Arrête dès que F est défilé ou enfilé. Remonte les parents.",
+              "explanation": "BFS explore par couches : couche 0 = {A}, couche 1 = {B,C}, couche 2 = {D,E,F}. F est atteint depuis C (couche 1), donc distance 2. La chaîne A-C-F est une plus courte chaîne. L'arbre BFS a arêtes : A-B, A-C, B-D, B-E, C-F."
+            },
+            {
+              "question": "Soit $G$ un graphe non orienté. Montre par récurrence sur $k$ que si $G$ contient un cycle de longueur $k$, alors il contient une chaîne simple de longueur $k-1$.",
+              "answer": "Soit $C = (v_0, v_1, \\dots, v_{k-1}, v_0)$ un cycle de longueur $k$. La suite $(v_0, v_1, \\dots, v_{k-1})$ est une chaîne de longueur $k-1$. Comme $C$ est un cycle, tous les $v_i$ pour $i=0..k-1$ sont distincts. Donc cette chaîne est simple. (Pas besoin de récurrence forte ici, la propriété est directe par définition du cycle.)",
+              "hint": "Un cycle est une chaîne simple fermée. Enleve la dernière arête qui ferme le cycle : il reste une chaîne simple entre le premier et l'avant-dernier sommet.",
+              "explanation": "Par définition, un cycle $(v_0, \\dots, v_{k-1}, v_0)$ a tous ses sommets $v_0, \\dots, v_{k-1}$ deux à deux distincts. La sous-suite $(v_0, \\dots, v_{k-1})$ est donc une chaîne simple de longueur $k-1$. La récurrence n'est pas nécessaire ici, la définition suffit. Mais on pourrait faire une récurrence sur $k$ en retirant un sommet du cycle (ce qui demande que $k \\ge 4$ pour garder un cycle)."
+            },
+            {
+              "question": "Donne un exemple de graphe connexe d'ordre 6 qui ne vérifie pas la condition de Dirac ($\\delta(G) < 3$) mais qui est pourtant hamiltonien. Explique pourquoi Dirac ne s'applique pas mais qu'un cycle hamiltonien existe quand même.",
+              "answer": "Le cycle $C_6$ (hexagone) : sommets $1,\\dots,6$, arêtes $12, 23, 34, 45, 56, 61$. Degrés tous égaux à 2. $\\delta = 2 < 6/2 = 3$. Condition de Dirac non vérifiée. Mais $C_6$ est lui-même un cycle hamiltonien (le graphe tout entier). Dirac donne une condition suffisante, pas nécessaire.",
+              "hint": "Cherche un graphe très « mince » en arêtes mais qui est déjà un grand cycle. La condition de Dirac est suffisante mais pas nécessaire.",
+              "explanation": "Le cycle $C_6$ a 6 sommets, chaque sommet a degré 2. La condition de Dirac demande $\\delta \\ge 3$, qui n'est pas remplie. Pourtant $C_6$ est hamiltonien par définition (le graphe entier est un cycle hamiltonien). Cela illustre que Dirac est une condition suffisante forte, mais qu'il existe des graphes hamiltoniens bien plus « creux »."
+            },
+            {
+              "question": "Soit $A = \\begin{pmatrix} 0 & 1 & 0 & 0 \\\\ 1 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 1 \\\\ 0 & 0 & 1 & 0 \\end{pmatrix}$ (graphe chemin $P_4$). Calcule $A^2$ et $A^3$. Combien y a-t-il de chaînes de longueur 3 entre le sommet 1 et le sommet 4 ? Vérifie en les listant.",
+              "answer": "$A^2 = \\begin{pmatrix} 1&0&1&0\\\\ 0&2&0&1\\\\ 1&0&2&0\\\\ 0&1&0&1 \\end{pmatrix}$, $A^3 = \\begin{pmatrix} 0&2&0&1\\\\ 2&0&3&0\\\\ 0&3&0&2\\\\ 1&0&2&0 \\end{pmatrix}$. $(A^3)_{14} = 1$. Une seule chaîne : $(1,2,3,4)$.",
+              "hint": "Calcule les produits matriciels. $(A^3)_{14}$ est le coefficient ligne 1 colonne 4. Dans un chemin, il n'y a qu'une seule façon d'aller d'un bout à l'autre en 3 étapes.",
+              "explanation": "Le graphe est $1-2-3-4$. $A^2$ compte les chemins de longueur 2 : $1 \\to 1$ (aller-retour 1-2-1), $1 \\to 3$ (1-2-3), etc. $A^3$ : pour aller de 1 à 4 en 3 étapes, il faut 1-2-3-4, l'unique chaîne simple de longueur 3. Le coefficient $(A^3)_{14}=1$ le confirme."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modélisation : quand le problème devient un graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici arrivés à la dernière leçon, celle où tout prend son sens : les problèmes concrets. Les chaînes et les cycles ne sont pas de jolis objets abstraits, ce sont les outils pour résoudre des situations réelles. La compétence clé, c'est le passage du texte du problème au graphe : identifier les sommets (objets, lieux, états) et les arêtes (liens, transitions, compatibilités). Une fois le graphe construit, tes connaissances des leçons précédentes deviennent des super-pouvoirs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple classique : le problème du voyageur de commerce (TSP). On a $n$ villes, des distances entre chaque paire. On cherche le plus court circuit passant par toutes les villes exactement une fois. Modélisation : graphe complet à $n$ sommets, arêtes pondérées par les distances. La solution est un cycle hamiltonien de poids minimal. Ce problème est NP-difficile : pas d'algorithme polynomial connu, mais des algorithmes d'approximation (Christofides, 1.5-approximation) et des solveurs exacts (branch-and-cut) pour des tailles modérées."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe pondéré",
+              "definition": "Un graphe où chaque arête $e$ porte un poids $w(e) \\in \\mathbb{R}$ (souvent $\\ge 0$). Le poids d'une chaîne est la somme des poids de ses arêtes. Le plus court chemin entre $x$ et $y$ est une chaîne de poids minimal.",
+              "example": "Réseau routier : sommets = villes, arêtes = routes, poids = distance ou temps de trajet."
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({A: [B, C], B: [A, C, D], C: [A, B, D], D: [B, C]})",
+              "xmin": -2,
+              "xmax": 2,
+              "ymin": -1.5,
+              "ymax": 1.5,
+              "caption": "Graphe pondéré pour Dijkstra. Poids : AB=4, AC=2, BC=1, BD=5, CD=3. Plus court A→D : A-C-D (poids 5) vs A-B-D (9) vs A-B-C-D (6)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Plus court chemin : l'algorithme de Dijkstra pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algorithme de Dijkstra (1959) résout le problème du plus court chemin depuis une source unique vers tous les autres sommets, dans un graphe à poids non négatifs. C'est un algorithme glouton qui maintient un ensemble de sommets dont la distance minimale est déjà fixée. À chaque étape, il choisit le sommet non fixé le plus proche de la source, et « relâche » ses arêtes sortantes. La correction repose sur un invariant de boucle élégant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$d[s] \\leftarrow 0$ pour la source $s$ ; $d[v] \\leftarrow +\\infty$ pour tout autre sommet. Tous les sommets sont non fixés (dans une file de priorité)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Boucle principale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Extraire $u$ de la file avec $d[u]$ minimal. Marquer $u$ comme fixé. Pour chaque voisin $v$ de $u$ : si $d[v] > d[u] + w(u,v)$, alors $d[v] \\leftarrow d[u] + w(u,v)$ et $\\text{parent}[v] \\leftarrow u$ (mise à jour dans la file)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Terminaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand la file est vide, $d[v]$ est la distance minimale de $s$ à $v$ pour tout $v$ accessible. La chaîne se reconstruit en remontant les $\\text{parent}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'invariant crucial : quand un sommet $u$ est extrait de la file (marqué fixé), $d[u]$ est définitivement la longueur d'un plus court chemin de $s$ à $u$. La preuve par l'absurde utilise le fait que tout chemin plus court devrait passer par un sommet non fixé plus proche, ce qui contredit le choix de $u$ comme minimum. C'est une démonstration type que tu dois maîtriser pour l'oral ou l'écrit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycles eulériens : le problème des sept ponts de Königsberg"
+            },
+            {
+              "type": "paragraph",
+              "content": "Changeons de registre : au lieu de visiter tous les sommets (hamiltonien), on veut maintenant emprunter toutes les arêtes exactement une fois. C'est le problème historique des sept ponts de Königsberg, résolu par Euler en 1736, acte de naissance de la théorie des graphes. Un cycle eulérien est un circuit qui passe par chaque arête exactement une fois (les sommets peuvent être revisités)."
+            },
+            {
+              "type": "definition",
+              "term": "Cycle eulérien / Graphe eulérien",
+              "definition": "Un cycle eulérien est un circuit qui utilise chaque arête exactement une fois. Un graphe non orienté connexe est eulérien ssi tous ses sommets ont un degré pair. Un graphe orienté connexe est eulérien ssi pour tout sommet, degré entrant = degré sortant.",
+              "example": "Le graphe des ponts de Königsberg a 4 sommets de degrés 3, 3, 3, 5 (tous impairs) : pas de cycle eulérien possible. Euler a prouvé l'impossibilité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Algorithme de Hierholzer (construction d'un cycle eulérien)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Vérifie que le graphe est eulérien (connexe, tous degrés pairs). Sinon, impossible."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Part d'un sommet quelconque, suis des arêtes non encore utilisées tant que possible. Comme les degrés sont pairs, tu ne peux te bloquer qu'en revenant au départ : tu as un circuit $C$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Si $C$ ne couvre pas toutes les arêtes, il existe un sommet $v$ sur $C$ qui a des arêtes non utilisées. Pars de $v$ pour construire un nouveau circuit $C'$ avec les arêtes restantes."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "4. Insère $C'$ dans $C$ au niveau de $v$. Répète jusqu'à épuisement des arêtes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "Graph({A: [B, C, D, E], B: [A, C, D, E], C: [A, B], D: [A, B], E: [A, B]})",
+              "xmin": -2,
+              "xmax": 2,
+              "ymin": -2,
+              "ymax": 2,
+              "caption": "Graphe eulérien : degrés A=4, B=4, C=2, D=2, E=2 (tous pairs). Un cycle eulérien : A-C-B-D-A-E-B-A."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes d'optimisation : flot maximal et couplage parfait"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir en beauté, évoquons deux problèmes majeurs où les chaînes jouent un rôle central. Le problème du flot maximal (Ford-Fulkerson) : dans un réseau à capacités, on cherche à envoyer un maximum de flux de la source au puits. L'algorithme construit itérativement des chaînes augmentantes (chemins de la source au puits avec capacité résiduelle positive) dans le graphe résiduel. Chaque chaîne trouvée augmente le flot. Le théorème max-flot min-coupe garantit l'optimalité quand plus aucune chaîne augmentante n'existe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le couplage parfait dans un graphe biparti : on cherche un ensemble d'arêtes sans sommet commun qui couvre tous les sommets. Le théorème de Hall (1935) donne une condition nécessaire et suffisante : pour toute partie $X$ d'un côté, son voisinage $N(X)$ a une taille au moins égale à $|X|$. La démonstration utilise des chaînes alternantes (arêtes dans le couplage, hors du couplage, alternativement) pour augmenter la taille du couplage pas à pas. C'est la base de l'algorithme de Kuhn (ou Hopcroft-Karp pour la version efficace)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Théorème de Hall : } G=(X \\cup Y, E) \\text{ biparti. } \\exists \\text{ couplage parfait couvrant } X \\iff \\forall S \\subseteq X, |N(S)| \\ge |S|."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces deux problèmes illustrent la puissance de la pensée par chaînes : on transforme une question d'optimisation globale en une recherche locale itérative de chaînes améliorantes. C'est un schéma récurrent en algorithmique et en recherche opérationnelle, que tu retrouveras en classes préparatoires et au-delà."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une chaîne, une chaîne simple, un cycle, un circuit et donner des exemples de chacun.",
+                "Je sais utiliser la matrice d'adjacence pour compter les chaînes de longueur $k$ entre deux sommets.",
+                "Je connais les algorithmes BFS et DFS et je sais quand utiliser l'un ou l'autre.",
+                "Je sais démontrer par récurrence sur la longueur qu'une chaîne contient une chaîne simple entre ses extrémités.",
+                "Je connais le théorème de Dirac et je sais l'appliquer (et donner un contre-exemple à la réciproque).",
+                "Je sais modéliser un problème concret en graphe (sommets, arêtes, poids) et identifier la question (plus court chemin, cycle hamiltonien, cycle eulérien, flot, couplage).",
+                "Je maîtrise l'algorithme de Dijkstra et son invariant de boucle pour les plus courts chemins.",
+                "Je connais la condition nécessaire et suffisante pour l'existence d'un cycle eulérien (degrés pairs) et l'algorithme de Hierholzer.",
+                "Je comprends le principe des chaînes augmentantes pour le flot maximal (Ford-Fulkerson) et pour le couplage parfait (Kuhn / Hall)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un robot doit traverser une grille $5 \\times 5$ de la case en haut à gauche à la case en bas à droite. Il ne peut se déplacer que vers la droite ou vers le bas. Modélise ce problème par un graphe orienté acyclique. Combien y a-t-il de chemins distincts ? (Indication : matrice d'adjacence ou combinatoire).",
+              "answer": "Sommets = 25 cases. Arêtes orientées : $(i,j) \\to (i,j+1)$ (droite) et $(i,j) \\to (i+1,j)$ (bas). C'est un DAG. Tout chemin de $(1,1)$ à $(5,5)$ fait exactement 4 mouvements droite et 4 mouvements bas, dans n'importe quel ordre. Nombre de chemins = $\\binom{8}{4} = 70$. Via matrice : $A$ adjacence, $(A^8)_{(1,1),(5,5)} = 70$.",
+              "hint": "Chaque chemin a longueur 8 (4 droite + 4 bas). L'ordre des 8 mouvements détermine le chemin. Coefficient binomial.",
+              "explanation": "Le graphe est acyclique orienté. Un chemin de $(1,1)$ à $(5,5)$ doit faire 4 pas à droite et 4 pas en bas, total 8 étapes. Choisir les positions des 4 'droite' parmi les 8 étapes : $\\binom{8}{4} = 70$. La matrice d'adjacence $A$ est nilpotente d'indice 9, et $(A^8)_{source, cible}$ compte ces chemins."
+            },
+            {
+              "question": "Applique l'algorithme de Dijkstra sur le graphe pondéré suivant pour trouver les plus courts chemins depuis $A$ : Sommets $\\{A,B,C,D,E\\}$, arêtes pondérées : $AB=4$, $AC=2$, $BC=1$, $BD=5$, $CD=3$, $CE=6$, $DE=2$. Donne les distances finales et l'arbre des plus courts chemins.",
+              "answer": "Initialisation : $d[A]=0$, autres $=\\infty$. File = {A:0, B:$\\infty$, C:$\\infty$, D:$\\infty$, E:$\\infty$}. 1) Extrait A (0). Relâche : $d[B]=4$ (parent A), $d[C]=2$ (parent A). File = {C:2, B:4, D:$\\infty$, E:$\\infty$}. 2) Extrait C (2). Relâche : $d[B] = \\min(4, 2+1)=3$ (parent C), $d[D]=2+3=5$ (parent C), $d[E]=2+6=8$ (parent C). File = {B:3, D:5, E:8}. 3) Extrait B (3). Relâche : $d[D] = \\min(5, 3+5)=5$ (inchangé). File = {D:5, E:8}. 4) Extrait D (5). Relâche : $d[E] = \\min(8, 5+2)=7$ (parent D). File = {E:7}. 5) Extrait E (7). Terminé. Distances : A=0, B=3, C=2, D=5, E=7. Arbre : A-C, C-B, C-D, D-E.",
+              "hint": "Simule pas à pas avec une file de priorité. Note bien les mises à jour de distances et de parents. L'arbre des plus courts chemins est donné par les parents finaux.",
+              "explanation": "Dijkstra explore par distance croissante depuis A. C est atteint à distance 2. B est d'abord vu à 4 via A, puis amélioré à 3 via C. D est atteint à 5 via C. E est d'abord vu à 8 via C, puis amélioré à 7 via D. L'arbre des plus courts chemins a pour arêtes : A-C, C-B, C-D, D-E."
+            },
+            {
+              "question": "Le graphe suivant admet-il un cycle eulérien ? Sommets $\\{1,2,3,4,5\\}$, arêtes : $12, 13, 14, 15, 23, 24, 25, 34, 35, 45$ (graphe complet $K_5$). Si oui, en construis un explicitement avec l'algorithme de Hierholzer.",
+              "answer": "$K_5$ a tous ses sommets de degré 4 (pair). Il est connexe. Donc il admet un cycle eulérien. Hierholzer : départ 1. Circuit 1 : 1-2-3-1-4-2-5-1 (utilise 7 arêtes, reste 3-4, 3-5, 4-5). Sommet 3 sur le circuit a arêtes restantes. Nouveau circuit depuis 3 : 3-4-5-3. Insertion dans le premier au niveau de 3 : 1-2-3-4-5-3-1-4-2-5-1. Cycle eulérien de longueur 10.",
+              "hint": "Vérifie les degrés. $K_5$ a 10 arêtes, degré 4 pour chaque sommet. Tous pairs → eulérien. Applique Hierholzer : construis un premier circuit, puis insère les circuits restants aux sommets communs.",
+              "explanation": "$K_5$ : 5 sommets, chacun relié aux 4 autres → degré 4 (pair). Connexe. Condition d'Euler remplie. Hierholzer : premier circuit arbitraire (ex: 1-2-3-1-4-2-5-1). Arêtes restantes : 34, 35, 45. Elles forment un cycle 3-4-5-3. On l'insère dans le premier circuit au sommet 3. Résultat : cycle eulérien utilisant les 10 arêtes exactement une fois."
+            },
+            {
+              "question": "Dans un graphe biparti $G = (X \\cup Y, E)$ avec $|X| = |Y| = 4$, on sait que pour tout $S \\subseteq X$, $|N(S)| \\ge |S|$. D'après le théorème de Hall, il existe un couplage parfait. Donne un exemple de graphe biparti satisfaisant la condition de Hall mais où l'algorithme de Kuhn (recherche de chaînes augmentantes) doit effectuer au moins 3 augmentations successives pour trouver le couplage parfait.",
+              "answer": "Graphe : $X = \\{x_1,x_2,x_3,x_4\\}$, $Y = \\{y_1,y_2,y_3,y_4\\}$. Arêtes : $x_1y_1$, $x_2y_1, x_2y_2$, $x_3y_2, x_3y_3$, $x_4y_3, x_4y_4$. (Chaîne $x_1-y_1-x_2-y_2-x_3-y_3-x_4-y_4$). Si on commence avec couplage vide, Kuhn peut ajouter $x_1y_1$, puis $x_2y_2$, puis $x_3y_3$, puis $x_4y_4$ (4 augmentations). Mais pour forcer 3 augmentations avec un couplage initial mal choisi : couplage initial $M = \\{x_2y_1, x_3y_2\\}$. Chaîne augmentante 1 : $x_1-y_1-x_2-y_2-x_3-y_3$ → augmente. $M = \\{x_1y_1, x_2y_2, x_3y_3\\}$. Chaîne 2 : $x_4-y_3-x_3-y_4$ ? Non, $y_4$ isolé. Meilleur : graphe en « échelle » où il faut défaire et refaire. Exemple standard : $x_1y_1, x_1y_2, x_2y_2, x_2y_3, x_3y_3, x_3y_4, x_4y_4$. Couplage initial $x_1y_2, x_2y_3, x_3y_4$. Chaîne $x_4-y_4-x_3-y_3-x_2-y_2-x_1-y_1$ (longueur 7, 3 augmentations successives si on les prend une par une).",
+              "hint": "La condition de Hall garantit l'existence. Kuhn trouve des chaînes augmentantes une par une. Pour forcer plusieurs étapes, construis un graphe où le couplage initial est « loin » du parfait et où chaque chaîne augmentante n'augmente la taille que de 1.",
+              "explanation": "Le graphe en « chemin alterné » $x_1-y_1-x_2-y_2-x_3-y_3-x_4-y_4$ (avec arêtes $x_i y_i$ et $x_{i+1} y_i$) satisfait Hall. Si le couplage initial est vide, Kuhn trouve 4 chaînes augmentantes de longueur 1 (arêtes directes). Pour forcer 3 augmentations non triviales, on prend un couplage initial partiel « décalé » : $M_0 = \\{x_2y_1, x_3y_2, x_4y_3\\}$. Alors la seule chaîne augmentante pour $x_1$ est $x_1-y_1-x_2-y_2-x_3-y_3-x_4-y_4$ (longueur 7). En l'appliquant, on obtient $M_1 = \\{x_1y_1, x_2y_2, x_3y_3, x_4y_4\\}$ parfait. Une seule augmentation mais chaîne longue. Pour 3 augmentations distinctes, il faut un graphe où les chaînes augmentantes sont courtes mais successives. Exemple : $x_1y_1, x_1y_2, x_2y_2, x_2y_3, x_3y_3, x_3y_4, x_4y_4$. $M_0 = \\{x_2y_2, x_3y_3\\}$. Augmentation 1 : $x_1-y_2-x_2-y_3-x_3-y_4$ (ou plus court $x_1-y_1$ si $y_1$ libre). Ajoutons $y_1$ libre : arêtes $x_1y_1, x_1y_2, x_2y_2, x_2y_3, x_3y_3, x_3y_4, x_4y_4$. $M_0 = \\emptyset$. Kuhn peut choisir $x_1y_1$ (taille 1), puis $x_2y_2$ (2), puis $x_3y_3$ (3), puis $x_4y_4$ (4). 4 augmentations. Pour exactement 3 : $M_0 = \\{x_1y_2\\}$ (taille 1). Reste 3 sommets de $X$ à coupler. Augmentations successives pour $x_2, x_3, x_4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

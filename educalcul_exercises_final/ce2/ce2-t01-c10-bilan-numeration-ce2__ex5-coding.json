@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 151,
+  "_course_code": "ce2-t01-c10-bilan-numeration-ce2",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lecture, écriture, position",
+  "title": "Approfondissement : Lecture, écriture, position - Algorithmes",
+  "blocks": [
+    {
+      "title": "Décomposer un nombre à trois chiffres",
+      "content": "Écris un algorithme (en langage naturel ou pseudo-code) qui prend en entrée un nombre entier $N$ compris entre $0$ et $999$ et qui affiche le nombre de centaines, de dizaines et d'unités qui le composent.",
+      "correctAnswer": "Algorithme :\\n1. Lire $N$.\\n2. Calculer $centaines = N // 100$ (division entière).\\n3. Calculer $reste = N % 100$ (reste de la division par 100).\\n4. Calculer $dizaines = reste // 10$.\\n5. Calculer $unites = reste % 10$.\\n6. Afficher $centaines$, $dizaines$, $unites$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division entière par 100 pour obtenir les centaines, puis le reste pour isoler les dizaines et unités. La division entière par 10 donne les dizaines, le modulo 10 donne les unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconstituer un nombre à partir de ses chiffres",
+      "content": "Écris un algorithme qui reçoit trois nombres entiers $c$, $d$, $u$ (chacun entre $0$ et $9$) représentant respectivement les centaines, les dizaines et les unités, et qui calcule et affiche le nombre entier $N$ correspondant.",
+      "correctAnswer": "Algorithme :\\n1. Lire $c$, $d$, $u$.\\n2. Calculer $N = c * 100 + d * 10 + u$.\\n3. Afficher $N$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque chiffre est multiplié par sa valeur de position (100 pour les centaines, 10 pour les dizaines, 1 pour les unités) puis on additionne les produits.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer et ordonner deux nombres à trois chiffres",
+      "content": "Écris un algorithme qui prend deux nombres $A$ et $B$ (entre $0$ et $999$), les compare et affiche le plus petit puis le plus grand (dans l'ordre croissant).",
+      "correctAnswer": "Algorithme :\\n1. Lire $A$, $B$.\\n2. Si $A < B$ alors afficher $A$ puis $B$.\\n3. Sinon afficher $B$ puis $A$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une simple structure conditionnelle permet d'ordonner les deux nombres. On teste la relation d'ordre et on affiche dans l'ordre croissant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Bilan - Algorithmique 6e",
+  "title": "Quiz Algorithmique 6e : Bilan Applications",
+  "questions": [
+    {
+      "text": "Un sprite se trouve au point de coordonnées (0 ; 0) et est orienté vers la droite. Il exécute le script suivant : Avancer de $3$ pas ; Tourner à droite de $90$ degrés ; Avancer de $2$ pas. Quelles sont ses coordonnées finales ?",
+      "options": [
+        "(3 ; 2)",
+        "(3 ; -2)",
+        "(2 ; 3)",
+        "(5 ; 0)"
+      ],
+      "correctAnswer": "(3 ; -2)",
+      "explanation": "Le sprite part de (0 ; 0) face à l'est (droite). 'Avancer de 3 pas' le déplace à (3 ; 0). 'Tourner à droite de 90 degrés' l'oriente vers le sud (bas). 'Avancer de 2 pas' diminue l'ordonnée de 2 : il arrive en (3 ; -2). L'option (3 ; 2) correspondrait à un tour à gauche. L'option (2 ; 3) inverse les déplacements. L'option (5 ; 0) ignore le virage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute la boucle suivante : Répéter $4$ fois [ Avancer de $10$ pas ; Tourner de $90$ degrés ]. Combien de fois l'instruction 'Avancer de $10$ pas' est-elle exécutée au total ?",
+      "options": [
+        "1 fois",
+        "4 fois",
+        "10 fois",
+        "36 fois"
+      ],
+      "correctAnswer": "4 fois",
+      "explanation": "La boucle 'Répéter 4 fois' exécute l'ensemble du bloc d'instructions qu'elle contient exactement $4$ fois. Comme l'instruction 'Avancer de 10 pas' se trouve à l'intérieur de ce bloc, elle est exécutée une fois par tour de boucle, soit $4$ fois au total. '1 fois' correspond à l'exécution sans boucle. '10 fois' confond le nombre de pas et le nombre de répétitions. '36 fois' n'a pas de lien logique avec le script.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Au début du programme, la variable $score$ vaut $0$. On exécute : Répéter $6$ fois [ Ajouter $3$ à $score$ ]. Quelle est la valeur finale de la variable $score$ ?",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "18"
+      ],
+      "correctAnswer": "18",
+      "explanation": "La boucle s'exécute $6$ fois. À chaque tour, on ajoute $3$ à la variable. L'addition totale est donc $6 \\times 3 = 18$. La valeur finale est $0 + 18 = 18$. '3' est la valeur ajoutée une seule fois. '6' est le nombre de répétitions. '9' correspondrait à $3 \\times 3$ (erreur sur le nombre de tours).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On teste le script conditionnel suivant : Si < $x > 10$ > Alors [ Dire \"Grand\" ] Sinon [ Dire \"Petit\" ]. Si la variable $x$ vaut $7$, que va dire le sprite ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "Grand Petit",
+        "Rien"
+      ],
+      "correctAnswer": "Petit",
+      "explanation": "La condition teste si $x$ est strictement supérieur à $10$. Or $x = 7$, donc $7 > 10$ est faux. Le programme exécute donc la branche 'Sinon' : il dit 'Petit'. 'Grand' serait la réponse si $x$ était $11$ par exemple. 'Grand Petit' n'est pas possible car les branches 'Alors' et 'Sinon' sont mutuellement exclusives. 'Rien' serait le cas s'il n'y avait pas de bloc 'Sinon'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève veut programmer le tracé d'un carré de côté $50$. Il écrit : Répéter $4$ fois [ Avancer de $50$ pas ; Tourner de $45$ degrés ]. Quel sera le résultat graphique ?",
+      "options": [
+        "Il trace un carré parfait",
+        "Il trace un octogone régulier",
+        "Il trace une ligne brisée qui ne se ferme pas",
+        "Il ne bouge pas"
+      ],
+      "correctAnswer": "Il trace une ligne brisée qui ne se ferme pas",
+      "explanation": "Pour fermer un polygone régulier à $n$ côtés, l'angle de rotation doit être $360 / n$. Pour un carré ($n=4$), l'angle doit être $90$ degrés. Avec $45$ degrés, la somme des angles tournés après $4$ côtés est $4 \\times 45 = 180$ degrés seulement. Le sprite n'a fait qu'un demi-tour, il ne revient pas à sa position ni à son orientation initiales : la figure ne se ferme pas. Un octogone nécessiterait $8$ répétitions. Le sprite bouge car il y a des instructions 'Avancer'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

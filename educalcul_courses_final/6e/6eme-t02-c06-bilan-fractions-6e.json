@@ -1,0 +1,311 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.561539+00:00",
+  "id": 341,
+  "code": "6eme-t02-c06",
+  "title": "Bilan - Fractions 6e",
+  "description": "Cours structuré Educalcul : Bilan - Fractions 6e.",
+  "subject": "Fractions",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Fractions",
+    "titre_du_cours": "Bilan - Fractions 6e",
+    "objectif_global": "Bilan - Fractions 6e",
+    "mini_lecons_imposees": [
+      "Sens, comparaison, calculs prévus.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Sens, comparaison, calculs prévus.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reprendre confiance avec le sens d'une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Tu as déjà rencontré les fractions au primaire, et maintenant en 6e, on va les regarder avec des yeux neufs. Pas de panique : une fraction, c'est simplement une façon d'écrire un partage ou une mesure. Imagine que tu coupes une barre de chocolat en $5$ parts égales et que tu en prends $2$. La fraction $\\frac{2}{5}$ raconte exactement cette histoire : le $5$ en bas (le dénominateur) dit en combien de parts on a coupé le tout, et le $2$ en haut (le numérateur) dit combien de ces parts on garde."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction",
+              "definition": "Une fraction est un nombre qui s'écrit $\\frac{a}{b}$ avec $a$ et $b$ des nombres entiers, $b \\neq 0$. Le nombre $b$ est le dénominateur (nombre de parts égales), le nombre $a$ est le numérateur (nombre de parts prises).",
+              "example": "$\\frac{3}{4}$ se lit \"trois quarts\" : on a divisé l'unité en $4$ parts, on en prend $3$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La fraction $\\frac{3}{4}$ : 3 parts sur 4 colorées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette barre : sur $4$ parts au total, $3$ sont colorées. On peut aussi placer cette fraction sur une droite graduée. Le $0$ est au départ, le $1$ à l'arrivée. Si je coupe le segment $[0;1]$ en $4$ tronçons égaux, le troisième trait marque exactement $\\frac{3}{4}$. C'est une image mentale très utile : une fraction, c'est un point précis sur la droite des nombres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{3}{4}$ sur la droite graduée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.75,
+                  "label": "$\\frac{3}{4}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le sens est rafraîchi, attaquons la comparaison. Comparer deux fractions, c'est répondre à la question : laquelle est la plus grande ? Quand les dénominateurs sont identiques, c'est immédiat : celle qui a le plus grand numérateur gagne, car les parts sont de la même taille. Par exemple, $\\frac{5}{8} > \\frac{3}{8}$ car $5 > 3$. Mais si les dénominateurs diffèrent, il faut ruser un peu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer en ramenant au même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer $\\frac{2}{3}$ et $\\frac{3}{5}$, je ne vois pas tout de suite laquelle est la plus grande. L'astuce : transformer les deux fractions pour qu'elles aient le même dénominateur. Je cherche un multiple commun de $3$ et $5$, par exemple $15$. Je multiplie le numérateur et le dénominateur de la première par $5$ : $\\frac{2}{3} = \\frac{2 \\times 5}{3 \\times 5} = \\frac{10}{15}$. Pour la seconde, je multiplie par $3$ : $\\frac{3}{5} = \\frac{3 \\times 3}{5 \\times 3} = \\frac{9}{15}$. Maintenant c'est clair : $\\frac{10}{15} > \\frac{9}{15}$, donc $\\frac{2}{3} > \\frac{3}{5}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver un dénominateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un multiple commun aux deux dénominateurs (le plus simple est souvent leur produit)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transformer chaque fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur ET le dénominateur par le même nombre pour obtenir le dénominateur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les dénominateurs sont égaux, il suffit de regarder les numérateurs : le plus grand l'emporte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{2}{3} = \\frac{10}{15} > \\frac{9}{15} = \\frac{3}{5}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux calculs prévus au programme : l'addition et la soustraction de fractions de même dénominateur, et la multiplication d'une fraction par un nombre entier. Pour additionner $\\frac{2}{7} + \\frac{3}{7}$, je garde le dénominateur $7$ et j'additionne les numérateurs : $2+3=5$, donc $\\frac{5}{7}$. C'est comme si je mettais bout à bout deux morceaux de même taille. La soustraction fonctionne pareil : $\\frac{5}{7} - \\frac{2}{7} = \\frac{3}{7}$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 7
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 7
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 7
+                }
+              ],
+              "caption": "Addition de fractions de même dénominateur : $\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{7}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier une fraction par un entier, par exemple $4 \\times \\frac{2}{5}$, je multiplie le numérateur par cet entier : $4 \\times 2 = 8$, le dénominateur ne bouge pas : $\\frac{8}{5}$. Attention, le résultat peut être une fraction impropre (numérateur plus grand que dénominateur). On peut alors l'écrire en nombre mixte : $\\frac{8}{5} = 1 + \\frac{3}{5} = 1\\frac{3}{5}$. C'est une façon de dire : \"j'ai un entier et trois cinquièmes\"."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction impropre / Nombre mixte",
+              "definition": "Une fraction impropre a un numérateur $\\ge$ au dénominateur (ex : $\\frac{8}{5}$). Un nombre mixte associe un entier et une fraction propre (ex : $1\\frac{3}{5}$).",
+              "example": "$\\frac{11}{4} = 2\\frac{3}{4}$ car $11 = 2 \\times 4 + 3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de revoir les trois piliers des fractions en 6e : bien lire une fraction (sens), savoir laquelle est la plus grande (comparaison), et effectuer les calculs de base (addition, soustraction même dénominateur, multiplication par un entier). Dans la prochaine leçon, on fera le point complet avec une checklist pour t'assurer que tout est bien ancré. Prends le temps de relire tes notes si une étape te semble encore floue, c'est tout à fait normal d'avoir besoin de plusieurs lectures !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Représente la fraction $\\frac{4}{6}$ sur une bande découpée en 6 parts égales. Combien de parts sont colorées ?",
+              "answer": "4 parts sur 6 sont colorées.",
+              "hint": "Le dénominateur 6 donne le nombre total de parts, le numérateur 4 donne le nombre de parts prises.",
+              "explanation": "On divise la bande en 6 parties égales (dénominateur) et on en colore 4 (numérateur). La fraction $\\frac{4}{6}$ se lit \"quatre sixièmes\"."
+            },
+            {
+              "question": "Compare les fractions $\\frac{3}{4}$ et $\\frac{5}{6}$ en les ramenant au même dénominateur.",
+              "answer": "$\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$, donc $\\frac{3}{4} < \\frac{5}{6}$.",
+              "hint": "Cherche un multiple commun de 4 et 6 (par exemple 12). Transforme chaque fraction pour avoir 12 comme dénominateur.",
+              "explanation": "12 est un multiple de 4 et de 6. $\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$. $\\frac{5}{6} = \\frac{5 \\times 2}{6 \\times 2} = \\frac{10}{12}$. Comme $9 < 10$, on a $\\frac{9}{12} < \\frac{10}{12}$, donc $\\frac{3}{4} < \\frac{5}{6}$."
+            },
+            {
+              "question": "Calcule $3 \\times \\frac{2}{9}$ et écris le résultat sous forme de nombre mixte si c'est une fraction impropre.",
+              "answer": "$\\frac{6}{9} = \\frac{2}{3}$ (fraction propre, pas de nombre mixte nécessaire).",
+              "hint": "Multiplie le numérateur par 3 : $3 \\times 2 = 6$. Le dénominateur reste 9. Simplifie si possible.",
+              "explanation": "$3 \\times \\frac{2}{9} = \\frac{3 \\times 2}{9} = \\frac{6}{9}$. On peut simplifier par 3 : $\\frac{6}{9} = \\frac{2}{3}$. Comme le numérateur (2) est plus petit que le dénominateur (3), c'est une fraction propre, pas besoin de nombre mixte."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan complet : es-tu prêt(e) pour la suite ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière ligne droite de ce chapitre fractions. L'objectif n'est pas de t'évaluer, mais de t'aider à voir par toi-même ce qui est solide et ce qui mérite un petit coup de polish. Chaque item de la checklist correspond à une compétence du programme de 6e. Lis-les calmement, teste-toi mentalement ou sur une feuille de brouillon, et coche seulement quand tu te sens vraiment à l'aise. Si un point bloque, reviens sur la leçon précédente ou demande de l'aide : il n'y a aucune honte à consolider une base, c'est même la marque des élèves qui progressent durablement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le vocabulaire et le sens. Sais-tu dire, sans hésiter, ce que signifient les mots « numérateur » et « dénominateur » dans une fraction comme $\\frac{7}{12}$ ? Peux-tu expliquer à un camarade de CM2 pourquoi $\\frac{7}{12}$ se place entre $\\frac{1}{2}$ et $\\frac{3}{4}$ sur une droite graduée ? Essaie de le formuler avec tes propres mots : le dénominateur 12 découpe l'unité en 12 parts, le numérateur 7 en prend 7, ce qui est plus que 6 (la moitié) mais moins que 9 (les trois quarts)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérage de $\\frac{7}{12}$ par rapport à $\\frac{1}{2}$ et $\\frac{3}{4}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2} = \\frac{6}{12}$"
+                },
+                {
+                  "value": 0.5833,
+                  "label": "$\\frac{7}{12}$"
+                },
+                {
+                  "value": 0.75,
+                  "label": "$\\frac{3}{4} = \\frac{9}{12}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la comparaison. Devant deux fractions de dénominateurs différents, comme $\\frac{5}{8}$ et $\\frac{7}{12}$, sais-tu trouver un dénominateur commun sans te tromper ? Le piège classique est de multiplier seulement le numérateur ou seulement le dénominateur. Rappelle-toi la règle d'or : « Ce que je fais au numérateur, je le fais au dénominateur. » Pour $\\frac{5}{8}$ et $\\frac{7}{12}$, un dénominateur commun commode est $24$ (le plus petit commun multiple). $\\frac{5}{8} = \\frac{15}{24}$ et $\\frac{7}{12} = \\frac{14}{24}$, donc $\\frac{5}{8} > \\frac{7}{12}$. Vérifie que tu arrives au même résultat en prenant $96$ comme dénominateur commun : le résultat ne change pas, seul le chemin est plus long."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{5}{8} = \\frac{15}{24} > \\frac{14}{24} = \\frac{7}{12}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Côté calculs, trois opérations sont au menu. Première : additionner ou soustraire deux fractions de même dénominateur. Exemple : $\\frac{9}{14} - \\frac{5}{14} = \\frac{4}{14} = \\frac{2}{7}$ après simplification. Deuxième : multiplier une fraction par un entier. Exemple : $6 \\times \\frac{3}{8} = \\frac{18}{8} = \\frac{9}{4} = 2\\frac{1}{4}$. Ici, le passage en nombre mixte est utile pour donner du sens : $2\\frac{1}{4}$, c'est deux parts entières et un quart. Troisième : simplifier une fraction. Tu sais repérer un diviseur commun au numérateur et au dénominateur ? Pour $\\frac{18}{8}$, $2$ va bien, ce qui donne $\\frac{9}{4}$. Si tu vois $\\frac{15}{25}$, $5$ saute aux yeux : $\\frac{3}{5}$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 18,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 9,
+                  "denominator": 4
+                }
+              ],
+              "caption": "$\\frac{18}{8} = \\frac{9}{4} = 2\\frac{1}{4}$ : même quantité, deux écritures"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier point, souvent oublié mais crucial : savoir lire et écrire une fraction en toutes lettres, et inversement. « Cinq huitièmes » s'écrit $\\frac{5}{8}$, « trois demis » s'écrit $\\frac{3}{2}$. Attention aux pièges sonores : « un tiers » s'écrit $\\frac{1}{3}$ (pas $\\frac{1}{2}$ !), « trois quarts » s'écrit $\\frac{3}{4}$. Entraîne-toi à dicter des fractions à un camarade et à les écrire sans regarder : c'un excellent exercice de fluidité. Tu as maintenant toutes les cartes en main pour aborder sereinement la suite du programme (calculs avec fractions de dénominateurs différents, proportions, taux...). Fais le point ci-dessous, et félicite-toi pour le chemin parcouru !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer le numérateur et le dénominateur d'une fraction et expliquer leur rôle.",
+                "Je sais représenter une fraction sur une droite graduée et la lire.",
+                "Je sais comparer deux fractions en les ramenant au même dénominateur.",
+                "Je sais additionner et soustraire deux fractions de même dénominateur.",
+                "Je sais multiplier une fraction par un nombre entier.",
+                "Je sais transformer une fraction impropre en nombre mixte et inversement.",
+                "Je sais simplifier une fraction en divisant numérateur et dénominateur par le même nombre.",
+                "Je sais écrire une fraction en toutes lettres et l'écrire en chiffres à partir de son nom."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place les fractions $\\frac{1}{3}$, $\\frac{1}{2}$, $\\frac{2}{3}$ et $\\frac{5}{6}$ sur une droite graduée de 0 à 1. Classe-les dans l'ordre croissant.",
+              "answer": "$\\frac{1}{3} < \\frac{1}{2} < \\frac{2}{3} < \\frac{5}{6}$",
+              "hint": "Ramène toutes les fractions au dénominateur 6 pour comparer facilement : $\\frac{1}{3} = \\frac{2}{6}$, $\\frac{1}{2} = \\frac{3}{6}$, $\\frac{2}{3} = \\frac{4}{6}$, $\\frac{5}{6} = \\frac{5}{6}$.",
+              "explanation": "Avec le dénominateur commun 6 : $\\frac{1}{3} = \\frac{2}{6}$, $\\frac{1}{2} = \\frac{3}{6}$, $\\frac{2}{3} = \\frac{4}{6}$, $\\frac{5}{6} = \\frac{5}{6}$. L'ordre croissant des numérateurs donne l'ordre des fractions : $2 < 3 < 4 < 5$, donc $\\frac{1}{3} < \\frac{1}{2} < \\frac{2}{3} < \\frac{5}{6}$."
+            },
+            {
+              "question": "Compare $\\frac{4}{9}$ et $\\frac{5}{12}$ en détaillant les étapes.",
+              "answer": "$\\frac{4}{9} = \\frac{16}{36}$, $\\frac{5}{12} = \\frac{15}{36}$, donc $\\frac{4}{9} > \\frac{5}{12}$.",
+              "hint": "Cherche un multiple commun de 9 et 12. Le plus petit est 36. Transforme les deux fractions avec ce dénominateur.",
+              "explanation": "36 est un multiple de 9 ($9 \\times 4$) et de 12 ($12 \\times 3$). $\\frac{4}{9} = \\frac{4 \\times 4}{9 \\times 4} = \\frac{16}{36}$. $\\frac{5}{12} = \\frac{5 \\times 3}{12 \\times 3} = \\frac{15}{36}$. Comme $16 > 15$, on a $\\frac{16}{36} > \\frac{15}{36}$, donc $\\frac{4}{9} > \\frac{5}{12}$."
+            },
+            {
+              "question": "Calcule $5 \\times \\frac{3}{7}$ et donne le résultat sous forme de nombre mixte.",
+              "answer": "$\\frac{15}{7} = 2\\frac{1}{7}$",
+              "hint": "Multiplie le numérateur par 5 : $5 \\times 3 = 15$. Le dénominateur reste 7. Puis sépare les 7 entiers : $15 = 2 \\times 7 + 1$.",
+              "explanation": "$5 \\times \\frac{3}{7} = \\frac{5 \\times 3}{7} = \\frac{15}{7}$. Pour écrire en nombre mixte, on fait la division euclidienne de 15 par 7 : $15 = 2 \\times 7 + 1$. Donc $\\frac{15}{7} = 2 + \\frac{1}{7} = 2\\frac{1}{7}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

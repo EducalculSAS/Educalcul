@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Application : Notation scientifique",
+  "title": "Quiz : Application de la notation scientifique",
+  "questions": [
+    {
+      "text": "Écrire le nombre $0,00056$ en notation scientifique.",
+      "options": [
+        "$5,6 \\times 10^{-4}$",
+        "$5,6 \\times 10^{-3}$",
+        "$56 \\times 10^{-5}$",
+        "$0,56 \\times 10^{-3}$"
+      ],
+      "correctAnswer": "$5,6 \\times 10^{-4}$",
+      "explanation": "Pour écrire $0,00056$ en notation scientifique, on déplace la virgule de 4 positions vers la droite pour obtenir $5,6$, ce qui correspond à multiplier par $10^{-4}$. Les autres options correspondent à un mauvais comptage des déplacements ou à une mantisse incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Convertir $7,2 \\times 10^3$ en écriture décimale.",
+      "options": [
+        "$7200$",
+        "$720$",
+        "$72000$",
+        "$72$"
+      ],
+      "correctAnswer": "$7200$",
+      "explanation": "$7,2 \\times 10^3$ signifie $7,2$ multiplié par $1000$, ce qui donne $7200$. Les autres options correspondent à une multiplication par $100$, $10000$ ou $10$ au lieu de $1000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer $(2 \\times 10^4) \\times (3 \\times 10^2)$ et donner le résultat en notation scientifique.",
+      "options": [
+        "$6 \\times 10^6$",
+        "$6 \\times 10^8$",
+        "$5 \\times 10^6$",
+        "$6 \\times 10^5$"
+      ],
+      "correctAnswer": "$6 \\times 10^6$",
+      "explanation": "On multiplie les mantisses : $2 \\times 3 = 6$. On ajoute les exposants : $10^4 \\times 10^2 = 10^{4+2} = 10^6$. Le résultat est $6 \\times 10^6$. Les distracteurs proviennent d'une addition incorrecte des exposants ou d'une multiplication erronée des mantisses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectuer la division $(9 \\times 10^5) / (3 \\times 10^2)$ et exprimer le quotient en notation scientifique.",
+      "options": [
+        "$3 \\times 10^3$",
+        "$3 \\times 10^7$",
+        "$3 \\times 10^2$",
+        "$3 \\times 10^4$"
+      ],
+      "correctAnswer": "$3 \\times 10^3$",
+      "explanation": "On divise les mantisses : $9 / 3 = 3$. On soustrait les exposants : $10^5 / 10^2 = 10^{5-2} = 10^3$. Le quotient est $3 \\times 10^3$. Les autres options correspondent à une addition au lieu d'une soustraction des exposants ou à une erreur sur la mantisse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La distance moyenne de la Terre à la Lune est d'environ $384 400$ km. Écrire cette distance en notation scientifique.",
+      "options": [
+        "$3,844 \\times 10^5$",
+        "$3,844 \\times 10^4$",
+        "$3,844 \\times 10^6$",
+        "$38,44 \\times 10^4$"
+      ],
+      "correctAnswer": "$3,844 \\times 10^5$",
+      "explanation": "$384 400 = 3,844 \\times 100 000 = 3,844 \\times 10^5$. Il faut placer la virgule après le premier chiffre non nul (3) et compter le nombre de positions déplacées (5). Les autres options correspondent à un mauvais comptage des positions ou à une mantisse mal placée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

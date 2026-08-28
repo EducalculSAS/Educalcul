@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Contre-exemple",
+  "title": "Quiz : Le contre-exemple en calcul littéral",
+  "questions": [
+    {
+      "text": "On affirme : \"Pour tout nombre $x$, l'expression $x + 5$ est plus grande que $x$.\" Laquelle des propositions suivantes est un contre-exemple valide qui montre que cette affirmation est fausse ?",
+      "options": [
+        "Il n'existe pas de contre-exemple, l'affirmation est toujours vraie.",
+        "Le nombre $x = -10$.",
+        "Le nombre $x = 0$.",
+        "Le nombre $x = 10$."
+      ],
+      "correctAnswer": "Le nombre $x = -10$.",
+      "explanation": "Un contre-exemple est une valeur précise qui contredit l'affirmation générale. Si $x = -10$, alors $x + 5 = -5$. Or $-5$ n'est pas plus grand que $-10$ (c'est plus petit sur la droite numérique). L'affirmation \"plus grand que\" est donc fausse pour les nombres négatifs inférieurs à $-5$. Pour $x=0$, $0+5=5 > 0$ (vrai). Pour $x=10$, $10+5=15 > 10$ (vrai).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit : \"L'expression $2x$ est toujours un nombre pair.\" Quel contre-exemple permet de dire que cette affirmation est fausse ?",
+      "options": [
+        "La valeur $x = 3$, car $2 \\times 3 = 6$ qui est pair.",
+        "La valeur $x = 1,5$, car $2 \\times 1,5 = 3$ qui est impair.",
+        "La valeur $x = 0$, car $2 \\times 0 = 0$ qui est pair.",
+        "Il n'y a pas de contre-exemple car le double d'un nombre est toujours pair."
+      ],
+      "correctAnswer": "La valeur $x = 1,5$, car $2 \\times 1,5 = 3$ qui est impair.",
+      "explanation": "L'affirmation suppose implicitement que $x$ est un nombre entier. En 5e, les nombres peuvent être décimaux. Si $x = 1,5$, alors $2x = 3$. Or $3$ n'est pas un nombre pair (un nombre pair est un multiple de $2$, donc un entier). Les autres options donnent des résultats pairs ($6$ et $0$) et ne contredisent donc pas l'affirmation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'affirmation : \"Pour tout nombre $x$, $(x+1)^2 = x^2 + 1$.\" Laquelle de ces valeurs de $x$ est un contre-exemple ?",
+      "options": [
+        "$x = 0$",
+        "$x = 1$",
+        "$x = -1$",
+        "$x = 2$"
+      ],
+      "correctAnswer": "$x = 1$",
+      "explanation": "Il faut tester chaque valeur. Pour $x=1$ : $(1+1)^2 = 2^2 = 4$ et $1^2 + 1 = 2$. $4 \\neq 2$, c'est un contre-exemple. Pour $x=0$ : $(0+1)^2=1$ et $0^2+1=1$ (égalité). Pour $x=-1$ : $(0)^2=0$ et $(-1)^2+1=2$ ($0\\neq2$, c'est aussi un contre-exemple mais $x=1$ est le plus simple et figure dans les options). Pour $x=2$ : $3^2=9$ et $4+1=5$ (contre-exemple aussi). La question demande \"Laquelle\", $x=1$ est la réponse attendue parmi les choix.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève pense que l'égalité $\\frac{x}{2} + \\frac{x}{3} = \\frac{2x}{5}$ est vraie pour tout nombre $x$. Quelle valeur de $x$ parmi les suivantes permet de lui prouver qu'il a tort (contre-exemple) ?",
+      "options": [
+        "$x = 0$",
+        "$x = 5$",
+        "$x = 6$",
+        "$x = 1$"
+      ],
+      "correctAnswer": "$x = 1$",
+      "explanation": "Il faut trouver une valeur où les deux membres sont différents. Pour $x=0$, les deux membres valent $0$ (égalité, pas un contre-exemple). Pour $x=1$ : membre de gauche $= \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$. Membre de droite $= \\frac{2}{5}$. $\\frac{5}{6} \\neq \\frac{2}{5}$, c'est un contre-exemple valide et simple. Pour $x=5$ : $\\frac{5}{2}+\\frac{5}{3} = \\frac{25}{6}$ et $\\frac{10}{5}=2$ (contre-exemple aussi). Pour $x=6$ : $3+2=5$ et $\\frac{12}{5}=2,4$ (contre-exemple). $x=1$ est le plus simple pour vérifier mentalement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On affirme : \"Si on multiplie un nombre par un nombre compris entre $0$ et $1$, le résultat est toujours plus petit que le nombre de départ.\" Quel contre-exemple parmi les suivants montre que cette affirmation est fausse ?",
+      "options": [
+        "Nombre de départ $10$, multiplicateur $0,5$.",
+        "Nombre de départ $-8$, multiplicateur $0,5$.",
+        "Nombre de départ $0$, multiplicateur $0,2$.",
+        "Nombre de départ $5$, multiplicateur $1$."
+      ],
+      "correctAnswer": "Nombre de départ $-8$, multiplicateur $0,5$.",
+      "explanation": "L'affirmation est vraie pour les nombres positifs. Mais pour un nombre négatif, multiplier par un nombre entre $0$ et $1$ (ex: $0,5$) donne un nombre *plus grand* (moins négatif). $-8 \\times 0,5 = -4$. Or $-4 > -8$. C'est donc un contre-exemple. Les autres options : $10 \\times 0,5 = 5 < 10$ (vrai). $0 \\times 0,2 = 0$ (égal, pas plus petit). Le multiplicateur $1$ n'est pas *compris entre* $0$ et $1$ (bornes exclusives généralement, ou en tout cas $1$ ne change pas la valeur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

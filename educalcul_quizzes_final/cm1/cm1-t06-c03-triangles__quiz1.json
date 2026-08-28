@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 250,
+  "_course_code": "cm1-t06-c03-triangles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Propriétés simples",
+  "title": "Quiz : Les triangles - Propriétés simples",
+  "questions": [
+    {
+      "text": "Combien de côtés et de sommets a un triangle ?",
+      "options": [
+        "Il a trois côtés et trois sommets",
+        "Il a quatre côtés et quatre sommets",
+        "Il a trois côtés et quatre sommets",
+        "Il a deux côtés et trois sommets"
+      ],
+      "correctAnswer": "Il a trois côtés et trois sommets",
+      "explanation": "Un triangle est un polygone qui possède exactement trois côtés et trois sommets. C'est sa définition fondamentale. Les autres propositions confondent avec le quadrilatère (quatre côtés) ou sont impossibles géométriquement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le triangle ci-dessous. Quelle est sa particularité ?",
+      "options": [
+        "C'est un triangle rectangle",
+        "C'est un triangle équilatéral",
+        "C'est un triangle isocèle",
+        "C'est un triangle quelconque"
+      ],
+      "correctAnswer": "C'est un triangle rectangle",
+      "explanation": "Le triangle possède un angle droit (marqué par un petit carré dans l'angle au sommet B). Un triangle qui a un angle droit est un triangle rectangle. Il n'est pas isocèle car ses deux côtés adjacents à l'angle droit n'ont pas la même longueur, et il n'est pas équilatéral car ses trois côtés sont de longueurs différentes.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "4 cm",
+          "6,4 cm"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans un triangle isocèle, que peut-on affirmer sur ses côtés ?",
+      "options": [
+        "Il a deux côtés de même longueur",
+        "Il a trois côtés de même longueur",
+        "Il n'a aucun côté de même longueur",
+        "Il a deux angles droits"
+      ],
+      "correctAnswer": "Il a deux côtés de même longueur",
+      "explanation": "La propriété définitoire d'un triangle isocèle est d'avoir au moins deux côtés de même longueur (les côtés égaux). Le troisième côté est la base. L'option 'trois côtés de même longueur' correspond au triangle équilatéral. Un triangle ne peut pas avoir deux angles droits car la somme des angles serait déjà supérieure à 180 degrés.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle isocèle ABC en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "5 cm",
+          "6 cm"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Le triangle DEF est tel que DE = DF. Quel est le sommet principal de ce triangle isocèle ?",
+      "options": [
+        "Le sommet D",
+        "Le sommet E",
+        "Le sommet F",
+        "Il n'y a pas de sommet principal"
+      ],
+      "correctAnswer": "Le sommet D",
+      "explanation": "Dans un triangle isocèle, le sommet principal est celui qui est commun aux deux côtés de même longueur. Ici, les côtés égaux sont DE et DF. Ils se rejoignent au point D. Le sommet D est donc le sommet principal, et la base est le côté EF.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a un angle droit et deux côtés de même longueur. Comment nomme-t-on ce triangle ?",
+      "options": [
+        "Triangle rectangle isocèle",
+        "Triangle rectangle équilatéral",
+        "Triangle isocèle quelconque",
+        "Triangle rectangle scalène"
+      ],
+      "correctAnswer": "Triangle rectangle isocèle",
+      "explanation": "Ce triangle combine deux propriétés : il a un angle droit (donc c'est un triangle rectangle) et il a deux côtés de même longueur (donc c'est un triangle isocèle). On le nomme donc triangle rectangle isocèle. Un triangle ne peut pas être rectangle et équilatéral (car un triangle équilatéral a trois angles de 60 degrés). Un triangle scalène n'a aucun côté égal.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle isocèle",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "4 cm",
+          "4 cm",
+          "5,7 cm"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

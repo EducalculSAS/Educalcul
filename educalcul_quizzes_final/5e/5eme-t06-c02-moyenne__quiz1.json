@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calculer",
+  "title": "Quiz : Calcul de la moyenne",
+  "questions": [
+    {
+      "text": "Quelle est la moyenne des nombres $12$, $8$, $16$ et $4$ ?",
+      "options": [
+        "$10$",
+        "$8$",
+        "$12$",
+        "$40$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La somme des quatre nombres est $12 + 8 + 16 + 4 = 40$. On divise cette somme par le nombre de valeurs, soit $4$ : $40 \\div 4 = 10$. Les autres options correspondent à des erreurs fréquentes : oublier de diviser ($40$), prendre une valeur au hasard ($8$ ou $12$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule la moyenne des valeurs $3,5$ ; $4,5$ et $5,0$.",
+      "options": [
+        "$4,33$",
+        "$4,5$",
+        "$13$",
+        "$3,5$"
+      ],
+      "correctAnswer": "$4,33$",
+      "explanation": "La somme est $3,5 + 4,5 + 5,0 = 13,0$. Il y a $3$ valeurs, donc la moyenne est $13,0 \\div 3 = 4,33$ (arrondi au centième). L'option $4,5$ est la médiane, $13$ est la somme sans division, $3,5$ est la plus petite valeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une série statistique donne les effectifs suivants : la valeur $2$ apparaît $3$ fois, la valeur $5$ apparaît $2$ fois, la valeur $8$ apparaît $1$ fois. Quelle est la moyenne ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$3$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Calcul de la somme pondérée : $(2 \\times 3) + (5 \\times 2) + (8 \\times 1) = 6 + 10 + 8 = 24$. Nombre total d'observations : $3 + 2 + 1 = 6$. Moyenne = $24 \\div 6 = 4$. Les distracteurs $5$, $3$, $6$ correspondent à des erreurs de comptage ou de division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La moyenne de cinq nombres est $12$. Quatre de ces nombres sont $10$, $14$, $8$ et $16$. Quel est le cinquième nombre ?",
+      "options": [
+        "$12$",
+        "$10$",
+        "$8$",
+        "$14$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La somme totale doit être $12 \\times 5 = 60$. La somme des quatre nombres connus est $10 + 14 + 8 + 16 = 48$. Le nombre manquant est $60 - 48 = 12$. Les autres options sont des valeurs déjà présentes ou proches.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine la moyenne des nombres $-3$, $7$, $-1$ et $5$.",
+      "options": [
+        "$2$",
+        "$1$",
+        "$3$",
+        "$0$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Somme = $-3 + 7 + (-1) + 5 = 8$. Il y a $4$ nombres, donc moyenne = $8 \\div 4 = 2$. L'option $1$ résulterait d'une division par $8$, $3$ d'une erreur de signe, $0$ d'une annulation incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

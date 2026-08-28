@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Encadrements et approximations",
+  "title": "Encadrements et approximations - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Étape par étape : encadrer $\\sqrt{2}$ à $10^{-2}$ près",
+      "content": "Range les étapes suivantes dans l'ordre logique pour déterminer un encadrement de $\\sqrt{2}$ avec une précision de $10^{-2}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier la partie entière de $\\sqrt{2}$ en testant les carrés des entiers consécutifs.",
+        "Tester les dixièmes pour trouver les deux nombres consécutifs dont les carrés encadrent $2$.",
+        "Affiner en testant les centièmes entre les deux dixièmes trouvés.",
+        "Écrire l'encadrement final sous la forme $a \\le \\sqrt{2} < b$ avec $b-a = 10^{-2}$."
+      ],
+      "explanation": "On commence par trouver l'entier $n$ tel que $n^2 \\le 2 < (n+1)^2$, ici $1^2=1 \\le 2 < 4=2^2$, donc la partie entière est $1$. Ensuite on teste $1,1 ; 1,2 ; \\dots ; 1,5$ pour voir que $1,4^2=1,96 \\le 2 < 2,25=1,5^2$. On affine alors entre $1,41$ et $1,42$ car $1,41^2=1,9881 \\le 2 < 2,0164=1,42^2$. L'encadrement à $10^{-2}$ près est $1,41 \\le \\sqrt{2} < 1,42$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape par étape : encadrer une somme de deux nombres approchés",
+      "content": "Range les étapes suivantes dans l'ordre logique pour obtenir un encadrement de la somme $x+y$ sachant que $x$ et $y$ sont donnés avec leurs encadrements respectifs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les encadrements de $x$ et $y$ sous la forme $a \\le x < b$ et $c \\le y < d$.",
+        "Additionner les bornes inférieures : $a+c$ et les bornes supérieures : $b+d$.",
+        "Conclure que $a+c \\le x+y < b+d$ est un encadrement de la somme.",
+        "Si nécessaire, arrondir les bornes pour donner une approximation de $x+y$ à la précision demandée."
+      ],
+      "explanation": "Si $x$ est encadré par $a \\le x < b$ et $y$ par $c \\le y < d$, alors en ajoutant les inégalités on obtient $a+c \\le x+y < b+d$. Cet intervalle est un encadrement valide pour la somme. On peut ensuite le raccourcir ou l'arrondir selon la précision voulue.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape par étape : encadrer un produit de deux nombres approchés",
+      "content": "Range les étapes suivantes dans l'ordre logique pour déterminer un encadrement du produit $x \\times y$ à partir des encadrements de $x$ et $y$ (tous deux positifs).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les encadrements de $x$ et $y$ sous la forme $a \\le x < b$ et $c \\le y < d$ avec $a,b,c,d > 0$.",
+        "Calculer les quatre produits possibles : $ac,\\; ad,\\; bc,\\; bd$.",
+        "Identifier le minimum et le maximum parmi ces quatre produits.",
+        "Écrire l'encadrement du produit : $\\min(ac,ad,bc,bd) \\le xy < \\max(ac,ad,bc,bd)$."
+      ],
+      "explanation": "Pour des nombres positifs, le produit est croissant par rapport à chaque facteur. Les valeurs extrêmes du produit sont obtenues en combinant les bornes inférieures entre elles et les bornes supérieures entre elles, mais il faut vérifier les quatre combinaisons $ac, ad, bc, bd$ pour être sûr du minimum et du maximum. L'intervalle ainsi obtenu encadre $xy$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

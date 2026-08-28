@@ -1,0 +1,227 @@
+{
+  "_status": "done",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Repérer ligne et colonne",
+  "title": "Repérer ligne et colonne dans un tableau à double entrée",
+  "questions": [
+    {
+      "text": "Observe le tableau ci-dessous. Sur quelle ligne se trouve le chat ?",
+      "options": [
+        "La première ligne",
+        "La deuxième ligne",
+        "La troisième ligne",
+        "La quatrième ligne"
+      ],
+      "correctAnswer": "La deuxième ligne",
+      "explanation": "Les lignes se lisent horizontalement. La première ligne correspond au chien, la deuxième ligne au chat (il y a une croix dans la colonne 'Lait'), la troisième ligne au lapin. Il n'y a pas de quatrième ligne dans ce tableau.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Os",
+          "Lait",
+          "Carotte"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "X",
+            "",
+            ""
+          ],
+          [
+            "Chat",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Lapin",
+            "",
+            "",
+            "X"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Regarde le même tableau. Dans quelle colonne se trouve la croix pour le lapin ?",
+      "options": [
+        "La première colonne",
+        "La deuxième colonne",
+        "La troisième colonne",
+        "La quatrième colonne"
+      ],
+      "correctAnswer": "La troisième colonne",
+      "explanation": "Les colonnes se lisent verticalement. La première colonne d'en-tête est 'Os', la deuxième 'Lait', la troisième 'Carotte'. Le lapin est sur la troisième ligne et sa croix se trouve bien sous 'Carotte', donc dans la troisième colonne.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Os",
+          "Lait",
+          "Carotte"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "X",
+            "",
+            ""
+          ],
+          [
+            "Chat",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Lapin",
+            "",
+            "",
+            "X"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Si je repère l'intersection de la ligne 'Lapin' et de la colonne 'Carotte', quelle case est-ce ?",
+      "options": [
+        "La case en haut à gauche",
+        "La case au centre du tableau",
+        "La case en bas à droite",
+        "La case en haut à droite"
+      ],
+      "correctAnswer": "La case en bas à droite",
+      "explanation": "La ligne 'Lapin' est la dernière ligne (la $3^{\\text{ème}}$). La colonne 'Carotte' est la dernière colonne (la $3^{\\text{ème}}$). Leur intersection est donc la case située tout en bas à droite du tableau, qui contient d'ailleurs une croix.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Os",
+          "Lait",
+          "Carotte"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "X",
+            "",
+            ""
+          ],
+          [
+            "Chat",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Lapin",
+            "",
+            "",
+            "X"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Une case cochée se trouve sur la ligne du chat. Elle se trouve aussi sur la colonne du lait. Comment désigner cette case ?",
+      "options": [
+        "La case (Chien, Os)",
+        "La case (Chat, Lait)",
+        "La case (Lapin, Carotte)",
+        "La case (Chien, Lait)"
+      ],
+      "correctAnswer": "La case (Chat, Lait)",
+      "explanation": "Pour nommer une case dans un tableau à double entrée, on donne d'abord le nom de la ligne puis le nom de la colonne. La ligne est 'Chat', la colonne est 'Lait'. C'est donc la case (Chat, Lait). Les autres options mélangent les lignes et les colonnes.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Os",
+          "Lait",
+          "Carotte"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "X",
+            "",
+            ""
+          ],
+          [
+            "Chat",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Lapin",
+            "",
+            "",
+            "X"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Voici un nouveau tableau plus grand. La case cochée se trouve à l'intersection de la ligne 'Bleu' et de la colonne 'Triangle'. Quelles sont ses coordonnées (numéro de ligne, numéro de colonne) ?",
+      "options": [
+        "($2$, $3$)",
+        "($3$, $2$)",
+        "($3$, $3$)",
+        "($4$, $3$)"
+      ],
+      "correctAnswer": "($3$, $3$)",
+      "explanation": "On compte les lignes de haut en bas : 'Vert' est la $1^{\\text{ère}}$, 'Rouge' la $2^{\\text{ème}}$, 'Bleu' la $3^{\\text{ème}}$. On compte les colonnes de gauche à droite : 'Rond' est la $1^{\\text{ère}}$, 'Carré' la $2^{\\text{ème}}$, 'Triangle' la $3^{\\text{ème}}$. L'intersection est donc à la $3^{\\text{ème}}$ ligne et $3^{\\text{ème}}$ colonne, noté ($3$, $3$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rond",
+          "Carré",
+          "Triangle",
+          "Étoile"
+        ],
+        "rows": [
+          [
+            "Vert",
+            "",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Rouge",
+            "",
+            "X",
+            "",
+            ""
+          ],
+          [
+            "Bleu",
+            "",
+            "",
+            "X",
+            ""
+          ],
+          [
+            "Jaune",
+            "X",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    }
+  ]
+}

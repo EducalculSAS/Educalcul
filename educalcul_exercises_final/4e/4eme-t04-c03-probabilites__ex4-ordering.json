@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Probabilités",
+  "title": "Mise en ordre : Calculs de probabilités",
+  "blocks": [
+    {
+      "title": "Probabilité simple",
+      "content": "Range les étapes dans l'ordre logique pour calculer la probabilité de tirer une boule rouge dans un sac contenant 3 boules rouges et 5 boules bleues.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le nombre total de boules dans le sac (3 + 5 = 8).",
+        "Compter le nombre de boules rouges (issues favorables : 3).",
+        "Écrire la probabilité sous la forme d'une fraction : nombre de boules rouges sur nombre total de boules (3/8).",
+        "Vérifier si la fraction peut être simplifiée (ici 3/8 est irréductible)."
+      ],
+      "explanation": "On commence par déterminer le nombre total d'issues possibles (8 boules). Ensuite, on compte les issues favorables (3 boules rouges). La probabilité est le quotient des favorables sur le total : 3/8. Cette fraction est déjà simplifiée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Événement contraire",
+      "content": "Range les étapes pour calculer la probabilité de l'événement contraire « ne pas obtenir 6 » en lançant un dé à six faces numérotées de 1 à 6.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la probabilité d'obtenir un 6 : une issue favorable sur six issues possibles, soit 1/6.",
+        "Rappeler la formule de la probabilité de l'événement contraire : p(non A) = 1 - p(A).",
+        "Effectuer la soustraction : 1 - 1/6 = 5/6.",
+        "Conclure : la probabilité de ne pas faire 6 est 5/6."
+      ],
+      "explanation": "La probabilité de faire 6 est 1/6. L'événement contraire est « ne pas faire 6 ». Sa probabilité est 1 moins la probabilité de faire 6 : 1 - 1/6 = 5/6.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expérience à deux étapes",
+      "content": "On lance une pièce équilibrée et on lance un dé équilibré à six faces. Range les étapes pour calculer la probabilité d'obtenir « Face » et « un nombre pair ».",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lister les issues de la pièce (2 : Face, Pile) et du dé (6 : 1 à 6).",
+        "Identifier les issues favorables : Face (1 issue) et nombre pair sur le dé (2, 4, 6 soit 3 issues).",
+        "Calculer les probabilités : p(Face) = 1/2 et p(Pair) = 3/6 = 1/2.",
+        "Multiplier les probabilités car les événements sont indépendants : 1/2 × 1/2 = 1/4."
+      ],
+      "explanation": "Les deux expériences sont indépendantes. La probabilité d'obtenir Face est 1/2. La probabilité d'obtenir un nombre pair (2, 4, 6) au dé est 3/6 = 1/2. La probabilité conjointe est le produit : 1/2 × 1/2 = 1/4.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

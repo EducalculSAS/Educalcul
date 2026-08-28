@@ -1,0 +1,229 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.919639+00:00",
+  "id": 462,
+  "code": "3eme-t02-c02",
+  "title": "Factoriser",
+  "description": "Cours structuré Educalcul : Factoriser.",
+  "subject": "Calcul littéral, équations et inéquations",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Calcul littéral, équations et inéquations",
+    "titre_du_cours": "Factoriser",
+    "objectif_global": "Factoriser",
+    "mini_lecons_imposees": [
+      "Facteur commun.",
+      "Identité simple si prévue.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral, équations et inéquations",
+      "lessons": [
+        {
+          "title": "Facteur commun.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu rentres chez toi avec plein de sacs de courses. Dans un sac, tu as $3$ pommes et $3$ bananes. Dans un autre, tu as $3$ oranges et $3$ poires. Au lieu de dire \"j'ai $3$ pommes, $3$ bananes, $3$ oranges et $3$ poires\", tu peux simplifier en disant : \"j'ai $3$ fois (une pomme, une banane, une orange et une poire)\". Tu viens de faire une opération mentale très puissante : tu as repéré ce qui était identique dans chaque groupe pour regrouper le tout. En mathématiques, c'est exactement ce que nous faisons quand nous factorisons. On ne cherche plus à additionner des choses différentes, on cherche ce qui est commun pour rendre l'expression plus compacte et plus facile à manipuler. C'est un peu comme si on rangeait des objets éparpillés dans une seule et même boîte. Cette compétence est essentielle en $3\\text{e}$ car elle est la clé pour résoudre des équations complexes et étudier des fonctions, car elle permet de transformer une somme en un produit, ce qui change tout pour les calculs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Factoriser, c'est transformer une somme ou une différence en un produit. C'est l'opération exactement inverse du développement. Quand on développe, on distribue un facteur sur une parenthèse pour obtenir une suite d'additions. Quand on factorise, on fait le chemin inverse : on cherche un élément, appelé le facteur commun, qui est présent dans chaque terme de l'expression. Un terme est une partie de l'expression séparée par un signe $+$ ou un signe $-$. Le facteur commun peut être un simple nombre, comme $5$, une lettre comme $x$, ou même une expression entière entre parenthèses, comme $(x+3)$. La règle fondamentale est la suivante : si on a une expression de la forme $ka + kb$, où $k$ est le facteur commun, on peut l'écrire sous la forme $k(a + b)$. Ici, $k$ est mis en avant, et on a regroupé les restes $a$ et $b$ à l'intérieur d'une parenthèse. Il est crucial de comprendre que factoriser ne change pas la valeur de l'expression, on change seulement sa forme pour la rendre plus utile."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "4x",
+                "+12"
+              ],
+              "rightTerms": [
+                "4(x+3)"
+              ],
+              "caption": "La forme développée et la forme factorisée représentent la même valeur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour factoriser avec succès, je te conseille de suivre rigoureusement ces étapes. D'abord, observe attentivement chaque terme de ton expression pour identifier le facteur commun. Demande-toi : \"Qu'est-ce qui se répète ?\". Parfois, le facteur est évident, comme un $x$ présent partout. Parfois, il faut décomposer les nombres : par exemple, si tu vois $6$ et $9$, le facteur commun est $3$ car $6 = 3 \\times 2$ et $9 = 3 \\times 3$. Une fois le facteur commun identifié, appelle-le $k$. Ensuite, ouvre une parenthèse juste après $k$. Pour remplir cette parenthèse, regarde ce qu'il reste de chaque terme une fois que tu as \"enlevé\" le facteur $k$. Si un terme était exactement égal au facteur commun, il ne reste pas rien, mais il reste le nombre $1$ (car $k = k \\times 1$). C'est l'étape où beaucoup d'élèves se trompent. Enfin, ferme la parenthèse et vérifie que si tu redeveloppais l'expression, tu retomberais bien sur l'énoncé de départ. C'est la meilleure façon d'être sûr de ton résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression suivante : $A = 4x + 12$. Nous voulons factoriser cette expression. Première étape : on cherche le facteur commun. On voit $4x$ et $12$. Le premier terme est $4 \\times x$. Le deuxième terme, $12$, peut s'écrire $4 \\times 3$. On remarque donc que le nombre $4$ est présent dans les deux termes. Notre facteur commun est donc $k = 4$. Deuxième étape : on écrit le facteur commun et on ouvre la parenthèse : $4(...)$. Troisième étape : on cherche ce qu'il reste. Dans $4x$, si on enlève le $4$, il reste $x$. Dans $12$ (qui est $4 \\times 3$), si on enlève le $4$, il reste $3$. On place donc ces éléments dans la parenthèse, séparés par le signe $+$ qui était déjà là. On obtient : $A = 4(x + 3)$. C'est terminé ! Si on vérifie en redistribuant le $4$, on fait $4 \\times x = 4x$ et $4 \\times 3 = 12$, on retrouve bien $4x + 12$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Montons d'un niveau avec une expression plus impressionnante : $B = (x + 2)(x + 5) + (x + 2)(3x - 1)$. Ici, les termes sont des blocs. On voit tout de suite que le bloc $(x + 2)$ est présent des deux côtés du signe $+$. C'est notre facteur commun, même s'il est composé de plusieurs éléments. On va donc le placer devant la parenthèse : $(x + 2)(...)$. Maintenant, on regarde ce qu'il reste. Pour le premier groupe, on a $(x + 2)$ multiplié par $(x + 5)$. Si on retire le facteur commun, il reste $(x + 5)$. Pour le deuxième groupe, on a $(x + 2)$ multiplié par $(3x - 1)$. S'il on retire le facteur commun, il reste $(3x - 1)$. On met tout cela dans la grande parenthèse : $B = (x + 2)[(x + 5) + (3x - 1)]$. On ne s'arrête pas là ! L'intérieur de la parenthèse est une somme que l'on peut simplifier en regroupant les $x$ ensemble et les nombres ensemble : $x + 3x = 4x$ et $5 - 1 = 4$. L'expression finale est donc $B = (x + 2)(4x + 4)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique, et presque systématique au début, est l'oubli du chiffre $1$. Imagine l'expression $C = 7x + 7$. Le facteur commun est $7$. Beaucoup d'élèves écrivent $7(x)$. Mais attention, $7 \\times x$ donne $7x$, pas $7x + 7$ ! Il ne faut pas oublier que le deuxième $7$ est en réalité $7 \\times 1$. On doit donc écrire $7(x + 1)$. Un autre piège concerne les signes. Si tu as $5x - 10$, le facteur est $5$, mais le signe dans la parenthèse doit rester le moins : $5(x - 2)$. Enfin, méfie-toi des expressions où le facteur commun est caché. Par exemple, dans $3x + 6x^2$, le facteur commun n'est pas seulement $3$ ou $x$, mais $3x$ ! Car $6x^2$ est $3x \\times 2x$. Toujours chercher le facteur commun le plus grand possible pour simplifier l'expression au maximum. Prends l'habitude de toujours refaire un petit développement rapide mentalement pour vérifier que tu n'as rien perdu en route."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise l'expression suivante : $E = 5x + 15$.",
+              "answer": "5(x + 3)",
+              "hint": "Cherche un nombre qui peut diviser à la fois 5 et 15.",
+              "explanation": "Le facteur commun est 5 car 5 = 5 \\times 1 et 15 = 5 \\times 3. On factorise donc : 5(x + 3)."
+            },
+            {
+              "question": "Factorise l'expression suivante : $F = (x - 4)(2x + 1) + (x - 4)(x + 7)$.",
+              "answer": "(x - 4)(3x + 8)",
+              "hint": "Identifie le bloc commun, puis simplifie l'intérieur de la parenthèse.",
+              "explanation": "Le facteur commun est (x - 4). On a donc (x - 4)[(2x + 1) + (x + 7)]. En simplifiant l'intérieur : 2x + x = 3x et 1 + 7 = 8. On obtient (x - 4)(3x + 8)."
+            }
+          ]
+        },
+        {
+          "title": "Identité simple si prévue.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Parfois, en mathématiques, on tombe sur des expressions qui semblent impossibles à factoriser. Tu regardes l'expression, tu cherches un facteur commun, mais il n'y a rien ! Pas de nombre commun, pas de lettre commune, rien. C'est là qu'interviennent les identités remarquables. Imagine que ce sont des formules magiques ou des raccourcis. Au lieu de chercher un facteur commun, on reconnaît une structure, une forme visuelle précise, et on sait immédiatement comment la transformer. C'est comme reconnaître un visage connu dans la foule : dès que tu vois la forme, tu sais à qui tu as affaire. La plus utile de toutes en $3\\text{e}$ est celle de la différence de deux carrés. C'est un outil incroyablement puissant qui permet de débloquer des situations qui semblaient sans issue. On ne cherche plus ce qui se répète, on cherche si l'expression ressemble à un modèle précis que l'on a appris par cœur. C'est un changement de stratégie total, et c'est ce qui rend le calcul littéral vraiment fluide quand on maîtrise ces modèles."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'identité remarquable que nous utilisons pour factoriser est : $a^2 - b^2 = (a - b)(a + b)$. On l'appelle l'identité de la différence de deux carrés. Pour l'utiliser, ton expression doit remplir deux conditions strictes : elle doit être une différence (avec un signe moins) et elle doit être composée de deux termes qui sont des carrés parfaits. Un carré parfait est un nombre ou une expression que l'on peut écrire sous la forme $(quelque chose)^2$. Par exemple, $9$ est le carré de $3$, $16$ est le carré de $4$, et $x^2$ est le carré de $x$. Si tu vois $x^2 - 25$, tu dois immédiatement te dire : \"C'est un carré ($x^2$) moins un autre carré ($5^2$)\". C'est le signal qu'il faut appliquer la formule. Une fois que tu as identifié qui joue le rôle de $a$ et qui joue le rôle de $b$, la factorisation est instantanée : on crée deux parenthèses, l'une avec un moins et l'autre avec un plus. C'est une méthode chirurgicale : on ne calcule pas, on remplace les lettres de la formule par nos propres éléments."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "L'identité a^2-b^2 représente graphiquement la différence d'aire entre deux carrés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la marche à suivre pour ne jamais te tromper avec $a^2 - b^2$. Première étape : Vérification. Est-ce qu'il y a un signe moins ? Est-ce que les deux termes sont des carrés ? Si c'est un signe plus, arrête tout, cette méthode ne fonctionne pas ! Deuxième étape : Identification. Écris explicitement sur ton brouillon qui est $a$ et qui est $b$. Par exemple, pour $16x^2 - 49$, on se demande : \"Quel nombre au carré donne $16x^2$\"? C'est $4x$. Donc $a = 4x$. \"Quel nombre au carré donne $49$\"? C'est $7$. Donc $b = 7$. Troisième étape : Application. Utilise la structure $(a - b)(a + b)$ et remplace $a$ et $b$ par les valeurs trouvées. Dans notre exemple, cela donne $(4x - 7)(4x + 7)$. Quatrième étape : Simplification si nécessaire. Parfois, on peut encore factoriser à l'intérieur d'une parenthèse, mais c'est rare avec cette méthode. L'astuce est vraiment de bien identifier $a$ et $b$ avant de commencer à écrire les parenthèses pour éviter les inversions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons l'expression $A = x^2 - 36$. On commence par vérifier la forme. On a bien un signe moins. $x^2$ est le carré de $x$, et $36$ est le carré de $6$ (car $6 \\times 6 = 36$). On a donc bien la forme $a^2 - b^2$ avec $a = x$ et $b = 6$. On applique maintenant la formule magique $(a - b)(a + b)$. En remplaçant $a$ par $x$ et $b$ par $6$, on obtient : $A = (x - 6)(x + 6)$. C'est tout ! C'est beaucoup plus rapide que de chercher un facteur commun, car ici, il n'y en avait aucun. Si on voulait vérifier, on pourrait développer : $x \\times x = x^2$, $x \\times 6 = 6x$, $-6 \\times x = -6x$, $-6 \\times 6 = -36$. Les $6x$ et $-6x$ s'annulent, et il nous reste $x^2 - 36$. La magie opère."
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à un cas un peu plus musclé : $B = 25x^2 - 64$. Ici, on a un coefficient devant le $x^2$, ce qui peut faire peur, mais la méthode reste la même. On cherche $a$ et $b$. Pour $a$, on se demande : \"qu'est-ce qui au carré donne $25x^2$\"? Le carré de $5$ est $25$ et le carré de $x$ est $x^2$, donc $a = 5x$. Pour $b$, on cherche la racine carrée de $64$, qui est $8$, donc $b = 8$. On a bien la structure $a^2 - b^2$ avec $a = 5x$ et $b = 8$. On applique la formule : $B = (5x - 8)(5x + 8)$. Note que si tu avais écrit $(8 - 5x)(8 + 5x)$, ce serait faux car l'ordre dans la formule est important pour garder la cohérence des signes, même si mathématiquement le produit final serait le même, il est préférable de suivre le modèle $a^2 - b^2$ strictement."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus grave est de vouloir factoriser une somme de carrés. Si tu vois $x^2 + 9$, ton cerveau pourrait être tenté d'écrire $(x + 3)(x - 3)$. STOP ! C'est impossible. La formule $a^2 - b^2$ ne fonctionne QUE pour une différence. S'il y a un plus, on ne peut pas utiliser cette identité remarquable. Un autre piège est de confondre le carré et la multiplication par $2$. Par exemple, pour $x^2 - 10$, certains écrivent $(x - 5)(x + 5)$. Mais $5 \\times 5$ fait $25$, pas $10$ ! Pour utiliser cette méthode, il faut que le nombre soit un carré parfait. Si ce n'est pas le cas (comme pour $10$), on peut techniquement utiliser la racine carrée $\\sqrt{10}$, mais en $3\\text{e}$, on te dira généralement que ce n'est pas factorisable ainsi. Enfin, attention aux expressions comme $x^2 - 1$ : n'oublie pas que $1$ est le carré de $1$. On factorise donc en $(x - 1)(x + 1)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise l'expression suivante : $G = x^2 - 81$.",
+              "answer": "(x - 9)(x + 9)",
+              "hint": "Cherche quel nombre multiplié par lui-même donne 81.",
+              "explanation": "On a a=x et b=9 car 9^2 = 81. On applique la formule (a-b)(a+b), ce qui donne (x-9)(x+9)."
+            },
+            {
+              "question": "Factorise l'expression suivante : $H = 49x^2 - 1$.",
+              "answer": "(7x - 1)(7x + 1)",
+              "hint": "N'oublie pas que 1 est le carré de 1.",
+              "explanation": "On a a=7x car (7x)^2 = 49x^2, et b=1 car 1^2 = 1. On obtient donc (7x-1)(7x+1)."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as terminé ton exercice, tu as factorisé avec fierté, et tu rends ta copie. Mais attends ! En mathématiques, on a un pouvoir incroyable que l'on n'a pas en français ou en histoire : on peut savoir avec une certitude absolue si notre réponse est juste avant même que le professeur ne corrige. C'est comme avoir un correcteur automatique intégré dans son cerveau. Vérifier sa factorisation, c'est comme se regarder dans un miroir avant de sortir : on s'assure que tout est bien en place. Beaucoup d'élèves voient la vérification comme une perte de temps, alors que c'est l'investissement le plus rentable de l'exercice. Une erreur de signe bête peut transformer un résultat correct en erreur totale. En prenant $30$ secondes pour vérifier, tu transformes un doute en confiance. Nous allons voir ensemble comment transformer ton travail en une certitude mathématique en utilisant des techniques simples qui ne demandent pas beaucoup d'efforts, mais qui garantissent la note maximale."
+            },
+            {
+              "type": "paragraph",
+              "content": "La vérification d'une factorisation repose sur un principe simple : la forme développée et la forme factorisée sont deux visages d'une même réalité. Elles ont la même valeur pour n'importe quel nombre $x$ choisi. Pour vérifier, la méthode la plus rigoureuse est le redeveloppement. On prend son résultat factorisé et on applique la distributivité. Si on retombe exactement sur l'expression de départ, on a la preuve mathématique que la factorisation est exacte. Il existe aussi une méthode plus rapide, appelée la substitution numérique. On choisit un nombre très simple pour $x$, comme $0, 1$ ou $2$, et on calcule la valeur de l'expression de départ. Ensuite, on calcule la valeur de l'expression factorisée avec ce même nombre. Si les deux résultats sont identiques, il y a $99\\%$ de chances que la factorisation soit juste. C'est une méthode fantastique pour détecter rapidement une erreur de signe ou un oubli de terme. La rigueur ne consiste pas à ne jamais faire d'erreurs, mais à savoir les détecter et les corriger soi-même."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'expression x^2-9 et (x-3)(x+3) tombent sur le même point de la droite pour toute valeur de x.",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -8,
+                  "label": "x=1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier systématiquement ton travail, je te propose d'adopter ce protocole. Première étape : Le redeveloppement. Reprends ton expression factorisée, par exemple $3(x + 4)$. Distribue le $3$ sur chaque terme : $3 \\times x + 3 \\times 4 = 3x + 12$. Compare ce résultat avec l'énoncé original. S'ils sont identiques, c'est gagné. Deuxième étape : Le test numérique. Si le redeveloppement te semble trop long ou si tu as peur de refaire la même erreur, choisis un nombre simple, par exemple $x = 1$. Remplace $x$ par $1$ dans l'expression de départ et calcule le résultat. Ensuite, remplace $x$ par $1$ dans ton expression factorisée et calcule. Exemple : pour $x^2 - 9$ factorisé en $(x-3)(x+3)$, si $x=1$, on a $1^2 - 9 = -8$ et $(1-3)(1+3) = -2 \\times 4 = -8$. Les résultats concordent ! Troisième étape : L'analyse des erreurs. Si les résultats sont différents, ne panique pas. Regarde si tu as oublié un signe moins ou si tu as oublié le chiffre $1$ dans ta parenthèse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions la factorisation de $A = 6x^2 + 9x$. Un élève a trouvé $A = 3x(2x + 3)$. Pour vérifier, nous allons utiliser le redeveloppement. Nous prenons le résultat $3x(2x + 3)$. Nous distribuons $3x$ sur le premier terme : $3x \\times 2x = 6x^2$. Puis nous distribuons $3x$ sur le deuxième terme : $3x \\times 3 = 9x$. En assemblant les deux, nous obtenons $6x^2 + 9x$. C'est exactement l'expression de départ ! Nous avons donc la preuve absolue que la factorisation $3x(2x + 3)$ est correcte. Cette méthode est infaillible car elle utilise la définition même de la factorisation : l'inverse du développement. C'est l'outil de sécurité numéro un pour tout élève de $3\\text{e}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions maintenant la factorisation de $B = x^2 - 25$ en $(x - 5)(x + 5)$ en utilisant la méthode de substitution numérique avec $x = 2$. Étape 1 : Calcul de l'expression initiale. On remplace $x$ par $2$ dans $x^2 - 25$. On obtient $2^2 - 25 = 4 - 25 = -21$. Étape 2 : Calcul de l'expression factorisée. On remplace $x$ par $2$ dans $(x - 5)(x + 5)$. On obtient $(2 - 5)(2 + 5) = (-3) \\times (7) = -21$. Comparaison : On a trouvé $-21$ dans les deux cas. La factorisation est donc validée. Cette méthode est particulièrement utile lors d'un examen quand on manque de temps pour tout redevelopper, car elle permet de confirmer rapidement la justesse du résultat. Si on avait trouvé $-21$ d'un côté et $10$ de l'autre, on aurait su immédiatement qu'une erreur s'était glissée dans les parenthèses."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant lors de la vérification est de refaire la même erreur de calcul que lors de la factorisation. Si tu as fait une erreur de signe en factorisant, et que tu refais la même erreur en redeveloppant, tu vas croire que ton résultat est juste alors qu'il est faux. Pour éviter cela, essaie d'utiliser la méthode numérique (choisir un nombre pour $x$) qui utilise un processus de calcul différent du redeveloppement. Un autre piège est de choisir un nombre trop compliqué pour $x$ (comme $x=7,5$), ce qui rend le calcul long et source de nouvelles erreurs. Reste sur des chiffres simples : $0, 1$ ou $2$. Enfin, attention à ne pas confondre la vérification et la résolution. Vérifier, c'est s'assurer que l'égalité est vraie, ce n'est pas chercher la valeur de $x$. L'objectif est simplement de confirmer que la forme A est égale à la forme B."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par redeveloppement si la factorisation de $x^2 + 5x$ en $x(x + 5)$ est correcte.",
+              "answer": "Oui, c'est correct.",
+              "hint": "Distribue le x sur la parenthèse.",
+              "explanation": "x \\times x = x^2 et x \\times 5 = 5x. On retrouve bien x^2 + 5x."
+            },
+            {
+              "question": "Utilise la substitution numérique avec x=0 pour vérifier si $x^2 - 16$ et $(x-4)(x+4)$ sont identiques.",
+              "answer": "Oui, les deux valent -16.",
+              "hint": "Remplace x par 0 dans les deux expressions et calcule.",
+              "explanation": " Départ : 0^2 - 16 = -16. Factorisé : (0-4)(0+4) = -4 \\times 4 = -16. Les résultats sont identiques."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 487,
+  "_course_code": "3eme-t06-c03-sections-de-solides",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Identifier forme",
+  "title": "Sections de solides : identification algorithmique des formes",
+  "blocks": [
+    {
+      "title": "Section d'un cube par un plan parallèle à une face",
+      "content": "Un cube de côté $a$ est coupé par un plan parallèle à l'une de ses faces, à une distance $d$ de cette face ($0 < d < a$). Écrire un algorithme (en pseudo‑code) qui détermine la forme de la section et ses dimensions.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, d.\\n2. Si d <= 0 ou d >= a alors afficher \"Erreur : d doit être strictement entre 0 et a\".\\n3. Sinon, la section est un carré de côté a.\\n4. Afficher \"Section : carré de côté\", a.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme le plan est parallèle à une face du cube, l'intersection est un carré congru à la face, donc de côté $a$, indépendamment de $d$ tant que le plan coupe le cube.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Section d'un cylindre par un plan incliné",
+      "content": "Un cylindre droit de rayon $R$ et de hauteur $H$ est coupé par un plan formant un angle $\\theta$ avec la base ($0^\\circ < \\theta < 90^\\circ$). Écrire une formule donnant les demi‑grand axe $a$ et demi‑petit axe $b$ de l'ellipse obtenue, puis un algorithme qui calcule ces valeurs à partir de $R$ et $\\theta$.",
+      "correctAnswer": "Formules : $a = \\frac{R}{\\sin\\theta}$, $b = R$. Algorithme : lire R, theta (en radians) ; a = R / sin(theta) ; b = R ; afficher \"Ellipse : demi-grand axe =\", a, \"demi-petit axe =\", b.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le plan incliné coupe le cylindre selon une ellipse. Le demi-petit axe correspond au rayon du cylindre $R$. Le demi-grand axe vaut $R / \\sin\\theta$ car la longueur de l'intersection le long de la direction de la pente est allongée par le facteur $1/\\sin\\theta$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Section d'une pyramide à base carrée par un plan parallèle à la base",
+      "content": "Une pyramide régulière à base carrée de côté $b$ et de hauteur $h$ est coupée par un plan parallèle à la base, à une distance $k$ du sommet ($0 < k < h$). Écrire un algorithme qui détermine la forme de la section et calcule la longueur de son côté.",
+      "correctAnswer": "La section est un carré. Par homothétie de centre le sommet, le rapport de similitude est $k/h$. Donc le côté de la section vaut $b \\times \\frac{k}{h}$. Algorithme : lire b, h, k ; si k <= 0 ou k >= h alors erreur ; sinon cote = b * k / h ; afficher \"Carré de côté\", cote.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le plan parallèle à la base crée une section homothétique à la base avec un rapport $k/h$. La base est un carré de côté $b$, donc la section est un carré de côté $b \\cdot k/h$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

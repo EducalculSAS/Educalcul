@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Variations",
+  "title": "Application des variations - Quiz Seconde",
+  "questions": [
+    {
+      "text": "Soit la fonction $f$ définie sur $[-2;3]$ dont le tableau de variation est le suivant :\\n$x$ : $-2$ $\\nearrow$ $0$ $\\searrow$ $3$\\n$f(x)$ : $5$ $\\nearrow$ $8$ $\\searrow$ $2$\\nSur quel intervalle $f$ est-elle croissante ?",
+      "options": [
+        "$[-2;0]$",
+        "$[0;3]$",
+        "$[-2;3]$",
+        "Aucun de ces intervalles"
+      ],
+      "correctAnswer": "$[-2;0]$",
+      "explanation": "D'après le tableau de variation, $f$ augmente (flèche $\\nearrow$) de $x=-2$ jusqu'à $x=0$. Elle diminue ensuite de $0$ à $3$. L'intervalle de croissance est donc $[-2;0]$. Les autres intervalles correspondent soit à la décroitance, soit à l'ensemble du domaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $g$ est définie sur $[0;4]$ par $g(x) = -x^{2} + 4x - 1$. Quelle est la valeur maximale de $g$ sur cet intervalle ?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$4$",
+        "$1$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le trinôme $g(x) = -x^{2}+4x-1$ a un coefficient directeur négatif, son maximum est atteint au sommet du parabole. L'abscisse du sommet est $x_{v} = -b/(2a) = -4/(2\\times -1) = 2$. En $x=2$, $g(2) = -4 + 8 - 1 = 3$. Comme $2$ appartient à $[0;4]$, le maximum sur l'intervalle est $3$. Les autres valeurs ne correspondent pas au sommet ni aux bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une fonction $h$ continue sur $[-1;2]$ avec le tableau de variation :\\n$x$ : $-1$ $\\nearrow$ $0$ $\\searrow$ $2$\\n$h(x)$ : $2$ $\\nearrow$ $0$ $\\searrow$ $-3$\\nRésoudre l'inéquation $h(x) > 0$.",
+      "options": [
+        "$(-1;0)$",
+        "$(-1;2)$",
+        "$(0;2)$",
+        "Aucune solution"
+      ],
+      "correctAnswer": "$(-1;0)$",
+      "explanation": "D'après le tableau, $h$ est positive en $x=-1$ ($h=2$), décroît jusqu'à $0$ où elle vaut $0$, puis devient négative jusqu'à $2$ ($h=-3$). L'inéquation $h(x)>0$ est donc satisfaite pour $x$ strictement compris entre $-1$ et $0$, soit l'intervalle ouvert $(-1;0)$. Les autres intervalles incluent des valeurs où $h\\le 0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction $f$ est strictement décroissante sur $[1;5]$ avec $f(1)=10$ et $f(5)=2$. Que peut-on affirmer sur la valeur de $f(3)$ ?",
+      "options": [
+        "$f(3) > 6$",
+        "$f(3) = 6$",
+        "$f(3) < 6$",
+        "On ne peut pas déterminer la valeur exacte de $f(3)$"
+      ],
+      "correctAnswer": "On ne peut pas déterminer la valeur exacte de $f(3)$",
+      "explanation": "La décroissance stricte garantit seulement que $f(3)$ est compris entre $f(1)=10$ et $f(5)=2$, c'est-à-dire $2 < f(3) < 10$. Sans hypothèse supplémentaire (linéarité, convexité, etc.), on ne peut pas déduire une inégalité plus précise comme $f(3) > 6$ ou $f(3) < 6$. Donc la seule affirmation correcte est qu'on ne peut pas déterminer sa valeur exacte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La température (en °C) au cours d'une journée est modélisée par $T(t) = -2(t-14)^{2} + 30$ pour $t \\in [0;24]$ (heure). Pendant quel intervalle d'heures la température dépasse-t-elle $20^{\\circ}$C ?",
+      "options": [
+        "$[12;16]$",
+        "$[11;17]$",
+        "$[13;15]$",
+        "$[10;18]$"
+      ],
+      "correctAnswer": "$[12;16]$",
+      "explanation": "On résout $T(t) > 20$ : $-2(t-14)^{2}+30 > 20 \\iff (t-14)^{2} < 5 \\iff |t-14| < \\sqrt{5} \\approx 2,24$. Donc $t \\in (14-2,24 ; 14+2,24) \\approx (11,76 ; 16,24)$. Arrondi aux heures entières, l'intervalle où la température est strictement supérieure à $20^{\\circ}$C est $[12;16]$. Les autres intervalles sont soit trop larges, soit trop étroits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

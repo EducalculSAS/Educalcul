@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Configuration",
+  "title": "Thalès : Configurations",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, le point $M$ appartient au segment $[AB]$ et le point $N$ appartient au segment $[AC]$. La droite $(MN)$ est parallèle à $(BC)$. Quelle égalité de rapports est une application directe du théorème de Thalès ?",
+      "options": [
+        "$AM/AB = AN/AC = MN/BC$",
+        "$AM/AB = AC/AN = MN/BC$",
+        "$AM/MB = AN/NC = MN/BC$",
+        "$AB/AM = AN/AC = BC/MN$"
+      ],
+      "correctAnswer": "$AM/AB = AN/AC = MN/BC$",
+      "explanation": "Dans la configuration « chapeau » (triangle $ABC$ avec $MN // BC$), le théorème de Thalès affirme que les rapports des longueurs des côtés du petit triangle sur les côtés correspondants du grand triangle sont égaux. L'option A respecte cette correspondance : $AM$ correspond à $AB$, $AN$ à $AC$ et $MN$ à $BC$. L'option B inverse le rapport $AC/AN$. L'option C utilise les segments $MB$ et $NC$ qui ne sont pas les côtés correspondants complets. L'option D mélange rapports directs et inverses.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec M sur AB, N sur AC et MN parallèle à BC.",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Les droites $(AC)$ et $(BD)$ se coupent en $E$. Les droites $(AB)$ et $(CD)$ sont parallèles. Les points sont dans l'ordre $A$, $E$, $C$ et $B$, $E$, $D$. On a $EA = 3$, $EC = 6$, $EB = 4$, $ED = 8$. Quelle égalité est vraie d'après Thalès ?",
+      "options": [
+        "$EA/EC = EB/ED = AB/CD$",
+        "$EA/EC = ED/EB = AB/CD$",
+        "$EA/AC = EB/BD = AB/CD$",
+        "$EC/EA = EB/ED = CD/AB$"
+      ],
+      "correctAnswer": "$EA/EC = EB/ED = AB/CD$",
+      "explanation": "C'est la configuration « papillon » (ou sablier). Le théorème de Thalès s'applique aux triangles $EAB$ et $ECD$ (ou $EBA$ et $EDC$). Les côtés correspondants sont $EA$ avec $EC$, $EB$ avec $ED$, et $AB$ avec $CD$. Les rapports sont donc $EA/EC = EB/ED = AB/CD$. L'option B inverse le second rapport. L'option C utilise les segments totaux $AC$ et $BD$ au lieu des segments correspondants $EA, EC$. L'option D inverse le premier et le dernier rapport.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, $M$ appartient à la droite $(AB)$ et $N$ à la droite $(AC)$. On donne $AM = 5$, $MB = 10$, $AN = 3$, $NC = 7$. Les points sont dans l'ordre $A$, $M$, $B$ et $A$, $N$, $C$. Peut-on affirmer que $(MN)$ est parallèle à $(BC)$ ?",
+      "options": [
+        "Oui, car $AM/AB = AN/AC$",
+        "Non, car $AM/AB \\neq AN/AC$",
+        "Oui, car $AM/MB = AN/NC$",
+        "Non, car les points ne sont pas dans le bon ordre"
+      ],
+      "correctAnswer": "Non, car $AM/AB \\neq AN/AC$",
+      "explanation": "Pour utiliser la réciproque de Thalès, il faut vérifier l'égalité des rapports des côtés correspondants. Ici $AB = AM + MB = 15$ et $AC = AN + NC = 10$. On calcule $AM/AB = 5/15 = 1/3$ et $AN/AC = 3/10$. Comme $1/3 \\neq 3/10$, les droites ne sont pas parallèles. L'option C teste l'égalité $AM/MB = 1/2$ et $AN/NC = 3/7$, qui est fausse aussi, mais ce n'est pas l'égalité standard du théorème (qui utilise les côtés entiers). L'ordre des points est correct (alignement $A-M-B$ et $A-N-C$), donc l'option D est fausse.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec points M sur AB et N sur AC.",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Sur la figure, les droites $(MN)$, $(PQ)$ et $(BC)$ sont parallèles. Les points sont dans l'ordre $A$, $M$, $P$, $B$ sur une droite et $A$, $N$, $Q$, $C$ sur l'autre. Quelle égalité exprime le théorème de Thalès dans le triangle $APQ$ ?",
+      "options": [
+        "$AM/AP = AN/AQ$",
+        "$AM/MP = AN/NQ$",
+        "$MP/AB = NQ/AC$",
+        "$AM/PB = AN/QC$"
+      ],
+      "correctAnswer": "$AM/AP = AN/AQ$",
+      "explanation": "Dans le triangle $APQ$, la droite $(MN)$ est parallèle à $(PQ)$ et coupe les côtés $[AP]$ en $M$ et $[AQ]$ en $N$. D'après Thalès, les rapports des longueurs correspondantes sont égaux : $AM/AP = AN/AQ = MN/PQ$. L'option B ($AM/MP = AN/NQ$) est une conséquence algébrique mais non l'écriture standard du théorème (qui utilise le côté entier au dénominateur). Les options C et D mélangent des segments appartenant à des triangles différents ($AB, AC$ pour le grand triangle) ou non correspondants ($PB, QC$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, $M \\in [AB]$, $N \\in [AC]$ et $(MN) \\parallel (BC)$. On sait que $AB = 18$ cm, $AC = 15$ cm et $AM = 6$ cm. Quelle est la longueur de $AN$ ?",
+      "options": [
+        "5 cm",
+        "6 cm",
+        "4,5 cm",
+        "7,5 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "D'après Thalès dans le triangle $ABC$ : $AM/AB = AN/AC$. On remplace : $6/18 = AN/15$. On simplifie $6/18 = 1/3$. Donc $1/3 = AN/15$, ce qui donne $AN = 15 / 3 = 5$ cm. L'option 6 cm correspondrait à confondre $AM$ et $AN$. L'option 7,5 cm correspondrait à calculer $AC/2$. L'option 4,5 cm ne correspond à aucune erreur classique simple sur ce calcul.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle ABC pour illustration, M sur AB, N sur AC, MN // BC.",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

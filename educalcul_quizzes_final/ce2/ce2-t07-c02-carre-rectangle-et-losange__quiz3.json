@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 197,
+  "_course_code": "ce2-t07-c02-carre-rectangle-et-losange",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Construire sur quadrillage",
+  "title": "Construire sur quadrillage - Carré et rectangle",
+  "questions": [
+    {
+      "text": "Observe la figure sur le quadrillage ci-dessous. Quelle figure géométrique est représentée ?",
+      "options": [
+        "Un carré",
+        "Un rectangle non carré",
+        "Un losange",
+        "Un triangle rectangle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "La figure a quatre côtés de même longueur (2 cases) et ses quatre angles sont des angles droits. C'est la définition d'un carré. Un rectangle non carré aurait deux longueurs différentes. Un losange n'a pas d'angles droits obligatoirement. Un triangle a trois côtés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 4,
+        "caption": "Un carré de côté 2 cases tracé sur un quadrillage."
+      }
+    },
+    {
+      "text": "Un rectangle mesure $5$ cases de long et $3$ cases de large sur un quadrillage. Chaque case mesure $1$ cm de côté. Quel est le périmètre de ce rectangle ?",
+      "options": [
+        "$8$ cm",
+        "$15$ cm",
+        "$16$ cm",
+        "$30$ cm"
+      ],
+      "correctAnswer": "$16$ cm",
+      "explanation": "Le périmètre d'un rectangle se calcule en ajoutant les longueurs des quatre côtés : $2 \\times (longueur + largeur)$. Ici, $2 \\times (5 + 3) = 2 \\times 8 = 16$ cm. $8$ cm correspond à la demi-somme. $15$ cm correspond à l'aire ($5 \\times 3$). $30$ cm est incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace un carré de côté $4$ cases sur un quadrillage. Quelle est l'aire de ce carré ?",
+      "options": [
+        "$8$ cases",
+        "$12$ cases",
+        "$16$ cases",
+        "$20$ cases"
+      ],
+      "correctAnswer": "$16$ cases",
+      "explanation": "L'aire d'un carré côté $c$ est $c \\times c$. Ici, $4 \\times 4 = 16$ cases. On peut aussi compter les petites cases à l'intérieur de la figure. $8$ cases correspondrait au périmètre. $12$ et $20$ sont des résultats erronés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 16,
+        "caption": "Un carré de côté 4 cases dont l'aire est de 16 cases."
+      }
+    },
+    {
+      "text": "Pour construire un rectangle sur un quadrillage, comment doit-on tracer les côtés ?",
+      "options": [
+        "Tous les côtés ont la même longueur.",
+        "Les côtés se coupent en formant des angles droits.",
+        "Les quatre côtés sont obliques par rapport aux lignes du quadrillage.",
+        "Un seul côté est horizontal, les autres sont verticaux."
+      ],
+      "correctAnswer": "Les côtés se coupent en formant des angles droits.",
+      "explanation": "Un rectangle a quatre angles droits. Sur un quadrillage, on utilise les lignes horizontales et verticales pour garantir ces angles droits. Les côtés opposés sont parallèles et de même longueur, mais pas tous les quatre (sinon c'est un carré). Les côtés ne sont pas obliques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul veut tracer un rectangle de périmètre $18$ cases. Il a déjà tracé un côté horizontal de $5$ cases. Quelle doit être la longueur du côté vertical adjacent pour obtenir ce périmètre ?",
+      "options": [
+        "$4$ cases",
+        "$8$ cases",
+        "$13$ cases",
+        "$9$ cases"
+      ],
+      "correctAnswer": "$4$ cases",
+      "explanation": "Le périmètre est la somme des quatre côtés : $2 \\times (longueur + largeur) = 18$. Donc $longueur + largeur = 9$. Comme la longueur (côté horizontal) est de $5$ cases, la largeur (côté vertical) doit être de $9 - 5 = 4$ cases. $8$ cases donnerait un périmètre de $26$. $13$ et $9$ sont trop grands.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Justifier",
+  "title": "Quiz : Justifier qu'une fraction est irréductible",
+  "questions": [
+    {
+      "text": "Parmi les fractions suivantes, laquelle est déjà irréductible ?",
+      "options": [
+        "La fraction $\\frac{12}{18}$",
+        "La fraction $\\frac{15}{25}$",
+        "La fraction $\\frac{17}{24}$",
+        "La fraction $\\frac{21}{28}$"
+      ],
+      "correctAnswer": "La fraction $\\frac{17}{24}$",
+      "explanation": "Une fraction est irréductible lorsque son numérateur et son dénominateur sont premiers entre eux, c'est-à-dire que leur PGCD vaut 1. Pour $\\frac{12}{18}$, PGCD(12,18)=6. Pour $\\frac{15}{25}$, PGCD(15,25)=5. Pour $\\frac{21}{28}$, PGCD(21,28)=7. Pour $\\frac{17}{24}$, 17 est un nombre premier qui ne divise pas 24, donc PGCD(17,24)=1. C'est la seule fraction irréductible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment justifier correctement que la fraction $\\frac{36}{48}$ n'est pas irréductible ?",
+      "options": [
+        "Le PGCD de $36$ et $48$ est $6$, on divise par $6$.",
+        "Le PGCD de $36$ et $48$ est $12$, la fraction est donc irréductible.",
+        "Le PGCD de $36$ et $48$ est $12$, on peut simplifier par $12$.",
+        "Les nombres $36$ et $48$ sont premiers entre eux."
+      ],
+      "correctAnswer": "Le PGCD de $36$ et $48$ est $12$, on peut simplifier par $12$.",
+      "explanation": "Pour justifier qu'une fraction n'est pas irréductible, il faut exhiber un diviseur commun strictement supérieur à 1. Le PGCD de 36 et 48 est bien 12 (car $36=12\\times3$ et $48=12\\times4$). Comme ce PGCD est différent de 1, la fraction se simplifie par 12 pour donner $\\frac{3}{4}$. L'option A donne un diviseur commun (6) mais pas le PGCD, ce qui ne prouve pas que la simplification est maximale. L'option B est contradictoire. L'option D est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire la fraction $\\frac{45}{60}$ sous forme irréductible. Quelle justification est complète et correcte ?",
+      "options": [
+        "On divise le numérateur et le dénominateur par $5$ pour obtenir $\\frac{9}{12}$, qui est irréductible.",
+        "Le PGCD de $45$ et $60$ est $15$, on divise par $15$ pour obtenir $\\frac{3}{4}$, car PGCD($3,4$)=$1$.",
+        "Le PGCD de $45$ et $60$ est $3$, on obtient $\\frac{15}{20}$.",
+        "On simplifie par $3$ successivement jusqu'à obtenir $\\frac{5}{6}$."
+      ],
+      "correctAnswer": "Le PGCD de $45$ et $60$ est $15$, on divise par $15$ pour obtenir $\\frac{3}{4}$, car PGCD($3,4$)=$1$.",
+      "explanation": "La méthode rigoureuse consiste à calculer le PGCD (ici 15), à diviser numérateur et dénominateur par ce PGCD, puis à vérifier que le PGCD du nouveau numérateur et du nouveau dénominateur vaut 1. L'option A s'arrête à $\\frac{9}{12}$ qui n'est pas irréductible (PGCD=3). L'option C calcule mal le PGCD (3 au lieu de 15). L'option D aboutit à un résultat faux ($\\frac{45}{60}=\\frac{3}{4}$, pas $\\frac{5}{6}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique l'algorithme d'Euclide à 56 et 72 : $72 = 56 \\times 1 + 16$ ; $56 = 16 \\times 3 + 8$ ; $16 = 8 \\times 2 + 0$. Quelle conclusion tirer pour la fraction $\\frac{56}{72}$ ?",
+      "options": [
+        "Le dernier reste non nul est $8$, donc PGCD($56,72$)=$8$, la fraction n'est pas irréductible.",
+        "Le dernier reste non nul est $16$, donc PGCD($56,72$)=$16$.",
+        "Le premier reste est $16$, donc PGCD($56,72$)=$16$.",
+        "Les divisions successives donnent un reste nul immédiatement, les nombres sont premiers entre eux."
+      ],
+      "correctAnswer": "Le dernier reste non nul est $8$, donc PGCD($56,72$)=$8$, la fraction n'est pas irréductible.",
+      "explanation": "L'algorithme d'Euclide stipule que le PGCD de deux nombres est le dernier reste non nul. Ici, les restes sont 16 puis 8 puis 0. Le dernier reste non nul est 8. Donc PGCD(56,72)=8. Comme le PGCD est différent de 1, la fraction $\\frac{56}{72}$ n'est pas irréductible ; elle se simplifie par 8 pour donner $\\frac{7}{9}$. Les options B et C confondent le premier reste ou l'avant-dernier reste avec le PGCD. L'option D décrit le cas où le premier reste serait 0 (un nombre multiple de l'autre) ou 1, ce qui n'est pas le cas ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle égalité permet d'affirmer directement que la fraction $\\frac{28}{45}$ est irréductible ?",
+      "options": [
+        "$28 \\times 45 = 1260$",
+        "$28 = 2 \\times 14$ et $45 = 3 \\times 15$",
+        "$\\text{PGCD}(28, 45) = 1$",
+        "$45 - 28 = 17$"
+      ],
+      "correctAnswer": "$\\text{PGCD}(28, 45) = 1$",
+      "explanation": "Par définition, une fraction est irréductible si et seulement si le PGCD de son numérateur et de son dénominateur est égal à 1. L'égalité $\\text{PGCD}(28, 45) = 1$ est donc la justification directe et nécessaire. L'option A (le produit) n'apporte aucune information sur les diviseurs communs. L'option B donne une décomposition partielle qui ne prouve pas l'absence de diviseur commun (par exemple, 7 divise 28 mais pas 45, mais l'écriture ne le montre pas). L'option D (la différence) est une propriété utilisée dans l'algorithme d'Euclide mais ne suffit pas à conclure seule.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

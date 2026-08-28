@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Moyenne / médiane / quartiles selon programme",
+  "title": "Quiz Statistiques : Moyenne, médiane et quartiles",
+  "questions": [
+    {
+      "text": "Calcule la moyenne de la série statistique $4$, $7$, $9$, $10$, $10$.",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La moyenne est la somme des valeurs divisée par l'effectif total. La somme vaut $4+7+9+10+10 = 40$. L'effectif est $5$. Donc la moyenne est $40/5 = 8$. Les autres options correspondent à des erreurs de calcul ou à la confusion avec la médiane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine la médiane de la même série $4$, $7$, $9$, $10$, $10$.",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctAnswer": "9",
+      "explanation": "La série contient un nombre impair de valeurs ($5$). La médiane est la valeur centrale après tri, ici la troisième valeur : $9$. L'option $8$ est la moyenne, $7$ et $10$ sont des valeurs extrêmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la série $3$, $5$, $7$, $9$, $11$, $13$ (effectif pair), quelle est la médiane ?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Avec un effectif pair ($6$), la médiane est la moyenne des deux valeurs centrales, soit $(7+9)/2 = 8$. Les distracteurs $7$ et $9$ correspondent aux deux valeurs centrales prises séparément, $10$ est une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la série $2$, $4$, $6$, $8$, $10$, $12$, $14$, $16$, quelles sont les valeurs du premier quartile $Q_1$ et du troisième quartile $Q_3$ ?",
+      "options": [
+        "Q1 = 5, Q3 = 13",
+        "Q1 = 4, Q3 = 14",
+        "Q1 = 6, Q3 = 12",
+        "Q1 = 5, Q3 = 12"
+      ],
+      "correctAnswer": "Q1 = 5, Q3 = 13",
+      "explanation": "La série a $8$ valeurs. On la divise en deux moitiés de $4$ valeurs. $Q_1$ est la médiane de la moitié inférieure $2,4,6,8$ : $(4+6)/2 = 5$. $Q_3$ est la médiane de la moitié supérieure $10,12,14,16$ : $(12+14)/2 = 13$. Les autres paires correspondent à des erreurs de sélection des moitiés ou de calcul de médiane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considère la série $5$, $6$, $7$, $8$, $9$, $100$. Quelle mesure de position est la moins sensible à la valeur extrême $100$ ?",
+      "options": [
+        "La moyenne",
+        "La médiane",
+        "Les deux sont égales",
+        "Aucune"
+      ],
+      "correctAnswer": "La médiane",
+      "explanation": "La moyenne vaut $(5+6+7+8+9+100)/6 = 135/6 = 22,5$, fortement tirée vers le haut par $100$. La médiane, pour un effectif pair, est la moyenne des deux valeurs centrales $7$ et $8$, soit $7,5$, qui reste proche du centre de la majorité des données. Donc la médiane est robuste face aux valeurs aberrantes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

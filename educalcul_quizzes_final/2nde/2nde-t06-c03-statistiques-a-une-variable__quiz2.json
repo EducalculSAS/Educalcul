@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Dispersion",
+  "title": "Quiz : Dispersion en statistiques (Seconde)",
+  "questions": [
+    {
+      "text": "On considère la série statistique suivante : $3, 5, 7, 9, 11$. Quelle est l'étendue de cette série ?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "explanation": "L'étendue est la différence entre la valeur maximale et la valeur minimale de la série. Ici, le maximum est $11$ et le minimum est $3$. L'étendue vaut donc $11 - 3 = 8$. L'option 4 correspond à l'écart entre deux valeurs consécutives, 6 est la médiane, et 10 est le double de l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une série de valeurs, l'écart interquartile (EIQ) est égal à $12$. On sait que le premier quartile $Q_1$ vaut $8$. Quelle est la valeur du troisième quartile $Q_3$ ?",
+      "options": [
+        "4",
+        "16",
+        "20",
+        "24"
+      ],
+      "correctAnswer": "20",
+      "explanation": "L'écart interquartile se calcule par la formule $EIQ = Q_3 - Q_1$. En posant $EIQ = 12$ et $Q_1 = 8$, on obtient $12 = Q_3 - 8$, d'où $Q_3 = 20$. L'option 4 correspond à $Q_1 - EIQ$, 16 à $2 \\times Q_1$, et 24 à $3 \\times EIQ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux séries statistiques A et B ayant la même moyenne. L'écart type de A est $2$, celui de B est $5$. Que peut-on affirmer de certain ?",
+      "options": [
+        "La série A est plus dispersée que la série B.",
+        "La série B est plus dispersée que la série A.",
+        "Les deux séries ont la même dispersion.",
+        "On ne peut pas comparer leurs dispersions."
+      ],
+      "correctAnswer": "La série B est plus dispersée que la série A.",
+      "explanation": "L'écart type est un indicateur de dispersion : plus il est grand, plus les valeurs sont éloignées de la moyenne en moyenne. Comme l'écart type de B ($5$) est strictement supérieur à celui de A ($2$), la série B est plus dispersée que la série A. Les deux séries ayant la même moyenne, la comparaison est directe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une série de $10$ valeurs dont la variance vaut $9$. On multiplie chaque valeur de cette série par $2$. Quelle est la variance de la nouvelle série obtenue ?",
+      "options": [
+        "9",
+        "18",
+        "36",
+        "81"
+      ],
+      "correctAnswer": "36",
+      "explanation": "Si on multiplie toutes les valeurs d'une série par un coefficient $k$, la variance est multipliée par $k^2$. Ici $k=2$, donc la nouvelle variance est $9 \\times 2^2 = 9 \\times 4 = 36$. L'option 18 correspond à une multiplication par $k$ (erreur : confusion avec la moyenne ou l'écart type), 81 correspond à $k^2$ appliqué à l'écart type ($3^2 \\times 9$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une série statistique a pour moyenne $\\bar{x} = 50$ et pour écart type $\\sigma = 5$. On rappelle que le coefficient de variation (CV) se calcule par $\\frac{\\sigma}{\\bar{x}} \\times 100$. Quelle est la valeur du coefficient de variation, arrondie au dixième ?",
+      "options": [
+        "0,1 %",
+        "1 %",
+        "10 %",
+        "25 %"
+      ],
+      "correctAnswer": "10 %",
+      "explanation": "Le coefficient de variation s'obtient en divisant l'écart type par la moyenne, puis en multipliant par $100$ pour obtenir un pourcentage. Ici, $CV = \\frac{5}{50} \\times 100 = 0,1 \\times 100 = 10 \\%$. L'option 0,1 % oublie la multiplication par 100, 1 % correspond à une division par 100 de trop, et 25 % correspond à $\\frac{\\sigma}{\\bar{x}} \\times 100$ avec $\\sigma=12,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

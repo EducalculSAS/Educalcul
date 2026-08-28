@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 392,
+  "_course_code": "5eme-t03-c04-reduire-des-termes-semblables",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Cas coefficient 1",
+  "title": "Quiz : Réduire des termes semblables (cas coefficient 1)",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $x + x$.",
+      "options": [
+        "$2x$",
+        "$x^2$",
+        "$2$",
+        "$0$"
+      ],
+      "correctAnswer": "$2x$",
+      "explanation": "Le terme $x$ signifie $1x$. En additionnant $1x + 1x$, on additionne les coefficients : $1 + 1 = 2$. On conserve la variable $x$, ce qui donne $2x$. L'option $x^2$ correspond à une multiplication $x \\times x$, l'option $2$ oublie la variable et l'option $0$ correspond à une soustraction $x - x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat simplifié de $5x - x$ ?",
+      "options": [
+        "$4x$",
+        "$5$",
+        "$5x^2$",
+        "$4$"
+      ],
+      "correctAnswer": "$4x$",
+      "explanation": "Le terme $x$ tout seul a pour coefficient $1$. L'expression est donc $5x - 1x$. On soustrait les coefficients : $5 - 1 = 4$. La variable $x$ reste inchangée, le résultat est $4x$. L'option $5$ oublie de soustraire le $x$, l'option $4$ oublie la variable et l'option $5x^2$ confond soustraction et multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis l'expression $x + 7 + x$.",
+      "options": [
+        "$2x + 7$",
+        "$2x + 14$",
+        "$8x$",
+        "$7x$"
+      ],
+      "correctAnswer": "$2x + 7$",
+      "explanation": "On regroupe les termes semblables contenant $x$ : $x + x = 2x$. Le nombre $7$ est un terme constant, il ne peut pas s'additionner avec les $x$. L'expression réduite est donc $2x + 7$. L'option $2x + 14$ ajoute le $7$ au coefficient, l'option $8x$ traite le $7$ comme un coefficient de $x$ et l'option $7x$ additionne tout en un seul terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $4y - y + 1$.",
+      "options": [
+        "$3y + 1$",
+        "$4y + 1$",
+        "$3y$",
+        "$4$"
+      ],
+      "correctAnswer": "$3y + 1$",
+      "explanation": "Le terme $-y$ signifie $-1y$. On calcule $4y - 1y = 3y$. Le terme constant $+1$ ne se combine pas avec les $y$. Le résultat est $3y + 1$. L'option $4y + 1$ oublie de soustraire $y$, l'option $3y$ oublie la constante $+1$ et l'option $4$ additionne les coefficients et la constante sans variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après réduction, l'expression $3a + 2b - a - b$ devient :",
+      "options": [
+        "$2a + b$",
+        "$2a + 3b$",
+        "$4a + b$",
+        "$5a - 2b$"
+      ],
+      "correctAnswer": "$2a + b$",
+      "explanation": "On regroupe les termes en $a$ : $3a - a = 3a - 1a = 2a$. On regroupe les termes en $b$ : $2b - b = 2b - 1b = b$ (soit $1b$). L'expression réduite est $2a + b$. L'option $2a + 3b$ additionne les $b$ au lieu de soustraire, l'option $4a + b$ additionne les $a$ et l'option $5a - 2b$ mélange toutes les opérations.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

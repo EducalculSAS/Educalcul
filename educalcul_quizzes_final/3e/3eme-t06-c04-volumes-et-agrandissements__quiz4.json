@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 488,
+  "_course_code": "3eme-t06-c04-volumes-et-agrandissements",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Volumes et agrandissements",
+  "title": "Quiz : Volumes et agrandissements - Applications",
+  "questions": [
+    {
+      "text": "Un cube de côté $2$ cm est agrandi par un facteur $3$. Quel est le volume du nouveau cube ?",
+      "options": [
+        "$8$ cm³",
+        "$24$ cm³",
+        "$54$ cm³",
+        "$216$ cm³"
+      ],
+      "correctAnswer": "$216$ cm³",
+      "explanation": "Le volume initial est $2^3 = 8$ cm³. Un agrandissement de facteur $k=3$ multiplie le volume par $k^3 = 27$. Le nouveau volume est $8 \\times 27 = 216$ cm³. Les autres options correspondent à une multiplication par $3$, $6,75$ ou $13,5$, qui sont des erreurs courantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le volume d'un solide passe de $125$ cm³ à $1000$ cm³ après un agrandissement. Quel est le rapport d'agrandissement $k$ ?",
+      "options": [
+        "$2$",
+        "$2,5$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Le rapport des volumes est $1000/125 = 8$. Comme le volume varie comme $k^3$, on a $k^3 = 8$, donc $k = \\sqrt[3]{8} = 2$. Les autres valeurs ne donnent pas un cube égal à $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de rayon $r$ et hauteur $h$ a un volume $V$. Si on double le rayon et on triple la hauteur, quel est le nouveau volume en fonction de $V$ ?",
+      "options": [
+        "$6V$",
+        "$12V$",
+        "$18V$",
+        "$24V$"
+      ],
+      "correctAnswer": "$12V$",
+      "explanation": "Le volume d'un cylindre est $\\pi r^2 h$. Doubler le rayon multiplie $r^2$ par $4$, tripler la hauteur multiplie $h$ par $3$. Le facteur total est $4 \\times 3 = 12$, donc le nouveau volume est $12V$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une maquette de bateau est réalisée à l'échelle $1/50$. Si le volume du bateau réel est $250\\,000$ m³, quel est le volume de la maquette en cm³ ? (1 m = 100 cm)",
+      "options": [
+        "$2\\,000$ cm³",
+        "$20\\,000$ cm³",
+        "$200\\,000$ cm³",
+        "$2\\,000\\,000$ cm³"
+      ],
+      "correctAnswer": "$2\\,000\\,000$ cm³",
+      "explanation": "L'échelle linéaire est $1/50$, donc le facteur de volume est $(1/50)^3 = 1/125\\,000$. Le volume réel en cm³ est $250\\,000 \\times 1\\,000\\,000 = 250\\,000\\,000\\,000$ cm³. En divisant par $125\\,000$, on obtient $2\\,000\\,000$ cm³.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit est agrandi par un facteur $k = 1,5$. Le volume du pavé agrandi est $54$ cm³. Quel était le volume initial ?",
+      "options": [
+        "$12$ cm³",
+        "$16$ cm³",
+        "$18$ cm³",
+        "$20$ cm³"
+      ],
+      "correctAnswer": "$16$ cm³",
+      "explanation": "Le facteur de volume est $k^3 = 1,5^3 = 3,375$. Le volume initial est $54 / 3,375 = 16$ cm³. Les autres choix ne satisfont pas $V_{\\text{initial}} \\times 3,375 = 54$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

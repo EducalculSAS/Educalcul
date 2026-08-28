@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Quiz : Applications de la simulation",
+  "questions": [
+    {
+      "text": "Quel est le principe fondamental d'une simulation pour estimer une probabilité ?",
+      "options": [
+        "Calculer la probabilité exacte par le raisonnement théorique.",
+        "Répéter un grand nombre de fois l'expérience aléatoire et calculer la fréquence de l'événement étudié.",
+        "Utiliser une calculatrice pour générer un seul nombre aléatoire.",
+        "Tracer l'histogramme de la loi de probabilité théorique."
+      ],
+      "correctAnswer": "Répéter un grand nombre de fois l'expérience aléatoire et calculer la fréquence de l'événement étudié.",
+      "explanation": "La simulation repose sur la loi des grands nombres : en répétant un très grand nombre de fois l'expérience aléatoire, la fréquence observée d'un événement se rapproche de sa probabilité théorique. Les autres options décrivent soit le calcul exact, soit une action insuffisante (un seul tirage), soit une représentation graphique qui ne constitue pas une simulation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant pour simuler le lancer de deux dés à six faces et compter le nombre de fois où la somme vaut $7$ :\\nVariables : $N$ entier, $S$ entier, $compteur$ entier\\n$compteur \\leftarrow 0$\\nPour $i$ de $1$ à $N$ faire\\n    $d1 \\leftarrow$ ALEA($1;6$)\\n    $d2 \\leftarrow$ ALEA($1;6$)\\n    $S \\leftarrow d1 + d2$\\n    Si $S = 7$ alors\\n        $compteur \\leftarrow compteur + 1$\\n    Fin Si\\nFin Pour\\nAfficher $compteur / N$\\nQue représente la valeur affichée à la fin de l'exécution ?",
+      "options": [
+        "La probabilité théorique exacte d'obtenir une somme de $7$.",
+        "La fréquence d'apparition de la somme $7$ sur les $N$ simulations.",
+        "Le nombre total de simulations effectuées.",
+        "La somme des valeurs obtenues sur les deux dés au dernier lancer."
+      ],
+      "correctAnswer": "La fréquence d'apparition de la somme $7$ sur les $N$ simulations.",
+      "explanation": "La variable $compteur$ enregistre le nombre de succès (somme égale à $7$) au cours des $N$ répétitions. La division finale $compteur / N$ calcule donc la fréquence relative de cet événement dans l'échantillon simulé. Ce n'est qu'une estimation de la probabilité théorique ($1/6$), pas la valeur exacte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $N$ fois l'expérience : 'lancer une pièce de monnaie équilibrée'. On note $F_N$ la fréquence de 'Face' obtenue. Que se passe-t-il généralement pour $|F_N - 0,5|$ lorsque $N$ augmente (par exemple de $100$ à $10\\,000$) ?",
+      "options": [
+        "Elle augmente car il y a plus de hasard.",
+        "Elle reste constante car la probabilité ne change pas.",
+        "Elle a tendance à diminuer, la fréquence se rapproche de la probabilité théorique.",
+        "Elle devient exactement nulle dès que $N$ dépasse $1\\,000$."
+      ],
+      "correctAnswer": "Elle a tendance à diminuer, la fréquence se rapproche de la probabilité théorique.",
+      "explanation": "C'est l'énoncé de la loi des grands nombres : quand le nombre d'essais $N$ croît, la fréquence $F_N$ converge vers la probabilité théorique $p=0,5$. L'écart absolu $|F_N - 0,5|$ diminue donc en moyenne. Il ne devient jamais exactement nul (sauf cas exceptionnel) et n'augmente pas avec $N$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue une simulation de $1\\,000$ lancers d'un dé équilibré à six faces. On obtient une fréquence de $0,18$ pour la face '$6$'. Sachant que la probabilité théorique est $1/6 \\approx 0,1667$, quelle affirmation est correcte ?",
+      "options": [
+        "La simulation est fausse car la fréquence n'est pas exactement égale à $1/6$.",
+        "Ce résultat est plausible car la fréquence observée appartient à l'intervalle de fluctuation au seuil de $95\\%$ pour $n=1000$ (environ $[0,14 ; 0,19]$).",
+        "Il faut absolument refaire la simulation car le dé est truqué.",
+        "La fréquence théorique change en fonction des résultats de la simulation."
+      ],
+      "correctAnswer": "Ce résultat est plausible car la fréquence observée appartient à l'intervalle de fluctuation au seuil de $95\\%$ pour $n=1000$ (environ $[0,14 ; 0,19]$).",
+      "explanation": "L'intervalle de fluctuation au seuil de $95\\%$ pour une proportion $p=1/6$ et $n=1000$ est $p \\pm 1,96 \\sqrt{p(1-p)/n} \\approx 0,1667 \\pm 0,023$, soit environ $[0,143 ; 0,190]$. La valeur $0,18$ se trouvant à l'intérieur, elle est tout à fait compatible avec un dé équilibré. Une simulation n'a pas pour but de donner la valeur exacte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite simuler l'expérience : 'On lance un dé à $6$ faces jusqu'à obtenir un $6$, on note le nombre de lancers nécessaires.' Quelle structure de boucle et quelle condition permettent de stopper la répétition dans un algorithme ?",
+      "options": [
+        "Tant que $de \\neq 6$ faire ... Fin Tant que",
+        "Tant que $de = 6$ faire ... Fin Tant que",
+        "Si $de = 6$ alors Arreter Fin Si (à l'intérieur d'une boucle infinie)",
+        "Pour $i$ de $1$ à $6$ faire ... Fin Pour"
+      ],
+      "correctAnswer": "Tant que $de \\neq 6$ faire ... Fin Tant que",
+      "explanation": "La boucle 'Tant que' se poursuit *tant que* la condition est vraie. On veut continuer à lancer *tant qu'on n'a pas obtenu $6$*, c'est-à-dire tant que la variable $de$ est différente de $6$. La condition $de \\neq 6$ assure la continuation ; la boucle s'arrête dès que $de$ vaut $6$. L'option B arrêterait la boucle immédiatement. L'option D impose un nombre fixe de tours, ce qui ne correspond pas à 'jusqu'à obtenir'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

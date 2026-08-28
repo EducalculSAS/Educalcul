@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Figures invariantes",
+  "title": "Figures invariantes par symétrie centrale",
+  "blocks": [
+    {
+      "title": "Définitions et vocabulaire",
+      "content": "Relie chaque terme à sa définition ou sa propriété dans le cadre d'une symétrie centrale de centre $O$.",
+      "pairs": [
+        {
+          "left": "Centre de symétrie $O$",
+          "right": "Unique point invariant (son image est lui-même)"
+        },
+        {
+          "left": "Figure invariante globalement",
+          "right": "Figure qui se superpose exactement à son image"
+        },
+        {
+          "left": "Droite passant par $O$",
+          "right": "Droite invariante globalement (elle se superpose à son image)"
+        },
+        {
+          "left": "Segment dont le milieu est $O$",
+          "right": "Segment invariant globalement (ses extrémités s'échangent)"
+        }
+      ],
+      "explanation": "Le centre $O$ est le seul point fixe. Une figure est invariante globalement si elle coïncide avec son image (les points de la figure sont envoyés sur des points de la même figure). Une droite passant par le centre est invariante globalement (chaque point a son symétrique sur la droite). Un segment de milieu $O$ est invariant globalement : ses extrémités sont symétriques l'une de l'autre par rapport à $O$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Figures usuelles invariantes ou non",
+      "content": "Relie chaque figure à sa propriété par rapport à une symétrie centrale.",
+      "pairs": [
+        {
+          "left": "Cercle de centre $O$",
+          "right": "Invariant globalement (centre de symétrie = centre du cercle)"
+        },
+        {
+          "left": "Parallélogramme",
+          "right": "Invariant globalement (centre de symétrie = intersection des diagonales)"
+        },
+        {
+          "left": "Triangle quelconque",
+          "right": "Non invariant globalement (aucun centre de symétrie)"
+        },
+        {
+          "left": "Droite ne passant pas par $O$",
+          "right": "Non invariante globalement (son image est une droite parallèle distincte)"
+        }
+      ],
+      "explanation": "Le cercle admet son centre comme centre de symétrie. Le parallélogramme admet l'intersection de ses diagonales comme centre de symétrie. Un triangle n'a jamais de centre de symétrie (il n'est pas invariant par symétrie centrale). Une droite ne passant pas par le centre $O$ a pour image une droite parallèle distincte, elle n'est donc pas invariante globalement.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Propriétés des points et segments",
+      "content": "Relie chaque configuration à sa conséquence par une symétrie centrale de centre $O$.",
+      "pairs": [
+        {
+          "left": "Point $A$ tel que $A = O$",
+          "right": "Point invariant ($A' = A$)"
+        },
+        {
+          "left": "Point $A$ distinct de $O$",
+          "right": "Point non invariant ($A' \\neq A$) et $O$ est le milieu de $[AA']$"
+        },
+        {
+          "left": "Segment $[AB]$ tel que $O$ est le milieu de $[AB]$",
+          "right": "Segment invariant globalement ($A' = B$ et $B' = A$)"
+        },
+        {
+          "left": "Droite $(AB)$ passant par $O$",
+          "right": "Droite invariante globalement"
+        }
+      ],
+      "explanation": "Seul le centre $O$ est invariant (point fixe). Tout autre point $A$ a un image $A'$ distincte telle que $O$ est le milieu de $[AA']$. Si $O$ est le milieu d'un segment $[AB]$, alors $A$ et $B$ sont symétriques l'un de l'autre : le segment est invariant globalement (mais les points $A$ et $B$ sont échangés). Une droite passant par $O$ contient les symétriques de tous ses points, elle est donc invariante globalement.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

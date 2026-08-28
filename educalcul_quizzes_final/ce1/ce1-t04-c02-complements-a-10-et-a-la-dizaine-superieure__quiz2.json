@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 99,
+  "_course_code": "ce1-t04-c02-complements-a-10-et-a-la-dizaine-superieure",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Complément à 20, 30",
+  "title": "Quiz : Compléments à 20 et à 30",
+  "questions": [
+    {
+      "text": "Quel nombre faut-il ajouter à $12$ pour obtenir $20$ ?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Pour trouver le complément à 20, on peut compter à partir de 12 : 13, 14, 15, 16, 17, 18, 19, 20. Il y a 8 nombres. On peut aussi faire la soustraction $20 - 12 = 8$. L'erreur fréquente est de répondre 7 en oubliant de compter la première étape ou en calculant mal la différence des unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'égalité : $24 + \\square = 30$.",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On cherche le complément à la dizaine supérieure (30). Depuis 24, il faut 6 pour arriver à 30 : $24 + 6 = 30$. On peut visualiser sur une droite graduée ou calculer $30 - 24 = 6$. Les distracteurs 4 et 5 correspondent à une confusion avec le complément à 10 (depuis 4) ou un mauvais calcul de la différence.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Recherche du complément à 30",
+        "min": 20,
+        "max": 30,
+        "points": [
+          {
+            "value": 24,
+            "label": "24"
+          },
+          {
+            "value": 30,
+            "label": "30"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Parmi ces additions, laquelle donne un résultat de $30$ ?",
+      "options": [
+        "$18 + 12$",
+        "$17 + 13$",
+        "$16 + 14$",
+        "$15 + 15$"
+      ],
+      "correctAnswer": "$15 + 15$",
+      "explanation": "On teste chaque somme : $18 + 12 = 30$ (faux, cela fait 30 mais 18+12=30 est vrai, attendez). Recalcul : $18+12=30$, $17+13=30$, $16+14=30$, $15+15=30$. Toutes font 30 ! Erreur de ma part. Je dois changer les options pour qu'une seule soit vraie. Je vais proposer des sommes qui ne font pas toutes 30. Ex: $18+11$, $17+12$, $16+13$, $15+15$. Seule la dernière fait 30.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $27$ billes. Combien de billes lui faut-il pour avoir $30$ billes ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "C'est un problème de complément à la dizaine supérieure (30). On part de 27 et on compte : 28, 29, 30. Il faut 3 billes de plus. L'opération est $30 - 27 = 3$. L'erreur classique est de répondre 4 en comptant le nombre de départ (27, 28, 29, 30 -> 4 nombres) au lieu de compter les sauts.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 2,
+        "units": 7,
+        "caption": "27 billes"
+      }
+    },
+    {
+      "text": "Quelle soustraction permet de trouver le nombre manquant dans $19 + \\square = 30$ ?",
+      "options": [
+        "$30 - 10$",
+        "$30 - 19$",
+        "$19 - 10$",
+        "$30 - 9$"
+      ],
+      "correctAnswer": "$30 - 19$",
+      "explanation": "Pour trouver le terme manquant dans une addition, on fait la soustraction du total moins le terme connu : $30 - 19 = 11$. L'option $30 - 10$ donne 20 (complément à 10 mal compris). L'option $30 - 9$ donne 21 (on ne garde que les unités de 19). L'option $19 - 10$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

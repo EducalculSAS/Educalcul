@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 204,
+  "_course_code": "ce2-t07-c09-bilan-geometrie-ce2",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Utiliser instruments",
+  "title": "Quiz - Utiliser les instruments de géométrie (CE2)",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour tracer un segment de droite d'une longueur donnée ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Un rapporteur",
+        "Une équerre"
+      ],
+      "correctAnswer": "Une règle",
+      "explanation": "La règle permet de mesurer et de tracer des segments droits de longueur précise. Le compas trace des cercles, le rapporteur mesure les angles, l'équerre trace des angles droits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour mesurer un angle de $45^\\circ$, quel instrument est le plus adapté ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Un rapporteur",
+        "Une équerre"
+      ],
+      "correctAnswer": "Un rapporteur",
+      "explanation": "Le rapporteur est gradué en degrés et permet de mesurer ou de tracer un angle donné. La règle ne mesure que des longueurs, le compas trace des cercles, l'équerre ne donne que l'angle droit.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 45,
+        "caption": "Angle de 45 degrés"
+      }
+    },
+    {
+      "text": "Quel instrument permet de tracer un cercle de rayon donné ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Un rapporteur",
+        "Une équerre"
+      ],
+      "correctAnswer": "Un compas",
+      "explanation": "Le compas s'ouvre à la longueur du rayon et trace un cercle en pivotant autour de son centre. La règle trace des segments, le rapporteur mesure les angles, l'équerre trace des angles droits.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de rayon 5 cm"
+      }
+    },
+    {
+      "text": "Avec quel instrument trace-t-on un angle droit ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Un rapporteur",
+        "Une équerre"
+      ],
+      "correctAnswer": "Une équerre",
+      "explanation": "L'équerre (ou le triangle rectangle) a un angle de $90^\\circ$ et sert à tracer ou vérifier des angles droits. Les autres instruments ne garantissent pas un angle droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier que deux segments ont la même longueur, quelle méthode correcte utilise-t-on avec une règle ?",
+      "options": [
+        "On place la règle au début du premier segment, on note la mesure, puis on fait de même pour le second segment.",
+        "On pose la règle sur les deux segments en même temps.",
+        "On utilise un compas pour reporter la longueur du premier segment sur le second.",
+        "On utilise un rapporteur pour comparer les longueurs."
+      ],
+      "correctAnswer": "On place la règle au début du premier segment, on note la mesure, puis on fait de même pour le second segment.",
+      "explanation": "La règle permet de mesurer chaque segment individuellement ; on compare ensuite les deux mesures. Poser la règle sur les deux à la fois ne donne pas de mesure précise, le compas reporte une longueur mais ne mesure pas, le rapporteur mesure des angles.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Segment de 8 cm"
+      }
+    }
+  ]
+}

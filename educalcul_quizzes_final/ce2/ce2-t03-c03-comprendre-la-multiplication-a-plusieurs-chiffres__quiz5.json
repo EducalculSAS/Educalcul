@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 162,
+  "_course_code": "ce2-t03-c03-comprendre-la-multiplication-a-plusieurs-chiffres",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Décomposer un facteur",
+  "title": "Approfondissement : Décomposer un facteur",
+  "questions": [
+    {
+      "text": "Quelle expression montre la décomposition de $14$ pour calculer $14 \\times 3$ ?",
+      "options": [
+        "$(10+4) \\times 3$",
+        "$(10+3) \\times 4$",
+        "$(7+7) \\times 3$",
+        "$(5+9) \\times 3$"
+      ],
+      "correctAnswer": "$(10+4) \\times 3$",
+      "explanation": "On décompose $14$ en $10+4$ pour utiliser la distributivité : $(10+4)\\times3 = 10\\times3 + 4\\times3 = 30+12 = 42$. Les autres décompositions ne reprennent pas $14$ correctement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $23 \\times 5$ en décomposant un facteur, quelle décomposition de $23$ est correcte ?",
+      "options": [
+        "$(20+3) \\times 5$",
+        "$(2+3) \\times 5$",
+        "$(10+13) \\times 5$",
+        "$(15+8) \\times 5$"
+      ],
+      "correctAnswer": "$(20+3) \\times 5$",
+      "explanation": "La décomposition en dizaines et unités donne $23 = 20+3$. Ainsi $(20+3)\\times5 = 20\\times5 + 3\\times5 = 100+15 = 115$. Les autres propositions ne reconstituent pas $23$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le modèle d'aire ci-dessous, le rectangle représente $12 \\times 4$ décomposé en $(10+2) \\times 4$. Quelle est la surface totale ?",
+      "options": [
+        "$40$",
+        "$48$",
+        "$44$",
+        "$52$"
+      ],
+      "correctAnswer": "$48$",
+      "explanation": "Le rectangle est divisé en deux parties : $10\\times4 = 40$ et $2\\times4 = 8$. La surface totale est $40+8 = 48$.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 10,
+            "height": 4,
+            "label": "10x4"
+          },
+          {
+            "width": 2,
+            "height": 4,
+            "label": "2x4"
+          }
+        ],
+        "caption": "Modèle d'aire pour $12 \\times 4$ décomposé en $(10+2) \\times 4$"
+      }
+    },
+    {
+      "text": "Quelle décomposition de $36$ permet de calculer facilement $36 \\times 2$ ?",
+      "options": [
+        "$(30+6) \\times 2$",
+        "$(3+6) \\times 2$",
+        "$(20+16) \\times 2$",
+        "$(10+26) \\times 2$"
+      ],
+      "correctAnswer": "$(30+6) \\times 2$",
+      "explanation": "On sépare les dizaines et les unités : $36 = 30+6$. Alors $(30+6)\\times2 = 30\\times2 + 6\\times2 = 60+12 = 72$. Les autres décompositions ne correspondent pas à la valeur positionnelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $15$ boîtes de crayons, chaque boîte contient $8$ crayons. En décomposant $15$ en $10+5$, quel calcul faut-il effectuer pour trouver le total ?",
+      "options": [
+        "$(10 \\times 8) + (5 \\times 8)$",
+        "$(10+5) \\times 8$",
+        "$(10 \\times 5) + 8$",
+        "$15 \\times 8$"
+      ],
+      "correctAnswer": "$(10 \\times 8) + (5 \\times 8)$",
+      "explanation": "Après avoir décomposé $15$ en $10+5$, on applique la distributivité : $(10+5)\\times8 = 10\\times8 + 5\\times8 = 80+40 = 120$. L'option choisie montre explicitement les deux produits partiels.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

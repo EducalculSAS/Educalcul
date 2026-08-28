@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Vérifier",
+  "title": "Quiz : Verifier un patron (6e)",
+  "questions": [
+    {
+      "text": "On regarde le patron ci-contre. Quelle affirmation est exacte ?",
+      "options": [
+        "Ce patron ne peut pas former un cube car il manque une face.",
+        "Ce patron est un patron de cube valide.",
+        "En le pliant, deux faces se superposent.",
+        "Les faces ne sont pas toutes des carres."
+      ],
+      "correctAnswer": "Ce patron est un patron de cube valide.",
+      "explanation": "La figure presente un developpement classique de cube en forme de croix (4 carres alignes avec un carre de chaque cote du deuxieme et du troisieme). Ce patron fait partie des 11 patrons valides du cube : il possede bien 6 faces carrees identiques et aucune face ne se superpose lors du pliage.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron de cube en croix"
+      }
+    },
+    {
+      "text": "Le patron ci-contre est forme de $6$ carres identiques disposes en rectangle de $2$ par $3$. Que se passe-t-il si on essaie de le plier pour former un cube ?",
+      "options": [
+        "Il forme un cube parfait.",
+        "Il manque une face pour fermer le cube.",
+        "Deux faces se superposent et le cube n'est pas ferme.",
+        "Les faces ne sont pas des carres."
+      ],
+      "correctAnswer": "Deux faces se superposent et le cube n'est pas ferme.",
+      "explanation": "Un rectangle de $2$ par $3$ carres (soit $6$ carres) ne peut pas former un cube. En pliant les faces latérales, les deux faces extremes se retrouvent au meme endroit (superposition) et il reste une ouverture : le cube n'est pas ferme. C'est une erreur frequente de penser que 6 carres suffisent, il faut aussi une disposition correcte.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 3,
+        "highlighted": 6,
+        "caption": "Patron invalide : rectangle 2x3"
+      }
+    },
+    {
+      "text": "Un pave droit a pour dimensions $4$ cm, $3$ cm et $2$ cm. On veut tracer son patron. Combien de faces le patron doit-il comporter au total et quelles sont leurs formes ?",
+      "options": [
+        "6 faces : 3 rectangles 4x3, 2 rectangles 4x2 et 1 rectangle 3x2.",
+        "6 faces : 2 rectangles 4x3, 2 rectangles 4x2 et 2 rectangles 3x2.",
+        "5 faces : 2 rectangles 4x3, 2 rectangles 4x2 et 1 rectangle 3x2.",
+        "6 faces : 4 rectangles 4x3 et 2 rectangles 3x2."
+      ],
+      "correctAnswer": "6 faces : 2 rectangles 4x3, 2 rectangles 4x2 et 2 rectangles 3x2.",
+      "explanation": "Un pave droit possede 6 faces regroupées en 3 paires de faces identiques et paralleles. Les dimensions donnent les paires : deux faces $4\\times3$, deux faces $4\\times2$ et deux faces $3\\times2$. L'option A melange les quantites, l'option C en oublie une (un pave droit a 6 faces, pas 5), l'option D a des dimensions impossibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considere une pyramide a base carree de cote $5$ cm et de hauteur $6$ cm. Son patron est constitue d'un carre et de $4$ triangles isometriques. Quelle verification doit-on faire sur les triangles avant de tracer le patron definitif ?",
+      "options": [
+        "Verifier que la base des triangles mesure $5$ cm.",
+        "Verifier que la hauteur des triangles mesure $6$ cm.",
+        "Verifier que les triangles sont rectangles.",
+        "Verifier que le perimetre du carre egale la somme des bases des triangles."
+      ],
+      "correctAnswer": "Verifier que la base des triangles mesure $5$ cm.",
+      "explanation": "Dans le patron, chaque triangle correspond a une face laterale de la pyramide. La base de chaque triangle doit coincider exactement avec un cote de la base carree, donc mesurer $5$ cm. La hauteur du triangle (l'apotheme de la pyramide) n'est pas la hauteur de la pyramide ($6$ cm) : elle est superieure (calculee avec Pythagore en 4e/3e). Les triangles ne sont pas necessairement rectangles. La somme des bases des triangles fait $20$ cm, egale au perimetre du carre, mais c'est une consequence, pas la verification primordiale de correspondance cote a cote.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On plie un patron valide de cube. Sur le patron a plat, un sommet du cube est souvent represente par plusieurs points distincts. Combien de points du patron se rejoignent pour former un seul sommet du cube ?",
+      "options": [
+        "2 points",
+        "3 points",
+        "4 points",
+        "6 points"
+      ],
+      "correctAnswer": "3 points",
+      "explanation": "Au sommet d'un cube, 3 faces se rencontrent (car 3 aretes se coupent). Dans le patron a plat, ces 3 faces sont separées. Chacune apporte un de ses sommets (un angle droit). Lors du pliage, ces 3 points distincts du papier se superposent pour ne former qu'un seul sommet du cube en volume. C'est une verification importante pour s'assurer que le patron 'ferme' bien le solide.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

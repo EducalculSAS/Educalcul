@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 212,
+  "_course_code": "cm1-t01-c02-valeur-de-position-des-chiffres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Recomposer",
+  "title": "Recomposer des nombres entiers",
+  "blocks": [
+    {
+      "title": "Recomposition simple (centaines, dizaines, unités)",
+      "content": "Relie chaque décomposition à la valeur du nombre correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3$ centaines $4$ dizaines $2$ unités",
+          "right": "$342$"
+        },
+        {
+          "left": "$5$ centaines $0$ dizaine $7$ unités",
+          "right": "$507$"
+        },
+        {
+          "left": "$1$ centaine $8$ dizaines $9$ unités",
+          "right": "$189$"
+        },
+        {
+          "left": "$6$ centaines $3$ dizaines $0$ unité",
+          "right": "$630$"
+        },
+        {
+          "left": "$2$ centaines $5$ dizaines $5$ unités",
+          "right": "$255$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour recomposer un nombre, on replace chaque chiffre dans sa colonne de valeur de position : les centaines, puis les dizaines, puis les unités. Par exemple, $3$ centaines $4$ dizaines $2$ unités s'écrit $342$. Attention au zéro qui marque l'absence de dizaines ou d'unités (ex : $507$, $630$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recomposition avec les milliers",
+      "content": "Relie chaque décomposition à la valeur du nombre correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2$ milliers $3$ centaines $4$ dizaines $5$ unités",
+          "right": "$2\\,345$"
+        },
+        {
+          "left": "$1$ mille $5$ centaines $0$ dizaine $8$ unités",
+          "right": "$1\\,508$"
+        },
+        {
+          "left": "$4$ milliers $0$ centaine $6$ dizaines $2$ unités",
+          "right": "$4\\,062$"
+        },
+        {
+          "left": "$3$ milliers $7$ centaines $2$ dizaines $0$ unité",
+          "right": "$3\\,720$"
+        },
+        {
+          "left": "$5$ milliers $1$ centaine $9$ dizaines $3$ unités",
+          "right": "$5\\,193$"
+        }
+      ],
+      "items": [],
+      "explanation": "On ajoute la classe des milliers. On écrit les chiffres dans l'ordre : milliers, centaines, dizaines, unités. On pense à bien placer les zéros s'il n'y a pas de centaines ou de dizaines (ex : $4\\,062$, $1\\,508$). On sépare souvent la classe des milliers par un espace pour lire plus facilement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recomposition non canonique (dizaines et centaines en trop)",
+      "content": "Relie chaque décomposition non canonique à la valeur du nombre correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12$ dizaines $5$ unités",
+          "right": "$125$"
+        },
+        {
+          "left": "$3$ centaines $15$ dizaines",
+          "right": "$450$"
+        },
+        {
+          "left": "$2$ milliers $12$ centaines",
+          "right": "$3\\,200$"
+        },
+        {
+          "left": "$25$ dizaines $8$ unités",
+          "right": "$258$"
+        },
+        {
+          "left": "$1$ mille $12$ centaines $5$ unités",
+          "right": "$2\\,205$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut convertir les groupes qui dépassent $9$ : $10$ dizaines = $1$ centaine, $10$ centaines = $1$ mille. Exemples : $12$ dizaines = $1$ centaine $2$ dizaines = $120$, donc $120 + 5 = 125$. $15$ dizaines = $1$ centaine $5$ dizaines, ajoutées aux $3$ centaines font $4$ centaines $5$ dizaines = $450$. $12$ centaines = $1$ mille $2$ centaines, ajoutées aux $2$ milliers font $3$ milliers $2$ centaines = $3\\,200$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

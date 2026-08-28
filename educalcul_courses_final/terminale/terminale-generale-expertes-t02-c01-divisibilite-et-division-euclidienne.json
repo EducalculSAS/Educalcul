@@ -1,0 +1,647 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.777041+00:00",
+  "id": 738,
+  "code": "terminale-generale-expertes-t02-c01",
+  "title": "Divisibilité et division euclidienne",
+  "description": "Cours structuré Educalcul : Divisibilité et division euclidienne.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Divisibilité et division euclidienne",
+    "objectif_global": "Divisibilité et division euclidienne",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Calculer.",
+      "Raisonner."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La divisibilité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré à la divisibilité. Vous allez découvrir comment un entier peut en contenir un autre un nombre entier de fois, sans laisser de reste. Imaginez que vous ayez $27$ bonbons et que vous souhaitiez les partager équitablement entre $5$ amis : chaque ami reçoit $5$ bonbons et il en reste $2$. Cette situation illustre l'idée centrale : $27$ n'est pas un multiple de $5$, mais on peut écrire $27 = 5 \\times 5 + 2$. Le nombre $5$ qui multiplie le diviseur s'appelle le quotient, et le nombre $2$ qui reste s'appelle le reste. Tout au long de cette leçon, nous poserons les définitions précises, nous énoncerons le théorème fondamental et nous verrons pourquoi le quotient et le reste sont uniques."
+            },
+            {
+              "type": "definition",
+              "term": "divisible",
+              "definition": "Un entier $a$ est divisible par un entier non nul $b$ s'il existe un entier $q$ tel que $a = b q$. On note alors $b \\mid a$.",
+              "example": "Puisque $12 = 3 \\times 4$, on a $3 \\mid 12$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Multiples de $3$ sur une droite graduée",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la notion de divisibilité est en place, nous allons formuler le théorème qui garantit qu'une division euclidienne existe toujours et qu'elle est unique. Ce théorème est la pierre angulaire de toute l'arithmétique des entiers."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de la division euclidienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $a$ un entier quelconque et $b$ un entier non nul. Il existe un unique couple d'entiers $(q,r)$ tel que $a = b q + r$ avec $0 \\le r < |b|$. L'entier $q$ est appelé le quotient et $r$ le reste de la division euclidienne de $a$ par $b$. Cette écriture est souvent appelée l'égalité de division. Elle permet de décomposer tout entier en une partie multiple du diviseur et un reste strictement plus petit que la valeur absolue du diviseur."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = b q + r \\quad \\text{avec} \\quad 0 \\le r < |b|"
+            },
+            {
+              "type": "definition",
+              "term": "quotient",
+              "definition": "Dans l'égalité $a = b q + r$, l'entier $q$ est le quotient de la division euclidienne de $a$ par $b$.",
+              "example": "Pour $23 = 5 \\times 4 + 3$, le quotient est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "reste",
+              "definition": "Dans l'égalité $a = b q + r$, l'entier $r$ est le reste de la division euclidienne de $a$ par $b$. Il satisfait $0 \\le r < |b|$.",
+              "example": "Pour $23 = 5 \\times 4 + 3$, le reste est $3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Existence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On considère l'ensemble des entiers de la forme $a - b k$ avec $k \\in \\mathbb{Z}$. Cet ensemble contient des entiers positifs, donc il admet un plus petit élément positif $r$. On pose $q$ l'entier tel que $r = a - b q$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Majorisation du reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par minimalité de $r$, on a $0 \\le r < |b|$. Sinon, on pourrait soustraire ou ajouter $b$ pour obtenir un reste plus petit, ce qui contredit la minimalité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Unicité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons $a = b q_1 + r_1 = b q_2 + r_2$ avec $0 \\le r_1,r_2 < |b|$. En soustrayant, $b(q_1-q_2) = r_2-r_1$. La différence des restes est strictement inférieure à $|b|$ en valeur absolue, donc $q_1=q_2$ et $r_1=r_2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'unicité du quotient et du reste est une propriété puissante : elle permet de raisonner sans ambiguïté sur les résultats d'une division. Nous allons maintenant en donner une preuve détaillée, puis illustrer le tout par des exemples concrets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unicité du quotient et du reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "La preuve d'unicité repose sur l'observation que si deux couples $(q_1,r_1)$ et $(q_2,r_2)$ satisfont l'égalité de division, alors leur différence produit un multiple de $b$ qui est aussi la différence de deux restes. Comme chaque reste est compris entre $0$ inclus et $|b|$ exclus, cette différence ne peut être un multiple non nul de $b$ que si elle est nulle. Par conséquent, les deux quotients coïncident et les deux restes coïncident. Cette argumentation simple mais rigoureuse est au cœur de nombreuses démonstrations en arithmétique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Supposer deux divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose $a = b q_1 + r_1$ et $a = b q_2 + r_2$ avec $0 \\le r_1,r_2 < |b|$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire les égalités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $b(q_1 - q_2) = r_2 - r_1$. Le second membre est un entier dont la valeur absolue est strictement inférieure à $|b|$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le seul multiple de $b$ dont la valeur absolue est $< |b|$ est $0$. Donc $q_1-q_2=0$ et $r_2-r_1=0$, c'est-à-dire $q_1=q_2$ et $r_1=r_2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer ces idées, nous allons travailler sur quelques exemples numériques variés, y compris avec des nombres négatifs, afin de bien visualiser comment le quotient et le reste se comportent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples concrets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $a = 23$ et $b = 5$. Le multiple de $5$ le plus grand qui ne dépasse pas $23$ est $20 = 5 \\times 4$. Le reste est $23 - 20 = 3$. On écrit $23 = 5 \\times 4 + 3$. Si $a = -17$ et $b = 4$, le multiple de $4$ le plus grand $\\le -17$ est $-20 = 4 \\times (-5)$. Le reste est $-17 - (-20) = 3$, qui respecte $0 \\le 3 < 4$. On a donc $-17 = 4 \\times (-5) + 3$. Ces deux cas montrent que la définition fonctionne pour tout entier $a$, positif ou négatif, tant que $b \\neq 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "23 = 5 \\times 4 + 3 \\quad ; \\quad -17 = 4 \\times (-5) + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $a=27$ et $b=5$. Écrire la division euclidienne de $a$ par $b$.",
+              "answer": "$27 = 5 \\times 5 + 2$",
+              "hint": "Cherchez le multiple de $5$ le plus proche de $27$ sans le dépasser.",
+              "explanation": "Le quotient est $5$ car $5\\times5=25$, le reste est $27-25=2$."
+            },
+            {
+              "question": "Énoncer le théorème de la division euclidienne pour des entiers $a$ et $b\\neq0$.",
+              "answer": "Il existe un unique couple $(q,r)$ tel que $a=bq+r$ avec $0\\le r<|b|$.",
+              "hint": "Rappelez-vous la condition sur le reste.",
+              "explanation": "Le théorème garantit existence et unicité."
+            },
+            {
+              "question": "Montrer que le quotient et le reste sont uniques.",
+              "answer": "Supposons deux couples $(q_1,r_1)$ et $(q_2,r_2)$... on obtient $q_1=q_2$ et $r_1=r_2$.",
+              "hint": "Soustrayez les deux égalités.",
+              "explanation": "La différence donne $(q_1-q_2)b = r_2-r_1$, avec borne sur les restes."
+            },
+            {
+              "question": "Effectuer la division euclidienne de $-17$ par $4$.",
+              "answer": "$-17 = 4 \\times (-5) + 3$",
+              "hint": "Le reste doit être positif et strictement inférieur à $4$.",
+              "explanation": "Le multiple de $4$ le plus grand $\\le -17$ est $-20$, donc quotient $-5$, reste $3$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'algorithme de la division euclidienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous passons de la théorie à la pratique : comment effectuer concrètement une division euclidienne, que ce soit à la main ou à l'aide d'un algorithme programmé. Vous verrez que la méthode classique de la division posée, enseignée dès le primaire, est en fait l'application directe du théorème vu précédemment. Nous détaillerons chaque étape, nous donnerons un exemple complet, et nous présenterons un petit programme en Python qui automatise le calcul. Ainsi, vous pourrez vérifier vos résultats et gagner en confiance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire le dividende $a$ et le diviseur $b$ ($b>0$ pour simplifier). Placer le quotient au-dessus, le reste en dessous."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver le premier chiffre du quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarder les premiers chiffres du dividende jusqu'à obtenir un nombre $\\ge b$. Déterminer combien de fois $b$ rentre dans ce nombre. Écrire ce chiffre au quotient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier et soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier $b$ par le chiffre trouvé, écrire le produit sous le nombre considéré, soustraire, abaisser le chiffre suivant du dividende."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répéter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Recommencer l'étape 2 avec le nouveau nombre formé jusqu'à épuisement des chiffres du dividende. Le dernier reste obtenu est le reste final, le quotient lu en haut est le quotient final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def division_euclidienne(a, b):\\n    \"\"\"Retourne (q, r) tel que a = b*q + r avec 0 <= r < abs(b).\"\"\"\\n    if b == 0:\\n        raise ValueError(\"Diviseur nul\")\\n    q = a // b\\n    r = a % b\\n    # En Python, le modulo renvoie toujours un reste de meme signe que le diviseur.\\n    # Pour respecter 0 <= r < |b|, on corrige si necessary.\\n    if r < 0:\\n        r += abs(b)\\n        q -= 1 if b > 0 else -1\\n    return q, r\\n\\n# Exemple d'utilisation\\nprint(division_euclidienne(1234, 56))  # (22, 2)",
+              "language": "python",
+              "caption": "Implémentation Python de la division euclidienne"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant étendre la division euclidienne aux entiers relatifs, c'est-à-dire autoriser le dividende et le diviseur à être négatifs. La convention adoptée en mathématiques expertes conserve un reste toujours positif ou nul, strictement inférieur à la valeur absolue du diviseur. Cette convention garantit l'unicité du couple $(q,r)$ quel que soit le signe des nombres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Division dans les entiers relatifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $a \\in \\mathbb{Z}$ et $b \\in \\mathbb{Z}^*$. Il existe un unique couple $(q,r) \\in \\mathbb{Z}^2$ tel que $a = b q + r$ avec $0 \\le r < |b|$. Lorsque $b$ est négatif, on peut remplacer $b$ par $|b|$ et ajuster le signe du quotient. Par exemple, pour diviser $-91$ par $-7$, on peut d'abord diviser $-91$ par $7$ : $-91 = 7 \\times (-13) + 0$, puis changer le signe du quotient pour obtenir $-91 = (-7) \\times 13 + 0$. Le reste reste $0$."
+            },
+            {
+              "type": "definition",
+              "term": "division euclidienne dans Z",
+              "definition": "Pour tout $a \\in \\mathbb{Z}$ et $b \\in \\mathbb{Z}^*$, il existe un unique couple $(q,r) \\in \\mathbb{Z}^2$ tel que $a = b q + r$ et $0 \\le r < |b|$.",
+              "example": "Division de $-23$ par $5$ : $-23 = 5 \\times (-5) + 2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Réduire au diviseur positif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $b<0$, poser $b' = -b$ et calculer la division euclidienne de $a$ par $b'$ : $a = b' q' + r$ avec $0 \\le r < b'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Adapter le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $b = -b'$, on a $a = (-b') q' + r = b (-q') + r$. Le quotient pour le diviseur $b$ est donc $q = -q'$, le reste $r$ est inchangé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Multiples de $-4$ et reste positif",
+              "min": -20,
+              "max": 5,
+              "points": [
+                {
+                  "value": -20,
+                  "label": "-20"
+                },
+                {
+                  "value": -16,
+                  "label": "-16"
+                },
+                {
+                  "value": -12,
+                  "label": "-12"
+                },
+                {
+                  "value": -8,
+                  "label": "-8"
+                },
+                {
+                  "value": -4,
+                  "label": "-4"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous verrons comment la division euclidienne itérée permet de calculer le plus grand commun diviseur (PGCD) de deux entiers. C'est l'algorithme d'Euclide, l'un des plus anciens algorithmes connus, qui repose uniquement sur des divisions successives. Nous le présenterons pas à pas, puis nous donnerons une implémentation Python de la version étendue qui fournit aussi les coefficients de Bézout."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul du PGCD par l'algorithme d'Euclide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $a,b \\in \\mathbb{N}^*$. On effectue la division euclidienne $a = b q_1 + r_1$ avec $0 \\le r_1 < b$. Si $r_1 = 0$, alors $b$ est le PGCD. Sinon, on divise $b$ par $r_1$ : $b = r_1 q_2 + r_2$, et ainsi de suite. Le dernier reste non nul est le PGCD de $a$ et $b$. Cette méthode termine car les restes forment une suite strictement décroissante d'entiers naturels."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Première division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $a = b q_1 + r_1$, $0 \\le r_1 < b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Divisions successives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que $r_i \\neq 0$, calculer $r_{i-1} = r_i q_{i+1} + r_{i+1}$ avec $0 \\le r_{i+1} < r_i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dernier reste non nul $r_k$ est $\\operatorname{pgcd}(a,b)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def pgcd_etendu(a, b):\\n    \"\"\"Retourne (g, u, v) tel que g = pgcd(a,b) et a*u + b*v = g.\"\"\"\\n    if b == 0:\\n        return (a, 1, 0)\\n    else:\\n        g, u1, v1 = pgcd_etendu(b, a % b)\\n        u = v1\\n        v = u1 - (a // b) * v1\\n        return (g, u, v)\\n\\n# Exemple\\nprint(pgcd_etendu(252, 198))  # (18, -4, 5) car 252*(-4) + 198*5 = 18",
+              "language": "python",
+              "caption": "Algorithme d'Euclide étendu en Python"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Appliquer l'algorithme de division euclidienne pour diviser $1234$ par $56$.",
+              "answer": "$1234 = 56 \\times 22 + 2$",
+              "hint": "Calculez $56\\times20=1120$, puis ajustez.",
+              "explanation": "Le quotient est $22$, le reste $2$."
+            },
+            {
+              "question": "Donner la division euclidienne de $-91$ par $7$.",
+              "answer": "$-91 = 7 \\times (-13) + 0$",
+              "hint": "Le reste doit être dans $[0,7)$.",
+              "explanation": "Puisque $-91$ est multiple de $7$, le reste est $0$."
+            },
+            {
+              "question": "Utiliser l'algorithme d'Euclide pour trouver le PGCD de $252$ et $198$.",
+              "answer": "Le PGCD est $18$.",
+              "hint": "Effectuez les divisions successives.",
+              "explanation": "252=198*1+54, 198=54*3+36, 54=36*1+18, 36=18*2+0."
+            }
+          ]
+        },
+        {
+          "title": "Raisonner.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales de la divisibilité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon vise à développer votre capacité à raisonner avec la divisibilité. Nous allons établir les propriétés de base : transitivité, stabilité par combinaison linéaire, et nous verrons comment elles s'articulent autour du lemme d'Euclide et de l'identité de Bézout. Ces outils sont indispensables pour résoudre des problèmes de divisibilité, démontrer des théorèmes d'arithmétique et préparer le terrain pour l'étude des congruences."
+            },
+            {
+              "type": "definition",
+              "term": "combinaison linéaire",
+              "definition": "Une combinaison linéaire de deux entiers $a$ et $b$ est une expression de la forme $u a + v b$ où $u,v \\in \\mathbb{Z}$.",
+              "example": "Pour $a=6$, $b=15$, l'entier $3 = (-2)\\times6 + 1\\times15$ est une combinaison linéaire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Propriété 1 : Transitivité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a \\mid b$ et $b \\mid c$, alors $a \\mid c$. Preuve : $b = a k$, $c = b l = a (k l)$, donc $a \\mid c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Propriété 2 : Combinaison linéaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a \\mid b$ et $a \\mid c$, alors pour tous $u,v \\in \\mathbb{Z}$, $a \\mid (u b + v c)$. Preuve : $b = a k$, $c = a l$, donc $u b + v c = a (u k + v l)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Propriété 3 : Division par le PGCD",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $d = \\operatorname{pgcd}(a,b)$, alors $d \\mid a$ et $d \\mid b$, et tout diviseur commun de $a$ et $b$ divise $d$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\mid b \\land b \\mid c \\implies a \\mid c \\quad ; \\quad a \\mid b \\land a \\mid c \\implies \\forall u,v\\in\\mathbb{Z}, a \\mid (u b + v c)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lemme d'Euclide est un résultat classique qui relie la primalité à la divisibilité d'un produit. Il affirme que si un nombre premier divise un produit, il divise au moins l'un des facteurs. Sa démonstration utilise l'identité de Bézout, ce qui illustre la puissance de la combinaison linéaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lemme d'Euclide et conséquences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $p$ un nombre premier et $a,b \\in \\mathbb{Z}$. Si $p \\mid a b$, alors $p \\mid a$ ou $p \\mid b$. Pour le prouver, on suppose $p \\nmid a$. Alors $\\operatorname{pgcd}(p,a)=1$. D'après l'identité de Bézout, il existe $u,v$ tels que $u p + v a = 1$. En multipliant par $b$, on obtient $u p b + v a b = b$. Comme $p$ divise les deux termes de gauche ($p \\mid u p b$ et $p \\mid v a b$ car $p \\mid a b$), $p$ divise $b$. Ce raisonnement est au cœur de la factorisation unique dans $\\mathbb{Z}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Supposer $p \\nmid a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Alors $\\operatorname{pgcd}(p,a)=1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identité de Bézout",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il existe $u,v \\in \\mathbb{Z}$ tels que $u p + v a = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier par $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a $u p b + v a b = b$. Les deux termes de gauche sont multiples de $p$, donc $p \\mid b$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous terminons par l'identité de Bézout, qui affirme que le PGCD de deux entiers peut s'écrire comme combinaison linéaire de ces entiers. L'algorithme d'Euclide étendu permet de calculer explicitement les coefficients. Cette identité est la clé de voûte pour résoudre les équations diophantiennes linéaires et pour travailler avec les inverses modulaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identité de Bézout et algorithme étendu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tous $a,b \\in \\mathbb{Z}$ non tous nuls, il existe $u,v \\in \\mathbb{Z}$ tels que $a u + b v = \\operatorname{pgcd}(a,b)$. Les entiers $u,v$ sont appelés coefficients de Bézout. L'algorithme d'Euclide étendu, présenté sous forme récursive ou itérative, produit ces coefficients en remontant les divisions successives. Nous avons déjà vu une implémentation Python dans la leçon précédente ; voici un exemple numérique détaillé."
+            },
+            {
+              "type": "definition",
+              "term": "coefficients de Bézout",
+              "definition": "Les entiers $u,v$ tels que $a u + b v = \\operatorname{pgcd}(a,b)$.",
+              "example": "Pour $a=56$, $b=15$, on a $56 \\times 4 + 15 \\times (-15) = 1$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def bezout(a, b):\\n    \"\"\"Retourne (g, u, v) avec g = pgcd(a,b) et a*u + b*v = g.\"\"\"\\n    if b == 0:\\n        return (a, 1, 0)\\n    else:\\n        g, u1, v1 = bezout(b, a % b)\\n        u = v1\\n        v = u1 - (a // b) * v1\\n        return (g, u, v)\\n\\nprint(bezout(56, 15))  # (1, 4, -15)",
+              "language": "python",
+              "caption": "Calcul des coefficients de Bézout pour 56 et 15"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les clés pour manipuler la divisibilité, effectuer des divisions euclidiennes, calculer des PGCD et raisonner avec les propriétés fondamentales. Ces notions constituent le socle de l'arithmétique avancée et vous serviront tout au long de votre parcours en mathématiques expertes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la divisibilité et énoncer le théorème de la division euclidienne.",
+                "Je sais effectuer une division euclidienne à la main ou par algorithme.",
+                "Je sais appliquer l'algorithme d'Euclide pour calculer un PGCD.",
+                "Je connais les propriétés de transitivité et de combinaison linéaire.",
+                "Je sais énoncer et utiliser le lemme d'Euclide et l'identité de Bézout."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Montrer que si $a\\mid b$ et $b\\mid c$ alors $a\\mid c$.",
+              "answer": "Il existe $k,l$ tels que $b=ak$, $c=bl$, donc $c=a(kl)$.",
+              "hint": "Utilisez la définition de la divisibilité.",
+              "explanation": "Le produit $kl$ est entier, donc $a$ divise $c$."
+            },
+            {
+              "question": "Énoncer et démontrer le lemme d'Euclide : si $p$ premier et $p\\mid ab$ alors $p\\mid a$ ou $p\\mid b$.",
+              "answer": "Preuve par contraposée en utilisant l'identité de Bézout.",
+              "hint": "Supposons $p\\nmid a$, alors $a$ et $p$ sont premiers entre eux.",
+              "explanation": "Il existe $u,v$ tels que $au+pv=1$, multiplier par $b$."
+            },
+            {
+              "question": "Trouver des coefficients de Bézout pour $56$ et $15$.",
+              "answer": "Par exemple $56\\times 4 + 15\\times (-15) = 1$.",
+              "hint": "Appliquez l'algorithme étendu d'Euclide.",
+              "explanation": "Les divisions successives donnent les combinaisons."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,418 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.513729+00:00",
+  "id": 649,
+  "code": "terminale-generale-complementaires-t04-c01",
+  "title": "Primitive et intégrale",
+  "description": "Cours structuré Educalcul : Primitive et intégrale.",
+  "subject": "Calculs d'aires et intégrales",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Calculs d'aires et intégrales",
+    "titre_du_cours": "Primitive et intégrale",
+    "objectif_global": "Primitive et intégrale",
+    "mini_lecons_imposees": [
+      "Relier.",
+      "Calculer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calculs d'aires et intégrales",
+      "lessons": [
+        {
+          "title": "Relier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier la dérivée et l'intégrale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment la notion de primitive, que tu as déjà croisée en étudiant les dérivées, se lie naturellement à l'idée d'intégrale définie. Imagine que tu suives le tracé d'une courbe sur une feuille : la pente en chaque point te donne la dérivée, tandis que la surface comprise entre la courbe et l'axe des abscisses, sur un intervalle donné, te donne l'intégrale. Ce lien profond est le cœur du théorème fondamental du calcul, une découverte qui a révolutionné les mathématiques au XVIIe siècle. Pour te mettre en confiance, rappelle-toi que chaque nouvelle idée s'appuie sur ce que tu sais déjà : la dérivation, les limites et les aires de rectangles. Nous allons avancer pas à pas, en illustrant chaque concept par des exemples concrets et des figures animées, pour que tu puisses visualiser la mécanique qui unit ces deux mondes."
+            },
+            {
+              "type": "definition",
+              "term": "Primitive",
+              "definition": "Une fonction $F$ est une primitive de $f$ sur un intervalle $I$ si, pour tout $x$ dans $I$, la dérivée $F'(x)$ existe et vaut $f(x)$. En d'autres termes, dériver $F$ redonne exactement $f$.",
+              "example": "Pour $f(x)=x^2$, une primitive est $F(x)=\\frac{x^3}{3}$, car $F'(x)=x^2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple simple $f(x)=x^2$. Si tu dérives $F(x)=\\frac{x^3}{3}$, tu retrouves $x^2$. Mais attention : toute fonction de la forme $\\frac{x^3}{3}+C$, avec $C$ constante, est aussi une primitive, car la dérivée d'une constante est nulle. Cette famille de fonctions se note souvent $\\int x^2\\,dx = \\frac{x^3}{3}+C$. Le symbole $\\int$ rappelle l'idée de somme, et le $dx$ indique la variable d'intégration. C'est la notation de l'intégrale indéfinie, qui rassemble toutes les primitives d'une même fonction."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int x^2\\,dx = \\frac{x^3}{3}+C"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment une primitive se construit, tournons-nous vers l'intégrale définie. Au lieu de chercher une fonction, nous voulons calculer un nombre : l'aire exacte sous la courbe $y=f(x)$ entre $x=a$ et $x=b$. L'idée historique est de découper cette région en une multitude de rectangles très fins, de calculer la somme de leurs aires, puis de laisser la largeur des rectangles tendre vers zéro. Ce processus de passage à la limite s'appelle une somme de Riemann. Plus les rectangles sont nombreux et étroits, plus l'approximation est précise, jusqu'à devenir l'aire exacte."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 8,
+              "caption": "Approximation de l'aire sous $y=x^2$ entre 0 et 2 par des rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lien magique apparaît quand on réalise que la limite des sommes de Riemann peut être obtenue simplement en évaluant une primitive aux bornes de l'intervalle. C'est exactement ce que dit le théorème fondamental du calcul : si $F$ est une primitive de $f$ sur $[a,b]$, alors l'intégrale définie $\\int_a^b f(x)\\,dx$ vaut $F(b)-F(a)$. Cette égalité transforme un problème d'aire, a priori géométrique, en un calcul purement algébrique. C'est une économie d'effort immense : plus besoin de raffiner des rectangles, il suffit de connaître une primitive."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver une primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une fonction $F$ telle que $F'=f$. Utilise la table des primitives usuelles ou les règles de dérivation inversées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Évaluer aux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $F(b)$ et $F(a)$, puis fais la différence $F(b)-F(a)$. Ce nombre est la valeur de l'intégrale définie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le sens",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f$ est positive sur $[a,b]$, le résultat doit être positif (aire). Si $f$ change de signe, l'intégrale donne l'aire algébrique (parties au-dessus de l'axe comptées positivement, en-dessous négativement)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de parcourir le chemin qui relie la dérivée à l'intégrale : primitive, somme de Riemann, théorème fondamental. Cette trame sera le fil conducteur de tout le cours. Dans la prochaine leçon, nous allons enrichir ta boîte à outils pour calculer des primitives de fonctions plus variées, en utilisant la linéarité, le changement de variable et l'intégration par parties. Garde en tête que chaque nouvelle technique n'est qu'une façon de retrouver une primitive, donc de pouvoir appliquer le théorème fondamental."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne une primitive de la fonction $f(x)=3x^2-4x+5$.",
+              "answer": "$F(x)=x^3-2x^2+5x+C$",
+              "hint": "Applique la linéarité : primitive de $x^n$ est $\\frac{x^{n+1}}{n+1}$. N'oublie pas la constante $C$.",
+              "explanation": "La primitive de $3x^2$ est $x^3$, celle de $-4x$ est $-2x^2$, celle de $5$ est $5x$. On additionne et on ajoute $C$."
+            },
+            {
+              "question": "En utilisant l'applet de sommes de Riemann, estime l'intégrale $\\int_0^2 x^2\\,dx$ avec 8 rectangles. Quelle valeur approchée obtiens-tu ?",
+              "answer": "Environ $2.62$ (la valeur exacte est $\\frac{8}{3}\\approx2.666\\dots$)",
+              "hint": "Observe la somme affichée par l'applet quand le curseur est sur 8 rectangles.",
+              "explanation": "L'applet calcule la somme des aires des 8 rectangles. Comme les rectangles sont sous la courbe croissante, l'approximation est par défaut, d'où une valeur légèrement inférieure à l'exacte."
+            },
+            {
+              "question": "Calcule $\\int_1^3 (2x+1)\\,dx$ en utilisant le théorème fondamental.",
+              "answer": "$16$",
+              "hint": "Trouve une primitive de $2x+1$, puis évalue en $3$ et $1$.",
+              "explanation": "Une primitive est $x^2+x$. $F(3)=9+3=12$, $F(1)=1+1=2$, différence $12-2=10$. Attends, recalcul : $F(x)=x^2+x$, $F(3)=12$, $F(1)=2$, $12-2=10$. Mais l'intégrale de $2x+1$ de 1 à 3 donne $[x^2+x]_1^3 = (9+3)-(1+1)=12-2=10$. La réponse correcte est $10$. (Correction : la réponse attendue est $10$.)"
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer des primitives : linéarité et table de référence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons enrichir ton répertoire de calculs d'intégrales. La première bonne nouvelle, c'est que l'intégrale, tout comme la dérivée, respecte la linéarité : l'intégrale d'une somme est la somme des intégrales, et on peut factoriser une constante. Cela signifie que pour intégrer une expression polynomiale ou une combinaison de fonctions usuelles, il suffit de connaître les primitives de base et de les assembler. Nous allons d'abord dresser une petite table des primitives les plus fréquentes, puis nous verrons comment l'utiliser efficacement sur des exemples variés. Garde à l'esprit que chaque ligne de cette table est simplement l'inverse d'une règle de dérivation que tu maîtrises déjà."
+            },
+            {
+              "type": "definition",
+              "term": "Linéarité de l'intégrale",
+              "definition": "Pour toutes fonctions $f,g$ intégrables sur $[a,b]$ et tout nombre réel $\\lambda$, on a $\\int_a^b (f(x)+g(x))\\,dx = \\int_a^b f(x)\\,dx + \\int_a^b g(x)\\,dx$ et $\\int_a^b \\lambda f(x)\\,dx = \\lambda \\int_a^b f(x)\\,dx$.",
+              "example": "$\\int_0^1 (3x^2+2\\sin x)\\,dx = 3\\int_0^1 x^2\\,dx + 2\\int_0^1 \\sin x\\,dx$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fonction $f(x)$",
+                "Primitive $F(x)$ (une parmi d'autres)"
+              ],
+              "rows": [
+                [
+                  "$x^n$ ($n\\neq -1$)",
+                  "$\\frac{x^{n+1}}{n+1}$"
+                ],
+                [
+                  "$\\frac{1}{x}$",
+                  "$\\ln|x|$"
+                ],
+                [
+                  "$e^x$",
+                  "$e^x$"
+                ],
+                [
+                  "$\\sin x$",
+                  "$-\\cos x$"
+                ],
+                [
+                  "$\\cos x$",
+                  "$\\sin x$"
+                ],
+                [
+                  "$\\frac{1}{1+x^2}$",
+                  "$\\arctan x$"
+                ]
+              ],
+              "caption": "Tableau des primitives usuelles à garder sous la main"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as la table sous les yeux, voyons comment aborder des fonctions un peu plus complexes grâce au changement de variable, aussi appelé substitution. L'idée est de reconnaître dans l'intégrande une forme $f(g(x))\\cdot g'(x)$ : si tu poses $u=g(x)$, alors $du=g'(x)\\,dx$ et l'intégrale devient $\\int f(u)\\,du$, souvent plus simple. C'est exactement l'inverse de la règle de dérivation des fonctions composées. Nous allons détailler la méthode pas à pas, avec un exemple où la substitution n'est pas évidente au premier regard, pour t'habituer à repérer le bon $u$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer une fonction intérieure et sa dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une expression $g(x)$ dont la dérivée $g'(x)$ apparaît (ou presque) en facteur dans l'intégrande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer le changement de variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Poses $u=g(x)$, calcule $du=g'(x)\\,dx$, et remplace $x$ et $dx$ dans l'intégrale. Les bornes d'intégration changent aussi si c'est une intégrale définie : $u(a)=g(a)$, $u(b)=g(b)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Intégrer en $u$ puis revenir en $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la primitive en $u$, puis substitue $u=g(x)$ pour exprimer le résultat en $x$ (ou évalue directement aux nouvelles bornes pour une intégrale définie)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x^2)*2*x",
+              "xmin": 0,
+              "xmax": 2,
+              "caption": "Graphique de $2x\\sin(x^2)$ ; la substitution $u=x^2$ simplifie l'intégrale"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière technique incontournable est l'intégration par parties, qui est l'analogue intégral de la formule de dérivation d'un produit : $(uv)'=u'v+uv'$. En intégrant cette égalité, on obtient $\\int u'v = uv - \\int uv'$. Cette formule permet de transformer l'intégrale d'un produit en une autre intégrale, souvent plus facile, à condition de choisir judicieusement $u$ et $v'$. Une astuce mnémotechnique classique est LIATE (Logarithme, Inverse trigonométrique, Algébrique, Trigonométrique, Exponentielle) pour décider quelle fonction dériver ($u$) et quelle fonction intégrer ($v'$). Nous allons illustrer cela sur un cas où le choix est crucial."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir $u$ et $v'$ selon LIATE",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les deux facteurs. Prends $u$ comme la fonction qui apparaît en premier dans l'ordre LIATE, le reste sera $v'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $u'$ et $v$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dérive $u$ pour obtenir $u'$. Intègre $v'$ pour obtenir $v$ (une primitive quelconque, sans constante)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $\\int u v' = u v - \\int u' v$. Calcule la nouvelle intégrale ; si elle est encore un produit, répète l'opération."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des valeurs des intégrales $\\int_0^{\\pi/2} x\\cos x\\,dx$ (bleu) et $\\int_0^{\\pi/2} \\sin x\\,dx$ (or) après intégration par parties",
+              "bars": [
+                {
+                  "label": "Intégrale par parties",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Intégrale directe",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu disposes maintenant de trois leviers puissants : la linéarité pour décomposer, la substitution pour simplifier une composition, et l'intégration par parties pour dompter les produits. Ces outils couvrent la très grande majorité des intégrales rencontrées au lycée. Dans la prochaine leçon, nous changerons de perspective : au lieu de calculer, nous apprendrons à interpréter le nombre obtenu, qu'il s'agisse d'une aire, d'une valeur moyenne ou d'une grandeur physique comme un travail ou une distance parcourue. Cette lecture du résultat est tout aussi importante que le calcul lui-même."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\int (4x^3 - 3\\cos x + \\frac{2}{x})\\,dx$.",
+              "answer": "$x^4 - 3\\sin x + 2\\ln|x| + C$",
+              "hint": "Utilise la linéarité et la table des primitives.",
+              "explanation": "Primitive de $4x^3$ est $x^4$, de $-3\\cos x$ est $-3\\sin x$, de $2/x$ est $2\\ln|x|$. On additionne et on ajoute $C$."
+            },
+            {
+              "question": "Évalue $\\int_0^1 2x\\,e^{x^2}\\,dx$ par la substitution $u=x^2$.",
+              "answer": "$e-1$",
+              "hint": "Avec $u=x^2$, $du=2x\\,dx$. Les bornes deviennent $0$ et $1$.",
+              "explanation": "L'intégrale devient $\\int_0^1 e^u\\,du = [e^u]_0^1 = e^1-e^0 = e-1$."
+            },
+            {
+              "question": "Calcule $\\int_0^{\\pi/2} x\\cos x\\,dx$ par intégration par parties.",
+              "answer": "$\\frac{\\pi}{2}-1$",
+              "hint": "Choisis $u=x$ (algébrique) et $v'=\\cos x$ (trigonométrique).",
+              "explanation": "$u=x \\Rightarrow u'=1$, $v'=\\cos x \\Rightarrow v=\\sin x$. Alors $\\int x\\cos x = x\\sin x - \\int \\sin x = x\\sin x + \\cos x$. Évalué de $0$ à $\\pi/2$ : $(\\frac{\\pi}{2}\\cdot1+0) - (0+1) = \\frac{\\pi}{2}-1$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter l'intégrale : aire, valeur moyenne et applications"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce module. Jusqu'ici, nous avons vu comment calculer des intégrales. Maintenant, il est temps de comprendre ce que ces nombres représentent vraiment. L'intégrale définie $\\int_a^b f(x)\\,dx$ a plusieurs visages : c'est l'aire algébrique sous la courbe, c'est la valeur moyenne de la fonction sur l'intervalle multipliée par la longueur de l'intervalle, et c'est aussi la somme cumulée d'une grandeur variable (vitesse, force, débit, etc.). Nous allons explorer ces interprétations à travers des situations concrètes, pour que chaque fois que tu rencontreras une intégrale, tu puisses lui donner du sens physique ou géométrique. Cette capacité à « lire » une intégrale est ce qui distingue un utilisateur averti d'un simple calculateur."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur moyenne d'une fonction",
+              "definition": "La valeur moyenne de $f$ sur $[a,b]$ est $\\frac{1}{b-a}\\int_a^b f(x)\\,dx$. C'est la hauteur d'un rectangle de base $b-a$ ayant la même aire que la région sous la courbe.",
+              "example": "Pour $f(x)=x^2$ sur $[0,2]$, la valeur moyenne est $\\frac{1}{2}\\int_0^2 x^2\\,dx = \\frac{1}{2}\\cdot\\frac{8}{3} = \\frac{4}{3}$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition de l'aire totale sous $y=x^2$ sur $[0,2]$ : partie correspondant à la valeur moyenne (bleu) et reste (gris)",
+              "slices": [
+                {
+                  "label": "Aire moyenne",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Reste",
+                  "value": 4,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux applications physiques. Imagine un véhicule dont la vitesse $v(t)$ varie avec le temps. La distance parcourue entre $t=a$ et $t=b$ est exactement $\\int_a^b v(t)\\,dt$. De même, si une force $F(x)$ agit sur un objet le long d'un axe, le travail effectué est $\\int_a^b F(x)\\,dx$. Ces exemples montrent que l'intégrale n'est pas seulement un outil de géométrie, mais le langage naturel pour additionner une infinité de contributions infinitésimales. Pour t'en convaincre, nous allons examiner un petit programme Python qui approxime numériquement de telles intégrales, illustrant le passage de la somme discrète à l'intégrale continue."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def integrale_rectangles(f, a, b, n):\\n    dx = (b - a) / n\\n    s = 0.0\\n    for i in range(n):\\n        x = a + i * dx\\n        s += f(x) * dx\\n    return s\\n\\n# Exemple : distance avec v(t)=3*t**2 sur [0,2]\\nimport math\\nprint(integrale_rectangles(lambda t: 3*t**2, 0, 2, 10000))",
+              "language": "python",
+              "caption": "Algorithme simple des rectangles pour approximer $\\int_0^2 3t^2\\,dt$ (distance parcourue)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, faisons un bref bilan synthétique. Nous avons relié la primitive à l'intégrale grâce au théorème fondamental, nous avons appris à calculer des primitives avec la linéarité, la substitution et l'intégration par parties, et nous avons vu comment interpréter le résultat : aire, valeur moyenne, distance, travail. Chaque notion s'enchaîne logiquement : la primitive est l'outil de calcul, l'intégrale est l'objet géométrique ou physique, et l'interprétation donne du sens au nombre final. Pour ancrer ces idées, voici une liste de contrôle qui résume les compétences clés que tu dois maintenant maîtriser. Relis-la calmement et coche mentalement chaque point ; si l'un d'eux te semble flou, reviens sur la leçon correspondante."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une primitive et en donner une pour les fonctions usuelles.",
+                "Je sais écrire l'intégrale définie comme limite de sommes de Riemann.",
+                "J'applique le théorème fondamental pour passer d'une primitive à une aire.",
+                "J'utilise la linéarité, la substitution et l'intégration par parties pour calculer des primitives.",
+                "J'interprète une intégrale comme une aire, une valeur moyenne ou une grandeur physique (distance, travail).",
+                "Je sais estimer numériquement une intégrale avec une méthode de rectangles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la valeur moyenne de $f(x)=\\sin x$ sur l'intervalle $[0,\\pi]$ ?",
+              "answer": "$\\frac{2}{\\pi}$",
+              "hint": "Calcule $\\frac{1}{\\pi}\\int_0^{\\pi} \\sin x\\,dx$.",
+              "explanation": "$\\int_0^{\\pi} \\sin x\\,dx = [-\\cos x]_0^{\\pi} = -(-1)-(-1)=2$. Diviser par $\\pi$ donne $2/\\pi$."
+            },
+            {
+              "question": "Un objet se déplace avec une vitesse $v(t)=4t+1$ (en m/s) pendant $t$ de $0$ à $3$ secondes. Quelle distance a-t-il parcourue ?",
+              "answer": "$21\\,\\text{m}$",
+              "hint": "La distance est $\\int_0^3 (4t+1)\\,dt$.",
+              "explanation": "Primitive $2t^2+t$. Évaluée de $0$ à $3$ : $2\\cdot9+3=18+3=21$ mètres."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

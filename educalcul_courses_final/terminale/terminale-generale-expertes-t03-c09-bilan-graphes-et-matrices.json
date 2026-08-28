@@ -1,0 +1,509 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.828397+00:00",
+  "id": 755,
+  "code": "terminale-generale-expertes-t03-c09",
+  "title": "Bilan - Graphes et matrices",
+  "description": "Cours structuré Educalcul : Bilan - Graphes et matrices.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Bilan - Graphes et matrices",
+    "objectif_global": "Bilan - Graphes et matrices",
+    "mini_lecons_imposees": [
+      "Graphes, matrices, modèles.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Graphes, matrices, modèles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Qu'est-ce qu'un graphe ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un graphe est une structure mathématique qui permet de modéliser des relations entre objets. Concrètement, imaginez un réseau de villes reliées par des routes : chaque ville devient un sommet, chaque route une arête. Dans ce cours de terminale experte, nous allons manipuler ces objets avec une rigueur algébrique, mais gardez en tête l'image du plan de métro : les stations sont des sommets, les lignes des arêtes. Cette représentation visuelle aide à comprendre pourquoi les matrices deviennent des outils puissants pour compter les chemins."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe",
+              "definition": "Un graphe $G$ est un couple $(V,E)$ où $V$ est un ensemble fini de sommets et $E \\subseteq \\{\\{u,v\\}\\mid u,v\\in V, u\\neq v\\}$ (non orienté) ou $E \\subseteq V\\times V$ (orienté).",
+              "example": "Le graphe des amitiés dans une classe : $V=\\{\\text{Alice},\\text{Bob},\\text{Chloé}\\}$, $E=\\{\\{\\text{Alice},\\text{Bob}\\},\\{\\text{Bob},\\text{Chloé}\\}\\}$."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Élément de $V$, souvent noté $v_i$. Il représente une entité du modèle (ville, personne, page web).",
+              "example": "Dans le graphe des routes, $v_1$ pourrait être Paris."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Paire de sommets (non orienté) ou couple ordonné (orienté) indiquant une relation directe. On note $e_{ij}$ l'arête reliant $v_i$ à $v_j$.",
+              "example": "L'autoroute A1 entre Paris ($v_1$) et Lille ($v_2$) correspond à $e_{12}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de cette description verbale à un calcul efficace, nous associons à chaque graphe une matrice carrée d'ordre $n=|V|$. La construction se fait pas à pas : on numérote les sommets, puis on remplit la matrice en mettant $1$ s'il existe une arête entre $v_i$ et $v_j$, $0$ sinon. Cette matrice d'adjacence $A$ encode toute la topologie du graphe et devient le point de départ de tous les calculs spectraux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Numéroter les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez un ordre arbitraire $v_1,\\dots,v_n$. Cet ordre fixe les lignes et colonnes de la matrice."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplir les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque couple $(i,j)$, posez $a_{ij}=1$ si $\\{v_i,v_j\\}\\in E$ (ou $(v_i,v_j)\\in E$ pour un graphe orienté), sinon $a_{ij}=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le graphe est non orienté, $A$ est symétrique ($A=A^{\\mathsf{T}}$). Cette propriété simplifie l'étude spectrale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la matrice d'adjacence est construite, nous pouvons exploiter l'algèbre linéaire pour compter les chemins de longueur quelconque. C'est le cœur du deuxième cycle : les puissances de $A$ donnent le nombre de marches entre deux sommets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Matrice d'adjacence et chemins"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $A$ la matrice d'adjacence d'un graphe à $n$ sommets. Le coefficient $(A^k)_{ij}$ égale le nombre de chemins de longueur exactement $k$ partant de $v_i$ et arrivant en $v_j$. Cette propriété se démontre par récurrence sur $k$ en utilisant la définition du produit matriciel. Elle transforme un problème combinatoire en une suite de multiplications matricielles, que l'on peut effectuer efficacement même pour de grands graphes grâce à l'exponentiation rapide."
+            },
+            {
+              "type": "display_math",
+              "latex": "(A^k)_{ij} = \\sum_{i_1,\\dots,i_{k-1}} a_{i,i_1} a_{i_1,i_2} \\cdots a_{i_{k-1},j}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $A^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le coefficient $(A^2)_{ij}$ compte les chemins de longueur 2 : on somme sur le sommet intermédiaire $v_\\ell$ le produit $a_{i\\ell}a_{\\ell j}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Généraliser à $A^k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par récurrence, $(A^{k+1})_{ij} = \\sum_{\\ell} (A^k)_{i\\ell} a_{\\ell j}$, ce qui correspond à ajouter une dernière arête à tous les chemins de longueur $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exponentiation rapide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour de grands $k$, on utilise la décomposition binaire de $k$ et on élève $A$ au carré successivement, réduisant la complexité à $O(\\log k)$ multiplications matricielles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà du comptage de chemins, les valeurs propres de $A$ révèlent des propriétés globales du graphe : connectivité, bipartitude, vitesse de mélange d'une marche aléatoire. Le troisième cycle explore ce lien spectral, fondamental pour les chaînes de Markov et les algorithmes de classement comme PageRank."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Spectre d'un graphe et chaînes de Markov"
+            },
+            {
+              "type": "paragraph",
+              "content": "La matrice d'adjacence $A$ est une matrice réelle symétrique (pour un graphe non orienté), donc diagonalisable dans une base orthonormale. Ses valeurs propres $\\lambda_1\\ge\\lambda_2\\ge\\dots\\ge\\lambda_n$ sont réelles. La plus grande valeur propre $\\lambda_1$, appelée rayon spectral, domine le comportement asymptotique des puissances $A^k$. Dans une chaîne de Markov, on normalise $A$ pour obtenir une matrice stochastique $P = D^{-1}A$ (où $D$ est la matrice diagonale des degrés). La convergence vers la distribution stationnaire est gouvernée par le module de la deuxième valeur propre de $P$."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur propre",
+              "definition": "Scalaire $\\lambda$ tel qu'il existe un vecteur non nul $x$ vérifiant $Ax=\\lambda x$. Le vecteur $x$ est le vecteur propre associé.",
+              "example": "Pour le graphe complet $K_3$, $A=\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}$ a pour valeurs propres $2,-1,-1$."
+            },
+            {
+              "type": "definition",
+              "term": "Rayon spectral",
+              "definition": "Plus grande valeur propre en module d'une matrice, notée $\\rho(A)=\\max_i |\\lambda_i|$. Elle contrôle la croissance de $\\|A^k\\|$.",
+              "example": "Si $\\rho(A)<1$, alors $A^k\\to 0$ quand $k\\to\\infty$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P = D^{-1}A, \\quad \\pi P = \\pi, \\quad \\lambda_2(P) \\text{ détermine le temps de mélange}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire $P$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez la matrice diagonale $D$ des degrés ($d_{ii}=\\sum_j a_{ij}$), puis $P=D^{-1}A$. Chaque ligne de $P$ somme à $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver la distribution stationnaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez $\\pi P = \\pi$ avec $\\sum_i \\pi_i = 1$. Pour un graphe connexe non biparti, $\\pi_i = d_i / \\sum_j d_j$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Estimer la convergence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le gap spectral $1-\\lambda_2(P)$ donne une borne sur la distance en variation totale après $k$ étapes : $\\|P^k(x,\\cdot)-\\pi\\|_{\\text{TV}} \\le \\frac{1}{2}\\sqrt{\\frac{1-\\pi_x}{\\pi_x}}\\,\\lambda_2(P)^k$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier cycle de ce bilan aborde la matrice d'incidence, outil privilégié pour modéliser des flots dans un réseau (électricité, transport, circulation de données). Contrairement à la matrice d'adjacence, elle relie sommets et arêtes, ce qui permet d'exprimer les lois de Kirchhoff sous forme matricielle et de résoudre des problèmes d'optimisation de flot maximal."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "4. Matrice d'incidence et flots"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un graphe orienté à $n$ sommets et $m$ arêtes, la matrice d'incidence $B$ est de taille $n\\times m$. Sa colonne $e_k$ (correspondant à l'arête $v_i\\to v_j$) contient $+1$ à la ligne $i$, $-1$ à la ligne $j$, et $0$ ailleurs. La loi des nœuds (conservation du flot) s'écrit $B f = 0$ pour un flot $f\\in\\mathbb{R}^m$ sans sources ni puits. Si on impose des sources $b\\in\\mathbb{R}^n$ (avec $\\sum_i b_i=0$), on obtient $B f = b$. Ce système linéaire se résout par méthodes de moindres carrés ou par élimination de Gauss, et sa solution de norme minimale correspond au flot d'énergie minimale."
+            },
+            {
+              "type": "display_math",
+              "latex": "B_{i,k} = \\begin{cases} +1 & \\text{si } e_k = (v_i, v_j) \\\\ -1 & \\text{si } e_k = (v_j, v_i) \\\\ 0 & \\text{sinon} \\end{cases}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Listez les arêtes dans un ordre fixe. Pour chaque arête orientée $v_i\\to v_j$, placez $+1$ en $(i,k)$ et $-1$ en $(j,k)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exprimer la conservation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un flot $f$ vérifie $B f = b$ où $b_i$ est la production nette au sommet $i$ (positive pour source, négative pour puits)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre pour le flot minimal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le flot de norme euclidienne minimale satisfaisant $B f = b$ est $f = B^{\\mathsf{T}} (B B^{\\mathsf{T}})^{\\dagger} b$, où $\\dagger$ désigne la pseudo-inverse de Moore-Penrose."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons parcouru les quatre piliers de la modélisation par graphes et matrices : définition et adjacence, comptage de chemins par puissances matricielles, analyse spectrale pour les processus dynamiques, et formulation des flots via la matrice d'incidence. Chaque notion s'appuie sur la précédente, illustrant la puissance de l'algèbre linéaire pour transformer des problèmes discrets en calculs structurés."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit le graphe non orienté à 4 sommets avec arêtes $\\{\\{1,2\\},\\{2,3\\},\\{3,4\\},\\{4,1\\}\\}$. Écrire sa matrice d'adjacence $A$ et calculer $A^2$. Combien de chemins de longueur 2 relient le sommet 1 au sommet 3 ?",
+              "answer": "$A=\\begin{pmatrix}0&1&0&1\\\\1&0&1&0\\\\0&1&0&1\\\\1&0&1&0\\end{pmatrix}$, $A^2=\\begin{pmatrix}2&0&2&0\\\\0&2&0&2\\\\2&0&2&0\\\\0&2&0&2\\end{pmatrix}$. Il y a $2$ chemins de longueur 2 entre 1 et 3.",
+              "hint": "Remplissez $A$ en mettant 1 pour chaque arête, puis effectuez le produit matriciel $A\\times A$.",
+              "explanation": "La matrice d'adjacence code les voisins. Le coefficient $(A^2)_{13}$ somme sur le sommet intermédiaire $\\ell$ les produits $a_{1\\ell}a_{\\ell3}$. Seuls $\\ell=2$ et $\\ell=4$ donnent $1\\times1=1$, donc total 2."
+            },
+            {
+              "question": "Pour le même graphe, considérons la marche aléatoire simple (matrice de transition $P=D^{-1}A$). Déterminer la distribution stationnaire $\\pi$ et la deuxième valeur propre $\\lambda_2(P)$. En déduire un majorant de la distance en variation totale après $k=10$ étapes en partant du sommet 1.",
+              "answer": "Les degrés sont tous 2, donc $D=2I$ et $P=\\frac12 A$. $\\pi=(\\frac14,\\frac14,\\frac14,\\frac14)$. Valeurs propres de $A$ : $2,0,-2,0$, donc de $P$ : $1,0,-1,0$. $\\lambda_2(P)=0$. Majorant : $\\|P^{10}(1,\\cdot)-\\pi\\|_{\\text{TV}}=0$.",
+              "hint": "Calculez $D$, puis $P$. Les valeurs propres de $P$ sont celles de $A$ divisées par 2. La distance TV est nulle dès $k\\ge1$ car $\\lambda_2=0$.",
+              "explanation": "Le graphe est biparti et régulier, ce qui rend la marche périodique. Cependant $\\lambda_2=0$ implique une convergence immédiate en norme TV pour la matrice de transition symétrique normalisée."
+            },
+            {
+              "question": "Soit le graphe orienté à 3 sommets et 3 arêtes : $1\\to2$, $2\\to3$, $3\\to1$. Construire la matrice d'incidence $B$ (ordre des arêtes : $e_1=1\\to2$, $e_2=2\\to3$, $e_3=3\\to1$). Résoudre $B f = b$ pour $b=(1,-1,0)^{\\mathsf{T}}$ et donner le flot $f$ de norme minimale.",
+              "answer": "$B=\\begin{pmatrix}+1&0&-1\\\\-1&+1&0\\\\0&-1&+1\\end{pmatrix}$. $B B^{\\mathsf{T}}=\\begin{pmatrix}2&-1&-1\\\\-1&2&-1\\\\-1&-1&2\\end{pmatrix}$. $f = B^{\\mathsf{T}}(B B^{\\mathsf{T}})^{\\dagger}b = (\\frac23,-\\frac13,\\frac13)^{\\mathsf{T}}$.",
+              "hint": "Écrivez $B$ colonne par colonne. Calculez $B B^{\\mathsf{T}}$, inversez-le sur l'orthogonal de $(1,1,1)$, puis multipliez par $B^{\\mathsf{T}}b$.",
+              "explanation": "Le système $B f = b$ a une infinité de solutions car $\\operatorname{rank}(B)=2$. La solution de norme minimale est obtenue par projection sur l'espace des lignes de $B$, ce qui donne la formule avec la pseudo-inverse."
+            },
+            {
+              "question": "Expliquer pourquoi, pour un graphe connexe non orienté, la matrice d'adjacence $A$ a une valeur propre simple $\\lambda_1$ strictement supérieure en module aux autres valeurs propres. Quel théorème garantit cette propriété ?",
+              "answer": "C'est une conséquence du théorème de Perron-Frobenius appliqué à la matrice non négative $A+I$ (ou directement à $A$ si le graphe est non biparti). La connexité assure l'irréductibilité, ce qui donne une valeur propre dominante simple et un vecteur propre à composantes strictement positives.",
+              "hint": "Rappelez-vous les conditions du théorème de Perron-Frobenius : matrice non négative, irréductible. La connexité du graphe équivaut à l'irréductibilité de $A$.",
+              "explanation": "Le théorème de Perron-Frobenius assure l'existence d'une valeur propre réelle positive simple, maximale en module, avec un vecteur propre positif. Pour un graphe connexe non biparti, $A$ est irréductible et le résultat s'applique directement."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Représenter un problème par un graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première étape de toute modélisation consiste à identifier les entités (devenues sommets) et les relations (devenues arêtes). Prenons l'exemple d'un réseau de distribution d'électricité : les postes de transformation sont des sommets, les lignes à haute tension des arêtes orientées indiquant le sens possible du courant. En formalisant ainsi, on transforme une situation concrète en un objet mathématique manipulable. Cette abstraction permet ensuite d'appliquer les outils algébriques vus précédemment."
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation par graphe",
+              "definition": "Processus consistant à associer à un système réel un graphe $G=(V,E)$ tel que les propriétés structurelles du système (connectivité, flux, distances) correspondent à des invariants du graphe (chemins, coupes, valeurs propres).",
+              "example": "Modéliser le réseau routier d'une ville pour optimiser les tournées de ramassage des ordures."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def build_graph(edges):\\n    \"\"\"edges: liste de tuples (u,v) orientés\"\"\"\\n    vertices = set()\\n    for u,v in edges:\\n        vertices.add(u); vertices.add(v)\\n    V = sorted(vertices)\\n    index = {v:i for i,v in enumerate(V)}\\n    n = len(V)\\n    A = [[0]*n for _ in range(n)]\\n    for u,v in edges:\\n        A[index[u]][index[v]] = 1\\n    return V, A\\n\\n# Exemple d'utilisation\\nedges = [('A','B'),('B','C'),('C','A')]\\nV, A = build_graph(edges)\\nprint('Sommets:', V)\\nprint('Matrice adjacence:', A)",
+              "caption": "Construction automatique de la matrice d'adjacence à partir d'une liste d'arêtes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le graphe construit, la matrice d'adjacence $A$ devient le levier principal pour analyser la structure. Le deuxième cycle montre comment les puissances de $A$ donnent accès au nombre de chemins de longueur donnée, ce qui est essentiel pour évaluer la redondance des liaisons ou la vitesse de propagation d'une information dans le réseau."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Calculer les chemins avec les puissances de matrice"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons la formule fondamentale : $(A^k)_{ij}$ compte les marches de longueur $k$ de $v_i$ vers $v_j$. En pratique, pour des graphes de grande taille (milliers de sommets), on ne calcule pas $A^k$ naïvement. On utilise l'exponentiation binaire, qui ne nécessite que $O(\\log k)$ multiplications matricielles. De plus, si l'on ne s'intéresse qu'à quelques coefficients, on peut multiplier un vecteur par $A$ itérativement, ce qui coûte $O(k\\,|E|)$ opérations, bien plus léger que la multiplication matricielle complète."
+            },
+            {
+              "type": "display_math",
+              "latex": "A^k = \\underbrace{A \\times A \\times \\cdots \\times A}_{k \\text{ fois}}, \\quad (A^k)_{ij} = \\#\\{\\text{chemins de longueur } k \\text{ de } i \\text{ à } j\\}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la méthode",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $k$ est petit ($<10$), calculez directement $A^k$. Sinon, utilisez l'exponentiation rapide ou la multiplication vecteur-matrice répétée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exponentiation binaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $k$ en binaire. Initialisez $R=I$. Pour chaque bit de $k$ (du plus faible au plus fort) : $A \\leftarrow A^2$ ; si le bit vaut 1, $R \\leftarrow R A$. À la fin, $R=A^k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Extraction des coefficients utiles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour obtenir seulement $(A^k)_{ij}$, initialisez $e_i$ (vecteur unitaire), puis répétez $k$ fois $x \\leftarrow A x$. La composante $j$ de $x$ est le nombre cherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'analyse spectrale, troisième pilier, permet de comprendre le comportement à long terme des processus dynamiques sur le graphe. La valeur propre dominante et le gap spectral contrôlent la vitesse de convergence des marches aléatoires, la stabilité des équilibres dans les systèmes d'équations différentielles couplées, et la qualité des partitions spectrales pour le clustering."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Analyser la convergence via les valeurs propres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une matrice stochastique $P$ issue d'un graphe connexe et non biparti, le théorème de Perron-Frobenius garantit une valeur propre simple $\\lambda_1=1$ avec vecteur propre stationnaire $\\pi>0$. Toutes les autres valeurs propres satisfont $|\\lambda_i|<1$. Le deuxième module propre $\\lambda_* = \\max_{i\\ge2} |\\lambda_i|$ (le rayon spectral de $P$ sur l'orthogonal de $\\pi$) dicte le temps de mélange : après $k$ étapes, l'erreur en variation totale décroît comme $\\lambda_*^k$. Cette estimation est au cœur de l'analyse d'algorithmes comme PageRank ou les méthodes de Monte Carlo par chaînes de Markov."
+            },
+            {
+              "type": "definition",
+              "term": "Gap spectral",
+              "definition": "Différence $1-\\lambda_*$ où $\\lambda_*$ est le deuxième plus grand module propre de la matrice de transition $P$. Un gap grand implique une convergence rapide.",
+              "example": "Pour un graphe complet $K_n$, $P=\\frac1n J$ a $\\lambda_*=0$, gap $=1$, mélange en une étape."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|P^k(x,\\cdot)-\\pi\\|_{\\text{TV}} \\le \\frac12 \\sqrt{\\frac{1-\\pi_x}{\\pi_x}} \\, \\lambda_*^k"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $P$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de $A$ et des degrés $d_i$, formez $D=\\operatorname{diag}(d_1,\\dots,d_n)$ et $P=D^{-1}A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver $\\lambda_*$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez une méthode numérique (itération de puissance sur $P$ projeté orthogonalement à $\\pi$, ou algorithme de Lanczos) pour approximer $\\lambda_*$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Borner le temps de mélange",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez $\\varepsilon>0$. Le temps de mélange $t_{\\text{mix}}(\\varepsilon)$ est le plus petit $k$ tel que $\\frac12\\sqrt{\\frac{1-\\pi_{\\min}}{\\pi_{\\min}}}\\,\\lambda_*^k \\le \\varepsilon$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier cycle réunit les notions dans une perspective de modélisation complète : on part d'un problème concret, on construit le graphe, on choisit la matrice adaptée (adjacence, incidence, Laplacien), on exploite l'algèbre spectrale ou les flots pour obtenir une solution, puis on interprète le résultat dans le contexte initial. Cette boucle modélisation-calcul-interprétation est le cœur de l'expertise en mathématiques appliquées aux réseaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "4. Synthèse et checklist finale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce bilan, nous vous proposons de vérifier que chaque concept clé a été maîtrisé en le relixant à un exemple numérique différent de ceux déjà traités. Cette démarche active consolide la mémoire à long terme et prépare aux épreuves du baccalauréat où la capacité à changer de représentation (graphe, matrice, équations) est évaluée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant tous les outils pour aborder sereinement les problèmes de graphes et matrices. La checklist ci-dessous résume les compétences à valider avant l'examen."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un graphe, ses sommets et ses arêtes, orienté ou non.",
+                "Je sais construire la matrice d'adjacence $A$ et la matrice d'incidence $B$ à partir d'une description.",
+                "J'utilise les puissances $A^k$ pour compter les chemins de longueur $k$.",
+                "Je comprends le lien entre valeurs propres de $A$ (ou $P$) et propriétés du graphe (connexité, bipartitude, mélange).",
+                "Je sais formuler et résoudre un problème de flot par $B f = b$ et calculer le flot de norme minimale.",
+                "Je sais expliquer le théorème de Perron-Frobenius et son rôle pour la marche aléatoire.",
+                "Je suis capable de modéliser un problème concret (réseau, transport, classement) par un graphe et d'en extraire une réponse quantitative."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Modéliser le réseau de messagerie d'une entreprise : 5 services (A,B,C,D,E) ; les messages peuvent passer de A vers B, B vers C, C vers D, D vers E, et E vers A. Écrire la matrice d'adjacence $A$ (ordre A,B,C,D,E). Combien de chemins de longueur 3 existent de A vers D ?",
+              "answer": "$A=\\begin{pmatrix}0&1&0&0&0\\\\0&0&1&0&0\\\\0&0&0&1&0\\\\0&0&0&0&1\\\\1&0&0&0&0\\end{pmatrix}$. $A^3$ a un seul 1 en position (A,D), donc 1 chemin de longueur 3 (A→B→C→D).",
+              "hint": "Le graphe est un cycle orienté de longueur 5. $A$ est une matrice de permutation. $A^k$ décale les indices de $k$ modulo 5.",
+              "explanation": "Chaque puissance correspond à avancer de $k$ étapes sur le cycle. De A à D, il faut 3 étapes, donc $A^3$ a un 1 en (1,4)."
+            },
+            {
+              "question": "Pour le graphe non orienté en chaîne : 1—2—3—4. Calculer la matrice de transition $P$ de la marche aléatoire simple. Déterminer $\\pi$ et $\\lambda_2(P)$. Estimer le nombre d'étapes pour que la distance TV soit $<0.01$ en partant du sommet 1.",
+              "answer": "Degrés : $d_1=d_4=1$, $d_2=d_3=2$. $P=\\begin{pmatrix}0&1&0&0\\\\1/2&0&1/2&0\\\\0&1/2&0&1/2\\\\0&0&1&0\\end{pmatrix}$. $\\pi=(\\frac16,\\frac13,\\frac13,\\frac16)$. Valeurs propres de $P$ : $1, \\frac12, 0, -\\frac12$. Donc $\\lambda_2=1/2$. Majorant TV : $\\frac12\\sqrt{\\frac{1-\\pi_1}{\\pi_1}}(1/2)^k = \\frac12\\sqrt{5}(1/2)^k$. Il faut $k\\ge 6$ pour $<0.01$.",
+              "hint": "Calculez $D^{-1}A$. Les valeurs propres de la marche sur un chemin sont connues : $\\cos(\\pi j/(n+1))$. Ici $n=4$.",
+              "explanation": "Le gap spectral est $1-1/2=1/2$. La borne explicite donne $k\\approx \\log_{2}(\\frac{\\sqrt{5}}{0.02})\\approx 5.6$, donc 6 étapes suffisent."
+            },
+            {
+              "question": "Soit le graphe orienté avec arêtes $1\\to2$, $1\\to3$, $2\\to4$, $3\\to4$. Construire la matrice d'incidence $B$ (ordre arêtes : $e_1=1\\to2$, $e_2=1\\to3$, $e_3=2\\to4$, $e_4=3\\to4$). Résoudre $B f = b$ pour $b=(1,0,0,-1)^{\\mathsf{T}}$ (source en 1, puits en 4). Donner le flot $f$ de norme minimale.",
+              "answer": "$B=\\begin{pmatrix}+1&+1&0&0\\\\-1&0&+1&0\\\\0&-1&0&+1\\\\0&0&-1&-1\\end{pmatrix}$. $B B^{\\mathsf{T}}=\\begin{pmatrix}2&-1&-1&0\\\\-1&2&0&-1\\\\-1&0&2&-1\\\\0&-1&-1&2\\end{pmatrix}$. $f = B^{\\mathsf{T}}(B B^{\\mathsf{T}})^{\\dagger}b = (\\frac12,\\frac12,\\frac12,\\frac12)^{\\mathsf{T}}$.",
+              "hint": "Le graphe est un diamant. Le flot minimal partage équitablement le flux entre les deux chemins parallèles 1-2-4 et 1-3-4.",
+              "explanation": "La pseudo-inverse projette $b$ sur l'espace des lignes de $B$. Par symétrie, les deux arcs sortants de 1 reçoivent 1/2, et les deux arcs entrants dans 4 reçoivent 1/2."
+            },
+            {
+              "question": "Expliquer en vos mots pourquoi la matrice de Laplacien $L = D - A$ d'un graphe connexe a une valeur propre nulle simple, et comment les autres valeurs propres (le spectre de $L$) renseignent sur la facilité de partitionner le graphe (indice de Cheeger).",
+              "answer": "Le vecteur constant $\\mathbf{1}$ vérifie $L\\mathbf{1}=0$, donc 0 est valeur propre. La connexité implique que la multiplicité de 0 est 1 (sinon il y aurait une composante connexe isolée). La deuxième valeur propre $\\lambda_2(L)$ (appelée valeur propre de Fiedler) est liée à la conductance du graphe par l'inégalité de Cheeger : $\\frac{\\lambda_2}{2} \\le h(G) \\le \\sqrt{2\\lambda_2}$. Un $\\lambda_2$ petit signale l'existence d'une coupe peu coûteuse, donc une partition naturelle.",
+              "hint": "Rappelez la définition $L=D-A$, la propriété $L\\mathbf{1}=0$, et le théorème de Cheeger reliant $\\lambda_2(L)$ au rapport de coupure minimal.",
+              "explanation": "La matrice de Laplacien est semi-définie positive. Sa noyau est engendré par $\\mathbf{1}$ si et seulement si le graphe est connexe. La valeur propre de Fiedler quantifie la connectivité globale et guide les algorithmes de partitionnement spectral."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,409 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.594752+00:00",
+  "id": 353,
+  "code": "6eme-t05-c02",
+  "title": "Périmètres",
+  "description": "Cours structuré Educalcul : Périmètres.",
+  "subject": "Grandeurs et mesures",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Périmètres",
+    "objectif_global": "Périmètres",
+    "mini_lecons_imposees": [
+      "Formules.",
+      "Calculer.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Formules.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que le périmètre ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles installer une clôture tout autour de ton jardin. La longueur totale de fil de fer dont tu as besoin, c'est exactement le périmètre de la figure qui délimite ton terrain. En mathématiques, le périmètre est la somme des longueurs de tous les côtés d'une figure plane. C'est une grandeur qui se mesure en mètres, en centimètres ou en kilomètres selon la taille de l'objet. Quand tu marches le long du bord d'un terrain de sport, tu parcours une distance égale au périmètre de ce terrain. Cette idée simple va nous servir de point de départ pour découvrir les formules qui permettent de calculer rapidement le périmètre des figures les plus courantes."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avec ses trois côtés a, b et c",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un triangle, il n'y a pas de raccourci : il faut additionner les trois longueurs des côtés. Si les côtés mesurent $a$, $b$ et $c$, le périmètre $P$ s'écrit $P = a + b + c$. Cette formule vaut pour n'importe quel triangle, qu'il soit rectangle, isocèle ou équilatéral. Quand tu connais les trois mesures, tu fais simplement la somme. C'est la méthode la plus directe et elle ne demande aucune propriété particulière."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les côtés opposés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans un rectangle, les côtés opposés ont la même longueur. On appelle généralement la longueur $L$ et la largeur $l$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les quatre côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le périmètre est la somme $L + l + L + l$. On regroupe les termes semblables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Factoriser par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $P = 2 \\times (L + l)$. Cette formule compacte permet de calculer le périmètre en une seule opération."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment obtenir la formule du rectangle, regardons le cas particulier du carré. Un carré est un rectangle dont les quatre côtés sont égaux. Cette particularité simplifie encore le calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le carré, un rectangle particulier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si chaque côté du carré mesure $c$, alors le périmètre est la somme de quatre fois $c$, soit $P = c + c + c + c = 4 \\times c$. On peut aussi voir le carré comme un rectangle où $L = l = c$ et appliquer la formule du rectangle $P = 2 \\times (c + c) = 4c$. Les deux raisonnements donnent le même résultat. C'est une bonne habitude de vérifier qu'une formule particulière est cohérente avec la formule générale dont elle dérive."
+            },
+            {
+              "type": "display_math",
+              "latex": "P = 4c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier grand type de figure que nous rencontrerons au programme est le cercle. Contrairement aux polygones, le cercle n'a pas de côtés droits. Sa frontière est une courbe continue. La longueur de cette courbe porte un nom spécial : la circonférence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cercle et sa circonférence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la circonférence d'un cercle, on utilise le nombre $\\pi$ (pi), qui vaut environ $3,14$. Si $r$ est le rayon (la distance du centre au bord) et $d$ le diamètre (deux fois le rayon), la formule est $C = 2 \\times \\pi \\times r$ ou $C = \\pi \\times d$. Le nombre $\\pi$ est le rapport constant entre la circonférence et le diamètre de n'importe quel cercle. Cette relation a été découverte il y a des milliers d'années et elle reste l'une des plus belles constantes des mathématiques."
+            },
+            {
+              "type": "display_math",
+              "latex": "C = 2 \\pi r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir les trois formules fondamentales du périmètre : triangle, rectangle (et carré) et cercle. Garde-les bien en tête, car la leçon suivante t'invitera à les mettre en pratique avec des nombres concrets."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle a des côtés de longueurs $5\\,cm$, $7\\,cm$ et $9\\,cm$. Calcule son périmètre.",
+              "answer": "$21\\,cm$",
+              "hint": "Additionne les trois longueurs.",
+              "explanation": "Le périmètre d'un triangle est la somme de ses trois côtés : $5 + 7 + 9 = 21$. L'unité reste le centimètre."
+            },
+            {
+              "question": "Un carré a un côté de $6\\,cm$. Quel est son périmètre ?",
+              "answer": "$24\\,cm$",
+              "hint": "Utilise la formule $P = 4c$.",
+              "explanation": "Avec $c = 6$, on calcule $4 \\times 6 = 24$. Le périmètre est $24\\,cm$."
+            },
+            {
+              "question": "Un cercle a un rayon de $3\\,cm$. Donne sa circonférence en utilisant $\\pi \\approx 3,14$.",
+              "answer": "$18,84\\,cm$",
+              "hint": "Applique $C = 2 \\pi r$.",
+              "explanation": "On calcule $2 \\times 3,14 \\times 3 = 18,84$. La circonférence vaut environ $18,84\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer le périmètre d'un rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les formules sont posées, passons à l'action. Supposons qu'on te donne un rectangle dont la longueur mesure $12\\,cm$ et la largeur $5\\,cm$. Pour trouver le périmètre, tu peux soit additionner les quatre côtés un par un, soit utiliser la formule $P = 2 \\times (L + l)$. Les deux méthodes donnent le même résultat, mais la formule est plus rapide et moins sujette aux erreurs d'oubli. Prenons le temps de détailler chaque étape pour que tu sois à l'aise avec la manipulation des nombres et des unités."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "12",
+                "5",
+                "12",
+                "5"
+              ],
+              "result": "34",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu additionnes les quatre côtés, tu écris $12 + 5 + 12 + 5 = 34$. L'unité $cm$ accompagne le résultat final : $34\\,cm$. Avec la formule, tu calcules d'abord la somme entre parenthèses : $12 + 5 = 17$. Puis tu multiplies par $2$ : $2 \\times 17 = 34$. Tu retrouves $34\\,cm$. Remarque que la multiplication par $2$ correspond au fait qu'il y a deux longueurs et deux largeurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après le rectangle, entraînons-nous sur le triangle. Le principe reste l'addition simple des trois côtés, mais il faut faire attention à bien lire les trois mesures données. Parfois, un côté est exprimé en mètres et les autres en centimètres : il faut convertir toutes les longueurs dans la même unité avant d'additionner. C'est une erreur fréquente que nous allons éviter ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer le périmètre d'un triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un triangle dont les côtés mesurent $0,5\\,m$, $30\\,cm$ et $40\\,cm$. La première longueur est en mètres, les deux autres en centimètres. Pour additionner, convertis $0,5\\,m$ en centimètres : $0,5\\,m = 50\\,cm$. Maintenant tu as $50\\,cm$, $30\\,cm$ et $40\\,cm$. La somme est $50 + 30 + 40 = 120\\,cm$. Si tu préfères donner le résultat en mètres, divise par $100$ : $1,20\\,m$. Cette conversion d'unités est une compétence clé en sixième."
+            },
+            {
+              "type": "number_line",
+              "caption": "Conversion de 0,5 m en 50 cm sur une droite graduée",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 50,
+                  "label": "50 cm"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par le cercle. Le calcul de la circonférence demande de manipuler le nombre $\\pi$. Au collège, on utilise souvent la valeur approchée $3,14$ ou la touche $\\pi$ de la calculatrice. Il faut aussi savoir passer du rayon au diamètre et inversement, car l'énoncé peut donner l'un ou l'autre. Rappelle-toi que $d = 2r$ et $r = d/2$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la circonférence d'un cercle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un cercle de diamètre $14\\,cm$. Le rayon vaut donc $7\\,cm$. Avec la formule $C = \\pi \\times d$, on calcule $3,14 \\times 14 = 43,96\\,cm$. Si on utilise la formule avec le rayon, on fait $2 \\times 3,14 \\times 7 = 43,96\\,cm$ aussi. Les deux chemins mènent au même résultat. Arrondis souvent à deux décimales sauf consigne contraire."
+            },
+            {
+              "type": "display_math",
+              "latex": "C = \\pi d = 2 \\pi r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant pratiqué le calcul de périmètre pour les trois grandes familles de figures. La prochaine leçon te proposera des situations concrètes où il faudra choisir la bonne formule, convertir les unités et organiser ton raisonnement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle mesure $20\\,cm$ de longueur et $8\\,cm$ de largeur. Calcule son périmètre.",
+              "answer": "$56\\,cm$",
+              "hint": "Utilise $P = 2 \\times (L + l)$.",
+              "explanation": "La somme $20 + 8 = 28$. Le double donne $2 \\times 28 = 56$. Le périmètre est $56\\,cm$."
+            },
+            {
+              "question": "Un triangle a des côtés de $1,2\\,m$, $45\\,cm$ et $55\\,cm$. Donne son périmètre en centimètres.",
+              "answer": "$220\\,cm$",
+              "hint": "Convertis $1,2\\,m$ en $cm$ avant d'additionner.",
+              "explanation": "$1,2\\,m = 120\\,cm$. La somme $120 + 45 + 55 = 220\\,cm$."
+            },
+            {
+              "question": "Un cercle a un rayon de $10\\,cm$. Calcule sa circonférence avec $\\pi = 3,14$.",
+              "answer": "$62,8\\,cm$",
+              "hint": "Applique $C = 2 \\pi r$.",
+              "explanation": "$2 \\times 3,14 \\times 10 = 62,8$. La circonférence vaut $62,8\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème : clôture d'un jardin rectangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes de périmètre sont des mises en situation où tu dois lire un texte, identifier la figure concernée, extraire les mesures utiles, choisir la formule adaptée et enfin calculer. Pour t'aider, suis une démarche en quatre étapes : comprendre l'énoncé, schématiser, calculer, répondre par une phrase. Prenons l'exemple d'un jardin rectangulaire de $15\\,m$ de long et $9\\,m$ de large. On veut installer un grillage tout autour. Combien de mètres de grillage faut-il acheter ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comprendre et noter les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Figure : rectangle. Longueur $L = 15\\,m$. Largeur $l = 9\\,m$. Question : périmètre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un rectangle, $P = 2 \\times (L + l)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$L + l = 15 + 9 = 24$. $P = 2 \\times 24 = 48$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il faut acheter $48\\,m$ de grillage."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Changeons de figure. Imagine un cadeau triangulaire que tu veux entourer d'un ruban. Les trois côtés du paquet mesurent $30\\,cm$, $40\\,cm$ et $50\\,cm$. Quelle longueur de ruban prévoir, en ajoutant $10\\,cm$ pour le nœud ? Ce problème demande d'abord le périmètre du triangle, puis une addition supplémentaire pour le nœud."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème : ruban autour d'un paquet triangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "D'abord, calcule le périmètre du triangle : $30 + 40 + 50 = 120\\,cm$. Ensuite, ajoute les $10\\,cm$ du nœud : $120 + 10 = 130\\,cm$. La réponse finale s'exprime en centimètres ou en mètres selon ce qui est demandé. Ici, on peut dire $130\\,cm$ ou $1,30\\,m$. Veille à bien lire la question pour donner l'unité attendue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, un dernier scénario avec un cercle. Un étang circulaire a un rayon de $4\\,m$. On souhaite poser une bordure en pierre tout autour. La bordure est vendue par tronçons de $1\\,m$. Combien de tronçons faut-il acheter ? Il faut d'abord trouver la circonférence, puis arrondir à l'entier supérieur car on ne peut pas acheter une fraction de tronçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème : bordure autour d'un étang circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule la circonférence : $C = 2 \\times \\pi \\times r = 2 \\times 3,14 \\times 4 = 25,12\\,m$. Comme les tronçons font $1\\,m$, il faut $26$ tronçons (on arrondit $25,12$ au supérieur). Cette étape d'arrondi est cruciale dans les problèmes concrets : on ne peut pas commander $0,12$ de tronçon. Vérifie toujours si l'énoncé demande un arrondi ou une valeur exacte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant résolu trois types de problèmes de périmètre : rectangle, triangle et cercle. Tu sais extraire les données, convertir les unités, choisir la formule, calculer et adapter la réponse à la situation réelle. Ces compétences te serviront tout au long de l'année en géométrie et en mesures."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le périmètre d'une figure plane.",
+                "Je connais les formules du périmètre du rectangle, du carré, du triangle et de la circonférence du cercle.",
+                "Je sais convertir des longueurs entre mètres, centimètres et kilomètres.",
+                "Je sais calculer un périmètre à partir de mesures données.",
+                "Je sais résoudre un problème de périmètre en suivant les étapes : comprendre, schématiser, calculer, répondre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un terrain de football rectangulaire mesure $100\\,m$ de long et $60\\,m$ de large. Combien de mètres de corde sont nécessaires pour en délimiter le contour ?",
+              "answer": "$320\\,m$",
+              "hint": "Utilise la formule du rectangle $P = 2 \\times (L + l)$.",
+              "explanation": "La somme $100 + 60 = 160$. Le double donne $2 \\times 160 = 320$. Il faut $320\\,m$ de corde."
+            },
+            {
+              "question": "Un triangle a des côtés de $25\\,cm$, $35\\,cm$ et $45\\,cm$. On veut coller une bande décorative tout autour en ajoutant $5\\,cm$ pour le chevauchement. Quelle longueur de bande prévoir ?",
+              "answer": "$110\\,cm$",
+              "hint": "Calcule d'abord le périmètre du triangle, puis ajoute $5\\,cm$.",
+              "explanation": "Périmètre $= 25 + 35 + 45 = 105\\,cm$. Avec le chevauchement $105 + 5 = 110\\,cm$."
+            },
+            {
+              "question": "Une piste circulaire a un diamètre de $50\\,m$. Un coureur veut savoir la distance d'un tour. Donne la longueur d'un tour en utilisant $\\pi = 3,14$.",
+              "answer": "$157\\,m$",
+              "hint": "Utilise $C = \\pi \\times d$.",
+              "explanation": "$3,14 \\times 50 = 157$. Un tour mesure $157\\,m$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Bilan - Calcul 6e",
+  "title": "Bilan Calcul 6e - Quiz",
+  "questions": [
+    {
+      "text": "Calcule le résultat de l'expression suivante en respectant les règles de priorité : $24 - 8 \\div 2 + 3 \\times 2$.",
+      "options": [
+        "26",
+        "14",
+        "22",
+        "20"
+      ],
+      "correctAnswer": "26",
+      "explanation": "On commence par la division et la multiplication : $8 \\div 2 = 4$ et $3 \\times 2 = 6$. L'expression devient $24 - 4 + 6$. On calcule ensuite de gauche à droite : $24 - 4 = 20$, puis $20 + 6 = 26$. L'option 14 correspond à l'erreur de faire l'addition avant la soustraction ($24 - (4+6)$). L'option 22 correspond à l'oubli de la dernière addition ($24 - 4 + 6$ mal géré). L'option 20 correspond à l'arrêt après la soustraction ($24 - 4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donne le résultat de la multiplication décimale : $4,5 \\times 0,6$.",
+      "options": [
+        "2,7",
+        "27",
+        "0,27",
+        "2,07"
+      ],
+      "correctAnswer": "2,7",
+      "explanation": "On multiplie $45 \\times 6 = 270$. Le nombre $4,5$ a un chiffre après la virgule, $0,6$ en a un aussi, soit deux au total. On place la virgule en comptant deux chiffres depuis la droite : $2,70$, ce qui s'écrit $2,7$. L'option 27 oublie la virgule. L'option 0,27 compte trois décimales. L'option 2,07 place mal la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue l'addition de fractions et donne le résultat sous la forme d'un nombre mixte simplifié : $\\frac{3}{4} + \\frac{5}{6}$.",
+      "options": [
+        "1 7/12",
+        "8/10",
+        "19/12",
+        "2/3"
+      ],
+      "correctAnswer": "1 7/12",
+      "explanation": "On cherche un dénominateur commun : 12. $\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$. La somme est $\\frac{19}{12}$. Comme le numérateur est plus grand que le dénominateur, on convertit en nombre mixte : $19 = 12 + 7$, donc $1 \\frac{7}{12}$. L'option 8/10 correspond à l'erreur d'additionner numérateurs et dénominateurs. L'option 19/12 est la fraction impropre exacte mais non convertie en nombre mixte. L'option 2/3 est une simplification incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète le calcul suivant en utilisant les automatismes du cours : $0,45 \\times 1000 = \\ldots$",
+      "options": [
+        "450",
+        "45",
+        "4500",
+        "4,5"
+      ],
+      "correctAnswer": "450",
+      "explanation": "Multiplier par 1000 revient à décaler la virgule de trois rangs vers la droite. $0,45$ devient $450$ (on ajoute un zéro pour le troisième rang). L'option 45 correspond à une multiplication par 100 (deux rangs). L'option 4500 correspond à une multiplication par 10000 (quatre rangs). L'option 4,5 correspond à une multiplication par 10 (un rang).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle mesure 12 cm de longueur et 7 cm de largeur. On augmente la longueur de 3 cm et on diminue la largeur de 2 cm. Quelle est l'aire du nouveau rectangle ?",
+      "options": [
+        "75 cm²",
+        "84 cm²",
+        "90 cm²",
+        "65 cm²"
+      ],
+      "correctAnswer": "75 cm²",
+      "explanation": "La nouvelle longueur est $12 + 3 = 15$ cm. La nouvelle largeur est $7 - 2 = 5$ cm. L'aire d'un rectangle est longueur $\\times$ largeur : $15 \\times 5 = 75$ cm². L'option 84 cm² est l'aire de l'ancien rectangle ($12 \\times 7$). L'option 90 cm² correspond à $15 \\times 6$ (erreur sur la largeur). L'option 65 cm² correspond à $13 \\times 5$ (erreur sur la longueur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

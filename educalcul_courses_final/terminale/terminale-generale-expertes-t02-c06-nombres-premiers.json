@@ -1,0 +1,444 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.791884+00:00",
+  "id": 743,
+  "code": "terminale-generale-expertes-t02-c06",
+  "title": "Nombres premiers",
+  "description": "Cours structuré Educalcul : Nombres premiers.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Nombres premiers",
+    "objectif_global": "Nombres premiers",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Décomposition.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition et propriété fondamentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un nombre premier est un entier naturel strictement supérieur à 1 qui n'admet comme diviseurs positifs que 1 et lui‑même. Autrement dit, si $p$ est premier et que $p \\mid ab$ pour deux entiers $a$ et $b$, alors nécessairement $p \\mid a$ ou $p \\mid b$. Cette propriété, souvent appelée lemme d'Euclide, est la pierre angulaire de toute l'arithmétique des nombres premiers. Elle permet de comprendre pourquoi la factorisation en facteurs premiers est unique : si un nombre pouvait s'écrire de deux façons différentes comme produit de premiers, le lemme d'Euclide conduirait à une contradiction immédiate. Dans ce cours, nous allons manipuler cette idée à plusieurs reprises, alors prenez le temps de la visualiser : imaginez un nombre comme une brique que l'on ne peut couper qu'en morceaux de taille $1$ ou de taille $p$ lui‑même."
+            },
+            {
+              "type": "definition",
+              "term": "nombre premier",
+              "definition": "Entier $p>1$ tel que les seuls diviseurs positifs de $p$ sont $1$ et $p$.",
+              "example": "$2, 3, 5, 7, 11$ sont premiers ; $4, 6, 8, 9$ ne le sont pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "p \\mid ab \\implies p \\mid a \\lor p \\mid b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition et le lemme d'Euclide sont posés, nous pouvons nous demander : existe‑t‑il une infinité de nombres premiers ? La réponse est oui, et la démonstration classique d'Euclide est à la fois élégante et accessible. Elle repose sur l'idée de construire un nouveau nombre qui ne peut être divisible par aucun des premiers déjà connus, forçant ainsi l'apparition d'un nouveau facteur premier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démonstration de l'infinité des nombres premiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'il n'existe qu'un nombre fini de nombres premiers, disons $p_1, p_2, \\dots, p_k$. Considérons l'entier $N = p_1 p_2 \\cdots p_k + 1$. Par construction, $N$ laisse un reste $1$ lorsqu'on le divise par chacun des $p_i$. Donc aucun $p_i$ ne divise $N$. Or tout entier $>1$ possède au moins un diviseur premier (par le lemme d'Euclide appliqué récursivement). Ainsi $N$ admet un diviseur premier $q$ qui ne figure pas dans la liste initiale, contredisant l'hypothèse de finitude. Par conséquent, l'ensemble des nombres premiers est infini."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Hypothèse de finitude",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose qu'il existe une liste exhaustive $p_1,\\dots,p_k$ de tous les nombres premiers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construction de $N$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On forme $N = p_1 p_2 \\cdots p_k + 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Analyse des diviseurs de $N$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aucun $p_i$ ne divise $N$ car le reste est $1$. Donc tout diviseur premier de $N$ est nouveau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Contradiction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'existence d'un nouveau premier contredit l'exhaustivité de la liste, donc l'hypothèse est fausse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La preuve d'Euclide montre qu'il y a une infinité de premiers, mais elle ne donne aucune information sur leur répartition. Au XIXe siècle, les mathématiciens ont découvert que la fonction $\\pi(x)$, qui compte les nombres premiers $\\le x$, se comporte asymptotiquement comme $\\frac{x}{\\ln x}$. C'est le théorème des nombres premiers, un résultat profond dont la démonstration utilise l'analyse complexe. Un résultat plus élémentaire, le postulat de Bertrand, affirme qu'il existe toujours au moins un nombre premier entre $n$ et $2n$ pour tout $n>1$. Ces deux faits donnent une image précise de la densité des premiers."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répartition asymptotique des nombres premiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème des nombres premiers s'écrit $\\pi(x) \\sim \\frac{x}{\\ln x}$, ce qui signifie que le rapport $\\frac{\\pi(x)}{x/\\ln x}$ tend vers $1$ quand $x$ tend vers l'infini. En pratique, pour $x=10^6$, $\\pi(10^6)=78498$ alors que $\\frac{10^6}{\\ln 10^6}\\approx 72382$, une approximation déjà assez bonne. Le postulat de Bertrand, quant à lui, garantit qu'il n'y a jamais de « trou » trop grand entre deux premiers consécutifs : pour tout $n\\ge2$, il existe un premier $p$ tel que $n < p < 2n$. Ces résultats sont au cœur de nombreuses applications, notamment en cryptographie où la génération de grands nombres premiers repose sur la certitude qu'on en trouvera rapidement."
+            },
+            {
+              "type": "graph",
+              "expression": "x/ln(x)",
+              "xmin": 2,
+              "xmax": 100,
+              "caption": "Approximation de $\\pi(x)$ par $x/\\ln x$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifiez que $13$ est un nombre premier en testant sa divisibilité par tous les entiers $d$ tels que $2 \\le d \\le \\sqrt{13}$.",
+              "answer": "Les diviseurs à tester sont $2$ et $3$. $13$ n'est divisible ni par $2$ ni par $3$, donc $13$ est premier.",
+              "hint": "Calculez $\\sqrt{13}\\approx 3,6$ et testez seulement $2$ et $3$.",
+              "explanation": "Un nombre $n$ est premier s'il n'a pas de diviseur $d$ avec $2\\le d\\le\\sqrt{n}$. Ici $\\sqrt{13}<4$, donc il suffit de tester $2$ et $3$."
+            },
+            {
+              "question": "En utilisant la méthode d'Euclide, construisez un entier $N$ à partir des premiers $2,3,5$ et montrez qu'il possède un diviseur premier absent de la liste.",
+              "answer": "$N = 2\\times3\\times5 + 1 = 31$. $31$ est premier et n'appartient pas à $\\{2,3,5\\}$.",
+              "hint": "Calculez le produit $2\\cdot3\\cdot5$ puis ajoutez $1$.",
+              "explanation": "Le produit des premiers connus plus $1$ donne un nombre qui n'est divisible par aucun d'eux ; tout diviseur premier de ce nombre est donc nouveau."
+            },
+            {
+              "question": "Estimez $\\pi(1000)$ à l'aide de l'approximation $\\frac{x}{\\ln x}$ et comparez avec la valeur exacte $\\pi(1000)=168$.",
+              "answer": "$\\frac{1000}{\\ln 1000}\\approx 144,8$. L'approximation sous‑estime le nombre réel de premiers.",
+              "hint": "Calculez $\\ln 1000 \\approx 6,9078$.",
+              "explanation": "Le théorème des nombres premiers donne une équivalence asymptotique ; pour $x=1000$ l'erreur relative est encore notable mais la tendance est correcte."
+            }
+          ]
+        },
+        {
+          "title": "Décomposition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème fondamental de l'arithmétique : existence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout entier $n\\ge2$ peut s'écrire comme un produit de nombres premiers. Cette existence se démontre par récurrence forte sur $n$. Pour $n=2$, c'est trivial car $2$ est premier. Supposons la propriété vraie pour tous les entiers $<n$. Si $n$ est premier, la factorisation est $n$ lui‑même. Sinon, $n=ab$ avec $1<a,b<n$. Par hypothèse de récurrence, $a$ et $b$ admettent une décomposition en facteurs premiers ; en les multipliant, on obtient une décomposition de $n$. Ainsi, par récurrence, tout entier $\\ge2$ possède au moins une factorisation en nombres premiers."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$n=2$ est premier, factorisation triviale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Hérédité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose que tout entier $m$ avec $2\\le m<n$ admet une factorisation en premiers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Cas composé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $n$ n'est pas premier, $n=ab$ avec $1<a,b<n$. Par hypothèse, $a$ et $b$ se factorisent ; leur produit donne une factorisation de $n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "factorisation en nombres premiers",
+              "definition": "Écriture d'un entier $n\\ge2$ sous la forme $n = p_1^{\\alpha_1} p_2^{\\alpha_2} \\cdots p_r^{\\alpha_r}$ avec $p_i$ premiers distincts et $\\alpha_i\\ge1$.",
+              "example": "$60 = 2^2 \\cdot 3 \\cdot 5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'existence d'une factorisation ne garantit pas qu'elle soit unique. Pour établir l'unicité, on utilise le lemme d'Euclide : si un premier $p$ divise un produit $ab$, alors $p$ divise $a$ ou $b$. Supposons qu'un entier $n$ ait deux factorisations distinctes $n = p_1\\cdots p_r = q_1\\cdots q_s$. Le premier facteur $p_1$ divise le produit des $q_j$ ; par le lemme, $p_1$ coïncide avec l'un des $q_j$. En annulant ce facteur des deux côtés et en répétant, on montre que les deux listes de facteurs premiers sont identiques à l'ordre près. C'est la démonstration classique de l'unicité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unicité de la factorisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La preuve par récurrence sur le nombre de facteurs montre que toute factorisation en premiers d'un même entier ne diffère que par l'ordre des facteurs. Cette propriété est cruciale : elle permet de définir sans ambiguïté des notions comme le plus grand commun diviseur (PGCD) et le plus petit commun multiple (PPCM) à partir des exposants des facteurs premiers. En terminale expertes, on utilise souvent cette unicité pour simplifier des fractions, résoudre des équations diophantiennes ou analyser la structure des groupes finis."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Deux factorisations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $n = p_1\\cdots p_r = q_1\\cdots q_s$ avec $p_i,q_j$ premiers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Application du lemme d'Euclide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$p_1$ divise $\\prod q_j$, donc $p_1 = q_k$ pour un certain $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplification et récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On annule $p_1$ des deux côtés et on répète jusqu'à épuisement ; les deux listes coïncident."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "En pratique, factoriser un grand entier peut être coûteux. L'algorithme naïf de division successive par tous les entiers jusqu'à $\\sqrt{n}$ est exponentiel. Des méthodes plus sophistiquées comme le crible d'Eratosthène pour générer les premiers jusqu'à une borne, ou l'algorithme de Pollard‑Rho pour les nombres de taille modérée, sont enseignés en algorithmique. En terminale expertes, on s'intéresse aussi à la complexité de ces algorithmes et à leur utilisation pour calculer PGCD et PPCM via les factorisations. Par exemple, $\\operatorname{PGCD}(a,b) = \\prod p^{\\min(\\alpha_p,\\beta_p)}$ et $\\operatorname{PPCM}(a,b) = \\prod p^{\\max(\\alpha_p,\\beta_p)}$ où $\\alpha_p,\\beta_p$ sont les exposants de $p$ dans $a$ et $b$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Algorithmes de factorisation et applications au PGCD/PPCM"
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def factorize(n):\\n    i = 2\\n    factors = {}\\n    while i * i <= n:\\n        while n % i == 0:\\n            factors[i] = factors.get(i, 0) + 1\\n            n //= i\\n        i += 1 if i == 2 else 2\\n    if n > 1:\\n        factors[n] = factors.get(n, 0) + 1\\n    return factors",
+              "language": "python",
+              "caption": "Factorisation par division successive (essai simple)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrivez la factorisation en nombres premiers de $180$ sous la forme $2^{\\alpha}\\cdot3^{\\beta}\\cdot5^{\\gamma}$.",
+              "answer": "$180 = 2^2 \\cdot 3^2 \\cdot 5^1$.",
+              "hint": "Divisez successivement par $2$, puis par $3$, puis par $5$.",
+              "explanation": "On divise $180$ par $2$ deux fois ($180\\to90\\to45$), puis par $3$ deux fois ($45\\to15\\to5$), enfin par $5$ une fois."
+            },
+            {
+              "question": "Soient $a=2^3\\cdot3\\cdot7$ et $b=2\\cdot3^2\\cdot5$. Calculez $\\operatorname{PGCD}(a,b)$ et $\\operatorname{PPCM}(a,b)$ à partir des factorisations.",
+              "answer": "$\\operatorname{PGCD}=2^1\\cdot3^1=6$, $\\operatorname{PPCM}=2^3\\cdot3^2\\cdot5\\cdot7=2520$.",
+              "hint": "Pour chaque premier, prenez l'exposant minimal pour le PGCD et maximal pour le PPCM.",
+              "explanation": "Les premiers présents sont $2,3,5,7$. Exposants dans $a$ : $3,1,0,1$. Dans $b$ : $1,2,1,0$. Minima : $1,1,0,0$ → $2\\cdot3=6$. Maxima : $3,2,1,1$ → $8\\cdot9\\cdot5\\cdot7=2520$."
+            },
+            {
+              "question": "Exécutez mentalement la fonction `factorize(84)` fournie dans l'extrait de code et donnez le dictionnaire résultant.",
+              "answer": "{2: 2, 3: 1, 7: 1}",
+              "hint": "Suivez la boucle : $84\\to42\\to21$ (deux divisions par $2$), puis $21\\to7$ (une division par $3$), reste $7$ premier.",
+              "explanation": "L'algorithme teste $2$ deux fois, puis $3$ une fois, puis termine avec le facteur premier restant $7$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cryptographie RSA : génération de clés à partir de grands nombres premiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le système RSA repose sur la difficulté de factoriser un grand entier $n = pq$, produit de deux nombres premiers de taille comparable (généralement 1024 à 2048 bits chacun). La clé publique est le couple $(n, e)$ où $e$ est un entier premier avec $\\varphi(n) = (p-1)(q-1)$. La clé privée $d$ satisfait $ed \\equiv 1 \\pmod{\\varphi(n)}$. Le chiffrement d'un message $m$ (représenté comme un entier $<n$) se fait par $c \\equiv m^e \\pmod{n}$, et le déchiffrement par $m \\equiv c^d \\pmod{n}$. La sécurité tient au fait que, sans connaître $p$ et $q$, il est infeasible de calculer $\\varphi(n)$ et donc $d$."
+            },
+            {
+              "type": "display_math",
+              "latex": "n = p q,\\quad \\varphi(n) = (p-1)(q-1),\\quad e d \\equiv 1 \\pmod{\\varphi(n)}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choix de $p$ et $q$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On tire au hasard deux grands nombres premiers distincts $p$ et $q$ (test de primalité probabiliste)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcul de $n$ et $\\varphi(n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $n = p q$ et $\\varphi(n) = (p-1)(q-1)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choix de $e$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On choisit $e$ tel que $1<e<\\varphi(n)$ et $\\operatorname{PGCD}(e,\\varphi(n))=1$ ; souvent $e=65537$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calcul de $d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule l'inverse modulaire de $e$ modulo $\\varphi(n)$ via l'algorithme d'Euclide étendu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de pouvoir utiliser RSA, il faut être capable de tester rapidement si un grand entier est premier. Les tests déterministes comme AKS sont théoriquement polynomial mais lents en pratique. On préfère les tests probabilistes de type Miller‑Rabin : on choisit plusieurs bases aléatoires $a$ et on vérifie des conditions dérivées du petit théorème de Fermat. Si $n$ est composé, au moins $3/4$ des bases détectent la composition ; en répétant le test $k$ fois, la probabilité d'erreur devient $4^{-k}$, négligeable pour $k=20$. Ce test est au cœur de la génération de $p$ et $q$ dans RSA."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Test de primalité de Miller‑Rabin"
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def is_probable_prime(n, k=20):\\n    if n < 2:\\n        return False\\n    # écriture n-1 = 2^s * d avec d impair\\n    s, d = 0, n-1\\n    while d % 2 == 0:\\n        s += 1\\n        d //= 2\\n    for _ in range(k):\\n        a = random.randrange(2, n-1)\\n        x = pow(a, d, n)\\n        if x == 1 or x == n-1:\\n            continue\\n        for _ in range(s-1):\\n            x = (x * x) % n\\n            if x == n-1:\\n                break\\n        else:\\n            return False\\n    return True",
+              "language": "python",
+              "caption": "Test de Miller‑Rabin probabiliste"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les nombres premiers interviennent également dans la construction de fonctions de hachage et de générateurs pseudo‑aléatoires. Par exemple, la méthode de hachage par division utilise un nombre premier $m$ comme modulo : $h(x) = x \\bmod m$. Choisir $m$ premier réduit les collisions pour des clés ayant des régularités arithmétiques. De même, le générateur linéaire congruentiel $X_{n+1} = (a X_n + c) \\bmod m$ a une période maximale $m$ si et seulement si $m$ est premier, $c \\neq 0$, $a-1$ multiple de tous les facteurs premiers de $m$, et $a-1$ multiple de $4$ quand $m$ est multiple de $4$. Ces propriétés font des nombres premiers des outils incontournables en informatique théorique et appliquée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications aux fonctions de hachage et générateurs aléatoires"
+            },
+            {
+              "type": "display_math",
+              "latex": "h(x) = x \\bmod p,\\quad X_{n+1} = (a X_n + c) \\bmod p"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un nombre premier et énoncer le lemme d'Euclide.",
+                "Je sais démontrer qu'il existe une infinité de nombres premiers.",
+                "Je connais l'énoncé du théorème des nombres premiers et du postulat de Bertrand.",
+                "Je sais énoncer et prouver l'existence et l'unicité de la factorisation en premiers.",
+                "Je sais calculer PGCD et PPCM à partir des factorisations.",
+                "Je comprends le rôle des grands nombres premiers dans RSA et la génération de clés.",
+                "Je sais expliquer le principe du test de Miller‑Rabin et son utilisation pratique.",
+                "Je connais des applications des nombres premiers au hachage et aux générateurs congruentiels."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez les conditions sur $e$ pour qu'il soit un exposant de chiffrement RSA valide.",
+              "answer": "$1<e<\\varphi(n)$ et $\\operatorname{PGCD}(e,\\varphi(n))=1$.",
+              "hint": "Rappelez la définition de la clé publique RSA.",
+              "explanation": "L'exposant $e$ doit être inversible modulo $\\varphi(n)$, ce qui est équivalent à être premier avec $\\varphi(n)$."
+            },
+            {
+              "question": "Expliquez pourquoi le test de Miller‑Rabin avec $k=10$ itérations donne une probabilité d'erreur inférieure à $10^{-6}$.",
+              "answer": "Chaque itération a une probabilité d'erreur au plus $1/4$ ; après $10$ itérations indépendantes, l'erreur est $(1/4)^{10} = 2^{-20} \\approx 9,5\\times10^{-7}$.",
+              "hint": "Utilisez la borne $4^{-k}$ pour $k$ itérations.",
+              "explanation": "Le test est correct pour les nombres premiers ; pour un composé, au moins $3/4$ des bases le détectent, donc la chance de passer toutes les $k$ épreuves est $\\le (1/4)^k$."
+            },
+            {
+              "question": "Pour un générateur linéaire congruentiel modulo un premier $p$, donnez les conditions nécessaires et suffisantes pour obtenir une période maximale $p$.",
+              "answer": "$c\\neq0$, $a-1$ multiple de tous les facteurs premiers de $p$ (donc $a\\equiv1\\pmod p$), et si $p$ multiple de $4$ alors $a\\equiv1\\pmod4$. Comme $p$ est premier, la condition se réduit à $a\\equiv1\\pmod p$ et $c\\neq0$.",
+              "hint": "Rappelez le théorème de Hull‑Dobell pour les générateurs congruentiels.",
+              "explanation": "Avec $m=p$ premier, les facteurs premiers de $m$ se réduisent à $p$ lui‑même ; la condition $a-1$ multiple de $p$ force $a\\equiv1\\pmod p$, ce qui assure la période $p$ pour tout $c\\neq0$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

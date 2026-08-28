@@ -1,0 +1,567 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.512467+00:00",
+  "id": 324,
+  "code": "cm2-t07-c07",
+  "title": "Bilan - Données et proportionnalité CM2",
+  "description": "Cours structuré Educalcul : Bilan - Données et proportionnalité CM2.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Bilan - Données et proportionnalité CM2",
+    "objectif_global": "Bilan - Données et proportionnalité CM2",
+    "mini_lecons_imposees": [
+      "Lire données.",
+      "Hasard et proportionnalité.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Lire données.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau de données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as demandé à tes camarades quel est leur animal préféré. Tu as noté les réponses dans un tableau à deux colonnes : la première donne le nom de l'animal, la seconde indique combien d'élèves l'ont choisi. Ce tableau est une façon ordonnée de ranger des informations pour les lire vite. Regarde l'exemple ci‑dessous : chaque ligne correspond à un animal, chaque colonne à une catégorie précise."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Animal",
+                "Nombre d'élèves"
+              ],
+              "rows": [
+                [
+                  "Chien",
+                  "12"
+                ],
+                [
+                  "Chat",
+                  "15"
+                ],
+                [
+                  "Oiseau",
+                  "8"
+                ],
+                [
+                  "Lapin",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire ce tableau, tu regardes d'abord l'en‑tête : tu sais que la colonne de gauche liste les animaux, celle de droite le nombre d'élèves. Ensuite, tu suis la ligne qui t'intéresse. Par exemple, sur la ligne \"Chat\", tu trouves le nombre $15$. Cela veut dire que $15$ élèves ont choisi le chat. Si on te demande quel animal est le plus populaire, tu compares les nombres de la colonne de droite : $15$ est le plus grand, donc le chat arrive en tête. Tu peux aussi additionner tous les nombres pour savoir combien d'élèves ont répondu : $12 + 15 + 8 + 5 = 40$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme en barres (ou histogramme) montre les mêmes informations mais sous forme visuelle. Chaque barre représente une catégorie, sa hauteur indique la valeur. L'axe vertical est gradué, l'axe horizontal porte les noms des catégories. C'est très pratique pour comparer d'un coup d'œil. Regarde le diagramme ci‑dessous qui reprend nos animaux."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Animaux préférés des élèves",
+              "bars": [
+                {
+                  "label": "Chien",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Chat",
+                  "value": 15,
+                  "tone": "red"
+                },
+                {
+                  "label": "Oiseau",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Lapin",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire la valeur d'une barre, tu poses ton doigt sur son sommet et tu regardes à quelle graduation il correspond sur l'axe vertical. Ici, la barre \"Chat\" monte jusqu'à $15$, la barre \"Chien\" jusqu'à $12$. Tu vois tout de suite que le chat est plus haut que le chien, donc plus d'élèves l'ont choisi. Tu peux aussi repérer la plus petite barre : le lapin avec $5$. Si on te demande la différence entre le chat et l'oiseau, tu fais $15 - 8 = 7$. Le diagramme te permet de répondre sans recompter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire (ou camembert) montre comment un total se répartit en parts. Chaque part correspond à une catégorie, sa taille est proportionnelle au nombre. Le cercle entier représente la totalité des élèves, ici $40$. Les parts sont souvent étiquetées avec des pourcentages ou des fractions. Observe le camembert ci‑dessous."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des animaux préférés",
+              "slices": [
+                {
+                  "label": "Chien",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Chat",
+                  "value": 15,
+                  "tone": "red"
+                },
+                {
+                  "label": "Oiseau",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Lapin",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire ce diagramme, tu regardes la part la plus grande : c'est le chat (rouge), elle occupe un peu plus d'un tiers du cercle. Si on te demande la fraction des élèves qui aiment les chiens, tu sais qu'il y a $12$ chiens sur $40$ élèves, soit la fraction $\\frac{12}{40}$ que tu peux simplifier en $\\frac{3}{10}$. Le camembert te donne une image rapide : la part \"Chien\" est un peu moins grande que la part \"Chat\". Tu peux aussi calculer le pourcentage : $\\frac{12}{40} = 0,3 = 30\\%$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer et interpréter plusieurs représentations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, tu auras à disposition plusieurs représentations des mêmes données : un tableau, un diagramme en barres et un camembert. Elles racontent la même histoire mais chacune a ses forces. Le tableau donne les chiffres exacts, le diagramme en barres permet de comparer les hauteurs, le camembert montre les parts du tout. Pour bien interpréter, tu passes de l'un à l'autre : tu vérifies que les nombres du tableau correspondent aux hauteurs des barres et aux angles du camembert. Si tu vois une incohérence, c'est qu'il y a une erreur quelque part. Entraîne‑toi à passer d'une représentation à l'autre, c'est une compétence clé pour le collège."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des effectifs sur une droite graduée",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Lapin"
+                },
+                {
+                  "value": 8,
+                  "label": "Oiseau"
+                },
+                {
+                  "value": 12,
+                  "label": "Chien"
+                },
+                {
+                  "value": 15,
+                  "label": "Chat"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée ci‑dessus place les quatre effectifs sur une même échelle. Tu vois tout de suite l'ordre : $5 < 8 < 12 < 15$. C'est une autre façon de comparer, très utile quand les nombres sont grands. Maintenant, essaye l'exercice qui suit pour t'assurer que tu sais lire et comparer ces différentes représentations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau de la première partie, quel est le nombre total d'élèves interrogés ?",
+              "answer": "40",
+              "hint": "Additionne les quatre nombres de la colonne « Nombre d'élèves ».",
+              "explanation": "On additionne $12 + 15 + 8 + 5 = 40$. Il y a donc $40$ élèves au total."
+            },
+            {
+              "question": "Sur le diagramme en barres, quelle est la différence de hauteur entre la barre « Chat » et la barre « Oiseau » ?",
+              "answer": "7",
+              "hint": "Lis la valeur de chaque barre sur l'axe vertical, puis soustrais.",
+              "explanation": "La barre « Chat » monte à $15$, la barre « Oiseau » à $8$. La différence est $15 - 8 = 7$."
+            },
+            {
+              "question": "Quelle fraction simplifiée des élèves a choisi le chien d'après le camembert ?",
+              "answer": "3/10",
+              "hint": "Effectif chien sur effectif total, puis simplifie la fraction.",
+              "explanation": "Il y a $12$ chiens sur $40$ élèves : $\\frac{12}{40} = \\frac{3}{10}$ après division par $4$."
+            },
+            {
+              "question": "Sur la droite graduée, quel animal correspond au point placé à la graduation 12 ?",
+              "answer": "Chien",
+              "hint": "Regarde l'étiquette du point à la graduation 12.",
+              "explanation": "Le point à la graduation $12$ porte l'étiquette « Chien »."
+            }
+          ]
+        },
+        {
+          "title": "Hasard et proportionnalité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le hasard et la probabilité simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le hasard, c'est quand on ne peut pas prédire le résultat d'une expérience à l'avance. Par exemple, si tu lances un dé à six faces numérotées de $1$ à $6$, tu ne sais pas sur quelle face il va tomber. Chaque face a la même chance d'apparaître. On appelle cela une expérience aléatoire. Les résultats possibles sont $1, 2, 3, 4, 5, 6$. Si tu veux connaître la probabilité d'obtenir un $4$, tu comptes le nombre de cas favorables (ici $1$ seul : le $4$) et tu le divises par le nombre total de cas possibles ($6$). La probabilité s'écrit alors sous la forme d'une fraction : $\\frac{1}{6}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Probabilité d'obtenir un 4 avec un dé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette fraction veut dire que si tu lances le dé un très grand nombre de fois, environ un sixième des lancers donnera un $4$. Ce n'est pas une certitude pour un seul lancer, mais une tendance sur la durée. On peut aussi exprimer cette probabilité en pourcentage : $\\frac{1}{6} \\approx 16,7\\%$. Rappelle‑toi : probabilité = $\\frac{\\text{cas favorables}}{\\text{cas possibles}}$. Essaie maintenant de calculer une probabilité simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Proportionnalité et fréquence attendue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on répète une expérience aléatoire beaucoup de fois, les fréquences observées se rapprochent des probabilités théoriques. C'est là qu'intervient la proportionnalité. Si la probabilité d'avoir un $4$ est $\\frac{1}{6}$, alors sur $60$ lancers, on s'attend à obtenir environ $10$ fois le $4$ car $60 \\times \\frac{1}{6} = 10$. Sur $600$ lancers, on attend environ $100$ fois le $4$. Le nombre de succès attendus est proportionnel au nombre total d'essais. Le coefficient de proportionnalité est exactement la probabilité."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Lancers",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4 attendus",
+                  "value": 10,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Proportionnalité entre lancers et 4 attendus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mélangeur de ratios ci‑dessus montre que pour $60$ lancers, on attend $10$ fois le $4$. Si tu doubles le nombre de lancers ($120$), le nombre de $4$ attendus double aussi ($20$). C'est une relation de proportionnalité : le rapport $\\frac{\\text{4 attendus}}{\\text{lancers}}$ reste constant et vaut $\\frac{1}{6}$. Cette idée est très puissante : elle permet de faire des prévisions sans tout simuler. Entraîne‑toi à utiliser cette proportionnalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer une probabilité et prévoir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un autre exemple : un sac contient $5$ billes rouges, $3$ billes bleues et $2$ billes vertes. Tu tires une bille au hasard. Quelles sont les probabilités de chaque couleur ? D'abord, tu comptes le total des billes : $5 + 3 + 2 = 10$. Ensuite, pour chaque couleur, tu fais le rapport favorable / total. Probabilité rouge = $\\frac{5}{10} = \\frac{1}{2}$. Probabilité bleue = $\\frac{3}{10}$. Probabilité verte = $\\frac{2}{10} = \\frac{1}{5}$. Vérifie que la somme des probabilités fait $1$ : $\\frac{1}{2} + \\frac{3}{10} + \\frac{1}{5} = \\frac{5}{10} + \\frac{3}{10} + \\frac{2}{10} = \\frac{10}{10} = 1$. C'est une bonne vérification."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 10,
+              "shape": "circle",
+              "caption": "Probabilité de tirer une bille bleue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, si tu remets la bille dans le sac et que tu recommences $100$ fois, tu peux prévoir le nombre de fois où tu tireras une bille bleue. Comme la probabilité est $\\frac{3}{10}$, le nombre attendu est $100 \\times \\frac{3}{10} = 30$. Tu t'attends à environ $30$ billes bleues. Essaie de faire une prévision pour les billes rouges."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème complet : données et hasard"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une enquête dans ta classe : chaque élève lance un dé $20$ fois et note les résultats. On regroupe tous les résultats dans un tableau de fréquences. Voici un extrait : face $1$ : $18$ fois, face $2$ : $22$ fois, face $3$ : $19$ fois, face $4$ : $21$ fois, face $5$ : $20$ fois, face $6$ : $20$ fois. Le total des lancers est $18+22+19+21+20+20 = 120$. La fréquence observée pour la face $2$ est $\\frac{22}{120} \\approx 0,183$. La probabilité théorique est $\\frac{1}{6} \\approx 0,167$. Les fréquences sont proches de la théorie, mais pas exactement égales car $120$ lancers, c'est encore peu. Si on lançait $1200$ fois, les fréquences seraient encore plus proches de $\\frac{1}{6}$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Face",
+                "Fréquence observée"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "18"
+                ],
+                [
+                  "2",
+                  "22"
+                ],
+                [
+                  "3",
+                  "19"
+                ],
+                [
+                  "4",
+                  "21"
+                ],
+                [
+                  "5",
+                  "20"
+                ],
+                [
+                  "6",
+                  "20"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau te permet de comparer l'observé et le théorique. Tu vois que la face $2$ est un peu au‑dessus, la face $1$ un peu au‑dessus aussi. C'est normal, le hasard crée de petites fluctuations. Plus le nombre d'essais est grand, plus les fréquences observées se rapprochent des probabilités théoriques. C'est la loi des grands nombres, une idée fondamentale que tu reverras au collège. Maintenant, résous l'exercice suivant qui mélange lecture de données et proportionnalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un dé à six faces est lancé. Quelle est la probabilité d'obtenir un nombre pair ?",
+              "answer": "1/2",
+              "hint": "Compte les faces paires (2, 4, 6) et divise par 6.",
+              "explanation": "Il y a 3 faces paires sur 6 faces possibles. La probabilité est $\\frac{3}{6} = \\frac{1}{2}$."
+            },
+            {
+              "question": "Si on lance le dé 180 fois, combien de fois peut-on s'attendre à obtenir un 5 ?",
+              "answer": "30",
+              "hint": "Multiplie le nombre de lancers par la probabilité d'avoir un 5 (1/6).",
+              "explanation": "Probabilité d'un 5 = $\\frac{1}{6}$. Nombre attendu = $180 \\times \\frac{1}{6} = 30$."
+            },
+            {
+              "question": "Dans le sac de billes (5 rouges, 3 bleues, 2 vertes), on tire une bille au hasard, on la remet, et on recommence 50 fois. Combien de billes rouges attend‑on ?",
+              "answer": "25",
+              "hint": "Probabilité rouge = 5/10 = 1/2. Multiplie par 50.",
+              "explanation": "Probabilité rouge = $\\frac{5}{10} = \\frac{1}{2}$. Attendu = $50 \\times \\frac{1}{2} = 25$."
+            },
+            {
+              "question": "Dans le tableau de fréquences du dé, quelle face a la fréquence observée la plus élevée ?",
+              "answer": "Face 2",
+              "hint": "Compare les nombres de la colonne « Fréquence observée ».",
+              "explanation": "La face 2 a été obtenue 22 fois, c'est le plus grand nombre du tableau."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Revenir sur la lecture de données avec un nouvel exemple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer la lecture de données, changeons de contexte. Imagine que ton école organise un tournoi de football. Chaque classe a joué plusieurs matchs et on a noté le nombre de victoires. Voici les résultats pour quatre classes : CM2 A : $7$ victoires, CM2 B : $5$ victoires, CM2 C : $9$ victoires, CM2 D : $4$ victoires. Tu peux ranger ces informations dans un tableau à deux colonnes comme tu l'as appris. Essaie de le faire mentalement : une colonne « Classe », une colonne « Victoires »."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Classe",
+                "Victoires"
+              ],
+              "rows": [
+                [
+                  "CM2 A",
+                  "7"
+                ],
+                [
+                  "CM2 B",
+                  "5"
+                ],
+                [
+                  "CM2 C",
+                  "9"
+                ],
+                [
+                  "CM2 D",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, représente ces mêmes données avec un diagramme en barres. Chaque classe aura sa barre, la hauteur correspondra au nombre de victoires. La classe CM2 C aura la barre la plus haute ($9$), la classe CM2 D la plus basse ($4$). Tu peux aussi faire un diagramme circulaire pour voir la part de chaque classe dans le total des victoires. Le total est $7+5+9+4 = 25$ victoires. La part de CM2 C est $\\frac{9}{25} = 36\\%$. Passer d'un tableau à un graphique t'aide à voir les tendances sans recalculer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Victoires par classe au tournoi",
+              "bars": [
+                {
+                  "label": "CM2 A",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "CM2 B",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "CM2 C",
+                  "value": 9,
+                  "tone": "green"
+                },
+                {
+                  "label": "CM2 D",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le diagramme en barres ci‑dessus. Tu vois immédiatement que CM2 C domine, suivie de CM2 A. Si on te demande quelle classe a gagné deux fois plus de matchs que CM2 D, tu compares $4 \\times 2 = 8$ ; aucune classe n'a exactement $8$ victoires (CM2 A en a $7$, CM2 C en a $9$). C'est une question de proportionnalité simple qui mélange lecture de données et calcul. Entraîne‑toi avec l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Revenir sur le hasard et la proportionnalité avec un nouvel exemple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'idée de hasard mais avec une situation différente. Tu as une boîte contenant $10$ cartes numérotées de $1$ à $10$. Tu tires une carte au hasard, tu notes le numéro, tu remets la carte, tu mélanges, et tu recommences. C'est une expérience aléatoire à $10$ issues équiprobables. La probabilité de tirer le numéro $7$ est $\\frac{1}{10}$. La probabilité de tirer un nombre pair est $\\frac{5}{10} = \\frac{1}{2}$ car il y a $5$ nombres pairs ($2,4,6,8,10$). La probabilité de tirer un nombre supérieur à $6$ est $\\frac{4}{10} = \\frac{2}{5}$ ($7,8,9,10$)."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Probabilité de tirer un nombre > 6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilise la proportionnalité pour prévoir. Si tu fais $200$ tirages (avec remise), combien de fois t'attends‑tu à tirer un nombre pair ? La probabilité est $\\frac{1}{2}$, donc attendu = $200 \\times \\frac{1}{2} = 100$. Et pour un nombre supérieur à $6$ ? Probabilité $\\frac{2}{5}$, attendu = $200 \\times \\frac{2}{5} = 80$. Tu vois que la proportionnalité te permet de passer d'une probabilité (sur un seul essai) à une prévision sur beaucoup d'essais. C'est exactement le même mécanisme que pour le dé, mais avec d'autres nombres."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Tirages",
+                  "value": 200,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Pairs attendus",
+                  "value": 100,
+                  "tone": "red"
+                },
+                {
+                  "label": ">6 attendus",
+                  "value": 80,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Prévisions pour 200 tirages"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mélangeur de ratios montre les trois grandeurs proportionnelles. Si tu augmentais le nombre de tirages à $400$, les attendus doubleraient : $200$ pairs et $160$ nombres >6. Essaie maintenant l'exercice qui mélange ces deux idées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : ce que je sais faire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant traversé tout le programme de données et proportionnalité du CM2. Tu sais : lire un tableau, un diagramme en barres, un diagramme circulaire, une droite graduée ; calculer des totaux, des différences, des fractions et des pourcentages à partir de ces représentations ; comprendre qu'une expérience aléatoire a des résultats imprévisibles mais des probabilités stables ; écrire une probabilité sous forme de fraction ; utiliser la proportionnalité pour prévoir des fréquences attendues à partir d'une probabilité ; vérifier que la somme des probabilités fait $1$. Chaque notion s'appuie sur la précédente : les données te donnent des nombres, la proportionnalité te permet de les projeter, le hasard te montre que les prévisions ne sont pas des certitudes mais des tendances fiables sur la durée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voici une liste de contrôle qui récapitule les compétences clés. Coche mentalement celles que tu te sens à l'aise, et revois les autres avec ton professeur ou en refaisant les exercices des leçons précédentes. Bravo pour ton travail !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et interpréter un tableau de données.",
+                "Je sais lire et comparer des diagrammes en barres.",
+                "Je sais lire un diagramme circulaire et calculer des fractions ou pourcentages.",
+                "Je sais passer d'une représentation à l'autre (tableau, barres, camembert, droite graduée).",
+                "Je comprends ce qu'est une expérience aléatoire et je sais lister les issues possibles.",
+                "Je sais calculer une probabilité simple (cas favorables / cas possibles) et l'écrire en fraction.",
+                "J'utilise la proportionnalité pour prévoir un nombre de succès attendus sur un grand nombre d'essais.",
+                "Je vérifie que la somme des probabilités de tous les résultats possibles vaut 1."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau des victoires, quelle classe a obtenu le plus de victoires ?",
+              "answer": "CM2 C",
+              "hint": "Cherche le plus grand nombre dans la colonne « Victoires ».",
+              "explanation": "CM2 C a $9$ victoires, c'est le maximum."
+            },
+            {
+              "question": "Avec les 10 cartes numérotées 1 à 10, on fait 150 tirages avec remise. Combien de fois attend-on de tirer un nombre impair ?",
+              "answer": "75",
+              "hint": "Il y a 5 nombres impairs sur 10. Probabilité = 1/2. Multiplie par 150.",
+              "explanation": "Probabilité impair = $\\frac{5}{10} = \\frac{1}{2}$. Attendu = $150 \\times \\frac{1}{2} = 75$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

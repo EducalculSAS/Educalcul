@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter le coefficient directeur",
+  "questions": [
+    {
+      "text": "Une droite a pour coefficient directeur $m = -2$. Que peut-on affirmer de cette droite ?",
+      "options": [
+        "Elle est croissante et assez raide.",
+        "Elle est décroissante et assez raide.",
+        "Elle est horizontale.",
+        "Elle est verticale."
+      ],
+      "correctAnswer": "Elle est décroissante et assez raide.",
+      "explanation": "Le coefficient directeur $m = -2$ est négatif, donc la droite est décroissante. Sa valeur absolue $|m| = 2$ est supérieure à $1$, ce qui signifie que la pente est raide (pour $1$ unité en abscisse, l'ordonnée varie de $2$ unités). Une droite horizontale a $m=0$ et une droite verticale n'a pas de coefficient directeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le coefficient directeur d'une droite est $m = 0,5$. Cela signifie que :",
+      "options": [
+        "Quand $x$ augmente de $1$, $y$ augmente de $0,5$.",
+        "Quand $x$ augmente de $0,5$, $y$ augmente de $1$.",
+        "Quand $x$ augmente de $1$, $y$ diminue de $0,5$.",
+        "La droite coupe l'axe des ordonnées en $0,5$."
+      ],
+      "correctAnswer": "Quand $x$ augmente de $1$, $y$ augmente de $0,5$.",
+      "explanation": "Par définition, le coefficient directeur $m = \\frac{\\Delta y}{\\Delta x}$. Avec $m = 0,5 = \\frac{1}{2}$, pour une variation $\\Delta x = 1$, on a $\\Delta y = 0,5$. Comme $m > 0$, $y$ augmente quand $x$ augmente. L'ordonnée à l'origine n'est pas donnée par le coefficient directeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les droites suivantes, laquelle est la plus pentue (la plus raide) ?",
+      "options": [
+        "La droite de coefficient directeur $m = 0,2$.",
+        "La droite de coefficient directeur $m = -4$.",
+        "La droite de coefficient directeur $m = 1$.",
+        "La droite de coefficient directeur $m = -0,5$."
+      ],
+      "correctAnswer": "La droite de coefficient directeur $m = -4$.",
+      "explanation": "La raideur (pente) d'une droite se mesure par la valeur absolue du coefficient directeur $|m|$. On compare $|0,2| = 0,2$, $|-4| = 4$, $|1| = 1$ et $|-0,5| = 0,5$. La plus grande valeur est $4$, correspondant à $m = -4$. Le signe indique seulement le sens de variation (croissante ou décroissante).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique représente le prix $P$ (en euros) en fonction de la masse $m$ (en kilogrammes) de pommes. La droite a pour coefficient directeur $2,5$. L'interprétation correcte est :",
+      "options": [
+        "Pour $1$ kg de plus, le prix augmente de $2,5$ euros.",
+        "Pour $1$ euro de plus, la masse augmente de $2,5$ kg.",
+        "Le prix de départ est de $2,5$ euros.",
+        "La masse de départ est de $2,5$ kg."
+      ],
+      "correctAnswer": "Pour $1$ kg de plus, le prix augmente de $2,5$ euros.",
+      "explanation": "Le coefficient directeur est le taux de variation : $m = \\frac{\\Delta P}{\\Delta m} = 2,5$ euros par kilogramme. Cela signifie que pour une augmentation de $1$ kg de la masse ($\\Delta m = 1$), le prix augmente de $2,5$ euros ($\\Delta P = 2,5$). Les options C et D confondent coefficient directeur et ordonnée à l'origine. L'option B inverse les variables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite forme un angle de $45^\\circ$ avec l'axe des abscisses (orienté positivement). Son coefficient directeur vaut :",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\frac{\\sqrt{2}}{2}$",
+        "$\\sqrt{3}$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Le coefficient directeur $m$ est égal au tangente de l'angle $\\alpha$ que la droite forme avec l'axe des abscisses : $m = \\tan(\\alpha)$. Pour $\\alpha = 45^\\circ$, $\\tan(45^\\circ) = 1$. La valeur $\\frac{\\sqrt{2}}{2}$ correspond à $\\cos(45^\\circ)$ ou $\\sin(45^\\circ)$, et $\\sqrt{3}$ correspond à $\\tan(60^\\circ)$. Un coefficient nul correspond à un angle de $0^\\circ$ (droite horizontale).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

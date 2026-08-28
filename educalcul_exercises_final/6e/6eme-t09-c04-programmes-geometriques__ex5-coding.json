@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Coordonnées",
+  "title": "Algorithmes et coordonnées dans le plan",
+  "blocks": [
+    {
+      "title": "Quadrant d'un point",
+      "content": "Écrire un algorithme qui demande à l'utilisateur les coordonnées $x$ et $y$ d'un point et qui affiche dans quel quadrant se trouve ce point (premier, deuxième, troisième, quatrième) ou s'il se trouve sur un axe (abscisse ou ordonnée) ou à l'origine.",
+      "correctAnswer": "Algorithme QuadrantPoint\\nVariables : x, y (réels)\\nDébut\\n    Afficher \"Entrez l'abscisse x : \"\\n    Lire x\\n    Afficher \"Entrez l'ordonnée y : \"\\n    Lire y\\n    Si x = 0 et y = 0 Alors\\n        Afficher \"Le point est à l'origine.\"\\n    Sinon Si x = 0 Alors\\n        Afficher \"Le point est sur l'axe des ordonnées.\"\\n    Sinon Si y = 0 Alors\\n        Afficher \"Le point est sur l'axe des abscisses.\"\\n    Sinon Si x > 0 et y > 0 Alors\\n        Afficher \"Le point est dans le premier quadrant.\"\\n    Sinon Si x < 0 et y > 0 Alors\\n        Afficher \"Le point est dans le deuxième quadrant.\"\\n    Sinon Si x < 0 et y < 0 Alors\\n        Afficher \"Le point est dans le troisième quadrant.\"\\n    Sinon\\n        Afficher \"Le point est dans le quatrième quadrant.\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste d'abord les cas particuliers (origine, axes) puis les quatre quadrants en comparant les signes des coordonnées. Chaque condition correspond à une zone du repère orthonormé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Milieu d'un segment",
+      "content": "Écrire un algorithme qui lit les coordonnées de deux points $A(x_A, y_A)$ et $B(x_B, y_B)$ et qui calcule puis affiche les coordonnées du milieu $M$ du segment $[AB]$.",
+      "correctAnswer": "Algorithme MilieuSegment\\nVariables : xA, yA, xB, yB, xM, yM (réels)\\nDébut\\n    Afficher \"Entrez l'abscisse de A : \"\\n    Lire xA\\n    Afficher \"Entrez l'ordonnée de A : \"\\n    Lire yA\\n    Afficher \"Entrez l'abscisse de B : \"\\n    Lire xB\\n    Afficher \"Entrez l'ordonnée de B : \"\\n    Lire yB\\n    xM ← (xA + xB) / 2\\n    yM ← (yA + yB) / 2\\n    Afficher \"Les coordonnées du milieu M sont : \", xM, \", \", yM\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du milieu sont les moyennes des coordonnées des extrémités : $x_M = \\frac{x_A + x_B}{2}$ et $y_M = \\frac{y_A + y_B}{2}$. L'algorithme applique directement ces formules.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Sommets d'un carré",
+      "content": "Écrire un algorithme qui, étant donné les coordonnées du centre $C(x_C, y_C)$ d'un carré et la longueur $c$ de son côté (carré dont les côtés sont parallèles aux axes), détermine et affiche les coordonnées des quatre sommets du carré.",
+      "correctAnswer": "Algorithme SommetsCarre\\nVariables : xC, yC, c, d, x1, y1, x2, y2, x3, y3, x4, y4 (réels)\\nDébut\\n    Afficher \"Entrez l'abscisse du centre : \"\\n    Lire xC\\n    Afficher \"Entrez l'ordonnée du centre : \"\\n    Lire yC\\n    Afficher \"Entrez la longueur du côté : \"\\n    Lire c\\n    d ← c / 2\\n    x1 ← xC - d ; y1 ← yC + d   // sommet en haut à gauche\\n    x2 ← xC + d ; y2 ← yC + d   // sommet en haut à droite\\n    x3 ← xC + d ; y3 ← yC - d   // sommet en bas à droite\\n    x4 ← xC - d ; y4 ← yC - d   // sommet en bas à gauche\\n    Afficher \"Sommet 1 : \", x1, \", \", y1\\n    Afficher \"Sommet 2 : \", x2, \", \", y2\\n    Afficher \"Sommet 3 :\", x3, \", \", y3\\n    Afficher \"Sommet 4 :\", x4, \", \", y4\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un carré centré en $C$ et de côté $c$ parallèle aux axes, la demi-longueur est $d = c/2$. Les sommets s'obtiennent en ajoutant ou soustrayant $d$ aux coordonnées du centre selon les quatre combinaisons de signes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

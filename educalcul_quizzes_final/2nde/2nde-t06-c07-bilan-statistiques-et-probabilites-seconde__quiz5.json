@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Information chiffrée et hasard",
+  "title": "Quiz : Information chiffrée et hasard (Approfondissement)",
+  "questions": [
+    {
+      "text": "On lance simultanément deux dés équilibrés à six faces, un rouge et un bleu. On s'intéresse à la somme des résultats obtenus. Quelle est la probabilité d'obtenir une somme égale à 7 ?",
+      "options": [
+        "$1/6$",
+        "$1/12$",
+        "$1/36$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$1/6$",
+      "explanation": "L'expérience aléatoire consiste à lancer deux dés distincts. L'univers $\\Omega$ comporte $6 \\times 6 = 36$ issus équiprobables (pairs ordonnés). L'événement « somme égale à 7 » correspond aux couples : (1,6), (2,5), (3,4), (4,3), (5,2), (6,1), soit 6 issus favorables. La probabilité est donc $6/36 = 1/6$. Le distracteur $1/12$ correspondrait à une confusion avec des dés non distincts, $1/36$ à un seul couple précis, et $1/3$ à une surestimation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient 5 boules vertes, 3 boules rouges et 2 boules bleues, indiscernables au toucher. On prélève une boule au hasard. Quelle est la probabilité de ne pas obtenir une boule rouge ?",
+      "options": [
+        "$7/10$",
+        "$3/10$",
+        "$1/2$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$7/10$",
+      "explanation": "Le nombre total de boules est $5 + 3 + 2 = 10$. L'événement « boule rouge » a une probabilité de $3/10$. L'événement contraire « pas de boule rouge » (donc verte ou bleue) a pour probabilité $1 - 3/10 = 7/10$. On peut aussi compter les boules non rouges : $5 + 2 = 7$, d'où $7/10$. Le distracteur $3/10$ est la probabilité de l'événement contraire, $1/2$ et $2/5$ ne correspondent à aucun comptage pertinent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 30 élèves, on a recensé la pratique du tennis. Le tableau ci-dessous donne les effectifs. On choisit un élève au hasard dans la classe. Sachant que cet élève pratique le tennis, quelle est la probabilité que ce soit une fille ?",
+      "options": [
+        "$5/7$",
+        "$1/3$",
+        "$10/30$",
+        "$4/7$"
+      ],
+      "correctAnswer": "$5/7$",
+      "explanation": "Il s'agit d'une probabilité conditionnelle. On sait que l'élève pratique le tennis : on se place dans la ligne « Tennis » du tableau. L'effectif total de cette ligne est 14. Parmi eux, 10 sont des filles. La probabilité cherchée est donc $10/14 = 5/7$. Le distracteur $1/3$ correspond à $10/30$ (probabilité non conditionnelle « fille et tennis »), $10/30$ est cette même valeur non simplifiée, et $4/7$ est la probabilité conditionnelle « garçon sachant tennis ».",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Répartition des élèves selon le sexe et la pratique du tennis",
+        "headers": [
+          "",
+          "Filles",
+          "Garçons",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Tennis",
+            "10",
+            "4",
+            "14"
+          ],
+          [
+            "Autre sport",
+            "8",
+            "8",
+            "16"
+          ],
+          [
+            "Total",
+            "18",
+            "12",
+            "30"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On exécute un algorithme qui simule 1000 fois l'expérience suivante : on lance 10 fois une pièce de monnaie équilibrée et on compte le nombre de faces obtenues. La variable `compteur` est incrémentée à chaque fois qu'on obtient exactement 5 faces. À la fin de l'exécution, la valeur de `compteur` divisée par 1000 approche quelle valeur théorique ?",
+      "options": [
+        "La probabilité théorique d'obtenir exactement 5 faces sur 10 lancers",
+        "Le nombre total de lancers effectués (10000)",
+        "La moyenne des faces obtenues par expérience (5)",
+        "L'écart-type de la distribution"
+      ],
+      "correctAnswer": "La probabilité théorique d'obtenir exactement 5 faces sur 10 lancers",
+      "explanation": "Cet algorithme illustre la loi des grands nombres : la fréquence d'un événement, observée sur un grand nombre de répétitions indépendantes de l'expérience, tend vers la probabilité théorique de cet événement. Ici, l'événement est « obtenir exactement 5 faces sur 10 lancers ». Sa probabilité théorique suit une loi binomiale de paramètres $n=10$ et $p=0.5$ : $P(X=5) = C_{10}^5 \\times (0.5)^{10} \\approx 0,246$. La valeur `compteur/1000` approche donc cette probabilité. Les autres options sont des grandeurs différentes (effectif total, espérance, écart-type).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jeu propose : vous payez 2 € pour jouer. Vous lancez un dé équilibré à six faces. Si vous obtenez un 6, vous gagnez 10 €. Si vous obtenez un 1, vous gagnez 3 €. Pour tout autre résultat, vous ne gagnez rien. Quel est le gain espéré (aléatoire) net pour le joueur ?",
+      "options": [
+        "$1/6$ €",
+        "$0$ €",
+        "$-1/6$ €",
+        "$2$ €"
+      ],
+      "correctAnswer": "$1/6$ €",
+      "explanation": "Le gain net $X$ (en euros) prend trois valeurs : $+8$ (gain 10 moins mise 2) avec $p=1/6$, $+1$ (gain 3 moins mise 2) avec $p=1/6$, et $-2$ (perte de la mise) avec $p=4/6$. L'espérance est $E(X) = 8 \\times (1/6) + 1 \\times (1/6) + (-2) \\times (4/6) = (8 + 1 - 8)/6 = 1/6$. Le jeu est favorable au joueur (gain moyen d'environ 0,17 €). $0$ € correspondrait à un jeu équitable, $-1/6$ € à une erreur de signe sur le dernier terme, et $2$ € n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

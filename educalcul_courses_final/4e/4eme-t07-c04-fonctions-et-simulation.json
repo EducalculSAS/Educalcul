@@ -1,0 +1,879 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.895125+00:00",
+  "id": 453,
+  "code": "4eme-t07-c04",
+  "title": "Fonctions et simulation",
+  "description": "Cours structuré Educalcul : Fonctions et simulation.",
+  "subject": "Algorithmique et programmation",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Algorithmique et programmation",
+    "titre_du_cours": "Fonctions et simulation",
+    "objectif_global": "Fonctions et simulation",
+    "mini_lecons_imposees": [
+      "Définir fonction.",
+      "Appeler.",
+      "Simuler."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et programmation",
+      "lessons": [
+        {
+          "title": "Définir fonction.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une fonction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une recette de cuisine : tu donnes des ingrédients, tu suis les étapes, et tu obtiens un plat prêt à manger. En algorithmique, une fonction joue le même rôle : elle reçoit des données d'entrée, exécute une suite d'instructions précises, puis renvoie un résultat. Ce mécanisme permet de regrouper un traitement pour le réutiliser sans le réécrire à chaque fois."
+            },
+            {
+              "type": "definition",
+              "term": "fonction",
+              "definition": "Une fonction est un bloc d'instructions identifié par un nom, qui accepte zéro ou plusieurs paramètres, effectue un calcul et peut renvoyer une valeur.",
+              "example": "Fonction Double(x) Retourner 2*x Fin Fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nom de la fonction doit être clair et décrire l'action effectuée, par exemple CalculerAire ou ConvertirEnSecondes. Les paramètres sont des variables locales qui reçoivent les valeurs passées lors de l'appel. La valeur de retour, si elle existe, est transmise à l'endroit où la fonction a été invoquée."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=2x"
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation $f(x)=2x$ montre que la fonction $f$ prend une entrée $x$ et produit le double de cette entrée. En programmation, on écrirait par exemple `def f(x): return 2*x` en Python, ou `Fonction f(x) Retourner 2*x Fin Fonction` dans un langage de description d'algorithmes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom significatif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nom doit refléter l'opération, comme `Triangulaire` pour calculer un nombre triangulaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre parenthèses, écrivez les noms des paramètres séparés par des virgules, par exemple `(a, b)` pour deux nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le corps de la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Placez les instructions qui transforment les paramètres en résultat, en utilisant des variables locales si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Indiquer la valeur de retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez le mot-clé `Retourner` suivi de l'expression à renvoyer, puis terminez par `Fin Fonction`."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment décrire une fonction, essaie d'écrire la tienne pour calculer le triple d'un nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux paramètres multiples et voyons comment une fonction peut recevoir plusieurs valeurs à la fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les paramètres multiples et la valeur de retour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction peut accepter plusieurs paramètres, chacun jouant un rôle précis dans le calcul. Par exemple, une fonction `Additionner(a, b)` reçoit deux nombres et renvoie leur somme. La valeur de retour est unique, mais elle peut être le résultat d'une expression combinant tous les paramètres."
+            },
+            {
+              "type": "definition",
+              "term": "paramètre",
+              "definition": "Variable locale qui reçoit la valeur transmise lors de l'appel de la fonction.",
+              "example": "Dans `Additionner(a, b)`, `a` et `b` sont des paramètres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Lors de l'appel, les arguments sont fournis dans le même ordre que les paramètres. Si tu appelles `Additionner(3, 5)`, la variable `a` vaut $3$ et `b` vaut $5$, le calcul produit $8$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Déclarer la fonction avec deux paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris `Fonction Additionner(a, b)`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute l'instruction `somme <- a + b`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Retourner le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris `Retourner somme` puis `Fin Fonction`."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de créer une fonction qui calcule le produit de trois nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les variables créées à l'intérieur d'une fonction ne sont pas accessibles à l'extérieur ; c'est ce qu'on appelle la portée locale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variables locales et portée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu définis une variable à l'intérieur d'une fonction, elle n'existe que pendant l'exécution de cette fonction. Si tu déclares `temp <- a * b` dans `Additionner`, `temp` disparaît dès que la fonction se termine. Cela évite les conflits de noms entre différentes parties du programme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Déclarer une variable locale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans le corps, écris `local <- 10`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu peux lire ou modifier `local` tant que la fonction tourne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fin de la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après `Fin Fonction`, `local` n'existe plus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment une fonction peut recevoir trois paramètres et renvoyer leur moyenne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fonctions à plusieurs paramètres et résultat composé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction comme `Moyenne(x, y, z)` additionne les trois valeurs, divise par $3$ et renvoie le quotient. Cette structure montre qu'une fonction peut traiter un nombre quelconque de données d'entrée tant que la liste des paramètres est claire."
+            },
+            {
+              "type": "display_math",
+              "latex": "g(a,b,c)=(a+b+c)/3"
+            },
+            {
+              "type": "paragraph",
+              "content": "À toi de jouer : écris la signature et le corps de cette fonction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, imagine une fonction qui détermine si un nombre est pair."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple : tester la parité"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction `EstPair(n)` renvoie `Vrai` si le reste de la division de $n$ par $2$ vaut $0$, sinon `Faux`. Cela illustre l'usage d'une condition à l'intérieur d'une fonction."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "r <- n modulo 2"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tester le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si r = 0 alors Retourner Vrai sinon Retourner Faux"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fin Fonction"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les bases pour définir tes propres fonctions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la signature d'une fonction qui prend un nombre entier et renvoie son double.",
+              "answer": "Fonction Double(n) Retourner 2*n Fin Fonction",
+              "hint": "Utilise le mot-clé Fonction suivi du nom et du paramètre entre parenthèses.",
+              "explanation": "La fonction doit s'appeler Double, accepter un paramètre n et retourner 2*n."
+            },
+            {
+              "question": "Définis une fonction Produit(a, b, c) qui renvoie le produit de ses trois paramètres.",
+              "answer": "Fonction Produit(a, b, c) Retourner a*b*c Fin Fonction",
+              "hint": "Pense à multiplier les trois paramètres dans le corps.",
+              "explanation": "Le corps calcule a*b*c et le retourne."
+            },
+            {
+              "question": "Quelle est la portée d'une variable déclarée à l'intérieur d'une fonction ?",
+              "answer": "Elle est locale à la fonction et n'est pas accessible à l'extérieur.",
+              "hint": "Rappelle-toi la règle des variables locales.",
+              "explanation": "Les variables locales disparaissent à la fin de la fonction."
+            },
+            {
+              "question": "Écris une fonction EstPair(n) qui renvoie Vrai si n est pair, Faux sinon.",
+              "answer": "Fonction EstPair(n) Si n modulo 2 = 0 Alors Retourner Vrai Sinon Retourner Faux Fin Si Fin Fonction",
+              "hint": "Utilise l'opérateur modulo pour tester la divisibilité par 2.",
+              "explanation": "Le reste de la division par 2 détermine la parité."
+            }
+          ]
+        },
+        {
+          "title": "Appeler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appeler une fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appeler une fonction, c'est lui demander d'exécuter son code avec des valeurs concrètes. On écrit le nom de la fonction suivi des arguments entre parenthèses. La fonction travaille alors avec ces arguments et, si elle possède une instruction de retour, elle envoie le résultat à l'endroit de l'appel."
+            },
+            {
+              "type": "definition",
+              "term": "appel de fonction",
+              "definition": "Action d'invoquer une fonction en lui fournissant des arguments pour obtenir un résultat.",
+              "example": "Double(7) renvoie 14"
+            },
+            {
+              "type": "display_math",
+              "latex": "resultat = f(5)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction à appeler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nom exact de la fonction, par exemple `Double`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Préparer les arguments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemble les valeurs à transmettre dans l'ordre des paramètres, ici $7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'appel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris `Double(7)` là où tu as besoin du résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Utiliser la valeur de retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Affecte le résultat à une variable ou insère-le directement dans une expression."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'appeler la fonction Double avec l'argument $7$ et observe le résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, intéressons-nous à la correspondance entre arguments et paramètres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arguments et paramètres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les paramètres sont les noms déclarés dans l'en-tête de la fonction. Les arguments sont les valeurs réelles fournies lors de l'appel. L'ordre est crucial : le premier argument remplit le premier paramètre, le second argument le second paramètre, et ainsi de suite."
+            },
+            {
+              "type": "definition",
+              "term": "argument",
+              "definition": "Valeur concrète passée à une fonction lors de son appel.",
+              "example": "Dans `Additionner(4, 9)`, $4$ et $9$ sont des arguments."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le nombre d'arguments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que le nombre d'arguments correspond au nombre de paramètres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Associer chaque argument à son paramètre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le premier argument va au premier paramètre, le deuxième au deuxième, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exécuter le corps avec ces valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction calcule alors avec les valeurs reçues."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule mentalement le résultat de l'appel `Additionner(4, 9)`."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment stocker la valeur renvoyée par une fonction dans une variable."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la valeur de retour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une fonction renvoie un résultat, on peut l'affecter à une variable grâce à la flèche d'affectation. Par exemple, `x <- Double(5)` place la valeur $10$ dans la variable `x`. Cette variable peut ensuite être réutilisée ailleurs dans l'algorithme."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = f(3) + 2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Appeler la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'appel, par exemple `Double(5)`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Affecter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place une variable à gauche de la flèche, comme `x <- Double(5)`."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réutiliser la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise `x` dans les calculs suivants, par exemple `y <- x + 3`."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Stocke le résultat de `Double(5)` dans une variable `x`."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, découvrons les appels imbriqués où une fonction est appelée à l'intérieur d'une autre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appels imbriqués"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction peut être appelée comme argument d'une autre fonction. L'évaluation se fait de l'intérieur vers l'extérieur : on calcule d'abord la fonction la plus interne, puis on transmet son résultat à la fonction externe. Cela permet de composer des traitements complexes de façon lisible."
+            },
+            {
+              "type": "display_math",
+              "latex": "h = f(g(2))"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Évaluer la fonction interne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule `g(2)` qui donne $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transmettre le résultat à la fonction externe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique `f` à la valeur $4$, ce qui donne $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtenir le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La variable `h` reçoit $5$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Évalue l'expression `f(g(2))` si `f(x)=x+1` et `g(x)=2*x`."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment appelle-t-on la fonction Double avec l'argument $7$ ?",
+              "answer": "Double($7$)",
+              "hint": "Écris le nom de la fonction suivi de la valeur entre parenthèses.",
+              "explanation": "L'appel transmet $7$ comme paramètre n."
+            },
+            {
+              "question": "Si la fonction Additionner(a, b) est définie, quel est le résultat de Additionner($4$, $9$) ?",
+              "answer": "$13$",
+              "hint": "Additionne les deux arguments.",
+              "explanation": "a vaut $4$, b vaut $9$, la somme est $13$."
+            },
+            {
+              "question": "Comment stocker le résultat de Double($5$) dans une variable x ?",
+              "answer": "x <- Double($5$)",
+              "hint": "Utilise la flèche d'affectation.",
+              "explanation": "La valeur de retour $10$ est affectée à x."
+            },
+            {
+              "question": "Évalue l'expression f(g($2$)) si f(x)=x+1 et g(x)=2*x.",
+              "answer": "$5$",
+              "hint": "Calcule d'abord g($2$) puis applique f.",
+              "explanation": "g($2$)=$4$, puis f($4$)=$5$."
+            }
+          ]
+        },
+        {
+          "title": "Simuler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une simulation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une simulation reproduit un phénomène réel en exécutant un modèle algorithmique de nombreuses fois. On définit les règles du système, on y injecte du hasard si nécessaire, et on observe les résultats statistiques. C'est une méthode puissante pour comprendre des situations complexes sans avoir à les réaliser physiquement."
+            },
+            {
+              "type": "definition",
+              "term": "simulation",
+              "definition": "Exécution répétée d'un modèle algorithmique pour observer le comportement d'un système réel.",
+              "example": "Simuler $1000$ lancers de dé pour estimer la probabilité d'obtenir un $6$."
+            },
+            {
+              "type": "display_math",
+              "latex": "S = (1/n) * sum_{i=1}^{n} X_i"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les variables, les règles de transition et les événements aléatoires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le nombre d'itérations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plus le nombre est grand, plus l'estimation sera précise."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exécuter la boucle de simulation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À chaque tour, génère les valeurs aléatoires, met à jour l'état et enregistre les observations."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Analyser les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule des moyennes, des fréquences ou d'autres indicateurs statistiques."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux estimer la fréquence du nombre $6$ au cours de nombreux lancers de dé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour introduire du hasard dans nos algorithmes, nous utilisons une fonction qui génère des nombres aléatoires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser l'aléatoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction `Aleatoire(a, b)` renvoie un entier choisi uniformément entre $a$ et $b$ inclus. C'est l'outil de base pour simuler des événements incertains comme un lancer de dé, un tirage de carte ou une arrivée de client."
+            },
+            {
+              "type": "definition",
+              "term": "nombre aléatoire",
+              "definition": "Valeur produite par un générateur pseudo-aléatoire, répartie uniformément sur un intervalle donné.",
+              "example": "Aleatoire(1, 6) peut renvoyer $1$, $2$, $3$, $4$, $5$ ou $6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Appeler la fonction aléatoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris `de <- Aleatoire(1, 6)` pour simuler un lancer de dé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Teste la variable `de` dans une condition ou stocke-la pour les statistiques."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Génère un nombre entier aléatoire entre $1$ et $6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une seule exécution ne suffit pas ; il faut répéter l'expérience un grand nombre de fois à l'aide d'une boucle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répéter l'expérience avec une boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La structure `Pour i de 1 à N Faire ... Fin Pour` permet d'exécuter un bloc d'instructions exactement $N$ fois. À chaque itération, on tire un nouveau nombre aléatoire et on met à jour les compteurs. C'est le cœur de toute simulation par échantillonnage."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser les compteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "compteurSix <- 0"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Boucler sur le nombre d'essais",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour i de 1 à 100 Faire"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tirer et tester",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "de <- Aleatoire(1, 6) ; Si de = 6 Alors compteurSix <- compteurSix + 1 Fin Si"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fin de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fin Pour ; À la fin, compteurSix contient le nombre de $6$ obtenus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Écris une boucle qui simule $100$ lancers de dé et compte le nombre de $6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la simulation, il faut résumer les données collectées pour en tirer des conclusions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Analyser les résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "On calcule souvent la moyenne des valeurs observées ou la fréquence relative d'un événement. La moyenne se calcule en sommant toutes les valeurs et en divisant par le nombre d'observations. La fréquence d'un événement est le quotient du nombre d'occurrences sur le total des essais."
+            },
+            {
+              "type": "display_math",
+              "latex": "moyenne = (somme des valeurs) / n"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner toutes les observations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "somme <- 0 ; Pour i de 1 à n Faire somme <- somme + T[i] Fin Pour"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par le nombre d'observations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "moyenne <- somme / n"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer une fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "frequenceSix <- compteurSix / n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule la moyenne des résultats stockés dans un tableau T de taille n."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une fonction avec des paramètres et une valeur de retour.",
+                "Je sais appeler une fonction et utiliser son résultat dans une expression.",
+                "Je sais écrire une simulation simple avec une boucle, des nombres aléatoires et une analyse statistique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Qu'est-ce qu'une simulation en algorithmique ?",
+              "answer": "Une simulation est l'exécution répétée d'un modèle algorithmique pour observer le comportement d'un système réel.",
+              "hint": "Pense à la modélisation d'un lancer de dé.",
+              "explanation": "On utilise des nombres aléatoires et des boucles pour reproduire un phénomène."
+            },
+            {
+              "question": "Comment générer un nombre entier aléatoire entre $1$ et $6$ ?",
+              "answer": "Aleatoire($1$, $6$)",
+              "hint": "Utilise la fonction aléatoire avec les bornes.",
+              "explanation": "La fonction renvoie un entier uniforme dans l'intervalle."
+            },
+            {
+              "question": "Écris une boucle qui simule $100$ lancers de dé et compte le nombre de $6$.",
+              "answer": "compteur <- 0 ; Pour i de 1 à 100 Faire ; Si Aleatoire(1,6)=6 Alors compteur <- compteur+1 Fin Si ; Fin Pour",
+              "hint": "Utilise une variable compteur et une boucle Pour.",
+              "explanation": "Chaque itération tire un dé et incrémente si c'est $6$."
+            },
+            {
+              "question": "Comment calculer la moyenne des résultats stockés dans un tableau T de taille n ?",
+              "answer": "somme <- 0 ; Pour i de 1 à n Faire somme <- somme + T[i] Fin Pour ; moyenne <- somme / n",
+              "hint": "Parcours le tableau et accumule la somme.",
+              "explanation": "La moyenne est la somme divisée par le nombre d'éléments."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Application : Repérage dans l'espace",
+  "title": "Quiz : Applications du repérage dans l'espace",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé $(O; \\vec{i}, \\vec{j}, \\vec{k})$, le point $A$ a pour coordonnées $(2; -3; 4)$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "Le point $A$ appartient au plan $(xOy)$",
+        "Le point $A$ appartient au plan $(yOz)$",
+        "La distance du point $A$ au plan $(xOy)$ est $4$",
+        "La distance du point $A$ au plan $(xOz)$ est $2$"
+      ],
+      "correctAnswer": "La distance du point $A$ au plan $(xOy)$ est $4$",
+      "explanation": "Dans un repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$, les coordonnées d'un point $A(x; y; z)$ donnent sa position : $x$ est l'abscisse (distance au plan $(yOz)$), $y$ est l'ordonnée (distance au plan $(xOz)$), $z$ est la cote (distance au plan $(xOy)$). Pour $A(2; -3; 4)$, la cote est $z=4$, donc la distance au plan $(xOy)$ est $|4| = 4$. Le point n'appartient pas au plan $(xOy)$ car $z \\neq 0$, ni au plan $(yOz)$ car $x \\neq 0$. La distance au plan $(xOz)$ est $|y| = 3$, pas $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cube $ABCDEFGH$ de côté $4$ est placé dans un repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$ tel que $A(0; 0; 0)$, $B(4; 0; 0)$, $D(0; 4; 0)$ et $E(0; 0; 4)$. Quelles sont les coordonnées du sommet $G$, opposé à $A$ ?",
+      "options": [
+        "$(4; 4; 0)$",
+        "$(0; 4; 4)$",
+        "$(4; 0; 4)$",
+        "$(4; 4; 4)$"
+      ],
+      "correctAnswer": "$(4; 4; 4)$",
+      "explanation": "Le sommet $A$ est à l'origine. Le sommet $B$ est sur l'axe des abscisses ($x=4$), $D$ sur l'axe des ordonnées ($y=4$), $E$ sur l'axe des cotes ($z=4$). Le sommet $G$ est l'opposé de $A$ dans le cube : il est atteint en se déplaçant de $4$ selon $\\vec{i}$, de $4$ selon $\\vec{j}$ et de $4$ selon $\\vec{k}$. Ses coordonnées sont donc $(4; 4; 4)$. L'option $(4; 4; 0)$ correspond au sommet $C$, $(0; 4; 4)$ à $H$ et $(4; 0; 4)$ à $F$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'espace muni d'un repère, on considère le point $M(1; 2; 3)$ et le vecteur $\\vec{v}(-2; 0; 5)$. Quelle sont les coordonnées du point $M'$, image de $M$ par la translation de vecteur $\\vec{v}$ ?",
+      "options": [
+        "$(-1; 2; 8)$",
+        "$(3; 2; -2)$",
+        "$(-1; 2; -2)$",
+        "$(3; 2; 8)$"
+      ],
+      "correctAnswer": "$(-1; 2; 8)$",
+      "explanation": "La translation de vecteur $\\vec{v}(x_v; y_v; z_v)$ transforme un point $M(x; y; z)$ en $M'(x+x_v; y+y_v; z+z_v)$. Ici, $x' = 1 + (-2) = -1$, $y' = 2 + 0 = 2$, $z' = 3 + 5 = 8$. Donc $M'(-1; 2; 8)$. Les autres options correspondent à des erreurs de signes ou d'addition sur les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le point $P(3; -2; 5)$ dans un repère orthonormé. Quelles sont les coordonnées du symétrique $P'$ de $P$ par rapport au plan $(xOy)$ ?",
+      "options": [
+        "$(3; -2; -5)$",
+        "$(-3; 2; 5)$",
+        "$(3; 2; 5)$",
+        "$(-3; -2; -5)$"
+      ],
+      "correctAnswer": "$(3; -2; -5)$",
+      "explanation": "Le plan $(xOy)$ est le plan d'équation $z=0$. La symétrie par rapport à ce plan conserve les abscisses $x$ et les ordonnées $y$, et change le signe de la cote $z$. Le point $P(3; -2; 5)$ a donc pour symétrique $P'(3; -2; -5)$. L'option $(-3; 2; 5)$ correspond à une symétrie par rapport à l'origine, $(3; 2; 5)$ à une symétrie par rapport au plan $(xOz)$, et $(-3; -2; -5)$ n'est pas une symétrie orthogonale simple par rapport à un plan coordonné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $A(2; 1; 0)$ et $B(8; 7; 6)$ sont donnés dans un repère. $I$ est le milieu du segment $[AB]$. Quelles sont les coordonnées de $I$ ?",
+      "options": [
+        "$(5; 4; 3)$",
+        "$(10; 8; 6)$",
+        "$(3; 3; 3)$",
+        "$(6; 6; 6)$"
+      ],
+      "correctAnswer": "$(5; 4; 3)$",
+      "explanation": "Les coordonnées du milieu $I$ d'un segment $[AB]$ avec $A(x_A; y_A; z_A)$ et $B(x_B; y_B; z_B)$ sont les moyennes des coordonnées des extrémités : $x_I = \\frac{x_A + x_B}{2}$, $y_I = \\frac{y_A + y_B}{2}$, $z_I = \\frac{z_A + z_B}{2}$. Ici : $x_I = \\frac{2+8}{2} = 5$, $y_I = \\frac{1+7}{2} = 4$, $z_I = \\frac{0+6}{2} = 3$. Donc $I(5; 4; 3)$. L'option $(10; 8; 6)$ correspond à la somme des coordonnées (vecteur $\\vec{AB}$), $(3; 3; 3)$ et $(6; 6; 6)$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

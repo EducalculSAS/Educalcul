@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Interprétation",
+  "title": "Interprétation en simulation",
+  "blocks": [
+    {
+      "title": "Vocabulaire de la simulation",
+      "content": "Relie chaque terme à sa définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Loi uniforme sur [0;1]",
+          "right": "Génère un nombre réel entre 0 et 1 avec la même probabilité pour tout intervalle de même longueur"
+        },
+        {
+          "left": "Loi binomiale B(n;p)",
+          "right": "Modélise le nombre de succès dans n épreuves indépendantes de probabilité p"
+        },
+        {
+          "left": "Échantillon de taille N",
+          "right": "Ensemble de N réalisations indépendantes d'une même variable aléatoire"
+        },
+        {
+          "left": "Intervalle de fluctuation à 95%",
+          "right": "Intervalle dans lequel la fréquence observée tombe avec une probabilité d'environ $95\\%$"
+        }
+      ],
+      "items": [],
+      "explanation": "La loi uniforme sur [0;1] fournit des nombres équitablement répartis. La loi binomiale compte les succès. Un échantillon de taille N regroupe N tirages indépendants. L'intervalle de fluctuation à 95% contient la fréquence observée dans 95% des cas si l'hypothèse est vraie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étapes d'un algorithme de simulation",
+      "content": "Relie chaque étape à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "1. Définir la variable aléatoire à simuler",
+          "right": "Première étape : identifier ce que l'on veut étudier"
+        },
+        {
+          "left": "2. Choisir la loi de probabilité adaptée",
+          "right": "Deuxième étape : sélectionner le modèle mathématique"
+        },
+        {
+          "left": "3. Générer un grand nombre de réalisations",
+          "right": "Troisième étape : utiliser un générateur de nombres aléatoires"
+        },
+        {
+          "left": "4. Calculer la statistique d'intérêt (moyenne, fréquence...)",
+          "right": "Quatrième étape : agréger les résultats pour estimer la quantité recherchée"
+        }
+      ],
+      "items": [],
+      "explanation": "On commence par préciser la variable d'intérêt, puis on choisit la loi qui la modélise. Ensuite on produit beaucoup de tirages pour approcher la distribution, enfin on calcule la statistique voulue (moyenne, proportion, etc.).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation des résultats d'une simulation",
+      "content": "Relie chaque résultat à la conclusion correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence observée = $0,48$ pour $p = 0,5$",
+          "right": "Résultat compatible avec l'hypothèse $p = 0,5$ (dans l'intervalle de fluctuation)"
+        },
+        {
+          "left": "Fréquence observée = $0,30$ pour $p = 0,5$",
+          "right": "Résultat peu compatible, suggère que $p \\neq 0,5$"
+        },
+        {
+          "left": "Moyenne simulée = $9,9$ pour une loi de moyenne théorique $10$",
+          "right": "Estimation proche de la valeur théorique, simulation fiable"
+        },
+        {
+          "left": "Écart type simulé très supérieur à l'écart type théorique",
+          "right": "Taille d'échantillon insuffisante ou erreur de programmation"
+        }
+      ],
+      "items": [],
+      "explanation": "Une fréquence proche de la valeur attendue (0,48 vs 0,5) tombe dans l'intervalle de fluctuation. Une fréquence lointaine (0,30) indique une incompatibilité. Une moyenne simulée proche de la moyenne théorique valide la simulation. Un écart type anormalement grand signale un problème de taille d'échantillon ou de code.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

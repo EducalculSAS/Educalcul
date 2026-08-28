@@ -1,0 +1,50 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Comparer",
+  "title": "Comparer des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Comparaison simple",
+      "content": "Pour comparer $3,14$ et $3,2$, on aligne les virgules. On compare d'abord la partie entière : elles sont égales. On compare ensuite les dixièmes : $1$ est {{1}} que $2$. Donc $3,14$ {{2}} $3,2$.",
+      "blanks": [
+        "inférieur|plus petit",
+        "<|est inférieur à|est plus petit que"
+      ],
+      "correctAnswer": "",
+      "explanation": "On aligne les nombres à la virgule : 3,14 et 3,20. Les unités sont identiques (3). Au rang des dixièmes, 1 < 2, donc 3,14 < 3,2. On peut ajouter un zéro chiffra significatif à 3,2 pour avoir le même nombre de décimales : 3,20.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant",
+      "content": "Range les nombres suivants dans l'ordre croissant : $0,75 ; 0,7 ; 0,705 ; 0,8$.\\nLe plus petit est {{1}}, ensuite {{2}}, puis {{3}}, le plus grand est {{4}}.",
+      "blanks": [
+        "0,7|0,70",
+        "0,705",
+        "0,75",
+        "0,8"
+      ],
+      "correctAnswer": "",
+      "explanation": "On met tous les nombres au même nombre de décimales (trois) en ajoutant des zéros chiffras significatifs : 0,750 ; 0,700 ; 0,705 ; 0,800. On compare : 0,700 < 0,705 < 0,750 < 0,800. Soit 0,7 < 0,705 < 0,75 < 0,8.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Compléter une comparaison",
+      "content": "Quel chiffre peut-on écrire dans la case pour que l'inégalité soit vraie ?\\n$4,\\square 3 > 4,23$.\\nLe chiffre des dixièmes doit être strictement {{1}} que $2$. On peut choisir par exemple le chiffre {{2}}.",
+      "blanks": [
+        "supérieur|plus grand",
+        "3|4|5|6|7|8|9"
+      ],
+      "correctAnswer": "",
+      "explanation": "On compare 4,?3 et 4,23. Les unités sont égales (4). Pour que le premier nombre soit plus grand, le chiffre des dixièmes (la case) doit être strictement supérieur à 2. Les chiffres possibles sont donc 3, 4, 5, 6, 7, 8 ou 9.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

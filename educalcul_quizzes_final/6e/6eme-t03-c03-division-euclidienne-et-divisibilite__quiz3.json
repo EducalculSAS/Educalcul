@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Critères simples si prévus",
+  "title": "Quiz : Critères de divisibilité (2, 3, 5, 9, 10)",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel est divisible à la fois par 2 et par 5 ?",
+      "options": [
+        "$1 230$",
+        "$1 232$",
+        "$1 235$",
+        "$1 238$"
+      ],
+      "correctAnswer": "$1 230$",
+      "explanation": "Un nombre est divisible par 2 s'il se termine par un chiffre pair (0, 2, 4, 6, 8). Il est divisible par 5 s'il se termine par 0 ou 5. Pour être divisible par les deux, il doit obligatoirement se terminer par 0. Seul $1 230$ remplit cette condition. $1 232$ et $1 238$ se terminent par un chiffre pair mais pas par 0 ou 5. $1 235$ se termine par 5 mais n'est pas pair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel énoncé correspond exactement au critère de divisibilité par 3 ?",
+      "options": [
+        "Un nombre est divisible par 3 s'il se termine par 3, 6 ou 9.",
+        "Un nombre est divisible par 3 si la somme de ses chiffres est un multiple de 3.",
+        "Un nombre est divisible par 3 s'il est pair.",
+        "Un nombre est divisible par 3 s'il se termine par 0 ou 5."
+      ],
+      "correctAnswer": "Un nombre est divisible par 3 si la somme de ses chiffres est un multiple de 3.",
+      "explanation": "Le critère de divisibilité par 3 porte sur la somme des chiffres du nombre, pas sur son dernier chiffre. Si la somme des chiffres est un multiple de 3 (3, 6, 9, 12, 15...), alors le nombre est divisible par 3. La première option confond avec la table de multiplication de 3. La troisième option est le critère de divisibilité par 2. La quatrième option est le critère de divisibilité par 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $4 572$ est-il divisible par 9 ?",
+      "options": [
+        "Oui, car la somme de ses chiffres vaut $18$.",
+        "Non, car la somme de ses chiffres vaut $17$.",
+        "Oui, car il se termine par 2.",
+        "Non, car il n'est pas pair."
+      ],
+      "correctAnswer": "Oui, car la somme de ses chiffres vaut $18$.",
+      "explanation": "Le critère de divisibilité par 9 stipule qu'un nombre est divisible par 9 si la somme de ses chiffres est un multiple de 9. Pour $4 572$, la somme est $4 + 5 + 7 + 2 = 18$. Or $18$ est un multiple de 9 ($9 \\times 2$), donc $4 572$ est divisible par 9. L'option B donne une somme fausse. Les options C et D utilisent des critères non pertinents (dernier chiffre, parité) pour la divisibilité par 9.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut que le nombre $7 \\square 5$ soit divisible par 5. Quels sont les chiffres possibles pour le trou ?",
+      "options": [
+        "Aucun chiffre ne convient",
+        "Uniquement 0",
+        "Uniquement 5",
+        "Tous les chiffres de 0 à 9 conviennent"
+      ],
+      "correctAnswer": "Tous les chiffres de 0 à 9 conviennent",
+      "explanation": "Un nombre est divisible par 5 si et seulement s'il se termine par 0 ou par 5. Ici, le nombre s'écrit $7 \\square 5$ : son chiffre des unités est déjà 5. Quel que soit le chiffre placé dans le trou (dizaines), le nombre se terminera toujours par 5. Il sera donc toujours divisible par 5. Les dix chiffres de 0 à 9 sont donc des solutions valides.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces nombres est divisible par 6 ?",
+      "options": [
+        "$234$",
+        "$235$",
+        "$236$",
+        "$237$"
+      ],
+      "correctAnswer": "$234$",
+      "explanation": "Un nombre est divisible par 6 s'il est divisible à la fois par 2 et par 3. Il faut donc qu'il soit pair (critère du 2) et que la somme de ses chiffres soit un multiple de 3 (critère du 3). $234$ est pair (termine par 4) et la somme de ses chiffres est $2+3+4=9$, multiple de 3. $235$ et $237$ ne sont pas pairs. $236$ est pair mais la somme de ses chiffres est $11$, qui n'est pas un multiple de 3.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

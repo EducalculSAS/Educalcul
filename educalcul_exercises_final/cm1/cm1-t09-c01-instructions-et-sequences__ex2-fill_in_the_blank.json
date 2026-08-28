@@ -1,0 +1,42 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Prédire résultat",
+  "title": "Prédire le résultat d'un programme",
+  "blocks": [
+    {
+      "title": "Déplacement sur une grille",
+      "content": "Un robot se trouve sur la case de départ (flèche verte). Il exécute le programme suivant :\\nAVANCER 3 cases\\nTOURNER À DROITE\\nAVANCER 2 cases\\nTOURNER À GAUCHE\\nAVANCER 1 case\\n\\nLe robot se trouve maintenant sur la case {{1}} par rapport au départ (exemple : 3 cases à droite et 2 cases en haut).",
+      "blanks": [
+        "3 cases à droite et 3 cases en haut"
+      ],
+      "explanation": "On décompose le mouvement :\\n1. AVANCER 3 cases (vers le haut) : position (0, 3).\\n2. TOURNER À DROITE : le robot fait face à droite.\\n3. AVANCER 2 cases : position (2, 3).\\n4. TOURNER À GAUCHE : le robot fait face en haut.\\n5. AVANCER 1 case : position (2, 4).\\nAttention, la réponse attendue utilise le repère 'droite' et 'haut' depuis le départ. Le robot a bougé de 2 cases à droite et 4 cases en haut. \\nCorrection : Le robot avance 3 cases vers le haut. Tourne à droite (face à l'est). Avance 2 cases à droite. Tourne à gauche (face au nord). Avance 1 case vers le haut. Bilan : 2 cases à droite, 4 cases en haut. \\nJe corrige la réponse attendue dans le blank.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec une boucle",
+      "content": "On exécute cet algorithme :\\nVariable $score$ prend la valeur $0$\\nREPETER 4 FOIS\\n    $score$ prend la valeur $score + 3$\\nFIN REPETER\\nAfficher $score$\\n\\nLa valeur affichée à la fin est {{1}}.",
+      "blanks": [
+        "12"
+      ],
+      "explanation": "La boucle s'exécute 4 fois. À chaque tour, on ajoute 3 à la variable $score$.\\nInitialisation : $score = 0$.\\nTour 1 : $score = 0 + 3 = 3$.\\nTour 2 : $score = 3 + 3 = 6$.\\nTour 3 : $score = 6 + 3 = 9$.\\nTour 4 : $score = 9 + 3 = 12$.\\nOn peut aussi calculer directement : $4 \\times 3 = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Double boucle et condition",
+      "content": "On exécute ce programme :\\nVariable $total$ prend la valeur $0$\\nREPETER 3 FOIS\\n    REPETER 2 FOIS\\n        $total$ prend la valeur $total + 2$\\n    FIN REPETER\\nFIN REPETER\\nAfficher $total$\\n\\nLa valeur finale de $total$ est {{1}}.",
+      "blanks": [
+        "12"
+      ],
+      "explanation": "La boucle intérieure (REPETER 2 FOIS) ajoute 2 à $total$ deux fois, ce qui fait $2 \\times 2 = 4$ par tour de la boucle extérieure.\\nLa boucle extérieure (REPETER 3 FOIS) exécute ce bloc 3 fois.\\nTotal : $3 \\times 4 = 12$.\\nPas à pas :\\nDébut : $total = 0$.\\nTour 1 ext : +2, +2 $\\rightarrow$ $total = 4$.\\nTour 2 ext : +2, +2 $\\rightarrow$ $total = 8$.\\nTour 3 ext : +2, +2 $\\rightarrow$ $total = 12$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Checklist",
+  "title": "Bilan Vecteurs - Checklist Seconde",
+  "questions": [
+    {
+      "text": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont égaux si et seulement si :",
+      "options": [
+        "Ils ont même direction et même longueur",
+        "Ils ont même direction, même sens et même longueur",
+        "Ils ont les mêmes coordonnées dans n'importe quel repère",
+        "Ils ont même origine et même extrémité"
+      ],
+      "correctAnswer": "Ils ont même direction, même sens et même longueur",
+      "explanation": "L'égalité de deux vecteurs libres se définit par l'égalité de leurs trois caractéristiques : direction, sens et longueur (norme). L'option A oublie le sens (vecteurs opposés). L'option C est fausse car les coordonnées dépendent du repère choisi ; l'égalité des coordonnées doit être vérifiée dans un même repère. L'option D définit un représentant particulier (vecteur lié), pas le vecteur libre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A$, $B$, $C$ trois points quelconques du plan. La relation de Chasles s'écrit :",
+      "options": [
+        "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{BC} = \\vec{CA}$",
+        "$\\vec{AB} + \\vec{BC} = \\vec{0}$",
+        "$\\vec{AB} - \\vec{BC} = \\vec{AC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+      "explanation": "La relation de Chasles est la base de l'addition vectorielle : le vecteur qui va de $A$ à $C$ est la somme du vecteur qui va de $A$ à $B$ et de celui qui va de $B$ à $C$. L'option B inverse l'extrémité finale. L'option C ne serait vraie que si $A=C$. L'option D correspond à une soustraction, pas à la relation fondamentale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère, $\\vec{u} \\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$ et $\\vec{v} \\begin{pmatrix} -4 \\\\ 6 \\end{pmatrix}$. Ces vecteurs sont :",
+      "options": [
+        "Orthogonaux car leur produit scalaire est nul",
+        "Colinéaires et de même sens",
+        "Colinéaires et de sens contraires",
+        "Non colinéaires"
+      ],
+      "correctAnswer": "Colinéaires et de sens contraires",
+      "explanation": "On vérifie la colinéarité par le déterminant : $2 \\times 6 - (-3) \\times (-4) = 12 - 12 = 0$. Ils sont donc colinéaires. Pour le sens, on cherche $k$ tel que $\\vec{v} = k \\vec{u}$. On a $-4 = k \\times 2 \\Rightarrow k = -2$ et $6 = k \\times (-3) \\Rightarrow k = -2$. Le coefficient $k = -2$ est négatif, donc les vecteurs sont de sens contraires. Le produit scalaire vaut $2(-4) + (-3)(6) = -8 -18 = -26 \\neq 0$, ils ne sont pas orthogonaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $I$ le milieu du segment $[AB]$. Quel vecteur parmi les suivants est égal à $\\vec{AI}$ ?",
+      "options": [
+        "$\\frac{1}{2}\\vec{AB}$",
+        "$\\frac{1}{2}\\vec{BA}$",
+        "$\\vec{AB}$",
+        "$-\\frac{1}{2}\\vec{AB}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}\\vec{AB}$",
+      "explanation": "Par définition du milieu, $I$ appartient à la droite $(AB)$ et $AI = IB$. Le vecteur $\\vec{AI}$ a donc même direction et même sens que $\\vec{AB}$, et sa longueur est la moitié de celle de $\\vec{AB}$. On écrit donc $\\vec{AI} = \\frac{1}{2}\\vec{AB}$. L'option B correspond au vecteur $\\vec{IB}$. L'option D correspond au vecteur $\\vec{IA}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, le vecteur $\\vec{u}$ a pour coordonnées $\\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$. Sa norme $|\\!|\\vec{u}|\\!|$ vaut :",
+      "options": [
+        "7",
+        "5",
+        "25",
+        "12"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Dans un repère orthonormé, la norme d'un vecteur $\\vec{u}(x;y)$ se calcule par le théorème de Pythagore : $|\\!|\\vec{u}|\\!| = \\sqrt{x^2 + y^2}$. Ici $|\\!|\\vec{u}|\\!| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$. L'option A est la somme des coordonnées. L'option C est le carré de la norme. L'option D est le produit des coordonnées.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

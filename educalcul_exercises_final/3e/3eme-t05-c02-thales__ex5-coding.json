@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Configuration",
+  "title": "Approfondissement : Configuration de Thalès - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul de AE dans une configuration de Thalès",
+      "content": "Dans le triangle $ABC$, la droite $(DE)$ est parallèle à $(BC)$ avec $D \\in [AB]$ et $E \\in [AC]$. On donne $AB = 12\\,\\text{cm}$, $AC = 9\\,\\text{cm}$ et $AD = 4\\,\\text{cm}$. Écrire un algorithme (en langage naturel ou pseudo-code) qui calcule la longueur $AE$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs AB, AC, AD.\\n2. Calculer le rapport k = AD / AB.\\n3. Calculer AE = k * AC.\\n4. Afficher AE.\\nAvec les valeurs données : k = 4/12 = 1/3, donc AE = (1/3) * 9 = 3 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après le théorème de Thalès, comme $(DE) \\parallel (BC)$, les rapports des segments sur les côtés sont égaux : $AD/AB = AE/AC$. On en déduit $AE = (AD/AB) \\times AC$. L'algorithme implémente ce calcul.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de OF dans une configuration de Thalès à deux sécantes",
+      "content": "Deux droites se coupent en $O$. Sur l'une, on a les points $A$ et $B$ avec $OA = 10\\,\\text{cm}$ ; sur l'autre, les points $C$ et $D$ avec $OC = 6\\,\\text{cm}$. Les points $E \\in [OA]$ et $F \\in [OC]$ sont tels que $(EF) \\parallel (AC)$. On connaît $OE = 4\\,\\text{cm}$. Écrire un algorithme qui détermine la longueur $OF$.",
+      "correctAnswer": "Algorithme :\\n1. Lire OA, OC, OE.\\n2. Calculer le rapport k = OE / OA.\\n3. Calculer OF = k * OC.\\n4. Afficher OF.\\nAvec les valeurs : k = 4/10 = 0,4, donc OF = 0,4 * 6 = 2,4 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans cette configuration de Thalès avec deux droites sécantes en $O$, le parallélisme $(EF) \\parallel (AC)$ entraîne l'égalité des rapports $OE/OA = OF/OC$. L'algorithme utilise cette proportionnalité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction Python de vérification d'une configuration de Thalès",
+      "content": "Écrire une fonction Python nommée verifie_thales qui prend six arguments numériques : OA, OB, OC, OD, OE, OF. Ces longueurs correspondent à deux droites sécantes en $O$ : la première contient $A$ et $B$ (avec $OA$ et $OB$), la seconde contient $C$ et $D$ (avec $OC$ et $OD$). Les points $E$ et $F$ appartiennent respectivement aux segments $[OA]$ et $[OC]$. La fonction doit renvoyer True si la droite $(EF)$ est parallèle à $(AC)$ d'après le théorème de Thalès, c'est-à-dire si les rapports $OE/OA$ et $OF/OC$ sont égaux (à une tolérance près), sinon False.",
+      "correctAnswer": "def verifie_thales(OA, OB, OC, OD, OE, OF, eps=1e-9):\\n    # Vérification des rapports pour le parallélisme (EF) // (AC)\\n    return abs(OE/OA - OF/OC) < eps",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le théorème de Thalès dans cette configuration affirme que $(EF) \\parallel (AC)$ si et seulement si $OE/OA = OF/OC$. La fonction compare les deux rapports avec une petite tolérance `eps` pour gérer les erreurs d'arrondi. Les arguments `OB` et `OD` ne sont pas utilisés pour ce test mais font partie de la signature pour décrire la configuration complète.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

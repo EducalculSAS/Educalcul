@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 429,
+  "_course_code": "4eme-t02-c05-bilan-algebre-4e",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Développer, factoriser, résoudre",
+  "title": "Algorithmes : développer, factoriser, résoudre",
+  "blocks": [
+    {
+      "title": "Développer un produit de deux binômes",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui prend en entrée quatre nombres $a$, $b$, $c$, $d$ et qui affiche l'expression développée de $(ax+b)(cx+d)$ sous la forme $Ax^2+Bx+C$.",
+      "correctAnswer": "1. Lire a, b, c, d. 2. Calculer A = a * c. 3. Calculer B = a * d + b * c. 4. Calculer C = b * d. 5. Afficher \"A x^2 + B x + C\" en remplaçant A, B, C par les valeurs calculées.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le développement utilise la distributivité : $(ax+b)(cx+d)=acx^2+(ad+bc)x+bd$. L'algorithme calcule chaque coefficient puis affiche le trinôme obtenu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factoriser un trinôme du second degré",
+      "content": "Écrire un algorithme qui, étant donnés trois nombres $a$, $b$, $c$ (avec $a \\neq 0$), factorise le trinôme $ax^2+bx+c$ lorsque son discriminant est un carré parfait. L'algorithme doit afficher la factorisation sous la forme $a(x - r_1)(x - r_2)$.",
+      "correctAnswer": "1. Lire a, b, c. 2. Calculer Delta = b^2 - 4*a*c. 3. Si Delta < 0 alors afficher \"Pas de factorisation réelle\" et arrêter. 4. Calculer racine = sqrt(Delta). 5. Si racine n'est pas un entier alors afficher \"Delta n'est pas un carré parfait\" et arrêter. 6. Calculer r1 = (-b - racine) / (2*a). 7. Calculer r2 = (-b + racine) / (2*a). 8. Afficher \"a (x - r1) (x - r2)\" en remplaçant a, r1, r2 par leurs valeurs.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La factorisation d'un trinôme $ax^2+bx+c$ avec discriminant $\\Delta$ carré parfait donne deux racines rationnelles $r_1,r_2 = \\frac{-b\\pm\\sqrt{\\Delta}}{2a}$. Le trinôme s'écrit alors $a(x-r_1)(x-r_2)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre une équation du second degré",
+      "content": "Écrire un algorithme qui résout l'équation $ax^2+bx+c=0$ (avec $a \\neq 0$) et affiche les solutions réelles s'il y en a, sinon affiche \"Pas de solution réelle\".",
+      "correctAnswer": "1. Lire a, b, c. 2. Calculer Delta = b^2 - 4*a*c. 3. Si Delta > 0 alors : x1 = (-b - sqrt(Delta)) / (2*a), x2 = (-b + sqrt(Delta)) / (2*a), afficher \"Deux solutions : x1 = x1, x2 = x2\". 4. Sinon si Delta = 0 alors : x = -b / (2*a), afficher \"Une solution double : x = x\". 5. Sinon afficher \"Pas de solution réelle\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La résolution utilise le discriminant $\\Delta = b^2-4ac$. Si $\\Delta>0$ il y a deux solutions distinctes, si $\\Delta=0$ une solution double, si $\\Delta<0$ aucune solution réelle. L'algorithme teste ces cas et calcule les racines avec la formule quadratique.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

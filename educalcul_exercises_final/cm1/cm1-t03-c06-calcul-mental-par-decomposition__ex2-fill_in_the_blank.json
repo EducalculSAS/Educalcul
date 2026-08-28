@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 231,
+  "_course_code": "cm1-t03-c06-calcul-mental-par-decomposition",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Compensation",
+  "title": "Calcul mental : La stratégie de compensation",
+  "blocks": [
+    {
+      "title": "Compensation sur une addition simple",
+      "content": "Pour calculer $48 + 27$ facilement, on peut transformer l'addition. On retire $2$ au second nombre pour le donner au premier : $48 + 2 = {{1}}$ et $27 - 2 = {{2}}$. Le calcul devient alors $50 + {{3}}$, ce qui est plus simple à faire de tête.",
+      "blanks": [
+        "50",
+        "25",
+        "25"
+      ],
+      "correctAnswer": "",
+      "explanation": "La compensation consiste à modifier les termes d'une opération sans changer le résultat. Ici, on ajoute $2$ à $48$ pour obtenir la dizaine supérieure $50$. Pour compenser, on doit retrancher $2$ à l'autre terme, $27$, ce qui donne $25$. L'addition $50 + 25$ se calcule facilement : $75$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compensation sur une soustraction",
+      "content": "Pour calculer $63 - 28$ par compensation, on ajoute $2$ aux deux nombres pour obtenir une dizaine ronde au second terme. $63 + 2 = {{1}}$ et $28 + 2 = {{2}}$. La soustraction équivalente est ${{3}} - 30$.",
+      "blanks": [
+        "65",
+        "30",
+        "65"
+      ],
+      "correctAnswer": "",
+      "explanation": "En soustraction, la compensation fonctionne en ajoutant la même quantité aux deux termes (le nombre de départ et le nombre à retrancher) pour ne pas changer l'écart (la différence). On ajoute $2$ à $28$ pour faire $30$. On ajoute donc $2$ à $63$, ce qui fait $65$. Le calcul $65 - 30 = 35$ est immédiat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir la meilleure compensation",
+      "content": "Parmi ces calculs, lequel utilise correctement la compensation pour trouver le résultat de $56 + 39$ ?\\nA) $56 + 40 = 96$ puis $96 - 1 = {{1}}$\\nB) $55 + 40 = {{2}}$\\nC) $60 + 39 = {{3}}$",
+      "blanks": [
+        "95",
+        "95",
+        "99"
+      ],
+      "correctAnswer": "",
+      "explanation": "La compensation sur une addition consiste à arrondir un terme à la dizaine supérieure (ici $39$ devient $40$ en ajoutant $1$) et à compenser en retranchant cette même quantité sur l'autre terme ($56$ devient $55$).\\n- Proposition A : On arrondit $39$ à $40$ ($+1$) mais on ne compense pas sur $56$ (on fait $56+40$), puis on retranche $1$ au total. Cela marche mais ce n'est pas la méthode standard de compensation sur les termes.\\n- Proposition B : C'est la méthode standard : $56 - 1 = 55$ et $39 + 1 = 40$. Calcul : $55 + 40 = 95$.\\n- Proposition C : On arrondit $56$ à $60$ ($+4$) mais on ne modifie pas $39$. Le résultat $99$ est faux ($56+39=95$).\\nLa réponse attendue pour le calcul exact est $95$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

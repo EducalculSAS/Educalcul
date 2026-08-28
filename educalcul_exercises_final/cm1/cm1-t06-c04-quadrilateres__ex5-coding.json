@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 251,
+  "_course_code": "cm1-t06-c04-quadrilateres",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Carré, rectangle, losange",
+  "title": "Algorithmes pour tracer carrés, rectangles et losanges",
+  "blocks": [
+    {
+      "title": "Tracer un carré",
+      "content": "Écris un algorithme (en pseudo‑code) qui permet à une tortue de tracer un carré de côté $L$. La tortue comprend les instructions : AVANCER(distance), TOURNER_DROITE(angle).",
+      "correctAnswer": "RÉPÉTER 4 FOIS\\n    AVANCER(L)\\n    TOURNER_DROITE(90)\\nFIN RÉPÉTER",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré a quatre côtés égaux et quatre angles droits. En répétant quatre fois l'action d'avancer de la longueur $L$ puis de tourner de 90 degrés à droite, la tortue referme la figure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un rectangle",
+      "content": "Écris un algorithme qui fait tracer à la tortue un rectangle de longueur $L$ et de largeur $l$. Utilise les mêmes instructions AVANCER et TOURNER_DROITE.",
+      "correctAnswer": "RÉPÉTER 2 FOIS\\n    AVANCER(L)\\n    TOURNER_DROITE(90)\\n    AVANCER(l)\\n    TOURNER_DROITE(90)\\nFIN RÉPÉTER",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un rectangle a deux paires de côtés égaux. En alternant l'avance de $L$ et de $l$ avec un angle droit à chaque coin, et en répétant ce motif deux fois, on obtient les quatre côtés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un losange",
+      "content": "Écris un algorithme pour tracer un losange de côté $L$ et d'angle aigu $A$ (en degrés). La tortue tourne à gauche pour l'angle aigu et à droite pour l'angle obtus ($180 - A$).",
+      "correctAnswer": "RÉPÉTER 4 FOIS\\n    AVANCER(L)\\n    SI (numéro_étape EST PAIR) ALORS\\n        TOURNER_GAUCHE(A)\\n    SINON\\n        TOURNER_DROITE(180 - A)\\n    FIN SI\\nFIN RÉPÉTER",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un losange a quatre côtés égaux. Les angles alternent entre l'angle aigu $A$ et l'angle obtus $180 - A$. En avançant de $L$ à chaque côté et en tournant alternativement de $A$ à gauche et de $180 - A$ à droite, la tortue referme le losange après quatre côtés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

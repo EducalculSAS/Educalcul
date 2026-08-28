@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 249,
+  "_course_code": "cm1-t06-c02-mesurer-et-construire-des-angles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Construire",
+  "title": "Quiz : Construire des angles (CM1)",
+  "questions": [
+    {
+      "text": "Quel instrument est indispensable pour construire un angle droit avec precision ?",
+      "options": [
+        "La regle graduée",
+        "Le compas",
+        "L'équerre",
+        "Le rapporteur"
+      ],
+      "correctAnswer": "L'équerre",
+      "explanation": "L'équerre est l'instrument spécialement conçu pour tracer des droites perpendiculaires et donc construire des angles droits ($90°$). La régle sert à tracer des segments, le compas pour les cercles et le rapporteur pour mesurer ou construire des angles de toute valeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un angle droit $[BX)$ a partir d'une demi-droite $[BY)$, quelle est la premiere etape correcte avec une équerre ?",
+      "options": [
+        "Placer le bord de l'équerre sur la demi-droite $[BY)$ et le sommet de l'angle droit de l'équerre sur le point $B$",
+        "Tracer la demi-droite $[BX)$ le long du bord de l'équerre sans verifier l'alignement",
+        "Placer le rapporteur sur le point $B$ et repérer $90°$",
+        "Mesurer la longueur du segment $BY$ avec la régle"
+      ],
+      "correctAnswer": "Placer le bord de l'équerre sur la demi-droite $[BY)$ et le sommet de l'angle droit de l'équerre sur le point $B$",
+      "explanation": "La construction d'un angle droit à l'équerre commence par l'alignement parfait : un bord de l'équerre coïncide avec la demi-droite donnee ($[BY)$) et le sommet de l'angle droit de l'outil est place exactement sur l'origine $B$. Ensuite seulement on trace l'autre bord. Le rapporteur n'est pas necessaire pour un angle droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le rapporteur sur la figure. Quelle est la bonne methode pour construire un angle de $40°$ d'origine $O$ sur la demi-droite $[OA)$ ?",
+      "options": [
+        "Placer le centre du rapporteur sur $O$, aligner le zero sur $[OA)$, repérer $40°$ et tracer la demi-droite",
+        "Placer le zero du rapporteur sur $O$, aligner le centre sur $[OA)$, repérer $40°$ et tracer la demi-droite",
+        "Mesurer $40$ cm sur la régle et reporter cette longueur sur la demi-droite",
+        "Utiliser l'équerre pour tracer une perpendiculaire puis mesurer $40°$"
+      ],
+      "correctAnswer": "Placer le centre du rapporteur sur $O$, aligner le zero sur $[OA)$, repérer $40°$ et tracer la demi-droite",
+      "explanation": "Avec un rapporteur, il faut : 1) Placer le centre (le petit trou ou trait central) sur le sommet $O$. 2) Aligner la graduation $0°$ (ou $180°$ selon le sens) sur la demi-droite support $[OA)$. 3) Repérer la graduation $40°$. 4) Tracer la demi-droite passant par $O$ et ce point. L'option 2 inverse centre et zero, ce qui decale la mesure. L'équerre ne permet pas de faire $40°$.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 40,
+        "caption": "Rapporteur place sur l'origine O, zero aligne sur OA"
+      }
+    },
+    {
+      "text": "Leo veut construire un angle de $120°$. Il place le centre du rapporteur sur le sommet, mais il aligne la graduation $180°$ sur la demi-droite au lieu du $0°$. Quelle sera la mesure de l'angle trace s'il repère la graduation $120°$ sur l'echelle interieure ?",
+      "options": [
+        "$120°$",
+        "$60°$",
+        "$180°$",
+        "$300°$"
+      ],
+      "correctAnswer": "$60°$",
+      "explanation": "Si on aligne $180°$ sur la demi-droite d'origine, l'echelle est inversee. Le point marque $120°$ sur l'echelle interieure correspond en realite a $180° - 120° = 60°$ par rapport a la demi-droite d'origine. L'erreur classique est de lire la graduation sans verifier l'alignement du zero. L'angle obtenu sera donc de $60°$ au lieu de $120°$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire le triangle $ABC$ tel que $AB = 5$ cm, $\\widehat{BAC} = 50°$ et $\\widehat{ABC} = 60°$. Dans quel ordre realiser les etapes ?",
+      "options": [
+        "1) Tracer $[AB] = 5$ cm. 2) Construire $\\widehat{BAC} = 50°$ en $A$. 3) Construire $\\widehat{ABC} = 60°$ en $B$. 4) Intersection des demi-droites = $C$.",
+        "1) Construire $\\widehat{BAC} = 50°$. 2) Tracer $[AB] = 5$ cm sur un bord. 3) Construire $\\widehat{ABC} = 60°$. 4) Trouver $C$.",
+        "1) Tracer un segment quelconque. 2) Mesurer $50°$ et $60°$ aux extremites. 3) Ajuster la longueur a $5$ cm. 4) Nommer $C$.",
+        "1) Tracer $[AB]$. 2) Tracer un cercle centre $A$ rayon $5$ cm. 3) Tracer les angles. 4) Intersection."
+      ],
+      "correctAnswer": "1) Tracer $[AB] = 5$ cm. 2) Construire $\\widehat{BAC} = 50°$ en $A$. 3) Construire $\\widehat{ABC} = 60°$ en $B$. 4) Intersection des demi-droites = $C$.",
+      "explanation": "La construction d'un triangle par deux angles et le côté compris (cas AAS ou ASA) commence toujours par tracer le côté connu ($AB = 5$ cm). Ensuite, on construit les deux angles aux extremites de ce segment (au rapporteur pour $50°$ et $60°$). Les deux demi-droites se coupent en un point unique qui definit le troisieme sommet $C$. Les autres ordres sont impossibles car on ne peut pas placer le segment de longueur fixee avant d'avoir les droites porteuses.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

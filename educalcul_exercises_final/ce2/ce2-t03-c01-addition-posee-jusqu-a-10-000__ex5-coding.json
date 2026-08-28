@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Aligner les rangs",
+  "title": "Algorithme pour aligner les rangs dans une addition posée",
+  "blocks": [
+    {
+      "title": "Étape 1 : Identifier les rangs",
+      "content": "On veut calculer $2456 + 789$ en addition posée. Écris l'algorithme (la liste des instructions) pour placer correctement les chiffres les uns sous les autres avant de commencer l'addition. Commence par : \"Écrire le premier nombre : 2456\".",
+      "correctAnswer": "1. Écrire le premier nombre : 2456\\n2. Écrire le deuxième nombre : 789 en alignant le chiffre des unités (9) sous le chiffre des unités du premier nombre (6).\\n3. Vérifier que le 8 (dizaines) est sous le 5 (dizaines).\\n4. Vérifier que le 7 (centaines) est sous le 4 (centaines).\\n5. Laisser la case des milliers du deuxième nombre vide (ou mettre un 0 invisible) au-dessus du 2 (milliers).\\n6. Tracer la ligne de séparation.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour additionner posé, il faut impérativement aligner les chiffres de même rang : unités sous unités, dizaines sous dizaines, centaines sous centaines, milliers sous milliers. Ici, 789 a 3 chiffres et 2456 en a 4. On aligne à droite (sur les unités). Le 9 se place sous le 6, le 8 sous le 5, le 7 sous le 4. Au-dessus du 2 (milliers), il n'y a rien (équivalent à 0).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape 2 : Détecter une erreur d'alignement",
+      "content": "Un élève a écrit l'addition posée $3024 + 56$ ainsi :\\n   3024\\n+    56\\n-------\\nIl a mis le 6 sous le 2 et le 5 sous le 0. Écris un algorithme de vérification (une suite de tests) qui permet de dire si l'alignement est correct ou non.",
+      "correctAnswer": "Algorithme de vérification :\\n1. Regarder le chiffre le plus à droite du nombre du haut (ici 4, unités).\\n2. Regarder le chiffre le plus à droite du nombre du bas (ici 6).\\n3. SI ces deux chiffres ne sont pas dans la même colonne ALORS l'alignement est FAUX (les unités ne sont pas alignées).\\n4. SINON, passer au rang suivant (dizaines) : comparer la colonne du 2 (haut) et du 5 (bas).\\n5. SI elles ne correspondent pas ALORS l'alignement est FAUX.\\n6. Continuer pour les centaines et milliers.\\n7. SI tous les rangs correspondent ALORS l'alignement est CORRECT.\\n\\nIci, le test 3 échoue : le 4 (unités) et le 6 ne sont pas alignés verticalement. L'alignement est faux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'erreur de l'élève est classique : il a aligné les nombres à gauche ou au milieu au lieu de les aligner à droite sur les unités. L'algorithme de vérification consiste à comparer colonne par colonne en partant de la droite (unités). Si les unités ne sont pas face à face, tout est décalé. Ici, le 6 devrait être sous le 4, et le 5 sous le 2.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Étape 3 : Algorithme complet d'addition jusqu'à 10 000",
+      "content": "Écris l'algorithme complet (style pseudo-code) pour calculer la somme de deux nombres entiers A et B (inférieurs à 10 000) en addition posée. Ton algorithme doit inclure : l'alignement des rangs, le calcul colonne par colonne avec la retenue, et l'écriture du résultat final.",
+      "correctAnswer": "ALGORITHME Addition_Posee(A, B)\\nDÉBUT\\n  1. Écrire A au-dessus de B en alignant les unités (chiffre de droite) verticalement.\\n  2. Compléter les cases vides du nombre le plus court par des zéros (imaginaires) à gauche.\\n  3. retenue ← 0\\n  4. POUR chaque rang DEPUIS unités JUSQU'AU milliers FAIRE\\n       somme_rang ← chiffre_A + chiffre_B + retenue\\n       SI somme_rang ≥ 10 ALORS\\n            écrire (somme_rang - 10) dans le résultat\\n            retenue ← 1\\n       SINON\\n            écrire somme_rang dans le résultat\\n            retenue ← 0\\n       FIN SI\\n  5. FIN POUR\\n  6. SI retenue = 1 ALORS écrire 1 devant le résultat (dizaines de milliers)\\n  7. AFFICHER résultat\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme structure la méthode standard :\\n- L'alignement (étape 1-2) est la clé du sous-thème : on justifie à droite, on complète par des zéros pour avoir 4 colonnes (unités, dizaines, centaines, milliers).\\n- La boucle (étape 4) traite chaque colonne de droite à gauche.\\n- La gestion de la retenue (étape 4) ajoute la retenue précédente au calcul du rang courant.\\n- L'étape 6 gère le dépassement possible (ex: 9000+2000=11000) qui crée un 5ème chiffre (dizaines de milliers).",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

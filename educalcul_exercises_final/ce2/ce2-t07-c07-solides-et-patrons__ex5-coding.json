@@ -1,0 +1,43 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Faces, arêtes, sommets",
+  "title": "Algorithmes et solides : faces, arêtes, sommets",
+  "blocks": [
+    {
+      "title": "Compter les éléments d'un cube",
+      "content": "On veut écrire un algorithme qui affiche le nombre de faces, d'arêtes et de sommets d'un cube. \\nComplète l'algorithme ci-dessous en remplaçant les points de suspension par les bonnes valeurs ou instructions.\\n\\nDébut\\n  Afficher \"Nombre de faces : \" ...\\n  Afficher \"Nombre d'arêtes : \" ...\\n  Afficher \"Nombre de sommets : \" ...\\nFin",
+      "correctAnswer": "Début\\n  Afficher \"Nombre de faces : \" $6$\\n  Afficher \"Nombre d'arêtes : \" $12$\\n  Afficher \"Nombre de sommets : \" $8$\\nFin",
+      "explanation": "Un cube possède $6$ faces (carrées), $12$ arêtes (segments de même longueur) et $8$ sommets (points où se rejoignent trois arêtes). L'algorithme affiche simplement ces trois valeurs connues par cœur au CE2.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube pour visualiser les faces"
+      }
+    },
+    {
+      "title": "Identifier un solide par ses caractéristiques",
+      "content": "Écris un algorithme qui permet d'identifier un solide parmi un cube, un pavé droit ou une pyramide à base carrée, en fonction du nombre de faces ($F$), d'arêtes ($A$) et de sommets ($S$) saisis par l'utilisateur.\\n\\nUtilise la structure \"Si ... Alors ... Sinon ... Fin Si\".\\n\\nRappel :\\n- Cube : $F=6$, $A=12$, $S=8$\\n- Pavé droit : $F=6$, $A=12$, $S=8$\\n- Pyramide à base carrée : $F=5$, $A=8$, $S=5$",
+      "correctAnswer": "Début\\n  Lire F, A, S\\n  Si F = 5 Et A = 8 Et S = 5 Alors\\n    Afficher \"C'est une pyramide à base carrée\"\\n  Sinon\\n    Si F = 6 Et A = 12 Et S = 8 Alors\\n      Afficher \"C'est un cube ou un pavé droit\"\\n    Sinon\\n      Afficher \"Solide non reconnu\"\\n    Fin Si\\n  Fin Si\\nFin",
+      "explanation": "L'algorithme teste d'abord les caractéristiques uniques de la pyramide à base carrée ($5$ faces, $8$ arêtes, $5$ sommets). Si ce n'est pas elle, il teste les caractéristiques communes au cube et au pavé droit ($6$ faces, $12$ arêtes, $8$ sommets). On ne peut pas distinguer cube et pavé droit seulement avec ces trois nombres.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Vérifier la relation d'Euler simplifiée",
+      "content": "Pour les solides polyèdres (sans trous), on a la relation : $S + F = A + 2$.\\nÉcris un algorithme qui :\\n1. Demande à l'utilisateur de saisir le nombre de sommets $S$, de faces $F$ et d'arêtes $A$ d'un solide.\\n2. Calcule la valeur de $S + F$ et la valeur de $A + 2$.\\n3. Compare les deux résultats.\\n4. Affiche \"Relation vérifiée\" si elles sont égales, sinon affiche \"Relation non vérifiée\".",
+      "correctAnswer": "Début\\n  Lire S, F, A\\n  Calculer SommeSF = S + F\\n  Calculer SommeA2 = A + 2\\n  Si SommeSF = SommeA2 Alors\\n    Afficher \"Relation vérifiée\"\\n  Sinon\\n    Afficher \"Relation non vérifiée\"\\n  Fin Si\\nFin",
+      "explanation": "Cet algorithme applique la caractéristique d'Euler ($V - E + F = 2$, ici écrit $S + F = A + 2$). Il stocke les deux calculs dans des variables (SommeSF et SommeA2) pour les comparer ensuite avec une structure conditionnelle. Pour un cube ($8+6=14$ et $12+2=14$), il affichera \"Relation vérifiée\".",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "_status": "done",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lire une échelle",
+  "title": "Lire une échelle - Approfondissement CE2",
+  "questions": [
+    {
+      "text": "Sur le thermomètre ci-dessous, l'échelle va de 0 à 50 degrés Celsius avec un pas de graduation de 5. Quelle température indique la flèche ?",
+      "options": [
+        "$20^\\circ\\text{C}$",
+        "$25^\\circ\\text{C}$",
+        "$30^\\circ\\text{C}$",
+        "$35^\\circ\\text{C}$"
+      ],
+      "correctAnswer": "$25^\\circ\\text{C}$",
+      "explanation": "Les graduations principales sont 0, 5, 10, 15, 20, 25, 30... La flèche se situe exactement sur le trait correspondant à 25. Les autres propositions correspondent aux graduations voisines (20, 30) ou à une lecture erronée du pas (35).",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 50,
+        "points": [
+          {
+            "value": 25,
+            "label": "A"
+          }
+        ],
+        "caption": "Thermomètre gradué par 5 de 0 à 50"
+      }
+    },
+    {
+      "text": "Observe la droite graduée ci-dessous. Elle va de 0 à 100 et les grands traits marquent les dizaines (10, 20, 30...). Quel point correspond au nombre 70 ?",
+      "options": [
+        "Le point situé sur le trait marqué 60",
+        "Le point situé sur le trait marqué 70",
+        "Le point situé entre 70 et 80",
+        "Le point situé sur le trait marqué 80"
+      ],
+      "correctAnswer": "Le point situé sur le trait marqué 70",
+      "explanation": "Puisque la graduation est par 10, le nombre 70 se trouve exactement sur le 7e grand trait après le zéro (10, 20, 30, 40, 50, 60, 70). Ce n'est pas un nombre entre deux graduations.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100 par 10",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 70,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "La règle ci-dessous est graduée en centimètres de 0 à 15. Quelle est la longueur du segment colorié qui commence à 0 ?",
+      "options": [
+        "$6\\ \\text{cm}$",
+        "$7\\ \\text{cm}$",
+        "$8\\ \\text{cm}$",
+        "$9\\ \\text{cm}$"
+      ],
+      "correctAnswer": "$8\\ \\text{cm}$",
+      "explanation": "Le segment part du zéro et se termine exactement sur le trait numéroté 8. Il faut lire le nombre au niveau de la flèche ou de la fin du segment, sans décaler d'un cran (erreur de 7 ou 9) ni compter les traits au lieu des intervalles.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Règle graduée en cm, segment de 8 cm"
+      }
+    },
+    {
+      "text": "Une droite graduée commence à 0 et finit à 200. Il y a exactement 10 intervalles égaux (10 sauts) entre 0 et 200. Quelle est la valeur du pas de graduation ?",
+      "options": [
+        "$10$",
+        "$20$",
+        "$50$",
+        "$100$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "Pour trouver le pas, on divise l'étendue totale (200 - 0 = 200) par le nombre d'intervalles (10). Le calcul est $200 \\div 10 = 20$. Les graduations sont donc 0, 20, 40, 60... jusqu'à 200. Répondre 10 correspond à confondre le nombre d'intervalles et le pas. Répondre 100 correspond à diviser par 2 au lieu de 10.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 200 avec 10 intervalles",
+        "min": 0,
+        "max": 200,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur cette droite graduée par 10 (0, 10, 20, 30...), une flèche est placée exactement au milieu de l'intervalle entre 50 et 60. Quel nombre représente cette flèche ?",
+      "options": [
+        "$50$",
+        "$55$",
+        "$60$",
+        "$65$"
+      ],
+      "correctAnswer": "$55$",
+      "explanation": "L'intervalle entre 50 et 60 vaut 10. Le milieu de cet intervalle est à 5 unités de 50 (ou 5 unités avant 60). On calcule $50 + 5 = 55$ ou $(50 + 60) \\div 2 = 55$. Les réponses 50 et 60 correspondent aux bornes de l'intervalle, et 65 se situe après 60.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée par 10, flèche au milieu de 50 et 60",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 55,
+            "label": "Fléche"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

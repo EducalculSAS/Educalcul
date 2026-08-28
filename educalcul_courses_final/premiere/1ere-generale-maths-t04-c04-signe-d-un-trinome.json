@@ -1,0 +1,470 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.343468+00:00",
+  "id": 592,
+  "code": "1ere-generale-maths-t04-c04",
+  "title": "Signe d'un trinôme",
+  "description": "Cours structuré Educalcul : Signe d'un trinôme.",
+  "subject": "Second degré et fonctions",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Second degré et fonctions",
+    "titre_du_cours": "Signe d'un trinôme",
+    "objectif_global": "Signe d'un trinôme",
+    "mini_lecons_imposees": [
+      "Racines.",
+      "Tableau de signe.",
+      "Inéquations."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Second degré et fonctions",
+      "lessons": [
+        {
+          "title": "Racines.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un trinôme du second degré ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre consacré au signe d'un trinôme. Avant d'étudier le signe, il faut bien sûr savoir de quoi on parle. Un trinôme du second degré est une expression de la forme $ax^2 + bx + c$, où $a$, $b$ et $c$ sont des nombres réels, avec $a \\neq 0$. Le coefficient $a$ s'appelle le coefficient directeur, $b$ est le coefficient du terme en $x$, et $c$ est le terme constant. Par exemple, dans $2x^2 - 5x + 3$, on a $a = 2$, $b = -5$ et $c = 3$. C'est une écriture compacte qui cache une parabole : chaque trinôme correspond à une courbe en forme de U (si $a > 0$) ou de U renversé (si $a < 0$)."
+            },
+            {
+              "type": "definition",
+              "term": "Trinôme du second degré",
+              "definition": "Expression polynomiale de la forme $ax^2 + bx + c$ avec $a, b, c \\in \\mathbb{R}$ et $a \\neq 0$.",
+              "example": "$2x^2 - 5x + 3$ est un trinôme du second degré ($a=2, b=-5, c=3$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax^2 + bx + c \\quad (a \\neq 0)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant identifié les coefficients d'un trinôme. Cette étape est la base de tout ce qui suit : le discriminant, les racines et le tableau de signe dépendent uniquement de ces trois nombres. Passons à l'outil clé qui va nous dire combien de racines possède le trinôme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le discriminant et les racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le discriminant, noté $\\Delta$ (delta majuscule), est un nombre calculé à partir des coefficients : $\\Delta = b^2 - 4ac$. C'est une quantité magique : son signe nous indique immédiatement le nombre de solutions réelles de l'équation $ax^2 + bx + c = 0$, c'est-à-dire le nombre de fois où la parabole coupe l'axe des abscisses. Si $\\Delta > 0$, il y a deux racines distinctes ; si $\\Delta = 0$, une racine double ; si $\\Delta < 0$, aucune racine réelle. Les racines elles-mêmes s'expriment par les formules bien connues : $x_1 = \\frac{-b - \\sqrt{\\Delta}}{2a}$ et $x_2 = \\frac{-b + \\sqrt{\\Delta}}{2a}$."
+            },
+            {
+              "type": "definition",
+              "term": "Discriminant",
+              "definition": "Nombre $\\Delta = b^2 - 4ac$ qui détermine le nombre de racines réelles d'un trinôme du second degré.",
+              "example": "Pour $x^2 - 4x + 4$, $\\Delta = (-4)^2 - 4 \\times 1 \\times 4 = 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "type": "display_math",
+              "latex": "x_{1,2} = \\frac{-b \\mp \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $a$, $b$, $c$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les trois coefficients dans l'écriture $ax^2 + bx + c$. Attention au signe de $b$ et $c$ !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $\\Delta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $\\Delta = b^2 - 4ac$. Soigneux avec les puissances et les multiplications."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure selon le signe de $\\Delta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\Delta > 0$ : deux racines distinctes données par les formules. Si $\\Delta = 0$ : une racine double $x_0 = -b/(2a)$. Si $\\Delta < 0$ : pas de racine réelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4*x + 4",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Parabole $y = x^2 - 4x + 4$ touchant l'axe des abscisses en $x=2$ (racine double)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer le discriminant et en déduire le nombre de racines. Mais que se passe-t-il géométriquement ? Visualisons les trois cas possibles pour bien ancrer l'intuition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois cas de figure : $\\Delta > 0$, $\\Delta = 0$, $\\Delta < 0$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons la parabole associée au trinôme $f(x) = ax^2 + bx + c$. Le coefficient $a$ décide de l'ouverture : vers le haut si $a > 0$ (comme un sourire), vers le bas si $a < 0$ (comme un front plissé). Le discriminant décide du nombre de points d'intersection avec l'axe des $x$. Quand $\\Delta > 0$, la parabole coupe l'axe en deux points distincts : ce sont les deux racines. Quand $\\Delta = 0$, elle est tangente à l'axe : une seule racine double, le sommet de la parabole touche l'axe. Quand $\\Delta < 0$, la parabole ne rencontre jamais l'axe : elle reste entièrement au-dessus (si $a > 0$) ou au-dessous (si $a < 0$). Cette image mentale te servira pour le tableau de signe."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x^2 - 5*x + 3",
+              "xmin": -1,
+              "xmax": 4,
+              "caption": "Parabole $y = 2x^2 - 5x + 3$ coupant l'axe en deux points ($\\Delta > 0$)."
+            },
+            {
+              "type": "graph",
+              "expression": "3*x^2 + 2*x + 5",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole $y = 3x^2 + 2x + 5$ ne coupant pas l'axe ($\\Delta < 0$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les racines d'un trinôme. Dans la prochaine leçon, nous utiliserons ces racines pour construire le tableau de signe, qui nous dira où le trinôme est positif ou négatif. C'est la clé pour résoudre les inéquations du second degré."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour le trinôme $f(x) = 2x^2 - 5x + 3$, identifie les coefficients $a$, $b$ et $c$.",
+              "answer": "$a = 2$, $b = -5$, $c = 3$",
+              "hint": "Repère le nombre devant $x^2$, devant $x$ et le terme sans $x$.",
+              "explanation": "L'écriture standard est $ax^2 + bx + c$. Ici $2x^2$ donne $a=2$, $-5x$ donne $b=-5$, et $+3$ donne $c=3$."
+            },
+            {
+              "question": "Calcule le discriminant $\\Delta$ du trinôme $x^2 - 4x + 4$ et donne ses racines.",
+              "answer": "$\\Delta = 0$, racine double $x = 2$",
+              "hint": "Utilise $\\Delta = b^2 - 4ac$. Ensuite, si $\\Delta = 0$, la racine est $-b/(2a)$.",
+              "explanation": "$a=1, b=-4, c=4$. $\\Delta = (-4)^2 - 4 \\times 1 \\times 4 = 16 - 16 = 0$. Racine double $x_0 = -(-4)/(2 \\times 1) = 2$."
+            },
+            {
+              "question": "Combien de racines réelles possède le trinôme $3x^2 + 2x + 5$ ? Justifie.",
+              "answer": "Aucune racine réelle car $\\Delta < 0$.",
+              "hint": "Calcule $\\Delta = b^2 - 4ac$ et regarde son signe.",
+              "explanation": "$a=3, b=2, c=5$. $\\Delta = 2^2 - 4 \\times 3 \\times 5 = 4 - 60 = -56 < 0$. Donc pas de racine réelle."
+            }
+          ]
+        },
+        {
+          "title": "Tableau de signe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du trinôme à son signe : l'idée directrice"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les racines, nous allons voir comment elles découpent la droite réelle en intervalles où le trinôme garde un signe constant. L'idée est simple : un trinôme du second degré ne change de signe qu'en passant par une racine (si elle existe). Entre deux racines, ou de chaque côté des racines, le trinôme est soit strictement positif, soit strictement négatif. Le coefficient directeur $a$ nous dit quel signe il prend pour les très grandes valeurs de $x$ (vers $+\\infty$). Si $a > 0$, le trinôme est positif pour $x$ très grand ; si $a < 0$, il est négatif. C'est le point de départ pour remplir le tableau de signe."
+            },
+            {
+              "type": "definition",
+              "term": "Tableau de signe",
+              "definition": "Tableau qui résume le signe d'une expression (ici un trinôme) sur chaque intervalle déterminé par ses racines.",
+              "example": "Pour $x^2 - 4$, racines $-2$ et $2$, le trinôme est positif sur $]-\\infty, -2[ \\cup ]2, +\\infty[$ et négatif sur $]-2, 2[$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a > 0 \\Rightarrow f(x) > 0 \\text{ pour } x \\to +\\infty"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as saisi le principe : les racines sont des frontières, et $a$ donne le signe à l'extrémité. Construisons maintenant le tableau de signe pas à pas, en distinguant les trois cas selon le discriminant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construction du tableau de signe selon $\\Delta$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a trois situations. Si $\\Delta > 0$, il y a deux racines distinctes $x_1 < x_2$. Le trinôme s'écrit $a(x - x_1)(x - x_2)$. Sur $]-\\infty, x_1[$, les deux facteurs $(x-x_1)$ et $(x-x_2)$ sont négatifs, leur produit est positif, multiplié par $a$ donne le signe de $a$. Sur $]x_1, x_2[$, l'un est positif, l'autre négatif : produit négatif, signe opposé à $a$. Sur $]x_2, +\\infty[$, les deux positifs : produit positif, signe de $a$. Si $\\Delta = 0$, racine double $x_0$, le trinôme est $a(x-x_0)^2$, toujours du signe de $a$ (ou nul en $x_0$). Si $\\Delta < 0$, pas de racine, le trinôme ne s'annule jamais et garde le signe de $a$ sur tout $\\mathbb{R}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\Delta$ et les racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine $\\Delta = b^2 - 4ac$. Si $\\Delta \\ge 0$, calcule $x_1$ et $x_2$ (ou $x_0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la ligne des $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les racines (si elles existent) sur une ligne horizontale, dans l'ordre croissant. Ajoute $-\\infty$ à gauche et $+\\infty$ à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le signe sur le dernier intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le signe de $a$. Si $a > 0$, le trinôme est positif sur $]x_2, +\\infty[$ (ou sur tout $\\mathbb{R}$ si $\\Delta \\le 0$). Si $a < 0$, il est négatif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Alterner les signes à chaque racine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En remontant vers la gauche, le signe change à chaque racine simple (si $\\Delta > 0$). En cas de racine double ($\\Delta = 0$), le signe ne change pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "$-\\infty$",
+                "$x_1$",
+                "$x_2$",
+                "$+\\infty$",
+                "$f(x)$"
+              ],
+              "rows": [
+                [
+                  "Signe",
+                  "$+$",
+                  "$0$",
+                  "$-$",
+                  "$0$",
+                  "$+$"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "(si $a>0, \\Delta>0$)"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de construire ton premier tableau de signe. Pour bien visualiser, regardons la courbe du trinôme : les parties au-dessus de l'axe des $x$ correspondent aux intervalles où le trinôme est positif, celles en dessous où il est négatif. C'est exactement ce que le tableau résume."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Parabole $y = x^2 - 4$ : positive hors $[-2,2]$, négative à l'intérieur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : quand $\\Delta = 0$, le trinôme est de la forme $a(x-x_0)^2$. Il ne change pas de signe en $x_0$ (il touche l'axe et repart du même côté). Le tableau de signe n'a alors qu'une seule ligne de séparation, et le signe est partout celui de $a$ (sauf en $x_0$ où il est nul). Autre piège : ne pas confondre le signe du trinôme et le signe du discriminant. $\\Delta$ nous parle des racines, pas du signe de $f(x)$ directement. Enfin, si le trinôme est factorisé sous la forme $a(x-x_1)(x-x_2)$, tu peux lire le signe directement sans recalculer $\\Delta$ : les racines sont visibles !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant dresser le tableau de signe d'un trinôme. C'est l'outil principal pour résoudre les inéquations du second degré, que nous aborderons dans la dernière leçon. Prêt à passer à la résolution ?"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le tableau de signe du trinôme $f(x) = x^2 - 4$.",
+              "answer": "Racines $-2$ et $2$. $f(x) > 0$ sur $]-\\infty, -2[ \\cup ]2, +\\infty[$ ; $f(x) < 0$ sur $]-2, 2[$ ; $f(x)=0$ en $-2$ et $2$.",
+              "hint": "Calcule $\\Delta$, trouve les racines, puis utilise le signe de $a=1$ pour démarrer à $+\\infty$.",
+              "explanation": "$\\Delta = 16 > 0$, racines $x_1=-2, x_2=2$. $a=1>0$ donc positif sur $]2,+\\infty[$. En alternant : négatif sur $]-2,2[$, positif sur $]-\\infty,-2[$."
+            },
+            {
+              "question": "Étudie le signe de $g(x) = -2x^2 + 4x - 2$.",
+              "answer": "$\\Delta = 0$, racine double $x=1$. $g(x) \\le 0$ sur $\\mathbb{R}$, nul en $1$.",
+              "hint": "Calcule $\\Delta$. Si $\\Delta=0$, le trinôme ne change pas de signe.",
+              "explanation": "$a=-2, b=4, c=-2$. $\\Delta = 16 - 4\\times(-2)\\times(-2) = 16-16=0$. Racine double $x_0 = -4/(2\\times-2)=1$. $a<0$ donc $g(x) \\le 0$ partout."
+            },
+            {
+              "question": "Le trinôme $h(x) = 3x^2 + 2x + 5$ est-il toujours positif, toujours négatif, ou change-t-il de signe ?",
+              "answer": "Toujours positif (car $a>0$ et $\\Delta<0$).",
+              "hint": "Regarde le signe de $a$ et la valeur de $\\Delta$.",
+              "explanation": "$a=3>0$, $\\Delta = 4 - 60 = -56 < 0$. Pas de racine, le trinôme garde le signe de $a$ sur $\\mathbb{R}$, donc toujours positif."
+            }
+          ]
+        },
+        {
+          "title": "Inéquations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une inéquation du second degré : la méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous y voilà ! Résoudre une inéquation comme $ax^2 + bx + c > 0$ (ou $\\ge, <, \\le$) revient à trouver les intervalles où le trinôme a le signe demandé. Grâce au tableau de signe, c'est presque immédiat : on lit les intervalles où le trinôme est positif (pour $>0$ ou $\\ge 0$) ou négatif (pour $<0$ ou $\\le 0$). La seule subtilité : si l'inéquation est large ($\\ge$ ou $\\le$), on inclut les racines dans la solution ; si elle est stricte ($>$ ou $<$), on les exclut. Et n'oublie pas : si $\\Delta < 0$, le trinôme ne change jamais de signe, donc l'inéquation est soit toujours vraie, soit jamais vraie (sauf éventuellement l'égalité si $\\Delta = 0$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre l'inéquation sous forme standard",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ramène tous les termes du même côté pour obtenir $ax^2 + bx + c > 0$ (ou $\\ge, <, \\le$). Veille à ce que $a > 0$ si possible (sinon multiplie par $-1$ en inversant le sens de l'inégalité)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le tableau de signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\Delta$, les racines, et remplis le tableau comme vu précédemment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne les intervalles où le trinôme a le signe demandé. Inclus les racines si l'inégalité est large ($\\ge$ ou $\\le$), exclue-les si elle est stricte ($>$ ou $<$). Exprime la solution en notation d'intervalles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode sur un exemple complet. Prenons l'inéquation $x^2 - 3x - 4 \\le 0$. D'abord, $a=1>0$, pas besoin de multiplier par $-1$. $\\Delta = 9 + 16 = 25 > 0$. Racines : $x_1 = \\frac{3-5}{2} = -1$, $x_2 = \\frac{3+5}{2} = 4$. Tableau de signe : positif sur $]-\\infty, -1[$, négatif sur $]-1, 4[$, positif sur $]4, +\\infty[$. L'inéquation demande $\\le 0$, donc on prend l'intervalle où c'est négatif, en incluant les bornes car c'est large : $[-1, 4]$. Facile, non ?"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 3*x - 4",
+              "xmin": -3,
+              "xmax": 6,
+              "caption": "Parabole $y = x^2 - 3x - 4$ : la partie sous l'axe (en bleu) correspond à $[-1,4]$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'inéquation n'est pas directement sous forme standard. Il faut alors la transformer. Par exemple, $2x^2 + 5x > 3$ devient $2x^2 + 5x - 3 > 0$. Ou bien $(x-1)(x+2) < 4$ : il faut développer et ramener à droite. C'est un exercice de manipulation algébrique que tu maîtrises déjà. L'important est de ne pas se précipiter : écrire l'inéquation sous la forme $ax^2+bx+c \\operatorname{signe} 0$ avant de faire le tableau de signe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : $\\Delta = 0$ et $\\Delta < 0$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $\\Delta = 0$, le trinôme est de la forme $a(x-x_0)^2$. Son signe est constant (celui de $a$) sauf en $x_0$ où il est nul. Pour $a(x-x_0)^2 \\ge 0$ : solution $\\mathbb{R}$ si $a>0$, ou $\\{x_0\\}$ si $a<0$ (car alors le trinôme est $\\le 0$ partout, et $\\ge 0$ seulement en $x_0$). Pour $a(x-x_0)^2 > 0$ : solution $\\mathbb{R} \\setminus \\{x_0\\}$ si $a>0$, ensemble vide si $a<0$. Si $\\Delta < 0$, le trinôme ne s'annule jamais et a le signe de $a$ sur tout $\\mathbb{R}$. L'inéquation $ax^2+bx+c > 0$ a pour solution $\\mathbb{R}$ si $a>0$, $\\varnothing$ si $a<0$. Pour $\\ge 0$, même chose car l'égalité n'est jamais atteinte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un dernier conseil pour briller : quand tu dois résoudre une inéquation du second degré, commence toujours par regarder le discriminant. Il te donne immédiatement la structure de la solution. Et si tu as un doute, un petit croquis de la parabole (même approximatif) te confirmera visuellement les intervalles. Tu as maintenant toutes les clés pour résoudre n'importe quelle inéquation du second degré. Félicitations pour ton parcours !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le discriminant $\\Delta = b^2 - 4ac$ et en déduire le nombre de racines.",
+                "Je sais construire le tableau de signe d'un trinôme selon les trois cas $\\Delta > 0$, $\\Delta = 0$, $\\Delta < 0$.",
+                "Je sais résoudre une inéquation du second degré en utilisant le tableau de signe.",
+                "Je sais gérer les cas particuliers (inéquation large/stricte, $\\Delta \\le 0$).",
+                "Je sais transformer une inéquation pour la ramener sous forme standard $ax^2+bx+c \\operatorname{signe} 0$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'inéquation $x^2 - 3x - 4 \\le 0$.",
+              "answer": "$x \\in [-1, 4]$",
+              "hint": "Calcule $\\Delta$, trouve les racines, fais le tableau de signe, lis les intervalles où le trinôme est $\\le 0$.",
+              "explanation": "$\\Delta = 25$, racines $-1$ et $4$. $a=1>0$ donc positif en dehors, négatif entre. Inégalité large $\\Rightarrow$ on inclut les bornes : $[-1,4]$."
+            },
+            {
+              "question": "Résous $2x^2 + 5x > 3$.",
+              "answer": "$x \\in ]-\\infty, -3[ \\cup ]0.5, +\\infty[$",
+              "hint": "Ramène $3$ à gauche : $2x^2 + 5x - 3 > 0$. Calcule $\\Delta$ et les racines.",
+              "explanation": "$2x^2+5x-3>0$. $\\Delta = 25 + 24 = 49$. Racines $x_1 = \\frac{-5-7}{4} = -3$, $x_2 = \\frac{-5+7}{4} = 0.5$. $a=2>0$ donc positif hors $[-3, 0.5]$. Inégalité stricte $\\Rightarrow$ intervalles ouverts."
+            },
+            {
+              "question": "Résous $-x^2 + 2x - 1 \\ge 0$.",
+              "answer": "$x = 1$ (solution unique)",
+              "hint": "Multiplie par $-1$ pour avoir $a>0$ (inverse le sens). Ou analyse directement : $\\Delta=0$, $a<0$.",
+              "explanation": "$-x^2+2x-1 \\ge 0 \\iff x^2 - 2x + 1 \\le 0 \\iff (x-1)^2 \\le 0$. Une carré est toujours $\\ge 0$, donc l'inégalité n'est satisfaite que quand $(x-1)^2 = 0$, c'est-à-dire $x=1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

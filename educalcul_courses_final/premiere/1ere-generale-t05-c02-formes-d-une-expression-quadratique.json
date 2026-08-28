@@ -1,0 +1,492 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.236546+00:00",
+  "id": 562,
+  "code": "1ere-generale-t05-c02",
+  "title": "Formes d'une expression quadratique",
+  "description": "Cours structuré Educalcul : Formes d'une expression quadratique.",
+  "subject": "Modélisation quadratique",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Modélisation quadratique",
+    "titre_du_cours": "Formes d'une expression quadratique",
+    "objectif_global": "Formes d'une expression quadratique",
+    "mini_lecons_imposees": [
+      "Développée / factorisée selon besoin.",
+      "Calculer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Modélisation quadratique",
+      "lessons": [
+        {
+          "title": "Développée / factorisée selon besoin.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'expression quadratique et sa forme développée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque vous rencontrez une expression du type $ax^{2}+bx+c$ avec $a\\neq0$, vous avez affaire à une expression quadratique. Cette écriture, que l'on appelle forme développée, montre directement les coefficients qui gouvernent la forme de la parabole associée. Le coefficient $a$ détermine l'ouverture vers le haut ou vers le bas, le coefficient $b$ influence la position de l'axe de symétrie et le terme constant $c$ donne l'ordonnée à l'origine. Comprendre cette forme est la première étape pour manipuler l'expression avec aisance, car chaque coefficient a une signification géométrique précise. Dans cette leçon, nous allons d'abord nommer les éléments, puis voir comment passer à une écriture factorisée qui révèle les racines de l'expression, et enfin nous exercerons à transformer l'une en l'autre selon les besoins du problème."
+            },
+            {
+              "type": "definition",
+              "term": "expression quadratique",
+              "definition": "Expression polynomiale de degré 2, de la forme $ax^{2}+bx+c$ avec $a\\neq0$.",
+              "example": "$2x^{2}-3x+1$ est une expression quadratique."
+            },
+            {
+              "type": "definition",
+              "term": "forme développée",
+              "definition": "Écriture d'une expression quadratique comme somme de trois termes : $ax^{2}+bx+c$.",
+              "example": "$3x^{2}-7x+5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax^{2}+bx+c \\quad (a\\neq0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme développée se lit comme une somme de trois termes : le terme en $x^{2}$, le terme en $x$ et le terme constant. Lorsque $a$ est positif, la parabole ouvre vers le haut et l'expression possède une valeur minimale ; lorsque $a$ est négatif, elle ouvre vers le bas et l'expression possède une valeur maximale. Cette observation simple permet déjà d'anticiper le comportement global de la fonction sans tracer le moindre point. Prenez l'habitude d'identifier $a$, $b$ et $c$ dès que vous voyez un trinôme, cela vous fera gagner du temps pour la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la forme développée n'a plus de secret pour vous, tournons notre regard vers la forme factorisée. Cette écriture met en évidence les valeurs de $x$ qui annulent l'expression, c'est-à-dire les racines ou zéros du trinôme. Si le discriminant est positif, l'expression s'écrit $a(x-x_{1})(x-x_{2})$ avec deux racines réelles distinctes ; s'il est nul, les deux racines coïncident et l'on a $a(x-x_{0})^{2}$ ; s'il est négatif, la factorisation sur les réels n'est pas possible, mais on peut tout de même écrire une forme factorisée sur les complexes. Nous nous concentrerons ici sur le cas réel, le plus fréquent dans les problèmes de modélisation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme factorisée et ses racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme factorisée révèle directement les solutions de l'équation $ax^{2}+bx+c=0$. En posant $a(x-x_{1})(x-x_{2})=0$, on voit immédiatement que $x=x_{1}$ ou $x=x_{2}$ annulent l'expression. Cette écriture est précieuse pour résoudre des équations, étudier le signe du trinôme ou construire un tableau de variation. Elle montre aussi la symétrie de la parabole par rapport à l'axe vertical passant par le milieu des racines."
+            },
+            {
+              "type": "definition",
+              "term": "forme factorisée",
+              "definition": "Écriture d'une expression quadratique sous la forme $a(x-x_{1})(x-x_{2})$ où $x_{1},x_{2}$ sont les racines (réelles ou complexes).",
+              "example": "$2(x-1)(x+4)$."
+            },
+            {
+              "type": "definition",
+              "term": "racine",
+              "definition": "Valeur de $x$ qui annule l'expression quadratique.",
+              "example": "Pour $(x-2)(x+3)$, les racines sont $2$ et $-3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a(x-x_{1})(x-x_{2})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lien entre les coefficients et les racines est donné par les relations de Viète : $x_{1}+x_{2}=-\\frac{b}{a}$ et $x_{1}x_{2}=\\frac{c}{a}$. Ces formules permettent de vérifier une factorisation sans tout redévelopper. Par exemple, pour $2x^{2}-5x+2$, la somme des racines doit valoir $\\frac{5}{2}$ et leur produit $\\frac{2}{2}=1$. Les racines $\\frac{1}{2}$ et $2$ satisfont bien ces conditions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de la forme développée à la forme factorisée, la méthode la plus systématique consiste à calculer le discriminant $\\Delta = b^{2}-4ac$. Si $\\Delta \\ge 0$, les racines sont $x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$ et l'on écrit directement la factorisation. Si $\\Delta < 0$, on ne peut pas factoriser sur $\\mathbb{R}$, mais on peut compléter le carré pour obtenir une forme canonique utile pour l'étude du signe. Nous allons détailler ces étapes pas à pas, avec un exemple numérique complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la forme développée à la forme factorisée"
+            },
+            {
+              "type": "paragraph",
+              "content": "La factorisation repose sur le calcul du discriminant. Voici la marche à suivre : calculez $\\Delta$, déduisez les racines s'il y en a, puis écrivez $a(x-x_{1})(x-x_{2})$. Si $\\Delta$ est un carré parfait, les racines sont rationnelles et la factorisation est simple. Sinon, on laisse les racines sous forme de radicaux. Cette procédure fonctionne pour tout trinôme du second degré à coefficients réels."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le discriminant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez $a$, $b$, $c$ dans la forme développée et calculez $\\Delta = b^{2}-4ac$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer les racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\Delta > 0$, deux racines réelles distinctes : $x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$. Si $\\Delta = 0$, une racine double : $x_{0} = -\\frac{b}{2a}$. Si $\\Delta < 0$, pas de racine réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la forme factorisée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si des racines réelles existent, écrivez $a(x-x_{1})(x-x_{2})$ (ou $a(x-x_{0})^{2}$ pour une racine double). Sinon, la factorisation sur $\\mathbb{R}$ n'est pas possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^{2}-4ac"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple concret $2x^{2}-5x+2$. Le discriminant vaut $\\Delta = (-5)^{2}-4\\times2\\times2 = 25-16 = 9$. Comme $\\Delta>0$, les racines sont $x_{1} = \\frac{5-3}{4} = \\frac{1}{2}$ et $x_{2} = \\frac{5+3}{4} = 2$. La forme factorisée est donc $2(x-\\frac{1}{2})(x-2)$, que l'on peut aussi écrire $(2x-1)(x-2)$ en répartissant le facteur $2$. Vérifiez en développant : vous retrouvez bien $2x^{2}-5x+2$. Cette gymnastique entre les deux écritures est un outil puissant pour résoudre des équations, étudier des signes ou optimiser une quantité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant des deux regards complémentaires sur une même expression quadratique : la forme développée pour lire rapidement les coefficients et la forme factorisée pour identifier les racines. Selon la question posée, vous choisirez l'écriture la plus commode. Dans la prochaine leçon, nous verrons comment calculer la valeur de l'expression pour un $x$ donné, déterminer le discriminant et localiser le sommet de la parabole."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'expression $3x^{2}-7x+5$, quels sont les coefficients $a$, $b$ et $c$ ?",
+              "answer": "$a=3$, $b=-7$, $c=5$",
+              "hint": "Repérez le terme en $x^{2}$, le terme en $x$ et le terme constant.",
+              "explanation": "La forme développée s'écrit $ax^{2}+bx+c$. Ici $a=3$, $b=-7$, $c=5$."
+            },
+            {
+              "question": "Écrivez sous forme factorisée l'expression quadratique dont les racines sont $x_{1}=2$ et $x_{2}=-3$ et dont le coefficient directeur est $a=4$.",
+              "answer": "$4(x-2)(x+3)$",
+              "hint": "Utilisez la forme $a(x-x_{1})(x-x_{2})$.",
+              "explanation": "En remplaçant $a$, $x_{1}$, $x_{2}$, on obtient $4(x-2)(x+3)$."
+            },
+            {
+              "question": "Factorisez l'expression $x^{2}-5x+6$.",
+              "answer": "$(x-2)(x-3)$",
+              "hint": "Cherchez deux nombres dont la somme est $-5$ et le produit $6$.",
+              "explanation": "Les nombres $-2$ et $-3$ conviennent, donc $x^{2}-5x+6 = (x-2)(x-3)$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Évaluer une expression quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Évaluer une expression quadratique pour une valeur donnée de $x$ est une opération fondamentale, que ce soit pour tracer un point de la parabole, pour vérifier une racine ou pour comparer des grandeurs dans un problème concret. La procédure est simple : remplacez chaque occurrence de $x$ par la valeur numérique, effectuez les puissances, les multiplications et les additions dans l'ordre habituel. Par exemple, pour $f(x)=3x^{2}-4x+1$ et $x=2$, on calcule $3\\times4 - 4\\times2 + 1 = 12 - 8 + 1 = 5$. Prenez le temps de poser chaque étape sur votre papier, cela évite les erreurs de signe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vous aider à visualiser la variation de la fonction, il est utile de construire un petit tableau de valeurs. Choisissez quelques $x$ autour du sommet, calculez $f(x)$ et repérez la symétrie. Par exemple, pour $f(x)=x^{2}-4x+3$, le sommet est en $x=2$. Un tableau avec $x=0,1,2,3,4$ donne $f=3,0,-1,0,3$. La symétrie par rapport à $x=2$ saute aux yeux et confirme que le sommet est bien un minimum."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x",
+                "f(x)"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "3"
+                ],
+                [
+                  "1",
+                  "0"
+                ],
+                [
+                  "2",
+                  "-1"
+                ],
+                [
+                  "3",
+                  "0"
+                ],
+                [
+                  "4",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le discriminant $\\Delta = b^{2}-4ac$ est un nombre qui résume la nature des racines sans avoir à les calculer explicitement. Si $\\Delta > 0$, le trinôme admet deux racines réelles distinctes ; si $\\Delta = 0$, il admet une racine double ; si $\\Delta < 0$, il n'a pas de racine réelle. Cette classification guide le choix de la méthode de résolution et l'interprétation graphique. Dans un contexte de modélisation, le signe du discriminant indique si une situation (comme un lancer de projectile) aboutit à deux instants, un instant unique ou aucun instant où la hauteur atteint une valeur donnée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le plan graphique, le discriminant correspond à la distance entre les deux points d'intersection de la parabole avec l'axe des abscisses. Lorsque $\\Delta$ est grand, les racines sont écartées et la parabole est large ; lorsque $\\Delta$ est petit, les racines sont proches et la parabole est étroite. Si $\\Delta=0$, la parabole est tangente à l'axe des abscisses au sommet. Cette image géométrique aide à anticiper la forme du graphique avant même de le tracer."
+            },
+            {
+              "type": "definition",
+              "term": "discriminant",
+              "definition": "Nombre $\\Delta = b^{2}-4ac$ qui détermine le nombre et la nature des racines.",
+              "example": "Pour $x^{2}-4x+4$, $\\Delta = 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^{2}-4ac"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le sommet de la parabole, point où la fonction atteint son extremum, a pour abscisse $x_{v} = -\\frac{b}{2a}$ et pour ordonnée $y_{v} = f(x_{v}) = -\\frac{\\Delta}{4a}$. Cette formule découle de la mise sous forme canonique $a(x-x_{v})^{2}+y_{v}$. Connaître le sommet permet de déterminer l'intervalle de variation de la fonction, de résoudre des problèmes d'optimisation (surface maximale, coût minimal) et de tracer rapidement un croquis qualitatif de la courbe. Nous allons illustrer cela avec une fonction modélisant le bénéfice d'une entreprise en fonction du nombre d'unités produites."
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme canonique $a(x-x_{v})^{2}+y_{v}$ s'obtient en complétant le carré. Par exemple, $x^{2}-6x+5 = (x-3)^{2}-4$. Ici $a=1$, $x_{v}=3$, $y_{v}=-4$. Cette écriture montre directement le sommet et le sens de variation : pour $x<3$, la fonction décroît ; pour $x>3$, elle croît. C'est un raccourci précieux pour résoudre des inéquations du type $f(x)\\le 0$ sans passer par le discriminant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Abscisse du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $x_{v} = -\\frac{b}{2a}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ordonnée du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluez $y_{v} = f(x_{v})$ en remplaçant $x$ par $x_{v}$ dans l'expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interprétation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a>0$, le sommet est un minimum ; si $a<0$, c'est un maximum."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "-2*x^2+12*x-10",
+              "xmin": 0,
+              "xmax": 6,
+              "caption": "Bénéfice en fonction des unités produites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $P(x) = -2x^{2}+12x-10$, où $x$ est le nombre de centaines d'unités produites et $P$ le bénéfice en milliers d'euros. Le discriminant est $\\Delta = 144 - 80 = 64 > 0$, donc deux racines réelles. L'abscisse du sommet est $x_{v} = -\\frac{12}{2\\times(-2)} = 3$, ce qui correspond à 300 unités. L'ordonnée au sommet est $P(3) = -2\\times9 + 36 - 10 = 8$, soit un bénéfice maximal de 8000 euros. L'interprétation est immédiate : produire 300 unités maximise le profit, au-delà le bénéfice diminue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant évaluer un trinôme, calculer son discriminant pour connaître le nombre de racines, et trouver le sommet de la parabole associée. Ces trois compétences forment la boîte à outils de base pour toute modélisation quadratique. La leçon suivante exploitera ces résultats pour étudier le signe de l'expression, résoudre des inéquations et construire des modèles concrets."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez $f(3)$ pour $f(x)=2x^{2}-3x+4$.",
+              "answer": "$2\\times9 - 3\\times3 + 4 = 18 - 9 + 4 = 13$",
+              "hint": "Remplacez $x$ par $3$ et respectez l'ordre des opérations.",
+              "explanation": "En substituant, on obtient $2(3)^{2}-3(3)+4 = 13$."
+            },
+            {
+              "question": "Déterminez le discriminant de $g(x)=5x^{2}+2x-1$ et dites combien de racines réelles elle admet.",
+              "answer": "$\\Delta = 2^{2} - 4\\times5\\times(-1) = 4 + 20 = 24 > 0$, donc deux racines réelles distinctes.",
+              "hint": "Utilisez $\\Delta = b^{2}-4ac$.",
+              "explanation": "Avec $a=5$, $b=2$, $c=-1$, $\\Delta = 24 > 0$, donc deux racines réelles."
+            },
+            {
+              "question": "Trouvez les coordonnées du sommet de la parabole $h(x) = -x^{2}+6x-8$.",
+              "answer": "$x_{v} = -\\frac{6}{2\\times(-1)} = 3$, $y_{v} = h(3) = -9 + 18 - 8 = 1$. Sommet : $(3,1)$.",
+              "hint": "Utilisez $x_{v} = -b/(2a)$ puis calculez $h(x_{v})$.",
+              "explanation": "Le coefficient $a=-1$, $b=6$, donc $x_{v}=3$, $y_{v}=1$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signe d'un trinôme quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe d'un trinôme quadratique sur $\\mathbb{R}$ se détermine entièrement à partir du coefficient $a$ et du discriminant $\\Delta$. Si $a>0$ et $\\Delta<0$, l'expression est strictement positive pour tout $x$ ; si $a<0$ et $\\Delta<0$, elle est strictement négative. Lorsque $\\Delta\\ge0$, les racines découpent la droite réelle en intervalles où le signe est constant : entre les racines, le signe est opposé à celui de $a$ ; en dehors, il est le même que $a$. Cette règle, souvent résumée par un tableau de signes, permet de résoudre rapidement toute inéquation quadratique."
+            },
+            {
+              "type": "definition",
+              "term": "tableau de signes",
+              "definition": "Représentation graphique du signe d'une expression quadratique sur la droite réelle, en fonction des racines et du signe de $a$.",
+              "example": "Pour $x^{2}-1$, signes : $+$ pour $x<-1$, $-$ entre $-1$ et $1$, $+$ pour $x>1$."
+            },
+            {
+              "type": "sign_table",
+              "caption": "Signe de -2x^2+4x+6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un tableau de signes, placez les racines dans l'ordre croissant sur une ligne, indiquez le signe de $a$ à l'extrême droite, puis alternez le signe à chaque passage d'une racine simple. Si une racine est double (discriminant nul), le signe ne change pas en la traversant. Prenez l'exemple $f(x)=2x^{2}-3x-2$. Le discriminant est $\\Delta = 9+16=25$, les racines sont $x_{1}=-0.5$ et $x_{2}=2$. Comme $a=2>0$, le tableau donne $+$ pour $x<-0.5$, $-$ entre $-0.5$ et $2$, $+$ pour $x>2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une inéquation comme $2x^{2}-3x-2 \\le 0$ revient à lire le tableau de signes : on cherche les intervalles où l'expression est négative ou nulle. Ici, la solution est $[-0.5, 2]$. Si l'inéquation est stricte ($<$), on exclut les bornes. Cette méthode graphique et algébrique est fiable et s'applique à toutes les inéquations quadratiques, quel que soit le signe de $a$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une inéquation quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La résolution d'une inéquation quadratique suit une procédure en trois temps : factoriser ou calculer les racines, construire le tableau de signes, puis sélectionner les intervalles correspondant au signe demandé. Cette approche systématique évite les erreurs de raisonnement et fonctionne même lorsque le coefficient $a$ est négatif."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver les racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez le discriminant $\\Delta$ et déduisez les racines $x_{1},x_{2}$ (ou la racine double si $\\Delta=0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le tableau de signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Placez les racines sur une ligne, mettez le signe de $a$ à droite, puis alternez à chaque racine simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon l'inéquation ($\\le$, $<$, $\\ge$, $>$), choisissez les intervalles où le signe convient, en incluant ou excluant les bornes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4*x-5",
+              "xmin": -3,
+              "xmax": 7,
+              "caption": "Graphique de x^2-4x-5 pour visualiser l'inéquation"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La modélisation quadratique apparaît naturellement dans de nombreux contextes : trajectoire d'un projectile, optimisation d'une surface, évolution d'une population sous contrainte. Prenons un ballon lancé verticalement : sa hauteur $h$ en mètres au bout de $t$ secondes suit $h(t) = -5t^{2}+20t+1$. Le coefficient $-5$ traduit l'effet de la gravité, $20$ est la vitesse initiale, $1$ la hauteur de départ. Le sommet de la parabole donne la hauteur maximale atteinte, les racines donnent les instants où le ballon est au niveau du sol."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modélisation concrète : trajectoire d'un projectile"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce modèle, le discriminant est $\\Delta = 400 + 20 = 420$, les racines sont $t = \\frac{-20 \\pm \\sqrt{420}}{-10}$. La racine positive est environ $t \\approx 4.05$ secondes, moment où le ballon retombe. L'abscisse du sommet est $t_{v} = -\\frac{20}{2\\times(-5)} = 2$ secondes, et la hauteur maximale est $h(2) = -5\\times4 + 40 + 1 = 21$ mètres. L'interprétation physique est immédiate : le ballon monte pendant 2 secondes jusqu'à 21 m, puis redescend."
+            },
+            {
+              "type": "graph",
+              "expression": "-4.9*x^2+15*x+2",
+              "xmin": 0,
+              "xmax": 5,
+              "caption": "Hauteur du projectile en fonction du temps"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les clés pour analyser le signe d'un trinôme, résoudre des inéquations quadratiques et donner du sens à un modèle mathématique issu du réel. La checklist qui suit récapitule les compétences acquises tout au long de ce cours."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une expression quadratique sous forme développée et factorisée.",
+                "Je sais calculer le discriminant et en déduire le nombre de racines.",
+                "Je sais déterminer le sommet d'une parabole.",
+                "Je sais construire un tableau de signes et résoudre une inéquation quadratique.",
+                "Je sais interpréter un modèle quadratique concret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez le tableau de signes de $p(x) = -2x^{2}+4x+6$.",
+              "answer": "Racines : $x_{1}=-1$, $x_{2}=3$. $a=-2<0$. Signes : $+$ pour $x<-1$, $-$ pour $-1<x<3$, $+$ pour $x>3$. Zéros aux bornes.",
+              "hint": "Calculez le discriminant, puis les racines, puis construisez le tableau.",
+              "explanation": "Le discriminant $\\Delta = 16+48=64$, racines $-1$ et $3$. Comme $a<0$, le signe est opposé à $a$ entre les racines."
+            },
+            {
+              "question": "Résolvez l'inéquation $x^{2}-4x-5 \\le 0$.",
+              "answer": "$x \\in [-1,5]$",
+              "hint": "Factorisez le trinôme, puis utilisez le tableau de signes.",
+              "explanation": "$x^{2}-4x-5 = (x-5)(x+1)$. Les racines sont $-1$ et $5$. Le coefficient $a=1>0$, donc l'expression est $\\le 0$ entre les racines."
+            },
+            {
+              "question": "Un projectile suit la loi $h(t) = -4.9t^{2}+15t+2$. Quelle est la hauteur maximale atteinte et à quel instant ?",
+              "answer": "Hauteur maximale $h_{\\max} \\approx 13.48$ m à $t \\approx 1.53$ s.",
+              "hint": "Le sommet de la parabole donne l'instant et la hauteur maximaux.",
+              "explanation": "L'abscisse du sommet $t_{v} = -b/(2a) = -15/(2\\times -4.9) \\approx 1.53$ s. L'ordonnée $h(t_{v}) \\approx 13.48$ m."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

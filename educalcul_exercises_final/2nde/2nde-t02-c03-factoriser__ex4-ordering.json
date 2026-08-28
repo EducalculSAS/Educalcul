@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Factoriser",
+  "title": "Applications de la factorisation",
+  "blocks": [
+    {
+      "title": "Factorisation par facteur commun",
+      "content": "Rangez les étapes dans l'ordre pour factoriser l'expression $6x^2 + 9x$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le plus grand facteur commun des termes.",
+        "Écrire chaque terme comme produit du facteur commun et d'un autre facteur.",
+        "Factoriser en mettant le facteur commun devant la parenthèse.",
+        "Obtenir la forme factorisée $3x(2x + 3)$."
+      ],
+      "explanation": "Le plus grand facteur commun de $6x^2$ et $9x$ est $3x$. On écrit $6x^2 = 3x \\cdot 2x$ et $9x = 3x \\cdot 3$. En factorisant $3x$, on obtient $3x(2x + 3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation par différence de deux carrés",
+      "content": "Rangez les étapes dans l'ordre pour factoriser l'expression $x^2 - 25$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Reconnaître que l'expression est une différence de deux carrés.",
+        "Identifier $a$ et $b$ tels que $a^2 = x^2$ et $b^2 = 25$.",
+        "Appliquer l'identité remarquable $a^2 - b^2 = (a - b)(a + b)$.",
+        "Écrire la factorisation $(x - 5)(x + 5)$."
+      ],
+      "explanation": "On a $x^2 - 25 = x^2 - 5^2$. Avec $a = x$ et $b = 5$, l'identité donne $(x - 5)(x + 5)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation par regroupement",
+      "content": "Rangez les étapes dans l'ordre pour factoriser l'expression $x^3 + 2x^2 + 3x + 6$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Grouper les termes deux par deux : $(x^3 + 2x^2) + (3x + 6)$.",
+        "Factoriser chaque groupe par son facteur commun.",
+        "Obtenir $x^2(x + 2) + 3(x + 2)$.",
+        "Factoriser le binôme commun $(x + 2)$.",
+        "Écrire la factorisation finale $(x + 2)(x^2 + 3)$."
+      ],
+      "explanation": "On regroupe $(x^3 + 2x^2) + (3x + 6)$. Le premier groupe a pour facteur commun $x^2$, le second $3$. Cela donne $x^2(x + 2) + 3(x + 2)$. Le facteur commun $(x + 2)$ se factorise pour obtenir $(x + 2)(x^2 + 3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

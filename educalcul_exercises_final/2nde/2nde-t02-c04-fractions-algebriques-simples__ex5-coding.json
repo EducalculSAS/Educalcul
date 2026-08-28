@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Domaine",
+  "title": "Algorithmes pour déterminer le domaine de fractions algébriques",
+  "blocks": [
+    {
+      "title": "Domaine d'une fraction simple",
+      "content": "Écrire un algorithme en langage naturel ou sous forme de code Python qui détermine l'ensemble de définition de la fraction $\\frac{1}{x - a}$ où $a$ est un paramètre réel donné en entrée. L'algorithme affiche l'ensemble de définition.",
+      "correctAnswer": "Algorithme :\\nEntrée : un réel $a$.\\nCalculer la valeur interdite : $x_{\\text{interdit}} = a$.\\nAfficher : L'ensemble de définition est $\\mathbb{R} \\setminus \\{a\\}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $\\frac{1}{x - a}$ n'est pas définie lorsque le dénominateur est nul, c'est-à-dire pour $x - a = 0$, donc $x = a$. L'ensemble de définition est l'ensemble des réels sauf $a$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Domaine avec dénominateur du second degré",
+      "content": "Écrire un algorithme qui détermine l'ensemble de définition de la fraction $\\frac{1}{x^2 - 4}$. L'algorithme résout l'équation $x^2 - 4 = 0$ et affiche les valeurs exclues.",
+      "correctAnswer": "Algorithme :\\nEntrée : aucune (coefficient fixes).\\nCalculer le discriminant $\\Delta = 0^2 - 4 \\times 1 \\times (-4) = 16$.\\nCalculer les racines : $x_1 = \\frac{-0 - \\sqrt{16}}{2} = -2$ et $x_2 = \\frac{-0 + \\sqrt{16}}{2} = 2$.\\nAfficher : L'ensemble de définition est $\\mathbb{R} \\setminus \\{-2; 2\\}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $x^2 - 4$ s'annule pour $x = -2$ et $x = 2$. Ces deux valeurs sont exclues de l'ensemble de définition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Domaine d'une somme de fractions",
+      "content": "Écrire un algorithme qui détermine l'ensemble de définition de l'expression $\\frac{1}{x-1} + \\frac{1}{x+2}$. L'algorithme identifie les valeurs interdites pour chaque dénominateur et affiche l'ensemble de définition final.",
+      "correctAnswer": "Algorithme :\\nEntrée : aucune.\\nPour le premier dénominateur $x - 1 = 0$, valeur interdite $1$.\\nPour le second dénominateur $x + 2 = 0$, valeur interdite $-2$.\\nRéunir les valeurs interdites : $\\{-2; 1\\}$.\\nAfficher : L'ensemble de définition est $\\mathbb{R} \\setminus \\{-2; 1\\}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expression est définie si et seulement si les deux fractions le sont. Il faut exclure les valeurs qui annulent l'un ou l'autre des dénominateurs : $x \\neq 1$ et $x \\neq -2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

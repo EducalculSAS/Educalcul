@@ -1,0 +1,472 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.597876+00:00",
+  "id": 679,
+  "code": "terminale-generale-maths-t02-c02",
+  "title": "Droites et représentations paramétriques",
+  "description": "Cours structuré Educalcul : Droites et représentations paramétriques.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Droites et représentations paramétriques",
+    "objectif_global": "Droites et représentations paramétriques",
+    "mini_lecons_imposees": [
+      "Écrire.",
+      "Tester point.",
+      "Intersection."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Écrire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une représentation paramétrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à écrire l'équation paramétrique d'une droite dans l'espace. Une droite en géométrie spatiale se définit par un point de passage et un vecteur directeur, c'est‑à‑dire une direction qui ne change pas le long de la droite. Imagine que tu tiens un fil tendu entre deux clous : le clou où tu accroches le fil est le point de passage, et la direction du fil est le vecteur directeur. Le paramètre, souvent noté $t$, permet de glisser le long du fil pour atteindre n'importe quel point de la droite. Nous allons voir comment assembler ces trois ingrédients pour obtenir une écriture compacte et puissante. Prends le temps de bien visualiser la scène, car cette image mentale te servira tout au long du chapitre."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur directeur",
+              "definition": "Un vecteur directeur d'une droite est tout vecteur non nul qui donne la direction de la droite. Si on le multiplie par un nombre réel, on obtient un autre vecteur directeur de la même droite.",
+              "example": "Pour la droite passant par $A(1,2,3)$ et $B(4,5,6)$, le vecteur $\\overrightarrow{AB} = (3,3,3)$ est un vecteur directeur."
+            },
+            {
+              "type": "definition",
+              "term": "Point de passage",
+              "definition": "Un point de passage est un point appartenant à la droite. Il sert d'origine pour la représentation paramétrique. Tout point de la droite peut être choisi comme point de passage.",
+              "example": "Dans l'exemple précédent, $A(1,2,3)$ est un point de passage."
+            },
+            {
+              "type": "definition",
+              "term": "Paramètre",
+              "definition": "Le paramètre, noté généralement $t$, est un nombre réel qui varie. Lorsque $t$ parcourt l'ensemble des réels, le point $M(t)$ décrit toute la droite.",
+              "example": "Pour $t = 0$ on retrouve le point de passage, pour $t = 1$ on obtient le point $A + \\vec{u}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme générale d'une représentation paramétrique s'écrit : le point $M$ de coordonnées $(x,y,z)$ appartient à la droite si et seulement s'il existe un réel $t$ tel que $(x,y,z) = (x_A, y_A, z_A) + t (u_x, u_y, u_z)$. Cette écriture vectorielle se décompose en trois équations scalaires : $x = x_A + t u_x$, $y = y_A + t u_y$, $z = z_A + t u_z$. C'est cette triplette d'équations que l'on appelle représentation paramétrique. Elle est très pratique car elle donne directement les coordonnées de n'importe quel point de la droite dès qu'on connaît la valeur du paramètre."
+            },
+            {
+              "type": "display_math",
+              "latex": "M(t) = A + t\\,\\vec{u} \\quad\\Longleftrightarrow\\quad \\begin{cases} x = x_A + t u_x \\\\ y = y_A + t u_y \\\\ z = z_A + t u_z \\end{cases}"
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs du paramètre $t$",
+              "min": -2,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 1,
+                  "label": "A+u"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons écrire une droite à partir d'un point et d'un vecteur, voyons comment faire lorsque nous n'avons que deux points de la droite. C'est une situation très courante dans les exercices, et la méthode est tout aussi simple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À partir de deux points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu connais deux points distincts $A$ et $B$ de la droite, le vecteur directeur peut être choisi comme le vecteur $\\overrightarrow{AB}$. Ses coordonnées sont obtenues en soustrayant les coordonnées de $A$ à celles de $B$ : $(x_B - x_A, y_B - y_A, z_B - z_A)$. Une fois ce vecteur en main, tu reprends la même recette : tu prends l'un des deux points comme point de passage, tu ajoutes le paramètre multiplié par le vecteur directeur, et tu obtiens la représentation paramétrique. Note que tu pourrais aussi choisir le vecteur $\\overrightarrow{BA}$, qui est simplement l'opposé, cela ne change pas la droite, seulement le sens du paramètre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le vecteur directeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $A(x_A,y_A,z_A)$ et $B(x_B,y_B,z_B)$. Le vecteur directeur est $\\vec{u} = (x_B-x_A, y_B-y_A, z_B-z_A)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir un point de passage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On peut prendre $A$ (ou $B$) comme point de passage. Les deux choix donnent des équations paramétriques équivalentes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les trois équations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = x_A + t u_x$, $y = y_A + t u_y$, $z = z_A + t u_z$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Paramètre $t$ pour les points $A$ et $B$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 1,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une même droite admet une infinité de représentations paramétriques. Changer le point de passage ou multiplier le vecteur directeur par un nombre non nul donne une écriture différente mais qui décrit exactement le même ensemble de points. C'est une liberté qu'il faut savoir exploiter pour simplifier les calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Non‑unicité de la représentation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la droite d'équations paramétriques $x = 1 + 2t$, $y = 2 - t$, $z = 3 + 4t$. Si je décide de prendre le point correspondant à $t = 1$, c'est‑à‑dire $(3,1,7)$, comme nouveau point de passage, et que je garde le même vecteur directeur $(2,-1,4)$, j'obtiens $x = 3 + 2t'$, $y = 1 - t'$, $z = 7 + 4t'$. Les deux écritures décrivent la même droite, le paramètre $t'$ étant simplement décalé par rapport à $t$. De même, si je multiplie le vecteur directeur par $3$, j'obtiens $(6,-3,12)$ et l'équation devient $x = 1 + 6s$, $y = 2 - 3s$, $z = 3 + 12s$ avec $s = t/3$. Toutes ces formes sont correctes, et il est souvent commode de choisir un vecteur directeur aux coordonnées simples, par exemple en divisant par le plus grand commun diviseur."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{aligned} \\text{Première forme : } & \\begin{cases} x = 1 + 2t \\\\ y = 2 - t \\\\ z = 3 + 4t \\end{cases} \\\\ \\text{Deuxième forme : } & \\begin{cases} x = 3 + 2t' \\\\ y = 1 - t' \\\\ z = 7 + 4t' \\end{cases} \\end{aligned}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour écrire la représentation paramétrique d'une droite, que tu parties d'un point et d'un vecteur ou de deux points. Essaie de t'entraîner en variant les points de passage et les vecteurs directeurs pour bien sentir que la droite ne change pas. La prochaine leçon te montrera comment vérifier si un point donné appartient à une droite déjà écrite sous forme paramétrique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la représentation paramétrique de la droite passant par le point $A(2, -1, 3)$ et de vecteur directeur $\\vec{u} = (4, 0, -2)$.",
+              "answer": "$x = 2 + 4t$, $y = -1$, $z = 3 - 2t$",
+              "hint": "Utilise la forme $x = x_A + t u_x$, etc.",
+              "explanation": "On substitue les coordonnées du point et les composantes du vecteur dans les trois équations."
+            },
+            {
+              "question": "Donne une représentation paramétrique de la droite passant par les points $A(0,1,2)$ et $B(3,4,5)$.",
+              "answer": "$x = 3t$, $y = 1 + 3t$, $z = 2 + 3t$",
+              "hint": "Calcule $\\overrightarrow{AB}$ puis choisis $A$ comme point de passage.",
+              "explanation": "Le vecteur directeur est $(3,3,3)$. En prenant $A$, on obtient les équations."
+            },
+            {
+              "question": "Les deux représentations paramétriques suivantes décrivent‑elles la même droite ? $\\begin{cases} x = 1 + 2t \\\\ y = 2 - t \\\\ z = 3 + 4t \\end{cases}$ et $\\begin{cases} x = 5 + 4s \\\\ y = 0 - 2s \\\\ z = 11 + 8s \\end{cases}$",
+              "answer": "Oui, ce sont la même droite.",
+              "hint": "Vérifie si les vecteurs directeurs sont proportionnels et si un point de la première appartient à la seconde.",
+              "explanation": "Le second vecteur directeur est le double du premier, et le point $(5,0,11)$ correspond à $t=2$ dans la première."
+            }
+          ]
+        },
+        {
+          "title": "Tester point.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester l'appartenance d'un point à une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons apprendre à décider si un point donné appartient à une droite dont on connaît la représentation paramétrique. L'idée est simple : on cherche une valeur du paramètre $t$ qui fait coïncider les trois coordonnées du point avec celles données par les équations. Si une telle valeur existe et qu'elle est la même pour les trois équations, le point est sur la droite ; sinon il en est écarté. C'est une procédure algorithmique que tu pourras appliquer machinalement après l'avoir comprise en profondeur. Nous allons détailler chaque étape, illustrer avec des exemples concrets et souligner les pièges à éviter."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Substituer les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit la droite $(x,y,z) = (x_A,y_A,z_A) + t(u_x,u_y,u_z)$ et le point $P(x_P,y_P,z_P)$. On écrit les trois égalités $x_P = x_A + t u_x$, $y_P = y_A + t u_y$, $z_P = z_A + t u_z$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre pour $t$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On isole $t$ dans chaque équation où le coefficient $u_i$ n'est pas nul. Si $u_i = 0$, l'équation devient $x_P = x_A$ (ou $y$, $z$) et impose une condition directe sur la coordonnée du point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toutes les valeurs de $t$ obtenues doivent être identiques. Si c'est le cas, le point appartient à la droite ; sinon il n'y appartient pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeur du paramètre $t$ pour le point testé",
+              "min": -3,
+              "max": 3,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "t=1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'un des composants du vecteur directeur est nul. Cela ne change pas la méthode, mais il faut être vigilant : l'équation correspondante ne contient plus $t$ et devient une simple condition sur la coordonnée du point. Nous allons voir comment traiter ce cas sans se tromper."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : composantes nulles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la droite définie par $x = 2 + 3t$, $y = -1$, $z = 4 - t$. Le vecteur directeur est $(3,0,-1)$ : sa deuxième composante est nulle. Pour tester le point $P(5,-1,3)$, on écrit $5 = 2 + 3t$, $-1 = -1$, $3 = 4 - t$. La deuxième équation est automatiquement vérifiée. Les deux autres donnent $t = 1$ et $t = 1$, donc $P$ appartient à la droite. Si le point avait eu $y = 0$, la deuxième équation aurait été $0 = -1$, impossible, et le point aurait été rejeté immédiatement. Cette astuce permet de gagner du temps : on vérifie d'abord les équations sans $t$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} x = 2 + 3t \\\\ y = -1 \\\\ z = 4 - t \\end{cases} \\quad\\text{Point } P(5,-1,3) \\Rightarrow t=1 \\text{ pour } x \\text{ et } z"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs les plus fréquentes sont d'oublier de vérifier les trois coordonnées, d'utiliser des valeurs de $t$ différentes pour chaque équation, ou de mal gérer les cas où le vecteur directeur a une composante nulle. Une bonne habitude consiste à écrire les trois équations côte à côte, à résoudre chacune pour $t$ (ou à noter la condition fixe), puis à comparer les résultats. Si une seule coordonnée ne colle pas, le point est hors de la droite. Prends l'habitude de noter explicitement la valeur de $t$ trouvée pour chaque composante non nulle."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Astuce : } \\begin{array}{l} \\text{1. Écrire les 3 équations.} \\\\ \\text{2. Résoudre pour } t \\text{ (si possible).} \\\\ \\text{3. Comparer les } t. \\\\ \\text{4. Vérifier les équations sans } t. \\end{array}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant tester l'appartenance d'un point à une droite paramétrique, même quand le vecteur directeur comporte des zéros. Entraîne-toi avec des points variés pour que le réflexe devienne automatique. La prochaine leçon abordera l'intersection de deux droites, c'est‑à‑dire la recherche d'un point commun à deux représentations paramétriques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La droite $(D)$ a pour équations paramétriques $\\begin{cases} x = 1 + 2t \\\\ y = 3 - t \\\\ z = -2 + 4t \\end{cases}$. Le point $P(5,1,6)$ appartient‑il à $(D)$ ?",
+              "answer": "Oui, pour $t=2$.",
+              "hint": "Substitue les coordonnées de $P$ dans les trois équations et résous pour $t$.",
+              "explanation": "On obtient $5=1+2t \\Rightarrow t=2$, $1=3-t \\Rightarrow t=2$, $6=-2+4t \\Rightarrow t=2$. Les trois valeurs coïncident."
+            },
+            {
+              "question": "Soit la droite $(D') : \\begin{cases} x = -1 + 0\\cdot t \\\\ y = 2 + 3t \\\\ z = 5 - t \\end{cases}$. Teste l'appartenance du point $Q(-1,5,4)$.",
+              "answer": "Oui, pour $t=1$.",
+              "hint": "La première équation ne contient pas $t$ ; vérifie d'abord qu'elle est satisfaite.",
+              "explanation": "La première équation donne $x=-1$, ce qui est vrai pour $Q$. Les deux autres donnent $t=1$ pour $y$ et $z$."
+            },
+            {
+              "question": "Détermine si le point $R(0,0,0)$ appartient à la droite $\\begin{cases} x = 2 + t \\\\ y = -1 + 2t \\\\ z = 3 - t \\end{cases}$.",
+              "answer": "Non.",
+              "hint": "Résous chaque équation pour $t$ et compare.",
+              "explanation": "On trouve $t=-2$ pour $x$, $t=0.5$ pour $y$, $t=3$ pour $z$. Les valeurs sont différentes, donc $R$ n'est pas sur la droite."
+            }
+          ]
+        },
+        {
+          "title": "Intersection.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection de deux droites de l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce chapitre : trouver l'intersection de deux droites données sous forme paramétrique. L'intersection, si elle existe, est un point qui appartient aux deux droites simultanément. Cela revient à résoudre un système de trois équations à deux inconnues (les deux paramètres). Nous allons détailler la méthode pas à pas, distinguer les cas où les droites se coupent, sont parallèles ou sont non coplanaires (droites gauches), et nous verrons comment un petit script Python peut automatiser la résolution."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les deux systèmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $(D_1) : \\begin{cases} x = x_{A1} + t u_x \\\\ y = y_{A1} + t u_y \\\\ z = z_{A1} + t u_z \\end{cases}$ et $(D_2) : \\begin{cases} x = x_{A2} + s v_x \\\\ y = y_{A2} + s v_y \\\\ z = z_{A2} + s v_z \\end{cases}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Égaler les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient le système : $x_{A1} + t u_x = x_{A2} + s v_x$, $y_{A1} + t u_y = y_{A2} + s v_y$, $z_{A1} + t u_z = z_{A2} + s v_z$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre pour $t$ et $s$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On utilise deux des trois équations pour trouver $t$ et $s$. Puis on vérifie que la troisième équation est satisfaite avec ces valeurs. Si oui, le point d'intersection est obtenu en remplaçant $t$ (ou $s$) dans l'une des représentations."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le système a une solution unique $(t_0,s_0)$ qui satisfait la troisième équation, les droites se coupent en un point. Si les deux premières équations donnent une contradiction, les droites sont parallèles (vecteurs directeurs proportionnels) ou gauches (pas de solution)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} x_{A1} + t u_x = x_{A2} + s v_x \\\\ y_{A1} + t u_y = y_{A2} + s v_y \\\\ z_{A1} + t u_z = z_{A2} + s v_z \\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer aux exercices plus complexes, rappelons le critère de parallélisme : deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont proportionnels. Dans ce cas, soit elles sont confondues (infinité d'intersections), soit elles sont distinctes et n'ont aucun point commun. Si les vecteurs directeurs ne sont pas proportionnels, les droites peuvent se couper (si le système a une solution) ou être gauches (si le système n'a pas de solution)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Droites parallèles ou sécantes ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $(D_1) : \\vec{u} = (2,4,6)$ et $(D_2) : \\vec{v} = (1,2,3)$. Ici $\\vec{u} = 2\\vec{v}$, donc les droites sont parallèles. Pour savoir si elles sont confondues, il suffit de vérifier si un point de $(D_1)$ appartient à $(D_2)$ en utilisant la méthode de la leçon précédente. Si ce n'est pas le cas, les droites sont parallèles strictes et n'ont pas d'intersection. Si les vecteurs ne sont pas proportionnels, on résout le système ; l'absence de solution signifie que les droites sont gauches, c'est‑à‑dire non coplanaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u} = k\\vec{v} \\implies \\text{droites parallèles} \\quad ; \\quad \\text{sinon } \\text{on résout le système}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les cas où le système est un peu lourd à résoudre à la main, on peut écrire un court programme qui fait le travail algébrique. Cela permet de se concentrer sur l'interprétation géométrique. Voici un exemple en Python utilisant la bibliothèque sympy pour résoudre le système linéaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution algorithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le script ci‑définit les symboles $t$ et $s$, construit les trois équations à partir des données de deux droites, et demande à sympy de résoudre pour $t$ et $s$. Si une solution est trouvée, on la substitue pour obtenir le point d'intersection. Sinon, on conclut à l'absence d'intersection (parallèles ou gauches). Cette approche est très utile pour vérifier tes calculs ou pour traiter des exercices avec des coefficients compliqués."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import sympy as sp\\nt, s = sp.symbols('t s')\\n# Droite 1 : A1(1,2,3), u(2,-1,4)\\n# Droite 2 : A2(4,0,1), v(-1,2,3)\\neq1 = sp.Eq(1 + 2*t, 4 - s)\\neq2 = sp.Eq(2 - t, 0 + 2*s)\\neq3 = sp.Eq(3 + 4*t, 1 + 3*s)\\nsol = sp.solve([eq1, eq2, eq3], (t, s), dict=True)\\nprint('Solutions :', sol)\\nif sol:\\n    t_val = sol[0][t]\\n    x = 1 + 2*t_val\\n    y = 2 - t_val\\n    z = 3 + 4*t_val\\n    print(f'Point d\\'intersection : ({x}, {y}, {z})')\\nelse:\\n    print('Pas d\\'intersection (parallèles ou gauches).')",
+              "language": "python",
+              "caption": "Script Python pour trouver l'intersection de deux droites paramétriques"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les compétences pour écrire une droite sous forme paramétrique, tester l'appartenance d'un point et déterminer l'intersection de deux droites dans l'espace. Ces outils sont fondamentaux pour la géométrie analytique en terminale et te seront utiles en études supérieures. Continue à t'entraîner avec des configurations variées pour gagner en aisance."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire la représentation paramétrique d'une droite connaissant un point et un vecteur directeur.",
+                "Je sais écrire la représentation paramétrique d'une droite connaissant deux points.",
+                "Je sais reconnaître que plusieurs représentations paramétriques peuvent décrire la même droite.",
+                "Je sais tester si un point appartient à une droite paramétrique.",
+                "Je sais résoudre le système pour trouver l'intersection de deux droites paramétriques.",
+                "Je sais distinguer droites sécantes, parallèles et gauches."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve l'intersection, si elle existe, des droites $(D_1) : \\begin{cases} x = 1 + 2t \\\\ y = 2 - t \\\\ z = 3 + 4t \\end{cases}$ et $(D_2) : \\begin{cases} x = 4 - s \\\\ y = 0 + 2s \\\\ z = 1 + 3s \\end{cases}$.",
+              "answer": "Point d'intersection : $(3,1,7)$ pour $t=1$, $s=1$.",
+              "hint": "Égalise les coordonnées, résous le système 2x2, vérifie la troisième équation.",
+              "explanation": "On obtient $1+2t=4-s$, $2-t=2s$, $3+4t=1+3s$. Les deux premières donnent $t=1$, $s=1$, qui satisfont la troisième."
+            },
+            {
+              "question": "Les droites $(D_3) : \\begin{cases} x = 2 + 3t \\\\ y = -1 + 6t \\\\ z = 4 + 9t \\end{cases}$ et $(D_4) : \\begin{cases} x = 5 + s \\\\ y = 2 + 2s \\\\ z = -1 + 3s \\end{cases}$ sont‑elles sécantes, parallèles ou gauches ?",
+              "answer": "Parallèles distinctes (donc pas d'intersection).",
+              "hint": "Compare les vecteurs directeurs : sont‑ils proportionnels ?",
+              "explanation": "Le vecteur de $(D_3)$ est $(3,6,9)=3\\cdot(1,2,3)$, celui de $(D_4)$ est $(1,2,3)$. Ils sont proportionnels, donc les droites sont parallèles. Un point de $(D_3)$ (par ex $t=0$ : $(2,-1,4)$) ne satisfait pas les équations de $(D_4)$, donc elles sont distinctes."
+            },
+            {
+              "question": "Détermine l'intersection des droites $(D_5) : \\begin{cases} x = 1 + t \\\\ y = 2 + 2t \\\\ z = 3 + 3t \\end{cases}$ et $(D_6) : \\begin{cases} x = 4 - 2s \\\\ y = 1 - s \\\\ z = 0 + s \\end{cases}$.",
+              "answer": "Pas d'intersection (droites gauches).",
+              "hint": "Résous le système ; tu obtiendras une contradiction.",
+              "explanation": "Le système donne $1+t=4-2s$, $2+2t=1-s$, $3+3t=s$. En résolvant les deux premières on trouve $t=-1$, $s=-2$, mais la troisième donne $3+3(-1)=0 \\neq -2$. Donc pas de solution commune."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

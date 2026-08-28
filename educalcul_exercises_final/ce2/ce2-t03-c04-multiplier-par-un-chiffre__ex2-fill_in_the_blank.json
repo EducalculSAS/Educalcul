@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 163,
+  "_course_code": "ce2-t03-c04-multiplier-par-un-chiffre",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Gérer retenues",
+  "title": "Multiplication par un chiffre : gérer les retenues",
+  "blocks": [
+    {
+      "title": "Calcul simple avec une retenue",
+      "content": "Pour calculer $23 \\times 4$, je commence par les unités : $3 \\times 4 = 12$. J'écris {{1}} et je retiens {{2}}. Puis je fais les dizaines : $2 \\times 4 = 8$, j'ajoute la retenue : $8 + 1 = {{3}}$. Le résultat final est $92$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "1",
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie les unités : $3 \\times 4 = 12$. On écrit 2 dans la colonne des unités et on retient 1 dixaine. On multiplie les dizaines : $2 \\times 4 = 8$. On ajoute la retenue : $8 + 1 = 9$. On écrit 9 dans la colonne des dizaines. Le produit est 92.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec deux retenues successives",
+      "content": "Calculons $146 \\times 3$ en posant l'opération.\\nUnités : $6 \\times 3 = 18$. J'écris {{1}}, je retiens {{2}}.\\nDizaines : $4 \\times 3 = 12$. J'ajoute la retenue : $12 + 1 = 13$. J'écris {{3}}, je retiens {{4}}.\\nCentaines : $1 \\times 3 = 3$. J'ajoute la retenue : $3 + 1 = {{5}}$.\\nLe produit final est $438$.",
+      "correctAnswer": "",
+      "blanks": [
+        "8",
+        "1",
+        "3",
+        "1",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Unités : $6 \\times 3 = 18$, on écrit 8, on retient 1. Dizaines : $4 \\times 3 = 12$, plus la retenue 1 fait 13, on écrit 3, on retient 1. Centaines : $1 \\times 3 = 3$, plus la retenue 1 fait 4. Résultat : 438.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver le chiffre manquant",
+      "content": "Dans la multiplication $3 \\square \\times 3 = 102$, je cherche le chiffre manquant.\\nAux unités : $\\square \\times 3$ se termine par {{1}}. C'est {{2}} car $4 \\times 3 = 12$.\\nLa retenue des unités est {{3}}.\\nAux dizaines : $3 \\times 3 = 9$, $+ 1 = 10$. Cela correspond au 0 du résultat avec une retenue de 1 pour les centaines.\\nLe chiffre mystère est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "4",
+        "1",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde le chiffre des unités du résultat (2). Quel chiffre multiplié par 3 donne un nombre finissant par 2 ? C'est 4 car $4 \\times 3 = 12$. On écrit 2, on retient 1. Pour les dizaines : $3 \\times 3 = 9$, plus la retenue 1 fait 10. On écrit 0, on retient 1 pour les centaines. Le chiffre manquant est bien 4.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

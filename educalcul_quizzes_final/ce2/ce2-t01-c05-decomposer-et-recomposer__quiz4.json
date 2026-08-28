@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 146,
+  "_course_code": "ce2-t01-c05-decomposer-et-recomposer",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Décomposer et recomposer",
+  "title": "Application : Décomposer et recomposer",
+  "questions": [
+    {
+      "text": "Quel est le résultat de la décomposition de $342$ en centaines, dizaines et unités ?",
+      "options": [
+        "$3$ centaines, $4$ dizaines, $2$ unités",
+        "$3$ centaines, $2$ dizaines, $4$ unités",
+        "$4$ centaines, $3$ dizaines, $2$ unités",
+        "$2$ centaines, $4$ dizaines, $3$ unités"
+      ],
+      "correctAnswer": "$3$ centaines, $4$ dizaines, $2$ unités",
+      "explanation": "Le nombre 342 se décompose en 3 centaines (300), 4 dizaines (40) et 2 unités (2). Les autres propositions inversent les dizaines et les unités ou changent le nombre de centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on recompose $5$ centaines, $7$ dizaines et $3$ unités, quel nombre obtient-on ?",
+      "options": [
+        "$573$",
+        "$537$",
+        "$753$",
+        "$357$"
+      ],
+      "correctAnswer": "$573$",
+      "explanation": "En recomposant 5 centaines (500), 7 dizaines (70) et 3 unités (3), on obtient 500 + 70 + 3 = 573. Les autres réponses correspondent à des permutations des chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien vaut le nombre représenté par ces blocs en base dix ?",
+      "options": [
+        "$258$",
+        "$285$",
+        "$528$",
+        "$825$"
+      ],
+      "correctAnswer": "$258$",
+      "explanation": "Les blocs de base dix montrent 2 centaines, 5 dizaines et 8 unités, ce qui forme le nombre 258. Les distracteurs correspondent à des permutations des chiffres.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 2,
+        "tens": 5,
+        "units": 8,
+        "caption": "Représentation en blocs de base dix"
+      }
+    },
+    {
+      "text": "Pour calculer $276 + 189$, on peut décomposer les nombres. Quelle décomposition permet de faire le calcul facilement ?",
+      "options": [
+        "$276 = 200 + 70 + 6$ et $189 = 100 + 80 + 9$",
+        "$276 = 200 + 60 + 16$ et $189 = 100 + 70 + 19$",
+        "$276 = 200 + 70 + 6$ et $189 = 100 + 90 + -1$",
+        "$276 = 200 + 80 + -4$ et $189 = 100 + 80 + 9$"
+      ],
+      "correctAnswer": "$276 = 200 + 70 + 6$ et $189 = 100 + 80 + 9$",
+      "explanation": "La décomposition en valeur de position (centaines, dizaines, unités) permet d'additionner chaque ordre séparément : 200+100=300, 70+80=150, 6+9=15, puis 300+150+15=465. Les autres décompositions ne respectent pas la valeur de position ou introduisent des nombres négatifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut trouver $500 - 237$ en décomposant $237$. Quelle décomposition aide à faire la soustraction facilement ?",
+      "options": [
+        "$237 = 200 + 30 + 7$",
+        "$237 = 200 + 20 + 17$",
+        "$237 = 100 + 130 + 7$",
+        "$237 = 200 + 40 + -3$"
+      ],
+      "correctAnswer": "$237 = 200 + 30 + 7$",
+      "explanation": "Pour soustraire 237 de 500, on décompose 237 en 200 + 30 + 7. On retire d'abord 200 (reste 300), puis 30 (reste 270), puis 7 (reste 263). Les autres décompositions ne facilitent pas la soustraction par paliers.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

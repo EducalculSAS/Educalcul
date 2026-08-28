@@ -1,0 +1,465 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.110690+00:00",
+  "id": 203,
+  "code": "ce2-t07-c08",
+  "title": "Programmes de construction simples",
+  "description": "Cours structuré Educalcul : Programmes de construction simples.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Programmes de construction simples",
+    "objectif_global": "Programmes de construction simples",
+    "mini_lecons_imposees": [
+      "Lire des étapes.",
+      "Utiliser instruments.",
+      "Vérifier la figure."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Lire des étapes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu reçois une carte au trésor. Pour trouver le coffre, tu dois suivre les indices dans l'ordre : d'abord marcher dix pas vers le grand chêne, puis tourner à droite près de la mare. Un programme de construction, c'est exactement la même chose : une liste d'actions à faire les unes après les autres pour dessiner une figure précise. Si tu changes l'ordre, tu ne trouves pas le trésor, et ton dessin ne ressemble plus à ce qui était prévu."
+            },
+            {
+              "type": "definition",
+              "term": "Programme de construction",
+              "definition": "C'est une suite d'instructions numérotées qui explique comment tracer une figure géométrique, étape par étape.",
+              "example": "Étape 1 : Tracer un segment $[AB]$ de $6\\,cm$. Étape 2 : Tracer la perpendicular en $A$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons ensemble un petit programme tout simple. Il ne comporte que trois lignes, mais chacune a son importance. La première dit : « Tracer un point $A$ ». La deuxième : « Tracer un point $B$ à $5\\,cm$ de $A$ ». La troisième : « Relier $A$ et $B$ ». Si tu commences par relier les points avant de les placer, tu ne sais pas où tracer ton trait. L'ordre des étapes est le secret de la réussite."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Repérer le numéro de l'étape (1, 2, 3...).",
+                "Lire l'action demandée (tracer, placer, relier).",
+                "Noter les contraintes (longueur, angle, parallélisme).",
+                "Exécuter l'étape avant de passer à la suivante."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de sortir ta règle, prends le temps de lire le programme en entier, comme on lit une recette de cuisine avant de casser les oeufs. Essaie de visualiser la figure finale dans ta tête : est-ce un triangle ? Un carré ? Une maison ? Cet exercice d'imagination t'aidera à ne pas te perdre en route. C'est comme regarder la photo du puzzle sur la boîte avant d'assembler les pièces."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Figure finale du programme : un triangle rectangle en A",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "4 cm",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire tout le programme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ne te précipite pas sur les instruments. Lis les consignes une première fois pour comprendre l'objectif global."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Surligne ou entoure les longueurs ($cm$), les angles ($\\degree$) et les mots-clés (perpendiculaire, parallèle, milieu)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Prévoir l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie qu'aucune étape ne demande un point ou une droite qui n'a pas encore été créée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant déchiffrer le message caché dans les étapes. Mais une fois le programme lu, il faut passer à l'action. Pour tracer des segments bien droits et des angles bien justes, nous avons besoin d'outils fidèles. Dans la prochaine leçon, nous allons faire connaissance avec la règle graduée et l'équerre, tes deux meilleurs alliés pour le dessin géométrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une étape demande de « tracer une droite passant par deux points » ou de « reporter une longueur ». Ces actions précises demandent de bien tenir ses instruments. Essaie de fermer les yeux et d'imaginer le bruit de la mine de ton crayon qui glisse le long de la règle : c'est le son d'une construction qui commence bien. Nous verrons comment maîtriser ce geste pour que tes figures soient aussi belles que dans tes rêves."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un programme : 1. Tracer un segment $[AB]$ de $6\\,cm$. 2. Tracer un point $C$ sur le segment. 3. Tracer la perpendicular à $(AB)$ passant par $C$. Quelle est la toute première action à faire ?",
+              "answer": "Tracer un segment $[AB]$ de $6\\,cm$.",
+              "hint": "Regarde le numéro devant chaque instruction. Le programme se lit comme un livre : de la première ligne à la dernière.",
+              "explanation": "L'étape 1 est toujours la première à exécuter. Ici, il faut créer le segment $[AB]$ avant de pouvoir y placer le point $C$ à l'étape 2."
+            },
+            {
+              "question": "Dans ce programme : 1. Tracer un cercle de centre $O$ et de rayon $3\\,cm$. 2. Placer un point $A$ sur le cercle. 3. Tracer le segment $[OA]$. Peut-on faire l'étape 3 avant l'étape 1 ?",
+              "answer": "Non, c'est impossible.",
+              "hint": "Demande-toi : le point $O$ et le segment $[OA]$ existent-ils avant l'étape 1 ?",
+              "explanation": "L'étape 1 crée le centre $O$. Sans l'étape 1, le point $O$ n'existe pas, donc on ne peut pas tracer $[OA]$ à l'étape 3. L'ordre est obligatoire."
+            },
+            {
+              "question": "Lis ce programme et imagine la figure : 1. Tracer un segment $[PQ]$ de $5\\,cm$. 2. Tracer un cercle de centre $P$ et de rayon $5\\,cm$. 3. Tracer un cercle de centre $Q$ et de rayon $5\\,cm$. 4. Nommer $R$ un point d'intersection des deux cercles. 5. Tracer le triangle $PQR$. Quelle forme as-tu imaginée ?",
+              "answer": "Un triangle équilatéral (trois côtés de $5\\,cm$).",
+              "hint": "Les deux cercles ont le même rayon que le segment $[PQ]$. Leurs intersections sont à $5\\,cm$ de $P$ et de $Q$.",
+              "explanation": "Les trois côtés $[PQ]$, $[PR]$ et $[QR]$ mesurent tous $5\\,cm$. C'est la définition d'un triangle équilatéral. Bien visualiser avant de tracer évite les erreurs."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser instruments.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Te voici prêt à passer à l'action. Pour donner vie à ton programme, tu as besoin de deux compagnons de route inséparables : la règle graduée et l'équerre. La règle, tu la connais bien depuis le CP pour mesurer. Mais sais-tu qu'elle sert aussi à tracer des segments parfaitement droits ? L'équerre, elle, est la spécialiste des angles droits. Elle a la forme d'un triangle rectangle : son angle le plus pointu est exactement de $90\\,\\degree$."
+            },
+            {
+              "type": "definition",
+              "term": "Règle graduée",
+              "definition": "Instrument de mesure et de tracé. Elle porte des repères en centimètres ($cm$) et en millimètres ($mm$). Elle permet de tracer un segment entre deux points ou de mesurer une longueur.",
+              "example": "Pour tracer $[AB]=5\\,cm$, on place le $0$ sur $A$ et on marque $B$ au niveau du $5$."
+            },
+            {
+              "type": "definition",
+              "term": "Équerre",
+              "definition": "Instrument en forme de triangle rectangle. Elle permet de tracer des droites perpendiculaires (qui font un angle droit) et de vérifier si un angle est droit.",
+              "example": "On cale le côté droit de l'équerre sur une droite, le tracé se fait le long de l'autre côté droit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un segment de $7\\,cm$, ne devine pas la longueur au feeling. Pose ta règle bien à plat, colle le repère $0$ exactement sur ton point de départ. Regarde bien : les traits de graduation sont fins, aligne ton œil bien au-dessus pour ne pas te tromper d'un millimètre. Fais une petite marque au crayon à papier bien taillé, puis relie les deux points en appuyant fermement sur la règle pour qu'elle ne bouge pas. C'est le geste du pro."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 7,
+              "unit": "cm",
+              "caption": "Tracer un segment de 7 cm : placer le 0 sur le point de départ"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Positionner le zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le trait « 0 » de la règle pile sur ton point de départ (souvent nommé $A$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Repérer la longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le chiffre correspondant à la longueur demandée (par exemple $7$ pour $7\\,cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Marquer l'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais une petite croix ou un point fin exactement sur ce repère. Ce sera ton point $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Tracer le segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Retire la règle, replace-la bien sur les deux points $A$ et $B$, et trace le trait en maintenant la règle fermement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le segment n'a plus de secret pour toi, attaquons-nous à l'angle droit. C'est souvent l'étape qui impressionne, mais avec l'équerre, c'est un jeu d'enfant. Imagine que l'équerre est un petit toboggan pour ton crayon. Tu cales le grand côté (l'hypoténuse) bien à plat sur ta droite de base. Le côté qui monte tout droit, celui qui forme l'angle droit avec la base, c'est là que tu fais glisser ton crayon. Ta perpendiculaire sortira parfaitement verticale par rapport à ta droite."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "L'équerre cale sur la droite (côté long) et trace la perpendiculaire (côté court)",
+              "vertexLabels": [
+                "",
+                "",
+                ""
+              ],
+              "sideLabels": [
+                "Droite de base",
+                "Perpendiculaire",
+                "Équerre"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Calez l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le grand côté de l'équerre (celui qui est gradué parfois) exactement sur la droite de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Placez la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Colle ta règle contre le petit côté de l'équerre (le côté de l'angle droit), du côté où tu veux tracer."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Tracez",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tiens l'équerre et la règle bien serrées l'une contre l'autre d'une main, et trace la droite de l'autre main."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais tracer un segment net et une perpendiculaire précise. Mais un programme de construction, c'est souvent les deux ensemble : « Tracer $[AB]=6\\,cm$, puis la perpendicular en $A$ ». Il faut enchainer les gestes sans perdre ses repères. C'est comme danser : un pas de règle, un pas d'équerre, sans marcher sur les pieds de ton dessin. La leçon suivante nous apprendra à jeter un œil critique sur notre œuvre pour être sûr qu'elle respecte le programme à la lettre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu dois tracer un segment $[CD]$ de $8\\,cm$. Tu places le $0$ de ta règle sur $C$. Sur quelle graduation dois-tu faire ta marque pour le point $D$ ?",
+              "answer": "Sur la graduation $8$ (ou $8\\,cm$).",
+              "hint": "Le chiffre sur la règle correspond à la distance en centimètres depuis le zéro.",
+              "explanation": "La graduation $8$ indique une distance de $8\\,cm$ du point zéro. Comme le zéro est sur $C$, la marque à $8$ donne le point $D$ tel que $CD = 8\\,cm$."
+            },
+            {
+              "question": "Pour tracer une perpendiculaire à une droite $(d)$ passant par un point $A$ sur $(d)$, dans quel ordre places-tu les instruments ?",
+              "answer": "1. Équerre sur $(d)$. 2. Règle contre l'équerre. 3. Tracer.",
+              "hint": "L'équerre donne l'angle droit, la règle guide le crayon. Laquelle doit être calée sur la droite $(d)$ ?",
+              "explanation": "L'équerre doit être calée sur la droite $(d)$ pour que son angle droit soit aligné sur $(d)$. La règle vient se coller contre l'autre côté de l'angle droit pour guider le tracé de la perpendiculaire."
+            },
+            {
+              "question": "Le programme dit : 1. Tracer $[EF]=5\\,cm$. 2. Tracer la perpendicular à $(EF)$ en $E$. Après l'étape 1, tu as ton segment. Quelle est la première chose à poser sur ta feuille pour l'étape 2 ?",
+              "answer": "L'équerre (son grand côté) sur la droite $(EF)$.",
+              "hint": "Relis la méthode du toboggan : l'équerre se cale sur la droite existante avant que la règle n'arrive.",
+              "explanation": "Pour tracer la perpendiculaire en $E$, il faut d'abord caler l'angle droit de l'équerre sur la droite $(EF)$. La règle ne sert qu'ensuite à guider le crayon le long de l'équerre."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier la figure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Ta figure est tracée, tes traits sont nets, tes angles ont l'air droits. Mais un bon constructeur, comme un bon pâtissier, goûte son gâteau avant de le servir. Vérifier, ce n'est pas douter de soi, c'est être fier de son travail et s'assurer qu'il est parfait. On ne rend pas un devoir sans relire, on ne remet pas une construction sans vérifier. C'est la marque des grands."
+            },
+            {
+              "type": "paragraph",
+              "content": "Première vérification, la plus facile : les longueurs. Reprend ta règle graduée. Replace le zéro pile sur le point de départ de ton segment, regarde si l'autre point tombe exactement sur la graduation demandée. Si le programme demandait $6\\,cm$ et que tu tombes sur $5,8\\,cm$ ou $6,2\\,cm$, ce n'est pas grave, tu as le droit de gommer et de refaire ce tout petit morceau. La précision, ça se travaille."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 6,
+              "unit": "cm",
+              "caption": "Vérification : le point B tombe-t-il bien sur le 6 cm ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Reprends ta règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le zéro exactement sur le premier point du segment à vérifier."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Observe l'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le deuxième point est pile sur le bon chiffre (au millimètre près)."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Corrige si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c'est faux, gomme proprement le point ou le trait et retrace-le au bon endroit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les longueurs sont bonnes ? Parfait. Maintenant, les angles. Sors ton équerre. Pour vérifier un angle droit, place le sommet de l'angle droit de l'équerre pile sur le sommet de ton angle. Les deux côtés de l'équerre doivent coincider parfaitement avec tes deux droites. Si tu vois un petit jour, un espace blanc entre l'équerre et ton trait, l'angle n'est pas droit. Regomme et retrace en t'aidant de la méthode du toboggan qu'on a vue ensemble."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Vérification de l'angle droit en A : l'équerre doit épouser les deux côtés",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Pose le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le coin de l'angle droit de l'équerre se place exactement sur le sommet de l'angle à vérifier."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Aligne les côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux bords de l'équerre doivent suivre tes deux droites sans espace."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ça colle ? C'est validé. Il y a un trou ? On regomme et on retrace avec la méthode règle+équerre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier contrôle, et pas des moindres : l'ordre et la complétude. Relis le programme étape par étape et coche mentalement : l'étape 1 est-elle sur la feuille ? L'étape 2 ? As-tu bien nommé tous les points demandés ($A$, $B$, $C$...) ? Parfois, on trace tout parfaitement mais on oublie d'écrire la lettre du point d'intersection ou on zappe une parallèle. Cette relecture croisée, programme en main, figure sous les yeux, c'est l'assurance zéro faute. Tu es maintenant un constructeur complet : tu lis, tu traces, tu contrôles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un programme de construction dans l'ordre des étapes.",
+                "Je sais utiliser la règle pour tracer et mesurer un segment en centimètres.",
+                "Je sais utiliser l'équerre et la règle pour tracer une perpendiculaire.",
+                "Je sais vérifier mes longueurs à la règle et mes angles droits à l'équerre.",
+                "Je sais relire mon programme pour m'assurer qu'aucune étape n'est oubliée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé un segment $[GH]$ qui devait mesurer $5\\,cm$. En revérifiant à la règle, le point $H$ tombe sur la graduation $4,8\\,cm$. Que dois-tu faire ?",
+              "answer": "Gommer le point $H$ (et le trait si nécessaire) et le replacer sur $5\\,cm$.",
+              "hint": "La vérification sert à corriger. $4,8\\,cm$ n'est pas $5\\,cm$.",
+              "explanation": "La consigne demande $5\\,cm$. Une différence de $2\\,mm$ est visible. Il faut corriger pour respecter le programme. On gomme proprement et on replace le point au bon graduation."
+            },
+            {
+              "question": "Tu vérifies un angle droit que tu as tracé. Tu places ton équerre : le sommet coïncide, mais un des côtés de l'équerre ne colle pas à ta droite, il y a un petit espace. L'angle est-il droit ?",
+              "answer": "Non, ce n'est pas un angle droit.",
+              "hint": "Pour un angle droit, l'équerre doit épouser parfaitement les deux demi-droites. Un espace veut dire que l'angle est plus grand ou plus petit que 90°. ",
+              "explanation": "Si l'équerre ne coïncide pas avec les deux côtés, l'angle n'est pas de $90\\,\\degree$. Il faut gommer le trait fautif et le retracer en calant correctement la règle contre l'équerre."
+            },
+            {
+              "question": "Le programme demande : 1. Tracer $[IJ]=4\\,cm$. 2. Tracer la perpendicular en $I$. 3. Placer $K$ sur cette perpendiculaire à $3\\,cm$ de $I$. 4. Tracer $[JK]$. Tu as tout tracé. Quelle est la dernière vérification à faire avant de ranger tes affaires ?",
+              "answer": "Vérifier que le point $K$ est bien nommé sur la figure et que le segment $[JK]$ est tracé.",
+              "hint": "Relis l'étape 3 et l'étape 4. Les noms de points et le dernier segment sont-ils présents ?",
+              "explanation": "Même si les mesures sont bonnes, il faut s'assurer que tous les éléments demandés (noms de points, segments finaux) figurent sur la feuille. C'est la vérification de la complétude du programme."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

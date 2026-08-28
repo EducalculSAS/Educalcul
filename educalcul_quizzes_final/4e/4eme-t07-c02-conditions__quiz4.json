@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Conditions",
+  "title": "Évaluation - Application des conditions (4e)",
+  "questions": [
+    {
+      "text": "Dans l'algorithme ci-dessous, la variable $a$ vaut $7$ et $b$ vaut $3$. Quelle sera l'affichage ? SI $a > b$ ALORS AFFICHER \"A\" SINON AFFICHER \"B\" FIN SI",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La condition $a > b$ est vraie car $7 > 3$, donc l'algorithme exécute la branche ALORS et affiche A.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $x = 12$ et $y = 7$. Quelle est la valeur de l'expression booléenne $(x \\ge 10)$ ET $(y < 5)$ ?",
+      "options": [
+        "Vrai",
+        "Faux",
+        "Erreur",
+        "Indéfini"
+      ],
+      "correctAnswer": "Faux",
+      "explanation": "La première partie $x \\ge 10$ est vraie, mais la seconde $y < 5$ est fausse car $7 < 5$ est faux. L'opérateur ET nécessite que les deux soient vraies, donc le résultat est Faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme suivant, la variable $note$ vaut $12$. Que sera affiché ? SI $note \\ge 16$ ALORS AFFICHER \"Très bien\" SINON SI $note \\ge 10$ ALORS AFFICHER \"Assez bien\" SINON AFFICHER \"Insuffisant\" FIN SI",
+      "options": [
+        "Très bien",
+        "Assez bien",
+        "Insuffisant",
+        "Erreur"
+      ],
+      "correctAnswer": "Assez bien",
+      "explanation": "La première condition $note \\ge 16$ est fausse ($12 \\ge 16$ faux). On passe au SINON SI : $note \\ge 10$ est vrai ($12 \\ge 10$ vrai), donc l'algorithme affiche Assez bien.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle condition permet de tester si un entier $n$ est pair ?",
+      "options": [
+        "$n \\% 2 == 0$",
+        "$n / 2 == 0$",
+        "$n * 2 == 0$",
+        "$n \\% 2 != 0$"
+      ],
+      "correctAnswer": "$n \\% 2 == 0$",
+      "explanation": "Un nombre est pair si le reste de sa division par 2 est nul, ce qui s'écrit $n \\% 2 == 0$. Les autres expressions ne correspondent pas à ce test.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction TANT QUE permet de répéter un bloc tant que la variable $i$ est inférieure ou égale à $10$ ?",
+      "options": [
+        "TANT QUE $i < 10$ FAIRE",
+        "TANT QUE $i \\le 10$ FAIRE",
+        "TANT QUE $i > 10$ FAIRE",
+        "TANT QUE $i \\neq 10$ FAIRE"
+      ],
+      "correctAnswer": "TANT QUE $i \\le 10$ FAIRE",
+      "explanation": "La condition $i \\le 10$ est vraie tant que $i$ est inférieur ou égal à 10, ce qui correspond à l'énoncé. Les autres conditions arrêtent la boucle trop tôt ou la font continuer indéfiniment.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Calculer longueur",
+  "title": "Calcul de longueurs avec le théorème de Pythagore",
+  "blocks": [
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $3$ cm et $4$ cm. La longueur de l'hypoténuse est {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le théorème de Pythagore : $3^2 + 4^2 = c^2$. Donc $9 + 16 = 25$, donc $c^2 = 25$ et $c = 5$. L'hypoténuse mesure $5$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 3,
+        "b": 4,
+        "c": 5,
+        "caption": "Triangle rectangle avec côtés 3, 4 et hypoténuse 5"
+      }
+    },
+    {
+      "title": "Calcul d'un côté de l'angle droit",
+      "content": "Un triangle rectangle a un côté de l'angle droit de $6$ cm et une hypoténuse de $10$ cm. La longueur de l'autre côté de l'angle droit est {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le théorème de Pythagore : $6^2 + b^2 = 10^2$. Soit $36 + b^2 = 100$, donc $b^2 = 64$ et $b = 8$. Le côté manquant mesure $8$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème d'échelle",
+      "content": "Une échelle de $5$ m est appuyée contre un mur. Le pied de l'échelle est à $3$ m du mur. La hauteur à laquelle l'échelle touche le mur est {{1}} m.",
+      "correctAnswer": "",
+      "blanks": [
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($5$ m), la distance du pied au mur est un côté ($3$ m). On cherche l'autre côté $h$ : $3^2 + h^2 = 5^2$, soit $9 + h^2 = 25$, donc $h^2 = 16$ et $h = 4$. L'échelle touche le mur à $4$ m de hauteur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

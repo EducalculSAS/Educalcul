@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer hauteurs",
+  "title": "Comparer les hauteurs dans un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous. Il représente le nombre de billes que possèdent quatre enfants.\\nQuel enfant a le PLUS de billes ?",
+      "options": [
+        "Léo",
+        "Mia",
+        "Noa",
+        "Zoé"
+      ],
+      "correctAnswer": "Mia",
+      "explanation": "Pour trouver qui a le plus de billes, il faut comparer la hauteur des bâtons. Le bâtons le plus haut correspond à la plus grande quantité. Le bâtons de Mia monte jusqu'à 8, c'est le plus haut. Léo a 5 billes, Noa en a 3 et Zoé en a 6. Mia a donc le plus de billes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes par enfant",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "En observant le même diagramme, quel enfant a le MOINS de billes ?",
+      "options": [
+        "Léo",
+        "Mia",
+        "Noa",
+        "Zoé"
+      ],
+      "correctAnswer": "Noa",
+      "explanation": "Il faut repérer le bâtons le plus bas. Le bâtons de Noa s'arrête à 3, c'est le plus court. Léo en a 5, Mia en a 8 et Zoé en a 6. Noa est donc celui qui possède le moins de billes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes par enfant",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien de billes de PLUS Mia a-t-elle par rapport à Noa ?",
+      "options": [
+        "3 billes",
+        "5 billes",
+        "8 billes",
+        "11 billes"
+      ],
+      "correctAnswer": "5 billes",
+      "explanation": "Mia a 8 billes (hauteur de son bâtons) et Noa en a 3 (hauteur de son bâtons). Pour trouver la différence, on calcule l'écart entre les deux hauteurs : $8 - 3 = 5$. Mia a 5 billes de plus que Noa. L'option '3 billes' correspond au nombre de Noa, '8 billes' à celui de Mia, et '11 billes' à leur somme.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes par enfant",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Zoé a 6 billes. Laquelle de ces affirmations est VRAIE en comparant Zoé et Léo ?",
+      "options": [
+        "Zoé a 2 billes de moins que Léo.",
+        "Zoé a 1 bille de plus que Léo.",
+        "Zoé a le même nombre de billes que Léo.",
+        "Zoé a 5 billes de plus que Léo."
+      ],
+      "correctAnswer": "Zoé a 1 bille de plus que Léo.",
+      "explanation": "Zoé a 6 billes et Léo en a 5. La différence est de $6 - 5 = 1$. Zoé a donc 1 bille de plus que Léo. L'option '2 billes de moins' est fausse car Zoé en a plus. 'Même nombre' est faux car les hauteurs sont différentes. '5 billes de plus' confond le total de Léo avec l'écart.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes par enfant",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le maître ajoute un cinquième enfant, Tom, qui a 4 billes. Si on ajoute son bâtons sur le diagramme, entre quels deux bâtons existants se situera la hauteur de Tom ?",
+      "options": [
+        "Entre Mia (8) et Zoé (6)",
+        "Entre Zoé (6) et Léo (5)",
+        "Entre Léo (5) et Noa (3)",
+        "Au-dessus de Mia (8)"
+      ],
+      "correctAnswer": "Entre Léo (5) et Noa (3)",
+      "explanation": "Tom a 4 billes. Il faut situer 4 par rapport aux valeurs existantes : Mia (8), Zoé (6), Léo (5), Noa (3). Le nombre 4 est plus petit que 5 (Léo) et plus grand que 3 (Noa). Le bâtons de Tom sera donc plus court que celui de Léo et plus haut que celui de Noa, soit entre les deux.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes par enfant",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

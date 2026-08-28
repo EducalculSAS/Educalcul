@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Ordre de calcul",
+  "title": "Ordre de calcul - Complétez le texte",
+  "blocks": [
+    {
+      "title": "Priorité multiplication/addition",
+      "content": "Dans l'expression $5 + 3 × 2$, la priorité est donnée à la {{1}}. Le résultat de cette opération est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "multiplication",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la règle de priorité : la multiplication avant l'addition. On calcule d'abord $3 × 2 = 6$, puis $5 + 6 = 11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Parenthèses puis multiplication",
+      "content": "Pour calculer $(8 - 3) × 4 + 2$, on commence par résoudre la {{1}} qui donne {{2}}. Ensuite on effectue la {{3}} avant l'addition finale.",
+      "correctAnswer": "",
+      "blanks": [
+        "parenthèse",
+        "5",
+        "multiplication"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'abord la parenthèse : $8 - 3 = 5$. Ensuite la multiplication : $5 × 4 = 20$. Enfin l'addition : $20 + 2 = 22$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division et multiplication même priorité",
+      "content": "Dans $12 ÷ 3 × 2 + 5$, les opérations de {{1}} et de {{2}} ont la même priorité et se font de gauche à droite. Le premier calcul donne {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "division",
+        "multiplication",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division et la multiplication ont même priorité, on calcule de gauche à droite. $12 ÷ 3 = 4$, puis $4 × 2 = 8$, puis $8 + 5 = 13$. Le premier calcul est la division qui donne $4$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

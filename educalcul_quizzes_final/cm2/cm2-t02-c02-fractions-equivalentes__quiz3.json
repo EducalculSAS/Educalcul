@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 283,
+  "_course_code": "cm2-t02-c02-fractions-equivalentes",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Justifier",
+  "title": "Justifier des fractions équivalentes",
+  "questions": [
+    {
+      "text": "Pourquoi peut on affirmer que $\\frac{1}{2}$ et $\\frac{2}{4}$ sont des fractions équivalentes ?",
+      "options": [
+        "Parce que le dénominateur $4$ est plus grand que $2$",
+        "Parce que $\\frac{2}{4}$ a été obtenue en multipliant le numérateur et le dénominateur de $\\frac{1}{2}$ par $2$",
+        "Parce que l'addition de $1$ et $2$ donne $3$",
+        "Parce que les deux fractions ont des nombres différents"
+      ],
+      "correctAnswer": "Parce que $\\frac{2}{4}$ a été obtenue en multipliant le numérateur et le dénominateur de $\\frac{1}{2}$ par $2$",
+      "explanation": "Deux fractions sont équivalentes si l'on peut passer de l'une à l'autre en multipliant ou en divisant le numérateur et le dénominateur par un même nombre non nul. Ici, $1 \\times 2 = 2$ et $2 \\times 2 = 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa dit que $\\frac{3}{5}$ est équivalente à $\\frac{6}{10}$. Quelle preuve mathématique justifie son affirmation ?",
+      "options": [
+        "$\\frac{3}{5} = \\frac{3 + 3}{5 + 5}$",
+        "$\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2}$",
+        "$\\frac{3}{5} = \\frac{3 \\times 3}{5 \\times 2}$",
+        "$\\frac{3}{5} = \\frac{3 \\times 2}{5 + 5}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2}$",
+      "explanation": "Pour justifier l'équivalence, on doit multiplier le numérateur $3$ et le dénominateur $5$ par le même nombre, ici $2$, ce qui donne bien $\\frac{6}{10}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En observant le dessin, pourquoi peut on dire que $\\frac{1}{3}$ est équivalent à $\\frac{2}{6}$ ?",
+      "options": [
+        "Parce que le cercle est divisé en six parties",
+        "Parce que la surface colorée est la même dans les deux cas",
+        "Parce que $1 + 3 = 4$ et $2 + 6 = 8$",
+        "Parce que le chiffre $6$ est le double de $3$"
+      ],
+      "correctAnswer": "Parce que la surface colorée est la même dans les deux cas",
+      "explanation": "Visuellement, deux fractions sont équivalentes si elles représentent la même quantité ou la même surface d'une unité, même si le découpage est différent.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 2,
+            "denominator": 6
+          }
+        ],
+        "caption": "Comparaison de deux bandes de fractions"
+      }
+    },
+    {
+      "text": "Comment justifier que $\\frac{12}{18}$ est équivalente à $\\frac{2}{3}$ ?",
+      "options": [
+        "En multipliant $2$ et $3$ par $6$",
+        "En divisant le numérateur et le dénominateur de $\\frac{12}{18}$ par $6$",
+        "En soustrayant $10$ au numérateur et $15$ au dénominateur",
+        "Les deux réponses précédentes sont correctes"
+      ],
+      "correctAnswer": "Les deux réponses précédentes sont correctes",
+      "explanation": "L'équivalence peut se justifier dans les deux sens. On peut multiplier $\\frac{2}{3}$ par $6$ pour obtenir $\\frac{12}{18}$ ($2 \\times 6 = 12$ et $3 \\times 6 = 18$), ou diviser $\\frac{12}{18}$ par $6$ pour simplifier vers $\\frac{2}{3}$ ($12 \\div 6 = 2$ et $18 \\div 6 = 3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marc affirme que $\\frac{4}{7}$ et $\\frac{8}{11}$ sont équivalentes car on a ajouté $4$ au numérateur et $4$ au dénominateur. Pourquoi son raisonnement est il faux ?",
+      "options": [
+        "Parce qu'on ne peut pas ajouter des nombres aux fractions",
+        "Parce qu'il a utilisé le chiffre $4$ deux fois",
+        "Parce que pour garder l'équivalence, on doit multiplier ou diviser, pas additionner",
+        "Parce que le résultat $\\frac{8}{11}$ est trop petit"
+      ],
+      "correctAnswer": "Parce que pour garder l'équivalence, on doit multiplier ou diviser, pas additionner",
+      "explanation": "L'ajout d'une même quantité au numérateur et au dénominateur ne conserve pas la valeur de la fraction. Seule la multiplication ou la division par un même nombre permet d'obtenir une fraction équivalente.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Organiser catégories et effectifs",
+  "title": "Quiz : Organiser catégories et effectifs (CE1)",
+  "questions": [
+    {
+      "text": "Voici une liste de fruits préférés : pomme, poire, pomme, banane, poire, pomme. Quel tableau montre correctement les catégories et les effectifs ?",
+      "options": [
+        "Pomme 3, Poire 2, Banane 1",
+        "Pomme 2, Poire 3, Banane 1",
+        "Pomme 3, Poire 1, Banane 2",
+        "Pomme 1, Poire 2, Banane 3"
+      ],
+      "correctAnswer": "Pomme 3, Poire 2, Banane 1",
+      "explanation": "On compte chaque fruit : pomme apparaît trois fois, poire deux fois, banane une fois. La seule option qui correspond à ces effectifs est la première.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau indique les effectifs par couleur : Rouge $4$, Bleu $5$, Vert $3$. Quel est le total des effectifs ?",
+      "options": [
+        "$12$",
+        "$11$",
+        "$13$",
+        "$10$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "On additionne les effectifs : $4 + 5 + 3 = 12$. Les autres propositions ne correspondent pas à cette somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau, on lit : Chien $5$, Chat ?, Oiseau $2$. Le total des effectifs est $12$. Combien y a-t-il de chats ?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$3$",
+        "$6$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La somme des effectifs connus est $5 + 2 = 7$. Pour atteindre le total $12$, il faut $12 - 7 = 5$ chats.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau affiche les effectifs par jour : Lundi $3$, Mardi $4$, Mercredi $3$, Jeudi $5$. Le total indiqué est $14$. Quel jour contient probablement une erreur de saisie ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi"
+      ],
+      "correctAnswer": "Jeudi",
+      "explanation": "La somme des effectifs donnés est $3 + 4 + 3 + 5 = 15$, alors que le total affiché est $14$. Une différence de $1$ suggère qu'un effectif est surévalué de $1$. Le jour Jeudi avec $5$ est le plus probable (il devrait être $4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la classe, $6$ élèves aiment le football, $4$ le basketball, $2$ le tennis. Quelle organisation de tableau est correcte ?",
+      "options": [
+        "Football 6, Basketball 4, Tennis 2",
+        "Football 4, Basketball 6, Tennis 2",
+        "Football 6, Basketball 2, Tennis 4",
+        "Football 2, Basketball 4, Tennis 6"
+      ],
+      "correctAnswer": "Football 6, Basketball 4, Tennis 2",
+      "explanation": "Les effectifs donnés sont football $6$, basketball $4$, tennis $2$. Seule la première option respecte exactement ces valeurs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

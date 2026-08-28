@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Quiz : Coefficient directeur - Approfondissement Calculer",
+  "questions": [
+    {
+      "text": "Calcule le coefficient directeur de la droite passant par les points $A(2,3)$ et $B(5,11)$.",
+      "options": [
+        "$\\frac{8}{3}$",
+        "$\\frac{3}{8}$",
+        "$-\\frac{8}{3}$",
+        "$\\frac{5}{2}$"
+      ],
+      "correctAnswer": "$\\frac{8}{3}$",
+      "explanation": "Le coefficient directeur est $\\frac{y_B - y_A}{x_B - x_A} = \\frac{11-3}{5-2} = \\frac{8}{3}$. L'option $\\frac{3}{8}$ correspond à l'inverse, $-\\frac{8}{3}$ à une erreur de signe, $\\frac{5}{2}$ à un calcul erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine le coefficient directeur de la droite qui passe par $C(-4,2)$ et $D(1,-6)$.",
+      "options": [
+        "$-\\frac{8}{5}$",
+        "$\\frac{8}{5}$",
+        "$-\\frac{5}{8}$",
+        "$\\frac{5}{8}$"
+      ],
+      "correctAnswer": "$-\\frac{8}{5}$",
+      "explanation": "Le coefficient directeur est $\\frac{-6-2}{1-(-4)} = \\frac{-8}{5} = -\\frac{8}{5}$. Les autres options correspondent à une erreur de signe, à l'inverse ou à une inversion des différences.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient les points $E\\left(\\frac{1}{2},3\\right)$ et $F\\left(3,\\frac{7}{2}\\right)$. Calcule le coefficient directeur de la droite $(EF)$.",
+      "options": [
+        "$\\frac{1}{5}$",
+        "$\\frac{5}{1}$",
+        "$-\\frac{1}{5}$",
+        "$\\frac{2}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{5}$",
+      "explanation": "Le coefficient directeur est $\\frac{\\frac{7}{2}-3}{3-\\frac{1}{2}} = \\frac{\\frac{1}{2}}{\\frac{5}{2}} = \\frac{1}{5}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite d'équation $3x - 4y + 12 = 0$ a pour coefficient directeur :",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$-\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$-\\frac{4}{3}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "On met l'équation sous forme $y = ax + b$ : $3x - 4y + 12 = 0$ équivaut à $-4y = -3x - 12$ équivaut à $y = \\frac{3}{4}x + 3$. Le coefficient directeur est $\\frac{3}{4}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le triangle de pente ci-dessous. Quel est le coefficient directeur de la droite correspondante ?",
+      "options": [
+        "$-\\frac{3}{4}$",
+        "$\\frac{3}{4}$",
+        "$-\\frac{4}{3}$",
+        "$\\frac{4}{3}$"
+      ],
+      "correctAnswer": "$-\\frac{3}{4}$",
+      "explanation": "Le coefficient directeur est le quotient du déplacement vertical par le déplacement horizontal. Le triangle montre un déplacement horizontal de $4$ et un déplacement vertical de $-3$, donc le coefficient directeur est $\\frac{-3}{4} = -\\frac{3}{4}$.",
+      "points": 1,
+      "figure": {
+        "type": "slope_triangle",
+        "a": 4,
+        "b": -3,
+        "xMin": -5,
+        "xMax": 5,
+        "caption": "Triangle de pente"
+      }
+    }
+  ]
+}

@@ -1,0 +1,566 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.185860+00:00",
+  "id": 546,
+  "code": "1ere-generale-t02-c01",
+  "title": "Proportions et pourcentages",
+  "description": "Cours structuré Educalcul : Proportions et pourcentages.",
+  "subject": "Analyse de l'information chiffrée",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Analyse de l'information chiffrée",
+    "titre_du_cours": "Proportions et pourcentages",
+    "objectif_global": "Proportions et pourcentages",
+    "mini_lecons_imposees": [
+      "Calcul.",
+      "Comparaison.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse de l'information chiffrée",
+      "lessons": [
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les proportions : rappel et vocabulaire essentiel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux proportions et aux pourcentages. En Première, tu vas manipuler ces notions non plus seulement pour faire des calculs scolaires, mais pour analyser des informations réelles : résultats d'élections, évolution des prix, indicateurs économiques. Pour être à l'aise, reprenons les bases sereinement. Une proportion, c'est simplement le quotient de deux grandeurs de même nature. Imagine une classe de $30$ élèves où $18$ portent des lunettes. La proportion de porteurs de lunettes est le nombre $18$ divisé par le nombre $30$. Ce quotient s'écrit sous forme de fraction $\\frac{18}{30}$, de nombre décimal $0,6$ ou de pourcentage $60\\%$. Ces trois écritures disent exactement la même chose : sur $100$ élèves, il y en aurait $60$ qui portent des lunettes. C'est cette idée de \"sur $100$\" que le symbole $\\%$ porte en lui."
+            },
+            {
+              "type": "definition",
+              "term": "Proportion",
+              "definition": "Quotient de deux nombres de même nature (souvent une partie sur un total). Elle est un nombre sans unité, compris entre $0$ et $1$ si la partie est incluse dans le total.",
+              "example": "Dans un pot de $500\\,g$ de confiture, il y a $300\\,g$ de fraises. La proportion de fraises est $\\frac{300}{500} = 0,6 = 60\\%$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque comme le vocabulaire change selon l'écriture : on parle de \"proportion\" pour la valeur décimale ($0,6$), de \"pourcentage\" pour la valeur sur $100$ ($60\\%$), et de \"fréquence\" en statistiques. Mais mathématiquement, c'est un seul et même nombre. Cette fluidité entre les écritures est ta première force : tu dois pouvoir passer de l'une à l'autre sans hésiter. Pour transformer une proportion $p$ en pourcentage, tu multiplies par $100$ : $p \\times 100 = 60$. Pour faire l'inverse, tu divises par $100$ : $60 \\div 100 = 0,6$. Entraîne-toi à faire ce petit va-et-vient mental, il te servira en permanence."
+            },
+            {
+              "type": "display_math",
+              "latex": "p = \\frac{\\text{partie}}{\\text{total}} \\quad \\Leftrightarrow \\quad \\text{pourcentage} = p \\times 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer la méthode. Un lycée compte $1\\,200$ élèves. Parmi eux, $480$ sont en filière générale. Quelle proportion représente la filière générale ? Écris la fraction $\\frac{480}{1200}$. Simplifie en divisant le numérateur et le dénominateur par $10$ : $\\frac{48}{120}$. Continue par $12$ : $\\frac{4}{10} = 0,4$. La proportion est $0,4$. En pourcentage, $0,4 \\times 100 = 40\\%$. Tu peux aussi calculer directement $\\frac{480}{1200} \\times 100 = 40$. Note bien l'ordre : partie divisé par total, puis fois $100$. Si tu inverses, tu obtiens $\\frac{1200}{480} = 2,5$, ce qui n'a pas de sens ici (ça voudrait dire $250\\%$ d'élèves en générale !)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un pourcentage : la méthode pas à pas"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la partie et le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé et repère les deux nombres. Le total est l'ensemble de référence (la population, la somme d'argent initiale, le volume total). La partie est le sous-ensemble qui t'intéresse (les filles, la remise, le volume d'alcool). Écris-les clairement : $\\text{partie} = \\dots$, $\\text{total} = \\dots$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la proportion (quotient)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise la partie par le total. Utilise ta calculatrice pour obtenir un nombre décimal. Vérifie que le résultat est compris entre $0$ et $1$ (si la partie est bien incluse dans le total). Si tu obtiens un nombre $> 1$, tu as sans doute inversé la division."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convertir en pourcentage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le décimal par $100$ et ajoute le symbole $\\%$. Arrondis si l'énoncé le demande (souvent au dixième ou au centième de pourcent). N'oublie pas l'unité $\\%$ dans ta phrase de réponse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à une situation de la vie courante. Lors d'une vente flash, une veste à $160\\,\\text{\\euro}$ est remisée de $48\\,\\text{\\euro}$. Quel est le pourcentage de remise ? Étape 1 : la remise est la partie ($48$), le prix initial est le total ($160$). Étape 2 : $\\frac{48}{160} = 0,3$. Étape 3 : $0,3 \\times 100 = 30\\%$. La veste est soldée à $30\\%$. Remarque qu'on aurait pu simplifier la fraction $\\frac{48}{160} = \\frac{3}{10}$ mentalement avant de passer au décimal. Cette gymnastique de simplification rend les calculs plus rapides et limite les fautes de saisie sur la calculatrice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver le total ou la partie : le calcul inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, tu connais le pourcentage et l'une des deux valeurs (partie ou total), et tu cherches l'autre. C'est le cas classique : \"Un article a augmenté de $15\\%$, son nouveau prix est $115\\,\\text{\\euro}$, quel était l'ancien prix ?\" ou \"$25\\%$ des électeurs ont voté blanc, cela représente $1\\,500$ personnes, combien d'électeurs au total ?\" La relation fondamentale reste $\\text{partie} = \\text{total} \\times \\frac{\\text{pourcentage}}{100}$. Si tu cherches le total, tu divises la partie par le taux (le pourcentage divisé par $100$). Si tu cherches la partie, tu multiplies le total par le taux. Attention : le taux est un nombre décimal ($0,15$ pour $15\\%$), pas le pourcentage lui-même ($15$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas 1 : Chercher la partie (connaissant total et $\\%$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme le pourcentage en taux $t = \\frac{\\%}{100}$. Calcule $\\text{partie} = \\text{total} \\times t$. Exemple : $20\\%$ de $250\\,\\text{\\euro}$ $\\rightarrow t=0,2$, partie $= 250 \\times 0,2 = 50\\,\\text{\\euro}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 2 : Chercher le total (connaissant partie et $\\%$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme le pourcentage en taux $t$. Calcule $\\text{total} = \\frac{\\text{partie}}{t}$. Exemple : $30\\%$ d'un nombre vaut $60$ $\\rightarrow t=0,3$, total $= 60 \\div 0,3 = 200$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un cas de TVA. Tu achètes un ordinateur à $720\\,\\text{\\euro}$ TTC (Toutes Taxes Comprises), la TVA est à $20\\%$. Quel est le prix hors taxes (HT) ? Ici, le prix TTC est le total \"augmenté\" : $P_{TTC} = P_{HT} \\times (1 + 0,20) = P_{HT} \\times 1,2$. Tu cherches $P_{HT}$, donc $P_{HT} = \\frac{720}{1,2} = 600\\,\\text{\\euro}$. La TVA (la partie) est $720 - 600 = 120\\,\\text{\\euro}$. Vérification : $20\\%$ de $600 = 120$. Ce raisonnement \"prix initial $\\times$ coefficient multiplicateur = prix final\" est la clé de voûte du chapitre suivant sur l'évolution. Mémorise bien ce schéma : une augmentation de $p\\%$ correspond à multiplier par $1 + \\frac{p}{100}$, une diminution à multiplier par $1 - \\frac{p}{100}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{final} = V_{initial} \\times \\left(1 \\pm \\frac{p}{100}\\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Évolution et taux de variation : modéliser le changement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur de la modélisation en Première : quantifier une évolution. Que ce soit le PIB d'un pays, la température moyenne, ou le nombre d'abonnés à un service de streaming, on compare une valeur finale $V_f$ à une valeur initiale $V_i$. Le taux de variation $t$ (souvent noté $t$ ou $\\tau$) mesure le changement relatif : $t = \\frac{V_f - V_i}{V_i}$. Ce taux est un nombre décimal. S'il est positif, c'est une augmentation ; s'il est négatif, c'est une diminution. Le pourcentage d'évolution est $t \\times 100$. Par exemple, si le prix du litre d'essence passe de $1,80\\,\\text{\\euro}$ à $1,89\\,\\text{\\euro}$, la variation absolue est $+0,09\\,\\text{\\euro}$. Le taux est $\\frac{0,09}{1,80} = 0,05$, soit une hausse de $5\\%$. Le coefficient multiplicateur $k = 1 + t = 1,05$ permet de retrouver $V_f = V_i \\times k$. C'est ce coefficient $k$ qui est l'outil le plus puissant pour chaîner plusieurs évolutions successives."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un placement financier. Tu places $1\\,000\\,\\text{\\euro}$. La première année, il gagne $10\\%$ ($k_1 = 1,10$). La deuxième année, il perd $10\\%$ ($k_2 = 0,90$). À la fin, tu as $1000 \\times 1,10 \\times 0,90 = 990\\,\\text{\\euro}$. Tu as perdu $10\\,\\text{\\euro}$ alors que les pourcentages semblaient symétriques ! C'est parce que la base de calcul a changé : le $-10\\%$ s'applique sur $1\\,100\\,\\text{\\euro}$, pas sur $1\\,000\\,\\text{\\euro}$. Ce piège classique montre pourquoi il faut toujours raisonner avec les coefficients multiplicateurs ($k$) et non pas additionner les pourcentages. C'est une compétence clé pour l'interprétation de données économiques que nous verrons plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un sondage, $630$ personnes sur $1\\,500$ interrogées déclarent faire du sport régulièrement. Calculer la proportion de sportifs sous forme décimale, puis le pourcentage correspondant. Arrondir au dixième de pourcent.",
+              "answer": "Proportion : $0,42$. Pourcentage : $42,0\\%$.",
+              "hint": "Divise le nombre de sportifs par le total des personnes interrogées. Multiplie le résultat par $100$ pour obtenir le pourcentage.",
+              "explanation": "La partie est $630$, le total est $1500$. La proportion est $\\frac{630}{1500} = 0,42$. Le pourcentage est $0,42 \\times 100 = 42\\%$. L'arrondi au dixième donne $42,0\\%$."
+            },
+            {
+              "question": "Un magasin propose une réduction de $15\\%$ sur un pantalon vendu $68\\,\\text{\\euro}$. Calculer le montant de la remise et le prix final à payer.",
+              "answer": "Montant de la remise : $10,20\\,\\text{\\euro}$. Prix final : $57,80\\,\\text{\\euro}$.",
+              "hint": "Calcule $15\\%$ de $68$ pour la remise. Soustrais ce montant du prix initial.",
+              "explanation": "Taux $t = 0,15$. Remise $= 68 \\times 0,15 = 10,20\\,\\text{\\euro}$. Prix final $= 68 - 10,20 = 57,80\\,\\text{\\euro}$. On peut aussi utiliser le coefficient multiplicateur $k = 1 - 0,15 = 0,85$ : $68 \\times 0,85 = 57,80\\,\\text{\\euro}$."
+            },
+            {
+              "question": "Après une augmentation de $12\\%$, le loyer d'un appartement s'élève à $672\\,\\text{\\euro}$. Quel était le loyer avant augmentation ?",
+              "answer": "$600\\,\\text{\\euro}$.",
+              "hint": "Le nouveau loyer correspond à $112\\%$ de l'ancien. Divise le nouveau loyer par $1,12$.",
+              "explanation": "Soit $L$ l'ancien loyer. $L \\times 1,12 = 672$. Donc $L = 672 \\div 1,12 = 600\\,\\text{\\euro}$."
+            },
+            {
+              "question": "Le nombre d'abonnés à une plateforme passe de $2,5$ millions à $3,1$ millions en un an. Calculer le taux de variation et le pourcentage d'évolution. Arrondir au centième pour le taux et au dixième de pourcent pour le pourcentage.",
+              "answer": "Taux de variation : $0,24$. Pourcentage d'évolution : $24,0\\%$.",
+              "hint": "Applique la formule $t = \\frac{V_f - V_i}{V_i}$. $V_i = 2,5$, $V_f = 3,1$.",
+              "explanation": "Variation absolue $= 3,1 - 2,5 = 0,6$ million. Taux $t = \\frac{0,6}{2,5} = 0,24$. Pourcentage $= 0,24 \\times 100 = 24\\%$."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux proportions : même population ou pas ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons maîtrisé le calcul d'une seule proportion. Mais en analyse de données, l'essentiel est souvent de comparer : est-ce que la proportion de filles en Terminale S est supérieure à celle en Terminale L ? Le taux de chômage est-il plus élevé chez les jeunes que chez les seniors ? Pour comparer deux proportions, la première question à se poser est cruciale : les deux proportions portent-elles sur le même total (la même population de référence) ou sur des totaux différents ? Si c'est le même total, la comparaison est immédiate : il suffit de comparer les parties (les numérateurs). Si $60\\%$ des élèves d'une classe ont un frère et $40\\%$ ont une sœur, sur les mêmes $30$ élèves, on compare directement $60$ et $40$. Mais le plus souvent, les totaux diffèrent : $60\\%$ de $200$ élèves dans un lycée, contre $55\\%$ de $150$ élèves dans un autre. On ne peut pas comparer $60$ et $55$ directement, il faut ramener à une base commune, généralement $100$ (le pourcentage) ou utiliser le produit en croix."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode 1 : Comparer les pourcentages (base 100)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le pourcentage pour chaque groupe. Compare les deux pourcentages. C'est la méthode standard pour communiquer des résultats."
+                    }
+                  ]
+                },
+                {
+                  "title": "Méthode 2 : Produit en croix (sans calculer le $\\%$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour comparer $\\frac{a}{b}$ et $\\frac{c}{d}$, compare les produits en croix $a \\times d$ et $c \\times b$. Si $a \\times d > c \\times b$, alors la première proportion est plus grande. Utile pour comparer des fractions sans calculatrice."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple électoral concret. Au premier tour, dans la commune A, le candidat X obtient $1\\,245$ voix sur $3\\,500$ inscrits. Dans la commune B, il obtient $980$ voix sur $2\\,800$ inscrits. Où son score est-il le meilleur ? Calculons les pourcentages. Commune A : $\\frac{1245}{3500} \\approx 0,3557$, soit $35,6\\%$. Commune B : $\\frac{980}{2800} = 0,35$ exactement, soit $35,0\\%$. Le score est légèrement meilleur dans la commune A ($35,6\\% > 35,0\\%$). Avec le produit en croix : $1245 \\times 2800 = 3\\,486\\,000$ et $980 \\times 3500 = 3\\,430\\,000$. Le premier produit est plus grand, donc la première proportion est plus grande. Les deux méthodes concordent. Choisis celle qui t'est la plus confortable selon les nombres présents."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Points de pourcentage ou pourcent ? La distinction cruciale"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est sans doute le piège le plus fréquent dans les médias et les discours politiques, et le maîtriser te distinguera immédiatement. Imagine que le taux de chômage passe de $8\\%$ à $10\\%$. De combien a-t-il augmenté ? Si tu réponds \"de $2\\%$\", c'est faux. Il a augmenté de $2$ points de pourcentage (ou points de base). Mais en relatif, par rapport à la valeur initiale ($8\\%$), la hausse est de $\\frac{2}{8} = 0,25$, soit $25\\%$ d'augmentation du taux de chômage ! La différence absolue se mesure en points ($10 - 8 = 2$ points). La variation relative se mesure en pourcent ($\\frac{\\text{nouveau} - \\text{ancien}}{\\text{ancien}} \\times 100$). Confondre les deux, c'est soit minimiser, soit exagérer un phénomène. Un titre \"Le chômage augmente de $2\\%$\" (entendu comme $2$ points) fait moins peur que \"Le chômage bondit de $25\\%$\" (variation relative), pourtant les chiffres bruts sont identiques."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Variation en points} = p_2 - p_1 \\quad ; \\quad \\text{Taux de variation} = \\frac{p_2 - p_1}{p_1} \\times 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à une situation budgétaire. La part de l'éducation dans le budget de l'État passe de $12\\%$ à $14,4\\%$. L'augmentation en points est $14,4 - 12 = 2,4$ points. Le taux de variation de cette part est $\\frac{2,4}{12} = 0,20$, soit $20\\%$. Si un journaliste dit \"Le budget de l'éducation augmente de $2,4\\%$\", il commet une erreur (il confond points et pourcent) ou il parle de l'évolution du montant en euros (ce qui est une autre information). Toujours demander : \"$2,4\\%$ de quoi ?\" Si c'est de la part initiale ($12\\%$), c'est $20\\%$ de hausse relative. Si c'est du budget total, c'est une autre histoire. Cette vigilance sur l'unité (point ou pourcent) et sur la base de calcul (le dénominateur) est la marque d'un esprit critique affûté."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de deux taux : différence en points vs variation relative",
+              "bars": [
+                {
+                  "label": "Taux initial",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Taux final",
+                  "value": 10,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Écart (points)",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Variation relative (%)",
+                  "value": 25,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des évolutions : attention au point de départ"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer des évolutions, c'est comparer des taux de variation. Et là encore, la base de calcul (la valeur initiale) change tout. Deux salariés augmentés de $100\\,\\text{\\euro}$ n'ont pas la même augmentation en pourcentage si leurs salaires de départ diffèrent. L'un gagne $1\\,500\\,\\text{\\euro}$ (hausse de $6,7\\%$), l'autre $3\\,000\\,\\text{\\euro}$ (hausse de $3,3\\%$). En valeur absolue, c'est égal ; en valeur relative, le premier gagne deux fois plus proportionnellement. C'est pourquoi les négociations syndicales portent souvent sur des pourcentages (pour l'équité relative) tandis que les employeurs préfèrent parler en euros absolus (pour maîtriser la masse salariale). En analyse d'indicateurs économiques, comparer la croissance du PIB de la France ($+1,5\\%$) et des USA ($+2,5\\%$) ne veut pas dire que l'économie américaine crée plus de richesse en euros absolus, car les PIB de départ sont très différents. Il faut toujours remettre le pourcentage en perspective avec la base."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple boursier. L'action A vaut $50\\,\\text{\\euro}$ et monte à $55\\,\\text{\\euro}$ ($+10\\%$). L'action B vaut $200\\,\\text{\\euro}$ et monte à $210\\,\\text{\\euro}$ ($+5\\%$). En pourcentage, A performe mieux. Mais si tu as investi $1\\,000\\,\\text{\\euro}$ sur chacune, tu as acheté $20$ actions A (gain $20 \\times 5 = 100\\,\\text{\\euro}$) et $5$ actions B (gain $5 \\times 10 = 50\\,\\text{\\euro}$). Le gain absolu est plus grand sur A car tu en possédais plus d'unités. Comparer des évolutions demande donc de préciser : compare-t-on les taux (performance relative) ou les gains absolus (performance en euros) ? La réponse change selon qu'on est actionnaire (intéressé par l'euros) ou analyste (intéressé par le taux)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges classiques : moyennes de pourcentages et changement de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux pièges terminent cette leçon sur la comparaison. Premier piège : faire la moyenne de pourcentages calculés sur des bases différentes. Un élève a $15/20$ en maths ($75\\%$) et $3/5$ en sport ($60\\%$). Sa moyenne en pourcentage n'est pas $\\frac{75+60}{2} = 67,5\\%$. Il faut calculer sur le total des points : $\\frac{15+3}{20+5} = \\frac{18}{25} = 72\\%$. La moyenne des pourcentages ne vaut que si les dénominateurs (les bases) sont égaux. Deuxième piège : le changement de base dans une évolution successive. Nous l'avons vu : $+10\\%$ puis $-10\\%$ ne revient pas à l'identique. Le coefficient multiplicateur global est $1,10 \\times 0,90 = 0,99$, soit une baisse globale de $1\\%$. Pour annuler une hausse de $p\\%$, il faut une baisse de $\\frac{p}{1+p}\\times 100\\%$. Pour $p=10$, il faut $-9,09\\%$. Ces formules ne sont pas à apprendre par cœur, mais à comprendre par le raisonnement sur les coefficients $k$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def moyenne_ponderee(valeurs, poids):\\n    \"\"\"Calcule la moyenne pondérée de pourcentages.\"\"\"\\n    return sum(v * p for v, p in zip(valeurs, poids)) / sum(poids)\\n\\n# Exemple : notes sur 20 et sur 5\\nnotes = [15, 3]\\nmax_notes = [20, 5]\\npourcentages = [n/m*100 for n,m in zip(notes, max_notes)]\\nprint(\"Pourcentages :\", pourcentages)\\nprint(\"Moyenne simple (fausse) :\", sum(pourcentages)/2)\\nprint(\"Moyenne pondérée (juste) :\", moyenne_ponderee(pourcentages, max_notes))",
+              "caption": "Illustration algorithmique : pourquoi il ne faut pas moyenniser des pourcentages sur des bases différentes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le lycée A, $420$ élèves sur $1\\,200$ boursiers. Dans le lycée B, $350$ élèves sur $1\\,000$ boursiers. Comparer les proportions de boursiers dans les deux lycées en calculant les pourcentages.",
+              "answer": "Lycée A : $35,0\\%$. Lycée B : $35,0\\%$. Les proportions sont égales.",
+              "hint": "Calcule le pourcentage pour chaque lycée : $\\frac{\\text{boursiers}}{\\text{total}} \\times 100$.",
+              "explanation": "Lycée A : $\\frac{420}{1200} \\times 100 = 35\\%$. Lycée B : $\\frac{350}{1000} \\times 100 = 35\\%$. Les deux lycées ont exactement la même proportion de boursiers."
+            },
+            {
+              "question": "Le taux de réussite au baccalauréat passe de $88\\%$ à $91\\%$. Calculer l'augmentation en points de pourcentage et le taux de variation (en $\\%$) de ce taux de réussite. Arrondir au dixième de pourcent.",
+              "answer": "Augmentation : $3,0$ points. Taux de variation : $3,4\\%$.",
+              "hint": "Différence pour les points. Pour le taux : $\\frac{\\text{nouveau} - \\text{ancien}}{\\text{ancien}} \\times 100$.",
+              "explanation": "Écart en points : $91 - 88 = 3$ points. Taux de variation : $\\frac{91 - 88}{88} \\times 100 = \\frac{3}{88} \\times 100 \\approx 3,409\\% \\approx 3,4\\%$."
+            },
+            {
+              "question": "Un produit voit son prix augmenter de $20\\%$ puis diminuer de $20\\%$. Le prix final est-il égal au prix initial ? Justifier en calculant le coefficient multiplicateur global.",
+              "answer": "Non, le prix final est inférieur au prix initial (baisse globale de $4\\%$).",
+              "hint": "Multiplie les coefficients multiplicateurs : $1,20 \\times 0,80$.",
+              "explanation": "Coefficient hausse : $k_1 = 1,20$. Coefficient baisse : $k_2 = 0,80$. Coefficient global $k = 1,20 \\times 0,80 = 0,96$. Le prix final est $96\\%$ du prix initial, soit une baisse de $4\\%$."
+            },
+            {
+              "question": "Un élève obtient $14/20$ en français (coefficient $4$) et $10/20$ en histoire (coefficient $2$). Calculer sa moyenne pondérée en pourcentage. Comparer avec la moyenne simple des deux pourcentages.",
+              "answer": "Moyenne pondérée : $66,7\\%$. Moyenne simple : $60\\%$.",
+              "hint": "Moyenne pondérée = $\\frac{\\text{somme (note $\\times$ coeff)}}{\\text{somme coeff}}$. Pour les pourcentages, ramène sur $100$.",
+              "explanation": "Français : $14/20 = 70\\%$. Histoire : $10/20 = 50\\%$. Moyenne simple = $60\\%$. Moyenne pondérée = $\\frac{70 \\times 4 + 50 \\times 2}{4+2} = \\frac{280+100}{6} = \\frac{380}{6} \\approx 66,7\\%$. La pondération tire la moyenne vers la note de français (coeff plus fort)."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un graphique en secteurs ou en barres empilées : au-delà de l'apparence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons calculer et comparer. Maintenant, il faut interpréter. Les médias nous inondent de camemberts (graphiques en secteurs) et d'histogrammes empilés. Un camembert montre la répartition d'un total en parts. Chaque secteur représente une proportion. L'œil humain est mauvais pour comparer des angles ou des surfaces. Deux parts qui semblent égales peuvent cacher $24\\%$ et $26\\%$. Toujours lire les pourcentages écrits sur le graphique, jamais te fier à l'œil. De plus, un camembert ne montre que la structure à un instant $t$, pas l'évolution. Si on te montre deux camemberts côte à côte (2010 et 2020), tu ne peux pas comparer l'évolution absolue d'une catégorie (le nombre de personnes) car les totaux ont changé. Tu ne compares que les parts relatives. C'est une limite majeure à toujours signaler."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des modes de transport pour aller au travail (données fictives)",
+              "slices": [
+                {
+                  "label": "Voiture seule",
+                  "value": 55,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Transports en commun",
+                  "value": 25,
+                  "tone": "green"
+                },
+                {
+                  "label": "Vélo / Marche",
+                  "value": 12,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Autres",
+                  "value": 8,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce camembert fictif. La part \"Voiture seule\" est $55\\%$. Cela veut dire que sur $100$ travailleurs, $55$ prennent leur voiture seuls. Si l'enquête porte sur $2\\,000$ personnes, cela fait $1\\,100$ conducteurs solitaires. Mais ce graphique ne dit rien sur le temps de trajet, la distance, ni sur l'évolution par rapport à l'an dernier. Les barres empilées (ou diagrammes en barres 100$\\%$) permettent de comparer des structures entre plusieurs groupes. Par exemple, la répartition des modes de transport selon la taille de l'agglomération. Chaque barre fait $100\\%$ de hauteur. Tu compares les segments de même couleur horizontalement. C'est bien plus lisible que deux camemberts. Quand tu en rencontres un, trace mentalement des lignes horizontales pour aligner les catégories."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Indicateurs du quotidien : inflation, chômage, parts de marché"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois indicateurs rythment l'actualité économique et sociale : l'inflation, le taux de chômage, les parts de marché. L'inflation est l'évolution de l'indice des prix à la consommation (IPC). Si l'IPC passe de $110$ à $113,3$, l'inflation est $\\frac{113,3-110}{110} \\times 100 = 3\\%$. Mais attention : l'inflation est une moyenne pondérée de milliers de prix. Ton \"panier personnel\" (loyer, essence, courses) peut subir $+5\\%$ ou $+1\\%$ selon ta consommation. Le taux de chômage (au sens du BIT) est le pourcentage de chômeurs dans la population active (chômeurs + occupés). Pas dans la population totale ! La population active exclut les retraités, étudiants, etc. Une baisse du chômage peut cacher une sortie de la population active (découragement) plutôt que des créations d'emplois. La part de marché d'une entreprise est son chiffre d'affaires divisé par le chiffre d'affaires total du secteur. Une part stable dans un marché en croissance cache une progression des ventes en valeur absolue."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Évolution de l'indice des prix (base 100 en 2015) pour trois catégories",
+              "bars": [
+                {
+                  "label": "Ensemble (2020)",
+                  "value": 105,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Énergie (2020)",
+                  "value": 118,
+                  "tone": "red"
+                },
+                {
+                  "label": "Alimentation (2020)",
+                  "value": 108,
+                  "tone": "green"
+                },
+                {
+                  "label": "Services (2020)",
+                  "value": 103,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons ce graphique en barres (indice base 100 en 2015). En 2020, l'indice général est à $105$ ($+5\\%$ en 5 ans). L'énergie est à $118$ ($+18\\%$), l'alimentation à $108$ ($+8\\%$), les services à $103$ ($+3\\%$). L'inflation ressentie par un ménage qui chauffe au fioul et mange beaucoup de frais sera bien supérieure à $5\\%$. C'est l'intérêt de décomposer un indicateur global : la moyenne cache des disparités. De même, un taux de chômage national de $7\\%$ peut masquer $15\\%$ chez les jeunes et $4\\%$ chez les plus de $50$ ans. L'interprétation intelligente consiste toujours à demander la répartition (la structure) derrière l'agrégat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le paradoxe de Simpson : quand l'agrégation inverse la tendance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un phénomène contre-intuitif qui montre la puissance de l'analyse proportionnelle. Imagine deux hôpitaux, A et B. Hôpital A : $100$ patients graves, $30$ décès ($30\\%$ mortalité) ; $900$ patients légers, $45$ décès ($5\\%$ mortalité). Total A : $1\\,000$ patients, $75$ décès ($7,5\\%$). Hôpital B : $50$ patients graves, $10$ décès ($20\\%$ mortalité) ; $950$ patients légers, $95$ décès ($10\\%$ mortalité). Total B : $1\\,000$ patients, $105$ décès ($10,5\\%$). Regarde bien : dans *chaque* catégorie (graves et légers), l'hôpital A a une mortalité *plus forte* ($30\\% > 20\\%$ et $5\\% < 10\\%$... attends, $5\\% < 10\\%$, donc A est meilleur pour les légers). Reprenons : A graves $30\\%$, B graves $20\\%$ (B meilleur). A légers $5\\%$, B légers $10\\%$ (A meilleur). Mais au total : A $7,5\\%$, B $10,5\\%$ (A meilleur globalement). Ici, l'agrégation ne renverse pas l'ordre pour les graves, mais elle peut le faire si les proportions de graves/léger sont très différentes entre hôpitaux. C'est le paradoxe de Simpson : une tendance observée dans plusieurs sous-groupes peut s'inverser quand on les agrège, à cause d'une variable de structure (la gravité) mal répartie. C'est pourquoi on ne compare jamais des taux bruts sans vérifier la comparabilité des populations (standardisation)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Hôpital",
+                "Gravité",
+                "Patients",
+                "Décès",
+                "Taux mortalité"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "Graves",
+                  "100",
+                  "30",
+                  "30,0%"
+                ],
+                [
+                  "A",
+                  "Légers",
+                  "900",
+                  "45",
+                  "5,0%"
+                ],
+                [
+                  "A",
+                  "Total",
+                  "1000",
+                  "75",
+                  "7,5%"
+                ],
+                [
+                  "B",
+                  "Graves",
+                  "50",
+                  "10",
+                  "20,0%"
+                ],
+                [
+                  "B",
+                  "Légers",
+                  "950",
+                  "95",
+                  "10,0%"
+                ],
+                [
+                  "B",
+                  "Total",
+                  "1000",
+                  "105",
+                  "10,5%"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau rend visible le mécanisme : l'hôpital A traite $10\\%$ de cas graves ($100/1000$) contre $5\\%$ pour B ($50/1000$). Comme les cas graves ont une mortalité intrinsèque plus élevée, la moyenne globale de A est tirée vers le haut par sa structure de patients plus sévère. Si on compare \"à structure constante\" (ex: appliquer les taux de A sur la structure de B), on obtiendrait une comparaison équitable. C'est ce qu'on fait en épidémiologie (standardisation directe) ou en économie (indices de Laspeyres/Paasche). En Première, retenir l'idée suffit : \"Méfie-toi des moyennes globales si les groupes n'ont pas la même composition.\" C'est valable pour les notes de classe (optionnels vs core), les salaires (hommes/femmes, temps plein/partiel), les résultats scolaires (public/privé)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Esprit critique : poser les bonnes questions devant un chiffre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, faisons de toi un lecteur critique de chiffres. Devant toute statistique, percentages à l'appui, active ton checklist mental. 1. **Quelle est la base (le dénominateur) ?** \"$80\\%$ des Français sont pour...\" Sur quel échantillon ? Représentatif ? De quelle taille ? 2. **Est-ce un point ou un pourcent ?** \"Le taux passe de $5\\%$ à $6\\%$\" : $+1$ point, $+20\\%$ de variation. 3. **La comparaison est-elle à structure constante ?** Compare-t-on des populations de même âge, même sexe, même diplôme ? 4. **L'échelle du graphique est-elle tronquée ?** Un histogramme dont l'axe vertical ne part pas de $0$ exagère visuellement les différences. 5. **Corrélation vs causalité.** \"Les ventes de glaces et les noyades augmentent ensemble\" : c'est la chaleur la cause commune, pas les glaces qui noient. 6. **L'ordre de grandeur.** \"$3$ milliards d'euros\" pour un budget de l'État ($400$ milliards) : c'est $0,75\\%$. Est-ce massif ou marginal ? Remettre en perspective change tout."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète : calculer une proportion, la convertir, comparer deux proportions (points vs pourcent), modéliser une évolution avec des coefficients multiplicateurs, lire un graphique statistique, détecter un paradoxe de structure et questionner un indicateur. Ces compétences ne sont pas que scolaires : elles te rendent citoyen lucide face aux chiffres qui orientent les décisions publiques, les choix de consommation, les débats de société. La proportion est le langage de la relativité ; le maîtriser, c'est refuser l'absolu trompeur des nombres bruts. Continue t'entraîner sur des vraies données (Insee, Eurostat, data.gouv.fr), c'est le meilleur entrainement."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer une proportion, un pourcentage et un taux de variation.",
+                "Je sais passer d'un pourcentage à un coefficient multiplicateur et inversement.",
+                "Je distingue variation en points de pourcentage et variation en pourcent (taux de variation).",
+                "Je sais comparer deux proportions (produit en croix ou pourcentages) en vérifiant les bases.",
+                "Je sais lire et critiquer un graphique en secteurs ou en barres empilées.",
+                "Je connais le paradoxe de Simpson et l'importance de la structure des populations.",
+                "Je sais poser les 6 questions critiques devant une statistique médiatique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un camembert montre la répartition des $800$ élèves d'un lycée : $35\\%$ en série générale, $40\\%$ en série technologique, le reste en série professionnelle. Calculer l'effectif de chaque série.",
+              "answer": "Générale : $280$. Technologique : $320$. Professionnelle : $200$.",
+              "hint": "Calcule $35\\%$ de $800$, $40\\%$ de $800$. Le reste est $100\\% - 35\\% - 40\\% = 25\\%$.",
+              "explanation": "Générale : $800 \\times 0,35 = 280$. Technologique : $800 \\times 0,40 = 320$. Professionnelle : $800 \\times 0,25 = 200$ (ou $800 - 280 - 320 = 200$)."
+            },
+            {
+              "question": "L'indice des prix à la consommation (base 100 en 2015) vaut $108,5$ en 2022 et $112,2$ en 2023. Calculer l'inflation (taux de variation de l'indice) entre 2022 et 2023. Arrondir au dixième de pourcent.",
+              "answer": "Inflation : $3,4\\%$.",
+              "hint": "Applique la formule du taux de variation : $\\frac{I_{2023} - I_{2022}}{I_{2022}} \\times 100$.",
+              "explanation": "Variation $= \\frac{112,2 - 108,5}{108,5} \\times 100 = \\frac{3,7}{108,5} \\times 100 \\approx 3,410\\% \\approx 3,4\\%$."
+            },
+            {
+              "question": "Deux lycées passent le bac. Lycée 1 : $200$ candidats, $180$ reçus ($90\\%$). Lycée 2 : $100$ candidats, $95$ reçus ($95\\%$). Le rectorat fusionne les résultats : $300$ candidats, $275$ reçus ($91,7\\%$). Un journaliste écrit : \"Le lycée 2 est meilleur car son taux global après fusion est plus proche du sien\". Expliquer pourquoi ce raisonnement est fallacieux.",
+              "answer": "Le taux global ($91,7\\%$) est une moyenne pondérée par les effectifs. Le lycée 1 a plus d'élèves ($200$ vs $100$), donc il tire la moyenne vers son propre taux ($90\\%$). Comparer le taux global au taux du lycée 2 ne prouve rien sur la performance respective ; il faut comparer les taux bruts ($90\\%$ vs $95\\%$) ou standardiser.",
+              "hint": "Regarde les effectifs : le lycée 1 pèse deux fois plus lourd dans la moyenne globale que le lycée 2.",
+              "explanation": "Le taux global est $\\frac{180+95}{200+100} = \\frac{275}{300} \\approx 91,7\\%$. C'est la moyenne pondérée des taux $90\\%$ (poids $200$) et $95\\%$ (poids $100$) : $\\frac{90\\times200 + 95\\times100}{300} = 91,7\\%$. Le journaliste confond proximité arithmétique (due au poids) et performance intrinsèque. Le lycée 2 a un meilleur taux brut ($95\\% > 90\\%$)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 142,
+  "_course_code": "ce2-t01-c01-construire-le-millier",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Relier 10 centaines et 1 millier",
+  "title": "Algorithmes : Relier 10 centaines et 1 millier",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de conversion",
+      "content": "Écris un algorithme (suite d'instructions) qui permet de convertir un nombre de centaines en milliers et en centaines restantes. Par exemple, si j'ai $25$ centaines, l'algorithme doit donner $2$ milliers et $5$ centaines.",
+      "correctAnswer": "Algorithme :\\n1. Prendre le nombre de centaines.\\n2. Faire la division euclidienne par $10$.\\n3. Le quotient est le nombre de milliers.\\n4. Le reste est le nombre de centaines restantes.\\n5. Afficher le nombre de milliers et le nombre de centaines.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les centaines par paquets de $10$ pour former des milliers. La division par $10$ donne directement le nombre de paquets (milliers) et ce qui reste (centaines).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme",
+      "content": "Applique l'algorithme de la question précédente pour convertir $37$ centaines. Écris les étapes de calcul et le résultat final sous la forme : '... milliers et ... centaines'.",
+      "correctAnswer": "Étapes :\\n1. Nombre de centaines : $37$.\\n2. Division par $10$ : $37 = 3 \\times 10 + 7$.\\n3. Quotient (milliers) : $3$.\\n4. Reste (centaines) : $7$.\\nRésultat : $3$ milliers et $7$ centaines.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "$37$ centaines correspondent à $3$ paquets de $10$ centaines (soit $3$ milliers) et il reste $7$ centaines.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de composition inverse",
+      "content": "Écris maintenant un algorithme qui fait l'inverse : à partir d'un nombre de milliers et d'un nombre de centaines (inférieur à $10$), il calcule le nombre total de centaines. Teste ton algorithme avec $4$ milliers et $6$ centaines.",
+      "correctAnswer": "Algorithme :\\n1. Prendre le nombre de milliers et le nombre de centaines.\\n2. Multiplier le nombre de milliers par $10$.\\n3. Ajouter le nombre de centaines.\\n4. Afficher le total de centaines.\\n\\nTest avec $4$ milliers et $6$ centaines :\\n$4 \\times 10 = 40$ centaines.\\n$40 + 6 = 46$ centaines.\\nRésultat : $46$ centaines.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque millier vaut $10$ centaines. On multiplie les milliers par $10$ puis on ajoute les centaines restantes pour retrouver le total en centaines.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

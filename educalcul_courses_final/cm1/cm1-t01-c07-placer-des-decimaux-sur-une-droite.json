@@ -1,0 +1,367 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.153172+00:00",
+  "id": 217,
+  "code": "cm1-t01-c07",
+  "title": "Placer des décimaux sur une droite",
+  "description": "Cours structuré Educalcul : Placer des décimaux sur une droite.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Placer des décimaux sur une droite",
+    "objectif_global": "Placer des décimaux sur une droite",
+    "mini_lecons_imposees": [
+      "Choisir échelle.",
+      "Placer.",
+      "Encadrer entre deux graduations."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Choisir échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce qu'est une échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux dessiner le trajet de ta maison à l'école sur une feuille de papier. Si tu notes chaque mètre, ta feuille sera trop petite ! Il faut choisir une échelle : par exemple, 1 centimètre sur le papier pour 100 mètres dans la réalité. Sur une droite graduée, c'est pareil : l'échelle décide quelle distance sépare deux graduations consécutives. Si l'échelle est de $0,1$, chaque petit trait vaut un dixième. Si elle est de $0,01$, chaque trait vaut un centième. Choisir la bonne échelle, c'est comme choisir la bonne loupe pour bien voir ce qu'on veut placer."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3.47,
+              "caption": "Le nombre 3,47 dans le tableau de numération : 3 unités, 4 dixièmes, 7 centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : le chiffre $4$ après la virgule signifie $4$ dixièmes, soit $\\frac{4}{10}$. Le chiffre $7$ signifie $7$ centièmes, soit $\\frac{7}{100}$. Si tu veux placer $3,47$ sur une droite, tu as besoin de voir les dixièmes éventuellement les centièmes. Une échelle de $1$ (seules les unités) ne suffit pas : $3,47$ serait coincé entre $3$ et $4$ sans précision. Une échelle de $0,1$ montre les dixièmes : tu verras $3,4$ puis $3,5$. Une échelle de $0,01$ montre chaque centième : tu verras $3,47$ pile sur une graduation !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, demandons-nous : comment savoir quelle échelle choisir sans deviner ? Il faut regarder le nombre de chiffres après la virgule. Un nombre avec un seul chiffre après la virgule (comme $2,5$) se place bien avec une échelle de $0,1$. Un nombre avec deux chiffres après la virgule (comme $2,53$) demande une échelle de $0,01$ pour être posé exactement sur un trait. C'est une règle simple : le dernier chiffre après la virgule te dit la précision nécessaire."
+            },
+            {
+              "type": "number_line",
+              "caption": "Trois échelles différentes pour le même segment de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, tu vois trois façons de graduérer entre $0$ et $1$. La première ligne n'a que $0$ et $1$ : échelle $1$. La deuxième a des traits tous les $0,1$ : $0,1$, $0,2$, ... jusqu'à $0,9$. La troisième a des traits tous les $0,01$ : $0,01$, $0,02$, ... c'est beaucoup plus précis mais plus chargé. Pour placer $0,6$, la deuxième ligne est parfaite. Pour placer $0,63$, il faut la troisième. Si tu choisis une échelle trop grande, ton nombre tombe entre deux traits. Si elle est trop fine, la droite devient illisible. L'art, c'est de choisir à peine assez précis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le nombre a zéro comme dernier chiffre après la virgule, comme $4,50$ ou $7,30$. Le zéro compte ! $4,50$ a deux chiffres après la virgule, donc il faut une échelle de $0,01$ pour le placer pile sur le trait des centièmes. Mais $4,5$ n'a qu'un chiffre après la virgule : une échelle de $0,1$ suffit. Attention : $4,5$ et $4,50$ sont le même nombre, mais écrits différemment, ils ne demandent pas la même échelle pour être posés exactement. C'est comme écrire \"5 euros\" ou \"5,00 euros\" : la valeur est identique, mais la précision affichée change."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant choisir l'échelle adaptée : compte les chiffres après la virgule, et règle ton trait déunité en conséquence. Dans la prochaine leçon, nous verrons comment poser effectivement le point sur la droite une fois l'échelle choisie. C'est là que le placement devient concret : tu vas pouvoir montrer où se trouve chaque nombre décimal, comme une épingle sur une carte."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle échelle choisir pour placer exactement le nombre $6,2$ sur une droite graduée ?",
+              "answer": "0,1",
+              "hint": "Combien y a-t-il de chiffres après la virgule dans $6,2$ ?",
+              "explanation": "Le nombre $6,2$ a un seul chiffre après la virgule (le $2$ des dixièmes). Il faut donc une échelle de $0,1$ pour que $6,2$ tombe pile sur une graduation."
+            },
+            {
+              "question": "Pour placer $8,47$ précisément, quelle échelle faut-il utiliser ?",
+              "answer": "0,01",
+              "hint": "Regarde le dernier chiffre après la virgule : est-ce un dixième ou un centième ?",
+              "explanation": "Le nombre $8,47$ a deux chiffres après la virgule ($4$ dixièmes et $7$ centièmes). La précision va au centième, donc l'échelle doit être de $0,01$."
+            },
+            {
+              "question": "Le nombre $5,60$ s'écrit aussi $5,6$. Quelle échelle faut-il pour placer $5,60$ exactement ? Et pour $5,6$ ?",
+              "answer": "Pour $5,60$ : 0,01. Pour $5,6$ : 0,1",
+              "hint": "Compte les chiffres après la virgule dans chaque écriture, même si la valeur est la même.",
+              "explanation": "$5,60$ a deux chiffres après la virgule ($6$ et $0$), donc échelle $0,01$. $5,6$ n'en a qu'un ($6$), donc échelle $0,1$. Même nombre, écritures différentes, échelles différentes pour un placement exact."
+            }
+          ]
+        },
+        {
+          "title": "Placer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poser le point au bon endroit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as choisi ton échelle, ta droite est prête avec ses graduations bien régulières. Maintenant, il faut placer le nombre. C'est comme quand tu accroches une photo au mur : tu mesures, tu marques un petit trait au crayon, et tu poses le clou. Sur la droite, tu repères les deux graduations qui encadrent ton nombre, tu comptes les petits traits si besoin, et tu poses ton point. Prenons un exemple concret : placer $2,3$ sur une droite graduée en dixièmes (échelle $0,1$)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de 2,3 sur une droite à l'échelle 0,1",
+              "min": 2,
+              "max": 3,
+              "points": [
+                {
+                  "value": 2.3,
+                  "label": "2,3"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde : la droite va de $2$ à $3$. Les graduations sont $2,1$, $2,2$, $2,3$, $2,4$... jusqu'à $2,9$. Le nombre $2,3$ est exactement sur le troisième petit trait après $2$. Pas besoin de deviner : tu comptes $2,1$ (premier), $2,2$ (deuxième), $2,3$ (troisième), et tu poses ton point pile là. C'est la même logique que de compter les marches d'un escalier : chaque marche est un dixième."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec des centièmes. Place $4,56$ sur une droite graduée en centièmes (échelle $0,01$). Cette fois, les graduations principales sont les dixièmes ($4,5$, $4,6$...), et entre deux, il y a neuf petits traits pour les centièmes. $4,56$ se trouve entre $4,5$ et $4,6$. Il faut compter six petits traits après $4,5$ : $4,51$, $4,52$, $4,53$, $4,54$, $4,55$, $4,56$. Ton point se pose sur le sixième trait. C'est un peu plus long à compter, mais la méthode est identique."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 5,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 56,
+                  "denominator": 100
+                }
+              ],
+              "caption": "5 dixièmes (0,5) et 56 centièmes (0,56) : on voit que 0,56 est un peu plus loin que 0,5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces bandes de fractions t'aident à visualiser : $0,5$ (cinq dixièmes) est plus court que $0,56$ (cinquante-six centièmes). Sur la droite, $0,56$ est donc un peu plus à droite que $0,5$. Cette image mentale te sert de repère : quand tu places un nombre, tu peux te dire \"c'est un peu après le demi\" ou \"c'est juste avant les trois quarts\". Les fractions et les décimaux racontent la même histoire, juste avec des mots différents."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges ! Parfois, la droite ne commence pas à zéro. Imagine une droite qui va de $7,2$ à $7,5$ avec une échelle de $0,01$. Tu veux placer $7,34$. Les graduations principales sont $7,2$, $7,3$, $7,4$, $7,5$. Ton nombre $7,34$ est entre $7,3$ et $7,4$. Tu comptes quatre petits traits après $7,3$ : $7,31$, $7,32$, $7,33$, $7,34$. Le point se pose là. Le fait que la droite ne parte pas de zéro ne change rien : tu repères toujours par rapport aux graduations voisines."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les graduations voisines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve les deux graduations principales (unités ou dixièmes) qui encadrent ton nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les petits traits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis la graduation de gauche, compte autant de petits traits que le chiffre des centièmes (ou dixièmes selon l'échelle)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Poser le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton point exactement sur le trait correspondant, ni avant ni après."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en trois étapes marche à tous les coups. Repère les bornes, compte les pas, pose le point. C'est comme une chorégraphie : une fois que tu connais les mouvements, tu les enchaînes sans réfléchir. Dans la prochaine leçon, nous verrons que parfois, le nombre ne tombe pas pile sur un trait. Il faut alors l'encadrer entre deux graduations. C'est une compétence toute aussi utile, surtout quand l'échelle n'est pas assez fine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée en dixièmes (échelle 0,1) allant de 1 à 2, sur quelle graduation se place exactement le nombre 1,7 ?",
+              "answer": "Sur la graduation 1,7 (le 7ème trait après 1)",
+              "hint": "Compte les dixièmes après 1 : 1,1 ; 1,2 ; 1,3 ; 1,4 ; 1,5 ; 1,6 ; 1,7.",
+              "explanation": "L'échelle est 0,1. Le nombre 1,7 a 7 dixièmes après l'unité. En partant de 1, on compte 7 traits : 1,1 (1er), 1,2 (2e), 1,3 (3e), 1,4 (4e), 1,5 (5e), 1,6 (6e), 1,7 (7e). Le point se pose sur la graduation 1,7."
+            },
+            {
+              "question": "Place 3,82 sur une droite graduée en centièmes (échelle 0,01) entre 3,8 et 3,9. Combien de petits traits comptes-tu après 3,8 ?",
+              "answer": "8 petits traits",
+              "hint": "Regarde le chiffre des centièmes dans 3,82.",
+              "explanation": "3,82 est entre 3,8 et 3,9. Le chiffre des centièmes est 2. Mais attention : on compte depuis 3,80 (qui est 3,8). 3,81 (1er trait), 3,82 (2e trait). Donc 2 petits traits après 3,8. Le point se pose sur le 2e trait."
+            },
+            {
+              "question": "Une droite va de 10,4 à 10,7 avec une échelle de 0,01. Où placer 10,56 ? Décris la marche à suivre.",
+              "answer": "Repérer 10,5 et 10,6. Compter 6 traits après 10,5. Poser le point sur le 6e trait.",
+              "hint": "Quelles sont les graduations de dixièmes qui encadrent 10,56 ?",
+              "explanation": "Les graduations de dixièmes sont 10,4 ; 10,5 ; 10,6 ; 10,7. 10,56 est entre 10,5 et 10,6. Le chiffre des centièmes est 6. En partant de 10,50 (même que 10,5), on compte 6 traits : 10,51 ; 10,52 ; 10,53 ; 10,54 ; 10,55 ; 10,56. Le point se pose sur le 6e trait après 10,5."
+            }
+          ]
+        },
+        {
+          "title": "Encadrer entre deux graduations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le nombre tombe entre deux traits"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as appris à choisir l'échelle et à poser le point quand le nombre tombe pile sur une graduation. Mais que se passe-t-il si l'échelle est trop grande ? Imagine une droite graduée seulement en dixièmes (échelle 0,1), et tu dois placer 2,37. Le nombre 2,37 a des centièmes, mais ta droite ne montre que les dixièmes : 2,3 puis 2,4. Impossible de poser le point exactement sur un trait ! C'est comme vouloir accrocher un cadre entre deux clous : il faut l'encadrer."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de 2,37 entre 2,3 et 2,4 sur une droite à l'échelle 0,1",
+              "min": 2.3,
+              "max": 2.4,
+              "points": [
+                {
+                  "value": 2.37,
+                  "label": "2,37"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette droite : elle va de 2,3 à 2,4. Il n'y a pas de traits pour les centièmes. Le nombre 2,37 se trouve quelque part entre les deux. On ne peut pas le placer exactement, mais on peut dire avec certitude : 2,37 est plus grand que 2,3 et plus petit que 2,4. On écrit : $2,3 < 2,37 < 2,4$. C'est un encadrement. Les deux nombres 2,3 et 2,4 sont des nombres à un chiffre après la virgule, ils sont sur les graduations. 2,37 est coincé entre eux, plus près de 2,4 que de 2,3 parce que 37 centièmes est plus près de 40 que de 30."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment trouver l'encadrement rapidement ? Regarde le chiffre des dixièmes de ton nombre. Pour 2,37, le chiffre des dixièmes est 3. La graduation de gauche est donc 2,3. La graduation de droite est le dixièmes suivant : 2,4. C'est systématique : garde la partie entière et le chiffre des dixièmes pour la borne inférieure, ajoute 1 aux dixièmes pour la borne supérieure. Pour 5,82 : dixièmes = 8, donc encadré par 5,8 et 5,9. Pour 0,46 : dixièmes = 4, donc encadré par 0,4 et 0,5."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarder le chiffre des dixièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le premier chiffre après la virgule. C'est lui qui donne la graduation de gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la borne inférieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde la partie entière et le chiffre des dixièmes. Exemple : 2,37 → 2,3"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la borne supérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde la partie entière, ajoute 1 au chiffre des dixièmes. Exemple : 2,37 → 2,4"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note : borne inférieure < nombre < borne supérieure. Exemple : 2,3 < 2,37 < 2,4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le chiffre des dixièmes est 9. Par exemple 4,96. La borne inférieure est 4,9. La borne supérieure ? On ajoute 1 aux dixièmes : 9 + 1 = 10 dixièmes, cela fait 1 unité de plus. La borne supérieure devient 5,0 (ou simplement 5). L'encadrement est $4,9 < 4,96 < 5$. C'est le même principe, il faut juste penser au passage à l'unité supérieure. C'est comme quand les minutes passent de 59 à 60 : l'heure augmente de 1 et les minutes repartent à 0."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'encadrement est utile même quand on a une échelle fine. Si on te demande \"entre quelles graduations se trouve 7,83 sur une droite en dixièmes ?\", tu réponds 7,8 et 7,9 sans même dessiner la droite. C'est un réflexe de comparaison : tu sais ordonner les nombres. Plus tard, au collège, tu utiliseras l'encadrement pour arrondir, pour encadrer une mesure, pour résoudre des équations. Aujourd'hui, c'est ton premier pas vers la précision mathématique : savoir dire \"c'est entre ci et ça\" avec rigueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir l'échelle adaptée en comptant les chiffres après la virgule.",
+                "Je sais placer un nombre décimal sur une droite graduée en dixièmes ou en centièmes.",
+                "Je sais encadrer un nombre décimal entre deux graduations consécutives quand l'échelle est trop grande.",
+                "J'utilise le chiffre des dixièmes pour trouver rapidement les deux bornes de l'encadrement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée en dixièmes (échelle 0,1), entre quelles deux graduations se trouve le nombre 6,48 ?",
+              "answer": "Entre 6,4 et 6,5",
+              "hint": "Regarde le chiffre des dixièmes de 6,48. La borne inférieure garde ce chiffre, la borne supérieure ajoute 1.",
+              "explanation": "Le chiffre des dixièmes de 6,48 est 4. La graduation de gauche est 6,4. Celle de droite est 6,5 (4+1=5). Donc 6,4 < 6,48 < 6,5."
+            },
+            {
+              "question": "Encadre le nombre 9,92 entre deux graduations de dixièmes.",
+              "answer": "9,9 < 9,92 < 10",
+              "hint": "Attention : le chiffre des dixièmes est 9. Qu'arrive-t-il quand on ajoute 1 à 9 dixièmes ?",
+              "explanation": "Le chiffre des dixièmes est 9. Borne inférieure : 9,9. Borne supérieure : 9 dixièmes + 1 dixième = 10 dixièmes = 1 unité. On ajoute 1 à l'unité : 9 + 1 = 10. Donc 9,9 < 9,92 < 10."
+            },
+            {
+              "question": "Un élève place 3,75 sur une droite graduée en dixièmes. Il écrit : 3,7 < 3,75 < 3,8. Est-ce correct ? Justifie.",
+              "answer": "Oui, c'est correct.",
+              "hint": "Vérifie que 3,75 est bien plus grand que 3,7 et plus petit que 3,8.",
+              "explanation": "3,75 a 7 dixièmes. La borne inférieure est 3,7. La borne supérieure est 3,8 (7+1=8). 3,75 est bien entre 3,7 (3,70) et 3,8 (3,80) car 70 < 75 < 80. L'encadrement est juste."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

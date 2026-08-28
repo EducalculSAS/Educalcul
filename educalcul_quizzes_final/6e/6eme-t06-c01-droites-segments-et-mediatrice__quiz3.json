@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Utiliser propriété simple",
+  "title": "Quiz : Droites, segments et médiatrice - Propriétés simples",
+  "questions": [
+    {
+      "text": "Si M est le milieu du segment AB, quelle relation est toujours vraie ?",
+      "options": [
+        "$AM = MB$",
+        "$AM > MB$",
+        "$AM < MB$",
+        "$AM = 2 MB$"
+      ],
+      "correctAnswer": "$AM = MB$",
+      "explanation": "Par définition, le milieu d'un segment le divise en deux parties de même longueur. Donc AM et MB sont égaux. Les autres options contredisent cette définition : AM ne peut être ni strictement plus grand, ni strictement plus petit, ni le double de MB.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit d la médiatrice du segment CD. Un point P appartient à d. Quelle propriété caractérise P ?",
+      "options": [
+        "$PC = PD$",
+        "$PC > PD$",
+        "$PC < PD$",
+        "$PC = 2 PD$"
+      ],
+      "correctAnswer": "$PC = PD$",
+      "explanation": "La médiatrice d'un segment est l'ensemble des points équidistants des extrémités de ce segment. Puisque P est sur la médiatrice, les distances PC et PD sont égales. Les trois autres choix proposent des inégalités ou une proportion fausse qui ne correspondent pas à cette propriété fondamentale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points A, B et C sont alignés dans cet ordre. Quelle égalité relie les longueurs des segments ?",
+      "options": [
+        "$AB + BC = AC$",
+        "$AB + AC = BC$",
+        "$BC + AC = AB$",
+        "$AB = BC + AC$"
+      ],
+      "correctAnswer": "$AB + BC = AC$",
+      "explanation": "Lorsque trois points sont alignés et que B se trouve entre A et C, la longueur du segment total AC est la somme des longueurs des deux sous-segments AB et BC. Les autres égalités mélangent les segments de manière incorrecte et ne respectent pas l'ordre des points.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors de la construction de la médiatrice d'un segment EF, quelles deux propriétés sont utilisées ?",
+      "options": [
+        "Elle passe par le milieu de EF et est perpendiculaire à EF",
+        "Elle passe par un extrémité de EF et est parallèle à EF",
+        "Elle passe par le milieu de EF et est parallèle à EF",
+        "Elle passe par un extrémité de EF et est perpendiculaire à EF"
+      ],
+      "correctAnswer": "Elle passe par le milieu de EF et est perpendiculaire à EF",
+      "explanation": "La médiatrice d'un segment est définie comme la droite qui passe par le milieu de ce segment et qui lui est perpendiculaire. Les trois autres options mélangent incorrectement les notions de milieu, d'extrémité, de parallélisme et de perpendicularité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un segment GH mesure $10$ cm. Son milieu est I. Quelle est la longueur de GI ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$2,5$ cm",
+        "$7,5$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "Le milieu divise le segment en deux parties égales. La longueur totale est $10$ cm, donc chaque moitié mesure la moitié de $10$, soit $5$ cm. Les autres valeurs correspondent à des erreurs de division (division par 4, multiplication par 0,75, ou confusion avec la longueur totale).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

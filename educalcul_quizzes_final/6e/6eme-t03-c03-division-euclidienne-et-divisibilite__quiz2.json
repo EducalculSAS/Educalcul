@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Multiples",
+  "title": "Quiz : Les multiples (6e)",
+  "questions": [
+    {
+      "text": "Lequel des nombres suivants est un multiple de $6$ ?",
+      "options": [
+        "$24$",
+        "$26$",
+        "$28$",
+        "$34$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Un multiple de $6$ s'obtient en multipliant $6$ par un entier naturel. $6 \\times 4 = 24$, donc $24$ est un multiple de $6$. $26$, $28$ et $34$ ne sont pas des multiples de $6$ car leur division par $6$ ne donne pas un quotient entier (restes $2$, $4$ et $4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres ci-dessous, lequel n'est pas un multiple de $9$ ?",
+      "options": [
+        "$27$",
+        "$36$",
+        "$45$",
+        "$52$"
+      ],
+      "correctAnswer": "$52$",
+      "explanation": "Les multiples de $9$ sont $9, 18, 27, 36, 45, 54...$ On voit que $27 = 9 \\times 3$, $36 = 9 \\times 4$, $45 = 9 \\times 5$. $52$ n'est pas dans cette liste car $9 \\times 5 = 45$ et $9 \\times 6 = 54$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus petit multiple de $7$ strictement supérieur à $50$ ?",
+      "options": [
+        "$49$",
+        "$54$",
+        "$56$",
+        "$63$"
+      ],
+      "correctAnswer": "$56$",
+      "explanation": "Les multiples de $7$ sont $7, 14, 21, 28, 35, 42, 49, 56, 63...$ Le multiple qui précède $50$ est $49$ ($7 \\times 7$). Le suivant est $56$ ($7 \\times 8$). $54$ n'est pas un multiple de $7$. $63$ est un multiple de $7$ mais ce n'est pas le plus petit supérieur à $50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre entier est multiple de $4$ et multiple de $5$. Il est donc obligatoirement multiple de :",
+      "options": [
+        "$9$",
+        "$15$",
+        "$20$",
+        "$40$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "Si un nombre est multiple de $4$ et de $5$, il est multiple de leur plus petit commun multiple (PPCM). Le PPCM de $4$ et $5$ est $20$ ($4 \\times 5$ car ils sont premiers entre eux). Il est donc obligatoirement multiple de $20$. Il n'est pas forcément multiple de $9$ (somme), ni de $15$ ($3 \\times 5$), ni de $40$ (double du PPCM).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient entre $30$ et $40$ billes. Si on les range par $4$ ou par $6$, il n'en reste aucune. Combien y a-t-il de billes ?",
+      "options": [
+        "$32$",
+        "$34$",
+        "$36$",
+        "$38$"
+      ],
+      "correctAnswer": "$36$",
+      "explanation": "On cherche un nombre entre $30$ et $40$ qui est à la fois multiple de $4$ et multiple de $6$. Multiples de $4$ dans l'intervalle : $32, 36, 40$. Multiples de $6$ dans l'intervalle : $30, 36$. Le seul commun est $36$. Donc il y a $36$ billes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

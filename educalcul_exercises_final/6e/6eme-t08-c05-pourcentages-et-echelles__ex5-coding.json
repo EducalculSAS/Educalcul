@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 372,
+  "_course_code": "6eme-t08-c05-pourcentages-et-echelles",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Calculs simples",
+  "title": "Algorithmes de calculs de pourcentages et d'échelles",
+  "blocks": [
+    {
+      "title": "Calcul du pourcentage",
+      "content": "Écrire un algorithme qui, étant donnés une partie $a$ et un tout $b$ (avec $b > 0$), calcule et affiche le pourcentage $p$ correspondant à la formule $p = a / b × 100$.",
+      "correctAnswer": "Algorithme :\\nEntrées : $a$, $b$\\nSi $b = 0$ alors afficher \"Erreur\"\\nSinon\\n    $p = a / b × 100$\\n    Afficher $p$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire les deux nombres $a$ et $b$. Si le tout $b$ est nul, on ne peut pas calculer de pourcentage, on affiche un message d'erreur. Sinon, on applique la formule du pourcentage : on divise la partie $a$ par le tout $b$, puis on multiplie le résultat par $100$ pour obtenir le pourcentage $p$. Enfin, on affiche la valeur de $p$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Augmentation d'un prix",
+      "content": "Écrire un algorithme qui, à partir d'un prix initial $P$ et d'un pourcentage d'augmentation $t$, calcule et affiche le nouveau prix $P_{new}$ après augmentation. La formule est $P_{new} = P + P × t / 100$.",
+      "correctAnswer": "Algorithme :\\nEntrées : $P$, $t$\\nnouveau = $P + P × t / 100$\\nAfficher $nouveau$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit le prix initial $P$ et le taux d'augmentation $t$. Le montant de l'augmentation est $P × t / 100$. On ajoute ce montant au prix initial pour obtenir le nouveau prix $nouveau$. L'algorithme effectue ce calcul en une étape et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Distance réelle à partir d'une échelle",
+      "content": "Écrire un algorithme qui, connaissant une distance mesurée sur une carte $d_{carte}$ (en cm) et une échelle de la forme $1 : e$ (1 cm sur la carte représente $e$ cm dans la réalité), calcule et affiche la distance réelle $d_{reel}$ en km. On utilise la conversion $1 km = 100000 cm$. La formule est $d_{reel} = d_{carte} × e / 100000$.",
+      "correctAnswer": "Algorithme :\\nEntrées : $d_{carte}$, $e$\\n$d_{reel} = d_{carte} × e / 100000$\\nAfficher $d_{reel}$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme prend la distance sur la carte $d_{carte}$ et le dénominateur de l'échelle $e$. La distance réelle en centimètres est $d_{carte} × e$. Pour convertir en kilomètres, on divise par $100000$ car $1 km = 100000 cm$. Le résultat est affiché.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

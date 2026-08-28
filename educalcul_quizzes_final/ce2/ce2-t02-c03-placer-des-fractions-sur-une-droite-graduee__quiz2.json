@@ -1,0 +1,203 @@
+{
+  "_status": "done",
+  "_course_id": 154,
+  "_course_code": "ce2-t02-c03-placer-des-fractions-sur-une-droite-graduee",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Placer fractions unitaires",
+  "title": "Placer des fractions unitaires sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle fraction unitaire correspond au point A placé sur la première graduation après 0, si l'unité est divisée en 4 parties égales ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "L'unité (la distance entre 0 et 1) est divisée en 4 parties égales. Chaque partie vaut donc un quart, soit $\\frac{1}{4}$. Le point A est sur la première graduation après 0, il correspond donc à $\\frac{1}{4}$. $\\frac{1}{2}$ serait au milieu, $\\frac{1}{3}$ correspondrait à une division en 3 parties, et $\\frac{1}{5}$ à une division en 5 parties.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 4 parties égales. Point A sur la première graduation.",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.25,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.25
+          },
+          {
+            "start": 0.25,
+            "end": 0.5
+          },
+          {
+            "start": 0.5,
+            "end": 0.75
+          },
+          {
+            "start": 0.75,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "On divise l'unité en 5 parties égales sur une droite graduée. Quelle fraction unitaire se trouve sur la troisième graduation après 0 ?",
+      "options": [
+        "$\\frac{1}{5}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{5}{3}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5}$",
+      "explanation": "Chaque graduation représente $\\frac{1}{5}$. La première graduation est $\\frac{1}{5}$, la deuxième est $\\frac{2}{5}$, la troisième est donc $\\frac{3}{5}$. Attention : $\\frac{5}{3}$ est une fraction supérieure à 1 (elle se placerait après 1), ce n'est pas une fraction unitaire (le numérateur n'est pas 1).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 5 parties égales.",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.2
+          },
+          {
+            "start": 0.2,
+            "end": 0.4
+          },
+          {
+            "start": 0.4,
+            "end": 0.6
+          },
+          {
+            "start": 0.6,
+            "end": 0.8
+          },
+          {
+            "start": 0.8,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "Regarde la droite graduée. Le point B est placé sur la graduation qui coupe l'unité en deux parties égales. Quelle fraction unitaire correspond au point B ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$1$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Le point B se trouve exactement au milieu entre 0 et 1. Cela signifie que l'unité est divisée en 2 parties égales. La fraction unitaire correspondante est un demi, soit $\\frac{1}{2}$. $\\frac{1}{3}$ et $\\frac{1}{4}$ seraient plus proches de 0. Le nombre 1 se trouve à la fin de l'unité.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1. Point B au milieu (0,5).",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.5,
+            "label": "B"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.5
+          },
+          {
+            "start": 0.5,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur une droite graduée, l'unité est divisée en 3 parties égales. On place le point C sur la deuxième graduation. Parmi ces propositions, laquelle est la fraction unitaire qui correspond à une seule de ces parties ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{3}$"
+      ],
+      "correctAnswer": "$\\frac{1}{3}$",
+      "explanation": "La question demande la fraction *unitaire* qui correspond à *une seule partie* parmi les 3 parties égales. Une fraction unitaire a pour numérateur 1. Comme il y a 3 parties égales, chaque partie vaut $\\frac{1}{3}$. Le point C est sur la deuxième graduation, il représente $\\frac{2}{3}$, mais ce n'est pas une fraction unitaire. $\\frac{3}{3}$ vaut 1.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 3 parties. Point C sur la 2e graduation.",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.666,
+            "label": "C"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.333
+          },
+          {
+            "start": 0.333,
+            "end": 0.666
+          },
+          {
+            "start": 0.666,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "Compare les fractions unitaires $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$ et $\\frac{1}{5}$. Laquelle est placée le plus près de 0 sur une droite graduée ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{5}$",
+      "explanation": "Pour les fractions unitaires (numérateur 1), plus le dénominateur est grand, plus la fraction est petite, donc plus elle est proche de 0. On divise l'unité en 5 parts pour $\\frac{1}{5}$, ce qui fait des parts plus petites qu'en 4, 3 ou 2 parts. Donc $\\frac{1}{5} < \\frac{1}{4} < \\frac{1}{3} < \\frac{1}{2}$. $\\frac{1}{5}$ est la plus proche de 0.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 montrant la position de 1/2, 1/3, 1/4, 1/5.",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.5,
+            "label": "1/2"
+          },
+          {
+            "value": 0.333,
+            "label": "1/3"
+          },
+          {
+            "value": 0.25,
+            "label": "1/4"
+          },
+          {
+            "value": 0.2,
+            "label": "1/5"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

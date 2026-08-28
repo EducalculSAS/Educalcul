@@ -1,0 +1,137 @@
+{
+  "_status": "done",
+  "_course_id": 336,
+  "_course_code": "6eme-t02-c01-fraction-et-quotient",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Représentation",
+  "title": "Quiz : Représentation des fractions",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. Quelle fraction représente la partie colorée en bleu ?",
+      "options": [
+        "$\\frac{3}{5}$",
+        "$\\frac{5}{3}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5}$",
+      "explanation": "La figure montre une bande divisée en 5 parties égales (le dénominateur est 5). Parmi ces 5 parties, 3 sont colorées en bleu (le numérateur est 3). La fraction représentée est donc $\\frac{3}{5}$. L'option $\\frac{5}{3}$ inverse le numérateur et le dénominateur. L'option $\\frac{2}{5}$ compte les parties non colorées. L'option $\\frac{3}{2}$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 5,
+        "shape": "bar",
+        "caption": "Bande divisée en 5 parties égales, 3 parties colorées en bleu."
+      }
+    },
+    {
+      "text": "Dans une classe de vingt-quatre élèves, neuf portent des lunettes. Quelle fraction représente les élèves qui portent des lunettes ?",
+      "options": [
+        "$\\frac{9}{24}$",
+        "$\\frac{24}{9}$",
+        "$\\frac{15}{24}$",
+        "$\\frac{9}{15}$"
+      ],
+      "correctAnswer": "$\\frac{9}{24}$",
+      "explanation": "Le total des élèves est 24, c'est le dénominateur. Le nombre d'élèves portant des lunettes est 9, c'est le numérateur. La fraction cherchée est $\\frac{9}{24}$. L'option $\\frac{24}{9}$ inverse le total et la partie. L'option $\\frac{15}{24}$ correspond aux élèves sans lunettes (24 - 9 = 15). L'option $\\frac{9}{15}$ compare les deux groupes au lieu de comparer une partie au tout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A est placé sur la deuxième graduation après 0, sur un total de trois graduations entre 0 et 1. Quelle fraction correspond au point A ?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{5}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "L'unité (de 0 à 1) est divisée en 3 parties égales (le dénominateur est 3). Le point A se situe sur la 2e graduation après 0 (le numérateur est 2). La fraction correspondante est $\\frac{2}{3}$. L'option $\\frac{3}{2}$ est supérieure à 1, le point A est avant 1. L'option $\\frac{1}{3}$ correspond à la première graduation. L'option $\\frac{2}{5}$ correspondrait à une division en 5 parties.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 3 parties égales, point A sur la 2e graduation.",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.6666666666666666,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "La figure montre deux bandes de même longueur. La première est divisée en 2 parties égales avec 1 partie colorée. La seconde est divisée en 4 parties égales avec 2 parties colorées. Quelle fraction, équivalente à $\\frac{1}{2}$, est représentée sur la deuxième bande ?",
+      "options": [
+        "$\\frac{2}{4}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctAnswer": "$\\frac{2}{4}$",
+      "explanation": "Sur la deuxième bande, le total des parties est 4 (dénominateur) et le nombre de parties colorées est 2 (numérateur). La fraction représentée est $\\frac{2}{4}$. On voit visuellement que la longueur colorée est la même que $\\frac{1}{2}$ sur la première bande : ce sont deux fractions équivalentes. Les autres options ne correspondent pas au coloriage de la deuxième bande.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "caption": "Deux bandes superposées : le haut montre 1/2 coloré, le bas montre 2/4 coloré.",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un ruban est découpé en 5 parties égales. On colorie 2 de ces parties. Quelle fraction du ruban total est colorée ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{5}{2}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "Le ruban total est divisé en 5 parties égales, donc le dénominateur est 5. Le nombre de parties colorées est 2, donc le numérateur est 2. La fraction colorée est $\\frac{2}{5}$. L'option $\\frac{5}{2}$ inverse les nombres. L'option $\\frac{3}{5}$ correspond aux parties non colorées (5 - 2 = 3). L'option $\\frac{2}{3}$ ne correspond pas à la division en 5 parties.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "caption": "Ruban divisé en 5 parties égales, 2 parties colorées en bleu, 3 parties grises.",
+        "parts": [
+          {
+            "label": "",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "",
+            "value": 1,
+            "tone": "gray"
+          },
+          {
+            "label": "",
+            "value": 1,
+            "tone": "gray"
+          },
+          {
+            "label": "",
+            "value": 1,
+            "tone": "gray"
+          }
+        ]
+      }
+    }
+  ]
+}

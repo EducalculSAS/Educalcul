@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Problèmes",
+  "title": "Quiz : Problèmes de divisibilité et nombres premiers",
+  "questions": [
+    {
+      "text": "Un boulanger a $126$ croissants et $168$ pains au chocolat. Il souhaite les ranger dans des paniers identiques, en utilisant tous les produits et en mettant le même nombre de croissants et le même nombre de pains au chocolat dans chaque panier. Quel est le nombre maximum de paniers qu'il peut faire ?",
+      "options": [
+        "42",
+        "21",
+        "14",
+        "6"
+      ],
+      "correctAnswer": "42",
+      "explanation": "Le nombre maximum de paniers correspond au PGCD de $126$ et $168$. On décompose en facteurs premiers : $126 = 2 \\times 3^2 \\times 7$ et $168 = 2^3 \\times 3 \\times 7$. Le PGCD est le produit des facteurs communs aux puissances les plus faibles : $2 \\times 3 \\times 7 = 42$. Le boulanger peut faire $42$ paniers, chacun contenant $3$ croissants et $4$ pains au chocolat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a = 2^3 \\times 3^2 \\times 5$ et $b = 2 \\times 3^3 \\times 7$. On cherche un entier naturel $n$ tel que $\\text{PGCD}(a, n) = 2 \\times 3^2$ et $\\text{PPCM}(a, n) = 2^3 \\times 3^3 \\times 5 \\times 7$. Quelle est la décomposition en facteurs premiers de $n$ ?",
+      "options": [
+        "$2 \\times 3^3 \\times 7$",
+        "$2 \\times 3^2 \\times 5 \\times 7$",
+        "$2^3 \\times 3^2 \\times 7$",
+        "$2 \\times 3^3 \\times 5 \\times 7$"
+      ],
+      "correctAnswer": "$2 \\times 3^3 \\times 7$",
+      "explanation": "On utilise les propriétés : pour chaque facteur premier, l'exposant dans le PGCD est le minimum des exposants, et dans le PPCM c'est le maximum. Pour $2$ : $\\min(3, \\alpha)=1 \\Rightarrow \\alpha=1$ (et $\\max(3,1)=3$). Pour $3$ : $\\min(2, \\beta)=2 \\Rightarrow \\beta \\ge 2$ et $\\max(2, \\beta)=3 \\Rightarrow \\beta=3$. Pour $5$ : $\\min(1, \\gamma)=0 \\Rightarrow \\gamma=0$. Pour $7$ : $\\min(0, \\delta)=0$ et $\\max(0, \\delta)=1 \\Rightarrow \\delta=1$. Donc $n = 2^1 \\times 3^3 \\times 7^1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'équation diophantienne $21x + 14y = 147$ à solutions entières $(x, y)$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "Il n'existe aucune solution car $147$ n'est pas multiple de $7$.",
+        "Il existe une infinité de solutions, et $x$ est toujours impair.",
+        "Il existe une infinité de solutions, et $x$ est toujours pair.",
+        "Il existe une infinité de solutions, et $y$ est toujours impair."
+      ],
+      "correctAnswer": "Il existe une infinité de solutions, et $x$ est toujours impair.",
+      "explanation": "Le PGCD de $21$ et $14$ est $7$. Comme $147 = 7 \\times 21$ est multiple de $7$, l'équation admet des solutions entières. En simplifiant par $7$, on obtient $3x + 2y = 21$. Une solution particulière est $(7, 0)$. Les solutions générales sont $x = 7 + 2k$ et $y = -3k$ avec $k \\in \\mathbb{Z}$. Comme $7$ est impair et $2k$ est pair, $x$ est impair pour tout entier $k$. Il y a donc une infinité de solutions et $x$ est toujours impair. $y$ est multiple de $3$, pas nécessairement impair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'entier $N = 2^4 \\times 3^2 \\times 5$. Combien $N$ a-t-il de diviseurs positifs ?",
+      "options": [
+        "30",
+        "24",
+        "18",
+        "12"
+      ],
+      "correctAnswer": "30",
+      "explanation": "La formule du nombre de diviseurs pour un entier $N = p_1^{\\alpha_1} p_2^{\\alpha_2} \\dots$ est $(\\alpha_1+1)(\\alpha_2+1)\\dots$. Ici les exposants sont $4$, $2$ et $1$. Le nombre de diviseurs est donc $(4+1) \\times (2+1) \\times (1+1) = 5 \\times 3 \\times 2 = 30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un entier naturel $A$ s'écrit en base dix sous la forme $\\overline{4x8y}$ (avec $x$ et $y$ des chiffres). On sait que $A$ est divisible par $45$. Quelle est la valeur de $x+y$ ?",
+      "options": [
+        "6",
+        "5",
+        "11",
+        "10"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Un nombre est divisible par $45$ s'il est divisible par $5$ et par $9$. Divisibilité par $5$ : le chiffre des unités $y$ vaut $0$ ou $5$. Divisibilité par $9$ : la somme des chiffres $4+x+8+y = 12+x+y$ est un multiple de $9$. Si $y=0$, alors $12+x$ est multiple de $9 \\Rightarrow x=6$ (car $x$ est un chiffre), donc $x+y=6$. Si $y=5$, alors $17+x$ est multiple de $9 \\Rightarrow x=1$, donc $x+y=6$. Dans les deux cas, $x+y=6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

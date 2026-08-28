@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 94,
+  "_course_code": "ce1-t03-c07-propriete-commutative-de-la-multiplication",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Comparer 3×4 et 4×3",
+  "title": "Approfondissement : Comparer 3×4 et 4×3",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme simple",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo‑code) qui calcule $3 \\times 4$ et $4 \\times 3$ puis compare les deux résultats pour dire s'ils sont égaux.",
+      "correctAnswer": "Algorithme :\\n1. Calculer produit1 = 3 * 4\\n2. Calculer produit2 = 4 * 3\\n3. Si produit1 = produit2 alors afficher \"Égaux\" sinon afficher \"Différents\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme montre que les deux multiplications donnent le même produit (12). La propriété commutative de la multiplication signifie que l'ordre des facteurs ne change pas le produit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme en Python",
+      "content": "Complète le programme Python suivant pour qu'il affiche True si $3 \\times 4$ est égal à $4 \\times 3$, sinon False.\\n\\nproduit1 = 3 * 4\\nproduit2 = 4 * 3\\nprint(______)",
+      "correctAnswer": "produit1 == produit2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'opérateur == teste l'égalité. Comme $3 \\times 4 = 12$ et $4 \\times 3 = 12$, l'expression produit1 == produit2 renvoie True, illustrant la commutativité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Raisonnement avec des tableaux",
+      "content": "Explique, en écrivant les étapes, pourquoi $3 \\times 4$ donne le même résultat que $4 \\times 3$ en utilisant l'idée de tableaux (lignes et colonnes).",
+      "correctAnswer": "On peut représenter $3 \\times 4$ par un tableau de 3 lignes et 4 colonnes (12 cases). En tournant le tableau, on obtient 4 lignes et 3 colonnes, ce qui est $4 \\times 3$. Le nombre total de cases ne change pas, donc les produits sont égaux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La représentation visuelle par un rectangle de cases montre que changer l'ordre des facteurs correspond à une rotation du rectangle, ce qui ne modifie pas sa surface (le nombre de cases). C'est la démonstration concrète de la commutativité pour des nombres entiers.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

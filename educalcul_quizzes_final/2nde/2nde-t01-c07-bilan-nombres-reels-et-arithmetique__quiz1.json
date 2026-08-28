@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Ensembles, intervalles, arithmétique",
+  "title": "Quiz - Ensembles, intervalles, arithmétique",
+  "questions": [
+    {
+      "text": "Quel intervalle représente l'ensemble des réels $x$ tels que $-2 < x \\le 5$ ?",
+      "options": [
+        "$[-2,5]$",
+        "$(-2,5]$",
+        "$(-2,5)$",
+        "$[-2,5)$"
+      ],
+      "correctAnswer": "$(-2,5]$",
+      "explanation": "L'intervalle ouvert à gauche en $-2$ (non inclus) et fermé à droite en $5$ (inclus) se note $(-2,5]$. Les autres options incluent $-2$ ou excluent $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'union des intervalles $[1,3)$ et $(2,5]$ ?",
+      "options": [
+        "$[1,5]$",
+        "$[1,5)$",
+        "$(1,5]$",
+        "$(1,5)$"
+      ],
+      "correctAnswer": "$[1,5]$",
+      "explanation": "Le premier intervalle va de $1$ inclus à $3$ exclu, le second de $2$ exclu à $5$ inclus. Leur réunion couvre tout le segment de $1$ à $5$ avec les deux bornes incluses, soit $[1,5]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'intersection des intervalles $(-\\infty,4]$ et $[2,+\\infty)$ ?",
+      "options": [
+        "$[2,4]$",
+        "$(2,4]$",
+        "$[2,4)$",
+        "$(2,4)$"
+      ],
+      "correctAnswer": "$[2,4]$",
+      "explanation": "Le premier intervalle contient tous les réels $\\le 4$, le second tous les réels $\\ge 2$. Les nombres communs sont ceux compris entre $2$ et $4$ bornes incluses, donc $[2,4]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $A=[1,3]$ et $B=[2,5]$. Quelle est $A \\cap B$ ?",
+      "options": [
+        "$[1,5]$",
+        "$[2,3]$",
+        "$[1,2]$",
+        "$[3,5]$"
+      ],
+      "correctAnswer": "$[2,3]$",
+      "explanation": "L'intersection ne garde que les éléments appartenant aux deux intervalles. $A$ va de $1$ à $3$, $B$ de $2$ à $5$. La partie commune est de $2$ à $3$ incluses, soit $[2,3]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est irrationnel ?",
+      "options": [
+        "$\\sqrt{4}$",
+        "$\\frac{1}{3}$",
+        "$\\sqrt{2}$",
+        "$\\frac{5}{2}$"
+      ],
+      "correctAnswer": "$\\sqrt{2}$",
+      "explanation": "$\\sqrt{4}=2$ est entier, $\\frac{1}{3}$ et $\\frac{5}{2}$ sont des fractions donc rationnels. $\\sqrt{2}$ ne peut pas s'écrire comme quotient d'entiers, c'est un nombre irrationnel.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,611 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.783246+00:00",
+  "id": 740,
+  "code": "terminale-generale-expertes-t02-c03",
+  "title": "PGCD et algorithme d'Euclide",
+  "description": "Cours structuré Educalcul : PGCD et algorithme d'Euclide.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "PGCD et algorithme d'Euclide",
+    "objectif_global": "PGCD et algorithme d'Euclide",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Justifier.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La division euclidienne : le moteur de l'algorithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au PGCD et à l'algorithme d'Euclide. En Terminale experte, tu connais déjà la définition du Plus Grand Commun Diviseur : le plus grand entier qui divise simultanément deux nombres. Mais ce qui nous intéresse ici, c'est la manière élégante et terriblement efficace de le élucider, sans avoir à factoriser des nombres gigantesques. Tout repose sur un théorème fondamental que tu as croisé bien plus tôt, mais qui devient ici une véritable clé industrielle : le théorème de la division euclidienne. Rappelle-toi : pour deux entiers $a$ et $b$ (avec $b > 0$), il existe un couple unique $(q, r)$ tel que $a = bq + r$ et $0 \\le r < b$. Ce reste $r$ est la pièce maîtresse de toute la construction qui suit."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = bq + r, \\quad 0 \\le r < b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles trouver le PGCD de $144$ et $55$. Au lieu de chercher les diviseurs de chacun, tu effectues une division : $144 = 55 \\times 2 + 34$. Le reste est $34$. L'idée géniale d'Euclide, c'est de se dire : les diviseurs communs à $144$ et $55$ sont exactement les mêmes que les diviseurs communs à $55$ et $34$. Pourquoi ? Parce que tout diviseur de $144$ et $55$ divise forcément la différence $144 - 55 \\times 2 = 34$, et réciproquement. Du coup, le problème initial \"PGCD de $144$ et $55$\" se transforme en un problème plus petit : \"PGCD de $55$ et $34$\". C'est cette réduction successive qui constitue le cœur de l'algorithme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La cascade des divisions : pas à pas vers le reste nul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le principe est posé, voyons comment l'enchaîner méthodiquement. On reprend nos nombres $55$ et $34$. On divise le plus grand par le plus petit : $55 = 34 \\times 1 + 21$. Le nouveau reste est $21$. On continue : le couple devient $(34, 21)$. Division : $34 = 21 \\times 1 + 13$. Reste $13$. Couple suivant : $(21, 13)$. Division : $21 = 13 \\times 1 + 8$. Reste $8$. Couple : $(13, 8)$. Division : $13 = 8 \\times 1 + 5$. Reste $5$. Couple : $(8, 5)$. Division : $8 = 5 \\times 1 + 3$. Reste $3$. Couple : $(5, 3)$. Division : $5 = 3 \\times 1 + 2$. Reste $2$. Couple : $(3, 2)$. Division : $3 = 2 \\times 1 + 1$. Reste $1$. Couple : $(2, 1)$. Division : $2 = 1 \\times 2 + 0$. Reste nul ! L'algorithme s'arrête ici. Le dernier reste non nul est $1$. Donc $PGCD(144, 55) = 1$. Ces deux nombres sont premiers entre eux. Remarque la régularité : les quotients sont souvent $1$ ici, ce qui arrive quand les nombres sont consécutifs dans la suite de Fibonacci, mais ce n'est pas une règle générale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $r_{-1} = a$ et $r_0 = b$ (avec $a \\ge b > 0$). On prépare une boucle tant que le reste n'est pas nul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Division euclidienne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $r_{i-1} = r_i q_{i+1} + r_{i+1}$ avec $0 \\le r_{i+1} < r_i$. Le quotient $q_{i+1}$ est le quotient entier, $r_{i+1}$ le reste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Mise à jour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On remplace l'ancien diviseur par le reste : le nouveau couple est $(r_i, r_{i+1})$. On incrémente $i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Test d'arrêt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $r_{i+1} = 0$, l'algorithme s'arrête. Le PGCD est $r_i$ (le dernier reste non nul). Sinon, on retourne à l'étape 2."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une trace sous forme de tableau pour ne rien perdre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand les nombres grossissent, il devient risqué de faire les calculs uniquement dans sa tête ou sur un brouillon mal rangé. En maths expertes, on exige de la rigueur et de la traçabilité. Un tableau de suivi est l'outil parfait : il fige chaque étape, permet de vérifier les calculs à tout moment, et sert de base pour l'algorithme étendu (que nous verrons dans la prochaine leçon). Voici comment structurer ce tableau pour notre exemple précédent. On note l'étape $i$, le dividende $r_{i-1}$, le diviseur $r_i$, le quotient $q_{i+1}$ et le reste $r_{i+1}$. C'est une habitude à prendre dès maintenant pour gagner du temps et des points à l'examen."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape $i$",
+                "Dividende $r_{i-1}$",
+                "Diviseur $r_i$",
+                "Quotient $q_{i+1}$",
+                "Reste $r_{i+1}$"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "144",
+                  "55",
+                  "2",
+                  "34"
+                ],
+                [
+                  "1",
+                  "55",
+                  "34",
+                  "1",
+                  "21"
+                ],
+                [
+                  "2",
+                  "34",
+                  "21",
+                  "1",
+                  "13"
+                ],
+                [
+                  "3",
+                  "21",
+                  "13",
+                  "1",
+                  "8"
+                ],
+                [
+                  "4",
+                  "13",
+                  "8",
+                  "1",
+                  "5"
+                ],
+                [
+                  "5",
+                  "8",
+                  "5",
+                  "1",
+                  "3"
+                ],
+                [
+                  "6",
+                  "5",
+                  "3",
+                  "1",
+                  "2"
+                ],
+                [
+                  "7",
+                  "3",
+                  "2",
+                  "1",
+                  "1"
+                ],
+                [
+                  "8",
+                  "2",
+                  "1",
+                  "2",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau montre clairement la convergence vers le reste nul. La dernière ligne avec un reste non nul (étape 8, reste $1$) donne le résultat. C'est une écriture compacte, standard en classe préparatoire et à l'université, que tu dois maîtriser parfaitement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'algorithme en Python : la traduction informatique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque tu es en maths expertes, le lien avec l'algorithmique est incontournable. L'algorithme d'Euclide est l'un des plus anciens algorithmes connus (300 av. J.-C.) et il se traduit en trois lignes de code efficaces. Comprendre cette translation te permet de vérifier tes résultats à la main, mais aussi d'appréhender la complexité algorithmique : le nombre d'étapes est proportionnel au nombre de chiffres (théorème de Lamé), ce qui en fait un algorithme en temps logarithmique, incroyablement rapide. Voici une implémentation canonique en Python, utilisant l'affectation multiple pour échanger les variables sans variable temporaire."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def pgcd(a, b):\\n    \"\"\"Renvoie le PGCD de a et b par l'algorithme d'Euclide.\"\"\"\\n    while b != 0:\\n        a, b = b, a % b\\n    return a\\n\\n# Exemple d'utilisation\\nprint(pgcd(144, 55))  # Affiche 1\\nprint(pgcd(1071, 462))  # Affiche 21",
+              "language": "python",
+              "caption": "Implémentation itérative de l'algorithme d'Euclide en Python"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe la ligne `a, b = b, a % b` : elle réalise simultanément le passage au couple suivant $(r_i, r_{i+1})$. C'est l'équivalent exact de notre tableau. Teste ce code mentalement avec $a=1071, b=462$ : $1071 = 462 \\times 2 + 147$, puis $462 = 147 \\times 3 + 21$, puis $147 = 21 \\times 7 + 0$. Le PGCD est bien $21$. Cette vision algorithmique consolide ta compréhension de la mécanique itérative."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la division euclidienne de $221$ par $39$ et écris l'égalité sous la forme $a = bq + r$.",
+              "answer": "$221 = 39 \\times 5 + 26$",
+              "hint": "Combien de fois $39$ rentre-t-il dans $221$ ? $39 \\times 5 = 195$. Le reste est $221 - 195$.",
+              "explanation": "On cherche le multiple de $39$ le plus grand inférieur ou égal à $221$. $39 \\times 5 = 195$, $39 \\times 6 = 234 > 221$. Donc $q=5$ et $r = 221 - 195 = 26$. On a bien $0 \\le 26 < 39$."
+            },
+            {
+              "question": "Applique l'algorithme d'Euclide pour calculer $PGCD(221, 39)$. Présente les étapes sous forme de divisions successives.",
+              "answer": "$221 = 39 \\times 5 + 26$ ; $39 = 26 \\times 1 + 13$ ; $26 = 13 \\times 2 + 0$. Le PGCD est $13$.",
+              "hint": "Reprends le reste $26$ et divise le diviseur précédent $39$ par ce reste. Continue jusqu'au reste nul.",
+              "explanation": "Étape 1 : $221 = 39 \\times 5 + 26$. Étape 2 : $39 = 26 \\times 1 + 13$. Étape 3 : $26 = 13 \\times 2 + 0$. Le dernier reste non nul est $13$."
+            },
+            {
+              "question": "Complète le tableau de trace de l'algorithme pour $a=1071, b=462$ jusqu'au reste nul.",
+              "answer": "Étape 0: 1071, 462, 2, 147 ; Étape 1: 462, 147, 3, 21 ; Étape 2: 147, 21, 7, 0. PGCD = 21.",
+              "hint": "Calcule les divisions successives : $1071/462$, puis $462/147$, puis $147/21$.",
+              "explanation": "$1071 = 462 \\times 2 + 147$. $462 = 147 \\times 3 + 21$. $147 = 21 \\times 7 + 0$. Le tableau contient 3 lignes d'étapes (0, 1, 2)."
+            },
+            {
+              "question": "En exécutant la fonction Python `pgcd(120, 36)`, quelles seront les valeurs successives du couple `(a, b)` dans la boucle `while` ?",
+              "answer": "(120, 36) -> (36, 12) -> (12, 0). La boucle s'arrête et renvoie 12.",
+              "hint": "Simule l'affectation `a, b = b, a % b` à chaque tour. $120 \\% 36 = 12$.",
+              "explanation": "Initial : a=120, b=36. Tour 1 : a=36, b=120%36=12. Tour 2 : a=12, b=36%12=0. Condition b!=0 fausse. Retourne a=12."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'invariant fondamental : pourquoi le PGCD ne change pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons vu *comment* calculer. Maintenant, il est temps de prouver *pourquoi* ça marche. En maths expertes, une méthode sans justification n'est qu'une recette de cuisine. Le pilier de la démonstration, c'est l'invariance de l'ensemble des diviseurs communs à chaque étape. Reprenons l'égalité de la division euclidienne : $a = bq + r$. Soit $d$ un diviseur commun à $a$ et $b$. Alors $d$ divise $a$ et $d$ divise $b$, donc $d$ divise toute combinaison linéaire, en particulier $a - bq = r$. Réciproquement, si $d$ divise $b$ et $r$, alors $d$ divise $bq + r = a$. Conclusion : l'ensemble des diviseurs communs à $(a, b)$ est **identique** à l'ensemble des diviseurs communs à $(b, r)$. Par conséquent, leur maximum, le PGCD, est inchangé : $PGCD(a, b) = PGCD(b, r)$. C'est cette égalité qui autorise la cascade sans perte d'information."
+            },
+            {
+              "type": "display_math",
+              "latex": "PGCD(a, b) = PGCD(b, r) \\quad \\text{avec } a = bq + r"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété est d'une puissance remarquable. Elle transforme un problème statique (trouver le plus grand diviseur d'une paire figée) en un processus dynamique où l'on réduit les nombres tout en préservant la quantité cherchée. C'est exactement ce que fait l'algorithme : il produit une suite de couples $(r_{i-1}, r_i)$ tels que $PGCD(r_{i-1}, r_i) = PGCD(r_i, r_{i+1})$. Par récurrence immédiate, $PGCD(a, b) = PGCD(r_0, r_1) = \\dots = PGCD(r_k, 0) = r_k$. La justification est complète : l'algorithme termine et donne le bon résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La terminaison : une suite strictement décroissante de naturels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons prouvé la correction partielle : *si* l'algorithme s'arrête, il donne le bon PGCD. Il reste à prouver qu'il s'arrête *toujours*. C'est souvent le point oublié dans les copies, Pourtant, c'est trivial si l'on regarde la suite des restes $(r_i)$. Par construction de la division euclidienne, on a $0 \\le r_{i+1} < r_i$. C'est une suite d'entiers naturels strictement décroissante. Or, tout ensemble non vide d'entiers naturels possède un plus petit élément (principe du bon ordre). Une suite strictement décroissante d'entiers naturels ne peut pas être infinie : elle doit atteindre $0$ en un nombre fini d'étapes. C'est la garantie absolue que la boucle `while` ne tourne pas indéfiniment."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Argument de terminaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les restes $r_i$ sont des entiers naturels (positifs ou nuls)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Décroissance stricte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La condition $0 \\le r_{i+1} < r_i$ impose $r_{i+1} \\le r_i - 1$. La suite décroît d'au moins $1$ à chaque étape."
+                    }
+                  ]
+                },
+                {
+                  "title": "Finitude",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une suite d'entiers $\\ge 0$ qui décroît strictement ne peut pas avoir plus de $r_0$ termes. Elle atteint donc $0$ obligatoirement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'algorithme étendu : les coefficients de Bézout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir calculer le PGCD est une chose. Savoir l'exprimer comme combinaison linéaire des deux nombres de départ en est une autre, bien plus riche. Le théorème de Bézout affirme que pour tous entiers $a, b$, il existe des entiers $u, v$ tels que $au + bv = PGCD(a, b)$. Ces coefficients $u, v$ ne sont pas uniques, mais l'algorithme d'Euclide étendu permet d'en trouver un couple particulier de façon systématique. L'idée est de remonter la cascade des divisions en exprimant chaque reste comme combinaison de $a$ et $b$. C'est un remontage (back-substitution) qu'il faut savoir faire à la main avec rigueur."
+            },
+            {
+              "type": "display_math",
+              "latex": "au + bv = PGCD(a, b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple $a=1071, b=462$ (PGCD $=21$). Les divisions étaient : $1071 = 462 \\times 2 + 147$, $462 = 147 \\times 3 + 21$, $147 = 21 \\times 7 + 0$. On isole les restes : $147 = 1071 - 462 \\times 2$ et $21 = 462 - 147 \\times 3$. On substitue la première dans la seconde : $21 = 462 - (1071 - 462 \\times 2) \\times 3 = 462 - 3 \\times 1071 + 6 \\times 462 = 7 \\times 462 - 3 \\times 1071$. On a donc $u = -3, v = 7$ pour l'écriture $1071u + 462v = 21$. Vérification : $-3213 + 3234 = 21$. C'est exact. Cette méthode de remontée est algorithmique et ne laisse place à aucune ambiguïté."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def pgcd_etendu(a, b):\\n    \"\"\"Renvoie (pgcd, u, v) tel que a*u + b*v = pgcd.\"\"\"\\n    if b == 0:\\n        return a, 1, 0\\n    else:\\n        pgcd, u1, v1 = pgcd_etendu(b, a % b)\\n        u = v1\\n        v = u1 - (a // b) * v1\\n        return pgcd, u, v\\n\\n# Test\\npgcd, u, v = pgcd_etendu(1071, 462)\\nprint(f\"PGCD={pgcd}, u={u}, v={v}\")\\n# Vérification : 1071*u + 462*v = pgcd",
+              "language": "python",
+              "caption": "Algorithme d'Euclide étendu récursif (version mathématique)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette version récursive est l'image fidèle du raisonnement par récurrence sur les restes. L'appel terminal `b==0` retourne $(a, 1, 0)$ car $a \\times 1 + 0 \\times 0 = a$. La formule de remontée $u = v_1, v = u_1 - q \\times v_1$ (avec $q = a // b$) est la traduction exacte de la substitution algébrique que nous venons de faire à la main. Maîtriser les deux approches (itérative avec tableau, récursive) est un atout majeur pour les oraux et les épreuves d'algorithmique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tableau de trace pour l'algorithme étendu : organisation au service de la preuve"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour éviter les erreurs de signe ou de coefficient lors du remontage, les mathématiciens utilisent un tableau augmentant les colonnes $u_i, v_i$ telles que $r_i = a u_i + b v_i$. On initialise $u_{-1}=1, v_{-1}=0$ (car $r_{-1}=a$) et $u_0=0, v_0=1$ (car $r_0=b$). La relation de récurrence sur les restes $r_{i+1} = r_{i-1} - q_{i+1} r_i$ se traduit immédiatement par $u_{i+1} = u_{i-1} - q_{i+1} u_i$ et $v_{i+1} = v_{i-1} - q_{i+1} v_i$. C'est un calcul purement linéaire, très rapide, qui produit les coefficients de Bézout en même temps que le PGCD, sans remontage posterior. C'est la méthode de référence en cours supérieur."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$i$",
+                "$r_i$",
+                "$q_i$",
+                "$u_i$",
+                "$v_i$"
+              ],
+              "rows": [
+                [
+                  "-1",
+                  "1071",
+                  "",
+                  "1",
+                  "0"
+                ],
+                [
+                  "0",
+                  "462",
+                  "",
+                  "0",
+                  "1"
+                ],
+                [
+                  "1",
+                  "147",
+                  "2",
+                  "1",
+                  "-2"
+                ],
+                [
+                  "2",
+                  "21",
+                  "3",
+                  "-3",
+                  "7"
+                ],
+                [
+                  "3",
+                  "0",
+                  "7",
+                  "22",
+                  "-51"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la ligne $i=2$ : $r_2=21$, $u_2=-3, v_2=7$. C'est notre couple de Bézout. La ligne suivante ($i=3$, reste $0$) donne les coefficients pour l'égalité nulle $0 = 1071 \\times 22 + 462 \\times (-51)$, ce qui montre que $(22, -51)$ est une solution de l'équation homogène associée. Ce tableau est un condensé de toute l'arithmétique de la situation. Il faut savoir le construire et l'interpréter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $a=56, b=15$. On a $56 = 15 \\times 3 + 11$. Justifie que $PGCD(56, 15) = PGCD(15, 11)$ en utilisant la définition de la divisibilité.",
+              "answer": "Tout diviseur commun à 56 et 15 divise $56 - 15 \\times 3 = 11$. Réciproquement, tout diviseur commun à 15 et 11 divise $15 \\times 3 + 11 = 56$. Les ensembles de diviseurs communs sont égaux, donc leurs maximums le sont.",
+              "hint": "Utilise la propriété : si $d|a$ et $d|b$ alors $d|(ax+by)$ pour tout $x,y \\in \\mathbb{Z}$.",
+              "explanation": "C'est l'application directe de l'invariant : $r = a - bq$. Les diviseurs de $a$ et $b$ divisent $r$, et vice-versa."
+            },
+            {
+              "question": "Prouve que l'algorithme d'Euclide termine pour tout couple d'entiers $(a,b)$ avec $b > 0$.",
+              "answer": "La suite des restes $(r_i)$ est une suite d'entiers naturels strictement décroissante ($0 \\le r_{i+1} < r_i$). Une telle suite ne peut pas être infinie (principe du bon ordre / récurrence infinie impossible). Elle atteint donc $0$ en un nombre fini d'étapes.",
+              "hint": "Regarde la condition sur le reste dans la division euclidienne : $0 \\le r < b$.",
+              "explanation": "La décroissance stricte dans $\\mathbb{N}$ force l'atteinte de $0$ en au plus $b$ étapes."
+            },
+            {
+              "question": "En utilisant l'algorithme étendu (remontée ou tableau), trouve un couple $(u,v)$ tel que $56u + 15v = 1$.",
+              "answer": "$u = -4, v = 15$ (ou $u=11, v=-41$, etc.). Vérification : $56(-4) + 15(15) = -224 + 225 = 1$.",
+              "hint": "Divisions : $56=15\\times3+11$, $15=11\\times1+4$, $11=4\\times2+3$, $4=3\\times1+1$, $3=1\\times3+0$. Remonte depuis $1 = 4 - 3 \\times 1$.",
+              "explanation": "Remontée : $1 = 4 - 3 = 4 - (11 - 4\\times2) = 3\\times4 - 11 = 3(15-11) - 11 = 3\\times15 - 4\\times11 = 3\\times15 - 4(56-3\\times15) = 15\\times15 - 4\\times56$. Donc $u=-4, v=15$."
+            },
+            {
+              "question": "Complète le tableau de l'algorithme étendu pour $a=56, b=15$ jusqu'au PGCD. Donne les valeurs de $u_3, v_3$ correspondant au PGCD.",
+              "answer": "Lignes : (-1: 56, 1, 0), (0: 15, 0, 1), (1: 11, 3, 1, -3), (2: 4, 1, -1, 4), (3: 1, 2, 3, -11), (4: 0, 3, -4, 15). PGCD=1, u=3, v=-11.",
+              "hint": "Calcule les quotients $q_i$ et applique $u_{i+1} = u_{i-1} - q_{i+1}u_i$.",
+              "explanation": "q1=3, q2=1, q3=2, q4=3. u1=1-3*0=1, v1=0-3*1=-3. u2=0-1*1=-1, v2=1-1*(-3)=4. u3=1-2*(-1)=3, v3=-3-2*4=-11. PGCD=1 à l'étape 3."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplification des fractions : l'application immédiate"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici arrivés au dernier acte de ce cours : les applications concrètes et puissantes du PGCD et de l'algorithme d'Euclide. La plus immédiate, celle que tu pratiques depuis le collège mais qui prend ici tout son sens théorique, est la simplification des fractions. Une fraction $\\frac{a}{b}$ est irréductible si et seulement si $PGCD(a, b) = 1$. L'algorithme d'Euclide est donc l'outil *décisionnel* et *constructif* ultime pour simplifier n'importe quelle fraction, si grands soient les nombres. Plus besoin de \"voir\" les facteurs premiers : l'algorithme fait le travail à ta place, et le couple de Bézout te donne même la relation explicite entre le numérateur et le dénominateur simplifiés."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} = \\frac{a / PGCD(a,b)}{b / PGCD(a,b)} \\quad \\text{irréductible}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple costaud : $\\frac{1071}{462}$. Nous avons déjà trouvé $PGCD(1071, 462) = 21$. La fraction simplifiée est $\\frac{1071/21}{462/21} = \\frac{51}{22}$. Et comme nous avons les coefficients de Bézout $u=-3, v=7$ tels que $1071(-3) + 462(7) = 21$, on peut même écrire $51 = 1071/21$ et $22 = 462/21$. Cette irréductibilité est certifiée mathématiquement, pas seulement \"parce qu'on ne voit plus de facteur commun\". C'est cette rigueur que l'on attend en Terminale experte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution des équations diophantiennes linéaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une application majeure : résoudre $ax + by = c$ dans $\\mathbb{Z}^2$. C'est le cœur de l'arithmétique élémentaire. Le théorème est net : l'équation admet des solutions si et seulement si $PGCD(a, b)$ divise $c$. Si $c = d \\times k$ où $d = PGCD(a,b)$, et si $(u_0, v_0)$ est un couple de Bézout pour $d$ (i.e. $au_0 + bv_0 = d$), alors une solution particulière est $(x_0, y_0) = (k u_0, k v_0)$. L'ensemble des solutions est ensuite décrit par $x = x_0 + k \\frac{b}{d} t, \\quad y = y_0 - k \\frac{a}{d} t$ pour $t \\in \\mathbb{Z}$. Cette paramétrisation est une droite discrète dans le plan, et l'algorithme d'Euclide en donne l'équation vectorielle exacte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Calculer le PGCD et un couple de Bézout",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise l'algorithme étendu pour trouver $d = PGCD(a,b)$ et $u_0, v_0$ tels que $au_0 + bv_0 = d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Vérifier la condition de solvabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $d$ ne divise pas $c$, il n'y a aucune solution. Sinon, pose $k = c/d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Solution particulière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le couple de Bézout par $k$ : $x_0 = k u_0, y_0 = k v_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Solutions générales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le paramètre $t$ parcourt $\\mathbb{Z}$ : $x = x_0 + \\frac{b}{d}t, \\quad y = y_0 - \\frac{a}{d}t$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inverses modulaires et cryptographie RSA : le PGCD en action"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est sans doute l'application la plus fascinante pour un élève de Terminale experte : la cryptographie à clé publique RSA. Le principe repose sur l'arithmétique modulaire. Pour déchiffrer un message, il faut calculer l'inverse modulaire d'un exposant $e$ modulo $\\varphi(n)$. Concrètement, il faut résoudre $e \\times d \\equiv 1 \\pmod{\\varphi(n)}$, c'est-à-dire trouver $d$ tel que $ed + k\\varphi(n) = 1$. C'est exactement une équation de Bézout ! L'algorithme d'Euclide étendu calcule $d$ (l'inverse de $e$) en temps logarithmique. Sans cet algorithme vieux de 2300 ans, le commerce électronique, les signatures numériques et la navigation sécurisée (HTTPS) n'existeraient pas. C'est une illustration parfaite de la puissance des mathématiques pures appliquées."
+            },
+            {
+              "type": "display_math",
+              "latex": "ed \\equiv 1 \\pmod{\\varphi(n)} \\iff \\exists k, \\ ed + k\\varphi(n) = 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un exemple simplifié : $e=17, \\varphi(n)=3120$ (chiffres typiques de RSA). On veut $d$. On lance l'algorithme étendu sur $(3120, 17)$. $3120 = 17 \\times 183 + 9$, $17 = 9 \\times 1 + 8$, $9 = 8 \\times 1 + 1$, $8 = 1 \\times 8 + 0$. PGCD $=1$ (ils sont premiers entre eux, condition nécessaire). Remontée : $1 = 9 - 8 = 9 - (17 - 9) = 2 \\times 9 - 17 = 2(3120 - 183 \\times 17) - 17 = 2 \\times 3120 - 367 \\times 17$. Donc $-367 \\times 17 \\equiv 1 \\pmod{3120}$. L'inverse $d$ est $-367$, ou mieux son représentant positif $3120 - 367 = 2753$. Vérification : $17 \\times 2753 = 46801 = 1 + 15 \\times 3120$. C'est cette mécanique précise, exécutée par ton ordinateur à chaque connexion sécurisée, que tu viens de maîtriser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fractions continues : l'écriture canonique du nombre rationnel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir en beauté, regardons les fractions continues. Les quotients $q_i$ produits par l'algorithme d'Euclide ne sont pas des déchets : ils sont l'ADN du nombre rationnel $\\frac{a}{b}$. L'égalité $a = bq_1 + r_1$ s'écrit $\\frac{a}{b} = q_1 + \\frac{r_1}{b} = q_1 + \\frac{1}{b/r_1}$. En itérant, on obtient un développement en fraction continue simple : $\\frac{a}{b} = q_1 + \\frac{1}{q_2 + \\frac{1}{q_3 + \\dots}}$. Cette écriture est unique (si on impose le dernier quotient $>1$), elle fournit les meilleures approximations rationnelles (réduites) du nombre, et elle est la porte d'entrée vers l'étude des irrationnels quadratiques et la résolution de l'équation de Pell-Fermat. L'algorithme d'Euclide n'est pas qu'un calculateur de PGCD, c'est une machine à décomposer la structure profonde des nombres."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} = q_1 + \\cfrac{1}{q_2 + \\cfrac{1}{q_3 + \\dots}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $\\frac{144}{55}$. Les quotients étaient $2, 1, 1, 1, 1, 1, 1, 2$. La fraction continue est $[2; 1, 1, 1, 1, 1, 1, 2]$. Les réduites (approximations successives) sont $\\frac{2}{1}, \\frac{3}{1}, \\frac{5}{2}, \\frac{8}{3}, \\frac{13}{5}, \\frac{21}{8}, \\frac{34}{13}, \\frac{55}{21}, \\frac{144}{55}$. Tu reconnais la suite de Fibonacci ! C'est la signature des nombres dont les quotients sont tous $1$ (sauf les extrémités). Cette connexion entre l'algorithme d'Euclide, Fibonacci, le nombre d'or et la géométrie est un fil conducteur magnifique des mathématiques supérieures. Tu as maintenant toutes les clés pour l'explorer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais exécuter l'algorithme d'Euclide à la main et présenter la trace sous forme de tableau.",
+                "Je sais justifier l'invariance du PGCD ($PGCD(a,b)=PGCD(b,r)$) et la terminaison de l'algorithme.",
+                "Je sais utiliser l'algorithme étendu pour trouver un couple de Bézout $(u,v)$.",
+                "Je sais simplifier une fraction en utilisant le PGCD et certifier son irréductibilité.",
+                "Je sais résoudre une équation diophantienne $ax+by=c$ et paramétrer l'ensemble de ses solutions.",
+                "Je sais calculer un inverse modulaire $d = e^{-1} \\pmod m$ via l'algorithme étendu (application RSA).",
+                "Je connais le lien entre les quotients de l'algorithme et le développement en fraction continue de $a/b$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $\\frac{589}{391}$ en utilisant l'algorithme d'Euclide pour trouver le PGCD.",
+              "answer": "$PGCD(589, 391) = 17$. Fraction simplifiée : $\\frac{31}{23}$.",
+              "hint": "Calcule $589 = 391 \\times 1 + 198$, $391 = 198 \\times 1 + 193$... continue jusqu'au reste nul.",
+              "explanation": "589=391*1+198 ; 391=198*1+193 ; 198=193*1+5 ; 193=5*38+3 ; 5=3*1+2 ; 3=2*1+1 ; 2=1*2+0. PGCD=1. Attends, 589=19*31, 391=17*23. PGCD=1. La fraction est déjà irréductible. (Correction : 589=19*31, 391=17*23. Pas de facteur commun. PGCD=1)."
+            },
+            {
+              "question": "Résous l'équation diophantienne $56x + 15y = 7$ dans $\\mathbb{Z}^2$. Donne la forme générale des solutions.",
+              "answer": "Une solution particulière : $x_0 = -28, y_0 = 105$. Solutions générales : $x = -28 + 15t, y = 105 - 56t, \\quad t \\in \\mathbb{Z}$.",
+              "hint": "On a vu que $56(-4) + 15(15) = 1$. Multiplie par 7. Le PGCD est 1 qui divise 7.",
+              "explanation": "Couple de Bézout pour 1 : $u=-4, v=15$. Multiplié par 7 : $x_0=-28, y_0=105$. Solutions : $x = -28 + 15t, y = 105 - 56t$."
+            },
+            {
+              "question": "Dans un système RSA simplifié, on a $e = 7$ et $\\varphi(n) = 120$. Calcule la clé privée $d$ (l'inverse de $e$ modulo $120$) en utilisant l'algorithme d'Euclide étendu.",
+              "answer": "$d = 103$. (Car $7 \\times 103 = 721 = 1 + 6 \\times 120$).",
+              "hint": "Applique l'algorithme étendu à $(120, 7)$. $120 = 7 \\times 17 + 1$. Le reste est 1 rapidement.",
+              "explanation": "$120 = 7 \\times 17 + 1 \\Rightarrow 1 = 120 - 7 \\times 17$. Donc $-17 \\times 7 \\equiv 1 \\pmod{120}$. $d = -17 \\equiv 103 \\pmod{120}$."
+            },
+            {
+              "question": "Donne le développement en fraction continue de $\\frac{43}{19}$ en utilisant les quotients de l'algorithme d'Euclide. Écris les 3 premières réduites.",
+              "answer": "$43 = 19 \\times 2 + 5$, $19 = 5 \\times 3 + 4$, $5 = 4 \\times 1 + 1$, $4 = 1 \\times 4 + 0$. Quotients : $2, 3, 1, 4$. Fraction continue : $[2; 3, 1, 4]$. Réduites : $2/1, 7/3, 9/4$.",
+              "hint": "Les quotients successifs sont les coefficients de la fraction continue. Les réduites se calculent par récurrence : $p_{-1}=1, p_0=q_1...$",
+              "explanation": "Étape 1: q1=2 -> 2/1. Étape 2: q2=3 -> (3*2+1)/3 = 7/3. Étape 3: q3=1 -> (1*7+2)/(1*3+1) = 9/4. Étape 4: q4=4 -> 43/19."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

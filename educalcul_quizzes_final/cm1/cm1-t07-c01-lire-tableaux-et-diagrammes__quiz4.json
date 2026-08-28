@@ -1,0 +1,202 @@
+{
+  "_status": "done",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Lire tableaux et diagrammes",
+  "title": "Quiz : Lire tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "Quel élève a lu le plus de livres ?",
+      "options": [
+        "Léa",
+        "Tom",
+        "Sara",
+        "Nicolas"
+      ],
+      "correctAnswer": "Sara",
+      "explanation": "Dans le tableau, Sara a lu 15 livres, ce qui est le nombre le plus élevé parmi les quatre élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Livres lus"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "12"
+          ],
+          [
+            "Tom",
+            "9"
+          ],
+          [
+            "Sara",
+            "15"
+          ],
+          [
+            "Nicolas",
+            "11"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel fruit est le moins apprécié ?",
+      "options": [
+        "Pomme",
+        "Banane",
+        "Orange",
+        "Fraise"
+      ],
+      "correctAnswer": "Fraise",
+      "explanation": "Le diagramme en barres montre que la fraise a la valeur la plus basse (3), donc c'est le fruit le moins choisi.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Banane",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Orange",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Fraise",
+            "value": 3,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quelle est la différence entre la température la plus élevée et la plus basse ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La température maximale est 15 °C (mardi) et la minimale est 9 °C (mercredi). La différence est 15 − 9 = 6 °C.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Température (°C)"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "12"
+          ],
+          [
+            "Mardi",
+            "15"
+          ],
+          [
+            "Mercredi",
+            "9"
+          ],
+          [
+            "Jeudi",
+            "14"
+          ],
+          [
+            "Vendredi",
+            "11"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel pourcentage des élèves a un chat ?",
+      "options": [
+        "$30\\%$",
+        "$40\\%$",
+        "$20\\%$",
+        "$10\\%$"
+      ],
+      "correctAnswer": "$30\\%$",
+      "explanation": "Le camembert indique que la part « Chat » correspond à 30 % du total (valeur 30 sur 100).",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Animaux de compagnie",
+        "slices": [
+          {
+            "label": "Chien",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 30,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 20,
+            "tone": "red"
+          },
+          {
+            "label": "Poisson",
+            "value": 10,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien d'élèves pratiquent le football ou le basket au total ?",
+      "options": [
+        "$30$",
+        "$27$",
+        "$24$",
+        "$33$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "Le tableau donne 18 élèves pour le football et 12 pour le basket. 18 + 12 = 30 élèves au total.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Sport",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Football",
+            "18"
+          ],
+          [
+            "Basket",
+            "12"
+          ],
+          [
+            "Natation",
+            "9"
+          ],
+          [
+            "Athlétisme",
+            "6"
+          ]
+        ]
+      }
+    }
+  ]
+}

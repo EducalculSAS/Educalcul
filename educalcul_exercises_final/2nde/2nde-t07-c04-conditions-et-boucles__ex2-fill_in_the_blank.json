@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "For / while simple",
+  "title": "Exercices sur les boucles for et while simples",
+  "blocks": [
+    {
+      "title": "Boucle pour simple",
+      "content": "Complétez l'en-tête de la boucle pour afficher les entiers de 1 à 10 :\\nPour i de {{1}} à {{2}} faire",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle pour i de 1 à 10 parcourt les entiers de $1$ à $10$ inclus. Le premier trou correspond à la valeur initiale $1$, le second à la valeur finale $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle while simple",
+      "content": "Complétez la condition de la boucle while pour qu'elle s'exécute tant que la variable i est inférieure ou égale à 10 :\\nTant que {{1}} faire",
+      "correctAnswer": "",
+      "blanks": [
+        "i ≤ 10|i <= 10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition i ≤ 10 (ou i <= 10) permet de répéter les instructions tant que i est inférieur ou égal à $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la somme des premiers entiers",
+      "content": "Dans l'algorithme suivant, complétez l'instruction d'incrémentation de la variable somme :\\nsomme ← 0\\nPour i de 1 à n faire\\n    somme ← somme + {{1}}\\nFin pour\\nAfficher somme",
+      "correctAnswer": "",
+      "blanks": [
+        "i"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "À chaque itération, la variable somme est augmentée de la valeur courante de i, donc on ajoute i. Après la boucle, somme vaut $1 + 2 + \\dots + n$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

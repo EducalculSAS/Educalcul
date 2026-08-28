@@ -1,0 +1,355 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.885741+00:00",
+  "id": 449,
+  "code": "4eme-t06-c05",
+  "title": "Bilan - Espace et transformations 4e",
+  "description": "Cours structuré Educalcul : Bilan - Espace et transformations 4e.",
+  "subject": "Transformations, espace, grandeurs et mesures",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Transformations, espace, grandeurs et mesures",
+    "titre_du_cours": "Bilan - Espace et transformations 4e",
+    "objectif_global": "Bilan - Espace et transformations 4e",
+    "mini_lecons_imposees": [
+      "Transformations, volumes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace, grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Transformations, volumes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les transformations du plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur les transformations du plan et les volumes des solides. Nous allons d'abord revoir ce qu'est une transformation géométrique : c'est une règle qui associe à chaque point d'une figure un nouveau point, de sorte que la figure entière se déplace sans se déformer. Les trois transformations principales que tu as rencontrées sont la translation, la rotation et la symétrie axiale. Une translation se définit par un vecteur $\\vec{v}$ ; chaque point $M$ de la figure initiale devient le point $M'$ tel que $\\overrightarrow{MM'}=\\vec{v}$. Une rotation est caractérisée par un centre $O$, un angle $\\alpha$ et un sens (positif pour le sens trigonométrique). Enfin, une symétrie axiale reflète chaque point par rapport à une droite d'axe, comme un miroir. Ces trois transformations sont des déplacements rigides : elles conservent les longueurs, les angles et les aires. Dans la vie de tous les jours, tu peux imaginer glisser un livre sur une table (translation), faire tourner une assiette (rotation) ou regarder ton reflet dans une vitre (symétrie)."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avant transformation",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les transformations du plan sont claires, passons aux volumes. Le volume mesure l'espace occupé par un solide. Nous allons rappeler les formules des solides les plus courants et voir comment les calculer avec des nombres concrets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volumes des solides usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le volume d'un cube de côté $a$ est $V = a^3$. Pour un pavé droit de dimensions $a$, $b$, $c$, le volume est $V = a \\times b \\times c$. Un cylindre de rayon $r$ et de hauteur $h$ a un volume $V = \\pi r^2 h$. Enfin, une pyramide de base $B$ et de hauteur $h$ possède un volume $V = \\frac{1}{3} B h$. Ces formules s'appliquent dès que les mesures sont exprimées dans la même unité, par exemple le centimètre cube ($cm^3$). Pour t'aider à visualiser, imagine un cube de $3\\,cm$ de côté : son volume vaut $27\\,cm^3$. Un cylindre de rayon $2\\,cm$ et de hauteur $5\\,cm$ donne $V = \\pi \\times 4 \\times 5 = 20\\pi \\,cm^3$, soit environ $62,8\\,cm^3$. Une pyramide à base carrée de côté $4\\,cm$ et de hauteur $6\\,cm$ a une base $B = 16\\,cm^2$ et un volume $V = \\frac{1}{3} \\times 16 \\times 6 = 32\\,cm^3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{cube}} = a^3,\\quad V_{\\text{pav\\'e}} = abc,\\quad V_{\\text{cylindre}} = \\pi r^2 h,\\quad V_{\\text{pyramide}} = \\frac{1}{3}Bh"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de volumes pour des dimensions choisies",
+              "bars": [
+                {
+                  "label": "Cube 3 cm",
+                  "value": 27,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Cylindre r=2, h=5",
+                  "value": 62.8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pyramide 4x4x6",
+                  "value": 32,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment calculer des volumes. Intéressons-nous maintenant à l'effet d'une transformation rigide sur le volume d'un solide. Puisqu'une translation, une rotation ou une symétrie ne modifient ni les longueurs ni les angles, le volume reste inchangé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effet des transformations sur le volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un pavé droit de volume $60\\,cm^3$. Si nous le translatons de $5\\,cm$ vers la droite, ses dimensions ne changent pas, donc son volume reste $60\\,cm^3$. De même, une rotation de $90^{\\circ}$ autour d'un axe passant par son centre ne modifie aucune mesure. La symétrie par rapport à un plan vertical agit comme un miroir : le solide est retourné mais sa taille est identique. Cette propriété s'appelle l'invariance du volume par les déplacements rigides."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la transformation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère si la transformation est une translation, une rotation ou une symétrie axiale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la rigidité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ces trois transformations conservent les distances, donc les longueurs, les aires et les volumes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure sur le volume",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le volume du solide après transformation est exactement le même qu'avant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Volume avant et après transformation (inchangé)",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 60,
+                  "label": "V = 60 cm³"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour manipuler transformations et volumes avec aisance. Rappelle-toi que les formules de volume s'appliquent à condition d'utiliser des unités cohérentes, et que tout déplacement rigide laisse le volume intact."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le point $A(1;2)$ est translaté par le vecteur $\\vec{v}(3;-1)$. Quelles sont les coordonnées de $A'$ ?",
+              "answer": "$A'(4;1)$",
+              "hint": "Ajoute les composantes du vecteur aux coordonnées du point de départ.",
+              "explanation": "Une translation ajoute le vecteur aux coordonnées : $x' = 1+3 = 4$, $y' = 2+(-1) = 1$."
+            },
+            {
+              "question": "Calcule le volume d'un cylindre de rayon $3\\,cm$ et de hauteur $7\\,cm$. Donne une valeur approchée au dixième près.",
+              "answer": "$V \\approx 197,9\\,cm^3$",
+              "hint": "Utilise la formule $V = \\pi r^2 h$ et prends $\\pi \\approx 3,14$.",
+              "explanation": "$r^2 = 9$, $V = \\pi \\times 9 \\times 7 = 63\\pi \\approx 63 \\times 3,14 = 197,82 \\approx 197,9\\,cm^3$."
+            },
+            {
+              "question": "Une pyramide a un volume de $48\\,cm^3$. Après une rotation de $180^{\\circ}$ autour d'un axe passant par son sommet, quel est son nouveau volume ?",
+              "answer": "$48\\,cm^3$",
+              "hint": "Une rotation est un déplacement rigide, elle ne change pas les dimensions.",
+              "explanation": "Les déplacements rigides (translation, rotation, symétrie) conservent les longueurs, les aires et les volumes. Donc le volume reste $48\\,cm^3$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des transformations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour consolider tes acquis, reprenons chaque transformation avec un exemple inédit. Imagine un carré de côté $4\\,cm$ dont le centre est l'origine du repère. Si nous effectuons une rotation d'un quart de tour ($90^{\\circ}$) dans le sens trigonométrique, chaque sommet échange ses coordonnées : $(x;y)$ devient $(-y;x)$. Le carré conserve sa forme, sa surface ($16\\,cm^2$) et sa position relative au centre. Une translation du même carré par le vecteur $\\vec{u}(2;-3)$ déplace tous ses points de $2\\,cm$ vers la droite et de $3\\,cm$ vers le bas, sans modifier ses dimensions. Enfin, une symétrie axiale par rapport à l'axe des abscisses renvoie le point $(x;y)$ en $(x;-y)$, comme un reflet dans un miroir horizontal. Dans les trois cas, les longueurs, les angles et les aires restent identiques."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Un quart de tour correspond à $\\frac{1}{4}$ de tour complet"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir revisité les transformations, tournons-nous vers les formules de volume. Nous allons les réécrire avec de nouveaux nombres pour éviter toute répétition mécanique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des formules de volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le volume d'un pavé droit se calcule avec $V = a \\times b \\times c$. Prenons $a = 5\\,cm$, $b = 3\\,cm$, $c = 4\\,cm$ : $V = 5 \\times 3 \\times 4 = 60\\,cm^3$. Pour un cylindre, $V = \\pi r^2 h$. Avec $r = 2,5\\,cm$ et $h = 10\\,cm$, on obtient $V = \\pi \\times 6,25 \\times 10 = 62,5\\pi \\approx 196,3\\,cm^3$. Une pyramide à base triangulaire d'aire $B = 12\\,cm^2$ et de hauteur $h = 9\\,cm$ donne $V = \\frac{1}{3} \\times 12 \\times 9 = 36\\,cm^3$. Ces exemples montrent que la même structure de formule s'applique à des solides très différents, à condition de bien identifier la base et la hauteur."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{pav\\'e}} = abc,\\quad V_{\\text{cylindre}} = \\pi r^2 h,\\quad V_{\\text{pyramide}} = \\frac{1}{3}Bh"
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition du volume total entre trois solides de même hauteur",
+              "slices": [
+                {
+                  "label": "Pavé droit",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Cylindre",
+                  "value": 196.3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pyramide",
+                  "value": 36,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par l'invariance du volume sous l'effet d'un déplacement rigide. Choisis un solide, applique-lui une transformation, et observe que le volume ne bouge pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Invariance du volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cône de volume $V = 84\\,cm^3$. Effectuons une translation de $10\\,cm$ selon l'axe vertical. La hauteur et le rayon de la base ne changent pas, donc le volume reste $84\\,cm^3$. Faisons ensuite une symétrie par rapport à un plan vertical passant par l'axe du cône. Le cône est miroir de lui-même, mais ses dimensions sont identiques, le volume est toujours $84\\,cm^3$. Enfin, une rotation de $45^{\\circ}$ autour de son axe ne modifie aucune mesure. Cette constance est une conséquence directe de la définition des déplacements rigides : ils conservent toutes les distances."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le solide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note son volume initial."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer une transformation rigide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Translation, rotation ou symétrie axiale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les volumes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le volume final est égal au volume initial."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Volume du cône avant et après transformation (inchangé)",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 84,
+                  "label": "V = 84 cm³"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une translation, une rotation et une symétrie axiale.",
+                "Je sais calculer le volume d'un cube, d'un pavé droit, d'un cylindre et d'une pyramide.",
+                "Je sais expliquer pourquoi le volume ne change pas après un déplacement rigide.",
+                "Je sais utiliser les bonnes unités ($cm^3$, $m^3$) et convertir si nécessaire."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le carré de centre $O(0;0)$ et de sommet $A(2;2)$ est.rotate de $90^{\\circ}$ autour de $O$. Quelles sont les coordonnées de l'image de $A$ ?",
+              "answer": "$A'(-2;2)$",
+              "hint": "Applique la règle $(x;y) \\rightarrow (-y;x)$ pour une rotation positive de $90^{\\circ}$.",
+              "explanation": "Avec $x=2$, $y=2$, on obtient $x' = -2$, $y' = 2$."
+            },
+            {
+              "question": "Un pavé droit a pour dimensions $6\\,cm$, $4\\,cm$, $2\\,cm$. Quel est son volume ?",
+              "answer": "$48\\,cm^3$",
+              "hint": "Multiplie les trois dimensions.",
+              "explanation": "$V = 6 \\times 4 \\times 2 = 48\\,cm^3$."
+            },
+            {
+              "question": "Vrai ou faux : une translation modifie le volume d'un solide.",
+              "answer": "Faux",
+              "hint": "Rappelle-toi la définition d'un déplacement rigide.",
+              "explanation": "Une translation est un déplacement rigide : elle conserve toutes les longueurs, donc le volume reste inchangé."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

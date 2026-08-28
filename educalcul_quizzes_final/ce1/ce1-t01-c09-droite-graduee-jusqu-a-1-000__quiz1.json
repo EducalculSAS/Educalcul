@@ -1,0 +1,146 @@
+{
+  "_status": "done",
+  "_course_id": 76,
+  "_course_code": "ce1-t01-c09-droite-graduee-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Lire l'échelle",
+  "title": "Quiz : Lire l'échelle sur une droite graduée jusqu'à 1 000",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est la valeur du point A ?",
+      "options": [
+        "30",
+        "40",
+        "50",
+        "14"
+      ],
+      "correctAnswer": "40",
+      "explanation": "L'échelle de la droite graduée va de $0$ à $100$. Les traits principaux (graduations) sont espacés de $10$ en $10$ : $0, 10, 20, 30, 40, 50...$ Le point A se trouve sur le 4e trait après $0$, il correspond donc au nombre $40$. L'option $14$ correspond à une lecture erronée des petits traits (graduations de $1$) qui n'existent pas ici. Les options $30$ et $50$ sont les graduations voisines.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100 par pas de 10",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 40,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          10
+        ]
+      }
+    },
+    {
+      "text": "Sur cette droite graduée de $0$ à $1 000$, les gros traits marquent les centaines. Quelle est la valeur du point B ?",
+      "options": [
+        "500",
+        "600",
+        "700",
+        "60"
+      ],
+      "correctAnswer": "600",
+      "explanation": "Les gros traits (graduations principales) représentent les centaines : $0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1 000$. Le point B est placé sur le 6e gros trait après $0$, il indique donc $600$. L'option $60$ confond centaines et dizaines. Les options $500$ et $700$ sont les centaines voisines.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1000 par pas de 100",
+        "min": 0,
+        "max": 1000,
+        "points": [
+          {
+            "value": 600,
+            "label": "B"
+          }
+        ],
+        "intervals": [
+          100
+        ]
+      }
+    },
+    {
+      "text": "La droite ci-dessous commence à $100$ et finit à $300$. Les graduations sont espacées de $50$ en $50$. Quelle est la valeur du point C ?",
+      "options": [
+        "100",
+        "150",
+        "200",
+        "50"
+      ],
+      "correctAnswer": "150",
+      "explanation": "Le départ est $100$. On compte les sauts de $50$ : $100 + 50 = 150$ (1er trait), $150 + 50 = 200$ (2e trait), etc. Le point C est sur le premier trait après $100$, sa valeur est donc $150$. L'option $100$ est le point de départ. L'option $200$ est le trait suivant. L'option $50$ est la valeur du pas, pas la valeur du point.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 100 à 300 par pas de 50",
+        "min": 100,
+        "max": 300,
+        "points": [
+          {
+            "value": 150,
+            "label": "C"
+          }
+        ],
+        "intervals": [
+          50
+        ]
+      }
+    },
+    {
+      "text": "Sur cette droite, les graduations valent $20$ chacune. Le point D est placé sur le 6e trait après le départ $0$. Quelle est sa valeur ?",
+      "options": [
+        "100",
+        "120",
+        "140",
+        "20"
+      ],
+      "correctAnswer": "120",
+      "explanation": "Chaque graduation vaut $20$. Il faut multiplier le nombre de sauts par la valeur du pas : $6 \\times 20 = 120$. On peut aussi compter : $20, 40, 60, 80, 100, 120$. L'option $100$ correspond à $5$ sauts ($5 \\times 20$). L'option $140$ correspond à $7$ sauts. L'option $20$ est la valeur d'un seul saut.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 200 par pas de 20",
+        "min": 0,
+        "max": 200,
+        "points": [
+          {
+            "value": 120,
+            "label": "D"
+          }
+        ],
+        "intervals": [
+          20
+        ]
+      }
+    },
+    {
+      "text": "La droite graduée va de $300$ à $500$ par pas de $50$. Le point E se trouve exactement au milieu entre deux graduations. Quelle est sa valeur ?",
+      "options": [
+        "400",
+        "425",
+        "450",
+        "475"
+      ],
+      "correctAnswer": "425",
+      "explanation": "Les graduations sont : $300, 350, 400, 450, 500$. Le point E est placé à mi-chemin entre $400$ et $450$. La moitié de $50$ est $25$. On ajoute $25$ à $400$ : $400 + 25 = 425$. On peut aussi retrancher $25$ à $450$ : $450 - 25 = 425$. Les autres options correspondent aux graduations principales ($400, 450$) ou à une mauvaise interpolation ($475$).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 300 à 500 par pas de 50",
+        "min": 300,
+        "max": 500,
+        "points": [
+          {
+            "value": 425,
+            "label": "E"
+          }
+        ],
+        "intervals": [
+          50
+        ]
+      }
+    }
+  ]
+}

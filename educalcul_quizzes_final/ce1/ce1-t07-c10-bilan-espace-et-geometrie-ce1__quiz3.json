@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 135,
+  "_course_code": "ce1-t07-c10-bilan-espace-et-geometrie-ce1",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Checklist",
+  "title": "Bilan Géométrie CE1 : Figures, Solides et Repérage",
+  "questions": [
+    {
+      "text": "Parmi les solides ci-dessous, lequel possède exactement six faces carrées ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Un cube est un solide qui a six faces, et toutes ses faces sont des carrés identiques. Un pavé droit a six faces mais ce sont des rectangles (ou des carrés pour certains). Une pyramide a une base polygonale et des faces triangulaires. Un cylindre a deux faces circulaires et une face courbe.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Combien de côtés et de sommets a un triangle ?",
+      "options": [
+        "$3$ côtés et $3$ sommets",
+        "$4$ côtés et $4$ sommets",
+        "$3$ côtés et $4$ sommets",
+        "$0$ côté et $0$ sommet"
+      ],
+      "correctAnswer": "$3$ côtés et $3$ sommets",
+      "explanation": "Par définition, un triangle est un polygone à trois côtés. Chaque côté rencontre les deux autres en un point appelé sommet. Il y a donc exactement trois sommets. Le carré et le rectangle ont quatre côtés et quatre sommets. Le cercle n'a ni côté ni sommet.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un pavé droit, comment appelle-t-on le segment de droite où deux faces se rejoignent ?",
+      "options": [
+        "Un sommet",
+        "Une arête",
+        "Une face",
+        "Un angle"
+      ],
+      "correctAnswer": "Une arête",
+      "explanation": "Une arête est l'intersection de deux faces d'un solide. Un sommet est le point où se rejoignent plusieurs arêtes. Une face est une surface plane du solide. Un angle est une figure plane formée par deux demi-droites.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, tu es sur la case de départ. Tu exécutes ce programme : avancer de $2$ cases, tourner à droite, avancer de $1$ case. Quelle instruction permet de revenir exactement à la case de départ en tournant le dos au parcours effectué ?",
+      "options": [
+        "Tourner à gauche, avancer de $1$ case, tourner à gauche, avancer de $2$ cases",
+        "Tourner à droite, avancer de $1$ case, tourner à droite, avancer de $2$ cases",
+        "Faire demi-tour, avancer de $1$ case, tourner à droite, avancer de $2$ cases",
+        "Faire demi-tour, avancer de $1$ case, faire demi-tour, avancer de $2$ cases"
+      ],
+      "correctAnswer": "Tourner à gauche, avancer de $1$ case, tourner à gauche, avancer de $2$ cases",
+      "explanation": "Pour revenir au départ en annulant le parcours, il faut faire l'inverse des instructions dans l'ordre inverse. Le programme initial : Avancer $2$, Droite, Avancer $1$. L'inverse : Reculer $1$ (ou Tourner à gauche deux fois + Avancer $1$), Gauche (inverse de Droite), Reculer $2$ (ou Tourner à gauche deux fois + Avancer $2$). L'option correcte dit : Tourner à gauche (fait face au dernier segment), avancer $1$ (revient au coin), tourner à gauche (face au premier segment), avancer $2$ (revient au départ).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe ce triangle. Il est rectangle en A. Quel angle est l'angle droit ?",
+      "options": [
+        "L'angle en A",
+        "L'angle en B",
+        "L'angle en C",
+        "Il n'y a pas d'angle droit"
+      ],
+      "correctAnswer": "L'angle en A",
+      "explanation": "La mention 'rectangle en A' signifie que l'angle droit (qui mesure $90$ degrés) se trouve au sommet A. Les deux autres angles (en B et en C) sont des angles aigus (inférieurs à $90$ degrés). Le petit carré dans l'angle en A sur le schéma représente l'angle droit.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

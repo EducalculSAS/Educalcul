@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 135,
+  "_course_code": "ce1-t07-c10-bilan-espace-et-geometrie-ce1",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître et construire",
+  "title": "Quiz - Reconnaître et construire (CE1)",
+  "questions": [
+    {
+      "text": "Quelle figure a quatre côtés de même longueur et quatre angles droits ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un triangle",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Un carré possède quatre côtés de même longueur et quatre angles droits. Un rectangle a aussi quatre angles droits mais ses côtés opposés sont égaux deux à deux, pas tous les quatre. Un triangle a trois côtés et un cercle n'a pas de côtés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 2,
+        "highlighted": 4,
+        "caption": "Carré de côté 2 unités"
+      }
+    },
+    {
+      "text": "Pour tracer un segment de $5$ cm, quel instrument utilise-t-on ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une règle",
+      "explanation": "La règle permet de mesurer et de tracer des segments de longueur donnée. Le compas sert à tracer des cercles, l'équerre à vérifier les angles droits et le rapporteur à mesurer les angles.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 5,
+        "unit": "cm",
+        "caption": "Segment de 5 cm"
+      }
+    },
+    {
+      "text": "Quel outil permet de vérifier qu'un angle est droit ?",
+      "options": [
+        "Une équerre",
+        "Un compas",
+        "Une règle",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une équerre",
+      "explanation": "L'équerre est conçue pour vérifier ou tracer des angles droits ($90$°). Le rapporteur mesure les angles mais n'est pas l'outil principal pour vérifier un angle droit en construction. La règle et le compas ne servent pas à cela.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Angle droit"
+      }
+    },
+    {
+      "text": "Pour dessiner un cercle de rayon $3$ cm, quel instrument faut-il ?",
+      "options": [
+        "Un compas",
+        "Une règle",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Un compas",
+      "explanation": "Le compas permet de tracer un cercle en fixant le rayon. La règle trace des segments, l'équerre vérifie les angles droits et le rapporteur mesure les angles.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Cercle de rayon 3 cm"
+      }
+    },
+    {
+      "text": "Laquelle de ces figures a deux paires de côtés parallèles de longueurs différentes et quatre angles droits ?",
+      "options": [
+        "Un rectangle",
+        "Un carré",
+        "Un losange",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un rectangle",
+      "explanation": "Un rectangle a deux paires de côtés parallèles de longueurs différentes et quatre angles droits. Un carré a aussi quatre angles droits mais ses quatre côtés sont égaux. Un losange a quatre côtés égaux mais ses angles ne sont pas nécessairement droits. Un triangle a trois côtés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 4,
+        "highlighted": 8,
+        "caption": "Rectangle de 2 par 4 unités"
+      }
+    }
+  ]
+}

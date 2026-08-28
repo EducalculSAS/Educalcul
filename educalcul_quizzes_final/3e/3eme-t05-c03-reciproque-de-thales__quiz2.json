@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Rapports",
+  "title": "Quiz : Réciproque de Thalès - Rapports",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, les points $D$ et $E$ sont respectivement sur $[AB]$ et $[AC]$ tels que $DE$ est parallèle à $BC$. On sait que $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm. Quelle est la longueur de $EC$ ?",
+      "options": [
+        "$8$ cm",
+        "$6$ cm",
+        "$12$ cm",
+        "$4$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "D'après Thalès, $AD/AB = AE/AC$. Or $AB = AD + DB = 3 + 6 = 9$ cm et $AC = AE + EC = 4 + EC$. Donc $3/9 = 4/(4+EC)$, soit $1/3 = 4/(4+EC)$. En croisant les produits, $4+EC = 12$, d'où $EC = 8$ cm. Les autres valeurs ne satisfont pas l'égalité des rapports.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, les points $D$ sur $[AB]$ et $E$ sur $[AC]$ vérifient $AD/DB = AE/EC$. Si $AD = 5$ cm, $DB = 10$ cm et $AE = 7$ cm, quelle doit être la longueur de $EC$ pour que $DE$ soit parallèle à $BC$ ?",
+      "options": [
+        "$14$ cm",
+        "$7$ cm",
+        "$21$ cm",
+        "$3,5$ cm"
+      ],
+      "correctAnswer": "$14$ cm",
+      "explanation": "La réciproque de Thalès affirme que si $AD/DB = AE/EC$ alors $DE$ est parallèle à $BC$. Ici $AD/DB = 5/10 = 1/2$. Il faut donc $AE/EC = 1/2$, soit $7/EC = 1/2$. En croisant les produits, $EC = 14$ cm. Les autres options ne donnent pas le bon rapport.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les triangles $ABC$ et $DEF$ sont semblables. On a $AB = 6$ cm, $BC = 9$ cm et $DE = 4$ cm. Calculez la longueur de $EF$.",
+      "options": [
+        "$6$ cm",
+        "$8$ cm",
+        "$12$ cm",
+        "$4,5$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "D'après la similitude, $AB/DE = BC/EF$. Donc $6/4 = 9/EF$, ce qui donne $3/2 = 9/EF$. En croisant les produits, $3 * EF = 18$, soit $EF = 6$ cm. Les autres longueurs ne respectent pas le rapport de similitude.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une figure, une droite parallèle à la base d'un triangle coupe les deux autres côtés. Sur l'un des côtés, les segments mesurent $2$ cm et $3$ cm (du sommet vers la base). Sur l'autre côté, le segment adjacent au sommet mesure $4$ cm. Quelle est la longueur du segment restant ?",
+      "options": [
+        "$6$ cm",
+        "$5$ cm",
+        "$8$ cm",
+        "$4$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "D'après Thalès, les rapports des segments correspondants sont égaux : $2/3 = 4/x$ où $x$ est la longueur cherchée. En croisant les produits, $2x = 12$, donc $x = 6$ cm. Les autres valeurs ne satisfont pas l'égalité des rapports.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une carte est à l'échelle $1/50000$. Une distance de $3$ cm sur la carte correspond à quelle distance réelle ?",
+      "options": [
+        "$1,5$ km",
+        "$15$ km",
+        "$150$ km",
+        "$0,15$ km"
+      ],
+      "correctAnswer": "$1,5$ km",
+      "explanation": "L'échelle $1/50000$ signifie que $1$ cm sur la carte représente $50000$ cm en réalité. Pour $3$ cm, la distance réelle est $3 * 50000 = 150000$ cm. En convertissant en kilomètres : $150000$ cm $= 1500$ m $= 1,5$ km. Les autres valeurs correspondent à des erreurs de conversion ou de multiplication.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

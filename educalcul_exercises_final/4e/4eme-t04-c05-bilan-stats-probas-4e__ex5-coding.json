@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Indicateurs et hasard",
+  "title": "Algorithmes indicateurs et hasard",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui calcule la moyenne d'une liste de $n$ nombres $x_1, x_2, ..., x_n$. L'algorithme doit initialiser une variable somme à 0, ajouter chaque nombre à somme, puis diviser somme par $n$.",
+      "correctAnswer": "Algorithme moyenne :\\n1. Entrée : liste L de n nombres.\\n2. somme ← 0\\n3. Pour chaque valeur v dans L faire\\n4.     somme ← somme + v\\n5. Fin pour\\n6. moyenne ← somme / n\\n7. Afficher moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt la liste une fois, accumule la somme de tous les éléments, puis divise par le nombre d'éléments n pour obtenir la moyenne arithmétique. La complexité est linéaire en n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la médiane",
+      "content": "Écrire un algorithme qui détermine la médiane d'une liste de $n$ nombres. On suppose que la liste est triée dans l'ordre croissant. L'algorithme doit tester si $n$ est pair ou impair et renvoyer la valeur centrale ou la moyenne des deux valeurs centrales.",
+      "correctAnswer": "Algorithme médiane :\\n1. Entrée : liste triée L de n nombres.\\n2. Si n mod 2 = 1 alors\\n3.     indice ← (n - 1) / 2\\n4.     mediane ← L[indice]\\n5. Sinon\\n6.     indice1 ← n / 2 - 1\\n7.     indice2 ← n / 2\\n8.     mediane ← (L[indice1] + L[indice2]) / 2\\n9. Fin si\\n10. Afficher mediane",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour une liste triée, la médiane est l'élément central si n est impair, sinon c'est la moyenne des deux éléments centraux. L'algorithme utilise le modulo pour distinguer les deux cas et accède aux indices appropriés (indice base 0).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'une expérience aléatoire",
+      "content": "Écrire un algorithme qui simule le lancer d'un dé à six faces équilibré $N$ fois (par exemple $N = 100$). L'algorithme doit compter le nombre de fois où la face 6 apparaît et calculer la fréquence empirique de cet événement.",
+      "correctAnswer": "Algorithme simulation dé :\\n1. Entrée : entier N (nombre de lancers).\\n2. compteur_6 ← 0\\n3. Pour i de 1 à N faire\\n4.     face ← entier_aleatoire(1, 6)\\n5.     Si face = 6 alors\\n6.         compteur_6 ← compteur_6 + 1\\n7.     Fin si\\n8. Fin pour\\n9. frequence ← compteur_6 / N\\n10. Afficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une fonction générant un entier aléatoire uniforme entre 1 et 6 pour simuler chaque lancer. Il incrémente un compteur à chaque occurrence de 6, puis divise ce compteur par N pour obtenir la fréquence empirique, qui tend vers 1/6 quand N augmente.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

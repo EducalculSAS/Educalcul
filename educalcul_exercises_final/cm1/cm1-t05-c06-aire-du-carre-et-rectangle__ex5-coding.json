@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 246,
+  "_course_code": "cm1-t05-c06-aire-du-carre-et-rectangle",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Construire la formule",
+  "title": "Construction de la formule de l'aire : algorithmes et programmes",
+  "blocks": [
+    {
+      "title": "Algorithme pour l'aire d'un rectangle",
+      "content": "Écris un algorithme (ou un petit programme en pseudo‑code) qui demande la longueur $L$ et la largeur $l$ d'un rectangle, puis calcule et affiche son aire.",
+      "correctAnswer": "Algorithme :\\n1. Lire L\\n2. Lire l\\n3. Aire ← L × l\\n4. Afficher Aire",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'aire d'un rectangle se calcule en multipliant sa longueur par sa largeur. L'algorithme lit les deux mesures, effectue le produit et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule de l'aire d'un carré",
+      "content": "À partir de l'algorithme précédent, écris la formule mathématique de l'aire d'un carré de côté $c$.",
+      "correctAnswer": "Aire = $c \\times c$  ou  $c^2$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré est un rectangle dont la longueur et la largeur sont égales au côté $c$. En remplaçant $L$ et $l$ par $c$ dans la formule du rectangle, on obtient $c \\times c$, noté $c^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme complet pour l'aire d'un carré",
+      "content": "Écris un programme complet (syntaxe type Python) qui demande le côté d'un carré, calcule son aire avec la formule trouvée, puis affiche le résultat sous la forme : \"L'aire du carré est ... cm²\".",
+      "correctAnswer": "c = float(input(\"Entrez la longueur du côté en cm : \"))\\naire = c * c\\nprint(\"L'aire du carré est \" + str(aire) + \" cm²\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme lit le côté, calcule le produit $c \\times c$ (ou $c^2$), convertit le nombre en chaîne de caractères et l'insère dans le message affiché.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

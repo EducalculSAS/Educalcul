@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Conditions",
+  "title": "Algorithmique : Conditions - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Pair ou impair",
+      "content": "Range les instructions suivantes dans l'ordre pour écrire un algorithme qui affiche « Pair » si le nombre lu est pair, sinon « Impair ».",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire le nombre n",
+        "Si $n mod 2 = 0$ alors",
+        "Afficher « Pair »",
+        "Sinon afficher « Impair »",
+        "Fin si"
+      ],
+      "explanation": "L'algorithme commence par la lecture du nombre. On teste ensuite si le reste de la division par 2 est nul (condition $n mod 2 = 0$). Si c'est vrai, on affiche « Pair », sinon on affiche « Impair ». Le « Fin si » clôture la structure conditionnelle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de trois nombres",
+      "content": "Range les instructions pour trouver le maximum de trois nombres a, b, c.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire a, b, c",
+        "max ← a",
+        "Si $b > max$ alors max ← b",
+        "Si $c > max$ alors max ← c",
+        "Afficher max"
+      ],
+      "explanation": "On initialise le maximum avec la première valeur a. On compare ensuite b au maximum actuel : si $b > max$, max prend la valeur de b. On fait de même avec c. À la fin, max contient le plus grand des trois nombres, qu'on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Catégorie d'âge",
+      "content": "Range les instructions pour afficher la catégorie d'âge selon l'âge lu.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire age",
+        "Si $age < 12$ alors afficher « Enfant »",
+        "Sinon si $age < 18$ alors afficher « Adolescent »",
+        "Sinon afficher « Adulte »",
+        "Fin si"
+      ],
+      "explanation": "On lit d'abord l'âge. La structure conditionnelle en cascade teste d'abord si $age < 12$ (enfant). Sinon, on teste si $age < 18$ (adolescent). Si aucune des deux conditions n'est vraie, c'est un adulte. Le « Fin si » termine le bloc conditionnel.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

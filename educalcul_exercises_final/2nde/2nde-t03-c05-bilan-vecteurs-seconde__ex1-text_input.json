@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Opérations et applications",
+  "title": "Opérations sur les vecteurs - Exercices progressifs",
+  "blocks": [
+    {
+      "title": "Addition et multiplication par un scalaire",
+      "content": "Soient $u = (2, -3)$ et $v = (-1, 4)$. Calculer $u + 2v$.",
+      "correctAnswer": "(0;5)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $2v = 2(-1,4) = (-2,8)$. Ensuite $u + 2v = (2,-3) + (-2,8) = (0,5)$. En notation française, le vecteur s'écrit $(0;5)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Relation de Chasles dans un triangle",
+      "content": "Dans le triangle $ABC$, on pose $AB = u$ et $AC = v$. Exprimer $BC$ en fonction de $u$ et $v$.",
+      "correctAnswer": "v - u",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la relation de Chasles, $BC = BA + AC = -AB + AC = -u + v = v - u$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées du milieu d'un segment",
+      "content": "Donnés les points $A(1,2)$ et $B(5,6)$, déterminer les coordonnées du milieu $I$ du segment $[AB]$.",
+      "correctAnswer": "(3;4)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du milieu sont la moyenne des coordonnées des extrémités : $x_I = (1+5)/2 = 3$, $y_I = (2+6)/2 = 4$. Donc $I(3;4)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter la résolution graphique d'équations et d'inéquations",
+  "questions": [
+    {
+      "text": "Soit $f$ une fonction définie sur $\\mathbb{R}$ par $f(x) = x^2 - 4$. La courbe représentative de $f$ dans un repère orthonormé coupe l'axe des abscisses en deux points. Quelle est l'ensemble des solutions de l'équation $f(x) = 0$ ?",
+      "options": [
+        "L'ensemble des points d'intersection de la courbe avec l'axe des ordonnées",
+        "L'ensemble des abscisses des points d'intersection de la courbe avec l'axe des abscisses",
+        "L'ensemble des ordonnées des points d'intersection de la courbe avec l'axe des abscisses",
+        "L'ensemble des points d'intersection de la courbe avec la droite d'équation $y = -4$"
+      ],
+      "correctAnswer": "L'ensemble des abscisses des points d'intersection de la courbe avec l'axe des abscisses",
+      "explanation": "Résoudre graphiquement $f(x) = 0$ revient à trouver les points de la courbe $C_f$ dont l'ordonnée est nulle, c'est-à-dire les points d'intersection de la courbe avec l'axe des abscisses (ligne $y=0$). Les solutions de l'équation sont les abscisses (les $x$) de ces points. Ici, ce sont $-2$ et $2$. La première option désigne l'intersection avec l'axe des ordonnées ($x=0$). La troisième confond abscisses et ordonnées. La quatrième correspond à la résolution de $f(x) = -4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère deux fonctions $f$ et $g$ définies sur $\\mathbb{R}$. La courbe $C_f$ est une parabole, la courbe $C_g$ est une droite. Sur un intervalle $I$, la courbe $C_f$ se situe **strictement au-dessus** de la courbe $C_g$. Quelle inéquation est vérifiée pour tout $x$ appartenant à $I$ ?",
+      "options": [
+        "$f(x) < g(x)$",
+        "$f(x) > g(x)$",
+        "$f(x) = g(x)$",
+        "$f(x) \\leq g(x)$"
+      ],
+      "correctAnswer": "$f(x) > g(x)$",
+      "explanation": "Dans un repère orthonormé, l'ordonnée d'un point mesure sa position verticale. Si la courbe $C_f$ est **au-dessus** de la courbe $C_g$, cela signifie que pour une même abscisse $x$, l'ordonnée du point sur $C_f$ (qui est $f(x)$) est plus grande que l'ordonnée du point sur $C_g$ (qui est $g(x)$). On a donc $f(x) > g(x)$. L'option A correspond à $C_f$ en dessous de $C_g$. L'option C correspond aux points d'intersection. L'option D inclut l'égalité, ce qui n'est pas le cas pour 'strictement au-dessus'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f$ une fonction continue et strictement croissante sur $[-2 ; 5]$. On sait que $f(-2) = -3$ et $f(5) = 4$. En utilisant la lecture graphique, quelle est l'ensemble de solutions de l'inéquation $f(x) \\geq 0$ sur cet intervalle ?",
+      "options": [
+        "$[-2 ; 5]$",
+        "$[-3 ; 4]$",
+        "$[a ; 5]$ où $a$ est l'unique solution de $f(x) = 0$ dans $[-2 ; 5]$",
+        "$[-2 ; a]$ où $a$ est l'unique solution de $f(x) = 0$ dans $[-2 ; 5]$"
+      ],
+      "correctAnswer": "$[a ; 5]$ où $a$ est l'unique solution de $f(x) = 0$ dans $[-2 ; 5]$",
+      "explanation": "La fonction est strictement croissante et continue, elle coupe donc l'axe des abscisses en un unique point d'abscisse $a$ (théorème des valeurs intermédiaires). Pour $x < a$, la courbe est sous l'axe des abscisses ($f(x) < 0$). Pour $x > a$, la courbe est au-dessus ($f(x) > 0$). L'inéquation $f(x) \\geq 0$ demande les $x$ où la courbe est au-dessus ou sur l'axe, soit pour $x \\in [a ; 5]$. L'option D correspond à $f(x) \\leq 0$. L'option A ignore le signe. L'option B confond ensemble de définition et ensemble image.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour résoudre graphiquement l'inéquation $x^2 - 2x - 3 \\leq 1$, on trace dans le même repère la courbe $C$ de la fonction $f(x) = x^2 - 2x - 3$ et la droite $d$ d'équation $y = 1$. Comment lire l'ensemble solution sur le graphique ?",
+      "options": [
+        "Les abscisses des points de $C$ qui se situent **strictement au-dessus** de $d$",
+        "Les abscisses des points d'intersection de $C$ et $d$ uniquement",
+        "Les abscisses des points de $C$ qui se situent **au-dessus ou sur** la droite $d$",
+        "Les abscisses des points de $C$ qui se situent **en dessous ou sur** la droite $d$"
+      ],
+      "correctAnswer": "Les abscisses des points de $C$ qui se situent **en dessous ou sur** la droite $d$",
+      "explanation": "L'inéquation s'écrit $f(x) \\leq 1$. Graphiquement, $f(x)$ est l'ordonnée du point sur la courbe $C$ et $1$ est l'ordonnée du point sur la droite $d$ (de même abscisse). La condition $f(x) \\leq 1$ signifie que l'ordonnée de $C$ est inférieure ou égale à l'ordonnée de $d$, c'est-à-dire que la courbe $C$ est **en dessous ou sur** la droite $d$. L'ensemble solution est l'intervalle (ou la réunion d'intervalles) formé par les abscisses de cette portion de courbe. L'option C correspond à $f(x) \\geq 1$. L'option A correspond à $f(x) > 1$. L'option B ne donne que les bornes de l'intervalle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les courbes représentants les fonctions $f$ et $g$ sur un intervalle $I$. Les deux courbes se coupent en deux points d'abscisses $x_1$ et $x_2$ ($x_1 < x_2$). Entre $x_1$ et $x_2$, la courbe de $f$ est **sous** la courbe de $g$. En dehors de cet intervalle (sur $I$), la courbe de $f$ est **au-dessus** de la courbe de $g$. Quel est l'ensemble de solutions de $f(x) > g(x)$ sur $I$ ?",
+      "options": [
+        "$[x_1 ; x_2]$",
+        "$]x_1 ; x_2[$",
+        "$I \\cap (]-\\infty ; x_1[ \\cup ]x_2 ; +\\infty[)$",
+        "$\\{x_1 ; x_2\\}$"
+      ],
+      "correctAnswer": "$I \\cap (]-\\infty ; x_1[ \\cup ]x_2 ; +\\infty[)$",
+      "explanation": "L'inéquation $f(x) > g(x)$ demande où la courbe de $f$ est **strictement au-dessus** de celle de $g$. Selon l'énoncé, c'est le cas en dehors de l'intervalle $[x_1 ; x_2]$, c'est-à-dire pour $x < x_1$ et $x > x_2$. Comme les fonctions ne sont définies que sur $I$, il faut intersecter cet ensemble avec $I$. Cela donne $I \\cap (]-\\infty ; x_1[ \\cup ]x_2 ; +\\infty[)$. L'option A correspond à $f(x) \\leq g(x)$ (avec les bornes). L'option B correspond à $f(x) < g(x)$ (strictement entre les deux). L'option D ne donne que les points d'intersection où $f(x) = g(x)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

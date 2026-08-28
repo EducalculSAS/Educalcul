@@ -1,0 +1,403 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.747559+00:00",
+  "id": 726,
+  "code": "terminale-generale-maths-t08-c07",
+  "title": "Bilan - Algorithmique Terminale",
+  "description": "Cours structuré Educalcul : Bilan - Algorithmique Terminale.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Bilan - Algorithmique Terminale",
+    "objectif_global": "Bilan - Algorithmique Terminale",
+    "mini_lecons_imposees": [
+      "Code et raisonnement.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Code et raisonnement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Code et raisonnement : poser les bases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan consacré à l'algorithmique de terminale. Nous allons reprendre ensemble les idées fondamentales qui permettent d'écrire un programme correct, de comprendre ce qu'il fait et d'estimer son coût en temps. Pas de panique : chaque notion sera illustrée par un exemple concret, puis nous la mettrons en pratique avec un exercice ciblé. L'objectif n'est pas de réciter des définitions, mais de développer un raisonnement algorithmique solide, celui qui vous servira aussi bien en épreuve écrite qu'en projet informatique."
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Une variable est une boîte nommée qui stocke une valeur à un moment donné de l'exécution. Son contenu peut changer au fil des instructions.",
+              "example": "Dans $x \\leftarrow 5$, la variable $x$ contient l'entier $5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par l'affectation, l'opération la plus élémentaire. L'instruction $x \\leftarrow 5$ place la valeur $5$ dans la variable $x$. Si l'on écrit ensuite $x \\leftarrow x + 2$, la nouvelle valeur de $x$ devient $7$. Remarquez que le symbole $\\leftarrow$ (flèche vers la gauche) signifie « prend la valeur de » et non une égalité mathématique. Cette distinction est cruciale pour éviter les confusions lors de la lecture d'un algorithme."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "x <- 5\\nx <- x + 2\\nafficher x",
+              "language": "python",
+              "caption": "Exemple simple d'affectations successives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les boucles permettent de répéter un bloc d'instructions. La boucle « pour » (for) itère sur un intervalle connu, tandis que la boucle « tant que » (while) continue tant qu'une condition reste vraie. Pour raisonner sur une boucle, on utilise un invariant : une propriété qui est vraie avant la première itération, qui se maintient à chaque tour, et qui permet de conclure à la fin. C'est un outil de preuve puissant, surtout en terminale où la rigueur est attendue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'invariant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez une phrase qui décrit ce qui est vrai au début de chaque itération, par exemple « la variable $s$ contient la somme des $k$ premiers éléments du tableau »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrez que l'invariant tient avant la première itération (souvent $k=0$ et $s=0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Montrer la conservation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons l'invariant vrai pour un $k$ quelconque, puis prouvez qu'après l'exécution du corps de boucle il reste vrai pour $k+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure à la terminaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque la condition de sortie devient fausse, l'invariant donne directement le résultat recherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant une méthode claire pour analyser n'importe quelle boucle. Essayons de l'appliquer sur un exemple concret avant de passer aux structures conditionnelles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les instructions conditionnelles (si … sinon) permettent de choisir entre plusieurs chemins d'exécution. La condition est une expression booléenne qui vaut vrai ou faux. Il est important de bien parenthésier les expressions composées pour éviter toute ambiguïté."
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Expression qui s'évalue en vrai ou faux. Elle combine des comparaisons ($<$, $>$, $==$, $\\neq$) et des opérateurs logiques (et, ou, non).",
+              "example": "($x > 0$) et ($y \\le 10$)"
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "si x > 0 alors\\nafficher \"positif\"\\nsinon\\nafficher \"négatif ou nul\"\\nfinsi",
+              "language": "python",
+              "caption": "Structure conditionnelle simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarquez que le bloc « alors » s'exécute uniquement si la condition est vraie, sinon c'est le bloc « sinon » qui prend le relais. Cette logique binaire est au cœur de nombreux algorithmes de tri, de recherche ou de décision. Passons à un exercice pour tester votre compréhension."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions découpent un problème en sous-problèmes réutilisables. En terminale, on rencontre souvent la récursivité : une fonction qui s'appelle elle-même. Pour qu'une fonction récursive termine, il faut un cas de base (arrêt) et un pas de récurrence qui rapproche du cas de base."
+            },
+            {
+              "type": "definition",
+              "term": "Récursivité",
+              "definition": "Procédé où une fonction s'invoque elle-même avec des arguments modifiés, jusqu'à atteindre un cas de base qui stoppe la chaîne d'appels.",
+              "example": "Factorielle : $fact(n) = 1$ si $n=0$, sinon $n \\times fact(n-1)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Cas de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez la valeur la plus simple pour laquelle le résultat est connu sans appel récursif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relation de récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprimez le résultat pour $n$ en fonction du résultat pour $n-1$ (ou $n/2$, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la terminaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrez que les arguments des appels récursifs diminuent strictement selon un ordre bien fondé (entiers naturels)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ces trois étapes, vous pouvez écrire et prouver n'importe quelle fonction récursive simple. Essayons maintenant un exercice sur la factorielle avant d'aborder la complexité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "La complexité algorithmique mesure le temps d'exécution en fonction de la taille de l'entrée. On utilise la notation grand $O$ pour majorer le nombre d'opérations élémentaires. Par exemple, une double boucle imbriquée sur $n$ éléments donne une complexité $O(n^2)$. Savoir estimer cette complexité est indispensable pour comparer des algorithmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "T(n) = O(n^2)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer la complexité, comptez les opérations dominantes (comparaisons, affectations) à l'intérieur des boucles les plus externes. Les constantes et les termes d'ordre inférieur sont ignorés dans le $O$. Terminez cette leçon par un exercice qui vous demande d'analyser la complexité d'un algorithme de tri simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons parcouru les piliers du raisonnement algorithmique : variables, boucles, conditions, fonctions récursives et complexité. La prochaine leçon rassemblera tout cela sous forme de checklist pour vous permettre de réviser efficacement avant l'examen."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Étant donné l'algorithme suivant :\\n$k \\leftarrow 0$\\n$s \\leftarrow 0$\\n$\\textbf{pour } i \\textbf{ de } 1 \\textbf{ à } n \\textbf{ faire}$\\n$\\quad s \\leftarrow s + i$\\n$\\quad k \\leftarrow k + 1$\\n$\\textbf{fin pour}$\\nQuel est l'invariant de boucle le plus naturel ?",
+              "answer": "L'invariant est : après $k$ itérations, $s = \\frac{k(k+1)}{2}$ et $k$ vaut le nombre d'itérations effectuées.",
+              "hint": "Pensez à la somme des premiers entiers et au lien entre $k$ et $i$.",
+              "explanation": "Au début $k=0$, $s=0$, la formule donne $0$. À chaque tour, on ajoute $i = k+1$ à $s$ et on incrémente $k$, ce qui conserve la formule."
+            },
+            {
+              "question": "Complétez l'algorithme ci-dessous pour qu'il affiche \"pair\" si $x$ est pair, \"impair\" sinon :\\n$\\textbf{si } \\ldots \\textbf{ alors}$\\n$\\quad \\textbf{afficher } \\\"pair\\\"$\\n$\\textbf{sinon}$\\n$\\quad \\textbf{afficher } \\\"impair\\\"$\\n$\\textbf{finsi}$",
+              "answer": "La condition est $x \\% 2 = 0$ (ou $x \\bmod 2 = 0$).",
+              "hint": "Un nombre est pair si son reste modulo $2$ vaut $0$.",
+              "explanation": "L'opérateur modulo donne le reste de la division euclidienne. Si le reste est $0$, le nombre est multiple de $2$, donc pair."
+            },
+            {
+              "question": "Écrivez la fonction récursive `fact(n)` qui renvoie $n!$ en respectant les trois étapes vues en cours (cas de base, récurrence, terminaison).",
+              "answer": "function fact(n):\\n    si n = 0 alors retourner 1\\n    sinon retourner n * fact(n-1)\\n    finsi",
+              "hint": "Le cas de base est $n=0$. La récurrence utilise $n \\times fact(n-1)$. Les appels diminuent $n$ jusqu'à $0$.",
+              "explanation": "La fonction s'arrête quand $n=0$ (cas de base). Sinon elle appelle `fact(n-1)`, ce qui réduit l'argument de $1$ à chaque étape, garantissant la terminaison."
+            },
+            {
+              "question": "Donnez la complexité en temps (notation $O$) de l'algorithme de tri par sélection sur un tableau de taille $n$. Justifiez en une phrase.",
+              "answer": "$O(n^2)$ car il y a deux boucles imbriquées dont les bornes dépendent de $n$.",
+              "hint": "Comparez le nombre de comparaisons effectuées par la boucle externe et la boucle interne.",
+              "explanation": "La boucle externe s'exécute $n-1$ fois. À chaque tour, la boucle interne parcourt environ $n/2$ éléments en moyenne. Le produit donne un nombre d'opérations proportionnel à $n^2$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : checklist de l'algorithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon réunit les points clés du cours sous forme de liste de vérification. Chaque item est accompagné d'un exemple inédit, différent de ceux vus précédemment, pour ancrer la mémoire sans répétition. Prenez le temps de lire chaque critère, de visualiser la situation décrite, puis de tester votre compréhension avec l'exercice qui suit. Cette méthode active est celle qui donne les meilleurs résultats en examen."
+            },
+            {
+              "type": "definition",
+              "term": "Invariant de boucle",
+              "definition": "Propriété logique qui reste vraie avant chaque itération d'une boucle, après l'initialisation et conservée par le corps de la boucle.",
+              "example": "Dans une boucle qui calcule le maximum d'un tableau, l'invariant : « $max$ vaut le plus grand élément parmi les $k$ premiers traités »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un algorithme qui parcourt un tableau $T$ de $n$ entiers pour en trouver le maximum. Au départ, $max \\leftarrow T[0]$ et $k \\leftarrow 1$. L'invariant « $max$ est le maximum des $k$ premiers éléments » est vrai initialement. À chaque itération, on compare $T[k]$ à $max$ et on met à jour si nécessaire, puis on incrémente $k$. L'invariant se maintient. À la fin ($k=n$), $max$ est le maximum global. Ce raisonnement est la colonne vertébrale de toute preuve de correction."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérifier l'initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $k$ par sa valeur initiale et vérifiez que l'énoncé de l'invariant coïncide avec l'état des variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Montrer la conservation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons l'invariant vrai pour un $k$ donné, exécutez mentalement le corps de boucle et prouvez qu'il reste vrai pour $k+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Conclure à la sortie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque la condition de boucle devient fausse, $k$ a atteint sa valeur finale ; l'invariant donne directement la propriété recherchée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquez maintenant cette checklist sur un nouvel exemple pour valider votre maîtrise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la complexité. La checklist suivante vous aide à estimer rapidement l'ordre de grandeur d'un algorithme : identifiez les boucles imbriquées, comptez les opérations élémentaires à l'intérieur, exprimez le total en fonction de $n$, puis simplifiez en gardant le terme dominant."
+            },
+            {
+              "type": "display_math",
+              "latex": "O(n \\log n)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, le tri fusion divise le tableau en deux moitiés (coût $\\log n$ niveaux) et fusionne chaque niveau en temps linéaire ($n$). Le produit donne $O(n \\log n)$. Vérifiez que vous savez reconnaître ce schéma sur un pseudo-code."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la récursivité. La checklist comporte trois points : (1) existence d'un cas de base explicite, (2) appel récursif sur un argument strictement plus petit selon un ordre bien fondé, (3) combinaison correcte des résultats partiels. Prenez l'exemple du calcul de la suite de Fibonacci : $F(0)=0$, $F(1)=1$, $F(n)=F(n-1)+F(n-2)$. Le cas de base couvre $n=0,1$ ; les appels réduisent $n$ ; la somme combine les deux résultats."
+            },
+            {
+              "type": "definition",
+              "term": "Cas de base",
+              "definition": "Valeur(s) d'entrée pour lesquelles la fonction récursive retourne un résultat sans faire d'appel récursif.",
+              "example": "Pour la factorielle, le cas de base est $n=0$ qui retourne $1$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Écrire le cas de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez la plus petite entrée possible et donnez le résultat direct."
+                    }
+                  ]
+                },
+                {
+                  "title": "Définir la récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprimez le résultat pour $n$ en fonction de résultats pour des entrées plus petites."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérifier la décroissance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez-vous que chaque appel récursif reçoit un argument strictement inférieur (ou plus simple) pour garantir la terminaison."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Testez votre checklist sur un dernier exercice avant de consulter la liste finale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les clés pour relire vos programmes avec un œil critique. Utilisez cette checklist à chaque révision : invariant, complexité, cas de base, terminaison. La régularité de cet entraînement transformera la théorie en réflexe naturel le jour de l'épreuve."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer et prouver un invariant de boucle pour n'importe quel algorithme itératif.",
+                "Je sais déterminer la complexité en temps (notation $O$) d'un algorithme à boucles imbriquées ou récursif.",
+                "Je sais écrire une fonction récursive correcte : cas de base, récurrence, argument décroissant.",
+                "Je sais tracer l'exécution d'un algorithme sur un petit jeu de données pour vérifier son comportement.",
+                "Je sais expliquer à l'oral la correction d'un algorithme en structurant mon discours : invariant, initialisation, conservation, terminaison."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la boucle suivante, donnez l'invariant de boucle et montrez qu'il est vérifié à l'initialisation :\\n$k \\leftarrow 1$\\n$prod \\leftarrow 1$\\n$\\textbf{tant que } k \\le n \\textbf{ faire}$\\n$\\quad prod \\leftarrow prod \\times k$\\n$\\quad k \\leftarrow k + 1$\\n$\\textbf{fin tant que}$",
+              "answer": "Invariant : après $k-1$ itérations, $prod = (k-1)!$ et $k$ est l'entier suivant à multiplier. À l'initialisation $k=1$, $prod=1 = 0!$.",
+              "hint": "Pensez à la factorielle et à la valeur de $k$ avant la première multiplication.",
+              "explanation": "Avant la boucle, $k=1$, aucun facteur n'a été multiplié, donc $prod=1 = 0!$. L'invariant lie $prod$ à $(k-1)!$."
+            },
+            {
+              "question": "Quelle est la complexité en temps de l'algorithme de recherche dichotomique (binaire) sur un tableau trié de $n$ éléments ? Justifiez en une phrase.",
+              "answer": "$O(\\log n)$ car à chaque étape la taille de l'intervalle de recherche est divisée par deux.",
+              "hint": "Combien de fois peut-on diviser $n$ par $2$ avant d'atteindre $1$ ?",
+              "explanation": "La recherche dichotomique réduit l'espace de recherche de moitié à chaque itération, donc le nombre d'itérations est proportionnel au logarithme en base $2$ de $n$."
+            },
+            {
+              "question": "Écrivez une fonction récursive `puissance(x, n)` qui renvoie $x^n$ pour $n \\ge 0$, en respectant la checklist (cas de base, récurrence, décroissance).",
+              "answer": "function puissance(x, n):\\n    si n = 0 alors retourner 1\\n    sinon retourner x * puissance(x, n-1)\\n    finsi",
+              "hint": "Le cas de base est $n=0$. La récurrence multiplie par $x$ et appelle avec $n-1$.",
+              "explanation": "La fonction s'arrête à $n=0$ (retourne $1$). Pour $n>0$, elle appelle `puissance(x, n-1)` qui a un argument strictement plus petit, garantissant la terminaison. Le produit accumule $x$ exactement $n$ fois."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

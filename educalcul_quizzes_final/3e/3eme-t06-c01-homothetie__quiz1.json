@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Rapport",
+  "title": "Quiz sur le rapport d'homothétie",
+  "questions": [
+    {
+      "text": "Dans une homothétie de centre $O$ et de rapport $k$, comment s'exprime le rapport $k$ à partir des distances $OA$ et $OA'$ ?",
+      "options": [
+        "$k = \\frac{OA'}{OA}$",
+        "$k = \\frac{OA}{OA'}$",
+        "$k = OA' + OA$",
+        "$k = OA' - OA$"
+      ],
+      "correctAnswer": "$k = \\frac{OA'}{OA}$",
+      "explanation": "Le rapport d'une homothétie est défini comme le quotient de la distance du point image au centre par la distance du point original au centre. Les autres formules correspondent à des inversions ou à des opérations non définies pour le rapport.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une homothétie de centre $O$ et de rapport $k = 2$ transforme le point $A$ en $A'$. Si $OA = 3\\,cm$, quelle est la longueur $OA'$ ?",
+      "options": [
+        "$6\\,cm$",
+        "$1,5\\,cm$",
+        "$5\\,cm$",
+        "$3\\,cm$"
+      ],
+      "correctAnswer": "$6\\,cm$",
+      "explanation": "Puisque $k = 2$, on a $OA' = k \\times OA = 2 \\times 3 = 6\\,cm$. Les autres valeurs correspondent à une division par $2$, une addition ou l'absence de transformation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une homothétie de rapport $k = -\\frac{1}{2}$ est appliquée à un segment de longueur $8\\,cm$. Quelle est la longueur de l'image de ce segment ?",
+      "options": [
+        "$4\\,cm$",
+        "$-4\\,cm$",
+        "$8\\,cm$",
+        "$16\\,cm$"
+      ],
+      "correctAnswer": "$4\\,cm$",
+      "explanation": "La longueur de l'image est la valeur absolue du rapport multipliée par la longueur initiale : $|k| \\times 8 = \\frac{1}{2} \\times 8 = 4\\,cm$. Le signe négatif indique seulement un renversement d'orientation, pas une longueur négative.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si une homothétie de rapport $k = 3$ est appliquée à une figure plane, quel est le rapport entre l'aire de l'image et l'aire de la figure originale ?",
+      "options": [
+        "$9$",
+        "$3$",
+        "$6$",
+        "$27$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Les aires varient comme le carré du rapport : $k^2 = 3^2 = 9$. Les autres nombres correspondent à une confusion avec le rapport linéaire, la somme ou le cube.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux homothéties de même centre $O$ et de rapports $k_1 = 2$ et $k_2 = 3$ sont composées dans cet ordre. Quel est le rapport de l'homothétie résultante ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$1$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La composition de deux homothéties de même centre donne une homothétie dont le rapport est le produit des rapports : $k = k_1 \\times k_2 = 2 \\times 3 = 6$. Les autres valeurs correspondent à une addition, une inversion ou une division erronée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

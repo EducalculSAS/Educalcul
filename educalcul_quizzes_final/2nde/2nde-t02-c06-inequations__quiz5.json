@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Résoudre",
+  "title": "Quiz Inéquations - Approfondissement : Résoudre",
+  "questions": [
+    {
+      "text": "Résolvez l'inéquation $2x - 5 < 3$.",
+      "options": [
+        "$x < 4$",
+        "$x > 4$",
+        "$x < -4$",
+        "$x > -4$"
+      ],
+      "correctAnswer": "$x < 4$",
+      "explanation": "On ajoute 5 des deux côtés : $2x < 8$. On divise par 2 (positif) : $x < 4$. Les autres options correspondent à une erreur de signe ou à une division incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $3(x+2) \\ge 2x + 7$.",
+      "options": [
+        "$x \\ge 1$",
+        "$x \\le 1$",
+        "$x \\ge -1$",
+        "$x \\le -1$"
+      ],
+      "correctAnswer": "$x \\ge 1$",
+      "explanation": "On développe : $3x+6 \\ge 2x+7$. On soustrait $2x$ : $x+6 \\ge 7$. On soustrait 6 : $x \\ge 1$. Les distracteurs proviennent d'une inversion du signe ou d'un calcul erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminez l'ensemble des solutions de $x^2 - 4x - 5 > 0$.",
+      "options": [
+        "$x < -1$ ou $x > 5$",
+        "$-1 < x < 5$",
+        "$x < -5$ ou $x > 1$",
+        "$x > -1$ et $x < 5$"
+      ],
+      "correctAnswer": "$x < -1$ ou $x > 5$",
+      "explanation": "On factorise : $(x-5)(x+1) > 0$. Les racines sont $-1$ et $5$. Le trinôme est positif en dehors des racines, donc $x < -1$ ou $x > 5$. L'option $-1 < x < 5$ correspond à l'inégalité stricte opposée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation rationnelle $\\frac{x-2}{x+3} \\le 0$.",
+      "options": [
+        "$-3 < x \\le 2$",
+        "$x \\le -3$ ou $x \\ge 2$",
+        "$x < -3$ ou $x > 2$",
+        "$-3 \\le x < 2$"
+      ],
+      "correctAnswer": "$-3 < x \\le 2$",
+      "explanation": "Le numérateur s'annule en $x=2$, le dénominateur en $x=-3$ (exclu). Le quotient est négatif ou nul entre $-3$ et $2$, et nul en $2$. Donc la solution est $-3 < x \\le 2$. Les autres options inversent les intervalles ou incluent la valeur interdite $-3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation à valeur absolue $|2x - 1| \\le 5$.",
+      "options": [
+        "$-2 \\le x \\le 3$",
+        "$x \\le -2$ ou $x \\ge 3$",
+        "$-3 \\le x \\le 2$",
+        "$x \\le -3$ ou $x \\ge 2$"
+      ],
+      "correctAnswer": "$-2 \\le x \\le 3$",
+      "explanation": "L'inéquation équivaut à $-5 \\le 2x-1 \\le 5$. On ajoute 1 : $-4 \\le 2x \\le 6$. On divise par 2 : $-2 \\le x \\le 3$. Les distracteurs correspondent à une mauvaise gestion des bornes ou à une inversion de l'inégalité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

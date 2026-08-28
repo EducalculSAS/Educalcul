@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Placement",
+  "title": "Placer et repérer des points sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Repérage d'un point (entiers)",
+      "content": "Sur une droite graduée d'origine $O$ et de pas $1$ cm, le point $A$ a pour abscisse $3$. Le point $B$ a pour abscisse {{1}}. La distance $AB$ vaut {{2}} cm.",
+      "blanks": [
+        "-2",
+        "5"
+      ],
+      "explanation": "L'abscisse de $B$ est donnée à $-2$. La distance entre $A(3)$ et $B(-2)$ est la différence des abscisses en valeur absolue : $|3 - (-2)| = |5| = 5$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Placement de nombres décimaux",
+      "content": "On considère une droite graduée d'origine $O$, de pas $1$ cm. Chaque graduation vaut $0,1$. Pour placer le point $C$ d'abscisse $2,4$, on part de l'origine $O$ et on compte {{1}} graduations vers la droite. L'abscisse du point $D$ placé $3$ graduations à gauche de $C$ est {{2}}.",
+      "blanks": [
+        "24",
+        "2,1"
+      ],
+      "explanation": "L'abscisse $2,4$ correspond à $24$ dixièmes, donc $24$ graduations à droite de $O$. Le point $D$ est à $3$ graduations ($0,3$) à gauche de $C$, son abscisse est $2,4 - 0,3 = 2,1$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Lecture et symétrie",
+      "content": "Sur la droite ci-dessous, le point $E$ a pour abscisse $-1,5$. Le point $F$ est le symétrique de $E$ par rapport à l'origine $O$. L'abscisse de $F$ est {{1}}. La distance $EF$ vaut {{2}} cm (le pas de la graduation est de $1$ cm).",
+      "blanks": [
+        "1,5",
+        "3"
+      ],
+      "explanation": "Le symétrique de $E(-1,5)$ par rapport à $O$ est $F(1,5)$ (changement de signe). La distance $EF$ est la somme des distances à l'origine : $1,5 + 1,5 = 3$ cm.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

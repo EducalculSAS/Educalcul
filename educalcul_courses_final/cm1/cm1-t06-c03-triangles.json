@@ -1,0 +1,530 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.252745+00:00",
+  "id": 250,
+  "code": "cm1-t06-c03",
+  "title": "Triangles",
+  "description": "Cours structuré Educalcul : Triangles.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Triangles",
+    "objectif_global": "Triangles",
+    "mini_lecons_imposees": [
+      "Propriétés simples.",
+      "Classer.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Propriétés simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un triangle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine trois bâtonnets que tu poses bout à bout pour former une figure fermée. Cette figure, tu la connais bien : c'est un triangle. Il a trois côtés, trois sommets et trois angles. Chaque côté est un segment droit, chaque sommet est le point où deux côtés se rejoignent, et chaque angle est l'ouverture entre deux côtés. En CM1, tu vas apprendre à les nommer, à les mesurer et à les comparer."
+            },
+            {
+              "type": "definition",
+              "term": "triangle",
+              "definition": "Figure plane fermée formée de trois segments de droite qui se rejoignent deux à deux en trois points appelés sommets.",
+              "example": "Le triangle $ABC$ a les côtés $AB$, $BC$, $CA$ et les sommets $A$, $B$, $C$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ avec ses trois côtés et ses trois angles.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "c",
+                "a",
+                "b"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître un triangle, regardons de plus près ses éléments. Les côtés peuvent avoir des longueurs différentes ou égales. Les angles peuvent être larges ou étroits. Pour bien parler d'un triangle, on utilise des mots précis : côté, sommet, angle. Ces mots reviennent tout le temps en géométrie, alors prends le temps de les mémoriser avec des exemples concrets."
+            },
+            {
+              "type": "definition",
+              "term": "côté",
+              "definition": "Segment de droite qui relie deux sommets d'un triangle.",
+              "example": "Dans le triangle $ABC$, le côté $AB$ relie les sommets $A$ et $B$."
+            },
+            {
+              "type": "definition",
+              "term": "sommet",
+              "definition": "Point de rencontre de deux côtés d'un triangle.",
+              "example": "Le sommet $B$ est le point où les côtés $AB$ et $BC$ se croisent."
+            },
+            {
+              "type": "definition",
+              "term": "angle",
+              "definition": "Ouverture entre deux côtés qui ont un sommet commun.",
+              "example": "L'angle $\\widehat{ABC}$ est formé par les côtés $BA$ et $BC$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ avec les noms des côtés $a$, $b$, $c$ et des angles $\\alpha$, $\\beta$, $\\gamma$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une propriété fondamentale te sera utile tout au long de l'année : la somme des trois angles d'un triangle vaut toujours $180^{\\circ}$. C'est une règle qui marche pour n'importe quel triangle, grand ou petit, plat ou pointu. Pour t'en convaincre, tu peux découper les trois angles d'un triangle en papier et les coller côte à côte : ils forment un angle plat."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner un triangle quelconque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un triangle $ABC$ sur une feuille. Mesure chaque angle avec un rapporteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les mesures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les trois mesures trouvées. Tu obtiens $180^{\\circ}$ (ou très proche si tu as arrondi)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle que soit la forme du triangle, la somme reste $180^{\\circ}$. C'est une propriété universelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\alpha+\\beta+\\gamma=180^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de côtés, de sommets et d'angles a un triangle ?",
+              "answer": "Un triangle a $3$ côtés, $3$ sommets et $3$ angles.",
+              "hint": "Rappelle-toi la définition d'un triangle.",
+              "explanation": "Par définition, un triangle est formé de trois segments qui se ferment en trois points, ce qui donne trois côtés, trois sommets et trois angles."
+            },
+            {
+              "question": "Dans le triangle $ABC$, quel côté est opposé au sommet $C$ ?",
+              "answer": "Le côté opposé au sommet $C$ est $AB$.",
+              "hint": "Le côté opposé à un sommet ne touche pas ce sommet.",
+              "explanation": "Le sommet $C$ est l'extrémité des côtés $AC$ et $BC$. Le seul côté qui ne contient pas $C$ est $AB$."
+            },
+            {
+              "question": "Si deux angles d'un triangle mesurent $50^{\\circ}$ et $70^{\\circ}$, quelle est la mesure du troisième angle ?",
+              "answer": "Le troisième angle mesure $60^{\\circ}$.",
+              "hint": "Utilise la somme des angles d'un triangle.",
+              "explanation": "La somme des trois angles est $180^{\\circ}$. $180 - 50 - 70 = 60$. Donc le troisième angle vaut $60^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Classer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer les triangles d'après leurs côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les triangles ne se ressemblent pas tous. Certains ont trois côtés de la même longueur, d'autres en ont deux égaux et le troisième différent, d'autres encore ont trois côtés tous différents. Pour les ranger, on leur donne des noms précis : équilatéral, isocèle ou scalène. Ces mots peuvent sembler savants, mais ils décrivent simplement ce que tu vois quand tu regardes les côtés."
+            },
+            {
+              "type": "definition",
+              "term": "triangle équilatéral",
+              "definition": "Triangle dont les trois côtés ont la même longueur.",
+              "example": "Un triangle avec des côtés de $5\\,cm$, $5\\,cm$, $5\\,cm$ est équilatéral."
+            },
+            {
+              "type": "definition",
+              "term": "triangle isocèle",
+              "definition": "Triangle qui a exactement deux côtés de même longueur.",
+              "example": "Un triangle avec des côtés $6\\,cm$, $6\\,cm$, $4\\,cm$ est isocèle."
+            },
+            {
+              "type": "definition",
+              "term": "triangle scalène",
+              "definition": "Triangle dont les trois côtés ont des longueurs toutes différentes.",
+              "example": "Un triangle avec des côtés $3\\,cm$, $4\\,cm$, $5\\,cm$ est scalène."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle isocèle $ABC$ avec $AB = AC = 6\\,cm$ et $BC = 4\\,cm$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "6 cm",
+                "4 cm",
+                "6 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les côtés, regardons les angles. Un triangle peut avoir un angle droit ($90^{\\circ}$), trois angles aigus (chacun $< 90^{\\circ}$) ou un angle obtus ($> 90^{\\circ}$). Cela donne trois familles : rectangle, acutangle, obtusangle. Connaître le type d'angle t'aide à prévoir la forme du triangle avant même de le tracer."
+            },
+            {
+              "type": "definition",
+              "term": "triangle rectangle",
+              "definition": "Triangle qui possède un angle droit ($90^{\\circ}$).",
+              "example": "Un triangle avec des angles $90^{\\circ}$, $30^{\\circ}$, $60^{\\circ}$ est rectangle."
+            },
+            {
+              "type": "definition",
+              "term": "triangle acutangle",
+              "definition": "Triangle dont les trois angles sont aigus (chacun $< 90^{\\circ}$).",
+              "example": "Angles $50^{\\circ}$, $60^{\\circ}$, $70^{\\circ}$ donnent un triangle acutangle."
+            },
+            {
+              "type": "definition",
+              "term": "triangle obtusangle",
+              "definition": "Triangle qui possède un angle obtus ($> 90^{\\circ}$).",
+              "example": "Angles $100^{\\circ}$, $40^{\\circ}$, $40^{\\circ}$ forment un triangle obtusangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle $DEF$ avec l'angle droit en $D$.",
+              "vertexLabels": [
+                "D",
+                "E",
+                "F"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, combine les deux classements. Un triangle peut être à la fois isocèle et rectangle, ou équilatéral et acutangle (c'est toujours le cas pour l'équilatéral). En croisant les critères, tu obtiens des noms composés qui décrivent le triangle de façon très précise. C'est comme donner un prénom et un nom de famille à chaque figure."
+            },
+            {
+              "type": "definition",
+              "term": "triangle rectangle isocèle",
+              "definition": "Triangle qui a un angle droit et deux côtés égaux (les côtés de l'angle droit).",
+              "example": "Côtés $5\\,cm$, $5\\,cm$, $7\\,cm$ environ (l'hypoténuse est plus longue)."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle isocèle $GHI$ avec angle droit en $H$ et $GH = HI$.",
+              "vertexLabels": [
+                "G",
+                "H",
+                "I"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "5 cm",
+                "7 cm"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle a des côtés de $4\\,cm$, $4\\,cm$, $7\\,cm$. Comment s'appelle-t-il ?",
+              "answer": "C'est un triangle isocèle.",
+              "hint": "Regarde combien de côtés ont la même longueur.",
+              "explanation": "Deux côtés mesurent $4\\,cm$, le troisième $7\\,cm$. Il y a exactement deux côtés égaux, donc le triangle est isocèle."
+            },
+            {
+              "question": "Les angles d'un triangle mesurent $30^{\\circ}$, $60^{\\circ}$, $90^{\\circ}$. De quel type est-il ?",
+              "answer": "C'est un triangle rectangle.",
+              "hint": "Cherche un angle qui vaut $90^{\\circ}$.",
+              "explanation": "L'un des angles vaut $90^{\\circ}$, c'est la définition d'un triangle rectangle."
+            },
+            {
+              "question": "Un triangle a deux côtés égaux et un angle droit. Donne son nom complet.",
+              "answer": "Triangle rectangle isocèle.",
+              "hint": "Combine le nom selon les côtés et le nom selon les angles.",
+              "explanation": "Deux côtés égaux → isocèle. Un angle droit → rectangle. Ensemble, on dit triangle rectangle isocèle."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle avec règle et compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire un triangle, c'est le dessiner avec précision en respectant des mesures données. En CM1, tu utilises la règle pour tracer des segments et le compas pour reporter des longueurs. Trois cas principaux existent : trois côtés connus, deux côtés et l'angle entre eux, un côté et les deux angles adjacents. Chaque cas a sa méthode pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec la règle, dessine un segment $AB$ de la longueur du premier côté donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter les deux autres côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur $A$, ouvre-le à la longueur du deuxième côté, trace un arc. Puis place la pointe sur $B$, ouvre-le à la longueur du troisième côté, trace un second arc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver le troisième sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux arcs se coupent en un point $C$. Relie $C$ à $A$ et $C$ à $B$ avec la règle. Le triangle $ABC$ est construit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Construction d'un triangle à partir de trois côtés $a=5\\,cm$, $b=6\\,cm$, $c=7\\,cm$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "6 cm",
+                "7 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu connais deux côtés et l'angle qu'ils forment, la construction change légèrement. Tu traces d'abord un côté, puis tu construis l'angle donné à son extrémité avec le rapporteur, et enfin tu reports la longueur du second côté sur l'autre bras de l'angle. Le point où se termine ce report est le troisième sommet."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le segment $AB$ de la longueur du premier côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au point $A$, utilise le rapporteur pour tracer un angle de la mesure donnée. Trace une demi-droite $Ax$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec le compas, prends la longueur du deuxième côté, place la pointe sur $A$ et coupe la demi-droite $Ax$ en $C$. Relie $B$ et $C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ construit avec $AB=6\\,cm$, $AC=5\\,cm$ et $\\widehat{BAC}=40^{\\circ}$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "6 cm",
+                "",
+                "5 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier cas : un côté et les deux angles qui l'encadrent. Tu traces le côté connu, puis aux deux extrémités tu construis les angles donnés. Les deux demi-droites se coupent en un point qui devient le troisième sommet. C'est une méthode très utile quand tu as les angles mais pas toutes les longueurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le côté connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le segment $AB$ de la longueur donnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire les deux angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En $A$, trace l'angle $\\alpha$ ; en $B$, trace l'angle $\\beta$ avec le rapporteur. Obtiens deux demi-droites."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux demi-droites se coupent en $C$. Relie $C$ à $A$ et $B$. Le triangle $ABC$ est fini."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ avec $AB=8\\,cm$, $\\widehat{A}=50^{\\circ}$, $\\widehat{B}=60^{\\circ}$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "8 cm",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer les éléments d'un triangle (côtés, sommets, angles).",
+                "Je connais la somme des angles d'un triangle ($180^{\\circ}$).",
+                "Je sais classer un triangle selon ses côtés (équilatéral, isocèle, scalène).",
+                "Je sais classer un triangle selon ses angles (rectangle, acutangle, obtusangle).",
+                "Je peux construire un triangle connaissant trois côtés.",
+                "Je peux construire un triangle connaissant deux côtés et l'angle compris.",
+                "Je peux construire un triangle connaissant un côté et les deux angles adjacents."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as trois segments de $4\\,cm$, $5\\,cm$, $6\\,cm$. Peux-tu construire un triangle ? Justifie.",
+              "answer": "Oui, car chaque longueur est inférieure à la somme des deux autres ($4<5+6$, $5<4+6$, $6<4+5$).",
+              "hint": "Rappelle-toi la condition d'existence d'un triangle.",
+              "explanation": "Pour qu'un triangle existe, chaque côté doit être plus court que la somme des deux autres. Ici, toutes les inégalités sont vérifiées, donc la construction est possible."
+            },
+            {
+              "question": "Construis un triangle $ABC$ avec $AB=7\\,cm$, $AC=5\\,cm$ et $\\widehat{BAC}=50^{\\circ}$. Quelle est la longueur approchée de $BC$ ?",
+              "answer": "Environ $5,4\\,cm$ (mesure à la règle après construction).",
+              "hint": "Trace $AB$, construis l'angle $50^{\\circ}$ en $A$, reporte $5\\,cm$ sur le bras de l'angle, puis mesure $BC$.",
+              "explanation": "La construction suit la méthode deux côtés + angle compris. La mesure de $BC$ se lit sur la figure une fois le triangle tracé."
+            },
+            {
+              "question": "Donne les étapes pour construire un triangle quand on connaît un côté de $6\\,cm$ et les deux angles adjacents $40^{\\circ}$ et $70^{\\circ}$.",
+              "answer": "1) Tracer le côté $6\\,cm$. 2) Construire l'angle $40^{\\circ}$ à une extrémité. 3) Construire l'angle $70^{\\circ}$ à l'autre extrémité. 4) Marquer l'intersection des deux demi-droites, c'est le troisième sommet. 5) Relier ce sommet aux extrémités du côté initial.",
+              "hint": "Suis la méthode côté + deux angles.",
+              "explanation": "Cette méthode utilise le fait que la somme des angles est $180^{\\circ}$ ; les deux angles donnés déterminent la forme, le côté donné fixe la taille."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Ensembles, intervalles, arithmétique",
+  "title": "Ensembles, intervalles et arithmétique",
+  "blocks": [
+    {
+      "title": "Intersection d'intervalles",
+      "content": "Soit $A = [1,5)$ et $B = (3,7]$. Déterminez $A \\cap B$ et écrivez-le sous forme d'intervalle.",
+      "correctAnswer": "(3,5)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intervalle $A$ contient tous les réels $x$ tels que $1 \\le x < 5$. L'intervalle $B$ contient tous les réels $x$ tels que $3 < x \\le 7$. Les nombres appartenant aux deux intervalles satisfont simultanément $3 < x < 5$, ce qui s'écrit $(3,5)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'inéquation quadratique",
+      "content": "Soit $E = \\{ x \\in \\mathbb{R} \\mid x^2 - 4x + 3 < 0 \\}$. Écrivez $E$ sous forme d'intervalle.",
+      "correctAnswer": "(1,3)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Factorisons le trinôme : $x^2 - 4x + 3 = (x-1)(x-3)$. L'inéquation $(x-1)(x-3) < 0$ est vérifiée pour $x$ entre les deux racines, c'est-à-dire $1 < x < 3$. L'ensemble solution est donc l'intervalle ouvert $(1,3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification de fraction",
+      "content": "Simplifiez la fraction $\\frac{84}{126}$.",
+      "correctAnswer": "2/3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de 84 et 126 est 42. En divisant numérateur et dénominateur par 42, on obtient $\\frac{84 \\div 42}{126 \\div 42} = \\frac{2}{3}$. La fraction simplifiée est $2/3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

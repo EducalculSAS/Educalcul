@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 257,
+  "_course_code": "cm1-t07-c02-construire-un-diagramme",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Choisir échelle",
+  "title": "Algorithmes pour choisir l'échelle d'un diagramme",
+  "blocks": [
+    {
+      "title": "Calculer l'unité de graduation",
+      "content": "On veut construire un diagramme en barres. La valeur maximale des données est $48$. On souhaite environ $6$ graduations sur l'axe vertical. Écrire un algorithme (suite d'instructions numérotées) qui calcule l'unité de graduation arrondie à la valeur standard la plus proche parmi $1$, $2$, $5$, $10$, $20$, $50$... L'algorithme doit afficher l'unité choisie.",
+      "correctAnswer": "1. Lire la valeur maximale (ici $48$) et le nombre de graduations souhaité (ici $6$).\\n2. Calculer l'unité idéale : $48 / 6 = 8$.\\n3. Chercher dans la liste des standards ($1, 2, 5, 10, 20...$) la valeur la plus proche de $8$ (au-dessus ou au-dessous).\\n4. Ici $10$ est le standard le plus proche de $8$.\\n5. Afficher : \"Unité de graduation choisie : 10\".",
+      "explanation": "On divise le maximum par le nombre de graduations visé pour obtenir l'unité idéale ($8$). Comme les graduations doivent être des nombres \"ronds\" (faciles à lire), on choisit l'échelle standard la plus proche : $10$ est plus pratique que $5$ ou $20$. Avec une échelle de $10$, on aura $5$ graduations ($10, 20, 30, 40, 50$) ce qui est proche de l'objectif de $6$ et le maximum $48$ tient sur l'axe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier si une échelle convient",
+      "content": "Un élève propose une échelle de $5$ en $5$ pour un diagramme. La valeur maximale est $73$. L'axe vertical mesure $15$ cm et chaque graduation représente $1$ cm. Écrire un algorithme qui vérifie deux conditions : 1) la valeur maximale tient-elle sur l'axe ? 2) le nombre de graduations est-il raisonnable (entre $5$ et $10$ graduations) ? L'algorithme affiche \"Échelle validée\" ou \"Échelle refusée\" avec la raison.",
+      "correctAnswer": "1. Lire : maximum = $73$, échelle = $5$, hauteur axe = $15$ cm (donc $15$ graduations max).\\n2. Calculer la valeur max affichable : $15 \\times 5 = 75$.\\n3. Si $73 > 75$ alors afficher \"Échelle refusée : maximum trop grand\" et arrêter.\\n4. Calculer le nombre de graduations utilisées : $75 / 5 = 15$ (ou arrondi supérieur de $73/5 = 15$).\\n5. Si nombre de graduations $< 5$ ou $> 10$ alors afficher \"Échelle refusée : nombre de graduations non raisonnable (15)\".\\n6. Sinon afficher \"Échelle validée\".\\n\\nIci : $73 \\le 75$ (OK) mais $15 > 10$ (Trop de graduations). Résultat : Échelle refusée.",
+      "explanation": "L'axe de $15$ cm permet $15$ graduations. Avec une échelle de $5$, la valeur maximale affichée est $15 \\times 5 = 75$. Le maximum $73$ tient donc sur l'axe. Cependant, cela crée $15$ graduations ($5, 10, ..., 75$), ce qui est bien plus que la recommandation habituelle de $5$ à $10$ graduations pour une bonne lisibilité. L'algorithme doit donc refuser cette échelle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Choisir la meilleure échelle standard automatiquement",
+      "content": "On dispose d'une liste d'échelles standards dans l'ordre : $1, 2, 5, 10, 20, 50, 100$. La valeur maximale est $345$. L'axe vertical permet au maximum $10$ graduations. Écrire un algorithme qui parcourt la liste des échelles de la plus petite à la plus grande et sélectionne la première échelle qui permet d'afficher le maximum $345$ avec $10$ graduations ou moins. Afficher l'échelle choisie.",
+      "correctAnswer": "1. Lire : maximum = $345$, graduations max autorisées = $10$.\\n2. Définir la liste échelles = [$1, 2, 5, 10, 20, 50, 100$].\\n3. Pour chaque échelle dans la liste (dans l'ordre) :\\n   a. Calculer nombre_grad = plafond(maximum / échelle).\\n   b. Si nombre_grad <= 10 alors :\\n        Afficher \"Échelle choisie : \" + échelle.\\n        Arrêter l'algorithme.\\n4. Si la boucle finit sans trouver, afficher \"Aucune échelle ne convient\".\\n\\nExécution :\\n- échelle $1$ : $345$ grad (non).\\n- échelle $2$ : $173$ grad (non).\\n- échelle $5$ : $69$ grad (non).\\n- échelle $10$ : $35$ grad (non).\\n- échelle $20$ : $18$ grad (non).\\n- échelle $50$ : $7$ grad (oui, $7 \\le 10$).\\nRésultat : Échelle choisie : 50.",
+      "explanation": "L'algorithme teste les échelles standards dans l'ordre croissant. Pour chacune, il calcule combien de graduations sont nécessaires pour atteindre $345$ (arrondi au supérieur). La première échelle qui demande $10$ graduations ou moins est retenue. $345 / 50 = 6,9$, donc $7$ graduations suffisent ($50, 100, 150, 200, 250, 300, 350$). C'est la première de la liste qui convient (les échelles $1, 2, 5, 10, 20$ demandent trop de graduations).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

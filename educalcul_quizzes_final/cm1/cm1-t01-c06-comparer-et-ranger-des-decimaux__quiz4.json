@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Comparer et ranger des décimaux",
+  "title": "Quiz : Comparer et ranger des décimaux",
+  "questions": [
+    {
+      "text": "Lequel des deux nombres est le plus grand : $3,4$ ou $3,04$ ?",
+      "options": [
+        "$3,4$",
+        "$3,04$",
+        "ils sont égaux",
+        "impossible de comparer"
+      ],
+      "correctAnswer": "$3,4$",
+      "explanation": "Pour comparer, on aligne les virgules : $3,40$ et $3,04$. Les parties entières sont égales (3). On compare les dixièmes : 4 contre 0, donc $3,40 > 3,04$. Les autres réponses correspondent à l'erreur de croire que plus de chiffres après la virgule signifie un nombre plus grand, ou à une confusion entre égalité et impossibilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les nombres suivants dans l'ordre croissant : $0,5 ; 0,45 ; 0,55$.",
+      "options": [
+        "$0,45 ; 0,5 ; 0,55$",
+        "$0,5 ; 0,45 ; 0,55$",
+        "$0,55 ; 0,5 ; 0,45$",
+        "$0,45 ; 0,55 ; 0,5$"
+      ],
+      "correctAnswer": "$0,45 ; 0,5 ; 0,55$",
+      "explanation": "On écrit chaque nombre avec deux chiffres après la virgule : $0,50 ; 0,45 ; 0,55$. En comparant les dixièmes puis les centièmes, l'ordre croissant est $0,45 < 0,50 < 0,55$. Les distracteurs proviennent d'une lecture sans alignement des décimales ou d'une inversion partielle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare $12,3$ et $12,03$ en choisissant la bonne relation.",
+      "options": [
+        "$12,3 > 12,03$",
+        "$12,3 < 12,03$",
+        "$12,3 = 12,03$",
+        "$12,3$ et $12,03$ ne peuvent pas être comparés"
+      ],
+      "correctAnswer": "$12,3 > 12,03$",
+      "explanation": "On ajoute un zéro pour avoir le même nombre de décimales : $12,30$ et $12,03$. Les parties entières sont égales (12). Aux dixièmes, 3 > 0, donc $12,30 > 12,03$. Les autres choix reflètent l'erreur de comparer chiffre à chiffre sans aligner la virgule ou de penser que plus de chiffres après la virgule donne un nombre plus grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres $4,6 ; 4,58 ; 4,600 ; 4,06$, lequel est le plus petit ?",
+      "options": [
+        "$4,06$",
+        "$4,58$",
+        "$4,6$",
+        "$4,600$"
+      ],
+      "correctAnswer": "$4,06$",
+      "explanation": "On met tous les nombres à trois décimales : $4,600 ; 4,580 ; 4,600 ; 4,060$. La partie entière est 4 pour tous. Aux dixièmes, le plus petit chiffre est 0 (pour $4,06$). Donc $4,06$ est le plus petit. Les distracteurs proviennent de la confusion entre $4,6$ et $4,600$ (égaux) et de la lecture rapide qui ne compare pas correctement les dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marie a mesuré trois rubans : $1,25$ m, $1,2$ m et $1,205$ m. Classe les longueurs du plus court au plus long.",
+      "options": [
+        "$1,2 ; 1,205 ; 1,25$",
+        "$1,205 ; 1,2 ; 1,25$",
+        "$1,25 ; 1,2 ; 1,205$",
+        "$1,2 ; 1,25 ; 1,205$"
+      ],
+      "correctAnswer": "$1,2 ; 1,205 ; 1,25$",
+      "explanation": "On écrit chaque mesure avec trois décimales : $1,200 ; 1,205 ; 1,250$. En comparant les centièmes puis les millièmes, l'ordre croissant est $1,200 < 1,205 < 1,250$, soit $1,2 ; 1,205 ; 1,25$. Les autres propositions correspondent à des erreurs d'alignement des décimales ou à une lecture dans le désordre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

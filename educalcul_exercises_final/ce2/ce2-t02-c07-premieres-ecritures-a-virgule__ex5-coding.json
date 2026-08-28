@@ -1,0 +1,69 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 158,
+  "_course_code": "ce2-t02-c07-premieres-ecritures-a-virgule",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Lire un nombre décimal en contexte",
+  "title": "Algorithmes de lecture et comparaison de nombres décimaux",
+  "blocks": [
+    {
+      "title": "Décomposer un prix en euros",
+      "content": "Un jeu coûte $12,50$ euros. Écris un algorithme (suite d'instructions) qui permet de lire ce nombre en le décomposant en parties entière et décimale, puis en nommant les chiffres des dixièmes et des centièmes.",
+      "correctAnswer": "Algorithme LirePrix\\n1. Identifier la partie entière avant la virgule : 12 -> lire \"douze euros\".\\n2. Identifier la partie décimale après la virgule : 50 -> lire \"cinquante centimes\".\\n3. Décomposer la partie décimale :\\n   - Chiffre des dixièmes : 5 -> 5 dixièmes d'euro (50 centimes).\\n   - Chiffre des centièmes : 0 -> 0 centime.\\n4. Afficher le résultat : \"Douze euros et cinquante centimes\".\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On sépare le nombre à la virgule. La partie de gauche (12) est le nombre d'euros (unités). La partie de droite (50) représente les centimes. Le premier chiffre après la virgule (5) est le chiffre des dixièmes (5 dixièmes = 50 centimes), le second (0) est le chiffre des centièmes. On lit donc 12,50 : douze euros cinquante centimes.",
+      "points": 2,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 12.5,
+        "caption": "Tableau de position pour 12,50"
+      }
+    },
+    {
+      "title": "Comparer deux longueurs",
+      "content": "Luc a un ruban de $1,4$ mètre et Léa a un ruban de $1,08$ mètre. Écris un algorithme qui compare ces deux nombres décimaux pour déterminer quel ruban est le plus long.",
+      "correctAnswer": "Algorithme ComparerLongueurs\\n1. Aligner les nombres à la virgule :\\n   1,40\\n   1,08\\n2. Comparer la partie entière (avant la virgule) :\\n   1 = 1 (égalité).\\n3. Comparer les dixièmes (premier chiffre après la virgule) :\\n   4 > 0.\\n4. Conclure : comme 4 dixièmes est plus grand que 0 dixième,\\n   $1,40 > 1,08$.\\n5. Afficher : \"Le ruban de Luc (1,4 m) est plus long que celui de Léa (1,08 m)\".\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer, on met les nombres à la même longueur en ajoutant un zéro chiffreur si besoin ($1,4$ devient $1,40$). On compare d'abord les unités (1 = 1), puis les dixièmes (4 > 0). On n'a pas besoin d'aller aux centièmes car l'ordre est déjà décidé aux dixièmes. $1,40$ est plus grand que $1,08$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver un nombre entre deux bornes",
+      "content": "Sur une graduation, on repère les nombres $3,2$ et $3,3$. Écris un algorithme qui permet de trouver et d'écrire un nombre décimal compris strictement entre ces deux nombres.",
+      "correctAnswer": "Algorithme NombreEntreDeux\\n1. Observer les deux nombres : $3,2$ et $3,3$.\\n2. Noter qu'ils ont la même partie entière (3) et le même chiffre des dixièmes (2 et 3).\\n3. Ajouter un chiffre des centièmes au plus petit nombre ($3,2$ devient $3,20$) et au plus grand ($3,3$ devient $3,30$).\\n4. Choisir un chiffre des centièmes strictement entre 0 et 10 (par exemple 5).\\n5. Construire le nombre : $3,25$.\\n6. Vérifier : $3,2 < 3,25 < 3,3$.\\n7. Afficher : \"Un nombre possible est 3,25\".\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les nombres $3,2$ et $3,3$ sont consécutifs au dixième près. Pour en trouver un entre les deux, on passe aux centièmes : $3,2 = 3,20$ et $3,3 = 3,30$. Tout nombre de la forme $3,2$ suivi d'un chiffre de 1 à 9 convient (ex: $3,21, 3,25, 3,29$). L'algorithme formalise cette recherche en ajoutant une position de centièmes.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Graduation entre 3,2 et 3,3",
+        "min": 3.2,
+        "max": 3.3,
+        "points": [
+          {
+            "value": 3.2,
+            "label": "3,2"
+          },
+          {
+            "value": 3.3,
+            "label": "3,3"
+          },
+          {
+            "value": 3.25,
+            "label": "3,25"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "_status": "done",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Relier euros et centimes",
+  "title": "Relier euros et centimes",
+  "questions": [
+    {
+      "text": "Combien de centimes y a-t-il dans $1$ € ?",
+      "options": [
+        "$10$ c",
+        "$50$ c",
+        "$100$ c",
+        "$1000$ c"
+      ],
+      "correctAnswer": "$100$ c",
+      "explanation": "Par définition, $1$ euro vaut $100$ centimes. C'est l'équivalence de base à connaître. $10$ c correspond à $0,10$ €, $50$ c à $0,50$ € et $1000$ c à $10$ €.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100
+        ],
+        "target": 100,
+        "caption": "1 euro"
+      }
+    },
+    {
+      "text": "Combien de centimes y a-t-il dans $2$ € ?",
+      "options": [
+        "$20$ c",
+        "$200$ c",
+        "$102$ c",
+        "$2000$ c"
+      ],
+      "correctAnswer": "$200$ c",
+      "explanation": "Puisque $1$ € = $100$ c, alors $2$ € = $2 \\times 100$ c = $200$ c. L'erreur fréquente est de répondre $20$ c (oubli du zéro) ou $102$ c (addition au lieu de multiplication).",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100,
+          100
+        ],
+        "target": 200,
+        "caption": "2 euros"
+      }
+    },
+    {
+      "text": "Comment écrit-on $1$ euro $50$ centimes avec une virgule ?",
+      "options": [
+        "$1,5$ €",
+        "$1,05$ €",
+        "$1,50$ €",
+        "$15$ €"
+      ],
+      "correctAnswer": "$1,50$ €",
+      "explanation": "En écriture décimale monétaire, on met les euros avant la virgule et les centimes sur deux chiffres après la virgule. $1$ euro $50$ centimes s'écrit donc $1,50$ €. $1,5$ € est une écriture incomplète pour la monnaie, $1,05$ € correspond à $1$ euro $5$ centimes et $15$ € à quinze euros.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 1.5,
+        "caption": "1 euro 50 centimes"
+      }
+    },
+    {
+      "text": "$345$ centimes, cela fait combien d'euros ?",
+      "options": [
+        "$3,45$ €",
+        "$34,5$ €",
+        "$345$ €",
+        "$3,045$ €"
+      ],
+      "correctAnswer": "$3,45$ €",
+      "explanation": "On groupe les centimes par paquets de $100$. $345$ c = $300$ c + $45$ c = $3$ € + $45$ c = $3,45$ €. L'erreur $34,5$ € vient d'une mauvaise placement de la virgule (division par $10$ au lieu de $100$).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.45,
+        "caption": "345 centimes"
+      }
+    },
+    {
+      "text": "Quelle somme correspond à $2,30$ € ?",
+      "options": [
+        "$2$ € + $3$ c",
+        "$2$ € + $30$ c",
+        "$20$ € + $3$ c",
+        "$2$ € + $300$ c"
+      ],
+      "correctAnswer": "$2$ € + $30$ c",
+      "explanation": "Le nombre après la virgule donne les centimes sur deux chiffres. $2,30$ € signifie $2$ euros et $30$ centimes. $2$ € + $3$ c ferait $2,03$ €, $20$ € + $3$ c ferait $20,03$ € et $2$ € + $300$ c ferait $5$ €.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100,
+          100,
+          10,
+          10,
+          10
+        ],
+        "target": 230,
+        "caption": "2 euros 30 centimes"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Essayer une stratégie",
+  "title": "Approfondissement : Essayer une stratégie",
+  "questions": [
+    {
+      "text": "J'ai deux nombres. Leur somme est $15$ et leur différence est $3$. Pour utiliser la stratégie \"Essayer une valeur\", par quel couple de nombres commence-t-on souvent pour trouver vite la réponse ?",
+      "options": [
+        "On essaie $10$ et $5$",
+        "On essaie $9$ et $6$",
+        "On essaie $8$ et $7$",
+        "On essaie $12$ et $3$"
+      ],
+      "correctAnswer": "On essaie $9$ et $6$",
+      "explanation": "La stratégie \"Essayer une valeur\" (essais-erreurs) consiste à tester des couples. Pour aller vite, on commence souvent par un couple au milieu des possibilités. $9 + 6 = 15$ (somme correcte) et $9 - 6 = 3$ (différence correcte). C'est la bonne réponse dès le premier essai. $10+5=15$ mais $10-5=5$ ; $8+7=15$ mais $8-7=1$ ; $12+3=15$ mais $12-3=9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quatre amis (Ana, Ben, Céa, Dan) sont assis sur un banc. Ana est à côté de Ben. Céa n'est pas à côté de Dan. Ben est au bout du banc. Quelle stratégie visuelle est la plus efficace pour placer tout le monde ?",
+      "options": [
+        "Faire une addition",
+        "Dessiner un schéma avec quatre cases",
+        "Écrire les noms en liste",
+        "Compter sur les doigts"
+      ],
+      "correctAnswer": "Dessiner un schéma avec quatre cases",
+      "explanation": "C'est un problème de placement. La stratégie \"Dessiner un schéma / Représenter\" permet de matérialiser les places (les cases du banc). On place Ben au bout (case 1 ou 4), Ana à côté (case 2 ou 3), puis on teste les places pour Céa et Dan en respectant qu'ils ne sont pas voisins. Une addition ou une liste ne montrent pas l'adjacence (le fait d'être à côté).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $2$ t-shirts (rouge, bleu) et $2$ pantalons (noir, gris). Elle veut connaître toutes les tenues possibles. Comment applique-t-on la stratégie \"Faire un tableau ou une liste organisée\" ?",
+      "options": [
+        "On additionne $2 + 2$",
+        "On multiplie $2 \\times 2$",
+        "On écrit chaque combinaison t-shirt/pantalon une par une",
+        "On devine le nombre total"
+      ],
+      "correctAnswer": "On écrit chaque combinaison t-shirt/pantalon une par une",
+      "explanation": "La stratégie \"Faire un tableau / Liste organisée\" consiste à énumérer systématiquement toutes les possibilités sans en oublier : Rouge/Noir, Rouge/Gris, Bleu/Noir, Bleu/Gris. Cela donne $4$ tenues. L'addition ($2+2=4$) ou la multiplication ($2\\times2=4$) donnent le résultat numérique mais ne montrent pas *quelles* sont les tenues, ce qui est le but de la stratégie pour vérifier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Hugo a une boîte de bonbons. Il en donne la moitié à sa sœur. Il lui en reste $6$. Combien en avait-il au départ ? Quelle opération fait-on avec la stratégie \"Remonter le fil\" (reculer depuis la fin) ?",
+      "options": [
+        "On divise $6$ par $2$",
+        "On multiplie $6$ par $2$",
+        "On soustrait $2$ à $6$",
+        "On ajoute $2$ à $6$"
+      ],
+      "correctAnswer": "On multiplie $6$ par $2$",
+      "explanation": "La stratégie \"Remonter le fil\" consiste à repartir de la fin (il reste $6$) et à défaire les actions. La dernière action était \"donner la moitié\", c'est-à-dire diviser par $2$. L'opération inverse est multiplier par $2$. $6 \\times 2 = 12$. Hugo avait $12$ bonbons au départ. Diviser par $2$ donnerait $3$ (trop peu), soustraire ou ajouter $2$ ne correspond pas à l'action \"donner la moitié\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre mystère est pair. Il est plus grand que $20$ et plus petit que $30$. La somme de ses deux chiffres vaut $8$. En utilisant la stratégie \"Essayer toutes les possibilités\", quel est ce nombre ?",
+      "options": [
+        "$22$",
+        "$24$",
+        "$26$",
+        "$28$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "On liste les nombres pairs entre $20$ et $30$ : $22, 24, 26, 28$. On teste la somme des chiffres pour chacun : $2+2=4$ (non), $2+4=6$ (non), $2+6=8$ (oui), $2+8=10$ (non). Seul $26$ correspond à tous les indices. C'est l'application directe de la stratégie \"Essayer une par une\" sur une liste courte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

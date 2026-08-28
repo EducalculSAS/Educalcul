@@ -1,0 +1,119 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Lire",
+  "title": "Lecture de diagrammes et tableaux",
+  "blocks": [
+    {
+      "title": "Diagramme en barres",
+      "content": "D'après le diagramme en barres, combien de livres Clara a-t-elle lus ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme en barres montre le nombre de livres lus par chaque élève. La barre correspondant à Clara atteint la valeur $7$, donc Clara a lu $7$ livres.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par chaque élève en un mois",
+        "bars": [
+          {
+            "label": "Alice",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Bob",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Clara",
+            "value": 7,
+            "tone": "red"
+          },
+          {
+            "label": "David",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Diagramme circulaire",
+      "content": "Quel fruit est le plus apprécié d'après le diagramme circulaire ?",
+      "correctAnswer": "Pommes",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme circulaire représente les pourcentages de préférence pour chaque fruit. La part la plus grande correspond aux pommes avec $40$ pour cent, ce qui en fait le fruit le plus apprécié.",
+      "points": 2,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "slices": [
+          {
+            "label": "Pommes",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 30,
+            "tone": "green"
+          },
+          {
+            "label": "Fraises",
+            "value": 20,
+            "tone": "red"
+          },
+          {
+            "label": "Oranges",
+            "value": 10,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tableau de données",
+      "content": "Le tableau ci-dessous indique le nombre d'animaux possédés par quatre familles. Calcule la moyenne du nombre d'animaux par famille.",
+      "correctAnswer": "1,5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir la moyenne, on additionne les nombres d'animaux : $2 + 0 + 3 + 1 = 6$. On divise ensuite par le nombre de familles, soit $4$ : $6 / 4 = 1,5$. La moyenne est donc $1,5$ animal par famille.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Famille",
+          "Nombre d'animaux"
+        ],
+        "rows": [
+          [
+            "Famille 1",
+            "2"
+          ],
+          [
+            "Famille 2",
+            "0"
+          ],
+          [
+            "Famille 3",
+            "3"
+          ],
+          [
+            "Famille 4",
+            "1"
+          ]
+        ]
+      }
+    }
+  ]
+}

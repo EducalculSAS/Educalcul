@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Repérer erreur",
+  "title": "Repérer les erreurs dans un programme",
+  "blocks": [
+    {
+      "title": "Erreur de direction",
+      "content": "Le robot doit avancer de 3 cases, tourner à droite, puis avancer de 2 cases. Le programme proposé est :\\n1. Avancer 3\\n2. Tourner gauche\\n3. Avancer 2\\nQuelle instruction est erronée ?",
+      "correctAnswer": "Instruction 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction 2 demande de tourner à gauche alors que le robot doit tourner à droite. C'est donc l'instruction 2 qui contient l'erreur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre dans une boucle",
+      "content": "Pour afficher les nombres de 1 à 5, le programme est :\\n1. i ← 1\\n2. Tant que i ≤ 5 faire\\n3. Afficher i\\n4. i ← i + 1\\n5. Fin tant que\\nMais l'instruction 4 est placée avant l'instruction 3. Quelle ligne doit être déplacée pour corriger le programme ?",
+      "correctAnswer": "Ligne 4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'incrémentation de i (ligne 4) doit se faire après l'affichage (ligne 3), sinon la valeur affichée ne correspond pas à l'itération courante. Il faut déplacer la ligne 4 après la ligne 3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition inversée",
+      "content": "Le programme doit allumer une LED si le capteur détecte un objet. Le code donné est :\\n1. Si capteur = vrai alors\\n2. Éteindre LED\\n3. Sinon\\n4. Allumer LED\\n5. Fin si\\nQuelle instruction est incorrecte ?",
+      "correctAnswer": "Instruction 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque le capteur est vrai (objet détecté), le programme éteint la LED (instruction 2) alors qu'il devrait l'allumer. L'instruction 2 est donc l'erreur ; il faut remplacer « Éteindre LED » par « Allumer LED ».",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

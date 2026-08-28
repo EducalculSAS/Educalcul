@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Pythagore et raisonnement",
+  "title": "Algorithmes et théorème de Pythagore",
+  "blocks": [
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui demande les longueurs des deux côtés de l'angle droit $a$ et $b$, puis affiche la longueur de l'hypoténuse $c$ en utilisant le théorème de Pythagore.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b\\n2. Calculer $c = \\sqrt{a^2 + b^2}$\\n3. Afficher c",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique directement le théorème de Pythagore : dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. L'algorithme lit les deux longueurs, calcule la racine carrée de la somme de leurs carrés et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de triangle rectangle",
+      "content": "Écrire un algorithme qui lit trois longueurs $a$, $b$, $c$ et détermine si elles peuvent être les côtés d'un triangle rectangle. On supposera que $c$ est la plus grande longueur après tri.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c\\n2. Trier les trois valeurs pour que $c$ soit la plus grande\\n3. Si $a^2 + b^2 = c^2$ alors afficher \"Triangle rectangle\" sinon afficher \"Pas un triangle rectangle\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour vérifier qu'un triangle est rectangle, il suffit de tester l'égalité de Pythagore après avoir identifié le plus grand côté comme hypoténuse. Le tri garantit que $c$ est bien l'hypoténuse potentielle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du côté manquant",
+      "content": "Écrire un algorithme qui, connaissant l'hypoténuse $c$ et un côté de l'angle droit $a$, calcule l'autre côté $b$.",
+      "correctAnswer": "Algorithme :\\n1. Lire c, a\\n2. Vérifier que $c > a$ sinon afficher \"Erreur\"\\n3. Calculer $b = \\sqrt{c^2 - a^2}$\\n4. Afficher b",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On réarrange le théorème de Pythagore : $b^2 = c^2 - a^2$. L'algorithme vérifie d'abord que l'hypoténuse est bien plus grande que le côté connu, puis calcule la racine carrée de la différence des carrés pour obtenir $b$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

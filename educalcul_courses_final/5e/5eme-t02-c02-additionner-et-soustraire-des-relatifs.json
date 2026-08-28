@@ -1,0 +1,415 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.687552+00:00",
+  "id": 385,
+  "code": "5eme-t02-c02",
+  "title": "Additionner et soustraire des relatifs",
+  "description": "Cours structuré Educalcul : Additionner et soustraire des relatifs.",
+  "subject": "Nombres relatifs, rationnels et puissances",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Nombres relatifs, rationnels et puissances",
+    "titre_du_cours": "Additionner et soustraire des relatifs",
+    "objectif_global": "Additionner et soustraire des relatifs",
+    "mini_lecons_imposees": [
+      "Sens déplacement.",
+      "Règles.",
+      "Calculs."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, rationnels et puissances",
+      "lessons": [
+        {
+          "title": "Sens déplacement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la droite graduée comme une route"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une longue route bien droite qui traverse ton village. Au milieu, il y a la place du marché, que l'on appelle le point zéro. À droite de la place, les maisons portent des numéros positifs : $1$, $2$, $3$… À gauche, les numéros sont négatifs : $-1$, $-2$, $-3$… Cette route, en mathématiques, s'appelle une droite graduée. Elle nous permet de voir où se trouve un nombre par rapport à zéro et de comprendre ce que signifie avancer ou reculer."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre relatif",
+              "definition": "Un nombre qui possède un signe (plus ou moins) et une valeur absolue. Il se place sur la droite graduée à gauche (négatif) ou à droite (positif) de zéro.",
+              "example": "$-4$ et $+7$ sont des nombres relatifs."
+            },
+            {
+              "type": "number_line",
+              "caption": "La droite graduée de $-5$ à $5$ avec le zéro au centre",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 2,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le point A à $-3$ et le point B à $2$. Pour aller de A à B, tu fais $5$ pas vers la droite. Ce déplacement correspond à l'addition $ -3 + 5 = 2 $. À l'inverse, pour aller de B à A, tu recules de $5$ pas vers la gauche, ce qui s'écrit $ 2 - 5 = -3 $. Ainsi, ajouter un nombre positif, c'est avancer vers la droite ; ajouter un nombre négatif, c'est reculer vers la gauche."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as visualisé le déplacement, essayons de lire un déplacement directement sur la droite. Si tu pars de $-2$ et que tu avances de $4$ unités, où arrives-tu ? Pense à compter les graduations une par une vers la droite. Cette petite gymnastique t'aidera à sentir le lien concret entre le signe du nombre et le sens du mouvement."
+            },
+            {
+              "type": "thermometer_axis",
+              "caption": "Un thermomètre vertical pour ressentir le chaud (positif) et le froid (négatif)",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -4,
+                  "label": "Départ"
+                },
+                {
+                  "value": 3,
+                  "label": "Arrivée"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le thermomètre fonctionne comme une droite graduée debout. Le zéro est la température de la glace fondante. Au-dessus, les degrés sont positifs (chaud) ; en-dessous, ils sont négatifs (froid). Si la température monte de $-4^{\\circ}C$ à $3^{\\circ}C$, elle a gagné $7$ degrés. On écrit $-4 + 7 = 3$. Si elle descend de $3^{\\circ}C$ à $-4^{\\circ}C$, elle a perdu $7$ degrés : $3 - 7 = -4$. Le signe du nombre te dit toujours dans quel sens tu bouges."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux images mentales : la route horizontale et le thermomètre vertical. Elles disent la même chose : le signe positif pousse vers le haut ou vers la droite, le signe négatif tire vers le bas ou vers la gauche. Pour passer de l'idée de déplacement à une règle de calcul, on utilise l'opposé d'un nombre. L'opposé de $+5$ est $-5$ ; l'opposé de $-3$ est $+3$. Soustraire un nombre, c'est ajouter son opposé. Cette astuce transforme toute soustraction en addition, ce qui simplifie la vie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le signe du deuxième nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre qui suit le signe $+$ ou $-$. S'il est précédé d'un moins, c'est un nombre négatif ; s'il est précédé d'un plus (ou de rien), c'est un nombre positif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transformer la soustraction en addition de l'opposé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace le signe $-$ devant le deuxième nombre par un $+$ et change le signe de ce nombre. Par exemple, $6 - (-4)$ devient $6 + 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer l'addition sur la droite graduée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le premier nombre sur la droite, puis déplace-toi du nombre d'unités indiqué par le deuxième nombre, dans le sens donné par son signe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de traverser trois étapes : visualiser le déplacement, le lire sur deux supports différents, et découvrir la règle de l'opposé. Dans la prochaine leçon, nous allons transformer ces images en règles de calcul rapides, sans avoir à tracer la droite à chaque fois."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée, pars de $-1$ et avance de $3$ unités. Quelle est l'arrivée ?",
+              "answer": "$2$",
+              "hint": "Compte trois graduations vers la droite depuis $-1$.",
+              "explanation": "En partant de $-1$, un pas vers la droite donne $0$, le deuxième donne $1$, le troisième donne $2$. Donc $-1 + 3 = 2$."
+            },
+            {
+              "question": "La température est de $-5^{\\circ}C$. Elle monte de $8^{\\circ}C$. Quelle est la nouvelle température ?",
+              "answer": "$3^{\\circ}C$",
+              "hint": "Ajoute $8$ à $-5$ en remontant le thermomètre.",
+              "explanation": "En partant de $-5$, on remonte de $8$ degrés : $-5 + 8 = 3$. La température devient $3^{\\circ}C$."
+            },
+            {
+              "question": "Transforme la soustraction $4 - (-6)$ en addition de l'opposé et donne le résultat.",
+              "answer": "$10$",
+              "hint": "L'opposé de $-6$ est $+6$.",
+              "explanation": "On écrit $4 - (-6) = 4 + 6 = 10$."
+            }
+          ]
+        },
+        {
+          "title": "Règles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les règles d'addition des nombres relatifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as marché sur la droite graduée et monté sur le thermomètre. Maintenant, nous allons écrire les règles qui permettent de calculer vite, sans dessin. Rappelle-toi : chaque nombre relatif a un signe ($+$ ou $-$) et une valeur absolue (la distance à zéro, toujours positive). Par exemple, la valeur absolue de $-7$ est $7$, on note $|{-7}| = 7$."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur absolue",
+              "definition": "La distance d'un nombre à zéro sur la droite graduée, toujours positive ou nulle. Elle s'écrit entre deux barres verticales.",
+              "example": "$|{-4}| = 4$ et $|5| = 5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a + b = \\begin{cases} |a|+|b| & \\text{si } a,b \\text{ même signe} \\\\ \\text{signe du plus grand en valeur absolue}\\times(|a|-|b|) & \\text{si } a,b \\text{ signes différents} \\end{cases}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons la première situation : les deux nombres ont le même signe. Si tu ajoutes $+3$ et $+5$, tu avances deux fois vers la droite, donc tu vas plus loin à droite. Le résultat est positif et sa valeur absolue est la somme des deux valeurs absolues : $|3|+|5| = 8$. De même, $(-4) + (-6)$ : tu recules deux fois vers la gauche, le résultat est négatif, valeur absolue $4+6=10$, donc $-10$. La règle est simple : même signe → on additionne les valeurs absolues et on garde le signe commun."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la deuxième situation : les signes sont différents. Imagine que tu es à $+7$ et que tu ajoutes $-3$. Sur la droite, tu avances $7$ vers la droite, puis tu recules $3$ vers la gauche. Tu te retrouves à $+4$. La valeur absolue du résultat est la différence entre les deux valeurs absolues : $|7|-|3| = 4$. Le signe du résultat est celui du nombre qui a la plus grande valeur absolue (ici $+7$). Si c'était $-7 + 3$, tu recules $7$ puis avances $3$, tu finis à $-4$. Règle : signes différents → on soustrait la plus petite valeur absolue de la plus grande, et on met le signe du nombre dont la valeur absolue est la plus grande."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois que les deux valeurs absolues soient égales, par exemple $+5 + (-5)$ ou $-8 + 8$. Dans ce cas, la différence est zéro. Zéro n'a pas de signe, c'est le point de départ. Cette situation est très utile pour vérifier tes calculs : si tu obtiens zéro, c'est que les deux nombres s'annulent parfaitement."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce mnémotechnique",
+              "paragraphs": [
+                "Même signe : « même signe, on additionne, on garde le signe ». Signes différents : « signes contraires, on soustrait, on prend le signe du plus fort »."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarder les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sont-ils identiques ou opposés ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération sur les valeurs absolues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identiques → addition. Différents → soustraction (grand moins petit)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le signe du résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identiques → le signe commun. Différents → le signe du nombre dont la valeur absolue est la plus grande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combine le signe trouvé et la valeur absolue calculée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu possèdes maintenant les deux règles fondamentales pour additionner n'importe quels nombres relatifs. Dans la prochaine leçon, nous allons les mettre en pratique sur des calculs un peu plus longs, avec plusieurs nombres à la suite, et nous verrons comment les parenthèses aident à ne pas se tromper."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $(-12) + (-5)$.",
+              "answer": "$-17$",
+              "hint": "Même signe négatif, additionne les valeurs absolues $12$ et $5$.",
+              "explanation": "Les deux nombres sont négatifs, on additionne $12+5=17$ et on garde le signe moins : $-17$."
+            },
+            {
+              "question": "Calcule $9 + (-14)$.",
+              "answer": "$-5$",
+              "hint": "Signes différents, soustrais la plus petite valeur absolue de la plus grande.",
+              "explanation": "Valeurs absolues $9$ et $14$. $14-9=5$. Le plus grand en valeur absolue est $-14$, donc le résultat est $-5$."
+            },
+            {
+              "question": "Calcule $(-6) + 6$.",
+              "answer": "$0$",
+              "hint": "Valeurs absolues égales, le résultat est zéro.",
+              "explanation": "Les deux nombres sont opposés, ils s'annulent : $-6+6=0$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer des suites d'additions et de soustractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les règles d'addition sont claires, nous allons les utiliser pour des calculs qui enchaînent plusieurs nombres, comme $5 - 3 + (-2) - (-4)$. La clé, c'est de transformer chaque soustraction en addition de l'opposé, exactement comme nous l'avons vu avec la droite graduée. Ainsi, toute expression ne contient plus que des $+$ et des nombres relatifs, ce qui permet d'appliquer les règles de la leçon précédente en toute tranquillité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $5 - 3 + (-2) - (-4)$. Étape par étape : $5 - 3$ devient $5 + (-3)$. Le $+ (-2)$ reste tel quel. Le $- (-4)$ devient $+ 4$. L'expression devient $5 + (-3) + (-2) + 4$. Maintenant, tu peux regrouper les positifs ($5$ et $4$) et les négatifs ($-3$ et $-2$). $5+4 = 9$ ; $(-3)+(-2) = -5$. Enfin $9 + (-5)$ : signes différents, $9-5 = 4$, signe du plus grand ($9$) donc $+4$. Le résultat final est $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, des parenthèses apparaissent pour indiquer qu'un nombre négatif est un seul terme, par exemple $7 - (-3)$. Les parenthèses ne changent pas le calcul, elles évitent juste la confusion entre le signe moins de la soustraction et le signe moins du nombre. Rappelle-toi : $a - (b) = a + (-b)$ et $a - (-b) = a + b$. C'est exactement la règle de l'opposé que tu as déjà utilisée."
+            },
+            {
+              "type": "definition",
+              "term": "Opposé d'un nombre",
+              "definition": "Le nombre qui, ajouté à l'original, donne zéro. L'opposé de $x$ s'écrit $-x$. Si $x$ est positif, $-x$ est négatif, et inversement.",
+              "example": "L'opposé de $-9$ est $9$ car $-9 + 9 = 0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner à ne pas te perdre dans les signes, utilise la méthode du « regroupement ». Écris tous les nombres positifs d'un côté, tous les négatifs de l'autre, additionne chaque groupe séparément, puis fais l'addition finale entre les deux totaux. Cette technique marche pour n'importe quelle longueur de calcul et t'évite de faire des allers-retours sur la droite graduée à chaque étape."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Transformer toutes les soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque $- (\\text{nombre})$ par $+ (\\text{opposé du nombre})$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Séparer positifs et négatifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais deux colonnes : une pour les nombres $>0$, une pour les nombres $<0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner chaque colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la règle du même signe (addition des valeurs absolues, signe commun)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additionner les deux totaux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la règle des signes différents si nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant toutes les clés pour additionner et soustraire des nombres relatifs, que ce soit sur une droite, avec des règles rapides, ou en enchaînant plusieurs opérations. Tu peux vérifier tes résultats en traçant un petit déplacement sur une droite graduée ou en utilisant la méthode du regroupement. Ces outils te seront utiles tout au long du collège et au-delà."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais placer un nombre relatif sur une droite graduée.",
+                "Je sais transformer une soustraction en addition de l'opposé.",
+                "J'applique la règle des mêmes signes et celle des signes différents.",
+                "Je calcule une suite d'opérations en regroupement positifs/négatifs.",
+                "Je vérifie mon résultat par un déplacement visuel si besoin."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $8 - 5 + (-3) - (-2)$.",
+              "answer": "$2$",
+              "hint": "Transforme les soustractions, puis regroupe positifs et négatifs.",
+              "explanation": " $8 - 5 + (-3) - (-2) = 8 + (-5) + (-3) + 2$. Positifs : $8+2=10$. Négatifs : $(-5)+(-3)=-8$. $10 + (-8) = 2$."
+            },
+            {
+              "question": "Calcule $(-7) - (-4) + 6 - 9$.",
+              "answer": "$-6$",
+              "hint": "Change $-(-4)$ en $+4$, puis sépare les signes.",
+              "explanation": " $(-7) - (-4) + 6 - 9 = -7 + 4 + 6 + (-9)$. Positifs : $4+6=10$. Négatifs : $-7+(-9)=-16$. $10 + (-16) = -6$."
+            },
+            {
+              "question": "Calcule $12 - (-5) + (-8) - 3$.",
+              "answer": "$6$",
+              "hint": "Attention au double moins, puis regroupe.",
+              "explanation": " $12 - (-5) + (-8) - 3 = 12 + 5 + (-8) + (-3)$. Positifs : $12+5=17$. Négatifs : $-8+(-3)=-11$. $17 + (-11) = 6$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

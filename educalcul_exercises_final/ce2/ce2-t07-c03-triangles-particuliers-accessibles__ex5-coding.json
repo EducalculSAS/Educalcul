@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 198,
+  "_course_code": "ce2-t07-c03-triangles-particuliers-accessibles",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Triangle rectangle",
+  "title": "Algorithmes autour du triangle rectangle",
+  "blocks": [
+    {
+      "title": "Vérifier un angle droit",
+      "content": "Écris un algorithme en langage naturel pour vérifier si un triangle donné est rectangle à l'aide d'une équerre.",
+      "correctAnswer": "1. Poser l'équerre sur un sommet du triangle. 2. Aligner un côté de l'équerre avec un côté du triangle. 3. Vérifier si l'autre côté de l'équerre coïncide avec l'autre côté du triangle. 4. Si les deux côtés coïncident, l'angle mesure 90 degrés et le triangle est rectangle. 5. Sinon, le triangle n'est pas rectangle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise l'équerre comme outil de mesure d'un angle droit. Si les deux côtés du triangle épousent exactement les deux branches de l'équerre, l'angle est de $90^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un triangle rectangle",
+      "content": "Écris un algorithme pour tracer un triangle rectangle dont les deux côtés de l'angle droit mesurent $5\\,cm$ et $7\\,cm$.",
+      "correctAnswer": "1. Tracer un segment AB de longueur $5\\,cm$. 2. Au point A, placer l'équerre pour tracer une perpendiculaire à AB. 3. Sur cette perpendiculaire, reporter une longueur de $7\\,cm$ à partir de A pour obtenir le point C. 4. Relier les points B et C. Le triangle ABC est rectangle en A avec AB = $5\\,cm$ et AC = $7\\,cm$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction utilise la propriété de l'équerre pour créer un angle droit, puis on reporte les longueurs données sur les deux côtés de cet angle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer l'angle aigu manquant",
+      "content": "Dans un triangle rectangle, un des angles aigus mesure $30^\\circ$. Écris un algorithme pour trouver la mesure de l'autre angle aigu.",
+      "correctAnswer": "1. Rappeler que la somme des angles d'un triangle est $180^\\circ$. 2. L'angle droit vaut $90^\\circ$. 3. Soustraire $90^\\circ$ et la valeur de l'angle connu ($30^\\circ$) de $180^\\circ$. 4. Calculer $180 - 90 - 30 = 60$. 5. L'autre angle aigu mesure $60^\\circ$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans tout triangle, la somme des angles est $180^\\circ$. En retranchant l'angle droit ($90^\\circ$) et l'angle connu, on obtient l'angle restant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

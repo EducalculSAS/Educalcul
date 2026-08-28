@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 213,
+  "_course_code": "cm1-t01-c03-comparer-ranger-et-encadrer-les-entiers",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Comparer par rang",
+  "title": "Comparer des nombres entiers par rang",
+  "blocks": [
+    {
+      "title": "Comparaison simple",
+      "content": "Compare les deux nombres suivants en utilisant le signe $<$ ou $>$ : $3\\,402$ ... $3\\,420$",
+      "correctAnswer": "<",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les chiffres de gauche à droite (rang des milliers, puis centaines, puis dizaines, puis unités). Les milliers sont identiques (3). Les centaines sont identiques (4). Au rang des dizaines, $0 < 2$, donc $3\\,402 < 3\\,420$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison même nombre de chiffres",
+      "content": "Compare les deux nombres suivants en utilisant le signe $<$ ou $>$ : $7\\,856$ ... $7\\,865$",
+      "correctAnswer": "<",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare chiffre par chiffre en partant de la gauche. Milliers : $7 = 7$. Centaines : $8 = 8$. Dizaines : $5 < 6$. On s'arrête là : $7\\,856 < 7\\,865$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ranger par ordre croissant",
+      "content": "Range les trois nombres suivants par ordre croissant (du plus petit au plus grand) en les séparant par une virgule : $5\\,201$ ; $5\\,120$ ; $5\\,210$",
+      "correctAnswer": "5 120, 5 201, 5 210",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Tous ont 5 milliers. On compare les centaines : $1 < 2$. Donc $5\\,120$ est le plus petit. Pour les deux autres ($5\\,201$ et $5\\,210$), centaines identiques (2), on compare les dizaines : $0 < 1$. Donc $5\\,201 < 5\\,210$. Ordre final : $5\\,120 < 5\\,201 < 5\\,210$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

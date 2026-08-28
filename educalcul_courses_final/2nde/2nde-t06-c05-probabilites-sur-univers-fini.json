@@ -1,0 +1,518 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.115305+00:00",
+  "id": 531,
+  "code": "2nde-t06-c05",
+  "title": "Probabilités sur univers fini",
+  "description": "Cours structuré Educalcul : Probabilités sur univers fini.",
+  "subject": "Statistiques, information chiffrée et probabilités",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Statistiques, information chiffrée et probabilités",
+    "titre_du_cours": "Probabilités sur univers fini",
+    "objectif_global": "Probabilités sur univers fini",
+    "mini_lecons_imposees": [
+      "Événements.",
+      "Réunion / intersection simple.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques, information chiffrée et probabilités",
+      "lessons": [
+        {
+          "title": "Événements.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'expérience aléatoire et l'univers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre sur les probabilités. Imagine que tu lances un dé à six faces parfaitement équilibré. Tu ne peux pas prévoir sur quelle face il va tomber, mais tu connais parfaitement l'ensemble des issues possibles : $1$, $2$, $3$, $4$, $5$ ou $6$. C'est exactement cela, une expérience aléatoire : le déroulement ne dépend pas seulement de tes choix, une part de hasard y intervient, et pourtant l'ensemble des résultats imaginables est connu à l'avance. En mathématiques, on appelle cet ensemble l'univers, et on le note souvent par la lettre $\\Omega$ (oméga majuscule). Pour notre dé, $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Chaque issue possible est un élément de cet univers, on parle d'issue élémentaire. Prends le temps de visualiser $\\Omega$ comme une boîte qui contient tous les tickets gagnants possibles avant même que le tirage n'ait lieu."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience aléatoire",
+              "definition": "Une expérience dont le résultat ne peut pas être prédit avec certitude, mais dont on connaît l'ensemble des issues possibles.",
+              "example": "Lancer une pièce de monnaie, tirer une carte dans un jeu de $32$ cartes, mesurer le temps d'attente à un feu rouge."
+            },
+            {
+              "type": "definition",
+              "term": "Univers (espace des possibles)",
+              "definition": "L'ensemble de toutes les issues élémentaires d'une expérience aléatoire. On le note $\\Omega$.",
+              "example": "Pour un lancer de dé à six faces, $\\Omega = \\{1,2,3,4,5,6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "L'univers $\\Omega$ contient toutes les issues élémentaires.",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'univers est clair, intéressons-nous à ce qui peut s'y passer. Un événement, c'est simplement une partie de l'univers : un sous-ensemble de $\\Omega$. Par exemple, \"obtenir un nombre pair\" correspond au sous-ensemble $\\{2, 4, 6\\}$. \"Obtenir un nombre strictement supérieur à $4$\" correspond à $\\{5, 6\\}$. Remarque que l'univers lui-même est un événement (l'événement certain, il se produit à coup sûr) et que l'ensemble vide $\\varnothing$ est aussi un événement (l'événement impossible, il ne se produit jamais). Chaque événement est une sélection de tickets dans la boîte $\\Omega$ : on coche certaines issues, on en laisse d'autres. Cette vision ensembliste va nous permettre de manipuler les événements avec une grande précision."
+            },
+            {
+              "type": "definition",
+              "term": "Événement",
+              "definition": "Tout sous-ensemble de l'univers $\\Omega$. C'est une collection d'issues élémentaires.",
+              "example": "Événement A : \"obtenir un multiple de 3\" $\\rightarrow A = \\{3, 6\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\subset \\Omega, \\quad \\Omega \\text{ (événement certain)}, \\quad \\varnothing \\text{ (événement impossible)}"
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Deux événements A et B dans l'univers $\\Omega$.",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "A (pair)",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "B ($>4$)",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent qu'on s'intéresse à la non-réalisation d'un événement. Si A est l'événement \"obtenir un nombre pair\", son contraire (ou complémentaire) est l'événement \"obtenir un nombre impair\", noté $\\overline{A}$ ou $A^c$. Par définition, $\\overline{A}$ contient exactement les issues de $\\Omega$ qui ne sont pas dans $A$. Ici $\\overline{A} = \\{1, 3, 5\\}$. Remarque une propriété fondamentale : $A \\cup \\overline{A} = \\Omega$ (l'un ou l'autre se produit toujours) et $A \\cap \\overline{A} = \\varnothing$ (ils ne peuvent pas se produire ensemble). C'est une partition de l'univers en deux blocs disjoints. Cette idée de complémentaire sera précieuse pour calculer des probabilités plus tard : parfois, il est plus facile de calculer la probabilité du contraire et de la retrancher à $1$."
+            },
+            {
+              "type": "definition",
+              "term": "Événement contraire (complémentaire)",
+              "definition": "Pour un événement A, son contraire $\\overline{A}$ est l'ensemble des issues de $\\Omega$ qui n'appartiennent pas à A. On a $A \\cup \\overline{A} = \\Omega$ et $A \\cap \\overline{A} = \\varnothing$.",
+              "example": "Si A = \"le dé montre un 6\", alors $\\overline{A}$ = \"le dé montre 1, 2, 3, 4 ou 5\"."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'univers $\\Omega$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste toutes les issues élémentaires possibles de l'expérience."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Définir l'événement d'intérêt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne les issues qui correspondent à la propriété étudiée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Éventuellement, écrire le contraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les issues restantes dans $\\Omega$ forment $\\overline{A}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, retenons que tout problème de probabilité commence par une modélisation rigoureuse : on pose l'expérience, on écrit $\\Omega$, on identifie les événements qui nous intéressent comme des parties de $\\Omega$. Cette étape de traduction du concret vers le langage des ensembles est la clé qui ouvrira la porte aux calculs. Dans la prochaine leçon, nous verrons comment combiner deux événements (réunion, intersection) et ce que cela signifie en termes de réalisation de l'expérience."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à six faces numérotées de $1$ à $6$. Écrire l'univers $\\Omega$ et l'événement A : \"le résultat est un multiple de $3$\".",
+              "answer": "$\\Omega = \\{1,2,3,4,5,6\\}$, $A = \\{3,6\\}$",
+              "hint": "L'univers contient les six faces. Le multiple de 3 dans cet ensemble sont 3 et 6.",
+              "explanation": "L'univers est l'ensemble de toutes les issues possibles. L'événement A ne retient que les issues qui sont des multiples de 3."
+            },
+            {
+              "question": "Dans l'expérience du dé, on considère l'événement B : \"le résultat est strictement inférieur à $2$\". Écrire B et son contraire $\\overline{B}$.",
+              "answer": "$B = \\{1\\}$, $\\overline{B} = \\{2,3,4,5,6\\}$",
+              "hint": "B ne contient que le 1. Le contraire contient tout le reste de l'univers.",
+              "explanation": "B est l'ensemble des issues inférieures à 2, donc seulement 1. Le contraire est l'ensemble des issues qui ne sont pas dans B, soit les 5 autres faces."
+            },
+            {
+              "question": "On tire une carte au hasard dans un jeu de $32$ cartes. L'univers contient les $32$ cartes. L'événement C est \"la carte est un roi\". Combien d'éléments contient C ? Écrire $\\overline{C}$ en mots.",
+              "answer": "C contient $4$ éléments (les 4 rois). $\\overline{C}$ : \"la carte n'est pas un roi\".",
+              "hint": "Il y a 4 rois dans un jeu de 32 cartes. Le contraire est l'ensemble des 28 autres cartes.",
+              "explanation": "L'événement C sélectionne les 4 rois. Son contraire contient les 28 cartes restantes."
+            }
+          ]
+        },
+        {
+          "title": "Réunion / intersection simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réunion de deux événements : l'un ou l'autre (ou les deux)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, on dit souvent : \"Je gagne si je tire un roi OU une dame\". En probabilités, ce \"OU\" est inclusif : cela signifie que l'événement se réalise si l'une des deux conditions est vraie, ou si les deux le sont simultanément (même si ici c'est impossible). Mathématiquement, la réunion de deux événements A et B, notée $A \\cup B$, est l'ensemble des issues qui appartiennent à A ou à B (ou aux deux). C'est la fusion des deux sélections de tickets dans la boîte $\\Omega$. Reprenons notre dé : A = \"pair\" = $\\{2,4,6\\}$, B = \"> 4\" = $\\{5,6\\}$. Alors $A \\cup B = \\{2,4,5,6\\}$. Le $6$ n'apparaît qu'une seule fois dans la réunion, car un ensemble ne contient pas de doublons. Visualise cela sur un diagramme de Venn : la réunion, c'est toute la surface couverte par les deux disques."
+            },
+            {
+              "type": "definition",
+              "term": "Réunion de deux événements",
+              "definition": "L'événement $A \\cup B$ réalisé lorsque A se réalise ou B se réalise (ou les deux). $A \\cup B = \\{\\omega \\in \\Omega \\mid \\omega \\in A \\text{ ou } \\omega \\in B\\}$.",
+              "example": "A = pair, B = $>4$ $\\Rightarrow A \\cup B = \\{2,4,5,6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Réunion $A \\cup B$ : toute la zone colorée.",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "A (pair)",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "B ($>4$)",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, deux événements ne peuvent pas se produire en même temps. Si je lance un dé, \"obtenir un 2\" et \"obtenir un 5\" sont incompatibles : le dé ne peut pas montrer les deux faces à la fois. On dit que ces événements sont incompatibles (ou mutuellement exclusifs). Dans ce cas, leur intersection est vide : $A \\cap B = \\varnothing$. Sur un diagramme de Venn, les deux disques ne se chevauchent pas. Cette notion est cruciale car elle simplifie grandement le calcul de la probabilité de la réunion, comme nous le verrons dans la prochaine leçon. Attention : incompatibilité ne veut pas dire que les événements sont contraires. \"Obtenir un 2\" et \"obtenir un nombre impair\" sont incompatibles, mais leur réunion n'est pas l'univers tout entier."
+            },
+            {
+              "type": "definition",
+              "term": "Événements incompatibles (mutuellement exclusifs)",
+              "definition": "Deux événements A et B sont incompatibles s'ils ne peuvent pas se réaliser simultanément : $A \\cap B = \\varnothing$.",
+              "example": "A = \"résultat = 2\", B = \"résultat = 5\" sont incompatibles."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Deux événements incompatibles : les disques ne se chevauchent pas.",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "A = {2}",
+                  "elements": [
+                    "2"
+                  ]
+                },
+                {
+                  "label": "B = {5}",
+                  "elements": [
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intersection, notée $A \\cap B$, correspond au \"ET\" logique : l'événement se réalise seulement si A ET B se réalisent en même temps. C'est la zone commune aux deux disques sur le diagramme de Venn. Avec nos événements A = \"pair\" et B = \"> 4\", l'intersection est $A \\cap B = \\{6\\}$ car le $6$ est le seul nombre à être à la fois pair et strictement supérieur à $4$. Si les événements sont incompatibles, l'intersection est vide. Remarque une relation importante : pour tout A et B, on a toujours $A \\cap B \\subset A$ et $A \\cap B \\subset B$. L'intersection est toujours plus petite (ou égale) que chacun des deux événements. Cette inclusion se voit immédiatement sur le diagramme : la zone commune est contenue dans chaque disque."
+            },
+            {
+              "type": "definition",
+              "term": "Intersection de deux événements",
+              "definition": "L'événement $A \\cap B$ réalisé lorsque A se réalise ET B se réalise simultanément. $A \\cap B = \\{\\omega \\in \\Omega \\mid \\omega \\in A \\text{ et } \\omega \\in B\\}$.",
+              "example": "A = pair, B = $>4$ $\\Rightarrow A \\cap B = \\{6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Intersection $A \\cap B$ : seulement la zone commune.",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "A (pair)",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "B ($>4$)",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résumer cette leçon, nous disposons maintenant de deux opérations fondamentales pour construire de nouveaux événements à partir d'événements connus : la réunion (OU inclusif) et l'intersection (ET). Nous avons aussi identifié une situation particulière : l'incompatibilité, qui correspond à une intersection vide. Ces outils ensemblistes sont le langage universel des probabilités. Dans la prochaine leçon, nous passerons au calcul proprement dit : comment attribuer un nombre entre $0$ et $1$ à chaque événement pour quantifier sa chance de se produire, et comment les formules de réunion et d'intersection se traduisent en formules de probabilités."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé. A = \"résultat pair\", B = \"résultat multiple de 3\". Écrire $A \\cup B$ et $A \\cap B$.",
+              "answer": "$A \\cup B = \\{2,3,4,6\\}$, $A \\cap B = \\{6\\}$",
+              "hint": "A = {2,4,6}, B = {3,6}. La réunion rassemble, l'intersection ne garde que le commun.",
+              "explanation": "A = {2,4,6}, B = {3,6}. La réunion contient 2,3,4,6. L'intersection ne contient que 6."
+            },
+            {
+              "question": "Dans un jeu de 32 cartes, on tire une carte. C = \"c'est un roi\", D = \"c'est un cœur\". Les événements C et D sont-ils incompatibles ? Justifier.",
+              "answer": "Non, ils ne sont pas incompatibles car le roi de cœur appartient à la fois à C et à D. L'intersection n'est pas vide.",
+              "hint": "Y a-t-il une carte qui est à la fois un roi et un cœur ?",
+              "explanation": "Le roi de cœur est à la fois un roi et un cœur, donc $C \\cap D \\neq \\varnothing$. Les événements ne sont pas incompatibles."
+            },
+            {
+              "question": "On considère l'expérience : on lance deux dés (un rouge, un bleu) et on note la somme des faces. L'univers a $36$ couples. Événement E : \"la somme est 7\". Événement F : \"la somme est 11\". Ces événements sont-ils incompatibles ? Écrire $E \\cup F$ en extension (lister les couples).",
+              "answer": "Oui, incompatibles car une somme ne peut pas être à la fois 7 et 11. $E \\cup F = \\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1),(5,6),(6,5)\\}$.",
+              "hint": "Une somme unique ne peut pas prendre deux valeurs différentes. Lister les couples donnant 7 puis ceux donnant 11.",
+              "explanation": "E et F sont incompatibles car la somme est un nombre unique. La réunion est l'union des 6 couples de somme 7 et des 2 couples de somme 11."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité sur un univers fini équiprobable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du calcul probabiliste. Lorsque l'univers $\\Omega$ est fini (il contient un nombre fini d'issues) et que l'expérience est symétrique (toutes les issues ont la même chance de se produire), on dit que l'univers est équiprobable. C'est le cas du dé parfait, de la pièce de monnaie équilibrée, du tirage au hasard dans un jeu de cartes bien mélangé. Alors, la probabilité d'un événement A se calcule très simplement : c'est le rapport du nombre d'issues favorables (celles qui sont dans A) sur le nombre total d'issues possibles (celles dans $\\Omega$). En notation : $P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$. Ce nombre est toujours compris entre $0$ (événement impossible) et $1$ (événement certain). Par exemple, pour A = \"pair\" au dé, $\\text{Card}(A)=3$, $\\text{Card}(\\Omega)=6$, donc $P(A) = \\frac{3}{6} = \\frac{1}{2}$. Cette définition est intuitive : sur un grand nombre de lancers, la fréquence d'apparition de l'événement se rapproche de cette valeur."
+            },
+            {
+              "type": "definition",
+              "term": "Univers équiprobable",
+              "definition": "Un univers fini dans lequel toutes les issues élémentaires ont la même probabilité de se produire.",
+              "example": "Lancer un dé parfait, tirer une carte dans un jeu mélangé."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité d'un événement (cas équiprobable)",
+              "definition": "$P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$, avec $0 \\le P(A) \\le 1$.",
+              "example": "Au dé, $P(\\text{pair}) = \\frac{3}{6} = 0,5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}, \\quad 0 \\le P(A) \\le 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés ensemblistes vues précédemment se traduisent en formules de calcul sur les probabilités. La plus célèbre est la formule de la réunion : pour tous événements A et B, $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Pourquoi soustrait-on l'intersection ? Parce qu'en additionnant $P(A)$ et $P(B)$, les issues communes à A et B ont été comptées deux fois. Il faut les retrancher une fois pour ne les compter qu'une seule fois. Si A et B sont incompatibles, $A \\cap B = \\varnothing$, donc $P(A \\cap B) = 0$ et la formule se simplifie en $P(A \\cup B) = P(A) + P(B)$. C'est une simplification très utile : quand les événements ne peuvent pas arriver ensemble, la probabilité de l'un ou l'autre est juste la somme des probabilités. Vérifions sur notre dé : A = pair ($P=1/2$), B = $>4$ ($P=2/6=1/3$), $A \\cap B = \\{6\\}$ ($P=1/6$). $P(A \\cup B) = 1/2 + 1/3 - 1/6 = 4/6 = 2/3$. Et effectivement $A \\cup B = \\{2,4,5,6\\}$ a 4 issues sur 6."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "type": "display_math",
+              "latex": "Si A \\cap B = \\varnothing, \\quad P(A \\cup B) = P(A) + P(B)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'univers est-il fini et symétrique ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter $\\text{Card}(\\Omega)$ et $\\text{Card}(A)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compter les issues totales et les issues favorables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule $P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Simplifier la fraction si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Pour une réunion, utiliser $P(A\\cup B) = P(A)+P(B)-P(A\\cap B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $P(A)$, $P(B)$, $P(A\\cap B)$ puis combiner."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier outil indispensable : la probabilité de l'événement contraire. Puisque $A \\cup \\overline{A} = \\Omega$ et $A \\cap \\overline{A} = \\varnothing$, on a $P(A) + P(\\overline{A}) = P(\\Omega) = 1$. Donc $P(\\overline{A}) = 1 - P(A)$. C'est souvent le moyen le plus rapide de calculer une probabilité : au lieu de compter les issues favorables (parfois nombreuses), on compte les issues défavorables (parfois moins nombreuses) et on retranche à $1$. Exemple : on tire une carte dans un jeu de $32$. Quelle est la probabilité de ne pas tirer un roi ? Il y a $4$ rois, donc $P(\\text{roi}) = 4/32 = 1/8$. Alors $P(\\text{pas roi}) = 1 - 1/8 = 7/8$. C'est immédiat, alors que compter les $28$ cartes qui ne sont pas des rois est plus long. Cette astuce du complémentaire te sauvera la vie dans bien des exercices."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité du contraire",
+              "definition": "$P(\\overline{A}) = 1 - P(A)$.",
+              "example": "$P(\\text{pas 6 au dé}) = 1 - 1/6 = 5/6$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\overline{A}) = 1 - P(A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce cours. Tu as maintenant toutes les clés pour modéliser une expérience aléatoire sur un univers fini : définir $\\Omega$, identifier les événements comme des sous-ensembles, combiner ces événements avec réunion et intersection, et calculer leurs probabilités grâce aux formules fondamentales. Rappelle-toi la démarche en quatre temps : (1) décrire l'expérience et l'univers, (2) traduire la question en langage ensembliste, (3) compter les cardinalités, (4) appliquer les formules de probabilité. Cette rigueur dans la modélisation est ce qui distingue le raisonnement mathématique de l'intuition hasardeuse. Entraîne-toi sur des exercices variés, et tu verras que les probabilités deviennent un jeu d'enfant... ou presque !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'univers $\\Omega$ d'une expérience aléatoire à issues finies.",
+                "Je sais identifier un événement comme un sous-ensemble de $\\Omega$ et écrire son contraire.",
+                "Je sais déterminer la réunion et l'intersection de deux événements, et reconnaître l'incompatibilité.",
+                "Je sais calculer $P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$ dans un univers équiprobable.",
+                "J'applique la formule $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ et sa simplification pour événements incompatibles.",
+                "J'utilise $P(\\overline{A}) = 1 - P(A)$ pour simplifier les calculs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance deux dés équilibrés (un rouge, un bleu) et on note le couple (résultat rouge, résultat bleu). L'univers a $36$ issues équiprobables. Calculer la probabilité de l'événement : \"la somme des faces est 8\".",
+              "answer": "$\\frac{5}{36}$",
+              "hint": "Lister les couples donnant somme 8 : (2,6), (3,5), (4,4), (5,3), (6,2). Il y en a 5.",
+              "explanation": "Il y a 5 couples favorables sur 36 issues équiprobables. Donc $P = 5/36$."
+            },
+            {
+              "question": "Dans le même expérience, A = \"somme = 7\", B = \"somme = 11\". Calculer $P(A)$, $P(B)$, $P(A \\cap B)$ et $P(A \\cup B)$.",
+              "answer": "$P(A) = \\frac{6}{36} = \\frac{1}{6}$, $P(B) = \\frac{2}{36} = \\frac{1}{18}$, $P(A \\cap B) = 0$, $P(A \\cup B) = \\frac{1}{6} + \\frac{1}{18} = \\frac{2}{9}$.",
+              "hint": "A et B sont incompatibles. Compter les couples pour 7 (6 couples) et pour 11 (2 couples).",
+              "explanation": "A a 6 issues, B en a 2, ils sont incompatibles donc intersection vide. La probabilité de la réunion est la somme."
+            },
+            {
+              "question": "On tire une carte au hasard dans un jeu de 52 cartes. Quelle est la probabilité de tirer une figure (valet, dame, roi) ? Et la probabilité de ne pas tirer de figure ?",
+              "answer": "$P(\\text{figure}) = \\frac{12}{52} = \\frac{3}{13}$, $P(\\text{pas figure}) = 1 - \\frac{3}{13} = \\frac{10}{13}$.",
+              "hint": "Il y a 4 valets, 4 dames, 4 rois = 12 figures. Utiliser le contraire pour la deuxième question.",
+              "explanation": "12 figures sur 52 cartes. Le complémentaire a probabilité 1 - 12/52 = 40/52 = 10/13."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 337,
+  "_course_code": "6eme-t02-c02-fractions-equivalentes",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Égalités simples",
+  "title": "Algorithmes sur les fractions équivalentes",
+  "blocks": [
+    {
+      "title": "Test d'équivalence de deux fractions",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée quatre entiers $a$, $b$, $c$, $d$ (avec $b \\neq 0$ et $d \\neq 0$) et qui affiche « Vrai » si les fractions $\\frac{a}{b}$ et $\\frac{c}{d}$ sont équivalentes, sinon « Faux ».",
+      "correctAnswer": "Algorithme : lire a,b,c,d ; si a*d == b*c alors afficher Vrai sinon afficher Faux. En Python : def equivalent(a,b,c,d): return a*d == b*c",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux fractions sont équivalentes si le produit croisé de leurs numérateurs et dénominateurs sont égaux, c'est‑à‑dire $a \\times d = b \\times c$. L'algorithme teste cette égalité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une fraction",
+      "content": "Écrire un algorithme qui, étant donnés deux entiers $p$ et $q$ ($q \\neq 0$), renvoie la fraction irréductible équivalente à $\\frac{p}{q}$ en utilisant l'algorithme d'Euclide pour calculer le PGCD.",
+      "correctAnswer": "Algorithme : lire p,q ; calculer g = pgcd(|p|,|q|) avec Euclide ; retourner (p//g, q//g). En Python : def pgcd(a,b): while b: a,b = b, a%b ; return a ; def simplifier(p,q): g=pgcd(abs(p),abs(q)); return p//g, q//g",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD du numérateur et du dénominateur permet de diviser les deux par ce nombre pour obtenir la forme irréductible. L'algorithme d'Euclide trouve ce PGCD efficacement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Génération de fractions équivalentes",
+      "content": "Écrire un algorithme qui, à partir d'une fraction $\\frac{m}{n}$ ($n \\neq 0$) et d'un entier $k \\ge 1$, produit la liste des $k$ premières fractions équivalentes obtenues en multipliant le numérateur et le dénominateur par les entiers $2,3,\\dots,k+1$.",
+      "correctAnswer": "Algorithme : lire m,n,k ; liste = [] ; pour i de 2 à k+1 : ajouter (m*i, n*i) à liste ; afficher liste. En Python : def equivalents(m,n,k): return [(m*i, n*i) for i in range(2, k+2)]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier le numérateur et le dénominateur par un même entier non nul donne une fraction équivalente. En itérant sur les entiers 2 à k+1 on obtient k fractions équivalentes distinctes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

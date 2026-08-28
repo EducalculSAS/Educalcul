@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Définir une procédure",
+  "title": "Définir une procédure - Approfondissement",
+  "blocks": [
+    {
+      "title": "Procédure simple : le double",
+      "content": "Écrire un algorithme qui définit une procédure nommée Double prenant un nombre en paramètre et qui affiche son double.",
+      "correctAnswer": "Procédure Double(x)\\n    Afficher 2 * x\\nFin Procédure",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La procédure reçoit une valeur x. Pour obtenir le double, on multiplie x par 2. L'instruction Afficher permet de sortir le résultat. La structure Procédure ... Fin Procédure délimite la définition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Procédure avec deux paramètres : la somme",
+      "content": "Écrire un algorithme qui définit une procédure nommée Somme prenant deux nombres a et b en paramètres et qui affiche leur somme.",
+      "correctAnswer": "Procédure Somme(a, b)\\n    Afficher a + b\\nFin Procédure",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La procédure Somme reçoit deux arguments a et b. L'addition a + b calcule la somme. L'instruction Afficher montre le résultat. La définition est encadrée par Procédure et Fin Procédure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Procédure avec une boucle : somme des entiers",
+      "content": "Écrire un algorithme qui définit une procédure nommée SommeEntiers prenant un entier positif n en paramètre et qui affiche la somme des entiers de 1 à n.",
+      "correctAnswer": "Procédure SommeEntiers(n)\\n    somme ← 0\\n    Pour i de 1 à n faire\\n        somme ← somme + i\\n    Fin Pour\\n    Afficher somme\\nFin Procédure",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable somme à 0. La boucle Pour i de 1 à n parcourt chaque entier. À chaque itération, on ajoute i à somme. Après la boucle, somme contient 1 + 2 + ... + n. On affiche ensuite cette valeur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

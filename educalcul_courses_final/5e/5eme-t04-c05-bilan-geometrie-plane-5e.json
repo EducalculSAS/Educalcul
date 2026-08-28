@@ -1,0 +1,229 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.736324+00:00",
+  "id": 399,
+  "code": "5eme-t04-c05",
+  "title": "Bilan - Géométrie plane 5e",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie plane 5e.",
+  "subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Géométrie plane : angles, triangles et parallélogrammes",
+    "titre_du_cours": "Bilan - Géométrie plane 5e",
+    "objectif_global": "Bilan - Géométrie plane 5e",
+    "mini_lecons_imposees": [
+      "Angles, triangles, parallélogrammes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane : angles, triangles et parallélogrammes",
+      "lessons": [
+        {
+          "title": "Angles, triangles, parallélogrammes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles : mesurer, nommer et calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan de géométrie plane ! On commence par revoir les angles, ces figures formées par deux demi-droites qui partent du même point. Tu sais déjà les reconnaître : un angle aigu mesure moins de $90^{\\circ}$, un angle droit vaut exactement $90^{\\circ}$, un angle obtus se situe entre $90^{\\circ}$ et $180^{\\circ}$, et un angle plat fait $180^{\\circ}$. Pour les mesurer, on utilise un rapporteur en posant son centre sur le sommet et en alignant une demi-droite sur le zéro. Attention à bien choisir l'échelle intérieure ou extérieure selon l'ouverture de l'angle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux angles peuvent avoir des relations très utiles. S'ils sont complémentaires, leur somme vaut $90^{\\circ}$ ; s'ils sont supplémentaires, leur somme vaut $180^{\\circ}$. Les angles opposés par le sommet, formés par deux droites qui se coupent, ont toujours la même mesure. Ces propriétés permettent de calculer des angles inconnus sans même sortir le rapporteur. Par exemple, si deux droites se coupent et qu'un angle mesure $35^{\\circ}$, son opposé par le sommet vaut aussi $35^{\\circ}$, et les deux autres valent $180^{\\circ} - 35^{\\circ} = 145^{\\circ}$ chacun."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Angles opposés par le sommet et angles supplémentaires",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les angles n'ont plus de secret pour toi, passons aux triangles. Un triangle est une figure à trois côtés et trois angles. On le classe selon ses côtés : équilatéral (trois côtés égaux), isocèle (deux côtés égaux) ou scalène (tous côtés différents). Selon ses angles : rectangle (un angle droit), acutangle (tous angles aigus) ou obtusangle (un angle obtus). La propriété la plus célèbre ? La somme des trois angles d'un triangle vaut toujours $180^{\\circ}$. C'est un outil redoutable : si tu connais deux angles, le troisième se trouve en soustrayant leur somme à $180^{\\circ}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle isocèle, les angles à la base (ceux qui touchent les deux côtés égaux) ont la même mesure. Dans un triangle équilatéral, les trois angles valent $60^{\\circ}$ chacun. Et dans un triangle rectangle, les deux angles aigus sont complémentaires : leur somme fait $90^{\\circ}$. Ces particularités permettent de résoudre bien des exercices rien qu'en regardant le dessin. Par exemple, un triangle rectangle isocèle a forcément deux angles de $45^{\\circ}$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle isocèle : angles de 45°, 45°, 90°",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons ce tour d'horizon avec les parallélogrammes. Un parallélogramme est un quadrilatère dont les côtés opposés sont parallèles deux à deux. Cela entraîne une cascade de propriétés : les côtés opposés ont la même longueur, les angles opposés ont la même mesure, et les diagonales se coupent en leur milieu. Autrement dit, le point d'intersection des diagonales est le centre de symétrie de la figure. Ces propriétés se démontrent facilement en traçant une diagonale : on obtient deux triangles que l'on peut montrer égaux (cas angle-côté-angle)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parmi les parallélogrammes, trois cas particuliers méritent ton attention. Le rectangle a quatre angles droits ; ses diagonales ont la même longueur. Le losange a quatre côtés égaux ; ses diagonales sont perpendiculaires et bissectrices des angles. Le carré cumule les deux : quatre côtés égaux et quatre angles droits ; ses diagonales sont égales, perpendiculaires et bissectrices. Reconnaître ces figures et savoir utiliser leurs propriétés te fera gagner un temps précieux dans les problèmes de construction ou de calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Propriétés du parallélogramme : } AB = CD, \\; BC = AD, \\; \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = \\widehat{D}, \\; \\text{diagonales se coupent au milieu}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux droites se coupent en O. L'un des angles formés mesure $68^{\\circ}$. Donne la mesure des trois autres angles.",
+              "answer": "Les angles opposés par le sommet sont égaux : $68^{\\circ}$. Les deux autres sont supplémentaires : $180^{\\circ} - 68^{\\circ} = 112^{\\circ}$ chacun.",
+              "hint": "Utilise les propriétés des angles opposés par le sommet et des angles supplémentaires.",
+              "explanation": "Les quatre angles se groupent en deux paires d'opposés par le sommet (égaux) et chaque angle est supplémentaire de ses voisins."
+            },
+            {
+              "question": "Dans un triangle ABC, on sait que $\\widehat{A} = 50^{\\circ}$ et $\\widehat{B} = 70^{\\circ}$. Calcule $\\widehat{C}$. De quel type est ce triangle ?",
+              "answer": "$\\widehat{C} = 180^{\\circ} - (50^{\\circ} + 70^{\\circ}) = 60^{\\circ}$. C'est un triangle acutangle (tous angles < $90^{\\circ}$) et scalène (tous angles différents).",
+              "hint": "La somme des angles d'un triangle vaut $180^{\\circ}$.",
+              "explanation": "On soustrait la somme des deux angles connus à $180^{\\circ}$ pour trouver le troisième. Puis on classe selon les angles et les côtés."
+            },
+            {
+              "question": "ABCD est un parallélogramme. On sait que $AB = 7$ cm, $BC = 5$ cm et $\\widehat{A} = 110^{\\circ}$. Donne les longueurs de $CD$ et $AD$, et les mesures de $\\widehat{B}$, $\\widehat{C}$, $\\widehat{D}$.",
+              "answer": "$CD = AB = 7$ cm, $AD = BC = 5$ cm. $\\widehat{C} = \\widehat{A} = 110^{\\circ}$. $\\widehat{B} = \\widehat{D} = 180^{\\circ} - 110^{\\circ} = 70^{\\circ}$ (angles adjacents supplémentaires).",
+              "hint": "Côtés opposés égaux, angles opposés égaux, angles adjacents supplémentaires.",
+              "explanation": "Dans un parallélogramme, les côtés opposés sont égaux, les angles opposés sont égaux, et deux angles adjacents sont supplémentaires."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réviser les compétences clés sur les angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de bilan, nous allons passer en revue les savoir-faire essentiels que tu dois maîtriser en géométrie plane. Commençons par les angles. Tu dois savoir : nommer un angle avec trois lettres (le sommet au milieu), utiliser un rapporteur pour mesurer ou tracer un angle donné, reconnaître les angles particuliers (aigu, droit, obtus, plat), et appliquer les relations entre angles (complémentaires, supplémentaires, opposés par le sommet, alternes-internes quand deux parallèles sont coupées par une sécante). Ces outils sont la base de tout raisonnement géométrique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois tracer un angle de $135^{\\circ}$ pour construire un cerf-volant en papier. Tu places le rapporteur, tu marques le point à $135^{\\circ}$, tu traces la demi-droite. Ensuite, tu dois trouver l'angle supplémentaire pour plier l'autre aile : $180^{\\circ} - 135^{\\circ} = 45^{\\circ}$. C'est exactement ce genre de situation concrète que tu rencontreras dans les exercices. Prends le temps de bien visualiser la figure avant de calculer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux triangles. Les compétences attendues : classer un triangle d'après ses côtés ou ses angles, utiliser la somme des angles ($180^{\\circ}$) pour trouver un angle manquant, connaître les propriétés des triangles particuliers (isocèle, équilatéral, rectangle) et savoir les démontrer brièvement. Tu dois aussi être capable de construire un triangle à la règle et au compas quand on te donne trois côtés, ou deux côtés et l'angle compris, ou un côté et les deux angles adjacents. La construction est un exercice de précision : chaque trait compte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un triangle rectangle isocèle. Tu sais que l'angle droit mesure $90^{\\circ}$ et que les deux autres angles sont égaux. Donc chacun vaut $(180^{\\circ} - 90^{\\circ}) / 2 = 45^{\\circ}$. Si on te demande de le construire avec un côté de $6$ cm, tu traces le segment, tu ériges une perpendiculaire à une extrémité, tu reportes $6$ cm sur cette perpendiculaire, et tu relies. Vérifie que l'hypoténuse mesure environ $8,5$ cm (théorème de Pythagore, que tu verras l'an prochain)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième volet : les parallélogrammes. Tu dois savoir : donner la définition (quadrilatère à côtés opposés parallèles), énoncer et utiliser les quatre propriétés fondamentales (côtés opposés égaux, angles opposés égaux, diagonales se coupant au milieu, centre de symétrie), reconnaître les cas particuliers (rectangle, losange, carré) et citer leurs propriétés additionnelles. En 5e, on commence aussi à écrire des démonstrations courtes : par exemple, montrer qu'un quadrilatère est un parallélogramme si ses diagonales se coupent en leur milieu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un pavé de parquet en forme de losange. Ses diagonales sont perpendiculaires : elles forment quatre angles droits au centre. Si une diagonale mesure $20$ cm et l'autre $30$ cm, tu peux calculer l'aire du losange : $(20 \\times 30) / 2 = 300$ cm$^2$. C'est une application directe de la propriété des diagonales perpendiculaires. Ce genre de problème mélange géométrie et calcul, exactement ce que tu rencontreras au brevet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, un exercice de synthèse qui mélange angles, triangles et parallélogrammes. C'est souvent dans ces problèmes croisés que tu montres que tu as vraiment compris les liens entre les notions. Par exemple : dans un parallélogramme ABCD, la diagonale AC forme avec le côté AB un angle de $30^{\\circ}$ et avec le côté AD un angle de $40^{\\circ}$. Que peux-tu dire de l'angle $\\widehat{A}$ ? Et si en plus $AB = AD$, quel est le nom exact de ce parallélogramme ? Prends le temps de faire un schéma, d'écrire ce que tu sais, et de raisonner étape par étape."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer, mesurer et tracer un angle au rapporteur.",
+                "J'utilise les relations entre angles (complémentaires, supplémentaires, opposés par le sommet, alternes-internes).",
+                "Je classe un triangle selon ses côtés et ses angles.",
+                "J'applique la somme des angles d'un triangle ($180^{\\circ}$) et les propriétés des triangles particuliers.",
+                "Je construis un triangle à la règle et au compas (trois cas).",
+                "Je donne la définition et les propriétés d'un parallélogramme.",
+                "Je reconnais et j'utilise les propriétés du rectangle, du losange et du carré.",
+                "J'écris une démonstration courte en géométrie (égalité de triangles, parallélogramme)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux droites parallèles sont coupées par une sécante. L'un des angles alternes-internes mesure $52^{\\circ}$. Quelle est la mesure de l'angle correspondant ? Et de l'angle adjacent sur la même droite ?",
+              "answer": "L'angle correspondant vaut aussi $52^{\\circ}$ (parallèles). L'angle adjacent sur la même droite est supplémentaire : $180^{\\circ} - 52^{\\circ} = 128^{\\circ}$.",
+              "hint": "Angles alternes-internes égaux, angles correspondants égaux, angles adjacents supplémentaires.",
+              "explanation": "Quand une sécante coupe deux parallèles, les angles alternes-internes sont égaux, les angles correspondants sont égaux, et deux angles adjacents sur une droite sont supplémentaires."
+            },
+            {
+              "question": "Dans un triangle isocèle en A, l'angle au sommet $\\widehat{A}$ mesure $40^{\\circ}$. Calcule les angles à la base $\\widehat{B}$ et $\\widehat{C}$.",
+              "answer": "La somme des angles est $180^{\\circ}$. Les angles à la base sont égaux : $\\widehat{B} = \\widehat{C} = (180^{\\circ} - 40^{\\circ}) / 2 = 70^{\\circ}$.",
+              "hint": "Dans un triangle isocèle, les angles à la base ont la même mesure. Somme des angles = $180^{\\circ}$.",
+              "explanation": "On soustrait l'angle au sommet à $180^{\\circ}$ et on divise par 2 pour obtenir chaque angle à la base."
+            },
+            {
+              "question": "ABCD est un losange. Ses diagonales se coupent en O. On sait que $AC = 16$ cm et $BD = 12$ cm. Calcule les longueurs $AO$, $BO$, et déduis la longueur du côté $AB$ (arrondi au mm).",
+              "answer": "Les diagonales se coupent en leur milieu : $AO = 8$ cm, $BO = 6$ cm. Dans le triangle rectangle AOB, $AB = \\sqrt{AO^2 + BO^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10$ cm.",
+              "hint": "Diagonales du losange : se coupent au milieu et sont perpendiculaires. Triangle rectangle AOB.",
+              "explanation": "Le losange a des diagonales perpendiculaires qui se coupent au milieu. Le triangle AOB est rectangle en O, on applique le théorème de Pythagore."
+            },
+            {
+              "question": "Dans un parallélogramme ABCD, $\\widehat{A} = 70^{\\circ}$ et $\\widehat{B} = 110^{\\circ}$. Le triangle ABD est-il isocèle ? Rectangle ? Justifie.",
+              "answer": "Non, le triangle ABD n'est pas isocèle (côtés AB et AD sont adjacents dans le parallélogramme, pas nécessairement égaux). Il n'est pas rectangle car $\\widehat{A} = 70^{\\circ} \\neq 90^{\\circ}$.",
+              "hint": "Regarde les angles du parallélogramme et les propriétés du triangle ABD.",
+              "explanation": "Dans le parallélogramme, $\\widehat{A}=70^{\\circ}$, donc $\\widehat{B}=110^{\\circ}$. Le triangle ABD a pour angles $\\widehat{A}=70^{\\circ}$, $\\widehat{ADB}$ et $\\widehat{ABD}$. Pas assez d'infos pour dire qu'il est isocèle ou rectangle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

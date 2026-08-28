@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 249,
+  "_course_code": "cm1-t06-c02-mesurer-et-construire-des-angles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Comparer",
+  "title": "Algorithmes de comparaison d'angles",
+  "blocks": [
+    {
+      "title": "Comparer deux angles",
+      "content": "Écris un algorithme (en langage naturel ou pseudo‑code) qui prend en entrée deux angles $a$ et $b$ exprimés en degrés, compare leurs mesures et affiche « Le premier angle est plus grand », « Le second angle est plus grand » ou « Les deux angles sont égaux ».",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$ et $b$.\\n2. Si $a > b$ alors afficher « Le premier angle est plus grand ».\\n3. Sinon si $a < b$ alors afficher « Le second angle est plus grand ».\\n4. Sinon afficher « Les deux angles sont égaux ».",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme compare directement les deux valeurs numériques. Les trois cas possibles couvrent toutes les relations d'ordre entre $a$ et $b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer un angle à l'angle droit",
+      "content": "Écris un algorithme qui prend en entrée un angle $x$ en degrés, le compare à l'angle droit ($90$°) et affiche « L'angle est aigu », « L'angle est droit » ou « L'angle est obtus ».",
+      "correctAnswer": "Algorithme :\\n1. Lire $x$.\\n2. Si $x < 90$ alors afficher « L'angle est aigu ».\\n3. Sinon si $x = 90$ alors afficher « L'angle est droit ».\\n4. Sinon afficher « L'angle est obtus ».",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la définition des angles aigu (< 90°), droit (= 90°) et obtus (> 90°). La structure conditionnelle teste ces trois intervalles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trier trois angles",
+      "content": "Écris un algorithme qui prend en entrée trois angles $a$, $b$, $c$ en degrés, les trie par ordre croissant et affiche la liste triée.",
+      "correctAnswer": "Algorithme (tri simple) :\\n1. Lire $a$, $b$, $c$.\\n2. Si $a > b$ alors échanger $a$ et $b$.\\n3. Si $b > c$ alors échanger $b$ et $c$.\\n4. Si $a > b$ alors échanger $a$ et $b$.\\n5. Afficher $a$, $b$, $c$ (dans cet ordre).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme utilise trois comparaisons et échanges successifs (tri à bulles pour trois éléments) pour garantir l'ordre croissant final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

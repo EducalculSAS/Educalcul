@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 404,
+  "_course_code": "5eme-t05-c05-bilan-transformations-et-espace-5e",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Repérage, transformations, solides",
+  "title": "Approfondissement : Repérage, transformations, solides",
+  "questions": [
+    {
+      "text": "Le point $A(2, -3)$ est translaté par le vecteur $(4, 5)$. Quelles sont les coordonnées de son image $A'$ ?",
+      "options": [
+        "(6, 2)",
+        "(6, -2)",
+        "(-2, 2)",
+        "(2, 2)"
+      ],
+      "correctAnswer": "(6, 2)",
+      "explanation": "On ajoute les composantes du vecteur aux coordonnées du point : $2+4=6$ et $-3+5=2$, donc $A'(6,2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $B(-1, 4)$ est réfléchi par rapport à l'axe des ordonnées (axe $y$). Quelles sont les coordonnées de son image $B'$ ?",
+      "options": [
+        "(1, 4)",
+        "(-1, -4)",
+        "(1, -4)",
+        "(-1, 4)"
+      ],
+      "correctAnswer": "(1, 4)",
+      "explanation": "La symétrie axiale par rapport à l'axe $y$ change le signe de l'abscisse : $-1$ devient $1$, l'ordonnée reste $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $C(3, 2)$ subit une rotation de 90° dans le sens direct autour de l'origine. Quelles sont les coordonnées de $C'$ ?",
+      "options": [
+        "(-2, 3)",
+        "(2, -3)",
+        "(3, -2)",
+        "(-3, 2)"
+      ],
+      "correctAnswer": "(-2, 3)",
+      "explanation": "Une rotation de 90° direct envoie $(x,y)$ sur $(-y,x)$ : $(3,2)$ devient $(-2,3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le patron ci-dessous représente un solide. De quel solide s'agit-il ?",
+      "options": [
+        "cube",
+        "pavé droit",
+        "pyramide à base carrée",
+        "cylindre"
+      ],
+      "correctAnswer": "cube",
+      "explanation": "Ce patron est composé de six carrés identiques, ce qui correspond au développement d'un cube.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Un pavé droit a pour dimensions 5 cm, 3 cm et 4 cm. Quel est son volume ?",
+      "options": [
+        "60 cm³",
+        "50 cm³",
+        "70 cm³",
+        "12 cm³"
+      ],
+      "correctAnswer": "60 cm³",
+      "explanation": "Le volume d'un pavé droit se calcule en multipliant ses trois dimensions : $5 × 3 × 4 = 60$ cm³.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

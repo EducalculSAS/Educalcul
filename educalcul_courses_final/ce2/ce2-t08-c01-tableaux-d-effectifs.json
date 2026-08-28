@@ -1,0 +1,381 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.118722+00:00",
+  "id": 205,
+  "code": "ce2-t08-c01",
+  "title": "Tableaux d'effectifs",
+  "description": "Cours structuré Educalcul : Tableaux d'effectifs.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Tableaux d'effectifs",
+    "objectif_global": "Tableaux d'effectifs",
+    "mini_lecons_imposees": [
+      "Organiser des données.",
+      "Calculer un total.",
+      "Répondre à des questions."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Organiser des données.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Organiser des données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu demandes à tes copains quel est leur fruit préféré. Tu notes les réponses sur un papier : $pomme$, $banane$, $pomme$, $fraise$, $banane$, $pomme$. C'est une liste un peu mêlée. Pour y voir clair, on va ranger ces informations dans un tableau à deux colonnes. La première colonne donne la valeur (le nom du fruit), la seconde colonne indique combien de fois cette valeur apparaît. C'est ce qu'on appelle un tableau d'effectifs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par compter. Combien de fois vois-tu le mot $pomme$ ? Trois fois. Et $banane$ ? Deux fois. Et $fraise$ ? Une seule fois. On écrit ces nombres dans la colonne « Nombre » ou « Effectif ». Regarde le tableau ci-dessous, il résume tout proprement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "pomme",
+                  "3"
+                ],
+                [
+                  "banane",
+                  "2"
+                ],
+                [
+                  "fraise",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot « effectif » est un mot nouveau. Il désigne simplement le nombre de fois qu'une valeur se répète dans la liste. Dans notre exemple, l'effectif de $pomme$ est $3$. Ce mot sera très utile pour la suite, alors retiens-le bien : l'effectif, c'est le compteur pour chaque valeur."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre de fois qu'une valeur apparaît dans une série de données.",
+              "example": "Dans la liste : bleu, rouge, bleu, vert, l'effectif de bleu est 2."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec les couleurs des vélos dans la cour. Tu observes : $bleu$, $rouge$, $bleu$, $vert$, $rouge$, $bleu$, $vert$, $bleu$. Prends le temps de compter chaque couleur. Tu devrais trouver $4$ vélos bleus, $2$ rouges et $2$ verts. Voici le tableau d'effectifs correspondant."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Couleur",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "bleu",
+                  "4"
+                ],
+                [
+                  "rouge",
+                  "2"
+                ],
+                [
+                  "vert",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la liste est plus longue, comme les âges des enfants d'une classe : $8$, $7$, $8$, $9$, $7$, $8$, $8$, $9$, $7$, $8$. Ne t'inquiète pas, la méthode reste la même. On classe les âges différents ($7$, $8$, $9$) et on compte. Tu verras que $7$ ans revient $3$ fois, $8$ ans revient $5$ fois et $9$ ans revient $2$ fois. Le tableau ci-après montre le résultat."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Âge (ans)",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "7",
+                  "3"
+                ],
+                [
+                  "8",
+                  "5"
+                ],
+                [
+                  "9",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire un tableau d'effectifs à partir d'une liste brute. Dans la prochaine leçon, nous apprendrons à calculer le total des effectifs pour savoir combien de données nous avons au total."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici la liste des goûters préférés : $gâteau$, $yaourt$, $gâteau$, $fruit$, $yaourt$, $gâteau$, $fruit$, $gâteau$. Complète le tableau d'effectifs.",
+              "answer": "gâteau : 4, yaourt : 2, fruit : 2",
+              "hint": "Compte chaque mot un par un en les rayant au fur et à mesure.",
+              "explanation": "On compte : $gâteau$ apparaît $4$ fois, $yaourt$ $2$ fois, $fruit$ $2$ fois. On remplit le tableau avec ces nombres."
+            },
+            {
+              "question": "Dans la cour, on note les jeux préférés : $ballon$, $corde$, $ballon$, $marelle$, $corde$, $ballon$, $corde$, $ballon$, $marelle$. Fais le tableau d'effectifs.",
+              "answer": "ballon : 4, corde : 3, marelle : 2",
+              "hint": "Il y a trois jeux différents. Compte chaque jeu.",
+              "explanation": "On trouve $4$ ballon, $3$ corde, $2$ marelle. Le tableau d'effectifs reprend ces trois lignes."
+            },
+            {
+              "question": "Les pointures de chaussures d'un groupe : $32$, $33$, $32$, $34$, $33$, $32$, $33$, $32$, $34$, $33$. Construis le tableau d'effectifs.",
+              "answer": "32 : 4, 33 : 4, 34 : 2",
+              "hint": "Les pointures sont des nombres, mais on les traite comme des valeurs.",
+              "explanation": "On compte : pointure $32$ → $4$ fois, $33$ → $4$ fois, $34$ → $2$ fois. On écrit ces effectifs dans le tableau."
+            }
+          ]
+        },
+        {
+          "title": "Calculer un total.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le tableau des fruits préférés : $pomme$ ($3$), $banane$ ($2$), $fraise$ ($1$). Si on veut savoir combien d'enfants ont répondu au total, il suffit d'additionner tous les effectifs. On fait $3 + 2 + 1$. Regarde l'addition posée ci-dessous, elle montre le calcul pas à pas."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "3",
+                "2",
+                "1"
+              ],
+              "result": "6",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le total des effectifs, c'est le nombre total de données qu'on a collectées. Dans notre exemple, $6$ enfants ont donné leur fruit préféré. On peut vérifier en recomptant la liste de départ : il y a bien $6$ réponses. C'est une bonne habitude de toujours vérifier que la somme des effectifs correspond au nombre de lignes de ta liste initiale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les effectifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris tous les effectifs les uns sous les autres, alignés à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais l'addition posée en partant des unités. Note le résultat au dessous."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare le total obtenu avec le nombre de données de départ. Ils doivent être égaux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec le tableau des âges : $7$ ans ($3$), $8$ ans ($5$), $9$ ans ($2$). Le total des effectifs est $3 + 5 + 2$. Fais le calcul mentalement ou en posant l'addition. Tu trouves $10$. Cela veut dire que $10$ enfants ont participé. Si tu comptes les âges dans la liste de la leçon précédente, tu vois bien qu'il y en a $10$."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 5 + 2 = 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant additionner les effectifs pour obtenir le total. Dans la prochaine leçon, nous verrons comment utiliser le tableau d'effectifs pour répondre à des questions comme « Quel est le fruit le plus aimé ? » ou « Combien de pommes de plus que de fraises ? »."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tableau : $chien$ ($4$), $chat$ ($3$), $lapin$ ($2$). Calcule le total des effectifs.",
+              "answer": "$9$",
+              "hint": "Additionne $4$, $3$ et $2$.",
+              "explanation": "$4 + 3 + 2 = 9$. Il y a $9$ animaux au total dans ce tableau."
+            },
+            {
+              "question": "Voici les effectifs des couleurs de stylos : $bleu$ ($5$), $rouge$ ($4$), $vert$ ($3$), $noir$ ($2$). Quel est le total ?",
+              "answer": "$14$",
+              "hint": "Additionne les quatre nombres : $5 + 4 + 3 + 2$.",
+              "explanation": "$5 + 4 = 9$, $9 + 3 = 12$, $12 + 2 = 14$. Le total est $14$ stylos."
+            },
+            {
+              "question": "Un tableau d'effectifs donne : $livre$ ($6$), $BD$ ($4$), $magazine$ ($5$). Vérifie que le total correspond à $15$ données.",
+              "answer": "Oui, $6 + 4 + 5 = 15$.",
+              "hint": "Additionne les trois effectifs et compare à $15$.",
+              "explanation": "$6 + 4 = 10$, $10 + 5 = 15$. Le total est bien $15$, ce qui correspond au nombre de données."
+            }
+          ]
+        },
+        {
+          "title": "Répondre à des questions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre à des questions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ton tableau est prêt et que tu connais le total, tu peux répondre à plein de questions. Par exemple : « Quel est le fruit le plus aimé ? » Regarde les effectifs : $pomme$ ($3$), $banane$ ($2$), $fraise$ ($1$). Le plus grand effectif est $3$, c'est donc la $pomme$. Le graphique en barres ci-dessous te le montre visuellement : la barre la plus haute correspond à la $pomme$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés",
+              "bars": [
+                {
+                  "label": "pomme",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "banane",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "fraise",
+                  "value": 1,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre question classique : « Combien de pommes de plus que de fraises ? » Pour le savoir, on soustrait l'effectif de la fraise à celui de la pomme : $3 - 1 = 2$. Il y a $2$ pommes de plus que de fraises. On peut aussi poser la soustraction comme on a fait pour l'addition. Regarde l'opération posée."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "3",
+                "1"
+              ],
+              "result": "2",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on te demande : « Si deux nouveaux enfants choisissent la banane, quel devient l'effectif de la banane ? » Tu as l'ancien effectif ($2$), tu ajoutes $2$, tu fais $2 + 2 = 4$. Le nouveau tableau aura $4$ pour la banane. C'est une mise à jour simple du tableau."
+            },
+            {
+              "type": "display_math",
+              "latex": "2 + 2 = 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant tous les outils pour organiser des données, calculer le total et répondre à des questions variées. Bravo pour ton travail !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un tableau d'effectifs à partir d'une liste.",
+                "Je sais calculer le total des effectifs.",
+                "Je sais trouver la valeur la plus fréquente.",
+                "Je sais calculer une différence entre deux effectifs.",
+                "Je sais mettre à jour un effectif si de nouvelles données arrivent."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tableau : $vélo$ ($5$), $trottinette$ ($3$), $rollers$ ($2$). Quel est le moyen de transport le plus utilisé ?",
+              "answer": "vélo",
+              "hint": "Cherche l'effectif le plus grand.",
+              "explanation": "L'effectif de $vélo$ est $5$, c'est le plus grand. Donc le vélo est le plus utilisé."
+            },
+            {
+              "question": "Avec le même tableau, combien de vélos de plus que de rollers ?",
+              "answer": "$3$",
+              "hint": "Fais la soustraction : effectif vélo moins effectif rollers.",
+              "explanation": "$5 - 2 = 3$. Il y a $3$ vélos de plus que de rollers."
+            },
+            {
+              "question": "Si $2$ enfants de plus choisissent la trottinette, quel est le nouvel effectif de la trottinette ?",
+              "answer": "$5$",
+              "hint": "Ajoute $2$ à l'ancien effectif ($3$).",
+              "explanation": "$3 + 2 = 5$. Le nouvel effectif de la trottinette devient $5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

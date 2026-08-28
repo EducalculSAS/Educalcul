@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Arrondis et valeurs approchées",
+  "title": "Applications des arrondis : rangement et comparaisons",
+  "blocks": [
+    {
+      "title": "Ordre croissant de distances",
+      "content": "Range ces distances en ordre croissant après les avoir arrondies au kilomètre le plus proche.",
+      "items": [
+        "3,4 km → 3 km",
+        "7,8 km → 8 km",
+        "12,2 km → 12 km",
+        "25,6 km → 26 km"
+      ],
+      "explanation": "On arrondit chaque nombre à l'unité (kilomètre) : 3,4 devient 3 ; 7,8 devient 8 ; 12,2 devient 12 ; 25,6 devient 26. On classe ensuite ces résultats : 3 < 8 < 12 < 26.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étapes d'un arrondi au dixième",
+      "content": "Replace les étapes dans l'ordre pour arrondir $14,27$ au dixième près.",
+      "items": [
+        "J'identifie le chiffre des dixièmes : 2.",
+        "Je regarde le chiffre suivant (centièmes) : 7.",
+        "Comme 7 ≥ 5, j'ajoute 1 au chiffre des dixièmes : 2 + 1 = 3.",
+        "J'écris le résultat : 14,3."
+      ],
+      "explanation": "La méthode standard est : 1) Repérer le rang demandé (dixièmes -> 2). 2) Regarder le chiffre 바로 à droite (centièmes -> 7). 3) Appliquer la règle : si ≥ 5, on augmente le chiffre du rang ; sinon on le laisse. 4) Écrire le nombre arrondi en supprimant les chiffres suivants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer des arrondis différents",
+      "content": "Pour le nombre $58,43$, range ces valeurs approchées de la plus petite à la plus grande.",
+      "items": [
+        "Arrondi à l'unité : 58",
+        "Arrondi au dixième : 58,4",
+        "Arrondi à la dizaine : 60",
+        "Arrondi à la centaine : 100"
+      ],
+      "explanation": "On calcule chaque arrondi : Unité -> 58 (car 4<5) ; Dizaine -> 60 (car 8≥5) ; Centaine -> 100 (car 5≥5) ; Dixième -> 58,4 (car 3<5). On compare : 58 < 58,4 < 60 < 100.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

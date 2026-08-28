@@ -1,0 +1,144 @@
+{
+  "_status": "done",
+  "_course_id": 340,
+  "_course_code": "6eme-t02-c05-addition-et-soustraction-dans-les-cas-prevus",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter des additions et soustractions de fractions (6e)",
+  "questions": [
+    {
+      "text": "Pierre mange $\\frac{1}{4}$ d'un gâteau et Paul en mange $\\frac{2}{4}$. Quelle fraction du gâteau ont-ils mangée ensemble ?",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "On additionne les parts mangées car on cherche le total : $\\frac{1}{4} + \\frac{2}{4} = \\frac{3}{4}$. Le dénominateur ne change pas, on additionne les numérateurs. L'option $\\frac{3}{8}$ correspond à l'erreur d'additionner les dénominateurs. L'option $\\frac{1}{2}$ est la valeur de $\\frac{2}{4}$ seule. L'option $\\frac{1}{4}$ est la part de Pierre seule.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Parts mangées par Pierre et Paul"
+      }
+    },
+    {
+      "text": "Une bouteille contient $\\frac{5}{8}$ de litre de jus. On verse $\\frac{2}{8}$ de litre dans un verre. Quelle fraction de litre reste-t-il dans la bouteille ?",
+      "options": [
+        "$\\frac{3}{8}$",
+        "$\\frac{7}{8}$",
+        "$\\frac{3}{16}$",
+        "$\\frac{2}{8}$"
+      ],
+      "correctAnswer": "$\\frac{3}{8}$",
+      "explanation": "C'est une soustraction : quantité initiale moins quantité versée. $\\frac{5}{8} - \\frac{2}{8} = \\frac{3}{8}$. On soustrait les numérateurs, le dénominateur reste 8. L'option $\\frac{7}{8}$ correspond à une addition. L'option $\\frac{3}{16}$ correspond à l'erreur de soustraire aussi les dénominateurs. L'option $\\frac{2}{8}$ est la quantité versée, pas le reste.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Versé",
+            "value": 2,
+            "tone": "red"
+          },
+          {
+            "label": "Restant",
+            "value": 3,
+            "tone": "green"
+          }
+        ],
+        "caption": "Quantité de jus dans la bouteille (en huitièmes de litre)"
+      }
+    },
+    {
+      "text": "Marie a fait $\\frac{2}{5}$ de ses devoirs lundi et $\\frac{1}{5}$ mardi. Quelle fraction des devoirs lui reste-t-il à faire ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{4}{5}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "D'abord, on additionne ce qui est fait : $\\frac{2}{5} + \\frac{1}{5} = \\frac{3}{5}$. Ensuite, on soustrait ce total du tout (qui est 1, soit $\\frac{5}{5}$) : $\\frac{5}{5} - \\frac{3}{5} = \\frac{2}{5}$. L'option $\\frac{3}{5}$ est la fraction déjà faite, pas le reste. L'option $\\frac{3}{10}$ vient d'une addition erronée des dénominateurs. L'option $\\frac{4}{5}$ ne correspond à aucune étape logique.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 2,
+            "denominator": 5
+          },
+          {
+            "numerator": 1,
+            "denominator": 5
+          }
+        ],
+        "caption": "Devoirs faits lundi et mardi"
+      }
+    },
+    {
+      "text": "Une corde mesure $\\frac{7}{10}$ m. On en coupe un morceau de $\\frac{3}{10}$ m. Quelle est la longueur du morceau restant ?",
+      "options": [
+        "$\\frac{4}{10}$ m",
+        "$\\frac{10}{10}$ m",
+        "$\\frac{4}{20}$ m",
+        "$\\frac{3}{10}$ m"
+      ],
+      "correctAnswer": "$\\frac{4}{10}$ m",
+      "explanation": "On cherche une longueur restante, donc on soustrait la partie coupée à la longueur totale : $\\frac{7}{10} - \\frac{3}{10} = \\frac{4}{10}$ m. L'option $\\frac{10}{10}$ m correspond à une addition. L'option $\\frac{4}{20}$ m correspond à l'erreur de soustraire les dénominateurs. L'option $\\frac{3}{10}$ m est la longueur du morceau coupé.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Corde de $\\frac{7}{10}$ m",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.7,
+            "label": "Début"
+          },
+          {
+            "value": 0.4,
+            "label": "Après coupe"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0.4,
+            "end": 0.7,
+            "label": "$\\frac{3}{10}$ m"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un réservoir est rempli aux $\\frac{4}{7}$ de sa capacité. On ajoute de l'eau jusqu'à ce qu'il soit rempli aux $\\frac{6}{7}$. Quelle opération permet de trouver la fraction de capacité ajoutée ?",
+      "options": [
+        "$\\frac{6}{7} - \\frac{4}{7}$",
+        "$\\frac{6}{7} + \\frac{4}{7}$",
+        "$\\frac{4}{7} - \\frac{6}{7}$",
+        "$\\frac{6}{7} \\times \\frac{4}{7}$"
+      ],
+      "correctAnswer": "$\\frac{6}{7} - \\frac{4}{7}$",
+      "explanation": "On connaît l'état final ($\\frac{6}{7}$) et l'état initial ($\\frac{4}{7}$). La quantité ajoutée est la différence entre le final et l'initial : $\\frac{6}{7} - \\frac{4}{7} = \\frac{2}{7}$. L'addition donnerait une quantité supérieure au tout. La soustraction dans l'autre ordre donne un résultat négatif, impossible pour une quantité. La multiplication n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

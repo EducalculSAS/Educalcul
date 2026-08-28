@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Arrondir",
+  "title": "Arrondis : entiers, dixièmes, centaines",
+  "blocks": [
+    {
+      "title": "Arrondi à l'entier",
+      "content": "Arrondis le nombre $12,7$ à l'entier le plus proche : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "13"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des dixièmes est $7$, qui est supérieur ou égal à $5$, donc on arrondit à l'entier supérieur : $13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au dixième",
+      "content": "Arrondis le nombre $3,456$ au dixième : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3,5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde le chiffre des centièmes ($5$). Comme il est égal à $5$, on arrondit le chiffre des dixièmes ($4$) à l'unité supérieure, ce qui donne $3,5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi à la centaine",
+      "content": "Arrondis le nombre $2345$ à la centaine : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2300|2 300"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des dizaines est $4$ (inférieur à $5$), donc on conserve le chiffre des centaines ($3$) et on remplace les dizaines et unités par des zéros, ce qui donne $2300$ (ou $2 300$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

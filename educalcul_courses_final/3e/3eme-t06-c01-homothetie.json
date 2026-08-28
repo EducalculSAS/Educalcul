@@ -1,0 +1,544 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.984385+00:00",
+  "id": 485,
+  "code": "3eme-t06-c01",
+  "title": "Homothétie",
+  "description": "Cours structuré Educalcul : Homothétie.",
+  "subject": "Transformations, espace et grandeurs",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Transformations, espace et grandeurs",
+    "titre_du_cours": "Homothétie",
+    "objectif_global": "Homothétie",
+    "mini_lecons_imposees": [
+      "Rapport.",
+      "Construire.",
+      "Effet sur longueurs."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace et grandeurs",
+      "lessons": [
+        {
+          "title": "Rapport.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand une figure change de taille sans changer de forme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prennes une photo de ton chat avec ton téléphone, puis que tu l'agrandisses pour en faire un poster géant qui couvrirait tout un mur de ta chambre. Le chat sur le poster a exactement les mêmes proportions que sur la petite photo : ses oreilles sont au même endroit par rapport à ses yeux, sa queue a la même courbure relative, tout est identique, simplement plus grand. C'est ça, l'idée profonde d'une homothétie : une transformation qui garde la forme intacte mais modifie la taille. En troisième, on va apprendre à décrire cette transformation avec une précision mathématique, pour pouvoir l'utiliser dans des démonstrations, des constructions ou des exercices de géométrie analytique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà rencontré cette idée sans le savoir, dès le primaire, quand tu as travaillé sur les échelles des cartes géographiques. Une carte au 1/100 000 signifie qu'un centimètre sur le papier représente 100 000 centimètres dans la réalité, soit 1 kilomètre. C'est exactement le même principe : on multiplie toutes les distances par un même nombre pour passer de la réalité à la carte, ou de la carte à la réalité. En mathématiques, ce nombre multiplicateur porte un nom précis : on l'appelle le <strong>rapport</strong> de l'homothétie, et on le note traditionnellement avec la lettre $k$ (comme <em>koefficient</em> en allemand, ou simplement parce que c'est la convention)."
+            },
+            {
+              "type": "definition",
+              "term": "Homothétie",
+              "definition": "Transformation du plan qui associe à tout point $M$ un point $M'$ tel que les points $O$ (centre), $M$ et $M'$ sont alignés dans cet ordre, et que la distance $OM' = |k| \\times OM$, où $k$ est un nombre non nul appelé le rapport de l'homothétie.",
+              "example": "L'agrandissement d'une photo, le tracé d'un plan d'architecte à l'échelle, l'ombre d'un objet projetée par une lampe ponctuelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le centre $O$ est le point fixe de la transformation : c'est le seul point qui ne bouge pas, celui par rapport auquel tout s'agrandit ou se rétrécit. Si tu places une lampe de poche au-dessus d'une figurine sur une table, l'ombre de la figurine sur la table est l'image de la figurine par une homothétie dont le centre est la lampe. Plus la lampe est haute, plus l'ombre est petite (rapport petit) ; plus la lampe est basse, plus l'ombre est grande (rapport grand). Le centre est donc le point de vue depuis lequel on regarde la figure pour la transformer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rapport $k$ : ce nombre qui décide de tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le rapport $k$ est un nombre réel non nul. Sa valeur absolue $|k|$ nous dit de combien les distances sont multipliées : si $|k| > 1$, la figure s'agrandit (on parle d'homothétie d'agrandissement) ; si $|k| < 1$, la figure se rétrécit (homothétie de réduction) ; si $|k| = 1$, la figure ne change pas de taille (c'est l'identité, ou une symétrie centrale si $k = -1$). Le signe de $k$, lui, nous dit de quel côté du centre se trouve l'image : si $k > 0$, le point $M$ et son image $M'$ sont du même côté de $O$ (homothétie directe) ; si $k < 0$, ils sont de part et d'autre de $O$ (homothétie inverse, qui fait faire un demi-tour à la figure)."
+            },
+            {
+              "type": "display_math",
+              "latex": "k > 0 \\Rightarrow \\text{homoth\\'etie directe} \\quad (M \\text{ et } M' \\text{ du m\\^eme c\\^ot\\'e de } O)"
+            },
+            {
+              "type": "display_math",
+              "latex": "k < 0 \\Rightarrow \\text{homoth\\'etie inverse} \\quad (M \\text{ et } M' \\text{ de part et d'autre de } O)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser les valeurs possibles de $k$, imagine une droite graduée qui représenterait tous les rapports possibles. Au milieu, le zéro est interdit (une homothétie de rapport nul n'aurait pas de sens : tous les points seraient envoyés sur le centre). À droite du zéro, les rapports positifs : $0,5$ pour une réduction, $1$ pour l'identité, $2$ pour un agrandissement double, $3$ pour un triplement, etc. À gauche du zéro, les rapports négatifs : $-0,5$ pour une réduction avec retournement, $-1$ pour la symétrie centrale (taille inchangée mais figure retournée), $-2$ pour un agrandissement double avec retournement."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les valeurs possibles du rapport $k$ d'une homothétie",
+              "min": -3,
+              "max": 3,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "-2"
+                },
+                {
+                  "value": -1,
+                  "label": "-1 (sym\\'etrie centrale)"
+                },
+                {
+                  "value": -0.5,
+                  "label": "-0,5"
+                },
+                {
+                  "value": 0.5,
+                  "label": "0,5"
+                },
+                {
+                  "value": 1,
+                  "label": "1 (identit\\'e)"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque importante : le rapport $k$ peut être n'importe quel nombre réel non nul, pas seulement un entier. Une homothétie de rapport $\\frac{2}{3}$ ou de rapport $-\\sqrt{2}$ est parfaitement valide. Dans les exercices, on rencontre souvent des rapports fractionnaires comme $\\frac{1}{2}$, $\\frac{3}{4}$ ou $-\\frac{2}{3}$. Ne te laisse pas impressionner : la règle de multiplication des distances reste exactement la même, il suffit de faire le calcul avec des fractions ou des nombres décimaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment déterminer le rapport quand on a deux paires de points correspondants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on te donne une figure et son image par une homothétie, sans te donner le centre ni le rapport. Ta mission est de les retrouver. La méthode est systématique : choisis un point $A$ et son image $A'$, puis un autre point $B$ et son image $B'$. Les droites $(AA')$ et $(BB')$ se coupent en un point : c'est le centre $O$. Une fois $O$ trouvé, le rapport $k$ se calcule simplement comme le quotient des distances alignées : $k = \\frac{OA'}{OA}$ (avec le signe selon que $A$ et $A'$ sont du même côté ou de part et d'autre de $O$). On peut aussi utiliser $k = \\frac{OB'}{OB}$ : on doit trouver le même résultat, ce qui est une bonne vérification."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer les droites reliant chaque point à son image",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour deux paires de points correspondants $(A, A')$ et $(B, B')$, trace les droites $(AA')$ et $(BB')$. Si la figure a plus de deux points, n'importe quelles deux paires font l'affaire, mais choisis-les bien distinctes pour éviter les droites confondues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver le centre $O$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point d'intersection des deux droites $(AA')$ et $(BB')$ est le centre de l'homothétie. Marque-le clairement. Si les droites sont parallèles, c'est qu'il n'y a pas d'homothétie (ou que c'est une translation, mais ce n'est pas notre sujet ici)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le rapport $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure (ou calcule si tu as des coordonnées) les distances $OA$ et $OA'$. Le rapport est $k = \\frac{OA'}{OA}$. Attention au signe : si $A$ et $A'$ sont du même côté de $O$, $k$ est positif ; s'ils sont de part et d'autre, $k$ est négatif. Vérifie avec l'autre paire : $k = \\frac{OB'}{OB}$ doit donner le même nombre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche à tous les coups, que la figure soit un triangle, un quadrilatère, ou même une courbe. L'essentiel est d'avoir au moins deux paires de points correspondants non alignés avec le centre (sinon les droites $(AA')$ et $(BB')$ seraient confondues et on ne pourrait pas trouver $O$). Dans l'exercice qui suit, tu vas t'entraîner à retrouver le centre et le rapport à partir de deux triangles donnés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas particulier de la symétrie centrale : quand $k = -1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà la symétrie centrale depuis la cinquième : c'est la transformation qui fait faire un demi-tour à la figure autour d'un point $O$. Eh bien, figure-toi que la symétrie centrale n'est rien d'autre qu'une homothétie de rapport $k = -1$ ! Le centre est le centre de symétrie, la taille ne change pas ($|k| = 1$), mais le signe négatif fait que chaque point passe de l'autre côté du centre, à la même distance. C'est une excellente nouvelle : tout ce que tu sais sur la symétrie centrale (elle conserve les longueurs, les angles, les parallélismes, elle transforme un segment en un segment parallèle de même longueur) est vrai pour toute homothétie, à la différence près que les longueurs sont multipliées par $|k|$ au lieu d'être conservées."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Lien avec la symétrie centrale",
+              "paragraphs": [
+                "La symétrie centrale de centre $O$ est l'homothétie de centre $O$ et de rapport $k = -1$. C'est le seul cas où une homothétie conserve toutes les longueurs (puisque $|-1| = 1$)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette observation est très utile pour se souvenir des propriétés des homothéties : elles font exactement la même chose que la symétrie centrale sur les angles, les parallélismes, l'alignement, l'ordre des points sur une droite... mais elles changent les longueurs selon le facteur $|k|$. Dans la prochaine leçon, on va voir comment construire concrètement l'image d'une figure par une homothétie, avec règle et compas, sans avoir besoin de mesurer les distances une par une."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne un triangle $ABC$ et son image $A'B'C'$ par une homothétie. Les droites $(AA')$ et $(BB')$ se coupent en $O$. On mesure $OA = 3\\,cm$ et $OA' = 7,5\\,cm$. Les points $A$ et $A'$ sont du même côté de $O$. Quel est le rapport $k$ de cette homothétie ?",
+              "answer": "$k = 2,5$",
+              "hint": "Le rapport est le quotient de la distance image sur la distance initiale. Le signe est positif car $A$ et $A'$ sont du même côté de $O$.",
+              "explanation": "On calcule $k = \\frac{OA'}{OA} = \\frac{7,5}{3} = 2,5$. Comme $A$ et $A'$ sont du même côté de $O$, le rapport est positif. C'est une homothétie d'agrandissement (le facteur $2,5 > 1$)."
+            },
+            {
+              "question": "Une homothétie de centre $O$ transforme le point $M$ en $M'$ tel que $OM = 4\\,cm$ et $OM' = 10\\,cm$. Les points $M$ et $M'$ sont de part et d'autre de $O$. Détermine le rapport $k$.",
+              "answer": "$k = -2,5$",
+              "hint": "La valeur absolue du rapport est le quotient des distances. Le signe est négatif car les points sont de part et d'autre du centre.",
+              "explanation": "La valeur absolue est $|k| = \\frac{OM'}{OM} = \\frac{10}{4} = 2,5$. Comme $M$ et $M'$ sont de part et d'autre de $O$, le rapport est négatif : $k = -2,5$. C'est une homothétie inverse d'agrandissement."
+            },
+            {
+              "question": "Parmi les nombres suivants, lesquels peuvent être le rapport d'une homothétie ? $0$ ; $-1$ ; $0,2$ ; $-3$ ; $1$ ; $\\frac{4}{3}$ ; $-\\sqrt{5}$",
+              "answer": "Tous sauf $0$ : $-1$, $0,2$, $-3$, $1$, $\\frac{4}{3}$, $-\\sqrt{5}$",
+              "hint": "Le rapport d'une homothétie peut être n'importe quel nombre réel non nul. Le zéro est interdit.",
+              "explanation": "Une homothétie est définie par un centre $O$ et un rapport $k \\in \\mathbb{R}^*$ (réel non nul). Le zéro est exclu car il enverrait tous les points sur $O$, ce qui ne serait pas une bijection du plan. Tous les autres nombres proposés sont des réels non nuls, donc des rapports valides."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'image d'un point : la méthode des rayons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est le rapport d'une homothétie, passons à la pratique : comment tracer, avec une règle et un compas, l'image d'une figure donnée ? C'est une compétence essentielle, non seulement pour les exercices de construction, mais aussi pour visualiser ce qui se passe géométriquement. La méthode la plus directe, celle qu'on utilise spontanément, s'appelle la méthode des rayons. Elle repose sur la définition même : le centre $O$, le point initial $M$ et son image $M'$ sont alignés. Donc, pour trouver $M'$, il suffit de tracer la droite $(OM)$ (le rayon), puis de reporter la distance $OM'$ sur ce rayon."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention : on ne mesure pas $OM'$ avec une règle graduée ! En géométrie, on construit avec le compas. Si le rapport $k$ est un nombre simple comme $2$, $3$, $\\frac{1}{2}$, on peut utiliser la propriété de Thalès ou une astuce de proportionnalité. Mais la méthode universelle, qui marche pour n'importe quel rapport $k$ (donné sous forme de segment ou de fraction), consiste à construire le quatrième proportionnel. Ne t'inquiète pas, on va le faire étape par étape, et tu verras que c'est plus simple qu'en a l'air."
+            },
+            {
+              "type": "definition",
+              "term": "Quatrième proportionnel",
+              "definition": "Données trois longueurs $a$, $b$, $c$, le quatrième proportionnel $x$ est la longueur telle que $\\frac{a}{b} = \\frac{c}{x}$. On le construit à l'aide du théorème de Thalès : on trace un angle, on reporte $a$ et $b$ sur un côté, $c$ sur l'autre, on joint les extrémités de $a$ et $c$, et on trace la parallèle par l'extrémité de $b$.",
+              "example": "Pour construire $x$ tel que $\\frac{2}{3} = \\frac{5}{x}$, on trace un angle, on met $2$ et $3$ sur une branche, $5$ sur l'autre, et la parallèle donne $x = 7,5$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construction pas à pas quand le rapport $k$ est donné par un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que le rapport $k$ te soit donné sous la forme d'un segment $[UV]$ par rapport à un segment unité $[AB]$ (donc $k = \\frac{UV}{AB}$). Tu as le centre $O$ et un point $M$ à transformer. Voici la procédure complète, que tu pourras reproduire sur ton cahier à chaque exercice de construction."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le rayon $(OM)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec la règle, trace la droite $(OM)$ dans les deux sens à partir de $O$. C'est sur cette droite que se trouvera l'image $M'$. Si $k > 0$, $M'$ sera du même côté que $M$ par rapport à $O$ ; si $k < 0$, $M'$ sera de l'autre côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le quatrième proportionnel pour obtenir $OM'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On veut $OM' = |k| \\times OM$. Comme $k = \\frac{UV}{AB}$, on a $\\frac{OM'}{OM} = \\frac{UV}{AB}$. Trace un angle quelconque de sommet $O$ (ou un autre point commode). Sur une branche, reporte $AB$ puis $UV$ (dans le même sens). Sur l'autre branche, reporte $OM$. Relie l'extrémité de $AB$ à l'extrémité de $OM$. Par l'extrémité de $UV$, trace la parallèle à cette droite. Elle coupe la deuxième branche en un point qui détermine la longueur $OM'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter $OM'$ sur le rayon $(OM)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec le compas, prends la longueur $OM'$ trouvée à l'étape 2. Place la pointe du compas sur $O$ et marque le point $M'$ sur le rayon $(OM)$, du bon côté selon le signe de $k$. C'est fait ! $M'$ est l'image de $M$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode du quatrième proportionnel est la plus générale, mais elle peut sembler un peu lourde si tu dois la refaire pour chaque point d'une figure complexe. Heureusement, il existe une astuce géométrique élégante qui permet de construire l'image de n'importe quel point en une seule opération de parallélisme, une fois qu'on a construit l'image de deux points seulement. C'est ce qu'on appelle la méthode des parallèles, et elle va te faire gagner un temps précieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode des parallèles : rapide et élégante"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'idée est simple : une homothétie transforme une droite en une droite parallèle (sauf si la droite passe par le centre, auquel cas elle est invariante globale). Donc, si tu connais les images $A'$ et $B'$ de deux points $A$ et $B$ non alignés avec $O$, alors pour n'importe quel autre point $M$ de la figure, son image $M'$ est l'intersection de deux droites : la parallèle à $(AA')$ passant par... non, attention, ce n'est pas ça. La propriété exacte est : $(A'B')$ est parallèle à $(AB)$, $(B'C')$ est parallèle à $(BC)$, etc. Mais pour construire $M'$ à partir de $A'$ et $B'$, on utilise le fait que les droites $(AM)$ et $(A'M')$ sont parallèles, et $(BM)$ et $(B'M')$ sont parallèles. Donc $M'$ est l'intersection de la parallèle à $(AM)$ passant par $A'$ et de la parallèle à $(BM)$ passant par $B'$. C'est beaucoup plus rapide : deux parallèles à tracer, et hop, le point est trouvé."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Construction de $M'$ par la méthode des parallèles : $(A'M') \\parallel (AM)$ et $(B'M') \\parallel (BM)$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "M"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que cette méthode marche, il faut d'abord avoir construit $A'$ et $B'$ (par la méthode du quatrième proportionnel, ou parce qu'ils sont donnés). Une fois ces deux points-images connus, tous les autres s'obtiennent par parallèles. C'est la méthode standard pour construire l'image d'un polygone : on construit les images de deux sommets, puis on trace les parallèles aux côtés pour trouver les autres sommets. Essaie sur un triangle, puis sur un quadrilatère, tu verras que c'est très satisfaisant de voir la figure apparaître progressivement."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention au cas où $M$ est aligné avec $O$",
+              "paragraphs": [
+                "Si le point $M$ à transformer est aligné avec $O$ et un des points déjà construits (par exemple $O$, $A$, $M$ alignés), la méthode des parallèles ne marche pas car les droites $(AM)$ et $(A'M')$ seraient confondues. Dans ce cas, on utilise la méthode des rayons (quatrième proportionnel) directement sur ce point."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire quand le rapport est négatif : le demi-tour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, on a implicitement supposé $k > 0$. Que se passe-t-il si $k$ est négatif, par exemple $k = -2$ ou $k = -\\frac{1}{3}$ ? La construction est exactement la même pour la longueur : on construit $OM' = |k| \\times OM$. La seule différence, c'est le côté : au lieu de placer $M'$ du même côté que $M$ par rapport à $O$, on le place de l'autre côté. Concrètement, quand tu traces le rayon $(OM)$ à l'étape 1, tu le prolonges de l'autre côté de $O$, et c'est sur ce prolongement que tu reportes la longueur $OM'$. C'est tout ! Le reste de la construction (quatrième proportionnel ou parallèles) ne change pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Petit truc mnémotechnique personnel pour ne jamais te tromper de côté : imagine que le centre $O$ est un miroir. Si $k$ est positif, le point $M$ et son image $M'$ se font un signe de la main du même côté du miroir. Si $k$ est négatif, ils se font face de part et d'autre du miroir. Ou encore : le signe moins, c'est comme un demi-tour, un \"retour en arrière\" par rapport au centre. À toi de trouver l'image mentale qui t'aide le mieux, l'essentiel est de ne pas hésiter au moment de placer le point."
+            },
+            {
+              "type": "display_math",
+              "latex": "k < 0 \\Rightarrow M' \\in [OM) \\text{ prolong\\'e de l'autre c\\^ot\\'e de } O \\quad (\\text{rayon oppos\\'e})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'exercice suivant, tu vas construire l'image d'un triangle par une homothétie de rapport négatif. Prends ton temps, suis les étapes dans l'ordre, et n'oublie pas : la longueur se construit avec la valeur absolue, le côté se choisit avec le signe. C'est une compétence qui tombe souvent au brevet, alors assure-toi de la maîtriser parfaitement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne un segment $[AB]$ de longueur $4\\,cm$ et un point $O$ distinct de $A$ et $B$. Construis à la règle et au compas les images $A'$ et $B'$ de $A$ et $B$ par l'homothétie de centre $O$ et de rapport $k = \\frac{3}{2}$. (Décris la construction par écrit, étape par étape.)",
+              "answer": "1. Tracer les droites $(OA)$ et $(OB)$. 2. Construire le quatrième proportionnel : sur un rayon $Ox$, reporter $OA$ puis $AB$ (unité) ; sur un autre rayon $Oy$, reporter $OA$. Relier les extrémités de $OA$ (sur $Ox$) et de $OA$ (sur $Oy$). Par l'extrémité de $AB$ (sur $Ox$), tracer la parallèle. Elle coupe $Oy$ en un point donnant $OA' = \\frac{3}{2} \\times OA$. 3. Reporter $OA'$ sur $(OA)$ du même côté que $A$ pour avoir $A'$. 4. Faire de même pour $B$ pour obtenir $B'$.",
+              "hint": "Le rapport $k = 3/2$ signifie $OA' = 1,5 \\times OA$. Utilise la construction du quatrième proportionnel avec une longueur unité arbitraire.",
+              "explanation": "Comme $k = 3/2 > 0$, les images sont du même côté du centre. La construction du quatrième proportionnel permet d'obtenir la longueur $OA' = \\frac{3}{2} OA$ sans mesurer. On répète pour $B$."
+            },
+            {
+              "question": "Soit un triangle $ABC$ et un point $O$. On a déjà construit $A'$ et $B'$, images de $A$ et $B$ par l'homothétie de centre $O$ et de rapport $k = 2$. Explique comment construire $C'$, image de $C$, en utilisant la méthode des parallèles.",
+              "answer": "Tracer la parallèle à $(AC)$ passant par $A'$ et la parallèle à $(BC)$ passant par $B'$. Leur intersection est $C'$.",
+              "hint": "Une homothétie transforme les droites en droites parallèles (sauf si elles passent par le centre). Les côtés $(AC)$ et $(A'C')$ sont parallèles, de même pour $(BC)$ et $(B'C')$.",
+              "explanation": "Par propriété de l'homothétie, $(A'C') \\parallel (AC)$ et $(B'C') \\parallel (BC)$. Puisque $A'$ et $B'$ sont connus, on trace ces deux parallèles ; leur intersection donne $C'$. C'est plus rapide que de refaire le quatrième proportionnel pour $C$."
+            },
+            {
+              "question": "Même triangle $ABC$, même centre $O$, mais cette fois le rapport est $k = -2$. On a construit $A'$ et $B'$. Comment construire $C'$ ? La méthode des parallèles fonctionne-t-elle encore ?",
+              "answer": "Oui, la méthode des parallèles fonctionne exactement de la même façon : tracer la parallèle à $(AC)$ par $A'$ et la parallèle à $(BC)$ par $B'$, leur intersection est $C'$. Le signe du rapport n'affecte pas les parallélismes.",
+              "hint": "Le rapport négatif change le côté des points par rapport à $O$, mais pas les directions des droites. Les parallélismes sont conservés quel que soit le signe de $k$.",
+              "explanation": "L'homothétie de rapport $k$ (positif ou négatif) envoie toute droite ne passant pas par $O$ sur une droite parallèle. Donc $(A'C') \\parallel (AC)$ et $(B'C') \\parallel (BC)$ restent vrais. La construction par parallèles est identique, seuls $A'$ et $B'$ sont placés de l'autre côté de $O$ par rapport à $A$ et $B$."
+            }
+          ]
+        },
+        {
+          "title": "Effet sur longueurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ce qui change et ce qui ne change pas : les grandeurs sous homothétie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comprendre l'effet d'une homothétie sur les mesures de la figure. C'est le cœur du programme de troisième sur ce chapitre, et c'est aussi ce qui tombe le plus souvent en contrôle : savoir calculer une longueur, une aire, un volume, un périmètre après une homothétie. La règle d'or, c'est que l'homothétie multiplie <strong>toutes les longueurs</strong> par la valeur absolue du rapport $|k|$. Pas certaines longueurs, pas approximativement : <strong>toutes</strong>, sans exception. Les segments, les rayons de cercles, les hauteurs des triangles, les diagonales des carrés, les périmètres des polygones... tout ce qui est une longueur (donc une mesure en une dimension) est multiplié par $|k|$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\mathcal{H}(O,k) \\text{ transforme } M \\text{ en } M' \\text{ et } N \\text{ en } N', \\text{ alors } M'N' = |k| \\times MN"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule est valable pour <strong>n'importe quels deux points</strong> $M$ et $N$, qu'ils soient alignés avec $O$ ou non. C'est une propriété incroyablement puissante : elle te permet de calculer n'importe quelle longueur dans l'image sans avoir à refaire la construction. Si tu sais qu'un triangle a des côtés $3\\,cm$, $4\\,cm$, $5\\,cm$ et qu'il subit une homothétie de rapport $k = -2$, tu sais immédiatement que l'image a des côtés $6\\,cm$, $8\\,cm$, $10\\,cm$. Le signe négatif n'a aucune incidence sur les longueurs, il ne change que l'orientation."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Règle fondamentale sur les longueurs",
+              "paragraphs": [
+                "Dans une homothétie de rapport $k$, toute longueur est multipliée par $|k|$. Le périmètre d'une figure est multiplié par $|k|$. Le rayon d'un cercle est multiplié par $|k|$. La distance entre deux points quelconques est multipliée par $|k|$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les aires : le facteur $k^2$, pas $|k|$ !"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est là que beaucoup d'élèves se trompent au brevet : ils appliquent le facteur $|k|$ aux aires, alors qu'il faut appliquer $k^2$. Pourquoi ? Parce qu'une aire, c'est une longueur fois une longueur (deux dimensions). Si chaque longueur est multipliée par $|k|$, alors le produit de deux longueurs est multiplié par $|k| \\times |k| = k^2$. Note bien : c'est $k^2$, pas $|k|^2$ (ce qui revient au même numériquement, mais $k^2$ est la formule algébrique correcte, qui marche même si on raisonne avec des rapports signés en géométrie analytique). Donc : aire de l'image = $k^2 \\times$ aire de la figure initiale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathcal{A}(\\text{image}) = k^2 \\times \\mathcal{A}(\\text{initiale})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer cette idée. Un triangle rectangle de côtés $3\\,cm$ et $4\\,cm$ (aire $6\\,cm^2$) subit une homothétie de rapport $k = 3$. Ses côtés deviennent $9\\,cm$ et $12\\,cm$, son aire devient $\\frac{9 \\times 12}{2} = 54\\,cm^2$. Et $k^2 \\times 6 = 9 \\times 6 = 54$. Ça marche ! Si le rapport est $k = -3$, les longueurs sont multipliées par $3$ (valeur absolue), l'aire est multipliée par $(-3)^2 = 9$. Le signe disparaît au carré, ce qui est logique : l'aire est toujours positive, elle ne peut pas être \"négative\" ou \"retournée\"."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effet du rapport $k$ sur longueurs, périmètre et aire (exemple : carré de côté 2, aire 4, périmètre 8)",
+              "bars": [
+                {
+                  "label": "Longueur / Périmètre",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Aire",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce graphique montre l'effet d'une homothétie de rapport $k=2$ sur un carré de côté $2$. Les longueurs (côté, périmètre) sont multipliées par $2$, l'aire est multipliée par $4 = 2^2$. Si le rapport était $k=3$, les longueurs seraient multipliées par $3$, l'aire par $9$. Si $k=\\frac{1}{2}$, les longueurs sont divisées par $2$, l'aire est divisée par $4$. Essaie de visualiser ce graphique mentalement : les barres bleues (longueurs) grandissent linéairement, la barre rouge (aire) grandit quadratiquement. C'est cette différence de vitesse qui fait que les aires changent beaucoup plus vite que les longueurs quand $|k|$ s'éloigne de $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles, les parallèles, les milieux : les invariants de l'homothétie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les longueurs et les aires changent, il y a des grandeurs qui, elles, ne bougent pas du tout. C'est ce qu'on appelle les <strong>invariants</strong> de l'homothétie. Première bonne nouvelle : les angles sont conservés. L'image d'un angle de $30^\\circ$ est un angle de $30^\\circ$, l'image d'un angle droit est un angle droit. Deuxième bonne nouvelle : le parallélisme est conservé. Si deux droites sont parallèles, leurs images sont parallèles. Si deux droites sont sécantes, leurs images sont sécantes (et l'angle entre elles est le même). Troisième bonne nouvelle : le milieu d'un segment est transformé en le milieu de l'image du segment. En fait, tout rapport de division d'un segment est conservé : si un point $I$ coupe $[AB]$ dans le rapport $\\frac{AI}{IB} = \\frac{2}{3}$, alors son image $I'$ coupe $[A'B']$ dans le même rapport $\\frac{A'I'}{I'B'} = \\frac{2}{3}$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Ce que l'homothétie conserve (invariants)",
+              "paragraphs": [
+                "Les angles (mesure inchangée).",
+                "Le parallélisme et le non-parallélisme des droites.",
+                "L'alignement de trois points.",
+                "Les rapports de longueurs sur une même droite (ex: milieu, tiers, etc.).",
+                "La forme de la figure (similitude)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces invariants expliquent pourquoi une homothétie produit une figure <strong>semblable</strong> à l'originale. Deux figures semblables ont les mêmes angles et des côtés proportionnels. C'est exactement ce que fait l'homothétie : elle crée une figure semblable, avec un coefficient de similitude égal à $|k|$. En troisième, on utilise souvent cette propriété pour démontrer que deux triangles sont semblables : si on peut montrer que l'un est l'image de l'autre par une homothétie (ou une composition d'homothétie et de rotation/translation), alors ils sont semblables. C'est un outil de démonstration très puissant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas des volumes : facteur $k^3$ (aperçu pour la suite)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le programme de troisième ne demande pas officiellement de calculer des volumes après homothétie (c'est au programme de seconde), mais c'est une suite logique si naturelle que ça vaut la peine de la mentionner maintenant pour que tu sois prêt. Un volume, c'est trois dimensions : longueur $\\times$ largeur $\\times$ hauteur. Si chaque longueur est multipliée par $|k|$, le volume est multiplié par $|k| \\times |k| \\times |k| = |k|^3 = k^3$ (puisque le cube conserve le signe, mais le volume est positif, on prend la valeur absolue). Donc : volume de l'image = $|k|^3 \\times$ volume initial. Un cube de côté $2\\,cm$ (volume $8\\,cm^3$) sous homothétie $k=3$ devient un cube de côté $6\\,cm$, volume $216\\,cm^3 = 27 \\times 8 = 3^3 \\times 8$. La logique est implacable : dimension 1 $\\rightarrow$ facteur $|k|$, dimension 2 $\\rightarrow$ facteur $k^2$, dimension 3 $\\rightarrow$ facteur $|k|^3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Longueur : } \\times |k| \\quad ; \\quad \\text{Aire : } \\times k^2 \\quad ; \\quad \\text{Volume : } \\times |k|^3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette progression (puissance 1, puis 2, puis 3) est une belle illustration de la notion de dimension en géométrie. Elle te servira aussi en physique-chimie quand tu travailleras sur les échelles de grandeur. Maintenant, entraîçons-nous sur des exercices types brevet qui mélangent calculs de longueurs, d'aires, et utilisation des invariants (angles, parallélisme, milieux)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une homothétie par son centre et son rapport $k$.",
+                "Je sais déterminer le rapport $k$ à partir de deux paires de points correspondants.",
+                "Je sais construire l'image d'un point par homothétie (méthode des rayons / quatrième proportionnel).",
+                "Je sais construire l'image d'une figure par la méthode des parallèles.",
+                "Je connais l'effet du signe de $k$ : $k>0$ (directe), $k<0$ (inverse, demi-tour).",
+                "Je sais calculer les longueurs et périmètres après homothétie : $\\times |k|$.",
+                "Je sais calculer les aires après homothétie : $\\times k^2$.",
+                "Je connais les invariants : angles, parallélisme, alignement, milieux, rapports de division."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle $ABC$ a pour longueurs $AB = 5\\,cm$, $BC = 6\\,cm$, $CA = 7\\,cm$. Il est transformé par une homothétie de rapport $k = -2$. Quelles sont les longueurs des côtés de l'image $A'B'C'$ ?",
+              "answer": "$A'B' = 10\\,cm$, $B'C' = 12\\,cm$, $C'A' = 14\\,cm$",
+              "hint": "Les longueurs sont multipliées par la valeur absolue du rapport $|k| = 2$. Le signe négatif n'affecte pas les longueurs.",
+              "explanation": "L'homothétie multiplie toutes les longueurs par $|k| = 2$. Donc $A'B' = 2 \\times 5 = 10\\,cm$, $B'C' = 2 \\times 6 = 12\\,cm$, $C'A' = 2 \\times 7 = 14\\,cm$. Le triangle image est semblable à l'initial avec un coefficient de similitude $2$."
+            },
+            {
+              "question": "Un disque de rayon $3\\,cm$ (aire $9\\pi\\,cm^2$) subit une homothétie de rapport $k = \\frac{1}{2}$. Quelle est l'aire du disque image ?",
+              "answer": "$\\frac{9\\pi}{4}\\,cm^2$ (soit $2,25\\pi\\,cm^2$)",
+              "hint": "L'aire est multipliée par $k^2 = (1/2)^2 = 1/4$. Le rayon est multiplié par $|k| = 1/2$.",
+              "explanation": "Le rayon devient $3 \\times \\frac{1}{2} = 1,5\\,cm$. L'aire devient $\\pi \\times (1,5)^2 = 2,25\\pi\\,cm^2$. On peut aussi calculer directement : aire image = $k^2 \\times$ aire initiale = $\\frac{1}{4} \\times 9\\pi = \\frac{9\\pi}{4}\\pi\\,cm^2$."
+            },
+            {
+              "question": "Soit un triangle $ABC$ et son image $A'B'C'$ par une homothétie de centre $O$ et de rapport $k = 3$. Le point $I$ est le milieu de $[BC]$. Quelle est la position de $I'$, image de $I$, par rapport au segment $[B'C']$ ?",
+              "answer": "$I'$ est le milieu de $[B'C']$.",
+              "hint": "L'homothétie conserve les rapports de division sur une droite. Le milieu divise le segment dans le rapport 1, ce rapport est conservé.",
+              "explanation": "Comme $I$ est le milieu de $[BC]$, on a $\\frac{BI}{IC} = 1$. L'homothétie conserve les rapports de longueurs sur une même droite, donc $\\frac{B'I'}{I'C'} = 1$, ce qui signifie que $I'$ est le milieu de $[B'C']$. On n'a pas besoin de connaître $k$ pour cette conclusion (sauf $k \\neq 0$)."
+            },
+            {
+              "question": "Un rectangle a un périmètre de $20\\,cm$ et une aire de $24\\,cm^2$. Après une homothétie de rapport $k = -4$, quelles sont le périmètre et l'aire du rectangle image ?",
+              "answer": "Périmètre : $80\\,cm$ ; Aire : $384\\,cm^2$",
+              "hint": "Périmètre $\\times |k| = \\times 4$. Aire $\\times k^2 = \\times 16$. Le signe de $k$ n'a pas d'impact sur ces grandeurs.",
+              "explanation": "Le périmètre est une longueur, il est multiplié par $|k| = 4$ : $20 \\times 4 = 80\\,cm$. L'aire est multipliée par $k^2 = (-4)^2 = 16$ : $24 \\times 16 = 384\\,cm^2$. Le rectangle image a des dimensions 4 fois plus grandes, donc une aire 16 fois plus grande."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés des fonctions de référence",
+  "questions": [
+    {
+      "text": "Quelle affirmation est vraie concernant la fonction carrée $f(x)=x^2$ sur $\\mathbb{R}$ ?",
+      "options": [
+        "Elle est paire et strictement croissante sur $\\mathbb{R}$.",
+        "Elle est impaire et admet un maximum en $0$.",
+        "Elle est paire, strictement décroissante sur $]-\\infty;0]$ et strictement croissante sur $[0;+\\infty[$.",
+        "Elle est impaire, strictement croissante sur $]-\\infty;0]$ et strictement décroissante sur $[0;+\\infty[$."
+      ],
+      "correctAnswer": "Elle est paire, strictement décroissante sur $]-\\infty;0]$ et strictement croissante sur $[0;+\\infty[$.",
+      "explanation": "La fonction carrée $f(x)=x^2$ est une fonction paire car $f(-x)=(-x)^2=x^2=f(x)$. Sa courbe est une parabole de sommet en $(0;0)$ avec une branche gauche décroissante et une branche droite croissante. Elle admet un minimum (et non un maximum) en $0$. Les deux autres options confondent parité (paire/impaire) ou sens de variation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la fonction inverse $f(x)=\\frac{1}{x}$ définie sur $\\mathbb{R}^*$, laquelle de ces propositions est exacte ?",
+      "options": [
+        "Elle est paire et strictement croissante sur $]-\\infty;0[$ et sur $]0;+\\infty[$.",
+        "Elle est impaire et strictement décroissante sur $]-\\infty;0[$ et sur $]0;+\\infty[$.",
+        "Elle admet un minimum en $1$ et un maximum en $-1$.",
+        "Elle est strictement croissante sur $\\mathbb{R}^*$."
+      ],
+      "correctAnswer": "Elle est impaire et strictement décroissante sur $]-\\infty;0[$ et sur $]0;+\\infty[$.",
+      "explanation": "La fonction inverse vérifie $f(-x)=-f(x)$, elle est donc impaire. Sur chacun des deux intervalles de définition ($]-\\infty;0[$ et $]0;+\\infty[$), la fonction est strictement décroissante (si $x$ augmente, $1/x$ diminue). Elle n'a pas d'extremum global (pas de min ni max) et n'est pas croissante sur l'ensemble $\\mathbb{R}^*$ car elle n'est pas définie en $0$ et sa courbe a deux branches distinctes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction racine carrée $f(x)=\\sqrt{x}$. Quel est son ensemble de définition et sa variation ?",
+      "options": [
+        "Définie sur $\\mathbb{R}$, paire et strictement croissante.",
+        "Définie sur $[0;+\\infty[$, impaire et strictement croissante.",
+        "Définie sur $[0;+\\infty[$, ni paire ni impaire, et strictement croissante.",
+        "Définie sur $]-\\infty;0]$, ni paire ni impaire, et strictement décroissante."
+      ],
+      "correctAnswer": "Définie sur $[0;+\\infty[$, ni paire ni impaire, et strictement croissante.",
+      "explanation": "La racine carrée n'est définie que pour les réels positifs ou nuls, donc $D_f=[0;+\\infty[$. Comme cet ensemble n'est pas symétrique par rapport à $0$, la fonction ne peut être ni paire ni impaire. Sur son ensemble de définition, elle est strictement croissante : si $0 \\le x_1 < x_2$ alors $\\sqrt{x_1} < \\sqrt{x_2}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction cube $f(x)=x^3$ possède quelle propriété de parité et quel sens de variation sur $\\mathbb{R}$ ?",
+      "options": [
+        "Paire et strictement croissante sur $\\mathbb{R}$.",
+        "Impaire et strictement croissante sur $\\mathbb{R}$.",
+        "Impaire, strictement décroissante sur $]-\\infty;0]$ et strictement croissante sur $[0;+\\infty[$.",
+        "Paire et strictement décroissante sur $\\mathbb{R}$."
+      ],
+      "correctAnswer": "Impaire et strictement croissante sur $\\mathbb{R}$.",
+      "explanation": "Pour tout réel $x$, $f(-x)=(-x)^3=-x^3=-f(x)$, donc la fonction cube est impaire. Sa dérivée $f'(x)=3x^2$ est positive ou nulle (uniquement en $0$), ce qui implique que la fonction est strictement croissante sur tout $\\mathbb{R}$. Contrairement à la fonction carrée, elle n'a pas d'extremum et ne change pas de sens de variation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes sur la fonction valeur absolue $f(x)=|x|$, laquelle est fausse ?",
+      "options": [
+        "C'est une fonction paire.",
+        "Elle est strictement décroissante sur $]-\\infty;0]$.",
+        "Elle admet un minimum global en $0$.",
+        "Elle est strictement croissante sur $\\mathbb{R}$."
+      ],
+      "correctAnswer": "Elle est strictement croissante sur $\\mathbb{R}$.",
+      "explanation": "La fonction valeur absolue est paire ($|-x|=|x|$), décroissante sur les négatifs (donc sur $]-\\infty;0]$) et croissante sur les positifs (sur $[0;+\\infty[$). Elle admet bien un minimum global en $0$ (valeur $0$). L'affirmation fausse est qu'elle est strictement croissante sur $\\mathbb{R}$ : elle décroît pour $x<0$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

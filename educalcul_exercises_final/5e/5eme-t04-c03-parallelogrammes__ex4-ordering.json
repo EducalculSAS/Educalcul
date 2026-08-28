@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 397,
+  "_course_code": "5eme-t04-c03-parallelogrammes",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Application : Parallélogrammes",
+  "title": "Applications des propriétés du parallélogramme",
+  "blocks": [
+    {
+      "title": "Construction knowing le centre",
+      "content": "Ordonner les étapes de la construction du parallélogramme $ABCD$ de centre $O$ lorsque les sommets $A$ et $B$ sont donnés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer la droite $(AO)$.",
+        "Reporter la longueur $AO$ sur la demi-droite opposée pour obtenir $C$ tel que $O$ soit le milieu de $[AC]$.",
+        "Tracer la droite $(BO)$.",
+        "Reporter la longueur $BO$ sur la demi-droite opposée pour obtenir $D$ tel que $O$ soit le milieu de $[BD]$.",
+        "Relier les points $A$, $B$, $C$, $D$ dans l'ordre pour obtenir le parallélogramme."
+      ],
+      "explanation": "La construction utilise la propriété fondamentale : les diagonales d'un parallélogramme se coupent en leur milieu commun. On trace d'abord les droites passant par le centre $O$ et les sommets connus $A$ et $B$. On construit ensuite les symétriques $C$ et $D$ de $A$ et $B$ par rapport à $O$. Enfin, on relie les quatre sommets dans l'ordre alphabétique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démonstration : diagonales même milieu",
+      "content": "Ordonner les étapes de la démonstration suivante : « Si les diagonales d'un quadrilatère ont le même milieu, alors ce quadrilatère est un parallélogramme. »",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Soit $ABCD$ un quadrilatère dont les diagonales $[AC]$ et $[BD]$ se coupent en $O$, milieu commun.",
+        "Dans les triangles $AOB$ et $COD$, on a $AO = CO$, $BO = DO$ et les angles opposés par le sommet $\\widehat{AOB} = \\widehat{COD}$.",
+        "Les triangles $AOB$ et $COD$ sont isométriques (cas angle-côté-angle).",
+        "On en déduit $\\widehat{OAB} = \\widehat{OCD}$, ce sont des angles alternes-internes : $(AB) \\parallel (CD)$.",
+        "De même, on montre $(AD) \\parallel (BC)$, donc $ABCD$ est un parallélogramme."
+      ],
+      "explanation": "La démonstration suit le raisonnement standard par réciproque. On utilise l'isométrie de deux triangles formés par les diagonales (cas angle-côté-angle) grâce au milieu commun et aux angles opposés par le sommet. L'égalité des angles alternes-internes donne le parallélisme d'un premier couple de côtés opposés. On répète le raisonnement pour l'autre couple de triangles ($AOD$ et $BOC$) pour obtenir le second parallélisme, ce qui définit le parallélogramme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées du quatrième sommet",
+      "content": "On donne trois sommets d'un parallélogramme $ABCD$ : $A(1;2)$, $B(4;5)$, $C(7;3)$. Ordonner les étapes pour déterminer les coordonnées du sommet $D$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Utiliser la propriété : les diagonales d'un parallélogramme ont même milieu.",
+        "Calculer les coordonnées du milieu $O$ de $[AC]$ : $O(\\frac{1+7}{2};\\frac{2+3}{2})$ soit $O(4;2,5)$.",
+        "$O$ est aussi le milieu de $[BD]$, donc $\\frac{4+x_D}{2}=4$ et $\\frac{5+y_D}{2}=2,5$.",
+        "Résoudre les équations : $x_D = 4$ et $y_D = 0$.",
+        "Conclure : les coordonnées de $D$ sont $(4;0)$."
+      ],
+      "explanation": "On utilise la propriété caracteristique : les diagonales $[AC]$ et $[BD]$ ont le même milieu $O$. On calcule d'abord $O$ à partir de $A$ et $C$ (formule du milieu). Comme $O$ est aussi le milieu de $[BD]$, on écrit les égalités des coordonnées du milieu en fonction de $B$ et $D(x_D;y_D)$. La résolution du système donne les coordonnées du sommet cherché $D(4;0)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

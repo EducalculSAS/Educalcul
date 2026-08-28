@@ -1,0 +1,392 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.293194+00:00",
+  "id": 576,
+  "code": "1ere-generale-maths-t01-c06",
+  "title": "Bilan - Outils Première spé",
+  "description": "Cours structuré Educalcul : Bilan - Outils Première spé.",
+  "subject": "Outils, automatismes, logique et algorithmique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Outils, automatismes, logique et algorithmique",
+    "titre_du_cours": "Bilan - Outils Première spé",
+    "objectif_global": "Bilan - Outils Première spé",
+    "mini_lecons_imposees": [
+      "Logique et algorithmique.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Outils, automatismes, logique et algorithmique",
+      "lessons": [
+        {
+          "title": "Logique et algorithmique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Logique et algorithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon du bilan Outils de Première spécialité. Nous allons revisiter ensemble les fondements de la logique formelle et les premiers pas de l'algorithmique, deux piliers qui structurent tout le raisonnement mathématique au lycée. Prenons le temps de poser les définitions avec clarté, d'illustrer chaque notion par des exemples concrets et de construire pas à pas les automatismes qui vous serviront tout au long de l'année. Vous verrez que ces outils, bien que parfois abstraits, deviennent très maniables dès qu'on les ancre dans des situations familières."
+            },
+            {
+              "type": "definition",
+              "term": "Proposition",
+              "definition": "Une proposition est une phrase déclarative qui peut être jugée vraie ou fausse, sans aucune ambiguïté. Elle ne dépend pas d'un avis personnel, mais d'un fait vérifiable.",
+              "example": "\"2 + 2 = 4\" est une proposition vraie, tandis que \"La Lune est en fromage\" est une proposition fausse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque proposition possède une valeur de vérité : soit V (vrai), soit F (faux). On note souvent les propositions par des lettres minuscules comme $p$, $q$, $r$. Lorsque nous combinons plusieurs propositions à l'aide de connecteurs logiques, nous obtenons de nouvelles propositions dont la valeur de vérité se déduit de celles des composantes. C'est ce que nous allons explorer maintenant."
+            },
+            {
+              "type": "display_math",
+              "latex": "p \\Rightarrow q"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé les bases des propositions simples, nous allons examiner les connecteurs logiques qui permettent de construire des énoncés plus complexes. La conjonction, la disjonction, la négation, l'implication et l'équivalence sont les cinq outils principaux. Chacun suit une règle précise que l'on peut résumer dans une table de vérité. Prenons le temps de les découvrir un par un, en gardant à l'esprit que ces règles sont immuables et qu'elles s'appliquent quel que soit le contenu des propositions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les connecteurs logiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "La conjonction (notée $\\land$) unit deux propositions par le mot \"et\" : $p \\land q$ est vraie seulement si $p$ et $q$ sont toutes deux vraies. La disjonction (notée $\\lor$) correspond au \"ou\" inclusif : $p \\lor q$ est vraie dès que l'une au moins des deux propositions est vraie. La négation (notée $\\lnot$) inverse la valeur de vérité : $\\lnot p$ est vraie si $p$ est fausse, et réciproquement. L'implication (notée $\\Rightarrow$) se lit \"si $p$ alors $q$\" ; elle est fausse uniquement quand $p$ est vraie et $q$ fausse. Enfin, l'équivalence (notée $\\Leftrightarrow$) affirme que $p$ et $q$ ont la même valeur de vérité."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "p",
+                "q",
+                "p ∧ q"
+              ],
+              "rows": [
+                [
+                  "V",
+                  "V",
+                  "V"
+                ],
+                [
+                  "V",
+                  "F",
+                  "F"
+                ],
+                [
+                  "F",
+                  "V",
+                  "F"
+                ],
+                [
+                  "F",
+                  "F",
+                  "F"
+                ]
+              ],
+              "caption": "Table de vérité de la conjonction"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les variables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit toutes les combinaisons possibles de valeurs de vérité pour les variables $p$ et $q$. Il y a quatre lignes car chaque variable peut être V ou F."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle de la conjonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque ligne, on évalue $p \\land q$ : le résultat est V seulement si les deux entrées sont V, sinon F."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compléter le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On inscrit le résultat dans la dernière colonne. On obtient ainsi la table complète qui servira de référence pour tous les exercices ultérieurs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé les connecteurs, nous passons à l'algorithmique, où la logique prend vie sous forme d'instructions exécutées par une machine. Un algorithme est une suite finie d'opérations élémentaires qui, appliquées à des données d'entrée, produisent un résultat. Nous verrons comment déclarer des variables, affecter des valeurs, utiliser des structures conditionnelles et des boucles. Ces notions sont le langage commun de l'informatique et des mathématiques modernes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Premiers algorithmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une variable est une boîte étiquetée qui peut contenir une valeur. L'affectation, notée par une flèche $\\leftarrow$, place une valeur dans cette boîte. Par exemple, $x \\leftarrow 5$ signifie que la variable $x$ prend la valeur $5$. Les structures conditionnelles (si... alors... sinon) permettent d'exécuter des instructions seulement si une condition logique est vraie. Les boucles (tant que, pour) répètent un bloc d'instructions tant qu'une condition demeure vraie. Ces briques s'assemblent pour résoudre des problèmes comme le calcul du plus grand commun diviseur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On demande deux entiers naturels $a$ et $b$ (avec $a \\ge b > 0$) et on les stocke dans les variables correspondantes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Boucle principale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que $b \\neq 0$, on calcule le reste $r$ de la division euclidienne de $a$ par $b$, puis on affecte $a \\leftarrow b$ et $b \\leftarrow r$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque $b$ devient $0$, la valeur de $a$ est le PGCD des deux nombres initiaux. On affiche $a$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant en main les outils logiques de base et un premier algorithme classique. Prenez un moment pour relire les tables de vérité, refaire l'algorithme d'Euclide sur papier avec quelques couples de nombres, et vérifier que chaque étape respecte la logique que nous avons posée. La pratique régulière de ces exercices ancre les automatismes et prépare sereinement les chapitres suivants."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la valeur de vérité de la proposition $p \\Rightarrow q$ si $p$ est vraie et $q$ est fausse.",
+              "answer": "Fausse",
+              "hint": "Rappelez la table d'implication : l'implication n'est fausse que dans ce cas précis.",
+              "explanation": "L'implication $p \\Rightarrow q$ est définie comme fausse uniquement lorsque l'antécédent $p$ est vrai et le conséquent $q$ est faux. Dans tous les autres cas, elle est vraie."
+            },
+            {
+              "question": "Complétez la table de vérité de la disjonction $p \\lor q$ pour les quatre combinaisons de $p$ et $q$.",
+              "answer": "V V V ; V F V ; F V V ; F F F",
+              "hint": "La disjonction est vraie dès qu'au moins une des deux propositions est vraie.",
+              "explanation": "On remplit chaque ligne : si $p$ ou $q$ (ou les deux) est V, le résultat est V ; seulement la ligne où les deux sont F donne F."
+            },
+            {
+              "question": "Tracez l'exécution de l'algorithme d'Euclide pour $a = 48$ et $b = 18$. Quelle est la valeur finale de $a$ ?",
+              "answer": "6",
+              "hint": "Effectuez les divisions successives : 48 = 2*18 + 12, puis 18 = 1*12 + 6, puis 12 = 2*6 + 0.",
+              "explanation": "La boucle remplace $(a,b)$ par $(b, r)$ où $r$ est le reste. Les étapes donnent $(48,18) \\to (18,12) \\to (12,6) \\to (6,0)$. Quand $b=0$, $a=6$ est le PGCD."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon du bilan Outils de Première spécialité a pour but de consolider l'ensemble des notions abordées. Nous allons passer en revue la logique formelle, les structures algorithmiques fondamentales et les méthodes de démonstration les plus courantes. Chaque partie sera illustrée par un exemple inédit, suivi d'un exercice ciblé pour vérifier votre aisance. À l'issue de ce parcours, une liste de vérification vous permettra de mesurer vos acquis et d'identifier les points à retravailler avant les échéances."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Révision de la logique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les connecteurs en insistant sur leurs propriétés algébriques : associativité, commutativité, distributivité, double négation, loi de Morgan. Ces lois permettent de transformer une expression logique complexe en une forme plus simple, facilitant la lecture et la preuve. Par exemple, $\\lnot(p \\land q)$ est équivalent à $\\lnot p \\lor \\lnot q$. Maîtriser ces équivalences vous donne un pouvoir de manipulation comparable à celui de l'algèbre classique."
+            },
+            {
+              "type": "definition",
+              "term": "Contraposition",
+              "definition": "La contraposition d'une implication $p \\Rightarrow q$ est l'implication $\\lnot q \\Rightarrow \\lnot p$. Elle est logiquement équivalente à l'implication d'origine.",
+              "example": "Si \"il pleut $\\Rightarrow$ le sol est mouillé\" est vrai, alors \"le sol n'est pas mouillé $\\Rightarrow$ il ne pleut pas\" est aussi vrai."
+            },
+            {
+              "type": "display_math",
+              "latex": "p \\Rightarrow q \\equiv \\lnot q \\Rightarrow \\lnot p"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous enchaînons maintenant sur les structures algorithmiques. Au-delà de la boucle tant que, la boucle pour (pour $i$ de $1$ à $n$ faire) et la boucle répéter... jusqu'à offrent des patrons répétitifs adaptés à des situations précises. Les instructions conditionnelles imbriquées permettent de gérer des cas multiples. Savoir choisir la structure adaptée et en tracer l'exécution pas à pas est une compétence clé pour la modélisation de problèmes mathématiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Structures algorithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une boucle pour initialise un compteur, teste une condition de fin, exécute un bloc et incrémente le compteur à chaque tour. Une boucle répéter... jusqu'à exécute d'abord le bloc, puis teste la condition pour décider de continuer. Les conditionnelles si... alors... sinon peuvent être enchaînées (sinon si) pour traiter plusieurs cas exclusifs. Ces patterns se retrouvent dans de nombreux algorithmes de tri, de recherche ou de calcul numérique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser le compteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On assigne à la variable $i$ la valeur de départ, par exemple $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Condition de poursuite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que $i \\le n$, on exécute le corps de la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Incrémentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À la fin de chaque itération, on fait $i \\leftarrow i + 1$ avant de revenir au test."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons les grandes méthodes de démonstration : la démonstration directe, la démonstration par l'absurde (ou par contraposition), la démonstration par récurrence et la démonstration par disjonction des cas. Chacune a son domaine de prédilection. La récurrence, par exemple, s'impose naturellement pour les propriétés indexées par les entiers naturels. L'absurde est puissant quand la négation de la thèse conduit aisément à une contradiction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthodes de démonstration"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une démonstration directe, on part des hypothèses et on déduit logiquement la conclusion. En démonstration par l'absurde, on suppose la thèse fausse et on en tire une contradiction avec une vérité établie. La démonstration par récurrence comporte deux étapes : l'initialisation (vérifier le rang initial) et l'hérédité (montrer que si la propriété est vraie au rang $k$, elle l'est au rang $k+1$). La disjonction des cas consiste à examiner toutes les situations possibles et à prouver la thèse dans chacune."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Supposer la thèse fausse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On énonce la négation de ce que l'on veut prouver."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver une contradiction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En utilisant les hypothèses et des faits connus, on aboutit à une affirmation manifestement fausse (par exemple $0=1$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La contradiction montre que la négation est impossible, donc la thèse originale est vraie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant parcouru l'essentiel des outils logiques, algorithmiques et démonstratifs du programme. Prenez le temps de relire chaque définition, de refaire les exercices proposés et de vous tester sur les points qui vous semblent encore flous. La checklist qui suit résume les compétences attendues : cochez celles que vous maîtrisez et revenez sur les autres avant de passer aux chapitres suivants."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une proposition et lui attribuer une valeur de vérité.",
+                "Je connais les tables de vérité des cinq connecteurs logiques.",
+                "Je sais appliquer les lois de Morgan et la contraposition.",
+                "Je sais écrire un algorithme simple avec variables, affectations, conditionnelles et boucles.",
+                "Je peux tracer l'exécution d'un algorithme sur un exemple numérique.",
+                "Je reconnais les structures de démonstration directe, par l'absurde, par récurrence et par disjonction des cas.",
+                "Je suis capable de choisir la méthode de démonstration adaptée à un énoncé donné."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrivez la contraposition de l'implication : \"Si $x > 2$ alors $x^2 > 4$\".",
+              "answer": "Si $x^2 \\le 4$ alors $x \\le 2$.",
+              "hint": "Niez la conclusion et l'hypothèse, puis inversez-les.",
+              "explanation": "La contraposition de $p \\Rightarrow q$ est $\\lnot q \\Rightarrow \\lnot p$. Ici $p$ est $x>2$, $q$ est $x^2>4$. Leurs négations sont $x \\le 2$ et $x^2 \\le 4$."
+            },
+            {
+              "question": "Quel est le résultat final de la variable $s$ après l'exécution de cet algorithme ?\\nPour $i$ de $1$ à $4$ faire\\n    $s \\leftarrow s + i$\\nFin pour\\n(On suppose $s$ initialisé à $0$.)",
+              "answer": "10",
+              "hint": "Additionnez les valeurs successives de $i$ : $1+2+3+4$.",
+              "explanation": "La boucle pour ajoute $i$ à $s$ à chaque itération. Les valeurs de $i$ sont $1,2,3,4$. La somme vaut $10$."
+            },
+            {
+              "question": "Montrez par récurrence que pour tout entier naturel $n$, $1+2+...+n = \\frac{n(n+1)}{2}$.",
+              "answer": "Initialisation : pour $n=1$, $1 = \\frac{1\\cdot2}{2}$. Hérédité : si vrai pour $k$, alors pour $k+1$ : $1+...+k+(k+1) = \\frac{k(k+1)}{2}+(k+1) = \\frac{(k+1)(k+2)}{2}$.",
+              "hint": "Vérifiez le rang $1$, puis supposez l'égalité au rang $k$ et montrez-la au rang $k+1$.",
+              "explanation": "L'initialisation est vraie. En supposant la formule pour $k$, on ajoute $k+1$ des deux côtés et on factorise pour obtenir la formule pour $k+1$. Le principe de récurrence conclut."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

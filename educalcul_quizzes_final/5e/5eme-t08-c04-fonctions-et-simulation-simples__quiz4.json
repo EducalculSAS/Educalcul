@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Fonctions et simulation simples",
+  "title": "Quiz : Fonctions et simulations simples (5e)",
+  "questions": [
+    {
+      "text": "Dans un programme, on définit une fonction `carre(nombre)` qui renvoie le carré du paramètre. Quel bloc correspond à l'appel de cette fonction pour calculer $5^2$ ?",
+      "options": [
+        "carre(5)",
+        "carre(nombre = 5)",
+        "5 * 5",
+        "def carre(5):"
+      ],
+      "correctAnswer": "carre(5)",
+      "explanation": "L'appel d'une fonction se fait en écrivant son nom suivi de la valeur de l'argument entre parenthèses. Ici, on passe la valeur $5$ au paramètre `nombre`. L'option B utilise une syntaxe d'affectation incorrecte pour un appel. L'option C effectue le calcul directement sans utiliser la fonction. L'option D correspond à la définition de la fonction, pas à son utilisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction `somme(a, b)` est définie ainsi : `renvoyer a + b`. On exécute l'instruction `x = somme(3, 4)`. Quelle est la valeur de la variable `x` après cette instruction ?",
+      "options": [
+        "7",
+        "Rien (la fonction n'affiche rien)",
+        "34",
+        "Erreur"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Le mot-clé `renvoyer` (ou `return`) envoie la valeur calculée ($3+4=7$) vers l'endroit où la fonction est appelée. La variable `x` reçoit donc cette valeur $7$. L'option B confond `renvoyer` et `afficher` (qui n'affecte pas de valeur). L'option C correspondrait à une concaténation de chaînes de caractères, ce qui n'est pas le cas ici avec des nombres. L'option D est fausse car la syntaxe est correcte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simuler $100$ lancers d'un dé à six faces et compter le nombre de fois où on obtient un $6$. L'algorithme initialise `compteur = 0`, puis répète $100$ fois : `si dé = 6 alors compteur = compteur + 1`. Après la boucle, que contient la variable `compteur` ?",
+      "options": [
+        "Le nombre de 6 obtenus",
+        "Le résultat du dernier lancer",
+        "La somme des valeurs des dés",
+        "100"
+      ],
+      "correctAnswer": "Le nombre de 6 obtenus",
+      "explanation": "La variable `compteur` est incrémentée de $1$ uniquement lorsque la condition `dé = 6` est vraie. Elle accumule donc le nombre de succès (apparition du $6$). L'option B serait stockée dans une variable `dernier_lancer`. L'option C nécessiterait d'ajouter `dé` à `compteur` à chaque tour. L'option D est le nombre total de tours, stocké dans une variable de boucle ou une constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $N$ lancers d'une pièce équilibrée (Face / Pile) et on trace un diagramme en barres des fréquences de 'Face' pour trois valeurs de $N$. Quelle évolution observe-t-on sur la fréquence de 'Face' lorsque $N$ augmente ?",
+      "options": [
+        "La fréquence s'éloigne de 0,5",
+        "La fréquence se stabilise autour de 0,5",
+        "La fréquence vaut exactement 0,5 dès N=10",
+        "La fréquence oscille sans tendance"
+      ],
+      "correctAnswer": "La fréquence se stabilise autour de 0,5",
+      "explanation": "C'est la loi des grands nombres : plus le nombre d'essais $N$ est grand, plus la fréquence observée d'un événement (ici 'Face' avec probabilité $0,5$) se rapproche de sa probabilité théorique. Le diagramme montre une fréquence pour $N=10$ souvent éloignée (ex: $0,6$), pour $N=100$ plus proche (ex: $0,52$), et pour $N=1000$ très proche de $0,5$ (ex: $0,505$). Les autres options contredisent ce principe fondamental des simulations aléatoires.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fréquences de Face pour différents nombres de lancers N",
+        "bars": [
+          {
+            "label": "N=10",
+            "value": 60,
+            "tone": "blue"
+          },
+          {
+            "label": "N=100",
+            "value": 52,
+            "tone": "blue"
+          },
+          {
+            "label": "N=1000",
+            "value": 505,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On dispose d'une fonction `pair(n)` qui renvoie `Vrai` si $n$ est pair, `Faux` sinon. On exécute le script suivant : `total = 0`, `Répéter 50 fois : n = aléa(1, 10)`, `Si pair(n) Alors total = total + 1`. Quelle est la signification de la valeur finale de `total` ?",
+      "options": [
+        "Le nombre de nombres pairs tirés parmi les 50 tirages",
+        "La somme des nombres pairs tirés",
+        "Le dernier nombre pair tiré",
+        "50"
+      ],
+      "correctAnswer": "Le nombre de nombres pairs tirés parmi les 50 tirages",
+      "explanation": "La boucle tire $50$ nombres entiers entre $1$ et $10$. À chaque tirage, on teste si le nombre `n` est pair grâce à la fonction `pair`. Si c'est le cas, on incrémente `total` de $1$. `total` compte donc combien de fois l'événement 'nombre pair' s'est produit. Pour obtenir la somme (option B), il faudrait faire `total = total + n`. L'option C écraserait la variable. L'option D est le nombre total de tirages, pas le nombre de succès.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

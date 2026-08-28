@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Poursuivre une suite avec pas donné",
+  "title": "Quiz : Poursuivre une suite avec pas donné",
+  "questions": [
+    {
+      "text": "Voici une suite de nombres : $3$, $6$, $9$, $12$... Quel est le nombre qui suit si le pas de la suite est $3$ ?",
+      "options": [
+        "$13$",
+        "$14$",
+        "$15$",
+        "$16$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La suite augmente de $3$ à chaque fois : $3 + 3 = 6$, $6 + 3 = 9$, $9 + 3 = 12$. Pour trouver le suivant, on ajoute $3$ à $12$ : $12 + 3 = 15$. Les autres propositions correspondent à des erreurs d'addition ou de compréhension du pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète cette suite décroissante dont le pas est $4$ : $40$, $36$, $32$, $28$, ...",
+      "options": [
+        "$24$",
+        "$25$",
+        "$26$",
+        "$27$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Le pas est $4$, la suite diminue. On retire $4$ à chaque terme : $40 - 4 = 36$, $36 - 4 = 32$, $32 - 4 = 28$. Le terme suivant est $28 - 4 = 24$. L'option $25$ serait une soustraction de $3$, $26$ une soustraction de $2$, et $27$ une soustraction de $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la droite graduée ci-dessous. Les points marqués suivent une suite avec un pas constant. Quel nombre se trouve au point suivant (après $11$) ?",
+      "options": [
+        "$12$",
+        "$13$",
+        "$14$",
+        "$15$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Sur la droite, les points sont à $2$, $5$, $8$, $11$. L'écart entre chaque point est de $3$ ($5 - 2 = 3$, $8 - 5 = 3$, $11 - 8 = 3$). Le pas de la suite est $3$. Le nombre suivant est $11 + 3 = 14$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Suite sur une droite graduée",
+        "min": 0,
+        "max": 15,
+        "points": [
+          {
+            "value": 2,
+            "label": ""
+          },
+          {
+            "value": 5,
+            "label": ""
+          },
+          {
+            "value": 8,
+            "label": ""
+          },
+          {
+            "value": 11,
+            "label": ""
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Léa compte de $10$ en $10$ en partant de $50$. Elle dit : $50$, $60$, $70$, $80$... Quel nombre dira-t-elle juste après $80$ ?",
+      "options": [
+        "$85$",
+        "$90$",
+        "$95$",
+        "$100$"
+      ],
+      "correctAnswer": "$90$",
+      "explanation": "Compter de $10$ en $10$ signifie ajouter $10$ à chaque fois. La suite est $50$, $60$, $70$, $80$. Le terme suivant est $80 + 10 = 90$. L'option $85$ correspond à un pas de $5$, $95$ à une erreur de saut de terme, et $100$ à l'oubli du terme $90$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la suite suivante, le pas est le même entre chaque nombre : $7$, $12$, $17$, $22$... Quel est le nombre qui vient après $22$ ?",
+      "options": [
+        "$25$",
+        "$26$",
+        "$27$",
+        "$28$"
+      ],
+      "correctAnswer": "$27$",
+      "explanation": "Il faut d'abord trouver le pas. $12 - 7 = 5$, $17 - 12 = 5$, $22 - 17 = 5$. Le pas est $5$. On ajoute $5$ au dernier terme connu : $22 + 5 = 27$. L'option $25$ correspond à un pas de $3$, $26$ à un pas de $4$, et $28$ à un pas de $6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

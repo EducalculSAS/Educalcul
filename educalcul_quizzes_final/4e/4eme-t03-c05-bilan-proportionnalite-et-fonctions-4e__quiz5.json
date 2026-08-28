@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 434,
+  "_course_code": "4eme-t03-c05-bilan-proportionnalite-et-fonctions-4e",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Pourcentages, vitesse, dépendance",
+  "title": "Quiz - Approfondissement : Pourcentages, vitesse, dépendance",
+  "questions": [
+    {
+      "text": "Un article coûte $120$ €. Son prix augmente de $15\\%$. Quel est le nouveau prix ?",
+      "options": [
+        "$138$ €",
+        "$135$ €",
+        "$138,5$ €",
+        "$140$ €"
+      ],
+      "correctAnswer": "$138$ €",
+      "explanation": "Le nouveau prix s'obtient en multipliant le prix initial par $1 + 15/100 = 1,15$, ce qui donne $120 × 1,15 = 138$. Les autres options correspondent à des augmentations de $12,5\\%$, $15,4\\%$ ou $16,7\\%$, qui sont erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un produit diminue de $20\\%$ puis augmente de $25\\%$. Quel est le pourcentage global de variation par rapport au prix initial ?",
+      "options": [
+        "$0\\%$",
+        "$5\\%$ d'augmentation",
+        "$5\\%$ de diminution",
+        "$10\\%$ d'augmentation"
+      ],
+      "correctAnswer": "$0\\%$",
+      "explanation": "On part d'un prix initial $100$. Après une baisse de $20\\%$, le prix devient $80$. Une hausse de $25\\%$ sur $80$ ramène le prix à $100$. La variation globale est donc $0\\%$. Les autres réponses correspondent à une erreur de composition des pourcentages.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt $36$ km en $2,5$ h. Quelle est sa vitesse moyenne en km/h ?",
+      "options": [
+        "$12$ km/h",
+        "$14,4$ km/h",
+        "$15$ km/h",
+        "$18$ km/h"
+      ],
+      "correctAnswer": "$14,4$ km/h",
+      "explanation": "La vitesse moyenne se calcule en divisant la distance par le temps : $36 / 2,5 = 14,4$ km/h. Les autres valeurs correspondent à une division par $3$, $2,4$ ou $2$, qui sont erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture roule à une vitesse constante de $90$ km/h. Quelle distance parcourt-elle en $4/3$ h ?",
+      "options": [
+        "$100$ km",
+        "$110$ km",
+        "$120$ km",
+        "$130$ km"
+      ],
+      "correctAnswer": "$120$ km",
+      "explanation": "La distance est le produit de la vitesse par le temps : $90 × 4/3 = 120$ km. Les autres options correspondent à des temps de $10/9$ h, $11/9$ h ou $13/9$ h, qui sont erronés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne la consommation d'essence (en litres) en fonction de la distance parcourue (en km) pour un même véhicule. La relation entre la distance et la consommation est-elle proportionnelle ?",
+      "options": [
+        "Oui, car le rapport consommation/distance est constant.",
+        "Non, car les valeurs ne sont pas égales.",
+        "Oui, car la consommation augmente quand la distance augmente.",
+        "Non, car le rapport distance/consommation n'est pas constant."
+      ],
+      "correctAnswer": "Oui, car le rapport consommation/distance est constant.",
+      "explanation": "Le rapport consommation/distance vaut $4/50 = 0,08$ pour chaque ligne, il est donc constant, ce qui caractérise une proportionnalité. Les autres réponses confondent proportionnalité et simple croissance.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Distance (km)",
+          "Consommation (L)"
+        ],
+        "rows": [
+          [
+            "50",
+            "4"
+          ],
+          [
+            "100",
+            "8"
+          ],
+          [
+            "150",
+            "12"
+          ],
+          [
+            "200",
+            "16"
+          ]
+        ]
+      }
+    }
+  ]
+}

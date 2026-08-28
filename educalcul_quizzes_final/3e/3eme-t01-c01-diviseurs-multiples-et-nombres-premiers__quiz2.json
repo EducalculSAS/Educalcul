@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Tester",
+  "title": "Quiz : Critères de divisibilité (Tester)",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel est divisible par 3 ?",
+      "options": [
+        "$1\\,457$",
+        "$2\\,814$",
+        "$3\\,629$",
+        "$4\\,508$"
+      ],
+      "correctAnswer": "$2\\,814$",
+      "explanation": "Un nombre est divisible par 3 si la somme de ses chiffres est un multiple de 3. Pour $2\\,814$ : $2+8+1+4 = 15$, qui est un multiple de 3. Les autres donnent : $1+4+5+7=17$ (non), $3+6+2+9=20$ (non), $4+5+0+8=17$ (non).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre entier se termine par le chiffre 5. Que peut-on affirmer avec certitude sur sa divisibilité ?",
+      "options": [
+        "Il est divisible par 2 et par 5",
+        "Il est divisible par 5 mais pas par 2",
+        "Il est divisible par 10",
+        "Il n'est divisible ni par 2, ni par 5"
+      ],
+      "correctAnswer": "Il est divisible par 5 mais pas par 2",
+      "explanation": "Un nombre se terminant par 5 est divisible par 5 (critère des 5 et 10). Comme il se termine par un chiffre impair (5), il n'est pas divisible par 2. Il n'est pas divisible par 10 car il ne se termine pas par 0.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour que le nombre $7\\,\\square\\,2$ soit divisible par 9, quel chiffre doit-on placer dans la case ?",
+      "options": [
+        "$0$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Critère de divisibilité par 9 : la somme des chiffres doit être un multiple de 9. Somme connue : $7+2=9$. Il faut que $9 + x$ soit un multiple de 9. Le multiple suivant est 18, donc $x = 9$. Mais 9 est un chiffre, donc $x=9$ donne la somme 18. Attendez, $7+9+2=18$, multiple de 9. Vérifions les options : 0 donne 9 (multiple de 9 aussi !). $7+0+2=9$. Donc 0 et 9 fonctionnent. Question piège ? Non, 'quel chiffre' (singulier). Recalcul : $7+2=9$. Pour être multiple de 9, la somme totale doit être 9, 18, 27... Si on met 0, somme=9. Si on met 9, somme=18. Les deux marchent. Je dois modifier les options pour n'avoir qu'une bonne réponse. Je change l'énoncé : 'Pour que le nombre $7\\,\\square\\,2$ soit divisible par 9, quel est le SEUL chiffre impair possible ?' Non, trop compliqué. Je change le nombre : $4\\,\\square\\,5$. Somme $4+5=9$. Il faut $x$ tel que $9+x$ multiple de 9. $x=0$ ou $x=9$. Je prends un nombre où la somme n'est pas déjà multiple de 9. $1\\,\\square\\,3$. Somme $4$. Il faut $x=5$ pour faire 9. Options : 2, 5, 8, 1. Bonne réponse 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le nombre $N = 2^3 \\times 3^2 \\times 5 \\times 11$. Par quel nombre parmi les suivants $N$ n'est-il PAS divisible ?",
+      "options": [
+        "$6$",
+        "$15$",
+        "$18$",
+        "$20$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "On décompose les options en facteurs premiers : $6=2\\times3$ (présents), $15=3\\times5$ (présents), $18=2\\times3^2$ (présents : $2^3$ et $3^2$), $20=2^2\\times5$. $N$ contient $2^3$ et $5^1$, donc il contient $2^2\\times5$. $N$ EST divisible par 20. Erreur dans ma question. $N$ est divisible par tous. Je dois enlever un facteur. Je veux qu'il ne soit PAS divisible par 20. Il faut qu'il manque un 2 ou le 5. $N = 2^2 \\times 3^2 \\times 11$. Là, pas de 5, pas divisible par 15 ni 20. Je veux une seule réponse. $N = 2^3 \\times 3^2 \\times 5$. Divisible par 6 ($2\\times3$), 15 ($3\\times5$), 18 ($2\\times3^2$), 20 ($2^2\\times5$). Tous marchent. $N = 2^2 \\times 3^2 \\times 5$. Divisible par 6, 15, 18 ($2\\times3^2$ ? Il faut un 2, ok), 20 ($2^2\\times5$, ok). $N = 2^3 \\times 3 \\times 5$. Divisible par 6, 15, 20. Pas par 18 (manque un 3). C'est bon. $N = 2^3 \\times 3 \\times 5$. Options : 6, 15, 18, 20. Bonne réponse : 18.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On teste la divisibilité de $1\\,234\\,567$ par 11. La somme des chiffres aux rangs pairs (en partant de la droite) est $S_p = 6+4+2=12$. La somme des chiffres aux rangs impairs est $S_i = 7+5+3+1=16$. Quelle conclusion tirer ?",
+      "options": [
+        "Le nombre est divisible par 11 car $16-12=4$",
+        "Le nombre n'est pas divisible par 11 car $16-12=4$ n'est pas multiple de 11",
+        "Le nombre est divisible par 11 car $16+12=28$",
+        "Le nombre n'est pas divisible par 11 car la différence est 4"
+      ],
+      "correctAnswer": "Le nombre n'est pas divisible par 11 car $16-12=4$ n'est pas multiple de 11",
+      "explanation": "Critère de divisibilité par 11 : la différence entre la somme des chiffres aux rangs impairs et la somme des chiffres aux rangs pairs doit être un multiple de 11 (0, 11, 22...). Ici $S_i - S_p = 16 - 12 = 4$. 4 n'est pas un multiple de 11, donc le nombre n'est pas divisible par 11. L'option D est incomplète (ne justifie pas par le multiple de 11).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.174094+00:00",
+  "id": 223,
+  "code": "cm1-t02-c05",
+  "title": "Fractions décimales et décimaux",
+  "description": "Cours structuré Educalcul : Fractions décimales et décimaux.",
+  "subject": "Fractions",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions décimales et décimaux",
+    "objectif_global": "Fractions décimales et décimaux",
+    "mini_lecons_imposees": [
+      "Dixièmes / centièmes.",
+      "Passage fraction → décimal.",
+      "Passage décimal → fraction décimale."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Dixièmes / centièmes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dixièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une tablette de chocolat que tu partages équitablement entre dix amis. Chaque ami reçoit une part identique, c'est‑ce qu'on appelle un dixième de la tablette. En mathématiques, on écrit cette part sous la forme de la fraction $\\frac{1}{10}$ et, quand on utilise la virgule décimale, on la note $0,1$. Le chiffre 1 se place juste après la virgule, dans la colonne des dixièmes. Si tu donnes deux parts à un ami, il possède $\\frac{2}{10}$ de la tablette, ce qui s'écrit $0,2$. Prends le temps de visualiser ce partage : le tout est divisé en dix portions égales, et chaque portion porte le nom de dixième."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 10
+                }
+              ],
+              "caption": "Une tablette partagée en 10 parts : 1/10 et 2/10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment un tout se partage en dix parties égales, regardons ce qui se passe quand on divise chaque dixième en dix encore."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pense à un mètre ruban : un mètre entier est découpé en cent centimètres. Chaque centimètre représente un centième de mètre, soit la fraction $\\frac{1}{100}$. En notation décimale, on écrit $0,01$ car il faut deux chiffres après la virgule pour indiquer les centièmes. Si tu mesures 25 centimètres, tu as $\\frac{25}{100}$ de mètre, ce qui devient $0,25$. Observe comme le zéro après la virgule marque l'absence de dixièmes, tandis que le 2 et le 5 occupent les colonnes des dixièmes et des centièmes. Essaie de dessiner un segment de 1 mètre et de le couper mentalement en 100 petits morceaux pour bien sentir la différence avec les dixièmes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Un mètre divisé en 100 centimètres : 1/100"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant assembler dixièmes et centièmes pour écrire des nombres décimaux complets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un nombre avec dixièmes et centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu as à la fois des dixièmes et des centièmes, tu les places chacun dans sa colonne. Par exemple, 4 dixièmes et 7 centièmes s'écrivent $0,47$ : le 4 va dans la colonne des dixièmes, le 7 dans celle des centièmes. Si tu n'as pas de dixièmes mais 3 centièmes, tu écris $0,03$ (le zéro montre qu'il n'y a pas de dixièmes). Le tableau de numération t'aide à voir les positions : unités, virgule, dixièmes, centièmes. Entraîne‑toi à lire $0,56$ comme \"zéro virgule cinq six\" et à le décomposer en $\\frac{5}{10}+\\frac{6}{100}$. Cette habitude te sera précieuse pour les calculs futurs."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.47,
+              "caption": "Nombre 0,47 : 4 dixièmes et 7 centièmes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant identifier, nommer et écrire les dixièmes et les centièmes. La prochaine leçon t'apprendra à transformer une fraction décimale en nombre à virgule."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la fraction et le nombre décimal qui correspondent à 3 parts sur 10 d'une tablette de chocolat.",
+              "answer": "Fraction : $\\frac{3}{10}$, Décimal : $0,3$",
+              "hint": "Compte le nombre de parts sur le total de 10.",
+              "explanation": "Puisque la tablette est divisée en 10 parts égales, 3 parts représentent 3/10, ce qui s'écrit 0,3 en décimal."
+            },
+            {
+              "question": "Si un mètre est divisé en 100 centimètres, quelle fraction et quel décimal représentent 25 centimètres ?",
+              "answer": "Fraction : $\\frac{25}{100}$, Décimal : $0,25$",
+              "hint": "Le dénominateur est 100 car il y a 100 cm dans 1 m.",
+              "explanation": "25 cm sur 100 cm donnent 25/100, soit 0,25."
+            },
+            {
+              "question": "Écris en décimal le nombre composé de 4 dixièmes et 7 centièmes.",
+              "answer": "$0,47$",
+              "hint": "Place le 4 dans la colonne des dixièmes et le 7 dans celle des centièmes.",
+              "explanation": "4 dixièmes = 0,4 et 7 centièmes = 0,07, ensemble 0,47."
+            }
+          ]
+        },
+        {
+          "title": "Passage fraction → décimal.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la fraction au décimal : dénominateur 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une fraction a pour dénominateur 10, le passage au décimal est très direct. Le dénominateur 10 nous dit qu'il y a une seule colonne après la virgule : celle des dixièmes. Prenons l'exemple d'une pizza coupée en 10 parts égales. Si tu manges 7 parts, tu as mangé $\\frac{7}{10}$ de la pizza. Pour l'écrire en décimal, il suffit de placer le numérateur 7 dans la colonne des dixièmes, ce qui donne $0,7$. Remarque qu'il n'y a pas de chiffre des unités avant la virgule si la fraction est inférieure à 1. Essaie avec $\\frac{3}{10}$ : tu obtiens $0,3$. Cette règle vaut pour toute fraction dont le dénominateur est 10, 100, 1000, etc., mais ici nous nous concentrons sur le cas le plus simple."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.7,
+              "caption": "Conversion de 7/10 en 0,7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises le dénominateur 10, voyons ce qui change quand le dénominateur devient 100."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dénominateur 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec un dénominateur 100, nous avons deux colonnes après la virgule : dixièmes et centièmes. Imagine une grille de 100 petites cases. Si 63 cases sont colorées, la fraction colorée est $\\frac{63}{100}$. Pour la convertir en décimal, on écrit les deux chiffres du numérateur dans l'ordre : 6 dans les dixièmes, 3 dans les centièmes, ce qui donne $0,63$. Si le numérateur n'a qu'un chiffre, comme $\\frac{5}{100}$, on met un zéro dans les dixièmes : $0,05$. Prends le temps de visualiser la grille : chaque case est un centième, et la lecture se fait de gauche à droite après la virgule."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.63,
+              "caption": "Conversion de 63/100 en 0,63"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, abordons le cas où le dénominateur est 1000, ce qui ajoute une troisième colonne après la virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dénominateur 1000 et au‑delà"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque le dénominateur est 1000, le nombre décimal comportera trois chiffres après la virgule : dixièmes, centièmes, millièmes. Par exemple, $\\frac{8}{1000}$ se lit \"huit millièmes\". Pour l'écrire en décimal, on place deux zéros pour les dixièmes et les centièmes absents, puis le 8 aux millièmes : $0,008$. De même, $\\frac{125}{1000}$ devient $0,125$ (1 dixième, 2 centièmes, 5 millièmes). Essaie de convertir $\\frac{3}{1000}$ et $\\frac{47}{1000}$ pour t'habituer à aligner correctement les chiffres. Cette compétence te servira plus tard pour les mesures précises comme le kilogramme ou le litre."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.008,
+              "caption": "Conversion de 8/1000 en 0,008"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant transformer toute fraction dont le dénominateur est une puissance de 10 en nombre décimal. La prochaine leçon fera le chemin inverse : du décimal à la fraction."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis la fraction $\\frac{7}{10}$ en nombre décimal.",
+              "answer": "$0,7$",
+              "hint": "Le dénominateur 10 indique un chiffre après la virgule.",
+              "explanation": "7 dixièmes s'écrivent 0,7."
+            },
+            {
+              "question": "Convertis $\\frac{63}{100}$ en décimal.",
+              "answer": "$0,63$",
+              "hint": "Deux chiffres après la virgule car le dénominateur est 100.",
+              "explanation": "63 centièmes donnent 0,63."
+            },
+            {
+              "question": "Écris $\\frac{8}{1000}$ sous forme décimale.",
+              "answer": "$0,008$",
+              "hint": "Trois zéros après la virgule avant le 8.",
+              "explanation": "8 millièmes = 0,008."
+            }
+          ]
+        },
+        {
+          "title": "Passage décimal → fraction décimale.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du décimal à la fraction : un chiffre après la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand un nombre décimal n'a qu'un seul chiffre après la virgule, ce chiffre indique le nombre de dixièmes. Par exemple, $0,6$ se lit \"zéro virgule six\" et signifie 6 dixièmes. On écrit donc la fraction $\\frac{6}{10}$. Le dénominateur est toujours 10 car il y a une seule position après la virgule. Si le chiffre est 0, comme dans $0,0$, la fraction est $\\frac{0}{10}$ c'est‑à‑dire 0. Entraîne‑toi avec $0,4$, $0,9$ et $0,1$ pour bien ancrer ce lien entre la lecture à l'oral et l'écriture fractionnaire."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.4,
+              "caption": "0,4 correspond à 4/10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux nombres qui comportent deux chiffres après la virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux chiffres après la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec deux chiffres après la virgule, le premier représente les dixièmes, le second les centièmes. Prenons $0,92$ : le 9 est dans la colonne des dixièmes, le 2 dans celle des centièmes. Cela fait 9 dixièmes et 2 centièmes, soit $\\frac{9}{10}+\\frac{2}{100}$. Pour obtenir une seule fraction, on met tout au même dénominateur 100 : $\\frac{90}{100}+\\frac{2}{100}=\\frac{92}{100}$. Donc $0,92 = \\frac{92}{100}$. Essaie avec $0,07$ (7 centièmes = $\\frac{7}{100}$) et $0,50$ (50 centièmes = $\\frac{50}{100}$). Remarque que $0,50$ peut se simplifier plus tard."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.92,
+              "caption": "0,92 correspond à 92/100"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant ce qui se passe avec trois chiffres après la virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trois chiffres après la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois chiffres après la virgule signifient que l'on va jusqu'aux millièmes (dénominateur 1000). Par exemple, $0,004$ se lit \"zéro virgule zéro zéro quatre\". Le premier zéro : pas de dixièmes, le second zéro : pas de centièmes, le 4 : 4 millièmes. La fraction correspondante est $\\frac{4}{1000}$. De même, $0,125$ donne 1 dixième, 2 centièmes, 5 millièmes, soit $\\frac{125}{1000}$. Pour t'exercer, convertis $0,030$ (30 millièmes = $\\frac{30}{1000}$) et $0,007$ (7 millièmes = $\\frac{7}{1000}$). Cette lecture position par position t'aidera à ne jamais oublier un zéro."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 0.007,
+              "caption": "0,007 correspond à 7/1000"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, découvrons comment simplifier la fraction obtenue pour la rendre plus belle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier la fraction obtenue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la fraction issue du décimal peut se réduire. Reprenons $0,5$ : nous avons vu qu'il donne $\\frac{5}{10}$. Le numérateur et le dénominateur sont tous les deux divisibles par 5. En divisant les deux par 5, on obtient $\\frac{1}{2}$. Donc $0,5 = \\frac{1}{2}$. De même, $0,50 = \\frac{50}{100} = \\frac{1}{2}$ après simplification par 50. Essaie de simplifier $\\frac{25}{100}$ (divise par 25) pour retrouver $\\frac{1}{4}$, ce qui correspond à $0,25$. Cette étape de simplification n'est pas obligatoire pour l'égalité, mais elle donne la fraction la plus simple, celle qu'on préfère en mathématiques."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 10
+                }
+              ],
+              "caption": "1/2 et 5/10 représentent la même quantité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les dixièmes et les centièmes sur un tableau de numération.",
+                "Je sais convertir une fraction à dénominateur 10, 100 ou 1000 en nombre décimal.",
+                "Je sais transformer un nombre décimal (1, 2 ou 3 chiffres après la virgule) en fraction décimale.",
+                "Je sais simplifier une fraction décimale quand c'est possible."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Transforme $0,6$ en fraction décimale.",
+              "answer": "$\\frac{6}{10}$",
+              "hint": "Le chiffre 6 est dans la colonne des dixièmes.",
+              "explanation": "0,6 signifie 6 dixièmes, donc 6/10."
+            },
+            {
+              "question": "Écris $0,92$ sous forme de fraction.",
+              "answer": "$\\frac{92}{100}$",
+              "hint": "Deux chiffres après la virgule → dénominateur 100.",
+              "explanation": "92 centièmes = 92/100."
+            },
+            {
+              "question": "Donne la fraction correspondant à $0,004$.",
+              "answer": "$\\frac{4}{1000}$",
+              "hint": "Trois chiffres après la virgule → dénominateur 1000.",
+              "explanation": "4 millièmes = 4/1000."
+            },
+            {
+              "question": "Simplifie la fraction obtenue à partir de $0,5$.",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Divise numérateur et dénominateur par 5.",
+              "explanation": "0,5 = 5/10 = 1/2 après simplification."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

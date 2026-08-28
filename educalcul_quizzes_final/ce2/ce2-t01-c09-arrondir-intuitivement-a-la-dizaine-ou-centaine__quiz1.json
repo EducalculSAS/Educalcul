@@ -1,0 +1,130 @@
+{
+  "_status": "done",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Repérer les deux repères voisins",
+  "title": "Repérer les deux repères voisins pour arrondir",
+  "questions": [
+    {
+      "text": "On veut arrondir le nombre $34$ à la dizaine. Quels sont les deux repères voisins (les dizaines encadrantes) de ce nombre ?",
+      "options": [
+        "$20$ et $30$",
+        "$30$ et $40$",
+        "$40$ et $50$",
+        "$30$ et $50$"
+      ],
+      "correctAnswer": "$30$ et $40$",
+      "explanation": "Pour arrondir à la dizaine, on cherche les deux multiples de dix qui entourent le nombre. Le nombre $34$ est plus grand que $30$ (trois dizaines) et plus petit que $40$ (quatre dizaines). Les repères voisins sont donc $30$ et $40$. L'option $20$ et $30$ correspond aux repères de $24$, et $40$ et $50$ à ceux de $44$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repères voisins de 34",
+        "min": 20,
+        "max": 50,
+        "points": [
+          {
+            "value": 34,
+            "label": "34"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 30,
+            "end": 40,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour arrondir le nombre $256$ à la centaine, il faut trouver les deux centaines voisines. Laquelle de ces paires est la bonne ?",
+      "options": [
+        "$100$ et $200$",
+        "$200$ et $300$",
+        "$300$ et $400$",
+        "$250$ et $260$"
+      ],
+      "correctAnswer": "$200$ et $300$",
+      "explanation": "Le nombre $256$ s'écrit avec $2$ centaines, $5$ dizaines et $6$ unités. Il est compris entre $200$ (deux cents) et $300$ (trois cents). Ce sont les deux multiples de cent qui l'encadrent. La paire $250$ et $260$ correspond aux dizaines voisines, pas aux centaines.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repères voisins de 256 à la centaine",
+        "min": 100,
+        "max": 400,
+        "points": [
+          {
+            "value": 256,
+            "label": "256"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 200,
+            "end": 300,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le nombre $75$ se situe entre quelles deux dizaines ?",
+      "options": [
+        "$60$ et $70$",
+        "$70$ et $80$",
+        "$75$ et $80$",
+        "$70$ et $75$"
+      ],
+      "correctAnswer": "$70$ et $80$",
+      "explanation": "Même si le chiffre des unités est $5$, la règle pour trouver les repères ne change pas : on cherche la dizaine immédiatement inférieure ($70$) et la dizaine immédiatement supérieure ($80$). $75$ est exactement au milieu de ces deux repères. Les options $75$ et $80$ ou $70$ et $75$ ne sont pas des dizaines (multiples de $10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A représente le nombre $450$. Quelles sont les deux centaines voisines qui encadrent ce point ?",
+      "options": [
+        "$300$ et $400$",
+        "$400$ et $500$",
+        "$450$ et $500$",
+        "$400$ et $450$"
+      ],
+      "correctAnswer": "$400$ et $500$",
+      "explanation": "Le nombre $450$ possède $4$ centaines. La centaine inférieure est donc $400$ et la centaine supérieure est $500$. Sur la droite, le point A est placé exactement au milieu de l'intervalle $[400 ; 500]$. Les nombres $450$ n'étant pas des multiples de $100$, ils ne peuvent pas être des repères de centaines.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position de 450",
+        "min": 300,
+        "max": 600,
+        "points": [
+          {
+            "value": 450,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 400,
+            "end": 500,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel a pour repères voisins (à la dizaine) $60$ et $70$ ?",
+      "options": [
+        "$58$",
+        "$63$",
+        "$72$",
+        "$69$"
+      ],
+      "correctAnswer": "$63$",
+      "explanation": "Les repères $60$ et $70$ encadrent tous les nombres strictement supérieurs à $60$ et strictement inférieurs à $70$. Parmi les choix, $63$ est le seul dans cet intervalle ($60 < 63 < 70$). $58$ est entre $50$ et $60$. $69$ est bien entre $60$ et $70$, mais $72$ est entre $70$ et $80$. Attendez, $69$ est aussi entre $60$ et $70$. Il y a deux bonnes réponses ? Non, $69$ est bien entre $60$ et $70$. Je dois corriger les distracteurs pour n'avoir qu'une seule bonne réponse. Je vais changer $69$ par $72$ ou $58$. L'option $69$ est aussi correcte. Je vais remplacer $69$ par $59$ (entre 50 et 60) ou $72$ (entre 70 et 80). Dans ma liste j'ai 58, 63, 72, 69. 63 et 69 sont tous deux entre 60 et 70. Je dois changer une option. Je vais mettre 58, 63, 72, 59. Seule 63 est entre 60 et 70.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

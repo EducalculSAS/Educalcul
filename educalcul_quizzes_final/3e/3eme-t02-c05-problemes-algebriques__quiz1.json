@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Modéliser",
+  "title": "Modéliser : problèmes algébriques",
+  "questions": [
+    {
+      "text": "Un rectangle a une longueur qui est 3 cm de plus que sa largeur. Son périmètre est 30 cm. Quelle équation permet de trouver la largeur $x$ ?",
+      "options": [
+        "$2(x + x + 3) = 30$",
+        "$2x + (x+3) = 30$",
+        "$2(x+3) + x = 30$",
+        "$x + (x+3) = 30$"
+      ],
+      "correctAnswer": "$2(x + x + 3) = 30$",
+      "explanation": "Le périmètre d'un rectangle vaut 2 × (longueur + largeur). Ici la largeur est $x$ et la longueur $x+3$. Donc $2(x + (x+3)) = 30$, ce qui s'écrit $2(x + x + 3) = 30$. Les autres options oublient le facteur 2, mélangent les termes ou n'utilisent qu'une seule fois la somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un livre est 5 € de plus que le double du prix d'un cahier. Si le livre coûte 23 €, quelle équation permet de trouver le prix $y$ du cahier ?",
+      "options": [
+        "$2y + 5 = 23$",
+        "$2(y+5) = 23$",
+        "$y + 5 = 23$",
+        "$2y = 23 - 5$"
+      ],
+      "correctAnswer": "$2y + 5 = 23$",
+      "explanation": "Le double du prix du cahier est $2y$. Ajouter 5 € donne $2y + 5$, ce qui doit égaler 23 €. L'option 2 correspond à 2 fois (prix + 5), l'option 3 oublie le double, l'option 4 isole $2y$ mais n'est pas l'équation de modélisation directe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt une distance $d$ km à une vitesse constante de 60 km/h. Le temps de trajet est $t$ heures. Quelle équation exprime la distance en fonction du temps ?",
+      "options": [
+        "$d = 60t$",
+        "$t = 60d$",
+        "$d = t/60$",
+        "$t = d/60$"
+      ],
+      "correctAnswer": "$d = 60t$",
+      "explanation": "La relation fondamentale est distance = vitesse × temps. Avec une vitesse de 60 km/h, on obtient $d = 60t$. Les autres options inversent les variables ou divisent au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre est augmenté de 4, le résultat est multiplié par 3, on obtient 33. Quelle équation modélise ce problème si le nombre est $n$ ?",
+      "options": [
+        "$3(n+4) = 33$",
+        "$3n + 4 = 33$",
+        "$n + 4*3 = 33$",
+        "$3n = 33 - 4$"
+      ],
+      "correctAnswer": "$3(n+4) = 33$",
+      "explanation": "D'après l'énoncé, on ajoute 4 au nombre ($n+4$) puis on multiplie le tout par 3, ce qui donne $3(n+4) = 33$. L'option 2 multiplie seulement $n$ par 3 avant d'ajouter 4, l'option 3 écrit mal la priorité des opérations, l'option 4 isole $3n$ mais ne représente pas la modélisation directe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La somme de trois entiers consécutifs est 72. Si le plus petit est $k$, quelle équation exprime directement cette somme ?",
+      "options": [
+        "$k + (k+1) + (k+2) = 72$",
+        "$3k + 3 = 72$",
+        "$3k = 72$",
+        "$k + (k+2) + (k+4) = 72$"
+      ],
+      "correctAnswer": "$k + (k+1) + (k+2) = 72$",
+      "explanation": "Les trois entiers consécutifs sont $k$, $k+1$, $k+2$. Leur somme s'écrit $k + (k+1) + (k+2) = 72$. L'option 2 est la forme simplifiée, l'option 3 oublie les +1 et +2, l'option 4 utilise un écart de 2 au lieu de 1.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

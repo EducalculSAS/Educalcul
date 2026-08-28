@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_course_id": 198,
+  "_course_code": "ce2-t07-c03-triangles-particuliers-accessibles",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Triangle rectangle",
+  "title": "Approfondissement : Triangle rectangle",
+  "questions": [
+    {
+      "text": "Observez le triangle ci-dessous. Quel sommet porte l'angle droit ?",
+      "options": [
+        "L'angle droit est au sommet A",
+        "L'angle droit est au sommet B",
+        "L'angle droit est au sommet C",
+        "Le triangle n'a pas d'angle droit"
+      ],
+      "correctAnswer": "L'angle droit est au sommet A",
+      "explanation": "Le triangle affiché comporte un petit carré à l'angle du sommet A, ce qui signale un angle droit de $90$ degrés. Les autres angles n'ont pas ce marquage.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle avec angle droit en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans un triangle rectangle, comment appelle-t-on le côté opposé à l'angle droit ?",
+      "options": [
+        "Le côté le plus long s'appelle l'hypoténuse",
+        "Le côté le plus court s'appelle l'hypoténuse",
+        "Les deux côtés adjacents à l'angle droit s'appellent hypoténuse",
+        "L'hypoténuse est toujours horizontale"
+      ],
+      "correctAnswer": "Le côté le plus long s'appelle l'hypoténuse",
+      "explanation": "Par définition, l'hypoténuse est le côté opposé à l'angle droit et c'est toujours le côté le plus long du triangle rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle a ses deux côtés de l'angle droit qui mesurent $3$ cm et $4$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "C'est le célèbre triangle $3-4-5$ : $3^2 + 4^2 = 9 + 16 = 25$, donc l'hypoténuse mesure $\\sqrt{25} = 5$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les triangles suivants, lequel est un triangle rectangle ?",
+      "options": [
+        "Triangle de côtés $3$ cm, $4$ cm, $5$ cm",
+        "Triangle de côtés $5$ cm, $5$ cm, $5$ cm",
+        "Triangle de côtés $2$ cm, $3$ cm, $4$ cm",
+        "Triangle de côtés $6$ cm, $8$ cm, $11$ cm"
+      ],
+      "correctAnswer": "Triangle de côtés $3$ cm, $4$ cm, $5$ cm",
+      "explanation": "Seul le triplet $3$, $4$, $5$ satisfait la relation de Pythagore $a^2+b^2=c^2$. Les autres ne vérifient pas cette égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $10$ m est appuyée contre un mur. Son pied est à $6$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$8$ m",
+        "$7$ m",
+        "$9$ m",
+        "$10$ m"
+      ],
+      "correctAnswer": "$8$ m",
+      "explanation": "On utilise le théorème de Pythagore : $10^2 = 6^2 + h^2$ donc $100 = 36 + h^2$, $h^2 = 64$, $h = 8$ m.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Échelle contre le mur formant un triangle rectangle",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "10",
+          "6",
+          "8"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

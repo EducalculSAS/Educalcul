@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 192,
+  "_course_code": "ce2-t06-c06-calculer-une-duree",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Heure de début / fin",
+  "title": "Calculer une durée - Approfondissement : Heure de début / fin",
+  "blocks": [
+    {
+      "title": "Trouver l'heure de fin",
+      "content": "Un film commence à $14$ h $30$ min et dure $1$ h $45$ min. Écris un algorithme (ou une suite d'instructions) pour calculer l'heure de fin.",
+      "correctAnswer": "1. Convertir l'heure de début en minutes totales : $14 \\times 60 + 30 = 870$ minutes.\\n2. Convertir la durée en minutes : $1 \\times 60 + 45 = 105$ minutes.\\n3. Additionner les minutes : $870 + 105 = 975$ minutes.\\n4. Convertir le total en heures et minutes : $975 \\div 60 = 16$ heures reste $15$ minutes.\\n5. L'heure de fin est $16$ h $15$ min.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On transforme chaque heure en minutes pour pouvoir additionner facilement. $14$ h $30$ min = $14 \\times 60 + 30 = 870$ min. La durée $1$ h $45$ min = $105$ min. La somme $975$ min correspond à $16$ h $15$ min car $16 \\times 60 = 960$ et $975 - 960 = 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver l'heure de début",
+      "content": "Un entraînement se termine à $18$ h $20$ min et a duré $2$ h $10$ min. Écris un algorithme pour trouver l'heure de début.",
+      "correctAnswer": "1. Convertir l'heure de fin en minutes totales : $18 \\times 60 + 20 = 1100$ minutes.\\n2. Convertir la durée en minutes : $2 \\times 60 + 10 = 130$ minutes.\\n3. Soustraire la durée de l'heure de fin : $1100 - 130 = 970$ minutes.\\n4. Convertir le résultat en heures et minutes : $970 \\div 60 = 16$ heures reste $10$ minutes.\\n5. L'heure de début est $16$ h $10$ min.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On procède de la même façon qu'une addition mais en soustrayant. $18$ h $20$ min = $1100$ min. La durée $2$ h $10$ min = $130$ min. $1100 - 130 = 970$ min. $970$ min = $16 \\times 60 + 10 = 16$ h $10$ min.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la durée",
+      "content": "Un cours commence à $9$ h $10$ min et se termine à $11$ h $55$ min. Écris un algorithme pour calculer la durée du cours.",
+      "correctAnswer": "1. Convertir l'heure de début en minutes : $9 \\times 60 + 10 = 550$ minutes.\\n2. Convertir l'heure de fin en minutes : $11 \\times 60 + 55 = 715$ minutes.\\n3. Soustraire l'heure de début de l'heure de fin : $715 - 550 = 165$ minutes.\\n4. Convertir la différence en heures et minutes : $165 \\div 60 = 2$ heures reste $45$ minutes.\\n5. La durée est $2$ h $45$ min.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La durée s'obtient en soustrayant l'heure de début de l'heure de fin après conversion en minutes. $9$ h $10$ min = $550$ min, $11$ h $55$ min = $715$ min. $715 - 550 = 165$ min = $2$ h $45$ min.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

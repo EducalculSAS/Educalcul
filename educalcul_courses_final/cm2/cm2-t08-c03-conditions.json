@@ -1,0 +1,566 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.519999+00:00",
+  "id": 327,
+  "code": "cm2-t08-c03",
+  "title": "Conditions",
+  "description": "Cours structuré Educalcul : Conditions.",
+  "subject": "Pensée informatique",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Conditions",
+    "objectif_global": "Conditions",
+    "mini_lecons_imposees": [
+      "Tests.",
+      "Branches.",
+      "Prédire résultat."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Tests.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un test ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois décider si tu peux sortir jouer. Tu regardes le ciel : s'il fait beau, tu sors ; sinon tu restes à la maison. En programmation, cette décision s'appelle un test. Un test pose une question à l'ordinateur et la réponse est toujours vrai ou faux. Par exemple, la question « $x > 5$ » est vraie si $x$ vaut 7 et fausse si $x$ vaut 3. C'est la base de tous les choix que fait un programme."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Une condition est une expression qui peut être évaluée à vrai ou à faux. Elle compare souvent deux valeurs avec des signes comme $>$, $<$, $=$ ou $\\neq$.",
+              "example": "La condition $age \\ge 10$ est vraie pour un enfant de 12 ans."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : lire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'ordinateur prend la condition écrite dans le code, par exemple $score > 50$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : comparer les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il remplace la variable par sa valeur actuelle, ici $score = 62$, puis il vérifie si $62 > 50$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : décider du résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la comparaison est correcte, le test renvoie vrai ; sinon il renvoie faux. Ici le résultat est vrai."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Condition",
+                "Valeur de la variable",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "$x > 5$",
+                  "$x = 7$",
+                  "Vrai"
+                ],
+                [
+                  "$x > 5$",
+                  "$x = 3$",
+                  "Faux"
+                ],
+                [
+                  "$y \\le 10$",
+                  "$y = 10$",
+                  "Vrai"
+                ],
+                [
+                  "$y \\le 10$",
+                  "$y = 12$",
+                  "Faux"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais évaluer un test simple, voyons comment en assembler plusieurs pour poser des questions plus précises."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combiner des tests avec « et » et « ou »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois il faut que deux conditions soient vraies en même temps, par exemple « il fait beau **et** j'ai fini mes devoirs ». En programmation on écrit cela avec le mot‑clé **et** (souvent symbolisé par $&&$). Le résultat global est vrai seulement si **les deux** parties sont vraies. À l'inverse, « il fait beau **ou** j'ai fini mes devoirs » devient vrai dès que **l'une au moins** des deux parties est vraie (symbole $||$)."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Illustration de « et » (intersection) et « ou » (réunion) entre deux conditions A et B",
+              "sets": [
+                {
+                  "label": "A : il fait beau",
+                  "color": "blue"
+                },
+                {
+                  "label": "B : devoirs finis",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, un test peut en contenir un autre : c'est ce qu'on appelle un test imbriqué. C'est comme ouvrir une boîte qui elle‑même contient une autre boîte."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tests imbriqués"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un programme qui vérifie d'abord si tu as plus de 10 ans ($age > 10$). Si c'est vrai, il regarde ensuite si tu as le droit de jouer ($autorisation = vrai$). Seulement si **les deux** tests réussissent, le programme t'autorise à jouer. Si le premier test échoue, le second n'est même pas regardé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : premier test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluer $age > 10$. Si faux → arrêter, résultat global faux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : second test (seulement si le premier est vrai)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluer $autorisation = vrai$. Si vrai → résultat global vrai, sinon faux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comprendre comment un programme choisit quelle instruction exécuter. Dans la prochaine leçon, nous verrons concrètement comment s'écrivent les branches « si … alors … sinon … »."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Évalue le test $x < 8$ pour $x = 5$ et pour $x = 10$.",
+              "answer": "Pour $x = 5$ le test est vrai. Pour $x = 10$ le test est faux.",
+              "hint": "Remplace $x$ par sa valeur puis compare avec 8.",
+              "explanation": "Quand $x = 5$, on a $5 < 8$ qui est vrai. Quand $x = 10$, on a $10 < 8$ qui est faux."
+            },
+            {
+              "question": "Donne le résultat global de la condition « $a > 3$ **et** $b = 7$ » pour $a = 5$, $b = 7$ puis pour $a = 2$, $b = 7$.",
+              "answer": "Premier cas : vrai. Second cas : faux.",
+              "hint": "Vérifie chaque partie séparément, puis combine avec « et » (les deux doivent être vraies).",
+              "explanation": "Pour $a=5,b=7$ : $5>3$ vrai et $7=7$ vrai → vrai. Pour $a=2,b=7$ : $2>3$ faux → l'ensemble est faux."
+            },
+            {
+              "question": "Un programme teste d'abord $note \\ge 10$. Si c'est vrai, il teste $note \\le 15$. Quel est le résultat final pour $note = 12$ ? Pour $note = 16$ ?",
+              "answer": "Pour 12 : vrai. Pour 16 : faux.",
+              "hint": "Suis les deux étapes du test imbriqué.",
+              "explanation": "Note 12 : $12 \\ge 10$ vrai, puis $12 \\le 15$ vrai → global vrai. Note 16 : $16 \\ge 10$ vrai, mais $16 \\le 15$ faux → global faux."
+            }
+          ]
+        },
+        {
+          "title": "Branches.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "C'est quoi une branche ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une branche est un chemin que le programme suit selon le résultat d'un test. Tu connais déjà le mot « si » (si la condition est vraie, fais ceci). Souvent on ajoute « sinon » pour indiquer ce qui se passe quand la condition est fausse. Ensemble, « si … alors … sinon … » forment une structure de branchement qui permet au programme de prendre des décisions différentes."
+            },
+            {
+              "type": "definition",
+              "term": "branche",
+              "definition": "Une branche est une suite d'instructions qui ne s'exécute que si la condition associée est vérifiée (branche « alors ») ou non vérifiée (branche « sinon »).",
+              "example": "Si $temp > 20$ alors afficher « Chaud » sinon afficher « Froid »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : évaluer la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le programme calcule si la condition est vraie ou fausse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : choisir la branche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si vrai → exécuter les instructions de la branche « alors ». Si faux → exécuter celles de la branche « sinon » (si elle existe)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : continuer le programme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois la branche terminée, le programme poursuit avec les instructions qui suivent le bloc conditionnel."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Condition",
+                "Branche exécutée",
+                "Message affiché"
+              ],
+              "rows": [
+                [
+                  "$age \\ge 18$ (vrai)",
+                  "alors",
+                  "« Accès autorisé »"
+                ],
+                [
+                  "$age \\ge 18$ (faux)",
+                  "sinon",
+                  "« Accès refusé »"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois une seule alternative ne suffit pas. On veut tester plusieurs cas les uns après les autres. C'est là qu'intervient « sinon si » (souvent écrit « else if »)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Plusieurs branches avec « sinon si »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un programme qui affiche une mention selon la note : si $note \\ge 16$ → « Très bien », sinon si $note \\ge 12$ → « Bien », sinon si $note \\ge 10$ → « Passable », sinon → « Insuffisant ». Le programme teste les conditions dans l'ordre ; dès qu'une est vraie, il exécute la branche correspondante et ignore les suivantes."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Test 1 : $note \\ge 16$ ?",
+                "Test 2 : $note \\ge 12$ ? (seulement si test 1 faux)",
+                "Test 3 : $note \\ge 10$ ? (seulement si tests 1 et 2 faux)",
+                "Sinon : branche par défaut"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, voyons comment on écrit tout cela dans un pseudo‑code simple, sans syntaxe d'un langage précis, mais avec les mots‑clés « si », « alors », « sinon si », « sinon », « fin si ». Cela te servira de modèle pour la prochaine leçon où nous devinerons le résultat d'un programme complet."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{si } note \\ge 16 \\text{ alors } \\text{afficher } \\\"Très bien\\\" \\text{ sinon si } note \\ge 12 \\text{ alors } \\text{afficher } \\\"Bien\\\" \\text{ sinon si } note \\ge 10 \\text{ alors } \\text{afficher } \\\"Passable\\\" \\text{ sinon } \\text{afficher } \\\"Insuffisant\\\" \\text{ fin si}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire des branchements simples ou multiples. Dans la leçon suivante, nous allons apprendre à prédire ce qu'un programme va afficher sans l'exécuter, en suivant pas à pas les tests et les branches."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le pseudo‑code d'un test qui affiche « Pair » si $n$ est divisible par 2, sinon « Impair ».",
+              "answer": "si $n \\% 2 = 0$ alors afficher \"Pair\" sinon afficher \"Impair\" fin si",
+              "hint": "Utilise le modulo (reste de la division) pour tester la divisibilité.",
+              "explanation": "L'opérateur % donne le reste. Si le reste est 0, le nombre est pair."
+            },
+            {
+              "question": "Pour $note = 13$, quelle mention le programme de l'exemple affiche‑t‑il ?",
+              "answer": "Bien",
+              "hint": "Parcours les tests dans l'ordre jusqu'à trouver le premier vrai.",
+              "explanation": "$13 \\ge 16$ faux, $13 \\ge 12$ vrai → branche « Bien » exécutée."
+            },
+            {
+              "question": "Complète le pseudo‑code pour ajouter une branche « Excellent » si $note = 20$ (avant les autres tests).",
+              "answer": "si $note = 20$ alors afficher \"Excellent\" sinon si $note \\ge 16$ alors afficher \"Très bien\" ... fin si",
+              "hint": "Place le test le plus restrictif en premier.",
+              "explanation": "Le test $note = 20$ doit être évalué avant $note \\ge 16$ sinon 20 serait capturé par « Très bien »."
+            }
+          ]
+        },
+        {
+          "title": "Prédire résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire le résultat sans exécuter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prédire, c'est lire le code comme une recette et imaginer ce qui va se passer étape par étape. Tu n'as pas besoin d'ordinateur : il suffit de suivre les tests, de noter les valeurs des variables et de voir quelle branche est choisie. C'est une compétence très utile pour déboguer ou pour comprendre un programme écrit par quelqu'un d'autre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : lister les variables et leurs valeurs initiales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note chaque variable avec sa valeur de départ, par exemple $x = 4$, $y = 7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : rencontrer un test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue la condition avec les valeurs actuelles. Décide si c'est vrai ou faux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : suivre la branche correspondante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute mentalement les instructions de cette branche (modifie les variables, affiche du texte, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : continuer jusqu'à la fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répète les étapes 2‑3 pour chaque structure conditionnelle rencontrée jusqu'à la fin du programme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Programme : } x = 3 ; \\text{ si } x > 5 \\text{ alors } x = x + 2 \\text{ sinon } x = x - 1 \\text{ fin si ; afficher } x"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rendre la prédiction plus systématique, on utilise souvent un tableau de suivi (trace) où chaque ligne correspond à une instruction et montre les valeurs des variables après son exécution."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une table de trace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le programme précédent. On crée un tableau avec les colonnes : instruction, $x$ avant, $x$ après, commentaire. On le remplit ligne par ligne. Cela évite de perdre le fil quand le code s'allonge."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Instruction",
+                "$x$ avant",
+                "$x$ après",
+                "Commentaire"
+              ],
+              "rows": [
+                [
+                  "$x = 3$",
+                  "—",
+                  "3",
+                  "Initialisation"
+                ],
+                [
+                  "si $x > 5$",
+                  "3",
+                  "3",
+                  "Condition fausse (3 > 5 faux)"
+                ],
+                [
+                  "sinon $x = x - 1$",
+                  "3",
+                  "2",
+                  "Branche sinon exécutée"
+                ],
+                [
+                  "afficher $x$",
+                  "2",
+                  "2",
+                  "Affiche 2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois un programme contient plusieurs tests imbriqués. La méthode reste la même : on entre dans le premier test, on choisit une branche, et à l'intérieur de cette branche on peut rencontrer un nouveau test. On continue la trace en ajoutant des lignes pour chaque niveau."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple avec tests imbriqués"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Programme : } a = 10 ; b = 4 ; \\text{ si } a > 5 \\text{ alors } \\{ \\text{ si } b < 6 \\text{ alors } a = a + b \\text{ sinon } a = a - b \\} \\text{ fin si ; afficher } a"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$a = 10$, $b = 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : premier test $a > 5$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$10 > 5$ vrai → on entre dans la branche alors."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : second test $b < 6$ (à l'intérieur)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4 < 6$ vrai → on exécute $a = a + b$ → $a = 14$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : affichage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le programme affiche $14$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant lire un programme conditionnel, anticiper ses branches et construire une trace pour vérifier tes prédictions. Ces outils te seront utiles tout au long de ton apprentissage de la programmation."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais évaluer une condition simple (vrai ou faux).",
+                "Je sais combiner des conditions avec « et » et « ou ».",
+                "Je comprends le fonctionnement d'une branche « si … alors … sinon … ».",
+                "Je sais écrire une suite de branches avec « sinon si ».",
+                "Je peux prédire le résultat d'un programme en suivant les tests pas à pas.",
+                "Je sais remplir une table de trace pour vérifier mes prédictions."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour le programme : $x = 6$ ; si $x > 5$ alors $x = x * 2$ sinon $x = x + 3$ fin si ; afficher $x$. Quelle valeur est affichée ?",
+              "answer": "12",
+              "hint": "Évalue la condition avec $x = 6$ puis applique la bonne branche.",
+              "explanation": "$6 > 5$ est vrai, donc on exécute $x = x * 2$ → $x = 12$. L'affichage donne 12."
+            },
+            {
+              "question": "Complète la table de trace pour le programme : $y = 8$ ; si $y < 10$ alors $y = y + 5$ sinon $y = y - 2$ fin si ; afficher $y$.",
+              "answer": "Ligne 1 : $y=8$ ; Ligne 2 : test vrai ; Ligne 3 : $y=13$ ; Ligne 4 : affiche 13.",
+              "hint": "Remplis chaque colonne dans l'ordre des instructions.",
+              "explanation": "Initialisation $y=8$. Test $8<10$ vrai → branche alors $y=8+5=13$. Affichage 13."
+            },
+            {
+              "question": "Dans le programme imbriqué de l'exemple, que se passe‑t‑il si on change $b = 7$ (au lieu de 4) ?",
+              "answer": "Le programme affiche 3.",
+              "hint": "Refais la trace avec la nouvelle valeur de $b$.",
+              "explanation": "$a=10$, $b=7$. Premier test $a>5$ vrai. Second test $b<6$ faux (7<6 faux) → branche sinon $a = a - b = 10 - 7 = 3$. Affichage 3."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 460,
+  "_course_code": "3eme-t01-c06-bilan-nombres-3e",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Bilan - Nombres 3e",
+  "title": "Bilan - Nombres 3e",
+  "questions": [
+    {
+      "text": "Écrire le nombre $0,000 000 45$ en notation scientifique.",
+      "options": [
+        "$4,5 \\times 10^{-7}$",
+        "$45 \\times 10^{-8}$",
+        "$4,5 \\times 10^{7}$",
+        "$0,45 \\times 10^{-6}$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^{-7}$",
+      "explanation": "La notation scientifique s'écrit $a \\times 10^n$ avec $1 \\le a < 10$. Il faut décaler la virgule de 7 rangs vers la droite pour obtenir $4,5$, ce qui donne un exposant $-7$. L'option B n'est pas normalisée ($45 \\ge 10$), l'option C a un exposant positif (grand nombre), l'option D n'est pas normalisée ($0,45 < 1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $\\sqrt{75} - \\sqrt{12}$.",
+      "options": [
+        "$3\\sqrt{3}$",
+        "$\\sqrt{63}$",
+        "$7\\sqrt{3}$",
+        "$\\sqrt{3}$"
+      ],
+      "correctAnswer": "$3\\sqrt{3}$",
+      "explanation": "On simplifie chaque racine : $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$ et $\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$. La différence est $5\\sqrt{3} - 2\\sqrt{3} = 3\\sqrt{3}$. L'option B correspond à l'erreur $\\sqrt{a} - \\sqrt{b} = \\sqrt{a-b}$. L'option C correspond à une addition. L'option D oublie les coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer et simplifier $\\dfrac{(2^3)^4 \\times 2^{-5}}{2^2}$.",
+      "options": [
+        "$32$",
+        "$2^{10}$",
+        "$128$",
+        "$2^{-5}$"
+      ],
+      "correctAnswer": "$32$",
+      "explanation": "On utilise les lois des puissances : $(2^3)^4 = 2^{12}$. Au numérateur : $2^{12} \\times 2^{-5} = 2^{7}$. À la division : $\\frac{2^7}{2^2} = 2^{5} = 32$. L'option B vient d'une erreur sur les exposants (addition au lieu de soustraction à la division). L'option C est $2^7$ (oubli de la division par $2^2$). L'option D résulte d'une mauvaise gestion des signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est un nombre rationnel ?",
+      "options": [
+        "$\\sqrt{5}$",
+        "$\\frac{\\pi}{2}$",
+        "$\\sqrt{0,25}$",
+        "$\\sqrt{2} + 1$"
+      ],
+      "correctAnswer": "$\\sqrt{0,25}$",
+      "explanation": "Un nombre rationnel s'écrit sous la forme d'une fraction d'entiers. $\\sqrt{0,25} = \\sqrt{\\frac{25}{100}} = \\frac{5}{10} = 0,5 = \\frac{1}{2}$, c'est un rationnel. $\\sqrt{5}$ et $\\sqrt{2}+1$ sont des irrationnels (racines carrées d'entiers non carrés parfaits). $\\pi$ est irrationnel, donc $\\frac{\\pi}{2}$ l'est aussi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La masse d'un proton est d'environ $1,67 \\times 10^{-27}$ kg et celle d'un électron est d'environ $9,11 \\times 10^{-31}$ kg. En arrondissant à la dizaine, combien de fois le proton est-il plus massif que l'électron ?",
+      "options": [
+        "$1830$",
+        "$183$",
+        "$18300$",
+        "$18$"
+      ],
+      "correctAnswer": "$1830$",
+      "explanation": "Le rapport est $\\frac{1,67 \\times 10^{-27}}{9,11 \\times 10^{-31}} = \\frac{1,67}{9,11} \\times 10^{4} \\approx 0,1833 \\times 10000 = 1833$. Arrondi à la dizaine, on obtient $1830$. L'option B correspond à un exposant $10^3$ (erreur de 1 sur l'exposant). L'option C correspond à $10^5$. L'option D correspond à $10^1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

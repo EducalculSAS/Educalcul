@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Transformations et compositions simples",
+  "title": "Quiz : Transformations et compositions simples",
+  "questions": [
+    {
+      "text": "Soit une translation $t$ de vecteur $\\overrightarrow{u}$ et une translation $t'$ de vecteur $\\overrightarrow{v}$. La transformation composée $t' \\circ t$ est :",
+      "options": [
+        "Une translation de vecteur $\\overrightarrow{u} + \\overrightarrow{v}$",
+        "Une translation de vecteur $\\overrightarrow{u} - \\overrightarrow{v}$",
+        "Une rotation de centre l'origine",
+        "Une homothétie de rapport $2$"
+      ],
+      "correctAnswer": "Une translation de vecteur $\\overrightarrow{u} + \\overrightarrow{v}$",
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. En effet, $t'(t(M)) = M + \\overrightarrow{u} + \\overrightarrow{v}$. Les autres options correspondent à des confusions : la différence de vecteurs donnerait la translation inverse, une rotation ou une homothétie ne sont pas obtenues par composition de translations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $r$ la rotation de centre $O$ et d'angle $60^{\\circ}$, et $r'$ la rotation de même centre $O$ et d'angle $-40^{\\circ}$. La composée $r' \\circ r$ est :",
+      "options": [
+        "Une rotation de centre $O$ et d'angle $20^{\\circ}$",
+        "Une rotation de centre $O$ et d'angle $100^{\\circ}$",
+        "Une translation de vecteur $\\overrightarrow{OO}$",
+        "Une symétrie axiale d'axe passant par $O$"
+      ],
+      "correctAnswer": "Une rotation de centre $O$ et d'angle $20^{\\circ}$",
+      "explanation": "La composition de deux rotations de même centre est une rotation de même centre dont l'angle est la somme des angles. Ici $60^{\\circ} + (-40^{\\circ}) = 20^{\\circ}$. L'option $100^{\\circ}$ correspond à une erreur de signe (soustraction au lieu d'addition). Une translation ou une symétrie axiale ne peuvent pas résulter de cette composition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $s_d$ et $s_{d'}$ deux symétries axiales d'axes $d$ et $d'$ parallèles, distants de $3\\,\\text{cm}$. La composée $s_{d'} \\circ s_d$ est :",
+      "options": [
+        "Une translation de vecteur perpendiculaire aux axes, de norme $6\\,\\text{cm}$",
+        "Une translation de vecteur parallèle aux axes, de norme $3\\,\\text{cm}$",
+        "Une rotation de centre le point milieu du segment joignant les axes",
+        "Une homothétie de centre l'intersection des axes"
+      ],
+      "correctAnswer": "Une translation de vecteur perpendiculaire aux axes, de norme $6\\,\\text{cm}$",
+      "explanation": "La composition de deux symétries axiales d'axes parallèles est une translation. Le vecteur de cette translation est perpendiculaire aux axes, orienté du premier axe vers le second, et sa norme vaut deux fois la distance entre les axes, soit $2 \\times 3 = 6\\,\\text{cm}$. Les axes étant parallèles, ils n'ont pas d'intersection (pas d'homothétie) et ce n'est pas une rotation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $h$ l'homothétie de centre $O$ et de rapport $k = -2$, et $h'$ l'homothétie de même centre $O$ et de rapport $k' = -0,5$. La composée $h' \\circ h$ est :",
+      "options": [
+        "L'identité (chaque point est son image)",
+        "Une homothétie de centre $O$ et de rapport $-2,5$",
+        "Une homothétie de centre $O$ et de rapport $1$",
+        "Une rotation de centre $O$ et d'angle $180^{\\circ}$"
+      ],
+      "correctAnswer": "L'identité (chaque point est son image)",
+      "explanation": "La composition de deux homothéties de même centre est une homothétie de même centre dont le rapport est le produit des rapports : $k \\times k' = (-2) \\times (-0,5) = 1$. Une homothétie de rapport $1$ est l'identité. L'option avec rapport $-2,5$ correspond à une addition au lieu d'une multiplication. Une rotation de $180^{\\circ}$ est une homothétie de rapport $-1$, pas $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la symétrie centrale $s_O$ de centre $O$ et la translation $t$ de vecteur $\\overrightarrow{v} = \\overrightarrow{AB}$. La composée $t \\circ s_O$ est :",
+      "options": [
+        "Une symétrie centrale de centre $O'$ tel que $\\overrightarrow{OO'} = \\frac{1}{2}\\overrightarrow{v}$",
+        "Une translation de vecteur $2\\overrightarrow{v}$",
+        "Une rotation de centre $O$ et d'angle $180^{\\circ}$",
+        "Une symétrie axiale d'axe la médiatrice de $[AB]$"
+      ],
+      "correctAnswer": "Une symétrie centrale de centre $O'$ tel que $\\overrightarrow{OO'} = \\frac{1}{2}\\overrightarrow{v}$",
+      "explanation": "La composition d'une symétrie centrale et d'une translation (dans n'importe quel ordre) est une symétrie centrale. Le centre de la symétrie résultante est l'image du centre initial par la demi-translation : $O'$ tel que $\\overrightarrow{OO'} = \\frac{1}{2}\\overrightarrow{v}$. Ce n'est pas une translation (la symétrie centrale change l'orientation), ni une rotation (sauf cas particulier), ni une symétrie axiale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

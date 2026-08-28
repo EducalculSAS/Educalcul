@@ -1,0 +1,500 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.738974+00:00",
+  "id": 723,
+  "code": "terminale-generale-maths-t08-c04",
+  "title": "Méthodes numériques",
+  "description": "Cours structuré Educalcul : Méthodes numériques.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Méthodes numériques",
+    "objectif_global": "Méthodes numériques",
+    "mini_lecons_imposees": [
+      "Dichotomie selon programme.",
+      "Précision.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Dichotomie selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode de dichotomie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur les méthodes numériques. Aujourd'hui nous allons découvrir la dichotomie, une technique simple et puissante pour enfermer une solution d'une équation $f(x)=0$ à l'intérieur d'un intervalle de plus en plus petit. Imagine que tu cherches une clé perdue dans un long couloir : tu commences par couper le couloir en deux, tu regardes de quel côté se trouve la clé, puis tu recommences avec la moitié choisie. C'est exactement ce que fait la dichotomie avec une fonction continue qui change de signe aux bornes de l'intervalle initial."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que la méthode fonctionne, il faut deux hypothèses faciles à vérifier : la fonction $f$ doit être continue sur un intervalle fermé $[a,b]$ et les valeurs $f(a)$ et $f(b)$ doivent avoir des signes opposés, c'est-à-dire $f(a)\\times f(b)<0$. Sous ces conditions, le théorème des valeurs intermédiaires garantit qu'il existe au moins une racine dans $[a,b]$. Nous allons illustrer cela avec la fonction $f(x)=x^{2}-2$, dont la racine positive est $\\sqrt{2}\\approx1,4142$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-2",
+              "xmin": 0,
+              "xmax": 2,
+              "caption": "Représentation de $f(x)=x^{2}-2$ sur $[0,2]$ ; la courbe coupe l'axe des abscisses en $\\sqrt{2}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'intervalle initial",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On prend $a=1$ et $b=2$. On a $f(1)=-1$ et $f(2)=2$, donc $f(1)\\times f(2)<0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le milieu est $m=\\frac{a+b}{2}$. On évalue $f(m)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réduire l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f(a)\\times f(m)<0$, la racine est dans $[a,m]$ ; sinon elle est dans $[m,b]$. On remplace l'intervalle par le sous-intervalle qui contient le changement de signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Itérer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On répète les étapes 2 et 3 jusqu'à ce que la longueur de l'intervalle soit inférieure à la précision souhaitée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le principe général, nous allons examiner de plus près la condition de continuité et le changement de signe, car c'est le cœur qui permet à la dichotomie de converger vers une solution."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Condition d'application : continuité et changement de signe"
+            },
+            {
+              "type": "paragraph",
+              "content": "La continuité de $f$ sur $[a,b]$ empêche la fonction de faire des sauts brusques ; ainsi, si elle prend une valeur négative en $a$ et une valeur positive en $b$, elle doit forcément passer par zéro quelque part entre les deux. C'est une conséquence directe du théorème des valeurs intermédiaires. Si la fonction n'est pas continue, par exemple $f(x)=\\frac{1}{x}$ sur $[-1,1]$, le changement de signe ne garantit pas l'existence d'une racine car la fonction n'est pas définie en $0$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle $[1,2]$ avec les valeurs $f(1)=-1$ et $f(2)=2$ de part et d'autre de zéro.",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "a"
+                },
+                {
+                  "value": 2,
+                  "label": "b"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 1,
+                  "end": 2,
+                  "label": "[a,b]"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vérifié les hypothèses, nous passons à la mise en œuvre concrète sur un exemple numérique complet, où nous suivrons plusieurs itérations pour voir l'intervalle se resserrer autour de $\\sqrt{2}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mise en œuvre sur un exemple numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $f(x)=x^{2}-2$ avec $a_0=1$, $b_0=2$. À chaque itération $k$, on note $m_k=\\frac{a_k+b_k}{2}$. Le tableau ci-dessous montre les quatre premières itérations :"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "k",
+                "a_k",
+                "b_k",
+                "m_k",
+                "f(m_k)",
+                "Nouvel intervalle"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "1",
+                  "2",
+                  "1,5",
+                  "0,25",
+                  "[1,1,5]"
+                ],
+                [
+                  "1",
+                  "1",
+                  "1,5",
+                  "1,25",
+                  "-0,4375",
+                  "[1,25,1,5]"
+                ],
+                [
+                  "2",
+                  "1,25",
+                  "1,5",
+                  "1,375",
+                  "-0,109375",
+                  "[1,375,1,5]"
+                ],
+                [
+                  "3",
+                  "1,375",
+                  "1,5",
+                  "1,4375",
+                  "0,06640625",
+                  "[1,375,1,4375]"
+                ]
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "b_k-a_k = \\frac{b_0-a_0}{2^{k}} = \\frac{1}{2^{k}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "On observe que la longueur de l'intervalle est divisée par deux à chaque étape, conformément à la formule $b_k-a_k = \\frac{1}{2^{k}}$. Après quatre itérations, l'intervalle $[1,375;1,4375]$ a une longueur de $0,0625$, ce qui donne déjà une approximation de $\\sqrt{2}$ avec une erreur maximale de $0,03125$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les bases pour appliquer la dichotomie. Dans la prochaine leçon, nous verrons comment quantifier la précision obtenue et choisir le nombre d'itérations nécessaire pour atteindre une erreur donnée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie que la fonction $f(x)=x^{3}-x-1$ satisfait les hypothèses de la dichotomie sur l'intervalle $[1,2]$.",
+              "answer": "Oui, $f$ est continue sur $[1,2]$ et $f(1)=-1$, $f(2)=5$, donc $f(1)\\times f(2)<0$.",
+              "hint": "Calcule $f(1)$ et $f(2)$ et rappelle la définition de la continuité pour un polynôme.",
+              "explanation": "Les polynômes sont continus sur $\\mathbb{R}$. Comme les valeurs aux bornes ont des signes opposés, le théorème des valeurs intermédiaires assure l'existence d'une racine dans $[1,2]$."
+            },
+            {
+              "question": "Effectue deux itérations de la dichotomie pour $f(x)=x^{3}-x-1$ sur $[1,2]$ et donne le nouvel intervalle.",
+              "answer": "Après deux itérations, l'intervalle est $[1,25;1,5]$.",
+              "hint": "Calcule le milieu $m_0=1,5$, évalue $f(1,5)$, puis réduis l'intervalle et recommence.",
+              "explanation": "Itération 0 : $m_0=1,5$, $f(1,5)=1,875>0$, donc nouvel intervalle $[1,1,5]$. Itération 1 : $m_1=1,25$, $f(1,25)=-0,296875<0$, donc intervalle $[1,25;1,5]$."
+            },
+            {
+              "question": "Combien d'itérations sont nécessaires pour que la longueur de l'intervalle soit inférieure à $10^{-3}$ pour l'exemple $f(x)=x^{2}-2$ avec $a_0=1,b_0=2$ ?",
+              "answer": "10 itérations.",
+              "hint": "Utilise la formule $b_k-a_k = \\frac{1}{2^{k}} < 10^{-3}$ et résous pour $k$.",
+              "explanation": "On veut $2^{-k}<10^{-3}$, soit $k>\\log_2(1000)\\approx9,97$. Le plus petit entier $k$ est $10$."
+            }
+          ]
+        },
+        {
+          "title": "Précision.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La notion de précision en dichotomie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons approfondir ce que signifie \"précision\" lorsque l'on utilise la dichotomie. Tu as vu que l'intervalle $[a_k,b_k]$ se réduit de moitié à chaque étape. La meilleure approximation de la racine que l'on peut donner est le milieu $m_k=\\frac{a_k+b_k}{2}$. L'erreur commise en prenant $m_k$ comme approximation est au maximum la demi-longueur de l'intervalle, c'est-à-dire $\\frac{b_k-a_k}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Erreur maximale } E_k = \\frac{b_k-a_k}{2} = \\frac{b_0-a_0}{2^{k+1}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule est cruciale : elle permet de prédire à l'avance combien d'itérations sont nécessaires pour atteindre une précision voulue, sans avoir à exécuter l'algorithme. Par exemple, si l'on part de $[1,2]$ (longueur initiale $1$) et que l'on souhaite une erreur inférieure à $10^{-4}$, il faut résoudre $\\frac{1}{2^{k+1}} < 10^{-4}$, ce qui donne $k \\ge 13$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Exprimer la longueur de l'intervalle après k itérations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La longueur initiale est $L_0 = b_0-a_0$. À chaque itération, elle est divisée par deux : $L_k = \\frac{L_0}{2^{k}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relier l'erreur à la demi-longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'approximation utilisée est le milieu $m_k$, donc l'erreur maximale est $E_k = \\frac{L_k}{2} = \\frac{L_0}{2^{k+1}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer k pour une précision donnée $\\varepsilon$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On résout l'inéquation $\\frac{L_0}{2^{k+1}} \\le \\varepsilon$, ce qui équivaut à $2^{k+1} \\ge \\frac{L_0}{\\varepsilon}$, puis $k \\ge \\log_2\\!\\left(\\frac{L_0}{\\varepsilon}\\right)-1$. On prend l'entier supérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment calculer le nombre d'itérations nécessaire, nous allons voir comment ce choix influence la pratique et comment on peut adapter l'algorithme pour s'arrêter dès que la précision est atteinte."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choix du nombre d'itérations et critère d'arrêt"
+            },
+            {
+              "type": "paragraph",
+              "content": "En pratique, on n'écrit pas toujours un nombre fixe d'itérations. On préfère un critère d'arrêt basé sur la longueur de l'intervalle : tant que $b_k-a_k > 2\\varepsilon$, on continue. Cela garantit que l'erreur finale sera inférieure à $\\varepsilon$. Ce critère est facile à programmer et évite de faire des itérations inutiles si la convergence est plus rapide que prévu (ce qui n'arrive pas pour la dichotomie, mais c'est une bonne habitude)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : on veut approximer la racine de $f(x)=\\cos x - x$ sur $[0,1]$ avec une précision de $10^{-5}$. La longueur initiale est $1$. Le critère d'arrêt demande $b_k-a_k \\le 2\\times10^{-5}$. En appliquant la formule, on trouve $k \\ge \\log_2(1/(2\\times10^{-5}))-1 \\approx 15,6$, donc 16 itérations suffisent."
+            },
+            {
+              "type": "graph",
+              "expression": "cos(x)-x",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Fonction $f(x)=\\cos x - x$ sur $[0,1]$ ; la racine est proche de $0,739$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous abordons un point subtil : les erreurs d'arrondi machine peuvent perturber la dichotomie si l'on utilise des nombres à virgule flottante. Bien que la méthode soit robuste, il est bon de savoir que lorsque l'intervalle devient extrêmement petit, la soustraction $b_k-a_k$ peut perdre en précision."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Erreurs d'arrondi et stabilité numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un ordinateur, les nombres réels sont représentés avec une mantisse finie (généralement 53 bits en double précision). Quand $a_k$ et $b_k$ sont très proches, leur différence $b_k-a_k$ peut être affectée par l'erreur d'arrondi, et le test $b_k-a_k > 2\\varepsilon$ peut devenir peu fiable. Une parade classique consiste à limiter le nombre maximal d'itérations (par exemple 60 pour la double précision) ou à utiliser un critère basé sur la valeur absolue de $f(m_k)$ en complément."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Critère combiné : } (b_k-a_k > 2\\varepsilon) \\land (|f(m_k)| > \\eta)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici $\\eta$ est une tolérance sur la valeur de la fonction (par exemple $10^{-12}$). Cela évite de boucler indéfiniment si l'intervalle ne se réduit plus à cause de l'arrondi. La dichotomie reste toutefois l'une des méthodes les plus stables numériquement, car elle ne nécessite pas de dérivées et ne diverge pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision complète de la précision en dichotomie : comment la quantifier, comment choisir le nombre d'itérations, et comment se prémunir des effets de l'arrondi. La prochaine leçon te montrera comment interpréter les résultats obtenus et les relier à la résolution concrète d'équations."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la fonction $f(x)=e^{x}-3x$ sur $[0,1]$, détermine le nombre minimal d'itérations pour garantir une erreur inférieure à $10^{-6}$.",
+              "answer": "19 itérations.",
+              "hint": "Longueur initiale $L_0=1$. Résous $\\frac{1}{2^{k+1}} < 10^{-6}$.",
+              "explanation": "On a $2^{k+1} > 10^{6}$, soit $k+1 > \\log_2(10^{6}) \\approx 19,93$, donc $k \\ge 19$."
+            },
+            {
+              "question": "Écris en pseudo-code le critère d'arrêt combiné (longueur d'intervalle et valeur de la fonction) pour une dichotomie avec $\\varepsilon=10^{-5}$ et $\\eta=10^{-12}$.",
+              "answer": "Tant que (b-a > 2*1e-5) et (abs(f(m)) > 1e-12) faire ...",
+              "hint": "Utilise une boucle while avec les deux conditions réunies par ET logique.",
+              "explanation": "La boucle continue tant que les deux conditions sont vraies ; dès qu'une devient fausse, on sort et on renvoie le milieu comme approximation."
+            },
+            {
+              "question": "Explique pourquoi la dichotomie est considérée comme numériquement stable, même en présence d'erreurs d'arrondi.",
+              "answer": "Elle ne fait qu'additionner et diviser par deux, opérations bien conditionnées, et ne nécessite pas de soustractions de nombres proches ni de divisions par de petits nombres.",
+              "hint": "Pense aux opérations élémentaires effectuées à chaque itération.",
+              "explanation": "Le calcul du milieu $m=(a+b)/2$ est une moyenne, stable. La mise à jour de l'intervalle ne fait que remplacer une borne par $m$, sans amplification d'erreur."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les résultats d'une dichotomie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. Maintenant que tu sais lancer une dichotomie et contrôler sa précision, il faut savoir lire ce que l'algorithme te renvoie. L'intervalle final $[a_n,b_n]$ contient la racine, et le milieu $m_n$ est ton approximation. Mais il est aussi important de vérifier que $f(m_n)$ est effectivement proche de zéro, car cela confirme que la fonction ne présente pas de comportement pathologique (comme une discontinuité cachée) à l'intérieur de l'intervalle."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def dichotomie(f, a, b, eps=1e-6, max_iter=60):\\n    \"\"\"Retourne une approximation de la racine de f dans [a,b] par dichotomie.\"\"\"\\n    if f(a)*f(b) > 0:\\n        raise ValueError(\"Pas de changement de signe\")\\n    for _ in range(max_iter):\\n        m = (a + b) / 2\\n        if b - a < 2*eps or abs(f(m)) < 1e-12:\\n            return m\\n        if f(a)*f(m) <= 0:\\n            b = m\\n        else:\\n            a = m\\n    return (a + b) / 2",
+              "caption": "Implémentation Python de la dichotomie avec critères d'arrêt combinés.",
+              "language": "python"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir obtenu une approximation numérique, il est souvent utile de la relier au problème d'origine. Par exemple, si l'équation $f(x)=0$ modélise l'équilibre d'une population, la racine trouvée donne la taille d'équilibre. Il faut alors vérifier que cette valeur a du sens dans le contexte (positive, dans un intervalle réaliste)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec la résolution d'équations réelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'équation $\\ln(x)=2-x$. On la réécrit $f(x)=\\ln(x)+x-2=0$. La fonction est continue sur $]0,+\\infty[$ et on observe $f(1)=-1$, $f(3)=\\ln 3+1>0$. La dichotomie sur $[1,3]$ converge vers $x\\approx1,8414$. Cette valeur est positive, ce qui est cohérent avec le domaine du logarithme. De plus, $f(1,8414)\\approx 2\\times10^{-7}$, confirmant la qualité de l'approximation."
+            },
+            {
+              "type": "graph",
+              "expression": "log(x)+x-2",
+              "xmin": 0.5,
+              "xmax": 3,
+              "caption": "Fonction $f(x)=\\ln x + x - 2$ ; la racine est near $1,84$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe cependant des situations où la dichotomie ne peut pas être appliquée directement, ou où elle converge vers une valeur qui n'est pas une racine isolée. Nous allons passer en revue les cas particuliers et les limites de la méthode."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et limites de la dichotomie"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas 1 : Racine multiple (tangente à l'axe)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f(x)=(x-1)^2$, la fonction ne change pas de signe au voisinage de $1$ (elle est positive des deux côtés). La dichotomie ne peut pas démarrer car $f(a)\\times f(b) \\ge 0$ pour tout intervalle contenant $1$. Il faut alors utiliser une autre méthode (Newton, par exemple) ou modifier la fonction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 2 : Discontinuité à l'intérieur de l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f(x)=\\frac{1}{x}$ sur $[-1,1]$, il y a un changement de signe mais pas de racine car la fonction n'est pas continue en $0$. Le théorème des valeurs intermédiaires ne s'applique pas. Vérifier la continuité est donc indispensable avant de lancer l'algorithme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 3 : Intervalle très grand et convergence lente",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La dichotomie divise l'intervalle par deux à chaque étape, ce qui est garanti mais peut être lent si l'intervalle initial est énorme. Par exemple, pour trouver $\\sqrt{10^{12}}$ en partant de $[0,10^{12}]$, il faut environ 40 itérations pour atteindre une précision de $10^{-3}$. Dans ce cas, un changement d'échelle ou une méthode d'ordre supérieur est préférable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais formuler les hypothèses de la dichotomie (continuité, changement de signe).",
+                "Je sais écrire l'algorithme de dichotomie avec un critère d'arrêt sur la précision.",
+                "Je sais calculer le nombre d'itérations nécessaires pour une précision donnée.",
+                "Je sais interpréter l'intervalle final et la valeur de la fonction au milieu.",
+                "Je connais les limites de la méthode (racines multiples, discontinuités, lenteur)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'intervalle final et l'approximation du milieu après 5 itérations de la dichotomie pour $f(x)=x^2-2$ sur $[1,2]$.",
+              "answer": "Intervalle $[1,375;1,4375]$, milieu $1,40625$.",
+              "hint": "Utilise le tableau de la première leçon ou recompute les 5 premières itérations.",
+              "explanation": "Après 5 itérations, la longueur est $1/2^5=0,03125$. L'intervalle est centré sur $\\sqrt{2}$."
+            },
+            {
+              "question": "Pour l'équation $\\ln(x)=2-x$, explique pourquoi la dichotomie sur $[1,3]$ converge vers une unique solution.",
+              "answer": "La fonction $f(x)=\\ln x + x -2$ est strictement croissante sur $]0,+\\infty[$ (dérivée $1/x+1>0$), donc elle a au plus une racine ; le changement de signe sur $[1,3]$ garantit l'existence.",
+              "hint": "Étudie la monotonie de $f$ et applique le théorème des valeurs intermédiaires.",
+              "explanation": "La stricte monotonie assure l'unicité ; le changement de signe assure l'existence."
+            },
+            {
+              "question": "Pourquoi la dichotomie échoue-t-elle pour $f(x)=(x-2)^3$ sur $[1,3]$ ?",
+              "answer": "Bien que $f(1)=-1$ et $f(3)=1$, la fonction ne change pas de signe au voisinage de la racine triple $x=2$ (elle est croissante), mais le produit $f(1)f(3)<0$ permet de démarrer ; la méthode converge quand même car il y a un changement de signe global. Cependant, si on choisissait $[1.5,2.5]$, $f(1.5)=-0.125$, $f(2.5)=0.125$, ça marche. L'échec réel survient pour les racines d'ordre pair où il n'y a pas de changement de signe.",
+              "hint": "Regarde le signe de $f$ de part et d'autre de la racine.",
+              "explanation": "Pour une racine d'ordre impair, le signe change, donc la dichotomie fonctionne. Pour une racine d'ordre pair (ex. $(x-2)^2$), le signe ne change pas et la méthode ne peut pas démarrer."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

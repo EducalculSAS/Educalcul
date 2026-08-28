@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Application : Bilan - Calcul 6e",
+  "title": "Bilan Calcul 6e - Applications",
+  "questions": [
+    {
+      "text": "Calcule $12 + 8 \\times 3 - 6 \\div 2$.",
+      "options": [
+        "$33$",
+        "$30$",
+        "$27$",
+        "$36$"
+      ],
+      "correctAnswer": "$33$",
+      "explanation": "On respecte l'ordre des opérations : d'abord la multiplication $8 \\times 3 = 24$ et la division $6 \\div 2 = 3$, puis l'addition et la soustraction de gauche à droite : $12 + 24 - 3 = 33$. Les autres réponses correspondent à des erreurs fréquentes : $30$ si on oublie la division, $27$ si on calcule de gauche à droite sans priorité, $36$ si on oublie la soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue l'addition $\\frac{3}{4} + \\frac{5}{6}$ et donne le résultat sous forme de nombre mixte.",
+      "options": [
+        "$1 \\frac{7}{12}$",
+        "$\\frac{19}{12}$",
+        "$\\frac{8}{10}$",
+        "$\\frac{15}{24}$"
+      ],
+      "correctAnswer": "$1 \\frac{7}{12}$",
+      "explanation": "On met au même dénominateur 12 : $\\frac{3}{4} = \\frac{9}{12}$, $\\frac{5}{6} = \\frac{10}{12}$. La somme est $\\frac{19}{12} = 1 \\frac{7}{12}$. La réponse $\\frac{19}{12}$ est la fraction impropre équivalente mais pas un nombre mixte. $\\frac{8}{10}$ provient de l'addition erronée des numérateurs et dénominateurs. $\\frac{15}{24}$ correspond à un dénominateur commun mal choisi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $7,2 \\div 0,6$.",
+      "options": [
+        "$12$",
+        "$1,2$",
+        "$120$",
+        "$0,12$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "On peut multiplier le dividende et le diviseur par 10 pour supprimer la virgule : $72 \\div 6 = 12$. Les autres réponses correspondent à un mauvais placement de la virgule : $1,2$ (division par 10 de trop), $120$ (multiplication par 10 de trop), $0,12$ (deux divisions par 10 de trop).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $4 \\times (3 + 5) - 12 \\div 2$.",
+      "options": [
+        "$26$",
+        "$11$",
+        "$10$",
+        "$32$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "On commence par la parenthèse : $3 + 5 = 8$. Ensuite la multiplication $4 \\times 8 = 32$ et la division $12 \\div 2 = 6$. Enfin la soustraction $32 - 6 = 26$. $11$ est obtenu si on ignore les parenthèses ($4 \\times 3 + 5 - 12 \\div 2$). $10$ correspond à $32 - 12 = 20$ puis division par 2. $32$ est le résultat si on oublie la soustraction finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une classe de 24 élèves achète 2 cahiers par élève. Chaque cahier coûte 1,50 €. Quel est le montant total dépensé ?",
+      "options": [
+        "$72$ €",
+        "$36$ €",
+        "$48$ €",
+        "$96$ €"
+      ],
+      "correctAnswer": "$72$ €",
+      "explanation": "Nombre total de cahiers : $24 \\times 2 = 48$. Coût total : $48 \\times 1,50 = 72$ €. $36$ € correspond à $24 \\times 1,50$ (un seul cahier par élève). $48$ € correspond au nombre de cahiers sans multiplier par le prix. $96$ € correspond à $48 \\times 2$ (prix doublé par erreur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Bilan - Droites Seconde",
+  "title": "Bilan - Droites Seconde",
+  "questions": [
+    {
+      "text": "Quelle est la pente de la droite passant par les points $A(2;3)$ et $B(5;11)$ ?",
+      "options": [
+        "$\\frac{8}{3}$",
+        "$\\frac{3}{8}$",
+        "$-\\frac{8}{3}$",
+        "$-\\frac{3}{8}$"
+      ],
+      "correctAnswer": "$\\frac{8}{3}$",
+      "explanation": "La pente se calcule par $\\frac{y_B - y_A}{x_B - x_A} = \\frac{11-3}{5-2} = \\frac{8}{3}$. Les autres options correspondent à l'inverse, au signe opposé ou aux deux erreurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'équation réduite de la droite de pente $-2$ passant par le point $C(1;4)$ ?",
+      "options": [
+        "$y = -2x + 6$",
+        "$y = -2x + 2$",
+        "$y = 2x + 2$",
+        "$y = -2x - 2$"
+      ],
+      "correctAnswer": "$y = -2x + 6$",
+      "explanation": "On utilise $y = mx + b$ avec $m=-2$. En remplaçant $x=1, y=4$ on trouve $4 = -2(1) + b \\Rightarrow b=6$. Donc $y = -2x + 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les droites suivantes, laquelle est parallèle à la droite d'équation $y = 3x - 5$ ?",
+      "options": [
+        "$y = 3x + 2$",
+        "$y = -3x + 1$",
+        "$y = \\frac{1}{3}x - 5$",
+        "$y = -\\frac{1}{3}x + 5$"
+      ],
+      "correctAnswer": "$y = 3x + 2$",
+      "explanation": "Deux droites sont parallèles si elles ont même coefficient directeur. La droite donnée a pour coefficient directeur $3$, seule la première option a aussi $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer les coordonnées du point d'intersection des droites $y = 2x + 1$ et $y = -x + 4$.",
+      "options": [
+        "$(1;3)$",
+        "$(2;5)$",
+        "$(0;1)$",
+        "$(-1;2)$"
+      ],
+      "correctAnswer": "$(1;3)$",
+      "explanation": "On égale les deux expressions : $2x+1 = -x+4 \\Rightarrow 3x = 3 \\Rightarrow x=1$. En remplaçant, $y = 2(1)+1 = 3$. Le point est $(1;3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer la distance du point $P(3;-2)$ à la droite d'équation $4x - 3y + 5 = 0$.",
+      "options": [
+        "$\\frac{23}{5}$",
+        "$\\frac{13}{5}$",
+        "$\\frac{23}{7}$",
+        "$\\frac{23}{\\sqrt{7}}$"
+      ],
+      "correctAnswer": "$\\frac{23}{5}$",
+      "explanation": "La distance d'un point $(x_0,y_0)$ à la droite $Ax+By+C=0$ est $\\frac{|Ax_0+By_0+C|}{\\sqrt{A^2+B^2}}$. Ici $A=4, B=-3, C=5$. Numérateur : $|4\\cdot3 + (-3)(-2) + 5| = |12+6+5| = 23$. Dénominateur : $\\sqrt{4^2+(-3)^2} = \\sqrt{25}=5$. Distance $= \\frac{23}{5}$. L'option $\\frac{13}{5}$ correspond à l'oubli du terme $+5$, $\\frac{23}{7}$ à l'erreur $A+B$ au dénominateur, $\\frac{23}{\\sqrt{7}}$ à l'erreur $\\sqrt{A+B}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

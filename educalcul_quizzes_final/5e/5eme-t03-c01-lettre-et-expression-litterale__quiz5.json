@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Lettre comme nombre",
+  "title": "Quiz : La lettre comme nombre",
+  "questions": [
+    {
+      "text": "Dans l'expression $5x + 3$, que représente la lettre $x$ ?",
+      "options": [
+        "Un nombre fixe que l'on ne peut pas changer",
+        "Un nombre que l'on peut choisir ou qui est inconnu",
+        "Le signe de la multiplication",
+        "Le résultat du calcul"
+      ],
+      "correctAnswer": "Un nombre que l'on peut choisir ou qui est inconnu",
+      "explanation": "En calcul littéral, une lettre (comme $x$) est une variable : elle représente un nombre que l'on ne connaît pas encore ou que l'on peut faire varier. Ce n'est pas un signe d'opération ni un résultat figé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $x = 4$, quelle est la valeur de l'expression $2x + 7$ ?",
+      "options": [
+        "$13$",
+        "$15$",
+        "$22$",
+        "$18$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "On remplace $x$ par $4$ dans l'expression : $2 \\times 4 + 7 = 8 + 7 = 15$. L'option $13$ correspond à $2 \\times (4+7)$ mal parenthésée, $22$ à une erreur de priorité ($2 \\times 4 = 8$ puis $8 \\times 7$ ?), $18$ ne correspond à aucune substitution simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On choisit un nombre, on le multiplie par $3$, puis on ajoute $5$. Quelle expression littérale correspond à ce programme de calcul si on note $n$ le nombre choisi ?",
+      "options": [
+        "$3n + 5$",
+        "$3(n + 5)$",
+        "$n \\times 3 + 5$",
+        "$5n + 3$"
+      ],
+      "correctAnswer": "$3n + 5$",
+      "explanation": "L'ordre des opérations impose de multiplier $n$ par $3$ (écrit $3n$) avant d'ajouter $5$. L'option $3(n+5)$ ajoute $5$ avant de multiplier. L'option $n \\times 3 + 5$ est mathématiquement équivalente mais l'écriture littérale simplifiée standard est $3n + 5$. L'option $5n + 3$ inverse les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle valeur de $x$ rend vraie l'égalité $4x - 6 = 10$ ?",
+      "options": [
+        "$x = 1$",
+        "$x = 4$",
+        "$x = 5$",
+        "$x = 16$"
+      ],
+      "correctAnswer": "$x = 4$",
+      "explanation": "On cherche le nombre qui, multiplié par $4$ puis diminué de $6$, donne $10$. On ajoute $6$ des deux côtés : $4x = 16$. On divise par $4$ : $x = 4$. Vérification : $4 \\times 4 - 6 = 16 - 6 = 10$. L'erreur $x=16$ vient d'avoir oublié de diviser par $4$ à la fin.",
+      "points": 1,
+      "figure": {
+        "type": "equation_balancer",
+        "leftTerms": [
+          "4x",
+          "-6"
+        ],
+        "rightTerms": [
+          "10"
+        ],
+        "caption": "Représentation de l'équation $4x - 6 = 10$"
+      }
+    },
+    {
+      "text": "Parmi les égalités suivantes, laquelle est vraie pour tout nombre $x$ ?",
+      "options": [
+        "$x + x = x^2$",
+        "$2x + 3x = 5x$",
+        "$x \\times x = 2x$",
+        "$5x - 2x = 3$"
+      ],
+      "correctAnswer": "$2x + 3x = 5x$",
+      "explanation": "C'est la propriété de distributivité (factorisation) : on additionne les coefficients de $x$. $2x+3x = (2+3)x = 5x$. Les autres sont fausses en général : $x+x = 2x$ (pas $x^2$), $x \\times x = x^2$ (pas $2x$), $5x-2x = 3x$ (pas $3$ car le $x$ ne disparaît pas).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

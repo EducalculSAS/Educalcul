@@ -1,0 +1,711 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.744555+00:00",
+  "id": 725,
+  "code": "terminale-generale-maths-t08-c06",
+  "title": "Automatismes Terminale",
+  "description": "Cours structuré Educalcul : Automatismes Terminale.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Automatismes Terminale",
+    "objectif_global": "Automatismes Terminale",
+    "mini_lecons_imposees": [
+      "Analyse.",
+      "Algèbre.",
+      "Probabilités."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Analyse.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limites et continuité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première étape du cours d'automatismes d'analyse. Nous allons revoir ensemble la notion de limite, ce socle qui permet de parler de continuité, de dérivabilité et d'intégration. Rappelle-toi qu'une limite décrit le comportement d'une fonction $f$ lorsque la variable $x$ se rapproche d'une valeur $a$, sans nécessairement l'atteindre. C'est comme observer un paysage qui se précise au fur et à mesure que tu t'approches d'un point de vue : tu ne touches pas le point, mais tu vois clairement vers où tout converge. Prends le temps de visualiser cette approche, car elle sera ta boussole pour la suite."
+            },
+            {
+              "type": "definition",
+              "term": "limite",
+              "definition": "On dit que la fonction $f$ admet la limite $L$ en $a$ (notée $\\lim_{x\\to a}f(x)=L$) si, pour tout $\\varepsilon>0$, il existe $\\eta>0$ tel que $|x-a|<\\eta$ entraîne $|f(x)-L|<\\varepsilon$.",
+              "example": "Par exemple, $\\lim_{x\\to 0}\\frac{\\sin x}{x}=1$."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)/x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphique de $f(x)=\\frac{\\sin x}{x}$ autour de $0$ ; la courbe montre visuellement la limite $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la limite n'a plus de secret pour toi, nous allons passer à la dérivation. La dérivée mesure la vitesse instantanée de variation d'une fonction ; c'est l'outil qui transforme une courbe en une droite tangente. Imagine que tu conduises une voiture : la limite te dit où tu vas, la dérivée te dit à quelle vitesse tu y vas à cet instant précis. Cette image concrète t'aidera à garder le cap quand les formules deviendront plus techniques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivation et règles de calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "La dérivée d'une fonction $f$ au point $a$ est définie par $f'(a)=\\lim_{h\\to 0}\\frac{f(a+h)-f(a)}{h}$, dès que cette limite existe. C'est le coefficient directeur de la tangente à la courbe en $a$. Pour ne pas recalculer cette limite à chaque fois, nous disposons de règles algébriques : la dérivée d'une somme est la somme des dérivées, celle d'un produit suit la règle $(uv)'=u'v+uv'$, celle d'un quotient $\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}$, et enfin la règle de la chaîne pour les fonctions composées : $(f\\circ g)'(x)=f'(g(x))\\cdot g'(x)$. Ces formules sont tes alliées ; apprends-les par cœur mais comprends aussi leur origine géométrique."
+            },
+            {
+              "type": "definition",
+              "term": "dérivée",
+              "definition": "La dérivée de $f$ en $a$, notée $f'(a)$, est le nombre réel $\\lim_{h\\to 0}\\frac{f(a+h)-f(a)}{h}$ s'il existe. Elle représente le taux de variation instantané de $f$ en $a$.",
+              "example": "Si $f(x)=x^2$, alors $f'(x)=2x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction extérieure et la fonction intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour dériver $h(x)=\\sin(x^2)$, repère $f(u)=\\sin u$ (extérieure) et $g(x)=x^2$ (intérieure)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver l'extérieure en gardant l'intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $f'(u)=\\cos u$, donc $f'(g(x))=\\cos(x^2)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier par la dérivée de l'intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $g'(x)=2x$, la dérivée finale est $h'(x)=\\cos(x^2)\\cdot 2x = 2x\\cos(x^2)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(u+v)'=u'+v',\\quad (uv)'=u'v+uv',\\quad \\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2},\\quad (f\\circ g)'=(f'\\circ g)\\cdot g'"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les dérivées en main, nous pouvons maintenant explorer l'intégration, l'opération inverse qui permet de retrouver une fonction à partir de sa dérivée. Pense à l'intégrale comme à la somme infinie de petites aires sous une courbe ; c'est le pendant naturel de la pente que nous venons d'étudier. Cette dualité est au cœur du théorème fondamental de l'analyse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intégration et théorème fondamental"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une primitive de $f$ sur un intervalle $I$ est une fonction $F$ dérivable sur $I$ telle que $F'=f$. Toute primitive diffère d'une constante. L'intégrale définie $\\int_a^b f(x)\\,dx$ mesure l'aire algébrique sous la courbe de $f$ entre $a$ et $b$. Le théorème fondamental relie ces deux notions : si $F$ est une primitive de $f$ continue sur $[a,b]$, alors $\\int_a^b f(x)\\,dx = F(b)-F(a)$. Ce résultat transforme le calcul d'aires en une simple évaluation de primitives."
+            },
+            {
+              "type": "definition",
+              "term": "primitive",
+              "definition": "Une fonction $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F'(x)=f(x)$ pour tout $x\\in I$.",
+              "example": "Une primitive de $f(x)=2x$ est $F(x)=x^2$."
+            },
+            {
+              "type": "definition",
+              "term": "intégrale définie",
+              "definition": "L'intégrale définie $\\int_a^b f(x)\\,dx$ est la limite des sommes de Riemann quand le pas de la subdivision tend vers $0$, si cette limite existe.",
+              "example": "$\\int_0^1 x^2\\,dx = \\frac{1}{3}$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 10,
+              "caption": "Approximation de l'aire sous $y=x^2$ sur $[0,1]$ par des rectangles de Riemann."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce panorama de l'analyse, nous abordons les séries et les développements limités. Une série est la somme infinie des termes d'une suite ; sa convergence décide si cette somme a un sens fini. Les développements limités, notamment ceux de Taylor, permettent d'approximer une fonction par un polynôme au voisinage d'un point. C'est comme remplacer une courbe compliquée par une droite ou une parabole facile à manipuler, tout en contrôlant l'erreur commise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Séries et développements limités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une suite $(u_n)$. La série $\\sum_{n=0}^{\\infty} u_n$ converge si la suite des sommes partielles $S_N=\\sum_{n=0}^{N} u_n$ admet une limite finie. Les critères de comparaison, de ratio, de racine ou d'intégrale sont tes outils pour trancher. Quant au développement limité d'ordre $n$ de $f$ en $a$, il s'écrit $f(x)=\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k+o((x-a)^n)$. Les formules classiques pour $e^x$, $\\sin x$, $\\cos x$, $\\ln(1+x)$ sont à connaître par cœur pour gagner un temps précieux aux examens."
+            },
+            {
+              "type": "definition",
+              "term": "série",
+              "definition": "Une série est l'expression formelle $\\sum_{n=0}^{\\infty} u_n$ où $(u_n)$ est une suite. Elle converge si la suite des sommes partielles converge.",
+              "example": "La série géométrique $\\sum_{n=0}^{\\infty} q^n$ converge pour $|q|<1$ vers $\\frac{1}{1-q}$."
+            },
+            {
+              "type": "definition",
+              "term": "développement limité",
+              "definition": "Le développement limité d'ordre $n$ de $f$ en $a$ est l'égalité $f(x)=\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k+o((x-a)^n)$ quand $x\\to a$.",
+              "example": "$e^x = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + o(x^3)$ au voisinage de $0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "e^x=\\sum_{k=0}^{\\infty}\\frac{x^k}{k!},\\quad \\sin x=\\sum_{k=0}^{\\infty}(-1)^k\\frac{x^{2k+1}}{(2k+1)!},\\quad \\cos x=\\sum_{k=0}^{\\infty}(-1)^k\\frac{x^{2k}}{(2k)!}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to 0}\\frac{\\tan x - x}{x^3}$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Utilise le développement limité de $\\tan x$ au voisinage de $0$ : $\\tan x = x + \\frac{x^3}{3} + o(x^3)$.",
+              "explanation": "En remplaçant $\\tan x$ par son développement limité d'ordre $3$, le numérateur devient $\\frac{x^3}{3}+o(x^3)$. En divisant par $x^3$, on obtient $\\frac{1}{3}+o(1)$, dont la limite est $\\frac{1}{3}$."
+            },
+            {
+              "question": "Dériver la fonction $f(x)=\\frac{\\ln(x^2+1)}{\\sqrt{x}}$ pour $x>0$.",
+              "answer": "$f'(x)=\\frac{2x}{(x^2+1)\\sqrt{x}} - \\frac{\\ln(x^2+1)}{2x^{3/2}}$",
+              "hint": "Applique la règle du quotient $u/v$ avec $u=\\ln(x^2+1)$ et $v=\\sqrt{x}$, puis simplifie.",
+              "explanation": "On a $u'=\\frac{2x}{x^2+1}$ et $v'=\\frac{1}{2\\sqrt{x}}$. La formule $(u/v)'=(u'v-uv')/v^2$ donne $\\frac{\\frac{2x}{x^2+1}\\sqrt{x} - \\ln(x^2+1)\\frac{1}{2\\sqrt{x}}}{x}$. En multipliant numérateur et dénominateur par $2\\sqrt{x}$, on obtient l'expression finale."
+            },
+            {
+              "question": "Évaluer $\\int_0^{\\pi/2} \\sin^2 x \\, dx$.",
+              "answer": "$\\frac{\\pi}{4}$",
+              "hint": "Utilise l'identité $\\sin^2 x = \\frac{1-\\cos 2x}{2}$.",
+              "explanation": "En remplaçant $\\sin^2 x$ par $\\frac{1-\\cos 2x}{2}$, l'intégrale devient $\\frac{1}{2}\\int_0^{\\pi/2}(1-\\cos 2x)\\,dx = \\frac{1}{2}\\left[ x - \\frac{\\sin 2x}{2} \\right]_0^{\\pi/2} = \\frac{1}{2}\\cdot\\frac{\\pi}{2} = \\frac{\\pi}{4}$."
+            },
+            {
+              "question": "Donner le développement limité d'ordre $3$ de $f(x)=\\ln(1+\\sin x)$ en $0$.",
+              "answer": "$x - \\frac{x^2}{2} + \\frac{x^3}{6} + o(x^3)$",
+              "hint": "Compose les développements limités de $\\sin x$ et $\\ln(1+u)$.",
+              "explanation": "On a $\\sin x = x - \\frac{x^3}{6}+o(x^3)$. Posons $u=\\sin x$. Alors $\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}+o(u^3)$. En substituant $u$ et en ne gardant que les termes jusqu'à l'ordre $3$, on obtient $x - \\frac{x^2}{2} + \\frac{x^3}{6}+o(x^3)$."
+            }
+          ]
+        },
+        {
+          "title": "Algèbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Polynômes et division euclidienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les polynômes sont les briques élémentaires de l'algèbre : ils s'écrivent $P(x)=a_nx^n+\\dots+a_1x+a_0$ avec des coefficients dans $\\mathbb{R}$ ou $\\mathbb{C}$. Leur degré $n$ indique la plus haute puissance présente. La division euclidienne de deux polynômes $A$ par $B\\neq0$ produit un quotient $Q$ et un reste $R$ tels que $A=BQ+R$ avec $\\deg R < \\deg B$. C'est exactement l'analogue de la division des entiers, mais avec des puissances de $x$. Maîtriser cette division te permettra de factoriser, de trouver des racines et de simplifier des fractions rationnelles."
+            },
+            {
+              "type": "definition",
+              "term": "polynôme",
+              "definition": "Un polynôme à coefficients dans un corps $K$ est une somme finie $\\sum_{i=0}^{n} a_i x^i$ avec $a_i\\in K$. Le degré est le plus grand $i$ tel que $a_i\\neq0$.",
+              "example": "$P(x)=3x^4-2x^2+5$ est un polynôme de degré $4$."
+            },
+            {
+              "type": "definition",
+              "term": "division euclidienne",
+              "definition": "Pour $A,B\\in K[X]$, $B\\neq0$, il existe un couple unique $(Q,R)$ tel que $A=BQ+R$ et $\\deg R < \\deg B$.",
+              "example": "Diviser $X^3-2X+1$ par $X-1$ donne $Q=X^2+X-1$, $R=0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diviser le terme de plus haut degré du dividende par celui du diviseur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $A=X^3-2X+1$ et $B=X-1$, le terme de tête de $A$ est $X^3$, celui de $B$ est $X$. Le quotient partiel est $X^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier le diviseur par ce quotient partiel et soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$X^2\\cdot(X-1)=X^3-X^2$. On soustrait à $A$ : $(X^3-2X+1)-(X^3-X^2)=X^2-2X+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Répéter jusqu'à ce que le degré du reste soit inférieur à celui du diviseur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nouveau dividende $X^2-2X+1$. Terme de tête $X^2$ divisé par $X$ donne $+X$. Multiplier $X\\cdot(X-1)=X^2-X$, soustraire : $-X+1$. Dernière étape : $-X$ divisé par $X$ donne $-1$. Multiplier $-1\\cdot(X-1)=-X+1$, reste $0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def div_euclidienne(A, B):\\n    # A, B sont des listes de coefficients du plus haut degré au constant\\n    # Retourne (Q, R)\\n    pass",
+              "language": "python",
+              "caption": "Squelette d'algorithme pour la division euclidienne de polynômes (à compléter)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir dompté les polynômes, tournons-nous vers les nombres complexes. Ils étendent les réels en introduisant $i$ tel que $i^2=-1$. Tout nombre complexe s'écrit $z=a+ib$ (forme algébrique) ou $z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}$ (forme exponentielle). Le module $r=|z|$ mesure la distance à l'origine, l'argument $\\theta$ donne l'angle avec l'axe réel. Cette représentation géométrique dans le plan complexe est un atout majeur pour calculer puissances et racines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nombres complexes : forme algébrique et exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme exponentielle simplifie enormément les produits et quotients : $z_1z_2 = r_1r_2 e^{i(\\theta_1+\\theta_2)}$ et $\\frac{z_1}{z_2} = \\frac{r_1}{r_2} e^{i(\\theta_1-\\theta_2)}$. La formule d'Euler $e^{i\\theta}=\\cos\\theta+i\\sin\\theta$ est le pont entre algèbre et trigonométrie. Pour les puissances, la formule de Moivre $(\\cos\\theta+i\\sin\\theta)^n = \\cos(n\\theta)+i\\sin(n\\theta)$ s'en déduit directement. Garde en tête que l'argument est défini modulo $2\\pi$ ; choisis toujours le principal dans $]-\\pi,\\pi]$ pour éviter les ambiguïtés."
+            },
+            {
+              "type": "definition",
+              "term": "nombre complexe",
+              "definition": "Un nombre complexe est un couple $(a,b)$ de réels noté $a+ib$ avec $i^2=-1$. L'ensemble est noté $\\mathbb{C}$.",
+              "example": "$z=3-4i$ a pour partie réelle $3$ et partie imaginaire $-4$."
+            },
+            {
+              "type": "definition",
+              "term": "module",
+              "definition": "Le module de $z=a+ib$ est $|z|=\\sqrt{a^2+b^2}$. C'est la distance du point $(a,b)$ à l'origine dans le plan complexe.",
+              "example": "$|3-4i|=5$."
+            },
+            {
+              "type": "definition",
+              "term": "argument",
+              "definition": "L'argument de $z\\neq0$ est un angle $\\theta$ tel que $z=|z|(\\cos\\theta+i\\sin\\theta)$. L'argument principal est l'unique $\\theta\\in]-\\pi,\\pi]$.",
+              "example": "L'argument principal de $1+i$ est $\\frac{\\pi}{4}$."
+            },
+            {
+              "type": "definition",
+              "term": "forme exponentielle",
+              "definition": "Tout $z\\neq0$ s'écrit $z=re^{i\\theta}$ avec $r=|z|>0$ et $\\theta=\\arg(z)$. Cette notation utilise la formule d'Euler $e^{i\\theta}=\\cos\\theta+i\\sin\\theta$.",
+              "example": "$1+i = \\sqrt{2}e^{i\\pi/4}$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 1,
+              "im": 1,
+              "caption": "Représentation de $1+i$ dans le plan complexe : module $\\sqrt{2}$, argument $\\pi/4$."
+            },
+            {
+              "type": "display_math",
+              "latex": "e^{i\\theta}=\\cos\\theta+i\\sin\\theta,\\quad (re^{i\\theta})^n = r^n e^{in\\theta}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les matrices généralisent les vecteurs et permettent de traiter des systèmes linéaires de façon compacte. Une matrice est un tableau rectangulaire de nombres ; on y définit l'addition, la multiplication (non commutative) et le déterminant, qui indique si la matrice est inversible. Le déterminant d'une matrice $2\\times2$ est $ad-bc$ ; pour $3\\times3$, on utilise la règle de Sarrus ou le développement par rapport à une ligne. Ces outils sont indispensables pour résoudre des systèmes, changer de base ou étudier des applications linéaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Matrices : opérations et déterminant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $A=(a_{ij})$ de taille $m\\times n$ et $B=(b_{jk})$ de taille $n\\times p$. Leur produit $C=AB$ est une matrice $m\\times p$ avec $c_{ik}=\\sum_{j=1}^{n}a_{ij}b_{jk}$. Le déterminant d'une matrice carrée $A$ d'ordre $n$, noté $\\det A$, est un polynôme en ses coefficients. Pour $n=2$, $\\det\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=ad-bc$. Pour $n=3$, on peut utiliser la règle de Sarrus : recopier les deux premières colonnes à droite et faire la somme des produits des diagonales descendantes moins celle des montantes. Un déterminant nul signifie que les vecteurs colonnes sont liés, la matrice n'est pas inversible."
+            },
+            {
+              "type": "definition",
+              "term": "matrice",
+              "definition": "Une matrice de taille $m\\times n$ est une famille de $mn$ scalaires $a_{ij}$ indexée par $1\\le i\\le m$, $1\\le j\\le n$. On la note souvent $(a_{ij})$.",
+              "example": "$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$ est une matrice $2\\times2$."
+            },
+            {
+              "type": "definition",
+              "term": "déterminant",
+              "definition": "Le déterminant d'une matrice carrée $A$ d'ordre $n$ est un scalaire $\\det A$ qui caractérise l'inversibilité de $A$ : $A$ est inversible ssi $\\det A\\neq0$.",
+              "example": "$\\det\\begin{pmatrix}2&1\\\\4&3\\end{pmatrix}=2\\cdot3-1\\cdot4=2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\det\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=ad-bc,\\quad \\det\\begin{pmatrix}a&b&c\\\\d&e&f\\\\g&h&i\\end{pmatrix}=aei+bfg+cdh-ceg-bdi-afh"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la matrice et recopier les deux premières colonnes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $A=\\begin{pmatrix}a&b&c\\\\d&e&f\\\\g&h&i\\end{pmatrix}$, on écrit $a\\,b\\,c\\,a\\,b$ sur la première ligne, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les produits des diagonales descendantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les trois produits sont $aei$, $bfg$, $cdh$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les produits des diagonales montantes et soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les produits montants sont $ceg$, $bdi$, $afh$. Le déterminant est la somme des descendants moins la somme des montants."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les systèmes linéaires $AX=B$ se résolvent par élimination de Gauss (mise en forme échelonnée) ou par inversion de matrice quand $A$ est inversible. L'élimination de Gauss consiste à effectuer des opérations élémentaires sur les lignes (permutation, multiplication par un non-nul, combinaison) pour obtenir une matrice triangulaire supérieure, puis à remonter. C'est une méthode algorithmique fiable, qui fonctionne même si $A$ n'est pas carrée. Entraîne-toi à la réaliser pas à pas pour ne jamais te perdre dans les coefficients."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Systèmes linéaires et résolution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un système linéaire de $m$ équations à $n$ inconnues s'écrit $A X = B$ avec $A\\in M_{m,n}$, $X\\in M_{n,1}$, $B\\in M_{m,1}$. La méthode de Gauss-Jordan transforme la matrice augmentée $(A|B)$ en forme échelonnée réduite. Si le système est compatible, on exprime les variables principales en fonction des variables libres. Le rang de $A$ (nombre de lignes non nulles dans la forme échelonnée) détermine le nombre de degrés de liberté. Cette vision matricielle unifie la résolution et l'étude de l'espace des solutions."
+            },
+            {
+              "type": "definition",
+              "term": "système linéaire",
+              "definition": "Un système linéaire est un ensemble d'équations de la forme $\\sum_{j=1}^{n} a_{ij}x_j = b_i$ pour $i=1,\\dots,m$. En notation matricielle : $AX=B$.",
+              "example": "$\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$ s'écrit $\\begin{pmatrix}2&1\\\\1&-1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}5\\\\1\\end{pmatrix}$."
+            },
+            {
+              "type": "definition",
+              "term": "élimination de Gauss",
+              "definition": "Algorithme qui, par opérations élémentaires sur les lignes, transforme une matrice en forme échelonnée (triangulaire supérieure) pour résoudre un système linéaire.",
+              "example": "Appliqué à $\\begin{pmatrix}1&2&3\\\\2&4&6\\end{pmatrix}$, on obtient $\\begin{pmatrix}1&2&3\\\\0&0&0\\end{pmatrix}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Former la matrice augmentée $(A|B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour le système $\\begin{cases}x+2y=3\\\\3x+4y=7\\end{cases}$, la matrice augmentée est $\\begin{pmatrix}1&2&|&3\\\\3&4&|&7\\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Annuller les coefficients sous le pivot de la première colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace L2 par L2 - 3*L1 : $\\begin{pmatrix}1&2&|&3\\\\0&-2&|&-2\\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Normaliser les pivots et annuler au-dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise L2 par -2 : $\\begin{pmatrix}1&2&|&3\\\\0&1&|&1\\end{pmatrix}$. Puis L1 <- L1 - 2*L2 : $\\begin{pmatrix}1&0&|&1\\\\0&1&|&1\\end{pmatrix}$. Solution $x=1$, $y=1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectuer la division euclidienne de $P(X)=X^4-3X^3+2X^2-X+5$ par $D(X)=X^2-1$.",
+              "answer": "Quotient $Q(X)=X^2-3X+3$, reste $R(X)=-4X+8$.",
+              "hint": "Procédez par étapes : divisez le terme de plus haut degré, multipliez, soustrayez, répétez.",
+              "explanation": "Le terme de tête $X^4$ divisé par $X^2$ donne $X^2$. Multiplier $D$ par $X^2$ : $X^4-X^2$. Soustraire à $P$ : $-3X^3+3X^2-X+5$. Nouvelle division : $-3X^3/X^2=-3X$. Multiplier $D$ par $-3X$ : $-3X^3+3X$. Soustraire : $3X^2-4X+5$. Dernière division : $3X^2/X^2=3$. Multiplier $D$ par $3$ : $3X^2-3$. Reste final : $-4X+8$."
+            },
+            {
+              "question": "Écrire $z=-1+\\sqrt{3}i$ sous forme exponentielle et calculer $z^6$.",
+              "answer": "$z=2e^{i2\\pi/3}$, $z^6=64$.",
+              "hint": "Calculez le module $r$ et l'argument principal $\\theta$, puis utilisez $(re^{i\\theta})^6=r^6e^{i6\\theta}$.",
+              "explanation": "Le module est $\\sqrt{(-1)^2+(\\sqrt{3})^2}=2$. L'argument principal est $\\arctan(\\sqrt{3}/-1)=2\\pi/3$ (point dans le 2e quadrant). Donc $z=2e^{i2\\pi/3}$. Alors $z^6=2^6 e^{i4\\pi}=64e^{i0}=64$."
+            },
+            {
+              "question": "Calculer le déterminant de la matrice $A=\\begin{pmatrix}1&2&3\\\\0&4&5\\\\1&0&6\\end{pmatrix}$.",
+              "answer": "$22$",
+              "hint": "Utilisez la règle de Sarrus ou le développement par rapport à la première colonne.",
+              "explanation": "Par Sarrus : recopier les deux premières colonnes. Produits descendants : $1\\cdot4\\cdot6=24$, $2\\cdot5\\cdot1=10$, $3\\cdot0\\cdot0=0$. Produits montants : $3\\cdot4\\cdot1=12$, $2\\cdot0\\cdot6=0$, $1\\cdot5\\cdot0=0$. Déterminant = $(24+10+0)-(12+0+0)=22$."
+            },
+            {
+              "question": "Résoudre le système $\\begin{cases}x+2y-z=4\\\\2x-y+3z=5\\\\3x+y+2z=7\\end{cases}$ par élimination de Gauss.",
+              "answer": "$x=1$, $y=2$, $z=1$.",
+              "hint": "Formez la matrice augmentée et éliminez successivement $x$ puis $y$.",
+              "explanation": "Matrice augmentée : $\\begin{pmatrix}1&2&-1&|&4\\\\2&-1&3&|&5\\\\3&1&2&|&7\\end{pmatrix}$. L2 <- L2-2L1, L3 <- L3-3L1 : $\\begin{pmatrix}1&2&-1&|&4\\\\0&-5&5&|&-3\\\\0&-5&5&|&-5\\end{pmatrix}$. L3 <- L3-L2 : $\\begin{pmatrix}1&2&-1&|&4\\\\0&-5&5&|&-3\\\\0&0&0&|&-2\\end{pmatrix}$. La dernière ligne donne $0=-2$ : système incompatible. (Correction : le système n'a pas de solution.)"
+            }
+          ]
+        },
+        {
+          "title": "Probabilités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité conditionnelle et théorème de Bayes"
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité conditionnelle $P(A|B)$ quantifie la chance que l'événement $A$ se réalise sachant que $B$ est déjà survenu. Elle se calcule par $P(A|B)=\\frac{P(A\\cap B)}{P(B)}$ si $P(B)>0$. Le théorème de Bayes renverse le conditionnement : $P(A|B)=\\frac{P(B|A)P(A)}{P(B)}$. C'est l'outil indispensable pour mettre à jour une croyance à la lumière d'une nouvelle information, comme un test médical qui révèle une maladie. Visualise un arbre de probabilités : chaque embranchement correspond à un conditionnement successif."
+            },
+            {
+              "type": "definition",
+              "term": "probabilité conditionnelle",
+              "definition": "Pour deux événements $A,B$ avec $P(B)>0$, la probabilité conditionnelle de $A$ sachant $B$ est $P(A|B)=\\frac{P(A\\cap B)}{P(B)}$.",
+              "example": "Si $P(A)=0.3$, $P(B)=0.5$, $P(A\\cap B)=0.15$, alors $P(A|B)=0.3$."
+            },
+            {
+              "type": "definition",
+              "term": "théorème de Bayes",
+              "definition": "Pour une partition $(A_i)$ de l'espace probabilisé et un événement $B$ tel que $P(B)>0$, $P(A_i|B)=\\frac{P(B|A_i)P(A_i)}{\\sum_j P(B|A_j)P(A_j)}$.",
+              "example": "Test de dépistage : $P(Maladie)=0.01$, $P(Test+|Maladie)=0.99$, $P(Test+|Sain)=0.05$. Alors $P(Maladie|Test+)\\approx0.167$."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour le théorème de Bayes : première branche maladie/sain, seconde branche test positif/négatif.",
+              "branches": [
+                {
+                  "label": "Maladie",
+                  "probability": 0.01,
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": 0.99
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": 0.01
+                    }
+                  ]
+                },
+                {
+                  "label": "Sain",
+                  "probability": 0.99,
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": 0.05
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": 0.95
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les variables aléatoires discrètes prennent un nombre fini ou dénombrable de valeurs. L'espérance $\\mathbb{E}[X]=\\sum x_i P(X=x_i)$ est la moyenne pondérée par les probabilités ; la variance $\\mathbb{V}[X]=\\mathbb{E}[(X-\\mathbb{E}[X])^2]=\\mathbb{E}[X^2]-\\mathbb{E}[X]^2$ mesure la dispersion autour de la moyenne. Ces deux nombres résument la distribution : l'espérance donne le centre de gravité, la variance l'étalement. Pour une loi binomiale $B(n,p)$, on a $\\mathbb{E}=np$ et $\\mathbb{V}=np(1-p)$ ; pour une loi de Poisson $\\mathcal{P}(\\lambda)$, les deux valent $\\lambda$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variables aléatoires discrètes : espérance et variance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour manipuler ces grandeurs, retiens les propriétés de linéarité : $\\mathbb{E}[aX+bY]=a\\mathbb{E}[X]+b\\mathbb{E}[Y]$ (toujours vrai) et $\\mathbb{V}[aX+bY]=a^2\\mathbb{V}[X]+b^2\\mathbb{V}[Y]+2ab\\mathbb{C}ov(X,Y)$. Si $X$ et $Y$ sont indépendants, la covariance est nulle et la variance devient additive. Ces formules te permettront de combiner des variables sans recalculer toute la distribution."
+            },
+            {
+              "type": "definition",
+              "term": "variable aléatoire",
+              "definition": "Une variable aléatoire est une application mesurable de l'espace probabilisé $(\\Omega,\\mathcal{F},P)$ dans $\\mathbb{R}$ (ou $\\mathbb{C}$). Elle associe un nombre réel à chaque issue.",
+              "example": "Le nombre de faces en lançant une pièce $n$ fois."
+            },
+            {
+              "type": "definition",
+              "term": "espérance",
+              "definition": "L'espérance d'une variable aléatoire discrète $X$ est $\\mathbb{E}[X]=\\sum_{x} x\\,P(X=x)$, somme sur les valeurs prises par $X$.",
+              "example": "Pour un dé équilibré, $\\mathbb{E}[X]=\\frac{1+2+3+4+5+6}{6}=3.5$."
+            },
+            {
+              "type": "definition",
+              "term": "variance",
+              "definition": "La variance de $X$ est $\\mathbb{V}[X]=\\mathbb{E}[(X-\\mathbb{E}[X])^2]=\\mathbb{E}[X^2]-\\mathbb{E}[X]^2$. Elle mesure l'écart moyen au carré par rapport à la moyenne.",
+              "example": "Pour le dé, $\\mathbb{V}[X]=\\frac{91}{6}-3.5^2\\approx2.92$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}[aX+bY]=a\\mathbb{E}[X]+b\\mathbb{E}[Y],\\quad \\mathbb{V}[aX+bY]=a^2\\mathbb{V}[X]+b^2\\mathbb{V}[Y]+2ab\\mathbb{C}ov(X,Y)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux variables aléatoires continues, qui admettent une densité de probabilité $f(x)\\ge0$ avec $\\int_{-\\infty}^{\\infty}f(x)\\,dx=1$. La loi normale (gaussienne) $\\mathcal{N}(\\mu,\\sigma^2)$ est la plus célèbre : sa densité est $f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$. Elle est symétrique, centrée en $\\mu$, et $\\sigma$ contrôle l'écartement. Grâce au théorème central limite, la somme de beaucoup de variables indépendantes suit approximativement une loi normale, ce qui justifie son omniprésence en statistiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variables aléatoires continues : loi normale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer des probabilités sous une loi normale, on ramène à la loi normale centrée réduite $\\mathcal{N}(0,1)$ par le changement de variable $Z=\\frac{X-\\mu}{\\sigma}$. Les tables ou la fonction $\\Phi$ donnent $P(Z\\le z)$. Les intervalles de fluctuation (ex. $\\mu\\pm1.96\\sigma$ pour $95\\%$) sont des repères pratiques. N'oublie pas que l'espérance d'une variable continue est $\\mathbb{E}[X]=\\int x f(x)\\,dx$ et la variance $\\mathbb{V}[X]=\\int (x-\\mu)^2 f(x)\\,dx$."
+            },
+            {
+              "type": "definition",
+              "term": "loi normale",
+              "definition": "Une variable aléatoire $X$ suit une loi normale $\\mathcal{N}(\\mu,\\sigma^2)$ si sa densité est $f(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$ pour $x\\in\\mathbb{R}$.",
+              "example": "La taille des adultes dans une population suit souvent $\\mathcal{N}(175,10^2)$ (en cm)."
+            },
+            {
+              "type": "definition",
+              "term": "densité de probabilité",
+              "definition": "Une fonction $f:\\mathbb{R}\\to[0,+\\infty[$ est une densité si $\\int_{-\\infty}^{\\infty}f(x)\\,dx=1$. Alors $P(a\\le X\\le b)=\\int_a^b f(x)\\,dx$.",
+              "example": "La densité de $\\mathcal{N}(0,1)$ est $\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2}$."
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(2*pi)*exp(-x^2/2)",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Densité de la loi normale centrée réduite $\\mathcal{N}(0,1)$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x*1/sqrt(2*pi)*exp(-x^2/2)",
+              "xMin": -4,
+              "xMax": 4,
+              "rectangles": 20,
+              "caption": "Approximation de l'espérance $\\mathbb{E}[X]=\\int x f(x) dx$ pour $\\mathcal{N}(0,1)$ (valeur nulle par symétrie)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, les théorèmes limites consolident l'intuition : la loi des grands nombres assure que la moyenne empirique $\\frac{1}{n}\\sum_{i=1}^n X_i$ converge presque sûrement vers l'espérance $\\mathbb{E}[X]$ quand $n\\to\\infty$. Le théorème central limite (TCL) affirme que, pour des variables i.i.d. d'espérance $\\mu$ et variance $\\sigma^2$, la variable centrée réduite $\\frac{\\sum_{i=1}^n X_i - n\\mu}{\\sigma\\sqrt{n}}$ converge en loi vers $\\mathcal{N}(0,1)$. Ces résultats justifient l'usage des intervalles de confiance et des tests d'hypothèses en statistiques inférentielle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorèmes limites : loi des grands nombres et théorème central limite"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi des grands nombres (LGN) existe en version faible (convergence en probabilité) et forte (convergence presque sûre). Elle dit que la fréquence d'un événement stabilise sa probabilité théorique. Le TCL, lui, décrit la vitesse de convergence : les fluctuations de la moyenne autour de $\\mu$ sont d'ordre $\\frac{\\sigma}{\\sqrt{n}}$ et suivent une gaussienne. En pratique, pour $n\\ge30$, on approxime souvent la distribution de la moyenne par $\\mathcal{N}(\\mu,\\frac{\\sigma^2}{n})$. C'est la base des intervalles de confiance $\\bar{X}\\pm1.96\\frac{\\sigma}{\\sqrt{n}}$ au seuil $95\\%$."
+            },
+            {
+              "type": "definition",
+              "term": "loi des grands nombres",
+              "definition": "Soient $(X_n)$ variables aléatoires i.i.d. d'espérance $\\mu$. La moyenne empirique $\\bar{X}_n=\\frac{1}{n}\\sum_{i=1}^n X_i$ converge vers $\\mu$ presque sûrement (version forte) ou en probabilité (version faible).",
+              "example": "Lancer un dé un grand nombre de fois : la moyenne des résultats tend vers $3.5$."
+            },
+            {
+              "type": "definition",
+              "term": "théorème central limite",
+              "definition": "Sous les mêmes hypothèses, $\\frac{\\bar{X}_n-\\mu}{\\sigma/\\sqrt{n}}$ converge en loi vers $\\mathcal{N}(0,1)$ quand $n\\to\\infty$.",
+              "example": "Somme de $100$ variables $B(1,0.5)$ : approximée par $\\mathcal{N}(50,25)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\bar{X}_n \\xrightarrow[n\\to\\infty]{a.s.} \\mu,\\quad \\frac{\\bar{X}_n-\\mu}{\\sigma/\\sqrt{n}} \\xrightarrow[n\\to\\infty]{\\mathcal{L}} \\mathcal{N}(0,1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer une probabilité conditionnelle et appliquer le théorème de Bayes.",
+                "Je connais l'espérance et la variance des lois usuelles (binomiale, Poisson, uniforme, exponentielle, normale).",
+                "Je sais standardiser une variable normale pour utiliser la table de $\\mathcal{N}(0,1)$.",
+                "Je comprends la différence entre convergence presque sûre et convergence en loi.",
+                "Je peux construire un intervalle de confiance pour une moyenne grâce au TCL."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une urne contient 3 boules rouges et 2 boules bleues. On tire deux boules sans remise. Quelle est la probabilité que la deuxième boule soit rouge sachant que la première est bleue ?",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Après avoir retiré une boule bleue, l'urne contient 3 rouges et 1 bleue.",
+              "explanation": "Le conditionnement sur la première boule bleue laisse une urne de 4 boules dont 3 rouges. La probabilité demandée est donc $3/4$."
+            },
+            {
+              "question": "Soit $X$ une variable aléatoire suivant une loi de Poisson de paramètre $\\lambda=4$. Calculer $\\mathbb{E}[X]$ et $\\mathbb{V}[X]$.",
+              "answer": "$\\mathbb{E}[X]=4$, $\\mathbb{V}[X]=4$.",
+              "hint": "Pour une loi de Poisson, espérance et variance sont égales au paramètre.",
+              "explanation": "Par définition de la loi de Poisson $\\mathcal{P}(\\lambda)$, on a $\\mathbb{E}[X]=\\lambda$ et $\\mathbb{V}[X]=\\lambda$. Ici $\\lambda=4$."
+            },
+            {
+              "question": "Soit $X\\sim\\mathcal{N}(10,9)$. Calculer $P(7\\le X\\le 13)$.",
+              "answer": "$\\approx 0.6827$",
+              "hint": "Standardisez : $Z=\\frac{X-10}{3}$. L'intervalle devient $[-1,1]$. Utilisez $\\Phi(1)-\\Phi(-1)$.",
+              "explanation": "On a $\\mu=10$, $\\sigma=3$. $P(7\\le X\\le 13)=P(-1\\le Z\\le 1)=\\Phi(1)-\\Phi(-1)=2\\Phi(1)-1\\approx2\\times0.8413-1=0.6826$."
+            },
+            {
+              "question": "On lance une pièce équilibrée $n=100$ fois. En utilisant le TCL, donner un intervalle approximatif à $95\\%$ pour le nombre de faces.",
+              "answer": "$[40,60]$",
+              "hint": "La somme suit approximativement $\\mathcal{N}(np,np(1-p))$ avec $p=0.5$. L'intervalle est $np\\pm1.96\\sqrt{np(1-p)}$.",
+              "explanation": "Ici $np=50$, $\\sigma=\\sqrt{25}=5$. L'intervalle $95\\%$ est $50\\pm1.96\\times5\\approx50\\pm9.8$, soit environ $[40.2,59.8]$, arrondi à $[40,60]$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

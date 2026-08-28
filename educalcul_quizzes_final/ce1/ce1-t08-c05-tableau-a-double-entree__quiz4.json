@@ -1,0 +1,236 @@
+{
+  "_status": "done",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Tableau à double entrée",
+  "title": "Quiz : Lire et utiliser un tableau à double entrée",
+  "questions": [
+    {
+      "text": "Regarde le tableau. Combien y a-t-il de carrés bleus ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Dans le tableau, il faut chercher la ligne \"Carré\" et la colonne \"Bleu\". À l'intersection, on trouve le nombre $3$. Les autres nombres correspondent à d'autres cases : $2$ carrés rouges, $1$ carré vert, $6$ carrés au total.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rouge",
+          "Bleu",
+          "Vert",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Carré",
+            "2",
+            "3",
+            "1",
+            "6"
+          ],
+          [
+            "Triangle",
+            "1",
+            "4",
+            "2",
+            "7"
+          ],
+          [
+            "Rond",
+            "3",
+            "2",
+            "1",
+            "6"
+          ],
+          [
+            "Total",
+            "6",
+            "9",
+            "4",
+            "19"
+          ]
+        ],
+        "caption": "Répartition des formes par couleur"
+      }
+    },
+    {
+      "text": "D'après le même tableau, quel est le nombre total de triangles ?",
+      "options": [
+        "4",
+        "6",
+        "7",
+        "9"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Le total de triangles se trouve à la fin de la ligne \"Triangle\", dans la colonne \"Total\". On lit $7$. Le nombre $4$ correspond aux triangles bleus seulement, $6$ au total des carrés et $9$ au total des formes bleues.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rouge",
+          "Bleu",
+          "Vert",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Carré",
+            "2",
+            "3",
+            "1",
+            "6"
+          ],
+          [
+            "Triangle",
+            "1",
+            "4",
+            "2",
+            "7"
+          ],
+          [
+            "Rond",
+            "3",
+            "2",
+            "1",
+            "6"
+          ],
+          [
+            "Total",
+            "6",
+            "9",
+            "4",
+            "19"
+          ]
+        ],
+        "caption": "Répartition des formes par couleur"
+      }
+    },
+    {
+      "text": "Y a-t-il plus de formes rouges ou plus de formes bleues au total ?",
+      "options": [
+        "Plus de formes rouges",
+        "Plus de formes bleues",
+        "Autant de rouges que de bleues",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Plus de formes bleues",
+      "explanation": "Il faut comparer les totaux de la dernière ligne : total \"Rouge\" = $6$ et total \"Bleu\" = $9$. Comme $9$ est plus grand que $6$, il y a plus de formes bleues que de formes rouges.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rouge",
+          "Bleu",
+          "Vert",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Carré",
+            "2",
+            "3",
+            "1",
+            "6"
+          ],
+          [
+            "Triangle",
+            "1",
+            "4",
+            "2",
+            "7"
+          ],
+          [
+            "Rond",
+            "3",
+            "2",
+            "1",
+            "6"
+          ],
+          [
+            "Total",
+            "6",
+            "9",
+            "4",
+            "19"
+          ]
+        ],
+        "caption": "Répartition des formes par couleur"
+      }
+    },
+    {
+      "text": "Le tableau montre qu'il y a 4 formes vertes au total. On sait qu'il y a 1 carré vert et 2 triangles verts. Combien y a-t-il de ronds verts ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "1",
+      "explanation": "Le total des formes vertes est $4$. On connaît déjà le carré vert ($1$) et les triangles verts ($2$). On fait $4 - 1 - 2 = 1$. Il y a donc $1$ rond vert. On peut vérifier dans le tableau à l'intersection de la ligne \"Rond\" et la colonne \"Vert\".",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Rouge",
+          "Bleu",
+          "Vert",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Carré",
+            "2",
+            "3",
+            "1",
+            "6"
+          ],
+          [
+            "Triangle",
+            "1",
+            "4",
+            "2",
+            "7"
+          ],
+          [
+            "Rond",
+            "3",
+            "2",
+            "1",
+            "6"
+          ],
+          [
+            "Total",
+            "6",
+            "9",
+            "4",
+            "19"
+          ]
+        ],
+        "caption": "Répartition des formes par couleur"
+      }
+    },
+    {
+      "text": "On ajoute 2 carrés rouges dans le tableau. Quel devient le nouveau total de carrés ?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Au départ, le total des carrés est $6$. On ajoute $2$ carrés rouges. Il faut faire l'addition $6 + 2 = 8$. Le nouveau total de carrés est $8$. Le total des formes rouges passe de $6$ à $8$ et le total général passe de $19$ à $21$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

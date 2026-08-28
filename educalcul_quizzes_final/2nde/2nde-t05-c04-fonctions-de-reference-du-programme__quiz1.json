@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Carré / inverse / racine ou autres prévues",
+  "title": "Quiz sur les fonctions carré, inverse et racine carrée",
+  "questions": [
+    {
+      "text": "Quel est l'ensemble de définition de la fonction inverse $f(x)=\\frac{1}{x}$ ?",
+      "options": [
+        "$\\mathbb{R}$",
+        "$\\mathbb{R}^*$",
+        "$\\mathbb{R}_+$",
+        "$\\mathbb{R}_-$"
+      ],
+      "correctAnswer": "$\\mathbb{R}^*$",
+      "explanation": "La fonction inverse n'est pas définie pour $x=0$ car la division par zéro est impossible. Son ensemble de définition est donc l'ensemble des réels non nuls, noté $\\mathbb{R}^*$. Les autres options incluent zéro ou restreignent le signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment varie la fonction carrée $f(x)=x^2$ sur $\\mathbb{R}$ ?",
+      "options": [
+        "Strictement croissante sur $\\mathbb{R}$",
+        "Strictement décroissante sur $\\mathbb{R}$",
+        "Décroissante sur $]-\\infty,0]$ et croissante sur $[0,+\\infty[$",
+        "Constante sur $\\mathbb{R}$"
+      ],
+      "correctAnswer": "Décroissante sur $]-\\infty,0]$ et croissante sur $[0,+\\infty[$",
+      "explanation": "La parabole $y=x^2$ a un minimum en $x=0$. Elle décroît pour les $x$ négatifs et croît pour les $x$ positifs. Les deux premières affirmations sont fausses car la fonction n'est pas monotone sur tout $\\mathbb{R}$, et la dernière est fausse car elle n'est pas constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'ensemble d'arrivée (image) de la fonction racine carrée $f(x)=\\sqrt{x}$ lorsque $x$ parcourt l'intervalle $[0,9]$ ?",
+      "options": [
+        "$[0,3]$",
+        "$[0,9]$",
+        "$[3,9]$",
+        "$[0,81]$"
+      ],
+      "correctAnswer": "$[0,3]$",
+      "explanation": "Pour $x\\in[0,9]$, $\\sqrt{x}$ prend les valeurs de $\\sqrt{0}=0$ à $\\sqrt{9}=3$. L'image est donc l'intervalle $[0,3]$. Les autres intervalles correspondent à des confusions avec l'ensemble de définition ou au carré des bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'équation $x^2 = 16$ dans $\\mathbb{R}$.",
+      "options": [
+        "$x = 4$",
+        "$x = -4$",
+        "$x = 4$ ou $x = -4$",
+        "$x = 0$"
+      ],
+      "correctAnswer": "$x = 4$ ou $x = -4$",
+      "explanation": "L'équation $x^2=16$ admet deux solutions réelles : $x=4$ et $x=-4$, car les deux nombres ont un carré égal à 16. Les options A et B ne donnent qu'une seule solution, et D est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f(x)=\\frac{1}{x}$ et $g(x)=x^2$. Quelle est l'expression de la composée $(f\\circ g)(x)$ ?",
+      "options": [
+        "$\\frac{1}{x^2}$",
+        "$x^2$",
+        "$\\frac{1}{x}$",
+        "$x$"
+      ],
+      "correctAnswer": "$\\frac{1}{x^2}$",
+      "explanation": "La composée $(f\\circ g)(x)$ signifie $f(g(x))$. On calcule $g(x)=x^2$ puis on applique $f$ : $f(g(x)) = \\frac{1}{x^2}$. Les autres options correspondent à $g$, $f$ ou l'identité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

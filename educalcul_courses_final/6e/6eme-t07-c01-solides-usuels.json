@@ -1,0 +1,303 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.624719+00:00",
+  "id": 363,
+  "code": "6eme-t07-c01",
+  "title": "Solides usuels",
+  "description": "Cours structuré Educalcul : Solides usuels.",
+  "subject": "Espace",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Espace",
+    "titre_du_cours": "Solides usuels",
+    "objectif_global": "Solides usuels",
+    "mini_lecons_imposees": [
+      "Prisme / pyramide selon programme.",
+      "Faces / arêtes / sommets.",
+      "Reconnaître."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace",
+      "lessons": [
+        {
+          "title": "Prisme / pyramide selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les prismes et les pyramides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu construits une cabane avec des cartons. Si tu empiles des boîtes de la même forme, tu obtiens une tour bien droite : c'est l'idée du $prisme$. À l'inverse, si tu poses un triangle au sol et que tu rapproches ses côtés vers un seul point en haut, tu fabriques une $pyramide$. Ces deux familles de solides sont partout autour de nous : les boîtes de céréales, les tentes de camping, les toits pointus des maisons, ou encore les célèbres pyramides d'Égypte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un $prisme$ se reconnaît à ses deux $bases$ : ce sont deux polygones identiques, placés l'un au-dessus de l'autre, parfaitement parallèles. Entre ces bases, les $faces latérales$ sont toujours des $parallélogrammes$ (souvent des rectangles). Si tu coupes le prisme horizontalement, tu retrouves exactement la même forme que la base, quelle que soit la hauteur de la coupe. C'est cette régularité qui donne au prisme son allure de « tour » uniforme."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un prisme à base triangulaire : les deux bases sont des triangles identiques, les faces latérales sont des rectangles.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Une $pyramide$, elle, n'a qu'une seule $base$, qui peut être n'importe quel polygone : triangle, carré, pentagone... Tous les $sommets$ de cette base sont reliés à un unique point appelé le $sommet$ de la pyramide. Les $faces latérales$ sont alors des $triangles$ qui se rejoignent tous en ce sommet. Plus la base a de côtés, plus la pyramide a de faces triangulaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "Pyramide\\;à\\;base\\;carrée :\\;1\\;base\\;carrée + 4\\;faces\\;triangulaires = 5\\;faces\\;au\\;total"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons comment on nomme ces solides. Le nom précis dépend toujours de la forme de la base. Un prisme dont la base est un triangle s'appelle un $prisme\\;triangulaire$ ; si la base est un rectangle, c'est un $prisme\\;rectangulaire$ (le fameux pavé droit). Pour les pyramides, c'est la même règle : base carrée $\\rightarrow$ $pyramide\\;à\\;base\\;carrée$, base triangle $\\rightarrow$ $pyramide\\;triangulaire$ (aussi appelée $tétraèdre$ si tous les triangles sont équilatéraux)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce pour ne pas confondre : le prisme a « deux étages » (deux bases), la pyramide n'en a qu'un seul (une base) et se termine en pointe. Dans ton cartable, ta trousse est souvent un prisme (base ovale ou rectangulaire), tandis qu'un chapeau de magicien rappelle une pyramide. Essaie de trouver trois objets prismes et trois objets pyramides dans ta chambre avant de passer à l'exercice suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un cas particulier très important : le $pavé\\;droit$ (ou $parallélépipède\\;rectangle$). C'est un prisme dont la base est un rectangle et dont toutes les faces sont des rectangles. Le $cube$ est le pavé droit le plus spécial : ses six faces sont des $carrés$ de même taille. Ces deux solides sont les « briques » de base pour construire plein d'autres formes. Nous allons maintenant apprendre à les décrire avec précision grâce à leurs éléments constitutifs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels sont des prismes ? Une boîte de conserve, un dé à jouer, une tasse conique, un tube de papier toilette vide.",
+              "answer": "Le dé à jouer (cube = prisme à base carrée) et le tube de papier toilette (prisme à base circulaire, appelé cylindre).",
+              "hint": "Cherche les objets qui ont deux bases identiques et parallèles.",
+              "explanation": "La boîte de conserve est un cylindre (base circulaire), donc un prisme. Le dé est un cube, prisme particulier. La tasse conique n'a qu'une base et un sommet : c'est un cône, pas un prisme. Le tube a deux bases circulaires : c'est un cylindre, donc un prisme."
+            },
+            {
+              "question": "Complète : Une pyramide à base pentagonale a ____ faces triangulaires et ____ face de base.",
+              "answer": "5 faces triangulaires et 1 face de base.",
+              "hint": "Le nombre de faces triangulaires égale le nombre de côtés de la base.",
+              "explanation": "Un pentagone a 5 côtés. Chaque côté de la base donne un triangle qui rejoint le sommet. Donc 5 triangles latéraux + 1 base = 6 faces au total."
+            },
+            {
+              "question": "Vrai ou faux ? Un pavé droit a toujours 6 faces, 12 arêtes et 8 sommets.",
+              "answer": "Vrai.",
+              "hint": "Compte sur une boîte de chaussures : 6 rectangles, 12 segments de rencontre, 8 coins.",
+              "explanation": "C'est la définition même du pavé droit : 6 faces rectangulaires (3 paires de faces opposées identiques), 12 arêtes (4 sur le haut, 4 sur le bas, 4 verticales), 8 sommets (4 en haut, 4 en bas). Le cube suit la même règle."
+            }
+          ]
+        },
+        {
+          "title": "Faces / arêtes / sommets.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faces, arêtes, sommets : le vocabulaire des solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour parler d'un solide avec précision, les mathématiciens utilisent trois mots magiques : $face$, $arête$ et $sommet$. Pense à une boîte de chaussures posée sur ton bureau. Chaque rectangle plat que tu vois est une $face$. Là où deux faces se rencontrent, elles forment un trait droit : c'est une $arête$. Et là où trois arêtes (ou plus) se croisent, il y a un point : c'est un $sommet$. Ces trois notions sont les « atomes » de tout solide."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le temps de bien visualiser. Pose ta main à plat sur une face de la boîte : tu sens une surface plane, sans creux ni bosse. Passe le doigt le long d'une arête : tu sens une ligne nette, droite, qui sépare deux faces. Touche un sommet : c'est un petit coin pointu où l'espace se referme. Sur un $cube$, toutes les faces sont des carrés identiques, toutes les arêtes ont la même longueur, et tous les sommets sont semblables. C'est ce qui fait sa régularité parfaite."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6 carrés",
+                  "12",
+                  "8"
+                ],
+                [
+                  "Pavé droit",
+                  "6 rectangles",
+                  "12",
+                  "8"
+                ],
+                [
+                  "Pyramide à base carrée",
+                  "1 carré + 4 triangles",
+                  "8",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, jouons à « cache-cache » avec les arêtes. Sur une pyramide à base carrée, certaines arêtes sont visibles sur le dessin, d'autres sont cachées derrière. Les arêtes de la base (le carré du bas) sont toutes visibles si on regarde de dessus. Les $arêtes\\;latérales$ (celles qui montent du sommet de la base vers le sommet de la pyramide) : on en voit deux de face, mais les deux autres sont masquées. En géométrie, on trace les arêtes cachées en $pointillés$ pour montrer qu'elles existent même si on ne les voit pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "Arête\\;visible :\\;trait\\;plein\\;(\\text{---})\\quad Arête\\;cachée :\\;pointillés\\;(\\text{---})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette convention des pointillés est essentielle pour lire et dessiner correctement les solides. Imagine que tu donnes les instructions pour construire une pyramide en paillettes : si tu oublies les arêtes cachées, ton ami ne saura pas où coller les derniers bâtons. À ton tour : prends un stylo et essaie de dessiner un pavé droit en respectant les pointillés pour les trois arêtes qu'on ne voit pas de face."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une relation magique entre le nombre de faces ($F$), d'arêtes ($A$) et de sommets ($S$) pour tous les solides qui n'ont pas de « trous » (les mathématiciens disent « topologiquement sphériques »). Cette relation s'appelle la $formule\\;d'Euler$ : $F + S = A + 2$. Vérifions sur le cube : $6 + 8 = 14$ et $12 + 2 = 14$ ! Sur la pyramide à base carrée : $5 + 5 = 10$ et $8 + 2 = 10$. C'est une invitation à compter soigneusement chaque élément."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges fréquents : ne confonds pas $arête$ (le trait où deux faces se touchent) et $diagonale$ (un segment qui relie deux sommets non adjacents à l'intérieur d'une face ou du solide). Une diagonale de face reste sur la face ; une diagonale du solide traverse l'intérieur. Sur un cube, chaque face a $2$ diagonales, et le cube entier a $4$ grandes diagonales qui traversent son cœur. Nous allons t'entraîner à les repérer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'arêtes a un prisme à base hexagonale (base à 6 côtés) ?",
+              "answer": "18 arêtes.",
+              "hint": "6 arêtes sur la base du haut, 6 sur la base du bas, 6 arêtes verticales qui relient les sommets correspondants.",
+              "explanation": "Un prisme à base $n$ côtés a $3n$ arêtes : $n$ sur chaque base ($2n$) plus $n$ arêtes latérales. Pour $n=6$ : $3 \\times 6 = 18$."
+            },
+            {
+              "question": "Sur le dessin d'une pyramide à base triangulaire (tétraèdre) vu de face, combien d'arêtes sont tracées en pointillés ?",
+              "answer": "1 arête.",
+              "hint": "Le tétraèdre a 6 arêtes au total. De face, on voit 3 arêtes de la base (mais une est cachée si la base n'est pas horizontale) et 2 arêtes latérales. En représentation standard, 1 arête de base est cachée.",
+              "explanation": "Dans la représentation classique d'un tétraèdre posé sur une face, on voit la base (triangle) en traits pleins, 2 arêtes latérales en traits pleins, et la 3ème arête latérale (derrière) en pointillés. Soit 1 arête en pointillés."
+            },
+            {
+              "question": "Vérifie la formule d'Euler pour un prisme à base pentagonale : F = ___, S = ___, A = ___. Égalité ?",
+              "answer": "F = 7, S = 10, A = 15. 7 + 10 = 17 et 15 + 2 = 17. Égalité vérifiée.",
+              "hint": "2 bases pentagonales + 5 faces latérales rectangles = 7 faces. 5 sommets par base = 10 sommets. 3 × 5 = 15 arêtes.",
+              "explanation": "Base à 5 côtés : 2 bases + 5 rectangles = 7 faces. 5 sommets × 2 bases = 10 sommets. 3 × 5 = 15 arêtes. Formule : 7 + 10 = 15 + 2 → 17 = 17 ✓"
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître et nommer les solides usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant ce qu'est un prisme, une pyramide, et comment compter leurs faces, arêtes et sommets. La dernière étape, c'est de devenir un vrai détective des solides : savoir les reconnaître sous toutes leurs coutures. Parfois on te montre une $représentation\\;en\\;cavalier$ (le dessin en 3D avec les pointillés), parfois un $patron$ (le solide « déplié » à plat), parfois juste une $description\\;écrite$. À chaque fois, ton travail est d'identifier de quel solide il s'agit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les patrons. Imagine que tu découpes un carton le long de certaines arêtes pour l'aplatir completely. Ce que tu obtiens, c'est le $patron$ du solide. Un cube a $11$ patrons différents possibles ! Mais ils ont tous quelque chose en commun : $6$ carrés attachés les uns aux autres. Si tu vois un patron avec $1$ carré et $4$ triangles autour, c'est forcément une $pyramide\\;à\\;base\\;carrée$. Le patron te révèle la nature des faces sans même avoir à plier."
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Un des 11 patrons du cube. Essaie mentalement de le replier : les 6 carrés forment un cube parfait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux descriptions écrites. Lis attentivement : « Ce solide a $5$ faces : $1$ carré et $4$ triangles isocèles. Il a $8$ arêtes et $5$ sommets. » Pas de dessin, pas de patron, juste des mots. Mais ces mots suffisent : le carré ne peut être que la $base$, les $4$ triangles sont les $faces\\;latérales$ qui se rejoignent en un sommet unique. C'est la définition exacte d'une $pyramide\\;à\\;base\\;carrée$. Entraîne-toi à transformer une liste de propriétés en image mentale avant de chercher le nom."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation : on te donne les $vues\\;de\\;face$, $de\\;profil$ et $de\\;dessus$ (appelées $vues\\;orthogonales$). Pour un pavé droit posé sur la table, la vue de dessus montre un rectangle (la base), la vue de face montre un rectangle (hauteur × largeur), la vue de profil montre un autre rectangle (hauteur × profondeur). Si les trois vues sont des carrés de même taille, c'est un $cube$. Ces vues sont comme des radiographies : elles dévoilent les dimensions sans montrer le volume."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, jouons au « Qui suis-je ? » avec des indices progressifs. Indice 1 : « J'ai $6$ faces, toutes rectangulaires. » Indice 2 : « Mes faces opposées sont identiques. » Indice 3 : « J'ai $12$ arêtes et $8$ sommets. » À chaque indice, la liste des candidats rétrécit. Après l'indice 1, cela pourrait être un pavé droit ou un cube. L'indice 2 confirme : pavé droit ou cube. L'indice 3 ne tranche pas (les deux ont 12 arêtes et 8 sommets). Il faut un indice 4 : « Toutes mes arêtes ont la même longueur. » Alors, c'est le $cube$ ! Cette méthode d'élimination est très puissante pour identifier un solide sans ambiguïté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais distinguer un prisme (deux bases parallèles identiques) d'une pyramide (une base, un sommet unique).",
+                "Je sais nommer un prisme ou une pyramide d'après sa base (triangulaire, rectangulaire, carrée, hexagonale...).",
+                "Je reconnais le vocabulaire : face (surface plane), arête (intersection de deux faces), sommet (intersection d'au moins trois arêtes).",
+                "Je sais compter faces, arêtes, sommets sur les solides usuels (cube, pavé droit, pyramides, prismes).",
+                "Je connais la convention des traits pleins (arêtes visibles) et pointillés (arêtes cachées) en représentation en cavalier.",
+                "Je peux identifier un solide à partir de son patron, de sa description orale/écrite, ou de ses vues orthogonales."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel de ces patrons correspond à une pyramide à base carrée ?\\nA) 6 carrés\\nB) 1 carré + 4 triangles\\nC) 2 triangles + 3 rectangles\\nD) 1 hexagone + 6 triangles",
+              "answer": "B) 1 carré + 4 triangles",
+              "hint": "La base carrée reste entière, les 4 triangles se replient vers le sommet.",
+              "explanation": "Un patron de pyramide à base carrée montre la base (1 carré) et les 4 faces latérales (4 triangles) attachées à chaque côté du carré. A) est un cube, C) est un prisme triangulaire, D) est une pyramide à base hexagonale."
+            },
+            {
+              "question": "Un solide a 8 sommets, 12 arêtes, 6 faces rectangles (deux par deux identiques). C'est un :",
+              "answer": "Pavé droit (ou parallélépipède rectangle).",
+              "hint": "Le cube a aussi 8/12/6 mais ses faces sont des carrés. Ici ce sont des rectangles.",
+              "explanation": "Ces caractéristiques (6 faces rectangulaires par paires identiques, 12 arêtes, 8 sommets) définissent exactement le pavé droit. Le cube est le cas particulier où tous les rectangles sont des carrés."
+            },
+            {
+              "question": "Je suis un prisme. Ma base a 5 côtés. J'ai 7 faces, 10 sommets, 15 arêtes. Qui suis-je ?",
+              "answer": "Prisme à base pentagonale (ou prisme pentagonal).",
+              "hint": "Base à 5 côtés → 2 bases pentagonales + 5 faces latérales = 7 faces. 5×2=10 sommets. 3×5=15 arêtes.",
+              "explanation": "C'est l'application directe : prisme à base $n=5$ → Faces = $n+2=7$, Sommets = $2n=10$, Arêtes = $3n=15$. La formule d'Euler vérifie : $7+10=15+2=17$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

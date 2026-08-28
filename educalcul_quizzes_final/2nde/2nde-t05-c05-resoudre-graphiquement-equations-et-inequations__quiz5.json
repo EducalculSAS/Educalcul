@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Intersections",
+  "title": "Quiz : Intersections graphiques - Approfondissement",
+  "questions": [
+    {
+      "text": "Les graphes des fonctions $f(x)=x+2$ et $g(x)=-x+4$ se coupent en un point. Quelles sont les coordonnées de ce point d'intersection ?",
+      "options": [
+        "(1, 3)",
+        "(2, 4)",
+        "(3, 5)",
+        "(0, 2)"
+      ],
+      "correctAnswer": "(1, 3)",
+      "explanation": "On résout $x+2 = -x+4$, ce qui donne $2x = 2$ donc $x = 1$. En remplaçant dans $f$, $y = 1+2 = 3$. Le point d'intersection est donc $(1,3)$. Les autres options ne satisfont pas l'égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de points d'intersection y a-t-il entre la parabole $y = x^2$ et la droite $y = 2x+3$ ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On résout $x^2 = 2x+3$ soit $x^2-2x-3=0$. Le discriminant $\\Delta = 4+12 = 16 >0$, donc deux solutions réelles $x=3$ et $x=-1$. Il y a donc deux points d'intersection.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les courbes $y = |x-1|$ et $y = 2$ se coupent. Quelles sont les abscisses des points d'intersection ?",
+      "options": [
+        "{-1, 3}",
+        "{1, 3}",
+        "{-3, 1}",
+        "{0, 2}"
+      ],
+      "correctAnswer": "{-1, 3}",
+      "explanation": "L'équation $|x-1| = 2$ donne deux cas : $x-1 = 2 \\Rightarrow x = 3$ et $x-1 = -2 \\Rightarrow x = -1$. Les abscisses sont donc $-1$ et $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre graphiquement l'inéquation $x^2 - 4x + 3 < 0$. Quel est l'ensemble des solutions ?",
+      "options": [
+        "(1, 3)",
+        "[1, 3]",
+        "(-∞, 1) ∪ (3, +∞)",
+        "(-∞, 1] ∪ [3, +∞)"
+      ],
+      "correctAnswer": "(1, 3)",
+      "explanation": "Le trinôme $x^2-4x+3$ s'annule pour $x=1$ et $x=3$. La parabole est convexe (coefficient de $x^2$ positif), donc elle est négative entre ses racines. L'inéquation stricte $<$ exclut les bornes, d'où l'intervalle ouvert $(1,3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer les points d'intersection des paraboles $y = x^2$ et $y = -x^2 + 4$.",
+      "options": [
+        "(-√2, 2) et (√2, 2)",
+        "(-2, 2) et (2, 2)",
+        "(0, 0) et (2, 4)",
+        "(-1, 1) et (1, 1)"
+      ],
+      "correctAnswer": "(-√2, 2) et (√2, 2)",
+      "explanation": "On égale $x^2 = -x^2 + 4$ ce qui donne $2x^2 = 4$ donc $x^2 = 2$ et $x = ±√2$. Pour ces abscisses, $y = x^2 = 2$. Les points d'intersection sont $(-√2, 2)$ et $(√2, 2)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

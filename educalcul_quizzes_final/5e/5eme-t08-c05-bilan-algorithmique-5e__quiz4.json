@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Bilan - Algorithmique 5e",
+  "title": "Quiz Algorithmique 5e : Applications",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\n  a ← 12\\n  b ← 7\\n  a ← a + b\\n  b ← a - b\\n  a ← a - b\\nFin\\nQuelles sont les valeurs finales des variables a et b ?",
+      "options": [
+        "a = 12 et b = 7",
+        "a = 7 et b = 12",
+        "a = 19 et b = 12",
+        "a = 5 et b = 19"
+      ],
+      "correctAnswer": "a = 7 et b = 12",
+      "explanation": "Cet algorithme échange les valeurs de a et b sans variable temporaire. Au début a=12, b=7. Étape 1 : a devient 12+7=19. Étape 2 : b devient 19-7=12 (ancienne valeur de a). Étape 3 : a devient 19-12=7 (ancienne valeur de b). Résultat final : a=7, b=12.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel script parmi les suivants permet de tracer un carré de côté $60$ pas ?",
+      "options": [
+        "Répéter $4$ fois [ Avancer de $60$ ; Tourner de $90$ degrés ]",
+        "Répéter $3$ fois [ Avancer de $60$ ; Tourner de $120$ degrés ]",
+        "Répéter $4$ fois [ Avancer de $60$ ; Tourner de $45$ degrés ]",
+        "Répéter $5$ fois [ Avancer de $60$ ; Tourner de $72$ degrés ]"
+      ],
+      "correctAnswer": "Répéter $4$ fois [ Avancer de $60$ ; Tourner de $90$ degrés ]",
+      "explanation": "Un carré a $4$ côtés égaux et $4$ angles droits ($90$ degrés). L'instruction 'Répéter $4$ fois' trace les $4$ côtés. L'angle de rotation extérieur pour fermer la figure est de $90$ degrés. Les autres options tracent respectivement un triangle équilatéral, un losange non fermé (ou une étoile si répété plus) et un pentagone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance le script ci-dessous :\\nInitialisation : $n \\leftarrow 0$\\nRépéter $6$ fois\\n  $n \\leftarrow n + 3$\\nFin Répéter\\nAfficher $n$\\nQuel nombre est affiché à la fin ?",
+      "options": [
+        "18",
+        "15",
+        "21",
+        "3"
+      ],
+      "correctAnswer": "18",
+      "explanation": "La variable $n$ commence à $0$. La boucle s'exécute $6$ fois. À chaque tour, on ajoute $3$ à $n$. Le total ajouté est $6 \\times 3 = 18$. La valeur finale est $0 + 18 = 18$. L'erreur '15' correspondrait à $5$ tours, '21' à $7$ tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme avec la valeur $N = 10$ :\\nDemander $N$\\nSi $N > 10$ Alors\\n  Afficher \"Grand\"\\nSinon\\n  Afficher \"Petit ou égal\"\\nFin Si\\nQue s'affiche-t-il ?",
+      "options": [
+        "Grand",
+        "Petit ou égal",
+        "Rien",
+        "Erreur"
+      ],
+      "correctAnswer": "Petit ou égal",
+      "explanation": "La condition testée est 'N > 10' (strictement supérieur). Comme la valeur entrée est $N = 10$, la condition est fausse ($10$ n'est pas strictement supérieur à $10$). On exécute donc la branche 'Sinon' qui affiche 'Petit ou égal'. L'option 'Grand' serait choisie si la condition était $N \\ge 10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut tracer un escalier de $4$ marches. Chaque marche est un carré de côté $20$. Le script commence par :\\nRépéter $4$ fois\\n  Avancer de $20$\\n  Tourner de $90$ degrés\\n  Avancer de $20$\\n  Tourner de $-90$ degrés\\nFin Répéter\\nQue trace ce script ?",
+      "options": [
+        "Un escalier de $4$ marches montantes",
+        "Un escalier de $4$ marches descendantes",
+        "Un carré de côté $80$",
+        "Une ligne brisée qui revient au point de départ"
+      ],
+      "correctAnswer": "Un escalier de $4$ marches montantes",
+      "explanation": "Analysons une itération : on avance (base de marche), on tourne à gauche de $90^\\circ$ (montée), on avance (hauteur de marche), on tourne à droite de $90^\\circ$ (retour à l'horizontale). On est prêt pour la marche suivante. Cela dessine bien un escalier montant. Si le dernier tour était $+90$, ce serait un carré. Un escalier descendant demanderait un tour de $-90$ puis $+90$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

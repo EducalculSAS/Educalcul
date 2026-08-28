@@ -1,0 +1,125 @@
+{
+  "_status": "done",
+  "_course_id": 136,
+  "_course_code": "ce1-t08-c01-recueillir-des-donnees",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Compter les effectifs",
+  "title": "Quiz : Compter les effectifs",
+  "questions": [
+    {
+      "text": "Dans la collection de timbres, il y a 4 timbres verts, 6 timbres bleus, 3 timbres rouges et 5 timbres jaunes. Combien y a-t-il de timbres bleus ?",
+      "options": [
+        "$6$",
+        "$4$",
+        "$5$",
+        "$3$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Il y a 6 timbres bleus, donc la bonne réponse est $6$. Les autres nombres correspondent aux autres couleurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres montre les fruits préférés des élèves. Combien d'élèves ont choisi la banane ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le diagramme en barres indique que 3 élèves ont choisi la banane, donc la réponse est $3$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Banane",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Orange",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Fraise",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "D'après le tableau, quel est l'effectif des oranges ?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le tableau indique que l'effectif des oranges est 4, donc la réponse est $4$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "5"
+          ],
+          [
+            "Banane",
+            "3"
+          ],
+          [
+            "Orange",
+            "4"
+          ],
+          [
+            "Fraise",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel est le nombre total de timbres dans la collection ?",
+      "options": [
+        "$18$",
+        "$17$",
+        "$19$",
+        "$20$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "Le total est 4 + 6 + 3 + 5 = 18, donc la réponse est $18$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle couleur a le plus grand effectif ?",
+      "options": [
+        "Bleu",
+        "Vert",
+        "Jaune",
+        "Rouge"
+      ],
+      "correctAnswer": "Bleu",
+      "explanation": "Le bleu a le plus grand effectif avec 6 timbres, donc la réponse est Bleu.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

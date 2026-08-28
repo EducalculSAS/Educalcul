@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 404,
+  "_course_code": "5eme-t05-c05-bilan-transformations-et-espace-5e",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Repérage, transformations et espace",
+  "blocks": [
+    {
+      "title": "Repérage dans le plan",
+      "content": "Dans un repère orthonormé, l'axe horizontal porte le nom d'axe des {{1}} et l'axe vertical celui d'axe des {{2}}. Les coordonnées d'un point $M$ se notent $M({{3}} ; y_M)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "abscisses|x",
+        "ordonnées|y",
+        "x_M|abscisse de M"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un repère orthonormé, l'axe horizontal est l'axe des abscisses (souvent noté $x$) et l'axe vertical est l'axe des ordonnées (souvent noté $y$). Les coordonnées d'un point $M$ s'écrivent toujours dans l'ordre : abscisse puis ordonnée, soit $M(x_M ; y_M)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Transformations du plan",
+      "content": "La {{1}} est définie par un vecteur $\\vec{v}$ ; elle transforme un point $M$ en $M'$ tel que $\\overrightarrow{MM'} = \\vec{v}$. La {{2}} par rapport à un point $O$ fait correspondre à $M$ le point $M'$ tel que $O$ est le milieu de $[MM']$. La {{3}} par rapport à une droite $d$ conserve les distances à $d$.",
+      "correctAnswer": "",
+      "blanks": [
+        "translation",
+        "symétrie centrale",
+        "symétrie axiale|symétrie orthogonale"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation fait glisser la figure selon un vecteur. La symétrie centrale (ou rotation de $180^{\\circ}$) a pour centre le milieu des segments joignant les points correspondants. La symétrie axiale (ou orthogonale) a pour axe la médiatrice des segments joignant les points correspondants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Géométrie dans l'espace",
+      "content": "Un {{1}} est un solide dont les six faces sont des carrés. Pour le représenter en perspective cavalière, les arêtes non visibles sont tracées en {{2}}. Un {{3}} a une base qui est un disque et un sommet.",
+      "correctAnswer": "",
+      "blanks": [
+        "cube",
+        "pointillés|traitillés",
+        "cône|cone"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le cube est un pavé droit à six faces carrées. En perspective cavalière, les arêtes cachées sont représentées en pointillés (ou traitillés). Le cône est un solide de révolution engendré par la rotation d'un triangle rectangle autour de l'un de ses côtés de l'angle droit ; il possède une base circulaire (disque) et un sommet.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

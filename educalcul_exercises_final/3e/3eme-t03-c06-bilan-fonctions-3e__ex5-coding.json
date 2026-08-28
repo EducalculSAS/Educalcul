@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 472,
+  "_course_code": "3eme-t03-c06-bilan-fonctions-3e",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Approfondissement : Vocabulaire, graphes, modèles",
+  "title": "Approfondissement : Vocabulaire, graphes, modèles - Algorithmes",
+  "blocks": [
+    {
+      "title": "Tester si une relation est une fonction",
+      "content": "On donne une liste de couples $(x_i, y_i)$ représentant une relation. Écrire un algorithme (en pseudo‑code ou syntaxe Python) qui renvoie Vrai si chaque abscisse $x_i$ apparaît au plus une fois (donc la relation est une fonction), et Faux sinon.",
+      "correctAnswer": "Algorithme :\\n1. Créer un ensemble vide 'vus'.\\n2. Pour chaque couple (x, y) dans la liste :\\n   - Si x est dans 'vus' : retourner Faux.\\n   - Sinon ajouter x à 'vus'.\\n3. Après la boucle, retourner Vrai.\\n\\nExemple en Python :\\n\\ndef est_fonction(couples):\\n    vus = set()\\n    for x, y in couples:\\n        if x in vus:\\n            return False\\n        vus.add(x)\\n    return True",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une relation est une fonction si et seulement si chaque élément du domaine (les $x$) est associé à un unique élément du codomaine. En parcourant la liste, on mémorise les $x$ déjà rencontrés dans un ensemble. Si on retrouve un $x$ déjà vu, la relation n'est pas une fonction. Sinon, après avoir traité tous les couples, c'est une fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le coefficient directeur d'une droite",
+      "content": "Soient deux points $A(x_1, y_1)$ et $B(x_2, y_2)$ distincts. Écrire un algorithme qui calcule le coefficient directeur $a$ de la droite $(AB)$, c'est‑à‑dire $a = \\frac{y_2 - y_1}{x_2 - x_1}$. L'algorithme doit gérer le cas où $x_1 = x_2$ (droite verticale) en renvoyant un message d'erreur.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_1, y_1, x_2, y_2$.\\n2. Si $x_1 = x_2$ : afficher \"Droite verticale, coefficient directeur non défini\" et arrêter.\\n3. Sinon calculer $a = (y_2 - y_1) / (x_2 - x_1)$.\\n4. Afficher $a$.\\n\\nExemple en Python :\\n\\ndef coefficient_directeur(x1, y1, x2, y2):\\n    if x1 == x2:\\n        return \"Droite verticale, coefficient directeur non défini\"\\n    return (y2 - y1) / (x2 - x1)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur d'une droite passant par deux points se calcule par la différence des ordonnées divisée par la différence des abscisses. Si les abscisses sont égales, la droite est verticale et son coefficient directeur n'existe pas (pente infinie). L'algorithme teste cette condition avant d'effectuer la division.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évaluer une fonction affine et déterminer sa monotonie",
+      "content": "On considère une fonction affine $f(x) = ax + b$ avec $a$ et $b$ réels donnés. Écrire un algorithme qui, étant donné une liste de valeurs $x$, renvoie la liste des images $f(x)$ et indique si la fonction est croissante, décroissante ou constante selon le signe de $a$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$, $b$ et la liste 'valeurs_x'.\\n2. Créer liste vide 'images'.\\n3. Pour chaque $x$ dans 'valeurs_x' :\\n   - Calculer $y = a * x + b$.\\n   - Ajouter $y$ à 'images'.\\n4. Déterminer la monotonie :\\n   - Si $a > 0$ : monotonie = \"croissante\".\\n   - Si $a < 0$ : monotonie = \"décroissante\".\\n   - Sinon : monotonie = \"constante\".\\n5. Retourner ('images', monotonie).\\n\\nExemple en Python :\\n\\ndef evaluer_affine(a, b, valeurs_x):\\n    images = [a * x + b for x in valeurs_x]\\n    if a > 0:\\n        monotonie = \"croissante\"\\n    elif a < 0:\\n        monotonie = \"décroissante\"\\n    else:\\n        monotonie = \"constante\"\\n    return images, monotonie",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour une fonction affine $f(x)=ax+b$, l'image de chaque $x$ se calcule directement. La monotonie dépend uniquement du coefficient directeur $a$ : si $a>0$ la fonction est strictement croissante, si $a<0$ strictement décroissante, si $a=0$ elle est constante. L'algorithme applique la formule à chaque élément de la liste et teste le signe de $a$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

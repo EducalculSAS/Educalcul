@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 116,
+  "_course_code": "ce1-t05-c09-bilan-problemes-ce1",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Bilan - Problèmes CE1",
+  "title": "Bilan - Résolution de problèmes CE1",
+  "questions": [
+    {
+      "text": "Lucas a $12$ billes. Il en gagne $8$ de plus. Combien Lucas a-t-il de billes maintenant ?",
+      "options": [
+        "$20$ billes",
+        "$19$ billes",
+        "$21$ billes",
+        "$4$ billes"
+      ],
+      "correctAnswer": "$20$ billes",
+      "explanation": "C'est un problème d'ajout (regroupement). On ajoute les billes gagnées au nombre de départ : $12 + 8 = 20$. L'option $19$ correspond à une erreur de comptage, $21$ à une addition mal posée, et $4$ à une soustraction au lieu d'une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $15$ oiseaux sur une branche. $6$ s'envolent. Combien d'oiseaux restent sur la branche ?",
+      "options": [
+        "$9$ oiseaux",
+        "$8$ oiseaux",
+        "$21$ oiseaux",
+        "$7$ oiseaux"
+      ],
+      "correctAnswer": "$9$ oiseaux",
+      "explanation": "C'est un problème de retrait (soustraction). On retire le nombre d'oiseaux partis du total initial : $15 - 6 = 9$. L'option $21$ correspond à une addition ($15+6$), $8$ et $7$ sont des erreurs de calcul du type 'compter sur les doigts' mal maîtrisé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Emma a $14$ autocollants. Noah a $6$ autocollants de moins qu'Emma. Combien d'autocollants a Noah ?",
+      "options": [
+        "$8$ autocollants",
+        "$20$ autocollants",
+        "$7$ autocollants",
+        "$9$ autocollants"
+      ],
+      "correctAnswer": "$8$ autocollants",
+      "explanation": "C'est un problème de comparaison (recherche de la quantité plus petite). La phrase 'de moins' indique une soustraction : $14 - 6 = 8$. L'option $20$ correspond à l'erreur classique d'additionner ($14+6$) au lieu de soustraire. Les options $7$ et $9$ sont des erreurs de calcul proches du résultat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'école, il y a $18$ garçons et $14$ filles. Aujourd'hui, $3$ élèves sont absents. Combien d'élèves sont présents ?",
+      "options": [
+        "$29$ élèves",
+        "$32$ élèves",
+        "$35$ élèves",
+        "$26$ élèves"
+      ],
+      "correctAnswer": "$29$ élèves",
+      "explanation": "C'est un problème à deux étapes. Étape 1 : trouver le total d'élèves (addition) : $18 + 14 = 32$. Étape 2 : retrancher les absents (soustraction) : $32 - 3 = 29$. L'option $32$ est le piège : on oublie de retrancher les absents. $35$ serait $18+14+3$ et $26$ serait $32-6$ (erreur sur le nombre d'absents).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut ranger $20$ crayons dans des boîtes. Dans chaque boîte, on met $4$ crayons. Combien de boîtes faut-il ?",
+      "options": [
+        "$5$ boîtes",
+        "$4$ boîtes",
+        "$6$ boîtes",
+        "$16$ boîtes"
+      ],
+      "correctAnswer": "$5$ boîtes",
+      "explanation": "C'est un problème de groupement (division : partage par quotition). On cherche combien de groupes de $4$ on peut faire avec $20$ : $20 \\div 4 = 5$. On peut aussi raisonner par addition répétée : $4+4+4+4+4=20$ (5 fois). L'option $4$ confond le nombre d'objets par groupe et le nombre de groupes. $16$ correspond à $20-4$ (soustraction unique).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

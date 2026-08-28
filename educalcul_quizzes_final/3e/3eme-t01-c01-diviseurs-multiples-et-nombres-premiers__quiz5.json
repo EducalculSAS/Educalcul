@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Quiz : Définitions - Diviseurs, multiples et nombres premiers",
+  "questions": [
+    {
+      "text": "Quelle phrase définit correctement un diviseur d'un entier naturel $n$ ?",
+      "options": [
+        "Un entier $d$ tel que $n = d + k$ pour un certain entier $k$.",
+        "Un entier $d$ tel que $n = d \\times k$ pour un certain entier $k$.",
+        "Un entier $d$ tel que $d = n \\times k$ pour un certain entier $k$.",
+        "Un entier $d$ strictement supérieur à $n$."
+      ],
+      "correctAnswer": "Un entier $d$ tel que $n = d \\times k$ pour un certain entier $k$.",
+      "explanation": "Un diviseur $d$ de $n$ signifie qu'il existe un entier $k$ tel que $n = d \\times k$. Les autres options décrivent une addition, une multiplication inversée ou une condition de grandeur, qui ne correspondent pas à la définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase définit correctement un multiple d'un entier naturel $n$ ?",
+      "options": [
+        "Un entier $m$ tel que $m = n + k$ pour un certain entier $k$.",
+        "Un entier $m$ tel que $m = n \\times k$ pour un certain entier $k$.",
+        "Un entier $m$ tel que $n = m \\times k$ pour un certain entier $k$.",
+        "Un entier $m$ tel que $m = k / n$ pour un certain entier $k$."
+      ],
+      "correctAnswer": "Un entier $m$ tel que $m = n \\times k$ pour un certain entier $k$.",
+      "explanation": "Un multiple $m$ de $n$ s'obtient en multipliant $n$ par un entier $k$ : $m = n \\times k$. L'addition, la division ou l'inversion de la multiplication ne donnent pas la définition d'un multiple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase définit correctement un nombre premier ?",
+      "options": [
+        "Un entier naturel supérieur à $1$ qui a exactement deux diviseurs distincts : $1$ et lui même.",
+        "Un entier naturel supérieur à $1$ qui a au moins trois diviseurs.",
+        "Un entier pair et différent de $2$.",
+        "Un entier impair et non divisible par $3$."
+      ],
+      "correctAnswer": "Un entier naturel supérieur à $1$ qui a exactement deux diviseurs distincts : $1$ et lui même.",
+      "explanation": "Un nombre premier est, par définition, un entier $>1$ dont les seuls diviseurs positifs sont $1$ et lui‑même. Les autres propositions décrivent soit un nombre composé, soit des propriétés insuffisantes ou fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase définit correctement un nombre composé ?",
+      "options": [
+        "Un entier naturel supérieur à $1$ qui n'est pas premier.",
+        "Un entier naturel supérieur à $1$ qui a exactement deux diviseurs.",
+        "Un entier naturel supérieur à $1$ qui a au moins trois diviseurs.",
+        "L'entier $1$."
+      ],
+      "correctAnswer": "Un entier naturel supérieur à $1$ qui a au moins trois diviseurs.",
+      "explanation": "Un nombre composé est un entier $>1$ qui n'est pas premier, ce qui équivaut à dire qu'il possède au moins trois diviseurs distincts (1, lui‑même et au moins un autre). L'option A inclut à tort le nombre 1, l'option B décrit un nombre premier, et l'option D est faux car 1 n'est ni premier ni composé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase définit correctement le PGCD de deux entiers naturels $a$ et $b$ ?",
+      "options": [
+        "Le plus grand entier qui divise $a$ et $b$.",
+        "Le plus petit entier multiple de $a$ et $b$.",
+        "Le produit $a \\times b$.",
+        "La somme $a + b$."
+      ],
+      "correctAnswer": "Le plus grand entier qui divise $a$ et $b$.",
+      "explanation": "Le PGCD (Plus Grand Commun Diviseur) est par définition le plus grand entier naturel qui divise simultanément $a$ et $b$. La deuxième option correspond au PPCM, les deux dernières sont des opérations arithmétiques sans lien avec la notion de diviseur commun.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

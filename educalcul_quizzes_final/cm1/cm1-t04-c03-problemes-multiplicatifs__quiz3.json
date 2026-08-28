@@ -1,0 +1,147 @@
+{
+  "_status": "done",
+  "_course_id": 236,
+  "_course_code": "cm1-t04-c03-problemes-multiplicatifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Interpréter reste",
+  "title": "Quiz : Interpréter le reste dans les problèmes multiplicatifs",
+  "questions": [
+    {
+      "text": "Il y a $23$ élèves dans une classe. On veut former des groupes de $4$ élèves pour un atelier. Combien de groupes au total faut-il prévoir pour que tous les élèves puissent participer ?",
+      "options": [
+        "5 groupes",
+        "6 groupes",
+        "3 groupes",
+        "4 groupes"
+      ],
+      "correctAnswer": "6 groupes",
+      "explanation": "On effectue la division $23 \\div 4$. $4 \\times 5 = 20$, il reste $3$ élèves. Ces $3$ élèves restants ne peuvent pas former un groupe complet de $4$, mais ils ont quand même besoin d'un groupe pour faire l'activité. Il faut donc $5$ groupes complets $+ 1$ groupe pour le reste, soit $6$ groupes au total. L'option « 5 groupes » oublie les $3$ élèves restants. L'option « 3 groupes » confond le reste avec le nombre de groupes. L'option « 4 groupes » ne correspond à aucun calcul pertinent.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 5",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Reste (3 élèves)",
+            "value": 3,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Représentation des 23 élèves en groupes de 4"
+      }
+    },
+    {
+      "text": "Un fermier a récolté $37$ œufs. Il les range dans des boîtes de $6$ œufs. Combien de boîtes **pleines** pourra-t-il remplir ?",
+      "options": [
+        "6 boîtes",
+        "7 boîtes",
+        "1 boîte",
+        "5 boîtes"
+      ],
+      "correctAnswer": "6 boîtes",
+      "explanation": "On cherche le nombre de boîtes **pleines**, c'est-à-dire le quotient de la division $37 \\div 6$. $6 \\times 6 = 36$. Il reste $1$ œuf qui ne suffit pas à remplir une septième boîte. Le fermier remplit donc $6$ boîtes pleines. L'option « 7 boîtes » correspondrait au nombre total de boîtes utilisées (pleines + une non pleine). L'option « 1 boîte » confond le reste avec le nombre de boîtes. L'option « 5 boîtes » sous-estime le quotient ($5 \\times 6 = 30$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 7,
+        "cols": 6,
+        "highlighted": 37,
+        "caption": "37 œufs rangés par 6 : 6 rangées pleines et 1 œuf sur la 7e"
+      }
+    },
+    {
+      "text": "Une couturière a un ruban de $2$ mètres $50$ (soit $250$ cm). Elle le coupe en morceaux de $30$ cm. Quelle longueur de ruban lui restera-t-il à la fin ?",
+      "options": [
+        "8 cm",
+        "10 cm",
+        "30 cm",
+        "9 cm"
+      ],
+      "correctAnswer": "10 cm",
+      "explanation": "On divise la longueur totale par la longueur d'un morceau : $250 \\div 30$. $30 \\times 8 = 240$. Le reste de la division est $250 - 240 = 10$. Il lui restera donc un morceau de $10$ cm, trop court pour faire un nouveau morceau de $30$ cm. L'option « 8 cm » confond le quotient (8 morceaux) avec le reste. L'option « 30 cm » est la taille d'un morceau, pas le reste. L'option « 9 cm » est une erreur de calcul ($30 \\times 8 = 240$, pas $241$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un stylo coûte $3$ euros. Lucas a $20$ euros. Combien de stylos peut-il acheter au maximum ?",
+      "options": [
+        "6 stylos",
+        "7 stylos",
+        "2 stylos",
+        "3 stylos"
+      ],
+      "correctAnswer": "6 stylos",
+      "explanation": "On divise l'argent de Lucas par le prix d'un stylo : $20 \\div 3$. $3 \\times 6 = 18$. Il reste $2$ euros. Avec $2$ euros, Lucas ne peut pas acheter un 7e stylo qui coûte $3$ euros. Il peut donc acheter $6$ stylos maximum. L'option « 7 stylos » ne tient pas compte du budget insuffisant pour le 7e. L'option « 2 stylos » confond le reste (2 euros) avec le nombre de stylos. L'option « 3 stylos » ne correspond à aucune étape du calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Cinquante-trois enfants partent en excursion. Chaque car peut accueillir $12$ enfants. Combien de cars faut-il réserver pour transporter tout le monde ?",
+      "options": [
+        "4 cars",
+        "5 cars",
+        "12 cars",
+        "53 cars"
+      ],
+      "correctAnswer": "5 cars",
+      "explanation": "On divise le nombre d'enfants par la capacité d'un car : $53 \\div 12$. $12 \\times 4 = 48$. Il reste $5$ enfants. Ces $5$ enfants ont besoin d'un car pour voyager, même s'il n'est pas plein. Il faut donc $4$ cars pleins $+ 1$ car pour le reste, soit $5$ cars au total. L'option « 4 cars » laisse $5$ enfants au sol. L'option « 12 cars » confond la capacité d'un car avec le nombre de cars. L'option « 53 cars » confond le nombre d'enfants avec le nombre de cars.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Car 1",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Car 2",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Car 3",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Car 4",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Reste (5 enfants)",
+            "value": 5,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Répartition des 53 enfants dans les cars de 12 places"
+      }
+    }
+  ]
+}

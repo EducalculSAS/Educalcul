@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Lire expression",
+  "title": "Lire et évaluer des expressions avec priorités et parenthèses",
+  "blocks": [
+    {
+      "title": "Algorithme pour une expression numérique simple",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui calcule la valeur de l’expression $3 \\times (4 + 2) - 5$ en respectant les priorités de calcul.",
+      "correctAnswer": "1. Calculer la parenthèse : $4 + 2 = 6$.\\n2. Effectuer la multiplication : $3 \\times 6 = 18$.\\n3. Effectuer la soustraction : $18 - 5 = 13$.\\nRésultat final : $13$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence toujours par les parenthèses. Ici $4+2$ donne $6$. Ensuite la multiplication a la priorité sur la soustraction, donc $3 \\times 6 = 18$. Enfin on soustrait $5$ pour obtenir $13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction Python pour une expression paramétrique",
+      "content": "Écrire une fonction en syntaxe Python qui prend trois nombres a, b, c et renvoie le résultat de l’expression $(a + b) \\times c$.",
+      "correctAnswer": "def calcul(a, b, c):\\n    return (a + b) * c",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les parenthèses autour de a + b garantissent que l’addition est effectuée avant la multiplication, conformément aux règles de priorité. L’opérateur * réalise la multiplication en Python.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme détaillé pour une expression combinant plusieurs opérations",
+      "content": "L’expression $12 / (2 + 1) + 3^2$ doit être évaluée. Écrire un algorithme étape par étape qui montre l’ordre des opérations (parenthèses, puissances, division, addition).",
+      "correctAnswer": "1. Parenthèses : calculer $2 + 1 = 3$.\\n2. Puissance : calculer $3^2 = 9$.\\n3. Division : calculer $12 / 3 = 4$.\\n4. Addition : calculer $4 + 9 = 13$.\\nRésultat final : $13$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On respecte l’ordre de priorité : d’abord les parenthèses, puis les puissances, ensuite la division et enfin l’addition. Chaque étape utilise le résultat de l’étape précédente.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

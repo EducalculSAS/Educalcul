@@ -1,0 +1,291 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.567832+00:00",
+  "id": 668,
+  "code": "terminale-generale-complementaires-t08-c04",
+  "title": "Bilan - Temps d'attente",
+  "description": "Cours structuré Educalcul : Bilan - Temps d'attente.",
+  "subject": "Temps d'attente",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Temps d'attente",
+    "titre_du_cours": "Bilan - Temps d'attente",
+    "objectif_global": "Bilan - Temps d'attente",
+    "mini_lecons_imposees": [
+      "Modèle et interprétation.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Temps d'attente",
+      "lessons": [
+        {
+          "title": "Modèle et interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le temps qui s'écoule avant un événement : une question universelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu arrives à l'arrêt de bus, consultes l'horaire et te demandes : combien de temps vais-je attendre ? Tu es devant ton ordinateur, un fichier se télécharge, et tu scrutes la barre de progression : quand sera-t-elle pleine ? Tu appelles un service client, une voix t'annonce « votre temps d'attente estimé est de… » et tu te demandes si ce chiffre est fiable. Toutes ces situations partagent une même structure mathématique : un événement aléatoire qui finit par se produire, et une durée imprévisible qui le sépare de l'instant présent. En Terminale maths complémentaires, nous allons modéliser ce temps d'attente avec un outil puissant et élégant : la loi exponentielle. Ce n'est pas une simple formule à mémoriser, c'est un véritable changement de perspective qui va te permettre de comprendre pourquoi certains phénomènes sont « sans mémoire » et comment on peut faire des prédictions rationnelles face à l'incertitude."
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de plonger dans les équations, prenons le temps de ressentir la différence entre deux types d'attente. Imagine que tu attends un train qui passe toutes les $10$ minutes pile, sans retard possible. Ton temps d'attente est alors compris entre $0$ et $10$ minutes, et plus tu attends, plus tu es certain que le train va arriver dans la minute qui suit. C'est une attente « bornée », où le passé informe le futur. Maintenant imagine un appel téléphonique entrant dans un centre d'appels : les appels arrivent de façon complètement imprévisible, indépendamment les uns des autres. Ici, le fait d'attendre depuis $5$ minutes ne change strictement rien à la probabilité qu'un appel arrive dans la minute qui vient. C'est cette seconde situation, contre-intuitive mais omniprésente dans la nature et la technologie, que la loi exponentielle capture à la perfection."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Naissance de la loi exponentielle : du processus de Poisson à l'attente continue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire ce modèle, partons d'un processus de Poisson d'intensité $\\lambda > 0$. Rappelle-toi : ce processus compte le nombre d'événements survenus dans un intervalle de temps. La propriété fondamentale est que les nombres d'événements dans des intervalles disjoints sont indépendants, et que la probabilité d'avoir exactement $k$ événements dans un intervalle de longueur $t$ vaut $\\frac{(\\lambda t)^k}{k!}e^{-\\lambda t}$. Maintenant, posons la question qui nous intéresse : quel est le temps $T$ qu'il faut attendre pour voir le premier événement ? Pour que $T$ dépasse une certaine durée $t$, il faut qu'il n'y ait eu aucun événement entre l'instant $0$ et l'instant $t$. Or, la probabilité d'avoir $0$ événement sur un intervalle de longueur $t$ dans un processus de Poisson est exactement $e^{-\\lambda t}$. Nous venons de trouver la fonction de répartition de $T$ : $\\mathbb{P}(T > t) = e^{-\\lambda t}$ pour tout $t \\ge 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "F_T(t) = \\mathbb{P}(T \\le t) = 1 - e^{-\\lambda t} \\quad (t \\ge 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la fonction de répartition de la loi exponentielle de paramètre $\\lambda$. Sa densité de probabilité s'obtient par dérivation : $f_T(t) = \\lambda e^{-\\lambda t}$ pour $t \\ge 0$, et $0$ pour $t < 0$. Remarque la beauté de ce paramètre $\\lambda$ : c'est exactement l'intensité du processus de Poisson, c'est-à-dire le nombre moyen d'événements par unité de temps. Si $\\lambda = 3$ appels par minute, alors en moyenne tu attends $1/3$ de minute, soit $20$ secondes, avant le premier appel. Cette relation inverse entre le paramètre de la loi d'attente et l'intensité du processus est une boussole précieuse : plus les événements sont fréquents (grand $\\lambda$), plus l'attente est courte en moyenne."
+            },
+            {
+              "type": "graph",
+              "expression": "2*exp(-2*x)",
+              "xmin": 0,
+              "xmax": 3,
+              "caption": "Densité de la loi exponentielle de paramètre λ=2 : la probabilité se concentre près de 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment la loi exponentielle émerge naturellement du processus de Poisson. Mais ce qui la rend vraiment unique et utile, c'est une propriété stupéfiante : l'absence de mémoire. C'est le cœur de notre deuxième cycle, et c'est ce qui explique pourquoi ce modèle s'applique si bien aux temps d'attente réels, des désintégrations radioactives aux pannes informatiques en passant par les files d'attente."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La propriété sans mémoire : quand le passé n'éclaire pas l'avenir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Énonçons-la clairement : pour une variable aléatoire $T$ suivant une loi exponentielle de paramètre $\\lambda$, et pour tous nombres réels $s, t \\ge 0$, on a $\\mathbb{P}(T > s + t \\mid T > s) = \\mathbb{P}(T > t)$. En mots : sachant que tu as déjà attendu une durée $s$ sans que l'événement ne se produise, la probabilité qu'il faille encore attendre au moins $t$ unités de temps supplémentaires est exactement la même que si tu venais juste de commencer à attendre. Le processus « oublie » combien de temps tu as déjà patienté. C'est une propriété très forte, qui caractérise d'ailleurs la loi exponentielle parmi toutes les lois continues sur $\\mathbb{R}_+$ : c'est la seule à la posséder."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la probabilité conditionnelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par définition, $\\mathbb{P}(T > s + t \\mid T > s) = \\frac{\\mathbb{P}(T > s + t \\text{ et } T > s)}{\\mathbb{P}(T > s)}$. Comme $s+t > s$, l'événement $\\{T > s+t\\}$ est inclus dans $\\{T > s\\}$, donc l'intersection se simplifie en $\\{T > s+t\\}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la fonction de répartition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On substitue $\\mathbb{P}(T > u) = e^{-\\lambda u}$ pour $u = s+t$ et $u = s$. Le numérateur devient $e^{-\\lambda(s+t)} = e^{-\\lambda s}e^{-\\lambda t}$, le dénominateur est $e^{-\\lambda s}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le terme $e^{-\\lambda s}$ se simplifie, il ne reste que $e^{-\\lambda t}$, qui est exactement $\\mathbb{P}(T > t)$. La propriété est démontrée, et on voit que le paramètre $\\lambda$ n'a pas d'incidence sur la structure du raisonnement : c'est la forme même de l'exponentielle qui crée cette annulation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété a des conséquences pratiques majeures. Si tu gères un centre d'appels et que tu sais que les arrivées suivent un processus de Poisson, tu n'as pas besoin de savoir depuis combien de temps le dernier appel a eu lieu pour prévoir le prochain : la distribution du temps restant est toujours la même. C'est ce qui rend les modèles de files d'attente (théorie des files) si tractables mathématiquement. Mais attention : cette absence de mémoire est aussi une limite. Elle ne convient pas pour modéliser l'usure d'une pièce mécanique (plus elle est vieille, plus elle a de chances de casser bientôt) ni la durée de vie humaine (le risque de décès augmente avec l'âge). Dans ces cas, on utilisera d'autres lois, comme la loi de Weibull."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons installé le modèle et sa propriété signature, il est temps de passer aux outils concrets qui te permettront de résoudre des problèmes : calculer des probabilités, des espérances, des variances, et surtout interpréter les résultats dans le contexte du problème. C'est le troisième cycle de cette leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance, variance, quantiles : la boîte à outils du temps d'attente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une variable aléatoire $T \\sim \\mathcal{E}(\\lambda)$, l'espérance et la variance se calculent facilement par intégration par parties, mais tu peux les retenir comme des formules de base : $\\mathbb{E}(T) = \\frac{1}{\\lambda}$ et $\\operatorname{Var}(T) = \\frac{1}{\\lambda^2}$. L'écart-type vaut donc aussi $\\frac{1}{\\lambda}$, ce qui signifie que le coefficient de variation (écart-type sur espérance) est constant, égal à $1$, quelle que soit la valeur de $\\lambda$. C'est une signature forte de la loi exponentielle : la dispersion relative ne change pas quand on change d'échelle de temps."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quantiles sont tout aussi simples à obtenir. Pour un seuil $p \\in (0,1)$, le quantile d'ordre $p$ (aussi appelé percentile) est la valeur $t_p$ telle que $\\mathbb{P}(T \\le t_p) = p$. On résout $1 - e^{-\\lambda t_p} = p$, ce qui donne $t_p = -\\frac{\\ln(1-p)}{\\lambda}$. En particulier, la médiane (quantile d'ordre $0,5$) vaut $\\frac{\\ln 2}{\\lambda} \\approx \\frac{0,693}{\\lambda}$. Remarque que la médiane est strictement inférieure à l'espérance $\\frac{1}{\\lambda}$ : la distribution est asymétrique à droite, avec une queue lourde qui tire la moyenne vers le haut. Concrètement, plus de la moitié du temps, tu attends moins que la moyenne. C'est un point crucial pour l'interprétation : si on te dit « temps d'attente moyen : 10 minutes », sache que tu as plus d'une chance sur deux d'attendre moins de 7 minutes, mais aussi une chance non négligeable d'attendre beaucoup plus longtemps."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "3*exp(-3*x)",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 10,
+              "caption": "Aire sous la courbe de densité exponentielle λ=3 : probabilité que T ≤ 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon sur le modèle et son interprétation, rappelons que la loi exponentielle n'est pas qu'un exercice de calcul intégral : c'est le pilier de la modélisation des phénomènes aléatoires en temps continu. Elle relie le discret (processus de Poisson, comptage d'événements) au continu (durées d'attente), elle incarne l'idée d'aléatoire « pur » sans mémoire ni vieillissement, et elle fournit des formules closes pour toutes les questions pratiques. Dans la prochaine leçon, nous ferons le bilan synthétique de tout ce qu'il faut retenir, sous forme d'une liste de vérification prête à l'emploi pour tes révisions."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Des clients arrivent à une caisse selon un processus de Poisson d'intensité $\\lambda = 0,5$ client par minute. Quelle est la probabilité d'attendre plus de $3$ minutes avant le premier client ?",
+              "answer": "$e^{-1,5} \\approx 0,223$",
+              "hint": "Utilise la fonction de répartition de la loi exponentielle : $\\mathbb{P}(T > t) = e^{-\\lambda t}$.",
+              "explanation": "Le temps d'attente $T$ suit une loi exponentielle de paramètre $\\lambda = 0,5$. On cherche $\\mathbb{P}(T > 3) = e^{-0,5 \\times 3} = e^{-1,5} \\approx 0,223$. Il y a environ $22,3\\%$ de chances d'attendre plus de $3$ minutes."
+            },
+            {
+              "question": "On sait que le temps d'attente $T$ suit une loi exponentielle de paramètre $\\lambda = 2$. Sachant qu'on a déjà attendu $1$ unité de temps sans événement, quelle est la probabilité d'attendre encore au moins $2$ unités de temps supplémentaires ?",
+              "answer": "$e^{-4} \\approx 0,0183$",
+              "hint": "Applique la propriété sans mémoire : $\\mathbb{P}(T > s+t \\mid T > s) = \\mathbb{P}(T > t)$.",
+              "explanation": "Par propriété sans mémoire, $\\mathbb{P}(T > 1+2 \\mid T > 1) = \\mathbb{P}(T > 2) = e^{-2 \\times 2} = e^{-4} \\approx 0,0183$. Le fait d'avoir déjà attendu $1$ ne change rien à la distribution du temps restant."
+            },
+            {
+              "question": "Le temps de téléchargement d'un fichier (en secondes) suit une loi exponentielle d'espérance $20$ s. Déterminer $\\lambda$, la médiane, et la probabilité que le téléchargement dure entre $10$ et $30$ secondes.",
+              "answer": "$\\lambda = 0,05$ ; médiane $\\approx 13,86$ s ; probabilité $\\approx 0,239$",
+              "hint": "L'espérance vaut $1/\\lambda$. La médiane vaut $\\ln(2)/\\lambda$. Pour l'intervalle, calcule $\\mathbb{P}(10 < T < 30) = F(30) - F(10)$.",
+              "explanation": "Espérance $= 20 = 1/\\lambda \\Rightarrow \\lambda = 0,05$. Médiane $= \\ln(2)/0,05 \\approx 13,86$ s. $\\mathbb{P}(10 < T < 30) = (1-e^{-0,05\\times30}) - (1-e^{-0,05\\times10}) = e^{-0,5} - e^{-1,5} \\approx 0,6065 - 0,2231 = 0,3834$. Attends, recalculons : $e^{-0,5} \\approx 0,6065$, $e^{-1,5} \\approx 0,2231$, différence $\\approx 0,3834$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan synthétique : ta liste de vérification pour maîtriser le temps d'attente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce parcours sur la modélisation des temps d'attente. Cette leçon de bilan n'a pas pour but d'introduire de nouvelles notions, mais de t'offrir une vue d'ensemble structurée, une « check-list » mentale que tu pourras parcourir avant un contrôle ou le bac. Chaque point ci-dessous correspond à une compétence clé que tu dois pouvoir mobiliser. Ne te contente pas de lire : pour chaque item, ferme les yeux et essaie de reformuler l'idée avec tes propres mots, ou mieux, invente un mini-exemple chiffré qui l'illustre. C'est en te testant activement que tu ancreras ces connaissances durablement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Reconnaître la situation et poser le modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir identifier qu'un problème met en jeu un temps d'attente jusqu'au premier événement dans un flux d'événements rares, indépendants, à taux constant. Mots-clés du texte : « arrivées aléatoires », « processus de Poisson », « intensity $\\lambda$ », « temps jusqu'au premier... ». Réflexe : poser $T \\sim \\mathcal{E}(\\lambda)$ et écrire explicitement ce que représente $\\lambda$ (nombre moyen d'événements par unité de temps) et l'unité de temps choisie (minute, seconde, heure...). Attention : la loi exponentielle ne s'applique que si l'hypothèse d'absence de mémoire est plausible. Si le problème parle d'usure, de vieillissement, ou de pannes qui deviennent plus fréquentes avec le temps, ce n'est pas le bon modèle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Manipuler la fonction de répartition et la densité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Formules à connaître par cœur : $F_T(t) = 1 - e^{-\\lambda t}$ pour $t \\ge 0$ (et $0$ pour $t < 0$), $f_T(t) = \\lambda e^{-\\lambda t}$ pour $t \\ge 0$. Savoir calculer $\\mathbb{P}(T \\le t)$, $\\mathbb{P}(T > t)$, $\\mathbb{P}(a < T \\le b) = e^{-\\lambda a} - e^{-\\lambda b}$. Être capable de tracer un schéma rapide de la densité (courbe décroissante partant de $\\lambda$ en $0$, asymptote horizontale) et de la fonction de répartition (courbe croissante concave, asymptote $1$). Vérification utile : l'aire sous la densité vaut $1$, la fonction de répartition est continue en $0$ ($F(0)=0$)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Exploiter la propriété sans mémoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la signature de la loi exponentielle. Formulation mathématique : $\\forall s,t \\ge 0, \\, \\mathbb{P}(T > s+t \\mid T > s) = \\mathbb{P}(T > t) = e^{-\\lambda t}$. Formulation pratique : « le temps restant à attendre suit la même loi que le temps total, indépendamment de ce qui s'est déjà passé ». Savoir l'appliquer pour calculer des probabilités conditionnelles sans réécrire la définition à chaque fois. Savoir aussi expliquer pourquoi cette propriété est raisonnable pour des arrivées de clients ou des désintégrations radioactives, mais pas pour la durée de vie d'une ampoule ou d'un être humain."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "4. Calculer et interpréter espérance, variance, quantiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Formules : $\\mathbb{E}(T) = 1/\\lambda$, $\\operatorname{Var}(T) = 1/\\lambda^2$, $\\sigma(T) = 1/\\lambda$. Quantile d'ordre $p$ : $t_p = -\\ln(1-p)/\\lambda$. Médiane : $\\ln 2 / \\lambda \\approx 0,693/\\lambda$. Interprétation : l'espérance donne la moyenne à long terme sur beaucoup d'attentes ; la médiane dit que plus de la moitié du temps, l'attente est plus courte que la moyenne ; l'écart-type égal à l'espérance signale une grande variabilité relative. Attention aux unités : si $\\lambda$ est en appels par minute, l'espérance est en minutes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "5. Passer du processus de Poisson au temps d'attente (et vice versa)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lien fondamental : si les arrivées suivent un processus de Poisson d'intensité $\\lambda$, alors les temps d'attente entre événements successifs sont i.i.d. (indépendants et de même loi) suivant $\\mathcal{E}(\\lambda)$. Réciproquement, si les temps d'attente sont i.i.d. $\\mathcal{E}(\\lambda)$, le processus de comptage est un processus de Poisson d'intensité $\\lambda$. Cette équivalence te permet de changer de point de vue selon ce qui est plus commode : compter des événements sur un intervalle fixe (loi de Poisson) ou mesurer des durées entre événements (loi exponentielle). Exemple classique : « En moyenne 10 clients par heure » $\\Rightarrow \\lambda = 10$ h$^{-1}$, temps moyen entre clients $= 6$ min."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "6. Résoudre un problème complet en 4 étapes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Étape 1 : Traduire le texte en modèle mathématique (identifier $\\lambda$, l'unité de temps, définir $T$). Étape 2 : Écrire la question probabiliste en notation formelle ($\\mathbb{P}(T > ...)$, $\\mathbb{E}(T)$, etc.). Étape 3 : Calculer en utilisant les formules adaptées. Étape 4 : Redonner la réponse dans le langage du problème, avec une phrase complète et les unités. Exemple : « La probabilité d'attendre plus de 5 minutes est de 0,30, soit 30 %. » Vérification de cohérence : la probabilité est entre 0 et 1, l'espérance est positive, l'ordre de grandeur est raisonnable."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "7. Pièges classiques à éviter"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Confondre $\\lambda$ (intensité, événements par unité de temps) et $1/\\lambda$ (temps moyen d'attente).",
+                "Oublier que la densité vaut $0$ pour $t < 0$ et intégrer sur $\\mathbb{R}$ au lieu de $\\mathbb{R}_+$.",
+                "Appliquer la propriété sans mémoire à une loi qui n'est pas exponentielle (ex: loi uniforme, loi normale).",
+                "Mélanger les unités : $\\lambda$ en par minute, $t$ en secondes → convertir avant de calculer.",
+                "Croire que $\\mathbb{P}(T = t) > 0$ pour une loi continue : pour toute loi continue, $\\mathbb{P}(T = t) = 0$.",
+                "Utiliser la loi exponentielle pour modéliser une durée de vie avec vieillissement (usure, mortalité humaine)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette liste n'est pas exhaustive, mais elle couvre l'essentiel de ce qui est exigible en Terminale maths complémentaires sur ce chapitre. Pour t'entraîner, reprends les exercices des leçons précédentes, cache les solutions, et force-toi à écrire le raisonnement complet, y compris la phrase de conclusion. Si tu bloques sur un point précis, reviens sur la leçon correspondante, relis l'explication pas à pas, puis réessaie. La maîtrise vient de la répétition espacée et de l'auto-explication. Tu as maintenant toutes les clés pour aborder sereinement n'importe quel problème de temps d'attente : fais-toi confiance, le raisonnement est en toi."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une situation modélisable par une loi exponentielle (arrivées aléatoires, taux constant, indépendance).",
+                "Je sais écrire la densité $f(t) = \\lambda e^{-\\lambda t}$ et la fonction de répartition $F(t) = 1 - e^{-\\lambda t}$ en précisant le domaine.",
+                "Je sais calculer $\\mathbb{P}(T \\le t)$, $\\mathbb{P}(T > t)$, $\\mathbb{P}(a < T \\le b)$ pour une loi exponentielle.",
+                "Je connais et sais appliquer la propriété sans mémoire : $\\mathbb{P}(T > s+t \\mid T > s) = \\mathbb{P}(T > t)$.",
+                "Je sais calculer l'espérance $\\mathbb{E}(T) = 1/\\lambda$, la variance $\\operatorname{Var}(T) = 1/\\lambda^2$ et la médiane $\\ln(2)/\\lambda$.",
+                "Je sais passer du processus de Poisson (comptage) à la loi exponentielle (durées) et inversement.",
+                "Je sais structurer ma résolution en 4 étapes : modéliser, formaliser, calculer, conclure avec unités.",
+                "J'évite les pièges classiques : confusion $\\lambda$ vs $1/\\lambda$, unités mélangées, application hors domaine de validité."
+              ]
+            }
+          ],
+          "exercises": []
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

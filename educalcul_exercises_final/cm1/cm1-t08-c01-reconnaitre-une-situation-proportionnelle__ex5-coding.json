@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 263,
+  "_course_code": "cm1-t08-c01-reconnaitre-une-situation-proportionnelle",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Approfondissement : Comparer rapports simples",
+  "title": "Algorithmes de comparaison de rapports",
+  "blocks": [
+    {
+      "title": "Détecteur de proportionnalité",
+      "content": "On souhaite créer un programme qui vérifie si deux rapports sont identiques. On a un premier rapport avec $2$ objets pour $6$ euros et un deuxième rapport avec $3$ objets pour $9$ euros. Écris les étapes de calcul (le raisonnement structuré) que le programme doit suivre pour décider si c'est proportionnel.",
+      "correctAnswer": "Étape $1$: Calculer le prix pour un objet dans le premier cas : $6 \\div 2 = 3$. \\nÉtape $2$: Calculer le prix pour un objet dans le deuxième cas : $9 \\div 3 = 3$. \\nÉtape $3$: Comparer les deux résultats. \\nConclusion : Puisque $3 = 3$, la situation est proportionnelle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer deux rapports, on cherche la valeur unitaire. Ici, le prix d'un seul objet est de $3$ euros dans les deux cas, donc les rapports sont égaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de mélanges",
+      "content": "Un robot doit comparer deux mélanges de peinture. Le mélange A utilise $4$ doses de bleu pour $12$ doses de blanc. Le mélange B utilise $5$ doses de bleu pour $20$ doses de blanc. Écris un algorithme simple pour déterminer quel mélange contient le plus de bleu par rapport au blanc.",
+      "correctAnswer": "Calcul pour A : $12 \\div 4 = 3$ doses de blanc pour $1$ dose de bleu. \\nCalcul pour B : $20 \\div 5 = 4$ doses de blanc pour $1$ dose de bleu. \\nComparaison : $3$ est plus petit que $4$. \\nRésultat : Le mélange A contient plus de bleu car il nécessite moins de blanc pour chaque dose de bleu.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule le nombre de doses de blanc pour une seule dose de bleu. Pour A, c'est $3$ et pour B, c'est $4$. Plus ce nombre est petit, plus la concentration en bleu est forte.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Code de vérification rapide",
+      "content": "Imagine un code informatique qui reçoit quatre nombres : $a$ et $b$ pour le premier rapport, $c$ et $d$ pour le second. Le code doit vérifier si $a$ pour $b$ est égal à $c$ pour $d$ en utilisant la multiplication croisée. Écris le raisonnement logique du code pour les valeurs $a=3$, $b=10$, $c=6$ et $d=20$.",
+      "correctAnswer": "Calcul $1$ : Multiplier le premier nombre du rapport A par le deuxième nombre du rapport B : $3 \\times 20 = 60$. \\nCalcul $2$ : Multiplier le deuxième nombre du rapport A par le premier nombre du rapport B : $10 \\times 6 = 60$. \\nComparaison : $60 = 60$. \\nVérification : Les rapports sont égaux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode du produit en croix est un moyen rapide de comparer deux rapports. Si $a \\times d$ est égal à $b \\times c$, alors les rapports sont proportionnels.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

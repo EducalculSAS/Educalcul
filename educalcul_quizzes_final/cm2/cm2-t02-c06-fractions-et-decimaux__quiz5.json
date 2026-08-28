@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 287,
+  "_course_code": "cm2-t02-c06-fractions-et-decimaux",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Fractions décimales",
+  "title": "Approfondissement : Fractions décimales",
+  "questions": [
+    {
+      "text": "Quelle écriture fractionnaire correspond exactement au nombre décimal $4,7$ ?",
+      "options": [
+        "$\\frac{47}{10}$",
+        "$\\frac{4,7}{10}$",
+        "$\\frac{47}{100}$",
+        "$\\frac{4}{10} + 7$"
+      ],
+      "correctAnswer": "$\\frac{47}{10}$",
+      "explanation": "Le nombre $4,7$ possède un seul chiffre après la virgule, il s'agit donc de dixièmes. $4,7$ est égal à $47$ dixièmes, ce qui s'écrit $\\frac{47}{10}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment écrit on la fraction $\\frac{125}{100}$ sous forme de nombre décimal ?",
+      "options": [
+        "$1,25$",
+        "$12,5$",
+        "$0,125$",
+        "$125,0$"
+      ],
+      "correctAnswer": "$1,25$",
+      "explanation": "Diviser par $100$ revient à décaler la virgule de deux rangs vers la gauche. Pour $125$, la virgule se place après le premier chiffre, ce qui donne $1,25$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 125,
+        "denominator": 100,
+        "shape": "bar",
+        "caption": "Représentation de cent vingt cinq centièmes"
+      }
+    },
+    {
+      "text": "La fraction $\\frac{3}{1000}$ peut s'écrire sous la forme d'un nombre décimal. Lequel ?",
+      "options": [
+        "$0,3$",
+        "$0,03$",
+        "$0,003$",
+        "$0,0003$"
+      ],
+      "correctAnswer": "$0,003$",
+      "explanation": "Le dénominateur est $1000$, il faut donc trois chiffres après la virgule pour représenter les millièmes. Le chiffre $3$ doit être placé à la troisième position après la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite transformer la fraction $\\frac{18}{5}$ en fraction décimale. Quelle est la bonne méthode ?",
+      "options": [
+        "On multiplie le numérateur et le dénominateur par $2$ pour obtenir $\\frac{36}{10}$",
+        "On ajoute $2$ au numérateur et au dénominateur pour obtenir $\\frac{20}{7}$",
+        "On divise le numérateur par $5$ et on garde le dénominateur",
+        "On multiplie seulement le dénominateur par $2$ pour obtenir $\\frac{18}{10}$"
+      ],
+      "correctAnswer": "On multiplie le numérateur et le dénominateur par $2$ pour obtenir $\\frac{36}{10}$",
+      "explanation": "Pour obtenir une fraction décimale, le dénominateur doit être $10$, $100$ ou $1000$. Comme $5 \\times 2 = 10$, on multiplie le haut et le bas par $2$. On obtient $\\frac{36}{10}$, ce qui est égal à $3,6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces nombres est égal à la fraction $\\frac{450}{100}$ ?",
+      "options": [
+        "$45,0$",
+        "$4,50$",
+        "$0,45$",
+        "$450,0$"
+      ],
+      "correctAnswer": "$4,50$",
+      "explanation": "$\\frac{450}{100}$ signifie quatre cent cinquante centièmes. En décalant la virgule de deux rangs vers la gauche à partir de $450$, on obtient $4,50$ (ou $4,5$).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 4.5,
+        "caption": "Tableau de numération pour $4,5$"
+      }
+    }
+  ]
+}

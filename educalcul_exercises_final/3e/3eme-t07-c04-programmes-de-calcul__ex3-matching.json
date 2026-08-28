@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Conjecturer",
+  "title": "Conjectures et programmes de calcul",
+  "blocks": [
+    {
+      "title": "Programme simple",
+      "content": "Relie chaque programme de calcul à l'expression algébrique qui lui correspond.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Choisir un nombre, ajouter 5, puis multiplier par 3.",
+          "right": "$3(x + 5)$"
+        },
+        {
+          "left": "Choisir un nombre, multiplier par 3, puis ajouter 5.",
+          "right": "$3x + 5$"
+        },
+        {
+          "left": "Choisir un nombre, ajouter 5, multiplier par 3, puis soustraire 15.",
+          "right": "$3x$"
+        },
+        {
+          "left": "Choisir un nombre, le multiplier par lui-même, puis ajouter 6 fois le nombre.",
+          "right": "$x^2 + 6x$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut respecter l'ordre des opérations. Pour le premier : $(x+5)\\times3 = 3(x+5)$. Pour le second : $x\\times3+5 = 3x+5$. Pour le troisième : $3(x+5)-15 = 3x+15-15 = 3x$. Pour le quatrième : $x\\times x + 6\\times x = x^2+6x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conjecture sur un résultat",
+      "content": "On applique le programme suivant à plusieurs nombres de départ : \"Choisir un nombre, lui ajouter 4, multiplier le résultat par 2, soustraire 8, diviser par 2.\" Relie chaque nombre de départ au résultat conjecturé (puis vérifié).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Nombre de départ : $10$",
+          "right": "Résultat : $10$"
+        },
+        {
+          "left": "Nombre de départ : $-3$",
+          "right": "Résultat : $-3$"
+        },
+        {
+          "left": "Nombre de départ : $0$",
+          "right": "Résultat : $0$"
+        },
+        {
+          "left": "Nombre de départ : $n$ (tout nombre)",
+          "right": "Résultat : $n$"
+        }
+      ],
+      "items": [],
+      "explanation": "On traduit le programme en expression : $\\frac{2(n+4)-8}{2} = \\frac{2n+8-8}{2} = \\frac{2n}{2} = n$. Le programme retourne toujours le nombre de départ. Pour 10 : $(10+4)\\times2=28$, $28-8=20$, $20\\div2=10$. Idem pour -3 et 0. La conjecture est : le résultat final est égal au nombre de départ.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Écriture factorisée et développée",
+      "content": "Le programme \"Choisir un nombre $x$, lui ajouter 2, multiplier par $x$, puis ajouter $2x$\" conduit à une expression. Relie les différentes formes de cette expression.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Forme factorisée",
+          "right": "$x(x + 4)$"
+        },
+        {
+          "left": "Forme développée",
+          "right": "$x^2 + 4x$"
+        },
+        {
+          "left": "Forme semi-factorisée",
+          "right": "$x(x + 2) + 2x$"
+        },
+        {
+          "left": "Description du programme",
+          "right": "$(x + 2) \\times x + 2x$"
+        }
+      ],
+      "items": [],
+      "explanation": "Traduction du programme : $(x+2)\\times x + 2x$. Forme semi-factorisée : $x(x+2)+2x$. Développement : $x^2+2x+2x = x^2+4x$. Factorisation : $x(x+4)$. Les quatre formes sont équivalentes.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

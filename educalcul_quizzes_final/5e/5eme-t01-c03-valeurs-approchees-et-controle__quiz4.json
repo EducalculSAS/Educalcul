@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Application : Valeurs approchées et contrôle",
+  "title": "Quiz : Valeurs approchées et contrôle",
+  "questions": [
+    {
+      "text": "Pour vérifier le résultat de l'addition $487 + 312$, on arrondit chaque nombre à la centaine la plus proche. Quelle est la somme estimée ?",
+      "options": [
+        "$800$",
+        "$700$",
+        "$900$",
+        "$799$"
+      ],
+      "correctAnswer": "$800$",
+      "explanation": "On arrondit $487$ à $500$ (chiffre des dizaines $8 \\ge 5$) et $312$ à $300$ (chiffre des dizaines $1 < 5$). La somme estimée est $500 + 300 = 800$. L'option $799$ correspond à la somme exacte $799$ arrondie à l'unité, pas à la centaine. L'option $700$ serait obtenue en tronquant les centaines. L'option $900$ correspondrait à un arrondi au millier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bande mesure $12,46$ cm. On veut donner sa longueur arrondie au dixième de centimètre près. Quelle valeur doit-on écrire ?",
+      "options": [
+        "$12,4$ cm",
+        "$12,5$ cm",
+        "$12,46$ cm",
+        "$13$ cm"
+      ],
+      "correctAnswer": "$12,5$ cm",
+      "explanation": "L'arrondi au dixième près se fait en regardant le chiffre des centièmes qui est $6$. Comme $6 \\ge 5$, on augmente le chiffre des dixièmes ($4$) d'une unité, ce qui donne $5$. La longueur arrondie est donc $12,5$ cm. L'option $12,4$ cm correspond à une troncature. L'option $13$ cm est l'arrondi à l'unité. L'option $12,46$ cm est la valeur exacte non arrondie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève calcule $24 \\times 38$ et trouve $912$. En utilisant un encadrement par arrondi à la dizaine, quel encadrement permet de vérifier si ce résultat est plausible ?",
+      "options": [
+        "$20 \\times 30 = 600$ et $30 \\times 40 = 1200$",
+        "$20 \\times 40 = 800$ et $30 \\times 30 = 900$",
+        "$24 \\times 30 = 720$ et $24 \\times 40 = 960$",
+        "$25 \\times 40 = 1000$"
+      ],
+      "correctAnswer": "$20 \\times 30 = 600$ et $30 \\times 40 = 1200$",
+      "explanation": "Pour encadrer un produit par arrondi à la dizaine, on arrondit les deux facteurs à la dizaine inférieure pour la borne inférieure ($20$ et $30$, produit $600$) et à la dizaine supérieure pour la borne supérieure ($30$ et $40$, produit $1200$). Le résultat exact $912$ est bien compris entre $600$ et $1200$. La deuxième option mélange arrondi par défaut et par excès. La troisième option n'arrondit qu'un facteur. La quatrième est un simple arrondi des deux nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour un budget, on doit additionner des prix : $4,90$ € ; $12,50$ € ; $3,10$ €. On tronque chaque prix à l'euro (partie entière) pour obtenir un ordre de grandeur minimal. Quelle somme obtient-on ?",
+      "options": [
+        "$19$ €",
+        "$20$ €",
+        "$21$ €",
+        "$18$ €"
+      ],
+      "correctAnswer": "$19$ €",
+      "explanation": "Tronquer à l'euro signifie garder la partie entière : $4,90$ devient $4$, $12,50$ devient $12$, $3,10$ devient $3$. La somme est $4 + 12 + 3 = 19$ €. C'est un majorant minoré (somme minimale garantie). L'option $20$ € est la somme exacte $20,50$ arrondie à l'euro. L'option $21$ € correspond à un arrondi de chaque prix à l'euro supérieur ($5+13+3$). L'option $18$ € n'a pas de justification simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule $589 \\div 29$ à la calculatrice et on obtient $20,31...$. En arrondissant le dividende à la centaine et le diviseur à la dizaine, quelle valeur approchée du quotient trouve-t-on pour contrôler l'ordre de grandeur ?",
+      "options": [
+        "$20$",
+        "$30$",
+        "$15$",
+        "$25$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "On arrondit $589$ à la centaine : $600$. On arrondit $29$ à la dizaine : $30$. Le quotient approché est $600 \\div 30 = 20$. Cette valeur est proche du résultat exact $20,31...$, ce qui valide l'ordre de grandeur. L'option $30$ correspondrait à $600 \\div 20$. L'option $15$ à $600 \\div 40$. L'option $25$ n'est pas obtenue par cet arrondi.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

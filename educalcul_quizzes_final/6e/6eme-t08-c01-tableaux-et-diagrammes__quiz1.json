@@ -1,0 +1,198 @@
+{
+  "_status": "done",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Lire",
+  "title": "Quiz : Lecture de tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "D'après le tableau ci-dessous, combien d'élèves ont choisi la pomme comme fruit préféré ?",
+      "options": [
+        "$12$",
+        "$8$",
+        "$5$",
+        "$7$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Le tableau montre que la ligne « Pomme » a pour valeur $12$, ce qui correspond au nombre d'élèves ayant choisi ce fruit.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "12"
+          ],
+          [
+            "Banane",
+            "8"
+          ],
+          [
+            "Orange",
+            "5"
+          ],
+          [
+            "Fraise",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel mois correspond au plus grand nombre de livres lus ?",
+      "options": [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril"
+      ],
+      "correctAnswer": "Avril",
+      "explanation": "Le mois d'avril possède la barre la plus haute avec une valeur de $7$ livres, ce qui est supérieur aux autres mois.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par mois",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Mars",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Avril",
+            "value": 7,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel sport représente $25$ % du diagramme circulaire ?",
+      "options": [
+        "Football",
+        "Basketball",
+        "Natation",
+        "Tennis"
+      ],
+      "correctAnswer": "Basketball",
+      "explanation": "La part « Basketball » affiche une valeur de $25$, ce qui représente exactement $25$ % du diagramme.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés des élèves",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Basketball",
+            "value": 25,
+            "tone": "red"
+          },
+          {
+            "label": "Natation",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "Tennis",
+            "value": 15,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il de filles dans la classe 6eB ?",
+      "options": [
+        "$13$",
+        "$15$",
+        "$12$",
+        "$14$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "Dans le tableau, la classe 6eB indique $15$ filles dans la colonne « Filles ».",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Classe",
+          "Garçons",
+          "Filles"
+        ],
+        "rows": [
+          [
+            "6eA",
+            "14",
+            "13"
+          ],
+          [
+            "6eB",
+            "12",
+            "15"
+          ],
+          [
+            "6eC",
+            "13",
+            "12"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "De combien le nombre d'élèves du club d'échecs a-t-il augmenté entre $2023$ et $2024$ ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$3$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le club d'échecs passe de $18$ élèves en $2023$ à $22$ élèves en $2024$, soit une augmentation de $22 - 18 = 4$ élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Club",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          [
+            "Échecs",
+            "18",
+            "22"
+          ],
+          [
+            "Théâtre",
+            "15",
+            "14"
+          ],
+          [
+            "Robotique",
+            "10",
+            "13"
+          ]
+        ]
+      }
+    }
+  ]
+}

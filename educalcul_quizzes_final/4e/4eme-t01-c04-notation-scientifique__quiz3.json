@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Calculatrice",
+  "title": "Notation scientifique : utilisation de la calculatrice",
+  "questions": [
+    {
+      "text": "Sur une calculatrice, l'affichage $3,5 \\text{E} 4$ correspond à quel nombre en notation scientifique ?",
+      "options": [
+        "$3,5 \\times 10^4$",
+        "$3,5 \\times 10^{-4}$",
+        "$35 \\times 10^3$",
+        "$0,35 \\times 10^5$"
+      ],
+      "correctAnswer": "$3,5 \\times 10^4$",
+      "explanation": "La touche EXP ou EE (affichée E) signifie « fois 10 puissance ». L'affichage $3,5 \\text{E} 4$ se lit donc $3,5 \\times 10^4$. Les autres options sont des écritures décimales équivalentes mais ne respectent pas la forme normalisée de la notation scientifique (un seul chiffre non nul avant la virgule).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour entrer le nombre $6,02 \\times 10^{23}$ (nombre d'Avogadro) sur une calculatrice scientifique, quelle séquence de touches faut-il utiliser ?",
+      "options": [
+        "$6 , 0 2 \\; \\text{EXP} \\; 2 3$",
+        "$6 , 0 2 \\; \\times \\; 10 \\; \\text{EXP} \\; 2 3$",
+        "$6 , 0 2 \\; \\text{EXP} \\; \\times \\; 10 \\; 2 3$",
+        "$6 , 0 2 \\; \\times \\; 10 ^ {23}$"
+      ],
+      "correctAnswer": "$6 , 0 2 \\; \\text{EXP} \\; 2 3$",
+      "explanation": "La touche EXP (ou EE) insère automatiquement le « $\\times 10^$ ». Il ne faut donc pas retaper $\\times 10$. La séquence correcte est : mantisse (6,02), touche EXP, exposant (23). L'option D fonctionne sur certaines calculatrices graphiques en mode Math mais n'est pas la méthode standard « notation scientifique » sur toutes les machines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après un calcul, la calculatrice affiche $−4,2 \\text{E} -3$. Quelle est l'écriture correcte de ce nombre en notation scientifique ?",
+      "options": [
+        "$-4,2 \\times 10^{-3}$",
+        "$-4,2 \\times 10^{3}$",
+        "$-0,0042$",
+        "$-4200$"
+      ],
+      "correctAnswer": "$-4,2 \\times 10^{-3}$",
+      "explanation": "Le signe moins devant la mantisse ($-4,2$) indique que le nombre est négatif. Le $\\text{E} -3$ signifie « fois 10 puissance -3 ». Cela donne $-4,2 \\times 10^{-3}$. Les options C et D sont les écritures décimales (mal écrites pour D), pas la notation scientifique. L'option B oublie le signe moins de l'exposant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue le produit $(4 \\times 10^5) \\times (2 \\times 10^3)$ sur la calculatrice. L'affichage donne $8 \\text{E} 8$. Que faut-il en déduire ?",
+      "options": [
+        "Le résultat est $8 \\times 10^8$.",
+        "Le résultat est $8 \\times 10^{15}$.",
+        "Le résultat est $80 \\times 10^7$.",
+        "La calculatrice a fait une erreur de syntaxe."
+      ],
+      "correctAnswer": "Le résultat est $8 \\times 10^8$.",
+      "explanation": "La calculatrice gère automatiquement les puissances de 10. $(4 \\times 2) \\times 10^{5+3} = 8 \\times 10^8$. L'affichage $8 \\text{E} 8$ correspond exactement à cette notation scientifique normalisée. L'option C n'est pas normalisée (mantisse $\\ge 10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La calculatrice affiche $1,23 \\text{E} 0$ après un calcul. Quel est ce nombre en écriture décimale usuelle ?",
+      "options": [
+        "$1,23$",
+        "$123$",
+        "$0,0123$",
+        "$12,3$"
+      ],
+      "correctAnswer": "$1,23$",
+      "explanation": "L'exposant 0 signifie « fois $10^0$ ». Or $10^0 = 1$. Donc $1,23 \\times 10^0 = 1,23 \\times 1 = 1,23$. C'est un piège classique : ne pas confondre exposant 0 (nombre inchangé) et absence d'affichage d'exposant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

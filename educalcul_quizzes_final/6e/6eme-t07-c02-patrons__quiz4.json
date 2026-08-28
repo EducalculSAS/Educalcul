@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Application : Patrons",
+  "title": "Applications des patrons",
+  "questions": [
+    {
+      "text": "Parmi les patrons ci-dessous, lequel permet de construire un cube ?",
+      "options": [
+        "Un patron formé de six carrés identiques en forme de croix (quatre carrés en ligne, un de chaque côté du deuxième)",
+        "Un patron formé de cinq carrés identiques en ligne",
+        "Un patron formé de six carrés identiques où quatre sont en ligne et les deux autres sont collés sur le même carré",
+        "Un patron formé de quatre carrés identiques en carré (2x2) et deux carrés isolés"
+      ],
+      "correctAnswer": "Un patron formé de six carrés identiques en forme de croix (quatre carrés en ligne, un de chaque côté du deuxième)",
+      "explanation": "Un cube a six faces carrées identiques. Pour être un patron valide, les six carrés doivent être liés par des côtés entiers et pouvoir se replier sans se chevaucher. La disposition en croix (un carré central, quatre autour, un au bout) est l'un des onze patrons possibles du cube. Cinq carrés ne suffisent pas (option B). Si les deux carrés supplémentaires sont sur le même carré de la ligne de quatre, ils se superposent en se repliant (option C). L'option D décrit des pièces non liées entre elles.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Exemple de patron de cube en forme de croix"
+      }
+    },
+    {
+      "text": "Lequel de ces patrons NE PERMET PAS de former un cube ?",
+      "options": [
+        "Six carrés formant un T (trois en haut, trois en colonne au centre)",
+        "Six carrés formant un Z (trois en haut, un au milieu à droite, deux en bas à droite)",
+        "Six carrés alignés en une seule ligne",
+        "Six carrés formant un escalier (deux, puis deux décalés, puis deux décalés)"
+      ],
+      "correctAnswer": "Six carrés alignés en une seule ligne",
+      "explanation": "Il existe onze patrons distincts du cube. Les dispositions en T, en Z et en escalier font partie de ces onze patrons valides. En revanche, six carrés alignés en une seule ligne ne peuvent pas se replier en cube : les faces du bout se superposeraient et il manquerait des faces pour fermer le volume. C'est une erreur classique de croire que n'importe quelle disposition de six carrés fonctionne.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un patron de cube est découpé dans du carton. Chaque carré du patron a un côté de $5$ cm. Quelle est l'aire totale de ce patron ?",
+      "options": [
+        "150 cm²",
+        "125 cm²",
+        "30 cm²",
+        "25 cm²"
+      ],
+      "correctAnswer": "150 cm²",
+      "explanation": "Le patron d'un cube est composé de six carrés identiques. L'aire d'un carré de côté $5$ cm est $5 \\times 5 = 25$ cm². L'aire totale du patron est la somme des aires des six faces : $6 \\times 25 = 150$ cm². L'option D correspond à l'aire d'une seule face. L'option B ($125$) correspond au volume du cube ($5^3$), pas à l'aire du patron. L'option C ($30$) n'a pas de sens géométrique ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne un patron composé de deux triangles équilatéraux et de trois rectangles de même largeur. Quel solide ce patron permet-il de construire ?",
+      "options": [
+        "Un prisme à base triangulaire (pavé droit triangulaire)",
+        "Une pyramide à base carrée",
+        "Un cube",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un prisme à base triangulaire (pavé droit triangulaire)",
+      "explanation": "Un prisme à base triangulaire (aussi appelé pavé droit triangulaire) possède exactement cinq faces : deux bases qui sont des triangles (ici équilatéraux) et trois faces latérales qui sont des rectangles (de même largeur, qui correspond à la hauteur du prisme). Une pyramide à base carrée a une base carrée et quatre faces triangulaires. Un cube a six faces carrées. Un patron de cylindre comporte deux cercles et un rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le patron d'un pavé droit (boîte rectangulaire) est tracé. On y voit trois paires de rectangles identiques. Les dimensions des rectangles sont : deux de $8$ cm sur $5$ cm, deux de $8$ cm sur $3$ cm et deux de $5$ cm sur $3$ cm. Quel est le volume de ce pavé droit ?",
+      "options": [
+        "120 cm³",
+        "158 cm³",
+        "96 cm³",
+        "16 cm³"
+      ],
+      "correctAnswer": "120 cm³",
+      "explanation": "Les trois paires de rectangles identiques correspondent aux trois paires de faces opposées du pavé droit. Les dimensions des rectangles donnent directement les trois dimensions du solide : longueur $8$ cm, largeur $5$ cm et hauteur $3$ cm (l'ordre n'importe pas pour le volume). Le volume se calcule en multipliant les trois dimensions : $V = 8 \\times 5 \\times 3 = 120$ cm³. L'option B ($158$) correspond approximativement à l'aire totale de la surface. L'option C ($96$) est $8 \\times 12$ (erreur possible). L'option D ($16$) est la somme des trois dimensions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

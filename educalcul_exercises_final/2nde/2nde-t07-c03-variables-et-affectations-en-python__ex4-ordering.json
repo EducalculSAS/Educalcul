@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Variables et affectations en Python",
+  "title": "Variables et affectations en Python - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Affectation et affichage simple",
+      "content": "Rangez les lignes de code dans l'ordre pour calculer la somme de deux nombres et l'afficher.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "a = 5",
+        "b = 3",
+        "c = a + b",
+        "print(c)"
+      ],
+      "explanation": "Le programme commence par assigner la valeur 5 à la variable $a$, puis 3 à $b$. La ligne $c = a + b$ calcule la somme et la stocke dans $c$. Enfin, $print(c)$ affiche le résultat 8.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échange de deux variables",
+      "content": "Rangez les lignes de code dans l'ordre pour échanger les valeurs de deux variables et les afficher.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "x = 10",
+        "y = 20",
+        "x, y = y, x",
+        "print(x)",
+        "print(y)"
+      ],
+      "explanation": "On assigne 10 à $x$ et 20 à $y$. L'instruction $x, y = y, x$ échange les valeurs grâce à l'affectation multiple. Ensuite, $print(x)$ affiche 20 et $print(y)$ affiche 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'aire d'un rectangle",
+      "content": "Rangez les lignes de code dans l'ordre pour lire la longueur et la largeur, calculer l'aire et l'afficher.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "longueur = float(input())",
+        "largeur = float(input())",
+        "aire = longueur * largeur",
+        "print(aire)"
+      ],
+      "explanation": "Les deux premières lignes lisent les entrées utilisateur et les convertissent en nombres réels. La troisième ligne calcule l'aire en multipliant $longueur$ par $largeur$. La dernière ligne affiche la valeur de $aire$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

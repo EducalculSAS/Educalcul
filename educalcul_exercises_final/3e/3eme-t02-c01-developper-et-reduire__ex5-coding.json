@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Distributivité",
+  "title": "Algorithme et distributivité",
+  "blocks": [
+    {
+      "title": "Écriture d'un algorithme de développement",
+      "content": "Écrire un algorithme en langage naturel ou en Python qui prend en entrée deux nombres $a$ et $b$ et un nombre $c$, puis qui affiche le développement de l'expression $(a + b) \\times c$ en utilisant la distributivité. L'algorithme doit afficher les étapes intermédiaires : la multiplication de $a$ par $c$, la multiplication de $b$ par $c$, puis la somme des deux résultats.",
+      "correctAnswer": "Algorithme en langage naturel :\\n1. Demander les valeurs de a, b et c.\\n2. Calculer produit1 = a * c.\\n3. Calculer produit2 = b * c.\\n4. Calculer somme = produit1 + produit2.\\n5. Afficher \"(a + b) * c = \", produit1, \" + \", produit2, \" = \", somme.\\n\\nVersion Python :\\na = float(input(\"Entrez a : \"))\\nb = float(input(\"Entrez b : \"))\\nc = float(input(\"Entrez c : \"))\\nproduit1 = a * c\\nproduit2 = b * c\\nsomme = produit1 + produit2\\nprint(f\"({a} + {b}) * {c} = {produit1} + {produit2} = {somme}\")",
+      "explanation": "La distributivité de la multiplication sur l'addition stipule que $(a + b) \\times c = a \\times c + b \\times c$. L'algorithme doit donc calculer les deux produits partiels $a \\times c$ et $b \\times c$, les additionner, et afficher le résultat final. Les variables stockent les résultats intermédiaires pour pouvoir les afficher.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un script Python",
+      "content": "On donne le script Python suivant :\\n```python\\na = 5\\nb = -2\\nc = 3\\nd = a * c + b * c\\ne = (a + b) * c\\nprint(d)\\nprint(e)\\n```\\nQuelles valeurs seront affichées par les instructions `print(d)` et `print(e)` ? Justifier en utilisant la propriété de distributivité.",
+      "correctAnswer": "Les deux instructions afficheront la valeur $9$.\\nCalcul de d : $d = a \\times c + b \\times c = 5 \\times 3 + (-2) \\times 3 = 15 - 6 = 9$.\\nCalcul de e : $e = (a + b) \\times c = (5 + (-2)) \\times 3 = 3 \\times 3 = 9$.\\nLa propriété de distributivité assure que $a \\times c + b \\times c = (a + b) \\times c$, donc $d = e$.",
+      "explanation": "On remplace les variables par leurs valeurs. Pour $d$, on applique l'ordre des opérations (multiplications avant addition) : $5 \\times 3 = 15$ et $-2 \\times 3 = -6$, puis $15 + (-6) = 9$. Pour $e$, on calcule d'abord la parenthèse : $5 + (-2) = 3$, puis on multiplie par $3$ : $3 \\times 3 = 9$. Les résultats sont égaux car la distributivité permet de factoriser $c$ dans l'expression de $d$ pour retrouver l'expression de $e$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de factorisation simple",
+      "content": "Écrire un algorithme (en Python) qui demande à l'utilisateur trois nombres entiers $x$, $y$ et $k$. L'algorithme doit tester si l'expression $k \\times x + k \\times y$ peut être factorisée par $k$ (ce qui est toujours vrai mathématiquement) et afficher la forme factorisée $k \\times (x + y)$ ainsi que la valeur numérique du résultat. Prévoir un affichage clair du type : \"Expression factorisée : k * (x + y) = resultat\".",
+      "correctAnswer": "x = int(input(\"Entrez x : \"))\\ny = int(input(\"Entrez y : \"))\\nk = int(input(\"Entrez k : \"))\\nresultat = k * (x + y)\\nprint(f\"Expression factorisée : {k} * ({x} + {y}) = {resultat}\")\\n\\n# Version avec calcul explicite des deux formes pour vérification :\\nforme_dev = k * x + k * y\\nforme_fact = k * (x + y)\\nprint(f\"Forme développée : {k}*{x} + {k}*{y} = {forme_dev}\")\\nprint(f\"Forme factorisée : {k} * ({x} + {y}) = {forme_fact}\")\\nprint(f\"Égalité vérifiée : {forme_dev == forme_fact}\")",
+      "explanation": "L'algorithme récupère les trois entiers. Par distributivité (factorisation), $k \\times x + k \\times y = k \\times (x + y)$. On calcule directement la forme factorisée qui nécessite une seule multiplication après l'addition, ce qui est plus efficace. L'affichage formaté (f-string en Python) permet d'insérer les valeurs des variables dans le texte pour montrer la structure factorisée $k \\times (x + y)$ et le résultat final.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

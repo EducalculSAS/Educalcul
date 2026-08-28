@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Indicateurs et probabilités",
+  "title": "Quiz - Indicateurs et probabilités (3e)",
+  "questions": [
+    {
+      "text": "La série statistique suivante donne les notes sur 20 de cinq élèves : $12$, $15$, $9$, $14$, $10$. Quelle est la moyenne de cette série ?",
+      "options": [
+        "La moyenne vaut $12$",
+        "La moyenne vaut $11,8$",
+        "La moyenne vaut $12,2$",
+        "La moyenne vaut $13$"
+      ],
+      "correctAnswer": "La moyenne vaut $12$",
+      "explanation": "La moyenne se calcule en faisant la somme des valeurs divisée par l'effectif total. La somme est $12+15+9+14+10 = 60$. L'effectif est $5$. Donc la moyenne est $60 / 5 = 12$. Les autres réponses correspondent à des erreurs de calcul de la somme ou de la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les âges (en années) de six élèves : $13$, $14$, $13$, $15$, $14$, $12$. Quelle est la médiane de cette série ?",
+      "options": [
+        "La médiane est $13,5$",
+        "La médiane est $13$",
+        "La médiane est $14$",
+        "La médiane est $14,5$"
+      ],
+      "correctAnswer": "La médiane est $13,5$",
+      "explanation": "Pour trouver la médiane, on classe les valeurs par ordre croissant : $12$, $13$, $13$, $14$, $14$, $15$. Comme l'effectif est pair ($6$), la médiane est la moyenne des deux valeurs centrales, ici $13$ et $14$. Leur moyenne est $(13+14)/2 = 13,5$. Les autres options correspondent à une confusion avec le mode ou à un mauvais choix des valeurs centrales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'étendue d'une série statistique est la différence entre la valeur maximale et la valeur minimale. Pour la série $8$, $11$, $5$, $14$, $9$, quelle est l'étendue ?",
+      "options": [
+        "L'étendue vaut $9$",
+        "L'étendue vaut $10$",
+        "L'étendue vaut $6$",
+        "L'étendue vaut $14$"
+      ],
+      "correctAnswer": "L'étendue vaut $9$",
+      "explanation": "La valeur maximale est $14$ et la valeur minimale est $5$. L'étendue est $14 - 5 = 9$. Les distracteurs proviennent d'une soustraction erronée (par exemple $11-5=6$) ou de la confusion avec la valeur maximale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "La probabilité est $1/2$",
+        "La probabilité est $1/3$",
+        "La probabilité est $1/6$",
+        "La probabilité est $2/3$"
+      ],
+      "correctAnswer": "La probabilité est $1/2$",
+      "explanation": "Les issues favorables sont $2$, $4$, $6$, soit $3$ issues sur $6$ issues équiproables. La probabilité est donc $3/6 = 1/2$. Les autres réponses correspondent à un comptage erroné des nombres pairs ou à une confusion avec d'autres événements.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux fois une pièce de monnaie équilibrée. Quelle est la probabilité d'obtenir exactement une fois « face » ?",
+      "options": [
+        "La probabilité est $1/2$",
+        "La probabilité est $1/4$",
+        "La probabilité est $3/4$",
+        "La probabilité est $1/3$"
+      ],
+      "correctAnswer": "La probabilité est $1/2$",
+      "explanation": "L'espace des issues possibles est {FF, FP, PF, PP} (F = face, P = pile), soit $4$ issues équiproables. Les issues favorables à « exactement une face » sont FP et PF, soit $2$ issues. La probabilité est $2/4 = 1/2$. Les distracteurs proviennent d'une confusion avec « au moins une face » ($3/4$) ou avec la probabilité d'une issue précise ($1/4$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

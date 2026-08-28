@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Simplifier",
+  "title": "Quiz : Simplifier les fractions",
+  "questions": [
+    {
+      "text": "Simplifie la fraction $\\frac{15}{25}$ pour la rendre irréductible.",
+      "options": [
+        "$\\frac{3}{5}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{7}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5}$",
+      "explanation": "Pour simplifier $\\frac{15}{25}$, on cherche le plus grand diviseur commun (PGCD) de 15 et 25. Le PGCD est 5. On divise le numérateur et le dénominateur par 5 : $15 \\div 5 = 3$ et $25 \\div 5 = 5$. La fraction irréductible est donc $\\frac{3}{5}$. L'option $\\frac{5}{8}$ correspond à une erreur de soustraction, $\\frac{1}{2}$ est une approximation et $\\frac{3}{7}$ n'a pas de lien avec le calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est déjà irréductible ?",
+      "options": [
+        "$\\frac{21}{49}$",
+        "$\\frac{13}{26}$",
+        "$\\frac{17}{30}$",
+        "$\\frac{25}{35}$"
+      ],
+      "correctAnswer": "$\\frac{17}{30}$",
+      "explanation": "Une fraction est irréductible si le PGCD de son numérateur et de son dénominateur est 1. Pour $\\frac{21}{49}$, le PGCD est 7 (se simplifie en $\\frac{3}{7}$). Pour $\\frac{13}{26}$, le PGCD est 13 (se simplifie en $\\frac{1}{2}$). Pour $\\frac{25}{35}$, le PGCD est 5 (se simplifie en $\\frac{5}{7}$). Pour $\\frac{17}{30}$, 17 est un nombre premier qui ne divise pas 30, le PGCD est donc 1. C'est la seule fraction irréductible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction $\\frac{144}{180}$.",
+      "options": [
+        "$\\frac{4}{5}$",
+        "$\\frac{12}{15}$",
+        "$\\frac{72}{90}$",
+        "$\\frac{8}{10}$"
+      ],
+      "correctAnswer": "$\\frac{4}{5}$",
+      "explanation": "On peut simplifier par étapes ou trouver directement le PGCD. $144 = 2^4 \\times 3^2$ et $180 = 2^2 \\times 3^2 \\times 5$. Le PGCD est $2^2 \\times 3^2 = 4 \\times 9 = 36$. En divisant numérateur et dénominateur par 36, on obtient $\\frac{144 \\div 36}{180 \\div 36} = \\frac{4}{5}$. Les autres options sont des simplifications partielles : $\\frac{72}{90}$ (divisé par 2), $\\frac{12}{15}$ (divisé par 12), $\\frac{8}{10}$ (divisé par 18), mais ne sont pas irréductibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de la simplification de la fraction $\\frac{56}{96}$ ?",
+      "options": [
+        "$\\frac{7}{12}$",
+        "$\\frac{28}{48}$",
+        "$\\frac{14}{24}$",
+        "$\\frac{7}{11}$"
+      ],
+      "correctAnswer": "$\\frac{7}{12}$",
+      "explanation": "On cherche le PGCD de 56 et 96. $56 = 8 \\times 7$ et $96 = 8 \\times 12$. Le PGCD est 8. En divisant les deux termes par 8, on obtient $\\frac{56 \\div 8}{96 \\div 8} = \\frac{7}{12}$. Les options $\\frac{28}{48}$ et $\\frac{14}{24}$ correspondent à des simplifications successives par 2 et par 4, mais la fraction n'est pas encore irréductible. L'option $\\frac{7}{11}$ est une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simplifie la fraction littérale $\\frac{3x}{12x}$ avec $x \\neq 0$. On obtient :",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{12}$",
+        "$\\frac{x}{4}$",
+        "$\\frac{1}{4x}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "Comme $x \\neq 0$, on peut simplifier la fraction par $x$ : $\\frac{3x}{12x} = \\frac{3}{12}$. Ensuite, on simplifie la fraction numérique par 3 (PGCD de 3 et 12) : $\\frac{3 \\div 3}{12 \\div 3} = \\frac{1}{4}$. L'option $\\frac{3}{12}$ n'est pas totalement simplifiée. L'option $\\frac{x}{4}$ correspond à une simplification incorrecte du numérateur seulement. L'option $\\frac{1}{4x}$ correspond à une erreur de placement du $x$ au dénominateur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

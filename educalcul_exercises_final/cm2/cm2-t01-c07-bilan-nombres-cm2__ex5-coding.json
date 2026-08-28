@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 281,
+  "_course_code": "cm2-t01-c07-bilan-nombres-cm2",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Entiers et décimaux",
+  "title": "Algorithmes sur les entiers et les décimaux",
+  "blocks": [
+    {
+      "title": "Exécution d'un algorithme simple",
+      "content": "On exécute l'algorithme suivant :\\nVariable N prend la valeur 7,5\\nRépéter 3 fois\\n    N prend la valeur N × 10\\nFin Répéter\\nAfficher N\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "correctAnswer": "7500",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au départ, N = 7,5. La boucle s'exécute 3 fois. À chaque tour, N est multiplié par 10. Premier tour : N = 75. Deuxième tour : N = 750. Troisième tour : N = 7500. La valeur affichée est donc 7500.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec condition",
+      "content": "On considère l'algorithme ci-dessous :\\nDemander un nombre x\\nSi x × 100 > 50 alors\\n    Afficher \"Supérieur\"\\nSinon\\n    Afficher \"Inférieur ou égal\"\\nFin Si\\nParmi les nombres suivants, lesquels feront afficher \"Supérieur\" ? 0,4 ; 0,5 ; 0,6 ; 0,05",
+      "correctAnswer": "0,6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste chaque nombre :\\nPour 0,4 : 0,4 × 100 = 40, 40 > 50 est faux.\\nPour 0,5 : 0,5 × 100 = 50, 50 > 50 est faux.\\nPour 0,6 : 0,6 × 100 = 60, 60 > 50 est vrai, affiche \"Supérieur\".\\nPour 0,05 : 0,05 × 100 = 5, 5 > 50 est faux.\\nSeul 0,6 remplit la condition.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Écriture d'un algorithme",
+      "content": "Écris un algorithme (en langage naturel structuré ou style Python) qui demande un nombre entier à deux chiffres à l'utilisateur, puis qui affiche le chiffre des dizaines de ce nombre.\\nIndication : on peut utiliser la division euclidienne (quotient).",
+      "correctAnswer": "Algorithme :\\nDemander un nombre entier N\\nCalculer Q comme le quotient de N par 10 (division euclidienne)\\nAfficher Q",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir le chiffre des dizaines d'un nombre entier à deux chiffres, il suffit de faire la division euclidienne de ce nombre par 10. Le quotient de cette division correspond exactement au chiffre des dizaines. Par exemple, pour 47, 47 = 4 × 10 + 7, le quotient est 4.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.631407+00:00",
+  "id": 365,
+  "code": "6eme-t07-c03",
+  "title": "Vues et perspectives",
+  "description": "Cours structuré Educalcul : Vues et perspectives.",
+  "subject": "Espace",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Espace",
+    "titre_du_cours": "Vues et perspectives",
+    "objectif_global": "Vues et perspectives",
+    "mini_lecons_imposees": [
+      "Face / dessus.",
+      "Interpréter.",
+      "Dessiner simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace",
+      "lessons": [
+        {
+          "title": "Face / dessus.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Face et dessus : deux regards sur un objet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu poses un cube sur la table. Si tu te places juste devant, tu ne vois qu'un seul carré : c'est la face avant. Si tu montes sur une chaise et que tu regardes par-dessus, tu aperçois encore un carré, mais cette fois c'est le dessus de l'objet. Ces deux regards sont différents et pourtant ils décrivent le même solide. Dans cette leçon, nous allons apprendre à nommer ces deux vues, à les reconnaître sur des dessins et à comprendre pourquoi elles sont utiles pour décrire un objet en trois dimensions. Prends le temps d'observer les objets autour de toi : une boîte de céréales, un livre, un dé. Chaque fois, demande-toi quelle est la face que tu vois de face et quelle est la forme que tu vois du dessus. C'est en manipulant mentalement ces images que tu construiras une vraie intuition de l'espace."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "La face d'un solide est la surface plane que l'on voit quand on se place devant lui.",
+              "example": "Sur un cube, chaque face est un carré."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le mot face a une définition précise, tu peux l'utiliser pour décrire n'importe quel solide. Par exemple, un pavé droit a six faces, chacune étant un rectangle. Le dessus correspond à la face supérieure lorsque l'objet repose sur une table. Essaie de nommer les faces d'une boîte de chaussures : la face avant, la face arrière, les deux faces latérales, le dessus et le dessous. Cette habitude de vocabulaire te servira tout au long du chapitre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un point de vue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place-toi devant l'objet, à hauteur des yeux. La surface que tu vois en premier est la face avant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Monte le regard",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Imagine que tu t'élèves au-dessus de l'objet. La surface qui devient visible est le dessus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Note la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine rapidement la forme de chaque vue : carré, rectangle, cercle… Cela t'aidera à les reconnaître sur un papier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "O",
+              "caption": "Vue de dessus d'un cylindre : un cercle de rayon $5$ $cm$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les repères pour distinguer la face du dessus. Passons à un exemple concret avec un pavé droit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître la face avant d'un pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un pavé droit ressemble à une brique. Sa face avant est un rectangle dont la largeur correspond à la largeur de l'objet et la hauteur à sa hauteur. Si tu regardes le pavé de face, tu ne vois que ce rectangle. Essaie de visualiser une boîte de $10$ $cm$ de large, $6$ $cm$ de haut et $4$ $cm$ de profond. La face avant mesure $10$ $cm$ sur $6$ $cm$. Dessine ce rectangle sur ton cahier et écris les dimensions à côté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la face avant, intéressons-nous à la vue de dessus qui révèle la profondeur de l'objet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Associer la vue de dessus à la forme de l'objet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu regardes le même pavé droit depuis le haut, tu aperçois un rectangle qui mesure $10$ $cm$ de large sur $4$ $cm$ de profond. Ce rectangle est la projection du dessus. Remarque que la largeur reste la même que sur la face avant, mais la hauteur disparaît au profit de la profondeur. Pour t'entraîner, trace ce deuxième rectangle à côté du premier et relie les coins correspondants par des traits pointillés : tu obtiens une esquisse en perspective cavalière."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un cube de côté $4$ $cm$, quelle est la forme de la vue de face et quelle est sa dimension ?",
+              "answer": "La vue de face est un carré de $4$ $cm$ de côté.",
+              "hint": "Regarde le cube de face, toutes les arêtes visibles ont la même longueur.",
+              "explanation": "Un cube a six faces carrées identiques. De face, on ne voit qu'une seule face, donc un carré de $4$ $cm$."
+            },
+            {
+              "question": "Un pavé droit mesure $10$ $cm$ de large, $6$ $cm$ de haut et $4$ $cm$ de profond. Dessine la vue de face et indique ses dimensions.",
+              "answer": "La vue de face est un rectangle de $10$ $cm$ sur $6$ $cm$.",
+              "hint": "La face avant utilise la largeur et la hauteur, la profondeur n'apparaît pas.",
+              "explanation": "La face avant correspond au rectangle formé par la largeur et la hauteur du pavé."
+            },
+            {
+              "question": "Pour le même pavé droit, quelle est la forme de la vue de dessus et quelles sont ses dimensions ?",
+              "answer": "La vue de dessus est un rectangle de $10$ $cm$ sur $4$ $cm$.",
+              "hint": "Le dessus montre la largeur et la profondeur.",
+              "explanation": "Vu du haut, la hauteur disparaît, on voit la largeur et la profondeur."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter une perspective cavalière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une perspective cavalière est un dessin qui montre un objet en trois dimensions sur une feuille plane. Les arêtes qui partent vers l'arrière sont tracées avec un angle, souvent $45$ degrés, et leur longueur est réduite, généralement de moitié. Cela donne l'impression de profondeur sans utiliser de point de fuite. Regarde le dessin ci‑contre : un pavé droit y est représenté. La face avant est un rectangle parfaitement droit, les arêtes de profondeur partent en biais vers la droite. En comprenant ce code graphique, tu pourras lire les dimensions réelles de l'objet."
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 45,
+              "caption": "Angle de $45$ degrés utilisé pour les arêtes de profondeur en perspective cavalière"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer l'angle, voyons comment récupérer les mesures réelles à partir du dessin."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les dimensions sur un dessin en perspective"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le dessin, la face avant conserve ses vraies dimensions. Les arêtes de profondeur, elles, sont dessinées à moitié de leur longueur réelle. Si le dessin montre une arête de profondeur de $3$ $cm$, l'objet mesure en réalité $6$ $cm$ de profondeur. Pour ne pas te tromper, repère d'abord la face avant, note sa largeur et sa hauteur, puis mesure l'arête oblique et double-la. Applique cette règle sur le pavé de l'exemple : la face avant fait $8$ $cm$ sur $5$ $cm$, l'arête oblique mesure $2,5$ $cm$, donc la profondeur réelle est de $5$ $cm$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie la face avant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le rectangle qui n'est pas déformé : c'est la face avant. Note sa largeur et sa hauteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repère les arêtes de profondeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce sont les segments qui partent des coins de la face avant vers l'arrière, inclinés à $45$ degrés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calcule la profondeur réelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la longueur de l'arête oblique sur le papier, puis multiplie par deux pour obtenir la profondeur de l'objet."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ces outils, tu peux maintenant comparer plusieurs vues d'un même solide pour le reconstruire mentalement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer plusieurs vues pour reconstituer l'objet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on te donne la vue de face et la vue de dessus d'un même objet. La vue de face t'indique la largeur et la hauteur, la vue de dessus t'indique la largeur et la profondeur. En superposant ces informations, tu retrouves les trois dimensions. Imagine un meuble : la face avant montre une largeur de $120$ $cm$ et une hauteur de $80$ $cm$ ; le dessus montre une largeur de $120$ $cm$ et une profondeur de $40$ $cm$. Tu sais maintenant que le meuble mesure $120$ $cm$ × $80$ $cm$ × $40$ $cm$. Entraîne-toi à associer les deux vues pour déduire la dimension manquante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une perspective cavalière, les arêtes de profondeur sont tracées avec un angle de $45$ degrés et leur longueur est divisée par deux. Si une arête oblique mesure $3$ $cm$ sur le dessin, quelle est la profondeur réelle de l'objet ?",
+              "answer": "La profondeur réelle est de $6$ $cm$.",
+              "hint": "Multiplie la longueur mesurée sur le papier par $2$.",
+              "explanation": "Par convention, la perspective cavalière réduit de moitié les longueurs de profondeur."
+            },
+            {
+              "question": "Un pavé droit est dessiné en perspective cavalière. Sa face avant mesure $8$ $cm$ de large et $5$ $cm$ de haut. L'arête oblique mesurée sur le dessin fait $2,5$ $cm$. Quelles sont les trois dimensions du pavé ?",
+              "answer": "Largeur $8$ $cm$, hauteur $5$ $cm$, profondeur $5$ $cm$.",
+              "hint": "La profondeur réelle est le double de l'arête oblique.",
+              "explanation": "La face avant donne largeur et hauteur. L'arête oblique de $2,5$ $cm$ correspond à une profondeur de $5$ $cm$."
+            },
+            {
+              "question": "On te donne la vue de face d'un meuble (largeur $120$ $cm$, hauteur $80$ $cm$) et sa vue de dessus (largeur $120$ $cm$, profondeur $40$ $cm$). Quelles sont les trois dimensions du meuble ?",
+              "answer": "Largeur $120$ $cm$, hauteur $80$ $cm$, profondeur $40$ $cm$.",
+              "hint": "La largeur est commune aux deux vues.",
+              "explanation": "La face avant fournit largeur et hauteur, le dessus fournit largeur et profondeur. La largeur commune confirme la cohérence."
+            }
+          ]
+        },
+        {
+          "title": "Dessiner simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner une vue de face simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessiner la vue de face, c'est représenter l'objet comme si tu te tenais juste devant lui. Tu n'as besoin que d'un rectangle (ou d'un carré) aux bonnes proportions. Commence par tracer un rectangle de la largeur et de la hauteur réelles de l'objet. Utilise une règle pour les côtés verticaux et horizontaux. Si l'objet a des détails comme une poignée ou une fenêtre, ajoute-les à l'intérieur du rectangle en respectant les mêmes échelles. Prends ton temps : un trait net et des mesures précises rendent le dessin lisible."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle servant de base pour construire une face rectangulaire",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la face avant tracée, il faut ajouter la vue de dessus pour donner une idée de la profondeur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer la vue de dessus d'un pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "La vue de dessus se dessine au-dessus de la face avant, décalée vers la droite pour suggérer la profondeur. Trace un rectangle ayant la même largeur que la face avant et une longueur égale à la profondeur de l'objet. Aligne le côté gauche de ce rectangle avec le côté gauche de la face avant. Relie ensuite les deux coins supérieurs par des traits pointillés : ces traits représentent les arêtes verticales qui ne sont pas visibles de face. Cette construction simple te donne déjà une représentation en trois dimensions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessine la face avant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un rectangle aux dimensions exactes de la largeur et de la hauteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute la vue de dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au-dessus, décalée vers la droite, trace un rectangle de même largeur et de longueur égale à la profondeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relie les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace des pointillés entre les coins correspondants pour matérialiser les arêtes de profondeur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, assembles les deux vues dans un même dessin et vérifie que toutes les dimensions concordent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Assembler les deux vues pour obtenir une représentation complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place la face avant et la vue de dessus sur la même feuille en respectant le décalage. Vérifie que la largeur est identique sur les deux rectangles. Si tu as bien suivi les étapes, tu obtiens une esquisse en perspective cavalière sans avoir à gérer de point de fuite. Essaie maintenant avec un objet de ton choix : une boîte de $15$ $cm$ de large, $10$ $cm$ de haut, $6$ $cm$ de profond. Dessine la face avant ($15$ $cm$ × $10$ $cm$), puis la vue de dessus ($15$ $cm$ × $6$ $cm$) décalée, relie les coins. Tu as créé ta première perspective simple !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer la face et le dessus d'un solide.",
+                "Je sais lire les dimensions sur une perspective cavalière.",
+                "Je sais dessiner la vue de face et la vue de dessus d'un pavé droit.",
+                "Je peux associer deux vues pour retrouver les trois dimensions d'un objet."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine la vue de face d'un pavé droit de $12$ $cm$ de large et $7$ $cm$ de haut. Indique les dimensions sur ton dessin.",
+              "answer": "Un rectangle de $12$ $cm$ sur $7$ $cm$ avec les dimensions notées.",
+              "hint": "Utilise une règle, trace les côtés horizontaux et verticaux.",
+              "explanation": "La vue de face ne montre que la largeur et la hauteur."
+            },
+            {
+              "question": "Ajoute la vue de dessus pour ce même pavé si sa profondeur est de $5$ $cm$. Décris la position du rectangle du dessus par rapport à la face avant.",
+              "answer": "Un rectangle de $12$ $cm$ sur $5$ $cm$ placé au-dessus et décalé vers la droite, aligné à gauche.",
+              "hint": "La largeur reste $12$ $cm$, la longueur du rectangle du dessus est la profondeur.",
+              "explanation": "La vue de dessus partage la largeur avec la face avant et montre la profondeur."
+            },
+            {
+              "question": "Représente en perspective cavalière un objet de $15$ $cm$ de large, $10$ $cm$ de haut, $6$ $cm$ de profond. Liste les étapes que tu as suivies.",
+              "answer": "1. Face avant $15$ $cm$ × $10$ $cm$. 2. Vue de dessus $15$ $cm$ × $6$ $cm$ décalée. 3. Relier les coins par des pointillés.",
+              "hint": "Suis la méthode en trois étapes vue en cours.",
+              "explanation": "La méthode assure que les trois dimensions apparaissent correctement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

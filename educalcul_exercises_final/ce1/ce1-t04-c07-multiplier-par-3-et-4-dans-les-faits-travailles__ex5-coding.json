@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 104,
+  "_course_code": "ce1-t04-c07-multiplier-par-3-et-4-dans-les-faits-travailles",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Construire les résultats",
+  "title": "Construire les résultats des multiplications par 3 et 4",
+  "blocks": [
+    {
+      "title": "Algorithme pour multiplier par 3",
+      "content": "Écris un algorithme simple (en pseudo‑code) qui calcule le produit de $n$ par $3$ en utilisant uniquement des additions.",
+      "correctAnswer": "fonction fois3(n):\\n    résultat ← n + n + n\\n    retourner résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 3 revient à additionner le nombre trois fois. L'algorithme prend n, calcule n + n + n et renvoie ce résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour multiplier par 4",
+      "content": "Écris un algorithme qui calcule $4 \\times n$ en utilisant l'idée du double du double.",
+      "correctAnswer": "fonction fois4(n):\\n    double ← n + n\\n    résultat ← double + double\\n    retourner résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le produit par 4 peut se construire en doublant deux fois : on calcule d'abord le double de n (n + n), puis on double ce résultat (double + double).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Utilisation des deux algorithmes",
+      "content": "En utilisant les deux algorithmes précédents, écris un algorithme qui, pour un nombre $n$ donné, affiche les résultats de $3 \\times n$ et $4 \\times n$.",
+      "correctAnswer": "fonction afficherProduits(n):\\n    p3 ← fois3(n)\\n    p4 ← fois4(n)\\n    afficher \"3 × \" + n + \" = \" + p3\\n    afficher \"4 × \" + n + \" = \" + p4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On appelle la fonction fois3 pour obtenir le triple, la fonction fois4 pour obtenir le quadruple, puis on affiche les deux résultats avec un message clair.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

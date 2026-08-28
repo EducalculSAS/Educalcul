@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 365,
+  "_course_code": "6eme-t07-c03-vues-et-perspectives",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Face / dessus",
+  "title": "Approfondissement : Face et dessus - Algorithmes",
+  "blocks": [
+    {
+      "title": "Vue de dessus",
+      "content": "On considère un solide constitué de cubes unitaires empilés sur une grille de trois lignes et trois colonnes. Chaque case de la grille contient un nombre entier qui représente la hauteur de la pile de cubes en cet endroit. Écrire un algorithme en langage naturel qui permet de construire la vue de dessus du solide. La vue de dessus est une grille de même dimension où chaque case vaut un si la hauteur correspondante est strictement positive, et zéro sinon.",
+      "correctAnswer": "Algorithme : pour chaque ligne de la grille de hauteurs, pour chaque colonne de la grille de hauteurs, si la hauteur à cette position est supérieure à zéro, alors on écrit un dans la case correspondante de la vue de dessus, sinon on écrit zéro. Fin du parcours des colonnes, fin du parcours des lignes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt toutes les cases de la grille de hauteurs. Pour chaque case, on teste si la hauteur est strictement positive. Si oui, la vue de dessus montre un cube (on note un), sinon la case est vide (on note zéro). Cela donne une grille de mêmes dimensions indiquant la présence ou l'absence de cubes vus de dessus.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vue de face",
+      "content": "Reprendre l'algorithme précédent pour qu'il produise également la vue de face du solide. La vue de face correspond à la projection frontale : pour chaque colonne de la grille, on regarde les hauteurs sur les trois lignes et on retient la plus grande. La vue de face est donc une liste de trois nombres entiers.",
+      "correctAnswer": "Algorithme complété : d'abord, construire la vue de dessus comme auparavant. Ensuite, pour chaque colonne de un à trois, mettre le maximum à zéro. Pour chaque ligne de un à trois, si la hauteur à cette ligne et cette colonne est supérieure au maximum, alors le maximum prend cette hauteur. Fin du parcours des lignes. Écrire le maximum dans la liste de la vue de face à l'indice de la colonne. Fin du parcours des colonnes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après avoir obtenu la vue de dessus, on traite chaque colonne indépendamment. On initialise un maximum à zéro. On parcourt les trois lignes de cette colonne et on met à jour le maximum si on trouve une hauteur plus grande. À la fin, le maximum est la hauteur visible de face pour cette colonne. On répète pour les trois colonnes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction générale",
+      "content": "Proposer une fonction en pseudo-code (style Python) nommée vues qui prend en paramètre une liste de listes hauteurs de dimensions $n$ lignes et $m$ colonnes ($n$ et $m$ entiers positifs). La fonction doit renvoyer deux résultats : dessus, une grille de $n$ lignes et $m$ colonnes contenant des uns et des zéros selon la même règle que précédemment, et face, une liste de $m$ entiers donnant pour chaque colonne la hauteur maximale parmi les $n$ lignes.",
+      "correctAnswer": "Fonction vues : la fonction reçoit une grille de hauteurs. Elle détermine le nombre de lignes et le nombre de colonnes. Elle prépare une grille dessus de mêmes dimensions remplie de zéros, et une liste face de longueur égale au nombre de colonnes remplie de zéros. Puis elle parcourt chaque ligne et chaque colonne : si la hauteur lue est positive, elle met un dans la grille dessus à la même position ; elle compare aussi cette hauteur avec la valeur actuelle de face pour cette colonne, et si elle est plus grande, elle la remplace. Après avoir parcouru toute la grille, elle renvoie la grille dessus et la liste face.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction commence par déterminer les dimensions de la grille d'entrée. Elle initialise la grille dessus avec des zéros et la liste face avec des zéros. Ensuite, une double boucle parcourt toutes les cases. Pour chaque case, si la hauteur est positive, on met un dans dessus. Parallèlement, on compare la hauteur avec la valeur actuelle de face pour cette colonne et on la met à jour si elle est plus grande. À la fin, on retourne les deux structures.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

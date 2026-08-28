@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Faces, arêtes, sommets",
+  "title": "Quiz : Faces, arêtes et sommets des solides",
+  "questions": [
+    {
+      "text": "Combien de faces a un cube ?",
+      "options": [
+        "4 faces",
+        "6 faces",
+        "8 faces",
+        "12 faces"
+      ],
+      "correctAnswer": "6 faces",
+      "explanation": "Un cube est un solide qui a 6 faces, et toutes ses faces sont des carrés. L'option \"4 faces\" correspond à un tétraèdre, \"8 faces\" au nombre de sommets d'un cube, et \"12 faces\" n'existe pas pour les solides usuels du programme.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube replié"
+      }
+    },
+    {
+      "text": "Combien d'arêtes a un pavé droit ?",
+      "options": [
+        "6 arêtes",
+        "8 arêtes",
+        "12 arêtes",
+        "16 arêtes"
+      ],
+      "correctAnswer": "12 arêtes",
+      "explanation": "Un pavé droit (comme un cube) possède 12 arêtes : 4 arêtes sur la face du haut, 4 sur la face du bas et 4 arêtes verticales. \"6 arêtes\" est le nombre de faces, \"8 arêtes\" est le nombre de sommets.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de sommets a une pyramide à base carrée ?",
+      "options": [
+        "4 sommets",
+        "5 sommets",
+        "6 sommets",
+        "8 sommets"
+      ],
+      "correctAnswer": "5 sommets",
+      "explanation": "Une pyramide à base carrée a 4 sommets sur sa base (qui est un carré) et 1 sommet au sommet de la pyramide, ce qui fait 5 sommets au total. \"4 sommets\" oublie le sommet du haut, \"6 sommets\" correspond à un prisme triangulaire, \"8 sommets\" à un pavé droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observons ce solide : c'est un cylindre. Combien de faces, d'arêtes et de sommets a-t-il ?",
+      "options": [
+        "3 faces, 2 arêtes, 0 sommet",
+        "2 faces, 0 arête, 0 sommet",
+        "3 faces, 0 arête, 0 sommet",
+        "1 face, 1 arête, 0 sommet"
+      ],
+      "correctAnswer": "3 faces, 2 arêtes, 0 sommet",
+      "explanation": "Le cylindre a 3 faces : 2 faces planes circulaires (les bases) et 1 face courbe (le côté). Il a 2 arêtes (les deux cercles qui séparent les bases de la face courbe) et aucun sommet car il n'y a pas de point où se rejoignent plusieurs arêtes droites.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un solide a 5 faces, 9 arêtes et 6 sommets. De quel solide s'agit-il ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Un prisme à base triangulaire",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un prisme à base triangulaire",
+      "explanation": "Le prisme à base triangulaire (ou prisme droit à base triangle) possède 5 faces (2 triangles pour les bases et 3 rectangles pour les faces latérales), 9 arêtes (3 sur chaque base et 3 arêtes latérales) et 6 sommets (3 sur chaque base). Le cube et le pavé droit ont 6 faces, 12 arêtes, 8 sommets. La pyramide à base carrée a 5 faces, 8 arêtes, 5 sommets.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

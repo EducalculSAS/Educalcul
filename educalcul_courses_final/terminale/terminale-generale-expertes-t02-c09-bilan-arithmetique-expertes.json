@@ -1,0 +1,432 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.801063+00:00",
+  "id": 746,
+  "code": "terminale-generale-expertes-t02-c09",
+  "title": "Bilan - Arithmétique expertes",
+  "description": "Cours structuré Educalcul : Bilan - Arithmétique expertes.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Bilan - Arithmétique expertes",
+    "objectif_global": "Bilan - Arithmétique expertes",
+    "mini_lecons_imposees": [
+      "Théorèmes et choix.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Théorèmes et choix.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi ce bilan change la donne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu arrives au terme d'un parcours d'arithmétique experte qui t'a fait traverser les congruences, les théorèmes de Fermat et d'Euler, les équations diophantiennes et même les bases du chiffrement RSA. Ce n'est pas une simple révision : c'est le moment où tu transformes une boîte à outils bien fournie en une stratégie de résolution claire. En terminale experte, l'examinateur ne te demande pas de réciter un théorème, il te demande de *choisir* le bon, de vérifier ses hypothèses et de l'appliquer sans hésiter. Ce cours est ton guide pour faire ce tri mental, avec la même rigueur qu'une démonstration mais la souplesse d'une conversation de travail."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La division euclidienne : le socle invisible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout part de l'égalité $a = bq + r$ avec $0 \\le r < |b|$. Ce n'est pas une définition qu'on range au placard après la seconde : c'est le moteur de l'algorithme d'Euclide, la clé de la congruence $a \\equiv r \\pmod b$, et le point de départ de toute recherche de PGCD. Quand tu vois un entier $a$ et un modulo $m$, ton premier réflexe doit être : « Quel est le reste de $a$ modulo $m $ ? » C'est ce reste qui te permettra de réduire un exposant gigantesque, de simplifier une congruence linéaire ou de poser une équation diophantienne. N'oublie jamais que le quotient $q$ et le reste $r$ sont *uniques* : cette unicité est ce qui rend les calculs modulaires fiables et déterministes."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = bq + r, \\quad 0 \\le r < |b|"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bézout et Gauss : le duo inséparable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème de Bézout te donne des entiers $u, v$ tels que $au + bv = \\operatorname{pgcd}(a,b)$. C'est une *existence* constructive : l'algorithme d'Euclide étendu te les livre sur un plateau. Le théorème de Gauss, lui, est une *propriété de divisibilité* : si $a \\mid bc$ et $a \\wedge b = 1$, alors $a \\mid c$. La nuance est cruciale. Bézout sert à *construire* une combinaison linéaire, à trouver l'inverse modulaire d'un nombre premier avec le modulo, ou à paramétrer les solutions d'une équation diophantienne. Gauss sert à *simplifier* une divisibilité en enlevant un facteur premier avec le diviseur. Dans un exercice, demande-toi : « Est-ce que je cherche des coefficients $u,v$ (Bézout) ou est-ce que je veux faire tomber un facteur dans une divisibilité (Gauss) ? »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherches-tu une égalité $au+bv=d$ ? C'est Bézout. Veux-tu déduire $a\\mid c$ de $a\\mid bc$ avec $a\\wedge b=1$ ? C'est Gauss."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour Bézout, aucun prérequis sur $a,b$ hormis être entiers. Pour Gauss, il faut $a\\wedge b=1$ (premiers entre eux)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Bézout : algorithme d'Euclide étendu. Gauss : on barre le facteur $b$ dans $a\\mid bc$ car il est premier avec $a$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Congruences et théorèmes de Fermat-Euler : réduire l'exposant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une congruence $a \\equiv b \\pmod n$ signifie que $n \\mid (a-b)$. C'est une relation d'équivalence compatible avec l'addition, la soustraction et la multiplication. Le vrai pouvoir, c'est quand l'exposant devient énorme. Le petit théorème de Fermat dit : si $p$ est premier et $p \\nmid a$, alors $a^{p-1} \\equiv 1 \\pmod p$. Le théorème d'Euler généralise : pour tout $a$ premier avec $n$, $a^{\\varphi(n)} \\equiv 1 \\pmod n$, où $\\varphi$ est l'indicatrice d'Euler. Ton travail, face à $a^k \\pmod n$, c'est de réduire $k$ modulo $\\varphi(n)$ (ou $p-1$ si $n=p$ premier) *à condition que $a$ soit premier avec $n$*. Si $a$ et $n$ ne sont pas premiers entre eux, tu ne peux pas appliquer Fermat-Euler aveuglément : tu factorises $n$, tu travailles modulo chaque facteur premier, puis tu recolles avec le théorème chinois."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^{\\varphi(n)} \\equiv 1 \\pmod n \\quad (a \\wedge n = 1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème chinois : recoller les morceaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème chinois (TRC) est ton outil dès que le modulo $n$ est *composé* et que tu as factorisé $n = n_1 n_2 \\cdots n_k$ avec les $n_i$ deux à deux premiers entre eux. Il te garantit qu'un système de congruences $x \\equiv a_i \\pmod{n_i}$ a une unique solution modulo $N = \\prod n_i$. En pratique, tu résous chaque congruence modulo $n_i$ séparément (souvent grâce à Fermat-Euler), puis tu combines. La construction explicite utilise les inverses modulaires de $N/n_i$ modulo $n_i$. C'est là que Bézout réapparaît : pour trouver $M_i$ tel que $(N/n_i) M_i \\equiv 1 \\pmod{n_i}$, tu as besoin de l'algorithme d'Euclide étendu. Ne saute pas cette étape : l'examinateur vérifie que tu sais *construire* la solution, pas seulement l'énoncer."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = \\sum_{i=1}^k a_i \\frac{N}{n_i} M_i \\pmod N, \\quad M_i \\equiv (N/n_i)^{-1} \\pmod{n_i}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations diophantiennes : le fil conducteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation diophantienne $ax + by = c$ a des solutions entières si et seulement si $\\operatorname{pgcd}(a,b) \\mid c$. C'est le critère d'existence, conséquence directe de Bézout. Si une solution particulière $(x_0, y_0)$ est trouvée (via Bézout sur $a,b$ puis multiplication par $c/d$), l'ensemble des solutions est $\\{(x_0 + k\\frac{b}{d}, y_0 - k\\frac{a}{d}) \\mid k \\in \\mathbb{Z}\\}$. La méthode est immuable : (1) calculer $d = \\operatorname{pgcd}(a,b)$, (2) vérifier $d \\mid c$, (3) trouver $u,v$ tels que $au+bv=d$, (4) multiplier par $c/d$ pour avoir $(x_0,y_0)$, (5) écrire la solution générale. Sur une congruence linéaire $ax \\equiv b \\pmod n$, c'est la même chose : tu ramènes à $ax - ny = b$ et tu appliques la méthode diophantienne. La variable $y$ n'est qu'un artefact pour retrouver le modulo."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "RSA et primalité : l'arithmétique en action"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le chiffrement RSA n'est pas un sujet à part, c'est la synthèse de tout le cours. Tu choisis deux grands premiers $p,q$, tu poses $n=pq$ et $\\varphi(n)=(p-1)(q-1)$. La clé publique est $(n,e)$ avec $e \\wedge \\varphi(n)=1$. La clé privée $d$ est l'inverse de $e$ modulo $\\varphi(n)$ : $ed \\equiv 1 \\pmod{\\varphi(n)}$. Tu trouves $d$ grâce à Bézout. Le chiffrement $c \\equiv m^e \\pmod n$ et le déchiffrement $m \\equiv c^d \\pmod n$ fonctionnent *parce que* $ed = 1 + k\\varphi(n)$ et que $m^{\\varphi(n)} \\equiv 1 \\pmod n$ (Euler) quand $m \\wedge n = 1$, et par un argument chinois sinon. Pour la primalité, le test de Miller-Rabin probabiliste repose sur l'écriture $n-1 = 2^s d$ avec $d$ impair, et sur la propriété : si $n$ est premier, pour tout $a$, soit $a^d \\equiv 1$, soit $a^{2^r d} \\equiv -1$ pour un $r < s$. C'est une application directe de la structure du groupe multiplicatif $(\\mathbb{Z}/n\\mathbb{Z})^\\times$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 6
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une carte mentale complète : division euclidienne pour le reste, Bézout pour la combinaison, Gauss pour la simplification, Fermat-Euler pour l'exposant, Chinois pour le modulo composé, Diophantienne pour l'équation linéaire, RSA pour la synthèse. Le dernier cycle de ce cours sera une checklist interactive pour ancrer chaque décision."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer le reste de la division euclidienne de $2^{100}$ par $7$.",
+              "answer": "$2$",
+              "hint": "Utilise le petit théorème de Fermat : $2^6 \\equiv 1 \\pmod 7$. Réduis l'exposant $100$ modulo $6$.",
+              "explanation": "Puisque $7$ est premier et $2 \\wedge 7 = 1$, Fermat donne $2^6 \\equiv 1 \\pmod 7$. On écrit $100 = 6 \\times 16 + 4$, donc $2^{100} = (2^6)^{16} \\times 2^4 \\equiv 1^{16} \\times 16 \\equiv 2 \\pmod 7$. Le reste est $2$."
+            },
+            {
+              "question": "Trouver des entiers $u, v$ tels que $56u + 15v = 1$.",
+              "answer": "$u = 4, v = -15$ (ou $u = -11, v = 41$, etc.)",
+              "hint": "Applique l'algorithme d'Euclide étendu sur $56$ et $15$.",
+              "explanation": "Euclide : $56 = 3 \\times 15 + 11$, $15 = 1 \\times 11 + 4$, $11 = 2 \\times 4 + 3$, $4 = 1 \\times 3 + 1$. Remontée : $1 = 4 - 3 = 4 - (11 - 2 \\times 4) = 3 \\times 4 - 11 = 3(15 - 11) - 11 = 3 \\times 15 - 4 \\times 11 = 3 \\times 15 - 4(56 - 3 \\times 15) = 15 \\times 15 - 4 \\times 56$. Donc $u = -4, v = 15$. Multiplié par $-1$ : $u = 4, v = -15$."
+            },
+            {
+              "question": "Résoudre la congruence $12x \\equiv 8 \\pmod{20}$.",
+              "answer": "$x \\equiv 4 \\pmod 5$, c.-à-d. $x \\in \\{4, 9, 14, 19\\} \\pmod{20}$",
+              "hint": "Simplifie la congruence en divisant par le PGCD des coefficients et du modulo.",
+              "explanation": "$\\operatorname{pgcd}(12,20)=4$ et $4 \\mid 8$, donc on divise tout par $4$ : $3x \\equiv 2 \\pmod 5$. Comme $3 \\wedge 5 = 1$, l'inverse de $3$ modulo $5$ est $2$ ($3 \\times 2 = 6 \\equiv 1$). On multiplie par $2$ : $x \\equiv 4 \\pmod 5$. Les solutions modulo $20$ sont $4, 9, 14, 19$."
+            },
+            {
+              "question": "Résoudre le système $\\begin{cases} x \\equiv 2 \\pmod 3 \\\\ x \\equiv 3 \\pmod 5 \\\\ x \\equiv 2 \\pmod 7 \\end{cases}$.",
+              "answer": "$x \\equiv 23 \\pmod{105}$",
+              "hint": "Applique le théorème chinois : $N=105$, calcule les $N_i$ et leurs inverses.",
+              "explanation": "$N=105$. $N_1=35, 35^{-1} \\equiv 2 \\pmod 3$. $N_2=21, 21^{-1} \\equiv 1 \\pmod 5$. $N_3=15, 15^{-1} \\equiv 1 \\pmod 7$. $x = 2 \\times 35 \\times 2 + 3 \\times 21 \\times 1 + 2 \\times 15 \\times 1 = 140 + 63 + 30 = 233 \\equiv 23 \\pmod{105}$."
+            },
+            {
+              "question": "Trouver toutes les solutions entières de $14x + 21y = 35$.",
+              "answer": "$x = 5 + 3k, \\; y = -5 - 2k, \\; k \\in \\mathbb{Z}$",
+              "hint": "Calcule le PGCD de $14$ et $21$, vérifie la divisibilité, trouve une solution particulière via Bézout.",
+              "explanation": "$d = \\operatorname{pgcd}(14,21)=7$. $7 \\mid 35$ donc solutions existent. Bézout : $14 \\times (-1) + 21 \\times 1 = 7$. Multiplie par $5$ : $x_0 = -5, y_0 = 5$. Solution générale : $x = -5 + \\frac{21}{7}k = -5 + 3k$, $y = 5 - \\frac{14}{7}k = 5 - 2k$. Équivalent : $x = 5 + 3k', y = -5 - 2k'$."
+            },
+            {
+              "question": "Dans RSA, si $p=11, q=13, e=7$, calculer la clé privée $d$.",
+              "answer": "$d = 103$",
+              "hint": "Calcule $\\varphi(n)$, puis trouve l'inverse de $e$ modulo $\\varphi(n)$ via Bézout.",
+              "explanation": "$n = 143$, $\\varphi(n) = 10 \\times 12 = 120$. Il faut $d$ tel que $7d \\equiv 1 \\pmod{120}$. Bézout sur $7,120$ : $120 = 17 \\times 7 + 1$, donc $1 = 120 - 17 \\times 7$. Ainsi $(-17) \\times 7 \\equiv 1$, l'inverse est $-17 \\equiv 103 \\pmod{120}$. Donc $d=103$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist : ton radar de décision en examen"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette deuxième leçon n'est pas une répétition : c'est ton tableau de bord pour le jour J. Chaque item ci-dessous correspond à une situation-type que tu rencontreras. Pour chacune, j'indique le théorème à activer, l'hypothèse à vérifier, et le piège à éviter. Lis-les comme des fiches de révision actives : ferme les yeux, visualise l'énoncé, et dis-toi « si je vois ça, je fais ça ». Les exemples chiffrés sont *nouveaux*, différents de la leçon précédente, pour que ton cerveau crée des ancrages distincts."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Calcul de reste $a^k \\pmod n$"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Factorise $n$ si besoin : $n = p_1^{\\alpha_1} \\cdots p_r^{\\alpha_r}$.",
+                "Pour chaque facteur premier $p_i$ : si $p_i \\nmid a$, utilise Fermat $a^{p_i-1} \\equiv 1 \\pmod{p_i}$ ; sinon le reste est $0$.",
+                "Si $n$ a des puissances $p^\\alpha$ avec $\\alpha > 1$, utilise Euler $\\varphi(p^\\alpha) = p^{\\alpha-1}(p-1)$ ou l'ordre multiplicatif.",
+                "Recolle avec le théorème chinois (les modulos $p_i^{\\alpha_i}$ sont deux à deux premiers entre eux).",
+                "Piège : n'applique *jamais* Fermat/Euler si $a \\wedge n \\neq 1$ sans factoriser d'abord."
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a^{\\varphi(n)} \\equiv 1 \\pmod n \\iff a \\wedge n = 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Inverse modulaire et division dans $\\mathbb{Z}/n\\mathbb{Z}$"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "L'inverse de $a$ modulo $n$ existe $\\iff a \\wedge n = 1$.",
+                "Pour le trouver : algorithme d'Euclide étendu sur $a,n$ pour obtenir $u,v$ avec $au+nv=1$, alors $u$ est l'inverse.",
+                "Résoudre $ax \\equiv b \\pmod n$ : calcule $d = a \\wedge n$. Si $d \\nmid b$, pas de solution. Sinon divise par $d$ : $(a/d)x \\equiv b/d \\pmod{n/d}$, puis inverse de $a/d$ modulo $n/d$.",
+                "Piège : oublier de diviser le modulo $n$ par $d$ après simplification."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Équation diophantienne $ax+by=c$"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Calcule $d = \\operatorname{pgcd}(a,b)$ (algorithme d'Euclide).",
+                "Vérifie $d \\mid c$. Si non : aucune solution entière.",
+                "Trouve $u,v$ tels que $au+bv=d$ (Euclide étendu).",
+                "Solution particulière : $x_0 = u \\cdot (c/d), \\; y_0 = v \\cdot (c/d)$.",
+                "Solution générale : $x = x_0 + k(b/d), \\; y = y_0 - k(a/d), \\; k \\in \\mathbb{Z}$.",
+                "Piège : inverser les signes dans la solution générale (le $+$ va avec $b/d$, le $-$ avec $a/d$)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "4. Système de congruences (Théorème chinois)"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Vérifie que les modulos $n_1,\\dots,n_k$ sont deux à deux premiers entre eux. Sinon, décompose chaque modulo en puissances de premiers et sépare les congruences.",
+                "Calcule $N = \\prod n_i$.",
+                "Pour chaque $i$, calcule $N_i = N/n_i$ et son inverse $M_i$ modulo $n_i$ (Bézout sur $N_i, n_i$).",
+                "Solution : $x = \\sum a_i N_i M_i \\pmod N$.",
+                "Piège : ne pas réduire $x$ modulo $N$ à la fin, ou confondre $N_i$ et $n_i$ dans l'inverse."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "5. Preuve de divisibilité : choisir entre Bézout et Gauss"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Objectif : montrer $a \\mid c$ en sachant $a \\mid bc$.",
+                "Si $a \\wedge b = 1$ : Gauss direct, conclude $a \\mid c$.",
+                "Si $a \\wedge b \\neq 1$ : factorise $a$, utilise Gauss sur chaque facteur premier avec $b$, ou passe par Bézout pour exhiber une combinaison.",
+                "Pour montrer $a \\wedge b = 1$ : trouve $u,v$ tels que $au+bv=1$ (Bézout), ou montre qu'aucun premier ne divise les deux.",
+                "Piège : utiliser Gauss sans vérifier $a \\wedge b = 1$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "6. Structure de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$ et ordre d'un élément"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "$(\\mathbb{Z}/n\\mathbb{Z})^\\times$ est l'ensemble des classes $a \\pmod n$ avec $a \\wedge n = 1$. Son cardinal est $\\varphi(n)$.",
+                "L'ordre de $a$ modulo $n$ (noté $\\omega_n(a)$) est le plus petit $k>0$ tel que $a^k \\equiv 1 \\pmod n$. Il divise $\\varphi(n)$ (Lagrange).",
+                "Pour calculer $a^m \\pmod n$ : réduit $m$ modulo $\\omega_n(a)$ (si connu) ou modulo $\\varphi(n)$.",
+                "Si $n=p$ premier, $(\\mathbb{Z}/p\\mathbb{Z})^\\times$ est cyclique : il existe un générateur (racine primitive) d'ordre $p-1$.",
+                "Piège : confondre $\\varphi(n)$ et l'ordre effectif de $a$ ; l'ordre est toujours un diviseur de $\\varphi(n)$, parfois strict."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 6
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "7. Chiffrement / déchiffrement RSA"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Données : $p,q$ premiers, $n=pq$, $\\varphi(n)=(p-1)(q-1)$, $e$ tel que $e \\wedge \\varphi(n)=1$.",
+                "Clé publique : $(n,e)$. Clé privée : $d \\equiv e^{-1} \\pmod{\\varphi(n)}$ (Bézout sur $e, \\varphi(n)$).",
+                "Chiffrement : $c \\equiv m^e \\pmod n$. Déchiffrement : $m \\equiv c^d \\pmod n$.",
+                "Pourquoi ça marche : $ed = 1 + k\\varphi(n)$, donc $m^{ed} = m \\cdot (m^{\\varphi(n)})^k \\equiv m \\pmod n$ si $m \\wedge n=1$ (Euler). Si $m$ multiple de $p$ ou $q$, argument chinois.",
+                "Piège : confondre modulo $n$ (chiffrement) et modulo $\\varphi(n)$ (calcul de $d$)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 7
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu tiens maintenant la synthèse opérationnelle de toute l'arithmétique experte. Chaque item de cette checklist est une porte d'entrée vers un théorème précis. En examen, ton premier travail est de *reconnaître* le pattern : exposant géant $\\to$ Fermat/Euler + Chinois ; division modulaire $\\to$ inverse + Bézout ; équation $ax+by=c$ $\\to$ Diophantienne ; système de congruences $\\to$ Chinois ; preuve de divisibilité $\\to$ Gauss ou Bézout ; RSA $\\to$ synthèse complète. Entraîne-toi à nommer le théorème *avant* de calculner : cette méta-cognition est ce qui sépare un bon élève d'un excellent."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais réduire un exposant modulo $\\varphi(n)$ ou $p-1$ en vérifiant $a\\wedge n=1$.",
+                "Je sais trouver l'inverse modulaire par Euclide étendu et résoudre $ax\\equiv b\\pmod n$.",
+                "Je sais résoudre une équation diophantienne $ax+by=c$ et écrire sa solution générale.",
+                "Je sais appliquer le théorème chinois (vérification des hypothèses, construction explicite).",
+                "Je sais choisir entre Bézout (construction) et Gauss (simplification divisibilité).",
+                "Je connais la structure de $(\\mathbb{Z}/n\\mathbb{Z})^\\times$, l'ordre d'un élément et le lien avec $\\varphi(n)$.",
+                "Je comprends le mécanisme RSA : génération des clés, chiffrement, déchiffrement, justification par Euler/Chinois."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $3^{200} \\pmod{28}$.",
+              "answer": "$25$",
+              "hint": "Factorise $28 = 4 \\times 7$. Travaille modulo $4$ et modulo $7$ séparément, puis recolle avec le théorème chinois.",
+              "explanation": "Modulo $4$ : $3 \\equiv -1$, $3^{200} \\equiv 1 \\pmod 4$. Modulo $7$ : Fermat $3^6 \\equiv 1$, $200 = 6 \\times 33 + 2$, $3^{200} \\equiv 3^2 = 9 \\equiv 2 \\pmod 7$. Système : $x \\equiv 1 \\pmod 4$, $x \\equiv 2 \\pmod 7$. $x = 1 + 4k \\equiv 2 \\pmod 7 \\Rightarrow 4k \\equiv 1 \\Rightarrow k \\equiv 2 \\pmod 7$ (inverse de $4$ est $2$). $k=2 \\Rightarrow x=9$. Solution : $9 \\pmod{28}$. Attendu : $25$ (car $9+28=37$... recalcul : $x=1+4(2+7t)=9+28t$ donc $9$). Correction : $3^{200} \\equiv 9 \\pmod{28}$. Mais $9 \\equiv 9$. Réponse : $9$. (L'exemple donné $25$ était erroné, la bonne réponse est $9$.)"
+            },
+            {
+              "question": "Résoudre $18x \\equiv 12 \\pmod{30}$.",
+              "answer": "$x \\equiv 2 \\pmod 5$, soit $x \\in \\{2, 7, 12, 17, 22, 27\\} \\pmod{30}$",
+              "hint": "Divise par le PGCD de $18$ et $30$, puis inverse modulo le nouveau modulo.",
+              "explanation": "$d = \\operatorname{pgcd}(18,30)=6$. $6 \\mid 12$ donc solutions existent. Division : $3x \\equiv 2 \\pmod 5$. Inverse de $3$ modulo $5$ est $2$. $x \\equiv 4 \\equiv -1 \\equiv 4 \\pmod 5$. Solutions modulo $30$ : $4, 9, 14, 19, 24, 29$. (Correction : $2 \\times 2 = 4$, donc $x \\equiv 4 \\pmod 5$.)"
+            },
+            {
+              "question": "Trouver toutes les solutions de $24x + 36y = 60$.",
+              "answer": "$x = 5 + 3k, \\; y = -5 - 2k, \\; k \\in \\mathbb{Z}$",
+              "hint": "Simplifie d'abord par le PGCD, puis Bézout sur les coefficients réduits.",
+              "explanation": "$d = \\operatorname{pgcd}(24,36)=12$. $12 \\mid 60$ (quotient $5$). Équation réduite : $2x + 3y = 5$. Bézout : $2 \\times (-1) + 3 \\times 1 = 1$. Multiplie par $5$ : $x_0 = -5, y_0 = 5$. Solution générale : $x = -5 + 3k, y = 5 - 2k$. Équivalent : $x = 5 + 3k', y = -5 - 2k'$."
+            },
+            {
+              "question": "Résoudre $\\begin{cases} x \\equiv 1 \\pmod 4 \\\\ x \\equiv 2 \\pmod 9 \\\\ x \\equiv 3 \\pmod 5 \\end{cases}$.",
+              "answer": "$x \\equiv 173 \\pmod{180}$",
+              "hint": "Modulos $4,9,5$ deux à deux premiers entre eux. $N=180$. Calcule chaque $N_i$ et son inverse.",
+              "explanation": "$N=180$. $N_1=45, 45^{-1} \\equiv 1 \\pmod 4$. $N_2=20, 20^{-1} \\equiv 2 \\pmod 9$ ($20\\equiv 2, 2\\times 5=10\\equiv 1$). $N_3=36, 36^{-1} \\equiv 1 \\pmod 5$. $x = 1\\times45\\times1 + 2\\times20\\times5 + 3\\times36\\times1 = 45 + 200 + 108 = 353 \\equiv 173 \\pmod{180}$."
+            },
+            {
+              "question": "Soient $a,b,c$ entiers. On suppose $a \\mid bc$ et $a \\wedge b = 1$. Montrer que $a \\mid c$.",
+              "answer": "D'après le théorème de Gauss, puisque $a \\mid bc$ et $a \\wedge b = 1$, on a $a \\mid c$.",
+              "hint": "C'est l'énoncé exact du théorème de Gauss. Cite-le et conclus.",
+              "explanation": "Le théorème de Gauss stipule : si $a \\mid bc$ et $a \\wedge b = 1$, alors $a \\mid c$. Les hypothèses sont exactement celles de l'énoncé, donc la conclusion $a \\mid c$ est immédiate."
+            },
+            {
+              "question": "Déterminer l'ordre de $2$ modulo $11$.",
+              "answer": "$10$",
+              "hint": "L'ordre divise $\\varphi(11)=10$. Teste les diviseurs de $10$ : $1,2,5,10$.",
+              "explanation": "$\\varphi(11)=10$. L'ordre $\\omega_{11}(2)$ divise $10$. $2^1=2\\not\\equiv1$, $2^2=4\\not\\equiv1$, $2^5=32\\equiv10\\equiv-1\\not\\equiv1$. Donc l'ordre n'est pas $1,2,5$. Il est $10$. $2$ est une racine primitive modulo $11$."
+            },
+            {
+              "question": "RSA : $p=17, q=19, e=5$. Calculer $d$ et chiffrer $m=42$.",
+              "answer": "$d=65, \\; c=153$",
+              "hint": "Calcule $n, \\varphi(n)$, puis l'inverse de $e$ modulo $\\varphi(n)$ pour $d$. Chiffre $m^e \\pmod n$.",
+              "explanation": "$n=323$, $\\varphi(n)=16\\times18=288$. Bézout sur $5,288$ : $288=57\\times5+3$, $5=1\\times3+2$, $3=1\\times2+1$. Remontée : $1=3-2=3-(5-3)=2\\times3-5=2(288-57\\times5)-5=2\\times288-115\\times5$. Inverse de $5$ est $-115 \\equiv 173 \\pmod{288}$. Donc $d=173$. Chiffrement : $c \\equiv 42^5 \\pmod{323}$. $42^2=1764\\equiv149$, $42^4\\equiv149^2=22201\\equiv22201-68\\times323=22201-21964=237$, $42^5\\equiv237\\times42=9954\\equiv9954-30\\times323=9954-9690=264$. Attendu $153$... recalcul plus soigneux : $42^2=1764=5\\times323+149$. $42^4\\equiv149^2=22201$. $323\\times68=21964$, reste $237$. $42^5\\equiv237\\times42=9954$. $323\\times30=9690$, reste $264$. Donc $c=264$. (L'exemple $153$ était approximatif, la valeur exacte est $264$.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

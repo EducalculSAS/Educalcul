@@ -1,0 +1,511 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.652045+00:00",
+  "id": 694,
+  "code": "terminale-generale-maths-t04-c05",
+  "title": "Comparaison et encadrement",
+  "description": "Cours structuré Educalcul : Comparaison et encadrement.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Comparaison et encadrement",
+    "objectif_global": "Comparaison et encadrement",
+    "mini_lecons_imposees": [
+      "Théorèmes.",
+      "Choisir.",
+      "Appliquer."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Théorèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorèmes de comparaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons poser les fondations rigoureuses qui permettent de comparer des fonctions ou des suites afin d'en déduire leurs limites. En terminale spécialité mathématiques, la maîtrise des théorèmes de comparaison est indispensable pour aborder sereinement les chapitres sur les limites, la continuité et la dérivation. Nous commencerons par rappeler le cadre précis : on considère des fonctions réelles définies sur un intervalle ou un voisinage de $+\\infty$, et nous cherchons à encadrer une fonction cible $f$ entre deux fonctions $g$ et $h$ dont les limites sont connues. Cette idée simple, mais puissante, est au cœur de nombreux exercices du bac et des concours."
+            },
+            {
+              "type": "definition",
+              "term": "Théorème de comparaison (limites)",
+              "definition": "Soient $f,g,h$ trois fonctions définies sur un même ensemble $I$ et $a$ une valeur d'adhérence de $I$ (finie ou $+\\infty$). Si pour tout $x\\in I$ on a $g(x)\\le f(x)\\le h(x)$ et si $\\lim_{x\\to a}g(x)=\\lim_{x\\to a}h(x)=\\ell$, alors $\\lim_{x\\to a}f(x)=\\ell$.",
+              "example": "Par exemple, pour $x>0$, $-\\frac{1}{x}\\le \\frac{\\sin x}{x}\\le \\frac{1}{x}$ et les deux bornes tendent vers $0$ quand $x\\to+\\infty$, donc $\\lim_{x\\to+\\infty}\\frac{\\sin x}{x}=0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce théorème est souvent appelé « théorème des gendarmes » car la fonction $f$ est « escortée » par $g$ et $h$ qui convergent vers la même limite. Il est crucial de vérifier deux conditions : l'inégalité doit être vraie sur un voisinage de la valeur considérée, et les deux fonctions d'encadrement doivent avoir la même limite. Si l'une des bornes diverge ou si les limites sont différentes, le théorème ne s'applique pas et il faut chercher une autre stratégie. Prenons le temps d'illustrer cette situation avec un exemple concret : on veut déterminer la limite en $0$ de $x^2\\cos\\frac{1}{x}$. On sait que $-1\\le\\cos\\frac{1}{x}\\le 1$, donc $-x^2\\le x^2\\cos\\frac{1}{x}\\le x^2$. Les deux bornes tendent vers $0$ quand $x\\to0$, d'où la limite cherchée est $0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une inégalité connue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez une fonction dont vous connaissez les bornes élémentaires, comme $\\sin$, $\\cos$, $\\exp$, ou une fraction rationnelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier ou composer pour adapter l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'inégalité de base est $-1\\le\\cos t\\le 1$, remplacez $t$ par $\\frac{1}{x}$ et multipliez par $x^2$ (positif) pour obtenir $-x^2\\le x^2\\cos\\frac{1}{x}\\le x^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les limites des bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\lim_{x\\to0}(-x^2)$ et $\\lim_{x\\to0}x^2$ ; toutes deux valent $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure par le théorème de comparaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque les deux bornes convergent vers la même limite $0$, la fonction encadrée converge également vers $0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2*cos(1/x)",
+              "xmin": -0.5,
+              "xmax": 0.5,
+              "caption": "Graphique de $f(x)=x^2\\cos(1/x)$ encadré par $-x^2$ et $x^2$ près de $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment le théorème de comparaison s'applique directement lorsque l'on dispose d'inégalités simples. La leçon suivante portera sur le théorème d'encadrement, aussi appelé théorème des gendarmes, qui est une formulation équivalente mais souvent plus commode lorsque les bornes sont exprimées sous forme de valeurs absolues. Nous verrons comment transformer une inégalité en un encadrement symétrique et comment l'utiliser pour des fonctions oscillantes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème d'encadrement (théorème des gendarmes)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème d'encadrement énonce que si une fonction $f$ satisfait $|f(x)-\\ell|\\le g(x)$ pour $x$ proche de $a$, avec $\\lim_{x\\to a}g(x)=0$, alors $\\lim_{x\\to a}f(x)=\\ell$. Cette formulation est particulièrement pratique car elle évite de gérer deux inégalités séparées. Par exemple, pour étudier $\\lim_{x\\to0}x\\sin\\frac{1}{x}$, on note que $|x\\sin\\frac{1}{x}|\\le |x|$ car $|\\sin|\\le1$. La fonction majeure $|x|$ tend vers $0$, donc la limite est $0$. Ce raisonnement est plus court que d'écrire $-|x|\\le x\\sin\\frac{1}{x}\\le |x|$ puis d'appliquer le théorème de comparaison."
+            },
+            {
+              "type": "display_math",
+              "latex": "|f(x)-\\ell|\\le g(x)\\quad\\text{et}\\quad\\lim_{x\\to a}g(x)=0\\implies\\lim_{x\\to a}f(x)=\\ell"
+            },
+            {
+              "type": "graph",
+              "expression": "x*sin(1/x)",
+              "xmin": -0.5,
+              "xmax": 0.5,
+              "caption": "Illustration de $|x\\sin(1/x)|\\le|x|$ près de $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé les deux formes du théorème de comparaison, nous abordons maintenant le théorème de convergence monotone, qui concerne les suites ou fonctions monotones et bornées. Ce résultat est un pilier de l'analyse réelle : une suite croissante et majorée converge vers son supremum, une suite décroissante et minorée converge vers son infimum. Nous verrons comment l'utiliser pour démontrer la convergence de suites définies par récurrence, comme la suite de Héron pour la racine carrée."
+            },
+            {
+              "type": "definition",
+              "term": "Théorème de convergence monotone",
+              "definition": "Toute suite $(u_n)$ croissante et majorée converge vers $\\sup\\{u_n\\mid n\\in\\mathbb{N}\\}$. Toute suite décroissante et minorée converge vers $\\inf\\{u_n\\mid n\\in\\mathbb{N}\\}$.",
+              "example": "La suite $u_{n+1}=\\frac{1}{2}(u_n+\\frac{a}{u_n})$ avec $u_0>0$ et $a>0$ est décroissante après le premier terme et minorée par $\\sqrt{a}$, donc elle converge vers $\\sqrt{a}$."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Variations de la suite de Héron pour $a=2$, $u_0=2$",
+              "headers": [
+                "n",
+                "u_n"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "2"
+                ],
+                [
+                  "1",
+                  "1.5"
+                ],
+                [
+                  "2",
+                  "1.4167"
+                ],
+                [
+                  "3",
+                  "1.4142"
+                ],
+                [
+                  "4",
+                  "1.4142"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer $\\lim_{x\\to+\\infty}\\frac{\\sin x}{x}$ en utilisant le théorème de comparaison.",
+              "answer": "0",
+              "hint": "Utilisez l'inégalité $-1\\le\\sin x\\le 1$ et divisez par $x>0$.",
+              "explanation": "Pour $x>0$, on a $-\\frac{1}{x}\\le\\frac{\\sin x}{x}\\le\\frac{1}{x}$. Les deux bornes tendent vers $0$ quand $x\\to+\\infty$, donc par le théorème de comparaison la limite de $\\frac{\\sin x}{x}$ est $0$."
+            },
+            {
+              "question": "Montrer que $\\lim_{x\\to0}x^2\\cos\\frac{1}{x}=0$ par le théorème d'encadrement.",
+              "answer": "0",
+              "hint": "Majorer $|x^2\\cos\\frac{1}{x}|$ par $x^2$.",
+              "explanation": "On a $|x^2\\cos\\frac{1}{x}|\\le x^2$ car $|\\cos|\\le1$. Puis $\\lim_{x\\to0}x^2=0$, le théorème d'encadrement donne la limite $0$."
+            },
+            {
+              "question": "Soit la suite définie par $u_0=2$ et $u_{n+1}=\\frac{1}{2}(u_n+\\frac{2}{u_n})$. Montrer qu'elle converge et déterminer sa limite.",
+              "answer": "$\\sqrt{2}$",
+              "hint": "Montrez que la suite est décroissante à partir de $n=1$ et minorée par $\\sqrt{2}$, puis appliquez le théorème de convergence monotone.",
+              "explanation": "On vérifie que $u_{n+1}\\le u_n$ pour $n\\ge1$ et $u_n\\ge\\sqrt{2}$. La suite est donc décroissante et minorée, elle converge vers $\\ell$ satisfaisant $\\ell=\\frac{1\\2}(\\ell+\\frac{2}{\\ell})$, d'où $\\ell^2=2$ et $\\ell=\\sqrt{2}$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir ses fonctions d'encadrement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons apprendre à choisir judicieusement les fonctions $g$ et $h$ qui encadreront une fonction cible $f$. Le choix n'est pas arbitraire : il doit reposer sur des inégalités connues, sur la structure algébrique de $f$, ou sur des équivalents asymptotiques. Une bonne stratégie consiste à identifier le terme dominant de $f$ lorsque la variable tend vers la valeur considérée, puis à majorer ou minorer les termes restants par des expressions plus simples. Par exemple, pour $f(x)=\\frac{x^3+\\sin x}{x^2+1}$ quand $x\\to+\\infty$, le terme dominant au numérateur est $x^3$ et au dénominateur $x^2$ ; on peut donc comparer $f$ à $x$ en écrivant $f(x)\\sim x$. Nous verrons comment transformer cette intuition en inégalités rigoureuses."
+            },
+            {
+              "type": "definition",
+              "term": "Équivalent asymptotique",
+              "definition": "On dit que $f(x)\\sim g(x)$ quand $x\\to a$ si $\\lim_{x\\to a}\\frac{f(x)}{g(x)}=1$. Cela signifie que $f$ et $g$ ont le même comportement principal près de $a$.",
+              "example": "$\\sin x\\sim x$ quand $x\\to0$, $\\ln(1+x)\\sim x$ quand $x\\to0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on dispose d'un équivalent, on peut souvent construire un encadrement en utilisant la définition de la limite du quotient. Si $\\frac{f(x)}{g(x)}\\to1$, alors pour $\\varepsilon=0,1$ il existe un voisinage où $0,9<\\frac{f(x)}{g(x)}<1,1$, ce qui donne $0,9\\,g(x)<f(x)<1,1\\,g(x)$. Si de plus $g(x)$ a une limite connue, on obtient un encadrement de $f$. Cette technique est très efficace pour les fonctions composées de polynômes, logarithmes, exponentielles ou trigonométriques. Prenons l'exemple de $f(x)=\\frac{\\ln(1+x^2)}{x}$ quand $x\\to0$. On sait que $\\ln(1+u)\\sim u$ au voisinage de $0$, donc $\\ln(1+x^2)\\sim x^2$ et $f(x)\\sim x$. On peut alors écrire $|f(x)|\\le 2|x|$ pour $x$ assez petit, ce qui donne la limite $0$ par encadrement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le terme dominant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regardez les puissances les plus élevées, les logarithmes ou les exponentielles qui croissent le plus vite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser des inégalités de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple $|\\sin t|\\le|t|$, $e^t\\ge 1+t$, $\\ln(1+t)\\le t$ pour $t>-1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire des bornes majorantes et minorantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combinez les inégalités pour obtenir $g(x)\\le f(x)\\le h(x)$ avec $g,h$ simples."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier les limites des bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\lim g$ et $\\lim h$ ; si elles sont égales, la limite de $f$ est trouvée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "sign_table",
+              "caption": "Signe de $f(x)-\\frac{x^3}{x^2+1}$ pour $x>0$",
+              "headers": [
+                "Intervalle",
+                "Signe"
+              ],
+              "rows": [
+                [
+                  "$(0,+\\infty)$",
+                  "$+$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment exploiter les équivalents et les inégalités classiques pour produire des bornes. La prochaine sous‑notion porte sur l'utilisation des majorations par des fonctions puissances ou exponentielles lorsque la variable tend vers l'infini. C'est une situation fréquente dans les exercices de bac : on doit montrer que $\\frac{\\ln x}{x^\\alpha}\\to0$ pour tout $\\alpha>0$. Nous allons détailler la méthode pas à pas, en insistant sur le choix de la puissance $\\alpha$ et sur la construction d'une majoration de type $\\frac{C}{x^\\beta}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Majoration par des puissances et exponentielles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour toute $\\alpha>0$, la fonction $\\ln x$ croît plus lentement que $x^\\alpha$. Une façon rigoureuse de le prouver consiste à poser $x=e^t$ ($t\\to+\\infty$) : alors $\\frac{\\ln x}{x^\\alpha}=\\frac{t}{e^{\\alpha t}}$. On sait que l'exponentielle domine toute puissance, donc $\\frac{t}{e^{\\alpha t}}\\le\\frac{C}{t^2}$ pour $t$ assez grand, ce qui tend vers $0$. Revenu en variable $x$, on obtient $\\frac{\\ln x}{x^\\alpha}\\le\\frac{C}{(\\ln x)^2}$, une majoration qui tend vers $0$. Cette astuce de changement de variable est un outil standard qu'il faut savoir reconnaître et reproduire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall\\alpha>0,\\;\\lim_{x\\to+\\infty}\\frac{\\ln x}{x^\\alpha}=0"
+            },
+            {
+              "type": "graph",
+              "expression": "log(x)/x^0.5",
+              "xmin": 1,
+              "xmax": 100,
+              "caption": "Décroissance de $\\frac{\\ln x}{\\sqrt{x}}$ vers $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous abordons le cas où la fonction à encadrer est une suite définie par récurrence. Le choix des bornes repose alors souvent sur une majoration géométrique : si $|u_{n+1}|\\le q|u_n|$ avec $0<q<1$, alors $|u_n|\\le q^n|u_0|$ et la suite converge vers $0$. Cette méthode est particulièrement adaptée aux suites de Newton ou aux suites issues de méthodes itératives. Nous verrons comment identifier le ratio $q$ à partir de l'expression de récurrence et comment construire l'encadrement explicite."
+            },
+            {
+              "type": "definition",
+              "term": "Suite majorée géométriquement",
+              "definition": "Une suite $(u_n)$ est majorée géométriquement s'il existe $q\\in[0,1[$ et $C>0$ tels que $|u_n|\\le C q^n$ pour tout $n$. Elle converge alors vers $0$.",
+              "example": "Si $u_{n+1}=\\frac{1}{2}u_n$, alors $|u_n|=\\frac{1}{2^n}|u_0|$."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5^n",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Exemple de majoration géométrique $q^n$ avec $q=0,5$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "En utilisant des équivalents, trouver $\\lim_{x\\to0}\\frac{\\ln(1+x^2)}{x}$.",
+              "answer": "0",
+              "hint": "Remplacez $\\ln(1+u)$ par $u$ au voisinage de $0$.",
+              "explanation": "Puisque $\\ln(1+u)\\sim u$ quand $u\\to0$, on a $\\ln(1+x^2)\\sim x^2$. Donc $\\frac{\\ln(1+x^2)}{x}\\sim x$, qui tend vers $0$ quand $x\\to0$."
+            },
+            {
+              "question": "Montrer que $\\lim_{x\\to+\\infty}\\frac{\\ln x}{x^{0,3}}=0$ par un changement de variable.",
+              "answer": "0",
+              "hint": "Posez $x=e^t$ et utilisez la domination de l'exponentielle sur les puissances.",
+              "explanation": "Avec $x=e^t$, $\\frac{\\ln x}{x^{0,3}}=\\frac{t}{e^{0,3t}}$. Pour $t$ grand, $e^{0,3t}\\ge t^3$, donc $\\frac{t}{e^{0,3t}}\\le\\frac{1}{t^2}\\to0$."
+            },
+            {
+              "question": "Soit $u_0=1$ et $u_{n+1}=\\frac{1}{3}u_n+\\frac{1}{3^n}$. Montrer que $(u_n)$ converge et donner sa limite.",
+              "answer": "0",
+              "hint": "Majorer $|u_{n+1}|\\le\\frac{1}{3}|u_n|+\\frac{1}{3^n}$ et itérer.",
+              "explanation": "On montre par récurrence que $|u_n|\\le\\frac{2}{3^n}$. Donc $|u_n|\\le 2(\\frac{1}{3})^n$, majoration géométrique de ratio $\\frac13<1$, donc $u_n\\to0$."
+            }
+          ]
+        },
+        {
+          "title": "Appliquer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer les théorèmes d'encadrement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon a pour but de mettre en pratique l'ensemble des outils vus précédemment : théorème de comparaison, théorème des gendarmes, convergence monotone, majorations géométriques et utilisation des équivalents. Nous allons résoudre trois problèmes types du programme de terminale spécialité, en détaillant chaque étape du raisonnement, en justifiant les choix des fonctions d'encadrement, et en vérifiant systématiquement les hypothèses des théorèmes. L'objectif est que vous puissiez, face à un exercice inédit, identifier rapidement la structure de la fonction ou de la suite, choisir la méthode adaptée et rédiger une démonstration complète et rigoureuse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier exemple : calculer $\\lim_{x\\to0}\\frac{e^x-1-x}{x^2}$. On ne peut pas appliquer directement le théorème de comparaison car le numérateur et le dénominateur tendent vers $0$. On utilise le développement limité d'ordre $2$ : $e^x=1+x+\\frac{x^2}{2}+o(x^2)$. Alors $e^x-1-x=\\frac{x^2}{2}+o(x^2)$ et le quotient tend vers $\\frac12$. Pour encadrer rigoureusement sans DL, on peut majorer $|e^x-1-x-\\frac{x^2}{2}|\\le \\frac{|x|^3}{6}e^{|x|}$ (formule de Taylor‑Lagrange) et diviser par $x^2$, ce qui donne une majoration $\\frac{|x|}{6}e^{|x|}\\to0$. Donc la limite est bien $\\frac12$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme indéterminée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $\\frac{0}{0}$, on cherche un encadrement du numérateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser le reste de Taylor avec majoration",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire $e^x=1+x+\\frac{x^2}{2}+R_2(x)$ avec $|R_2(x)|\\le\\frac{|x|^3}{6}e^{|x|}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par $x^2$ et encadrer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $\\frac12-\\frac{|x|}{6}e^{|x|}\\le\\frac{e^x-1-x}{x^2}\\le\\frac12+\\frac{|x|}{6}e^{|x|}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure par le théorème des gendarmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux bornes tendent vers $\\frac12$, donc la limite est $\\frac12$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "(exp(x)-1-x)/x^2",
+              "xmin": -0.5,
+              "xmax": 0.5,
+              "caption": "Approche de $\\frac{e^x-1-x}{x^2}$ vers $\\frac12$ près de $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième exemple : étudier la convergence de la suite définie par $v_0=2$ et $v_{n+1}=\\sqrt{2+v_n}$. On suspecte que la suite converge vers $2$, solution de $L=\\sqrt{2+L}$. Pour le prouver, on montre d'abord que la suite est croissante et majorée par $2$ (par récurrence). Ensuite, le théorème de convergence monotone assure l'existence de la limite $\\ell$. En passant à la limite dans la récurrence, on obtient $\\ell=\\sqrt{2+\\ell}$, d'où $\\ell=2$ (la racine negative est exclue car les termes sont positifs). Cette approche combine monotonie, majoration et passage à la limite dans une relation de récurrence."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Variations de la suite $v_{n+1}=\\sqrt{2+v_n}$",
+              "headers": [
+                "n",
+                "v_n"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "2"
+                ],
+                [
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "2"
+                ],
+                [
+                  "3",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième exemple : déterminer $\\lim_{n\\to+\\infty}\\frac{n!}{n^n}$. On utilise l'inégalité de Stirling sous forme encadrée : $\\sqrt{2\\pi n}(\\frac{n}{e})^n\\le n!\\le e\\sqrt{n}(\\frac{n}{e})^n$. En divisant par $n^n$, on obtient $\\frac{\\sqrt{2\\pi n}}{e^n}\\le\\frac{n!}{n^n}\\le\\frac{e\\sqrt{n}}{e^n}$. Les deux bornes tendent vers $0$ car l'exponentielle $e^n$ domine toute puissance de $n$. Par le théorème de comparaison, la limite cherchée est $0$. Ce type d'encadrement factorielle/puissance est classique en terminale et illustre la puissance des majorations asymptotiques."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{2\\pi n}(\\frac{n}{e})^n\\le n!\\le e\\sqrt{n}(\\frac{n}{e})^n"
+            },
+            {
+              "type": "graph",
+              "expression": "factorial(x)/x^x",
+              "xmin": 1,
+              "xmax": 10,
+              "caption": "Décroissance de $\\frac{n!}{n^n}$ vers $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer le théorème de comparaison et le théorème des gendarmes.",
+                "Je sais choisir des fonctions d'encadrement adaptées grâce aux inégalités classiques et aux équivalents.",
+                "Je sais appliquer le théorème de convergence monotone à une suite croissante majorée ou décroissante minorée.",
+                "Je sais construire une majoration géométrique pour une suite définie par récurrence.",
+                "Je sais résoudre des limites de type $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$ par encadrement rigoureux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to0}\\frac{\\cos x-1+\\frac{x^2}{2}}{x^4}$ par encadrement (utiliser le reste de Taylor d'ordre 4).",
+              "answer": "$\\frac{1}{24}$",
+              "hint": "Majorer le reste $R_4(x)$ de $\\cos x$ par $\\frac{|x|^5}{120}$.",
+              "explanation": "On écrit $\\cos x=1-\\frac{x^2}{2}+\\frac{x^4}{24}+R_4(x)$ avec $|R_4(x)|\\le\\frac{|x|^6}{720}$. En divisant par $x^4$, on encadre le quotient entre $\\frac1{24}-\\frac{x^2}{720}$ et $\\frac1{24}+\\frac{x^2}{720}$, qui tendent vers $\\frac1{24}$."
+            },
+            {
+              "question": "Soit $w_0=1$ et $w_{n+1}=\\frac{1}{2}(w_n+\\frac{3}{w_n})$. Montrer que $(w_n)$ converge et déterminer sa limite.",
+              "answer": "$\\sqrt{3}$",
+              "hint": "Montrer que la suite est décroissante après $n=1$ et minorée par $\\sqrt{3}$.",
+              "explanation": "Par récurrence, $w_n\\ge\\sqrt{3}$ et $w_{n+1}\\le w_n$ pour $n\\ge1$. La suite est décroissante et minorée, donc convergente. La limite $\\ell$ vérifie $\\ell=\\frac12(\\ell+\\frac{3}{\\ell})$, d'où $\\ell^2=3$ et $\\ell=\\sqrt{3}$."
+            },
+            {
+              "question": "En utilisant l'encadrement de Stirling, montrer que $\\lim_{n\\to+\\infty}\\frac{(n!)^{1/n}}{n}=\\frac{1}{e}$.",
+              "answer": "$\\frac{1}{e}$",
+              "hint": "Prendre le logarithme et utiliser les bornes $\\ln n! = n\\ln n - n + O(\\ln n)$.",
+              "explanation": "D'après Stirling, $\\ln n! = n\\ln n - n + \\frac12\\ln(2\\pi n) + o(1)$. Donc $\\frac{\\ln n!}{n} = \\ln n - 1 + \\frac{\\ln(2\\pi n)}{2n}+o(\\frac1n)$. En soustrayant $\\ln n$, on obtient $\\frac{\\ln n!}{n}-\\ln n \\to -1$, donc $\\frac{(n!)^{1/n}}{n}\\to e^{-1}=\\frac1e$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

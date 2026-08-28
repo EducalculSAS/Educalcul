@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Coefficient multiplicateur",
+  "title": "Approfondissement : Coefficient multiplicateur",
+  "questions": [
+    {
+      "text": "Une quantité augmente de 15 %. Quel est le coefficient multiplicateur correspondant ?",
+      "options": [
+        "0,15",
+        "1,15",
+        "1,85",
+        "15"
+      ],
+      "correctAnswer": "1,15",
+      "explanation": "Pour une augmentation de t %, le coefficient multiplicateur est 1 + t/100. Ici, 1 + 15/100 = 1 + 0,15 = 1,15. L'option 0,15 correspond au taux d'évolution seul, 1,85 correspondrait à une diminution de 15 %, et 15 est le pourcentage sans division par 100.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le coefficient multiplicateur d'une évolution est 0,92. Quelle est la nature et l'amplitude de cette évolution en pourcentage ?",
+      "options": [
+        "Augmentation de 8 %",
+        "Diminution de 8 %",
+        "Augmentation de 92 %",
+        "Diminution de 92 %"
+      ],
+      "correctAnswer": "Diminution de 8 %",
+      "explanation": "Un coefficient multiplicateur k strictement compris entre 0 et 1 correspond à une diminution. Le taux de diminution t (en %) satisfait k = 1 - t/100. Donc 0,92 = 1 - t/100, d'où t/100 = 0,08, soit t = 8 %. C'est une diminution de 8 %. Les options avec 92 % confondent le coefficient et le pourcentage restant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un prix subit une augmentation de 20 % puis une diminution de 20 %. Quel est le coefficient multiplicateur global de ces deux évolutions successives ?",
+      "options": [
+        "1",
+        "0,96",
+        "1,04",
+        "0,80"
+      ],
+      "correctAnswer": "0,96",
+      "explanation": "Le coefficient multiplicateur d'une augmentation de 20 % est 1,20. Celui d'une diminution de 20 % est 0,80. Le coefficient global est le produit : 1,20 × 0,80 = 0,96. Le prix final est donc inférieur au prix initial (perte nette de 4 %). L'option 1 serait vraie si on additionnait les pourcentages, ce qui est incorrect. L'option 1,04 correspond à 1 + 0,04 (erreur de signe). L'option 0,80 ne prend en compte que la deuxième évolution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après une évolution, une valeur est multipliée par 1,5. Quel est le pourcentage d'augmentation ?",
+      "options": [
+        "5 %",
+        "15 %",
+        "50 %",
+        "150 %"
+      ],
+      "correctAnswer": "50 %",
+      "explanation": "Le coefficient multiplicateur k = 1,5 correspond à une augmentation car k > 1. On a k = 1 + t/100, donc 1,5 = 1 + t/100. Il vient t/100 = 0,5, soit t = 50 %. L'option 5 % correspondrait à k = 1,05. L'option 15 % à k = 1,15. L'option 150 % confond le coefficient (1,5) et le pourcentage d'augmentation (50 %).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une population diminue de 5 % par an pendant deux années consécutives. On note P0 la population initiale. Quelle expression donne la population P2 après ces deux années ?",
+      "options": [
+        "P2 = P0 × 0,95",
+        "P2 = P0 × 0,9025",
+        "P2 = P0 × 0,90",
+        "P2 = P0 × 1,05^2"
+      ],
+      "correctAnswer": "P2 = P0 × 0,9025",
+      "explanation": "Une diminution de 5 % correspond à un coefficient multiplicateur annuel de 0,95. Sur deux années successives, le coefficient global est le produit des deux coefficients annuels : 0,95 × 0,95 = 0,95² = 0,9025. Donc P2 = P0 × 0,9025. L'option P0 × 0,95 ne compte qu'une seule année. L'option P0 × 0,90 soustrait 10 % (5 % + 5 %) au lieu de composer les diminutions. L'option P0 × 1,05² correspond à une augmentation de 5 % par an.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

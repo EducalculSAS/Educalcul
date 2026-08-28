@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Débogage",
+  "title": "Le Débogage en Pensée Informatique",
+  "questions": [
+    {
+      "text": "Qu'est ce qu'un bogue dans un programme informatique ?",
+      "options": [
+        "Un insecte qui est entré dans l'ordinateur",
+        "Une erreur dans les instructions qui empêche le programme de fonctionner correctement",
+        "Un logiciel utilisé pour dessiner des formes",
+        "Le bouton qui permet d'allumer l'écran"
+      ],
+      "correctAnswer": "Une erreur dans les instructions qui empêche le programme de fonctionner correctement",
+      "explanation": "Un bogue est une erreur logique ou technique dans le code. Cela signifie que l'ordinateur ne fait pas ce que le programmeur avait prévu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle t on l action de chercher et de corriger des bogues ?",
+      "options": [
+        "Le codage",
+        "Le piratage",
+        "Le débogage",
+        "Le téléchargement"
+      ],
+      "correctAnswer": "Le débogage",
+      "explanation": "Le débogage consiste à analyser le programme étape par étape pour trouver l'erreur et la modifier afin que le résultat soit correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot doit avancer de $3$ cases, mais il s'arrête après $2$ cases. Quelle est la méthode la plus efficace pour déboguer ce programme ?",
+      "options": [
+        "Éteindre le robot et le rallumer",
+        "Relire les instructions une par une pour vérifier le nombre de pas",
+        "Changer le robot pour un modèle plus récent",
+        "Effacer tout le programme et recommencer sans réfléchir"
+      ],
+      "correctAnswer": "Relire les instructions une par une pour vérifier le nombre de pas",
+      "explanation": "La meilleure façon de déboguer est de suivre le cheminement des instructions (le parcours) pour repérer exactement où l'erreur s'est produite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme pour dessiner un carré : \\n1. Avancer de $10$ cm\\n2. Tourner à droite de $90$ degrés\\n3. Avancer de $10$ cm\\n4. Tourner à droite de $90$ degrés\\n5. Avancer de $10$ cm\\n\\nPourquoi ce programme contient il un bogue ?",
+      "options": [
+        "Le robot avance trop vite",
+        "Il manque une instruction de rotation et une instruction d avance pour fermer le carré",
+        "Le robot tourne dans le mauvais sens",
+        "L instruction de $10$ cm est répétée trop souvent"
+      ],
+      "correctAnswer": "Il manque une instruction de rotation et une instruction d avance pour fermer le carré",
+      "explanation": "Un carré a $4$ côtés et $4$ angles. Ici, le programme ne contient que $3$ déplacements et $2$ rotations, le carré n'est donc pas terminé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu as créé un programme pour additionner $15$ et $10$, mais le résultat affiché est $20$. Quelle est la première étape du débogage ?",
+      "options": [
+        "Dire que l ordinateur est cassé",
+        "Vérifier si l opération utilisée est bien une addition et non une autre opération",
+        "Ajouter $5$ au résultat final pour corriger le score",
+        "Supprimer le chiffre $15$ du programme"
+      ],
+      "correctAnswer": "Vérifier si l opération utilisée est bien une addition et non une autre opération",
+      "explanation": "Pour déboguer, il faut analyser la logique. Si le résultat est $20$ au lieu de $25$, il y a peut être une erreur dans l opérateur utilisé ou dans l une des valeurs saisies.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

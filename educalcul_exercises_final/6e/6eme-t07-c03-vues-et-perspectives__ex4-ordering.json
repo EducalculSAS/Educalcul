@@ -1,0 +1,65 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 365,
+  "_course_code": "6eme-t07-c03-vues-et-perspectives",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Application : Vues et perspectives",
+  "title": "Vues et perspectives : Mise en ordre des constructions",
+  "blocks": [
+    {
+      "title": "Perspective d'un cube",
+      "content": "Range les étapes dans l'ordre chronologique pour tracer la perspective cavalière d'un cube de côté 4 cm.",
+      "items": [
+        "Tracer le carré avant de côté 4 cm.",
+        "Tracer les trois arêtes de profondeur (recul) parallèles, de longueur 2 cm (coefficient 1/2).",
+        "Tracer le carré arrière en reliant les extrémités des arêtes de profondeur.",
+        "Représenter les arêtes cachées en traits pointillés."
+      ],
+      "explanation": "On commence toujours par la face avant (étape 1). On ajoute ensuite les lignes de fuite pour la profondeur (étape 2). On ferme la figure par la face arrière (étape 3). Enfin, on montre les arêtes non visibles en pointillés (étape 4).",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube de côté 4 cm"
+      }
+    },
+    {
+      "title": "Identifier un solide par ses vues",
+      "content": "On donne les trois vues orthogonales (face, profil, dessus) d'un solide. Range les étapes logiques pour identifier ce solide.",
+      "items": [
+        "Observer la vue de face pour déterminer la forme principale et la hauteur du solide.",
+        "Observer la vue de profil pour déterminer la profondeur et confirmer la hauteur.",
+        "Observer la vue de dessus pour déterminer la forme de la base et la disposition en profondeur.",
+        "Conclure sur le nom du solide (pavé droit, cube, prisme, pyramide, cylindre...)."
+      ],
+      "explanation": "L'identification se fait en croisant les informations : la face donne hauteur et largeur, le profil donne hauteur et profondeur, le dessus donne largeur et profondeur. La synthèse des trois permet de nommer le solide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Perspective d'un pavé droit",
+      "content": "Range les étapes dans l'ordre pour tracer la perspective cavalière d'un pavé droit de dimensions 6 cm (longueur), 4 cm (largeur) et 3 cm (hauteur).",
+      "items": [
+        "Tracer le rectangle avant (longueur 6 cm, hauteur 3 cm).",
+        "Tracer les quatre arêtes de profondeur (largeur 4 cm) à 45° avec un coefficient de réduction 1/2 (soit 2 cm).",
+        "Tracer les arêtes visibles du fond en reliant les extrémités des arêtes de profondeur.",
+        "Compléter le tracé en pointillés pour les arêtes non visibles du fond."
+      ],
+      "explanation": "La méthode est identique à celle du cube mais avec un rectangle de départ. La face avant reflète les vraies dimensions (longueur, hauteur). La profondeur est réduite de moitié. On ferme la figure puis on ajoute les pointillés.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 6,
+        "height": 3,
+        "depth": 4,
+        "caption": "Patron d'un pavé droit 6x4x3 cm"
+      }
+    }
+  ]
+}

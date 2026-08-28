@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Rayon / diamètre",
+  "title": "Quiz : Rayon et diamètre d'un cercle",
+  "questions": [
+    {
+      "text": "Dans un cercle, comment le diamètre est-il lié au rayon ?",
+      "options": [
+        "Le diamètre est la moitié du rayon",
+        "Le diamètre est le double du rayon",
+        "Le diamètre est égal au rayon",
+        "Il n'y a pas de lien fixe"
+      ],
+      "correctAnswer": "Le diamètre est le double du rayon",
+      "explanation": "Par définition, le diamètre est un segment qui passe par le centre du cercle et dont les extrémités sont sur le cercle. Il est composé de deux rayons alignés. Donc, le diamètre vaut deux fois le rayon : $d = 2 \\times r$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un rayon de $4\\,cm$. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "$2\\,cm$",
+        "$4\\,cm$",
+        "$8\\,cm$",
+        "$16\\,cm$"
+      ],
+      "correctAnswer": "$8\\,cm$",
+      "explanation": "Le diamètre est le double du rayon. Il faut multiplier la longueur du rayon par 2 : $4 \\times 2 = 8$. Le diamètre mesure donc $8\\,cm$. L'option $2\\,cm$ correspond à la moitié du rayon (erreur de sens), $4\\,cm$ confond rayon et diamètre, et $16\\,cm$ correspond au carré du rayon.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diamètre d'un cercle mesure $12\\,cm$. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$3\\,cm$",
+        "$6\\,cm$",
+        "$24\\,cm$",
+        "$36\\,cm$"
+      ],
+      "correctAnswer": "$6\\,cm$",
+      "explanation": "Le rayon est la moitié du diamètre. Il faut diviser la longueur du diamètre par 2 : $12 \\div 2 = 6$. Le rayon mesure donc $6\\,cm$. L'option $3\\,cm$ correspond au quart du diamètre, $24\\,cm$ au double du diamètre, et $36\\,cm$ au triple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, le segment $[OM]$ est un rayon et le segment $[AB]$ est un diamètre. Si $OM = 5\\,cm$, quelle est la longueur de $AB$ ?",
+      "options": [
+        "$5\\,cm$",
+        "$10\\,cm$",
+        "$15\\,cm$",
+        "$25\\,cm$"
+      ],
+      "correctAnswer": "$10\\,cm$",
+      "explanation": "La figure montre un cercle de centre $O$. $OM$ est un rayon qui vaut $5\\,cm$. $AB$ est un diamètre qui passe par le centre $O$. Un diamètre vaut deux rayons, donc $AB = 2 \\times OM = 2 \\times 5 = 10\\,cm$.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O, rayon OM = 5 cm, diamètre AB"
+      }
+    },
+    {
+      "text": "Deux cercles ont le même centre. Le rayon du petit cercle est de $3\\,cm$. Le diamètre du grand cercle est de $14\\,cm$. Quelle est la longueur du rayon du grand cercle ?",
+      "options": [
+        "$3\\,cm$",
+        "$7\\,cm$",
+        "$11\\,cm$",
+        "$17\\,cm$"
+      ],
+      "correctAnswer": "$7\\,cm$",
+      "explanation": "Les informations sur le petit cercle (rayon de $3\\,cm$) sont inutiles pour répondre à la question, c'est une distraction. On s'intéresse seulement au grand cercle dont le diamètre est $14\\,cm$. Le rayon est la moitié du diamètre : $14 \\div 2 = 7\\,cm$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

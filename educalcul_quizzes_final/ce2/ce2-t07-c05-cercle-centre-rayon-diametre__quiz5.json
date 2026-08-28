@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 200,
+  "_course_code": "ce2-t07-c05-cercle-centre-rayon-diametre",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Nommer éléments",
+  "title": "Nommer les éléments d'un cercle",
+  "questions": [
+    {
+      "text": "Sur la figure, quel point est le centre du cercle ?",
+      "options": [
+        "Le point $O$",
+        "Le point $A$",
+        "Le point $B$",
+        "Le point $C$"
+      ],
+      "correctAnswer": "Le point $O$",
+      "explanation": "Le centre d'un cercle est le point équidistant de tous les points du cercle. Sur la figure, le point $O$ est indiqué comme le centre.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O"
+      }
+    },
+    {
+      "text": "Quel segment représente un rayon du cercle de centre $O$ passant par le point $A$ ?",
+      "options": [
+        "Le segment $OA$",
+        "Le segment $AB$",
+        "Le segment $OC$",
+        "Le segment $BC$"
+      ],
+      "correctAnswer": "Le segment $OA$",
+      "explanation": "Un rayon est un segment qui relie le centre du cercle à un point du cercle. Ici, le centre est $O$ et le point sur le cercle est $A$, donc le rayon est $OA$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel segment est un diamètre du cercle dont les extrémités sont $A$ et $B$ opposées sur le cercle ?",
+      "options": [
+        "Le segment $AB$",
+        "Le segment $CD$",
+        "Le segment $EF$",
+        "Le segment $GH$"
+      ],
+      "correctAnswer": "Le segment $AB$",
+      "explanation": "Un diamètre est un segment passant par le centre et dont les deux extrémités appartiennent au cercle. Les points $A$ et $B$ sont opposés, donc $AB$ est un diamètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le rayon d'un cercle mesure $4$ cm, quelle est la longueur de son diamètre ?",
+      "options": [
+        "$4$ cm",
+        "$8$ cm",
+        "$12$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "Le diamètre est deux fois la longueur du rayon. $2 \\times 4 = 8$, donc le diamètre mesure $8$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "Le rayon est deux fois plus long que le diamètre",
+        "Le diamètre est deux fois plus long que le rayon",
+        "Le centre est un point sur le cercle",
+        "Le rayon et le diamètre ont la même longueur"
+      ],
+      "correctAnswer": "Le diamètre est deux fois plus long que le rayon",
+      "explanation": "Par définition, le diamètre = 2 × rayon. Les trois autres affirmations sont fausses : le rayon est plus court que le diamètre, le centre est à l'intérieur du cercle, et les deux longueurs sont différentes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

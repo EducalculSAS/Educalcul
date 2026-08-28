@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Domaine",
+  "title": "Domaine des fractions algébriques simples",
+  "questions": [
+    {
+      "text": "Quel est le domaine de définition de la fraction algébrique $f(x)=\\frac{x+2}{x-3}$ ?",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{3\\}$",
+        "$\\mathbb{R} \\setminus \\{-2\\}$",
+        "$\\mathbb{R}$",
+        "$\\mathbb{R} \\setminus \\{-3\\}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{3\\}$",
+      "explanation": "Le dénominateur $x-3$ ne doit pas être nul, donc $x \\neq 3$. Le numérateur peut être nul, cela ne pose pas de problème. Ainsi le domaine est $\\mathbb{R} \\setminus \\{3\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminez le domaine de la fraction $g(x)=\\frac{x^{2}-1}{x^{2}-4}$.",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{2, -2\\}$",
+        "$\\mathbb{R} \\setminus \\{1, -1\\}$",
+        "$\\mathbb{R} \\setminus \\{2\\}$",
+        "$\\mathbb{R}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{2, -2\\}$",
+      "explanation": "Le dénominateur $x^{2}-4$ se factorise en $(x-2)(x+2)$ ; il est nul pour $x=2$ et $x=-2$. Les zéros du numérateur ($x=1$ et $x=-1$) n'affectent pas le domaine. Donc le domaine est $\\mathbb{R} \\setminus \\{2, -2\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le domaine de $h(x)=\\frac{3x}{x^{2}-5x+6}$ ?",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{2, 3\\}$",
+        "$\\mathbb{R} \\setminus \\{0\\}$",
+        "$\\mathbb{R} \\setminus \\{2\\}$",
+        "$\\mathbb{R} \\setminus \\{3\\}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{2, 3\\}$",
+      "explanation": "Le dénominateur $x^{2}-5x+6$ se factorise en $(x-2)(x-3)$ ; il est nul pour $x=2$ et $x=3$. Le numérateur $3x$ peut être nul (pour $x=0$) sans rendre la fraction indéfinie. Le domaine est donc $\\mathbb{R} \\setminus \\{2, 3\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $k(x)=\\frac{x+1}{x^{2}+2x+1}$ admet quel domaine ?",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{-1\\}$",
+        "$\\mathbb{R}$",
+        "$\\mathbb{R} \\setminus \\{1\\}$",
+        "$\\mathbb{R} \\setminus \\{0\\}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{-1\\}$",
+      "explanation": "Le dénominateur $x^{2}+2x+1$ vaut $(x+1)^{2}$ ; il est nul uniquement pour $x=-1$. Même si le facteur $(x+1)$ se simplifie avec le numérateur, la fraction originale n'est pas définie en $x=-1$. Le domaine est $\\mathbb{R} \\setminus \\{-1\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouvez le domaine de $m(x)=\\frac{x^{2}+3x+2}{x^{2}-1}$.",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{1, -1\\}$",
+        "$\\mathbb{R} \\setminus \\{-2, -1\\}$",
+        "$\\mathbb{R} \\setminus \\{1\\}$",
+        "$\\mathbb{R}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{1, -1\\}$",
+      "explanation": "Le dénominateur $x^{2}-1$ se factorise en $(x-1)(x+1)$ ; il est nul pour $x=1$ et $x=-1$. Le numérateur $x^{2}+3x+2$ s'annule pour $x=-1$ et $x=-2$, mais ces valeurs n'influencent pas le domaine. Seules les valeurs annulant le dénominateur sont exclues, soit $x=1$ et $x=-1$. Le domaine est $\\mathbb{R} \\setminus \\{1, -1\\}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

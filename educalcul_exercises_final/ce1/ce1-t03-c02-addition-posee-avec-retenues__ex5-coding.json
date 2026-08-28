@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 89,
+  "_course_code": "ce1-t03-c02-addition-posee-avec-retenues",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Aligner C-D-U",
+  "title": "Algorithme d'alignement pour l'addition posée",
+  "blocks": [
+    {
+      "title": "Mise en place simple",
+      "content": "Voici deux nombres : $45$ et $278$. Écris l'algorithme (la liste des étapes ordonnées) pour les placer correctement en colonnes (Centaines - Dizaines - Unités) avant de calculer la somme.",
+      "correctAnswer": "Étape 1 : Écrire le premier nombre ($278$) en alignant le chiffre des unités (8) tout à droite.\\nÉtape 2 : Écrire le second nombre ($45$) dessous en alignant son chiffre des unités (5) exactement sous le 8.\\nÉtape 3 : Placer les chiffres des dizaines (7 et 4) dans la colonne des dizaines, au-dessus l'un de l'autre.\\nÉtape 4 : Placer le chiffre des centaines (2) dans la colonne des centaines ; laisser la case des centaines du second nombre vide ou mettre un zéro.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'alignement se fait toujours à partir de la droite (unités) vers la gauche. On écrit d'abord le nombre qui a le plus de chiffres (ici $278$) pour servir de repère, puis on place le second nombre ($45$) chiffre par chiffre en dessous, en veillant à ce que les unités soient bien l'une sous l'autre, puis les dizaines, etc.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction d'un mauvais alignement",
+      "content": "Un élève veut calculer $306 + 45$. Il écrit l'addition posée ainsi :\\n$3\\ 0\\ 6$\\n$+\\ 4\\ 5$ (le 5 est sous le 0, le 4 est sous le 3).\\nÉcris l'algorithme pour corriger cet alignement erreur.",
+      "correctAnswer": "Étape 1 : Repérer le chiffre des unités du premier nombre (le 6 tout à droite).\\nÉtape 2 : Repérer le chiffre des unités du second nombre (le 5).\\nÉtape 3 : Déplacer le second nombre vers la droite pour placer le 5 exactement sous le 6 (colonne des unités).\\nÉtape 4 : Vérifier que le 4 (dizaines) se trouve maintenant sous le 0 (dizaines).\\nÉtape 5 : La colonne des centaines ne contient que le 3 du premier nombre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'erreur classique est d'aligner les nombres à gauche. La règle absolue est : les unités sous les unités. Ici, le 5 (unité de 45) doit être sous le 6 (unité de 306). Cela décale le 4 (dizaine de 45) sous le 0 (dizaine de 306). La centaine du premier nombre (3) reste seule dans sa colonne.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général d'alignement",
+      "content": "Écris un algorithme général (valable pour deux nombres entiers quelconques à trois chiffres maximum) sous forme d'instructions numérotées pour les aligner correctement en addition posée. Utilise les termes : Écrire, Aligner, Unités, Dizaines, Centaines, Droite, Gauche.",
+      "correctAnswer": "Algorithme Aligner_Addition(Nombre_A, Nombre_B) :\\n1. Identifier le nombre qui a le plus de chiffres (le plus grand), l'appeler Grand_Nombre ; l'autre est Petit_Nombre.\\n2. Écrire Grand_Nombre en partant de la droite : Unités, puis Dizaines, puis Centaines.\\n3. Prendre Petit_Nombre : placer son chiffre des Unités exactement sous le chiffre des Unités de Grand_Nombre (alignement à droite).\\n4. Placer son chiffre des Dizaines sous le chiffre des Dizaines de Grand_Nombre (si Grand_Nombre en a).\\n5. Placer son chiffre des Centaines sous le chiffre des Centaines de Grand_Nombre (si Grand_Nombre en a).\\n6. Si une colonne reste vide pour Petit_Nombre, on peut y mettre un 0 ou la laisser vide.\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme formalise la règle : on aligne toujours à partir de la droite (unités). On prend le plus long nombre comme référence. On place le second nombre chiffre par chiffre en partant de ses unités vers la gauche. Cela garantit que les unités sont sous les unités, les dizaines sous les dizaines, etc., peu importe la longueur des nombres (jusqu'à 999 en CE1).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

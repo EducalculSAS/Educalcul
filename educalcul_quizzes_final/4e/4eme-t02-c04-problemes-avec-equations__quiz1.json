@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 428,
+  "_course_code": "4eme-t02-c04-problemes-avec-equations",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Choisir inconnue",
+  "title": "Quiz : Choisir l'inconnue dans un problème",
+  "questions": [
+    {
+      "text": "Dans un problème, on cherche une quantité inconnue. Quelle phrase définit le mieux le choix de l'inconnue ?",
+      "options": [
+        "On note toujours $x$ le résultat final du calcul.",
+        "On note $x$ la quantité que l'on cherche, celle qui est inconnue au départ.",
+        "On note $x$ le premier nombre donné dans l'énoncé.",
+        "On note $x$ la somme de tous les nombres du problème."
+      ],
+      "correctAnswer": "On note $x$ la quantité que l'on cherche, celle qui est inconnue au départ.",
+      "explanation": "L'inconnue (souvent notée $x$) représente la valeur que l'on ne connaît pas et que le problème demande de trouver. Les autres options désignent des valeurs déjà connues (données, résultat final, somme) ou une règle arbitraire incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Énoncé : 'Je pense à un nombre. Je le multiplie par $4$ et j'ajoute $7$. Le résultat est $35$. Quel est ce nombre ?' Quelle est la meilleure façon de choisir l'inconnue ?",
+      "options": [
+        "Soit $x$ le résultat final ($35$).",
+        "Soit $x$ le multiplicateur ($4$).",
+        "Soit $x$ le nombre pensé au départ.",
+        "Soit $x$ le nombre ajouté ($7$)."
+      ],
+      "correctAnswer": "Soit $x$ le nombre pensé au départ.",
+      "explanation": "Le nombre pensé au départ est la valeur inconnue que l'on doit déterminer. Les autres valeurs ($4$, $7$, $35$) sont données dans l'énoncé. L'équation s'écrit alors $4x + 7 = 35$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Énoncé : 'Un rectangle a une longueur supérieure de $3$ cm à sa largeur. Son périmètre est $30$ cm. Quelles sont ses dimensions ?' Comment choisir l'inconnue pour écrire l'équation le plus simplement ?",
+      "options": [
+        "Soit $x$ le périmètre ($30$).",
+        "Soit $x$ la longueur du rectangle.",
+        "Soit $x$ la largeur du rectangle.",
+        "Soit $x$ la différence entre longueur et largeur ($3$)."
+      ],
+      "correctAnswer": "Soit $x$ la largeur du rectangle.",
+      "explanation": "Il est plus simple de choisir la plus petite dimension (la largeur) comme inconnue $x$. La longueur s'exprime alors facilement par $x + 3$. L'équation du périmètre devient $2 \\times (x + x + 3) = 30$. Si on choisit la longueur ($x$), la largeur est $x - 3$, ce qui fonctionne aussi mais est légèrement moins direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Énoncé : 'Un chemisier coûte $12$ € de plus qu'une jupe. Ensemble, ils coûtent $68$ €. Quel est le prix de la jupe ?' Quel choix d'inconnue est le plus pertinent ?",
+      "options": [
+        "Soit $x$ le prix total ($68$).",
+        "Soit $x$ le prix du chemisier.",
+        "Soit $x$ le prix de la jupe.",
+        "Soit $x$ la différence de prix ($12$)."
+      ],
+      "correctAnswer": "Soit $x$ le prix de la jupe.",
+      "explanation": "La question demande le prix de la jupe : c'est donc l'inconnue naturelle à noter $x$. Le prix du chemisier s'écrit alors $x + 12$. L'équation est $x + (x + 12) = 68$. Choisir le prix du chemisier obligerait à écrire $x - 12$ pour la jupe, ce qui est moins intuitif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Énoncé : 'Paul a $5$ ans de plus que sa sœur Julie. Dans $3$ ans, la somme de leurs âges sera $31$ ans. Quel est l'âge actuel de Julie ?' Quelle inconnue choisir pour faciliter la rédaction de l'équation ?",
+      "options": [
+        "Soit $x$ l'âge actuel de Paul.",
+        "Soit $x$ l'âge actuel de Julie.",
+        "Soit $x$ la somme de leurs âges actuels.",
+        "Soit $x$ l'âge de Julie dans $3$ ans."
+      ],
+      "correctAnswer": "Soit $x$ l'âge actuel de Julie.",
+      "explanation": "La question demande l'âge actuel de Julie, il est donc logique de poser $x$ = âge actuel de Julie. L'âge de Paul est $x + 5$. Dans $3$ ans, leurs âges seront $x + 3$ et $x + 5 + 3$. L'équation est $(x + 3) + (x + 8) = 31$, soit $2x + 11 = 31$. Cela évite les soustractions et ramène directement à la réponse demandée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

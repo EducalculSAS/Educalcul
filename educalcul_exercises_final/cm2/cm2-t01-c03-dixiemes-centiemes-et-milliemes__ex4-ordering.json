@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 277,
+  "_course_code": "cm2-t01-c03-dixiemes-centiemes-et-milliemes",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Dixièmes, centièmes et millièmes",
+  "title": "Ordonner des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Ordre croissant : dixièmes",
+      "content": "Range ces nombres dans l'ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$3,2$",
+        "$3,5$",
+        "$3,8$",
+        "$4,1$"
+      ],
+      "explanation": "On compare d'abord la partie entière : $3$ pour les trois premiers, $4$ pour le dernier. $4,1$ est le plus grand. Pour les nombres commençant par $3$, on compare le chiffre des dixièmes : $2 < 5 < 8$. L'ordre est donc $3,2 < 3,5 < 3,8 < 4,1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant : centièmes",
+      "content": "Range ces nombres dans l'ordre décroissant (du plus grand au plus petit).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$7,45$",
+        "$7,42$",
+        "$7,39$",
+        "$7,31$"
+      ],
+      "explanation": "Tous les nombres ont $7$ unités. On compare les dixièmes : $4$ pour les deux premiers, $3$ pour les deux suivants. Les nombres à $4$ dixièmes sont plus grands. Parmi $7,45$ et $7,42$, on compare les centièmes : $5 > 2$. Parmi $7,39$ et $7,31$, on compare les centièmes : $9 > 1$. L'ordre est $7,45 > 7,42 > 7,39 > 7,31$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : millièmes",
+      "content": "Range ces nombres dans l'ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$0,405$",
+        "$0,45$",
+        "$0,504$",
+        "$0,54$"
+      ],
+      "explanation": "On aligne les nombres à la virgule en ajoutant des zéros pour avoir le même nombre de décimales : $0,405$, $0,450$, $0,504$, $0,540$. On compare chiffre par chiffre. Aux dixièmes : $4$ pour les deux premiers, $5$ pour les deux derniers. Les nombres commençant par $0,4$ sont plus petits. Parmi eux, aux centièmes : $0 < 5$, donc $0,405 < 0,45$. Parmi ceux commençant par $0,5$, aux centièmes : $0 < 4$, donc $0,504 < 0,54$. L'ordre final est $0,405 < 0,45 < 0,504 < 0,54$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

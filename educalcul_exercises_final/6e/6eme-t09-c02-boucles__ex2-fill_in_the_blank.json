@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Compter",
+  "title": "Compter avec des boucles",
+  "blocks": [
+    {
+      "title": "Boucle simple pour compter de 1 à 5",
+      "content": "Pour afficher les entiers de 1 à 5, on écrit :\\nPour i de {{1}} à {{2}} faire\\n    Afficher i\\nFin pour",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle « Pour i de 1 à 5 » initialise i à 1, l'incrémente de 1 à chaque itération et s'arrête après i = 5, affichant ainsi 1, 2, 3, 4, 5.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter les nombres pairs jusqu'à 10",
+      "content": "Pour compter les nombres pairs jusqu'à 10 avec une boucle « Pour », on choisit un pas de {{1}} et la condition d'arrêt i ≤ {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "En partant de 2 et en augmentant i de 2 à chaque tour (pas = 2), on obtient 2, 4, 6, 8, 10. La boucle s'arrête quand i dépasse 10, donc la condition est i ≤ 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Afficher les multiples de 3 jusqu'à 30",
+      "content": "Pour afficher les multiples de 3 jusqu'à 30, on initialise i à {{1}}, on l'incrémente de {{2}} à chaque tour, et on continue tant que i ≤ {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "3",
+        "30"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le premier multiple de 3 est 3. En ajoutant 3 à chaque itération, on génère 3, 6, 9, …, 30. La boucle doit s'exécuter tant que i ne dépasse pas 30, d'où la condition i ≤ 30.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

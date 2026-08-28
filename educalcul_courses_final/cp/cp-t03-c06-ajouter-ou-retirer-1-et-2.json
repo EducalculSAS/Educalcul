@@ -1,0 +1,390 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.569329+00:00",
+  "id": 28,
+  "code": "cp-t03-c06",
+  "title": "Ajouter ou retirer 1 et 2",
+  "description": "Cours structuré Educalcul : Ajouter ou retirer 1 et 2.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Ajouter ou retirer 1 et 2",
+    "objectif_global": "Ajouter ou retirer 1 et 2",
+    "mini_lecons_imposees": [
+      "Utiliser précédent et suivant.",
+      "Avancer ou reculer de deux.",
+      "Calculer sans recompter toute la collection."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Utiliser précédent et suivant.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le précédent et le suivant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une file de $5$ cubes posés les uns à côté des autres. Le cube qui se trouve juste avant le cinquième est le $4$ : on l'appelle le précédent. Celui qui arrive juste après est le $6$ : c'est le suivant."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "Cinq unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre écrit, par exemple $7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : trouver le précédent",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enlève un cube, il reste $6$. C'est le précédent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : trouver le suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute un cube, on obtient $8$. C'est le suivant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec le nombre $9$. Le précédent sera $8$ et le suivant $10$. Regarde comme la suite grandit ou diminue d'un seul pas."
+            },
+            {
+              "type": "number_line",
+              "caption": "Nombres autour de 9",
+              "min": 6,
+              "max": 12,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "Précédent"
+                },
+                {
+                  "value": 9,
+                  "label": "Nombre"
+                },
+                {
+                  "value": 10,
+                  "label": "Suivant"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mélange les deux idées : donne le précédent et le suivant de $12$ sans recompter toute la collection."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le précédent de $7$ ?",
+              "answer": "$6$",
+              "hint": "Compte un cube en moins.",
+              "explanation": "Le précédent est le nombre qui vient juste avant."
+            },
+            {
+              "question": "Quel est le suivant de $9$ ?",
+              "answer": "$10$",
+              "hint": "Ajoute un cube.",
+              "explanation": "Le suivant est le nombre qui vient juste après."
+            },
+            {
+              "question": "Donne le précédent et le suivant de $12$.",
+              "answer": "Précédent $11$, suivant $13$",
+              "hint": "Utilise la méthode en trois étapes.",
+              "explanation": "On enlève un pour le précédent, on ajoute un pour le suivant."
+            }
+          ]
+        },
+        {
+          "title": "Avancer ou reculer de deux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Avancer ou reculer de deux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un petit escalier de marches. Si tu es sur la marche $4$ et que tu montes de deux marches, tu arrives sur la marche $6$. C'est ajouter $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Monter de deux marches",
+              "min": 2,
+              "max": 8,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Départ"
+                },
+                {
+                  "value": 6,
+                  "label": "Arrivée"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer le nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre de départ, ici $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : ajouter deux unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte deux de plus : $5$, $6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : noter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est $6$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, descends de deux marches. Depuis la marche $7$, si tu recules de deux, tu te retrouves sur la marche $5$. C'est retirer $2$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "Sept unités"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Repère le nombre de départ, ici $7$.",
+                "Enlève deux unités : $6$, $5$.",
+                "Le résultat est $5$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec le nombre $10$. Ajoute deux, puis retire deux, et vois où tu arrives."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu es sur la marche $4$ et que tu avances de deux, sur quelle marche arrives-tu ?",
+              "answer": "$6$",
+              "hint": "Compte deux marches de plus.",
+              "explanation": "Avancer de deux, c'est ajouter $2$."
+            },
+            {
+              "question": "Tu es sur la marche $7$ et tu recules de deux. Quelle est ta nouvelle marche ?",
+              "answer": "$5$",
+              "hint": "Enlève deux marches.",
+              "explanation": "Reculer de deux, c'est retirer $2$."
+            },
+            {
+              "question": "Partant de $10$, ajoute $2$ puis retire $2$. Quel est le résultat final ?",
+              "answer": "$10$",
+              "hint": "Fais les deux opérations l'une après l'autre.",
+              "explanation": "Ajouter $2$ puis retirer $2$ ramène au nombre de départ."
+            }
+          ]
+        },
+        {
+          "title": "Calculer sans recompter toute la collection.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer sans recompter toute la collection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as une boîte de $8$ billes. Tu veux savoir combien il y en a si tu en ajoutes une, sans tout recompter. Tu sais déjà que le suivant de $8$ est $9$. Donc tu as $9$ billes."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "Huit billes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier le nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de départ est $8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : rappeler le suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le suivant de $8$ est $9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : donner le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu as donc $9$ billes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu as $6$ autocollants et tu en donnes deux à un ami. Au lieu de recompter, tu sais que reculer de deux depuis $6$ donne $4$. Tu as donc $4$ autocollants restants."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                6
+              ],
+              "right": [
+                4,
+                2
+              ],
+              "caption": "Six moins deux égale quatre"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Repère le nombre de départ : $6$.",
+                "Retire deux unités : $5$, $4$.",
+                "Le résultat est $4$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mélange les deux idées : tu as $11$ cartes. Tu en ajoutes une, puis tu en retires deux. Utilise ce que tu sais pour trouver le total final sans tout recompter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver le précédent et le suivant d'un nombre.",
+                "Je sais avancer ou reculer de deux.",
+                "Je peux calculer un ajout ou un retrait de 1 ou 2 sans recompter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $8$ billes et tu en ajoutes une. Combien en as-tu maintenant ?",
+              "answer": "$9$",
+              "hint": "Quel est le suivant de $8$ ?",
+              "explanation": "Le suivant de $8$ est $9$, donc tu as $9$ billes."
+            },
+            {
+              "question": "Tu as $6$ autocollants et tu en donnes deux. Combien te reste-t-il ?",
+              "answer": "$4$",
+              "hint": "Recule de deux depuis $6$.",
+              "explanation": "Reculer de deux depuis $6$ donne $4$."
+            },
+            {
+              "question": "Partant de $11$ cartes, tu ajoutes une puis tu retires deux. Quel est le nombre final ?",
+              "answer": "$10$",
+              "hint": "Fais d'abord +1, puis -2.",
+              "explanation": "$11+1=12$, puis $12-2=10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

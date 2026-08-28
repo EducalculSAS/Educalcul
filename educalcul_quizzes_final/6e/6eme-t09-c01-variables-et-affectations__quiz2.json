@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Modifier",
+  "title": "Quiz : Modifier une variable",
+  "questions": [
+    {
+      "text": "Au départ, la variable $x$ vaut $5$. On exécute l'instruction $x = x + 2$. Quelle est la nouvelle valeur de $x$ ?",
+      "options": [
+        "7",
+        "5",
+        "2",
+        "10"
+      ],
+      "correctAnswer": "7",
+      "explanation": "L'instruction $x = x + 2$ prend la valeur actuelle de $x$ ($5$), ajoute $2$ pour obtenir $7$, puis stocke ce résultat dans $x$. Les autres options correspondent à ne pas modifier $x$, à utiliser seulement le $2$ ou à additionner $5$ et $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La variable $y$ vaut $10$. Après l'instruction $y = y - 3$, que vaut $y$ ?",
+      "options": [
+        "7",
+        "13",
+        "3",
+        "10"
+      ],
+      "correctAnswer": "7",
+      "explanation": "On soustrait $3$ à la valeur actuelle $10$, ce qui donne $7$. L'option $13$ serait une addition, $3$ serait le résultat si on oubliait la valeur initiale, et $10$ signifierait que la variable n'a pas changé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $a = 4$. On exécute $a = a + 1$ puis $a = a * 2$. Quelle est la valeur finale de $a$ ?",
+      "options": [
+        "10",
+        "8",
+        "9",
+        "12"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Après la première instruction, $a$ devient $5$. La seconde instruction multiplie cette nouvelle valeur par $2$, ce qui donne $10$. Les autres réponses proviennent d'erreurs d'ordre ou de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La variable $b$ vaut $6$. On écrit $b = 3$. Quelle est la valeur de $b$ après cette instruction ?",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "0"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Une affectation simple remplace la valeur précédente par la nouvelle. Ici $b$ prend la valeur $3$. Les autres options correspondent à conserver l'ancienne valeur, à additionner ou à mettre à zéro.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $c = 2$ et $d = 5$. On exécute $c = c + d$. Quelle est la nouvelle valeur de $c$ ?",
+      "options": [
+        "7",
+        "2",
+        "5",
+        "10"
+      ],
+      "correctAnswer": "7",
+      "explanation": "L'instruction ajoute la valeur de $d$ ($5$) à la valeur actuelle de $c$ ($2$), ce qui donne $7$, puis stocke ce résultat dans $c$. Les distracteurs reprennent les valeurs initiales ou leur somme incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

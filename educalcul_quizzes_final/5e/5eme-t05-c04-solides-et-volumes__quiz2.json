@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 403,
+  "_course_code": "5eme-t05-c04-solides-et-volumes",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Patrons / vues",
+  "title": "Quiz : Patrons et vues en 5e",
+  "questions": [
+    {
+      "text": "Le patron représenté ci-contre est composé de six carrés identiques. Quel solide obtient-on en le pliant ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Un cube est un solide qui possède six faces, toutes carrées et congruentes. Le patron affiché montre exactement six carrés disposés de manière à pouvoir se refermer sur eux-mêmes pour former les six faces d'un cube. Un pavé droit a des faces rectangulaires (pas toutes carrées), une pyramide n'a qu'une base carrée et des faces triangulaires, et un cylindre a des faces circulaires et une face latérale courbe.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Parmi les descriptions suivantes, laquelle correspond à un patron qui ne peut pas former un cube ?",
+      "options": [
+        "Une croix de six carrés (quatre alignés, un de chaque côté du deuxième)",
+        "Une ligne de six carrés",
+        "Un T majuscule formé de six carrés",
+        "Une forme en zigzag de six carrés"
+      ],
+      "correctAnswer": "Une ligne de six carrés",
+      "explanation": "Pour former un cube, les six carrés doivent pouvoir se replier sans se chevaucher. Une ligne de six carrés ne permet pas de fermer le solide : les deux carrés aux extrémités se retrouveraient du même côté au lieu de se rencontrer pour former les faces opposées. Les trois autres dispositions (croix, T, zigzag) sont des patrons classiques valides du cube.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On construit le patron d'un prisme droit dont la base est un triangle équilatéral. Combien de rectangles et de triangles ce patron contient-il ?",
+      "options": [
+        "Trois rectangles et deux triangles",
+        "Deux rectangles et trois triangles",
+        "Trois rectangles et trois triangles",
+        "Deux rectangles et deux triangles"
+      ],
+      "correctAnswer": "Trois rectangles et deux triangles",
+      "explanation": "Un prisme droit à base triangulaire a cinq faces : deux bases (triangles) et trois faces latérales (rectangles). Le patron doit donc contenir exactement deux triangles (les bases) et trois rectangles (le développement de la surface latérale).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On empile quatre cubes identiques pour former une tour verticale. Quelle est la forme de la vue de face de ce solide ?",
+      "options": [
+        "Un carré",
+        "Un rectangle de hauteur quatre fois la largeur",
+        "Deux carrés côte à côte",
+        "Un rectangle de hauteur deux fois la largeur"
+      ],
+      "correctAnswer": "Un rectangle de hauteur quatre fois la largeur",
+      "explanation": "La vue de face montre la projection du solide sur un plan vertical. Comme les quatre cubes sont empilés verticalement, la largeur visible correspond au côté d'un cube, et la hauteur correspond à la somme des côtés des quatre cubes, soit quatre fois la largeur. C'est donc un rectangle de proportions 4:1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le patron d'un cylindre de rayon $r$ et de hauteur $h$ est constitué de :",
+      "options": [
+        "Deux cercles de rayon $r$ et un rectangle de dimensions $h \\times 2\\pi r$",
+        "Deux cercles de rayon $r$ et un rectangle de dimensions $h \\times \\pi r$",
+        "Un cercle de rayon $r$ et un rectangle de dimensions $h \\times 2\\pi r$",
+        "Deux cercles de rayon $2r$ et un rectangle de dimensions $h \\times \\pi r$"
+      ],
+      "correctAnswer": "Deux cercles de rayon $r$ et un rectangle de dimensions $h \\times 2\\pi r$",
+      "explanation": "Un cylindre a deux bases (deux cercles de rayon $r$) et une surface latérale qui, une fois développée, forme un rectangle. La hauteur de ce rectangle est la hauteur $h$ du cylindre, et sa largeur est le périmètre de la base, soit $2\\pi r$. Les autres propositions confondent le périmètre ($2\\pi r$ vs $\\pi r$), le nombre de bases (une au lieu de deux) ou le rayon des bases ($2r$ au lieu de $r$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

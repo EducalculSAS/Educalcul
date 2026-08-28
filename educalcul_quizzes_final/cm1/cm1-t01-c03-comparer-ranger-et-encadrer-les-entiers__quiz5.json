@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 213,
+  "_course_code": "cm1-t01-c03-comparer-ranger-et-encadrer-les-entiers",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Comparer par rang",
+  "title": "Comparer par rang - CM1",
+  "questions": [
+    {
+      "text": "Lequel de ces nombres est le plus grand ? $5284$, $5248$, $5824$, $5482$",
+      "options": [
+        "$5284$",
+        "$5248$",
+        "$5824$",
+        "$5482$"
+      ],
+      "correctAnswer": "$5824$",
+      "explanation": "On compare d'abord le chiffre des milliers : tous ont 5. Ensuite le chiffre des centaines : $5284$ a 2, $5248$ a 2, $5824$ a 8, $5482$ a 4. Le plus grand chiffre des centaines est 8, donc $5824$ est le plus grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Classe les nombres suivants du plus petit au plus grand : $307$, $370$, $3007$, $37$",
+      "options": [
+        "$37$, $307$, $370$, $3007$",
+        "$37$, $370$, $307$, $3007$",
+        "$307$, $37$, $370$, $3007$",
+        "$3007$, $370$, $307$, $37$"
+      ],
+      "correctAnswer": "$37$, $307$, $370$, $3007$",
+      "explanation": "On compare d'abord le nombre de chiffres (le rang le plus élevé). $37$ a 2 chiffres, $307$ et $370$ en ont 3, $3007$ en a 4. Parmi les nombres à 3 chiffres, on compare les centaines (tous 3), puis les dizaines : $307$ a 0, $370$ a 7, donc $307 < 370$. L'ordre final est $37 < 307 < 370 < 3007$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite numérique ci-dessous, les points A, B et C correspondent aux nombres $450$, $405$ et $540$. Lequel de ces points représente le plus grand nombre ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Aucun"
+      ],
+      "correctAnswer": "C",
+      "explanation": "Le point C est placé à $540$, ce qui est plus grand que $450$ (point A) et $405$ (point B). Donc le point C correspond au plus grand nombre.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Points A (450), B (405), C (540)",
+        "min": 300,
+        "max": 600,
+        "points": [
+          {
+            "value": 450,
+            "label": "A"
+          },
+          {
+            "value": 405,
+            "label": "B"
+          },
+          {
+            "value": 540,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Parmi les nombres $1205$, $1025$, $1250$, $1502$, lequel est le plus petit ?",
+      "options": [
+        "$1205$",
+        "$1025$",
+        "$1250$",
+        "$1502$"
+      ],
+      "correctAnswer": "$1025$",
+      "explanation": "Tous ont 1 millier. On compare les centaines : $1205$ a 2, $1025$ a 0, $1250$ a 2, $1502$ a 5. Le plus petit chiffre des centaines est 0, donc $1025$ est le plus petit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour encadrer le nombre $643$ par deux multiples de $10$ consécutifs, quelles sont ces deux multiples ?",
+      "options": [
+        "$640$ et $650$",
+        "$630$ et $640$",
+        "$650$ et $660$",
+        "$640$ et $640$"
+      ],
+      "correctAnswer": "$640$ et $650$",
+      "explanation": "Les multiples de $10$ les plus proches de $643$ sont $640$ (multiple inférieur) et $650$ (multiple supérieur). Ils sont consécutifs et encadrent $643$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

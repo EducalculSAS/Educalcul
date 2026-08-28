@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 422,
+  "_course_code": "4eme-t01-c03-puissances-de-10",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Ordres de grandeur",
+  "title": "Quiz : Ordres de grandeur",
+  "questions": [
+    {
+      "text": "Quel est l'ordre de grandeur de $4500$ ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "L'ordre de grandeur de $4500$ est l'entier $n$ tel que $10^n \\le 4500 < 10^{n+1}$. Comme $10^3 = 1000 \\le 4500 < 10000 = 10^4$, l'ordre de grandeur est $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $7,8 \\times 10^4$ a pour ordre de grandeur :",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le nombre $7,8 \\times 10^4$ s'\\'ecrit en notation scientifique avec un exposant $4$, donc son ordre de grandeur est $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel a un ordre de grandeur \\'egal \\`a $3$ ?",
+      "options": [
+        "$45$",
+        "$380$",
+        "$5\\,200$",
+        "$78\\,000$"
+      ],
+      "correctAnswer": "$5\\,200$",
+      "explanation": "L'ordre de grandeur de $45$ est $1$, de $380$ est $2$, de $5\\,200$ est $3$ (car $10^3=1000 \\le 5200 < 10000=10^4$), et de $78\\,000$ est $4$. Donc le nombre d'ordre de grandeur $3$ est $5\\,200$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on multiplie $3,6 \\times 10^2$ par $2,5 \\times 10^3$, quel est l'ordre de grandeur du produit ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Le produit est $(3,6 \\times 2,5) \\times 10^{2+3} = 9,0 \\times 10^5$. Comme $9,0 \\times 10^5$ est compris entre $10^5$ et $10^6$, son ordre de grandeur est $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que la population d'une ville est d'environ $2,3 \\times 10^6$ habitants. Quelle affirmation est vraie ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La population $2,3 \\times 10^6$ a un exposant $6$, donc son ordre de grandeur est $6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

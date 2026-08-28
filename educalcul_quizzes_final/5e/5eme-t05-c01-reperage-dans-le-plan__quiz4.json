@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Application : Repérage dans le plan",
+  "title": "Quiz : Applications du repérage dans le plan",
+  "questions": [
+    {
+      "text": "Le point A a pour coordonnées ($3$ ; $-2$) dans un repère orthonormé. Quelle est son abscisse et quelle est son ordonnée ?",
+      "options": [
+        "Abscisse $3$, ordonnée $-2$",
+        "Abscisse $-2$, ordonnée $3$",
+        "Abscisse $-3$, ordonnée $2$",
+        "Abscisse $2$, ordonnée $-3$"
+      ],
+      "correctAnswer": "Abscisse $3$, ordonnée $-2$",
+      "explanation": "Dans un repère, les coordonnées d'un point s'écrivent toujours dans l'ordre (abscisse ; ordonnée). La première valeur ($3$) est l'abscisse (position horizontale), la seconde ($-2$) est l'ordonnée (position verticale). L'option B inverse les deux valeurs, ce qui est l'erreur la plus fréquente. Les options C et D changent les signes incorrectement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, le point B a pour coordonnées ($-4$ ; $1$). Dans quel quadrant se trouve le point B ?",
+      "options": [
+        "Premier quadrant",
+        "Deuxième quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Deuxième quadrant",
+      "explanation": "Les quadrants se numérotent dans le sens trigonométrique (inverse des aiguilles d'une montre) à partir du quadrant où abscisse et ordonnée sont positives. Le premier quadrant est (+ ; +), le deuxième est (- ; +), le troisième est (- ; -) et le quatrième est (+ ; -). Le point B a une abscisse négative ($-4$) et une ordonnée positive ($1$), il se situe donc dans le deuxième quadrant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point C a pour coordonnées ($5$ ; $-3$). Quelles sont les coordonnées du point C', symétrique de C par rapport à l'axe des ordonnées (axe y) ?",
+      "options": [
+        "($-5$ ; $-3$)",
+        "($5$ ; $3$)",
+        "($-5$ ; $3$)",
+        "($3$ ; $-5$)"
+      ],
+      "correctAnswer": "($-5$ ; $-3$)",
+      "explanation": "La symétrie par rapport à l'axe des ordonnées (axe y) change le signe de l'abscisse mais conserve l'ordonnée. L'abscisse $5$ devient $-5$, l'ordonnée $-3$ reste $-3$. L'option B correspond à une symétrie par rapport à l'axe des abscisses (axe x). L'option C correspond à une symétrie centrale (par rapport à l'origine). L'option D inverse les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On part de l'origine O d'un repère orthonormé. On se déplace de $4$ unités vers la droite puis de $3$ unités vers le bas. Quelles sont les coordonnées du point d'arrivée ?",
+      "options": [
+        "($4$ ; $-3$)",
+        "($-4$ ; $3$)",
+        "($3$ ; $-4$)",
+        "($-3$ ; $4$)"
+      ],
+      "correctAnswer": "($4$ ; $-3$)",
+      "explanation": "Se déplacer vers la droite augmente l'abscisse (direction positive de l'axe x), donc l'abscisse est $+4$. Se déplacer vers le bas diminue l'ordonnée (direction négative de l'axe y), donc l'ordonnée est $-3$. Les coordonnées sont donc ($4$ ; $-3$). L'option B correspond à un déplacement à gauche et en haut. Les options C et D inversent les valeurs des déplacements.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un plan de ville, le collège est à l'origine ($0$ ; $0$). La mairie a pour coordonnées ($-2$ ; $5$) et le stade ($3$ ; $-1$). Lequel de ces trois bâtiments se trouve dans le deuxième quadrant ?",
+      "options": [
+        "Le collège",
+        "La mairie",
+        "Le stade",
+        "Aucun des trois"
+      ],
+      "correctAnswer": "La mairie",
+      "explanation": "Le deuxième quadrant correspond aux points d'abscisse négative et d'ordonnée positive (- ; +). Le collège est à l'origine (n'est dans aucun quadrant). La mairie a pour coordonnées ($-2$ ; $5$) : abscisse négative, ordonnée positive, elle est bien dans le deuxième quadrant. Le stade a pour coordonnées ($3$ ; $-1$) : abscisse positive, ordonnée négative, il est dans le quatrième quadrant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

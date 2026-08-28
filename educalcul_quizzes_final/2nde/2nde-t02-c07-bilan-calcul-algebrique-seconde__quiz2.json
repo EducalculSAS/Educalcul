@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 509,
+  "_course_code": "2nde-t02-c07-bilan-calcul-algebrique-seconde",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Checklist",
+  "title": "Bilan Calcul algébrique - Checklist Seconde",
+  "questions": [
+    {
+      "text": "Parmi les expressions suivantes, laquelle est la forme développée et réduite de $(2x - 3)(x + 4) - (x - 1)^2$ ?",
+      "options": [
+        "$x^2 + 7x - 13$",
+        "$x^2 + 5x - 11$",
+        "$x^2 + 3x - 13$",
+        "$x^2 + 7x - 11$"
+      ],
+      "correctAnswer": "$x^2 + 7x - 13$",
+      "explanation": "On développe chaque partie : $(2x - 3)(x + 4) = 2x^2 + 8x - 3x - 12 = 2x^2 + 5x - 12$. Puis $(x - 1)^2 = x^2 - 2x + 1$. On soustrait le second du premier : $(2x^2 + 5x - 12) - (x^2 - 2x + 1) = 2x^2 + 5x - 12 - x^2 + 2x - 1 = x^2 + 7x - 13$. Les autres options correspondent à des erreurs de signes ou de coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la factorisation de l'expression $E = 4x^2 - 25$ ?",
+      "options": [
+        "$(2x - 5)^2$",
+        "$(2x + 5)(2x - 5)$",
+        "$(4x - 5)(x + 5)$",
+        "$(2x - 5)(x + 5)$"
+      ],
+      "correctAnswer": "$(2x + 5)(2x - 5)$",
+      "explanation": "L'expression $4x^2 - 25$ est une différence de deux carrés : $(2x)^2 - 5^2$. Elle se factorise donc en $(2x + 5)(2x - 5)$ grâce à l'identité remarquable $a^2 - b^2 = (a+b)(a-b)$. L'option A est un carré parfait qui donnerait $4x^2 - 20x + 25$. Les options C et D donnent des trinômes avec un terme en $x$ au développement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvons l'équation $(3x + 2)(x - 4) = 0$. Quelle est l'ensemble des solutions ?",
+      "options": [
+        "$S = \\{-\\frac{2}{3}; 4\\}$",
+        "$S = \\{\\frac{2}{3}; -4\\}$",
+        "$S = \\{-\\frac{2}{3}; -4\\}$",
+        "$S = \\{\\frac{2}{3}; 4\\}$"
+      ],
+      "correctAnswer": "$S = \\{-\\frac{2}{3}; 4\\}$",
+      "explanation": "Un produit de deux facteurs est nul si et seulement si l'un au moins des facteurs est nul. On résout donc $3x + 2 = 0$ ce qui donne $x = -\\frac{2}{3}$, et $x - 4 = 0$ ce qui donne $x = 4$. L'ensemble solution est bien $\\{-\\frac{2}{3}; 4\\}$. Les autres options inversent les signes des solutions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifions la fraction algébrique $F = \\frac{x^2 - 9}{x^2 - 6x + 9}$ pour $x \\neq 3$. Quelle en est la forme irréductible ?",
+      "options": [
+        "$\\frac{x + 3}{x - 3}$",
+        "$\\frac{x - 3}{x + 3}$",
+        "$\\frac{x + 3}{x + 3}$",
+        "$\\frac{x - 3}{x - 3}$"
+      ],
+      "correctAnswer": "$\\frac{x + 3}{x - 3}$",
+      "explanation": "On factorise le numérateur et le dénominateur. Numérateur : $x^2 - 9 = (x - 3)(x + 3)$ (différence de carrés). Dénominateur : $x^2 - 6x + 9 = (x - 3)^2$ (carré parfait). La fraction devient $\\frac{(x - 3)(x + 3)}{(x - 3)^2}$. On simplifie par le facteur commun $(x - 3)$ (non nul car $x \\neq 3$), ce qui donne $\\frac{x + 3}{x - 3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvons l'inéquation $2x^2 - 5x - 3 > 0$. Quel est l'ensemble des solutions ?",
+      "options": [
+        "$S = ]-\\infty; -\\frac{1}{2}[ \\cup ]3; +\\infty[$",
+        "$S = ]-\\frac{1}{2}; 3[$",
+        "$S = ]-\\infty; -3[ \\cup ]\\frac{1}{2}; +\\infty[$",
+        "$S = ]-3; \\frac{1}{2}[$"
+      ],
+      "correctAnswer": "$S = ]-\\infty; -\\frac{1}{2}[ \\cup ]3; +\\infty[$",
+      "explanation": "On cherche d'abord les racines du trinôme $2x^2 - 5x - 3 = 0$. Le discriminant est $\\Delta = (-5)^2 - 4 \\times 2 \\times (-3) = 25 + 24 = 49$. Les racines sont $x_1 = \\frac{5 - 7}{4} = -\\frac{1}{2}$ et $x_2 = \\frac{5 + 7}{4} = 3$. Comme le coefficient de $x^2$ est positif ($a=2>0$), le trinôme est strictement positif en dehors des racines. L'ensemble solution est donc $]-\\infty; -\\frac{1}{2}[ \\cup ]3; +\\infty[$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 335,
+  "_course_code": "6eme-t01-c05-bilan-nombres-6e",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Numération, décimaux, droite",
+  "title": "Algorithmes sur la numération décimale et la droite numérique",
+  "blocks": [
+    {
+      "title": "Décomposition d'un nombre décimal",
+      "content": "Écrire un algorithme qui, étant donné un nombre décimal positif $x$, affiche sa partie entière et sa partie décimale.",
+      "correctAnswer": "Algorithme DécomposerDecimal\\nEntrée : $x$ (nombre décimal positif)\\nDébut\\n    partieEntière ← partie entière de $x$ (par exemple en utilisant la fonction floor)\\n    partieDecimale ← $x$ - partieEntière\\n    Afficher \"Partie entière : \", partieEntière\\n    Afficher \"Partie décimale : \", partieDecimale\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la fonction partie entière (floor) pour isoler la partie entière du nombre. La partie décimale s'obtient par soustraction. Cela correspond à la décomposition standard d'un nombre décimal en partie entière et partie fractionnaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux nombres décimaux sur une droite numérique",
+      "content": "Écrire un algorithme qui compare deux nombres décimaux $a$ et $b$ et indique lequel est le plus grand en se référant à leur position sur la droite numérique.",
+      "correctAnswer": "Algorithme ComparerDecimaux\\nEntrée : $a$, $b$ (nombres décimaux)\\nDébut\\n    Si $a$ > $b$ Alors\\n        Afficher \"$a$ est plus grand que $b$ (il se trouve à droite de $b$ sur la droite numérique)\"\\n    Sinon Si $a$ < $b$ Alors\\n        Afficher \"$b$ est plus grand que $a$ (il se trouve à droite de $a$ sur la droite numérique)\"\\n    Sinon\\n        Afficher \"$a$ et $b$ sont égaux (même position sur la droite numérique)\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La comparaison de deux décimaux se fait exactement comme pour les entiers : on regarde leur ordre sur la droite numérique. L'algorithme teste les trois cas possibles (supérieur, inférieur, égal) et donne une phrase explicative liée à la droite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi d'un nombre décimal à un rang donné",
+      "content": "Écrire un algorithme qui arrondit un nombre décimal $x$ au dixième, au centième ou au millième selon un paramètre $n$ (1 pour dixième, 2 pour centième, 3 pour millième).",
+      "correctAnswer": "Algorithme ArrondirDecimal\\nEntrée : $x$ (nombre décimal), $n$ (entier 1, 2 ou 3)\\nDébut\\n    facteur ← 10 ^ $n$\\n    temp ← $x$ * facteur\\n    arrondi ← arrondir(temp)  // arrondi à l'entier le plus proche\\n    résultat ← arrondi / facteur\\n    Afficher \"Arrondi au \", Si $n$=1 Alors \"dixième\" Sinon Si $n$=2 Alors \"centième\" Sinon \"millième\" Fin Si, \" : \", résultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie le nombre par $10^n$ pour décaler la virgule, on arrondit à l'entier le plus proche, puis on divise par le même facteur pour remettre la virgule à sa place. Le paramètre $n$ choisit le rang de l'arrondi (1 dixième, 2 centièmes, 3 millièmes).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,467 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.931631+00:00",
+  "id": 466,
+  "code": "3eme-t02-c06",
+  "title": "Bilan - Algèbre 3e",
+  "description": "Cours structuré Educalcul : Bilan - Algèbre 3e.",
+  "subject": "Calcul littéral, équations et inéquations",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Calcul littéral, équations et inéquations",
+    "titre_du_cours": "Bilan - Algèbre 3e",
+    "objectif_global": "Bilan - Algèbre 3e",
+    "mini_lecons_imposees": [
+      "Développer, factoriser, résoudre.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral, équations et inéquations",
+      "lessons": [
+        {
+          "title": "Développer, factoriser, résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Développer : la distributivité et les identités remarquables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan d'algèbre ! Tu as déjà rencontré la distributivité en 4e, mais ici nous allons la manier avec plus d'aisance pour affronter des expressions plus longues. Développer, c'est transformer un produit en somme : on « ouvre les parenthèses » en multipliant chaque terme de la première parenthèse par chaque terme de la seconde. Par exemple, pour $(2x+3)(x-4)$, on multiplie $2x$ par $x$, puis $2x$ par $-4$, puis $3$ par $x$, et enfin $3$ par $-4$. C'est un travail minutieux où le signe moins joue un rôle crucial : un moins fois un moins donne un plus, n'oublie jamais cette règle d'or !"
+            },
+            {
+              "type": "definition",
+              "term": "Développer",
+              "definition": "Transformer une expression écrite sous forme de produit (avec des parenthèses) en une somme ou une différence de termes, en utilisant la distributivité : $a(b+c)=ab+ac$.",
+              "example": "Développer $(x+2)(x-5)$ donne $x^2 -5x +2x -10 = x^2 -3x -10$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)^2 = a^2 - 2ab + b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(a-b) = a^2 - b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces trois formules sont tes meilleures alliées : elles t'évitent de refaire la distributivité terme à terme à chaque fois. La première, $(a+b)^2$, produit un trinôme avec un terme du milieu positif ($+2ab$). La seconde, $(a-b)^2$, donne un trinôme avec un terme du milieu négatif ($-2ab$). La troisième, $(a+b)(a-b)$, est magique : le terme du milieu disparaît complètement, il ne reste que la différence de deux carrés. Repère bien la structure : somme fois différence = différence des carrés. C'est un raccourci qui te fera gagner un temps précieux aux contrôles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'expression : est-ce un carré $(...)^2$ ou un produit somme×différence ? Identifie $a$ et $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris directement le résultat selon l'identité correspondante, en remplaçant $a$ et $b$ par les expressions repérées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as développé sans identité (distributivité classique), regroupe les termes semblables pour obtenir la forme réduite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais développer, il est temps d'apprendre le chemin inverse : factoriser. C'est exactement la même mécanique, mais à l'envers. Au lieu d'ouvrir les parenthèses, on les referme en cherchant ce que les termes ont en commun. C'est souvent là que les élèves se sentent moins à l'aise, mais rassure-toi : avec de la méthode, cela devient un jeu d'enfant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factoriser : chercher le facteur commun et utiliser les identités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Factoriser, c'est écrire une somme sous forme de produit. La première technique, la plus simple, consiste à mettre en évidence un facteur commun à tous les termes. Regarde $6x^2 + 9x$ : les deux termes sont divisibles par $3x$. On écrit donc $3x(2x+3)$. Vérifie en développant : $3x \\times 2x = 6x^2$ et $3x \\times 3 = 9x$, c'est bon ! Parfois, le facteur commun n'est pas un monôme mais une parenthèse entière, comme dans $x(x+2) + 3(x+2) = (x+2)(x+3)$. Garde l'œil ouvert sur les parenthèses identiques."
+            },
+            {
+              "type": "definition",
+              "term": "Factoriser",
+              "definition": "Transformer une somme ou une différence en un produit de facteurs, en utilisant la distributivité à l'envers ou les identités remarquables.",
+              "example": "Factoriser $x^2 - 9$ donne $(x+3)(x-3)$ grâce à l'identité $a^2-b^2=(a+b)(a-b)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Chercher un facteur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Y a-t-il un nombre, une variable ou une parenthèse qui divise tous les termes ? Si oui, mets-le devant une nouvelle parenthèse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier une identité remarquable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'expression a trois termes, regarde si c'est un trinôme remarquable ($a^2 \\pm 2ab + b^2$). Si elle a deux termes, vérifie si c'est une différence de deux carrés ($a^2-b^2$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la factorisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule inverse : $a^2+2ab+b^2 = (a+b)^2$, $a^2-2ab+b^2 = (a-b)^2$, $a^2-b^2 = (a+b)(a-b)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur de l'algèbre de 3e : résoudre des équations. Tu connais déjà les équations du premier degré ($ax+b=cx+d$), mais cette année on ajoute une corde à ton arc : les équations à produit nul. Le principe est simple et puissant : si un produit de deux facteurs est égal à zéro, alors au moins l'un des deux facteurs est nul. C'est une propriété qui ne marche qu'avec le zéro ! Si le produit vaut 5, on ne peut rien dire sur les facteurs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des équations du premier degré et à produit nul"
+            },
+            {
+              "type": "definition",
+              "term": "Équation du premier degré",
+              "definition": "Une équation qui s'écrit sous la forme $ax+b=cx+d$ avec $a,b,c,d$ des nombres et $x$ l'inconnue. On la résout en isolant $x$ par des opérations inverses.",
+              "example": "$3x-5 = 2x+7$ se résout en transposant les $x$ à gauche et les nombres à droite : $x = 12$."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "3x",
+                "-5"
+              ],
+              "rightTerms": [
+                "2x",
+                "+7"
+              ],
+              "caption": "Résolution de $3x-5 = 2x+7$ par la méthode de la balance"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode de la balance (ou transposée) consiste à faire la même chose des deux côtés pour garder l'égalité. On regroupe les $x$ d'un côté, les nombres de l'autre, puis on divise par le coefficient de $x$. Vérifie toujours ta solution en la remplaçant dans l'équation de départ : c'est la meilleure assurance contre les erreurs de signe."
+            },
+            {
+              "type": "definition",
+              "term": "Produit nul",
+              "definition": "Si $A \\times B = 0$, alors $A=0$ ou $B=0$ (ou les deux). Cette propriété permet de résoudre des équations comme $(x-2)(x+3)=0$.",
+              "example": "Les solutions de $(x-2)(x+3)=0$ sont $x=2$ et $x=-3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre l'équation sous forme produit = 0",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tout doit être du même côté, l'autre côté étant 0. Factorise si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle du produit nul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux équations simples : premier facteur = 0 OU second facteur = 0."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre chaque équation simple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque équation est du premier degré (ou plus simple). Résous-les une par une."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne l'ensemble des solutions, par exemple $S = \\{-3 ; 2\\}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce tour d'horizon, n'oublions pas les inéquations. Elles ressemblent aux équations, mais au lieu d'un signe $=$, on a $<$, $\\le$, $>$, $\\ge$. La grande différence ? Quand on multiplie ou divise par un nombre négatif, le sens de l'inégalité change ! C'est le piège classique. Prends l'habitude de noter le sens de la flèche à chaque étape."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des inéquations du premier degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre $2x-5 < 3x+1$, c'est chercher tous les nombres $x$ qui rendent cette inégalité vraie. On procède comme pour une équation : on transpose les $x$ à gauche, les nombres à droite. Ici, $2x-3x < 1+5$ donne $-x < 6$. Il faut diviser par $-1$, ce qui inverse le signe : $x > -6$. L'ensemble des solutions est l'intervalle $]-6 ; +\\infty[$. Sur une droite graduée, on place un parenthèse ouvert (car -6 n'est pas inclus) et une flèche vers la droite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Solutions de $x > -6$",
+              "min": -10,
+              "max": 2,
+              "points": [
+                {
+                  "value": -6,
+                  "label": "-6"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -6,
+                  "end": 2,
+                  "startOpen": true,
+                  "endOpen": true
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Transposer les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les $x$ d'un côté, les nombres de l'autre, comme pour une équation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par le coefficient de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce coefficient est positif, le sens ne change pas. S'il est négatif, inverse le signe de l'inégalité ($<$ devient $>$, $\\le$ devient $\\ge$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne l'intervalle (ex: $]-6;+\\infty[$) ou l'inégalité (ex: $x > -6$), et représente-le sur une droite graduée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développer et réduire l'expression $E = (2x+3)(x-4)$.",
+              "answer": "$2x^2 -5x -12$",
+              "hint": "Utilise la distributivité : multiplie chaque terme de la première parenthèse par chaque terme de la seconde. Attention aux signes !",
+              "explanation": "On fait $2x \\times x = 2x^2$, $2x \\times (-4) = -8x$, $3 \\times x = 3x$, $3 \\times (-4) = -12$. On regroupe $-8x+3x = -5x$. Résultat : $2x^2 -5x -12$."
+            },
+            {
+              "question": "Factoriser l'expression $F = 6x^2 + 9x$.",
+              "answer": "$3x(2x+3)$",
+              "hint": "Cherche le plus grand facteur commun aux deux termes. Ici, les coefficients 6 et 9 sont divisibles par 3, et les deux termes ont un $x$.",
+              "explanation": "Le PGCD de $6x^2$ et $9x$ est $3x$. On écrit $6x^2 = 3x \\times 2x$ et $9x = 3x \\times 3$. Donc $F = 3x(2x+3)$."
+            },
+            {
+              "question": "Résoudre l'équation $3(x-2) = 5x+4$.",
+              "answer": "$x = -5$",
+              "hint": "Commence par développer le membre de gauche, puis regroupe les $x$ à gauche et les nombres à droite.",
+              "explanation": "Développement : $3x-6 = 5x+4$. Transposition : $3x-5x = 4+6$, soit $-2x = 10$. Division par $-2$ : $x = -5$. Vérification : $3(-5-2)=3(-7)=-21$ et $5(-5)+4=-25+4=-21$. C'est correct."
+            },
+            {
+              "question": "Résoudre l'inéquation $2x-5 < 3x+1$.",
+              "answer": "$x > -6$",
+              "hint": "Traite-la comme une équation, mais attention : si tu divises par un nombre négatif, le sens de l'inégalité s'inverse.",
+              "explanation": "On transpose : $2x-3x < 1+5$, donc $-x < 6$. On divise par $-1$ (négatif), donc le signe change : $x > -6$. L'ensemble solution est $]-6;+\\infty[$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : développer, factoriser, résoudre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici venu le moment de faire le point sur tout ce que nous venons de revoir. Ce n'est pas une simple liste à mémoriser par cœur : c'est une boîte à outils que tu dois savoir choisir au bon moment. Pour chaque compétence, nous allons reprendre un exemple inédit, différent de ceux de la leçon précédente, pour t'assurer que la méthode est bien ancrée. Prends le temps de relire les étapes, de visualiser les formules, et surtout de t'essayer aux exercices avant de regarder les corrections."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)^2 = a^2 - 2ab + b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(a-b) = a^2 - b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelle-toi : les identités remarquables sont des raccourcis. Si tu vois $(x+5)^2$, n'hésite pas une seconde : c'est $x^2 + 10x + 25$. Le terme du milieu est le double du produit des deux termes ($2 \\times x \\times 5 = 10x$). Si tu vois $(3x-2)^2$, c'est $9x^2 -12x +4$. Et si tu rencontres $(x+7)(x-7)$, c'est directement $x^2 - 49$. Entraîne-toi à les reconnaître instantanément, comme on reconnaît le visage d'un ami."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la factorisation. C'est souvent l'étape où l'on bloque, car il faut « voir » la structure cachée. Regarde $x^2 - 9$ : c'est une différence de deux carrés ($x^2$ et $3^2$). Donc $x^2 - 9 = (x+3)(x-3)$. Maintenant, imagine $4x^2 + 12x + 9$ : le premier terme est $(2x)^2$, le dernier est $3^2$, et le milieu est $2 \\times 2x \\times 3 = 12x$. C'est donc $(2x+3)^2$. La clé est de vérifier si le terme du milieu correspond bien au double produit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les équations, rappelle-toi la règle d'or : on fait la même chose des deux côtés. Résolvons $4x+7 = 2x-5$. On soustrait $2x$ des deux côtés : $2x+7 = -5$. On soustrait $7$ : $2x = -12$. On divise par $2$ : $x = -6$. Vérification : $4(-6)+7 = -24+7 = -17$ et $2(-6)-5 = -12-5 = -17$. Pour une équation à produit nul comme $(x+1)(2x-6)=0$, on écrit $x+1=0$ ou $2x-6=0$, donc $x=-1$ ou $x=3$. Simple, non ?"
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "4x",
+                "+7"
+              ],
+              "rightTerms": [
+                "2x",
+                "-5"
+              ],
+              "caption": "Résolution de $4x+7 = 2x-5$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les inéquations. Le piège du signe négatif est partout. Résolvons $5 - 2x \\ge 1$. On isole le terme en $x$ : $-2x \\ge 1-5$, soit $-2x \\ge -4$. On divise par $-2$ (négatif !), donc le sens change : $x \\le 2$. L'ensemble solution est $]-\\infty; 2]$. Sur la droite, on met un crochet fermé sur $2$ (car $2$ est inclus) et une flèche vers la gauche. Vérifie avec $x=0$ : $5-0=5 \\ge 1$, vrai. Avec $x=3$ : $5-6=-1 \\ge 1$, faux. Tout est cohérent."
+            },
+            {
+              "type": "number_line",
+              "caption": "Solutions de $x \\le 2$",
+              "min": -2,
+              "max": 6,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -2,
+                  "end": 2,
+                  "startOpen": true,
+                  "endOpen": false
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer une expression avec la distributivité ou les identités remarquables.",
+                "Je sais factoriser en cherchant un facteur commun ou en utilisant les identités remarquables à l'envers.",
+                "Je sais résoudre une équation du premier degré en isolant l'inconnue.",
+                "Je sais résoudre une équation de la forme $(ax+b)(cx+d)=0$ grâce à la règle du produit nul.",
+                "Je sais résoudre une inéquation du premier degré et inverser le signe quand je divise par un nombre négatif.",
+                "Je sais représenter l'ensemble des solutions d'une inéquation sur une droite graduée (parenthèse ou crochet)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développer et réduire $(x+5)^2$.",
+              "answer": "$x^2 + 10x + 25$",
+              "hint": "Utilise l'identité $(a+b)^2 = a^2 + 2ab + b^2$ avec $a=x$ et $b=5$.",
+              "explanation": "On a $a^2 = x^2$, $2ab = 2 \\times x \\times 5 = 10x$, $b^2 = 25$. Résultat : $x^2 + 10x + 25$."
+            },
+            {
+              "question": "Factoriser $x^2 - 9$.",
+              "answer": "$(x+3)(x-3)$",
+              "hint": "C'est une différence de deux carrés : $x^2$ et $3^2$. Utilise $a^2-b^2 = (a+b)(a-b)$.",
+              "explanation": "Ici $a=x$, $b=3$. Donc $x^2 - 9 = (x+3)(x-3)$."
+            },
+            {
+              "question": "Résoudre l'équation $4x+7 = 2x-5$.",
+              "answer": "$x = -6$",
+              "hint": "Regroupe les $x$ à gauche, les nombres à droite. Attention aux signes lors des transpositions.",
+              "explanation": "$4x-2x = -5-7$ donne $2x = -12$, donc $x = -6$."
+            },
+            {
+              "question": "Résoudre l'inéquation $5 - 2x \\ge 1$.",
+              "answer": "$x \\le 2$",
+              "hint": "Isole le terme en $x$. Quand tu divises par $-2$, n'oublie pas d'inverser le sens de l'inégalité.",
+              "explanation": "$-2x \\ge -4$. Division par $-2$ (négatif) : $x \\le 2$. Ensemble solution : $]-\\infty; 2]$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

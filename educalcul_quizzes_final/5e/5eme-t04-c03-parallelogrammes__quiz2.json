@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 397,
+  "_course_code": "5eme-t04-c03-parallelogrammes",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître un parallélogramme",
+  "questions": [
+    {
+      "text": "Laquelle des affirmations suivantes correspond à la définition exacte d'un parallélogramme ?",
+      "options": [
+        "Un quadrilatère ayant au moins un couple de côtés parallèles",
+        "Un quadrilatère dont les deux diagonales sont perpendiculaires",
+        "Un quadrilatère dont les côtés opposés sont parallèles deux à deux",
+        "Un quadrilatère ayant quatre angles droits"
+      ],
+      "correctAnswer": "Un quadrilatère dont les côtés opposés sont parallèles deux à deux",
+      "explanation": "La définition du parallélogramme est un quadrilatère dont les côtés opposés sont parallèles deux à deux. L'option A décrit un trapèze. L'option B est une propriété du losange (cas particulier) mais pas la définition. L'option D décrit un rectangle (cas particulier).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un quadrilatère $ABCD$, on sait que $(AB) // (CD)$ et $(AD) // (BC)$. Quelle affirmation est nécessairement vraie ?",
+      "options": [
+        "C'est un rectangle",
+        "C'est un losange",
+        "C'est un parallélogramme",
+        "C'est un trapèze"
+      ],
+      "correctAnswer": "C'est un parallélogramme",
+      "explanation": "La condition $(AB) // (CD)$ et $(AD) // (BC)$ est exactement la définition du parallélogramme. On ne peut pas affirmer que c'est un rectangle (angles droits non garantis) ni un losange (côtés égaux non garantis). Un trapèze n'a qu'un seul couple de côtés parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On mesure les côtés d'un quadrilatère $EFGH$ : $EF = 6$ cm, $FG = 4$ cm, $GH = 6$ cm, $HE = 4$ cm. Quelle conclusion peut-on tirer ?",
+      "options": [
+        "C'est obligatoirement un parallélogramme",
+        "C'est obligatoirement un rectangle",
+        "Ce n'est pas un parallélogramme car les côtés ne sont pas tous égaux",
+        "On ne peut rien conclure sans connaître les angles"
+      ],
+      "correctAnswer": "C'est obligatoirement un parallélogramme",
+      "explanation": "La réciproque de la propriété des côtés opposés égaux est un critère de reconnaissance : si les côtés opposés sont égaux deux à deux ($EF = GH$ et $FG = HE$), alors le quadrilatère est un parallélogramme. Les angles n'ont pas besoin d'être connus. Ce n'est pas forcément un rectangle (angles droits non vérifiés) ni un losange (côtés non tous égaux).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un quadrilatère $IJKL$, les angles opposés sont égaux : $\\angle I = \\angle K = 70^\\circ$ et $\\angle J = \\angle L = 110^\\circ$. Ce quadrilatère est-il un parallélogramme ?",
+      "options": [
+        "Oui, car les angles opposés sont égaux deux à deux",
+        "Non, car les angles ne sont pas droits",
+        "Oui, mais seulement si les diagonales se coupent en leur milieu",
+        "Non, c'est un trapèze isocèle"
+      ],
+      "correctAnswer": "Oui, car les angles opposés sont égaux deux à deux",
+      "explanation": "L'égalité des angles opposés deux à deux est un critère suffisant pour affirmer qu'un quadrilatère est un parallélogramme. Ici $\\angle I = \\angle K$ et $\\angle J = \\angle L$, donc $IJKL$ est un parallélogramme. Les angles n'ont pas besoin d'être droits (c'est le cas du rectangle seulement). La condition sur les diagonales est une propriété, pas une condition nécessaire supplémentaire. Un trapèze isocèle a les angles adjacents à chaque base égaux, pas les angles opposés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les descriptions suivantes, laquelle ne garantit pas que le quadrilatère est un parallélogramme ?",
+      "options": [
+        "Un quadrilatère dont les diagonales se coupent en leur milieu",
+        "Un quadrilatère ayant deux côtés opposés parallèles et les deux autres côtés égaux",
+        "Un quadrilatère dont les côtés opposés sont parallèles deux à deux",
+        "Un quadrilatère dont les angles opposés sont égaux deux à deux"
+      ],
+      "correctAnswer": "Un quadrilatère ayant deux côtés opposés parallèles et les deux autres côtés égaux",
+      "explanation": "Les options A, C et D sont des critères de reconnaissance du parallélogramme (diagonales, côtés parallèles, angles opposés). L'option B décrit un trapèze isocèle (un seul couple de côtés parallèles, les côtés non parallèles égaux), qui n'est pas un parallélogramme en général.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

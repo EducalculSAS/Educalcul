@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Tests",
+  "title": "Tests conditionnels en algorithmique - 4e",
+  "blocks": [
+    {
+      "title": "Évaluation d'une condition simple",
+      "content": "Soit $x = 7$. Évaluer la condition $x > 5$.",
+      "correctAnswer": "Vrai",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $x$ vaut 7. La condition $x > 5$ demande si 7 est strictement supérieur à 5. Comme 7 > 5, la condition est vraie, donc la réponse est Vrai.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec structure Si ... Sinon",
+      "content": "On exécute l'algorithme suivant :\\na ← 12\\nb ← 5\\nSi a mod b = 0 Alors\\n    résultat ← \"multiple\"\\nSinon\\n    résultat ← \"non multiple\"\\nFin Si\\nQuelle est la valeur de la variable résultat après l'exécution ?",
+      "correctAnswer": "non multiple",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'opérateur mod donne le reste de la division euclidienne. 12 divisé par 5 donne un reste de 2, donc 12 mod 5 = 2, qui est différent de 0. La condition est fausse, on exécute la branche Sinon qui affecte \"non multiple\" à résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Imbrication de deux tests",
+      "content": "On exécute l'algorithme suivant :\\nx ← -3\\nSi x < 0 Alors\\n    Si x > -5 Alors\\n        message ← \"entre -5 et 0\"\\n    Sinon\\n        message ← \"inférieur ou égal à -5\"\\n    Fin Si\\nSinon\\n    message ← \"positif ou nul\"\\nFin Si\\nQuelle est la valeur de la variable message après l'exécution ?",
+      "correctAnswer": "entre -5 et 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "x vaut -3. Le premier test x < 0 est vrai, on entre dans le bloc Alors. Le second test x > -5 est aussi vrai car -3 > -5. On affecte donc \"entre -5 et 0\" à message.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

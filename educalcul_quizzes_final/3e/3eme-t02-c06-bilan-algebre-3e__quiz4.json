@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Application : Bilan - Algèbre 3e",
+  "title": "Quiz : Bilan Algèbre 3e - Applications",
+  "questions": [
+    {
+      "text": "Développer et réduire l'expression $E = (2x - 3)(x + 4) - (x - 1)(x + 2)$.",
+      "options": [
+        "$x^2 + 4x - 10$",
+        "$x^2 + 6x - 14$",
+        "$3x^2 + 6x - 10$",
+        "$x^2 + 4x - 14$"
+      ],
+      "correctAnswer": "$x^2 + 4x - 10$",
+      "explanation": "On développe chaque produit : $(2x - 3)(x + 4) = 2x^2 + 8x - 3x - 12 = 2x^2 + 5x - 12$ et $(x - 1)(x + 2) = x^2 + 2x - x - 2 = x^2 + x - 2$. On soustrait le second du premier : $(2x^2 + 5x - 12) - (x^2 + x - 2) = 2x^2 + 5x - 12 - x^2 - x + 2 = x^2 + 4x - 10$. L'option B oublie de changer le signe de $x$ dans la soustraction, l'option C additionne au lieu de soustraire, l'option D fait une erreur sur le terme constant ($-12 - 2 = -14$ au lieu de $-12 + 2 = -10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'équation $3(2x - 5) - 2(x + 4) = 14$.",
+      "options": [
+        "$x = \\frac{37}{4}$",
+        "$x = \\frac{21}{4}$",
+        "$x = \\frac{29}{4}$",
+        "$x = 9$"
+      ],
+      "correctAnswer": "$x = \\frac{37}{4}$",
+      "explanation": "On développe : $6x - 15 - 2x - 8 = 14$. On regroupe : $4x - 23 = 14$. On isole $x$ : $4x = 37$, donc $x = \\frac{37}{4}$. L'option B correspond à l'erreur classique de signe sur le développement de $-2(x+4)$ (écrit $-2x+8$ au lieu de $-2x-8$). L'option C correspond à l'oubli du $-8$ ($4x - 15 = 14$). L'option D est une approximation décimale incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $5 - 2x \\le 3x + 15$.",
+      "options": [
+        "$x \\ge -2$",
+        "$x \\le -2$",
+        "$x \\ge 2$",
+        "$x \\le 2$"
+      ],
+      "correctAnswer": "$x \\ge -2$",
+      "explanation": "On regroupe les $x$ à droite et les nombres à gauche : $5 - 15 \\le 3x + 2x$, soit $-10 \\le 5x$. En divisant par $5$ (positif), le sens de l'inégalité ne change pas : $-2 \\le x$, ce qui s'écrit $x \\ge -2$. L'option B correspond à l'erreur de retourner le signe en divisant par un négatif (alors qu'on divise par $+5$). Les options C et D proviennent d'erreurs de calcul sur les constantes ($5+15=20$ au lieu de $5-15=-10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur supérieure de $5$ cm à sa largeur. Son périmètre est de $50$ cm. Quelle est la largeur de ce rectangle ?",
+      "options": [
+        "$10$ cm",
+        "$22,5$ cm",
+        "$15$ cm",
+        "$12,5$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Soit $x$ la largeur en cm. La longueur est $x + 5$. Le périmètre est $2 \\times (\\text{longueur} + \\text{largeur}) = 2(x + x + 5) = 2(2x + 5) = 4x + 10$. L'équation est $4x + 10 = 50$, donc $4x = 40$ et $x = 10$. L'option B correspond à l'équation $x + (x+5) = 50$ (oubli du facteur $2$ pour le périmètre). L'option C est la longueur ($x+5$). L'option D correspond à l'équation $4x = 50$ (oubli du $+10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une fête, la location d'une salle coûte $200$ euros plus $15$ euros par invité. Le budget ne doit pas dépasser $800$ euros. Quel est le nombre maximal d'invités possible ?",
+      "options": [
+        "$40$",
+        "$41$",
+        "$53$",
+        "$60$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "Soit $n$ le nombre d'invités. Le coût total est $200 + 15n$. L'inéquation est $200 + 15n \\le 800$. On soustrait $200$ : $15n \\le 600$. On divise par $15$ : $n \\le 40$. Le nombre maximal d'invités est donc $40$. L'option B arrondit au supérieur au lieu de prendre l'entier inférieur. L'option C correspond à $800 / 15 \\approx 53$ (oubli du coût fixe de $200$). L'option D ne correspond à aucune démarche logique standard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

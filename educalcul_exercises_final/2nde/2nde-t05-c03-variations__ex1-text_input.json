@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Croissante / décroissante",
+  "title": "Exercice sur les variations : croissante / décroissante",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Soit la fonction $f$ définie sur $ℝ$ par $f(x)=5x-3$. Est-elle croissante ou décroissante sur $ℝ$ ?",
+      "correctAnswer": "croissante",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction $f$ est une fonction affine de coefficient directeur $5 > 0$. Une fonction affine de coefficient directeur strictement positif est strictement croissante sur $ℝ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Soit la fonction $g$ définie sur $ℝ$ par $g(x)=-x^2+4x-1$. Sur quel intervalle $g$ est-elle croissante ?",
+      "correctAnswer": "x ≤ 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La dérivée de $g$ est $g'(x) = -2x+4 = -2(x-2)$. Le signe de $g'$ est positif pour $x < 2$ et nul en $x=2$. Ainsi $g$ est croissante sur l'intervalle $]-∞;2]$ (c'est-à-dire pour $x ≤ 2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "La dérivée d'une fonction $h$ sur $ℝ$ est $h'(x) = (x-1)(x+2)$. Pour quelles valeurs de $x$ la fonction $h$ est-elle croissante ?",
+      "correctAnswer": "x < -2 ou x > 1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction est croissante là où sa dérivée est positive. Le trinôme $(x-1)(x+2)$ est positif en dehors de ses racines, c'est-à-dire pour $x < -2$ ou $x > 1$. Donc $h$ est croissante sur $]-∞;-2[ ∪ ]1;+∞[$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

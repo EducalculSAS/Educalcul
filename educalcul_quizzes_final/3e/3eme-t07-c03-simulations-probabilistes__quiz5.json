@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Répéter",
+  "title": "Approfondissement : Répéter - Simulations probabilistes",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : nb_succes, i en entiers\\nnb_succes prend la valeur 0\\nPour i de 1 à 100 faire\\n   Si [événement réussi] Alors\\n      nb_succes prend la valeur nb_succes + 1\\n   Fin Si\\nFin Pour\\nAfficher nb_succes\\nQue représente la valeur finale affichée par la variable nb_succes ?",
+      "options": [
+        "La probabilité théorique de l'événement",
+        "Le nombre total d'essais effectués",
+        "Le nombre de fois où l'événement s'est produit",
+        "La fréquence de l'événement"
+      ],
+      "correctAnswer": "Le nombre de fois où l'événement s'est produit",
+      "explanation": "La variable nb_succes est initialisée à 0. À chaque itération de la boucle (100 tours au total), on teste si l'événement a réussi. Si c'est le cas, on incrémente nb_succes de 1. À la fin, nb_succes contient donc le compteur exact du nombre de succès observés lors des 100 essais. C'est un effectif, pas une fréquence (qui serait nb_succes / 100) ni une probabilité théorique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour simuler $500$ lancers d'un dé équilibré à l'aide d'une boucle \"Pour i de 1 à N faire\", par quelle valeur doit-on remplacer N ?",
+      "options": [
+        "100",
+        "500",
+        "6",
+        "50"
+      ],
+      "correctAnswer": "500",
+      "explanation": "La structure \"Pour i de 1 à N faire\" répète les instructions contenues dans la boucle exactement N fois. Puisque l'on souhaite simuler 500 lancers, il faut que la boucle effectue 500 itérations, donc N = 500. La valeur 6 correspond au nombre de faces du dé, pas au nombre de répétitions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule l'expérience aléatoire : \"Lancer un dé à six faces et noter le nombre de fois où on obtient un 6\". On compare deux simulations : l'une avec $10$ essais, l'autre avec $10\\ 000$ essais. D'après la loi des grands nombres, quelle affirmation est correcte ?",
+      "options": [
+        "Avec 10 essais, la fréquence du 6 est exactement égale à 1/6",
+        "Avec 10 000 essais, la fréquence du 6 est généralement plus proche de 1/6 qu'avec 10 essais",
+        "La fréquence du 6 ne dépend pas du nombre d'essais effectués",
+        "Avec 10 000 essais, la fréquence du 6 est exactement égale à 1/6"
+      ],
+      "correctAnswer": "Avec 10 000 essais, la fréquence du 6 est généralement plus proche de 1/6 qu'avec 10 essais",
+      "explanation": "La loi des grands nombres stipule que lorsque le nombre d'essais augmente, la fréquence observée d'un événement tend à se stabiliser autour de sa probabilité théorique (ici 1/6). Avec seulement 10 essais, le hasard fait que la fréquence peut être très éloignée de 1/6 (par exemple 0 ou 0,3). Avec 10 000 essais, les fluctuations s'annulent et la fréquence est quasi certainement très proche de 1/6, sans pour autant être exactement égale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite modifier l'algorithme ci-dessous pour simuler $500$ tirages au lieu de $200$ :\\nnb_rouge <- 0\\nPour i de 1 à 200 faire\\n   r <- Aleatoire(0,1)\\n   Si r < 0,3 Alors\\n      nb_rouge <- nb_rouge + 1\\n   Fin Si\\nFin Pour\\nFreq <- nb_rouge / 200\\nAfficher Freq\\nQuelles lignes faut-il modifier ?",
+      "options": [
+        "Uniquement la ligne \"Pour i de 1 à 200 faire\" en \"Pour i de 1 à 500 faire\"",
+        "La ligne \"Pour i de 1 à 200 faire\" en \"Pour i de 1 à 500 faire\" ET la ligne \"Freq <- nb_rouge / 200\" en \"Freq <- nb_rouge / 500\"",
+        "Uniquement la ligne \"Si r < 0,3 Alors\" en \"Si r < 0,5 Alors\"",
+        "La ligne \"nb_rouge <- 0\" en \"nb_rouge <- 500\""
+      ],
+      "correctAnswer": "La ligne \"Pour i de 1 à 200 faire\" en \"Pour i de 1 à 500 faire\" ET la ligne \"Freq <- nb_rouge / 200\" en \"Freq <- nb_rouge / 500\"",
+      "explanation": "Il faut changer la borne de la boucle pour effectuer 500 itérations au lieu de 200. Mais il faut aussi mettre à jour le calcul de la fréquence : le diviseur doit être le nombre total d'essais (500) pour obtenir la fréquence correcte (nb_succes / nombre_essais). Modifier la condition \"r < 0,3\" changerait la probabilité simulée (0,3 correspond à la proportion de boules rouges). Initialiser nb_rouge à 500 fausserait le comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\ns <- 0\\nPour i de 1 à 10 faire\\n   x <- Aleatoire(1, 6)\\n   Si x >= 5 Alors\\n      s <- s + 1\\n   Fin Si\\nFin Pour\\nAfficher s / 10\\nQue affiche cet algorithme à la fin de son exécution ?",
+      "options": [
+        "Le nombre de fois où on a obtenu un 5 ou un 6",
+        "La fréquence d'obtention d'un 5 ou d'un 6 sur 10 lancers",
+        "La probabilité d'obtenir un 5 ou un 6",
+        "La somme des valeurs obtenues au dé"
+      ],
+      "correctAnswer": "La fréquence d'obtention d'un 5 ou d'un 6 sur 10 lancers",
+      "explanation": "La variable s compte le nombre de succès (x >= 5 signifie x = 5 ou x = 6). Après 10 tours de boucle, s vaut l'effectif de succès. L'instruction finale affiche s / 10, c'est-à-dire l'effectif de succès divisé par le nombre total d'essais : c'est la définition de la fréquence. Ce n'est pas la probabilité théorique (1/3), ni la somme des faces, ni l'effectif brut (qui serait s).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

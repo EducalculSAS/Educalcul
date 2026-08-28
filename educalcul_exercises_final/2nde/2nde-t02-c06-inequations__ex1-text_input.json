@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Résoudre",
+  "title": "Résolution d'inéquations - Seconde",
+  "blocks": [
+    {
+      "title": "Inéquation linéaire",
+      "content": "Résolvez l'inéquation $3x - 7 < 2x + 5$.",
+      "correctAnswer": "x < 12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes en $x$ d'un côté : $3x - 2x < 5 + 7$, ce qui donne $x < 12$. L'ensemble des solutions est l'intervalle ouvert $(-\\infty, 12)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inéquation quadratique",
+      "content": "Résolvez l'inéquation $x^2 - 5x + 6 > 0$.",
+      "correctAnswer": "x < 2 ou x > 3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On factorise le trinôme : $(x-2)(x-3) > 0$. Les racines sont $2$ et $3$. Le signe du produit est positif en dehors des racines, donc la solution est $x < 2$ ou $x > 3$, soit $(-\\infty, 2) \\cup (3, +\\infty)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inéquation rationnelle",
+      "content": "Résolvez l'inéquation $\\frac{x+1}{x-2} \\le 0$.",
+      "correctAnswer": "-1 \\le x < 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les zéros du numérateur et du dénominateur sont $-1$ et $2$. On fait un tableau de signes : le quotient est négatif ou nul entre $-1$ (inclus car inéquation large) et $2$ (exclu car dénominateur nul). La solution est $[-1, 2)$, c'est-à-dire $-1 \\le x < 2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

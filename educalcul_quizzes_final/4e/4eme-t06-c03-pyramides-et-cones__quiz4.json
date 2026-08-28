@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 447,
+  "_course_code": "4eme-t06-c03-pyramides-et-cones",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Application : Pyramides et cônes",
+  "title": "Applications des pyramides et cônes",
+  "questions": [
+    {
+      "text": "Une pyramide à base carrée a un côté de base de $6$ cm et une hauteur de $9$ cm. Calcule son volume.",
+      "options": [
+        "$108$ cm³",
+        "$324$ cm³",
+        "$36$ cm³",
+        "$1080$ cm³"
+      ],
+      "correctAnswer": "$108$ cm³",
+      "explanation": "Le volume d'une pyramide est $V = \\frac{1}{3} \\times A_{\\text{base}} \\times h$. La base est un carré de côté $6$ cm, donc $A_{\\text{base}} = 6 \\times 6 = 36$ cm². Alors $V = \\frac{1}{3} \\times 36 \\times 9 = 108$ cm³. L'option $324$ cm³ correspond à l'oubli du facteur $\\frac{1}{3}$, $36$ cm³ à l'utilisation de l'aire de base seule, et $1080$ cm³ à une multiplication erronée par $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône a un rayon de $4$ cm et une hauteur de $9$ cm. Calcule son volume exact en fonction de $\\pi$.",
+      "options": [
+        "$48\\pi$ cm³",
+        "$144\\pi$ cm³",
+        "$16\\pi$ cm³",
+        "$432\\pi$ cm³"
+      ],
+      "correctAnswer": "$48\\pi$ cm³",
+      "explanation": "Le volume d'un cône est $V = \\frac{1}{3} \\pi r^2 h$. Ici $r=4$ cm, $h=9$ cm, donc $r^2=16$. $V = \\frac{1}{3} \\pi \\times 16 \\times 9 = 48\\pi$ cm³. $144\\pi$ cm³ oublie le $\\frac{1}{3}$, $16\\pi$ cm³ utilise seulement l'aire de base, $432\\pi$ cm³ correspond à une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide a un volume de $240$ cm³ et une aire de base de $30$ cm². Quelle est sa hauteur ?",
+      "options": [
+        "$24$ cm",
+        "$8$ cm",
+        "$720$ cm",
+        "$30$ cm"
+      ],
+      "correctAnswer": "$24$ cm",
+      "explanation": "La formule $V = \\frac{1}{3} A_{\\text{base}} h$ donne $h = \\frac{3V}{A_{\\text{base}}} = \\frac{3 \\times 240}{30} = 24$ cm. $8$ cm oublie le facteur $3$, $720$ cm multiplie au lieu de diviser, $30$ cm confond avec l'aire de base.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône a un volume de $96\\pi$ cm³ et une hauteur de $8$ cm. Détermine son rayon.",
+      "options": [
+        "$6$ cm",
+        "$3$ cm",
+        "$12$ cm",
+        "$36$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "On utilise $V = \\frac{1}{3} \\pi r^2 h$. Donc $r^2 = \\frac{3V}{\\pi h} = \\frac{3 \\times 96\\pi}{\\pi \\times 8} = \\frac{288}{8} = 36$, donc $r = 6$ cm. $3$ cm correspond à la racine carrée de $9$ (oubli du facteur $3$), $12$ cm double le résultat, $36$ cm est $r^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une tente en forme de pyramide à base carrée a un côté de $5$ m et une hauteur de $3$ m. Quel est le volume d'air à l'intérieur ?",
+      "options": [
+        "$25$ m³",
+        "$75$ m³",
+        "$15$ m³",
+        "$125$ m³"
+      ],
+      "correctAnswer": "$25$ m³",
+      "explanation": "Volume $V = \\frac{1}{3} \\times A_{\\text{base}} \\times h$. Base carrée de côté $5$ m => $A_{\\text{base}} = 25$ m². $V = \\frac{1}{3} \\times 25 \\times 3 = 25$ m³. $75$ m³ oublie le $\\frac{1}{3}$, $15$ m³ utilise le périmètre, $125$ m³ multiplie par $5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

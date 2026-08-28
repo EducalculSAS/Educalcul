@@ -1,0 +1,456 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.277401+00:00",
+  "id": 258,
+  "code": "cm1-t07-c03",
+  "title": "Lire une courbe d'évolution",
+  "description": "Cours structuré Educalcul : Lire une courbe d'évolution.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Lire une courbe d'évolution",
+    "objectif_global": "Lire une courbe d'évolution",
+    "mini_lecons_imposees": [
+      "Axes.",
+      "Variation.",
+      "Valeurs."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Axes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les deux axes de la courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes la température dehors chaque matin pendant une semaine. Lundi $12^{\\circ}\\mathrm{C}$, mardi $14^{\\circ}\\mathrm{C}$, mercredi $11^{\\circ}\\mathrm{C}$, et ainsi de suite. Pour voir d'un coup d'œil si ça chauffe ou ça refroidit, on dessine une courbe d'évolution. Elle repose sur deux droites perpendiculaires qui se croisent : l'axe horizontal et l'axe vertical. Ensemble, ils forment un repère, comme un quadrillage qui permet de situer chaque information avec précision."
+            },
+            {
+              "type": "definition",
+              "term": "Axe horizontal",
+              "definition": "La droite qui part de gauche à droite. Sur une courbe d'évolution, il représente le temps qui passe : les jours, les mois, les heures...",
+              "example": "Ici, chaque graduation correspond à un jour : Lundi, Mardi, Mercredi..."
+            },
+            {
+              "type": "definition",
+              "term": "Axe vertical",
+              "definition": "La droite qui monte du bas vers le haut. Elle indique la grandeur mesurée : température en degrés, hauteur en centimètres, nombre de livres lus...",
+              "example": "Les graduations vont de $10^{\\circ}\\mathrm{C}$ à $20^{\\circ}\\mathrm{C}$ par pas de $2^{\\circ}\\mathrm{C}$."
+            },
+            {
+              "type": "graph",
+              "expression": "0",
+              "xmin": 0,
+              "xmax": 7,
+              "caption": "Repère vide : axe horizontal (jours) et axe vertical (température en °C)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu distingues les deux axes, regardons comment sont gradués ces axes. Sur l'axe horizontal, le temps n'est pas toujours écrit en toutes lettres : on met souvent des repères réguliers (jour 1, jour 2... ou janvier, février...). Sur l'axe vertical, les nombres montent par échelons constants. C'est ce qu'on appelle l'échelle. Si l'échelle saute de $2$ en $2$ ($10$, $12$, $14$...), alors la graduation au milieu de $12$ et $14$ correspond à $13$, même si le chiffre n'est pas écrit. C'est comme une règle graduée : les traits courts entre les grands chiffres existent bel et bien."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Jour",
+                "Température ($^{\\circ}\\mathrm{C}$)"
+              ],
+              "rows": [
+                [
+                  "Lundi",
+                  "12"
+                ],
+                [
+                  "Mardi",
+                  "14"
+                ],
+                [
+                  "Mercredi",
+                  "11"
+                ],
+                [
+                  "Jeudi",
+                  "15"
+                ],
+                [
+                  "Vendredi",
+                  "13"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une courbe, il faut savoir associer un jour à sa température. On part du jour sur l'axe horizontal, on monte verticalement jusqu'à rencontrer le point de la courbe, puis on file horizontalement vers l'axe vertical pour lire la valeur. C'est un mouvement en « L » inversé : d'abord tout droit vers le haut, ensuite tout droit vers la gauche. Essaie de le faire avec le doigt sur l'exemple ci-dessus : pour mercredi, tu montes au point, puis tu vas à gauche et tu tombes sur $11^{\\circ}\\mathrm{C}$. Cette gymnastique des yeux devient vite automatique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le moment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le doigt sur le jour cherché sur l'axe horizontal."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Monter au point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remonte verticalement jusqu'à toucher la courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déplace-toi horizontalement vers l'axe vertical et note le chiffre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe horizontal de la courbe ci-dessus, quel jour se trouve à la 4e graduation en partant de la gauche ?",
+              "answer": "Jeudi",
+              "hint": "Compte les graduations : 1 = Lundi, 2 = Mardi...",
+              "explanation": "La 1re graduation correspond à Lundi, la 2e à Mardi, la 3e à Mercredi, la 4e à Jeudi."
+            },
+            {
+              "question": "Si l'axe vertical est gradué de $10$ à $20$ par pas de $2$, quelle valeur se trouve exactement au milieu entre $14$ et $16$ ?",
+              "answer": "$15$",
+              "hint": "Le milieu de deux nombres consécutifs de l'échelle est leur moyenne.",
+              "explanation": "L'échelle saute de $2$ en $2$. Entre $14$ et $16$, il y a $15$, même si ce chiffre n'est pas écrit sur l'axe."
+            },
+            {
+              "question": "En suivant la méthode en trois étapes, quelle température lis-tu pour le jour « Vendredi » sur le tableau ?",
+              "answer": "$13^{\\circ}\\mathrm{C}$",
+              "hint": "Repère Vendredi sur l'axe horizontal, monte au point, va vers l'axe vertical.",
+              "explanation": "Vendredi correspond à la 5e graduation. Le point de la courbe est à la hauteur de $13$ sur l'axe vertical."
+            }
+          ]
+        },
+        {
+          "title": "Variation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre les variations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une courbe d'évolution, c'est comme le profil d'une montagne russe : ça monte, ça descend, parfois ça reste plat. Chaque tronçon raconte une histoire. Quand la courbe s'incline vers le haut en allant vers la droite, la grandeur mesurée augmente : il fait plus chaud, la plante grandit, l'épargne grossit. Quand elle penche vers le bas, la grandeur diminue : la température baisse, le niveau d'eau tombe. Et quand elle file tout droit horizontalement, rien ne change : c'est la stabilité."
+            },
+            {
+              "type": "definition",
+              "term": "Croissante",
+              "definition": "La courbe monte quand on avance vers la droite. La valeur mesurée devient plus grande.",
+              "example": "De mardi à jeudi, la température passe de $14^{\\circ}\\mathrm{C}$ à $15^{\\circ}\\mathrm{C}$ : la courbe est croissante."
+            },
+            {
+              "type": "definition",
+              "term": "Décroissante",
+              "definition": "La courbe descend quand on avance vers la droite. La valeur mesurée devient plus petite.",
+              "example": "De mercredi à jeudi, la température chute de $15^{\\circ}\\mathrm{C}$ à $11^{\\circ}\\mathrm{C}$ : la courbe est décroissante."
+            },
+            {
+              "type": "graph",
+              "expression": "12+2*x-0.5*x^2",
+              "xmin": 0,
+              "xmax": 5,
+              "caption": "Exemple de courbe qui monte puis descend (température sur 5 jours)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la courbe ne monte ni ne descend franchement : elle fait des petits zigzags. On dit alors qu'elle fluctue. C'est fréquent pour la météo ou le cours d'une action en bourse. Pour décrire l'allure globale, on repère les grands mouvements : une montée soutenue sur plusieurs jours, une chute brutale en une journée, un palier où tout reste calme. Imagine un randonneur qui regarde son altimètre : il voit les grosses côtes, les descentes rapides et les replats, sans s'arrêter sur chaque petit caillou."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Variation quotidienne de la température (différence jour d'avant)",
+              "bars": [
+                {
+                  "label": "Mar.",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Mer.",
+                  "value": -3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jeu.",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Ven.",
+                  "value": -2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux périodes, on observe la pente : plus la courbe est raide, plus le changement est rapide. Une montée douce sur trois jours veut dire une hausse progressive, peu spectaculaire. Une flèche quasi verticale en un seul jour signale un changement soudain, comme un orage qui fait chuter la température de $8^{\\circ}\\mathrm{C}$ en quelques heures. Essaie de visualiser : si tu poses une règle le long de la courbe, l'inclinaison de la règle te donne la vitesse de l'évolution. C'est pour cela qu'on dit qu'une courbe « parle » : sa forme seule te donne l'information essentielle avant même de lire les chiffres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide entre quels deux moments tu compares (ex: lundi → mercredi)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer la direction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La courbe part-elle vers le haut, le bas ou l'horizontale ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Juger la raideur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce une pente douce (changement lent) ou raide (changement brutal) ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la courbe ci-dessus, entre quels deux jours consécutifs la température a-t-elle le plus augmenté ?",
+              "answer": "De mercredi à jeudi",
+              "hint": "Cherche la portion la plus pentue vers le haut.",
+              "explanation": "Le segment mercredi → jeudi monte de $11^{\\circ}\\mathrm{C}$ à $15^{\\circ}\\mathrm{C}$, soit $+4^{\\circ}\\mathrm{C}$ en un jour, c'est la plus forte hausse."
+            },
+            {
+              "question": "Regarde le diagramme en barres. Quel jour la température a-t-elle baissé par rapport à la veille ?",
+              "answer": "Mercredi et Vendredi",
+              "hint": "Les barres bleues (négatives) indiquent une baisse.",
+              "explanation": "Mercredi : $-3^{\\circ}\\mathrm{C}$ (baisse), Jeudi : $+4^{\\circ}\\mathrm{C}$ (hausse), Vendredi : $-2^{\\circ}\\mathrm{C}$ (baisse)."
+            },
+            {
+              "question": "Si une courbe reste parfaitement horizontale du mardi au jeudi, que peux-tu dire de la grandeur mesurée pendant ces trois jours ?",
+              "answer": "Elle est restée stable, elle n'a pas changé.",
+              "hint": "Horizontal = ni montante, ni descendante.",
+              "explanation": "Un segment horizontal signifie que la valeur est constante : même température, même hauteur, même nombre..."
+            }
+          ]
+        },
+        {
+          "title": "Valeurs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire des valeurs précises"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer les axes et sentir si la courbe monte ou descend. Passons à la lecture chiffrée, celle qui permet de répondre à des questions précises : « Quelle était la température exacte mercredi ? » ou « De combien a-t-elle baissé entre jeudi et vendredi ? ». Pour cela, il faut oser aller chercher la valeur entre deux graduations. Si le point se pile sur un trait gradué, c'est facile : tu lis le chiffre. Mais souvent, le point se trouve entre deux traits. Alors, tu comptes les petits intervalles. Sur un axe gradué par $2$, chaque petit trait vaut $1$. Sur un axe gradué par $10$, chaque petit trait vaut $1$ aussi, mais il y en a neuf entre deux grands chiffres."
+            },
+            {
+              "type": "definition",
+              "term": "Graduation principale",
+              "definition": "Les gros traits numérotés sur l'axe (ex: $10$, $12$, $14$...).",
+              "example": "Ici, les graduations principales sont $10$, $12$, $14$, $16$, $18$, $20$."
+            },
+            {
+              "type": "definition",
+              "term": "Graduation intermédiaire",
+              "definition": "Les petits traits entre deux graduations principales. Leur valeur se déduit de l'écart entre deux principaux.",
+              "example": "Si l'écart est $2$ ($12$ à $14$), le trait du milieu vaut $13$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe vertical gradué par 2 avec graduations intermédiaires",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 11,
+                  "label": "A"
+                },
+                {
+                  "value": 13.5,
+                  "label": "B"
+                },
+                {
+                  "value": 17,
+                  "label": "C"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la courbe ne passe pas exactement par un point de mesure : elle relie des points connus par des segments droits. Si on te demande la valeur un mardi après-midi alors que les mesures sont le matin, tu dois interpoler, c'est-à-dire estimer la valeur entre deux points. Imagine que lundi midi il fait $12^{\\circ}\\mathrm{C}$ et mardi midi $16^{\\circ}\\mathrm{C}$. Pour lundi soir (à mi-chemin), tu peux estimer $14^{\\circ}\\mathrm{C}$ : c'est la moyenne des deux. Cette lecture « entre les points » suppose que l'évolution est régulière, sans brutale surprise. C'est une hypothèse raisonnable pour la température, mais pas pour le cours d'une action qui peut sauter d'un coup."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Moment",
+                "Température ($^{\\circ}\\mathrm{C}$)",
+                "Lue ou estimée ?"
+              ],
+              "rows": [
+                [
+                  "Lundi 8h",
+                  "12",
+                  "Lue sur le point"
+                ],
+                [
+                  "Lundi 20h",
+                  "13",
+                  "Estimée (milieu)"
+                ],
+                [
+                  "Mardi 8h",
+                  "14",
+                  "Lue sur le point"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, une courbe permet de comparer des valeurs à des moments différents sans même sortir la calculatrice. Tu veux savoir si jeudi était plus chaud que mardi ? Un coup d'œil : le point de jeudi est plus haut que celui de mardi, donc oui. Tu veux connaître l'écart ? Tu lis les deux valeurs et tu fais la différence. C'est là tout le pouvoir de la courbe : transformer une suite de nombres en une image qui se comprend en un clin d'œil, tout en gardant la possibilité de retrouver chaque chiffre exact quand on en a besoin. Tu as maintenant toutes les clés pour explorer n'importe quelle courbe d'évolution avec assurance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les deux valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux moments sur l'horizontal, monte aux deux points, lis les deux valeurs sur le vertical."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'écart",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la soustraction : valeur la plus grande moins valeur la plus petite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis si c'est une hausse ou une baisse, et de combien."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier l'axe horizontal (le temps) et l'axe vertical (la grandeur mesurée).",
+                "Je sais repérer si une courbe est croissante, décroissante ou stable sur un intervalle.",
+                "Je sais lire une valeur exacte sur un point, et estimer une valeur entre deux graduations.",
+                "Je sais comparer deux moments en lisant leurs valeurs et en calculant la différence."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe vertical gradué de $10$ à $20$ par pas de $2$, un point se trouve exactement sur le 3e petit trait au-dessus de $14$. Quelle est sa valeur ?",
+              "answer": "$17$",
+              "hint": "Chaque petit trait vaut $1$. $14 + 3 = 17$.",
+              "explanation": "L'écart entre deux graduations principales est $2$, divisé en 2 petits traits → chaque petit trait vaut $1$. Au-dessus de $14$ : 1er trait = $15$, 2e = $16$, 3e = $17$."
+            },
+            {
+              "question": "Lundi midi : $12^{\\circ}\\mathrm{C}$. Mardi midi : $18^{\\circ}\\mathrm{C}$. Quelle température estimeras-tu pour lundi minuit (à mi-chemin) si l'évolution est régulière ?",
+              "answer": "$15^{\\circ}\\mathrm{C}$",
+              "hint": "Prends la moyenne des deux valeurs connues.",
+              "explanation": "Moyenne de $12$ et $18$ : $(12 + 18) / 2 = 15$. C'est l'interpolation linéaire au milieu."
+            },
+            {
+              "question": "Sur la courbe de la leçon, quelle est la différence de température entre mardi ($14^{\\circ}\\mathrm{C}$) et vendredi ($13^{\\circ}\\mathrm{C}$) ?",
+              "answer": "$1^{\\circ}\\mathrm{C}$ (mardi était plus chaud)",
+              "hint": "Lis les deux valeurs, fais la soustraction, conclus.",
+              "explanation": "$14 - 13 = 1$. Mardi dépasse vendredi de $1^{\\circ}\\mathrm{C}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 181,
+  "_course_code": "ce2-t05-c04-problemes-de-division",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Partage",
+  "title": "Approfondissement : Partage - Algorithmes",
+  "blocks": [
+    {
+      "title": "Partage simple",
+      "content": "Écris un algorithme (en pseudo‑code) pour partager $24$ bonbons entre $4$ enfants de manière égale. Indique les étapes principales.",
+      "correctAnswer": "Algorithme :\\n1. Début\\n2. total ← 24\\n3. nbEnfants ← 4\\n4. part ← total / nbEnfants\\n5. Afficher part\\n6. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On affecte le nombre total de bonbons et le nombre d'enfants à des variables, on effectue la division $24 ÷ 4 = 6$, puis on affiche le résultat : chaque enfant reçoit $6$ bonbons.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division euclidienne",
+      "content": "Écris un algorithme qui, étant donné un nombre total d'objets $N$ et un nombre de groupes $G$, calcule et affiche le nombre d'objets par groupe (quotient) et le nombre d'objets restants (reste).",
+      "correctAnswer": "Algorithme :\\n1. Début\\n2. Lire N\\n3. Lire G\\n4. quotient ← N // G   (division entière)\\n5. reste ← N % G        (modulo)\\n6. Afficher quotient, reste\\n7. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division euclidienne de $N$ par $G$ donne un quotient $q$ et un reste $r$ tels que $N = G × q + r$ avec $0 ≤ r < G$. L'algorithme utilise la division entière // et l'opérateur modulo % pour obtenir ces deux valeurs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de partages exacts",
+      "content": "Écris un algorithme qui teste tous les nombres de sacs possibles de $2$ à $8$ pour partager $56$ billes de façon égale (sans reste). L'algorithme doit afficher chaque nombre de sacs qui permet un partage exact et le nombre de billes par sac.",
+      "correctAnswer": "Algorithme :\\n1. Début\\n2. total ← 56\\n3. Pour nbSacs de 2 à 8 faire\\n4.     Si total % nbSacs = 0 alors\\n5.         part ← total / nbSacs\\n6.         Afficher nbSacs, part\\n7.     Fin Si\\n8. Fin Pour\\n9. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt les valeurs $2,3,4,5,6,7,8$ pour le nombre de sacs. Pour chaque valeur, on vérifie si le reste de la division de $56$ par ce nombre est nul (opérateur modulo). Si c'est le cas, le partage est exact : on calcule le quotient $56 ÷ nbSacs$ et on affiche le couple (nombre de sacs, billes par sac). Les partages exacts sont : $2$ sacs → $28$, $4$ sacs → $14$, $7$ sacs → $8$, $8$ sacs → $7$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

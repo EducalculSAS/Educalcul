@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Parenthèses",
+  "title": "Quiz sur les parenthèses - Priorités opératoires",
+  "questions": [
+    {
+      "text": "Calcule $2 + (3 \\times 4)$.",
+      "options": [
+        "$14$",
+        "$20$",
+        "$11$",
+        "$5$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "On commence par la parenthèse : $3 \\times 4 = 12$. Ensuite on ajoute $2$ : $2 + 12 = 14$. Les autres réponses correspondent à des erreurs comme multiplier avant d'ajouter ($20$), oublier la parenthèse ($11$) ou diviser ($5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5 \\times (2 + (3 - 1))$.",
+      "options": [
+        "$20$",
+        "$25$",
+        "$15$",
+        "$30$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "Parenthèse intérieure : $3 - 1 = 2$. Parenthèse extérieure : $2 + 2 = 4$. Multiplication : $5 \\times 4 = 20$. Les distracteurs viennent d'oublier une parenthèse ou de multiplier avant d'additionner.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $(12 + 8) \\div (5 - 1)$.",
+      "options": [
+        "$5$",
+        "$4$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Parenthèse du numérateur : $12 + 8 = 20$. Parenthèse du dénominateur : $5 - 1 = 4$. Division : $20 \\div 4 = 5$. Les autres valeurs correspondent à des erreurs de calcul ou d'ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $3(4 + 2)$.",
+      "options": [
+        "$18$",
+        "$12$",
+        "$24$",
+        "$9$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "L'écriture $3(4+2)$ signifie $3 \\times (4+2)$. Parenthèse : $4+2 = 6$. Multiplication : $3 \\times 6 = 18$. Les distracteurs proviennent de multiplier seulement le premier terme ($12$), de doubler ($24$) ou de diviser ($9$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $7 + 2 \\times (6 - (3 + 1))$.",
+      "options": [
+        "$11$",
+        "$15$",
+        "$9$",
+        "$13$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "Parenthèse intérieure : $3 + 1 = 4$. Parenthèse extérieure : $6 - 4 = 2$. Multiplication : $2 \\times 2 = 4$. Addition finale : $7 + 4 = 11$. Les autres réponses correspondent à ne pas respecter la priorité des parenthèses ou à inverser des opérations.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

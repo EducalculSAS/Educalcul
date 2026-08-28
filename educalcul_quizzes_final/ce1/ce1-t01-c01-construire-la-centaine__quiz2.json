@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 68,
+  "_course_code": "ce1-t01-c01-construire-la-centaine",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Relier 100 unités, 10 dizaines et 1 centaine",
+  "title": "Quiz : La centaine, les dizaines et les unités",
+  "questions": [
+    {
+      "text": "Combien y a-t-il d'unités dans une centaine ?",
+      "options": [
+        "10 unités",
+        "100 unités",
+        "1 000 unités",
+        "1 unité"
+      ],
+      "correctAnswer": "100 unités",
+      "explanation": "Par définition, une centaine correspond à 100 unités. L'option '10 unités' correspond à une dizaine. L'option '1 000 unités' correspond à un millier. L'option '1 unité' est l'élément de base.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien faut-il de dizaines pour faire une centaine ?",
+      "options": [
+        "1 dizaine",
+        "100 dizaines",
+        "10 dizaines",
+        "5 dizaines"
+      ],
+      "correctAnswer": "10 dizaines",
+      "explanation": "Une dizaine vaut 10 unités. Pour obtenir 100 unités (une centaine), il faut regrouper 10 groupes de 10 unités, donc 10 dizaines. L'option '1 dizaine' ne fait que 10 unités. L'option '100 dizaines' ferait 1 000 unités (un millier). L'option '5 dizaines' ne fait que 50 unités (une demi-centaine).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 1,
+        "tens": 0,
+        "units": 0,
+        "caption": "Représentation d'une centaine (1 plaque)"
+      }
+    },
+    {
+      "text": "Regarde l'image. Combien d'unités sont représentées au total ?",
+      "options": [
+        "10 unités",
+        "100 unités",
+        "110 unités",
+        "1 000 unités"
+      ],
+      "correctAnswer": "100 unités",
+      "explanation": "L'image montre une plaque de base 10 qui représente une centaine. Une plaque est composée de 10 barres (dizaines), et chaque barre contient 10 petits cubes (unités). Le total est donc 10 x 10 = 100 unités. C'est l'équivalence directe : 1 centaine = 100 unités.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 1,
+        "tens": 0,
+        "units": 0,
+        "caption": "Une plaque de centaines"
+      }
+    },
+    {
+      "text": "Parmi ces écritures, laquelle est égale à 1 centaine ?",
+      "options": [
+        "10 + 10",
+        "10 x 10",
+        "100 + 10",
+        "10 x 100"
+      ],
+      "correctAnswer": "10 x 10",
+      "explanation": "1 centaine = 100 unités. L'opération '10 x 10' donne bien 100. '10 + 10' fait 20 (2 dizaines). '100 + 10' fait 110 (1 centaine et 1 dizaine). '10 x 100' fait 1 000 (1 millier).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a 10 pochettes de 10 billes. Combien a-t-elle de billes en tout ?",
+      "options": [
+        "20 billes",
+        "100 billes",
+        "110 billes",
+        "1 000 billes"
+      ],
+      "correctAnswer": "100 billes",
+      "explanation": "Léa a 10 groupes (pochettes) de 10 billes (dizaines). Cela correspond à 10 dizaines. Or 10 dizaines = 1 centaine = 100 unités. Elle a donc 100 billes. '20 billes' correspondrait à 2 pochettes seulement. '110 billes' serait 11 pochettes. '1 000 billes' serait 100 pochettes (10 centaines).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 10,
+        "units": 0,
+        "caption": "10 barres de dizaines regroupées"
+      }
+    }
+  ]
+}

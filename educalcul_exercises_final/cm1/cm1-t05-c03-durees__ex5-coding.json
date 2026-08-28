@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 243,
+  "_course_code": "cm1-t05-c03-durees",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : h/min/s selon attendus",
+  "title": "Algorithmes sur les durées (heures, minutes, secondes)",
+  "blocks": [
+    {
+      "title": "Conversion heures/minutes en minutes",
+      "content": "Écrire un algorithme (ou une suite d'instructions) qui prend en entrée un nombre d'heures $h$ et un nombre de minutes $m$ et qui affiche le nombre total de minutes. Par exemple, pour $h = 2$ et $m = 30$, le résultat doit être $150$.",
+      "correctAnswer": "Algorithme :\\n1. Lire h et m.\\n2. Calculer total = h * 60 + m.\\n3. Afficher total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On sait qu'une heure vaut 60 minutes. Pour convertir les heures en minutes, on multiplie le nombre d'heures par 60, puis on ajoute les minutes restantes. Le calcul $2 \\times 60 + 30 = 150$ minutes donne le résultat attendu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion secondes en heures, minutes, secondes",
+      "content": "Écrire un algorithme qui convertit un nombre total de secondes $s$ en heures, minutes et secondes. Par exemple, pour $s = 3665$, le programme doit afficher $1$ heure, $1$ minute et $5$ secondes.",
+      "correctAnswer": "Algorithme :\\n1. Lire s.\\n2. heures = s // 3600 (division entière).\\n3. reste = s % 3600.\\n4. minutes = reste // 60.\\n5. secondes = reste % 60.\\n6. Afficher heures, minutes, secondes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il y a 3600 secondes dans une heure et 60 secondes dans une minute. On utilise la division entière et le reste pour extraire successivement les heures, puis les minutes, puis les secondes restantes. Pour $3665$ : $3665 // 3600 = 1$ heure, reste $65$ ; $65 // 60 = 1$ minute, reste $5$ secondes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'heure de fin",
+      "content": "Écrire un algorithme qui, connaissant une heure de début (heures $h_d$, minutes $m_d$) et une durée en minutes $d$, calcule l'heure de fin. L'algorithme doit gérer le passage à l'heure suivante (ex. $h_d = 10$, $m_d = 45$, $d = 30$ donne $11$ h $15$).",
+      "correctAnswer": "Algorithme :\\n1. Lire h_d, m_d, d.\\n2. total_minutes = h_d * 60 + m_d + d.\\n3. h_f = total_minutes // 60.\\n4. m_f = total_minutes % 60.\\n5. Afficher h_f, m_f.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On convertit l'heure de début en minutes totales depuis minuit, on ajoute la durée, puis on reconvertit en heures et minutes avec division entière et modulo. Pour l'exemple : $10 \\times 60 + 45 = 645$ minutes ; $645 + 30 = 675$ ; $675 // 60 = 11$ heures, $675 % 60 = 15$ minutes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

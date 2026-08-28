@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Échanger une dizaine contre 10 unités",
+  "title": "Soustraction posée avec échange : algorithme",
+  "blocks": [
+    {
+      "title": "Écrire l'algorithme de l'échange",
+      "content": "Écris un algorithme (en pseudo‑code ou en langage naturel structuré) qui explique comment effectuer une soustraction posée à deux chiffres lorsque l'unité du haut est plus petite que l'unité du bas, en échangeant une dizaine contre dix unités.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux nombres A (dizaines a1, unités a0) et B (dizaines b1, unités b0).\\n2. Si a0 >= b0 alors soustraire directement les unités : u = a0 - b0.\\n3. Sinon (a0 < b0) :\\n   a) Emprunter une dizaine à a1 : a1 = a1 - 1.\\n   b) Ajouter 10 à a0 : a0 = a0 + 10.\\n   c) Calculer les unités : u = a0 - b0.\\n4. Soustraire les dizaines : d = a1 - b1.\\n5. Afficher le résultat formé par d dizaines et u unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décrit la règle de l'échange : quand l'unité du minuend est insuffisante, on prend une dizaine (10 unités) à la dizaine supérieure, on diminue cette dizaine de 1 et on ajoute 10 aux unités, puis on soustrait normalement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme à 52 - 27",
+      "content": "En suivant l'algorithme de la question précédente, détaille chaque étape pour calculer $52 - 27$ et indique le résultat final.",
+      "correctAnswer": "Étapes :\\n1. Nombre du haut : 5 dizaines, 2 unités. Nombre du bas : 2 dizaines, 7 unités.\\n2. Unités : 2 < 7, donc échange.\\n   a) Diminuer les dizaines du haut : 5 → 4.\\n   b) Ajouter 10 aux unités du haut : 2 → 12.\\n3. Soustraire les unités : 12 - 7 = 5.\\n4. Soustraire les dizaines : 4 - 2 = 2.\\n5. Résultat : 2 dizaines et 5 unités, soit $25$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a dû emprunter une dizaine car 2 unités ne suffisent pas pour enlever 7. Après l'emprunt, le haut devient 4 dizaines et 12 unités, ce qui permet la soustraction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser l'échange pour 81 - 46",
+      "content": "Pour la soustraction $81 - 46$, explique comment l'échange modifie les chiffres des dizaines et des unités, puis donne le résultat final.",
+      "correctAnswer": "Analyse :\\n1. Haut : 8 dizaines, 1 unité. Bas : 4 dizaines, 6 unités.\\n2. Unités : 1 < 6, échange nécessaire.\\n   a) Diminuer les dizaines du haut : 8 → 7.\\n   b) Ajouter 10 aux unités du haut : 1 → 11.\\n3. Soustraire les unités : 11 - 6 = 5.\\n4. Soustraire les dizaines : 7 - 4 = 3.\\n5. Résultat final : $35$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échange transforme 81 en 7 dizaines et 11 unités, permettant la soustraction des unités. Le résultat est 3 dizaines et 5 unités.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

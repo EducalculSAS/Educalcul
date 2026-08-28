@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 409,
+  "_course_code": "5eme-t06-c05-bilan-statistiques-et-probabilites-5e",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Checklist",
+  "title": "Bilan - Statistiques et probabilités : Checklist",
+  "questions": [
+    {
+      "text": "Lors d'un recensement des animaux de compagnie des élèves de la classe, on note pour chaque élève le type d'animal (chien, chat, poisson, aucun). Comment appelle-t-on l'ensemble des valeurs possibles : chien, chat, poisson, aucun ?",
+      "options": [
+        "La population",
+        "Le caractère étudié",
+        "Les modalités",
+        "L'effectif total"
+      ],
+      "correctAnswer": "Les modalités",
+      "explanation": "La population est l'ensemble des élèves concernés par l'enquête. Le caractère étudié est la propriété observée (ici le type d'animal). Les modalités sont les différentes valeurs que peut prendre ce caractère (chien, chat, poisson, aucun). L'effectif total est le nombre total d'élèves interrogés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les hauteurs en centimètres de cinq plants de tomates : $30, 35, 40, 35, 40$. Quelle est la moyenne de cette série ?",
+      "options": [
+        "$35$",
+        "$36$",
+        "$37$",
+        "$40$"
+      ],
+      "correctAnswer": "$36$",
+      "explanation": "La moyenne se calcule en faisant la somme des valeurs divisée par l'effectif total. Somme = $30 + 35 + 40 + 35 + 40 = 180$. Effectif = $5$. Moyenne = $180 / 5 = 36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la série statistique suivante : $12, 15, 15, 18, 20, 22$. Quelle est la médiane de cette série ?",
+      "options": [
+        "$15$",
+        "$16$",
+        "$16,5$",
+        "$18$"
+      ],
+      "correctAnswer": "$16,5$",
+      "explanation": "La série comporte $6$ valeurs (effectif pair), déjà classées. La médiane est la moyenne des deux valeurs centrales : la $3^{\\text{ème}}$ ($15$) et la $4^{\\text{ème}}$ ($18$). Médiane = $(15 + 18) / 2 = 33 / 2 = 16,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un sac opaque, il y a $3$ boules rouges, $4$ boules bleues et $5$ boules vertes. On tire une boule au hasard. Quelle est la probabilité de tirer une boule bleue ?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{4}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{3}$",
+      "explanation": "Le nombre total de cas possibles est $3 + 4 + 5 = 12$. Le nombre de cas favorables (boules bleues) est $4$. La probabilité est donc $4 / 12 = 1 / 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous montre les notes sur 20 obtenues par cinq élèves à un contrôle. Quelle est l'étendue de cette série de notes ?",
+      "options": [
+        "$6$",
+        "$8$",
+        "$10$",
+        "$16$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "L'étendue est la différence entre la valeur maximale et la valeur minimale. D'après le graphique, la note maximale est $16$ (élève D) et la note minimale est $8$ (élève C). Étendue = $16 - 8 = 8$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Notes sur 20 de cinq élèves",
+        "bars": [
+          {
+            "label": "A",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "C",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "D",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "E",
+            "value": 12,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

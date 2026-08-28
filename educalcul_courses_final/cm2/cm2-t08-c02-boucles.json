@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.517722+00:00",
+  "id": 326,
+  "code": "cm2-t08-c02",
+  "title": "Boucles",
+  "description": "Cours structuré Educalcul : Boucles.",
+  "subject": "Pensée informatique",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Boucles",
+    "objectif_global": "Boucles",
+    "mini_lecons_imposees": [
+      "Boucle répétée.",
+      "Compter itérations.",
+      "Simplifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Boucle répétée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une boucle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois te brosser les dents trois fois par jour. Au lieu d'écrire trois fois la même action, tu dis simplement : « Répète 3 fois : brosse‑dents ». C'est exactement ce qu'une boucle fait en programmation : elle permet de répéter une série d'instructions sans les réécrire. C'est comme un refrain dans une chanson, tu le chantes plusieurs fois sans recommencer l'écriture à chaque couplet."
+            },
+            {
+              "type": "number_line",
+              "caption": "Quatre itérations successives",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire une boucle, on utilise souvent le mot‑clé « repeat » suivi du nombre de répétitions, puis les instructions à exécuter. Par exemple, pour tracer un carré avec une tortue, on peut dire : « repeat 4 times : advance 100 ; turn right 90 ». Chaque tour de boucle dessine un côté du carré. Essaie de visualiser la tortue qui avance, tourne, avance, tourne… jusqu'à refermer la figure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le nombre de répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de fois l'action doit se produire. Pour un carré, ce sont $4$ côtés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire les instructions à répéter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les commandes à l'intérieur de la boucle, indentées pour bien voir qu'elles appartiennent au bloc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester le programme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lance le code et observe si la figure se ferme correctement. Si ce n'est pas le cas, vérifie le nombre de tours ou l'angle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut changer le nombre de répétitions sans réécrire tout le programme. On utilise alors une variable qui stocke ce nombre. Par exemple, si tu définis $n = 6$, la boucle « repeat n times » exécutera six fois le bloc. C'est très pratique quand le nombre de tours dépend d'une saisie de l'utilisateur ou d'un calcul précédent."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison du nombre d'itérations",
+              "bars": [
+                {
+                  "label": "Boucle 3 fois",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boucle 6 fois",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boucle 10 fois",
+                  "value": 10,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la routine « Répète 5 fois : saute ; applaudis », combien de fois l'action « saute » est‑elle effectuée ?",
+              "answer": "$5$ fois",
+              "hint": "Le nombre devant « fois » indique le nombre d'itérations.",
+              "explanation": "La boucle exécute tout le bloc à chaque itération. Comme le bloc contient « saute » une fois, il sera exécuté $5$ fois au total."
+            },
+            {
+              "question": "Écris en pseudo‑code une boucle qui fait avancer un robot de $10$ pas, puis tourner à gauche de $90$ degrés, et qui répète cela $4$ fois.",
+              "answer": "repeat 4 times : advance 10 ; turn left 90",
+              "hint": "Utilise le mot‑clé repeat suivi du nombre, puis les deux instructions séparées par un point‑virgule.",
+              "explanation": "Chaque itération exécute les deux commandes. Après $4$ itérations, le robot a tracé un carré."
+            },
+            {
+              "question": "Si la variable $n$ vaut $7$, combien d'itérations la boucle « repeat n times : draw star » effectuera‑t‑elle ?",
+              "answer": "$7$ itérations",
+              "hint": "La variable remplace le nombre écrit en dur.",
+              "explanation": "La boucle lit la valeur de $n$ au moment de l'exécution. Comme $n = 7$, le bloc « draw star » sera dessiné $7$ fois."
+            }
+          ]
+        },
+        {
+          "title": "Compter itérations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les itérations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on veut savoir combien de fois une boucle s'est exécutée, on utilise un compteur. Au début, le compteur vaut $0$. À chaque tour de boucle, on ajoute $1$. Ainsi, après la première itération, il vaut $1$, après la deuxième $2$, et ainsi de suite. C'est comme un marqueur de pages dans un livre : tu tournes une page, tu augmentes le numéro."
+            },
+            {
+              "type": "display_math",
+              "latex": "i = 1 \\text{ à } n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le compteur peut aussi servir à l'intérieur de la boucle. Par exemple, pour calculer la somme des premiers nombres, on initialise $somme = 0$, puis à chaque itération on fait $somme = somme + i$. À la fin, $somme$ contient $1 + 2 + \\dots + n$. C'est une façon élégante d'accumuler un résultat sans écrire une longue addition."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser le compteur et le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets $i = 1$ et $total = 0$ avant la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Boucler tant que $i \\le n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $i$ à $total$, puis augmente $i$ de $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Afficher le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand la condition n'est plus vraie, $total$ vaut la somme désirée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une erreur fréquente est d'oublier d'incrémenter le compteur, ce qui crée une boucle infinie. Une autre est de commencer à $0$ au lieu de $1$ quand on veut additionner les entiers naturels. Sois attentif à la condition d'arrêt : elle doit devenir fausse après le dernier tour souhaité."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Pièges à éviter",
+              "paragraphs": [
+                "Ne pas mettre à jour le compteur → boucle sans fin.",
+                "Mauvaise borne de départ → résultat décalé d'une unité."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la boucle « i = 1 ; repeat while i ≤ 5 : i = i + 1 », quelle est la valeur finale de $i$ ?",
+              "answer": "$6$",
+              "hint": "Compte combien de fois la condition est vraie avant de devenir fausse.",
+              "explanation": "La boucle s'exécute pour $i = 1,2,3,4,5$. À la fin de la cinquième itération, $i$ devient $6$, la condition $i ≤ 5$ est fausse, donc on sort avec $i = 6$."
+            },
+            {
+              "question": "Calcule la valeur de $somme$ après l'exécution de : « somme = 0 ; for i = 1 to 4 : somme = somme + i ».",
+              "answer": "$10$",
+              "hint": "Additionne $1+2+3+4$.",
+              "explanation": "À chaque tour, $i$ prend les valeurs $1,2,3,4$. Le total final est $1+2+3+4 = 10$."
+            },
+            {
+              "question": "Identifie l'erreur dans ce fragment : « i = 0 ; while i < 3 : print(i) ».",
+              "answer": "Il manque l'incrémentation de $i$, la boucle ne s'arrête jamais.",
+              "hint": "Regarde si la variable de contrôle change à l'intérieur de la boucle.",
+              "explanation": "Sans $i = i + 1$, la condition $i < 3$ reste vraie indéfiniment, créant une boucle infinie."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier les boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire plusieurs boucles qui font presque la même chose alourdit le programme et augmente le risque d'erreurs. En factorisant le code commun dans une seule boucle, on gagne en lisibilité et en maintenance. C'est comme ranger ses jouets dans une seule boîte au lieu de les disperser dans plusieurs cartons."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueur du code avant et après simplification",
+              "bars": [
+                {
+                  "label": "Avant",
+                  "value": 30,
+                  "tone": "red"
+                },
+                {
+                  "label": "Après",
+                  "value": 12,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne connaît pas à l'avance le nombre exact d'itérations, mais on sait quand s'arrêter. On utilise alors une boucle « repeat until » (répéter jusqu'à). Par exemple, « repeat until button pressed : read sensor » continue tant que le bouton n'est pas enfoncé. Cela évite de deviner un nombre maximal et rend le programme réactif."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir la condition d'arrêt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime clairement ce qui doit devenir vrai pour sortir de la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les actions à répéter ; elles seront exécutées au moins une fois."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester avec différents scénarios",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que la condition devient bien vraie à un moment donné."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre façon de simplifier est de regrouper des instructions répétées dans une fonction. Une fonction est un bloc nommé que l'on peut appeler autant de fois que nécessaire. Cela rend le programme modulaire : si tu dois modifier le comportement, tu changes la fonction une seule fois."
+            },
+            {
+              "type": "definition",
+              "term": "fonction",
+              "definition": "Un ensemble d'instructions regroupé sous un nom, que l'on peut réutiliser en l'appelant.",
+              "example": "fonction dessineCarré() : repeat 4 times : advance 100 ; turn right 90"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une boucle et expliquer son rôle.",
+                "Je sais utiliser un compteur pour connaître le nombre d'itérations.",
+                "Je sais transformer plusieurs boucles similaires en une seule boucle ou en une fonction.",
+                "Je sais choisir entre une boucle à nombre fixe et une boucle « repeat until » selon la situation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réécris ce code en une seule boucle : « repeat 3 times : beep ; wait 1 » suivi de « repeat 2 times : beep ; wait 1 ».",
+              "answer": "repeat 5 times : beep ; wait 1",
+              "hint": "Additionne les nombres d'itérations car le corps est identique.",
+              "explanation": "Les deux boucles font exactement la même chose, on peut les fusionner en une boucle de $3+2 = 5$ itérations."
+            },
+            {
+              "question": "Transforme la boucle à nombre fixe « repeat 10 times : read temperature » en une boucle « repeat until » qui s'arrête quand la température dépasse $30$ degrés.",
+              "answer": "repeat until temperature > 30 : read temperature",
+              "hint": "La condition d'arrêt est l'opposé de la condition de continuation.",
+              "explanation": "Au lieu de limiter à $10$ lectures, on continue tant que la température n'a pas dépassé $30$."
+            },
+            {
+              "question": "Écris une fonction « saluer » qui affiche « Bonjour ! » trois fois, puis appelle‑la deux fois dans le programme principal.",
+              "answer": "fonction saluer() : repeat 3 times : print(\"Bonjour !\") ; programme principal : saluer() ; saluer()",
+              "hint": "Définis la fonction avec le mot‑clé fonction, puis utilise son nom pour l'appeler.",
+              "explanation": "La fonction encapsule la répétition. Chaque appel exécute les trois « Bonjour ! », donc au total on obtient six salutations."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

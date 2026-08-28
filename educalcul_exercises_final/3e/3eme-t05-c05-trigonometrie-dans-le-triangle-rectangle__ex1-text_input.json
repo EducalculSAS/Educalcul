@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Sinus / cosinus / tangente selon programme",
+  "title": "Trigonométrie dans le triangle rectangle : sinus, cosinus, tangente",
+  "blocks": [
+    {
+      "title": "Calcul d'un côté (sinus)",
+      "content": "Dans le triangle $ABC$ rectangle en $A$, on sait que $\\angle B = 30^\\circ$ et $BC = 10$ cm. Calculer la longueur $AC$. Donner la valeur exacte.",
+      "correctAnswer": "5 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le triangle rectangle en $A$, le côté $AC$ est opposé à l'angle $B$ ($30^\\circ$) et $BC$ est l'hypoténuse. On utilise le sinus : $\\sin 30^\\circ = \\frac{AC}{BC} = \\frac{1}{2}$. Donc $AC = BC \\times \\frac{1}{2} = 10 \\times 0,5 = 5$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Calcul d'un angle (cosinus)",
+      "content": "Dans le triangle $DEF$ rectangle en $D$, on a $DE = 5$ cm et $EF = 10$ cm. Calculer la mesure de l'angle $\\angle E$. Donner la valeur en degrés.",
+      "correctAnswer": "60°",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le triangle rectangle en $D$, par rapport à l'angle $E$, le côté $DE$ est adjacent ($5$ cm) et $EF$ est l'hypoténuse ($10$ cm). On utilise le cosinus : $\\cos E = \\frac{DE}{EF} = \\frac{5}{10} = 0,5$. L'angle dont le cosinus est $0,5$ est $60^\\circ$. Donc $\\angle E = 60^\\circ$.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Calcul d'un côté (tangente) - Valeur approchée",
+      "content": "Dans le triangle $GHI$ rectangle en $H$, on sait que $\\angle G = 40^\\circ$ et $GH = 8$ cm. Calculer la longueur $HI$ arrondie au dixième de centimètre.",
+      "correctAnswer": "6,7 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le triangle rectangle en $H$, par rapport à l'angle $G$ ($40^\\circ$), le côté $HI$ est opposé et $GH$ est adjacent ($8$ cm). On utilise la tangente : $\\tan 40^\\circ = \\frac{HI}{GH}$. Donc $HI = GH \\times \\tan 40^\\circ = 8 \\times \\tan 40^\\circ \\approx 8 \\times 0,8391 \\approx 6,7128$. Arrondi au dixième : $HI \\approx 6,7$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle GHI rectangle en H",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

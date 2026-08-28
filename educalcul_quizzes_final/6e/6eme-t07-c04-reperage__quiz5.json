@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 366,
+  "_course_code": "6eme-t07-c04-reperage",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Coordonnées",
+  "title": "Quiz : Coordonnées dans le plan (Approfondissement)",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé $(O; \\vec{i}, \\vec{j})$, les coordonnées d'un point $M$ s'écrivent $(x ; y)$. Quelle affirmation est exacte ?",
+      "options": [
+        "$x$ est l'ordonnée de $M$",
+        "$x$ est l'abscisse de $M$",
+        "$y$ est l'abscisse de $M$",
+        "$x$ et $y$ sont les distances $OM$"
+      ],
+      "correctAnswer": "$x$ est l'abscisse de $M$",
+      "explanation": "Par définition, dans un couple de coordonnées $(x ; y)$, la première valeur $x$ est l'abscisse (position horizontale par rapport à l'axe des ordonnées) et la seconde valeur $y$ est l'ordonnée (position verticale par rapport à l'axe des abscisses). L'option A confond abscisse et ordonnée. L'option C inverse les rôles. L'option D est fausse car $x$ et $y$ sont des positions sur les axes, pas des distances au point $O$ (sauf si le point est sur un axe).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $N$ a pour abscisse $-3$ et pour ordonnée $4$. Quelles sont les coordonnées de $N$ ?",
+      "options": [
+        "$(4 ; -3)$",
+        "$(-3 ; 4)$",
+        "$(3 ; -4)$",
+        "$(-4 ; 3)$"
+      ],
+      "correctAnswer": "$(-3 ; 4)$",
+      "explanation": "Les coordonnées s'écrivent toujours dans l'ordre : (abscisse ; ordonnée). Ici l'abscisse est $-3$ et l'ordonnée est $4$, donc les coordonnées sont $(-3 ; 4)$. L'option A inverse l'ordre (erreur fréquente). Les options C et D changent les signes des coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $P$ a pour coordonnées $(5 ; -2)$. Quelles sont les coordonnées du point $P'$, symétrique de $P$ par rapport à l'axe des abscisses ?",
+      "options": [
+        "$(-5 ; -2)$",
+        "$(5 ; 2)$",
+        "$(-5 ; 2)$",
+        "$(2 ; -5)$"
+      ],
+      "correctAnswer": "$(5 ; 2)$",
+      "explanation": "La symétrie par rapport à l'axe des abscisses (axe horizontal) conserve l'abscisse et change le signe de l'ordonnée. L'abscisse de $P$ est $5$, elle reste $5$. L'ordonnée de $P$ est $-2$, elle devient $2$. Donc $P'(5 ; 2)$. L'option A correspond à une symétrie par rapport à l'axe des ordonnées. L'option C correspond à une symétrie centrale (par rapport à l'origine). L'option D inverse les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le rectangle $RSTU$ a trois sommets connus : $R(0 ; 0)$, $S(6 ; 0)$ et $T(6 ; 4)$. Quelles sont les coordonnées du sommet $U$ ?",
+      "options": [
+        "$(0 ; 4)$",
+        "$(4 ; 0)$",
+        "$(6 ; 4)$",
+        "$(0 ; 6)$"
+      ],
+      "correctAnswer": "$(0 ; 4)$",
+      "explanation": "Dans un rectangle, les sommets opposés ont la même abscisse ou la même ordonnée. $R$ et $S$ sont sur l'axe des abscisses (ordonnée 0). $S$ et $T$ ont la même abscisse (6). $T$ a pour ordonnée 4. Le sommet $U$ doit avoir l'abscisse de $R$ (qui est 0) et l'ordonnée de $T$ (qui est 4). Donc $U(0 ; 4)$. L'option B inverse les coordonnées. L'option C reprend les coordonnées de $T$. L'option D utilise une mauvaise valeur pour l'ordonnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trois sommets d'un carré sont $V(1 ; 1)$, $W(4 ; 1)$ et $X(4 ; 4)$. Quelles sont les coordonnées du quatrième sommet $Y$ ?",
+      "options": [
+        "$(1 ; 4)$",
+        "$(4 ; 1)$",
+        "$(1 ; 1)$",
+        "$(4 ; 4)$"
+      ],
+      "correctAnswer": "$(1 ; 4)$",
+      "explanation": "Les points $V(1;1)$ et $W(4;1)$ ont la même ordonnée : le côté $VW$ est horizontal et mesure 3 unités. Les points $W(4;1)$ et $X(4;4)$ ont la même abscisse : le côté $WX$ est vertical et mesure 3 unités. C'est un carré. Le quatrième sommet $Y$ doit avoir l'abscisse de $V$ (1) et l'ordonnée de $X$ (4) pour fermer la figure. Donc $Y(1 ; 4)$. Les options B, C et D correspondent aux coordonnées des sommets déjà donnés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 342,
+  "_course_code": "6eme-t03-c01-quatre-operations-sur-entiers-et-decimaux",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Choisir opération",
+  "title": "Choisir l'opération : algorithmes simples",
+  "blocks": [
+    {
+      "title": "Problème simple : soustraction",
+      "content": "Un élève a 12 pommes. Il en donne 5 à son ami. Écrire un algorithme (en pseudo‑code ou en Python) qui calcule et affiche le nombre de pommes qu'il lui reste.",
+      "correctAnswer": "Algorithme :\\nDébut\\n    pommes ← 12\\n    donnees ← 5\\n    reste ← pommes - donnees\\n    Afficher reste\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part du nombre initial de pommes (12). Comme l'élève en donne 5, on soustrait 5 à 12. Le résultat 7 est le nombre de pommes restantes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à plusieurs étapes : multiplication et addition puis soustraction",
+      "content": "Marie achète 3 cahiers à $2,50$ € chacun et un stylo à $1,20$ €. Elle paie avec un billet de $20$ €. Écrire un algorithme qui calcule la monnaie qu'elle reçoit.",
+      "correctAnswer": "Algorithme :\\nDébut\\n    prix_cahier ← 2.50\\n    nombre_cahiers ← 3\\n    prix_stylo ← 1.20\\n    total ← nombre_cahiers * prix_cahier + prix_stylo\\n    paiement ← 20\\n    monnaie ← paiement - total\\n    Afficher monnaie\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coût total des cahiers est $3 \\times 2,50 = 7,50$ €. En ajoutant le stylo à $1,20$ €, le total est $8,70$ €. La monnaie est $20 - 8,70 = 11,30$ €.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix conditionnel : test de parité",
+      "content": "Écrire un algorithme qui lit un nombre entier, teste s'il est pair ou impair, et affiche « Pair » s'il est pair, sinon « Impair ».",
+      "correctAnswer": "Algorithme :\\nDébut\\n    Lire n\\n    Si n modulo 2 = 0 Alors\\n        Afficher \"Pair\"\\n    Sinon\\n        Afficher \"Impair\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre est pair s'il est divisible par 2, c'est‑à‑dire si le reste de la division par 2 (modulo 2) vaut 0. Sinon il est impair.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

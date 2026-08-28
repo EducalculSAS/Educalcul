@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 121,
+  "_course_code": "ce1-t06-c05-euros-et-centimes",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Relier 1 € et 100 c",
+  "title": "Quiz : Relier l'euro et les centimes",
+  "questions": [
+    {
+      "text": "Combien de centimes y a-t-il dans $1$ € ?",
+      "options": [
+        "100 centimes",
+        "10 centimes",
+        "1 centime",
+        "1000 centimes"
+      ],
+      "correctAnswer": "100 centimes",
+      "explanation": "Par définition, $1$ euro est égal à $100$ centimes. C'est la relation de base à connaître : $1$ € = $100$ c. Les autres propositions correspondent à des erreurs de conversion (factor 10 ou 1000).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $2$ €. Combien a-t-il de centimes ?",
+      "options": [
+        "20 centimes",
+        "200 centimes",
+        "2 centimes",
+        "2000 centimes"
+      ],
+      "correctAnswer": "200 centimes",
+      "explanation": "Puisque $1$ € = $100$ c, pour convertir des euros en centimes, on multiplie le nombre d'euros par $100$. Ici, $2 \\times 100 = 200$. Paul a donc $200$ centimes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a $300$ centimes. Combien a-t-elle d'euros ?",
+      "options": [
+        "3 €",
+        "30 €",
+        "0,3 €",
+        "300 €"
+      ],
+      "correctAnswer": "3 €",
+      "explanation": "Pour passer des centimes aux euros, on regroupe les centimes par paquets de $100$. $300$ centimes font $3$ paquets de $100$ centimes, donc $3$ euros. On divise le nombre de centimes par $100$ : $300 \\div 100 = 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle somme est représentée dans le porte-monnaie ?",
+      "options": [
+        "1 €",
+        "10 €",
+        "100 €",
+        "10 centimes"
+      ],
+      "correctAnswer": "1 €",
+      "explanation": "Le porte-monnaie contient une pièce de $50$ c, deux pièces de $20$ c et une pièce de $10$ c. En les additionnant : $50 + 20 + 20 + 10 = 100$ centimes. Or $100$ centimes équivalent exactement à $1$ euro.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          50,
+          20,
+          20,
+          10
+        ],
+        "target": 100,
+        "caption": "Pièces dans le porte-monnaie"
+      }
+    },
+    {
+      "text": "Marc a $1$ € et $50$ centimes. Combien a-t-il de centimes en tout ?",
+      "options": [
+        "150 centimes",
+        "60 centimes",
+        "105 centimes",
+        "51 centimes"
+      ],
+      "correctAnswer": "150 centimes",
+      "explanation": "Il faut convertir l'euro en centimes pour additionner. $1$ € = $100$ c. On ajoute ensuite les $50$ centimes : $100 + 50 = 150$ centimes au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

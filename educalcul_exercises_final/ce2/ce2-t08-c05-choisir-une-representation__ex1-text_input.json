@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 209,
+  "_course_code": "ce2-t08-c05-choisir-une-representation",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer tableau et diagramme",
+  "title": "Comparer un tableau et un diagramme en barres",
+  "blocks": [
+    {
+      "title": "Lire une valeur sur le diagramme",
+      "content": "Le diagramme en barres ci-dessous représente les fruits préférés des élèves d'une classe de CE2. Combien d'élèves ont choisi les fraises ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur le diagramme, la barre correspondant aux fraises monte jusqu'à la graduation $10$. Il y a donc $10$ élèves qui préfèrent les fraises.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE2",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Fraises",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calculer une différence à partir du tableau",
+      "content": "Le tableau ci-dessous reprend les mêmes données : Pommes $8$, Bananes $5$, Fraises $10$, Raisins $7$. Quelle est la différence entre le nombre d'élèves qui préfèrent les fraises et ceux qui préfèrent les bananes ?",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après le tableau, les fraises ont $10$ voix et les bananes $5$ voix. La différence se calcule par $10 - 5 = 5$. Il y a $5$ élèves de plus qui préfèrent les fraises.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir la représentation la plus adaptée",
+      "content": "Pour répondre rapidement à la question : « Quel est le fruit le plus apprécié de la classe ? », quelle représentation est la plus pratique : le tableau ou le diagramme en barres ?",
+      "correctAnswer": "le diagramme en barres",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme en barres permet de voir tout de suite la barre la plus haute (les fraises avec $10$) sans avoir à comparer tous les nombres un par un comme dans un tableau. C'est plus rapide pour repérer le maximum.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.575519+00:00",
+  "id": 346,
+  "code": "6eme-t03-c05",
+  "title": "Bilan - Calcul 6e",
+  "description": "Cours structuré Educalcul : Bilan - Calcul 6e.",
+  "subject": "Calcul et automatismes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Calcul et automatismes",
+    "titre_du_cours": "Bilan - Calcul 6e",
+    "objectif_global": "Bilan - Calcul 6e",
+    "mini_lecons_imposees": [
+      "Techniques, priorités, estimation.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et automatismes",
+      "lessons": [
+        {
+          "title": "Techniques, priorités, estimation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Techniques d'addition et de soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan de calcul pour la sixi\\u00e8me. Nous allons reprendre ensemble les grandes techniques qui te serviront tout au long de l'ann\\u00e9e, en commen\\u00e7ant par l'addition et la soustraction pos\\u00e9es. Tu as d\\u00e9j\\u00e0 rencontr\\u00e9 la m\\u00e9thode en colonne \\u00e0 l'école primaire, mais il est bon de la revoir pour \\u00eatre parfaitement \\u00e0 l'aise. L'id\\u00e9e est simple : on aligne les chiffres par valeur de position, unit\\u00e9s sous unit\\u00e9s, dizaines sous dizaines, et on additionne colonne par colonne en partant de la droite. Si la somme d'une colonne d\\u00e9passe neuf, on écrit le chiffre des unit\\u00e9s et on reporte la dizaine \\u00e0 la colonne suivante, ce qu'on appelle une retenue. Par exemple, pour ajouter $28$ et $37$, on pose $8+7=15$, on écrit $5$ et on retient $1$ ; puis $2+3+1=6$, ce qui donne $65$. La soustraction suit le m\\u00eame principe, mais on peut devoir emprunter une dizaine quand le chiffre du haut est plus petit que celui du bas. Prends le temps de visualiser chaque \\u00e9tape, car la ma\\u00eetrise de la pose te fera gagner de la vitesse et de la pr\\u00e9cision pour les calculs plus complexes qui suivront."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "37"
+              ],
+              "result": "65",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'addition et la soustraction pos\\u00e9es sont bien en place, nous allons passer \\u00e0 la multiplication et \\u00e0 la division en colonne, qui suivent une logique tr\\u00e8s proche."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Techniques de multiplication et de division"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication en colonne repose sur le m\\u00eame alignement des chiffres, mais cette fois on multiplie chaque chiffre du multiplicateur par l'ensemble du multiplicande, en d\\u00e9calant d'un rang \\u00e0 gauche \\u00e0 chaque nouvelle ligne partielle. Pour $12 \\\\times 34$, on commence par $12 \\\\times 4 = 48$, on écrit $48$ align\\u00e9 aux unit\\u00e9s ; puis on calcule $12 \\\\times 30 = 360$, on écrit $360$ d\\u00e9cal\\u00e9 d'une position vers la gauche, et on additionne les deux r\\u00e9sultats partiels pour obtenir $408$. La division pos\\u00e9e, ou division euclidienne, suit un algorithme \\u00e9tape par \\u00e9tape : on cherche combien de fois le diviseur entre dans la partie gauche du dividende, on écrit le quotient, on multiplie, on soustrait, on abaisse le chiffre suivant et on recommence. Par exemple, pour $84 \\\\div 4$, on voit que $4$ entre deux fois dans $8$, on écrit $2$, on soustrait $8$, on abaisse le $4$, $4$ entre une fois, on écrit $1$, le quotient final est $21$. Ces deux techniques demandent de la rigueur dans l'alignement et dans le report des retenues, mais elles deviennent vite automatiques avec un peu d'entra\\u00eenement."
+            },
+            {
+              "type": "column_operation",
+              "operator": "*",
+              "operands": [
+                "12",
+                "34"
+              ],
+              "result": "408",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Apr\\u00e8s avoir pratiqu\\u00e9 la multiplication et la division, nous allons aborder les r\\u00e8gles de priorit\\u00e9 qui permettent de lire une expression sans ambig\\u00fcit\\u00e9, ainsi que l'art d'estimer un r\\u00e9sultat avant de le calculer exactement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Priorit\\u00e9s op\\u00e9ratoires et estimation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les priorit\\u00e9s op\\u00e9ratoires sont la convention qui dit dans quel ordre effectuer les op\\u00e9rations quand plusieurs symboles apparaissent ensemble. La r\\u00e8gle est simple : d'abord les parenth\\u00e8ses, ensuite les multiplications et les divisions de la gauche vers la droite, enfin les additions et les soustractions de la gauche vers la droite. Ainsi, dans $3 + 4 \\\\times 2$, on calcule d'abord $4 \\\\times 2 = 8$, puis $3 + 8 = 11$. Si on oublie cette r\\u00e8gle et qu'on additionne d'abord, on obtiendrait $7 \\\\times 2 = 14$, ce qui est faux. L'estimation, quant \\u00e0 elle, consiste \\u00e0 remplacer les nombres par des valeurs proches mais plus simples pour obtenir rapidement un ordre de grandeur. Par exemple, pour $47 \\\\times 6$, on peut arrondir $47$ \\u00e0 $50$ et calculer $50 \\\\times 6 = 300$ ; le r\\u00e9sultat exact $282$ est bien proche de cette estimation. Savoir estimer te permet de d\\u00e9tecter une erreur grossi\\u00e8re d\\u00e8s que le calcul exact s'éloigne trop de ton approximation. Nous allons maintenant t'exercer sur ces deux comp\\u00e9tences indispensables."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 4 \\\\times 2 = 11"
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation de 47 \\\\times 6 en arrondissant 47 \\u00e0 50",
+              "min": 0,
+              "max": 350,
+              "points": [
+                {
+                  "value": 282,
+                  "label": "Exact"
+                },
+                {
+                  "value": 300,
+                  "label": "Estimation"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "definition",
+              "term": "Estimation",
+              "definition": "Remplacer des nombres par des valeurs approch\\u00e9es plus simples pour obtenir rapidement un ordre de grandeur du r\\u00e9sultat.",
+              "example": "Pour $48 \\\\times 27$, on estime $50 \\\\times 30 = 1500$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant revu les trois piliers du calcul en sixi\\u00e8me : les op\\u00e9rations pos\\u00e9es, les priorit\\u00e9s et l'estimation ; la prochaine le\\u00e7on fera le point avec une liste de contr\\u00f4le pour t'assurer que tout est acquis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $28 + 37$ en posant l'op\\u00e9ration.",
+              "answer": "65",
+              "hint": "Ajoute les unit\\u00e9s, puis les dizaines, n'oublie pas la retenue.",
+              "explanation": "En ajoutant 8 et 7 on obtient 15, on écrit 5 et on retient 1 dizaine. Ensuite 2+3+1 = 6 dizaines, donc 65."
+            },
+            {
+              "question": "Effectue la multiplication $12 \\\\times 34$ en colonne.",
+              "answer": "408",
+              "hint": "Multiplie 12 par 4, puis par 3 dizaines, additionne les r\\u00e9sultats partiels.",
+              "explanation": "12*4=48, 12*30=360, 48+360=408."
+            },
+            {
+              "question": "\\u00c9value $3 + 4 \\\\times 2$ en respectant les priorit\\u00e9s.",
+              "answer": "11",
+              "hint": "Fais d'abord la multiplication, puis l'addition.",
+              "explanation": "4*2=8, puis 3+8=11."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "R\\u00e9vision de l'addition et de la soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxi\\u00e8me le\\u00e7on, nous faisons le tour complet des savoir-faire que tu dois ma\\u00eetriser avant de passer aux chapitres suivants. Commen\\u00e7ons par l'addition et la soustraction pos\\u00e9es, mais cette fois avec des nombres \\u00e0 trois chiffres pour renforcer ton aisance. La m\\u00e9thode ne change pas : aligne les unit\\u00e9s, les dizaines, les centaines, additionne ou soustrais colonne par colonne, g\\u00e8re les retenues ou les emprunts avec calme. Par exemple, pour $123 - 45$, on écrit $123$ au-dessus de $045$, on ne peut pas retirer $5$ de $3$, on emprunte une dizaine, ce qui donne $13 - 5 = 8$ aux unit\\u00e9s ; la dizaine du haut devient $1$, on retire $4$ pour obtenir $7$ ; les centaines restent $1$, le r\\u00e9sultat est $78$. Entra\\u00eene-toi \\u00e0 poser l'op\\u00e9ration sans te presser, la r\\u00e9gularit\\u00e9 du geste \\u00e9vite les erreurs b\\u00eates. Si tu te sens \\u00e0 l'aise, essaie de faire le m\\u00eame calcul mentalement en d\\u00e9composant $123 - 40 - 5$, tu verras que le r\\u00e9sultat est identique."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "123",
+                "45"
+              ],
+              "result": "78",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous poursuivons avec la multiplication et la division, en y ajoutant une \\u00e9tape d'estimation pour v\\u00e9rifier la coh\\u00e9rence de nos r\\u00e9sultats."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "R\\u00e9vision de la multiplication et de la division avec estimation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication en colonne avec des nombres \\u00e0 deux chiffres suit le m\\u00eame principe que vu pr\\u00e9c\\u00e9demment, mais il est tr\\u00e8s utile de faire une estimation avant de se lancer. Pour $48 \\\\times 27$, arrondis $48$ \\u00e0 $50$ et $27$ \\u00e0 $30$ ; le produit estim\\u00e9 est $50 \\\\times 30 = 1500$. Cette valeur de r\\u00e9f\\u00e9rence te permettra de rep\\u00e9rer une erreur si ton calcul exact donne, par exemple, $500$ ou $3000$. Ensuite, pose la multiplication : $48 \\\\times 7 = 336$, $48 \\\\times 20 = 960$, additionne pour obtenir $1296$. L'estimation $1500$ est proche, ce qui rassure. Pour la division, par exemple $1296 \\\\div 27$, tu peux estimer le quotient en arrondissant $27$ \\u00e0 $30$ et $1296$ \\u00e0 $1200$, ce qui donne environ $40$. La division pos\\u00e9e te donnera exactement $48$. L'habitude d'estimer avant de calculer exactement te fait gagner du temps et de la confiance, surtout lors des contr\\u00f4les o\\u00f9 le temps est limit\\u00e9."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation de 48 \\\\times 27 en arrondissant aux dizaines",
+              "min": 0,
+              "max": 2000,
+              "points": [
+                {
+                  "value": 1296,
+                  "label": "Exact"
+                },
+                {
+                  "value": 1500,
+                  "label": "Estimation"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous allons m\\u00e9langer plusieurs op\\u00e9rations dans une m\\u00eame expression pour t'entra\\u00eener \\u00e0 respecter scrupuleusement les priorit\\u00e9s, une comp\\u00e9tence cl\\u00e9 pour l'alg\\u00e8bre qui arrive."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expressions compos\\u00e9es et priorit\\u00e9s"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les expressions compos\\u00e9es rassemblent additions, soustractions, multiplications, divisions et parenth\\u00e8ses. La r\\u00e8gle d'or reste la m\\u00eame : parenth\\u00e8ses d'abord, puis multiplications et divisions de gauche \\u00e0 droite, enfin additions et soustractions de gauche \\u00e0 droite. Prenons $2 + 3 \\\\times (4 + 5) \\\\div 3$. \\u00c9tape 1 : la parenth\\u00e8se $(4 + 5)$ donne $9$. \\u00c9tape 2 : la multiplication $3 \\\\times 9 = 27$. \\u00C9tape 3 : la division $27 \\\\div 3 = 9$. \\u00C9tape 4 : l'addition $2 + 9 = 11$. Si tu inverses l'ordre, par exemple en ajoutant $2+3$ d'abord, tu obtiens $5 \\\\times 9 \\\\div 3 = 15$, ce qui est incorrect. Pour t'aider, nous allons d\\u00e9tailler la proc\\u00e9dure dans un bloc \\u00e9tapes, puis tu pourras t'exercer sur une expression similaire. La rigueur dans l'application des priorit\\u00e9s \\u00e9vite les pi\\u00e8ges classiques et pr\\u00e9pare le terrain pour la r\\u00e9solution d'équations au coll\\u00e8ge."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "\\u00c9tape 1 : Parenth\\u00e8se",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $(4 + 5) = 9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "\\u00c9tape 2 : Multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $3 \\\\times 9 = 27$."
+                    }
+                  ]
+                },
+                {
+                  "title": "\\u00c9tape 3 : Division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $27 \\\\div 3 = 9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "\\u00c9tape 4 : Addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $2 + 9 = 11$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "2 + 3 \\\\times (4 + 5) \\\\div 3 = 11"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru l'ensemble des techniques de calcul attendues en sixi\\u00e8me, et la liste de contr\\u00f4le qui suit te permettra de v\\u00e9rifier point par point que chaque comp\\u00e9tence est bien ancr\\u00e9e."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner et soustraire en colonne avec des nombres \\u00e0 trois chiffres.",
+                "Je sais multiplier et diviser en colonne avec des nombres \\u00e0 deux chiffres.",
+                "Je respecte les priorit\\u00e9s op\\u00e9ratoires dans une expression compos\\u00e9e.",
+                "J'estime un r\\u00e9sultat avant de calculer pour v\\u00e9rifier la coh\\u00e9rence.",
+                "Je v\\u00e9rifie mes calculs par une estimation ou un calcul inverse."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $123 - 45$ en posant l'op\\u00e9ration.",
+              "answer": "78",
+              "hint": "Soustrais les unit\\u00e9s, emprunte si n\\u00e9cessaire, puis les dizaines.",
+              "explanation": "On ne peut pas faire 3-5, on emprunte 1 dizaine, 13-5=8, puis 11-4=7, r\\u00e9sultat 78."
+            },
+            {
+              "question": "Estime le produit $48 \\\\times 27$ en arrondissant chaque nombre \\u00e0 la dizaine la plus proche.",
+              "answer": "1500",
+              "hint": "Arrondis 48 \\u00e0 50 et 27 \\u00e0 30, puis multiplie.",
+              "explanation": "50*30=1500, c'est une estimation proche du r\\u00e9sultat exact 1296."
+            },
+            {
+              "question": "Calcule $2 + 3 \\\\times (4 + 5) \\\\div 3$ en suivant les priorit\\u00e9s.",
+              "answer": "11",
+              "hint": "Traite d'abord la parenth\\u00e8se, puis la multiplication et la division de gauche \\u00e0 droite, enfin l'addition.",
+              "explanation": "Parenth\\u00e8se: 4+5=9. Multiplication: 3*9=27. Division: 27/3=9. Addition: 2+9=11."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

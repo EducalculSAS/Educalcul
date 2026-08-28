@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Choisir Pythagore / Thalès / trigo",
+  "title": "Choisir le bon outil : Pythagore, Thalès ou Trigonométrie",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle ABC, angle A = 90°, on connaît AB = $6$ cm et AC = $8$ cm. Quelle méthode permet de calculer la longueur de l'hypoténuse BC ?",
+      "options": [
+        "Théorème de Pythagore",
+        "Théorème de Thalès",
+        "Trigonométrie dans le triangle rectangle",
+        "Aucune de ces méthodes"
+      ],
+      "correctAnswer": "Théorème de Pythagore",
+      "explanation": "Le triangle est rectangle en A et on connaît les deux côtés de l'angle droit. Le théorème de Pythagore relie directement les longueurs des deux cathètes à l'hypoténuse : $BC^2 = AB^2 + AC^2$. Thalès ne s'applique pas car il n'y a pas de droites parallèles, et la trigonométrie n'est pas nécessaire pour trouver un côté quand les deux autres sont connus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites (DE) et (FG) sont parallèles. Elles coupent deux sécantes en D, F et E, G respectivement. On connaît DF = $4$ cm, FE = $6$ cm, DG = $9$ cm. Quelle méthode permet de trouver la longueur EG ?",
+      "options": [
+        "Théorème de Thalès",
+        "Théorème de Pythagore",
+        "Trigonométrie dans le triangle rectangle",
+        "Aucune de ces méthodes"
+      ],
+      "correctAnswer": "Théorème de Thalès",
+      "explanation": "La configuration présente deux droites parallèles coupées par deux sécantes. Le théorème de Thalès donne la proportionnalité des segments : $\\frac{DF}{FE} = \\frac{DG}{EG}$. On peut donc calculer EG. Pythagore ne s'applique pas (pas de triangle rectangle identifié) et la trigonométrie n'est pas adaptée à cette situation de proportions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle rectangle ABC, angle B = 90°, on connaît l'angle A = $30°$ et le côté adjacent AB = $10$ cm. Quelle méthode permet de calculer le côté opposé AC ?",
+      "options": [
+        "Trigonométrie dans le triangle rectangle",
+        "Théorème de Pythagore",
+        "Théorème de Thalès",
+        "Aucune de ces méthodes"
+      ],
+      "correctAnswer": "Trigonométrie dans le triangle rectangle",
+      "explanation": "On dispose d'un angle aigu (30°) et du côté adjacent à cet angle dans un triangle rectangle. La relation trigonométrique $\\tan(30°) = \\frac{AC}{AB}$ (ou $\\sin$, $\\cos$) permet de trouver AC. Pythagore demanderait de connaître les deux cathètes, ce qui n'est pas le cas, et Thalès ne concerne pas les triangles rectangles isolés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle rectangle ABC, angle C = 90°, on connaît les deux cathètes AC = $5$ cm et BC = $12$ cm. Quelle méthode permet de déterminer la mesure de l'angle A ?",
+      "options": [
+        "Trigonométrie dans le triangle rectangle",
+        "Théorème de Pythagore",
+        "Théorème de Thalès",
+        "Aucune de ces méthodes"
+      ],
+      "correctAnswer": "Trigonométrie dans le triangle rectangle",
+      "explanation": "Les deux cathètes sont connues, donc on peut calculer l'hypoténuse avec Pythagore, mais la question demande la mesure d'un angle. Pour obtenir un angle à partir des longueurs des côtés, on utilise les fonctions trigonométriques inverses, par exemple $\\tan(A) = \\frac{BC}{AC}$ puis $A = \\arctan(\\frac{12}{5})$. Pythagore ne donne que des longueurs, Thalès n'est pas pertinent ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle ABC avec un angle droit en B. La droite (DE) est parallèle à (AC) et coupe (AB) en D et (BC) en E. On connaît AD = $3$ cm, DB = $6$ cm, BE = $4$ cm. Quelle méthode permet de calculer la longueur DE ?",
+      "options": [
+        "Théorème de Thalès",
+        "Théorème de Pythagore",
+        "Trigonométrie dans le triangle rectangle",
+        "Les deux : Thalès puis Pythagore"
+      ],
+      "correctAnswer": "Théorème de Thalès",
+      "explanation": "Puisque (DE) ∥ (AC), le théorème de Thalès s'applique dans le triangle ABC : $\\frac{AD}{DB} = \\frac{AE}{EC} = \\frac{DE}{AC}$. On connaît AD et DB, ainsi que BE (qui fait partie de BC), ce qui permet de trouver DE directement par proportionnalité. Pythagore et la trigonométrie ne sont pas nécessaires pour cette recherche de longueur par similarité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.124340+00:00",
+  "id": 207,
+  "code": "ce2-t08-c03",
+  "title": "Graphiques simples d'évolution",
+  "description": "Cours structuré Educalcul : Graphiques simples d'évolution.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Graphiques simples d'évolution",
+    "objectif_global": "Graphiques simples d'évolution",
+    "mini_lecons_imposees": [
+      "Lire axes.",
+      "Repérer hausse / baisse.",
+      "Lire une valeur."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Lire axes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les deux axes d'un graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes la température dehors chaque matin pendant une semaine. Pour ne pas tout garder dans ta tête, tu peux faire un dessin qui montre comment elle change : c'est un graphique d'évolution. Regarde bien : il y a deux droites qui se croisent en bas à gauche. La droite qui part sur le côté, c'est l'axe horizontal. Il porte les jours : lundi, mardi, mercredi... jusqu'au dimanche. La droite qui monte vers le haut, c'est l'axe vertical. Il porte les degrés : $0$, $5$, $10$, $15$ degrés. Chaque axe a son rôle, comme deux amis qui travaillent ensemble pour raconter l'histoire de la semaine."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'axe horizontal : les jours de la semaine",
+              "min": 1,
+              "max": 7,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "Lun"
+                },
+                {
+                  "value": 2,
+                  "label": "Mar"
+                },
+                {
+                  "value": 3,
+                  "label": "Mer"
+                },
+                {
+                  "value": 4,
+                  "label": "Jeu"
+                },
+                {
+                  "value": 5,
+                  "label": "Ven"
+                },
+                {
+                  "value": 6,
+                  "label": "Sam"
+                },
+                {
+                  "value": 7,
+                  "label": "Dim"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons de plus près les petites marques sur l'axe vertical. Elles s'appellent des graduations. Chaque graduation correspond à un nombre. Sur notre graphique, il y a une graduation tous les $5$ degrés : $0$, $5$, $10$, $15$, $20$. C'est comme une règle posée à la verticale ! Pour lire une valeur, il suffit de voir à quelle hauteur se trouve le point par rapport à ces marques. Si le point est pile sur la marque $10$, il fait $10$ degrés. S'il est entre $10$ et $15$, il fait entre $10$ et $15$ degrés, par exemple $12$ ou $13$."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 15,
+              "unit": "°C",
+              "caption": "L'axe vertical : les degrés, comme une règle debout"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour retrouver la température d'un jour précis, on fait un petit trajet en deux temps. D'abord, on cherche le jour sur l'axe horizontal, par exemple mercredi. De là, on monte tout droit avec son doigt jusqu'à rencontrer le point du graphique. Ensuite, de ce point, on va tout droit vers la gauche jusqu'à l'axe vertical. Le doigt tombe sur une graduation : c'est la température de ce mercredi ! C'est comme jouer à « cherche le trésor » : l'horizontal te donne le « quand », le vertical te donne le « combien »."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Jour",
+                "Température (°C)"
+              ],
+              "rows": [
+                [
+                  "Lundi",
+                  "8"
+                ],
+                [
+                  "Mardi",
+                  "12"
+                ],
+                [
+                  "Mercredi",
+                  "15"
+                ],
+                [
+                  "Jeudi",
+                  "10"
+                ],
+                [
+                  "Vendredi",
+                  "13"
+                ],
+                [
+                  "Samedi",
+                  "16"
+                ],
+                [
+                  "Dimanche",
+                  "11"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens d'apprendre à lire les deux axes d'un graphique d'évolution : l'horizontal pour le temps (les jours), le vertical pour la grandeur mesurée (les degrés). Tu sais repérer les graduations et faire le trajet du jour jusqu'au point, puis du point jusqu'à l'échelle. Dans la prochaine leçon, nous verrons comment, rien qu'en regardant la forme du graphique, on devine si la température monte ou descend au fil des jours. C'est comme lire une histoire sans mots, seulement avec une ligne qui danse !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe horizontal du graphique de la semaine, quel jour correspond à la graduation $4$ ?",
+              "answer": "Jeudi",
+              "hint": "Compte les jours en partant de $1$ pour lundi.",
+              "explanation": "L'axe horizontal commence à $1$ pour lundi. La graduation $2$ est mardi, $3$ mercredi, donc $4$ est jeudi."
+            },
+            {
+              "question": "Si le point du graphique pour mardi se trouve exactement sur la graduation $12$ de l'axe vertical, quelle est la température ce jour-là ?",
+              "answer": "$12$ °C",
+              "hint": "Regarde le nombre écrit à côté de la graduation touchée par le point.",
+              "explanation": "Le point est sur la marque $12$, donc la température relevée mardi est de $12$ degrés Celsius."
+            },
+            {
+              "question": "D'après le tableau, quelle température a-t-on relevée le samedi ?",
+              "answer": "$16$ °C",
+              "hint": "Cherche la ligne « Samedi » dans le tableau et lis la valeur à droite.",
+              "explanation": "Dans le tableau, la ligne « Samedi » indique $16$ dans la colonne « Température (°C) »."
+            }
+          ]
+        },
+        {
+          "title": "Repérer hausse / baisse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Voir monter et descendre la courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique des températures de la semaine dernière. Si tu suis du doigt la ligne qui relie les points, de lundi vers dimanche, tu vois qu'elle fait des montagnes et des vallées. Parfois elle grimpe, parfois elle plonge. Quand la ligne monte en allant vers la droite, cela veut dire que la température augmente : il fait plus chaud que la veille. Quand elle descend, la température diminue : il fait plus frais. C'est comme une petite promenade en montagne : on gravit une côte (hausse) ou on redescend dans le vallon (baisse)."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Températures du lundi au dimanche : des barres qui montent et descendent",
+              "bars": [
+                {
+                  "label": "Lun",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mar",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mer",
+                  "value": 15,
+                  "tone": "red"
+                },
+                {
+                  "label": "Jeu",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ven",
+                  "value": 13,
+                  "tone": "red"
+                },
+                {
+                  "label": "Sam",
+                  "value": 16,
+                  "tone": "red"
+                },
+                {
+                  "label": "Dim",
+                  "value": 11,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien parler de ce qu'on voit, on utilise deux mots précis : « hausse » et « baisse ». Une hausse, c'est quand la valeur devient plus grande en avançant dans le temps. Sur notre graphique, de mardi ($12$°) à mercredi ($15$°), il y a une hausse de $3$ degrés. Une baisse, c'est l'inverse : la valeur devient plus petite. De mercredi ($15$°) à jeudi ($10$°), il y a une baisse de $5$ degrés. On peut aussi dire « ça monte » ou « ça descend », mais « hausse » et « baisse » sont les mots des mathématiciens pour être tout à fait exacts."
+            },
+            {
+              "type": "definition",
+              "term": "Hausse",
+              "definition": "Augmentation d'une valeur au fil du temps. Sur le graphique, la courbe ou les barres montent vers la droite.",
+              "example": "De $8$° lundi à $12$° mardi, il y a une hausse de $4$ degrés."
+            },
+            {
+              "type": "definition",
+              "term": "Baisse",
+              "definition": "Diminution d'une valeur au fil du temps. Sur le graphique, la courbe ou les barres descendent vers la droite.",
+              "example": "De $15$° mercredi à $10$° jeudi, il y a une baisse de $5$ degrés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la ligne ne monte ni ne descend : elle reste plate. Cela arrive quand la température ne change pas d'un jour à l'autre. On dit alors qu'elle est « stable » ou « constante ». Sur notre semaine, as-tu repéré deux jours de suite avec la même température ? Non, chaque jour est différent. Mais imagine qu'il ait fait $12$° mardi et encore $12$° mercredi : la barre de mercredi aurait la même hauteur que celle de mardi, et la ligne entre les deux serait parfaitement horizontale. C'est le signe qu'il n'y a eu ni hausse, ni baisse."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemple de température stable : deux barres de même hauteur",
+              "bars": [
+                {
+                  "label": "Mar",
+                  "value": 12,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Mer",
+                  "value": 12,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître d'un coup d'œil si une grandeur augmente, diminue ou reste égale en regardant la direction de la courbe ou la hauteur des barres. Montée à droite = hausse, descente à droite = baisse, ligne plate = stable. Dans la prochaine leçon, nous allons apprendre à lire la valeur exacte d'un point, même quand il ne tombe pas pile sur une graduation. Tu deviendras un vrai détective des graphiques !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Entre quel jour et le lendemain observe-t-on la plus forte hausse de température sur le graphique à barres ?",
+              "answer": "De mercredi à jeudi, il y a une baisse. La plus forte hausse est de mardi à mercredi ($+3$°) ou de jeudi à vendredi ($+3$°) ou de vendredi à samedi ($+3$°).",
+              "hint": "Compare la hauteur de chaque barre avec celle du jour suivant. Cherche où la différence positive est la plus grande.",
+              "explanation": "Mardi $12$° → Mercredi $15$° : hausse de $3$°. Jeudi $10$° → Vendredi $13$° : hausse de $3$°. Vendredi $13$° → Samedi $16$° : hausse de $3$°. Les trois hausses sont égales."
+            },
+            {
+              "question": "Complète : quand la courbe va vers la droite et monte, c'est une ______ ; quand elle va vers la droite et descend, c'est une ______.",
+              "answer": "hausse ; baisse",
+              "hint": "Relis les définitions des deux mots précis appris dans la leçon.",
+              "explanation": "Par convention, le temps avance vers la droite. Si la valeur grandit en même temps, c'est une hausse. Si elle diminue, c'est une baisse."
+            },
+            {
+              "question": "Si la barre de jeudi et celle de vendredi ont exactement la même hauteur, que peut-on dire de la température entre ces deux jours ?",
+              "answer": "Elle est stable (ou constante), il n'y a ni hausse ni baisse.",
+              "hint": "Qu'est-ce que deux barres de même hauteur signifient ?",
+              "explanation": "Même hauteur = même valeur. La température n'a pas changé, on dit qu'elle est restée stable."
+            }
+          ]
+        },
+        {
+          "title": "Lire une valeur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire la valeur exacte d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le point du graphique ne tombe pas pile sur une graduation de l'axe vertical. Il se trouve entre deux marques, par exemple entre $10$ et $15$. Pas de panique ! On peut quand même deviner sa valeur en regardant de plus près. Imagine que l'espace entre $10$ et $15$ est découpé en $5$ tout petits morceaux invisibles : $11$, $12$, $13$, $14$. Si le point est juste un peu au-dessus de $10$, c'est $11$ ou $12$. S'il est pile au milieu, c'est $12$ ou $13$. S'il est tout près de $15$, c'est $14$. C'est comme deviner où se cache un trésor entre deux bornes !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom entre $10$ et $15$ : les valeurs intermédiaires",
+              "min": 10,
+              "max": 15,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 11,
+                  "label": "11"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 13,
+                  "label": "13"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être précis, on utilise une méthode en trois étapes, comme une petite recette. Première étape : repère les deux graduations encadrantes, celle du dessous et celle du dessus. Deuxième étape : compte combien de petits traits (ou imagine les nombres) séparent ces deux grandes marques. Troisième étape : situe le point par rapport à elles. Est-il plus proche de la basse, de la haute, ou juste au milieu ? Note alors le nombre qui correspond. Avec un peu d'entraînement, ton œil fera ce travail tout seul, très vite !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver les graduations encadrantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'axe vertical. Entre quelles deux grandes marques se trouve le point ? Note ces deux nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les intervalles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien y a-t-il de petits espaces entre ces deux marques ? Chaque espace vaut $1$ degré si l'échelle va de $5$ en $5$ avec $5$ traits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après la position du point, donne le nombre le plus juste. Écris-le avec l'unité : $°C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un piège fréquent : ne confonds pas l'axe horizontal et l'axe vertical ! Pour lire une température, tu dois toujours aller du point vers la gauche, vers l'axe vertical. Si tu vas vers le bas, tu arrives sur l'axe horizontal et tu lis le jour, pas la température. Un petit truc pour ne pas te tromper : l'axe vertical, c'est celui qui a l'unité écrite à côté (ici $°C$). L'axe horizontal a des noms de jours. Garde ce repère en tête et tu ne te perdras plus."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège à éviter",
+              "paragraphs": [
+                "Ne va pas vers le bas pour lire la valeur ! Va toujours horizontalement vers la gauche, vers l'axe des nombres."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as maintenant toutes les clés pour lire un graphique d'évolution comme un pro. Tu sais identifier les axes, repérer les hausses et les baisses, et lire une valeur exacte même entre deux graduations. Ces outils te serviront toute ta scolarité, en sciences, en géographie, et même pour comprendre des infos dans les journaux. Continue t'entraîner avec des graphiques de la vie quotidienne : la taille d'une plante, le niveau d'eau d'une bouteille, le nombre de pas par jour... Les graphiques racontent des histoires, et toi, tu sais maintenant les lire !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer l'axe horizontal (le temps) et l'axe vertical (la grandeur mesurée).",
+                "Je sais repérer une hausse (la courbe monte vers la droite) et une baisse (elle descend).",
+                "Je sais lire la valeur d'un point en allant horizontalement vers l'axe vertical.",
+                "Je sais estimer une valeur entre deux graduations.",
+                "Je ne confonds plus l'axe des jours et l'axe des degrés."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un point se trouve entre les graduations $10$ et $15$ de l'axe vertical, un peu plus près de $15$ que de $10$. Quelle est sa valeur approximative ?",
+              "answer": "$13$ °C ou $14$ °C",
+              "hint": "Le milieu est $12,5$. Plus près de $15$ veut dire entre $13$ et $14$.",
+              "explanation": "L'intervalle $10$–$15$ contient $11, 12, 13, 14$. Le milieu est $12,5$. Un peu plus près de $15$ correspond à $13$ ou $14$."
+            },
+            {
+              "question": "Quelles sont les trois étapes pour lire la valeur d'un point qui n'est pas sur une graduation ?",
+              "answer": "1. Trouver les deux graduations encadrantes. 2. Compter les intervalles. 3. Situer le point et donner le nombre.",
+              "hint": "Repense à la petite recette en trois temps expliquée dans la leçon.",
+              "explanation": "La méthode en trois étapes permet de lire toute valeur, même approximative, sans se tromper."
+            },
+            {
+              "question": "Pour lire la température d'un jour, vers quel axe doit-on aller depuis le point : horizontal ou vertical ?",
+              "answer": "Vertical (vers la gauche)",
+              "hint": "Quel axe porte l'unité $°C$ ?",
+              "explanation": "L'axe vertical porte les degrés ($°C$). On va horizontalement vers la gauche pour l'atteindre. L'axe horizontal porte les jours."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

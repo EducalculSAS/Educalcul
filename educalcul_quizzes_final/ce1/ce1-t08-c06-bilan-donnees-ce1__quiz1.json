@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 141,
+  "_course_code": "ce1-t08-c06-bilan-donnees-ce1",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Passer du relevé au tableau",
+  "title": "Passer du relevé au tableau - CE1",
+  "questions": [
+    {
+      "text": "Voici le relevé des fruits préférés des élèves :\\nPomme : ||||\\nBanane : |||\\nFraise : ||\\nRaisin : ||||\\nCombien d'élèves ont choisi la Pomme ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le relevé montre quatre traits verticaux pour la Pomme, chaque trait correspondant à un élève. Donc il y a $4$ élèves.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici le relevé des fruits préférés des élèves :\\nPomme : ||||\\nBanane : |||\\nFraise : ||\\nRaisin : ||||\\nCombien d'élèves ont choisi la Banane ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le relevé montre trois traits pour la Banane, ce qui correspond à $3$ élèves.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici le relevé des fruits préférés des élèves :\\nPomme : ||||\\nBanane : |||\\nFraise : ||\\nRaisin : ||||\\nQuel est le nombre total d'élèves ayant voté ?",
+      "options": [
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "On additionne les votes de chaque fruit : $4 + 3 + 2 + 4 = 13$ élèves au total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous récapitule les votes. Quelle valeur faut‑il écrire dans la case correspondant à la Fraise ?\\n\\nFruit - Nombre\\nPomme - 4\\nBanane - 3\\nFraise - ?\\nRaisin - 4",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "D'après le relevé, la Fraise a deux traits, donc $2$ votes. C'est la valeur à inscrire dans le tableau.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les tableaux suivants, lequel correspond exactement au relevé donné ?\\nRelevé : Pomme ||||, Banane |||, Fraise ||, Raisin ||||",
+      "options": [
+        "Pomme 4, Banane 3, Fraise 2, Raisin 4",
+        "Pomme 3, Banane 3, Fraise 2, Raisin 4",
+        "Pomme 4, Banane 2, Fraise 2, Raisin 4",
+        "Pomme 4, Banane 3, Fraise 3, Raisin 4"
+      ],
+      "correctAnswer": "Pomme 4, Banane 3, Fraise 2, Raisin 4",
+      "explanation": "Le relevé indique 4 traits pour la Pomme, 3 pour la Banane, 2 pour la Fraise et 4 pour le Raisin. Seul le premier tableau reprend ces quatre nombres.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

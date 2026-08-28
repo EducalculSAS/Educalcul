@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Repérer facteur",
+  "title": "Quiz : Repérer le facteur commun",
+  "questions": [
+    {
+      "text": "Quel est le plus grand facteur commun des deux termes de l'expression $12x + 18$ ?",
+      "options": [
+        "6",
+        "3",
+        "2",
+        "12"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On décompose les coefficients : $12 = 6 \\times 2$ et $18 = 6 \\times 3$. Le PGCD de 12 et 18 est 6. La variable $x$ n'est pas dans le second terme, donc le facteur commun est le nombre 6.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le facteur commun à mettre devant la parenthèse pour factoriser $8x^2 - 12x$ ?",
+      "options": [
+        "4x",
+        "4",
+        "2x",
+        "8x"
+      ],
+      "correctAnswer": "4x",
+      "explanation": "Le PGCD des coefficients 8 et 12 est 4. La plus petite puissance de $x$ présente dans les deux termes est $x^1$ (car $x^2 = x \\times x$ et $x = x$). Le facteur commun est donc $4x$. L'option 4 oublie la variable, 2x n'est pas le plus grand coefficient, 8x ne divise pas 12.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $15a^2b + 20ab^2$, quel est le facteur commun le plus grand ?",
+      "options": [
+        "5ab",
+        "5a",
+        "5b",
+        "10ab"
+      ],
+      "correctAnswer": "5ab",
+      "explanation": "PGCD des coefficients 15 et 20 : 5. Pour $a$ : puissances 2 et 1, on prend $a^1$. Pour $b$ : puissances 1 et 2, on prend $b^1$. Le facteur commun est $5ab$. Les options 5a et 5b sont incomplètes, 10ab n'est pas diviseur de 15.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut factoriser $9(x+2) - 3(x+2)$. Quel facteur commun peut-on extraire ?",
+      "options": [
+        "3(x+2)",
+        "(x+2)",
+        "3",
+        "6(x+2)"
+      ],
+      "correctAnswer": "3(x+2)",
+      "explanation": "Les deux termes ont le facteur $(x+2)$ en commun. Les coefficients sont 9 et 3, leur PGCD est 3. Le plus grand facteur commun est donc le produit $3 \\times (x+2) = 3(x+2)$. L'option $(x+2)$ oublie le coefficient 3, l'option 3 oublie le facteur binomial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le facteur commun des trois termes du trinôme $x^3 - 4x^2 + 2x$ ?",
+      "options": [
+        "x",
+        "x^2",
+        "2x",
+        "4x"
+      ],
+      "correctAnswer": "x",
+      "explanation": "Tous les termes contiennent la variable $x$ : $x^3 = x \\times x^2$, $-4x^2 = x \\times (-4x)$, $2x = x \\times 2$. La plus petite puissance est $x^1$. Les coefficients sont 1, -4, 2 ; leur PGCD est 1. Le facteur commun est donc $x$. $x^2$ ne divise pas $2x$, $2x$ et $4x$ ne divisent pas $x^3$ (coefficient 1).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

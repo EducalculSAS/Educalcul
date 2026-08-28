@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 435,
+  "_course_code": "4eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Algorithmes pour moyenne, médiane et étendue",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Écrire un algorithme qui calcule la moyenne d'une liste de nombres. La liste contient $n$ valeurs $x_1, x_2, ..., x_n$. Utilise une boucle pour additionner les valeurs puis divise par $n$.",
+      "correctAnswer": "Algorithme en pseudo-code :\\nFonction moyenne(liste, n)\\n    somme <- 0\\n    Pour i de 1 à n faire\\n        somme <- somme + liste[i]\\n    FinPour\\n    moyenne <- somme / n\\n    Retourner moyenne\\nFinFonction\\n\\nEn Python :\\n\\ndef moyenne(liste):\\n    somme = sum(liste)\\n    return somme / len(liste)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable somme à zéro. La boucle parcourt chaque élément de la liste et l'ajoute à somme. Après la boucle, on divise la somme totale par le nombre d'éléments n pour obtenir la moyenne. La version Python utilise la fonction sum et len pour simplifier.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la médiane",
+      "content": "Écrire un algorithme qui détermine la médiane d'une liste de nombres triée dans l'ordre croissant. La liste contient $n$ valeurs. Précise le traitement selon que $n$ est pair ou impair.",
+      "correctAnswer": "Algorithme en pseudo-code :\\nFonction mediane(liste_triee, n)\\n    Si n modulo 2 = 1 alors\\n        indice <- (n + 1) / 2\\n        mediane <- liste_triee[indice]\\n    Sinon\\n        indice1 <- n / 2\\n        indice2 <- indice1 + 1\\n        mediane <- (liste_triee[indice1] + liste_triee[indice2]) / 2\\n    FinSi\\n    Retourner mediane\\nFinFonction\\n\\nEn Python :\\n\\ndef mediane(liste):\\n    n = len(liste)\\n    if n % 2 == 1:\\n        return liste[n // 2]\\n    else:\\n        return (liste[n // 2 - 1] + liste[n // 2]) / 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La liste doit être triée au préalable. Si le nombre d'observations n est impair, la médiane est l'élément central d'indice (n+1)/2. Si n est pair, la médiane est la moyenne des deux éléments centraux d'indices n/2 et n/2+1. L'algorithme teste la parité de n et applique la formule correspondante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'étendue",
+      "content": "Écrire un algorithme qui calcule l'étendue d'une série statistique. L'étendue est la différence entre la valeur maximale et la valeur minimale de la liste.",
+      "correctAnswer": "Algorithme en pseudo-code :\\nFonction etendue(liste, n)\\n    min <- liste[1]\\n    max <- liste[1]\\n    Pour i de 2 à n faire\\n        Si liste[i] < min alors\\n            min <- liste[i]\\n        FinSi\\n        Si liste[i] > max alors\\n            max <- liste[i]\\n        FinSi\\n    FinPour\\n    etendue <- max - min\\n    Retourner etendue\\nFinFonction\\n\\nEn Python :\\n\\ndef etendue(liste):\\n    return max(liste) - min(liste)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise min et max avec la première valeur de la liste. La boucle parcourt les éléments restants et met à jour min si une valeur plus petite est trouvée, et max si une valeur plus grande est trouvée. À la fin, l'étendue est obtenue en soustrayant min de max. La version Python utilise les fonctions intégrées min et max.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Vérifier calculatrice",
+  "title": "Vérifier un calcul sur calculatrice",
+  "blocks": [
+    {
+      "title": "Priorités opératoires",
+      "content": "Relie chaque calcul à son résultat exact en respectant les règles de priorité.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12 + 5 \\times 3$",
+          "right": "$27$"
+        },
+        {
+          "left": "$(12 + 5) \\times 3$",
+          "right": "$51$"
+        },
+        {
+          "left": "$20 - 4 \\times 2$",
+          "right": "$12$"
+        },
+        {
+          "left": "$50 \\div 5 + 2$",
+          "right": "$12$"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur une calculatrice, la multiplication et la division sont prioritaires sur l'addition et la soustraction. Pour $12 + 5 \\times 3$, on calcule $5 \\times 3 = 15$ puis $12 + 15 = 27$. Les parenthèses obligent à faire l'addition en premier : $(12 + 5) \\times 3 = 17 \\times 3 = 51$. Pour $20 - 4 \\times 2$, on fait $4 \\times 2 = 8$ puis $20 - 8 = 12$. Pour $50 \\div 5 + 2$, on fait $50 \\div 5 = 10$ puis $10 + 2 = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimer pour contrôler",
+      "content": "Relie chaque calcul à son ordre de grandeur pour vérifier si l'affichage de la calculatrice est plausible.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$4,9 \\times 3,1$",
+          "right": "Environ $15$"
+        },
+        {
+          "left": "$102 \\div 9,8$",
+          "right": "Environ $10$"
+        },
+        {
+          "left": "$19,8 + 30,2$",
+          "right": "Environ $50$"
+        },
+        {
+          "left": "$48 \\times 0,2$",
+          "right": "Environ $10$"
+        }
+      ],
+      "items": [],
+      "explanation": "On arrondit les nombres pour calculer mentalement : $4,9 \\approx 5$ et $3,1 \\approx 3$, donc $5 \\times 3 = 15$. $102 \\approx 100$ et $9,8 \\approx 10$, donc $100 \\div 10 = 10$. $19,8 \\approx 20$ et $30,2 \\approx 30$, donc $20 + 30 = 50$. $48 \\approx 50$ et $0,2 = \\frac{2}{10}$, donc $50 \\times 0,2 = 10$. Si la calculatrice affiche un résultat très différent, il y a une erreur de saisie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier la virgule",
+      "content": "Relie chaque calcul décimal à son résultat exact pour valider la position de la virgule sur la calculatrice.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2,5 \\times 3,4$",
+          "right": "$8,5$"
+        },
+        {
+          "left": "$15,6 \\div 0,4$",
+          "right": "$39$"
+        },
+        {
+          "left": "$12,5 + 3,75$",
+          "right": "$16,25$"
+        },
+        {
+          "left": "$10 - 2,8$",
+          "right": "$7,2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour la multiplication $2,5 \\times 3,4$, on fait $25 \\times 34 = 850$ et on replace deux chiffres après la virgule (un pour chaque facteur) : $8,50 = 8,5$. Pour la division $15,6 \\div 0,4$, on multiplie les deux nombres par 10 : $156 \\div 4 = 39$. Pour l'addition $12,5 + 3,75$, on aligne les virgules : $12,50 + 3,75 = 16,25$. Pour la soustraction $10 - 2,8$, on écrit $10,0 - 2,8 = 7,2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

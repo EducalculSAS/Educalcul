@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Fréquence",
+  "title": "Quiz sur la fréquence (3e)",
+  "questions": [
+    {
+      "text": "Quelle est la définition de la fréquence d'un événement lors d'une expérience aléatoire ?",
+      "options": [
+        "Le nombre de fois où l'événement se produit divisé par le nombre total d'essais",
+        "Le nombre total d'essais divisé par le nombre de fois où l'événement se produit",
+        "La probabilité théorique de l'événement",
+        "Le nombre de résultats possibles de l'expérience"
+      ],
+      "correctAnswer": "Le nombre de fois où l'événement se produit divisé par le nombre total d'essais",
+      "explanation": "La fréquence d'un événement est le quotient du nombre d'occurrences de cet événement par le nombre total d'essais effectués. Les autres options correspondent à l'inverse, à la probabilité théorique ou au nombre de résultats possibles, ce qui n'est pas la définition de la fréquence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors de 120 lancers d'un dé équilibré, la face 6 apparaît 30 fois. Quelle est la fréquence de la face 6 ?",
+      "options": [
+        "$30/120 = 0,25$",
+        "$30/120 = 0,30$",
+        "$120/30 = 4$",
+        "$30 \\times 120 = 3600$"
+      ],
+      "correctAnswer": "$30/120 = 0,25$",
+      "explanation": "La fréquence se calcule en divisant le nombre d'occurrences (30) par le nombre total d'essais (120), ce qui donne $30/120 = 0,25$. Les autres options utilisent une division inversée, une valeur erronée ou une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une simulation, on répète une expérience un grand nombre de fois pour estimer une probabilité. Quelle affirmation est correcte ?",
+      "options": [
+        "La fréquence observée converge vers la probabilité théorique quand le nombre d'essais augmente",
+        "La fréquence observée reste constante quel que soit le nombre d'essais",
+        "La fréquence observée diverge de la probabilité théorique quand le nombre d'essais augmente",
+        "La fréquence observée est toujours égale à la probabilité théorique dès le premier essai"
+      ],
+      "correctAnswer": "La fréquence observée converge vers la probabilité théorique quand le nombre d'essais augmente",
+      "explanation": "C'est la loi des grands nombres : en augmentant le nombre d'essais, la fréquence expérimentale tend vers la probabilité théorique. Les autres affirmations sont contraires à ce principe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé 600 fois et on obtient le tableau suivant : face 1 : 95, face 2 : 105, face 3 : 100, face 4 : 110, face 5 : 95, face 6 : 95. Quelle est la fréquence de la face 4 ?",
+      "options": [
+        "$110/600 \\approx 0,183$",
+        "$110/600 = 0,2$",
+        "$600/110 \\approx 5,45$",
+        "$110 \\times 600 = 66000$"
+      ],
+      "correctAnswer": "$110/600 \\approx 0,183$",
+      "explanation": "La fréquence de la face 4 est le nombre d'apparitions (110) divisé par le total des lancers (600), soit $110/600 \\approx 0,183$. Les autres options donnent une valeur arrondie incorrecte, l'inverse de la division ou une multiplication sans sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après 10 000 simulations d'un lancer de pièce équilibrée, on obtient 5 020 faces. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "La fréquence de face est $5020/10000 = 0,502$, proche de la probabilité théorique $0,5$",
+        "La fréquence de face est $5020/10000 = 0,502$, ce qui prouve que la pièce est truquée",
+        "La fréquence de face est $10000/5020 \\approx 1,99$, ce qui est la probabilité théorique",
+        "La fréquence de face est $5020 \\times 10000 = 50200000$, ce qui n'a pas de sens"
+      ],
+      "correctAnswer": "La fréquence de face est $5020/10000 = 0,502$, proche de la probabilité théorique $0,5$",
+      "explanation": "La fréquence expérimentale est $5020/10000 = 0,502$. Elle est proche de la probabilité théorique $0,5$ pour une pièce équilibrée, ce qui est conforme à la loi des grands nombres. Les autres affirmations interprètent mal le résultat ou utilisent des calculs incorrects.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

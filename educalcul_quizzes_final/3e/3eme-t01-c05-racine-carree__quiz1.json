@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Définition",
+  "title": "Quiz : Définition de la racine carrée",
+  "questions": [
+    {
+      "text": "Parmi les affirmations suivantes, laquelle donne la définition exacte de la racine carrée d'un nombre positif $a$ ?",
+      "options": [
+        "C'est le nombre qui, multiplié par lui-même, donne $a$.",
+        "C'est le nombre qui, ajouté à lui-même, donne $a$.",
+        "C'est la moitié de $a$.",
+        "C'est le nombre qui, élevé au cube, donne $a$."
+      ],
+      "correctAnswer": "C'est le nombre qui, multiplié par lui-même, donne $a$.",
+      "explanation": "La racine carrée d'un nombre positif $a$, notée $\\sqrt{a}$, est l'unique nombre positif $x$ tel que $x \\times x = a$ (ou $x^2 = a$). L'option B correspond à la définition de la moitié ($a/2 + a/2 = a$). L'option C est fausse (la moitié est $a/2$). L'option D définit la racine cubique ($x^3 = a$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'égalité $\\sqrt{49} = 7$. Pourquoi l'égalité $\\sqrt{49} = -7$ est-elle fausse ?",
+      "options": [
+        "Parce que $(-7) \\times (-7) = -49$.",
+        "Parce que la racine carrée d'un nombre positif est, par définition, positive ou nulle.",
+        "Parce que $-7$ est un nombre négatif et qu'une racine carrée ne peut jamais être négative.",
+        "Parce que $(-7)^2 = 49$ mais la calculatrice n'affiche que $7$."
+      ],
+      "correctAnswer": "Parce que la racine carrée d'un nombre positif est, par définition, positive ou nulle.",
+      "explanation": "Par convention mathématique, le symbole $\\sqrt{a}$ désigne la racine carrée *principale* (ou positive) de $a$. Bien que $(-7)^2 = 49$ soit vrai, $\\sqrt{49}$ ne vaut que $7$. L'option A est fausse car le produit de deux nombres négatifs est positif. L'option C est mal formulée : l'équation $x^2 = 49$ a deux solutions ($7$ et $-7$), mais la *fonction* racine carrée ne renvoie que la valeur positive. L'option D invoque la calculatrice, ce qui n'est pas un argument mathématique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a$ un nombre réel. Quelle condition doit satisfaire $a$ pour que $\\sqrt{a}$ ait un sens dans l'ensemble des nombres réels ?",
+      "options": [
+        "$a$ doit être un entier naturel.",
+        "$a$ doit être strictement positif ($a > 0$).",
+        "$a$ doit être positif ou nul ($a \\ge 0$).",
+        "$a$ peut être n'importe quel nombre réel."
+      ],
+      "correctAnswer": "$a$ doit être positif ou nul ($a \\ge 0$).",
+      "explanation": "Dans $\\mathbb{R}$, on ne peut pas calculer la racine carrée d'un nombre négatif car le carré de tout nombre réel est toujours positif ou nul. Le radicande $a$ doit donc être $\\ge 0$. L'option A est trop restrictive ($\\sqrt{2}$ existe). L'option B exclut $\\sqrt{0} = 0$. L'option D est fausse car $\\sqrt{-4}$ n'existe pas dans $\\mathbb{R}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $12^2 = 144$. Que peut-on affirmer avec certitude à propos de $\\sqrt{144}$ ?",
+      "options": [
+        "$\\sqrt{144} = 12$ ou $-12$.",
+        "$\\sqrt{144} = 12$.",
+        "$\\sqrt{144} = -12$.",
+        "On ne peut pas le savoir sans calculatrice."
+      ],
+      "correctAnswer": "$\\sqrt{144} = 12$.",
+      "explanation": "Puisque $12$ est un nombre positif et que $12^2 = 144$, la définition de la racine carrée principale nous donne directement $\\sqrt{144} = 12$. L'option A confond la racine carrée (valeur unique positive) et les solutions de l'équation $x^2 = 144$ (qui sont $12$ et $-12$). L'option C contredit la définition (positivité). L'option D est fausse car on peut le déduire logiquement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est **fausse** ?",
+      "options": [
+        "$\\sqrt{25} = 5$",
+        "$\\sqrt{0} = 0$",
+        "$\\sqrt{(-5)^2} = -5$",
+        "$\\sqrt{\\frac{1}{4}} = \\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\sqrt{(-5)^2} = -5$",
+      "explanation": "Calculons le radicande : $(-5)^2 = 25$. Donc $\\sqrt{(-5)^2} = \\sqrt{25} = 5$. L'égalité proposée donne $-5$, ce qui contredit la définition de la racine carrée (résultat positif ou nul). C'est une erreur classique : on croit à tort que $\\sqrt{x^2} = x$, alors qu'en réalité $\\sqrt{x^2} = |x|$. Les trois autres égalités sont correctes : $5^2=25$, $0^2=0$, $(1/2)^2=1/4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

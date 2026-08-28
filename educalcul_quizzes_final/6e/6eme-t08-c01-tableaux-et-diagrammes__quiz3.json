@@ -1,0 +1,197 @@
+{
+  "_status": "done",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer des données avec tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "Le tableau ci‑dessous donne le nombre de fruits préférés par les élèves : Pommes $12$, Poires $8$, Bananes $15$, Raisins $10$. Quel fruit a le plus grand effectif ?",
+      "options": [
+        "Pommes",
+        "Poires",
+        "Bananes",
+        "Raisins"
+      ],
+      "correctAnswer": "Bananes",
+      "explanation": "L'effectif le plus élevé est $15$ pour les Bananes, les autres effectifs sont $12$, $8$ et $10$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "12"
+          ],
+          [
+            "Poires",
+            "8"
+          ],
+          [
+            "Bananes",
+            "15"
+          ],
+          [
+            "Raisins",
+            "10"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres représente les ventes de glaces du lundi au jeudi : Lundi $5$, Mardi $9$, Mercredi $7$, Jeudi $6$. Quel jour a enregistré le plus grand nombre de ventes ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi"
+      ],
+      "correctAnswer": "Mardi",
+      "explanation": "La barre la plus haute correspond à Mardi avec $9$ ventes, supérieure à $5$, $7$ et $6$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Ventes par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 9,
+            "tone": "blue"
+          },
+          {
+            "label": "Mercredi",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeudi",
+            "value": 6,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le camembert montre la répartition des sports préférés : Football $30\\%$, Basket $25\\%$, Natation $20\\%$, Tennis $25\\%$. Quel sport occupe la plus grande part ?",
+      "options": [
+        "Football",
+        "Basket",
+        "Natation",
+        "Tennis"
+      ],
+      "correctAnswer": "Football",
+      "explanation": "La part la plus importante est $30\\%$ pour le Football, les autres parts sont $25\\%$, $20\\%$ et $25\\%$.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Basket",
+            "value": 25,
+            "tone": "gold"
+          },
+          {
+            "label": "Natation",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "Tennis",
+            "value": 25,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci‑dessous donne les effectifs des deux classes : Classe A $12$ garçons, $10$ filles ; Classe B $9$ garçons, $14$ filles. Dans quelle classe y a‑t‑il le plus d'élèves au total ?",
+      "options": [
+        "Classe A",
+        "Classe B",
+        "Les deux classes ont le même effectif",
+        "Impossible à savoir"
+      ],
+      "correctAnswer": "Classe B",
+      "explanation": "Le total de la classe A est $12+10=22$, celui de la classe B est $9+14=23$, donc la classe B a plus d'élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Classe",
+          "Garçons",
+          "Filles",
+          "Total"
+        ],
+        "rows": [
+          [
+            "A",
+            "12",
+            "10",
+            "22"
+          ],
+          [
+            "B",
+            "9",
+            "14",
+            "23"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres affiche les préférences de couleur : Rouge $8$, Bleu $12$, Vert $5$, Jaune $10$. Le tableau correspondant indique : Rouge $8$, Bleu $12$, Vert $5$, Jaune $9$. Quelle affirmation est correcte ?",
+      "options": [
+        "Les deux représentations donnent les mêmes effectifs pour toutes les catégories",
+        "Seule la catégorie Jaune diffère entre les deux représentations",
+        "Les effectifs de la catégorie Bleu sont différents",
+        "La catégorie Vert a un effectif plus grand dans le tableau"
+      ],
+      "correctAnswer": "Seule la catégorie Jaune diffère entre les deux représentations",
+      "explanation": "En comparant les valeurs, on voit que Rouge, Bleu et Vert sont identiques ($8$, $12$, $5$), seule la valeur pour Jaune change ($10$ dans le diagramme, $9$ dans le tableau).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Couleurs préférées",
+        "bars": [
+          {
+            "label": "Rouge",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Bleu",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Jaune",
+            "value": 10,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

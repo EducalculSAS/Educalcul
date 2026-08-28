@@ -1,0 +1,479 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.674451+00:00",
+  "id": 63,
+  "code": "cp-t07-c08",
+  "title": "Lire un plan très simple",
+  "description": "Cours structuré Educalcul : Lire un plan très simple.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Lire un plan très simple",
+    "objectif_global": "Lire un plan très simple",
+    "mini_lecons_imposees": [
+      "Identifier symboles et lieux.",
+      "Suivre un trajet.",
+      "Décrire un déplacement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Identifier symboles et lieux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir un plan tout simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu regardes une carte au trésor. Un plan, c'est un peu pareil : il te montre où sont les choses sans que tu aies à te déplacer. Regarde bien l'image ci-dessous, tu vas voir des petits dessins qui représentent la maison, l'école ou un arbre."
+            },
+            {
+              "type": "definition",
+              "term": "plan",
+              "definition": "Un dessin vu du ciel qui montre où se trouvent les lieux.",
+              "example": "Le plan de ta classe montre où est la table, le tableau, la porte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque dessin sur le plan s'appelle un symbole. Pour savoir ce que veut dire chaque symbole, il y a une légende. C'est comme un code secret qui t'explique : le carré rouge, c'est la maison ; le triangle vert, c'est l'arbre ; le rectangle bleu, c'est l'école."
+            },
+            {
+              "type": "definition",
+              "term": "légende",
+              "definition": "La liste qui explique la signification de chaque symbole sur le plan.",
+              "example": "Sur la légende, tu vois : 🏠 = maison, 🌳 = arbre, 🏫 = école."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Colonne 1",
+                "Colonne 2",
+                "Colonne 3"
+              ],
+              "rows": [
+                [
+                  "Ligne 1",
+                  "🏠",
+                  "🌳",
+                  "🏫"
+                ],
+                [
+                  "Ligne 2",
+                  "🌳",
+                  "🏠",
+                  "🌳"
+                ],
+                [
+                  "Ligne 3",
+                  "🏫",
+                  "🌳",
+                  "🏠"
+                ]
+              ],
+              "caption": "Un plan simple avec trois symboles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire les symboles, on va apprendre à dire où se trouve chaque lieu. Pour cela, on utilise les lignes et les colonnes, comme un jeu de bataille navale."
+            },
+            {
+              "type": "definition",
+              "term": "case",
+              "definition": "Un petit carré sur le plan, repéré par sa ligne et sa colonne.",
+              "example": "La maison est à la ligne 1, colonne 1."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Combien de fois chaque symbole apparaît-il ?",
+              "bars": [
+                {
+                  "label": "Maison",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Arbre",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "École",
+                  "value": 2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne la ligne et la colonne, et tu dois trouver quel symbole s'y cache. C'est comme une devinette : à la ligne 2, colonne 3, qu'y a-t-il ? Regarde le plan, compte les lignes et les colonnes, et tu trouves la réponse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compte les lignes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Commence par le haut du plan et descends jusqu'à la ligne demandée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte les colonnes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis la gauche, déplace-toi vers la droite jusqu'à la colonne demandée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regarde le symbole",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La case où tu arrives te donne le symbole cherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant identifier les symboles et retrouver un lieu sur un plan. Tu es prêt pour la suite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le plan, quel symbole se trouve à la ligne 1, colonne 2 ?",
+              "answer": "Un arbre (🌳).",
+              "hint": "Regarde la première ligne, puis la deuxième colonne.",
+              "explanation": "La ligne 1 est la première ligne du haut. La colonne 2 est la deuxième colonne de gauche. À cet endroit, il y a un arbre."
+            },
+            {
+              "question": "Combien y a-t-il de maisons sur le plan ?",
+              "answer": "3 maisons.",
+              "hint": "Compte tous les symboles 🏠 sur le tableau.",
+              "explanation": "Il y a une maison en ligne 1 colonne 1, une en ligne 2 colonne 2, et une en ligne 3 colonne 3. Cela fait $3$ maisons."
+            },
+            {
+              "question": "À quelle case se trouve l'école en haut à droite ?",
+              "answer": "Ligne 1, colonne 3.",
+              "hint": "L'école est le symbole 🏫. Regarde la première ligne, tout à droite.",
+              "explanation": "L'école en haut à droite est sur la première ligne (la plus haute) et la troisième colonne (la plus à droite). Donc ligne 1, colonne 3."
+            }
+          ]
+        },
+        {
+          "title": "Suivre un trajet.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suivre un chemin sur le plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux aller de la maison à l'école. Sur le plan, tu dois tracer un chemin en passant par les cases. C'est comme jouer à un jeu de labyrinthe : tu avances case par case, et tu peux tourner à gauche ou à droite."
+            },
+            {
+              "type": "definition",
+              "term": "trajet",
+              "definition": "Le chemin que l'on suit sur le plan pour aller d'un point de départ à un point d'arrivée.",
+              "example": "Le trajet de la maison à l'école passe par $3$ cases."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve la case de départ sur le plan."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarde la case d'à côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si la case voisine est libre (pas d'obstacle)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Avance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déplace ton doigt ou ton pion d'une case dans la bonne direction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tourne si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le chemin change de direction, tourne à gauche ou à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Arrive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand tu reaches la case d'arrivée, le trajet est fini."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le chemin n'est pas tout droit. Il faut contourner un obstacle, comme un lac ou un mur. Sur le plan, cela veut dire que tu ne peux pas passer par certaines cases. Tu dois alors trouver un autre chemin."
+            },
+            {
+              "type": "definition",
+              "term": "obstacle",
+              "definition": "Une case que l'on ne peut pas traverser sur le plan.",
+              "example": "L'étang est un obstacle, on ne peut pas marcher dessus."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de deux trajets pour aller à l'école.",
+              "bars": [
+                {
+                  "label": "Chemin direct",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Chemin contourné",
+                  "value": 7,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi compter le nombre de pas pour savoir quel trajet est le plus court. C'est utile quand tu veux aller vite. Essaie de compter les cases sur le plan pour comparer deux chemins."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Les mouvements du trajet.",
+              "slices": [
+                {
+                  "label": "Avancer",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Tourner à gauche",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Tourner à droite",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant suivre un trajet et contourner les obstacles. Dans la dernière leçon, tu apprendras à décrire un déplacement avec des mots précis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour aller de la maison (ligne 1, colonne 1) à l'arbre (ligne 1, colonne 2), quel est le premier mouvement ?",
+              "answer": "Avance d'une case vers la droite.",
+              "hint": "La maison et l'arbre sont sur la même ligne, l'arbre est à droite de la maison.",
+              "explanation": "Comme ils sont sur la même ligne, tu n'as pas besoin de tourner. Tu avances simplement d'une case vers la droite."
+            },
+            {
+              "question": "Deux chemins mènent à l'école : l'un fait $5$ cases, l'autre $7$ cases. Lequel est le plus court ?",
+              "answer": "Le chemin de $5$ cases.",
+              "hint": "Le plus court est celui qui a le plus petit nombre de cases.",
+              "explanation": "$5$ cases est plus petit que $7$ cases, donc le chemin de $5$ cases est le plus court."
+            },
+            {
+              "question": "Tu es sur l'arbre (ligne 1, colonne 2). Tu veux aller à la maison (ligne 2, colonne 2). Que fais-tu ?",
+              "answer": "Avance d'une case vers le bas.",
+              "hint": "La maison est juste en dessous de l'arbre, même colonne.",
+              "explanation": "L'arbre est en ligne 1, la maison en ligne 2, même colonne 2. Tu avances d'une case vers le bas (la ligne suivante)."
+            }
+          ]
+        },
+        {
+          "title": "Décrire un déplacement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire comment on se déplace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu donnes ton chemin à un ami, tu utilises des mots comme : avance, tourne à gauche, tourne à droite. C'est comme une recette de cuisine : chaque instruction est une étape."
+            },
+            {
+              "type": "definition",
+              "term": "déplacement",
+              "definition": "L'action de changer de place en suivant des consignes.",
+              "example": "Avance $3$ cases, puis tourne à gauche."
+            },
+            {
+              "type": "number_line",
+              "caption": "Avancer de $3$ cases sur une ligne.",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Départ"
+                },
+                {
+                  "value": 3,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut combiner plusieurs mouvements. Par exemple : avance $2$ cases, tourne à droite, avance $1$ case. C'est comme une petite chorégraphie. Pour ne pas te tromper, tu peux tracer le chemin avec ton doigt sur le plan."
+            },
+            {
+              "type": "definition",
+              "term": "consigne",
+              "definition": "Une instruction qui te dit quoi faire.",
+              "example": "La consigne : avance jusqu'à l'arbre."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un virage à angle droit sur le plan.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "2 cases",
+                "1 case",
+                "?"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi décrire un trajet en donnant le nombre de cases pour chaque direction. Par exemple : $3$ cases en avant, $2$ cases à gauche. C'est comme un code que ton ami peut suivre les yeux fermés."
+            },
+            {
+              "type": "definition",
+              "term": "direction",
+              "definition": "Le sens dans lequel on avance : devant, derrière, gauche, droite.",
+              "example": "La direction 'gauche' signifie tourner vers la gauche."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 2 = 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant lire un plan, suivre un trajet et décrire un déplacement. Tu es devenu un vrai petit guide."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître les symboles sur un plan.",
+                "Je sais repérer un lieu avec sa ligne et sa colonne.",
+                "Je sais suivre un trajet en avançant et en tournant.",
+                "Je sais décrire un déplacement avec des mots comme avance, tourne à gauche, tourne à droite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment décrirais-tu le déplacement : avance $3$ cases tout droit ?",
+              "answer": "Avance $3$ cases.",
+              "hint": "Utilise le mot 'avance' suivi du nombre de cases.",
+              "explanation": "Quand on va tout droit sans tourner, on dit 'avance' et le nombre de cases."
+            },
+            {
+              "question": "Tu avances $2$ cases, puis tu tournes à droite, puis tu avances $1$ case. Écris la consigne complète.",
+              "answer": "Avance $2$ cases, tourne à droite, avance $1$ case.",
+              "hint": "Écris chaque action dans l'ordre, séparée par une virgule.",
+              "explanation": "On décrit chaque étape dans l'ordre : d'abord l'avance, puis le tour, puis la nouvelle avance."
+            },
+            {
+              "question": "Tu es sur l'arbre (ligne 1, colonne 2). Tu suis : avance $1$ case en bas. Où es-tu ?",
+              "answer": "Sur la maison (ligne 2, colonne 2).",
+              "hint": "Descends d'une ligne, la colonne ne change pas.",
+              "explanation": "L'arbre est en ligne 1, colonne 2. En avançant d'une case vers le bas, tu arrives en ligne 2, colonne 2, où se trouve la maison."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Statistiques à une variable",
+  "title": "Quiz : Application - Statistiques à une variable",
+  "questions": [
+    {
+      "text": "Dans une classe, les notes sur 20 obtenues par les élèves sont résumées dans le tableau de fréquences suivant : Note $10$ (effectif $3$), Note $12$ (effectif $5$), Note $14$ (effectif $2$), Note $16$ (effectif $4$). Quelle est la moyenne de cette série statistique ?",
+      "options": [
+        "$12$",
+        "$13$",
+        "$13,5$",
+        "$14$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "La moyenne est la somme des valeurs multipliées par leurs effectifs divisée par le total des effectifs. Somme = $10\\times3 + 12\\times5 + 14\\times2 + 16\\times4 = 30 + 60 + 28 + 64 = 182$. Total des effectifs = $3+5+2+4 = 14$. Moyenne = $182/14 = 13$. Les autres options correspondent à des erreurs de calcul ou à la médiane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La série ordonnée des âges (en années) de dix élèves est : $12$, $13$, $13$, $14$, $15$, $15$, $15$, $16$, $17$, $18$. Quel est le médian de cette série ?",
+      "options": [
+        "$14$",
+        "$15$",
+        "$15,5$",
+        "$16$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "Pour un effectif pair ($10$), le médian est la moyenne des deux valeurs centrales (5e et 6e). Les deux valeurs centrales sont $15$ et $15$, leur moyenne est $15$. Les distracteurs correspondent à la valeur précédant le centre, à une moyenne mal calculée ou à la valeur suivant le centre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en boîte ci-dessous représente la distribution des notes sur 20 d'un groupe d'élèves. Quelle est la valeur du premier quartile $Q_1$ ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$14$",
+        "$16$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Sur un diagramme en boîte, le bord gauche de la boîte correspond au premier quartile $Q_1$. La figure indique $Q_1 = 12$. Le minimum est $10$, la médiane $14$ et le troisième quartile $16$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Distribution des notes sur 20",
+        "min": 10,
+        "q1": 12,
+        "median": 14,
+        "q3": 16,
+        "max": 20
+      }
+    },
+    {
+      "text": "Le tableau suivant donne les effectifs par classe d'âge pour un club de sport : $[10;12[$ : $8$, $[12;14[$ : $15$, $[14;16[$ : $12$, $[16;18[$ : $5$. Quelle est la classe modale ?",
+      "options": [
+        "$[10;12[$",
+        "$[12;14[$",
+        "$[14;16[$",
+        "$[16;18[$"
+      ],
+      "correctAnswer": "$[12;14[$",
+      "explanation": "La classe modale est celle qui possède le plus grand effectif. Ici l'effectif maximal est $15$ pour la classe $[12;14[$. Les autres classes ont des effectifs inférieurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'histogramme ci-dessous représente la répartition du nombre de livres lus par mois par des élèves. Quel est l'étendue de cette série statistique ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "L'étendue est la différence entre la valeur maximale et la valeur minimale observées. L'histogramme montre des valeurs de $1$ à $5$ livres, donc l'étendue = $5 - 1 = 4$. Les autres options correspondent à des différences mal calculées ou au nombre de classes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par mois",
+        "bars": [
+          {
+            "label": "1",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "4",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 1,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

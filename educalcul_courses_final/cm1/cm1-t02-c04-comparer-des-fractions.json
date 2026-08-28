@@ -1,0 +1,424 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.169509+00:00",
+  "id": 222,
+  "code": "cm1-t02-c04",
+  "title": "Comparer des fractions",
+  "description": "Cours structuré Educalcul : Comparer des fractions.",
+  "subject": "Fractions",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Fractions",
+    "titre_du_cours": "Comparer des fractions",
+    "objectif_global": "Comparer des fractions",
+    "mini_lecons_imposees": [
+      "Même dénominateur.",
+      "Même numérateur.",
+      "Repères 0, 1/2, 1."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Même dénominateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les dénominateurs sont identiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux barres de chocolat identiques, chacune coupée en $8$ carrés. Toi, tu en prends $3$ carrés, ton ami en prend $5$ carrés. Qui a la plus grande part ? C'est facile : comme les carrés sont de la même taille, il suffit de compter combien de carrés chacun possède. En fractions, le dénominateur ($8$ ici) nous dit en combien de parts égales l'entier est divisé. Le numérateur ($3$ ou $5$) nous dit combien de ces parts on a prises. Quand le dénominateur est le même, les parts ont exactement la même grandeur."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre du bas dans une fraction. Il indique en combien de parts égales l'unité est divisée.",
+              "example": "Dans $\\frac{3}{8}$, le dénominateur est $8$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 8
+                }
+              ],
+              "caption": "Comparer $\\frac{3}{8}$ et $\\frac{5}{8}$ : la barre du haut est plus courte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarder les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que les deux fractions ont le même dénominateur. Si c'est le cas, les parts sont de taille identique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur le plus grand correspond à la plus grande fraction, car on a pris plus de parts de même taille."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les signes $\\lt$ (plus petit que) ou $\\gt$ (plus grand que). Ici $\\frac{3}{8} \\lt \\frac{5}{8}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec trois fractions qui ont toutes le même dénominateur $10$ : $\\frac{2}{10}$, $\\frac{7}{10}$ et $\\frac{4}{10}$. Comme les parts sont toutes des dixièmes, on aligne simplement les numérateurs : $2$, $4$, $7$. L'ordre croissant sera donc $\\frac{2}{10} \\lt \\frac{4}{10} \\lt \\frac{7}{10}$. Remarque que $\\frac{7}{10}$ est proche de l'entier $1$ (qui serait $\\frac{10}{10}$), tandis que $\\frac{2}{10}$ est proche de $0$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 7,
+                  "denominator": 10
+                }
+              ],
+              "caption": "Ordre croissant : $\\frac{2}{10}$, $\\frac{4}{10}$, $\\frac{7}{10}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on rencontre des fractions dont le dénominateur est le même mais qui sont écrites différemment, comme $\\frac{6}{4}$ et $\\frac{3}{4}$. Ici, $\\frac{6}{4}$ est une fraction supérieure à $1$ (c'est $1$ entier et $\\frac{2}{4}$ en plus), alors que $\\frac{3}{4}$ est inférieure à $1$. La règle reste identique : on compare les numérateurs $6$ et $3$. Comme $6 \\gt 3$, on a $\\frac{6}{4} \\gt \\frac{3}{4}$. Cette méthode fonctionne pour toutes les fractions, même impropres, tant que le dénominateur est commun."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode solide : même dénominateur $\\rightarrow$ compare les numérateurs. C'est comme comparer des paquets de bonbons qui contiennent tous le même nombre de pièces : le paquet avec le plus de pièces est le plus gros. Dans la prochaine leçon, nous verrons comment faire quand ce sont les numérateurs qui sont identiques, ce qui demande un tout autre raisonnement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{4}{9}$ et $\\frac{7}{9}$ en utilisant le signe $\\lt$ ou $\\gt$.",
+              "answer": "\\frac{4}{9} \\lt \\frac{7}{9}",
+              "hint": "Les dénominateurs sont identiques ($9$). Regarde les numérateurs $4$ et $7$.",
+              "explanation": "Comme les deux fractions ont le même dénominateur $9$, les parts sont de même taille. Le numérateur $7$ est plus grand que $4$, donc $\\frac{7}{9}$ est plus grand que $\\frac{4}{9}$."
+            },
+            {
+              "question": "Range dans l'ordre croissant : $\\frac{5}{12}$, $\\frac{9}{12}$, $\\frac{2}{12}$, $\\frac{11}{12}$.",
+              "answer": "\\frac{2}{12} \\lt \\frac{5}{12} \\lt \\frac{9}{12} \\lt \\frac{11}{12}",
+              "hint": "Tous les dénominateurs valent $12$. Classe les numérateurs $2, 5, 9, 11$ du plus petit au plus grand.",
+              "explanation": "Même dénominateur $12$ : on trie les numérateurs $2 \\lt 5 \\lt 9 \\lt 11$. L'ordre des fractions suit le même ordre."
+            },
+            {
+              "question": "Vrai ou faux ? $\\frac{8}{5} \\gt \\frac{3}{5}$.",
+              "answer": "Vrai",
+              "hint": "Même dénominateur $5$. Compare $8$ et $3$.",
+              "explanation": "Les dénominateurs sont égaux ($5$). Le numérateur $8$ est plus grand que $3$, donc $\\frac{8}{5}$ est plus grand que $\\frac{3}{5}$, même si $\\frac{8}{5}$ dépasse $1$."
+            }
+          ]
+        },
+        {
+          "title": "Même numérateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les numérateurs sont identiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons nos barres de chocolat. Cette fois, tu as une barre coupée en $3$ grosses parts et ton ami a une barre identique coupée en $6$ petites parts. Vous prenez chacun **une seule part** : toi $\\frac{1}{3}$, lui $\\frac{1}{6}$. Qui a le plus de chocolat ? Évidemment toi, car ta part est plus grande : la barre a été divisée en moins de morceaux. Quand le numérateur est le même (ici $1$), c'est le dénominateur qui décide : plus le dénominateur est grand, plus les parts sont petites, donc plus la fraction est petite."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre du haut dans une fraction. Il indique combien de parts on prend.",
+              "example": "Dans $\\frac{1}{3}$, le numérateur est $1$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 6
+                }
+              ],
+              "caption": "$\\frac{1}{3}$ est plus grand que $\\frac{1}{6}$ : la part est plus grosse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Confirme que les deux fractions ont le même numérateur. C'est le nombre de parts prises qui est identique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur le plus grand signifie que l'entier est coupé en plus de parts, donc chaque part est plus petite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fraction avec le plus petit dénominateur est la plus grande. Exemple : $\\frac{1}{3} \\gt \\frac{1}{6}$ car $3 \\lt 6$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette règle vaut pour n'importe quel numérateur commun, pas seulement $1$. Compare $\\frac{4}{5}$ et $\\frac{4}{9}$. Dans les deux cas, on a pris $4$ parts. Mais dans le premier cas, l'entier est divisé en $5$ parts (des cinquièmes, assez grands), dans le second en $9$ parts (des neuvièmes, plus petits). Quatre cinquièmes représentent donc une quantité bien plus grande que quatre neuvièmes. On écrit $\\frac{4}{5} \\gt \\frac{4}{9}$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 4,
+                  "denominator": 5
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 9
+                }
+              ],
+              "caption": "Même numérateur $4$ : $\\frac{4}{5}$ (haut) est bien plus grand que $\\frac{4}{9}$ (bas)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention au piège fréquent : on a parfois envie de dire « $9$ est plus grand que $5$, donc $\\frac{4}{9}$ est plus grand ». C'est l'inverse ! Pour t'en souvenir, imagine une pizza partagée entre $5$ amis (chacun a une grosse part) ou entre $9$ amis (chacun a une toute petite part). Plus il y a de convives (dénominateur grand), plus la part de chacun est mince. Essaie maintenant de ranger $\\frac{3}{4}$, $\\frac{3}{8}$, $\\frac{3}{2}$ dans l'ordre croissant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens d'apprendre deux stratégies complémentaires : même dénominateur $\\rightarrow$ compare numérateurs ; même numérateur $\\rightarrow$ compare dénominateurs (en inversant l'ordre). C'est comme avoir deux clés pour ouvrir des portes différentes. Mais que faire quand ni les numérateurs, ni les dénominateurs ne sont égaux ? La prochaine leçon t'offrira une troisième clé : les repères $0$, $\\frac{1}{2}$ et $1$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{2}{7}$ et $\\frac{2}{5}$ avec $\\lt$ ou $\\gt$.",
+              "answer": "\\frac{2}{7} \\lt \\frac{2}{5}",
+              "hint": "Même numérateur $2$. Le dénominateur $7$ est plus grand que $5$, donc les parts sont plus petites.",
+              "explanation": "On a pris $2$ parts dans les deux cas. Comme $7 \\gt 5$, les septièmes sont plus petits que les cinquièmes. Donc $\\frac{2}{7} \\lt \\frac{2}{5}$."
+            },
+            {
+              "question": "Range dans l'ordre décroissant : $\\frac{5}{6}$, $\\frac{5}{12}$, $\\frac{5}{3}$, $\\frac{5}{9}$.",
+              "answer": "\\frac{5}{3} \\gt \\frac{5}{6} \\gt \\frac{5}{9} \\gt \\frac{5}{12}",
+              "hint": "Tous ont numérateur $5$. Classe les dénominateurs du plus petit au plus grand : $3, 6, 9, 12$.",
+              "explanation": "Même numérateur $5$. Plus le dénominateur est petit, plus la fraction est grande. Ordre des dénominateurs : $3 \\lt 6 \\lt 9 \\lt 12$, donc ordre inverse pour les fractions."
+            },
+            {
+              "question": "Complète par $\\lt$ ou $\\gt$ : $\\frac{7}{10} \\square \\frac{7}{8}$.",
+              "answer": "\\frac{7}{10} \\lt \\frac{7}{8}",
+              "hint": "Numérateur commun $7$. Compare $10$ et $8$.",
+              "explanation": "Même numérateur $7$. Le dénominateur $10$ est plus grand que $8$, donc les dixièmes sont plus petits que les huitièmes. $\\frac{7}{10} \\lt \\frac{7}{8}$."
+            }
+          ]
+        },
+        {
+          "title": "Repères 0, 1/2, 1.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les repères $0$, $\\frac{1}{2}$ et $1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, deux fractions n'ont ni le même numérateur, ni le même dénominateur, comme $\\frac{3}{8}$ et $\\frac{5}{6}$. Impossible d'appliquer nos deux règles précédentes. Heureusement, on peut utiliser des **repères** familiers : $0$, $\\frac{1}{2}$ (la moitié) et $1$ (l'entier). Sur une droite graduée, place ces trois repères. Toute fraction se situe quelque part par rapport à eux. Si une fraction est clairement inférieure à $\\frac{1}{2}$ et l'autre clairement supérieure, la comparaison est immédiate."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repères $0$, $\\frac{1}{2}$, $1$ sur une droite graduée.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.5,
+                  "label": "\\frac{1}{2}"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Situer chaque fraction par rapport à $\\frac{1}{2}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare le numérateur à la moitié du dénominateur. Si $2 \\times \\text{numérateur} \\lt \\text{dénominateur}$, la fraction est $< \\frac{1}{2}$. Si $2 \\times \\text{numérateur} > \\text{dénominateur}$, elle est $> \\frac{1}{2}$. Si égal, elle vaut $\\frac{1}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Situer par rapport à $1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si numérateur $\\ge$ dénominateur, la fraction est $\\ge 1$. Sinon elle est $< 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux fractions sont de part et d'autre de $\\frac{1}{2}$ (ou de $1$), celle du côté droit est la plus grande. Sinon, on affine en les rapprochant d'un repère commun."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $\\frac{3}{8}$ et $\\frac{5}{6}$. Pour $\\frac{3}{8}$ : $2 \\times 3 = 6$, qui est $< 8$, donc $\\frac{3}{8} < \\frac{1}{2}$. Pour $\\frac{5}{6}$ : $2 \\times 5 = 10$, qui est $> 6$, donc $\\frac{5}{6} > \\frac{1}{2}$. L'une est à gauche de $\\frac{1}{2}$, l'autre à droite. Conclusion immédiate : $\\frac{3}{8} \\lt \\frac{5}{6}$. Pas besoin de calculer un dénominateur commun !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 6
+                }
+              ],
+              "caption": "Visualisation : $\\frac{3}{8}$ (haut) est avant la moitié, $\\frac{5}{6}$ (bas) est après."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux fractions sont du même côté d'un repère. Prenons $\\frac{5}{8}$ et $\\frac{7}{12}$. Toutes deux sont $> \\frac{1}{2}$ (car $2\\times5=10>8$ et $2\\times7=14>12$). Laquelle est la plus grande ? On peut voir laquelle est la plus proche de $1$. Pour $\\frac{5}{8}$, il manque $\\frac{3}{8}$ pour atteindre $1$. Pour $\\frac{7}{12}$, il manque $\\frac{5}{12}$. Comme $\\frac{3}{8} = \\frac{9}{24}$ et $\\frac{5}{12} = \\frac{10}{24}$, il manque moins pour $\\frac{5}{8}$, donc $\\frac{5}{8} > \\frac{7}{12}$. Autre astuce : les deux sont supérieures à $\\frac{1}{2}$, on peut les comparer en les ramenant à un dénominateur commun ($24$) : $\\frac{15}{24}$ vs $\\frac{14}{24}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu possèdes maintenant trois outils puissants pour comparer n'importe quelles fractions : 1) même dénominateur $\\rightarrow$ numérateurs ; 2) même numérateur $\\rightarrow$ dénominateurs (inversé) ; 3) repères $0, \\frac{1}{2}, 1$ pour les autres cas. Comme un détective, tu choisis l'outil le plus adapté à la situation. Entraîne-toi à reconnaître vite quelle stratégie utiliser, et la comparaison deviendra un jeu d'enfant."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux fractions qui ont le même dénominateur en regardant les numérateurs.",
+                "Je sais comparer deux fractions qui ont le même numérateur en regardant les dénominateurs (le plus petit dénominateur donne la plus grande fraction).",
+                "Je sais situer une fraction par rapport à $0$, $\\frac{1}{2}$ et $1$ pour la comparer à une autre.",
+                "Je choisis la bonne méthode selon les fractions données."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{2}{9}$ et $\\frac{3}{5}$ en utilisant les repères.",
+              "answer": "\\frac{2}{9} \\lt \\frac{3}{5}",
+              "hint": "Teste chaque fraction par rapport à $\\frac{1}{2}$ : $2\\times2=4$ vs $9$ ; $2\\times3=6$ vs $5$.",
+              "explanation": "Pour $\\frac{2}{9}$ : $2\\times2=4 < 9$, donc $\\frac{2}{9} < \\frac{1}{2}$. Pour $\\frac{3}{5}$ : $2\\times3=6 > 5$, donc $\\frac{3}{5} > \\frac{1}{2}$. Elles sont de part et d'autre de $\\frac{1}{2}$, donc $\\frac{2}{9} < \\frac{3}{5}$."
+            },
+            {
+              "question": "Les deux fractions sont supérieures à $\\frac{1}{2}$. Laquelle est la plus grande : $\\frac{4}{7}$ ou $\\frac{5}{9}$ ?",
+              "answer": "\\frac{4}{7} \\gt \\frac{5}{9}",
+              "hint": "Regarde laquelle est la plus proche de $1$ (manque le moins). Ou mets au même dénominateur $63$.",
+              "explanation": "$\\frac{4}{7} = \\frac{36}{63}$, $\\frac{5}{9} = \\frac{35}{63}$. Donc $\\frac{4}{7} > \\frac{5}{9}$. Autrement : il manque $\\frac{3}{7}$ pour $1$ à la première, $\\frac{4}{9}$ à la seconde. $\\frac{3}{7} = \\frac{27}{63} < \\frac{28}{63} = \\frac{4}{9}$, donc $\\frac{4}{7}$ est plus proche de $1$."
+            },
+            {
+              "question": "Range dans l'ordre croissant : $\\frac{1}{8}$, $\\frac{5}{6}$, $\\frac{3}{4}$, $\\frac{2}{3}$.",
+              "answer": "\\frac{1}{8} \\lt \\frac{2}{3} \\lt \\frac{3}{4} \\lt \\frac{5}{6}",
+              "hint": "Classe d'abord par rapport à $\\frac{1}{2}$ : $\\frac{1}{8} < \\frac{1}{2}$, les trois autres $> \\frac{1}{2}$. Puis compare les trois dernières entre elles (même numérateur ou dénominateur commun).",
+              "explanation": "$\\frac{1}{8}$ est la seule $< \\frac{1}{2}$, donc la plus petite. Pour les autres : $\\frac{2}{3} = \\frac{8}{12}$, $\\frac{3}{4} = \\frac{9}{12}$, $\\frac{5}{6} = \\frac{10}{12}$. Ordre : $\\frac{8}{12} < \\frac{9}{12} < \\frac{10}{12}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

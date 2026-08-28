@@ -1,0 +1,127 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 141,
+  "_course_code": "ce1-t08-c06-bilan-donnees-ce1",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire diagramme et tableau",
+  "title": "Exercices de lecture de diagrammes et tableaux CE1",
+  "blocks": [
+    {
+      "title": "Lecture d'un diagramme en barres",
+      "content": "Regarde le diagramme en barres ci dessous. Combien de pommes y a-t-il ? Il y a {{1}} pommes. Quel fruit est le plus représenté ? Le fruit le plus représenté est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "pommes"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme montre trois barres. La barre des pommes monte jusqu'à $5$, celle des poires jusqu'à $3$ et celle des bananes jusqu'à $4$. Donc il y a $5$ pommes. La barre la plus haute est celle des pommes, donc le fruit le plus représenté est les pommes.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Lecture d'un tableau",
+      "content": "Observe le tableau ci dessous. Combien de livres ont été lus le mercredi ? {{1}} livres. Quel jour a-t-on lu le plus de livres ? Le jour où l'on a lu le plus de livres est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "vendredi"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le tableau, la ligne du mercredi indique $2$ livres. La plus grande valeur est $6$ pour le vendredi, donc c'est le vendredi que l'on a lu le plus de livres.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Nombre de livres lus"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "3"
+          ],
+          [
+            "Mardi",
+            "5"
+          ],
+          [
+            "Mercredi",
+            "2"
+          ],
+          [
+            "Jeudi",
+            "4"
+          ],
+          [
+            "Vendredi",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lecture d'un diagramme circulaire",
+      "content": "Regarde le diagramme circulaire ci dessous. Quelle couleur est la plus préférée ? La couleur la plus préférée est {{1}}. Combien d'élèves aiment le vert ? {{2}} élèves aiment le vert.",
+      "correctAnswer": "",
+      "blanks": [
+        "bleu",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme circulaire montre quatre parts. La part la plus grande correspond au bleu avec $4$ élèves. La part du vert correspond à $2$ élèves. Donc la couleur la plus préférée est le bleu et $2$ élèves aiment le vert.",
+      "points": 2,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 2,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 1,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

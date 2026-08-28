@@ -1,0 +1,387 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.869217+00:00",
+  "id": 124,
+  "code": "ce1-t06-c08",
+  "title": "Calculer de petites durées",
+  "description": "Cours structuré Educalcul : Calculer de petites durées.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Calculer de petites durées",
+    "objectif_global": "Calculer de petites durées",
+    "mini_lecons_imposees": [
+      "Comparer heures de début et fin.",
+      "Compter des intervalles simples.",
+      "Exprimer une durée."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Comparer heures de début et fin.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu regardes une horloge dans la cuisine. Les aiguilles tournent doucement. Parfois, tu veux savoir quelle heure arrive en premier : celle du goûter ou celle du dessin animé. Aujourd'hui, on va apprendre à repérer deux moments dans la journée et à voir lequel vient avant l'autre."
+            },
+            {
+              "type": "clock",
+              "hours": 10,
+              "minutes": 0,
+              "caption": "Heure de début : 10 h",
+              "interactive": true
+            },
+            {
+              "type": "clock",
+              "hours": 11,
+              "minutes": 30,
+              "caption": "Heure de fin : 11 h 30",
+              "interactive": true
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les deux cadrans. Le premier montre $10$ h : la petite aiguille est sur le $10$, la grande est sur le $12$. Le second montre $11$ h $30$ : la petite aiguille est entre le $11$ et le $12$, la grande est sur le $6$. Quel moment arrive en premier ? C'est $10$ h, bien sûr ! La journée commence à minuit, puis les heures augmentent : $1$ h, $2$ h, $3$ h... jusqu'à $12$ h, puis l'après-midi continue. Donc $10$ h du matin arrive avant $11$ h $30$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux heures sont très proches, comme $16$ h et $16$ h $30$. La petite aiguille a à peine bougé. Pour bien comparer, regarde d'abord l'heure : $16$ h contre $16$ h, c'est pareil. Alors tu regardes les minutes : $0$ minute contre $30$ minutes. Celui qui a $0$ minute arrive en premier. C'est comme une course : le coureur qui a le plus petit nombre de minutes a déjà commencé avant l'autre."
+            },
+            {
+              "type": "clock",
+              "hours": 16,
+              "minutes": 0,
+              "caption": "Premier moment : 16 h",
+              "interactive": true
+            },
+            {
+              "type": "clock",
+              "hours": 16,
+              "minutes": 30,
+              "caption": "Deuxième moment : 16 h 30",
+              "interactive": true
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de tourner les aiguilles sur les cadrans interactifs. Place la première heure, puis la seconde. Dis-toi : laquelle je vois en premier dans ma journée ? Si tu as un doute, compte les heures depuis le matin : $8$ h, $9$ h, $10$ h... Celui que tu rencontres en premier en comptant est le début. L'autre est la fin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que le début soit le matin et la fin l'après-midi, comme $9$ h et $14$ h. Là, c'est facile : le matin vient toujours avant l'après-midi. Mais attention ! Parfois on écrit $9$ h pour le matin et $21$ h pour le soir. $21$ h, c'est $9$ h du soir. Le chiffre est plus grand, donc c'est plus tard. Pour ne pas te tromper, demande-toi : est-ce le matin ou le soir ? Le matin, les heures sont petites ($1$ h à $12$ h). Le soir, elles sont grandes ($13$ h à $24$ h)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les heures de la journée sur une frise",
+              "min": 0,
+              "max": 24,
+              "points": [
+                {
+                  "value": 9,
+                  "label": "9 h matin"
+                },
+                {
+                  "value": 14,
+                  "label": "14 h (2 h aprèm)"
+                },
+                {
+                  "value": 21,
+                  "label": "21 h (9 h soir)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces deux horloges, laquelle montre l'heure qui arrive en premier dans la journée ?\\nHorloge A : 8 h\\nHorloge B : 10 h",
+              "answer": "L'horloge A (8 h) arrive en premier.",
+              "hint": "Compte les heures depuis le matin : 7 h, 8 h, 9 h, 10 h. Laquelle rencontres-tu en premier ?",
+              "explanation": "8 h est plus petit que 10 h, donc 8 h arrive avant 10 h dans la journée."
+            },
+            {
+              "question": "Compare ces deux moments : 15 h et 15 h 30. Lequel est le début, lequel est la fin ?",
+              "answer": "Le début est 15 h, la fin est 15 h 30.",
+              "hint": "Les heures sont égales (15 h). Regarde les minutes : 0 contre 30. Le plus petit nombre de minutes arrive en premier.",
+              "explanation": "Même heure, minutes différentes : 0 minute < 30 minutes, donc 15 h vient avant 15 h 30."
+            },
+            {
+              "question": "Julie commence son devoir à 17 h. Elle finit à 19 h. Quelle heure est le début ? Quelle heure est la fin ?",
+              "answer": "Début : 17 h. Fin : 19 h.",
+              "hint": "17 h, c'est 5 h de l'après-midi. 19 h, c'est 7 h du soir. Quel moment vient en premier dans la journée ?",
+              "explanation": "17 h < 19 h, donc 17 h arrive avant 19 h. C'est le début."
+            }
+          ]
+        },
+        {
+          "title": "Compter des intervalles simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer le début et la fin, on va compter ce qu'il y a entre les deux. Imagine un élastique que tu tires : le bout de gauche, c'est le début, le bout de droite, c'est la fin. La longueur de l'élastique tendu, c'est la durée. Pour la trouver, on compte les sauts d'une heure à l'heure suivante."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter les heures de 9 h à 12 h",
+              "min": 8,
+              "max": 13,
+              "points": [
+                {
+                  "value": 9,
+                  "label": "9 h (début)"
+                },
+                {
+                  "value": 10,
+                  "label": "10 h"
+                },
+                {
+                  "value": 11,
+                  "label": "11 h"
+                },
+                {
+                  "value": 12,
+                  "label": "12 h (fin)"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 9,
+                  "end": 10,
+                  "label": "1 h"
+                },
+                {
+                  "start": 10,
+                  "end": 11,
+                  "label": "1 h"
+                },
+                {
+                  "start": 11,
+                  "end": 12,
+                  "label": "1 h"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la frise. On part de $9$ h. On saute à $10$ h : c'est $1$ heure. On saute à $11$ h : c'est encore $1$ heure. On saute à $12$ h : encore $1$ heure. Combien de sauts ? $3$ sauts. Donc la durée de $9$ h à $12$ h est de $3$ heures. C'est comme monter les marches d'un escalier : chaque marche est une heure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les heures ne sont pas pile, il y a des demies-heures. Par exemple, de $14$ h à $15$ h $30$. On peut compter en deux temps : d'abord les heures pleines, puis la demi-heure qui reste. De $14$ h à $15$ h, il y a $1$ heure. De $15$ h à $15$ h $30$, il y a $30$ minutes, c'est une demi-heure. Au total : $1$ heure et $30$ minutes. On peut aussi compter par sauts de $30$ minutes : $14$ h → $14$ h $30$ → $15$ h → $15$ h $30$. Ça fait $3$ sauts de $30$ minutes."
+            },
+            {
+              "type": "clock",
+              "hours": 14,
+              "minutes": 0,
+              "caption": "Début : 14 h",
+              "interactive": true
+            },
+            {
+              "type": "clock",
+              "hours": 15,
+              "minutes": 30,
+              "caption": "Fin : 15 h 30",
+              "interactive": true
+            },
+            {
+              "type": "paragraph",
+              "content": "Tourne les aiguilles sur les cadrans. Avance la première horloge de $30$ minutes en $30$ minutes jusqu'à atteindre la seconde. Compte combien de fois tu as tourné la grande aiguille d'un demi-tour. Chaque demi-tour, c'est $30$ minutes. Ici, tu as fait $3$ demi-tours : $30$ min + $30$ min + $30$ min = $90$ minutes, soit $1$ h $30$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a une astuce pour compter vite sans te tromper : utilise tes doigts ! Pose un doigt sur l'heure de début. Avance d'une heure, lève un doigt. Avance encore, lève un autre doigt. Continue jusqu'à l'heure de fin. Le nombre de doigts levés, c'est le nombre d'heures. S'il reste une demi-heure à la fin, tu le notes à part. Essaie avec $10$ h à $12$ h $30$ : $10$ h → $11$ h (1 doigt), $11$ h → $12$ h (2 doigts), puis $12$ h → $12$ h $30$ (demi-heure). Résultat : $2$ h $30$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter par heures puis ajouter la demi-heure",
+              "min": 9,
+              "max": 14,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "10 h"
+                },
+                {
+                  "value": 11,
+                  "label": "11 h"
+                },
+                {
+                  "value": 12,
+                  "label": "12 h"
+                },
+                {
+                  "value": 12.5,
+                  "label": "12 h 30"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 10,
+                  "end": 11,
+                  "label": "1 h"
+                },
+                {
+                  "start": 11,
+                  "end": 12,
+                  "label": "1 h"
+                },
+                {
+                  "start": 12,
+                  "end": 12.5,
+                  "label": "30 min"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'heures y a-t-il entre 9 h et 11 h ?",
+              "answer": "2 heures",
+              "hint": "Compte les sauts sur la frise : 9 h → 10 h (1), 10 h → 11 h (2).",
+              "explanation": "De 9 h à 10 h il y a 1 heure, de 10 h à 11 h il y a 1 heure. Total : 2 heures."
+            },
+            {
+              "question": "Quelle est la durée entre 16 h et 17 h 30 ?",
+              "answer": "1 heure 30 minutes",
+              "hint": "D'abord compte l'heure pleine : 16 h → 17 h. Ensuite ajoute la demi-heure : 17 h → 17 h 30.",
+              "explanation": "16 h à 17 h = 1 heure. 17 h à 17 h 30 = 30 minutes. Ensemble : 1 h 30 min."
+            },
+            {
+              "question": "Un film commence à 14 h 30 et finit à 16 h. Combien de temps dure-t-il ?",
+              "answer": "1 heure 30 minutes",
+              "hint": "Compte par sauts de 30 minutes : 14 h 30 → 15 h → 15 h 30 → 16 h. Combien de sauts ?",
+              "explanation": "3 sauts de 30 minutes = 90 minutes = 1 heure 30 minutes."
+            }
+          ]
+        },
+        {
+          "title": "Exprimer une durée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer deux heures et compter l'intervalle. Il reste à écrire la durée comme on le fait sur un cahier ou une affiche. On utilise deux petites lettres : $h$ pour heure et $min$ pour minute. Par exemple, $2$ h $15$ min se lit \"deux heures quinze minutes\". Le $h$ vient après le nombre d'heures, le $min$ après le nombre de minutes. C'est comme une étiquette qui dit de quoi on parle."
+            },
+            {
+              "type": "definition",
+              "term": "Durée",
+              "definition": "C'est le temps qui s'écoule entre un moment de début et un moment de fin. On l'exprime en heures ($h$) et en minutes ($min$).",
+              "example": "De 10 h à 11 h 30, la durée est 1 h 30 min."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas mélanger ! Si tu as $90$ minutes, ce n'est pas $90$ min qu'on écrit d'habitude, mais $1$ h $30$ min. Parce que $60$ minutes font $1$ heure. Quand tu as $60$ minutes ou plus, tu groupes par paquets de $60$ pour faire des heures. $90$ minutes = $60$ minutes + $30$ minutes = $1$ heure + $30$ minutes = $1$ h $30$ min. C'est plus clair à lire."
+            },
+            {
+              "type": "display_math",
+              "latex": "60\\,min = 1\\,h"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la durée est une heure pile, comme $3$ h. On écrit simplement $3$ h, sans écrire $0$ min. C'est plus court et tout le monde comprend qu'il n'y a pas de minutes en plus. De même, si la durée est seulement des minutes, comme $45$ minutes, on écrit $45$ min. Pas besoin d'écrire $0$ h devant. L'important, c'est que ce soit lisible vite fait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'écrire ces durées toi-même sur ton ardoise : $2$ heures = $2$ h. $1$ heure $20$ minutes = $1$ h $20$ min. $50$ minutes = $50$ min. $3$ heures $45$ minutes = $3$ h $45$ min. Regarde comme c'est net : le nombre, puis la petite étiquette $h$ ou $min$. Pas d'espace entre le nombre et la lettre ? Si, un petit espace ! On écrit $2$ h, pas $2$h. Ça se lit mieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons un exemple complet. Léa commence sa récréation à $10$ h $15$. Elle rentre en classe à $10$ h $45$. Quelle est la durée de la récré ? Début : $10$ h $15$. Fin : $10$ h $45$. Les heures sont les mêmes ($10$ h), on regarde les minutes : $45 - 15 = 30$ minutes. La durée est $30$ min. On écrit : $30$ min. Pas d'heure, juste des minutes. C'est fini, tu sais tout pour calculer et écrire de petites durées !"
+            },
+            {
+              "type": "clock",
+              "hours": 10,
+              "minutes": 15,
+              "caption": "Début récré : 10 h 15",
+              "interactive": true
+            },
+            {
+              "type": "clock",
+              "hours": 10,
+              "minutes": 45,
+              "caption": "Fin récré : 10 h 45",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire quelle heure arrive en premier entre deux moments.",
+                "Je sais compter les heures et les demi-heures entre un début et une fin.",
+                "Je sais écrire une durée avec h et min (ex : 1 h 30 min).",
+                "Je sais convertir 60 minutes en 1 heure quand il le faut."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la durée avec h et min : 1 heure 15 minutes.",
+              "answer": "1 h 15 min",
+              "hint": "Le nombre d'heures, puis h, puis le nombre de minutes, puis min. N'oublie pas l'espace !",
+              "explanation": "1 heure = 1 h. 15 minutes = 15 min. Ensemble : 1 h 15 min."
+            },
+            {
+              "question": "Une partie de cache-cache dure 75 minutes. Écris cette durée en heures et minutes.",
+              "answer": "1 h 15 min",
+              "hint": "Combien de fois 60 minutes dans 75 ? Le reste, ce sont les minutes.",
+              "explanation": "75 minutes = 60 minutes + 15 minutes = 1 heure + 15 minutes = 1 h 15 min."
+            },
+            {
+              "question": "Tom commence à lire à 16 h 20. Il s'arrête à 17 h. Combien de temps a-t-il lu ? Écris la durée.",
+              "answer": "40 min",
+              "hint": "Même heure de début et de fin ? Non, 16 h 20 à 17 h. Compte les minutes qui manquent à 17 h.",
+              "explanation": "De 16 h 20 à 17 h, il manque 40 minutes pour faire une heure pile. Durée = 40 min."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

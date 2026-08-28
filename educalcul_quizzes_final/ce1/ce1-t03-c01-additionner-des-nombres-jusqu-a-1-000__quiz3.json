@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 88,
+  "_course_code": "ce1-t03-c01-additionner-des-nombres-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Vérifier par ordre de grandeur simple",
+  "title": "Vérifier une addition par ordre de grandeur",
+  "questions": [
+    {
+      "text": "On veut estimer le résultat de l'addition $234 + 512$ en arrondissant chaque nombre à la centaine la plus proche. Quelle est la valeur approchée du total ?",
+      "options": [
+        "600",
+        "700",
+        "800",
+        "900"
+      ],
+      "correctAnswer": "700",
+      "explanation": "Pour estimer par ordre de grandeur, on arrondit chaque nombre à la centaine : $234$ devient $200$ et $512$ devient $500$. On additionne ensuite les centaines : $200 + 500 = 700$. Les réponses $600$, $800$ et $900$ correspondent à des erreurs d'arrondi ou d'addition des centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les additions suivantes, laquelle donne un résultat de l'ordre de $600$ (proche de $600$) ?",
+      "options": [
+        "$150 + 250$",
+        "$280 + 310$",
+        "$450 + 250$",
+        "$500 + 50$"
+      ],
+      "correctAnswer": "$280 + 310$",
+      "explanation": "On estime chaque somme : $150 + 250 \\approx 200 + 300 = 500$ ; $280 + 310 \\approx 300 + 300 = 600$ ; $450 + 250 \\approx 500 + 300 = 800$ ; $500 + 50 \\approx 500 + 100 = 600$ mais $550$ est plus éloigné de $600$ que le résultat de $280+310$ qui est $590$. L'addition $280 + 310$ est celle dont l'ordre de grandeur (centaines) est le plus clairement $600$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève calcule $456 + 321$ et trouve $987$. En vérifiant par ordre de grandeur, que peut-on dire de ce résultat ?",
+      "options": [
+        "C'est un résultat plausible.",
+        "C'est beaucoup trop grand.",
+        "C'est beaucoup trop petit.",
+        "On ne peut pas vérifier sans refaire le calcul exact."
+      ],
+      "correctAnswer": "C'est beaucoup trop grand.",
+      "explanation": "On arrondit à la centaine : $456 \\approx 500$ et $321 \\approx 300$. La somme estimée est $500 + 300 = 800$. Le résultat exact doit être proche de $800$. La proposition $987$ est proche de $1000$, elle est donc beaucoup trop grande (erreur probable de retenue mal gérée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour l'addition $678 + 214$, quel est l'ordre de grandeur du résultat (arrondi à la centaine) ?",
+      "options": [
+        "700",
+        "800",
+        "900",
+        "1 000"
+      ],
+      "correctAnswer": "900",
+      "explanation": "On arrondit les nombres à la centaine : $678$ est plus proche de $700$ (car $78 > 50$) et $214$ est plus proche de $200$. On additionne les centaines : $700 + 200 = 900$. Le résultat exact est $892$, ce qui confirme l'estimation à $900$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $345$ autocollants. Max en a $267$. Environ combien d'autocollants ont-ils à eux deux ?",
+      "options": [
+        "500",
+        "600",
+        "700",
+        "800"
+      ],
+      "correctAnswer": "600",
+      "explanation": "On estime le nombre d'autocollants de chacun à la centaine : $345 \\approx 300$ et $267 \\approx 300$. En additionnant les estimations : $300 + 300 = 600$. Le total exact est $612$, l'ordre de grandeur $600$ est donc le bon. $500$ serait l'estimation si on arrondissait $267$ à $200$ (erreur), et $700$ si on arrondissait $345$ à $400$ (erreur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

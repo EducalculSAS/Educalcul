@@ -1,0 +1,352 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.756911+00:00",
+  "id": 89,
+  "code": "ce1-t03-c02",
+  "title": "Addition posée avec retenues",
+  "description": "Cours structuré Educalcul : Addition posée avec retenues.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Addition posée avec retenues",
+    "objectif_global": "Addition posée avec retenues",
+    "mini_lecons_imposees": [
+      "Aligner C-D-U.",
+      "Gérer retenues.",
+      "Vérifier le résultat."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Aligner C-D-U.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi bien ranger les chiffres ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux ajouter $45$ billes et $37$ billes. Si tu écris les chiffres n'importe comment, tu risques de mélanger les dizaines et les unités. Le secret, c'est de mettre chaque chiffre dans sa bonne colonne : les unités sous les unités, les dizaines sous les dizaines. Comme ça, tu ajoutes ce qui va ensemble."
+            },
+            {
+              "type": "definition",
+              "term": "Alignement",
+              "definition": "Ranger les chiffres les uns sous les autres pour que les unités, les dizaines et les centaines soient bien dans la même colonne verticale.",
+              "example": "Pour $45 + 37$, on écrit le $5$ au-dessus du $7$ (unités) et le $4$ au-dessus du $3$ (dizaines)."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 5,
+              "caption": "45 : 4 dizaines et 5 unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 7,
+              "caption": "37 : 3 dizaines et 7 unités"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "45",
+                "37"
+              ],
+              "result": "82",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons ce qui se passe avec des nombres à trois chiffres. Si tu as $245$ et $138$, tu as aussi des centaines. Il faut donc une colonne de plus à gauche. Le $2$ de $245$ et le $1$ de $138$ se placent dans la colonne des centaines. Les dizaines et les unités restent alignées comme avant."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "245",
+                "138"
+              ],
+              "result": "383",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux nombres n'ont pas le même nombre de chiffres. Par exemple $45 + 378$. Ici, $45$ n'a pas de centaines. On laisse la case des centaines vide pour $45$ (ou on met un zéro invisible), et on aligne le $5$ sous le $8$, le $4$ sous le $7$. Ainsi, chaque colonne ne contient que des chiffres du même poids."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "45",
+                "378"
+              ],
+              "result": "423",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu que l'alignement, c'est comme ranger tes jouets dans les bonnes boîtes : les unités ensemble, les dizaines ensemble, les centaines ensemble. Quand tout est bien rangé, l'addition devient facile. Dans la prochaine leçon, on verra quoi faire quand la somme d'une colonne dépasse $9$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'addition $52 + 26$ en alignant bien les dizaines et les unités. Quelle est la somme ?",
+              "answer": "78",
+              "hint": "Mets le $2$ de $52$ au-dessus du $6$ de $26$. Ajoute les unités, puis les dizaines.",
+              "explanation": "En alignant : $2+6=8$ unités, $5+2=7$ dizaines. Résultat $78$."
+            },
+            {
+              "question": "Pour $314 + 251$, place les centaines, dizaines et unités dans les bonnes colonnes. Calcule le résultat.",
+              "answer": "565",
+              "hint": "Trois colonnes : centaines, dizaines, unités. Ajoute colonne par colonne en partant de la droite.",
+              "explanation": "Unités : $4+1=5$. Dizaines : $1+5=6$. Centaines : $3+2=5$. Donc $565$."
+            },
+            {
+              "question": "Aligne $63 + 482$ correctement. Une case des centaines reste vide pour $63$. Trouve la somme.",
+              "answer": "545",
+              "hint": "Écris $63$ sous $482$ en décalant vers la droite : $3$ sous $2$, $6$ sous $8$. La case des centaines de $63$ est vide.",
+              "explanation": "Unités : $3+2=5$. Dizaines : $6+8=14$ (on verra la retenue plus tard). Centaines : $4$. Résultat $545$."
+            }
+          ]
+        },
+        {
+          "title": "Gérer retenues.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les unités font plus de 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà aligné tes chiffres. Maintenant, ajoutons $28 + 35$. Dans la colonne des unités, $8 + 5 = 13$. On ne peut pas écrire $13$ dans une seule case des unités. On garde le $3$ des unités et on envoie le $1$ des dizaines dans la colonne d'à côté. Ce $1$ qu'on déplace, on l'appelle une retenue."
+            },
+            {
+              "type": "definition",
+              "term": "Retenue",
+              "definition": "Quand la somme d'une colonne fait $10$ ou plus, on écrit le chiffre des unités et on porte le chiffre des dizaines au sommet de la colonne suivante.",
+              "example": "$8+5=13$ : on écrit $3$, on retient $1$ au-dessus des dizaines."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "35"
+              ],
+              "result": "63",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la retenue s'ajoute aux dizaines et fait encore $10$ ou plus. Regarde $47 + 68$. Unités : $7+8=15$, j'écris $5$, je retiens $1$. Dizaines : $4+6=10$, plus la retenue $1$ fait $11$. J'écris $1$ des dizaines et j'envoie $1$ des centaines. Comme il n'y a pas de colonne centaines, j'écris ce $1$ devant le résultat."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "47",
+                "68"
+              ],
+              "result": "115",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi qu'une retenue vienne des unités et fasse déborder les dizaines, qui elles-mêmes font déborder les centaines. C'est le cas pour $298 + 156$. Unités : $8+6=14$ (ret $1$). Dizaines : $9+5=14$, plus $1$ fait $15$ (ret $1$). Centaines : $2+1=3$, plus $1$ fait $4$. Le résultat est $454$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "298",
+                "156"
+              ],
+              "result": "454",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant le pouvoir de gérer les retenues : tu écris le chiffre des unités, tu portes le chiffre des dizaines au-dessus de la colonne suivante. N'oublie pas d'ajouter la retenue quand tu calcules la colonne d'à côté. La prochaine leçon te montrera comment vérifier que ton résultat est correct."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $36 + 48$ en posant l'addition. N'oublie pas la retenue des unités.",
+              "answer": "84",
+              "hint": "$6+8=14$, écris $4$, retiens $1$. Puis $3+4+1=8$.",
+              "explanation": "Unités : $6+8=14$, j'écris $4$, je retiens $1$. Dizaines : $3+4=7$, plus $1$ fait $8$. Résultat $84$."
+            },
+            {
+              "question": "Fais l'addition $59 + 72$. Il y a une retenue qui va jusqu'aux centaines.",
+              "answer": "131",
+              "hint": "$9+2=11$ (ret $1$). $5+7=12$, plus $1$ fait $13$ (ret $1$ aux centaines).",
+              "explanation": "Unités : $9+2=11$, j'écris $1$, retiens $1$. Dizaines : $5+7=12$, plus $1$ fait $13$, j'écris $3$, retiens $1$. Centaines : $1$. Résultat $131$."
+            },
+            {
+              "question": "Additionne $185 + 239$. Gère les deux retenues successives.",
+              "answer": "424",
+              "hint": "Unités : $5+9=14$ (ret $1$). Dizaines : $8+3=11$, plus $1$ fait $12$ (ret $1$). Centaines : $1+2=3$, plus $1$ fait $4$.",
+              "explanation": "Unités : $14$ → $4$, ret $1$. Dizaines : $8+3+1=12$ → $2$, ret $1$. Centaines : $1+2+1=4$. Total $424$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier le résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier avec l'addition inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as fait une addition posée et tu as trouvé un résultat. Comment être sûr qu'il est bon ? La méthode la plus simple, c'est de refaire l'addition dans l'autre sens. L'addition est commutative : $a+b = b+a$. Si tu as calculé $245 + 138 = 383$, refais $138 + 245$. Si tu retrouves $383$, c'est gagné."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "138",
+                "245"
+              ],
+              "result": "383",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre astuce : utilise la soustraction, qui est l'opération inverse. Si $245 + 138 = 383$, alors $383 - 138$ doit redonner $245$, et $383 - 245$ doit redonner $138$. Essaie de poser la soustraction pour vérifier. C'est comme défaire un nœud pour voir si le fil est bien attaché."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "383",
+                "138"
+              ],
+              "result": "245",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on n'a pas le temps de tout refaire. On peut faire une estimation rapide : on arrondit chaque nombre à la dizaine la plus proche, on additionne mentalement, et on regarde si le résultat trouvé est proche. Pour $245 + 138$, $245$ devient $250$, $138$ devient $140$. $250+140=390$. Mon résultat $383$ est tout près de $390$, c'est bon signe."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation : 245≈250, 138≈140, somme≈390",
+              "min": 370,
+              "max": 400,
+              "points": [
+                {
+                  "value": 383,
+                  "label": "Résultat exact"
+                },
+                {
+                  "value": 390,
+                  "label": "Estimation"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour vérifier : refaire l'addition dans l'autre sens, faire la soustraction inverse, ou estimer en arrondissant. Choisis celui qui te plaît le plus selon le temps que tu as. Bravo, tu sais maintenant aligner, gérer les retenues et vérifier tes additions posées !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais aligner les chiffres par unités, dizaines, centaines.",
+                "Je sais poser une retenue quand la somme dépasse 9.",
+                "Je sais ajouter la retenue à la colonne suivante.",
+                "Je sais vérifier mon résultat par l'addition inverse, la soustraction ou l'estimation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as calculé $412 + 259 = 671$. Vérifie en refaisant l'addition dans l'autre sens : $259 + 412$.",
+              "answer": "671",
+              "hint": "Pose $259 + 412$ et ajoute colonne par colonne. Tu dois retrouver $671$.",
+              "explanation": "$259+412 = 671$. Le résultat est confirmé."
+            },
+            {
+              "question": "Pour vérifier $536 + 184 = 720$, fais la soustraction $720 - 184$. Quel nombre dois-tu retrouver ?",
+              "answer": "536",
+              "hint": "Si $a+b=c$, alors $c-b=a$. Ici $c=720$, $b=184$, donc $a=536$.",
+              "explanation": "$720 - 184 = 536$. L'addition est correcte."
+            },
+            {
+              "question": "Estime le résultat de $348 + 267$ en arrondissant à la dizaine. Lequel de ces résultats est plausible : $615$, $715$, $515$ ?",
+              "answer": "615",
+              "hint": "$348≈350$, $267≈270$. $350+270=620$. Cherche le résultat le plus proche de $620$.",
+              "explanation": "L'estimation donne $620$. Parmi les propositions, $615$ est le plus proche. C'est le résultat exact."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

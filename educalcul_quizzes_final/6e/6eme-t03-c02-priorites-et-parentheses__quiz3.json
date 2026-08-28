@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Justifier",
+  "title": "Quiz : Justifier les priorités opératoires",
+  "questions": [
+    {
+      "text": "Dans le calcul $15 + 6 \\times 2$, quelle est la première opération à effectuer et pourquoi ?",
+      "options": [
+        "On commence par l'addition $15 + 6$ car elle est la plus à gauche.",
+        "On commence par la multiplication $6 \\times 2$ car la multiplication est prioritaire sur l'addition.",
+        "On commence par l'addition $15 + 6$ car l'addition est prioritaire sur la multiplication.",
+        "On commence par la multiplication $6 \\times 2$ car elle est la plus à droite."
+      ],
+      "correctAnswer": "On commence par la multiplication $6 \\times 2$ car la multiplication est prioritaire sur l'addition.",
+      "explanation": "La règle de priorité stipule que la multiplication (et la division) sont prioritaires sur l'addition (et la soustraction). Il faut donc calculer $6 \\times 2 = 12$ en premier, puis ajouter $15$ pour obtenir $27$. L'option A et C confondent la priorité avec l'ordre de lecture. L'option D donne la bonne opération mais pour une mauvaise raison (la position ne détermine pas la priorité).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour justifier le calcul de $(18 - 5) \\times 3$, quelle suite d'étapes est correcte ?",
+      "options": [
+        "Je calcule $18 - 5 = 13$, puis je multiplie $13 \\times 3 = 39$. Les parenthèses sont prioritaires.",
+        "Je calcule $5 \\times 3 = 15$, puis je fais $18 - 15 = 3$. La multiplication est prioritaire.",
+        "Je calcule $18 \\times 3 = 54$, puis je fais $54 - 5 = 49$. Je vais de la gauche vers la droite.",
+        "Je calcule $18 - 5 = 13$, puis j'ajoute $13 + 3 = 16$. Je remplace la multiplication par une addition."
+      ],
+      "correctAnswer": "Je calcule $18 - 5 = 13$, puis je multiplie $13 \\times 3 = 39$. Les parenthèses sont prioritaires.",
+      "explanation": "Les parenthèses imposent de faire le calcul qu'elles contiennent en tout premier, quelle que soit l'opération. Ici, on fait $18 - 5 = 13$. Ensuite, il ne reste plus que la multiplication $13 \\times 3 = 39$. L'option B ignore les parenthèses en appliquant la priorité de la multiplication hors parenthèses. L'option C calcule de gauche à droite sans respecter les parenthèses. L'option D change l'opération finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève calcule $20 - 4 \\times 3$ ainsi : « Je fais $20 - 4 = 16$, puis $16 \\times 3 = 48$. » Quelle affirmation justifie correctement son erreur ?",
+      "options": [
+        "L'élève a raison, on calcule toujours de la gauche vers la droite.",
+        "L'élève a tort, il aurait dû commencer par la multiplication $4 \\times 3 = 12$, puis faire $20 - 12 = 8$.",
+        "L'élève a tort, il aurait dû commencer par l'addition.",
+        "L'élève a tort, il a inversé les nombres dans la soustraction."
+      ],
+      "correctAnswer": "L'élève a tort, il aurait dû commencer par la multiplication $4 \\times 3 = 12$, puis faire $20 - 12 = 8$.",
+      "explanation": "L'élève a appliqué un calcul strictement de gauche à droite sans respecter la priorité de la multiplication sur la soustraction. L'opération prioritaire est $4 \\times 3 = 12$. Le calcul correct est $20 - 12 = 8$. L'option A valide l'erreur. L'option C mentionne une addition inexistante. L'option D ne correspond pas à l'erreur commise (l'ordre des termes de la soustraction n'a pas été inversé).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complétez la justification pour $5 \\times (4 + 2)$ : « Pour calculer $5 \\times (4 + 2)$, je commence par ... car ... »",
+      "options": [
+        "calculer $5 \\times 4 = 20$ / la multiplication est prioritaire.",
+        "calculer $4 + 2 = 6$ / les parenthèses sont prioritaires.",
+        "calculer $5 \\times 2 = 10$ / on prend les nombres les plus proches.",
+        "calculer $4 + 2 = 6$ / l'addition est toujours prioritaire."
+      ],
+      "correctAnswer": "calculer $4 + 2 = 6$ / les parenthèses sont prioritaires.",
+      "explanation": "La présence de parenthèses change l'ordre des priorités : ce qui est à l'intérieur doit être calculé en premier. On calcule donc $4 + 2 = 6$, puis $5 \\times 6 = 30$. L'option A ignore les parenthèses. L'option C n'a pas de sens mathématique. L'option D donne la bonne opération mais la mauvaise justification : l'addition n'est pas « toujours » prioritaire, elle l'est ici uniquement à cause des parenthèses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux élèves justifient $30 - 12 + 6$.\\nÉlève 1 : « Je calcule $30 - 12 = 18$, puis $18 + 6 = 24$. »\\nÉlève 2 : « Je calcule $12 + 6 = 18$, puis $30 - 18 = 12$. »\\nLaquelle des justifications est correcte ?",
+      "options": [
+        "L'élève 1, car l'addition est prioritaire sur la soustraction.",
+        "L'élève 2, car on calcule de la droite vers la gauche.",
+        "L'élève 1, car l'addition et la soustraction ont la même priorité, on calcule de la gauche vers la droite.",
+        "L'élève 2, car la soustraction est prioritaire sur l'addition."
+      ],
+      "correctAnswer": "L'élève 1, car l'addition et la soustraction ont la même priorité, on calcule de la gauche vers la droite.",
+      "explanation": "L'addition et la soustraction ont le même niveau de priorité. En l'absence de parenthèses, on effectue les opérations dans l'ordre de lecture, de la gauche vers la droite. L'élève 1 fait correctement $30 - 12 = 18$ puis $18 + 6 = 24$. L'élève 2 a effectué l'addition avant la soustraction, ce qui revient à calculer $30 - (12 + 6)$, ce qui n'est pas l'expression écrite. Les options A et D inventent une fausse hiérarchie entre addition et soustraction. L'option B donne une fausse règle de lecture.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

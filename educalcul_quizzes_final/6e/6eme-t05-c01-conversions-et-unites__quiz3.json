@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 352,
+  "_course_code": "6eme-t05-c01-conversions-et-unites",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Problèmes",
+  "title": "Quiz : Problèmes avec conversions d'unités (6e)",
+  "questions": [
+    {
+      "text": "Un cycliste parcourt $12\\text{ km}$ le matin et $8\\,500\\text{ m}$ l'après-midi. Quelle distance totale a-t-il parcourue en kilomètres ?",
+      "options": [
+        "$20,5\\text{ km}$",
+        "$20,05\\text{ km}$",
+        "$12,85\\text{ km}$",
+        "$205\\text{ km}$"
+      ],
+      "correctAnswer": "$20,5\\text{ km}$",
+      "explanation": "Il faut convertir les mètres en kilomètres avant d'additionner. $8\\,500\\text{ m} = 8,5\\text{ km}$ (on divise par $1\\,000$ ou on décale la virgule de trois rangs). On additionne : $12 + 8,5 = 20,5\\text{ km}$. L'option B correspond à une erreur de conversion ($850\\text{ m}$ au lieu de $8\\,500\\text{ m}$), l'option C à une addition sans conversion ($12 + 0,85$), l'option D à une multiplication par $10$ au lieu d'une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une cagette de pommes pèse $15\\text{ kg}$. On retire $2\\,800\\text{ g}$ de pommes abîmées. Quelle est la masse restante en kilogrammes ?",
+      "options": [
+        "$12,2\\text{ kg}$",
+        "$12,8\\text{ kg}$",
+        "$13,2\\text{ kg}$",
+        "$14\\,997,2\\text{ kg}$"
+      ],
+      "correctAnswer": "$12,2\\text{ kg}$",
+      "explanation": "Convertir les grammes en kilogrammes : $2\\,800\\text{ g} = 2,8\\text{ kg}$ (division par $1\\,000$). Soustraire : $15 - 2,8 = 12,2\\text{ kg}$. L'option B correspond à une soustraction de $2,2$ au lieu de $2,8$, l'option C à une soustraction de $1,8$, l'option D à une absence totale de conversion (soustraction de $2\\,800$ à $15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille contient $1,5\\text{ L}$ de jus. On verse $35\\text{ cL}$ dans un verre et $200\\text{ mL}$ dans un autre. Quel volume reste-t-il dans la bouteille en centilitres ?",
+      "options": [
+        "$115\\text{ cL}$",
+        "$95\\text{ cL}$",
+        "$111,5\\text{ cL}$",
+        "$1\\,445\\text{ cL}$"
+      ],
+      "correctAnswer": "$95\\text{ cL}$",
+      "explanation": "Tout convertir en centilitres : $1,5\\text{ L} = 150\\text{ cL}$ (multiplication par $100$). $200\\text{ mL} = 20\\text{ cL}$ (division par $10$). Volume versé : $35 + 20 = 55\\text{ cL}$. Reste : $150 - 55 = 95\\text{ cL}$. L'option A oublie de convertir les $200\\text{ mL}$ ($35$ seulement soustrait), l'option C convertit mal les $200\\text{ mL}$ en $2,5\\text{ cL}$, l'option D ne convertit pas le litre initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un film commence à $14\\text{ h }25\\text{ min}$ et se termine à $16\\text{ h }10\\text{ min}$. Combien de minutes dure le film ?",
+      "options": [
+        "$105\\text{ min}$",
+        "$115\\text{ min}$",
+        "$100\\text{ min}$",
+        "$2\\text{ h }45\\text{ min}$"
+      ],
+      "correctAnswer": "$105\\text{ min}$",
+      "explanation": "Calculer la durée par paliers : de $14\\text{ h }25$ à $15\\text{ h }25$ il y a $1\\text{ h} = 60\\text{ min}$. De $15\\text{ h }25$ à $16\\text{ h }10$ il y a $45\\text{ min}$ (car $25 + 45 = 70 = 1\\text{ h }10$). Total : $60 + 45 = 105\\text{ min}$. L'option B ajoute $10$ minutes de trop, l'option C arrondit mal, l'option D donne la durée en heures/minutes mais la question demande les minutes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une recette, Paul a besoin de $2,5\\text{ kg}$ de farine. Il a un sac de $1\\text{ kg}$, un paquet de $800\\text{ g}$ et une boîte de $650\\text{ g}$. Combien de grammes de farine lui manquent-ils ?",
+      "options": [
+        "$50\\text{ g}$",
+        "$1\\,050\\text{ g}$",
+        "$500\\text{ g}$",
+        "$450\\text{ g}$"
+      ],
+      "correctAnswer": "$50\\text{ g}$",
+      "explanation": "Convertir le besoin en grammes : $2,5\\text{ kg} = 2\\,500\\text{ g}$. Additionner ce que Paul possède : $1\\text{ kg} = 1\\,000\\text{ g}$, plus $800\\text{ g}$ plus $650\\text{ g}$ donne $1\\,000 + 800 + 650 = 2\\,450\\text{ g}$. Manquant : $2\\,500 - 2\\,450 = 50\\text{ g}$. L'option B est la masse qu'il possède déjà, l'option C correspond à une erreur de conversion ($2,5\\text{ kg} = 2\\,050\\text{ g}$), l'option D à une erreur d'addition ($1\\,000 + 800 + 650 = 2\\,050$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

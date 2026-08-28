@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Vérifier distances à l'axe",
+  "title": "Quiz : Vérifier les distances à l'axe de symétrie",
+  "questions": [
+    {
+      "text": "Pour vérifier si un point est bien placé par rapport à un axe de symétrie, quelle mesure doit-on comparer ?",
+      "options": [
+        "La distance du point à l'axe de symétrie",
+        "La distance entre les deux points symétriques",
+        "La couleur du point",
+        "La taille du quadrillage"
+      ],
+      "correctAnswer": "La distance du point à l'axe de symétrie",
+      "explanation": "En symétrie axiale, un point et son image sont à la même distance de l'axe. Pour vérifier le tracé, on compte le nombre de cases qui séparent le point de l'axe des deux côtés. Les autres options ne correspondent pas à la propriété géométrique de la symétrie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, un axe de symétrie vertical est tracé. Un point A est placé à $2$ cases à gauche de l'axe. Quelle est la distance du point A à l'axe ?",
+      "options": [
+        "$1$ case",
+        "$2$ cases",
+        "$3$ cases",
+        "$4$ cases"
+      ],
+      "correctAnswer": "$2$ cases",
+      "explanation": "La distance d'un point à un axe sur un quadrillage se compte en nombre de cases qui les séparent. Puisque le point A est placé à $2$ cases à gauche, sa distance à l'axe est de $2$ cases. Les autres valeurs correspondent à des erreurs de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point B est le symétrique du point A par rapport à un axe vertical. Si le point A est à $3$ cases de l'axe, à quelle distance se trouve le point B de l'axe ?",
+      "options": [
+        "$2$ cases",
+        "$3$ cases",
+        "$4$ cases",
+        "$6$ cases"
+      ],
+      "correctAnswer": "$3$ cases",
+      "explanation": "La propriété fondamentale de la symétrie axiale est que les deux points symétriques sont à distance égale de l'axe. Si A est à $3$ cases, B doit aussi être à $3$ cases de l'axe (de l'autre côté). $6$ cases serait la distance totale entre A et B, pas la distance à l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a tracé un point C à $4$ cases au-dessus d'un axe horizontal. On a tracé son symétrique C' à $3$ cases au-dessous du même axe. Est-ce que C' est bien le symétrique de C ?",
+      "options": [
+        "Oui car ils sont de part et d'autre de l'axe",
+        "Non car les distances à l'axe sont différentes",
+        "Oui car ils sont sur la même verticale",
+        "Non car l'axe est horizontal"
+      ],
+      "correctAnswer": "Non car les distances à l'axe sont différentes",
+      "explanation": "Pour être symétriques, les deux points doivent être à la même distance de l'axe. Ici C est à $4$ cases et C' est à $3$ cases. La différence de distance ($4$ contre $3$) prouve que C' n'est pas le symétrique de C. Le fait d'être de part et d'autre ou sur la même perpendiculaire est nécessaire mais pas suffisant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux points D et E sont symétriques par rapport à un axe vertical. Le point D est à $5$ cases à gauche de l'axe. Le point E est à $5$ cases à droite de l'axe. Combien y a-t-il de cases entre D et E ?",
+      "options": [
+        "$5$ cases",
+        "$10$ cases",
+        "$0$ case",
+        "$15$ cases"
+      ],
+      "correctAnswer": "$10$ cases",
+      "explanation": "La distance totale entre deux points symétriques est la somme de leurs distances à l'axe. D est à $5$ cases, E est à $5$ cases, donc il y a $5 + 5 = 10$ cases entre eux. $5$ cases correspond seulement à la distance d'un point à l'axe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

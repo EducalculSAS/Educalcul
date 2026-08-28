@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 228,
+  "_course_code": "cm1-t03-c03-multiplication-par-un-nombre-a-plusieurs-chiffres",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Décomposition",
+  "title": "Multiplication par décomposition : algorithme",
+  "blocks": [
+    {
+      "title": "Écrire l'algorithme de décomposition",
+      "content": "Écris les étapes d'un algorithme qui permet de multiplier un nombre à deux chiffres par un nombre à trois chiffres en décomposant le second nombre en centaines, dizaines et unités. Présente l'algorithme sous forme de phrases numérotées.",
+      "correctAnswer": "1. Lire les deux nombres A (deux chiffres) et B (trois chiffres).\\n2. Décomposer B en B = 100*h + 10*d + u où h est le chiffre des centaines, d le chiffre des dizaines et u le chiffre des unités.\\n3. Calculer p1 = A * u.\\n4. Calculer p2 = A * d * 10.\\n5. Calculer p3 = A * h * 100.\\n6. Additionner les produits partiels : résultat = p1 + p2 + p3.\\n7. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la décomposition du multiplicateur en centaines, dizaines et unités. On multiplie le multiplicande par chaque chiffre pondéré par sa valeur de position, puis on additionne les produits partiels pour obtenir le produit final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme à un exemple",
+      "content": "Applique l'algorithme précédent pour calculer $27 \\times 34$. Montre chaque étape de la décomposition et les produits partiels.",
+      "correctAnswer": "Décomposition de 34 : 3 dizaines (30) et 4 unités.\\nProduit partiel 1 : $27 \\times 4 = 108$.\\nProduit partiel 2 : $27 \\times 30 = 27 \\times 3 \\times 10 = 81 \\times 10 = 810$.\\nSomme : $108 + 810 = 918$.\\nDonc $27 \\times 34 = 918$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décompose 34 en 30 + 4. On multiplie 27 par 4 (unités) et par 30 (dizaines). L'addition des deux produits partiels donne le résultat final 918.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Généraliser l'algorithme pour deux nombres quelconques",
+      "content": "Écris un algorithme général (pseudo-code) qui prend en entrée deux entiers positifs A et B de tailles quelconques, décompose B chiffre par chiffre en partant des unités, multiplie A par chaque chiffre pondéré par sa position, et renvoie le produit final.",
+      "correctAnswer": "Algorithme MultiplicationDecomposition(A, B)\\n    résultat ← 0\\n    position ← 1\\n    tant que B > 0 faire\\n        chiffre ← B modulo 10\\n        produitPartiel ← A * chiffre * position\\n        résultat ← résultat + produitPartiel\\n        B ← B div 10\\n        position ← position * 10\\n    fin tant que\\n    retourner résultat\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une boucle qui extrait le chiffre des unités de B (modulo 10), le multiplie par A et par la valeur de position (1, 10, 100...), accumule le produit partiel, puis passe au chiffre suivant en divisant B par 10 et en multipliant la position par 10. La boucle s'arrête quand B devient 0.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

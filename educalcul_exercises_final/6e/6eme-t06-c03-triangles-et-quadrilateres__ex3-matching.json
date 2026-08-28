@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Coder",
+  "title": "Coder les figures géométriques",
+  "blocks": [
+    {
+      "title": "Les symboles de codage",
+      "content": "Relie chaque symbole de codage à sa signification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Un trait simple sur deux côtés",
+          "right": "Ces deux côtés ont la même longueur"
+        },
+        {
+          "left": "Un double trait sur deux côtés",
+          "right": "Ces deux côtés ont la même longueur (différente des précédents)"
+        },
+        {
+          "left": "Un petit carré dans l'angle",
+          "right": "C'est un angle droit"
+        },
+        {
+          "left": "Une flèche simple sur deux droites",
+          "right": "Ces deux droites sont parallèles"
+        },
+        {
+          "left": "Deux flèches sur deux droites",
+          "right": "Ces deux droites sont parallèles (différentes des précédentes)"
+        }
+      ],
+      "items": [],
+      "explanation": "En géométrie, on utilise des codes pour ne pas écrire les propriétés. Un trait unique marque des longueurs égales ; s'il y a plusieurs paires, on utilise double trait, triple trait... Un petit carré marque l'angle droit ($90^{\\circ}$). Les flèches marquent le parallélisme : une flèche pour une première paire, deux flèches pour une seconde paire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lire le codage d'un triangle",
+      "content": "On a codé le triangle $ABC$ ci-contre. Relie chaque affirmation à Vrai ou Faux.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$AB = AC$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$BC = AC$",
+          "right": "Faux"
+        },
+        {
+          "left": "Le triangle est rectangle en $A$",
+          "right": "Faux"
+        },
+        {
+          "left": "Le triangle isocèle en $A$",
+          "right": "Vrai"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur la figure (imaginée), les côtés $AB$ et $AC$ portent un trait simple : ils ont donc la même longueur. Le côté $BC$ n'a pas de trait ou un codage différent : il n'est pas égal aux autres. Aucun petit carré n'est présent dans les angles, donc aucun angle n'est droit. Comme $AB = AC$, le triangle est isocèle en $A$ (sommet commun aux deux côtés égaux).",
+      "points": 3,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC : AB et AC ont un trait simple. BC sans trait. Aucun angle droit.",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "title": "Coder les quadrilatères particuliers",
+      "content": "Relie chaque quadrilatère particulier aux codes qu'il faut obligatoirement tracer sur la figure.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Carré",
+          "right": "4 traits simples sur les côtés + 4 petits carrés dans les angles"
+        },
+        {
+          "left": "Rectangle",
+          "right": "Double trait sur les côtés opposés + 4 petits carrés dans les angles"
+        },
+        {
+          "left": "Losange",
+          "right": "4 traits simples sur les côtés + double flèches sur les côtés opposés"
+        },
+        {
+          "left": "Parallélogramme",
+          "right": "Double trait sur les côtés opposés + double flèches sur les côtés opposés"
+        }
+      ],
+      "items": [],
+      "explanation": "Le carré a 4 côtés égaux (même codage : trait simple) et 4 angles droits (petits carrés). Le rectangle a 2 paires de côtés opposés égaux (traits simples et doubles traits) et 4 angles droits. Le losange a 4 côtés égaux (traits simples) et 2 paires de côtés parallèles (flèches simples et doubles flèches). Le parallélogramme a 2 paires de côtés opposés égaux (traits simples et doubles) et 2 paires de côtés parallèles (flèches simples et doubles).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

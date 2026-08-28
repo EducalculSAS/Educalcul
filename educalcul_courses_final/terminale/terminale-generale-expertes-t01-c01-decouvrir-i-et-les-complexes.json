@@ -1,0 +1,458 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.749425+00:00",
+  "id": 727,
+  "code": "terminale-generale-expertes-t01-c01",
+  "title": "Découvrir i et les complexes",
+  "description": "Cours structuré Educalcul : Découvrir i et les complexes.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Découvrir i et les complexes",
+    "objectif_global": "Découvrir i et les complexes",
+    "mini_lecons_imposees": [
+      "i²=-1.",
+      "Écriture a+ib.",
+      "Calculs."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "i²=-1.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'unité imaginaire i"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée à l'unité imaginaire. Vous allez découvrir pourquoi les mathématiciens ont dû inventer un nouveau nombre pour résoudre des équations qui n'avaient aucune solution dans l'ensemble des réels. Imaginez un instant que vous cherchiez un nombre dont le carré soit égal à moins un. Avec les nombres usuels, positifs ou négatifs, le carré est toujours positif ou nul, jamais négatif. Cette impasse a conduit à l'introduction d'un symbole, noté i, qui possède la propriété fondamentale que son carré vaut moins un. Ce n'est pas une invention arbitraire : c'est une extension naturelle qui permet de conserver toutes les règles de calcul que vous connaissez déjà, tout en ouvrant la porte à un monde plus vaste, celui des nombres complexes. Prenez le temps de laisser cette idée s'installer, car elle est la clé de tout ce qui suivra."
+            },
+            {
+              "type": "definition",
+              "term": "unité imaginaire",
+              "definition": "L'unité imaginaire, notée $i$, est le nombre complexe dont le carré est égal à $-1$. Elle n'appartient pas à l'ensemble des nombres réels.",
+              "example": "$i^2 = -1$"
+            },
+            {
+              "type": "display_math",
+              "latex": "i^2 = -1"
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 0,
+              "im": 1,
+              "caption": "Représentation de i dans le plan complexe"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : constater l'absence de solution réelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit l'équation $x^2 = -1$. Pour tout réel $x$, le carré $x^2$ est supérieur ou égal à zéro, donc l'équation n'a pas de solution dans $\\mathbb{R}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : introduire un nouveau symbole",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On décide d'adjoindre un symbole $i$ tel que $i^2 = -1$. Ce symbole n'est pas un réel, mais il obéit aux mêmes règles de calcul (associativité, distributivité, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On vérifie que $i^2 = -1$ par définition, et que toute expression polynomiales en $i$ peut être réduite à la forme $a+ib$ avec $a,b$ réels."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'unité imaginaire est posée, nous allons explorer ses puissances successives. Vous verrez qu'un cycle très simple apparaît, ce qui rendra les calculs futurs beaucoup plus faciles. Observez attentivement le motif qui se dessine : $i^1 = i$, $i^2 = -1$, $i^3 = -i$, $i^4 = 1$, puis tout recommence. Cette périodicité d'ordre quatre est une conséquence directe de la définition $i^2 = -1$ et vous permettra de simplifier n'importe quelle puissance entière de $i$ en un clin d'œil."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les puissances de i"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer une puissance quelconque $i^n$ avec $n$ entier naturel, il suffit de déterminer le reste de la division euclidienne de $n$ par $4$. Si le reste est $0$, le résultat est $1$ ; si le reste est $1$, le résultat est $i$ ; si le reste est $2$, le résultat est $-1$ ; si le reste est $3$, le résultat est $-i$. Cette règle mnémotechnique, que vous pouvez retenir en visualisant un carré tournant dans le plan complexe, évite tout calcul fastidieux. Prenons un exemple concret : $i^{10}$. Le reste de $10$ modulo $4$ est $2$, donc $i^{10} = -1$. Essayez mentalement $i^{23}$ : le reste est $3$, donc $i^{23} = -i$. Vous voyez, c'est immédiat."
+            },
+            {
+              "type": "display_math",
+              "latex": "i^{4k} = 1,\\ i^{4k+1} = i,\\ i^{4k+2} = -1,\\ i^{4k+3} = -i"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé les puissances de i, nous pouvons résoudre l'équation qui a motivé son introduction : $x^2 = -1$. Grâce à la définition de i, les deux solutions sont simplement $i$ et $-i$. Notez que ces deux nombres sont distincts et que chacun est l'opposé de l'autre. Cette symétrie est typique des équations du second degré dans le corps des complexes : elles ont toujours deux solutions (en comptant les multiplicités), tout comme dans les réels, mais ici les solutions peuvent être non réelles. C'est une première illustration de la puissance de l'extension complexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre $x^2 = -1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équation $x^2 = -1$ s'écrit $x^2 + 1 = 0$. En factorisant dans $\\mathbb{C}$, on obtient $(x-i)(x+i)=0$, d'où $x=i$ ou $x=-i$. Vous pouvez vérifier directement : $(i)^2 = -1$ et $(-i)^2 = (-1)^2 i^2 = -1$. Ainsi, l'ensemble des solutions est $\\{i, -i\\}$. Cette résolution montre que tout polynôme de degré deux à coefficients réels admet deux racines dans $\\mathbb{C}$, ce qui n'est pas garanti dans $\\mathbb{R}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = i \\text{ ou } x = -i"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon s'achève ici. Vous avez maintenant une compréhension solide de l'unité imaginaire, de ses puissances et de la manière dont elle permet de résoudre des équations impossibles dans les réels. Dans la prochaine leçon, nous verrons comment écrire tout nombre complexe sous la forme algébrique $a+ib$ et nous découvrirons les notions de partie réelle, partie imaginaire, conjugué et module. Prenez le temps de relire les points clés et de faire les exercices proposés pour ancrer ces nouvelles idées."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $i^5$.",
+              "answer": "$i$",
+              "hint": "Utilisez la périodicité modulo 4.",
+              "explanation": "Puisque $5 = 4 \\times 1 + 1$, le reste est 1, donc $i^5 = i^1 = i$."
+            },
+            {
+              "question": "Simplifier $i^{17}$.",
+              "answer": "$i$",
+              "hint": "Déterminez le reste de la division de 17 par 4.",
+              "explanation": "17 = 4 \\times 4 + 1, le reste est 1, donc $i^{17} = i$."
+            },
+            {
+              "question": "Résoudre l'équation $x^2 = -1$ dans $\\mathbb{C}$.",
+              "answer": "$x = i$ ou $x = -i$",
+              "hint": "Rappelez-vous la définition de $i$.",
+              "explanation": "Par définition $i^2 = -1$, donc $i$ est une solution. Son opposé $-i$ vérifie aussi $(-i)^2 = (-1)^2 i^2 = -1$."
+            }
+          ]
+        },
+        {
+          "title": "Écriture a+ib.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écriture algébrique a+ib"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous apprenons à représenter tout nombre complexe sous la forme canonique $a+ib$, où $a$ et $b$ sont des nombres réels. Cette écriture est l'analogue exact de la notation décimale pour les réels : elle sépare clairement la composante qui vit sur l'axe horizontal (la partie réelle) de celle qui vit sur l'axe vertical (la partie imaginaire). Vous verrez que cette décomposition est unique, ce qui permet de comparer deux nombres complexes simplement en comparant leurs composantes respectives. C'est un outil fondamental pour tous les calculs ultérieurs."
+            },
+            {
+              "type": "definition",
+              "term": "partie réelle",
+              "definition": "La partie réelle d'un nombre complexe $z = a+ib$ est le nombre réel $a$. On la note $\\Re(z)$ ou $\\operatorname{Re}(z)$.",
+              "example": "Pour $z = 3+4i$, $\\Re(z) = 3$."
+            },
+            {
+              "type": "definition",
+              "term": "partie imaginaire",
+              "definition": "La partie imaginaire d'un nombre complexe $z = a+ib$ est le nombre réel $b$. On la note $\\Im(z)$ ou $\\operatorname{Im}(z)$. Attention : la partie imaginaire est un réel, pas $ib$.",
+              "example": "Pour $z = 3+4i$, $\\Im(z) = 4$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z = a + ib"
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 4,
+              "caption": "Point représentant $3+4i$ dans le plan complexe"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier la partie réelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez le terme qui n'est pas multiplié par $i$ ; c'est la partie réelle $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : identifier la partie imaginaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez le coefficient qui multiplie $i$ ; ce coefficient (sans le $i$) est la partie imaginaire $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire sous forme canonique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemblez les deux nombres trouvés sous la forme $a+ib$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez lire et écrire un complexe sous forme $a+ib$, nous allons introduire deux notions indispensables : le conjugué et le module. Le conjugué d'un complexe renvoie son symétrique par rapport à l'axe des réels, tandis que le module mesure sa distance à l'origine. Ces deux outils géométriques et algébriques seront vos compagnons constants pour simplifier les divisions, calculer des distances et étudier des transformations dans le plan."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conjugué et module"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le conjugué de $z = a+ib$ est noté $\\overline{z}$ et vaut $a-ib$. Géométriquement, c'est le reflet de $z$ par rapport à l'axe des abscisses. Le module de $z$, noté $|z|$, est la longueur du vecteur qui joint l'origine au point $z$ ; il se calcule grâce au théorème de Pythagore : $|z| = \\sqrt{a^2+b^2}$. Ces deux quantités satisfont des propriétés très utiles : $\\overline{\\overline{z}} = z$, $|z| = |\\overline{z}|$, et $z \\overline{z} = |z|^2$."
+            },
+            {
+              "type": "definition",
+              "term": "conjugué",
+              "definition": "Le conjugué d'un nombre complexe $z = a+ib$ est $\\overline{z} = a-ib$. C'est le symétrique de $z$ par rapport à l'axe réel.",
+              "example": "Si $z = 3+4i$, alors $\\overline{z} = 3-4i$."
+            },
+            {
+              "type": "definition",
+              "term": "module",
+              "definition": "Le module d'un nombre complexe $z = a+ib$ est $|z| = \\sqrt{a^2+b^2}$. C'est la distance du point $z$ à l'origine dans le plan complexe.",
+              "example": "Pour $z = 3+4i$, $|z| = \\sqrt{3^2+4^2} = 5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{z} = a - ib,\\ |z| = \\sqrt{a^2+b^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous précisons ce que signifie l'égalité entre deux nombres complexes. Deux complexes $z_1 = a+ib$ et $z_2 = c+id$ sont égaux si et seulement si leurs parties réelles sont égales et leurs parties imaginaires sont égales. Cette règle, qui peut sembler évidente, est la base de la résolution d'équations complexes : elle permet de transformer une seule équation complexe en un système de deux équations réelles, beaucoup plus simples à traiter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Égalité de deux complexes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Formellement, $a+ib = c+id \\iff a=c \\text{ et } b=d$. Par exemple, si on vous donne $(2+x) + i(3y-1) = 5 + 7i$, vous déduisez immédiatement $2+x = 5$ et $3y-1 = 7$, ce qui donne $x=3$ et $y=\\frac{8}{3}$. Cette méthode d'identification des parties réelles et imaginaires est systématique et fonctionne pour toute équation où les inconnues sont réelles."
+            },
+            {
+              "type": "display_math",
+              "latex": "a+ib = c+id \\iff a=c \\text{ et } b=d"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon se termine. Vous maîtrisez maintenant l'écriture algébrique, la notion de partie réelle et imaginaire, le conjugué, le module et le critère d'égalité. Ces outils sont les briques de base pour effectuer des calculs plus élaborés. Dans la prochaine leçon, nous verrons comment additionner, soustraire, multiplier et diviser les nombres complexes, en exploitant pleinement la structure de corps de $\\mathbb{C}$. N'hésitez pas à refaire les exercices pour consolider ces acquis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire le nombre complexe $z = (2+3i) + (4-i)$ sous la forme $a+ib$ et donner sa partie réelle et sa partie imaginaire.",
+              "answer": "$z = 6+2i$, $\\Re(z)=6$, $\\Im(z)=2$",
+              "hint": "Additionnez les parties réelles entre elles et les parties imaginaires entre elles.",
+              "explanation": "Les parties réelles : $2+4=6$. Les parties imaginaires : $3i + (-i) = 2i$. Donc $z=6+2i$."
+            },
+            {
+              "question": "Calculer le conjugué et le module de $z = -5+12i$.",
+              "answer": "$\\overline{z} = -5-12i$, $|z| = 13$",
+              "hint": "Le conjugué change le signe de la partie imaginaire ; le module utilise le théorème de Pythagore.",
+              "explanation": "$\\overline{z} = -5-12i$. $|z| = \\sqrt{(-5)^2+12^2} = \\sqrt{25+144} = \\sqrt{169}=13$."
+            },
+            {
+              "question": "Trouver les réels $x$ et $y$ tels que $(x+2) + i(3y-4) = 7 - 2i$.",
+              "answer": "$x=5$, $y=\\frac{2}{3}$",
+              "hint": "Identifiez les parties réelles et imaginaires des deux côtés.",
+              "explanation": "Partie réelle : $x+2 = 7 \\Rightarrow x=5$. Partie imaginaire : $3y-4 = -2 \\Rightarrow 3y=2 \\Rightarrow y=2/3$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition et soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition et la soustraction de deux nombres complexes se font composante par composante, exactement comme pour les vecteurs du plan. Si $z_1 = a+ib$ et $z_2 = c+id$, alors $z_1+z_2 = (a+c) + i(b+d)$ et $z_1-z_2 = (a-c) + i(b-d)$. Cette règle découle directement de la distributivité de l'addition sur la multiplication par $i$ et du fait que $i$ se comporte comme une constante. Géométriquement, l'addition correspond à la translation du point $z_1$ par le vecteur $z_2$, ce qui est très intuitif si vous visualisez le plan complexe."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+ib)+(c+id) = (a+c)+i(b+d)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : regrouper les parties réelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoutez (ou soustrayez) les nombres $a$ et $c$ qui ne sont pas multipliés par $i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regrouper les parties imaginaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoutez (ou soustrayez) les coefficients $b$ et $d$ qui multiplient $i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combinez les deux résultats sous la forme $(a\\pm c)+i(b\\pm d)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la multiplication, qui est un peu plus riche car elle fait intervenir la relation $i^2=-1$. En développant le produit $(a+ib)(c+id)$ avec la distributivité, on obtient $ac + iad + ibc + i^2bd$. En remplaçant $i^2$ par $-1$, les termes réels et imaginaires se séparent naturellement : la partie réelle devient $ac-bd$ et la partie imaginaire $ad+bc$. Cette formule est la clé de nombreux calculs et elle révèle aussi une belle interprétation géométrique : multiplier par un complexe de module 1 effectue une rotation, tandis que multiplier par un réel positif effectue un homothétie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule générale est $(a+ib)(c+id) = (ac-bd) + i(ad+bc)$. Prenons l'exemple $(2+3i)(1-4i)$ : la partie réelle est $2\\times1 - 3\\times(-4) = 2+12 = 14$ ; la partie imaginaire est $2\\times(-4) + 3\\times1 = -8+3 = -5$. Le produit est donc $14-5i$. Vous pouvez vérifier en développant directement : $2\\cdot1 + 2\\cdot(-4i) + 3i\\cdot1 + 3i\\cdot(-4i) = 2 -8i +3i -12i^2 = 2 -5i +12 = 14-5i$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+ib)(c+id) = (ac-bd) + i(ad+bc)"
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 0,
+              "im": 1,
+              "caption": "Multiplication par $i$ : rotation de $90^\\circ$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La division est l'opération qui demande le plus d'attention, car elle nécessite de rendre le dénominateur réel. La méthode classique consiste à multiplier le numérateur et le dénominateur par le conjugué du dénominateur. Si $z_1 = a+ib$ et $z_2 = c+id$ avec $z_2 \\neq 0$, alors $\\frac{z_1}{z_2} = \\frac{(a+ib)(c-id)}{c^2+d^2} = \\frac{ac+bd}{c^2+d^2} + i\\frac{bc-ad}{c^2+d^2}$. Cette astuce élimine la partie imaginaire au dénominateur et ramène la division à une multiplication suivie d'une division par un réel, ce que vous savez faire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Division"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $\\frac{3+4i}{1-2i}$. Le conjugué du dénominateur est $1+2i$. On multiplie : $\\frac{(3+4i)(1+2i)}{1^2+2^2} = \\frac{3+6i+4i+8i^2}{5} = \\frac{3+10i-8}{5} = \\frac{-5+10i}{5} = -1+2i$. Vérifiez en multipliant le résultat par le dénominateur : $(-1+2i)(1-2i) = -1+2i+2i-4i^2 = -1+4i+4 = 3+4i$, c'est correct."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a+ib}{c+id} = \\frac{(a+ib)(c-id)}{c^2+d^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations, vous avez maintenant toutes les opérations de base sur les nombres complexes : addition, soustraction, multiplication et division. Vous connaissez également l'écriture algébrique, le conjugué, le module et le critère d'égalité. Ces outils vous permettront d'aborder sereinement les chapitres suivants, où les complexes interviennent dans la résolution d'équations polynomiales, l'étude de transformations géométriques et l'analyse de signaux. Relisez les formules clés, refaites les exercices et n'hésitez pas à tester vos propres exemples pour gagner en aisance."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'unité imaginaire $i$ et écrire $i^2=-1$.",
+                "Je sais simplifier toute puissance entière de $i$ grâce à la périodicité modulo 4.",
+                "Je sais écrire un nombre complexe sous la forme $a+ib$ et identifier sa partie réelle et sa partie imaginaire.",
+                "Je sais calculer le conjugué et le module d'un complexe.",
+                "Je sais tester l'égalité de deux complexes en comparant leurs parties réelles et imaginaires.",
+                "Je sais additionner, soustraire, multiplier et diviser deux nombres complexes.",
+                "Je sais interpréter géométriquement la multiplication par $i$ comme une rotation de $90^\\circ$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectuer l'addition $(5-2i) + (-3+7i)$.",
+              "answer": "$2+5i$",
+              "hint": "Additionnez les parties réelles et les parties imaginaires séparément.",
+              "explanation": "Parties réelles : $5 + (-3) = 2$. Parties imaginaires : $-2i + 7i = 5i$. Résultat : $2+5i$."
+            },
+            {
+              "question": "Calculer le produit $(1+2i)(3-4i)$.",
+              "answer": "$11+2i$",
+              "hint": "Utilisez la formule $(ac-bd)+i(ad+bc)$.",
+              "explanation": "Partie réelle : $1\\times3 - 2\\times(-4) = 3+8=11$. Partie imaginaire : $1\\times(-4) + 2\\times3 = -4+6=2$. Donc $11+2i$."
+            },
+            {
+              "question": "Simplifier la division $\\frac{2-i}{1+3i}$.",
+              "answer": "$-\\frac{1}{10} - \\frac{7}{10}i$",
+              "hint": "Multipliez numérateur et dénominateur par le conjugué du dénominateur $1-3i$.",
+              "explanation": "$\\frac{(2-i)(1-3i)}{1^2+3^2} = \\frac{2-6i -i +3i^2}{10} = \\frac{2-7i-3}{10} = \\frac{-1-7i}{10} = -\\frac{1}{10} - \\frac{7}{10}i$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

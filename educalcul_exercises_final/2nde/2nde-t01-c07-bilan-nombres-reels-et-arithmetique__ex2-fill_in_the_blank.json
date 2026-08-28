@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Nombres réels et arithmétique",
+  "blocks": [
+    {
+      "title": "Intervalls et valeur absolue",
+      "content": "L'intervalle $[2; 5[$ s'écrit en notation ensembliste $\\{x \\in \\mathbb{R} \\mid {{1}}\\}$. La condition « la distance entre $x$ et $3$ est strictement inférieure à $1$ » se traduit par $|x-3| {{2}} 1$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2 \\le x < 5",
+        "<"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intervalle $[2; 5[$ contient tous les réels $x$ tels que $2 \\le x < 5$. La distance entre $x$ et $3$ vaut $|x-3|$ ; « strictement inférieure à $1$ » s'écrit $|x-3| < 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arithmétique : décomposition et PGCD",
+      "content": "Donner la décomposition en produit de facteurs premiers de $180$ : $180 = 2^2 \\times 3^2 \\times {{1}}$. En déduire le PGCD de $180$ et $120$ : $\\text{PGCD}(180; 120) = {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "60"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise successivement : $180 = 2 \\times 90 = 2^2 \\times 45 = 2^2 \\times 3^2 \\times 5$. De plus $120 = 2^3 \\times 3 \\times 5$. Le PGCD est le produit des facteurs communs avec les plus petits exposants : $2^2 \\times 3 \\times 5 = 60$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul littéral : radicaux et puissances",
+      "content": "Simplifier l'expression $E = \\sqrt{75} - \\sqrt{27}$. On obtient $E = {{1}}\\sqrt{3}$. Écrire $0,00045$ en notation scientifique : $0,00045 = {{2}} \\times 10^{-4}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "4,5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "$\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$ et $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$, donc $E = 5\\sqrt{3} - 3\\sqrt{3} = 2\\sqrt{3}$. Pour la notation scientifique, on décale la virgule de 4 rangs vers la droite pour obtenir un nombre entre 1 et 10 : $4,5 \\times 10^{-4}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

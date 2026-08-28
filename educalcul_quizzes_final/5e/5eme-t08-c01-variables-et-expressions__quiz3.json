@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Suivre",
+  "title": "Quiz : Suivre l'exécution d'un algorithme (Variables et expressions)",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDÉBUT\\n  a ← 5\\n  b ← 3\\n  a ← a + b\\n  b ← a - b\\nFIN\\nQuelles sont les valeurs finales des variables a et b ?",
+      "options": [
+        "a = 8 et b = 5",
+        "a = 5 et b = 3",
+        "a = 8 et b = 3",
+        "a = 5 et b = 8"
+      ],
+      "correctAnswer": "a = 8 et b = 5",
+      "explanation": "Suivons pas à pas :\\n1. a prend la valeur 5, b prend la valeur 3.\\n2. Instruction 'a ← a + b' : a devient 5 + 3 = 8. (b vaut toujours 3).\\n3. Instruction 'b ← a - b' : b devient 8 - 3 = 5. (a vaut toujours 8).\\nÀ la fin, a = 8 et b = 5. Les autres réponses correspondent à une confusion sur l'ordre des affectations ou sur les valeurs initiales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez cet algorithme :\\nDÉBUT\\n  x ← 10\\n  y ← 4\\n  SI x > y ALORS\\n    x ← x - y\\n  SINON\\n    y ← y - x\\n  FIN SI\\nFIN\\nQuelle est la valeur de x à la fin de l'exécution ?",
+      "options": [
+        "6",
+        "10",
+        "4",
+        "14"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Au début, x = 10 et y = 4. La condition 'x > y' est vraie (10 > 4). On exécute donc la branche ALORS : x ← x - y, soit x ← 10 - 4 = 6. La branche SINON est ignorée. La valeur finale de x est 6. L'option 10 correspond à l'oubli de l'instruction dans le SI, 4 est la valeur de y, et 14 serait une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance le programme suivant :\\nDÉBUT\\n  somme ← 0\\n  POUR i DE 1 À 4 FAIRE\\n    somme ← somme + i\\n  FIN POUR\\nFIN\\nQuelle valeur affiche la variable 'somme' à la fin ?",
+      "options": [
+        "10",
+        "6",
+        "4",
+        "15"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La boucle POUR fait varier i de 1 à 4. On suit l'accumulateur 'somme' :\\n- i=1 : somme = 0 + 1 = 1\\n- i=2 : somme = 1 + 2 = 3\\n- i=3 : somme = 3 + 3 = 6\\n- i=4 : somme = 6 + 4 = 10\\nLa somme des entiers de 1 à 4 est 10. L'option 6 est la somme après 3 tours seulement, 4 est le nombre de tours, 15 serait la somme jusqu'à 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tracez l'exécution de cet algorithme :\\nDÉBUT\\n  n ← 7\\n  TANT QUE n > 0 FAIRE\\n    n ← n - 2\\n  FIN TANT QUE\\nFIN\\nCombien de fois la boucle 'TANT QUE' a-t-elle été exécutée ?",
+      "options": [
+        "4 fois",
+        "3 fois",
+        "5 fois",
+        "7 fois"
+      ],
+      "correctAnswer": "4 fois",
+      "explanation": "Suivons la variable n :\\n- Avant boucle : n = 7 (condition 7 > 0 vraie).\\n- Tour 1 : n = 7 - 2 = 5 (5 > 0 vraie).\\n- Tour 2 : n = 5 - 2 = 3 (3 > 0 vraie).\\n- Tour 3 : n = 3 - 2 = 1 (1 > 0 vraie).\\n- Tour 4 : n = 1 - 2 = -1 (-1 > 0 fausse, on sort).\\nLa boucle a tourné 4 fois. L'erreur '3 fois' vient souvent de l'arrêt dès que n ≤ 1 sans compter le dernier passage où n devient négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat final de la variable 'p' après exécution ?\\nDÉBUT\\n  p ← 1\\n  k ← 5\\n  TANT QUE k > 2 FAIRE\\n    p ← p × k\\n    k ← k - 1\\n  FIN TANT QUE\\nFIN",
+      "options": [
+        "60",
+        "20",
+        "120",
+        "15"
+      ],
+      "correctAnswer": "60",
+      "explanation": "Tableau de trace :\\n- Init : p=1, k=5 (5>2 vrai).\\n- Tour 1 : p=1×5=5, k=4 (4>2 vrai).\\n- Tour 2 : p=5×4=20, k=3 (3>2 vrai).\\n- Tour 3 : p=20×3=60, k=2 (2>2 faux, stop).\\nLa boucle s'exécute pour k = 5, 4, 3. Le produit est 5 × 4 × 3 = 60. L'option 20 correspond à l'arrêt après 2 tours (oubli de k=3), 120 serait 5×4×3×2 (tour de trop), 15 est la somme.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

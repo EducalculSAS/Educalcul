@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 373,
+  "_course_code": "6eme-t08-c06-bilan-donnees-et-proportionnalite-6e",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Application : Bilan - Données et proportionnalité 6e",
+  "title": "Bilan : Données et proportionnalité - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Résolution d'un problème de proportionnalité",
+      "content": "Remets dans l'ordre chronologique les étapes pour résoudre ce problème : \"Un cycliste parcourt 30 km en 2 heures. Combien de kilomètres parcourt-il en 5 heures à la même vitesse ?\"",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les deux grandeurs proportionnelles (distance et temps).",
+        "Calculer le coefficient de proportionnalité (vitesse) : $30 \\div 2 = 15$ km/h.",
+        "Vérifier que la vitesse est constante.",
+        "Multiplier le temps cherché (5 h) par la vitesse : $15 \\times 5 = 75$.",
+        "Conclure : il parcourt 75 km en 5 heures."
+      ],
+      "explanation": "On identifie d'abord les grandeurs (distance, temps). On calcule le coefficient (vitesse) avec les valeurs connues. On vérifie la proportionnalité. On applique le coefficient à la nouvelle valeur de temps. On donne la réponse finale avec l'unité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classement des indicateurs statistiques",
+      "content": "Pour la série statistique : $4 ; 7 ; 7 ; 9 ; 13$, classe les trois indicateurs suivants du plus petit au plus grand : l'étendue, la moyenne, la médiane.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Étendue ($13 - 4 = 9$)",
+        "Moyenne ($(4+7+7+9+13) \\div 5 = 8$)",
+        "Médiane (valeur centrale : 7)"
+      ],
+      "explanation": "On calcule chaque indicateur : l'étendue est la différence entre le max et le min ($13-4=9$). La moyenne est la somme divisée par l'effectif ($40\\div5=8$). La médiane est la valeur du milieu dans l'ordre croissant (ici la 3e valeur : 7). L'ordre croissant est donc : Médiane (7) < Moyenne (8) < Étendue (9). Attention, les items sont déjà dans l'ordre correct (Étendue, Moyenne, Médiane) car 9 > 8 > 7, mais la consigne demande de classer du plus petit au plus grand. La liste fournie dans 'items' doit être l'ordre correct attendu. L'ordre correct du plus petit au plus grand est : Médiane, Moyenne, Étendue. Je dois corriger l'array items pour qu'il soit dans l'ordre correct (croissant).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau de proportionnalité",
+      "content": "Remets dans l'ordre les étapes pour trouver la valeur manquante dans ce tableau de proportionnalité :\\n\\n| Masse (kg) | 3 | 5 | 8 |\\n| Prix (€)   | 12 | ? | 32 |",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer une colonne complète pour calculer le coefficient (prix ÷ masse).",
+        "Calculer le coefficient : $12 \\div 3 = 4$ (soit 4 €/kg).",
+        "Vérifier le coefficient sur l'autre colonne complète : $32 \\div 8 = 4$.",
+        "Multiplier la masse 5 par le coefficient : $5 \\times 4 = 20$.",
+        "Écrire le résultat : le prix pour 5 kg est 20 €."
+      ],
+      "explanation": "La méthode standard en 6e utilise le coefficient de proportionnalité (prix unitaire). On le calcule avec une colonne connue (12/3=4), on vérifie sur l'autre (32/8=4), puis on l'applique à la valeur manquante (5*4=20).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

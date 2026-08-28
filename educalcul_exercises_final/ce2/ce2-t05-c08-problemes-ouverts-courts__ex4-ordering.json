@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Problèmes ouverts courts",
+  "title": "Mise en ordre : Résolution de problèmes ouverts",
+  "blocks": [
+    {
+      "title": "Problème 1 : Les bonbons",
+      "content": "Voici un problème ouvert : \"Il y a $15$ bonbons dans un sac. On en mange quelques-uns. Il en reste moins de $10$. Combien en a-t-on mangé ?\" Range les étapes de la résolution dans l'ordre logique.",
+      "items": [
+        "Je comprends l'énoncé : il y a $15$ bonbons au départ et il en reste moins de $10$ à la fin.",
+        "Je cherche les nombres possibles pour le reste : $9$, $8$, $7$, $6$, $5$, $4$, $3$, $2$, $1$ ou $0$.",
+        "Pour chaque reste possible, je calcule le nombre mangé : $15 - 9 = 6$, $15 - 8 = 7$, etc.",
+        "J'écris les réponses possibles : on a mangé $6$, $7$, $8$, $9$, $10$, $11$, $12$, $13$, $14$ ou $15$ bonbons."
+      ],
+      "explanation": "Pour résoudre un problème ouvert, on commence par bien comprendre les contraintes (ici : total $15$, reste strictement inférieur à $10$). On liste ensuite toutes les valeurs possibles pour l'inconnue intermédiaire (le reste). On calcule ensuite la réponse demandée (le nombre mangé) pour chaque cas. Enfin, on regroupe toutes les solutions trouvées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Les achats",
+      "content": "Voici un problème ouvert : \"J'ai $20$ €. J'achète un livre à $7$ € et un cahier. Le cahier coûte entre $5$ € et $10$ €. Quel peut être le prix du cahier ?\" Range les étapes de la résolution dans l'ordre logique.",
+      "items": [
+        "Je calcule l'argent qui me reste après l'achat du livre : $20 - 7 = 13$ €.",
+        "Je note la contrainte sur le prix du cahier : il est compris entre $5$ € et $10$ €.",
+        "Je vérifie que chaque prix possible ($5$, $6$, $7$, $8$, $9$, $10$) est inférieur à l'argent restant ($13$ €).",
+        "Je conclus : le cahier peut coûter $5$, $6$, $7$, $8$, $9$ ou $10$ €."
+      ],
+      "explanation": "La première étape est de déterminer le budget restant pour le cahier ($20 - 7 = 13$ €). On prend ensuite en compte la contrainte donnée (prix entre $5$ et $10$ €). On vérifie la compatibilité : tous ces prix sont inférieurs à $13$ €, ils sont donc tous possibles. On liste enfin les solutions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Les groupes",
+      "content": "Voici un problème ouvert : \"Dans une classe de $24$ élèves, le maître fait des groupes de $4$ ou de $5$ élèves. Combien peut-il faire de groupes de $4$ et de groupes de $5$ ?\" Range les étapes de la recherche dans l'ordre logique.",
+      "items": [
+        "J'essaie de faire seulement des groupes de $4$ : $6 \\times 4 = 24$. C'est une solution ( $6$ groupes de $4$, $0$ groupe de $5$ ).",
+        "J'essaie de faire seulement des groupes de $5$ : $4 \\times 5 = 20$, il reste $4$. C'est une solution ( $1$ groupe de $4$, $4$ groupes de $5$ ).",
+        "J'essaie des mélanges : $3$ groupes de $5$ ($15$), reste $9$ (impossible avec des groupes de $4$) ; $2$ groupes de $5$ ($10$), reste $14$ (impossible).",
+        "Je conclus qu'il y a deux solutions possibles : ($6$ groupes de $4$ et $0$ de $5$) ou ($1$ groupe de $4$ et $4$ de $5$)."
+      ],
+      "explanation": "On teste systématiquement les possibilités. D'abord les cas purs (que des $4$ ou que des $5$). Ensuite les mélanges en diminuant le nombre de groupes de $5$. On vérifie si le reste est un multiple de $4$. Seules deux combinaisons donnent exactement $24$ élèves.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

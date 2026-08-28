@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 291,
+  "_course_code": "cm2-t03-c03-division-euclidienne",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Quotient / reste",
+  "title": "Division euclidienne : Quotient et reste",
+  "questions": [
+    {
+      "text": "Dans la division euclidienne de $47$ par $5$, quel est le quotient et quel est le reste ?",
+      "options": [
+        "Le quotient est $9$ et le reste est $2$",
+        "Le quotient est $8$ et le reste est $7$",
+        "Le quotient est $9$ et le reste est $3$",
+        "Le quotient est $10$ et le reste est $2$"
+      ],
+      "correctAnswer": "Le quotient est $9$ et le reste est $2$",
+      "explanation": "On cherche combien de fois $5$ rentre dans $47$. $9 \\times 5 = 45$. On calcule le reste : $47 - 45 = 2$. Le reste $2$ est bien inférieur au diviseur $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un quotient est de $12$ et le reste est de $3$ pour un diviseur égal à $7$. Quel est le dividende ?",
+      "options": [
+        "Le dividende est $81$",
+        "Le dividende est $87$",
+        "Le dividende est $75$",
+        "Le dividende est $84$"
+      ],
+      "correctAnswer": "Le dividende est $87$",
+      "explanation": "Pour retrouver le dividende, on calcule : $(\\text{quotient} \\times \\text{diviseur}) + \\text{reste}$. Ici : $(12 \\times 7) + 3 = 84 + 3 = 87$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa partage $135$ billes entre $6$ amis. Combien de billes reste-t-il après le partage équitable ?",
+      "options": [
+        "Le reste est $3$ billes",
+        "Le reste est $5$ billes",
+        "Le reste est $1$ bille",
+        "Le reste est $0$ bille"
+      ],
+      "correctAnswer": "Le reste est $3$ billes",
+      "explanation": "On effectue la division de $135$ par $6$. $135 = (22 \\times 6) + 3$. Le quotient est $22$ et le reste est $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation est TOUJOURS vraie concernant le reste d'une division euclidienne ?",
+      "options": [
+        "Le reste est toujours égal au quotient",
+        "Le reste est toujours plus petit que le diviseur",
+        "Le reste est toujours plus grand que le dividende",
+        "Le reste est toujours égal à zéro"
+      ],
+      "correctAnswer": "Le reste est toujours plus petit que le diviseur",
+      "explanation": "Par définition, dans une division euclidienne, le reste doit être strictement inférieur au diviseur. S'il était plus grand ou égal, on pourrait encore distribuer des parts.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue la division de $542$ par $15$. Quel est le résultat ?",
+      "options": [
+        "Quotient $36$, reste $2$",
+        "Quotient $36$, reste $12$",
+        "Quotient $35$, reste $17$",
+        "Quotient $37$, reste $7$"
+      ],
+      "correctAnswer": "Quotient $36$, reste $2$",
+      "explanation": "On cherche le multiple de $15$ le plus proche de $542$ sans le dépasser. $36 \\times 15 = 540$. On calcule le reste : $542 - 540 = 2$. L'option avec le reste $17$ est impossible car le reste doit être inférieur à $15$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

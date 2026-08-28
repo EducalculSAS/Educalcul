@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Transformer",
+  "title": "Transformer d'expressions algébriques",
+  "questions": [
+    {
+      "text": "Développez l'expression $(x+3)(x-2)$.",
+      "options": [
+        "$x^2 + x - 6$",
+        "$x^2 - x - 6$",
+        "$x^2 + 5x - 6$",
+        "$x^2 - 5x - 6$"
+      ],
+      "correctAnswer": "$x^2 + x - 6$",
+      "explanation": "En utilisant la distributivité : $(x+3)(x-2)=x(x-2)+3(x-2)=x^2-2x+3x-6=x^2+x-6$. Les autres choix correspondent à des erreurs de signes ou de coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $x^2 - 9$.",
+      "options": [
+        "$(x-3)(x+3)$",
+        "$(x-3)^2$",
+        "$(x+3)^2$",
+        "$(x-9)(x+1)$"
+      ],
+      "correctAnswer": "$(x-3)(x+3)$",
+      "explanation": "$x^2-9$ est une différence de carrés : $x^2-3^2=(x-3)(x+3)$. Les autres options sont des carrés parfaits ou des factorisations incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez la fraction $\\frac{2x^2 + 4x}{2x}$ pour $x \\neq 0$.",
+      "options": [
+        "$x+2$",
+        "$2x+4$",
+        "$x+4$",
+        "$2x+2$"
+      ],
+      "correctAnswer": "$x+2$",
+      "explanation": "Factorisez le numérateur : $2x^2+4x=2x(x+2)$. En simplifiant par $2x$ (non nul), on obtient $x+2$. Les distracteurs correspondent à l'oubli de la simplification ou à des erreurs de factorisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écrivez sous forme développée l'expression $3(x+2)^2 - 12$.",
+      "options": [
+        "$3x^2 + 12x$",
+        "$3x^2 + 12x + 12$",
+        "$3x^2 + 12x - 12$",
+        "$3x^2 + 12x + 24$"
+      ],
+      "correctAnswer": "$3x^2 + 12x$",
+      "explanation": "D'abord $(x+2)^2 = x^2+4x+4$. Multiplié par 3 donne $3x^2+12x+12$. En soustrayant 12, le terme constant s'annule, laissant $3x^2+12x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $A = (2x+1)(x-3) + 5x$. Exprimez $A$ sous la forme $ax^2+bx+c$.",
+      "options": [
+        "$2x^2 - 3$",
+        "$2x^2 + 5x - 3$",
+        "$2x^2 - 5x - 3$",
+        "$2x^2 + 2x - 3$"
+      ],
+      "correctAnswer": "$2x^2 - 3$",
+      "explanation": "Développez $(2x+1)(x-3)=2x^2-6x+x-3=2x^2-5x-3$. Ajoutez $5x$ : $2x^2-5x-3+5x = 2x^2 -3$. Le coefficient de $x$ devient donc 0.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

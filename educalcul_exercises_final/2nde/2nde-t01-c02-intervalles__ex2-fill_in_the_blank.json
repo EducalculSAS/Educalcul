@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Union / intersection simple",
+  "title": "Union et intersection d'intervalles",
+  "blocks": [
+    {
+      "title": "Question 1 : Union et intersection de deux intervalles fermés",
+      "content": "Soient les intervalles $A = [1, 4]$ et $B = [3, 6]$. L'union $A \\cup B$ est l'intervalle {{1}} et l'intersection $A \\cap B$ est l'intervalle {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "[1, 6]|[1,6]",
+        "[3, 4]|[3,4]"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intervalle $A$ va de 1 à 4 inclus, $B$ va de 3 à 6 inclus. Leur union couvre tout depuis le minimum 1 jusqu'au maximum 6, donc $[1, 6]$. Leur intersection est la partie commune, de 3 à 4 inclus, donc $[3, 4]$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Intervalle ouvert et intervalle fermé",
+      "content": "Soient $C = (-\\infty, 2)$ et $D = [2, 5]$. L'union $C \\cup D$ est {{1}} et l'intersection $C \\cap D$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "(-\\infty, 5]|(-\\infty,5]",
+        "\\emptyset|∅"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intervalle $C$ contient tous les réels strictement inférieurs à 2, $D$ contient les réels de 2 à 5 inclus. L'union rassemble tous les nombres inférieurs à 5, avec 5 inclus grâce à $D$, soit $(-\\infty, 5]$. L'intersection est vide car $C$ n'inclut pas 2 et $D$ commence à 2, il n'y a aucun nombre commun.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Intervalles semi-ouverts",
+      "content": "Soient $E = [0, 3)$ et $F = (2, 5]$. L'union $E \\cup F$ est {{1}} et l'intersection $E \\cap F$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "[0, 5]|[0,5]",
+        "(2, 3)|(2,3)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intervalle $E$ va de 0 inclus à 3 exclu, $F$ va de 2 exclu à 5 inclus. Leur union couvre de 0 (inclus) à 5 (inclus), donc $[0, 5]$. Leur intersection est la partie commune : les nombres strictement supérieurs à 2 et strictement inférieurs à 3, soit l'intervalle ouvert $(2, 3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

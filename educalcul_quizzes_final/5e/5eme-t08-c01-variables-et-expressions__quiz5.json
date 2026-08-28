@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Affecter",
+  "title": "Quiz : Affectation de variables (5e)",
+  "questions": [
+    {
+      "text": "Dans un algorithme, l'instruction $x \\leftarrow 5$ signifie :",
+      "options": [
+        "La variable $x$ prend la valeur 5.",
+        "On teste si $x$ est égal à 5.",
+        "On ajoute 5 à $x$.",
+        "On compare $x$ et 5."
+      ],
+      "correctAnswer": "La variable $x$ prend la valeur 5.",
+      "explanation": "Le symbole $\\leftarrow$ (ou « affecte ») indique une affectation : la variable à gauche reçoit la valeur de l'expression à droite. Les autres options décrivent un test d'égalité ou une addition, ce qui n'est pas le sens de l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution de $x \\leftarrow 3$ puis $x \\leftarrow x + 2$, quelle est la valeur de $x$ ?",
+      "options": [
+        "La valeur de $x$ est 3.",
+        "La valeur de $x$ est 5.",
+        "La valeur de $x$ est 2.",
+        "La valeur de $x$ est 6."
+      ],
+      "correctAnswer": "La valeur de $x$ est 5.",
+      "explanation": "La première instruction donne $x=3$. La seconde ajoute 2 à la valeur actuelle de $x$ (qui est 3) et stocke le résultat dans $x$, donc $x = 3 + 2 = 5$. Les autres réponses correspondent à une mauvaise lecture de l'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour échanger les valeurs de $a$ et $b$ on écrit : $temp \\leftarrow a$ ; $a \\leftarrow b$ ; $b \\leftarrow temp$. Si au départ $a=7$ et $b=4$, quelles sont les valeurs finales de $a$ et $b$ ?",
+      "options": [
+        "$a = 7$ et $b = 4$",
+        "$a = 4$ et $b = 7$",
+        "$a = 4$ et $b = 4$",
+        "$a = 7$ et $b = 7$"
+      ],
+      "correctAnswer": "$a = 4$ et $b = 7$",
+      "explanation": "La variable temporaire $temp$ conserve la valeur initiale de $a$ (7). Ensuite $a$ reçoit la valeur de $b$ (4) et $b$ reçoit la valeur sauvegardée dans $temp$ (7). Les valeurs sont donc échangées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel symbole est utilisé pour l'affectation dans les algorithmes écrits en français au collège ?",
+      "options": [
+        "=",
+        "\\leftarrow",
+        "==",
+        ":="
+      ],
+      "correctAnswer": "\\leftarrow",
+      "explanation": "Dans la notation algorithmique enseignée en France, l'affectation est représentée par une flèche vers la gauche ($\\leftarrow$). Le symbole « = » sert aux tests d'égalité, « == » est utilisé dans certains langages de programmation, et « := » apparaît dans d'autres notations mais pas dans le programme officiel de 5e.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute les instructions suivantes : $a \\leftarrow 2$ ; $b \\leftarrow 3$ ; $a \\leftarrow a + b$ ; $b \\leftarrow a - b$ ; $a \\leftarrow a - b$. Quelles sont les valeurs finales de $a$ et $b$ ?",
+      "options": [
+        "$a = 2$ et $b = 3$",
+        "$a = 3$ et $b = 2$",
+        "$a = 5$ et $b = 2$",
+        "$a = 5$ et $b = 3$"
+      ],
+      "correctAnswer": "$a = 3$ et $b = 2$",
+      "explanation": "Départ : $a=2$, $b=3$. Après $a \\leftarrow a+b$ : $a=5$. Ensuite $b \\leftarrow a-b$ : $b = 5-3 = 2$. Enfin $a \\leftarrow a-b$ : $a = 5-2 = 3$. Les valeurs sont échangées sans variable temporaire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

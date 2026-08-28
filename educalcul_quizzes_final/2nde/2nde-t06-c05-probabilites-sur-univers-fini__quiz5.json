@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Événements",
+  "title": "Approfondissement : Événements",
+  "questions": [
+    {
+      "text": "Dans un espace probabilisé fini, un événement est défini comme :",
+      "options": [
+        "Un sous-ensemble de l'univers Ω",
+        "Un élément de l'univers Ω",
+        "Une valeur numérique entre 0 et 1",
+        "Une variable aléatoire"
+      ],
+      "correctAnswer": "Un sous-ensemble de l'univers Ω",
+      "explanation": "Un événement est une partie de l'ensemble des issues possibles Ω. Ce n'est pas une issue unique (élément), ni une probabilité (nombre), ni une variable aléatoire (fonction).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces équilibrées. Soient les événements A = {1,2,3} et B = {3,4,5}. Quelle est la probabilité de l'événement A ∪ B ?",
+      "options": [
+        "$5/6$",
+        "$4/6$",
+        "$3/6$",
+        "$6/6$"
+      ],
+      "correctAnswer": "$5/6$",
+      "explanation": "A ∪ B = {1,2,3,4,5} contient 5 issues sur 6, donc $P(A ∪ B) = 5/6$. L'option $4/6$ correspond à l'intersection, $3/6$ à A seul, $6/6$ à l'univers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $P(A) = 0,3$, quelle est la probabilité de l'événement contraire $\\overline{A}$ ?",
+      "options": [
+        "$0,3$",
+        "$0,7$",
+        "$0,5$",
+        "$1$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "Par définition $P(\\overline{A}) = 1 - P(A) = 1 - 0,3 = 0,7$. Les autres valeurs correspondent à des erreurs de soustraction ou à une confusion avec $P(A)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux événements A et B sont incompatibles (mutuellement exclusifs). Sachant $P(A) = 0,2$ et $P(B) = 0,5$, quelle est $P(A ∪ B)$ ?",
+      "options": [
+        "$0,7$",
+        "$0,3$",
+        "$0,2$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "Pour des événements incompatibles, $A ∩ B = ∅$ donc $P(A ∪ B) = P(A) + P(B) = 0,2 + 0,5 = 0,7$. Les distracteurs correspondent à la différence, à $P(A)$ seul ou à $P(B)$ seul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La loi de De Morgan pour les événements s'écrit :",
+      "options": [
+        "$\\overline{A ∪ B} = \\overline{A} ∪ \\overline{B}$",
+        "$\\overline{A ∪ B} = \\overline{A} ∩ \\overline{B}$",
+        "$\\overline{A ∪ B} = A ∩ \\overline{B}$",
+        "$\\overline{A ∪ B} = \\overline{A} ∪ B$"
+      ],
+      "correctAnswer": "$\\overline{A ∪ B} = \\overline{A} ∩ \\overline{B}$",
+      "explanation": "La loi de De Morgan stipule que le complémentaire de l'union est l'intersection des complémentaires : $\\overline{A ∪ B} = \\overline{A} ∩ \\overline{B}$. La première option confond union et intersection, les deux dernières mélangent les ensembles.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

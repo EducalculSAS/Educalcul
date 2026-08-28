@@ -1,0 +1,400 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.721218+00:00",
+  "id": 395,
+  "code": "5eme-t04-c01",
+  "title": "Angles et parallèles",
+  "description": "Cours structuré Educalcul : Angles et parallèles.",
+  "subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Géométrie plane : angles, triangles et parallélogrammes",
+    "titre_du_cours": "Angles et parallèles",
+    "objectif_global": "Angles et parallèles",
+    "mini_lecons_imposees": [
+      "Angles particuliers.",
+      "Relations avec parallèles selon programme.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane : angles, triangles et parallélogrammes",
+      "lessons": [
+        {
+          "title": "Angles particuliers.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles particuliers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons faire connaissance avec les angles qui reviennent tout le temps en géométrie. Imagine un coin de table bien carré : c'est un angle droit. Si tu ouvres un livre à plat, tu obtiens un angle plat. Et si tu fais tourner une aiguille d'horloge jusqu'à ce qu'elle revienne à sa place de départ, tu as parcouru un angle plein. Ces trois repères vont devenir tes amis pour classer n'importe quel angle que tu rencontres."
+            },
+            {
+              "type": "definition",
+              "term": "angle droit",
+              "definition": "Un angle droit mesure exactement $90^{\\circ}$. Il correspond à un quart de tour complet.",
+              "example": "Le coin d'une feuille de papier A4 est un angle droit."
+            },
+            {
+              "type": "display_math",
+              "latex": "90^{\\circ}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour repérer un angle droit, tu peux tracer un petit carré à l'intérieur de l'angle, comme on le fait sur les figures. Essaie de trouver des angles droits autour de toi : le coin d'une fenêtre, le bord d'un écran, l'intersection de deux lignes perpendiculaires. Chaque fois que tu vois ce petit carré, tu sais que l'angle vaut $90^{\\circ}$ sans même avoir besoin de le mesurer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'angle droit n'a plus de secret pour toi, passons à l'angle plat. C'est l'angle que tu obtiens quand tu places deux demi-droites l'une en face de l'autre, comme une ligne droite. Il mesure exactement $180^{\\circ}$, c'est-à-dire un demi-tour. C'est l'angle que forment les deux côtés d'une règle quand tu la poses bien à plat sur la table."
+            },
+            {
+              "type": "definition",
+              "term": "angle plat",
+              "definition": "Un angle plat mesure $180^{\\circ}$. Il correspond à un demi-tour, les deux côtés de l'angle sont alignés dans des directions opposées.",
+              "example": "Le trait d'un trait de crayon tracé sans lever la mine forme un angle plat."
+            },
+            {
+              "type": "display_math",
+              "latex": "180^{\\circ}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle plat est facile à reconnaître : les deux demi-droites forment une seule ligne continue. Si tu plies une feuille de papier en deux, le pli crée un angle plat. Essaie de dessiner un angle plat sur ton cahier, puis place un petit point au sommet et trace les deux demi-droites dans des directions opposées. Tu verras que la mesure est toujours $180^{\\circ}$, peu importe la longueur des traits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier repère important est l'angle plein. Imagine que tu fais tourner une aiguille d'horloge tout autour du cadran jusqu'à ce qu'elle revienne exactement à sa position de départ. Tu as alors effectué un tour complet, soit $360^{\\circ}$. C'est l'angle plein. Il sert de référence pour dire qu'un angle aigu est plus petit qu'un angle droit, qu'un angle obtus est entre l'angle droit et l'angle plat, et ainsi de suite."
+            },
+            {
+              "type": "definition",
+              "term": "angle plein",
+              "definition": "Un angle plein mesure $360^{\\circ}$. Il correspond à un tour complet, les deux côtés de l'angle se confondent.",
+              "example": "Le tour complet d'une roue de vélo correspond à un angle plein."
+            },
+            {
+              "type": "display_math",
+              "latex": "360^{\\circ}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesurer l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le rapporteur sur le sommet de l'angle, aligne le zéro sur l'un des côtés et lis la valeur sur l'autre côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer aux repères",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la mesure est $90^{\\circ}$, c'est un angle droit. Si elle est $180^{\\circ}$, c'est un angle plat. Si elle est $360^{\\circ}$, c'est un angle plein."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Classer les autres angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre $0^{\\circ}$ et $90^{\\circ}$ : angle aigu. Entre $90^{\\circ}$ et $180^{\\circ}$ : angle obtus. Entre $180^{\\circ}$ et $360^{\\circ}$ : angle rentrant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les angles suivants, lesquels sont des angles droits ? $45^{\\circ}$, $90^{\\circ}$, $135^{\\circ}$, $180^{\\circ}$.",
+              "answer": "$90^{\\circ}$",
+              "hint": "Rappelle-toi la définition d'un angle droit.",
+              "explanation": "Un angle droit mesure exactement $90^{\\circ}$. Les autres valeurs ne correspondent pas à cette mesure."
+            },
+            {
+              "question": "Quel angle forme un trait de crayon tracé sans lever la mine ?",
+              "answer": "Un angle plat ($180^{\\circ}$).",
+              "hint": "Pense à la définition de l'angle plat.",
+              "explanation": "Les deux demi-droites sont alignées dans des directions opposées, ce qui donne un angle plat de $180^{\\circ}$."
+            },
+            {
+              "question": "Classe l'angle de $210^{\\circ}$ : aigu, droit, obtus, plat, rentrant ou plein ?",
+              "answer": "Angle rentrant.",
+              "hint": "Compare $210^{\\circ}$ aux repères $180^{\\circ}$ et $360^{\\circ}$.",
+              "explanation": "Comme $210^{\\circ}$ est supérieur à $180^{\\circ}$ et inférieur à $360^{\\circ}$, c'est un angle rentrant."
+            }
+          ]
+        },
+        {
+          "title": "Relations avec parallèles selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relations avec parallèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons découvrir comment les droites parallèles organisent les angles entre elles. Imagine deux rails de chemin de fer qui ne se croisent jamais : ce sont des droites parallèles. Quand une troisième droite, appelée sécante, les coupe, elle crée huit angles. Certains de ces angles ont des relations très précises que tu pourras utiliser pour résoudre des problèmes sans même mesurer."
+            },
+            {
+              "type": "definition",
+              "term": "angles alternes-internes",
+              "definition": "Deux angles alternes-internes sont situés de part et d'autre de la sécante, à l'intérieur des deux droites, et ils ne sont pas adjacents.",
+              "example": "Sur le schéma, les angles 3 et 5 sont alternes-internes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\angle 3 = \\angle 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété fondamentale est la suivante : si les deux droites sont parallèles, alors les angles alternes-internes sont égaux. Cela veut dire que dès que tu repères une paire d'angles alternes-internes, tu peux écrire une égalité entre leurs mesures. Essaie de visualiser : la sécante traverse les deux rails, les angles de part et d'autre du rail intérieur se font face comme dans un miroir."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux angles correspondants. Ils se trouvent du même côté de la sécante, l'un à l'extérieur des parallèles, l'autre à l'intérieur, mais tous les deux du même côté de la sécante. Quand les droites sont parallèles, ces angles sont également égaux. C'est comme si la sécante projetait le même angle sur les deux rails."
+            },
+            {
+              "type": "definition",
+              "term": "angles correspondants",
+              "definition": "Deux angles correspondants sont du même côté de la sécante, l'un à l'intérieur, l'autre à l'extérieur des deux droites.",
+              "example": "Les angles 1 et 5 sont correspondants."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\angle 1 = \\angle 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien les repérer, trace mentalement un petit arc de cercle du même côté de la sécante sur les deux droites. Si les droites sont parallèles, les deux arcs ont la même ouverture. C'est un outil puissant : dès que tu sais qu'une droite est parallèle à une autre, tu peux remplacer un angle inconnu par son correspondant connu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier groupe important concerne les angles intérieurs du même côté. Ils sont tous les deux à l'intérieur des parallèles et du même côté de la sécante. Contrairement aux deux cas précédents, ces angles ne sont pas égaux : ils sont supplémentaires, c'est-à-dire que leur somme vaut $180^{\\circ}$. Cette relation est très utile pour trouver un angle manquant quand tu connais l'autre."
+            },
+            {
+              "type": "definition",
+              "term": "angles intérieurs du même côté",
+              "definition": "Deux angles intérieurs du même côté sont situés entre les deux droites, du même côté de la sécante.",
+              "example": "Les angles 3 et 6 sont intérieurs du même côté."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\angle 3 + \\angle 6 = 180^{\\circ}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la sécante et les parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux droites qui ne se coupent pas et la droite qui les traverse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le type d'angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la position des angles (alternes-internes, correspondants, intérieurs même côté), note la relation correspondante : égalité ou somme $180^{\\circ}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'égalité ou la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la propriété pour calculer l'inconnu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la figure, les droites (d1) et (d2) sont parallèles. La sécante (s) forme un angle de $70^{\\circ}$ avec (d1) du côté intérieur. Quelle est la mesure de l'angle alterné-interne correspondant sur (d2) ?",
+              "answer": "$70^{\\circ}$",
+              "hint": "Les angles alternes-internes sont égaux quand les droites sont parallèles.",
+              "explanation": "Puisque (d1) // (d2), l'angle alterné-interne a la même mesure que l'angle donné, donc $70^{\\circ}$."
+            },
+            {
+              "question": "Les droites (d1) et (d2) sont parallèles. L'angle correspondant à un angle de $110^{\\circ}$ est-il aigu, droit ou obtus ?",
+              "answer": "Obtus.",
+              "hint": "Rappelle-toi que les angles correspondants sont égaux.",
+              "explanation": "L'angle correspondant mesure aussi $110^{\\circ}$, ce qui est supérieur à $90^{\\circ}$ et inférieur à $180^{\\circ}$, donc c'est un angle obtus."
+            },
+            {
+              "question": "Si deux angles intérieurs du même côté mesurent $x$ et $120^{\\circ}$, et que les droites sont parallèles, trouve $x$.",
+              "answer": "$60^{\\circ}$",
+              "hint": "La somme de ces deux angles vaut $180^{\\circ}$.",
+              "explanation": "On a $x + 120^{\\circ} = 180^{\\circ}$, donc $x = 60^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier en géométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir repérer des angles, c'est bien, mais savoir expliquer pourquoi ils sont égaux ou supplémentaires, c'est encore mieux. En cinquième, on attend de toi que tu rédiges des justifications claires, en citant la propriété utilisée et en nommant les droites et les angles concernés. C'est comme écrire une petite preuve où chaque phrase a une raison précise."
+            },
+            {
+              "type": "definition",
+              "term": "justification",
+              "definition": "Une justification est une phrase qui explique une affirmation géométrique en citant une définition, une propriété ou un théorème déjà connu.",
+              "example": "\"Les angles 3 et 5 sont égaux car ce sont des angles alternes-internes formés par la sécante (s) coupant les droites parallèles (d1) et (d2).\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien justifier, suis ce rituel : d'abord nomme les objets (droites, angles), ensuite rappelle la configuration (parallèles, sécante), enfin cite la propriété (alternes-internes égaux, correspondants égaux, intérieurs même côté supplémentaires). Évite les phrases vagues comme \"c'est évident\" ou \"on voit bien que\". Chaque affirmation doit être appuyée sur un fait géométrique précis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment construire une justification complète à partir d'un énoncé. Supposons que tu doives prouver que l'angle $\\widehat{ABC}$ vaut $50^{\\circ}$ sachant que (AB) // (CD) et que l'angle alterné-interne $\\widehat{BCD}$ mesure $50^{\\circ}$. Tu écriras : \"Puisque (AB) // (CD) et que (BC) est une sécante, les angles $\\widehat{ABC}$ et $\\widehat{BCD}$ sont alternes-internes, donc ils sont égaux. Or $\\widehat{BCD}=50^{\\circ}$, donc $\\widehat{ABC}=50^{\\circ}$.\" Remarque la structure : hypothèse, propriété, conclusion."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Énoncer les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indique quelles droites sont parallèles et quelle est la sécante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le type d'angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Précise si ce sont des alternes-internes, correspondants ou intérieurs même côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Citer la propriété",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Égalité pour alternes-internes et correspondants, somme $180^{\\circ}$ pour intérieurs même côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne la mesure de l'angle cherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, entraînon-nous sur un exemple un peu plus long. On a trois droites (d1), (d2), (d3) telles que (d1) // (d2) et (d2) // (d3). Une sécante (s) coupe les trois droites. L'angle formé entre (s) et (d1) du côté intérieur mesure $40^{\\circ}$. Montre que l'angle correspondant sur (d3) mesure aussi $40^{\\circ}$. La justification s'écrit en deux fois : d'abord entre (d1) et (d2), puis entre (d2) et (d3), en utilisant la transitivité du parallélisme. C'est un bel exercice pour voir comment les propriétés s'enchaînent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un angle droit, un angle plat et un angle plein.",
+                "Je sais reconnaître des angles alternes-internes, correspondants et intérieurs du même côté.",
+                "Je connais les propriétés d'égalité ou de supplémentarité liées aux parallèles.",
+                "Je sais rédiger une justification complète en citant la propriété utilisée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une justification pour affirmer que l'angle $\\widehat{XYZ}$ vaut $80^{\\circ}$ sachant que (XY) // (ZT) et que l'angle correspondant $\\widehat{ZTU}$ mesure $80^{\\circ}$.",
+              "answer": "Puisque (XY) // (ZT) et (YZ) est une sécante, les angles $\\widehat{XYZ}$ et $\\widehat{ZTU}$ sont correspondants, donc égaux. Or $\\widehat{ZTU}=80^{\\circ}$, donc $\\widehat{XYZ}=80^{\\circ}$.",
+              "hint": "Utilise la structure : parallélisme, sécante, type d'angles, propriété, conclusion.",
+              "explanation": "La justification cite les parallèles, la sécante, le type d'angles (correspondants) et la propriété d'égalité."
+            },
+            {
+              "question": "Les droites (d1) // (d2) // (d3). Une sécante (s) coupe (d1) en formant un angle de $55^{\\circ}$ du côté intérieur. Quelle est la mesure de l'angle correspondant sur (d3) ? Justifie.",
+              "answer": "$55^{\\circ}$. Justification : (d1)//(d2) donc angle correspondant sur (d2) = $55^{\\circ}$ ; (d2)//(d3) donc angle correspondant sur (d3) = $55^{\\circ}$.",
+              "hint": "Applique la propriété des correspondants deux fois de suite.",
+              "explanation": "Le parallélisme est transitif, chaque paire de droites parallèles donne un angle correspondant égal."
+            },
+            {
+              "question": "Dans une figure, (AB) // (CD). La sécante (EF) forme avec (AB) un angle intérieur du même côté de $130^{\\circ}$. Trouve la mesure de l'autre angle intérieur du même côté et justifie.",
+              "answer": "$50^{\\circ}$. Justification : les angles intérieurs du même côté sont supplémentaires, donc $130^{\\circ} + x = 180^{\\circ}$, d'où $x = 50^{\\circ}$.",
+              "hint": "Rappelle la relation de supplémentarité pour les intérieurs même côté.",
+              "explanation": "La somme des deux angles intérieurs du même côté vaut $180^{\\circ}$ quand les droites sont parallèles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Pythagore et raisonnement",
+  "title": "Quiz Pythagore et raisonnement - 4e",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $3$ et $4$. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "D'après le théorème de Pythagore, $3^2+4^2=9+16=25$, donc l'hypoténuse vaut $\\sqrt{25}=5$. Les autres valeurs ne satisfont pas l'égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $5$, $12$ et $13$. Ce triangle est-il rectangle ?",
+      "options": [
+        "Oui, car $5^2+12^2=13^2$",
+        "Non, car $5+12>13$",
+        "Oui, car $5+12=13$",
+        "Non, car $5^2+12^2\\neq13^2$"
+      ],
+      "correctAnswer": "Oui, car $5^2+12^2=13^2$",
+      "explanation": "On vérifie $5^2+12^2=25+144=169$ et $13^2=169$, l'égalité est vraie donc le triangle est rectangle. Les autres affirmations sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, l'hypoténuse mesure $10$ et un côté de l'angle droit mesure $6$. Quelle est la longueur de l'autre côté ?",
+      "options": [
+        "$8$",
+        "$7$",
+        "$9$",
+        "$5$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "D'après Pythagore, $10^2=6^2+x^2$ soit $100=36+x^2$, donc $x^2=64$ et $x=8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle de côtés $a$, $b$, $c$ avec $c$ le plus grand. Si $a^2+b^2>c^2$, quel type de triangle est-ce ?",
+      "options": [
+        "Acutangle",
+        "Rectangle",
+        "Obtusangle",
+        "Impossible à déterminer"
+      ],
+      "correctAnswer": "Acutangle",
+      "explanation": "Si le carré du plus grand côté est strictement plus petit que la somme des carrés des deux autres, l'angle opposé au plus grand côté est aigu, donc le triangle est acutangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5$ m est appuyée contre un mur. Son pied est à $3$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$4$ m",
+        "$3$ m",
+        "$5$ m",
+        "$2$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "On applique Pythagore : $5^2=3^2+h^2$ soit $25=9+h^2$, donc $h^2=16$ et $h=4$ m.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

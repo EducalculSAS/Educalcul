@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire et produire",
+  "title": "Algorithmes et données : Lire et produire",
+  "blocks": [
+    {
+      "title": "Calculer un total à partir d'un diagramme",
+      "content": "Observe le diagramme en barres ci-dessous qui représente les fruits préférés des élèves de la classe.\\nÉcris un algorithme (une suite d'instructions claires et numérotées) pour calculer le nombre total d'élèves ayant voté.",
+      "correctAnswer": "1. Début\\n2. Lire la valeur de la barre « Pommes » : 5\\n3. Lire la valeur de la barre « Bananes » : 8\\n4. Lire la valeur de la barre « Oranges » : 3\\n5. Calculer le total : 5 + 8 + 3 = 16\\n6. Afficher le total : 16 élèves\\n7. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour lire un diagramme en barres, on identifie la valeur associée à chaque catégorie (la hauteur de la barre). L'algorithme consiste à récupérer chaque valeur, à les additionner une par une, puis à donner le résultat final. Ici, 5 + 8 + 3 = 16.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 3,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Trouver le gagnant dans un tableau",
+      "content": "Voici un tableau recensant les votes pour le jeu de récréation préféré.\\nÉcris un algorithme pour déterminer quel jeu a obtenu le plus grand nombre de votes.",
+      "correctAnswer": "1. Début\\n2. Régler « max_votes » à 0 et « jeu_gagnant » à \"\"\\n3. Pour chaque ligne du tableau :\\n   - Si « Nombre de votes » > « max_votes » alors :\\n       * « max_votes » prend la valeur de « Nombre de votes »\\n       * « jeu_gagnant » prend la valeur de « Jeu »\\n4. Afficher « Le jeu gagnant est » + « jeu_gagnant » + « avec » + « max_votes » + « votes »\\n5. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt le tableau ligne par ligne. Il garde en mémoire le maximum trouvé jusqu'à présent (variable max_votes) et le nom correspondant (variable jeu_gagnant). À la fin, le jeu stocké est celui qui a le plus de votes. Ici, « Balle au prisonnier » avec 15 votes.",
+      "points": 3,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jeu",
+          "Nombre de votes"
+        ],
+        "rows": [
+          [
+            "Cache-cache",
+            "12"
+          ],
+          [
+            "Chat perché",
+            "9"
+          ],
+          [
+            "Balle au prisonnier",
+            "15"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Produire un diagramme à partir de données",
+      "content": "Tu disposes du tableau ci-dessous indiquant le nombre d'animaux dans un refuge.\\nÉcris l'algorithme (les étapes de construction) pour tracer un diagramme en barres représentant ces données sur une feuille quadrillée.",
+      "correctAnswer": "1. Début\\n2. Dessiner deux axes perpendiculaires (horizontal et vertical)\\n3. Sur l'axe horizontal, écrire les noms des animaux : Chien, Chat, Lapin (un par graduation)\\n4. Choisir une échelle pour l'axe vertical : 1 carreau = 1 animal (car le maximum est 10)\\n5. Graduier l'axe vertical de 0 à 10\\n6. Pour chaque animal :\\n   - Repérer son effectif sur l'axe vertical\\n   - Tracer un rectangle (barre) au-dessus de son nom, dont la hauteur correspond à l'effectif\\n7. Colorier les barres avec des couleurs différentes\\n8. Écrire le titre : « Nombre d'animaux au refuge »\\n9. Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Produire un diagramme demande de suivre des étapes de construction précises : tracer le repère, choisir une échelle adaptée aux valeurs max (ici 10 pour les chats), reporter chaque valeur par une barre de hauteur proportionnelle, et enfin légender le graphique (titre, axes, unités).",
+      "points": 3,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "6"
+          ],
+          [
+            "Chat",
+            "10"
+          ],
+          [
+            "Lapin",
+            "4"
+          ]
+        ]
+      }
+    }
+  ]
+}

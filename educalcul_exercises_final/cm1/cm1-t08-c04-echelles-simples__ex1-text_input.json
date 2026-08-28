@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 266,
+  "_course_code": "cm1-t08-c04-echelles-simples",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Lire une échelle",
+  "title": "Lire et utiliser une échelle",
+  "blocks": [
+    {
+      "title": "Distance réelle à partir du plan",
+      "content": "Sur un plan de maison, l'échelle est $1/100$ (1 centimètre sur le plan représente 1 mètre dans la réalité). Un mur mesure $4,5$ cm sur le plan. Quelle est la longueur réelle de ce mur en mètres ?",
+      "correctAnswer": "$4,5$ m",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle $1/100$ signifie que 1 cm sur le dessin correspond à 100 cm dans la réalité, soit 1 m. Pour trouver la distance réelle, on multiplie la distance sur le plan par 100 (ou on lit directement en mètres car 1 cm = 1 m). $4,5 \\times 1 = 4,5$. Le mur mesure donc $4,5$ mètres.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Plan (cm)",
+            "value": 4.5,
+            "tone": "blue"
+          },
+          {
+            "label": "Réalité (m)",
+            "value": 4.5,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Échelle 1/100 : 1 cm = 1 m"
+      }
+    },
+    {
+      "title": "Distance sur le plan à partir de la réalité",
+      "content": "Un plan de jardin est dessiné à l'échelle $1/200$ (1 cm sur le plan pour 2 m dans la réalité). Un chemin mesure $12$ m en réalité. Quelle longueur en centimètres doit-on tracer sur le plan pour représenter ce chemin ?",
+      "correctAnswer": "$6$ cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle $1/200$ signifie 1 cm pour 200 cm (soit 2 m). Pour passer de la réalité au plan, on divise la distance réelle par 200 (ou par 2 pour obtenir les cm). $12 \\div 2 = 6$. Il faut tracer $6$ cm sur le plan.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Distance réelle sur une carte",
+      "content": "Sur une carte routière, l'échelle est $1/100\\,000$ (1 cm sur la carte représente 1 km dans la réalité). La distance entre deux villes sur la carte est de $8,5$ cm. Quelle est la distance réelle entre ces deux villes en kilomètres ?",
+      "correctAnswer": "$8,5$ km",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Avec l'échelle $1/100\\,000$, 1 cm sur la carte vaut 100 000 cm dans la réalité. Comme 100 000 cm = 1 km, la correspondance directe est 1 cm = 1 km. On multiplie la distance sur la carte par 1 : $8,5 \\times 1 = 8,5$. Les deux villes sont séparées de $8,5$ km.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

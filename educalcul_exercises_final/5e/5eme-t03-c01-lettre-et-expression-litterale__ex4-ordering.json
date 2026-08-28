@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Application : Lettre et expression littérale",
+  "title": "Ordre des étapes : expressions littérales",
+  "blocks": [
+    {
+      "title": "Construction d'une expression",
+      "content": "Remets dans l'ordre les étapes pour écrire l'expression correspondant à ce programme de calcul : « Choisis un nombre, multiplie-le par 5, puis ajoute 12 ».",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "On note $x$ le nombre choisi.",
+        "On multiplie ce nombre par $5$ : $5 \\times x$.",
+        "On ajoute $12$ au résultat : $5x + 12$."
+      ],
+      "explanation": "Il faut d'abord définir la variable (le nombre choisi), puis appliquer les opérations dans l'ordre donné par l'énoncé : la multiplication par 5 vient avant l'addition de 12. L'expression finale s'écrit $5x + 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une expression",
+      "content": "Remets dans l'ordre les étapes pour simplifier l'expression $3x + 7 - 2x + 4$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Expression de départ : $3x + 7 - 2x + 4$.",
+        "Je regroupe les termes en $x$ et les nombres : $3x - 2x + 7 + 4$.",
+        "Je calcule $3x - 2x = x$ et $7 + 4 = 11$.",
+        "Expression simplifiée : $x + 11$."
+      ],
+      "explanation": "La simplification suit un ordre logique : on écrit l'expression, on regroupe les termes semblables (ceux avec $x$ d'un côté, les nombres de l'autre), on effectue les calculs de coefficients, puis on écrit la forme finale simplifiée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de valeur pour $x = 4$",
+      "content": "Remets dans l'ordre les étapes pour calculer la valeur de l'expression $2x^2 - 5x + 3$ lorsque $x = 4$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je remplace $x$ par $4$ : $2 \\times 4^2 - 5 \\times 4 + 3$.",
+        "Je calcule la puissance : $4^2 = 16$, donc $2 \\times 16 - 5 \\times 4 + 3$.",
+        "Je calcule les multiplications : $32 - 20 + 3$.",
+        "Je calcule la somme : $12 + 3 = 15$."
+      ],
+      "explanation": "Pour calculer une valeur numérique, on substitue d'abord la variable par sa valeur. On respecte ensuite l'ordre des priorités : puissances, puis multiplications, enfin additions et soustractions de gauche à droite. Le résultat final est 15.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

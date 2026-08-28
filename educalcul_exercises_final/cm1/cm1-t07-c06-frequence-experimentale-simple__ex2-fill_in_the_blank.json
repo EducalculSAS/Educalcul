@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Compter succès",
+  "title": "Compter les succès",
+  "blocks": [
+    {
+      "title": "Le lancer de dé",
+      "content": "Léa lance un dé $6$ fois. Elle obtient les résultats suivants : $2$, $4$, $1$, $4$, $6$, $4$. On cherche le nombre de fois où elle a obtenu le chiffre $4$. Le nombre de succès est de {{1}}.",
+      "correctAnswer": "3",
+      "blanks": [
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde la liste des résultats : $2$, $4$, $1$, $4$, $6$, $4$. Le chiffre $4$ apparaît $3$ fois. Il y a donc $3$ succès.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le tir à l'arc",
+      "content": "Marc tire $10$ flèches. Il touche la cible $7$ fois et rate $3$ fois. Si le succès est défini comme le fait de toucher la cible, Marc a réalisé {{1}} succès sur {{2}} essais au total.",
+      "correctAnswer": "7|10",
+      "blanks": [
+        "7",
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le succès est de toucher la cible. Marc l'a fait $7$ fois. Le nombre total d'essais correspond au nombre total de flèches tirées, soit $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le sac de billes",
+      "content": "Julie pioche une bille dans un sac, note sa couleur et la remet. Elle fait cela $20$ fois. Elle a obtenu $8$ billes rouges, $7$ billes bleues et $5$ billes vertes. On s'intéresse au succès d'obtenir une bille rouge ou une bille bleue. Le nombre total de succès est de {{1}}.",
+      "correctAnswer": "15",
+      "blanks": [
+        "15"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le succès est d'obtenir soit une bille rouge, soit une bille bleue. On additionne donc les deux résultats : $8 + 7 = 15$. Il y a $15$ succès.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

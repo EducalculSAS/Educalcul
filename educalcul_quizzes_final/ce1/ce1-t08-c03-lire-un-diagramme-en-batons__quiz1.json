@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire axe et catégories",
+  "title": "Quiz : Lire un diagramme en bâtons - Axe et catégories",
+  "questions": [
+    {
+      "text": "Dans ce diagramme en bâtons, que représentent les étiquettes situées sur l'axe horizontal (la ligne du bas) ?",
+      "options": [
+        "Les nombres d'élèves",
+        "Les noms des fruits",
+        "La taille des bâtons",
+        "Les couleurs des fruits"
+      ],
+      "correctAnswer": "Les noms des fruits",
+      "explanation": "L'axe horizontal d'un diagramme en bâtons indique toujours les catégories observées, ici les noms des fruits : pommes, bananes, oranges, raisins. L'axe vertical, lui, porte les nombres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Que montrent les nombres écrits sur l'axe vertical (la ligne de côté) ?",
+      "options": [
+        "Le nombre d'élèves",
+        "Les noms des fruits",
+        "L'ordre des fruits",
+        "Le prix des fruits"
+      ],
+      "correctAnswer": "Le nombre d'élèves",
+      "explanation": "L'axe vertical est gradué avec des nombres. Il indique la quantité, ici le nombre d'élèves qui ont choisi chaque fruit. Chaque graduation correspond à un élève de plus.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien d'élèves ont choisi les oranges ?",
+      "options": [
+        "quatre",
+        "cinq",
+        "six",
+        "sept"
+      ],
+      "correctAnswer": "cinq",
+      "explanation": "Il faut lire la hauteur du bâton \"Oranges\". Il monte jusqu'à la graduation $5$, donc cinq élèves ont choisi les oranges.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel fruit a obtenu plus de votes : les pommes ou les bananes ?",
+      "options": [
+        "Les pommes",
+        "Les bananes",
+        "Les deux sont à égalité",
+        "Impossible à savoir"
+      ],
+      "correctAnswer": "Les pommes",
+      "explanation": "Le bâton \"Pommes\" monte jusqu'à $6$ et le bâton \"Bananes\" jusqu'à $4$. Comme $6 > 4$, les pommes ont plus de votes que les bananes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel est le fruit le plus aimé de la classe d'après ce diagramme ?",
+      "options": [
+        "Les pommes",
+        "Les bananes",
+        "Les oranges",
+        "Les raisins"
+      ],
+      "correctAnswer": "Les raisins",
+      "explanation": "On compare la hauteur de tous les bâtons. Le bâton le plus haut est \"Raisins\" avec $7$ votes. C'est donc le fruit préféré de la classe.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Raisins",
+            "value": 7,
+            "tone": "green"
+          }
+        ]
+      }
+    }
+  ]
+}

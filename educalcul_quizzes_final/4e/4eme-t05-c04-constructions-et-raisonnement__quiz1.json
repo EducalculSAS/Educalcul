@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Choisir propriété",
+  "title": "Quiz : Choisir la propriété du triangle (4e)",
+  "questions": [
+    {
+      "text": "Quelle est la somme des angles d'un triangle ?",
+      "options": [
+        "$90^{\\circ}$",
+        "$180^{\\circ}$",
+        "$270^{\\circ}$",
+        "$360^{\\circ}$"
+      ],
+      "correctAnswer": "$180^{\\circ}$",
+      "explanation": "Dans tout triangle, la somme des trois angles intérieurs vaut toujours $180^{\\circ}$. Les autres valeurs correspondent à d'autres figures (carré, cercle) ou sont incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle propriété caractérise un triangle isocèle ?",
+      "options": [
+        "Les angles à la base sont égaux",
+        "Les trois côtés sont égaux",
+        "Un angle est droit",
+        "Les côtés sont tous de longueurs différentes"
+      ],
+      "correctAnswer": "Les angles à la base sont égaux",
+      "explanation": "Un triangle isocèle a deux côtés de même longueur ; les angles opposés à ces côtés (angles à la base) sont donc égaux. Les autres options décrivent un triangle équilatéral, rectangle ou scalène.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation est vraie pour un triangle rectangle ?",
+      "options": [
+        "Un angle mesure $90^{\\circ}$",
+        "Tous les angles sont aigus",
+        "Deux angles sont égaux",
+        "La somme des angles est $200^{\\circ}$"
+      ],
+      "correctAnswer": "Un angle mesure $90^{\\circ}$",
+      "explanation": "Par définition, un triangle rectangle possède un angle droit ($90^{\\circ}$). La somme des angles reste $180^{\\circ}$, les autres angles sont aigus mais pas tous les trois, et deux angles ne sont pas nécessairement égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle propriété définit un triangle équilatéral ?",
+      "options": [
+        "Tous les côtés ont la même longueur",
+        "Un angle mesure $90^{\\circ}$",
+        "Deux côtés sont égaux",
+        "Les angles sont $30^{\\circ}$, $60^{\\circ}$, $90^{\\circ}$"
+      ],
+      "correctAnswer": "Tous les côtés ont la même longueur",
+      "explanation": "Un triangle équilatéral a ses trois côtés de même longueur, ce qui entraîne que ses trois angles valent $60^{\\circ}$. Les autres options correspondent à un triangle rectangle, isocèle ou un triangle rectangle particulier (30-60-90).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne un triangle ABC dont les angles mesurent $50^{\\circ}$, $60^{\\circ}$ et $70^{\\circ}$. Quelle propriété s'applique ?",
+      "options": [
+        "C'est un triangle rectangle",
+        "C'est un triangle isocèle",
+        "C'est un triangle équilatéral",
+        "C'est un triangle quelconque (scalène) et acutangle"
+      ],
+      "correctAnswer": "C'est un triangle quelconque (scalène) et acutangle",
+      "explanation": "Les trois angles sont tous différents (donc pas isocèle ni équilatéral) et tous inférieurs à $90^{\\circ}$ (donc acutangle). Aucun angle n'est droit, donc ce n'est pas un triangle rectangle. C'est donc un triangle scalène acutangle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec angles 50°, 60°, 70°",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

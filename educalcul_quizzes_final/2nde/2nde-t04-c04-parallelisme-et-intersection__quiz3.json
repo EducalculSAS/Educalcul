@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter le parallélisme et l'intersection",
+  "questions": [
+    {
+      "text": "On considère les deux droites d'équations cartésiennes $(d_1) : 2x + 3y = 5$ et $(d_2) : 4x + 6y = 11$. Quelle est leur position relative ?",
+      "options": [
+        "Les droites sont confondues",
+        "Les droites sont parallèles distinctes",
+        "Les droites sont sécantes",
+        "Les droites sont perpendiculaires"
+      ],
+      "correctAnswer": "Les droites sont parallèles distinctes",
+      "explanation": "Les vecteurs normaux sont $\\vec{n_1}(2;3)$ et $\\vec{n_2}(4;6)$. Comme $\\vec{n_2} = 2\\vec{n_1}$, les droites sont parallèles. Pour vérifier si elles sont confondues, on teste si le second membre suit la même proportion : $2 \\times 5 = 10 \\neq 11$. Les droites sont donc parallèles distinctes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne la droite $(d)$ d'équation $2x - 4y = 5$. On cherche la valeur de $k$ pour que la droite $(d_k)$ d'équation $3x + ky = 7$ soit parallèle à $(d)$.",
+      "options": [
+        "$k = -6$",
+        "$k = 6$",
+        "$k = -\\frac{3}{2}$",
+        "$k = \\frac{3}{2}$"
+      ],
+      "correctAnswer": "$k = -6$",
+      "explanation": "Deux droites d'équations cartésiennes $ax+by=c$ et $a'x+b'y=c'$ sont parallèles si et seulement si $ab' - a'b = 0$ (determinant nul). Ici $a=2, b=-4, a'=3, b'=k$. La condition donne $2k - 3(-4) = 0 \\iff 2k + 12 = 0 \\iff k = -6$. L'option $k=6$ correspondrait à l'erreur de signe $2k - 12 = 0$. Les options $\\pm 3/2$ confondent avec la condition de perpendicularité ($aa'+bb'=0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que représente géométriquement la résolution du système $\\begin{cases} x - 2y = 3 \\\\ 2x - 4y = 6 \\end{cases}$ ?",
+      "options": [
+        "Le système n'a aucune solution, les droites sont parallèles distinctes",
+        "Le système a une unique solution, les droites sont sécantes",
+        "Le système a une infinité de solutions, les droites sont confondues",
+        "Le système a deux solutions, les droites se coupent en deux points"
+      ],
+      "correctAnswer": "Le système a une infinité de solutions, les droites sont confondues",
+      "explanation": "La deuxième équation est exactement le double de la première ($2 \\times (x - 2y) = 2 \\times 3$). Les deux équations représentent donc la même droite. Le système admet une infinité de solutions (tous les points de la droite), ce qui correspond géométriquement à des droites confondues.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient les droites $(d_1) : y = 2x + 1$ et $(d_2) : y = -x + 4$. Quelle est l'interprétation géométrique de la solution du système formé par ces deux équations ?",
+      "options": [
+        "Les coordonnées du vecteur directeur commun aux deux droites",
+        "Les coordonnées du point d'intersection des deux droites",
+        "La distance qui sépare les deux droites",
+        "L'angle formé par les deux droites"
+      ],
+      "correctAnswer": "Les coordonnées du point d'intersection des deux droites",
+      "explanation": "Résoudre un système de deux équations du premier degré à deux inconnues revient à chercher le couple $(x;y)$ qui vérifie les deux équations simultanément. Géométriquement, ce couple est l'abscisse et l'ordonnée du point unique d'intersection des deux droites (car leurs coefficients directeurs 2 et -1 sont différents, elles ne sont pas parallèles).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la famille de droites $(d_m)$ d'équation $(m-1)x + 2y = m+3$, où $m$ est un nombre réel. Quelle affirmation est vraie pour tout $m$ ?",
+      "options": [
+        "Toutes les droites $(d_m)$ sont parallèles entre elles",
+        "Toutes les droites $(d_m)$ passent par un point fixe",
+        "Toutes les droites $(d_m)$ sont perpendiculaires entre elles",
+        "Les droites $(d_m)$ balayent le plan sans avoir de point commun"
+      ],
+      "correctAnswer": "Toutes les droites $(d_m)$ passent par un point fixe",
+      "explanation": "On réécrit l'équation en factorisant par $m$ : $m(x+1) - x + 2y - 3 = 0$. Pour que le point appartienne à la droite quel que soit $m$, il faut que le coefficient de $m$ soit nul et que le reste soit nul : $\\begin{cases} x+1 = 0 \\\\ -x + 2y - 3 = 0 \\end{cases} \\iff \\begin{cases} x = -1 \\\\ 2y = 2 \\end{cases} \\iff \\begin{cases} x = -1 \\\\ y = 1 \\end{cases}$. Toutes les droites de la famille passent par le point fixe $I(-1;1)$ (c'est un faisceau de droites). Elles ne sont pas toutes parallèles (le coefficient directeur dépend de $m$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

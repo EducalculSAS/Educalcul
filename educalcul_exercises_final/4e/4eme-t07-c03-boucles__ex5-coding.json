@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : For / while simple",
+  "title": "Boucles : For et While simples",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme (ou un code façon Python) qui affiche les entiers de $1$ à $10$ en utilisant une boucle pour.",
+      "correctAnswer": "Pour i de 1 à 10 faire\\n    Afficher i\\nFin pour",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle pour parcourt les valeurs de $1$ à $10$ inclus. À chaque itération, la variable i prend la valeur courante et on l'affiche. Cela produit la suite 1, 2, 3, ..., 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui calcule la somme successive des entiers naturels en partant de $1$ tant que la somme reste inférieure ou égale à $50$. Utiliser une boucle tant que. Afficher la somme finale et le dernier entier ajouté.",
+      "correctAnswer": "somme ← 0\\ni ← 1\\nTant que somme + i ≤ 50 faire\\n    somme ← somme + i\\n    i ← i + 1\\nFin tant que\\nAfficher somme, i - 1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la somme à $0$ et l'entier courant i à $1$. Tant que l'addition du prochain entier ne dépasse pas $50$, on l'ajoute à la somme et on incrémente i. Lorsque la condition devient fausse, la boucle s'arrête. La somme finale est $45$ (1+2+...+9) et le dernier entier ajouté est $9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui demande un entier naturel $n$ à l'utilisateur, puis calcule et affiche la factorielle $n!$ à l'aide d'une boucle pour. Rappel : $0! = 1$.",
+      "correctAnswer": "Lire n\\nfactorielle ← 1\\nPour i de 1 à n faire\\n    factorielle ← factorielle × i\\nFin pour\\nAfficher factorielle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit la valeur de $n$. La variable factorielle est initialisée à $1$ (valeur neutre de la multiplication). La boucle pour fait varier i de $1$ à $n$ ; à chaque tour on multiplie factorielle par i. À la fin, factorielle vaut $n!$. Si $n = 0$, la boucle n'est pas exécutée et factorielle reste $1$, ce qui correspond à $0!$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

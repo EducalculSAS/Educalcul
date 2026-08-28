@@ -1,0 +1,132 @@
+{
+  "_status": "done",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Chaîner",
+  "title": "Quiz : Chaîner des raisonnements dans le triangle",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ isocèle en $A$, on sait que l'angle $\\widehat{BAC}$ mesure $40^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{ABC}$ ?",
+      "options": [
+        "70°",
+        "40°",
+        "140°",
+        "50°"
+      ],
+      "correctAnswer": "70°",
+      "explanation": "Dans un triangle isocèle en $A$, les angles à la base $\\widehat{ABC}$ et $\\widehat{ACB}$ ont même mesure. La somme des angles d'un triangle vaut $180^{\\circ}$. On a donc $2 \\times \\widehat{ABC} + 40^{\\circ} = 180^{\\circ}$, soit $2 \\times \\widehat{ABC} = 140^{\\circ}$, d'où $\\widehat{ABC} = 70^{\\circ}$. L'option 40° confond l'angle au sommet et les angles à la base. L'option 140° est la somme des deux angles à la base. L'option 50° correspond à une erreur de calcul ($180-40=140$ puis oubli de diviser par 2).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Le triangle $DEF$ est rectangle en $D$. L'angle $\\widehat{EDF}$ vaut $90^{\\circ}$ et l'angle $\\widehat{DEF}$ vaut $35^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{DFE}$ ?",
+      "options": [
+        "55°",
+        "35°",
+        "145°",
+        "90°"
+      ],
+      "correctAnswer": "55°",
+      "explanation": "Dans un triangle rectangle, les deux angles aigus sont complémentaires (leur somme vaut $90^{\\circ}$). Puisque $\\widehat{DEF} = 35^{\\circ}$, on a $\\widehat{DFE} = 90^{\\circ} - 35^{\\circ} = 55^{\\circ}$. On peut aussi utiliser la somme des angles du triangle : $180^{\\circ} - 90^{\\circ} - 35^{\\circ} = 55^{\\circ}$. L'option 35° confond les deux angles aigus. L'option 90° est l'angle droit. L'option 145° correspond à $180^{\\circ} - 35^{\\circ}$ (angle supplémentaire au lieu de complémentaire).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Le triangle $GHI$ est équilatéral. On prolonge le côté $[GI]$ au-delà de $I$ jusqu'au point $J$. Quelle est la mesure de l'angle $\\widehat{HIJ}$ ?",
+      "options": [
+        "120°",
+        "60°",
+        "180°",
+        "90°"
+      ],
+      "correctAnswer": "120°",
+      "explanation": "Dans un triangle équilatéral, tous les angles mesurent $60^{\\circ}$. L'angle $\\widehat{HIJ}$ est l'angle extérieur en $I$ adjacent à $\\widehat{GIH}$. Les angles $\\widehat{GIH}$ et $\\widehat{HIJ}$ sont supplémentaires (somme $180^{\\circ}$) car $G$, $I$, $J$ sont alignés. Donc $\\widehat{HIJ} = 180^{\\circ} - 60^{\\circ} = 120^{\\circ}$. L'option 60° est la mesure de l'angle intérieur. L'option 180° correspond à un angle plat. L'option 90° n'a pas de justification ici.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle GHI équilatéral avec prolongement",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Dans le triangle $JKL$ isocèle en $J$, l'angle $\\widehat{JKL}$ mesure $50^{\\circ}$. La bissectrice de l'angle $\\widehat{JKL}$ coupe le côté $[JL]$ en $M$. Quelle est la mesure de l'angle $\\widehat{KML}$ ?",
+      "options": [
+        "105°",
+        "75°",
+        "130°",
+        "50°"
+      ],
+      "correctAnswer": "105°",
+      "explanation": "Chaînons les déductions : 1) Triangle isocèle en $J$ donc $\\widehat{JKL} = \\widehat{JLK} = 50^{\\circ}$. 2) Somme des angles dans $JKL$ : $\\widehat{KJL} = 180^{\\circ} - 50^{\\circ} - 50^{\\circ} = 80^{\\circ}$. 3) $KM$ est bissectrice de $\\widehat{JKL}$, donc $\\widehat{MKL} = 50^{\\circ} / 2 = 25^{\\circ}$. 4) Dans le triangle $KML$, $\\widehat{KML} = 180^{\\circ} - \\widehat{MLK} - \\widehat{MKL} = 180^{\\circ} - 50^{\\circ} - 25^{\\circ} = 105^{\\circ}$. L'option 75° est l'angle supplémentaire de 105°. L'option 130° correspond à $180^{\\circ} - 50^{\\circ}$. L'option 50° est la mesure de l'angle à la base.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $MNO$, la médiatrice du segment $[MN]$ passe par le sommet $O$. On sait que $\\widehat{OMN} = 40^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{MON}$ ?",
+      "options": [
+        "100°",
+        "40°",
+        "80°",
+        "140°"
+      ],
+      "correctAnswer": "100°",
+      "explanation": "La médiatrice de $[MN]$ passant par $O$ implique que $O$ est équidistant de $M$ et $N$, donc $OM = ON$. Le triangle $MNO$ est donc isocèle en $O$. Les angles à la base $\\widehat{OMN}$ et $\\widehat{ONM}$ sont égaux : $\\widehat{ONM} = 40^{\\circ}$. L'angle au sommet $\\widehat{MON}$ vaut $180^{\\circ} - 40^{\\circ} - 40^{\\circ} = 100^{\\circ}$. L'option 40° confond l'angle au sommet et l'angle à la base. L'option 80° est la somme des deux angles à la base. L'option 140° correspond à $180^{\\circ} - 40^{\\circ}$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle MNO isocèle en O",
+        "vertexLabels": [
+          "M",
+          "N",
+          "O"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

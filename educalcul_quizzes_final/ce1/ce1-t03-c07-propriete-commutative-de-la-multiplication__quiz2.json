@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 94,
+  "_course_code": "ce1-t03-c07-propriete-commutative-de-la-multiplication",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Utiliser un quadrillage",
+  "title": "La commutativité de la multiplication sur un quadrillage",
+  "questions": [
+    {
+      "text": "Observe ce quadrillage. Quelle multiplication correspond au nombre total de cases colorées ?",
+      "options": [
+        "$3 \\times 4$",
+        "$4 \\times 3$",
+        "$3 + 4$",
+        "$12 \\times 1$"
+      ],
+      "correctAnswer": "$3 \\times 4$",
+      "explanation": "Le quadrillage montre 3 lignes de 4 cases chacune. On compte 3 fois 4 cases, ce qui s'écrit $3 \\times 4 = 12$. L'option $4 \\times 3$ est aussi vraie grâce à la commutativité, mais la lecture directe lignes $\\times$ colonnes donne $3 \\times 4$. L'addition $3 + 4$ ne compte pas les cases. $12 \\times 1$ ne décrit pas l'organisation du quadrillage.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Quadrillage 3 lignes, 4 colonnes"
+      }
+    },
+    {
+      "text": "Ce même quadrillage peut être lu différemment. Quelle multiplication inverse (commutée) donne le même total ?",
+      "options": [
+        "$4 \\times 3$",
+        "$3 \\times 3$",
+        "$4 \\times 4$",
+        "$2 \\times 6$"
+      ],
+      "correctAnswer": "$4 \\times 3$",
+      "explanation": "La propriété commutative dit qu'on peut changer l'ordre des facteurs sans changer le produit. Le quadrillage a 3 lignes de 4 ($3 \\times 4$), mais on peut aussi voir 4 colonnes de 3 cases ($4 \\times 3$). Les deux donnent 12. Les autres multiplications donnent des résultats différents (9, 16, 12 mais ne correspondent pas à la structure lignes/colonnes de ce quadrillage précis).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Quadrillage 3 lignes, 4 colonnes"
+      }
+    },
+    {
+      "text": "Sur ce quadrillage, il y a 2 lignes de 5 cases. Écris la multiplication commutée.",
+      "options": [
+        "$5 \\times 2$",
+        "$2 \\times 5$",
+        "$10 \\times 1$",
+        "$5 + 2$"
+      ],
+      "correctAnswer": "$5 \\times 2$",
+      "explanation": "Le quadrillage original montre $2 \\times 5$ (2 lignes, 5 colonnes). La multiplication commutée inverse l'ordre des facteurs : $5 \\times 2$ (5 lignes, 2 colonnes). Le produit reste 10. L'option $2 \\times 5$ est la lecture initiale, pas la commutée. $10 \\times 1$ et $5 + 2$ ne sont pas les multiplications commutées de $2 \\times 5$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 5,
+        "highlighted": 10,
+        "caption": "Quadrillage 2 lignes, 5 colonnes"
+      }
+    },
+    {
+      "text": "Complète l'égalité en utilisant la commutativité sur ce quadrillage : $4 \\times 3 = 3 \\times \\dots$",
+      "options": [
+        "4",
+        "3",
+        "12",
+        "7"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Le quadrillage montre 4 lignes de 3 cases ($4 \\times 3$). Par commutativité, $4 \\times 3 = 3 \\times 4$. Le facteur manquant est donc 4. L'option 3 donnerait $3 \\times 3 = 9$. L'option 12 est le produit, pas le facteur. L'option 7 n'a pas de lien avec la multiplication.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 3,
+        "highlighted": 12,
+        "caption": "Quadrillage 4 lignes, 3 colonnes"
+      }
+    },
+    {
+      "text": "Léo colorie 3 lignes de 4 cases sur un quadrillage. Mia colorie 4 lignes de 3 cases sur un quadrillage de même taille. Que peut-on dire de leurs coloriages ?",
+      "options": [
+        "Les deux ont colorié le même nombre de cases.",
+        "Léo a colorié plus de cases que Mia.",
+        "Mia a colorié plus de cases que Léo.",
+        "On ne peut pas comparer sans compter."
+      ],
+      "correctAnswer": "Les deux ont colorié le même nombre de cases.",
+      "explanation": "Léo a fait $3 \\times 4 = 12$ cases. Mia a fait $4 \\times 3 = 12$ cases. La propriété commutative de la multiplication garantit que $3 \\times 4 = 4 \\times 3$. Ils ont donc colorié exactement le même nombre de cases (12), même si l'organisation (lignes/colonnes) est différente.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

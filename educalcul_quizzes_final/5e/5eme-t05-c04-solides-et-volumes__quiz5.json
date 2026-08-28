@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 403,
+  "_course_code": "5eme-t05-c04-solides-et-volumes",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Prismes / cylindres selon programme",
+  "title": "Approfondissement : Prismes et cylindres - Volume et sections",
+  "questions": [
+    {
+      "text": "Quelle affirmation caractérise exactement un prisme droit ?",
+      "options": [
+        "Les faces latérales sont des triangles et les bases sont parallèles.",
+        "Les faces latérales sont des rectangles et les deux bases sont des polygones congrus placés dans des plans parallèles.",
+        "Il possède une unique base et les faces latérales se rejoignent en un sommet.",
+        "Les deux bases sont des cercles de même rayon et l'axe est oblique par rapport aux bases."
+      ],
+      "correctAnswer": "Les faces latérales sont des rectangles et les deux bases sont des polygones congrus placés dans des plans parallèles.",
+      "explanation": "Un prisme droit est défini par deux bases qui sont des polygones congrus (identiques) et parallèles, reliées par des faces latérales qui sont des rectangles. L'option A décrit une pyramide. L'option C décrit aussi une pyramide. L'option D décrit un cylindre oblique (ou un cylindre de révolution si l'axe est perpendiculaire, mais les bases sont des cercles, pas des polygones).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un prisme droit a une base d'aire $18 cm^2$ et une hauteur de $7 cm$. Quel est son volume ?",
+      "options": [
+        "$126 cm^3$",
+        "$25 cm^3$",
+        "$126 cm^2$",
+        "$50 cm^3$"
+      ],
+      "correctAnswer": "$126 cm^3$",
+      "explanation": "Le volume d'un prisme droit (ou d'un cylindre) se calcule avec la formule $V = A_{base} \\times h$. Ici $V = 18 \\times 7 = 126$. L'unité de volume est le $cm^3$ (centimètre cube), pas le $cm^2$ qui est une unité d'aire. L'option B correspond à l'addition $18+7$. L'option D ne correspond à aucun calcul standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de révolution a un volume de $375 cm^3$ et sa base a une aire de $25 cm^2$. Quelle est sa hauteur ?",
+      "options": [
+        "$15 cm$",
+        "$400 cm$",
+        "$350 cm$",
+        "$9375 cm$"
+      ],
+      "correctAnswer": "$15 cm$",
+      "explanation": "On utilise la formule du volume $V = A_{base} \\times h$. On cherche $h$, donc $h = V \\div A_{base} = 375 \\div 25 = 15$. L'unité de la hauteur est le centimètre ($cm$). L'option B correspond à l'addition $375+25$. L'option C à la soustraction $375-25$. L'option D à la multiplication $375 \\times 25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On coupe un cylindre de révolution par un plan parallèle à ses bases. Quelle est la forme de la section obtenue ?",
+      "options": [
+        "Un rectangle",
+        "Un cercle",
+        "Une ellipse",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Dans un cylindre de révolution, les bases sont des cercles. Toute section faite par un plan parallèle aux bases est un cercle de même rayon que les bases (donc un cercle congru aux bases). Un rectangle s'obtient par un plan passant par l'axe (section axiale). Une ellipse s'obtient par un plan incliné non parallèle aux bases. Un triangle n'est pas une section possible d'un cylindre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit a un volume de $2 dm^3$. L'aire de sa base est de $400 cm^2$. Quelle est sa hauteur exprimée en centimètres ?",
+      "options": [
+        "$5 cm$",
+        "$0,5 cm$",
+        "$50 cm$",
+        "$800000 cm$"
+      ],
+      "correctAnswer": "$5 cm$",
+      "explanation": "Il faut convertir le volume en $cm^3$ pour avoir des unités cohérentes avec l'aire de la base. $1 dm^3 = 1000 cm^3$, donc $2 dm^3 = 2000 cm^3$. On applique la formule $h = V \\div A_{base} = 2000 \\div 400 = 5$. La hauteur est donc de $5 cm$. L'option B résulte d'une erreur de conversion ($2 \\div 400$ sans convertir le volume). L'option C correspond à $2000 \\div 40$ (erreur sur l'aire). L'option D correspond à $2000 \\times 400$ (multiplication au lieu de division).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

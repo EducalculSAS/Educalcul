@@ -1,0 +1,330 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.408968+00:00",
+  "id": 292,
+  "code": "cm2-t03-c04",
+  "title": "Division avec quotient décimal simple",
+  "description": "Cours structuré Educalcul : Division avec quotient décimal simple.",
+  "subject": "Calcul et techniques opératoires",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Calcul et techniques opératoires",
+    "titre_du_cours": "Division avec quotient décimal simple",
+    "objectif_global": "Division avec quotient décimal simple",
+    "mini_lecons_imposees": [
+      "Partager l'unité.",
+      "Prolonger la division.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et techniques opératoires",
+      "lessons": [
+        {
+          "title": "Partager l'unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le partage s'arrête trop tôt"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $13$ barres de chocolat à partager équitablement entre $4$ copains. Tu donnes $3$ barres à chacun : $3 \\times 4 = 12$. Il t'en reste $1$. Avec des nombres entiers, on s'arrête là et on dit : « reste $1$ ». Mais cette barre restante, elle existe vraiment ! On ne va pas la jeter. Si tu la coupes en $10$ parts égales, tu as $10$ dixièmes de barre. Tu peux en donner $2$ à chaque copain : $2 \\times 4 = 8$ dixièmes. Il t'en reste $2$ dixièmes. Tu les coupes à nouveau en $10$, cela fait $20$ centièmes. Chaque copain reçoit $5$ centièmes. Au total, chacun a reçu $3$ barres entières, $2$ dixièmes et $5$ centièmes. On écrit $3,25$."
+            },
+            {
+              "type": "definition",
+              "term": "Dixième",
+              "definition": "Un dixième est l'une des $10$ parts égales obtenues quand on divise l'unité en $10$. On l'écrit $0,1$ ou $\\frac{1}{10}$.",
+              "example": "Dans $3,25$, le chiffre $2$ représente $2$ dixièmes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Un dixième (barre du haut) et un centième (barre du bas) : le centième est 10 fois plus petit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le point décimal, nouvelle frontière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la division posée, tant qu'on travaille avec les unités, les dizaines, les centaines, tout se passe à gauche de la virgule. Dès qu'il reste des unités qu'on ne peut plus partager équitablement, on a le droit d'écrire une virgule à droite du quotient, puis de continuer. C'est comme si on ajoutait une pièce dans la machine : on « descend » un zéro imaginaire pour transformer le reste en dixièmes. Ce zéro ne change pas la valeur du nombre, il change seulement l'unité dans laquelle on compte. Le reste $1$ devient $10$ dixièmes, le reste $2$ dixièmes devient $20$ centièmes, et ainsi de suite."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3.25,
+              "caption": "Le quotient 3,25 dans le tableau de numération : 3 unités, 2 dixièmes, 5 centièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir que l'unité n'est pas une prison : on peut l'ouvrir, la découper en $10$, puis chaque morceau en $10$ encore, autant de fois qu'il le faut. Cette idée est la clé de toute la suite. Dans la prochaine leçon, nous allons installer cette découpe directement dans la division posée, étape par étape, pour ne plus jamais rester bloqué par un reste."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Partage $17$ pommes entre $5$ enfants en coupant ce qui reste. Combien chaque enfant reçoit-il ? Écris le résultat avec une virgule.",
+              "answer": "3,4",
+              "hint": "Donne $3$ pommes à chacun ($3 \\times 5 = 15$). Il reste $2$ pommes. Coupe-les en $10$ parts chacune : $20$ dixièmes. Partage les $20$ dixièmes par $5$.",
+              "explanation": "$17 \\div 5 = 3$ reste $2$. Les $2$ pommes restantes deviennent $20$ dixièmes. $20 \\div 5 = 4$ dixièmes. Résultat : $3$ unités et $4$ dixièmes = $3,4$."
+            },
+            {
+              "question": "Dans le partage de $13$ barres entre $4$ copains, après avoir donné $3$ barres à chacun, on coupe la barre restante en dixièmes. Combien de dixièmes chaque copain reçoit-il à cette étape ?",
+              "answer": "2 dixièmes",
+              "hint": "La barre restante fait $10$ dixièmes. Il y a $4$ copains. Combien de fois $4$ rentre-t-il dans $10$ ?",
+              "explanation": "$10$ dixièmes partagés par $4$ donnent $2$ dixièmes par copain ($2 \\times 4 = 8$), avec $2$ dixièmes restants qui deviendront des centièmes."
+            }
+          ]
+        },
+        {
+          "title": "Prolonger la division.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La division ne s'arrête plus à la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais la division posée pour les nombres entiers : on partage les centaines, puis les dizaines, puis les unités. Quand il reste des unités qu'on ne peut pas distribuer équitablement, on écrit d'habitude « reste ... ». Aujourd'hui, on change la règle. On écrit une virgule dans le quotient, exactement au-dessus de la virgule du dividende (qu'on ajoute s'il n'y en a pas), et on continue. Le reste devient des dixièmes, on « abaisse » un zéro, on partage ces dixièmes, on note le chiffre des dixièmes dans le quotient, et s'il reste encore quelque chose, on abaisse un autre zéro pour passer aux centièmes. C'est le même geste, recommencé, juste de l'autre côté de la virgule."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Division entière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose $25 \\div 4$. $4$ dans $25$ fait $6$ ($6 \\times 4 = 24$). Reste $1$. Écris $6$ dans le quotient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : La virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute une virgule à droite de $25$ (devient $25,$) et une virgule dans le quotient après le $6$ (devient $6,$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Abaisser un zéro → dixièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Abaisse un $0$ à côté du reste $1$ : cela fait $10$ dixièmes. $4$ dans $10$ fait $2$ ($2 \\times 4 = 8$). Écris $2$ après la virgule dans le quotient. Reste $2$ dixièmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Abaisser un zéro → centièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Abaisse un autre $0$ : $20$ centièmes. $4$ dans $20$ fait $5$ ($5 \\times 4 = 20$). Écris $5$ dans le quotient. Reste $0$. C'est fini : $25 \\div 4 = 6,25$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column_operation",
+              "operator": ":",
+              "operands": [
+                "25",
+                "4"
+              ],
+              "result": "6,25",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand faut-il s'arrêter ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le reste devient zéro très vite, comme pour $25 \\div 4 = 6,25$. D'autres fois, on pourrait continuer longtemps. En CM2, on s'arrête généralement aux centièmes (deux chiffres après la virgule) ou quand le reste tombe à zéro. Si le reste ne tombe jamais à zéro, on arrête au centième et on dit que c'est une valeur approchée. Attention : ne confonds pas « arrêter parce que c'est fini » et « arrêter parce qu'on a assez de précision ». Dans les exercices, l'énoncé te dira souvent « donne le quotient au dixième près » ou « au centième près »."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient décimal exact",
+              "definition": "Une division dont le reste finit par devenir zéro. Le quotient a un nombre fini de chiffres après la virgule.",
+              "example": "$14 \\div 5 = 2,8$ est un quotient décimal exact (reste nul au dixième)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant la mécanique complète : la virgule dans le dividende, la virgule dans le quotient, abaisser des zéros un par un, partager, multiplier, soustraire, recommencer. C'est exactement le même rythme qu'avant, juste déplacé vers la droite. Dans la dernière leçon, nous verrons comment lire ce quotient, le vérifier, et l'utiliser dans des problèmes concrets où le partage ne tombe pas juste."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la division posée $37 \\div 8$ en continuant jusqu'aux centièmes. Écris le quotient complet.",
+              "answer": "4,625",
+              "hint": "$8 \\times 4 = 32$, reste $5$. Virgule, abaisse $0$ : $50$ dixièmes. $8 \\times 6 = 48$, reste $2$. Abaisse $0$ : $20$ centièmes. $8 \\times 2 = 16$, reste $4$. Abaisse $0$ : $40$ millièmes. $8 \\times 5 = 40$, reste $0$.",
+              "explanation": "Division entière : $4$, reste $5$. Dixièmes : $50 \\div 8 = 6$, reste $2$. Centièmes : $20 \\div 8 = 2$, reste $4$. Millièmes : $40 \\div 8 = 5$, reste $0$. Quotient exact : $4,625$."
+            },
+            {
+              "question": "Pour $43 \\div 6$, on a fait la division entière : $7$, reste $1$. On a mis la virgule et abaissé un zéro : $10$ dixièmes. $6$ dans $10$ fait $1$, reste $4$ dixièmes. Quelle est la suite de la division pour obtenir le chiffre des centièmes ?",
+              "answer": "On abaisse un zéro : $40$ centièmes. $6 \\times 6 = 36$, reste $4$. Chiffre des centièmes : $6$.",
+              "hint": "Le reste $4$ dixièmes devient $40$ centièmes. Combien de fois $6$ dans $40$ ?",
+              "explanation": "$4$ dixièmes = $40$ centièmes. $40 \\div 6 = 6$ ($6 \\times 6 = 36$), reste $4$ centièmes. Le quotient commence par $7,16...$"
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le quotient décimal, ce n'est pas qu'un calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant prolonger la division jusqu'aux dixièmes, centièmes, voire millièmes. Mais une fois le chiffre obtenu, que veut-il dire ? Reprenons l'exemple des $25$ bonbons partagés entre $4$ enfants. Le quotient $6,25$ signifie : chaque enfant reçoit $6$ bonbons entiers, plus $2$ dixièmes de bonbon, plus $5$ centièmes de bonbon. Comme on ne coupe pas facilement un bonbon en centièmes, on dit souvent : « chacun a $6$ bonbons et un quart de bonbon » car $0,25 = \\frac{1}{4}$. Le quotient décimal donne une mesure précise du partage, même quand l'objet ne se coupe pas vraiment."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation : tu as $17$ mètres de ruban pour faire $5$ bracelets de même longueur. $17 \\div 5 = 3,4$. Chaque bracelet fera $3,4$ mètres, soit $3$ mètres et $40$ centimètres. Ici, le décimal a un sens concret immédiat : les mètres et les centimètres. C'est pour cela qu'on apprend cette technique : elle sert à mesurer, partager, répartir dans la vie de tous les jours."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier, c'est gagner du temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une division, ça se vérifie toujours. La règle est simple : quotient $\\times$ diviseur + reste = dividende. Avec un quotient décimal exact, le reste final est $0$. Donc quotient $\\times$ diviseur doit retrouver le dividende de départ. Pour $25 \\div 4 = 6,25$, on calcule $6,25 \\times 4$. $6 \\times 4 = 24$, $0,25 \\times 4 = 1$, total $25$. C'est bon. Si tu as fait une erreur dans la division (oublié la virgule, mal abaissé un zéro), la multiplication ne retombera pas sur le bon nombre. C'est ton filet de sécurité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérifier $37 \\div 8 = 4,625$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $4,625 \\times 8$. Décompose : $4 \\times 8 = 32$, $0,6 \\times 8 = 4,8$, $0,02 \\times 8 = 0,16$, $0,005 \\times 8 = 0,04$. Somme : $32 + 4,8 = 36,8$, $+ 0,16 = 36,96$, $+ 0,04 = 37$. Retrouvé !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le partage ne tombe pas juste : l'approximation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la division ne s'arrête jamais : $10 \\div 3 = 3,333...$ Les $3$ se répètent sans fin. On ne peut pas écrire tous les chiffres. On choisit alors une précision : au dixième près ($3,3$), au centième près ($3,33$), au millième près ($3,333$). L'énoncé te le demande explicitement. Attention : $3,3$ n'est pas égal à $10 \\div 3$, c'est une valeur approchée par défaut. $3,34$ serait une valeur approchée par excès au centième. En CM2, on utilise surtout « au dixième près » ou « au centième près » selon le contexte (prix en euros, mesures en mètres...)."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Part exacte",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3 parts",
+                  "value": 3.33,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "10 partagé en 3 parts égales : chaque part vaut 3,33... (approché au centième)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu arrives au bout de ce cours. Tu sais maintenant partager l'unité en dixièmes et centièmes, prolonger la division posée au-delà de la virgule, lire le quotient obtenu, le vérifier par la multiplication, et l'arrondir quand il ne se termine pas. Ces outils te serviront pour tous les partages, toutes les mesures, tous les problèmes où « ça ne tombe pas juste ». Garde cette confiance : la virgule n'est pas un mur, c'est une porte."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer pourquoi on ajoute une virgule et des zéros dans le dividende pour continuer une division.",
+                "Je sais poser une division et obtenir un quotient décimal exact aux dixièmes ou centièmes.",
+                "Je sais vérifier mon résultat en multipliant le quotient par le diviseur.",
+                "Je sais donner une valeur approchée au dixième ou au centième près quand la division ne se termine pas.",
+                "Je sais interpréter un quotient décimal dans une situation concrète (partage, mesure, prix)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un ruban de $13$ mètres est découpé en $4$ morceaux de même longueur. Donne la longueur d'un morceau en mètres, avec une virgule.",
+              "answer": "3,25 m",
+              "hint": "Effectue $13 \\div 4$. Prolonge jusqu'aux centièmes. N'oublie pas l'unité : mètres.",
+              "explanation": "$13 \\div 4 = 3$ reste $1$. $1$ mètre = $10$ décimètres. $10 \\div 4 = 2$ décimètres, reste $2$ décimètres = $20$ centimètres. $20 \\div 4 = 5$ centimètres. Longueur = $3$ m $2$ dm $5$ cm = $3,25$ m."
+            },
+            {
+              "question": "Vérifie par le calcul si $56 \\div 8 = 7,2$ est correct.",
+              "answer": "Non, $7,2 \\times 8 = 57,6$, pas $56$. Le bon quotient est $7$.",
+              "hint": "Multiplie le quotient proposé par le diviseur. Retrouves-tu le dividende de départ ?",
+              "explanation": "$7,2 \\times 8 = 56 + 1,6 = 57,6 \\neq 56$. La division exacte est $56 \\div 8 = 7$ (reste $0$)."
+            },
+            {
+              "question": "Calcule $10 \\div 3$ et donne le résultat au dixième près, puis au centième près.",
+              "answer": "Au dixième près : 3,3. Au centième près : 3,33.",
+              "hint": "La division ne s'arrête jamais (3,333...). Pour arrondir au dixième, regarde le chiffre des centièmes. Pour arrondir au centième, regarde le chiffre des millièmes.",
+              "explanation": "$10 \\div 3 = 3,333...$ Au dixième près : le chiffre des centièmes est $3 < 5$, on garde $3,3$. Au centième près : le chiffre des millièmes est $3 < 5$, on garde $3,33$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

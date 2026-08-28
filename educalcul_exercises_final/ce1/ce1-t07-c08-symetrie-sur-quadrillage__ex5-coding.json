@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Repérer axe simple",
+  "title": "Repérer l'axe de symétrie sur quadrillage",
+  "blocks": [
+    {
+      "title": "Question 1 : Axe vertical",
+      "content": "On a une figure dessinée sur un quadrillage de six cases de large et quatre cases de haut. La figure est symétrique par rapport à une ligne verticale passant par le milieu du quadrillage. Écris un algorithme (suite d'instructions) qui permet de vérifier si cette ligne verticale est un axe de symétrie pour la figure.",
+      "correctAnswer": "Algorithme :\\nétape un : repérer la colonne centrale du quadrillage (colonne trois si les colonnes sont numérotées de un à six).\\nétape deux : pour chaque case colorée de la figure, noter sa position (ligne, colonne).\\nétape trois : pour chaque case, calculer la colonne symétrique : colonne symétrique = sept moins colonne (car six plus un moins colonne).\\nétape quatre : vérifier qu'à la même ligne, la case de colonne symétrique est également colorée.\\nétape cinq : si toutes les cases ont leur symétrique, la ligne verticale est un axe de symétrie ; sinon ce n'est pas le cas.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'axe vertical se trouve au milieu du quadrillage. Pour une largeur de six cases, les colonnes symétriques par rapport au centre sont (un, six), (deux, cinq), (trois, quatre). L'algorithme teste chaque case colorée et vérifie la présence de sa symétrique. Si toutes correspondent, la figure est symétrique par rapport à cet axe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Axe horizontal",
+      "content": "La même figure est maintenant testée par rapport à une ligne horizontale passant par le milieu du quadrillage (entre la ligne deux et la ligne trois). Écris un algorithme qui vérifie si cette ligne horizontale est un axe de symétrie.",
+      "correctAnswer": "Algorithme :\\nétape un : repérer la ligne centrale du quadrillage (entre la ligne deux et la ligne trois pour quatre lignes).\\nétape deux : pour chaque case colorée, noter sa position (ligne, colonne).\\nétape trois : calculer la ligne symétrique : ligne symétrique = cinq moins ligne (car quatre plus un moins ligne).\\nétape quatre : vérifier qu'à la même colonne, la case de ligne symétrique est également colorée.\\nétape cinq : si toutes les cases ont leur symétrique, la ligne horizontale est un axe de symétrie ; sinon ce n'est pas le cas.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un quadrillage de quatre lignes, les lignes symétriques par rapport au centre horizontal sont (un, quatre) et (deux, trois). L'algorithme applique le même principe que pour l'axe vertical mais en échangeant le rôle des lignes et des colonnes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Identifier tous les axes simples",
+      "content": "On donne une figure sur un quadrillage de cinq cases sur cinq. La figure peut avoir un axe vertical, un axe horizontal, les deux, ou aucun. Écris un algorithme qui détermine quels axes de symétrie (vertical, horizontal) sont présents.",
+      "correctAnswer": "Algorithme :\\nétape un : définir la colonne centrale : colonne trois (car cinq colonnes, le milieu est la troisième).\\nétape deux : définir la ligne centrale : ligne trois.\\nétape trois : test vertical :\\npour chaque case colorée (ligne, colonne), calculer colonne symétrique = six moins colonne.\\nvérifier que (ligne, colonne symétrique) est colorée.\\nsi tout correspond, axe vertical = vrai.\\nétape quatre : test horizontal :\\npour chaque case colorée (ligne, colonne), calculer ligne symétrique = six moins ligne.\\nvérifier que (ligne symétrique, colonne) est colorée.\\nsi tout correspond, axe horizontal = vrai.\\nétape cinq : afficher les axes trouvés : vertical si axe vertical, horizontal si axe horizontal, les deux si les deux, aucun sinon.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Avec un quadrillage impair (cinq sur cinq), les axes passent par la ligne et la colonne centrales. L'algorithme teste indépendamment la symétrie verticale et horizontale en appliquant la transformation de coordonnées symétriques. Il combine les résultats pour donner la liste des axes de symétrie simples.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.816102+00:00",
+  "id": 110,
+  "code": "ce1-t05-c03",
+  "title": "Problèmes de transformation",
+  "description": "Cours structuré Educalcul : Problèmes de transformation.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de transformation",
+    "objectif_global": "Problèmes de transformation",
+    "mini_lecons_imposees": [
+      "Quantité initiale, changement, finale.",
+      "Ajout ou retrait.",
+      "Chercher une donnée manquante."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Quantité initiale, changement, finale.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une histoire en trois temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $5$ pommes au départ. C'est ta quantité initiale. Ensuite, tu en ajoutes $2$ : c'est le changement. À la fin, tu comptes $7$ pommes : c'est la quantité finale. Les trois étapes sont toujours dans cet ordre : départ, action, arrivée."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Initial",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Changement",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Finale",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "5 pommes + 2 pommes = 7 pommes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant un autre exemple pour bien repérer ces trois moments dans un énoncé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Léa a $3$ billes. Elle en gagne $4$ de plus. Combien en a-t-elle maintenant ? Sur la droite graduée, on part de $3$, on fait un saut de $4$ vers la droite et on arrive à $7$. La quantité initiale est $3$, le changement est $+4$, la finale est $7$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Saut de 3 à 7",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Départ"
+                },
+                {
+                  "value": 7,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 3,
+                  "end": 7,
+                  "label": "+4"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons encore avec une histoire d'autocollants pour t'entraîner à trouver les trois nombres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tom a $6$ autocollants. Il en donne $2$ à son ami. Il lui en reste $4$. Ici, le changement est un retrait de $2$. On peut le noter $-2$. La quantité initiale $6$, le changement $-2$, la finale $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'histoire des pommes : tu as $5$ pommes, tu en ajoutes $2$. Quelle est la quantité finale ?",
+              "answer": "$7$ pommes",
+              "hint": "Compte sur tes doigts ou utilise la barre.",
+              "explanation": "On part de $5$, on ajoute $2$, on arrive à $7$. C'est une addition : $5 + 2 = 7$."
+            },
+            {
+              "question": "Léa a $3$ billes. Elle en gagne $4$. Quelle est la quantité initiale ? Le changement ? La quantité finale ?",
+              "answer": "Initiale : $3$ billes. Changement : $+4$ billes. Finale : $7$ billes.",
+              "hint": "Relis l'énoncé : ce qu'elle a au début, ce qui s'ajoute, ce qu'elle a à la fin.",
+              "explanation": "La phrase « Léa a 3 billes » donne l'initiale. « Elle en gagne 4 » est le changement (ajout). « Combien en a-t-elle maintenant ? » demande la finale."
+            },
+            {
+              "question": "Tom a $6$ autocollants. Il en donne $2$. Complète : quantité initiale = ..., changement = ..., quantité finale = ...",
+              "answer": "Quantité initiale = $6$, changement = $-2$, quantité finale = $4$.",
+              "hint": "Donner, c'est enlever. Le changement est négatif.",
+              "explanation": "Au départ $6$. Il donne $2$ (retrait, donc $-2$). Il reste $4$. Donc initiale $6$, changement $-2$, finale $4$."
+            }
+          ]
+        },
+        {
+          "title": "Ajout ou retrait.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand on ajoute, ça grandit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un problème, si on te dit « on ajoute », « on gagne », « on reçoit », c'est une addition. Par exemple, tu as $4$ bonbons. On t'en donne $3$ de plus. Tu fais $4 + 3 = 7$. La quantité grandit."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Initial",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ajout",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Finale",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "4 bonbons + 3 bonbons = 7 bonbons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais parfois, on enlève quelque chose. Voyons comment ça change l'histoire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand on retire, ça diminue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si l'énoncé parle de « manger », « donner », « perdre », « casser », c'est une soustraction. Tu as $8$ bonbons, tu en manges $3$. Il t'en reste $5$. On fait $8 - 3 = 5$. La quantité diminue."
+            },
+            {
+              "type": "number_line",
+              "caption": "Reculer de 8 à 5",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "Départ"
+                },
+                {
+                  "value": 5,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 5,
+                  "end": 8,
+                  "label": "-3"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de jouer au détective : regarde les mots et dis si c'est un ajout ou un retrait."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer le signe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le symbole $+$ signifie qu'on ajoute, le symbole $-$ qu'on retire. Dans un problème, cherche les mots indices : « en plus », « ensemble » → $+$ ; « en moins », « il reste » → $-$. Essaie sur ces phrases."
+            },
+            {
+              "type": "display_math",
+              "latex": "+ \\\\text{ pour ajouter}, - \\\\text{ pour retirer}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $4$ bonbons. On t'en donne $3$. Est-ce un ajout ou un retrait ? Écris l'opération.",
+              "answer": "C'est un ajout. $4 + 3 = 7$.",
+              "hint": "Les mots « donne » et « de plus » indiquent qu'on ajoute.",
+              "explanation": "On ajoute $3$ à $4$, donc c'est une addition. Le signe est $+$."
+            },
+            {
+              "question": "Tu as $8$ bonbons. Tu en manges $3$. Est-ce un ajout ou un retrait ? Écris l'opération.",
+              "answer": "C'est un retrait. $8 - 3 = 5$.",
+              "hint": "Manger, c'est enlever.",
+              "explanation": "On retire $3$ de $8$, donc c'est une soustraction. Le signe est $-$."
+            },
+            {
+              "question": "Pour chaque phrase, dis si c'est un ajout (+) ou un retrait (-) : a) « Paul a 5 billes, il en gagne 2. » b) « Marie a 7 autocollants, elle en perd 3. »",
+              "answer": "a) Ajout (+). b) Retrait (-).",
+              "hint": "Gagner = ajouter. Perdre = retirer.",
+              "explanation": "« Gagne » veut dire qu'on ajoute, donc $+$. « Perd » veut dire qu'on retire, donc $-$."
+            }
+          ]
+        },
+        {
+          "title": "Chercher une donnée manquante.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la quantité finale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le départ et le changement, mais pas l'arrivée. C'est le cas le plus facile. Tu as $6$ billes, tu en gagnes $2$. Combien as-tu au total ? On ajoute : $6 + 2 = 8$. La quantité finale est $8$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Initial",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Changement",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Finale",
+                  "value": 8,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "6 billes + 2 billes = 8 billes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on connaît l'arrivée et le changement, mais pas le départ ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver la quantité de départ"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine : tu as fini avec $9$ cartes après en avoir reçu $4$. Combien en avais-tu au début ? Il faut remonter en arrière : on retire $4$ à $9$, ça fait $5$. La quantité initiale était $5$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Revenir de 9 à 5",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 9,
+                  "label": "Finale"
+                },
+                {
+                  "value": 5,
+                  "label": "Initiale"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 5,
+                  "end": 9,
+                  "label": "-4"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier cas : on connaît le début et la fin, mais pas ce qui s'est passé entre les deux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deviner le changement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu avais $9$ crayons, il t'en reste $5$. Combien as-tu perdu ? On cherche la différence : $9 - 5 = 4$. Le changement est un retrait de $4$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "9",
+                "5"
+              ],
+              "result": "4",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant résoudre les trois types de problèmes de transformation : trouver la fin, trouver le début, ou trouver le changement. Bravo !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer la quantité de départ, le changement et la quantité finale.",
+                "Je sais dire si c'est un ajout ou un retrait.",
+                "Je sais trouver la donnée manquante dans un problème de transformation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $6$ billes. Tu en gagnes $2$. Combien as-tu au total ?",
+              "answer": "$8$ billes.",
+              "hint": "Ajoute le changement à l'initiale.",
+              "explanation": "$6 + 2 = 8$. La quantité finale est $8$."
+            },
+            {
+              "question": "Tu as fini avec $9$ cartes après en avoir reçu $4$. Combien en avais-tu au départ ?",
+              "answer": "$5$ cartes.",
+              "hint": "Retire ce que tu as reçu du total final.",
+              "explanation": "On connaît la finale $9$ et le changement $+4$. Pour trouver l'initiale, on fait l'inverse : $9 - 4 = 5$."
+            },
+            {
+              "question": "Tu avais $9$ crayons. Il t'en reste $5$. Combien as-tu perdu ?",
+              "answer": "$4$ crayons.",
+              "hint": "Soustrais ce qu'il reste de ce que tu avais.",
+              "explanation": "Initiale $9$, finale $5$. Le changement est la différence : $9 - 5 = 4$. C'est un retrait de $4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

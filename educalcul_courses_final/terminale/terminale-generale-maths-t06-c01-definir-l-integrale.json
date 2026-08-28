@@ -1,0 +1,422 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.692139+00:00",
+  "id": 707,
+  "code": "terminale-generale-maths-t06-c01",
+  "title": "Définir l'intégrale",
+  "description": "Cours structuré Educalcul : Définir l'intégrale.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Définir l'intégrale",
+    "objectif_global": "Définir l'intégrale",
+    "mini_lecons_imposees": [
+      "Aire algébrique.",
+      "Notation.",
+      "Sens."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Aire algébrique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aire algébrique : quand le signe compte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu traces la courbe d'une fonction $f$ sur un intervalle $[a,b]$. Si la courbe reste au-dessus de l'axe des abscisses, l'aire du domaine compris entre la courbe et l'axe est une quantité positive, comme une surface de papier que tu pourrais découper. Mais que se passe-t-il si la courbe plonge en dessous de l'axe ? En géométrie usuelle, une aire est toujours positive. En analyse, nous avons besoin d'un outil qui \"compte\" la partie au-dessus comme positive et la partie en-dessous comme negative. C'est là qu'intervient l'idée d'aire élégébrique : on affecte un signe $+$ aux portions situées au-dessus de l'axe et un signe $-$ à celles situées en dessous. Ainsi, l'aire algébrique peut être nulle, positive ou négative, selon l'équilibre entre les deux parties."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire cette notion de manière rigoureuse, nous allons utiliser une méthode d'approximation par des rectangles, inspirée de ce que tu as déjà vu avec les sommes de Riemann. L'idée est de découper l'intervalle $[a,b]$ en $n$ sous-intervalles de même largeur $h = \\frac{b-a}{n}$. Sur chaque sous-intervalle, on construit un rectangle dont la hauteur est la valeur de la fonction en un point choisi (par exemple à gauche, à droite, ou au milieu). La somme des aires signées de ces rectangles donne une approximation de l'aire algébrique. Plus $n$ est grand, plus l'approximation est précise. La limite de cette somme, lorsque $n$ tend vers l'infini (ou $h$ vers $0$), si elle existe, définit précisément l'aire algébrique."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2 - 2",
+              "xMin": -2,
+              "xMax": 2,
+              "rectangles": 10,
+              "caption": "Approximation de l'aire algébrique de $f(x)=x^2-2$ sur $[-2,2]$ par 10 rectangles. Observe les rectangles au-dessus (positifs) et en-dessous (négatifs) de l'axe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'animation ci-dessus : la fonction $f(x)=x^2-2$ est négative entre $-\\sqrt{2}$ et $\\sqrt{2}$, et positive en dehors. Les rectangles verts (au-dessus) contribuent positivement, les rectangles rouges (en-dessous) contribuent négativement. En augmentant le nombre de rectangles, la somme algébrique se stabilise vers une valeur limite : c'est l'aire algébrique. Cette limite ne dépend pas du choix des points (gauche, droite, milieu) tant que la fonction est continue, ce qui est un résultat fondamental."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Partager l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On choisit un entier $n \\ge 1$ et on pose $h = \\frac{b-a}{n}$. Les points de subdivision sont $x_k = a + kh$ pour $k = 0,\\dots,n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Choisir un point dans chaque sous-intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque $k$, on choisit un point $c_k \\in [x_{k-1}, x_k]$. Les choix classiques sont $c_k = x_{k-1}$ (somme de Riemann à gauche), $c_k = x_k$ (somme à droite) ou $c_k = \\frac{x_{k-1}+x_k}{2}$ (somme au milieu)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Calculer la somme de Riemann",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On forme la somme $S_n = \\sum_{k=1}^{n} f(c_k) \\, h$. Chaque terme $f(c_k) h$ est l'aire signée d'un rectangle de base $h$ et de hauteur $f(c_k)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Passer à la limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la limite $\\lim_{n\\to\\infty} S_n$ existe et est indépendante du choix des $c_k$, on la note $\\int_a^b f(x) \\, dx$ et on l'appelle l'intégrale de $f$ sur $[a,b]$, qui égale l'aire algébrique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment l'aire algébrique se construit comme limite de sommes de Riemann. Cette construction est le cœur même de l'intégrale de Riemann. Maintenant, entraîne-toi à identifier le signe de l'aire algébrique sur un exemple simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as manipulé l'idée d'aire signée. Passons maintenant à la notation qui permet d'écrire cette limite de manière compacte et universelle : le symbole d'intégrale avec ses bornes et son différentiel. C'est le langage que tous les mathématiciens utilisent pour parler d'aire algébrique, et bien plus encore."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales de l'aire algébrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'aire algébrique hérite de propriétés intuitives qui en font un outil de calcul puissant. Premièrement, la linéarité : l'aire algébrique de la somme de deux fonctions est la somme de leurs aires algébriques, et on peut factoriser une constante. Deuxièmement, la relation de Chasles : si on coupe l'intervalle $[a,b]$ en $[a,c]$ et $[c,b]$, l'aire algébrique sur $[a,b]$ est la somme des aires sur les deux sous-intervalles. Troisièmement, l'ordre : si $f(x) \\le g(x)$ sur $[a,b]$, alors l'aire algébrique de $f$ est inférieure ou égale à celle de $g$. Ces propriétés se démontrent directement à partir de la définition par limites de sommes de Riemann."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b (\\lambda f(x) + \\mu g(x)) \\, dx = \\lambda \\int_a^b f(x) \\, dx + \\mu \\int_a^b g(x) \\, dx"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f(x) \\, dx = \\int_a^c f(x) \\, dx + \\int_c^b f(x) \\, dx \\quad (a \\le c \\le b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces formules ne sont pas que des règles abstraites : elles reflètent la géométrie des aires signées. Par exemple, la relation de Chasles dit simplement que si tu coupes une région en deux, l'aire algébrique totale est la somme des deux parties. Essaie maintenant de les appliquer sur un exercice ciblé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons posé les bases de l'aire algébrique et vu ses propriétés essentielles. La leçon suivante nous fera découvrir la notation intégrale elle-même, ce symbole élégant qui condense tout ce processus de limite en une seule expression. Tu verras comment chaque élément du symbole $\\int_a^b f(x) \\, dx$ a un sens précis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = x - 1$ sur l'intervalle $[0,3]$. La courbe coupe l'axe des abscisses en $x=1$. Sans calculer l'intégrale, donne le signe de l'aire algébrique $\\int_0^3 f(x) \\, dx$ et justifie brièvement.",
+              "answer": "L'aire algébrique est positive.",
+              "hint": "Compare la surface au-dessus de l'axe (sur $[1,3]$) et celle en-dessous (sur $[0,1]$). Laquelle est plus grande ?",
+              "explanation": "Sur $[0,1]$, $f(x) \\le 0$ : l'aire algébrique est négative (un triangle de base 1 et hauteur 1, aire $0,5$). Sur $[1,3]$, $f(x) \\ge 0$ : l'aire est positive (triangle de base 2 et hauteur 2, aire $2$). La partie positive l'emporte, donc l'aire algébrique totale est positive."
+            },
+            {
+              "question": "On donne $\\int_0^2 f(x) \\, dx = 5$ et $\\int_2^5 f(x) \\, dx = -3$. Calculer $\\int_0^5 f(x) \\, dx$ et $\\int_5^0 f(x) \\, dx$.",
+              "answer": "$\\int_0^5 f(x) \\, dx = 2$ et $\\int_5^0 f(x) \\, dx = -2$.",
+              "hint": "Utilise la relation de Chasles pour le premier, et la propriété $\\int_a^b = -\\int_b^a$ pour le second.",
+              "explanation": "Par Chasles, $\\int_0^5 = \\int_0^2 + \\int_2^5 = 5 + (-3) = 2$. En inversant les bornes, $\\int_5^0 = -\\int_0^5 = -2$."
+            }
+          ]
+        },
+        {
+          "title": "Notation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le symbole $\\int$ : une écriture compacte pour une limite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as une intuition solide de l'aire algébrique comme limite de sommes de rectangles, il est temps de rencontrer la notation qui a fait la réussite du calcul intégral. Le symbole $\\int_a^b f(x) \\, dx$ est une invention de Leibniz, conçue pour rappeler l'origine de l'intégrale : un $S$ allongé pour \"somme\" (somme de Riemann), des bornes $a$ et $b$ qui indiquent l'intervalle, la fonction $f(x)$ qui donne la hauteur signée, et le $dx$ qui évoque l'infiniment petit $h$ (la largeur des rectangles). Chaque partie a son rôle, et comprendre ce rôle t'évitera bien des confusions plus tard."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attardons-nous sur le $dx$. Ce n'est pas qu'une décoration : il indique la variable d'intégration et rappelle que l'on somme par rapport à cette variable. Si tu changes de variable, le $dx$ change aussi (c'est le cœur de la méthode du changement de variable). De plus, la notation $\\int_a^b f(x) \\, dx$ est un nombre (l'aire algébrique), alors que $\\int f(x) \\, dx$ (sans bornes) désigne une famille de fonctions (les primitives). Nous verrons ce lien fondamental dans la prochaine leçon. Pour l'instant, concentre-toi sur l'intégrale définie comme un nombre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f(x) \\, dx = \\lim_{n\\to\\infty} \\sum_{k=1}^n f(c_k) \\, h"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette égalité est la définition même de l'intégrale de Riemann. Elle montre que le symbole $\\int$ n'est qu'une écriture abrégée pour la limite d'une somme. Les mathématiciens ont choisi cette notation précisément parce qu'elle permet de manipuler les intégrales comme si c'étaient des sommes finies (linéarité, Chasles, changement de variable), ce qui rend le calcul incroyablement fluide une fois que l'on a acquis les bonnes règles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à t'habituer à la notation. Mais une notation ne sert à rien si l'on ne sait pas la lire et l'écrire correctement dans tous les sens. Passons à quelques conventions importantes : l'ordre des bornes, le changement de variable muet, et le lien avec l'aire géométrique usuelle (toujours positive)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conventions sur les bornes et variable muette"
+            },
+            {
+              "type": "paragraph",
+              "content": "Première convention : si $a > b$, on définit $\\int_a^b f(x) \\, dx = -\\int_b^a f(x) \\, dx$. Cela prolonge la relation de Chasles et garde les formules cohérentes. Deuxième convention : la variable d'intégration est une variable muette. $\\int_a^b f(x) \\, dx = \\int_a^b f(t) \\, dt = \\int_a^b f(u) \\, du$. Le choix de la lettre n'a aucune importance, tant qu'elle ne rentre pas en conflit avec d'autres variables du problème. C'est exactement comme l'indice $k$ dans une somme $\\sum_{k=1}^n$ : tu peux le renommer $i$ ou $j$ sans changer la valeur de la somme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième point : l'intégrale d'une fonction positive est l'aire géométrique usuelle (positive). Si $f(x) \\ge 0$ sur $[a,b]$, alors $\\int_a^b f(x) \\, dx$ est l'aire du domaine borné par la courbe, l'axe des abscisses et les droites $x=a$, $x=b$. Si $f$ change de signe, l'intégrale est la différence entre l'aire au-dessus et l'aire en-dessous. C'est pour cela qu'on parle d'aire élégébrique."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.28,
+              "caption": "Graphique de $f(x)=\\sin x$ sur $[0,2\\pi]$. L'intégrale $\\int_0^{2\\pi} \\sin x \\, dx = 0$ car les aires au-dessus et en-dessous se compensent exactement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique du sinus sur une période. L'aire au-dessus (sur $[0,\\pi]$) vaut $2$, l'aire en-dessous (sur $[\\pi,2\\pi]$) vaut aussi $2$ mais comptée négativement. L'intégrale totale est donc $0$. C'est un exemple classique où l'aire géométrique totale (somme des aires en valeur absolue) est $4$, tandis que l'intégrale (aire algébrique) est $0$. Essaie maintenant de manipuler la notation sur un exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire et écrire une intégrale définie, en respecter les bornes et comprendre le rôle du $dx$. Mais une notation, aussi élégante soit-elle, ne prend tout son sens que lorsqu'on la relie à des objets concrets : calculer des aires, des volumes, des moyennes, des travaux physiques... La dernière leçon de ce cours explorera le sens de l'intégrale : pourquoi est-elle l'outil central de l'analyse, et comment le théorème fondamental du calcul intégral la relie-t-il aux primitives ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règles de calcul issues de la notation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation de Leibniz a été conçue pour rendre les manipulations algébriques naturelles. Voici les règles de base que tu utiliseras tout le temps : linéarité (déjà vue), factorisation d'une constante, Chasles, changement de borne, et surtout le changement de variable (substitution) qui s'écrit $\\int_a^b f(g(x)) g'(x) \\, dx = \\int_{g(a)}^{g(b)} f(u) \\, du$ en posant $u=g(x)$. Remarque comme le $dx$ et le $du$ se comportent comme des fractions : $du = g'(x) dx$. Ce n'est pas un hasard, c'est une mémoire de la définition par sommes de Riemann."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier une composée et sa dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère dans l'intégrale une fonction $g(x)$ telle que sa dérivée $g'(x)$ apparaisse aussi (eventuellement à une constante près)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Poser le changement de variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Poser $u = g(x)$, donc $du = g'(x) dx$. Modifier les bornes : quand $x=a$, $u=g(a)$ ; quand $x=b$, $u=g(b)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Réécrire l'intégrale en $u$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacer $g(x)$ par $u$ et $g'(x)dx$ par $du$. L'intégrale devient $\\int_{g(a)}^{g(b)} f(u) \\, du$, souvent plus simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Calculer et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer la nouvelle intégrale (qui ne dépend plus de $x$). Le résultat est le même que l'intégrale initiale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces règles ne sont pas des tours de magie : elles sont toutes démontrées à partir de la définition par limite de sommes de Riemann. La notation $dx$ et $du$ rend les démonstrations transparentes. Entraîne-toi maintenant à appliquer le changement de variable sur un exemple choisi."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire l'intégrale $\\int_1^3 (2x+1)^4 \\, dx$ sous la forme $\\int_{\\alpha}^{\\beta} u^4 \\, du$ en précisant $\\alpha$ et $\\beta$. Ne pas calculer.",
+              "answer": "$\\alpha = 3$, $\\beta = 7$. L'intégrale devient $\\frac{1}{2} \\int_3^7 u^4 \\, du$.",
+              "hint": "Pose $u = 2x+1$. Calcule $du$ et les nouvelles bornes.",
+              "explanation": "On pose $u = 2x+1$, alors $du = 2 dx$ soit $dx = du/2$. Pour $x=1$, $u=3$ ; pour $x=3$, $u=7$. L'intégrale devient $\\int_3^7 u^4 \\, (du/2) = \\frac{1}{2} \\int_3^7 u^4 \\, du$."
+            },
+            {
+              "question": "Soit $f$ une fonction continue sur $\\mathbb{R}$ telle que $\\int_0^2 f(x) \\, dx = 4$. Calculer $\\int_0^2 f(2-x) \\, dx$.",
+              "answer": "4",
+              "hint": "Utilise le changement de variable $u = 2-x$. Observe les bornes.",
+              "explanation": "Posons $u = 2-x$, alors $du = -dx$. Quand $x=0$, $u=2$ ; quand $x=2$, $u=0$. L'intégrale devient $\\int_2^0 f(u) (-du) = \\int_0^2 f(u) \\, du = 4$."
+            },
+            {
+              "question": "Calculer $\\int_0^1 \\frac{2x}{x^2+1} \\, dx$ par le changement de variable $u = x^2+1$.",
+              "answer": "$\\ln 2$",
+              "hint": "Calcule $du$, change les bornes, et reconnais une intégrale élémentaire.",
+              "explanation": "Avec $u = x^2+1$, $du = 2x dx$. Bornes : $x=0 \\Rightarrow u=1$, $x=1 \\Rightarrow u=2$. L'intégrale devient $\\int_1^2 \\frac{du}{u} = [\\ln u]_1^2 = \\ln 2 - \\ln 1 = \\ln 2$."
+            }
+          ]
+        },
+        {
+          "title": "Sens.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le sens de l'intégrale : bien plus qu'une aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons construit l'intégrale comme une aire algébrique, et nous avons appris à la noter. Mais pourquoi les mathématiciens, les physiciens, les économistes et les ingénieurs y accordent-ils une importance capitale ? Parce que l'intégrale est l'outil universel pour \"sommer une infinité de contributions infinitésimales\". Chaque fois qu'une quantité varie continüement et que l'on veut connaître son effet cumulé, l'intégrale apparaît naturellement. Explorons trois sens majeurs : l'accumulation, la moyenne, et le lien avec les primitives (théorème fondamental)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier sens : l'accumulation. Si $v(t)$ est la vitesse d'un mobile à l'instant $t$, alors $\\int_{t_1}^{t_2} v(t) \\, dt$ est le déplacement total (algébrique) entre $t_1$ et $t_2$. Chaque petit intervalle $dt$ apporte une contribution $v(t) dt$ (distance élémentaire), et l'intégrale les somme toutes. De même, si $\\rho(x)$ est une densité linéaire de masse sur un fil, $\\int_a^b \\rho(x) \\, dx$ donne la masse totale. L'intégrale transforme une densité (quantité par unité de longueur, temps, surface...) en une quantité globale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième sens : la valeur moyenne. Pour une fonction continue $f$ sur $[a,b]$, sa valeur moyenne est $m = \\frac{1}{b-a} \\int_a^b f(x) \\, dx$. C'est l'unique constante telle que le rectangle de base $[a,b]$ et de hauteur $m$ ait la même aire algébrique que la courbe. C'est une généralisation directe de la moyenne arithmétique : au lieu de sommer des valeurs discrètes et de diviser par leur nombre, on intègre et on divise par la longueur de l'intervalle."
+            },
+            {
+              "type": "display_math",
+              "latex": "m = \\frac{1}{b-a} \\int_a^b f(x) \\, dx"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que l'intégrale permet de passer du local (la valeur de la fonction en un point, sa dérivée) au global (aire, déplacement, moyenne). Le troisième sens, et sans doute le plus puissant, est le lien avec la dérivée : le théorème fondamental de l'analyse. Il dit que l'intégration et la dérivation sont des opérations inverses l'une de l'autre, sous des hypothèses de continuité. C'est ce qui permet de calculer des intégrales sans refaire des sommes de Riemann à chaque fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème fondamental du calcul intégral"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $f$ continue sur $[a,b]$. On définit la fonction $F(x) = \\int_a^x f(t) \\, dt$ pour $x \\in [a,b]$. Alors $F$ est dérivable sur $]a,b[$ et $F'(x) = f(x)$ pour tout $x \\in ]a,b[$. En d'autres termes, $F$ est une primitive de $f$. Conséquence immédiate : si $G$ est une primitive quelconque de $f$ sur $[a,b]$, alors $\\int_a^b f(x) \\, dx = G(b) - G(a)$. C'est la formule de Barrow, le sèsame qui ouvre le calcul d'intégrales concrètes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Vérifier les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction $f$ doit être continue sur l'intervalle fermé $[a,b]$. Si elle a des discontinuités, le théorème ne s'applique pas directement (il faut découper)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Trouver une primitive $F$ de $f$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chercher une fonction $F$ telle que $F' = f$. Utiliser la table des primitives usuelles (puissances, exponentielle, logarithme, trigonométriques, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Appliquer la formule de Barrow",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $F(b) - F(a)$. C'est la valeur de l'intégrale $\\int_a^b f(x) \\, dx$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce théorème est une révélation : le problème géométrique (aire sous une courbe) se résout par un problème algébrique (trouver une primitive). C'est l'union de la géométrie et de l'algèbre qui fait la force du calcul intégral. Essaie d'appliquer la formule de Barrow sur un exemple simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce cours. Tu as découvert l'intégrale sous trois visages : l'aire algébrique (construction par limite de sommes de Riemann), la notation de Leibniz (langage universel et commode), et le sens profond (accumulation, moyenne, lien avec la dérivée via le théorème fondamental). Ces trois piliers te permettront d'aborder sereinement tout le programme d'intégration de la spécialité mathématiques. Pour t'assurer que les notions clés sont bien ancrées, voici une liste de contrôle finale avec des exemples nouveaux, différents de ceux vus dans les leçons précédentes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer à l'oral ce qu'est une aire algébrique et pourquoi elle peut être négative.",
+                "Je sais écrire la définition de l'intégrale de Riemann comme limite de sommes de Riemann.",
+                "Je connais le sens de chaque symbole dans $\\int_a^b f(x) \\, dx$ (borne inférieure, borne supérieure, intégrand, différentiel).",
+                "J'applique correctement la relation de Chasles et le changement de borne $\\int_a^b = -\\int_b^a$.",
+                "Je réalise un changement de variable $u = g(x)$ en modifiant correctement le différentiel et les bornes.",
+                "J'interpréte $\\int_a^b f(x) \\, dx$ comme une accumulation (déplacement, masse, travail...) selon le contexte.",
+                "Je calcule la valeur moyenne d'une fonction continue sur un intervalle.",
+                "J'utilise le théorème fondamental (formule de Barrow) pour calculer une intégrale définie à partir d'une primitive."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un mobile se déplace sur une droite avec une vitesse $v(t) = 3t^2 - 4t$ (en m/s) pour $t \\in [0,3]$. Quelle est sa distance parcourue (en valeur absolue) et son déplacement algébrique sur cet intervalle ?",
+              "answer": "Déplacement = $9$ m. Distance parcourue = $9 + 2\\times\\frac{32}{27} \\approx 11,37$ m (détail : changer de signe sur $[0,4/3]$).",
+              "hint": "Calcule l'intégrale de $v$ pour le déplacement. Pour la distance, intègre $|v|$ en repérant le signe de $v$.",
+              "explanation": "Déplacement = $\\int_0^3 (3t^2-4t) dt = [t^3-2t^2]_0^3 = 27-18=9$. $v(t)=t(3t-4)$ est négatif sur $[0,4/3]$ et positif sur $[4/3,3]$. Distance = $-\\int_0^{4/3} v + \\int_{4/3}^3 v = 9 + 2\\int_0^{4/3} (-v) = 9 + 2\\times\\frac{32}{27} = 9 + \\frac{64}{27} \\approx 11,37$."
+            },
+            {
+              "question": "Calculer $\\int_0^{\\pi/2} \\sin(2x) \\, dx$ en utilisant la formule de Barrow.",
+              "answer": "$1$",
+              "hint": "Une primitive de $\\sin(2x)$ est $-\\frac{1}{2}\\cos(2x)$.",
+              "explanation": "Une primitive de $\\sin(2x)$ est $F(x) = -\\frac{1}{2}\\cos(2x)$. Alors $\\int_0^{\\pi/2} \\sin(2x) dx = F(\\pi/2) - F(0) = (-\\frac{1}{2}\\cos\\pi) - (-\\frac{1}{2}\\cos 0) = (-\\frac{1}{2}(-1)) + \\frac{1}{2}(1) = \\frac{1}{2}+\\frac{1}{2}=1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

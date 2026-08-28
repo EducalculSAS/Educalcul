@@ -1,0 +1,325 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.866367+00:00",
+  "id": 123,
+  "code": "ce1-t06-c07",
+  "title": "Lire l'heure et la demi-heure",
+  "description": "Cours structuré Educalcul : Lire l'heure et la demi-heure.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Lire l'heure et la demi-heure",
+    "objectif_global": "Lire l'heure et la demi-heure",
+    "mini_lecons_imposees": [
+      "Lire aiguilles.",
+      "Associer heure et demi-heure.",
+      "Placer sur une horloge."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Lire aiguilles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aiguille des heures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'horloge devant toi. La petite aiguille, celle qui est plus courte, montre les heures. Chaque chiffre sur le cadran correspond à une heure. Quand elle pointe sur $3$, il est $3$ $h$."
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 0,
+              "caption": "Il est 3 h",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant observe la grande aiguille, celle qui est plus longue. Elle tourne plus vite et indique les minutes. Pour une heure pile, elle se place toujours sur le $12$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aiguille des minutes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand la grande aiguille est sur le $12$, cela veut dire qu'il n'y a pas de minutes en plus. L'heure est donc exacte, par exemple $5$ $h$ ou $8$ $h$."
+            },
+            {
+              "type": "clock",
+              "hours": 5,
+              "minutes": 0,
+              "caption": "Il est 5 h",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de lire l'heure quand la petite aiguille pointe sur $8$ et la grande sur $12$. Tu dois dire $8$ $h$. C'est facile, non ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une heure pile"
+            },
+            {
+              "type": "paragraph",
+              "content": "Retiens ce repère : petite aiguille sur le chiffre de l'heure, grande aiguille sur $12$. Ainsi tu sais lire $2$ $h$, $7$ $h$, $11$ $h$ sans hésiter."
+            },
+            {
+              "type": "clock",
+              "hours": 8,
+              "minutes": 0,
+              "caption": "Il est 8 h",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle heure indique l'horloge ?",
+              "answer": "3 h",
+              "hint": "Regarde où pointe la petite aiguille.",
+              "explanation": "La petite aiguille montre 3, la grande est sur 12, donc c'est 3 h."
+            },
+            {
+              "question": "Quelle heure indique l'horloge ?",
+              "answer": "5 h",
+              "hint": "La grande aiguille est sur 12, la petite sur 5.",
+              "explanation": "C'est une heure pile : 5 h."
+            },
+            {
+              "question": "Écris l'heure quand la petite aiguille est sur 8 et la grande sur 12.",
+              "answer": "8 h",
+              "hint": "C'est une heure exacte.",
+              "explanation": "Petite aiguille sur 8, grande sur 12 = 8 h."
+            }
+          ]
+        },
+        {
+          "title": "Associer heure et demi-heure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La demi‑heure, c'est 30 minutes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une demi‑heure correspond à $30$ $min$. Sur l'horloge, la grande aiguille se place sur le $6$. La petite aiguille est alors entre deux chiffres, un peu après l'heure précédente."
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 30,
+              "caption": "Il est 3 h 30",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons une autre heure. Si la petite aiguille est entre $4$ et $5$ et la grande sur $6$, on lit $4$ $h$ $30$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire 4 h 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien : la petite aiguille a dépassé le $4$ mais n'a pas encore atteint le $5$. La grande aiguille pointe le $6$. C'est la marque de la demi‑heure."
+            },
+            {
+              "type": "clock",
+              "hours": 4,
+              "minutes": 30,
+              "caption": "Il est 4 h 30",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas confondre l'heure pile et la demi‑heure. À $3$ $h$, la grande aiguille est sur $12$. À $3$ $h$ $30$, elle est sur $6$. La petite aiguille bouge un peu entre les deux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Différencier heure pile et demi‑heure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Compare les deux horloges : l'une montre $3$ $h$, l'autre $3$ $h$ $30$. Repère la position de la grande aiguille pour savoir si c'est une heure exacte ou une demi‑heure."
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 0,
+              "caption": "Il est 3 h",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle heure indique l'horloge ?",
+              "answer": "3 h 30",
+              "hint": "La grande aiguille est sur 6.",
+              "explanation": "Grande aiguille sur 6 = 30 minutes, petite entre 3 et 4 = 3 h 30."
+            },
+            {
+              "question": "Quelle heure indique l'horloge ?",
+              "answer": "4 h 30",
+              "hint": "Petite aiguille entre 4 et 5, grande sur 6.",
+              "explanation": "C'est une demi‑heure après 4 h."
+            },
+            {
+              "question": "Est-ce une heure pile ou une demi‑heure ?",
+              "answer": "demi‑heure",
+              "hint": "Regarde la grande aiguille.",
+              "explanation": "Grande aiguille sur 6 = demi‑heure."
+            }
+          ]
+        },
+        {
+          "title": "Placer sur une horloge.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer les aiguilles pour une heure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour afficher $2$ $h$, place la petite aiguille exactement sur le $2$. La grande aiguille doit aller sur le $12$. Ainsi l'horloge montre une heure pile."
+            },
+            {
+              "type": "clock",
+              "hours": 2,
+              "minutes": 0,
+              "caption": "Il est 2 h",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant essayons une demi‑heure. Pour $2$ $h$ $30$, la petite aiguille se met entre le $2$ et le $3$, un peu après le $2$. La grande aiguille va sur le $6$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer pour une demi‑heure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe l'horloge : la petite aiguille n'est pas pile sur un chiffre, elle est à mi‑chemin. C'est le signe qu'il y a $30$ minutes en plus."
+            },
+            {
+              "type": "clock",
+              "hours": 2,
+              "minutes": 30,
+              "caption": "Il est 2 h 30",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier, lis l'horloge que tu viens de régler. Regarde la petite aiguille pour l'heure, la grande pour les minutes. Si tout correspond, c'est gagné !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier ta lecture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne‑toi à placer les aiguilles pour $7$ $h$ et pour $7$ $h$ $30$. Change l'horloge plusieurs fois pour bien mémoriser les deux positions."
+            },
+            {
+              "type": "clock",
+              "hours": 7,
+              "minutes": 30,
+              "caption": "Il est 7 h 30",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'heure pile.",
+                "Je sais lire la demi‑heure.",
+                "Je sais placer les aiguilles sur une horloge."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place les aiguilles pour 2 h.",
+              "answer": "Petite sur 2, grande sur 12",
+              "hint": "Heure pile = grande sur 12.",
+              "explanation": "Petite aiguille sur 2, grande sur 12 donne 2 h."
+            },
+            {
+              "question": "Place les aiguilles pour 2 h 30.",
+              "answer": "Petite entre 2 et 3, grande sur 6",
+              "hint": "Demi‑heure = grande sur 6.",
+              "explanation": "Petite aiguille après 2, grande sur 6 = 2 h 30."
+            },
+            {
+              "question": "Règle l'horloge sur 7 h 30 et dis l'heure.",
+              "answer": "7 h 30",
+              "hint": "Petite entre 7 et 8, grande sur 6.",
+              "explanation": "C'est une demi‑heure après 7 h."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

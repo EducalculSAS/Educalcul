@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 80,
+  "_course_code": "ce1-t02-c02-lire-une-fraction-unitaire",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Relier 1/n à une part parmi n",
+  "title": "Relier 1/n à une part parmi n",
+  "blocks": [
+    {
+      "title": "Algorithme pour identifier une fraction unitaire à partir d'une figure",
+      "content": "Observez la figure ci dessous. Elle montre un rectangle divisé en $5$ parties égales. Écrivez un algorithme en langage naturel qui permet de trouver la fraction qui correspond à une seule de ces parties.",
+      "correctAnswer": "Algorithme : 1. Compter le nombre total de parties égales (ici $5$). 2. Écrire le chiffre $1$ au numérateur. 3. Écrire le nombre de parties au dénominateur. 4. La fraction unitaire est $1/5$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rectangle est partagé en $5$ parts égales. Chaque part représente une part sur cinq, ce qui s'écrit $1/5$. L'algorithme consiste à compter les parts et à placer $1$ au numérateur et le total au dénominateur.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 5
+          }
+        ],
+        "caption": "Rectangle divisé en $5$ parties égales"
+      }
+    },
+    {
+      "title": "Algorithme pour écrire la fraction unitaire 1/n",
+      "content": "On donne un nombre entier $n$ supérieur à $1$. Par exemple $n = 4$. Écrivez un algorithme en langage naturel qui permet d'obtenir l'écriture de la fraction unitaire correspondante.",
+      "correctAnswer": "Algorithme : 1. Lire la valeur de $n$ (par exemple $4$). 2. Écrire le numérateur $1$. 3. Écrire le dénominateur $n$. 4. La fraction unitaire est $1/n$ (ici $1/4$).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme prend la valeur de $n$, place $1$ au numérateur et $n$ au dénominateur pour former la fraction $1/n$. Avec $n = 4$, on obtient $1/4$ qui correspond à une part sur quatre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Raisonnement structuré pour justifier le partage équitable",
+      "content": "Un gâteau est partagé en $6$ parts égales. En utilisant un raisonnement par étapes, expliquez pourquoi la part que reçoit un enfant s'écrit $1/6$.",
+      "correctAnswer": "Raisonnement : 1. Le gâteau entier représente $1$ tout. 2. Il est divisé en $6$ parts égales. 3. Chaque part a la même taille. 4. La somme des $6$ parts redonne le tout ($1$). 5. Donc chaque part vaut $1$ divisé par $6$, soit $1/6$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le partage équitable en $6$ parts signifie que chaque part est le résultat de la division de l'unité par $6$. L'écriture fractionnaire $1/6$ exprime exactement cette division.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 6,
+        "shape": "circle",
+        "caption": "Gâteau divisé en $6$ parts égales"
+      }
+    }
+  ]
+}

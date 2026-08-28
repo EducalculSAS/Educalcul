@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 398,
+  "_course_code": "5eme-t04-c04-raisonnement-geometrique",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Données / conclusion",
+  "title": "Raisonnement géométrique : algorithmes de déduction",
+  "blocks": [
+    {
+      "title": "Calcul de l'angle manquant d'un triangle",
+      "content": "On donne un triangle $ABC$ où les angles $\\widehat{A}=50^{\\circ}$ et $\\widehat{B}=70^{\\circ}$. Écris un algorithme (en langage naturel ou pseudo‑code) qui permet de déterminer la mesure de l'angle $\\widehat{C}$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les mesures des angles A et B.\\n2. Calculer C = 180 - (A + B).\\n3. Afficher la mesure de l'angle C.\\nPour les valeurs données : C = 180 - (50 + 70) = 60 degrés.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans tout triangle, la somme des angles vaut $180^{\\circ}$. En soustrayant la somme des deux angles connus à $180^{\\circ}$, on obtient l'angle manquant. Ici $180 - (50+70) = 60^{\\circ}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de parallélisme dans un quadrilatère",
+      "content": "On donne un quadrilatère $ABCD$ avec $AB \\parallel CD$. Les angles $\\widehat{A}=110^{\\circ}$ et $\\widehat{D}=70^{\\circ}$ sont connus. Écris un raisonnement structuré (sous forme d'étapes numérotées) qui permet de conclure si $ABCD$ est un parallélogramme.",
+      "correctAnswer": "Raisonnement :\\n1. Dans un parallélogramme, les angles adjacents sont supplémentaires (somme $180^{\\circ}$).\\n2. Vérifier si $\\widehat{A} + \\widehat{D} = 180^{\\circ}$.\\n3. Ici $110^{\\circ} + 70^{\\circ} = 180^{\\circ}$, donc la condition est satisfaite.\\n4. Comme $AB \\parallel CD$ et les angles adjacents sont supplémentaires, $ABCD$ est un parallélogramme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un quadrilatère avec une paire de côtés parallèles est un parallélogramme si les angles adjacents à ces côtés sont supplémentaires. La somme $110+70=180$ confirme cette propriété.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de tous les angles formés par deux droites sécantes",
+      "content": "Deux droites sécantes forment quatre angles. On sait que l'un d'eux mesure $40^{\\circ}$. Écris un algorithme (style Python) qui calcule les mesures des trois autres angles.",
+      "correctAnswer": "Algorithme (Python) :\\nangle_connu = 40\\nangle_oppose = angle_connu          # angles opposés par le sommet\\nangle_adjacent = 180 - angle_connu    # angles adjacents supplémentaires\\nangles = [angle_connu, angle_oppose, angle_adjacent, angle_adjacent]\\nprint(angles)\\nRésultat : [40, 40, 140, 140]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux droites sécantes créent deux paires d'angles opposés par le sommet égaux, et les angles adjacents sont supplémentaires (somme $180^{\\circ}$). Donc l'angle opposé vaut $40^{\\circ}$, les deux adjacents valent $140^{\\circ}$ chacun.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

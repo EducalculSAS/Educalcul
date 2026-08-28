@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Notation",
+  "title": "Quiz : Notation des fonctions (Seconde)",
+  "questions": [
+    {
+      "text": "Soit la fonction $f$ définie par $f(x) = 2x + 3$. Quelle est la valeur de $f(4)$ ?",
+      "options": [
+        "11",
+        "10",
+        "12",
+        "9"
+      ],
+      "correctAnswer": "11",
+      "explanation": "On remplace $x$ par $4$ dans l'expression de $f$ : $f(4) = 2 \\times 4 + 3 = 8 + 3 = 11$. Les autres options correspondent à des erreurs de calcul (oubli du $+3$, mauvaise multiplication, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f : \\mathbb{R} \\to \\mathbb{R}$ définie par $f(x) = x^2$. Quelle est l'image de $-3$ par $f$ ?",
+      "options": [
+        "9",
+        "-9",
+        "3",
+        "-3"
+      ],
+      "correctAnswer": "9",
+      "explanation": "L'image de $-3$ est $f(-3) = (-3)^2 = 9$. Le carré d'un nombre réel est toujours positif ou nul, donc $-9$ et $-3$ sont impossibles, et $3$ serait le résultat d'une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la fonction $f(x) = 2x - 5$, quel est l'antécédent de $7$ ?",
+      "options": [
+        "6",
+        "1",
+        "12",
+        "-1"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On résout $2x - 5 = 7$ : $2x = 12$ donc $x = 6$. Les autres valeurs ne satisfont pas l'équation (par exemple $1$ donne $-3$, $12$ donne $19$, $-1$ donne $-7$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'ensemble de définition de la fonction $g(x) = \\frac{1}{x-2}$ ?",
+      "options": [
+        "\\mathbb{R} \\setminus \\{2\\}",
+        "\\mathbb{R}",
+        "\\mathbb{R} \\setminus \\{0\\}",
+        "\\mathbb{R} \\setminus \\{-2\\}"
+      ],
+      "correctAnswer": "\\mathbb{R} \\setminus \\{2\\}",
+      "explanation": "Le dénominateur $x-2$ ne doit pas être nul, donc $x \\neq 2$. Tous les autres réels sont autorisés. L'option $\\mathbb{R}$ oublie l'interdiction, $\\mathbb{R} \\setminus \\{0\\}$ et $\\mathbb{R} \\setminus \\{-2\\}$ excluent de mauvaises valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f(x) = x + 1$ et $g(x) = 2x$. Quelle est la valeur de $(g \\circ f)(3)$ ?",
+      "options": [
+        "8",
+        "7",
+        "6",
+        "9"
+      ],
+      "correctAnswer": "8",
+      "explanation": "On calcule d'abord $f(3) = 3 + 1 = 4$, puis $g(4) = 2 \\times 4 = 8$. Les autres options correspondent à des erreurs d'ordre (calculer $f(g(3))$ donnerait $7$, oublier le $+1$ donnerait $6$, etc.).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

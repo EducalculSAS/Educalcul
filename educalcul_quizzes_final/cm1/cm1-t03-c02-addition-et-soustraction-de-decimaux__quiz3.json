@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 227,
+  "_course_code": "cm1-t03-c02-addition-et-soustraction-de-decimaux",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Vérifier",
+  "title": "Quiz : Vérification des additions et soustractions décimales (CM1)",
+  "questions": [
+    {
+      "text": "Pour vérifier le résultat de l'addition $12,5 + 3,7 = 16,2$, quelle opération inverse pouvez-vous faire ?",
+      "options": [
+        "$16,2 - 12,5 = 3,7$",
+        "$16,2 + 12,5 = 28,7$",
+        "$12,5 - 3,7 = 8,8$",
+        "$3,7 - 12,5 = -8,8$"
+      ],
+      "correctAnswer": "$16,2 - 12,5 = 3,7$",
+      "explanation": "Pour vérifier une addition, on soustrait l'un des termes du résultat. Si on retranche $12,5$ à $16,2$, on retrouve l'autre terme $3,7$. Les autres options correspondent à des opérations incorrectes : l'addition donne un nombre trop grand, les soustractions dans le mauvais ordre donnent des résultats différents.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel calcul d'estimation permet de vérifier rapidement si $4,8 + 2,3 = 7,1$ est plausible ?",
+      "options": [
+        "$5 + 2 = 7$",
+        "$4 + 2 = 6$",
+        "$5 + 3 = 8$",
+        "$4 + 3 = 7$"
+      ],
+      "correctAnswer": "$5 + 2 = 7$",
+      "explanation": "On arrondit chaque nombre au nombre entier le plus proche : $4,8$ devient $5$ et $2,3$ devient $2$. La somme estimée est $5 + 2 = 7$, ce qui est proche du résultat exact $7,1$. Les autres arrondis donnent des sommes trop éloignées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier l'addition $23,45 + 12,67 = 36,12$, on peut soustraire l'un des termes du résultat. Quelle soustraction donne l'autre terme $12,67$ ?",
+      "options": [
+        "$36,12 - 23,45 = 12,67$",
+        "$36,12 - 12,67 = 23,45$",
+        "$23,45 - 12,67 = 10,78$",
+        "$12,67 - 23,45 = -10,78$"
+      ],
+      "correctAnswer": "$36,12 - 23,45 = 12,67$",
+      "explanation": "Pour vérifier une addition, on soustrait l'un des termes du total pour retrouver l'autre terme. Ici, $36,12 - 23,45 = 12,67$ redonne bien le second terme. L'option B redonne le premier terme, ce qui est aussi une vérification possible, mais la question demande explicitement de retrouver $12,67$. Les options C et D effectuent des soustractions dans le mauvais ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier la soustraction $15,6 - 7,25 = 8,35$, quelle addition devez-vous faire ?",
+      "options": [
+        "$8,35 + 7,25 = 15,6$",
+        "$8,35 - 7,25 = 1,1$",
+        "$15,6 + 7,25 = 22,85$",
+        "$7,25 - 8,35 = -1,1$"
+      ],
+      "correctAnswer": "$8,35 + 7,25 = 15,6$",
+      "explanation": "La vérification d'une soustraction se fait en ajoutant la différence au soustrayant pour retrouver le diminu. Ici, $8,35 + 7,25 = 15,6$ redonne le nombre de départ. Les autres options sont soit une soustraction, soit une addition qui ne correspond pas à la vérification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Vous avez calculé $9,4 + 0,56 = 9,96$. Quelle méthode de vérification par arrondi au dixième près est correcte ?",
+      "options": [
+        "$9,4 \\approx 9,4$, $0,56 \\approx 0,6$, $9,4 + 0,6 = 10,0$, le résultat $9,96$ est proche de $10,0$",
+        "$9,4 \\approx 9$, $0,56 \\approx 1$, $9 + 1 = 10$, le résultat $9,96$ est proche de $10$",
+        "$9,4 \\approx 9,5$, $0,56 \\approx 0,5$, $9,5 + 0,5 = 10,0$, le résultat $9,96$ est proche de $10,0$",
+        "$9,4 \\approx 9$, $0,56 \\approx 0,5$, $9 + 0,5 = 9,5$, le résultat $9,96$ est loin de $9,5$"
+      ],
+      "correctAnswer": "$9,4 \\approx 9,4$, $0,56 \\approx 0,6$, $9,4 + 0,6 = 10,0$, le résultat $9,96$ est proche de $10,0$",
+      "explanation": "L'arrondi au dixième près conserve un chiffre après la virgule. $9,4$ est déjà au dixième, $0,56$ s'arrondit à $0,6$ (car le centième $6 \\ge 5$). La somme estimée $9,4 + 0,6 = 10,0$ est très proche du résultat exact $9,96$. Les autres options arrondissent incorrectement (au nombre entier ou au demi) et donnent des estimations moins précises.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

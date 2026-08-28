@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation des quartiles",
+  "blocks": [
+    {
+      "title": "Calcul de l'étendue interquartile",
+      "content": "Dans une série statistique, le premier quartile est $Q_1 = 12$, la médiane est $Me = 18$ et le troisième quartile est $Q_3 = 25$. L'étendue interquartile (EIQ) vaut {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "13"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'étendue interquartile se calcule par $Q_3 - Q_1 = 25 - 12 = 13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'une boîte à moustaches",
+      "content": "Sur la boîte à moustaches représentée, 25 % des observations sont inférieures à {{1}}, 50 % sont inférieures à {{2}} et 75 % sont inférieures à {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12",
+        "18",
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le premier quartile $Q_1$ correspond à 25 % des données, la médiane $Me$ à 50 % et le troisième quartile $Q_3$ à 75 %. Ici $Q_1=12$, $Me=18$, $Q_3=25$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux séries",
+      "content": "La série A a $Q_1 = 10$, $Me = 15$, $Q_3 = 18$. La série B a $Q_1 = 12$, $Me = 14$, $Q_3 = 24$. La série {{1}} a une dispersion plus grande car son étendue interquartile est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "B",
+        "12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'étendue interquartile de A est $18-10=8$, celle de B est $24-12=12$. Comme $12 > 8$, la série B est plus dispersée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

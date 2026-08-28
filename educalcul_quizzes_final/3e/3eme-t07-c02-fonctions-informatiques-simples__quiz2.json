@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Appeler",
+  "title": "Quiz : Appeler une fonction en algorithmique",
+  "questions": [
+    {
+      "text": "On a défini la fonction suivante :\\n$def\\ carre(x):\\n\\ \\ \\ \\ return\\ x\\ *\\ x$.\\nQuelle instruction permet d'appeler cette fonction avec l'argument $5$ et d'afficher le résultat ?",
+      "options": [
+        "print(carre(5))",
+        "print(carre)",
+        "carre(5)",
+        "print(5 * 5)"
+      ],
+      "correctAnswer": "print(carre(5))",
+      "explanation": "Pour utiliser une fonction, il faut l'appeler en écrivant son nom suivi de parenthèses contenant les arguments. Ici, `carre(5)` appelle la fonction avec l'argument $5$ et renvoie $25$. Pour afficher ce résultat, il faut englober l'appel dans `print(...)`. L'option `print(carre)` affiche la fonction elle-même, pas son résultat. `carre(5)` seul calcule mais n'affiche rien. `print(5 * 5)` calcule le carré sans utiliser la fonction définie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction :\\n$def\\ somme(a,\\ b):\\n\\ \\ \\ \\ return\\ a\\ +\\ b$.\\nQue contient la variable `resultat` après l'exécution de :\\n$resultat\\ =\\ somme(3,\\ 4)$ ?",
+      "options": [
+        "7",
+        "somme(3, 4)",
+        "None",
+        "Erreur"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La fonction `somme` calcule $3 + 4 = 7$ et renvoie cette valeur grâce à `return`. L'affectation `resultat = somme(3, 4)` stocke la valeur renvoyée ($7$) dans la variable `resultat`. Ce n'est pas le texte de l'appel (option 2), ni `None` (valeur de retour par défaut si pas de `return`), ni une erreur car le nombre d'arguments correspond.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit :\\n$def\\ afficher\\_double(n):\\n\\ \\ \\ \\ print(n\\ *\\ 2)$.\\nQue se passe-t-il si on exécute :\\n$x\\ =\\ afficher\\_double(6)$ ?",
+      "options": [
+        "La valeur $12$ est affichée et $x$ vaut $12$",
+        "La valeur $12$ est affichée et $x$ vaut $None$",
+        "Rien n'est affiché et $x$ vaut $12$",
+        "Une erreur se produit"
+      ],
+      "correctAnswer": "La valeur $12$ est affichée et $x$ vaut $None$",
+      "explanation": "La fonction `afficher_double` contient `print(n * 2)` mais **pas** d'instruction `return`. Elle affiche bien $12$ (effet de bord), mais ne renvoie aucune valeur exploitable. En Python, une fonction sans `return` renvoie implicitement `None`. La variable `x` reçoit donc la valeur `None`.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a la fonction :\\n$def\\ presentation(prenom,\\ age):\\n\\ \\ \\ \\ print(f\"{prenom}\\ a\\ {age}\\ ans\")$.\\nQuel appel produira l'affichage : `Léa a 14 ans` ?",
+      "options": [
+        "presentation(\"Léa\", 14)",
+        "presentation(14, \"Léa\")",
+        "presentation(\"Léa\", \"14\")",
+        "presentation(prenom=\"Léa\", age=14)"
+      ],
+      "correctAnswer": "presentation(\"Léa\", 14)",
+      "explanation": "Les arguments positionnels sont assignés aux paramètres dans l'ordre : le premier argument (`\"Léa\"`) va à `prenom`, le second (`14`) va à `age`. L'option 2 inverse l'ordre (afficherait `14 a Léa ans`). L'option 3 passe une chaîne pour l'âge (afficherait `Léa a 14 ans` mais `age` serait une chaîne, ce qui n'est pas l'appel standard attendu). L'option 4 utilise des arguments nommés (valide en Python mais souvent non vu en 3e pour l'appel simple), la question porte sur l'appel positionnel standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez le code :\\n$def\\ cube(x):\\n\\ \\ \\ \\ return\\ x\\ **\\ 3\\n\\nvaleur\\ =\\ cube(2)\\ +\\ cube(3)$.\\nQuelle est la valeur finale de `valeur` ?",
+      "options": [
+        "35",
+        "125",
+        "17",
+        "Erreur"
+      ],
+      "correctAnswer": "35",
+      "explanation": "La fonction `cube` renvoie $x^3$. `cube(2)` renvoie $2^3 = 8$. `cube(3)` renvoie $3^3 = 27$. L'expression `cube(2) + cube(3)` est évaluée comme $8 + 27 = 35$. Cette valeur est affectée à `valeur`. L'option 2 correspond à $(2+3)^3$. L'option 3 correspond à $2^3+3$ ou $2+3^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

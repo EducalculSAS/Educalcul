@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : If / else",
+  "title": "Quiz : Approfondissement If / else (5e)",
+  "questions": [
+    {
+      "text": "Dans le programme suivant, quelle valeur sera affichée ?\\n$age = 12$\\nsi $age >= 18$ alors afficher \"Majeur\" sinon afficher \"Mineur\"",
+      "options": [
+        "Majeur",
+        "Mineur",
+        "12",
+        "Rien"
+      ],
+      "correctAnswer": "Mineur",
+      "explanation": "La condition $age >= 18$ est fausse car $12$ n'est pas supérieur ou égal à $18$. Le bloc \"sinon\" s'exécute donc et affiche \"Mineur\". Les autres options correspondent à une mauvaise évaluation de la condition ou à une confusion avec la valeur de la variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel message le programme affiche-t-il pour $note = 14$ ?\\nsi $note >= 16$ alors afficher \"Très bien\"\\nsinon si $note >= 12$ alors afficher \"Bien\"\\nsinon afficher \"Insuffisant\"",
+      "options": [
+        "Très bien",
+        "Bien",
+        "Insuffisant",
+        "Rien"
+      ],
+      "correctAnswer": "Bien",
+      "explanation": "La première condition $note >= 16$ est fausse. La seconde condition $note >= 12$ est vraie car $14 >= 12$. Le programme exécute donc le bloc correspondant et affiche \"Bien\". L'option \"Très bien\" serait choisie si on ignorait le \"sinon si\", et \"Insuffisant\" si on sautait la deuxième condition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut afficher \"Pair\" si $n$ est divisible par $2$, sinon \"Impair\". Quelle condition écrire dans le \"si\" ?",
+      "options": [
+        "$n / 2 = 0$",
+        "$n % 2 = 0$",
+        "$n * 2 = 0$",
+        "$n - 2 = 0$"
+      ],
+      "correctAnswer": "$n % 2 = 0$",
+      "explanation": "L'opérateur modulo « % » donne le reste de la division euclidienne. Si $n$ est pair, le reste de la division par $2$ est $0$, donc la condition $n % 2 = 0$ est vraie. Les autres expressions ne testent pas la divisibilité par $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le code ci-dessous, que se passe-t-il si $x = 5$ et $y = 3$ ?\\nsi $x > y$ alors\\n    si $x < 10$ alors afficher \"A\"\\n    sinon afficher \"B\"\\nsinon afficher \"C\"",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Erreur"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La première condition $x > y$ est vraie ($5 > 3$). On entre donc dans le premier bloc. La condition imbriquée $x < 10$ est aussi vraie ($5 < 10$), donc le programme affiche \"A\". Les options \"B\" et \"C\" correspondent à une mauvaise évaluation d'une des deux conditions, et \"Erreur\" n'est pas pertinent car le code est syntaxiquement correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant contient une erreur logique. Pour $temp = -2$, il affiche \"Gel\" au lieu de \"Froid\".\\nsi $temp < 0$ alors afficher \"Gel\"\\nsinon si $temp < 10$ alors afficher \"Froid\"\\nsinon afficher \"Chaud\"",
+      "options": [
+        "Inverser les deux premiers blocs",
+        "Remplacer $temp < 0$ par $temp <= 0$",
+        "Ajouter un \"sinon\" avant le premier \"si\"",
+        "Utiliser $temp > 0$ dans la première condition"
+      ],
+      "correctAnswer": "Inverser les deux premiers blocs",
+      "explanation": "Avec $temp = -2$, la première condition $temp < 0$ est vraie, donc \"Gel\" s'affiche et le reste est ignoré. Pour que les températures négatives soient considérées comme \"Froid\" et non \"Gel\", il faut tester d'abord $temp < 10$ (qui est vrai pour -2) puis $temp < 0$ dans un bloc \"sinon si\". Inverser l'ordre des deux premiers blocs corrige le problème. Les autres options ne changent pas l'ordre d'évaluation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

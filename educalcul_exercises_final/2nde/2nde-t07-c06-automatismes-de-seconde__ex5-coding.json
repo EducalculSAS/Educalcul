@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Calcul numérique",
+  "title": "Algorithmes et calcul numérique : boucles et suites",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Écrire un algorithme qui demande à l'utilisateur un entier naturel $n$ (supérieur ou égal à 1), puis qui calcule et affiche la somme $S = 1 + 2 + 3 + \\dots + n$. L'algorithme utilisera une boucle « Pour » et une variable accumulateur.",
+      "correctAnswer": "Algorithme :\\nVariables : n, i, S en entiers\\nDébut\\n    Afficher \"Entrez un entier n >= 1 : \"\\n    Saisir n\\n    S prend la valeur 0\\n    Pour i allant de 1 à n faire\\n        S prend la valeur S + i\\n    Fin pour\\n    Afficher \"La somme est : \", S\\nFin",
+      "explanation": "On initialise la somme $S$ à $0$. La boucle « Pour i de 1 à n » parcourt tous les entiers de $1$ à $n$. À chaque passage, on ajoute la valeur courante de $i$ à l'accumulateur $S$. À la fin de la boucle, $S$ contient la somme recherchée $1+2+...+n$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle conditionnelle et seuil",
+      "content": "On souhaite déterminer le plus petit entier naturel $n$ tel que la somme $S_n = 1 + 2 + 3 + \\dots + n$ dépasse $10\\;000$. Écrire un algorithme utilisant une boucle « Tant que » qui affiche cet entier $n$ et la valeur de la somme $S_n$ obtenue.",
+      "correctAnswer": "Algorithme :\\nVariables : n, S en entiers\\nDébut\\n    n prend la valeur 0\\n    S prend la valeur 0\\n    Tant que S <= 10000 faire\\n        n prend la valeur n + 1\\n        S prend la valeur S + n\\n    Fin tant que\\n    Afficher \"Le plus petit n est : \", n\\n    Afficher \"La somme correspondante est : \", S\\nFin",
+      "explanation": "On initialise $n=0$ et $S=0$. La condition « Tant que S <= 10000 » signifie qu'on continue d'ajouter des termes tant que la somme n'a pas dépassé le seuil. Dès que $S$ devient strictement supérieur à $10\\;000$, on sort de la boucle. Les valeurs finales de $n$ et $S$ sont celles cherchées. On incrémente $n$ avant de l'ajouter à $S$ pour que le premier terme ajouté soit $1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Méthode de Héron (racine carrée)",
+      "content": "La méthode de Héron (ou méthode babylonienne) permet de calculer une valeur approchée de $\\sqrt{a}$ pour $a > 0$. On définit la suite $(u_n)$ par $u_0 = a$ et $u_{n+1} = \\frac{1}{2}(u_n + \\frac{a}{u_n})$. Écrire un algorithme qui demande $a$ (nombre positif) et un entier $N$ (nombre d'itérations), puis qui calcule et affiche $u_N$ valeur approchée de $\\sqrt{a}$.",
+      "correctAnswer": "Algorithme :\\nVariables : a, u en réels ; N, i en entiers\\nDébut\\n    Afficher \"Entrez a (a > 0) : \"\\n    Saisir a\\n    Afficher \"Entrez le nombre d'itérations N : \"\\n    Saisir N\\n    u prend la valeur a\\n    Pour i allant de 1 à N faire\\n        u prend la valeur 0,5 * (u + a / u)\\n    Fin pour\\n    Afficher \"Valeur approchée de racine de a : \", u\\nFin",
+      "explanation": "On initialise $u$ avec la valeur $a$ (c'est $u_0$). La boucle « Pour i de 1 à N » effectue exactement $N$ itérations. À chaque tour, on met à jour $u$ en appliquant la formule de récurrence $u_{n+1} = \\frac{1}{2}(u_n + \\frac{a}{u_n})$. Après $N$ tours, la variable $u$ contient la valeur $u_N$, qui est une approximation de $\\sqrt{a}$ de plus en plus précise quand $N$ augmente.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Expériences à deux étapes simples",
+  "title": "Exercices de mise en ordre : expériences à deux étapes",
+  "blocks": [
+    {
+      "title": "Ordre des étapes pour calculer une probabilité composée",
+      "content": "Replace les étapes suivantes dans l'ordre logique pour déterminer la probabilité d'obtenir un six au dé et face à la pièce.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lancer le dé",
+        "Lancer la pièce",
+        "Identifier les résultats favorables",
+        "Multiplier les probabilités de chaque étape"
+      ],
+      "explanation": "On commence par réaliser la première expérience (lancer le dé), puis la seconde (lancer la pièce). Ensuite on repère les résultats favorables (six et face). Enfin, comme les expériences sont indépendantes, on multiplie les probabilités de chaque étape pour obtenir la probabilité composée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un arbre de probabilité à deux étapes",
+      "content": "Ordonne les actions nécessaires pour construire l'arbre de probabilité d'une expérience consistant à tirer une boule (rouge ou bleu) puis à lancer un dé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Dessiner les branches de la première expérience",
+        "Pour chaque issue, dessiner les branches de la seconde expérience",
+        "Étiqueter les probabilités sur chaque branche",
+        "Calculer les probabilités des issues composées"
+      ],
+      "explanation": "La construction d'un arbre se fait d'abord en traçant les branches de la première expérience (tirage de la boule). Pour chaque issue de cette première étape, on ajoute les branches de la seconde expérience (lancer du dé). On indique ensuite les probabilités sur chaque branche. Finalement, on calcule les probabilités des issues composées en multipliant les probabilités le long de chaque chemin.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la probabilité d'au moins un succès en deux lancers",
+      "content": "Range les étapes du raisonnement pour trouver la probabilité d'obtenir au moins un six en lançant deux fois un dé équilibré.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la probabilité de ne pas obtenir six au premier lancer",
+        "Calculer la probabilité de ne pas obtenir six au second lancer",
+        "Multiplier ces deux probabilités",
+        "Soustraire le résultat de un pour obtenir la probabilité d'au moins un six"
+      ],
+      "explanation": "Pour obtenir la probabilité d'au moins un six, il est plus simple de calculer la probabilité de l'événement contraire (aucun six). On calcule d'abord la probabilité de ne pas avoir six au premier lancer (5/6), puis la même au second lancer. Comme les lancers sont indépendants, on multiplie ces deux probabilités. On soustrait enfin ce produit de 1 pour obtenir la probabilité cherchée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

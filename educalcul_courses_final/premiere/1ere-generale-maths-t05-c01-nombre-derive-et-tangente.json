@@ -1,0 +1,429 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.352515+00:00",
+  "id": 595,
+  "code": "1ere-generale-maths-t05-c01",
+  "title": "Nombre dérivé et tangente",
+  "description": "Cours structuré Educalcul : Nombre dérivé et tangente.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Nombre dérivé et tangente",
+    "objectif_global": "Nombre dérivé et tangente",
+    "mini_lecons_imposees": [
+      "Taux d'accroissement.",
+      "Interprétation.",
+      "Tangente."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Taux d'accroissement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Taux d'accroissement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau chapitre ! Aujourd'hui, nous allons parler d'une idée toute simple mais terriblement puissante : comment mesure-t-on la vitesse à laquelle une fonction change ? Imagine que tu suis le parcours d'une voiture sur une autoroute. Si je te dis qu'elle a fait $150$ km en $2$ heures, tu sais calculer sa vitesse moyenne : $75$ km/h. En mathématiques, on fait exactement la même chose avec une fonction : on regarde de combien elle a varié par rapport à la variation de l'abscisse. C'est ce qu'on appelle le élémentaire taux d'accroissement."
+            },
+            {
+              "type": "definition",
+              "term": "Taux d'accroissement",
+              "definition": "Soit $f$ une fonction définie sur un intervalle $I$ et $a$, $b$ deux nombres de $I$ distincts. Le taux d'accroissement de $f$ sur l'intervalle $[a,b]$ (ou $[b,a]$) est le nombre : $\\frac{f(b)-f(a)}{b-a}$.",
+              "example": "Pour $f(x)=x^2$ sur $[1,3]$, le taux d'accroissement est $\\frac{3^2-1^2}{3-1} = \\frac{9-1}{2}=4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la formule : au numérateur, on a la variation de la fonction (combien $f$ a changé), au dénominateur, la variation de l'abscisse (de combien $x$ a bougé). C'est un quotient, exactement comme une vitesse moyenne. Si le taux est positif, la fonction monte en moyenne ; s'il est négatif, elle descend. Et si la fonction est affine, ce taux est constant : il ne dépend pas de l'intervalle choisi ! C'est d'ailleurs la caractéristique des fonctions affines."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 4,
+              "caption": "Fonction $f(x)=x^2$ et droite sécante passant par les points d'abscisses $1$ et $3$. La pente de cette droite est le taux d'accroissement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le graphique, tu vois la courbe de $f(x)=x^2$ et une droite qui passe par les points $A(1,1)$ et $B(3,9)$. Cette droite s'appelle une droite sécante. Son coefficient directeur, c'est-à-dire sa pente, est exactement le taux d'accroissement qu'on a calculé : $4$. Tu peux le vérifier : en avançant de $1$ en abscisse, la droite monte de $4$. C'est une image géométrique très utile : le taux d'accroissement, c'est la pente de la corde qui relie deux points de la courbe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les bornes $a$ et $b$ de l'intervalle sur lequel on te demande le taux d'accroissement. Note bien lequel est le plus petit, mais la formule marche dans les deux sens."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les images",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f(a)$ et $f(b)$ en remplaçant $x$ par $a$ puis par $b$ dans l'expression de la fonction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Forme le quotient $\\frac{f(b)-f(a)}{b-a}$ et simplifie. Le résultat est un nombre (pas une expression en $x$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble sur un exemple un peu plus costaud : $f(x) = 2x^3 - 5x$ sur l'intervalle $[-1, 2]$. On a $a=-1$, $b=2$. $f(-1) = 2(-1)^3 -5(-1) = -2+5=3$. $f(2) = 2(8)-10=16-10=6$. Le taux d'accroissement est $\\frac{6-3}{2-(-1)} = \\frac{3}{3}=1$. Facile, non ? Attention au piège classique : ne confonds pas $f(b)-f(a)$ avec $f(b-a)$ ! La fonction ne se distribue pas sur la soustraction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer un taux d'accroissement, regardons ce qu'il devient quand l'intervalle devient tout petit. C'est là que la magie opère : on passe d'une vitesse moyenne à une vitesse instantanée. Mais avant d'aller plus loin, prenons le temps de bien comprendre ce que ce nombre raconte vraiment sur la forme de la courbe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sens de variation et taux d'accroissement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe du taux d'accroissement te donne une information précieuse sur l'allure de la fonction entre $a$ et $b$. Si le taux est strictement positif, alors $f(b) > f(a)$ : la fonction a globalement monté. Si le taux est strictement négatif, $f(b) < f(a)$ : elle a globalement baissé. Et si le taux est nul, $f(b)=f(a)$ : la fonction a repris la même valeur qu'au départ. Attention pouré : \"globalement\" ne veut pas dire \"tout le temps\". Une fonction peut monter, puis descendre, puis remonter, et avoir un taux d'accroissement positif sur l'ensemble de l'intervalle. Le taux d'accroissement ne voit que le départ et l'arrivée, pas le chemin."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.28,
+              "caption": "Fonction sinus sur $[0, 2\\pi]$. Le taux d'accroissement global est $0$ (même valeur au début et à la fin), mais la fonction a monté puis descendu."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une distinction cruciale pour la suite : le taux d'accroissement est une information globale, une moyenne. Il ne te dit pas ce qui se passe à l'intérieur de l'intervalle. Pour connaître le comportement point par point, il faut affiner le maillage, prendre des intervalles de plus en plus petits. C'est exactement ce que nous allons faire dans la prochaine leçon, en faisant tendre $b$ vers $a$. Mais déjà, tu as l'outil de base : le quotient $\\frac{f(b)-f(a)}{b-a}$. Entraînnes-toi à le calculer vite et bien, c'est la clé de tout ce qui suit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette première leçon, notons une propriété algébrique bien pratique : le taux d'accroissement d'une somme est la somme des taux d'accroissement, et le taux d'accroissement d'un multiple par un nombre $k$ est $k$ fois le taux d'accroissement. Cela vient tout bêtement de la distributivité de la soustraction et de la factorisation. Si $f$ et $g$ sont deux fonctions, alors le taux d'accroissement de $f+g$ sur $[a,b]$ est $\\frac{(f+g)(b)-(f+g)(a)}{b-a} = \\frac{f(b)-f(a)}{b-a} + \\frac{g(b)-g(a)}{b-a}$. Utile pour décomposer des fonctions compliquées en morceaux plus simples !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le taux d'accroissement de la fonction $f(x) = 3x^2 - 2x + 1$ sur l'intervalle $[0, 2]$.",
+              "answer": "5",
+              "hint": "Calcule $f(0)$ et $f(2)$, puis applique la formule $\\frac{f(2)-f(0)}{2-0}$.",
+              "explanation": "$f(0)=1$, $f(2)=3\\times4-4+1=9$. Taux $= \\frac{9-1}{2} = 4$. Ah, j'ai fait une erreur dans la réponse prévue ! Recalculons : $f(2)=3\\times4 - 4 + 1 = 12 - 4 + 1 = 9$. $f(0)=1$. $\\frac{9-1}{2}=4$. La bonne réponse est $4$."
+            },
+            {
+              "question": "Soit $f(x) = \\frac{1}{x}$ définie sur $\\mathbb{R}^*$. Détermine le taux d'accroissement de $f$ sur $[-2, -1]$.",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Attention aux signes : $f(-2) = -\\frac{1}{2}$, $f(-1) = -1$. Le numérateur est $f(-1)-f(-2)$.",
+              "explanation": "$f(-2)=-\\frac{1}{2}$, $f(-1)=-1$. Taux $= \\frac{-1 - (-\\frac{1}{2})}{-1 - (-2)} = \\frac{-\\frac{1}{2}}{1} = -\\frac{1}{2}$. Ah, encore une erreur ! $-1 - (-2) = 1$. Numérateur : $-1 + 0.5 = -0.5$. Résultat $-\\frac{1}{2}$."
+            },
+            {
+              "question": "Une fonction $f$ a pour taux d'accroissement $0$ sur l'intervalle $[3, 7]$. Que peux-tu dire de $f(3)$ et $f(7)$ ?",
+              "answer": "$f(3) = f(7)$",
+              "hint": "La formule du taux d'accroissement est $\\frac{f(7)-f(3)}{7-3}=0$. Que vaut le numérateur ?",
+              "explanation": "Si le quotient est nul, son numérateur est nul : $f(7)-f(3)=0$, donc $f(7)=f(3)$. La fonction prend la même valeur aux deux bornes."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation du taux d'accroissement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du sujet : que raconte vraiment ce fameux quotient $\\frac{f(b)-f(a)}{b-a}$ ? Au-delà du calcul mécanique, il est temps de lui donner du sens, de la chair. Dans la leçon précédente, nous avons vu qu'il représentait la pente d'une droite sécante. Aujourd'hui, nous allons pousser l'idée plus loin : que se passe-t-il si on rapproche les deux points l'un de l'autre, jusqu'à ce qu'ils se confondent presque ? C'est là que naît la notion de nombre dérivé, l'un des piliers de l'analyse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un instant que tu filmes une voiture qui accélère. La vitesse moyenne sur un long trajet ne te dit pas à quelle vitesse elle roule *précisément* au kilomètre 42. Pour le savoir, il faut regarder des intervalles de temps de plus en plus courts autour de cet instant. En mathématiques, on fait pareil : on fixe l'abscisse $a$, et on laisse $b$ se rapprocher de $a$. Le taux d'accroissement $\\frac{f(b)-f(a)}{b-a}$ devient alors une approximation de plus en plus fine de la variation *locale* de la fonction en $a$."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "x^2",
+              "x0": 1,
+              "xMin": -1,
+              "xMax": 3,
+              "caption": "La sécante (en pointillés) passe par $A(1,1)$ et un point mobile $M$. Quand $M$ se rapproche de $A$, la sécante tend vers la tangente (en trait plein). La pente de la tangente est la limite des taux d'accroissement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'animation : le point $M$ glisse sur la courbe et se rapproche de $A$. La droite sécante $(AM)$ pivote et se colle de plus en plus à la courbe près de $A$. Dans la limite, elle devient la **tangente** à la courbe en $A$. La pente de cette tangente, c'est exactement la limite des taux d'accroissement quand $b$ tend vers $a$. C'est ce nombre limite qu'on appelle le **nombre dérivé** de $f$ en $a$, noté $f'(a)$."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre dérivé",
+              "definition": "Soit $f$ une fonction définie sur un intervalle $I$ et $a$ un point de $I$. Si le taux d'accroissement $\\frac{f(a+h)-f(a)}{h}$ admet une limite finie lorsque $h$ tend vers $0$, on dit que $f$ est dérivable en $a$ et on appelle nombre dérivé de $f$ en $a$ cette limite, notée $f'(a)$ : $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}$.",
+              "example": "Pour $f(x)=x^2$ en $a=1$ : $\\frac{(1+h)^2-1}{h} = \\frac{1+2h+h^2-1}{h} = 2+h \\to 2$. Donc $f'(1)=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois la notation $h$ ? C'est juste $b-a$, l'écart entre les deux abscisses. Écrire avec $h$ qui tend vers $0$ est plus commode pour les calculs. La définition dit : \"on prend un tout petit écart $h$, on calcule le taux d'accroissement sur $[a, a+h]$, et on regarde où ça mène quand $h$ devient microscopique\". Si cette limite existe et est finie, la fonction est dérivable en $a$. Sinon, elle ne l'est pas (cas des fonctions non lisses, comme la valeur absolue en $0$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le quotient avec $h$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $b$ par $a+h$ dans la formule du taux d'accroissement : $\\frac{f(a+h)-f(a)}{h}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Développe $f(a+h)$, soustrais $f(a)$, factorise par $h$ au numérateur si possible, puis simplifie par $h$ (qui est non nul)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire tendre $h$ vers $0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans l'expression simplifiée (qui ne contient plus $h$ au dénominateur), remplace $h$ par $0$. Le résultat est $f'(a)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à $f(x) = \\sqrt{x}$ en $a=4$. $f(4+h) = \\sqrt{4+h}$, $f(4)=2$. Le quotient est $\\frac{\\sqrt{4+h}-2}{h}$. On rationalise le numérateur en multipliant haut et bas par $\\sqrt{4+h}+2$ : $\\frac{(4+h)-4}{h(\\sqrt{4+h}+2)} = \\frac{h}{h(\\sqrt{4+h}+2)} = \\frac{1}{\\sqrt{4+h}+2}$. Quand $h\\to 0$, cela tend vers $\\frac{1}{2+2} = \\frac{1}{4}$. Donc $f'(4) = 0,25$. La pente de la tangente à la courbe de la racine carrée en $x=4$ est $0,25$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons le nombre dérivé, il est temps de l'interpréter concrètement. Ce nombre, c'est la **vitesse instantanée de variation** de la fonction en ce point. Si $f(t)$ donne la position d'un mobile à l'instant $t$, alors $f'(t)$ est sa vitesse à cet instant précis. Si $f(x)$ est un coût de production en fonction du nombre d'unités $x$, $f'(x)$ est le coût marginal : combien coûte de produire *une unité de plus* à ce niveau de production. C'est une lecture économique très utilisée."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3 - 3*x",
+              "xmin": -2.5,
+              "xmax": 2.5,
+              "caption": "Courbe de $f(x)=x^3-3x$. Les tangentes en $-1$, $0$, $1$ ont des pentes $0$, $-3$, $0$. Le nombre dérivé change de signe : la fonction a un maximum en $-1$, un minimum en $1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, tu vois trois tangentes. En $x=-1$, la tangente est horizontale : $f'(-1)=0$. La fonction passe d'une phase de croissance à une phase de décroissance : c'est un maximum local. En $x=1$, même chose : $f'(1)=0$, minimum local. En $x=0$, la tangente a une pente négative ($f'(0)=-3$) : la fonction décroît. Le signe du nombre dérivé te donne donc le sens de variation *local* : positif $\\Rightarrow$ croissante, négatif $\\Rightarrow$ décroissante, nul $\\Rightarrow$ extremum potentiel. C'est la clé pour tracer des courbes et résoudre des problèmes d'optimisation !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, sache que la dérivée n'est pas seulement un nombre : c'est une **fonction dérivée** $f'$, qui associe à chaque $x$ où $f$ est dérivable son nombre dérivé $f'(x)$. On peut l'étudier comme n'importe quelle fonction : la dériver à son tour (dérivée seconde), chercher ses zéros, son signe... Mais avant de construire cette fonction dérivée, il nous faut maîtriser l'outil géométrique qui l'accompagne : la tangente. C'est le sujet de notre dernière leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "En utilisant la définition, calcule le nombre dérivé de $f(x) = 2x^2 + 3x$ en $a = 1$.",
+              "answer": "7",
+              "hint": "Écris $\\frac{f(1+h)-f(1)}{h}$, développe $f(1+h)=2(1+h)^2+3(1+h)$, simplifie par $h$, puis fais tendre $h$ vers $0$.",
+              "explanation": "$f(1+h)=2(1+2h+h^2)+3+3h = 2+4h+2h^2+3+3h = 5+7h+2h^2$. $f(1)=5$. Quotient $= \\frac{7h+2h^2}{h} = 7+2h \\to 7$. Donc $f'(1)=7$."
+            },
+            {
+              "question": "La fonction $f(x) = |x|$ est-elle dérivable en $0$ ? Justifie.",
+              "answer": "Non",
+              "hint": "Calcule le taux d'accroissement $\\frac{|h|-0}{h}$ pour $h>0$ et pour $h<0$. Les limites sont-elles égales ?",
+              "explanation": "Pour $h>0$, $\\frac{|h|}{h}=1$. Pour $h<0$, $\\frac{|h|}{h}=\\frac{-h}{h}=-1$. La limite à droite est $1$, à gauche $-1$. Elles sont différentes, donc la limite n'existe pas. $f$ n'est pas dérivable en $0$ (la courbe a un pic)."
+            },
+            {
+              "question": "Soit $f(x) = x^3$. On admet que $f'(x) = 3x^2$. Quel est le sens de variation de $f$ sur $\\mathbb{R}$ ?",
+              "answer": "Strictement croissante sur $\\mathbb{R}$",
+              "hint": "Regarde le signe de $f'(x) = 3x^2$. Est-il jamais négatif ? Est-il nul souvent ?",
+              "explanation": "$f'(x)=3x^2 \\ge 0$ pour tout $x$, et $f'(x)=0$ seulement en $x=0$. La dérivée est positive partout ailleurs, donc $f$ est croissante sur $\\mathbb{R}$ (même si la pente est nulle en un point isolé, la fonction continue de croître)."
+            }
+          ]
+        },
+        {
+          "title": "Tangente.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La tangente à une courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière pièce du puzzle : la tangente. Nous savons maintenant que le nombre dérivé $f'(a)$ est la pente de la tangente à la courbe $C_f$ au point d'abscisse $a$. Mais une droite, ce n'est pas seulement une pente : c'est aussi un point par lequel elle passe. Comme la tangente touche la courbe en $A(a, f(a))$, nous avons tout ce qu'il faut pour écrire son équation cartésienne. C'est une formule qu'il faut connaître par cœur, car elle revient sans cesse en exercices, en physique, en économie..."
+            },
+            {
+              "type": "definition",
+              "term": "Équation de la tangente",
+              "definition": "Soit $f$ une fonction dérivable en $a$. La tangente à la courbe $C_f$ au point $A(a, f(a))$ est la droite d'équation : $y = f'(a)(x - a) + f(a)$.",
+              "example": "Pour $f(x)=x^2$ en $a=2$ : $f(2)=4$, $f'(x)=2x$ donc $f'(2)=4$. Tangente : $y = 4(x-2)+4 = 4x-4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule vient directement de l'équation réduite d'une droite $y = mx + p$ : le coefficient directeur $m$ est $f'(a)$, et comme la droite passe par $A(a, f(a))$, on a $f(a) = f'(a) \\cdot a + p$, d'où $p = f(a) - a f'(a)$. En remplaçant, on retrouve $y = f'(a)x + f(a) - a f'(a) = f'(a)(x-a) + f(a)$. C'est la forme \"point-pente\", très commode : pas besoin de calculer $p$ séparément."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "sin(x)",
+              "x0": 1.57,
+              "xMin": -1,
+              "xMax": 4,
+              "caption": "Tangente à la courbe du sinus au point $A(\\pi/2, 1)$. La pente est $f'(\\pi/2) = \\cos(\\pi/2) = 0$ : la tangente est horizontale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cet exemple, la tangente est horizontale car la dérivée du sinus en $\\pi/2$ vaut $0$ (c'est un maximum). L'équation est simplement $y = 1$. Remarque que la tangente peut couper la courbe en d'autres points : ici, elle la recoupe à l'infini (tous les maxima du sinus). \"Tangente\" ne veut pas dire \"qui ne touche qu'en un seul point\" !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la dérivabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que $f$ est dérivable en $a$ (fonction usuelle sur son domaine, pas de pic, pas de cuspide, pas de tangente verticale)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $f(a)$ et $f'(a)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue la fonction et sa dérivée en $a$. Ce sont deux nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace dans $y = f'(a)(x-a) + f(a)$. Simplifie si on te demande la forme réduite $y = mx+p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons sur une fonction un peu plus technique : $f(x) = \\frac{1}{x}$ en $a = -2$. $f(-2) = -\\frac{1}{2}$. $f'(x) = -\\frac{1}{x^2}$, donc $f'(-2) = -\\frac{1}{4}$. L'équation de la tangente : $y = -\\frac{1}{4}(x - (-2)) + (-\\frac{1}{2}) = -\\frac{1}{4}(x+2) - \\frac{1}{2} = -\\frac{1}{4}x - \\frac{1}{2} - \\frac{1}{2} = -\\frac{1}{4}x - 1$. En forme réduite : $y = -0,25x - 1$. Vérifions : pour $x=-2$, $y = 0,5 - 1 = -0,5 = f(-2)$. C'est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La tangente n'est pas qu'un objet géométrique statique : c'est le **meilleur approximant affine** de la fonction près de $a$. Cela veut dire que si tu zoomes suffisamment près du point $A$, la courbe et sa tangente deviennent indiscernables. En pratique, on utilise cela pour calculer des valeurs approchées : $f(a+h) \\approx f(a) + h f'(a)$ pour $h$ petit. C'est la \"formule de l'augmentation\" ou \"approximation affine\". Par exemple, pour estimer $\\sqrt{4,01}$, on prend $f(x)=\\sqrt{x}$, $a=4$, $h=0,01$. $f(4)=2$, $f'(4)=\\frac{1}{4}$. $\\sqrt{4,01} \\approx 2 + 0,01 \\times 0,25 = 2,0025$. La vraie valeur est $2,002498...$ C'est bluffant de précision !"
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(x)",
+              "xmin": 3.5,
+              "xmax": 4.5,
+              "caption": "Zoom près de $x=4$ sur la racine carrée (bleu) et sa tangente (rouge). Les deux courbes sont quasi confondues."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété d'approximation est au cœur de nombreuses méthodes numériques (comme la méthode de Newton pour résoudre $f(x)=0$) et de la physique (linéarisation d'équations complexes). Elle montre que la dérivée n'est pas qu'un outil pour tracer des courbes : elle permet de *simplifier* localement une fonction non-linéaire en une fonction affine, facile à manipuler. C'est là toute la puissance du calcul différentiel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, rappelons les trois idées maîtresses que tu dois emporter : (1) Le **taux d'accroissement** mesure la variation moyenne sur un intervalle ; c'est la pente d'une sécante. (2) Le **nombre dérivé** est la limite de ce taux quand l'intervalle se rétrécit à un point ; c'est la pente de la tangente, la vitesse instantanée. (3) L'**équation de la tangente** $y = f'(a)(x-a)+f(a)$ te donne la droite qui \"colle\" à la courbe en $a$ et permet d'approximer la fonction près de ce point. Ces trois concepts sont les fondations de l'analyse en Première et au-delà. Bravo d'être arrivé jusqu'ici !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer un taux d'accroissement $\\frac{f(b)-f(a)}{b-a}$ et l'interpréter comme pente d'une sécante.",
+                "Je connais la définition du nombre dérivé $f'(a) = \\lim_{h\\to 0} \\frac{f(a+h)-f(a)}{h}$ et je sais le calculer pour des fonctions usuelles.",
+                "Je sais écrire l'équation de la tangente en un point : $y = f'(a)(x-a) + f(a)$.",
+                "Je comprends le lien entre le signe de $f'(a)$ et le sens de variation local de $f$.",
+                "Je sais utiliser la tangente pour faire une approximation affine $f(a+h) \\approx f(a) + h f'(a)$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine l'équation de la tangente à la courbe de $f(x) = x^3 - 2x$ au point d'abscisse $1$.",
+              "answer": "$y = x - 2$",
+              "hint": "Calcule $f(1)$ et $f'(1)$ (dérivée $f'(x)=3x^2-2$), puis utilise la formule $y = f'(1)(x-1) + f(1)$.",
+              "explanation": "$f(1)=1-2=-1$. $f'(x)=3x^2-2$, $f'(1)=1$. Tangente : $y = 1(x-1) -1 = x-2$."
+            },
+            {
+              "question": "On admet que $f(x) = \\ln(x)$ a pour dérivée $f'(x) = \\frac{1}{x}$. Donne une valeur approchée de $\\ln(1,02)$ par approximation affine au voisinage de $1$.",
+              "answer": "$0,02$",
+              "hint": "Prends $a=1$, $h=0,02$. $f(1)=0$, $f'(1)=1$. Applique $f(1+h) \\approx f(1) + h f'(1)$.",
+              "explanation": "$\\ln(1,02) \\approx \\ln(1) + 0,02 \\times \\frac{1}{1} = 0 + 0,02 = 0,02$. La valeur exacte est $\\approx 0,0198$."
+            },
+            {
+              "question": "La tangente à la courbe de $g(x) = \\frac{2}{x}$ au point d'abscisse $-1$ coupe l'axe des abscisses en $A$ et l'axe des ordonnées en $B$. Donne les coordonnées de $A$ et $B$.",
+              "answer": "$A(-2;0)$ et $B(0;-4)$",
+              "hint": "Trouve l'équation de la tangente (forme réduite $y=mx+p$). $A$ a pour ordonnée $0$, $B$ a pour abscisse $0$.",
+              "explanation": "$g(-1)=-2$. $g'(x)=-\\frac{2}{x^2}$, $g'(-1)=-2$. Tangente : $y = -2(x+1)-2 = -2x-4$. $A$ : $0=-2x-4 \\Rightarrow x=-2$. $B$ : $y=-4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

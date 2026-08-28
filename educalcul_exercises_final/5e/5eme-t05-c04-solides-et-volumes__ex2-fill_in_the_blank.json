@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 403,
+  "_course_code": "5eme-t05-c04-solides-et-volumes",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Patrons / vues",
+  "title": "Patrons et vues des solides",
+  "blocks": [
+    {
+      "title": "Vocabulaire : le patron",
+      "content": "Un patron est une figure plane qui, une fois pliée, permet de former un {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "solide"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un patron est le développement à plat d'un solide. En le pliant le long des arêtes, on reconstitue le volume du solide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés du patron d'un cube",
+      "content": "Le patron ci-contre représente un {{1}}. Ce patron est constitué de {{2}} carrés identiques.",
+      "correctAnswer": "",
+      "blanks": [
+        "cube",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un cube possède $6$ faces carrées identiques. Son patron est donc toujours composé de $6$ carrés attachés par leurs côtés. Il existe 11 patrons différents pour un cube.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "title": "Les vues d'un solide",
+      "content": "Pour décrire une construction en cubes, on utilise trois vues principales : la vue de {{1}}, la vue de {{2}} et la vue de {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "face",
+        "dessus",
+        "profil"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les trois vues orthogonales (face, dessus, profil) permettent de définir entièrement une construction en cubes sans ambiguïté. La vue de face montre la hauteur et la largeur, la vue de dessus montre la largeur et la profondeur, la vue de profil montre la hauteur et la profondeur.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

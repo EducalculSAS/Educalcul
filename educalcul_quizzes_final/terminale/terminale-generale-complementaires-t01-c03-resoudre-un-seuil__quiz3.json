@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Vérifier",
+  "title": "Résoudre un seuil : Vérification",
+  "questions": [
+    {
+      "text": "On considère la fonction $f(x) = 2^x$ représentant l'évolution d'une population. On souhaite vérifier si le seuil de $100$ individus est atteint pour $x = 6$. Quelle est la conclusion de la vérification ?",
+      "options": [
+        "Le seuil est atteint car $2^6 = 64$",
+        "Le seuil n'est pas atteint car $2^6 = 64$ et $64 < 100$",
+        "Le seuil est atteint car $2^6 = 128$",
+        "Le seuil n'est pas atteint car $2^6 = 32$ et $32 < 100$"
+      ],
+      "correctAnswer": "Le seuil n'est pas atteint car $2^6 = 64$ et $64 < 100$",
+      "explanation": "On calcule la valeur de la fonction pour $x = 6$. On a $2^6 = 64$. Comme $64$ est strictement inférieur à $100$, le seuil n'est pas encore atteint.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction $g(t) = 500 \\times e^{-0,1t}$ modélise la température d'un objet. On a trouvé une valeur approchée $t \\approx 16$ pour le seuil de $100$ degrés. Quelle opération permet de vérifier la validité de ce résultat ?",
+      "options": [
+        "Calculer $g(16)$ et vérifier s'il est proche de $100$",
+        "Calculer $g(100)$ et vérifier s'il est proche de $16$",
+        "Calculer $100 \\times e^{-0,1 \\times 16}$",
+        "Calculer $\\ln(500) - 16$"
+      ],
+      "correctAnswer": "Calculer $g(16)$ et vérifier s'il est proche de $100$",
+      "explanation": "Pour vérifier si une valeur $t$ correspond au passage d'un seuil $S$, on doit calculer l'image de cette valeur par la fonction et comparer le résultat avec $S$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $h(x) = \\ln(x + 1)$. On affirme que le seuil de $2$ est atteint pour $x = 7$. Cette affirmation est elle correcte ?",
+      "options": [
+        "Oui, car $\\ln(7 + 1) = \\ln(8)$ et $\\ln(8) \\approx 2,08$ donc le seuil est dépassé",
+        "Non, car $\\ln(8) \\approx 1,5$ et $1,5 < 2$",
+        "Oui, car $e^2 = 7$",
+        "Non, car $\\ln(7) \\approx 2$ donc le seuil est atteint précisément à $x = 7$"
+      ],
+      "correctAnswer": "Oui, car $\\ln(7 + 1) = \\ln(8)$ et $\\ln(8) \\approx 2,08$ donc le seuil est dépassé",
+      "explanation": "On calcule $h(7) = \\ln(7+1) = \\ln(8)$. À l'aide de la calculatrice, $\\ln(8) \\approx 2,079$. Puisque $2,079 > 2$, le seuil est effectivement atteint et dépassé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche le moment $t$ où une charge électrique $q(t) = 10(1 - e^{-2t})$ atteint le seuil de $9$ Coulombs. Un élève propose $t = 1,15$ seconde. En calculant $q(1,15) \\approx 8,93$, quelle conclusion doitétre tirée ?",
+      "options": [
+        "La valeur $t = 1,15$ est la solution exacte",
+        "Le seuil est atteint avant $t = 1,15$ seconde",
+        "Le seuil n'est pas encore atteint à $t = 1,15$ seconde",
+        "Le calcul est erroné car $q(t)$ ne peut pas être inférieur à $9$"
+      ],
+      "correctAnswer": "Le seuil n'est pas encore atteint à $t = 1,15$ seconde",
+      "explanation": "Le résultat $8,93$ est inférieur au seuil de $9$. Par conséquent, à l'instant $t = 1,15$, la valeur n'a pas encore atteint le seuil fixé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise la fonction $f(x) = \\frac{100}{x+2}$ pour modéliser une concentration. On veut vérifier si le seuil de $10$ est atteint pour $x = 8$. Quelle est l'analyse correcte ?",
+      "options": [
+        "Le seuil est atteint car $f(8) = \\frac{100}{8} = 12,5$ et $12,5 > 10$",
+        "Le seuil n'est pas atteint car $f(8) = \\frac{100}{10} = 10$ et $10$ est égal au seuil",
+        "Le seuil est atteint car $f(8) = \\frac{100}{8+2} = 10$",
+        "Le seuil n'est pas atteint car $f(8) = 10$ et on cherche une valeur strictement supérieure"
+      ],
+      "correctAnswer": "Le seuil est atteint car $f(8) = \\frac{100}{8+2} = 10$",
+      "explanation": "On calcule $f(8) = \\frac{100}{8+2} = \\frac{100}{10} = 10$. La valeur obtenue est exactement égale au seuil, donc le seuil est atteint précisément pour $x = 8$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

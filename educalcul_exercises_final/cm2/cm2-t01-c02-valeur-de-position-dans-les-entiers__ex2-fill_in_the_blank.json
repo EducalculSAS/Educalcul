@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 276,
+  "_course_code": "cm2-t01-c02-valeur-de-position-dans-les-entiers",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Multiplier / diviser par 10, 100, 1000 au sens numération",
+  "title": "Multiplier et diviser par 10, 100 et 1000",
+  "blocks": [
+    {
+      "title": "Multiplication par 10",
+      "content": "Pour multiplier un nombre entier par $10$, on décale les chiffres d'un rang vers la gauche dans le tableau de numération. Par exemple, $45 \\times 10 = {{1}}$.",
+      "correctAnswer": "450",
+      "blanks": [
+        "450"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par $10$ revient à ajouter un zéro à la fin d'un nombre entier ou à décaler chaque chiffre d'une colonne vers la gauche. Ainsi, $45 \\times 10 = 450$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication par 100 et 1000",
+      "content": "Le nombre $7$ multiplié par $100$ donne {{1}}, tandis que le nombre $7$ multiplié par $1000$ donne {{2}}.",
+      "correctAnswer": "700;7000",
+      "blanks": [
+        "700",
+        "7000"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par $100$ revient à décaler les chiffres de deux rangs vers la gauche, donc on ajoute deux zéros : $7 \\times 100 = 700$. Multiplier par $1000$ revient à décaler les chiffres de trois rangs vers la gauche, donc on ajoute trois zéros : $7 \\times 1000 = 7000$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division par 10",
+      "content": "Pour diviser un nombre entier se terminant par zéro par $10$, on supprime le zéro des unités. Le résultat de la division de $860$ par $10$ est donc {{1}}.",
+      "correctAnswer": "86",
+      "blanks": [
+        "86"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Diviser par $10$ revient à décaler les chiffres d'un rang vers la droite dans le tableau de numération. Pour $860$, on retire le zéro des unités, ce qui donne $86$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

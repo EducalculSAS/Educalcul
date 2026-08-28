@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 254,
+  "_course_code": "cm1-t06-c07-solides-et-patrons",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Vues simples",
+  "title": "Quiz : Vues simples des solides (CM1)",
+  "questions": [
+    {
+      "text": "Un cube de côté $4$ cm est posé sur une table. Quelle est la forme et la dimension de sa vue de dessus ?",
+      "options": [
+        "Carré de côté $4$ cm",
+        "Rectangle de $4$ cm sur $8$ cm",
+        "Cercle de diamètre $4$ cm",
+        "Triangle équilatéral de côté $4$ cm"
+      ],
+      "correctAnswer": "Carré de côté $4$ cm",
+      "explanation": "La vue de dessus d'un cube posé sur une face montre exactement cette face. Comme toutes les faces d'un cube sont des carrés de même côté, la vue de dessus est un carré de $4$ cm de côté. Les autres options correspondent à d'autres solides ou à des confusions avec le patron.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit mesure $10$ cm de hauteur, $6$ cm de largeur et $4$ cm de profondeur. Il est posé sur sa plus grande face. Sa vue de face est un rectangle de $10$ cm sur $6$ cm. Quelle est sa vue de côté ?",
+      "options": [
+        "Rectangle de $10$ cm sur $4$ cm",
+        "Rectangle de $6$ cm sur $4$ cm",
+        "Carré de $10$ cm de côté",
+        "Rectangle de $10$ cm sur $6$ cm"
+      ],
+      "correctAnswer": "Rectangle de $10$ cm sur $4$ cm",
+      "explanation": "La vue de face montre la hauteur ($10$ cm) et la largeur ($6$ cm). La vue de côté montre la hauteur ($10$ cm) et la profondeur ($4$ cm). C'est donc un rectangle de $10$ cm sur $4$ cm. L'option 'Rectangle de $6$ cm sur $4$ cm' correspond à la vue de dessus. L'option 'Rectangle de $10$ cm sur $6$ cm' confond vue de face et vue de côté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On empile deux cubes identiques de côté $3$ cm l'un sur l'autre. Quelle est la forme de la vue de face de cette construction ?",
+      "options": [
+        "Rectangle de $6$ cm sur $3$ cm",
+        "Carré de $3$ cm de côté",
+        "Rectangle de $3$ cm sur $6$ cm",
+        "Carré de $6$ cm de côté"
+      ],
+      "correctAnswer": "Rectangle de $6$ cm sur $3$ cm",
+      "explanation": "En empilant deux cubes de $3$ cm, la hauteur totale devient $6$ cm ($3+3$) tandis que la largeur reste $3$ cm. La vue de face est donc un rectangle de $6$ cm de hauteur sur $3$ cm de largeur. L'option 'Rectangle de $3$ cm sur $6$ cm' inverse les dimensions (vue de côté ou rotation). L'option 'Carré de $3$ cm' serait la vue d'un seul cube.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un solide a pour vue de face un carré, pour vue de côté un rectangle et pour vue de dessus un rectangle. De quel solide s'agit-il ?",
+      "options": [
+        "Un pavé droit (qui n'est pas un cube)",
+        "Un cube",
+        "Un cylindre",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un pavé droit (qui n'est pas un cube)",
+      "explanation": "Un cube donnerait trois vues carrées identiques. Un cylindre donnerait un cercle en vue de dessus. Une pyramide à base carrée donnerait un triangle en vue de face ou de côté. Seul le pavé droit (avec trois dimensions différentes deux à deux, ou deux égales et une différente) peut donner un carré (face carrée) et deux rectangles (autres faces) selon son orientation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On représente une construction en cubes par une grille $2 \\times 2$ où chaque case contient le nombre de cubes empilés. La grille indique : première ligne $2$ et $1$, deuxième ligne $1$ et $0$. Combien de cubes au total composent cette construction ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Il faut additionner les nombres de la grille qui représentent les hauteurs de chaque colonne : $2 + 1 + 1 + 0 = 4$. La construction contient donc $4$ cubes. L'option $5$ correspondrait à une erreur d'addition ($2+1+1+1$). L'option $6$ correspondrait à $2 \\times 3$. L'option $3$ oublie d'additionner une colonne.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "_status": "done",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Construire",
+  "title": "Construire des diagrammes statistiques",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous donne les effectifs des animaux préférés des élèves d'une classe de 5e.\\n\\nAnimal | Effectif\\nChien | 12\\nChat | 10\\nLapin | 5\\nHamster | 3\\n\\nQuel diagramme en bâtons représente correctement ces données ?",
+      "options": [
+        "Un diagramme où la barre 'Chien' monte jusqu'à 12, 'Chat' jusqu'à 10, 'Lapin' jusqu'à 5 et 'Hamster' jusqu'à 3, avec une échelle graduée de 2 en 2.",
+        "Un diagramme où la barre 'Chien' monte jusqu'à 10, 'Chat' jusqu'à 12, 'Lapin' jusqu'à 5 et 'Hamster' jusqu'à 3.",
+        "Un diagramme où la barre 'Chien' monte jusqu'à 12, 'Chat' jusqu'à 10, 'Lapin' jusqu'à 3 et 'Hamster' jusqu'à 5.",
+        "Un diagramme où les barres sont toutes de la même hauteur car il y a quatre animaux."
+      ],
+      "correctAnswer": "Un diagramme où la barre 'Chien' monte jusqu'à 12, 'Chat' jusqu'à 10, 'Lapin' jusqu'à 5 et 'Hamster' jusqu'à 3, avec une échelle graduée de 2 en 2.",
+      "explanation": "Il faut reporter fidèlement les effectifs du tableau sur le diagramme. Le chien a l'effectif le plus grand (12), suivi du chat (10), puis du lapin (5) et du hamster (3). L'échelle doit permettre de lire ces valeurs ; une graduation de 2 en 2 (0, 2, 4, 6, 8, 10, 12) est adaptée. Les autres options inversent des effectifs ou ne respectent pas les données.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "12"
+          ],
+          [
+            "Chat",
+            "10"
+          ],
+          [
+            "Lapin",
+            "5"
+          ],
+          [
+            "Hamster",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Pour construire un diagramme en bâtons représentant les notes sur $20$ d'un groupe d'élèves (notes comprises entre $8$ et $18$), quelle graduation choisir pour l'axe vertical (effectifs) si le plus grand effectif est $14$ élèves ?",
+      "options": [
+        "Une graduation de $1$ en $1$ jusqu'à $15$.",
+        "Une graduation de $5$ en $5$ jusqu'à $20$.",
+        "Une graduation de $2$ en $2$ jusqu'à $16$.",
+        "Une graduation de $10$ en $10$ jusqu'à $50$."
+      ],
+      "correctAnswer": "Une graduation de $2$ en $2$ jusqu'à $16$.",
+      "explanation": "L'axe des effectifs doit aller de $0$ jusqu'à une valeur supérieure au maximum ($14$). Une graduation de $2$ en $2$ (0, 2, 4, ..., 16) permet une lecture précise et un diagramme de taille raisonnable. Une graduation de $1$ en $1$ ferait un graphique trop grand. Une graduation de $5$ en $5$ ou $10$ en $10$ ne permet pas de lire précisément un effectif comme $14$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de $28$ élèves, on a relevé le mode de transport pour venir au collège : $14$ élèves viennent à pied, $8$ en bus, $4$ en voiture et $2$ à vélo. On veut construire un diagramme circulaire (camembert). Quel est l'angle du secteur correspondant aux élèves qui viennent à pied ?",
+      "options": [
+        "$90^\\circ$",
+        "$180^\\circ$",
+        "$120^\\circ$",
+        "$45^\\circ$"
+      ],
+      "correctAnswer": "$180^\\circ$",
+      "explanation": "L'angle d'un secteur se calcule par la formule : $\\frac{\\text{effectif de la catégorie}}{\\text{effectif total}} \\times 360^\\circ$. Pour les piétons : $\\frac{14}{28} \\times 360^\\circ = 0,5 \\times 360^\\circ = 180^\\circ$. Comme ils représentent la moitié de la classe, leur secteur est un demi-cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a recueilli les données suivantes : la température moyenne (en degrés Celsius) d'une ville pour chaque mois de l'année. Quel type de diagramme est le plus adapté pour représenter l'évolution de cette température au cours de l'année ?",
+      "options": [
+        "Un diagramme en bâtons.",
+        "Un diagramme circulaire (camembert).",
+        "Un graphique en ligne (courbe).",
+        "Un nuage de points."
+      ],
+      "correctAnswer": "Un graphique en ligne (courbe).",
+      "explanation": "Pour visualiser l'évolution d'une quantité numérique (température) en fonction du temps (mois), le graphique en ligne (courbe) est le standard car il relie les points et montre la continuité et les tendances (hausse/baisse). Le diagramme en bâtons compare des catégories disjointes, le camembert montre des parts d'un tout, et le nuage de points lie deux variables statistiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un diagramme en bâtons représente le nombre de livres lus par cinq élèves pendant les vacances. On connaît les valeurs pour quatre élèves : Léa $6$, Max $4$, Zoé $8$, Tom $3$. La moyenne du nombre de livres lus par les cinq élèves est de $5$. Combien de livres a lu le cinquième élève, Sam ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "3"
+      ],
+      "correctAnswer": "4",
+      "explanation": "La moyenne est la somme des valeurs divisée par le nombre de valeurs. Somme totale = moyenne $\\times$ nombre d'élèves = $5 \\times 5 = 25$. Somme des quatre élèves connus = $6 + 4 + 8 + 3 = 21$. Valeur de Sam = $25 - 21 = 4$ livres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus (partiel)",
+        "bars": [
+          {
+            "label": "Léa",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Max",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Zoé",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Tom",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Sam",
+            "value": 0,
+            "tone": "gray"
+          }
+        ]
+      }
+    }
+  ]
+}

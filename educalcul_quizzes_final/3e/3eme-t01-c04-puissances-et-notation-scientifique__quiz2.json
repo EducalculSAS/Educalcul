@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Calculs",
+  "title": "Quiz : Calculs avec les puissances et la notation scientifique",
+  "questions": [
+    {
+      "text": "Calcule $2^3 \\times 2^4$.",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$8^7$",
+        "$2^1$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "On utilise la loi des puissances de même base : $a^m \\times a^n = a^{m+n}$. Ici $2^3 \\times 2^4 = 2^{3+4} = 2^7$. Les autres réponses correspondent à des erreurs fréquentes : multiplier les exposants ($2^{12}$), multiplier les bases ($8^7$) ou soustraire les exposants ($2^1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $(5^2)^3$.",
+      "options": [
+        "$5^5$",
+        "$5^6$",
+        "$5^8$",
+        "$25^3$"
+      ],
+      "correctAnswer": "$5^6$",
+      "explanation": "La puissance d'une puissance se simplifie en multipliant les exposants : $(a^m)^n = a^{m \\times n}$. Donc $(5^2)^3 = 5^{2 \\times 3} = 5^6$. Les distracteurs proviennent de l'addition des exposants ($5^5$), d'une multiplication incorrecte ($5^8$) ou du non‑rappel de la règle ($25^3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la division $\\frac{10^8}{10^3}$.",
+      "options": [
+        "$10^5$",
+        "$10^{11}$",
+        "$10^{24}$",
+        "$10^{-5}$"
+      ],
+      "correctAnswer": "$10^5$",
+      "explanation": "Pour diviser des puissances de même base, on soustrait les exposants : $\\frac{a^m}{a^n} = a^{m-n}$. Ainsi $\\frac{10^8}{10^3} = 10^{8-3} = 10^5$. Les autres choix correspondent à l'addition ($10^{11}$), à la multiplication ($10^{24}$) ou à une inversion de signe ($10^{-5}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Multiplie $(3 \\times 10^4) \\times (2 \\times 10^3)$ et donne le résultat en notation scientifique.",
+      "options": [
+        "$6 \\times 10^7$",
+        "$5 \\times 10^7$",
+        "$6 \\times 10^{12}$",
+        "$5 \\times 10^{12}$"
+      ],
+      "correctAnswer": "$6 \\times 10^7$",
+      "explanation": "On multiplie les coefficients ($3 \\times 2 = 6$) et on additionne les exposants de 10 ($10^4 \\times 10^3 = 10^{4+3} = 10^7$). Le produit est $6 \\times 10^7$. Les réponses $5 \\times 10^7$ et $5 \\times 10^{12}$ viennent d'une erreur sur le coefficient, $6 \\times 10^{12}$ d'une multiplication des exposants au lieu de l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $\\frac{(4 \\times 10^5)^2}{2 \\times 10^3}$ et exprime le résultat en notation scientifique.",
+      "options": [
+        "$8 \\times 10^7$",
+        "$8 \\times 10^8$",
+        "$1.6 \\times 10^8$",
+        "$2 \\times 10^7$"
+      ],
+      "correctAnswer": "$8 \\times 10^7$",
+      "explanation": "D'abord le numérateur : $(4 \\times 10^5)^2 = 4^2 \\times (10^5)^2 = 16 \\times 10^{10} = 1.6 \\times 10^{11}$. Ensuite on divise par $2 \\times 10^3$ : $\\frac{1.6 \\times 10^{11}}{2 \\times 10^3} = \\frac{1.6}{2} \\times 10^{11-3} = 0.8 \\times 10^8 = 8 \\times 10^7$. Les autres options proviennent d'erreurs sur la gestion des puissances de 10 ou du coefficient.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

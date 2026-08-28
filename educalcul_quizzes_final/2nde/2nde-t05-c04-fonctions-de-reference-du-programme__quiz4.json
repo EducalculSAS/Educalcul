@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Fonctions de référence du programme",
+  "title": "Quiz : Applications des fonctions de référence (Seconde)",
+  "questions": [
+    {
+      "text": "Quelle fonction de référence a pour ensemble de définition $ℝ*$ (c'est-à-dire tous les réels non nuls) ?",
+      "options": [
+        "$f(x)=x^2$",
+        "$f(x)=√x$",
+        "$f(x)=1/x$",
+        "$f(x)=|x|$"
+      ],
+      "correctAnswer": "$f(x)=1/x$",
+      "explanation": "La fonction inverse n'est pas définie pour zéro, donc son ensemble de définition est l'ensemble des réels non nuls. La fonction carrée et la valeur absolue sont définies pour tous les réels, la racine carrée est définie seulement pour les réels positifs ou nuls.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction quadratique de référence $f(x)=ax^2$ passe par le point $A(2, 12)$. Quelle est la valeur de $a$ ?",
+      "options": [
+        "$3$",
+        "$6$",
+        "$12$",
+        "$24$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "En remplaçant les coordonnées du point dans l'expression, on obtient douze égal le coefficient fois quatre, ce qui donne le coefficient égal trois. Les autres valeurs correspondent à des erreurs de calcul comme multiplier au lieu de diviser ou utiliser l'ordonnée sans tenir compte de l'abscisse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $√(x+3) = 5$.",
+      "options": [
+        "$x = 22$",
+        "$x = 25$",
+        "$x = 28$",
+        "$x = 2$"
+      ],
+      "correctAnswer": "$x = 22$",
+      "explanation": "En élevant les deux membres au carré, on obtient l'inconnue plus trois égal vingt-cinq, donc l'inconnue égal vingt-deux. La réponse vingt-cinq correspond à l'oubli de soustraire trois, la réponse vingt-huit à une addition incorrecte, et la réponse deux à une confusion avec la racine carrée de quatre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $|2x - 4| ≤ 6$.",
+      "options": [
+        "$-1 ≤ x ≤ 5$",
+        "$-5 ≤ x ≤ 1$",
+        "$x ≤ -1$ ou $x ≥ 5$",
+        "$x ≤ -5$ ou $x ≥ 1$"
+      ],
+      "correctAnswer": "$-1 ≤ x ≤ 5$",
+      "explanation": "L'inéquation à valeur absolue se traduit par un double encadrement : moins six inférieur ou égal à deux fois l'inconnue moins quatre inférieur ou égal à six. En ajoutant quatre puis en divisant par deux, on trouve l'inconnue comprise entre moins un et cinq. Les autres intervalles correspondent à des erreurs de signe ou de sens d'inégalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le coût $C(x)$ en euros de production de $x$ pièces est modélisé par une fonction affine $C(x)=ax+b$. On sait que $C(10)=150$ et $C(20)=250$. Déterminez $a$ et $b$.",
+      "options": [
+        "$a=10, b=50$",
+        "$a=5, b=100$",
+        "$a=15, b=0$",
+        "$a=20, b=-50$"
+      ],
+      "correctAnswer": "$a=10, b=50$",
+      "explanation": "Le système formé par les deux valeurs donne dix fois le coefficient plus le terme constant égal cent cinquante et vingt fois le coefficient plus le terme constant égal deux cent cinquante. En soustrayant la première équation de la seconde, on obtient dix fois le coefficient égal cent, donc le coefficient vaut dix. En revenant à la première équation, le terme constant vaut cinquante. Les autres paires ne satisfont pas les deux conditions simultanément.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

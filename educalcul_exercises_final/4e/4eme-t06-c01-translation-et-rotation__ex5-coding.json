@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Construire image",
+  "title": "Algorithmes et transformations du plan",
+  "blocks": [
+    {
+      "title": "Algorithme de translation",
+      "content": "On considère un point $M$ de coordonnées $(x ; y)$ dans un repère orthonormé et un vecteur $\\vec{v}$ de coordonnées $\\begin{pmatrix} a \\\\ b \\end{pmatrix}$.\\nÉcrire un algorithme (en langage naturel ou syntaxe Python) qui prend en entrée les quatre nombres $x$, $y$, $a$, $b$ et qui affiche les coordonnées $(x' ; y')$ de l'image $M'$ du point $M$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "Algorithme :\\n1. Demander x, y, a, b\\n2. Calculer x_prime = x + a\\n3. Calculer y_prime = y + b\\n4. Afficher x_prime, y_prime\\n\\nVersion Python :\\ndef translation(x, y, a, b):\\n    x_prime = x + a\\n    y_prime = y + b\\n    return (x_prime, y_prime)",
+      "explanation": "La translation de vecteur $\\vec{v}(a ; b)$ ajoute les coordonnées du vecteur aux coordonnées du point initial. L'image $M'(x' ; y')$ est telle que $x' = x + a$ et $y' = y + b$. L'algorithme reflète exactement ce calcul vectoriel.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de rotation d'un quart de tour",
+      "content": "On considère un point $M(x ; y)$ dans un repère orthonormé $(O ; \\vec{i}, \\vec{j})$.\\nÉcrire un algorithme qui prend en entrée les coordonnées $x$ et $y$ et qui affiche les coordonnées $(x' ; y')$ de l'image $M'$ du point $M$ par la rotation de centre $O$ et d'angle $+90^{\\circ}$ (sens direct).",
+      "correctAnswer": "Algorithme :\\n1. Demander x, y\\n2. Calculer x_prime = -y\\n3. Calculer y_prime = x\\n4. Afficher x_prime, y_prime\\n\\nVersion Python :\\ndef rotation_90_direct(x, y):\\n    x_prime = -y\\n    y_prime = x\\n    return (x_prime, y_prime)",
+      "explanation": "Dans un repère orthonormé direct, une rotation de centre $O$ et d'angle $+90^{\\circ}$ transforme le vecteur $\\overrightarrow{OM}(x ; y)$ en $\\overrightarrow{OM'}(-y ; x)$. C'est une propriété géométrique fondamentale à connaître en 4e : l'abscisse devient l'opposé de l'ordonnée, et l'ordonnée devient l'abscisse.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme composé : translation puis rotation",
+      "content": "On donne un point $M(x ; y)$, un vecteur $\\vec{v}(a ; b)$ et un centre de rotation $O$ (origine du repère).\\nÉcrire un algorithme qui calcule les coordonnées du point final $M''$ obtenu après :\\n1. La translation de vecteur $\\vec{v}$ transformant $M$ en $M'$.\\n2. La rotation de centre $O$ et d'angle $+90^{\\circ}$ transformant $M'$ en $M''$.\\nL'algorithme prend en entrée $x, y, a, b$ et affiche les coordonnées de $M''$.",
+      "correctAnswer": "Algorithme :\\n1. Demander x, y, a, b\\n2. Étape translation : x_prime = x + a ; y_prime = y + b\\n3. Étape rotation : x_double_prime = -y_prime ; y_double_prime = x_prime\\n4. Afficher x_double_prime, y_double_prime\\n\\nVersion Python :\\ndef compose(x, y, a, b):\\n    # Translation\\n    x1 = x + a\\n    y1 = y + b\\n    # Rotation +90°\\n    x2 = -y1\\n    y2 = x1\\n    return (x2, y2)",
+      "explanation": "On applique les transformations dans l'ordre. D'abord la translation : $M'(x+a ; y+b)$. Ensuite la rotation de $+90^{\\circ}$ autour de l'origine : $M''(-(y+b) ; x+a)$. L'algorithme enchaîne les deux formules vues précédemment. On peut aussi simplifier l'expression finale : $x'' = -y - b$ et $y'' = x + a$.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

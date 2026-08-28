@@ -1,0 +1,375 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.261971+00:00",
+  "id": 253,
+  "code": "cm1-t06-c06",
+  "title": "Symétrie axiale",
+  "description": "Cours structuré Educalcul : Symétrie axiale.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Symétrie axiale",
+    "objectif_global": "Symétrie axiale",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Construire.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un axe de symétrie ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une feuille de papier que tu plies en deux. Le pli trace une ligne invisible : c'est l'$axe$ de symétrie. Quand tu déplies, chaque point d'un côté a son jumeau de l'autre côté, à la même distance du pli. Ce jumeau s'appelle le $symétrique$ du point par rapport à l'axe."
+            },
+            {
+              "type": "definition",
+              "term": "axe de symétrie",
+              "definition": "Droite qui partage une figure en deux parties superposables par pliage.",
+              "example": "Le pli d'une feuille pliée en deux."
+            },
+            {
+              "type": "definition",
+              "term": "symétrique",
+              "definition": "Point ou figure obtenu en reflétant un point ou une figure par rapport à un axe.",
+              "example": "Le point $A'$ est le symétrique de $A$ par rapport à la droite $d$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ et son symétrique $A'B'C'$ par rapport à l'axe $d$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons une propriété fondamentale : la distance d'un point à l'axe est exactement la même que la distance de son symétrique à l'axe. Si tu mesures $AH$ et $A'H$ (où $H$ est le pied de la perpendiculaire), tu trouveras la même longueur. C'est ce qui garantit que le pli est bien au milieu."
+            },
+            {
+              "type": "display_math",
+              "latex": "AH = A'H"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une dernière propriété importante : l'axe est la médiatrice du segment qui joint un point à son symétrique. Cela veut dire qu'il est perpendiculaire à ce segment et qu'il le coupe en son milieu. En retour, la figure symétrique a une orientation inversée, comme dans un miroir."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Du point $A$, trace une droite perpendiculaire à l'axe $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la distance $AH$ et reporte-la de l'autre côté de $d$ pour obtenir $A'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $AH = A'H$ et que $AA' \\perp d$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, l'axe $d$ est tracé. Le point $A$ est à $3\\,cm$ de $d$. Quelle est la distance entre $A'$ et $d$ ?",
+              "answer": "$3\\,cm$",
+              "hint": "Rappelle-toi la propriété des distances égales de part et d'autre de l'axe.",
+              "explanation": "Par définition de la symétrie axiale, $AH = A'H$. Donc $A'$ est aussi à $3\\,cm$ de $d$."
+            },
+            {
+              "question": "Le segment $AA'$ mesure $6\\,cm$. Quelle est la longueur de $AH$ ?",
+              "answer": "$3\\,cm$",
+              "hint": "L'axe coupe le segment $AA'$ en son milieu.",
+              "explanation": "Puisque $d$ est la médiatrice de $AA'$, $H$ est le milieu de $AA'$. Donc $AH = \\frac{AA'}{2} = 3\\,cm$."
+            },
+            {
+              "question": "Vrai ou faux : l'axe de symétrie est toujours parallèle au segment qui joint un point à son symétrique.",
+              "answer": "Faux",
+              "hint": "Pense à la perpendiculaire.",
+              "explanation": "L'axe est perpendiculaire au segment $AA'$, pas parallèle."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu veux dessiner le point $A'$, le symétrique de $A$ par rapport à la droite $d$. Tu as une règle, une équerre et un compas. Pas de panique, la méthode est simple et répétable."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre sur $d$ et fais passer le bord par $A$. Trace la droite perpendiculaire à $d$ qui passe par $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec le compas, pointe la pointe sur $A$ et ouvre-le jusqu'à rencontrer $d$ en $H$. La distance $AH$ est maintenant mémorisée dans le compas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter de l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'écartement, place la pointe du compas sur $H$ du côté opposé de $d$ et trace un arc qui coupe la perpendiculaire. Ce point d'intersection est $A'$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu n'as pas d'équerre mais seulement une règle et un compas. La construction reste possible : trace un cercle centré en $A$ qui coupe $d$ en deux points, puis trace les médiatrices de la corde pour trouver la perpendiculaire. C'est un peu plus long, mais cela marche toujours."
+            },
+            {
+              "type": "display_math",
+              "latex": "AH = A'H"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si tu dois construire le symétrique d'une figure entière, comme un triangle ? Il suffit de répéter la construction pour chaque sommet. Relie ensuite les nouveaux sommets dans le même ordre. La figure obtenue est le symétrique du triangle initial."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Construction du triangle $A'B'C'$ symétrique de $ABC$ par rapport à $d$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé la perpendiculaire à $d$ passant par $A$. Quelle est la prochaine étape pour obtenir $A'$ ?",
+              "answer": "Mesurer $AH$ au compas et reporter cette longueur de l'autre côté de $d$.",
+              "hint": "Le compas garde la distance.",
+              "explanation": "Après la perpendiculaire, on utilise le compas pour copier la distance $AH$ de l'autre côté de l'axe."
+            },
+            {
+              "question": "Si tu n'as pas d'équerre, comment tracer la perpendiculaire à $d$ passant par $A$ avec règle et compas ?",
+              "answer": "Tracer un cercle centré en $A$ coupant $d$ en $P$ et $Q$, puis construire la médiatrice de $PQ$.",
+              "hint": "La médiatrice d'une corde passe par le centre du cercle.",
+              "explanation": "Le cercle centre $A$ coupe $d$ en $P$ et $Q$. La médiatrice de $PQ$ est perpendiculaire à $d$ et passe par $A$."
+            },
+            {
+              "question": "Pour construire le symétrique d'un triangle $ABC$, combien de fois dois-tu répéter la construction du symétrique d'un point ?",
+              "answer": "Trois fois, une pour chaque sommet.",
+              "hint": "Chaque sommet a son symétrique.",
+              "explanation": "Le symétrique du triangle est obtenu en construisant $A'$, $B'$, $C'$ puis en les reliant."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier qu'une figure est symétrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as dessiné une figure et tu veux être sûr qu'elle est bien le symétrique de l'originale par rapport à l'axe $d$. Voici une checklist simple à suivre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les distances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sommet, mesure la distance à l'axe. Les deux distances doivent être égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment qui joint chaque sommet à son symétrique. L'axe doit être perpendiculaire à ce segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'axe doit couper chaque segment joignant un point à son symétrique exactement au milieu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce pratique : utilise un papier quadrillé. Compte les cases entre le point et l'axe, puis compte les cases de l'autre côté. Si les nombres sont identiques, la distance est respectée. Pour la perpendiculaire, regarde si le segment suit les lignes de la grille de façon à former un angle droit."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation des distances $AH$ et $A'H$ sur une droite graduée.",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 0,
+                  "label": "H"
+                },
+                {
+                  "value": 3,
+                  "label": "A'"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une figure semble symétrique mais un seul sommet ne respecte pas la règle. C'est suffisant pour dire que la figure n'est pas le symétrique exact. Sois attentif à chaque sommet, surtout quand la figure a beaucoup de côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'axe de symétrie et le symétrique d'un point.",
+                "Je sais construire le symétrique d'un point avec règle, équerre et compas.",
+                "Je sais vérifier qu'une figure est le symétrique d'une autre en contrôlant distances, perpendicularité et milieux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, le segment $AA'$ mesure $8\\,cm$ et l'axe $d$ coupe $AA'$ en $H$. Quelle est la longueur de $AH$ ?",
+              "answer": "$4\\,cm$",
+              "hint": "L'axe coupe le segment en son milieu.",
+              "explanation": "Puisque $d$ est la médiatrice de $AA'$, $H$ est le milieu. Donc $AH = \\frac{AA'}{2} = 4\\,cm$."
+            },
+            {
+              "question": "Tu comptes $5$ cases entre $B$ et l'axe sur ton papier quadrillé. Combien de cases dois-tu compter de l'autre côté pour $B'$ ?",
+              "answer": "$5$ cases",
+              "hint": "Les distances de part et d'autre de l'axe sont égales.",
+              "explanation": "La symétrie axiale impose $BH = B'H$. Donc le même nombre de cases."
+            },
+            {
+              "question": "Vrai ou faux : si un seul sommet d'un polygone ne respecte pas la perpendicularité à l'axe, le polygone n'est pas symétrique.",
+              "answer": "Vrai",
+              "hint": "Tous les sommets doivent satisfaire les trois conditions.",
+              "explanation": "La symétrie doit être vérifiée pour chaque sommet. Un seul contre-exemple suffit à invalider la symétrie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

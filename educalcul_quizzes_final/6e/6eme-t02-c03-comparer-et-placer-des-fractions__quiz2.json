@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 338,
+  "_course_code": "6eme-t02-c03-comparer-et-placer-des-fractions",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Repères",
+  "title": "Quiz : Repères pour comparer et placer des fractions",
+  "questions": [
+    {
+      "text": "La fraction $\\frac{3}{8}$ est-elle plus petite, plus grande ou égale à $\\frac{1}{2}$ ?",
+      "options": [
+        "Plus petite",
+        "Plus grande",
+        "Égale",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Plus petite",
+      "explanation": "Pour comparer $\\frac{3}{8}$ à $\\frac{1}{2}$, on ramène $\\frac{1}{2}$ au dénominateur 8 : $\\frac{1}{2} = \\frac{4}{8}$. Comme $3 < 4$, on a $\\frac{3}{8} < \\frac{4}{8}$, donc $\\frac{3}{8} < \\frac{1}{2}$. La fraction est plus petite que $\\frac{1}{2}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est strictement supérieure à $1$ ?",
+      "options": [
+        "$\\frac{5}{6}$",
+        "$\\frac{7}{7}$",
+        "$\\frac{9}{8}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctAnswer": "$\\frac{9}{8}$",
+      "explanation": "Une fraction est supérieure à $1$ si son numérateur est strictement plus grand que son dénominateur. $\\frac{5}{6}$ et $\\frac{2}{3}$ sont inférieures à $1$ (numérateur < dénominateur). $\\frac{7}{7}$ est égale à $1$. Seule $\\frac{9}{8}$ a un numérateur (9) plus grand que son dénominateur (8), elle vaut $1,125$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite numérique ci-dessous, quel point correspond à la fraction $\\frac{3}{4}$ ?",
+      "options": [
+        "Point A",
+        "Point B",
+        "Point C",
+        "Point D"
+      ],
+      "correctAnswer": "Point B",
+      "explanation": "La fraction $\\frac{3}{4}$ vaut $0,75$. Sur la droite graduée de 0 à 2, le point B est placé à la valeur 0,75, ce qui correspond exactement à $\\frac{3}{4}$. Le point A (0,4) correspond à $\\frac{2}{5}$, le point C (1,2) à $\\frac{6}{5}$ et le point D (1,5) à $\\frac{3}{2}$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repérage de fractions",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 0.4,
+            "label": "A"
+          },
+          {
+            "value": 0.75,
+            "label": "B"
+          },
+          {
+            "value": 1.2,
+            "label": "C"
+          },
+          {
+            "value": 1.5,
+            "label": "D"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Classez ces fractions par ordre croissant en utilisant les repères $0$, $\\frac{1}{2}$, $1$ : $\\frac{2}{3}$, $\\frac{1}{4}$, $\\frac{5}{4}$, $\\frac{3}{2}$.",
+      "options": [
+        "$\\frac{1}{4} < \\frac{2}{3} < \\frac{5}{4} < \\frac{3}{2}$",
+        "$\\frac{1}{4} < \\frac{5}{4} < \\frac{2}{3} < \\frac{3}{2}$",
+        "$\\frac{2}{3} < \\frac{1}{4} < \\frac{3}{2} < \\frac{5}{4}$",
+        "$\\frac{3}{2} < \\frac{5}{4} < \\frac{2}{3} < \\frac{1}{4}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4} < \\frac{2}{3} < \\frac{5}{4} < \\frac{3}{2}$",
+      "explanation": "On compare chaque fraction aux repères : $\\frac{1}{4} < \\frac{1}{2}$ (c'est la plus petite). $\\frac{2}{3}$ est comprise entre $\\frac{1}{2}$ et $1$ car $\\frac{1}{2} = \\frac{3}{6} < \\frac{4}{6} = \\frac{2}{3} < 1$. $\\frac{5}{4}$ et $\\frac{3}{2}$ sont supérieures à $1$. Pour les comparer : $\\frac{5}{4} = 1,25$ et $\\frac{3}{2} = 1,5$, donc $\\frac{5}{4} < \\frac{3}{2}$. L'ordre est donc $\\frac{1}{4} < \\frac{2}{3} < \\frac{5}{4} < \\frac{3}{2}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fraction est comprise entre $\\frac{1}{2}$ et $\\frac{3}{4}$. Son dénominateur est $8$. Quel est son numérateur ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On cherche un entier $n$ tel que $\\frac{1}{2} < \\frac{n}{8} < \\frac{3}{4}$. On ramène les bornes au dénominateur 8 : $\\frac{1}{2} = \\frac{4}{8}$ et $\\frac{3}{4} = \\frac{6}{8}$. L'inégalité devient $\\frac{4}{8} < \\frac{n}{8} < \\frac{6}{8}$, soit $4 < n < 6$. L'unique entier possible est $n = 5$. La fraction est $\\frac{5}{8}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Choisir le plus proche",
+  "title": "Quiz : Arrondir à la dizaine ou à la centaine - Choisir le plus proche",
+  "questions": [
+    {
+      "text": "Quel est l'arrondi de $43$ à la dizaine la plus proche ?",
+      "options": [
+        "$30$",
+        "$40$",
+        "$50$",
+        "$43$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "Pour arrondir $43$ à la dizaine, on cherche la dizaine la plus proche. Les dizaines voisines sont $40$ et $50$. Le nombre $43$ est plus proche de $40$ (distance de $3$) que de $50$ (distance de $7$). L'option $30$ correspond à la dizaine précédente, $50$ à la dizaine suivante, et $43$ signifie qu'on n'a pas arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $86$ à la dizaine la plus proche ?",
+      "options": [
+        "$80$",
+        "$90$",
+        "$85$",
+        "$86$"
+      ],
+      "correctAnswer": "$90$",
+      "explanation": "Les dizaines voisines de $86$ sont $80$ et $90$. Comme le chiffre des unités est $6$ (supérieur ou égal à $5$), $86$ est plus proche de $90$ (distance de $4$) que de $80$ (distance de $6$). L'option $85$ n'est pas une dizaine, et $86$ est le nombre initial non arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $324$ à la centaine la plus proche ?",
+      "options": [
+        "$300$",
+        "$320$",
+        "$330$",
+        "$400$"
+      ],
+      "correctAnswer": "$300$",
+      "explanation": "On cherche la centaine la plus proche. Les centaines voisines sont $300$ et $400$. Le nombre $324$ se situe entre les deux. Comme le chiffre des dizaines est $2$ (inférieur à $5$), $324$ est plus proche de $300$ (distance de $24$) que de $400$ (distance de $76$). Les options $320$ et $330$ correspondent à des arrondis à la dizaine, pas à la centaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $678$ à la centaine la plus proche ?",
+      "options": [
+        "$600$",
+        "$670$",
+        "$680$",
+        "$700$"
+      ],
+      "correctAnswer": "$700$",
+      "explanation": "Les centaines voisines de $678$ sont $600$ et $700$. Le chiffre des dizaines est $7$ (supérieur ou égal à $5$), donc $678$ est plus proche de $700$ (distance de $22$) que de $600$ (distance de $78$). Les options $670$ et $680$ sont des arrondis à la dizaine, et $600$ est la centaine inférieure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $250$ à la centaine la plus proche ?",
+      "options": [
+        "$200$",
+        "$250$",
+        "$300$",
+        "$100$"
+      ],
+      "correctAnswer": "$300$",
+      "explanation": "Le nombre $250$ est exactement au milieu entre $200$ et $300$. La règle de l'arrondi au plus proche stipule que lorsque le nombre est exactement à mi-chemin (chiffre des dizaines égal à $5$), on arrondit à la centaine supérieure. Donc $250$ s'arrondit à $300$. L'option $200$ est la centaine inférieure, $250$ n'est pas arrondi, et $100$ est une erreur de repérage.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 414,
+  "_course_code": "5eme-t07-c05-bilan-proportionnalite-et-fonctions-5e",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Proportionnalité, pourcentages, dépendance",
+  "title": "Quiz - Approfondissement : Proportionnalité, pourcentages, dépendance",
+  "questions": [
+    {
+      "text": "Dans la proportion $3/4 = x/12$, quelle est la valeur de $x$ ?",
+      "options": [
+        "$9$",
+        "$8$",
+        "$6$",
+        "$12$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "On utilise le produit en croix : $3 \\times 12 = 4 \\times x$, soit $36 = 4x$. En divisant par $4$, on obtient $x = 9$. Les autres options correspondent à des erreurs de multiplication ou de division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est $20\\%$ de $150$ ?",
+      "options": [
+        "$30$",
+        "$25$",
+        "$35$",
+        "$20$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "Calculer $20\\%$ de $150$ revient à multiplier $150$ par $0,20$ (ou $20/100$) : $150 \\times 0,20 = 30$. Les distracteurs proviennent de mauvaises conversions du pourcentage ou d'arrondis.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $30\\%$ d'un nombre vaut $45$, quel est ce nombre ?",
+      "options": [
+        "$150$",
+        "$135$",
+        "$120$",
+        "$180$"
+      ],
+      "correctAnswer": "$150$",
+      "explanation": "On pose $0,30 \\times N = 45$. En divisant $45$ par $0,30$, on trouve $N = 150$. Les autres réponses correspondent à des divisions par $0,33$, $0,375$ ou $0,25$ au lieu de $0,30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les valeurs du tableau ci-dessous montrent-elles une relation proportionnelle ?",
+      "options": [
+        "Oui, car le rapport y/x est constant",
+        "Non, car le rapport y/x varie",
+        "Oui, car les valeurs augmentent",
+        "Non, car le tableau ne contient pas l'origine"
+      ],
+      "correctAnswer": "Oui, car le rapport y/x est constant",
+      "explanation": "Dans le tableau, pour chaque ligne le rapport $y/x$ vaut $3$ ($6/2 = 9/3 = 12/4 = 15/5 = 3$). Un rapport constant caractérise une proportionnalité. L'augmentation seule ne suffit pas, et l'absence de l'origine n'empêche pas la proportionnalité pour un tableau de valeurs.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "12"
+          ],
+          [
+            "5",
+            "15"
+          ]
+        ],
+        "caption": "Tableau de valeurs"
+      }
+    },
+    {
+      "text": "Une recette pour 4 personnes utilise $500\\,g$ de farine. Combien de farine faut-il pour 10 personnes en gardant les proportions ?",
+      "options": [
+        "$1250\\,g$",
+        "$1000\\,g$",
+        "$1500\\,g$",
+        "$2000\\,g$"
+      ],
+      "correctAnswer": "$1250\\,g$",
+      "explanation": "La quantité de farine est proportionnelle au nombre de personnes. Le coefficient de proportionnalité est $500/4 = 125\\,g$ par personne. Pour 10 personnes : $125 \\times 10 = 1250\\,g$. Les autres options correspondent à des multiplications par $2$, $3$ ou $4$ au lieu du facteur $2,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Affectations",
+  "title": "Quiz : Affectations et variables (Approfondissement)",
+  "questions": [
+    {
+      "text": "Dans un algorithme, que signifie l'instruction $x \\leftarrow 12$ ?",
+      "options": [
+        "Elle vérifie si $x$ est égal à $12$.",
+        "Elle affecte la valeur $12$ à la variable $x$.",
+        "Elle additionne $12$ à la valeur actuelle de $x$.",
+        "Elle affiche la valeur $12$ à l'écran."
+      ],
+      "correctAnswer": "Elle affecte la valeur $12$ à la variable $x$.",
+      "explanation": "La flèche d'affectation $\\leftarrow$ (souvent écrite `<-` en pseudocode) signifie que l'on stocke la valeur de droite ($12$) dans la variable de gauche ($x$). Ce n'est pas un test d'égalité (qui s'écrirait `=` ou `==`), ni une addition, ni un affichage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute les deux instructions suivantes dans l'ordre :\\n$x \\leftarrow 7$\\n$x \\leftarrow x + 4$\\nQuelle est la valeur finale de $x$ ?",
+      "options": [
+        "7",
+        "4",
+        "11",
+        "28"
+      ],
+      "correctAnswer": "11",
+      "explanation": "La première instruction donne à $x$ la valeur $7$. La seconde instruction calcule $x + 4$ avec la valeur *actuelle* de $x$ (donc $7 + 4 = 11$) et stocke ce résultat dans $x$. La valeur finale est donc $11$. L'option $28$ correspondrait à une multiplication ($7 \\times 4$), ce qui n'est pas l'opération demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme :\\n$a \\leftarrow 3$\\n$b \\leftarrow 9$\\n$a \\leftarrow b$\\n$b \\leftarrow a$\\nQuelles sont les valeurs de $a$ et $b$ à la fin ?",
+      "options": [
+        "a = 3 et b = 9",
+        "a = 9 et b = 3",
+        "a = 9 et b = 9",
+        "a = 3 et b = 3"
+      ],
+      "correctAnswer": "a = 9 et b = 9",
+      "explanation": "Au début, $a=3$ et $b=9$. L'instruction $a \\leftarrow b$ écrase la valeur de $a$ par celle de $b$ : $a$ devient $9$. L'instruction suivante $b \\leftarrow a$ copie la *nouvelle* valeur de $a$ (qui est $9$) dans $b$. Les deux variables valent donc $9$ à la fin. Pour échanger les valeurs, il faut utiliser une variable temporaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour échanger correctement les valeurs de deux variables $a$ et $b$, on utilise une variable temporaire `temp`. Parmi ces séquences, laquelle réalise bien l'échange ?",
+      "options": [
+        "temp \\leftarrow a\\na \\leftarrow b\\nb \\leftarrow temp",
+        "temp \\leftarrow b\\na \\leftarrow temp\\nb \\leftarrow a",
+        "a \\leftarrow b\\nb \\leftarrow a\\ntemp \\leftarrow a",
+        "temp \\leftarrow a\\nb \\leftarrow a\\na \\leftarrow temp"
+      ],
+      "correctAnswer": "temp \\leftarrow a\\na \\leftarrow b\\nb \\leftarrow temp",
+      "explanation": "L'algorithme classique de permutation en trois étapes est : 1. Sauvegarder $a$ dans `temp`. 2. Écraser $a$ par $b$. 3. Écraser $b$ par la sauvegarde `temp` (l'ancienne valeur de $a$). La première option correspond exactement à cette logique. Les autres options perdent l'une des valeurs initiales ou effectuent les affectations dans le désordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute la suite d'instructions :\\n$x \\leftarrow 10$\\n$y \\leftarrow 4$\\n$x \\leftarrow x - y$\\n$y \\leftarrow x + y$\\nQuelles sont les valeurs finales de $x$ et $y$ ?",
+      "options": [
+        "x = 6 et y = 4",
+        "x = 6 et y = 10",
+        "x = 10 et y = 6",
+        "x = 4 et y = 10"
+      ],
+      "correctAnswer": "x = 6 et y = 10",
+      "explanation": "Étape par étape :\\n1. $x=10$, $y=4$.\\n2. $x \\leftarrow x - y$ : $x$ devient $10 - 4 = 6$. ($y$ vaut encore $4$).\\n3. $y \\leftarrow x + y$ : on utilise le *nouveau* $x$ ($6$) et l'actuel $y$ ($4$). $y$ devient $6 + 4 = 10$.\\nFinalement $x=6$ et $y=10$. Les valeurs ont été échangées par calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

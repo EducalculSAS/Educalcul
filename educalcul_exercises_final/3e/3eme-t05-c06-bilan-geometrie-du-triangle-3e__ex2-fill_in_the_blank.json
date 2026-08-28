@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Géométrie du triangle (Pythagore, Thalès, Trigonométrie)",
+  "blocks": [
+    {
+      "title": "Théorème de Pythagore",
+      "content": "Pour utiliser le théorème de Pythagore, le triangle doit obligatoirement être {{1}}. Le côté le plus long, opposé à l'angle droit, se nomme l'{{2}}. La relation s'écrit alors : {{3}}.",
+      "blanks": [
+        "rectangle",
+        "hypoténuse",
+        "a^2 + b^2 = c^2 | c^2 = a^2 + b^2 | hypoténuse^2 = côté1^2 + côté2^2"
+      ],
+      "explanation": "Le théorème de Pythagore ne s'applique que dans un triangle rectangle. L'hypoténuse est le plus grand côté. Si on note $c$ l'hypoténuse et $a, b$ les autres côtés, l'égalité est $a^2 + b^2 = c^2$ (ou $c^2 = a^2 + b^2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Théorème de Thalès",
+      "content": "La configuration de Thalès nécessite deux droites {{1}} (les « bras » de l'X ou du V) coupées par deux droites {{2}} (les « barres » parallèles). On peut alors écrire l'égalité des rapports de longueurs : {{3}}.",
+      "blanks": [
+        "sécantes",
+        "parallèles",
+        "AB/AC = AD/AE | AD/AB = AE/AC | AB/AD = AC/AE"
+      ],
+      "explanation": "Il faut deux droites sécantes (qui se coupent) et deux droites parallèles qui les interceptent. Si le sommet commun est A, et que les points sont B, C sur une sécante et D, E sur l'autre (avec D sur AB et E sur AC), les rapports de côtés homologues sont égaux : $\\frac{AB}{AC} = \\frac{AD}{AE} = \\frac{BD}{CE}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trigonométrie dans le triangle rectangle",
+      "content": "Dans un triangle rectangle, pour utiliser le cosinus, le sinus ou la tangente par rapport à un angle aigu, il faut identifier trois côtés : l'{{1}} (le plus long), le côté {{2}} (qui touche l'angle) et le côté {{3}} (qui ne touche pas l'angle).",
+      "blanks": [
+        "hypoténuse",
+        "adjacent",
+        "opposé"
+      ],
+      "explanation": "Le vocabulaire est essentiel : l'hypoténuse est opposée à l'angle droit. Par rapport à l'angle considéré, le côté adjacent est celui qui forme l'angle avec l'hypoténuse, le côté opposé est celui qui est face à l'angle. Les formules sont : $\\cos = \\frac{\\text{adjacent}}{\\text{hypoténuse}}$, $\\sin = \\frac{\\text{opposé}}{\\text{hypoténuse}}$, $\\tan = \\frac{\\text{opposé}}{\\text{adjacent}}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

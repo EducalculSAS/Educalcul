@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 153,
+  "_course_code": "ce2-t02-c02-fractions-inferieures-egales-ou-superieures-a-1",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Représenter plusieurs unités",
+  "title": "Représenter plusieurs unités avec les fractions",
+  "questions": [
+    {
+      "text": "Regarde la figure ci-dessous. Quelle fraction représente la partie colorée ?",
+      "options": [
+        "$1/4$",
+        "$4/5$",
+        "$5/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$5/4$",
+      "explanation": "La figure montre une barre entière (4/4) et un quart de plus (1/4). Au total, il y a 5 parts sur 4, soit la fraction $5/4$. Les autres propositions correspondent à une seule part ($1/4$), à l'inverse ($4/5$) ou à un entier exact ($4/4$).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Cinq quarts représentés"
+      }
+    },
+    {
+      "text": "On partage deux disques entiers en trois parts égaux chacun. Toutes les parts sont colorées. Quelle fraction représente la totalité des parts colorées ?",
+      "options": [
+        "$2/3$",
+        "$3/2$",
+        "$6/3$",
+        "$3/6$"
+      ],
+      "correctAnswer": "$6/3$",
+      "explanation": "Chaque disque est divisé en 3 parts (tiers). Deux disques donnent $2 \\times 3 = 6$ parts au total. Comme toutes sont colorées, la fraction est $6/3$. L'option $2/3$ ne compte qu'un disque, $3/2$ inverse le numérateur et le dénominateur, et $3/6$ correspond à un demi-disque.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 6,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Deux cercles entiers divisés en tiers"
+      }
+    },
+    {
+      "text": "Sur la graduée ci-dessous, le point A est placé sur la deuxième graduation après 1. La graduée est divisée en tiers. Quelle fraction correspond au point A ?",
+      "options": [
+        "$2/3$",
+        "$5/3$",
+        "$3/5$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$5/3$",
+      "explanation": "Le point 1 correspond à $3/3$. La première graduation après 1 est $4/3$, la deuxième est $5/3$. Le point A se trouve donc sur $5/3$. L'option $2/3$ se situe avant 1, $3/5$ est une fraction mal formée pour cette graduée, et $1/3$ est la première graduation après 0.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Graduée de 0 à 2 divisée en tiers",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.6666666666666667,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Comment peut-on décomposer la fraction $9/4$ en une somme d'un nombre entier et d'une fraction inférieure à 1 ?",
+      "options": [
+        "$2 + 1/4$",
+        "$2 + 2/4$",
+        "$2 + 1/2$",
+        "$1 + 5/4$"
+      ],
+      "correctAnswer": "$2 + 1/4$",
+      "explanation": "On cherche combien de fois 4 rentre dans 9 : $9 = 2 \\times 4 + 1$. Donc $9/4 = 8/4 + 1/4 = 2 + 1/4$. L'option $2 + 2/4$ fait $10/4$, l'option $2 + 1/2$ fait $2,5$ soit $10/4$ aussi, et l'option $1 + 5/4$ laisse une fraction supérieure à 1 ($5/4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est strictement supérieure à 1 ?",
+      "options": [
+        "$3/5$",
+        "$8/8$",
+        "$9/7$",
+        "$4/6$"
+      ],
+      "correctAnswer": "$9/7$",
+      "explanation": "Une fraction est supérieure à 1 si son numérateur est plus grand que son dénominateur. $3/5$ et $4/6$ sont inférieures à 1 (numérateur plus petit). $8/8$ est égale à 1 (numérateur égal au dénominateur). Seule $9/7$ a un numérateur (9) plus grand que son dénominateur (7), elle vaut donc $1 + 2/7$, soit plus que 1.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

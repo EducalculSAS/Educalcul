@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 131,
+  "_course_code": "ce1-t07-c06-angles-droits",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Angles droits",
+  "title": "Quiz : Applications des angles droits (CE1)",
+  "questions": [
+    {
+      "text": "Observe le carré sur la grille. Combien d'angles droits ce carré possède-t-il ?",
+      "options": [
+        "$1$ angle droit",
+        "$2$ angles droits",
+        "$3$ angles droits",
+        "$4$ angles droits"
+      ],
+      "correctAnswer": "$4$ angles droits",
+      "explanation": "Un carré est un quadrilatère qui a quatre côtés de même longueur et quatre angles droits. Chaque coin du carré forme un angle droit. Sur la grille, on voit bien les quatre coins qui correspondent à quatre angles droits.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 9,
+        "caption": "Un carré sur quadrillage"
+      }
+    },
+    {
+      "text": "Avec quel instrument peut-on vérifier si un angle est un angle droit ?",
+      "options": [
+        "Un compas",
+        "Une règle graduée",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une équerre",
+      "explanation": "L'équerre est l'outil spécialement conçu pour tracer ou vérifier les angles droits. Elle a la forme d'un triangle rectangle. Le compas sert à tracer des cercles, la règle à mesurer des longueurs et le rapporteur à mesurer les angles en degrés.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Angle droit vérifié à l'équerre",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Regarde ce rectangle sur la grille. Combien d'angles droits compte-t-il ?",
+      "options": [
+        "$2$ angles droits",
+        "$3$ angles droits",
+        "$4$ angles droits",
+        "$5$ angles droits"
+      ],
+      "correctAnswer": "$4$ angles droits",
+      "explanation": "Comme le carré, le rectangle est un quadrilatère qui possède quatre angles droits. Ses quatre coins sont tous des angles droits, même si ses côtés n'ont pas tous la même longueur (deux grandes longueurs et deux petites largeurs).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 4,
+        "highlighted": 8,
+        "caption": "Un rectangle sur quadrillage"
+      }
+    },
+    {
+      "text": "L'angle affiché sur le rapporteur mesure $90^\\circ$. Comment nomme-t-on cet angle ?",
+      "options": [
+        "Un angle aigu",
+        "Un angle obtus",
+        "Un angle droit",
+        "Un angle plat"
+      ],
+      "correctAnswer": "Un angle droit",
+      "explanation": "Par définition, un angle qui mesure exactement $90^\\circ$ est un angle droit. Un angle aigu mesure moins de $90^\\circ$, un angle obtus mesure entre $90^\\circ$ et $180^\\circ$, et un angle plat mesure $180^\\circ$.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Mesure d'un angle droit au rapporteur"
+      }
+    },
+    {
+      "text": "Une feuille de papier rectangulaire a $4$ angles droits. Combien d'angles droits y a-t-il au total pour $2$ feuilles identiques ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Chaque feuille rectangulaire a $4$ angles droits. Pour deux feuilles, on additionne les angles droits de la première feuille ($4$) et ceux de la deuxième feuille ($4$). Cela fait $4 + 4 = 8$ angles droits au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

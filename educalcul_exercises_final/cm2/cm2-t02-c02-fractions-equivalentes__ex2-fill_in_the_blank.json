@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 283,
+  "_course_code": "cm2-t02-c02-fractions-equivalentes",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Simplifier visuellement",
+  "title": "Simplifier des fractions visuellement",
+  "blocks": [
+    {
+      "title": "Découvrir l'équivalence",
+      "content": "Le schéma montre une fraction. Si je regroupe les parts pour simplifier le dessin, je m'aperçois que $\\frac{2}{4}$ est équivalent à la fraction {{1}}.",
+      "correctAnswer": "1/2",
+      "blanks": [
+        "1/2|un demi"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur un disque coupé en quatre parts, si deux parts sont colorées, cela représente la moitié du disque, soit la fraction $1/2$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Représentation de 2/4"
+      }
+    },
+    {
+      "title": "Simplifier une bande",
+      "content": "En observant la bande fractionnée, je vois que $\\frac{3}{6}$ occupe la même place que la fraction {{1}}. On a donc simplifié le numérateur et le dénominateur par {{2}}.",
+      "correctAnswer": "1/2, 3",
+      "blanks": [
+        "1/2|un demi",
+        "3|trois"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $3/6$ représente la moitié de la bande. Pour passer de $3/6$ à $1/2$, on divise le numérateur et le dénominateur par $3$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 6,
+        "shape": "bar",
+        "caption": "Représentation de 3/6"
+      }
+    },
+    {
+      "title": "Identifier la fraction simplifiée",
+      "content": "Je regarde le dessin représentant la fraction $\\frac{4}{8}$. En regroupant les parts par deux, je vois que cette fraction est égale à $\\frac{2}{4}$, ce qui peut encore être simplifié pour devenir {{1}}.",
+      "correctAnswer": "1/2",
+      "blanks": [
+        "1/2|un demi"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $4/8$ représente la moitié de la figure. On peut la simplifier successivement : $4/8 = 2/4 = 1/2$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 4,
+        "denominator": 8,
+        "shape": "circle",
+        "caption": "Représentation de 4/8"
+      }
+    }
+  ]
+}

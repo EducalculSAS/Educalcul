@@ -1,0 +1,176 @@
+{
+  "_status": "done",
+  "_course_id": 141,
+  "_course_code": "ce1-t08-c06-bilan-donnees-ce1",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Bilan - Données CE1",
+  "title": "Quiz Bilan Données CE1",
+  "questions": [
+    {
+      "text": "Dans le tableau ci-dessous, combien d'élèves ont choisi la couleur bleue ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Le tableau indique que $8$ élèves ont choisi la couleur bleue, alors que $5$ ont choisi le rouge, $3$ le vert et $4$ le jaune.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "$5$"
+          ],
+          [
+            "Bleu",
+            "$8$"
+          ],
+          [
+            "Vert",
+            "$3$"
+          ],
+          [
+            "Jaune",
+            "$4$"
+          ]
+        ],
+        "caption": "Tableau des couleurs préférées"
+      }
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous montre le nombre de fruits mangés par les enfants. Quel fruit a été mangé le plus grand nombre de fois ?",
+      "options": [
+        "Pomme",
+        "Banane",
+        "Orange",
+        "Fraise"
+      ],
+      "correctAnswer": "Pomme",
+      "explanation": "La barre la plus haute correspond à la pomme avec $6$ fruits, devant l'orange ($5$), la banane ($4$) et la fraise ($3$).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits mangés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Banane",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Orange",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Fraise",
+            "value": 3,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le camembert ci-dessous représente les jeux préférés des élèves. Combien de parts correspondent au jeu « Cache-cache » ?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$2$",
+        "$1$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le camembert montre que le jeu « Cache-cache » occupe $4$ parts, le « Chat perché » $3$ parts, la « Marelle » $2$ parts et le « Ballon » $1$ part.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Jeux préférés",
+        "slices": [
+          {
+            "label": "Cache-cache",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat perché",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Marelle",
+            "value": 2,
+            "tone": "red"
+          },
+          {
+            "label": "Ballon",
+            "value": 1,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans la classe, $12$ élèves ont un chien, $8$ ont un chat et $5$ ont un oiseau. Quel animal est le plus possédé ?",
+      "options": [
+        "Chien",
+        "Chat",
+        "Oiseau",
+        "Égalité"
+      ],
+      "correctAnswer": "Chien",
+      "explanation": "Le chien est possédé par $12$ élèves, ce qui est plus que le chat ($8$) et l'oiseau ($5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant récapitule les animaux de compagnie des élèves. Combien d'élèves ont un animal de compagnie au total ?",
+      "options": [
+        "$28$",
+        "$25$",
+        "$30$",
+        "$27$"
+      ],
+      "correctAnswer": "$28$",
+      "explanation": "En additionnant les nombres : $12 + 8 + 5 + 3 = 28$ élèves ont un animal.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "$12$"
+          ],
+          [
+            "Chat",
+            "$8$"
+          ],
+          [
+            "Oiseau",
+            "$5$"
+          ],
+          [
+            "Lapin",
+            "$3$"
+          ]
+        ],
+        "caption": "Animaux de compagnie"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 93,
+  "_course_code": "ce1-t03-c06-comprendre-la-multiplication",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Groupes égaux",
+  "title": "Approfondissement : Groupes égaux - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul du total pour groupes égaux",
+      "content": "Écris un algorithme qui calcule le total d'objets si tu as $4$ groupes de $3$ objets chacun.",
+      "correctAnswer": "Algorithme :\\n1. Définir nombre_de_groupes = $4$\\n2. Définir objets_par_groupe = $3$\\n3. Calculer total = nombre_de_groupes × objets_par_groupe\\n4. Afficher total\\nRésultat : $12$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie le nombre de groupes par le nombre d'objets dans chaque groupe. $4 \\times 3 = 12$, donc il y a $12$ objets au total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme paramétré pour groupes égaux",
+      "content": "Écris un algorithme qui, étant donné le nombre de groupes et le nombre d'objets par groupe, affiche le total d'objets.",
+      "correctAnswer": "Algorithme :\\n1. Lire nombre_de_groupes\\n2. Lire objets_par_groupe\\n3. Calculer total = nombre_de_groupes × objets_par_groupe\\n4. Afficher total\\nExemple : si nombre_de_groupes = $5$ et objets_par_groupe = $2$, total = $10$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise deux entrées. La multiplication donne le total. Pour $5$ groupes de $2$, $5 \\times 2 = 10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec boucle pour additionner les groupes",
+      "content": "Écris un algorithme qui utilise une boucle pour additionner les objets de chaque groupe (par exemple $5$ groupes de $2$ objets) et affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Définir nombre_de_groupes = $5$\\n2. Définir objets_par_groupe = $2$\\n3. Initialiser total = $0$\\n4. Pour i de $1$ à nombre_de_groupes faire\\n     total = total + objets_par_groupe\\n5. Afficher total\\nRésultat : $10$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle répète l'addition objets_par_groupe fois le nombre de groupes. $5$ fois $2$ donne $10$, ce qui correspond à $5 \\times 2 = 10$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Tableau",
+  "title": "Lecture et complétion de tableaux de valeurs",
+  "blocks": [
+    {
+      "title": "Lecture directe d'un tableau",
+      "content": "Observe le tableau ci-dessous. La valeur de $f(1)$ est ${{1}}$ et la valeur de $f(3)$ est ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le tableau, on cherche la ligne où $x = 1$ : la valeur correspondante de $f(x)$ est $5$. Pour $x = 3$, la valeur correspondante est $9$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "$x$",
+          "$f(x)$"
+        ],
+        "rows": [
+          [
+            "$0$",
+            "$3$"
+          ],
+          [
+            "$1$",
+            "$5$"
+          ],
+          [
+            "$2$",
+            "$7$"
+          ],
+          [
+            "$3$",
+            "$9$"
+          ]
+        ],
+        "caption": "Tableau de valeurs de la fonction $f$"
+      }
+    },
+    {
+      "title": "Calcul de valeurs à partir de l'expression",
+      "content": "Un tableau de valeurs représente une fonction $f$ telle que $f(x) = 3x - 2$. Complète le tableau : pour $x = 2$, $f(x) =$ ${{1}}$ ; pour $x = 5$, $f(x) =$ ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "13"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On remplace $x$ par $2$ dans l'expression : $f(2) = 3 \\times 2 - 2 = 6 - 2 = 4$. Pour $x = 5$ : $f(5) = 3 \\times 5 - 2 = 15 - 2 = 13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déduction de la nature de la fonction",
+      "content": "Le tableau suivant donne des valeurs d'une fonction $g$ :\\n$x$ | $-1$ | $0$ | $2$ | $4$\\n$g(x)$ | $4$ | $2$ | $-2$ | ${{1}}$\\nEn observant la régularité, on peut dire que $g$ est une fonction ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "-6",
+        "affine"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les variations sont régulières : quand $x$ augmente de $2$ (de $0$ à $2$), $g(x)$ diminue de $4$ (de $2$ à $-2$). Le coefficient directeur est $-2$. La fonction est donc affine. Pour $x = 4$, $g(4) = -2 \\times 4 + 2 = -6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

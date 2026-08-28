@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 254,
+  "_course_code": "cm1-t06-c07-solides-et-patrons",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Décrire",
+  "title": "Algorithmes et description de solides",
+  "blocks": [
+    {
+      "title": "Patron d'un cube",
+      "content": "Écris un algorithme (en langage naturel ou pseudo-code) qui décrit les étapes pour construire le patron d'un cube de côté $a$ cm.",
+      "correctAnswer": "1. Dessiner un carré de côté $a$ cm (face avant).\\n2. Attacher un carré de même dimension à chacun des quatre côtés du premier carré (faces latérales).\\n3. Attacher un dernier carré à l'un des carrés latéraux (face arrière).\\n4. Vérifier que les six carrés forment bien un patron de cube.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le patron d'un cube est composé de six carrés identiques. L'algorithme détaille la construction pas à pas : on commence par une face centrale, on ajoute les quatre faces adjacentes, puis la face opposée. Chaque étape est claire et ordonnée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Surface d'un pavé droit",
+      "content": "Écris un algorithme (en pseudo-code) qui calcule la surface totale d'un pavé droit de longueur $L$, largeur $l$ et hauteur $h$.",
+      "correctAnswer": "1. Lire L, l, h.\\n2. Calculer aire_face1 = L * l.\\n3. Calculer aire_face2 = L * h.\\n4. Calculer aire_face3 = l * h.\\n5. Calculer surface_totale = 2 * (aire_face1 + aire_face2 + aire_face3).\\n6. Afficher surface_totale.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La surface totale d'un pavé droit est la somme des aires de ses six faces. Les faces sont par paires égales : deux faces $L \\times l$, deux faces $L \\times h$, deux faces $l \\times h$. L'algorithme calcule chaque aire distincte, les additionne et multiplie par 2.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction cube en Python",
+      "content": "Écris un algorithme sous forme de fonction Python qui, étant donné le côté $c$ d'un cube, renvoie son volume et sa surface totale.",
+      "correctAnswer": "def cube_proprietes(c):\\n    volume = c ** 3\\n    surface = 6 * c ** 2\\n    return volume, surface",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'un cube de côté $c$ est $c^3$. Sa surface totale est la somme des aires de ses six faces, soit $6 \\times c^2$. La fonction Python prend $c$ en paramètre, calcule ces deux grandeurs et les retourne sous forme de tuple.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

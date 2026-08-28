@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Retirer des parts identiques",
+  "title": "Retirer des parts identiques : soustraction de fractions",
+  "questions": [
+    {
+      "text": "Regarde la figure. Quelle soustraction correspond à la partie colorée qui reste ?",
+      "options": [
+        "$5/8 - 2/8 = 3/8$",
+        "$5/8 - 3/8 = 2/8$",
+        "$8/8 - 3/8 = 5/8$",
+        "$5/8 - 1/8 = 4/8$"
+      ],
+      "correctAnswer": "$5/8 - 2/8 = 3/8$",
+      "explanation": "La figure montre un tout divisé en 8 parts égales (huitièmes). Au départ, 5 parts sont colorées. On en retire 2 (les parts non colorées ou barrées). Il reste 3 parts colorées sur 8. L'opération est donc $5/8 - 2/8 = 3/8$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 8,
+        "shape": "bar",
+        "caption": "5 parts sur 8 colorées, 2 parts retirées"
+      }
+    },
+    {
+      "text": "Calcule la soustraction suivante : $7/10 - 3/10 = ?$",
+      "options": [
+        "$4/10$",
+        "$10/10$",
+        "$4/0$",
+        "$3/7$"
+      ],
+      "correctAnswer": "$4/10$",
+      "explanation": "Pour soustraire deux fractions de même dénominateur, on garde le dénominateur (10) et on soustrait les numérateurs : $7 - 3 = 4$. Le résultat est $4/10$. L'option $10/10$ correspond à une addition. $4/0$ est impossible (division par zéro). $3/7$ inverse les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a mangé $2/6$ d'une tablette de chocolat. Il en reste $4/6$. Quelle fraction représente la tablette entière avant d'être mangée ?",
+      "options": [
+        "$6/6$",
+        "$2/6$",
+        "$4/6$",
+        "$8/6$"
+      ],
+      "correctAnswer": "$6/6$",
+      "explanation": "La tablette entière correspond à la somme de la partie mangée ($2/6$) et de la partie restante ($4/6$). On fait l'addition : $2/6 + 4/6 = 6/6$. C'est l'unité, le tout. $6/6$ vaut 1 tablette entière.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète le trou : $9/12 - \\dots = 5/12$",
+      "options": [
+        "$4/12$",
+        "$5/12$",
+        "$14/12$",
+        "$4/0$"
+      ],
+      "correctAnswer": "$4/12$",
+      "explanation": "Pour trouver le numérateur manquant, on fait l'opération inverse : on soustrait le résultat du nombre de départ. $9 - 5 = 4$. Le dénominateur ne change pas (12). La fraction retirée est donc $4/12$. On vérifie : $9/12 - 4/12 = 5/12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $8/10$ d'un litre de jus. Il verse $3/10$ de litre dans un verre et $2/10$ de litre dans un bol. Quelle fraction de litre lui reste-t-il ?",
+      "options": [
+        "$3/10$",
+        "$5/10$",
+        "$13/10$",
+        "$7/10$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "Paul retire deux fois des dixièmes. On peut additionner ce qu'il a versé : $3/10 + 2/10 = 5/10$. Puis soustraire du total : $8/10 - 5/10 = 3/10$. Ou soustraire l'un après l'autre : $8/10 - 3/10 = 5/10$, puis $5/10 - 2/10 = 3/10$. Il reste $3/10$ de litre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

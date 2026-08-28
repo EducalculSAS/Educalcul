@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 275,
+  "_course_code": "cm2-t01-c01-lire-et-ecrire-de-grands-nombres",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Classes de numération",
+  "title": "Les classes de numération",
+  "questions": [
+    {
+      "text": "Dans le nombre $45\\ 678$, à quelle classe appartient le chiffre $4$ ?",
+      "options": [
+        "La classe des unités simples",
+        "La classe des mille",
+        "La classe des millions",
+        "La classe des dizaines"
+      ],
+      "correctAnswer": "La classe des mille",
+      "explanation": "Le nombre $45\\ 678$ se compose de deux classes. Le $678$ appartient à la classe des unités simples et le $45$ appartient à la classe des mille. Le chiffre $4$ occupe la position des dizaines de mille, il fait donc partie de la classe des mille.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle t on l ensemble composé des unités, des dizaines et des centaines ?",
+      "options": [
+        "La classe des mille",
+        "Le groupe des nombres",
+        "La classe des unités simples",
+        "La famille des centaines"
+      ],
+      "correctAnswer": "La classe des unités simples",
+      "explanation": "En numération, on regroupe les chiffres par trois pour faciliter la lecture. Le premier groupe, en partant de la droite, s'appelle la classe des unités simples et comprend les unités, les dizaines et les centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $12\\ 345\\ 678$, quel chiffre se trouve à la position des unités de millions ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$8$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Décomposons le nombre par classes : la classe des unités simples est $678$, la classe des mille est $345$ et la classe des millions est $12$. Dans la classe des millions, le chiffre des unités de millions est le chiffre le plus à droite de cette classe, c est donc le $2$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 12345678,
+        "caption": "Tableau de numération"
+      }
+    },
+    {
+      "text": "Quel nombre correspond à l écriture : deux millions trois cent mille cinquante ?",
+      "options": [
+        "$2\\ 300\\ 050$",
+        "$2\\ 300\\ 500$",
+        "$200\\ 300\\ 050$",
+        "$2\\ 003\\ 050$"
+      ],
+      "correctAnswer": "$2\\ 300\\ 050$",
+      "explanation": "Il faut placer les chiffres dans les bonnes classes : deux millions signifie $2$ dans la classe des millions, trois cent mille signifie $300$ dans la classe des mille, et cinquante signifie $050$ dans la classe des unités simples. On obtient donc $2\\ 300\\ 050$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on ajoute une unité de million au nombre $9\\ 850\\ 000$, quel résultat obtient on ?",
+      "options": [
+        "$9\\ 850\\ 001$",
+        "$10\\ 850\\ 000$",
+        "$9\\ 851\\ 000$",
+        "$10\\ 000\\ 000$"
+      ],
+      "correctAnswer": "$10\\ 850\\ 000$",
+      "explanation": "Ajouter une unité de million revient à ajouter $1\\ 000\\ 000$. Le calcul est $9\\ 850\\ 000 + 1\\ 000\\ 000 = 10\\ 850\\ 000$. On passe alors à une nouvelle classe, car on a maintenant dix millions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

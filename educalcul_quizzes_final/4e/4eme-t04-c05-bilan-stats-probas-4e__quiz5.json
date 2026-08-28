@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Indicateurs et hasard",
+  "title": "Approfondissement : Indicateurs et hasard",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente les notes sur 10 obtenues par un groupe d'élèves à un contrôle. Quelle est la moyenne exacte de cette série statistique ?",
+      "options": [
+        "5",
+        "4,57...",
+        "32",
+        "4"
+      ],
+      "correctAnswer": "4,57...",
+      "explanation": "On lit les effectifs sur le diagramme : 1 élève a 2, 2 élèves ont 4, 3 élèves ont 5, 1 élève a 7. Le total des effectifs est $1+2+3+1=7$. La somme des valeurs est $(1\\times2)+(2\\times4)+(3\\times5)+(1\\times7)=2+8+15+7=32$. La moyenne est le quotient de la somme par l'effectif total : $32/7 \\approx 4,57$. L'option 5 est la médiane, 32 est la somme totale et 4 est la mode.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs des notes sur 10",
+        "bars": [
+          {
+            "label": "2",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "4",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "7",
+            "value": 1,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une série statistique contient les valeurs : $10 ; 12 ; 13 ; 14 ; 50$. La valeur 50 est une valeur aberrante (très éloignée des autres). Quel indicateur de position est le plus représentatif du centre de cette série ?",
+      "options": [
+        "La moyenne",
+        "La médiane",
+        "L'étendue",
+        "Le mode"
+      ],
+      "correctAnswer": "La médiane",
+      "explanation": "La moyenne est sensible aux valeurs extrêmes : $(10+12+13+14+50)/5 = 99/5 = 19,8$, ce qui ne reflète pas le centre du groupe principal des valeurs. La médiane est la valeur centrale quand les données sont triées : ici $13$. Elle n'est pas influencée par la valeur 50. L'étendue mesure la dispersion ($50-10=40$) et le mode n'existe pas ici (toutes valeurs différentes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de 1 à 6, parfaitement équilibré. Quelle est la probabilité d'obtenir un nombre pair strictement supérieur à 2 ?",
+      "options": [
+        "$1/3$",
+        "$1/2$",
+        "$1/6$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "Les issues possibles sont $\\{1,2,3,4,5,6\\}$, soit 6 issues équiprobables. Les nombres pairs strictement supérieurs à 2 sont 4 et 6. Il y a donc 2 issues favorables. La probabilité est le quotient du nombre d'issues favorables sur le nombre total d'issues : $2/6 = 1/3$. L'option $1/2$ correspond à 'nombre pair' (2, 4, 6), $1/6$ à un seul résultat précis, $2/3$ à 4 issues favorables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une urne, il y a 3 boules rouges, 5 boules vertes et 2 boules bleues. On prélève une boule au hasard. Quelle est la probabilité de ne pas tirer une boule verte ?",
+      "options": [
+        "$1/2$",
+        "$1/5$",
+        "$3/10$",
+        "$1/10$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "L'urne contient au total $3+5+2=10$ boules. L'événement 'ne pas tirer une boule verte' signifie tirer une boule rouge ou bleue. Il y a $3+2=5$ boules favorables. La probabilité est $5/10 = 1/2$. On peut aussi calculer la probabilité de l'événement contraire : $P(\\text{verte}) = 5/10 = 1/2$, donc $P(\\text{pas verte}) = 1 - 1/2 = 1/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce de monnaie équilibrée 100 fois et on obtient 60 faces. On décide de continuer l'expérience jusqu'à 10 000 lancers. Selon la loi des grands nombres, que peut-on prévoir pour la fréquence d'obtention de 'face' ?",
+      "options": [
+        "Elle se rapprochera de 0,5",
+        "Elle restera égale à 0,6",
+        "Elle deviendra égale à 1",
+        "Elle deviendra égale à 0"
+      ],
+      "correctAnswer": "Elle se rapprochera de 0,5",
+      "explanation": "La probabilité théorique d'obtenir 'face' avec une pièce équilibrée est $1/2 = 0,5$. La loi des grands nombres stipule que lorsque le nombre d'essais augmente beaucoup, la fréquence observée d'un événement tend à se rapprocher de sa probabilité théorique. La fréquence de 0,6 observée sur 100 lancers est due au hasard (fluctuation d'échantillon). En augmentant le nombre de lancers, cette fréquence va converger vers 0,5, sans pour autant devenir exactement 0,5 à coup sûr.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

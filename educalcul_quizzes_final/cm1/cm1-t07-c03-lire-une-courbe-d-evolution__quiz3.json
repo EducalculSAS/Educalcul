@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Valeurs",
+  "title": "Lire les valeurs d'une courbe d'évolution",
+  "questions": [
+    {
+      "text": "Sur un graphique, pour trouver la valeur d'une donnée à un moment précis, on part du point de la courbe et on descend verticalement vers quel axe ?",
+      "options": [
+        "L'axe des ordonnées",
+        "L'axe des abscisses",
+        "L'axe des titres",
+        "La légende"
+      ],
+      "correctAnswer": "L'axe des abscisses",
+      "explanation": "L'axe horizontal, appelé axe des abscisses, indique généralement le temps ou les moments. Pour savoir à quel moment correspond un point, on descend verticalement vers cet axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour lire la valeur exacte d'un point sur une courbe, on trace une ligne imaginaire horizontale depuis le point vers l'axe vertical. Comment appelle t on cet axe ?",
+      "options": [
+        "L'axe des abscisses",
+        "L'axe des titres",
+        "L'axe des ordonnées",
+        "L'axe du temps"
+      ],
+      "correctAnswer": "L'axe des ordonnées",
+      "explanation": "L'axe vertical, appelé axe des ordonnées, permet de lire la valeur numérique de la donnée mesurée (comme la température ou la taille).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'axe des ordonnées a une graduation tous les $5$ degrés et qu'un point se trouve exactement à mi chemin entre $10$ et $15$, quelle est la valeur approximative ?",
+      "options": [
+        "$11$ degrés",
+        "$12,5$ degrés",
+        "$15$ degrés",
+        "$20$ degrés"
+      ],
+      "correctAnswer": "$12,5$ degrés",
+      "explanation": "Le milieu entre $10$ et $15$ se calcule en faisant $(10 + 15) \\div 2 = 12,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le graphique suivant représentant la température sur une journée. Quelle est la valeur de la température à $12$ heures ?",
+      "options": [
+        "$15$ degrés",
+        "$18$ degrés",
+        "$20$ degrés",
+        "$22$ degrés"
+      ],
+      "correctAnswer": "$20$ degrés",
+      "explanation": "En partant du point situé au dessus de $12$ sur l'axe horizontal et en allant vers l'axe vertical, on lit la valeur $20$.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 30,
+        "points": [
+          {
+            "value": 20,
+            "label": "12h"
+          }
+        ],
+        "caption": "Température à midi"
+      }
+    },
+    {
+      "text": "Une courbe montre l'évolution du poids d'un chiot. Au mois de janvier, le poids est de $2$ kg. Au mois de mars, le poids est de $5$ kg. Quelle est l'augmentation de valeur entre janvier et mars ?",
+      "options": [
+        "$2$ kg",
+        "$3$ kg",
+        "$5$ kg",
+        "$7$ kg"
+      ],
+      "correctAnswer": "$3$ kg",
+      "explanation": "Pour trouver l'augmentation, on calcule la différence entre la valeur finale et la valeur initiale : $5 - 2 = 3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

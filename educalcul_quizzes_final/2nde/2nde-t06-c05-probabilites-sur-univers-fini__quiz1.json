@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Événements",
+  "title": "Quiz : Événements (Probabilités sur univers fini)",
+  "questions": [
+    {
+      "text": "Un événement est un sous-ensemble de l'univers Ω.",
+      "options": [
+        "Un événement est un élément de Ω.",
+        "Un événement est un sous-ensemble de Ω.",
+        "Un événement est une partie de Ω contenant tous les éléments.",
+        "Un événement est une probabilité."
+      ],
+      "correctAnswer": "Un événement est un sous-ensemble de Ω.",
+      "explanation": "Un événement est défini comme tout sous-ensemble de l'univers Ω, y compris l'ensemble vide et Ω lui-même. Les autres propositions confondent élément, partie totale ou probabilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si A et B sont deux événements, l'événement $A \\cup B$ correspond à ...",
+      "options": [
+        "Les éléments appartenant à A et à B simultanément.",
+        "Les éléments appartenant à A ou à B (ou aux deux).",
+        "Les éléments n'appartenant ni à A ni à B.",
+        "Les éléments appartenant à A mais pas à B."
+      ],
+      "correctAnswer": "Les éléments appartenant à A ou à B (ou aux deux).",
+      "explanation": "L'union $A \\cup B$ rassemble tous les éléments qui sont dans A ou dans B (ou dans les deux). L'intersection correspond à la première option, le complémentaire à la troisième, la différence à la quatrième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'événement $A \\cap B$ représente ...",
+      "options": [
+        "Les éléments appartenant à A ou à B.",
+        "Les éléments n'appartenant à aucun des deux.",
+        "Les éléments appartenant à la fois à A et à B.",
+        "Les éléments appartenant à A seulement."
+      ],
+      "correctAnswer": "Les éléments appartenant à la fois à A et à B.",
+      "explanation": "L'intersection $A \\cap B$ ne contient que les éléments communs à A et B. La première option décrit l'union, la deuxième le complémentaire de l'union, la quatrième la différence $A \\setminus B$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le complémentaire de l'événement A dans Ω est noté $\\overline{A}$ et correspond à ...",
+      "options": [
+        "Les éléments de Ω qui ne sont pas dans A.",
+        "Les éléments de A qui ne sont pas dans Ω.",
+        "L'ensemble vide.",
+        "L'univers Ω."
+      ],
+      "correctAnswer": "Les éléments de Ω qui ne sont pas dans A.",
+      "explanation": "Par définition, $\\overline{A} = \\{ \\omega \\in \\Omega \\mid \\omega \\notin A \\}$. Les autres options décrivent des ensembles différents : la seconde est vide car A ⊂ Ω, la troisième est un cas particulier, la quatrième est Ω lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux événements A et B sont dits incompatibles (ou mutuellement exclusifs) si ...",
+      "options": [
+        "$A \\cup B = \\emptyset$.",
+        "$A \\cap B = \\emptyset$.",
+        "$P(A) = P(B)$.",
+        "$A \\subset B$."
+      ],
+      "correctAnswer": "$A \\cap B = \\emptyset$.",
+      "explanation": "Deux événements sont incompatibles s'ils ne peuvent pas se réaliser simultanément, c'est-à-dire que leur intersection est vide. L'union vide impliquerait que les deux sont vides, l'égalité des probabilités n'est pas une condition d'incompatibilité, et l'inclusion n'implique pas l'incompatibilité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.333326+00:00",
+  "id": 589,
+  "code": "1ere-generale-maths-t04-c01",
+  "title": "Fonction polynôme du second degré",
+  "description": "Cours structuré Educalcul : Fonction polynôme du second degré.",
+  "subject": "Second degré et fonctions",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Second degré et fonctions",
+    "titre_du_cours": "Fonction polynôme du second degré",
+    "objectif_global": "Fonction polynôme du second degré",
+    "mini_lecons_imposees": [
+      "Forme développée.",
+      "Parabole.",
+      "Coefficient principal."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Second degré et fonctions",
+      "lessons": [
+        {
+          "title": "Forme développée.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Forme développée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur les fonctions polynômes du second degré. Nous allons découvrir ensemble comment une telle fonction se présente quand on l'écrit sans parenthèses, c'est-à-dire sous sa forme développée. C'est une écriture très commode pour repérer rapidement les trois nombres qui la caractérisent : le coefficient qui accompagne $x^2$, celui qui accompagne $x$ et le terme qui ne contient pas de $x$. Prends le temps de bien visualiser chaque pièce, car elle sera la base de tout ce que nous ferons par la suite."
+            },
+            {
+              "type": "definition",
+              "term": "forme développée",
+              "definition": "Une fonction polynôme du second degré s'écrit sous la forme développée $f(x)=ax^2+bx+c$ où $a$, $b$ et $c$ sont des nombres réels et $a \\neq 0$.",
+              "example": "Par exemple $f(x)=2x^2-3x+5$ est sous forme développée avec $a=2$, $b=-3$, $c=5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'expression $ax^2+bx+c$, le nombre $a$ s'appelle le coefficient principal. Il décide de l'ouverture de la parabole et de son étroitesse. Le nombre $b$ est le coefficient du terme en $x$ ; il influence la position horizontale du sommet. Enfin, $c$ est le terme constant : c'est la valeur de la fonction quand $x=0$, autrement dit le point où la courbe coupe l'axe des ordonnées. Pour t'en convaincre, prends $f(x)=4x^2+7x-2$ : ici $a=4$, $b=7$ et $c=-2$. Essaie de lire toi-même les coefficients de $g(x)=-x^2+0,5x+3$ ; tu trouveras $a=-1$, $b=0,5$ et $c=3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nombre qui multiplie $x^2$ : c'est $a$. Ensuite, le nombre qui multiplie $x$ est $b$. Enfin, le nombre sans $x$ est $c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer $x$ par la valeur choisie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu veux calculer $f(2)$, écris $2$ à la place de chaque $x$ dans l'expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer les calculs dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule d'abord le carré, puis la multiplication, puis l'addition pour obtenir le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire les coefficients, voyons comment passer d'une écriture factorisée à la forme développée. C'est une compétence utile quand on reçoit une fonction sous la forme $(x-3)(x+2)$ et qu'on veut identifier $a$, $b$, $c$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour développer $(x-3)(x+2)$, on applique la distributivité : on multiplie chaque terme de la première parenthèse par chaque terme de la seconde. Cela donne $x \\times x + x \\times 2 - 3 \\times x - 3 \\times 2$, soit $x^2 + 2x - 3x - 6$. En regroupant les termes en $x$, on obtient $x^2 - x - 6$. Donc $a=1$, $b=-1$, $c=-6$. Essaie de faire le même travail avec $(2x+1)(x-4)$ : tu devrais trouver $2x^2 -7x -4$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x-3)(x+2)=x^2-x-6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le terme constant $c$ a une signification graphique immédiate : c'est l'ordonnée du point d'intersection de la parabole avec l'axe des ordonnées. Si tu changes seulement $c$, la parabole monte ou descend sans changer de forme. Par exemple, $f(x)=x^2+2x+1$ coupe l'axe des ordonnées en $y=1$, alors que $g(x)=x^2+2x-3$ le coupe en $y=-3$. Cette observation te sera précieuse pour tracer rapidement une courbe."
+            },
+            {
+              "type": "definition",
+              "term": "terme constant",
+              "definition": "Dans $f(x)=ax^2+bx+c$, le terme constant est $c$. C'est la valeur de $f(0)$ et l'ordonnée du point de rencontre avec l'axe des ordonnées.",
+              "example": "Pour $h(x)=5x^2-2x+7$, le terme constant est $7$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les coefficients $a$, $b$, $c$ de la fonction $f(x)=3x^2-4x+9$.",
+              "answer": "$a=3$, $b=-4$, $c=9$",
+              "hint": "Regarde le nombre devant $x^2$, celui devant $x$ et le nombre seul.",
+              "explanation": "Dans $3x^2-4x+9$, le coefficient de $x^2$ est $3$, celui de $x$ est $-4$ et le terme sans $x$ est $9$."
+            },
+            {
+              "question": "Développe $(2x+1)(x-4)$ et écris le résultat sous la forme $ax^2+bx+c$.",
+              "answer": "$2x^2-7x-4$",
+              "hint": "Utilise la distributivité : multiplie chaque terme de la première parenthèse par chaque terme de la seconde.",
+              "explanation": "On obtient $2x \\times x + 2x \\times (-4) + 1 \\times x + 1 \\times (-4) = 2x^2 -8x + x -4 = 2x^2 -7x -4$."
+            },
+            {
+              "question": "Quelle est l'ordonnée du point d'intersection avec l'axe des ordonnées pour $f(x)= -2x^2+5x-1$ ?",
+              "answer": "$-1$",
+              "hint": "Évalue $f(0)$.",
+              "explanation": "En remplaçant $x$ par $0$, on obtient $f(0) = -2 \\times 0^2 + 5 \\times 0 -1 = -1$."
+            }
+          ]
+        },
+        {
+          "title": "Parabole.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parabole"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons explorer la courbe qui représente toute fonction polynôme du second degré : la parabole. Tu verras que sa forme en U (ou en U renversé) est entièrement déterminée par les trois coefficients que nous avons appris à lire. Nous allons découvrir comment trouver son sommet, son axe de symétrie et comment le signe de $a$ décide si elle ouvre vers le haut ou vers le bas. Prends le temps d'imaginer la courbe qui se dessine sous tes yeux."
+            },
+            {
+              "type": "definition",
+              "term": "parabole",
+              "definition": "La courbe représentative d'une fonction polynôme du second degré $f(x)=ax^2+bx+c$ est une parabole. Elle possède un axe de symétrie vertical et un sommet qui est son point le plus bas (si $a>0$) ou le plus haut (si $a<0$).",
+              "example": "La parabole de $f(x)=x^2-4x+3$ a son sommet en $(2,-1)$ et son axe de symétrie est la droite $x=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le sommet de la parabole est le point où la pente change de signe. Ses coordonnées s'obtiennent facilement : l'abscisse du sommet est $x_s = -\\frac{b}{2a}$ et l'ordonnée est $y_s = f(x_s)$. Par exemple, pour $f(x)=2x^2-8x+5$, on a $a=2$, $b=-8$. Donc $x_s = -(-8)/(2 \\times 2) = 8/4 = 2$. En calculant $f(2)$, on trouve $y_s = 2 \\times 4 - 16 + 5 = -3$. Le sommet est donc $(2,-3)$. L'axe de symétrie est la droite verticale $x=2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer l'abscisse du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $x_s = -b/(2a)$. Attention aux signes de $a$ et $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'ordonnée du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x$ par $x_s$ dans l'expression de $f(x)$ et simplifie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer l'axe de symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la droite verticale $x = x_s$ ; la parabole est symétrique par rapport à cette droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4x+3",
+              "xmin": -2,
+              "xmax": 6,
+              "caption": "Parabole de $f(x)=x^2-4x+3$ avec sommet en $(2,-1)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe du coefficient principal $a$ dicte l'orientation de la parabole. Si $a$ est positif, les bras de la parabole s'ouvrent vers le haut et le sommet est le point le plus bas. Si $a$ est négatif, ils s'ouvrent vers le bas et le sommet devient le point le plus haut. Essaie d'imaginer $f(x)=-x^2+2x+3$ : comme $a=-1<0$, la parabole est renversée. Son sommet se trouve à $x_s = -2/(2 \\times -1) = 1$ et $f(1)=4$. Le sommet $(1,4)$ est donc un maximum."
+            },
+            {
+              "type": "display_math",
+              "latex": "x_s = -\\frac{b}{2a}, \\quad y_s = f(x_s)"
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "-x^2+2x+3",
+              "x0": 1,
+              "xMin": -3,
+              "xMax": 5,
+              "caption": "Tangente horizontale au sommet de la parabole $f(x)=-x^2+2x+3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce à l'axe de symétrie, tu peux trouver d'autres points de la parabole sans tout recalculer. Si tu connais un point $(x_0, y_0)$ d'un côté de l'axe, le point symétrique de l'autre côté a pour abscisse $2x_s - x_0$ et la même ordonnée. Par exemple, sur $f(x)=x^2-4x+3$ avec $x_s=2$, le point $(0,3)$ a son symétrique en $(4,3)$. Cette astuce accélère le tracé à la main."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine les coordonnées du sommet de la parabole $f(x)=3x^2+6x-2$.",
+              "answer": "Sommet $(-1, -5)$",
+              "hint": "Calcule $x_s = -b/(2a)$ puis $f(x_s)$.",
+              "explanation": "Ici $a=3$, $b=6$. $x_s = -6/(2 \\times 3) = -1$. $f(-1) = 3 \\times 1 -6 -2 = -5$."
+            },
+            {
+              "question": "Pour la fonction $g(x)=-2x^2+4x+1$, la parabole ouvre-t-elle vers le haut ou vers le bas ? Donne l'abscisse de son sommet.",
+              "answer": "Vers le bas, $x_s = 1$",
+              "hint": "Regarde le signe de $a$ et utilise $x_s = -b/(2a)$.",
+              "explanation": "$a=-2<0$ donc ouverture vers le bas. $x_s = -4/(2 \\times -2) = 1$."
+            },
+            {
+              "question": "Sur la parabole $h(x)=x^2-6x+8$, le point $(1,3)$ appartient à la courbe. Quel est le point symétrique par rapport à l'axe de symétrie ?",
+              "answer": "Point symétrique $(5,3)$",
+              "hint": "Trouve $x_s$ puis utilise $2x_s - x_0$.",
+              "explanation": "$x_s = -(-6)/(2 \\times 1) = 3$. L'abscisse symétrique de $1$ est $2 \\times 3 - 1 = 5$. L'ordonnée reste $3$."
+            }
+          ]
+        },
+        {
+          "title": "Coefficient principal.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coefficient principal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours, entièrement consacrée au coefficient principal $a$. C'est lui qui donne sa personnalité à la parabole : il décide non seulement du sens de l'ouverture, mais aussi de son étroitesse ou de son élargissement. Comprendre l'influence de $a$ te permettra de comparer deux paraboles rien qu'en regardant leurs équations, sans même tracer de graphique."
+            },
+            {
+              "type": "definition",
+              "term": "coefficient principal",
+              "definition": "Dans $f(x)=ax^2+bx+c$, le coefficient principal est le nombre $a$ qui multiplie $x^2$. Il est non nul et détermine la concavité et l'amplitude de la parabole.",
+              "example": "Pour $f(x)=5x^2-3x+2$, le coefficient principal est $5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $a>0$, la parabole est tournée vers le haut (concavité vers le haut) et le sommet est un minimum. Si $a<0$, elle est tournée vers le bas (concavité vers le bas) et le sommet est un maximum. Par exemple, $f(x)=2x^2+x-1$ ouvre vers le haut, alors que $g(x)=-0,5x^2+3x+4$ ouvre vers le bas. Essaie de deviner l'orientation de $h(x)=-3x^2+2$ : comme $a=-3$, elle pointe vers le bas."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole $y=x^2$ (coefficient principal $a=1$) et $y=-x^2$ (coefficient principal $a=-1$) superposées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La valeur absolue de $a$ contrôle la largeur de la parabole. Plus $|a|$ est grand, plus la parabole est étroite (elle monte ou descend vite). Plus $|a|$ est petit, plus elle est large (elle s'étale). Compare $f(x)=4x^2$ et $g(x)=0,25x^2$ : la première est très resserrée autour de l'axe, la seconde est très évasée. Cette propriété est cruciale quand on modélise des phénomènes physiques comme la trajectoire d'un projectile."
+            },
+            {
+              "type": "display_math",
+              "latex": "|a| \\text{ grand } \\Rightarrow \\text{parabole étroite}, \\quad |a| \\text{ petit } \\Rightarrow \\text{parabole large}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comparer les valeurs absolues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $|a_1|$ et $|a_2|$ pour les deux fonctions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déduire la largeur relative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction avec le plus grand $|a|$ a la parabole la plus étroite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le sens d'ouverture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le signe de chaque $a$ pour savoir si chaque parabole ouvre vers le haut ou vers le bas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, le coefficient principal joue un rôle dans le nombre de solutions de l'équation $f(x)=0$. Sans entrer dans les détails du discriminant, sache que si $a$ et $c$ ont des signes opposés, la parabole coupe nécessairement l'axe des abscisses (il y a au moins une racine réelle). Si $a$ et $c$ ont le même signe, la parabole peut ne pas couper l'axe, selon la position du sommet. C'est une première intuition qui te sera utile en terminale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une fonction du second degré sous forme développée et identifier $a$, $b$, $c$.",
+                "Je sais déterminer le sommet et l'axe de symétrie d'une parabole.",
+                "Je connais l'influence du signe de $a$ sur l'orientation de la parabole.",
+                "Je sais comparer l'étroitesse de deux paraboles grâce à $|a|$.",
+                "Je peux expliquer le lien entre le terme constant $c$ et l'intersection avec l'axe des ordonnées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les fonctions $f(x)=2x^2+3x-1$, $g(x)=-x^2+4x+2$, $h(x)=0,5x^2-2x+5$, laquelle a la parabole la plus étroite ?",
+              "answer": "$f(x)=2x^2+3x-1$",
+              "hint": "Compare les valeurs absolues des coefficients principaux.",
+              "explanation": "Les coefficients principaux sont $2$, $-1$, $0,5$. Leurs valeurs absolues sont $2$, $1$, $0,5$. La plus grande est $2$, donc $f$ a la parabole la plus étroite."
+            },
+            {
+              "question": "Donne le sens d'ouverture de la parabole de $p(x)=-3x^2+6x-2$ et précise si son sommet est un maximum ou un minimum.",
+              "answer": "Ouverture vers le bas, sommet est un maximum.",
+              "hint": "Regarde le signe de $a$.",
+              "explanation": "Le coefficient principal $a=-3$ est négatif, donc la parabole ouvre vers le bas et le sommet correspond à un maximum."
+            },
+            {
+              "question": "Pour la fonction $q(x)=4x^2-8x+3$, les coefficients $a$ et $c$ ont-ils le même signe ? Que peux-tu en déduire sur l'intersection avec l'axe des abscisses ?",
+              "answer": "Oui, $a=4>0$ et $c=3>0$ ont le même signe. La parabole peut ne pas couper l'axe des abscisses (selon la position du sommet).",
+              "hint": "Compare les signes de $a$ et $c$.",
+              "explanation": "Comme $a$ et $c$ sont tous deux positifs, la parabole ouvre vers le haut et son sommet a une ordonnée $y_s = f(1) = -1$ (négative). Donc elle coupe l'axe des abscisses. Mais la règle générale dit qu'avec même signe, l'intersection n'est pas garantie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

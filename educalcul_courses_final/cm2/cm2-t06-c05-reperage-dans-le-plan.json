@@ -1,0 +1,421 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.475454+00:00",
+  "id": 314,
+  "code": "cm2-t06-c05",
+  "title": "Repérage dans le plan",
+  "description": "Cours structuré Educalcul : Repérage dans le plan.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Repérage dans le plan",
+    "objectif_global": "Repérage dans le plan",
+    "mini_lecons_imposees": [
+      "Coordonnées simples.",
+      "Placer.",
+      "Décrire déplacement."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Coordonnées simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le repère du plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde du repérage ! Imagine une grande feuille quadrillée qui s'étend à l'infini dans toutes les directions. Au centre, un point spécial appelé l'origine, noté $O$, est le départ de deux droites perpendiculaires : l'horizontale et la verticale. Elles forment un repère orthonormé, où les axes ont la même unité et sont à angle droit. Grâce à ce repère, chaque point du plan est identifié par deux nombres, comme une adresse : d'abord la rue (l'abscisse), puis le numéro (l'ordonnée). Cet outil nous servira pour décrire des positions, tracer des figures et résoudre des problèmes de géométrie."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Repère orthonormé avec origine O, point A sur l'axe horizontal et point B sur l'axe vertical",
+              "vertexLabels": [
+                "O",
+                "A",
+                "B"
+              ],
+              "sideLabels": [
+                "x",
+                "y",
+                "hyp"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "definition",
+              "term": "abscisse",
+              "definition": "L'abscisse est la première coordonnée d'un point ; elle indique la distance horizontale par rapport à l'origine.",
+              "example": "Dans $(3,2)$, l'abscisse est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "ordonnée",
+              "definition": "L'ordonnée est la seconde coordonnée d'un point ; elle indique la distance verticale par rapport à l'origine.",
+              "example": "Dans $(3,2)$, l'ordonnée est $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'abscisse est le premier nombre du couple ; elle mesure la distance horizontale par rapport à l'origine. À droite, elle est positive ; à gauche, negative. L'ordonnée est le second nombre ; elle mesure la distance verticale. Au-dessus, positive ; en dessous, negative. Ainsi $(3,2)$ veut dire : trois unités à droite, deux unités en haut. Visualise ce chemin sur la figure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'origine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le point $O$ où les deux axes se croisent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les graduations horizontales depuis l'origine jusqu'au point ; le nombre obtenu, avec son signe, est l'abscisse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les graduations verticales depuis l'origine jusqu'au point ; le nombre obtenu, avec son signe, est l'ordonnée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons : on part de l'origine, on compte l'horizontale pour l'abscisse, puis la verticale pour l'ordonnée. L'ordre ne change jamais. Respecter cet ordre évite les erreurs, surtout avec des nombres négatifs. Entraîne-toi mentalement avant l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour l'instant nous avons vu le quadrant où les deux coordonnées sont positives. Le plan comporte quatre quadrants numérotés dans le sens inverse des aiguilles d'une montre. Dans le deuxième, abscisse negative, ordonnée positive ; dans le troisième, les deux negatives ; dans le quatrième, abscisse positive, ordonnée negative. Regarde la droite graduée ci-dessous : elle montre les nombres négatifs, qui correspondent aux déplacements vers la gauche ou vers le bas."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses avec valeurs négatives et positives",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, zéro est l'origine. À droite : positifs ; à gauche : negatives. Pour l'abscisse $-2$, pars de zéro et compte deux graduations à gauche. Sur l'axe vertical, au-dessus de zéro : positifs ; en dessous : negatives. Le point $(-2,-3)$ est donc deux unités à gauche et trois en dessous. Place-le mentalement avant l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les clés pour repérer tout point, quel que soit son quadrant. Dans l'exercice final, donne les coordonnées de points aux signes variés. Rappelle la règle : abscisse d'abord (horizontal), ordonnée ensuite (vertical), le signe donne la direction. Prends ton temps, visualise le chemin depuis l'origine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelles sont les coordonnées du point qui se trouve $3$ unités à droite de l'origine et $2$ unités au-dessus ?",
+              "answer": "$(3,2)$",
+              "hint": "Commence par l'origine, compte $3$ graduations vers la droite, puis $2$ vers le haut.",
+              "explanation": "L'abscisse correspond au déplacement horizontal, l'ordonnée au déplacement vertical."
+            },
+            {
+              "question": "Le point $A$ a pour coordonnées $(4,1)$. Décris sa position par rapport à l'origine.",
+              "answer": "Il est à $4$ unités à droite et $1$ unité au-dessus de l'origine.",
+              "hint": "Regarde le premier nombre pour l'horizontale, le second pour la verticale.",
+              "explanation": "Le premier nombre est l'abscisse, le second l'ordonnée."
+            },
+            {
+              "question": "Donne les coordonnées d'un point situé $2$ unités à gauche de l'origine et $3$ unités en dessous.",
+              "answer": "$(-2,-3)$",
+              "hint": "À gauche signifie abscisse négative, en dessous signifie ordonnée négative.",
+              "explanation": "Les signes indiquent la direction par rapport à l'origine."
+            }
+          ]
+        },
+        {
+          "title": "Placer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Apprençons à placer un point quand on connaît ses coordonnées. Imagine que tu reçois un message : « Place le point $B$ aux coordonnées $(2,3)$ ». Pour cela, tu te tiens sur l'origine $O$ du repère. La première coordonnée, $2$, t'indique de te déplacer horizontalement : deux graduations vers la droite car le nombre est positif. La seconde coordonnée, $3$, t'indique ensuite de te déplacer verticalement : trois graduations vers le haut. Une fois ces deux déplacements effectués, tu marques le point $B$. C'est exactement comme suivre un plan au trésor : d'abord le nombre de pas à l'est, puis le nombre de pas au nord."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Partir de l'origine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton crayon sur le point $O$ où les axes se croisent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Avancer horizontalement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'abscisse est positive, va à droite ; si elle est negative, va à gauche. Compte le nombre d'unités indiqué."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Monter ou descendre verticalement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'ordonnée est positive, monte ; si elle est negative, descends. Compte le nombre d'unités indiqué et marque le point."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode en trois temps est simple et fiable. Première étape : repère l'origine sur ton quadrillage. Deuxième étape : avance ou recule horizontalement selon le signe de l'abscisse. Troisième étape : monte ou descends verticalement selon le signe de l'ordonnée. En respectant cet ordre, tu ne peux pas te tromper. Essaie de le répéter mentalement pour le point $(5,0)$ : tu avances de cinq à droite et tu ne bouges pas verticalement car l'ordonnée est nulle."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x/y",
+                "0",
+                "1",
+                "2"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "(0,0)",
+                  "(1,0)",
+                  "(2,0)"
+                ],
+                [
+                  "1",
+                  "(0,1)",
+                  "(1,1)",
+                  "(2,1)"
+                ],
+                [
+                  "2",
+                  "(0,2)",
+                  "(1,2)",
+                  "(2,2)"
+                ]
+              ],
+              "caption": "Petit repère pour visualiser le placement des points."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Exerçons-nous avec des points dont les deux coordonnées sont positives. Prends le point $C$ de coordonnées $(4,2)$. Depuis l'origine, compte quatre cases vers la droite, puis deux cases vers le haut. Tu arrives exactement sur $C$. Remarque que si l'ordonnée est $0$, le point se trouve sur l'axe horizontal ; si l'abscisse est $0$, il se trouve sur l'axe vertical. Ces cas particuliers sont faciles à retenir et très utiles pour vérifier tes tracés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, attaquons les points dont une ou les deux coordonnées sont negatives. Pour le point $D$ en $(-3,1)$, tu pars de l'origine, tu vas trois cases à gauche (abscisse negative), puis une case vers le haut (ordonnée positive). Pour $E$ en $(-2,-4)$, tu vas deux cases à gauche et quatre cases en bas. Le quadrillage ci-dessous te montre ces positions. Observe comment les signes guident tes déplacements dans les quatre quadrants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place le point $B$ de coordonnées $(2,3)$ sur le repère.",
+              "answer": "Le point $B$ se trouve à $2$ unités à droite et $3$ unités au-dessus de l'origine.",
+              "hint": "Déplace-toi d'abord horizontalement, ensuite verticalement.",
+              "explanation": "On part de l'origine, on avance de $2$ sur l'axe horizontal, puis de $3$ sur l'axe vertical."
+            },
+            {
+              "question": "Où se trouve le point $C$ de coordonnées $(5,0)$ ?",
+              "answer": "Sur l'axe horizontal, à $5$ unités à droite de l'origine.",
+              "hint": "L'ordonnée nulle signifie qu'il n'y a pas de déplacement vertical.",
+              "explanation": "Une ordonnée à $0$ place le point sur l'axe des abscisses."
+            },
+            {
+              "question": "Place le point $D$ de coordonnées $(-3,-4)$.",
+              "answer": "Le point $D$ est à $3$ unités à gauche et $4$ unités en dessous de l'origine.",
+              "hint": "Les deux nombres sont négatifs, donc tu vas à gauche et en bas.",
+              "explanation": "L'abscisse négative va vers la gauche, l'ordonnée négative vers le bas."
+            }
+          ]
+        },
+        {
+          "title": "Décrire déplacement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décrire un déplacement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir décrire un déplacement, c'est expliquer comment on passe d'un point à un autre. Supposons que tu sois au point $E(1,2)$ et que tu veuilles aller au point $F(4,5)$. Le déplacement n'est pas un point, mais un vecteur : il te dit de combien tu dois avancer horizontalement et verticalement. Pour le trouver, tu soustrais les coordonnées du départ de celles de l'arrivée : $4-1=3$ pour l'horizontale, $5-2=3$ pour la verticale. Le vecteur de déplacement s'écrit donc $(3,3)$. C'est comme une instruction de navigation : « avance de $3$ vers l'est, puis de $3$ vers le nord »."
+            },
+            {
+              "type": "definition",
+              "term": "vecteur",
+              "definition": "Un vecteur décrit un déplacement dans le plan ; il est donné par un couple de nombres (variation en x, variation en y).",
+              "example": "Le déplacement de $(1,2)$ à $(4,5)$ est le vecteur $(3,3)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter le point de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les coordonnées du point de départ, par exemple $(x_1,y_1)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter le point d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les coordonnées du point d'arrivée, par exemple $(x_2,y_2)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les différences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur est $(x_2-x_1,\\; y_2-y_1)$. Si le résultat est negative, le déplacement va vers la gauche ou vers le bas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La procédure en trois étapes est la suivante. Première étape : note les coordonnées du point de départ. Deuxième étape : note les coordonnées du point d'arrivée. Troisième étape : calcule la différence arrivée moins départ pour chaque composante. Cette méthode fonctionne pour tous les signes : si le résultat est negative, le déplacement se fait vers la gauche ou vers le bas. Entraîne-toi sur l'exemple ci-dessus pour bien ancrer le réflexe."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Composantes du déplacement de $(1,2)$ à $(4,5)$",
+              "bars": [
+                {
+                  "label": "Horizontal",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vertical",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les composantes du vecteur peuvent être positives, negatives ou nulles. Un vecteur $( -4, 1 )$ signifie : recule de $4$ unités horizontalement (vers l'ouest) et avance de $1$ unité verticalement (vers le nord). Un vecteur $( 0, -5 )$ indique un déplacement purement vertical vers le bas. Dans l'exercice suivant, tu devras lire un vecteur à partir de deux points donnés et l'exprimer sous la forme $(x,y)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne le point de départ et le vecteur, et tu dois trouver le point d'arrivée. C'est l'opération inverse : tu ajoutes les composantes du vecteur aux coordonnées du départ. Par exemple, si tu pars de $G(-2,3)$ et que tu suis le vecteur $( -4, 1 )$, tu calcules $-2 + (-4) = -6$ pour l'abscisse et $3 + 1 = 4$ pour l'ordonnée. Le point d'arrivée est donc $(-6,4)$. Vérifie toujours le signe de chaque composante avant d'additionner. Essaie de faire ce calcul pour l'exercice final."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire les coordonnées d'un point sur un repère.",
+                "Je sais placer un point connaissant ses coordonnées.",
+                "Je sais calculer un déplacement entre deux points.",
+                "Je sais utiliser les signes pour indiquer la direction d'un déplacement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le déplacement pour aller du point $E(1,2)$ au point $F(4,5)$ ?",
+              "answer": "Le vecteur de déplacement est $(3,3)$.",
+              "hint": "Calcule la différence des abscisses et la différence des ordonnées.",
+              "explanation": "On soustrait les coordonnées du point de départ à celles du point d'arrivée : $4-1=3$, $5-2=3$."
+            },
+            {
+              "question": "Si tu pars du point $G(-2,3)$ et que tu suis le déplacement $(-4,1)$, où arrives-tu ?",
+              "answer": "Tu arrives au point $(-6,4)$.",
+              "hint": "Ajoute les composantes du déplacement aux coordonnées de départ.",
+              "explanation": "Abscisse : $-2 + (-4) = -6$ ; ordonnée : $3 + 1 = 4$."
+            },
+            {
+              "question": "Décris le déplacement qui ramène le point $H(0,0)$ au point $I(-5,2)$.",
+              "answer": "Le déplacement est $(-5,2)$.",
+              "hint": "Le point de départ est l'origine, donc le déplacement correspond aux coordonnées du point d'arrivée.",
+              "explanation": "Depuis l'origine, le vecteur pour rejoindre un point est simplement ses coordonnées."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

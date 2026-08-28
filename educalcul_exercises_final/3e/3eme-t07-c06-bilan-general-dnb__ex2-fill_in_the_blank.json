@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Méthodes",
+  "title": "Vocabulaire et structures algorithmiques",
+  "blocks": [
+    {
+      "title": "Vocabulaire de base",
+      "content": "Dans un algorithme, une {{1}} permet de stocker une valeur que l'on pourra réutiliser plus tard. Pour lui donner une valeur, on utilise l'instruction d'{{2}} notée par une flèche ←. Pour répéter un bloc d'instructions un nombre connu de fois, on utilise la boucle {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "variable",
+        "affectation",
+        "Pour"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une variable est une zone mémoire nommée qui contient une valeur. L'affectation (symbole ←) modifie la valeur stockée dans la variable. La boucle 'Pour' (ou 'Pour i de 1 à n') est adaptée quand le nombre d'itérations est connu à l'avance.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles conditionnelles",
+      "content": "La boucle {{1}} s'utilise lorsque le nombre de répétitions n'est pas connu à l'avance : elle se poursuit tant que la {{2}} est vraie. À l'intérieur, il faut veiller à modifier les variables pour éviter une boucle {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "Tant que",
+        "condition",
+        "infinie"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle 'Tant que' teste une condition avant chaque itération. Si la condition reste vraie indéfiniment parce que les variables ne sont pas mises à jour correctement, le programme tourne sans s'arrêter : c'est une boucle infinie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonctions",
+      "content": "Pour structurer un programme, on peut définir une {{1}} qui prend des {{2}} en entrée et renvoie un résultat avec l'instruction {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "fonction",
+        "paramètres",
+        "Renvoie"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction est un sous-programme nommé. Les paramètres (ou arguments) sont les valeurs fournies à l'appel. L'instruction 'Renvoie' (ou 'Retourne') termine la fonction et transmet la valeur calculée au programme principal.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

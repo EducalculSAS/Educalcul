@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Intersections",
+  "title": "Quiz sur les intersections de fonctions",
+  "questions": [
+    {
+      "text": "Les fonctions $f(x)=2x+1$ et $g(x)=-x+4$ sont représentées dans le plan. Quelle est l'abscisse de leur point d'intersection ?",
+      "options": [
+        "$x=1$",
+        "$x=2$",
+        "$x=3$",
+        "$x=0$"
+      ],
+      "correctAnswer": "$x=1$",
+      "explanation": "Pour trouver l'intersection, on résout $2x+1 = -x+4$. En ajoutant $x$ des deux côtés, on obtient $3x+1 = 4$, puis $3x = 3$, donc $x = 1$. Les autres valeurs ne satisfont pas l'égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la parabole $f(x)=x^2$ et la droite $g(x)=2x+3$. Combien de points d'intersection ont-elles et quelles sont leurs abscisses ?",
+      "options": [
+        "Deux points d'intersection : $x=-1$ et $x=3$",
+        "Un point d'intersection : $x=1$",
+        "Aucun point d'intersection",
+        "Deux points d'intersection : $x=-2$ et $x=2$"
+      ],
+      "correctAnswer": "Deux points d'intersection : $x=-1$ et $x=3$",
+      "explanation": "On résout $x^2 = 2x+3$, soit $x^2-2x-3=0$. Le trinôme se factorise en $(x-3)(x+1)=0$, donnant $x=3$ et $x=-1$. Il y a donc deux points d'intersection.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La courbe ci-dessous représente la fonction $f(x)=x^2-4$. Quelles sont les abscisses des points d'intersection de cette courbe avec l'axe des abscisses ?",
+      "options": [
+        "$x=-2$ et $x=2$",
+        "$x=-1$ et $x=1$",
+        "$x=0$ uniquement",
+        "$x=-3$ et $x=3$"
+      ],
+      "correctAnswer": "$x=-2$ et $x=2$",
+      "explanation": "Les intersections avec l'axe des abscisses correspondent aux solutions de $f(x)=0$, c'est-à-dire $x^2-4=0$. On obtient $x^2=4$, donc $x=2$ ou $x=-2$. La lecture graphique montre bien les points $(-2,0)$ et $(2,0)$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Courbe de $f(x)=x^2-4$"
+      }
+    },
+    {
+      "text": "La courbe ci-dessous représente la fonction $f(x)=x^2-1$. Quelles sont les abscisses des points d'intersection de cette courbe avec la droite $y=2$ ?",
+      "options": [
+        "$x=-\\sqrt{3}$ et $x=\\sqrt{3}$",
+        "$x=-2$ et $x=2$",
+        "$x=-1$ et $x=1$",
+        "Aucune intersection"
+      ],
+      "correctAnswer": "$x=-\\sqrt{3}$ et $x=\\sqrt{3}$",
+      "explanation": "On cherche les $x$ tels que $f(x)=2$, soit $x^2-1=2$. Cela donne $x^2=3$, donc $x=\\sqrt{3}$ ou $x=-\\sqrt{3}$. Les autres propositions ne vérifient pas l'équation.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Courbe de $f(x)=x^2-1$"
+      }
+    },
+    {
+      "text": "Deux droites sont données par les équations $y=3x-2$ et $y=-x+6$. Quelles sont les coordonnées de leur point d'intersection ?",
+      "options": [
+        "$(2,4)$",
+        "$(1,1)$",
+        "$(0,6)$",
+        "$(3,7)$"
+      ],
+      "correctAnswer": "$(2,4)$",
+      "explanation": "On résout le système $3x-2 = -x+6$. En ajoutant $x$ des deux côtés, $4x-2 = 6$, puis $4x = 8$, donc $x = 2$. En remplaçant dans $y = 3x-2$, on obtient $y = 3(2)-2 = 4$. Le point d'intersection est $(2,4)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

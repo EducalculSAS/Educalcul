@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 103,
+  "_course_code": "ce1-t04-c06-tables-de-multiplication-par-10",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Relier dizaines et ×10",
+  "title": "Algorithmes : Relier les dizaines et la multiplication par 10",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme pour multiplier par 10",
+      "content": "Écris la suite d'instructions (l'algorithme) qui permet de calculer le résultat de $n \\times 10$ en utilisant l'idée des dizaines. On note $n$ le nombre de départ (un chiffre de 1 à 9).",
+      "correctAnswer": "1. Choisir un nombre $n$.\\n2. Dire que $n \\times 10$, c'est $n$ dizaines.\\n3. Écrire le chiffre $n$ suivi d'un zéro.\\n4. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 10 revient à dire combien on a de dizaines. Par exemple, $4 \\times 10$ signifie 4 dizaines, ce qui s'écrit 40. L'algorithme formalise ce raisonnement : on prend le nombre, on l'associe aux dizaines, on ajoute un zéro pour marquer les unités vides.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme inverse",
+      "content": "Voici un algorithme qui permet de retrouver le nombre de départ $n$ à partir du résultat $R$ d'une multiplication par 10. Complète les lignes pointillées.\\n\\nAlgorithme :\\n1. Lire le résultat $R$ (multiple de 10).\\n2. ...\\n3. Le nombre de dizaines trouvé est $n$.\\n4. Afficher $n$.",
+      "correctAnswer": "2. Enlever le zéro des unités de $R$ (ou diviser $R$ par 10).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est l'opération inverse. Si le résultat est 60, on enlève le zéro pour retrouver 6, ce qui correspond à 6 dizaines. On retrouve donc le nombre de départ $n = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "De la phrase \"7 dizaines\" au calcul",
+      "content": "On te donne cette information : \"Il y a 7 dizaines\". Écris un algorithme court qui permet d'écrire la multiplication correspondante ($7 \\times 10$) et son résultat.",
+      "correctAnswer": "1. Lire le nombre de dizaines : 7.\\n2. Écrire la multiplication : $7 \\times 10$.\\n3. Pour trouver le résultat, écrire 7 et ajouter un zéro : 70.\\n4. Afficher : $7 \\times 10 = 70$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme fait le lien explicite entre le langage oral (7 dizaines), l'écriture mathématique ($7 \\times 10$) et le nombre final (70). C'est la traduction algorithmique de la leçon : nombre de dizaines $\\times$ 10 = nombre suivi de 0.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

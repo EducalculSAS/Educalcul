@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 509,
+  "_course_code": "2nde-t02-c07-bilan-calcul-algebrique-seconde",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Bilan - Calcul algébrique Seconde",
+  "title": "Bilan calcul algébrique : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Développer et réduire une expression",
+      "content": "Rangez les étapes dans l'ordre chronologique pour développer et réduire l'expression $E = (x+3)^2 - (x-2)(x+2)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Développer $(x+3)^2$ avec l'identité $(a+b)^2 = a^2 + 2ab + b^2$ pour obtenir $x^2 + 6x + 9$.",
+        "Développer $(x-2)(x+2)$ avec l'identité $(a-b)(a+b) = a^2 - b^2$ pour obtenir $x^2 - 4$.",
+        "Écrire $E = x^2 + 6x + 9 - (x^2 - 4)$ en remplaçant par les développements.",
+        "Distribuer le signe moins : $E = x^2 + 6x + 9 - x^2 + 4$.",
+        "Réduire les termes semblables pour obtenir $E = 6x + 13$."
+      ],
+      "explanation": "On commence par développer chaque produit en utilisant les identités remarquables adaptées : le carré d'une somme pour $(x+3)^2$ et le produit de la somme par la différence pour $(x-2)(x+2)$. On substitue ensuite ces résultats dans l'expression initiale. La parenthèse précédée d'un moins change les signes de tous ses termes. Enfin, on regroupe les termes en $x^2$ (qui s'annulent), les termes en $x$ et les constantes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre une équation du second degré",
+      "content": "Rangez les étapes dans l'ordre logique pour résoudre l'équation $x^2 - 5x + 6 = 0$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les coefficients $a=1$, $b=-5$, $c=6$ et calculer le discriminant $\\Delta = b^2 - 4ac$.",
+        "Calculer $\\Delta = (-5)^2 - 4 \\times 1 \\times 6 = 25 - 24 = 1$.",
+        "Comme $\\Delta > 0$, l'équation admet deux solutions distinctes données par $x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$.",
+        "Calculer les deux racines : $x_1 = \\frac{5 - 1}{2} = 2$ et $x_2 = \\frac{5 + 1}{2} = 3$.",
+        "Conclure : l'ensemble des solutions est $S = \\{2; 3\\}$."
+      ],
+      "explanation": "La résolution d'un trinôme du second degré $ax^2+bx+c=0$ suit un algorithme strict : calcul du discriminant $\\Delta$, discussion sur son signe, application des formules des racines si $\\Delta \\ge 0$, puis énoncé de l'ensemble solution. Ici $\\Delta=1>0$, d'où deux solutions réelles distinctes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplifier une fraction algébrique",
+      "content": "Rangez les étapes pour simplifier la fraction $F = \\frac{x^2 - 9}{x^2 - 6x + 9}$ pour $x \\neq 3$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Factoriser le numérateur $x^2 - 9$ avec $a^2 - b^2$ : $(x-3)(x+3)$.",
+        "Factoriser le dénominateur $x^2 - 6x + 9$ avec $(a-b)^2$ : $(x-3)^2$.",
+        "Réécrire la fraction : $F = \\frac{(x-3)(x+3)}{(x-3)^2}$.",
+        "Simplifier par le facteur commun $(x-3)$ (car $x \\neq 3$) : $F = \\frac{x+3}{x-3}$.",
+        "Écrire l'expression finale simplifiée : $\\frac{x+3}{x-3}$."
+      ],
+      "explanation": "La simplification d'une fraction algébrique impose de factoriser numérateur et dénominateur avant toute suppression de facteur commun. Le numérateur est une différence de deux carrés, le dénominateur est un carré d'une différence. La condition $x \\neq 3$ assure que le facteur $(x-3)$ est non nul, ce qui autorise la simplification. On ne simplifie jamais terme à terme.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

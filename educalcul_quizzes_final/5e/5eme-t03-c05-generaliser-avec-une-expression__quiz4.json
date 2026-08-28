@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Application : Généraliser avec une expression",
+  "title": "Quiz : Généraliser avec une expression",
+  "questions": [
+    {
+      "text": "On a une suite de nombres : 2, 5, 8, 11, ... Quelle expression donne le $n$-ième terme ?",
+      "options": [
+        "$3n-1$",
+        "$3n+2$",
+        "$2n+1$",
+        "$n+3$"
+      ],
+      "correctAnswer": "$3n-1$",
+      "explanation": "La suite augmente de $3$ à chaque rang. Le premier terme (rang $1$) vaut $2$. L'expression $3n-1$ donne $2$ pour $n=1$, $5$ pour $n=2$, etc. Les autres options ne correspondent pas au premier terme ou à la raison.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur de $x+4$ cm et une largeur de $x$ cm. Quelle expression donne son périmètre ?",
+      "options": [
+        "$4x+8$",
+        "$2x+8$",
+        "$4x+4$",
+        "$2x+4$"
+      ],
+      "correctAnswer": "$4x+8$",
+      "explanation": "Le périmètre d'un rectangle est $2*(\\text{longueur}+\\text{largeur})$. Ici la longueur vaut $x+4$ et la largeur $x$. Donc le périmètre est $2*((x+4)+x) = 2*(2x+4) = 4x+8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le programme de calcul : Choisis un nombre, ajoute 5, multiplie le résultat par 3, puis soustrait 6. Quelle expression littérale correspond à ce programme si le nombre de départ est $n$ ?",
+      "options": [
+        "$3n+9$",
+        "$3n+15$",
+        "$3n-1$",
+        "$n+9$"
+      ],
+      "correctAnswer": "$3n+9$",
+      "explanation": "Le programme s'écrit : $(n+5)\\times3-6$. En développant : $3(n+5)-6 = 3n+15-6 = 3n+9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une suite, le terme de rang $n$ est donné par l'expression $2n^2+3n-1$. Quel est le terme de rang 4 ?",
+      "options": [
+        "$43$",
+        "$39$",
+        "$45$",
+        "$41$"
+      ],
+      "correctAnswer": "$43$",
+      "explanation": "On remplace $n$ par $4$ : $2\\times4^2+3\\times4-1 = 2\\times16+12-1 = 32+12-1 = 43$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut généraliser la somme des premiers $n$ entiers naturels non nuls. Quelle expression donne cette somme ?",
+      "options": [
+        "$n(n+1)/2$",
+        "$n^2+1$",
+        "$2n+1$",
+        "$n(n-1)/2$"
+      ],
+      "correctAnswer": "$n(n+1)/2$",
+      "explanation": "La somme des premiers $n$ entiers naturels non nuls est $n(n+1)/2$. On peut le vérifier pour $n=1$ : $1$, $n=2$ : $3$, $n=3$ : $6$, etc.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

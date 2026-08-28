@@ -1,0 +1,495 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.538206+00:00",
+  "id": 334,
+  "code": "6eme-t01-c04",
+  "title": "Droite graduée",
+  "description": "Cours structuré Educalcul : Droite graduée.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Droite graduée",
+    "objectif_global": "Droite graduée",
+    "mini_lecons_imposees": [
+      "Échelles.",
+      "Placement.",
+      "Distance entre deux nombres positifs."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Échelles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Échelle et graduations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu possèdes une règle en bois sur laquelle sont tracés des traits espacés régulièrement. Chaque trait porte un numéro et la distance entre deux traits consécutifs est toujours la même. C'est exactement ce qu'est une droite graduée : une ligne droite sur laquelle on a choisi une origine, une unité de longueur et un sens, puis on a marqué des graduations à intervalle constant. Dans la vie de tous les jours, tu utilises déjà ce principe quand tu lis la température sur un thermomètre, quand tu mesures une longueur avec un mètre ruban ou quand tu suis le temps sur une règle de temps. La droite graduée te permet de transformer une quantité numérique en une position visuelle, ce qui rend les comparaisons et les calculs beaucoup plus intuitifs. Au cours de cette leçon, nous allons découvrir comment on définit l'échelle d'une droite, comment on repère les graduations et comment on lit un nombre qui s'y trouve. Prends le temps d'observer les figures, elles sont là pour t'aider à visualiser chaque idée."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée de 0 à 10, graduation chaque unité",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vocabulaire clé"
+            },
+            {
+              "type": "definition",
+              "term": "échelle",
+              "definition": "Rapport entre la longueur d'une graduation sur le papier et la valeur numérique qu'elle représente.",
+              "example": "Une échelle de 10 signifie qu'un centimètre sur la feuille vaut 10 unités."
+            },
+            {
+              "type": "definition",
+              "term": "graduation",
+              "definition": "Chaque trait marqué sur la droite qui porte une valeur numérique.",
+              "example": "Sur une règle, les traits des centimètres sont des graduations."
+            },
+            {
+              "type": "definition",
+              "term": "origine",
+              "definition": "Le point de départ de la droite graduée, qui correspond à la valeur zéro.",
+              "example": "Sur un thermomètre, le zéro est l'origine."
+            },
+            {
+              "type": "definition",
+              "term": "unité",
+              "definition": "La valeur numérique représentée par l'espace entre deux graduations consécutives lorsque l'échelle est 1.",
+              "example": "Si l'échelle est 1, une graduation vaut 1 unité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les nombres que l'on veut placer sont très grands, comme 250 ou 1 200, et une graduation par unité rendrait la droite interminable. On change alors l'échelle : on décide qu'une graduation représente 10 unités, ou 100 unités, selon la place dont on dispose. Par exemple, si l'on veut afficher les nombres de 0 à 100, on peut tracer une graduation tous les 10. La distance entre deux graduations successives reste constante, mais la valeur qu'elle représente change. C'est ce qu'on appelle l'échelle de la droite. Choisir une échelle adaptée, c'est comme choisir le zoom d'une carte : plus l'échelle est grande, plus on voit de détails, mais moins on voit loin. À l'inverse, une échelle petite permet d'embrasser une grande étendue de nombres sur une feuille. Nous allons voir comment lire l'échelle indiquée sur une figure et comment en déduire la valeur d'une graduation."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée de 0 à 100, graduation tous les 10",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire la valeur d'un point placé sur la droite, on part toujours de l'origine, c'est‑à‑dire du zéro. On compte ensuite le nombre de graduations qui séparent l'origine du point. Si chaque graduation vaut 1, le nombre lu est simplement le nombre de graduations franchies. Si l'échelle indique que chaque graduation vaut 10, on multiplie le nombre de graduations par 10. Par exemple, sur une droite dont l'échelle est de 10 par graduation, le point situé à la troisième graduation correspond au nombre 30. Attention : il faut bien vérifier le sens de la droite, car certaines figures placent les nombres croissants vers la droite, d'autres vers la gauche. Une fois que tu as identifié l'origine, l'échelle et le sens, la lecture devient un jeu d'enfant. Entraîne‑toi avec les exercices qui suivent pour ancrer cette méthode."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'origine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le point marqué 0 sur la droite. C'est ton point de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la légende ou les graduations numérotées pour savoir quelle valeur représente une graduation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les graduations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de graduations séparent l'origine du point voulu, dans le sens des nombres croissants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le nombre de graduations par la valeur d'une graduation (l'échelle). Le résultat est la valeur du point."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous apprendrons à placer nous‑mêmes des nombres entiers et décimaux sur une droite graduée, en choisissant l'échelle la plus commode."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée ci‑dessus, quelle est la valeur de la graduation située à 3 unités de l'origine si l'échelle est 1 par graduation ?",
+              "answer": "3",
+              "hint": "Compte les graduations depuis zéro.",
+              "explanation": "Chaque graduation vaut 1, donc 3 graduations donnent 3."
+            },
+            {
+              "question": "Si l'échelle est de 10 par graduation, quelle valeur correspond à la 4e graduation ?",
+              "answer": "40",
+              "hint": "Multiplie le numéro de la graduation par 10.",
+              "explanation": "4 × 10 = 40."
+            },
+            {
+              "question": "Sur une droite dont l'origine est à gauche, l'échelle est 5 par graduation. Le point se trouve sur la 2e graduation à droite de l'origine. Quelle est sa valeur ?",
+              "answer": "10",
+              "hint": "2 graduations × 5 = 10.",
+              "explanation": "2 × 5 = 10."
+            }
+          ]
+        },
+        {
+          "title": "Placement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer des nombres entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une droite graduée, nous allons apprendre à y placer des nombres. Rappelle‑toi : la droite a une origine (zéro), un sens (généralement vers la droite pour les nombres positifs) et une échelle. Pour placer un nombre entier positif, compte le nombre de graduations nécessaires depuis l'origine en suivant le sens des nombres croissants. Si le nombre est négatif, tu vas dans le sens opposé, c'est‑à‑dire vers la gauche de l'origine. Par exemple, sur une droite dont l'échelle est 1, le nombre 4 se place sur la quatrième graduation à droite du zéro, tandis que -3 se place sur la troisième graduation à gauche. Cette symétrie autour de l'origine est très utile pour visualiser l'addition et la soustraction plus tard. Observe la figure ci‑dessous : elle montre une droite allant de -5 à 5 avec une graduation par unité."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée de -5 à 5, graduation chaque unité",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -5,
+                  "label": "-5"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer des nombres décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les nombres décimaux se placent entre deux graduations entières. Si l'échelle est 1, chaque graduation représente un entier. Pour placer 2,3, tu vas d'abord à la graduation 2, puis tu divises mentalement l'espace entre 2 et 3 en dix parties égales (les dixièmes). La troisième petite division après 2 correspond à 2,3. Sur une figure, on représente souvent ces sous‑divisions par des traits plus courts. Si l'échelle est 0,1, alors chaque graduation vaut un dixième et le placement redevient direct : 2,3 est la troisième graduation après 2. Essaie de visualiser cette idée sur la droite ci‑dessous, qui va de 0 à 1 avec une graduation tous les 0,1."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée de 0 à 1, graduation chaque 0,1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.5,
+                  "label": "0,5"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer plusieurs nombres sur la même droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent de devoir placer plusieurs nombres sur une même droite pour les comparer. Choisis d'abord une échelle qui permet d'afficher le plus grand et le plus petit nombre sans trop d'espace vide. Par exemple, pour placer -2, 0,5 et 3, une échelle de 1 convient bien : la droite ira de -3 à 4. Place chaque nombre en suivant la méthode apprise : repère l'origine, compte les graduations entières, puis affine pour les dixièmes si besoin. Vérifie toujours que l'ordre des nombres sur la droite respecte l'ordre numérique : les nombres plus grands sont plus à droite (si le sens est standard). Cette vérification t'évitera bien des erreurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'étendue des nombres à placer et choisis une graduation qui laisse de la marge des deux côtés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer l'origine et les graduations principales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le zéro, puis marque les graduations entières selon l'échelle choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer chaque nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque nombre, compte les graduations entières depuis l'origine, puis ajoute la partie décimale en subdivisant l'intervalle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi que les points sont dans le même ordre que les nombres sur la ligne numérique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon suivante, nous verrons comment calculer la distance entre deux points placés sur une droite graduée, ce qui nous permettra de résoudre des problèmes concrets."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de -5 à 5 avec une graduation par unité, place le nombre -2. Quelle est sa position par rapport à l'origine ?",
+              "answer": "Deux graduations à gauche de l'origine.",
+              "hint": "Les nombres négatifs sont à gauche du zéro.",
+              "explanation": "Depuis 0, on compte deux graduations vers la gauche pour atteindre -2."
+            },
+            {
+              "question": "Sur une droite graduée de 0 à 1 avec une graduation tous les 0,1, où se trouve le nombre 0,7 ?",
+              "answer": "Sur la septième graduation après 0.",
+              "hint": "Chaque graduation vaut 0,1, donc 0,7 correspond à 7 graduations.",
+              "explanation": "7 × 0,1 = 0,7."
+            },
+            {
+              "question": "Place les nombres -1, 0,3 et 2 sur une même droite graduée d'échelle 1. Dans quel ordre apparaissent-ils de gauche à droite ?",
+              "answer": "-1, puis 0,3, puis 2.",
+              "hint": "Les nombres négatifs sont à gauche, puis les positifs dans l'ordre croissant.",
+              "explanation": "-1 < 0,3 < 2, donc l'ordre sur la droite est -1, 0,3, 2."
+            }
+          ]
+        },
+        {
+          "title": "Distance entre deux nombres positifs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La distance sur une droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "La distance entre deux nombres sur une droite graduée correspond à la longueur du segment qui relie les deux points. Comme la droite est graduée régulièrement, cette distance se calcule simplement en soustrayant le plus petit nombre du plus grand. Le résultat est toujours un nombre positif ou nul, car une distance ne peut pas être négative. Par exemple, la distance entre 3 et 8 vaut 8 - 3 = 5 unités. Si les deux points sont de part et d'autre de l'origine, comme -2 et 4, la distance est 4 - (-2) = 6 unités. Observe la figure ci‑dessous : les points A et B sont placés sur la droite, et la distance entre eux est indiquée par une flèche."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée avec deux points A(2) et B(7), distance 5",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "A"
+                },
+                {
+                  "value": 7,
+                  "label": "B"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 2,
+                  "end": 7
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la distance entre deux nombres a et b, suis cette méthode simple : identifie le plus grand des deux nombres, identifie le plus petit, puis fais la soustraction grand - petit. Le résultat est la distance. Cette règle fonctionne pour tous les nombres, qu'ils soient positifs, négatifs ou mélangés, tant que tu respectes l'ordre numérique. Par exemple, distance entre -5 et -1 : le plus grand est -1, le plus petit est -5, donc -1 - (-5) = 4. La distance est 4 unités. Essaie d'appliquer cette méthode aux exercices qui suivent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les deux nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis les valeurs des deux points sur la droite graduée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer le plus grand et le plus petit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les deux nombres : celui qui est plus à droite sur la droite est le plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule grand - petit. Le résultat est la distance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La distance doit être positive ou nulle. Si tu obtiens un nombre négatif, inverse l'ordre de la soustraction."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes de distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "La notion de distance sur une droite graduée aide à résoudre des problèmes du quotidien. Imagine que la température le matin est de -3 °C et qu'à midi elle monte à 5 °C. De combien la température a‑t‑elle augmenté ? On cherche la distance entre -3 et 5 : 5 - (-3) = 8 °C. Un autre exemple : deux villes sont situées sur une route droite. La ville A est au kilomètre 12, la ville B au kilomètre 27. La distance qui les sépare est 27 - 12 = 15 km. Dans chaque cas, on utilise la même soustraction grand - petit. Entraîne‑toi avec l'exercice ci‑dessous pour devenir à l'aise avec ces situations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'échelle et les graduations d'une droite graduée.",
+                "Je sais placer des nombres entiers et décimaux sur une droite graduée.",
+                "Je sais calculer la distance entre deux nombres positifs ou négatifs sur une droite graduée.",
+                "Je peux résoudre un problème concret en utilisant la distance sur une droite graduée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la distance entre les points A(2) et B(7) sur la droite graduée ci‑dessus ?",
+              "answer": "5",
+              "hint": "Soustrait le plus petit du plus grand : 7 - 2.",
+              "explanation": "7 - 2 = 5 unités de distance."
+            },
+            {
+              "question": "Calcule la distance entre -4 et 3.",
+              "answer": "7",
+              "hint": "Le plus grand est 3, le plus petit est -4. Fais 3 - (-4).",
+              "explanation": "3 - (-4) = 3 + 4 = 7."
+            },
+            {
+              "question": "La température était de -2 °C le matin et de 6 °C l'après‑midi. De combien a‑t‑elle augmenté ?",
+              "answer": "8 °C",
+              "hint": "Calcule la distance entre -2 et 6.",
+              "explanation": "6 - (-2) = 6 + 2 = 8 °C d'augmentation."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

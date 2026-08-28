@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Poursuivre",
+  "title": "Poursuivre les suites et les motifs",
+  "questions": [
+    {
+      "text": "Un motif se répète : cercle, carré, triangle, cercle, carré. Quel est le prochain élément ?",
+      "options": [
+        "cercle",
+        "carré",
+        "triangle",
+        "étoile"
+      ],
+      "correctAnswer": "triangle",
+      "explanation": "Le motif se répète par groupe de trois : cercle, carré, triangle. Après le deuxième groupe commencé par cercle, carré, on poursuit avec triangle. Les options cercle et carré ont déjà été placées, et étoile n'appartient pas au motif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Poursuis la suite de nombres : $4$, $6$, $8$, $10$, ?",
+      "options": [
+        "$11$",
+        "$12$",
+        "$14$",
+        "$16$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "On ajoute $2$ à chaque terme. Donc $10 + 2 = 12$. L'option $11$ correspond à ajouter $1$, l'option $14$ correspond à ajouter $4$, et l'option $16$ correspond à ajouter $6$ ou à sauter un terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Poursuis la suite : $20$, $17$, $14$, $11$, ?",
+      "options": [
+        "$8$",
+        "$9$",
+        "$7$",
+        "$10$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On retire $3$ à chaque terme. Donc $11 - 3 = 8$. L'option $9$ correspond à retirer $2$, l'option $7$ correspond à retirer $4$, et l'option $10$ correspond à retirer $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Poursuis la suite : $2$, $5$, $6$, $9$, $10$, ?",
+      "options": [
+        "$13$",
+        "$12$",
+        "$11$",
+        "$14$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "La suite alterne deux opérations : $+3$, puis $+1$. On a $2 + 3 = 5$, $5 + 1 = 6$, $6 + 3 = 9$, $9 + 1 = 10$. Donc on poursuit avec $10 + 3 = 13$. L'option $12$ correspond à ajouter $2$, l'option $11$ correspond à continuer avec $+1$ au lieu de $+3$, et l'option $14$ correspond à ajouter $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Poursuis la suite : $1$, $2$, $4$, $7$, $11$, ?",
+      "options": [
+        "$15$",
+        "$16$",
+        "$17$",
+        "$18$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "Les écarts entre les termes augmentent de $1$ à chaque fois : $+1$, $+2$, $+3$, $+4$. Donc le prochain écart est $+5$. On calcule $11 + 5 = 16$. L'option $15$ correspond à ajouter $4$, l'option $17$ correspond à ajouter $6$, et l'option $18$ correspond à ajouter $7$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

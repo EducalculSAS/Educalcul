@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 527,
+  "_course_code": "2nde-t06-c01-proportions-et-pourcentages",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Calculer proportion",
+  "title": "Algorithmes pour calculer des proportions",
+  "blocks": [
+    {
+      "title": "Calcul d'une proportion simple",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir un effectif $n$ et un effectif total $N$ (avec $N > 0$), puis qui affiche la proportion correspondante sous forme décimale.",
+      "correctAnswer": "ALGORITHME ProportionSimple\\nVARIABLES n, N, proportion : REEL\\nDEBUT\\n    ECRIRE \"Saisir l'effectif n : \"\\n    LIRE n\\n    ECRIRE \"Saisir l'effectif total N (N > 0) : \"\\n    LIRE N\\n    SI N > 0 ALORS\\n        proportion <- n / N\\n        ECRIRE \"La proportion est : \", proportion\\n    SINON\\n        ECRIRE \"Erreur : l'effectif total doit être strictement positif.\"\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme demande les deux valeurs, vérifie que le total est non nul pour éviter une division par zéro, effectue la division $n / N$ et affiche le résultat. La proportion est par définition le quotient de l'effectif partiel par l'effectif total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'un effectif à partir d'une proportion",
+      "content": "Écrire un algorithme qui demande une proportion $p$ (nombre décimal entre $0$ et $1$) et un effectif total $N$ (entier positif), puis qui calcule et affiche l'effectif $n$ correspondant arrondi à l'entier le plus proche.",
+      "correctAnswer": "ALGORITHME EffectifDepuisProportion\\nVARIABLES p, N, nReel, nEntier : REEL\\nDEBUT\\n    ECRIRE \"Saisir la proportion p (entre 0 et 1) : \"\\n    LIRE p\\n    ECRIRE \"Saisir l'effectif total N (entier > 0) : \"\\n    LIRE N\\n    SI p >= 0 ET p <= 1 ET N > 0 ALORS\\n        nReel <- p * N\\n        nEntier <- ARRONDI(nReel)  // ou PARTIE_ENTIERE(nReel + 0.5)\\n        ECRIRE \"L'effectif correspondant est : \", nEntier\\n    SINON\\n        ECRIRE \"Valeurs invalides.\"\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour retrouver un effectif à partir d'une proportion, on utilise la relation inverse : $n = p \\times N$. Comme un effectif est un nombre entier, on arrondit le résultat décimal à l'entier le plus proche. L'algorithme vérifie aussi que $p$ est bien une proportion (entre 0 et 1) et que $N$ est positif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Proportions pour plusieurs catégories",
+      "content": "On donne une liste `effectifs` contenant les effectifs de plusieurs catégories (par exemple $[12, 8, 20, 5]$). Écrire un algorithme qui calcule l'effectif total, puis qui affiche pour chaque catégorie sa proportion en pourcentage avec une décimale.",
+      "correctAnswer": "ALGORITHME ProportionsCategories\\nVARIABLES effectifs : TABLEAU D'ENTIERS\\n         total, i : ENTIER\\n         proportion : REEL\\nDEBUT\\n    effectifs <- [12, 8, 20, 5]\\n    total <- 0\\n    POUR i DE 0 A LONGUEUR(effectifs) - 1 FAIRE\\n        total <- total + effectifs[i]\\n    FIN POUR\\n    ECRIRE \"Effectif total : \", total\\n    POUR i DE 0 A LONGUEUR(effectifs) - 1 FAIRE\\n        proportion <- (effectifs[i] / total) * 100\\n        ECRIRE \"Catégorie \", i, \" : \", ARRONDI(proportion * 10) / 10, \" %\"\\n    FIN POUR\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise deux boucles. La première parcourt le tableau pour calculer la somme totale des effectifs. La seconde reparcourt le tableau pour calculer, pour chaque effectif, la proportion en pourcentage : $(effectif / total) \\times 100$. L'affichage est formaté pour n'avoir qu'une décimale (multiplication par 10, arrondi, division par 10).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

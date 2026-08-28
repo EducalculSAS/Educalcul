@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés de la symétrie axiale",
+  "questions": [
+    {
+      "text": "Quelle est la position de l'axe de symétrie par rapport au segment qui relie un point et son symétrique ?",
+      "options": [
+        "Il est parallèle à ce segment.",
+        "Il est la médiatrice de ce segment.",
+        "Il passe par un seul des deux points.",
+        "Il a la même longueur que ce segment."
+      ],
+      "correctAnswer": "Il est la médiatrice de ce segment.",
+      "explanation": "L'axe de symétrie est la médiatrice du segment joignant un point à son image. Il coupe donc ce segment à son milieu et lui est perpendiculaire. Les autres propositions sont fausses : l'axe n'est pas parallèle au segment, il passe par le milieu (donc pas par un seul point) et une droite (l'axe) n'a pas de longueur finie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si un point $A$ appartient à l'axe de symétrie $\\mathcal{D}$, où se trouve son symétrique $A'$ ?",
+      "options": [
+        "De l'autre côté de $\\mathcal{D}$, à la même distance.",
+        "Sur la droite $\\mathcal{D}$, confondu avec $A$.",
+        "N'importe où sur la perpendiculaire à $\\mathcal{D}$ passant par $A$.",
+        "Il n'a pas de symétrique."
+      ],
+      "correctAnswer": "Sur la droite $\\mathcal{D}$, confondu avec $A$.",
+      "explanation": "Les points situés sur l'axe de symétrie sont des points fixes : ils sont leur propre image. Le symétrique de $A$ est donc $A$ lui-même. La première option décrit le cas d'un point hors de l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace un segment $[AB]$ de longueur $6$ cm. On construit le symétrique de ce segment par rapport à une droite $\\mathcal{D}$ qui ne le coupe pas. Quelle est la longueur du segment image $A'B'$ ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$12$ cm",
+        "Cela dépend de la distance à l'axe."
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "La symétrie axiale conserve les longueurs (c'est une isométrie). Le segment image a exactement la même longueur que le segment initial. La distance à l'axe ne change pas la longueur du segment.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un angle $\\widehat{XOY}$ de $40^{\\circ}$. On construit sa figure symétrique par rapport à une droite $\\mathcal{D}$. Quelle est la mesure de l'angle image ?",
+      "options": [
+        "$20^{\\circ}$",
+        "$40^{\\circ}$",
+        "$80^{\\circ}$",
+        "$140^{\\circ}$ (l'angle supplémentaire)"
+      ],
+      "correctAnswer": "$40^{\\circ}$",
+      "explanation": "La symétrie axiale conserve les mesures d'angles (c'est une isométrie). L'angle image a la même mesure que l'angle initial : $40^{\\circ}$. L'orientation de l'angle peut changer (sens direct/indirect), mais pas sa valeur numérique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux droites $(d_1)$ et $(d_2)$ sont parallèles. On construit leurs symétriques $(d'_1)$ et $(d'_2)$ par rapport à un axe $\\mathcal{D}$. Quelle est la position relative de $(d'_1)$ et $(d'_2)$ ?",
+      "options": [
+        "Elles se coupent sur l'axe $\\mathcal{D}$.",
+        "Elles sont perpendiculaires.",
+        "Elles sont parallèles.",
+        "Elles sont confondues."
+      ],
+      "correctAnswer": "Elles sont parallèles.",
+      "explanation": "La symétrie axiale conserve le parallélisme. Si deux droites sont parallèles, leurs images par symétrie axiale sont aussi parallèles. Elles ne se coupent pas (sauf si elles sont confondues au départ, ce qui n'est pas le cas général), et ne deviennent pas perpendiculaires.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

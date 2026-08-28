@@ -1,0 +1,584 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.569880+00:00",
+  "id": 344,
+  "code": "6eme-t03-c03",
+  "title": "Division euclidienne et divisibilité",
+  "description": "Cours structuré Educalcul : Division euclidienne et divisibilité.",
+  "subject": "Calcul et automatismes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Calcul et automatismes",
+    "titre_du_cours": "Division euclidienne et divisibilité",
+    "objectif_global": "Division euclidienne et divisibilité",
+    "mini_lecons_imposees": [
+      "Quotient / reste.",
+      "Multiples.",
+      "Critères simples si prévus."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et automatismes",
+      "lessons": [
+        {
+          "title": "Quotient / reste.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le partage au cœur de la division"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un instant que tu as $43$ billes colorées et que tu veux les répartir équitablement dans $4$ petits sacs en tissu pour tes amis. Tu commences à poser une bille dans chaque sac, puis une deuxième, une troisième... Tu continues ainsi, tour après tour, jusqu'à ce qu'il ne te reste plus assez de billes pour en donner une à chaque sac. C'est exactement ce que fait la division euclidienne : elle organise ce partage concret pour te dire combien de billes chaque sac reçoit (le quotient) et combien il t'en reste dans la main (le reste). C'est une opération que tu connais déjà intuitivement, nous allons simplement lui donner ses noms précis et sa écriture officielle."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 3,
+              "caption": "43 unités à partager en 4 groupes égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette histoire, le nombre de départ, $43$, porte un nom savant : c'est le **dividende**. Le nombre de parts que nous voulons faire, ici $4$, s'appelle le **diviseur**. Le résultat du partage équitable, le nombre d'objets dans chaque part, c'est le **quotient**. Et ce qui ne peut pas être partagé, les billes qui restent dans ta main à la fin, c'est le **reste**. Pour que le partage soit bien \"euclidien\", c'est-à-dire bien fait selon la règle, le reste doit être *strictement plus petit* que le diviseur. Ici, chaque sac reçoit $10$ billes, il en reste $3$. On ne peut pas faire un cinquième tour complet car $3 < 4$."
+            },
+            {
+              "type": "definition",
+              "term": "Dividende",
+              "definition": "Le nombre que l'on partage, le nombre de départ.",
+              "example": "Dans $43 \\div 4$, le dividende est $43$."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Le nombre de parts que l'on veut faire, ou le nombre par lequel on divise.",
+              "example": "Dans $43 \\div 4$, le diviseur est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient",
+              "definition": "Le nombre d'objets dans chaque part après le partage équitable.",
+              "example": "Dans $43 \\div 4$, le quotient est $10$."
+            },
+            {
+              "type": "definition",
+              "term": "Reste",
+              "definition": "Ce qui n'a pas pu être partagé équitablement. Il est toujours plus petit que le diviseur.",
+              "example": "Dans $43 \\div 4$, le reste est $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce partage peut s'écrire sous la forme d'une égalité fondamentale qui lie ces quatre nombres entre eux. C'est la **relation fondamentale de la division euclidienne** : le dividende est toujours égal au diviseur multiplié par le quotient, plus le reste. C'est une formule magique qui permet de vérifier n'importe quelle division sans refaire le partage. Si tu connais trois des nombres, tu retrouves le quatrième immédiatement."
+            },
+            {
+              "type": "display_math",
+              "latex": "43 = 4 \\times 10 + 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme c'est rassurant : $4 \\times 10 = 40$, et $40 + 3 = 43$. On retrouve exactement notre nombre de départ. Cette égalité est ton meilleur outil de contrôle. Dès que tu as fait une division, pose cette multiplication et cette addition. Si tu retombes sur le dividende, ton quotient et ton reste sont bons. Si ce n'est pas le cas, il y a une erreur quelque part, souvent dans le calcul du quotient ou dans la soustraction pour trouver le reste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le sens du partage est clair, voyons comment l'écrire proprement en colonne, comme un mathématicien. La **division posée** est un algorithme, c'est-à-dire une suite d'étapes toujours identiques, qui permet de trouver le quotient et le reste même pour de très grands nombres, sans avoir à dessiner des milliers de billes. On écrit le dividende à gauche, le diviseur à droite, séparés par une barre verticale. On cherche ensuite combien de fois le diviseur \"rentre\" dans les premiers chiffres du dividende, on écrit ce chiffre au-dessus de la barre (c'est un chiffre du quotient), on multiplie, on soustrait, on abaisse le chiffre suivant... et on recommence jusqu'à la fin."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Installer la division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le dividende ($43$) à gauche, le diviseur ($4$) à droite, trace la barre verticale et la ligne horizontale pour le quotient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de fois $4$ dans $4$ ? Une fois. Écris $1$ au quotient. Multiplie $1 \\times 4 = 4$, écris $4$ sous le $4$, soustrais : $4-4=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Abaisser les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Abaisse le $3$ à côté du $0$. Combien de fois $4$ dans $3$ ? Zéro fois. Écris $0$ au quotient. Le $3$ qui reste est le reste final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column_operation",
+              "operator": ":",
+              "operands": [
+                "43",
+                "4"
+              ],
+              "result": "10 r 3",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous maintenant avec un nombre un peu plus grand pour bien ancrer la mécanique. Prenons $268$ bonbons à partager entre $5$ camarades. La procédure est exactement la même, il y a juste plus d'étapes car il y a plus de chiffres. On commence par les centaines : $5$ ne rentre pas dans $2$, on prend donc les deux premiers chiffres, $26$. Combien de fois $5$ dans $26$ ? $5 \\times 5 = 25$, ça marche. $5 \\times 6 = 30$, c'est trop. On pose $5$ au quotient. On continue calmement, chiffre par chiffre, sans se presser. La régularité de la méthode est ta garantie de réussite."
+            },
+            {
+              "type": "column_operation",
+              "operator": ":",
+              "operands": [
+                "268",
+                "5"
+              ],
+              "result": "53 r 3",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette première étape, imaginons une situation de la vie courante. Un bibliothécaire a $542$ livres à ranger sur des étagères qui peuvent contenir exactement $6$ livres chacune. Combien d'étagères pleines pourra-t-il remplir ? Et combien de livres resteront pour une étagère incomplète ? Ici, le dividende est le nombre total de livres, le diviseur est la capacité d'une étagère. Le quotient te donne le nombre d'étagères pleines, le reste le nombre de livres sur la dernière. C'est exactement le même raisonnement que les billes, mais avec des livres !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la division euclidienne de $72$ par $5$. Donne le quotient et le reste.",
+              "answer": "Quotient : $14$, Reste : $2$",
+              "hint": "Combien de fois $5$ dans $7$ ? Et dans le nombre qui reste avec la dizaine suivante ?",
+              "explanation": "$5 \\times 14 = 70$. $72 - 70 = 2$. Le reste $2$ est bien plus petit que le diviseur $5$. Vérification : $5 \\times 14 + 2 = 70 + 2 = 72$."
+            },
+            {
+              "question": "Vérifie si la division suivante est correcte : $89 = 6 \\times 14 + 5$.",
+              "answer": "Non, l'égalité est fausse.",
+              "hint": "Calcule $6 \\times 14 + 5$ et compare à $89$.",
+              "explanation": "$6 \\times 14 = 84$. $84 + 5 = 89$. Attends, $84+5=89$. L'égalité est vraie ! Mais le reste $5$ est-il plus petit que le diviseur $6$ ? Oui. Donc c'est une division euclidienne correcte. Quotient $14$, reste $5$."
+            },
+            {
+              "question": "Pose et effectue la division de $345$ par $7$.",
+              "answer": "Quotient : $49$, Reste : $2$",
+              "hint": "Commence par $34$ (les deux premiers chiffres). Combien de fois $7$ dans $34$ ?",
+              "explanation": "$7$ dans $34$ : $4$ ($7\\times4=28$). Reste $6$. Abaisse $5 \\rightarrow 65$. $7$ dans $65$ : $9$ ($7\\times9=63$). Reste $2$. Vérification : $7 \\times 49 + 2 = 343 + 2 = 345$."
+            },
+            {
+              "question": "Un fleuriste a $187$ roses. Il veut faire des bouquets de $8$ roses. Combien de bouquets fera-t-il ? Combien de roses resteront-elles ?",
+              "answer": "Il fera $23$ bouquets et il restera $3$ roses.",
+              "hint": "Identifie le dividende (total roses) et le diviseur (roses par bouquet). Pose la division.",
+              "explanation": "Dividende $187$, diviseur $8$. $187 \\div 8 = 23$ reste $3$. $8 \\times 23 = 184$. $187 - 184 = 3$. Vérification : $8 \\times 23 + 3 = 187$."
+            }
+          ]
+        },
+        {
+          "title": "Multiples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les multiples : quand le partage tombe juste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons nos billes. Si tu as $24$ billes et que tu veux les partager en $4$ sacs, tu poses $6$ billes par sac et... il n'en reste aucune ! Le partage est parfait, le reste est $0$. Dans ce cas précis, on dit que $24$ est un **multiple** de $4$. C'est une idée simple mais puissante : un nombre est multiple d'un autre si on peut le partager équitablement par ce dernier sans aucun reste. Autrement dit, le diviseur \"tombe juste\" dans le dividende. Cette notion de multiple est le miroir exact de la division euclidienne avec reste nul."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les multiples de 4 sur la droite numérique",
+              "min": 0,
+              "max": 50,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 16,
+                  "label": "16"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 24,
+                  "label": "24"
+                },
+                {
+                  "value": 28,
+                  "label": "28"
+                },
+                {
+                  "value": 32,
+                  "label": "32"
+                },
+                {
+                  "value": 36,
+                  "label": "36"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 44,
+                  "label": "44"
+                },
+                {
+                  "value": 48,
+                  "label": "48"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite numérique, tu vois les multiples de $4$ alignés comme des marches d'escalier : $0, 4, 8, 12, 16...$ Chaque marche est espacée de $4$ unités. C'est visuel : pour aller d'un multiple de $4$ au suivant, on ajoute $4$. Pour aller au précédent, on retire $4$. Remarque aussi que $0$ est un multiple de $4$ (et de n'importe quel nombre non nul) car $0 = 4 \\times 0$. C'est le point de départ de l'escalier. Cette régularité est la signature des multiples : ils forment une suite arithmétique de raison égale au diviseur."
+            },
+            {
+              "type": "definition",
+              "term": "Multiple",
+              "definition": "Un nombre entier $a$ est un multiple d'un entier $b$ (non nul) si le reste de la division euclidienne de $a$ par $b$ est $0$. Il existe un entier $k$ tel que $a = b \\times k$.",
+              "example": "$24$ est un multiple de $4$ car $24 = 4 \\times 6$."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Si $a$ est un multiple de $b$, alors $b$ est un diviseur de $a$. C'est le même lien vu de l'autre côté.",
+              "example": "$4$ est un diviseur de $24$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà par cœur les multiples de plein de nombres sans le savoir : ce sont simplement les résultats de tes tables de multiplication ! La table de $7$ ($7, 14, 21, 28, 35, 42, 49, 56, 63, 70...$) est exactement la liste des multiples de $7$. Quand tu apprends \"$7 \\times 8 = 56$\", tu apprends en même temps que $56$ est un multiple de $7$ (et aussi un multiple de $8$). C'est pour cela que connaître ses tables par cœur, c'est connaître une infinité de multiples. C'est ton super-pouvoir pour repérer vite si un nombre est multiple d'un autre petit nombre."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Table de multiplication",
+                "Multiples correspondants"
+              ],
+              "rows": [
+                [
+                  "$3 \\times 1 = 3$",
+                  "3 est multiple de 3"
+                ],
+                [
+                  "$3 \\times 2 = 6$",
+                  "6 est multiple de 3"
+                ],
+                [
+                  "$3 \\times 3 = 9$",
+                  "9 est multiple de 3"
+                ],
+                [
+                  "$3 \\times 4 = 12$",
+                  "12 est multiple de 3"
+                ],
+                [
+                  "$3 \\times 5 = 15$",
+                  "15 est multiple de 3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on cherche un nombre qui est multiple de *deux* nombres différents en même temps. Par exemple, un nombre qui soit multiple de $4$ ET multiple de $6$. On appelle ça un **multiple commun**. Regardons les listes : multiples de $4$ : $4, 8, 12, 16, 20, 24, 28, 32, 36...$ Multiples de $6$ : $6, 12, 18, 24, 30, 36...$ Les nombres qui apparaissent dans les deux listes sont $12, 24, 36...$ Ce sont les multiples communs. Le plus petit d'entre eux (sauf $0$), ici $12$, a un nom spécial : c'est le **PGCD** ? Non, attention, c'est le **PPCM** (Plus Petit Commun Multiple). C'est un outil précieux pour additionner des fractions plus tard, mais déjà maintenant, il aide à résoudre des problèmes de synchronisation (deux bus qui partent ensemble, deux phares qui clignotent ensemble...)."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Multiples communs de 4 et 6",
+              "sets": [
+                {
+                  "label": "Multiples de 4",
+                  "elements": [
+                    "4",
+                    "8",
+                    "12",
+                    "16",
+                    "20",
+                    "24",
+                    "28",
+                    "32",
+                    "36"
+                  ]
+                },
+                {
+                  "label": "Multiples de 6",
+                  "elements": [
+                    "6",
+                    "12",
+                    "18",
+                    "24",
+                    "30",
+                    "36"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant un petit problème concret. Deux phares tournent au large des côtes. Le premier fait un tour complet toutes les $12$ secondes. Le second en met $18$. Ils viennent d'éclairer la côte en même temps (au temps $0$). Dans combien de secondes éclaireront-ils à nouveau la côte simultanément ? Il faut trouver un temps qui soit multiple de $12$ (pour le premier) ET multiple de $18$ (pour le second). C'est donc un multiple commun. Le premier multiple commun non nul est le PPCM. Multiples de $12$ : $12, 24, 36, 48...$ Multiples de $18$ : $18, 36, 54...$ Le premier commun est $36$. Ils se rallumeront ensemble dans $36$ secondes. C'est la magie des multiples dans la vraie vie !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les nombres $27, 32, 35, 40, 45$, lesquels sont des multiples de $5$ ?",
+              "answer": "$35$ et $40$",
+              "hint": "Un multiple de $5$ se termine toujours par $0$ ou par $5$. Regarde le chiffre des unités.",
+              "explanation": "$35$ se termine par $5$, $40$ se termine par $0$. Les autres se terminent par $7, 2, 5$ (attends, $27$ finit par $7$, $32$ par $2$, $45$ par $5$). $45$ est aussi multiple de $5$ ($9 \\times 5$). Donc $35, 40, 45$."
+            },
+            {
+              "question": "Complète la suite des multiples de $9$ : $9, 18, 27, \\dots, \\dots, 54, \\dots$",
+              "answer": "$36, 45, 63$",
+              "hint": "Ajoute $9$ à chaque fois. Ou utilise la table de $9$.",
+              "explanation": "$27+9=36$, $36+9=45$, $45+9=54$, $54+9=63$. Ce sont les résultats de $9\\times4, 9\\times5, 9\\times6, 9\\times7$."
+            },
+            {
+              "question": "Trouve les deux premiers multiples communs non nuls de $6$ et $9$.",
+              "answer": "$18$ et $36$",
+              "hint": "Écris les multiples de $6$ et ceux de $9$ jusqu'à en trouver deux en commun.",
+              "explanation": "Multiples de $6$ : $6, 12, 18, 24, 30, 36...$ Multiples de $9$ : $9, 18, 27, 36...$ Communs : $18, 36$. Le PPCM est $18$."
+            },
+            {
+              "question": "Un train passe toutes les $15$ minutes, un autre toutes les $20$ minutes. Ils passent ensemble à $14h00$. À quelle heure repasseront-ils ensemble ?",
+              "answer": "À $15h00$ (dans $60$ minutes).",
+              "hint": "Cherche un multiple commun de $15$ et $20$. Le premier non nul.",
+              "explanation": "Multiples de $15$ : $15, 30, 45, 60...$ Multiples de $20$ : $20, 40, 60...$ PPCM = $60$ min = $1$ heure. $14h00 + 1h = 15h00$."
+            }
+          ]
+        },
+        {
+          "title": "Critères simples si prévus.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les détectives de la divisibilité : critères 2, 3, 5, 9, 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu es face à un grand nombre, disons $1\\,245$, et on te demande : \"Est-il divisible par $3$ ?\" Tu *pourrais* faire la division posée, mais il existe des raccourcis incroyablement rapides, de véritables tours de magie mathématiques qu'on appelle **critères de divisibilité**. Ils te permettent de répondre en quelques secondes, juste en regardant les chiffres du nombre, sans poser une seule opération. C'est comme avoir des lunettes spéciales qui révèlent la structure cachée du nombre. Nous allons apprendre les critères pour $2, 3, 5, 9$ et $10$. Ils sont simples, efficaces, et tu vas adorer les utiliser."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les plus faciles : **$2$, $5$ et $10$**. Pour eux, un seul chiffre compte : le **chiffre des unités** (le tout dernier à droite). C'est lui qui décide de tout. Un nombre est divisible par $2$ (c'est-à-dire multiple de $2$) si son chiffre des unités est **pair** : $0, 2, 4, 6$ ou $8$. Il est divisible par $5$ si son chiffre des unités est **$0$ ou $5$**. Il est divisible par $10$ si son chiffre des unités est **$0$**. C'est radical : tu regardes la fin du nombre, et tu as la réponse immédiate. Pourquoi ? Parce que les dizaines, les centaines, etc., sont tous des multiples de $10$, donc de $2$ et de $5$. Seules les unités peuvent poser problème."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Divisible par 2 } \\iff \\text{chiffre des unités } \\in \\{0,2,4,6,8\\}"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Divisible par 5 } \\iff \\text{chiffre des unités } \\in \\{0,5\\}"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Divisible par 10 } \\iff \\text{chiffre des unités } = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux critères un peu plus mystérieux mais tout aussi magiques : **$3$ et $9$**. Là, ce n'est pas le dernier chiffre qui compte, mais **la somme de TOUS les chiffres** du nombre. C'est surprenant, non ? Pour savoir si un nombre est divisible par $3$, tu additionnes ses chiffres. Si la somme obtenue est un multiple de $3$ (ex: $3, 6, 9, 12, 15...$), alors le nombre de départ est divisible par $3$. Pour $9$, même règle : si la somme des chiffres est un multiple de $9$ ($9, 18, 27...$), le nombre est divisible par $9$. Essaie avec $1245$ : $1+2+4+5 = 12$. $12$ est multiple de $3$ ($3\\times4$), donc $1245$ est divisible par $3$. Mais $12$ n'est pas multiple de $9$, donc $1245$ n'est pas divisible par $9$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Critère de divisibilité par 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Additionne tous les chiffres du nombre. 2. Regarde si le résultat est dans la table de 3 (3, 6, 9, 12, 15...). 3. Si oui, le nombre est divisible par 3. Si non, il ne l'est pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Critère de divisibilité par 9",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Additionne tous les chiffres du nombre. 2. Regarde si le résultat est dans la table de 9 (9, 18, 27, 36...). 3. Si oui, le nombre est divisible par 9. Si non, il ne l'est pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Astuce pour les grandes sommes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la somme des chiffres est encore un grand nombre (ex: 378 -> 3+7+8=18), tu peux réappliquer la règle sur cette somme ! 18 -> 1+8=9. C'est multiple de 9, donc 378 est divisible par 9 (et par 3)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces critères peuvent se combiner pour tester d'autres nombres. Par exemple, un nombre est divisible par $6$ s'il est divisible par $2$ **ET** par $3$ en même temps. Pourquoi ? Parce que $6 = 2 \\times 3$ et que $2$ et $3$ n'ont pas de diviseur commun (ils sont « premiers entre eux »). Donc pour tester $6$, tu regardes le chiffre des unités (pair ?) ET tu fais la somme des chiffres (multiple de $3$ ?). Si les deux tests passent, c'est gagné. De même, divisible par $4$ ? Regarde les **deux derniers chiffres** (le nombre des dizaines et unités). Si ce nombre à deux chiffres est multiple de $4$, le grand nombre l'est aussi. C'est une boîte à outils complète qui s'ouvre devant toi."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Diviseur",
+                "Critère simple",
+                "Exemple ($1\\,245$)"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "Chiffre des unités pair",
+                  "5 impair -> Non"
+                ],
+                [
+                  "3",
+                  "Somme des chiffres multiple de 3",
+                  "1+2+4+5=12 -> Oui"
+                ],
+                [
+                  "4",
+                  "Nombre formé par les 2 derniers chiffres multiple de 4",
+                  "45 non multiple de 4 -> Non"
+                ],
+                [
+                  "5",
+                  "Chiffre des unités 0 ou 5",
+                  "5 -> Oui"
+                ],
+                [
+                  "6",
+                  "Divisible par 2 ET par 3",
+                  "Non (pas par 2) -> Non"
+                ],
+                [
+                  "9",
+                  "Somme des chiffres multiple de 9",
+                  "12 non multiple de 9 -> Non"
+                ],
+                [
+                  "10",
+                  "Chiffre des unités 0",
+                  "5 -> Non"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, imaginons un défi : tu as le numéro d'un bus, $2\\,376$, et tu veux savoir par quels nombres parmi $2, 3, 5, 9, 10$ il est divisible, sans faire de division. Tu deviens détective. Unités : $6$ (pair) -> Divisible par $2$. Pas $0$ ni $5$ -> Pas par $5$, pas par $10$. Somme : $2+3+7+6 = 18$. $18$ multiple de $3$ -> Oui pour $3$. $18$ multiple de $9$ -> Oui pour $9$. Bilan : divisible par $2, 3, 6, 9$. C'est rapide, c'est sûr, et ça impressionne toujours tes copains. Tu as maintenant les clés pour explorer la divisibilité de n'importe quel nombre entier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le dividende, le diviseur, le quotient et le reste d'une division euclidienne.",
+                "Je sais poser et effectuer une division euclidienne en colonne.",
+                "Je sais vérifier une division grâce à l'égalité : dividende = diviseur × quotient + reste.",
+                "Je sais reconnaître si un nombre est multiple d'un autre (reste nul).",
+                "Je sais lister les multiples d'un nombre et trouver des multiples communs.",
+                "J'applique les critères de divisibilité par 2, 3, 5, 9, 10 (et 4, 6) sur n'importe quel nombre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sans faire la division, dis si les nombres suivants sont divisibles par 2, par 5 et par 10 : $230 ; 457 ; 1\\,000 ; 825$.",
+              "answer": "230 : 2, 5, 10. 457 : aucun. 1000 : 2, 5, 10. 825 : 5 seulement.",
+              "hint": "Regarde uniquement le dernier chiffre de chaque nombre (unités). Pair ? 0 ou 5 ? 0 ?",
+              "explanation": "230 finit par 0 -> 2, 5, 10. 457 finit par 7 (impair, pas 0 ni 5) -> aucun. 1000 finit par 0 -> 2, 5, 10. 825 finit par 5 -> 5 seulement (pas pair, pas 0)."
+            },
+            {
+              "question": "Teste la divisibilité par 3 et par 9 pour les nombres : $423 ; 561 ; 999 ; 1\\,002$.",
+              "answer": "423 : 3 et 9. 561 : 3 seulement. 999 : 3 et 9. 1002 : 3 seulement.",
+              "hint": "Calcule la somme des chiffres. Est-elle dans la table de 3 ? Dans la table de 9 ?",
+              "explanation": "423 -> 4+2+3=9 (mult 3 et 9). 561 -> 5+6+1=12 (mult 3, pas 9). 999 -> 9+9+9=27 (mult 3 et 9). 1002 -> 1+0+0+2=3 (mult 3, pas 9)."
+            },
+            {
+              "question": "Un nombre est divisible par 6. Quels tests dois-tu faire pour le vérifier ? Applique-les à $1\\,236$ et $2\\,345$.",
+              "answer": "Tester divisibilité par 2 ET par 3. 1236 : OUI. 2345 : NON.",
+              "hint": "Divisible par 6 = (chiffre unités pair) ET (somme des chiffres multiple de 3).",
+              "explanation": "1236 : unités 6 (pair OK), somme 1+2+3+6=12 (mult 3 OK) -> Divisible par 6. 2345 : unités 5 (impair -> FAIL) -> Pas divisible par 6 (pas la peine de tester la somme)."
+            },
+            {
+              "question": "Trouve un nombre à 3 chiffres divisible par 2, 3, 5 et 9 en même temps.",
+              "answer": "Exemple : $270$ (ou $540$, $810$, $900$...).",
+              "hint": "Divisible par 2 et 5 -> finit par 0. Divisible par 9 -> somme des chiffres multiple de 9. Essaie des centaines.",
+              "explanation": "Finit par 0 (2 et 5). Somme des chiffres multiple de 9 (donc 3 et 9). 2+7+0=9 -> 270 marche. 5+4+0=9 -> 540 marche. 9+0+0=9 -> 900 marche."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

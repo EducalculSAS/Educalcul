@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Lire expression",
+  "title": "Priorités opératoires : Lire et évaluer une expression",
+  "blocks": [
+    {
+      "title": "Question 1 : Expression simple",
+      "content": "Écris un algorithme (en langage naturel ou sous forme de pseudo‑code) qui permet de calculer la valeur de l'expression $3 + 4 \\times 2$ en respectant les priorités opératoires.",
+      "correctAnswer": "Algorithme :\\n1. Calculer la multiplication $4 \\times 2 = 8$.\\n2. Ajouter le résultat à $3$ : $3 + 8 = 11$.\\n3. Afficher le résultat final $11$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Selon les priorités, la multiplication est effectuée avant l'addition. On commence par $4 \\times 2 = 8$, puis on additionne $3$ pour obtenir $11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Expression avec parenthèses et division",
+      "content": "Écris un algorithme qui évalue l'expression $(5 + 3) \\times 2 - 6 / 3$ en suivant l'ordre des opérations.",
+      "correctAnswer": "Algorithme :\\n1. Calculer le contenu des parenthèses : $5 + 3 = 8$.\\n2. Effectuer la multiplication : $8 \\times 2 = 16$.\\n3. Effectuer la division : $6 / 3 = 2$.\\n4. Soustraire le résultat de la division du produit : $16 - 2 = 14$.\\n5. Afficher $14$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les parenthèses sont prioritaires, puis les multiplications et divisions de gauche à droite, enfin l'addition et la soustraction. On obtient $14$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Expression imbriquée",
+      "content": "Propose un algorithme structuré pour calculer $2 \\times (4 + 6 / (3 - 1)) - 5$.",
+      "correctAnswer": "Algorithme :\\n1. Calculer la parenthèse la plus interne : $3 - 1 = 2$.\\n2. Effectuer la division à l'intérieur des parenthèses : $6 / 2 = 3$.\\n3. Additionner dans les parenthèses : $4 + 3 = 7$.\\n4. Multiplier par $2$ : $2 \\times 7 = 14$.\\n5. Soustraire $5$ : $14 - 5 = 9$.\\n6. Afficher le résultat $9$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout d'abord la parenthèse intérieure $(3-1)$, puis la division, puis l'addition dans la parenthèse externe, ensuite la multiplication, et enfin la soustraction. Le résultat final est $9$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

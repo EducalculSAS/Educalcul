@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 142,
+  "_course_code": "ce2-t01-c01-construire-le-millier",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Reconnaître 1 000 dans plusieurs représentations",
+  "title": "Reconnaître 1 000 dans plusieurs représentations",
+  "questions": [
+    {
+      "text": "Combien d'unités représente cette collection de matériel en base 10 ?",
+      "options": [
+        "$100$",
+        "$1\\,000$",
+        "$10\\,000$",
+        "$10$"
+      ],
+      "correctAnswer": "$1\\,000$",
+      "explanation": "La figure montre 10 plaques de 100 unités (10 centaines). Puisque $10 \\times 100 = 1\\,000$, cette collection représente mille unités. Les distracteurs correspondent à une seule centaine ($100$), à dix milliers ($10\\,000$) ou à une dizaine ($10$).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 10,
+        "tens": 0,
+        "units": 0,
+        "caption": "10 plaques de centaines"
+      }
+    },
+    {
+      "text": "Parmi ces égalités, laquelle est fausse ?",
+      "options": [
+        "$1\\,000 = 10 \\times 100$",
+        "$1\\,000 = 100 \\times 10$",
+        "$1\\,000 = 10 \\times 10$",
+        "$1\\,000 = 1\\,000 \\times 1$"
+      ],
+      "correctAnswer": "$1\\,000 = 10 \\times 10$",
+      "explanation": "$10 \\times 10 = 100$, ce qui n'est pas égal à $1\\,000$. Les autres égalités sont vraies : $10$ centaines font $1\\,000$, $100$ dizaines font $1\\,000$ et $1\\,000$ unités font $1\\,000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre est repéré par le point A sur cette droite graduée ?",
+      "options": [
+        "$100$",
+        "$1\\,000$",
+        "$10\\,000$",
+        "$500$"
+      ],
+      "correctAnswer": "$1\\,000$",
+      "explanation": "La droite graduée va de $0$ à $2\\,000$ avec des graduations tous les $100$. Le point A est placé exactement à la dixième graduation après $0$, ce qui correspond à $10 \\times 100 = 1\\,000$. $500$ serait à mi-chemin entre $0$ et $1\\,000$, et $10\\,000$ est hors échelle.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 2000",
+        "min": 0,
+        "max": 2000,
+        "points": [
+          {
+            "value": 1000,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Comment s'écrit en lettres le nombre représenté dans ce tableau de numération ?",
+      "options": [
+        "Mille",
+        "Cent",
+        "Dix mille",
+        "Un cent"
+      ],
+      "correctAnswer": "Mille",
+      "explanation": "Le tableau de numération affiche 1 dans la colonne des milliers et 0 dans les colonnes des centaines, dizaines et unités. Cela correspond au nombre $1\\,000$, qui s'écrit « mille » en toutes lettres. « Cent » est $100$, « dix mille » est $10\\,000$ et « un cent » n'est pas l'écriture standard de $100$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 1000,
+        "caption": "Tableau de numération : 1 mille, 0 cent, 0 dix, 0 unité"
+      }
+    },
+    {
+      "text": "Une caisse contient 10 boîtes. Chaque boîte contient 100 trombones. Combien y a-t-il de trombones dans la caisse ?",
+      "options": [
+        "$100$",
+        "$1\\,000$",
+        "$10\\,000$",
+        "$110$"
+      ],
+      "correctAnswer": "$1\\,000$",
+      "explanation": "Il faut multiplier le nombre de boîtes par le nombre de trombones par boîte : $10 \\times 100 = 1\\,000$. $100$ correspond au contenu d'une seule boîte. $10\\,000$ serait le résultat de $100 \\times 100$. $110$ correspond à une addition ($10 + 100$) au lieu d'une multiplication.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

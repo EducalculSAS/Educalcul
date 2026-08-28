@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Solides et patrons",
+  "title": "Quiz : Solides et patrons - Application",
+  "questions": [
+    {
+      "text": "Le patron ci-dessous correspond à quel solide ?",
+      "options": [
+        "Cube",
+        "Pavé droit",
+        "Pyramide à base carrée",
+        "Cylindre"
+      ],
+      "correctAnswer": "Cube",
+      "explanation": "Le patron présenté est composé de six carrés identiques reliés entre eux, ce qui est le patron classique d'un cube. Les autres solides ont des patrons différents : le pavé droit utilise des rectangles, la pyramide à base carrée utilise un carré et quatre triangles, et le cylindre utilise deux cercles et un rectangle.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Combien de faces a un cube ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$8$",
+        "$12$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Un cube est un solide régulier à six faces carrées congruentes. Les nombres 4, 8 et 12 correspondent respectivement au nombre de faces d'un tétraèdre, au nombre de sommets d'un cube et au nombre d'arêtes d'un cube.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de rectangles compose le patron d'un pavé droit ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Un pavé droit possède six faces rectangulaires (deux par deux égales). Son patron est donc constitué de six rectangles. Les autres nombres ne correspondent pas au nombre de faces de ce solide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel solide a pour patron un carré et quatre triangles ?",
+      "options": [
+        "Cube",
+        "Pyramide à base carrée",
+        "Pavé droit",
+        "Cône"
+      ],
+      "correctAnswer": "Pyramide à base carrée",
+      "explanation": "La pyramide à base carrée est formée d'une base carrée et de quatre faces triangulaires qui se rejoignent au sommet. Son patron montre donc un carré central entouré de quatre triangles. Le cube n'a que des carrés, le pavé droit n'a que des rectangles, et le cône a un cercle et un secteur de cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien d'arêtes a un cube ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$14$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Chaque face du cube est un carré à quatre côtés, mais chaque arête est partagée par deux faces. Le cube a donc 12 arêtes distinctes. Les nombres 8 et 10 correspondent au nombre de sommets et à une valeur intermédiaire incorrecte, tandis que 14 n'a pas de lien avec les propriétés du cube.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_course_id": 125,
+  "_course_code": "ce1-t06-c09-bilan-grandeurs-et-mesures-ce1",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Longueurs, masses, monnaie et temps",
+  "title": "Quiz Approfondissement : Longueurs, masses, monnaie et temps",
+  "questions": [
+    {
+      "text": "Quelle est la longueur du segment affiché sur la règle ?",
+      "options": [
+        "6 cm",
+        "7 cm",
+        "8 cm",
+        "9 cm"
+      ],
+      "correctAnswer": "8 cm",
+      "explanation": "La figure montre un segment mesuré sur une règle graduée en centimètres. Le repère indique exactement 8 cm, donc la bonne réponse est 8 cm. Les autres valeurs correspondent à des erreurs de lecture d'un graduations près.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Segment de 8 cm"
+      }
+    },
+    {
+      "text": "Quelle est la masse totale placée sur le plateau gauche de la balance ?",
+      "options": [
+        "6 kg",
+        "7 kg",
+        "8 kg",
+        "9 kg"
+      ],
+      "correctAnswer": "7 kg",
+      "explanation": "Sur le plateau gauche on voit deux masses : 3 kg et 4 kg. En les additionnant, on obtient 3 + 4 = 7 kg. Le plateau droit affiche 7 kg, ce qui confirme l'équilibre. Les autres choix résultent d'une addition erronée ou d'une confusion avec le plateau droit.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          3,
+          4
+        ],
+        "right": [
+          7
+        ],
+        "caption": "Balance avec masses 3 kg et 4 kg à gauche, 7 kg à droite"
+      }
+    },
+    {
+      "text": "Combien d'euros y a-t-il dans la bourse représentée ?",
+      "options": [
+        "3,50 €",
+        "3,80 €",
+        "4,00 €",
+        "3,30 €"
+      ],
+      "correctAnswer": "3,80 €",
+      "explanation": "La bourse contient des pièces de 2 € (200 c), 1 € (100 c), 50 c, 20 c et 10 c. La somme en centimes est 200 + 100 + 50 + 20 + 10 = 380 centimes, soit 3,80 €. Les autres montants correspondent à des oublis ou des erreurs d'addition de pièces.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          100,
+          50,
+          20,
+          10
+        ],
+        "target": 380,
+        "caption": "Bourse contenant 2€, 1€, 50c, 20c, 10c"
+      }
+    },
+    {
+      "text": "Quelle heure indique l'horloge ?",
+      "options": [
+        "3 heures 15",
+        "3 heures 30",
+        "4 heures 00",
+        "2 heures 45"
+      ],
+      "correctAnswer": "3 heures 30",
+      "explanation": "L'horloge affiche l'aiguille des heures sur 3 et l'aiguille des minutes sur 6, ce qui correspond à 30 minutes. Donc l'heure est 3 heures 30. Les autres options ne correspondent pas à la position des aiguilles.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 30,
+        "caption": "Horloge indiquant 3h30",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Combien de centimètres y a-t-il dans 1 mètre 20 centimètres ?",
+      "options": [
+        "100 cm",
+        "120 cm",
+        "130 cm",
+        "200 cm"
+      ],
+      "correctAnswer": "120 cm",
+      "explanation": "1 mètre équivaut à 100 centimètres. En ajoutant les 20 centimètres supplémentaires, on obtient 100 + 20 = 120 centimètres. Les autres réponses correspondent à une conversion incomplète (100 cm) ou à une addition erronée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

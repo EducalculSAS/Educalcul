@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Définir",
+  "title": "Quiz : Définir une fonction en algorithmique",
+  "questions": [
+    {
+      "text": "Dans un algorithme écrit en pseudo-code (style Python), quelle ligne correspond à la définition correcte d'une fonction nommée `carre` qui prend un paramètre `x` et renvoie le résultat de $x \\times x$ ?",
+      "options": [
+        "fonction carre(x) : retourner x * x",
+        "def carre(x) : return x * x",
+        "carre = fonction(x) { x * x }",
+        "def carre(x) : x * x"
+      ],
+      "correctAnswer": "def carre(x) : return x * x",
+      "explanation": "En pseudo-code inspiré de Python (standard en 3e), on utilise le mot-clé `def` pour définir une fonction, suivi du nom et des paramètres entre parenthèses. Le corps de la fonction est indenté. Pour renvoyer une valeur, on utilise obligatoirement l'instruction `return`. La première option utilise un syntaxe 'fonction ... :' non standard. La troisième utilise des accolades et pas de return. La quatrième oublie le mot-clé `return`, la fonction ne renverrait alors rien (None).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n```\\ndef ajouter(a, b):\\n    resultat = a + b\\n    return resultat\\n\\nx = 5\\ny = ajouter(x, 3)\\nafficher(y)\\n```\\nQuelle valeur est affichée ?",
+      "options": [
+        "5",
+        "8",
+        "3",
+        "Erreur car la variable `resultat` n'existe pas en dehors de la fonction"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La fonction `ajouter` reçoit les arguments 5 (valeur de x) et 3. Elle calcule $5 + 3 = 8$, stocke 8 dans la variable locale `resultat` et renvoie cette valeur avec `return`. La variable `y` reçoit cette valeur renvoyée (8). L'affichage de `y` donne donc 8. La variable `resultat` est locale à la fonction, mais sa valeur est transmise à l'extérieur via `return`.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la différence fondamentale entre une **fonction** et une **procédure** en algorithmique ?",
+      "options": [
+        "Une fonction utilise des paramètres, une procédure n'en utilise pas.",
+        "Une fonction renvoie une valeur avec `return`, une procédure n'en renvoie pas (elle effectue juste des actions).",
+        "Une procédure commence par `def`, une fonction commence par `proc`.",
+        "Une fonction ne peut pas modifier de variables globales, une procédure le peut."
+      ],
+      "correctAnswer": "Une fonction renvoie une valeur avec `return`, une procédure n'en renvoie pas (elle effectue juste des actions).",
+      "explanation": "C'est la définition théorique standard : une fonction calcule et renvoie une valeur (utilisable dans une expression), tandis qu'une procédure exécute une séquence d'instructions (affichage, modification de variable globale, tracé...) sans renvoyer de valeur exploitable par un `return`. Les deux peuvent avoir des paramètres. En Python, tout est `def`, mais l'absence de `return` (ou `return None`) fait office de procédure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le code suivant :\\n```\\nn = 10\\n\\ndef modifier():\\n    n = 20\\n    afficher(\"Dans la fonction :\", n)\\n\\nmodifier()\\nafficher(\"Après la fonction :\", n)\\n```\\nQue affiche ce programme ?",
+      "options": [
+        "Dans la fonction : 20\\nAprès la fonction : 20",
+        "Dans la fonction : 10\\nAprès la fonction : 10",
+        "Dans la fonction : 20\\nAprès la fonction : 10",
+        "Erreur : la variable `n` est inaccessible dans la fonction"
+      ],
+      "correctAnswer": "Dans la fonction : 20\\nAprès la fonction : 10",
+      "explanation": "La variable `n` définie au début est globale. À l'intérieur de `modifier()`, l'instruction `n = 20` crée une **nouvelle variable locale** nommée `n`, qui masque la variable globale le temps de l'exécution de la fonction. L'affichage interne montre donc 20. À la sortie de la fonction, la variable locale est détruite, la variable globale `n` n'a pas été modifiée (elle vaut toujours 10), donc le second affichage montre 10. Pour modifier la globale, il faudrait écrire `global n` au début de la fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire une fonction `est_pair(n)` qui renvoie `Vrai` si l'entier `n` est pair, `Faux` sinon. Parmi ces propositions, laquelle est correcte et complète ?",
+      "options": [
+        "def est_pair(n):\\n    si n % 2 == 0:\\n        return Vrai\\n    sinon:\\n        return Faux",
+        "def est_pair(n):\\n    return n % 2 == 0",
+        "def est_pair(n):\\n    si n % 2 = 0:\\n        retourner Vrai\\n    retourner Faux",
+        "fonction est_pair(n):\\n    renvoyer n // 2 == 0"
+      ],
+      "correctAnswer": "def est_pair(n):\\n    return n % 2 == 0",
+      "explanation": "C'est l'écriture la plus concise et idiomatique (style Python). L'expression `n % 2 == 0` est une expression booléenne qui vaut `Vrai` (True) si le reste de la division par 2 est 0, `Faux` (False) sinon. La renvoyer directement avec `return` est correct. La première option utilise une syntaxe 'si/sinon' pseudo-code mélangeée à Python (`return` au lieu de `renvoyer`/`retourner`) et des majuscules `Vrai`/`Faux` au lieu de `True`/`False` souvent attendus, mais surtout elle est inutilement lourde. La troisième utilise `=` (affectation) au lieu de `==` (comparaison) et une syntaxe incorrecte. La quatrième utilise `//` (division entière) qui ne teste pas la parité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

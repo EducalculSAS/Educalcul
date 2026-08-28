@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "For / répétition",
+  "title": "Quiz : Boucles For / Répétition",
+  "questions": [
+    {
+      "text": "Combien de fois l'instruction « Afficher Bonjour » est-elle exécutée dans l'algorithme suivant ?\\nPour i de 1 à 5 faire\\n    Afficher « Bonjour »\\nFin pour",
+      "options": [
+        "Quatre fois",
+        "Cinq fois",
+        "Six fois",
+        "Dix fois"
+      ],
+      "correctAnswer": "Cinq fois",
+      "explanation": "La boucle « Pour i de 1 à 5 » prend les valeurs 1, 2, 3, 4, 5. Cela correspond à $5$ itérations. L'instruction à l'intérieur est donc exécutée cinq fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme ci-dessous, combien de valeurs différentes la variable i prend-elle ?\\nPour i de 3 à 7 faire\\n    Instruction quelconque\\nFin pour",
+      "options": [
+        "Trois valeurs",
+        "Quatre valeurs",
+        "Cinq valeurs",
+        "Sept valeurs"
+      ],
+      "correctAnswer": "Cinq valeurs",
+      "explanation": "La variable i commence à $3$ et s'incrémente de $1$ jusqu'à $7$ inclus. Les valeurs successives sont : $3, 4, 5, 6, 7$. Il y a donc $5$ valeurs distinctes ($7 - 3 + 1 = 5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "À la fin de l'exécution de cet algorithme, quelle valeur contient la variable S ?\\nS ← 0\\nPour i de 1 à 4 faire\\n    S ← S + i\\nFin pour",
+      "options": [
+        "Six",
+        "Dix",
+        "Quatorze",
+        "Quatre"
+      ],
+      "correctAnswer": "Dix",
+      "explanation": "C'est une boucle accumulatrice. Au début S = 0.\\nItération 1 (i=1) : S = 0 + 1 = 1.\\nItération 2 (i=2) : S = 1 + 2 = 3.\\nItération 3 (i=3) : S = 3 + 3 = 6.\\nItération 4 (i=4) : S = 6 + 4 = 10.\\nLa somme des entiers de 1 à 4 est $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec deux boucles imbriquées :\\nPour i de 1 à 3 faire\\n    Pour j de 1 à 2 faire\\n        Afficher \"*\"\\n    Fin pour\\nFin pour\\nCombien d'étoiles sont affichées au total ?",
+      "options": [
+        "Cinq",
+        "Six",
+        "Huit",
+        "Neuf"
+      ],
+      "correctAnswer": "Six",
+      "explanation": "La boucle extérieure (i) tourne $3$ fois (valeurs 1, 2, 3). Pour chaque tour de la boucle extérieure, la boucle intérieure (j) tourne $2$ fois (valeurs 1, 2). L'instruction « Afficher \"*\" » est donc exécutée $3 \\times 2 = 6$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après exécution de cet algorithme, quelle est la valeur finale de la variable x ?\\nx ← 10\\nPour k de 1 à 4 faire\\n    x ← x - 2\\nFin pour",
+      "options": [
+        "Deux",
+        "Quatre",
+        "Six",
+        "Huit"
+      ],
+      "correctAnswer": "Deux",
+      "explanation": "La boucle s'exécute $4$ fois (k = 1, 2, 3, 4). À chaque tour, on soustrait $2$ à x.\\nDépart : x = 10.\\nAprès 1er tour : 10 - 2 = 8.\\nAprès 2e tour : 8 - 2 = 6.\\nAprès 3e tour : 6 - 2 = 4.\\nAprès 4e tour : 4 - 2 = 2.\\nRésultat final : $2$. On peut calculer directement : $10 - (4 \\times 2) = 2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

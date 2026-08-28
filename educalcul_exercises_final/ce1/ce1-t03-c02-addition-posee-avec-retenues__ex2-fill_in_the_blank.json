@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 89,
+  "_course_code": "ce1-t03-c02-addition-posee-avec-retenues",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Gérer retenues",
+  "title": "L'addition posée avec retenue",
+  "blocks": [
+    {
+      "title": "Comprendre la retenue",
+      "content": "Dans l'addition $27 + 15$, on commence par ajouter les unités : $7 + 5 = 12$. On écrit {{1}} au total des unités et on retient {{2}} dizaine que l'on place au-dessus des dizaines. Ensuite, on additionne les dizaines : $2 + 1 + 1 = 4$. Le résultat final est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "1",
+        "42"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les unités : $7 + 5 = 12$. On écrit le chiffre des unités ($2$) dans la colonne des unités et on retient le chiffre des dizaines ($1$) qu'on place au-dessus de la colonne des dizaines. Puis on additionne les dizaines : $2 + 1 + 1 (\\text{retenue}) = 4$. Le résultat est $42$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer avec une retenue",
+      "content": "Complète l'addition posée ci-dessous :\\n$46 + 38$\\nUnités : $6 + 8 = 14$ → J'écris {{1}} et je retiens {{2}}.\\nDizaines : $4 + 3 + 1 = {{3}}$.\\nLe total est {{4}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "1",
+        "8",
+        "84"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au niveau des unités, $6 + 8 = 14$. On écrit $4$ et on retient $1$ dizaine. Au niveau des dizaines, on additionne $4 + 3 + 1 (\\text{retenue}) = 8$. Le résultat final est $84$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Règle de la retenue",
+      "content": "Lorsque la somme des unités est {{1}} à 9, on écrit le chiffre des unités et on porte une {{2}} aux dizaines. On {{3}} ensuite cette retenue aux dizaines.",
+      "correctAnswer": "",
+      "blanks": [
+        "supérieure",
+        "retenue",
+        "ajoute"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle de la retenue s'applique quand la somme d'une colonne dépasse 9. Pour les unités, si la somme est supérieure à 9 (ex: 12, 14, 18), on ne garde que le chiffre des unités et on porte le chiffre des dizaines (la retenue) au-dessus de la colonne suivante. Cette retenue doit être ajoutée lors de l'addition de la colonne des dizaines.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

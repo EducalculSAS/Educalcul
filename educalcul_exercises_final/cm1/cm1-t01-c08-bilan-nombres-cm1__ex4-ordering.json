@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 218,
+  "_course_code": "cm1-t01-c08-bilan-nombres-cm1",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Bilan - Nombres CM1",
+  "title": "Bilan CM1 : Mise en ordre de nombres",
+  "blocks": [
+    {
+      "title": "Ordre croissant : nombres entiers",
+      "content": "Range les nombres suivants dans l'ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$2\\,345$",
+        "$3\\,012$",
+        "$3\\,102$",
+        "$9\\,876$"
+      ],
+      "explanation": "Pour ranger des nombres entiers dans l'ordre croissant, on compare d'abord le chiffre des milliers. $2\\,345$ a 2 milliers, c'est le plus petit. $3\\,012$ et $3\\,102$ ont 3 milliers : on compare les centaines (0 pour les deux), puis les dizaines : 1 dizaine pour $3\\,012$ et 0 dizaine pour $3\\,102$ ? Attention : $3\\,012 = 3\\,012$ (0 cent, 1 dizaine, 2 unités) et $3\\,102 = 3\\,102$ (1 cent, 0 dizaine, 2 unités). On compare les centaines : 0 < 1, donc $3\\,012 < 3\\,102$. Enfin $9\\,876$ a 9 milliers, c'est le plus grand. L'ordre est : $2\\,345 < 3\\,012 < 3\\,102 < 9\\,876$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : nombres décimaux",
+      "content": "Range les nombres décimaux suivants dans l'ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$0{,}4$",
+        "$0{,}42$",
+        "$4{,}02$",
+        "$4{,}2$"
+      ],
+      "explanation": "On compare d'abord la partie entière (avant la virgule). $0{,}4$ et $0{,}42$ ont 0 unités. $4{,}02$ et $4{,}2$ ont 4 unités. Les deux premiers sont plus petits que les deux suivants. Pour départager $0{,}4$ et $0{,}42$, on ajoute un 0 pour avoir le même nombre de décimales : $0{,}40$ et $0{,}42$. Aux dixièmes : 4 = 4. Aux centièmes : 0 < 2, donc $0{,}4 < 0{,}42$. Pour $4{,}02$ et $4{,}2$ ($4{,}20$) : aux dixièmes 0 < 2, donc $4{,}02 < 4{,}2$. L'ordre final : $0{,}4 < 0{,}42 < 4{,}02 < 4{,}2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant : grands nombres",
+      "content": "Range les nombres suivants dans l'ordre décroissant (du plus grand au plus petit).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$852\\,301$",
+        "$789\\,456$",
+        "$789\\,450$",
+        "$102\\,345$",
+        "$98\\,765$"
+      ],
+      "explanation": "On compare les nombres en partant du chiffre le plus à gauche (centaines de milliers). $852\\,301$ a 8 centaines de milliers (le plus grand). $789\\,456$ et $789\\,450$ ont 7 centaines de milliers. $102\\,345$ en a 1. $98\\,765$ n'en a pas (c'est un nombre à 5 chiffres, soit 0 centaines de milliers). Entre $789\\,456$ et $789\\,450$, les chiffres sont identiques jusqu'aux dizaines : 5 dizaines pour le premier, 5 dizaines pour le second ? Non : $789\\,456$ -> 5 dizaines, $789\\,450$ -> 5 dizaines. Aux unités : 6 > 0, donc $789\\,456 > 789\\,450$. L'ordre décroissant est : $852\\,301 > 789\\,456 > 789\\,450 > 102\\,345 > 98\\,765$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

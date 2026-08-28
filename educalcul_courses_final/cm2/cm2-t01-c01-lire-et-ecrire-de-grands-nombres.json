@@ -1,0 +1,448 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.327778+00:00",
+  "id": 275,
+  "code": "cm2-t01-c01",
+  "title": "Lire et écrire de grands nombres",
+  "description": "Cours structuré Educalcul : Lire et écrire de grands nombres.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Lire et écrire de grands nombres",
+    "objectif_global": "Lire et écrire de grands nombres",
+    "mini_lecons_imposees": [
+      "Classes de numération.",
+      "Zéros internes.",
+      "Passer entre formes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Classes de numération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les classes de numération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives compter tous les grains de sable d'une grande plage. Écrire le nombre total chiffre par chiffre serait interminable et illisible. Heureusement, notre système de numération a prévu un rangement malin : les $classes$. C'est comme si on rangeait les chiffres dans des tiroirs par groupes de trois, en partant de la droite. Le premier tiroir, celui des $unités$, contient les chiffres des unités, des dizaines et des centaines. C'est le tiroir qu'on utilise tous les jours pour compter des billes, des pages de livre ou des euros."
+            },
+            {
+              "type": "definition",
+              "term": "Classe des unités",
+              "definition": "C'est le groupe des trois premiers chiffres en partant de la droite : les unités ($u$), les dizaines ($d$) et les centaines ($h$).",
+              "example": "Dans $357$, le $7$ est aux unités, le $5$ aux dizaines, le $3$ aux centaines."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 357,
+              "caption": "Le nombre 357 rangé dans la classe des unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais très vite, le tiroir des unités déborde ! Quand on compte la population d'une ville ou le nombre de kilomètres jusqu'à la Lune, il faut ouvrir le tiroir d'à côté : la $classe des milliers$. Elle fonctionne exactement comme la première : elle a ses propres unités de mille, dizaines de mille et centaines de mille. Pour ne pas mélanger les tiroirs, on laisse un petit espace entre eux quand on écrit le nombre en chiffres. Cet espace est ton meilleur repère visuel : il te dit « ici commencent les milliers »."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 42580,
+              "caption": "Le nombre 42 580 : la classe des milliers et la classe des unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on veut compter les habitants de la Terre ou le budget d'un grand pays ? On ouvre un troisième tiroir : la $classe des millions$. Elle aussi a ses unités, dizaines et centaines de millions. La règle d'or ne change jamais : on groupe les chiffres par trois en partant de la droite, et on met un espace entre chaque classe. Ainsi, $12 345 678$ se lit « douze millions trois cent quarante-cinq mille six cent soixante-dix-huit ». L'espace te guide, comme des panneaux de signalisation sur une autoroute."
+            },
+            {
+              "type": "display_math",
+              "latex": "12\\ 345\\ 678 = 12\\ millions\\ 345\\ mille\\ 678"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire un grand nombre dicté sans te tromper, suis cette méthode simple : écris d'abord les millions, puis laisse un espace, ensuite les milliers (trois chiffres obligatoires, complète avec des zéros si besoin), un autre espace, et enfin les unités (trois chiffres aussi). C'est comme remplir trois petites cases de trois cases chacune. Tu verras, avec un peu d'entraînement, tes yeux repéreront les espaces tout seuls et les grands nombres ne te feront plus peur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les classes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les mots « million », « mille » et ce qui suit. S'il n'y a pas de « million », la classe des millions est vide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire chaque classe sur 3 chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Complète par des zéros à gauche dans chaque classe pour avoir exactement 3 chiffres (ex : $5$ mille $\\rightarrow$ $005$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Assembler avec des espaces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Colle les classes dans l'ordre : millions, espace, milliers, espace, unités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $5\\ 821$, quel chiffre est dans la classe des unités ? Quel chiffre est dans la classe des milliers ?",
+              "answer": "Classe des unités : $821$ (chiffres $8, 2, 1$). Classe des milliers : $5$.",
+              "hint": "Repère l'espace qui sépare les deux classes. À droite de l'espace, c'est la classe des unités.",
+              "explanation": "Le nombre s'écrit $5\\ 821$. L'espace sépare la classe des milliers ($5$) de la classe des unités ($821$)."
+            },
+            {
+              "question": "Écris en chiffres : quarante-deux mille cinq cent quatre-vingts.",
+              "answer": "$42\\ 580$",
+              "hint": "Écris la classe des milliers ($42$) puis la classe des unités ($580$) sur trois chiffres chacune, séparées par un espace.",
+              "explanation": "Quarante-deux mille $\\rightarrow$ $42$ (classe des milliers). Cinq cent quatre-vingts $\\rightarrow$ $580$ (classe des unités). On met un espace : $42\\ 580$."
+            },
+            {
+              "question": "Place les espaces dans ce nombre : $12345678$.",
+              "answer": "$12\\ 345\\ 678$",
+              "hint": "Compte par groupes de trois en partant de la droite : $678$, puis $345$, puis $12$.",
+              "explanation": "En partant de la droite : $678$ (unités), $345$ (milliers), $12$ (millions). On obtient $12\\ 345\\ 678$."
+            },
+            {
+              "question": "Écris en chiffres : six millions huit mille cinquante-trois.",
+              "answer": "$6\\ 008\\ 053$",
+              "hint": "Attention aux classes vides ! Six millions $\\rightarrow$ $006$. Huit mille $\\rightarrow$ $008$. Cinquante-trois $\\rightarrow$ $053$.",
+              "explanation": "Millions : $6$ $\\rightarrow$ $006$. Milliers : $8$ $\\rightarrow$ $008$. Unités : $53$ $\\rightarrow$ $053$. Résultat : $6\\ 008\\ 053$."
+            }
+          ]
+        },
+        {
+          "title": "Zéros internes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro, gardien des places vides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais le zéro comme le chiffre qui signifie « rien du tout » quand on compte des objets. Mais dans un grand nombre, le zéro a un tout autre super-pouvoir : il est $gardien$ de la place. Imagine le nombre $105$. Si tu oublies le zéro et que tu écris $15$, tu as changé le nombre ! Le zéro au milieu maintient la centaine à sa place et signale qu'il n'y a aucune dizaine. Sans lui, la centaine glisserait vers la droite et deviendrait une dizaine. C'est pour cela qu'on l'appelle $zéro interne$ : il se cache à l'intérieur du nombre, entre d'autres chiffres, pour que chacun garde sa valeur de place."
+            },
+            {
+              "type": "definition",
+              "term": "Zéro interne",
+              "definition": "Un zéro écrit à l'intérieur d'un nombre (pas à la fin) pour occuper une place vide (unité, dizaine ou centaine) et garder les autres chiffres à leur place correcte.",
+              "example": "Dans $2\\ 008$, les deux zéros sont internes : ils gardent la place des centaines et des dizaines de la classe des milliers."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 105,
+              "caption": "105 : le zéro garde la place des dizaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, ce n'est pas une seule place qui est vide, mais deux, voire les trois places d'une classe entière ! Prenons $1\\ 008$. Dans la classe des unités, il y a $8$ unités, $0$ dizaine et $0$ centaine : il faut écrire deux zéros ($008$). Regarde maintenant $102\\ 000$. Dans la classe des milliers, on a $1$ centaine de mille, $0$ dizaine de mille et $2$ unités de mille. Le zéro au milieu de $102$ est indispensable : sans lui, on écrirait $12\\ 000$, ce qui n'est pas du tout le même nombre ! Le zéro interne évite la catastrophe."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 102000,
+              "caption": "102 000 : un zéro interne dans la classe des milliers"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus sournois, c'est la $classe vide$. Quand on dit « un million huit », il n'y a aucun millier ! La classe des milliers est complètement vide. Si tu écris $1\\ 8$, tu as écrit « dix-huit ». Il faut absolument écrire les trois zéros de la classe des milliers : $1\\ 000\\ 008$. C'est comme si tu avais un tiroir vide entre deux tiroirs pleins : tu ne peux pas le faire disparaître, tu dois marquer qu'il existe en le remplissant de zéros. C'est la règle absolue : chaque classe doit toujours occuper trois cases, même si elles sont toutes vides."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention au trou !",
+              "paragraphs": [
+                "Un nombre comme « deux millions cinq » s'écrit $2\\ 000\\ 005$. Les six zéros du milieu ne sont pas facultatifs : ils représentent la classe des millions (déjà écrite), la classe des milliers (vide) et les centaines/dizaines des unités (vides). Oublier l'un d'eux change totalement la valeur du nombre."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Et quand on $lit$ un nombre avec des zéros internes ? On ne les prononce pas ! Dans $305$, on dit « trois cent cinq », pas « trois cent zéro cinq ». Les zéros sont muets à l'oral, mais indispensables à l'écrit. C'est un peu comme les lettres muettes en français (le $t$ de « chat » ou le $s$ de « Paris ») : on ne les entend pas, mais il faut les écrire pour que le mot soit correct. Maintenant, tu as toutes les clés pour ne plus jamais perdre un zéro en route."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les classes nommées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les mots « million », « mille ». Note ce qui les précède."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compléter les classes manquantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une classe n'est pas nommée (ni million, ni mille), c'est qu'elle est vide : écris $000$ pour cette classe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compléter à 3 chiffres par classe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans chaque classe, ajoute des zéros à gauche pour obtenir exactement 3 chiffres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau de numération pour le nombre $4\\ 050$.",
+              "answer": "Milliers : $004$ | Unités : $050$ (ou 4 | 050). Le zéro des centaines d'unités et le zéro des dizaines de milliers sont des zéros internes.",
+              "hint": "Décompose : 4 mille = 004 (classe milliers). 50 = 050 (classe unités).",
+              "explanation": "La classe des milliers contient $4$ (soit $004$). La classe des unités contient $50$ (soit $050$). Le zéro des centaines d'unités et le zéro des dizaines de milliers sont des zéros internes obligatoires."
+            },
+            {
+              "question": "Écris en chiffres : cent deux mille trente.",
+              "answer": "$102\\ 030$",
+              "hint": "Cent deux mille $\\rightarrow$ classe des milliers : $102$. Trente $\\rightarrow$ classe des unités : $030$.",
+              "explanation": "Classe des milliers : $102$. Classe des unités : $30$ $\\rightarrow$ $030$ (zéro interne des centaines). Résultat : $102\\ 030$."
+            },
+            {
+              "question": "Écris en chiffres : cinq millions six.",
+              "answer": "$5\\ 000\\ 006$",
+              "hint": "Il n'y a pas de « mille » ! La classe des milliers est vide : $000$. La classe des unités n'a que $6$ : $006$.",
+              "explanation": "Millions : $5$ $\\rightarrow$ $005$. Milliers : vide $\\rightarrow$ $000$. Unités : $6$ $\\rightarrow$ $006$. Résultat : $5\\ 000\\ 006$."
+            },
+            {
+              "question": "Lis ce nombre à voix haute (écris la réponse en lettres) : $8\\ 007\\ 050$.",
+              "answer": "Huit millions sept mille cinquante.",
+              "hint": "Repère les classes : $8$ millions, $007$ mille, $050$ unités. Ne lis pas les zéros internes.",
+              "explanation": "Classe millions : $8$ $\\rightarrow$ huit millions. Classe milliers : $007$ $\\rightarrow$ sept mille. Classe unités : $050$ $\\rightarrow$ cinquante. On ne dit pas les zéros."
+            }
+          ]
+        },
+        {
+          "title": "Passer entre formes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Jongler entre chiffres, lettres et décompositions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ranger les chiffres dans leurs classes et placer les zéros gardiens, tu vas devenir un véritable traducteur de nombres. Un même nombre peut s'écrire de trois façons principales : en $chiffres$ (la forme compacte avec les espaces), en $lettres$ (la forme officielle pour les chèques ou les lettres), et en $décomposition$ (la forme qui montre la valeur de chaque chiffre). C'est comme avoir trois langues pour dire la même chose : le langage rapide (chiffres), le langage soigné (lettres) et le langage transparent (décomposition)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la traduction « chiffres vers lettres ». Il y a quelques règles d'orthographe à respecter pour que ce soit parfait. D'abord, on met des traits d'union entre tous les mots, SAUF devant et après « million », « mille », « cent » quand ils sont multipliés (deux cents, trois millions). Ensuite, le mot « et » n'apparaît que pour $71$ (soixante et onze), $81$ (quatre-vingt-un) et $91$ (quatre-vingt-onze)… et pour $101, 1001, 1000001$ etc (un million un). Attention : « cent » et « vingt » prennent un $s$ quand ils sont multipliés et qu'ils finissent le nombre (ou la classe) : $300 = trois\\ cents$, mais $301 = trois\\ cent\\ un$. « Mille » ne prend jamais de $s$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Écriture en lettres",
+                "Règle clé"
+              ],
+              "rows": [
+                [
+                  "$45$",
+                  "quarante-cinq",
+                  "Trait d'union"
+                ],
+                [
+                  "$71$",
+                  "soixante et onze",
+                  "Le « et » pour 71"
+                ],
+                [
+                  "$300$",
+                  "trois cents",
+                  "$s$ à cent (fini classe)"
+                ],
+                [
+                  "$305$",
+                  "trois cent cinq",
+                  "Pas de $s$, pas de « et »"
+                ],
+                [
+                  "$1\\ 000$",
+                  "mille",
+                  "Mille invariable"
+                ],
+                [
+                  "$2\\ 000\\ 000$",
+                  "deux millions",
+                  "$s$ à million"
+                ]
+              ],
+              "caption": "Règles d'écriture en lettres : pièges et astuces"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller de « lettres vers chiffres », la méthode est l'inverse : tu découpes le texte en repérant les mots-clés « million » et « mille ». Ils te donnent les frontières des classes. Écris le chiffre de chaque classe sur trois cases (en ajoutant des zéros devant si besoin), puis replace les espaces. Par exemple, « quatre millions cent deux mille trente » : « quatre millions » $\\rightarrow$ classe millions $004$ ; « cent deux mille » $\\rightarrow$ classe milliers $102$ ; « trente » $\\rightarrow$ classe unités $030$. Résultat : $4\\ 102\\ 030$. C'est mécanique et rassurant : il suffit de suivre les balises."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer « million » et « mille »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ces mots délimitent les trois classes. Ce qui est avant « million » = millions. Entre « million » et « mille » = milliers. Après « mille » = unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir chaque bloc en 3 chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme les mots de chaque bloc en nombre à 3 chiffres (ex : « trente » $\\rightarrow$ $030$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Assembler avec espaces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets les trois blocs bout à bout avec un espace entre chacun."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La $décomposition additive$ est la forme qui « ouvre le capot » du nombre. Elle écrit le nombre comme une addition de chaque chiffre multiplié par sa valeur de place. Pour $3\\ 405$, on voit $3$ milliers ($3\\times1\\ 000$), $4$ centaines ($4\\times100$), $0$ dizaines (on ne l'écrit pas) et $5$ unités ($5\\times1$). Cela donne : $3\\times1\\ 000 + 4\\times100 + 5$. C'est très utile pour comprendre pourquoi $3\\ 405$ est plus grand que $3\\ 045$ : la centaine vaut $100$, la dizaine ne vaut que $10$ !"
+            },
+            {
+              "type": "display_math",
+              "latex": "3\\ 405 = 3\\times1\\ 000 + 4\\times100 + 0\\times10 + 5\\times1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la $décomposition multiplicative$ (ou décomposition en produit) utilise les puissances de $10$. C'est l'écriture des grands pour les scientifiques : $1\\ 000 = 10^3$, $1\\ 000\\ 000 = 10^6$. Le nombre $3\\ 405$ devient $3\\times10^3 + 4\\times10^2 + 5\\times10^0$. L'exposant (le petit chiffre en l'air) te dit directement dans quelle classe se trouve le chiffre : $3$ pour les milliers, $2$ pour les centaines, $0$ pour les unités. C'est le langage universel des mathématiques, celui qu'on retrouvera au collège et au lycée. Tu viens d'apprendre à parler couramment les nombres, sous toutes leurs formes !"
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3405,
+              "caption": "3 405 : lien entre place, puissance de 10 et décomposition"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les classes (unités, milliers, millions) dans un grand nombre.",
+                "Je sais écrire un grand nombre en chiffres en respectant les espaces tous les 3 chiffres.",
+                "Je sais placer les zéros internes et les classes vides (zéros gardiens).",
+                "Je sais écrire un nombre en lettres avec les bons traits d'union et accords (cent, vingt, million).",
+                "Je sais passer de l'écriture en lettres à l'écriture en chiffres sans me tromper.",
+                "Je sais écrire la décomposition additive d'un nombre (somme des valeurs de place).",
+                "Je sais écrire la décomposition multiplicative d'un nombre (produits par puissances de 10)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en lettres : $12\\ 305$.",
+              "answer": "Douze mille trois cent cinq.",
+              "hint": "12 mille = douze mille. 305 = trois cent cinq (pas de s à cent, pas de et).",
+              "explanation": "Classe milliers : $12$ $\\rightarrow$ douze mille. Classe unités : $305$ $\\rightarrow$ trois cent cinq. Pas de « et » pour 5, pas de $s$ à cent car suivi de cinq."
+            },
+            {
+              "question": "Écris en chiffres : neuf millions huit cent mille soixante-dix.",
+              "answer": "$9\\ 800\\ 070$",
+              "hint": "Neuf millions $\\rightarrow$ $009$. Huit cent mille $\\rightarrow$ $800$. Soixante-dix $\\rightarrow$ $070$.",
+              "explanation": "Millions : $9$ $\\rightarrow$ $009$. Milliers : $800$ (huit cent mille). Unités : $70$ $\\rightarrow$ $070$. Résultat : $9\\ 800\\ 070$."
+            },
+            {
+              "question": "Donne la décomposition additive de $50\\ 080$.",
+              "answer": "$5\\times10\\ 000 + 8\\times10$ (ou $50\\ 000 + 80$).",
+              "hint": "5 dizaines de mille = 50 000. 8 dizaines = 80. Les zéros internes ne donnent rien.",
+              "explanation": "Classe milliers : $50$ $\\rightarrow$ $5\\times10\\ 000$ (ou $50\\times1\\ 000$). Classe unités : $080$ $\\rightarrow$ $8\\times10$. Les centaines et unités sont nulles."
+            },
+            {
+              "question": "Associe chaque forme au nombre $2\\ 050\\ 003$ :\\nA) $2\\times10^6 + 5\\times10^4 + 3$ \\nB) Deux millions cinquante mille trois \\nC) $2\\ 050\\ 003$ \\nD) $2\\times1\\ 000\\ 000 + 5\\times10\\ 000 + 3\\times1$",
+              "answer": "A : Décomposition multiplicative. B : Écriture en lettres. C : Écriture en chiffres. D : Décomposition additive.",
+              "hint": "Regarde les puissances de 10 pour A ($10^6$=million, $10^4$=dizaine de mille). Pour D, regarde les valeurs de place (1 000 000, 10 000, 1).",
+              "explanation": "A utilise les puissances de 10 (multiplicative). B est la forme lettrée. C est la forme chiffrée standard. D utilise les valeurs de place entières (additive)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

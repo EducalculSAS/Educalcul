@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Quartiles / indicateurs si prévus",
+  "title": "Quartiles et boîtes à moustaches - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Calcul du premier quartile",
+      "content": "Rangez dans l'ordre les étapes pour déterminer le premier quartile $Q1$ d'une série statistique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trier les données par ordre croissant.",
+        "Déterminer la position de $Q1$ avec la formule $(n+1)/4$.",
+        "Si la position n'est pas entière, interpoler entre les deux valeurs encadrantes.",
+        "Lire la valeur correspondant à cette position."
+      ],
+      "explanation": "On commence par trier les données. Ensuite on calcule la position de $Q1$ grâce à la formule $(n+1)/4$. Si cette position n'est pas un entier, on fait une interpolation entre les deux valeurs les plus proches. Enfin on lit la valeur correspondante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une boîte à moustaches",
+      "content": "Classez les opérations nécessaires pour tracer une boîte à moustaches à partir des quartiles.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le minimum, $Q1$, la médiane, $Q3$ et le maximum.",
+        "Tracer un axe gradué adapté aux valeurs.",
+        "Dessiner un rectangle de $Q1$ à $Q3$ avec un trait à la médiane.",
+        "Ajouter les moustaches jusqu'au minimum et au maximum."
+      ],
+      "explanation": "Il faut d'abord connaître les cinq nombres caractéristiques. Puis on dessine l'axe. Ensuite on trace la boîte entre $Q1$ et $Q3$ avec la médiane. Enfin on ajoute les moustaches.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Définitions des indicateurs de position",
+      "content": "Ordonnez les définitions du premier quartile, de la médiane et de l'intervalle interquartile.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le premier quartile $Q1$ est la valeur en dessous de laquelle se trouvent $25%$ des données.",
+        "La médiane est la valeur centrale qui partage la série en deux parties égales.",
+        "L'intervalle interquartile est la différence entre le troisième quartile $Q3$ et le premier quartile $Q1$."
+      ],
+      "explanation": "On définit d'abord $Q1$, puis la médiane, puis l'intervalle interquartile qui utilise $Q1$ et $Q3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

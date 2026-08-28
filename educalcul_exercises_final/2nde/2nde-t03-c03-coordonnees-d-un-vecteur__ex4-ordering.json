@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 512,
+  "_course_code": "2nde-t03-c03-coordonnees-d-un-vecteur",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Coordonnées d'un vecteur",
+  "title": "Applications des coordonnées d'un vecteur",
+  "blocks": [
+    {
+      "title": "Calcul de coordonnées",
+      "content": "Remettre dans l'ordre les étapes pour calculer les coordonnées du vecteur $\\overrightarrow{AB}$ sachant que $A(2; -1)$ et $B(5; 3)$.",
+      "items": [
+        "Repérer les coordonnées des points $A$ et $B$ : $x_A = 2$, $y_A = -1$, $x_B = 5$, $y_B = 3$.",
+        "Appliquer la formule des coordonnées d'un vecteur : $\\overrightarrow{AB}(x_B - x_A ; y_B - y_A)$.",
+        "Calculer les différences : $5 - 2 = 3$ et $3 - (-1) = 4$.",
+        "Conclure : $\\overrightarrow{AB}(3 ; 4)$."
+      ],
+      "explanation": "On commence par identifier les coordonnées des deux points. On applique ensuite la définition : les coordonnées du vecteur $\\overrightarrow{AB}$ sont les différences des coordonnées de $B$ et de $A$ (arrivée moins départ). On effectue les calculs $5-2=3$ et $3-(-1)=4$. Le résultat final est le vecteur de coordonnées $(3;4)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'un point",
+      "content": "Remettre dans l'ordre les étapes pour déterminer les coordonnées du point $D$ tel que $\\overrightarrow{CD} = \\overrightarrow{u}$, avec $C(-2; 4)$ et $\\overrightarrow{u}(3; -5)$.",
+      "items": [
+        "Noter $D(x_D ; y_D)$ et écrire l'égalité vectorielle : $\\overrightarrow{CD}(x_D - x_C ; y_D - y_C) = \\overrightarrow{u}(3 ; -5)$.",
+        "Remplacer les coordonnées de $C$ : $x_D - (-2) = 3$ et $y_D - 4 = -5$.",
+        "Résoudre les équations : $x_D + 2 = 3 \\Rightarrow x_D = 1$ et $y_D = -1$.",
+        "Conclure : $D(1 ; -1)$."
+      ],
+      "explanation": "On note les coordonnées inconnues de $D$. L'égalité vectorielle $\\overrightarrow{CD} = \\overrightarrow{u}$ se traduit par l'égalité des coordonnées respectives : $x_D - x_C = 3$ et $y_D - y_C = -5$. En remplaçant $x_C$ et $y_C$ par $-2$ et $4$, on obtient un système simple à résoudre. On trouve $x_D=1$ et $y_D=-1$, ce qui donne le point $D(1;-1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un parallélogramme",
+      "content": "Remettre dans l'ordre les étapes pour déterminer les coordonnées du point $D$ tel que $ABCD$ soit un parallélogramme, avec $A(1;2)$, $B(4;0)$ et $C(3;5)$.",
+      "items": [
+        "Utiliser la propriété du parallélogramme : $\\overrightarrow{AB} = \\overrightarrow{DC}$.",
+        "Calculer $\\overrightarrow{AB}(4-1 ; 0-2) = \\overrightarrow{AB}(3 ; -2)$.",
+        "Exprimer $\\overrightarrow{DC}$ en fonction de $D(x_D;y_D)$ : $\\overrightarrow{DC}(3 - x_D ; 5 - y_D)$.",
+        "Identifier les coordonnées : $3 - x_D = 3$ et $5 - y_D = -2$.",
+        "Résoudre : $x_D = 0$ et $y_D = 7$. Conclure : $D(0;7)$."
+      ],
+      "explanation": "Dans un parallélogramme $ABCD$ (dans l'ordre), les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont égaux. On calcule d'abord $\\overrightarrow{AB}$ à partir des points $A$ et $B$, ce qui donne $(3;-2)$. On exprime ensuite $\\overrightarrow{DC}$ en fonction des coordonnées inconnues de $D$ et des coordonnées connues de $C$. L'égalité des vecteurs donne un système de deux équations dont la résolution fournit $x_D=0$ et $y_D=7$. Le point cherché est donc $D(0;7)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

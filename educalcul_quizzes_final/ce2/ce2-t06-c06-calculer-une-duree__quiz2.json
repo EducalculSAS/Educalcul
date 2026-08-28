@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 192,
+  "_course_code": "ce2-t06-c06-calculer-une-duree",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Passage par heure ronde",
+  "title": "Calculer une durée : passage par une heure ronde",
+  "questions": [
+    {
+      "text": "Regarde l'horloge. Il est $10$ h $20$. Combien de minutes faut-il attendre pour que ce soit une heure ronde ($11$ h $00$) ?",
+      "options": [
+        "30 minutes",
+        "40 minutes",
+        "50 minutes",
+        "60 minutes"
+      ],
+      "correctAnswer": "40 minutes",
+      "explanation": "Pour passer de $10$ h $20$ à $11$ h $00$, on compte les minutes qui manquent pour faire $60$ minutes. $60 - 20 = 40$. Il faut attendre $40$ minutes.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 10,
+        "minutes": 20,
+        "caption": "Heure de départ : 10 h 20",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Une récréation commence à $9$ h $45$ et se termine à $10$ h $10$. Quelle est sa durée en passant par l'heure ronde $10$ h $00$ ?",
+      "options": [
+        "15 minutes",
+        "25 minutes",
+        "35 minutes",
+        "45 minutes"
+      ],
+      "correctAnswer": "25 minutes",
+      "explanation": "On décompose en deux étapes : de $9$ h $45$ à $10$ h $00$, il y a $15$ minutes ($60 - 45 = 15$). De $10$ h $00$ à $10$ h $10$, il y a $10$ minutes. Total : $15 + 10 = 25$ minutes.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 9,
+        "minutes": 45,
+        "caption": "Début de la récréation : 9 h 45",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un film commence à $14$ h $20$ et se termine à $16$ h $50$. Calcule la durée en passant par les heures rondes.",
+      "options": [
+        "1 h 30",
+        "2 h 10",
+        "2 h 30",
+        "3 h 10"
+      ],
+      "correctAnswer": "2 h 30",
+      "explanation": "Étape 1 : de $14$ h $20$ à $15$ h $00$ $\\rightarrow$ $40$ min. Étape 2 : de $15$ h $00$ à $16$ h $00$ $\\rightarrow$ $1$ h. Étape 3 : de $16$ h $00$ à $16$ h $50$ $\\rightarrow$ $50$ min. Total : $1$ h $40$ min $+ 50$ min $= 1$ h $90$ min $= 2$ h $30$ min.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le train part à $17$ h $35$ et arrive à $19$ h $05$. Quelle méthode donne la bonne durée du trajet ?",
+      "options": [
+        "De 17 h 35 à 18 h 00 = 25 min, puis 18 h 00 à 19 h 00 = 1 h, puis 19 h 00 à 19 h 05 = 5 min. Total 1 h 30 min.",
+        "De 17 h 35 à 18 h 00 = 35 min, puis 18 h 00 à 19 h 00 = 1 h, puis 19 h 00 à 19 h 05 = 5 min. Total 1 h 40 min.",
+        "De 17 h 35 à 18 h 00 = 25 min, puis 18 h 00 à 19 h 00 = 1 h, puis 19 h 00 à 19 h 05 = 5 min. Total 1 h 35 min.",
+        "De 17 h 35 à 18 h 00 = 30 min, puis 18 h 00 à 19 h 00 = 1 h, puis 19 h 00 à 19 h 05 = 5 min. Total 1 h 35 min."
+      ],
+      "correctAnswer": "De 17 h 35 à 18 h 00 = 25 min, puis 18 h 00 à 19 h 00 = 1 h, puis 19 h 00 à 19 h 05 = 5 min. Total 1 h 30 min.",
+      "explanation": "Minutes pour atteindre l'heure ronde : $60 - 35 = 25$ min. Heures pleines : $1$ h. Minutes restantes : $5$ min. Somme : $1$ h $+ 25$ min $+ 5$ min $= 1$ h $30$ min. Les autres options se trompent sur le complément à 60 (35 ou 30 au lieu de 25) ou sur l'addition finale.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 17,
+        "minutes": 35,
+        "caption": "Heure de départ du train : 17 h 35",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Julie commence ses devoirs à $16$ h $40$. Elle met $1$ h $35$ min pour les finir. À quelle heure a-t-elle fini ?",
+      "options": [
+        "17 h 75",
+        "18 h 15",
+        "18 h 05",
+        "17 h 15"
+      ],
+      "correctAnswer": "18 h 15",
+      "explanation": "On ajoute la durée par étapes. De $16$ h $40$ à $17$ h $00$ : $20$ min. Il reste $1$ h $15$ min à ajouter ($1$ h $35$ min $- 20$ min). De $17$ h $00$, on ajoute $1$ h $\\rightarrow$ $18$ h $00$, puis $15$ min $\\rightarrow$ $18$ h $15$. Attention, $17$ h $75$ n'existe pas, il faut convertir en heures.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 201,
+  "_course_code": "ce2-t07-c06-symetrie-axiale",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Repérer axe",
+  "title": "Repérage de l'axe de symétrie - Algorithme",
+  "blocks": [
+    {
+      "title": "Question 1 : Identifier l'axe d'un triangle isocèle",
+      "content": "Observe le triangle isocèle représenté dans la figure. Écris en langage naturel les étapes successives pour repérer son axe de symétrie.",
+      "correctAnswer": "1. Repérer les deux côtés de même longueur. 2. Trouver le milieu de la base (le côté inégal). 3. Tracer la droite qui passe par le sommet opposé à la base et par ce milieu. Cette droite est l'axe de symétrie.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle isocèle, les deux côtés égaux se rejoignent au sommet. La base est le côté inégal. L'axe de symétrie est la médiatrice de la base, qui passe aussi par le sommet opposé. Les trois étapes permettent de le construire avec règle et compas.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle isocèle ABC avec AB = AC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Question 2 : Tester une droite comme axe de symétrie",
+      "content": "On donne un quadrilatère symétrique (un cerf-volant) sur un quadrillage. La figure montre les sommets A, B, C, D. Écris un algorithme sous forme de liste numérotée qui permet de vérifier si la droite passant par les milieux des diagonales est un axe de symétrie.",
+      "correctAnswer": "1. Calculer les coordonnées des milieux des deux diagonales. 2. Tracer la droite passant par ces deux milieux. 3. Pour chaque sommet, vérifier que son symétrique par rapport à cette droite est aussi un sommet du quadrilatère. 4. Si tous les sommets ont leur symétrique dans la figure, la droite est un axe de symétrie.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un cerf-volant possède un axe de symétrie qui relie les milieux de ses diagonales. L'algorithme consiste à construire cette droite puis à tester la symétrie de chaque sommet. Si chaque sommet trouve son image dans la figure, la droite est bien l'axe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Généraliser la recherche d'axe pour toute figure plane",
+      "content": "Propose un raisonnement structuré (ou un pseudo-code simple) qui, à partir d'un ensemble de points représentant une figure, détermine s'il existe un axe de symétrie et le trace.",
+      "correctAnswer": "Algorithme :\\nPour chaque paire de points (P, Q) de la figure :\\n   Calculer le milieu M de PQ.\\n   Déterminer la droite perpendiculaire à PQ passant par M.\\n   Vérifier si cette droite est un axe de symétrie pour tous les points de la figure.\\nSi une telle droite est trouvée, c'est l'axe de symétrie.\\nSinon, la figure n'a pas d'axe de symétrie.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'axe de symétrie d'une figure plane est une droite telle que chaque point de la figure a son symétrique par rapport à cette droite qui appartient aussi à la figure. En testant toutes les droites candidates issues des milieux de paires de points, on peut identifier l'axe s'il existe.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

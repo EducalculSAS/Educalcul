@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Définir",
+  "title": "Quiz : Définitions - Diviseurs, multiples et nombres premiers",
+  "questions": [
+    {
+      "text": "Parmi les affirmations suivantes, laquelle donne la définition exacte d'un diviseur d'un entier naturel ?",
+      "options": [
+        "Un entier qui divise l'autre en donnant un quotient décimal.",
+        "Un entier naturel non nul qui permet d'obtenir un quotient entier et un reste nul.",
+        "Un entier qui est plus petit que l'autre entier.",
+        "Un entier qui, multiplié par l'autre, donne un multiple."
+      ],
+      "correctAnswer": "Un entier naturel non nul qui permet d'obtenir un quotient entier et un reste nul.",
+      "explanation": "Un diviseur d'un entier naturel $a$ est un entier naturel non nul $b$ tel que la division euclidienne de $a$ par $b$ donne un reste nul. Cela signifie que $a = b \\times q$ avec $q$ entier. L'option A est fausse car le quotient doit être entier, pas décimal. L'option C est fausse : un diviseur peut être égal au nombre lui-même. L'option D décrit la relation avec les multiples, pas la définition du diviseur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'égalité $7 \\times 12 = 84$. Laquelle de ces propositions utilise correctement le vocabulaire 'multiple' et 'diviseur' ?",
+      "options": [
+        "$7$ est un multiple de $84$ et $12$ est un diviseur de $84$.",
+        "$84$ est un multiple de $7$ et $12$ est un diviseur de $84$.",
+        "$84$ est un diviseur de $7$ et $12$ est un multiple de $84$.",
+        "$7$ est un multiple de $12$ et $84$ est un diviseur de $7$."
+      ],
+      "correctAnswer": "$84$ est un multiple de $7$ et $12$ est un diviseur de $84$.",
+      "explanation": "Dans le produit $7 \\times 12 = 84$, le résultat $84$ est un multiple de $7$ (car $84 = 7 \\times 12$) et aussi un multiple de $12$. Réciproquement, $7$ et $12$ sont des diviseurs de $84$ car ils divisent $84$ avec un reste nul. L'option B est la seule à respecter ces définitions : $84$ est bien un multiple de $7$ et $12$ est bien un diviseur de $84$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la définition rigoureuse d'un nombre premier ?",
+      "options": [
+        "Un nombre qui n'est divisible que par $1$ et par lui-même.",
+        "Un entier naturel qui admet exactement deux diviseurs distincts : $1$ et lui-même.",
+        "Un entier naturel supérieur à $1$ qui n'a pas de diviseurs.",
+        "Un entier naturel impair qui n'est pas divisible par $3$."
+      ],
+      "correctAnswer": "Un entier naturel qui admet exactement deux diviseurs distincts : $1$ et lui-même.",
+      "explanation": "La définition officielle en 3e précise qu'un nombre premier est un entier naturel (donc positif ou nul, mais ici nécessairement $\\ge 2$) qui admet *exactement deux diviseurs distincts* : $1$ et lui-même. L'option A est imprécise car elle ne précise pas 'entier naturel' ni 'exactement deux diviseurs distincts' (le $1$ ne divise que par $1$, mais n'est pas premier car il n'a qu'un seul diviseur). L'option C est fausse : tout entier a au moins deux diviseurs ($1$ et lui-même). L'option D est fausse : $2$ est premier mais pair, et $9$ est impair, non divisible par $3$ ? (non, $9$ est divisible par $3$) mais $9$ n'est pas premier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'entier naturel $36$. Laquelle des affirmations suivantes est **fausse** ?",
+      "options": [
+        "$4$ est un diviseur de $36$.",
+        "$36$ est un multiple de $9$.",
+        "$6$ est un diviseur de $36$ et $36$ est un multiple de $6$.",
+        "$8$ est un diviseur de $36$ car $36 = 8 \\times 4 + 4$."
+      ],
+      "correctAnswer": "$8$ est un diviseur de $36$ car $36 = 8 \\times 4 + 4$.",
+      "explanation": "Un diviseur doit donner un reste nul. Ici $36 = 8 \\times 4 + 4$, le reste est $4$, donc $8$ n'est **pas** un diviseur de $36$. Les autres affirmations sont vraies : $36 = 4 \\times 9$ (donc $4$ diviseur, $36$ multiple de $9$) et $36 = 6 \\times 6$ (donc $6$ diviseur et $36$ multiple de $6$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a$, $b$ et $c$ des entiers naturels non nuls tels que $a \\times b = c$. Laquelle des propositions suivantes est **toujours vraie** ?",
+      "options": [
+        "$a$ et $b$ sont des multiples de $c$.",
+        "$c$ est un diviseur de $a$ et de $b$.",
+        "$a$ et $b$ sont des diviseurs de $c$.",
+        "$c$ est un diviseur de $a \\times b$."
+      ],
+      "correctAnswer": "$a$ et $b$ sont des diviseurs de $c$.",
+      "explanation": "Par définition, si $a \\times b = c$, alors $c$ est un multiple de $a$ et un multiple de $b$. Réciproquement, $a$ divise $c$ (quotient $b$, reste $0$) et $b$ divise $c$ (quotient $a$, reste $0$). Donc $a$ et $b$ sont des diviseurs de $c$. L'option A inverse la relation. L'option B est fausse : $c$ est plus grand que $a$ et $b$ (sauf cas $1$), il ne peut pas les diviser. L'option D est une tautologie ($c$ divise $c$) mais ne relie pas $a$ et $b$ à $c$ comme le demande le contexte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

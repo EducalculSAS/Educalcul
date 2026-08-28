@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Domaine",
+  "title": "Domaine des fonctions - Approfondissement",
+  "questions": [
+    {
+      "text": "Déterminer le domaine de définition de la fonction $f(x) = \\frac{1}{x-3}$.",
+      "options": [
+        "ℝ",
+        "ℝ sans 3",
+        "ℝ sans 0",
+        "ℝ sans -3"
+      ],
+      "correctAnswer": "ℝ sans 3",
+      "explanation": "Le dénominateur ne doit pas être nul. $x-3=0$ donne $x=3$. Donc le domaine est l'ensemble des réels sauf 3, noté $\\mathbb{R}\\setminus\\{3\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer le domaine de définition de la fonction $g(x) = \\sqrt{x+2}$.",
+      "options": [
+        "x ≥ -2",
+        "x > -2",
+        "x ≤ -2",
+        "ℝ"
+      ],
+      "correctAnswer": "x ≥ -2",
+      "explanation": "Le radicande doit être non négatif : $x+2 \\ge 0$ donc $x \\ge -2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer le domaine de définition de la fonction $h(x) = \\ln(5-x)$.",
+      "options": [
+        "x < 5",
+        "x > 5",
+        "x ≤ 5",
+        "x ≥ 5"
+      ],
+      "correctAnswer": "x < 5",
+      "explanation": "L'argument du logarithme doit être strictement positif : $5-x > 0$ donc $x < 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer le domaine de définition de la fonction $k(x) = \\frac{1}{\\sqrt{x-1}}$.",
+      "options": [
+        "x > 1",
+        "x ≥ 1",
+        "x > 0",
+        "x ≠ 1"
+      ],
+      "correctAnswer": "x > 1",
+      "explanation": "Le dénominateur contient une racine carrée, donc $x-1 > 0$ (strictement positif pour éviter division par zéro), ce qui donne $x > 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer le domaine de définition de la fonction $m(x) = \\frac{\\sqrt{x-2}}{x-4}$.",
+      "options": [
+        "x ≥ 2 et x ≠ 4",
+        "x > 2 et x ≠ 4",
+        "x ≥ 2",
+        "x > 2"
+      ],
+      "correctAnswer": "x ≥ 2 et x ≠ 4",
+      "explanation": "Il faut $x-2 \\ge 0$ pour la racine, soit $x \\ge 2$, et le dénominateur non nul $x-4 \\neq 0$, soit $x \\neq 4$. L'intersection donne $x \\ge 2$ et $x \\neq 4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Substitution",
+  "title": "Quiz : Substitution dans une expression littérale",
+  "questions": [
+    {
+      "text": "On donne l'expression $E = 2x + 6$. Quelle est la valeur de $E$ lorsque $x = 4$ ?",
+      "options": [
+        "14",
+        "20",
+        "11",
+        "16"
+      ],
+      "correctAnswer": "14",
+      "explanation": "On remplace la lettre $x$ par le nombre $4$ en mettant des parenthèses : $E = 2 \\times (4) + 6$. On respecte l'ordre des priorités : la multiplication avant l'addition. $2 \\times 4 = 8$, puis $8 + 6 = 14$. L'option 20 correspond à l'erreur de calculer $2 \\times (4 + 6)$. L'option 11 correspond à $2 + 4 + 6$. L'option 16 correspond à $2 \\times 4 + 8$ (erreur sur le terme constant).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'expression $F = 15 - 3x$. Calculer la valeur de $F$ pour $x = 4$.",
+      "options": [
+        "3",
+        "48",
+        "12",
+        "-3"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On substitue $x$ par $4$ : $F = 15 - 3 \\times 4$. La multiplication est prioritaire sur la soustraction : $3 \\times 4 = 12$. Il reste $15 - 12 = 3$. L'option 48 vient de l'erreur $(15 - 3) \\times 4$. L'option 12 est le résultat de la multiplication seulement, sans faire la soustraction. L'option -3 correspond à $3 \\times 4 - 15$ (inversion de la soustraction).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour $x = 3$, quelle est la valeur de l'expression $G = 24 \\div x \\times 2$ ?",
+      "options": [
+        "16",
+        "4",
+        "12",
+        "14"
+      ],
+      "correctAnswer": "16",
+      "explanation": "On remplace $x$ par $3$ : $G = 24 \\div 3 \\times 2$. Les opérations division et multiplication ont la même priorité, on calcule de la gauche vers la droite. $24 \\div 3 = 8$, puis $8 \\times 2 = 16$. L'option 4 correspond à l'erreur de priorité $24 \\div (3 \\times 2) = 24 \\div 6 = 4$. L'option 12 correspond à $24 \\div 2$ (oubli de la division par 3). L'option 14 ne correspond à aucune erreur classique simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le périmètre $P$ d'un rectangle de longueur $L$ et de largeur $l$ est donné par la formule $P = 2 \\times (L + l)$. Si $L = 6$ cm et $l = 4$ cm, quelle est la valeur de $P$ ?",
+      "options": [
+        "20 cm",
+        "16 cm",
+        "28 cm",
+        "13 cm"
+      ],
+      "correctAnswer": "20 cm",
+      "explanation": "On substitue $L$ par $6$ et $l$ par $4$ : $P = 2 \\times (6 + 4)$. Les parenthèses sont prioritaires : $6 + 4 = 10$. Puis $2 \\times 10 = 20$ cm. L'option 16 cm correspond à l'oubli des parenthèses : $2 \\times 6 + 4 = 12 + 4 = 16$. L'option 28 cm correspond à $2 \\times 6 + 2 \\times 4$ mal calculé ou $2 \\times (6 \\times 4) = 48$ non... c'est $2 \\times 6 \\times 4 / ?$ non, $2 \\times 6 + 4 \\times 4 = 28$. L'option 13 cm correspond à $6 + 4 + 3$ (incohérence).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'expression $H = 5 - 2x$. Quelle est sa valeur pour $x = 4$ ?",
+      "options": [
+        "-3",
+        "3",
+        "12",
+        "-11"
+      ],
+      "correctAnswer": "-3",
+      "explanation": "On remplace $x$ par $4$ : $H = 5 - 2 \\times 4$. Multiplication prioritaire : $2 \\times 4 = 8$. Ensuite $5 - 8 = -3$ (nombres relatifs). L'option 3 correspond à $8 - 5$ (inversion de la soustraction). L'option 12 correspond à $5 - 2 = 3$ puis $3 \\times 4 = 12$ (non-respect des priorités). L'option -11 correspond à $5 - (2 \\times 4 + ...)$ ou $5 - 2 \\times 8$ (erreur de lecture).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

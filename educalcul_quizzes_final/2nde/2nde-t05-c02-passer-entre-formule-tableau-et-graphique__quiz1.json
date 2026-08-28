@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Lire",
+  "title": "Quiz : Lire une fonction (graphique, tableau, formule)",
+  "questions": [
+    {
+      "text": "Sur le graphique de la fonction $f(x)=2x+1$, quelle est la valeur de $f(3)$ ?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Pour $x=3$, on calcule $f(3)=2*3+1=6+1=7$. Les autres valeurs correspondent à des erreurs de lecture ou de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=2x+1"
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs de la fonction $g(x)=x^2-4x+3$. Quelle est la valeur de $g(2)$ ?",
+      "options": [
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "correctAnswer": "-1",
+      "explanation": "En remplaçant $x$ par $2$ dans la formule, on obtient $g(2)=2^2-4*2+3=4-8+3=-1$. Le tableau confirme cette valeur.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "g(x)"
+        ],
+        "rows": [
+          [
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "2",
+            "-1"
+          ],
+          [
+            "3",
+            "0"
+          ],
+          [
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Soit la fonction $h(x)=3x^2-5x+2$. Quelle est la valeur de $h(-1)$ ?",
+      "options": [
+        "10",
+        "6",
+        "0",
+        "-6"
+      ],
+      "correctAnswer": "10",
+      "explanation": "On calcule $h(-1)=3*(-1)^2-5*(-1)+2=3*1+5+2=10$. Les autres options proviennent d'erreurs de signe ou de priorité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique représente la fonction $y=(x-1)^2-4$. Quelle est l'ordonnée du sommet de cette parabole ?",
+      "options": [
+        "-4",
+        "-3",
+        "-2",
+        "-1"
+      ],
+      "correctAnswer": "-4",
+      "explanation": "La forme canonique $y=(x-1)^2-4$ montre que le sommet a pour coordonnées $(1,-4)$. L'ordonnée est donc $-4$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "(x-1)^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction y=(x-1)^2-4"
+      }
+    },
+    {
+      "text": "Pour la fonction $f(x)=(x+2)/(x-1)$, quelle est la valeur de $f(0)$ ?",
+      "options": [
+        "-2",
+        "2",
+        "-1",
+        "1"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "En remplaçant $x$ par $0$, on obtient $f(0)=(0+2)/(0-1)=2/(-1)=-2$. Les autres options correspondent à des erreurs de signe ou de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

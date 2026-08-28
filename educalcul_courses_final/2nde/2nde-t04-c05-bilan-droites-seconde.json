@@ -1,0 +1,341 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.078714+00:00",
+  "id": 519,
+  "code": "2nde-t04-c05",
+  "title": "Bilan - Droites Seconde",
+  "description": "Cours structuré Educalcul : Bilan - Droites Seconde.",
+  "subject": "Droites du plan et géométrie repérée",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Droites du plan et géométrie repérée",
+    "titre_du_cours": "Bilan - Droites Seconde",
+    "objectif_global": "Bilan - Droites Seconde",
+    "mini_lecons_imposees": [
+      "Équations, pentes, intersections.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Droites du plan et géométrie repérée",
+      "lessons": [
+        {
+          "title": "Équations, pentes, intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les différentes formes d'équation d'une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur les droites du plan ! Tu as déjà rencontré plusieurs façons de décrire une droite : l'équation cartésienne, l'équation réduite et la représentation paramétrique. Aujourd'hui, on prend le temps de les passer en revue calmement, en reliant chaque forme à ce qu'elle raconte concrètement sur la droite. Imagine que tu donnes un itinéraire à un ami : tu peux lui dire « suis la rue principale jusqu'au carrefour, puis tourne à gauche » (c'est une description pas à pas, un peu comme le paramétrique), ou bien lui donner l'adresse exacte « 12 rue des Fleurs » (c'est l'équation cartésienne, qui fixe la droite par une relation entre $x$ et $y$), ou encore lui indiquer la pente de la rue et par où elle passe (l'équation réduite). Chaque forme a ses avantages selon la situation."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par l'équation cartésienne : $ax + by + c = 0$, avec $a$ et $b$ non tous les deux nuls. Elle a le mérite d'exister pour toutes les droites, même verticales. Par exemple, la droite d'équation $2x - 3y + 6 = 0$ est une droite parfaitement définie. Si tu veux savoir si le point $A(3;4)$ appartient à cette droite, tu remplaces $x$ par $3$ et $y$ par $4$ : $2 \\times 3 - 3 \\times 4 + 6 = 6 - 12 + 6 = 0$. L'égalité est vraie, donc $A$ est sur la droite. C'est une vérification rapide qui te sera utile tout au long de l'année."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax + by + c = 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand $b \\neq 0$, on peut isoler $y$ et obtenir l'équation réduite $y = mx + p$. Le coefficient $m$ est la pente, et $p$ est l'ordonnée à l'origine (le point où la droite coupe l'axe des ordonnées). Pour notre exemple $2x - 3y + 6 = 0$, on écrit $-3y = -2x - 6$, puis $y = \\frac{2}{3}x + 2$. La pente est $\\frac{2}{3}$ et l'ordonnée à l'origine est $2$. Cette forme est très pratique pour tracer rapidement la droite : on place le point $(0;2)$, puis on avance de $3$ en $x$ et de $2$ en $y$ pour trouver un second point."
+            },
+            {
+              "type": "graph",
+              "expression": "2/3*x+2",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite d'équation $y = \\frac{2}{3}x + 2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la représentation paramétrique utilise un point $M_0(x_0;y_0)$ de la droite et un vecteur directeur $\\vec{u}(u_x;u_y)$. Tout point $M(x;y)$ de la droite s'écrit $\\begin{cases} x = x_0 + t u_x \\\\ y = y_0 + t u_y \\end{cases}$ avec $t \\in \\mathbb{R}$. C'est la description « pas à pas » dont je parlais : $t$ est le paramètre qui fait glisser le point le long de la droite. Pour la même droite, on peut prendre $M_0(0;2)$ et $\\vec{u}(3;2)$ (car la pente $\\frac{2}{3}$ signifie qu'un vecteur directeur a pour coordonnées $(3;2)$ ou tout multiple). Alors $x = 3t$, $y = 2 + 2t$. Vérifie que pour $t=1$, on obtient $(3;4)$, bien notre point $A$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as revu les trois écritures principales, on va zoomer sur la pente. C'est un nombre qui résume l'inclinaison de la droite, et il va devenir ton meilleur allié pour comparer des droites, savoir si elles sont parallèles ou perpendiculaires, et même pour modéliser des phénomènes réels comme une vitesse ou un taux de variation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La pente, cet indicateur de direction"
+            },
+            {
+              "type": "paragraph",
+              "content": "La pente $m$ d'une droite non verticale, c'est le quotient $\\frac{\\Delta y}{\\Delta x}$ entre la variation de $y$ et la variation de $x$ quand on se déplace sur la droite. Concrètement, si tu choisis deux points $A(x_A;y_A)$ et $B(x_B;y_B)$ sur la droite, alors $m = \\frac{y_B - y_A}{x_B - x_A}$. Ce nombre ne dépend pas du choix des points : c'est une caractéristique intrinsèque de la droite. Si $m > 0$, la droite monte quand $x$ augmente (fonction croissante) ; si $m < 0$, elle descend (fonction décroissante) ; si $m = 0$, c'est une droite horizontale. Une droite verticale n'a pas de pente (on dit qu'elle a une pente infinie), car $\\Delta x = 0$ et la division par zéro est interdite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir deux points distincts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur le graphique ou à partir de l'équation, repère deux points faciles à lire. Pour $y = -2x + 5$, tu peux prendre $A(0;5)$ (l'ordonnée à l'origine) et $B(1;3)$ (en avançant de $1$ en $x$, $y$ diminue de $2$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les différences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\Delta y = y_B - y_A = 3 - 5 = -2$ et $\\Delta x = x_B - x_A = 1 - 0 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Former le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$m = \\frac{-2}{1} = -2$. C'est bien le coefficient directeur lu directement dans l'équation réduite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La pente permet aussi de reconnaître des droites parallèles : deux droites non verticales sont parallèles si et seulement si elles ont la même pente. Pour des droites perpendiculaires, le produit de leurs pentes vaut $-1$ (sauf si l'une est horizontale et l'autre verticale). Par exemple, une droite de pente $3$ est perpendiculaire à une droite de pente $-\\frac{1}{3}$. C'est une propriété puissante qu'on utilise sans cesse en géométrie analytique."
+            },
+            {
+              "type": "display_math",
+              "latex": "m_1 \\times m_2 = -1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir bien compris la pente, regardons ce qui se passe quand deux droites se rencontrent. L'intersection de deux droites, c'est le point commun à toutes les deux (s'il existe). C'est le cœur de la résolution de systèmes d'équations à deux inconnues, et ça a des applications concrètes : trouver le point de rupture d'un coût, l'instant où deux mobiles se croisent, etc."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand deux droites se croisent : l'intersection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit deux droites $d_1$ et $d_2$ d'équations cartésiennes $a_1x + b_1y + c_1 = 0$ et $a_2x + b_2y + c_2 = 0$. Chercher leur intersection, c'est résoudre le système $\\begin{cases} a_1x + b_1y + c_1 = 0 \\\\ a_2x + b_2y + c_2 = 0 \\end{cases}$. Trois cas peuvent se présenter : (1) Les droites sont sécantes : le système a une unique solution $(x_0;y_0)$, c'est le point d'intersection. (2) Les droites sont parallèles distinctes : le système n'a pas de solution (les équations sont incompatibles). (3) Les droites sont confondues : le système a une infinité de solutions (les deux équations sont proportionnelles)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $d_1 : 2x - y + 1 = 0$ et $d_2 : x + 2y - 4 = 0$. On peut utiliser la méthode par substitution : de la première, $y = 2x + 1$. En remplaçant dans la seconde : $x + 2(2x+1) - 4 = 0 \\Rightarrow x + 4x + 2 - 4 = 0 \\Rightarrow 5x - 2 = 0 \\Rightarrow x = \\frac{2}{5}$. Alors $y = 2 \\times \\frac{2}{5} + 1 = \\frac{4}{5} + 1 = \\frac{9}{5}$. L'intersection est $I\\left(\\frac{2}{5};\\frac{9}{5}\\right)$. Vérifions : pour $d_2$, $\\frac{2}{5} + 2 \\times \\frac{9}{5} - 4 = \\frac{2}{5} + \\frac{18}{5} - 4 = \\frac{20}{5} - 4 = 0$. C'est bon."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Droite $d_1 : y = 2x+1$ et $d_2 : y = -0.5x+2$ (seconde droite non tracée ici)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les droites sont données sous forme réduite $y = m_1x + p_1$ et $y = m_2x + p_2$, le test est rapide : si $m_1 \\neq m_2$, elles se coupent en un point unique ; si $m_1 = m_2$ et $p_1 \\neq p_2$, elles sont parallèles distinctes (pas d'intersection) ; si $m_1 = m_2$ et $p_1 = p_2$, elles sont confondues (infinité d'intersections). Cette règle te fait gagner un temps précieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette première leçon, ouvrons une porte vers le chapitre suivant : les vecteurs. La représentation paramétrique que tu as revue au début utilise un vecteur directeur. En 2nde, on apprend à manipuler ces vecteurs pour démontrer des propriétés géométriques, comme l'alignement de trois points ou le parallélisme de deux droites. C'est un outil plus souple que les équations cartésiennes dans bien des cas, et on va voir comment passer de l'un à l'autre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représentation paramétrique et vecteurs directeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un vecteur directeur $\\vec{u}(u_x;u_y)$ d'une droite non verticale indique sa direction. Si la droite a pour équation réduite $y = mx + p$, alors $\\vec{u}(1;m)$ est un vecteur directeur (car quand $x$ augmente de $1$, $y$ augmente de $m$). Tout vecteur colinéaire à $\\vec{u}$ (c'est-à-dire multiple de $\\vec{u}$) est aussi un vecteur directeur. Pour une droite verticale $x = k$, un vecteur directeur est $\\vec{u}(0;1)$ (direction de l'axe des ordonnées)."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 1,
+              "uy": 2,
+              "vx": 2,
+              "vy": 4,
+              "caption": "Deux vecteurs directeurs colinéaires : $\\vec{u}(1;2)$ et $\\vec{v}(2;4)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "La représentation paramétrique $\\begin{cases} x = x_0 + t u_x \\\\ y = y_0 + t u_y \\end{cases}$ décrit l'ensemble des points de la droite quand $t$ parcourt $\\mathbb{R}$. C'est particulièrement utile pour : (a) vérifier l'alignement de trois points $A, B, C$ : on montre que $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires ; (b) trouver l'équation cartésienne à partir d'un point et d'un vecteur directeur : on élimine $t$ entre les deux équations. Par exemple, avec $M_0(1;3)$ et $\\vec{u}(2;-1)$, on a $x = 1 + 2t$, $y = 3 - t$. De la seconde, $t = 3 - y$. En remplaçant dans la première : $x = 1 + 2(3-y) = 7 - 2y$, soit $x + 2y - 7 = 0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision d'ensemble solide sur les équations, les pentes et les intersections. La prochaine leçon sera un résumé sous forme de checklist pour t'assurer que tous les points clés sont bien ancrés. Prends le temps de relire tes notes, de refaire les exercices si besoin, et surtout, félicite-toi pour le chemin parcouru !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne une équation cartésienne, une équation réduite et une représentation paramétrique de la droite passant par $A(2;-1)$ et de pente $3$.",
+              "answer": "Cartésienne : $3x - y - 7 = 0$ ; Réduite : $y = 3x - 7$ ; Paramétrique : $\\begin{cases} x = 2 + t \\\\ y = -1 + 3t \\end{cases}$ ($t \\in \\mathbb{R}$).",
+              "hint": "Utilise la forme réduite $y - y_A = m(x - x_A)$ pour trouver l'équation réduite, puis transforme.",
+              "explanation": "On part de la forme point-pente : $y - (-1) = 3(x - 2) \\Rightarrow y + 1 = 3x - 6 \\Rightarrow y = 3x - 7$. L'équation cartésienne s'en déduit : $3x - y - 7 = 0$. Pour le paramétrique, on prend $A$ comme point de passage et $\\vec{u}(1;3)$ comme vecteur directeur (car la pente est $3$)."
+            },
+            {
+              "question": "Détermine la pente de la droite d'équation $4x + 5y - 20 = 0$. Cette droite est-elle croissante ou décroissante ?",
+              "answer": "Pente $m = -\\frac{4}{5}$. La droite est décroissante.",
+              "hint": "Passe à l'équation réduite $y = mx + p$ en isolant $y$.",
+              "explanation": "On écrit $5y = -4x + 20$, donc $y = -\\frac{4}{5}x + 4$. Le coefficient directeur est $-\\frac{4}{5}$, qui est négatif, donc la fonction associée est décroissante."
+            },
+            {
+              "question": "Étudie l'intersection des droites $d_1 : 3x - 2y + 4 = 0$ et $d_2 : 6x - 4y + 5 = 0$.",
+              "answer": "Les droites sont parallèles distinctes, pas d'intersection.",
+              "hint": "Compare les coefficients des équations cartésiennes ou passe en forme réduite pour comparer les pentes et les ordonnées à l'origine.",
+              "explanation": "La deuxième équation est $2 \\times (3x - 2y) + 5 = 0$, alors que la première donne $2 \\times (3x - 2y) + 8 = 0$. Les parties $3x-2y$ sont proportionnelles mais les constantes ne le sont pas ($4$ vs $5/2$). En forme réduite : $d_1 : y = 1.5x + 2$, $d_2 : y = 1.5x + 1.25$. Même pente, ordonnées à l'origine différentes : parallèles distinctes."
+            },
+            {
+              "question": "La droite $d$ a pour représentation paramétrique $\\begin{cases} x = -1 + 3t \\\\ y = 4 - 2t \\end{cases}$. Donne un vecteur directeur de $d$ et son équation cartésienne.",
+              "answer": "Vecteur directeur : $\\vec{u}(3;-2)$. Équation cartésienne : $2x + 3y - 10 = 0$.",
+              "hint": "Le vecteur directeur se lit directement sur les coefficients de $t$. Pour l'équation cartésienne, élimine $t$.",
+              "explanation": "D'après les équations, $\\vec{u}(3;-2)$. On exprime $t$ depuis la première : $t = \\frac{x+1}{3}$. On substitue dans la seconde : $y = 4 - 2\\frac{x+1}{3} = 4 - \\frac{2x+2}{3}$. On multiplie par $3$ : $3y = 12 - 2x - 2$, d'où $2x + 3y - 10 = 0$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel synthétique : les écritures d'une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de bilan, on ne découvre pas de nouvelles notions, on consolide. Imagine que tu ranges tes outils dans une boîte à outils bien ordonnée : chaque outil a sa place, et tu sais exactement quand l'utiliser. Pour les droites, tes trois outils principaux sont l'équation cartésienne (universelle, même pour les verticales), l'équation réduite (idéale pour lire la pente et l'ordonnée à l'origine) et la représentation paramétrique (parfaite pour travailler avec les vecteurs et les déplacements)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple frais : la droite qui passe par $B(1;5)$ et $C(4;-1)$. Sa pente est $m = \\frac{-1-5}{4-1} = \\frac{-6}{3} = -2$. L'équation réduite : $y - 5 = -2(x-1) \\Rightarrow y = -2x + 7$. L'équation cartésienne : $2x + y - 7 = 0$. Un vecteur directeur : $\\vec{u}(1;-2)$ (ou $(3;-6)$ qui est $\\overrightarrow{BC}$). La paramétrique : $\\begin{cases} x = 1 + t \\\\ y = 5 - 2t \\end{cases}$. Remarque comme le même objet géométrique se décrit de multiples façons, toutes équivalentes. La souplesse, c'est de savoir passer de l'une à l'autre sans hésiter."
+            },
+            {
+              "type": "display_math",
+              "latex": "y = mx + p \\quad \\Leftrightarrow \\quad ax + by + c = 0 \\quad \\Leftrightarrow \\quad \\begin{cases} x = x_0 + t u_x \\\\ y = y_0 + t u_y \\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, concentrons-nous sur la pente comme outil de comparaison. C'est le critère numéro un pour savoir comment deux droites se positionnent l'une par rapport à l'autre. Si tu retiens une seule chose aujourd'hui, que ce soit ça : même pente $\\Rightarrow$ parallèles (ou confondues) ; pentes opposées inverses $\\Rightarrow$ perpendiculaires. C'est valable pour toutes les droites non verticales. Pour les verticales, elles sont toutes parallèles entre elles (équation $x = \\text{constante}$) et perpendiculaires à toutes les horizontales ($y = \\text{constante}$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Teste-toi avec cet exemple : $d_1 : y = 0.4x - 3$ et $d_2 : 2x + 5y + 1 = 0$. La pente de $d_1$ est $0.4 = \\frac{2}{5}$. Pour $d_2$, on isole $y$ : $5y = -2x - 1 \\Rightarrow y = -0.4x - 0.2$, pente $-\\frac{2}{5}$. Les pentes sont opposées, mais pas inverses ($\\frac{2}{5} \\times (-\\frac{2}{5}) = -\\frac{4}{25} \\neq -1$). Donc les droites ne sont ni parallèles ni perpendiculaires, elles sont simplement sécantes. Ce genre de raisonnement rapide te sera demandé au bac."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième point clé : résoudre un système de deux équations de droites. C'est le geste technique de base pour trouver une intersection. Tu as trois méthodes à ta disposition : substitution, combinaison linéaire (ajout/soustraction des équations) et comparaison (quand les deux sont sous forme réduite). La combinaison linéaire est souvent la plus robuste quand les équations sont cartésiennes. Entraîne-toi à choisir la méthode la plus efficace selon la forme des équations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode par combinaison (exemple)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Système : $\\begin{cases} 2x + 3y = 7 \\\\ 4x - y = 5 \\end{cases}$. On multiplie la seconde par $3$ : $12x - 3y = 15$. On ajoute à la première : $14x = 22 \\Rightarrow x = \\frac{11}{7}$. On reporte dans la première : $2 \\times \\frac{11}{7} + 3y = 7 \\Rightarrow \\frac{22}{7} + 3y = 7 \\Rightarrow 3y = \\frac{27}{7} \\Rightarrow y = \\frac{9}{7}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "N'oublie pas les cas particuliers : si en combinant les équations tu obtiens une absurdité du type $0 = 5$, les droites sont parallèles distinctes (pas de solution). Si tu obtiens une tautologie $0 = 0$, les droites sont confondues (infinité de solutions). Ces deux cas se détectent aussi en comparant les coefficients : $\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}$ pour parallèles, égalité des trois rapports pour confondues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, faisons le lien avec les vecteurs, car c'est le langage naturel de la géométrie en 2nde. Un vecteur directeur $\\vec{u}$ d'une droite $d$ est tout vecteur non nul porté par $d$. Deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont colinéaires. Trois points $A, B, C$ sont alignés si et seulement si $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires. C'est souvent plus rapide que de manipuler des équations, surtout pour démontrer des propriétés géométriques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : montrer que les points $P(2;1)$, $Q(5;3)$ et $R(8;5)$ sont alignés. $\\overrightarrow{PQ}(3;2)$, $\\overrightarrow{PR}(6;4) = 2 \\times \\overrightarrow{PQ}$. Ils sont colinéaires, donc $P, Q, R$ alignés. La droite $(PQ)$ a pour vecteur directeur $(3;2)$, son équation cartésienne : $2x - 3y - 1 = 0$ (on élimine $t$ depuis $x=2+3t, y=1+2t$). Vois comme le vecteur donne tout de suite la direction et permet de retrouver l'équation."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": 2,
+              "vx": 6,
+              "vy": 4,
+              "caption": "Vecteurs $\\overrightarrow{PQ}(3;2)$ et $\\overrightarrow{PR}(6;4)$ colinéaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu arrives au bout de ce bilan. Tu as revu les équations, les pentes, les intersections et le lien avec les vecteurs. Chaque notion est un maillon d'une même chaîne : décrire une droite, la positionner, la comparer à d'autres. La checklist qui suit est ton résumé personnel. Coche chaque item seulement si tu te sens à l'aise pour l'expliquer à un camarade ou l'appliquer sur un exercice inédit. Si un point reste flou, reviens sur la leçon correspondante, refais l'exercice, et reviens cocher plus tard. C'est comme ça qu'on ancre durablement."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire l'équation cartésienne, réduite et paramétrique d'une droite à partir de données variées (point + pente, deux points, point + vecteur directeur).",
+                "Je sais passer d'une forme d'équation à une autre sans me tromper.",
+                "Je sais calculer la pente d'une droite et l'interpréter (croissante, décroissante, horizontale, verticale).",
+                "Je sais déterminer si deux droites sont parallèles, perpendiculaires ou sécantes en comparant leurs pentes (ou leurs vecteurs directeurs).",
+                "Je sais résoudre un système de deux équations de droites pour trouver leur intersection, et identifier les cas parallèles distinctes ou confondues.",
+                "Je sais utiliser un vecteur directeur pour montrer l'alignement de trois points ou le parallélisme de deux droites.",
+                "Je sais trouver l'équation cartésienne d'une droite connaissant un point et un vecteur directeur (élimination du paramètre)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La droite $d$ passe par $E(-2;3)$ et a pour vecteur directeur $\\vec{v}(4;-1)$. Donne son équation cartésienne et son équation réduite.",
+              "answer": "Cartésienne : $x + 4y - 10 = 0$ ; Réduite : $y = -0.25x + 2.5$.",
+              "hint": "Écris d'abord la représentation paramétrique, puis élimine $t$.",
+              "explanation": "Paramétrique : $x = -2 + 4t$, $y = 3 - t$. De la seconde, $t = 3 - y$. Substitution : $x = -2 + 4(3-y) = 10 - 4y$, soit $x + 4y - 10 = 0$. En forme réduite : $4y = -x + 10 \\Rightarrow y = -\\frac{1}{4}x + \\frac{5}{2}$."
+            },
+            {
+              "question": "Soient $d_1 : y = -3x + 2$ et $d_2 : 6x + 2y - 7 = 0$. Sont-elles parallèles, perpendiculaires ou sécantes ? Justifie.",
+              "answer": "Parallèles distinctes.",
+              "hint": "Mets $d_2$ sous forme réduite pour lire sa pente.",
+              "explanation": "$d_2 : 2y = -6x + 7 \\Rightarrow y = -3x + 3.5$. Pente de $d_1$ : $-3$. Pente de $d_2$ : $-3$. Mêmes pentes, ordonnées à l'origine différentes ($2$ et $3.5$), donc parallèles distinctes."
+            },
+            {
+              "question": "Résous le système $\\begin{cases} 5x - 2y = 8 \\\\ 3x + 4y = 2 \\end{cases}$ et interprète géométriquement le résultat.",
+              "answer": "Solution unique $x = 2$, $y = 1$. Les droites sont sécantes en $I(2;1)$.",
+              "hint": "Utilise la combinaison linéaire pour éliminer $y$.",
+              "explanation": "Multiplie la première par $2$ : $10x - 4y = 16$. Ajoute à la seconde : $13x = 18 \\Rightarrow x = \\frac{18}{13}$... Attends, recalculons : $10x - 4y = 16$ et $3x + 4y = 2$ donnent $13x = 18$, donc $x = \\frac{18}{13}$. Alors $y = \\frac{5x-8}{2} = \\frac{90/13 - 104/13}{2} = \\frac{-14/13}{2} = -\\frac{7}{13}$. L'intersection est $\\left(\\frac{18}{13};-\\frac{7}{13}\\right)$. Les droites sont sécantes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

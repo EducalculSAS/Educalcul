@@ -1,0 +1,419 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.785676+00:00",
+  "id": 416,
+  "code": "5eme-t08-c02",
+  "title": "Conditions",
+  "description": "Cours structuré Educalcul : Conditions.",
+  "subject": "Pensée informatique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Conditions",
+    "objectif_global": "Conditions",
+    "mini_lecons_imposees": [
+      "If / else.",
+      "Tester.",
+      "Déboguer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "If / else.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qué est-ce qu’une condition ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu décides de prendre un parapluie seulement s’il pleut. Cette phrase cache une règle simple : « s’il pleut, je prends mon parapluie ». En programmation, on appelle cela une condition : une question dont la réponse est soit vraie, soit fausse. Le programme va lire la réponse et choisir l’action qui correspond. C’est la base de tout choix automatique, que ce soit pour afficher un message, modifier un score ou changer une image."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Expression qui peut être évaluée comme vraie (true) ou fausse (false). Elle compare généralement deux valeurs avec un opérateur comme $>$, $<$, $=$, $\\neq$, $\\ge$, $\\le$.",
+              "example": "La condition $temperature > 0$ est vraie si la température est positive."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu as une variable $temperature$ qui vaut $12$. La condition $temperature > 0$ devient $12 > 0$, ce qui est vrai. Le programme sait alors qu’il doit exécuter les instructions placées après le mot-clé « then » ou dans le bloc qui suit le « if ». Si la température tombe à $-3$, la même condition devient fausse et le programme saute ce bloc pour passer à la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La structure if / else en pseudo-code"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu’est une condition, voyons comment l’écrire. Le mot-clé « if » ouvre le test, suivi de la condition entre parenthèses. Ensuite vient le bloc d’instructions à faire si la condition est vraie. Le mot-clé « else » (sinon) introduit le bloc alternatif, exécuté seulement quand la condition est fausse. Cette forme garantit qu’une seule des deux parties sera jouée, jamais les deux en même temps."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Écrire le mot-clé if",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tape « if (condition) ». La condition peut utiliser des variables, des nombres et des opérateurs de comparaison."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Bloc du cas vrai",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ouvre une accolade « { », écris les instructions voulues, puis ferme avec « } »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Ajouter else",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute « else { », écris les instructions du cas faux, puis ferme avec « } »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple complet : décider d’emmener un parapluie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l’histoire du parapluie. Supposons que le programme connaisse la variable $pleut$ qui vaut $true$ s’il pleut et $false$ sinon. Voici le pseudo-code :\\nif ($pleut$) {\\n    afficher \"Prends ton parapluie\"\\n} else {\\n    afficher \"Pas besoin de parapluie\"\\n}\\nSi $pleut$ est vrai, le premier message s’affiche. Sinon, c’est le second. Essaie d’imaginer ce qui se passe si tu oublies le bloc else : le programme ne dit rien quand il ne pleut pas, ce qui peut préter à confusion."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Variable $pleut$ : true ou false",
+                "Condition : $pleut$",
+                "Bloc vrai : message parapluie",
+                "Bloc faux : message pas de parapluie"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les bases pour écrire un choix simple. Dans la prochaine leçon, nous verrons comment vérifier que ton programme réagit correctement dans tous les cas, même les plus inattendus."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si la variable $age$ vaut $12$, quelle est la valeur de la condition $age \\ge 10$ ?",
+              "answer": "true",
+              "hint": "Remplace $age$ par $12$ et compare.",
+              "explanation": "La condition devient $12 \\ge 10$, ce qui est vrai, donc le résultat est true."
+            },
+            {
+              "question": "Compléte le pseudo-code pour afficher \"Pair\" si $n$ est pair, sinon \"Impair\".",
+              "answer": "if (n % 2 == 0) { afficher \"Pair\" } else { afficher \"Impair\" }",
+              "hint": "Utilise l’opérateur modulo % pour tester la divisibilité par 2.",
+              "explanation": "L’expression $n \\% 2 == 0$ est vraie exactement quand $n$ est multiple de 2, c’est-à-dire pair."
+            },
+            {
+              "question": "Dans l’exemple du parapluie, que se passe-t-il si on supprime le bloc else ?",
+              "answer": "Rien ne s’affiche quand il ne pleut pas.",
+              "hint": "Rappelle-toi que le bloc else contient les instructions du cas faux.",
+              "explanation": "Sans else, le programme saute le bloc if quand la condition est fausse et continue après la structure, sans afficher de message."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi tester son programme ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire un if / else, c’est bien, mais comment être sûr qu’il fait ce qu’on attend ? Imagine que tu prépares un gâteau sans goûter la pâte : tu risques de servir quelque chose d’immangeable. En programmation, tester signifie faire tourner le code avec différentes valeurs d’entrée et observer les résultats. Cela permet de découvrir les erreurs de logique, les oublis de cas limites et les fautes de syntaxe avant que l’utilisateur ne les voie."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Commence toujours par les cas les plus simples, puis ajoute des valeurs extrêmes (zéro, nombres négatifs, très grands)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les cas de test : valeurs limites et cas typiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bon jeu de tests couvre trois catégories. Les cas typiques représentent l’utilisation normale (par exemple $age = 25$ pour un test de majorité). Les valeurs limites sont les frontières où la condition change de résultat (ici $age = 17$ et $age = 18$). Les cas extrêmes ou invalides vérifient la robustesse (âge négatif, très grand). En testant chaque catégorie, tu t’assures que le programme ne plante pas et répond correctement partout."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Catégorie",
+                "Valeur testée",
+                "Résultat attendu"
+              ],
+              "rows": [
+                [
+                  "Typique",
+                  "25",
+                  "Majeur"
+                ],
+                [
+                  "Limite inférieure",
+                  "17",
+                  "Mineur"
+                ],
+                [
+                  "Limite supérieure",
+                  "18",
+                  "Majeur"
+                ],
+                [
+                  "Extrême",
+                  "-5",
+                  "Erreur ou message spécial"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire ton propre tableau de tests"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, c’est à toi de créer un tableau pour une condition différente. Supposons un programme qui vérifie si un nombre $x$ est strictement positif. Identifie au moins un cas typique, les deux limites (zéro et juste au-dessus), et un cas extrême négatif. Remplis le tableau mentalement, puis compare avec la correction. Cette méthode s’applique à n’importe quelle condition, même complexe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Choisir la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note la condition exacte, par exemple $x > 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Lister les catégories",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Typique, limite basse, limite haute, extrême."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque catégorie, écris une valeur concrète et le résultat attendu (true / false)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire une suite de tests qui donne confiance. La prochaine leçon t’apprendra à repérer et corriger les erreurs qui subsistent malgré les tests."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la condition $note \\ge 10$, donne une valeur typique, une limite basse, une limite haute et une extrême.",
+              "answer": "Typique : 12 (true). Limite basse : 9 (false). Limite haute : 10 (true). Extrême : -3 (false).",
+              "hint": "Pense au seuil 10 et aux valeurs autour.",
+              "explanation": "Le seuil est 10. Juste en dessous (9) c’est false, 10 et au-dessus c’est true. Une note négative est impossible mais teste la robustesse."
+            },
+            {
+              "question": "Compléte le tableau de test pour la condition $x \\neq 0$.",
+              "answer": "Typique 5 -> true ; Limite basse -1 -> true ; Limite haute 1 -> true ; Extrême 0 -> false.",
+              "hint": "La condition est vraie pour tout nombre sauf zéro.",
+              "explanation": "Seule la valeur 0 rend la condition fausse. Tous les autres nombres, positifs ou négatifs, la rendent vraie."
+            },
+            {
+              "question": "Pourquoi est-il important de tester la valeur zéro dans $x > 0$ ?",
+              "answer": "Parce que zéro est la frontière où la condition change de résultat.",
+              "hint": "Rappelle-toi la définition des valeurs limites.",
+              "explanation": "La condition $x > 0$ est fausse pour $x = 0$ et vraie pour tout $x$ positif. Tester zéro vérifie que le programme gère correctement ce changement."
+            }
+          ]
+        },
+        {
+          "title": "Déboguer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L’erreur de condition la plus fréquente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même avec des tests, certaines erreurs reviennent souvent. La plus classique est d’oublier le bloc else ou d’écrire une condition inversée. Par exemple, vouloir afficher \"Accès autorisé\" quand $age \\ge 18$ mais écrire $age < 18$ dans le if. Le programme fera l’inverse de ce qu’on attend. Cette erreur est sournoise car le code compile et s’exécute sans planter, mais le résultat est faux."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Relis toujours la condition à voix haute : \"si age est supérieur ou égal à 18\" pour éviter l’inversion."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du print pour suivre la condition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le comportement ne correspond pas, insère des affichages temporaires (souvent appelés \"print\" ou \"console.log\") juste avant et après le if. Affiche la valeur de la variable testée et le résultat de la condition. Ainsi tu vois exactement ce que le programme évalue et quelle branche il emprunte. C’est comme poser un marqueur sur un chemin pour savoir par où tu es passé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Afficher la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Juste avant le if, écris print(\"age = \", age)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Afficher le résultat de la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans le if, ajoute print(\"condition vraie\") ; dans le else, print(\"condition fausse\")."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Lancer et observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute avec plusieurs valeurs d’entrée et vérifie que les messages correspondent à tes attentes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger et vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié l’erreur grâce aux prints, corrige la condition ou le bloc manquéant. Relance l’ensemble de tes cas de test (typiques, limites, extrêmes) pour t’assurer que la correction ne casse rien d’autre. Si tous les tests passent, tu as débogué avec succès. N’oublie pas de supprimer les prints de débogage avant de livrer le programme final."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Repérer l’erreur avec des prints",
+                "Corriger la condition ou le bloc",
+                "Relancer tous les tests",
+                "Nettoyer les prints temporaires"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une structure if / else correcte.",
+                "Je sais choisir des cas de test variés (typiques, limites, extrêmes).",
+                "Je sais utiliser des prints pour suivre l’exécution d’une condition.",
+                "Je sais corriger une condition inversée ou un else manquéant et valider avec mes tests."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le code suivant affiche \"Mineur\" pour $age = 20$. Trouve l’erreur : if (age < 18) { afficher \"Majeur\" } else { afficher \"Mineur\" }",
+              "answer": "La condition est inversée : il faut $age \\ge 18$ pour \"Majeur\".",
+              "hint": "Compare la condition écrite avec la règle voulue.",
+              "explanation": "Avec $age = 20$, la condition $age < 18$ est fausse, donc le else s’exécute et affiche \"Mineur\". Il faut tester $age \\ge 18$."
+            },
+            {
+              "question": "Où placer un print pour voir la valeur de $x$ avant le test $x > 0$ ?",
+              "answer": "Juste avant le mot-clé if.",
+              "hint": "Le print doit s’exécuter quel que soit le résultat de la condition.",
+              "explanation": "Placer le print avant le if garantit qu’il s’affiche pour toute valeur de $x$, ce qui permet de confirmer la valeur testée."
+            },
+            {
+              "question": "Après avoir corrigé une condition, que dois-tu faire avant de considérer le programme fini ?",
+              "answer": "Relancer tous les cas de test et supprimer les prints de débogage.",
+              "hint": "Rappelle-toi la liste de fin de leçon.",
+              "explanation": "La correction peut avoir des effets de bord. Refaire la suite complète de tests assure qu’aucun autre cas n’est cassé. Nettoyer les prints laisse un code propre."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

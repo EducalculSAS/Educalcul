@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Lire programme",
+  "title": "Quiz : Lire un programme (3e)",
+  "questions": [
+    {
+      "text": "On exécute le programme suivant :\\na ← $5$\\nb ← $3$\\na ← a + b\\nAFFICHER a\\nQuelle valeur est affichée ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$3$",
+        "$15$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Le programme affecte $5$ à a, $3$ à b, puis ajoute b à a, donc a devient $5+3 = 8$, qui est affiché.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\nx ← $7$\\nSI x > $10$ ALORS\\n    y ← $1$\\nSINON\\n    y ← $2$\\nFIN SI\\nAFFICHER y\\nQuelle valeur est affichée ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$7$",
+        "$10$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Comme $7$ n'est pas strictement supérieur à $10$, la branche SINON est exécutée, affectant $2$ à y, qui est affiché.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\ns ← $0$\\nPOUR i DE $1$ À $5$ FAIRE\\n    s ← s + i\\nFIN POUR\\nAFFICHER s\\nQuelle valeur est affichée ?",
+      "options": [
+        "$10$",
+        "$15$",
+        "$20$",
+        "$5$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La boucle ajoute successivement $1,2,3,4,5$ à s, soit $1+2+3+4+5 = 15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\nn ← $10$\\nTANTQUE n > $0$ FAIRE\\n    n ← n - $3$\\nFIN TANTQUE\\nAFFICHER n\\nQuelle valeur est affichée ?",
+      "options": [
+        "$-2$",
+        "$1$",
+        "$4$",
+        "$7$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "La boucle s'exécute tant que n > 0 : 10→7→4→1→-2 ; quand n devient -2 la condition est fausse, la boucle s'arrête et -2 est affiché.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\nproduit ← $1$\\nPOUR i DE $1$ À $3$ FAIRE\\n    POUR j DE $1$ À $2$ FAIRE\\n        SI i * j > $3$ ALORS\\n            produit ← produit * (i * j)\\n        FIN SI\\n    FIN POUR\\nFIN POUR\\nAFFICHER produit\\nQuelle valeur est affichée ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$24$",
+        "$12$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Les paires (i,j) donnant i*j > 3 sont (2,2) avec 4 et (3,2) avec 6. produit = 1 * 4 * 6 = 24.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

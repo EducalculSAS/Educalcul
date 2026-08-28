@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 449,
+  "_course_code": "4eme-t06-c05-bilan-espace-et-transformations-4e",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Transformations, volumes",
+  "title": "Approfondissement : Transformations et volumes",
+  "questions": [
+    {
+      "text": "Un solide a un volume de $V$. On applique à ce solide une homothétie de rapport $2$. Quel est le volume de l'image de ce solide ?",
+      "options": [
+        "$2V$",
+        "$4V$",
+        "$8V$",
+        "$16V$"
+      ],
+      "correctAnswer": "$8V$",
+      "explanation": "Une homothétie de rapport $k$ multiplie toutes les longueurs par $k$, les aires par $k^2$ et les volumes par $k^3$. Ici $k=2$, donc le volume est multiplié par $2^3 = 8$. Le nouveau volume est donc $8V$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de révolution a un volume $V$. On double son rayon de base et on divise sa hauteur par deux. Quel est le volume du nouveau cylindre obtenu ?",
+      "options": [
+        "$V$",
+        "$2V$",
+        "$4V$",
+        "$8V$"
+      ],
+      "correctAnswer": "$2V$",
+      "explanation": "Le volume d'un cylindre est $V = \\pi r^2 h$. Si le nouveau rayon est $r' = 2r$ et la nouvelle hauteur $h' = h/2$, alors le nouveau volume est $V' = \\pi (2r)^2 (h/2) = \\pi \\times 4r^2 \\times h/2 = 2 (\\pi r^2 h) = 2V$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide a un volume de $36 \\text{ cm}^3$. On effectue une rotation de cette pyramide autour d'un axe. Quel est le volume de l'image de la pyramide après cette rotation ?",
+      "options": [
+        "$18 \\text{ cm}^3$",
+        "$36 \\text{ cm}^3$",
+        "$72 \\text{ cm}^3$",
+        "Cela dépend de l'angle de rotation"
+      ],
+      "correctAnswer": "$36 \\text{ cm}^3$",
+      "explanation": "Une rotation est une isométrie (déplacement qui conserve les longueurs, les angles, les aires et les volumes). Le volume ne change donc pas, il reste $36 \\text{ cm}^3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une sphère de rayon $3 \\text{ cm}$. En utilisant la formule $V = \\frac{4}{3} \\pi r^3$, quel est le volume exact de cette sphère ?",
+      "options": [
+        "$12\\pi \\text{ cm}^3$",
+        "$18\\pi \\text{ cm}^3$",
+        "$36\\pi \\text{ cm}^3$",
+        "$108\\pi \\text{ cm}^3$"
+      ],
+      "correctAnswer": "$36\\pi \\text{ cm}^3$",
+      "explanation": "On applique la formule : $V = \\frac{4}{3} \\pi \\times 3^3 = \\frac{4}{3} \\pi \\times 27 = 4 \\times 9 \\pi = 36\\pi \\text{ cm}^3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône de révolution a un volume de $100 \\text{ cm}^3$. Il est transformé par une homothétie de rapport $\\frac{1}{2}$. Quel est le volume de l'image de ce cône ?",
+      "options": [
+        "$12,5 \\text{ cm}^3$",
+        "$25 \\text{ cm}^3$",
+        "$50 \\text{ cm}^3$",
+        "$100 \\text{ cm}^3$"
+      ],
+      "correctAnswer": "$12,5 \\text{ cm}^3$",
+      "explanation": "Une homothétie de rapport $k = \\frac{1}{2}$ multiplie le volume par $k^3 = (\\frac{1}{2})^3 = \\frac{1}{8}$. Le nouveau volume est donc $100 \\times \\frac{1}{8} = 12,5 \\text{ cm}^3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 231,
+  "_course_code": "cm1-t03-c06-calcul-mental-par-decomposition",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Distributivité intuitive",
+  "title": "Quiz : Distributivité intuitive (CM1)",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. Quelle écriture correspond à la décomposition de l'aire du grand rectangle ?",
+      "options": [
+        "$10 \\times 3 + 4 \\times 3$",
+        "$10 \\times 4 + 3 \\times 3$",
+        "$14 \\times 3 + 4 \\times 3$",
+        "$10 \\times 3 + 3 \\times 3$"
+      ],
+      "correctAnswer": "$10 \\times 3 + 4 \\times 3$",
+      "explanation": "Le grand rectangle a pour dimensions 14 (longueur) et 3 (largeur). Il est décomposé en deux rectangles : l'un de dimensions 10 sur 3 (aire $10 \\times 3$) et l'autre de dimensions 4 sur 3 (aire $4 \\times 3$). L'aire totale est donc la somme de ces deux aires : $10 \\times 3 + 4 \\times 3$. Les autres propositions mélangent les dimensions ou ajoutent des parties inexistantes.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 14,
+            "height": 3,
+            "label": "14 x 3"
+          }
+        ],
+        "caption": "Rectangle de 14 sur 3 décomposé en 10 sur 3 et 4 sur 3"
+      }
+    },
+    {
+      "text": "Pour calculer mentalement $16 \\times 4$, quelle décomposition par la distributivité est la plus adaptée (en utilisant les dizaines et les unités) ?",
+      "options": [
+        "$10 \\times 4 + 6 \\times 4$",
+        "$16 \\times 2 + 16 \\times 2$",
+        "$10 \\times 6 + 4 \\times 6$",
+        "$10 \\times 4 + 6$"
+      ],
+      "correctAnswer": "$10 \\times 4 + 6 \\times 4$",
+      "explanation": "La distributivité intuitive au CM1 consiste à décomposer un nombre selon sa valeur de position (dizaines et unités). $16 = 10 + 6$. On multiplie ensuite chaque partie par 4 : $16 \\times 4 = (10 + 6) \\times 4 = 10 \\times 4 + 6 \\times 4$. L'option B est une décomposition possible mais ne correspond pas à la méthode standard par dizaines/unités. L'option C inverse les nombres. L'option D oublie de multiplier les unités par 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'égalité suivante en utilisant la distributivité : $25 \\times 3 = 20 \\times 3 + \\ldots \\times 3$",
+      "options": [
+        "5",
+        "3",
+        "25",
+        "2"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On décompose 25 en 20 (dizaines) et 5 (unités). L'égalité s'écrit $25 \\times 3 = (20 + 5) \\times 3 = 20 \\times 3 + 5 \\times 3$. Le nombre manquant est donc 5. L'option 3 correspond au multiplicateur, l'option 25 au nombre de départ, l'option 2 aux dizaines de 25 mais pas aux unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on calcule $12 \\times 5$ en faisant $10 \\times 5 + 2 \\times 5$, quel est le résultat final ?",
+      "options": [
+        "60",
+        "55",
+        "65",
+        "50"
+      ],
+      "correctAnswer": "60",
+      "explanation": "On calcule chaque terme : $10 \\times 5 = 50$ et $2 \\times 5 = 10$. On additionne les résultats partiels : $50 + 10 = 60$. L'option 55 correspond à $50 + 5$ (erreur sur $2 \\times 5$). L'option 65 correspond à $50 + 15$ (erreur sur $2 \\times 5$ ou $3 \\times 5$). L'option 50 correspond au seul produit des dizaines (oubli des unités).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas calcule $18 \\times 4$. Il écrit : $18 \\times 4 = 10 \\times 4 + 8 \\times 4$. Quel est le résultat de $18 \\times 4$ ?",
+      "options": [
+        "72",
+        "62",
+        "78",
+        "42"
+      ],
+      "correctAnswer": "72",
+      "explanation": "Lucas a bien décomposé 18 en 10 et 8. Il calcule les produits partiels : $10 \\times 4 = 40$ et $8 \\times 4 = 32$. Il additionne : $40 + 32 = 72$. L'option 62 vient de $40 + 22$ (erreur sur $8 \\times 4$). L'option 78 vient de $40 + 38$ (erreur sur $8 \\times 4$). L'option 42 vient de $10 \\times 4 + 2$ (oubli de multiplier les unités par 4).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Répondre à des questions",
+  "title": "Quiz : Lire un diagramme en bâtons - Répondre à des questions",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons. Combien d'élèves ont choisi les pommes ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$6$",
+        "$10$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La barre correspondant aux pommes monte jusqu'à $8$. Les autres nombres correspondent aux autres fruits : $5$ pour les bananes, $6$ pour les oranges et $10$ pour les fraises.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de la classe",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Fraises",
+            "value": 10,
+            "tone": "gold"
+          },
+          {
+            "label": "Raisins",
+            "value": 3,
+            "tone": "navy"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel est le fruit le plus apprécié par les élèves de la classe ?",
+      "options": [
+        "Les pommes",
+        "Les bananes",
+        "Les fraises",
+        "Les oranges"
+      ],
+      "correctAnswer": "Les fraises",
+      "explanation": "Il faut chercher la barre la plus haute. La barre des fraises monte jusqu'à $10$, c'est la valeur la plus grande. Les pommes sont à $8$, les oranges à $6$ et les bananes à $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il d'élèves de plus qui préfèrent les fraises aux bananes ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Il faut faire la différence entre le nombre d'élèves pour les fraises ($10$) et celui pour les bananes ($5$). Le calcul est $10 - 5 = 5$. L'option $3$ correspond aux raisins, $4$ n'est pas une différence visible ici, et $6$ correspond aux oranges.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il d'élèves au total dans la classe ?",
+      "options": [
+        "$30$",
+        "$32$",
+        "$34$",
+        "$36$"
+      ],
+      "correctAnswer": "$32$",
+      "explanation": "Il faut additionner toutes les valeurs des barres : $8$ (pommes) + $5$ (bananes) + $6$ (oranges) + $10$ (fraises) + $3$ (raisins) = $32$. Les autres nombres sont des approximations proches mais inexactes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel fruit a été choisi par le moins grand nombre d'élèves ?",
+      "options": [
+        "Les raisins",
+        "Les bananes",
+        "Les oranges",
+        "Les pommes"
+      ],
+      "correctAnswer": "Les raisins",
+      "explanation": "Il faut chercher la barre la plus basse. La barre des raisins s'arrête à $3$, c'est la plus petite valeur. Les bananes sont à $5$, les oranges à $6$ et les pommes à $8$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,599 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.271649+00:00",
+  "id": 572,
+  "code": "1ere-generale-maths-t01-c02",
+  "title": "Implication, équivalence et contre-exemple",
+  "description": "Cours structuré Educalcul : Implication, équivalence et contre-exemple.",
+  "subject": "Outils, automatismes, logique et algorithmique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Outils, automatismes, logique et algorithmique",
+    "titre_du_cours": "Implication, équivalence et contre-exemple",
+    "objectif_global": "Implication, équivalence et contre-exemple",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Distinguer réciproque.",
+      "Prouver / réfuter simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Outils, automatismes, logique et algorithmique",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les mots du logique : propositions et variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier rendez-vous consacré au langage de la logique mathématique. Tu vas voir que derrière des symboles qui peuvent impressionner au premier abord ($\\forall$, $\\exists$, $\\Rightarrow$, $\\Leftrightarrow$) se cachent des idées très simples, que tu utilises déjà chaque jour sans t'en rendre compte. L'objectif de cette leçon n'est pas de t'assommer de définitions formelles, mais de t'apprendre à lire une écriture mathématique comme on lit une phrase en français : en en comprenant la structure, le sens et les nuances. Prends le temps de t'approprier chaque symbole, car ils seront tes outils de base pour tout le reste de l'année."
+            },
+            {
+              "type": "definition",
+              "term": "Proposition",
+              "definition": "Une phrase qui affirme quelque chose et qui ne peut être que vraie ou fausse, jamais les deux à la fois. Elle ne contient pas de variable libre.",
+              "example": "\"$2 + 2 = 4$\" est une proposition (vraie). \"$2 + 2 = 5$\" en est une aussi (fausse)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : une phrase comme \"$x^2 = 4$\" n'est pas une proposition, car sa vérité dépend de la valeur de $x$. On appelle cela un \\textbf{prédicat} : une expression qui devient une proposition dès qu'on donne une valeur à la variable. Pour transformer un prédicat en proposition, on a deux leviers : soit on remplace la variable par un nombre précis (on \\textit{instancie}), soit on utilise un \\textbf{quantificateur}."
+            },
+            {
+              "type": "definition",
+              "term": "Quantificateur universel",
+              "definition": "Le symbole $\\forall$ se lit \"pour tout\" ou \"quel que soit\". $\\forall x \\in E,\\ P(x)$ signifie : pour chaque élément $x$ de l'ensemble $E$, la propriété $P(x)$ est vraie.",
+              "example": "$\\forall x \\in \\mathbb{R},\\ x^2 \\ge 0$ : quel que soit le réel $x$, son carré est positif ou nul."
+            },
+            {
+              "type": "definition",
+              "term": "Quantificateur existentiel",
+              "definition": "Le symbole $\\exists$ se lit \"il existe au moins un\". $\\exists x \\in E,\\ P(x)$ signifie : il y a au moins un élément $x$ dans $E$ pour lequel $P(x)$ est vraie.",
+              "example": "$\\exists x \\in \\mathbb{R},\\ x^2 = 2$ : il existe un réel dont le carré vaut $2$ (c'est $\\sqrt{2}$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall x \\in \\mathbb{R},\\ x^2 \\ge 0 \\quad\\text{et}\\quad \\exists x \\in \\mathbb{R},\\ x^2 = 2"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de lecture",
+              "paragraphs": [
+                "Quand tu vois $\\forall x \\in E$, imagine que tu prends un élément \\textbf{au hasard} dans $E$ : la suite de la phrase doit être vraie pour \\textbf{ce} choix-là, quel qu'il soit. Pour $\\exists x \\in E$, imagine que tu cherches \\textbf{un seul} exemple qui marche : dès que tu l'as trouvé, l'affirmation est vraie."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'implication : \"si... alors...\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au connecteur le plus important : l'implication, notée $\\Rightarrow$. Elle relie deux propositions $P$ et $Q$ pour former \"$P \\Rightarrow Q$\", qu'on lit \"$P$ implique $Q$\", \"si $P$ alors $Q$\" ou \"$Q$ si $P$\". Dans cette relation, $P$ s'appelle \\textbf{l'hypothèse} (ou condition suffisante) et $Q$ la \\textbf{conclusion} (ou condition nécessaire). La règle de vérité est simple : l'implication est fausse \\textbf{uniquement} quand l'hypothèse est vraie et la conclusion fausse. Dans tous les autres cas (hypothèse fausse, ou conclusion vraie), elle est vraie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $P$ et $Q$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans \"Si un nombre est pair, alors son carré est pair\", $P$ = \"le nombre est pair\", $Q$ = \"son carré est pair\"."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier le cas piège",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'implication ne dit \\textbf{rien} de ce qui arrive quand $P$ est faux. \"Si $2+2=5$, alors je suis le pape\" est une implication \\textbf{vraie} en logique (car l'hypothèse est fausse), même si elle n'a aucun sens dans la vie courante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les formulations variées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\"$P$ suffit pour $Q$\", \"$Q$ est nécessaire pour $P$\", \"$P$ seulement si $Q$\" : toutes ces phrases veulent dire $P \\Rightarrow Q$. Entraîne-toi à les repérer dans les énoncés d'exercices."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "P \\Rightarrow Q \\text{ est fausse } \\iff P \\text{ vraie et } Q \\text{ fausse}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équivalence : \"si et seulement si\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux implications marchent dans les deux sens, on a une \\textbf{équivalence}, notée $\\Leftrightarrow$. \"$P \\Leftrightarrow Q$\" se lit \"$P$ si et seulement si $Q$\" (souvent abrégé en \"$P$ ssi $Q$\"). Cela signifie que $P$ et $Q$ sont \\textbf{simultanément vraies ou simultanément fausses} : elles ont exactement la même valeur de vérité. C'est le symbole roi pour les résolutions d'équations ou les characterisations de propriétés : chaque étape doit être une équivalence pour ne pas perdre ni gagner de solutions."
+            },
+            {
+              "type": "definition",
+              "term": "Condition nécessaire et suffisante",
+              "definition": "Dire \"$P$ est une condition nécessaire et suffisante pour $Q$\" revient exactement à écrire $P \\Leftrightarrow Q$. $P$ est suffisante pour $Q$ ($P \\Rightarrow Q$) et nécessaire pour $Q$ ($Q \\Rightarrow P$).",
+              "example": "Pour un réel $x$, \"$x > 3$\" est une condition suffisante mais pas nécessaire pour \"$x^2 > 9$\" (car $x < -3$ marche aussi). En revanche, \"$|x| > 3$\" est nécessaire et suffisante."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège classique",
+              "paragraphs": [
+                "Ne confonds pas $\\Rightarrow$ (flèche simple) et $\\Leftrightarrow$ (double flèche). En résolution d'équation, écrire $\\Rightarrow$ entre deux lignes signifie \"si la première est vraie alors la seconde l'est\", mais l'inverse n'est pas garanti. Seule la double flèche autorise le retour en arrière."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Négation et quantificateurs : le grand renversement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, voyons comment nier une proposition quantifiée. C'est une gymnastique indispensable pour les démonstrations par l'absurde ou la recherche de contre-exemples. La règle d'or : \\textbf{la négation change le quantificateur et nie le prédicat}. Concrètement : la négation de $\\forall x \\in E,\\ P(x)$ est $\\exists x \\in E,\\ \\neg P(x)$ (il existe un contre-exemple). La négation de $\\exists x \\in E,\\ P(x)$ est $\\forall x \\in E,\\ \\neg P(x)$ (aucun ne convient)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Exemple : nier $\\forall x \\in \\mathbb{R},\\ x^2 \\ge 0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. On change $\\forall$ en $\\exists$. 2. On nie $x^2 \\ge 0$ en $x^2 < 0$. Résultat : $\\exists x \\in \\mathbb{R},\\ x^2 < 0$. Cette proposition est fausse (car l'originale est vraie), mais c'est \\textbf{bien} sa négation logique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exemple : nier $\\exists x \\in \\mathbb{N},\\ x^2 = 2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. On change $\\exists$ en $\\forall$. 2. On nie $x^2 = 2$ en $x^2 \\neq 2$. Résultat : $\\forall x \\in \\mathbb{N},\\ x^2 \\neq 2$. Cette fois la négation est vraie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\neg(\\forall x \\in E,\\ P(x)) \\iff \\exists x \\in E,\\ \\neg P(x) \\qquad \\neg(\\exists x \\in E,\\ P(x)) \\iff \\forall x \\in E,\\ \\neg P(x)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les phrases suivantes, lesquelles sont des propositions ? Justifie brièvement.\\n1. $7$ est un nombre premier.\\n2. $x + 3 = 10$.\\n3. Pour tout entier $n$, $n^2 \\ge n$.\\n4. Est-ce que $5 > 3$ ?",
+              "answer": "1. Proposition (vraie). 2. Prédicat (variable libre $x$). 3. Proposition (vraie). 4. Question, pas une proposition.",
+              "hint": "Une proposition a une valeur de vérité définie (vrai ou faux) sans ambiguïté. Cherche la variable libre ou la forme interrogative.",
+              "explanation": "1. Affirmation close, vraie. 2. Dépend de $x$, donc prédicat. 3. Quantifiée, close, vraie. 4. Une question n'affirme rien."
+            },
+            {
+              "question": "Écris sous forme symbolique : \"Si un triangle est équilatéral, alors il est isocèle.\" Identifie l'hypothèse et la conclusion. Cette implication est-elle vraie ?",
+              "answer": "Soit $P$ : \"le triangle est équilatéral\", $Q$ : \"le triangle est isocèle\". Implication : $P \\Rightarrow Q$. Hypothèse : $P$. Conclusion : $Q$. Vraie (tout triangle équilatéral a au moins deux côtés égaux).",
+              "hint": "Repère le \"si\" (hypothèse) et le \"alors\" (conclusion). Rappelle-toi la définition géométrique d'un triangle isocèle.",
+              "explanation": "L'hypothèse est la condition qui suit \"si\". La conclusion suit \"alors\". L'implication est vraie car la propriété géométrique est vérifiée."
+            },
+            {
+              "question": "Traduis en français courant : $\\forall x \\in \\mathbb{R},\\ (x > 2 \\Leftrightarrow x^2 > 4)$. Est-ce une proposition vraie ?",
+              "answer": "\"Pour tout réel $x$, $x > 2$ si et seulement si $x^2 > 4$.\" C'est \\textbf{faux} : $x = -3$ donne $x^2 = 9 > 4$ mais $x > 2$ est faux. L'équivalence ne tient pas dans les deux sens.",
+              "hint": "Teste une valeur négative pour $x$. L'équivalence demande que les deux propositions aient toujours la même valeur de vérité.",
+              "explanation": "Le sens $\\Rightarrow$ est vrai ($x>2 \\Rightarrow x^2>4$). Le sens $\\Leftarrow$ est faux : $x=-3$ est un contre-exemple ($x^2>4$ vrai mais $x>2$ faux)."
+            },
+            {
+              "question": "Donne la négation de : $\\exists x \\in \\mathbb{Z},\\ (x^2 = 9 \\land x < 0)$. Simplifie le prédicat nié.",
+              "answer": "$\\forall x \\in \\mathbb{Z},\\ (x^2 \\neq 9 \\lor x \\ge 0)$. En mots : tout entier a un carré différent de $9$ ou est positif ou nul.",
+              "hint": "Applique la règle : $\\exists$ devient $\\forall$, et la négation de $(A \\land B)$ est $(\\neg A \\lor \\neg B)$ (loi de Morgan).",
+              "explanation": "Négation de $\\exists$ : $\\forall$. Négation de la conjonction : disjonction des négations. $x^2=9$ devient $x^2\\neq9$, $x<0$ devient $x\\ge0$."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer réciproque.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La réciproque : quand on inverse la flèche"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as appris à lire une implication $P \\Rightarrow Q$. Aujourd'hui, on s'intéresse à une opération naturelle : retourner la flèche. La \\textbf{réciproque} de $P \\Rightarrow Q$ est l'implication $Q \\Rightarrow P$. C'est-à-dire qu'on échange l'hypothèse et la conclusion. Attention : c'est une \\textbf{nouvelle} proposition, qui n'a aucune raison d'avoir la même valeur de vérité que l'originale. C'est même l'erreur numéro un en logique : croire que \"si $P$ alors $Q$\" entraîne automatiquement \"si $Q$ alors $P$\"."
+            },
+            {
+              "type": "definition",
+              "term": "Réciproque d'une implication",
+              "definition": "La réciproque de l'implication $P \\Rightarrow Q$ est l'implication $Q \\Rightarrow P$. On lit souvent : \"Si $Q$ alors $P$\" ou \"$P$ si $Q$\".",
+              "example": "Implication : \"Si une figure est un carré, alors c'est un rectangle.\" (Vraie). Réciproque : \"Si une figure est un rectangle, alors c'est un carré.\" (Fausse : un rectangle non carré est un contre-exemple)."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Image mentale",
+              "paragraphs": [
+                "Imagine l'implication comme une porte à sens unique : $P$ est la pièce de départ, $Q$ la pièce d'arrivée. La réciproque, c'est essayer de passer la porte en sens inverse. Parfois c'est possible (portes battantes = équivalence), souvent c'est un mur (porte à sens unique). Ne suppose jamais que le retour est ouvert sans le vérifier."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contraposée : la jumelle fidèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque la réciproque n'est pas équivalente à l'implication de départ, existe-t-il une transformation qui \\textbf{préserve} la vérité ? Oui : la \\textbf{contraposée}. Elle s'obtient en niant les deux propositions \\textbf{et} en inversant la flèche : la contraposée de $P \\Rightarrow Q$ est $\\neg Q \\Rightarrow \\neg P$. C'est le \"miroir inversé\" : on retourne la flèche \\textbf{et} on met un \"non\" des deux côtés. La grande nouvelle : \\textbf{une implication et sa contraposée sont logiquement équivalentes}. Elles sont vraies ensemble ou fausses ensemble. C'est un outil redoutable pour démontrer : parfois prouver $\\neg Q \\Rightarrow \\neg P$ est plus facile que $P \\Rightarrow Q$ directement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Construction de la contraposée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Départ : $P \\Rightarrow Q$. 1. Nie la conclusion : $\\neg Q$. 2. Nie l'hypothèse : $\\neg P$. 3. Écris l'implication de $\\neg Q$ vers $\\neg P$ : $\\neg Q \\Rightarrow \\neg P$. C'est tout."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exemple concret",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\"Si il pleut, alors le sol est mouillé.\" ($P \\Rightarrow Q$). Contraposée : \"Si le sol n'est pas mouillé, alors il ne pleut pas.\" ($\\neg Q \\Rightarrow \\neg P$). Les deux sont vraies (sauf arrosage automatique, mais en logique pure ça marche)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Pourquoi ça marche ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rappelle-toi la table de vérité : $P \\Rightarrow Q$ est fausse seulement si $P$ vrai et $Q$ faux. $\\neg Q \\Rightarrow \\neg P$ est fausse seulement si $\\neg Q$ vrai (donc $Q$ faux) et $\\neg P$ faux (donc $P$ vrai). Exactement la même condition !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "P \\Rightarrow Q \\iff \\neg Q \\Rightarrow \\neg P"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'inverse : le cousin de la réciproque"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste une troisième transformation : l'\\textbf{inverse}. On nie les deux propositions \\textbf{sans} inverser la flèche : l'inverse de $P \\Rightarrow Q$ est $\\neg P \\Rightarrow \\neg Q$. Que vaut-elle ? Elle est \\textbf{équivalente à la réciproque} (car c'est la contraposée de la réciproque, ou la réciproque de la contraposée). Donc : implication $\\equiv$ contraposée, et réciproque $\\equiv$ inverse. Mais en général, implication $\\not\\equiv$ réciproque. Retiens ce carré magique : les diagonales (implication/contraposée et réciproque/inverse) sont équivalentes, les côtés ne le sont pas."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Transformation",
+                "Forme",
+                "Équivalente à"
+              ],
+              "rows": [
+                [
+                  "Implication",
+                  "$P \\Rightarrow Q$",
+                  "Contraposée"
+                ],
+                [
+                  "Réciproque",
+                  "$Q \\Rightarrow P$",
+                  "Inverse"
+                ],
+                [
+                  "Contraposée",
+                  "$\\neg Q \\Rightarrow \\neg P$",
+                  "Implication"
+                ],
+                [
+                  "Inverse",
+                  "$\\neg P \\Rightarrow \\neg Q$",
+                  "Réciproque"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention au langage courant",
+              "paragraphs": [
+                "En français, \"l'inverse\" et \"la réciproque\" sont parfois utilisés comme synonymes. En maths, ce sont des objets distincts (bien qu'équivalents entre eux). Sois précis dans ton vocabulaire : \"réciproque\" = on échange $P$ et $Q$ ; \"inverse\" = on nie $P$ et $Q$ sans les échanger."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître les structures dans un énoncé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les exercices ou les démonstrations, on ne te dira pas toujours \"voici une implication, écris sa contraposée\". Tu devras repérer toi-même la structure logique cachée dans une phrase en langage naturel. Quelques marqueurs : \"si... alors...\" $\\to$ implication ; \"seulement si\" $\\to$ condition nécessaire (flèche vers la condition) ; \"ssi\" ou \"équivaut à\" $\\to$ équivalence ; \"tout... est...\" $\\to$ quantificateur universel ; \"il existe... tel que...\" $\\to$ quantificateur existentiel. Entraîne-toi à \\textbf{surligner} mentalement $P$ et $Q$ avant de manipuler la flèche."
+            },
+            {
+              "type": "definition",
+              "term": "Condition nécessaire / suffisante",
+              "definition": "Dans $P \\Rightarrow Q$ : $P$ est condition \\textbf{suffisante} pour $Q$ (si $P$ vrai, $Q$ vrai assuré). $Q$ est condition \\textbf{nécessaire} pour $P$ (pour que $P$ soit vrai, $Q$ \\textbf{doit} l'être). L'équivalence $P \\Leftrightarrow Q$ signifie : $P$ est nécessaire \\textbf{et} suffisante pour $Q$.",
+              "example": "\"$x$ est divisible par $6$\" est une condition suffisante mais pas nécessaire pour \"$x$ est divisible par $3$\". \"$x$ est divisible par $3$\" est nécessaire mais pas suffisante pour \"$x$ est divisible par $6$\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la réciproque, la contraposée et l'inverse de : \"Si un entier $n$ est multiple de $4$, alors $n$ est pair.\" Indique pour chacune si elle est vraie ou fausse.",
+              "answer": "Réciproque : \"Si $n$ est pair, alors $n$ est multiple de $4$\" (Fausse, ex: $n=2$). Contraposée : \"Si $n$ n'est pas pair, alors $n$ n'est pas multiple de $4$\" (Vraie). Inverse : \"Si $n$ n'est pas multiple de $4$, alors $n$ n'est pas pair\" (Fausse, ex: $n=2$).",
+              "hint": "Applique les définitions : réciproque = échange $P$ et $Q$ ; contraposée = nie et échange ; inverse = nie sans échanger. Teste avec $n=2$.",
+              "explanation": "Implication originale vraie. Contraposée équivalente donc vraie. Réciproque et inverse équivalentes entre elles, fausses car $2$ est pair mais pas multiple de $4$."
+            },
+            {
+              "question": "L'implication \"Si $x^2 = 9$, alors $x = 3$\" est-elle vraie ? Donne sa contraposée et dis si elle est vraie.",
+              "answer": "Fausse (contre-exemple : $x = -3$). Contraposée : \"Si $x \\neq 3$, alors $x^2 \\neq 9$\" (aussi fausse, même contre-exemple).",
+              "hint": "L'implication est fausse s'il existe un cas où l'hypothèse est vraie et la conclusion fausse. La contraposée a la même valeur de vérité.",
+              "explanation": "$x=-3$ rend $x^2=9$ vraie mais $x=3$ fausse. Donc implication fausse. Contraposée équivalente donc fausse aussi."
+            },
+            {
+              "question": "Parmi les phrases suivantes, lesquelles expriment $P \\Rightarrow Q$ ? $P$ = \"Le triangle $ABC$ est rectangle en $A$\", $Q$ = \"$BC^2 = AB^2 + AC^2$\".\\n1. Pour que $ABC$ soit rectangle en $A$, il faut que $BC^2 = AB^2 + AC^2$.\\n2. $BC^2 = AB^2 + AC^2$ seulement si $ABC$ est rectangle en $A$.\\n3. $ABC$ rectangle en $A$ implique $BC^2 = AB^2 + AC^2$.\\n4. $BC^2 = AB^2 + AC^2$ est une condition suffisante pour que $ABC$ soit rectangle en $A$.",
+              "answer": "1. $P \\Rightarrow Q$ (\"il faut que\" = condition nécessaire pour $P$, donc $P \\Rightarrow Q$). 2. $Q \\Rightarrow P$ (\"seulement si\" inverse la flèche). 3. $P \\Rightarrow Q$. 4. $Q \\Rightarrow P$ (\"condition suffisante pour $P$\" = $Q \\Rightarrow P$).",
+              "hint": "Repère les mots-clés : \"il faut que\" introduit une condition nécessaire (flèche vers le sujet) ; \"seulement si\" et \"condition suffisante pour\" inversent le sens usuel.",
+              "explanation": "1. $P \\Rightarrow Q$ (nécessaire). 2. \"$Q$ seulement si $P$\" = $Q \\Rightarrow P$. 3. Direct. 4. \"$Q$ suffisante pour $P$\" = $Q \\Rightarrow P$."
+            },
+            {
+              "question": "Soit la proposition : $\\forall x \\in \\mathbb{R},\\ (x > 2 \\Rightarrow x^2 > 4)$. Écris sa contraposée (en conservant le quantificateur). Les deux sont-elles vraies ?",
+              "answer": "Contraposée : $\\forall x \\in \\mathbb{R},\\ (x^2 \\le 4 \\Rightarrow x \\le 2)$. Les deux sont vraies.",
+              "hint": "La contraposée de $P \\Rightarrow Q$ est $\\neg Q \\Rightarrow \\neg P$. Nie $x^2 > 4$ en $x^2 \\le 4$, nie $x > 2$ en $x \\le 2$. Le quantificateur $\\forall$ ne change pas.",
+              "explanation": "Implication originale vraie (fonction carrée croissante sur $[0,+\\infty)$). Contraposée équivalente donc vraie. Vérification : si $x^2 \\le 4$, alors $-2 \\le x \\le 2$, donc $x \\le 2$."
+            }
+          ]
+        },
+        {
+          "title": "Prouver / réfuter simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La démonstration directe : avancer pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voilà au cœur du métier de mathématicien : prouver. Jusqu'ici tu as lu des énoncés ; maintenant tu vas les \\textbf{construire}. La méthode la plus naturelle est la \\textbf{démonstration directe} : on suppose l'hypothèse $P$ vraie, et par une chaîne de déductions logiques, on arrive à la conclusion $Q$. Chaque étape doit être justifiée (définition, propriété connue, calcul algébrique). C'est comme grimper une échelle : chaque barreau repose sur le précédent, et si l'un casse, tout s'effondre. La clarté de l'écriture est ton alliée : numérote les étapes, explique les transitions, et surtout, ne saute pas d'étape \"évidente\" pour toi mais pas pour le correcteur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Squelette d'une preuve directe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. \\textbf{Annonce} : \"Soit $x \\in \\mathbb{R}$ tel que...\" (on pose l'hypothèse). 2. \\textbf{Développement} : calculs, factorisations, inégalités, chaque ligne précédée de $\\Rightarrow$ ou \"donc\". 3. \\textbf{Conclusion} : \"Ainsi $Q$ est vraie.\" ou $\\blacksquare$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exemple : $\\forall x \\in \\mathbb{R},\\ x^2 - 4x + 4 \\ge 0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $x \\in \\mathbb{R}$. On a $x^2 - 4x + 4 = (x-2)^2$. Or pour tout réel, un carré est $\\ge 0$. Donc $(x-2)^2 \\ge 0$, d'où $x^2 - 4x + 4 \\ge 0$. $\\blacksquare$"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Conseil de rédaction",
+              "paragraphs": [
+                "Écris \"Soit...\" pour introduire les variables. Utilise $\\Rightarrow$ entre les égalités/inequations qui s'enchaînent logiquement. Évite les flèches dans tous les sens : une preuve directe est une \\textbf{ligne droite} de $P$ vers $Q$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La démonstration par contraposée : contourner l'obstacle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'implication $P \\Rightarrow Q$ résiste à l'attaque frontale : partir de $P$ ne mène pas naturellement à $Q$. C'est là que la contraposée $\\neg Q \\Rightarrow \\neg P$ devient ton meilleur allié. Puisqu'elles sont équivalentes, prouver l'une prouve l'autre. La stratégie : on suppose que $Q$ est \\textbf{fausse} ($\\neg Q$), et on montre que cela force $P$ à être \\textbf{fausse} ($\\neg P$). C'est particulièrement puissant quand $Q$ est une inégalité simple (comme $x \\le 0$) et $P$ une expression compliquée : nier $Q$ donne souvent une hypothèse de travail commode ($x > 0$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Quand l'utiliser ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand la conclusion $Q$ est plus simple à nier que l'hypothèse $P$ à exploiter. Exemple classique : montrer que si $x^3 + x < 0$ alors $x < 0$. Direct : factoriser $x(x^2+1)<0$... Contraposée : si $x \\ge 0$ alors $x^3+x \\ge 0$ (évident car somme de positifs)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Structure écrite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\"On va montrer la contraposée : supposons $\\neg Q$... [raisonnements] ... donc $\\neg P$. Par équivalence, $P \\Rightarrow Q$ est vraie.\" N'oublie pas la phrase de conclusion qui referme le raisonnement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le contre-exemple : l'arme absolue contre $\\forall$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as une proposition universelle $\\forall x \\in E,\\ P(x)$ à réfuter ? Une seule chose à faire : trouver \\textbf{un seul} $x_0 \\in E$ tel que $P(x_0)$ soit fausse. Ce $x_0$ s'appelle un \\textbf{contre-exemple}. C'est la méthode la plus courte, la plus élégante, et souvent la seule possible pour montrer qu'une conjecture est fausse. Pas besoin de raisonnement général : un exemple unique suffit à couler le « pour tout ». Attention : pour une proposition existentielle $\\exists x \\in E,\\ P(x)$, un contre-exemple ne suffit pas (il faut montrer que \\textbf{aucun} $x$ ne convient, ce qui est beaucoup plus difficile)."
+            },
+            {
+              "type": "definition",
+              "term": "Contre-exemple",
+              "definition": "Un élément $x_0$ de l'ensemble de définition qui ne satisfait pas la propriété $P$, prouvant ainsi que $\\forall x \\in E,\\ P(x)$ est fausse.",
+              "example": "Conjecture : $\\forall n \\in \\mathbb{N}^*,\\ n^2 + n + 41$ est premier. Contre-exemple : $n = 41$ donne $41^2 + 41 + 41 = 41(41+1+1) = 41 \\times 43$, non premier."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège : l'exemple ne prouve pas le « pour tout »",
+              "paragraphs": [
+                "Montrer que $P(1)$, $P(2)$, $P(3)$ sont vraies ne prouve \\textbf{jamais} $\\forall n,\\ P(n)$. Au contraire, un seul $P(41)$ fausse tout. La charge de la preuve n'est pas symétrique : pour valider un « pour tout », il faut un raisonnement général ; pour l'invalider, un seul cas suffit."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démonstration par l'absurde : quand tout mène à l'impossible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, un grand classique : la \\textbf{démonstration par l'absurde} (ou \\textit{reductio ad absurdum}). Pour prouver une proposition $A$, on suppose qu'elle est \\textbf{fausse} ($\\neg A$), et on en déduit une contradiction (une affirmation manifestement fausse, comme $0=1$, ou $x < x$, ou la négation d'une hypothèse connue vraie). Comme la logique n'autorise pas les contradictions, l'hypothèse de départ ($\\neg A$) doit être fausse, donc $A$ est vraie. C'est l'outil roi pour les théorèmes d'existence (ex: $\\sqrt{2}$ irrationnel) ou quand la négation donne une hypothèse de travail concrète."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Schéma type",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Supposons par l'absurde que $\\neg A$. 2. On raisonne à partir de $\\neg A$ (souvent en utilisant des propriétés connues). 3. On arrive à une contradiction (ex: $1=0$, ou « $x$ est pair et impair »). 4. Conclusion : l'hypothèse $\\neg A$ est impossible, donc $A$ est vraie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exemple : $\\sqrt{2} \\notin \\mathbb{Q}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons $\\sqrt{2} = \\frac{p}{q}$ avec $p,q$ entiers premiers entre eux. Alors $2q^2 = p^2$, donc $p^2$ pair $\\Rightarrow p$ pair. Écrivons $p=2k$. Alors $2q^2 = 4k^2 \\Rightarrow q^2 = 2k^2$, donc $q$ pair. $p$ et $q$ sont tous deux pairs : contradiction avec \"premiers entre eux\". Donc $\\sqrt{2}$ irrationnel."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\neg A \\Rightarrow \\text{Contradiction}) \\Rightarrow A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une proposition quantifiée ($\\forall$, $\\exists$) et en donner la négation.",
+                "Je distingue implication, réciproque, contraposée et inverse, et je sais lesquelles sont équivalentes.",
+                "Je reconnais les formulations \"condition nécessaire\", \"condition suffisante\", \"ssi\" dans un énoncé.",
+                "Je sais construire une démonstration directe en enchaînant des $\\Rightarrow$ justifiés.",
+                "Je sais quand et comment utiliser la contraposée pour faciliter une preuve.",
+                "Je sais réfuter un « pour tout » par un unique contre-exemple bien choisi.",
+                "Je connais le schéma d'une démonstration par l'absurde et je peux l'appliquer sur des cas simples."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Démontre directement que pour tout réel $x$, $x^2 + 1 \\ge 2x$.",
+              "answer": "Soit $x \\in \\mathbb{R}$. On a $x^2 + 1 - 2x = (x-1)^2 \\ge 0$ car c'est un carré. Donc $x^2 + 1 \\ge 2x$. $\\blacksquare$",
+              "hint": "Ramène tout à gauche et factorise. Un carré est toujours positif ou nul.",
+              "explanation": "L'inéquivalence $x^2+1 \\ge 2x$ est équivalente à $(x-1)^2 \\ge 0$, vraie pour tout réel. C'est une preuve directe standard."
+            },
+            {
+              "question": "Montre par la contraposée : $\\forall x \\in \\mathbb{R},\\ (x^3 < -8 \\Rightarrow x < -2)$.",
+              "answer": "Contraposée : $\\forall x \\in \\mathbb{R},\\ (x \\ge -2 \\Rightarrow x^3 \\ge -8)$. Soit $x \\ge -2$. La fonction $f(x)=x^3$ est croissante sur $\\mathbb{R}$, donc $x^3 \\ge (-2)^3 = -8$. Donc la contraposée est vraie, donc l'implication originale est vraie.",
+              "hint": "Négative la conclusion ($x^3 < -8$ devient $x^3 \\ge -8$) et l'hypothèse ($x < -2$ devient $x \\ge -2$). Utilise la monotonie de $x \\mapsto x^3$.",
+              "explanation": "La contraposée est plus facile car $x \\ge -2$ est une hypothèse simple et la fonction cube est strictement croissante, ce qui préserve l'ordre."
+            },
+            {
+              "question": "La proposition « $\\forall n \\in \\mathbb{N}^*,\\ n^2 + n + 1 $ est impair » est-elle vraie ? Si non, donne un contre-exemple.",
+              "answer": "Vraie. Pour tout entier $n$, $n^2+n = n(n+1)$ est produit de deux entiers consécutifs, donc l'un est pair, donc le produit est pair. Pair $+ 1$ = impair.",
+              "hint": "Ne cherche pas de contre-exemple trop vite. Regarde la parité de $n(n+1)$ : deux consécutifs, donc l'un est pair.",
+              "explanation": "$n(n+1)$ est toujours pair (un des deux facteurs est pair). Un nombre pair plus $1$ donne un nombre impair. La proposition est vraie, pas de contre-exemple possible."
+            },
+            {
+              "question": "Démontre par l'absurde que $\\log_2 3$ est irrationnel.",
+              "answer": "Supposons $\\log_2 3 = \\frac{p}{q}$ avec $p,q \\in \\mathbb{N}^*$ premiers entre eux. Alors $2^{p/q} = 3$, donc $2^p = 3^q$. Le membre de gauche est pair, le membre de droite est impair. Contradiction. Donc $\\log_2 3 \\notin \\mathbb{Q}$.",
+              "hint": "Passe à l'écriture exponentielle : $\\log_2 3 = p/q \\iff 2^p = 3^q$. Regarde la parité des deux côtés.",
+              "explanation": "Si $\\log_2 3$ était rationnel, on aurait $2^p = 3^q$. Mais une puissance de $2$ est toujours paire, une puissance de $3$ toujours impaire. Impossible. Donc irrationnel."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

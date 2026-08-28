@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 225,
+  "_course_code": "cm1-t02-c07-bilan-fractions-cm1",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Représenter, comparer, relier aux décimaux",
+  "title": "Bilan Fractions CM1 : Représenter, comparer, relier aux décimaux",
+  "questions": [
+    {
+      "text": "Sur la figure ci-dessous, quelle fraction représente la partie colorée en bleu ?",
+      "options": [
+        "1/4",
+        "1/3",
+        "3/4",
+        "1/2"
+      ],
+      "correctAnswer": "3/4",
+      "explanation": "La figure montre une bande (ou un cercle) divisée en 4 parties égales (le dénominateur est 4). Parmi ces 4 parties, 3 sont colorées en bleu (le numérateur est 3). La fraction représentée est donc 3/4. L'option 1/4 correspondrait à une seule partie colorée, 1/2 à deux parties sur quatre, et 1/3 ne correspond pas à un découpage en 4 parts égales.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Bande divisée en 4 parts égales, 3 parts colorées"
+      }
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est équivalente à 1/2 ?",
+      "options": [
+        "2/3",
+        "3/6",
+        "4/5",
+        "2/5"
+      ],
+      "correctAnswer": "3/6",
+      "explanation": "Deux fractions sont équivalentes si on obtient l'une de l'autre en multipliant ou divisant le numérateur et le dénominateur par le même nombre. Pour 1/2, si on multiplie le numérateur et le dénominateur par 3, on obtient (1x3)/(2x3) = 3/6. Les autres fractions ne donnent pas 1/2 : 2/3 est plus grand, 4/5 est proche de 1, 2/5 est plus petit que 1/2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare les deux fractions 3/4 et 2/3. Quel signe faut-il placer entre elles ?",
+      "options": [
+        "3/4 < 2/3",
+        "3/4 > 2/3",
+        "3/4 = 2/3",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "3/4 > 2/3",
+      "explanation": "Pour comparer 3/4 et 2/3, on peut les mettre au même dénominateur (12) : 3/4 = 9/12 et 2/3 = 8/12. Puisque 9/12 est plus grand que 8/12, on a 3/4 > 2/3. On peut aussi le voir sur une graduation : 3/4 est plus proche de 1 que 2/3. L'option '<' inverse l'ordre, '=' est faux car elles ne représentent pas la même quantité, et on peut toujours comparer deux fractions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle écriture décimale correspond exactement à la fraction 3/4 ?",
+      "options": [
+        "0,34",
+        "0,75",
+        "0,43",
+        "0,3"
+      ],
+      "correctAnswer": "0,75",
+      "explanation": "Pour passer de la fraction 3/4 à l'écriture décimale, on cherche à avoir un dénominateur 10, 100, 1000... On multiplie le numérateur et le dénominateur par 25 pour obtenir 75/100. 75/100 s'écrit 0,75 (75 centièmes). L'option 0,34 correspond à 34/100, 0,43 à 43/100, et 0,3 à 3/10 qui vaut 30/100.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a lu 2/5 d'un livre de 100 pages. Combien de pages a-t-elle lues ?",
+      "options": [
+        "20 pages",
+        "40 pages",
+        "50 pages",
+        "25 pages"
+      ],
+      "correctAnswer": "40 pages",
+      "explanation": "Pour trouver 2/5 de 100, on divise 100 par 5 (le dénominateur) pour trouver 1/5 : 100 / 5 = 20. Puis on multiplie ce résultat par 2 (le numérateur) : 20 x 2 = 40. Léa a donc lu 40 pages. On peut aussi passer par le décimal : 2/5 = 4/10 = 0,4. 0,4 x 100 = 40. L'option 20 correspond à 1/5 du livre, 50 à 1/2, et 25 à 1/4.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

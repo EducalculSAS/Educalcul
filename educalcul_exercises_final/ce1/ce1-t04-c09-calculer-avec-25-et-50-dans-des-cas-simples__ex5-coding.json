@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 106,
+  "_course_code": "ce1-t04-c09-calculer-avec-25-et-50-dans-des-cas-simples",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Reconnaître 25+25=50",
+  "title": "Reconnaître 25 + 25 = 50 : algorithmes simples",
+  "blocks": [
+    {
+      "title": "Compléter un algorithme d'addition",
+      "content": "Complète les instructions ci-dessous pour montrer comment on obtient $50$ en ajoutant $25$ à $25$.\\nDébut\\n  nombre ← $25$\\n  nombre ← nombre + $25$\\n  Afficher nombre\\nFin",
+      "correctAnswer": "Début\\nnombre ← 25\\nnombre ← nombre + 25\\nAfficher 50\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On affecte la valeur 25 à la variable nombre. On ajoute ensuite 25 à cette variable, ce qui donne 25 + 25 = 50. L'instruction Afficher montre le résultat final : 50.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un algorithme pour le double",
+      "content": "Écris un algorithme complet qui calcule le double de $25$ et affiche le résultat. Utilise les mots-clés : Début, Fin, double, Afficher.",
+      "correctAnswer": "Début\\ndouble ← 25 + 25\\nAfficher double\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le double de 25 correspond à l'addition 25 + 25. L'algorithme stocke ce calcul dans la variable double, puis l'affiche. Le résultat affiché est 50.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester une condition avec 25 et 50",
+      "content": "Un robot exécute l'algorithme suivant :\\nDébut\\n  valeur ← $25$\\n  Si valeur + $25$ = $50$ Alors\\n    Afficher \"Vrai\"\\n  Sinon\\n    Afficher \"Faux\"\\n  Fin Si\\nFin\\nQue le robot va-t-il afficher ?",
+      "correctAnswer": "Vrai",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable valeur vaut 25. La condition teste si 25 + 25 est égal à 50. Comme 25 + 25 = 50 est exact, la condition est remplie et le robot exécute la branche Alors, affichant Vrai.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,389 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.856713+00:00",
+  "id": 120,
+  "code": "ce1-t06-c04",
+  "title": "Découvrir les contenances",
+  "description": "Cours structuré Educalcul : Découvrir les contenances.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Découvrir les contenances",
+    "objectif_global": "Découvrir les contenances",
+    "mini_lecons_imposees": [
+      "Comparer des récipients.",
+      "Reconnaître le litre.",
+      "Choisir une unité adaptée."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Comparer des récipients.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des récipients"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vas découvrir comment savoir quel récipient contient le plus d’eau. Regarde un verre, un bol et un seau. Le verre est petit, le bol est plus grand, le seau est très grand. Essaie d’imaginer l’eau qui remplit chacun d’eux."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Tu peux aussi utiliser du riz ou du sable pour comparer sans eau."
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison approximative des contenances",
+              "bars": [
+                {
+                  "label": "Verre",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Bol",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Seau",
+                  "value": 3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux récipients, tu peux remplir le premier et verser l’eau dans le second. Si l’eau déborde, le second est plus petit. Si tout rentre, le second est plus grand ou égal. C’est une façon simple et visuelle de voir la différence."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Remplir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplis complètement le premier récipient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Verser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Verse l’eau dans le second récipient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si l’eau déborde ou si tout rentre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode fonctionne même sans graduations, elle te donne une idée visuelle et concrète de la taille de chaque contenant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essaie de ranger trois récipients du plus petit au plus grand. Utilise la méthode du versement ou regarde les marques sur les bouteilles. Prends ton temps, tu vas y arriver."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Verse l’eau du verre dans le bol.",
+                "Verse l’eau du bol dans le seau.",
+                "Note l’ordre obtenu."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi comparer en regardant les graduations si les récipients en ont. Les traits sur le côté t’indiquent directement le volume."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel récipient contient le plus d’eau entre un verre et un bol ?",
+              "answer": "Le bol contient plus d’eau que le verre.",
+              "hint": "Remplis le verre et verse dans le bol.",
+              "explanation": "Comme le bol est plus large, l’eau du verre y rentre sans déborder."
+            },
+            {
+              "question": "Si tu verses l’eau d’un seau dans un bol et que ça déborde, lequel est plus grand ?",
+              "answer": "Le seau est plus grand que le bol.",
+              "hint": "Observe si l’eau déborde.",
+              "explanation": "Le débordement montre que le bol ne peut pas tout recevoir."
+            },
+            {
+              "question": "Range ces trois récipients du plus petit au plus grand : verre, bol, seau.",
+              "answer": "Verre, bol, seau.",
+              "hint": "Utilise la méthode du versement.",
+              "explanation": "Le verre est le plus petit, le bol au milieu, le seau le plus grand."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître le litre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître le litre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu des bouteilles d’eau avec l’inscription 1 L. Le litre est l’unité qui permet de mesurer la contenance des gros récipients. Imagine une grande bouteille d’eau minérale, elle contient exactement un litre. C’est une quantité que tu peux verser dans un verre plusieurs fois."
+            },
+            {
+              "type": "definition",
+              "term": "litre",
+              "definition": "Un litre correspond au volume d’un cube de 10 cm de côté. C’est l’unité de base pour les liquides en France.",
+              "example": "Une bouteille d’eau de 1 L."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Rappelle-toi",
+              "paragraphs": [
+                "Le symbole du litre est la lettre majuscule $L$."
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples de contenances en litres",
+              "bars": [
+                {
+                  "label": "Bouteille",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Bidon",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Jerrycan",
+                  "value": 10,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les récipients sont plus grands, comme un bidon de 5 L ou un jerrycan de 10 L. Le chiffre devant le $L$ te dit combien de litres il y a. Plus le nombre est grand, plus le récipient est grand."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Récipient",
+                "Contenance"
+              ],
+              "rows": [
+                [
+                  "Bouteille",
+                  "1 L"
+                ],
+                [
+                  "Bidon",
+                  "5 L"
+                ],
+                [
+                  "Jerrycan",
+                  "10 L"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur les emballages, tu vois souvent 2 L, 1,5 L ou 0,5 L. Lis le chiffre et la lettre $L$ pour connaître la quantité. Essaie de trouver le $L$ sur une brique de jus ou un bidon de lessive."
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi à repérer le $L$ sur différents contenants chez toi. C’est un jeu simple qui t’aidera à mémoriser l’unité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de litres y a-t-il dans une bouteille d’eau marquée 1 L ?",
+              "answer": "1 litre.",
+              "hint": "Regarde l’étiquette.",
+              "explanation": "L’unité litre s’écrit $L$."
+            },
+            {
+              "question": "Un bidon contient 5 L. Combien de litres y a-t-il ?",
+              "answer": "5 litres.",
+              "hint": "Le chiffre devant $L$ donne le nombre de litres.",
+              "explanation": "$5 L$ veut dire 5 fois 1 litre."
+            },
+            {
+              "question": "Sur un paquet de jus, tu lis 2 L. Quelle unité est utilisée ?",
+              "answer": "Le litre.",
+              "hint": "Cherche la lettre $L$.",
+              "explanation": "La lettre $L$ signifie litre."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une unité adaptée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une unité adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais le litre, tu vas apprendre à choisir l’unité la plus pratique selon la taille du récipient. Pour une grande bassine ou un seau, le litre est parfait. Pour un verre ou une tasse, le centilitre est plus commode."
+            },
+            {
+              "type": "definition",
+              "term": "centilitre",
+              "definition": "Un centilitre est une centième partie de litre. Il s’écrit $cL$. Un verre contient environ 20 cL.",
+              "example": "Un verre d’eau ≈ 20 cL."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "1 L équivaut à 100 cL. Retiens ce lien pour passer de l’unité à l’autre."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu vois un récipient, demande-toi s’il est grand comme un seau ou petit comme un verre. Choisis le litre pour les grands volumes, le centilitre pour les petits."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Récipient",
+                "Unité adaptée"
+              ],
+              "rows": [
+                [
+                  "Seau",
+                  "L"
+                ],
+                [
+                  "Verre",
+                  "cL"
+                ],
+                [
+                  "Bouteille",
+                  "L"
+                ],
+                [
+                  "Tasse",
+                  "cL"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois tu dois convertir. Si une recette demande 50 cL de lait, tu sais que c’est la moitié d’un litre. Essaie de transformer des litres en centilitres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi à dire quelle unité utiliser pour chaque objet de la cuisine. Cela deviendra un réflexe rapide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer des récipients.",
+                "Je sais reconnaître le litre.",
+                "Je sais choisir l’unité adaptée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour mesurer une grande bassine, quelle unité choisis-tu ?",
+              "answer": "Le litre.",
+              "hint": "Les grands volumes s’expriment en litres.",
+              "explanation": "Le litre convient aux gros contenants."
+            },
+            {
+              "question": "Un verre contient environ 20 cL. Quelle unité utilises-tu ?",
+              "answer": "Le centilitre.",
+              "hint": "Les petits volumes s’expriment en centilitres.",
+              "explanation": "Centilitre s’écrit $cL$."
+            },
+            {
+              "question": "Convertis 1 L en centilitres.",
+              "answer": "100 cL.",
+              "hint": "1 L = 100 cL.",
+              "explanation": "Un litre contient cent centilitres."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

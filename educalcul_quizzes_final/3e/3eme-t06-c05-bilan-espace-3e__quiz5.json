@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 489,
+  "_course_code": "3eme-t06-c05-bilan-espace-3e",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Transformations, sections, volumes",
+  "title": "Quiz : Transformations, sections et volumes (3e)",
+  "questions": [
+    {
+      "text": "Un triangle $ABC$ est transformé par une homothétie de centre $A$ et de rapport $-2$. Quelle est l'image du segment $[BC]$ ?",
+      "options": [
+        "Un segment parallèle à $BC$ et de longueur double",
+        "Un segment parallèle à $BC$ et de longueur moitié",
+        "Un segment aligné avec $BC$",
+        "Un segment perpendiculaire à $BC$"
+      ],
+      "correctAnswer": "Un segment parallèle à $BC$ et de longueur double",
+      "explanation": "Une homothétie de rapport $k=-2$ conserve les directions (donc le parallélisme) et multiplie les longueurs par la valeur absolue du rapport $|k|=2$. Le centre $A$ étant un point fixe, l'image de $[BC]$ est un segment parallèle à $BC$ et deux fois plus long.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône de révolution est sectionné par un plan parallèle à sa base. Quelle est la nature de la section obtenue ?",
+      "options": [
+        "Un triangle",
+        "Un cercle",
+        "Une ellipse",
+        "Une parabole"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "C'est une propriété fondamentale : toute section d'un cône de révolution par un plan parallèle à sa base est un cercle. Les autres sections (triangle, ellipse, parabole) correspondent à d'autres positions du plan de coupe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cube de côté $4$ cm est transformé par une homothétie de rapport $\\frac{1}{2}$. Quel est le volume du cube image ?",
+      "options": [
+        "$8$ cm$^3$",
+        "$16$ cm$^3$",
+        "$32$ cm$^3$",
+        "$64$ cm$^3$"
+      ],
+      "correctAnswer": "$8$ cm$^3$",
+      "explanation": "Le volume initial est $V_i = 4^3 = 64$ cm$^3$. Une homothétie de rapport $k=\\frac{1}{2}$ multiplie les volumes par $k^3 = \\frac{1}{8}$. Le volume image est donc $V_f = 64 \\times \\frac{1}{8} = 8$ cm$^3$.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Cube de côté 4 cm"
+      }
+    },
+    {
+      "text": "Un cylindre de révolution de hauteur $10$ cm et de rayon $3$ cm est sectionné par un plan passant par son axe. Quelle est l'aire de la section rectangulaire obtenue ?",
+      "options": [
+        "$30$ cm$^2$",
+        "$60$ cm$^2$",
+        "$90$ cm$^2$",
+        "$120$ cm$^2$"
+      ],
+      "correctAnswer": "$60$ cm$^2$",
+      "explanation": "La section d'un cylindre de révolution par un plan contenant son axe est un rectangle. Ses dimensions sont la hauteur du cylindre ($10$ cm) et le diamètre de la base ($2 \\times 3 = 6$ cm). L'aire est $10 \\times 6 = 60$ cm$^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide à base carrée de côté $9$ cm et de hauteur $12$ cm est coupée par un plan parallèle à sa base à $4$ cm du sommet. Quel est le volume de la petite pyramide (le sommet) ?",
+      "options": [
+        "$12$ cm$^3$",
+        "$18$ cm$^3$",
+        "$24$ cm$^3$",
+        "$36$ cm$^3$"
+      ],
+      "correctAnswer": "$12$ cm$^3$",
+      "explanation": "Le rapport d'homothétie entre la petite pyramide et la grande est $k = \\frac{4}{12} = \\frac{1}{3}$. Le volume de la grande pyramide est $V_G = \\frac{1}{3} \\times 9^2 \\times 12 = 324$ cm$^3$. Le volume de la petite pyramide est $V_P = V_G \\times k^3 = 324 \\times \\frac{1}{27} = 12$ cm$^3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

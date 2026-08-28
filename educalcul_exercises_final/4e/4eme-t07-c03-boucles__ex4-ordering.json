@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Boucles",
+  "title": "Application des boucles : mise en ordre",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Remets les instructions de l'algorithme dans l'ordre correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Initialiser la variable $somme$ à 0",
+        "Initialiser la variable $i$ à 1",
+        "Tant que $i \\le n$ faire : ajouter $i$ à $somme$, puis incrémenter $i$ de 1",
+        "Fin tant que",
+        "Afficher $somme$"
+      ],
+      "explanation": "On commence par initialiser les variables $somme$ et $i$. La boucle tant que s'exécute tant que $i$ ne dépasse pas $n$ ; à chaque tour on ajoute $i$ à $somme$ et on augmente $i$. Quand la condition devient fausse, on sort de la boucle et on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum d'une liste",
+      "content": "Remets les instructions de l'algorithme dans l'ordre correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Vérifier que la liste n'est pas vide",
+        "Initialiser $max$ avec le premier élément de la liste",
+        "Pour chaque $x$ de la liste",
+        "   Si $x > max$ alors $max \\leftarrow x$",
+        "Afficher $max$"
+      ],
+      "explanation": "Il faut d'abord s'assurer que la liste contient au moins un élément. On place alors $max$ à la valeur du premier élément. La boucle parcourt chaque élément $x$ ; si $x$ est plus grand que $max$, on met à jour $max$. À la fin du parcours, $max$ contient le plus grand élément et on l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorielle d'un entier",
+      "content": "Remets les instructions de l'algorithme dans l'ordre correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Initialiser $résultat$ à 1",
+        "Pour $i$ allant de 1 à $n$ faire",
+        "   $résultat \\leftarrow résultat \\times i$",
+        "Fin pour",
+        "Afficher $résultat$"
+      ],
+      "explanation": "On initialise $résultat$ à 1 car c'est l'élément neutre de la multiplication. La boucle pour fait varier $i$ de 1 jusqu'à $n$ ; à chaque itération on multiplie $résultat$ par $i$. Après la boucle, $résultat$ vaut $n!$ et on l'affiche.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

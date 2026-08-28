@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Lecture de données en Python",
+  "blocks": [
+    {
+      "title": "Question 1 : Salutation",
+      "content": "Écrire un programme Python qui demande à l'utilisateur son prénom, puis affiche le message \"Bonjour, <prénom> !\".",
+      "correctAnswer": "prenom = input(\"Entrez votre prénom : \")\\nprint(\"Bonjour, \" + prenom + \" !\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction input() permet de lire une chaîne de caractères saisie au clavier. On stocke la saisie dans la variable prenom, puis on concatène les chaînes pour afficher le message souhaité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Somme de deux nombres",
+      "content": "Écrire un programme qui demande à l'utilisateur deux nombres entiers, calcule leur somme et affiche le résultat sous la forme \"La somme est : <somme>\".",
+      "correctAnswer": "a = int(input(\"Entrez le premier nombre : \"))\\nb = int(input(\"Entrez le second nombre : \"))\\nsomme = a + b\\nprint(\"La somme est : \" + str(somme))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "input() renvoie une chaîne ; il faut la convertir en entier avec int() avant de faire l'addition. Le résultat est converti en chaîne avec str() pour être concaténé au message.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Aire d'un cercle",
+      "content": "Écrire un programme qui demande le rayon d'un cercle (nombre réel), calcule l'aire avec la formule $A = \\pi \\times r^2$ et affiche l'aire arrondie à deux décimales.",
+      "correctAnswer": "import math\\nr = float(input(\"Entrez le rayon : \"))\\naire = math.pi * r ** 2\\nprint(f\"L'aire du cercle est : {aire:.2f}\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On importe le module math pour accéder à math.pi. La saisie est convertie en float. L'aire est calculée avec l'opérateur ** pour le carré. La f‑chaîne permet d'afficher le nombre avec deux chiffres après la virgule.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

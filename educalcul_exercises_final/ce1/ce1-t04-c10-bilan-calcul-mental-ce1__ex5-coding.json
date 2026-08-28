@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 107,
+  "_course_code": "ce1-t04-c10-bilan-calcul-mental-ce1",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Faits numériques",
+  "title": "Bilan calcul mental CE1 - Faits numériques algorithmes",
+  "blocks": [
+    {
+      "title": "Somme avec complément à dix",
+      "content": "Écris un algorithme en langage naturel pour calculer la somme de deux nombres en utilisant la stratégie du complément à dix.",
+      "correctAnswer": "Algorithme : 1. Choisir les deux nombres a et b. 2. Si a est plus grand que b, échanger pour que a soit le plus petit. 3. Calculer le complément de a à 10 : c = 10 - a. 4. Si b est supérieur ou égal à c, alors le résultat est 10 + (b - c). 5. Sinon, le résultat est a + b directement.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la technique du complément à dix pour simplifier l'addition mentale. On cherche combien il manque au premier nombre pour faire 10, on enlève cette quantité au second nombre et on ajoute 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Double d'un nombre",
+      "content": "Écris un algorithme sous forme de pseudo-code (style pseudo-code) pour trouver le double d'un nombre entier entre 1 et 10.",
+      "correctAnswer": "fonction double(n):\\n    retourner n + n\\n# Exemple : double(6) donne 12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le double d'un nombre s'obtient en ajoutant le nombre à lui-même. En pseudo-code, on définit une fonction qui prend n en paramètre et renvoie n + n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre manquant dans une addition",
+      "content": "Écris un algorithme pour déterminer le nombre manquant dans une addition de la forme $a + b = c$ quand deux des trois nombres sont connus.",
+      "correctAnswer": "Algorithme : 1. Identifier quels sont les deux nombres connus. 2. Si a et b sont connus, calculer c = a + b. 3. Si a et c sont connus, calculer b = c - a. 4. Si b et c sont connus, calculer a = c - b. 5. Afficher le nombre manquant.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Selon les données connues, on utilise l'addition ou la soustraction pour retrouver le terme manquant. C'est l'application de la relation inverse entre addition et soustraction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

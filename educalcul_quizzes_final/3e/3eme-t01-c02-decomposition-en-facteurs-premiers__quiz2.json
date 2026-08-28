@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "PGCD / simplification selon programme",
+  "title": "PGCD et simplification de fractions",
+  "questions": [
+    {
+      "text": "On donne les décompositions en facteurs premiers : $48 = 2^4 \\times 3$ et $60 = 2^2 \\times 3 \\times 5$. Quel est le PGCD de $48$ et $60$ ?",
+      "options": [
+        "6",
+        "12",
+        "24",
+        "4"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Le PGCD est le produit des facteurs premiers communs avec leur plus petit exposant. Les facteurs communs sont $2$ et $3$. Pour $2$, le plus petit exposant est $2$ (min de $4$ et $2$). Pour $3$, l'exposant est $1$. Donc PGCD $= 2^2 \\times 3 = 4 \\times 3 = 12$. L'option $6$ correspond à $2 \\times 3$ (exposant de $2$ pas minimal), $24$ correspond à $2^3 \\times 3$ (exposant de $2$ trop grand), $4$ oublie le facteur $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simplifier la fraction $\\frac{126}{168}$. Après décomposition en facteurs premiers ($126 = 2 \\times 3^2 \\times 7$ et $168 = 2^3 \\times 3 \\times 7$), quelle est la fraction irréductible obtenue ?",
+      "options": [
+        "3/4",
+        "9/12",
+        "21/28",
+        "63/84"
+      ],
+      "correctAnswer": "3/4",
+      "explanation": "Le PGCD de $126$ et $168$ est $2 \\times 3 \\times 7 = 42$. En divisant le numérateur et le dénominateur par $42$ : $126 \\div 42 = 3$ et $168 \\div 42 = 4$. La fraction irréductible est donc $\\frac{3}{4}$. Les autres options ($\\frac{9}{12}$, $\\frac{21}{28}$, $\\frac{63}{84}$) sont des fractions équivalentes mais pas irréductibles car leur numérateur et dénominateur ont encore des diviseurs communs ($3$, $7$, $21$ respectivement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient les trois nombres $84$, $126$ et $210$. Leurs décompositions sont : $84 = 2^2 \\times 3 \\times 7$, $126 = 2 \\times 3^2 \\times 7$, $210 = 2 \\times 3 \\times 5 \\times 7$. Quel est leur PGCD ?",
+      "options": [
+        "14",
+        "21",
+        "42",
+        "6"
+      ],
+      "correctAnswer": "42",
+      "explanation": "Le PGCD de trois nombres est le produit des facteurs premiers communs aux trois nombres avec le plus petit exposant. Les facteurs communs aux trois sont $2$, $3$ et $7$. Le plus petit exposant pour $2$ est $1$ (présent dans $126$ et $210$), pour $3$ est $1$ (présent dans $84$ et $210$), pour $7$ est $1$. Donc PGCD $= 2 \\times 3 \\times 7 = 42$. L'option $14$ oublie le $3$, $21$ oublie le $2$, $6$ oublie le $7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simplifie la fraction $\\frac{135}{225}$. On sait que $135 = 3^3 \\times 5$ et $225 = 3^2 \\times 5^2$. Quel est le dénominateur de la fraction irréductible obtenue ?",
+      "options": [
+        "3",
+        "5",
+        "9",
+        "15"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Le PGCD de $135$ et $225$ est $3^2 \\times 5 = 9 \\times 5 = 45$. En divisant le dénominateur $225$ par $45$, on obtient $225 \\div 45 = 5$. Le numérateur devient $135 \\div 45 = 3$. La fraction irréductible est $\\frac{3}{5}$, son dénominateur est donc $5$. L'option $3$ est le numérateur, $9$ et $15$ sont des diviseurs partiels mais pas le PGCD.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux nombres entiers naturels non nuls ont un produit égal à $1080$ et un PGCD égal à $6$. Quelle est la valeur de leur PPCM ?",
+      "options": [
+        "180",
+        "1080",
+        "18",
+        "60"
+      ],
+      "correctAnswer": "180",
+      "explanation": "Pour deux entiers naturels non nuls $a$ et $b$, on a la relation fondamentale : $a \\times b = \\text{PGCD}(a,b) \\times \\text{PPCM}(a,b)$. Ici, $a \\times b = 1080$ et $\\text{PGCD} = 6$. Donc $\\text{PPCM} = \\frac{1080}{6} = 180$. L'option $1080$ confond produit et PPCM, $18$ est le produit divisé par $60$ (erreur de calcul), $60$ correspond à $1080 \\div 18$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

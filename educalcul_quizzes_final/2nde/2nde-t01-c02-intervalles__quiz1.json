@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Notation",
+  "title": "Quiz : Notation des intervalles",
+  "questions": [
+    {
+      "text": "Quelle notation correspond à l'intervalle fermé de $ -2 $ à $ 5 $ ?",
+      "options": [
+        "$[-2,5]$",
+        "$]-2,5]$",
+        "$[-2,5[$",
+        "$]-2,5[$"
+      ],
+      "correctAnswer": "$[-2,5]$",
+      "explanation": "Un intervalle fermé inclut ses deux bornes, ce qui se note avec des crochets droits des deux côtés : $[-2,5]$. Les autres options utilisent au moins un crochet tourné, ce qui exclut la borne correspondante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écrivez l'intervalle des réels $ x $ tels que $ -3 < x \\le 4 $.",
+      "options": [
+        "$]-3,4]$",
+        "$[-3,4]$",
+        "$[-3,4[$",
+        "$]-3,4[$"
+      ],
+      "correctAnswer": "$]-3,4]$",
+      "explanation": "La borne inférieure $ -3 $ est stricte (signe $<$), donc on utilise un crochet tourné $]$. La borne supérieure $ 4 $ est large (signe $\\le$), donc on utilise un crochet droit $]$. L'intervalle est $]-3,4]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'intervalle $ I = [0, +\\infty[ $ représente :",
+      "options": [
+        "Tous les réels supérieurs ou égaux à 0",
+        "Tous les réels strictement supérieurs à 0",
+        "Tous les réels inférieurs ou égaux à 0",
+        "Tous les réels strictement inférieurs à 0"
+      ],
+      "correctAnswer": "Tous les réels supérieurs ou égaux à 0",
+      "explanation": "Le crochet droit à gauche $[0$ signifie que $0$ appartient à l'intervalle. Le crochet tourné à droite $+\\infty[$ indique que l'intervalle n'est pas borné supérieurment et que $+\\infty$ n'est pas un nombre réel atteignable. Donc $I$ contient tous les réels $\\ge 0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $ A = ]-1,3] $ et $ B = [2,5[ $. Quelle est l'intersection $ A \\cap B $ ?",
+      "options": [
+        "$[2,3]$",
+        "$]2,3]$",
+        "$[2,3[$",
+        "$]2,3[$"
+      ],
+      "correctAnswer": "$[2,3]$",
+      "explanation": "L'intersection conserve les points communs aux deux intervalles. $A$ va de $-1$ (exclu) à $3$ (inclus). $B$ va de $2$ (inclus) à $5$ (exclu). Les points communs vont donc de $2$ (inclus dans les deux) à $3$ (inclus dans $A$, inclus dans $B$ car $3<5$). L'intersection est l'intervalle fermé $[2,3]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le complémentaire dans $\\mathbb{R}$ de $ C = ]-\\infty,-2] \\cup [3,+\\infty[ $ ?",
+      "options": [
+        "$]-2,3[$",
+        "$[-2,3]$",
+        "$]-2,3]$",
+        "$[-2,3[$"
+      ],
+      "correctAnswer": "$]-2,3[$",
+      "explanation": "Le complémentaire de $C$ est l'ensemble des réels qui n'appartiennent pas à $C$. $C$ contient tout ce qui est $\\le -2$ et tout ce qui est $\\ge 3$. Les réels restants sont ceux strictement compris entre $-2$ et $3$, soit l'intervalle ouvert $]-2,3[$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

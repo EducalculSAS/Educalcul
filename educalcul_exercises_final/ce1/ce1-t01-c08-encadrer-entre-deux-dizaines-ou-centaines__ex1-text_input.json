@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 75,
+  "_course_code": "ce1-t01-c08-encadrer-entre-deux-dizaines-ou-centaines",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Trouver dizaines voisines",
+  "title": "Encadrer un nombre entre deux dizaines voisines",
+  "blocks": [
+    {
+      "title": "Repérage sur une droite graduée",
+      "content": "Sur la droite graduée ci-dessous, le nombre $34$ est repéré. Quelles sont les deux dizaines voisines qui l'encadrent ?",
+      "correctAnswer": "30 et 40",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les dizaines voisines sont les multiples de 10 juste avant et juste après le nombre. Pour $34$, la dizaine précédente est $30$ et la dizaine suivante est $40$. On écrit : $30 < 34 < 40$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repérage de 34",
+        "min": 30,
+        "max": 40,
+        "points": [
+          {
+            "value": 34,
+            "label": "34"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Entourage des dizaines pour un nombre à trois chiffres",
+      "content": "Donne les deux dizaines voisines qui encadrent le nombre $156$.",
+      "correctAnswer": "150 et 160",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde le chiffre des dizaines de $156$, qui est $5$. La dizaine inférieure est donc $150$ (cent cinquante) et la dizaine supérieure est $160$ (cent soixante). Le nombre $156$ est bien entre $150$ et $160$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Cas particulier : passage à la centaine supérieure",
+      "content": "Complète la phrase : Le nombre $98$ est encadré par les dizaines $...$ et $...$.",
+      "correctAnswer": "90 et 100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $98$, la dizaine précédente est $90$ (quatre-vingt-dix). La dizaine suivante est $100$ (cent), car après $99$ on change de centaine. $100$ est bien un multiple de 10 (10 dizaines). On a donc $90 < 98 < 100$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Graphique",
+  "title": "Quiz : Graphique d'une fonction linéaire",
+  "questions": [
+    {
+      "text": "Le graphique d'une fonction linéaire est toujours :",
+      "options": [
+        "Une droite",
+        "Une courbe",
+        "Une parabole",
+        "Un segment de droite"
+      ],
+      "correctAnswer": "Une droite",
+      "explanation": "Une fonction linéaire s'écrit sous la forme $f(x) = ax + b$. Son graphique dans un repère orthonormé est toujours une droite. Si $b = 0$, la droite passe par l'origine (fonction proportionnelle). Si $b \\neq 0$, la droite coupe l'axe des ordonnées au point d'abscisse 0 et d'ordonnée $b$. Les autres options correspondent à d'autres types de fonctions (parabole pour le carré, courbe pour d'autres fonctions non linéaires).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur le graphique ci-dessous représentant la fonction $f(x) = 2x$, quelle est l'image de $3$ ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$9$",
+        "$1,5$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "L'image de $3$ par la fonction $f$ est $f(3)$. On calcule $f(3) = 2 \\times 3 = 6$. Sur le graphique, on repère l'abscisse $3$ sur l'axe horizontal, on monte jusqu'à la droite, puis on lit l'ordonnée correspondante sur l'axe vertical, qui est bien $6$. L'option $5$ correspondrait à $f(2,5)$, $9$ à $f(4,5)$ et $1,5$ à $f(0,75)$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = 2x"
+      }
+    },
+    {
+      "text": "Le coefficient directeur de la droite représentée ci-dessous est :",
+      "options": [
+        "$-0,5$",
+        "$0,5$",
+        "$-2$",
+        "$2$"
+      ],
+      "correctAnswer": "$-0,5$",
+      "explanation": "Le coefficient directeur (ou pente) se calcule par $\\frac{\\text{variation de } y}{\\text{variation de } x}$. Sur la figure, le triangle de pente montre un déplacement horizontal de $+2$ (vers la droite) et un déplacement vertical de $-1$ (vers le bas). Le coefficient directeur est donc $\\frac{-1}{2} = -0,5$. L'option $0,5$ oublie le signe négatif (la droite descend), $-2$ est l'inverse ($\\frac{x}{y}$) et $2$ combine les deux erreurs.",
+      "points": 1,
+      "figure": {
+        "type": "slope_triangle",
+        "a": 2,
+        "b": -1,
+        "xMin": -5,
+        "xMax": 5,
+        "caption": "Droite de coefficient directeur -0,5 avec triangle de pente"
+      }
+    },
+    {
+      "text": "L'ordonnée à l'origine de la droite d'équation $y = 3x - 2$ est :",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$3$",
+        "$-3$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "Dans l'équation réduite d'une droite $y = ax + b$, le coefficient $b$ est l'ordonnée à l'origine (le point où la droite coupe l'axe des ordonnées, d'abscisse $0$). Ici $b = -2$. On peut vérifier : pour $x = 0$, $y = 3 \\times 0 - 2 = -2$. Le coefficient $3$ est le coefficient directeur, pas l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x-2",
+        "xmin": -2,
+        "xmax": 3,
+        "caption": "Graphique de la droite y = 3x - 2"
+      }
+    },
+    {
+      "text": "Quelle est l'équation de la droite représentée ci-dessous ?",
+      "options": [
+        "$y = -x + 1$",
+        "$y = x + 1$",
+        "$y = -x - 1$",
+        "$y = x - 1$"
+      ],
+      "correctAnswer": "$y = -x + 1$",
+      "explanation": "On repère deux points faciles sur la droite : $(0; 1)$ et $(1; 0)$. L'ordonnée à l'origine est $1$ (point de coupe avec l'axe des ordonnées), donc $b = 1$. Le coefficient directeur $a$ est $\\frac{0 - 1}{1 - 0} = -1$. L'équation est donc $y = -x + 1$. L'option $y = x + 1$ a une pente positive, $y = -x - 1$ coupe l'axe des ordonnées en $-1$, et $y = x - 1$ a une pente positive et une ordonnée à l'origine négative.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-x+1",
+        "xmin": -2,
+        "xmax": 3,
+        "caption": "Graphique de la droite y = -x + 1"
+      }
+    }
+  ]
+}

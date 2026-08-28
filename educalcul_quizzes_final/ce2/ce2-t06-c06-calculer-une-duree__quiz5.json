@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 192,
+  "_course_code": "ce2-t06-c06-calculer-une-duree",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Heure de début / fin",
+  "title": "Quiz : Heure de début et heure de fin",
+  "questions": [
+    {
+      "text": "Léa commence sa lecture à $9$ h $15$. Elle lit pendant $30$ minutes. À quelle heure finit-elle sa lecture ?",
+      "options": [
+        "9 h 45",
+        "9 h 35",
+        "9 h 55",
+        "10 h 15"
+      ],
+      "correctAnswer": "9 h 45",
+      "explanation": "On ajoute la durée à l'heure de début : $9$ h $15 + 30$ min. D'abord, on ajoute $15$ min pour arriver à $9$ h $30$. Il reste $15$ min à ajouter, ce qui donne $9$ h $45$. L'erreur $9$ h $35$ correspond à une addition $15+20$. L'erreur $9$ h $55$ correspond à $15+40$. L'erreur $10$ h $15$ correspond à une addition d'une heure au lieu de $30$ min.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 9,
+        "minutes": 15,
+        "caption": "Heure de début : 9 h 15",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un film se termine à $17$ h $20$. Il a duré $1$ h $40$. À quelle heure a-t-il commencé ?",
+      "options": [
+        "15 h 40",
+        "16 h 20",
+        "15 h 20",
+        "16 h 40"
+      ],
+      "correctAnswer": "15 h 40",
+      "explanation": "On soustrait la durée à l'heure de fin : $17$ h $20 - 1$ h $40$. On retire d'abord $1$ heure : $16$ h $20$. Il reste $40$ min à retirer. Comme on ne peut pas retirer $40$ min à $20$ min, on convertit $1$ heure de $16$ h en $60$ min : $15$ h $80$ min. On soustrait $40$ min : $15$ h $40$. L'erreur $16$ h $20$ oublie de soustraire les $40$ min. L'erreur $15$ h $20$ retire $1$ h $00$ au lieu de $1$ h $40$. L'erreur $16$ h $40$ ajoute la durée au lieu de la soustraire.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 17,
+        "minutes": 20,
+        "caption": "Heure de fin : 17 h 20",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Marc arrive à l'école à $8$ h $30$. Le trajet a duré $25$ minutes. À quelle heure est-il parti de chez lui ?",
+      "options": [
+        "8 h 05",
+        "8 h 55",
+        "7 h 55",
+        "8 h 15"
+      ],
+      "correctAnswer": "8 h 05",
+      "explanation": "On cherche l'heure de début : $8$ h $30 - 25$ min. On soustrait $25$ min à $30$ min : $30 - 25 = 5$ min. L'heure reste $8$ h. Donc $8$ h $05$. L'erreur $8$ h $55$ correspond à une addition ($30+25$). L'erreur $7$ h $55$ correspond à une soustraction d'une heure ($30-25=5$ mais on a retiré $1$ h par erreur). L'erreur $8$ h $15$ correspond à une soustraction de $15$ min au lieu de $25$ min.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cours de sport commence à $10$ h $10$ et se termine à $11$ h $00$. Combien de temps dure ce cours ?",
+      "options": [
+        "50 min",
+        "1 h 10",
+        "40 min",
+        "1 h 00"
+      ],
+      "correctAnswer": "50 min",
+      "explanation": "On calcule la durée : de $10$ h $10$ à $11$ h $00$. De $10$ h $10$ à $11$ h $10$, il y a $1$ h ($60$ min). Mais on s'arrête à $11$ h $00$, soit $10$ min avant. La durée est $60 - 10 = 50$ min. L'erreur $1$ h $10$ ajoute les minutes ($10+60$). L'erreur $40$ min soustrait $10$ à $50$ au lieu de $60$. L'erreur $1$ h $00$ ignore les $10$ min de début.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie fait ses devoirs. Elle commence à $16$ h $45$ et finit à $17$ h $20$. Elle fait une pause de $10$ min pendant ce temps. Combien de temps a-t-elle vraiment travaillé ?",
+      "options": [
+        "25 min",
+        "35 min",
+        "45 min",
+        "15 min"
+      ],
+      "correctAnswer": "25 min",
+      "explanation": "D'abord, on calcule la durée totale : de $16$ h $45$ à $17$ h $20$. De $16$ h $45$ à $17$ h $00$ : $15$ min. De $17$ h $00$ à $17$ h $20$ : $20$ min. Total : $15 + 20 = 35$ min. Ensuite, on retire le temps de pause : $35 - 10 = 25$ min de travail effectif. L'erreur $35$ min oublie de soustraire la pause. L'erreur $45$ min additionne la pause. L'erreur $15$ min ne compte que la première tranche horaire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

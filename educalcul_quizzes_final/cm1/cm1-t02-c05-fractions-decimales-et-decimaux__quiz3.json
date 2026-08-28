@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 223,
+  "_course_code": "cm1-t02-c05-fractions-decimales-et-decimaux",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Passage décimal → fraction décimale",
+  "title": "Quiz : Du nombre décimal à la fraction décimale",
+  "questions": [
+    {
+      "text": "Quelle fraction décimale correspond à l'écriture décimale $0,3$ ?",
+      "options": [
+        "$3/10$",
+        "$3/100$",
+        "$10/3$",
+        "$30/10$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "Le chiffre 3 est au rang des dixièmes (premier chiffre après la virgule). Le dénominateur est donc 10 et le numérateur est 3. L'option $3/100$ correspondrait à $0,03$, $10/3$ n'est pas une fraction décimale et $30/10$ vaut 3.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 0.3,
+        "caption": "Tableau de position pour 0,3"
+      }
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est égale au nombre décimal $0,47$ ?",
+      "options": [
+        "$47/100$",
+        "$47/10$",
+        "$4,7/10$",
+        "$74/100$"
+      ],
+      "correctAnswer": "$47/100$",
+      "explanation": "Le dernier chiffre (7) est au rang des centièmes (deuxième chiffre après la virgule). Le dénominateur est donc 100. On écrit tous les chiffres après la virgule au numérateur : 47. L'option $47/10$ vaut 4,7, $4,7/10$ n'est pas une écriture fractionnaire standard au primaire et $74/100$ inverse les chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment écrit-on le nombre décimal $0,006$ sous forme de fraction décimale ?",
+      "options": [
+        "$6/1000$",
+        "$6/100$",
+        "$6/10$",
+        "$60/1000$"
+      ],
+      "correctAnswer": "$6/1000$",
+      "explanation": "Le chiffre 6 est au rang des millièmes (troisième chiffre après la virgule). Le dénominateur est donc 1000. Le numérateur est 6. L'option $6/100$ correspond à $0,06$, $6/10$ à $0,6$ et $60/1000$ à $0,060$ (soit $0,06$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre décimal $2,05$ peut s'écrire sous la forme d'une fraction décimale. Laquelle ?",
+      "options": [
+        "$205/100$",
+        "$25/100$",
+        "$205/10$",
+        "$2,05/100$"
+      ],
+      "correctAnswer": "$205/100$",
+      "explanation": "Il y a deux chiffres après la virgule (0 et 5), donc le dénominateur est 100. On écrit le nombre sans virgule au numérateur : 205. L'option $25/100$ oublie le 0 des dixièmes (valeur $0,25$), $205/10$ vaut $20,5$ et $2,05/100$ n'est pas une fraction décimale (numérateur décimal).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 2.05,
+        "caption": "Tableau de position pour 2,05"
+      }
+    },
+    {
+      "text": "Quelle fraction décimale correspond exactement à l'écriture $0,60$ ?",
+      "options": [
+        "$60/100$",
+        "$6/10$",
+        "$60/10$",
+        "$6/100$"
+      ],
+      "correctAnswer": "$60/100$",
+      "explanation": "L'écriture $0,60$ comporte deux chiffres après la virgule (6 dixièmes et 0 centième), ce qui place le dernier chiffre au rang des centièmes. Le dénominateur est donc 100 et le numérateur 60. Bien que $60/100 = 6/10$, la fraction décimale associée *exactement* à l'écriture $0,60$ (deux décimales) est $60/100$. $6/10$ correspond à $0,6$ (une décimale).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

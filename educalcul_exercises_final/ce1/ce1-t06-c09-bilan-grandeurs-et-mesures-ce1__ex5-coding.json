@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 125,
+  "_course_code": "ce1-t06-c09-bilan-grandeurs-et-mesures-ce1",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Longueurs, masses, monnaie et temps",
+  "title": "Algorithmes pour résoudre des problèmes de mesures",
+  "blocks": [
+    {
+      "title": "Calculer une longueur totale",
+      "content": "Écris l'algorithme (la liste des étapes dans l'ordre) pour calculer la longueur totale de deux ficelles. La première mesure $15$ cm, la seconde mesure $28$ cm.",
+      "correctAnswer": "1. Je note la longueur de la première ficelle : $15$ cm.\\n2. Je note la longueur de la seconde ficelle : $28$ cm.\\n3. J'additionne les deux longueurs : $15 + 28 = 43$.\\n4. La longueur totale est de $43$ cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On liste les étapes dans l'ordre logique : identifier les données (les deux longueurs), choisir l'opération à effectuer (l'addition car on met bout à bout), faire le calcul, et enfin écrire la réponse avec son unité (cm).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la monnaie",
+      "content": "Écris l'algorithme pour trouver la monnaie à rendre. J'achète un cahier à $3$ euros et un stylo à $2$ euros. Je paie avec un billet de $10$ euros.",
+      "correctAnswer": "1. Je note le prix du cahier : $3$ €.\\n2. Je note le prix du stylo : $2$ €.\\n3. Je calcule le total à payer : $3 + 2 = 5$ €.\\n4. Je note la somme donnée : $10$ €.\\n5. Je soustrais le total de la somme donnée : $10 - 5 = 5$.\\n6. La monnaie à rendre est de $5$ €.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décompose le problème en deux étapes de calcul : d'abord une addition pour trouver le montant total des achats, ensuite une soustraction pour trouver la différence entre la somme payée et le total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer une durée",
+      "content": "Écris l'algorithme pour calculer la durée d'une récréation. Elle commence à $10$ heures $15$ et se termine à $10$ heures $35$.",
+      "correctAnswer": "1. Je note l'heure de début : $10$ h $15$.\\n2. Je note l'heure de fin : $10$ h $35$.\\n3. Comme l'heure (les heures) est identique, je soustrais les minutes de fin par les minutes de début : $35 - 15 = 20$.\\n4. La durée de la récréation est de $20$ minutes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer une durée lorsque l'heure de début et l'heure de fin sont dans la même heure, il suffit de soustraire les minutes. L'algorithme précise cette condition (heures identiques) avant d'effectuer la soustraction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

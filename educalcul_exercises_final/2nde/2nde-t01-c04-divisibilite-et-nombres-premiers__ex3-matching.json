@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Problèmes",
+  "title": "Divisibilité et nombres premiers : Problèmes",
+  "blocks": [
+    {
+      "title": "Problèmes de divisibilité - Niveau 1",
+      "content": "Relie chaque problème à sa réponse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Un boulanger a $84$ croissants et $60$ pains au chocolat. Il veut faire des paquets identiques sans reste. Quel est le nombre maximal de paquets ?",
+          "right": "$12$"
+        },
+        {
+          "left": "Trois sonneries retentissent toutes les $6$, $8$ et $12$ minutes. Après combien de minutes sonneront-elles ensemble pour la première fois ?",
+          "right": "$24$"
+        },
+        {
+          "left": "Le plus petit entier naturel non nul divisible à la fois par $3$ et par $5$ est :",
+          "right": "$15$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour le premier problème, le nombre maximal de paquets identiques correspond au PGCD de $84$ et $60$. $84 = 2^2 × 3 × 7$, $60 = 2^2 × 3 × 5$, donc PGCD = $2^2 × 3 = 12$. Pour le second, les sonneries retentissent ensemble au PPCM de $6$, $8$ et $12$. $6 = 2 × 3$, $8 = 2^3$, $12 = 2^2 × 3$, donc PPCM = $2^3 × 3 = 24$. Pour le troisième, le plus petit entier divisible par $3$ et $5$ est leur PPCM = $15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problèmes sur les nombres premiers - Niveau 1",
+      "content": "Relie chaque énoncé à sa réponse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Quel est le plus petit nombre premier strictement supérieur à $20$ ?",
+          "right": "$23$"
+        },
+        {
+          "left": "Donne la décomposition en facteurs premiers de $84$.",
+          "right": "$2^2 × 3 × 7$"
+        },
+        {
+          "left": "Combien y a-t-il de nombres premiers inférieurs à $30$ ?",
+          "right": "$10$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le plus petit nombre premier > $20$ est $23$ ($21$ divisible par $3$, $22$ par $2$). La décomposition de $84$ : $84 = 2 × 42 = 2 × 2 × 21 = 2^2 × 3 × 7$. Les nombres premiers inférieurs à $30$ sont : $2, 3, 5, 7, 11, 13, 17, 19, 23, 29$, soit $10$ nombres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problèmes mixtes de divisibilité et nombres premiers - Niveau 2",
+      "content": "Relie chaque problème à sa solution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "On cherche un entier naturel n tel que n soit divisible par $4$, par $6$ et par $9$. Quel est le plus petit n possible ?",
+          "right": "$36$"
+        },
+        {
+          "left": "Le pgcd de deux nombres est $12$ et leur ppcm est $72$. Si l'un des nombres est $24$, quel est l'autre ?",
+          "right": "$36$"
+        },
+        {
+          "left": "Un nombre entier a pour décomposition en facteurs premiers $2^3 × 3^2$. Combien de diviseurs positifs possède-t-il ?",
+          "right": "$12$"
+        },
+        {
+          "left": "Parmi les entiers de $1$ à $50$, combien sont premiers avec $12$ ?",
+          "right": "$17$"
+        }
+      ],
+      "items": [],
+      "explanation": "1) Le plus petit multiple commun de $4$, $6$ et $9$ : $4=2^2$, $6=2×3$, $9=3^2$ ⇒ PPCM = $2^2 × 3^2 = 36$. 2) Soit $x$ l'autre nombre. $PGCD(24,x)=12$ et $PPCM(24,x)=72$. On a $24 × x = 12 × 72 = 864$, donc $x = 864/24 = 36$. 3) Pour $n = 2^3 × 3^2$, le nombre de diviseurs est $(3+1)(2+1)=12$. 4) Les entiers de $1$ à $50$ premiers avec $12$ ne sont divisibles ni par $2$ ni par $3$. Il y a $25$ multiples de $2$, $16$ multiples de $3$, $8$ multiples de $6$. Par inclusion-exclusion, $50 - (25+16-8) = 17$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

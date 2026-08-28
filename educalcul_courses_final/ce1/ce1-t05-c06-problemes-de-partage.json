@@ -1,0 +1,378 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.830560+00:00",
+  "id": 113,
+  "code": "ce1-t05-c06",
+  "title": "Problèmes de partage",
+  "description": "Cours structuré Educalcul : Problèmes de partage.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de partage",
+    "objectif_global": "Problèmes de partage",
+    "mini_lecons_imposees": [
+      "Nombre de parts connu.",
+      "Répartir équitablement.",
+      "Interpréter la taille d'une part."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Nombre de parts connu.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand on connaît le nombre de parts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $12$ bonbons et que tu veux les donner à $3$ copains pour que chacun ait la même chose. Tu sais déjà qu'il y a $3$ parts, car il y a $3$ copains. La question, c'est : combien de bonbons dans chaque part ? C'est un problème de partage où le nombre de parts est connu."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "12 bonbons répartis en 3 groupes égaux"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un nombre un peu plus grand, comme $21$ crayons à partager entre $3$ élèves. Tu vas voir qu'on peut utiliser la méthode des bouquets pour faire vite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour partager $21$, on trace $3$ cercles sur une feuille. On place les crayons un par un dans chaque cercle : un dans le premier, un dans le deuxième, un dans le troisième, et on recommence. Quand tous les crayons sont posés, on compte ceux qui sont dans un seul cercle. C'est la taille de la part."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace autant de cercles qu'il y a de parts (ici $3$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distribuer un par un",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose un objet dans chaque cercle, tour à tour, jusqu'à épuisement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter dans une part",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les cercles ont le même nombre. Compte les objets d'un seul cercle, c'est la réponse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode pour partager quand tu connais le nombre de parts. Regardons un dernier exemple avec des objets différents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Suppose que tu as $15$ billes et $5$ boîtes. Tu veux mettre le même nombre de billes dans chaque boîte. Tu sais qu'il y a $5$ parts. Combien de billes par boîte ? Tu peux dessiner $5$ boîtes et y mettre les billes une par une."
+            },
+            {
+              "type": "definition",
+              "term": "partage",
+              "definition": "C'est l'action de répartir une quantité en plusieurs parts égales. Le nombre de parts est connu au départ.",
+              "example": "Partager $12$ pommes entre $3$ enfants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $12$ bonbons à partager équitablement entre $3$ enfants. Combien de bonbons chaque enfant reçoit-il ?",
+              "answer": "$4$ bonbons",
+              "hint": "Fais $3$ tas et distribue les bonbons un par un.",
+              "explanation": "On partage $12$ par $3$. $12 = 3 \\\\times 4$, donc chaque enfant a $4$ bonbons."
+            },
+            {
+              "question": "Partage $21$ crayons entre $3$ élèves. Combien de crayons par élève ?",
+              "answer": "$7$ crayons",
+              "hint": "Utilise la méthode des bouquets : dessine $3$ cercles et place les crayons.",
+              "explanation": "$21 = 3 \\\\times 7$, chaque élève reçoit $7$ crayons."
+            },
+            {
+              "question": "Il y a $15$ billes à mettre dans $5$ boîtes, même nombre dans chaque boîte. Combien de billes par boîte ?",
+              "answer": "$3$ billes",
+              "hint": "Compte par $5$ jusqu'à $15$ ou fais $5$ tas.",
+              "explanation": "$15 = 5 \\\\times 3$, donc $3$ billes par boîte."
+            }
+          ]
+        },
+        {
+          "title": "Répartir équitablement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répartir équitablement, c'est donner la même chose à chacun"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on partage un gâteau d'anniversaire entre $4$ amis, on le coupe en $4$ parts identiques. Chaque ami reçoit une part de la même taille. C'est ce qu'on appelle répartir équitablement : personne n'est lésé, personne n'est avantagé."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Une part sur 4 parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais si tu as une boîte de $20$ crayons à donner à $4$ camarades, tu ne coupes pas les crayons ! Tu fais des tas égaux. Voici comment procéder pas à pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu poses les $20$ crayons devant toi. Tu prépares $4$ emplacements pour les $4$ camarades. Tu donnes un crayon au premier, un au deuxième, un au troisième, un au quatrième. Tu recommences jusqu'à ce qu'il n'y en ait plus. À la fin, chaque tas a le même nombre de crayons."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer les emplacements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Crée autant de tas qu'il y a de destinataires (ici $4$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distribuer tour à tour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne un objet à chaque tas, un après l'autre, sans en oublier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'équité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les tas doivent contenir exactement le même nombre d'objets."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le nombre d'objets ne tombe pas juste. Il en reste quelques-uns qu'on ne peut pas distribuer équitablement."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention au reste",
+              "paragraphs": [
+                "Si tu as $13$ bonbons et $3$ copains, chacun reçoit $4$ bonbons et il en reste $1$. Ce bonbon restant ne peut pas être partagé équitablement sans le couper."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un carré de chocolat est divisé en $4$ parts égales. Quelle fraction du chocolat représente une part ?",
+              "answer": "$\\\\frac{1}{4}$",
+              "hint": "Le carré est coupé en $4$, tu prends une part.",
+              "explanation": "Le tout est $1$, divisé en $4$ parts égales, chaque part vaut $1/4$."
+            },
+            {
+              "question": "Répartis $20$ crayons entre $4$ camarades de façon équitable. Combien de crayons chacun ?",
+              "answer": "$5$ crayons",
+              "hint": "Fais $4$ tas et donne un crayon à chaque tas tour à tour.",
+              "explanation": "$20 = 4 \\\\times 5$, chaque camarade reçoit $5$ crayons."
+            },
+            {
+              "question": "Tu as $13$ bonbons à donner à $3$ copains équitablement. Combien en a chaque copain et combien en reste-t-il ?",
+              "answer": "Chacun a $4$ bonbons, il en reste $1$",
+              "hint": "Donne $4$ bonbons à chaque copain : $3 \\\\times 4 = 12$, il reste $1$.",
+              "explanation": "$13 = 3 \\\\times 4 + 1$, le partage n'est pas exact, il y a un reste de $1$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter la taille d'une part.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce que représente la taille d'une part"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un partage, la taille d'une part, c'est le nombre d'objets que reçoit chaque personne. Si tu partages $20$ pommes entre $5$ paniers, chaque panier contient $4$ pommes. La taille de la part est $4$. C'est la réponse à la question : « Combien y en a-t-il dans chaque part ? »"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Taille de la part selon le nombre de parts pour 20 objets",
+              "bars": [
+                {
+                  "label": "2 parts",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4 parts",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "5 parts",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "10 parts",
+                  "value": 2,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que plus il y a de parts, plus chaque part est petite. C'est logique : la même quantité est divisée en plus de morceaux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant $18$ billes qu'on veut mettre dans des sachets de $3$ billes chacun. Ici, on ne connaît pas le nombre de sachets, mais on connaît la taille d'une part : $3$ billes. Combien de sachets ? On fait des groupes de $3$ jusqu'à épuisement. On trouve $6$ sachets. La taille de la part nous aide à compter le nombre de parts."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la taille de la part",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nombre d'objets par groupe (ici $3$ billes par sachet)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Former les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le total ($18$) et forme des paquets de cette taille jusqu'à ce qu'il n'en reste plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de paquets formés est le nombre de parts cherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, essayons un problème où il faut choisir la bonne opération."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $24$ autocollants. Tu veux en donner $6$ à chaque ami. Combien d'amis pourront en recevoir ? Tu partages $24$ par $6$ et tu trouves $4$ amis. La taille de la part ($6$) te guide vers la division."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer le nombre de parts dans un énoncé.",
+                "Je sais répartir des objets équitablement en faisant des tas.",
+                "Je sais dire ce que représente le résultat d'un partage."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On partage $20$ pommes entre $5$ paniers. Quelle est la taille d'une part ?",
+              "answer": "$4$ pommes",
+              "hint": "Divise $20$ par $5$.",
+              "explanation": "$20 = 5 \\\\times 4$, chaque panier contient $4$ pommes."
+            },
+            {
+              "question": "Tu as $18$ billes. Tu fais des sachets de $3$ billes. Combien de sachets ?",
+              "answer": "$6$ sachets",
+              "hint": "Combien de fois $3$ dans $18$ ?",
+              "explanation": "$18 = 3 \\\\times 6$, tu peux faire $6$ sachets."
+            },
+            {
+              "question": "Tu as $24$ autocollants. Tu donnes $6$ autocollants à chaque ami. Combien d'amis ?",
+              "answer": "$4$ amis",
+              "hint": "Partage $24$ par $6$.",
+              "explanation": "$24 = 6 \\\\times 4$, tu as $4$ amis."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

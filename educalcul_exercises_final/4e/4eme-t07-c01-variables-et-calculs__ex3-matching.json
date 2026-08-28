@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Tracer état",
+  "title": "Trace d'exécution d'algorithmes",
+  "blocks": [
+    {
+      "title": "Affectations successives",
+      "content": "Relie chaque étape de l'algorithme à l'état des variables $a$ et $b$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Début",
+          "right": "$a=5$, $b=3$"
+        },
+        {
+          "left": "Après $a \\leftarrow a+b$",
+          "right": "$a=8$, $b=3$"
+        },
+        {
+          "left": "Après $b \\leftarrow a-b$",
+          "right": "$a=8$, $b=5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Au début, $a$ vaut 5 et $b$ vaut 3. L'instruction $a \\leftarrow a+b$ calcule $5+3=8$ et stocke le résultat dans $a$ ; $b$ reste 3. Ensuite $b \\leftarrow a-b$ calcule $8-3=5$ et le stocke dans $b$ ; $a$ reste 8. L'état final est $a=8$, $b=5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle Pour simple",
+      "content": "Relie chaque valeur du compteur $i$ à la valeur de la variable $s$ après l'itération correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$i=1$",
+          "right": "$s=1$"
+        },
+        {
+          "left": "$i=2$",
+          "right": "$s=3$"
+        },
+        {
+          "left": "$i=3$",
+          "right": "$s=6$"
+        },
+        {
+          "left": "$i=4$",
+          "right": "$s=10$"
+        }
+      ],
+      "items": [],
+      "explanation": "La variable $s$ est initialisée à 0. Pour $i=1$, $s$ devient $0+1=1$. Pour $i=2$, $s$ devient $1+2=3$. Pour $i=3$, $s$ devient $3+3=6$. Pour $i=4$, $s$ devient $6+4=10$. La boucle s'arrête après $i=4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle avec condition",
+      "content": "Relie chaque valeur de $k$ à la valeur de $s$ après l'exécution du corps de la boucle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$k=1$",
+          "right": "$s=1$"
+        },
+        {
+          "left": "$k=2$",
+          "right": "$s=3$"
+        },
+        {
+          "left": "$k=3$",
+          "right": "$s=6$"
+        },
+        {
+          "left": "$k=4$",
+          "right": "$s=6$"
+        },
+        {
+          "left": "$k=5$",
+          "right": "$s=6$"
+        }
+      ],
+      "items": [],
+      "explanation": "$s$ commence à 0. Pour $k=1,2,3$, la condition $k \\le 3$ est vraie, on ajoute $k$ à $s$ : $1$, puis $3$, puis $6$. Pour $k=4$ et $k=5$, la condition est fausse, $s$ ne change pas et reste 6.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

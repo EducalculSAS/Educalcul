@@ -1,0 +1,523 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.121628+00:00",
+  "id": 206,
+  "code": "ce2-t08-c02",
+  "title": "Diagrammes en bâtons",
+  "description": "Cours structuré Educalcul : Diagrammes en bâtons.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Diagrammes en bâtons",
+    "objectif_global": "Diagrammes en bâtons",
+    "mini_lecons_imposees": [
+      "Lire une échelle.",
+      "Comparer barres.",
+      "Construire un diagramme."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Lire une échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où tu vas apprendre à lire une échelle comme un petit détective qui suit des indices. Imagine que tu mesures la hauteur d'une plante avec une règle graduée, chaque trait te donne une information précieuse."
+            },
+            {
+              "type": "definition",
+              "term": "échelle",
+              "definition": "Une échelle est une suite de graduations régulières qui permettent de connaître une mesure, comme les traits sur une règle ou sur un thermomètre.",
+              "example": "Sur une règle, l'échelle va de $0$ $cm$ à $30$ $cm$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'échelle ci‑dessous : elle commence à zéro et chaque grand trait représente une unité. Les petits traits entre deux grands traits aident à être plus précis, mais pour l'instant nous nous concentrons sur les grands traits."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle de $0$ à $10$ avec des graduations toutes les $1$ unité",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "A"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une valeur, place ton doigt sur le trait qui t'intéresse et compte combien d'unités séparent ce trait du zéro. C'est comme compter les marches d'un escalier."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le point de départ de l'échelle, c'est le zéro."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les graduations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avance trait par trait jusqu'au trait choisi, en comptant à voix haute."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le nombre trouvé suivi de l'unité, par exemple $4$ $cm$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons d'estimer une valeur qui se trouve entre deux grands traits. Imagine que la plante dépasse un peu le trait $4$ mais n'atteint pas le trait $5$."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 8,
+              "unit": "cm",
+              "caption": "Règle graduée de $0$ à $8$ $cm$ pour estimer entre $4$ et $5$ $cm$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le bout de la plante se situe à mi‑chemin, tu peux dire qu'elle mesure environ $4,5$ $cm$. C'est une estimation, pas une mesure exacte, et c'est très bien comme ça."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, regardons une échelle qui utilise des mètres au lieu de centimètres. Le principe reste le même, seule l'unité change."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une échelle de $0$ à $5$ $m$, chaque grand trait vaut $1$ $m$. Si tu comptes trois traits, tu sais que la longueur est de $3$ $m$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'échelle de $0$ à $10$ $cm$, quelle valeur correspond au trait marqué A ?",
+              "answer": "$4$ $cm$",
+              "hint": "Compte les grands traits à partir de zéro jusqu'au trait A.",
+              "explanation": "Chaque grand trait représente $1$ $cm$. Le trait A est le quatrième trait après le zéro, donc la mesure est $4$ $cm$."
+            },
+            {
+              "question": "La plante se trouve à mi‑chemin entre le trait $4$ $cm$ et le trait $5$ $cm$. Quelle estimation donnes‑tu ?",
+              "answer": "$4,5$ $cm$",
+              "hint": "Partage l'espace entre les deux traits en deux parties égales.",
+              "explanation": "À mi‑chemin, on ajoute la moitié d'une unité à $4$ $cm$, ce qui donne $4,5$ $cm$."
+            },
+            {
+              "question": "Sur une échelle de $0$ à $5$ $m$, combien de mètres indiquent trois grands traits après le zéro ?",
+              "answer": "$3$ $m$",
+              "hint": "Chaque grand trait vaut $1$ $m$.",
+              "explanation": "Trois traits correspondent à $3$ fois $1$ $m$, donc $3$ $m$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer barres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas devenir un champion de la comparaison visuelle. Pense à deux tours de cubes : la plus haute montre tout de suite qu'elle contient plus de cubes."
+            },
+            {
+              "type": "definition",
+              "term": "barre",
+              "definition": "Une barre est un rectangle vertical dont la hauteur représente une quantité. Dans un diagramme en bâtons, chaque barre correspond à une catégorie.",
+              "example": "Une barre de $6$ $cm$ de haut peut montrer que $6$ élèves aiment le chocolat."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le diagramme ci‑dessous. La barre bleue monte jusqu'à $7$ et la barre rouge s'arrête à $4$. La hauteur te donne directement le nombre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux barres : bleue à $7$, rouge à $4$",
+              "bars": [
+                {
+                  "label": "Bleue",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rouge",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire la valeur d'une barre, trouve le trait horizontal qui touche le sommet de la barre et lis le chiffre indiqué sur l'échelle verticale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton doigt au sommet de la barre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre en face de ton doigt sur l'axe vertical."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nombre avec son unité, par exemple $7$ élèves."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, comparons deux barres ensemble. Imagine que la barre verte atteint $9$ et la barre jaune $5$. Laquelle montre le plus grand nombre ?"
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs $5$ et $9$ sur une droite graduée",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Jaune"
+                },
+                {
+                  "value": 9,
+                  "label": "Verte"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La barre qui monte le plus haut correspond à la plus grande valeur. Ici, $9$ est plus grand que $5$, donc la barre verte gagne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, classons plusieurs barres du plus petit au plus grand. C'est comme ranger tes jouets par taille."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Couleur",
+                "Valeur"
+              ],
+              "rows": [
+                [
+                  "Orange",
+                  "3"
+                ],
+                [
+                  "Violette",
+                  "6"
+                ],
+                [
+                  "Rose",
+                  "8"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "En lisant le tableau, tu vois que l'orange est la plus petite ($3$), puis la violette ($6$), et la rose est la plus grande ($8$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la valeur de la barre bleue dans le diagramme ?",
+              "answer": "$7$",
+              "hint": "Regarde le trait horizontal qui touche le sommet de la barre bleue.",
+              "explanation": "Le sommet de la barre bleue atteint le chiffre $7$ sur l'échelle verticale."
+            },
+            {
+              "question": "Entre la barre verte ($9$) et la barre jaune ($5$), laquelle représente la plus grande quantité ?",
+              "answer": "La barre verte",
+              "hint": "Compare les nombres $9$ et $5$ sur la droite graduée.",
+              "explanation": "$9$ est plus grand que $5$, donc la barre verte est la plus haute."
+            },
+            {
+              "question": "Range les barres orange ($3$), violette ($6$) et rose ($8$) du plus petit au plus grand.",
+              "answer": "Orange, violette, rose",
+              "hint": "Utilise le tableau pour lire les valeurs.",
+              "explanation": "Les valeurs sont $3 < 6 < 8$, donc l'ordre est orange, violette, rose."
+            }
+          ]
+        },
+        {
+          "title": "Construire un diagramme.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vas maintenant fabriquer ton propre diagramme en bâtons, comme un architecte qui dessine un plan. Choisis d'abord une échelle adaptée à tes données."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme en bâtons",
+              "definition": "Un diagramme en bâtons est un graphique qui utilise des barres verticales pour comparer des quantités. Chaque barre représente une catégorie.",
+              "example": "Un diagramme montre le nombre de pommes, de poires et de bananes dans un panier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu aies compté $12$ pommes, $8$ poires et $20$ bananes. La plus grande valeur est $20$, donc ton échelle doit aller au moins jusqu'à $20$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Pommes",
+                  "value": 12,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 20,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Représentation en barres des fruits pour choisir l'échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis un pas de $2$ ou $5$ pour que les graduations soient faciles à lire. Ici, un pas de $5$ donne $0, 5, 10, 15, 20$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver la valeur maximale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le plus grand nombre de tes données."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le pas de l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends un nombre qui divise bien la valeur max, comme $2$, $5$ ou $10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dessiner l'axe vertical",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une ligne verticale et marque les graduations avec le pas choisi."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'échelle, trace l'axe horizontal et écris les noms des catégories. Puis dessine chaque barre jusqu'à la bonne graduation."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Axes prêts à recevoir les barres des fruits",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Poires",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 0,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour chaque fruit, monte la barre jusqu'au chiffre correspondant : $12$ pour les pommes, $8$ pour les poires, $20$ pour les bananes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les catégories",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les noms sous l'axe horizontal, bien espacés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dessiner les barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque catégorie, trace un rectangle qui monte jusqu'à la graduation correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Colorier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute une couleur différente par barre pour bien les distinguer."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, vérifie ton diagramme : chaque barre atteint-elle la bonne hauteur ? L'échelle est-elle régulière ? Corrige si besoin."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 20,
+              "unit": "cm",
+              "caption": "Règle pour vérifier la hauteur des barres jusqu'à $20$ $cm$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose la règle le long de chaque barre. Si le sommet coïncide avec le bon chiffre, ton diagramme est parfait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une échelle graduée.",
+                "Je sais comparer la hauteur de deux barres.",
+                "Je sais construire un diagramme en bâtons complet avec échelle, axes et barres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle valeur maximale dois‑tu afficher sur l'axe vertical pour les données : $12$, $8$, $20$ ?",
+              "answer": "$20$",
+              "hint": "Cherche le plus grand nombre parmi les trois.",
+              "explanation": "La plus grande quantité est $20$ bananes, donc l'échelle doit aller au moins jusqu'à $20$."
+            },
+            {
+              "question": "Si tu choisis un pas de $5$, quelles graduations apareceront sur l'axe vertical ?",
+              "answer": "$0, 5, 10, 15, 20$",
+              "hint": "Compte de $5$ en $5$ depuis zéro jusqu'à la valeur max.",
+              "explanation": "Avec un pas de $5$, les graduations sont $0$, $5$, $10$, $15$, $20$."
+            },
+            {
+              "question": "Après avoir dessiné les barres, comment vérifies‑tu que la barre des pommes est correcte ?",
+              "answer": "Je pose la règle et je vois si le sommet atteint $12$.",
+              "hint": "Utilise la règle graduée le long de la barre.",
+              "explanation": "La hauteur de la barre pommes doit correspondre à la graduation $12$ sur l'échelle verticale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

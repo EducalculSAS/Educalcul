@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 254,
+  "_course_code": "cm1-t06-c07-solides-et-patrons",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Décrire",
+  "title": "Quiz : Décrire les solides (CM1)",
+  "questions": [
+    {
+      "text": "Combien de faces, d'arêtes et de sommets a un cube ?",
+      "options": [
+        "$6$ faces, $12$ arêtes, $8$ sommets",
+        "$8$ faces, $12$ arêtes, $6$ sommets",
+        "$6$ faces, $8$ arêtes, $12$ sommets",
+        "$5$ faces, $10$ arêtes, $6$ sommets"
+      ],
+      "correctAnswer": "$6$ faces, $12$ arêtes, $8$ sommets",
+      "explanation": "Un cube est un solide qui possède $6$ faces carrées identiques, $12$ arêtes de même longueur et $8$ sommets. L'option B inverse le nombre de faces et de sommets. L'option C inverse le nombre d'arêtes et de sommets. L'option D correspond aux caractéristiques d'une pyramide à base carrée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel solide a $5$ faces (dont $1$ carrée et $4$ triangles), $8$ arêtes et $5$ sommets ?",
+      "options": [
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cône",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Une pyramide à base carrée",
+      "explanation": "La pyramide à base carrée est définie par une base carrée ($1$ face) et $4$ faces latérales triangulaires qui se rejoignent en un sommet, ce qui fait $5$ faces au total, $8$ arêtes ($4$ sur la base, $4$ montantes) et $5$ sommets ($4$ sur la base, $1$ au sommet). Le pavé droit a $6$ faces rectangulaires. Le cône et le cylindre ont des faces courbes et un nombre différent d'arêtes et de sommets.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces affirmations sur le cylindre, laquelle est exacte ?",
+      "options": [
+        "Il a $2$ faces planes et $1$ face courbe, $2$ arêtes et $0$ sommet.",
+        "Il a $1$ face plane et $1$ face courbe, $1$ arête et $1$ sommet.",
+        "Il a $3$ faces planes, $6$ arêtes et $4$ sommets.",
+        "Il a $1$ face plane, $1$ face courbe et $1$ sommet."
+      ],
+      "correctAnswer": "Il a $2$ faces planes et $1$ face courbe, $2$ arêtes et $0$ sommet.",
+      "explanation": "Le cylindre possède deux bases qui sont des disques (donc $2$ faces planes), une surface latérale courbe ($1$ face courbe), deux arêtes (les cercles de jonction entre les bases et la face courbe) et aucun sommet. L'option B décrit partiellement un cône. L'option C décrit un tétraèdre (pyramide triangulaire). L'option D est incomplète et incorrecte pour le cylindre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la description : Un cône a $1$ face plane (un disque), $1$ face courbe, $1$ arête (un cercle) et ...",
+      "options": [
+        "$0$ sommet",
+        "$1$ sommet",
+        "$2$ sommets",
+        "$4$ sommets"
+      ],
+      "correctAnswer": "$1$ sommet",
+      "explanation": "Le cône se termine par un unique point appelé sommet (ou apex), qui n'appartient pas à la base. Il a donc exactement $1$ sommet. L'option A correspond au cylindre. Les options C et D ne correspondent à aucun solide de révolution courant au programme de CM1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le patron ci-dessous. Quel solide peut-on obtenir en le pliant ?",
+      "options": [
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cube",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Le patron présenté est composé de $6$ carrés identiques disposés en croix (ou en T), ce qui est l'un des $11$ patrons possibles du cube. En pliant les faces latérales vers le haut et en rabattant la dernière face, on obtient un cube dont toutes les faces sont des carrés. Un pavé droit aurait des faces rectangulaires non toutes identiques. Une pyramide à base carrée a un patron avec $1$ carré et $4$ triangles. Un cylindre a un patron avec $2$ disques et $1$ rectangle.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube composé de 6 carrés."
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 177,
+  "_course_code": "ce2-t04-c09-bilan-calcul-mental-ce2",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Fluence",
+  "title": "Fluence calcul mental CE2",
+  "blocks": [
+    {
+      "title": "Ajout par compensation",
+      "content": "Écris un algorithme en langage naturel ou en pseudo code pour calculer $a+b$ en utilisant la stratégie de compensation (ajouter 10 puis retirer 1 quand le second nombre se termine par 9).",
+      "correctAnswer": "Algorithme :\\n1. Lire les nombres a et b.\\n2. Si le dernier chiffre de b est 9 alors\\n     calculer $a+10$\\n     soustraire 1 au résultat\\n   sinon\\n     calculer $a+b$ directement.\\n3. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cette méthode utilise le fait qu'ajouter 10 est facile mentalement, puis on retire 1 pour compenser l'ajout de 1 de trop. Cela permet de calculer rapidement des additions comme $27+39$ en faisant $27+40-1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication par 5",
+      "content": "Écris un algorithme pour calculer $5 \\times n$ en utilisant la stratégie multiplier par 10 puis diviser par 2.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre n.\\n2. Calculer le double de n ($n+n$) pour obtenir $2n$.\\n3. Calculer le double de $2n$ ($2n+2n$) pour obtenir $4n$.\\n4. Ajouter n à $4n$ pour obtenir $5n$.\\nOu plus simplement : multiplier n par 10 puis diviser le résultat par 2.\\n5. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 5 revient à multiplier par 10 puis diviser par 2, ce qui est facile mentalement car multiplier par 10 ajoute un zéro et diviser par 2 est une moitié.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Soustraction par complément",
+      "content": "Écris un algorithme pour trouver la différence $a-b$ en comptant à partir de $b$ jusqu'à $a$ (stratégie du complément).",
+      "correctAnswer": "Algorithme :\\n1. Lire les nombres a et b (avec a plus grand que b).\\n2. Initialiser compteur à 0.\\n3. Tant que b est inférieur à a faire\\n     augmenter b de 1\\n     augmenter compteur de 1.\\n4. Quand b égale a, le compteur vaut la différence $a-b$.\\n5. Afficher le compteur.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cette méthode consiste à ajouter successivement 1 au nombre plus petit jusqu'à atteindre le plus grand. Le nombre d'étapes effectuées donne la différence. Elle aide à visualiser la soustraction comme une distance sur la droite numérique.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

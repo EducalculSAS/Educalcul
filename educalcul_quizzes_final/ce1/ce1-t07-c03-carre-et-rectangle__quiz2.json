@@ -1,0 +1,121 @@
+{
+  "_status": "done",
+  "_course_id": 128,
+  "_course_code": "ce1-t07-c03-carre-et-rectangle",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Repérer côtés et angles",
+  "title": "Repérer les côtés et les angles du carré et du rectangle",
+  "questions": [
+    {
+      "text": "Combien de côtés a un carré ?",
+      "options": [
+        "Trois côtés",
+        "Quatre côtés",
+        "Cinq côtés",
+        "Six côtés"
+      ],
+      "correctAnswer": "Quatre côtés",
+      "explanation": "Un carré est un quadrilatère : il a toujours quatre côtés. Les distracteurs correspondent à d'autres polygones (triangle, pentagone, hexagone).",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 4,
+            "height": 4,
+            "label": "Carré"
+          }
+        ],
+        "caption": "Un carré sur quadrillage"
+      }
+    },
+    {
+      "text": "Combien d'angles a un rectangle ?",
+      "options": [
+        "Deux angles",
+        "Trois angles",
+        "Quatre angles",
+        "Cinq angles"
+      ],
+      "correctAnswer": "Quatre angles",
+      "explanation": "Comme tout quadrilatère, le rectangle a quatre angles. De plus, ses quatre angles sont des angles droits. L'option 'Trois angles' correspond au triangle.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 6,
+            "height": 4,
+            "label": "Rectangle"
+          }
+        ],
+        "caption": "Un rectangle sur quadrillage"
+      }
+    },
+    {
+      "text": "Sur la figure, quel symbole marque un angle droit ?",
+      "options": [
+        "Un petit trait sur les côtés",
+        "Un petit carré dans l'angle",
+        "Un point au milieu de la figure",
+        "Une flèche courbe"
+      ],
+      "correctAnswer": "Un petit carré dans l'angle",
+      "explanation": "En géométrie, on note un angle droit en traçant un petit carré à l'intérieur de l'angle. Les traits sur les côtés indiquent des longueurs égales, la flèche courbe marque souvent un angle quelconque.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 5,
+            "height": 3,
+            "label": "Rectangle avec angle droit"
+          }
+        ],
+        "caption": "Rectangle avec un angle droit matérialisé par un petit carré"
+      }
+    },
+    {
+      "text": "Quelle phrase est vraie pour le carré ET le rectangle ?",
+      "options": [
+        "Ils ont quatre côtés de même longueur",
+        "Ils ont trois angles droits",
+        "Ils ont quatre angles droits",
+        "Ils ont cinq côtés"
+      ],
+      "correctAnswer": "Ils ont quatre angles droits",
+      "explanation": "C'est la propriété commune : les deux figures ont quatre angles droits. Seul le carré a quatre côtés de même longueur. Le rectangle a deux paires de côtés de même longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Je suis une figure à quatre côtés. Mes quatre angles sont des angles droits. Mes quatre côtés ont la même longueur. Qui suis-je ?",
+      "options": [
+        "Un rectangle",
+        "Un carré",
+        "Un triangle",
+        "Un losange"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Le rectangle a quatre angles droits mais seulement les côtés opposés égaux. Le losange a quatre côtés égaux mais pas forcément d'angles droits. Le carré réunit les deux propriétés.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 4,
+            "height": 4,
+            "label": "Carré"
+          },
+          {
+            "width": 6,
+            "height": 3,
+            "label": "Rectangle"
+          }
+        ],
+        "caption": "Comparaison carré et rectangle"
+      }
+    }
+  ]
+}

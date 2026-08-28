@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Checklist",
+  "title": "Checklist Fonctions - Seconde",
+  "questions": [
+    {
+      "text": "Soit la fonction f définie sur $[0; 5]$ par $f(x) = x^2 - 4x + 3$. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "L'image de 2 est -1",
+        "1 a pour antécédents 0 et 4",
+        "La fonction est décroissante sur $[0; 2]$",
+        "Le maximum de f sur $[0; 5]$ est 8"
+      ],
+      "correctAnswer": "1 a pour antécédents 0 et 4",
+      "explanation": "On calcule $f(2) = 4 - 8 + 3 = -1$, donc la première affirmation est vraie. La fonction est un trinôme du second degré de coefficient directeur positif, son sommet est à $x = 2$, elle est donc décroissante sur $[0; 2]$, la troisième affirmation est vraie. $f(5) = 25 - 20 + 3 = 8$ et $f(0) = 3$, le maximum sur l'intervalle est bien 8, la quatrième affirmation est vraie. Pour la deuxième : $f(0) = 3$ et $f(4) = 16 - 16 + 3 = 3$, donc 0 et 4 sont antécédents de 3, pas de 1. L'équation $f(x)=1$ donne $x^2-4x+2=0$, ses solutions sont $2 \\pm \\sqrt{2}$, ni 0 ni 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La courbe ci-dessous représente une fonction g définie sur $[-1; 4]$. Quelle affirmation est exacte ?",
+      "options": [
+        "La fonction est croissante sur $[-1; 2]$",
+        "La fonction admet un minimum pour $x=2$",
+        "L'image de $0$ est $3$",
+        "L'équation $g(x)=2$ admet une unique solution"
+      ],
+      "correctAnswer": "La fonction est croissante sur $[-1; 2]$",
+      "explanation": "La courbe est une parabole de sommet $S(2; 3)$, branche concave (coefficient directeur négatif). Elle est donc croissante avant l'abscisse du sommet, c'est-à-dire sur $[-1; 2]$, et décroissante après. L'affirmation A est exacte. En $x=2$, la fonction admet un maximum (valeur 3), pas un minimum : B est faux. $g(0) = -(0-2)^2+3 = -4+3 = -1$, l'image de 0 est -1, pas 3 : C est faux. L'équation $g(x)=2$ correspond à l'intersection avec la droite $y=2$ ; la parabole coupe cette droite en deux points (abscisses 1 et 3) : D est faux.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-(x-2)^2+3",
+        "xmin": -1,
+        "xmax": 4,
+        "caption": "Courbe représentative de la fonction g"
+      }
+    },
+    {
+      "text": "Parmi les affirmations suivantes sur les fonctions de référence, laquelle est fausse ?",
+      "options": [
+        "La fonction carrée est paire et décroissante sur $]-\\infty; 0]$",
+        "La fonction inverse est impaire et décroissante sur $\\mathbb{R}$",
+        "La fonction racine cube est impaire et strictement croissante sur $\\mathbb{R}$",
+        "Toute fonction affine de coefficient directeur strictement positif est croissante sur $\\mathbb{R}$"
+      ],
+      "correctAnswer": "La fonction inverse est impaire et décroissante sur $\\mathbb{R}$",
+      "explanation": "La fonction carrée est bien paire et décroissante sur $]-\\infty; 0]$ (A vrai). La fonction racine cube ($x \\mapsto \\sqrt[3]{x}$) est bien impaire et strictement croissante sur $\\mathbb{R}$ (C vrai). Une fonction affine $f(x)=ax+b$ avec $a>0$ est strictement croissante sur $\\mathbb{R}$ (D vrai). La fonction inverse $x \\mapsto 1/x$ est impaire et décroissante sur $]-\\infty; 0[$ et sur $]0; +\\infty[$, mais elle n'est pas définie en 0 et n'est pas décroissante sur $\\mathbb{R}$ tout entier (on ne peut pas comparer une image négative et une image positive de part et d'autre de 0). L'affirmation B est donc fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction affine f passe par les points A$(1; 3)$ et B$(4; -3)$. Quelle est l'expression de $f(x)$ ?",
+      "options": [
+        "$f(x) = -2x + 5$",
+        "$f(x) = 2x + 1$",
+        "$f(x) = -2x + 1$",
+        "$f(x) = -\\frac{1}{2}x + \\frac{7}{2}$"
+      ],
+      "correctAnswer": "$f(x) = -2x + 5$",
+      "explanation": "Le coefficient directeur (pente) est $a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{-3 - 3}{4 - 1} = \\frac{-6}{3} = -2$. On utilise le point A pour trouver l'ordonnée à l'origine $b$ : $3 = -2 \\times 1 + b \\Rightarrow b = 5$. L'expression est donc $f(x) = -2x + 5$. L'option B correspond à une pente positive (erreur de signe). L'option C a la bonne pente mais mauvaise ordonnée à l'origine (erreur de calcul de b). L'option D correspond à l'inverse de la pente (erreur de fraction : $\\Delta x / \\Delta y$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction h définie sur $\\mathbb{R}$ par $h(x) = (x+2)(2x-1)$. L'ensemble des solutions de l'inéquation $h(x) \\le 0$ est :",
+      "options": [
+        "$[-2; \\frac{1}{2}]$",
+        "$]-\\infty; -2] \\cup [\\frac{1}{2}; +\\infty[$",
+        "$[-2; \\frac{1}{2}[$",
+        "$]-\\infty; -2[ \\cup ]\\frac{1}{2}; +\\infty[$"
+      ],
+      "correctAnswer": "$[-2; \\frac{1}{2}]$",
+      "explanation": "Les racines du trinôme sont $x_1 = -2$ et $x_2 = \\frac{1}{2}$. Le coefficient directeur du trinôme développé ($2x^2+3x-2$) est $a=2 > 0$, la parabole est tournée vers le haut. Le trinôme est donc négatif ou nul entre ses deux racines. L'inéquation $h(x) \\le 0$ admet pour ensemble solution l'intervalle fermé $[-2; \\frac{1}{2}]$. L'option B correspond à $h(x) \\ge 0$. Les options C et D excluent une ou les deux bornes, or l'inéquation est large ($\\le$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

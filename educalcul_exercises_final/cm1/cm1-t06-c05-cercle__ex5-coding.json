@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 252,
+  "_course_code": "cm1-t06-c05-cercle",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Rayon / diamètre",
+  "title": "Algorithmes rayon et diamètre",
+  "blocks": [
+    {
+      "title": "Calculer le diamètre à partir du rayon",
+      "content": "Écris un algorithme (ou un petit programme en pseudo‑code) qui reçoit en entrée la longueur du rayon $r$ d'un cercle et qui affiche la longueur du diamètre $d$.",
+      "correctAnswer": "Algorithme :\\n1. Lire r\\n2. Calculer d = 2 * r\\n3. Afficher d",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diamètre d'un cercle est égal au double du rayon. L'algorithme lit la valeur du rayon, la multiplie par 2 et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le rayon à partir du diamètre",
+      "content": "Écris un algorithme qui reçoit en entrée la longueur du diamètre $d$ d'un cercle et qui affiche la longueur du rayon $r$.",
+      "correctAnswer": "Algorithme :\\n1. Lire d\\n2. Calculer r = d / 2\\n3. Afficher r",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rayon est la moitié du diamètre. L'algorithme lit le diamètre, le divise par 2 et affiche le rayon.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme complet rayon et diamètre",
+      "content": "Écris un algorithme qui demande à l'utilisateur de choisir entre \"rayon\" ou \"diamètre\", puis qui lit la valeur correspondante et affiche les deux mesures (rayon et diamètre).",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Choisissez : 1 pour rayon, 2 pour diamètre\"\\n2. Lire choix\\n3. Si choix = 1 alors\\n      Lire r\\n      d = 2 * r\\n   Sinon\\n      Lire d\\n      r = d / 2\\n   Fin si\\n4. Afficher \"Rayon = \" + r\\n5. Afficher \"Diamètre = \" + d",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme propose un menu, lit le choix, puis selon le choix lit soit le rayon soit le diamètre, calcule l'autre mesure grâce aux relations $d = 2r$ et $r = d/2$, puis affiche les deux valeurs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

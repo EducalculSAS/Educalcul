@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Diviseurs, multiples et nombres premiers",
+  "title": "Applications : Diviseurs, multiples et nombres premiers",
+  "blocks": [
+    {
+      "title": "Nombre de diviseurs",
+      "content": "Classez les nombres suivants dans l'ordre croissant de leur nombre de diviseurs positifs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "17 (2 diviseurs)",
+        "12 (6 diviseurs)",
+        "24 (8 diviseurs)",
+        "36 (9 diviseurs)"
+      ],
+      "explanation": "On détermine le nombre de diviseurs de chaque entier :\\n- 17 est premier, il a 2 diviseurs (1 et 17).\\n- 12 = $2^2 \\times 3$, nombre de diviseurs = $(2+1)\\times(1+1) = 6$.\\n- 24 = $2^3 \\times 3$, nombre de diviseurs = $(3+1)\\times(1+1) = 8$.\\n- 36 = $2^2 \\times 3^2$, nombre de diviseurs = $(2+1)\\times(2+1) = 9$.\\nL'ordre croissant est donc : 17, 12, 24, 36.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme d'Euclide",
+      "content": "Rangez les étapes du calcul du PGCD de 126 et 84 par l'algorithme d'Euclide dans l'ordre chronologique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Diviser 126 par 84 : $126 = 1 \\times 84 + 42$ (reste 42).",
+        "Diviser 84 par 42 : $84 = 2 \\times 42 + 0$ (reste 0).",
+        "Le dernier reste non nul est 42.",
+        "Conclure : PGCD(126, 84) = 42."
+      ],
+      "explanation": "L'algorithme d'Euclide consiste à effectuer des divisions successives :\\n1. On divise le plus grand nombre (126) par le plus petit (84), le reste est 42.\\n2. On divise le diviseur précédent (84) par le reste (42), le reste est 0.\\n3. L'algorithme s'arrête quand le reste est nul. Le dernier reste non nul est le PGCD.\\n4. On énonce le résultat final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de PPCM",
+      "content": "Deux bus quittent une gare en même temps. Le bus A revient tous les 18 minutes, le bus B tous les 24 minutes. Rangez les étapes pour déterminer à quelle heure ils repartiront ensemble.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer 18 et 24 en facteurs premiers : $18 = 2 \\times 3^2$ et $24 = 2^3 \\times 3$.",
+        "Calculer le PPCM en prenant chaque facteur avec son plus grand exposant : $2^3 \\times 3^2 = 72$.",
+        "Convertir 72 minutes en 1 heure 12 minutes.",
+        "Ajouter cette durée à l'heure de départ initiale pour trouver l'heure de la prochaine coïncidence."
+      ],
+      "explanation": "Pour savoir quand deux événements périodiques coïncident, on cherche le PPCM de leurs périodes.\\n1. Décomposition en facteurs premiers : $18 = 2 \\times 3^2$, $24 = 2^3 \\times 3$.\\n2. PPCM = produit des facteurs premiers avec les plus grands exposants : $2^3 \\times 3^2 = 8 \\times 9 = 72$ minutes.\\n3. 72 minutes = 60 min + 12 min = 1 h 12 min.\\n4. Il suffit d'ajouter 1 h 12 min à l'heure de départ pour obtenir l'heure du prochain départ commun.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

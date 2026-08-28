@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 412,
+  "_course_code": "5eme-t07-c03-echelles-et-vitesses-simples",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Formules",
+  "title": "Formules vitesse et échelle",
+  "blocks": [
+    {
+      "title": "Formule de la vitesse",
+      "content": "On parcourt une distance $d$ en un temps $t$. Écrire la formule qui permet de calculer la vitesse $v$. Ensuite, proposer un algorithme simple (style Python) qui demande $d$ et $t$ et affiche $v$.",
+      "correctAnswer": "La formule est $v = d / t$. Algorithme :\\nEntrer d\\nEntrer t\\nSi t != 0 alors\\n    v = d / t\\n    Afficher v\\nSinon\\n    Afficher \"Erreur : temps nul\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La vitesse est le quotient de la distance par le temps. L'algorithme vérifie que le temps n'est pas nul pour éviter une division par zéro.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échelle et distance réelle",
+      "content": "Une carte utilise l'échelle $1$ cm pour $5$ km. Écrire la formule qui donne la distance réelle $D$ (en km) à partir de la distance sur la carte $c$ (en cm). Proposer un algorithme qui demande $c$ et affiche $D$.",
+      "correctAnswer": "La formule est $D = 5 * c$. Algorithme :\\nEntrer c\\nD = 5 * c\\nAfficher D",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle indique que chaque centimètre correspond à 5 km, donc on multiplie la mesure sur la carte par 5.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vitesse moyenne sur plusieurs tronçons",
+      "content": "Un cycliste parcourt trois tronçons : le premier de $d_1 = 12$ km en $t_1 = 0,5$ h, le deuxième de $d_2 = 18$ km en $t_2 = 1$ h, le troisième de $d_3 = 10$ km en $t_3 = 0,75$ h. Écrire la formule de la vitesse moyenne $v_{moy}$ sur l'ensemble du parcours. Écrire un algorithme qui calcule $v_{moy}$ à partir de listes de distances et de temps.",
+      "correctAnswer": "La vitesse moyenne est $v_{moy} = (d_1 + d_2 + d_3) / (t_1 + t_2 + t_3)$. Algorithme :\\ndistances = [12, 18, 10]\\ntemps = [0.5, 1, 0.75]\\ntotal_d = somme(distances)\\ntotal_t = somme(temps)\\nSi total_t != 0 alors\\n    v_moy = total_d / total_t\\n    Afficher v_moy\\nSinon\\n    Afficher \"Erreur : temps total nul\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La vitesse moyenne sur un parcours complet est la distance totale divisée par le temps total. L'algorithme somme les distances et les temps puis effectue la division en vérifiant que le temps total n'est pas nul.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

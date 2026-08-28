@@ -1,0 +1,455 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.701048+00:00",
+  "id": 390,
+  "code": "5eme-t03-c02",
+  "title": "Structure d'une expression",
+  "description": "Cours structuré Educalcul : Structure d'une expression.",
+  "subject": "Calcul littéral et initiation à l'algèbre",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Calcul littéral et initiation à l'algèbre",
+    "titre_du_cours": "Structure d'une expression",
+    "objectif_global": "Structure d'une expression",
+    "mini_lecons_imposees": [
+      "Somme / produit / différence.",
+      "Dernière opération.",
+      "Parenthèses."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Somme / produit / différence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Somme, produit, différence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à regarder une expression mathématique comme on regarde une phrase : on y repère des morceaux qui ont un rôle précis. Aujourd'hui, nous allons découvrir trois grands types de morceaux : la somme, le produit et la différence. Chaque fois que tu verras un signe +, × ou −, tu sauras quel nom donner à l'ensemble qui l'entoure. Prends le temps de lire calmement, les exemples sont là pour t'accompagner pas à pas."
+            },
+            {
+              "type": "definition",
+              "term": "terme",
+              "definition": "Dans une addition, chaque nombre que l'on ajoute est appelé un terme. Par exemple, dans $3 + 5$, les termes sont $3$ et $5$.",
+              "example": "Dans $7 + 2 + 9$, les termes sont $7$, $2$ et $9$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une somme, c'est simplement le résultat d'une addition. Quand tu vois le symbole $+$, l'expression tout entière est une somme. Les nombres qui sont reliés par ce signe sont les termes de la somme. Pour t'en convaincre, regarde l'exemple $3 + 5 = 8$ : ici, $3$ et $5$ sont les termes, et $8$ est la valeur de la somme. Essaie de le dire à voix haute : « la somme de trois et cinq vaut huit »."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 5 = 8"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu es à l'aise avec les sommes, tournons-nous vers les produits. Le signe de multiplication, souvent écrit $\\times$ ou $\\cdot$, regroupe des nombres qu'on appelle des facteurs. Le produit est le résultat de cette multiplication."
+            },
+            {
+              "type": "definition",
+              "term": "facteur",
+              "definition": "Dans une multiplication, chaque nombre que l'on multiplie est un facteur. Par exemple, dans $4 \\times 6$, les facteurs sont $4$ et $6$.",
+              "example": "Dans $5 \\times 3 \\times 2$, les facteurs sont $5$, $3$ et $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'exemple $4 \\times 6 = 24$. Les facteurs sont $4$ et $6$, et le produit vaut $24$. Si tu as plusieurs multiplications à la suite, comme $2 \\times 3 \\times 4$, tous les nombres sont des facteurs du même produit. Essaie de visualiser une petite grille de $2$ lignes sur $3$ colonnes, puis ajoute une troisième dimension de $4$ : le volume total est le produit des trois facteurs."
+            },
+            {
+              "type": "display_math",
+              "latex": "4 \\\\times 6 = 24"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, intéressons-nous à la différence. Le signe $-$ signale une soustraction. L'expression entière est alors une différence. Le premier nombre est appelé le minuend, le second le soustrayant, et le résultat est la différence."
+            },
+            {
+              "type": "definition",
+              "term": "différence",
+              "definition": "Une différence est le résultat d'une soustraction. Dans $12 - 4$, $12$ est le minuend, $4$ le soustrayant, et la différence vaut $8$.",
+              "example": "Dans $20 - 7 - 2$, on peut voir deux différences successives."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand il y a plusieurs moins à la suite, comme $20 - 7 - 2$, on lit de gauche à droite : d'abord la différence entre $20$ et $7$, ce qui donne $13$, puis la différence entre $13$ et $2$, ce qui donne $11$. Chaque nombre séparé par un $-$ est un terme de la suite de différences."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'expression et note chaque $+$, $\\times$ ou $-$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Nommer chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu vois un $+$, c'est une somme et les nombres autour sont des termes. Si tu vois un $\\times$, c'est un produit et les nombres sont des facteurs. Si tu vois un $-$, c'est une différence avec un minuend et un soustrayant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la liste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note sur ton cahier : « Somme : termes … », « Produit : facteurs … », « Différence : minuend …, soustrayant … »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître une somme, un produit et une différence, et tu connais le vocabulaire précis pour en parler. Dans la prochaine leçon, nous verrons comment décider quelle opération faire en premier quand plusieurs signes sont mélangés."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'expression $7 + 2 + 9$, quels sont les termes de la somme ?",
+              "answer": "Les termes sont $7$, $2$ et $9$.",
+              "hint": "Cherche tous les nombres reliés par le signe $+$.",
+              "explanation": "Une somme regroupe tous les nombres séparés par des $+$. Ici, il y a trois nombres, donc trois termes."
+            },
+            {
+              "question": "Dans l'expression $5 \\times 3 \\times 2$, quels sont les facteurs du produit ?",
+              "answer": "Les facteurs sont $5$, $3$ et $2$.",
+              "hint": "Repère le signe $\\times$ et liste chaque nombre qui y participe.",
+              "explanation": "Un produit peut comporter plusieurs facteurs. Tous les nombres multipliés ensemble sont des facteurs."
+            },
+            {
+              "question": "Dans $20 - 7 - 2$, cite les termes qui apparaissent dans les différences successives.",
+              "answer": "Les termes sont $20$, $7$ et $2$.",
+              "hint": "Chaque nombre séparé par un $-$ est un terme de la suite de différences.",
+              "explanation": "Même s'il y a deux signes $-$, on considère chaque nombre comme un terme de la chaîne de différences."
+            }
+          ]
+        },
+        {
+          "title": "Dernière opération.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dernière opération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à repérer quelle opération doit être effectuée en dernier quand une expression contient plusieurs signes. C'est une compétence essentielle pour calculer correctement sans te tromper. Imagine que tu dois cuisiner : tu ne mets pas le gâteau au four avant d'avoir mélangé les ingrédients. En mathématiques, l'ordre des opérations joue le même rôle : il y a une priorité à respecter pour obtenir le bon résultat."
+            },
+            {
+              "type": "definition",
+              "term": "dernière opération",
+              "definition": "C'est l'opération qui sera réalisée en dernier lors de l'évaluation d'une expression, après avoir respecté les règles de priorité (parenthèses, multiplications/divisions, puis additions/soustractions).",
+              "example": "Dans $2 + 3 \\times 4$, la dernière opération est la multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les règles de priorité sont simples : d'abord les parenthèses, ensuite les multiplications et les divisions (dans l'ordre où elles apparaissent de gauche à droite), enfin les additions et les soustractions (aussi de gauche à droite). Pour trouver la dernière opération, tu dois donc regarder l'expression complète, appliquer ces règles mentalement et voir quelle opération reste à faire à la toute fin."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Chercher des parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'expression contient des parenthèses, le calcul à l'intérieur sera fait en premier. La dernière opération ne sera donc pas à l'intérieur des parenthèses, mais à l'extérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer multiplications et divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si aucune parenthèse n'entoure une multiplication ou une division, ces opérations sont prioritaires sur les $+$ et $-$. La dernière opération sera soit une addition/soustraction, soit la dernière multiplication/division si aucune addition n'existe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regarder les additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "S'il ne reste que des $+$ et $-$, la dernière opération est simplement la plus à droite, car on calcule de gauche à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris sur ton cahier : « La dernière opération est … » en précisant le signe et les deux nombres concernés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "2 + 3 \\\\times 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les parenthèses changent complètement la donne. Quand tu vois des parenthèses, tout ce qui est à l'intérieur devient comme un petit bloc à calculer avant tout le reste. Cela peut transformer une addition en dernière opération, alors qu'elle aurait été faite avant une multiplication sans parenthèses."
+            },
+            {
+              "type": "display_math",
+              "latex": "(2 + 3) \\\\times 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, plusieurs opérations ont la même priorité, comme plusieurs additions ou plusieurs multiplications. La règle est alors de procéder de la gauche vers la droite. La dernière opération sera donc la plus à droite parmi celles qui ont la même priorité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les groupes de même priorité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde s'il y a plusieurs $+$ ou plusieurs $\\times$ sans parenthèses entre eux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la plus à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La dernière opération du groupe est celle qui apparaît en dernier en lisant de gauche à droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode claire pour déterminer la dernière opération d'une expression, même quand elle mélange parenthèses, multiplications et additions. Entraîne-toi avec les exercices et tu verras que cela devient un réflexe naturel."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la dernière opération dans $8 + 2 \\times 5$ ?",
+              "answer": "La multiplication $2 \\times 5$.",
+              "hint": "Applique la priorité : multiplication avant addition.",
+              "explanation": "La multiplication a priorité sur l'addition, donc elle se fait en premier. L'addition est la dernière opération."
+            },
+            {
+              "question": "Quelle est la dernière opération dans $(8 + 2) \\times 5$ ?",
+              "answer": "La multiplication par $5$.",
+              "hint": "Calcule d'abord ce qui est dans les parenthèses.",
+              "explanation": "Les parenthèses font que l'addition $8+2$ se fait en premier. Ensuite, il reste la multiplication, qui est donc la dernière opération."
+            },
+            {
+              "question": "Dans $12 - 4 + 3$, quelle est la dernière opération ?",
+              "answer": "L'addition $+ 3$.",
+              "hint": "Les soustractions et additions ont même priorité, on calcule de gauche à droite.",
+              "explanation": "On fait d'abord $12 - 4 = 8$, puis $8 + 3$. L'addition est donc la dernière opération."
+            }
+          ]
+        },
+        {
+          "title": "Parenthèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les parenthèses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les parenthèses sont comme des petits panneaux de signalisation dans une expression : elles disent « attention, calculez-moi d'abord ! ». Sans elles, l'ordre des opérations suit les règles habituelles. Avec elles, tu peux forcer une addition à se faire avant une multiplication, ou regrouper plusieurs opérations pour les traiter ensemble. C'est un outil puissant pour structurer tes calculs."
+            },
+            {
+              "type": "definition",
+              "term": "parenthèses",
+              "definition": "Ce sont les symboles « ( » et « ) » qui entourent une partie d'expression pour indiquer qu'elle doit être calculée en priorité.",
+              "example": "Dans $5 \\times (2 + 3)$, l'addition $2+3$ est faite avant la multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'exemple $5 \\times (2 + 3)$. Sans parenthèses, la multiplication serait prioritaire et on obtiendrait $5 \\times 2 + 3 = 13$. Avec les parenthèses, on calcule d'abord $2+3=5$, puis $5 \\times 5 = 25$. Le résultat change complètement ! C'est pour cela qu'il faut toujours respecter les parenthèses."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 \\\\times (2 + 3)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu rencontreras des parenthèses à l'intérieur d'autres parenthèses : on parle de parenthèses imbriquées. La règle est simple : on commence toujours par la paire la plus intérieure, puis on remonte vers l'extérieur, comme on épluche un oignon couche par couche."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver la parenthèse la plus à l'intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le couple de parenthèses qui ne contient pas d'autres parenthèses à l'intérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer ce qui est dedans",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les opérations contenues dans cette parenthèse en respectant les priorités habituelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer et recommencer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace la parenthèse par son résultat, puis cherche la nouvelle parenthèse la plus intérieure jusqu'à ce qu'il n'en reste plus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(4 + 2) \\\\times (3 - 1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que des parenthèses ne soient pas nécessaires, par exemple quand il n'y a que des additions et des soustractions. Comme ces opérations sont associatives, on peut les enlever sans changer le résultat. Savoir quand on peut les retirer simplifie l'écriture et évite les erreurs de lecture."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'expression ne contient que $+$ et $-$, les parenthèses sont optionnelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les retirer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réécris l'expression sans les parenthèses, en gardant l'ordre des nombres et des signes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer de gauche à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les opérations dans l'ordre où elles apparaissent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu maîtrises maintenant le rôle des parenthèses, savoir les évaluer même imbriquées, et reconnaître quand elles sont superflues. Ces compétences te seront utiles pour tous les calculs littéraux à venir."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une somme, un produit et une différence dans une expression.",
+                "Je sais trouver la dernière opération en respectant les priorités.",
+                "Je sais calculer une expression avec des parenthèses, même imbriquées.",
+                "Je sais repérer quand des parenthèses sont inutiles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $4 \\times (3 + 2)$.",
+              "answer": "$20$",
+              "hint": "Commence par l'addition entre parenthèses.",
+              "explanation": "Dans les parenthèses, $3+2=5$. Ensuite $4 \\times 5 = 20$."
+            },
+            {
+              "question": "Évalue $(6 - 2) \\times (1 + 3)$.",
+              "answer": "$16$",
+              "hint": "Calcule chaque parenthèse séparément puis multiplie.",
+              "explanation": "$(6-2)=4$ et $(1+3)=4$. Le produit $4 \\times 4 = 16$."
+            },
+            {
+              "question": "Simplifie $7 + (5 - 2)$ en enlevant les parenthèses inutiles et donne le résultat.",
+              "answer": "$10$",
+              "hint": "Ici, seules des additions et soustractions sont présentes.",
+              "explanation": "On peut écrire $7 + 5 - 2$. De gauche à droite : $7+5=12$, puis $12-2=10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

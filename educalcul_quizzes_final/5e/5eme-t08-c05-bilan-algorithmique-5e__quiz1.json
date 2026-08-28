@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Variables, conditions, boucles",
+  "title": "Quiz Algorithmique 5e : Variables, conditions, boucles",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, quelle est la valeur de la variable $x$ après l'exécution de l'instruction $x \\leftarrow 5$ ?",
+      "options": [
+        "0",
+        "5",
+        "10",
+        "5.5"
+      ],
+      "correctAnswer": "5",
+      "explanation": "L'instruction d'affectation $x \\leftarrow 5$ attribue la valeur 5 à la variable $x$. Avant cette instruction $x$ n'a pas de valeur définie, après elle vaut exactement 5. Les autres choix correspondent à des erreurs fréquentes : croire que la variable vaut 0 par défaut, additionner 5 à elle-même ou confondre avec un nombre décimal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la variable $age$ vaut 12, quelle instruction sera exécutée dans le bloc conditionnel suivant ?\\nSi $age > 10$ alors afficher \"Grand\" sinon afficher \"Petit\"",
+      "options": [
+        "Grand",
+        "Petit",
+        "Erreur",
+        "Rien"
+      ],
+      "correctAnswer": "Grand",
+      "explanation": "La condition $age > 10$ est vraie car 12 est strictement supérieur à 10. Par conséquent, le bloc \"alors\" est exécuté et le programme affiche \"Grand\". Les autres options correspondent à une évaluation erronée de la condition (choisir \"Petit\"), à une confusion sur la syntaxe (\"Erreur\") ou à l'idée que rien ne s'afficherait (\"Rien\").",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de fois l'instruction \"afficher i\" sera-t-elle exécutée dans la boucle suivante ?\\nPour i de 1 à 4 faire\\n   afficher i\\nFin pour",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "explanation": "La boucle \"Pour i de 1 à 4\" itère sur les valeurs 1, 2, 3, 4, soit exactement 4 passages. À chaque passage l'instruction \"afficher i\" est exécutée une fois. Les distracteurs 3, 5 et 2 proviennent d'erreurs de comptage (oublier la borne finale, ajouter un tour de trop ou s'arrêter trop tôt).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Au début, $s \\leftarrow 0$. Pour i de 1 à 3 faire $s \\leftarrow s + i$. Quelle est la valeur finale de $s$ ?",
+      "options": [
+        "3",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La boucle ajoute successivement 1, 2 et 3 à $s$ qui commence à 0. Le calcul est $0+1=1$, puis $1+2=3$, puis $3+3=6$. La valeur finale est donc 6. Les autres choix correspondent à des erreurs : ne sommer que le dernier i (3), arrêter la boucle avant le dernier tour (5) ou ajouter seulement les nombres pairs (4).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme suivant, quelle valeur sera affichée ?\\n$x \\leftarrow 10$\\nPour i de 1 à 3 faire\\n   Si $x > 5$ alors $x \\leftarrow x - 2$\\nFin pour\\nAfficher $x$",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Initialement $x=10$. Premier tour : $10>5$ vrai, $x$ devient 8. Deuxième tour : $8>5$ vrai, $x$ devient 6. Troisième tour : $6>5$ vrai, $x$ devient 4. Après la boucle, $x$ vaut 4 et c'est cette valeur qui est affichée. Les autres options correspondent à l'état de $x$ après un nombre incorrect de tours (6 après deux tours, 8 après un tour, 10 si la condition n'était jamais vraie).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

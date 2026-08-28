@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Intervalles",
+  "title": "Quiz : Applications des intervalles",
+  "questions": [
+    {
+      "text": "Quelle est l'écriture en notation d'intervalle de l'ensemble des réels $x$ tels que $x > -2$ et $x \\le 5$ ?",
+      "options": [
+        "$(-2,5]$",
+        "$[-2,5]$",
+        "$[-2,5)$",
+        "$(-2,5)$"
+      ],
+      "correctAnswer": "$(-2,5]$",
+      "explanation": "L'inégalité $x > -2$ exclut $-2$, donc parenthèse ouvrante ; $x \\le 5$ inclut $5$, donc crochet fermant. L'intervalle est donc $(-2,5]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donnez l'intersection des intervalles $[-3,4)$ et $(1,6]$.",
+      "options": [
+        "$(1,4)$",
+        "$[1,4)$",
+        "$(1,4]$",
+        "$[1,4]$"
+      ],
+      "correctAnswer": "$(1,4)$",
+      "explanation": "Le premier intervalle va de $-3$ inclus à $4$ exclus, le second de $1$ exclus à $6$ inclus. La partie commune commence après $1$ (exclu) et s'arrête avant $4$ (exclu), soit $(1,4)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la réunion des intervalles $(-\\infty,-1)$ et $[2,+\\infty)$ ?",
+      "options": [
+        "$(-\\infty,-1) \\cup [2,+\\infty)$",
+        "$(-\\infty,-1] \\cup [2,+\\infty)$",
+        "$(-\\infty,-1) \\cup (2,+\\infty)$",
+        "$(-\\infty,-1] \\cup (2,+\\infty)$"
+      ],
+      "correctAnswer": "$(-\\infty,-1) \\cup [2,+\\infty)$",
+      "explanation": "Le premier intervalle exclut $-1$, le second inclut $2$. La réunion conserve ces bornes, donc $(-\\infty,-1) \\cup [2,+\\infty)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $2x - 3 \\le 7$ et exprimez l'ensemble des solutions sous forme d'intervalle.",
+      "options": [
+        "$(-\\infty,5]$",
+        "$(-\\infty,5)$",
+        "$[5,+\\infty)$",
+        "$(-5,+\\infty)$"
+      ],
+      "correctAnswer": "$(-\\infty,5]$",
+      "explanation": "On ajoute $3$ des deux côtés : $2x \\le 10$, puis on divise par $2$ : $x \\le 5$. L'ensemble des solutions est $(-\\infty,5]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un capteur de température enregistre des valeurs comprises entre $-10$ °C et $30$ °C, bornes incluses. Écrivez l'intervalle correspondant.",
+      "options": [
+        "$[-10,30]$",
+        "$(-10,30]$",
+        "$[-10,30)$",
+        "$(-10,30)$"
+      ],
+      "correctAnswer": "$[-10,30]$",
+      "explanation": "Les bornes sont incluses, donc on utilise des crochets des deux côtés : $[-10,30]$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

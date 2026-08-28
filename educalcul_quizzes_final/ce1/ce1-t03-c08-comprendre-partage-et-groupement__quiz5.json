@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 95,
+  "_course_code": "ce1-t03-c08-comprendre-partage-et-groupement",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Partager en parts égales",
+  "title": "Approfondissement : Partager en parts égales",
+  "questions": [
+    {
+      "text": "On partage $12$ bonbons équitablement entre $3$ enfants. Combien de bonbons chaque enfant reçoit-il ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Pour partager $12$ en $3$ parts égales, on cherche le nombre qui, multiplié par $3$, donne $12$. Comme $3 \\times 4 = 12$, chaque enfant reçoit $4$ bonbons. L'option $3$ correspondrait à $3 \\times 3 = 9$, l'option $5$ à $3 \\times 5 = 15$ et l'option $6$ à $3 \\times 6 = 18$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "12 bonbons répartis en 3 lignes de 4"
+      }
+    },
+    {
+      "text": "On a $15$ pommes. On veut faire des sacs de $3$ pommes chacun. Combien de sacs peut-on faire ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Ici, on connaît le total ($15$) et la taille de chaque part ($3$). On cherche le nombre de parts. On compte combien de fois $3$ rentre dans $15$ : $3, 6, 9, 12, 15$. C'est $5$ fois. Donc on fait $5$ sacs. $3$ sacs ne feraient que $9$ pommes, $4$ sacs $12$ pommes, $6$ sacs $18$ pommes.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 3,
+            "tone": "blue"
+          }
+        ],
+        "caption": "15 pommes groupées par 3"
+      }
+    },
+    {
+      "text": "On partage $17$ billes entre $3$ enfants. Combien de billes chaque enfant a-t-il et combien en reste-t-il ?",
+      "options": [
+        "$5$ chacun, $2$ restantes",
+        "$5$ chacun, $1$ restante",
+        "$6$ chacune, $1$ restante",
+        "$4$ chacune, $5$ restantes"
+      ],
+      "correctAnswer": "$5$ chacun, $2$ restantes",
+      "explanation": "On partage $17$ en $3$ parts égales. $3 \\times 5 = 15$. Chaque enfant reçoit $5$ billes. Il reste $17 - 15 = 2$ billes qui ne peuvent pas être distribuées équitablement. L'option '$5$ chacun, $1$ restante' ferait un total de $16$. L'option '$6$ chacune' demanderait $18$ billes. L'option '$4$ chacune' laisserait $5$ restantes, ce qui permet encore de donner une bille à chacun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas a $20$ autocollants. Il les partage équitablement entre plusieurs amis. Chaque ami reçoit $4$ autocollants. Combien d'amis ont reçu des autocollants ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On connaît le total ($20$) et la part de chacun ($4$). On cherche le nombre de parts (le nombre d'amis). C'est une division : $20 \\div 4 = 5$. On peut vérifier : $5 \\times 4 = 20$. Si c'était $4$ amis, ils auraient $16$ autocollants au total. Si c'était $6$ amis, il en faudrait $24$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa partage $18$ cartes entre $3$ amis. Tom partage $18$ cartes entre $6$ amis. Qui a le plus de cartes par ami ?",
+      "options": [
+        "Léa",
+        "Tom",
+        "Ils ont le même nombre",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Léa",
+      "explanation": "Pour Léa : $18 \\div 3 = 6$ cartes par ami. Pour Tom : $18 \\div 6 = 3$ cartes par ami. Comme $6 > 3$, les amis de Léa ont plus de cartes chacun. Plus on partage entre de personnes, plus la part de chacun est petite si le total est identique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

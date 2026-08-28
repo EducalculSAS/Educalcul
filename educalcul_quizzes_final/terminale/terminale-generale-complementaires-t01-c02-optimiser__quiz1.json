@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Construire fonction",
+  "title": "Construire des modèles optimisés",
+  "questions": [
+    {
+      "text": "Un artisan fabrique des boîtes cylindriques. Le volume de chaque boîte doit être fixé à $V$ unités. Soit $r$ le rayon de la base et $h$ la hauteur. Quelle expression traduit la contrainte du volume en fonction de $r$ et $h$ ?",
+      "options": [
+        "$V = 2\\pi rh$",
+        "$V = \\pi r^2 h$",
+        "$V = \\pi r h^2$",
+        "$V = \\frac{1}{3}\\pi r^2 h$"
+      ],
+      "correctAnswer": "$V = \\pi r^2 h$",
+      "explanation": "Le volume d'un cylindre est égal à l'aire de sa base circulaire, soit $\\pi r^2$, multipliée par sa hauteur $h$. On a donc $V = \\pi r^2 h$. L'option $2\\pi rh$ correspond à l'aire latérale, et $\\frac{1}{3}\\pi r^2 h$ correspond au volume d'un cône.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite construire un enclos rectangulaire contre un mur droit. On dispose de $40$ mètres de clôture pour les trois autres côtés. Soit $x$ la largeur de l'enclos (les deux côtés perpendiculaires au mur). Quelle fonction $A(x)$ exprime l'aire de l'enclos ?",
+      "options": [
+        "$A(x) = x(40 - x)$",
+        "$A(x) = x(40 - 2x)$",
+        "$A(x) = 2x(40 - x)$",
+        "$A(x) = x(20 - x)$"
+      ],
+      "correctAnswer": "$A(x) = x(40 - 2x)$",
+      "explanation": "La clôture totale est de $40$ mètres. Comme le mur sert de quatrième côté, la longueur du côté parallèle au mur est $40 - 2x$. L'aire est donc le produit de la largeur $x$ par la longueur $40 - 2x$, soit $A(x) = x(40 - 2x)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une entreprise produit des objets. Le coût de production total est composé d'un coût fixe de $500$ euros et d'un coût variable de $12$ euros par objet. On vend chaque objet $25$ euros. Si $x$ est le nombre d'objets produits et vendus, quelle fonction $B(x)$ représente le bénéfice net ?",
+      "options": [
+        "$B(x) = 13x + 500$",
+        "$B(x) = 37x - 500$",
+        "$B(x) = 13x - 500$",
+        "$B(x) = 25x - 12x + 500$"
+      ],
+      "correctAnswer": "$B(x) = 13x - 500$",
+      "explanation": "Le chiffre d'affaires est $25x$. Le coût total est $12x + 500$. Le bénéfice est la différence entre le chiffre d'affaires et le coût total : $B(x) = 25x - (12x + 500) = 13x - 500$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut créer une boîte sans couvercle à partir d'une plaque carrée de côté $20$ centimètres en découpant un carré de côté $x$ dans chaque coin et en relevant les bords. Quelle expression représente le volume $V(x)$ de cette boîte ?",
+      "options": [
+        "$V(x) = x(20 - x)^2$",
+        "$V(x) = x(20 - 2x)^2$",
+        "$V(x) = 20(20 - 2x)^2$",
+        "$V(x) = 4x(20 - 2x)$"
+      ],
+      "correctAnswer": "$V(x) = x(20 - 2x)^2$",
+      "explanation": "Après le découpage des quatre carrés de côté $x$, la base de la boîte est un carré de côté $20 - 2x$ et la hauteur de la boîte est $x$. Le volume est donc $V(x) = \\text{Aire base} \\times \\text{hauteur} = (20 - 2x)^2 \\times x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un utilisateur souhaite minimiser la distance totale de câblage entre un point $A$ et un point $B$ en passant par un point $M$ situé sur un axe $x$. Si $A$ a pour coordonnées $(0, 3)$ et $B$ pour coordonnées $(10, 5)$, et que $M$ a pour coordonnées $(x, 0)$, quelle fonction $D(x)$ modélise la distance totale $AM + MB$ ?",
+      "options": [
+        "$D(x) = \\sqrt{x^2 + 3^2} + \\sqrt{(10-x)^2 + 5^2}$",
+        "$D(x) = (x+3) + (10-x+5)$",
+        "$D(x) = \\sqrt{x^2 - 3^2} + \\sqrt{(10-x)^2 - 5^2}$",
+        "$D(x) = \\sqrt{x^2 + 3^2} + \\sqrt{x^2 + 5^2}$"
+      ],
+      "correctAnswer": "$D(x) = \\sqrt{x^2 + 3^2} + \\sqrt{(10-x)^2 + 5^2}$",
+      "explanation": "On utilise la formule de la distance entre deux points $\\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$. Pour $AM$, on a $\\sqrt{(x-0)^2 + (0-3)^2} = \\sqrt{x^2 + 3^2}$. Pour $MB$, on a $\\sqrt{(10-x)^2 + (5-0)^2} = \\sqrt{(10-x)^2 + 5^2}$. La somme donne la distance totale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 188,
+  "_course_code": "ce2-t06-c02-masses-g-et-kg",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Masses : g et kg",
+  "title": "Quiz : Masses - Applications g et kg (CE2)",
+  "questions": [
+    {
+      "text": "Complète l'égalité : $2\\,\\text{kg} = \\ldots\\,\\text{g}$",
+      "options": [
+        "200 g",
+        "2000 g",
+        "20 000 g",
+        "20 g"
+      ],
+      "correctAnswer": "2000 g",
+      "explanation": "Pour passer des kilogrammes aux grammes, on multiplie par 1000 car $1\\,\\text{kg} = 1000\\,\\text{g}$. Donc $2 \\times 1000 = 2000$. Les autres réponses correspondent à des erreurs de conversion (division par 10, multiplication par 100 ou division par 100).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la balance. Quel plateau est le plus lourd ?",
+      "options": [
+        "Le plateau de gauche",
+        "Le plateau de droite",
+        "Les deux plateaux sont en équilibre",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le plateau de gauche",
+      "explanation": "Le plateau de gauche porte une masse de $1\\,\\text{kg}$, soit $1000\\,\\text{g}$. Le plateau de droite porte une masse de $900\\,\\text{g}$. Comme $1000 > 900$, le plateau de gauche est plus lourd et descend.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          1000
+        ],
+        "right": [
+          900
+        ],
+        "caption": "Comparaison : 1 kg à gauche, 900 g à droite"
+      }
+    },
+    {
+      "text": "Dans un placard, il y a un sac de farine de $1\\,\\text{kg}$ et un paquet de sucre de $500\\,\\text{g}$. Quelle est la masse totale ?",
+      "options": [
+        "1 kg 500 g",
+        "1 kg 50 g",
+        "1500 kg",
+        "600 g"
+      ],
+      "correctAnswer": "1 kg 500 g",
+      "explanation": "Il faut additionner les masses dans la même unité. $1\\,\\text{kg} = 1000\\,\\text{g}$. $1000\\,\\text{g} + 500\\,\\text{g} = 1500\\,\\text{g}$, ce qui s'écrit $1\\,\\text{kg}\\,500\\,\\text{g}$. L'option '1500 kg' confond grammes et kilogrammes. '600 g' correspond à une addition sans conversion ($1+500$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pastèque entière a une masse de $3\\,\\text{kg}$. Après en avoir coupé un morceau, il reste $1\\,\\text{kg}\\,800\\,\\text{g}$. Quelle est la masse du morceau coupé ?",
+      "options": [
+        "1 kg 200 g",
+        "2 kg 200 g",
+        "1 kg 800 g",
+        "2 kg 800 g"
+      ],
+      "correctAnswer": "1 kg 200 g",
+      "explanation": "C'est une soustraction : masse initiale moins masse restante. On convertit en grammes : $3000\\,\\text{g} - 1800\\,\\text{g} = 1200\\,\\text{g}$, soit $1\\,\\text{kg}\\,200\\,\\text{g}$. L'erreur '2 kg 200 g' vient souvent d'une mauvaise retenue ($3000-1800$ mal calculé).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour faire une tarte, il faut $2\\,\\text{kg}$ de pommes. Paul a déjà $1\\,\\text{kg}\\,300\\,\\text{g}$ de pommes à la maison. Combien doit-il en acheter en plus ?",
+      "options": [
+        "700 g",
+        "1 kg 700 g",
+        "300 g",
+        "1 kg 300 g"
+      ],
+      "correctAnswer": "700 g",
+      "explanation": "Il faut trouver le complément pour atteindre $2\\,\\text{kg}$ ($2000\\,\\text{g}$). $2000\\,\\text{g} - 1300\\,\\text{g} = 700\\,\\text{g}$. L'option '1 kg 700 g' correspond à une addition au lieu d'une soustraction. '300 g' oublie le kilogramme de différence.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

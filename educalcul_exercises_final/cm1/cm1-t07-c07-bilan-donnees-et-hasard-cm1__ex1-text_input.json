@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Lire / produire",
+  "title": "Lire et produire des données - CM1",
+  "blocks": [
+    {
+      "title": "Lecture d'un diagramme en barres",
+      "content": "Observe le diagramme en barres ci-dessous. Combien de poires y a-t-il ?",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme montre une barre pour les poires atteignant la valeur $8$. Donc il y a $8$ poires.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Lecture d'un tableau",
+      "content": "Le tableau suivant indique le nombre de livres lus chaque jour : Lundi $4$, Mardi $6$, Mercredi $5$. Quel est le total de livres lus du lundi au mercredi ?",
+      "correctAnswer": "15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les valeurs : $4 + 6 + 5 = 15$. Le total est $15$ livres.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Nombre de livres lus"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "4"
+          ],
+          [
+            "Mardi",
+            "6"
+          ],
+          [
+            "Mercredi",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Production d'une réponse à partir de données",
+      "content": "Dans une classe, $12$ élèves aiment le football, $7$ le basket et $5$ le handball. Quel sport est le plus pratiqué ?",
+      "correctAnswer": "football",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le football est choisi par $12$ élèves, ce qui est plus que $7$ pour le basket et $5$ pour le handball. Le sport le plus pratiqué est donc le football.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

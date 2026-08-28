@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Application : Étudier les variations d'un modèle",
+  "title": "Étude des variations d'un modèle",
+  "blocks": [
+    {
+      "title": "Analyse d'une croissance",
+      "content": "Soit la fonction $f(x) = -2x^2 + 12x + 5$ modélisant le profit d'une entreprise. Ordonnez les étapes pour étudier les variations de ce modèle sur l'intervalle $[0, 6]$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calcul de la dérivée $f'(x) = -4x + 12$",
+        "Recherche des valeurs où $f'(x) = 0$, soit $-4x = -12$ donc $x = 3$",
+        "Étude du signe de $f'(x)$ : positif sur $[0, 3[$ et négatif sur $]3, 6]$",
+        "Conclusion : la fonction $f$ est croissante sur $[0, 3]$ puis décroissante sur $[3, 6]$"
+      ],
+      "explanation": "Pour étudier les variations d'un modèle polynomial, on commence par dériver la fonction, on cherche les points critiques où la dérivée s'annule, on détermine le signe de la dérivée sur les intervalles définis, puis on en déduit le sens de variation de la fonction initiale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modèle avec exponentielle",
+      "content": "On considère le modèle $g(x) = (x - 2)e^x$ défini sur $\\mathbb{R}$. Ordonnez les étapes pour déterminer le minimum de cette fonction.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calcul de la dérivée en utilisant la formule $(uv)' = u'v + uv'$ : $g'(x) = 1e^x + (x - 2)e^x$",
+        "Simplification de l'expression : $g'(x) = (x - 1)e^x$",
+        "Résolution de $g'(x) = 0$, sachant que $e^x$ est toujours strictement positif, donc $x = 1$",
+        "Vérification du changement de signe de $g'(x)$ autour de $x = 1$ pour confirmer le minimum"
+      ],
+      "explanation": "Le calcul de la dérivée d'un produit implique la formule $(uv)'$. Ici, $g'(x) = e^x(1+x-2) = (x-1)e^x$. Comme l'exponentielle ne s'annule jamais, le signe dépend uniquement de $x-1$. La fonction change de signe en $x = 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation d'un modèle rationnel",
+      "content": "Soit le modèle $h(x) = \\frac{2x + 1}{x + 3}$ pour $x \\ge 0$. Ordonnez les étapes pour étudier son évolution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calcul de la dérivée avec la formule $\\frac{u'v - uv'}{v^2}$ : $h'(x) = \\frac{2(x + 3) - 1(2x + 1)}{(x + 3)^2}$",
+        "Simplification du numérateur : $2x + 6 - 2x - 1 = 5$",
+        "Observation que $h'(x) = \\frac{5}{(x + 3)^2}$ est strictement positive pour tout $x \\ge 0$",
+        "Conclusion : le modèle $h$ est strictement croissant sur son domaine de définition"
+      ],
+      "explanation": "Pour une fonction rationnelle, on utilise la formule du quotient. Ici, le numérateur de la dérivée est une constante positive et le dénominateur est un carré strictement positif. La fonction est donc strictement croissante.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

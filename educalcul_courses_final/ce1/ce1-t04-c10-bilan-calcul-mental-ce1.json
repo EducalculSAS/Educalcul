@@ -1,0 +1,403 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.807358+00:00",
+  "id": 107,
+  "code": "ce1-t04-c10",
+  "title": "Bilan - Calcul mental CE1",
+  "description": "Cours structuré Educalcul : Bilan - Calcul mental CE1.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Bilan - Calcul mental CE1",
+    "objectif_global": "Bilan - Calcul mental CE1",
+    "mini_lecons_imposees": [
+      "Faits numériques.",
+      "Choix de stratégie.",
+      "Checklist de fluence."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Faits numériques.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faits numériques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Aujourd’hui, nous allons revoir les faits numériques que tu connais déjà. Un fait numérique, c’est une addition ou une soustraction que tu donnes tout de suite, sans compter sur tes doigts. Par exemple, $6+4=10$ est un fait numérique très utile. Prends le temps de les réciter à voix haute pour les ancrer."
+            },
+            {
+              "type": "definition",
+              "term": "fait numérique",
+              "definition": "Une addition ou une soustraction que l’on connaît par cœur, sans avoir besoin de compter.",
+              "example": "$6+4=10$"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "10 : 1 dizaine et 0 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons les doubles, une famille de faits numériques très pratique. Quand tu connais le double d’un nombre, tu peux résoudre plein d’autres calculs plus vite. Essaie de dire les doubles de $1$ à $10$ pour t’échauffer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les doubles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un double, c’est simplement ajouter un nombre à lui‑même. Par exemple, le double de $5$ donne $5+5=10$. Connaître les doubles jusqu’à $10$ t’aide à calculer $6+7$ en pensant $6+6=12$ puis $+1=13$. Répète-les plusieurs fois pour les mémoriser."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "5",
+                "5"
+              ],
+              "result": "10",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette partie, intéressons-nous aux compléments à $10$. Savoir quel nombre complète un autre pour faire $10$ est une clé pour additionner vite. Par exemple, $3$ a besoin de $7$ pour atteindre $10$. Entraîne-toi à trouver le complément de chaque chiffre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléments à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le complément à $10$ d’un chiffre, c’est le nombre qui ajouté à ce chiffre donne $10$. Si tu connais $4+6=10$, tu sais aussi que $6+4=10$. Essaie de former des paires qui font $10$ avec des jetons ou des dessins pour bien visualiser."
+            },
+            {
+              "type": "number_line",
+              "caption": "Complément à 10 : de 3 à 10",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le résultat de $6+4$ ?",
+              "answer": "$10$",
+              "hint": "Pense au nombre qui avec $6$ fait $10$.",
+              "explanation": "Le fait numérique $6+4=10$ est un complément à $10$."
+            },
+            {
+              "question": "Calcule le double de $7$.",
+              "answer": "$14$",
+              "hint": "Le double, c’est ajouter le nombre à lui‑même.",
+              "explanation": "Le double de $7$ donne $7+7=14$."
+            },
+            {
+              "question": "Quel nombre faut‑il ajouter à $4$ pour faire $10$ ?",
+              "answer": "$6$",
+              "hint": "Cherche le complément à $10$.",
+              "explanation": "$4+6=10$, donc le complément de $4$ est $6$."
+            }
+          ]
+        },
+        {
+          "title": "Choix de stratégie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choix de stratégie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce bilan, nous apprenons à choisir la meilleure stratégie pour additionner ou soustraire jusqu’à $100$. Une stratégie, c’est une manière de raisonner qui rend le calcul plus simple. Par exemple, pour $8+5$, tu peux faire un dix en prenant $2$ sur le $5$. Observe les nombres avant de te lancer."
+            },
+            {
+              "type": "definition",
+              "term": "stratégie",
+              "definition": "Une méthode choisie pour résoudre un calcul mental plus facilement.",
+              "example": "Faire un dix pour $8+5$"
+            },
+            {
+              "type": "number_line",
+              "caption": "Faire un dix : de 8 à 10 puis à 13",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 13,
+                  "label": "13"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre stratégie très utile, c’est d’ajouter les dizaines puis les unités. Quand les nombres ont deux chiffres, sépare les dizaines des unités, additionne chaque groupe, puis regroupe le tout. Essaie sur $34+27$ pour voir comme c’est clair."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter les dizaines puis les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $34+27$, commence par les dizaines : $30+20=50$. Ensuite, ajoute les unités : $4+7=11$. Enfin, réunis les deux résultats : $50+11=61$. Cette méthode marche à tous les coups tant que tu respectes l’ordre des dizaines puis des unités."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "34",
+                "27"
+              ],
+              "result": "61",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière astuce, c’est d’utiliser les doubles quand les nombres sont proches. Si tu dois faire $8+9$, pense au double de $8$ qui est $16$ et ajoute $1$. C’est souvent plus rapide que de compter un par un."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les doubles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux nombres se suivent, comme $6$ et $7$, le double du plus petit t’approche du résultat. Calcule $6+6=12$, puis ajoute $1$ pour obtenir $13$. Essaie avec $7+8$, $9+10$ et note comme le double te guide."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 6,
+              "caption": "16 : 1 dizaine et 6 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $9+6$ en faisant un dix.",
+              "answer": "$15$",
+              "hint": "Décompose $6$ en $1+5$ pour compléter $9$.",
+              "explanation": "$9+1=10$, il reste $5$, donc $10+5=15$."
+            },
+            {
+              "question": "Calcule $45+38$ en ajoutant les dizaines puis les unités.",
+              "answer": "$83$",
+              "hint": "Ajoute $40+30$ puis $5+8$.",
+              "explanation": "$40+30=70$, $5+8=13$, $70+13=83$."
+            },
+            {
+              "question": "Calcule $8+9$ en utilisant le double de $8$.",
+              "answer": "$17$",
+              "hint": "Le double de $8$ est $16$, ajoute $1$.",
+              "explanation": "$8+8=16$, $16+1=17$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist de fluence.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist de fluence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière étape du bilan. La fluence, c’est la capacité à donner rapidement les bons résultats sans hésiter. Pour y arriver, il faut connaître ses faits numériques, choisir la bonne stratégie et vérifier son travail. Prends quelques minutes pour t’auto‑évaluer."
+            },
+            {
+              "type": "definition",
+              "term": "fluence",
+              "definition": "Aisance à répondre vite et juste aux calculs mentaux.",
+              "example": "Réciter $7+8=15$ sans compter."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Faits connus vs à réviser",
+              "bars": [
+                {
+                  "label": "Connus",
+                  "value": 30,
+                  "tone": "green"
+                },
+                {
+                  "label": "À réviser",
+                  "value": 10,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment choisir la stratégie adaptée à chaque calcul. Pose-toi la question : les nombres sont-ils proches d’un dix ? Ont-ils le même chiffre des dizaines ? Sont-ils des doubles ? Selon la réponse, tu sauras quelle méthode employer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne stratégie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $46+29$, les dizaines sont différentes ($40$ et $20$) et les unités font $6+9=15$. La stratégie des dizaines puis des unités est idéale. Pour $8+5$, le complément à $10$ marche mieux. Entraîne-toi à repérer le bon outil."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarde les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les dizaines de chaque nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarde les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vois si les unités font un complément à 10 ou un double."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisis la stratégie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne complément à 10, dizaines d'abord ou double selon le cas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, vérifie toujours ton résultat. Une bonne habitude, c’est de refaire le calcul à l’envers ou d’estimer si la réponse semble raisonnable. Cette vérification t’évite les erreurs bêtes et renforce ta confiance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier et s'auto-évaluer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier $53+27=80$, fais la soustraction inverse : $80-27$. Si tu retrouves $53$, ton addition est bonne. Essaie aussi d’estimer : $50+30=80$, donc $80$ est plausible. Note tes réussites et tes points à travailler."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Refais le calcul à l’envers pour te rassurer."
+              ]
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je connais mes faits numériques jusqu’à 10.",
+                "Je choisis une stratégie adaptée à chaque calcul.",
+                "Je vérifie mon résultat en refaisant à l’envers.",
+                "Je progresse chaque jour en m’entraînant."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le résultat de $7+8$ le plus vite possible.",
+              "answer": "$15$",
+              "hint": "Rappelle‑toi le fait numérique $7+8=15$.",
+              "explanation": "C'est un fait numérique à connaître par cœur."
+            },
+            {
+              "question": "Pour $46+29$, quelle stratégie choisis‑tu ? Explique.",
+              "answer": "Ajouter les dizaines puis les unités.",
+              "hint": "Regarde les dizaines ($40$ et $20$) et les unités ($6$ et $9$).",
+              "explanation": "$40+20=60$, $6+9=15$, $60+15=75$."
+            },
+            {
+              "question": "Vérifie le calcul $53+27=80$ en refaisant à l'envers.",
+              "answer": "$80-27=53$",
+              "hint": "Soustrais $27$ de $80$.",
+              "explanation": "Si $80-27$ donne $53$, l'addition est correcte."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

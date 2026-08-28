@@ -1,0 +1,361 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.518315+00:00",
+  "id": 11,
+  "code": "cp-t01-c11",
+  "title": "Encadrer et intercaler",
+  "description": "Cours structuré Educalcul : Encadrer et intercaler.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Encadrer et intercaler",
+    "objectif_global": "Encadrer et intercaler",
+    "mini_lecons_imposees": [
+      "Trouver précédent et suivant.",
+      "Encadrer entre deux entiers ou dizaines.",
+      "Intercaler un nombre dans une suite ordonnée."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Trouver précédent et suivant.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu montes un escalier : chaque marche est un nombre. Si tu es sur la marche $7$, la marche d'avant est $6$ et la marche d'après est $8$. On appelle cela le nombre précédent et le nombre suivant. C'est comme quand tu comptes sur tes doigts : après $7$ vient $8$, avant $7$ vient $6$. Regarde la droite numérique ci-dessous, elle te montre tout ça d'un coup d'œil."
+            },
+            {
+              "type": "number_line",
+              "caption": "Le nombre $7$ et ses voisins $6$ et $8$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec des nombres un peu plus grands, comme $15$. Pour trouver le précédent et le suivant, on peut décomposer le nombre en dizaines et en unités. $15$, c'est une dizaine et cinq unités. Si on enlève une unité, on a une dizaine et quatre unités, soit $14$. Si on en ajoute une, on a une dizaine et six unités, soit $16$. Regarde les cubes de base dix : ils te montrent bien les dizaines et les unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "$15$ : une dizaine et cinq unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on va jusqu'à $100$ ? C'est la même idée ! Prenons $63$. Il y a six dizaines et trois unités. Le nombre d'avant, c'est six dizaines et deux unités : $62$. Le nombre d'après, c'est six dizaines et quatre unités : $64$. Les cubes de base dix pour $63$ t'aident à voir les dizaines et les unités clairement. Tu vois, c'est facile quand on regarde les dizaines et les unités séparément."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "$63$ : six dizaines et trois unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le nombre qui vient juste avant $7$ ?",
+              "answer": "$6$",
+              "hint": "Compte en arrière depuis $7$.",
+              "explanation": "Le nombre précédent de $7$ est $6$ car on retire un."
+            },
+            {
+              "question": "Si j'ai $15$ bonbons et j'en mange un, combien m'en reste-t-il ? Trouve le nombre précédent de $15$.",
+              "answer": "$14$",
+              "hint": "Utilise les dizaines et les unités : $15$ c'est une dizaine et cinq unités.",
+              "explanation": "Le nombre précédent de $15$ est $14$."
+            },
+            {
+              "question": "Regarde le nombre $63$. Quel est le nombre qui vient juste après ?",
+              "answer": "$64$",
+              "hint": "Ajoute une unité aux $3$ unités.",
+              "explanation": "Le nombre suivant de $63$ est $64$."
+            }
+          ]
+        },
+        {
+          "title": "Encadrer entre deux entiers ou dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut savoir entre quels deux nombres un nombre se glisse. C'est comme si tu cherchais la place d'un livre sur une étagère : il y a un livre à gauche et un livre à droite. Pour le nombre $5$, ses deux voisins entiers sont $4$ et $6$. On dit que $5$ est encadré par $4$ et $6$. La droite numérique te montre cette place tout de suite."
+            },
+            {
+              "type": "number_line",
+              "caption": "$5$ est entre $4$ et $6$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons les dizaines. Imagine une route avec des panneaux tous les $10$ kilomètres : $10$, $20$, $30$, $40$... Si tu es au kilomètre $37$, tu es passé le panneau $30$ mais pas encore arrivé au panneau $40$. Donc $37$ est encadré par les dizaines $30$ et $40$. Les cubes de base dix te montrent les trois dizaines et les sept unités de $37$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 7,
+              "caption": "$37$ : trois dizaines et sept unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut faire les deux à la fois ! Pour un nombre comme $82$, trouve d'abord les deux entiers qui l'encadrent : $81$ et $83$. Ensuite, trouve les deux dizaines qui l'encadrent : $80$ et $90$. C'est comme avoir deux paires de gants : une paire pour les unités, une paire pour les dizaines. La droite numérique avec les dizaines marquées t'aide à voir les deux encadrements."
+            },
+            {
+              "type": "number_line",
+              "caption": "$82$ entre $80$ et $90$, et entre $81$ et $83$.",
+              "min": 70,
+              "max": 100,
+              "points": [
+                {
+                  "value": 80,
+                  "label": "80"
+                },
+                {
+                  "value": 82,
+                  "label": "82"
+                },
+                {
+                  "value": 90,
+                  "label": "90"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Entre quels deux nombres entiers se trouve $5$ ?",
+              "answer": "$4$ et $6$",
+              "hint": "Regarde la droite numérique : $4$, $5$, $6$.",
+              "explanation": "$5$ est encadré par $4$ et $6$."
+            },
+            {
+              "question": "Le nombre $37$ est entre quelles deux dizaines ?",
+              "answer": "$30$ et $40$",
+              "hint": "Regarde les dizaines : $30$, $40$.",
+              "explanation": "$37$ est plus grand que $30$ et plus petit que $40$."
+            },
+            {
+              "question": "Pour le nombre $82$, donne les deux entiers qui l'encadrent et les deux dizaines qui l'encadrent.",
+              "answer": "Entiers : $81$ et $83$ ; Dizaines : $80$ et $90$",
+              "hint": "Pense au nombre précédent et suivant, et aux dizaines les plus proches.",
+              "explanation": "Les entiers voisins sont $81$ et $83$. Les dizaines voisines sont $80$ et $90$."
+            }
+          ]
+        },
+        {
+          "title": "Intercaler un nombre dans une suite ordonnée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu aimes ranger tes jouets du plus petit au plus grand ? Les nombres, c'est pareil ! Une suite ordonnée, c'est une file de nombres qui vont en grandissant (ou en diminuant). Si tu as la suite $12$, $15$, $18$ et que tu veux y glisser $16$, il faut trouver où $16$ se place. Compare $16$ à $15$ : il est plus grand. Compare à $18$ : il est plus petit. Donc $16$ va entre $15$ et $18$. La suite devient $12$, $15$, $16$, $18$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Insérer $16$ entre $15$ et $18$.",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 16,
+                  "label": "16"
+                },
+                {
+                  "value": 18,
+                  "label": "18"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les suites peuvent aussi descendre, comme un toboggan ! Regarde $50$, $40$, $30$. Chaque nombre est plus petit que le précédent. Si tu veux insérer $45$, cherche où il se met : $45$ est plus petit que $50$ mais plus grand que $40$. Alors il se place juste entre $50$ et $40$. La suite devient $50$, $45$, $40$, $30$. C'est comme descendre les marches une par une."
+            },
+            {
+              "type": "number_line",
+              "caption": "Insérer $45$ entre $50$ et $40$.",
+              "min": 30,
+              "max": 50,
+              "points": [
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a plusieurs nombres à insérer. Prenons la suite $5$, $10$, $20$, $25$. On veut y mettre $15$ et $22$. On procède un par un : $15$ est plus grand que $10$ et plus petit que $20$, donc il va entre eux. $22$ est plus grand que $20$ et plus petit que $25$, donc il va entre $20$ et $25$. La suite finale est $5$, $10$, $15$, $20$, $22$, $25$. Tu vois, c'est comme compléter un puzzle !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Suite complète avec $15$ et $22$ insérés.",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 22,
+                  "label": "22"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver le nombre précédent et le nombre suivant d'un nombre jusqu'à 100.",
+                "Je sais encadrer un nombre entre deux entiers consécutifs.",
+                "Je sais encadrer un nombre entre deux dizaines consécutives.",
+                "Je sais insérer un nombre dans une suite ordonnée croissante ou décroissante."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la suite $12$, $15$, $18$, où dois-je placer $16$ pour que la suite reste rangée du plus petit au plus grand ?",
+              "answer": "Entre $15$ et $18$",
+              "hint": "Compare $16$ avec $15$ et $18$.",
+              "explanation": "$16$ est plus grand que $15$ et plus petit que $18$, donc il se place entre eux."
+            },
+            {
+              "question": "Voici une suite qui diminue : $50$, $40$, $30$. Où mettre $45$ ?",
+              "answer": "Entre $50$ et $40$",
+              "hint": "Cherche où $45$ se place entre $50$ et $40$.",
+              "explanation": "$45$ est plus petit que $50$ et plus grand que $40$, donc il va entre eux."
+            },
+            {
+              "question": "La suite est $5$, $10$, $20$, $25$. Insère $15$ et $22$.",
+              "answer": "$5$, $10$, $15$, $20$, $22$, $25$",
+              "hint": "Place chaque nombre au bon endroit un par un.",
+              "explanation": "$15$ se met entre $10$ et $20$, $22$ se met entre $20$ et $25$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

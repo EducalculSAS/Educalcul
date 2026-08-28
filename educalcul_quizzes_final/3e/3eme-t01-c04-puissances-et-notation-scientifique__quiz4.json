@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Puissances et notation scientifique",
+  "title": "Quiz : Puissances et notation scientifique - Applications",
+  "questions": [
+    {
+      "text": "Écrire le nombre 0,000045 en notation scientifique.",
+      "options": [
+        "$4,5 × 10^{-5}$",
+        "$4,5 × 10^{-4}$",
+        "$45 × 10^{-6}$",
+        "$0,45 × 10^{-4}$"
+      ],
+      "correctAnswer": "$4,5 × 10^{-5}$",
+      "explanation": "Pour passer en notation scientifique, on décale la virgule jusqu'à obtenir un nombre entre 1 et 10. Ici, 0,000045 devient 4,5 après 5 décalages vers la droite, donc l'exposant est -5 : $4,5 × 10^{-5}$. Les autres choix correspondent à un mauvais comptage des décalages ou à une forme non normalisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer le produit $(2 × 10^3) × (5 × 10^4)$ et donner le résultat en notation scientifique normalisée.",
+      "options": [
+        "$10 × 10^7$",
+        "$1 × 10^8$",
+        "$10 × 10^6$",
+        "$1 × 10^7$"
+      ],
+      "correctAnswer": "$1 × 10^8$",
+      "explanation": "On multiplie les coefficients : $2 × 5 = 10$. On additionne les exposants : $3 + 4 = 7$. On obtient $10 × 10^7$. Pour normaliser, on écrit $10 = 1 × 10^1$, ce qui donne $1 × 10^{1+7} = 1 × 10^8$. Les autres réponses oublient la normalisation ou font une erreur sur l'exposant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des deux nombres est le plus grand : $3,2 × 10^6$ ou $4,1 × 10^5$ ?",
+      "options": [
+        "$3,2 × 10^6$",
+        "$4,1 × 10^5$",
+        "Ils sont égaux",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$3,2 × 10^6$",
+      "explanation": "On compare d'abord les exposants : $10^6$ est plus grand que $10^5$. Donc $3,2 × 10^6$ est plus grand que $4,1 × 10^5$, quel que soit le coefficient. Les autres options confondent la taille du coefficient avec celle de l'exposant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La distance moyenne Terre‑Soleil est d'environ $1,5 × 10^{11}$ mètres. Exprimer cette distance en kilomètres (1 km = 1000 m).",
+      "options": [
+        "$1,5 × 10^8$ km",
+        "$1,5 × 10^9$ km",
+        "$1,5 × 10^{14}$ km",
+        "$1,5 × 10^5$ km"
+      ],
+      "correctAnswer": "$1,5 × 10^8$ km",
+      "explanation": "Pour passer des mètres aux kilomètres, on divise par 1000, c'est-à-dire on retire 3 à l'exposant de 10 : $10^{11} / 10^3 = 10^{8}$. Le coefficient reste 1,5. On obtient donc $1,5 × 10^8$ km. Les autres choix correspondent à une mauvaise manipulation de l'exposant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $(10^3)^4 × 10^{-5}$.",
+      "options": [
+        "$10^7$",
+        "$10^{12}$",
+        "$10^{17}$",
+        "$10^2$"
+      ],
+      "correctAnswer": "$10^7$",
+      "explanation": "On applique la règle de la puissance d'une puissance : $(10^3)^4 = 10^{3×4} = 10^{12}$. Ensuite on multiplie par $10^{-5}$ en additionnant les exposants : $12 + (-5) = 7$. Le résultat est $10^7$. Les distracteurs proviennent d'erreurs sur la multiplication des exposants ou sur l'addition avec l'exposant négatif.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

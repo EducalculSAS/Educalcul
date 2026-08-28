@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Variables et calculs",
+  "title": "Quiz : Variables et calculs (4e)",
+  "questions": [
+    {
+      "text": "On commence avec $x = 5$, on ajoute $3$ à $x$, puis on multiplie $x$ par $2$. Quelle est la valeur finale de $x$ ?",
+      "options": [
+        "$16$",
+        "$13$",
+        "$10$",
+        "$8$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "Au départ $x = 5$. Après l'addition, $x = 5 + 3 = 8$. Après la multiplication, $x = 8 * 2 = 16$. Les autres réponses correspondent à une omission d'une étape ou à une erreur de priorité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a = 4$ et $b = 7$. On affecte à $b$ la valeur $a + b$, puis à $a$ la valeur $b - a$. Quelle est la valeur finale de $a$ ?",
+      "options": [
+        "$7$",
+        "$11$",
+        "$4$",
+        "$3$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Initialement $a = 4$, $b = 7$. Après $b = a + b$, $b = 11$. Ensuite $a = b - a$ donne $a = 11 - 4 = 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'instruction $x = 10 - 3 * 2$, quelle valeur est stockée dans $x$ ? (Rappel : la multiplication est prioritaire sur la soustraction.)",
+      "options": [
+        "$4$",
+        "$14$",
+        "$16$",
+        "$7$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "La multiplication $3 * 2 = 6$ est effectuée en premier, puis la soustraction $10 - 6 = 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme : $s = 0$ ; pour $i$ de $1$ à $4$ faire $s = s + i$ ; fin pour. Quelle est la valeur finale de $s$ ?",
+      "options": [
+        "$10$",
+        "$6$",
+        "$8$",
+        "$12$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La boucle ajoute successivement $1$, $2$, $3$, $4$ à $s$. La somme est $1 + 2 + 3 + 4 = 10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $x = -2$. Si $x < 0$ alors $x = -x$ sinon $x = x + 5$ fin si. Quelle est la valeur de $x$ après exécution ?",
+      "options": [
+        "$2$",
+        "$-2$",
+        "$3$",
+        "$7$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "La condition $x < 0$ est vraie car $x = -2$. On exécute donc $x = -x$, ce qui donne $x = 2$. L'autre branche n'est pas exécutée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

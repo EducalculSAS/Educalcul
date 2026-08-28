@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 77,
+  "_course_code": "ce1-t01-c10-suites-numeriques-et-comptages",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Trouver la règle d'une suite simple",
+  "title": "Trouver la règle d'une suite numérique simple",
+  "questions": [
+    {
+      "text": "Observe cette suite : $2, 4, 6, 8...$ Quelle est la règle pour obtenir le nombre suivant ?",
+      "options": [
+        "Ajouter 1",
+        "Ajouter 2",
+        "Retrancher 2",
+        "Multiplier par 2"
+      ],
+      "correctAnswer": "Ajouter 2",
+      "explanation": "Pour passer de $2$ à $4$, on ajoute $2$. Pour passer de $4$ à $6$, on ajoute encore $2$. La règle est donc d'ajouter $2$ à chaque fois. L'option 'Ajouter 1' donnerait $3, 4, 5...$ 'Retrancher 2' ferait diminuer les nombres. 'Multiplier par 2' donnerait $2, 4, 8, 16...$ ce qui ne correspond pas après le deuxième terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite qui diminue : $20, 18, 16, 14...$ Quelle opération permet de trouver le terme suivant ?",
+      "options": [
+        "Ajouter 2",
+        "Retrancher 1",
+        "Retrancher 2",
+        "Ajouter 10"
+      ],
+      "correctAnswer": "Retrancher 2",
+      "explanation": "Les nombres deviennent plus petits : $20$ puis $18$ (c'est $20 - 2$), puis $16$ (c'est $18 - 2$), puis $14$ (c'est $16 - 2$). La règle est donc de retrancher $2$. 'Ajouter 2' ferait augmenter la suite. 'Retrancher 1' donnerait $19, 18, 17...$ 'Ajouter 10' donnerait $30, 40...$",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la règle de cette suite : $5, 10, 15, 20...$ On ajoute ___ à chaque fois.",
+      "options": [
+        "5",
+        "10",
+        "2",
+        "1"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Le premier terme est $5$. Le deuxième est $10$ ($5 + 5$). Le troisième est $15$ ($10 + 5$). Le quatrième est $20$ ($15 + 5$). L'écart entre chaque nombre est constant et vaut $5$. On ajoute donc $5$. Ajouter $10$ donnerait $5, 15, 25...$ Ajouter $2$ ou $1$ ne correspond pas aux valeurs données.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la suite $3, 6, 9, 12...$ quel est l'écart entre deux nombres qui se suivent ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Calculons les différences : $6 - 3 = 3$, $9 - 6 = 3$, $12 - 9 = 3$. L'écart est toujours $3$. La règle est 'Ajouter 3'. L'option $2$ correspondrait à la suite des nombres pairs. L'option $4$ donnerait $3, 7, 11...$ L'option $6$ correspondrait à multiplier par $2$ au premier pas seulement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la règle de la suite des dizaines : $10, 20, 30, 40...$ ?",
+      "options": [
+        "Ajouter 1",
+        "Multiplier par 10",
+        "Ajouter 10",
+        "Retrancher 10"
+      ],
+      "correctAnswer": "Ajouter 10",
+      "explanation": "Chaque nombre est une dizaine de plus que le précédent : $10 + 10 = 20$, $20 + 10 = 30$, $30 + 10 = 40$. On ajoute donc $10$ à chaque étape. 'Ajouter 1' donne la suite des nombres entiers. 'Multiplier par 10' donnerait $10, 100, 1000...$ 'Retrancher 10' ferait diminuer la suite : $10, 0, -10...$",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

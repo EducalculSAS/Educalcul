@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 260,
+  "_course_code": "cm1-t07-c05-impossible-possible-certain",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Classer événements",
+  "title": "Classer des événements : impossible, possible, certain",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quel qualificatif convient à l'événement « obtenir un nombre supérieur à $6$ » ?",
+      "options": [
+        "Certain",
+        "Possible",
+        "Impossible",
+        "Probable"
+      ],
+      "correctAnswer": "Impossible",
+      "explanation": "Un dé standard ne porte que les nombres $1, 2, 3, 4, 5, 6$. Il n'existe aucune face avec un nombre strictement supérieur à $6$. Cet événement ne peut jamais se réaliser, il est donc impossible. « Certain » voudrait dire qu'il arrive à tous les coups, « Possible » qu'il peut arriver parfois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un sac opaque, il y a $3$ billes rouges et $2$ billes bleues. On tire une bille au hasard. Comment classer l'événement « tirer une bille rouge » ?",
+      "options": [
+        "Certain",
+        "Impossible",
+        "Possible",
+        "Imprévisible"
+      ],
+      "correctAnswer": "Possible",
+      "explanation": "Il y a des billes rouges dans le sac ($3$ sur $5$), donc cet événement peut se produire. Mais comme il y a aussi des billes bleues ($2$ sur $5$), on n'est pas sûr de tomber sur du rouge à tous les coups. Ce n'est donc ni certain (pas sûr à $100\\%$), ni impossible (ça peut arriver). C'est un événement possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le soleil se lève à l'est chaque matin. Pour demain matin, l'événement « le soleil se lèvera à l'est » est :",
+      "options": [
+        "Impossible",
+        "Possible",
+        "Certain",
+        "Hasardeux"
+      ],
+      "correctAnswer": "Certain",
+      "explanation": "C'est un fait astronomique constant : la rotation de la Terre fait que le soleil apparaît toujours à l'est. Cet événement se produira à coup sûr demain matin. Il est donc certain. « Possible » sous-entendrait une part d'incertitude, ce qui n'est pas le cas ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une roue de jeu est divisée en $4$ parts égales : $1$ jaune, $1$ verte, $2$ rouges. On fait tourner la flèche. L'événement « la flèche s'arrête sur le bleu » est :",
+      "options": [
+        "Certain",
+        "Possible",
+        "Impossible",
+        "Équiprobable"
+      ],
+      "correctAnswer": "Impossible",
+      "explanation": "La roue ne comporte aucune partie bleue (seulement jaune, verte, rouge). Il est donc matériellement impossible que la flèche s'arrête sur une couleur absente de la roue. Cet événement ne peut pas se réaliser.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces quatre affirmations, laquelle décrit un événement **possible** mais **pas certain** pour un élève de CM1 un jour d'école ordinaire ?",
+      "options": [
+        "Il respirera de l'air aujourd'hui.",
+        "Il mangera une pomme au goûter.",
+        "Il aura $10$ ans tout au long de la journée.",
+        "Il grandira de $5$ cm pendant la récréation."
+      ],
+      "correctAnswer": "Il mangera une pomme au goûter.",
+      "explanation": "- Respirer de l'air est **certain** (indispensable à la vie).\\n- Avoir $10$ ans toute la journée est **certain** (l'âge ne change pas en une journée).\\n- Grandir de $5$ cm en quelques minutes est **impossible** biologiquement.\\n- Manger une pomme au goûter **peut** arriver (c'est possible) mais ce n'est pas obligé (pas certain), cela dépend de ce qu'il a dans son sac.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

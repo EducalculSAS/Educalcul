@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Intersections",
+  "title": "Intersections de courbes et droites",
+  "blocks": [
+    {
+      "title": "Intersections avec les axes",
+      "content": "Relie chaque fonction à les coordonnées de son point d'intersection avec l'axe indiqué.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x) = 2x + 3$",
+          "right": "Axe des ordonnées : $(0 ; 3)$"
+        },
+        {
+          "left": "$g(x) = -x + 4$",
+          "right": "Axe des abscisses : $(4 ; 0)$"
+        },
+        {
+          "left": "$h(x) = 3x - 6$",
+          "right": "Axe des abscisses : $(2 ; 0)$"
+        },
+        {
+          "left": "$k(x) = 5$",
+          "right": "Axe des ordonnées : $(0 ; 5)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver l'intersection avec l'axe des ordonnées, on calcule $f(0)$ (abscisse $x=0$). Pour l'axe des abscisses, on résout $f(x)=0$ (ordonnée $y=0)$. $f(0)=3$, donc $(0;3)$. $-x+4=0 \\Rightarrow x=4$, donc $(4;0)$. $3x-6=0 \\Rightarrow x=2$, donc $(2;0)$. $k(0)=5$, donc $(0;5)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection de deux droites",
+      "content": "Relie chaque système d'équations aux coordonnées du point d'intersection des deux droites correspondantes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\begin{cases} y = 2x + 1 \\\\ y = -x + 7 \\end{cases}$",
+          "right": "$(2 ; 5)$"
+        },
+        {
+          "left": "$\\begin{cases} y = 3x - 2 \\\\ y = x + 4 \\end{cases}$",
+          "right": "$(3 ; 7)$"
+        },
+        {
+          "left": "$\\begin{cases} y = -2x + 5 \\\\ y = 4x - 1 \\end{cases}$",
+          "right": "$(1 ; 3)$"
+        },
+        {
+          "left": "$\\begin{cases} y = 5 \\\\ y = 2x - 3 \\end{cases}$",
+          "right": "$(4 ; 5)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On résout chaque système en égalant les deux expressions de $y$. 1) $2x+1=-x+7 \\Rightarrow 3x=6 \\Rightarrow x=2$, $y=5$. 2) $3x-2=x+4 \\Rightarrow 2x=6 \\Rightarrow x=3$, $y=7$. 3) $-2x+5=4x-1 \\Rightarrow 6x=6 \\Rightarrow x=1$, $y=3$. 4) $5=2x-3 \\Rightarrow 2x=8 \\Rightarrow x=4$, $y=5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection d'une droite et d'une parabole",
+      "content": "Relie chaque système (droite et parabole) au nombre et aux coordonnées des points d'intersection.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\begin{cases} y = x^2 \\\\ y = 2x - 1 \\end{cases}$",
+          "right": "Un point (tangente) : $(1 ; 1)$"
+        },
+        {
+          "left": "$\\begin{cases} y = x^2 \\\\ y = x + 2 \\end{cases}$",
+          "right": "Deux points : $(-1 ; 1)$ et $(2 ; 4)$"
+        },
+        {
+          "left": "$\\begin{cases} y = x^2 \\\\ y = -1 \\end{cases}$",
+          "right": "Aucun point d'intersection"
+        },
+        {
+          "left": "$\\begin{cases} y = x^2 \\\\ y = 4 \\end{cases}$",
+          "right": "Deux points : $(-2 ; 4)$ et $(2 ; 4)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On résout $x^2 = \\text{expression de la droite}$. 1) $x^2=2x-1 \\Rightarrow x^2-2x+1=0 \\Rightarrow (x-1)^2=0$, solution double $x=1$, un point tangent $(1;1)$. 2) $x^2=x+2 \\Rightarrow x^2-x-2=0 \\Rightarrow (x+1)(x-2)=0$, $x=-1$ ou $x=2$, deux points. 3) $x^2=-1$, aucune solution réelle. 4) $x^2=4 \\Rightarrow x=\\pm 2$, deux points symétriques.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

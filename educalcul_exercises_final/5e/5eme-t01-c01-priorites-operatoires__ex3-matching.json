@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Calculer et justifier",
+  "title": "Exercices d'association : Priorités opératoires",
+  "blocks": [
+    {
+      "title": "Calculs simples avec priorités",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$8 + 4 \\times 2$",
+          "right": "$16$"
+        },
+        {
+          "left": "$(8 + 4) \\times 2$",
+          "right": "$24$"
+        },
+        {
+          "left": "$20 - 5 \\times 3$",
+          "right": "$5$"
+        },
+        {
+          "left": "$18 \\div 3 + 2$",
+          "right": "$8$"
+        }
+      ],
+      "items": [],
+      "explanation": "On respecte l'ordre de priorité : les parenthèses d'abord, puis les multiplications et divisions (de gauche à droite), enfin les additions et soustractions (de gauche à droite).\\nPour $8 + 4 \\times 2$, on calcule $4 \\times 2 = 8$, puis $8 + 8 = 16$.\\nPour $(8 + 4) \\times 2$, la parenthèse oblige à faire $8 + 4 = 12$ d'abord, puis $12 \\times 2 = 24$.\\nPour $20 - 5 \\times 3$, on calcule $5 \\times 3 = 15$, puis $20 - 15 = 5$.\\nPour $18 \\div 3 + 2$, on calcule $18 \\div 3 = 6$, puis $6 + 2 = 8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs avec parenthèses imbriquées",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$5 \\times (6 - 2) + 3$",
+          "right": "$23$"
+        },
+        {
+          "left": "$(14 - 8) \\div 2 + 10$",
+          "right": "$13$"
+        },
+        {
+          "left": "$30 - (4 + 2) \\times 3$",
+          "right": "$12$"
+        },
+        {
+          "left": "$(25 \\div 5 + 2) \\times 4$",
+          "right": "$28$"
+        }
+      ],
+      "items": [],
+      "explanation": "On traite toujours les parenthèses en premier. À l'intérieur des parenthèses, les priorités habituelles s'appliquent.\\nPour $5 \\times (6 - 2) + 3$ : parenthèse $6 - 2 = 4$, puis $5 \\times 4 = 20$, enfin $20 + 3 = 23$.\\nPour $(14 - 8) \\div 2 + 10$ : parenthèse $14 - 8 = 6$, puis $6 \\div 2 = 3$, enfin $3 + 10 = 13$.\\nPour $30 - (4 + 2) \\times 3$ : parenthèse $4 + 2 = 6$, puis multiplication $6 \\times 3 = 18$, enfin soustraction $30 - 18 = 12$.\\nPour $(25 \\div 5 + 2) \\times 4$ : dans la parenthèse, division d'abord $25 \\div 5 = 5$, puis addition $5 + 2 = 7$, enfin multiplication $7 \\times 4 = 28$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs avec nombres décimaux",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2,5 \\times (4 + 1,2)$",
+          "right": "$13$"
+        },
+        {
+          "left": "$(8,4 - 3,6) \\times 5$",
+          "right": "$24$"
+        },
+        {
+          "left": "$15,6 \\div 3 + 2 \\times 4$",
+          "right": "$13,2$"
+        },
+        {
+          "left": "$(10 - 2,5) \\times 2 - 3$",
+          "right": "$12$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les règles de priorité sont identiques avec les nombres décimaux. Attention à la pose opératoire pour les multiplications et divisions.\\nPour $2,5 \\times (4 + 1,2)$ : parenthèse $4 + 1,2 = 5,2$, puis $2,5 \\times 5,2 = 13$.\\nPour $(8,4 - 3,6) \\times 5$ : parenthèse $8,4 - 3,6 = 4,8$, puis $4,8 \\times 5 = 24$.\\nPour $15,6 \\div 3 + 2 \\times 4$ : pas de parenthèse, on fait division et multiplication de gauche à droite. $15,6 \\div 3 = 5,2$ et $2 \\times 4 = 8$, puis addition $5,2 + 8 = 13,2$.\\nPour $(10 - 2,5) \\times 2 - 3$ : parenthèse $10 - 2,5 = 7,5$, puis multiplication $7,5 \\times 2 = 15$, enfin soustraction $15 - 3 = 12$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

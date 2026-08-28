@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 392,
+  "_course_code": "5eme-t03-c04-reduire-des-termes-semblables",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : ax+bx",
+  "title": "Réduire des termes semblables : ax+bx - Algorithmes",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de simplification",
+      "content": "Écrivez un algorithme (en langage naturel ou en pseudo‑code) qui prend en entrée deux nombres $a$ et $b$ et affiche l'expression simplifiée de $ax+bx$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a et b.\\n2. Calculer somme = a + b.\\n3. Afficher \"(\" + somme + \")x\" ou \"somme x\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On factorise $x$ dans $ax+bx$ pour obtenir $(a+b)x$. L'algorithme additionne les coefficients $a$ et $b$ puis multiplie le résultat par $x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une fonction Python",
+      "content": "Complétez la fonction Python suivante pour qu'elle retourne la forme simplifiée de $ax+bx$ sous la forme d'une chaîne de caractères.\\n\\ndef simplifier_ax_bx(a, b):\\n    # À compléter\\n    return ...",
+      "correctAnswer": "def simplifier_ax_bx(a, b):\\n    somme = a + b\\n    return f\"{somme}x\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction additionne les coefficients a et b, puis renvoie la chaîne représentant le coefficient multiplié par x.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Corriger un algorithme erroné",
+      "content": "L'algorithme suivant est censé simplifier $ax+bx$ mais il contient une erreur.\\n\\nAlgorithme :\\n1. Lire a et b.\\n2. Afficher a + \"x\" + b.\\n\\nIdentifiez l'erreur et proposez la version corrigée.",
+      "correctAnswer": "Erreur : l'algorithme concatène les chaînes au lieu d'additionner les coefficients. Version corrigée :\\n1. Lire a et b.\\n2. Calculer somme = a + b.\\n3. Afficher \"(\" + somme + \")x\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expression $ax+bx$ se factorise par $x$ donnant $(a+b)x$. L'algorithme original ne fait pas l'addition des coefficients.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

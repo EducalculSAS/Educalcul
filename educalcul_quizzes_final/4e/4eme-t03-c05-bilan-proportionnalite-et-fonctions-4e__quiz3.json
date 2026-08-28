@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 434,
+  "_course_code": "4eme-t03-c05-bilan-proportionnalite-et-fonctions-4e",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Bilan - Proportionnalité et fonctions 4e",
+  "title": "Bilan - Proportionnalité et fonctions 4e",
+  "questions": [
+    {
+      "text": "Dans le tableau suivant, les grandeurs $x$ et $y$ sont-elles proportionnelles ? $x$ : $2$, $4$, $6$ ; $y$ : $6$, $12$, $18$.",
+      "options": [
+        "Oui, le coefficient de proportionnalité est $3$.",
+        "Oui, le coefficient de proportionnalité est $2$.",
+        "Non, car le rapport $6/2$ n'est pas égal à $12/4$.",
+        "Non, car les valeurs ne sont pas alignées."
+      ],
+      "correctAnswer": "Oui, le coefficient de proportionnalité est $3$.",
+      "explanation": "Les rapports $y/x$ sont $6/2=3$, $12/4=3$, $18/6=3$ ; ils sont constants, donc les grandeurs sont proportionnelles avec coefficient $3$. Les autres options confondent le coefficient ou affirment à tort que le rapport n'est pas constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un prix de $80$ € augmente de $25$ %. Quel est le nouveau prix ?",
+      "options": [
+        "$100$ €",
+        "$90$ €",
+        "$105$ €",
+        "$95$ €"
+      ],
+      "correctAnswer": "$100$ €",
+      "explanation": "Une augmentation de $25$ % correspond à multiplier par $1,25$. $80 \\times 1,25 = 100$. Les autres valeurs correspondent à des pourcentages erronés (12,5 %, 31,25 %, 18,75 %).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $f$ est définie par $f(x)=2x+5$. Quelle est l'image de $3$ ?",
+      "options": [
+        "$11$",
+        "$13$",
+        "$9$",
+        "$7$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "On remplace $x$ par $3$ : $f(3)=2\\times3+5=6+5=11$. Les autres réponses proviennent d'erreurs de calcul (oublier le $+5$, doubler le coefficient, ou soustraire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente la fonction affine $f(x)=2x+1$. Quel est son coefficient directeur ?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$-2$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Dans une fonction affine $f(x)=ax+b$, le coefficient directeur est $a$. Ici $a=2$. L'ordonnée à l'origine est $1$, ce qui explique la confusion possible avec l'option $1$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=2x+1"
+      }
+    },
+    {
+      "text": "Si $y$ est inversement proportionnel à $x$ et que $y=12$ lorsque $x=3$, quelle est la valeur de $y$ pour $x=4$ ?",
+      "options": [
+        "$9$",
+        "$16$",
+        "$8$",
+        "$6$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Pour une proportionnalité inverse, $x \\times y = k$ constant. $k = 3 \\times 12 = 36$. Donc $y = 36 / 4 = 9$. Les autres options correspondent à une proportionnalité directe ($16$), à une division erronée ($8$) ou à une inversion incorrecte ($6$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

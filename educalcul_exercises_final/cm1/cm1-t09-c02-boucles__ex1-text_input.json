@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 270,
+  "_course_code": "cm1-t09-c02-boucles",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Répéter une action",
+  "title": "Les boucles : répéter une action",
+  "blocks": [
+    {
+      "title": "Comprendre la répétition",
+      "content": "Un robot doit avancer de 3 cases. Au lieu d'écrire trois fois \"Avancer\", on utilise une boucle. Complète l'instruction : \"Répéter $3$ fois : Avancer\". Combien de fois l'action \"Avancer\" est-elle exécutée ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction \"Répéter 3 fois\" signifie que l'action qui suit (Avancer) sera faite exactement 3 fois. C'est l'équivalent d'écrire trois fois l'instruction Avancer à la suite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le total avec une boucle",
+      "content": "Un petit train effectue une boucle : \"Répéter $4$ fois : Avancer de $2$ cases\". Combien de cases le train a-t-il parcourues au total à la fin de la boucle ?",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "À chaque tour de boucle, le train avance de 2 cases. Comme la boucle se répète 4 fois, on multiplie le nombre de tours par le nombre de cases par tour : $4 \\times 2 = 8$ cases au total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire une boucle pour un dessin",
+      "content": "Pour dessiner un carré, on doit faire 4 fois la même chose : avancer et tourner à droite. Écris le nombre qui manque dans l'instruction de boucle : \"Répéter $\\square$ fois : Avancer, Tourner à droite\".",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré a 4 côtés. Pour le tracer, il faut répéter 4 fois la séquence : avancer pour tracer un côté, puis tourner à droite pour s'orienter vers le côté suivant. Le nombre manquant est donc 4.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Répéter expérience",
+  "title": "Simulation : Répéter l'expérience",
+  "questions": [
+    {
+      "text": "Lorsqu'on répète un grand nombre de fois la même expérience aléatoire, que peut-on observer au sujet des fréquences d'apparition d'un événement ?",
+      "options": [
+        "Elles restent constantes dès les premières répétitions.",
+        "Elles se stabilisent autour de la probabilité théorique de l'événement.",
+        "Elles divergent de plus en plus de la probabilité théorique.",
+        "Elles deviennent toutes égales à 0 ou à 1."
+      ],
+      "correctAnswer": "Elles se stabilisent autour de la probabilité théorique de l'événement.",
+      "explanation": "C'est l'illustration de la loi des grands nombres : plus le nombre de répétitions augmente, plus la fréquence observée se rapproche de la probabilité théorique et se stabilise autour de cette valeur. Les autres affirmations sont fausses : les fluctuations sont grandes au début, les fréquences ne divergent pas et ne deviennent pas extrêmes (0 ou 1) pour un événement possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une feuille de calcul, on souhaite simuler le lancer d'un dé équilibré à 6 faces (numérotées de 1 à 6). Quelle formule faut-il saisir dans une cellule ?",
+      "options": [
+        "=ALEA()*6",
+        "=ALEA.ENTRE.BORNES(1;6)",
+        "=ARRONDI(ALEA()*6;0)",
+        "=ENT(ALEA()*6)+1"
+      ],
+      "correctAnswer": "=ALEA.ENTRE.BORNES(1;6)",
+      "explanation": "La fonction ALEA.ENTRE.BORNES(1;6) renvoie un entier aléatoire uniformément réparti entre 1 et 6 bornes incluses, ce qui correspond exactement aux faces d'un dé. La première option donne un décimal entre 0 et 6. La troisième peut donner 0 (si ALEA()<0,5/6) et arrondit de manière biaisée. La quatrième fonctionne mais est moins directe que la fonction dédiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule des lancers d'une pièce de monnaie équilibrée. On note la fréquence de l'événement \"Face\" pour $10$ lancers, puis $100$, puis $1\\,000$, puis $10\\,000$ lancers. Quelle évolution est la plus probable ?",
+      "options": [
+        "La fréquence reste exactement égale à $0,5$ à chaque étape.",
+        "La fréquence s'éloigne progressivement de $0,5$.",
+        "La fréquence fluctue beaucoup au début puis se rapproche de $0,5$.",
+        "La fréquence devient successivement $0$, puis $1$, puis $0$, puis $1$."
+      ],
+      "correctAnswer": "La fréquence fluctue beaucoup au début puis se rapproche de $0,5$.",
+      "explanation": "Pour un petit nombre d'essais ($10$), le hasard fait fluctuer fortement la fréquence (ex: $3/10=0,3$ ou $7/10=0,7$). En augmentant le nombre d'essais ($100$, $1\\,000$, $10\\,000$), la loi des grands nombres fait converger la fréquence vers la probabilité théorique $0,5$. Elle n'est jamais exactement $0,5$ (sauf coup de chance), ne diverge pas et n'alterne pas entre $0$ et $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On répète $500$ fois l'expérience : tirer une boule au hasard dans un sac contenant $3$ boules rouges et $2$ boules bleues (avec remise). On obtient $320$ fois \"Rouge\". Quelle est la fréquence observée de l'événement \"Rouge\" ?",
+      "options": [
+        "0,32",
+        "0,64",
+        "0,60",
+        "0,40"
+      ],
+      "correctAnswer": "0,64",
+      "explanation": "La fréquence observée se calcule en divisant le nombre de succès par le nombre total d'essais : $320 / 500 = 32 / 50 = 64 / 100 = 0,64$. La valeur $0,60$ correspond à la probabilité théorique ($3/5$), mais la question porte sur la fréquence observée issue de la simulation. $0,32$ correspondrait à $160/500$ et $0,40$ à $200/500$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux élèves simulent le même tirage (probabilité théorique $0,25$). L'élève A effectue $50$ répétitions, l'élève B en effectue $5\\,000$. Laquelle de ces affirmations est la plus juste ?",
+      "options": [
+        "L'élève A obtiendra une fréquence plus proche de $0,25$ car il a moins de données.",
+        "L'élève B obtiendra généralement une fréquence plus proche de $0,25$ car il a plus de répétitions.",
+        "Les deux élèves obtiendront exactement la même fréquence.",
+        "Le nombre de répétitions n'influence pas la précision de la fréquence estimée."
+      ],
+      "correctAnswer": "L'élève B obtiendra généralement une fréquence plus proche de $0,25$ car il a plus de répétitions.",
+      "explanation": "Augmenter le nombre de répétitions réduit l'écart-type de la fréquence (erreur d'échantillonnage). Avec $5\\,000$ essais, la fréquence est beaucoup plus stable et précise qu'avec $50$ essais. L'élève A aura une fréquence plus fluctuante. Les deux fréquences seront presque certainement différentes et le nombre de répétitions influence directement la précision.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 259,
+  "_course_code": "cm1-t07-c04-moyenne-intuitive",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Partager équitablement un total",
+  "title": "Partager équitablement un total : approfondissement",
+  "questions": [
+    {
+      "text": "Quatre enfants comptent leurs billes : Léa en a $4$, Max en a $8$, Zoé en a $4$ et Tom en a $4$. Ils décident de tout mettre en commun et de partager équitablement. Combien de billes chaque enfant recevra-t-il ?",
+      "options": [
+        "4 billes",
+        "5 billes",
+        "6 billes",
+        "20 billes"
+      ],
+      "correctAnswer": "5 billes",
+      "explanation": "On calcule d'abord le total des billes : $4 + 8 + 4 + 4 = 20$ billes. Ensuite, on partage ce total équitablement entre les $4$ enfants : $20 \\div 4 = 5$. Chaque enfant reçoit donc $5$ billes. L'option '20 billes' correspond au total, pas au partage. L'option '4 billes' est le nombre de billes de Léa, Zoé ou Tom avant partage. L'option '6 billes' ne correspond à aucun calcul pertinent.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Léa",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Max",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Zoé",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Tom",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Répartition initiale des billes"
+      }
+    },
+    {
+      "text": "Trois copains ont des autocollants. Paul en a $12$, Sam en a $8$. Ils veulent qu'après un partage équitable à trois, chacun ait exactement $12$ autocollants. Combien d'autocollants le troisième copain, Léo, doit-il avoir au départ ?",
+      "options": [
+        "4 autocollants",
+        "12 autocollants",
+        "16 autocollants",
+        "20 autocollants"
+      ],
+      "correctAnswer": "16 autocollants",
+      "explanation": "Si chacun doit avoir $12$ autocollants à la fin, le total nécessaire pour $3$ enfants est $12 \\times 3 = 36$ autocollants. Paul et Sam en ont déjà $12 + 8 = 20$ ensemble. Il manque donc $36 - 20 = 16$ autocollants, que Léo doit apporter. L'option '12' est le nombre visé par enfant, pas le total ni le manque. L'option '4' est la différence entre Paul et Sam. L'option '20' est le total de Paul et Sam.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, $5$ groupes ont ramassé des feuilles : $10$, $15$, $5$, $20$ et $10$ feuilles. La maîtresse veut redistribuer toutes les feuilles pour que chaque groupe ait le même nombre. Combien de feuilles chaque groupe aura-t-il ?",
+      "options": [
+        "10 feuilles",
+        "12 feuilles",
+        "15 feuilles",
+        "60 feuilles"
+      ],
+      "correctAnswer": "12 feuilles",
+      "explanation": "On additionne toutes les feuilles ramassées : $10 + 15 + 5 + 20 + 10 = 60$ feuilles. On partage ce total équitablement entre les $5$ groupes : $60 \\div 5 = 12$. Chaque groupe aura donc $12$ feuilles. L'option '60 feuilles' est le total avant partage. L'option '10 feuilles' est la valeur la plus fréquente (mode) ou le minimum. L'option '15 feuilles' est la médiane (valeur du milieu) mais pas la moyenne de partage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Six boîtes de crayons sont vidées sur une table. On partage tous les crayons équitablement dans les $6$ boîtes. À la fin, chaque boîte contient $14$ crayons. Combien y avait-il de crayons au total sur la table ?",
+      "options": [
+        "20 crayons",
+        "48 crayons",
+        "84 crayons",
+        "90 crayons"
+      ],
+      "correctAnswer": "84 crayons",
+      "explanation": "Puisque le partage est équitable entre $6$ boîtes et que chaque boîte finit avec $14$ crayons, le total est le produit du nombre de boîtes par le nombre de crayons par boîte : $6 \\times 14 = 84$. On peut le calculer $6 \\times 10 = 60$ et $6 \\times 4 = 24$, donc $60 + 24 = 84$. L'option '20' correspond à $6 + 14$. L'option '48' correspond à $6 \\times 8$. L'option '90' est une approximation ou une erreur de calcul ($6 \\times 15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un groupe de $4$ enfants a partagé équitablement $40$ cartes. Chaque enfant a donc $10$ cartes. Un cinquième enfant arrive avec ses $20$ cartes. Ils remettent tout en commun et repartagent équitablement entre les $5$ enfants. Combien de cartes a chaque enfant maintenant ?",
+      "options": [
+        "10 cartes",
+        "12 cartes",
+        "14 cartes",
+        "16 cartes"
+      ],
+      "correctAnswer": "12 cartes",
+      "explanation": "Au début, le total est de $40$ cartes. Le cinquième enfant apporte $20$ cartes. Le nouveau total est $40 + 20 = 60$ cartes. Il faut maintenant partager ce total entre $5$ enfants : $60 \\div 5 = 12$. Chaque enfant a donc $12$ cartes. L'option '10 cartes' est l'ancien partage (avant l'arrivée du 5e). L'option '14 cartes' serait le résultat si on ajoutait $20$ cartes mais qu'on divisait encore par $4$ ($60 \\div 4 = 15$, pas $14$, mais c'est une erreur fréquente de ne pas changer le diviseur). L'option '16 cartes' ne correspond à aucune étape logique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

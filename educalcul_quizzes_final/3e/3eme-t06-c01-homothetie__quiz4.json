@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Homothétie",
+  "title": "Quiz : Applications de l'homothétie",
+  "questions": [
+    {
+      "text": "Soit une homothétie de centre $O$ et de rapport $k = 3$. Quel est l'image $A'$ d'un point $A$ distinct de $O$ ?",
+      "options": [
+        "$A'$ est sur la droite $(OA)$ et $OA' = 3 \\times OA$",
+        "$A'$ est sur la droite $(OA)$ et $OA' = \\frac{OA}{3}$",
+        "$A'$ est le symétrique de $A$ par rapport à $O$",
+        "$A'$ est le point tel que $OA' = OA + 3$"
+      ],
+      "correctAnswer": "$A'$ est sur la droite $(OA)$ et $OA' = 3 \\times OA$",
+      "explanation": "Dans une homothétie de centre $O$ et de rapport $k$, l'image $A'$ d'un point $A$ est alignée avec $O$ et $A$, et la distance $OA'$ vaut $|k| \\times OA$. Ici $k=3$, donc $OA' = 3 \\times OA$. Les autres options correspondent à une confusion avec le rapport inverse, la symétrie centrale ou une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triangle $ABC$ est l'image du triangle $A'B'C'$ par une homothétie de centre $O$ et de rapport $2$. Si $A'B' = 5$ cm, quelle est la longueur de $AB$ ?",
+      "options": [
+        "$AB = 10$ cm",
+        "$AB = 2,5$ cm",
+        "$AB = 5$ cm",
+        "$AB = 7,5$ cm"
+      ],
+      "correctAnswer": "$AB = 10$ cm",
+      "explanation": "L'homothétie de rapport $2$ multiplie toutes les longueurs par $2$. Donc $AB = 2 \\times A'B' = 2 \\times 5 = 10$ cm. Les autres valeurs correspondent à une division par $2$, à l'absence de changement ou à une multiplication par $1,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une homothétie de centre $O$ et de rapport $k = -\\frac{1}{2}$ transforme un segment de longueur $8$ cm. Quelle est la longueur de son image ?",
+      "options": [
+        "$4$ cm",
+        "$-4$ cm",
+        "$16$ cm",
+        "$2$ cm"
+      ],
+      "correctAnswer": "$4$ cm",
+      "explanation": "Le rapport $k = -\\frac{1}{2}$ indique une homothétie avec un changement de sens et un coefficient d'agrandissement $|k| = \\frac{1}{2}$. La longueur de l'image est $|k| \\times 8 = 4$ cm. La longueur est toujours positive, donc $-4$ cm est impossible. $16$ cm correspondrait à $k=-2$ et $2$ cm à $k=\\frac{1}{4}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compose deux homothéties de même centre $O$, la première de rapport $3$ et la seconde de rapport $\\frac{1}{2}$. Quel est le rapport de l'homothétie résultante ?",
+      "options": [
+        "$\\frac{3}{2}$",
+        "$3,5$",
+        "$2,5$",
+        "$6$"
+      ],
+      "correctAnswer": "$\\frac{3}{2}$",
+      "explanation": "La composition de deux homothéties de même centre est une homothétie de même centre dont le rapport est le produit des rapports : $3 \\times \\frac{1}{2} = \\frac{3}{2}$. Les autres options correspondent à une addition ($3+0,5$), une soustraction ($3-0,5$) ou une division ($3 \\div \\frac{1}{2}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une carte est établie par une homothétie de rapport $\\frac{1}{10000}$. Une distance de $5$ cm sur la carte représente quelle distance réelle ?",
+      "options": [
+        "$500$ m",
+        "$50$ m",
+        "$5$ km",
+        "$50$ km"
+      ],
+      "correctAnswer": "$500$ m",
+      "explanation": "Le rapport $\\frac{1}{10000}$ signifie que $1$ cm sur la carte correspond à $10000$ cm en réalité. $5$ cm correspondent à $5 \\times 10000 = 50000$ cm, soit $500$ m. $50$ m correspondrait à un rapport $\\frac{1}{1000}$, $5$ km à $\\frac{1}{2000}$ et $50$ km à $\\frac{1}{200}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

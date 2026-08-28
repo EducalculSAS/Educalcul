@@ -1,0 +1,344 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.103875+00:00",
+  "id": 201,
+  "code": "ce2-t07-c06",
+  "title": "Symétrie axiale",
+  "description": "Cours structuré Educalcul : Symétrie axiale.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Symétrie axiale",
+    "objectif_global": "Symétrie axiale",
+    "mini_lecons_imposees": [
+      "Repérer axe.",
+      "Construire symétrique sur quadrillage.",
+      "Vérifier distances."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Repérer axe.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'axe de symétrie, c'est quoi ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu découpes un papillon dans du papier plié en deux. Quand tu déplies, les deux ailes sont parfaitement identiques, comme deux jumelles. La ligne de pliure, c'est exactement ce qu'on appelle un $axe de symétrie$. C'est une ligne imaginaire qui coupe une figure en deux moitiés qui se superposent parfaitement si on les plie l'une sur l'autre. Aujourd'hui, tu vas apprendre à repérer cette ligne magique sur tous les dessins."
+            },
+            {
+              "type": "definition",
+              "term": "Axe de symétrie",
+              "definition": "C'est une droite qui partage une figure en deux parties identiques qui se recouvrent par pliage.",
+              "example": "Le pli central d'un cœur découpé dans du papier plié."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver l'axe sur un dessin, tu peux faire le test du pliage mental. Regarde la figure : si tu pouvais la plier en deux le long d'une ligne, les contours se toucheraient-ils pile au bon endroit ? Si oui, cette ligne est un axe de symétrie. Parfois, il est bien vertical, comme sur un bonhomme de neige bien droit. Parfois, il est horizontal, comme sur un lac qui reflète les montagnes à l'envers."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1,
+              "caption": "Un triangle isocèle : l'axe passe par le sommet A et le milieu de la base BC."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu as repéré le premier axe ! Mais certaines figures sont encore plus étonnantes : elles en ont plusieurs. Regarde un carré : tu peux le plier verticalement, horizontalement, et même en suivant ses deux diagonales. Cela fait $4$ axes de symétrie au total. Un cercle, lui, en a une infinité : n'importe quelle droite qui passe par son centre est un axe. C'est comme une pizza parfaitement ronde : peu importe comment tu la coupes en deux parts égales par le centre, les deux moitiés sont identiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, tous les axes ne sont pas droits comme un $i$ ! Parfois, l'axe est oblique, c'est-à-dire penché. Imagine un losange debout sur une pointe : ses axes de symétrie sont ses deux diagonales, qui sont penchées. Pour les repérer, le secret reste le même : cherche la ligne qui coupe la figure en deux parties miroirs. Si tu tournes un peu la tête, tu verras que le pli imaginaire fonctionne tout aussi bien, même s'il n'est ni vertical ni horizontal."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures (carré, rectangle, triangle équilatéral, losange), laquelle a exactement $2$ axes de symétrie ?",
+              "answer": "Le rectangle (qui n'est pas un carré) et le losange (qui n'est pas un carré) ont exactement $2$ axes de symétrie.",
+              "hint": "Teste le pliage mental : le rectangle se plie en deux dans la largeur et dans la hauteur, mais pas en diagonale.",
+              "explanation": "Le rectangle a un axe vertical et un axe horizontal. Le losange a ses deux diagonales comme axes. Le carré en a $4$, le triangle équilatéral en a $3$."
+            },
+            {
+              "question": "Combien d'axes de symétrie as-tu trouvés sur la figure ci-dessous (un cercle) ?",
+              "answer": "Une infinité d'axes.",
+              "hint": "Toutes les droites qui passent par le centre du cercle sont des axes.",
+              "explanation": "Peu importe l'inclinaison de la droite, si elle passe par le centre, elle coupe le cercle en deux demi-cercles identiques."
+            },
+            {
+              "question": "Trace l'axe de symétrie de ce triangle isocèle dont la base est horizontale.",
+              "answer": "L'axe est la droite verticale qui passe par le sommet opposé à la base et par le milieu de cette base.",
+              "hint": "Cherche le sommet tout en haut et le milieu de la base en bas. Relie-les.",
+              "explanation": "Dans un triangle isocèle, l'axe de symétrie est la hauteur issue du sommet principal, c'est aussi la médiane et la médiatrice de la base."
+            }
+          ]
+        },
+        {
+          "title": "Construire symétrique sur quadrillage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner le symétrique sur un quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer l'axe, on va passer à l'action : construire le symétrique d'un point ou d'une figure sur un quadrillage. C'est comme jouer au miroir avec des cases. L'axe de symétrie est souvent une ligne du quadrillage (verticale ou horizontale). Ton but : placer le point jumeau exactement de l'autre côté, à la même distance. C'est un jeu de précision, et tu as tous les outils pour réussir : tes yeux et les cases du quadrillage."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 6,
+              "cols": 10,
+              "highlighted": [
+                12,
+                22,
+                32,
+                42,
+                52
+              ],
+              "caption": "L'axe de symétrie est la ligne verticale au milieu (colonne 5). Le point A est à 2 cases à gauche. Son symétrique A' sera à 2 cases à droite."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est simple comme bonjour, suis bien les étapes. Première étape : trace une perpendiculaire à l'axe qui passe par ton point de départ. Sur un quadrillage, si l'axe est vertical, la perpendiculaire est une ligne horizontale (tu suis une ligne de cases). Deuxième étape : compte le nombre de cases entre ton point et l'axe. Ici, c'est $2$ cases. Troisième étape : de l'autre côté de l'axe, compte le même nombre de cases ($2$ cases) sur ta perpendiculaire et pose ton point symétrique. C'est fait !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis le point de départ, suis la ligne de cases qui va droit vers l'axe (horizontal si l'axe est vertical)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les cases",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de cases séparent le point de l'axe. Note ce nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De l'autre côté de l'axe, sur la même ligne, compte le même nombre de cases et marque le point."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Super, tu sais faire pour un point ! Et pour une figure entière, comme un petit triangle ou une maison ? Le secret, c'est de faire point par point. Tu prends chaque sommet (chaque coin) de ta figure, tu construis son symétrique avec la méthode des trois étapes, et à la fin, tu relis les nouveaux points dans le même ordre. C'est comme connecter les points d'un jeu : le dessin final apparaît tout seul, parfaitement symétrique."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 8,
+              "cols": 12,
+              "highlighted": [
+                14,
+                16,
+                25,
+                54,
+                56,
+                65
+              ],
+              "caption": "Un triangle à gauche de l'axe (colonnes 2-4) et son symétrique à droite (colonnes 6-8). Les sommets sont reliés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si l'axe de symétrie est horizontal, sur une ligne du quadrillage ? C'est exactement le même principe, mais tu travailles en haut et en bas au lieu de gauche et droite. Tu traces une ligne verticale (perpendiculaire à l'axe horizontal), tu comptes les cases vers le haut, et tu reports vers le bas. Essaie sur une figure simple, comme un bonhomme bâton : la tête en haut devient les pieds en bas, les bras restent aux mêmes endroits gauche/droite mais changent de hauteur. C'est amusant de voir le résultat !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un quadrillage, l'axe de symétrie est la ligne verticale du milieu. Le point $M$ est à $3$ cases à gauche de l'axe. À quelle distance de l'axe se trouve son symétrique $M'$ ?",
+              "answer": "$3$ cases à droite de l'axe.",
+              "hint": "La distance à l'axe ne change pas, seul le côté change.",
+              "explanation": "Par définition de la symétrie axiale, l'axe est la médiatrice du segment $[MM']$. Les distances $M$ à l'axe et $M'$ à l'axe sont égales."
+            },
+            {
+              "question": "Voici un triangle rectangle avec ses trois sommets $A$, $B$, $C$ à gauche d'un axe vertical. Donne la marche à suivre pour dessiner son symétrique.",
+              "answer": "Construire le symétrique $A'$ de $A$, puis $B'$ de $B$, puis $C'$ de $C$. Relier $A'$, $B'$, $C'$ dans le même ordre.",
+              "hint": "Traite chaque sommet indépendamment avec la méthode des 3 étapes.",
+              "explanation": "Le symétrique d'un polygone est le polygone formé par les symétriques de ses sommets, pris dans le même ordre."
+            },
+            {
+              "question": "L'axe est maintenant une ligne horizontale du quadrillage. Le point $P$ est à $4$ cases au-dessus de l'axe. Où se place $P'$ ?",
+              "answer": "$4$ cases en dessous de l'axe, sur la même verticale.",
+              "hint": "Tourne ta feuille de $90^\\circ$ dans ta tête : haut devient bas, gauche reste gauche.",
+              "explanation": "La méthode est identique : perpendiculaire (verticale ici), comptage des cases ($4$), report de l'autre côté ($4$ cases en bas)."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier distances.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment être sûr que c'est bien le symétrique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as dessiné ton symétrique, tu es fier de toi, mais comment être certain à $100\\%$ que c'est exact ? En géométrie, on ne devine pas, on vérifie ! La règle d'or, c'est la distance. L'axe de symétrie est comme un juge impartial : il doit être à exactement la même distance du point de départ et du point d'arrivée. Pour le vérifier, tu as ton meilleur ami : la règle graduée. On va mesurer ensemble."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 6,
+              "unit": "cm",
+              "caption": "Mesure de la distance perpendicular du point A à l'axe (3 cm) et du point A' à l'axe (3 cm). Les distances sont égales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a un piège ! Il ne faut pas mesurer n'importe comment. La distance à mesurer, c'est le plus court chemin entre le point et l'axe. Ce chemin, c'est toujours une ligne perpendiculaire à l'axe. Pose ta règle bien droite, forme un angle droit avec l'axe, et lis la mesure. Fais la même chose de l'autre côté. Si tu trouves $3\\,cm$ d'un côté et $3\\,cm$ de l'autre, c'est gagné ! Si tu as $3\\,cm$ et $3,5\\,cm$, il y a une petite erreur de placement, il faut corriger."
+            },
+            {
+              "type": "definition",
+              "term": "Distance à une droite",
+              "definition": "C'est la longueur du segment perpendicular qui relie le point à la droite. C'est le plus court chemin.",
+              "example": "Pour un point à $4\\,cm$ d'un axe vertical, le segment horizontal qui les relie mesure $4\\,cm$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ton équerre ou ton rapporteur, trace la droite qui passe par le point et coupe l'axe en formant un angle droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer le premier segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la distance entre le point et l'intersection avec l'axe. Note la valeur en $cm$ ou $mm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Mesurer le second segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la même perpendiculaire, de l'autre côté de l'axe, mesure la distance entre l'axe et le point symétrique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux mesures sont-elles identiques ? Si oui, c'est parfait. Sinon, repositionne le point symétrique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette vérification par les distances, c'est ton super-pouvoir pour détecter les erreurs. Parfois, on a bien compté les cases sur le quadrillage, mais on a glissé d'un demi-millimètre en traçant le point. La règle ne ment pas. Si tu vois que les distances ne correspondent pas, tu sais exactement où chercher : soit le point n'est pas sur la perpendiculaire, soit la distance n'est pas la même. C'est comme un détective qui trouve l'indice qui cloche. Corrige ton trait, re-mesure, et hop, c'est validé !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés en main : repérer l'axe, construire le symétrique case par case ou au rapporteur, et vérifier tes distances à la règle. Ces trois étapes forment un cycle complet qui te garantit un travail propre et précis. Tu peux être fier de ton parcours : tu es passé de l'observation (le pliage) à la construction (le quadrillage) jusqu'à la preuve (la mesure). C'est exactement comme font les grands géomètres, mais à ton niveau, avec tes outils d'écolier."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un axe de symétrie sur une figure (vertical, horizontal, oblique).",
+                "Je sais construire le symétrique d'un point sur un quadrillage en comptant les cases.",
+                "Je sais construire le symétrique d'une figure en traçant les symétriques de ses sommets.",
+                "Je sais vérifier une symétrie axiale en mesurant les distances perpendiculares à la règle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé le symétrique $A'$ du point $A$ par rapport à un axe vertical. Tu mesures la distance perpendicular $A$-axe et tu trouves $2,5\\,cm$. Tu mesures $A'$-axe et tu trouves $2,8\\,cm$. Que conclues-tu ?",
+              "answer": "Le point $A'$ n'est pas correctement placé. Il faut le déplacer pour qu'il soit à $2,5\\,cm$ de l'axe.",
+              "hint": "Les deux distances doivent être exactement égales.",
+              "explanation": "La propriété fondamentale de la symétrie axiale est l'égalité des distances à l'axe. $2,5 \\neq 2,8$, donc ce n'est pas le symétrique."
+            },
+            {
+              "question": "Sur une figure, tu vois un point $B$ et son prétendu symétrique $B'$. L'axe est horizontal. Tu mesures la distance perpendicular de $B$ à l'axe : $4\\,cm$. Celle de $B'$ à l'axe : $4\\,cm$. Mais $B$ et $B'$ ne sont pas sur la même verticale. Est-ce correct ?",
+              "answer": "Non, ce n'est pas le symétrique. Les points doivent être alignés sur la même perpendiculaire à l'axe.",
+              "hint": "Regarde la définition : le segment $[BB']$ doit être perpendicular à l'axe et coupé en son milieu.",
+              "explanation": "Même si les distances sont égales, si $B$ et $B'$ ne sont pas sur la même perpendiculaire à l'axe, l'axe n'est pas la médiatrice de $[BB']$. Ce n'est pas une symétrie axiale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

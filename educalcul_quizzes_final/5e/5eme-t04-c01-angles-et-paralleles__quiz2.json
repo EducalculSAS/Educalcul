@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 395,
+  "_course_code": "5eme-t04-c01-angles-et-paralleles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Relations avec parallèles selon programme",
+  "title": "Relations d'angles avec des droites parallèles",
+  "questions": [
+    {
+      "text": "Dans la figure, les droites (AB) et (CD) sont parallèles. La droite (EF) les coupe en E et F. On sait que l'angle \\widehat{AEF} mesure $50^{\\circ}$. Quelle est la mesure de l'angle \\widehat{EFD} ?",
+      "options": [
+        "50°",
+        "130°",
+        "40°",
+        "140°"
+      ],
+      "correctAnswer": "50°",
+      "explanation": "Les angles \\widehat{AEF} et \\widehat{EFD} sont des angles alternes-internes formés par deux droites parallèles (AB) et (CD) coupées par une sécante (EF). D'après la propriété des angles alternes-internes, ils ont même mesure. Donc \\widehat{EFD} = 50°. L'option 130° correspond à l'angle supplémentaire (adjacent), 40° et 140° sont des erreurs de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Droites (AB) et (CD) parallèles coupées par (EF). E sur (AB), F sur (CD). Angle AEF = 50°.",
+        "vertexLabels": [
+          "A",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Soit deux droites (d1) et (d2) coupées par une sécante (t). On mesure deux angles correspondants : l'un vaut $75^{\\circ}$, l'autre vaut $105^{\\circ}$. Que peut-on affirmer sur les droites (d1) et (d2) ?",
+      "options": [
+        "Les droites (d1) et (d2) sont parallèles.",
+        "Les droites (d1) et (d2) ne sont pas parallèles.",
+        "Les droites (d1) et (d2) sont perpendiculaires.",
+        "On ne peut pas conclure."
+      ],
+      "correctAnswer": "Les droites (d1) et (d2) ne sont pas parallèles.",
+      "explanation": "Si deux droites sont parallèles, les angles correspondants ont même mesure. Ici, les angles correspondants mesurent 75° et 105°, ils sont différents. Par conséquent, les droites (d1) et (d2) ne sont pas parallèles. L'option 'parallèles' serait vraie si les angles étaient égaux. 'Perpendiculaires' n'a pas de lien direct avec ces valeurs. On peut conclure grâce à la réciproque de la propriété des angles correspondants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites (L1) et (L2) sont parallèles. La droite (L3) les coupe. L'angle \\widehat{1} et l'angle \\widehat{2} sont des angles internes du même côté. Si \\widehat{1} = $110^{\\circ}$, quelle est la mesure de \\widehat{2} ?",
+      "options": [
+        "70°",
+        "110°",
+        "20°",
+        "250°"
+      ],
+      "correctAnswer": "70°",
+      "explanation": "Lorsque deux droites parallèles sont coupées par une sécante, les angles internes du même côté sont supplémentaires (leur somme vaut 180°). Donc \\widehat{2} = 180° - \\widehat{1} = 180° - 110° = 70°. L'option 110° confond avec les angles alternes-internes ou correspondants. 20° et 250° sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le schéma, (AB) // (CD) et (EF) // (GH). L'angle \\widehat{x} est un angle correspondant à un angle de $40^{\\circ}$ par rapport aux parallèles (AB) et (CD). L'angle \\widehat{y} est un angle alternate-interne à \\widehat{x} par rapport aux parallèles (EF) et (GH). Quelles sont les mesures de \\widehat{x} et \\widehat{y} ?",
+      "options": [
+        "x = 40° et y = 40°",
+        "x = 40° et y = 140°",
+        "x = 140° et y = 40°",
+        "x = 140° et y = 140°"
+      ],
+      "correctAnswer": "x = 40° et y = 40°",
+      "explanation": "Puisque (AB) // (CD), les angles correspondants ont même mesure : \\widehat{x} = 40°. Ensuite, comme (EF) // (GH), les angles alternes-internes ont même mesure : \\widehat{y} = \\widehat{x} = 40°. Les deux angles valent donc 40°. Les autres options mélangent les propriétés (supplémentarité au lieu d'égalité) ou inversent les valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace deux droites (D1) et (D2) et une sécante (S). On mesure trois angles : \\widehat{\\alpha} = 60^{\\circ}, \\widehat{\\beta} = 120^{\\circ}, \\widehat{\\gamma} = 60^{\\circ}. On sait que \\widehat{\\alpha} et \\widehat{\\beta} sont adjacents, \\widehat{\\alpha} et \\widehat{\\gamma} sont correspondants. Peut-on affirmer que (D1) // (D2) ?",
+      "options": [
+        "Oui, car les angles correspondants \\widehat{\\alpha} et \\widehat{\\gamma} sont égaux.",
+        "Non, car \\widehat{\\alpha} et \\widehat{\\beta} ne sont pas égaux.",
+        "Non, car la somme de \\widehat{\\alpha} et \\widehat{\\beta} est 180°.",
+        "Oui, car \\widehat{\\beta} et \\widehat{\\gamma} sont supplémentaires."
+      ],
+      "correctAnswer": "Oui, car les angles correspondants \\widehat{\\alpha} et \\widehat{\\gamma} sont égaux.",
+      "explanation": "La condition pour que deux droites soient parallèles est que les angles correspondants soient égaux. Ici, \\widehat{\\alpha} = 60° et \\widehat{\\gamma} = 60°, ils sont égaux. Donc (D1) // (D2). Le fait que \\widehat{\\alpha} et \\widehat{\\beta} soient adjacents et supplémentaires (60° + 120° = 180°) est normal pour deux angles adjacents sur une droite, cela ne contredit pas le parallélisme. L'égalité des correspondants suffit à conclure.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

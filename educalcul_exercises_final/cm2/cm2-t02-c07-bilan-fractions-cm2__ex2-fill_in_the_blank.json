@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 288,
+  "_course_code": "cm2-t02-c07-bilan-fractions-cm2",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Applications",
+  "title": "Applications des fractions au CM2",
+  "blocks": [
+    {
+      "title": "Partage d'un gâteau",
+      "content": "Un gâteau est coupé en $8$ parts égales. Julie en mange $3$ parts. Elle a donc mangé {{1}} du gâteau.",
+      "correctAnswer": "3/8",
+      "blanks": [
+        "3/8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le gâteau est divisé en $8$ parts égales, ce qui correspond au dénominateur. Julie en a mangé $3$, ce qui correspond au numérateur. La fraction est donc $3/8$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 8,
+        "shape": "circle",
+        "caption": "Représentation du gâteau mangé par Julie"
+      }
+    },
+    {
+      "title": "Calcul d'une quantité",
+      "content": "Dans un panier de $24$ fruits, les $\\frac{2}{3}$ sont des pommes. Le nombre de pommes est égal à {{1}} fruits.",
+      "correctAnswer": "16",
+      "blanks": [
+        "16"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver les $\\frac{2}{3}$ de $24$, on divise $24$ par le dénominateur $3$ ($24 \\div 3 = 8$), puis on multiplie le résultat par le numérateur $2$ ($8 \\times 2 = 16$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Distance parcourue",
+      "content": "Léa doit parcourir $100$ mètres pour arriver à l'école. Elle a déjà parcouru $\\frac{3}{4}$ de la distance. Elle a donc marché {{1}} mètres et il lui reste {{2}} mètres à parcourir.",
+      "correctAnswer": "75|25",
+      "blanks": [
+        "75",
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'abord, on calcule $\\frac{3}{4}$ de $100$: $100 \\div 4 = 25$, puis $25 \\times 3 = 75$. Elle a donc marché $75$ mètres. Pour trouver le reste, on soustrait la distance parcourue de la distance totale: $100 - 75 = 25$ mètres.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Progression de Léa vers l'école",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 75,
+            "label": "Léa"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Approfondissement : Dérivée",
+  "title": "Algorithmes et Dérivées",
+  "blocks": [
+    {
+      "title": "Taux d'accroissement",
+      "content": "On considère une fonction $f$ définie sur un intervalle. Écrire une fonction Python nommée `taux_accroissement` qui prend en paramètres la fonction $f$, deux valeurs $a$ et $b$ distinctes, et retourne la valeur du taux d'accroissement de $f$ entre $a$ et $b$.",
+      "correctAnswer": "def taux_accroissement(f, a, b):\\n    return (f(b) - f(a)) / (b - a)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le taux d'accroissement entre deux points $a$ et $b$ est défini par la formule $\\frac{f(b) - f(a)}{b - a}$. L'algorithme doit simplement implémenter ce calcul.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Approximation de la dérivée",
+      "content": "L'approximation de la dérivée de $f$ en un point $x$ peut être obtenue en calculant le taux d'accroissement entre $x$ et $x+h$ avec un $h$ très petit. Écrire une fonction Python nommée `derivee_approx` qui prend en paramètres la fonction $f$, le point $x$ et un pas $h$ (par défaut $10^{-8}$), et retourne cette approximation.",
+      "correctAnswer": "def derivee_approx(f, x, h=1e-8):\\n    return (f(x + h) - f(x)) / h",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La dérivée en $x$ est la limite du taux d'accroissement quand $h$ tend vers $0$. En informatique, on utilise une valeur très petite pour $h$ afin d'obtenir une valeur proche de $f'(x)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse des variations",
+      "content": "On souhaite savoir si une fonction $f$ est croissante ou décroissante sur un intervalle $[min, max]$. Écrire un algorithme qui, en utilisant la fonction `derivee_approx` précédente, teste le signe de la dérivée en $100$ points équidistants de l'intervalle et affiche si la fonction semble être croissante, décroissante ou si son sens de variation change.",
+      "correctAnswer": "def analyse_variations(f, min_val, max_val):\\n    signes = []\\n    pas = (max_val - min_val) / 100\\n    for i in range(100):\\n        x = min_val + i * pas\\n        d = derivee_approx(f, x)\\n        if d > 0:\\n            signes.append(1)\\n        elif d < 0:\\n            signes.append(-1)\\n        else:\\n            signes.append(0)\\n    if all(s >= 0 for s in signes):\\n        print(\"Croissante\")\\n    elif all(s <= 0 for s in signes):\\n        print(\"Décroissante\")\\n    else:\\n        print(\"Variation changeante\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le signe de la dérivée détermine le sens de variation d'une fonction. Si $f'(x) > 0$ sur tout l'intervalle, la fonction est croissante. Si $f'(x) < 0$, elle est décroissante. L'algorithme échantillonne l'intervalle pour vérifier l'homogénéité du signe.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

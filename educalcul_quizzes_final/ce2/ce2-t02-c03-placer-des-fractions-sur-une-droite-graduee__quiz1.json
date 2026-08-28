@@ -1,0 +1,125 @@
+{
+  "_status": "done",
+  "_course_id": 154,
+  "_course_code": "ce2-t02-c03-placer-des-fractions-sur-une-droite-graduee",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Partager l'unité",
+  "title": "Quiz : Partager l'unité (CE2)",
+  "questions": [
+    {
+      "text": "Lorsque l'on partage l'unité en $4$ parties égales, chaque partie représente quelle fraction ?",
+      "options": [
+        "un quart",
+        "un tiers",
+        "un demi",
+        "trois quarts"
+      ],
+      "correctAnswer": "un quart",
+      "explanation": "Partager l'unité en $4$ parties égales signifie diviser $1$ par $4$. Chaque partie vaut donc $1$ sur $4$, que l'on écrit $\\frac{1}{4}$ et que l'on lit « un quart ». « Un demi » correspond à $2$ parties, « un tiers » à $3$ parties, et « trois quarts » correspond à $3$ de ces parties.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "L'unité partagée en 4 parties égales : 1 quart est colorié."
+      }
+    },
+    {
+      "text": "Regarde la figure ci-dessous. Quelle fraction est représentée par la partie colorée ?",
+      "options": [
+        "un cinquième",
+        "un quart",
+        "un tiers",
+        "un demi"
+      ],
+      "correctAnswer": "un cinquième",
+      "explanation": "La barre est divisée en $5$ parties égales (le dénominateur est $5$). Une seule partie est colorée (le numérateur est $1$). La fraction représentée est donc $\\frac{1}{5}$, que l'on lit « un cinquième ».",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 5,
+        "shape": "bar",
+        "caption": "Une barre divisée en 5 parties égales, une partie est colorée."
+      }
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, l'unité (de $0$ à $1$) est partagée en $3$ parties égales. Quelle fraction correspond au point A ?",
+      "options": [
+        "un tiers",
+        "deux tiers",
+        "un demi",
+        "un quart"
+      ],
+      "correctAnswer": "un tiers",
+      "explanation": "La droite de $0$ à $1$ est coupée en $3$ segments de même longueur. Le point A se trouve sur la première graduation après $0$. Il correspond donc à $1$ partie sur $3$, soit $\\frac{1}{3}$, que l'on lit « un tiers ». « Deux tiers » serait la deuxième graduation.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 3 parties égales. Point A sur la première graduation.",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 0.3333333333333333,
+            "label": "A"
+          },
+          {
+            "value": 0.6666666666666666,
+            "label": ""
+          },
+          {
+            "value": 1,
+            "label": "1"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Pour placer la fraction $\\frac{1}{5}$ sur une droite graduée allant de $0$ à $1$, en combien de parties égales faut-il diviser l'unité ?",
+      "options": [
+        "en $5$ parties égales",
+        "en $4$ parties égales",
+        "en $6$ parties égales",
+        "en $10$ parties égales"
+      ],
+      "correctAnswer": "en $5$ parties égales",
+      "explanation": "Le dénominateur de la fraction $\\frac{1}{5}$ est $5$. Il indique en combien de parties égales l'unité (le segment $[0 ; 1]$) doit être partagée. Il faut donc $5$ parties égales. Le numérateur $1$ indiquera ensuite de prendre la première partie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa partage un ruban de longueur $1$ mètre en $8$ parties égales. Paul partage un ruban identique en $4$ parties égales. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "Les morceaux de Léa sont plus petits que ceux de Paul.",
+        "Les morceaux de Léa sont plus grands que ceux de Paul.",
+        "Les morceaux de Léa et de Paul ont la même taille.",
+        "On ne peut pas comparer car les rubans sont différents."
+      ],
+      "correctAnswer": "Les morceaux de Léa sont plus petits que ceux de Paul.",
+      "explanation": "Léa a divisé l'unité en $8$ parts (chaque morceau vaut $\\frac{1}{8}$ m). Paul l'a divisée en $4$ parts (chaque morceau vaut $\\frac{1}{4}$ m). Plus on partage en grand nombre de parts, plus chaque part est petite. Comme $8 > 4$, $\\frac{1}{8} < \\frac{1}{4}$. Les morceaux de Léa sont donc plus petits.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 8
+          }
+        ],
+        "caption": "Comparaison visuelle : 1/4 (Paul) est plus grand que 1/8 (Léa)."
+      }
+    }
+  ]
+}

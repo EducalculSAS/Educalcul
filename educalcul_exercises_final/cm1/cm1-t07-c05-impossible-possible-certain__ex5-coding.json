@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 260,
+  "_course_code": "cm1-t07-c05-impossible-possible-certain",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Classer événements",
+  "title": "Algorithmes pour classer des événements",
+  "blocks": [
+    {
+      "title": "Classer un événement unique",
+      "content": "Écris un algorithme (style Python) qui demande à l'utilisateur de saisir la nature d'un événement (impossible, possible ou certain) et qui affiche la catégorie correspondante. Utilise une structure conditionnelle SI / SINON SI / SINON.",
+      "correctAnswer": "algorithme ClasserEvenement\\n    afficher \"Saisir la nature de l'événement (impossible, possible, certain) : \"\\n    lire nature\\n    si nature = \"impossible\" alors\\n        afficher \"Cet événement est impossible.\"\\n    sinon si nature = \"possible\" alors\\n        afficher \"Cet événement est possible.\"\\n    sinon si nature = \"certain\" alors\\n        afficher \"Cet événement est certain.\"\\n    sinon\\n        afficher \"Catégorie non reconnue.\"\\n    fin si\\nfin algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par demander une saisie. La structure 'si / sinon si / sinon' permet de tester les trois cas prévus par le programme de CM1 : impossible, possible, certain. Le bloc 'sinon' final gère les erreurs de frappe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer une liste d'événements",
+      "content": "On a une liste de trois événements : [\"Il pleut demain\", \"Le soleil se lève à l'ouest\", \"2 + 2 = 4\"]. Écris un algorithme qui parcourt cette liste et, pour chaque événement, affiche sa classification en utilisant la logique : \"soleil se lève à l'ouest\" -> impossible, \"2 + 2 = 4\" -> certain, sinon -> possible.",
+      "correctAnswer": "algorithme ClasserListe\\n    evenements <- [\"Il pleut demain\", \"Le soleil se lève à l'ouest\", \"2 + 2 = 4\"]\\n    pour chaque evt dans evenements faire\\n        si evt = \"Le soleil se lève à l'ouest\" alors\\n            afficher evt + \" : impossible\"\\n        sinon si evt = \"2 + 2 = 4\" alors\\n            afficher evt + \" : certain\"\\n        sinon\\n            afficher evt + \" : possible\"\\n        fin si\\n    fin pour\\nfin algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme définit la liste, puis utilise une boucle 'pour chaque' pour examiner les événements un par un. Les conditions 'si' identifient les cas précis 'impossible' et 'certain', le 'sinon' regroupe tout le reste dans 'possible' (comme la météo).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Déterminer la catégorie d'un tirage",
+      "content": "Un sac contient 3 boules rouges et 2 boules bleues. On tire une boule au hasard. Écris un algorithme qui prend en entrée la couleur annoncée (\"rouge\", \"bleue\", \"verte\") et qui affiche si cet événement est impossible, possible ou certain. Pense à tester la couleur annoncée par rapport au contenu du sac.",
+      "correctAnswer": "algorithme ClasserTirage\\n    afficher \"Couleur annoncée (rouge, bleue, verte) : \"\\n    lire couleur\\n    si couleur = \"verte\" alors\\n        afficher \"Impossible : il n'y a pas de boule verte.\"\\n    sinon si couleur = \"rouge\" ou couleur = \"bleue\" alors\\n        afficher \"Possible : il y a des boules de cette couleur.\"\\n    sinon\\n        afficher \"Couleur inconnue.\"\\n    fin si\\nfin algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme analyse la saisie. 'Verte' est impossible car absente du sac. 'Rouge' ou 'bleue' sont possibles car présentes, mais pas certaines car l'autre couleur existe aussi. Il n'y a pas de cas 'certain' ici car on ne tire qu'une boule parmi plusieurs couleurs différentes. Le 'sinon' final sécurise la saisie.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

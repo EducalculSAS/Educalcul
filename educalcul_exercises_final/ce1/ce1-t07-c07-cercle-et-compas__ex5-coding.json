@@ -1,0 +1,50 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 132,
+  "_course_code": "ce1-t07-c07-cercle-et-compas",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Centre et rayon dans un langage simple",
+  "title": "Algorithme : Tracer un cercle au compas",
+  "blocks": [
+    {
+      "title": "Ecrire les etapes du trace",
+      "content": "Tu veux tracer un cercle de centre $O$ et de rayon $3$ cm avec ton compas. Ecris l'algorithme (la liste des etapes dans l'ordre) pour realiser ce trace. Utilise le vocabulaire : pointe, mine, ecartement, tour.",
+      "correctAnswer": "1. Regler l'ecartement du compas a $3$ cm. 2. Placer la pointe du compas sur le point $O$. 3. Faire un tour complet avec la mine pour tracer le cercle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour tracer un cercle au compas, on commence toujours par regler l'ecartement (le rayon). Ensuite on place la pointe sur le centre. Enfin on tourne la mine pour dessiner le cercle.",
+      "points": 2,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas regle sur 3 cm"
+      }
+    },
+    {
+      "title": "Completer un algorithme",
+      "content": "Voici un algorithme pour tracer un cercle, mais il manque des informations. Complete les lignes en gras :\\n1. Regler l'ecartement du compas a **...** cm.\\n2. Placer la pointe sur le point **...**.\\n3. Faire un tour complet pour tracer le cercle.\\nOn veut un cercle de centre $A$ et de rayon $4$ cm.",
+      "correctAnswer": "1. Regler l'ecartement du compas a $4$ cm. 2. Placer la pointe sur le point $A$. 3. Faire un tour complet pour tracer le cercle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rayon demande est $4$ cm, c'est la valeur de l'ecartement. Le centre est le point $A$, c'est la qu'on pose la pointe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lire et interpreter un algorithme",
+      "content": "Lis cet algorithme :\\n1. Regler l'ecartement du compas a $5$ cm.\\n2. Placer la pointe sur le point $B$.\\n3. Faire un demi-tour avec la mine.\\nQuelle figure est tracée ? Decris le centre, le rayon et la forme obtenue.",
+      "correctAnswer": "L'algorithme trace un demi-cercle de centre $B$ et de rayon $5$ cm. Comme on ne fait qu'un demi-tour, le cercle n'est pas ferme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les deux premieres lignes definissent un cercle de centre $B$ et rayon $5$ cm. Mais la ligne 3 dit 'demi-tour', donc on ne trace qu'une moitie de cercle (un demi-cercle).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

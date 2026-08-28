@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Expériences à deux étapes simples",
+  "title": "Quiz : Expériences à deux étapes simples",
+  "questions": [
+    {
+      "text": "On lance une pièce équilibrée puis on lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir « face » et un nombre pair ?",
+      "options": [
+        "1/4",
+        "1/6",
+        "1/12",
+        "1/3"
+      ],
+      "correctAnswer": "1/4",
+      "explanation": "Les deux étapes sont indépendantes. La probabilité d'obtenir « face » est $1/2$. La probabilité d'obtenir un nombre pair (2, 4 ou 6) sur un dé à six faces est $3/6 = 1/2$. La probabilité conjointe est le produit : $1/2 \\times 1/2 = 1/4$. Les autres options correspondent à des erreurs fréquentes : confondre avec la probabilité d'un seul événement ($1/2$), multiplier par $1/3$ au lieu de $1/2$, ou additionner au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu de 52 cartes, on note sa couleur, on la replace, puis on tire une seconde carte. Quelle est la probabilité que les deux cartes soient des cœurs ?",
+      "options": [
+        "1/16",
+        "1/4",
+        "1/8",
+        "1/52"
+      ],
+      "correctAnswer": "1/16",
+      "explanation": "Il y a 13 cœurs sur 52 cartes, donc $P(\\text{cœur}) = 13/52 = 1/4$. Comme la carte est remplacée, les deux tirages sont indépendants. La probabilité d'avoir deux cœurs est $(1/4) \\times (1/4) = 1/16$. L'option $1/4$ correspond à la probabilité d'un seul tirage, $1/8$ à une addition erronée, et $1/52$ à la probabilité de tirer une carte précise.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire deux cartes successivement sans remise dans un jeu de 52 cartes. Quelle est la probabilité que les deux cartes soient des as ?",
+      "options": [
+        "1/221",
+        "1/169",
+        "1/13",
+        "1/52"
+      ],
+      "correctAnswer": "1/221",
+      "explanation": "Il y a 4 as dans le jeu. Pour le premier tirage : $4/52 = 1/13$. Sans remise, il reste 3 as sur 51 cartes pour le second tirage : $3/51 = 1/17$. La probabilité conjointe est $(1/13) \\times (1/17) = 1/221$. L'option $1/169$ serait le produit $(1/13)^2$ (avec remise), $1/13$ la probabilité du premier tirage seul, et $1/52$ la probabilité de tirer un as précis.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient 3 boules rouges et 2 boules bleues. On tire une boule, on ne la replace pas, puis on tire une seconde boule. Quelle est la probabilité que les deux boules soient de couleurs différentes ?",
+      "options": [
+        "3/5",
+        "2/5",
+        "1/2",
+        "4/5"
+      ],
+      "correctAnswer": "3/5",
+      "explanation": "Deux cas donnent des couleurs différentes : rouge puis bleu, ou bleu puis rouge. $P(\\text{R puis B}) = (3/5) \\times (2/4) = 6/20$. $P(\\text{B puis R}) = (2/5) \\times (3/4) = 6/20$. La somme est $12/20 = 3/5$. L'option $2/5$ correspond à la probabilité d'un seul des deux cas, $1/2$ à une estimation approximative, et $4/5$ à l'addition des probabilités sans tenir compte de la non-remise.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces équilibré. Si le résultat est pair, on lance une pièce équilibrée ; si le résultat est impair, on relance le dé. Quelle est la probabilité d'obtenir « face » sur la pièce ?",
+      "options": [
+        "1/4",
+        "1/2",
+        "1/6",
+        "1/3"
+      ],
+      "correctAnswer": "1/4",
+      "explanation": "La pièce n'est lancée que si le premier dé donne un nombre pair. La probabilité d'un nombre pair est $3/6 = 1/2$. Conditionnellement à cet événement, la probabilité de « face » est $1/2$. Par la loi des probabilités totales, $P(\\text{face}) = P(\\text{pair}) \\times P(\\text{face} | \\text{pair}) = (1/2) \\times (1/2) = 1/4$. Les autres options correspondent à oublier la condition sur le dé ($1/2$), à confondre avec la probabilité d'un face du dé ($1/6$), ou à une addition incorrecte ($1/3$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 209,
+  "_course_code": "ce2-t08-c05-choisir-une-representation",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Comparer tableau et diagramme",
+  "title": "Comparer un tableau et un diagramme en bâtons : algorithmes",
+  "blocks": [
+    {
+      "title": "Rechercher le maximum dans un tableau",
+      "content": "On dispose d'un tableau à deux colonnes : 'Prénom' et 'Nombre de billes'.\\nÉcrire un algorithme (en langage naturel structuré) qui parcourt le tableau pour trouver le prénom de l'enfant qui a le plus grand nombre de billes et affiche ce nombre.",
+      "correctAnswer": "Algorithme :\\n1. Définir max_billes = 0 et prenom_max = \"\".\\n2. Pour chaque ligne du tableau :\\n   - Lire le nombre de billes de la ligne.\\n   - Si ce nombre > max_billes Alors :\\n       max_billes prend la valeur de ce nombre.\\n       prenom_max prend la valeur du prénom de la ligne.\\n3. Afficher : \"Le maximum est \" + prenom_max + \" avec \" + max_billes + \" billes.\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise une variable pour garder la trace du plus grand nombre trouvé (max_billes) et du prénom correspondant (prenom_max). Il examine chaque ligne une par une (boucle 'Pour chaque'). Si le nombre lu est plus grand que le maximum actuel, on met à jour les deux variables. À la fin, on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construire un tableau à partir d'un diagramme",
+      "content": "On observe le diagramme en bâtons ci-dessous qui représente le nombre de livres lus par quatre élèves.\\nÉcrire un algorithme qui lit les informations du diagramme pour remplir un tableau à deux colonnes : 'Élève' et 'Nombre de livres'.",
+      "correctAnswer": "Algorithme :\\n1. Créer un tableau vide avec les en-têtes 'Élève' et 'Nombre de livres'.\\n2. Pour chaque bâton du diagramme (de gauche à droite) :\\n   - Lire le nom de l'élève (étiquette en bas).\\n   - Lire la hauteur du bâton (valeur sur l'axe vertical).\\n   - Ajouter une ligne au tableau avec ce nom et cette valeur.\\n3. Afficher le tableau complet.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme en bâtons associe une étiquette (nom) à une hauteur (valeur numérique). L'algorithme parcourt les bâtons un par un, extrait ces deux informations et les stocke ligne par ligne dans une structure de tableau. C'est la transformation inverse de la création d'un diagramme.",
+      "points": 3,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par élève",
+        "bars": [
+          {
+            "label": "Léo",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mia",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Noa",
+            "value": 3,
+            "tone": "gold"
+          },
+          {
+            "label": "Zoé",
+            "value": 6,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Vérifier la cohérence entre tableau et diagramme",
+      "content": "On a un tableau de données et un diagramme en bâtons qui devraient représenter la même chose.\\nÉcrire un algorithme qui compare les deux représentations et affiche 'Identiques' si chaque nom du tableau a la même valeur que la hauteur du bâton correspondant dans le diagramme, sinon affiche 'Différents'.",
+      "correctAnswer": "Algorithme :\\n1. Poser un drapeau 'ok' à Vrai.\\n2. Pour chaque ligne du tableau :\\n   - Récupérer le nom et la valeur du tableau.\\n   - Chercher dans le diagramme le bâton qui a ce nom.\\n   - Si le bâton n'existe pas OU si la hauteur du bâton ≠ valeur du tableau Alors :\\n       Mettre 'ok' à Faux.\\n3. Si 'ok' est Vrai Alors afficher 'Identiques'.\\n   Sinon afficher 'Différents'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme effectue une vérification terme à terme. On suppose d'abord que tout correspond (drapeau 'ok' = Vrai). On parcourt le tableau (source de référence). Pour chaque entrée, on cherche l'équivalent dans le diagramme. Au moindre écart (nom manquant ou valeur différente), le drapeau passe à Faux. Le test final affiche le verdict global.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

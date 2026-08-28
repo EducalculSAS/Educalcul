@@ -1,0 +1,384 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.905470+00:00",
+  "id": 135,
+  "code": "ce1-t07-c10",
+  "title": "Bilan - Espace et géométrie CE1",
+  "description": "Cours structuré Educalcul : Bilan - Espace et géométrie CE1.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Bilan - Espace et géométrie CE1",
+    "objectif_global": "Bilan - Espace et géométrie CE1",
+    "mini_lecons_imposees": [
+      "Reconnaître et construire.",
+      "Utiliser instruments.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître et construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître les formes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons apprendre à reconnaître trois formes très courantes : le carré, le rectangle et le triangle. Tu les vois partout autour de toi, dans les fenêtres, les livres, les panneaux de signalisation ou même les tuiles du sol."
+            },
+            {
+              "type": "definition",
+              "term": "carré",
+              "definition": "Un carré a $4$ côtés de même longueur et $4$ angles droits.",
+              "example": "Une feuille de papier carrée."
+            },
+            {
+              "type": "definition",
+              "term": "rectangle",
+              "definition": "Un rectangle a $4$ côtés, avec deux paires de côtés égaux, et $4$ angles droits.",
+              "example": "Une porte classique."
+            },
+            {
+              "type": "definition",
+              "term": "triangle",
+              "definition": "Un triangle a $3$ côtés et $3$ sommets.",
+              "example": "Un panneau de signalisation danger."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 3,
+              "highlighted": 9,
+              "caption": "Un carré de $3$ cases sur $3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer un carré, regardons le triangle qui a $3$ côtés et $3$ sommets. C'est la figure la plus simple que l'on puisse dessiner avec des segments droits."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle avec ses sommets",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, découvrons le rectangle qui a $4$ côtés, dont deux paires de côtés égaux. Contrairement au carré, ses côtés ne sont pas tous de la même longueur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un tableau qui résume les propriétés du rectangle pour que tu puisses les comparer avec celles du carré et du triangle."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Forme",
+                "Côtés",
+                "Angles"
+              ],
+              "rows": [
+                [
+                  "Rectangle",
+                  "4 côtés, 2 paires égales",
+                  "4 angles droits"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître et nommer ces trois formes géométriques. Continue à les chercher dans ton environnement pour bien les mémoriser."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle forme a quatre côtés égaux et quatre angles droits ?",
+              "answer": "C'est un carré.",
+              "hint": "Regarde les côtés et les angles.",
+              "explanation": "Un carré a $4$ côtés de même longueur et $4$ angles droits."
+            },
+            {
+              "question": "Combien de côtés a un triangle ?",
+              "answer": "Un triangle a $3$ côtés.",
+              "hint": "Compte les côtés du dessin.",
+              "explanation": "Le triangle est une figure à $3$ côtés et $3$ sommets."
+            },
+            {
+              "question": "Le rectangle a-t-il quatre côtés égaux ?",
+              "answer": "Non, le rectangle a deux paires de côtés égaux.",
+              "hint": "Compare les longueurs des côtés.",
+              "explanation": "Dans un rectangle, les côtés opposés sont égaux, mais tous les côtés ne le sont pas."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser instruments.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la règle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle est l'instrument qui te permet de mesurer une longueur en $cm$. Pose-la bien à plat sur le segment, aligne le zéro avec un bout, puis lis le nombre à l'autre bout. C'est comme lire une graduation sur une route. Elle est graduée en centimètres et en millimètres pour une grande précision."
+            },
+            {
+              "type": "definition",
+              "term": "règle",
+              "definition": "Une règle est un instrument gradué en $cm$ et en $mm$ pour mesurer des longueurs.",
+              "example": "Mesurer un segment de $8$ $cm$."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 8,
+              "unit": "cm",
+              "caption": "Mesure d'un segment de $8$ $cm$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la mesure, l'équerre t'aide à tracer un angle droit parfait pour construire des carrés ou des rectangles. Pose l'équerre sur le trait, fais glisser le crayon le long du bord droit et tu obtiens un angle de $90$ degrés. Cet angle est la base de nombreuses constructions géométriques."
+            },
+            {
+              "type": "definition",
+              "term": "équerre",
+              "definition": "Une équerre est un outil en forme de triangle rectangle qui permet de tracer des angles droits.",
+              "example": "Tracer un angle droit pour un carré."
+            },
+            {
+              "type": "number_line",
+              "caption": "Un angle droit mesure $90$ degrés",
+              "min": 0,
+              "max": 90,
+              "points": [
+                {
+                  "value": 90,
+                  "label": "Angle droit"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, comparons deux longueurs pour voir laquelle est la plus grande grâce à un graphique à barres. Le graphique montre visuellement la différence entre les deux mesures. Ainsi, tu peux décider quel segment est le plus long sans même les superposer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de deux longueurs",
+              "bars": [
+                {
+                  "label": "Segment A",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Segment B",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant mesurer, tracer un angle droit et comparer des longueurs. Continue à t'entraîner avec tes outils pour devenir de plus en plus précis. Avec de la pratique, tes mesures deviendront rapides et sûres."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Mesure le segment montré sur la règle. Quelle est sa longueur en $cm$ ?",
+              "answer": "$8$ $cm$",
+              "hint": "Regarde le chiffre aligné avec l'extrémité du segment.",
+              "explanation": "Le segment va de $0$ à $8$ sur la règle, donc il mesure $8$ $cm$."
+            },
+            {
+              "question": "Combien de degrés mesure un angle droit ?",
+              "answer": "$90$ degrés",
+              "hint": "Rappelle-toi la graduation du rapporteur.",
+              "explanation": "Un angle droit correspond à un quart de tour, soit $90$ degrés."
+            },
+            {
+              "question": "Le segment A mesure $7$ $cm$ et le segment B mesure $5$ $cm$. Lequel est le plus long ?",
+              "answer": "Le segment A",
+              "hint": "Compare les deux nombres.",
+              "explanation": "$7$ est plus grand que $5$, donc le segment A est plus long."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des formes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur les trois formes que nous avons étudiées. Imagine un tableau qui montre combien de chaque forme nous avons dessinées cette semaine. Le camembert ci-dessous te donne une vue d'ensemble rapide. Le cercle n'est pas au programme, mais le camembert nous aide à comparer les quantités."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des formes dessinées",
+              "slices": [
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Triangle",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pensons aux instruments. La règle et l'équerre ont chacune leur rôle. Voici un diagramme qui montre quelles formes ont été mesurées avec la règle et lesquelles ont été tracées avec l'équerre. Tu verras que certaines formes apparaissent dans les deux groupes. Cela te permet de savoir quel outil utiliser selon la tâche."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Utilisation des instruments",
+              "sets": [
+                {
+                  "label": "Mesurées à la règle",
+                  "items": [
+                    "Carré",
+                    "Rectangle"
+                  ]
+                },
+                {
+                  "label": "Tracées à l'équerre",
+                  "items": [
+                    "Carré",
+                    "Triangle"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, amusons-nous à continuer une suite de formes. Regarde le début du motif et devine la forme suivante. C'est un exercice d'observation et de logique. Les suites de formes développent ton sens de la régularité et de la prédiction."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "carre",
+                "cercle",
+                "carre"
+              ],
+              "options": [
+                "cercle",
+                "triangle"
+              ],
+              "answer": "cercle",
+              "caption": "Suite de formes : cercle, carré, cercle, carré..."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as révisé les formes, les instruments et les suites. Tu es prêt pour le bilan final. Félicitations pour ton travail régulier ! Garde cette fiche comme référence pour tes prochains exercices de géométrie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je reconnais un carré, un rectangle et un triangle.",
+                "Je sais mesurer un segment avec une règle.",
+                "Je sais tracer un angle droit avec une équerre.",
+                "Je peux comparer deux longueurs.",
+                "Je sais continuer une suite de formes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "D'après le graphique, quelle forme a été dessinée le plus souvent ?",
+              "answer": "Le triangle",
+              "hint": "Regarde la part la plus grande du camembert.",
+              "explanation": "Le triangle a $5$ occurrences, plus que le carré ($4$) et le rectangle ($3$)."
+            },
+            {
+              "question": "Quelle forme a été à la fois mesurée à la règle et tracée à l'équerre ?",
+              "answer": "Le carré",
+              "hint": "Cherche la forme qui appartient aux deux ensembles.",
+              "explanation": "Le carré apparaît dans les deux cercles du diagramme de Venn."
+            },
+            {
+              "question": "Quelle forme vient après le carré dans la suite : cercle, carré, cercle, carré, ... ?",
+              "answer": "Cercle",
+              "hint": "Observe l'alternance.",
+              "explanation": "La suite alterne cercle et carré, donc après le carré vient le cercle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

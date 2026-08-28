@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 373,
+  "_course_code": "6eme-t08-c06-bilan-donnees-et-proportionnalite-6e",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Statistiques, hasard, proportionnalité",
+  "title": "Algorithmes : statistiques, hasard et proportionnalité",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Écrire un algorithme qui calcule la moyenne d'une liste de nombres. La liste est donnée sous la forme d'un tableau `notes`. L'algorithme doit afficher le résultat.\\n",
+      "correctAnswer": "notes = [12, 15, 9, 14, 11]\\nsomme = 0\\npour chaque note dans notes :\\n    somme = somme + note\\nmoyenne = somme / longueur(notes)\\nafficher moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable somme à 0. On parcourt chaque élément du tableau notes en ajoutant sa valeur à somme. Après la boucle, on divise la somme par le nombre d'éléments (longueur du tableau) pour obtenir la moyenne, puis on l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation de lancer de dé",
+      "content": "Écrire un algorithme qui simule le lancer d'un dé à six faces $N$ fois et qui affiche le nombre d'apparitions de chaque face.\\n",
+      "correctAnswer": "N = 1000\\nresultats = [0, 0, 0, 0, 0, 0]\\npour i de 1 à N :\\n    face = entier_aleatoire(1, 6)\\n    resultats[face - 1] = resultats[face - 1] + 1\\nafficher resultats",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On crée un tableau resultats de six zéros pour compter chaque face. On répète N fois : on génère un entier aléatoire entre 1 et 6, on incrémente le compteur correspondant (indice face-1). À la fin, on affiche le tableau des fréquences.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de proportionnalité",
+      "content": "Écrire un algorithme qui reçoit deux listes de même longueur `valeurs1` et `valeurs2` et qui détermine si elles sont proportionnelles. Si oui, afficher le coefficient de proportionnalité, sinon afficher 'Non proportionnel'.\\n",
+      "correctAnswer": "valeurs1 = [2, 4, 6, 8]\\nvaleurs2 = [3, 6, 9, 12]\\nsi longueur(valeurs1) != longueur(valeurs2) :\\n    afficher 'Listes de tailles différentes'\\n    arrêter\\ncoeff = valeurs2[0] / valeurs1[0]\\nproportionnel = vrai\\npour i de 1 à longueur(valeurs1)-1 :\\n    si valeurs1[i] == 0 ou valeurs2[i] / valeurs1[i] != coeff :\\n        proportionnel = faux\\n        sortir de la boucle\\nsi proportionnel :\\n    afficher 'Proportionnel, coefficient =', coeff\\nsinon :\\n    afficher 'Non proportionnel'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie d'abord que les listes ont même taille. On calcule le coefficient à partir du premier couple. Ensuite on parcourt les autres éléments : si une division donne un quotient différent du coefficient (ou division par zéro), les listes ne sont pas proportionnelles. On affiche le résultat accordingly.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

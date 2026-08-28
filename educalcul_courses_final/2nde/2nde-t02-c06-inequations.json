@@ -1,0 +1,476 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.046122+00:00",
+  "id": 508,
+  "code": "2nde-t02-c06",
+  "title": "Inéquations",
+  "description": "Cours structuré Educalcul : Inéquations.",
+  "subject": "Calcul algébrique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Calcul algébrique",
+    "titre_du_cours": "Inéquations",
+    "objectif_global": "Inéquations",
+    "mini_lecons_imposees": [
+      "Résoudre.",
+      "Intervalles.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul algébrique",
+      "lessons": [
+        {
+          "title": "Résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce qu'est une inéquation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première leçon, nous allons apprendre à résoudre des inéquations du premier degré. Une inéquation ressemble à une équation, mais au lieu du signe égal, on utilise un signe d'ordre : $<$, $\\le$, $>$ ou $\\ge$. Cela signifie que nous cherchons non pas une seule valeur, mais tout un ensemble de valeurs qui rendent la statement vraie. Imagine que tu as une balance : au lieu de chercher l'équilibre parfait, tu veux savoir quand le plateau de gauche est plus léger ou plus lourd que celui de droite."
+            },
+            {
+              "type": "definition",
+              "term": "Inéquation",
+              "definition": "Une inéquation est une relation mathématique qui compare deux expressions à l'aide d'un signe d'ordre ($<$, $\\le$, $>$, $\\ge$). La solution d'une inéquation est l'ensemble des valeurs de la variable qui rendent la comparaison vraie.",
+              "example": "$2x + 5 \\le 11$ est une inéquation ; sa solution est $x \\le 3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés de base sont simples et rassurantes : tu peux ajouter ou soustraire le même nombre des deux côtés sans changer le sens de l'inéquation. De même, multiplier ou diviser par un nombre strictement positif conserve le sens. En revanche, si tu multiplies ou divises par un nombre négatif, il faut inverser le signe. C'est la seule règle qui demande une attention particulière, et nous la verrons en détail tout à l'heure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler le terme contenant la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Commence par déplacer les constantes de l'autre côté en ajoutant ou soustrayant. Par exemple, pour $2x + 5 \\le 11$, soustrais $5$ des deux côtés : $2x \\le 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par le coefficient de la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise ensuite par le coefficient de $x$ (ici $2$). Comme $2$ est positif, le sens reste $\\le$ : $x \\le 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprimer la solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution se note $x \\le 3$ ou, en notation d'intervalle, $(-\\infty, 3]$. Sur une droite graduée, on place un crochet fermé sur $3$ et on hache tout ce qui est à gauche."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Solution de $2x+5\\le11$ : $x\\le3$",
+              "min": -2,
+              "max": 5,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": -2,
+                  "max": 3,
+                  "leftOpen": false,
+                  "rightOpen": false
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la méthode sur un exemple simple, passons à une inéquation où la variable apparaît des deux côtés. Le principe reste le même : regroupe les $x$ d'un côté et les nombres de l'autre, en gardant toujours à l'œil le signe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variable des deux côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $3x - 4 > 2x + 1$. Pour isoler $x$, soustrais $2x$ des deux côtés : $x - 4 > 1$. Ensuite ajoute $4$ : $x > 5$. Le coefficient de $x$ est $1$, positif, donc le sens ne change pas. La solution est $x > 5$, soit l'intervalle $(5, +\\infty)$."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Intervalle solution : $(5, +\\infty)$",
+              "min": 0,
+              "max": 10,
+              "lowerBound": 5,
+              "upperBound": 10,
+              "lowerOpen": true,
+              "upperOpen": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier cas de figure concerne les fractions. Lorsque la variable est au numérateur, on peut multiplier par le dénominateur pour simplifier, mais il faut vérifier le signe de ce dénominateur. Si le dénominateur est une expression qui peut être négative, il faut étudier les cas. Pour l'instant, nous resterons sur des dénominateurs constants positifs, ce qui évite tout changement de sens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inéquation avec fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\frac{x}{2} - 1 < 3$. Ajoute $1$ : $\\frac{x}{2} < 4$. Multiplie par $2$ (positif) : $x < 8$. La solution est $x < 8$, intervalle $(-\\infty, 8)$. Sur la droite, on place une parenthèse ouverte sur $8$ et on hache à gauche."
+            },
+            {
+              "type": "graph",
+              "caption": "Droite $y = \\frac{x}{2} - 1$ et zone $y < 3$",
+              "expression": "x/2 - 1",
+              "xmin": -2,
+              "xmax": 12,
+              "ymin": -2,
+              "ymax": 6
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'inéquation $2x + 5 \\le 11$.",
+              "answer": "$x \\le 3$",
+              "hint": "Soustrais 5 des deux côtés, puis divise par 2.",
+              "explanation": "En soustrayant 5, on obtient $2x \\le 6$. En divisant par 2 (positif), le sens reste $\\le$, donc $x \\le 3$."
+            },
+            {
+              "question": "Résous $3x - 4 > 2x + 1$.",
+              "answer": "$x > 5$",
+              "hint": "Regroupe les termes en $x$ à gauche et les nombres à droite.",
+              "explanation": "En soustrayant $2x$ des deux côtés : $x - 4 > 1$. En ajoutant 4 : $x > 5$."
+            },
+            {
+              "question": "Résous $\\frac{x}{2} - 1 < 3$.",
+              "answer": "$x < 8$",
+              "hint": "Isole la fraction, puis multiplie par 2.",
+              "explanation": "Ajoute 1 : $\\frac{x}{2} < 4$. Multiplie par 2 (positif) : $x < 8$."
+            }
+          ]
+        },
+        {
+          "title": "Intervalles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation des intervalles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous apprenons à écrire les ensembles de solutions sous forme d'intervalles. C'est un langage compact qui évite de répéter « tous les nombres tels que… ». Un intervalle peut être ouvert, fermé, ou demi-ouvert, et il peut être borné ou non. Nous verrons comment passer de l'inéquation à l'intervalle et comment le représenter sur une droite graduée."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalle",
+              "definition": "Un intervalle est un ensemble de nombres réels compris entre deux bornes. On note $[a,b]$ pour inclure les deux bornes, $(a,b)$ pour les exclure, $[a,b)$ ou $(a,b]$ pour n'en inclure qu'une. Les symboles $-\\infty$ et $+\\infty$ indiquent qu'il n'y a pas de borne de ce côté, et ils sont toujours accompagnés d'une parenthèse ouverte.",
+              "example": "L'ensemble des $x$ tels que $x > -2$ et $x \\le 5$ s'écrit $(-2,5]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour traduire une inéquation simple en intervalle, regarde le signe : $<$ ou $>$ donne une parenthèse (borne exclue), $\\le$ ou $\\ge$ donne un crochet (borne incluse). Si l'inéquation n'a pas de borne d'un côté, utilise $-\\infty$ ou $+\\infty$ avec une parenthèse. Par exemple, $x \\ge 3$ devient $[3, +\\infty)$."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Intervalle $[3, +\\infty)$",
+              "min": -2,
+              "max": 10,
+              "lowerBound": 3,
+              "upperBound": 10,
+              "lowerOpen": false,
+              "upperOpen": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la solution d'un problème est la réunion de deux intervalles disjoints, ou bien leur intersection. L'union se note avec le symbole $\\cup$, l'intersection avec $\\cap$. Sur la droite, on peut superposer les hachures pour voir ce qui est commun ou ce qui est réuni."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Union et intersection d'intervalles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $[1,4)$ et $(3,6]$. Leur union couvre tout depuis $1$ (inclus) jusqu'à $6$ (inclus), car les deux intervalles se chevauchent entre $3$ et $4$. On écrit $[1,6]$. Leur intersection, en revanche, ne contient que les nombres qui appartiennent aux deux : c'est $(3,4)$, intervalle ouvert des deux côtés."
+            },
+            {
+              "type": "number_line",
+              "caption": "Union $[1,4) \\cup (3,6] = [1,6]$ et intersection $(3,4)$",
+              "min": 0,
+              "max": 7,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 1,
+                  "max": 6,
+                  "leftOpen": false,
+                  "rightOpen": false
+                },
+                {
+                  "min": 3,
+                  "max": 4,
+                  "leftOpen": true,
+                  "rightOpen": true
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les inéquations composées « et » ou « ou » se traduisent directement par intersection ou union. « $x < -1$ et $x > 2$ » n'a pas de solution (intersection vide). « $x < -1$ ou $x \\ge 2$ » donne la réunion de deux intervalles infinis : $(-\\infty,-1) \\cup [2,+\\infty)$. C'est ce que l'on rencontre souvent quand on résout des inéquations quadratiques plus tard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inéquations composées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre $x < -1$ ou $x \\ge 2$, on traite chaque partie séparément, puis on réunit les solutions. La première donne $(-\\infty,-1)$, la seconde $[2,+\\infty)$. L'union est notée $(-\\infty,-1) \\cup [2,+\\infty)$. Sur la droite, on hache à gauche de $-1$ (parenthèse ouverte) et à partir de $2$ (crochet fermé)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Solution de $x < -1$ ou $x \\ge 2$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -1,
+                  "label": "-1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": -5,
+                  "max": -1,
+                  "leftOpen": true,
+                  "rightOpen": true
+                },
+                {
+                  "min": 2,
+                  "max": 5,
+                  "leftOpen": false,
+                  "rightOpen": true
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en notation d'intervalle l'ensemble des $x$ tels que $x > -2$ et $x \\le 5$.",
+              "answer": "$(-2,5]$",
+              "hint": "Le signe $>$ donne une parenthèse à gauche, $\\le$ un crochet à droite.",
+              "explanation": "La borne inférieure $-2$ est exclue (parenthèse), la borne supérieure $5$ est incluse (crochet)."
+            },
+            {
+              "question": "Donne l'union de $[1,4)$ et $(3,6]$.",
+              "answer": "$[1,6]$",
+              "hint": "Dessine les deux intervalles sur une droite et regarde l'étendue totale couverte.",
+              "explanation": "Les deux intervalles se chevauchent entre 3 et 4, donc leur union forme un intervalle continu de 1 (inclus) à 6 (inclus)."
+            },
+            {
+              "question": "Résous l'inéquation composée : $x < -1$ ou $x \\ge 2$.",
+              "answer": "$(-\\infty,-1) \\cup [2,\\infty)$",
+              "hint": "Traite chaque inéquation séparément, puis réunis les ensembles de solutions.",
+              "explanation": "La première inéquation donne $(-\\infty,-1)$, la seconde $[2,\\infty)$. L'union des deux s'écrit avec le symbole $\\cup$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Traduire un problème en inéquation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon te montre comment utiliser les inéquations pour modéliser des situations concrètes. Souvent, l'énoncé parle de « au moins », « au plus », « entre », « strictement supérieur à ». Chaque expression correspond à un signe précis. Nous allons t'entraîner à repérer ces mots-clés et à écrire l'inéquation qui décrit la contrainte."
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation par inéquation",
+              "definition": "C'est le processus qui consiste à transformer une situation du monde réel (budget, température, dimensions, etc.) en une inéquation mathématique dont la variable représente la quantité inconnue.",
+              "example": "« La température doit rester entre 18 et 25 degrés » se traduit par $18 \\le T \\le 25$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une serre où la température $T$ (en degrés Celsius) doit être maintenue entre $18$ et $25$ inclus. Les mots « entre … et … inclus » indiquent deux inéquations simultanées : $T \\ge 18$ et $T \\le 25$. On les regroupe en une double inéquation $18 \\le T \\le 25$. L'intervalle solution est $[18,25]$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Température admissible : $[18,25]$",
+              "min": 10,
+              "max": 30,
+              "points": [
+                {
+                  "value": 18,
+                  "label": "18"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 18,
+                  "max": 25,
+                  "leftOpen": false,
+                  "rightOpen": false
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à un problème de budget. Tu as $50$ euros pour acheter des cahiers à $7$ euros l'unité. Combien de cahiers peux-tu acheter au maximum ? La variable $n$ représente le nombre de cahiers. Le coût total est $7n$, il ne doit pas dépasser $50$, donc $7n \\le 50$. En divisant par $7$ (positif), on obtient $n \\le \\frac{50}{7} \\approx 7,14$. Comme $n$ est un entier naturel, le maximum est $7$ cahiers."
+            },
+            {
+              "type": "graph",
+              "caption": "Coût total $y = 7x$ et budget $y \\le 50$",
+              "expression": "7*x",
+              "xmin": 0,
+              "xmax": 10,
+              "ymin": 0,
+              "ymax": 60
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, regardons comment interpréter graphiquement une inéquation. Si on te donne la droite $y = 2x - 3$ et qu'on te demande où $y > 1$, tu résous $2x - 3 > 1$, ce qui donne $2x > 4$ puis $x > 2$. Sur le graphique, cela correspond à la portion de la droite située au-dessus de la ligne horizontale $y = 1$, c'est-à-dire pour $x > 2$. L'intervalle solution est $(2, +\\infty)$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace la droite $y = 2x - 3$ et la ligne $y = 1$. Leur intersection se trouve à $x = 2$. Pour $x > 2$, la droite est au-dessus de $y = 1$, donc l'inéquation $2x - 3 > 1$ est vérifiée. Cette méthode visuelle est très utile pour vérifier tes calculs algébriques."
+            },
+            {
+              "type": "graph",
+              "caption": "Droite $y = 2x - 3$ et région $y > 1$",
+              "expression": "2*x - 3",
+              "xmin": -1,
+              "xmax": 5,
+              "ymin": -2,
+              "ymax": 8
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais résoudre une inéquation du premier degré en isolant la variable.",
+                "Je connais la règle du changement de sens quand je multiplie ou divise par un nombre négatif.",
+                "Je sais écrire la solution sous forme d'intervalle (ouvert, fermé, demi-ouvert, infini).",
+                "Je sais faire l'union et l'intersection de deux intervalles.",
+                "Je sais traduire un énoncé concret en inéquation et interpréter la solution."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Traduis en inéquation : « La température doit rester entre 18 et 25 degrés Celsius inclus ».",
+              "answer": "$18 \\le T \\le 25$",
+              "hint": "« Entre … et … inclus » donne deux inéquations avec $\\le$ et $\\ge$.",
+              "explanation": "La borne basse 18 est incluse ($\\ge$), la borne haute 25 est incluse ($\\le$). On écrit la double inéquation $18 \\le T \\le 25$."
+            },
+            {
+              "question": "Tu as 50 euros, chaque cahier coûte 7 euros. Combien de cahiers peux-tu acheter au maximum ?",
+              "answer": "7 cahiers",
+              "hint": "Écris l'inéquation $7n \\le 50$ et résous pour $n$, puis prends la partie entière.",
+              "explanation": "En divisant par 7, on obtient $n \\le 50/7 \\approx 7,14$. Comme $n$ est un nombre entier de cahiers, le maximum est 7."
+            },
+            {
+              "question": "Pour la fonction $y = 2x - 3$, détermine l'ensemble des $x$ tels que $y > 1$.",
+              "answer": "$x > 2$, soit l'intervalle $(2, +\\infty)$",
+              "hint": "Remplace $y$ par $2x-3$ dans l'inéquation $y > 1$ et résous.",
+              "explanation": "On a $2x - 3 > 1$, donc $2x > 4$ et $x > 2$. Sur le graphique, la droite est au-dessus de $y=1$ pour $x>2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

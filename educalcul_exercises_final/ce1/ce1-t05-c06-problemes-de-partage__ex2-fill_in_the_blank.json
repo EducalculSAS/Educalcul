@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 113,
+  "_course_code": "ce1-t05-c06-problemes-de-partage",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Répartir équitablement",
+  "title": "Partage équitable : répartir en parts égales",
+  "blocks": [
+    {
+      "title": "Partage de bonbons en 3 sacs",
+      "content": "Il y a $12$ bonbons. On les partage équitablement dans {{1}} sacs. Dans chaque sac, il y a {{2}} bonbons.",
+      "blanks": [
+        "3|trois",
+        "4|quatre"
+      ],
+      "explanation": "Le total est $12$ bonbons. On doit faire $3$ parts égales (les 3 sacs). On distribue les bonbons un par un dans chaque sac : $1, 2, 3, 4$ dans le premier ; $1, 2, 3, 4$ dans le second ; $1, 2, 3, 4$ dans le troisième. Chaque sac contient $4$ bonbons. On vérifie : $4 + 4 + 4 = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rangement de crayons dans des pots",
+      "content": "La maîtresse a $20$ crayons. Elle les range équitablement dans {{1}} pots. Dans chaque pot, il y a {{2}} crayons.",
+      "blanks": [
+        "4|quatre",
+        "5|cinq"
+      ],
+      "explanation": "Il y a $20$ crayons au total. On les répartit dans $4$ pots. On fait des groupes de $4$ (un pour chaque pot) jusqu'à épuisement : $4 + 4 + 4 + 4 + 4 = 20$. Il y a donc $5$ crayons par pot. On peut aussi compter par sauts de $4$ : $4, 8, 12, 16, 20$ (5 sauts).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Don de billes à des amis",
+      "content": "Tom a $15$ billes. Il les donne équitablement à {{1}} amis. Chaque ami reçoit {{2}} billes.",
+      "blanks": [
+        "5|cinq",
+        "3|trois"
+      ],
+      "explanation": "Tom partage $15$ billes entre $5$ amis. Il fait $5$ parts égales. Il donne $1$ bille à chaque ami, puis une deuxième, puis une troisième. Chaque ami a reçu $3$ billes. Le calcul de vérification est $3 + 3 + 3 + 3 + 3 = 15$ ou $5 \\times 3 = 15$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

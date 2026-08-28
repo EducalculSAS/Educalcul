@@ -1,0 +1,497 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.835005+00:00",
+  "id": 114,
+  "code": "ce1-t05-c07",
+  "title": "Problèmes de groupement",
+  "description": "Cours structuré Educalcul : Problèmes de groupement.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de groupement",
+    "objectif_global": "Problèmes de groupement",
+    "mini_lecons_imposees": [
+      "Taille des groupes connue.",
+      "Chercher le nombre de groupes.",
+      "Gérer un reste concret simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Taille des groupes connue.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Taille des groupes connue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $5$ boîtes de crayons. Dans chaque boîte, il y a $4$ crayons. Combien de crayons as‑tu en tout ?"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 5,
+              "cols": 4,
+              "highlighted": 20,
+              "caption": "5 groupes de 4 crayons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le total, on additionne la taille du groupe autant de fois qu'il y a de groupes. Ici, on fait $4 + 4 + 4 + 4 + 4$, ce qui donne $20$."
+            },
+            {
+              "type": "definition",
+              "term": "groupe",
+              "definition": "Un groupe est un ensemble d'objets qu'on met ensemble parce qu'ils ont la même taille.",
+              "example": "Ici, chaque boîte de 4 crayons est un groupe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repère le nombre de groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de boîtes ou de sacs tu as devant toi."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : repère la taille de chaque groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde combien d'objets se trouvent dans une seule boîte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : multiplie les deux nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de groupes fois la taille du groupe donne le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons voir un exemple où le nombre de groupes change pour bien ancrer la méthode."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu as $6$ sacs de billes, chaque sac contient $3$ billes. Combien de billes au total ?"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Groupes",
+                "Taille",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "6",
+                  "3",
+                  "18"
+                ]
+              ],
+              "caption": "Exemple de groupement"
+            },
+            {
+              "type": "paragraph",
+              "content": "On lit le tableau : $6$ groupes de $3$ font $18$ billes en tout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, regardons un cas où le total est déjà connu et on doit retrouver la taille du groupe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le total et le nombre de groupes, et on veut savoir combien il y a dans chaque groupe. C'est l'inverse de ce qu'on a fait."
+            },
+            {
+              "type": "display_math",
+              "latex": "18 \\div 6 = 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 4 boîtes de 5 crayons. Combien de crayons au total ?",
+              "answer": "$20$ crayons",
+              "hint": "Multiplie le nombre de boîtes par le nombre de crayons par boîte.",
+              "explanation": "$4 \\times 5 = 20$, donc 20 crayons."
+            },
+            {
+              "question": "Il y a 7 sacs de 3 billes. Combien de billes en tout ?",
+              "answer": "$21$ billes",
+              "hint": "Ajoute 3 sept fois ou multiplie 7 par 3.",
+              "explanation": "$7 \\times 3 = 21$."
+            },
+            {
+              "question": "Tu as 18 bonbons et tu sais qu'il y a 6 groupes. Combien de bonbons par groupe ?",
+              "answer": "$3$ bonbons",
+              "hint": "Divise le total par le nombre de groupes.",
+              "explanation": "$18 \\div 6 = 3$."
+            }
+          ]
+        },
+        {
+          "title": "Chercher le nombre de groupes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chercher le nombre de groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $20$ bonbons et tu veux faire des paquets de $4$ bonbons. Combien de paquets pourras‑tu faire ?"
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "1"
+                },
+                {
+                  "value": 8,
+                  "label": "2"
+                },
+                {
+                  "value": 12,
+                  "label": "3"
+                },
+                {
+                  "value": 16,
+                  "label": "4"
+                },
+                {
+                  "value": 20,
+                  "label": "5"
+                }
+              ],
+              "caption": "Sauts de 4 pour former des groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "On part de $0$ et on avance de $4$ en $4$ jusqu'à atteindre $20$. Chaque saut correspond à un groupe. On compte $5$ sauts, donc $5$ groupes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : note le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nombre total d'objets."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : note la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris combien d'objets doit contenir chaque groupe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : divise le total par la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le quotient donne le nombre de groupes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un total plus grand et une taille de groupe différente."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine $30$ billes que tu ranges par groupes de $5$. Combien de groupes obtiens‑tu ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "6 groupes de 5 billes",
+              "bars": [
+                {
+                  "label": "Groupe 1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 2",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 4",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 5",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 6",
+                  "value": 5,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre $6$ barres de hauteur $5$, ce qui fait $30$ billes au total. Il y a donc $6$ groupes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, voyons comment on peut vérifier le résultat en multipliant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as trouvé $6$ groupes de $5$, tu peux multiplier $6 \\times 5$ pour retrouver $30$. C'est une bonne façon de vérifier."
+            },
+            {
+              "type": "display_math",
+              "latex": "6 \\\\times 5 = 30"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 24 billes et tu fais des groupes de 6. Combien de groupes ?",
+              "answer": "$4$ groupes",
+              "hint": "Compte les sauts de 6 jusqu'à 24.",
+              "explanation": "$24 \\div 6 = 4$."
+            },
+            {
+              "question": "Il y a 35 autocollants, tu les ranges par paquets de 5. Combien de paquets ?",
+              "answer": "$7$ paquets",
+              "hint": "Divise 35 par 5.",
+              "explanation": "$35 \\div 5 = 7$."
+            },
+            {
+              "question": "Tu as 40 cartes et tu fais des piles de 8. Combien de piles ?",
+              "answer": "$5$ piles",
+              "hint": "Utilise la multiplication inverse : 8 × ? = 40.",
+              "explanation": "$8 \\times 5 = 40$, donc 5 piles."
+            }
+          ]
+        },
+        {
+          "title": "Gérer un reste concret simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Gérer un reste concret simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $22$ bonbons et tu veux faire des groupes de $4$. Combien de groupes complets et combien de bonbons restent‑ils ?"
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 22,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "1"
+                },
+                {
+                  "value": 8,
+                  "label": "2"
+                },
+                {
+                  "value": 12,
+                  "label": "3"
+                },
+                {
+                  "value": 16,
+                  "label": "4"
+                },
+                {
+                  "value": 20,
+                  "label": "5"
+                },
+                {
+                  "value": 22,
+                  "label": "reste 2"
+                }
+              ],
+              "caption": "Groupes de 4 et reste de 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "On fait des sauts de $4$ : $4$, $8$, $12$, $16$, $20$. On ne peut pas aller à $24$ car il n'y a plus assez de bonbons. Il reste $2$ bonbons."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : divise le total par la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule combien de fois la taille du groupe rentre dans le total."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : le quotient est le nombre de groupes pleins",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque groupe complet correspond à un saut entier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : le reste est ce qui ne forme pas un groupe complet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce qui reste après le dernier saut complet est le reste concret."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un autre nombre pour bien comprendre le reste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons $17$ crayons qu'on range par boîtes de $3$. Combien de boîtes pleines et combien de crayons tout seuls ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "5 groupes de 3 et 2 restants",
+              "bars": [
+                {
+                  "label": "Groupes complets",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Reste",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "On forme $5$ groupes de $3$ ce qui fait $15$. Il reste $2$ crayons qui ne forment pas un groupe complet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelle-toi que le reste est toujours plus petit que la taille du groupe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans chaque exemple, le reste ($2$ ou $2$) est bien inférieur à la taille du groupe ($4$ ou $3$). Cette règle t'aidera à vérifier tes réponses."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier la taille d'un groupe.",
+                "Je sais trouver le nombre de groupes quand le total est connu.",
+                "Je sais expliquer ce qu'est un reste concret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 23 billes, groupes de 5. Combien de groupes pleins et combien de billes restantes ?",
+              "answer": "$4$ groupes pleins et $3$ billes restantes",
+              "hint": "Fais des sauts de 5 jusqu'à ne plus pouvoir.",
+              "explanation": "$5 \\times 4 = 20$, reste $23 - 20 = 3$."
+            },
+            {
+              "question": "Il y a 29 crayons, boîtes de 4. Combien de boîtes pleines et combien de crayons seuls ?",
+              "answer": "$7$ boîtes pleines et $1$ crayon restant",
+              "hint": "Divise 29 par 4.",
+              "explanation": "$4 \\times 7 = 28$, reste $1$."
+            },
+            {
+              "question": "Tu as 15 bonbons, tu fais des groupes de 4. Combien de groupes complets et quel reste ?",
+              "answer": "$3$ groupes complets et $3$ bonbons restants",
+              "hint": "Compte les groupes de 4.",
+              "explanation": "$4 \\times 3 = 12$, reste $3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

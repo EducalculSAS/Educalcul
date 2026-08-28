@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter la moyenne",
+  "questions": [
+    {
+      "text": "Dans une série statistique, que représente concrètement la moyenne ?",
+      "options": [
+        "La valeur la plus fréquente de la série.",
+        "La valeur du milieu quand on range les données dans l'ordre.",
+        "La valeur que chaque individu aurait si on partageait le total équitablement.",
+        "La différence entre la plus grande et la plus petite valeur."
+      ],
+      "correctAnswer": "La valeur que chaque individu aurait si on partageait le total équitablement.",
+      "explanation": "La moyenne est le quotient de la somme des valeurs par le nombre total de données. Elle correspond à l'idée d'un partage équitable du total entre tous les individus. La première option décrit le mode, la deuxième la médiane, la quatrième l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a obtenu les notes suivantes sur $5$ devoirs : $10$, $12$, $14$, $16$, $18$. Sa moyenne est $13$. Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "La moyenne est toujours une note que l'élève a obtenue.",
+        "La moyenne n'est pas nécessairement une valeur de la série.",
+        "La moyenne est toujours supérieure à toutes les notes.",
+        "La moyenne est toujours inférieure à toutes les notes."
+      ],
+      "correctAnswer": "La moyenne n'est pas nécessairement une valeur de la série.",
+      "explanation": "Ici la moyenne est $13$, or $13$ n'appartient pas à la liste des notes ($10$, $12$, $14$, $16$, $18$). La moyenne est un indicateur de position centrale calculé à partir de toutes les valeurs, elle ne coïncide pas forcément avec une donnée observée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La moyenne des notes d'une classe de $20$ élèves est de $12$. Un nouvel élève arrive et obtient $20$. Que devient la moyenne de la classe ?",
+      "options": [
+        "Elle diminue.",
+        "Elle reste égale à $12$.",
+        "Elle augmente.",
+        "On ne peut pas le savoir sans recalculer tout."
+      ],
+      "correctAnswer": "Elle augmente.",
+      "explanation": "La nouvelle note ($20$) est strictement supérieure à l'ancienne moyenne ($12$). Ajouter une valeur supérieure à la moyenne tire celle-ci vers le haut. Le nouveau total est $20 \\times 12 + 20 = 260$, la nouvelle moyenne est $260 / 21 \\approx 12,38$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux classes passent le même contrôle. La classe A a pour notes : $10$, $10$, $10$, $10$, $10$. La classe B a pour notes : $0$, $5$, $10$, $15$, $20$. Les deux classes ont la même moyenne ($10$). Que peut-on dire de l'interprétation de cette moyenne ?",
+      "options": [
+        "Les deux classes ont le même niveau car la moyenne est identique.",
+        "La moyenne ne reflète pas la dispersion des notes ; la classe B est plus hétérogène.",
+        "La moyenne de la classe B est fausse car les notes sont trop écartées.",
+        "Il faut préférer la médiane pour la classe A."
+      ],
+      "correctAnswer": "La moyenne ne reflète pas la dispersion des notes ; la classe B est plus hétérogène.",
+      "explanation": "La moyenne est un indicateur de position (centre de gravité) mais elle ne donne aucune information sur l'écart des valeurs autour de ce centre. La classe A est parfaitement homogène (tous $10$), alors que la classe B est très hétérogène (notes de $0$ à $20$). La moyenne seule masque cette différence importante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt $4$ étapes. Ses temps (en minutes) sont : $45$, $50$, $55$ et une valeur inconnue $x$. Sa moyenne sur les $4$ étapes est de $52$ minutes. Quelle est la valeur de $x$ ?",
+      "options": [
+        "$52$",
+        "$58$",
+        "$55$",
+        "$48$"
+      ],
+      "correctAnswer": "$58$",
+      "explanation": "La somme des $4$ temps est $4 \\times 52 = 208$ minutes. La somme des $3$ temps connus est $45 + 50 + 55 = 150$ minutes. Le temps manquant est $x = 208 - 150 = 58$ minutes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

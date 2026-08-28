@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Ensembles, intervalles, arithmétique",
+  "title": "Algorithmes sur les intervalles et l'arithmétique",
+  "blocks": [
+    {
+      "title": "Appartenance à un intervalle",
+      "content": "Écrire un algorithme (en pseudo‑code ou en syntaxe Python) qui détermine si un nombre réel $x$ appartient à l'intervalle fermé $[a,b]$ où $a$ et $b$ sont deux réels donnés avec $a \\le b$. L'algorithme prend en entrée $x$, $a$, $b$ et affiche « Vrai » si $x \\in [a,b]$ et « Faux » sinon.",
+      "correctAnswer": "Algorithme :\\nEntrées : x, a, b (réels, a ≤ b)\\nSi x ≥ a et x ≤ b alors afficher Vrai sinon afficher Faux\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste les deux inégalités qui définissent l'appartenance à un intervalle fermé : $x \\ge a$ et $x \\le b$. Si les deux sont vraies, $x$ appartient à $[a,b]$, sinon il n'y appartient pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection de deux intervalles",
+      "content": "Écrire un algorithme qui, étant donnés deux intervalles fermés $I_1 = [a_1,b_1]$ et $I_2 = [a_2,b_2]$ avec $a_1 \\le b_1$ et $a_2 \\le b_2$, calcule leur intersection. L'algorithme renvoie l'intervalle intersection $[max(a_1,a_2), min(b_1,b_2)]$ si celui-ci n'est pas vide, sinon il affiche « Intersection vide ».",
+      "correctAnswer": "Algorithme :\\nEntrées : a1, b1, a2, b2 (réels, a1 ≤ b1, a2 ≤ b2)\\ngauche ← max(a1, a2)\\ndroite ← min(b1, b2)\\nSi gauche ≤ droite alors afficher Intersection = [ gauche , droite ]\\nSinon afficher Intersection vide\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intersection de deux intervalles fermés est l'ensemble des points qui appartiennent aux deux. Cela correspond à l'intervalle dont la borne inférieure est le maximum des bornes inférieures et la borne supérieure est le minimum des bornes supérieures. Si la borne inférieure dépasse la borne supérieure, l'intersection est vide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD d'une liste d'entiers",
+      "content": "Écrire un algorithme qui calcule le plus grand commun diviseur (PGCD) d'une liste non vide d'entiers positifs en utilisant l'algorithme d'Euclide de manière itérative. L'algorithme prend en entrée une liste L d'entiers et affiche le PGCD de tous ses éléments.",
+      "correctAnswer": "Algorithme :\\nEntrée : liste L d'entiers positifs (longueur ≥ 1)\\npgcd ← L[0]\\nPour chaque entier k dans L à partir du deuxième élément :\\n    pgcd ← Euclide(pgcd, k)\\nAfficher pgcd\\n\\nFonction Euclide(a, b) :\\n    Tant que b ≠ 0 :\\n        r ← a mod b\\n        a ← b\\n        b ← r\\n    Retourner a\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de plusieurs nombres s'obtient en calculant successivement le PGCD du résultat courant avec le nombre suivant. L'algorithme d'Euclide calcule le PGCD de deux entiers par divisions successives jusqu'à obtenir un reste nul. La boucle principale met à jour la variable pgcd à chaque itération.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Corriger une séquence",
+  "title": "Corriger des séquences d'instructions",
+  "blocks": [
+    {
+      "title": "Erreur de direction",
+      "content": "Relie chaque instruction erronée à la correction pour déplacer un robot vers la case $2$ à droite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Avancer de $1$ case à gauche",
+          "right": "Avancer de $1$ case à droite"
+        },
+        {
+          "left": "Tourner à gauche",
+          "right": "Tourner à droite"
+        },
+        {
+          "left": "Reculer de $2$ cases",
+          "right": "Avancer de $2$ cases"
+        }
+      ],
+      "explanation": "Pour aller vers la droite, il faut utiliser des instructions de mouvement vers la droite ou des rotations dans le bon sens, et non aller à gauche ou reculer.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des instructions",
+      "content": "Une séquence doit permettre de dessiner un carré. Relie l'instruction mal placée à sa position correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Tourner de $90$ degrés avant de tracer le premier trait",
+          "right": "Tracer le premier trait puis tourner de $90$ degrés"
+        },
+        {
+          "left": "S'arrêter avant d'avoir fait les $4$ côtés",
+          "right": "Répéter le tracé et le tournant $4$ fois"
+        },
+        {
+          "left": "Tourner de $45$ degrés",
+          "right": "Tourner de $90$ degrés"
+        }
+      ],
+      "explanation": "Pour un carré, il faut tracer un côté puis tourner à angle droit, et répéter cette opération exactement quatre fois.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation et correction",
+      "content": "Relie la séquence répétitive à sa version corrigée et simplifiée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Avancer, Avancer, Avancer",
+          "right": "Répéter $3$ fois : Avancer"
+        },
+        {
+          "left": "Tourner à droite, Tourner à droite",
+          "right": "Faire un demi tour"
+        },
+        {
+          "left": "Monter, Descendre",
+          "right": "Ne rien faire"
+        }
+      ],
+      "explanation": "Une séquence peut être corrigée en supprimant des actions inutiles (monter puis descendre) ou en utilisant une boucle pour simplifier les répétitions.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

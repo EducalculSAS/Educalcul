@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation de la moyenne",
+  "blocks": [
+    {
+      "title": "Moyenne et répartition",
+      "content": "La moyenne d'une série de notes est $12$. Cela signifie que si on répartissait équitablement le total des points entre tous les élèves, chacun aurait {{1}} points.",
+      "correctAnswer": "",
+      "blanks": [
+        "12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne est le quotient du total des points par le nombre d'élèves. Si la moyenne est $12$, chaque élève aurait $12$ points après répartition équitable.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet d'une nouvelle note",
+      "content": "Dans une classe de $5$ élèves, la moyenne des notes est $14$. Si un sixième élève obtient $20$, la nouvelle moyenne sera {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "15"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total initial est $5 \\times 14 = 70$. En ajoutant la note $20$, le total devient $90$. La nouvelle moyenne est $90 \\div 6 = 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Influence d'une valeur aberrante",
+      "content": "Une série de $8$ valeurs a une moyenne de $10$. La valeur la plus grande, $30$, est une valeur aberrante. Si on retire cette valeur, la moyenne des $7$ valeurs restantes sera {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "7,14|7.14"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total initial est $8 \\times 10 = 80$. En retirant $30$, le total devient $50$. La moyenne des $7$ valeurs restantes est $50 \\div 7 \\approx 7,14$ (ou $7.14$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire une échelle",
+  "title": "Lire une échelle sur un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Question 1 : Valeur d'une graduation",
+      "content": "Un diagramme en bâtons a une échelle qui va de $0$ à $20$. Il y a $10$ graduations espacées régulièrement. Écris un algorithme (ou une suite d'instructions simples) pour trouver la valeur représentée par la troisième graduation.",
+      "correctAnswer": "1. Identifier la valeur maximale : $20$.\\n2. Compter le nombre total de graduations : $10$.\\n3. Calculer la valeur d'une graduation : $20 \\div 10 = 2$.\\n4. Multiplier la valeur d'une graduation par le numéro de la graduation cherchée : $2 \\times 3 = 6$.\\nLa troisième graduation vaut $6$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle commence à $0$ et finit à $20$. Avec $10$ graduations, chaque graduation représente $20 \\div 10 = 2$ unités. La troisième graduation correspond donc à $3 \\times 2 = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Algorithme général pour lire une barre",
+      "content": "On donne un diagramme en bâtons dont l'échelle va de $0$ à $M$ (maximum) et qui comporte $N$ graduations égales. Une barre atteint la graduation numéro $k$ (en partant de $1$). Écris un algorithme qui calcule la valeur lue sur cette barre.",
+      "correctAnswer": "Algorithme LireBarre(M, N, k) :\\n1. Calculer l'écart entre deux graduations : e = M / N.\\n2. Calculer la valeur de la graduation k : valeur = k * e.\\n3. Retourner valeur.\\nExemple : si M = 50, N = 5, k = 4 alors e = 50 / 5 = 10 et valeur = 4 * 10 = 40.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur d'une graduation est le maximum divisé par le nombre de graduations. La barre qui s'arrête à la graduation $k$ vaut $k$ fois cet écart. L'algorithme utilise seulement une division et une multiplication.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Échelle ne commençant pas à zéro",
+      "content": "Un diagramme en bâtons a une échelle qui commence à $10$ et finit à $60$. Il y a $5$ graduations régulières (la première au-dessus de $10$, la dernière à $60$). Écris un algorithme qui, étant donné le numéro de graduation $k$ (de $1$ à $5$), renvoie la valeur correspondante.",
+      "correctAnswer": "Algorithme LireBarreDecale(min, max, N, k) :\\n1. Calculer l'amplitude totale : A = max - min. Ici A = 60 - 10 = 50.\\n2. Calculer l'écart entre deux graduations : e = A / N. Ici e = 50 / 5 = 10.\\n3. Calculer la valeur : valeur = min + k * e.\\n4. Retourner valeur.\\nPour k = 3 : valeur = 10 + 3 * 10 = 40.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quand l'échelle ne part pas de zéro, il faut d'abord trouver l'amplitude (max - min). Chaque graduation représente amplitude / nombre de graduations. La valeur lue est le minimum plus k fois cet écart.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 108,
+  "_course_code": "ce1-t05-c01-reperer-donnees-et-question",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Séparer informations utiles et inutiles",
+  "title": "Quiz : Informations utiles ou inutiles (CE1)",
+  "questions": [
+    {
+      "text": "Léa a $8$ bonbons. Elle en donne $3$ à son frère. Son frère a $5$ ans. Combien de bonbons reste-t-il à Léa ? Quelle information est inutile pour répondre ?",
+      "options": [
+        "Léa a $8$ bonbons",
+        "Elle en donne $3$ à son frère",
+        "Son frère a $5$ ans",
+        "Combien de bonbons reste-t-il"
+      ],
+      "correctAnswer": "Son frère a $5$ ans",
+      "explanation": "Pour savoir combien de bonbons il reste à Léa, il faut connaître le nombre de bonbons au départ ($8$) et le nombre donnés ($3$). L'âge du frère ($5$ ans) est une information contextuelle qui ne change rien au calcul de la soustraction $8 - 3 = 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, il y a $12$ garçons et $15$ filles. $3$ élèves sont absents aujourd'hui. La maîtresse a $30$ ans. Combien d'élèves sont présents dans la classe ? Quelle information ne sert pas ?",
+      "options": [
+        "Il y a $12$ garçons",
+        "Il y a $15$ filles",
+        "$3$ élèves sont absents",
+        "La maîtresse a $30$ ans"
+      ],
+      "correctAnswer": "La maîtresse a $30$ ans",
+      "explanation": "Pour trouver le nombre d'élèves présents, on additionne les garçons et les filles ($12 + 15 = 27$ élèves au total) puis on retire les absents ($27 - 3 = 24$ présents). L'âge de la maîtresse est une information totalement étrangère au problème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tom a $20$ euros. Sa grand-mère lui donne $10$ euros. Son oncle a $40$ ans. Combien d'euros Tom a-t-il maintenant ? Quelle information est de trop ?",
+      "options": [
+        "Tom a $20$ euros",
+        "Sa grand-mère lui donne $10$ euros",
+        "Son oncle a $40$ ans",
+        "Combien d'euros Tom a-t-il"
+      ],
+      "correctAnswer": "Son oncle a $40$ ans",
+      "explanation": "La question demande le total d'argent que possède Tom. Il faut additionner ce qu'il avait ($20$) et ce qu'il a reçu ($10$), soit $20 + 10 = 30$ euros. L'âge de l'oncle ne donne aucune indication sur la somme d'argent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $18$ pommes dans un panier. $5$ sont vertes, les autres sont rouges. $3$ pommes sont pourries. Combien y a-t-il de pommes rouges ? Quelle information est inutile ?",
+      "options": [
+        "Il y a $18$ pommes au total",
+        "$5$ sont vertes",
+        "$3$ pommes sont pourries",
+        "Les autres sont rouges"
+      ],
+      "correctAnswer": "$3$ pommes sont pourries",
+      "explanation": "Pour trouver le nombre de pommes rouges, on soustrait le nombre de pommes vertes du total : $18 - 5 = 13$ pommes rouges. Le fait que $3$ pommes soient pourries ne change pas leur couleur (verte ou rouge), cette information est donc inutile pour répondre à la question posée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un problème : 'Marc a $15$ billes. Il en perd $4$. Il en gagne $6$. Son sac est bleu.' Si la question est : 'Combien de billes Marc a-t-il à la fin ?', quelle information du texte ne sert à rien pour calculer la réponse ?",
+      "options": [
+        "Marc a $15$ billes",
+        "Il en perd $4$",
+        "Il en gagne $6$",
+        "Son sac est bleu"
+      ],
+      "correctAnswer": "Son sac est bleu",
+      "explanation": "Le calcul final demande de partir de $15$, d'enlever $4$ (perdues) puis d'ajouter $6$ (gagnées) : $15 - 4 + 6 = 17$ billes. La couleur du sac (bleu) est un détail descriptif qui n'influence pas le nombre de billes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

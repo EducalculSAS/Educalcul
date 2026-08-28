@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 463,
+  "_course_code": "3eme-t02-c03-equations",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Produit nul si prévu",
+  "title": "Quiz : Produit nul",
+  "questions": [
+    {
+      "text": "Résous l'équation $(x-3)(x+2)=0$.",
+      "options": [
+        "$x = 3$ ou $x = -2$",
+        "$x = 3$",
+        "$x = -2$",
+        "$x = 0$"
+      ],
+      "correctAnswer": "$x = 3$ ou $x = -2$",
+      "explanation": "Le produit de deux facteurs est nul si et seulement si l'un au moins des facteurs est nul. Donc $x-3=0$ donne $x=3$ et $x+2=0$ donne $x=-2$. Les autres options ne donnent qu'une seule solution ou une valeur incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $x^2 - 5x + 6 = 0$ en factorisant.",
+      "options": [
+        "$x = 2$ ou $x = 3$",
+        "$x = -2$ ou $x = -3$",
+        "$x = 1$ ou $x = 6$",
+        "$x = 0$"
+      ],
+      "correctAnswer": "$x = 2$ ou $x = 3$",
+      "explanation": "On factorise $x^2 - 5x + 6 = (x-2)(x-3)$. D'après la propriété du produit nul, $(x-2)(x-3)=0$ implique $x-2=0$ ou $x-3=0$, donc $x=2$ ou $x=3$. Les autres options correspondent à des factorisations erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $(x+1)(2x-4)(x-5)=0$.",
+      "options": [
+        "$x = -1$, $x = 2$ ou $x = 5$",
+        "$x = -1$ ou $x = 5$",
+        "$x = 2$ ou $x = 5$",
+        "$x = -1$, $x = -2$ ou $x = 5$"
+      ],
+      "correctAnswer": "$x = -1$, $x = 2$ ou $x = 5$",
+      "explanation": "Chaque facteur peut être nul : $x+1=0 \\Rightarrow x=-1$, $2x-4=0 \\Rightarrow 2x=4 \\Rightarrow x=2$, $x-5=0 \\Rightarrow x=5$. Les trois valeurs sont solutions. Les autres options omettent une solution ou en ajoutent une fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $3(x-4)(x+1)=0$.",
+      "options": [
+        "$x = 4$ ou $x = -1$",
+        "$x = -4$ ou $x = 1$",
+        "$x = 0$",
+        "$x = 3$"
+      ],
+      "correctAnswer": "$x = 4$ ou $x = -1$",
+      "explanation": "Le coefficient $3$ est non nul, donc le produit nul revient à $(x-4)(x+1)=0$. Ainsi $x-4=0 \\Rightarrow x=4$ et $x+1=0 \\Rightarrow x=-1$. Les autres options confondent les signes ou ignorent le coefficient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a pour dimensions $(x+2)$ cm et $(x-3)$ cm. Son aire est nulle. Quelles sont les valeurs possibles de $x$ ?",
+      "options": [
+        "$x = -2$ ou $x = 3$",
+        "$x = 2$ ou $x = -3$",
+        "$x = 0$",
+        "$x = 5$"
+      ],
+      "correctAnswer": "$x = -2$ ou $x = 3$",
+      "explanation": "L'aire est $(x+2)(x-3)$. Pour qu'elle soit nulle, il faut $(x+2)(x-3)=0$, donc $x+2=0 \\Rightarrow x=-2$ ou $x-3=0 \\Rightarrow x=3$. Les autres options ne satisfont pas l'équation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

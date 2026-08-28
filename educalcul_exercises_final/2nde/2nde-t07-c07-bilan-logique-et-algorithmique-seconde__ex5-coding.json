@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Notations, code, automatismes",
+  "title": "Approfondissement : Notations, code, automatismes",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui demande à l'utilisateur un entier naturel $n$ et affiche la somme des entiers de $1$ à $n$.",
+      "correctAnswer": "Algorithme :\\nDemander n\\ns ← 0\\nPour k de 1 à n faire\\n    s ← s + k\\nFin pour\\nAfficher s",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la somme à $0$. Ensuite, une boucle parcourt les entiers de $1$ à $n$ en ajoutant chaque valeur à la somme. À la fin, on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du factorielle",
+      "content": "Écrire un algorithme qui calcule $n!$ pour un entier naturel $n$ donné.",
+      "correctAnswer": "Algorithme :\\nDemander n\\nfact ← 1\\nPour k de 1 à n faire\\n    fact ← fact × k\\nFin pour\\nAfficher fact",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise le produit à $1$. La boucle multiplie successivement par chaque entier de $1$ à $n$. Le résultat final est $n!$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un algorithme simple",
+      "content": "On considère l'algorithme suivant :\\nVariables : $k$, $s$ entiers\\n$k ← 1$\\n$s ← 0$\\nTant que $k ≤ 5$ faire\\n    $s ← s + k$\\n    $k ← k + 1$\\nFin tant que\\nAfficher $s$\\nQuelle valeur est affichée ?",
+      "correctAnswer": "La valeur affichée est $15$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme additionne les entiers de $1$ à $5$ : $1+2+3+4+5 = 15$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

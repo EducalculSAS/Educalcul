@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Équations, pentes, intersections",
+  "title": "Algorithmes sur les droites : équations, pentes, intersections",
+  "blocks": [
+    {
+      "title": "Équation réduite à partir de deux points",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui, étant donnés les coordonnées de deux points distincts $A(x_A,y_A)$ et $B(x_B,y_B)$, détermine l'équation réduite de la droite $(AB)$ sous la forme $y = ax + b$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, xB, yB.\\n2. Si xA = xB alors afficher \"Droite verticale : x = \" + xA et arrêter.\\n3. Calculer a = (yB - yA) / (xB - xA).\\n4. Calculer b = yA - a * xA.\\n5. Afficher \"y = \" + a + \"x + \" + b.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule le coefficient directeur a comme le quotient de la différence des ordonnées par la différence des abscisses. L'ordonnée à l'origine b s'obtient en utilisant les coordonnées d'un des points. Le cas particulier xA = xB correspond à une droite verticale dont l'équation ne peut s'écrire sous la forme y = ax + b.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection de deux droites données sous forme réduite",
+      "content": "Écrire un algorithme qui, étant données les équations réduites de deux droites $d_1 : y = a_1 x + b_1$ et $d_2 : y = a_2 x + b_2$, détermine si elles sont parallèles, confondues ou sécantes. Dans le cas sécant, calculer les coordonnées de leur point d'intersection.",
+      "correctAnswer": "Algorithme :\\n1. Lire a1, b1, a2, b2.\\n2. Si a1 = a2 alors\\n      Si b1 = b2 alors afficher \"Droites confondues\".\\n      Sinon afficher \"Droites parallèles distinctes\".\\n   Sinon\\n      Calculer x = (b2 - b1) / (a1 - a2).\\n      Calculer y = a1 * x + b1.\\n      Afficher \"Point d'intersection : (\" + x + \", \" + y + \")\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux droites de même coefficient directeur sont soit parallèles (ordonnées à l'origine différentes) soit confondues (ordonnées à l'origine égales). Si les coefficients directeurs diffèrent, elles se coupent en un point unique dont l'abscisse s'obtient en égalant les deux expressions de y, puis l'ordonnée par substitution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pente et relations entre droites sous forme cartésienne",
+      "content": "Écrire un algorithme qui, étant donnée l'équation cartésienne d'une droite $d : Ax + By + C = 0$ avec $A$ et $B$ non tous deux nuls, calcule sa pente (si elle existe) et détermine si elle est parallèle ou perpendiculaire à une autre droite $d' : A'x + B'y + C' = 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire A, B, C, A', B', C'.\\n2. Si B ≠ 0 alors pente = -A / B sinon pente = \"infinie (droite verticale)\".\\n3. Pour le parallélisme : si A * B' = A' * B alors afficher \"Parallèles\" sinon afficher \"Non parallèles\".\\n4. Pour la perpendicularité : si A * A' + B * B' = 0 alors afficher \"Perpendiculaires\" sinon afficher \"Non perpendiculaires\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La forme cartésienne $Ax+By+C=0$ donne une pente $-\\frac{A}{B}$ lorsque $B\\neq0$ ; sinon la droite est verticale (pente infinie). Deux droites sont parallèles si leurs vecteurs normaux $(A,B)$ et $(A',B')$ sont colinéaires, c'est-à-dire $A B' = A' B$. Elles sont perpendiculaires si le produit scalaire de leurs vecteurs normaux est nul : $A A' + B B' = 0$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

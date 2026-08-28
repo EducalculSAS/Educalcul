@@ -1,0 +1,113 @@
+{
+  "_status": "done",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Aligner les rangs",
+  "title": "Quiz : Aligner les rangs pour additionner jusqu'à 10 000",
+  "questions": [
+    {
+      "text": "Comment doit-on écrire l'addition $425 + 361$ en pose pour bien aligner les rangs ?",
+      "options": [
+        "Les chiffres des unités sous les unités, les dizaines sous les dizaines, les centaines sous les centaines",
+        "Les chiffres des unités sous les dizaines, les dizaines sous les centaines, les centaines sous les milliers",
+        "Tous les chiffres décalés d'un rang vers la gauche",
+        "Les chiffres écrits dans l'ordre sans se soucier des colonnes"
+      ],
+      "correctAnswer": "Les chiffres des unités sous les unités, les dizaines sous les dizaines, les centaines sous les centaines",
+      "explanation": "Pour poser une addition, il est indispensable d'aligner les chiffres qui ont la même valeur de position : les unités (5 et 1) dans la même colonne, les dizaines (2 et 6) dans la même colonne, et les centaines (4 et 3) dans la même colonne. Les autres propositions correspondent à des erreurs d'alignement qui mènent à un résultat faux.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "425",
+          "361"
+        ],
+        "result": "786",
+        "carries": []
+      }
+    },
+    {
+      "text": "Regarde cette addition posée :\\n$  3\\,402 $\\n$+   158 $\\n$-------$\\nQuel est l'erreur d'alignement commise ?",
+      "options": [
+        "Le chiffre 8 des unités de 158 n'est pas aligné sous le 2 des unités de 3 402",
+        "Le chiffre 1 des centaines de 158 n'est pas aligné sous le 4 des centaines de 3 402",
+        "Le chiffre 5 des dizaines de 158 n'est pas aligné sous le 0 des dizaines de 3 402",
+        "Il n'y a pas d'erreur, l'alignement est correct"
+      ],
+      "correctAnswer": "Le chiffre 8 des unités de 158 n'est pas aligné sous le 2 des unités de 3 402",
+      "explanation": "Le nombre 158 a 3 chiffres (centaines, dizaines, unités) et 3 402 en a 4 (milliers, centaines, dizaines, unités). Pour les aligner, il faut commencer par la droite : le 8 (unités) doit se placer sous le 2 (unités), le 5 (dizaines) sous le 0 (dizaines), et le 1 (centaines) sous le 4 (centaines). Dans la proposition erronée, le 8 est décalé vers la gauche, probablement sous le 0 des dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "3402",
+          "158"
+        ],
+        "result": "",
+        "carries": []
+      }
+    },
+    {
+      "text": "Quelle est la bonne façon de poser l'addition $3\\,500 + 240$ ?",
+      "options": [
+        "Écrire 3 500 et dessous 240 en alignant le 0 des unités de 240 sous le 0 des unités de 3 500",
+        "Écrire 3 500 et dessous 240 en alignant le 2 des centaines de 240 sous le 5 des centaines de 3 500",
+        "Écrire 3 500 et dessous 240 en alignant le 4 des dizaines de 240 sous le 0 des unités de 3 500",
+        "Écrire les deux nombres côte à côte sans les mettre en colonne"
+      ],
+      "correctAnswer": "Écrire 3 500 et dessous 240 en alignant le 0 des unités de 240 sous le 0 des unités de 3 500",
+      "explanation": "Le nombre 3 500 a 4 chiffres (milliers, centaines, dizaines, unités) et 240 en a 3 (centaines, dizaines, unités). On aligne toujours en partant de la droite (les unités). Le 0 des unités de 240 se place donc sous le 0 des unités de 3 500. Cela place ensuite le 4 (dizaines) sous le 0 (dizaines) et le 2 (centaines) sous le 5 (centaines). La colonne des milliers de 3 500 reste avec le 3 seul.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "3500",
+          "240"
+        ],
+        "result": "3740",
+        "carries": []
+      }
+    },
+    {
+      "text": "Pour bien poser une addition, quel critère détermine dans quelle colonne écrire chaque chiffre ?",
+      "options": [
+        "La valeur de position du chiffre (unités, dizaines, centaines, milliers)",
+        "La grandeur du chiffre (les plus gros à gauche, les petits à droite)",
+        "L'ordre d'écriture du nombre (le premier chiffre du nombre va dans la première colonne)",
+        "La couleur du chiffre"
+      ],
+      "correctAnswer": "La valeur de position du chiffre (unités, dizaines, centaines, milliers)",
+      "explanation": "Chaque chiffre d'un nombre a une valeur qui dépend de sa position : c'est le système de numération décimal. Le chiffre le plus à droite est le chiffre des unités, le suivant à gauche est le chiffre des dizaines, puis des centaines, puis des milliers. Pour additionner, on additionne les unités avec les unités, les dizaines avec les dizaines, etc. C'est pourquoi on aligne les chiffres selon leur rang (valeur de position), et non selon leur taille ou leur ordre d'apparition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces propositions, laquelle montre le bon alignement pour calculer $120 + 4\\,500 + 37$ ?",
+      "options": [
+        "Proposition A :\\n  120\\n 4500\\n+  37\\n------",
+        "Proposition B :\\n  120\\n 4500\\n+ 37\\n------",
+        "Proposition C :\\n   120\\n  4500\\n+   37\\n------",
+        "Proposition D :\\n120\\n4500\\n37\\n---"
+      ],
+      "correctAnswer": "Proposition A :\\n  120\\n 4500\\n+  37\\n------",
+      "explanation": "Il faut aligner les trois nombres sur les unités (le 0 de 120, le 0 de 4 500 et le 7 de 37 dans la même colonne). La Proposition A montre cet alignement : les unités sont alignées à droite, ce qui place les dizaines (2, 0, 3) et les centaines (1, 5) correctement. La Proposition B aligne le 7 des unités sous le 0 des dizaines. La Proposition C décale tout vers la droite. La Proposition D n'est pas une pose en colonnes.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "120",
+          "4500",
+          "37"
+        ],
+        "result": "4657",
+        "carries": []
+      }
+    }
+  ]
+}

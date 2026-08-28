@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 408,
+  "_course_code": "5eme-t06-c04-probabilite-d-un-evenement-simple",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Probabilité d'un événement simple",
+  "title": "Probabilité d'un événement simple : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Étapes du calcul",
+      "content": "Range les étapes dans l'ordre logique pour calculer la probabilité d'un événement lors d'une expérience aléatoire.",
+      "items": [
+        "Je détermine le nombre total de résultats possibles.",
+        "Je détermine le nombre de résultats favorables à l'événement.",
+        "J'écris la probabilité sous la forme d'une fraction : nombre de résultats favorables sur nombre de résultats possibles.",
+        "Je simplifie la fraction obtenue si c'est possible."
+      ],
+      "explanation": "Pour calculer une probabilité, on commence toujours par compter les cas possibles (l'univers), puis les cas favorables (l'événement). On forme ensuite la fraction favorable/possible et on la simplifie si besoin.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échelle des probabilités",
+      "content": "Range ces valeurs de probabilité dans l'ordre croissant, de l'événement impossible à l'événement certain.",
+      "items": [
+        "$0$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{4}$",
+        "$1$"
+      ],
+      "explanation": "L'échelle des probabilités va de $0$ (impossible) à $1$ (certain). $\\frac{1}{4}$ est plus petit que $\\frac{1}{2}$, qui est plus petit que $\\frac{3}{4}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème : Boules dans un sac",
+      "content": "Un sac contient 5 boules rouges, 3 boules bleues et 2 boules vertes. On tire une boule au hasard. Range les étapes pour trouver la probabilité de tirer une boule bleue.",
+      "items": [
+        "Je calcule le nombre total de boules : $5 + 3 + 2 = 10$.",
+        "Je compte le nombre de boules bleues (résultats favorables) : $3$.",
+        "J'écris la probabilité : $\\frac{3}{10}$.",
+        "La fraction $\\frac{3}{10}$ est irréductible, c'est la réponse finale."
+      ],
+      "explanation": "D'abord le total (10 boules), ensuite les favorables (3 bleues), puis la fraction 3/10 qui ne se simplifie pas.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

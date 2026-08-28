@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Checklist",
+  "title": "Bilan Calcul 6e - Checklist des compétences",
+  "questions": [
+    {
+      "text": "Quel est le résultat de $15 + 6 \\times 3 - 8 / 2$ en respectant les priorités opératoires ?",
+      "options": [
+        "29",
+        "59",
+        "17",
+        "33"
+      ],
+      "correctAnswer": "29",
+      "explanation": "On applique la règle des priorités : la multiplication et la division avant l'addition et la soustraction. $6 \\times 3 = 18$ et $8 / 2 = 4$. L'expression devient $15 + 18 - 4$. On calcule de gauche à droite : $15 + 18 = 33$, puis $33 - 4 = 29$. L'option 59 correspond à un calcul strictement de gauche à droite sans priorités. L'option 17 vient d'une erreur sur la multiplication ($6 \\times 2$). L'option 33 oublie la soustraction finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la multiplication posée $24 \\times 36$. Quel est le produit ?",
+      "options": [
+        "864",
+        "744",
+        "8640",
+        "784"
+      ],
+      "correctAnswer": "864",
+      "explanation": "On décompose $36$ en $30 + 6$. $24 \\times 6 = 144$. $24 \\times 30 = 720$. On additionne les résultats partiels : $144 + 720 = 864$. L'option 744 correspond à l'oubli de la retenue de $1$ lors du calcul de $24 \\times 3$ (on obtient $62$ au lieu de $72$). L'option 8640 ajoute un zéro de trop. L'option 784 résulte d'erreurs de retenues multiples.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "\\times",
+        "operands": [
+          "24",
+          "36"
+        ],
+        "result": "864",
+        "carries": [
+          "1",
+          "2"
+        ]
+      }
+    },
+    {
+      "text": "On effectue la division euclidienne de $538$ par $6$. Quel sont le quotient et le reste ?",
+      "options": [
+        "Quotient 89, reste 4",
+        "Quotient 89, reste 10",
+        "Quotient 83, reste 4",
+        "Quotient 90, reste -2"
+      ],
+      "correctAnswer": "Quotient 89, reste 4",
+      "explanation": "Combien de fois $6$ dans $53$ ? $8$ fois ($8 \\times 6 = 48$). Reste $5$. On abaisse le $8$, on a $58$. Combien de fois $6$ dans $58$ ? $9$ fois ($9 \\times 6 = 54$). Reste $4$. Le quotient est $89$ et le reste $4$. Vérification : $89 \\times 6 + 4 = 534 + 4 = 538$. L'option avec reste $10$ est impossible car le reste doit être strictement inférieur au diviseur $6$. L'option quotient $83$ correspond à une erreur sur le deuxième chiffre. L'option quotient $90$ donnerait $540 > 538$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $12,5 + 3,78$ en alignant correctement les virgules.",
+      "options": [
+        "16,28",
+        "15,128",
+        "16,128",
+        "4,93"
+      ],
+      "correctAnswer": "16,28",
+      "explanation": "On écrit $12,5$ sous la forme $12,50$ pour avoir le même nombre de décimales. On aligne les virgules : unités sous unités, dixièmes sous dixièmes, centièmes sous centièmes. $0 + 8 = 8$ centièmes. $5 + 7 = 12$ dixièmes, j'écris $2$ et je retiens $1$ unité. $2 + 3 + 1 = 6$ unités. $1$ dizaine. Résultat : $16,28$. Les options $15,128$ et $16,128$ correspondent à un non-alignement des virgules (addition comme des nombres entiers). L'option $4,93$ est le résultat d'une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est le résultat exact de $456 \\times 19$ ?",
+      "options": [
+        "8664",
+        "8654",
+        "8764",
+        "8644"
+      ],
+      "correctAnswer": "8664",
+      "explanation": "On peut calculer $456 \\times 19$ en faisant $456 \\times 20 - 456$. $456 \\times 20 = 9120$. $9120 - 456 = 8664$. On peut aussi faire la multiplication posée : $456 \\times 9 = 4104$ et $456 \\times 10 = 4560$. $4104 + 4560 = 8664$. Les autres options correspondent à des erreurs de retenues ou de décalage lors de la multiplication posée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

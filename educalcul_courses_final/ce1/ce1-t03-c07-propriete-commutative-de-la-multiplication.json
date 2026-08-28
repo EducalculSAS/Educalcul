@@ -1,0 +1,299 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.769995+00:00",
+  "id": 94,
+  "code": "ce1-t03-c07",
+  "title": "Propriété commutative de la multiplication",
+  "description": "Cours structuré Educalcul : Propriété commutative de la multiplication.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Propriété commutative de la multiplication",
+    "objectif_global": "Propriété commutative de la multiplication",
+    "mini_lecons_imposees": [
+      "Comparer 3×4 et 4×3.",
+      "Utiliser un quadrillage.",
+      "Choisir l'ordre le plus pratique."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Comparer 3×4 et 4×3.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer 3×4 et 4×3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vas découvrir que multiplier trois fois quatre donne le même résultat que multiplier quatre fois trois. Imagine trois paniers, dans chaque panier il y a quatre pommes bien rouges. Si tu comptes toutes les pommes une par une, tu en as douze au total. C'est exactement la même chose si tu as quatre paniers avec trois pommes chacun, le nombre de pommes ne change pas."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "3 lignes de 4 cases = 12 cases"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le quadrillage ci‑dessous : trois lignes et quatre colonnes forment douze cases coloriées en bleu. Maintenant, tourne le quadrillage dans ta tête : quatre lignes et trois colonnes forment aussi douze cases, mais la forme du rectangle est différente. Les deux images ont le même nombre de cases, donc le produit ne change pas, même si l'apparence du rectangle change."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 3,
+              "highlighted": 12,
+              "caption": "4 lignes de 3 cases = 12 cases"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie toi‑même : écris le calcul 3 × 4 et le calcul 4 × 3 sur ton cahier. Tu verras que les deux donnent 12, le même total. Cette propriété s'appelle la commutativité de la multiplication, mais pour l'instant retiens simplement que l'ordre des nombres ne change pas le résultat final. C'est une aide précieuse pour calculer plus vite."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 \\\\times 4 = 4 \\\\times 3 = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font 3 × 4 ?",
+              "answer": "12",
+              "hint": "Compte trois groupes de quatre.",
+              "explanation": "3 fois 4 fait 12."
+            },
+            {
+              "question": "Combien font 4 × 3 ?",
+              "answer": "12",
+              "hint": "Compte quatre groupes de trois.",
+              "explanation": "4 fois 3 fait aussi 12."
+            },
+            {
+              "question": "Les deux calculs donnent-ils le même résultat ?",
+              "answer": "Oui",
+              "hint": "Regarde le quadrillage.",
+              "explanation": "3 × 4 = 4 × 3 = 12, la multiplication est commutative."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser un quadrillage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser un quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un quadrillage, c'est comme un tableau de cases alignées. Si tu veux montrer 2 fois 5, tu colories deux lignes de cinq cases chacune. Tu obtiens dix cases en tout. Si tu fais l'inverse, cinq lignes de deux cases, tu as encore dix cases. Le quadrillage te permet de voir tout de suite que les deux façons donnent le même nombre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison 2×5 et 5×2",
+              "bars": [
+                {
+                  "label": "2 × 5",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5 × 2",
+                  "value": 10,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire un quadrillage, compte d'abord le nombre de lignes, puis le nombre de colonnes dans chaque ligne. Par exemple, un tableau avec deux lignes et cinq colonnes s'écrit 2 × 5. Si tu échanges les nombres, tu as 5 × 2, mais le total de cases reste dix. Essaie de dessiner ce tableau sur une feuille pour bien comprendre."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Colonne 1",
+                "Colonne 2",
+                "Colonne 3",
+                "Colonne 4",
+                "Colonne 5"
+              ],
+              "rows": [
+                [
+                  "Ligne 1",
+                  "■",
+                  "■",
+                  "■",
+                  "■",
+                  "■"
+                ],
+                [
+                  "Ligne 2",
+                  "■",
+                  "■",
+                  "■",
+                  "■",
+                  "■"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as un calcul comme 2 × 5, tu peux choisir l'ordre qui te semble le plus simple. Le quadrillage te montre que 2 × 5 et 5 × 2 donnent le même résultat, dix. Écris l'égalité 2 × 5 = 5 × 2 = 10 pour la retenir. Cette habitude t'aidera plus tard avec des nombres plus grands."
+            },
+            {
+              "type": "display_math",
+              "latex": "2 \\\\times 5 = 5 \\\\times 2 = 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de cases y a-t-il dans un quadrillage 2 lignes × 5 colonnes ?",
+              "answer": "10",
+              "hint": "Compte les cases.",
+              "explanation": "2 × 5 = 10."
+            },
+            {
+              "question": "Écris le calcul pour un quadrillage de 5 lignes et 2 colonnes.",
+              "answer": "5 × 2 = 10",
+              "hint": "Inverse les nombres.",
+              "explanation": "5 × 2 donne aussi 10."
+            },
+            {
+              "question": "Quelle égalité montre que l'ordre ne change pas le produit pour 2 et 5 ?",
+              "answer": "2 × 5 = 5 × 2 = 10",
+              "hint": "Utilise le quadrillage.",
+              "explanation": "Les deux produits valent 10."
+            }
+          ]
+        },
+        {
+          "title": "Choisir l'ordre le plus pratique.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'ordre le plus pratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un ordre de multiplication est plus facile à faire dans ta tête. Par exemple, 6 × 2 veut dire six groupes de deux. C'est simple : tu comptes 2, 4, 6, 8, 10, 12. Si tu fais 2 × 6, tu dois ajouter six deux fois, ce qui est un peu plus long. Le résultat est toujours 12, mais le premier ordre est plus rapide."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "12 = 1 dizaine et 2 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec des nombres plus grands, le choix de l'ordre devient encore plus utile. Imagine 8 × 3 : tu peux penser à trois groupes de huit, ce qui donne 24. Si tu fais 3 × 8, tu ajoutes huit trois fois, ce qui demande un peu plus d'effort. Sur une droite numérique, les deux calculs aboutissent au même point 24, peu importe l'ordre."
+            },
+            {
+              "type": "number_line",
+              "caption": "8 × 3 = 3 × 8 = 24",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 24,
+                  "label": "24"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour choisir l'ordre le plus pratique, regarde quel nombre est le plus petit. Multiplier par le plus petit nombre demande moins de sauts dans ton comptage. Par exemple, 9 × 4 est plus simple que 4 × 9 car tu ajoutes quatre neuf fois au lieu de neuf quatre fois. Écris l'égalité 9 × 4 = 4 × 9 = 36 pour t'en souvenir."
+            },
+            {
+              "type": "display_math",
+              "latex": "9 \\\\times 4 = 4 \\\\times 9 = 36"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer 3×4 et 4×3.",
+                "Je sais utiliser un quadrillage pour voir la commutativité.",
+                "Je sais choisir l'ordre le plus pratique pour multiplier."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel ordre est plus simple pour calculer 6 × 2 ?",
+              "answer": "6 × 2",
+              "hint": "Compte par deux.",
+              "explanation": "6 groupes de 2 sont faciles à compter."
+            },
+            {
+              "question": "Sur une droite numérique, où se trouve le résultat de 8 × 3 ?",
+              "answer": "24",
+              "hint": "Fais trois sauts de 8.",
+              "explanation": "8 × 3 = 24."
+            },
+            {
+              "question": "Écris l'égalité pour 9 × 4 et 4 × 9.",
+              "answer": "9 × 4 = 4 × 9 = 36",
+              "hint": "Multiplie dans les deux sens.",
+              "explanation": "Les deux donnent 36."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 119,
+  "_course_code": "ce1-t06-c03-mesurer-et-comparer-des-masses",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Utiliser g et kg en contexte",
+  "title": "Algorithmes pour convertir, comparer et additionner des masses en grammes et kilogrammes",
+  "blocks": [
+    {
+      "title": "Conversion en grammes",
+      "content": "Écris un algorithme simple qui prend en entrée une masse exprimée en kilogrammes et en grammes, et qui affiche la masse totale en grammes. Utilise le fait que $1 kg = 1000 g$.",
+      "correctAnswer": "Algorithme :\\n1. Lire kg et g.\\n2. Calculer $total = kg \\times 1000 + g$.\\n3. Afficher $total$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie le nombre de kilogrammes par 1000 pour obtenir les grammes équivalents, puis on ajoute les grammes restants. Le résultat est la masse totale en grammes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux masses",
+      "content": "Écris un algorithme qui compare deux masses données chacune en kilogrammes et grammes, et qui affiche laquelle est la plus lourde. Pense à convertir chaque masse en grammes avant de comparer.",
+      "correctAnswer": "Algorithme :\\n1. Lire kg1, g1, kg2, g2.\\n2. Calculer $total1 = kg1 \\times 1000 + g1$.\\n3. Calculer $total2 = kg2 \\times 1000 + g2$.\\n4. Si $total1 > total2$ alors afficher \"La première masse est plus lourde\".\\n5. Sinon si $total2 > total1$ alors afficher \"La deuxième masse est plus lourde\".\\n6. Sinon afficher \"Les deux masses sont égales\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On convertit chaque masse en grammes pour pouvoir les comparer directement. Ensuite on utilise des conditions pour déterminer la plus grande.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de deux masses avec résultat en kg et g",
+      "content": "Écris un algorithme qui additionne deux masses données en kilogrammes et grammes, et qui donne le résultat en kilogrammes et grammes (avec moins de 1000 grammes).",
+      "correctAnswer": "Algorithme :\\n1. Lire kg1, g1, kg2, g2.\\n2. Calculer $total = (kg1 \\times 1000 + g1) + (kg2 \\times 1000 + g2)$.\\n3. Calculer $kg_res = total \\div 1000$ (division entière).\\n4. Calculer $g_res = total \\mod 1000$ (reste).\\n5. Afficher $kg_res$ et $g_res$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On convertit les deux masses en grammes, on les additionne, puis on retrouve les kilogrammes par division entière par 1000 et les grammes restants par le modulo 1000.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

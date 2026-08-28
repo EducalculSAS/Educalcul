@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 489,
+  "_course_code": "3eme-t06-c05-bilan-espace-3e",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Transformations, sections, volumes",
+  "title": "Algorithmes de calcul de volumes",
+  "blocks": [
+    {
+      "title": "Volume d'un prisme droit",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui calcule le volume $V$ d'un prisme droit connaissant l'aire de sa base $B$ et sa hauteur $h$.",
+      "correctAnswer": "Algorithme :\\n1. Lire B, h\\n2. V ← B * h\\n3. Afficher V",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'un prisme droit est le produit de l'aire de la base par la hauteur. L'algorithme lit les deux grandeurs, effectue la multiplication et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'une pyramide",
+      "content": "Écrire un algorithme qui calcule le volume $V$ d'une pyramide à base quelconque connaissant l'aire de sa base $B$ et sa hauteur $h$.",
+      "correctAnswer": "Algorithme :\\n1. Lire B, h\\n2. V ← (B * h) / 3\\n3. Afficher V",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'une pyramide vaut le tiers du produit de l'aire de la base par la hauteur. L'algorithme applique cette formule.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'un cône (solide de révolution)",
+      "content": "Écrire un algorithme qui calcule le volume $V$ d'un cône obtenu par rotation d'un triangle rectangle de cathétus $r$ (rayon de la base) et $h$ (hauteur) autour du cathétus $h$. Utiliser la valeur approchée de $\\pi$ : 3,14.",
+      "correctAnswer": "Algorithme :\\n1. Lire r, h\\n2. pi ← 3.14\\n3. V ← (pi * r * r * h) / 3\\n4. Afficher V",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le cône a pour volume le tiers du produit de l'aire du disque de base ($\\pi r^2$) par la hauteur. L'algorithme calcule $\\pi r^2 h / 3$ avec $\\pi ≈ 3,14$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

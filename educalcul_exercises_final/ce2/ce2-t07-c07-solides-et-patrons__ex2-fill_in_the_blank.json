@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître un patron de cube / pavé simple",
+  "title": "Reconnaître les patrons du cube et du pavé droit",
+  "blocks": [
+    {
+      "title": "Nombre de faces d'un cube",
+      "content": "Un cube possède {{1}} faces. Par conséquent, son patron est toujours constitué de six carrés identiques.",
+      "correctAnswer": "",
+      "blanks": [
+        "six|6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un cube est un solide qui a 6 faces carrées. Pour le construire à partir d'un patron, il faut donc exactement 6 carrés reliés entre eux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "La forme en croix",
+      "content": "Le patron de cube le plus classique est organisé en forme de {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "croix"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il existe 11 patrons différents pour un cube. Celui en forme de croix (quatre carrés en ligne avec un carré de chaque côté du deuxième) est le plus facile à visualiser et à replier mentalement.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron de cube en forme de croix"
+      }
+    },
+    {
+      "title": "Le patron d'un pavé droit",
+      "content": "Contrairement au cube, les faces d'un pavé droit sont des {{1}}. Son patron est composé de {{2}} rectangles (ou carrés).",
+      "correctAnswer": "",
+      "blanks": [
+        "rectangles",
+        "six|6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un pavé droit a 6 faces qui sont des rectangles (certains peuvent être des carrés). Son patron est donc une figure plane formada de 6 rectangles accolés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

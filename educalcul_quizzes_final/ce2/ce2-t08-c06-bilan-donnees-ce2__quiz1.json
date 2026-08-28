@@ -1,0 +1,165 @@
+{
+  "_status": "done",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire et produire",
+  "title": "Quiz : Lire et produire des données (CE2)",
+  "questions": [
+    {
+      "text": "Voici un tableau indiquant le nombre de livres lus par quatre élèves pendant les vacances.\\n\\nÉlève | Nombre de livres\\n------|-----------------\\nLéa   | $8$\\nTom   | $5\\nMia   | $12$\\nNoa   | $7$\\n\\nQui a lu le plus grand nombre de livres ?",
+      "options": [
+        "Léa",
+        "Tom",
+        "Mia",
+        "Noa"
+      ],
+      "correctAnswer": "Mia",
+      "explanation": "Il faut comparer les valeurs de la colonne 'Nombre de livres'. Mia a lu $12$ livres. Léa en a lu $8$, Tom $5$ et Noa $7$. $12$ est le plus grand nombre, donc c'est Mia qui a lu le plus.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Nombre de livres"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "8"
+          ],
+          [
+            "Tom",
+            "5"
+          ],
+          [
+            "Mia",
+            "12"
+          ],
+          [
+            "Noa",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Regarde le diagramme en barres ci-dessous. Il représente les fruits préférés des élèves d'une classe.\\nChaque carré de la grille correspond à $1$ élève.\\n\\nCombien d'élèves ont choisi la pomme comme fruit préféré ?",
+      "options": [
+        "$4$ élèves",
+        "$5$ élèves",
+        "$6$ élèves",
+        "$7$ élèves"
+      ],
+      "correctAnswer": "$6$ élèves",
+      "explanation": "Sur le diagramme, la barre 'Pomme' monte jusqu'à la graduation $6$ sur l'axe vertical. Comme chaque unité représente un élève, $6$ élèves ont choisi la pomme. L'option $5$ correspondrait à la banane, $4$ à l'orange et $7$ n'est atteint par aucun fruit.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Banane",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Orange",
+            "value": 4,
+            "tone": "orange"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous est incomplet. Il montre le nombre de points marqués par trois équipes lors d'un tournoi.\\n\\nÉquipe | Points\\n-------|-------\\nBleue  | $15$\\nRouge  | $?$\\nVerte  | $22$\\n\\nOn sait que l'équipe Rouge a marqué $3$ points de plus que l'équipe Bleue. Quelle valeur faut-il écrire à la place du point d'interrogation ?",
+      "options": [
+        "$12$",
+        "$18$",
+        "$19$",
+        "$25$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "L'équipe Bleue a $15$ points. L'équipe Rouge en a $3$ de plus. Il faut donc calculer $15 + 3 = 18$. L'option $12$ correspond à une soustraction ($15 - 3$), $19$ à une erreur de calcul ($15 + 4$) et $25$ ne correspond à aucune relation donnée.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Équipe",
+          "Points"
+        ],
+        "rows": [
+          [
+            "Bleue",
+            "15"
+          ],
+          [
+            "Rouge",
+            "?"
+          ],
+          [
+            "Verte",
+            "22"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme circulaire montre la répartition des $20$ élèves de la classe selon leur moyen de transport pour venir à l'école.\\n\\nCombien d'élèves viennent à vélo ?",
+      "options": [
+        "$2$ élèves",
+        "$4$ élèves",
+        "$5$ élèves",
+        "$10$ élèves"
+      ],
+      "correctAnswer": "$5$ élèves",
+      "explanation": "La part 'Vélo' représente un quart du cercle ($1/4$). Comme il y a $20$ élèves au total, on calcule le quart de $20$ : $20 \\div 4 = 5$. Donc $5$ élèves viennent à vélo. L'option $10$ correspond à la moitié (Voiture), $4$ à un cinquième (Bus) et $2$ à un dixième (Marche).",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Transport des 20 élèves",
+        "slices": [
+          {
+            "label": "Voiture",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Vélo",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Bus",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Marche",
+            "value": 1,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Tu as relevé les notes (sur $10$) de ton groupe de travail : $7$, $9$, $5$, $8$, $6$.\\nTu veux produire un tableau de tri par ordre croissant pour ton cahier.\\nLaquelle de ces lignes correspond à la première ligne de ton tableau (la plus petite note) ?",
+      "options": [
+        "Note : $5$",
+        "Note : $6$",
+        "Note : $7$",
+        "Note : $9$"
+      ],
+      "correctAnswer": "Note : $5$",
+      "explanation": "Pour trier par ordre croissant, on place la plus petite valeur en premier. Parmi les notes $7, 9, 5, 8, 6$, la plus petite est $5$. La première ligne du tableau indiquera donc 'Note : $5$'. Les autres options correspondent à d'autres notes du groupe mais pas au minimum.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

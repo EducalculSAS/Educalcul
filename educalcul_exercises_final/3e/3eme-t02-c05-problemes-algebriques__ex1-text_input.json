@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Modéliser",
+  "title": "Modélisation d'un remplissage de piscine",
+  "blocks": [
+    {
+      "title": "Écrire la fonction volume-temps",
+      "content": "Une piscine se remplit à un débit constant de 120 litres par minute. Son volume initial est de 200 litres. Exprime le volume $V$ (en litres) en fonction du temps $t$ (en minutes).",
+      "correctAnswer": "V = 120t + 200",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume augmente de 120 litres chaque minute. Au temps $t=0$, le volume est 200 litres. Donc $V(t) = 120 \\times t + 200$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Temps pour atteindre un volume donné",
+      "content": "En utilisant la fonction trouvée, détermine au bout de combien de minutes le volume de la piscine atteindra 5000 litres.",
+      "correctAnswer": "40",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $120t + 200 = 5000$. En soustrayant 200 : $120t = 4800$. En divisant par 120 : $t = 40$ minutes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Débit nécessaire pour un objectif",
+      "content": "On souhaite que la piscine contienne 10000 litres après 60 minutes, en conservant le même volume initial de 200 litres. Quel doit être le débit constant (en litres par minute) ?",
+      "correctAnswer": "490/3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Soit $d$ le débit. L'équation est $d \\times 60 + 200 = 10000$. Donc $60d = 9800$ et $d = 9800/60 = 490/3$ litres par minute (environ 163,33 L/min).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Fréquence",
+  "title": "Quiz : Les fréquences (4e)",
+  "questions": [
+    {
+      "text": "On effectue $100$ lancers d'un dé équilibré. Le résultat $6$ apparaît $18$ fois. Quelle est la fréquence d'apparition du $6$ ?",
+      "options": [
+        "$0,18$",
+        "$18$",
+        "$\\frac{1}{6}$",
+        "$0,6$"
+      ],
+      "correctAnswer": "$0,18$",
+      "explanation": "La fréquence d'un événement se calcule en divisant l'effectif de cet événement par le nombre total d'essais. Ici, l'effectif du $6$ est $18$ et le nombre total de lancers est $100$. La fréquence est donc $18 \\div 100 = 0,18$. L'option $18$ correspond à l'effectif, pas à la fréquence. L'option $\\frac{1}{6}$ est la probabilité théorique, pas la fréquence observée. L'option $0,6$ est incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous montre les résultats de $50$ tirages d'une boule dans un sac. Quelle est la fréquence du tirage d'une boule bleue ?",
+      "options": [
+        "$0,25$",
+        "$0,5$",
+        "$0,3$",
+        "$25$"
+      ],
+      "correctAnswer": "$0,5$",
+      "explanation": "Le total des tirages est $50$ (effectif total). L'effectif des boules bleues est $25$. La fréquence se calcule par $\\frac{\\text{effectif de l'événement}}{\\text{effectif total}} = \\frac{25}{50} = 0,5$. L'option $25$ est l'effectif brut. L'option $0,25$ correspondrait à une fréquence sur $100$ essais. L'option $0,3$ ne correspond à aucun calcul pertinent ici.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "15"
+          ],
+          [
+            "Bleu",
+            "25"
+          ],
+          [
+            "Vert",
+            "10"
+          ]
+        ],
+        "caption": "Résultats de 50 tirages"
+      }
+    },
+    {
+      "text": "Quelle est la somme des fréquences de tous les résultats possibles d'une expérience aléatoire ?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$100$",
+        "Elle dépend du nombre d'essais"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "La fréquence est le quotient de l'effectif d'un événement par l'effectif total. La somme des effectifs de tous les résultats possibles est exactement l'effectif total. La somme des fréquences est donc $\\frac{\\text{effectif total}}{\\text{effectif total}} = 1$. C'est une propriété fondamentale : la somme des fréquences vaut toujours $1$ (ou $100\\%$), quel que soit le nombre d'essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce de monnaie $10$ fois et on obtient $7$ faces. On recommence l'expérience en lançant la pièce $1000$ fois. Que peut-on dire de la fréquence de face ?",
+      "options": [
+        "Elle est de $0,7$ pour $10$ lancers et se rapproche de $0,5$ pour $1000$ lancers",
+        "Elle est de $0,7$ pour $10$ lancers et reste $0,7$ pour $1000$ lancers",
+        "Elle est de $0,3$ pour $10$ lancers et se rapproche de $0,5$ pour $1000$ lancers",
+        "Elle est de $0,7$ pour $10$ lancers et devient $1$ pour $1000$ lancers"
+      ],
+      "correctAnswer": "Elle est de $0,7$ pour $10$ lancers et se rapproche de $0,5$ pour $1000$ lancers",
+      "explanation": "Pour $10$ lancers, la fréquence de face est $\\frac{7}{10} = 0,7$. C'est une fréquence observée sur un petit nombre d'essais, elle peut s'éloigner de la probabilité théorique ($0,5$ pour une pièce équilibrée). Selon la loi des grands nombres, lorsque le nombre d'essais augmente (ici $1000$), la fréquence observée a tendance à se stabiliser autour de la probabilité théorique, donc elle se rapproche de $0,5$. Elle ne reste pas figée à $0,7$, ne devient pas $1$, et la fréquence initiale n'est pas $0,3$ (ce serait la fréquence de pile).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors d'une expérience, la fréquence d'un événement est $0,4$. Si on a réalisé $200$ essais au total, quel est l'effectif de cet événement ?",
+      "options": [
+        "$80$",
+        "$40$",
+        "$120$",
+        "$50$"
+      ],
+      "correctAnswer": "$80$",
+      "explanation": "La formule de la fréquence est $f = \\frac{\\text{effectif}}{\\text{total}}$. On cherche l'effectif, donc $\\text{effectif} = f \\times \\text{total} = 0,4 \\times 200 = 80$. L'option $40$ correspondrait à une fréquence de $0,2$. L'option $120$ correspondrait à une fréquence de $0,6$. L'option $50$ correspondrait à une fréquence de $0,25$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

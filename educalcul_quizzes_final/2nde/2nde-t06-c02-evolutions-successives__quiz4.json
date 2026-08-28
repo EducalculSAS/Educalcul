@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Évolutions successives",
+  "title": "Applications des évolutions successives",
+  "questions": [
+    {
+      "text": "Un article coûte $100\\ \\text{€}$. Son prix augmente de $10\\%$ puis diminue de $10\\%$. Quel est son prix final ?",
+      "options": [
+        "$100\\ \\text{€}$",
+        "$99\\ \\text{€}$",
+        "$101\\ \\text{€}$",
+        "$90\\ \\text{€}$"
+      ],
+      "correctAnswer": "$99\\ \\text{€}$",
+      "explanation": "Le coefficient multiplicateur pour une augmentation de $10\\%$ est $1,1$ ; pour une diminution de $10\\%$, c'est $0,9$. Le coefficient global est $1,1 \\times 0,9 = 0,99$. Le prix final est $100 \\times 0,99 = 99\\ \\text{€}$. L'option $100\\ \\text{€}$ correspond à l'erreur classique d'additionner les pourcentages ($+10-10=0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une population augmente de $20\\%$ une année, puis de $30\\%$ l'année suivante. Quel est le pourcentage d'évolution total sur les deux années ?",
+      "options": [
+        "$50\\%$",
+        "$56\\%$",
+        "$60\\%$",
+        "$55\\%$"
+      ],
+      "correctAnswer": "$56\\%$",
+      "explanation": "Les coefficients multiplicateurs sont $1,2$ et $1,3$. Le coefficient global est $1,2 \\times 1,3 = 1,56$. Cela correspond à une augmentation de $56\\%$ (car $1,56 - 1 = 0,56$). L'option $50\\%$ vient de l'addition erronée $20+30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un produit augmente de $20\\%$. De quel pourcentage faut-il le diminuer ensuite pour retrouver le prix initial ?",
+      "options": [
+        "$20\\%$",
+        "$16\\%$",
+        "$16,7\\%$",
+        "$15\\%$"
+      ],
+      "correctAnswer": "$16,7\\%$",
+      "explanation": "Soit $x$ le pourcentage de baisse cherché. On veut $1,2 \\times (1 - x/100) = 1$. Donc $1 - x/100 = 1/1,2 = 5/6 \\approx 0,8333$. Ainsi $x/100 = 1 - 5/6 = 1/6 \\approx 0,1667$, soit $x \\approx 16,67\\%$. Arrondi au dixième : $16,7\\%$. Une baisse de $20\\%$ (option A) mènerait à un coefficient $1,2 \\times 0,8 = 0,96$, prix inférieur à l'initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique une augmentation de $10\\%$ puis une diminution de $10\\%$ à une valeur de départ. Si on inverse l'ordre (diminution puis augmentation), le résultat final est :",
+      "options": [
+        "Strictement supérieur",
+        "Strictement inférieur",
+        "Identique",
+        "Impossible à déterminer sans la valeur de départ"
+      ],
+      "correctAnswer": "Identique",
+      "explanation": "La multiplication des coefficients multiplicateurs est commutative : $1,1 \\times 0,9 = 0,9 \\times 1,1 = 0,99$. Le coefficient global est identique quel que soit l'ordre des opérations. Le résultat final est donc le même dans les deux cas (une diminution globale de $1\\%$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un salaire mensuel de $2\\ 000\\ \\text{€}$ subit une augmentation de $5\\%$, puis de $2\\%$, puis une diminution de $3\\%$. Quel est le nouveau salaire arrondi au centime d'euro ?",
+      "options": [
+        "$2\\ 077,74\\ \\text{€}$",
+        "$2\\ 080,00\\ \\text{€}$",
+        "$2\\ 078,00\\ \\text{€}$",
+        "$2\\ 100,00\\ \\text{€}$"
+      ],
+      "correctAnswer": "$2\\ 077,74\\ \\text{€}$",
+      "explanation": "Coefficient global : $1,05 \\times 1,02 \\times 0,97 = 1,03887$. Nouveau salaire : $2\\ 000 \\times 1,03887 = 2\\ 077,74\\ \\text{€}$. L'option $2\\ 080\\ \\text{€}$ correspond à l'erreur d'additionner les pourcentages ($5+2-3=4\\%$ puis $2000 \\times 1,04 = 2080$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

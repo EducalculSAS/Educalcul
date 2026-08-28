@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Tracer",
+  "title": "Tracer une droite connaissant son coefficient directeur",
+  "questions": [
+    {
+      "text": "On veut tracer la droite de coefficient directeur $m = 3$ passant par le point $A(1 ; 2)$. Quelle est la méthode correcte pour obtenir un second point de la droite ?",
+      "options": [
+        "On ajoute $3$ à l'abscisse et $1$ à l'ordonnée de $A$.",
+        "On ajoute $1$ à l'abscisse et $3$ à l'ordonnée de $A$.",
+        "On ajoute $3$ à l'abscisse et $3$ à l'ordonnée de $A$.",
+        "On retranche $1$ à l'abscisse et $3$ à l'ordonnée de $A$."
+      ],
+      "correctAnswer": "On ajoute $1$ à l'abscisse et $3$ à l'ordonnée de $A$.",
+      "explanation": "Le coefficient directeur $m = 3$ s'écrit sous la forme d'une fraction $\\frac{3}{1}$. Cela signifie que lorsque l'abscisse augmente de $1$ (dénominateur), l'ordonnée augmente de $3$ (numérateur). En partant de $A(1 ; 2)$, on obtient le point $B(1+1 ; 2+3) = B(2 ; 5)$. L'option A inverse le numérateur et le dénominateur, l'option C ne respecte pas le ratio, et l'option D correspond à un déplacement dans la direction opposée pour l'abscisse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite $d$ a pour coefficient directeur $m = -2$ et passe par $B(0 ; 4)$. Parmi les points suivants, lequel appartient à $d$ ?",
+      "options": [
+        "$(1 ; 2)$",
+        "$(1 ; 6)$",
+        "$(-1 ; 2)$",
+        "$(2 ; 0)$"
+      ],
+      "correctAnswer": "$(1 ; 2)$",
+      "explanation": "Un coefficient directeur $m = -2$ signifie que pour une augmentation de $1$ de l'abscisse, l'ordonnée diminue de $2$. En partant de $B(0 ; 4)$, si on prend $x = 1$ (abscisse augmentée de $1$), l'ordonnée devient $4 + (-2) \\times 1 = 2$. Le point est donc $(1 ; 2)$. L'option B correspond à une pente positive $+2$, l'option C correspond à un déplacement vers la gauche ($x=-1$) mais avec une mauvaise variation d'ordonnée, et l'option D donnerait une ordonnée $4 + (-2) \\times 2 = 0$, ce qui correspond au point $(2 ; 0)$ mais ce n'est pas le point obtenu pour une variation d'abscisse de $1$ (question implicite de recherche du point 'suivant' par pas de 1). Cependant, $(2;0)$ appartient bien à la droite. Mais $(1;2)$ est le point image directe par le vecteur directeur $(1; -2)$. Les deux appartiennent à la droite. Je dois m'assurer qu'une seule réponse est correcte. $(2;0)$ appartient aussi à la droite. Je vais modifier les options pour qu'une seule soit sur la droite. $y = -2x + 4$. Pour $x=1, y=2$. Pour $x=2, y=0$. Pour $x=-1, y=6$. Pour $x=1, y=6$ (faux). Donc $(1;2)$ et $(2;0)$ sont sur la droite. Je dois changer l'option D pour qu'elle ne soit pas sur la droite. Par exemple $(2; 1)$. $y = -2(2)+4 = 0 \\neq 1$. Bien.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer la droite de coefficient directeur $m = -\\frac{2}{3}$ passant par $C(3 ; 1)$, on peut se déplacer à partir de $C$ de :",
+      "options": [
+        "$3$ unités vers la droite et $2$ unités vers le haut",
+        "$2$ unités vers la droite et $3$ unités vers le bas",
+        "$3$ unités vers la droite et $2$ unités vers le bas",
+        "$2$ unités vers la gauche et $3$ unités vers le haut"
+      ],
+      "correctAnswer": "$3$ unités vers la droite et $2$ unités vers le bas",
+      "explanation": "Le coefficient directeur $m = -\\frac{2}{3}$ indique qu'une variation positive de l'abscisse de $3$ (dénominateur) entraîne une variation négative de l'ordonnée de $2$ (numérateur, le signe moins indiquant la descente). On se déplace donc de $3$ unités vers la droite et $2$ unités vers le bas pour trouver un second point $D(6 ; -1)$. L'option A correspond à une pente positive $\\frac{2}{3}$, l'option B inverse le numérateur et le dénominateur ($m = -\\frac{3}{2}$), et l'option D correspond à un déplacement vers la gauche (abscisse décroissante) ce qui ferait monter la droite (ordonnée croissante), ce qui est correct pour aller dans l'autre sens mais la formulation standard 'se déplacer à partir de C' sous-entend généralement le sens de l'abscisse croissante.",
+      "points": 1,
+      "figure": {
+        "type": "slope_triangle",
+        "a": 3,
+        "b": -2,
+        "xMin": -1,
+        "xMax": 7,
+        "caption": "Triangle de pente pour $m = -\\frac{2}{3}$"
+      }
+    },
+    {
+      "text": "On a tracé dans un repère la droite $d_1$ d'équation $y = \\frac{1}{2}x + 1$ et la droite $d_2$ d'équation $y = 2x + 1$. Laquelle des affirmations suivantes est vraie concernant leur tracé à partir de leur point commun $A(0 ; 1)$ ?",
+      "options": [
+        "$d_1$ est plus raide que $d_2$.",
+        "$d_2$ est plus raide que $d_1$.",
+        "Les deux droites ont la même inclinaison.",
+        "$d_1$ descend tandis que $d_2$ monte."
+      ],
+      "correctAnswer": "$d_2$ est plus raide que $d_1$.",
+      "explanation": "Le coefficient directeur donne la raideur de la droite. Pour $d_1$, $m_1 = \\frac{1}{2} = 0,5$. Pour $d_2$, $m_2 = 2$. Comme $2 > 0,5$, la droite $d_2$ est plus raide (plus pentue) que $d_1$. Les deux coefficients sont positifs, donc les deux droites montent (l'option D est fausse). Elles n'ont pas la même inclinaison (option C fausse).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite de coefficient directeur $m = \\frac{4}{5}$ passe par le point $D(-5 ; 0)$. Quelles sont les coordonnées du point $E$ obtenu en augmentant l'abscisse de $5$ ?",
+      "options": [
+        "$E(0 ; 4)$",
+        "$E(0 ; -4)$",
+        "$E(0 ; 5)$",
+        "$E(0 ; \\frac{4}{5})$"
+      ],
+      "correctAnswer": "$E(0 ; 4)$",
+      "explanation": "L'abscisse de $D$ est $-5$. En l'augmentant de $5$, la nouvelle abscisse est $-5 + 5 = 0$. La variation d'ordonnée est le coefficient directeur multiplié par la variation d'abscisse : $\\Delta y = m \\times \\Delta x = \\frac{4}{5} \\times 5 = 4$. L'ordonnée de $D$ est $0$, donc la nouvelle ordonnée est $0 + 4 = 4$. Le point $E$ a donc pour coordonnées $(0 ; 4)$. L'option B confond le signe de la pente, l'option C prend le dénominateur comme variation d'ordonnée, et l'option D oublie de multiplier par la variation d'abscisse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

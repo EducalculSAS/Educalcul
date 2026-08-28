@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester",
+  "title": "Tester une condition : structures conditionnelles",
+  "blocks": [
+    {
+      "title": "Structure Si - Alors",
+      "content": "Dans un algorithme, on veut exécuter une action seulement si une condition est vraie. On utilise la structure :\\n{{1}} condition {{2}}\\n    instruction\\n{{3}}",
+      "blanks": [
+        "Si|si",
+        "Alors|alors",
+        "Fin Si|Fin si|Finsi"
+      ],
+      "correctAnswer": "",
+      "explanation": "La structure conditionnelle simple s'écrit avec les mots-clés : Si (début du test), Alors (début du bloc à exécuter si vrai) et Fin Si (fin de la structure). L'indentation (décalage) de l'instruction montre qu'elle appartient au bloc Alors.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Structure Si - Alors - Sinon",
+      "content": "On souhaite afficher \"Positif\" si le nombre $x$ est strictement positif, sinon afficher \"Négatif ou nul\". Complète l'algorithme :\\n{{1}} $x > 0$ {{2}}\\n    Afficher \"Positif\"\\n{{3}}\\n    Afficher \"Négatif ou nul\"\\nFin Si",
+      "blanks": [
+        "Si|si",
+        "Alors|alors",
+        "Sinon|sinon"
+      ],
+      "correctAnswer": "",
+      "explanation": "Quand il y a deux cas possibles (vrai ou faux), on utilise la structure complète Si ... Alors ... Sinon ... Fin Si. Le mot-clé Sinon introduit le bloc d'instructions à exécuter si la condition est fausse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition composée avec ET",
+      "content": "Pour tester si un entier $n$ est compris entre $5$ et $10$ (bornes exclues), on doit vérifier deux conditions en même temps : $n > 5$ **et** $n < 10$. On écrit :\\n{{1}} ($n > 5$ {{2}} $n < 10$) {{3}}\\n    Afficher \"Compris\"\\nFin Si",
+      "blanks": [
+        "Si|si",
+        "ET|Et|et",
+        "Alors|alors"
+      ],
+      "correctAnswer": "",
+      "explanation": "Pour combiner deux conditions qui doivent être **toutes les deux vraies**, on utilise l'opérateur logique ET. La condition complète est placée entre parenthèses après le Si. Le Alors suit la parenthèse fermante.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Lire une courbe d'évolution",
+  "title": "Lire une courbe d'évolution : La température d'une journée",
+  "questions": [
+    {
+      "text": "On observe une courbe d'évolution qui représente la température extérieure (en degrés Celsius) au cours d'une journée. L'axe horizontal (abscisses) indique les heures de la journée (6 h, 9 h, 12 h, 15 h, 18 h, 21 h). L'axe vertical (ordonnées) indique la température. Que représente le point situé sur la courbe au-dessus de 12 h et à la hauteur de 18 sur l'axe vertical ?",
+      "options": [
+        "Il fait 12 degrés à 18 heures.",
+        "Il fait 18 degrés à 12 heures.",
+        "La température a augmenté de 12 degrés en 18 heures.",
+        "La température maximale est de 12 degrés."
+      ],
+      "correctAnswer": "Il fait 18 degrés à 12 heures.",
+      "explanation": "Sur une courbe d'évolution, l'abscisse (axe horizontal) donne l'instant (ici l'heure) et l'ordonnée (axe vertical) donne la valeur mesurée (ici la température). Le point au-dessus de 12 h et à la hauteur 18 correspond donc à une température de 18 °C relevée à 12 heures. Les autres options inversent les axes ou interprètent mal les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La courbe montre les températures suivantes : 6 h → 8 °C ; 9 h → 12 °C ; 12 h → 18 °C ; 15 h → 20 °C ; 18 h → 17 °C ; 21 h → 13 °C. Entre quelles heures la température a-t-elle augmenté le plus vite (pente la plus raide) ?",
+      "options": [
+        "Entre 6 h et 9 h",
+        "Entre 9 h et 12 h",
+        "Entre 12 h et 15 h",
+        "Entre 15 h et 18 h"
+      ],
+      "correctAnswer": "Entre 9 h et 12 h",
+      "explanation": "Il faut calculer l'augmentation par intervalle de 3 heures. De 6 h à 9 h : +4 °C. De 9 h à 12 h : +6 °C. De 12 h à 15 h : +2 °C. De 15 h à 18 h : -3 °C (baisse). L'augmentation la plus forte est de 6 °C entre 9 h et 12 h, ce qui correspond à la portion la plus pentue vers le haut.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En utilisant les mêmes relevés (6 h : 8 °C ; 9 h : 12 °C ; 12 h : 18 °C ; 15 h : 20 °C ; 18 h : 17 °C ; 21 h : 13 °C), quelle est l'amplitude thermique de la journée (différence entre la température maximale et la température minimale) ?",
+      "options": [
+        "7 degrés",
+        "12 degrés",
+        "13 degrés",
+        "20 degrés"
+      ],
+      "correctAnswer": "12 degrés",
+      "explanation": "La température maximale est 20 °C (à 15 h). La température minimale est 8 °C (à 6 h). L'amplitude est la différence : $20 - 8 = 12$. L'amplitude est donc de 12 degrés. L'option 7 degrés correspond à l'écart entre 20 et 13. L'option 13 degrés est la température à 21 h. L'option 20 degrés est la température maximale, pas l'écart.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On regarde la portion de la courbe entre 15 h et 21 h. La température passe de 20 °C à 13 °C. Quelle phrase décrit correctement l'évolution de la température sur cette période ?",
+      "options": [
+        "La temperature reste stable.",
+        "La temperature augmente regulierement.",
+        "La temperature diminue tout au long de la periode.",
+        "La temperature augmente puis diminue."
+      ],
+      "correctAnswer": "La temperature diminue tout au long de la periode.",
+      "explanation": "Entre 15 h (20 °C) et 18 h (17 °C), la température baisse. Elle continue de baisser entre 18 h (17 °C) et 21 h (13 °C). La courbe descend donc continuellement sur tout l'intervalle 15 h - 21 h. Il n'y a pas de remontée ni de stabilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "À partir de la courbe, on veut estimer la température à 10 h 30 (qui n'est pas un point de relevé exact). La courbe monte régulièrement entre 9 h (12 °C) et 12 h (18 °C). Quelle estimation est la plus raisonnable pour 10 h 30 ?",
+      "options": [
+        "10 degrés",
+        "13 degrés",
+        "15 degrés",
+        "17 degrés"
+      ],
+      "correctAnswer": "15 degrés",
+      "explanation": "10 h 30 est exactement au milieu entre 9 h et 12 h (1 h 30 après 9 h, 1 h 30 avant 12 h). La température passe de 12 °C à 18 °C, soit une hausse de 6 °C en 3 heures. Au milieu du temps, on est approximativement au milieu de la hausse : $12 + (6 / 2) = 15$ °C. 13 °C est trop bas (proche de 9 h), 17 °C est trop haut (proche de 12 h), 10 °C est inférieur à la valeur de 9 h ce qui est impossible car la courbe monte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,573 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.285894+00:00",
+  "id": 261,
+  "code": "cm1-t07-c06",
+  "title": "Fréquence expérimentale simple",
+  "description": "Cours structuré Educalcul : Fréquence expérimentale simple.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Fréquence expérimentale simple",
+    "objectif_global": "Fréquence expérimentale simple",
+    "mini_lecons_imposees": [
+      "Répéter expérience.",
+      "Compter succès.",
+      "Comparer résultats."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Répéter expérience.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces. Chaque lancer est une expérience : tu ne sais pas à l'avance quel chiffre va apparaître. En CM1, on appelle cela une expérience aléatoire parce que le résultat change à chaque fois."
+            },
+            {
+              "type": "definition",
+              "term": "expérience",
+              "definition": "Action qu'on peut refaire plusieurs fois dans les mêmes conditions et dont le résultat n'est pas certain à l'avance.",
+              "example": "Lancer un dé, tirer une bille dans un sac, faire tourner une roulette."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi la répéter ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu lances le dé une seule fois, tu obtiens un seul chiffre, par exemple 4. Ce résultat seul ne te dit pas grand-chose sur la façon dont le dé se comporte. En le lançant plusieurs fois, tu vois apparaître une régularité : chaque face finit par sortir à peu près le même nombre de fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'expérience",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide ce que tu vas faire : lancer un dé, tirer une carte, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Fixer le nombre d'essais",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis combien de fois tu vas répéter l'expérience, par exemple 10 lancers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter chaque résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après chaque essai, écris le chiffre obtenu dans un tableau."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Résultats de 10 lancers d'un dé",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment répéter une expérience, voyons comment noter chaque résultat pour pouvoir les compter ensuite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Enregistrer les résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après chaque lancer, tu écris le chiffre dans un petit tableau. Par exemple, pour 10 lancers, tu peux avoir une ligne avec les résultats : 3, 5, 1, 6, 2, 4, 3, 5, 1, 6. Cela te donne une trace claire de tout ce qui s'est passé."
+            },
+            {
+              "type": "definition",
+              "term": "résultat",
+              "definition": "Valeur observée à la fin d'un essai d'une expérience.",
+              "example": "Le chiffre 4 obtenu au troisième lancer."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Essai",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "3"
+                ],
+                [
+                  "2",
+                  "5"
+                ],
+                [
+                  "3",
+                  "1"
+                ],
+                [
+                  "4",
+                  "6"
+                ],
+                [
+                  "5",
+                  "2"
+                ],
+                [
+                  "6",
+                  "4"
+                ],
+                [
+                  "7",
+                  "3"
+                ],
+                [
+                  "8",
+                  "5"
+                ],
+                [
+                  "9",
+                  "1"
+                ],
+                [
+                  "10",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir noté, nous pourrons compter combien de fois un chiffre précis est apparu. C'est ce qu'on appelle compter les succès."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Préparer le comptage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis un chiffre qui t'intéresse, par exemple le 6. Puis parcours ton tableau et coche chaque fois que le 6 apparaît. Dans l'exemple ci-dessus, le 6 sort deux fois (essais 4 et 10)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le succès",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide quel résultat tu vas compter (ici le 6)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Parcourir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde chaque ligne et note une croix quand le chiffre choisi apparaît."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les croix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de croix est le nombre de succès."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu lances un dé 8 fois et tu obtiens : 2, 4, 6, 1, 6, 3, 6, 5. Combien de fois le 6 est-il apparu ?",
+              "answer": "3",
+              "hint": "Compte les 6 dans la liste.",
+              "explanation": "Il y a trois 6 dans la série (3e, 5e et 7e lancers)."
+            },
+            {
+              "question": "Complète le tableau pour 6 lancers d'un dé : essai 1 → 2, essai 2 → ?, essai 3 → 5, essai 4 → ?, essai 5 → 1, essai 6 → 4. Propose deux résultats possibles pour les essais 2 et 4.",
+              "answer": "Par exemple 3 et 6 (ou tout autre chiffre de 1 à 6).",
+              "hint": "Chaque face du dé peut sortir.",
+              "explanation": "Les résultats manquants peuvent être n'importe quel chiffre entre 1 et 6."
+            },
+            {
+              "question": "Si tu choisis le 2 comme succès, combien de succès y a-t-il dans la série : 1, 2, 3, 2, 4, 2, 5, 6 ?",
+              "answer": "3",
+              "hint": "Compte les 2.",
+              "explanation": "Le 2 apparaît trois fois (2e, 4e et 6e positions)."
+            }
+          ]
+        },
+        {
+          "title": "Compter succès.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un succès ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un sac avec 4 billes rouges et 6 billes bleues. Tu tires une bille sans regarder, tu notes sa couleur, puis tu la remets dans le sac. Si tu as décidé que « tirer une bille rouge » est ce que tu cherches, alors chaque bille rouge tirée est un succès."
+            },
+            {
+              "type": "definition",
+              "term": "succès",
+              "definition": "Résultat d'une expérience qui correspond à l'événement qu'on observe.",
+              "example": "Tirer une bille rouge quand on étudie la couleur rouge."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Composition du sac : 4 rouges, 6 bleues",
+              "slices": [
+                {
+                  "label": "Rouge",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 6,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître un succès, voyons comment les compter sur plusieurs essais."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les succès"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu refais l'expérience 10 fois : tu tires une bille, tu notes la couleur, tu la remets. Voici tes résultats : Rouge, Bleu, Bleu, Rouge, Bleu, Bleu, Rouge, Bleu, Bleu, Bleu. Pour compter les succès (les Rouges), tu parcours la liste et tu marques une croix à chaque « Rouge ». Ici, tu trouves 3 croix."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la couleur obtenue à chaque essai."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les succès",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les lignes qui correspondent à ton événement (ici « Rouge »)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de lignes repérées est le nombre de succès."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le nombre de succès connu, on peut calculer la fréquence expérimentale. C'est le quotient du nombre de succès sur le nombre total d'essais."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la fréquence expérimentale"
+            },
+            {
+              "type": "definition",
+              "term": "fréquence expérimentale",
+              "definition": "Rapport entre le nombre de succès observés et le nombre total d'essais effectués.",
+              "example": "3 succès sur 10 essais donne une fréquence de 0,3."
+            },
+            {
+              "type": "display_math",
+              "latex": "f = \\frac{\\text{succès}}{\\text{total}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans notre exemple, il y a 3 succès pour 10 essais, donc la fréquence expérimentale est $3 / 10 = 0,3$. On peut aussi l'écrire sous forme de fraction $3/10$ ou en pourcentage $30\\%$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un sac il y a 3 billes vertes et 7 billes jaunes. Tu tires 12 fois (avec remise) et tu obtiens 4 vertes. Quelle est la fréquence expérimentale du vert ?",
+              "answer": "0,4 ou 4/10 ou 40%",
+              "hint": "Divise le nombre de vertes par le nombre total d'essais.",
+              "explanation": "4 succès sur 10 essais donnent 4/10 = 0,4 = 40%."
+            },
+            {
+              "question": "Tu as noté les résultats de 8 tirages : Jaune, Vert, Jaune, Jaune, Vert, Jaune, Jaune, Jaune. Combien de succès pour l'événement « Vert » ?",
+              "answer": "2",
+              "hint": "Compte les « Vert » dans la liste.",
+              "explanation": "Le mot « Vert » apparaît deux fois (2e et 5e tirages)."
+            },
+            {
+              "question": "Calcule la fréquence expérimentale pour l'événement « Vert » dans l'exercice précédent.",
+              "answer": "0,25 ou 1/4 ou 25%",
+              "hint": "Utilise la formule : succès / total.",
+              "explanation": "2 succès sur 8 essais = 2/8 = 1/4 = 0,25 = 25%."
+            }
+          ]
+        },
+        {
+          "title": "Comparer résultats.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux séries d'essais"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux classes de CM1 font la même expérience : chaque élève lance une pièce de monnaie 20 fois et note le nombre de « Face ». La classe A obtient 11 Faces, la classe B obtient 9 Faces. On veut comparer les fréquences expérimentales des deux classes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Classe",
+                "Nombre d'essais",
+                "Succès (Face)",
+                "Fréquence"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "20",
+                  "11",
+                  "0,55"
+                ],
+                [
+                  "B",
+                  "20",
+                  "9",
+                  "0,45"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant comment les fréquences peuvent varier d'une série à l'autre et ce que cela signifie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Observer les différences"
+            },
+            {
+              "type": "paragraph",
+              "content": "La classe A a une fréquence de 0,55, la classe B de 0,45. La différence est de 0,10. Ce n'est pas surprenant : avec seulement 20 lancers, le hasard fait que les résultats ne sont pas exactement identiques. Si chaque classe lançait la pièce 200 fois, les fréquences se rapprocheraient davantage de 0,5."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer chaque fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise les succès par le total pour chaque groupe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde laquelle est la plus grande et de combien."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une petite différence est normale pour peu d'essais ; elle diminue quand le nombre d'essais augmente."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Fréquences des deux classes sur une échelle de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.45,
+                  "label": "Classe B"
+                },
+                {
+                  "value": 0.55,
+                  "label": "Classe A"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "En augmentant le nombre d'essais, les fréquences expérimentales deviennent plus stables et se rapprochent de la probabilité théorique. C'est l'idée de base qui permettra plus tard d'étudier les probabilités de façon plus précise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tirer une conclusion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on compare plusieurs séries, on regarde la fréquence de chacune. Si les fréquences sont proches, l'expérience est régulière. Si elles sont très différentes, il faut soit augmenter le nombre d'essais, soit vérifier qu'il n'y a pas d'erreur dans le matériel (une pièce truquée, par exemple)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Plus } n \\text{ est grand, plus } f \\text{ se stabilise}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais répéter une expérience plusieurs fois.",
+                "Je sais identifier et compter les succès.",
+                "Je sais calculer la fréquence expérimentale.",
+                "Je sais comparer des fréquences obtenues par des groupes différents."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La classe C fait 20 lancers de pièce et obtient 12 Faces. Quelle est sa fréquence expérimentale ?",
+              "answer": "0,6 ou 60%",
+              "hint": "Divise 12 par 20.",
+              "explanation": "12/20 = 0,6 = 60%."
+            },
+            {
+              "question": "Compare la fréquence de la classe C (0,6) avec celle de la classe A (0,55). Quelle classe a la fréquence la plus élevée et de combien ?",
+              "answer": "Classe C, différence 0,05",
+              "hint": "Soustraye la plus petite de la plus grande.",
+              "explanation": "0,60 - 0,55 = 0,05."
+            },
+            {
+              "question": "Si chaque classe lançait la pièce 200 fois au lieu de 20, que penses-tu qu'il se passerait pour les fréquences ?",
+              "answer": "Elles se rapprocheraient de 0,5.",
+              "hint": "Plus on répète, plus la fréquence se stabilise autour de la valeur théorique.",
+              "explanation": "Avec beaucoup d'essais, l'effet du hasard diminue et les fréquences tendent vers 1/2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

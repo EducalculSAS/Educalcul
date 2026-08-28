@@ -1,0 +1,421 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.090864+00:00",
+  "id": 197,
+  "code": "ce2-t07-c02",
+  "title": "Carré, rectangle et losange",
+  "description": "Cours structuré Educalcul : Carré, rectangle et losange.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Carré, rectangle et losange",
+    "objectif_global": "Carré, rectangle et losange",
+    "mini_lecons_imposees": [
+      "Repérer propriétés simples.",
+      "Distinguer les figures.",
+      "Construire sur quadrillage."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Repérer propriétés simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés du carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bonjour ! Aujourd'hui nous allons observer le carré. C'est une figure que tu connais bien : elle a $4$ côtés de la même longueur et $4$ angles droits. Imagine une feuille de papier pliée en deux puis en deux encore, tu obtiens un petit carré parfait. Chaque côté mesure la même chose, par exemple $4$ $cm$. Les angles sont tous des coins bien carrés, comme le coin d'un livre."
+            },
+            {
+              "type": "definition",
+              "term": "carré",
+              "definition": "Figure plane à $4$ côtés égaux et $4$ angles droits.",
+              "example": "Un carreau de carrelage est souvent un carré."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 4,
+              "unit": "cm",
+              "caption": "Un côté du carré mesure 4 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le carré, passons au rectangle. Il ressemble au carré mais ses côtés ne sont pas tous égaux : il a deux grandes longueurs et deux petites largeurs. Pourtant, ses $4$ angles restent droits. C'est comme une porte : plus haute que large, mais les coins sont bien carrés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un rectangle possède $4$ côtés : deux paires de côtés opposés qui ont la même longueur. Les angles sont tous droits. Si tu mesures la longueur, tu peux trouver $6$ $cm$, et la largeur $4$ $cm$. Les côtés opposés sont parallèles, ce qui veut dire qu'ils ne se croisent jamais."
+            },
+            {
+              "type": "definition",
+              "term": "rectangle",
+              "definition": "Figure plane à $4$ angles droits et côtés opposés égaux deux à deux.",
+              "example": "Une feuille A4 est un rectangle."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Propriété",
+                "Carré",
+                "Rectangle"
+              ],
+              "rows": [
+                [
+                  "Côtés égaux",
+                  "4",
+                  "2 paires"
+                ],
+                [
+                  "Angles droits",
+                  "4",
+                  "4"
+                ],
+                [
+                  "Côtés parallèles",
+                  "Oui",
+                  "Oui"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, découvrons le losange. Il a aussi $4$ côtés de même longueur, comme le carré, mais ses angles ne sont pas droits. Imagine un cerf-volant aplati : les côtés sont égaux, mais les coins sont pointus ou larges. C'est cette différence d'angles qui le rend unique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés du losange"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le losange est un quadrilatère dont les $4$ côtés ont la même mesure. Ses angles opposés sont égaux, mais ils ne sont pas nécessairement droits. Les diagonales se coupent en leur milieu et sont perpendiculaires. C'est une figure très symétrique, même si elle ne ressemble pas à un carré."
+            },
+            {
+              "type": "definition",
+              "term": "losange",
+              "definition": "Quadrilatère à $4$ côtés égaux, angles opposés égaux, diagonales perpendiculaires.",
+              "example": "Un panneau de signalisation en forme de losange."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle figure a $4$ côtés égaux et $4$ angles droits ?",
+              "answer": "C'est un carré.",
+              "hint": "Rappelle-toi la définition du carré : côtés égaux et angles droits.",
+              "explanation": "Le carré est la seule figure qui remplit ces deux conditions en même temps."
+            },
+            {
+              "question": "Un rectangle a-t-il toujours des côtés égaux ?",
+              "answer": "Non, seulement les côtés opposés sont égaux deux à deux.",
+              "hint": "Compare les longueurs et les largeurs d'une porte.",
+              "explanation": "Dans un rectangle, la longueur et la largeur sont différentes, donc tous les côtés ne sont pas égaux."
+            },
+            {
+              "question": "Le losange a-t-il des angles droits ?",
+              "answer": "Pas nécessairement, ses angles peuvent être aigus ou obtus.",
+              "hint": "Regarde un cerf-volant : ses coins ne sont pas carrés.",
+              "explanation": "Seuls les côtés sont égaux ; les angles varient selon la forme du losange."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer les figures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment distinguer les figures ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les trois figures, apprenons à les reconnaître rapidement. Regarde d'abord les angles : le carré et le rectangle ont des angles droits, le losange non. Ensuite, compare les côtés : le carré a tous ses côtés égaux, le rectangle a deux grandeurs différentes, le losange a quatre côtés égaux mais des angles différents. C'est comme un jeu de devinettes où chaque indice te guide."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Rectangle",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Losange",
+                  "value": 20,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Périmètres égaux mais formes différentes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les angles droits sont un indice très fort. Si tu poses un coin de feuille sur un angle de la figure et que ça coïncide parfaitement, c'est un angle droit. Le carré en a quatre, le rectangle aussi, le losange zéro. Essaie sur ton cahier : trace un angle droit avec ton équerre et compare."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles droits"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle droit mesure $90$ degrés. Dans le carré, chaque coin est un angle droit. Dans le rectangle, c'est pareil. Dans le losange, les angles sont souvent plus ouverts ou plus fermés, jamais exactement $90$ degrés. Cette différence te permet de trier les figures en un clin d'œil."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'angles droits par figure",
+              "bars": [
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Losange",
+                  "value": 0,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant les côtés. Le carré a $4$ côtés de même mesure. Le rectangle a deux longueurs égales et deux largeurs égales. Le losange a aussi $4$ côtés égaux, comme le carré, mais ses angles ne sont pas droits. Pour ne pas confondre carré et losange, vérifie les angles après avoir mesuré les côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mesure un côté de chaque figure avec ta règle. Note les mesures : si les quatre nombres sont identiques et les angles droits, c'est un carré. Si tu as deux nombres qui reviennent deux fois chacun et les angles droits, c'est un rectangle. Si les quatre nombres sont identiques mais les angles ne sont pas droits, c'est un losange."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Figure",
+                "Côtés égaux ?",
+                "Angles droits ?"
+              ],
+              "rows": [
+                [
+                  "Carré",
+                  "Oui (4)",
+                  "Oui (4)"
+                ],
+                [
+                  "Rectangle",
+                  "2 paires",
+                  "Oui (4)"
+                ],
+                [
+                  "Losange",
+                  "Oui (4)",
+                  "Non"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle figure a des angles droits mais pas tous les côtés égaux ?",
+              "answer": "C'est un rectangle.",
+              "hint": "Pense à une porte : angles carrés, côtés inégaux.",
+              "explanation": "Le rectangle a 4 angles droits et seulement les côtés opposés égaux."
+            },
+            {
+              "question": "Combien d'angles droits a un losange ?",
+              "answer": "Zéro.",
+              "hint": "Regarde les coins d'un cerf-volant.",
+              "explanation": "Les angles du losange sont différents de 90 degrés."
+            },
+            {
+              "question": "Si une figure a 4 côtés égaux et 4 angles droits, comment s'appelle-t-elle ?",
+              "answer": "C'est un carré.",
+              "hint": "Rappelle-toi la définition du carré.",
+              "explanation": "Seul le carré réunit ces deux propriétés en même temps."
+            }
+          ]
+        },
+        {
+          "title": "Construire sur quadrillage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner un carré sur quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant tracer les figures sur un papier quadrillé. Chaque petit carré du quadrillage mesure $1$ $cm$ de côté. Pour faire un carré de côté $3$ $cm$, compte $3$ cases sur la ligne horizontale, puis $3$ cases vers le bas, relie les points. Tu obtiens un carré parfait grâce aux lignes du quadrillage qui sont déjà perpendiculaires."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le point de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton crayon sur un croisement de lignes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les cases à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avance de $3$ cases et marque le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les cases vers le bas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Descends de $3$ cases et marque le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie les quatre points dans l'ordre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 3,
+              "unit": "cm",
+              "caption": "Vérification du côté du carré dessiné"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour dessiner un rectangle, la méthode est presque la même. Tu choisis deux nombres différents : par exemple $5$ cases pour la longueur et $3$ cases pour la largeur. Compte $5$ cases à droite, $3$ cases en bas, puis reviens en comptant $5$ cases à gauche et $3$ cases en haut. Les angles restent droits grâce au quadrillage."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner un rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace d'abord le grand côté horizontal, puis le petit côté vertical. Reproduis les mêmes longueurs de l'autre côté. Vérifie que les angles sont bien droits en posant ton équerre sur chaque coin. C'est une excellente façon de t'assurer que ton rectangle est exact."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le losange est un peu plus délicat car ses angles ne sont pas droits. Sur le quadrillage, tu peux le construire en partant d'un point central. Compte $2$ cases en haut, $2$ en bas, $2$ à gauche, $2$ à droite, puis relie les quatre points dans l'ordre. Les diagonales suivent les lignes du quadrillage, ce qui garantit des côtés égaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner un losange"
+            },
+            {
+              "type": "paragraph",
+              "content": "Marque le centre de ton losange sur un croisement. De là, monte de $2$ cases, descends de $2$ cases, va à gauche de $2$ cases, à droite de $2$ cases. Relie le haut au droit, le droit au bas, le bas à gauche, la gauche au haut. Mesure un côté avec ta règle : tu devrais trouver environ $2,8$ $cm$ (la diagonale du petit carré)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un carré, un rectangle et un losange.",
+                "Je connais leurs propriétés : côtés, angles, diagonales.",
+                "Je sais les construire sur un quadrillage en comptant les cases.",
+                "Je peux vérifier mes tracés avec une règle et une équerre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de cases comptes-tu pour tracer un carré de côté 3 cm sur un quadrillage 1 cm ?",
+              "answer": "3 cases horizontalement et 3 cases verticalement.",
+              "hint": "Chaque case vaut 1 cm.",
+              "explanation": "Le côté du carré correspond au nombre de cases comptées."
+            },
+            {
+              "question": "Pour un rectangle de 5 cm sur 3 cm, quelles sont les deux longueurs à compter ?",
+              "answer": "5 cases pour la longueur, 3 cases pour la largeur.",
+              "hint": "Les côtés opposés ont la même mesure.",
+              "explanation": "On compte la grande dimension puis la petite dimension."
+            },
+            {
+              "question": "Comment construis-tu un losange sur quadrillage ?",
+              "answer": "En marquant un centre et en comptant le même nombre de cases dans les 4 directions.",
+              "hint": "Les diagonales suivent les lignes du quadrillage.",
+              "explanation": "Les 4 sommets sont à égale distance du centre, ce qui donne 4 côtés égaux."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

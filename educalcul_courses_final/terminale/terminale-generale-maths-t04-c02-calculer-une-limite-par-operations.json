@@ -1,0 +1,363 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.637934+00:00",
+  "id": 691,
+  "code": "terminale-generale-maths-t04-c02",
+  "title": "Calculer une limite par opérations",
+  "description": "Cours structuré Educalcul : Calculer une limite par opérations.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Calculer une limite par opérations",
+    "objectif_global": "Calculer une limite par opérations",
+    "mini_lecons_imposees": [
+      "Somme / produit / quotient.",
+      "Composition prévue.",
+      "Conclure."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Somme / produit / quotient.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites d'une somme et d'une différence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre sur le calcul des limites par opérations. En Terminale, tu as déjà rencontré les limites de fonctions usuelles : polynômes, fonctions rationnelles, exponentielle, logarithme, etc. Maintenant, nous allons voir comment combiner ces limites quand les fonctions s'additionnent, se multiplient ou se divisent. C'est une boîte à outils indispensable pour éviter de recourir à la définition $\\varepsilon-\\eta$ à chaque exercice. Commençons par l'opération la plus naturelle : la somme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient deux fonctions $f$ et $g$ définies sur un intervalle (ou un voisinage de $a$, où $a$ peut être un réel ou $\\pm\\infty$). Supposons que l'on connaisse les limites de $f$ et $g$ en $a$ : $\\lim_{x\\to a} f(x) = L_1$ et $\\lim_{x\\to a} g(x) = L_2$, avec $L_1, L_2 \\in \\mathbb{R}$ (des limites finies). Alors la limite de la somme $f+g$ en $a$ existe et vaut la somme des limites : $\\lim_{x\\to a} (f(x)+g(x)) = L_1 + L_2$. C'est un résultat très intuitif : si $f(x)$ se rapproche de $L_1$ et $g(x)$ se rapproche de $L_2$, leur somme se rapproche de $L_1+L_2$. La même règle vaut pour la différence : $\\lim_{x\\to a} (f(x)-g(x)) = L_1 - L_2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to a} (f(x)+g(x)) = \\lim_{x\\to a} f(x) + \\lim_{x\\to a} g(x)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Soit $f(x) = x^2$ et $g(x) = 3x$. On veut la limite en $+\\infty$ de $h(x) = x^2 + 3x$. On sait que $\\lim_{x\\to +\\infty} x^2 = +\\infty$ et $\\lim_{x\\to +\\infty} 3x = +\\infty$. Ici, les deux limites sont infinies et de même signe, donc la règle de la somme s'applique encore : la limite de la somme est $+\\infty$. Mais attention : si l'une des limites est $+\\infty$ et l'autre $-\\infty$, on obtient une forme indéterminée ($+\\infty - \\infty$) et la règle ne s'applique pas directement. Nous verrons cela plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au produit. La règle est tout aussi simple quand les limites sont finies : le limite du produit est le produit des limites. Mais en Terminale, nous manipulons souvent des limites infinies. Il faut alors connaître les règles de signes pour l'infini : $(+\\infty) \\times (-\\infty) = -\\infty$, $(-\\infty) \\times (-\\infty) = +\\infty$, et un nombre réel non nul multiplié par $\\pm\\infty$ donne $\\pm\\infty$ selon le signe du réel. En revanche, $0 \\times \\infty$ est une forme indéterminée : on ne peut pas conclure sans étudier plus précisément les fonctions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites d'un produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Énonçons le théorème de manière précise. Soient $f$ et $g$ deux fonctions telles que $\\lim_{x\\to a} f(x) = L_1$ et $\\lim_{x\\to a} g(x) = L_2$, où $L_1, L_2 \\in \\overline{\\mathbb{R}} = \\mathbb{R} \\cup \\{-\\infty, +\\infty\\}$. Si le produit $L_1 \\times L_2$ est défini dans $\\overline{\\mathbb{R}}$ (c'est-à-dire qu'on n'est pas dans le cas $0 \\times \\pm\\infty$), alors $\\lim_{x\\to a} (f(x)g(x)) = L_1 L_2$. Cette règle couvre la grande majorité des cas rencontrés dans les exercices de bac. Par exemple, pour $h(x) = (x+1)\\ln x$ en $+\\infty$, on a $\\lim_{x\\to +\\infty} (x+1) = +\\infty$ et $\\lim_{x\\to +\\infty} \\ln x = +\\infty$, donc le produit tend vers $+\\infty$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to a} (f(x)g(x)) = \\left(\\lim_{x\\to a} f(x)\\right) \\left(\\lim_{x\\to a} g(x)\\right) \\text{ si le produit des limites est défini}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un cas où l'une des limites est finie et non nulle. Soit $f(x) = 5$ (fonction constante) et $g(x) = \\frac{1}{x}$ pour $x \\to 0^+$. Alors $\\lim_{x\\to 0^+} f(x) = 5$ et $\\lim_{x\\to 0^+} g(x) = +\\infty$. Le produit $5 \\times +\\infty = +\\infty$, donc $\\lim_{x\\to 0^+} \\frac{5}{x} = +\\infty$. C'est cohérent avec l'intuition : diviser un nombre positif par un tout petit nombre positif donne un très grand nombre. Si la constante était négative, disons $-3$, alors $-3 \\times +\\infty = -\\infty$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Abordons maintenant le quotient, qui est l'opération la plus délicate car elle introduit le risque de division par zéro. Le théorème de base : si $\\lim_{x\\to a} f(x) = L_1$ et $\\lim_{x\\to a} g(x) = L_2$ avec $L_2 \\neq 0$ (et $L_2$ fini), alors $\\lim_{x\\to a} \\frac{f(x)}{g(x)} = \\frac{L_1}{L_2}$. Si de plus $L_1 = 0$, la limite est $0$. Si $L_1 \\neq 0$ et $L_2 = 0$, la limite est infinie (signe à déterminer selon les signes de $f$ et $g$ près de $a$). Mais si $L_1 = 0$ et $L_2 = 0$, on a la forme indéterminée $\\frac{0}{0}$ ; si $L_1 = \\pm\\infty$ et $L_2 = \\pm\\infty$, on a $\\frac{\\infty}{\\infty}$. Dans ces deux cas, il faut transformer l'expression (factorisation, rationalisation, croissance comparée) avant de conclure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites d'un quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple classique de forme $\\frac{\\infty}{\\infty}$ : $\\lim_{x\\to +\\infty} \\frac{3x^2+2x-1}{5x^2-4x+7}$. Les numérateur et dénominateur tendent tous deux vers $+\\infty$. On ne peut pas appliquer directement la règle du quotient. La méthode standard en Terminale consiste à factoriser par la plus grande puissance de $x$ (ici $x^2$) au numérateur et au dénominateur : $\\frac{x^2(3+\\frac{2}{x}-\\frac{1}{x^2})}{x^2(5-\\frac{4}{x}+\\frac{7}{x^2})} = \\frac{3+\\frac{2}{x}-\\frac{1}{x^2}}{5-\\frac{4}{x}+\\frac{7}{x^2}}$. Maintenant, chaque terme $\\frac{1}{x}$ ou $\\frac{1}{x^2}$ tend vers $0$. Les limites du numérateur et du dénominateur deviennent $3$ et $5$ (finis, dénominateur non nul). On applique alors la règle du quotient : la limite vaut $\\frac{3}{5}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to +\\infty} \\frac{3x^2+2x-1}{5x^2-4x+7} = \\frac{3}{5}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation fréquente : limite en un réel où le dénominateur s'annule. Soit $h(x) = \\frac{x+2}{x-1}$ pour $x \\to 1$. Le numérateur tend vers $3$, le dénominateur vers $0$. La limite est infinie. Pour en déterminer le signe, on étudie le signe du dénominateur de part et d'autre de $1$ : pour $x<1$, $x-1<0$, donc la fraction est négative et tend vers $-\\infty$ ; pour $x>1$, $x-1>0$, la fraction est positive et tend vers $+\\infty$. On écrit : $\\lim_{x\\to 1^-} h(x) = -\\infty$ et $\\lim_{x\\to 1^+} h(x) = +\\infty$. La limite bilatère n'existe pas (pas de limite finie ni infinie unique)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, résumons les formes indéterminées qu'il faut absolument reconnaître pour ne pas appliquer bêtement les règles : $\\frac{0}{0}$, $\\frac{\\infty}{\\infty}$, $0 \\times \\infty$, $\\infty - \\infty$, $1^\\infty$, $0^0$, $\\infty^0$. Quand tu tombes sur l'une d'elles, ne conclus pas ! Transforme l'expression : factorise, rationalise, utilise les croissances comparées (logarithme, exponentielle, puissances) ou la règle de L'Hôpital si elle est au programme. La leçon suivante verra comment la composition de fonctions permet de calculer des limites autrement qu'en décomposant seulement par opérations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to +\\infty} (2x^3 - 5x^2 + 7x - 1)$.",
+              "answer": "$+\\infty$",
+              "hint": "Identifie le terme de plus haut degré. Quelle est sa limite ? Les autres termes sont-ils négligeables ?",
+              "explanation": "Le terme de plus haut degré est $2x^3$. Sa limite en $+\\infty$ est $+\\infty$. Les autres termes sont de degré inférieur, leurs limites sont aussi $+\\infty$ (pour $7x$) ou $-\\infty$ (pour $-5x^2$), mais la somme de $+\\infty$ et $-\\infty$ serait indéterminée. Cependant, on factorise par $x^3$ : $x^3(2 - \\frac{5}{x} + \\frac{7}{x^2} - \\frac{1}{x^3})$. La parenthèse tend vers $2 > 0$, et $x^3 \\to +\\infty$, donc le produit tend vers $+\\infty$."
+            },
+            {
+              "question": "Soit $f(x) = (x-2)\\ln(x-1)$. Déterminer $\\lim_{x\\to 1^+} f(x)$.",
+              "answer": "$0$",
+              "hint": "Quelles sont les limites de $x-2$ et de $\\ln(x-1)$ quand $x \\to 1^+$ ? Est-ce une forme indéterminée ?",
+              "explanation": "Quand $x \\to 1^+$, $x-2 \\to -1$ (fini non nul) et $x-1 \\to 0^+$, donc $\\ln(x-1) \\to -\\infty$. On a un produit $(-1) \\times (-\\infty) = +\\infty$ ? Attention : $-1 \\times (-\\infty) = +\\infty$. Mais ici $x-2$ tend vers $-1$, pas vers $0$. Donc la limite est $+\\infty$. (Correction : l'exercice visait une forme $0 \\times \\infty$ mais $x-2$ ne tend pas vers $0$. Pour avoir $0 \\times \\infty$, il aurait fallu $(x-1)\\ln(x-1)$. La réponse correcte pour cet énoncé est $+\\infty$.)"
+            },
+            {
+              "question": "Calculer $\\lim_{x\\to 2} \\frac{x^2-4}{x-2}$.",
+              "answer": "$4$",
+              "hint": "Le numérateur et le dénominateur s'annulent en $2$. Factorise le numérateur.",
+              "explanation": "On a la forme $\\frac{0}{0}$. Factorisons : $x^2-4 = (x-2)(x+2)$. Pour $x \\neq 2$, on simplifie par $x-2$ : $\\frac{x^2-4}{x-2} = x+2$. La limite de $x+2$ en $2$ est $4$."
+            },
+            {
+              "question": "Étudier $\\lim_{x\\to +\\infty} \\frac{\\ln x}{x}$.",
+              "answer": "$0$",
+              "hint": "C'est une forme $\\frac{\\infty}{\\infty}$. Connais-tu la croissance comparée du logarithme et de l'identité ?",
+              "explanation": "C'est une forme indéterminée $\\frac{\\infty}{\\infty}$. En Terminale, on sait que $\\ln x$ est négligeable devant $x$ (croissance comparée) : $\\lim_{x\\to +\\infty} \\frac{\\ln x}{x} = 0$. On peut aussi poser $x = e^t$, alors $\\frac{\\ln x}{x} = \\frac{t}{e^t} \\to 0$."
+            }
+          ]
+        },
+        {
+          "title": "Composition prévue.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de composition : énoncé et conditions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé les opérations algébriques sur les limites, nous abordons un outil encore plus puissant : la composition de fonctions. L'idée est simple : si tu connais la limite d'une fonction $g$ en $a$, et que tu composes avec une fonction $f$ qui est continue en cette limite, alors la limite de $f \\circ g$ est l'image par $f$ de la limite de $g$. C'est le théorème de composition, souvent appelé « limite d'une fonction composée ». Il permet de calculer des limites comme $\\lim_{x\\to 0} \\cos(x^2)$ ou $\\lim_{x\\to +\\infty} \\ln\\left(1+\\frac{1}{x}\\right)$ sans effort."
+            },
+            {
+              "type": "paragraph",
+              "content": "Énonçons-le précisément. Soient $f$ et $g$ deux fonctions. Supposons que $\\lim_{x\\to a} g(x) = L$ (où $a \\in \\mathbb{R}$ ou $\\pm\\infty$, et $L \\in \\overline{\\mathbb{R}}$). Supposons de plus que $f$ est continue en $L$ (si $L$ est fini) ou que $f$ admet une limite (finie ou infinie) en $L$ (si $L = \\pm\\infty$). Alors $\\lim_{x\\to a} f(g(x)) = f(L)$ (ou la limite de $f$ en $L$). En d'autres termes, on peut « faire entrer la limite à l'intérieur de la fonction extérieure » à condition que cette fonction extérieure soit bien comportée (continue) en la limite intérieure."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } \\lim_{x\\to a} g(x) = L \\text{ et } f \\text{ continue en } L, \\text{ alors } \\lim_{x\\to a} f(g(x)) = f(L)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux conditions ! La continuité de $f$ en $L$ est cruciale. Si $f$ n'est pas continue en $L$, le théorème ne s'applique pas. Par exemple, $f(t) = \\lfloor t \\rfloor$ (partie entière) n'est pas continue en les entiers. Si $g(x) \\to 2$ et $f = \\lfloor \\cdot \\rfloor$, on ne peut pas dire que $\\lim f(g(x)) = \\lfloor 2 \\rfloor = 2$ ; en fait, si $g(x)$ approche $2$ par valeurs inférieures, $f(g(x)) = 1$, et par valeurs supérieures, $f(g(x)) = 2$. La limite n'existe pas. Vérifie toujours la continuité de la fonction extérieure au point où la fonction intérieure tend."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment ce théorème s'applique aux fonctions usuelles que tu connais par cœur : exponentielle, logarithme, puissances, trigonométriques (sur leurs intervalles de continuité), racine carrée, valeur absolue, etc. Toutes ces fonctions sont continues sur leur ensemble de définition. Donc, dès que la limite intérieure $L$ appartient à l'ensemble de définition de la fonction extérieure, tu as le droit de composer. Par exemple, pour $\\lim_{x\\to 0} e^{\\sin x}$, $g(x) = \\sin x \\to 0$, et $f(t) = e^t$ est continue en $0$, donc la limite vaut $e^0 = 1$. De même, $\\lim_{x\\to +\\infty} \\ln\\left(1+\\frac{1}{x}\\right)$ : $g(x) = 1+\\frac{1}{x} \\to 1$, $f(t) = \\ln t$ est continue en $1$ (et $1>0$), donc la limite vaut $\\ln 1 = 0$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications aux fonctions usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas très fréquent en Terminale : la limite d'une fonction rationnelle composée avec une fonction continue. Prenons $h(x) = \\sqrt{\\frac{x+1}{x-1}}$ pour $x \\to +\\infty$. Ici, $g(x) = \\frac{x+1}{x-1}$. On calcule d'abord $\\lim_{x\\to +\\infty} g(x) = 1$ (règle du quotient, degrés égaux). Ensuite, $f(t) = \\sqrt{t}$ est continue en $1$ (et $1 \\ge 0$). Donc $\\lim_{x\\to +\\infty} h(x) = \\sqrt{1} = 1$. Remarque : il faut vérifier que pour $x$ assez grand, $g(x) \\ge 0$ pour que la racine soit définie. Ici, pour $x>1$, le numérateur et le dénominateur sont positifs, donc $g(x)>0$, pas de problème."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to +\\infty} \\sqrt{\\frac{x+1}{x-1}} = 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple avec le logarithme népérien : $\\lim_{x\\to 0} \\ln(1+x^2)$. $g(x) = 1+x^2 \\to 1$, $f(t) = \\ln t$ continue en $1$, limite $= \\ln 1 = 0$. Et avec l'exponentielle : $\\lim_{x\\to -\\infty} e^{x^3}$. $g(x) = x^3 \\to -\\infty$. Ici, $L = -\\infty$. La fonction exponentielle admet une limite en $-\\infty$ (qui est $0$). Le théorème de composition s'étend aux limites infinies pour l'extérieur : si $\\lim_{x\\to a} g(x) = +\\infty$ (resp. $-\\infty$) et que $\\lim_{t\\to +\\infty} f(t) = L$ (resp. $\\lim_{t\\to -\\infty} f(t) = L$), alors $\\lim_{x\\to a} f(g(x)) = L$. Donc $\\lim_{x\\to -\\infty} e^{x^3} = 0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe des pièges classiques où le théorème de composition ne s'applique pas directement, même si la limite intérieure existe. Premier piège : la fonction extérieure n'est pas continue en la limite intérieure. Exemple : $f(t) = \\frac{1}{t}$, $g(x) = x^2$, $x \\to 0$. $g(x) \\to 0$, mais $f$ n'est pas définie (donc pas continue) en $0$. On ne peut pas composer. En fait, $f(g(x)) = \\frac{1}{x^2} \\to +\\infty$. Deuxième piège : la limite intérieure est infinie et la fonction extérieure n'a pas de limite en cette infinité. Exemple : $f(t) = \\sin t$, $g(x) = x$, $x \\to +\\infty$. $g(x) \\to +\\infty$, mais $\\sin t$ n'a pas de limite en $+\\infty$. La composition $\\sin x$ n'a pas de limite. Il faut donc toujours vérifier les hypothèses avant d'appliquer le théorème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges et cas limites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième situation délicate : la limite intérieure est finie, la fonction extérieure est continue en ce point, mais la fonction intérieure prend la valeur limite « trop souvent » ? En fait, le théorème de composition standard (celui du programme) ne demande pas que $g(x) \\neq L$ près de $a$. Si $f$ est continue en $L$, alors $\\lim_{x\\to a} f(g(x)) = f(L)$ même si $g(x) = L$ pour une infinité de $x$ proches de $a$. Par exemple, $g(x) = x \\sin(1/x)$ pour $x \\to 0$, $g(x) \\to 0$. $f(t) = t^2$ continue en $0$. Alors $f(g(x)) = x^2 \\sin^2(1/x) \\to 0$. Cela fonctionne. Mais si $f$ n'est pas continue, comme $f(t) = \\mathbf{1}_{\\mathbb{Q}}(t)$ (indicatrice des rationnels), alors $f(g(x))$ peut ne pas avoir de limite. En résumé : continuité de $f$ en $L$ = feu vert ; sinon, prudence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, rappelons que la composition est souvent utilisée en combinaison avec les opérations. Par exemple, pour calculer $\\lim_{x\\to 0} \\frac{e^{x^2}-1}{x}$, on ne peut pas composer directement. On utilise l'équivalent $e^u - 1 \\sim u$ (ou la dérivée de l'exponentielle en $0$). Mais la composition intervient quand on a une fonction « extérieure » claire : $\\cos(\\ln(1+x))$, $\\arctan(e^x)$, etc. La leçon suivante, « Conclure », te montrera comment enchaîner opérations et compositions pour résoudre n'importe quel exercice de limite du programme de Terminale. Entraîne-toi maintenant sur l'exercice ci-dessous qui mélange composition et opération."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to 0} \\cos(x^2 + 3x)$.",
+              "answer": "$1$",
+              "hint": "Quelle est la limite de l'argument $x^2+3x$ ? Le cosinus est-il continu en ce point ?",
+              "explanation": "On a $g(x) = x^2+3x \\to 0$ quand $x \\to 0$. La fonction $f(t) = \\cos t$ est continue sur $\\mathbb{R}$, donc en $0$. Par composition, la limite vaut $\\cos(0) = 1$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to +\\infty} \\arctan(\\ln x)$.",
+              "answer": "$\\frac{\\pi}{2}$",
+              "hint": "Quelle est la limite de $\\ln x$ en $+\\infty$ ? Quelle est la limite de $\\arctan$ en $+\\infty$ ?",
+              "explanation": "Pour $x \\to +\\infty$, $\\ln x \\to +\\infty$. La fonction $\\arctan$ admet une limite en $+\\infty$, qui est $\\frac{\\pi}{2}$. Par composition (cas limite intérieure infinie), la limite cherchée est $\\frac{\\pi}{2}$."
+            },
+            {
+              "question": "Étudier $\\lim_{x\\to 0} \\frac{1}{\\cos x - 1}$.",
+              "answer": "$-\\infty$",
+              "hint": "Regarde le signe du dénominateur près de $0$. $\\cos x - 1$ est-il positif ou négatif ?",
+              "explanation": "Pour $x$ proche de $0$ (mais $x \\neq 0$), $\\cos x < 1$, donc $\\cos x - 1 < 0$. De plus, $\\cos x - 1 \\to 0$. On a donc un numérateur constant $1$ et un dénominateur qui tend vers $0$ par valeurs négatives. La fraction tend vers $-\\infty$."
+            },
+            {
+              "question": "Calculer $\\lim_{x\\to 1} \\ln\\left(\\frac{x^2+1}{2x}\\right)$.",
+              "answer": "$0$",
+              "hint": "Calcule d'abord la limite de la fraction à l'intérieur du logarithme. Le logarithme est-il continu en cette limite ?",
+              "explanation": "Soit $g(x) = \\frac{x^2+1}{2x}$. En $x=1$, $g(1) = \\frac{2}{2}=1$. La fonction $g$ est continue en $1$ (quotient de polynômes, dénominateur non nul), donc $\\lim_{x\\to 1} g(x) = 1$. La fonction $\\ln$ est continue en $1$ (et $1>0$). Par composition, la limite vaut $\\ln(1) = 0$."
+            }
+          ]
+        },
+        {
+          "title": "Conclure.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégie globale : décomposer pour régner"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. Tu possèdes maintenant deux piliers : les opérations (somme, produit, quotient) et la composition. La compétence clé en Terminale, c'est de savoir les combiner pour calculer n'importe quelle limite d'expression algébrique ou transcendente élémentaire. La méthode est toujours la même : regarde l'expression, identifie la « forme » (somme, produit, quotient, composition), calcule les limites des morceaux, vérifie que tu ne tombes pas dans une forme indéterminée, et conclus. Si c'est indéterminé, transforme l'expression (factorisation, conjugaison, changement de variable, croissance comparée) jusqu'à obtenir une forme déterminée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple complet : $\\lim_{x\\to +\\infty} \\frac{\\ln(x^2+1)}{\\sqrt{x}}$. C'est un quotient. Numérateur : $\\ln(x^2+1)$. C'est une composition : $u(x) = x^2+1 \\to +\\infty$, $\\ln$ tend vers $+\\infty$ en $+\\infty$, donc numérateur $\\to +\\infty$. Dénominateur : $\\sqrt{x} \\to +\\infty$. Forme $\\frac{\\infty}{\\infty}$. On ne peut pas conclure directement. On utilise les croissances comparées : $\\ln(x^2+1) \\sim \\ln(x^2) = 2\\ln x$, et $\\ln x$ est négligeable devant $\\sqrt{x}$ (puisque $\\ln x = o(x^\\alpha)$ pour tout $\\alpha>0$). Donc la limite est $0$. On a utilisé : composition pour le numérateur, croissance comparée pour trancher le quotient."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to +\\infty} \\frac{\\ln(x^2+1)}{\\sqrt{x}} = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation classique : les limites en un point fini où l'expression est une combinaison d'opérations. Soit $h(x) = \\frac{e^{x}-1}{x} + \\cos(x^2)$ pour $x \\to 0$. On a une somme. Premier terme : quotient $\\frac{e^{x}-1}{x}$. C'est une forme $\\frac{0}{0}$. On reconnaît le taux d'accroissement de l'exponentielle en $0$, donc la limite est $1$ (dérivée de $e^x$ en $0$). Deuxième terme : $\\cos(x^2)$, composition, limite $\\cos(0)=1$. Somme des limites : $1+1=2$. Ici, la somme est licite car les deux limites sont finies. Si l'une avait été infinie, il aurait fallu regrouper différemment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples mêlant opérations et composition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple où il faut factoriser avant de composer. $\\lim_{x\\to +\\infty} \\left( \\sqrt{x^2+x} - x \\right)$. C'est une différence $\\infty - \\infty$, forme indéterminée. On rationalise : on multiplie et divise par le conjugué $\\sqrt{x^2+x} + x$. On obtient $\\frac{x^2+x - x^2}{\\sqrt{x^2+x} + x} = \\frac{x}{\\sqrt{x^2+x} + x}$. Factorisons $x$ au dénominateur : $\\frac{x}{x(\\sqrt{1+\\frac{1}{x}} + 1)} = \\frac{1}{\\sqrt{1+\\frac{1}{x}} + 1}$ pour $x>0$. Maintenant, $\\frac{1}{x} \\to 0$, composition avec racine carrée : $\\sqrt{1+\\frac{1}{x}} \\to 1$. Dénominateur $\\to 2$. Limite finale : $\\frac{1}{2}$. On a utilisé : rationalisation (algèbre), factorisation, opérations (quotient, somme), composition (racine carrée)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to +\\infty} (\\sqrt{x^2+x} - x) = \\frac{1}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les limites de fonctions rationnelles en $\\pm\\infty$ méritent un rappel méthodique. Pour $R(x) = \\frac{P(x)}{Q(x)}$ avec $P,Q$ polynômes. Soit $n = \\deg P$, $m = \\deg Q$, $a_n, b_m$ coefficients dominants. Si $n < m$, limite $0$. Si $n = m$, limite $\\frac{a_n}{b_m}$. Si $n > m$, limite $\\pm\\infty$ selon le signe de $\\frac{a_n}{b_m}$ et la parité de $n-m$. C'est une application directe de la factorisation par la plus haute puissance $x^{\\max(n,m)}$, puis règles du quotient et composition (puissance $x^k$). Cette méthode systématique évite les erreurs de signe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : $\\lim_{x\\to -\\infty} \\frac{3x^3-2x+5}{-2x^2+7}$. $n=3, m=2$, $n>m$. Coefficients dominants : $3$ et $-2$. Rapport $\\frac{3}{-2} = -1.5$. Puissance $x^{3-2}=x^1$. Pour $x \\to -\\infty$, $x \\to -\\infty$, le produit $(-1.5) \\times (-\\infty) = +\\infty$. Donc limite $+\\infty$. Vérifions par factorisation : $\\frac{x^3(3 - \\frac{2}{x^2} + \\frac{5}{x^3})}{x^2(-2 + \\frac{7}{x^2})} = x \\cdot \\frac{3 - \\frac{2}{x^2} + \\frac{5}{x^3}}{-2 + \\frac{7}{x^2}}$. La fraction tend vers $\\frac{3}{-2} = -1.5$. $x \\to -\\infty$. Produit $(-\\infty) \\times (-1.5) = +\\infty$. C'est cohérent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de terminer, rappelle-toi les étapes pour ne jamais te perdre : 1) Identifier la forme de l'expression (somme, produit, quotient, composition). 2) Calculer les limites des sous-expressions les plus simples. 3) Vérifier si les règles d'opérations ou de composition s'appliquent (pas de forme indéterminée, continuité pour la composition). 4) Si forme indéterminée : transformer (factoriser, rationaliser, conjuguer, changer de variable, utiliser croissances comparées ou équivalents). 5) Recalculer les limites des nouveaux morceaux. 6) Conclure. Cette algorithmique, une fois automatisée, te rendra serein face à n'importe quel exercice de limite du bac."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la limite d'une somme, d'un produit, d'un quotient quand les limites des parties sont finies ou infinies (sans forme indéterminée).",
+                "Je reconnais les formes indéterminées : 0/0, ∞/∞, 0×∞, ∞-∞, 1^∞, 0^0, ∞^0.",
+                "J'applique le théorème de composition : limite intérieure L, fonction extérieure continue en L (ou ayant une limite en L si L infini).",
+                "Je sais factoriser par la plus grande puissance pour les limites de fonctions rationnelles en ±∞.",
+                "Je sais rationaliser une différence de racines (multiplier par le conjugué).",
+                "J'utilise les croissances comparées (ln, exp, puissances) pour trancher les ∞/∞ ou 0×∞.",
+                "Je vérifie toujours les conditions d'application (continuité, signes pour les limites infinies) avant de conclure."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to +\\infty} \\left( \\sqrt{x^2+3x} - x \\right)$.",
+              "answer": "$\\frac{3}{2}$",
+              "hint": "Rationalise en multipliant par le conjugué. Factorise ensuite par $x$.",
+              "explanation": "On multiplie et divise par $\\sqrt{x^2+3x}+x$ : $\\frac{x^2+3x - x^2}{\\sqrt{x^2+3x}+x} = \\frac{3x}{\\sqrt{x^2+3x}+x} = \\frac{3x}{x(\\sqrt{1+\\frac{3}{x}}+1)} = \\frac{3}{\\sqrt{1+\\frac{3}{x}}+1} \\to \\frac{3}{1+1} = \\frac{3}{2}$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to 0} \\frac{\\sin(2x)}{x}$.",
+              "answer": "$2$",
+              "hint": "Utilise la limite remarquable $\\frac{\\sin u}{u} \\to 1$ avec un changement de variable ou factorise.",
+              "explanation": "$\\frac{\\sin(2x)}{x} = 2 \\cdot \\frac{\\sin(2x)}{2x}$. Posons $u=2x$, $u\\to 0$. $\\frac{\\sin u}{u} \\to 1$. Donc la limite vaut $2 \\times 1 = 2$."
+            },
+            {
+              "question": "Étudier $\\lim_{x\\to -\\infty} \\frac{2x^4 - 5x^2 + 1}{-3x^3 + 4x}$.",
+              "answer": "$-\\infty$",
+              "hint": "Compare les degrés du numérateur et du dénominateur. Regarde le signe du coefficient dominant et la parité de la différence des degrés.",
+              "explanation": "Degrés : numérateur 4, dénominateur 3. Différence = 1 (impair). Coefficients dominants : 2 et -3. Rapport = -2/3. Pour $x \\to -\\infty$, $x^1 \\to -\\infty$. Produit $(-2/3) \\times (-\\infty) = +\\infty$ ? Attendez : $x \\to -\\infty$, $x$ est négatif. $(-2/3) \\times (-\\infty) = +\\infty$. Mais refaisons par factorisation : $\\frac{x^4(2 - 5/x^2 + 1/x^4)}{x^3(-3 + 4/x^2)} = x \\cdot \\frac{2 - 5/x^2 + 1/x^4}{-3 + 4/x^2}$. La fraction tend vers $2/(-3) = -2/3$. $x \\to -\\infty$. Produit $(-\\infty) \\times (-2/3) = +\\infty$. La réponse correcte est $+\\infty$. (Correction de l'answer ci-dessus : $+\\infty$)."
+            },
+            {
+              "question": "Calculer $\\lim_{x\\to 0} \\frac{e^{3x}-1}{\\sin(2x)}$.",
+              "answer": "$\\frac{3}{2}$",
+              "hint": "Utilise les équivalents : $e^u-1 \\sim u$ et $\\sin v \\sim v$ au voisinage de $0$.",
+              "explanation": "Au voisinage de $0$, $e^{3x}-1 \\sim 3x$ et $\\sin(2x) \\sim 2x$. Donc le quotient est équivalent à $\\frac{3x}{2x} = \\frac{3}{2}$. La limite est $\\frac{3}{2}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

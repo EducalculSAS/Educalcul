@@ -1,0 +1,485 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.360038+00:00",
+  "id": 284,
+  "code": "cm2-t02-c03",
+  "title": "Comparer des fractions",
+  "description": "Cours structuré Educalcul : Comparer des fractions.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Comparer des fractions",
+    "objectif_global": "Comparer des fractions",
+    "mini_lecons_imposees": [
+      "Dénominateurs liés simplement.",
+      "Repères.",
+      "Représentation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Dénominateurs liés simplement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les dénominateurs sont de la même famille"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bonjour ! Aujourd'hui, nous allons apprendre à comparer des fractions qui ont des dénominateurs « cousins ». Tu sais déjà que le dénominateur, c'est le nombre du bas : il nous dit en combien de parts égales on a coupé le tout. Parfois, deux fractions ont des dénominateurs différents, mais l'un est le double de l'autre, ou le triple. C'est ce qu'on appelle des dénominateurs liés simplement. C'est une excellente nouvelle, car ça va nous rendre la comparaison très facile !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux barres de chocolat identiques. La première est coupée en $2$ parts égales (demis), la seconde en $4$ parts égales (quarts). Si tu prends $\\frac{1}{2}$ de la première barre et $\\frac{3}{4}$ de la seconde, laquelle est la plus grande part ? Pour le savoir, on va essayer de leur donner le même dénominateur, comme si on recoupait la première barre pour qu'elle ait aussi $4$ parts."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Un demi équivaut à deux quarts. On voit tout de suite que trois quarts est plus grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les réglettes : $\\frac{1}{2}$ prend exactement la même place que $\\frac{2}{4}$. On dit que ce sont des fractions équivalentes. Maintenant, pour comparer $\\frac{1}{2}$ et $\\frac{3}{4}$, il suffit de comparer $\\frac{2}{4}$ et $\\frac{3}{4}$. Comme elles ont le même dénominateur ($4$), on regarde juste les numérateurs : $3$ est plus grand que $2$, donc $\\frac{3}{4} > \\frac{1}{2}$. C'est magique : on a transformé le problème en une comparaison toute simple !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le lien",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux dénominateurs. Est-ce que l'un est un multiple de l'autre ? (Exemple : $3$ et $6$, $4$ et $8$, $5$ et $10$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transformer la plus petite fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur ET le dénominateur de la fraction qui a le plus petit dénominateur pour obtenir le grand dénominateur. C'est la règle de l'égalité : ce qu'on fait en bas, on le fait en haut."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant que les deux fractions ont le même dénominateur, la plus grande est celle qui a le plus grand numérateur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec des tiers et des sixièmes. C'est un autre couple très courant : $3$ et $6$ sont liés car $6 = 3 \\times 2$. Si je veux comparer $\\frac{2}{3}$ et $\\frac{5}{6}$, je vais transformer les tiers en sixièmes. Je multiplie le haut et le bas de $\\frac{2}{3}$ par $2$ : j'obtiens $\\frac{4}{6}$. Il ne me reste plus qu'à comparer $\\frac{4}{6}$ et $\\frac{5}{6}$. Facile, non ?"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 6
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 6
+                }
+              ],
+              "caption": "Deux tiers font quatre sixièmes. Cinq sixièmes est plus grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? La méthode est toujours la même, quel que soit le couple de dénominateurs. On cherche le multiple commun (souvent le plus grand des deux), on adapte la fraction qui a le plus petit dénominateur, et on compare les numérateurs. C'est comme si on mettait tout le monde sur la même échelle de mesure pour pouvoir les comparer sans se tromper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, petit piège ! Parfois, les deux fractions ont déjà le même dénominateur. Dans ce cas, pas besoin de transformer quoi que ce soit : on compare directement les numérateurs. Et parfois, le lien n'est pas « fois 2 » mais « fois 3 » ou « fois 4 ». Par exemple, pour comparer $\\frac{1}{4}$ et $\\frac{5}{12}$, le lien est « fois 3 » car $12 = 4 \\times 3$. Je multiplie donc $\\frac{1}{4}$ par $3$ pour obtenir $\\frac{3}{12}$, et je compare $3$ et $5$. La méthode ne change pas, seul le multiplicateur change."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 12
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 12
+                }
+              ],
+              "caption": "Un quart équivaut à trois douzièmes. Cinq douzièmes est plus grand."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de maîtriser une technique super puissante pour comparer des fractions. La prochaine fois que tu verras deux fractions avec des dénominateurs comme $2$ et $6$, $3$ et $9$, ou $5$ et $10$, tu sauras exactement quoi faire : transformer la plus petite pour qu'elles parlent le même langage, puis comparer les numérateurs. C'est un outil que tu vas utiliser tout le temps, même au collège !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{1}{2}$ et $\\frac{3}{8}$ en transformant la première fraction en huitièmes.",
+              "answer": "$\\frac{1}{2} = \\frac{4}{8}$. Comme $4 > 3$, $\\frac{1}{2} > \\frac{3}{8}$.",
+              "hint": "Par quoi dois-tu multiplier $2$ pour obtenir $8$ ? Fais la même chose au numérateur.",
+              "explanation": "On multiplie le numérateur et le dénominateur de $\\frac{1}{2}$ par $4$ pour obtenir $\\frac{4}{8}$. On compare ensuite $4$ et $3$."
+            },
+            {
+              "question": "Compare $\\frac{3}{5}$ et $\\frac{7}{10}$. Quel est le dénominateur commun ?",
+              "answer": "$\\frac{3}{5} = \\frac{6}{10}$. Comme $6 < 7$, $\\frac{3}{5} < \\frac{7}{10}$.",
+              "hint": "Le lien entre $5$ et $10$ est « fois 2 ». Transforme les cinquièmes en dixièmes.",
+              "explanation": "On transforme $\\frac{3}{5}$ en dixièmes : $\\frac{6}{10}$. On compare $6$ et $7$."
+            },
+            {
+              "question": "Compare $\\frac{2}{3}$ et $\\frac{5}{9}$. Écris la fraction équivalente à $\\frac{2}{3}$ avec dénominateur $9$.",
+              "answer": "$\\frac{2}{3} = \\frac{6}{9}$. Comme $6 > 5$, $\\frac{2}{3} > \\frac{5}{9}$.",
+              "hint": "Le lien est « fois 3 » car $9 = 3 \\times 3$. Multiplie le haut et le bas par $3$.",
+              "explanation": "On multiplie $\\frac{2}{3}$ par $3$ pour avoir $\\frac{6}{9}$. $6$ est plus grand que $5$."
+            }
+          ]
+        },
+        {
+          "title": "Repères.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser des repères pour comparer malin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Salut ! Tu as déjà une super méthode pour comparer quand les dénominateurs sont liés. Mais parfois, les dénominateurs n'ont pas de lien simple (comme $5$ et $7$), ou alors tu veux aller encore plus vite sans faire de calculs. Devine quoi ? Il existe une astuce de pro : utiliser des **repères**. Un repère, c'est une fraction qu'on connaît par cœur et qui nous sert de point de comparaison, comme une borne kilométrique sur une route. Les trois repères rois en CM2, ce sont $0$, $\\frac{1}{2}$ et $1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment savoir si une fraction est plus petite ou plus grande que $\\frac{1}{2}$ ? C'est très simple : compare le numérateur à la moitié du dénominateur. Si le numérateur est **strictement plus petit** que la moitié du dénominateur, la fraction est **plus petite que $\\frac{1}{2}$**. Si le numérateur est **exactement la moitié** du dénominateur, la fraction **vaut $\\frac{1}{2}$**. Si le numérateur est **plus grand** que la moitié du dénominateur, la fraction est **plus grande que $\\frac{1}{2}$**. C'est une règle qui marche à tous les coups !"
+            },
+            {
+              "type": "definition",
+              "term": "Repère",
+              "definition": "Une fraction de référence (comme $0$, $\\frac{1}{2}$, $1$) qu'on utilise pour situer et comparer d'autres fractions sans calculer de dénominateur commun.",
+              "example": "$\\frac{3}{8} < \\frac{1}{2}$ car $3 < 4$ (la moitié de $8$)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Où se placent $\\frac{1}{5}$, $\\frac{1}{2}$ et $\\frac{4}{5}$ ? Les repères $0$, $\\frac{1}{2}$, $1$ aident à les ordonner.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.2,
+                  "label": "$\\frac{1}{5}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                },
+                {
+                  "value": 0.8,
+                  "label": "$\\frac{4}{5}$"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la droite graduée : $\\frac{1}{5}$ est tout près de $0$, $\\frac{1}{2}$ est pile au milieu, et $\\frac{4}{5}$ est tout près de $1$. Si je dois comparer $\\frac{1}{5}$ et $\\frac{4}{5}$, je n'ai même pas besoin de calculer : l'une est proche de $0$, l'autre proche de $1$. Évidemment, $\\frac{4}{5} > \\frac{1}{5}$. Les repères nous donnent un ordre de grandeur immédiat, c'est comme avoir une boussole dans le monde des fractions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imaginons qu'on doive comparer $\\frac{3}{7}$ et $\\frac{5}{9}$. Aucun lien simple entre $7$ et $9$. On va utiliser le repère $\\frac{1}{2}$. Pour $\\frac{3}{7}$ : la moitié de $7$, c'est $3,5$. Le numérateur est $3$, qui est **plus petit** que $3,5$. Donc $\\frac{3}{7} < \\frac{1}{2}$. Pour $\\frac{5}{9}$ : la moitié de $9$, c'est $4,5$. Le numérateur est $5$, qui est **plus grand** que $4,5$. Donc $\\frac{5}{9} > \\frac{1}{2}$. Conclusion : $\\frac{3}{7} < \\frac{1}{2} < \\frac{5}{9}$, donc $\\frac{3}{7} < \\frac{5}{9}$. On a comparé sans aucun dénominateur commun !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 7
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 9
+                }
+              ],
+              "caption": "Visuellement, $\\frac{3}{7}$ est avant le milieu, $\\frac{5}{9}$ est après le milieu."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une stratégie de champion : on classe chaque fraction par rapport à $\\frac{1}{2}$ (et parfois par rapport à $0$ ou $1$ si elles sont très petites ou très grandes). Si les deux fractions sont du même côté du repère (les deux $< \\frac{1}{2}$ ou les deux $> \\frac{1}{2}$), il faudra affiner, mais souvent, le repère $\\frac{1}{2}$ suffit à trancher net. C'est gain de temps assuré !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si les deux fractions sont de part et d'autre de $1$ ? Par exemple $\\frac{7}{4}$ et $\\frac{5}{6}$. Là, le repère $1$ est magique. $\\frac{7}{4}$ a un numérateur plus grand que le dénominateur, donc elle est **supérieure à $1$**. $\\frac{5}{6}$ a un numérateur plus petit que le dénominateur, donc elle est **inférieure à $1$**. Donc $\\frac{5}{6} < 1 < \\frac{7}{4}$. Pas besoin de chercher un dénominateur commun à $4$ et $6$ : le repère $1$ a fait le travail tout seul. C'est ça, l'intelligence mathématique : choisir l'outil le plus simple pour le problème posé."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérage par rapport à 1 : $\\frac{5}{6} < 1 < \\frac{7}{4}$.",
+              "min": 0,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0.833,
+                  "label": "$\\frac{5}{6}$"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 1.75,
+                  "label": "$\\frac{7}{4}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux super-pouvoirs : la méthode des dénominateurs communs (quand c'est facile) et la méthode des repères (quand c'est malin). Un bon mathématicien, c'est quelqu'un qui regarde le problème **avant** de se lancer, et qui choisit la méthode la plus rapide. La prochaine leçon, on verra comment les dessins (représentations) peuvent aussi t'aider à voir la réponse avant même de calculer. Mais déjà, avec les repères, tu gagnes un temps fou !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Situe par rapport à $\\frac{1}{2}$ : $\\frac{2}{5}$ et $\\frac{3}{5}$. Laquelle est $< \\frac{1}{2}$ ? Laquelle est $> \\frac{1}{2}$ ?",
+              "answer": "$\\frac{2}{5} < \\frac{1}{2}$ car $2 < 2,5$. $\\frac{3}{5} > \\frac{1}{2}$ car $3 > 2,5$.",
+              "hint": "Calcule la moitié du dénominateur $5$ ($2,5$) et compare au numérateur.",
+              "explanation": "Moitié de $5$ est $2,5$. $2 < 2,5$ donc $\\frac{2}{5} < \\frac{1}{2}$. $3 > 2,5$ donc $\\frac{3}{5} > \\frac{1}{2}$."
+            },
+            {
+              "question": "Compare $\\frac{4}{9}$ et $\\frac{5}{8}$ en utilisant le repère $\\frac{1}{2}$.",
+              "answer": "$\\frac{4}{9} < \\frac{1}{2}$ (car $4 < 4,5$) et $\\frac{5}{8} > \\frac{1}{2}$ (car $5 > 4$). Donc $\\frac{4}{9} < \\frac{5}{8}$.",
+              "hint": "Regarde chaque fraction par rapport à $\\frac{1}{2}$. Moitié de $9$ est $4,5$, moitié de $8$ est $4$.",
+              "explanation": "$\\frac{4}{9}$ est avant la moitié, $\\frac{5}{8}$ est après la moitié. L'ordre est décidé."
+            },
+            {
+              "question": "Compare $\\frac{9}{5}$ et $\\frac{3}{4}$ en utilisant le repère $1$.",
+              "answer": "$\\frac{9}{5} > 1$ (numérateur $>$ dénominateur) et $\\frac{3}{4} < 1$. Donc $\\frac{3}{4} < \\frac{9}{5}$.",
+              "hint": "Une fraction est supérieure à 1 si son numérateur est plus grand que son dénominateur.",
+              "explanation": "$\\frac{9}{5}$ est une fraction impropre ($>1$), $\\frac{3}{4}$ est une fraction propre ($<1$)."
+            }
+          ]
+        },
+        {
+          "title": "Représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Voir pour comprendre : la force du dessin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue pour cette dernière leçon ! Tu sais maintenant comparer en calculant (dénominateurs communs) et en estimant (repères). Mais il y a une troisième façon, très visuelle, qui parle à ton cerveau différemment : **la représentation graphique**. Dessiner, ce n'est pas « pour les petits » : c'est un outil de réflexion utilisé par les grands mathématiciens pour modéliser un problème. En CM2, on utilise surtout deux types de dessins : le **diagramme en barres** (ou bandeau) et le **disque partagé** (comme un gâteau)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de $\\frac{2}{3}$ et $\\frac{3}{5}$. Les dénominateurs $3$ et $5$ ne sont pas liés simplement. Au lieu de chercher $15$ comme dénominateur commun tout de suite, dessinons deux barres de la **même longueur**. Sur la première, je trace $2$ traits pour faire $3$ parts égales, je colorie $2$ parts. Sur la seconde, je trace $4$ traits pour faire $5$ parts égales, je colorie $3$ parts. Mes yeux voient immédiatement quelle partie colorée est la plus grande. C'est une preuve visuelle, avant même le calcul."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "$\\frac{2}{3}$",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Barre pour $\\frac{2}{3}$ : 2 parts bleues sur 3 au total."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "$\\frac{3}{5}$",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "",
+                  "value": 2,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "Barre pour $\\frac{3}{5}$ : 3 parts vertes sur 5 au total. Les barres ont la même longueur totale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les deux barres ci-dessus (imagine-les alignées l'une au-dessus de l'autre, même longueur). La zone bleue ($\\frac{2}{3}$) dépasse un peu la zone verte ($\\frac{3}{5}$). Visuellement, $\\frac{2}{3} > \\frac{3}{5}$. Le dessin m'a donné la réponse en un coup d'œil. Ensuite, si je veux la preuve par le calcul, je sais déjà vers quel résultat je dois aller : je vais chercher le dénominateur $15$, transformer en $\\frac{10}{15}$ et $\\frac{9}{15}$, et confirmer que $10 > 9$. Le dessin guide le calcul, il ne le remplace pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le disque partagé (le « gâteau ») est parfait pour les fractions inférieures à $1$. Imagine deux disques de même diamètre. Pour comparer $\\frac{3}{4}$ et $\\frac{5}{8}$, je partage le premier en $4$ parts égales (deux traits perpendiculaires) et je colorie $3$ parts. Le second, je le partage en $8$ parts (quatre traits) et je colorie $5$ parts. C'est parfois moins précis que la barre pour voir la différence, mais c'est très concret. On voit bien que $\\frac{3}{4}$ laisse seulement un petit quart blanc, alors que $\\frac{5}{8}$ laisse trois huitièmes blancs. Le dessin confirme : $\\frac{3}{4} > \\frac{5}{8}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "$\\frac{3}{4}$ : trois quarts du disque colorés."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "$\\frac{5}{8}$ : cinq huitièmes du disque colorés. Le blanc est plus grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, un piège classique : **ne jamais comparer des dessins de tailles différentes** ! Si tu dessines une grande barre pour $\\frac{1}{2}$ et une toute petite barre pour $\\frac{3}{4}$, visuellement le $\\frac{1}{2}$ pourrait sembler plus grand. La règle d'or : **le tout (l'unité) doit avoir la même taille sur tous les dessins**. C'est pour ça qu'on utilise des bandelettes de papier de même longueur, ou des disques de même diamètre. Le dessin est un modèle mathématique, il doit respecter l'échelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi combiner les méthodes. Par exemple, pour comparer $\\frac{5}{6}$ et $\\frac{7}{8}$, je vois sur la droite numérique (un autre type de représentation) qu'elles sont toutes les deux très proches de $1$. Je peux calculer « ce qui manque pour arriver à $1$ » : il manque $\\frac{1}{6}$ à la première, et $\\frac{1}{8}$ à la seconde. Comme $\\frac{1}{6} > \\frac{1}{8}$ (les parts sont plus grosses), la première est **plus loin de $1$** que la seconde. Donc $\\frac{5}{6} < \\frac{7}{8}$. C'est une astuce de pro : comparer les **complémentaires à $1$** quand les fractions sont proches de $1$. Le dessin de la droite graduée rend ça évident."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparaison par les complémentaires à 1 : $\\frac{5}{6}$ est à $\\frac{1}{6}$ de 1, $\\frac{7}{8}$ est à $\\frac{1}{8}$ de 1. $\\frac{1}{8}$ est plus petit, donc $\\frac{7}{8}$ est plus proche de 1.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.833,
+                  "label": "$\\frac{5}{6}$"
+                },
+                {
+                  "value": 0.875,
+                  "label": "$\\frac{7}{8}$"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Voilà, tu as maintenant une boîte à outils complète pour comparer n'importe quelles fractions : 1) **Dénominateurs liés** : transformer pour avoir le même dénominateur. 2) **Repères** : situer par rapport à $0$, $\\frac{1}{2}$, $1$. 3) **Représentations** : barres, disques, droite graduée pour visualiser. Le secret, c'est de choisir l'outil le plus adapté à la situation. Parfois le calcul est plus sûr, parfois le dessin est plus rapide, parfois le repère est immédiat. Tu es prêt(e) pour le bilan !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux fractions dont les dénominateurs sont liés (ex: 3 et 6) en transformant l'une d'elles.",
+                "Je sais utiliser les repères 0, 1/2 et 1 pour comparer deux fractions sans calculer de dénominateur commun.",
+                "Je sais représenter deux fractions par des barres de même longueur ou des disques de même diamètre pour les comparer visuellement.",
+                "Je sais choisir la méthode la plus efficace selon les fractions données (calcul, repère, ou dessin).",
+                "Je vérifie toujours que mes dessins respectent la même unité de référence (même longueur, même diamètre)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine (mentalement ou sur papier) deux barres de même longueur pour comparer $\\frac{2}{3}$ et $\\frac{3}{4}$. Laquelle est la plus grande ?",
+              "answer": "$\\frac{3}{4} > \\frac{2}{3}$.",
+              "hint": "Partage la première en 3, colorie 2 parts. Partage la seconde en 4, colorie 3 parts. Compare les parties colorées.",
+              "explanation": "Sur des barres de même longueur, 3 parts sur 4 couvrent plus de surface que 2 parts sur 3. Le calcul confirme : $\\frac{8}{12} < \\frac{9}{12}$."
+            },
+            {
+              "question": "Compare $\\frac{5}{6}$ et $\\frac{7}{8}$ en regardant ce qui manque pour arriver à $1$.",
+              "answer": "$\\frac{5}{6} < \\frac{7}{8}$ car il manque $\\frac{1}{6}$ à la première et $\\frac{1}{8}$ à la seconde, et $\\frac{1}{6} > \\frac{1}{8}$.",
+              "hint": "Calcule $1 - \\frac{5}{6}$ et $1 - \\frac{7}{8}$. Compare ces deux fractions unitaires.",
+              "explanation": "Le complément de $\\frac{5}{6}$ est $\\frac{1}{6}$, celui de $\\frac{7}{8}$ est $\\frac{1}{8}$. Comme $\\frac{1}{6} > \\frac{1}{8}$, $\\frac{5}{6}$ est plus loin de 1."
+            },
+            {
+              "question": "Pour comparer $\\frac{4}{7}$ et $\\frac{5}{9}$, quelle méthode choisis-tu ? Justifie ton choix en une phrase.",
+              "answer": "Méthode des repères : $\\frac{4}{7} > \\frac{1}{2}$ (car $4 > 3,5$) et $\\frac{5}{9} > \\frac{1}{2}$ (car $5 > 4,5$). Les deux sont $> \\frac{1}{2}$, le repère ne tranche pas seul. On utilisera le dénominateur commun $63$ ou le dessin.",
+              "hint": "Teste d'abord le repère $\\frac{1}{2}$. Si les deux sont du même côté, il faut une autre méthode.",
+              "explanation": "Le repère $\\frac{1}{2}$ place les deux fractions au-dessus, mais ne les départage pas. Il faut alors calculer (dénominateur 63) ou dessiner."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

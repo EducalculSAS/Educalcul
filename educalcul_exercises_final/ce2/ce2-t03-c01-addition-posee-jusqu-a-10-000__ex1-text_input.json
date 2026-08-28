@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Aligner les rangs",
+  "title": "Aligner les rangs pour additionner",
+  "blocks": [
+    {
+      "title": "Écrire en colonne",
+      "content": "Ecris l'addition $345 + 2\\,718$ en posant correctement les chiffres par rang (unités sous unités, dizaines sous dizaines, etc.). Donne le résultat final.",
+      "correctAnswer": "3063",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On aligne les chiffres par valeur de position : 345 s'écrit avec 3 centaines, 4 dizaines, 5 unités. 2 718 s'écrit avec 2 milliers, 7 centaines, 1 dizaine, 8 unités. On additionne colonne par colonne en partant des unités : $5+8=13$ (j'écris 3, je retiens 1) ; $4+1+1=6$ ; $3+7=10$ (j'écris 0, je retiens 1) ; $2+1=3$. Le résultat est $3\\,063$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Repérer l'erreur d'alignement",
+      "content": "Voici une addition posée :\\n  4 5 6\\n+   7 8\\n-------\\n  5 3 4\\nL'élève a mal aligné les rangs. Quel est le résultat correct de $456 + 78$ ?",
+      "correctAnswer": "534",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'élève a aligné le 7 sous le 5 (dizaines sous dizaines) et le 8 sous le 6 (unités sous unités), ce qui est correct pour les deux derniers chiffres, mais il a oublié de décaler le 78 vers la droite par rapport au 456. En réalité, 78 = 7 dizaines et 8 unités. 456 = 4 centaines, 5 dizaines, 6 unités. L'alignement correct donne :\\n  4 5 6\\n+   7 8\\n-------\\n  5 3 4\\nLe calcul : $6+8=14$ (4, retiens 1) ; $5+7+1=13$ (3, retiens 1) ; $4+1=5$. Résultat : $534$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer en posant l'opération",
+      "content": "Calcule $4\\,205 + 397$ en posant l'addition correctement. Attention aux zéros et aux retenues.",
+      "correctAnswer": "4602",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On écrit 4 205 au-dessus de 397 en alignant les unités :\\n  4 2 0 5\\n+   3 9 7\\n---------\\nUnités : $5+7=12$ (j'écris 2, je retiens 1).\\nDizaines : $0+9+1=10$ (j'écris 0, je retiens 1).\\nCentaines : $2+3+1=6$ (j'écris 6).\\nMilliers : $4$ (j'écris 4).\\nLe résultat est $4\\,602$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.806651+00:00",
+  "id": 423,
+  "code": "4eme-t01-c04",
+  "title": "Notation scientifique",
+  "description": "Cours structuré Educalcul : Notation scientifique.",
+  "subject": "Nombres relatifs, fractions et puissances",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Nombres relatifs, fractions et puissances",
+    "titre_du_cours": "Notation scientifique",
+    "objectif_global": "Notation scientifique",
+    "mini_lecons_imposees": [
+      "Écrire.",
+      "Comparer ordres de grandeur.",
+      "Calculatrice."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, fractions et puissances",
+      "lessons": [
+        {
+          "title": "Écrire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est‑ce que la notation scientifique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois noter la distance entre la Terre et le Soleil, environ $150\\,000\\,000\\,000$ mètres. Écrire tous ces zéros est fastidieux et source d'erreurs. La notation scientifique a été inventée pour ranger ce genre de nombres dans un format compact : un nombre entre $1$ et $10$ (la mantisse) multiplié par une puissance de $10$ (l'exposant). Ainsi $150\\,000\\,000\\,000$ s'écrit $1,5 \\times 10^{11}$. C'est beaucoup plus court et on voit tout de suite l'ordre de grandeur."
+            },
+            {
+              "type": "definition",
+              "term": "Notation scientifique",
+              "definition": "Écriture d'un nombre sous la forme $a \\times 10^{n}$ avec $1 \\le a < 10$ et $n$ entier relatif. La partie $a$ s'appelle la mantisse, $n$ l'exposant.",
+              "example": "$6,02 \\times 10^{23}$ (nombre d'Avogadro)"
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 1.5,
+              "exponent": 11,
+              "caption": "Conversion de 150 000 000 000 en notation scientifique"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le principe, regardons comment repérer la mantisse et l'exposant pour n'importe quel nombre. La règle est simple : on déplace la virgule jusqu'à obtenir un chiffre non nul devant la virgule. Le nombre de cases déplacées donne l'exposant ; si on déplace vers la gauche l'exposant est positif, vers la droite il est négatif."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $0,00045$, la virgule est au début. On compte les zéros après la virgule avant le premier chiffre non nul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déplacer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On la fait glisser après le $4$ : $4,5$. On a déplacé $4$ positions vers la droite, donc l'exposant sera $-4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre devient $4,5 \\times 10^{-4}$. Vérifie : $4,5 \\times 0,0001 = 0,00045$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un grand nombre, comme $3\\,200\\,000$. La virgule est à la fin (après le dernier zéro). On la fait remonter après le $3$ : $3,2$. On a déplacé $6$ positions vers la gauche, l'exposant est $+6$. Le résultat : $3,2 \\times 10^{6}$. Cette méthode marche pour tout nombre, petit ou grand."
+            },
+            {
+              "type": "display_math",
+              "latex": "3\\,200\\,000 = 3,2 \\times 10^{6}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la mantisse n'est pas un nombre à un chiffre après la virgule, par exemple $0,0078$. On déplace la virgule trois fois vers la droite pour obtenir $7,8$, l'exposant est $-3$. Le nombre s'écrit $7,8 \\times 10^{-3}$. Attention : la mantisse doit toujours être comprise entre $1$ (inclus) et $10$ (exclus). Si tu obtiens $0,78 \\times 10^{-2}$, ce n'est pas la forme canonique ; il faut réajuster pour avoir $7,8 \\times 10^{-3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris $45\\,000$ en notation scientifique.",
+              "answer": "$4,5 \\times 10^{4}$",
+              "hint": "Déplace la virgule après le $4$ et compte les positions.",
+              "explanation": "On place la virgule après le premier chiffre non nul : $4,5$. La virgule a bougé de $4$ rangs vers la gauche, donc l'exposant est $+4$."
+            },
+            {
+              "question": "Transforme $0,00032$ en notation scientifique.",
+              "answer": "$3,2 \\times 10^{-4}$",
+              "hint": "Compte les zéros après la virgule avant le $3$.",
+              "explanation": "La virgule passe après le $3$ : $3,2$. Elle a bougé de $4$ rangs vers la droite, l'exposant est $-4$."
+            },
+            {
+              "question": "Donne la notation scientifique de $7\\,800\\,000\\,000$.",
+              "answer": "$7,8 \\times 10^{9}$",
+              "hint": "Combien de zéros après le $78$ ?",
+              "explanation": "On obtient $7,8$ après avoir déplacé la virgule de $9$ positions vers la gauche."
+            },
+            {
+              "question": "Lequel de ces nombres est déjà en notation scientifique canonique ? $0,56 \\times 10^{3}$ ou $5,6 \\times 10^{2}$ ?",
+              "answer": "$5,6 \\times 10^{2}$",
+              "hint": "Vérifie que la mantisse est entre $1$ et $10$.",
+              "explanation": "$0,56$ n'est pas dans l'intervalle $[1,10[$, alors que $5,6$ l'est. Donc la seconde écriture est la bonne."
+            }
+          ]
+        },
+        {
+          "title": "Comparer ordres de grandeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre l'ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'ordre de grandeur d'un nombre, c'est la puissance de $10$ qui le caractérise le mieux. Quand un nombre est écrit en notation scientifique $a \\times 10^{n}$, l'exposant $n$ donne directement cet ordre de grandeur. Par exemple, $6,3 \\times 10^{5}$ a pour ordre de grandeur $10^{5}$ : on sait que le nombre se situe entre $10^{5}$ et $10^{6}$. C'est une information précieuse pour comparer rapidement des grandeurs très différentes sans faire de calculs longs."
+            },
+            {
+              "type": "definition",
+              "term": "Ordre de grandeur",
+              "definition": "Puissance de $10$ la plus proche d'un nombre donné. Pour un nombre en notation scientifique $a \\times 10^{n}$, l'ordre de grandeur est $10^{n}$.",
+              "example": "$2,7 \\times 10^{-3}$ a pour ordre de grandeur $10^{-3}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des ordres de grandeur sur une droite graduée",
+              "min": -4,
+              "max": 4,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "10^{-3}"
+                },
+                {
+                  "value": 0,
+                  "label": "10^{0}"
+                },
+                {
+                  "value": 2,
+                  "label": "10^{2}"
+                },
+                {
+                  "value": 5,
+                  "label": "10^{5}"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux nombres en notation scientifique, la première chose à regarder est l'exposant. Si les exposants sont différents, le nombre dont l'exposant est le plus grand est le plus grand, peu importe la mantisse. Par exemple, $4,1 \\times 10^{7}$ est plus grand que $9,9 \\times 10^{6}$ car $7 > 6$. C'est une règle simple qui évite de développer les nombres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comparer les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde $n_1$ et $n_2$ dans $a_1 \\times 10^{n_1}$ et $a_2 \\times 10^{n_2}$. Si $n_1 > n_2$, le premier nombre est plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Si exposants égaux, comparer les mantisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque $n_1 = n_2$, c'est la mantisse qui décide : le plus grand $a$ donne le plus grand nombre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux distances : la taille d'une bactérie $2,5 \\times 10^{-6}\\,\\text{m}$ et l'épaisseur d'un cheveu $7 \\times 10^{-5}\\,\\text{m}$. Les exposants sont $-6$ et $-5$. Comme $-5 > -6$, le cheveu est plus gros. Même si la mantisse de la bactérie ($2,5$) est plus grande que $7$, l'exposant l'emporte. C'est pour cela qu'on regarde d'abord l'exposant."
+            },
+            {
+              "type": "display_math",
+              "latex": "2,5 \\times 10^{-6} < 7 \\times 10^{-5}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les nombres ne sont pas encore en notation scientifique. Il faut d'abord les convertir, puis appliquer la règle de comparaison. Prenons $0,00048$ et $3\\,200$. Le premier devient $4,8 \\times 10^{-4}$, le second $3,2 \\times 10^{3}$. Les exposants $-4$ et $3$ montrent immédiatement que $3\\,200$ est enormément plus grand. Cette méthode marche aussi pour des nombres négatifs : on compare les valeurs absolues, puis on remet le signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l'ordre de grandeur de $9,1 \\times 10^{12}$ ?",
+              "answer": "$10^{12}$",
+              "hint": "Regarde l'exposant de la notation scientifique.",
+              "explanation": "L'exposant est $12$, donc l'ordre de grandeur est $10^{12}$."
+            },
+            {
+              "question": "Compare $5,6 \\times 10^{4}$ et $4,9 \\times 10^{5}$.",
+              "answer": "$5,6 \\times 10^{4} < 4,9 \\times 10^{5}$",
+              "hint": "Compare d'abord les exposants $4$ et $5$.",
+              "explanation": "L'exposant $5$ est plus grand que $4$, donc le second nombre est plus grand, quelle que soit la mantisse."
+            },
+            {
+              "question": "Lequel est le plus petit : $3,2 \\times 10^{-3}$ ou $1,1 \\times 10^{-2}$ ?",
+              "answer": "$3,2 \\times 10^{-3}$",
+              "hint": "Regarde les exposants $-3$ et $-2$.",
+              "explanation": "Comme $-3 < -2$, $10^{-3}$ est plus petit que $10^{-2}$, donc le premier nombre est le plus petit."
+            },
+            {
+              "question": "Convertis $0,00007$ et $560\\,000$ en notation scientifique, puis compare-les.",
+              "answer": "$7 \\times 10^{-5} < 5,6 \\times 10^{5}$",
+              "hint": "Transforme chaque nombre, puis compare les exposants.",
+              "explanation": "$0,00007 = 7 \\times 10^{-5}$ (exposant $-5$). $560\\,000 = 5,6 \\times 10^{5}$ (exposant $5$). $-5 < 5$, donc le premier est plus petit."
+            }
+          ]
+        },
+        {
+          "title": "Calculatrice.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la calculatrice pour la notation scientifique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La plupart des calculatrices modernes possèdent une touche dédiée pour entrer les puissances de dix, souvent marquée $\\text{EXP}$ ou $\\times 10^{x}$. Au lieu de taper $3,2 \\times 10^{6}$ en multipliant, tu tapes $3,2$, puis la touche $\\text{EXP}$, puis $6$. L'affichage montre généralement $3,2\\text{E}6$ ou $3,2 \\times 10^{6}$. C'est plus rapide et cela évite les erreurs de parenthèses."
+            },
+            {
+              "type": "definition",
+              "term": "Touche EXP",
+              "definition": "Touche de la calculatrice qui signifie « fois dix puissance ». Elle insère automatiquement le symbole $\\times 10^{\\ }$ et place le curseur sur l'exposant.",
+              "example": "Pour $5,7 \\times 10^{-3}$ : tape $5,7$, EXP, $(-)$, $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble : pour calculer $(2,5 \\times 10^{4}) \\times (4 \\times 10^{-2})$, tu tapes $2,5$, EXP, $4$, $\\times$, $4$, EXP, $(-)$, $2$, $=$. La calculatrice affiche $1 \\times 10^{3}$ (ou $1\\text{E}3$). Le résultat est $1000$. Vérifie mentalement : $2,5 \\times 4 = 10$, $10^{4} \\times 10^{-2} = 10^{2}$, donc $10 \\times 10^{2} = 10^{3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le résultat sort sous forme décimale très longue, comme $0,00000045$. La calculatrice peut basculer en mode scientifique automatiquement ou sur commande (touche $\\text{SCI}$ ou $\\text{ENG}$). Apprends à repérer le mode d'affichage : si tu vois un $E$ ou un petit $10$ en exposant, c'est la notation scientifique. Sinon, appuie sur la touche de changement de format jusqu'à obtenir $4,5 \\times 10^{-7}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Entrer le premier nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tape la mantisse, puis EXP, puis l'exposant (avec le signe moins si nécessaire)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appuie sur $\\times$, $\\div$, $+$ ou $-$ selon le calcul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Entrer le second nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Même procédure : mantisse, EXP, exposant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Lire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'affichage n'est pas en notation scientifique, active le mode SCI."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les calculatrices gèrent aussi les additions et soustractions en notation scientifique, mais attention : il faut que les exposants soient alignés. La machine le fait pour toi, mais il est bon de comprendre. Par exemple, $3 \\times 10^{5} + 2 \\times 10^{4}$ : la calculatrice convertit le second en $0,2 \\times 10^{5}$, additionne les mantisses ($3 + 0,2 = 3,2$) et affiche $3,2 \\times 10^{5}$. Si tu fais le calcul à la main, tu procèdes de la même façon."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 \\times 10^{5} + 2 \\times 10^{4} = 3,2 \\times 10^{5}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier un résultat, utilise l'estimation d'ordre de grandeur. Si tu multiplies $6 \\times 10^{3}$ par $7 \\times 10^{-2}$, l'ordre de grandeur du produit est $10^{3} \\times 10^{-2} = 10^{1}$. Le résultat exact $4,2 \\times 10^{2}$ a bien un exposant $2$, proche de $1$ (la mantisse $4,2$ décale d'un rang). Cette habitude te permet de repérer une frappe erronée sur la calculatrice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire un nombre en notation scientifique canonique.",
+                "Je reconnais la mantisse et l'exposant.",
+                "Je compare deux nombres en regardant d'abord l'exposant.",
+                "J'utilise la touche EXP de ma calculatrice pour entrer une puissance de dix.",
+                "Je sais basculer l'affichage en mode scientifique (SCI).",
+                "J'estime l'ordre de grandeur d'un résultat pour vérifier ma calculatrice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur ta calculatrice, entre $4,3 \\times 10^{5}$ et multiplie par $2 \\times 10^{2}$. Quel résultat obtiens-tu ?",
+              "answer": "$8,6 \\times 10^{7}$",
+              "hint": "Utilise la touche EXP pour chaque nombre, puis la touche multiplication.",
+              "explanation": "$4,3 \\times 2 = 8,6$ ; $10^{5} \\times 10^{2} = 10^{7}$. Le produit est $8,6 \\times 10^{7}$."
+            },
+            {
+              "question": "La calculatrice affiche $9,1E-4$. Écris ce nombre en notation scientifique normale.",
+              "answer": "$9,1 \\times 10^{-4}$",
+              "hint": "Le $E$ signifie « fois dix puissance ».",
+              "explanation": "Le format $E$ est l'équivalent de $\\times 10^{\\ }$. Donc $9,1E-4 = 9,1 \\times 10^{-4}$."
+            },
+            {
+              "question": "Calcule $5 \\times 10^{3} + 3 \\times 10^{2}$ avec la calculatrice. Quel est l'affichage en notation scientifique ?",
+              "answer": "$5,3 \\times 10^{3}$",
+              "hint": "La calculatrice aligne les exposants avant d'additionner les mantisses.",
+              "explanation": "$3 \\times 10^{2} = 0,3 \\times 10^{3}$. $5 + 0,3 = 5,3$, donc $5,3 \\times 10^{3}$."
+            },
+            {
+              "question": "Tu obtiens $2,7 \\times 10^{6}$ après un calcul. Quel ordre de grandeur peux-tu attendre pour vérifier ?",
+              "answer": "$10^{6}$",
+              "hint": "Regarde l'exposant du résultat.",
+              "explanation": "L'exposant est $6$, donc l'ordre de grandeur est $10^{6}$. Si l'affichage montrait $10^{5}$ ou $10^{7}$, il y aurait une erreur."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "For / répétition",
+  "title": "Boucles For - Répétition",
+  "blocks": [
+    {
+      "title": "Nombre d'itérations d'une boucle simple",
+      "content": "Dans le programme ci-dessous, combien de fois l'instruction à l'intérieur de la boucle est-elle exécutée ?\\nPour $i$ de $1$ à $5$ faire\\n    Afficher $i$\\nFin pour",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle « Pour $i$ de $1$ à $5$ » s'exécute pour les valeurs $1$, $2$, $3$, $4$, $5$, soit $5$ itérations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Valeur finale d'un accumuleur",
+      "content": "On exécute le programme suivant :\\n$total = 0$\\nPour $k$ de $1$ à $4$ faire\\n    $total = total + k$\\nFin pour\\nQuelle est la valeur de $total$ à la fin de la boucle ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au début $total = 0$. À chaque itération on ajoute $k$ : après $k=1$, $total=1$ ; après $k=2$, $total=3$ ; après $k=3$, $total=6$ ; après $k=4$, $total=10$. La valeur finale est $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre d'affichages avec un pas",
+      "content": "Combien de nombres sont affichés par le programme suivant ?\\nPour $i$ de $2$ à $10$ pas de $2$ faire\\n    Afficher $i$\\nFin pour",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $i$ prend les valeurs $2$, $4$, $6$, $8$, $10$, soit $5$ valeurs affichées.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

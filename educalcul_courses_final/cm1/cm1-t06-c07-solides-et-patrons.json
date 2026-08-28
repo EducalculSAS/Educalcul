@@ -1,0 +1,513 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.264925+00:00",
+  "id": 254,
+  "code": "cm1-t06-c07",
+  "title": "Solides et patrons",
+  "description": "Cours structuré Educalcul : Solides et patrons.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Solides et patrons",
+    "objectif_global": "Solides et patrons",
+    "mini_lecons_imposees": [
+      "Décrire.",
+      "Patrons.",
+      "Vues simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Décrire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le vocabulaire des solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier voyage au pays des solides ! Aujourd'hui, nous allons apprendre à les décrire avec des mots précis, comme de vrais géomètres. Imagine que tu tiens un dé entre tes mains : ce que tu touches, ce que tu vois, tout cela a un nom spécial."
+            },
+            {
+              "type": "definition",
+              "term": "face",
+              "definition": "Une face est une surface plane qui limite un solide. C'est comme une feuille de papier collée sur le solide.",
+              "example": "Un cube a 6 faces carrées."
+            },
+            {
+              "type": "definition",
+              "term": "arête",
+              "definition": "Une arête est le segment où deux faces se rencontrent. C'est la « ligne » qui sépare deux faces.",
+              "example": "Sur un cube, chaque arête mesure la même longueur."
+            },
+            {
+              "type": "definition",
+              "term": "sommet",
+              "definition": "Un sommet est le point où plusieurs arêtes se croisent. C'est comme un coin pointu du solide.",
+              "example": "Un cube a 8 sommets."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais ces trois mots magiques, regardons de plus près le cube, ce solide si familier. Prends un dé ou imagine une boîte carrée : chaque face est un carré, toutes les arêtes ont la même longueur et les 8 sommets sont parfaitement identiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cube, un solide bien connu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien décrire un cube, on compte ses éléments : il possède 6 faces (toutes carrées), 12 arêtes (toutes de même longueur) et 8 sommets. C'est comme une petite maison où chaque pièce serait un carré parfait. Essaie de visualiser : si tu déplies le cube, tu obtiens 6 carrés accrochés les uns aux autres."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6",
+                  "12",
+                  "8"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cube a un cousin très proche : le pavé droit. Imagine une boîte à chaussures : elle a aussi 6 faces, mais cette fois ce sont des rectangles (parfois des carrés). Les arêtes n'ont pas toutes la même longueur : il y a trois groupes de 4 arêtes égales."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le pavé droit, cousin du cube"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comme le cube, le pavé droit a 6 faces, 12 arêtes et 8 sommets. La différence ? Ses faces sont des rectangles (au moins 4 sont des rectangles, les 2 autres peuvent être des carrés). C'est le solide le plus courant pour les cartons, les livres, les briques."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6",
+                  "12",
+                  "8"
+                ],
+                [
+                  "Pavé droit",
+                  "6",
+                  "12",
+                  "8"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe encore d'autres solides que tu croises tous les jours : la pyramide (comme en Égypte), le cône (comme un cornet de glace), le cylindre (comme une boîte de conserve) et la sphère (comme un ballon). Chacun a sa propre personnalité géométrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "D'autres solides à reconnaître"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Pyramide : une base polygonale et des faces triangulaires qui se rejoignent en un sommet.",
+                "Cône : un disque pour base et une surface courbe qui se termine en un point.",
+                "Cylindre : deux disques parallèles reliés par une surface courbe.",
+                "Sphère : aucune face plane, aucune arête, aucun sommet, juste une surface toute ronde."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant décrire les solides les plus courants. Dans la prochaine leçon, nous allons voir comment les « déplier » à plat pour obtenir leurs patrons. C'est comme faire de l'origami à l'envers !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les mots « face », « arête », « sommet », lequel désigne le point où se rejoignent plusieurs arêtes ?",
+              "answer": "sommet",
+              "hint": "Pense au coin d'un cube.",
+              "explanation": "Un sommet est le point de rencontre de plusieurs arêtes. Sur un cube, il y en a 8."
+            },
+            {
+              "question": "Combien de faces a un cube ? Combien d'arêtes ? Combien de sommets ?",
+              "answer": "6 faces, 12 arêtes, 8 sommets",
+              "hint": "Recopie les nombres du tableau.",
+              "explanation": "Le tableau récapitule les propriétés du cube : 6 faces carrées, 12 arêtes de même longueur, 8 sommets."
+            },
+            {
+              "question": "Vrai ou faux ? Un pavé droit a toujours 6 faces carrées.",
+              "answer": "Faux",
+              "hint": "Regarde une boîte à chaussures : ses faces sont des rectangles.",
+              "explanation": "Un pavé droit a 6 faces, mais ce sont des rectangles (éventuellement 2 carrés). Seules les faces opposées sont identiques."
+            },
+            {
+              "question": "Quel solide n'a ni face plane, ni arête, ni sommet ?",
+              "answer": "La sphère",
+              "hint": "Pense à un ballon parfaitement rond.",
+              "explanation": "La sphère est le seul solide de la liste qui est entièrement courbe, sans aucun élément plat ni coin."
+            }
+          ]
+        },
+        {
+          "title": "Patrons.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un patron ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu découpes un cube en carton le long de certaines arêtes et que tu l'aplatis sur la table. La figure plate que tu obtiens, c'est un patron ! C'est le développement du solide : toutes ses faces sont là, collées les unes aux autres, prêtes à être repliées pour reformer le volume."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le cube, il existe 11 patrons différents. Ils sont tous formés de 6 carrés attachés par leurs côtés. Voici l'un des plus connus, en forme de croix : un carré au centre, quatre carrés autour (haut, bas, gauche, droite) et le sixième accroché à l'un d'eux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les faces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le patron comporte exactement 6 carrés (pour un cube)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier les connexions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque carré doit toucher au moins un autre carré par un côté entier, pas seulement par un coin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Imaginer le pliage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mentalement, replie les faces le long des traits. Si elles se referment sans se chevaucher ni laisser de trou, c'est un bon patron."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître un patron de cube, passons au pavé droit. Ses faces sont des rectangles (parfois des carrés). Un patron de pavé droit est donc composé de 6 rectangles disposés de façon à pouvoir se replier en une boîte."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les patrons du pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Contrairement au cube, les dimensions comptent : il y a trois longueurs différentes (longueur, largeur, hauteur). Sur le patron, les faces opposées sont identiques. Par exemple, si le pavé mesure $4\\,cm$, $3\\,cm$ et $2\\,cm$, tu retrouveras deux rectangles $4\\times3$, deux $4\\times2$ et deux $3\\times2$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Face",
+                "Dimensions",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Grande face",
+                  "$4\\times3$",
+                  "2"
+                ],
+                [
+                  "Face moyenne",
+                  "$4\\times2$",
+                  "2"
+                ],
+                [
+                  "Petite face",
+                  "$3\\times2$",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux même dessiner toi-même un patron sur du papier quadrillé ! C'est une excellente façon de vérifier que tu as bien compris comment les faces s'emboîtent. Suis ces étapes simples pour tracer le patron d'un pavé droit de dimensions connues."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un patron soi-même"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une face de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un rectangle aux dimensions de la plus grande face (par exemple $4\\,cm$ sur $3\\,cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Attacher les faces adjacentes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur chacun des quatre côtés, colle un rectangle correspondant à la face qui y est accolée (hauteur $2\\,cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajouter la face opposée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fixée au dernier rectangle restant, dessine la face opposée à la première (encore $4\\times3$). Vérifie que tout se replie bien."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant l'art des patrons ! Tu sais reconnaître ceux du cube et du pavé droit, et même en tracer. La prochaine étape ? Apprendre à représenter ces solides sur une feuille plate grâce aux vues de face, de dessus et de côté. C'est comme prendre des photos sous différents angles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel de ces critères n'est PAS nécessaire pour qu'une figure soit un patron de cube ?",
+              "answer": "Les carrés doivent être de couleurs différentes",
+              "hint": "Relis les trois étapes de vérification.",
+              "explanation": "Un patron de cube doit avoir 6 carrés, connexes par des côtés entiers, et se replier sans chevauchement. La couleur n'a aucune importance."
+            },
+            {
+              "question": "Un pavé droit mesure $5\\,cm$, $3\\,cm$ et $2\\,cm$. Combien de rectangles $5\\times3$ trouvera-t-on sur son patron ?",
+              "answer": "2",
+              "hint": "Les faces opposées sont identiques.",
+              "explanation": "Les trois paires de faces opposées donnent : deux faces $5\\times3$, deux $5\\times2$, deux $3\\times2$."
+            },
+            {
+              "question": "Dans la construction d'un patron de pavé droit, à quelle étape dessine-t-on la face opposée à la face de départ ?",
+              "answer": "Étape 3",
+              "hint": "Regarde l'ordre des étapes : face de départ, faces adjacentes, puis face opposée.",
+              "explanation": "On commence par une face, on ajoute les quatre faces latérales, et on termine par la face opposée à la première."
+            }
+          ]
+        },
+        {
+          "title": "Vues simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Voir un solide sous différents angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu regardes un bâtiment, tu ne le vois jamais tout entier d'un seul coup. Selon ton point de vue, tu aperçois sa façade, son toit ou son côté. En géométrie, on appelle cela des vues : vue de face, vue de dessus, vue de côté. Elles sont comme des photos plates qui, mises ensemble, racontent le volume."
+            },
+            {
+              "type": "definition",
+              "term": "vue de face",
+              "definition": "Ce qu'on voit quand on se place exactement en face du solide, à hauteur des yeux.",
+              "example": "Pour un cube, la vue de face est un carré."
+            },
+            {
+              "type": "definition",
+              "term": "vue de dessus",
+              "definition": "Ce qu'on voit quand on se place au-dessus du solide, en regardant vers le bas.",
+              "example": "Pour un pavé droit, la vue de dessus est un rectangle."
+            },
+            {
+              "type": "definition",
+              "term": "vue de côté",
+              "definition": "Ce qu'on voit quand on se place sur le côté (gauche ou droite) du solide.",
+              "example": "Pour une pyramide à base carrée, la vue de côté est un triangle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cube est le plus simple : vu de face, de dessus ou de côté, c'est toujours un carré de même taille. Mais pour d'autres solides, les vues changent radicalement. Prenons la pyramide à base carrée : de face, on voit un triangle ; de dessus, un carré ; de côté, encore un triangle (mais pas forcément le même)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les vues d'une pyramide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pyramide comme celles de Gizeh. Si tu te places devant une face, tu vois un triangle isocèle. Si tu montes en hélicoptère au-dessus, tu vois un carré (la base). Si tu tournes autour, chaque côté te montre un triangle. Ces trois vues suffisent à décrire la pyramide entièrement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Vue",
+                "Forme vue"
+              ],
+              "rows": [
+                [
+                  "De face",
+                  "Triangle"
+                ],
+                [
+                  "De dessus",
+                  "Carré"
+                ],
+                [
+                  "De côté",
+                  "Triangle"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne les trois vues d'un solide mystère et tu dois deviner lequel c'est. C'est un jeu de déduction passionnant ! Regarde les formes : si les trois vues sont des carrés identiques, c'est un cube. Si tu as deux rectangles et un carré, c'est probablement un pavé droit. Si tu as un cercle pour le dessus et un rectangle pour le côté, c'est un cylindre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deviner le solide à partir de ses vues"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer la vue de dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Elle donne la forme de la base (carré, rectangle, cercle, triangle...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer face et côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si elles sont identiques à la vue de dessus, le solide est un prisme droit (cube, pavé, cylindre). Si ce sont des triangles qui convergent, c'est une pyramide ou un cône."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les dimensions doivent correspondre : la largeur de la face doit égaler la largeur du dessus, etc."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer face, arête et sommet sur un cube et un pavé droit.",
+                "Je sais reconnaître un patron de cube et un patron de pavé droit.",
+                "Je sais associer les trois vues (face, dessus, côté) à un solide simple."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la vue de dessus d'un cube posé sur une table ?",
+              "answer": "Un carré",
+              "hint": "Regarde le cube de haut : tu vois la face du haut.",
+              "explanation": "La vue de dessus d'un cube est un carré de même dimension que ses faces."
+            },
+            {
+              "question": "Pour une pyramide à base carrée, quelle vue est un carré ?",
+              "answer": "La vue de dessus",
+              "hint": "Imagine l'hélicoptère au-dessus de la pyramide.",
+              "explanation": "Seule la vue de dessus montre la base carrée ; les vues de face et de côté montrent des triangles."
+            },
+            {
+              "question": "Tu vois trois vues : un cercle (dessus), un rectangle (face), un rectangle (côté). De quel solide s'agit-il ?",
+              "answer": "Un cylindre",
+              "hint": "Quelle forme a la base ? Quelle forme ont les faces latérales développées ?",
+              "explanation": "Le cercle indique une base circulaire. Les rectangles indiquent une surface latérale rectangulaire (hauteur × périmètre). C'est un cylindre droit."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,539 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.508195+00:00",
+  "id": 647,
+  "code": "terminale-generale-complementaires-t03-c03",
+  "title": "Équations et modèles logarithmiques",
+  "description": "Cours structuré Educalcul : Équations et modèles logarithmiques.",
+  "subject": "Fonction logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Fonction logarithme",
+    "titre_du_cours": "Équations et modèles logarithmiques",
+    "objectif_global": "Équations et modèles logarithmiques",
+    "mini_lecons_imposees": [
+      "Résoudre.",
+      "Interpréter.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Fonction logarithme",
+      "lessons": [
+        {
+          "title": "Résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déterminer le domaine d'une équation logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de manipuler une équation qui contient un logarithme, il est indispensable de préciser l'ensemble des valeurs pour lesquelles l'expression a un sens. Pour une fonction logarithme népérien $\\ln(x)$ ou un logarithme en base $a$ noté $\\log_a(x)$, l'argument $x$ doit être strictement positif. Si l'équation fait intervenir plusieurs logarithmes, chaque argument doit satisfaire cette condition simultanément. Prenons l'exemple de l'équation $\\ln(x-2)+\\ln(x+3)=\\ln(10)$. Les deux arguments $x-2$ et $x+3$ doivent être $>0$, ce qui donne $x>2$ et $x>-3$. L'intersection de ces deux intervalles est $x>2$. C'est cet intervalle qui constitue le domaine de définition de l'équation. Si vous omettez cette étape, vous risquez de conserver des solutions qui ne vérifient pas la condition de positivité et qui sont donc extrinsèques. Pour visualiser ce domaine, on peut le représenter sur une droite graduée en marquant l'intervalle ouvert $(2;+\\infty)$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Domaine de définition : $x>2$",
+              "min": -1,
+              "max": 6,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 2,
+                  "max": 6,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le domaine est clairement identifié, nous pouvons passer à la simplification de l'équation en utilisant les propriétés fondamentales des logarithmes. Cette étape transforme souvent une équation en apparence complexe en une équation algébrique beaucoup plus simple à résoudre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les propriétés des logarithmes pour simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés de base sont : $\\log_a(xy)=\\log_a x+\\log_a y$, $\\log_a\\left(\\frac{x}{y}\\right)=\\log_a x-\\log_a y$ et $\\log_a(x^p)=p\\log_a x$. Elles permettent de regrouper ou de séparer les termes logarithmiques. Reprenons l'équation $\\ln(x-2)+\\ln(x+3)=\\ln(10)$. En appliquant la première propriété, le côté gauche devient $\\ln\\big((x-2)(x+3)\\big)$. L'équation se réécrit alors $\\ln\\big((x-2)(x+3)\\big)=\\ln(10)$. Comme la fonction logarithme est injective sur son domaine, on peut enlever les logarithmes des deux côtés à condition de rester dans le domaine déjà déterminé. On obtient l'équation quadratique $(x-2)(x+3)=10$, c'est-à-dire $x^2+x-6=10$ puis $x^2+x-16=0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln\\big((x-2)(x+3)\\big)=\\ln(10)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regrouper les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez la propriété $\\ln A+\\ln B=\\ln(AB)$ pour obtenir un unique logarithme de chaque côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Supprimer les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez l'injectivité de $\\ln$ sur $]0;+\\infty[$ pour écrire l'égalité des arguments."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation algébrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Développez et résolvez l'équation du second degré obtenue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir simplifié, il arrive que l'équation comporte encore des logarithmes des deux côtés, mais avec des arguments différents. La méthode consiste alors à isoler les termes logarithmiques et à utiliser à nouveau l'injectivité, ou à passer à l'exponentielle pour éliminer les logarithmes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une équation avec des logarithmes des deux côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $\\log_2(x+1)=\\log_2(3x-5)$. Comme les deux logarithmes ont la même base et que la fonction $\\log_2$ est strictement croissante, on peut égaler les arguments : $x+1=3x-5$. Cela donne $2x=6$ donc $x=3$. Vérifions que $x=3$ appartient au domaine : $x+1=4>0$ et $3x-5=4>0$, c'est valide. Si les bases sont différentes, par exemple $\\ln(x)=\\log_{10}(x)$, on utilise le changement de base $\\log_{10}(x)=\\frac{\\ln x}{\\ln 10}$ pour ramener à une même base, puis on procède de la même façon. Une représentation graphique des deux fonctions $y=\\ln(x)$ et $y=\\log_{10}(x)$ montre qu'elles ne se coupent qu'en $x=1$, ce qui confirme l'unicité de la solution."
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.1,
+              "xmax": 5,
+              "caption": "Comparaison de $\\ln(x)$ (bleu) et $\\log_{10}(x)$ (rouge)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière étape, souvent négligée, consiste à vérifier que chaque solution candidate appartient bien au domaine initial. Une solution qui ne respecte pas la condition de positivité des arguments est une solution extrinsèque et doit être rejetée. Cette vérification se fait en remplaçant la valeur trouvée dans chaque argument du logarithme original."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier les solutions et éliminer les extrinsèques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'équation $\\ln(x-2)+\\ln(x+3)=\\ln(10)$ dont nous avons trouvé les solutions du second degré $x^2+x-16=0$. Le discriminant est $\\Delta=1+64=65$, donc les deux solutions sont $x=\\frac{-1\\pm\\sqrt{65}}{2}$. La solution avec le signe moins est approximativement $-4.53$, qui ne satisfait pas $x>2$. Elle est donc extrinsèque. Seule la solution $x=\\frac{-1+\\sqrt{65}}{2}\\approx 3.53$ est acceptable. Pour être rigoureux, on substitue cette valeur dans les arguments $x-2$ et $x+3$ : on obtient environ $1.53$ et $6.53$, tous deux strictement positifs. La solution est validée."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne jamais oublier de tester les solutions dans l'équation d'origine. Une manipulation algébrique correcte peut produire des valeurs qui ne vérifient pas les conditions de départ."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant la résolution complète d'une équation logarithmique : domaine, simplification, résolution algébrique et vérification. Dans la prochaine leçon, nous verrons comment interpréter les modèles logarithmiques qui apparaissent dans de nombreux contextes scientifiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminez le domaine de définition de l'équation $\\ln(2x-4)+\\ln(x+1)=\\ln(12)$.",
+              "answer": "$x>2$",
+              "hint": "Chaque argument de logarithme doit être strictement positif. Résolvez les inéquations $2x-4>0$ et $x+1>0$ puis prenez l'intersection.",
+              "explanation": "L'inéquation $2x-4>0$ donne $x>2$. L'inéquation $x+1>0$ donne $x>-1$. L'intersection est $x>2$."
+            },
+            {
+              "question": "Simplifiez l'équation $\\log_3(x^2-1)-\\log_3(x-1)=2$ en utilisant les propriétés des logarithmes.",
+              "answer": "$\\log_3(x+1)=2$",
+              "hint": "Utilisez la propriété $\\log_a\\frac{A}{B}=\\log_a A-\\log_a B$ puis factorisez $x^2-1$.",
+              "explanation": "$\\log_3\\frac{x^2-1}{x-1}=\\log_3(x+1)$ car $x^2-1=(x-1)(x+1)$. L'équation devient $\\log_3(x+1)=2$."
+            },
+            {
+              "question": "Résolvez $\\ln(x)=\\log_{10}(x)$.",
+              "answer": "$x=1$",
+              "hint": "Exprimez $\\log_{10}(x)$ en base $e$ avec la formule de changement de base.",
+              "explanation": "$\\log_{10}(x)=\\frac{\\ln x}{\\ln 10}$. L'équation devient $\\ln x=\\frac{\\ln x}{\\ln 10}$. Soit $\\ln x=0$ (donc $x=1$), soit $1=\\frac{1}{\\ln 10}$ ce qui est faux. Donc $x=1$."
+            },
+            {
+              "question": "Parmi les solutions de $x^2+x-16=0$, laquelle convient à l'équation $\\ln(x-2)+\\ln(x+3)=\\ln(10)$ ?",
+              "answer": "$x=\\frac{-1+\\sqrt{65}}{2}$",
+              "hint": "Calculez les deux racines et vérifiez la condition $x>2$.",
+              "explanation": "Les racines sont $\\frac{-1\\pm\\sqrt{65}}{2}$. La valeur négative est environ $-4.5$ et ne vérifie pas $x>2$. La valeur positive est environ $3.53$ et convient."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre les échelles logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une échelle logarithmique transforme des valeurs qui croissent de façon multiplicative en valeurs qui croissent de façon additive. Cela permet de représenter sur un même graphique des grandeurs qui s'étendent sur plusieurs ordres de magnitude, comme l'intensité sonore en décibels, la magnitude des séismes sur l'échelle de Richter, ou l'acidité mesurée par le pH. Sur une échelle linéaire, la distance entre $1$ et $10$ est la même qu'entre $10$ et $100$. Sur une échelle logarithmique en base $10$, ces distances deviennent égales car $\\log_{10}(10)-\\log_{10}(1)=1$ et $\\log_{10}(100)-\\log_{10}(10)=1$. Cette propriété est au cœur de nombreux instruments de mesure et de nombreux modèles mathématiques."
+            },
+            {
+              "type": "definition",
+              "term": "Échelle logarithmique",
+              "definition": "Représentation où une variation multiplicative d'une grandeur correspond à une variation additive de son logarithme.",
+              "example": "L'échelle de Richter : une augmentation de $1$ unité correspond à une multiplication par $10$ de l'amplitude des ondes sismiques."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison linéaire vs logarithmique pour les puissances de 10",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "100",
+                  "value": 100,
+                  "tone": "gold"
+                },
+                {
+                  "label": "1000",
+                  "value": 1000,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir saisi l'idée d'échelle logarithmique, nous allons voir comment construire un modèle mathématique qui utilise une fonction logarithme pour décrire un phénomène réel. Ce passage du concret à l'abstrait est l'essence même de la modélisation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser un phénomène par une fonction logarithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "De nombreux processus naturels présentent une croissance rapide au début qui ralentit progressivement, ou une décroissance rapide qui s'atténue. La fonction $f(t)=a\\ln(t)+b$ ou $f(t)=a\\log_{10}(t)+b$ capture ce comportement. Le paramètre $a$ contrôle la vitesse de variation : si $a>0$, la fonction croît ; si $a<0$, elle décroît. Le paramètre $b$ correspond à la valeur de la fonction pour $t=1$ car $\\ln(1)=0$. Par exemple, la charge d'un condensateur dans un circuit RC suit une loi de type $Q(t)=Q_{\\max}(1-e^{-t/\\tau})$, mais pour de grands $t$ on peut approximer la tension par une fonction logarithmique après un changement de variable. L'important est d'identifier la variable indépendante (souvent le temps $t$) et la variable dépendante (la grandeur mesurée), puis d'ajuster $a$ et $b$ à partir de données expérimentelles."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(t)=a\\ln(t)+b"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la forme du modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décidez si le phénomène suggère un logarithme népérien ou décimal selon l'unité de mesure usuelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez deux points de mesure $(t_1,y_1)$ et $(t_2,y_2)$ pour résoudre le système linéaire en $a$ et $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Valider le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comparez les prévisions du modèle à d'autres points expérimentaux non utilisés pour l'ajustement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le modèle établi, il faut être capable d'en lire les paramètres et de leur donner une signification physique. Cette interprétation permet de communiquer les résultats à des non-spécialistes et de prendre des décisions éclairées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et interpréter les paramètres du modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le modèle $f(t)=a\\ln(t)+b$, le coefficient $a$ représente la variation de $f$ lorsque $t$ est multiplié par $e$ (pour le logarithme népérien) ou par $10$ (pour le logarithme décimal). Concrètement, si $a=5$ et que l'on utilise $\\ln$, alors quand le temps passe de $t$ à $e\\cdot t$, la grandeur mesurée augmente de $5$ unités. Le terme $b$ est la valeur de la grandeur à l'instant de référence $t=1$. Par exemple, en sismologie, la magnitude $M$ d'un séisme est donnée par $M=\\log_{10}(A)+C$, où $A$ est l'amplitude maximale des ondes enregistrée sur un sismographe standard et $C$ une constante de correction. Ici $a=1$ et $b=C$. Une augmentation de $1$ de la magnitude correspond à une multiplication par $10$ de l'amplitude $A$."
+            },
+            {
+              "type": "graph",
+              "expression": "5*ln(x)+2",
+              "xmin": 0.5,
+              "xmax": 10,
+              "caption": "Modèle $f(t)=5\\ln(t)+2$ : évolution de la grandeur en fonction du temps"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est fréquent de devoir comparer deux modèles logarithmiques pour choisir le plus adapté, ou pour comprendre l'influence d'un paramètre. Une façon efficace est de simuler les prédictions des deux modèles sur un même intervalle à l'aide d'un petit programme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux modèles logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons deux modèles pour la même phénomène : $f_1(t)=3\\ln(t)+1$ et $f_2(t)=2\\log_{10}(t)+4$. Pour les comparer, on peut évaluer les deux fonctions pour plusieurs valeurs de $t$ et observer leurs écarts. Un script Python simple permet d'automatiser ce calcul et de produire un tableau de valeurs. Cette approche numérique complète l'analyse analytique et aide à décider quel modèle décrit le mieux les données observées."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import math\\n\\ndef f1(t):\\n    return 3*math.log(t)+1\\n\\ndef f2(t):\\n    return 2*math.log10(t)+4\\n\\nfor t in [1,2,5,10,20,50]:\\n    print(f't={t:.0f}  f1={f1(t):.2f}  f2={f2(t):.2f}')",
+              "language": "python",
+              "caption": "Comparaison numérique des deux modèles logarithmiques"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant reconnaître une échelle logarithmique, construire un modèle à partir de données, en interpréter les paramètres et comparer plusieurs modèles. La leçon suivante mettra ces compétences en œuvre pour résoudre des problèmes concrets tirés de la vie courante et des sciences."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une échelle logarithmique en base 10, quelle est la distance (en unités logarithmiques) entre les valeurs 100 et 1000 ?",
+              "answer": "1",
+              "hint": "Calculez $\\log_{10}(1000)-\\log_{10}(100)$.",
+              "explanation": "$\\log_{10}(1000)=3$, $\\log_{10}(100)=2$, la différence est $1$."
+            },
+            {
+              "question": "Un phénomène suit le modèle $y=4\\ln(t)+7$. Quelle est la valeur de $y$ pour $t=1$ ?",
+              "answer": "$7$",
+              "hint": "Rappelez-vous que $\\ln(1)=0$.",
+              "explanation": "Pour $t=1$, $\\ln(1)=0$, donc $y=4\\times0+7=7$."
+            },
+            {
+              "question": "Dans le modèle de magnitude $M=\\log_{10}(A)+C$, que se passe-t-il pour $M$ si l'amplitude $A$ est multipliée par $100$ ?",
+              "answer": "$M$ augmente de $2$",
+              "hint": "Utilisez la propriété $\\log_{10}(100A)=\\log_{10}A+\\log_{10}100$.",
+              "explanation": "$\\log_{10}100=2$, donc $M$ augmente de $2$ unités."
+            },
+            {
+              "question": "Écrivez un court script Python qui affiche les valeurs de $f_1(t)=2\\ln(t)+3$ pour $t=1, e, e^2, e^3$.",
+              "answer": "import math\\nfor k in range(4):\\n    t=math.e**k\\n    print(f't={t:.3f}  f1={2*math.log(t)+3:.2f}')",
+              "hint": "Utilisez math.e pour la constante $e$ et une boucle for.",
+              "explanation": "La boucle génère $t=e^k$ pour $k=0..3$ et calcule $2\\ln(t)+3=2k+3$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Traduire un problème concret en équation logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première étape face à un problème issu de la physique, de la biologie, de l'économie ou de la vie quotidienne est d'identifier la grandeur qui varie de façon logarithmique. Souvent, l'énoncé donne une relation du type « l'intensité sonore double quand la distance est divisée par deux » ou « la population bactérienne suit une loi $N(t)=N_0\\ln(kt+1)$ ». Il faut alors isoler l'inconnue (souvent le temps $t$ ou une concentration) et écrire l'équation correspondante. Par exemple, si le pH d'une solution est défini par $\\text{pH}=-\\log_{10}[H^+]$ et qu'on vous demande de trouver la concentration $[H^+]$ pour un pH de $3.5$, l'équation à résoudre est $-\\log_{10}[H^+]=3.5$."
+            },
+            {
+              "type": "definition",
+              "term": "pH",
+              "definition": "Mesure de l'acidité d'une solution, définie par $\\text{pH}=-\\log_{10}[H^+]$ où $[H^+]$ est la concentration en ions hydrogène en mol/L.",
+              "example": "Une solution de pH $3$ a une concentration $[H^+]=10^{-3}$ mol/L."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la variable inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez la grandeur que l'on cherche (temps, concentration, distance, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la relation logarithmique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la formule donnée dans l'énoncé (pH, décibels, Richter, etc.) pour former l'équation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez les méthodes de la leçon 1 : domaine, propriétés, injectivité, vérification."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois l'équation posée et résolue, il faut redonner du sens au nombre obtenu. Cela signifie expliciter l'unité, arrondir de manière raisonnable et formuler une phrase de conclusion qui répond à la question initiale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre et donner du sens à la solution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du pH : $-\\log_{10}[H^+]=3.5$. En multipliant par $-1$, on a $\\log_{10}[H^+]=-3.5$. En passant à l'exponentielle de base $10$, $[H^+]=10^{-3.5}$. Comme $10^{-3.5}=10^{-3}\\times10^{-0.5}\\approx 0.001\\times0.316=3.16\\times10^{-4}$ mol/L. La concentration en ions hydrogène est donc d'environ $3.2\\times10^{-4}$ mol/L. On arrondit généralement à deux chiffres significatifs car les données d'entrée (pH=$3.5$) n'en ont que deux. La phrase de conclusion pourrait être : « La concentration en ions hydrogène de la solution est de $3.2\\times10^{-4}$ mol/L. »"
+            },
+            {
+              "type": "display_math",
+              "latex": "[H^+]=10^{-3.5}\\approx 3.2\\times10^{-4}\\ \\text{mol/L}"
+            },
+            {
+              "type": "graph",
+              "expression": "-log10(x)",
+              "xmin": 1e-05,
+              "xmax": 1,
+              "caption": "Courbe du pH en fonction de la concentration $[H^+]$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreuses applications, on s'intéresse non seulement à la valeur exacte de la solution, mais aussi à la manière dont elle change si l'un des paramètres du modèle varie légèrement. C'est l'analyse de sensibilité, qui permet d'évaluer la robustesse d'une prévision."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Étudier l'influence des paramètres (analyse de sensibilité)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le modèle de décroissance radioactive $A(t)=A_0 e^{-\\lambda t}$. En prenant le logarithme népérien, on obtient $\\ln A(t)=\\ln A_0-\\lambda t$. Si la constante de décroissance $\\lambda$ est connue avec une incertitude de $\\pm 5\\%$, on peut estimer l'erreur sur l'âge $t$ calculé à partir d'une mesure d'activité $A$. Une méthode visuelle consiste à tracer la courbe $\\ln A$ en fonction de $t$ pour deux valeurs extrêmes de $\\lambda$ et à observer l'écart entre les droites. L'aire entre ces deux droites sur un intervalle de temps donne une indication quantitative de l'incertitude cumulée. Pour illustrer cela, nous utilisons un curseur de Riemann qui approxime l'aire sous la courbe de différence."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "0.05*x",
+              "xmin": 0,
+              "xmax": 100,
+              "rectangles": 10,
+              "caption": "Approximation de l'écart cumulé entre deux modèles de décroissance pour $\\lambda$ variant de $\\pm5\\%$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan du chapitre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au terme de ce chapitre, vous êtes capable de : déterminer le domaine d'une équation logarithmique, utiliser les propriétés des logarithmes pour la simplifier, résoudre l'équation algébrique qui en résulte, vérifier l'appartenance des solutions au domaine, interpréter des modèles logarithmiques (échelles, paramètres), comparer plusieurs modèles à l'aide d'outils numériques, et enfin traduire un problème concret en équation, la résoudre et analyser la sensibilité du résultat. Ces compétences constituent la base de l'utilisation des logarithmes en terminale et vous seront utiles dans de nombreux contextes scientifiques ultérieurs."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais déterminer le domaine de définition d'une équation logarithmique.",
+                "Je sais appliquer les propriétés des logarithmes pour simplifier une équation.",
+                "Je sais résoudre l'équation algébrique obtenue et vérifier les solutions.",
+                "Je sais reconnaître une échelle logarithmique et en expliquer le principe.",
+                "Je sais construire un modèle $f(t)=a\\ln(t)+b$ à partir de deux points.",
+                "Je sais interpréter les paramètres $a$ et $b$ dans un contexte réel.",
+                "Je sais comparer deux modèles logarithmiques par simulation numérique.",
+                "Je sais traduire un problème concret en équation logarithmique et en donner la solution avec unité.",
+                "Je sais effectuer une analyse de sensibilité simple sur un paramètre du modèle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le niveau sonore $L$ en décibels est donné par $L=10\\log_{10}(I/I_0)$ où $I_0=10^{-12}$ W/m². Si $L=60$ dB, quelle est l'intensité $I$ ?",
+              "answer": "$I=10^{-6}$ W/m²",
+              "hint": "Isolez $\\log_{10}(I/I_0)$ puis passez à l'exponentielle de base 10.",
+              "explanation": "$60=10\\log_{10}(I/I_0) \\Rightarrow \\log_{10}(I/I_0)=6 \\Rightarrow I/I_0=10^6 \\Rightarrow I=10^6\\times10^{-12}=10^{-6}$ W/m²."
+            },
+            {
+              "question": "Une population de bactéries suit le modèle $N(t)=500\\ln(0.2t+1)$ où $t$ est en heures. Après combien d'heures la population atteint-elle 1000 ?",
+              "answer": "$t\\approx 13.6$ h",
+              "hint": "Résolvez $500\\ln(0.2t+1)=1000$ puis exponentiez.",
+              "explanation": "$\\ln(0.2t+1)=2 \\Rightarrow 0.2t+1=e^2 \\Rightarrow 0.2t=e^2-1 \\Rightarrow t=5(e^2-1)\\approx13.6$."
+            },
+            {
+              "question": "Pour le modèle de décroissance $A(t)=A_0 e^{-\\lambda t}$, si $\\lambda$ augmente de $10\\%$, que se passe-t-il pour la demi-vie $t_{1/2}=\\ln 2/\\lambda$ ?",
+              "answer": "La demi-vie diminue d'environ $9\\%$.",
+              "hint": "Calculez le rapport $\\frac{\\ln 2}{1.1\\lambda} / \\frac{\\ln 2}{\\lambda}$.",
+              "explanation": "Le nouveau $t_{1/2}$ est divisé par $1.1$, soit une diminution de $1-1/1.1\\approx0.0909$ i.e. $9.1\\%$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

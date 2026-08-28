@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Identités remarquables prévues",
+  "title": "Identités remarquables : développement et factorisation",
+  "blocks": [
+    {
+      "title": "Développement de (x+3)^2",
+      "content": "En utilisant l'identité remarquable $(a+b)^2 = a^2 + 2ab + b^2$, complétez le développement suivant : $(x+3)^2 = x^2 + {{1}}x + {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "6",
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie $a=x$ et $b=3$. Alors $2ab = 2 \\times x \\times 3 = 6x$ et $b^2 = 3^2 = 9$. Donc $(x+3)^2 = x^2 + 6x + 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Développement de (2y-5)^2",
+      "content": "Développez $(2y-5)^2$ à l'aide de l'identité $(a-b)^2 = a^2 - 2ab + b^2$ : $(2y-5)^2 = {{1}}y^2 - {{2}}y + {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "20",
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ici $a = 2y$ et $b = 5$. On a $a^2 = (2y)^2 = 4y^2$, $-2ab = -2 \\times 2y \\times 5 = -20y$ et $b^2 = 25$. Donc $(2y-5)^2 = 4y^2 - 20y + 25$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation de 9x^2 - 16",
+      "content": "Factorisez l'expression $9x^2 - 16$ en utilisant l'identité $(a+b)(a-b)=a^2-b^2$ : $9x^2 - 16 = ({{1}}x + 4)({{2}}x - 4)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On reconnaît $9x^2 = (3x)^2$ et $16 = 4^2$. Donc $a = 3x$ et $b = 4$. L'identité donne $(3x+4)(3x-4)$. Les deux coefficients de $x$ sont donc $3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

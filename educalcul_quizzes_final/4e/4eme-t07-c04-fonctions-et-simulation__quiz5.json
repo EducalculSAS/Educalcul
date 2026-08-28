@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Définir fonction",
+  "title": "Quiz : Définir une fonction en Python",
+  "questions": [
+    {
+      "text": "Quelle est la syntaxe correcte pour définir une fonction nommée `carre` qui prend un paramètre $x$ et renvoie son carré ?",
+      "options": [
+        "function carre(x) : return x * x",
+        "def carre(x) : return x * x",
+        "def carre[x] : return x * x",
+        "carre = def(x) : x * x"
+      ],
+      "correctAnswer": "def carre(x) : return x * x",
+      "explanation": "En Python, on utilise le mot-clé `def` pour définir une fonction, suivi du nom de la fonction et des parenthèses contenant les paramètres. Les deux-points `:` ouvrent le bloc d'instructions (qui doit être indenté). L'instruction `return` permet de renvoyer une valeur. La première option utilise `function` (JavaScript), la troisième utilise des crochets au lieu de parenthèses, et la quatrième n'est pas une syntaxe valide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n```python\\ndef double(n) :\\n    return n * 2\\n\\nresultat = double(5)\\nprint(resultat)\\n```\\nQue va afficher le programme ?",
+      "options": [
+        "5",
+        "10",
+        "double(5)",
+        "Rien, il y a une erreur"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La fonction `double` prend un argument `n` et renvoie `n * 2` grâce à `return`. Quand on appelle `double(5)`, la fonction calcule $5 \\times 2 = 10$ et renvoie cette valeur. La variable `resultat` reçoit donc la valeur $10$. L'instruction `print(resultat)` affiche alors `10`. L'option `5` correspond à l'argument initial, `double(5)` serait affiché si on avait mis `print(\"double(5)\")` entre guillemets, et il n'y a pas d'erreur de syntaxe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la différence principale entre `print` et `return` à l'intérieur d'une fonction ?",
+      "options": [
+        "Il n'y a pas de différence, les deux affichent le résultat.",
+        "`print` affiche à l'écran mais ne renvoie rien au programme appelant, `return` renvoie une valeur utilisable par le programme.",
+        "`return` affiche à l'écran et `print` renvoie la valeur.",
+        "`print` arrête la fonction, `return` continue l'exécution."
+      ],
+      "correctAnswer": "`print` affiche à l'écran mais ne renvoie rien au programme appelant, `return` renvoie une valeur utilisable par le programme.",
+      "explanation": "`print` est une fonction d'affichage (sortie standard) : elle montre du texte à l'utilisateur mais la fonction elle-même renvoie `None` (rien d'utilisable). `return` termine l'exécution de la fonction et transmet une valeur à l'endroit où la fonction a été appelée, permettant de stocker cette valeur dans une variable ou de l'utiliser dans un calcul. C'est une distinction fondamentale en programmation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction suivante :\\n```python\\ndef perimetre_rectangle(L, l) :\\n    return 2 * (L + l)\\n```\\nLaquelle de ces instructions calcule correctement le périmètre d'un rectangle de longueur $10$ et de largeur $4$ ?",
+      "options": [
+        "perimetre_rectangle(10)",
+        "perimetre_rectangle(10, 4)",
+        "perimetre_rectangle(L=10, l=4)",
+        "perimetre_rectangle[10, 4]"
+      ],
+      "correctAnswer": "perimetre_rectangle(10, 4)",
+      "explanation": "La fonction `perimetre_rectangle` attend deux arguments positionnels : `L` (longueur) et `l` (largeur). Pour l'appeler, on doit passer deux valeurs entre parenthèses, séparées par une virgule, dans l'ordre : `perimetre_rectangle(10, 4)`. La première option ne fournit qu'un argument (erreur `TypeError`). La troisième option utilise des arguments nommés (valide en Python mais pas l'appel standard demandé ici, et souvent non vu en 4e), mais la syntaxe attendue pour un appel simple est positionnelle. La quatrième utilise des crochets (syntaxe de liste/indexation, invalide pour un appel de fonction).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez ce code :\\n```python\\nvaleur = 10\\n\\ndef modifier(v) :\\n    v = 20\\n    return v\\n\\nmodifier(valeur)\\nprint(valeur)\\n```\\nQue affiche `print(valeur)` à la fin ?",
+      "options": [
+        "20",
+        "10",
+        "None",
+        "Erreur"
+      ],
+      "correctAnswer": "10",
+      "explanation": "En Python, les arguments sont passés par \"référence d'objet\" mais pour les types immuables comme les entiers (`int`), la fonction travaille sur une copie locale de la référence. À l'intérieur de `modifier`, la variable locale `v` prend la valeur $20$, mais cela ne modifie pas la variable globale `valeur` qui reste $10$. La fonction renvoie $20$ mais cette valeur n'est pas stockée (pas d'affectation comme `valeur = modifier(valeur)`). Donc `print(valeur)` affiche la valeur inchangée : $10$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 355,
+  "_course_code": "6eme-t05-c04-volumes",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Problèmes",
+  "title": "Quiz : Problèmes de volumes (6e)",
+  "questions": [
+    {
+      "text": "Un pavé droit a pour dimensions : longueur $12$ cm, largeur $5$ cm et hauteur $4$ cm. Quel est son volume ?",
+      "options": [
+        "$240$ cm$^3$",
+        "$21$ cm$^3$",
+        "$240$ cm$^2$",
+        "$60$ cm$^3$"
+      ],
+      "correctAnswer": "$240$ cm$^3$",
+      "explanation": "Le volume d'un pavé droit se calcule en multipliant ses trois dimensions : $V = L \\times l \\times h$. Ici, $V = 12 \\times 5 \\times 4 = 240$. L'unité de volume est le cm$^3$ (et non cm$^2$ qui est une aire). L'option $21$ cm$^3$ correspond à la somme des dimensions, et $60$ cm$^3$ au produit de seulement deux dimensions.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 12,
+        "height": 5,
+        "depth": 4,
+        "caption": "Pavé droit de dimensions 12 cm x 5 cm x 4 cm"
+      }
+    },
+    {
+      "text": "Un cube a un volume de $125$ cm$^3$. Quelle est la longueur de son arête ?",
+      "options": [
+        "$5$ cm",
+        "$25$ cm",
+        "$41,6$ cm",
+        "$15$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "Le volume d'un cube est $V = c \\times c \\times c = c^3$. Pour trouver l'arête $c$, il faut chercher quel nombre multiplié trois fois par lui-même donne $125$. On a $5 \\times 5 \\times 5 = 125$, donc $c = 5$ cm. L'option $25$ cm correspond à $125 \\div 5$, l'option $41,6$ cm à $125 \\div 3$ et $15$ cm à $5 \\times 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un aquarium a la forme d'un pavé droit de $1$ m de long, $50$ cm de large et $60$ cm de haut. On le remplit complètement d'eau. Combien de litres d'eau contient-il ? (Rappel : $1$ L $= 1$ dm$^3$)",
+      "options": [
+        "$300$ L",
+        "$3\\,000$ L",
+        "$30$ L",
+        "$30\\,000$ L"
+      ],
+      "correctAnswer": "$300$ L",
+      "explanation": "Il faut convertir toutes les dimensions en décimètres (dm) car $1$ L $= 1$ dm$^3$. $1$ m $= 10$ dm, $50$ cm $= 5$ dm, $60$ cm $= 6$ dm. Le volume est $V = 10 \\times 5 \\times 6 = 300$ dm$^3$, donc $300$ L. L'erreur $3\\,000$ L vient souvent d'un calcul en cm$^3$ ($3\\,000\\,000$ cm$^3$) divisé par $1\\,000$ au lieu de $1\\,000$ (ou confusion $1$ L $= 1\\,000$ cm$^3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux boîtes : la boîte A est un cube d'arête $10$ cm ; la boîte B est un pavé droit de dimensions $20$ cm $\\times$ $5$ cm $\\times$ $10$ cm. Laquelle a le plus grand volume ?",
+      "options": [
+        "Les deux boîtes ont le même volume",
+        "La boîte A a un volume plus grand",
+        "La boîte B a un volume plus grand",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "Les deux boîtes ont le même volume",
+      "explanation": "Volume de la boîte A (cube) : $10 \\times 10 \\times 10 = 1\\,000$ cm$^3$. Volume de la boîte B (pavé droit) : $20 \\times 5 \\times 10 = 1\\,000$ cm$^3$. Les deux volumes sont égaux à $1\\,000$ cm$^3$. Les formes sont différentes mais le volume est identique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carton en forme de pavé droit a un volume de $4,8$ m$^3$. Sa base est un rectangle de $3$ m de long et $2$ m de large. Quelle est la hauteur de ce carton ?",
+      "options": [
+        "$0,8$ m",
+        "$1,6$ m",
+        "$2,4$ m",
+        "$0,6$ m"
+      ],
+      "correctAnswer": "$0,8$ m",
+      "explanation": "Le volume d'un pavé droit est $V = \\text{Aire de la base} \\times h$. L'aire de la base est $3 \\times 2 = 6$ m$^2$. On a $4,8 = 6 \\times h$, donc $h = 4,8 \\div 6 = 0,8$ m. L'option $1,6$ m correspond à $4,8 \\div 3$ (division par la longueur seulement), $2,4$ m à $4,8 \\div 2$ (division par la largeur seulement) et $0,6$ m à $4,8 \\div 8$ (division par la somme longueur + largeur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Exprimer relation simple",
+  "title": "Exprimer une relation simple",
+  "questions": [
+    {
+      "text": "On considère la suite de nombres : 2, 5, 8, 11, 14... Quelle règle permet d'obtenir le terme suivant à partir du terme précédent ?",
+      "options": [
+        "Ajouter 3",
+        "Multiplier par 3",
+        "Ajouter 2",
+        "Multiplier par 2"
+      ],
+      "correctAnswer": "Ajouter 3",
+      "explanation": "On observe les différences entre deux termes consécutifs : 5 - 2 = 3, 8 - 5 = 3, 11 - 8 = 3. La règle est donc d'ajouter 3 à chaque fois. Multiplier par 3 ne fonctionne pas (2 × 3 = 6, pas 5). Ajouter 2 donnerait 4 au lieu de 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau de correspondance entre un nombre de départ $n$ et un nombre d'arrivée :\\n$n = 1 \\to 4$\\n$n = 2 \\to 7$\\n$n = 3 \\to 10$\\n$n = 4 \\to 13$\\nQuelle formule exprime le nombre d'arrivée en fonction de $n$ ?",
+      "options": [
+        "$3n + 1$",
+        "$3n - 1$",
+        "$n + 3$",
+        "$4n$"
+      ],
+      "correctAnswer": "$3n + 1$",
+      "explanation": "On teste chaque formule avec $n=1$ : $3\\times1+1=4$ (bon), $3\\times1-1=2$ (faux), $1+3=4$ (bon pour $n=1$ mais $2+3=5$ au lieu de 7 pour $n=2$), $4\\times1=4$ (bon pour $n=1$ mais $4\\times2=8$ au lieu de 7). Seule la formule $3n+1$ fonctionne pour toutes les lignes : $3\\times2+1=7$, $3\\times3+1=10$, $3\\times4+1=13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On construit des figures avec des allumettes. La figure 1 est un carré (4 allumettes). La figure 2 est deux carrés côte à côte (7 allumettes). La figure 3 est trois carrés côte à côte (10 allumettes). Combien d'allumettes pour la figure $n$ ?",
+      "options": [
+        "$3n + 1$",
+        "$3n - 1$",
+        "$4n$",
+        "$n + 3$"
+      ],
+      "correctAnswer": "$3n + 1$",
+      "explanation": "La figure 1 utilise 4 allumettes. Chaque nouveau carré ajouté partage un côté avec le précédent, il faut donc 3 allumettes de plus par carré ajouté. Pour la figure $n$, on a le premier carré (4) plus $(n-1)$ fois 3 allumettes : $4 + 3(n-1) = 4 + 3n - 3 = 3n + 1$. On vérifie : figure 2 : $3\\times2+1=7$, figure 3 : $3\\times3+1=10$. La formule $4n$ ne tient pas compte des côtés partagés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un kilo de pommes coûte 2 euros. On note $p$ le prix à payer en euros et $n$ le nombre de kilos achetés. Quelle relation lie $p$ et $n$ ?",
+      "options": [
+        "$p = 2n$",
+        "$n = 2p$",
+        "$p = n + 2$",
+        "$p = n / 2$"
+      ],
+      "correctAnswer": "$p = 2n$",
+      "explanation": "Le prix est proportionnel à la quantité. Pour 1 kilo, $p=2$ ; pour 2 kilos, $p=4$ ; pour $n$ kilos, $p = 2 \\times n$. L'option $n = 2p$ inverse les rôles (elle dit que le nombre de kilos est le double du prix). L'option $p = n + 2$ ajoute 2 euros fixes. L'option $p = n / 2$ diviserait le prix par deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit une suite par la formule $u = 5n - 2$ où $n$ est le rang du terme (premier rang $n=1$). Quels sont les trois premiers termes de cette suite ?",
+      "options": [
+        "3, 8, 13",
+        "3, 7, 11",
+        "5, 10, 15",
+        "2, 7, 12"
+      ],
+      "correctAnswer": "3, 8, 13",
+      "explanation": "On calcule pour $n=1$ : $u = 5\\times1 - 2 = 3$. Pour $n=2$ : $u = 5\\times2 - 2 = 10 - 2 = 8$. Pour $n=3$ : $u = 5\\times3 - 2 = 15 - 2 = 13$. La suite commence par 3, 8, 13. L'option 3, 7, 11 correspond à $4n-1$. L'option 5, 10, 15 correspond à $5n$. L'option 2, 7, 12 correspond à $5n-3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

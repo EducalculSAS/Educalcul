@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Calculer",
+  "title": "Quiz : Calculer avec des variables",
+  "questions": [
+    {
+      "text": "Évalue l'expression $2x + 5$ pour $x = 3$.",
+      "options": [
+        "$11$",
+        "$13$",
+        "$10$",
+        "$12$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "On remplace $x$ par $3$ : $2 × 3 + 5 = 6 + 5 = 11$. Les autres résultats correspondent à des erreurs de calcul ou d'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $4 + 3 × 2^2$ en respectant l'ordre des opérations.",
+      "options": [
+        "$16$",
+        "$14$",
+        "$20$",
+        "$10$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "On commence par l'exposant : $2^2 = 4$. Ensuite la multiplication : $3 × 4 = 12$. Enfin l'addition : $4 + 12 = 16$. Les distracteurs proviennent d'un calcul de gauche à droite sans priorité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a = 4$ et $b = 2$. Quelle est la valeur de $3a - b^2$ ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$6$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On substitue : $3 × 4 - 2^2 = 12 - 4 = 8$. L'option $10$ correspond à $12 - 2$, l'option $12$ à l'oubli de la soustraction, l'option $6$ à une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine le résultat de $5 × (2 + 3) - 4$.",
+      "options": [
+        "$21$",
+        "$25$",
+        "$19$",
+        "$23$"
+      ],
+      "correctAnswer": "$21$",
+      "explanation": "Parenthèses d'abord : $2 + 3 = 5$. Multiplication : $5 × 5 = 25$. Soustraction : $25 - 4 = 21$. Les autres choix proviennent d'oubli des parenthèses ou d'erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $x = 4$, calcule $12 / x + 3$.",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "On remplace $x$ par $4$ : $12 / 4 + 3 = 3 + 3 = 6$. Les distracteurs correspondent à une division mal faite ou à l'oubli de l'addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

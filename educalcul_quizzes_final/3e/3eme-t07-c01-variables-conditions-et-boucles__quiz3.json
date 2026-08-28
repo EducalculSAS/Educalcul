@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Corriger",
+  "title": "Quiz : Corriger des algorithmes (Variables, conditions, boucles)",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, la variable $S$ n'est pas initialisée avant la boucle. Quelle instruction faut-il ajouter avant la boucle pour que l'algorithme calcule correctement la somme des entiers de 1 à $n$ ?",
+      "options": [
+        "S ← 0",
+        "S ← 1",
+        "S ← n",
+        "S ← S + 1"
+      ],
+      "correctAnswer": "S ← 0",
+      "explanation": "La variable accumulatrice $S$ doit partir de zéro avant d'ajouter chaque terme. Si elle n'est pas initialisée, sa valeur est indéterminée et le résultat sera faux. Les autres propositions initialisent $S$ à une valeur non nulle ou utilisent $S$ avant affectation, ce qui ne corrige pas l'erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour afficher les nombres pairs de 2 à 20 inclus, une boucle utilise la condition $i ≤ 20$ avec $i$ initialisé à 1 et incrémenté de 1 à chaque tour. Quelle modification permet d'afficher seulement les nombres pairs ?",
+      "options": [
+        "Initialiser $i$ à 2 et incrémenter $i$ de 2",
+        "Changer la condition en $i ≤ 20$ et tester si $i$ est pair",
+        "Remplacer $i ≤ 20$ par $i < 20$",
+        "Ajouter une instruction $i ← i + 1$ avant le test"
+      ],
+      "correctAnswer": "Initialiser $i$ à 2 et incrémenter $i$ de 2",
+      "explanation": "En démarrant à 2 et en ajoutant 2 à chaque itération, $i$ prend exactement les valeurs paires 2, 4, ..., 20. Tester la parité à l'intérieur de la boucle fonctionnerait aussi, mais l'option proposée ne modifie pas l'incrémentation. Les autres choix ne garantissent pas l'affichage exclusif des nombres pairs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme doit afficher « Positif » si $x > 0$, « Nul » si $x = 0$, sinon « Négatif ». Le code utilise deux « si » imbriqués mais affiche toujours « Positif » pour $x = 0$. Quelle correction faut-il apporter ?",
+      "options": [
+        "Remplacer le second « si » par « sinon si »",
+        "Ajouter une condition $x < 0$ avant le dernier « sinon »",
+        "Inverser l'ordre des tests",
+        "Initialiser $x$ à 0"
+      ],
+      "correctAnswer": "Remplacer le second « si » par « sinon si »",
+      "explanation": "Avec deux « si » indépendants, le second « si » est évalué même quand le premier est vrai, ce qui fait afficher « Positif » pour $x = 0$ si la condition $x > 0$ est mal écrite. En utilisant « sinon si », les branches sont mutuellement exclusives et le cas $x = 0$ est correctement dirigé vers « Nul ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer le factoriel de $n$, l'algorithme utilise une variable $F$ initialisée à 1 et une boucle « pour $i$ de 1 à $n$ faire $F ← F × i$ ». Cependant, la boucle est écrite « pour $i$ de 0 à $n$ ». Quel est l'effet de cette erreur et comment la corriger ?",
+      "options": [
+        "Le factoriel sera multiplié par 0, il faut commencer à 1",
+        "Le factoriel sera correct car $0! = 1$, aucune correction nécessaire",
+        "La boucle ne s'exécutera pas, il faut inverser les bornes",
+        "Le factoriel sera divisé par 0, il faut ajouter une condition"
+      ],
+      "correctAnswer": "Le factoriel sera multiplié par 0, il faut commencer à 1",
+      "explanation": "Comme la boucle commence à $i = 0$, la première multiplication fait $F ← F × 0$, ce qui annule tout le produit. Le factoriel se définit par le produit des entiers de 1 à $n$, donc la borne inférieure doit être 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme doit lire des nombres jusqu'à ce que l'utilisateur entre 0, puis afficher la somme. Le code utilise « TantQue $x ≠ 0$ faire » mais la variable $x$ n'est pas lue avant la boucle. Quelle correction permet le bon fonctionnement ?",
+      "options": [
+        "Lire $x$ avant la boucle et à la fin de chaque itération",
+        "Initialiser $x$ à 0 avant la boucle",
+        "Remplacer « TantQue » par « Pour »",
+        "Supprimer la condition de sortie"
+      ],
+      "correctAnswer": "Lire $x$ avant la boucle et à la fin de chaque itération",
+      "explanation": "La condition « TantQue $x ≠ 0$ » nécessite que $x$ ait une valeur avant le premier test. Il faut donc lire une première valeur avant d'entrer dans la boucle, puis relire $x$ à chaque tour pour pouvoir sortir quand l'utilisateur tape 0. Initialiser $x$ à 0 ferait sortir immédiatement, et les autres options ne résolvent pas le problème de lecture.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

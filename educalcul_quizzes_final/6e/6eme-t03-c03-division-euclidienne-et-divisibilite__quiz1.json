@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Quotient / reste",
+  "title": "Quiz : Quotient et reste (Division euclidienne)",
+  "questions": [
+    {
+      "text": "Dans la division euclidienne de $23$ par $5$, quel est le quotient ?",
+      "options": [
+        "4",
+        "5",
+        "3",
+        "6"
+      ],
+      "correctAnswer": "4",
+      "explanation": "La division euclidienne de $23$ par $5$ s'écrit $23 = 5 × 4 + 3$, donc le quotient est $4$ et le reste $3$. Les autres options correspondent à des erreurs de calcul du quotient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le reste de la division euclidienne de $47$ par $6$ ?",
+      "options": [
+        "5",
+        "4",
+        "3",
+        "2"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On a $47 = 6 × 7 + 5$, donc le reste est $5$. Les autres valeurs ne correspondent pas au reste de cette division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le quotient est $8$ et le reste $3$ lors d'une division par $9$, quel est le dividende ?",
+      "options": [
+        "75",
+        "72",
+        "71",
+        "74"
+      ],
+      "correctAnswer": "75",
+      "explanation": "Le dividende se calcule par $9 × 8 + 3 = 72 + 3 = 75$. Les autres nombres ne respectent pas la relation dividende = diviseur × quotient + reste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le quotient et le reste de la division de $100$ par $12$ ?",
+      "options": [
+        "Quotient 8, reste 4",
+        "Quotient 7, reste 4",
+        "Quotient 8, reste 5",
+        "Quotient 9, reste 4"
+      ],
+      "correctAnswer": "Quotient 8, reste 4",
+      "explanation": "On effectue $100 = 12 × 8 + 4$, donc le quotient est $8$ et le reste $4$. Les autres combinaisons donnent soit un quotient trop petit, soit un reste incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un enseignant a $53$ crayons qu'il veut répartir équitablement dans $6$ boîtes. Combien de crayons resteront-ils non distribués ?",
+      "options": [
+        "5",
+        "4",
+        "3",
+        "2"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La division euclidienne de $53$ par $6$ donne $53 = 6 × 8 + 5$, donc $5$ crayons restent non distribués. Les autres nombres ne correspondent pas au reste de cette division.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

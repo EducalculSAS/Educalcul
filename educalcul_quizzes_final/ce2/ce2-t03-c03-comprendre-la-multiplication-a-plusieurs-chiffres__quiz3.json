@@ -1,0 +1,119 @@
+{
+  "_status": "done",
+  "_course_id": 162,
+  "_course_code": "ce2-t03-c03-comprendre-la-multiplication-a-plusieurs-chiffres",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Relier à l'opération posée",
+  "title": "Relier le calcul posé à la multiplication (CE2)",
+  "questions": [
+    {
+      "text": "Cette grille représente la multiplication $14 \\times 3$ (14 colonnes, 3 lignes). Quelle opération posée correspond à ce modèle pour la calculer ?",
+      "options": [
+        "L'opération avec $14$ écrit au-dessus, $3$ en dessous et le signe $\\times$",
+        "L'opération avec $3$ écrit au-dessus, $14$ en dessous et le signe $\\times$",
+        "L'opération avec $14$ et $3$ et le signe $+$",
+        "L'opération avec $14$ et $3$ et le signe $-$"
+      ],
+      "correctAnswer": "L'opération avec $14$ écrit au-dessus, $3$ en dessous et le signe $\\times$",
+      "explanation": "En multiplication, on écrit généralement le plus grand nombre (le multiplicande) sur la première ligne et le multiplicateur (ici $3$) sur la deuxième ligne, aligné à droite sur les unités. Le signe $\\times$ est placé à gauche. Les options avec $+$ ou $-$ ne correspondent pas à une multiplication.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 14,
+        "highlighted": 42,
+        "caption": "Modèle en grille de 14 x 3"
+      }
+    },
+    {
+      "text": "Regarde l'opération posée $25 \\times 4 = 100$. Pourquoi écrit-on un petit $2$ (la retenue) au-dessus de la colonne des dizaines ?",
+      "options": [
+        "C'est le résultat de $5 \\times 4 = 20$, les $2$ dizaines sont retenues pour être ajoutées aux dizaines suivantes",
+        "C'est le résultat de $2 \\times 4 = 8$",
+        "C'est le chiffre des dizaines du résultat final $100$",
+        "C'est une erreur de calcul"
+      ],
+      "correctAnswer": "C'est le résultat de $5 \\times 4 = 20$, les $2$ dizaines sont retenues pour être ajoutées aux dizaines suivantes",
+      "explanation": "On commence par multiplier les unités : $5 \\times 4 = 20$. On écrit le $0$ dans la colonne des unités du résultat et on retient les $2$ dizaines (le petit $2$ au-dessus) pour les ajouter au produit des dizaines ($2 \\times 4 = 8$ dizaines) à l'étape suivante : $8 + 2 = 10$ dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "\\times",
+        "operands": [
+          "25",
+          "4"
+        ],
+        "result": "100",
+        "carries": [
+          "2"
+        ]
+      }
+    },
+    {
+      "text": "Dans le calcul posé $16 \\times 4 = 64$, que deviennent les $2$ dizaines de la retenue (le petit $2$ au-dessus de la colonne des dizaines) ?",
+      "options": [
+        "On les ajoute au produit des dizaines ($1 \\times 4$) pour obtenir $6$ dizaines",
+        "On les ajoute aux unités du résultat",
+        "On les écrit directement dans le résultat final sans les ajouter",
+        "On les oublie car ce sont des dizaines"
+      ],
+      "correctAnswer": "On les ajoute au produit des dizaines ($1 \\times 4$) pour obtenir $6$ dizaines",
+      "explanation": "L'étape des unités donne $6 \\times 4 = 24$ : $4$ unités et $2$ dizaines retenues. À l'étape des dizaines, on calcule $1 \\times 4 = 4$ dizaines, puis on ajoute la retenue : $4 + 2 = 6$ dizaines. On écrit donc $6$ dans la colonne des dizaines du résultat final.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "\\times",
+        "operands": [
+          "16",
+          "4"
+        ],
+        "result": "64",
+        "carries": [
+          "2"
+        ]
+      }
+    },
+    {
+      "text": "Complète le chiffre manquant dans l'opération posée : $4\\_ \\times 3 = 129$.",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On teste les options. $40 \\times 3 = 120$ (trop petit). $41 \\times 3 = 123$. $42 \\times 3 = 126$. $43 \\times 3 = 129$. C'est le bon résultat. On peut aussi raisonner à l'envers : $129 \\div 3 = 43$. Le chiffre des unités est donc $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $12 \\times 13$ en posé, on fait deux multiplications partielles : $12 \\times 3$ (premiers ligne) et $12 \\times 10$ (deuxième ligne). Pourquoi décale-t-on la deuxième ligne d'un cran vers la gauche ?",
+      "options": [
+        "Parce qu'on multiplie par les dizaines (le $1$ de $13$ vaut $10$), donc le résultat est en dizaines",
+        "Pour que les deux lignes aient la même longueur",
+        "Parce que le deuxième résultat est plus grand que le premier",
+        "Pour aligner les chiffres des unités des deux lignes"
+      ],
+      "correctAnswer": "Parce qu'on multiplie par les dizaines (le $1$ de $13$ vaut $10$), donc le résultat est en dizaines",
+      "explanation": "Le chiffre $1$ dans $13$ est au rang des dizaines, il représente $10$. Multiplier par $10$ donne un résultat qui se termine par un $0$ (dizaines). En décalant la ligne vers la gauche, on aligne correctement les dizaines sous les dizaines et les centaines sous les centaines pour faire l'addition finale. L'option D est fausse car on n'aligne pas les unités (la deuxième ligne n'a pas d'unités).",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 12,
+            "height": 3,
+            "label": "12x3"
+          },
+          {
+            "width": 12,
+            "height": 10,
+            "label": "12x10"
+          }
+        ],
+        "caption": "Décomposition de 12 x 13 en 12 x 3 et 12 x 10"
+      }
+    }
+  ]
+}

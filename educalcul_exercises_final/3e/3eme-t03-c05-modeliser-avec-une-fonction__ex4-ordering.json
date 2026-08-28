@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 471,
+  "_course_code": "3eme-t03-c05-modeliser-avec-une-fonction",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Modéliser avec une fonction",
+  "title": "Modéliser une situation par une fonction : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Modélisation affine : tarif taxi",
+      "content": "Remets dans l'ordre les étapes pour modéliser le prix d'une course de taxi en fonction de la distance. Le tarif est : prise en charge 2,50 € + 1,80 € par kilomètre.",
+      "items": [
+        "Identifier les variables : le prix à payer $p$ (en euros) en fonction de la distance $d$ (en kilomètres).",
+        "Repérer le prix pour une distance nulle (prise en charge) : $b = 2,50$.",
+        "Repérer le coefficient directeur (prix au kilomètre) : $a = 1,80$.",
+        "Écrire l'expression de la fonction affine $p(d) = 1,80d + 2,50$.",
+        "Calculer le prix pour une course de 15 km : $p(15) = 1,80 \\times 15 + 2,50 = 29,50$ euros."
+      ],
+      "explanation": "On suit la démarche classique de modélisation affine : 1) Choix des variables (prix selon distance). 2) Identification de l'ordonnée à l'origine (prix pour 0 km). 3) Identification du coefficient directeur (taux de variation, prix au km). 4) Écriture de la formule $f(x)=ax+b$. 5) Utilisation de la fonction pour répondre à la question (calcul d'image).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation quadratique : aire d'un rectangle",
+      "content": "Un rectangle a un périmètre fixé de 40 m. On note $x$ sa largeur en mètres. Remets dans l'ordre les étapes pour exprimer l'aire $A$ en fonction de $x$ et trouver l'aire maximale.",
+      "items": [
+        "Exprimer la longueur $L$ en fonction de $x$ : $2(x + L) = 40$ donc $L = 20 - x$.",
+        "Écrire la fonction aire $A(x) = x \\times (20 - x) = -x^2 + 20x$.",
+        "Déterminer l'ensemble de définition : la largeur est positive et la longueur aussi, donc $0 < x < 20$.",
+        "Repérer que $A$ est une fonction quadratique (parabole tournée vers le bas) dont le maximum est au sommet, d'abscisse $x = -b/(2a) = 10$.",
+        "Conclure : l'aire maximale est $A(10) = 100$ m², obtenue pour un carré de côté 10 m."
+      ],
+      "explanation": "La modélisation quadratique suit ces étapes : 1) Utiliser la contrainte (périmètre) pour lier longueur et largeur. 2) Écrire la grandeur cherchée (aire) comme produit des dimensions, ici un trinôme du second degré. 3) Préciser le domaine de définition réaliste (valeurs positives). 4) Utiliser les propriétés du trinôme (forme canonique ou sommet) pour trouver l'extremum. 5) Calculer l'image de l'abscisse du sommet et interpréter.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux offres : abonnement salle de sport",
+      "content": "On compare deux offres : Offre A (abonnement 20 € + 5 € par séance) et Offre B (sans abonnement, 8 € par séance). Remets dans l'ordre les étapes pour déterminer l'offre la plus avantageuse selon le nombre de séances $n$.",
+      "items": [
+        "Écrire la fonction coût pour l'offre A : $C_A(n) = 5n + 20$.",
+        "Écrire la fonction coût pour l'offre B : $C_B(n) = 8n$.",
+        "Résoudre l'équation $C_A(n) = C_B(n)$ pour trouver le seuil : $5n + 20 = 8n \\Rightarrow 3n = 20 \\Rightarrow n \\approx 6,67$.",
+        "Comparer les coûts pour un nombre entier de séances : pour $n \\le 6$, $C_B < C_A$ ; pour $n \\ge 7$, $C_A < C_B$.",
+        "Conclure : l'offre B est meilleure pour 6 séances ou moins, l'offre A est meilleure dès 7 séances."
+      ],
+      "explanation": "Pour comparer deux modèles affines : 1) et 2) Modéliser chaque offre par une fonction affine (coût fixe + coût variable). 3) Trouver le point d'intersection (seuil de rentabilité) en égalant les deux fonctions. 4) Étudier le signe de la différence (ou comparer graphiquement) de part et d'autre du seuil, en tenant compte du fait que $n$ est entier. 5) Formuler la conclusion en langage courant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

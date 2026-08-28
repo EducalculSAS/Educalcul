@@ -1,0 +1,397 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.256471+00:00",
+  "id": 567,
+  "code": "1ere-generale-t06-c02",
+  "title": "Suites géométriques",
+  "description": "Cours structuré Educalcul : Suites géométriques.",
+  "subject": "Variation exponentielle",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Variation exponentielle",
+    "titre_du_cours": "Suites géométriques",
+    "objectif_global": "Suites géométriques",
+    "mini_lecons_imposees": [
+      "Raison.",
+      "Terme.",
+      "Modéliser."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Variation exponentielle",
+      "lessons": [
+        {
+          "title": "Raison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La raison d'une suite géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bonjour ! Aujourd'hui nous allons découvrir ce qui fait battre le cœur d'une suite géométrique : sa raison. Imaginez une suite comme une liste de nombres qui se suivent selon une règle précise. Dans une suite géométrique, chaque terme est obtenu en multipliant le terme précédent par un même nombre, que l'on appelle la raison. C'est un peu comme si vous aviez une machine qui, à chaque tour, multiplie ce qu'elle reçoit par un facteur constant. Ce facteur peut être un entier, un décimal, voire une fraction, et il peut même être négatif. La raison est donc l'âme de la suite : la connaître, c'est pouvoir prédire n'importe quel terme sans avoir à écrire toute la liste."
+            },
+            {
+              "type": "definition",
+              "term": "Raison",
+              "definition": "Nombre constant $q$ tel que pour tout indice $n$, $u_{n+1}=q\\times u_n$.",
+              "example": "Dans la suite $2,\\;6,\\;18,\\;54,\\dots$, la raison est $q=3$ car $6=3\\times2$, $18=3\\times6$, etc."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Supposons que vous ayez une culture de bactéries qui triple chaque heure. Au départ, il y a $5$ bactéries. Après une heure, il y en a $15$, après deux heures $45$, après trois heures $135$. Vous voyez le lien ? Chaque nombre est le précédent multiplié par $3$. Ce $3$ est la raison. Si vous vouliez savoir combien de bactéries il y aura après $10$ heures, vous n'avez pas besoin de tout écrire : il suffit d'appliquer la règle de multiplication répétée. C'est exactement ce que permet la notion de raison."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer deux termes consécutifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez n'importe quels deux termes qui se suivent dans la suite, par exemple $u_2$ et $u_3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser le second par le premier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez le quotient $\\frac{u_{3}}{u_{2}}$. Ce quotient est la raison $q$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la constance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Faites le même calcul avec une autre paire consécutive ($u_4/u_3$, $u_5/u_4$, …). Si le quotient est toujours le même, la suite est bien géométrique de raison $q$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "q = \\frac{u_{n+1}}{u_n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment dénicher la raison, observons ses propriétés. La raison peut être positive, négative, nulle ou même égale à $1$. Chaque cas donne une allure particulière à la suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de la raison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $q>1$, les termes grandissent en valeur absolue : la suite « explose » vers l'infini. Si $0<q<1$, les termes décroissent vers $0$ tout en restant du même signe. Si $q<0$, les termes alternent de signe : positif, négatif, positif, … Si $q=0$, dès le second terme tout devient $0$. Enfin, si $q=1$, la suite est constante : tous les termes sont égaux au premier. Ces comportements sont essentiels pour anticiper l'évolution d'un modèle sans avoir à calculer chaque terme."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la raison sur la droite numérique",
+              "min": -2,
+              "max": 2,
+              "points": [
+                {
+                  "value": -1.5,
+                  "label": "q < -1"
+                },
+                {
+                  "value": -0.5,
+                  "label": "-1 < q < 0"
+                },
+                {
+                  "value": 0,
+                  "label": "q = 0"
+                },
+                {
+                  "value": 0.5,
+                  "label": "0 < q < 1"
+                },
+                {
+                  "value": 1,
+                  "label": "q = 1"
+                },
+                {
+                  "value": 1.5,
+                  "label": "q > 1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Intéressons-nous maintenant à deux cas limites qui reviennent souvent dans les exercices : la raison égale à $1$ et la raison égale à $0$. Ils peuvent sembler triviaux, mais ils piègent parfois les élèves pressés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : raison égale à 1 ou 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque $q=1$, la relation $u_{n+1}=u_n$ montre que chaque terme est identique au précédent. La suite est donc constante : $u_n = u_0$ pour tout $n$. C'est une suite géométrique, mais aussi une suite arithmétique de raison $0$. Lorsque $q=0$, le premier terme $u_0$ peut être n'importe quel nombre, mais dès $n\\ge1$, $u_n=0$. La suite ressemble à $u_0, 0, 0, 0, \\dots$. Dans les deux cas, la formule du terme général $u_n = u_0 q^n$ reste valide et donne le bon résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la suite $5,\\;15,\\;45,\\;135,\\dots$, déterminons la raison $q$.",
+              "answer": "$q = 3$",
+              "hint": "Divisez un terme par son prédécesseur, par exemple $15/5$.",
+              "explanation": "En divisant $15$ par $5$, on obtient $3$. Vérifiez avec $45/15 = 3$ et $135/45 = 3$. La raison est bien constante et égale à $3$."
+            },
+            {
+              "question": "Une suite géométrique a pour raison $q = -0,5$. Quel est le signe du $5^{\\text{ième}}$ terme si le premier terme $u_0$ est positif ?",
+              "answer": "Négatif",
+              "hint": "Comptez les changements de signe à chaque multiplication par un nombre négatif.",
+              "explanation": "Comme $q$ est négatif, le signe alterne à chaque étape : $u_0>0$, $u_1<0$, $u_2>0$, $u_3<0$, $u_4>0$, $u_5<0$. Le $5^{\\text{ième}}$ terme (indice $5$) est donc négatif."
+            },
+            {
+              "question": "Soit la suite définie par $u_0 = 7$ et $q = 0$. Écrivez les quatre premiers termes.",
+              "answer": "$7,\\;0,\\;0,\\;0$",
+              "hint": "Appliquez la relation $u_{n+1}=0\\times u_n$ à partir de $u_0$.",
+              "explanation": "Le premier terme est $7$. Ensuite $u_1 = 0\\times7 = 0$. Tous les termes suivants restent $0$ car on multiplie toujours par $0$."
+            }
+          ]
+        },
+        {
+          "title": "Terme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le terme général d'une suite géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans la deuxième étape de notre exploration ! Maintenant que la raison $q$ n'a plus de secret pour vous, nous allons voir comment exprimer directement n'importe quel terme de la suite sans avoir à multiplier étape par étape. C'est là qu'intervient la formule du terme général, un outil puissant qui transforme une suite en une fonction explicite de l'indice $n$. Imaginez que vous vouliez connaître le $50^{\\text{ième}}$ terme d'une suite dont la raison est $2$ et le premier terme $3$. Multiplier $2$ cinquante fois serait fastidieux ; la formule vous donne la réponse en un clin d'œil."
+            },
+            {
+              "type": "definition",
+              "term": "Terme général",
+              "definition": "Expression explicite $u_n = u_0 \\times q^{\\,n}$ (ou $u_n = u_1 \\times q^{\\,n-1}$) qui donne la valeur du terme d'indice $n$ directement.",
+              "example": "Pour $u_0=4$ et $q=2$, le terme général est $u_n = 4 \\times 2^{\\,n}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Démontrons cette formule pas à pas. Partons de la définition : $u_1 = q u_0$, $u_2 = q u_1 = q^2 u_0$, $u_3 = q u_2 = q^3 u_0$, et ainsi de suite. Par récurrence, on voit que l'exposant de $q$ correspond exactement à l'indice $n$. Ainsi $u_n = u_0 q^n$ pour tout entier naturel $n$. Cette écriture compacte est la clé pour résoudre rapidement de nombreux problèmes, qu'il s'agisse de calculer un terme lointain, de trouver l'indice correspondant à une valeur donnée, ou d'étudier la convergence de la suite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $u_0$ et $q$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez le premier terme (souvent noté $u_0$ ou $u_1$) et la raison $q$ soit par énoncé, soit en la calculant comme vu précédemment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le premier terme connu est $u_0$, utilisez $u_n = u_0 q^{\\,n}$. Si c'est $u_1$, utilisez $u_n = u_1 q^{\\,n-1}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer $n$ par la valeur demandée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez la puissance $q^{\\,n}$ (ou $q^{\\,n-1}$) puis multipliez par le terme initial."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = u_0 \\times q^{\\,n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, les énoncés donnent le premier terme sous la forme $u_1$ plutôt que $u_0$. Il est alors crucial de savoir basculer d'une formule à l'autre sans se tromper. Voyons comment faire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le premier terme $u_1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si l'on connaît $u_1$ et $q$, on peut retrouver $u_0$ en divisant : $u_0 = u_1 / q$ (à condition que $q \\neq 0$). Ensuite, on applique la formule standard $u_n = u_0 q^n$. Mais il existe une formule directe qui évite cette division : $u_n = u_1 q^{\\,n-1}$. Vérifions : pour $n=1$, $u_1 = u_1 q^{0}=u_1$ ; pour $n=2$, $u_2 = u_1 q^{1}=u_1 q$, ce qui correspond bien à la définition. Cette forme est souvent plus commode quand l'indice de départ du problème est $1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = u_1 \\times q^{\\,n-1}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer aux exercices, apprenons à vérifier qu'une suite présentée sous forme de liste est bien géométrique. Cette compétence vous sera utile pour valider un modèle ou corriger une erreur de saisie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier qu'une suite est géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenez trois termes consécutifs $u_k, u_{k+1}, u_{k+2}$. Calculez les deux quotients $u_{k+1}/u_k$ et $u_{k+2}/u_{k+1}$. S'ils sont égaux, la suite est géométrique de raison $q$ égal à ce quotient commun. Si l'un des termes est nul, attention : la division n'est pas possible, mais on peut tester l'égalité $u_{k+1}^2 = u_k \\times u_{k+2}$ (produit des extrémités égal au carré du milieu), qui reste valide même avec des zéros. Cette astuce évite bien des pièges."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite géométrique de premier terme $u_0 = 2$ et de raison $q = 5$. Calculez $u_4$.",
+              "answer": "$1250$",
+              "hint": "Utilisez la formule $u_n = u_0 q^{\\,n}$ avec $n=4$.",
+              "explanation": "$u_4 = 2 \\times 5^{4} = 2 \\times 625 = 1250$."
+            },
+            {
+              "question": "Une suite géométrique a $u_1 = 12$ et $q = 0,2$. Donnez l'expression du terme général $u_n$ en fonction de $n$ (indice starting at $1$).",
+              "answer": "$u_n = 12 \\times 0,2^{\\,n-1}$",
+              "hint": "Appliquez la formule $u_n = u_1 q^{\\,n-1}$.",
+              "explanation": "Comme le premier terme connu est $u_1$, on utilise directement $u_n = u_1 q^{n-1} = 12 \\times 0,2^{n-1}$."
+            },
+            {
+              "question": "La suite $3,\\; -6,\\; 12,\\; -24,\\dots$ est-elle géométrique ? Si oui, quelle est sa raison ?",
+              "answer": "Oui, $q = -2$",
+              "hint": "Divisez chaque terme par le précédent.",
+              "explanation": "$-6/3 = -2$, $12/(-6) = -2$, $-24/12 = -2$. Les quotients sont constants, donc la suite est géométrique de raison $-2$."
+            }
+          ]
+        },
+        {
+          "title": "Modéliser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser avec une suite géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon, celle qui donne tout son sens aux suites géométriques : la modélisation. Dans la vie réelle, de nombreux phénomènes évoluent en multipliant une quantité par un facteur constant à chaque pas de temps. Que ce soit la croissance d'une population, le capital placé à intérêts composés, la dépréciation d'un véhicule ou la propagation d'un virus, la structure mathématique est toujours la même : une suite géométrique. Savoir traduire une situation concrète en suite géométrique, c'est acquérir un outil de prévision et de décision puissant."
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation",
+              "definition": "Processus qui consiste à représenter un phénomène réel par un objet mathématique (ici une suite géométrique) pour en étudier l'évolution et faire des prédictions.",
+              "example": "Une population de $1000$ individus qui augmente de $3\\%$ par an se modélise par $u_{n+1}=1,03\\,u_n$ avec $u_0=1000$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'une population de lapins sur une île. Au départ, on compte $200$ lapins. Chaque année, la population augmente de $12\\%$ grâce aux naissances, sans limitation de ressources. Cela signifie que chaque année, le nombre de lapins est multiplié par $1,12$. La suite $(u_n)$ du nombre de lapins après $n$ années est donc géométrique de raison $q=1,12$ et de premier terme $u_0=200$. Le terme général s'écrit $u_n = 200 \\times 1,12^{\\,n}$. Grâce à cette formule, on peut répondre à des questions comme : \"Combien de lapins après $10$ ans ?\" ou \"Au bout de combien d'années la population dépassera-t-elle $1000$ ?\" sans simuler année par année."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "1.12*x",
+              "u0": 200,
+              "iterations": 10,
+              "xMin": 0,
+              "xMax": 3000,
+              "caption": "Évolution de la population de lapins (toiles d'araignée)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre classique de la modélisation est le placement bancaire à intérêts composés. Supposons que vous déposiez $5000\\,\\text{\\u20ac}$ sur un livret qui rapporte $2\\%$ par an, les intérêts étant capitalisés chaque année. Le capital après $n$ années suit une suite géométrique de raison $q = 1,02$ et de premier terme $u_0 = 5000$. La formule du capital est $C_n = 5000 \\times 1,02^{\\,n}$. Ce modèle permet de comparer différents taux, d'estimer le temps nécessaire pour doubler son capital, ou de planifier un projet d'épargne."
+            },
+            {
+              "type": "display_math",
+              "latex": "C_n = C_0 \\times (1 + \\tfrac{t}{100})^{\\,n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, regardons un phénomène de décroissance : la dépréciation d'un véhicule. Une voiture neuve vaut $25000\\,\\text{\\u20ac}$. Chaque année, elle perd $15\\%$ de sa valeur. La valeur après $n$ années est modélisée par une suite géométrique de raison $q = 0,85$ (car on garde $85\\%$ de la valeur) et de premier terme $u_0 = 25000$. Le terme général est $V_n = 25000 \\times 0,85^{\\,n}$. On peut ainsi prévoir la revente après $5$ ans ou déterminer à partir de quand la valeur tombe sous $5000\\,\\text{\\u20ac}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la raison d'une suite géométrique et la calculer à partir de deux termes consécutifs.",
+                "Je sais écrire le terme général $u_n = u_0 q^{\\,n}$ (ou $u_n = u_1 q^{\\,n-1}$) et l'utiliser pour trouver n'importe quel terme.",
+                "Je sais reconnaître une suite géométrique dans un énoncé et en extraire $u_0$ (ou $u_1$) et $q$.",
+                "Je sais modéliser une situation d'évolution proportionnelle (croissance ou décroissance) par une suite géométrique et répondre à des questions de prévision."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une culture de bactéries double toutes les $20$ minutes. S'il y a $100$ bactéries au départ, combien y en aura-t-il après $2$ heures ?",
+              "answer": "$6400$",
+              "hint": "Déterminez le nombre de périodes de $20$ minutes en $2$ heures, puis appliquez $u_n = 100 \\times 2^{\\,n}$.",
+              "explanation": "$2$ heures = $120$ minutes, soit $6$ périodes de $20$ minutes. $u_6 = 100 \\times 2^{6} = 100 \\times 64 = 6400$."
+            },
+            {
+              "question": "Vous placez $3000\\,\\text{\\u20ac}$ à un taux annuel de $1,5\\%$ capitalisé. Écrivez la formule du capital après $n$ années et calculez le capital après $8$ ans (arrondi à l'euro).",
+              "answer": "$C_n = 3000 \\times 1,015^{\\,n}$ ; $C_8 \\approx 3379\\,\\text{\\u20ac}$",
+              "hint": "Utilisez $q = 1 + 1,5/100 = 1,015$ et calculez $3000 \\times 1,015^{8}$.",
+              "explanation": "Le capital suit $C_n = 3000 \\times 1,015^{n}$. Pour $n=8$, $1,015^{8} \\approx 1,1265$, donc $C_8 \\approx 3000 \\times 1,1265 = 3379,5$, arrondi à $3379\\,\\text{\\u20ac}$."
+            },
+            {
+              "question": "Un ordinateur portable vaut $1200\\,\\text{\\u20ac}$ neuf. Il perd $20\\%$ de sa valeur chaque année. Après combien d'années sa valeur sera-t-elle inférieure à $400\\,\\text{\\u20ac}$ ?",
+              "answer": "$4$ ans",
+              "hint": "Modélisez par $V_n = 1200 \\times 0,8^{\\,n}$ et testez $n=3,4,\\dots$",
+              "explanation": "$V_3 = 1200 \\times 0,8^{3} = 1200 \\times 0,512 = 614,4 > 400$. $V_4 = 1200 \\times 0,8^{4} = 1200 \\times 0,4096 = 491,5 > 400$. $V_5 = 1200 \\times 0,8^{5} = 1200 \\times 0,32768 = 393,2 < 400$. Donc au bout de $5$ ans la valeur passe sous $400\\,\\text{\\u20ac}$. (Attention : l'indice $n$ compte les années écoulées, donc après $5$ années complètes.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

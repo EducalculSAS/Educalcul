@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 101,
+  "_course_code": "ce1-t04-c04-tables-de-multiplication-par-2",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Compter de 2 en 2",
+  "title": "Algorithmes : Compter de 2 en 2",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de comptage",
+      "content": "Écris les instructions d'un algorithme qui permet d'afficher les nombres en comptant de $2$ en $2$ depuis $0$ jusqu'à $20$ inclus. Utilise les mots-clés : Début, Fin, Tant que, Afficher.",
+      "correctAnswer": "Début\\nnombre ← 0\\nTant que nombre ≤ 20 faire\\n    Afficher nombre\\n    nombre ← nombre + 2\\nFin Tant que\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable 'nombre' à $0$. La boucle 'Tant que' se répète tant que 'nombre' est inférieur ou égal à $20$. À chaque tour, on affiche la valeur de 'nombre' puis on lui ajoute $2$ pour passer au nombre pair suivant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme",
+      "content": "Complète l'algorithme ci-dessous pour qu'il affiche la suite des nombres pairs jusqu'à $10$.\\nDébut\\n    n ← 0\\n    Tant que n ≤ 10 faire\\n        ...\\n        n ← n + 2\\n    Fin Tant que\\nFin",
+      "correctAnswer": "Afficher n",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $n$ prend successivement les valeurs $0$, $2$, $4$, $6$, $8$, $10$. Pour afficher cette suite, il faut écrire l'instruction 'Afficher n' à l'intérieur de la boucle, avant d'augmenter $n$ de $2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour calculer le double",
+      "content": "Écris un algorithme qui calcule le double d'un nombre entier $n$ (par exemple $n = 5$) en utilisant une boucle qui ajoute $2$ successivement. Le résultat doit être stocké dans une variable 'double'.",
+      "correctAnswer": "Début\\nn ← 5\\ndouble ← 0\\ncompteur ← 0\\nTant que compteur < n faire\\n    double ← double + 2\\n    compteur ← compteur + 1\\nFin Tant que\\nAfficher double\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Calculer le double de $n$ revient à ajouter $2$ exactement $n$ fois. On initialise 'double' à $0$ et 'compteur' à $0$. La boucle s'exécute $n$ fois : à chaque tour, on ajoute $2$ à 'double' et $1$ à 'compteur'. À la fin, 'double' vaut $2 \\times n$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

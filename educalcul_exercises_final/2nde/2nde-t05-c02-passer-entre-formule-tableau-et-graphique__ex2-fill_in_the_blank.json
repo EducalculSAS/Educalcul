@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Construire",
+  "title": "Passer entre formule, tableau et graphique - Construire",
+  "blocks": [
+    {
+      "title": "Du formulaire au tableau",
+      "content": "Pour la fonction $f(x)=2x-3$, donne les valeurs de $f(-1)$, $f(0)$ et $f(1)$ : $f(-1) = $ {{1}}, $f(0) = $ {{2}}, $f(1) = $ {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "-5",
+        "-3",
+        "-1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule chaque image : $f(-1)=2\\times(-1)-3=-5$, $f(0)=2\\times0-3=-3$, $f(1)=2\\times1-3=-1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Du tableau à la formule",
+      "content": "Le tableau ci-dessous donne des valeurs d'une fonction affine $g$ :\\n$x$ | $0$ | $2$ | $4$\\n$g(x)$ | $5$ | $9$ | $13$\\nLa fonction s'exprime sous la forme $g(x)=ax+b$. Détermine $a$ et $b$ : $a = $ {{1}}, $b = $ {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ est le taux d'accroissement : $\\frac{9-5}{2-0}=2$. L'ordonnée à l'origine $b$ vaut $g(0)=5$. Donc $g(x)=2x+5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Du graphique à la formule",
+      "content": "Une fonction quadratique $h(x)=ax^2+bx+c$ passe par les points $(-1,2)$, $(0,1)$ et $(1,2)$. Détermine $a$, $b$ et $c$ : $a = $ {{1}}, $b = $ {{2}}, $c = $ {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "0",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après $h(0)=c=1$. Les points $(1,2)$ et $(-1,2)$ donnent $a+b+1=2$ et $a-b+1=2$, soit $a+b=1$ et $a-b=1$. En ajoutant : $2a=2 \\Rightarrow a=1$, puis $b=0$. Donc $h(x)=x^2+1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

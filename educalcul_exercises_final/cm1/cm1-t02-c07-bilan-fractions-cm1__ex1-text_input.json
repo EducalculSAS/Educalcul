@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 225,
+  "_course_code": "cm1-t02-c07-bilan-fractions-cm1",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Représenter, comparer, relier aux décimaux",
+  "title": "Fractions : représenter, comparer et relier aux décimaux",
+  "blocks": [
+    {
+      "title": "Représentation fractionnaire",
+      "content": "Sur la figure, quelle fraction de la bande est colorée ? Écris la réponse sous la forme $a/b$.",
+      "correctAnswer": "3/5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La bande est divisée en 5 parties égales (le dénominateur est 5). Trois de ces parties sont colorées (le numérateur est 3). La fraction colorée est donc $3/5$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 5
+          }
+        ],
+        "caption": "Bande divisée en 5 parties égales, 3 parties colorées."
+      }
+    },
+    {
+      "title": "Comparaison de fractions",
+      "content": "Compare les deux fractions $3/4$ et $6/8$. Écris le signe $<$, $>$ ou $=$ dans la case.",
+      "correctAnswer": "=",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer $3/4$ et $6/8$, on peut réduire $6/8$ en divisant le numérateur et le dénominateur par 2 : $6/8 = (6 \\div 2) / (8 \\div 2) = 3/4$. Les deux fractions sont égales. On peut aussi les représenter sur une même figure : 3 quarts correspondent à 6 huitièmes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fraction et nombre décimal",
+      "content": "Écris la fraction $7/10$ sous la forme d'un nombre décimal.",
+      "correctAnswer": "0,7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $7/10$ se lit « 7 dixièmes ». En écriture décimale, les dixièmes se placent au premier rang après la virgule. On écrit donc $0,7$ (ou $0,70$).",
+      "points": 2,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 0.7,
+        "caption": "Tableau de position avec 0 unités et 7 dixièmes."
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Facteur commun",
+  "title": "Quiz : Factorisation par mise en évidence d'un facteur commun",
+  "questions": [
+    {
+      "text": "Quelle est la forme factorisée de l'expression $E = 5x + 15$ ?",
+      "options": [
+        "5(x + 3)",
+        "5(x + 15)",
+        "5x(1 + 3)",
+        "x(5 + 15)"
+      ],
+      "correctAnswer": "5(x + 3)",
+      "explanation": "On cherche le plus grand facteur commun aux deux termes $5x$ et $15$. Le terme $5x$ s'écrit $5 \\times x$ et $15$ s'écrit $5 \\times 3$. Le facteur commun est donc $5$. En le mettant devant la parenthèse, il reste $x$ pour le premier terme et $3$ pour le second, d'où $5(x + 3)$. L'option $5(x + 15)$ oublie de diviser $15$ par $5$. L'option $5x(1 + 3)$ prend $5x$ comme facteur commun mais $15$ n'est pas divisible par $x$. L'option $x(5 + 15)$ fait la même erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $F = 12x^2 - 8x$.",
+      "options": [
+        "4x(3x - 2)",
+        "4(3x^2 - 2x)",
+        "2x(6x - 4)",
+        "x(12x - 8)"
+      ],
+      "correctAnswer": "4x(3x - 2)",
+      "explanation": "Les coefficients sont $12$ et $-8$, leur PGCD est $4$. Pour la partie littérale, les puissances de $x$ sont $x^2$ et $x^1$, le facteur commun est $x^1 = x$. Le facteur commun total est donc $4x$. En factorisant : $12x^2 = 4x \\times 3x$ et $-8x = 4x \\times (-2)$. On obtient $4x(3x - 2)$. L'option $4(3x^2 - 2x)$ n'est pas complètement factorisée (il reste un facteur $x$ dans la parenthèse). L'option $2x(6x - 4)$ n'utilise pas le plus grand commun diviseur des coefficients. L'option $x(12x - 8)$ ne factorise que la partie littérale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle est la factorisation complète de $G = 9a^3b - 6a^2b^2 + 12ab$ ?",
+      "options": [
+        "3ab(3a^2 - 2ab + 4)",
+        "3a(3a^2b - 2ab^2 + 4b)",
+        "3b(3a^3 - 2a^2b + 4a)",
+        "ab(9a^2 - 6ab + 12)"
+      ],
+      "correctAnswer": "3ab(3a^2 - 2ab + 4)",
+      "explanation": "On détermine le facteur commun aux trois termes. Pour les coefficients $9, -6, 12$, le PGCD est $3$. Pour la variable $a$, les exposants sont $3, 2, 1$, le plus petit est $1$, donc facteur $a$. Pour la variable $b$, les exposants sont $1, 2, 1$, le plus petit est $1$, donc facteur $b$. Le facteur commun total est $3ab$. Vérification : $3ab \\times 3a^2 = 9a^3b$, $3ab \\times (-2ab) = -6a^2b^2$, $3ab \\times 4 = 12ab$. Les autres options ne prennent pas le facteur commun maximal (il manque $b$ dans la 2e, $a$ dans la 3e, le $3$ dans la 4e).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'expression $H = 7(x - 2) + 3x(x - 2)$. Quelle est sa forme factorisée ?",
+      "options": [
+        "(x - 2)(3x + 7)",
+        "(x - 2)(3x - 7)",
+        "(x + 2)(3x + 7)",
+        "10x(x - 2)"
+      ],
+      "correctAnswer": "(x - 2)(3x + 7)",
+      "explanation": "L'expression est une somme de deux termes : $7(x - 2)$ et $3x(x - 2)$. Le facteur commun aux deux termes est la parenthèse $(x - 2)$. En la mettant en facteur, il reste $7$ pour le premier terme et $3x$ pour le second. On obtient $(x - 2)(7 + 3x)$, ce qui s'écrit classiquement $(x - 2)(3x + 7)$. L'option $(x - 2)(3x - 7)$ confond le signe du terme constant. L'option $(x + 2)(3x + 7)$ change le signe dans le facteur commun. L'option $10x(x - 2)$ additionne incorrectement les coefficients $7$ et $3x$ qui ne sont pas des termes semblables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $K = (2x + 1)^2 - 5(2x + 1)$. Laquelle de ces égalités correspond à la factorisation de $K$ ?",
+      "options": [
+        "(2x + 1)(2x - 4)",
+        "(2x + 1)(2x + 6)",
+        "2(x + 1)(x - 2)",
+        "(2x + 1)(2x + 1 - 5)"
+      ],
+      "correctAnswer": "(2x + 1)(2x - 4)",
+      "explanation": "L'expression $K$ est une différence de deux termes : $(2x + 1)^2$ et $5(2x + 1)$. On remarque que $(2x + 1)^2 = (2x + 1)(2x + 1)$. Le facteur commun aux deux termes est donc $(2x + 1)$. En le factorisant : $K = (2x + 1)[(2x + 1) - 5] = (2x + 1)(2x + 1 - 5) = (2x + 1)(2x - 4)$. L'option $(2x + 1)(2x + 1 - 5)$ est une étape intermédiaire correcte mais non simplifiée (la factorisation doit être simplifiée au maximum). L'option $(2x + 1)(2x + 6)$ correspond à une addition au lieu d'une soustraction. L'option $2(x + 1)(x - 2)$ est une factorisation plus poussée (en factorisant $2$ dans le second facteur) mais ce n'est pas la forme directe issue de la mise en facteur commun simple demandée ici ; de plus $(2x+1)(2x-4)$ est la forme standard attendue après factorisation du facteur commun $(2x+1)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

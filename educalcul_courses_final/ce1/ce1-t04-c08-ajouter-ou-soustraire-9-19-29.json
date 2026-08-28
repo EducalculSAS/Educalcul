@@ -1,0 +1,423 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.801190+00:00",
+  "id": 105,
+  "code": "ce1-t04-c08",
+  "title": "Ajouter ou soustraire 9, 19, 29",
+  "description": "Cours structuré Educalcul : Ajouter ou soustraire 9, 19, 29.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Ajouter ou soustraire 9, 19, 29",
+    "objectif_global": "Ajouter ou soustraire 9, 19, 29",
+    "mini_lecons_imposees": [
+      "Ajouter la dizaine puis corriger.",
+      "Soustraire la dizaine puis corriger.",
+      "Choisir une compensation simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Ajouter la dizaine puis corriger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter 9 en passant par 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $15$ billes dans ta poche. Tu gagnes $9$ billes de plus. Au lieu de compter une par une sur tes doigts, tu peux faire un grand saut : ajoute $10$ billes, cela fait $25$. Mais tu as mis une bille de trop, alors tu en retires $1$. Il te reste $24$ billes. C'est beaucoup plus rapide que de compter $16, 17, 18...$ !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Saut de 10 puis recul de 1 pour ajouter 9",
+              "min": 10,
+              "max": 30,
+              "points": [
+                {
+                  "value": 15,
+                  "label": "Départ"
+                },
+                {
+                  "value": 25,
+                  "label": "+10"
+                },
+                {
+                  "value": 24,
+                  "label": "-1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment ajouter $19$. C'est presque la même astuce, mais cette fois tu fais un saut de deux dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter 19 en passant par 20"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $12$ autocollants et tu en reçois $19$ de plus. Fais un grand saut de $20$ : $12 + 20 = 32$. Comme tu as ajouté un autocollant de trop, tu en enlèves $1$. Résultat : $31$ autocollants. Tu vois, le raisonnement est identique, seule la taille du saut change."
+            },
+            {
+              "type": "number_line",
+              "caption": "Saut de 20 puis recul de 1 pour ajouter 19",
+              "min": 10,
+              "max": 40,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "Départ"
+                },
+                {
+                  "value": 32,
+                  "label": "+20"
+                },
+                {
+                  "value": 31,
+                  "label": "-1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et pour ajouter $29$ ? Tu as deviné : on utilise un saut de trois dizaines, c'est-à-dire $30$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter 29 en passant par 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $23$ bonbons plus $29$ bonbons. Saute de $30$ : $23 + 30 = 53$. Retire le bonbon en trop : $53 - 1 = 52$. Tu as maintenant $52$ bonbons. Cette méthode marche à tous les coups pour les nombres qui finissent par $9$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant ajouter $9$, $19$ et $29$ en passant par la dizaine supérieure. Mélangeons un peu ces calculs pour bien t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $14 + 9$ en utilisant l'astuce de la dizaine.",
+              "answer": "$23$",
+              "hint": "Ajoute $10$ à $14$, puis enlève $1$.",
+              "explanation": "$14 + 10 = 24$, puis $24 - 1 = 23$."
+            },
+            {
+              "question": "Calcule $25 + 19$ en passant par $20$.",
+              "answer": "$44$",
+              "hint": "Ajoute $20$ à $25$, puis enlève $1$.",
+              "explanation": "$25 + 20 = 45$, puis $45 - 1 = 44$."
+            },
+            {
+              "question": "Calcule $32 + 29$ en passant par $30$.",
+              "answer": "$61$",
+              "hint": "Ajoute $30$ à $32$, puis enlève $1$.",
+              "explanation": "$32 + 30 = 62$, puis $62 - 1 = 61$."
+            },
+            {
+              "question": "Calcule $18 + 29$.",
+              "answer": "$47$",
+              "hint": "Passe par $30$ : $18 + 30 = 48$, puis $48 - 1$.",
+              "explanation": "$18 + 30 = 48$, $48 - 1 = 47$."
+            }
+          ]
+        },
+        {
+          "title": "Soustraire la dizaine puis corriger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer 9 en passant par 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $27$ cartes Pokémon. Tu donnes $9$ cartes à ton ami. Au lieu de compter en arrière une par une, fais un grand pas en arrière de $10$ : $27 - 10 = 17$. Mais tu as retiré une carte de trop, alors tu en remets $1$ dans ta main : $17 + 1 = 18$. Il te reste $18$ cartes. C'est comme faire un grand pas puis un petit pas en avant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Recul de 10 puis avance de 1 pour retrancher 9",
+              "min": 10,
+              "max": 30,
+              "points": [
+                {
+                  "value": 27,
+                  "label": "Départ"
+                },
+                {
+                  "value": 17,
+                  "label": "-10"
+                },
+                {
+                  "value": 18,
+                  "label": "+1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour enlever $19$, l'idée est la même : tu fais un grand pas de $20$ en arrière, puis tu fais un petit pas de $1$ en avant pour corriger."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer 19 en passant par 20"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $35$ billes et tu en perds $19$. Recule de $20$ : $35 - 20 = 15$. Comme tu as reculé d'une bille de trop, avance de $1$ : $15 + 1 = 16$. Il te reste $16$ billes. Regarde comme la correction se fait toujours en ajoutant $1$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Recul de 20 puis avance de 1 pour retrancher 19",
+              "min": 10,
+              "max": 40,
+              "points": [
+                {
+                  "value": 35,
+                  "label": "Départ"
+                },
+                {
+                  "value": 15,
+                  "label": "-20"
+                },
+                {
+                  "value": 16,
+                  "label": "+1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec $29$, le grand pas en arrière est de $30$. Tu commences à bien connaître le rythme maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer 29 en passant par 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie $46$ crayons moins $29$ crayons. Recule de $30$ : $46 - 30 = 16$. Avance de $1$ pour corriger : $16 + 1 = 17$. Il reste $17$ crayons. Cette astuce fonctionne pour tous les nombres qui finissent par $9$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Mélangeons maintenant des soustractions de $9$, $19$ et $29$. Choisis bien la taille de ton grand pas en arrière avant de corriger."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $26 - 9$ en utilisant l'astuce de la dizaine.",
+              "answer": "$17$",
+              "hint": "Enlève $10$ à $26$, puis remets $1$.",
+              "explanation": "$26 - 10 = 16$, puis $16 + 1 = 17$."
+            },
+            {
+              "question": "Calcule $34 - 19$ en passant par $20$.",
+              "answer": "$15$",
+              "hint": "Enlève $20$ à $34$, puis remets $1$.",
+              "explanation": "$34 - 20 = 14$, puis $14 + 1 = 15$."
+            },
+            {
+              "question": "Calcule $45 - 29$ en passant par $30$.",
+              "answer": "$16$",
+              "hint": "Enlève $30$ à $45$, puis remets $1$.",
+              "explanation": "$45 - 30 = 15$, puis $15 + 1 = 16$."
+            },
+            {
+              "question": "Calcule $38 - 19$.",
+              "answer": "$19$",
+              "hint": "Passe par $20$ : $38 - 20 = 18$, puis $18 + 1$.",
+              "explanation": "$38 - 20 = 18$, $18 + 1 = 19$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une compensation simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les nombres qui finissent par 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien ces nombres : $9$, $19$, $29$, $39$. Ils ont tous un point commun : leur chiffre des unités est un $9$. Quand tu vois ce $9$ à la fin, tu sais que l'astuce de la dizaine va fonctionner. C'est comme un petit signal qui te dit : \"Passe par la dizaine supérieure !\""
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "9",
+                "19",
+                "29",
+                "39"
+              ],
+              "options": [
+                "49",
+                "50"
+              ],
+              "answer": "49",
+              "caption": "Quel nombre vient après 39 dans cette suite ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a deux façons de faire. Pour $18 + 9$, tu peux passer par $20$ (ajouter $2$ puis $7$) ou passer par $10$ (ajouter $10$ puis retirer $1$). Les deux donnent $27$. Choisis celle qui te semble la plus facile dans ta tête."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux façons d'ajouter 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec $18 + 9$, la méthode de la dizaine donne $18 + 10 - 1 = 27$. La méthode du complément à $20$ donne $18 + 2 + 7 = 27$. Essaie les deux dans ta tête et garde ta préférée. L'important, c'est d'être rapide et juste."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Calcul",
+                "Méthode dizaine",
+                "Méthode complément"
+              ],
+              "rows": [
+                [
+                  "$18+9$",
+                  "$18+10-1$",
+                  "$18+2+7$"
+                ],
+                [
+                  "$27+9$",
+                  "$27+10-1$",
+                  "$27+3+6$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les soustractions aussi, tu as le choix. $24 - 9$ : soit tu passes par $10$ ($24 - 10 + 1 = 15$), soit tu découpes $9$ en $4 + 5$ ($24 - 4 - 5 = 15$). Les deux chemins mènent au même résultat."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux façons de retrancher 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde $24 - 9$. Méthode 1 : $24 - 10 = 14$, puis $14 + 1 = 15$. Méthode 2 : $24 - 4 = 20$, puis $20 - 5 = 15$. La première est souvent plus rapide quand le nombre se termine par $9$. La deuxième est pratique quand le nombre de départ se termine par un chiffre plus grand que $9$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, c'est à toi de jouer avec des additions et des soustractions mélangées. Regarde bien le chiffre des unités et choisis ta méthode favorite à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais ajouter 9, 19, 29 en passant par la dizaine supérieure.",
+                "Je sais soustraire 9, 19, 29 en passant par la dizaine supérieure.",
+                "Je sais choisir la méthode la plus rapide selon les nombres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces nombres, lesquels se terminent par 9 ? $12$, $19$, $25$, $29$, $39$",
+              "answer": "$19$, $29$, $39$",
+              "hint": "Regarde le chiffre des unités de chaque nombre.",
+              "explanation": "Les nombres qui finissent par 9 sont $19$, $29$ et $39$."
+            },
+            {
+              "question": "Calcule $17 + 9$ avec la méthode de la dizaine.",
+              "answer": "$26$",
+              "hint": "Passe par $20$ : $17 + 10 = 27$, puis $27 - 1$.",
+              "explanation": "$17 + 10 = 27$, $27 - 1 = 26$."
+            },
+            {
+              "question": "Calcule $23 - 9$ avec la méthode de la dizaine.",
+              "answer": "$14$",
+              "hint": "Passe par $10$ : $23 - 10 = 13$, puis $13 + 1$.",
+              "explanation": "$23 - 10 = 13$, $13 + 1 = 14$."
+            },
+            {
+              "question": "Calcule : $15 + 19$, $32 - 19$, $11 + 29$.",
+              "answer": "$34$, $13$, $40$",
+              "hint": "Utilise l'astuce de la dizaine pour chaque calcul.",
+              "explanation": "$15+20-1=34$ ; $32-20+1=13$ ; $11+30-1=40$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

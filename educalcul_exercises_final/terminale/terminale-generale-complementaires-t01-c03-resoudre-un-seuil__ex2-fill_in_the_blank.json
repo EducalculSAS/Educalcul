@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation du seuil et de l'inéquation",
+  "blocks": [
+    {
+      "title": "Lecture du seuil",
+      "content": "Une entreprise modélise son bénéfice mensuel par la fonction $f(x) = 2x - 500$, où $x$ représente le nombre d'articles vendus. Pour déterminer à partir de quelle quantité l'entreprise devient rentable, on doit résoudre l'inéquation $f(x) \\ge 0$. La valeur $x = 250$ est appelée le {{1}} de rentabilité.",
+      "correctAnswer": "seuil",
+      "blanks": [
+        "seuil"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le seuil de rentabilité est la valeur de la variable pour laquelle le bénéfice devient nul ou positif, marquant le passage d'une perte à un profit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Sens de l'inéquation",
+      "content": "On considère une population de bactéries dont l'évolution est donnée par $g(t) = 100 \\cdot e^{0,5t}$. On cherche le temps $t$ nécessaire pour que la population dépasse un seuil critique de $1000$ individus. L'expression mathématique permettant d'interpréter cette situation est l'inéquation {{1}} $1000$.",
+      "correctAnswer": "g(t) >",
+      "blanks": [
+        "g(t) >|g(t) \\ge"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le terme dépasse signifie que la valeur de la fonction doit être strictement supérieure au seuil donné, on écrit donc $g(t) > 1000$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation graphique",
+      "content": "Sur le graphique d'une fonction $h$ représentant un coût en fonction d'un paramètre $x$, on trace une droite horizontale d'équation $y = S$. Les solutions de l'inéquation $h(x) \\le S$ correspondent aux abscisses des points de la courbe qui se situent {{1}} cette droite.",
+      "correctAnswer": "sous",
+      "blanks": [
+        "sous|en dessous de"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Graphiquement, résoudre $h(x) \\le S$ revient à identifier les intervalles où la courbe de la fonction est située en dessous ou sur la droite horizontale représentant le seuil $S$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

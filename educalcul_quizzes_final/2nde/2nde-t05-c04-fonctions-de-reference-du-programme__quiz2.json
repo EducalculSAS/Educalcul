@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Graphes",
+  "title": "Quiz Graphes - Fonctions de référence",
+  "questions": [
+    {
+      "text": "Lequel des graphiques suivants représente la fonction $f(x)=x^2$ ?",
+      "options": [
+        "Parabole ouverte vers le haut, sommet à l'origine",
+        "Droite passant par l'origine",
+        "Hyperbole avec asymptotes les axes",
+        "Courbe exponentielle croissante"
+      ],
+      "correctAnswer": "Parabole ouverte vers le haut, sommet à l'origine",
+      "explanation": "La fonction $f(x)=x^2$ est une fonction carrée. Son graphique est une parabole dont le sommet est à l'origine $(0,0)$ et qui s'ouvre vers le haut car le coefficient de $x^2$ est positif. Les trois autres descriptions correspondent respectivement à une fonction affine, une fonction inverse et une fonction exponentielle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fonctions suivantes, laquelle est strictement décroissante sur $\\mathbb{R}$ ?",
+      "options": [
+        "$f(x)=-x+3$",
+        "$f(x)=x^2$",
+        "$f(x)=\\frac{1}{x}$",
+        "$f(x)=\\sqrt{x}$"
+      ],
+      "correctAnswer": "$f(x)=-x+3$",
+      "explanation": "Une fonction affine $f(x)=ax+b$ est décroissante sur $\\mathbb{R}$ si son coefficient directeur $a$ est négatif. Ici $a=-1$, donc $f(x)=-x+3$ est strictement décroissante partout. La fonction $x^2$ décroît puis croît, $1/x$ n'est pas définie en $0$ et n'est pas décroissante sur tout $\\mathbb{R}$, et $\\sqrt{x}$ n'est définie que sur $[0,+\\infty[$ et y est croissante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces fonctions possède une asymptote verticale d'équation $x=0$ et est définie de part et d'autre de $0$ ?",
+      "options": [
+        "$f(x)=\\frac{1}{x}$",
+        "$f(x)=x^2$",
+        "$f(x)=\\sqrt{x}$",
+        "$f(x)=\\ln(x)$"
+      ],
+      "correctAnswer": "$f(x)=\\frac{1}{x}$",
+      "explanation": "La fonction $f(x)=1/x$ n'est pas définie en $x=0$ ; les limites à gauche et à droite sont $-\\infty$ et $+\\infty$, ce qui donne une asymptote verticale $x=0$. De plus, elle est définie pour $x<0$ et $x>0$. La fonction $\\ln(x)$ a aussi une asymptote verticale en $0$ mais n'est définie que pour $x>0$. Les deux autres fonctions sont définies et continues en $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le graphique de la fonction valeur absolue $f(x)=|x|$ ?",
+      "options": [
+        "Graphique en V, sommet à l'origine, symétrique par rapport à l'axe des ordonnées",
+        "Parabole ouverte vers le haut, sommet à l'origine",
+        "Droite passant par l'origine",
+        "Hyperbole avec asymptotes les axes"
+      ],
+      "correctAnswer": "Graphique en V, sommet à l'origine, symétrique par rapport à l'axe des ordonnées",
+      "explanation": "La fonction $f(x)=|x|$ vaut $x$ pour $x\\ge0$ et $-x$ pour $x<0$. Son tracé est constitué de deux demi-droites qui se rejoignent à l'origine en formant un angle droit, ce qui donne une forme de V symétrique par rapport à l'axe des ordonnées. Les autres options décrivent respectivement une parabole, une droite et une hyperbole.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de points d'intersection les graphes de $f(x)=2x+1$ et $g(x)=x^2$ ont-ils, et quelles sont leurs abscisses ?",
+      "options": [
+        "Deux points d'abscisses $1-\\sqrt{2}$ et $1+\\sqrt{2}$",
+        "Un point d'abscisse $1$",
+        "Aucun point",
+        "Un point d'abscisse $-\\frac{1}{2}$"
+      ],
+      "correctAnswer": "Deux points d'abscisses $1-\\sqrt{2}$ et $1+\\sqrt{2}$",
+      "explanation": "Les abscisses des intersections sont les solutions de $2x+1=x^2$, c'est-à-dire $x^2-2x-1=0$. Le discriminant est $\\Delta = (-2)^2-4\\times1\\times(-1)=8$, donc $\\sqrt{\\Delta}=2\\sqrt{2}$. Les racines sont $x = \\frac{2\\pm 2\\sqrt{2}}{2}=1\\pm\\sqrt{2}$. Il y a donc deux points d'intersection distincts.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

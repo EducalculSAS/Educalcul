@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 246,
+  "_course_code": "cm1-t05-c06-aire-du-carre-et-rectangle",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Construire la formule",
+  "title": "Quiz : Construire la formule de l'aire",
+  "questions": [
+    {
+      "text": "Combien de carrés unités y a-t-il dans ce rectangle ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$14$",
+        "$7$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Le rectangle comporte 3 rangées de 4 carrés. On compte $4 + 4 + 4 = 12$ carrés unités. L'option $7$ correspond à l'addition $3 + 4$ (nombre de rangées + nombre de colonnes), ce qui est une erreur fréquente.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Rectangle de 3 lignes sur 4 colonnes"
+      }
+    },
+    {
+      "text": "On compte $3$ rangées de $4$ carrés. Quelle multiplication permet de trouver l'aire totale ?",
+      "options": [
+        "$3 + 4$",
+        "$3 \\times 4$",
+        "$4 \\times 4$",
+        "$3 \\times 3$"
+      ],
+      "correctAnswer": "$3 \\times 4$",
+      "explanation": "L'aire se calcule en multipliant le nombre de rangées par le nombre de carrés par rangée. $3 \\times 4 = 12$. L'addition $3 + 4$ ne donne pas l'aire. $4 \\times 4$ et $3 \\times 3$ correspondent à des carrés, pas à ce rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer l'aire d'un rectangle, on multiplie la ... par la ... .",
+      "options": [
+        "la longueur par la largeur",
+        "le périmètre par la largeur",
+        "la longueur par la longueur",
+        "la largeur par la largeur"
+      ],
+      "correctAnswer": "la longueur par la largeur",
+      "explanation": "La formule de l'aire du rectangle est $A = L \\times l$ (Longueur $\\times$ largeur). Multiplier la longueur par la longueur ou la largeur par la largeur ne fonctionne que pour un carré. Le périmètre n'intervient pas dans le calcul de l'aire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a un côté qui mesure $5$ cm. Quelle est la formule pour calculer son aire ?",
+      "options": [
+        "$5 \\times 5$",
+        "$5 + 5$",
+        "$5 \\times 4$",
+        "$5 + 5 + 5 + 5$"
+      ],
+      "correctAnswer": "$5 \\times 5$",
+      "explanation": "L'aire d'un carré se calcule en multipliant la longueur du côté par elle-même : $c \\times c$. Ici $5 \\times 5 = 25$ cm$^2$. $5 + 5$ est l'addition de deux côtés. $5 \\times 4$ serait le périmètre. $5 + 5 + 5 + 5$ est aussi le périmètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'aire d'un rectangle est de $20$ cm$^2$. Sa longueur est de $5$ cm. Quelle est sa largeur ?",
+      "options": [
+        "$4$ cm",
+        "$15$ cm",
+        "$25$ cm",
+        "$100$ cm"
+      ],
+      "correctAnswer": "$4$ cm",
+      "explanation": "On utilise la formule $A = L \\times l$. On cherche $l$ : $l = A \\div L = 20 \\div 5 = 4$ cm. $15$ cm correspond à $20 - 5$ (soustraction). $25$ cm correspond à $20 + 5$ (addition). $100$ cm correspond à $20 \\times 5$ (multiplication au lieu de division).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

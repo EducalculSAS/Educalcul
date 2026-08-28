@@ -1,0 +1,111 @@
+{
+  "_status": "done",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Données à deux variables qualitatives selon programme",
+  "title": "Quiz : Données à deux variables qualitatives - Applications",
+  "questions": [
+    {
+      "text": "On interroge $200$ élèves sur leur moyen de transport préféré (Voiture, Bus, Vélo) et leur genre (Fille, Garçon). Le tableau de contingence ci-dessous donne les effectifs :\\n- Fille / Voiture : $30$\\n- Fille / Bus : $50$\\n- Fille / Vélo : $20$\\n- Garçon / Voiture : $40$\\n- Garçon / Bus : $30$\\n- Garçon / Vélo : $30$\\n\\nQuel est l'effectif marginal des élèves qui préfèrent le vélo ?",
+      "options": [
+        "$50$",
+        "$40$",
+        "$30$",
+        "$20$"
+      ],
+      "correctAnswer": "$50$",
+      "explanation": "L'effectif marginal pour la modalité « Vélo » est la somme des effectifs de la colonne Vélo : $20$ (filles) $+ 30$ (garçons) $= 50$. Les autres options correspondent à des effectifs partiels (seulement filles ou seulement garçons) ou à d'autres colonnes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En se basant sur le même tableau (total $200$ élèves), quelle est la fréquence en pourcentage des filles qui préfèrent le bus ?",
+      "options": [
+        "$25\\%$",
+        "$50\\%$",
+        "$15\\%$",
+        "$10\\%$"
+      ],
+      "correctAnswer": "$25\\%$",
+      "explanation": "L'effectif « Fille / Bus » est $50$. La fréquence (sur l'ensemble de la population) est $\\frac{50}{200} = 0,25$, soit $25\\%$. L'option $50\\%$ correspond à la fréquence conditionnelle (sur les filles seulement), $15\\%$ et $10\\%$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On s'intéresse maintenant aux filles uniquement. Le total des filles est $100$. Parmi les filles, quel est le pourcentage (arrondi à l'entier) qui préfère la voiture ?",
+      "options": [
+        "$30\\%$",
+        "$40\\%$",
+        "$50\\%$",
+        "$15\\%$"
+      ],
+      "correctAnswer": "$30\\%$",
+      "explanation": "C'est une fréquence conditionnelle (profil-ligne). Effectif « Fille / Voiture » $= 30$. Total filles $= 100$. Pourcentage $= \\frac{30}{100} \\times 100 = 30\\%$. L'option $40\\%$ correspond aux garçons pour la voiture, $50\\%$ au bus pour les filles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare les profils-lignes (répartition des transports selon le genre) :\\n- Profil-ligne Filles : Voiture $30\\%$, Bus $50\\%$, Vélo $20\\%$.\\n- Profil-ligne Garçons : Voiture $40\\%$, Bus $30\\%$, Vélo $30\\%$.\\n\\nQue peut-on conclure sur la liaison entre le genre et le transport préféré ?",
+      "options": [
+        "Il y a une liaison car les profils-lignes sont très différents.",
+        "Les variables sont indépendantes car les totaux marginaux des genres sont égaux ($100$ chacun).",
+        "Il n'y a pas de liaison car la voiture est en tête pour les deux genres.",
+        "On ne peut pas conclure sans faire un test du chi-deux."
+      ],
+      "correctAnswer": "Il y a une liaison car les profils-lignes sont très différents.",
+      "explanation": "En Seconde, on met en évidence une liaison entre deux variables qualitatives en comparant les profils-lignes (ou profils-colonnes). Ici, les pourcentages diffèrent notablement (ex: Bus $50\\%$ pour les filles contre $30\\%$ pour les garçons). L'égalité des effectifs marginaux (option 2) ne prouve pas l'indépendance. Le test du chi-deux (option 4) n'est pas au programme de Seconde.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente les effectifs du tableau précédent sous forme de diagramme en barres groupées. Quelle affirmation est correcte à la lecture de ce graphique ?",
+      "options": [
+        "Le vélo est le mode le moins utilisé par les filles.",
+        "Le bus est le mode préféré des garçons.",
+        "Autant de filles que de garçons préfèrent la voiture.",
+        "La somme des hauteurs des barres « Filles » est $150$."
+      ],
+      "correctAnswer": "Le vélo est le mode le moins utilisé par les filles.",
+      "explanation": "Sur le graphique, pour les filles (barres bleues) : Voiture $=30$, Bus $=50$, Vélo $=20$. Le vélo a la plus petite hauteur ($20$), c'est donc le mode le moins utilisé par les filles. Le bus n'est pas le préféré des garçons (Voiture $40 >$ Bus $30$). Les effectifs voiture diffèrent ($30$ vs $40$). La somme des barres filles est $30+50+20=100$, pas $150$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs par genre et transport préféré",
+        "bars": [
+          {
+            "label": "Filles - Voiture",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Filles - Bus",
+            "value": 50,
+            "tone": "blue"
+          },
+          {
+            "label": "Filles - Vélo",
+            "value": 20,
+            "tone": "blue"
+          },
+          {
+            "label": "Garçons - Voiture",
+            "value": 40,
+            "tone": "red"
+          },
+          {
+            "label": "Garçons - Bus",
+            "value": 30,
+            "tone": "red"
+          },
+          {
+            "label": "Garçons - Vélo",
+            "value": 30,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

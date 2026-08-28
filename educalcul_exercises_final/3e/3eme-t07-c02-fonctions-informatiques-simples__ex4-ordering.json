@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Fonctions informatiques simples",
+  "title": "Mise en ordre : Fonctions informatiques simples",
+  "blocks": [
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "Placez les instructions dans l'ordre pour définir une fonction qui calcule le périmètre d'un rectangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Début de la fonction Perimetre(largeur, longueur)",
+        "périmètre ← $2 \\times (largeur + longueur)$",
+        "Retourner périmètre",
+        "Fin de la fonction"
+      ],
+      "explanation": "La fonction commence par sa déclaration avec les paramètres largeur et longueur. On calcule ensuite le périmètre avec la formule $2 \\times (largeur + longueur)$. On retourne la valeur calculée et on termine la fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de deux nombres",
+      "content": "Placez les instructions dans l'ordre pour définir une fonction qui détermine le maximum de deux nombres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Début fonction Max(a, b)",
+        "Si a > b alors max ← a sinon max ← b",
+        "Retourner max",
+        "Fin fonction"
+      ],
+      "explanation": "La fonction Max prend deux paramètres a et b. La structure conditionnelle affecte à max la valeur de a si a est plus grand que b, sinon la valeur de b. On retourne ensuite max et on termine la fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Moyenne de trois notes",
+      "content": "Placez les instructions dans l'ordre pour définir une fonction qui calcule la moyenne de trois notes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Début fonction Moyenne(note1, note2, note3)",
+        "somme ← $note1 + note2 + note3$",
+        "moyenne ← $somme / 3$",
+        "Retourner moyenne",
+        "Fin fonction"
+      ],
+      "explanation": "La fonction Moyenne reçoit trois notes. On calcule d'abord la somme des trois notes, puis on divise cette somme par 3 pour obtenir la moyenne. On retourne la moyenne et on termine la fonction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

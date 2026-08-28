@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 399,
+  "_course_code": "5eme-t04-c05-bilan-geometrie-plane-5e",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Angles, triangles, parallélogrammes",
+  "title": "Approfondissement : Angles, triangles, parallélogrammes",
+  "questions": [
+    {
+      "text": "Les droites (AB) et (CD) sont parallèles. La sécante (EF) coupe (AB) en E et (CD) en F. Parmi les angles ci-dessous, lequel est alterné-interne à l'angle $\\widehat{AEF}$ ?",
+      "options": [
+        "$\\widehat{EFD}$",
+        "$\\widehat{CFE}$",
+        "$\\widehat{BEF}$",
+        "$\\widehat{AEF}$"
+      ],
+      "correctAnswer": "$\\widehat{EFD}$",
+      "explanation": "Deux angles sont alternes-internes s'ils sont de part et d'autre de la sécante et à l'intérieur des deux droites parallèles. Ici, la sécante est (EF). L'angle $\\widehat{AEF}$ est du côté de la droite (AB) et au-dessus de la sécante. Son alterné-interne est donc du côté de la droite (CD) et en dessous de la sécante : c'est l'angle $\\widehat{EFD}$. L'angle $\\widehat{CFE}$ est correspondant, $\\widehat{BEF}$ est adjacent supplémentaire, et $\\widehat{AEF}$ est l'angle lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "ABC est un triangle isocèle en A tel que $\\widehat{BAC} = 40^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{ABC}$ ?",
+      "options": [
+        "$70^{\\circ}$",
+        "$40^{\\circ}$",
+        "$140^{\\circ}$",
+        "$50^{\\circ}$"
+      ],
+      "correctAnswer": "$70^{\\circ}$",
+      "explanation": "Dans un triangle isocèle en A, les angles à la base $\\widehat{ABC}$ et $\\widehat{ACB}$ ont même mesure. La somme des angles d'un triangle vaut $180^{\\circ}$. On a donc $\\widehat{ABC} + \\widehat{ACB} + 40^{\\circ} = 180^{\\circ}$, soit $2 \\times \\widehat{ABC} = 140^{\\circ}$. Ainsi $\\widehat{ABC} = 70^{\\circ}$. Le distracteur $40^{\\circ}$ confond l'angle au sommet et les angles à la base, $140^{\\circ}$ est la somme des deux angles à la base, et $50^{\\circ}$ correspond à une erreur de calcul $(180-40)/2$ mal effectué.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Un triangle a deux angles mesurant $60^{\\circ}$ chacun. Quelle est la nature précise de ce triangle ?",
+      "options": [
+        "Équilatéral",
+        "Rectangle",
+        "Isocèle mais pas équilatéral",
+        "Impossible à déterminer"
+      ],
+      "correctAnswer": "Équilatéral",
+      "explanation": "La somme des angles d'un triangle vaut $180^{\\circ}$. Le troisième angle mesure $180^{\\circ} - 60^{\\circ} - 60^{\\circ} = 60^{\\circ}$. Les trois angles mesurent donc $60^{\\circ}$. Un triangle ayant trois angles égaux est un triangle équilatéral (ses trois côtés sont égaux). C'est aussi un triangle isocèle, mais « équilatéral » est la nature la plus précise. Il n'est pas rectangle car il n'a pas d'angle droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un parallélogramme ABCD, les diagonales [AC] et [BD] se coupent en O. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "Les segments [AO] et [OC] ont même longueur.",
+        "Les droites (AB) et (CD) sont parallèles.",
+        "Les angles $\\widehat{DAB}$ et $\\widehat{BCD}$ sont supplémentaires.",
+        "Les segments [AD] et [BC] ont même longueur."
+      ],
+      "correctAnswer": "Les angles $\\widehat{DAB}$ et $\\widehat{BCD}$ sont supplémentaires.",
+      "explanation": "Dans un parallélogramme : les côtés opposés sont parallèles deux à deux (donc (AB) // (CD) est vrai) et ont même longueur (donc AD = BC est vrai) ; les diagonales se coupent en leur milieu (donc AO = OC est vrai). Les angles opposés sont égaux : $\\widehat{DAB} = \\widehat{BCD}$. Ils sont supplémentaires seulement dans le cas particulier du rectangle. L'affirmation fausse en général est donc celle sur les angles opposés supplémentaires (ce sont les angles consécutifs qui sont supplémentaires).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un parallélogramme ABCD. On trace la diagonale [AC]. On sait que $\\widehat{BAC} = 30^{\\circ}$ et $\\widehat{BCA} = 20^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{DAC}$ ?",
+      "options": [
+        "$20^{\\circ}$",
+        "$30^{\\circ}$",
+        "$50^{\\circ}$",
+        "$130^{\\circ}$"
+      ],
+      "correctAnswer": "$20^{\\circ}$",
+      "explanation": "Dans le parallélogramme, les droites (AD) et (BC) sont parallèles. La droite (AC) est une sécante. Les angles $\\widehat{DAC}$ et $\\widehat{BCA}$ sont alternes-internes, donc ils ont même mesure. Comme $\\widehat{BCA} = 20^{\\circ}$, on a $\\widehat{DAC} = 20^{\\circ}$. On peut aussi passer par le triangle ABC : $\\widehat{ABC} = 180^{\\circ} - 30^{\\circ} - 20^{\\circ} = 130^{\\circ}$. L'angle $\\widehat{ADC}$ (opposé) vaut aussi $130^{\\circ}$. Dans le triangle ADC, $\\widehat{DAC} = 180^{\\circ} - 130^{\\circ} - 30^{\\circ} = 20^{\\circ}$ (car $\\widehat{DCA} = \\widehat{BAC} = 30^{\\circ}$ alternes-internes).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

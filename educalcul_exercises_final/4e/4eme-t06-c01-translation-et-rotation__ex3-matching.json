@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Composer cas simples",
+  "title": "Composition de transformations simples",
+  "blocks": [
+    {
+      "title": "Composition de deux translations",
+      "content": "Relie chaque composition de translations à la translation résultante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Translation $t_{\\vec{u}}$ puis $t_{\\vec{v}}$",
+          "right": "Translation de vecteur $\\vec{u}+\\vec{v}$"
+        },
+        {
+          "left": "Translation $t_{\\vec{w}}$ puis $t_{\\vec{x}}$",
+          "right": "Translation de vecteur $\\vec{w}+\\vec{x}$"
+        },
+        {
+          "left": "Translation $t_{\\vec{y}}$ puis $t_{-\\vec{y}}$",
+          "right": "Identité"
+        },
+        {
+          "left": "Translation $t_{\\vec{0}}$ (identité) puis $t_{\\vec{z}}$",
+          "right": "Translation de vecteur $\\vec{z}$"
+        }
+      ],
+      "items": [],
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. L'ordre n'importe pas car l'addition des vecteurs est commutative. La composition d'une translation par son opposé donne l'identité. La composition avec l'identité ne change rien.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux rotations de même centre",
+      "content": "Relie chaque composition de rotations à la rotation résultante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Rotation $R_{O,\\alpha}$ suivie de $R_{O,\\beta}$",
+          "right": "Rotation $R_{O,\\alpha+\\beta}$"
+        },
+        {
+          "left": "Rotation $R_{O,90^{\\circ}}$ suivie de $R_{O,180^{\\circ}}$",
+          "right": "Rotation $R_{O,270^{\\circ}}$"
+        },
+        {
+          "left": "Rotation $R_{O,\\theta}$ suivie de $R_{O,-\\theta}$",
+          "right": "Identité"
+        },
+        {
+          "left": "Rotation $R_{O,0^{\\circ}}$ (identité) suivie de $R_{O,\\gamma}$",
+          "right": "Rotation $R_{O,\\gamma}$"
+        }
+      ],
+      "items": [],
+      "explanation": "La composition de deux rotations de même centre est une rotation de même centre dont l'angle est la somme des angles. L'ordre n'importe pas. La composition d'une rotation par son inverse donne l'identité. La composition avec l'identité (angle 0) laisse la rotation inchangée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition d'une symétrie centrale et d'une translation",
+      "content": "Relie chaque composition à la transformation obtenue.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Symétrie centrale $S_A$ suivie de translation $t_{\\vec{v}}$",
+          "right": "Symétrie centrale $S_{A'}$ où $A'$ est l'image de $A$ par $t_{\\vec{v}}$"
+        },
+        {
+          "left": "Translation $t_{\\vec{v}}$ suivie de symétrie centrale $S_A$",
+          "right": "Symétrie centrale $S_{A''}$ où $A''$ est l'image de $A$ par $t_{-\\vec{v}}$"
+        },
+        {
+          "left": "Symétrie centrale $S_A$ suivie de symétrie centrale $S_B$",
+          "right": "Translation de vecteur $2\\overrightarrow{AB}$"
+        },
+        {
+          "left": "Translation $t_{\\vec{0}}$ (identité) suivie de symétrie centrale $S_C$",
+          "right": "Symétrie centrale $S_C$"
+        }
+      ],
+      "items": [],
+      "explanation": "La composition de deux symétries centrales (rotations de 180°) est une translation de vecteur deux fois le vecteur reliant les centres. La composition d'une symétrie centrale et d'une translation (dans un ordre ou l'autre) donne une symétrie centrale dont le centre est l'image de l'ancien centre par la translation (ou son inverse). La composition avec l'identité ne change rien.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

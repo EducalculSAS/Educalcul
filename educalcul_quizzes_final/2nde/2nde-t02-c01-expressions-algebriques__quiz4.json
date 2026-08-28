@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Expressions algébriques",
+  "title": "Quiz : Applications des expressions algébriques",
+  "questions": [
+    {
+      "text": "Traduis en expression algébrique : le triple d'un nombre augmenté de cinq.",
+      "options": [
+        "$3x + 5$",
+        "$3(x + 5)$",
+        "$3x - 5$",
+        "$5x + 3$"
+      ],
+      "correctAnswer": "$3x + 5$",
+      "explanation": "Le triple d'un nombre se note $3x$. Augmenté de cinq signifie qu'on ajoute $5$, ce qui donne $3x + 5$. L'option $3(x + 5)$ correspond au triple de la somme, $3x - 5$ soustrait $5$, et $5x + 3$ inverse les coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie l'expression $2(x + 3) - 4(x - 1)$.",
+      "options": [
+        "$-2x + 10$",
+        "$-2x + 2$",
+        "$2x + 10$",
+        "$-2x - 2$"
+      ],
+      "correctAnswer": "$-2x + 10$",
+      "explanation": "On distribue : $2x + 6 - 4x + 4 = -2x + 10$. Les autres réponses proviennent d'erreurs de signes ou de distribution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Évalue l'expression $4x^2 - 3x + 7$ pour $x = -2$.",
+      "options": [
+        "$29$",
+        "$21$",
+        "$33$",
+        "$13$"
+      ],
+      "correctAnswer": "$29$",
+      "explanation": "On substitue $x = -2$ : $4(-2)^2 - 3(-2) + 7 = 4 \\times 4 + 6 + 7 = 16 + 6 + 7 = 29$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a pour longueur $2x + 3$ et pour largeur $x - 1$. Exprime son périmètre en fonction de $x$.",
+      "options": [
+        "$6x + 4$",
+        "$6x + 2$",
+        "$4x + 4$",
+        "$6x + 8$"
+      ],
+      "correctAnswer": "$6x + 4$",
+      "explanation": "Le périmètre vaut $2((2x + 3) + (x - 1)) = 2(3x + 2) = 6x + 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La longueur d'un rectangle est le double de sa largeur $w$. Exprime l'aire de ce rectangle en fonction de $w$.",
+      "options": [
+        "$2w^2$",
+        "$w^2$",
+        "$2w$",
+        "$4w^2$"
+      ],
+      "correctAnswer": "$2w^2$",
+      "explanation": "Longueur $= 2w$, largeur $= w$. Aire $= 2w \\times w = 2w^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

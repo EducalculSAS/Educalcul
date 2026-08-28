@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Prédire",
+  "title": "Prédire le résultat d'algorithmes conditionnels",
+  "blocks": [
+    {
+      "title": "Instruction conditionnelle simple",
+      "content": "Relie chaque algorithme à ce qu'il affiche à l'écran.",
+      "pairs": [
+        {
+          "left": "Variable $x$ prend la valeur $5$. Si $x > 3$ Alors afficher \"Grand\".",
+          "right": "Grand"
+        },
+        {
+          "left": "Variable $x$ prend la valeur $2$. Si $x > 3$ Alors afficher \"Grand\".",
+          "right": "Rien"
+        },
+        {
+          "left": "Variable $y$ prend la valeur $10$. Si $y < 15$ Alors afficher \"Petit\".",
+          "right": "Petit"
+        },
+        {
+          "left": "Variable $y$ prend la valeur $20$. Si $y < 15$ Alors afficher \"Petit\".",
+          "right": "Rien"
+        }
+      ],
+      "explanation": "Une instruction « Si ... Alors » exécute l'action seulement si la condition est vraie.\\n- Pour $x=5$ : $5 > 3$ est vrai, on affiche \"Grand\".\\n- Pour $x=2$ : $2 > 3$ est faux, rien ne se passe.\\n- Pour $y=10$ : $10 < 15$ est vrai, on affiche \"Petit\".\\n- Pour $y=20$ : $20 < 15$ est faux, rien ne se passe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Instruction conditionnelle avec alternative",
+      "content": "Relie chaque algorithme (avec « Sinon ») à ce qu'il affiche à l'écran.",
+      "pairs": [
+        {
+          "left": "$x = 7$. Si $x > 5$ Alors afficher \"A\" Sinon afficher \"B\".",
+          "right": "A"
+        },
+        {
+          "left": "$x = 3$. Si $x > 5$ Alors afficher \"A\" Sinon afficher \"B\".",
+          "right": "B"
+        },
+        {
+          "left": "$n = 12$. Si $n$ est pair Alors afficher \"Pair\" Sinon afficher \"Impair\".",
+          "right": "Pair"
+        },
+        {
+          "left": "$n = 9$. Si $n$ est pair Alors afficher \"Pair\" Sinon afficher \"Impair\".",
+          "right": "Impair"
+        }
+      ],
+      "explanation": "L'instruction « Si ... Alors ... Sinon » garantit qu'une des deux actions est exécutée.\\n- $x=7$ : $7 > 5$ vrai → \"A\".\\n- $x=3$ : $3 > 5$ faux → branche « Sinon » → \"B\".\\n- $n=12$ : 12 est pair → \"Pair\".\\n- $n=9$ : 9 est impair → branche « Sinon » → \"Impair\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conditions composées (ET / OU)",
+      "content": "Relie chaque algorithme à ce qu'il affiche. Attention aux opérateurs « ET » et « OU ».",
+      "pairs": [
+        {
+          "left": "$a = 4$, $b = 6$. Si $a > 3$ ET $b > 5$ Alors afficher \"Gagné\".",
+          "right": "Gagné"
+        },
+        {
+          "left": "$a = 2$, $b = 6$. Si $a > 3$ ET $b > 5$ Alors afficher \"Gagné\".",
+          "right": "Rien"
+        },
+        {
+          "left": "$age = 15$, $accompagne = Vrai$. Si $age \\ge 18$ OU $accompagne$ Alors afficher \"Autorisé\".",
+          "right": "Autorisé"
+        },
+        {
+          "left": "$age = 15$, $accompagne = Faux$. Si $age \\ge 18$ OU $accompagne$ Alors afficher \"Autorisé\".",
+          "right": "Rien"
+        }
+      ],
+      "explanation": "« ET » : les deux conditions doivent être vraies. « OU » : au moins une condition doit être vraie.\\n- $a=4, b=6$ : $4>3$ (V) ET $6>5$ (V) → Vrai → \"Gagné\".\\n- $a=2, b=6$ : $2>3$ (F) ET $6>5$ (V) → Faux → Rien.\\n- $age=15, accomp=V$ : $15\\ge18$ (F) OU Vrai (V) → Vrai → \"Autorisé\".\\n- $age=15, accomp=F$ : $15\\ge18$ (F) OU Faux (F) → Faux → Rien.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

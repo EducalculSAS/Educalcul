@@ -1,0 +1,375 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.544732+00:00",
+  "id": 19,
+  "code": "cp-t02-c05",
+  "title": "Poser une addition sans retenue",
+  "description": "Cours structuré Educalcul : Poser une addition sans retenue.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Poser une addition sans retenue",
+    "objectif_global": "Poser une addition sans retenue",
+    "mini_lecons_imposees": [
+      "Aligner unités et dizaines.",
+      "Calculer d'abord les unités.",
+      "Lire et vérifier le résultat."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Aligner unités et dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les colonnes des unités et des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $23$ bonbons et que ton ami t'en donne $15$ de plus. Pour savoir combien tu as en tout, on va écrire les nombres l'un sous l'autre. Mais attention : il faut bien ranger les chiffres ! Regarde, $23$ c'est $2$ dizaines et $3$ unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : 2 dizaines et 3 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et $15$, c'est $1$ dizaine et $5$ unités. On voit bien que les dizaines sont à gauche et les unités à droite. C'est comme deux tiroirs : un tiroir pour les dizaines, un tiroir pour les unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "$15$ : 1 dizaine et 5 unités"
+            },
+            {
+              "type": "definition",
+              "term": "unité",
+              "definition": "C'est le premier tiroir à droite. Il contient les chiffres de $0$ à $9$.",
+              "example": "Dans $23$, le chiffre des unités est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "C'est le tiroir juste à gauche des unités. Il compte les groupes de $10$.",
+              "example": "Dans $23$, le chiffre des dizaines est $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les dizaines et les unités, on va apprendre à écrire une addition en colonnes. C'est comme ranger ses affaires : chaque chiffre dans son tiroir !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une addition en colonnes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour poser $23 + 15$, on écrit le premier nombre en haut, le second juste en dessous. Le plus important : les unités doivent être exactement sous les unités, et les dizaines sous les dizaines. On trace une petite ligne sous le deuxième nombre, puis on met le signe $+$ à gauche."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "23",
+                "15"
+              ],
+              "result": "",
+              "carries": []
+            },
+            {
+              "type": "definition",
+              "term": "aligner",
+              "definition": "Mettre les chiffres les uns sous les autres dans la bonne colonne.",
+              "example": "Les $3$ et $5$ sont alignés dans la colonne des unités."
+            },
+            {
+              "type": "definition",
+              "term": "colonne",
+              "definition": "Une file verticale où on range les chiffres de même valeur (unités ou dizaines).",
+              "example": "La colonne de gauche est la colonne des dizaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à bien voir comment ranger les nombres. Essaie maintenant avec d'autres additions : $31 + 27$, $42 + 16$, $10 + 35$. Chaque fois, vérifie que les unités sont bien face aux unités et les dizaines face aux dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À toi de jouer : aligner correctement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends ton crayon et écris ces additions en colonnes. Ne fais pas encore le calcul, concentre-toi seulement sur l'alignement. C'est la première étape pour réussir !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $47$, quel est le chiffre des unités et quel est le chiffre des dizaines ?",
+              "answer": "Le chiffre des unités est $7$, le chiffre des dizaines est $4$.",
+              "hint": "Regarde le tiroir de droite pour les unités, celui de gauche pour les dizaines.",
+              "explanation": "Le nombre $47$ s'écrit avec $4$ dizaines ($40$) et $7$ unités. Le $7$ est à droite, le $4$ à gauche."
+            },
+            {
+              "question": "Ecris l'addition $31 + 27$ en colonnes en alignant bien les unités et les dizaines.",
+              "answer": "  31\\n+ 27\\n----",
+              "hint": "Mets le $1$ et le $7$ dans la même colonne verticale, le $3$ et le $2$ dans l'autre colonne.",
+              "explanation": "On écrit $31$ au-dessus, $27$ en dessous. Les unités $1$ et $7$ sont alignées, les dizaines $3$ et $2$ sont alignées."
+            },
+            {
+              "question": "Propose une addition à deux chiffres sans retenue et écris-la correctement en colonnes.",
+              "answer": "Exemple : $12 + 34$ écrit en colonnes avec $2$ et $4$ alignés, $1$ et $3$ alignés.",
+              "hint": "Choisis deux nombres dont la somme des unités ne dépasse pas $9$ et la somme des dizaines ne dépasse pas $9$.",
+              "explanation": "Toute addition comme $12+34$, $21+15$, $10+23$ fonctionne. L'important est l'alignement parfait des colonnes."
+            }
+          ]
+        },
+        {
+          "title": "Calculer d'abord les unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "On commence toujours par les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tes nombres sont bien alignés, on va faire le calcul. La règle d'or : on commence toujours par la colonne des unités, celle de droite. C'est comme quand on range sa chambre : on commence par les petites choses avant les grandes !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons $23 + 15$. Dans la colonne des unités, il y a $3$ et $5$. On additionne : $3 + 5 = 8$. On écrit le $8$ sous la ligne, dans la colonne des unités."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "23",
+                "15"
+              ],
+              "result": "8",
+              "carries": []
+            },
+            {
+              "type": "definition",
+              "term": "addition sans retenue",
+              "definition": "Une addition où la somme des unités ne dépasse pas $9$ et la somme des dizaines ne dépasse pas $9$.",
+              "example": "$23 + 15 = 38$ est une addition sans retenue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as trouvé le chiffre des unités du résultat. Maintenant, on passe à la colonne des dizaines, celle de gauche. On fait la même chose : on additionne les deux chiffres des dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Puis on calcule les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans notre exemple, les dizaines sont $2$ et $1$. On calcule $2 + 1 = 3$. On écrit le $3$ sous la ligne, dans la colonne des dizaines. Et voilà, l'addition est terminée !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "23",
+                "15"
+              ],
+              "result": "38",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? On a d'abord fait $3+5=8$ (unités), puis $2+1=3$ (dizaines). Le résultat final s'écrit $38$, ce qui veut dire $3$ dizaines et $8$ unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais faire les deux étapes dans l'ordre. Essaie de poser et calculer ces additions toutes seule : $42 + 16$, $31 + 27$, $10 + 35$. N'oublie pas : unités d'abord, puis dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer une addition complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends ton temps. Écris d'abord l'addition en colonnes, puis calcule la colonne des unités, ensuite la colonne des dizaines. Écris le résultat final sous la ligne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour l'addition $42 + 16$, quel est le résultat de la colonne des unités ?",
+              "answer": "$2 + 6 = 8$",
+              "hint": "Regarde seulement les chiffres de droite : $2$ et $6$.",
+              "explanation": "Les unités sont $2$ et $6$. Leur somme est $8$, on écrit $8$ sous la ligne dans la colonne des unités."
+            },
+            {
+              "question": "Pour la même addition $42 + 16$, quel est le résultat de la colonne des dizaines ?",
+              "answer": "$4 + 1 = 5$",
+              "hint": "Regarde les chiffres de gauche : $4$ et $1$.",
+              "explanation": "Les dizaines sont $4$ et $1$. Leur somme est $5$, on écrit $5$ sous la ligne dans la colonne des dizaines. Le résultat final est $58$."
+            },
+            {
+              "question": "Pose et calcule l'addition $31 + 27$ en suivant les deux étapes (unités puis dizaines).",
+              "answer": "$31 + 27 = 58$",
+              "hint": "Écris les nombres en colonnes. Unités : $1+7=8$. Dizaines : $3+2=5$.",
+              "explanation": "On aligne $31$ au-dessus de $27$. Unités : $1+7=8$. Dizaines : $3+2=5$. Résultat : $58$."
+            }
+          ]
+        },
+        {
+          "title": "Lire et vérifier le résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le résultat à voix haute"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as posé l'addition, tu as calculé les unités et les dizaines. Maintenant, il faut savoir dire le nombre que tu as trouvé. Pour $38$, on ne dit pas \"trois huit\" mais \"trente-huit\". C'est $3$ dizaines ($30$) et $8$ unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 8,
+              "caption": "$38$ : 3 dizaines et 8 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi à lire les résultats : $58$ se lit \"cinquante-huit\", $46$ se lit \"quarante-six\", $29$ se lit \"vingt-neuf\". Chaque fois, nomme le nombre de dizaines puis le nombre d'unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir lire le résultat, c'est bien. Mais un bon mathématicien vérifie toujours son travail ! On peut vérifier de deux façons : recompter les blocs ou refaire l'addition dans l'autre sens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier son addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les blocs, tu as $23$ bonbons d'un côté, $15$ de l'autre. Tu les mets ensemble et tu comptes : $10, 20, 30, 31, 32, 33, 34, 35, 36, 37, 38$. Ça fait bien $38$ !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                23,
+                15
+              ],
+              "right": [
+                38
+              ],
+              "caption": "$23 + 15$ équilibre avec $38$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre astuce : refaire l'addition en changeant l'ordre. $15 + 23$ donne aussi $38$. Comme l'addition est commutative, le résultat ne change pas. C'est une façon magique de vérifier !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant aligner, calculer unités puis dizaines, lire et vérifier. Fais un dernier entraînement complet avec ces trois additions : $42 + 16$, $31 + 27$, $10 + 35$. Pour chacune, pose, calcule, lis le résultat et vérifie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : je sais poser une addition sans retenue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as appris les trois grandes étapes : 1) Aligner les unités sous les unités et les dizaines sous les dizaines. 2) Calculer d'abord les unités, puis les dizaines. 3) Lire le résultat (nombre de dizaines + nombre d'unités) et vérifier en recomptant ou en inversant l'addition. Tu es prêt pour des additions plus grandes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais aligner les chiffres d'une addition en colonnes (unités sous unités, dizaines sous dizaines).",
+                "Je sais calculer la colonne des unités puis la colonne des dizaines sans retenue.",
+                "Je sais lire le résultat en nommant les dizaines et les unités.",
+                "Je sais vérifier mon addition en recomptant ou en changeant l'ordre des nombres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis le résultat de l'addition $42 + 16$ en lettres.",
+              "answer": "Cinquante-huit",
+              "hint": "Le résultat est $58$. $5$ dizaines = cinquante, $8$ unités = huit.",
+              "explanation": "$42 + 16 = 58$. On lit $5$ dizaines (cinquante) et $8$ unités (huit) : cinquante-huit."
+            },
+            {
+              "question": "Vérifie l'addition $31 + 27 = 58$ en recomptant avec des blocs ou en inversant l'addition.",
+              "answer": "$27 + 31 = 58$ aussi, donc c'est correct.",
+              "hint": "Essaie $27 + 31$ ou imagine $31$ blocs et $27$ blocs mis ensemble.",
+              "explanation": "L'addition est commutative : $31+27 = 27+31 = 58$. Les deux donnent le même résultat, donc c'est bon."
+            },
+            {
+              "question": "Pose, calcule, lis et vérifie l'addition $10 + 35$.",
+              "answer": "$10 + 35 = 45$ (quarante-cinq). Vérification : $35 + 10 = 45$.",
+              "hint": "Aligne $10$ au-dessus de $35$. Unités : $0+5=5$. Dizaines : $1+3=4$. Résultat $45$.",
+              "explanation": "On aligne : unités $0$ et $5$ → $5$. Dizaines $1$ et $3$ → $4$. Résultat $45$ (quarante-cinq). Vérifié par $35+10=45$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

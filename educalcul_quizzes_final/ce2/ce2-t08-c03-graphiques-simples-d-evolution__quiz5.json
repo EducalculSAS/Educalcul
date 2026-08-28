@@ -1,0 +1,226 @@
+{
+  "_status": "done",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire axes",
+  "title": "Quiz : Lire les axes d'un graphique d'évolution",
+  "questions": [
+    {
+      "text": "Regarde le graphique ci-dessous. Il montre les températures relevées chaque midi pendant une semaine. Que représente l'axe horizontal (celui du bas) ?",
+      "options": [
+        "Les températures en degrés",
+        "Les jours de la semaine",
+        "Le nombre de relevés",
+        "La météo du jour"
+      ],
+      "correctAnswer": "Les jours de la semaine",
+      "explanation": "Sur un graphique d'évolution, l'axe horizontal représente généralement le temps qui passe. Ici, les étiquettes 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven' correspondent aux jours de la semaine. L'axe vertical, lui, montre les températures.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures relevées chaque midi dans une semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Toujours avec le même graphique, que représente l'axe vertical (celui de gauche) et quelle est son unité ?",
+      "options": [
+        "Les jours, en nombre",
+        "Les températures, en degrés Celsius ($^\\circ$C)",
+        "La hauteur des barres, en centimètres",
+        "Le nombre de jours, en unités"
+      ],
+      "correctAnswer": "Les températures, en degrés Celsius ($^\\circ$C)",
+      "explanation": "L'axe vertical indique la grandeur mesurée : ici, la température. L'unité utilisée est le degré Celsius, noté $^\\circ$C. Les valeurs montent de $0$ à $20$ par pas de $2$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures relevées chaque midi dans une semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur l'axe vertical, les grands traits de graduation sont espacés régulièrement. Si l'axe va de $0$ à $20$ avec $10$ grands intervalles, combien de degrés Celsius séparent deux grands traits consécutifs ?",
+      "options": [
+        "$1$ degré",
+        "$2$ degrés",
+        "$5$ degrés",
+        "$10$ degrés"
+      ],
+      "correctAnswer": "$2$ degrés",
+      "explanation": "L'amplitude totale de l'axe est de $20 - 0 = 20$ degrés. Elle est divisée en $10$ intervalles égaux (les grands traits). La valeur d'un intervalle (le pas de graduation) est $20 \\div 10 = 2$ degrés. Les graduations sont donc $0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures relevées chaque midi dans une semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "En lisant la barre correspondant au mercredi (Mer), quelle température a été relevée ce jour-là ?",
+      "options": [
+        "$10^\\circ$C",
+        "$12^\\circ$C",
+        "$14^\\circ$C",
+        "$16^\\circ$C"
+      ],
+      "correctAnswer": "$12^\\circ$C",
+      "explanation": "Il faut repérer l'étiquette 'Mer' sur l'axe horizontal, suivre la barre verticale jusqu'en haut, puis lire la valeur sur l'axe vertical en face. La barre s'arrête exactement sur la graduation $12$. La température du mercredi est donc de $12^\\circ$C.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures relevées chaque midi dans une semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "En comparant la hauteur des barres pour toute la semaine, quel jour a connu la température la plus élevée ?",
+      "options": [
+        "Lundi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi"
+      ],
+      "correctAnswer": "Vendredi",
+      "explanation": "La température la plus élevée correspond à la barre la plus haute (la plus grande valeur sur l'axe vertical). Les valeurs sont : Lun $10$, Mar $14$, Mer $12$, Jeu $16$, Ven $18$. Le maximum est $18^\\circ$C, atteint le vendredi.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Températures relevées chaque midi dans une semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

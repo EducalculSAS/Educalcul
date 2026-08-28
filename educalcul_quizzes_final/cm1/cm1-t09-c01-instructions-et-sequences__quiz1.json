@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Ordre des instructions",
+  "title": "L'Ordre des Instructions en Informatique",
+  "questions": [
+    {
+      "text": "Qu'est-ce qu'une séquence d'instructions en informatique ?",
+      "options": [
+        "Une liste d'ordres exécutés dans un ordre précis",
+        "Un calcul mathématique très compliqué",
+        "Un dessin réalisé par un ordinateur",
+        "Un message envoyé à un ami"
+      ],
+      "correctAnswer": "Une liste d'ordres exécutés dans un ordre précis",
+      "explanation": "Une séquence est une suite d'étapes. Pour que l'ordinateur réussisse sa tâche, il doit suivre ces étapes l'une après l'autre, dans l'ordre exact où elles ont été écrites.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on inverse l'ordre de deux instructions dans un programme, que se passe-t-il ?",
+      "options": [
+        "L'ordinateur corrige l'erreur tout seul",
+        "Le résultat final peut être différent ou faux",
+        "L'ordinateur s'éteint immédiatement",
+        "Rien ne change, l'ordre n'a aucune importance"
+      ],
+      "correctAnswer": "Le résultat final peut être différent ou faux",
+      "explanation": "L'ordre est crucial. Par exemple, si on inverse les instructions mettre ses chaussettes et mettre ses chaussures, on se retrouve avec les chaussettes par-dessus les chaussures, ce qui est une erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici trois instructions pour dessiner un carré : \\n1. Avancer de $10$ cm\\n2. Tourner à droite de $90$ degrés\\n3. Répéter ces deux étapes $4$ fois\\nQuel est le problème avec cet ordre ?",
+      "options": [
+        "Le carré sera trop grand",
+        "L'instruction de répétition doit être au début pour englober les autres",
+        "Il manque une instruction pour colorier le carré",
+        "Le tournant doit être de $180$ degrés"
+      ],
+      "correctAnswer": "L'instruction de répétition doit être au début pour englober les autres",
+      "explanation": "Pour qu'une boucle de répétition fonctionne, l'ordinateur doit savoir ce qu'il doit répéter avant de commencer. Si l'ordre de répétition arrive à la fin, il a déjà effectué les mouvements une seule fois et ne sait plus quoi répéter.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot doit aller à la case $3$ d'une grille. Il est actuellement sur la case $0$. Quelles sont les instructions dans le bon ordre ?",
+      "options": [
+        "Sauter $3$ fois, puis revenir en arrière $2$ fois",
+        "Tourner à gauche, puis avancer de $3$ cases",
+        "Avancer de $1$ case, avancer de $1$ case, avancer de $1$ case",
+        "Avancer de $3$ cases, puis avancer de $1$ case"
+      ],
+      "correctAnswer": "Avancer de $1$ case, avancer de $1$ case, avancer de $1$ case",
+      "explanation": "Pour atteindre la case $3$ depuis $0$, il faut anoter $3$ unités de déplacement vers l'avant. L'option C décrit précisément cette séquence linéaire.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position du robot",
+        "min": 0,
+        "max": 5,
+        "points": [
+          {
+            "value": 0,
+            "label": "Départ"
+          },
+          {
+            "value": 3,
+            "label": "Cible"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Pour préparer un chocolat chaud, on a ces instructions : \\n(A) Verser le lait chaud dans la tasse\\n(B) Mettre le chocolat en poudre dans la tasse\\n(C) Mélanger avec une cuillère\\nQuel est l'ordre le plus logique pour réussir la recette ?",
+      "options": [
+        "A puis C puis B",
+        "B puis A puis C",
+        "C puis B puis A",
+        "B puis C puis A"
+      ],
+      "correctAnswer": "B puis A puis C",
+      "explanation": "Il est plus logique de mettre la poudre d'abord (B), d'ajouter le liquide pour l'incorporer (A), puis de mélanger le tout à la fin (C) pour homogeniser la boisson.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

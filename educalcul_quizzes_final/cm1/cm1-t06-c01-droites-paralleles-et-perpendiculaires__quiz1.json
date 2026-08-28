@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 248,
+  "_course_code": "cm1-t06-c01-droites-paralleles-et-perpendiculaires",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Définir",
+  "title": "Définir les droites parallèles et perpendiculaires",
+  "questions": [
+    {
+      "text": "Comment définit-on deux droites parallèles dans un plan ?",
+      "options": [
+        "Deux droites qui se coupent en un point.",
+        "Deux droites qui forment un angle droit.",
+        "Deux droites qui ne se coupent jamais, même si on les prolonge indéfiniment.",
+        "Deux droites qui ont la même longueur."
+      ],
+      "correctAnswer": "Deux droites qui ne se coupent jamais, même si on les prolonge indéfiniment.",
+      "explanation": "La définition mathématique de deux droites parallèles est qu'elles n'ont aucun point commun. Elles restent à distance constante l'une de l'autre. L'option A décrit des droites sécantes. L'option B décrit des droites perpendiculaires. L'option C est fausse car une droite est infinie, elle n'a pas de longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la définition exacte de deux droites perpendiculaires ?",
+      "options": [
+        "Deux droites qui ne se coupent jamais.",
+        "Deux droites qui se coupent en formant quatre angles droits.",
+        "Deux droites qui se coupent en formant un angle aigu.",
+        "Deux droites qui sont à la même distance l'une de l'autre."
+      ],
+      "correctAnswer": "Deux droites qui se coupent en formant quatre angles droits.",
+      "explanation": "Deux droites sont perpendiculaires si elles sont sécantes (elles se coupent) et si l'un au moins des angles formés est un angle droit (90°). Comme les angles opposés par le sommet sont égaux et que les angles adjacents sont supplémentaires, les quatre angles sont droits. L'option A définit les parallèles. L'option D est une propriété des parallèles, pas une définition des perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une figure, comment repère-t-on visuellement que deux droites sont parallèles ?",
+      "options": [
+        "On trace un petit carré à leur intersection.",
+        "On note la même lettre sur les deux droites.",
+        "On trace des petits traits doubles (//) sur chaque droite.",
+        "On colore les deux droites en rouge."
+      ],
+      "correctAnswer": "On trace des petits traits doubles (//) sur chaque droite.",
+      "explanation": "La convention graphique en géométrie pour indiquer que deux droites sont parallèles est de tracer deux petits traits (//) sur chacune des droites. Le petit carré (option A) marque un angle droit (perpendiculaires). La même lettre (option B) sert souvent à nommer un point, pas une propriété de droites. La couleur (option D) n'est pas une notation géométrique standardisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la droite (d) est parallèle à la droite (d') et que la droite (d') est parallèle à la droite (d''), que peut-on dire de (d) et (d'') ?",
+      "options": [
+        "Elles sont perpendiculaires.",
+        "Elles sont sécantes.",
+        "Elles sont parallèles.",
+        "Elles sont confondues."
+      ],
+      "correctAnswer": "Elles sont parallèles.",
+      "explanation": "La relation de parallélisme est transitive. Si (d) // (d') et (d') // (d''), alors (d) // (d''). Les trois droites ont la même direction et ne se coupent pas. Elles ne sont pas nécessairement confondues (superposées), elles sont distinctes mais parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite (AB) est perpendiculaire à la droite (CD). La droite (EF) est parallèle à (CD). Quelle est la position relative de (AB) et (EF) ?",
+      "options": [
+        "(AB) et (EF) sont parallèles.",
+        "(AB) et (EF) sont perpendiculaires.",
+        "(AB) et (EF) sont sécantes mais pas perpendiculaires.",
+        "(AB) et (EF) sont confondues."
+      ],
+      "correctAnswer": "(AB) et (EF) sont perpendiculaires.",
+      "explanation": "C'est une propriété fondamentale : si une droite est perpendiculaire à l'une de deux droites parallèles, elle est perpendiculaire à l'autre. Puisque (AB) ⟂ (CD) et (CD) // (EF), alors (AB) ⟂ (EF). Elles se coupent donc en formant des angles droits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

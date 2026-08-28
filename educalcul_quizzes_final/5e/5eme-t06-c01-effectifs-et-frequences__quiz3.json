@@ -1,0 +1,126 @@
+{
+  "_status": "done",
+  "_course_id": 405,
+  "_course_code": "5eme-t06-c01-effectifs-et-frequences",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter des effectifs et fréquences (5e)",
+  "questions": [
+    {
+      "text": "Voici un tableau présentant les notes obtenues par une classe de cinquième à un contrôle de mathématiques.\\n\\n| Note | 10 | 12 | 14 | 16 |\\n| Effectif | 5 | 8 | 7 | 2 |\\n\\nQuel est l'effectif total de cette classe ?",
+      "options": [
+        "vingt",
+        "vingt-deux",
+        "dix-neuf",
+        "vingt-et-un"
+      ],
+      "correctAnswer": "vingt-deux",
+      "explanation": "L'effectif total est la somme de tous les effectifs partiels. On calcule $5 + 8 + 7 + 2 = 22$. La classe compte donc vingt-deux élèves. L'option \"vingt\" correspond à une erreur d'addition (oubli de la dernière ligne), \"dix-neuf\" et \"vingt-et-un\" sont des résultats approximatifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un collège, on interroge trente élèves sur leur moyen de transport pour venir au cours. Douze élèves répondent \"à pied\".\\nQuelle est la fréquence de l'événement \"venir à pied\" ?",
+      "options": [
+        "0,4",
+        "0,3",
+        "0,6",
+        "0,2"
+      ],
+      "correctAnswer": "0,4",
+      "explanation": "La fréquence se calcule en divisant l'effectif de la valeur étudiée par l'effectif total. Ici, l'effectif \"à pied\" est $12$ et le total est $30$. La fréquence est donc $12 \\div 30 = 0,4$. L'option $0,3$ correspondrait à $9/30$, $0,6$ à $18/30$ et $0,2$ à $6/30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par les élèves de 5e B pendant les vacances de la Toussaint.\\n\\nQuel mois les élèves ont-ils lu le plus de livres au total ?",
+      "options": [
+        "Octobre",
+        "Novembre",
+        "Décembre",
+        "Janvier"
+      ],
+      "correctAnswer": "Novembre",
+      "explanation": "Il faut lire la hauteur de chaque barre pour comparer les totaux mensuels. La barre la plus haute correspond à Novembre avec une valeur de $45$ livres. Octobre est à $30$, Décembre à $25$ et Janvier à $20$. Novembre est donc le mois où le total des livres lus est le plus élevé.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par mois",
+        "bars": [
+          {
+            "label": "Octobre",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Novembre",
+            "value": 45,
+            "tone": "gold"
+          },
+          {
+            "label": "Décembre",
+            "value": 25,
+            "tone": "green"
+          },
+          {
+            "label": "Janvier",
+            "value": 20,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un diagramme circulaire montre les sports préférés des cinquante élèves de deux classes de cinquième.\\nLe secteur \"Natation\" représente un quart du disque.\\nCombien d'élèves ont choisi la natation ?",
+      "options": [
+        "dix",
+        "douze",
+        "quinze",
+        "vingt-cinq"
+      ],
+      "correctAnswer": "douze",
+      "explanation": "Un quart du disque correspond à la fréquence $1/4$ soit $0,25$. Pour trouver l'effectif, on multiplie l'effectif total par cette fréquence : $50 \\times 0,25 = 12,5$. Comme un effectif est un nombre entier, on arrondit à l'entier le plus proche, soit douze élèves (ou on considère que la fréquence exacte est $12/50 = 0,24 \\approx 1/4$). L'option \"vingt-cinq\" correspond à la moitié du disque, \"dix\" à $1/5$ et \"quinze\" à $3/10$.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés (50 élèves)",
+        "slices": [
+          {
+            "label": "Natation",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Football",
+            "value": 18,
+            "tone": "green"
+          },
+          {
+            "label": "Basket",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Autres",
+            "value": 10,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une enquête réalisée auprès de quarante élèves donne les résultats suivants : la fréquence des élèves qui ont un animal est $0,6$.\\nQuel est l'effectif des élèves qui n'ont pas d'animal ?",
+      "options": [
+        "seize",
+        "vingt-quatre",
+        "dix",
+        "trente"
+      ],
+      "correctAnswer": "seize",
+      "explanation": "La fréquence des élèves ayant un animal est $0,6$. L'effectif correspondant est $40 \\times 0,6 = 24$ élèves. L'effectif total est $40$. Pour trouver l'effectif des élèves n'ayant pas d'animal, on soustrait : $40 - 24 = 16$. On peut aussi calculer la fréquence complémentaire : $1 - 0,6 = 0,4$, puis $40 \\times 0,4 = 16$. L'option \"vingt-quatre\" est l'effectif des élèves ayant un animal, pas l'inverse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

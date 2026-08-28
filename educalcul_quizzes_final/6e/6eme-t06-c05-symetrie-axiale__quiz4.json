@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Symétrie axiale",
+  "title": "Quiz : Applications de la symétrie axiale",
+  "questions": [
+    {
+      "text": "On considère un segment $[AB]$ de longueur $6$ cm. On construit le symétrique $A'$ de $A$ par rapport à la droite $(d)$ qui est la médiatrice de $[AB]$. Quelle est la longueur du segment $[A'B]$ ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$12$ cm",
+        "$0$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "La médiatrice d'un segment est l'axe de symétrie de ce segment. Le point $A'$ est le symétrique de $A$ par rapport à cette médiatrice, donc $A'$ coïncide avec le point $B$. La distance $A'B$ est donc nulle, mais la question demande la longueur du segment $[A'B]$. Puisque $A'$ et $B$ sont confondus, le segment est réduit à un point, sa longueur est $0$ cm. Attention : si la question portait sur $A'B'$ (symétrique de $B$), la longueur serait $6$ cm. Ici $A'$ est l'image de $A$, donc $A' = B$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une feuille de papier est pliée en deux. On découpe un demi-cœur le long du pli. En dépliant la feuille, on obtient un cœur complet. Quelle propriété de la symétrie axiale explique que les deux moitiés du cœur soient superposables ?",
+      "options": [
+        "L'axe de symétrie est la médiatrice de tous les segments joignant deux points correspondants.",
+        "L'axe de symétrie passe par le milieu de tous les segments joignant deux points correspondants.",
+        "L'axe de symétrie est perpendiculaire à tous les segments joignant deux points correspondants.",
+        "Les trois propriétés sont vraies simultanément."
+      ],
+      "correctAnswer": "Les trois propriétés sont vraies simultanément.",
+      "explanation": "Par définition de la symétrie axiale, l'axe de symétrie est la médiatrice de tout segment joignant un point à son image. Cela implique trois choses : l'axe est perpendiculaire à ce segment, il passe par son milieu, et c'est la médiatrice (qui regroupe les deux propriétés précédentes). Le pliage du papier matérialise parfaitement cet axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un polygone a une aire de $24$ cm$^2$. On construit son image par symétrie axiale par rapport à une droite $(d)$. Quelle est l'aire de l'image de ce polygone ?",
+      "options": [
+        "$12$ cm$^2$",
+        "$24$ cm$^2$",
+        "$48$ cm$^2$",
+        "Cela dépend de la position de la droite $(d)$."
+      ],
+      "correctAnswer": "$24$ cm$^2$",
+      "explanation": "La symétrie axiale est une isométrie : elle conserve les longueurs, les angles, les aires et les périmètres. L'image d'une figure par symétrie axiale est une figure congruente à la figure initiale. L'aire ne change donc pas, elle reste $24$ cm$^2$, quelle que soit la position de l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$ tel que $AB = 5$ cm, $AC = 7$ cm et $BC = 8$ cm. On trace la médiatrice de $[BC]$. On construit le point $A'$, symétrique de $A$ par rapport à cette médiatrice. Quel est le périmètre du quadrilatère $ABA'C$ ?",
+      "options": [
+        "$20$ cm",
+        "$26$ cm",
+        "$30$ cm",
+        "$40$ cm"
+      ],
+      "correctAnswer": "$26$ cm",
+      "explanation": "Puisque $A'$ est le symétrique de $A$ par rapport à la médiatrice de $[BC]$, les points $B$ et $C$ appartiennent à l'axe de symétrie, ils sont donc invariants ($B' = B$, $C' = C$). La symétrie conserve les longueurs : $A'B = AB = 5$ cm et $A'C = AC = 7$ cm. Le quadrilatère $ABA'C$ a pour côtés $AB$, $BA'$, $A'C$, $CA$. Son périmètre est $AB + BA' + A'C + CA = 5 + 5 + 7 + 7 = 26$ cm. On ne tient pas compte de $BC$ qui est une diagonale, pas un côté du quadrilatère.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un motif de frise est créé en reproduisant un motif de base $M$ par symétries axiales successives d'axes verticaux espacés de $4$ cm. Si le motif $M$ a une largeur de $4$ cm, quelle est la largeur totale occupée par $5$ motifs consécutifs (le motif initial et ses $4$ images) ?",
+      "options": [
+        "$16$ cm",
+        "$20$ cm",
+        "$24$ cm",
+        "$36$ cm"
+      ],
+      "correctAnswer": "$20$ cm",
+      "explanation": "Les axes de symétrie sont les médiatrices des segments joignant les centres des motifs adjacents. Comme la largeur du motif est de $4$ cm, les axes sont espacés de $4$ cm. Le premier motif occupe $4$ cm. Chaque symétrie ajoute un motif de $4$ cm de large, placé juste à côté du précédent sans chevauchement ni espace. Pour $5$ motifs, la largeur totale est $5 \\times 4 = 20$ cm.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

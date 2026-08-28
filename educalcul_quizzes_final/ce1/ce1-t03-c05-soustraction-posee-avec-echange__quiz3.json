@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Expliquer la retenue / échange",
+  "title": "Comprendre l'échange dans la soustraction posée",
+  "questions": [
+    {
+      "text": "Dans une soustraction posée, pourquoi doit-on faire un échange (une retenue) sur les unités ?",
+      "options": [
+        "Parce que le chiffre des unités du nombre du haut est plus petit que celui du nombre du bas",
+        "Parce que le chiffre des dizaines du nombre du haut est plus petit que celui du nombre du bas",
+        "Pour rendre le calcul plus difficile",
+        "Parce qu'il y a un zéro dans les unités du nombre du bas"
+      ],
+      "correctAnswer": "Parce que le chiffre des unités du nombre du haut est plus petit que celui du nombre du bas",
+      "explanation": "L'échange (ou retenue) sur les unités est nécessaire uniquement lorsque l'on ne peut pas soustraire les unités du bas des unités du haut (exemple : $3 - 7$). On « emprunte » alors 1 dizaine au chiffre des dizaines du haut pour la transformer en 10 unités. Les autres options sont fausses : on ne regarde pas les dizaines pour décider d'un échange sur les unités, ce n'est pas pour compliquer le calcul, et la présence d'un zéro en bas ne pose pas de problème (on soustrait zéro).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que signifie concrètement \"faire un échange\" ou \"emprunter une dizaine\" dans la colonne des unités ?",
+      "options": [
+        "On enlève 1 dizaine au nombre du haut et on ajoute 10 unités au nombre du haut",
+        "On enlève 1 unité au nombre du haut et on ajoute 1 dizaine au nombre du haut",
+        "On ajoute 1 dizaine au nombre du bas",
+        "On barre le chiffre des unités du haut et on en écrit un autre au hasard"
+      ],
+      "correctAnswer": "On enlève 1 dizaine au nombre du haut et on ajoute 10 unités au nombre du haut",
+      "explanation": "L'échange repose sur l'égalité $1$ dizaine $= 10$ unités. On prélève 1 dizaine dans la colonne des dizaines du nombre du haut (ce qui diminue ce chiffre de 1) et on convertit cette dizaine en 10 unités que l'on ajoute aux unités du nombre du haut (ce qui augmente ce chiffre de 10). La valeur totale du nombre du haut ne change pas, seule sa décomposition change. Les autres options décrivent des actions incorrectes ou sans lien avec la règle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la représentation en matériel de base 10 ci-dessous. Elle montre l'état du nombre du haut après un échange pour calculer $32 - 15$. Que représente-t-elle ?",
+      "options": [
+        "3 dizaines et 2 unités",
+        "2 dizaines et 12 unités",
+        "3 dizaines et 12 unités",
+        "1 dizaine et 22 unités"
+      ],
+      "correctAnswer": "2 dizaines et 12 unités",
+      "explanation": "Au départ, 32 est représenté par 3 dizaines et 2 unités. Pour soustraire 5 unités, on échange 1 dizaine contre 10 unités. Il reste donc 2 dizaines (3 - 1) et on a maintenant 12 unités (2 + 10). La figure montre exactement cette nouvelle décomposition : 2 barres de dix (dizaines) et 12 cubes (unités).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 2,
+        "units": 12,
+        "caption": "Nombre du haut après échange pour 32 - 15"
+      }
+    },
+    {
+      "text": "Un élève calcule $43 - 18$. Il écrit : $13 - 8 = 5$ (unités) et $4 - 1 = 3$ (dizaines). Il trouve $35$. Quelle erreur a-t-il commise lors de l'échange ?",
+      "options": [
+        "Il a soustrait 8 de 3 directement sans échanger",
+        "Il a oublié d'enlever 1 dizaine au chiffre des dizaines du haut après avoir ajouté 10 unités",
+        "Il a ajouté 10 unités au nombre du bas au lieu du nombre du haut",
+        "Il a fait $13 - 8 = 6$ au lieu de $5$"
+      ],
+      "correctAnswer": "Il a oublié d'enlever 1 dizaine au chiffre des dizaines du haut après avoir ajouté 10 unités",
+      "explanation": "L'élève a correctement fait l'échange sur les unités : il a transformé 3 unités en 13 unités (en empruntant 1 dizaine), ce qui donne $13 - 8 = 5$. Mais il a oublié de reporter cet emprunt sur la colonne des dizaines : le 4 initial aurait dû devenir 3 (car on a pris 1 dizaine). Il a calculé $4 - 1 = 3$ au lieu de $3 - 1 = 2$. Le bon résultat est $25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'explication pour la soustraction $52 - 27$ : \"Comme on ne peut pas enlever 7 de 2, on emprunte 1 dizaine. Cette dizaine vaut 10 unités. On ajoute ces 10 unités aux 2 unités, ce qui fait 12 unités. Dans la colonne des dizaines, il ne reste plus que...\"",
+      "options": [
+        "5 dizaines",
+        "4 dizaines",
+        "2 dizaines",
+        "7 dizaines"
+      ],
+      "correctAnswer": "4 dizaines",
+      "explanation": "Le nombre du haut est 52, soit 5 dizaines et 2 unités. Après avoir emprunté 1 dizaine pour la transformer en 10 unités, il ne reste plus que 4 dizaines (5 - 1 = 4) dans la colonne des dizaines. On fera ensuite la soustraction des dizaines : $4 - 2 = 2$ dizaines. Les autres nombres proposés ne correspondent pas au résultat de 5 dizaines moins 1 dizaine.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Vecteurs : Approfondissement - Définir",
+  "questions": [
+    {
+      "text": "Quels sont les trois éléments qui caractérisent entièrement un vecteur ?",
+      "options": [
+        "Une direction, un sens et une longueur (ou norme).",
+        "Un point de départ, un point d'arrivée et une longueur.",
+        "Une abscisse, une ordonnée et une origine.",
+        "Une direction, une distance et un point d'application."
+      ],
+      "correctAnswer": "Une direction, un sens et une longueur (ou norme).",
+      "explanation": "Un vecteur est une entité mathématique définie par trois caractéristiques intrinsèques : sa direction (la droite qui le porte), son sens (l'orientation sur cette droite) et sa norme (sa longueur ou magnitude). Les options B et D introduisent la notion de point (origine, point d'application) qui ne fait pas partie de la définition du vecteur libre (un vecteur ne dépend pas de son point d'application). L'option C décrit les coordonnées dans un repère, qui sont une représentation numérique, pas la définition géométrique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont égaux si et seulement si :",
+      "options": [
+        "Ils ont même direction et même sens.",
+        "Ils ont même direction, même sens et même norme.",
+        "Ils ont même norme et même point d'origine.",
+        "Ils ont même direction et même norme."
+      ],
+      "correctAnswer": "Ils ont même direction, même sens et même norme.",
+      "explanation": "L'égalité de deux vecteurs libres exige l'égalité des trois caractéristiques : direction, sens et norme. L'option A omet la norme (deux vecteurs de même direction et sens mais de longueurs différentes sont distincts). L'option C impose un même point d'origine, ce qui relève des vecteurs liés, pas des vecteurs libres étudiés en Seconde. L'option D omet le sens (deux vecteurs opposés ont même direction et même norme mais ne sont pas égaux).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé $(O; \\vec{i}, \\vec{j})$, on donne les points $A(2; -1)$ et $B(5; 3)$. Les coordonnées du vecteur $\\vec{AB}$ sont :",
+      "options": [
+        "$\\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 7 \\\\ 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -3 \\\\ -4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 5 \\\\ 3 \\end{pmatrix}$"
+      ],
+      "correctAnswer": "$\\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$",
+      "explanation": "Les coordonnées du vecteur $\\vec{AB}$ s'obtiennent en soustrayant les coordonnées du point de départ $A$ aux coordonnées du point d'arrivée $B$ : $\\vec{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix} = \\begin{pmatrix} 5 - 2 \\\\ 3 - (-1) \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$. L'option B correspond à l'addition des coordonnées. L'option C correspond au vecteur $\\vec{BA}$ (sens inverse). L'option D donne simplement les coordonnées du point $B$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est fausse concernant le vecteur nul $\\vec{0}$ et le vecteur opposé ?",
+      "options": [
+        "Le vecteur nul $\\vec{0}$ est le seul vecteur de norme nulle.",
+        "Pour tout vecteur $\\vec{u}$, le vecteur opposé $-\\vec{u}$ a même direction, même norme mais sens contraire.",
+        "La somme d'un vecteur $\\vec{u}$ et de son opposé $-\\vec{u}$ est le vecteur nul $\\vec{0}$.",
+        "Le vecteur nul $\\vec{0}$ a une direction et un sens définis."
+      ],
+      "correctAnswer": "Le vecteur nul $\\vec{0}$ a une direction et un sens définis.",
+      "explanation": "Par définition, le vecteur nul $\\vec{0}$ a une norme nulle. Il n'a **ni direction ni sens** définis (on dit qu'il a toutes les directions ou aucune). C'est la seule affirmation fausse de la liste. Les trois autres sont des propriétés vraies : unicité du vecteur de norme nulle, définition du vecteur opposé (symétrique par rapport à l'origine), et propriété de l'élément neutre pour l'addition ($\\vec{u} + (-\\vec{u}) = \\vec{0}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $\\vec{u} \\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$ et $\\vec{v} \\begin{pmatrix} -4 \\\\ 6 \\end{pmatrix}$ deux vecteurs non nuls. Quelle affirmation est exacte ?",
+      "options": [
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont orthogonaux.",
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ ont même direction, même sens et même norme.",
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont colinéaires et de sens contraires.",
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires car leurs coordonnées ne sont pas proportionnelles."
+      ],
+      "correctAnswer": "Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont colinéaires et de sens contraires.",
+      "explanation": "Deux vecteurs sont colinéaires si leurs coordonnées sont proportionnelles. Ici, $\\vec{v} = \\begin{pmatrix} -4 \\\\ 6 \\end{pmatrix} = -2 \\times \\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix} = -2\\vec{u}$. Le coefficient de proportionnalité est $k = -2$. Comme $k$ est négatif, les vecteurs ont même direction mais sens contraires. Comme $|k| = 2 \\neq 1$, ils n'ont pas la même norme. L'orthogonalité (option A) aurait nécessité un produit scalaire nul ($2\\times(-4) + (-3)\\times 6 = -8 -18 = -26 \\neq 0$). L'option D est fausse car les coordonnées sont bien proportionnelles (rapport $-2$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

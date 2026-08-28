@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 214,
+  "_course_code": "cm1-t01-c04-fractions-decimales",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Dixièmes et centièmes",
+  "title": "Algorithmes sur les dixièmes et centièmes",
+  "blocks": [
+    {
+      "title": "Transformation en fraction décimale",
+      "content": "Écris un algorithme (suite d'instructions) qui permet de transformer un nombre décimal à deux chiffres après la virgule (par exemple $3,47$) en une fraction décimale (dixièmes ou centièmes).",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre décimal.\\n2. Compter le nombre de chiffres après la virgule (ici 2).\\n3. Écrire le nombre sans la virgule comme numérateur.\\n4. Écrire 1 suivi d'autant de zéros que de chiffres après la virgule comme dénominateur (ici 100).\\n5. Simplifier la fraction si possible.\\n6. Afficher la fraction décimale.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie le nombre de dixièmes ou centièmes selon le nombre de chiffres après la virgule. Pour $3,47$, il y a deux chiffres après la virgule, donc le dénominateur est $100$. Le numérateur est $347$. La fraction est $347/100$, qui peut être simplifiée si nécessaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de nombres décimaux à un chiffre après la virgule",
+      "content": "Écris un algorithme pour additionner deux nombres décimaux ayant un seul chiffre après la virgule (dixièmes), par exemple $2,3$ et $4,6$, en alignant les virgules.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux nombres décimaux.\\n2. Aligner les virgules en écrivant les nombres l'un sous l'autre.\\n3. Additionner les chiffres des dixièmes (premier chiffre après la virgule).\\n4. Si la somme des dixièmes est supérieure ou égale à 10, retenir 1 aux unités.\\n5. Additionner les unités en ajoutant la retenue éventuelle.\\n6. Écrire le résultat avec la virgule au même alignement.\\n7. Afficher la somme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'alignement des virgules garantit que les dixièmes s'additionnent entre eux. Pour $2,3 + 4,6$, les dixièmes $3+6=9$ donnent $9$ dixièmes, les unités $2+4=6$, le résultat est $6,9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au dixième le plus proche",
+      "content": "Écris un algorithme qui arrondit un nombre décimal au dixième le plus proche. Par exemple, pour $5,67$ l'arrondi donne $5,7$, pour $5,62$ il donne $5,6$.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre décimal.\\n2. Regarder le chiffre des centièmes (deuxième chiffre après la virgule).\\n3. Si ce chiffre est supérieur ou égal à 5, augmenter le chiffre des dixièmes de 1.\\n4. Sinon, laisser le chiffre des dixièmes inchangé.\\n5. Supprimer tous les chiffres après les dixièmes.\\n6. Afficher le nombre arrondi au dixième.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'arrondi au dixième dépend du chiffre des centièmes. Pour $5,67$, les centièmes sont $7 \\ge 5$, on augmente les dixièmes $6$ à $7$, résultat $5,7$. Pour $5,62$, les centièmes sont $2 < 5$, les dixièmes restent $6$, résultat $5,6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

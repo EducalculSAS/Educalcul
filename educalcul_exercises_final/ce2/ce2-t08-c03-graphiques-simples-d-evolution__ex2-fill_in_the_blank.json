@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Repérer hausse / baisse",
+  "title": "Repérer les variations : hausse, baisse, stable",
+  "blocks": [
+    {
+      "title": "Vocabulaire de l'évolution",
+      "content": "Sur un graphique d'évolution, quand la courbe ou les barres montent, on dit qu'il y a une {{1}}. Quand elles descendent, on parle d'une {{2}}. Si la valeur ne change pas, la situation est {{3}}.",
+      "blanks": [
+        "hausse|augmentation",
+        "baisse|diminution",
+        "stable|stationnaire|inchangée"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise trois mots principaux pour décrire l'évolution d'une grandeur : 'hausse' (ou augmentation) quand la valeur devient plus grande, 'baisse' (ou diminution) quand elle devient plus petite, et 'stable' (ou stationnaire) quand elle reste identique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'un graphique à barres",
+      "content": "Regarde le graphique ci-dessous. Il montre le nombre de pommes récoltées par un arbre sur trois mois. De juillet à août, le nombre de pommes {{1}}. D'août à septembre, le nombre de pommes {{2}}.",
+      "blanks": [
+        "augmente|hausse|monte",
+        "diminue|baisse|descend"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "En juillet, la barre s'arrête à $10$ pommes. En août, elle monte à $15$ pommes : c'est une hausse. En septembre, elle redescend à $12$ pommes : c'est une baisse par rapport à août.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Récolte de pommes (en kg)",
+        "bars": [
+          {
+            "label": "Juillet",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Août",
+            "value": 15,
+            "tone": "green"
+          },
+          {
+            "label": "Septembre",
+            "value": 12,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calculer la variation",
+      "content": "Un bac à sable contient $50$ litres de sable. On en ajoute $20$ litres. La quantité de sable a connu une {{1}} de $20$ litres. Puis, on en retire $15$ litres pour faire un château. La quantité a alors subi une {{2}} de $15$ litres.",
+      "blanks": [
+        "hausse|augmentation",
+        "baisse|diminution"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Au départ, il y a $50$ litres. Après ajout de $20$ litres, il y en a $70$ : la quantité a augmenté, c'est une hausse de $20$ litres. Après retrait de $15$ litres, il en reste $55$ : la quantité a diminué, c'est une baisse de $15$ litres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

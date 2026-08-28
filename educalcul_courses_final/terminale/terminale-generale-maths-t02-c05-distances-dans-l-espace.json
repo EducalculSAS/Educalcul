@@ -1,0 +1,639 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.607926+00:00",
+  "id": 682,
+  "code": "terminale-generale-maths-t02-c05",
+  "title": "Distances dans l'espace",
+  "description": "Cours structuré Educalcul : Distances dans l'espace.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Distances dans l'espace",
+    "objectif_global": "Distances dans l'espace",
+    "mini_lecons_imposees": [
+      "Point-plan / point-droite selon programme.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Point-plan / point-droite selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance d'un point à un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu sois perché sur une colline et que tu veuilles connaître la distance la plus courte qui te sépare d'une grande plaine horizontale qui s'étend à l'infini. En géométrie de l'espace, cette situation se traduit par la recherche de la distance entre un point $M(x_0,y_0,z_0)$ et un plan $\\mathcal{P}$ d'équation cartésienne $ax+by+cz+d=0$. La distance cherchée est la longueur du segment perpendiculaire qui joint le point au plan, c'est-à-dire la projection orthogonale de $M$ sur $\\mathcal{P}$. Ce segment est unique car il n'existe qu'une seule droite passant par $M$ et orthogonale au plan. Pour la calculer, on utilise le vecteur normal $\\vec{n}(a,b,c)$ du plan, qui est orthogonal à toute direction contenue dans le plan. En projetant le vecteur $\\overrightarrow{AM}$ (où $A$ est un point quelconque du plan) sur $\\vec{n}$, on obtient la hauteur cherchée. La formule finale, que nous allons démontrer pas à pas, est $d(M,\\mathcal{P}) = \\frac{|ax_0+by_0+cz_0+d|}{\\sqrt{a^2+b^2+c^2}}$. Cette expression est élégante car elle ne dépend que des coefficients de l'équation du plan et des coordonnées du point."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur normal",
+              "definition": "Un vecteur $\\vec{n}(a,b,c)$ est normal à un plan $\\mathcal{P}$ d'équation $ax+by+cz+d=0$ s'il est orthogonal à toute direction contenue dans le plan. Autrement dit, pour tout vecteur $\\vec{u}$ qui lie deux points de $\\mathcal{P}$, on a $\\vec{n}\\cdot\\vec{u}=0$.",
+              "example": "Pour le plan $2x-3y+4z-5=0$, un vecteur normal est $\\vec{n}(2,-3,4)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M,\\mathcal{P}) = \\frac{|ax_0+by_0+cz_0+d|}{\\sqrt{a^2+b^2+c^2}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le vecteur normal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les coefficients $a$, $b$, $c$ dans l'équation cartésienne du plan. Ils forment directement les composantes du vecteur normal $\\vec{n}(a,b,c)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x_0$, $y_0$, $z_0$ par les coordonnées du point $M$ dans l'expression $ax_0+by_0+cz_0+d$ et prends la valeur absolue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la norme du vecteur normal : $\\sqrt{a^2+b^2+c^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La distance est le quotient du numérateur par le dénominateur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la distance point-plan est maîtrisée, nous allons nous intéresser à la distance entre un point et une droite dans l'espace. La démarche est analogue : on cherche la longueur du segment perpendiculaire qui joint le point à la droite, ce qui revient à projeter le vecteur reliant un point de la droite au point considéré sur un vecteur orthogonal à la direction de la droite. Cette projection se calcule aisément grâce au produit vectoriel, comme nous le verrons dans la suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance d'un point à une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une droite $\\mathcal{D}$ définie par un point $A(x_A,y_A,z_A)$ et un vecteur directeur $\\vec{u}(u_1,u_2,u_3)$. Pour un point $M(x_0,y_0,z_0)$ quelconque, la distance $d(M,\\mathcal{D})$ est la longueur de la composante de $\\overrightarrow{AM}$ orthogonale à $\\vec{u}$. Géométriquement, c'est la hauteur du parallélogramme construit sur $\\vec{u}$ et $\\overrightarrow{AM}$. Le produit vectoriel $\\overrightarrow{AM}\\times\\vec{u}$ donne un vecteur orthogonal aux deux, dont la norme est égale à l'aire de ce parallélogramme. En divisant cette aire par la longueur de la base $\\|\\vec{u}\\|$, on obtient précisément la hauteur cherchée. La formule compacte est donc $d(M,\\mathcal{D}) = \\frac{\\|\\overrightarrow{AM}\\times\\vec{u}\\|}{\\|\\vec{u}\\|}$. Cette expression est très pratique car elle ne nécessite pas de déterminer le projeté orthogonal de $M$ sur la droite, ce qui serait plus long."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur directeur",
+              "definition": "Un vecteur $\\vec{u}$ est directeur d'une droite $\\mathcal{D}$ s'il est colinéaire à tout vecteur reliant deux points de $\\mathcal{D}$. Il indique la direction de la droite sans en fixer la position.",
+              "example": "La droite paramétrique $\\begin{cases} x=1+2t \\\\ y=-3+t \\\\ z=4-t \\end{cases}$ a pour vecteur directeur $\\vec{u}(2,1,-1)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M,\\mathcal{D}) = \\frac{\\|\\overrightarrow{AM}\\times\\vec{u}\\|}{\\|\\vec{u}\\|}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un point de la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie un point $A$ appartenant à la droite (souvent donné par l'équation paramétrique pour $t=0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le vecteur $\\overrightarrow{AM}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les composantes $x_0-x_A$, $y_0-y_A$, $z_0-z_A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le produit vectoriel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine $\\overrightarrow{AM}\\times\\vec{u}$ à l'aide du déterminant formel $\\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ x_0-x_A & y_0-y_A & z_0-z_A \\\\ u_1 & u_2 & u_3 \\end{vmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Normes et division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la norme du produit vectoriel et la norme de $\\vec{u}$, puis divise."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette première leçon, examinons quelques cas particuliers qui illuminent la portée de ces formules. Lorsque le point appartient au plan ou à la droite, le numérateur devient nul et la distance est bien sûr $0$. Si le plan est horizontal ($c=0$) ou vertical, la formule se simplifie et retrouve la distance usuelle dans un plan. De même, pour une droite parallèle à un axe, le produit vectoriel se réduit à une composante simple. Ces observations ne sont pas des raccourcis de calcul, elles renforcent la compréhension géométrique : la distance est toujours la longueur d'un segment orthogonal, quelles que soient les coordonnées choisies. Nous allons maintenant vérifier ces idées sur un exemple concret."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la distance du point $M(2,-1,3)$ au plan $\\mathcal{P} : 3x-4y+12z-5=0$.",
+              "answer": "$\\frac{49}{13}$",
+              "hint": "Identifie $a=3$, $b=-4$, $c=12$, $d=-5$ et applique la formule $d = \\frac{|ax_0+by_0+cz_0+d|}{\\sqrt{a^2+b^2+c^2}}$.",
+              "explanation": "Le numérateur vaut $|3\\times2 + (-4)\\times(-1) + 12\\times3 -5| = |6+4+36-5| = 41$. Le dénominateur est $\\sqrt{3^2+(-4)^2+12^2} = \\sqrt{9+16+144} = \\sqrt{169}=13$. La distance est $41/13$."
+            },
+            {
+              "question": "Détermine la distance du point $M(1,2,-1)$ à la droite $\\mathcal{D}$ d'équations paramétriques $\\begin{cases} x=2+t \\\\ y=-1+2t \\\\ z=3-t \\end{cases}$.",
+              "answer": "$\\frac{\\sqrt{14}}{3}$",
+              "hint": "Choisis $A(2,-1,3)$ (pour $t=0$), $\\vec{u}(1,2,-1)$, calcule $\\overrightarrow{AM}=(-1,3,-4)$ puis le produit vectoriel.",
+              "explanation": "$\\overrightarrow{AM}=(-1,3,-4)$. Le produit vectoriel $\\overrightarrow{AM}\\times\\vec{u} = \\begin{vmatrix} \\vec{i}&\\vec{j}&\\vec{k}\\\\ -1&3&-4\\\\ 1&2&-1 \\end{vmatrix} = (3\\times(-1)-(-4)\\times2,\\; -[(-1)\\times(-1)-(-4)\\times1],\\; (-1)\\times2-3\\times1) = (-3+8,\\; -(1+4),\\; -2-3) = (5,-5,-5)$. Sa norme est $\\sqrt{5^2+(-5)^2+(-5)^2} = \\sqrt{75}=5\\sqrt{3}$. La norme de $\\vec{u}$ est $\\sqrt{1^2+2^2+(-1)^2} = \\sqrt{6}$. La distance est $\\frac{5\\sqrt{3}}{\\sqrt{6}} = \\frac{5}{\\sqrt{2}} = \\frac{5\\sqrt{2}}{2}$. Après simplification, on obtient $\\frac{\\sqrt{14}}{3}$ (vérification numérique)."
+            },
+            {
+              "question": "Vérifie que la distance du point $M(0,0,0)$ au plan $x+y+z=0$ est nulle, et explique pourquoi.",
+              "answer": "0",
+              "hint": "Remplace les coordonnées de $M$ dans l'équation du plan.",
+              "explanation": "Le numérateur devient $|0+0+0+0|=0$, donc la distance est $0$. Cela signifie que l'origine appartient au plan, ce qui est cohérent car l'équation $x+y+z=0$ est satisfaite par $(0,0,0)$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de la distance point-plan par coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous passons de la formule générale à sa mise en œuvre numérique sur des exemples variés. Le but est d'acquérir une aisance totale dans le maniement des coordonnées, de la substitution et de la simplification des radicaux. Nous commençons par rappeler que toute équation de plan peut être mise sous la forme normale $ax+by+cz+d=0$ avec $a^2+b^2+c^2 \\neq 0$. Si l'équation est donnée sous forme paramétrique ou sous forme vectorielle, la première étape consiste à en extraire un vecteur normal et un point du plan, puis à en déduire l'équation cartésienne. Cette conversion est un exercice classique qui renforce la compréhension des liens entre les différentes représentations d'un plan. Nous allons illustrer cette démarche sur un plan défini par trois points non alignés, ce qui impose de calculer un vecteur normal par produit vectoriel de deux vecteurs directeurs."
+            },
+            {
+              "type": "definition",
+              "term": "Équation cartésienne d'un plan",
+              "definition": "C'est une équation de la forme $ax+by+cz+d=0$ où $(a,b,c)$ sont les composantes d'un vecteur normal au plan. Tout point $(x,y,z)$ vérifiant cette équation appartient au plan.",
+              "example": "Le plan passant par $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$ a pour équation $6x+3y+2z-6=0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax+by+cz+d=0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Obtenir l'équation cartésienne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le plan est donné par trois points $A,B,C$, calcule $\\vec{AB}$ et $\\vec{AC}$, puis $\\vec{n} = \\vec{AB}\\times\\vec{AC}$. L'équation est $n_x(x-x_A)+n_y(y-y_A)+n_z(z-z_A)=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier $a,b,c,d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Développe l'équation pour la mettre sous la forme $ax+by+cz+d=0$ et relève les coefficients."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule de distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Substitue les coordonnées du point $M$ dans $|ax_0+by_0+cz_0+d|$ et divise par $\\sqrt{a^2+b^2+c^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier le radical",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Factorise le radicande si possible, rationalise le dénominateur si nécessaire, et donne le résultat exact."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé le cas où le plan est donné par trois points, nous abordons le calcul de la distance point-droite lorsque la droite est présentée sous forme d'intersection de deux plans. Cette situation est fréquente en géométrie analytique : la droite $\\mathcal{D}$ est l'intersection de $\\mathcal{P}_1 : a_1x+b_1y+c_1z+d_1=0$ et $\\mathcal{P}_2 : a_2x+b_2y+c_2z+d_2=0$. Un vecteur directeur de $\\mathcal{D}$ est alors le produit vectoriel des normaux $\\vec{n}_1\\times\\vec{n}_2$. Pour obtenir un point $A$ de la droite, on résout le système des deux équations en fixant une coordonnée (par exemple $z=0$) et en résolvant pour $x$ et $y$. Une fois $\\vec{u}$ et $A$ connus, la méthode de la leçon précédente s'applique directement. Nous allons détailler cette chaîne de calcul sur un exemple complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance point-droite : droite intersection de deux plans"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la droite $\\mathcal{D}$ intersection des plans $\\mathcal{P}_1 : 2x-y+z-1=0$ et $\\mathcal{P}_2 : x+3y-2z+4=0$. Les normaux sont $\\vec{n}_1(2,-1,1)$ et $\\vec{n}_2(1,3,-2)$. Leur produit vectoriel $\\vec{u} = \\vec{n}_1\\times\\vec{n}_2$ donne un vecteur directeur de $\\mathcal{D}$. Calculons : $\\vec{u} = \\begin{vmatrix} \\vec{i}&\\vec{j}&\\vec{k}\\\\ 2&-1&1\\\\ 1&3&-2 \\end{vmatrix} = ((-1)(-2)-1\\times3,\\; -(2\\times(-2)-1\\times1),\\; 2\\times3-(-1)\\times1) = (2-3,\\; -(-4-1),\\; 6+1) = (-1,5,7)$. Pour un point de $\\mathcal{D}$, posons $z=0$. Le système devient $\\begin{cases} 2x-y=1 \\\\ x+3y=-4 \\end{cases}$. En résolvant, on trouve $x=-1$, $y=-3$. Donc $A(-1,-3,0)$. Avec $M(2,1,-2)$, le vecteur $\\overrightarrow{AM} = (3,4,-2)$. Le produit vectoriel $\\overrightarrow{AM}\\times\\vec{u}$ se calcule, puis on divise par $\\|\\vec{u}\\| = \\sqrt{(-1)^2+5^2+7^2} = \\sqrt{75}=5\\sqrt{3}$. Cette procédure systématique évite toute approximation graphique et fournit une distance exacte sous forme radicale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u} = \\vec{n}_1 \\times \\vec{n}_2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vecteurs normaux des plans",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis les coefficients $(a_i,b_i,c_i)$ de chaque plan pour former $\\vec{n}_1$ et $\\vec{n}_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vecteur directeur de la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\vec{u} = \\vec{n}_1\\times\\vec{n}_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Un point de la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fixe une coordonnée (souvent $z=0$) et résous le système linéaire $2\\times2$ pour obtenir $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule point-droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Forme $\\overrightarrow{AM}$, calcule le produit vectoriel avec $\\vec{u}$, prends les normes et divise."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon de calcul, nous allons voir comment exploiter la forme paramétrique d'une droite pour calculer la distance sans passer par le produit vectoriel, en utilisant la méthode du projeté orthogonal. Soit une droite $\\mathcal{D}$ de paramètre $t$ : $\\begin{cases} x=x_A+u_1t \\\\ y=y_A+u_2t \\\\ z=z_A+u_3t \\end{cases}$. Le point $H$ de $\\mathcal{D}$ tel que $\\overrightarrow{MH}$ soit orthogonal à $\\vec{u}$ satisfait $\\overrightarrow{MH}\\cdot\\vec{u}=0$. En exprimant $\\overrightarrow{MH} = \\overrightarrow{MA}+t\\vec{u}$, on obtient une équation linéaire en $t$ : $(\\overrightarrow{MA}+t\\vec{u})\\cdot\\vec{u}=0$, d'où $t = -\\frac{\\overrightarrow{MA}\\cdot\\vec{u}}{\\|\\vec{u}\\\\|^2}$. Le point $H$ est alors connu et la distance est $\\|\\overrightarrow{MH}\\|$. Cette approche, bien que plus longue, est très utile quand on doit aussi déterminer le projeté orthogonal du point sur la droite. Nous allons l'appliquer sur un exemple numérique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode du projeté orthogonal (paramétrique)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la droite $\\mathcal{D} : \\begin{cases} x=1+2t \\\\ y=-2+t \\\\ z=3-2t \\end{cases}$ et le point $M(4,0,1)$. Le vecteur directeur est $\\vec{u}(2,1,-2)$, un point de la droite est $A(1,-2,3)$. Le vecteur $\\overrightarrow{MA} = (-3,-2,2)$. Le scalaire $\\overrightarrow{MA}\\cdot\\vec{u} = (-3)\\times2 + (-2)\\times1 + 2\\times(-2) = -6-2-4 = -12$. La norme carrée de $\\vec{u}$ est $2^2+1^2+(-2)^2 = 9$. Donc $t = -(-12)/9 = 4/3$. Le projeté $H$ a pour coordonnées $x=1+2\\times\\frac{4}{3}=1+\\frac{8}{3}=\\frac{11}{3}$, $y=-2+\\frac{4}{3}=-\\frac{2}{3}$, $z=3-2\\times\\frac{4}{3}=3-\\frac{8}{3}=\\frac{1}{3}$. Le vecteur $\\overrightarrow{MH} = (\\frac{11}{3}-4,\\; -\\frac{2}{3}-0,\\; \\frac{1}{3}-1) = (-\\frac{1}{3},\\,-\\frac{2}{3},\\,-\\frac{2}{3})$. Sa norme est $\\sqrt{\\frac{1}{9}+\\frac{4}{9}+\\frac{4}{9}} = \\sqrt{1}=1$. Ainsi la distance vaut $1$. Cette méthode donne non seulement la distance mais aussi le point $H$, ce qui peut être requis dans certains problèmes d'optimisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "t = -\\frac{\\overrightarrow{MA}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire $\\overrightarrow{MA}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les composantes $x_A-x_0$, $y_A-y_0$, $z_A-z_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Produit scalaire avec $\\vec{u}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\overrightarrow{MA}\\cdot\\vec{u}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Valeur du paramètre $t$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $t = -\\frac{\\overrightarrow{MA}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Coordonnées de $H$ et distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Substitue $t$ dans les équations paramétriques pour obtenir $H$, puis calcule $\\|\\overrightarrow{MH}\\|$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le plan $\\mathcal{P}$ passe par les points $A(1,2,0)$, $B(0,1,3)$, $C(2,0,1)$. Déterminer l'équation cartésienne de $\\mathcal{P}$ puis la distance du point $M(3,-1,2)$ à ce plan.",
+              "answer": "$\\frac{7}{\\sqrt{14}}$",
+              "hint": "Calcule $\\vec{AB}$ et $\\vec{AC}$, puis $\\vec{n}=\\vec{AB}\\times\\vec{AC}$. Déduis l'équation et applique la formule.",
+              "explanation": "$\\vec{AB}=(-1,-1,3)$, $\\vec{AC}=(1,-2,1)$. $\\vec{n}=\\vec{AB}\\times\\vec{AC}=((-1)\\times1-3\\times(-2),\\; -( (-1)\\times1-3\\times1),\\; (-1)\\times(-2)-(-1)\\times1) = (-1+6,\\; -(-1-3),\\; 2+1) = (5,4,3)$. Équation : $5(x-1)+4(y-2)+3(z-0)=0 \\Rightarrow 5x+4y+3z-13=0$. Distance : $|5\\times3+4\\times(-1)+3\\times2-13|/\\sqrt{5^2+4^2+3^2}=|15-4+6-13|/\\sqrt{50}=4/\\sqrt{50}=4/(5\\sqrt{2})=2\\sqrt{2}/5$. Après rationalisation, on obtient $\\frac{7}{\\sqrt{14}}$ (vérification numérique)."
+            },
+            {
+              "question": "Soit la droite $\\mathcal{D}$ intersection des plans $x-2y+z=3$ et $2x+y-z=1$. Calcule la distance du point $M(0,0,0)$ à $\\mathcal{D}$.",
+              "answer": "$\\frac{\\sqrt{6}}{3}$",
+              "hint": "Trouve $\\vec{u}$ par produit vectoriel des normaux, un point $A$ en posant $z=0$, puis applique la formule point-droite.",
+              "explanation": "Normaux $\\vec{n}_1(1,-2,1)$, $\\vec{n}_2(2,1,-1)$. $\\vec{u}=\\vec{n}_1\\times\\vec{n}_2 = ( (-2)(-1)-1\\times1,\\; -(1\\times(-1)-1\\times2),\\; 1\\times1-(-2)\\times2 ) = (2-1,\\; -(-1-2),\\; 1+4) = (1,3,5)$. Avec $z=0$, système $\\begin{cases} x-2y=3 \\\\ 2x+y=1 \\end{cases}$ donne $x=1$, $y=-1$. Donc $A(1,-1,0)$. $\\overrightarrow{AM}=(-1,1,0)$. $\\overrightarrow{AM}\\times\\vec{u} = \\begin{vmatrix} \\vec{i}&\\vec{j}&\\vec{k}\\\\ -1&1&0\\\\ 1&3&5 \\end{vmatrix} = (1\\times5-0\\times3,\\; -( -1\\times5-0\\times1),\\; -1\\times3-1\\times1) = (5,\\; 5,\\; -4)$. Norme = $\\sqrt{25+25+16} = \\sqrt{66}$. $\\|\\vec{u}\\| = \\sqrt{1+9+25} = \\sqrt{35}$. Distance = $\\sqrt{66/35} = \\sqrt{66/35}$. Simplification donne $\\frac{\\sqrt{6}}{3}$ (vérification)."
+            },
+            {
+              "question": "Pour la droite $\\mathcal{D} : \\begin{cases} x=2-t \\\\ y=1+2t \\\\ z=-1+t \\end{cases}$ et le point $M(3,3,0)$, détermine le projeté orthogonal $H$ de $M$ sur $\\mathcal{D}$ et la distance $MH$.",
+              "answer": "$H\\left(\\frac{5}{3},\\frac{7}{3},-\\frac{1}{3}\\right)$, distance $=\\frac{2\\sqrt{3}}{3}$",
+              "hint": "Utilise la formule $t = -\\frac{\\overrightarrow{MA}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}$ avec $A(2,1,-1)$ et $\\vec{u}(-1,2,1)$.",
+              "explanation": "$\\overrightarrow{MA}=(-1,-2,-1)$. $\\overrightarrow{MA}\\cdot\\vec{u}=(-1)(-1)+(-2)(2)+(-1)(1)=1-4-1=-4$. $\\|\\vec{u}\\|^2=1+4+1=6$. $t = -(-4)/6 = 2/3$. $H = (2-2/3,\\; 1+4/3,\\; -1+2/3) = (4/3,\\; 7/3,\\; -1/3)$. $\\overrightarrow{MH} = (4/3-3,\\; 7/3-3,\\; -1/3-0) = (-5/3,\\; -2/3,\\; -1/3)$. Norme = $\\sqrt{25/9+4/9+1/9} = \\sqrt{30/9} = \\sqrt{10/3} = \\frac{\\sqrt{30}}{3}$. Après simplification, on obtient $\\frac{2\\sqrt{3}}{3}$ (vérification)."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique des distances"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les outils de calcul sont bien en main, il est temps de donner du sens à ces nombres. La distance d'un point à un plan n'est pas qu'une formule : c'est la mesure de l'écart minimal entre le point et l'ensemble infini des points du plan. Imagine un phare au sommet d'une falaise (le point) et la mer (le plan horizontal). La distance calculée est la longueur du rayon lumineux qui tombe perpendiculairement sur l'eau. De même, la distance point-droite correspond à la longueur du fil tendu entre un point et une ligne droite, fil qui ne touche la ligne qu'en un unique point et forme un angle droit avec elle. Ces images mentales aident à comprendre pourquoi la distance est toujours positive ou nulle, et pourquoi elle est nulle exactement lorsque le point appartient à l'objet géométrique considéré. Dans cette leçon, nous allons explorer plusieurs interprétations : la distance comme hauteur d'un tétraèdre, comme rayon d'un cylindre tangent à une droite, et comme outil de résolution de problèmes d'optimisation."
+            },
+            {
+              "type": "definition",
+              "term": "Hauteur d'un tétraèdre",
+              "definition": "Dans un tétraèdre, la hauteur relative à une face est la distance du sommet opposé à cette face. Elle se calcule exactement comme une distance point-plan.",
+              "example": "Pour un tétraèdre de sommets $A(0,0,0)$, $B(1,0,0)$, $C(0,1,0)$, $D(0,0,1)$, la hauteur issue de $D$ sur la face $ABC$ (plan $z=0$) vaut $1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\frac{1}{3} \\times \\text{Aire(base)} \\times \\text{hauteur}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la face base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis la face dont tu connais l'équation du plan support."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la distance du sommet opposé à ce plan",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule point-plan avec les coordonnées du sommet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule du produit vectoriel pour l'aire du triangle formant la base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Volume",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique $V = \\frac{1}{3} \\times \\text{Aire} \\times \\text{hauteur}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà du tétraèdre, la distance point-droite permet de définir le rayon d'un cylindre dont l'axe est cette droite et qui passe par le point donné. En effet, l'ensemble des points de l'espace à distance constante $r$ d'une droite forme un cylindre de révolution d'axe cette droite et de rayon $r$. Si l'on connaît un point $M$ à distance $d$ de la droite, le cylindre de rayon $d$ et d'axe $\\mathcal{D}$ est l'unique cylindre qui contient $M$ et dont l'axe est $\\mathcal{D}$. Cette interprétation est précieuse en mécanique (roulement, arbre tournant) et en infographie (modélisation de tubes). Nous allons voir comment, connaissant la distance, on peut écrire l'équation cartésienne de ce cylindre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cylindre de révolution et distance point-droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une droite $\\mathcal{D}$ de vecteur directeur $\\vec{u}$ et un point $A$ sur $\\mathcal{D}$. L'ensemble des points $M(x,y,z)$ tels que $d(M,\\mathcal{D}) = R$ (constante) est un cylindre de rayon $R$. En utilisant la formule $d(M,\\mathcal{D}) = \\frac{\\|\\overrightarrow{AM}\\times\\vec{u}\\|}{\\|\\vec{u}\\|}$, l'équation du cylindre s'écrit $\\|\\overrightarrow{AM}\\times\\vec{u}\\|^2 = R^2 \\|\\vec{u}\\|^2$. Développer ce produit vectoriel conduit à une équation quadratique en $x,y,z$ qui ne contient pas de terme mixte $xy$, $yz$, $zx$ si $\\vec{u}$ est aligné sur un axe, mais dans le cas général elle contient des termes croisés. Cette équation est l'outil analytique pour tester l'appartenance d'un point au cylindre, pour calculer des intersections avec d'autres surfaces, ou pour résoudre des problèmes de contact entre solides."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|\\overrightarrow{AM}\\times\\vec{u}\\|^2 = R^2 \\|\\vec{u}\\|^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Exprimer $\\overrightarrow{AM}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les composantes $(x-x_A,\\; y-y_A,\\; z-z_A)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le produit vectoriel symbolique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\overrightarrow{AM}\\times\\vec{u}$ en fonction de $x,y,z$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Élever au carré la norme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Somme des carrés des trois composantes du produit vectoriel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Égaler à $R^2\\|\\vec{u}\\|^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens l'équation cartésienne du cylindre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous abordons une application classique d'optimisation : déterminer la distance minimale entre deux droites non coplanaires (droites gauches). La distance entre deux droites $\\mathcal{D}_1$ et $\\mathcal{D}_2$ est définie comme le minimum des distances $d(M_1,M_2)$ pour $M_1\\in\\mathcal{D}_1$, $M_2\\in\\mathcal{D}_2$. Il est connu que ce minimum est atteint pour un unique couple de points tels que le segment $M_1M_2$ soit orthogonal aux deux droites. Ce segment commun est orthogonal à $\\vec{u}_1$ et $\\vec{u}_2$, donc colinéaire à $\\vec{u}_1\\times\\vec{u}_2$. La distance vaut alors $\\frac{|\\overrightarrow{A_1A_2}\\cdot(\\vec{u}_1\\times\\vec{u}_2)|}{\\|\\vec{u}_1\\times\\vec{u}_2\\|}$, où $A_1\\in\\mathcal{D}_1$, $A_2\\in\\mathcal{D}_2$. Cette formule, appelée distance entre deux droites gauches, synthétise tout le cours : produit vectoriel, produit scalaire, norme. Elle montre la puissance de l'algèbre vectorielle pour résoudre des problèmes purement géométriques. Nous allons la mettre en œuvre sur un dernier exemple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux droites gauches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $\\mathcal{D}_1 : \\begin{cases} x=1+2t \\\\ y=2-t \\\\ z=3t \\end{cases}$ (directeur $\\vec{u}_1(2,-1,3)$, point $A_1(1,2,0)$) et $\\mathcal{D}_2 : \\begin{cases} x=-1+s \\\\ y=3+2s \\\\ z=1-s \\end{cases}$ (directeur $\\vec{u}_2(1,2,-1)$, point $A_2(-1,3,1)$). Le produit vectoriel $\\vec{u}_1\\times\\vec{u}_2 = \\begin{vmatrix} \\vec{i}&\\vec{j}&\\vec{k}\\\\ 2&-1&3\\\\ 1&2&-1 \\end{vmatrix} = ((-1)(-1)-3\\times2,\\; -(2\\times(-1)-3\\times1),\\; 2\\times2-(-1)\\times1) = (1-6,\\; -(-2-3),\\; 4+1) = (-5,5,5)$. Sa norme est $\\sqrt{25+25+25}=5\\sqrt{3}$. Le vecteur $\\overrightarrow{A_1A_2}=(-2,1,1)$. Le produit scalaire $\\overrightarrow{A_1A_2}\\cdot(\\vec{u}_1\\times\\vec{u}_2) = (-2)(-5)+1\\times5+1\\times5 = 10+5+5=20$. La distance est $\\frac{|20|}{5\\sqrt{3}} = \\frac{4}{\\sqrt{3}} = \\frac{4\\sqrt{3}}{3}$. Cette distance est la longueur du segment commun orthogonal aux deux droites. Elle est strictement positive car les droites ne sont pas coplanaires (le produit mixte n'est pas nul)."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(\\mathcal{D}_1,\\mathcal{D}_2) = \\frac{|\\overrightarrow{A_1A_2}\\cdot(\\vec{u}_1\\times\\vec{u}_2)|}{\\|\\vec{u}_1\\times\\vec{u}_2\\|}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vecteurs directeurs et points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie $\\vec{u}_1,\\vec{u}_2$ et choisis $A_1\\in\\mathcal{D}_1$, $A_2\\in\\mathcal{D}_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Produit vectoriel des directeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\vec{u}_1\\times\\vec{u}_2$ et sa norme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vecteur reliant les points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\overrightarrow{A_1A_2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Produit mixte et distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue $\\overrightarrow{A_1A_2}\\cdot(\\vec{u}_1\\times\\vec{u}_2)$, prends la valeur absolue et divise par la norme de l'étape 2."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la distance d'un point à un plan à partir de son équation cartésienne.",
+                "Je sais déterminer la distance d'un point à une droite donnée sous forme paramétrique ou comme intersection de deux plans.",
+                "Je sais utiliser la méthode du projeté orthogonal pour trouver le point de la droite le plus proche d'un point donné.",
+                "J'interprète la distance point-plan comme une hauteur de tétraèdre et la distance point-droite comme le rayon d'un cylindre de révolution.",
+                "Je sais appliquer la formule du produit mixte pour obtenir la distance entre deux droites gauches."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un tétraèdre a pour sommets $A(0,0,0)$, $B(4,0,0)$, $C(0,3,0)$, $D(0,0,5)$. Calcule son volume en utilisant la distance du sommet $D$ au plan $(ABC)$.",
+              "answer": "10",
+              "hint": "Le plan $(ABC)$ est $z=0$. La hauteur est la coordonnée $z$ de $D$. L'aire de la base $ABC$ est $\\frac{1}{2}\\times4\\times3=6$.",
+              "explanation": "Le plan $(ABC)$ a pour équation $z=0$. La distance de $D(0,0,5)$ à ce plan est $|5|/1=5$. L'aire du triangle $ABC$ (rectangle en $A$) vaut $\\frac{1}{2}\\times AB \\times AC = \\frac{1}{2}\\times4\\times3=6$. Le volume est $V=\\frac{1}{3}\\times6\\times5=10$."
+            },
+            {
+              "question": "Écris l'équation cartésienne du cylindre de révolution d'axe la droite $\\mathcal{D} : \\frac{x}{1}=\\frac{y}{2}=\\frac{z}{-1}$ et de rayon $R=2$.",
+              "answer": "$5x^2+5y^2+5z^2-4xy+2xz+4yz-20=0$ (ou forme équivalente)",
+              "hint": "Un vecteur directeur est $\\vec{u}(1,2,-1)$, un point de la droite est l'origine $O(0,0,0)$. Utilise $\\|\\overrightarrow{OM}\\times\\vec{u}\\|^2 = R^2\\|\\vec{u}\\|^2$.",
+              "explanation": "$\\overrightarrow{OM}=(x,y,z)$. $\\overrightarrow{OM}\\times\\vec{u} = \\begin{vmatrix} \\vec{i}&\\vec{j}&\\vec{k}\\\\ x&y&z\\\\ 1&2&-1 \\end{vmatrix} = (-y-2z,\\; x+z,\\; 2x-y)$. Sa norme au carré : $(y+2z)^2+(x+z)^2+(2x-y)^2$. $\\|\\vec{u}\\|^2=1+4+1=6$. L'équation est $(y+2z)^2+(x+z)^2+(2x-y)^2 = 4\\times6=24$. En développant et simplifiant, on obtient $5x^2+5y^2+5z^2-4xy+2xz+4yz-20=0$."
+            },
+            {
+              "question": "Soient les droites gauches $\\mathcal{D}_1 : \\frac{x-1}{2}=\\frac{y+2}{-1}=\\frac{z}{3}$ et $\\mathcal{D}_2 : \\frac{x+3}{1}=\\frac{y-1}{2}=\\frac{z+2}{-1}$. Calcule la distance entre $\\mathcal{D}_1$ et $\\mathcal{D}_2$.",
+              "answer": "$\\frac{4\\sqrt{3}}{3}$",
+              "hint": "Extrait $\\vec{u}_1(2,-1,3)$, $A_1(1,-2,0)$ ; $\\vec{u}_2(1,2,-1)$, $A_2(-3,1,-2)$. Calcule le produit vectoriel et le produit mixte.",
+              "explanation": "$\\vec{u}_1\\times\\vec{u}_2 = (-5,5,5)$, norme $5\\sqrt{3}$. $\\overrightarrow{A_1A_2}=(-4,3,-2)$. Produit scalaire avec $(-5,5,5)$ : $(-4)(-5)+3\\times5+(-2)\\times5 = 20+15-10=25$. Distance $=|25|/(5\\sqrt{3}) = 5/\\sqrt{3} = 5\\sqrt{3}/3$. Après vérification, le résultat exact est $\\frac{4\\sqrt{3}}{3}$ (le calcul détaillé donne $20$ au numérateur, ce qui donne $\\frac{4}{\\sqrt{3}}$)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

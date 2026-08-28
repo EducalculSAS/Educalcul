@@ -1,0 +1,477 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.233400+00:00",
+  "id": 561,
+  "code": "1ere-generale-t05-c01",
+  "title": "Parabole et fonction quadratique",
+  "description": "Cours structuré Educalcul : Parabole et fonction quadratique.",
+  "subject": "Modélisation quadratique",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Modélisation quadratique",
+    "titre_du_cours": "Parabole et fonction quadratique",
+    "objectif_global": "Parabole et fonction quadratique",
+    "mini_lecons_imposees": [
+      "Lire graphe.",
+      "Sommet.",
+      "Signe / extrema simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Modélisation quadratique",
+      "lessons": [
+        {
+          "title": "Lire graphe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la forme d'une parabole"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux fonctions quadratiques. Tu as déjà croisé les fonctions affines et leurs graphes, qui sont de droites. Ici, nous allons rencontrer une courbe au tracé courbe et symétrique : la parabole. C'est le graphe de toute fonction de la forme $f(x)=ax^2+bx+c$ avec $a \\neq 0$. Le coefficient $a$ décide de l'orientation : si $a>0$, la parabole s'ouvre vers le haut (elle a une forme de U) ; si $a<0$, elle s'ouvre vers le bas (forme de ∩). Prends le temps de visualiser cette différence, car elle conditionne tout le reste : le sens de variation, le signe de la fonction et la position de son sommet."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole de base $y=x^2$, orientée vers le haut."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique ci‑dessus. La courbe passe par l'origine, elle est symétrique par rapport à l'axe des ordonnées (l'axe $y$). Chaque point de la branche de droite a son miroir sur la branche de gauche. Cette symétrie est une propriété fondamentale de toutes les paraboles : elles possèdent un axe de symétrie vertical qui passe par leur sommet. Nous verrons comment repérer cet axe et ce sommet dans les prochaines parties."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer l'axe de symétrie et le sommet sur un graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un graphe déjà tracé, l'axe de symétrie est la droite verticale qui coupe la parabole en deux parties miroir. Le sommet est le point d'intersection de la parabole avec cet axe ; c'est le point le plus bas (si $a>0$) ou le plus haut (si $a<0$). Pour le lire, tu peux poser une règle verticalement sur la feuille et la faire glisser jusqu'à ce que les deux branches se superposent visuellement. L'abscisse du sommet se lit alors sur l'axe des $x$, son ordonnée sur l'axe des $y$. C'est une lecture graphique approximative, mais elle donne une excellente intuition avant les calculs exacts."
+            },
+            {
+              "type": "graph",
+              "expression": "-0.5*x^2+2*x+3",
+              "xmin": -2,
+              "xmax": 6,
+              "caption": "Parabole orientée vers le bas, sommet visible vers $x=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe la seconde parabole. Elle s'ouvre vers le bas, son sommet est un maximum. L'axe de symétrie semble passer par $x=2$. Essaie d'estimer l'ordonnée du sommet en regardant la graduation de l'axe vertical. Cet exercice de lecture visuelle t'aidera à vérifier tes calculs plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire des coordonnées de points caractéristiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au‑delà du sommet, deux autres points sont faciles à repérer sur un graphe : les intersections avec les axes. L'intersection avec l'axe des ordonnées (l'axe $y$) correspond à $x=0$ ; son ordonnée est simplement $c$ dans l'expression $ax^2+bx+c$. Les intersections avec l'axe des abscisses (l'axe $x$) sont les racines de l'équation $ax^2+bx+c=0$. Elles peuvent être au nombre de 0, 1 (sommet tangent à l'axe) ou 2. Sur le graphe, ce sont les points où la courbe coupe ou touche l'axe horizontal. Apprends à les lire approximativement : ils te serviront à encadrer les solutions d'une équation ou d'une inéquation."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4*x+3",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Parabole $y=x^2-4x+3$ coupant l'axe des $x$ en $x=1$ et $x=3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce troisième graphe, la parabole coupe l'axe des $x$ en deux points distincts. Essaie de lire leurs abscisses approximatives. Tu vois aussi l'intersection avec l'axe des $y$ en $y=3$. Ces lectures graphiques sont la base de la modélisation : elles permettent de donner du sens aux nombres que tu calculeras par la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le graphe pour résoudre une inéquation simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu sais lire le sommet, l'axe de symétrie et les intersections, tu peux répondre à des questions du type : « Pour quelles valeurs de $x$ la fonction est‑elle positive ? » ou « Quand est‑elle supérieure à $2$ ? ». Trace (ou imagine) la droite horizontale $y=k$ ; les intersections de cette droite avec la parabole découpent l'axe des $x$ en intervalles. Sur chaque intervalle, la courbe est soit au‑dessus, soit au‑dessous de la droite. C'est ainsi qu'on lit graphiquement la solution d'une inéquation quadratique. Nous approfondirons la méthode algébrique plus tard, mais la lecture graphique reste un outil de vérification puissant."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4*x+3",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Même parabole avec la droite $y=2$ pour illustrer $f(x)>2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine la droite $y=2$ tracée sur le graphe. Elle coupe la parabole en deux points. Pour $x$ entre ces deux abscisses, la courbe est en dessous de la droite (donc $f(x)<2$) ; à l'extérieur, elle est au‑dessus ($f(x)>2$). Essaie d'estimer ces abscisses de coupure. Ce raisonnement visuel prépare la construction du tableau de signes que nous ferons dans la troisième leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphe de $f(x)=x^2$, donne les coordonnées approximatives du sommet et dis si la parabole s'ouvre vers le haut ou vers le bas.",
+              "answer": "Sommet (0,0), ouverture vers le haut.",
+              "hint": "Regarde le point le plus bas de la courbe et la direction des branches.",
+              "explanation": "La parabole $y=x^2$ a son sommet à l'origine. Comme le coefficient de $x^2$ est positif ($1$), elle s'ouvre vers le haut."
+            },
+            {
+              "question": "Pour la parabole $y=-0.5x^2+2x+3$, estime graphiquement l'abscisse du sommet et dis si c'est un maximum ou un minimum.",
+              "answer": "Abscisse environ 2, c'est un maximum.",
+              "hint": "Cherche l'axe de symétrie vertical ; comme $a<0$, le sommet est le point le plus haut.",
+              "explanation": "Le coefficient $a=-0.5$ est négatif, donc la parabole s'ouvre vers le bas et son sommet est un maximum. L'axe de symétrie passe par $x=2$ (calcul exact : $x_v=-b/(2a)=2$)."
+            },
+            {
+              "question": "Sur le graphe de $y=x^2-4x+3$, lis les abscisses des intersections avec l'axe des $x$ et l'ordonnée de l'intersection avec l'axe des $y$.",
+              "answer": "Intersections avec l'axe des $x$ : $x=1$ et $x=3$ ; intersection avec l'axe des $y$ : $y=3$.",
+              "hint": "Cherche où la courbe coupe l'axe horizontal et où elle coupe l'axe vertical.",
+              "explanation": "Les racines de $x^2-4x+3=0$ sont $1$ et $3$. Pour $x=0$, $y=3$."
+            },
+            {
+              "question": "À l'aide du graphe de $y=x^2-4x+3$, détermine l'ensemble des $x$ pour lesquels $f(x)>2$.",
+              "answer": "$x<1$ ou $x>3$ (approximativement).",
+              "hint": "Repère où la courbe passe au‑dessus de la droite $y=2$.",
+              "explanation": "La droite $y=2$ coupe la parabole pour $x=1$ et $x=3$. La courbe est au‑dessus de cette droite en dehors de l'intervalle $[1,3]$."
+            }
+          ]
+        },
+        {
+          "title": "Sommet.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme canonique (ou forme sommet) d'une fonction quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons lu le sommet sur un graphe. Maintenant, nous voulons le calculer exactement à partir de l'expression algébrique. La forme la plus commode pour cela est la forme canonique : $f(x)=a(x-\\alpha)^2+\\beta$, où $(\\alpha,\\beta)$ sont les coordonnées du sommet. Si tu parviens à mettre ton trinôme sous cette forme, tu as immédiatement le sommet sans aucun calcul supplémentaire. C'est une écriture qui « cache » le sommet dans les décalages horizontaux et verticaux par rapport à la parabole de base $y=ax^2$."
+            },
+            {
+              "type": "definition",
+              "term": "Forme canonique (forme sommet)",
+              "definition": "Écriture d'une fonction quadratique sous la forme $f(x)=a(x-\\alpha)^2+\\beta$ avec $a \\neq 0$. Le sommet de la parabole a pour coordonnées $(\\alpha,\\beta)$.",
+              "example": "Pour $f(x)=2(x-3)^2-5$, le sommet est $(3,-5)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que le signe devant $\\alpha$ est un moins dans la formule : $x-\\alpha$. Si tu as $f(x)=a(x+2)^2+1$, alors $\\alpha=-2$ (car $x-(-2)=x+2$). Sois vigilant sur ce point, c'est une erreur fréquente. L'ordonnée $\\beta$ se lit directement : c'est le nombre ajouté à la fin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la forme développée à la forme canonique : la méthode du carré parfait"
+            },
+            {
+              "type": "paragraph",
+              "content": "La plupart du temps, tu reçois la fonction sous la forme développée $ax^2+bx+c$. Pour obtenir la forme canonique, on utilise la technique du « carré parfait » (ou « complétion du carré »). L'idée est de réécrire $ax^2+bx$ comme $a\\left(x+\\frac{b}{2a}\\right)^2$ moins un terme constant, de façon à faire apparaître un carré. C'est une manipulation algébrique un peu technique, mais elle suit toujours le même schéma. Prenons le temps de la dérouler pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Factoriser $a$ sur les deux premiers termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $f(x)=a\\left(x^2+\\frac{b}{a}x\\right)+c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compléter le carré à l'intérieur de la parenthèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On ajoute et on soustrait $\\left(\\frac{b}{2a}\\right)^2$ : $x^2+\\frac{b}{a}x = \\left(x+\\frac{b}{2a}\\right)^2 - \\left(\\frac{b}{2a}\\right)^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Répartir $a$ et simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$f(x)=a\\left(x+\\frac{b}{2a}\\right)^2 - a\\left(\\frac{b}{2a}\\right)^2 + c = a\\left(x+\\frac{b}{2a}\\right)^2 - \\frac{b^2}{4a} + c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Identifier $\\alpha$ et $\\beta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\alpha = -\\frac{b}{2a}$ et $\\beta = c - \\frac{b^2}{4a} = -\\frac{\\Delta}{4a}$ où $\\Delta=b^2-4ac$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode est systématique. Elle montre aussi que l'abscisse du sommet est toujours $-\\frac{b}{2a}$, une formule qu'il est utile de retenir pour aller plus vite. L'ordonnée $\\beta$ s'obtient en remplaçant $x$ par $\\alpha$ dans l'expression initiale, ou via la formule avec le discriminant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la formule directe du sommet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la méthode du carré parfait comprise, tu peux utiliser directement les formules : $x_v = -\\frac{b}{2a}$ et $y_v = f(x_v) = -\\frac{\\Delta}{4a}$. Elles sont très pratiques pour gagner du temps, surtout quand tu n'as pas besoin de la forme canonique complète. Attention toutefois : ces formules supposent que tu as bien identifié $a$, $b$ et $c$ dans l'expression $ax^2+bx+c$. Vérifie toujours le signe de $b$ et de $c$ avant de te lancer."
+            },
+            {
+              "type": "display_math",
+              "latex": "x_v = -\\frac{b}{2a}, \\quad y_v = -\\frac{\\Delta}{4a} \\text{ avec } \\Delta = b^2-4ac"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'appliquer ces formules sur un exemple simple pour t'assurer que tu retombes sur le même sommet que par la méthode du carré parfait. C'est un bon exercice de vérification qui renforce la confiance dans les calculs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter le sommet dans un problème de modélisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "En enseignement scientifique, les fonctions quadratiques modélisent souvent des situations réelles : trajectoire d'un projectile, surface d'un rectangle à périmètre fixe, bénéfice en fonction du prix de vente, etc. Dans ces contextes, le sommet a une signification concrète : c'est la hauteur maximale atteinte, la surface maximale, le bénéfice optimal, etc. L'abscisse du sommet donne la valeur de la variable (temps, longueur, prix) qui réalise cet optimum. Savoir calculer le sommet, c'est donc pouvoir répondre à la question « Quel est le meilleur choix ? » ou « Quelle est la valeur maximale ? »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, si la hauteur $h$ (en mètres) d'une balle lancée en l'air est modélisée par $h(t)=-5t^2+20t+1$ avec $t$ en secondes, le sommet donne la hauteur maximale et l'instant où elle est atteinte. Calcule $t_v = -\\frac{20}{2\\times(-5)} = 2$ s, puis $h(2) = -5\\times4+40+1 = 21$ m. La balle culmine à 21 m après 2 secondes. Ce type d'interprétation est au cœur de la modélisation quadratique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les coordonnées du sommet de la parabole d'équation $f(x)=3(x+1)^2-4$.",
+              "answer": "Sommet $(-1,-4)$.",
+              "hint": "Repère $\\alpha$ et $\\beta$ dans la forme $a(x-\\alpha)^2+\\beta$. Attention au signe de $\\alpha$.",
+              "explanation": "Ici $a=3$, $\\alpha=-1$ (car $x-(-1)=x+1$) et $\\beta=-4$. Le sommet est $(-1,-4)$."
+            },
+            {
+              "question": "Mets la fonction $f(x)=2x^2-8x+5$ sous forme canonique par la méthode du carré parfait.",
+              "answer": "$f(x)=2(x-2)^2-3$.",
+              "hint": "Factorise 2, complète le carré avec $\\left(\\frac{-8}{2\\times2}\\right)^2 = 4$, puis simplifie.",
+              "explanation": "$f(x)=2(x^2-4x)+5 = 2[(x-2)^2-4]+5 = 2(x-2)^2-8+5 = 2(x-2)^2-3$. Sommet $(2,-3)$."
+            },
+            {
+              "question": "Pour $f(x)=-x^2+6x-7$, calcule les coordonnées du sommet en utilisant les formules $x_v=-\\frac{b}{2a}$ et $y_v=-\\frac{\\Delta}{4a}$.",
+              "answer": "Sommet $(3,2)$.",
+              "hint": "Identifie $a=-1$, $b=6$, $c=-7$. Calcule $\\Delta$ puis $x_v$ et $y_v$.",
+              "explanation": "$a=-1, b=6, c=-7$. $\\Delta = 36-28=8$. $x_v = -6/(2\\times-1)=3$. $y_v = -8/(4\\times-1)=2$."
+            },
+            {
+              "question": "Un rectangle a un périmètre fixe de $20$ cm. Sa surface $S$ en fonction de la longueur $x$ d'un côté est $S(x)=-x^2+10x$. Quelle longueur donne la surface maximale ? Quelle est cette surface maximale ?",
+              "answer": "Longueur $5$ cm, surface maximale $25$ cm².",
+              "hint": "Le sommet de la parabole $S(x)=-x^2+10x$ donne le maximum car $a=-1<0$.",
+              "explanation": "$a=-1, b=10, c=0$. $x_v = -10/(2\\times-1)=5$. $S(5) = -25+50=25$. Le rectangle de surface maximale est un carré de côté 5 cm."
+            }
+          ]
+        },
+        {
+          "title": "Signe / extrema simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le discriminant et les racines : où la parabole coupe l'axe des $x$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant lire un graphe et calculer le sommet. Pour aller plus loin dans l'analyse du signe et des extrema, il faut comprendre le rôle du discriminant $\\Delta = b^2-4ac$. Ce nombre unique décide du nombre d'intersections de la parabole avec l'axe des abscisses : si $\\Delta > 0$, deux points distincts (deux racines réelles) ; si $\\Delta = 0$, un point (racine double, la parabole est tangente à l'axe) ; si $\\Delta < 0$, aucun point (la parabole reste tout entière au‑dessus ou au‑dessous de l'axe selon le signe de $a$). C'est la clé pour construire le tableau de signes."
+            },
+            {
+              "type": "definition",
+              "term": "Discriminant",
+              "definition": "Pour un trinôme $ax^2+bx+c$ ($a \\neq 0$), le discriminant est $\\Delta = b^2-4ac$. Il détermine le nombre de racines réelles de l'équation $ax^2+bx+c=0$.",
+              "example": "Pour $x^2-4x+3$, $\\Delta = 16-12=4>0$ : deux racines $1$ et $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les racines s'obtiennent par la formule bien connue : $x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$. Quand $\\Delta < 0$, la racine carrée n'est pas un nombre réel, donc pas d'intersection avec l'axe des $x$. Cette distinction est cruciale : elle sépare les cas où la fonction change de signe (deux racines) de ceux où elle garde un signe constant (pas de racine ou racine double)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le tableau de signes d'une fonction quadratique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de signes résume sur quels intervalles la fonction est positive, négative ou nulle. Pour une fonction quadratique, il se construit très logiquement à partir du signe de $a$ et des racines (si elles existent). Rappelle‑toi : une parabole a le signe de $a$ en dehors des racines, et le signe opposé entre les racines (si $\\Delta>0$). Si $\\Delta \\le 0$, la fonction a le signe de $a$ partout (sauf éventuellement en un point où elle est nulle). Nous allons voir la méthode pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\Delta$ et les racines éventuelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\Delta = b^2-4ac$. Si $\\Delta > 0$, calcule $x_1$ et $x_2$ (avec $x_1 < x_2$). Si $\\Delta = 0$, note la racine double $x_0$. Si $\\Delta < 0$, pas de racine réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la ligne des $x$ et placer les racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur une ligne horizontale, marque les racines dans l'ordre croissant. Elles découpent la droite en intervalles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le signe sur chaque intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a>0$ : la parabole est au‑dessus de l'axe (positive) en dehors des racines, et en dessous (négative) entre elles. Si $a<0$ : c'est l'inverse. En cas de racine double ($\\Delta=0$), la fonction ne change pas de signe, elle est nulle seulement en $x_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les intervalles, le signe de $f(x)$ sur chacun, et les zéros aux racines."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode est systématique et fonctionne pour tout trinôme. Elle te permettra de résoudre n'importe quelle inéquation du type $f(x) > 0$, $f(x) \\le 0$, etc., en lisant simplement la solution sur le tableau."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les extrema : minimum ou maximum au sommet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le sommet de la parabole est aussi l'endroit où la fonction atteint son extremum (minimum si $a>0$, maximum si $a<0$). C'est une conséquence directe de la forme canonique $f(x)=a(x-\\alpha)^2+\\beta$ : le terme $(x-\\alpha)^2$ est toujours $\\ge 0$, donc $f(x) \\ge \\beta$ quand $a>0$ (minimum $\\beta$ en $x=\\alpha$) et $f(x) \\le \\beta$ quand $a<0$ (maximum $\\beta$ en $x=\\alpha$). Cette propriété est fondamentale en optimisation : elle dit que la meilleure valeur possible (au sens du modèle) est atteinte exactement au sommet."
+            },
+            {
+              "type": "display_math",
+              "latex": "a>0 \\Rightarrow \\text{minimum } f(\\alpha)=\\beta \\text{ en } x=\\alpha, \\quad a<0 \\Rightarrow \\text{maximum } f(\\alpha)=\\beta \\text{ en } x=\\alpha"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : cet extremum est global sur $\\mathbb{R}$ (ou sur l'intervalle de définition du problème). Si le domaine est restreint (par exemple $x \\in [0,10]$), il faut comparer la valeur au sommet avec les valeurs aux bornes de l'intervalle. C'est une nuance importante en modélisation : le domaine physique peut empêcher d'atteindre le sommet théorique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une inéquation quadratique grâce au tableau de signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire le tableau de signes, résoudre $f(x) > 0$, $f(x) \\ge 0$, $f(x) < 0$ ou $f(x) \\le 0$ devient un jeu de lecture. Tu regardes simplement sur quels intervalles le signe correspond à l'inégalité demandée, et tu inclus ou exclues les bornes selon que l'inégalité est large ou stricte. C'est la concrétisation de tout ce que nous avons vu : lecture graphique, sommet, discriminant, signe. Prenons un exemple complet pour fixer les idées."
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons $-2x^2+5x+3 \\ge 0$. D'abord $\\Delta = 25 - 4(-2)(3) = 25+24=49 > 0$. Racines : $x_1 = \\frac{-5-7}{-4} = 3$, $x_2 = \\frac{-5+7}{-4} = -0,5$. Comme $a=-2<0$, la parabole est positive entre les racines. L'inégalité est large ($\\ge$), donc on inclut les bornes. Solution : $x \\in [-0,5 ; 3]$. Vérifie sur un graphe mental : la parabole s'ouvre vers le bas, elle est au‑dessus de l'axe entre $-0,5$ et $3$. C'est cohérent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire le sommet, l'axe de symétrie et les intersections sur le graphe d'une parabole.",
+                "Je sais mettre une fonction quadratique sous forme canonique et en déduire le sommet.",
+                "Je connais les formules $x_v=-\\frac{b}{2a}$ et $y_v=-\\frac{\\Delta}{4a}$ pour trouver le sommet rapidement.",
+                "Je sais calculer le discriminant et en déduire le nombre de racines.",
+                "Je sais construire le tableau de signes d'une fonction quadratique.",
+                "Je sais déterminer le minimum ou le maximum d'une fonction quadratique et l'interpréter dans un problème concret.",
+                "Je sais résoudre une inéquation quadratique en utilisant le tableau de signes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le discriminant de $f(x)=2x^2-4x+5$ et dis combien de racines réelles elle possède.",
+              "answer": "$\\Delta = -24 < 0$, aucune racine réelle.",
+              "hint": "Utilise $\\Delta = b^2-4ac$ avec $a=2, b=-4, c=5$.",
+              "explanation": "$\\Delta = 16 - 40 = -24$. Comme $\\Delta < 0$, l'équation $2x^2-4x+5=0$ n'a pas de solution réelle."
+            },
+            {
+              "question": "Établis le tableau de signes de $f(x)=x^2-4x+3$.",
+              "answer": "$f(x) > 0$ pour $x<1$ et $x>3$ ; $f(x)=0$ pour $x=1$ et $x=3$ ; $f(x)<0$ pour $1<x<3$.",
+              "hint": "Calcule $\\Delta$ et les racines, puis utilise le signe de $a=1>0$.",
+              "explanation": "$\\Delta=4$, racines $1$ et $3$. $a>0$ donc positif en dehors des racines, négatif entre elles."
+            },
+            {
+              "question": "Détermine l'extremum de $f(x)=-3x^2+12x-10$ et dis s'il s'agit d'un minimum ou d'un maximum.",
+              "answer": "Maximum $2$ en $x=2$.",
+              "hint": "Calcule $x_v=-\\frac{b}{2a}$ puis $y_v=f(x_v)$.",
+              "explanation": "$a=-3, b=12$. $x_v = -12/(2\\times-3)=2$. $f(2) = -12+24-10=2$. Comme $a<0$, c'est un maximum."
+            },
+            {
+              "question": "Résous l'inéquation $-x^2+2x+3 < 0$.",
+              "answer": "$x < -1$ ou $x > 3$.",
+              "hint": "Trouve les racines, construis le tableau de signes avec $a=-1<0$.",
+              "explanation": "$\\Delta=16$, racines $-1$ et $3$. $a<0$ donc la parabole est négative en dehors des racines. L'inégalité est stricte, on exclut les bornes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

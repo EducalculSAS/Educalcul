@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 223,
+  "_course_code": "cm1-t02-c05-fractions-decimales-et-decimaux",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Dixièmes / centièmes",
+  "title": "Algorithmes dixièmes centièmes",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme pour convertir des dixièmes en nombre décimal",
+      "content": "Écris un algorithme (ou une suite d'instructions) qui prend en entrée un nombre entier de dixièmes (par exemple $7$) et affiche le nombre décimal correspondant (par exemple $0,7$).",
+      "correctAnswer": "Algorithme : 1. Lire le nombre entier n (nombre de dixièmes). 2. Calculer le nombre décimal d = n / 10. 3. Afficher d avec une virgule (exemple : si n = 7 alors d = 0,7).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour transformer des dixièmes en nombre décimal, on divise le nombre de dixièmes par 10 car un dixième vaut 0,1. L'algorithme effectue cette division et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme d'addition de deux nombres à un chiffre après la virgule",
+      "content": "Écris un algorithme qui additionne deux nombres décimaux ayant exactement un chiffre après la virgule (des dixièmes), par exemple $0,3$ et $0,6$, et affiche le résultat.",
+      "correctAnswer": "Algorithme : 1. Lire les deux nombres a et b (avec un chiffre après la virgule). 2. Convertir chacun en dixièmes : a_dix = a * 10, b_dix = b * 10 (ce sont des entiers). 3. Calculer la somme en dixièmes : s_dix = a_dix + b_dix. 4. Reconvertir en décimal : s = s_dix / 10. 5. Afficher s.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 10 transforme les dixièmes en entiers, ce qui permet une addition exacte sans erreur de virgule. On divise ensuite par 10 pour retrouver le nombre décimal.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de conversion de centièmes et addition de dixièmes",
+      "content": "Écris un algorithme qui prend en entrée un nombre entier de centièmes (par exemple $45$) et un nombre entier de dixièmes (par exemple $3$), convertit les centièmes en nombre décimal, ajoute les dixièmes, et affiche le résultat final.",
+      "correctAnswer": "Algorithme : 1. Lire c (centièmes) et d (dixièmes). 2. Convertir les centièmes en décimal : dec_c = c / 100. 3. Convertir les dixièmes en décimal : dec_d = d / 10. 4. Calculer la somme : total = dec_c + dec_d. 5. Afficher total (par exemple pour c=45 et d=3, total = 0,45 + 0,3 = 0,75).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un centième vaut 0,01, un dixième vaut 0,1. En divisant chaque quantité par son dénominateur on obtient les nombres décimaux, puis on les additionne.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

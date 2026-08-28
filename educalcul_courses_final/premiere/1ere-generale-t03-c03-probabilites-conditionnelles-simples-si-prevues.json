@@ -1,0 +1,457 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.208195+00:00",
+  "id": 553,
+  "code": "1ere-generale-t03-c03",
+  "title": "Probabilités conditionnelles simples si prévues",
+  "description": "Cours structuré Educalcul : Probabilités conditionnelles simples si prévues.",
+  "subject": "Phénomènes aléatoires",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Phénomènes aléatoires",
+    "titre_du_cours": "Probabilités conditionnelles simples si prévues",
+    "objectif_global": "Probabilités conditionnelles simples si prévues",
+    "mini_lecons_imposees": [
+      "Tableau / arbre.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Phénomènes aléatoires",
+      "lessons": [
+        {
+          "title": "Tableau / arbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la situation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu découvres un nouveau jeu de cartes où chaque carte porte une couleur (rouge ou noir) et une forme (cercle ou carré). Tu tires une carte au hasard et tu veux savoir quelle est la chance qu'elle soit un cercle sachant qu'elle est rouge. Cette question introduit l'idée de probabilité conditionnelle : on s'intéresse à la probabilité d'un événement sous l'hypothèse qu'un autre événement est déjà réalisé. C'est une notion centrale en première, car elle permet de modéliser des situations réelles comme le diagnostic médical, le filtrage de spam ou les prévisions météorologiques. Prends le temps de visualiser le paquet de cartes, de compter les possibilités et de te demander comment l'information \"la carte est rouge\" modifie ton estimation."
+            },
+            {
+              "type": "definition",
+              "term": "probabilité conditionnelle",
+              "definition": "La probabilité qu'un événement A se produise sachant qu'un événement B s'est déjà produit, notée $P(A \\mid B)$, se calcule comme le quotient de la probabilité de l'intersection de A et B par la probabilité de B, à condition que $P(B) > 0$.",
+              "example": "Si on tire une carte d'un jeu de 32 cartes, $P(\\text{cercle} \\mid \\text{rouge}) = \\frac{P(\\text{cercle} \\cap \\text{rouge})}{P(\\text{rouge})}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour manipuler cette définition, il est commode de disposer d'une représentation visuelle qui organise les effectifs ou les probabilités selon les deux caractéristiques étudiées. Deux outils classiques s'offrent à toi : le tableau de contingence (aussi appelé tableau à double entrée) et l'arbre de probabilités. Chacun met en lumière des aspects différents : le tableau donne une vue d'ensemble immédiate des effectifs croisés, tandis que l'arbre montre la chronologie des épreuves successives et les probabilités conditionnelles successives. Nous allons les construire pas à pas sur un exemple concret."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau de contingence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le jeu de 40 cartes : 20 rouges (10 cercles, 10 carrés) et 20 noires (5 cercles, 15 carrés). On place les couleurs en lignes et les formes en colonnes. Les cases centrales reçoivent les effectifs correspondants, les marges donnent les totaux par couleur et par forme. Ce tableau permet de lire directement $P(\\text{cercle} \\cap \\text{rouge}) = \\frac{10}{40}$ et $P(\\text{rouge}) = \\frac{20}{40}$. La probabilité conditionnelle s'obtient alors en divisant la case \"cercle et rouge\" par le total de la ligne \"rouge\". C'est une opération simple mais il faut veiller à ne pas confondre les marges et les cases intérieures."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Cercle",
+                "Carré",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Rouge",
+                  "10",
+                  "10",
+                  "20"
+                ],
+                [
+                  "Noir",
+                  "5",
+                  "15",
+                  "20"
+                ],
+                [
+                  "Total",
+                  "15",
+                  "25",
+                  "40"
+                ]
+              ],
+              "caption": "Tableau de contingence du jeu de cartes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le tableau est en place, passons à l'arbre de probabilités. L'arbre représente le tirage en deux étapes : d'abord la couleur, ensuite la forme conditionnellement à la couleur. Les branches partant de la racine portent les probabilités $P(\\text{rouge}) = 0,5$ et $P(\\text{noir}) = 0,5$. Depuis chaque nœud couleur, deux branches indiquent les probabilités conditionnelles de la forme : par exemple $P(\\text{cercle} \\mid \\text{rouge}) = \\frac{10}{20} = 0,5$ et $P(\\text{carré} \\mid \\text{rouge}) = 0,5$. Les probabilités des feuilles s'obtiennent en multipliant les probabilités le long du chemin, ce qui redonne les probabilités jointes du tableau."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilités pour le tirage d'une carte",
+              "branches": [
+                {
+                  "label": "Rouge (0,5)",
+                  "children": [
+                    {
+                      "label": "Cercle (0,5)",
+                      "probability": 0.25
+                    },
+                    {
+                      "label": "Carré (0,5)",
+                      "probability": 0.25
+                    }
+                  ]
+                },
+                {
+                  "label": "Noir (0,5)",
+                  "children": [
+                    {
+                      "label": "Cercle (0,25)",
+                      "probability": 0.125
+                    },
+                    {
+                      "label": "Carré (0,75)",
+                      "probability": 0.375
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux représentations sont équivalentes mathématiquement, mais elles ne mettent pas en évidence les mêmes informations. Le tableau est idéal pour comparer des effectifs globaux et calculer des probabilités marginales d'un coup d'œil. L'arbre, lui, guide le raisonnement séquentiel : il montre comment l'information sur la couleur met à jour les probabilités sur la forme. Selon le problème posé, tu choisiras l'outil le plus commode. Par exemple, si l'on te donne directement des probabilités conditionnelles successives, l'arbre s'impose naturellement. Si l'on te donne un recensement croisé, le tableau est plus immédiat."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour passer du tableau à l'arbre, divise chaque case intérieure par le total de sa ligne (ou de sa colonne) afin d'obtenir les probabilités conditionnelles qui étiquettent les branches."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "À partir du tableau de contingence ci-dessus, calcule $P(\\text{cercle} \\mid \\text{rouge})$.",
+              "answer": "0,5",
+              "hint": "Divise l'effectif de la case \"cercle et rouge\" par le total de la ligne \"rouge\".",
+              "explanation": "La case \"cercle et rouge\" vaut 10, le total de la ligne rouge vaut 20, donc $P = 10/20 = 0,5$."
+            },
+            {
+              "question": "Sur l'arbre de probabilités, quelle est la probabilité d'atteindre la feuille \"Noir puis Cercle\" ?",
+              "answer": "0,125",
+              "hint": "Multiplie la probabilité de la première branche (noir) par celle de la seconde branche (cercle sachant noir).",
+              "explanation": "$P(\\text{noir}) = 0,5$ et $P(\\text{cercle} \\mid \\text{noir}) = 5/20 = 0,25$. Le produit donne $0,5 \\times 0,25 = 0,125$."
+            },
+            {
+              "question": "Donne une situation où l'arbre est plus adapté que le tableau pour calculer une probabilité conditionnelle.",
+              "answer": "Lorsqu'on connaît les probabilités successives d'un processus à plusieurs étapes, par exemple la fiabilité d'un test médical suivi d'un second test.",
+              "hint": "Pense à une expérience qui se déroule en étapes successives avec des probabilités conditionnelles données.",
+              "explanation": "L'arbre modélise naturellement la chronologie et les mises à jour successives des probabilités."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule fondamentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "La définition formelle de la probabilité conditionnelle s'écrit $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$ pour tout événement B de probabilité non nulle. Cette égalité est le point de départ de tous les calculs. Elle exprime que, une fois qu'on sait que B est réalisé, l'univers des possibles se réduit à B et la probabilité de A devient la part de B qui appartient aussi à A. Il est crucial de vérifier la condition $P(B) > 0$ avant d'appliquer la formule, sinon le conditionnement n'a pas de sens. Dans la pratique, on rencontre souvent les probabilités jointes $P(A \\cap B)$ et marginales $P(B)$ soit dans un tableau, soit sur les branches d'un arbre."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}"
+            },
+            {
+              "type": "definition",
+              "term": "indépendance",
+              "definition": "Deux événements A et B sont indépendants si et seulement si $P(A \\cap B) = P(A) \\times P(B)$, ce qui équivaut à $P(A \\mid B) = P(A)$ (et $P(B \\mid A) = P(B)$) lorsque les probabilités sont non nulles.",
+              "example": "Lancer un dé et tirer une carte sont indépendants : le résultat du dé n'influence pas la carte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer une probabilité conditionnelle à partir d'un tableau de contingence, on suit une méthode en trois temps : (1) repérer la case correspondant à l'intersection $A \\cap B$ et lire sa probabilité (effectif divisé par total global) ; (2) repérer la marge correspondant à B et lire sa probabilité ; (3) effectuer la division. Cette procédure évite toute confusion entre effectifs bruts et probabilités. Si le tableau donne des effectifs, n'oublie pas de diviser par le total global pour obtenir des probabilités avant de calculer le quotient."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Probabilité de l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la case où la ligne de B et la colonne de A se croisent. Divise son effectif par le total général pour obtenir $P(A \\cap B)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Probabilité de l'événement conditionnant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le total de la ligne (ou colonne) de B et divise par le total général pour obtenir $P(B)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le quotient $P(A \\cap B) / P(B)$. Vérifie que le dénominateur n'est pas nul."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arbre de probabilités offre une lecture directe des probabilités conditionnelles : chaque branche porte déjà $P(\\text{forme} \\mid \\text{couleur})$. Pour retrouver $P(A \\mid B)$ à partir de l'arbre, il suffit de suivre le chemin menant à B puis à A et de lire l'étiquette de la seconde branche. Si l'arbre ne donne que les probabilités jointes aux feuilles, on peut reconstruire $P(B)$ en additionnant les probabilités de toutes les feuilles issues de B, puis appliquer la formule. Cette gymnastique renforce la compréhension du lien entre représentation arborescente et définition algébrique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire la branche conditionnelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'arbre affiche directement $P(A \\mid B)$ sur la branche partant du nœud B vers A, note cette valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Recalculer si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sinon, additionne les probabilités des feuilles descendantes de B pour obtenir $P(B)$, et celle de la feuille (B puis A) pour $P(A \\cap B)$, puis divise."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas particulier très fréquent est l'indépendance. Si A et B sont indépendants, la connaissance de B ne change pas la probabilité de A : $P(A \\mid B) = P(A)$. Dans un tableau, cela se traduit par le fait que chaque case intérieure vaut le produit des marges correspondantes divisé par le total global. Sur un arbre, les branches issues de B vers A portent la même probabilité que les branches issues de non-B vers A. Repérer l'indépendance permet d'éviter des calculs inutiles et de simplifier les modèles. Attention toutefois : l'indépendance est une hypothèse forte qu'il faut justifier par le contexte (expériences sans influence mutuelle) et non seulement par un calcul approché."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne confonds pas indépendance et incompatibilité. Deux événements incompatibles ne peuvent pas se réaliser ensemble ($P(A \\cap B)=0$), alors que des événements indépendants peuvent se réaliser ensemble avec une probabilité produit."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau de contingence de la leçon précédente, calcule $P(\\text{carré} \\mid \\text{noir})$ en utilisant la formule.",
+              "answer": "0,75",
+              "hint": "Trouve $P(\\text{carré} \\cap \\text{noir})$ et $P(\\text{noir})$ à partir du tableau, puis divise.",
+              "explanation": "$P(\\text{carré} \\cap \\text{noir}) = 15/40 = 0,375$, $P(\\text{noir}) = 20/40 = 0,5$, quotient $= 0,375/0,5 = 0,75$."
+            },
+            {
+              "question": "Sur l'arbre de probabilités, quelle est la valeur de $P(\\text{cercle} \\mid \\text{noir})$ ?",
+              "answer": "0,25",
+              "hint": "Regarde l'étiquette de la branche partant du nœud \"Noir\" vers \"Cercle\".",
+              "explanation": "La branche \"Cercle\" sous \"Noir\" est étiquetée 0,25, ce qui est exactement $P(\\text{cercle} \\mid \\text{noir})$."
+            },
+            {
+              "question": "Soit deux événements A et B tels que $P(A)=0,4$, $P(B)=0,5$ et $P(A \\cap B)=0,2$. Sont-ils indépendants ? Justifie.",
+              "answer": "Oui, ils sont indépendants car $P(A \\cap B) = P(A) \\times P(B)$.",
+              "hint": "Calcule le produit $P(A) \\times P(B)$ et compare avec $P(A \\cap B)$.",
+              "explanation": "$0,4 \\times 0,5 = 0,2 = P(A \\cap B)$, donc l'égalité d'indépendance est vérifiée."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Donner du sens aux nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculer une probabilité conditionnelle n'est qu'une étape ; l'essentiel est d'interpréter le résultat dans le contexte du problème. Si $P(\\text{maladie} \\mid \\text{test positif}) = 0,08$, cela signifie que parmi toutes les personnes dont le test est positif, seulement 8 % sont réellement malades. Ce chiffre peut surprendre quand le test est présenté comme \"fiable à 95 %\". La différence vient du fait que la fiabilité du test (sensibilité et spécificité) ne donne pas directement la valeur prédictive positive, qui dépend aussi de la prévalence de la maladie dans la population. Apprends à reformuler chaque probabilité conditionnelle en phrase complète : \"La probabilité que ... sachant que ... est égale à ...\". Cette habitude évite les erreurs d'interprétation."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn illustrant $P(A \\mid B)$ comme la part de B qui appartient à A",
+              "sets": [
+                {
+                  "label": "A",
+                  "color": "blue"
+                },
+                {
+                  "label": "B",
+                  "color": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tester l'indépendance à partir de données observées est une compétence clé. On dispose souvent d'un tableau de contingence issu d'une enquête. La méthode consiste à comparer les probabilités conditionnelles estimées aux probabilités marginales. Si $P(A \\mid B)$ (calculé sur l'échantillon) est proche de $P(A)$, on peut conjecturer l'indépendance, mais un test statistique formel (chi‑carré d'indépendance) est nécessaire pour trancher avec un risque d'erreur contrôlé. En première, on s'entraîne à calculer les deux quantités et à discuter la plausibilité de l'indépendance avant d'introduire le test formel en terminale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Estimer $P(A)$ et $P(B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise les totaux marginaux par l'effectif total."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Estimer $P(A \\mid B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise l'effectif de la case $A \\cap B$ par le total de la ligne (ou colonne) de B."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux valeurs sont très proches, l'hypothèse d'indépendance n'est pas contredite par les données."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons tout cela avec un exemple classique : le dépistage d'une maladie rare. Supposons que la maladie touche 1 % de la population ($P(M)=0,01$). Le test est positif pour 99 % des malades (sensibilité $P(+ \\mid M)=0,99$) et négatif pour 95 % des non‑malades (spécificité $P(- \\mid \\overline{M})=0,95$), donc $P(+ \\mid \\overline{M})=0,05$. On veut connaître $P(M \\mid +)$, la probabilité d'être malade sachant un test positif. En construisant l'arbre (malade / non‑malade puis test + / -) et en appliquant la formule de Bayes (qui n'est qu'une réécriture de la définition), on trouve $P(M \\mid +) \\approx 0,167$. Autrement dit, même avec un test performant, un positif ne donne qu'une chance sur six d'être réellement malade, à cause de la rareté de la maladie. Cet exemple montre la puissance de la probabilité conditionnelle pour prendre des décisions éclairées."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour le test médical",
+              "branches": [
+                {
+                  "label": "Malade (0,01)",
+                  "children": [
+                    {
+                      "label": "Test + (0,99)",
+                      "probability": 0.0099
+                    },
+                    {
+                      "label": "Test - (0,01)",
+                      "probability": 0.0001
+                    }
+                  ]
+                },
+                {
+                  "label": "Non malade (0,99)",
+                  "children": [
+                    {
+                      "label": "Test + (0,05)",
+                      "probability": 0.0495
+                    },
+                    {
+                      "label": "Test - (0,95)",
+                      "probability": 0.9405
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce parcours sur les probabilités conditionnelles simples. Tu as appris à organiser l'information dans un tableau ou un arbre, à appliquer la formule fondamentale, à vérifier l'indépendance et à donner une interprétation concrète aux nombres obtenus. Ces outils te serviront tout au long de l'année, notamment en enseignement scientifique pour analyser des expériences aléatoires, modéliser des phénomènes biologiques ou évaluer des risques. Continue à t'exercer avec des situations variées : plus tu manipuleras ces représentations, plus elles deviendront intuitives."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un tableau de contingence et un arbre de probabilités à partir d'un énoncé.",
+                "Je sais calculer $P(A \\mid B)$ avec la formule $P(A \\cap B)/P(B)$.",
+                "Je sais tester l'indépendance en comparant $P(A \\mid B)$ et $P(A)$.",
+                "Je sais interpréter une probabilité conditionnelle dans un contexte réel (ex. test médical)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Reformule en phrase complète : $P(\\text{pluie} \\mid \\text{nuages}) = 0,7$.",
+              "answer": "La probabilité qu'il pleuve sachant qu'il y a des nuages est égale à 0,7.",
+              "hint": "Utilise la structure \"La probabilité que ... sachant que ... est égale à ...\".",
+              "explanation": "L'énoncé demande de traduire la notation mathématique en langage naturel."
+            },
+            {
+              "question": "Dans une enquête, sur 200 lycéens, 120 font du sport, 80 jouent d'un instrument, et 50 font les deux. Est‑ce que « faire du sport » et « jouer d'un instrument » semblent indépendants ?",
+              "answer": "Non, car $P(\\text{sport} \\mid \\text{instrument}) = 50/80 = 0,625$ alors que $P(\\text{sport}) = 120/200 = 0,6$, les valeurs diffèrent.",
+              "hint": "Calcule $P(\\text{sport})$, $P(\\text{instrument})$ et $P(\\text{sport} \\mid \\text{instrument})$.",
+              "explanation": "L'indépendance impliquerait $P(\\text{sport} \\mid \\text{instrument}) = P(\\text{sport})$. Ici 0,625 ≠ 0,6, donc l'hypothèse n'est pas vérifiée."
+            },
+            {
+              "question": "Avec les données du test médical (prévalence 1 %, sensibilité 99 %, spécificité 95 %), calcule $P(\\text{maladie} \\mid \\text{test +})$.",
+              "answer": "Environ 0,167 (soit 16,7 %).",
+              "hint": "Utilise l'arbre : $P(M \\cap +) = 0,01 \\times 0,99 = 0,0099$ ; $P(+) = 0,0099 + 0,99 \\times 0,05 = 0,0594$ ; divise.",
+              "explanation": "Le numérateur est la probabilité d'être malade et testé positif. Le dénominateur est la probabilité totale d'un test positif (malades + non malades). Le quotient donne la valeur prédictive positive."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

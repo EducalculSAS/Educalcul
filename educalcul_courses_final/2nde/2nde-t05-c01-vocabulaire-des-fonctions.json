@@ -1,0 +1,228 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.080992+00:00",
+  "id": 520,
+  "code": "2nde-t05-c01",
+  "title": "Vocabulaire des fonctions",
+  "description": "Cours structuré Educalcul : Vocabulaire des fonctions.",
+  "subject": "Fonctions, représentations et variations",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Fonctions, représentations et variations",
+    "titre_du_cours": "Vocabulaire des fonctions",
+    "objectif_global": "Vocabulaire des fonctions",
+    "mini_lecons_imposees": [
+      "Domaine.",
+      "Image / antécédent.",
+      "Notation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions, représentations et variations",
+      "lessons": [
+        {
+          "title": "Domaine.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu utilises un distributeur automatique de boissons. Pour obtenir une boisson, tu dois entrer un code spécifique. Si tu tapes un code qui n'existe pas, la machine affiche une erreur et rien ne se passe. Une fonction mathématique fonctionne exactement sur le même principe. C'est comme une machine où tu insères un nombre $x$ en entrée, et elle te renvoie un résultat $f(x)$ en sortie. Mais attention, toutes les machines n'acceptent pas tous les nombres. Par exemple, si ta machine est programmée pour diviser par le nombre que tu as choisi, elle sera totalement bloquée si tu tapes $0$, car la division par zéro est strictement interdite en mathématiques. Ce concept de savoir quels nombres on a le droit d'utiliser et lesquels sont strictement interdits est ce qu'on appelle le domaine de définition. C'est la première étape cruciale pour étudier n'importe quelle fonction, car avant de chercher un résultat, on doit s'assurer que le calcul est possible. C'est un peu comme vérifier que les ingrédients sont compatibles avant de lancer une recette de cuisine pour éviter que tout n'explose dans la cuisine."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le domaine de définition d'une fonction $f$, noté $D_f$, est l'ensemble de tous les nombres réels $x$ pour lesquels l'image $f(x)$ existe et est un nombre réel bien défini. En d'autres termes, c'est l'ensemble des valeurs d'entrée qui ne provoquent pas d'erreur de calcul. En classe de seconde, on rencontre principalement deux situations où le domaine n'est pas l'ensemble tout entier des nombres réels (noté $\\mathbb{R}$, allant de $-\\infty$ à $+\\infty$). La première situation est la présence d'un dénominateur. Comme on ne peut pas diviser par zéro, toute valeur de $x$ qui annule le dénominateur doit être exclue du domaine. La seconde situation est la présence d'une racine carrée $\\sqrt{...}$. En mathématiques réelles, on ne peut pas calculer la racine carrée d'un nombre strictement négatif. Par conséquent, l'expression située sous la racine doit toujours être supérieure ou égale à $0$. Si une fonction ne présente aucune de ces contraintes, on dit qu'elle est définie sur $\\mathbb{R}$. Le domaine s'écrit généralement sous la forme d'un intervalle, comme $[0 ; 10]$ ou $]-\\infty ; 2[ \\cup ]2 ; +\\infty[$, pour montrer clairement les zones autorisées."
+            },
+            {
+              "type": "number_line",
+              "caption": "Domaine de la fonction f(x) = 1/(x-4) : tout sauf 4",
+              "min": 0,
+              "max": 8,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Interdit"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer le domaine de définition d'une fonction, il faut adopter une attitude de détective et chercher les valeurs interdites. Voici la marche à suivre rigoureuse. Premièrement, on identifie la nature de la fonction. Est-ce qu'il y a une fraction ? Est-ce qu'il y a une racine carrée ? Deuxièmement, si on a une fraction, on pose l'équation : dénominateur $= 0$. On résout cette équation pour trouver les valeurs de $x$ qui posent problème. Ces valeurs seront exclues du domaine. Troisièmement, si on a une racine carrée, on pose l'inéquation : contenu de la racine $\\ge 0$. On résout cette inéquation pour trouver l'intervalle des valeurs autorisées. Quatrièmement, on synthétise ces informations pour écrire le domaine final. Si on a plusieurs conditions, le domaine est l'intersection de toutes ces conditions. On utilise alors les crochets pour indiquer si les bornes sont incluses ou exclues. Par exemple, un crochet ouvert $]$ ou $[$ signifie que la valeur est exclue, tandis qu'un crochet fermé signifie qu'elle fait partie du domaine. Il est essentiel de toujours vérifier si le résultat final est cohérent avec les contraintes initiales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la fonction $f$ définie par $f(x) = \\frac{5}{x-4}$. Ici, nous avons une structure de fraction, donc nous devons surveiller le dénominateur. Le dénominateur est l'expression $x-4$. Pour trouver la valeur interdite, on cherche quand ce dénominateur est égal à $0$. On résout l'équation $x-4 = 0$, ce qui nous donne $x = 4$. Cela signifie que si on choisit $x = 4$, on obtient $f(4) = \\frac{5}{0}$, ce qui est impossible. Tous les autres nombres réels fonctionnent parfaitement. Pour exprimer cela, on dit que le domaine de $f$ est l'ensemble des réels privé de $4$. En notation d'intervalle, on écrit $D_f = ]-\\infty ; 4[ \\cup ]4 ; +\\infty[$. On voit bien que le nombre $4$ est exclu grâce aux crochets ouverts. Si on avait choisi $x = 5$, on aurait $f(5) = \\frac{5}{5-4} = 5$, ce qui est tout à fait possible. Le domaine nous indique donc précisément où la fonction 'vit' et où elle s'arrête brusquement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Étudions maintenant la fonction $g$ définie par $g(x) = \\sqrt{2x+6}$. Dans ce cas, nous sommes face à une racine carrée. La règle d'or est que le contenu sous la racine, appelé radicande, doit être positif ou nul. On doit donc résoudre l'inéquation $2x+6 \\ge 0$. Pour isoler $x$, on commence par soustraire $6$ des deux côtés, ce qui donne $2x \\ge -6$. Ensuite, on divise par $2$ des deux côtés, ce qui nous donne $x \\ge \\frac{-6}{2}$, soit $x \\ge -3$. Cela signifie que toutes les valeurs de $x$ supérieures ou égales à $-3$ sont acceptées. Par exemple, si $x = -3$, on a $\\sqrt{0} = 0$, c'est valide. Si $x = 0$, on a $\\sqrt{6}$, c'est valide. Par contre, si $x = -5$, on aurait $\\sqrt{-10+6} = \\sqrt{-4}$, ce qui est impossible. Le domaine de définition est donc l'ensemble des nombres allant de $-3$ jusqu'à l'infini. On l'écrit avec un crochet fermé en $-3$ car le zéro est autorisé sous la racine : $D_g = [-3 ; +\\infty[$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'une des erreurs les plus classiques est de confondre le domaine de définition avec l'ensemble des images. Le domaine, c'est ce que l'on met dans la machine ($x$), alors que les images sont ce qui ressort ($f(x)$). Une autre erreur fréquente survient lors de la résolution d'inéquations avec des racines carrées : certains élèves oublient d'ouvrir ou fermer les crochets correctement. Rappelle-toi que $\\sqrt{0}$ existe, donc la borne où l'expression s'annule est généralement incluse. Un piège redoutable apparaît quand on a une racine carrée au dénominateur, comme dans $h(x) = \\frac{1}{\\sqrt{x}}$. Ici, on a deux contraintes : le contenu de la racine doit être positif ($x \\ge 0$) ET le dénominateur ne peut pas être nul (donc $\\sqrt{x} \\neq 0$, ce qui implique $x \\neq 0$). La combinaison des deux impose $x > 0$. Le domaine devient donc $D_h = ]0 ; +\\infty[$. Le crochet en $0$ devient ouvert car on ne peut plus accepter le zéro. Sois toujours vigilant sur la superposition des contraintes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve le domaine de définition de la fonction $f(x) = \\frac{7}{2x-10}$.",
+              "answer": "D_f = ]-\\infty ; 5[ \\cup ]5 ; +\\infty[",
+              "hint": "Cherche la valeur de x qui rend le dénominateur égal à 0.",
+              "explanation": "On pose $2x-10 = 0$, ce qui donne $2x = 10$, donc $x = 5$. La valeur $5$ est interdite. Le domaine est donc $\\mathbb{R} \\setminus \\{5\\}$."
+            }
+          ]
+        },
+        {
+          "title": "Image / antécédent.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu possèdes un traducteur magique. Tu lui donnes un mot en français, et il te donne instantanément le mot correspondant en anglais. Si tu lui donnes le mot 'Pomme', il te répond 'Apple'. Dans ce scénario, 'Pomme' est la donnée de départ et 'Apple' est le résultat. En mathématiques, c'est exactement ce qui se passe avec une fonction. On donne un nombre $x$ à la fonction, et elle nous renvoie un résultat $y$. Pour éviter de s'emmêler les pinceaux, les mathématiciens ont créé deux mots très précis : image et antécédent. L'image, c'est le résultat final, le 'Apple' de notre exemple. L'antécédent, c'est le nombre de départ, le 'Pomme'. Comprendre cette distinction est fondamental car, selon le sens dans lequel on voyage (de l'entrée vers la sortie ou inversement), la méthode de calcul change complètement. C'est comme savoir si on doit traduire du français vers l'anglais ou de l'anglais vers le français : on utilise le même dictionnaire, mais on ne cherche pas la même chose."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une fonction $f$ définie sur un domaine $D_f$. Si on choisit un nombre $a$ appartenant à ce domaine, le nombre $b = f(a)$ est appelé l'image de $a$ par la fonction $f$. On peut dire que $b$ est la valeur que prend la fonction lorsque $x$ vaut $a$. À l'inverse, on dit que $a$ est un antécédent de $b$ par la fonction $f$. Il est important de noter une nuance cruciale : alors qu'un nombre $a$ ne peut avoir qu'une seule image (la machine ne peut pas donner deux résultats différents pour une même entrée), un nombre $b$ peut avoir plusieurs antécédents, un seul, ou même aucun. Par exemple, si la fonction est un carré, les nombres $2$ et $-2$ ont tous les deux la même image : $4$. Ici, $4$ est l'image, tandis que $2$ et $-2$ sont les deux antécédents de $4$. Graphiquement, l'image se lit sur l'axe vertical (l'axe des ordonnées) et l'antécédent se lit sur l'axe horizontal (l'axe des abscisses)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Antécédent (x)",
+                "Calcul f(x) = x^2 - 5",
+                "Image (y)"
+              ],
+              "rows": [
+                [
+                  "-3",
+                  "(-3)^2 - 5 = 4",
+                  "4"
+                ],
+                [
+                  "0",
+                  "0^2 - 5 = -5",
+                  "-5"
+                ],
+                [
+                  "3",
+                  "3^2 - 5 = 4",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode dépend de ce que l'on recherche. Pour trouver l'image d'un nombre $a$, la procédure est simple et directe. Il suffit de remplacer toutes les occurrences de $x$ dans l'expression de la fonction par la valeur $a$, puis d'effectuer les calculs. C'est une évaluation numérique. Par exemple, si $f(x) = 2x + 3$, l'image de $4$ est $f(4) = 2 \\times 4 + 3 = 11$. En revanche, pour trouver l'antécédent d'un nombre $b$, on procède à l'envers. On ne remplace pas $x$ par $b$, mais on pose l'équation $f(x) = b$. On cherche alors toutes les valeurs de $x$ qui satisfont cette égalité. Cela demande souvent de résoudre une équation du premier ou du second degré. Si l'équation n'a pas de solution, c'est que le nombre $b$ n'a pas d'antécédent. Si elle a plusieurs solutions, ce sont tous des antécédents de $b$. Il faut donc être très attentif à la consigne : 'calculer l'image' signifie calculer $f(x)$, alors que 'trouver l'antécédent' signifie résoudre $f(x) = b$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fonction $f(x) = -3x + 7$ et cherchons l'image du nombre $-2$. Ici, on nous demande l'image, donc on applique la méthode de remplacement. On remplace $x$ par $-2$ dans l'expression : $f(-2) = -3 \\times (-2) + 7$. On effectue d'abord la multiplication, en faisant attention aux signes : $-3 \\times (-2) = 6$. Ensuite, on ajoute $7$ : $6 + 7 = 13$. L'image de $-2$ par la fonction $f$ est donc $13$. On peut écrire cela sous la forme $f(-2) = 13$. Cela signifie que sur le graphique de la fonction, le point de coordonnées $(-2 ; 13)$ appartient à la courbe. C'est un processus linéaire : on part de l'entrée, on suit la règle de calcul, et on arrive au résultat. C'est le chemin le plus simple en analyse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Utilisons la fonction $g(x) = x^2 - 5$ et cherchons les antécédents du nombre $11$. Attention, ici on demande les antécédents, donc on doit résoudre l'équation $g(x) = 11$. On écrit l'équation : $x^2 - 5 = 11$. Pour isoler $x^2$, on ajoute $5$ des deux côtés, ce qui donne $x^2 = 11 + 5$, soit $x^2 = 16$. On cherche maintenant tous les nombres dont le carré est $16$. Il y en a deux : $4$ car $4 \\times 4 = 16$, et $-4$ car $(-4) \\times (-4) = 16$. Les antécédents de $11$ par la fonction $g$ sont donc $4$ et $-4$. On peut vérifier en calculant les images : $g(4) = 4^2 - 5 = 16 - 5 = 11$ et $g(-4) = (-4)^2 - 5 = 16 - 5 = 11$. Cela illustre parfaitement le fait qu'un nombre peut avoir plusieurs antécédents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est d'inverser les deux notions. Face à la question 'Trouve l'antécédent de $5$', beaucoup d'élèves calculent $f(5)$, ce qui est l'image, et non l'antécédent. Pour ne plus se tromper, associe mentalement 'Image' avec 'Calcul' et 'Antécédent' avec 'Équation'. Un autre piège classique concerne les fonctions avec des carrés. Quand on résout $x^2 = 9$, on a tendance à répondre seulement $x = 3$, en oubliant completely la solution négative $x = -3$. Souviens-toi qu'un carré est toujours positif, donc deux nombres opposés auront toujours la même image. Enfin, fais attention aux domaines de définition. Si tu trouves un antécédent mathématiquement, mais que ce nombre est exclu du domaine de définition $D_f$, alors ce n'est pas un antécédent valide. Il faut toujours confronter ses résultats avec le domaine établi en leçon 1."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = 4x - 3$. Calcule l'image de $2$ puis trouve l'antécédent de $17$.",
+              "answer": "Image : 5 ; Antécédent : 5",
+              "hint": "Pour l'image, remplace x par 2. Pour l'antécédent, résous 4x - 3 = 17.",
+              "explanation": "Image : $f(2) = 4 \\times 2 - 3 = 8 - 3 = 5$. Antécédent : $4x - 3 = 17 \\implies 4x = 20 \\implies x = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Notation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Apprendre les mathématiques, c'est un peu comme apprendre une nouvelle langue. Au début, on comprend l'idée générale, mais pour communiquer avec précision, on a besoin d'une grammaire et d'un vocabulaire stricts. En seconde, on passe d'une écriture simple comme 'le résultat est égal à...' à une notation symbolique compacte et puissante. Les mathématiciens adorent gagner du temps et de l'espace, alors ils utilisent des flèches et des symboles pour décrire tout le fonctionnement d'une fonction en une seule ligne. Au premier abord, cela peut ressembler à un code secret ou à du jargon intimidant, mais c'est en réalité un outil de clarté absolue. Une fois que tu maîtrises ce code, tu peux lire en un coup d'œil quel est l'ensemble des nombres autorisés, quelle est la règle de transformation et où se situent les résultats. C'est comme passer de la lecture d'une histoire racontée à la lecture d'un plan d'architecte : c'est plus technique, mais c'est beaucoup plus efficace pour comprendre la structure globale d'un problème."
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation formelle d'une fonction se présente souvent ainsi : $f : D_f \\to \\mathbb{R}, x \\mapsto f(x)$. Décortiquons ce code. Le 'f' est le nom de la fonction. Les deux points ':' signifient 'est définie comme suit'. La première flèche $\\to$ relie l'ensemble de départ (le domaine $D_f$) à l'ensemble d'arrivée (généralement $\\mathbb{R}$, l'ensemble des réels). Elle indique d'où partent les nombres et où ils atterrissent. La deuxième flèche $\\mapsto$ signifie 'est envoyé vers'. Elle lie l'antécédent $x$ à son image $f(x)$. Par exemple, $x \\mapsto x^2$ signifie que chaque nombre est envoyé vers son carré. Parallèlement, on utilise très souvent l'écriture $y = f(x)$. Ici, $y$ représente l'image. C'est une notation extrêmement pratique pour le traçage de courbes dans un repère, car $x$ correspond à l'abscisse et $y$ à l'ordonnée. Cette double notation permet de passer facilement d'une vision analytique (le calcul) à une vision géométrique (le dessin)."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Correspondance : x appartient au domaine, f(x) appartient à l'ensemble d'arrivée",
+              "sets": [
+                {
+                  "label": "Domaine D_f",
+                  "elements": [
+                    "1",
+                    "2",
+                    "4"
+                  ]
+                },
+                {
+                  "label": "Ensemble d'arrivée",
+                  "elements": [
+                    "1",
+                    "4",
+                    "16"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien utiliser et lire ces notations, il faut suivre une logique de lecture de gauche à droite. Premièrement, regarde le nom de la fonction et l'ensemble de départ. Si tu vois $f : [0 ; +\\infty[ \\to \\mathbb{R}$, tu sais immédiatement que la fonction n'accepte que des nombres positifs. Deuxièmement, identifie la règle de correspondance après la flèche $\\mapsto$. C'est là que se trouve la 'recette' mathématique, par exemple $x \\mapsto \\frac{1}{x}$. Troisièmement, pour passer à la notation algébrique, remplace simplement $x \\mapsto ...$ par $f(x) = ...$. Ainsi, $x \\mapsto 2x + 1$ devient $f(x) = 2x + 1$. Quatrièmement, quand tu dois exprimer un résultat, utilise la notation $f(a) = b$. Par exemple, pour dire que l'image de $3$ est $7$, écris $f(3) = 7$. Enfin, si tu travailles sur un graphique, utilise $y = f(x)$ pour lier la position verticale du point à la valeur de la fonction. Cette rigueur évite les erreurs d'interprétation, surtout quand on manipule plusieurs fonctions en même temps dans un seul exercice."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons la notation complète suivante : $g : \\mathbb{R} \\to \\mathbb{R}, x \\mapsto 3x^2 - 4$. Que nous dit-elle précisément ? Le nom de la fonction est $g$. L'ensemble de départ est $\\mathbb{R}$, ce qui signifie que le domaine de définition est l'ensemble de tous les nombres réels, sans aucune valeur interdite. La flèche $\\to \\mathbb{R}$ nous indique que les résultats (les images) seront également des nombres réels. Enfin, la correspondance $x \\mapsto 3x^2 - 4$ nous donne la règle de calcul : pour trouver l'image, on élève $x$ au carré, on multiplie par $3$, puis on soustrait $4$. Si on veut l'écrire sous forme d'équation, on écrira $g(x) = 3x^2 - 4$. Pour trouver l'image de $2$, on calcule $g(2) = 3 \\times 2^2 - 4 = 3 \\times 4 - 4 = 12 - 4 = 8$. On a donc $g(2) = 8$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons maintenant une fonction avec un domaine restreint : $h : ]0 ; +\\infty[ \\to \\mathbb{R}, x \\mapsto \\frac{1}{x}$. Ici, la notation nous avertit tout de suite que $0$ et les nombres négatifs sont exclus du domaine. La règle de correspondance est l'inverse du nombre. Si on utilise la notation $y = h(x)$, on peut étudier les variations de la courbe. Par exemple, si on cherche pour quelle valeur de $x$ l'image est $0,5$, on pose $y = 0,5$, donc $0,5 = \\frac{1}{x}$, ce qui donne $x = 2$. On peut alors écrire $h(2) = 0,5$. Cette notation est très utile pour décrire des phénomènes physiques, comme la relation entre la pression et le volume d'un gaz, où certaines valeurs sont physiquement impossibles (comme un volume négatif)."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est la confusion entre les deux types de flèches. La flèche $\\to$ lie deux ensembles (des 'boîtes' de nombres), alors que la flèche $\\mapsto$ lie deux éléments précis (un nombre et son image). Écrire $f : \\mathbb{R} \\mapsto \\mathbb{R}$ est une faute grave de notation. Un autre piège est d'oublier de préciser l'ensemble de départ. Dire simplement $x \\mapsto x^2$ sans préciser si on est sur $\\mathbb{R}$ ou sur un autre ensemble peut mener à des erreurs de raisonnement, surtout plus tard dans vos études. Enfin, méfiez-vous de la notation $f(x)$. Ce n'est pas une multiplication entre $f$ et $x$, mais une notation pour désigner 'l'image de $x$ par $f$'. Écrire $f \\times x$ pour parler d'une fonction est une erreur classique qu'il faut absolument bannir de votre copie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réécris la notation suivante sous forme d'équation $f(x) = ...$ : $f : \\mathbb{R} \\to \\mathbb{R}, x \\mapsto -2x + 5$. Quelle est l'image de $3$ ?",
+              "answer": "f(x) = -2x + 5 ; Image : -1",
+              "hint": "Remplace le symbole de la flèche de correspondance par le signe égal.",
+              "explanation": "La notation $x \\mapsto -2x + 5$ correspond à $f(x) = -2x + 5$. Pour l'image de $3$ : $f(3) = -2 \\times 3 + 5 = -6 + 5 = -1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

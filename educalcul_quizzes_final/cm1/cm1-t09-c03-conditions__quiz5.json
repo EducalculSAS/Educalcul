@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Si / alors",
+  "title": "Maîtriser le Si et le Alors",
+  "questions": [
+    {
+      "text": "Dans un programme informatique, à quoi sert l'instruction Si alors ?",
+      "options": [
+        "À répéter une action plusieurs fois",
+        "À exécuter une action seulement si une condition est vraie",
+        "À effacer tout le programme",
+        "À calculer la somme de deux nombres"
+      ],
+      "correctAnswer": "À exécuter une action seulement si une condition est vraie",
+      "explanation": "L'instruction Si alors permet de créer un branchement. L'action située après le alors ne sera réalisée que si la condition specified après le Si est vérifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considère l'instruction suivante : Si le score est supérieur à $10$ alors afficher GAGNÉ. Quel message s'affiche si le score est égal à $10$ ?",
+      "options": [
+        "GAGNÉ",
+        "PERDU",
+        "Aucun message ne s'affiche",
+        "Erreur du programme"
+      ],
+      "correctAnswer": "Aucun message ne s'affiche",
+      "explanation": "La condition est strictement supérieur à $10$. Comme $10$ n'est pas supérieur à $10$, la condition est fausse. L'action d'afficher le message n'est donc pas exécutée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise l'instruction : Si l'heure est $8$ h $00$ alors sonner la cloche. On regarde l'heure sur l'image. La cloche sonne t elle ?",
+      "options": [
+        "Oui, car il est exactement $8$ h $00$",
+        "Non, car il est $3$ h $30$",
+        "Oui, car il est après $3$ h $00$",
+        "Non, car l'horloge est cassée"
+      ],
+      "correctAnswer": "Non, car il est $3$ h $30$",
+      "explanation": "L'horloge indique $3$ h $30$. La condition pour sonner la cloche est que l'heure soit exactement $8$ h $00$. La condition est fausse, donc la cloche ne sonne pas.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 30,
+        "caption": "Heure actuelle",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Léa écrit ce programme : Si la température est inférieure à $0$ degré alors mettre un manteau. Si la température est de $-3$ degrés, que fait Léa ?",
+      "options": [
+        "Elle ne met pas de manteau",
+        "Elle met un manteau",
+        "Elle attend qu'il fasse $0$ degré",
+        "Elle met un short"
+      ],
+      "correctAnswer": "Elle met un manteau",
+      "explanation": "Le nombre $-3$ est inférieur à $0$. La condition est donc vraie, ce qui déclenche l'action de mettre un manteau.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          }
+        ],
+        "caption": "Température extérieure"
+      }
+    },
+    {
+      "text": "Un robot suit cette règle : Si la case est rouge alors avancer. Sinon, tourner à droite. Le robot arrive sur une case bleue. Que fait il ?",
+      "options": [
+        "Il avance",
+        "Il s'arrête",
+        "Il tourne à droite",
+        "Il ne fait rien"
+      ],
+      "correctAnswer": "Il tourne à droite",
+      "explanation": "L'instruction Sinon permet de définir l'action à faire quand la condition du Si est fausse. Ici, la case est bleue, donc elle n'est pas rouge. Le robot exécute alors l'action du Sinon, qui est tourner à droite.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

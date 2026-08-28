@@ -1,0 +1,278 @@
+{
+  "_status": "done",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Placer",
+  "title": "Placer des nombres décimaux sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, qui va de $0$ à $1$ par pas de dixièmes, où se trouve exactement le nombre $0,3$ ?",
+      "options": [
+        "Au niveau de la graduation $0,03$",
+        "Au niveau de la graduation $0,3$",
+        "Entre les graduations $0,2$ et $0,3$",
+        "Au niveau de la graduation $3$"
+      ],
+      "correctAnswer": "Au niveau de la graduation $0,3$",
+      "explanation": "La droite est graduée par dixièmes : $0,1$, $0,2$, $0,3$, etc. Le nombre $0,3$ correspond à trois dixièmes. Il se place donc exactement sur la troisième graduation après zéro, celle qui porte l'étiquette $0,3$. L'option $0,03$ correspond à trois centièmes (dix fois plus petit). L'option $3$ est un nombre entier bien plus grand. Être « entre $0,2$ et $0,3$ » serait imprécis car $0,3$ est une graduation précise.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.1
+          },
+          {
+            "start": 0.1,
+            "end": 0.2
+          },
+          {
+            "start": 0.2,
+            "end": 0.3
+          },
+          {
+            "start": 0.3,
+            "end": 0.4
+          },
+          {
+            "start": 0.4,
+            "end": 0.5
+          },
+          {
+            "start": 0.5,
+            "end": 0.6
+          },
+          {
+            "start": 0.6,
+            "end": 0.7
+          },
+          {
+            "start": 0.7,
+            "end": 0.8
+          },
+          {
+            "start": 0.8,
+            "end": 0.9
+          },
+          {
+            "start": 0.9,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "On considère une droite graduée de $0$ à $1$ par dixièmes. Le point A est placé exactement à mi-chemin entre la graduation $0$ et la graduation $0,1$. Quel nombre décimal correspond au point A ?",
+      "options": [
+        "$0,5$",
+        "$0,05$",
+        "$0,15$",
+        "$0,01$"
+      ],
+      "correctAnswer": "$0,05$",
+      "explanation": "L'intervalle entre $0$ et $0,1$ vaut un dixième ($0,1$). Le milieu de cet intervalle correspond à la moitié d'un dixième, soit cinq centièmes. En écriture décimale, cinq centièmes s'écrit $0,05$. L'option $0,5$ correspond à cinq dixièmes (le milieu entre $0$ et $1$). L'option $0,15$ se situe entre $0,1$ et $0,2$. L'option $0,01$ est un centième, bien plus proche de zéro.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes, point A au milieu de 0 et 0,1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.05,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.1
+          },
+          {
+            "start": 0.1,
+            "end": 0.2
+          },
+          {
+            "start": 0.2,
+            "end": 0.3
+          },
+          {
+            "start": 0.3,
+            "end": 0.4
+          },
+          {
+            "start": 0.4,
+            "end": 0.5
+          },
+          {
+            "start": 0.5,
+            "end": 0.6
+          },
+          {
+            "start": 0.6,
+            "end": 0.7
+          },
+          {
+            "start": 0.7,
+            "end": 0.8
+          },
+          {
+            "start": 0.8,
+            "end": 0.9
+          },
+          {
+            "start": 0.9,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur la droite ci-dessous, graduée de $0$ à $1$ par dixièmes, un point B est placé sur la septième graduation après zéro. Quelle est la valeur de ce point B ?",
+      "options": [
+        "$0,07$",
+        "$0,7$",
+        "$7$",
+        "$0,17$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "Les graduations principales représentent les dixièmes : la première est $0,1$, la deuxième $0,2$, ..., la septième est $0,7$. Le point B se trouve donc sur la graduation $0,7$ (sept dixièmes). L'option $0,07$ correspond à la septième graduation si l'on comptait les centièmes (ce qui n'est pas le cas ici). L'option $7$ est un nombre entier. L'option $0,17$ se situerait entre la première et la deuxième graduation principale.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes, point B sur la 7e graduation",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.7,
+            "label": "B"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 0.1
+          },
+          {
+            "start": 0.1,
+            "end": 0.2
+          },
+          {
+            "start": 0.2,
+            "end": 0.3
+          },
+          {
+            "start": 0.3,
+            "end": 0.4
+          },
+          {
+            "start": 0.4,
+            "end": 0.5
+          },
+          {
+            "start": 0.5,
+            "end": 0.6
+          },
+          {
+            "start": 0.6,
+            "end": 0.7
+          },
+          {
+            "start": 0.7,
+            "end": 0.8
+          },
+          {
+            "start": 0.8,
+            "end": 0.9
+          },
+          {
+            "start": 0.9,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "On regarde maintenant une droite graduée de $1$ à $2$ par dixièmes. Où doit-on placer le nombre $1,4$ ?",
+      "options": [
+        "Au niveau de la graduation $4$",
+        "Au niveau de la graduation $0,4$",
+        "Au niveau de la graduation $1,4$",
+        "Entre les graduations $1$ et $1,1$"
+      ],
+      "correctAnswer": "Au niveau de la graduation $1,4$",
+      "explanation": "La droite commence à $1$ (un entier). Les graduations suivantes sont $1,1$ ; $1,2$ ; $1,3$ ; $1,4$ ; etc. Le nombre $1,4$ signifie $1$ unité et $4$ dixièmes. Il se place donc exactement sur la graduation marquée $1,4$, qui est la quatrième graduation après $1$. L'option « graduation $4$ » n'existe pas sur cette portion de droite (elle serait à $4$ unités). L'option « graduation $0,4$ » est avant le début de la droite. L'option « entre $1$ et $1,1$ » correspond aux nombres entre $1,0$ et $1,1$ (comme $1,05$).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 1 à 2 graduée par dixièmes",
+        "min": 1,
+        "max": 2,
+        "points": [],
+        "intervals": [
+          {
+            "start": 1,
+            "end": 1.1
+          },
+          {
+            "start": 1.1,
+            "end": 1.2
+          },
+          {
+            "start": 1.2,
+            "end": 1.3
+          },
+          {
+            "start": 1.3,
+            "end": 1.4
+          },
+          {
+            "start": 1.4,
+            "end": 1.5
+          },
+          {
+            "start": 1.5,
+            "end": 1.6
+          },
+          {
+            "start": 1.6,
+            "end": 1.7
+          },
+          {
+            "start": 1.7,
+            "end": 1.8
+          },
+          {
+            "start": 1.8,
+            "end": 1.9
+          },
+          {
+            "start": 1.9,
+            "end": 2
+          }
+        ]
+      }
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel se place entre $0,3$ et $0,4$ sur une droite numérotée ?",
+      "options": [
+        "$0,035$",
+        "$0,35$",
+        "$0,53$",
+        "$3,5$"
+      ],
+      "correctAnswer": "$0,35$",
+      "explanation": "Pour se situer entre $0,3$ (trois dixièmes, soit trente centièmes) et $0,4$ (quatre dixièmes, soit quarante centièmes), le nombre doit être supérieur à $0,30$ et inférieur à $0,40$. Le nombre $0,35$ (trente-cinq centièmes) remplit cette condition : $0,30 < 0,35 < 0,40$. Le nombre $0,035$ (trente-cinq millièmes) est bien plus petit que $0,3$. Le nombre $0,53$ (cinquante-trois centièmes) est plus grand que $0,4$. Le nombre $3,5$ est un nombre entier avec une partie décimale, bien plus grand que $1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "If / else",
+  "title": "Quiz If / else - 5e",
+  "questions": [
+    {
+      "text": "Si la variable age est supérieure à 12, afficher 'Adolescent', sinon afficher 'Enfant'. Quel sera l'affichage si age = 10 ?",
+      "options": [
+        "Adolescent",
+        "Enfant",
+        "Rien",
+        "Erreur"
+      ],
+      "correctAnswer": "Enfant",
+      "explanation": "La condition age > 12 est fausse pour age = 10, donc le bloc sinon s'exécute et affiche Enfant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le code suivant : si note >= 16 alors 'Très bien' sinon si note >= 12 alors 'Bien' sinon 'Insuffisant'. Quelle mention pour note = 14 ?",
+      "options": [
+        "Très bien",
+        "Bien",
+        "Insuffisant",
+        "Aucune"
+      ],
+      "correctAnswer": "Bien",
+      "explanation": "La première condition note >= 16 est fausse, la seconde note >= 12 est vraie pour 14, donc le programme affiche Bien.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La condition $x > 5$ et $x < 10$ est vraie pour quelle valeur de $x$ ?",
+      "options": [
+        "4",
+        "7",
+        "10",
+        "12"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Le nombre 7 satisfait les deux inégalités strictes, alors que 4 est trop petit, 10 et 12 ne respectent pas x < 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que se passe-t-il si on écrit un bloc 'sinon' sans 'si' précédent dans un langage de blocs type Scratch ?",
+      "options": [
+        "Le programme s'arrête",
+        "Le bloc 'sinon' est ignoré",
+        "Erreur de syntaxe",
+        "Le bloc 'sinon' s'exécute toujours"
+      ],
+      "correctAnswer": "Erreur de syntaxe",
+      "explanation": "Un bloc sinon doit être attaché à un bloc si ; sinon l'éditeur signale une erreur de syntaxe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considère le code : si a > 0 alors si b > 0 alors afficher 'Positif' sinon afficher 'Négatif' sinon afficher 'Nul'. Quelle sortie pour $a = -3$ et $b = 5$ ?",
+      "options": [
+        "Positif",
+        "Négatif",
+        "Nul",
+        "Aucune"
+      ],
+      "correctAnswer": "Nul",
+      "explanation": "Comme a n'est pas supérieur à 0, le programme exécute le sinon externe et affiche Nul, sans tester b.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Tracer",
+  "title": "Quiz : Tracer (Algorithmique 6e)",
+  "questions": [
+    {
+      "text": "Quelle instruction permet de faire avancer la tortue de $50$ pas ?",
+      "options": [
+        "avancer $50$",
+        "tourner $50$",
+        "lever crayon",
+        "baisser crayon"
+      ],
+      "correctAnswer": "avancer $50$",
+      "explanation": "L'instruction « avancer » suivie d'une distance déplace la tortue vers l'avant en traçant si le crayon est baissé. « tourner » modifie l'orientation, « lever crayon » et « baisser crayon » gèrent le tracé mais ne déplacent pas la tortue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tourner la tortue de $90$ degrés vers la droite, quelle instruction utilise-t-on ?",
+      "options": [
+        "tourner $90$",
+        "tourner droite $90$",
+        "avancer $90$",
+        "lever crayon"
+      ],
+      "correctAnswer": "tourner $90$",
+      "explanation": "Dans la plupart des langages de tortue, « tourner » sans précision effectue une rotation vers la droite (sens horaire) de l'angle indiqué. « tourner droite » n'est pas la syntaxe standard, « avancer » déplace et « lever crayon » ne tourne pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction empêche la tortue de tracer pendant qu'elle se déplace ?",
+      "options": [
+        "lever crayon",
+        "baisser crayon",
+        "avancer $0$",
+        "tourner $0$"
+      ],
+      "correctAnswer": "lever crayon",
+      "explanation": "« lever crayon » relève le stylet : les déplacements suivants ne laissent aucune trace. « baisser crayon » fait l'effet inverse, « avancer 0 » ne bouge pas et « tourner 0 » ne change pas l'orientation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel programme dessine un carré de côté $30$ ?",
+      "options": [
+        "Répéter $4$ fois [ avancer $30$ ; tourner $90$ ]",
+        "Répéter $4$ fois [ tourner $90$ ; avancer $30$ ]",
+        "Répéter $3$ fois [ avancer $30$ ; tourner $120$ ]",
+        "Répéter $4$ fois [ avancer $30$ ; tourner $45$ ]"
+      ],
+      "correctAnswer": "Répéter $4$ fois [ avancer $30$ ; tourner $90$ ]",
+      "explanation": "Un carré nécessite quatre côtés égaux et quatre angles droits ($90$°). L'ordre « avancer » puis « tourner » répété $4$ fois trace chaque côté puis tourne pour le suivant. Les autres options donnent un décalage, un triangle ou un angle incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution du programme suivant, quelle figure est tracée ?\\nlever crayon ; avancer $50$ ; baisser crayon ; répéter $3$ fois [ avancer $40$ ; tourner $120$ ]",
+      "options": [
+        "Un triangle équilatéral de côté $40$",
+        "Un carré de côté $40$",
+        "Un segment de longueur $50$",
+        "Rien n'est tracé"
+      ],
+      "correctAnswer": "Un triangle équilatéral de côté $40$",
+      "explanation": "« lever crayon » puis « avancer 50 » déplace la tortue sans tracer. « baisser crayon » remet le stylet. La boucle « répéter 3 fois [ avancer 40 ; tourner 120 ] » trace trois segments de $40$ avec des angles de $120$°, ce qui forme un triangle équilatéral. Le déplacement initial n'est pas visible.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

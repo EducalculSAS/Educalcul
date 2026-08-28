@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Programmes de calcul",
+  "title": "Programmes de calcul : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Programme simple",
+      "content": "Remets les étapes du programme de calcul suivant dans l'ordre chronologique : choisir un nombre, le multiplier par 3, ajouter 5, puis afficher le résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir un nombre",
+        "Multiplier par $3$",
+        "Ajouter $5$",
+        "Afficher le résultat"
+      ],
+      "explanation": "Le programme commence par la saisie d'un nombre. Ensuite, on effectue la multiplication par $3$. Puis on ajoute $5$ au produit obtenu. Enfin, on affiche le résultat final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme avec test conditionnel",
+      "content": "Remets les étapes du programme suivant dans l'ordre chronologique : choisir un nombre, tester s'il est pair, si c'est le cas le diviser par 2, sinon le multiplier par 3, puis afficher le résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir un nombre",
+        "Tester si le nombre est pair",
+        "Si pair, diviser par $2$",
+        "Sinon, multiplier par $3$",
+        "Afficher le résultat"
+      ],
+      "explanation": "On commence par choisir un nombre. Vient ensuite le test de parité. Selon le résultat, on exécute l'une des deux branches : division par $2$ si pair, multiplication par $3$ sinon. La dernière étape est l'affichage du nombre obtenu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme avec boucle",
+      "content": "Remets les étapes du programme suivant dans l'ordre chronologique : initialiser la variable somme à 0, pour i allant de 1 à 5 ajouter i à la somme, puis afficher la somme.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Initialiser la variable somme à $0$",
+        "Pour $i$ allant de $1$ à $5$",
+        "Ajouter $i$ à la somme",
+        "Afficher la somme"
+      ],
+      "explanation": "La première instruction initialise l'accumulateur somme à $0$. La boucle pour $i$ de $1$ à $5$ répète l'ajout de la valeur courante de $i$ à la somme. Après la boucle, on affiche la valeur finale de la somme, qui vaut $1+2+3+4+5 = 15$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

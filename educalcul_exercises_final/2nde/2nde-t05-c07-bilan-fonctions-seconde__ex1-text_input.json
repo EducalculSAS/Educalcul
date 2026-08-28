@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Représentations et variations",
+  "title": "Représentations et variations - Exercices progressifs",
+  "blocks": [
+    {
+      "title": "Variations à partir d'un tableau de valeurs",
+      "content": "Le tableau ci-dessous donne des valeurs d'une fonction $f$ définie sur $[-2;3]$. \\n$x$ | -2 | -1 | 0 | 1 | 2 | 3 \\n$f(x)$ | 5 | 3 | 2 | 3 | 5 | 8 \\nDéterminer les intervalles sur lesquels $f$ est croissante et ceux sur lesquels elle est décroissante.",
+      "correctAnswer": "Croissante sur [0;3], décroissante sur [-2;0]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les valeurs successives : de $x=-2$ à $x=0$, $f(x)$ passe de 5 à 2, donc $f$ décroît. De $x=0$ à $x=3$, $f(x)$ passe de 2 à 8, donc $f$ croît. Ainsi $f$ est décroissante sur $[-2;0]$ et croissante sur $[0;3]$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-2",
+            "5"
+          ],
+          [
+            "-1",
+            "3"
+          ],
+          [
+            "0",
+            "2"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "8"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lecture graphique d'un extremum",
+      "content": "Le graphique ci-dessous représente la fonction $g(x) = -x^2 + 4x - 3$ sur $[-1;5]$. \\nQuelles sont les coordonnées du sommet de la parabole ?",
+      "correctAnswer": "Sommet (2;1)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour une parabole $ax^2+bx+c$, l'abscisse du sommet est $x_v = -b/(2a)$. Ici $a=-1$, $b=4$, donc $x_v = -4/(2\\times -1) = 2$. L'ordonnée est $g(2) = -(2)^2 + 4\\times 2 - 3 = -4 + 8 - 3 = 1$. Le sommet est donc $(2;1)$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "-x^2+4x-3",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de g"
+      }
+    },
+    {
+      "title": "Tableau de variation d'une fonction quadratique",
+      "content": "Soit la fonction $h(x) = 2x^2 - 8x + 5$ définie sur $\\mathbb{R}$. \\nÉtablir son tableau de variation et indiquer ses intervalles de monotonie.",
+      "correctAnswer": "Décroissante sur ]-∞;2], croissante sur [2;+∞[",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction est un trinôme du second degré avec $a=2>0$, donc la parabole est tournée vers le haut. L'abscisse du sommet est $x_v = -b/(2a) = 8/(4) = 2$. Pour $x<2$, la fonction décroît ; pour $x>2$, elle croît. Le tableau de variation montre une décroissance sur $]-\\infty;2]$ et une croissance sur $[2;+\\infty[$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

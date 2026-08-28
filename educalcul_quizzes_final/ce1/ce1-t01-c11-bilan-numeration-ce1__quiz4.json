@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 78,
+  "_course_code": "ce1-t01-c11-bilan-numeration-ce1",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Bilan - Numération CE1",
+  "title": "Bilan Numération CE1 - Application",
+  "questions": [
+    {
+      "text": "Quel nombre est représenté par la figure ci-dessous ?",
+      "options": [
+        "$247$",
+        "$274$",
+        "$427$",
+        "$472$"
+      ],
+      "correctAnswer": "$247$",
+      "explanation": "La figure montre $2$ centaines, $4$ dizaines et $7$ unités, ce qui forme le nombre $247$.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 2,
+        "tens": 4,
+        "units": 7,
+        "caption": "Représentation en base dix"
+      }
+    },
+    {
+      "text": "Écris le nombre $356$ en lettres.",
+      "options": [
+        "trois cent cinquante-six",
+        "trois cent soixante-cinq",
+        "trois cent six-cinq",
+        "trois cent cinquante six"
+      ],
+      "correctAnswer": "trois cent cinquante-six",
+      "explanation": "Le nombre $356$ se décompose en $3$ centaines, $5$ dizaines et $6$ unités, donc trois cent cinquante-six.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare $482$ et $428$.",
+      "options": [
+        "$>$",
+        "$<$",
+        "$=$",
+        "$≠$"
+      ],
+      "correctAnswer": "$>$",
+      "explanation": "Les deux nombres ont $4$ centaines, mais $482$ a $8$ dizaines contre $2$ pour $428$, donc $482 > 428$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les nombres suivants dans l'ordre croissant : $124$, $214$, $142$, $241$.",
+      "options": [
+        "$124$, $142$, $214$, $241$",
+        "$124$, $214$, $142$, $241$",
+        "$142$, $124$, $214$, $241$",
+        "$241$, $214$, $142$, $124$"
+      ],
+      "correctAnswer": "$124$, $142$, $214$, $241$",
+      "explanation": "En comparant les centaines puis les dizaines, on obtient $124 < 142 < 214 < 241$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la graduation ci-dessous, quel nombre correspond au point A ?",
+      "options": [
+        "$50$",
+        "$60$",
+        "$40$",
+        "$55$"
+      ],
+      "correctAnswer": "$50$",
+      "explanation": "La graduation va de $0$ à $200$ par pas de $50$, le point A est la première graduation après $0$, donc $50$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Graduation de 0 à 200",
+        "min": 0,
+        "max": 200,
+        "points": [
+          {
+            "value": 50,
+            "label": "A"
+          },
+          {
+            "value": 100,
+            "label": "B"
+          },
+          {
+            "value": 150,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

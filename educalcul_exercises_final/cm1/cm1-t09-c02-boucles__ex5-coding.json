@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 270,
+  "_course_code": "cm1-t09-c02-boucles",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Répéter une action",
+  "title": "Maîtriser les boucles de répétition",
+  "blocks": [
+    {
+      "title": "Le robot dessinateur",
+      "content": "Un robot doit tracer un carré. Pour cela, il doit répéter $4$ fois les deux actions suivantes : avancer de $10$ centimètres, puis tourner à droite de $90$ degrés. Écris l'algorithme en utilisant une boucle pour simplifier les instructions.",
+      "correctAnswer": "Répéter $4$ fois :\\nAvancer de $10$ cm\\nTourner à droite de $90$ degrés",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au lieu d'écrire huit lignes d'instructions, on utilise une boucle. Le nombre de répétitions est $4$ car un carré possède $4$ côtés et $4$ angles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'escalier numérique",
+      "content": "Tu veux créer un programme qui affiche les nombres de $1$ à $10$ en ajoutant $1$ à chaque étape. On utilise une variable nommée Nombre qui commence à $1$. Écris l'algorithme en utilisant une boucle qui se répète $10$ fois.",
+      "correctAnswer": "Nombre = $1$\\n\\nRépéter $10$ fois :\\nAfficher Nombre\\nNombre = Nombre + $1$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la variable à $1$. La boucle affiche la valeur actuelle, puis augmente cette valeur de $1$ pour l'étape suivante, et ce, pendant $10$ cycles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le défi du jardinier",
+      "content": "Un jardinier plante des fleurs. Il doit planter $3$ fleurs, puis laisser un espace de $2$ mètres, et recommencer cette séquence $5$ fois au total. Écris l'algorithme structuré pour automatiser cette tâche.",
+      "correctAnswer": "Répéter $5$ fois :\\nPlanter fleur $1$\\nPlanter fleur $2$\\nPlanter fleur $3$\\nAvancer de $2$ mètres",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'action à répéter est un bloc composé de quatre instructions : trois plantations et un déplacement. On répète l'ensemble de ce bloc $5$ fois.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

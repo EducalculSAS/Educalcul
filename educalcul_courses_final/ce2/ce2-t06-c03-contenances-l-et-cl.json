@@ -1,0 +1,477 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.068324+00:00",
+  "id": 189,
+  "code": "ce2-t06-c03",
+  "title": "Contenances : L et cL",
+  "description": "Cours structuré Educalcul : Contenances : L et cL.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Contenances : L et cL",
+    "objectif_global": "Contenances : L et cL",
+    "mini_lecons_imposees": [
+      "Comparer.",
+      "Lire une graduation simple.",
+      "Conversions simples."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le litre et le centilitre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande bouteille d'eau minérale sur la table de la cuisine. Elle contient exactement $1$ litre, on écrit $1\\,L$. C'est la quantité qu'on verse pour remplir une carafe pour le repas. Maintenant, regarde un tout petit verre à jus de fruit : il ne contient que quelques centilitres, on écrit $cL$. Un centilitre, c'est tout petit : il faut en mettre $100$ pour faire un litre entier. Pour t'aider à visualiser, on peut dire que $1\\,L = 100\\,cL$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "1 L et 100 cL : même quantité, même hauteur",
+              "bars": [
+                {
+                  "label": "1 L",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "100 cL",
+                  "value": 100,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on compare deux contenances, la première chose à faire est de regarder l'unité. Si les deux sont en litres, on compare simplement les nombres. Si les deux sont en centilitres, on fait pareil. Mais si l'un est en litres et l'autre en centilitres, il faut les mettre dans la même unité avant de décider qui est le plus grand. Rappelle-toi : $1\\,L$ équivaut à $100\\,cL$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer quand l'unité est la même"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons deux bouteilles de soda. La première affiche $2\\,L$, la deuxième $3\\,L$. Pas besoin de convertir, on regarde les chiffres : $3$ est plus grand que $2$, donc $3\\,L > 2\\,L$. C'est exactement comme comparer des prix en euros ou des longueurs en mètres. Si tu as $150\\,cL$ de jus d'orange et $80\\,cL$ de sirop, tu compares $150$ et $80$ : $150$ est plus grand, donc $150\\,cL > 80\\,cL$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparer 2 L et 3 L sur une droite graduée",
+              "min": 0,
+              "max": 4,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2 L"
+                },
+                {
+                  "value": 3,
+                  "label": "3 L"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer en changeant d'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, compare une bouteille de $1\\,L$ d'eau et un grand verre de $150\\,cL$ de limonade. Les unités sont différentes. Utilise l'égalité $1\\,L = 100\\,cL$. Transforme le litre en centilitres : $1\\,L = 100\\,cL$. Maintenant tu as $100\\,cL$ d'un côté et $150\\,cL$ de l'autre. Comme $150 > 100$, le verre de limonade contient plus de liquide que la bouteille d'eau. C'est comme changer des euros en centimes pour compter plus facilement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère si les deux mesures sont en L ou en cL. Ici : 1 L et 150 cL."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir dans la même unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme le litre en centilitres : 1 L = 100 cL."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare 100 et 150. 150 est plus grand, donc 150 cL > 100 cL."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $1\\,L$ et $50\\,cL$. Écris le signe $<$ ou $>$ entre les deux.",
+              "answer": "$1\\,L > 50\\,cL$",
+              "hint": "Transforme $1\\,L$ en centilitres grâce à l'égalité $1\\,L = 100\\,cL$.",
+              "explanation": "Puisque $1\\,L = 100\\,cL$, on compare $100\\,cL$ et $50\\,cL$. Comme $100 > 50$, on a $1\\,L > 50\\,cL$."
+            },
+            {
+              "question": "Lequel est plus grand : $150\\,cL$ ou $80\\,cL$ ?",
+              "answer": "$150\\,cL$",
+              "hint": "Les deux sont en centilitres, compare directement les nombres.",
+              "explanation": "Les unités sont identiques (cL). On compare $150$ et $80$. $150$ est plus grand que $80$, donc $150\\,cL > 80\\,cL$."
+            },
+            {
+              "question": "Compare $2\\,L$ et $150\\,cL$. Écris le signe $<$ ou $>$ entre les deux.",
+              "answer": "$2\\,L > 150\\,cL$",
+              "hint": "Convertis les $2\\,L$ en centilitres : $2\\,L = 200\\,cL$.",
+              "explanation": "$2\\,L = 2 \\times 100\\,cL = 200\\,cL$. On compare $200\\,cL$ et $150\\,cL$. $200 > 150$, donc $2\\,L > 150\\,cL$."
+            }
+          ]
+        },
+        {
+          "title": "Lire une graduation simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les graduations sur un verre doseur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as sûrement déjà vu un verre doseur en plastique dans la cuisine. Sur son côté, il y a des traits horizontaux avec des chiffres : c'est une graduation. Chaque trait marque une quantité précise. Regarde bien : le trait du bas est souvent $0$, puis il y a $10$, $20$, $30$... jusqu'à $100\\,cL$ qui correspond à $1\\,L$. Les grands traits sont tous les $10\\,cL$, les petits traits tous les $5\\,cL$ ou tous les $1\\,cL$ selon le modèle."
+            },
+            {
+              "type": "number_line",
+              "caption": "Graduation d'un verre doseur de 0 à 100 cL",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 60,
+                  "label": "60"
+                },
+                {
+                  "value": 80,
+                  "label": "80"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire la contenance, pose le verre doseur sur une table bien plate, baisse les yeux à la hauteur du liquide. Le bas du ménisque (la petite courbe du liquide) touche un trait. Lis le chiffre le plus proche. Si le liquide est entre deux traits, estime la valeur. Par exemple, si le niveau est exactement sur le trait $40$, c'est $40\\,cL$. S'il est à mi-chemin entre $40$ et $50$, c'est environ $45\\,cL$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une graduation en litres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Certains grands récipients, comme un seau ou une bassine, ont une graduation en litres. Les grands traits marquent $1\\,L$, $2\\,L$, $3\\,L$... Parfois, il y a des traits intermédiaires pour les demi-litres : $0,5\\,L$ (c'est $50\\,cL$), $1,5\\,L$ ($150\\,cL$), etc. Le principe est le même : place le récipient à plat, regarde à hauteur du liquide et repère le trait le plus proche. Si le trait n'est pas numéroté, compte les pas depuis le dernier chiffre connu."
+            },
+            {
+              "type": "number_line",
+              "caption": "Graduation d'un seau de 0 à 3 L avec demi-litres",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.5,
+                  "label": "0,5 L"
+                },
+                {
+                  "value": 1,
+                  "label": "1 L"
+                },
+                {
+                  "value": 1.5,
+                  "label": "1,5 L"
+                },
+                {
+                  "value": 2,
+                  "label": "2 L"
+                },
+                {
+                  "value": 2.5,
+                  "label": "2,5 L"
+                },
+                {
+                  "value": 3,
+                  "label": "3 L"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deviner la valeur d'un trait non numéroté"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur certains verres doseurs, tous les traits ne portent pas de chiffre. Par exemple, tu vois $0$, $20$, $40$, $60$, $80$, $100$. Les traits entre $20$ et $40$ ne sont pas écrits. Pour les lire, observe l'écart entre deux grands traits numérotés. Ici, l'écart est de $20\\,cL$. S'il y a $4$ petits traits entre $20$ et $40$, chaque petit trait vaut $20 \\div 4 = 5\\,cL$. Le premier petit trait après $20$ vaut donc $25\\,cL$, le suivant $30\\,cL$, puis $35\\,cL$."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Découper l'intervalle 20-40 en 4 parts égales de 5 cL",
+              "parts": [
+                {
+                  "label": "20",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "25",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "30",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "35",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "40",
+                  "value": 5,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un verre doseur gradué tous les 10 cL, le niveau du liquide est exactement sur le trait marqué 60. Quelle est la contenance ?",
+              "answer": "$60\\,cL$",
+              "hint": "Lis le chiffre indiqué sur le trait où se trouve le liquide.",
+              "explanation": "Le trait porte le chiffre 60, l'unité est le centilitre. La contenance est donc $60\\,cL$."
+            },
+            {
+              "question": "Un seau est gradué tous les 0,5 L. Le liquide arrive au 3ème trait après 1 L. Quelle est la contenance en litres ?",
+              "answer": "$2,5\\,L$",
+              "hint": "Chaque trait vaut 0,5 L. Compte : 1 L, puis 1,5 L, 2 L, 2,5 L.",
+              "explanation": "Le premier trait après 1 L est 1,5 L, le deuxième 2 L, le troisième 2,5 L. La contenance est $2,5\\,L$."
+            },
+            {
+              "question": "Sur un verre doseur, les grands traits sont 0, 20, 40, 60... Il y a 4 petits traits entre 20 et 40. Le liquide est sur le 2ème petit trait après 20. Quelle est la contenance en cL ?",
+              "answer": "$30\\,cL$",
+              "hint": "Calcule la valeur d'un petit trait : (40 - 20) ÷ 4 = 5 cL. Puis ajoute.",
+              "explanation": "L'écart entre 20 et 40 est 20 cL. 4 petits traits → chaque trait = 5 cL. Le 1er petit trait = 25 cL, le 2ème = 30 cL. La contenance est $30\\,cL$."
+            }
+          ]
+        },
+        {
+          "title": "Conversions simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer des litres aux centilitres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer des litres en centilitres, on utilise le fait que $1\\,L = 100\\,cL$. C'est comme changer des billets de $100$ euros en pièces de $1$ euro : on multiplie par $100$. Si tu as $2\\,L$ de lait, tu fais $2 \\times 100 = 200$, donc $2\\,L = 200\\,cL$. Pour $3\\,L$, $3 \\times 100 = 300$, donc $3\\,L = 300\\,cL$. Le chiffre des litres devient le chiffre des centaines de centilitres."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 0,
+              "units": 0,
+              "caption": "2 L = 2 centaines de cL = 200 cL"
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce : pour multiplier par $100$, on ajoute deux zéros à droite du nombre de litres. $4\\,L \\rightarrow 400\\,cL$, $5\\,L \\rightarrow 500\\,cL$. Cela marche aussi pour les nombres à virgule : $1,5\\,L$ ? On écrit $1,5$ puis on décale la virgule de deux crans vers la droite : $150\\,cL$. Vérifie : $1\\,L = 100\\,cL$ et $0,5\\,L = 50\\,cL$, total $150\\,cL$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer des centilitres aux litres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, l'inverse : on a des centilitres et on veut des litres. Puisque $100\\,cL = 1\\,L$, on fait des paquets de $100$. C'est une division par $100$. Avec $200\\,cL$, on fait $200 \\div 100 = 2$, donc $200\\,cL = 2\\,L$. Avec $350\\,cL$, on voit combien de fois $100$ rentre : $3$ fois ($300\\,cL = 3\\,L$) et il reste $50\\,cL$. On écrit $3\\,L\\,50\\,cL$ ou $3,5\\,L$."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "350 cL = 3 L (300 cL) + 50 cL",
+              "parts": [
+                {
+                  "label": "1 L",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 L",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "1 L",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "50 cL",
+                  "value": 50,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce : pour diviser par $100$, on enlève deux zéros à droite si le nombre en a au moins deux. $400\\,cL \\rightarrow 4\\,L$. S'il n'y a pas deux zéros, on place une virgule deux crans à gauche : $150\\,cL \\rightarrow 1,50\\,L$ (soit $1,5\\,L$), $75\\,cL \\rightarrow 0,75\\,L$. Attention : $75\\,cL$ ne fait pas un litre entier, on écrit $0,75\\,L$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir les contenances mixtes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, une recette donne $1\\,L\\,25\\,cL$ d'eau. Pour tout avoir en centilitres, convertis la partie en litres : $1\\,L = 100\\,cL$, puis ajoute les $25\\,cL$ : $100 + 25 = 125\\,cL$. Pour tout avoir en litres, convertis les centilitres en litres : $25\\,cL = 0,25\\,L$, puis ajoute : $1 + 0,25 = 1,25\\,L$. C'est comme additionner des euros et des centimes : on met tout en centimes ou tout en euros."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "En centilitres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Convertis les litres en cL (×100). 2. Ajoute les cL restants."
+                    }
+                  ]
+                },
+                {
+                  "title": "En litres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Convertis les cL en L (÷100). 2. Ajoute aux L existants."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux contenances en les mettant dans la même unité.",
+                "Je sais lire une graduation sur un verre doseur ou un seau.",
+                "Je sais convertir des litres en centilitres (×100) et des centilitres en litres (÷100).",
+                "Je sais convertir une contenance mixte (L et cL) tout en centilitres ou tout en litres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $4\\,L$ en centilitres.",
+              "answer": "$400\\,cL$",
+              "hint": "Multiplie le nombre de litres par 100.",
+              "explanation": "$4 \\times 100 = 400$. Donc $4\\,L = 400\\,cL$."
+            },
+            {
+              "question": "Convertis $250\\,cL$ en litres (écris avec une virgule).",
+              "answer": "$2,5\\,L$",
+              "hint": "Divise par 100 en déplaçant la virgule de deux crans vers la gauche.",
+              "explanation": "$250 \\div 100 = 2,5$. Donc $250\\,cL = 2,5\\,L$ (ou $2\\,L\\,50\\,cL$)."
+            },
+            {
+              "question": "Une recette demande $2\\,L\\,75\\,cL$ de bouillon. Écris cette contenance tout en centilitres, puis tout en litres avec une virgule.",
+              "answer": "$275\\,cL$ et $2,75\\,L$",
+              "hint": "Pour les cL : 2 L = 200 cL, plus 75 cL. Pour les L : 75 cL = 0,75 L, plus 2 L.",
+              "explanation": "En cL : $2\\,L = 200\\,cL$, $200 + 75 = 275\\,cL$. En L : $75\\,cL = 0,75\\,L$, $2 + 0,75 = 2,75\\,L$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

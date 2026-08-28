@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Affectations",
+  "title": "Affectations successives",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Soit la suite d'instructions :\\na <- 5\\nb <- a + 3\\na <- a * 2\\nQuelle est la valeur finale de b ?",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au début a vaut 5. L'instruction b <- a + 3 affecte à b la valeur 5 + 3 = 8. La modification suivante de a ne change pas b. Donc la valeur finale de b est 8.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "On exécute les instructions suivantes :\\nx <- 10\\ny <- x - 4\\nx <- y + 2\\ny <- x * 3\\nDonne la valeur finale de y.",
+      "correctAnswer": "24",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Initialement x = 10. y reçoit 10 - 4 = 6. Ensuite x devient 6 + 2 = 8. Enfin y reçoit 8 * 3 = 24. La valeur finale de y est 24.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Considère l'algorithme :\\np <- 7\\nq <- 2 * p\\np <- p + q\\nq <- p - q\\nQuelle est la valeur finale de p ?",
+      "correctAnswer": "21",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "p commence à 7. q devient 2 * 7 = 14. p est mis à jour à 7 + 14 = 21. q devient alors 21 - 14 = 7. La valeur finale de p est 21.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

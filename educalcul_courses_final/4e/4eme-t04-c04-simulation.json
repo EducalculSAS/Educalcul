@@ -1,0 +1,539 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.854674+00:00",
+  "id": 438,
+  "code": "4eme-t04-c04",
+  "title": "Simulation",
+  "description": "Cours structuré Educalcul : Simulation.",
+  "subject": "Statistiques et probabilités",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Simulation",
+    "objectif_global": "Simulation",
+    "mini_lecons_imposees": [
+      "Répéter expérience.",
+      "Fréquence.",
+      "Comparer à probabilité."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Répéter expérience.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie en l'air. Avant qu'elle ne retombe, tu ne peux pas savoir avec certitude si tu obtiendras pile ou face. C'est exactement cela, une expérience aléatoire : une action dont le résultat ne peut pas être prédit à l'avance, même si on connaît toutes les issues possibles. En $4^{\\text{e}}$, on donne un nom précis à cette idée."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience aléatoire",
+              "definition": "C'est une expérience que l'on peut recommencer indéfiniment dans les mêmes conditions, dont on connaît toutes les issues possibles, mais dont on ne peut pas prédire le résultat d'un seul essai.",
+              "example": "Lancer un dé à six faces, tirer une carte dans un jeu de 32 cartes, ou encore lancer une pièce de monnaie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque comme chaque exemple a quelque chose de familier : le dé, les cartes, la pièce. Ce sont des objets concrets que tu as déjà manipulés. En maths, on aime partir de ce que tu connais pour construire de nouvelles idées. Ici, l'idée nouvelle, c'est qu'on ne cherche pas à deviner le prochain résultat, mais à comprendre ce qui se passe quand on recommence l'expérience un très grand nombre de fois."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Issues possibles d'un lancer de pièce",
+              "branches": [
+                {
+                  "label": "Pile",
+                  "probability": "0.5",
+                  "children": []
+                },
+                {
+                  "label": "Face",
+                  "probability": "0.5",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi et comment répéter l'expérience ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu lances ta pièce une seule fois, tu obtiens soit pile, soit face. Cela ne t'apprend pas grand-chose sur la régularité du phénomène. Mais si tu la lances $10$, $100$, puis $1000$ fois, tu vas observer quelque chose d'étonnant : les proportions de pile et de face se rapprochent de plus en plus de la moitié. C'est l'intuition derrière la simulation : on répète l'expérience un grand nombre de fois pour voir émerger une régularité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide comment représenter l'expérience. Pour une pièce, on peut attribuler $0$ à pile et $1$ à face, ou utiliser directement une pièce réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Générer des résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise une calculatrice (fonction aléa), un tableur (fonction ALEA.ENTRE.BORNES), ou un site web de simulation. Lance la génération $N$ fois ($N$ grand, par exemple $N=500$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Enregistrer et compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note chaque résultat dans un tableau. Compte combien de fois chaque issue est apparue. C'est ce comptage qui nous mènera à la fréquence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, la simulation n'est pas de la magie : c'est une méthode rigoureuse pour imiter le hasard quand il est difficile ou long de faire l'expérience physiquement. Les mathématiciens l'utilisent même pour résoudre des problèmes complexes où le calcul exact est impossible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand la simulation devient-elle indispensable ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne peut pas calculer la probabilité exacte d'un événement parce que la situation est trop compliquée. Par exemple : quelle est la probabilité qu'en lançant $3$ dés, la somme des faces soit exactement $10$ ? On pourrait le calculer en listant tous les cas, mais c'est long. La simulation donne une excellente approximation en quelques secondes. C'est là toute sa puissance : elle permet d'explorer des problèmes réels, comme la météo, les embouteillages, ou la propagation d'un virus, sans avoir à faire des expériences dangereuses ou coûteuses."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Résultats d'une simulation de 1000 lancers de 3 dés (somme = 10)",
+              "bars": [
+                {
+                  "label": "Somme = 10",
+                  "value": 125,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Autres sommes",
+                  "value": 875,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce graphique montre le nombre de fois où la somme $10$ est apparue sur $1000$ lancers simulés. Tu remarques que la barre bleue est bien plus petite que la barre grise, ce qui correspond à l'intuition : obtenir exactement $10$ n'est pas l'issue la plus fréquente. Dans la prochaine leçon, nous allons apprendre à transformer ce comptage en une mesure précise : la fréquence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les situations suivantes, lesquelles sont des expériences aléatoires ?\\nA) Lancer un dé à six faces.\\nB) Mesurer la longueur d'une table avec une règle.\\nC) Tirer une boule dans un sac contenant $3$ boules rouges et $2$ boules bleues.\\nD) Calculer $12 \\times 8$.",
+              "answer": "A et C",
+              "hint": "Une expérience aléatoire a des issues connues mais un résultat imprévisible. La mesure et le calcul donnent toujours le même résultat.",
+              "explanation": "Lancer un dé (A) et tirer une boule (C) sont des expériences aléatoires : on connaît les issues possibles (1 à 6 pour le dé, rouge ou bleu pour la boule) mais on ne peut pas prédire le résultat d'un seul essai. Mesurer une table (B) et faire une multiplication (D) sont déterministes : le résultat est toujours le même."
+            },
+            {
+              "question": "Tu veux simuler le lancer de deux dés et observer la somme. Décris en trois phrases la procédure que tu programmerais sur une calculatrice ou un tableur.",
+              "answer": "1. Générer deux nombres entiers aléatoires entre 1 et 6 (fonction ALEA.ENTRE.BORNES(1;6) deux fois). 2. Additionner ces deux nombres pour obtenir la somme. 3. Répéter l'opération au moins 500 fois en stockant chaque somme dans une liste.",
+              "hint": "Pense aux trois étapes vues dans le cours : modèle, génération, enregistrement.",
+              "explanation": "La simulation suit toujours le même schéma : on modélise l'expérience (ici deux dés = deux nombres aléatoires 1-6), on génère les résultats (tirages), on enregistre (stockage des sommes). Le nombre de répétitions doit être grand (500 minimum) pour voir une régularité."
+            },
+            {
+              "question": "Donne un exemple concret (hors dés et pièces) où la simulation est plus pratique que le calcul exact ou l'expérience réelle.",
+              "answer": "Exemple : estimer la probabilité qu'une personne gagne au loto en achetant un billet par semaine pendant 10 ans. Le calcul exact est possible mais fastidieux ; l'expérience réelle prendrait 10 ans. La simulation sur ordinateur donne une estimation en quelques secondes.",
+              "hint": "Cherche une situation où l'expérience réelle est trop longue, trop chère ou trop dangereuse.",
+              "explanation": "La simulation brille quand l'expérience réelle est impossible à répéter (temps, coût, danger) ou quand le calcul théorique est trop complexe. Météo, épidémiologie, finance, jeux vidéo : partout on simule pour prévoir ou comprendre."
+            }
+          ]
+        },
+        {
+          "title": "Fréquence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définir et calculer une fréquence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons simulé $1000$ lancers de trois dés et compté que la somme $10$ est apparue $125$ fois. Ce nombre brut, $125$, s'appelle l'effectif. Mais pour comparer des expériences de tailles différentes, il faut le rapporter au nombre total d'essais. C'est là qu'intervient la fréquence."
+            },
+            {
+              "type": "definition",
+              "term": "Fréquence",
+              "definition": "La fréquence d'un événement est le quotient de l'effectif de cet événement par le nombre total d'essais réalisés. On l'écrit souvent sous forme décimale ou en pourcentage.",
+              "example": "Si sur $200$ lancers de pièce on obtient $102$ fois pile, la fréquence de pile est $\\frac{102}{200} = 0,51$ soit $51\\%$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque comme la fréquence est toujours un nombre entre $0$ et $1$ (ou entre $0\\%$ et $100\\%$). Si l'événement ne se produit jamais, sa fréquence est $0$. S'il se produit à chaque essai, sa fréquence est $1$. C'est une propriété très utile pour vérifier tes calculs : si tu tombes sur $1,2$ ou $-0,3$, tu as forcément fait une erreur quelque part."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte le nombre de fois où l'événement étudié s'est produit. Note ce nombre $E$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte le nombre total d'essais effectués. Note ce nombre $N$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\frac{E}{N}$. Simplifie la fraction si besoin, puis donne le résultat en décimal (souvent arrondi au millième) ou en pourcentage."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et exploiter un tableau de résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, les résultats d'une simulation ou d'une expérience sont présentés dans un tableau. Il faut savoir y repérer l'effectif de l'événement qui t'intéresse et le total. Prenons l'exemple d'une simulation de $500$ lancers de deux dés où l'on s'intéresse à l'événement \"somme paire\"."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Somme",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Effectif",
+                  "14",
+                  "28",
+                  "42",
+                  "55",
+                  "69",
+                  "83",
+                  "70",
+                  "56",
+                  "44",
+                  "27",
+                  "12",
+                  "500"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour obtenir la fréquence de \"somme paire\", il faut additionner les effectifs des sommes paires : $2, 4, 6, 8, 10, 12$. Cela donne $14 + 42 + 69 + 70 + 44 + 12 = 251$. La fréquence est donc $\\frac{251}{500} = 0,502$. On voit qu'elle est très proche de $0,5$. Ce n'est pas un hasard : la probabilité théorique d'obtenir une somme paire avec deux dés est exactement $\\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fréquence se stabilise : un avant-goût de la loi des grands nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre simulation de pièce de monnaie. Si tu ne la lances que $10$ fois, tu peux très bien obtenir $7$ piles et $3$ faces : la fréquence de pile est $0,7$, loin de $0,5$. Mais si tu continues jusqu'à $100$, $500$, $1000$ lancers, la fréquence va osciller de moins en moins autour de $0,5$ et finira par s'en rapprocher durablement. C'est ce que les mathématiciens appellent la loi des grands nombres : plus le nombre d'essais augmente, plus la fréquence observée se rapproche de la probabilité théorique."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence de pile selon le nombre de lancers (simulation)",
+              "bars": [
+                {
+                  "label": "10 lancers",
+                  "value": 0.7,
+                  "tone": "red"
+                },
+                {
+                  "label": "50 lancers",
+                  "value": 0.58,
+                  "tone": "orange"
+                },
+                {
+                  "label": "200 lancers",
+                  "value": 0.52,
+                  "tone": "gold"
+                },
+                {
+                  "label": "1000 lancers",
+                  "value": 0.501,
+                  "tone": "green"
+                },
+                {
+                  "label": "5000 lancers",
+                  "value": 0.499,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le graphique : les barres rouges et oranges s'écartent beaucoup de $0,5$, puis les barres dorées, vertes et bleues se collent presque à la ligne imaginaire de $0,5$. C'est visuellement très clair : la fréquence \"colle\" à la probabilité quand le nombre d'essais grossit. Dans la prochaine leçon, nous allons comparer précisément fréquence et probabilité, et voir comment utiliser la simulation pour estimer une probabilité qu'on ne sait pas calculer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lors d'une simulation de $300$ lancers de dé, l'événement \"obtenir un 6\" s'est produit $48$ fois. Calcule la fréquence de cet événement. Donne le résultat en décimal arrondi au millième et en pourcentage.",
+              "answer": "Fréquence = $48/300 = 0,16 = 16\\%$",
+              "hint": "Applique la formule : effectif de l'événement divisé par nombre total d'essais.",
+              "explanation": "L'effectif est $48$, le total est $300$. La division donne $0,16$ exactement. En pourcentage, on multiplie par $100$ : $16\\%$. Vérifie que le résultat est bien entre $0$ et $1$."
+            },
+            {
+              "question": "Un tableau donne les effectifs des sommes obtenues en lançant deux dés $400$ fois. Les sommes paires ont pour effectifs : $12, 35, 58, 52, 30, 8$. Calcule la fréquence de \"somme paire\".",
+              "answer": "Fréquence = $(12+35+58+52+30+8)/400 = 195/400 = 0,4875 \\approx 0,488$",
+              "hint": "Additionne d'abord tous les effectifs des sommes paires, puis divise par le total $400$.",
+              "explanation": "La somme des effectifs pairs est $195$. Le total d'essais est $400$. La division donne $0,4875$, qu'on arrondit souvent à $0,488$ (au millième). Cette fréquence est proche de $0,5$, la probabilité théorique."
+            },
+            {
+              "question": "Explique avec tes mots pourquoi la fréquence d'un événement tends à se stabiliser quand on augmente le nombre d'essais.",
+              "answer": "Au début, quelques essais peuvent donner un résultat inhabituel par hasard. Mais quand on accumule beaucoup d'essais, les coups de chance et les malchances se compensent, et la proportion observée reflète mieux la structure réelle de l'expérience (le nombre d'issues favorables sur le total des issues possibles).",
+              "hint": "Pense à l'image de la balance : au début elle penche facilement, plus on ajoute de poids des deux côtés, plus elle reste horizontale.",
+              "explanation": "C'est l'intuition de la loi des grands nombres : les fluctuations aléatoires s'annulent en moyenne quand l'échantillon est grand. La fréquence converge vers la probabilité théorique."
+            }
+          ]
+        },
+        {
+          "title": "Comparer à probabilité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité théorique et fréquence observée : deux regards complémentaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons manipulé des fréquences, qui sont des nombres obtenus en comptant des résultats réels (ou simulés). Mais en maths, on a aussi un outil pour prédire à l'avance ce qui devrait se passer : la probabilité théorique. Elle se calcule sans faire d'expérience, rien qu'en raisonnant sur les issues possibles."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité théorique (équiprobabilité)",
+              "definition": "Lorsque toutes les issues d'une expérience aléatoire ont la même chance de se produire, la probabilité d'un événement est le quotient du nombre d'issues favorables par le nombre total d'issues possibles.",
+              "example": "Pour un dé équilibré à $6$ faces, la probabilité d'obtenir un $4$ est $\\frac{1}{6}$. Il y a $1$ issue favorable (le 4) sur $6$ issues possibles (1,2,3,4,5,6)."
+            },
+            {
+              "type": "paragraph",
+              "content": "La grande différence, c'est que la probabilité est un nombre théorique, figé, qui ne change pas. La fréquence, elle, varie d'une série d'essais à l'autre. Mais il existe un lien profond entre les deux : la loi des grands nombres. Elle dit que si on répète l'expérience un nombre très grand de fois, la fréquence observée sera très proche de la probabilité théorique, avec une probabilité (au sens mathématique) proche de $1$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparaison fréquence / probabilité pour un lancer de dé (événement : obtenir un 6)",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.1667,
+                  "label": "Probabilité 1/6 ≈ 0,1667"
+                },
+                {
+                  "value": 0.18,
+                  "label": "Fréquence 100 lancers"
+                },
+                {
+                  "value": 0.168,
+                  "label": "Fréquence 1000 lancers"
+                },
+                {
+                  "value": 0.1665,
+                  "label": "Fréquence 10000 lancers"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite graduée, tu vois la probabilité théorique ($1/6$) comme un point fixe. Les fréquences obtenues pour $100$, $1000$ et $10000$ lancers s'en rapprochent progressivement. C'est exactement ce que prédit la loi des grands nombres : la fréquence \"colle\" à la probabilité quand le nombre d'essais devient très grand."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La loi des grands nombres : ce qu'elle dit (et ce qu'elle ne dit pas)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à une idée fausse très fréquente : la loi des grands nombres ne dit PAS que si tu as obtenu $10$ piles de suite, la prochaine fois tu as \"plus de chances\" d'avoir face pour \"rééquilibrer\". La pièce n'a pas de mémoire ! Chaque lancer est indépendant. Ce que dit la loi, c'est que sur un TRÈS GRAND nombre de lancers, la PROPORTION de piles tend vers $1/2$. Les $10$ piles de suite deviennent négligeables face aux milliers de lancers qui suivent."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège à éviter",
+              "paragraphs": [
+                "Ne confonds pas \"la fréquence se rapproche de la probabilité\" et \"le nombre d'écarts se réduit\". En valeur absolue, l'écart entre le nombre de piles et le nombre de faces peut même augmenter (par exemple : 510 piles / 490 faces = écart 20 ; puis 5050 piles / 4950 faces = écart 100). Mais l'écart RELATIF (la fréquence) diminue."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la probabilité théorique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les issues possibles et les issues favorables. Calcule $P = \\frac{\\text{favorables}}{\\text{possibles}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simuler ou réaliser l'expérience",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue un grand nombre $N$ d'essais. Compte l'effectif $E$ de l'événement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la fréquence $f = E/N$. Compare $f$ et $P$. Si $N$ est grand, $|f-P|$ doit être petit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la simulation pour estimer une probabilité inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'application la plus puissante : quand on ne PEUT PAS calculer la probabilité théorique (problème trop complexe, ou expérience réelle impossible à modéliser simplement), on simule un grand nombre de fois et on prend la fréquence comme estimation de la probabilité. Par exemple : quelle est la probabilité que deux personnes dans une classe de $30$ aient la même date d'anniversaire ? Le calcul exact existe mais est un peu long. En simulant $10000$ classes de $30$ anniversaires tirés au hasard parmi $365$ jours, on trouve une fréquence d'environ $0,706$. On en déduit que la probabilité est d'environ $70,6\\%$. C'est la méthode de Monte Carlo, utilisée partout en science et en industrie."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Estimation par simulation de la probabilité d'anniversaire commun (30 personnes, 10000 simulations)",
+              "bars": [
+                {
+                  "label": "Au moins un anniversaire commun",
+                  "value": 7060,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Aucun anniversaire commun",
+                  "value": 2940,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voilà, tu as maintenant toutes les clés : tu sais définir une expérience aléatoire, la simuler, calculer des fréquences, les comparer aux probabilités théoriques, et même estimer des probabilités inaccessibles par le calcul. Ces outils sont la base de la statistique moderne et de la data science. Bravo pour ton parcours !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une expérience aléatoire et donner des exemples.",
+                "Je sais expliquer ce qu'est une simulation et pourquoi on l'utilise.",
+                "Je sais calculer une fréquence à partir d'un effectif et d'un total.",
+                "Je sais lire un tableau de résultats pour en extraire une fréquence.",
+                "Je comprends que la fréquence se stabilise autour de la probabilité quand le nombre d'essais augmente (loi des grands nombres).",
+                "Je sais comparer une fréquence observée à une probabilité théorique.",
+                "Je sais utiliser la simulation pour estimer une probabilité qu'on ne peut pas calculer exactement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé équilibré à 6 faces. Quelle est la probabilité théorique d'obtenir un nombre pair ?",
+              "answer": "1/2 ou 0,5 ou 50%",
+              "hint": "Compte les faces paires (2, 4, 6) et divise par le nombre total de faces (6).",
+              "explanation": "Il y a 3 faces paires sur 6 faces au total. La probabilité est 3/6 = 1/2."
+            },
+            {
+              "question": "On simule 2000 lancers de ce dé. On obtient 340 fois un nombre pair. Calcule la fréquence observée. Compare-la à la probabilité théorique. L'écart est-il normal ?",
+              "answer": "Fréquence = 340/2000 = 0,17. Probabilité théorique = 0,5. L'écart est énorme (0,33), ce n'est PAS normal pour 2000 essais. Il y a probablement une erreur dans la simulation ou le comptage.",
+              "hint": "Calcule la fréquence. Rappelle-toi que pour 2000 essais, la fréquence doit être très proche de 0,5.",
+              "explanation": "La fréquence 0,17 est très loin de 0,5. Avec 2000 essais, la loi des grands nombres garantit une fréquence très proche de la probabilité (typiquement entre 0,48 et 0,52). Un tel écart signale un problème (dé pipé, bug de simulation, erreur de saisie)."
+            },
+            {
+              "question": "Tu veux estimer la probabilité qu'en lançant 3 dés, la somme soit supérieure à 15. Décris la procédure de simulation et donne une estimation plausible basée sur ton intuition (sans calcul exact).",
+              "answer": "Procédure : 1. Générer 3 nombres aléatoires entre 1 et 6. 2. Calculer leur somme. 3. Vérifier si somme > 15. 4. Répéter 10000 fois. 5. Fréquence = nombre de succès / 10000. Estimation plausible : environ 0,05 à 0,10 (car les sommes max sont 16, 17, 18 qui sont rares).",
+              "hint": "Pense aux sommes possibles avec 3 dés (3 à 18). Seules 16, 17, 18 sont >15. Combien de combinaisons donnent ces sommes ?",
+              "explanation": "La simulation suit le schéma standard. L'estimation intuitive : sur 216 combinaisons totales (6^3), seules quelques-unes donnent >15 (ex: 6+6+4, 6+6+5, 6+6+6, 6+5+5, etc.). La probabilité exacte est 10/216 ≈ 0,046. Une estimation entre 0,04 et 0,10 est raisonnable."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

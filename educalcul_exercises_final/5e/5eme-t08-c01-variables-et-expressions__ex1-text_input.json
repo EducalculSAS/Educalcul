@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Affecter",
+  "title": "Affectation de variables",
+  "blocks": [
+    {
+      "title": "Affectation simple",
+      "content": "On exécute l'instruction suivante :\\n$score \\leftarrow 12$\\nQuelle est la valeur de la variable $score$ après cette instruction ?",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction $score \\leftarrow 12$ affecte la valeur $12$ à la variable $score$. La variable contient donc $12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réaffectation successive",
+      "content": "On exécute les instructions suivantes dans l'ordre :\\n$age \\leftarrow 10$\\n$age \\leftarrow 12$\\n$age \\leftarrow age + 3$\\nQuelle est la valeur finale de la variable $age$ ?",
+      "correctAnswer": "15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après la première instruction, $age$ vaut $10$. La deuxième instruction écrase cette valeur : $age$ devient $12$. La troisième instruction calcule $age + 3$ (soit $12 + 3 = 15$) et affecte ce résultat à $age$. La valeur finale est $15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec deux variables",
+      "content": "On exécute le programme suivant :\\n$x \\leftarrow 5$\\n$y \\leftarrow 2 \\times x$\\n$x \\leftarrow x + y$\\nQuelle est la valeur finale de la variable $x$ ?",
+      "correctAnswer": "15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Étape par étape :\\n1. $x$ prend la valeur $5$.\\n2. $y$ prend la valeur $2 \\times x = 2 \\times 5 = 10$.\\n3. $x$ prend la valeur $x + y = 5 + 10 = 15$.\\nLa valeur finale de $x$ est $15$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

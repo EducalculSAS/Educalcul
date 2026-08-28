@@ -1,0 +1,598 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.890486+00:00",
+  "id": 451,
+  "code": "4eme-t07-c02",
+  "title": "Conditions",
+  "description": "Cours structuré Educalcul : Conditions.",
+  "subject": "Algorithmique et programmation",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Algorithmique et programmation",
+    "titre_du_cours": "Conditions",
+    "objectif_global": "Conditions",
+    "mini_lecons_imposees": [
+      "Tests.",
+      "Cas.",
+      "Débogage."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et programmation",
+      "lessons": [
+        {
+          "title": "Tests.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les tests booléens"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur les conditions. Tu vas découvrir comment un programme peut prendre des décisions en fonction de valeurs que tu lui donnes. Imagine que tu joues à un jeu vidéo : si ton score est supérieur à 1000, tu gagnes une vie supplémentaire, sinon tu continues normalement. C'est exactement ce qu'un test booléen permet de faire : comparer deux valeurs et obtenir une réponse vraie ou fausse. Dans cette leçon, nous allons prendre le temps de bien comprendre chaque symbole, chaque mot‑clé et chaque structure pour que tu te sentes à l'aise quand tu écriras tes premiers programmes conditionnels."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Une condition est une expression qui peut être évaluée à vrai (True) ou faux (False). Elle utilise des opérateurs de comparaison comme $>$, $<$, $>=$, $<=$, $==$ ou $!=$.",
+              "example": "La condition $x > 5$ est vraie si $x$ vaut 7, fausse si $x$ vaut 3."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les opérateurs de comparaison sont les outils de base pour construire une condition. L'opérateur $>$ signifie « strictement supérieur à », $<$ signifie « strictement inférieur à », $>=$ et $<=$ ajoutent la possibilité d'égalité, $==$ teste l'égalité exacte et $!=$ teste la différence. Il est important de ne pas confondre $=$ (affectation) et $==$ (comparaison) : le premier change la valeur d'une variable, le second pose une question au programme."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Opérateur",
+                "Signification",
+                "Exemple vrai",
+                "Exemple faux"
+              ],
+              "rows": [
+                [
+                  ">",
+                  "strictement supérieur",
+                  "7 > 5",
+                  "3 > 5"
+                ],
+                [
+                  "<",
+                  "strictement inférieur",
+                  "2 < 4",
+                  "6 < 4"
+                ],
+                [
+                  ">=",
+                  "supérieur ou égal",
+                  "5 >= 5",
+                  "4 >= 5"
+                ],
+                [
+                  "<=",
+                  "inférieur ou égal",
+                  "3 <= 3",
+                  "4 <= 3"
+                ],
+                [
+                  "==",
+                  "égal à",
+                  "10 == 10",
+                  "10 == 9"
+                ],
+                [
+                  "!=",
+                  "différent de",
+                  "8 != 5",
+                  "8 != 8"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessus : chaque ligne te donne un exemple concret pour que tu puisses visualiser le résultat d'une comparaison. Essaie mentalement de remplacer les nombres par d'autres valeurs et vérifie si l'affirmation reste vraie ou devient fausse. Cet entraînement mental est la clé pour ne plus hésiter quand tu écriras tes propres conditions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire une condition simple, voyons comment l'utiliser à l'intérieur d'une structure « if » pour exécuter un bloc d'instructions seulement si la condition est vraie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La structure if simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "En Python, le mot‑clé if ouvre un bloc conditionnel. Tout ce qui est indenté (décalé vers la droite) après les deux‑points appartient à ce bloc. Si la condition est vraie, les instructions du bloc s'exécutent ; sinon, le programme saute directement à la suite. Cette indentation est obligatoire : elle remplace les accolades que l'on trouve dans d'autres langages. Prends l'habitude d'indenter avec quatre espaces, c'est la convention la plus répandue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le mot‑clé if",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tape if suivi d'un espace, puis ta condition, et termine par deux‑points (:)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Indenter le bloc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appuie sur la touche Tab ou ajoute quatre espaces, puis écris les instructions qui doivent s'exécuter si la condition est vraie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fermer le bloc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reviens au début de la ligne (pas d'indentation) pour continuer le programme après le bloc if."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple complet : on demande un âge à l'utilisateur, puis on affiche un message seulement si la personne est majeure. Le code ressemble à ceci : age = int(input(\"Quel est ton âge ?\")) ; if age >= 18 : print(\"Tu es majeur\"). Essaie de l'écrire dans ton éditeur et teste avec plusieurs valeurs pour voir le résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut faire une chose si la condition est vraie et une autre chose si elle est fausse. C'est le rôle du mot‑clé else, que nous allons découvrir maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter un bloc else"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot‑clé else se place après le bloc if, au même niveau d'indentation, suivi de deux‑points. Le bloc qui suit else s'exécute uniquement quand la condition du if est fausse. Ainsi, le programme a toujours une branche à suivre, ce qui évite les situations où rien ne se passe. Regarde cet exemple : if note >= 10 : print(\"Réussi\") else : print(\"Échoué\"). Quel que soit la valeur de note, un message s'affichera."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'un test en contienne un autre : on parle d'imbrication. Cela permet de raffiner les décisions, par exemple vérifier d'abord si un nombre est positif, puis s'il est pair. Nous allons voir comment organiser ces tests sans se perdre dans l'indentation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Imbriquer des tests"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu places un if à l'intérieur du bloc d'un autre if, le second ne sera évalué que si le premier est vrai. L'indentation devient alors double (huit espaces ou deux tabulations). Fais bien attention à aligner chaque bloc avec son if correspondant. Un erreur fréquente est de mélanger les niveaux d'indentation, ce qui provoque des erreurs de syntaxe ou un comportement inattendu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : on demande un entier n. Si n > 0, on teste ensuite si n % 2 == 0 pour savoir s'il est pair. Le code affiche « Positif et pair » seulement dans ce cas précis. Si n n'est pas positif, rien ne s'affiche pour le test de parité. Essaie d'écrire ce programme et de le tester avec -3, 4, 5."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les bases pour écrire des tests simples, les combiner avec else et les imbriquer. Dans la prochaine leçon, nous verrons comment enchaîner plusieurs cas exclusifs avec elif et comment utiliser les opérateurs logiques pour créer des conditions plus riches."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une condition qui est vraie si la variable $x$ vaut exactement $12$.",
+              "answer": "x == 12",
+              "hint": "Utilise l'opérateur d'égalité à deux signes égal.",
+              "explanation": "L'opérateur == teste l'égalité. Donc x == 12 renvoie True seulement quand x contient 12."
+            },
+            {
+              "question": "Complète le code pour afficher \"Pair\" si $n$ est pair, sinon \"Impair\".\\nif n % 2 == 0 :\\n    print(\"Pair\")\\nelse :\\n    ______",
+              "answer": "print(\"Impair\")",
+              "hint": "Le bloc else doit contenir l'instruction à exécuter quand la condition est fausse.",
+              "explanation": "Comme la condition teste la parité, le else correspond au cas impair. Il suffit d'afficher la chaîne \"Impair\"."
+            },
+            {
+              "question": "Quel sera l'affichage pour $n = -4$ avec le code suivant ?\\nif n > 0 :\\n    if n % 2 == 0 :\\n        print(\"Positif et pair\")",
+              "answer": "Rien ne s'affiche",
+              "hint": "Le premier if vérifie si n est strictement positif.",
+              "explanation": "Comme -4 n'est pas > 0, le premier bloc if n'est pas exécuté, donc le second if n'est jamais atteint."
+            },
+            {
+              "question": "Écris un programme qui demande un nombre et affiche \"Positif\", \"Négatif\" ou \"Nul\" selon le signe.",
+              "answer": "x = int(input())\\nif x > 0 :\\n    print(\"Positif\")\\nelif x < 0 :\\n    print(\"Négatif\")\\nelse :\\n    print(\"Nul\")",
+              "hint": "Utilise elif pour les cas intermédiaires et else pour le dernier cas.",
+              "explanation": "Le programme teste d'abord si x > 0, sinon teste x < 0, sinon c'est nécessairement 0."
+            }
+          ]
+        },
+        {
+          "title": "Cas.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Enchaîner plusieurs cas avec elif"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as vu comment utiliser if et else pour deux possibilités. Mais souvent, un programme doit choisir parmi plusieurs options exclusives : par exemple, afficher le nom du jour en fonction d'un numéro de 1 à 7. Le mot‑clé elif (contraction de else if) permet d'ajouter autant de cas que nécessaire sans multiplier les imbrications. Chaque elif est testé seulement si tous les if et elif précédents ont été faux. Cela rend le code plus lisible et plus facile à maintenir."
+            },
+            {
+              "type": "definition",
+              "term": "elif",
+              "definition": "Mot‑clé signifiant « sinon si ». Il introduit une nouvelle condition qui n'est évaluée que si les conditions précédentes sont fausses.",
+              "example": "if note >= 16 : print(\"Très bien\") elif note >= 12 : print(\"Bien\") else : print(\"Insuffisant\")"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe l'exemple ci‑dessus : les seuils sont testés dans l'ordre décroissant. Si note vaut 14, la première condition (>=16) est fausse, la seconde (>=12) est vraie, donc « Bien » s'affiche et le reste est ignoré. L'ordre des tests est donc crucial : place toujours les cas les plus restrictifs en premier."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Valeur de note",
+                "Résultat affiché"
+              ],
+              "rows": [
+                [
+                  "18",
+                  "Très bien"
+                ],
+                [
+                  "14",
+                  "Bien"
+                ],
+                [
+                  "10",
+                  "Insuffisant"
+                ],
+                [
+                  "8",
+                  "Insuffisant"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau résume le comportement pour quelques valeurs. Essaie d'imaginer d'autres seuils (par exemple pour une note sur 20) et écris la chaîne if‑elif‑else correspondante. C'est un excellent exercice pour ancrer la logique d'enchaînement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une décision dépend de plusieurs conditions simultanées : par exemple, autoriser l'accès seulement si l'utilisateur est majeur **et** s'il a un billet valide. Les opérateurs logiques **and**, **or** et **not** permettent de combiner des conditions simples en une expression plus complexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les opérateurs logiques and, or, not"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opérateur and renvoie vrai seulement si **les deux** conditions sont vraies. L'opérateur or renvoie vrai si **au moins une** des deux conditions est vraie. L'opérateur not inverse la valeur de vérité de la condition qui le suit. Ces opérateurs s'utilisent exactement comme en mathématiques, mais avec des mots‑clés en anglais. Par exemple : if age >= 18 and billet == True : print(\"Accès autorisé\")."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Expression",
+                "Résultat si A=True, B=False"
+              ],
+              "rows": [
+                [
+                  "A and B",
+                  "False"
+                ],
+                [
+                  "A or B",
+                  "True"
+                ],
+                [
+                  "not A",
+                  "False"
+                ],
+                [
+                  "not B",
+                  "True"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau montre les résultats pour un cas concret. Essaie de compléter le tableau pour les quatre combinaisons possibles de A et B (True/True, True/False, False/True, False/False). Cela t'aidera à visualiser la table de vérité complète, un outil indispensable pour raisonner sur des conditions composées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais combiner des conditions, voyons comment structurer un menu interactif où l'utilisateur choisit une option parmi plusieurs. C'est un cas d'utilisation classique de elif combiné à des tests d'égalité sur une chaîne de caractères."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple de menu avec choix multiple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un petit programme de calculatrice qui propose quatre opérations : addition, soustraction, multiplication, division. L'utilisateur tape le symbole de l'opération (+, -, *, /) et le programme exécute le bloc correspondant. Le code utilise une chaîne if‑elif‑elif‑elif‑else pour couvrir tous les cas, le else final servant à signaler une saisie invalide. Cette structure garantit qu'une seule opération est effectuée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une version simplifiée : choix = input(\"Opération (+, -, *, /) : \") ; if choix == '+' : print(\"Addition\") ; elif choix == '-' : print(\"Soustraction\") ; elif choix == '*' : print(\"Multiplication\") ; elif choix == '/' : print(\"Division\") ; else : print(\"Choix inconnu\"). Teste ce programme en entrant chaque symbole et aussi une lettre quelconque pour voir le message d'erreur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut exécuter un bloc d'instructions **si au moins une** parmi plusieurs conditions est vraie, sans écrire une longue chaîne elif. On peut alors utiliser l'opérateur or directement dans la condition du if. Par exemple : if touche == 'q' or touche == 'Q' : print(\"Quitter\"). Cela rend le code plus compact et plus facile à lire quand les cas sont simples."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier avec or dans une seule condition"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exemple ci‑dessus montre comment accepter à la fois la minuscule et la majuscule pour une même commande. Tu peux étendre cette idée à plusieurs touches : if touche in ('q', 'Q', 'quit', 'Quit') : ... mais la syntaxe « in » sera abordée plus tard. Pour l'instant, retiens que or permet de regrouper des alternatives simples."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant découvert comment enchaîner plusieurs cas exclusifs avec elif, comment combiner des conditions avec and, or, not, et comment simplifier certains tests. La prochaine leçon te montrera comment déboguer tes programmes conditionnels : repérer les erreurs classiques, tester les cas limites et utiliser des affichages de suivi pour comprendre ce qui se passe vraiment."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la chaîne if‑elif‑else qui affiche \"Petit\" si $n < 10$, \"Moyen\" si $10 \\le n < 100$, \"Grand\" sinon.",
+              "answer": "if n < 10 :\\n    print(\"Petit\")\\nelif n < 100 :\\n    print(\"Moyen\")\\nelse :\\n    print(\"Grand\")",
+              "hint": "Utilise elif pour le cas intermédiaire et else pour le dernier.",
+              "explanation": "Le premier if teste n < 10. Le elif teste n < 100, ce qui correspond à 10 <= n < 100 car le premier cas a déjà exclu n < 10. Le else couvre n >= 100."
+            },
+            {
+              "question": "Complète la table de vérité pour l'expression (A and B) or (not A) avec A, B ∈ {True, False}.",
+              "answer": "A=True B=True -> True ; A=True B=False -> True ; A=False B=True -> True ; A=False B=False -> True",
+              "hint": "Évalue chaque sous‑expression puis combine avec or.",
+              "explanation": "Quand A est True, not A est False, mais A and B peut être True ou False ; le or avec not A (False) donne le résultat de A and B. Quand A est False, not A est True, donc l'or complet est True peu importe B."
+            },
+            {
+              "question": "Écris un programme qui demande une lettre et affiche \"Voyelle\" si c'est a, e, i, o, u (minuscule ou majuscule), sinon \"Consonne\".",
+              "answer": "lettre = input(\"Lettre : \")\\nif lettre in ('a','e','i','o','u','A','E','I','O','U') :\\n    print(\"Voyelle\")\\nelse :\\n    print(\"Consonne\")",
+              "hint": "Utilise l'opérateur in pour tester l'appartenance à un tuple.",
+              "explanation": "Le tuple contient toutes les voyelles en minuscule et majuscule. L'opérateur in renvoie True si la lettre saisie se trouve dans ce tuple."
+            },
+            {
+              "question": "Simplifie la condition suivante en utilisant or :\\nif choix == 'oui' :\\n    print(\"OK\")\\nelif choix == 'OUI' :\\n    print(\"OK\")\\nelif choix == 'Oui' :\\n    print(\"OK\")",
+              "answer": "if choix == 'oui' or choix == 'OUI' or choix == 'Oui' :\\n    print(\"OK\")",
+              "hint": "Regroupe les trois égalités avec or dans un seul if.",
+              "explanation": "Les trois tests vérifient la même chaîne avec des capitalisations différentes. Les réunir avec or évite la répétition du bloc print."
+            }
+          ]
+        },
+        {
+          "title": "Débogage.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Erreurs fréquentes dans les conditions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même les programmeurs expérimentés font des erreurs quand ils écrivent des conditions. La plus classique est de confondre l'affectation (=) et la comparaison (==). Si tu écris if x = 5 : au lieu de if x == 5 :, Python lève une erreur de syntaxe car l'affectation n'est pas autorisée à cet endroit. Une autre erreur courante est d'oublier les deux‑points à la fin de la ligne if ou elif, ce qui provoque aussi une erreur de syntaxe. Prends l'habitude de relire chaque ligne conditionnelle avant d'exécuter ton programme."
+            },
+            {
+              "type": "definition",
+              "term": "erreur de syntaxe",
+              "definition": "Erreur détectée par l'interpréteur avant l'exécution, due à une violation des règles d'écriture du langage (par exemple, absence de deux‑points, mauvais indent).",
+              "example": "if x > 0 print(\"positif\")  # manque les deux‑points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège plus subtil concerne l'ordre des tests dans une chaîne if‑elif. Si tu places une condition générale avant une condition plus spécifique, la spécifique ne sera jamais atteinte. Par exemple, if x > 0 : ... elif x > 10 : ... : la seconde branche ne s'exécutera jamais car tout nombre >10 est aussi >0. Réfléchis toujours à l'ordre du plus restrictif au plus large."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Relire chaque condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que tu as utilisé == pour comparer et = seulement pour affecter."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'indentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que chaque bloc est indenté de manière cohérente (quatre espaces par niveau)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester les cas limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute ton programme avec des valeurs exactement aux frontières (par exemple 0, 10, 100) pour voir si les branches correctes s'activent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Ajouter des prints de suivi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Insère temporairement print(\"Ici\") au début de chaque branche pour visualiser le chemin emprunté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode en quatre étapes ci‑dessus est une routine de débogage simple mais puissante. Applique‑la systématiquement dès que ton programme ne se comporte pas comme prévu. Avec le temps, tu développeras un instinct pour repérer les erreurs avant même de lancer l'exécution."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les cas limites sont les valeurs qui se situent exactement sur la frontière d'une condition (par exemple 0 pour une condition x > 0). Tester ces valeurs est essentiel car c'est souvent là que se cachent les bugs. Prenons l'exemple d'un programme qui doit afficher \"Positif\" si x > 0, \"Nul\" si x == 0, \"Négatif\" sinon. Si tu testes seulement avec 5 et -3, tu ne verras jamais le cas \"Nul\". Ajoute toujours un test avec 0."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester les cas limites"
+            },
+            {
+              "type": "paragraph",
+              "content": "En plus des frontières numériques, pense aux chaînes vides, aux listes vides, aux valeurs None. Par exemple, if texte : ... est faux pour une chaîne vide, vrai pour toute chaîne non vide. Tester texte == \"\" explicitement peut éviter des surprises. De même, pour une liste, if ma_liste : ... est faux si la liste est vide. Ces comportements sont définis par Python et il est bon de les connaître."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu ne comprends pas pourquoi une branche ne s'exécute pas, les prints de suivi (aussi appelés « traces ») sont tes meilleurs amis. Place un print au tout début de chaque bloc if, elif, else avec un message distinctif comme \"Entrée dans if\", \"Entrée dans elif\", \"Entrée dans else\". Lance le programme et observe quel message apparaît. Cela te montre exactement quelle condition a été évaluée à vrai."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser des prints de suivi"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple concret : on veut classifier un nombre selon qu'il est multiple de 2, de 3, des deux ou d'aucun. Le code utilise plusieurs if imbriqués. En ajoutant print(\"Test multiple de 2\") avant le premier if, print(\"Test multiple de 3\") avant le second, tu vois l'ordre des évaluations. Si le programme affiche \"Test multiple de 2\" puis \"Test multiple de 3\" mais pas le message de la branche multiple de 6, tu sais que la condition multiple de 6 n'a pas été atteinte, peut‑être à cause de l'ordre des tests."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le bug vient d'une condition mal parenthésée quand on combine and et or. Rappelle‑toi que and a la priorité sur or, exactement comme la multiplication sur l'addition. Si tu veux forcer l'évaluation d'un or avant un and, utilise des parenthèses. Par exemple, (a or b) and c n'est pas équivalent à a or (b and c). Teste les deux expressions avec toutes les combinaisons de a, b, c pour bien sentir la différence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Priorité des opérateurs logiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau suivant résume la priorité : not (la plus forte), puis and, puis or (la plus faible). Quand tu écris a or b and c, Python évalue d'abord b and c, puis fait le or avec a. Si tu veux que a or b soit évalué en premier, écris (a or b) and c. Prends l'habitude de mettre des parenthèses dès que tu mixes and et or, cela rend le code plus lisible et évite les erreurs logiques."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Opérateur",
+                "Priorité"
+              ],
+              "rows": [
+                [
+                  "not",
+                  "1 (la plus forte)"
+                ],
+                [
+                  "and",
+                  "2"
+                ],
+                [
+                  "or",
+                  "3 (la plus faible)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'écrire une condition qui est vraie si (x > 0 and x < 10) or (x > 20 and x < 30). Sans parenthèses, l'expression serait ambiguë. Avec les parenthèses, l'intention est claire : x doit être dans l'intervalle 1‑9 ou dans l'intervalle 21‑29. Teste avec x = 5, 15, 25 pour vérifier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète pour écrire, tester et corriger des conditions en Python. Rappelle‑toi les quatre étapes de débogage, l'importance des cas limites, l'usage des traces et la priorité des opérateurs logiques. Ces habitudes te serviront tout au long de ton apprentissage de la programmation."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une condition simple avec les opérateurs de comparaison.",
+                "Je sais utiliser if, elif, else pour enchaîner plusieurs cas exclusifs.",
+                "Je sais combiner des conditions avec and, or, not et respecter leur priorité.",
+                "Je sais repérer les erreurs fréquentes (affectation vs comparaison, indentation, ordre des tests).",
+                "Je sais tester les cas limites et utiliser des prints de suivi pour déboguer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Identifie l'erreur dans le code suivant et corrige‑la :\\nx = 5\\nif x = 10 :\\n    print(\"Dix\")",
+              "answer": "Remplacer = par == dans la condition : if x == 10 :",
+              "hint": "L'affectation n'est pas autorisée dans une condition.",
+              "explanation": "Le signe unique = effectue une affectation, ce qui est interdit après if. Il faut utiliser l'opérateur de comparaison ==."
+            },
+            {
+              "question": "Pour le programme ci‑dessous, quelles valeurs de x feront afficher \"Nul\" ?\\nif x > 0 :\\n    print(\"Positif\")\\nelif x < 0 :\\n    print(\"Négatif\")\\nelse :\\n    print(\"Nul\")",
+              "answer": "x == 0",
+              "hint": "Le else correspond au cas où ni x > 0 ni x < 0 n'est vrai.",
+              "explanation": "Seule la valeur 0 n'est ni strictement positive ni strictement négative, donc le else s'exécute uniquement pour x = 0."
+            },
+            {
+              "question": "Ajoute des prints de suivi pour savoir quelle branche est exécutée dans ce code :\\nif n % 2 == 0 :\\n    print(\"Pair\")\\nelif n % 3 == 0 :\\n    print(\"Multiple de 3\")\\nelse :\\n    print(\"Autre\")",
+              "answer": "if n % 2 == 0 :\\n    print(\"Trace: Pair\")\\n    print(\"Pair\")\\nelif n % 3 == 0 :\\n    print(\"Trace: Multiple de 3\")\\n    print(\"Multiple de 3\")\\nelse :\\n    print(\"Trace: Autre\")\\n    print(\"Autre\")",
+              "hint": "Place un print distinct avant chaque print principal.",
+              "explanation": "Les messages de trace permettent de voir dans le terminal quelle condition a été satisfaite sans modifier la logique du programme."
+            },
+            {
+              "question": "Évalue l'expression (True or False) and False.",
+              "answer": "False",
+              "hint": "Applique la priorité : and avant or, mais les parenthèses forcent l'or d'abord.",
+              "explanation": "Les parenthèses font évaluer True or False -> True, puis True and False -> False."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

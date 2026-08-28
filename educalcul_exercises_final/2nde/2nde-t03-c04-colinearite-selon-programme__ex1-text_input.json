@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître la colinéarité",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Les points $A(1;2)$, $B(3;6)$ et $C(5;10)$ sont-ils alignés ? Répondez par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les vecteurs $\\overrightarrow{AB} = (2;4)$ et $\\overrightarrow{AC} = (4;8)$ sont proportionnels car $\\overrightarrow{AC} = 2 \\times \\overrightarrow{AB}$. Donc les trois points sont alignés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Les vecteurs $\\vec{u} = (2;-3)$ et $\\vec{v} = (-4;6)$ sont-ils colinéaires ? Répondez par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a $\\vec{v} = -2 \\times \\vec{u}$, donc les deux vecteurs sont proportionnels et donc colinéaires.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Détermine la valeur de $k$ pour que les points $A(0;0)$, $B(2;3)$ et $C(4;k)$ soient alignés.",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le vecteur $\\overrightarrow{AB} = (2;3)$. Pour que $C$ soit aligné avec $A$ et $B$, $\\overrightarrow{AC} = (4;k)$ doit être proportionnel à $\\overrightarrow{AB}$. Le rapport sur l'abscisse est $4/2 = 2$, donc $k = 2 \\times 3 = 6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 222,
+  "_course_code": "cm1-t02-c04-comparer-des-fractions",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Même dénominateur",
+  "title": "Comparer des fractions de même dénominateur : algorithme",
+  "blocks": [
+    {
+      "title": "Étape 1 : Identifier la règle",
+      "content": "On veut écrire un algorithme pour comparer deux fractions qui ont le même dénominateur. Complète l'instruction conditionnelle ci-dessous en choisissant le bon symbole de comparaison pour les numérateurs.\\n\\nAlgorithme : ComparerMemeDenominateur(numerateur1, numerateur2, denominateur)\\n    Si numerateur1 > numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur1 + \"/\" + denominateur + \" est la plus grande.\"\\n    Sinon Si numerateur1 __ numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur2 + \"/\" + denominateur + \" est la plus grande.\"\\n    Sinon\\n        Afficher \"Les deux fractions sont égales.\"\\n    Fin Si\\nFin Algorithme",
+      "correctAnswer": "Le symbole manquant est $<$ (inférieur).\\n\\nAlgorithme : ComparerMemeDenominateur(numerateur1, numerateur2, denominateur)\\n    Si numerateur1 > numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur1 + \"/\" + denominateur + \" est la plus grande.\"\\n    Sinon Si numerateur1 < numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur2 + \"/\" + denominateur + \" est la plus grande.\"\\n    Sinon\\n        Afficher \"Les deux fractions sont égales.\"\\n    Fin Si\\nFin Algorithme",
+      "explanation": "Lorsque deux fractions ont le même dénominateur, c'est le numérateur qui détermine leur ordre de grandeur. Si le premier numérateur est strictement plus grand que le second ($>$), la première fraction est la plus grande. Sinon, si le premier numérateur est strictement plus petit que le second ($<$), c'est la deuxième fraction qui est la plus grande. Si les numérateurs sont égaux, les fractions sont égales.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape 2 : Tracer l'algorithme (exécution)",
+      "content": "On exécute l'algorithme complet avec les valeurs suivantes :\\n$numerateur1 \\leftarrow 5$\\n$numerateur2 \\leftarrow 3$\\n$denominateur \\leftarrow 8$\\n\\nÉcris la suite des instructions qui seront réellement exécutées (le chemin d'exécution) et le message final affiché.",
+      "correctAnswer": "Chemin d'exécution :\\n1. numerateur1 (5) > numerateur2 (3) : VRAI.\\n2. Exécution du bloc \"Alors\" : Afficher \"La fraction 5/8 est la plus grande.\"\\n3. Fin Si (les autres conditions ne sont pas testées).\\n\\nMessage affiché : La fraction 5/8 est la plus grande.",
+      "explanation": "On teste la première condition : $5 > 3$ est vrai. On exécute donc l'instruction associée (afficher que la première fraction est la plus grande) et on saute directement à la fin de la structure conditionnelle (Fin Si). Les branches \"Sinon Si\" et \"Sinon\" ne sont pas évaluées.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Étape 3 : Écrire un algorithme complet",
+      "content": "Écris un algorithme complet (avec les mots-clés : Algorithme, Variables, Début, Fin) qui demande à l'utilisateur de saisir deux numérateurs et un dénominateur commun, puis qui affiche laquelle des deux fractions est la plus grande (ou si elles sont égales). Utilise les mots-clés : Lire, Afficher, Si, Alors, Sinon Si, Sinon, Fin Si.",
+      "correctAnswer": "Algorithme ComparerDeuxFractions\\nVariables\\n    numerateur1, numerateur2, denominateur : Entiers\\nDébut\\n    Afficher \"Entrez le premier numérateur : \"\\n    Lire numerateur1\\n    Afficher \"Entrez le second numérateur : \"\\n    Lire numerateur2\\n    Afficher \"Entrez le dénominateur commun : \"\\n    Lire denominateur\\n\\n    Si numerateur1 > numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur1 + \"/\" + denominateur + \" est plus grande que \" + numerateur2 + \"/\" + denominateur\\n    Sinon Si numerateur1 < numerateur2 Alors\\n        Afficher \"La fraction \" + numerateur2 + \"/\" + denominateur + \" est plus grande que \" + numerateur1 + \"/\" + denominateur\\n    Sinon\\n        Afficher \"Les deux fractions \" + numerateur1 + \"/\" + denominateur + \" et \" + numerateur2 + \"/\" + denominateur + \" sont égales.\"\\n    Fin Si\\nFin",
+      "explanation": "Un algorithme complet commence par la déclaration des variables (noms et types). La partie \"Début\" à \"Fin\" contient les instructions. On utilise \"Lire\" pour récupérer les valeurs saisies au clavier. La structure conditionnelle \"Si / Alors / Sinon Si / Sinon / Fin Si\" permet de traiter les trois cas possibles (premier plus grand, second plus grand, égalité) en comparant uniquement les numérateurs car le dénominateur est commun.",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Résoudre",
+  "title": "Quiz : Résolution d'inéquations",
+  "questions": [
+    {
+      "text": "Résoudre l'inéquation $2x - 5 < 7$.",
+      "options": [
+        "$x < 6$",
+        "$x > 6$",
+        "$x \\le 6$",
+        "$x \\ge 6$"
+      ],
+      "correctAnswer": "$x < 6$",
+      "explanation": "On ajoute 5 des deux côtés : $2x < 12$. On divise par 2 (positif) : $x < 6$. Les autres options correspondent à une inversion du sens ou à l'ajout d'un égalité injustifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $\\frac{x+3}{2} \\ge 4$.",
+      "options": [
+        "$x \\ge 5$",
+        "$x > 5$",
+        "$x \\le 5$",
+        "$x < 5$"
+      ],
+      "correctAnswer": "$x \\ge 5$",
+      "explanation": "On multiplie par 2 (positif) : $x+3 \\ge 8$. On soustrait 3 : $x \\ge 5$. L'option $x>5$ oublie l'égalité, les deux dernières inversent le sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $|x - 2| \\le 3$.",
+      "options": [
+        "$-1 \\le x \\le 5$",
+        "$-1 < x < 5$",
+        "$x \\le -1$ ou $x \\ge 5$",
+        "$x < -1$ ou $x > 5$"
+      ],
+      "correctAnswer": "$-1 \\le x \\le 5$",
+      "explanation": "L'inéquation à valeur absolue se réécrit $-3 \\le x-2 \\le 3$. En ajoutant 2 : $-1 \\le x \\le 5$. Les options avec des strictes ou une union correspondent à une mauvaise interprétation du sens de l'inégalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $x^2 - 4x - 5 > 0$.",
+      "options": [
+        "$x < -1$ ou $x > 5$",
+        "$-1 < x < 5$",
+        "$x \\le -1$ ou $x \\ge 5$",
+        "$x < -1$ et $x > 5$"
+      ],
+      "correctAnswer": "$x < -1$ ou $x > 5$",
+      "explanation": "On factorise : $(x-5)(x+1) > 0$. Les racines sont $-1$ et $5$. Le trinôme est positif en dehors des racines, donc $x<-1$ ou $x>5$. L'intervalle $-1<x<5$ correspond au signe négatif, les options avec égalités ou \"et\" sont incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $\\frac{x-1}{x+2} \\le 0$.",
+      "options": [
+        "$-2 < x \\le 1$",
+        "$-2 \\le x \\le 1$",
+        "$x < -2$ ou $x > 1$",
+        "$x \\le -2$ ou $x \\ge 1$"
+      ],
+      "correctAnswer": "$-2 < x \\le 1$",
+      "explanation": "Les zéros du numérateur et du dénominateur sont $1$ et $-2$. On fait un tableau de signes : sur $]-2,1]$ la fraction est négative ou nulle (zéro en $1$). $-2$ est exclu car dénominateur nul. Les autres options incluent $-2$ ou donnent l'ensemble complémentaire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

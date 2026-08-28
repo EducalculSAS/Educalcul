@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Repérer règle",
+  "title": "Quiz : Repérer la règle",
+  "questions": [
+    {
+      "text": "Quelle est la règle qui permet de passer d'un terme au suivant dans la suite $2, 5, 8, 11$ ?",
+      "options": [
+        "Ajouter trois à chaque terme",
+        "Multiplier par deux",
+        "Soustraire un",
+        "Ajouter deux"
+      ],
+      "correctAnswer": "Ajouter trois à chaque terme",
+      "explanation": "La différence entre deux termes consécutifs est constante et égale à 3 : $5-2=3$, $8-5=3$, $11-8=3$. Donc on ajoute 3 à chaque terme pour obtenir le suivant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe la suite de figures : triangle, carré, pentagone, hexagone. Quelle régularité relie ces figures ?",
+      "options": [
+        "Le nombre de côtés augmente de un",
+        "Le nombre de côtés double",
+        "Le nombre de côtés diminue de un",
+        "Le nombre de côtés reste constant"
+      ],
+      "correctAnswer": "Le nombre de côtés augmente de un",
+      "explanation": "Un triangle a 3 côtés, un carré 4, un pentagone 5, un hexagone 6. À chaque étape, le nombre de côtés augmente de 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le tableau ci-dessous, la valeur correspond à $3 \\times n$ pour $n = 1, 2, 3, 4$. Quelle règle exprime la valeur en fonction de $n$ ?",
+      "options": [
+        "Multiplier n par trois",
+        "Ajouter trois à n",
+        "Multiplier n par deux",
+        "Ajouter deux à n"
+      ],
+      "correctAnswer": "Multiplier n par trois",
+      "explanation": "Les valeurs du tableau sont 3, 6, 9, 12. Elles sont obtenues en multipliant $n$ par 3 : $3\\times1=3$, $3\\times2=6$, $3\\times3=9$, $3\\times4=12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La suite $1, 4, 3, 6, 5, 8$ suit une règle alternée. Laquelle ?",
+      "options": [
+        "Ajouter trois puis soustraire un alternativement",
+        "Ajouter deux à chaque terme",
+        "Multiplier par deux puis soustraire un",
+        "Ajouter un puis multiplier par deux"
+      ],
+      "correctAnswer": "Ajouter trois puis soustraire un alternativement",
+      "explanation": "On commence par 1. On ajoute 3 → 4. On soustrait 1 → 3. On ajoute 3 → 6. On soustrait 1 → 5. On ajoute 3 → 8. La règle est donc d'ajouter 3 puis de soustraire 1, et ainsi de suite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La suite est définie par $a_n = 2n + 1$. Quel est le dixième terme ?",
+      "options": [
+        "vingt et un",
+        "dix neuf",
+        "vingt trois",
+        "vingt"
+      ],
+      "correctAnswer": "vingt et un",
+      "explanation": "On remplace $n$ par 10 dans la formule : $a_{10} = 2 \\times 10 + 1 = 20 + 1 = 21$, soit vingt et un.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

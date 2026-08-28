@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Conclure rectangle",
+  "title": "Réciproque de Pythagore : Conclure rectangle",
+  "blocks": [
+    {
+      "title": "Vérifier si un triangle est rectangle",
+      "content": "Dans un triangle $ABC$, les longueurs des côtés sont $AB = 3$ cm, $AC = 4$ cm et $BC = 5$ cm. En appliquant la réciproque du théorème de Pythagore, on trouve que $3^2 + 4^2 = {{1}}$ et $5^2 = {{2}}$. Comme les deux valeurs sont égales, le triangle est rectangle et l'angle droit se trouve au sommet {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "25",
+        "25",
+        "A"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $3^2 + 4^2 = 9 + 16 = 25$ et $5^2 = 25$. Comme $3^2 + 4^2 = 5^2$, la réciproque de Pythagore assure que le triangle est rectangle. L'angle droit est opposé au côté le plus long $BC = 5$ cm, donc il se trouve au sommet $A$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conclure qu'un triangle est rectangle à partir des longueurs",
+      "content": "On considère un triangle $DEF$ tel que $DE = 6$ cm, $EF = 8$ cm et $DF = 10$ cm. Calculons $6^2 + 8^2 = {{1}}$ et $10^2 = {{2}}$. Puisque ces deux résultats sont égaux, le triangle $DEF$ est rectangle. L'angle droit est l'angle {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "100",
+        "100",
+        "E"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule $6^2 + 8^2 = 36 + 64 = 100$ et $10^2 = 100$. L'égalité $6^2 + 8^2 = 10^2$ permet de conclure par la réciproque de Pythagore que le triangle est rectangle. Les côtés $DE$ et $EF$ sont les côtés de l'angle droit, donc l'angle droit est l'angle E.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formuler la conclusion de la réciproque",
+      "content": "Dans un triangle, si le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors le triangle est {{1}} et l'angle droit est situé en face du côté {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "rectangle",
+        "le plus grand"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La réciproque du théorème de Pythagore stipule que si dans un triangle le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors le triangle est rectangle. L'angle droit est alors opposé au plus grand côté, c'est-à-dire qu'il est situé en face du côté le plus grand.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

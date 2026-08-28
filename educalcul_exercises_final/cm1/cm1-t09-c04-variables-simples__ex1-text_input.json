@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Stocker une valeur",
+  "title": "Les variables : stocker une valeur",
+  "blocks": [
+    {
+      "title": "Affectation simple",
+      "content": "Dans un programme, on crée une variable appelée $score$ et on lui affecte la valeur $10$. Quelle est la valeur stockée dans la variable $score$ ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction d'affectation place la valeur $10$ dans la boîte nommée $score$. La variable contient donc $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modification d'une variable",
+      "content": "La variable $compteur$ contient la valeur $5$. Le programme exécute l'instruction : $compteur = compteur + 3$. Quelle est la nouvelle valeur de $compteur$ ?",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On récupère la valeur actuelle de $compteur$ ($5$), on y ajoute $3$ ce qui donne $8$, puis on stocke ce résultat $8$ dans $compteur$. La valeur $5$ est remplacée par $8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Copie de variable",
+      "content": "Deux variables sont créées : $a = 7$ et $b = 12$. Le programme exécute ensuite : $a = b$. Quelle est la valeur de la variable $a$ après cette instruction ?",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction $a = b$ signifie : prendre la valeur stockée dans $b$ (qui est $12$) et la copier dans $a$. La variable $a$ contient maintenant $12$. La variable $b$ reste inchangée (valeur $12$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

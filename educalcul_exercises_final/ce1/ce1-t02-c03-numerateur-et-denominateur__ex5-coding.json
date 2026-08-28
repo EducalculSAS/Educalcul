@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 81,
+  "_course_code": "ce1-t02-c03-numerateur-et-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Identifier les deux nombres",
+  "title": "Approfondissement : Identifier le numérateur et le dénominateur",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme simple",
+      "content": "On donne la fraction $3/4$. Écris un algorithme (en langage naturel ou en pseudo-code) qui permet d'identifier le numérateur et le dénominateur de cette fraction.",
+      "correctAnswer": "Algorithme :\\n1. Lire la fraction sous la forme a/b.\\n2. Le numérateur est le nombre avant la barre de fraction (a).\\n3. Le dénominateur est le nombre après la barre de fraction (b).\\n4. Afficher numérateur et dénominateur.\\nPour $3/4$, numérateur = 3, dénominateur = 4.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction s'écrit avec deux nombres séparés par une barre. Le nombre du haut (ou à gauche) est le numérateur, celui du bas (ou à droite) est le dénominateur. L'algorithme consiste à repérer ces deux nombres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identifier à partir d'une description",
+      "content": "Une fraction est représentée par un rectangle divisé en 5 parties égales, dont 2 sont coloriées. Écris un algorithme qui détermine le numérateur et le dénominateur à partir de cette description.",
+      "correctAnswer": "Algorithme :\\n1. Compter le nombre total de parties égales : c'est le dénominateur (5).\\n2. Compter le nombre de parties coloriées : c'est le numérateur (2).\\n3. Écrire la fraction sous la forme numérateur/dénominateur : $2/5$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur correspond au nombre total de parts égales, le numérateur au nombre de parts prises. L'algorithme compte ces deux quantités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme pour plusieurs fractions",
+      "content": "On a une liste de fractions : $1/2$, $3/5$, $4/7$. Écris un algorithme (en pseudo-code) qui parcourt la liste et affiche pour chaque fraction son numérateur et son dénominateur.",
+      "correctAnswer": "Algorithme :\\nListe = ['1/2', '3/5', '4/7']\\nPour chaque fraction dans Liste :\\n    séparer fraction en deux parties au symbole '/'\\n    numérateur = première partie\\n    dénominateur = deuxième partie\\n    afficher « Numérateur : » + numérateur + « Dénominateur : » + dénominateur\\nFin pour",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt chaque fraction de la liste. Pour chaque fraction, on la sépare au caractère '/' pour obtenir le numérateur (première partie) et le dénominateur (deuxième partie). On affiche ensuite ces deux nombres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

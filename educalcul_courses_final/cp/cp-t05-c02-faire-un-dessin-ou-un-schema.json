@@ -1,0 +1,344 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.602361+00:00",
+  "id": 40,
+  "code": "cp-t05-c02",
+  "title": "Faire un dessin ou un schéma",
+  "description": "Cours structuré Educalcul : Faire un dessin ou un schéma.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Faire un dessin ou un schéma",
+    "objectif_global": "Faire un dessin ou un schéma",
+    "mini_lecons_imposees": [
+      "Représenter les quantités.",
+      "Faire apparaître ce qui change.",
+      "Utiliser le schéma pour choisir une opération."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Représenter les quantités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner pour compter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ pommes dans un panier et $2$ pommes sur la table. Au lieu de tout garder dans ta tête, tu peux faire un petit dessin ! Dessine $3$ ronds pour le panier et $2$ ronds pour la table. C'est comme une photo de ce que tu vois. Regarde comme c'est plus facile de compter quand c'est sur le papier : $1, 2, 3$ pour le panier, $4, 5$ pour la table. Tu as dessiné $5$ pommes en tout."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "5 unités pour 5 pommes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a plus de $10$ choses. Dessinons $12$ bonbons : on fait un trait pour une dizaine et $2$ petits points pour les unités. C'est plus rapide que de faire $12$ ronds ! Essaie sur ton ardoise : fais un grand trait pour $10$ et $3$ points à côté. Tu viens de dessiner $13$. C'est magique, ton dessin montre exactement la quantité sans tout compter un par un."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 13,
+              "caption": "1 dizaine et 3 unités font 13"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on va comparer deux quantités avec des barres. Léo a $6$ billes, Mia en a $4$. Dessine une grande barre pour Léo et une plus petite pour Mia. Tu vois tout de suite qui en a le plus ! La barre de Léo est plus longue, donc $6$ est plus grand que $4$. Ce dessin s'appelle un schéma en barres. Il t'aide à voir les grandeurs sans même compter."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des billes de Léo et Mia",
+              "bars": [
+                {
+                  "label": "Léo",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mia",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant représenter des quantités avec des dessins simples : ronds, traits, barres. Dans la prochaine leçon, on va apprendre à montrer ce qui change quand on ajoute ou qu'on enlève des objets. Tes dessins vont bouger !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine $4$ fleurs dans le jardin et $3$ fleurs dans le pot. Combien de fleurs as-tu dessinées en tout ?",
+              "answer": "$7$ fleurs",
+              "hint": "Compte tous tes dessins : $1, 2, 3, 4$ pour le jardin, puis $5, 6, 7$ pour le pot.",
+              "explanation": "Tu as dessiné $4$ fleurs + $3$ fleurs = $7$ fleurs au total. Bravo !"
+            },
+            {
+              "question": "Représente le nombre $15$ avec un trait pour la dizaine et des points pour les unités. Combien de points faut-il ?",
+              "answer": "$5$ points",
+              "hint": "$15$ c'est $10$ et $5$. Le trait fait $10$, il manque $5$ unités.",
+              "explanation": "Le nombre $15$ se décompose en $1$ dizaine (le trait) et $5$ unités (les points). Bien joué !"
+            },
+            {
+              "question": "Ana a $8$ autocollants, Tom en a $5$. Dessine deux barres pour comparer. Qui a la plus grande barre ?",
+              "answer": "Ana",
+              "hint": "La barre la plus longue correspond au plus grand nombre. $8$ est plus grand que $5$.",
+              "explanation": "La barre d'Ana ($8$) est plus longue que celle de Tom ($5$). Ana a plus d'autocollants."
+            }
+          ]
+        },
+        {
+          "title": "Faire apparaître ce qui change.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Avant / Après : ça change !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette histoire : il y a $4$ oiseaux sur une branche. Tout à coup, $2$ oiseaux arrivent. Combien y a-t-il d'oiseaux maintenant ? Pour le voir, on fait deux dessins. Le premier, c'est l'avant : $4$ petits oiseaux. Le deuxième, c'est l'après : on ajoute $2$ oiseaux en plus. Tu vois la différence ? Le dessin a grandi !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                4
+              ],
+              "right": [
+                2,
+                4
+              ],
+              "caption": "Avant : 4, Après : 4 + 2 = 6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, c'est l'inverse : ça diminue. Tu as $7$ bonbons. Tu en donnes $3$ à ton ami. Dessine $7$ bonbons, puis barre $3$ bonbons avec un trait. Il t'en reste combien ? Compte ceux qui ne sont pas barrés : $1, 2, 3, 4$. Il t'en reste $4$ ! Ton dessin montre bien ce qui est parti et ce qui reste."
+            },
+            {
+              "type": "number_line",
+              "caption": "On recule de 3 sur la ligne des nombres",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "Départ"
+                },
+                {
+                  "value": 4,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien voir le changement, on peut dessiner une flèche. Au départ, $5$ billes dans la main. Une flèche vers la droite avec $+3$ : on a ajouté $3$ billes. À l'arrivée, $8$ billes. Si la flèche va vers la gauche avec $-2$, on a enlevé $2$ billes. La flèche, c'est le signe que quelque chose a bougé. C'est ton dessin qui raconte l'histoire !"
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Ajout de 3 billes : flèche vers la droite",
+              "parts": [
+                {
+                  "label": "Départ",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ajout",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 8,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant montrer ce qui change avec des dessins avant/après, des traits pour barrer, des flèches pour ajouter ou enlever. Dans la dernière leçon, on va voir comment ton schéma t'aide à choisir si c'est une addition ou une soustraction. Ton dessin devient un guide !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a $6$ chats sur le toit. $2$ chats descendent. Dessine l'avant et l'après. Combien de chats restent sur le toit ?",
+              "answer": "$4$ chats",
+              "hint": "Dessine $6$ chats, puis barre-en $2$. Compte ceux qui restent.",
+              "explanation": "Au départ $6$ chats. $2$ partent. Il reste $6 - 2 = 4$ chats. Ton dessin montre bien la diminution."
+            },
+            {
+              "question": "Tu as $4$ billes. Tu gagnes $3$ billes. Sur la ligne des nombres, place un point au départ et un à l'arrivée. Quel est le nombre d'arrivée ?",
+              "answer": "$7$",
+              "hint": "Pars de $4$ et fais $3$ sauts vers la droite : $5, 6, 7$.",
+              "explanation": "On ajoute $3$ à $4$. $4 + 3 = 7$. La flèche va vers la droite, le nombre augmente."
+            },
+            {
+              "question": "Complète le schéma : Départ $9$ → Flèche $-4$ → Arrivée ?",
+              "answer": "$5$",
+              "hint": "La flèche avec le signe moins veut dire qu'on enlève. Recule de $4$ depuis $9$.",
+              "explanation": "On enlève $4$ à $9$. $9 - 4 = 5$. L'arrivée est $5$. La flèche pointe vers la gauche."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser le schéma pour choisir une opération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le schéma choisit pour toi"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce problème : « Paul a $5$ billes. Il en gagne $3$. Combien a-t-il maintenant ? » Dessine le schéma : une barre de $5$, une flèche $+3$, une barre totale. Tu vois le $+$ dans la flèche ? Ça veut dire addition ! Tu écris $5 + 3 = 8$. Ton dessin t'a montré le signe plus tout seul."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Situation d'addition : on rassemble",
+              "parts": [
+                {
+                  "label": "Au début",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "On ajoute",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 8,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre histoire : « Léa a $9$ crayons. Elle en prête $4$ à son copain. Combien lui reste-t-il ? » Ton schéma : une grande barre de $9$, une partie barrée de $4$, ce qui reste. Tu vois le trait qui barre ? Ça veut dire soustraction ! Tu écris $9 - 4 = 5$. Le dessin te guide vers le signe moins."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                9
+              ],
+              "right": [
+                4,
+                5
+              ],
+              "caption": "On sépare 9 en 4 et 5 : soustraction"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le problème ne dit pas « gagne » ou « prête ». « Il y a $7$ enfants dans le bus. À l'arrêt, il y en a $10$ au total. Combien sont montés ? » Dessine : une barre de $7$, une flèche point d'interrogation, total $10$. Tu cherches ce qu'on a ajouté. C'est encore une addition : $7 + ? = 10$. Ton schéma te dit : cherche le morceau qui manque !"
+            },
+            {
+              "type": "number_line",
+              "caption": "De 7 à 10 : combien de sauts ?",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "Départ"
+                },
+                {
+                  "value": 10,
+                  "label": "Total"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dessiner des ronds, des traits ou des barres pour montrer une quantité.",
+                "Je sais faire un dessin avant / après pour voir ce qui change.",
+                "Je sais utiliser une flèche pour montrer qu'on ajoute ou qu'on enlève.",
+                "Je sais regarder mon schéma pour savoir si c'est une addition (+) ou une soustraction (-).",
+                "J'aime faire des schémas pour résoudre les problèmes !"
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tom a $6$ voitures. Il en achète $2$ de plus. Dessine le schéma et écris le calcul avec le bon signe.",
+              "answer": "$6 + 2 = 8$",
+              "hint": "Le mot « achète » veut dire qu'on ajoute. Dessine une flèche avec un plus.",
+              "explanation": "On ajoute $2$ à $6$. C'est une addition : $6 + 2 = 8$. Le schéma montre le rassemblement."
+            },
+            {
+              "question": "Il y a $8$ gâteaux. On en mange $3$. Dessine le schéma et écris le calcul.",
+              "answer": "$8 - 3 = 5$",
+              "hint": "Manger, c'est enlever. Barre $3$ gâteaux sur ton dessin.",
+              "explanation": "On enlève $3$ de $8$. C'est une soustraction : $8 - 3 = 5$. Il reste $5$ gâteaux."
+            },
+            {
+              "question": "Au parc, il y a $4$ canards. Après, il y en a $9$. Combien sont arrivés ? Dessine et complète : $4 + \\square = 9$.",
+              "answer": "$5$",
+              "hint": "Dessine la barre de $4$, le total $9$. Le trou au milieu, c'est le nombre cherché.",
+              "explanation": "De $4$ à $9$, il faut ajouter $5$. $4 + 5 = 9$. Le schéma montre le morceau manquant."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

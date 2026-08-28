@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 487,
+  "_course_code": "3eme-t06-c03-sections-de-solides",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Identifier forme",
+  "title": "Quiz : Sections de solides - Identifier la forme",
+  "questions": [
+    {
+      "text": "Quelle est la définition exacte d'une section d'un solide par un plan ?",
+      "options": [
+        "L'intersection du solide avec une droite",
+        "L'intersection du solide avec un plan",
+        "La projection du solide sur un plan",
+        "Le développement du solide sur un plan"
+      ],
+      "correctAnswer": "L'intersection du solide avec un plan",
+      "explanation": "Par définition, une section est la figure plane obtenue par l'intersection d'un solide avec un plan coupe. C'est l'ensemble des points communs au solide et au plan. Les autres options correspondent à d'autres concepts : intersection avec une droite, projection orthogonale ou développement (patron).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cube est coupé par un plan parallèle à l'une de ses faces. Quelle est la nature de la section obtenue ?",
+      "options": [
+        "Un rectangle",
+        "Un losange",
+        "Un carré",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Lorsqu'un plan coupe un cube parallèlement à une face, la section est un polygone ayant la même forme que cette face. Comme les faces d'un cube sont des carrés, la section est nécessairement un carré. Elle ne peut pas être un rectangle non carré, un losange ou un triangle dans cette configuration précise.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de révolution est coupé par un plan parallèle à ses bases. Quelle est la forme de la section ?",
+      "options": [
+        "Une ellipse",
+        "Un cercle",
+        "Un rectangle",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Les bases d'un cylindre de révolution sont des cercles. Un plan parallèle à ces bases coupe le cylindre selon une courbe qui est l'intersection du plan avec la surface latérale. Cette courbe est un cercle de même rayon que les bases (si le plan passe entre les deux bases). Une ellipse s'obtient avec un plan incliné, un rectangle avec un plan contenant l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide à base carrée est coupée par un plan parallèle à sa base. La section obtenue est :",
+      "options": [
+        "Un triangle",
+        "Un carré",
+        "Un rectangle non carré",
+        "Un losange"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "C'est une propriété fondamentale : toute section d'une pyramide par un plan parallèle à sa base est un polygone homothétique à la base. Comme la base est un carré, la section est nécessairement un carré (de dimension plus petite si le plan est entre le sommet et la base). Ce n'est pas un triangle (section par un plan passant par le sommet) ni un losange ou rectangle non carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit est coupé par un plan parallèle à l'une de ses arêtes, mais non parallèle à une face. Quelle peut être la forme de la section ?",
+      "options": [
+        "Un cercle",
+        "Un triangle",
+        "Un parallélogramme",
+        "Un pentagone"
+      ],
+      "correctAnswer": "Un parallélogramme",
+      "explanation": "Si un plan est parallèle à une arête d'un pavé droit, il coupe les deux faces opposées parallèles à cette arête selon deux droites parallèles. Il coupe les deux autres paires de faces opposées selon deux autres droites parallèles. La section est donc un quadrilatère dont les côtés opposés sont parallèles deux à deux : c'est un parallélogramme. C'est un rectangle si le plan est perpendiculaire aux arêtes qu'il coupe, mais l'énoncé exclut le parallélisme aux faces, ce qui donne un parallélogramme quelconque. Un cercle ou un triangle sont impossibles pour un polyèdre, un pentagone nécessiterait de couper 5 faces.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

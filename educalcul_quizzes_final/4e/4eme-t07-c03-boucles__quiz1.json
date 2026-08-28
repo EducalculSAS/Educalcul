@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "For / while simple",
+  "title": "Quiz : Boucles For et While simples",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\nPour i de 1 à 5 faire\\n    Afficher i\\nFin pour\\nFin\\nCombien de fois l'instruction \"Afficher i\" est-elle exécutée ?",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "La boucle ne s'arrête jamais"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "La boucle \"Pour i de 1 à 5\" prend les valeurs 1, 2, 3, 4, 5. Il y a donc 5 itérations. L'instruction d'affichage est exécutée à chaque tour, soit 5 fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère cet algorithme :\\nDébut\\nx ← 0\\nPour k de 1 à 10 faire\\n    x ← x + 2\\nFin pour\\nAfficher x\\nFin\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "10",
+        "12",
+        "20",
+        "22"
+      ],
+      "correctAnswer": "20",
+      "explanation": "La boucle s'exécute 10 fois (k de 1 à 10). À chaque tour, on ajoute 2 à x. Au départ x = 0. Après 10 tours, x = 10 × 2 = 20.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la différence principale entre une boucle \"Pour\" et une boucle \"Tant que\" ?",
+      "options": [
+        "La boucle \"Pour\" est plus rapide que la boucle \"Tant que\"",
+        "La boucle \"Pour\" s'utilise quand le nombre de répétitions est connu à l'avance, la boucle \"Tant que\" s'utilise tant qu'une condition est vraie",
+        "La boucle \"Tant que\" ne peut pas contenir de variables",
+        "Il n'y a pas de différence, ce sont deux noms pour la même chose"
+      ],
+      "correctAnswer": "La boucle \"Pour\" s'utilise quand le nombre de répétitions est connu à l'avance, la boucle \"Tant que\" s'utilise tant qu'une condition est vraie",
+      "explanation": "La structure \"Pour\" (borne de début et de fin connues) est adaptée pour un nombre fixé d'itérations. La structure \"Tant que\" répète des instructions aussi longtemps qu'une condition logique reste vraie, le nombre de tours n'étant pas forcément connu au départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme avec une boucle \"Tant que\" :\\nDébut\\nn ← 1\\nTant que n < 10 faire\\n    n ← n × 2\\nFin tant que\\nAfficher n\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "8",
+        "10",
+        "16",
+        "32"
+      ],
+      "correctAnswer": "16",
+      "explanation": "On suit la variable n :\\nDépart : n = 1.\\n1er tour : 1 < 10 vrai, n devient 2.\\n2e tour : 2 < 10 vrai, n devient 4.\\n3e tour : 4 < 10 vrai, n devient 8.\\n4e tour : 8 < 10 vrai, n devient 16.\\n5e tour : 16 < 10 faux, on sort de la boucle.\\nOn affiche 16.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les algorithmes suivants, lequel calculera la somme des entiers de 1 à 100 (soit 1 + 2 + ... + 100) ?",
+      "options": [
+        "S ← 0\\nPour i de 1 à 100 faire\\n    S ← S + 1\\nFin pour\\nAfficher S",
+        "S ← 0\\nPour i de 1 à 100 faire\\n    S ← S + i\\nFin pour\\nAfficher S",
+        "S ← 1\\nPour i de 1 à 100 faire\\n    S ← S + i\\nFin pour\\nAfficher S",
+        "S ← 0\\ni ← 1\\nTant que i ≤ 100 faire\\n    S ← S + i\\nFin tant que\\nAfficher S"
+      ],
+      "correctAnswer": "S ← 0\\nPour i de 1 à 100 faire\\n    S ← S + i\\nFin pour\\nAfficher S",
+      "explanation": "Il faut initialiser la somme S à 0. À chaque tour, on ajoute la valeur courante du compteur i (qui vaut 1, puis 2, ..., jusqu'à 100). La première option n'ajoute que 1 à chaque tour (résultat 100). La troisième initialise S à 1 (résultat 5051). La quatrième option avec \"Tant que\" est une boucle infinie car i n'est jamais incrémenté dans le corps de la boucle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

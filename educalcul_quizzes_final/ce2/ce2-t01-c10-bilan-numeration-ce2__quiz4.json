@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 151,
+  "_course_code": "ce2-t01-c10-bilan-numeration-ce2",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Bilan - Numération CE2",
+  "title": "Bilan Numération CE2 : Écrire, Comparer, Encadrer",
+  "questions": [
+    {
+      "text": "On a écrit le nombre $407$ en lettres. Quelle est l'écriture correcte ?",
+      "options": [
+        "quatre cent sept",
+        "quatre cents sept",
+        "quatre cent zéro sept",
+        "quatre cent et sept"
+      ],
+      "correctAnswer": "quatre cent sept",
+      "explanation": "La règle est simple : 'cent' ne prend pas de 's' quand il est suivi d'un autre nombre (ici 'sept'). On n'écrit pas le 'zéro' des dizaines en lettres. Le trait d'union relie 'cent' et 'sept'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $3\\,528$, que représente le chiffre $5$ ?",
+      "options": [
+        "5 unités",
+        "5 dizaines",
+        "5 centaines",
+        "5 milliers"
+      ],
+      "correctAnswer": "5 centaines",
+      "explanation": "En partant de la droite : $8$ unités, $2$ dizaines, $5$ centaines, $3$ milliers. Le chiffre $5$ est donc au rang des centaines, il vaut $500$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3528,
+        "caption": "Tableau de numération du nombre 3 528"
+      }
+    },
+    {
+      "text": "Quel nombre est encadré correctement par centaines ?",
+      "options": [
+        "$2\\,345$ est entre $2\\,300$ et $2\\,400$",
+        "$2\\,345$ est entre $2\\,340$ et $2\\,350$",
+        "$2\\,345$ est entre $2\\,000$ et $3\\,000$",
+        "$2\\,345$ est entre $2\\,345$ et $2\\,346$"
+      ],
+      "correctAnswer": "$2\\,345$ est entre $2\\,300$ et $2\\,400$",
+      "explanation": "Encadrer par centaines signifie trouver le multiple de $100$ inférieur et le multiple de $100$ supérieur. $2\\,345$ a $3$ centaines, le cent inférieur est $2\\,300$ et le cent supérieur est $2\\,400$. L'option B encadre par dizaines, l'option C par milliers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la décomposition : $6\\,042 = 6\\,000 + \\ldots + 2$",
+      "options": [
+        "$40$",
+        "$4$",
+        "$400$",
+        "$0$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "Le nombre $6\\,042$ se décompose en $6$ milliers ($6\\,000$), $0$ centaines ($0$), $4$ dizaines ($40$) et $2$ unités ($2$). Le terme manquant correspond aux dizaines, soit $40$. Attention au piège du zéro des centaines qui n'apparaît pas dans l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare les deux nombres : $4\\,099$ $\\ldots$ $4\\,100$. Quel signe faut-il mettre ?",
+      "options": [
+        "$<$",
+        "$>$",
+        "$=$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$<$",
+      "explanation": "Les deux nombres ont $4$ milliers. On compare les centaines : $4\\,099$ a $0$ centaines, $4\\,100$ a $1$ centaine. $0 < 1$, donc $4\\,099 < 4\\,100$. C'est le passage délicat au cent supérieur ($99$ unités font basculer à $100$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

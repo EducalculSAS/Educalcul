@@ -1,0 +1,244 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.150094+00:00",
+  "id": 539,
+  "code": "2nde-t07-c06",
+  "title": "Automatismes de seconde",
+  "description": "Cours structuré Educalcul : Automatismes de seconde.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Automatismes de seconde",
+    "objectif_global": "Automatismes de seconde",
+    "mini_lecons_imposees": [
+      "Calcul numérique.",
+      "Algèbre.",
+      "Lecture graphique."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Calcul numérique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu gères ton propre petit commerce de vente de stickers en ligne. Pour calculer tes bénéfices, tu dois jongler avec des pourcentages, des fractions de quantités et parfois des nombres très grands ou très petits pour tes statistiques de visites. Si tu te trompes d'un seul signe ou si tu effectues tes calculs dans le mauvais ordre, tout ton bilan financier devient faux. C'est exactement là que les automatismes de calcul numérique interviennent. En seconde, on ne te demande plus seulement de savoir faire une addition, mais de manipuler des nombres avec une fluidité totale, presque comme un réflexe. Que ce soit pour calculer l'aire d'un terrain, dosis un médicament en sciences ou analyser des données économiques, la capacité à simplifier une expression sans hésiter est ton meilleur atout. C'est un peu comme apprendre les accords de base à la guitare : une fois que tes doigts bougent tout seuls, tu peux enfin commencer à jouer de vraies mélodies. Ce chapitre est là pour transformer ces manipulations mathématiques en véritables automatismes pour que tu ne bloques plus jamais sur la technique, mais que tu puisses te concentrer sur la résolution du problème."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le calcul numérique repose sur des règles strictes qu'on appelle les priorités opératoires. En premier lieu, on traite toujours les parenthèses, en commençant par les plus internes. Ensuite, on s'occupe des puissances et des racines carrées, puis des multiplications et divisions, et enfin des additions et soustractions. Concernant les fractions, il est crucial de se rappeler que pour multiplier deux fractions, on multiplie les numérateurs entre eux et les dénominateurs entre eux. Par contre, pour l'addition ou la soustraction, on doit impérativement mettre les fractions au même dénominateur. C'est l'étape où beaucoup d'élèves s'emmêlent les pinceaux, mais c'est simplement une question de transformation : on multiplie le haut et le bas par le même nombre pour harmoniser les parts. Enfin, nous manipulons les puissances de $10$, fondamentales en physique. On se rappelle que $10^n$ signifie que le chiffre $1$ est suivi de $n$ zéros, et $10^{-n}$ représente un nombre très petit, comme $0,001$ pour $10^{-3}$. Maîtriser ces bases permet de passer d'une écriture lourde à une écriture simplifiée et élégante, ce qui réduit drastiquement le risque d'erreurs lors des étapes suivantes d'un exercice."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} + \\frac{c}{d} = \\frac{ad+bc}{bd}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier une expression numérique complexe, je te conseille de suivre rigoureusement ces quatre étapes. Premièrement, identifie toutes les parenthèses. S'il y en a des imbriquées, commence par calculer l'expression la plus profonde. Deuxièmement, traite les puissances. Si tu as des puissances de $10$, transforme-les en nombres décimaux ou garde-les sous forme exponentielle selon ce qui est le plus simple pour la suite. Troisièmement, effectue les multiplications et les divisions de gauche à droite. Si tu travailles avec des fractions, simplifie-les au maximum avant de multiplier pour éviter de manipuler des nombres trop grands. Quatrièmement, termine par les additions et les soustractions. Si tu as des fractions, trouve le plus petit commun multiple des dénominateurs pour les mettre au même niveau. Un conseil d'expert : écris chaque étape sur une nouvelle ligne. Ne cherche pas à tout faire de tête. En alignant tes égalités, tu peux facilement revenir en arrière pour repérer une petite erreur de signe ou de calcul, ce qui te fera gagner un temps précieux lors d'un contrôle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons l'expression suivante : $A = \\frac{2}{3} + \\frac{5}{6} \\times \\frac{1}{2}$. Ici, la priorité est à la multiplication. On commence donc par calculer $\\frac{5}{6} \\times \\frac{1}{2}$. On multiplie les numérateurs $5 \\times 1 = 5$ et les dénominateurs $6 \\times 2 = 12$. On obtient $\\frac{5}{12}$. L'expression devient alors $A = \\frac{2}{3} + \\frac{5}{12}$. Pour additionner ces deux fractions, elles doivent avoir le même dénominateur. Le nombre $12$ est un multiple de $3$, car $3 \\times 4 = 12$. On transforme donc $\\frac{2}{3}$ en multipliant le haut et le bas par $4$, ce qui donne $\\frac{2 \\times 4}{3 \\times 4} = \\frac{8}{12}$. Maintenant, on peut additionner : $A = \\frac{8}{12} + \\frac{5}{12} = \\frac{8+5}{12} = \\frac{13}{12}$. On vérifie si on peut simplifier $\\frac{13}{12}$, mais comme $13$ est un nombre premier, la fraction est déjà minimalement réduite. Le résultat final est donc $\\frac{13}{12}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Représentation de $\\frac{1}{2}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons un cas plus complexe : $B = (10^2 + 2,5 \\times 10^1) \\div 5$. On commence par l'intérieur des parenthèses. À l'intérieur, on a une addition et une multiplication. La multiplication est prioritaire. On calcule $2,5 \\times 10^1$, ce qui fait $25$. Ensuite, on s'occupe de la puissance : $10^2 = 100$. L'expression dans la parenthèse devient $100 + 25 = 125$. Maintenant, il ne nous reste plus qu'à effectuer la division finale : $B = 125 \\div 5$. En posant la division ou en réfléchissant, on sait que $5 \\times 20 = 100$ et $5 \\times 5 = 25$, donc $20 + 5 = 25$. Le résultat est $B = 25$. Ce passage montre bien comment l'application méthodique des priorités permet de décomposer un calcul qui semble intimidant en une série de petites opérations très simples. Si on avait fait l'addition avant la multiplication, on aurait obtenu un résultat totalement différent et erroné."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est l'oubli des priorités opératoires, notamment le fait d'additionner avant de multiplier. Par exemple, dans $2 + 3 \\times 4$, certains élèves font $5 \\times 4 = 20$, alors que le résultat correct est $2 + 12 = 14$. Un autre piège redoutable concerne les signes avec les puissances. Rappelle-toi que $(-3)^2$ est différent de $-3^2$. Dans le premier cas, le signe moins est dans la parenthèse, donc $(-3) \\times (-3) = 9$. Dans le second, le carré ne porte que sur le $3$, et le moins reste devant, ce qui donne $- (3 \\times 3) = -9$. C'est une nuance fondamentale qui change tout le résultat. Enfin, attention à la mise au même dénominateur pour les fractions. Beaucoup d'élèves additionnent les numérateurs et les dénominateurs entre eux, comme pour la multiplication. Par exemple, dire que $\\frac{1}{2} + \\frac{1}{3} = \\frac{2}{5}$ est une erreur grave. Il faut transformer les fractions pour obtenir $\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$. Prends toujours un instant pour te demander : est-ce que mes fractions parlent la même langue (même dénominateur) avant de les additionner ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur de l'expression $C = \\frac{3}{4} - \\frac{1}{6} \\times \\frac{1}{2}$. Donne le résultat sous forme de fraction irréductible.",
+              "answer": "$\\frac{17}{24}$",
+              "hint": "Effectue d'abord la multiplication, puis mets les fractions au même dénominateur.",
+              "explanation": "D'abord la multiplication : $\\frac{1}{6} \\times \\frac{1}{2} = \\frac{1}{12}$. Ensuite l'opération : $\\frac{3}{4} - \\frac{1}{12}$. On met au même dénominateur : $\\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$. On a donc $\\frac{9}{12} - \\frac{1}{12} = \\frac{8}{12}$. On simplifie par $4$ : $\\frac{8 \\div 4}{12 \\div 4} = \\frac{2}{3}$. (Note : correction du calcul mental, $\\frac{9-1}{12}=\\frac{8}{12}=\\frac{2}{3}$). Rectification : $\\frac{3}{4} - \\frac{1}{12} = \\frac{9-1}{12} = \\frac{8}{12} = \\frac{2}{3}$."
+            }
+          ]
+        },
+        {
+          "title": "Algèbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles créer une formule magique pour calculer le prix total de plusieurs commandes de pizzas, peu importe le nombre de pizzas choisies ou le nombre de suppléments ajoutés. Tu ne peux pas écrire une ligne de calcul pour chaque client possible, car il y en aurait une infinité. C'est là qu'intervient l'algèbre. L'algèbre, c'est l'art d'utiliser des lettres, comme $x$, $a$ ou $n$, pour représenter des nombres que l'on ne connaît pas encore ou qui peuvent changer. C'est comme créer un moule : une fois que tu as ton expression algébrique, tu n'as plus qu'à verser les valeurs à l'intérieur pour obtenir ton résultat. En seconde, on apprend à manipuler ces expressions pour les rendre plus simples. Apprendre à développer et factoriser, c'est comme apprendre à plier et déplier un origami. Parfois, on a besoin que l'expression soit étalée pour voir tous les termes (développement), et parfois on préfère qu'elle soit compacte pour mieux l'analyser ou résoudre une équation (factorisation). C'est un jeu de transformation logique qui demande de la rigueur, mais qui devient extrêmement satisfaisant quand on voit une longue expression se réduire à un seul petit terme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cœur de l'algèbre en seconde repose sur deux opérations inverses : le développement et la factorisation. Développer, c'est transformer un produit (une multiplication) en une somme. Pour cela, on utilise la distributivité simple : $k(a + b) = ka + kb$. On a aussi la double distributivité : $(a + b)(c + d) = ac + ad + bc + bd$. Pour aller plus vite, on utilise les identités remarquables, qui sont des raccourcis mathématiques. Les trois principales sont : $(a + b)^2 = a^2 + 2ab + b^2$, $(a - b)^2 = a^2 - 2ab + b^2$, et $(a - b)(a + b) = a^2 - b^2$. À l'inverse, factoriser consiste à transformer une somme en produit. C'est l'opération opposite du développement. On cherche soit un facteur commun aux différents termes, soit on reconnaît une identité remarquable pour compresser l'expression. La factorisation est essentielle pour trouver les racines d'un polynôme ou simplifier des fractions algébriques. Maitriser ces deux mouvements permet de naviguer avec aisance entre différentes formes d'écriture d'une même quantité, facilitant ainsi la résolution d'équations complexes où l'on cherche la valeur d'une inconnue."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour développer une expression avec succès, je te propose cette méthode rigoureuse. Étape 1 : Analyse la structure. As-tu une distributivité simple, une double distributivité ou une identité remarquable ? Identifier la forme permet de choisir le bon outil. Étape 2 : Applique la règle de distribution. Si c'est une double distributivité, je te conseille de tracer des flèches imaginaires : le premier terme de la première parenthèse vers les deux termes de la seconde, puis le deuxième terme de la première vers les deux de la seconde. Étape 3 : Gestion des signes. C'est le moment critique. Rappelle-toi qu'un signe moins devant une parenthèse change tous les signes à l'intérieur lors du développement. Un moins multiplié par un moins devient un plus. Étape 4 : Réduction de l'expression. Regroupe les familles de termes : les $x^2$ ensemble, les $x$ ensemble, et les nombres seuls ensemble. Additionne ou soustrais les coefficients de chaque famille. Cette étape finale est fondamentale pour rendre le résultat lisible et exploitable. Ne t'arrête jamais juste après avoir multiplié, finis toujours par la réduction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développons et réduisons l'expression $E = 3(2x - 5) + 4(x + 2)$. On commence par la première parenthèse : $3 \\times 2x = 6x$ et $3 \\times (-5) = -15$. On a donc $6x - 15$. Ensuite, on s'occupe de la seconde parenthèse : $4 \\times x = 4x$ et $4 \\times 2 = 8$. L'expression complète devient $E = 6x - 15 + 4x + 8$. Maintenant, nous devons réduire l'expression en regroupant les termes. Pour les $x$, on a $6x + 4x = 10x$. Pour les nombres, on a $-15 + 8 = -7$. Le résultat final simplifié est donc $E = 10x - 7$. On voit ici que la méthode a permis de transformer deux produits en une expression linéaire très simple. Si on avait fait l'erreur de ne pas distribuer le $3$ au $-5$, on aurait obtenu un résultat totalement faux."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)(a+b) = a^2 - b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Utilisons une identité remarquable pour développer $F = (2x + 3)^2$. On reconnaît la forme $(a + b)^2$ avec $a = 2x$ et $b = 3$. La formule nous dit que $(a + b)^2 = a^2 + 2ab + b^2$. Remplaçons avec nos valeurs : d'abord $a^2$ qui est $(2x)^2$. Attention, le carré porte sur le $2$ et sur le $x$, donc $(2x)^2 = 4x^2$. Ensuite, le double produit $2ab$ qui est $2 \\times 2x \\times 3$. On multiplie les coefficients : $2 \\times 2 \\times 3 = 12$, donc on a $12x$. Enfin, $b^2$ qui est $3^2 = 9$. En assemblant le tout, on obtient $F = 4x^2 + 12x + 9$. C'est beaucoup plus rapide que de faire $(2x + 3)(2x + 3)$ avec la double distributivité, même si le résultat serait le même. L'identité remarquable est un outil de puissance qui évite les erreurs de calcul répétitives."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant, et sans doute le plus frustrant, est l'oubli du double produit dans l'identité remarquable. Beaucoup d'élèves écrivent $(a + b)^2 = a^2 + b^2$. C'est une erreur majeure ! N'oublie jamais le terme $2ab$. Pense à l'aire d'un carré pour visualiser : si tu augmentes le côté d'un carré, tu ajoutes non seulement deux petits carrés aux coins, mais aussi deux rectangles sur les côtés. Un autre piège classique concerne le signe moins devant une parenthèse. Par exemple, dans $-(x - 3)$, le résultat est $-x + 3$ et non $-x - 3$. Le moins agit comme un miroir qui inverse tous les signes internes. Enfin, attention aux puissances lors du développement : $(3x)^2$ devient $9x^2$ et non $3x^2$. Le coefficient doit lui aussi être élevé au carré. Pour éviter ces erreurs, je te suggère de toujours écrire l'identité remarquable avec des parenthèses vides avant d'y insérer tes propres termes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe et réduis l'expression $G = (3x - 2)(x + 5)$.",
+              "answer": "$3x^2 + 13x - 10$",
+              "hint": "Utilise la double distributivité : multiplie chaque terme de la première parenthèse par chaque terme de la seconde.",
+              "explanation": "$(3x \\times x) + (3x \\times 5) + (-2 \\times x) + (-2 \\times 5) = 3x^2 + 15x - 2x - 10$. On réduit les termes en $x$ : $15x - 2x = 13x$. Le résultat est $3x^2 + 13x - 10$."
+            }
+          ]
+        },
+        {
+          "title": "Lecture graphique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu observes l'évolution de l'altitude d'un randonneur au fil des heures sur un graphique. La ligne monte, descend, stagne. Ce simple dessin contient en réalité toute l'histoire de la journée : à quelle heure le randonneur a atteint le sommet ? À quel moment a-t-il fait une pause ? S'il a descendu une pente raide, comment cela se traduit-il visuellement ? La lecture graphique est une compétence essentielle car elle permet de transformer des données abstraites en informations concrètes et immédiates. Dans la vie courante, on utilise cela partout : pour suivre la courbe d'une épidémie, analyser la croissance d'une plante en biologie ou surveiller les fluctuations du cours d'une action en bourse. En mathématiques, savoir lire un graphique, c'est savoir faire le pont entre l'algèbre (les équations) et la géométrie (les courbes). Ce n'est pas juste tracer des points, c'est apprendre à interpréter un message visuel. Nous allons voir comment ne plus jamais confondre l'axe horizontal et l'axe vertical, et comment extraire avec précision une valeur, même quand le point ne tombe pas pile sur une graduation. C'est l'étape finale de tes automatismes de seconde pour devenir totalement autonome face à n'importe quel document technique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un graphique est composé de deux axes perpendiculaires. L'axe horizontal est appelé l'axe des abscisses (souvent noté $x$). L'axe vertical est l'axe des ordonnées (souvent noté $y$ ou $f(x)$). Un point sur la courbe est défini par un couple de coordonnées $(x, y)$. On dit que $y$ est l'image de $x$ par la fonction représentée. Pour trouver l'image d'un nombre, on part de l'axe des abscisses, on monte ou on descend verticalement jusqu'à rencontrer la courbe, puis on lit la valeur correspondante sur l'axe des ordonnées. À l'inverse, si on cherche les antécédents d'un nombre $y$, on part de l'axe des ordonnées, on se déplace horizontalement pour couper la courbe, puis on redescend pour lire la valeur sur l'axe des abscisses. Un point crucial est la compréhension de la croissance : si la courbe monte quand on va vers la droite, la fonction est croissante. Si elle descend, elle est décroissante. Savoir lire un graphique, c'est donc savoir naviguer dans ce plan pour traduire une position spatiale en une relation mathématique précise."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Exemple de courbe pour lecture d'image et d'antécédent"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire l'image d'un nombre $a$ sur un graphique, suis scrupuleusement ces étapes. Premièrement, repère la valeur $a$ sur l'axe horizontal (les abscisses). Je te conseille d'utiliser une règle pour être bien vertical. Deuxièmement, trace une ligne imaginaire verticale partant de $a$ jusqu'à ce que tu touches la courbe. Ce point d'intersection est le point dont nous avons besoin. Troisièmement, depuis ce point d'intersection, déplace-toi horizontalement vers l'axe vertical (les ordonnées). La valeur que tu lis sur cet axe est l'image de $a$, notée $f(a)$. Pour trouver un antécédent d'une valeur $b$, on fait exactement l'inverse : on part de l'axe vertical, on trace une ligne horizontale jusqu'à la courbe, puis on redescend verticalement vers l'axe des abscisses. S'il y a plusieurs points d'intersection, cela signifie que le nombre $b$ possède plusieurs antécédents. Il est très important de bien vérifier l'échelle du graphique : si un carreau représente $0,5$ unité ou $5$ unités, car une erreur d'échelle fausse totalement la lecture finale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons une courbe représentant la température $T$ en fonction du temps $t$. On nous demande de trouver la température à $t = 3$ heures. On se place sur l'axe horizontal au niveau du chiffre $3$. On monte verticalement jusqu'à rencontrer la courbe. On remarque que le point se trouve exactement à mi-chemin entre les graduations $15$ et $20$ de l'axe vertical. En regardant attentivement, on voit que l'axe est gradue par bonds de $5$. Le milieu entre $15$ et $20$ est $17,5$. Nous pouvons donc conclure que l'image de $3$ est $17,5$, ce qui signifie qu'à $3$ heures, la température était de $17,5$ degrés. Ce processus simple de projection verticale suivie d'une projection horizontale est la base de toute lecture de fonction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant l'exemple inverse : on veut savoir à quel moment la température était de $20$ degrés. On part de la valeur $20$ sur l'axe vertical des températures. On trace une ligne horizontale vers la droite. On constate que cette ligne coupe la courbe à deux endroits différents. Le premier point se trouve au-dessus de $t = 2$ et le second point se trouve au-dessus de $t = 7$. Cela signifie que le nombre $20$ a deux antécédents : $2$ et $7$. En termes concrets, cela veut dire qu'il a fait $20$ degrés deux fois dans la journée, une fois à $2$ heures et une autre fois à $7$ heures. Cet exemple illustre parfaitement la différence entre l'image (qui est unique pour un $x$ donné) et l'antécédent (qui peut être multiple)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est l'inversion des axes. De nombreux élèves cherchent l'image en partant de l'axe vertical, alors qu'il faut impérativement partir de l'axe horizontal. Pour ne plus te tromper, mémorise cette phrase : L'image est le résultat, et le résultat se lit toujours sur l'axe vertical. Un autre piège concerne l'estimation des valeurs. Quand un point tombe entre deux graduations, certains élèves arrondissent grossièrement. Prends l'habitude de diviser mentalement l'intervalle en deux ou en quatre pour être plus précis. Enfin, attention aux graphiques qui ne commencent pas à zéro. Si l'axe des ordonnées commence à $100$, un point situé bas sur le graphique n'est pas proche de zéro, mais proche de $100$. Vérifie toujours l'origine des axes avant de commencer ta lecture. Une dernière petite astuce : utilise toujours un crayon bien taillé et une règle pour tes tracés, car un décalage d'un millimètre peut conduire à une erreur de valeur significative."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 6
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un graphique d'une fonction $f$, le point $P(2, 5)$ appartient à la courbe. Quelle est l'image de $2$ ? Quelle est l'abscisse de l'antécédent $5$ ?",
+              "answer": "L'image de $2$ est $5$. L'antécédent de $5$ est $2$.",
+              "hint": "Rappelle-toi que dans un couple $(x, y)$, $x$ est l'antécédent et $y$ est l'image.",
+              "explanation": "Le point $P(2, 5)$ signifie que lorsque $x=2$ (abscisse), la valeur de la fonction est $y=5$ (ordonnée). Donc $f(2)=5$.</div>"
+            },
+            {
+              "question": "Si une courbe est strictement décroissante sur un intervalle, peut-on avoir deux antécédents différents pour une même valeur $y$ sur cet intervalle ?",
+              "answer": "Non.",
+              "hint": "Pense à la forme de la courbe : si elle descend tout le temps, peut-elle repasser par la même hauteur ?",
+              "explanation": "Une fonction strictement décroissante ne remonte jamais. Par conséquent, elle ne peut couper une ligne horizontale qu'une seule fois. Chaque valeur $y$ n'a donc qu'un seul antécédent maximum."
+            },
+            {
+              "question": "Quelle est la valeur de l'image de $0$ pour la courbe d'équation $f(x) = x^2 + 3$ ?",
+              "answer": "$3$",
+              "hint": "Remplace $x$ par $0$ dans l'expression ou regarde où la courbe coupe l'axe vertical.",
+              "explanation": "$f(0) = 0^2 + 3 = 3$. Sur le graphique, cela correspond au point d'intersection avec l'axe des ordonnées."
+            },
+            {
+              "question": "Comment appelle-t-on l'axe horizontal d'un graphique ?",
+              "answer": "L'axe des abscisses.",
+              "hint": "C'est le mot qui commence par un A.",
+              "explanation": "L'axe horizontal est par convention l'axe des abscisses, généralement associé à la variable $x$."
+            },
+            {
+              "question": "Si le point $(4, -2)$ est sur la courbe, quelle est l'image de $4$ ?",
+              "answer": "$-2$",
+              "hint": "Regarde la deuxième coordonnée du point.",
+              "explanation": "L'image est la valeur de l'ordonnée correspondante à l'abscisse donnée."
+            },
+            {
+              "question": "Si on cherche l'antécédent de $-1$ et que la ligne horizontale ne coupe jamais la courbe, que peut-on en conclure ?",
+              "answer": "$-1$ n'a pas d'antécédent.",
+              "hint": "Si la courbe ne touche pas la ligne, c'est que la valeur n'est jamais atteinte.",
+              "explanation": "L'absence d'intersection signifie que la fonction ne prend jamais la valeur $-1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

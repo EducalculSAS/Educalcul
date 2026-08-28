@@ -1,0 +1,519 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.757336+00:00",
+  "id": 406,
+  "code": "5eme-t06-c02",
+  "title": "Moyenne",
+  "description": "Cours structuré Educalcul : Moyenne.",
+  "subject": "Statistiques et probabilités",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Moyenne",
+    "objectif_global": "Moyenne",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Interpréter.",
+      "Comparer deux séries."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une série statistique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as devant toi les notes d'un contrôle de mathématiques pour toute la classe. Chaque note est une valeur, et plusieurs élèves peuvent avoir obtenu la même note. On regroupe alors ces informations dans un tableau à deux colonnes : la première colonne liste les notes possibles, la seconde colonne indique combien d'élèves ont reçu chaque note. Ce tableau est ce qu'on appelle une série statistique, et la deuxième colonne donne les effectifs de chaque valeur."
+            },
+            {
+              "type": "definition",
+              "term": "série statistique",
+              "definition": "Ensemble de valeurs accompagnées de leurs effectifs, c'est-à-dire du nombre de fois où chaque valeur apparaît.",
+              "example": "Notes : 10, 12, 10, 14 → série : (10 ; 2), (12 ; 1), (14 ; 1)."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre d'occurrences d'une valeur dans la série. La somme de tous les effectifs s'appelle l'effectif total et se note souvent $N$.",
+              "example": "Dans l'exemple ci‑dessus, l'effectif de la note 10 est $2$, l'effectif total $N = 4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rendre cela concret, prenons une petite classe de cinq élèves qui ont passé un quiz sur les fractions. Les résultats sont : $12$, $15$, $12$, $18$, $15$. On peut dresser le tableau suivant : la valeur $12$ apparaît deux fois, la valeur $15$ apparaît deux fois, la valeur $18$ une fois. L'effectif total est donc $5$. Ce tableau nous permet de voir d'un coup d'œil la répartition des notes sans avoir à relire la liste brute."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Valeur",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "12",
+                  "2"
+                ],
+                [
+                  "15",
+                  "2"
+                ],
+                [
+                  "18",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons lire une série, la prochaine étape consiste à calculer la somme de toutes les valeurs en tenant compte de leurs effectifs. C'est cette somme qui servira de numérateur pour la moyenne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la somme pondérée des valeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour obtenir la somme totale, on multiplie chaque valeur par son effectif, puis on additionne tous ces produits. En notation mathématique, si la série contient les couples $(x_i ; n_i)$, la somme s'écrit $\\displaystyle S = \\sum_{i} x_i \\times n_i$. Cette opération est parfois appelée « somme pondérée » car chaque valeur est pondérée par le nombre de fois où elle se présente."
+            },
+            {
+              "type": "display_math",
+              "latex": "S = \\sum_{i} x_i \\times n_i"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque ligne du tableau, calcule le produit valeur $\\times$ effectif. Dans notre exemple : $12 \\times 2 = 24$, $15 \\times 2 = 30$, $18 \\times 1 = 18$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne ensuite tous les produits obtenus : $24 + 30 + 18 = 72$. Ce nombre $72$ est la somme $S$ de la série."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la somme $S$ connue, il ne reste plus qu'à la diviser par l'effectif total $N$ pour obtenir la moyenne. Cette division répartit équitablement la somme totale sur l'ensemble des observations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Obtenir la moyenne arithmétique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La moyenne, notée $\\overline{x}$, se calcule donc par la formule $\\overline{x} = \\frac{S}{N}$. Dans notre exemple, $S = 72$ et $N = 5$, ce qui donne $\\overline{x} = \\frac{72}{5} = 14,4$. La moyenne n'est pas nécessairement une valeur présente dans la série ; elle représente une sorte de point d'équilibre autour duquel les valeurs se distribuent."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{x} = \\frac{S}{N}"
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la moyenne 14,4 par rapport aux valeurs 12, 15, 18",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 14.4,
+                  "label": "moyenne"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 18,
+                  "label": "18"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de parcourir tout le chemin : lire une série, calculer la somme pondérée, puis diviser par l'effectif total pour obtenir la moyenne. Cette procédure fonctionne pour n'importe quelle liste de nombres groupés par effectifs, que ce soit des notes, des âges, des prix ou des mesures de longueur."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau ci‑dessus, quel est l'effectif total $N$ ?",
+              "answer": "5",
+              "hint": "Additionne les nombres de la colonne « Effectif ».",
+              "explanation": "L'effectif total est la somme de tous les effectifs : $2 + 2 + 1 = 5$."
+            },
+            {
+              "question": "Calcule la somme pondérée $S$ pour cette série.",
+              "answer": "72",
+              "hint": "Multiplie chaque valeur par son effectif puis additionne les produits.",
+              "explanation": "$12 \\times 2 = 24$, $15 \\times 2 = 30$, $18 \\times 1 = 18$. La somme est $24 + 30 + 18 = 72$."
+            },
+            {
+              "question": "Quelle est la moyenne $\\overline{x}$ de cette série ?",
+              "answer": "14,4",
+              "hint": "Divise la somme $S$ par l'effectif total $N$.",
+              "explanation": "$\\overline{x} = \\frac{72}{5} = 14,4$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Que raconte la moyenne sur une série ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "La moyenne n'est pas seulement un chiffre que l'on calcule ; c'est un indicateur qui résume l'ensemble des données en une seule valeur représentative. Imagine que tu places sur une droite graduée chaque note de la classe, en respectant leur effectif. La moyenne se situe exactement au point où la « masse » des notes serait en équilibre si chaque note avait un poids proportionnel à son effectif. C'est pourquoi on dit souvent que la moyenne est le centre de gravité de la série."
+            },
+            {
+              "type": "definition",
+              "term": "centre de gravité (statistique)",
+              "definition": "Point sur l'axe des valeurs où la somme des écarts pondérés par les effectifs est nulle. La moyenne arithmétique possède cette propriété.",
+              "example": "Pour la série (12 ; 2), (15 ; 2), (18 ; 1), les écarts à la moyenne 14,4 sont $-2,4$, $+0,6$, $+3,6$. Pondérés : $2\\times(-2,4) + 2\\times0,6 + 1\\times3,6 = 0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour visualiser cette idée, dessinons une droite numérique où l'on marque les trois valeurs distinctes $12$, $15$ et $18$ avec des traits dont l'épaisseur reflète leur effectif. La moyenne $14,4$ tombe entre $12$ et $15$, plus proche de $15$ car l'effectif de $15$ est plus grand que celui de $12$. Cette position montre que la moyenne tient compte non seulement des valeurs elles‑mêmes, mais aussi de leur fréquence."
+            },
+            {
+              "type": "number_line",
+              "caption": "Moyenne 14,4 comme centre de gravité",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12 (ef. 2)"
+                },
+                {
+                  "value": 14.4,
+                  "label": "moyenne"
+                },
+                {
+                  "value": 15,
+                  "label": "15 (ef. 2)"
+                },
+                {
+                  "value": 18,
+                  "label": "18 (ef. 1)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre aspect important est que la moyenne se trouve toujours entre la valeur minimale et la valeur maximale de la série. Elle ne peut jamais être plus petite que le plus petit nombre ni plus grande que le plus grand. Cela en fait un bon repère pour situer l'ensemble des données, mais cela ne signifie pas qu'elle décrit la dispersion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La moyenne comme valeur représentative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on dit « la note moyenne de la classe est 14,4 », on sous‑entend que si chaque élève avait obtenu exactement cette note, le total des points serait le même. C'est une manière commode de communiquer un résultat global sans lister toutes les notes. Toutefois, deux séries très différentes peuvent avoir la même moyenne : l'une très homogène, l'autre très éparpillée. C'est pourquoi il ne faut pas se fier uniquement à la moyenne pour juger de la performance d'un groupe."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux séries ayant la même moyenne 14 mais des dispersions différentes",
+              "bars": [
+                {
+                  "label": "Série A : 13,14,15",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Série B : 5,14,23",
+                  "value": 14,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la moyenne est sensible aux valeurs extrêmes. Si l'on ajoute à notre série une note très élevée, par exemple $20$, la moyenne augmentera même si la plupart des élèves n'ont pas changé de note. À l'inverse, une note très basse la fera baisser. Cette propriété est utile pour détecter des anomalies, mais elle peut aussi masquer la réalité du groupe si l'on ne regarde que la moyenne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effet d'une valeur extrême sur la moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la série originale (12 ; 2), (15 ; 2), (18 ; 1) dont la moyenne est $14,4$. Ajoutons un élève qui a obtenu $20$. Le nouvel effectif total devient $6$, la nouvelle somme $72 + 20 = 92$, et la nouvelle moyenne $\\frac{92}{6} \\approx 15,33$. La moyenne a augmenté de presque un point à cause d'un seul résultat. Si l'on retire cette note ajoutée, la moyenne revient à sa valeur initiale, ce qui montre que la moyenne n'est pas robuste face aux valeurs aberrantes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{x}_{\\text{new}} = \\frac{S + x_{\\text{extrême}}}{N + 1}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, la moyenne donne une idée centrale de la série, elle se situe entre le minimum et le maximum, elle permet de comparer des groupes, mais elle réagit fortement aux valeurs extrêmes. Pour une analyse complète, on l'associe souvent à d'autres indicateurs comme l'étendue ou la médiane, que tu découvriras plus tard."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La moyenne d'une série est-elle toujours comprise entre la plus petite et la plus grande valeur ?",
+              "answer": "Oui",
+              "hint": "Pense à la définition de centre de gravité.",
+              "explanation": "Par construction, la moyenne est une moyenne pondérée des valeurs, donc elle ne peut pas sortir de l'intervalle [min, max]."
+            },
+            {
+              "question": "Deux séries peuvent‑elles avoir la même moyenne tout en étant très différentes ?",
+              "answer": "Oui",
+              "hint": "Imagine une série groupée autour de 14 et une autre avec des valeurs 5 et 23.",
+              "explanation": "La série (13,14,15) et la série (5,14,23) ont toutes deux une moyenne de 14, mais leur dispersion est très différente."
+            },
+            {
+              "question": "Si l'on ajoute la valeur 20 à la série (12 ; 2), (15 ; 2), (18 ; 1), quelle est la nouvelle moyenne ?",
+              "answer": "15,33 (arrondi à deux décimales)",
+              "hint": "Calcule la nouvelle somme et le nouvel effectif total, puis divise.",
+              "explanation": "Nouvelle somme $= 72 + 20 = 92$, nouvel effectif $= 5 + 1 = 6$. Moyenne $= 92 / 6 \\approx 15,33$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer deux séries.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les moyennes de deux groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsqu'on veut savoir quel groupe obtient de meilleurs résultats en moyenne, il suffit de calculer la moyenne de chaque groupe et de les comparer directement. Par exemple, imaginons deux classes de 5e qui passent le même test de géométrie. La classe A a pour notes : $10, 12, 14, 16, 18$. La classe B a pour notes : $11, 13, 13, 15, 17$. En calculant les moyennes, on pourra dire laquelle des deux classes a performé globalement mieux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la classe A, la somme est $10 + 12 + 14 + 16 + 18 = 70$, l'effectif $N_A = 5$, donc $\\overline{x}_A = 70 / 5 = 14$. Pour la classe B, la somme est $11 + 13 + 13 + 15 + 17 = 69$, $N_B = 5$, donc $\\overline{x}_B = 69 / 5 = 13,8$. La classe A a une moyenne légèrement supérieure, ce qui indique une performance globale un peu meilleure, même si les écarts individuels peuvent varier."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{x}_A = \\frac{\\sum x_{A}}{N_A}, \\quad \\overline{x}_B = \\frac{\\sum x_{B}}{N_B}"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Moyennes des deux classes",
+              "bars": [
+                {
+                  "label": "Classe A",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe B",
+                  "value": 13.8,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les deux groupes n'ont pas le même nombre d'élèves. Dans ce cas, comparer les moyennes brutes reste valable pour dire quel groupe a un niveau moyen plus élevé, mais si l'on veut une moyenne globale pour l'ensemble des élèves des deux groupes, il faut calculer une moyenne pondérée par les effectifs. Cette moyenne globale n'est pas la moyenne des deux moyennes, sauf si les effectifs sont égaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Moyenne globale de deux séries de tailles différentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que la classe A compte $30$ élèves avec une moyenne de $14$, et la classe B compte $20$ élèves avec une moyenne de $13,8$. La somme totale des points de la classe A est $30 \\times 14 = 420$, celle de la classe B est $20 \\times 13,8 = 276$. L'effectif total est $50$. La moyenne globale est donc $(420 + 276) / 50 = 696 / 50 = 13,92$. Remarque que $(14 + 13,8) / 2 = 13,9$, ce qui est proche mais pas identique car les effectifs diffèrent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les sommes partielles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie chaque moyenne par son effectif : $S_A = N_A \\times \\overline{x}_A$, $S_B = N_B \\times \\overline{x}_B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les sommes et les effectifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Somme totale $S = S_A + S_B$, effectif total $N = N_A + N_B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Moyenne globale $\\overline{x}_{\\text{globale}} = S / N$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au‑delà de la comparaison des moyennes, on peut s'intéresser à la régularité des résultats au sein de chaque groupe. Deux classes peuvent avoir la même moyenne, mais l'une peut avoir des notes très proches les unes des autres (faible dispersion), tandis que l'autre présente de grands écarts (forte dispersion). Pour visualiser cela, un diagramme en secteurs (camembert) montrant la proportion d'élèves dans des intervalles de notes peut être très parlant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Analyser la dispersion pour affiner la comparaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que la classe A ait les notes $13, 14, 14, 15, 14$ (moyenne $14$) et la classe B $10, 12, 14, 16, 18$ (moyenne aussi $14$). Dans la classe A, la plupart des élèves sont rassemblés autour de $14$ ; dans la classe B, les notes sont étalées de $10$ à $18$. Un camembert qui regroupe les notes par tranches de deux points ($10$‑$11$, $12$‑$13$, $14$‑$15$, $16$‑$17$, $18$‑$19$) montre clairement que la classe A concentre $80\\%$ des élèves dans la tranche $14$‑$15$, alors que la classe B les répartit sur cinq tranches."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des notes par tranches pour les deux classes (même moyenne)",
+              "slices": [
+                {
+                  "label": "Classe A : 14‑15",
+                  "value": 80,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe A : autres",
+                  "value": 20,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Classe B : 10‑11",
+                  "value": 20,
+                  "tone": "red"
+                },
+                {
+                  "label": "Classe B : 12‑13",
+                  "value": 20,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Classe B : 14‑15",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "Classe B : 16‑17",
+                  "value": 20,
+                  "tone": "purple"
+                },
+                {
+                  "label": "Classe B : 18‑19",
+                  "value": 20,
+                  "tone": "brown"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comparer deux séries : calculer chaque moyenne, les mettre en regard, éventuellement calculer une moyenne globale pondérée si tu as besoin d'un chiffre unique pour l'ensemble, et enfin regarder la dispersion pour ne pas te fier aveuglément à la moyenne seule. Ces outils te serviront tout au long de l'année en statistiques et dans bien d'autres matières."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la moyenne d'une série statistique à partir d'un tableau de valeurs et d'effectifs.",
+                "Je sais interpréter la moyenne comme centre de gravité et comprendre sa sensibilité aux valeurs extrêmes.",
+                "Je sais comparer deux moyennes, calculer une moyenne globale pondérée et analyser la dispersion pour nuancer la comparaison."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La classe A a pour notes 10, 12, 14, 16, 18. La classe B a pour notes 11, 13, 13, 15, 17. Quelle classe a la moyenne la plus élevée ?",
+              "answer": "Classe A",
+              "hint": "Calcule la somme de chaque classe et divise par 5.",
+              "explanation": "Moyenne A = 70/5 = 14. Moyenne B = 69/5 = 13,8. Donc classe A > classe B."
+            },
+            {
+              "question": "Une école a 30 élèves en 5e A (moyenne 14) et 20 élèves en 5e B (moyenne 13,8). Quelle est la moyenne globale de l'école pour ce test ?",
+              "answer": "13,92",
+              "hint": "Utilise la formule de la moyenne pondérée : (30×14 + 20×13,8) / (30+20).",
+              "explanation": "Somme A = 420, somme B = 276, total = 696. Effectif total = 50. Moyenne = 696/50 = 13,92."
+            },
+            {
+              "question": "Deux classes ont la même moyenne 14. La première a des notes 13,14,14,15,14. La seconde a des notes 10,12,14,16,18. Laquelle est plus homogène ?",
+              "answer": "La première classe",
+              "hint": "Regarde l'écart entre la note minimale et la maximale, ou la concentration autour de 14.",
+              "explanation": "La première classe a toutes ses notes entre 13 et 15 (étendue 2), la seconde entre 10 et 18 (étendue 8). Donc la première est plus homogène."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

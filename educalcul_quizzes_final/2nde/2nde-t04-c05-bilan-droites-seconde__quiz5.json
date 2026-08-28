@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Équations, pentes, intersections",
+  "title": "Quiz : Équations, pentes et intersections des droites",
+  "questions": [
+    {
+      "text": "On donne les points $A(2 ; 3)$ et $B(5 ; 9)$. Quelle est la pente de la droite $(AB)$ ?",
+      "options": [
+        "2",
+        "3",
+        "0,5",
+        "-2"
+      ],
+      "correctAnswer": "2",
+      "explanation": "La pente $m$ d'une droite passant par deux points $A(x_A ; y_A)$ et $B(x_B ; y_B)$ se calcule par la formule $m = \\frac{y_B - y_A}{x_B - x_A}$. Ici, $m = \\frac{9 - 3}{5 - 2} = \\frac{6}{3} = 2$. L'option 3 correspond à la différence des ordonnées seulement. L'option 0,5 est l'inverse de la pente (confusion $\\frac{x_B - x_A}{y_B - y_A}$). L'option -2 correspond à une erreur de signe sur l'une des différences.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'équation réduite de la droite de pente $3$ passant par le point $C(1 ; 2)$ ?",
+      "options": [
+        "y = 3x - 1",
+        "y = 3x + 1",
+        "y = -3x - 1",
+        "y = (1/3)x - 1"
+      ],
+      "correctAnswer": "y = 3x - 1",
+      "explanation": "Une droite de pente $3$ a pour équation $y = 3x + b$. Comme elle passe par $C(1 ; 2)$, les coordonnées vérifient l'équation : $2 = 3 \\times 1 + b$, donc $2 = 3 + b$, ce qui donne $b = -1$. L'équation est donc $y = 3x - 1$. L'option $y = 3x + 1$ correspond à une erreur de signe sur $b$ (calcul $2 = 3 - b$). L'option $y = -3x - 1$ utilise l'opposé de la pente. L'option $y = (1/3)x - 1$ utilise l'inverse de la pente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites $d_1$ et $d_2$ ont pour équations respectives $y = 2x + 1$ et $y = -x + 7$. Quelles sont les coordonnées de leur point d'intersection ?",
+      "options": [
+        "(2 ; 5)",
+        "(5 ; 2)",
+        "(3 ; 7)",
+        "(1 ; 3)"
+      ],
+      "correctAnswer": "(2 ; 5)",
+      "explanation": "Au point d'intersection, les ordonnées sont égales : $2x + 1 = -x + 7$. On résout : $3x = 6$, donc $x = 2$. On remplace dans l'une des équations, par exemple $y = 2 \\times 2 + 1 = 5$. Le point d'intersection est $(2 ; 5)$. L'option $(5 ; 2)$ inverse les coordonnées. L'option $(3 ; 7)$ correspond à $x=3$ (erreur $2x+1=7$ au lieu de $-x+7=4$). L'option $(1 ; 3)$ est le point d'ordonnée à l'origine de $d_1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la droite $d$ d'équation $y = -2x + 4$. Parmi les équations suivantes, laquelle correspond à une droite perpendiculaire à $d$ et passant par le point $E(0 ; 3)$ ?",
+      "options": [
+        "y = (1/2)x + 3",
+        "y = -2x + 3",
+        "y = 2x + 3",
+        "y = -(1/2)x + 3"
+      ],
+      "correctAnswer": "y = (1/2)x + 3",
+      "explanation": "Deux droites sont perpendiculaires si le produit de leurs pentes vaut $-1$. La pente de $d$ est $-2$. La pente cherchée $m'$ vérifie $-2 \\times m' = -1$, donc $m' = \\frac{1}{2}$. La droite passe par $E(0 ; 3)$, donc son ordonnée à l'origine est $3$. Son équation est $y = \\frac{1}{2}x + 3$. L'option $y = -2x + 3$ est une droite parallèle à $d$ (même pente). L'option $y = 2x + 3$ a pour pente l'opposé de celle de $d$. L'option $y = -(1/2)x + 3$ a pour pente l'opposé de l'inverse (produit $= 1$ au lieu de $-1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite coupe l'axe des abscisses en $A(4 ; 0)$ et l'axe des ordonnées en $B(0 ; -2)$. Quelle est son équation réduite ?",
+      "options": [
+        "y = (1/2)x - 2",
+        "y = 2x - 2",
+        "y = -(1/2)x - 2",
+        "y = (1/2)x + 2"
+      ],
+      "correctAnswer": "y = (1/2)x - 2",
+      "explanation": "La droite passe par $B(0 ; -2)$, donc son ordonnée à l'origine est $-2$. L'équation est de la forme $y = ax - 2$. Elle passe aussi par $A(4 ; 0)$, donc $0 = a \\times 4 - 2$, ce qui donne $4a = 2$ et $a = \\frac{1}{2}$. L'équation est $y = \\frac{1}{2}x - 2$. On peut aussi calculer la pente $m = \\frac{-2 - 0}{0 - 4} = \\frac{-2}{-4} = \\frac{1}{2}$. L'option $y = 2x - 2$ inverse le numérateur et le dénominateur du calcul de la pente. L'option $y = -(1/2)x - 2$ oublie le signe moins au dénominateur ($0-4$). L'option $y = (1/2)x + 2$ prend l'opposé de l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

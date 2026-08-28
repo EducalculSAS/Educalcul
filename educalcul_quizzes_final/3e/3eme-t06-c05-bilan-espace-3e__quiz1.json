@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 489,
+  "_course_code": "3eme-t06-c05-bilan-espace-3e",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Transformations, sections, volumes",
+  "title": "Quiz : Transformations, sections et volumes (3e)",
+  "questions": [
+    {
+      "text": "Soit une translation de vecteur $\\vec{v}$. Quelle propriété cette transformation ne conserve-t-elle PAS ?",
+      "options": [
+        "Les longueurs des segments",
+        "Les mesures des angles",
+        "L'orientation du plan",
+        "La position des points"
+      ],
+      "correctAnswer": "La position des points",
+      "explanation": "Une translation déplace tous les points du plan selon un même vecteur. Elle conserve les longueurs (isométrie), les angles et l'orientation (translation directe). En revanche, elle change la position de chaque point (sauf si le vecteur est nul).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de révolution est coupé par un plan parallèle à sa base. Quelle est la nature de la section obtenue ?",
+      "options": [
+        "Un rectangle",
+        "Une ellipse",
+        "Un cercle",
+        "Une parabole"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "La section d'un cylindre de révolution par un plan parallèle à ses bases est un cercle de même rayon que les bases. Un plan perpendiculaire à l'axe donnant un rectangle, et un plan oblique (non parallèle aux génératrices) donnant une ellipse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône de révolution a pour hauteur $12\\,cm$ et pour rayon de base $5\\,cm$. Quel est son volume exact ?",
+      "options": [
+        "$100\\pi\\,cm^3$",
+        "$300\\pi\\,cm^3$",
+        "$200\\pi\\,cm^3$",
+        "$600\\pi\\,cm^3$"
+      ],
+      "correctAnswer": "$100\\pi\\,cm^3$",
+      "explanation": "Le volume d'un cône est $V = \\frac{1}{3} \\times \\pi R^2 \\times h$. Ici $R=5$ et $h=12$. $V = \\frac{1}{3} \\times \\pi \\times 25 \\times 12 = \\frac{300}{3}\\pi = 100\\pi\\,cm^3$. L'option $300\\pi$ correspond à l'oubli du tiers (volume du cylindre circonscrit).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide de volume $V = 27\\,cm^3$ est transformée par une homothétie de rapport $k = 3$. Quel est le volume de l'image de cette pyramide ?",
+      "options": [
+        "$81\\,cm^3$",
+        "$243\\,cm^3$",
+        "$729\\,cm^3$",
+        "$2187\\,cm^3$"
+      ],
+      "correctAnswer": "$729\\,cm^3$",
+      "explanation": "Lors d'une homothétie de rapport $k$, les longueurs sont multipliées par $|k|$, les aires par $k^2$ et les volumes par $|k|^3$. Ici $k=3$, donc le volume est multiplié par $3^3 = 27$. Le nouveau volume est $27 \\times 27 = 729\\,cm^3$. L'option $81$ correspond à une multiplication par $k$ (longueur), $243$ par $k^2$ (aire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On coupe un cône de révolution de sommet $S$ et de base un disque de centre $O$ par un plan parallèle à la base passant par le milieu $I$ de $[SO]$. La section est un disque de centre $I$. Quel est le rapport entre l'aire de cette section et l'aire de la base ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "Le plan de coupe passe par le milieu de la hauteur, donc l'homothétie de centre $S$ qui transforme la base en section a pour rapport $k = \\frac{SI}{SO} = \\frac{1}{2}$. Les aires varient comme le carré du rapport : $k^2 = (\\frac{1}{2})^2 = \\frac{1}{4}$. L'aire de la section est donc le quart de l'aire de la base.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

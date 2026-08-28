@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 154,
+  "_course_code": "ce2-t02-c03-placer-des-fractions-sur-une-droite-graduee",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Partager l'unité",
+  "title": "Partager l'unité : algorithmes de placement de fractions",
+  "blocks": [
+    {
+      "title": "Placer 1/4 sur la droite",
+      "content": "Écris les étapes successives pour placer la fraction $1/4$ sur une droite graduée allant de $0$ à $1$.",
+      "correctAnswer": "1. Diviser le segment entre $0$ et $1$ en $4$ parties égales. 2. Compter $1$ partie à partir de $0$. 3. Marquer ce point et l'étiqueter $1/4$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour placer $1/4$, on partage l'unité en $4$ parties égales car le dénominateur est $4$. Le numérateur $1$ indique de prendre la première partie après $0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour 1/n",
+      "content": "Propose un algorithme clair (suite d'instructions) pour placer une fraction de la forme $1/n$ (avec $n$ entier supérieur à $1$) sur une droite graduée de $0$ à $1$.",
+      "correctAnswer": "Algorithme :\\n- Entrée : $n$ (entier $> 1$).\\n- Diviser l'intervalle $[0 ; 1]$ en $n$ parties égales.\\n- Compter $1$ partie à partir de $0$.\\n- Placer le point et l'étiqueter $1/n$.\\n- Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $n$ donne le nombre de parts égales dans l'unité. Le numérateur $1$ signifie qu'on prend la première part. L'algorithme décrit ces étapes de façon ordonnée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour a/b",
+      "content": "Écris un algorithme structuré pour placer une fraction $a/b$ (avec $a$ et $b$ entiers, $0 < a < b$) sur une droite graduée de $0$ à $1$.",
+      "correctAnswer": "Algorithme :\\n- Entrée : $a$, $b$ (entiers, $0 < a < b$).\\n- Diviser l'intervalle $[0 ; 1]$ en $b$ parties égales.\\n- Compter $a$ parties à partir de $0$.\\n- Placer le point et l'étiqueter $a/b$.\\n- Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $b$ indique en combien de parts égales on divise l'unité. Le numérateur $a$ indique combien de ces parts on compte depuis $0$. L'algorithme généralise les deux cas précédents.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

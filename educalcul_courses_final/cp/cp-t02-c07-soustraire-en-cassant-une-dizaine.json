@@ -1,0 +1,270 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.550295+00:00",
+  "id": 21,
+  "code": "cp-t02-c07",
+  "title": "Soustraire en cassant une dizaine",
+  "description": "Cours structuré Educalcul : Soustraire en cassant une dizaine.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Soustraire en cassant une dizaine",
+    "objectif_global": "Soustraire en cassant une dizaine",
+    "mini_lecons_imposees": [
+      "Comprendre l'échange 1 dizaine contre 10 unités.",
+      "Effectuer un retrait concret avec matériel.",
+      "Relier manipulation et écriture de calcul sans technique posée formelle."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Comprendre l'échange 1 dizaine contre 10 unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Échanger une dizaine contre dix unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une baguette de dix petits cubes bien alignés. Cette baguette représente une dizaine. Si tu la défais, tu obtiens dix cubes séparés, ce sont dix unités. Tu peux toucher les cubes, les aligner, les compter un par un. Chaque cube est une unité. Quand tu les regroupés par dix, tu formes une dizaine. C’est une idée très utile pour comprendre les nombres à deux chiffres."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "1 dizaine = 10 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment on peut vérifier cet échange avec une balance. La balance est un outil simple : elle a deux plateaux. Si tu mets la baguette d’un côté et les dix cubes de l’autre, les deux plateaux restent à la même hauteur. Cela montre visuellement que la valeur ne change pas, seulement la forme."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                10
+              ],
+              "right": [
+                10
+              ],
+              "caption": "10 unités équilibrent 1 dizaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour garder une trace écrite, on utilise le signe égal. On écrit d’abord le nombre de dizaines, puis le signe égal, puis le nombre d’unités. Ainsi, tout le monde peut lire l’échange sans avoir le matériel sous les yeux. Cette écriture restera la même pour tous les nombres à deux chiffres."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 \\\\times 10 = 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'unités y a-t-il dans une dizaine ?",
+              "answer": "$10$",
+              "hint": "Compte les cubes de la baguette.",
+              "explanation": "Une dizaine correspond à dix unités, comme le montre la baguette de dix cubes."
+            },
+            {
+              "question": "Sur la balance, que dois-tu mettre à droite pour équilibrer une dizaine à gauche ?",
+              "answer": "$10$ unités",
+              "hint": "Pense au nombre d'unités dans une dizaine.",
+              "explanation": "La balance montre que 1 dizaine pèse autant que 10 unités."
+            },
+            {
+              "question": "Écris l'égalité qui montre l'échange.",
+              "answer": "$1$ dizaine $=10$ unités",
+              "hint": "Utilise le signe =.",
+              "explanation": "On écrit l'échange avec le signe égal."
+            }
+          ]
+        },
+        {
+          "title": "Effectuer un retrait concret avec matériel.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer des unités en cassant une dizaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu possèdes $23$ cubes : deux baguettes de dix et trois cubes seuls. Tu veux en donner $7$ à un ami. Les trois cubes ne suffisent pas, il faut donc casser une baguette pour obtenir dix cubes de plus. Tu as maintenant treize cubes disponibles. Tu retires les sept cubes demandés et tu comptes ce qui reste."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                23
+              ],
+              "right": [
+                16
+              ],
+              "caption": "Retrait de 7 unités depuis 23"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe la balance : à gauche tu as le total de départ, à droite le nombre qui reste après le retrait. La balance penche au début, puis revient à l’équilibre quand tu as enlevé les bons cubes. C’est une façon concrète de voir la soustraction."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "3"
+                ]
+              ],
+              "caption": "Décomposition de 23"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour garder une trace, on écrit la soustraction avec le signe moins. Le nombre de départ, le nombre retiré et le résultat forment une phrase mathématique facile à relire plus tard. Cette écriture te permettra de retrouver le calcul sans le matériel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $23$ cubes. Tu retires $7$ cubes. Combien en reste-t-il ?",
+              "answer": "$16$",
+              "hint": "Casse une dizaine pour avoir assez d'unités.",
+              "explanation": "On casse une dizaine en dix unités, puis on retire 7 unités, il reste 16 cubes."
+            },
+            {
+              "question": "Montre sur la balance le retrait de $7$ unités à partir de $23$.",
+              "answer": "À gauche $23$, à droite $16$",
+              "hint": "Le plateau droit affiche le résultat.",
+              "explanation": "La balance visualise le retrait : le total initial à gauche, le reste à droite."
+            },
+            {
+              "question": "Écris la soustraction correspondante.",
+              "answer": "$23-7=16$",
+              "hint": "Note le nombre de départ, le nombre retiré et le résultat.",
+              "explanation": "L'écriture $23-7=16$ résume le retrait concret."
+            }
+          ]
+        },
+        {
+          "title": "Relier manipulation et écriture de calcul sans technique posée formelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier le geste et l’écriture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite numérique, place un point sur $23$. Pour soustraire $7$, fais sept petits sauts vers la gauche. Chaque saut retire une unité. Après le septième saut, ton doigt se pose sur $16$. La droite te montre le chemin du calcul et tu vois clairement la retenue."
+            },
+            {
+              "type": "number_line",
+              "caption": "Soustraction 23 - 7 sur une droite",
+              "min": 10,
+              "max": 30,
+              "points": [
+                {
+                  "value": 23,
+                  "label": "Départ"
+                },
+                {
+                  "value": 16,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec un autre nombre, par exemple $34$ moins $8$. Casse une dizaine de $34$ pour avoir quatorze unités, retire huit unités et compte ce qui reste. Tu obtiens $26$. La méthode est la même, seul le nombre change. Tu peux refaire le dessin sur la droite pour vérifier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, dis avec tes mots pourquoi on casse une dizaine quand on soustrait. Quand les unités disponibles sont trop peu nombreuses, on échange une dizaine contre dix unités pour pouvoir enlever ce qu’on demande. C’est le secret de la soustraction avec retenue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais échanger 1 dizaine contre 10 unités.",
+                "Je sais retirer des unités en cassant une dizaine.",
+                "Je sais écrire la soustraction correspondante."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite numérique, place $23$ puis recule de $7$. Où arrives-tu ?",
+              "answer": "$16$",
+              "hint": "Compte les sauts en arrière.",
+              "explanation": "Le point d'arrivée est $16$, ce qui donne $23-7=16$."
+            },
+            {
+              "question": "Écris une autre soustraction en cassant une dizaine, par exemple $34-8$.",
+              "answer": "$34-8=26$",
+              "hint": "Casse une dizaine de $34$.",
+              "explanation": "On transforme $34$ en $2$ dizaines et $14$ unités, puis on retire $8$ unités."
+            },
+            {
+              "question": "Explique avec tes mots pourquoi on casse une dizaine.",
+              "answer": "Parce qu'il n'y a pas assez d'unités pour retirer.",
+              "hint": "Pense aux unités disponibles.",
+              "explanation": "Quand les unités sont insuffisantes, on échange une dizaine contre dix unités pour pouvoir soustraire."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

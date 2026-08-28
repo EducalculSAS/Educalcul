@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interprétation",
+  "title": "Interprétation de la moyenne, médiane et étendue",
+  "blocks": [
+    {
+      "title": "Vocabulaire de l'interprétation",
+      "content": "Dans une série statistique, la moyenne est la somme des valeurs divisée par l'effectif total. Elle est {{1}} aux valeurs extrêmes. La médiane est la valeur qui partage la série en deux parties égales après tri. Elle est {{2}} aux valeurs extrêmes. L'étendue est la différence entre la valeur maximale et la valeur minimale ; elle renseigne sur la {{3}} de la série.",
+      "correctAnswer": "",
+      "blanks": [
+        "sensible|sensible aux valeurs extrêmes",
+        "insensible|peu sensible|insensible aux valeurs extrêmes",
+        "dispersion|étalement|variabilité"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne prend en compte toutes les valeurs, donc une valeur très grande ou très petite la modifie : elle est sensible aux valeurs extrêmes. La médiane ne dépend que de la valeur centrale, elle ne change pas si les extrêmes varient : elle est insensible aux valeurs extrêmes. L'étendue mesure l'écart entre le minimum et le maximum, elle informe sur la dispersion (ou l'étalement) des données.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet d'une valeur aberrante",
+      "content": "On considère les notes suivantes sur 20 : 12, 13, 14, 15, 30. La note 30 est une valeur aberrante. Complète les affirmations : La moyenne est {{1}} par cette valeur aberrante, alors que la médiane est {{2}}. L'étendue, qui mesure la {{3}}, devient grande à cause de cet écart.",
+      "correctAnswer": "",
+      "blanks": [
+        "influencée|sensible|modifiée",
+        "peu influencée|robuste|insensible",
+        "dispersion|étalement|variabilité"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne de la série est $ (12+13+14+15+30)/5 = 84/5 = 16,8 $, elle est tirée vers le haut par la note 30 : elle est influencée (sensible). La médiane est la valeur centrale après tri (12, 13, 14, 15, 30) soit 14, elle ne change pas si on modifie la valeur 30 : elle est peu influencée (robuste). L'étendue est $30-12 = 18$, elle reflète la dispersion des données et devient grande à cause de l'écart important.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux distributions",
+      "content": "Deux classes passent le même test. La classe A a une moyenne de $14$ et une médiane de $13$. La classe B a une moyenne de $12$ et une médiane de $13$. On peut en déduire que la classe A comporte davantage de notes {{1}} que la classe B, ce qui augmente la moyenne. La médiane, identique dans les deux classes, montre que la valeur {{2}} est la même. L'étendue de la classe A est probablement {{3}} que celle de la classe B si les notes élevées sont plus éloignées.",
+      "correctAnswer": "",
+      "blanks": [
+        "élevées|supérieures|fortes",
+        "centrale|du milieu",
+        "plus grande|supérieure|plus importante"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne est sensible aux valeurs élevées : une moyenne plus élevée avec la même médiane indique la présence de notes plus élevées dans la classe A. La médiane, valeur centrale, est identique, donc la note du milieu est la même. L'étendue, différence entre max et min, sera plus grande si les notes maximales sont plus élevées dans la classe A.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

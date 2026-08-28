@@ -1,0 +1,475 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.955661+00:00",
+  "id": 475,
+  "code": "3eme-t04-c03",
+  "title": "Probabilités simples",
+  "description": "Cours structuré Educalcul : Probabilités simples.",
+  "subject": "Statistiques et probabilités",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Probabilités simples",
+    "objectif_global": "Probabilités simples",
+    "mini_lecons_imposees": [
+      "Univers.",
+      "Événements.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Univers.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie en l'air. Avant qu'elle ne retombe, tu ne peux pas savoir avec certitude sur quelle face elle va atterir : c'est le mystère qui rend l'expérience aléatoire. En mathématiques, on appelle cela une expérience aléatoire lorsque l'on ne peut pas prédire le résultat à l'avance, même si l'on connaît toutes les issues possibles. Pense aussi à un dé à six faces que tu fais rouler sur la table, ou à une carte que tu tires au hasard d'un jeu de 32 cartes. Dans tous ces cas, le déroulement est le même : tu effectues une action, et le résultat t'échappe jusqu'au dernier instant. C'est cette imprévisibilité qui nous intéresse, car elle va nous permettre de construire un langage pour parler du hasard sans avoir à deviner l'avenir."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience aléatoire",
+              "definition": "Une expérience dont le résultat ne peut pas être prédit avec certitude avant sa réalisation, mais dont l'ensemble des issues possibles est connu.",
+              "example": "Lancer un dé à six faces, tirer une carte dans un jeu, faire tourner une roulette."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé le décor, regardons de plus près ce que l'on appelle l'univers de l'expérience. L'univers, que l'on note souvent par la lettre grecque $\\Omega$ (omég a majuscule), est tout simplement la liste exhaustive de toutes les issues possibles. Pour un dé à six faces, l'univers s'écrit $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Pour une pièce de monnaie, $\\Omega = \\{\\text{face}, \\text{pile}\\}$. Pour un jeu de 32 cartes, l'univers contient 32 éléments, chacun étant une carte précise. Remarque bien que l'univers ne dépend pas de ce que tu espères obtenir, il ne dépend que de l'expérience elle-même. C'est une idée rassurante : peu importe ton envie, l'univers reste le même, solide et immuable."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Expérience",
+                "Univers $\\Omega$"
+              ],
+              "rows": [
+                [
+                  "Lancer un dé à 6 faces",
+                  "{1, 2, 3, 4, 5, 6}"
+                ],
+                [
+                  "Lancer une pièce",
+                  "{Face, Pile}"
+                ],
+                [
+                  "Tirer une carte d'un jeu de 32",
+                  "{As de trèfle, Roi de trèfle, ..., 7 de carreau}"
+                ],
+                [
+                  "Noter le sexe d'un nouveau-né",
+                  "{Garçon, Fille}"
+                ]
+              ],
+              "caption": "Exemples d'univers pour différentes expériences aléatoires"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une première idée de ce qu'est un univers. Mais parfois, l'expérience se déroule en plusieurs étapes successives, comme quand on lance deux dés l'un après l'autre, ou quand on tire deux cartes de suite sans les remettre. Pour ne pas s'emmêler les pinceaux, les mathématiciens ont inventé une représentation visuelle très pratique : l'arbre des possibilités. Imagine un tronc qui se divise en branches, chacune correspondant à une issue de la première étape, et chaque branche qui se divise à son tour pour la deuxième étape. C'est comme un arbre généalogique, mais pour les résultats du hasard. Regardons ensemble comment on construit cet arbre pour un double lancer de pièce."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des possibilités pour deux lancers de pièce",
+              "branches": [
+                {
+                  "label": "1er lancer",
+                  "probability": "1/2",
+                  "children": [
+                    {
+                      "label": "Face",
+                      "probability": "1/2",
+                      "children": [
+                        {
+                          "label": "Face",
+                          "probability": "1/4"
+                        },
+                        {
+                          "label": "Pile",
+                          "probability": "1/4"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Pile",
+                      "probability": "1/2",
+                      "children": [
+                        {
+                          "label": "Face",
+                          "probability": "1/4"
+                        },
+                        {
+                          "label": "Pile",
+                          "probability": "1/4"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arbre est un outil formidable quand le nombre d'issues reste raisonnable. Mais imagine une expérience où l'on tire un nombre entier au hasard entre 1 et 1000 : l'univers contient 1000 éléments, impossible de les lister un par un, et l'arbre serait une forêt infinie ! Heureusement, on peut décrire l'univers par une propriété commune à tous ses éléments. On écrit alors $\\Omega = \\{ x \\in \\mathbb{N} \\mid 1 \\le x \\le 1000 \\}$, ce qui se lit : « l'ensemble des entiers naturels $x$ tels que $x$ est compris entre 1 et 1000 ». Cette notation ensembliste est compacte, précise, et elle permet de manipuler l'univers sans avoir à l'écrire en entier. C'est un peu comme si tu donnais la recette d'un gâteau au lieu de lister tous les gâteaux possibles. Sur une droite numérique, cet univers correspond à tous les points entiers entre 1 et 1000."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'univers {1, 2, ..., 1000} sur une droite graduée (extrait)",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 10,
+                  "label": "..."
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir trois façons de décrire un univers : par une liste explicite quand il est petit, par un arbre quand l'expérience a plusieurs étapes, et par une propriété mathématique quand il est trop grand. Ces trois regards sont complémentaires, et tu choisiras le plus adapté selon la situation. Dans la prochaine leçon, nous allons zoomer à l'intérieur de l'univers pour parler des événements, c'est-à-dire des parties de l'univers qui nous intéressent particulièrement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'univers $\\Omega$ pour l'expérience : « On lance un dé à 8 faces numérotées de 1 à 8 ».",
+              "answer": "$\\Omega = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$",
+              "hint": "L'univers est l'ensemble de toutes les issues possibles. Ici, les faces du dé.",
+              "explanation": "Le dé a 8 faces, chacune porte un nombre de 1 à 8. Toutes ces issues sont possibles et il n'y en a pas d'autres. Donc l'univers est l'ensemble de ces 8 nombres."
+            },
+            {
+              "question": "Complète l'arbre des possibilités pour l'expérience : « On lance une pièce, puis on lance un dé à 6 faces ». Indique les issues à la fin des branches.",
+              "answer": "Les issues sont : (Face, 1), (Face, 2), ..., (Face, 6), (Pile, 1), ..., (Pile, 6). Soit 12 issues au total.",
+              "hint": "La première étape a 2 issues, la deuxième en a 6. Chaque branche de la première étape se divise en 6 branches.",
+              "explanation": "L'arbre commence par deux branches : Face et Pile. De chaque branche partent 6 branches pour les résultats du dé (1 à 6). Cela donne 2 × 6 = 12 issues finales."
+            },
+            {
+              "question": "Écris en notation ensembliste l'univers de l'expérience : « On choisit un nombre entier au hasard entre -5 et 5 ».",
+              "answer": "$\\Omega = \\{ x \\in \\mathbb{Z} \\mid -5 \\le x \\le 5 \\}$ ou $\\Omega = \\{-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5\\}$",
+              "hint": "Les nombres entiers entre -5 et 5 inclus. Pense à l'ensemble des entiers relatifs $\\mathbb{Z}$.",
+              "explanation": "L'expérience consiste à choisir un entier relatif entre -5 et 5. On peut soit lister les 11 valeurs, soit utiliser la notation avec une condition sur $x$. Les deux écritures sont correctes."
+            }
+          ]
+        },
+        {
+          "title": "Événements.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition et premiers exemples d'événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons décrire l'univers $\\Omega$ d'une expérience aléatoire, nous allons nous intéresser à ce qui se passe à l'intérieur de cet univers. Souvent, on ne s'intéresse pas à une issue précise, mais à un ensemble d'issues qui partagent une caractéristique commune. Par exemple, en lançant un dé, on peut vouloir savoir si le résultat est pair. Les issues qui nous satisfont sont alors 2, 4 et 6. Cet ensemble, $\\{2, 4, 6\\}$, est une partie de l'univers $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. En probabilités, on appelle cet ensemble un événement. Un événement est donc tout simplement une partie de l'univers, c'est-à-dire un ensemble d'issues possibles. On le note souvent par une lettre majuscule : $A$, $B$, $C$... L'événement « obtenir un nombre pair » peut être noté $A = \\{2, 4, 6\\}$. Remarque que l'univers lui-même est un événement (l'événement certain), et que l'ensemble vide $\\varnothing$ est aussi un événement (l'événement impossible)."
+            },
+            {
+              "type": "definition",
+              "term": "Événement",
+              "definition": "Une partie de l'univers $\\Omega$, c'est-à-dire un ensemble d'issues possibles. L'événement certain est $\\Omega$ lui-même, l'événement impossible est l'ensemble vide $\\varnothing$.",
+              "example": "Pour un lancer de dé, l'événement « obtenir un nombre $\\ge 4$ » est $B = \\{4, 5, 6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "L'univers $\\Omega$ et un événement $A$ (partie hachurée)",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$A$",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les événements ne vivent pas isolés : ils peuvent se combiner entre eux pour former de nouveaux événements. C'est là que la théorie des ensembles devient notre meilleure amie. Si $A$ et $B$ sont deux événements, leur réunion $A \\cup B$ est l'événement « $A$ ou $B$ (ou les deux) se réalise ». Leur intersection $A \\cap B$ est l'événement « $A$ et $B$ se réalisent en même temps ». Le complémentaire de $A$, noté $\\overline{A}$ (ou parfois $A^c$), est l'événement « $A$ ne se réalise pas », c'est-à-dire toutes les issues de $\\Omega$ qui ne sont pas dans $A$. Prenons un exemple concret : au lancer d'un dé, soit $A = \\{\\text{nombre pair}\\} = \\{2,4,6\\}$ et $B = \\{\\text{nombre $\\ge 4$}\\} = \\{4,5,6\\}$. Alors $A \\cup B = \\{2,4,5,6\\}$, $A \\cap B = \\{4,6\\}$, et $\\overline{A} = \\{1,3,5\\}$. Ces opérations permettent de construire des événements complexes à partir de briques simples."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Deux événements $A$ et $B$ dans $\\Omega$ : réunion, intersection, complémentaire",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$A$",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$B$",
+                  "elements": [
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que deux événements ne puissent pas se produire en même temps. Par exemple, au lancer d'un dé, l'événement « obtenir un 2 » et l'événement « obtenir un 5 » sont incompatibles : le dé ne peut pas montrer les deux faces simultanément. On dit que ces événements sont mutuellement exclusifs, ou incompatibles. En langage ensembliste, cela signifie que leur intersection est vide : $A \\cap B = \\varnothing$. Sur un diagramme de Venn, les deux cercles ne se chevauchent pas, ils sont disjoints. Cette notion est cruciale car elle simplifie grandement le calcul des probabilités, comme nous le verrons dans la prochaine leçon. Mais avant d'y arriver, entraîne-toi à repérer des événements incompatibles dans des situations variées."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Deux événements incompatibles $A$ et $B$ : pas de chevauchement",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$A$",
+                  "elements": [
+                    "2"
+                  ]
+                },
+                {
+                  "label": "$B$",
+                  "elements": [
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour décrire des événements, les combiner, et identifier quand ils sont incompatibles. Ces notions sont les fondations sur lesquelles repose tout le calcul des probabilités. Dans la leçon suivante, nous allons enfin attribuer des nombres à ces événements pour mesurer leur chance de se produire. C'est le moment où le hasard devient quantifiable !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour un lancer de dé à 6 faces, soit l'événement $C = \\{\\text{obtenir un multiple de 3}\\}$. Énumère les éléments de $C$ et dis si $C$ est certain, impossible ou possible.",
+              "answer": "$C = \\{3, 6\\}$. C'est un événement possible (ni certain, ni impossible).",
+              "hint": "Les multiples de 3 entre 1 et 6 sont 3 et 6. L'événement n'est pas $\\Omega$ ni $\\varnothing$.",
+              "explanation": "L'univers est $\\{1,2,3,4,5,6\\}$. Les multiples de 3 dans cet ensemble sont 3 et 6. Comme $C$ n'est ni vide ni égal à $\\Omega$, c'est un événement possible."
+            },
+            {
+              "question": "Soit $\\Omega = \\{1,2,3,4,5,6,7,8,9,10\\}$, $A = \\{2,4,6,8,10\\}$ (nombres pairs) et $B = \\{3,6,9\\}$ (multiples de 3). Donne $A \\cup B$, $A \\cap B$ et $\\overline{A}$.",
+              "answer": "$A \\cup B = \\{2,3,4,6,8,9,10\\}$, $A \\cap B = \\{6\\}$, $\\overline{A} = \\{1,3,5,7,9\\}$.",
+              "hint": "Réunion : tous les éléments qui sont dans A ou dans B. Intersection : ceux qui sont dans les deux. Complémentaire de A : ceux qui ne sont pas dans A.",
+              "explanation": "On liste les éléments de chaque ensemble. La réunion réunit tous les éléments présents dans au moins un des deux. L'intersection ne garde que le 6 qui est à la fois pair et multiple de 3. Le complémentaire de A dans $\\Omega$ contient les nombres impairs de 1 à 10."
+            },
+            {
+              "question": "Dans un jeu de 32 cartes, on tire une carte au hasard. Soit $R$ l'événement « la carte est rouge » et $N$ l'événement « la carte est noire ». $R$ et $N$ sont-ils incompatibles ? Justifie.",
+              "answer": "Oui, $R$ et $N$ sont incompatibles car une carte ne peut pas être à la fois rouge et noire. Leur intersection est vide : $R \\cap N = \\varnothing$.",
+              "hint": "Une carte a une seule couleur. Peut-elle être rouge et noire en même temps ?",
+              "explanation": "Les événements « rouge » et « noir » sont mutuellement exclusifs : aucune carte n'appartient aux deux couleurs. Donc $R \\cap N = \\varnothing$, ce qui est la définition d'événements incompatibles."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas équiprobable : une définition simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant tous les ingrédients pour passer au calcul des probabilités. Mais attention : on ne peut pas calculer la probabilité de n'importe quel événement n'importe comment. La formule la plus simple, celle que tu vas utiliser le plus souvent, ne fonctionne que dans un cadre bien précis : le cas équiprobable. Une expérience est équiprobable lorsque toutes les issues élémentaires de l'univers $\\Omega$ ont la même chance de se produire. C'est le cas pour un dé parfait (chaque face a la même probabilité d'apparaître), une pièce de monnaie équilibrée, un jeu de cartes bien mélangé où chaque carte a la même chance d'être tirée. Dans ce cas, la probabilité d'un événement $A$ se calcule très simplement : $P(A) = \\frac{\\text{nombre d'issues favorables à } A}{\\text{nombre total d'issues possibles}} = \\frac{|A|}{|\\Omega|}$. Le symbole $|A|$ désigne le cardinal de $A$, c'est-à-dire le nombre d'éléments dans l'ensemble $A$. C'est une fraction, souvent simplifiée, qui donne un nombre entre 0 et 1."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience équiprobable",
+              "definition": "Une expérience aléatoire où toutes les issues élémentaires de l'univers $\\Omega$ ont la même probabilité de se réaliser.",
+              "example": "Lancer un dé non pipé, tirer une carte dans un jeu complet et bien mélangé."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Probabilité d'obtenir un 6 au dé : 1 issue favorable sur 6 issues possibles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule $P(A) = \\frac{|A|}{|\\Omega|}$ est puissante, mais elle ne s'applique qu'aux événements simples. Que faire quand l'événement qui nous intéresse est une réunion ou une intersection ? Heureusement, il existe des règles qui permettent de calculer la probabilité d'événements composés à partir des probabilités des événements de base. La première règle, valable pour tous les événements (même pas équiprobables), est la formule de la réunion : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Pourquoi soustrait-on $P(A \\cap B)$ ? Parce que les issues communes à $A$ et $B$ ont été comptées deux fois dans $P(A) + P(B)$ : une fois dans $A$, une fois dans $B$. Il faut donc les retirer une fois pour ne les compter qu'une seule fois. Si $A$ et $B$ sont incompatibles, alors $A \\cap B = \\varnothing$ et $P(A \\cap B) = 0$. La formule se simplifie alors en $P(A \\cup B) = P(A) + P(B)$. C'est une propriété très pratique qu'il faut savoir reconnaître."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les événements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine quels sont les événements $A$ et $B$ dans l'énoncé, et écrit-les en extension (liste des issues) si l'univers est petit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Confirme que l'expérience est équiprobable (dé parfait, pièce équilibrée, tirage au hasard dans un ensemble fini)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les probabilités de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $P(A)$, $P(B)$ et $P(A \\cap B)$ avec la formule $\\frac{|A|}{|\\Omega|}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule de la réunion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Si $A$ et $B$ incompatibles, utilise $P(A) + P(B)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste une astuce très utile pour éviter des calculs fastidieux : la probabilité du complémentaire. Puisque l'événement $A$ et son complémentaire $\\overline{A}$ forment une partition de l'univers (ils sont incompatibles et leur réunion est $\\Omega$), on a $P(A) + P(\\overline{A}) = P(\\Omega) = 1$. Donc $P(\\overline{A}) = 1 - P(A)$. Cela veut dire que si tu connais la probabilité qu'un événement se produise, tu connais immédiatement la probabilité qu'il ne se produise pas, sans avoir à recompter les issues. Par exemple, au lancer d'un dé, la probabilité de ne pas obtenir un 6 est $1 - \\frac{1}{6} = \\frac{5}{6}$. C'est souvent plus rapide de calculer le complémentaire quand l'événement initial a beaucoup d'issues (comme « obtenir un nombre différent de 6 » qui en a 5) et que son complémentaire en a peu (ici 1). Cette symétrie est une des plus belles simplifications des probabilités."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\overline{A}) = 1 - P(A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant en main les trois piliers du calcul de probabilités en 3e : la définition dans le cas équiprobable, la formule de la réunion (avec son cas particulier pour les événements incompatibles), et la règle du complémentaire. Ces outils te permettront de résoudre la grande majorité des exercices du programme. Rappelle-toi toujours de vérifier l'équiprobabilité avant d'appliquer la formule de base, et de bien identifier si tes événements sont incompatibles pour simplifier la réunion. Dans le bilan final, tu retrouveras ces points clés sous forme de liste de vérification pour t'assurer que tout est bien ancré."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une expérience aléatoire et écrire son univers $\\Omega$.",
+                "Je sais définir un événement comme partie de $\\Omega$ et utiliser les notations $\\cup$, $\\cap$, $\\overline{A}$.",
+                "Je sais identifier des événements incompatibles ($A \\cap B = \\varnothing$).",
+                "Je sais calculer $P(A) = \\frac{|A|}{|\\Omega|}$ dans le cas équiprobable.",
+                "Je sais appliquer $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ et le cas $P(A \\cup B) = P(A) + P(B)$ si incompatibles.",
+                "Je sais utiliser $P(\\overline{A}) = 1 - P(A)$ pour simplifier un calcul."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à 6 faces parfait. Calculer la probabilité d'obtenir un nombre pair.",
+              "answer": "$P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}$.",
+              "hint": "L'univers a 6 issues. Les issues favorables sont 2, 4, 6 (3 issues).",
+              "explanation": "L'expérience est équiprobable. $\\Omega = \\{1,2,3,4,5,6\\}$, $A = \\{2,4,6\\}$. Donc $|A| = 3$, $|\\Omega| = 6$, $P(A) = 3/6 = 1/2$."
+            },
+            {
+              "question": "On tire une carte au hasard dans un jeu de 32 cartes. Soit $R$ : « la carte est un roi » et $C$ : « la carte est un cœur ». Calculer $P(R \\cup C)$.",
+              "answer": "$P(R \\cup C) = \\frac{4}{32} + \\frac{8}{32} - \\frac{1}{32} = \\frac{11}{32}$.",
+              "hint": "Il y a 4 rois, 8 cœurs, et 1 carte qui est à la fois roi et cœur (le roi de cœur). Utilise la formule de la réunion.",
+              "explanation": "$|\\Omega| = 32$. $|R| = 4$, $|C| = 8$, $|R \\cap C| = 1$. $P(R) = 4/32$, $P(C) = 8/32$, $P(R \\cap C) = 1/32$. $P(R \\cup C) = 4/32 + 8/32 - 1/32 = 11/32$."
+            },
+            {
+              "question": "Dans une urne, il y a 5 boules rouges, 3 boules bleues et 2 boules vertes. On tire une boule au hasard. Quelle est la probabilité de ne pas tirer une boule rouge ?",
+              "answer": "$P(\\text{pas rouge}) = 1 - P(\\text{rouge}) = 1 - \\frac{5}{10} = \\frac{1}{2}$.",
+              "hint": "Calcule d'abord la probabilité de tirer une boule rouge, puis utilise la règle du complémentaire.",
+              "explanation": "Total 10 boules. $P(\\text{rouge}) = 5/10 = 1/2$. L'événement « pas rouge » est le complémentaire de « rouge ». Donc $P(\\text{pas rouge}) = 1 - 1/2 = 1/2$. On peut aussi compter directement : 5 boules non rouges sur 10, même résultat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

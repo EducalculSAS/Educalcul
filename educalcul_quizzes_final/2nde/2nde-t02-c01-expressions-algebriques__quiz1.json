@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Structure",
+  "title": "Évaluation : Structure des expressions algébriques",
+  "questions": [
+    {
+      "text": "Quels sont les termes de l'expression $3x^2 - 5x + 7$ ?",
+      "options": [
+        "$3x^2$, $-5x$, $7$",
+        "$3$, $x^2$, $-5$, $x$, $7$",
+        "$3x^2$, $-5$, $x$, $7$",
+        "$3x$, $-5x$, $7$"
+      ],
+      "correctAnswer": "$3x^2$, $-5x$, $7$",
+      "explanation": "Les termes d'une expression algébrique sont les parties séparées par les signes + ou -. Ici, les termes sont $3x^2$, $-5x$ et $7$. Les autres options décomposent incorrectement les coefficients et les variables ou mélangent les signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le coefficient de $x$ dans $-4x^3 + 2x - 9$ ?",
+      "options": [
+        "$-4$",
+        "$2$",
+        "$-9$",
+        "$0$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Le coefficient de $x$ est le nombre qui multiplie $x$ dans le terme qui contient $x$ à la puissance 1. Le terme $2x$ donne le coefficient $2$. Le terme $-4x^3$ concerne $x^3$, et $-9$ est un terme constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le degré du polynôme $5x^4 - 3x^2 + x - 6$ ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$3$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le degré d'un polynôme est l'exposant le plus élevé de la variable parmi tous ses termes. Le terme $5x^4$ a l'exposant 4, qui est le plus grand. Les autres termes ont des exposants 2, 1 et 0.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes est équivalente à $2(x+3) - 4(x-1)$ après développement et simplification ?",
+      "options": [
+        "$-2x + 10$",
+        "$-2x + 2$",
+        "$2x + 10$",
+        "$2x + 2$"
+      ],
+      "correctAnswer": "$-2x + 10$",
+      "explanation": "On développe : $2(x+3) = 2x + 6$ et $-4(x-1) = -4x + 4$. En additionnant : $2x + 6 - 4x + 4 = -2x + 10$. Les autres choix correspondent à des erreurs de signes ou de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez complètement l'expression $x^2 - 9$.",
+      "options": [
+        "$(x-3)(x+3)$",
+        "$(x-9)(x+1)$",
+        "$(x-3)^2$",
+        "$x(x-9)$"
+      ],
+      "correctAnswer": "$(x-3)(x+3)$",
+      "explanation": "L'expression $x^2 - 9$ est une différence de deux carrés : $x^2 - 3^2 = (x-3)(x+3)$. Les autres propositions ne développent pas en $x^2 - 9$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 250,
+  "_course_code": "cm1-t06-c03-triangles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Propriétés simples",
+  "title": "Algorithmes et Propriétés des Triangles",
+  "blocks": [
+    {
+      "title": "Test du Triangle Isocèle",
+      "content": "Imagine un programme qui reçoit la longueur des trois côtés d'un triangle, appelés $c1$, $c2$ et $c3$. Écris l'algorithme simple (avec des conditions si alors) pour savoir si ce triangle est isocèle. Rappel : un triangle est isocèle s'il a au moins deux côtés de même longueur.",
+      "correctAnswer": "Si $c1 = c2$ ou $c1 = c3$ ou $c2 = c3$ alors\\n  Le triangle est isocèle\\nSinon\\n  Le triangle n'est pas isocèle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour qu'un triangle soit isocèle, il suffit que deux de ses côtés soient égaux. On teste donc toutes les paires possibles : le premier avec le deuxième, le premier avec le troisième, ou le deuxième avec le troisième.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identification du Triangle Équilatéral",
+      "content": "On veut créer un code pour vérifier si un triangle est équilatéral. Les côtés sont $c1$, $c2$ et $c3$. Écris le raisonnement structuré pour confirmer que le triangle est équilatéral.",
+      "correctAnswer": "Si $c1 = c2$ et $c2 = c3$ alors\\n  Le triangle est équilatéral\\nSinon\\n  Le triangle n'est pas équilatéral",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle est équilatéral si tous ses côtés sont égaux. Il faut donc que $c1$ soit égal à $c2$ et que $c2$ soit égal à $c3$. Si ces deux conditions sont vraies, alors $c1$ est aussi égal à $c3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détection du Triangle Rectangle",
+      "content": "Un robot mesure les trois angles d'un triangle, appelés $a1$, $a2$ et $a3$. Écris l'algorithme qui permet au robot d'afficher le mot Rectangle si l'un des angles mesure exactement $90$ degrés.",
+      "correctAnswer": "Si $a1 = 90$ ou $a2 = 90$ ou $a3 = 90$ alors\\n  Afficher Rectangle\\nSinon\\n  Afficher Pas rectangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété d'un triangle rectangle est la présence d'un angle droit, soit un angle de $90$ degrés. L'algorithme doit donc vérifier si l'une des trois mesures est égale à $90$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

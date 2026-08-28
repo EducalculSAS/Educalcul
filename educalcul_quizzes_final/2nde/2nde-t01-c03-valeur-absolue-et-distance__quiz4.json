@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Valeur absolue et distance",
+  "title": "Applications de la valeur absolue : distance",
+  "questions": [
+    {
+      "text": "On place sur une droite graduée les points A d'abscisse $-2$ et B d'abscisse $5$. Quelle est la distance AB ?",
+      "options": [
+        "3",
+        "7",
+        "-7",
+        "13"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La distance entre deux points d'abscisses $a$ et $b$ est $|a - b|$. Ici $|5 - (-2)| = |5 + 2| = |7| = 7$. La distance est toujours positive.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Points A(-2) et B(5)",
+        "min": -5,
+        "max": 6,
+        "points": [
+          {
+            "value": -2,
+            "label": "A"
+          },
+          {
+            "value": 5,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Résoudre l'équation $|x - 4| = 3$ en interprétant la valeur absolue comme une distance.",
+      "options": [
+        "{1 ; 7}",
+        "{1 ; -7}",
+        "{-1 ; 7}",
+        "{-1 ; -7}"
+      ],
+      "correctAnswer": "{1 ; 7}",
+      "explanation": "$|x - 4| = 3$ signifie que la distance entre $x$ et $4$ vaut $3$. Les points à distance $3$ de $4$ sont $4 - 3 = 1$ et $4 + 3 = 7$. L'ensemble solution est $\\{1 ; 7\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel intervalle représente l'ensemble des solutions de l'inéquation $|x + 2| < 5$ ?",
+      "options": [
+        "]-7 ; 3[",
+        "[-7 ; 3]",
+        "]-3 ; 7[",
+        "]-5 ; 5["
+      ],
+      "correctAnswer": "]-7 ; 3[",
+      "explanation": "$|x + 2| < 5 \\Leftrightarrow |x - (-2)| < 5$. La distance entre $x$ et $-2$ est strictement inférieure à $5$. Cela donne $-5 < x + 2 < 5$, soit $-7 < x < 3$. L'intervalle ouvert est $]-7 ; 3[$ car l'inégalité est stricte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche les points M d'abscisse $x$ tels que la distance de M au point A d'abscisse $2$ soit égale à $4$. Quelle est l'ensemble des abscisses $x$ ?",
+      "options": [
+        "{-2 ; 6}",
+        "{2 ; 6}",
+        "{-6 ; 2}",
+        "{-2 ; -6}"
+      ],
+      "correctAnswer": "{-2 ; 6}",
+      "explanation": "La condition s'écrit $|x - 2| = 4$. Les points à distance $4$ de $2$ sont $2 - 4 = -2$ et $2 + 4 = 6$. L'ensemble solution est $\\{-2 ; 6\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donner l'ensemble des solutions de l'inéquation $|x - 1| \\geq 2$.",
+      "options": [
+        "]-∞ ; -1] ∪ [3 ; +∞[",
+        "[-1 ; 3]",
+        "]-∞ ; -1[ ∪ ]3 ; +∞[",
+        "]-1 ; 3["
+      ],
+      "correctAnswer": "]-∞ ; -1] ∪ [3 ; +∞[",
+      "explanation": "$|x - 1| \\geq 2$ signifie que la distance entre $x$ et $1$ est supérieure ou égale à $2$. Cela correspond à $x - 1 \\leq -2$ ou $x - 1 \\geq 2$, soit $x \\leq -1$ ou $x \\geq 3$. Comme l'inégalité est large, les bornes sont comprises : $]-∞ ; -1] \\cup [3 ; +∞[$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

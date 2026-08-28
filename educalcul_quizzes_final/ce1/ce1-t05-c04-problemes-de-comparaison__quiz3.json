@@ -1,0 +1,176 @@
+{
+  "_status": "done",
+  "_course_id": 111,
+  "_course_code": "ce1-t05-c04-problemes-de-comparaison",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Chercher l'une des deux quantités",
+  "title": "Problèmes de comparaison : trouver une quantité",
+  "questions": [
+    {
+      "text": "Paul a $8$ billes. Il en a $3$ de plus que Luc. Combien de billes a Luc ?",
+      "options": [
+        "$5$ billes",
+        "$11$ billes",
+        "$3$ billes",
+        "$8$ billes"
+      ],
+      "correctAnswer": "$5$ billes",
+      "explanation": "Luc a moins de billes que Paul. Pour trouver le nombre de billes de Luc, on retire la différence ($3$) à la quantité de Paul ($8$). Le calcul est $8 - 3 = 5$. L'erreur classique est d'additionner ($8 + 3 = 11$) au lieu de soustraire.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paul",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Luc",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "différence",
+            "value": 3,
+            "tone": "red"
+          }
+        ],
+        "caption": "Paul a 3 de plus que Luc"
+      }
+    },
+    {
+      "text": "Julie a $12$ autocollants. Elle en a $4$ de moins que Maxime. Combien d'autocollants a Maxime ?",
+      "options": [
+        "$16$ autocollants",
+        "$8$ autocollants",
+        "$4$ autocollants",
+        "$12$ autocollants"
+      ],
+      "correctAnswer": "$16$ autocollants",
+      "explanation": "Maxime a plus d'autocollants que Julie. Pour trouver la quantité de Maxime, on ajoute la différence ($4$) à la quantité de Julie ($12$). Le calcul est $12 + 4 = 16$. L'erreur fréquente est de soustraire ($12 - 4 = 8$) en pensant que 'moins' veut toujours dire soustraction.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Julie",
+            "value": 12,
+            "tone": "green"
+          },
+          {
+            "label": "Maxime",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "différence",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Julie a 4 de moins que Maxime"
+      }
+    },
+    {
+      "text": "Dans le parc, il y a $15$ enfants au total. Il y a $5$ garçons de plus que de filles. Combien y a-t-il de filles ?",
+      "options": [
+        "$5$ filles",
+        "$10$ filles",
+        "$20$ filles",
+        "$7$ filles"
+      ],
+      "correctAnswer": "$5$ filles",
+      "explanation": "On connaît le total ($15$) et la différence ($5$). Pour trouver la plus petite quantité (filles), on retire la différence du total : $15 - 5 = 10$. Ce $10$ correspond à deux parts égales (garçons sans la différence + filles). On divise par $2$ : $10 / 2 = 5$ filles. Les garçons sont $5 + 5 = 10$. Vérification : $10 + 5 = 15$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Filles",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Garçons (partie égale)",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Différence",
+            "value": 5,
+            "tone": "red"
+          }
+        ],
+        "caption": "Total 15, différence 5"
+      }
+    },
+    {
+      "text": "Un ruban rouge mesure $20$ cm. Un ruban bleu mesure $6$ cm de moins que le ruban rouge. Quelle est la longueur du ruban bleu ?",
+      "options": [
+        "$14$ cm",
+        "$26$ cm",
+        "$6$ cm",
+        "$20$ cm"
+      ],
+      "correctAnswer": "$14$ cm",
+      "explanation": "Le ruban bleu est plus court que le ruban rouge. Il faut soustraire la différence ($6$ cm) à la longueur du ruban rouge ($20$ cm). Le calcul est $20 - 6 = 14$ cm. L'option $26$ cm correspond à une addition (erreur de sens), $6$ cm correspond à ne prendre que la différence, et $20$ cm à ne pas tenir compte de la comparaison.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Rouge",
+            "value": 20,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "différence",
+            "value": 6,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Longueurs en cm"
+      }
+    },
+    {
+      "text": "Dans un panier, il y a $18$ fruits : des pommes et des poires. Il y a $4$ pommes de plus que de poires. Combien y a-t-il de poires ?",
+      "options": [
+        "$7$ poires",
+        "$11$ poires",
+        "$14$ poires",
+        "$4$ poires"
+      ],
+      "correctAnswer": "$7$ poires",
+      "explanation": "C'est un problème de comparaison avec le total connu. Méthode : 1. On enlève la différence du total : $18 - 4 = 14$. 2. Ce reste ($14$) se partage en deux parts égales (poires + pommes sans la différence). 3. On divise par $2$ : $14 / 2 = 7$ poires. Il y a $7 + 4 = 11$ pommes. Total : $7 + 11 = 18$. Différence : $11 - 7 = 4$. C'est correct.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Poires",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Pommes (partie égale)",
+            "value": 7,
+            "tone": "red"
+          },
+          {
+            "label": "Différence pommes",
+            "value": 4,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Total 18 fruits, 4 pommes de plus"
+      }
+    }
+  ]
+}

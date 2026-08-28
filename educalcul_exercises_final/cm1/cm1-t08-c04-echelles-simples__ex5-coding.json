@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 266,
+  "_course_code": "cm1-t08-c04-echelles-simples",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Approfondissement : Lire une échelle",
+  "title": "Algorithme pour lire une échelle",
+  "blocks": [
+    {
+      "title": "La formule de base",
+      "content": "Pour trouver la distance réelle à partir d'une distance sur une carte et d'une échelle, on utilise un raisonnement précis. Écris l'algorithme simple sous forme de phrase ou de calcul utilisant les mots : distance sur la carte, dénominateur de l'échelle et distance réelle.",
+      "correctAnswer": "Distance réelle = distance sur la carte × dénominateur de l'échelle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle est un rapport. Si l'échelle est de $1$ pour $100\\ 000$, cela signifie que $1\\text{ cm}$ sur la carte représente $100\\ 000\\text{ cm}$ dans la réalité. On multiplie donc la mesure lue par le nombre du dénominateur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pseudo-code de conversion",
+      "content": "On souhaite créer un petit programme pour convertir $5\\text{ cm}$ sur une carte à l'échelle $1$ pour $20\\ 000$ en distance réelle. Écris les étapes de calcul structurées (comme un programme informatique) pour obtenir le résultat final en mètres.",
+      "correctAnswer": "1. Calculer la distance en centimètres : $5 × 20\\ 000 = 100\\ 000\\text{ cm}$\\n2. Convertir les centimètres en mètres : $100\\ 000 \\div 100 = 1\\ 000\\text{ m}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'abord, on applique l'échelle : $5\\text{ cm} × 20\\ 000 = 100\\ 000\\text{ cm}$. Ensuite, on convertit en mètres car $100\\text{ cm} = 1\\text{ m}$. Donc $100\\ 000 \\div 100 = 1\\ 000\\text{ m}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme inverse",
+      "content": "Imagine que tu dois écrire une instruction pour trouver la distance sur la carte quand on connaît la distance réelle et l'échelle. Quel est le raisonnement mathématique á suivre ?",
+      "correctAnswer": "Distance sur la carte = distance réelle ÷ dénominateur de l'échelle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer de la réalité au plan, on effectue l'opération inverse de la multiplication, c'est àdire une division par le dénominateur de l'échelle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

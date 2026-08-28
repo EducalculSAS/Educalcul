@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Retirer des parts identiques",
+  "title": "Algorithme : Retirer des fractions de même dénominateur",
+  "blocks": [
+    {
+      "title": "Situation concrète : les quarts de pomme",
+      "content": "Paul a $\\frac{5}{4}$ de pomme. Il en mange $\\frac{2}{4}$. Écris l'algorithme étape par étape pour trouver le nombre de quarts qui restent.",
+      "correctAnswer": "Étape $1$ : Identifier le nombre total de parts : $5$ quarts.\\nÉtape $2$ : Identifier le nombre de parts retirées : $2$ quarts.\\nÉtape $3$ : Retirer les parts : faire $5 - 2$.\\nÉtape $4$ : Écrire le résultat : $3$ quarts, soit $\\frac{3}{4}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part d'une quantité de $5$ parts identiques (quarts). On en retire $2$ parts identiques. Le dénominateur ($4$) ne change pas car la taille des parts est la même. On soustrait seulement les numérateurs : $5 - 2 = 3$. Il reste $3$ quarts.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Cinq quarts de pomme",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Calcul sans dessin : cinquièmes",
+      "content": "On a $\\frac{7}{5}$. On retire $\\frac{3}{5}$. Écris l'algorithme de calcul pour trouver le résultat.",
+      "correctAnswer": "Étape $1$ : Regarder le dénominateur : il est $5$ pour les deux fractions, les parts sont identiques.\\nÉtape $2$ : Garder le même dénominateur ($5$) pour le résultat.\\nÉtape $3$ : Soustraire les numérateurs : $7 - 3 = 4$.\\nÉtape $4$ : Écrire la fraction résultat : $\\frac{4}{5}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les deux fractions ont le même dénominateur ($5$), elles représentent des parts de même taille. Pour les soustraire, on garde ce dénominateur commun et on soustrait seulement les numérateurs ($7 - 3 = 4$). Le résultat est $\\frac{4}{5}$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Rédaction de la règle générale",
+      "content": "Écris l'algorithme général (la règle) pour soustraire deux fractions qui ont le même dénominateur.",
+      "correctAnswer": "Algorithme : Soustraction de fractions de même dénominateur\\n1. Vérifier que les deux fractions ont le même dénominateur.\\n2. Copier ce dénominateur dans le résultat.\\n3. Soustraire le numérateur de la deuxième fraction du numérateur de la première fraction.\\n4. Écrire ce résultat comme numérateur de la fraction réponse.\\n5. Simplifier si possible.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est la règle générale. Quand les dénominateurs sont égaux, les parts sont de même taille. On ne touche pas au dénominateur (taille des parts), on calcule seulement la différence entre le nombre de parts (numérateurs). Exemple : $\\frac{a}{c} - \\frac{b}{c} = \\frac{a-b}{c}$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

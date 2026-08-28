@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Unité d'aire",
+  "title": "L'unité d'aire",
+  "blocks": [
+    {
+      "title": "Unité de référence",
+      "content": "Quelle est l'unité de mesure d'aire de référence dans le système métrique ? Donne son nom et son symbole.",
+      "correctAnswer": "mètre carré (m²)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'unité de référence pour mesurer une aire est le mètre carré, noté $m^2$. C'est l'aire d'un carré de côté $1$ mètre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de l'unité adaptée",
+      "content": "Pour mesurer l'aire des surfaces suivantes, quelle unité est la plus adaptée : $cm^2$ ou $m^2$ ?\\n1. La couverture d'un cahier.\\n2. Le sol de la classe.",
+      "correctAnswer": "1. cm² ; 2. m²",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le cahier est petit, on utilise le centimètre carré ($cm^2$). La classe est grande, on utilise le mètre carré ($m^2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'aire par pavage",
+      "content": "Observes le rectangle quadrillé ci-dessous. Chaque petit carré a une aire de $1$ $cm^2$. Quelle est l'aire totale du rectangle ?",
+      "correctAnswer": "12 cm²",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rectangle compte $4$ colonnes et $3$ lignes de petits carrés, soit $4 \\times 3 = 12$ carrés. Comme chaque carré vaut $1$ $cm^2$, l'aire totale est de $12$ $cm^2$.",
+      "points": 3,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Rectangle de 4 cm sur 3 cm quadrillé en cm²"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 347,
+  "_course_code": "6eme-t04-c01-egalites-et-valeurs-manquantes",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Trouver inconnue simple",
+  "title": "Algorithmes pour résoudre des équations simples",
+  "blocks": [
+    {
+      "title": "Équation additive",
+      "content": "On considère l'équation $x + 7 = 15$. Écris un algorithme (suite d'instructions) qui permet de trouver la valeur de $x$. Utilise une syntaxe simple style Python avec des commentaires précédés de #.",
+      "correctAnswer": "# Étape 1 : On part de l'équation\\nx_plus_7 = 15\\n# Étape 2 : On soustrait 7 des deux côtés pour isoler x\\nx = x_plus_7 - 7\\n# Étape 3 : On affiche le résultat\\nprint(x)\\n# Résultat : x = 8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour résoudre $x + 7 = 15$, il faut isoler $x$. On effectue l'opération inverse de l'addition, c'est-à-dire la soustraction. On soustrait 7 aux deux membres : $x = 15 - 7$. Le calcul donne $x = 8$. L'algorithme traduit ces étapes logiques en instructions séquentielles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation multiplicative et additive",
+      "content": "On considère l'équation $3x + 4 = 19$. Écris un algorithme qui détermine la valeur de $x$ en deux étapes : d'abord gérer l'addition, ensuite la multiplication. Respecte l'ordre des opérations inverses.",
+      "correctAnswer": "# Étape 1 : On part de l'équation\\nvaleur = 19\\n# Étape 2 : On annule l'addition de 4 (soustraction)\\nvaleur = valeur - 4\\n# Étape 3 : On annule la multiplication par 3 (division)\\nx = valeur / 3\\n# Étape 4 : On affiche le résultat\\nprint(x)\\n# Résultat : x = 5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour résoudre $3x + 4 = 19$, on commence par enlever le terme additif $+4$ en soustrayant 4 des deux côtés : $3x = 15$. Ensuite, on divise par 3 pour isoler $x$ : $x = 5$. L'algorithme applique ces deux opérations inverses dans l'ordre inverse de la construction de l'expression (on défait le dernier fait en premier).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inconnue des deux côtés",
+      "content": "On considère l'équation $2x + 5 = x + 12$. Écris un algorithme qui regroupe les termes en $x$ à gauche et les nombres à droite, puis qui calcule la valeur de $x$. Pense à utiliser une variable temporaire pour stocker les calculs intermédiaires.",
+      "correctAnswer": "# Étape 1 : Valeurs initiales des deux membres\\ngauche = 2 * x + 5  # mais x est inconnu, on raisonne sur la structure\\ndroite = x + 12\\n# En algorithmique on simule les transformations :\\n# On soustrait x des deux côtés (équivalent à 2x - x + 5 = 12)\\n# On soustrait 5 des deux côtés (équivalent à x = 12 - 5)\\n# Traduction en calcul direct :\\ncoefficient_x = 2 - 1  # 2x - x\\nconstante = 12 - 5     # 12 - 5\\nx = constante / coefficient_x\\nprint(x)\\n# Résultat : x = 7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour résoudre $2x + 5 = x + 12$, on ramène les $x$ à gauche : $2x - x + 5 = 12$, soit $x + 5 = 12$. On ramène les nombres à droite : $x = 12 - 5$, soit $x = 7$. L'algorithme calcule le coefficient final de $x$ ($2 - 1 = 1$) et la constante finale ($12 - 5 = 7$), puis effectue la division finale ($7 / 1 = 7$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

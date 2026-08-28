@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 358,
+  "_course_code": "6eme-t06-c02-angles",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Mesurer",
+  "title": "Quiz : Mesurer les angles - Approfondissement",
+  "questions": [
+    {
+      "text": "Observe le rapporteur ci-dessous. Quelle est la mesure de l'angle représenté ?",
+      "options": [
+        "60°",
+        "120°",
+        "30°",
+        "90°"
+      ],
+      "correctAnswer": "60°",
+      "explanation": "L'angle ouvert vers la droite se lit sur l'échelle intérieure (ou extérieure selon l'orientation) qui commence à 0° sur la demi-droite horizontale. La graduation correspondante est 60. La réponse 120° correspond à l'erreur classique de lecture de la mauvaise échelle (l'angle supplémentaire pour faire 180°).",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 60,
+        "caption": "Rapporteur indiquant un angle de 60 degrés"
+      }
+    },
+    {
+      "text": "Lucie mesure un angle aigu. Elle place correctement le centre du rapporteur sur le sommet et la graduation 0 sur un côté, mais elle lit la graduation 130° sur l'autre côté. Quelle est la mesure réelle de cet angle ?",
+      "options": [
+        "50°",
+        "130°",
+        "40°",
+        "90°"
+      ],
+      "correctAnswer": "50°",
+      "explanation": "Un rapporteur possède deux échelles (0° à 180° dans les deux sens). Si l'angle est aigu (inférieur à 90°), on doit lire l'échelle qui donne une valeur inférieure à 90°. Les deux graduations sur une même ligne sont supplémentaires : 130° + 50° = 180°. La mesure réelle est donc 50°.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'horloge. Quelle est la mesure de l'angle formé par la grande aiguille et la petite aiguille ?",
+      "options": [
+        "120°",
+        "60°",
+        "90°",
+        "150°"
+      ],
+      "correctAnswer": "120°",
+      "explanation": "Il est 4h00. Le cadran est un cercle de 360° divisé en 12 heures, donc chaque heure correspond à 360° / 12 = 30°. L'écart entre 12 (grande aiguille) et 4 (petite aiguille) est de 4 heures. La mesure de l'angle est 4 × 30° = 120°.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 0,
+        "caption": "Horloge marquant 4 heures",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Dans le triangle ABC ci-dessous, l'angle B est un angle droit. Quelle est la mesure de l'angle ABC ?",
+      "options": [
+        "90°",
+        "45°",
+        "60°",
+        "180°"
+      ],
+      "correctAnswer": "90°",
+      "explanation": "Le petit carré dans l'angle B indique qu'il s'agit d'un angle droit. Par définition, un angle droit mesure exactement 90°. L'angle ABC est l'angle dont le sommet est B, il mesure donc 90°.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Tu veux tracer un angle de 110° à l'aide d'un rapporteur. Après avoir tracé la première demi-droite [OX), quelle est la toute première action à effectuer avec le rapporteur ?",
+      "options": [
+        "Placer le centre du rapporteur sur le point O",
+        "Aligner la graduation 0 sur la demi-droite [OX)",
+        "Faire un trait à la graduation 110°",
+        "Tracer la seconde demi-droite"
+      ],
+      "correctAnswer": "Placer le centre du rapporteur sur le point O",
+      "explanation": "La procédure standard est : 1. Placer le centre (le trou ou le trait central) du rapporteur exactement sur le sommet O. 2. Aligner la graduation 0° (ou 180° selon l'orientation) sur la demi-droite déjà tracée. 3. Repérer la graduation 110° et marquer un point. 4. Tracer la seconde demi-droite. L'option 'Aligner la graduation 0' est l'étape 2, impossible si le centre n'est pas déjà bien placé.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

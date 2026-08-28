@@ -1,0 +1,306 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.586228+00:00",
+  "id": 34,
+  "code": "cp-t04-c02",
+  "title": "Additionner plusieurs fois la même quantité",
+  "description": "Cours structuré Educalcul : Additionner plusieurs fois la même quantité.",
+  "subject": "Premiers problèmes de multiplication et de partage",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Premiers problèmes de multiplication et de partage",
+    "titre_du_cours": "Additionner plusieurs fois la même quantité",
+    "objectif_global": "Additionner plusieurs fois la même quantité",
+    "mini_lecons_imposees": [
+      "Écrire une addition répétée.",
+      "Relier dessin et addition répétée.",
+      "Calculer de petites situations."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Premiers problèmes de multiplication et de partage",
+      "lessons": [
+        {
+          "title": "Écrire une addition répétée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une addition répétée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as trois paniers. Dans chaque panier, il y a $2$ pommes. Si tu veux savoir combien de pommes tu as en tout, tu peux ajouter le contenu de chaque panier l'un après l'autre. Tu écris alors : $2 + 2 + 2$. C'est ce qu'on appelle une addition répétée, car tu ajoutes plusieurs fois la même quantité."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                2,
+                2,
+                2
+              ],
+              "right": [
+                6
+              ],
+              "caption": "Trois groupes de 2 font 6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la balance : à gauche, tu vois les trois groupes de $2$ pommes. À droite, le total $6$. L'addition répétée $2 + 2 + 2$ donne bien $6$. Maintenant, essaye d'écrire l'addition pour une autre situation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as écrit ta première addition répétée. Continuons avec une nouvelle histoire : tu as quatre petites boîtes de crayons. Dans chaque boîte, il y a $3$ crayons. Comment écris-tu l'addition pour trouver le total ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as $4$ groupes de $3$. Tu écris donc : $3 + 3 + 3 + 3$. C'est encore une addition répétée, car le nombre $3$ revient quatre fois. Essaie de l'écrire tout seul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu commences à bien comprendre. Pour finir cette leçon, imagine que tu as deux pochettes de bonbons. Chaque pochette contient $5$ bonbons. Écris l'addition répétée qui correspond."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $3$ groupes de $2$ pommes. Écris l'addition répétée.",
+              "answer": "$2 + 2 + 2$",
+              "hint": "Compte combien de fois le nombre $2$ revient.",
+              "explanation": "Il y a $3$ groupes, chaque groupe a $2$ pommes. On écrit $2$ trois fois : $2 + 2 + 2$."
+            },
+            {
+              "question": "Tu as $4$ boîtes de $3$ crayons. Écris l'addition répétée.",
+              "answer": "$3 + 3 + 3 + 3$",
+              "hint": "Le nombre de crayons par boîte est $3$, et il y a $4$ boîtes.",
+              "explanation": "Quatre groupes de $3$ donnent l'addition $3 + 3 + 3 + 3$."
+            },
+            {
+              "question": "Tu as $2$ pochettes de $5$ bonbons. Écris l'addition répétée.",
+              "answer": "$5 + 5$",
+              "hint": "Combien de fois le nombre $5$ apparaît-il ?",
+              "explanation": "Deux groupes de $5$ s'écrivent $5 + 5$."
+            }
+          ]
+        },
+        {
+          "title": "Relier dessin et addition répétée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier dessin et addition répétée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce dessin : il y a trois assiettes. Sur chaque assiette, il y a $2$ gâteaux. Pour passer du dessin à l'addition, tu comptes d'abord le nombre d'assiettes : $3$. Ensuite, tu regardes combien de gâteaux sur une assiette : $2$. Tu écris alors $2 + 2 + 2$."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 8,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Départ"
+                },
+                {
+                  "value": 2,
+                  "label": ""
+                },
+                {
+                  "value": 4,
+                  "label": ""
+                },
+                {
+                  "value": 6,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [],
+              "caption": "Trois sauts de 2 sur la droite numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite numérique, tu vois trois sauts de $2$. Chaque saut représente une assiette de $2$ gâteaux. À la fin, tu arrives à $6$. Essaie maintenant de faire le lien toi-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bien joué ! Maintenant, on fait le chemin inverse. On part d'une addition répétée pour imaginer le dessin. Si je te donne $4 + 4 + 4$, tu sais qu'il y a trois groupes (car le $4$ revient trois fois) et que chaque groupe contient $4$ objets. Tu peux dessiner trois cercles et mettre $4$ points dans chacun."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "Le total 12 : 1 dizaine et 2 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les cubes de base dix : le total de $4 + 4 + 4$ est $12$, soit $1$ dizaine et $2$ unités. Essaie à ton tour de décrire le dessin qui correspond à l'addition proposée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens vraiment fort ! Pour ce dernier exercice, observe l'addition $2 + 2 + 2 + 2 + 2$. Combien y a-t-il de groupes ? Combien d'objets dans chaque groupe ? Décris le dessin que tu ferais."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un dessin : $2$ boîtes avec $5$ billes dans chaque boîte. Écris l'addition répétée.",
+              "answer": "$5 + 5$",
+              "hint": "Regarde le nombre de boîtes et le nombre de billes par boîte.",
+              "explanation": "Il y a $2$ boîtes, chaque boîte a $5$ billes. L'addition est $5 + 5$."
+            },
+            {
+              "question": "L'addition est $3 + 3 + 3$. Décris le dessin correspondant.",
+              "answer": "Trois groupes de 3 objets (par exemple 3 cercles avec 3 points chacun).",
+              "hint": "Combien de fois le chiffre 3 apparaît-il ?",
+              "explanation": "Le chiffre $3$ revient trois fois, donc tu dessines trois groupes de $3$ objets."
+            },
+            {
+              "question": "L'addition est $2 + 2 + 2 + 2 + 2$. Décris le dessin.",
+              "answer": "Cinq groupes de 2 objets.",
+              "hint": "Compte le nombre de fois où le 2 est écrit.",
+              "explanation": "Il y a cinq $2$, donc tu dessines cinq groupes de $2$ objets."
+            }
+          ]
+        },
+        {
+          "title": "Calculer de petites situations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer de petites situations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais écrire et lire une addition répétée, on va apprendre à la calculer. Tu peux utiliser tes doigts, compter de deux en deux, ou utiliser des additions que tu connais déjà. Par exemple, pour $2 + 2 + 2$, tu sais que $2 + 2 = 4$, puis tu ajoutes $2$ : $4 + 2 = 6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter par sauts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $3 + 3 + 3$, tu comptes : $3$, $6$, $9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser les doubles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu connais $3 + 3 = 6$, tu ajoutes le dernier $3$ : $6 + 3 = 9$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de calculer la petite situation suivante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Tu as trouvé le total. Pour aller un peu plus loin, on peut aussi regarder le résultat avec des cubes de base dix. Par exemple, $4$ groupes de $3$ font $12$. Regarde : $1$ dizaine et $2$ unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "4 groupes de 3 font 12"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, résous ce problème : il y a $3$ pots de fleurs. Dans chaque pot, il y a $4$ fleurs. Combien de fleurs en tout ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien travaillé ! Dernier défi : tu as $5$ paquets de cartes. Chaque paquet contient $2$ cartes. Combien de cartes as-tu au total ? Utilise la méthode que tu préfères."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une addition répétée à partir d'une situation concrète.",
+                "Je sais relier un dessin de groupes égaux à une addition répétée.",
+                "Je sais calculer le total de petites additions répétées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $2 + 2 + 2$.",
+              "answer": "$6$",
+              "hint": "Compte de deux en deux : 2, 4, 6.",
+              "explanation": "Deux plus deux font quatre, plus deux font six."
+            },
+            {
+              "question": "Il y a 3 pots de 4 fleurs. Combien de fleurs en tout ?",
+              "answer": "$12$",
+              "hint": "Écris l'addition répétée puis calcule.",
+              "explanation": "L'addition est $4 + 4 + 4$. $4 + 4 = 8$, $8 + 4 = 12$."
+            },
+            {
+              "question": "Tu as 5 paquets de 2 cartes. Combien de cartes au total ?",
+              "answer": "$10$",
+              "hint": "Écris l'addition $2 + 2 + 2 + 2 + 2$ et compte de deux en deux.",
+              "explanation": "Cinq fois deux font dix : $2, 4, 6, 8, 10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

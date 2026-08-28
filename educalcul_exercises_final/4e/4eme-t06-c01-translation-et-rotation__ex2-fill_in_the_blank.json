@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Propriétés",
+  "title": "Propriétés des translations et rotations",
+  "blocks": [
+    {
+      "title": "Propriétés de la translation",
+      "content": "Une translation conserve les {{1}}, les {{2}} et l'orientation des figures. Elle transforme une droite en une droite {{3}} (ou confondue).",
+      "correctAnswer": "",
+      "blanks": [
+        "longueurs",
+        "angles|mesures d'angles",
+        "parallèle|parallèles"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une translation est une transformation qui glisse toutes les figures d'un même vecteur. Elle conserve donc les longueurs, les mesures d'angles, les aires, l'alignement, le parallélisme et l'orientation. L'image d'une droite est une droite parallèle à la droite initiale (ou la même droite si le vecteur de translation est porté par cette droite).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés de la rotation",
+      "content": "Une rotation de centre $O$ et d'angle $\\alpha$ conserve les {{1}} et les {{2}}. Elle ne conserve pas l'orientation si l'angle n'est pas nul modulo $360^\\circ$. Le centre $O$ est le seul point {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "longueurs",
+        "angles|mesures d'angles",
+        "invariant|fixe"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une rotation est une transformation qui fait tourner les figures autour d'un point fixe $O$ (le centre) d'un angle $\\alpha$ donné. Elle conserve les longueurs, les mesures d'angles, les aires et l'alignement. L'orientation est conservée seulement si l'angle est un multiple de $360^\\circ$ (rotation identité). Le centre $O$ est l'unique point qui ne bouge pas : il est invariant (ou fixe).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Image d'un segment par translation",
+      "content": "Soit $t$ la translation qui transforme $A$ en $A'$ et $B$ en $B'$. Les segments $[AA']$ et $[BB']$ sont {{1}} et de même {{2}}. Le quadrilatère $AA'B'B$ (si $A$, $B$, $A'$, $B'$ ne sont pas alignés) est un {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "parallèles",
+        "longueur",
+        "parallélogramme"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Par définition de la translation, les vecteurs $\\overrightarrow{AA'}$ et $\\overrightarrow{BB'}$ sont égaux au vecteur de la translation. Ils ont donc même direction (droites parallèles), même sens et même longueur (norme). Les segments $[AA']$ et $[BB']$ sont donc parallèles et de même longueur. Le quadrilatère $AA'B'B$ a ses côtés opposés parallèles deux à deux ($AA' \\parallel BB'$ et $AB \\parallel A'B'$ car une transformation conserve le parallélisme), c'est donc un parallélogramme.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Compter",
+  "title": "Exercices sur le comptage dans les boucles",
+  "blocks": [
+    {
+      "title": "Compter les itérations d'une boucle simple",
+      "content": "Une boucle pour i de $1$ à $5$ s'exécute {{1}} fois.",
+      "correctAnswer": "",
+      "blanks": [
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle pour i de $1$ à $5$ prend les valeurs $1$, $2$, $3$, $4$, $5$, soit $5$ valeurs différentes. Elle s'exécute donc $5$ fois.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter les itérations avec un pas",
+      "content": "Une boucle pour i de $2$ à $10$ pas de $2$ effectue {{1}} itérations.",
+      "correctAnswer": "",
+      "blanks": [
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle commence à $2$ et ajoute $2$ à chaque tour : $2$, $4$, $6$, $8$, $10$. Cela donne $5$ valeurs, donc $5$ itérations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter les exécutions totales dans des boucles imbriquées",
+      "content": "Une boucle externe pour i de $1$ à $4$ contient une boucle interne pour j de $1$ à $5$. La boucle externe s'exécute {{1}} fois, la boucle interne s'exécute {{2}} fois par tour externe, et le corps de la boucle interne s'exécute au total {{3}} fois.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "5",
+        "20"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle externe va de $1$ à $4$, donc $4$ tours. Pour chaque tour externe, la boucle interne va de $1$ à $5$, soit $5$ tours. Le total d'exécutions du corps interne est $4 × 5 = 20$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.463599+00:00",
+  "id": 632,
+  "code": "terminale-generale-t04-c01",
+  "title": "Probabilités simples",
+  "description": "Cours structuré Educalcul : Probabilités simples.",
+  "subject": "Probabilités et modélisation",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Probabilités et modélisation",
+    "titre_du_cours": "Probabilités simples",
+    "objectif_global": "Probabilités simples",
+    "mini_lecons_imposees": [
+      "Événements.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités et modélisation",
+      "lessons": [
+        {
+          "title": "Événements.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'expérience aléatoire et l'espace des possibles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces. Avant même de le lancer, tu sais que le résultat sera l'un des six nombres entiers allant de 1 à 6. Cette collection de tous les résultats imaginables est ce qu'on appelle l'espace des possibles, souvent noté $\\Omega$. Chaque résultat individuel, comme \"obtenir un 4\", est un événement élémentaire. Ce qui rend l'expérience aléatoire, c'est que tu ne peux pas prédire avec certitude lequel de ces six résultats va se produire, mais tu connais parfaitement la liste exhaustive des issues. En terminale, on apprend à formaliser cette idée : on définit d'abord l'expérience (le lancer), puis on écrit l'ensemble $\\Omega = \\{1,2,3,4,5,6\\}$. Chaque sous-ensemble de $\\Omega$ sera par la suite appelé un événement. Par exemple, l'ensemble $\\{2,4,6\\}$ représente l'événement \"obtenir un nombre pair\". Cette manière de voir les choses permet de passer du concret (le dé dans la main) à l'abstrait (des ensembles de nombres) sans perdre le lien avec la réalité."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des issues pour un lancer de pièce : face (F) ou pile (P), chacune avec probabilité 1/2.",
+              "branches": [
+                {
+                  "label": "F",
+                  "probability": "1/2"
+                },
+                {
+                  "label": "P",
+                  "probability": "1/2"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé le décor avec l'espace des possibles, il est naturel de regrouper certains résultats pour former des événements plus riches, comme \"obtenir un nombre supérieur à 3\" ou \"obtenir un nombre impair\"."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les événements : définition et exemples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un événement est tout simplement une partie de l'espace des possibles. Cela veut dire qu'on prend quelques-uns des résultats élémentaires et on les met ensemble dans un sac. Si tu joues à la roulette, l'événement \"la bille s'arrête sur un nombre rouge\" correspond à l'ensemble de tous les numéros rouges. En notation mathématique, si $\\Omega$ est l'espace des possibles, un événement $A$ vérifie $A \\subseteq \\Omega$. Il existe deux événements particuliers : l'événement impossible, noté $\\varnothing$, qui ne contient aucun résultat, et l'événement certain, qui est $\\Omega$ lui-même. Pour t'aider à visualiser, pense à une boîte qui contient six boules numérotées de 1 à 6. L'événement \"boule paire\" correspond aux boules 2, 4 et 6. L'événement \"boule multiple de 7\" est vide, car aucune boule ne porte un multiple de 7. Cette image de la boîte rend la notion d'événement très concrète : c'est juste une sélection de boules parmi celles qui existent."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn illustrant deux événements A et B dans un espace $\\Omega$.",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié des événements simples, il devient utile de savoir les combiner : on peut vouloir savoir ce qui se passe si l'un OU l'autre se produit, ou si les deux se produisent EN MÊME TEMPS. C'est exactement le rôle de l'union et de l'intersection."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Union, intersection et événement contraire"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'union de deux événements $A$ et $B$, notée $A \\cup B$, rassemble tous les résultats qui appartiennent à $A$ ou à $B$ (ou aux deux). L'intersection, notée $A \\cap B$, ne garde que les résultats communs aux deux événements. L'événement contraire de $A$, noté $\\overline{A}$ ou $A^c$, contient tous les résultats de $\\Omega$ qui ne sont pas dans $A$. Pour reprendre l'exemple du dé : si $A=\\{1,2,3\\}$ et $B=\\{3,4,5\\}$, alors $A \\cup B = \\{1,2,3,4,5\\}$ et $A \\cap B = \\{3\\}$. Le contraire de $A$ est $\\{4,5,6\\}$. Ces opérations sont la base de tout calcul de probabilité, car elles permettent de construire des événements complexes à partir de briques élémentaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\cup B = \\{x \\in \\Omega \\mid x \\in A \\text{ ou } x \\in B\\}, \\quad A \\cap B = \\{x \\in \\Omega \\mid x \\in A \\text{ et } x \\in B\\}, \\quad \\overline{A} = \\Omega \\setminus A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour décrire n'importe quel événement issu d'une expérience aléatoire simple. Dans la prochaine leçon, nous verrons comment attribuer un nombre à chaque événement pour mesurer sa chance de se réaliser."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'espace des possibles $\\Omega$ pour l'expérience \"lancer un dé à six faces équilibré\".",
+              "answer": "\\Omega = \\{1,2,3,4,5,6\\}",
+              "hint": "Pense à toutes les faces du dé, aucune n'est oubliée.",
+              "explanation": "Chaque face porte un nombre différent de 1 à 6. L'espace des possibles est l'ensemble de ces six résultats."
+            },
+            {
+              "question": "Pour le même dé, donne l'événement \"obtenir un nombre pair\" en notation ensembliste.",
+              "answer": "\\{2,4,6\\}",
+              "hint": "Quels sont les nombres pairs entre 1 et 6 ?",
+              "explanation": "Les faces paires sont 2, 4 et 6. L'événement est l'ensemble les contenant."
+            },
+            {
+              "question": "Soit $A=\\{1,2,3\\}$ et $B=\\{3,4,5\\}$ dans $\\Omega=\\{1,2,3,4,5,6\\}$. Détermine $A \\cup B$ et $A \\cap B$.",
+              "answer": "A \\cup B = \\{1,2,3,4,5\\}, \\quad A \\cap B = \\{3\\}",
+              "hint": "Mets ensemble tous les éléments pour l'union, garde seulement les communs pour l'intersection.",
+              "explanation": "L'union rassemble 1,2,3,4,5. L'intersection ne contient que le 3, présent dans les deux ensembles."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité dans le cas équiprobable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tous les résultats élémentaires d'une expérience ont la même chance de se produire, on dit que l'expérience suit une loi uniforme. C'est le cas du dé parfait, de la pièce équilibrée ou du tirage d'une carte dans un jeu bien mélangé. Dans ce cadre, la probabilité d'un événement $A$ se calcule très simplement : on compte le nombre de résultats favorables à $A$ et on divise par le nombre total de résultats possibles. En formule, $P(A) = \\frac{\\text{card}(A)}{\\text{card}(\\Omega)}$, où $\\text{card}$ désigne le cardinal, c'est-à-dire le nombre d'éléments de l'ensemble. Par exemple, pour un dé, $\\text{card}(\\Omega)=6$. L'événement \"obtenir un 4\" ne contient qu'un seul résultat, donc $P(\\{4\\}) = \\frac{1}{6}$. Cette règle de comptage est la pierre angulaire de tout le calcul de probabilités en terminale : elle transforme une question de hasard en une simple division d'entiers."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Probabilités de chaque face d'un dé équilibré (toutes égales à 1/6).",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 0.1667,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle du comptage fonctionne aussi quand l'événement contient plusieurs résultats. Mais il arrive qu'on veuille combiner des événements qui n'ont rien en commun, ou au contraire utiliser le fait qu'un événement ne se produit pas. C'est là qu'interviennent la règle de l'addition pour les événements incompatibles et la règle du complément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règle de l'addition pour événements incompatibles et règle du complément"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux événements sont incompatibles (ou mutuellement exclusifs) s'ils ne peuvent pas se produire en même temps ; leur intersection est vide. Dans ce cas, la probabilité de leur union est simplement la somme de leurs probabilités : $P(A \\cup B) = P(A) + P(B)$. Par exemple, au dé, \"obtenir un 2\" et \"obtenir un 5\" sont incompatibles, donc $P(\\{2\\} \\cup \\{5\\}) = \\frac{1}{6} + \\frac{1}{6} = \\frac{1}{3}$. La règle du complément, quant à elle, dit que $P(\\overline{A}) = 1 - P(A)$. C'est très pratique quand il est plus facile de compter les résultats qui ne conviennent pas. Si tu cherches la probabilité d'obtenir au moins un 6 en lançant deux dés, il est plus simple de calculer la probabilité de ne jamais obtenir de 6 (soit $\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}$) et de faire $1 - \\frac{25}{36} = \\frac{11}{36}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cup B) = P(A) + P(B) \\quad (A \\cap B = \\varnothing), \\qquad P(\\overline{A}) = 1 - P(A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la survenue d'un premier événement modifie les chances du suivant. C'est le cœur de la probabilité conditionnelle, que nous abordons maintenant dans sa forme la plus simple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité conditionnelle simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité conditionnelle de $B$ sachant que $A$ s'est déjà produit se note $P_A(B)$ ou $P(B|A)$. Elle se calcule en restreignant l'espace des possibles aux seuls résultats où $A$ est réalisé : $P_A(B) = \\frac{P(A \\cap B)}{P(A)}$, à condition que $P(A) > 0$. Imagine que tu tires deux cartes successives sans remise dans un jeu de 52 cartes. L'événement $A$ : \"la première carte est un roi\". L'événement $B$ : \"la deuxième carte est une dame\". Après avoir sorti un roi, il reste 51 cartes dont 4 dames, donc $P_A(B) = \\frac{4}{51}$. Cette idée de mise à jour de l'espace des possibles est fondamentale pour modéliser des situations séquentielles."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux tirages sans remise : premier tirage roi (4/52), puis dame (4/51).",
+              "branches": [
+                {
+                  "label": "Roi",
+                  "probability": "4/52",
+                  "children": [
+                    {
+                      "label": "Dame",
+                      "probability": "4/51"
+                    },
+                    {
+                      "label": "Autre",
+                      "probability": "47/51"
+                    }
+                  ]
+                },
+                {
+                  "label": "Non-roi",
+                  "probability": "48/52",
+                  "children": [
+                    {
+                      "label": "Dame",
+                      "probability": "4/51"
+                    },
+                    {
+                      "label": "Autre",
+                      "probability": "47/51"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les outils de base pour calculer des probabilités dans des situations équiprobables, combiner des événements et prendre en compte l'information apportée par un premier résultat. La dernière leçon te montrera comment donner du sens à ces nombres dans la vie réelle."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la probabilité d'obtenir un 4 en lançant un dé équilibré à six faces.",
+              "answer": "1/6",
+              "hint": "Un seul résultat favorable sur six résultats équiprobables.",
+              "explanation": "L'événement \"obtenir un 4\" contient un seul élément, l'espace en contient six, donc $P = 1/6$."
+            },
+            {
+              "question": "Quelle est la probabilité d'obtenir un nombre pair ou un 5 au lancer d'un dé ?",
+              "answer": "2/3",
+              "hint": "Les événements \"pair\" (2,4,6) et \"5\" sont incompatibles, additionne leurs probabilités.",
+              "explanation": "P(pair)=3/6, P(5)=1/6, somme = 4/6 = 2/3."
+            },
+            {
+              "question": "On tire deux cartes sans remise dans un jeu de 52 cartes. Sachant que la première carte est un roi, quelle est la probabilité que la deuxième soit une dame ?",
+              "answer": "4/51",
+              "hint": "Après avoir retiré un roi, il reste 51 cartes dont 4 dames.",
+              "explanation": "L'espace réduit contient 51 cartes, 4 sont des dames, donc $P = 4/51$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'interprétation fréquentielle de la probabilité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons manipulé des probabilités comme des nombres théoriques issus d'un modèle (dé parfait, pièce équilibrée). Mais comment savoir si ces nombres correspondent à la réalité ? L'approche fréquentielle consiste à répéter l'expérience un grand nombre de fois et à observer la proportion de fois où l'événement se produit. Si tu lances une pièce 10 fois, tu peux obtenir 6 faces et 4 piles, ce qui donne une fréquence de 0,6 pour \"face\". Si tu recommences avec 100 lancers, la fréquence se rapproche souvent de 0,5. Avec 10 000 lancers, elle est quasi indiscernable de 0,5. Cette stabilisation de la fréquence autour de la probabilité théorique est ce qu'on appelle la loi des grands nombres. Elle donne une justification concrète : la probabilité n'est pas une invention abstraite, c'est la limite vers laquelle tend la fréquence observée quand le nombre d'essais devient très grand."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences relatives de \"face\" pour 10, 100 et 1000 lancers de pièce.",
+              "bars": [
+                {
+                  "label": "10 lancers",
+                  "value": 0.6,
+                  "tone": "red"
+                },
+                {
+                  "label": "100 lancers",
+                  "value": 0.52,
+                  "tone": "orange"
+                },
+                {
+                  "label": "1000 lancers",
+                  "value": 0.503,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi des grands nombres n'est pas un théorème que l'on démontre ici, mais une intuition puissante : plus on répète, plus la fréquence observée colle à la probabilité théorique. Cette idée est au cœur de la statistique, des sondages, des assurances et de bien d'autres domaines où l'on doit prendre des décisions sur la base de données aléatoires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La loi des grands nombres à l'échelle intuitive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu suis le pourcentage de faces au fil des lancers. Au début, le graphique fait de grands bonds : 1/1 = 1, puis 1/2 = 0,5, puis 2/3 ≈ 0,667, etc. Au fur et à mesure que le nombre de lancers augmente, les variations deviennent de plus en plus petites et la courbe se colle à la ligne horizontale $y = 0,5$. C'est exactement ce que montre le graphique ci‑dessous : la fréquence relative (en bleu) converge vers la probabilité théorique (en pointillé rouge). Cette convergence n'est pas garantie pour un petit nombre d'essais, mais elle devient pratiquement certaine quand le nombre d'essais est très grand. C'est pourquoi les instituts de sondage interrogent des milliers de personnes : ils cherchent à atteindre le régime où la fréquence observée est un bon estimateur de la probabilité réelle."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5",
+              "xmin": 0,
+              "xmax": 1000,
+              "caption": "Convergence de la fréquence relative de \"face\" vers 0,5 quand le nombre de lancers augmente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir interpréter une probabilité, c'est aussi savoir l'utiliser pour choisir une action. Si un jeu propose une chance de gagner de 0,55 et que tu ne acceptes de jouer que si tes chances dépassent 0,6, tu déclineras. À l'inverse, si une assurance te propose une prime basée sur une probabilité d'accident de 0,02, tu pourras comparer ce coût au risque que tu es prêt à prendre. La probabilité devient alors un outil d'aide à la décision, non plus seulement un exercice de calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser une probabilité pour décider"
+            },
+            {
+              "type": "paragraph",
+              "content": "Représentons les probabilités sur une droite graduée de 0 à 1. La zone proche de 0 correspond à des événements très peu probables, celle proche de 1 à des événements presque certains. En plaçant un seuil de décision, par exemple 0,6, tu sépare les situations où tu juges le risque acceptable de celles où il ne l'est pas. Cette visualisation aide à comprendre pourquoi une probabilité de 0,55, bien que supérieure à 0,5, peut ne pas suffire pour s'engager dans un pari risqué. C'est le même raisonnement qu'un médecin fait quand il pèse le bénéfice d'un traitement (probabilité de guérison) contre ses effets secondaires (probabilité d'effets indésirables)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle de probabilité de 0 à 1 avec seuil de décision à 0,6.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.55,
+                  "label": "P = 0,55"
+                },
+                {
+                  "value": 0.6,
+                  "label": "Seuil 0,6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru tout le chemin : définir les événements, calculer leurs probabilités, et enfin donner du sens à ces nombres pour agir en connaissance de cause. Félicitations pour ta progression !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'espace des possibles et identifier des événements.",
+                "Je sais calculer une probabilité dans le cas équiprobable et utiliser les règles d'addition et de complément.",
+                "Je sais interpréter une probabilité comme une fréquence stabilisée et l'utiliser pour prendre une décision."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Après 200 lancers d'une pièce, on observe 112 faces. Quelle est la fréquence relative de \"face\" ?",
+              "answer": "0,56",
+              "hint": "Divise le nombre de faces par le nombre total de lancers.",
+              "explanation": "112 faces sur 200 lancers donnent 112/200 = 0,56."
+            },
+            {
+              "question": "Que se passe-t-il avec la fréquence relative de \"face\" quand le nombre de lancers devient très grand ?",
+              "answer": "Elle tend vers 0,5.",
+              "hint": "Rappelle-toi la loi des grands nombres pour une pièce équilibrée.",
+              "explanation": "La fréquence observée se stabilise autour de la probabilité théorique 0,5 quand le nombre d'essais augmente."
+            },
+            {
+              "question": "Un jeu propose une probabilité de gain de 0,55. Tu ne joues que si la probabilité dépasse 0,6. Décides-tu de jouer ?",
+              "answer": "Non",
+              "hint": "Compare la probabilité donnée à ton seuil personnel.",
+              "explanation": "0,55 < 0,6, donc le critère n'est pas rempli, tu ne joues pas."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

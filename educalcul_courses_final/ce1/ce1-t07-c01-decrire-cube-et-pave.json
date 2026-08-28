@@ -1,0 +1,296 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.874896+00:00",
+  "id": 126,
+  "code": "ce1-t07-c01",
+  "title": "Décrire cube et pavé",
+  "description": "Cours structuré Educalcul : Décrire cube et pavé.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Décrire cube et pavé",
+    "objectif_global": "Décrire cube et pavé",
+    "mini_lecons_imposees": [
+      "Faces, arêtes et sommets.",
+      "Comparer cube et pavé.",
+      "Associer patron très simple et solide."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Faces, arêtes et sommets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les faces, les arêtes et les sommets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des solides ! Aujourd'hui, nous allons apprendre à décrire un cube comme si on le présentait à un ami. Imagine une boîte à chaussures ou un dé : c'est un cube. Pour le décrire, on compte trois choses : les faces, les arêtes et les sommets. C'est comme faire l'inventaire d'une maison : les murs, les coins et les arrêtes du toit."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "Une face est une surface plate qui forme une partie du solide. Sur un cube, chaque face est un carré.",
+              "example": "Un dé a $6$ faces carrées."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Une arête est le trait où deux faces se rencontrent. C'est une ligne droite.",
+              "example": "Le cube a $12$ arêtes."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Un sommet est le point où plusieurs arêtes se rejoignent. C'est un coin du solide.",
+              "example": "Le cube a $8$ sommets."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Élément",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Faces",
+                  "6"
+                ],
+                [
+                  "Arêtes",
+                  "12"
+                ],
+                [
+                  "Sommets",
+                  "8"
+                ]
+              ],
+              "caption": "Inventaire d'un cube"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les mots, regardons de plus près comment compter les faces d'un cube. Prends un vrai cube entre tes mains, ou imagine un dé. Touche chaque face avec ton doigt : tu en sens $6$. C'est comme les $6$ faces d'un dé à jouer. Essaie de les nommer : face du haut, face du bas, face de devant, face de derrière, face de gauche, face de droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Continuons notre exploration ! Les arêtes sont les petites barres qui séparent les faces. Passe ton doigt le long de chaque arête : tu en comptes $12$. Les sommets sont les coins pointus. Pose ton cube sur la table et montre chaque sommet : il y en a $8$. C'est comme les $8$ coins d'une boîte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de faces a un cube ?",
+              "answer": "6",
+              "hint": "Compte les faces carrées d'un dé.",
+              "explanation": "Un cube a toujours $6$ faces, toutes carrées."
+            },
+            {
+              "question": "Combien d'arêtes a un cube ?",
+              "answer": "12",
+              "hint": "Suis le trait entre deux faces avec ton doigt.",
+              "explanation": "Chaque face a $4$ arêtes, mais chaque arête est partagée par $2$ faces. Au total, $12$ arêtes."
+            },
+            {
+              "question": "Combien de sommets a un cube ?",
+              "answer": "8",
+              "hint": "Montre les coins du cube.",
+              "explanation": "Un cube a $8$ sommets, là où $3$ arêtes se croisent."
+            }
+          ]
+        },
+        {
+          "title": "Comparer cube et pavé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer le cube et le pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais bien le cube maintenant. Mais as-tu déjà vu un pavé droit ? C'est comme une boîte de céréales ou un livre : toutes ses faces sont des rectangles. Le cube et le pavé droit sont cousins : ils ont le même nombre de faces, d'arêtes et de sommets, mais leurs formes de faces sont différentes. C'est comme deux familles qui ont le même nombre de membres, mais pas la même taille."
+            },
+            {
+              "type": "definition",
+              "term": "Pavé droit",
+              "definition": "Un solide qui a $6$ faces, toutes rectangles. Les faces opposées sont identiques.",
+              "example": "Une boîte de chaussures est un pavé droit."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets",
+                "Forme des faces"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6",
+                  "12",
+                  "8",
+                  "Carrés"
+                ],
+                [
+                  "Pavé droit",
+                  "6",
+                  "12",
+                  "8",
+                  "Rectangles (parfois carrés)"
+                ]
+              ],
+              "caption": "Cube et pavé droit : même inventaire, formes différentes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons les faces de plus près. Sur un cube, chaque face est un carré parfait : les $4$ côtés ont la même longueur. Sur un pavé droit, les faces sont des rectangles : deux côtés sont plus longs, deux sont plus courts. Mais attention : un pavé droit peut avoir $2$ faces carrées (le dessus et le dessous) et $4$ faces rectangulaires. C'est comme une boîte plate."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Même s'ils n'ont pas la même allure, le cube et le pavé droit ont exactement le même squelette : $6$ faces, $12$ arêtes, $8$ sommets. C'est ce qui les rend faciles à confondre ! Pour les distinguer, il suffit de regarder une face : si c'est un carré, c'est un cube (ou une face carrée d'un pavé). Si c'est un rectangle non carré, c'est forcément un pavé droit. Essaie de trouver des exemples chez toi : un dé (cube), une brique de lait (pavé)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la forme des faces d'un cube ?",
+              "answer": "Carrés",
+              "hint": "Regarde un dé.",
+              "explanation": "Toutes les $6$ faces d'un cube sont des carrés."
+            },
+            {
+              "question": "Quelle est la forme des faces d'un pavé droit ?",
+              "answer": "Rectangles",
+              "hint": "Regarde une boîte de céréales.",
+              "explanation": "Un pavé droit a $6$ faces rectangulaires (certaines peuvent être carrées)."
+            },
+            {
+              "question": "Combien d'arêtes ont en commun le cube et le pavé droit ?",
+              "answer": "12",
+              "hint": "Compte les arêtes sur le tableau.",
+              "explanation": "Les deux solides ont $12$ arêtes et $8$ sommets."
+            }
+          ]
+        },
+        {
+          "title": "Associer patron très simple et solide.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Associer un patron simple à son solide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu découpes un cube le long de certaines arêtes pour l'aplatir sur la table. Le dessin obtenu s'appelle un patron. C'est comme le plan d'une maison avant de la construire. Pour un cube, le patron le plus connu ressemble à une croix faite de $6$ carrés collés. Aujourd'hui, nous allons apprendre à reconnaître ce patron et à le relier au cube."
+            },
+            {
+              "type": "definition",
+              "term": "Patron",
+              "definition": "Figure plane obtenue en dépliant un solide le long de ses arêtes. En le repliant, on retrouve le solide.",
+              "example": "Le patron en croix du cube."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 6,
+              "caption": "Patron d'un cube : $6$ carrés en croix"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien le patron en croix : il y a un carré au centre, quatre carrés collés sur ses quatre côtés, et un sixième carré attaché à l'un de ces quatre. Si tu plies le long des traits, les carrés se lèvent et se referment pour former un cube. Essaie mentalement : le carré du haut devient la face du dessus, les quatre latéraux deviennent les faces de côté, et le dernier devient le dessous. C'est magique !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le pavé droit a aussi des patrons, mais ils sont faits de rectangles. Un patron simple de pavé droit ressemble à une grande croix de $6$ rectangles : deux rectangles identiques pour le dessus et le dessous, et quatre rectangles pour les côtés. Pour associer un patron à son solide, compte le nombre de faces et regarde leur forme. Si tu vois $6$ carrés en croix, c'est un cube. Si tu vois des rectangles, c'est un pavé droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer face, arête et sommet d'un cube.",
+                "Je sais dire combien de faces, arêtes et sommets a un cube.",
+                "Je sais expliquer la différence entre un cube et un pavé droit.",
+                "Je reconnais le patron en croix d'un cube.",
+                "Je peux associer un patron simple à un cube ou un pavé droit."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de carrés compose le patron en croix d'un cube ?",
+              "answer": "6",
+              "hint": "Un cube a $6$ faces.",
+              "explanation": "Le patron d'un cube est formé de $6$ carrés."
+            },
+            {
+              "question": "Si tu plies un patron en croix de $6$ carrés, quel solide obtiens-tu ?",
+              "answer": "Un cube",
+              "hint": "Visualise le pliage.",
+              "explanation": "En repliant les carrés le long des arêtes, on reforme le cube."
+            },
+            {
+              "question": "Le patron d'un pavé droit est-il fait de carrés ou de rectangles ?",
+              "answer": "Rectangles",
+              "hint": "Regarde les faces d'un pavé droit.",
+              "explanation": "Les faces d'un pavé droit sont des rectangles, donc son patron est fait de rectangles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire axe et catégories",
+  "title": "Lire un diagramme en bâtons : axe et catégories",
+  "blocks": [
+    {
+      "title": "Valeur sur l'axe vertical",
+      "content": "Sur le diagramme, l'axe vertical est gradué de $0$ à $10$. Quelle est la valeur lue sur cet axe pour la catégorie Pommes ?",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde la barre correspondant à la catégorie Pommes. Sa hauteur atteint la graduation $5$ sur l'axe vertical, donc la valeur est 5.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons représentant le nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 7,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Nombre d'unités pour une catégorie",
+      "content": "Combien d'unités (bâtons) correspondent à la catégorie Poires sur le diagramme ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La barre des Poires s'arrête à la graduation $3$ de l'axe vertical, ce qui signifie qu'il y a 3 unités pour cette catégorie.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons représentant le nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 7,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Catégorie la plus haute",
+      "content": "Quelle catégorie atteint la hauteur la plus élevée sur le diagramme ?",
+      "correctAnswer": "Bananes",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En comparant les hauteurs des trois barres, la barre des Bananes monte jusqu'à $7$, ce qui est plus haut que $5$ (Pommes) et $3$ (Poires). Donc la catégorie la plus haute est Bananes.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons représentant le nombre de fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 7,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

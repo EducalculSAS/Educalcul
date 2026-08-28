@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Arrondir",
+  "title": "Quiz Arrondir - 5e",
+  "questions": [
+    {
+      "text": "Quel est l'arrondi de $7,3$ à l'entier le plus proche ?",
+      "options": [
+        "7",
+        "8",
+        "7,3",
+        "7,0"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La partie décimale est 3 dixièmes, soit 0,3 qui est strictement inférieur à 0,5. Donc on arrondit à l'entier inférieur, c'est-à-dire 7.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $12,68$ au dixième le plus proche.",
+      "options": [
+        "12,6",
+        "12,7",
+        "12,68",
+        "13"
+      ],
+      "correctAnswer": "12,7",
+      "explanation": "Le chiffre des centièmes est 8, qui est supérieur ou égal à 5. On augmente donc le chiffre des dixièmes (6) d'une unité, ce qui donne 12,7.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $0,045$ au centième le plus proche ?",
+      "options": [
+        "0,04",
+        "0,05",
+        "0,045",
+        "0,1"
+      ],
+      "correctAnswer": "0,05",
+      "explanation": "Le chiffre des millièmes est 5. Comme il est supérieur ou égal à 5, on arrondit le centième (4) à l'unité supérieure, ce qui donne 0,05.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule $3,14 × 2,5 = 7,85$. Quel est l'arrondi de ce produit au dixième ?",
+      "options": [
+        "7,8",
+        "7,9",
+        "7,85",
+        "8"
+      ],
+      "correctAnswer": "7,9",
+      "explanation": "Le produit exact est 7,85. Le chiffre des centièmes est 5, donc on arrondit le dixième (8) à 9, ce qui donne 7,9.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est égal à $5,678$ arrondi à $10^{-2}$ (au centième) ?",
+      "options": [
+        "5,67",
+        "5,68",
+        "5,678",
+        "5,7"
+      ],
+      "correctAnswer": "5,68",
+      "explanation": "L'arrondi au centième regarde le chiffre des millièmes qui est 8 (≥5). On augmente donc le centième (7) d'une unité, ce qui donne 5,68.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

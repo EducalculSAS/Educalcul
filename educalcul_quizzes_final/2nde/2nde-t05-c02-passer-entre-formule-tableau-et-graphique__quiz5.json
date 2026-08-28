@@ -1,0 +1,122 @@
+{
+  "_status": "done",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Approfondissement : Lire des représentations d'une fonction",
+  "questions": [
+    {
+      "text": "On donne ci-dessous la représentation graphique de la fonction $f$ définie par $f(x)=x^2-2x$ sur $[-1;4]$. Quelle est l'image de $2$ par $f$ ?",
+      "options": [
+        "0",
+        "2",
+        "-2",
+        "4"
+      ],
+      "correctAnswer": "0",
+      "explanation": "L'image de $2$ par $f$ est $f(2)$. On calcule $f(2)=2^2-2\\times2=4-4=0$. Sur le graphique, le point d'abscisse $2$ a pour ordonnée $0$. Les autres options correspondent à des erreurs de calcul ou de lecture.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-2*x",
+        "xmin": -1,
+        "xmax": 4,
+        "caption": "Graphique de f(x)=x^2-2x"
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs de la fonction $g$. Quel antécédent de $-4$ par $g$ peut-on lire dans ce tableau ?",
+      "options": [
+        "-1",
+        "0",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On cherche $x$ tel que $g(x)=-4$. Dans le tableau, la ligne $x=2$ correspond à $g(x)=-4$. Donc $2$ est un antécédent de $-4$. Les autres valeurs donnent des images différentes : $g(-1)=2$, $g(0)=0$, $g(3)=-6$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "$x$",
+          "$g(x)$"
+        ],
+        "rows": [
+          [
+            "-1",
+            "2"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "-2"
+          ],
+          [
+            "2",
+            "-4"
+          ],
+          [
+            "3",
+            "-6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Soit la fonction $h$ définie sur $\\mathbb{R}$ par $h(x)=-2x+5$. Quel est le sens de variation de $h$ sur $\\mathbb{R}$ ?",
+      "options": [
+        "strictement croissante",
+        "strictement décroissante",
+        "constante",
+        "ni croissante ni décroissante"
+      ],
+      "correctAnswer": "strictement décroissante",
+      "explanation": "La fonction $h$ est affine de la forme $ax+b$ avec $a=-2$. Comme le coefficient directeur $a$ est strictement négatif, la fonction est strictement décroissante sur $\\mathbb{R}$. Elle n'est ni croissante ni constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On représente dans le même repère les courbes des fonctions $f(x)=x^2$ et $g(x)=2x+1$. En lisant le graphique, entre quelles deux valeurs entières se trouve l'abscisse du point d'intersection de abscisse positive ?",
+      "options": [
+        "-1 et 0",
+        "0 et 1",
+        "1 et 2",
+        "2 et 3"
+      ],
+      "correctAnswer": "2 et 3",
+      "explanation": "L'intersection de abscisse positive correspond à la solution de $x^2=2x+1$, soit $x^2-2x-1=0$. La racine positive est $1+\\sqrt{2}\\approx2,414$. Sur le graphique, le point d'intersection se situe visuellement entre les droites $x=2$ et $x=3$. Les autres intervalles ne contiennent pas cette abscisse.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Courbes de f(x)=x^2 et g(x)=2x+1"
+      }
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction $k$ définie sur $[0;+\\infty[$. Quel est l'ensemble des valeurs prises par $k$ (ensemble image) ?",
+      "options": [
+        "$[0;+\\infty[$",
+        "$]-\\infty;0]$",
+        "$\\mathbb{R}$",
+        "$[1;+\\infty[$"
+      ],
+      "correctAnswer": "$[0;+\\infty[$",
+      "explanation": "La courbe représenté est celle de la fonction racine carrée $k(x)=\\sqrt{x}$. Les ordonnées des points de la courbe commencent à $0$ (inclus) et augmentent sans borne supérieure. L'ensemble image est donc $[0;+\\infty[$. L'intervalle $]-\\infty;0]$ correspondrait à des valeurs négatives, $\\mathbb{R}$ à toutes les valeurs réelles, et $[1;+\\infty[$ exclurait les valeurs entre $0$ et $1$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "sqrt(x)",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Graphique de k(x)=sqrt(x)"
+      }
+    }
+  ]
+}

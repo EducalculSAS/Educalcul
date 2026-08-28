@@ -1,0 +1,111 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Diagrammes en bâtons",
+  "title": "Diagrammes en bâtons : mises en ordre",
+  "blocks": [
+    {
+      "title": "Construction d'un diagramme",
+      "content": "Range les étapes suivantes dans l'ordre chronologique pour construire un diagramme en bâtons.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Compter les effectifs pour chaque catégorie.",
+        "Choisir une échelle adaptée pour l'axe vertical.",
+        "Dessiner les axes et écrire le titre du diagramme.",
+        "Tracer les bâtons jusqu'à la bonne hauteur.",
+        "Colorier les bâtons et ajouter une légende si nécessaire."
+      ],
+      "explanation": "La construction suit un ordre logique : on commence par traiter les données (compter), on prépare le support (échelle, axes, titre), on représente les données (tracer les bâtons) et on finalise la lisibilité (couleurs, légende).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture et classement des données",
+      "content": "Observe le diagramme ci-dessous représentant les fruits préférés des élèves. Classe les fruits du plus petit effectif au plus grand effectif.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Oranges (3)",
+        "Pommes (5)",
+        "Raisins (6)",
+        "Bananes (8)"
+      ],
+      "explanation": "En lisant la hauteur de chaque bâton sur le diagramme, on trouve les effectifs : oranges 3, pommes 5, raisins 6, bananes 8. L'ordre croissant est donc oranges, pommes, raisins, bananes.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE2",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 3,
+            "tone": "navy"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Résolution de problème",
+      "content": "On veut répondre à cette question : \"Combien y a-t-il de bananes de plus que d'oranges ?\". Range les étapes du raisonnement dans l'ordre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire l'effectif des bananes sur le diagramme (8).",
+        "Lire l'effectif des oranges sur le diagramme (3).",
+        "Calculer la différence : $8 - 3 = 5$.",
+        "Conclure : il y a 5 bananes de plus que d'oranges."
+      ],
+      "explanation": "Il faut d'abord extraire les deux valeurs du diagramme (8 bananes, 3 oranges). On soustrait ensuite le plus petit du plus grand pour trouver la différence ($8 - 3 = 5$). On termine par une phrase de réponse.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE2",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Oranges",
+            "value": 3,
+            "tone": "navy"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

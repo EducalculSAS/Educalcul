@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 369,
+  "_course_code": "6eme-t08-c02-moyenne-et-indicateurs-simples",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Calculer moyenne",
+  "title": "Quiz : Calculer la moyenne (approfondissement)",
+  "questions": [
+    {
+      "text": "Calcule la moyenne des nombres $4$, $7$, $9$, $10$.",
+      "options": [
+        "$7,5$",
+        "$7,75$",
+        "$8$",
+        "$7$"
+      ],
+      "correctAnswer": "$7,5$",
+      "explanation": "La somme des nombres est $4+7+9+10 = 30$. Il y a $4$ nombres, donc la moyenne est $30/4 = 7,5$. Les autres options correspondent à des erreurs de calcul ou de division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, les notes sont : $10$ (2 élèves), $12$ (3 élèves), $14$ (1 élève). Quelle est la moyenne de la classe ?",
+      "options": [
+        "$11,67$",
+        "$11,5$",
+        "$12$",
+        "$11$"
+      ],
+      "correctAnswer": "$11,67$",
+      "explanation": "Le total des points est $10*2 + 12*3 + 14*1 = 20+36+14 = 70$. Le nombre total d'élèves est $2+3+1 = 6$. La moyenne est $70/6 ≈ 11,666...$, arrondie à $11,67$. Les autres valeurs ne correspondent pas au calcul exact.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La moyenne de cinq nombres est $12$. Quatre de ces nombres sont $8$, $10$, $14$, $16$. Quel est le cinquième nombre ?",
+      "options": [
+        "$12$",
+        "$10$",
+        "$14$",
+        "$8$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La somme des cinq nombres doit être $5 * 12 = 60$. La somme des quatre nombres connus est $8+10+14+16 = 48$. Le cinquième nombre est $60-48 = 12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne le nombre de livres lus par des élèves pendant les vacances. Quelle est la moyenne du nombre de livres lus ?",
+      "options": [
+        "$1,36$",
+        "$1,5$",
+        "$1,3$",
+        "$1,4$"
+      ],
+      "correctAnswer": "$1,36$",
+      "explanation": "Total des livres : $0*3 + 1*5 + 2*4 + 3*2 = 0+5+8+6 = 19$. Nombre total d'élèves : $3+5+4+2 = 14$. Moyenne = $19/14 ≈ 1,357$, arrondie à $1,36$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Nombre de livres",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "4"
+          ],
+          [
+            "3",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Deux groupes d'élèves passent un test. Le groupe A a $10$ élèves et une moyenne de $14$. Le groupe B a $15$ élèves et une moyenne de $10$. Quelle est la moyenne de l'ensemble des $25$ élèves ?",
+      "options": [
+        "$11,6$",
+        "$12$",
+        "$11$",
+        "$11,5$"
+      ],
+      "correctAnswer": "$11,6$",
+      "explanation": "Total des points du groupe A : $10 * 14 = 140$. Total du groupe B : $15 * 10 = 150$. Somme totale = $140+150 = 290$. Nombre total d'élèves = $25$. Moyenne = $290/25 = 11,6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

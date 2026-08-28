@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 509,
+  "_course_code": "2nde-t02-c07-bilan-calcul-algebrique-seconde",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Bilan - Calcul algébrique Seconde",
+  "title": "Bilan - Calcul algébrique Seconde",
+  "blocks": [
+    {
+      "title": "Développement d'expressions simples",
+      "content": "Relie chaque expression à sa forme développée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2(x+3)$",
+          "right": "$2x+6$"
+        },
+        {
+          "left": "$5(2x-1)$",
+          "right": "$10x-5$"
+        },
+        {
+          "left": "$-3(x-4)$",
+          "right": "$-3x+12$"
+        },
+        {
+          "left": "$(x+2)(x-2)$",
+          "right": "$x^2-4$"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique la distributivité : $a(b+c)=ab+ac$. Pour $(x+2)(x-2)$, on utilise l'identité remarquable $(a+b)(a-b)=a^2-b^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation d'expressions quadratiques",
+      "content": "Relie chaque expression à sa forme factorisée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x^2+5x+6$",
+          "right": "$(x+2)(x+3)$"
+        },
+        {
+          "left": "$4x^2-9$",
+          "right": "$(2x-3)(2x+3)$"
+        },
+        {
+          "left": "$x^2-4x+4$",
+          "right": "$(x-2)^2$"
+        },
+        {
+          "left": "$6x^2+11x+3$",
+          "right": "$(3x+1)(2x+3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On recherche deux nombres dont la somme est le coefficient du terme en $x$ et le produit le terme constant, ou on utilise les identités remarquables : $a^2-b^2=(a-b)(a+b)$ et $(a-b)^2=a^2-2ab+b^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification de fractions algébriques",
+      "content": "Relie chaque fraction à sa forme simplifiée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\frac{x^2-4}{x-2}$",
+          "right": "$x+2$"
+        },
+        {
+          "left": "$\\frac{2x^2+6x}{2x}$",
+          "right": "$x+3$"
+        },
+        {
+          "left": "$\\frac{x^2-9}{x+3}$",
+          "right": "$x-3$"
+        },
+        {
+          "left": "$\\frac{3x^2-12}{3x-6}$",
+          "right": "$x+2$"
+        }
+      ],
+      "items": [],
+      "explanation": "On factorise le numérateur et le dénominateur, puis on supprime les facteurs communs. Attention aux restrictions de domaine (par exemple $x\\neq2$ pour la première fraction).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

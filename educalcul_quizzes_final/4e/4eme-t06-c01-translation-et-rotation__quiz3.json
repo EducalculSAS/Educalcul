@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Composer cas simples",
+  "title": "Composition de translations et rotations - 4e",
+  "questions": [
+    {
+      "text": "On effectue une translation de vecteur $\\vec{u}$ suivie d'une translation de vecteur $\\vec{v}$. Quelle est la transformation obtenue ?",
+      "options": [
+        "Une translation de vecteur $\\vec{u} + \\vec{v}$",
+        "Une translation de vecteur $\\vec{u} - \\vec{v}$",
+        "Une rotation de centre le milieu de $\\vec{u}\\vec{v}$",
+        "Une symétrie centrale"
+      ],
+      "correctAnswer": "Une translation de vecteur $\\vec{u} + \\vec{v}$",
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. L'ordre n'a pas d'importance car l'addition des vecteurs est commutative. Les autres options correspondent à des erreurs classiques : confondre avec la composition de symétries centrales (qui donne une translation de vecteur $2\\vec{AB}$) ou croire que l'ordre change le résultat.",
+      "points": 1,
+      "figure": {
+        "type": "vector_addition_pad",
+        "ux": 3,
+        "uy": 1,
+        "vx": 1,
+        "vy": 2,
+        "caption": "Vecteurs u et v pour la composition de translations"
+      }
+    },
+    {
+      "text": "Soit $r_1$ la rotation de centre $O$ et d'angle $60^{\\circ}$, et $r_2$ la rotation de centre $O$ et d'angle $-40^{\\circ}$. Quelle est la transformation $r_2 \\circ r_1$ (on applique $r_1$ puis $r_2$) ?",
+      "options": [
+        "Une rotation de centre $O$ et d'angle $20^{\\circ}$",
+        "Une rotation de centre $O$ et d'angle $100^{\\circ}$",
+        "Une translation de vecteur $\\overrightarrow{OO}$",
+        "Une symétrie axiale d'axe passant par $O$"
+      ],
+      "correctAnswer": "Une rotation de centre $O$ et d'angle $20^{\\circ}$",
+      "explanation": "La composition de deux rotations de même centre est une rotation de ce même centre dont l'angle est la somme algébrique des angles. Ici $60^{\\circ} + (-40^{\\circ}) = 20^{\\circ}$. L'option $100^{\\circ}$ correspondrait à une soustraction incorrecte ($60 - (-40)$). Ce n'est pas une translation (vecteur nul = identité) ni une symétrie axiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $S_A$ la symétrie centrale de centre $A$ et $S_B$ la symétrie centrale de centre $B$ ($A \\neq B$). La transformation $S_B \\circ S_A$ est :",
+      "options": [
+        "Une translation de vecteur $2\\overrightarrow{AB}$",
+        "Une rotation de centre $A$ d'angle $180^{\\circ}$",
+        "Une symétrie centrale de centre le milieu de $[AB]$",
+        "Une translation de vecteur $\\overrightarrow{AB}$"
+      ],
+      "correctAnswer": "Une translation de vecteur $2\\overrightarrow{AB}$",
+      "explanation": "La composition de deux symétries centrales de centres distincts $A$ et $B$ est une translation de vecteur $2\\overrightarrow{AB}$ (dans l'ordre $S_B \\circ S_A$). C'est une propriété fondamentale : la symétrie centrale est une rotation de $180^{\\circ}$, et la composition de deux rotations de $180^{\\circ}$ de centres différents donne une translation. Le vecteur est bien le double de $\\overrightarrow{AB}$, pas $\\overrightarrow{AB}$ seul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une rotation $R$ de centre $O$ et d'angle $90^{\\circ}$ et une translation $T$ de vecteur $\\vec{v}$. La composée $T \\circ R$ (rotation puis translation) est :",
+      "options": [
+        "Une rotation d'angle $90^{\\circ}$",
+        "Une translation de vecteur $\\vec{v}$",
+        "Une rotation d'angle $-90^{\\circ}$",
+        "Une symétrie centrale"
+      ],
+      "correctAnswer": "Une rotation d'angle $90^{\\circ}$",
+      "explanation": "La composition d'une rotation et d'une translation (dans n'importe quel ordre) est toujours une rotation de même angle que la rotation initiale ($90^{\\circ}$ ici). Seul le centre de cette rotation change (il n'est plus $O$). Ce n'est pas une translation (l'angle ne s'annule pas) ni une symétrie centrale (angle $180^{\\circ}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation est fausse concernant les compositions de transformations du plan ?",
+      "options": [
+        "La composition de deux translations est une translation.",
+        "La composition de deux rotations de même centre est une rotation de ce centre.",
+        "La composition de deux symétries centrales de même centre est l'identité.",
+        "La composition d'une translation et d'une rotation est toujours une translation."
+      ],
+      "correctAnswer": "La composition d'une translation et d'une rotation est toujours une translation.",
+      "explanation": "C'est l'affirmation fausse. La composition d'une translation et d'une rotation (peu importe l'ordre) est une rotation de même angle que la rotation de départ, mais de centre différent. Les trois autres affirmations sont vraies : deux translations composées donnent une translation (vecteur somme) ; deux rotations de même centre donnent une rotation de ce centre (angle somme) ; deux symétries centrales de même centre (deux demi-tours) ramènent le point de départ, c'est l'identité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

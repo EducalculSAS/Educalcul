@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 165,
+  "_course_code": "ce2-t03-c06-comprendre-la-division-comme-partage",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Quotient et reste concrets",
+  "title": "Quiz : Quotient et reste concrets (CE2)",
+  "questions": [
+    {
+      "text": "On partage $17$ bonbons équitablement entre $3$ enfants. Combien de bonbons reçoit chaque enfant et combien en reste-t-il ?",
+      "options": [
+        "Chaque enfant reçoit $5$ bonbons, il en reste $2$.",
+        "Chaque enfant reçoit $6$ bonbons, il en reste $1$.",
+        "Chaque enfant reçoit $5$ bonbons, il en reste $1$.",
+        "Chaque enfant reçoit $4$ bonbons, il en reste $5$."
+      ],
+      "correctAnswer": "Chaque enfant reçoit $5$ bonbons, il en reste $2$.",
+      "explanation": "Pour partager $17$ entre $3$, on cherche le multiple de $3$ le plus proche de $17$ sans le dépasser. $3 \\times 5 = 15$. Chaque enfant reçoit donc $5$ bonbons (le quotient). Il reste $17 - 15 = 2$ bonbons (le reste). L'option B donne $18$ bonbons au total, ce qui est impossible. L'option C ne compte que $16$ bonbons au total. L'option D donne un reste ($5$) plus grand que le nombre d'enfants ($3$), ce qui n'est pas un reste correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quels sont le quotient et le reste de la division euclidienne de $25$ par $4$ ?",
+      "options": [
+        "Quotient $6$, reste $1$",
+        "Quotient $5$, reste $5$",
+        "Quotient $6$, reste $0$",
+        "Quotient $5$, reste $1$"
+      ],
+      "correctAnswer": "Quotient $6$, reste $1$",
+      "explanation": "On cherche combien de fois $4$ rentre dans $25$. $4 \\times 6 = 24$. Le quotient est donc $6$. Le reste est la différence : $25 - 24 = 1$. L'option B est incorrecte car le reste ($5$) ne peut pas être supérieur ou égal au diviseur ($4$). L'option C correspondrait à la division de $24$ par $4$. L'option D correspondrait à $4 \\times 5 + 1 = 21$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a $38$ croissants. Il les range dans des boîtes de $6$ croissants. Combien de boîtes pleines peut-il faire et combien de croissants restent-ils hors des boîtes ?",
+      "options": [
+        "$6$ boîtes pleines, $2$ croissants restants",
+        "$5$ boîtes pleines, $8$ croissants restants",
+        "$6$ boîtes pleines, $0$ croissant restant",
+        "$7$ boîtes pleines, $0$ croissant restant"
+      ],
+      "correctAnswer": "$6$ boîtes pleines, $2$ croissants restants",
+      "explanation": "C'est un partage de $38$ objets par groupes de $6$. $6 \\times 6 = 36$. Le boulanger remplit donc $6$ boîtes (quotient $6$). Il lui reste $38 - 36 = 2$ croissants (reste $2$). L'option B donne un reste ($8$) plus grand que la capacité d'une boîte ($6$). L'option C ne compte que $36$ croissants. L'option D nécessiterait $42$ croissants ($7 \\times 6$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'égalité $43 = 7 \\times 6 + 1$, quels sont le quotient et le reste de la division de $43$ par $7$ ?",
+      "options": [
+        "Quotient $7$, reste $6$",
+        "Quotient $6$, reste $1$",
+        "Quotient $1$, reste $6$",
+        "Quotient $6$, reste $7$"
+      ],
+      "correctAnswer": "Quotient $6$, reste $1$",
+      "explanation": "L'écriture standard de la division euclidienne est : Dividende = Diviseur $\\times$ Quotient + Reste. Ici, $43$ est le dividende, $7$ est le diviseur. Le nombre qui multiplie le diviseur ($7$) est $6$, c'est le quotient. Ce qui s'ajoute à la fin ($1$) est le reste. L'option A confond diviseur et quotient. L'option C confond quotient et reste. L'option D donne un reste ($7$) égal au diviseur, ce qui est impossible (le reste doit être strictement inférieur au diviseur).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier la division de $52$ par $8$, on a écrit : $52 = 8 \\times 6 + 4$. Cette égalité est-elle correcte ?",
+      "options": [
+        "Oui, car $8 \\times 6 + 4 = 52$.",
+        "Non, car le quotient devrait être $7$.",
+        "Non, car le reste devrait être $3$.",
+        "Non, car $8 \\times 6 + 4 = 48$."
+      ],
+      "correctAnswer": "Oui, car $8 \\times 6 + 4 = 52$.",
+      "explanation": "Pour vérifier, on refait le calcul inverse : on multiplie le diviseur ($8$) par le quotient ($6$), ce qui fait $48$. On ajoute le reste ($4$) : $48 + 4 = 52$. On retrouve bien le dividende de départ. L'option B est fausse car $8 \\times 7 = 56 > 52$. L'option C donnerait $8 \\times 6 + 3 = 51$. L'option D affirme que $8 \\times 6 + 4 = 48$, or $8 \\times 6 = 48$, donc $48 + 4 = 52$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

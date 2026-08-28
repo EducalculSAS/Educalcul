@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Construire",
+  "title": "Construction en symétrie axiale",
+  "blocks": [
+    {
+      "title": "Symétrique d'un point",
+      "content": "Pour construire le symétrique d'un point $A$ par rapport à une droite $(d)$, on trace la {{1}} à $(d)$ passant par $A$. On reporte la {{2}} du point $A$ à la droite $(d)$ de l'autre côté de la droite sur cette ligne. Le point obtenu est le {{3}} de $A$ noté $A'$.",
+      "correctAnswer": "",
+      "blanks": [
+        "perpendiculaire",
+        "distance",
+        "symétrique"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction du symétrique d'un point par rapport à une droite nécessite trois étapes : 1) Tracer la perpendiculaire à l'axe passant par le point. 2) Mesurer la distance du point à l'axe (le long de cette perpendiculaire). 3) Reporter cette distance de l'autre côté de l'axe pour obtenir le point symétrique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétrique d'un segment",
+      "content": "Pour construire le symétrique d'un segment $[AB]$ par rapport à une droite $(d)$, on construit les {{1}} $A'$ et $B'$ des points $A$ et $B$. Le segment $[A'B']$ est le {{2}} du segment $[AB]$. Les {{3}} des segments $[AA']$ et $[BB']$ appartiennent à la droite $(d)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "symétriques",
+        "symétrique",
+        "milieux"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le symétrique d'un segment est le segment formé par les symétriques de ses extrémités. Par définition de la symétrie axiale, l'axe de symétrie est la médiatrice du segment joignant un point à son image : elle passe donc par le milieu de ce segment.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification et propriétés",
+      "content": "On a tracé une figure $F$ et son image $F'$ par symétrie axiale d'axe $(d)$. Pour vérifier la construction, on peut plier la feuille le long de l'axe $(d)$ : les deux figures doivent se {{1}} exactement. L'axe $(d)$ est la {{2}} de tout segment joignant un point de $F$ à son {{3}} sur $F'$.",
+      "correctAnswer": "",
+      "blanks": [
+        "superposer",
+        "médiatrice",
+        "image"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le pliage est une méthode concrète pour vérifier une symétrie axiale : les deux demi-plans se superposent parfaitement. Géométriquement, l'axe de symétrie est la médiatrice de tout segment reliant un point à son image symétrique, car il est perpendiculaire à ce segment en son milieu.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

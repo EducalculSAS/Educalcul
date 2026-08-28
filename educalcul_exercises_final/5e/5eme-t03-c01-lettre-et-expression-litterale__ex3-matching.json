@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Modéliser une situation",
+  "title": "Modéliser une situation par une expression littérale",
+  "blocks": [
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "Relie chaque description à l'expression littérale du périmètre correspondante.",
+      "pairs": [
+        {
+          "left": "Un rectangle de longueur $L$ et de largeur $l$",
+          "right": "$2 \\times (L + l)$"
+        },
+        {
+          "left": "Un carré de côté $c$",
+          "right": "$4 \\times c$"
+        },
+        {
+          "left": "Un rectangle dont la longueur est le double de la largeur $l$",
+          "right": "$6 \\times l$"
+        },
+        {
+          "left": "Un rectangle de longueur $x + 3$ et de largeur $x$",
+          "right": "$4x + 6$"
+        }
+      ],
+      "explanation": "Le périmètre d'un rectangle est la somme des longueurs des 4 côtés : $2 \\times (\\text{longueur} + \\text{largeur})$. Pour un carré, les 4 côtés valent $c$, donc $4c$. Si la longueur est le double de la largeur ($L = 2l$), le périmètre vaut $2 \\times (2l + l) = 6l$. Pour le dernier, $2 \\times ((x+3) + x) = 2 \\times (2x + 3) = 4x + 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Prix à payer",
+      "content": "Relie chaque situation d'achat à l'expression du prix total à payer (en euros).",
+      "pairs": [
+        {
+          "left": "3 stylos à $x$ euros l'unité et 2 cahiers à $y$ euros l'unité",
+          "right": "$3x + 2y$"
+        },
+        {
+          "left": "5 bandes dessinées au même prix $p$ euros",
+          "right": "$5p$"
+        },
+        {
+          "left": "Un tee-shirt à $t$ euros et un pantalon qui coûte 15 euros de plus",
+          "right": "$2t + 15$"
+        },
+        {
+          "left": "$n$ bonbons à 0,10 euro pièce",
+          "right": "$0,1n$"
+        }
+      ],
+      "explanation": "On additionne le coût de chaque type d'article (quantité $\\times$ prix unitaire). Pour le tee-shirt et le pantalon : $t + (t + 15) = 2t + 15$. Pour les bonbons : $n \\times 0,1 = 0,1n$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme de calcul et géométrie",
+      "content": "Relie chaque énoncé à l'expression littérale qui modélise la situation.",
+      "pairs": [
+        {
+          "left": "Choisir un nombre, le multiplier par 4, puis ajouter 7",
+          "right": "$4x + 7$"
+        },
+        {
+          "left": "Choisir un nombre, ajouter 7, puis multiplier le résultat par 4",
+          "right": "$4(x + 7)$"
+        },
+        {
+          "left": "Le périmètre d'un triangle équilatéral de côté $a$",
+          "right": "$3a$"
+        },
+        {
+          "left": "La somme de trois nombres entiers consécutifs dont le premier est $n$",
+          "right": "$3n + 3$"
+        }
+      ],
+      "explanation": "L'ordre des opérations change l'expression : multiplier puis ajouter donne $4x+7$ ; ajouter puis multiplier donne $4(x+7)$. Un triangle équilatéral a 3 côtés égaux : $3a$. Trois entiers consécutifs sont $n$, $n+1$, $n+2$ ; leur somme est $n+n+1+n+2 = 3n+3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 170,
+  "_course_code": "ce2-t04-c02-doubles-et-moities-etendus",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Moitiés de nombres pairs",
+  "title": "Quiz : Moitiés de nombres pairs",
+  "questions": [
+    {
+      "text": "Quelle est la moitié de $14$ ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Pour trouver la moitié de $14$, on partage $14$ en deux parts égales. On sait que $7 + 7 = 14$, donc la moitié de $14$ est $7$. Les autres réponses correspondent aux moitiés de $12$ ($6$), de $16$ ($8$) et de $18$ ($9$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Moitié 1",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Moitié 2",
+            "value": 7,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Représentation de la moitié de 14"
+      }
+    },
+    {
+      "text": "Calcule la moitié de $26$ en décomposant le nombre.",
+      "options": [
+        "$12$",
+        "$13$",
+        "$14$",
+        "$16$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "On décompose $26$ en $20 + 6$. La moitié de $20$ est $10$. La moitié de $6$ est $3$. En ajoutant les deux résultats : $10 + 3 = 13$. Donc la moitié de $26$ est $13$. $12$ est la moitié de $24$, $14$ celle de $28$ et $16$ celle de $32$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La moitié d'un nombre est $18$. Quel est ce nombre ?",
+      "options": [
+        "$28$",
+        "$36$",
+        "$38$",
+        "$46$"
+      ],
+      "correctAnswer": "$36$",
+      "explanation": "Si la moitié d'un nombre est $18$, il faut multiplier $18$ par $2$ pour retrouver le nombre de départ. $18 + 18 = 36$ (ou $18 \\times 2 = 36$). On vérifie : la moitié de $36$ est bien $18$. $28$ donne $14$, $38$ donne $19$ et $46$ donne $23$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la moitié de $50$ ?",
+      "options": [
+        "$20$",
+        "$25$",
+        "$30$",
+        "$35$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "La moitié de $50$ se trouve en partageant les $5$ dizaines en deux groupes égaux. $5$ dizaines font $50$. La moitié de $5$ dizaines est $2$ dizaines et demie, soit $20 + 5 = 25$. On peut aussi savoir que $25 + 25 = 50$. $20$ est la moitié de $40$, $30$ celle de $60$ et $35$ celle de $70$.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 5,
+        "units": 0,
+        "caption": "Le nombre 50 représenté en matériel de base dix"
+      }
+    },
+    {
+      "text": "Dans une classe, il y a $24$ élèves. La moitié sont des filles. Combien y a-t-il de filles dans la classe ?",
+      "options": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Le nombre total d'élèves est $24$. Pour trouver le nombre de filles, il faut calculer la moitié de $24$. On décompose $24$ en $20 + 4$. La moitié de $20$ est $10$, la moitié de $4$ est $2$. $10 + 2 = 12$. Il y a donc $12$ filles (et $12$ garçons).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 88,
+  "_course_code": "ce1-t03-c01-additionner-des-nombres-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Décomposer pour additionner",
+  "title": "Algorithme de l'addition par décomposition",
+  "blocks": [
+    {
+      "title": "Décomposer et additionner sans retenue",
+      "content": "Écris un algorithme (suite d'instructions numérotées) pour calculer $342 + 235$ en décomposant les nombres en centaines, dizaines et unités. L'algorithme doit détailler chaque étape : décomposition, addition par colonne, puis recomposition du résultat.",
+      "correctAnswer": "1. Décomposer $342$ en $3$ centaines, $4$ dizaines, $2$ unités.\\n2. Décomposer $235$ en $2$ centaines, $3$ dizaines, $5$ unités.\\n3. Additionner les unités : $2 + 5 = 7$ unités.\\n4. Additionner les dizaines : $4 + 3 = 7$ dizaines.\\n5. Additionner les centaines : $3 + 2 = 5$ centaines.\\n6. Recomposer le résultat : $5$ centaines, $7$ dizaines, $7$ unités = $577$.\\n7. Afficher $577$.",
+      "explanation": "On décompose chaque nombre selon la valeur de position de ses chiffres. On additionne ensuite les unités entre elles, les dizaines entre elles, les centaines entre elles. Comme aucune somme ne dépasse $9$, il n'y a pas de retenue. On recompose le nombre final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Gérer la retenue des unités",
+      "content": "Écris un algorithme pour calculer $168 + 254$ par décomposition. Cette fois, la somme des unités dépasse $10$. Ton algorithme doit inclure une étape de conversion (retenue) : transformer $10$ unités en $1$ dizaine.",
+      "correctAnswer": "1. Décomposer $168$ en $1$ centaine, $6$ dizaines, $8$ unités.\\n2. Décomposer $254$ en $2$ centaines, $5$ dizaines, $4$ unités.\\n3. Additionner les unités : $8 + 4 = 12$ unités.\\n4. Convertir $12$ unités : garder $2$ unités, ajouter $1$ dizaine aux dizaines.\\n5. Additionner les dizaines (avec la retenue) : $6 + 5 + 1 = 12$ dizaines.\\n6. Convertir $12$ dizaines : garder $2$ dizaines, ajouter $1$ centaine aux centaines.\\n7. Additionner les centaines (avec la retenue) : $1 + 2 + 1 = 4$ centaines.\\n8. Recomposer : $4$ centaines, $2$ dizaines, $2$ unités = $422$.\\n9. Afficher $422$.",
+      "explanation": "La somme des unités ($12$) nécessite une conversion : on écrit $2$ unités et on reporte $1$ dizaine. La somme des dizaines devient alors $12$ dizaines, ce qui nécessite une nouvelle conversion : on écrit $2$ dizaines et on reporte $1$ centaine. On additionne enfin les centaines avec ce report.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général pour additionner jusqu'à 1 000",
+      "content": "Propose un algorithme général (sorte de pseudo-code) qui permet d'additionner deux nombres quelconques $A$ et $B$ (inférieurs à $1000$) par décomposition. Utilise des variables pour les centaines (H), dizaines (D), unités (U) et les retenues (R).",
+      "correctAnswer": "Algorithme Addition_Decomposition\\nEntrées : nombre A, nombre B (entiers < 1000)\\nVariables : H_A, D_A, U_A, H_B, D_B, U_B, R_D, R_H, H_R, D_R, U_R\\nDébut\\n  1. Décomposer A : H_A = centaines(A), D_A = dizaines(A), U_A = unités(A)\\n  2. Décomposer B : H_B = centaines(B), D_B = dizaines(B), U_B = unités(B)\\n  3. Calculer unités : S_U = U_A + U_B\\n  4. U_R = reste(S_U, 10)  // unités du résultat\\n  5. R_D = quotient(S_U, 10) // retenue dizaines (0 ou 1)\\n  6. Calculer dizaines : S_D = D_A + D_B + R_D\\n  7. D_R = reste(S_D, 10)  // dizaines du résultat\\n  8. R_H = quotient(S_D, 10) // retenue centaines (0 ou 1)\\n  9. Calculer centaines : H_R = H_A + H_B + R_H\\n  10. Résultat = H_R * 100 + D_R * 10 + U_R\\n  11. Afficher Résultat\\nFin",
+      "explanation": "Cet algorithme formalise la méthode posée. On isole chaque chiffre (étape 1-2). On additionne les unités, on garde le reste de la division par 10 comme chiffre des unités du résultat (étape 4), et le quotient comme retenue pour les dizaines (étape 5). On répète le processus pour les dizaines (étapes 6-8) puis pour les centaines (étape 9). Enfin, on recompose le nombre (étape 10).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

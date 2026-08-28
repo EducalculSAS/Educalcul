@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Bilan - Droites Seconde",
+  "title": "Mise en ordre : Droites du plan",
+  "blocks": [
+    {
+      "title": "Équation d'une droite par deux points",
+      "content": "Rangez dans l'ordre chronologique les étapes pour déterminer l'équation réduite de la droite passant par les points $A(2; 5)$ et $B(4; 9)$.",
+      "items": [
+        "Calculer le coefficient directeur $a = \\frac{y_B - y_A}{x_B - x_A}$.",
+        "Déterminer l'ordonnée à l'origine $b$ en utilisant les coordonnées d'un point dans $y = ax + b$.",
+        "Écrire l'équation finale sous la forme $y = ax + b$.",
+        "Vérifier que le second point satisfait l'équation trouvée."
+      ],
+      "explanation": "On commence par calculer le coefficient directeur $a = \\frac{9-5}{4-2} = 2$. On cherche ensuite $b$ en remplaçant $x$ et $y$ par les coordonnées de $A$ (ou $B$) : $5 = 2 \\times 2 + b \\Rightarrow b = 1$. L'équation est $y = 2x + 1$. On vérifie avec $B$ : $2 \\times 4 + 1 = 9$, c'est correct.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position relative de deux droites",
+      "content": "Rangez les étapes pour étudier la position relative des droites $d_1 : y = 3x - 2$ et $d_2 : y = 3x + 4$.",
+      "items": [
+        "Identifier les coefficients directeurs $a_1$ et $a_2$ des deux droites.",
+        "Comparer $a_1$ et $a_2$.",
+        "Conclure : si $a_1 \\neq a_2$, les droites sont sécantes ; si $a_1 = a_2$, comparer les ordonnées à l'origine.",
+        "Préciser : si $b_1 = b_2$, droites confondues ; si $b_1 \\neq b_2$, droites parallèles strictement."
+      ],
+      "explanation": "Les coefficients directeurs sont $a_1 = 3$ et $a_2 = 3$. Ils sont égaux. On compare les ordonnées à l'origine : $b_1 = -2$ et $b_2 = 4$. Elles sont différentes. Les droites sont donc parallèles strictement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées d'un point d'intersection",
+      "content": "Rangez les étapes pour calculer les coordonnées du point d'intersection des droites $d_1 : y = -2x + 7$ et $d_2 : y = 3x - 3$.",
+      "items": [
+        "Égaler les secondes membres des deux équations : $-2x + 7 = 3x - 3$.",
+        "Résoudre l'équation pour trouver l'abscisse $x$.",
+        "Remplacer $x$ par sa valeur dans l'une des deux équations pour calculer l'ordonnée $y$.",
+        "Écrire les coordonnées du point d'intersection $I(x ; y)$."
+      ],
+      "explanation": "On résout $-2x + 7 = 3x - 3 \\Rightarrow 5x = 10 \\Rightarrow x = 2$. On remplace dans $d_1$ : $y = -2(2) + 7 = 3$. Le point d'intersection est $I(2 ; 3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Choisir forme",
+  "title": "Factorisation : choisir la forme appropriée",
+  "blocks": [
+    {
+      "title": "Factorisation simple",
+      "content": "Relie chaque expression à sa forme factorisée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$6x^2 + 9x$",
+          "right": "$3x(2x + 3)$"
+        },
+        {
+          "left": "$4a^3 - 8a^2$",
+          "right": "$4a^2(a - 2)$"
+        },
+        {
+          "left": "$15y^2 + 10y$",
+          "right": "$5y(3y + 2)$"
+        },
+        {
+          "left": "$-9m^2 + 3m$",
+          "right": "$-3m(3m - 1)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On cherche le facteur commun le plus grand. Pour $6x^2+9x$, le PGCD est $3x$, ce qui donne $3x(2x+3)$. On procède de même pour les autres expressions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Différence de deux carrés",
+      "content": "Relie chaque expression à sa forme factorisée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x^2 - 16$",
+          "right": "$(x - 4)(x + 4)$"
+        },
+        {
+          "left": "$9a^2 - 25$",
+          "right": "$(3a - 5)(3a + 5)$"
+        },
+        {
+          "left": "$49 - b^2$",
+          "right": "$(7 - b)(7 + b)$"
+        },
+        {
+          "left": "$4x^2 - 9y^2$",
+          "right": "$(2x - 3y)(2x + 3y)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On utilise l'identité $a^2-b^2=(a-b)(a+b)$. Par exemple $x^2-16 = x^2-4^2 = (x-4)(x+4)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation de trinômes",
+      "content": "Relie chaque expression à sa forme factorisée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x^2 + 5x + 6$",
+          "right": "$(x + 2)(x + 3)$"
+        },
+        {
+          "left": "$x^2 - 3x - 10$",
+          "right": "$(x - 5)(x + 2)$"
+        },
+        {
+          "left": "$2x^2 + 7x + 3$",
+          "right": "$(2x + 1)(x + 3)$"
+        },
+        {
+          "left": "$3x^2 - 11x + 6$",
+          "right": "$(3x - 2)(x - 3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On factorise les trinômes de la forme $ax^2+bx+c$ en cherchant deux nombres dont le produit est $ac$ et la somme $b$, puis on regroupe.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

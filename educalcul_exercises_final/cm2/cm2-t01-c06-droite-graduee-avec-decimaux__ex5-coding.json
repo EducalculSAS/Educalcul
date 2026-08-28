@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Lire échelle",
+  "title": "Algorithme de lecture d'échelle",
+  "blocks": [
+    {
+      "title": "Valeur d'une graduation",
+      "content": "Imagine que tu crées un programme pour trouver la valeur d'une seule petite graduation sur une droite. Tu connais la valeur du premier point gradué $A = 0$ et du deuxième point gradué $B = 1,2$. Entre $A$ et $B$, il y a exactement $4$ intervalles égaux. Écris le raisonnement structuré ou la formule pour calculer la valeur d'un intervalle.",
+      "correctAnswer": "Valeur d'un intervalle = (Valeur de B - Valeur de A) divisée par le nombre d'intervalles. Calcul : $1,2 - 0 = 1,2$. Puis $1,2 \\div 4 = 0,3$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver l'échelle, on calcule d'abord la différence entre deux graduations connues, soit $1,2 - 0 = 1,2$. On divise ensuite cette différence par le nombre d'intervalles pour obtenir la valeur d'une seule graduation : $1,2 \\div 4 = 0,3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position d'un point",
+      "content": "Ton programme doit maintenant trouver la valeur d'un point $P$. Ce point $P$ se situe à $7$ graduations après le point $0$. On sait que chaque intervalle vaut $0,25$. Écris l'algorithme simple permettant de trouver la valeur du point $P$.",
+      "correctAnswer": "Valeur du point P = Valeur du point de départ + (Nombre de graduations \\times Valeur d'un intervalle). Calcul : $0 + (7 \\times 0,25) = 1,75$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part de $0$ et on ajoute $7$ fois la valeur d'un intervalle. On effectue le calcul $7 \\times 0,25 = 1,75$. La valeur du point $P$ est donc $1,75$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de graduations",
+      "content": "Écris un raisonnement pour trouver le nombre de graduations séparant le point $X = 2,8$ du point $Y = 4,6$, sachant que chaque graduation vaut $0,4$. Quelle est la formule pour trouver ce nombre d'intervalles ?",
+      "correctAnswer": "Nombre d'intervalles = (Valeur de Y - Valeur de X) divisée par la valeur d'un intervalle. Calcul : $4,6 - 2,8 = 1,8$. Puis $1,8 \\div 0,4 = 4,5$. Comme on compte des graduations entières, il y a $4,5$ intervalles.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule l'écart total entre les deux points : $4,6 - 2,8 = 1,8$. On divise cet écart par la valeur d'une graduation : $1,8 \\div 0,4 = 4,5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

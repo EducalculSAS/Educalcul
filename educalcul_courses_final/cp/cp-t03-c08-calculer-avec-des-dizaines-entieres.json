@@ -1,0 +1,315 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.574957+00:00",
+  "id": 30,
+  "code": "cp-t03-c08",
+  "title": "Calculer avec des dizaines entières",
+  "description": "Cours structuré Educalcul : Calculer avec des dizaines entières.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Calculer avec des dizaines entières",
+    "objectif_global": "Calculer avec des dizaines entières",
+    "mini_lecons_imposees": [
+      "Additionner des dizaines.",
+      "Soustraire des dizaines.",
+      "Relier 30+20 à 3 dizaines + 2 dizaines."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Additionner des dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une dizaine ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde tes doigts. Tu as $10$ doigts sur tes deux mains. C'est exactement une dizaine. Quand on range $10$ cubes ensemble, on forme une barre de dix. Cette barre, on l'appelle une dizaine. C'est plus facile à compter que $10$ cubes tout seuls !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "Une barre de dix : c'est 1 dizaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu as deux barres de dix. Tu as $10$ et encore $10$. Si tu les mets bout à bout, tu as $20$. On dit : $1$ dizaine plus $1$ dizaine font $2$ dizaines. C'est comme ajouter deux wagons de dix cubes."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 0,
+              "caption": "Deux barres de dix : 2 dizaines, soit 20"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir qu'on peut additionner des dizaines comme des cubes. Maintenant, essayons avec des nombres plus grands. Si tu as $20$ (c'est $2$ dizaines) et que tu ajoutes $30$ (c'est $3$ dizaines), tu comptes toutes les dizaines : $2$ plus $3$ font $5$ dizaines. Et $5$ dizaines, c'est $50$ !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 0,
+              "caption": "5 dizaines font 50"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est magique : tu n'as pas besoin de compter un par un. Tu comptes juste les barres. $2$ barres et $3$ barres, ça fait $5$ barres. Donc $20 + 30 = 50$. Essaie de le dire tout haut : vingt plus trente font cinquante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on écrit l'addition en ligne, comme $40 + 10$. Tu vois les zéros ? Ils nous disent qu'il n'y a pas d'unités, seulement des dizaines. $40$ c'est $4$ dizaines, $10$ c'est $1$ dizaine. $4$ dizaines et $1$ dizaine, ça fait $5$ dizaines, donc $50$. C'est rapide comme un éclair !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "40",
+                "10"
+              ],
+              "result": "50",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $1$ dizaine + $1$ dizaine ? Écris le nombre en chiffres.",
+              "answer": "20",
+              "hint": "Compte les barres de dix sur l'image.",
+              "explanation": "Une barre de dix vaut $10$. Deux barres valent $10 + 10 = 20$. On écrit $20$."
+            },
+            {
+              "question": "Calcule $20 + 30$.",
+              "answer": "50",
+              "hint": "2 dizaines plus 3 dizaines font combien de dizaines ?",
+              "explanation": "$20$ c'est $2$ dizaines, $30$ c'est $3$ dizaines. $2 + 3 = 5$ dizaines, donc $50$."
+            },
+            {
+              "question": "Complète : $40 + 10 = \\ldots$",
+              "answer": "50",
+              "hint": "Regarde les zéros : ce sont des dizaines.",
+              "explanation": "$40$ est $4$ dizaines, $10$ est $1$ dizaine. $4 + 1 = 5$ dizaines = $50$."
+            }
+          ]
+        },
+        {
+          "title": "Soustraire des dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Enlever des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais ajouter des dizaines. Maintenant, on va faire l'inverse : enlever des dizaines. Imagine que tu as une boîte de $50$ bonbons. C'est $5$ paquets de $10$ bonbons. Si tu donnes $20$ bonbons à un ami, tu donnes $2$ paquets de $10$. Il te reste combien de paquets ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 0,
+              "caption": "Au départ : 5 dizaines (50)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu retires $2$ barres de dix. Il te reste $3$ barres de dix. $3$ dizaines, c'est $30$. Donc $50 - 20 = 30$. C'est comme si tu défaisais une addition : tu sais que $20 + 30 = 50$, alors $50 - 20 = 30$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 0,
+              "caption": "Après avoir retiré 2 dizaines : 3 dizaines (30)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec d'autres nombres. Tu as $70$ billes ($7$ dizaines). Tu perds $30$ billes ($3$ dizaines). Tu comptes les dizaines qui restent : $7$ dizaines moins $3$ dizaines font $4$ dizaines. $4$ dizaines, c'est $40$. Tu as encore beaucoup de billes !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 0,
+              "caption": "7 dizaines moins 3 dizaines = 4 dizaines (40)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'écriture en colonnes. On met les dizaines au-dessus des dizaines. $7$ dizaines moins $3$ dizaines, on écrit $4$ sous la ligne. Les zéros nous aident à bien aligner. C'est très ordonné."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "70",
+                "30"
+              ],
+              "result": "40",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on soustrait une dizaine d'un nombre qui finit par zéro, comme $60 - 10$. $60$ c'est $6$ dizaines. On enlève $1$ dizaine. Il reste $5$ dizaines, donc $50$. C'est le même jeu : on compte les barres qu'on enlève et celles qui restent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $50$ bonbons. Tu en donnes $20$. Combien t-il reste ?",
+              "answer": "30",
+              "hint": "Retire 2 barres de dix sur l'image.",
+              "explanation": "$50$ c'est $5$ dizaines. On enlève $2$ dizaines. $5 - 2 = 3$ dizaines = $30$."
+            },
+            {
+              "question": "Calcule $70 - 30$.",
+              "answer": "40",
+              "hint": "Compte les dizaines qui restent.",
+              "explanation": "$70$ est $7$ dizaines, $30$ est $3$ dizaines. $7 - 3 = 4$ dizaines = $40$."
+            },
+            {
+              "question": "Complète : $60 - 10 = \\ldots$",
+              "answer": "50",
+              "hint": "6 dizaines moins 1 dizaine.",
+              "explanation": "$60$ c'est $6$ dizaines. On retire $1$ dizaine. Il reste $5$ dizaines = $50$."
+            }
+          ]
+        },
+        {
+          "title": "Relier 30+20 à 3 dizaines + 2 dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le lien entre l'addition et les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà fait $30 + 20$. Tu as trouvé $50$. Mais sais-tu pourquoi on écrit $30$ et $20$ avec un zéro ? Le zéro veut dire : il n'y a aucune unité, seulement des dizaines. $30$, c'est exactement $3$ groupes de $10$. On dit : $3$ dizaines."
+            },
+            {
+              "type": "definition",
+              "term": "Dizaine",
+              "definition": "Un groupe de 10 unités. On l'écrit avec un 1 suivi d'un 0 : 10.",
+              "example": "3 dizaines = 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'addition $30 + 20$. Au lieu de voir $30$ et $20$, tu peux lire : $3$ dizaines + $2$ dizaines. C'est la même chose ! Le chiffre des dizaines (le $3$ et le $2$) te dit combien de groupes de dix tu as. Tu additionnes ces chiffres : $3 + 2 = 5$. Et tu remets le zéro derrière : $50$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 0,
+              "caption": "3 dizaines + 2 dizaines = 5 dizaines (50)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de transformer d'autres additions. $40 + 30$ devient $4$ dizaines + $3$ dizaines. $4 + 3 = 7$ dizaines, donc $70$. $10 + 50$ devient $1$ dizaine + $5$ dizaines = $6$ dizaines = $60$. C'est un code secret : le zéro te dit « attention, ce sont des dizaines ! »"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "3 dizaines sur 10 ? Non, ici on voit 3 parts sur 10, mais pour les dizaines on utilise les barres de dix."
+            },
+            {
+              "type": "paragraph",
+              "content": "Oups, cette image montre des fractions, pas des dizaines. Revenons à nos barres. Pour $30 + 20$, dessine $3$ barres, puis $2$ barres. Compte le total de barres : $5$. Écris $50$. C'est ton super-pouvoir : traduire les nombres en barres de dix."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais tout. Quand tu vois $30 + 20$, tu penses : $3$ dizaines plus $2$ dizaines. Tu fais l'addition des dizaines ($3+2=5$) et tu écris $50$. Ça marche pour toutes les additions de dizaines : $20+10$, $40+40$, $10+80$. Le zéro est ton ami, il te signale les dizaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner des dizaines (ex: 30 + 20).",
+                "Je sais soustraire des dizaines (ex: 50 - 20).",
+                "Je sais lire 30 comme 3 dizaines et 20 comme 2 dizaines.",
+                "Je relie l'addition 30+20 à 3 dizaines + 2 dizaines."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris $30 + 20$ en dizaines : $\\ldots$ dizaines + $\\ldots$ dizaines = $\\ldots$ dizaines.",
+              "answer": "3 dizaines + 2 dizaines = 5 dizaines",
+              "hint": "Regarde les chiffres des dizaines.",
+              "explanation": "$30$ c'est $3$ dizaines, $20$ c'est $2$ dizaines. $3+2=5$ dizaines."
+            },
+            {
+              "question": "Transforme $40 + 30$ en addition de dizaines et donne le résultat.",
+              "answer": "4 dizaines + 3 dizaines = 7 dizaines = 70",
+              "hint": "Compte les dizaines de chaque nombre.",
+              "explanation": "$40 = 4$ dizaines, $30 = 3$ dizaines. $4+3=7$ dizaines = $70$."
+            },
+            {
+              "question": "Complète : $10 + 50 = \\ldots$ dizaines = $\\ldots$",
+              "answer": "6 dizaines = 60",
+              "hint": "1 dizaine + 5 dizaines.",
+              "explanation": "$10$ est $1$ dizaine, $50$ est $5$ dizaines. $1+5=6$ dizaines = $60$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

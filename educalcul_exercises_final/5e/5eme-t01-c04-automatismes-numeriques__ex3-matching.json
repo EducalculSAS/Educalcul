@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 382,
+  "_course_code": "5eme-t01-c04-automatismes-numeriques",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Choix de stratégie",
+  "title": "Choix de stratégies de calcul",
+  "blocks": [
+    {
+      "title": "Calculs entiers : compléments et associativité",
+      "content": "Relie chaque calcul à son résultat en choisissant la stratégie la plus efficace (regroupement, complément, factorisation).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$19 + 46 + 81$",
+          "right": "$146$"
+        },
+        {
+          "left": "$25 \\times 12$",
+          "right": "$300$"
+        },
+        {
+          "left": "$99 \\times 14$",
+          "right": "$1386$"
+        },
+        {
+          "left": "$125 \\times 8$",
+          "right": "$1000$"
+        },
+        {
+          "left": "$5 \\times 28 \\times 2$",
+          "right": "$280$"
+        }
+      ],
+      "items": [],
+      "explanation": "1. $19 + 81 = 100$, puis $100 + 46 = 146$ (regroupement pour faire une centaine).\\n2. $25 \\times 12 = 25 \\times (4 \\times 3) = (25 \\times 4) \\times 3 = 100 \\times 3 = 300$ (associativité pour faire une centaine).\\n3. $99 \\times 14 = (100 - 1) \\times 14 = 1400 - 14 = 1386$ (distributivité sur une soustraction, plus simple que la multiplication posée).\\n4. $125 \\times 8 = 1000$ (produit connu, utile pour les conversions).\\n5. $5 \\times 2 = 10$, puis $10 \\times 28 = 280$ (associativité et commutativité pour faire une dizaine).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs décimaux : puissances de 10 et distributivité",
+      "content": "Relie chaque calcul à son résultat en utilisant les propriétés des nombres décimaux.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$4,5 \\times 100$",
+          "right": "$450$"
+        },
+        {
+          "left": "$9,9 \\times 6$",
+          "right": "$59,4$"
+        },
+        {
+          "left": "$2,5 \\times 4 \\times 10$",
+          "right": "$100$"
+        },
+        {
+          "left": "$0,25 \\times 20$",
+          "right": "$5$"
+        },
+        {
+          "left": "$3,6 \\div 10$",
+          "right": "$0,36$"
+        }
+      ],
+      "items": [],
+      "explanation": "1. Multiplier par 100 décale la virgule de deux rangs vers la droite : $4,5 \\rightarrow 450$.\\n2. $9,9 \\times 6 = (10 - 0,1) \\times 6 = 60 - 0,6 = 59,4$ (distributivité, évite la multiplication posée).\\n3. $2,5 \\times 4 = 10$, puis $10 \\times 10 = 100$ (regroupement pour faire des puissances de 10).\\n4. $0,25 = \\frac{1}{4}$, donc $\\frac{1}{4} \\times 20 = 5$ (reconnaissance fraction-décimal).\\n5. Diviser par 10 décale la virgule d'un rang vers la gauche : $3,6 \\rightarrow 0,36$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs mêlés : distributivité et ordre des opérations",
+      "content": "Relie chaque expression à sa valeur en simplifiant l'écriture avant de calculer.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$17 \\times 101$",
+          "right": "$1717$"
+        },
+        {
+          "left": "$25 \\times (4 \\times 13)$",
+          "right": "$1300$"
+        },
+        {
+          "left": "$99 \\times 12 + 12$",
+          "right": "$1200$"
+        },
+        {
+          "left": "$5,5 \\times 20$",
+          "right": "$110$"
+        },
+        {
+          "left": "$12 \\times 15$",
+          "right": "$180$"
+        }
+      ],
+      "items": [],
+      "explanation": "1. $17 \\times 101 = 17 \\times (100 + 1) = 1700 + 17 = 1717$ (distributivité sur une addition).\\n2. $25 \\times (4 \\times 13) = (25 \\times 4) \\times 13 = 100 \\times 13 = 1300$ (associativité pour faire une centaine).\\n3. $99 \\times 12 + 12 = 12 \\times (99 + 1) = 12 \\times 100 = 1200$ (factorisation par 12, factorisation simple).\\n4. $5,5 \\times 20 = 5,5 \\times (2 \\times 10) = (5,5 \\times 2) \\times 10 = 11 \\times 10 = 110$ (regroupement pour faire un entier puis une dizaine).\\n5. $12 \\times 15 = 12 \\times (10 + 5) = 120 + 60 = 180$ ou $12 \\times 15 = 6 \\times 30 = 180$ (distributivité ou double-moitié).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

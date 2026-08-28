@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Déterminer",
+  "title": "Équation de droite : Déterminer",
+  "questions": [
+    {
+      "text": "On considère la droite d'équation $y = 3x - 2$. Quelle est l'équation de la droite parallèle à cette droite et passant par le point $A(1 ; 4)$ ?",
+      "options": [
+        "y = 3x + 1",
+        "y = -3x + 7",
+        "y = (1/3)x + 11/3",
+        "y = 3x + 7"
+      ],
+      "correctAnswer": "y = 3x + 1",
+      "explanation": "Deux droites parallèles ont le même coefficient directeur. La droite cherchée a donc pour coefficient directeur $3$. Son équation est de la forme $y = 3x + b$. Elle passe par $A(1 ; 4)$, donc $4 = 3 \\times 1 + b$, ce qui donne $b = 1$. L'équation est $y = 3x + 1$. L'option $y = -3x + 7$ correspond à une droite de coefficient directeur $-3$ (erreur de signe). L'option $y = (1/3)x + 11/3$ correspond à une droite perpendiculaire (inverse du coefficient directeur). L'option $y = 3x + 7$ ne passe pas par $A$ car $3 \\times 1 + 7 = 10 \\neq 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer l'équation réduite de la droite passant par les points $B(-2 ; 5)$ et $C(4 ; -1)$.",
+      "options": [
+        "y = -x + 3",
+        "y = x + 3",
+        "y = -x + 7",
+        "y = x - 3"
+      ],
+      "correctAnswer": "y = -x + 3",
+      "explanation": "Le coefficient directeur est $m = \\frac{y_C - y_B}{x_C - x_B} = \\frac{-1 - 5}{4 - (-2)} = \\frac{-6}{6} = -1$. L'équation est de la forme $y = -x + b$. En utilisant le point $B(-2 ; 5)$ : $5 = -(-2) + b = 2 + b$, donc $b = 3$. L'équation est $y = -x + 3$. Vérification avec $C(4 ; -1)$ : $-4 + 3 = -1$. L'option $y = x + 3$ correspond à une erreur de signe sur le coefficient directeur. L'option $y = -x + 7$ correspond à une erreur de calcul de l'ordonnée à l'origine (ex: $5 = -(-2) + b \\Rightarrow b=7$). L'option $y = x - 3$ cumule les deux erreurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite $d$ a pour coefficient directeur $m = -2$ et coupe l'axe des ordonnées au point de coordonnées $(0 ; 6)$. Quelle est son équation réduite ?",
+      "options": [
+        "y = -2x + 6",
+        "y = 2x + 6",
+        "y = -2x - 6",
+        "y = 6x - 2"
+      ],
+      "correctAnswer": "y = -2x + 6",
+      "explanation": "L'équation réduite d'une droite est $y = mx + b$, où $m$ est le coefficient directeur et $b$ l'ordonnée à l'origine (abscisse $0$). Ici $m = -2$ et le point de coupure avec l'axe des ordonnées est $(0 ; 6)$, donc $b = 6$. L'équation est $y = -2x + 6$. L'option $y = 2x + 6$ inverse le signe du coefficient directeur. L'option $y = -2x - 6$ prend l'opposé de l'ordonnée à l'origine. L'option $y = 6x - 2$ confond le coefficient directeur et l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite $d_1$ a pour équation $y = \\frac{1}{2}x + 4$. On cherche l'équation de la droite $d_2$ perpendiculaire à $d_1$ et passant par l'origine du repère.",
+      "options": [
+        "y = -2x",
+        "y = 2x",
+        "y = -\\frac{1}{2}x",
+        "y = \\frac{1}{2}x"
+      ],
+      "correctAnswer": "y = -2x",
+      "explanation": "Deux droites sont perpendiculaires si le produit de leurs coefficients directeurs vaut $-1$. Le coefficient directeur de $d_1$ est $m_1 = \\frac{1}{2}$. Celui de $d_2$ est $m_2$ tel que $m_1 \\times m_2 = -1$, soit $\\frac{1}{2} \\times m_2 = -1$, d'où $m_2 = -2$. Comme $d_2$ passe par l'origine $(0 ; 0)$, son ordonnée à l'origine est $0$. Son équation est donc $y = -2x$. L'option $y = 2x$ oublie le signe moins (produit $+1$). L'option $y = -\\frac{1}{2}x$ prend l'opposé du coefficient directeur au lieu de l'inverse opposé. L'option $y = \\frac{1}{2}x$ correspond à une droite parallèle à $d_1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un taxi facture une prise en charge de $3$ euros plus $2$ euros par kilomètre parcouru. Soit $x$ la distance en kilomètres et $y$ le prix total en euros. Quelle équation modélise cette situation ?",
+      "options": [
+        "y = 2x + 3",
+        "y = 3x + 2",
+        "y = 2x - 3",
+        "y = 5x"
+      ],
+      "correctAnswer": "y = 2x + 3",
+      "explanation": "Le prix total $y$ est la somme d'une partie fixe (prise en charge) et d'une partie proportionnelle à la distance. La prise en charge de $3$ euros correspond à l'ordonnée à l'origine $b = 3$ (prix pour $0$ km). Le coût au kilomètre de $2$ euros correspond au coefficient directeur $m = 2$ (augmentation de $2$ euros par km supplémentaire). L'équation est donc $y = 2x + 3$. L'option $y = 3x + 2$ inverse les valeurs. L'option $y = 2x - 3$ soustrait la prise en charge au lieu de l'ajouter. L'option $y = 5x$ additionne les deux tarifs comme s'ils étaient tous les deux proportionnels à la distance.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

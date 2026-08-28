@@ -1,0 +1,356 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.599233+00:00",
+  "id": 39,
+  "code": "cp-t05-c01",
+  "title": "Comprendre ce que demande un problème",
+  "description": "Cours structuré Educalcul : Comprendre ce que demande un problème.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Comprendre ce que demande un problème",
+    "objectif_global": "Comprendre ce que demande un problème",
+    "mini_lecons_imposees": [
+      "Repérer les données utiles.",
+      "Repérer la question.",
+      "Reformuler avec ses mots."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Repérer les données utiles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les données utiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $4$ pommes dans ton panier et que tu donnes $2$ pommes à ton ami. Pour résoudre le problème, il faut d'abord trouver les nombres qui racontent l'histoire. Ici, les nombres sont $4$ et $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les deux nombres de l'histoire",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4 pommes"
+                },
+                {
+                  "value": 2,
+                  "label": "2 pommes données"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pense à un parking où il y a $6$ voitures. Trois voitures partent. Les données utiles sont $6$ et $3$. Regarde le dessin ci‑dessous pour voir le nombre $6$ représenté par des cubes."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 6,
+              "caption": "6 voitures au départ"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis l'énoncé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le temps de lire toute l'histoire sans te presser."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Souligne les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ton crayon, entoure chaque chiffre que tu vois. Ce sont les données."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dis les nombres à voix haute",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dire $4$ et $2$ ou $6$ et $3$ t'aide à bien les retenir."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant repérer les nombres qui servent à résoudre un problème. À la prochaine leçon, nous apprendrons à trouver la question."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'histoire des pommes, quels sont les deux nombres à retenir ?",
+              "answer": "$4$ et $2$",
+              "hint": "Regarde les chiffres écrits dans le texte.",
+              "explanation": "Le texte dit « $4$ pommes » et « $2$ pommes données ». Ce sont les données utiles."
+            },
+            {
+              "question": "Combien de voitures y a-t-il au début dans le parking ?",
+              "answer": "$6$",
+              "hint": "Cherche le premier nombre de l'énoncé.",
+              "explanation": "L'énoncé commence par « il y a $6$ voitures ». C'est la donnée de départ."
+            },
+            {
+              "question": "Si tu as $5$ bonbons et que tu en manges $1$, quelles sont les données ?",
+              "answer": "$5$ et $1$",
+              "hint": "Souligne les deux chiffres du problème.",
+              "explanation": "Le nombre de bonbons au départ est $5$, le nombre mangé est $1$."
+            }
+          ]
+        },
+        {
+          "title": "Repérer la question.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la question"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'histoire des pommes : « Tu as $4$ pommes, tu donnes $2$ pommes à ton ami. Combien de pommes te reste‑t‑il ? » La phrase qui finit par un point d'interrogation est la question. Elle commence souvent par « Combien » ou « Quel »."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "La question",
+              "paragraphs": [
+                "« Combien de pommes te reste‑t‑il ? » est la question. Elle demande le résultat final."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une autre histoire : « Il y a $6$ voitures dans le parking. $3$ partent. Combien de voitures restent ? » Encore une fois, la dernière phrase avec le point d'interrogation est la question. Elle veut savoir le nombre qui reste."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Question du parking",
+              "paragraphs": [
+                "« Combien de voitures restent ? » demande le nombre final."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Cherche le point d'interrogation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point d'interrogation signale la fin de la question."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repère les mots‑clés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les mots « combien », « quel », « combien de » annoncent la question."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reformule la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis-la avec tes mots : « Je dois trouver le nombre qui reste. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer la question dans un énoncé. La prochaine leçon t'apprendra à raconter le problème avec tes propres mots."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la question dans l'histoire des pommes ?",
+              "answer": "Combien de pommes te reste‑t‑il ?",
+              "hint": "Cherche la phrase qui se termine par un point d'interrogation.",
+              "explanation": "La dernière phrase « Combien de pommes te reste‑t‑il ? » est la question."
+            },
+            {
+              "question": "Dans l'histoire du parking, que demande la question ?",
+              "answer": "Combien de voitures restent ?",
+              "hint": "Regarde la fin du texte.",
+              "explanation": "La phrase « Combien de voitures restent ? » demande le nombre final."
+            },
+            {
+              "question": "Écris la question pour : « Tu as $7$ crayons, tu en prêtes $3$. »",
+              "answer": "Combien de crayons te reste‑t‑il ?",
+              "hint": "Utilise « Combien » et termine par un point d'interrogation.",
+              "explanation": "La question demande le nombre qui reste après le prêt."
+            }
+          ]
+        },
+        {
+          "title": "Reformuler avec ses mots.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reformuler avec ses mots"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'histoire des pommes : « Tu as $4$ pommes, tu donnes $2$ pommes à ton ami. Combien de pommes te reste‑t‑il ? » Pour la reformuler, tu peux dire : « Au début j'ai $4$ pommes, j'en donne $2$, je veux savoir combien il m'en reste. »"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Exemple de reformulation",
+              "paragraphs": [
+                "« J'ai $4$ pommes, j'en donne $2$, combien me reste‑t‑il ? »"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec l'histoire du parking : « Il y a $6$ voitures, $3$ partent. Combien de voitures restent ? » Une reformulation possible : « Au départ il y a $6$ voitures, $3$ s'en vont, je cherche le nombre qui reste. »"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Reformulation du parking",
+              "paragraphs": [
+                "« $6$ voitures au début, $3$ partent, combien reste‑t‑il ? »"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Note les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les nombres que tu as trouvés : le nombre de départ et le nombre qui change."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écris la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Copie la question avec tes mots, par exemple « Je veux savoir… »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Assemble le tout",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Raconte l'histoire en une phrase simple qui contient les données et la question."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les nombres utiles dans un énoncé.",
+                "Je sais trouver la question à la fin du problème.",
+                "Je sais reformuler le problème avec mes propres mots."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Reformule : « Tu as $5$ billes, tu en perds $2$. Combien te reste‑t‑il ? »",
+              "answer": "J'ai $5$ billes, j'en perds $2$, combien me reste‑t‑il ?",
+              "hint": "Utilise les nombres $5$ et $2$ et dis ce que tu cherches.",
+              "explanation": "La reformulation garde les deux données ($5$ et $2$) et la question."
+            },
+            {
+              "question": "Reformule : « Il y a $8$ oiseaux sur un fil, $3$ s'envolent. Combien restent ? »",
+              "answer": "Au début $8$ oiseaux, $3$ partent, je veux savoir combien restent.",
+              "hint": "Note le nombre de départ et le nombre qui part.",
+              "explanation": "Les données sont $8$ et $3$, la question demande le reste."
+            },
+            {
+              "question": "Invente une petite histoire avec $3$ et $1$, puis reformule‑la.",
+              "answer": "Exemple : « J'ai $3$ autocollants, j'en donne $1$. Combien m'en reste‑t‑il ? » Reformulation : « $3$ autocollants au départ, $1$ donné, je cherche le reste. »",
+              "hint": "Choisis deux petits nombres et une action simple.",
+              "explanation": "L'élève crée son propre énoncé et le reformule, montrant qu'il a compris la méthode."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

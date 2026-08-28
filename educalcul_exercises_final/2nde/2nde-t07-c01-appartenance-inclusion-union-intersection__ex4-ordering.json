@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 534,
+  "_course_code": "2nde-t07-c01-appartenance-inclusion-union-intersection",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Appartenance, inclusion, union, intersection",
+  "title": "Ordre logique et inclusion",
+  "blocks": [
+    {
+      "title": "Preuve d'une inclusion simple",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour démontrer que $A \\cap B \\subset A$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Soit $x \\in A \\cap B$.",
+        "Alors $x \\in A$ et $x \\in B$ par définition de l'intersection.",
+        "En particulier $x \\in A$.",
+        "Donc $A \\cap B \\subset A$ par définition de l'inclusion."
+      ],
+      "explanation": "Une démonstration d'inclusion $X \\subset Y$ commence toujours par : « Soit $x \\in X$ ». Ici $X = A \\cap B$. La définition de l'intersection donne $x \\in A$ et $x \\in B$. On en déduit $x \\in A$, ce qui est exactement la condition pour appartenir à $Y = A$. On conclut donc par la définition de l'inclusion.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Preuve d'une inclusion avec union",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour démontrer que $A \\subset A \\cup B$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Soit $x \\in A$.",
+        "Alors $x \\in A$ ou $x \\in B$ est vrai car la première proposition est vraie.",
+        "Donc $x \\in A \\cup B$ par définition de l'union.",
+        "Par conséquent $A \\subset A \\cup B$ par définition de l'inclusion."
+      ],
+      "explanation": "Pour montrer $A \\subset A \\cup B$, on prend un élément $x$ quelconque dans $A$. La disjonction « $x \\in A$ ou $x \\in B$ » est vraie dès que l'une des deux est vraie (ici la première). Par définition de l'union, cela signifie $x \\in A \\cup B$. Comme cela fonctionne pour tout $x \\in A$, l'inclusion est prouvée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classement par inclusion croissante",
+      "content": "Soient $A = \\{1, 2, 3\\}$, $B = \\{2, 3, 4\\}$, $C = \\{3, 4, 5\\}$. Rangez les ensembles suivants par inclusion croissante (du plus petit au plus grand au sens large $\\subset$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$A \\cap B \\cap C$",
+        "$A \\cap C$",
+        "$A \\cap B$",
+        "$B \\cap C$"
+      ],
+      "explanation": "On calcule chaque ensemble : $A \\cap B \\cap C = \\{3\\}$, $A \\cap C = \\{3\\}$, $A \\cap B = \\{2, 3\\}$, $B \\cap C = \\{3, 4\\}$. L'ensemble $\\{3\\}$ est inclus dans tous les autres (et égal à $A \\cap C$). Les ensembles $\\{2, 3\\}$ et $\\{3, 4\\}$ ne sont pas comparables entre eux par inclusion stricte, mais l'énoncé demande un ordre croissant au sens large ; on place donc les deux ensembles à un élément (égaux) en premier, puis les ensembles à deux éléments. L'ordre proposé respecte la relation $\\subset$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Identifier règle",
+  "title": "Quiz : Identifier la règle d'une suite",
+  "questions": [
+    {
+      "text": "Observe la suite numérique suivante : $2, 5, 8, 11, \\dots$ Quelle est la règle pour passer d'un terme au suivant ?",
+      "options": [
+        "Ajouter $2$",
+        "Ajouter $3$",
+        "Multiplier par $2$",
+        "Soustraire $1$"
+      ],
+      "correctAnswer": "Ajouter $3$",
+      "explanation": "Pour trouver la règle, on calcule la différence entre deux termes consécutifs : $5 - 2 = 3$, $8 - 5 = 3$, $11 - 8 = 3$. La différence est constante et égale à $3$, la règle est donc d'ajouter $3$ à chaque fois. Les autres options ne correspondent pas aux écarts observés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite de nombres : $3, 6, 12, 24, \\dots$ Quelle opération permet de passer d'un terme au suivant ?",
+      "options": [
+        "Ajouter $3$",
+        "Multiplier par $2$",
+        "Multiplier par $3$",
+        "Ajouter $6$"
+      ],
+      "correctAnswer": "Multiplier par $2$",
+      "explanation": "On teste les opérations : $3 \\times 2 = 6$, $6 \\times 2 = 12$, $12 \\times 2 = 24$. La règle est bien de multiplier par $2$. L'option 'Ajouter $3$' ne fonctionne que pour le premier pas ($3+3=6$ mais $6+3=9 \\neq 12$). 'Multiplier par $3$' donne $9$ au lieu de $6$. 'Ajouter $6$' donne $9$ au lieu de $12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la suite de formes géométriques présentée. Quelle est la règle de construction de cette suite ?",
+      "options": [
+        "Alterner cercle et carré",
+        "Répéter cercle, carré, triangle",
+        "Ajouter un côté à chaque fois",
+        "Alterner triangle et carré"
+      ],
+      "correctAnswer": "Répéter cercle, carré, triangle",
+      "explanation": "La figure montre un motif qui se répète tous les trois termes : cercle, puis carré, puis triangle, puis à nouveau cercle, carré, triangle. C'est une suite périodique de période 3. Les autres options ne décrivent pas l'enchaînement complet observé sur la figure.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "triangle",
+          "cercle",
+          "carre",
+          "triangle"
+        ],
+        "options": [
+          "cercle",
+          "carre",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Suite de formes géométriques"
+      }
+    },
+    {
+      "text": "Complète la suite numérique : $1, 3, 7, 15, \\dots$ Quelle est la règle utilisée ?",
+      "options": [
+        "Ajouter $2$",
+        "Multiplier par $2$",
+        "Multiplier par $2$ et ajouter $1$",
+        "Multiplier par $3$ et soustraire $2$"
+      ],
+      "correctAnswer": "Multiplier par $2$ et ajouter $1$",
+      "explanation": "On vérifie chaque hypothèse : $1 \\times 2 + 1 = 3$, $3 \\times 2 + 1 = 7$, $7 \\times 2 + 1 = 15$. La règle 'Multiplier par $2$ et ajouter $1$' fonctionne à chaque étape. 'Ajouter $2$' donnerait $5$ au lieu de $7$. 'Multiplier par $2$' donnerait $2$ au lieu de $3$. 'Multiplier par $3$ et soustraire $2$' donnerait $1$ au lieu de $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul range des billes dans des boîtes. Le premier jour, il en range $2$. Le deuxième jour, $5$. Le troisième jour, $8$. S'il continue sur ce rythme, combien de billes rangera-t-il le cinquième jour ?",
+      "options": [
+        "$11$ billes",
+        "$13$ billes",
+        "$14$ billes",
+        "$17$ billes"
+      ],
+      "correctAnswer": "$14$ billes",
+      "explanation": "La suite des nombres de billes par jour est $2, 5, 8, \\dots$ La règle est d'ajouter $3$ chaque jour (différence constante). Jour 4 : $8 + 3 = 11$ billes. Jour 5 : $11 + 3 = 14$ billes. L'option $11$ correspond au 4e jour, $13$ et $17$ ne respectent pas la règle de l'addition de $3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

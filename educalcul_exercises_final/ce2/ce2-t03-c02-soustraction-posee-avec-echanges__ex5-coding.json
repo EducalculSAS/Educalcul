@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 161,
+  "_course_code": "ce2-t03-c02-soustraction-posee-avec-echanges",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Préparer les échanges",
+  "title": "Algorithme de préparation aux échanges en soustraction",
+  "blocks": [
+    {
+      "title": "Repérer le besoin d'échange",
+      "content": "On veut calculer $54 - 28$ en soustraction posée. Écris les étapes de l'algorithme de préparation pour décider s'il faut faire un échange. Utilise les mots unités, dizaines, supérieur, inférieur, échange.",
+      "correctAnswer": "1. Regarder les unités : $4$ (du haut) est inférieur à $8$ (du bas). 2. Un échange est nécessaire. 3. Regarder les dizaines : il y a $5$ dizaines. 4. Transformer une dizaine en dix unités. 5. Le nombre du haut devient $4$ dizaines et $14$ unités. La soustraction est maintenant possible.",
+      "explanation": "Avant de calculer, on compare les chiffres de chaque colonne en partant des unités. Ici $4 < 8$, on ne peut pas enlever $8$ à $4$. On regarde la colonne de gauche (dizaines) : il y a $5$ dizaines. On « casse » une dizaine : on retire $1$ aux dizaines (il en reste $4$) et on ajoute $10$ aux unités ($4 + 10 = 14$). C'est la préparation de l'échange.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposer pour préparer l'échange",
+      "content": "Pour calculer $302 - 145$, on doit préparer l'échange car on ne peut pas retirer $5$ unités à $2$ unités, ni $4$ dizaines à $0$ dizaine. Écris l'algorithme de décomposition du nombre $302$ pour rendre la soustraction possible.",
+      "correctAnswer": "1. Partir de $302 = 3$ centaines $0$ dizaine $2$ unités. 2. Échanger $1$ centaine contre $10$ dizaines : $2$ centaines $10$ dizaines $2$ unités. 3. Échanger $1$ dizaine contre $10$ unités : $2$ centaines $9$ dizaines $12$ unités. 4. La soustraction posée est prête : $12 - 5$ aux unités, $9 - 4$ aux dizaines, $2 - 1$ aux centaines.",
+      "explanation": "Comme il y a $0$ dizaine, on ne peut pas prendre une dizaine pour la donner aux unités. Il faut d'abord aller chercher aux centaines. On décompose $1$ centaine en $10$ dizaines. Maintenant on a $10$ dizaines, on peut en donner $1$ aux unités (ce qui fait $10$ unités ajoutées aux $2$ unités). Il reste $9$ dizaines et $12$ unités. Chaque colonne du haut est maintenant supérieure ou égale à celle du bas.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Écrire l'algorithme complet de préparation",
+      "content": "Écris un algorithme structuré (style Python) qui prépare les échanges pour une soustraction à trois chiffres. L'algorithme prend les chiffres du haut (h_c, h_d, h_u) et du bas (b_c, b_d, b_u). Il modifie le haut pour que chaque chiffre soit supérieur ou égal à celui du bas.",
+      "correctAnswer": "def preparer_echange(h_c, h_d, h_u, b_c, b_d, b_u):\\n    // 1. Préparer les unités\\n    si h_u < b_u alors\\n        si h_d > 0 alors\\n            h_d = h_d - 1\\n            h_u = h_u + 10\\n        sinon // h_d == 0, emprunter aux centaines\\n            h_c = h_c - 1\\n            h_d = h_d + 10\\n            h_d = h_d - 1\\n            h_u = h_u + 10\\n        fin si\\n    fin si\\n    // 2. Préparer les dizaines (après échange unités)\\n    si h_d < b_d alors\\n        h_c = h_c - 1\\n        h_d = h_d + 10\\n    fin si\\n    retourner h_c, h_d, h_u",
+      "explanation": "L'algorithme gère les deux cas d'échange. D'abord les unités : si le haut est plus petit, on regarde les dizaines. S'il y a des dizaines ($>0$), on en prête une. Sinon (zéro dizaine), on emprunte une centaine qu'on transforme en $10$ dizaines, puis on prête une de ces dizaines aux unités. Ensuite, on vérifie les dizaines (qui ont pu changer) : si le haut est plus petit que le bas, on emprunte une centaine. À la fin, le nombre du haut est décomposé correctement pour poser la soustraction.",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

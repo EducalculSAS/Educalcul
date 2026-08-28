@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Simulation : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Simulation d'un dé",
+      "content": "Range les étapes suivantes dans l'ordre logique pour simuler le lancer d'un dé à six faces à l'aide d'un générateur de nombres aléatoires.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Définir l'expérience aléatoire : lancer un dé à six faces.",
+        "Associer chaque face du dé à un intervalle de nombres aléatoires (par exemple $1$ à $6$).",
+        "Générer une série de nombres aléatoires et les convertir en résultats de lancers.",
+        "Enregistrer les résultats obtenus pour chaque lancer.",
+        "Calculer les fréquences d'apparition de chaque face."
+      ],
+      "explanation": "La première étape consiste à définir clairement l'expérience (lancer un dé). Ensuite, on associe chaque face à un intervalle de nombres aléatoires pour pouvoir transformer les nombres en résultats. On génère ensuite les nombres aléatoires, on les convertit, on enregistre chaque résultat, et enfin on calcule les fréquences pour analyser la simulation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'au moins un 6 avec deux dés",
+      "content": "Range les étapes pour estimer par simulation la probabilité d'obtenir au moins un $6$ en lançant deux dés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Modéliser le lancer de deux dés en générant deux nombres aléatoires entre $1$ et $6$.",
+        "Vérifier si au moins l'un des deux nombres est égal à $6$.",
+        "Répéter l'expérience un grand nombre de fois (par exemple $1000$ répétitions).",
+        "Compter le nombre de répétitions où l'événement s'est produit.",
+        "Diviser ce nombre par le total des répétitions pour obtenir la fréquence estimée."
+      ],
+      "explanation": "On commence par modéliser un lancer de deux dés avec deux nombres aléatoires. On teste ensuite la condition (au moins un 6). On répète l'expérience beaucoup de fois pour avoir une bonne estimation. On compte les succès et on divise par le nombre total d'essais pour obtenir la fréquence, qui approche la probabilité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation dans un tableur",
+      "content": "Range les étapes pour réaliser une simulation dans un tableur afin d'approcher la probabilité d'obtenir une somme supérieure à $9$ avec deux dés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Dans deux colonnes, utiliser la fonction ALEA.ENTRE.BORNES($1$;$6$) pour simuler chaque dé.",
+        "Créer une troisième colonne qui calcule la somme des deux dés.",
+        "Ajouter une quatrième colonne qui indique $1$ si la somme $>9$, sinon $0$.",
+        "Étendre les formules sur un grand nombre de lignes (par exemple $5000$ lignes).",
+        "Calculer la moyenne de la quatrième colonne pour obtenir la fréquence estimée."
+      ],
+      "explanation": "On utilise la fonction aléatoire du tableur pour générer les résultats des deux dés. On additionne les deux colonnes pour obtenir la somme. On crée un indicateur binaire (1 si somme > 9, 0 sinon). En recopiant les formules sur de nombreuses lignes, on simule de nombreux lancers. La moyenne de l'indicateur donne la proportion de succès, soit la fréquence estimée de l'événement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

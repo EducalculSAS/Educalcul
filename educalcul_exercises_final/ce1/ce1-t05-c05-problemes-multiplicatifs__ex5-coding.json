@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 112,
+  "_course_code": "ce1-t05-c05-problemes-multiplicatifs",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Groupes égaux",
+  "title": "Algorithmes et groupes égaux",
+  "blocks": [
+    {
+      "title": "Calculer le total",
+      "content": "Il y a $5$ boîtes de crayons. Dans chaque boîte, il y a $4$ crayons. Écris un algorithme simple (étapes numérotées) pour trouver le nombre total de crayons.",
+      "correctAnswer": "1. Mettre le total à $0$.\\n2. Répéter $5$ fois : ajouter $4$ au total.\\n3. Afficher le total.\\n(Résultat : $20$)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable total à $0$. Comme il y a $5$ groupes égaux de $4$, on répète $5$ fois l'action \"ajouter $4$\". À la fin, le total vaut $5 \\times 4 = 20$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver le nombre de groupes",
+      "content": "Le maître a $20$ bonbons. Il veut faire des sachets de $4$ bonbons chacun. Écris un algorithme pour trouver combien de sachets il pourra faire.",
+      "correctAnswer": "1. Mettre le nombre de bonbons restants à $20$.\\n2. Mettre le compteur de sachets à $0$.\\n3. Tant que le nombre de bonbons restants est supérieur ou égal à $4$ :\\n   - Enlever $4$ bonbons des restants.\\n   - Ajouter $1$ au compteur de sachets.\\n4. Afficher le compteur de sachets.\\n(Résultat : $5$)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un partage (division). On soustrait la taille du groupe ($4$) du total ($20$) autant de fois que possible. On compte le nombre de soustractions. $20 - 4 - 4 - 4 - 4 - 4 = 0$, soit $5$ fois.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à deux étapes",
+      "content": "Dans la classe, il y a $3$ tables. À chaque table, il y a $6$ élèves. Chaque élève a $2$ feutres. Écris un algorithme pour calculer le nombre total de feutres dans la classe.",
+      "correctAnswer": "1. Calculer le nombre total d'élèves :\\n   - Mettre total_eleves à $0$.\\n   - Répéter $3$ fois : ajouter $6$ à total_eleves.\\n2. Calculer le nombre total de feutres :\\n   - Mettre total_feutres à $0$.\\n   - Répéter total_eleves fois : ajouter $2$ à total_feutres.\\n3. Afficher total_feutres.\\n(Résultat : $36$)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut chaîner deux multiplications. D'abord trouver le nombre d'élèves : $3 \\times 6 = 18$. Ensuite multiplier par le nombre de feutres par élève : $18 \\times 2 = 36$. L'algorithme montre cette structure imbriquée ou séquentielle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

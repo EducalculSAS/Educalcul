@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Algorithme",
+  "title": "Simulation algorithmique : exercices progressifs",
+  "blocks": [
+    {
+      "title": "Simulation d'un dé",
+      "content": "Écrire un algorithme qui simule le lancer d'un dé équilibré à six faces $n$ fois et qui affiche le nombre d'apparitions de chaque face.",
+      "correctAnswer": "Algorithme LancerDe($n$)\\n    Déclarer tableau $frequences$ de taille $6$ initialisé à $0$\\n    Pour $i$ de $1$ à $n$ faire\\n        $face$ ← aléa($1$, $6$)\\n        $frequences$[$face$] ← $frequences$[$face$] + $1$\\n    Fin Pour\\n    Afficher $frequences$\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise un tableau de six compteurs à zéro. Pour chaque lancer, on tire un entier aléatoire entre 1 et 6, on incrémente le compteur correspondant, et après $n$ lancers on affiche le tableau des fréquences.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation de probabilité par Monte Carlo",
+      "content": "Écrire un algorithme qui estime la probabilité d'obtenir au moins un $6$ en lançant deux dés équilibrés, en répétant l'expérience $N$ fois.",
+      "correctAnswer": "Algorithme EstimerProba($N$)\\n    $compteur$ ← $0$\\n    Pour $k$ de $1$ à $N$ faire\\n        $de1$ ← aléa($1$, $6$)\\n        $de2$ ← aléa($1$, $6$)\\n        Si ($de1$ = $6$ ou $de2$ = $6$) alors\\n            $compteur$ ← $compteur$ + $1$\\n        Fin Si\\n    Fin Pour\\n    $proba$ ← $compteur$ / $N$\\n    Afficher $proba$\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On répète $N$ fois le lancer de deux dés. À chaque essai, on vérifie si au moins un dé montre 6. Le nombre de succès divisé par $N$ donne une estimation de la probabilité recherchée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Marche aléatoire unidimensionnelle",
+      "content": "Écrire un algorithme qui simule une marche aléatoire sur une ligne : partir de $0$, à chaque étape avancer de $+1$ ou $-1$ avec probabilité $1/2$, faire $M$ étapes et afficher la position finale.",
+      "correctAnswer": "Algorithme MarcheAleatoire($M$)\\n    $position$ ← $0$\\n    Pour $etape$ de $1$ à $M$ faire\\n        $sens$ ← aléa($0$, $1$)\\n        Si $sens$ = $0$ alors\\n            $position$ ← $position$ - $1$\\n        Sinon\\n            $position$ ← $position$ + $1$\\n        Fin Si\\n    Fin Pour\\n    Afficher $position$\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $position$ commence à 0. À chaque étape, on tire 0 ou 1 avec équiprobabilité. Si 0, on décrémente ; sinon on incrémente. Après $M$ étapes, la position finale est affichée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

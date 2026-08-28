@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Comparer carrés",
+  "title": "Quiz : Comparer les carrés (Réciproque de Pythagore)",
+  "questions": [
+    {
+      "text": "Dans un triangle dont les longueurs des côtés sont 3, 4 et 5, quelle égalité est vérifiée ?",
+      "options": [
+        "$3^2+4^2=5^2$",
+        "$3^2+4^2>5^2$",
+        "$3^2+4^2<5^2$",
+        "$3^2+5^2=4^2$"
+      ],
+      "correctAnswer": "$3^2+4^2=5^2$",
+      "explanation": "Le triangle 3-4-5 est un triangle rectangle. D'après le théorème de Pythagore, la somme des carrés des deux côtés de l'angle droit égale le carré de l'hypoténuse : $3^2+4^2=9+16=25=5^2$. Les trois autres propositions ne correspondent pas à cette relation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour un triangle de côtés 5, 6 et 7, comment compare-t-on $5^2+6^2$ à $7^2$ ?",
+      "options": [
+        "$5^2+6^2>7^2$",
+        "$5^2+6^2=7^2$",
+        "$5^2+6^2<7^2$",
+        "$5^2+7^2=6^2$"
+      ],
+      "correctAnswer": "$5^2+6^2>7^2$",
+      "explanation": "On calcule $5^2+6^2=25+36=61$ et $7^2=49$. Puisque $61>49$, la somme des carrés des deux plus petits côtés est strictement supérieure au carré du plus grand côté. Cela caractérise un triangle acutangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle de côtés 8, 15 et 17, quelle relation entre les carrés est vraie ?",
+      "options": [
+        "$8^2+15^2=17^2$",
+        "$8^2+15^2>17^2$",
+        "$8^2+15^2<17^2$",
+        "$8^2+17^2=15^2$"
+      ],
+      "correctAnswer": "$8^2+15^2=17^2$",
+      "explanation": "Le triplet (8, 15, 17) est un triplet pythagoricien. On vérifie : $8^2+15^2=64+225=289=17^2$. L'égalité montre que le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle de côtés 9, 10 et 15, quelle inégalité est vérifiée ?",
+      "options": [
+        "$9^2+10^2<15^2$",
+        "$9^2+10^2=15^2$",
+        "$9^2+10^2>15^2$",
+        "$9^2+15^2=10^2$"
+      ],
+      "correctAnswer": "$9^2+10^2<15^2$",
+      "explanation": "On calcule $9^2+10^2=81+100=181$ et $15^2=225$. Comme $181<225$, la somme des carrés des deux plus petits côtés est strictement inférieure au carré du plus grand côté. Cela indique un triangle obtusangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si dans un triangle la somme des carrés des deux plus petits côtés est strictement supérieure au carré du plus grand côté, le triangle est :",
+      "options": [
+        "acutangle",
+        "rectangle",
+        "obtusangle",
+        "isocèle"
+      ],
+      "correctAnswer": "acutangle",
+      "explanation": "D'après la réciproque du théorème de Pythagore : si $a^2+b^2>c^2$ (avec $c$ le plus grand côté), alors l'angle opposé à $c$ est aigu, donc tous les angles sont aigus : le triangle est acutangle. L'égalité correspond au triangle rectangle, l'infériorité stricte au triangle obtusangle, et la propriété d'être isocèle n'est pas liée à cette comparaison.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

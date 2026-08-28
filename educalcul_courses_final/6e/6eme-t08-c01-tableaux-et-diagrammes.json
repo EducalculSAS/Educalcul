@@ -1,0 +1,563 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.639468+00:00",
+  "id": 368,
+  "code": "6eme-t08-c01",
+  "title": "Tableaux et diagrammes",
+  "description": "Cours structuré Educalcul : Tableaux et diagrammes.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Tableaux et diagrammes",
+    "objectif_global": "Tableaux et diagrammes",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Construire.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première partie, nous allons découvrir comment lire un tableau de données. Un tableau organise des informations en lignes et en colonnes, chaque ligne correspond à un élément observé et chaque colonne à une caractéristique mesurée. Par exemple, imagine un relevé des notes d'une classe : la première colonne donne le prénom de l'élève, la deuxième colonne sa note sur $20$, la troisième son rang. Pour lire le tableau, on commence par repérer les en‑têtes qui indiquent ce que représente chaque colonne, puis on suit la ligne qui nous intéresse pour extraire les valeurs. Il est important de vérifier l'unité utilisée, ici les points sur $20$, pour ne pas confondre avec une note sur $100$. En t'exerçant, tu verras que le tableau devient un outil clair pour comparer rapidement plusieurs élèves. Tu pourras aussi repérer la valeur maximale et minimale d'un coup d'œil, ce qui est très utile pour faire des comparaisons rapides."
+            },
+            {
+              "type": "definition",
+              "term": "tableau",
+              "definition": "Un tableau est une grille qui range des données en lignes horizontales et en colonnes verticales. Chaque case contient une information précise.",
+              "example": "Le tableau ci‑dessous montre les prénoms, les notes sur $20$ et le rang de trois élèves."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Prénom",
+                "Note sur 20",
+                "Rang"
+              ],
+              "rows": [
+                [
+                  "Paul",
+                  "12",
+                  "3"
+                ],
+                [
+                  "Léa",
+                  "14",
+                  "2"
+                ],
+                [
+                  "Sam",
+                  "10",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer une valeur dans un tableau, nous allons passer à la lecture d'un diagramme en barres. Ce type de graphique utilise des rectangles dont la hauteur est proportionnelle à la quantité représentée. L'axe vertical porte l'échelle numérique, l'axe horizontal les catégories. En observant la hauteur de chaque barre, tu peux comparer les grandeurs sans avoir à lire des chiffres précis."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme en barres affiche des données sous forme de rectangles verticaux ou horizontaux. La longueur de chaque barre est proportionnelle à la valeur qu'elle représente. Sur l'axe des ordonnées, on trouve une graduation qui permet de lire la valeur exacte. Par exemple, si la barre du lundi monte jusqu'à $5$ et celle du mardi jusqu'à $8$, on comprend immédiatement que le mardi a une valeur plus grande. Il faut toujours vérifier l'échelle : une barre qui semble deux fois plus haute correspond bien à une valeur double seulement si l'échelle est linéaire. En t'habituant à regarder la graduation, tu éviteras les erreurs de lecture."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de livres lus par jour",
+              "bars": [
+                {
+                  "label": "Lundi",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mardi",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Mercredi",
+                  "value": 6,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les barres, nous allons examiner un diagramme circulaire, aussi appelé camembert. Ce graphique montre la répartition d'un tout en parts angulaires. Chaque part correspond à une catégorie et son angle est proportionnel à la fréquence de cette catégorie. La somme de tous les angles forme un cercle complet de $360$ degrés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un diagramme circulaire, le cercle entier représente la totalité des données, par exemple $100\\%$ des fruits dans un panier. Chaque part, ou secteur, est colorée différemment et son angle central est proportionnel au pourcentage de la catégorie. Si les pommes occupent $40\\%$ du panier, leur secteur couvrira $40\\%$ de $360$ degrés, soit $144$ degrés. Pour lire la part d'une catégorie, on peut soit regarder l'étiquette de pourcentage, soit mesurer l'angle avec un rapporteur. Ce type de graphique est très pratique pour visualiser rapidement quelle catégorie domine."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits dans le panier",
+              "slices": [
+                {
+                  "label": "Pommes",
+                  "value": 40,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 30,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 30,
+                  "tone": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau ci‑dessus, quelle est la note de Léa ?",
+              "answer": "$14$",
+              "hint": "Regarde la ligne où le prénom est Léa.",
+              "explanation": "Dans le tableau, la colonne \"Note sur 20\" donne la note de chaque élève. Sur la ligne de Léa, la valeur est $14$."
+            },
+            {
+              "question": "Quel jour a la valeur la plus élevée sur le diagramme en barres ?",
+              "answer": "Mardi",
+              "hint": "Compare la hauteur des barres.",
+              "explanation": "La barre la plus haute correspond à Mardi avec une valeur de $8$."
+            },
+            {
+              "question": "Quel fruit représente la plus grande part du camembert ?",
+              "answer": "Pommes",
+              "hint": "Regarde la part la plus large.",
+              "explanation": "La part la plus grande du cercle correspond aux pommes avec $40\\%$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau à partir de données brutes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas apprendre à transformer une liste d'informations en un tableau bien organisé. Imagine que tu as relevé les âges de six camarades : $11$, $12$, $11$, $13$, $12$, $11$. La première étape consiste à identifier les catégories utiles, ici l'âge et le nombre d'élèves ayant cet âge. Ensuite, on crée deux colonnes : \"Âge\" et \"Effectif\". On compte combien de fois chaque âge apparaît : $11$ ans revient $3$ fois, $12$ ans $2$ fois, $13$ ans $1$ fois. On remplit le tableau avec ces résultats. Cette méthode permet de voir rapidement la répartition des âges sans avoir à lire la liste complète."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris toutes les valeurs observées les unes sous les autres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Définir les colonnes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un titre pour la catégorie (ici \"Âge\") et un titre pour le comptage (\"Effectif\")."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter et remplir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque valeur distincte, compte son nombre d'occurrences et écris le résultat dans la ligne correspondante."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Âge",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "11",
+                  "3"
+                ],
+                [
+                  "12",
+                  "2"
+                ],
+                [
+                  "13",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant passer à la construction d'un diagramme en barres. Une fois ton tableau prêt, tu peux tracer les axes, choisir une échelle adaptée aux effectifs maximum, puis dessiner une barre pour chaque catégorie. La hauteur de chaque barre doit correspondre exactement à l'effectif indiqué dans le tableau. N'oublie pas d'étiqueter les axes et de donner un titre au graphique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un diagramme en barres, commence par dessiner deux axes perpendiculaires. L'axe horizontal portera les catégories (ici les âges), l'axe vertical l'échelle des effectifs. Choisis une graduation qui permette d'atteindre la valeur maximale, par exemple de $0$ à $3$ avec un pas de $1$. Ensuite, pour chaque âge, trace un rectangle dont la base est centrée sur la graduation de la catégorie et dont la hauteur atteint l'effectif correspondant. Utilise une règle pour que les barres soient droites et de même largeur. Colorie chaque barre si tu le souhaites pour rendre le graphique plus lisible."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs par âge",
+              "bars": [
+                {
+                  "label": "11 ans",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12 ans",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "13 ans",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment construire un diagramme circulaire à partir des mêmes données. Le principe est de convertir chaque effectif en angle proportionnel à $360$ degrés. La formule est : angle = (effectif / total) × $360$. Avec un total de $6$ élèves, l'âge $11$ ans ($3$ élèves) donne un angle de $180$ degrés, $12$ ans ($2$ élèves) donne $120$ degrés, $13$ ans ($1$ élève) donne $60$ degrés. À l'aide d'un rapporteur, trace chaque secteur en partant du centre du cercle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessine d'abord un cercle au compas. Marque le centre. Trace un rayon horizontal vers la droite comme point de départ. À l'aide du rapporteur, mesure l'angle du premier secteur ($180$ degrés) et trace le second rayon. Colorie ce secteur. Recommence pour le secteur suivant ($120$ degrés) en posant le rapporteur sur le dernier rayon tracé, puis pour le dernier ($60$ degrés). Vérifie que la somme des angles revient au point de départ. Ajoute une légende avec les couleurs et les pourcentages pour rendre le graphique clair."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des âges",
+              "slices": [
+                {
+                  "label": "11 ans",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12 ans",
+                  "value": 33,
+                  "tone": "green"
+                },
+                {
+                  "label": "13 ans",
+                  "value": 17,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau ci‑dessous avec les effectifs pour les âges $10$, $11$, $12$ sachant que la liste est : $10$, $11$, $10$, $12$, $11$, $10$.",
+              "answer": "Âge 10 : 3 ; Âge 11 : 2 ; Âge 12 : 1",
+              "hint": "Compte combien de fois chaque âge apparaît dans la liste.",
+              "explanation": "On compte les occurrences : $10$ apparaît $3$ fois, $11$ apparaît $2$ fois, $12$ apparaît $1$ fois. On remplit le tableau en conséquence."
+            },
+            {
+              "question": "Sur le diagramme en barres que tu viens de tracer, quelle est la hauteur de la barre pour l'âge $12$ ans ?",
+              "answer": "$2$",
+              "hint": "Regarde l'effectif correspondant à $12$ ans dans le tableau.",
+              "explanation": "L'effectif pour $12$ ans est $2$, donc la barre doit monter jusqu'à $2$ sur l'axe vertical."
+            },
+            {
+              "question": "Calcule l'angle du secteur pour l'âge $11$ ans dans le camembert (total $6$ élèves).",
+              "answer": "$180^{\\circ}$",
+              "hint": "Utilise la formule : angle = (effectif / total) × $360$.",
+              "explanation": "L'effectif pour $11$ ans est $3$. Angle = ($3$ / $6$) × $360$ = $0,5$ × $360$ = $180^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux tableaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer deux tableaux permet de repérer des différences ou des similitudes entre deux groupes de données. Par exemple, tu as un tableau des notes de la classe A et un tableau de la classe B. Les deux tableaux ont les mêmes colonnes : \"Prénom\", \"Note sur 20\". Pour comparer, tu peux regarder la moyenne de chaque classe, la note maximale, ou le nombre d'élèves ayant plus de $15$. Une méthode simple consiste à ajouter une colonne \"Classe\" dans un tableau unique, puis à trier par note. Ainsi, tu vois d'un coup d'œil quelle classe a globalement de meilleurs résultats."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Aligner les colonnes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que les deux tableaux ont les mêmes en‑têtes dans le même ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer des indicateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la moyenne, le maximum, le minimum pour chaque tableau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les indicateurs : quelle classe a la moyenne la plus élevée ? La dispersion est‑elle plus grande ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Classe",
+                "Moyenne",
+                "Maximum",
+                "Minimum"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "13,5",
+                  "18",
+                  "8"
+                ],
+                [
+                  "B",
+                  "11,2",
+                  "16",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la comparaison de deux diagrammes en barres. Lorsque deux histogrammes sont tracés côte à côte avec la même échelle, il devient facile de voir quelle catégorie est plus importante dans chaque série. Par exemple, un graphique montre le nombre de livres lus par les garçons et un autre par les filles sur une semaine. En superposant les barres ou en les plaçant côte à côte, tu peux dire : \"Les filles ont lu plus de livres le mardi\" ou \"Les garçons ont lu autant le vendredi\". L'essentiel est de vérifier que les deux graphiques utilisent exactement la même graduation verticale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux diagrammes en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux diagrammes en barres, place-les sur la même figure ou assure-toi qu'ils ont la même hauteur maximale et le même pas de graduation. Observe chaque catégorie : si la barre du groupe 1 dépasse celle du groupe 2, le groupe 1 a une valeur plus grande pour cette catégorie. Note les catégories où les barres sont proches (différence faible) et celles où l'écart est important. Cette lecture visuelle te permet de formuler des phrases comparatives précises, comme \"Le groupe 1 dépasse le groupe 2 de $3$ unités le mercredi\"."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Livres lus par jour : Garçons vs Filles",
+              "bars": [
+                {
+                  "label": "Lundi G",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Lundi F",
+                  "value": 5,
+                  "tone": "pink"
+                },
+                {
+                  "label": "Mardi G",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mardi F",
+                  "value": 8,
+                  "tone": "pink"
+                },
+                {
+                  "label": "Mercredi G",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mercredi F",
+                  "value": 5,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous comparerons deux diagrammes circulaires. Chaque camembert montre la répartition d'un total en parts. Pour comparer, regarde les pourcentages de chaque catégorie dans les deux graphiques. Si le premier camembert affiche $40\\%$ de pommes et le second $25\\%$, tu peux dire que la part des pommes est plus grande dans le premier ensemble. Attention : les deux camemberts peuvent représenter des totaux différents (par exemple $100$ fruits contre $200$ fruits), donc compare toujours les pourcentages, pas les angles bruts."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux diagrammes circulaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place les deux camemberts côte à côte. Identifie les mêmes catégories (mêmes couleurs ou mêmes étiquettes). Lis le pourcentage indiqué sur chaque part. Note les différences : une part peut passer de $30\\%$ à $45\\%$, ce qui signifie une augmentation relative de $15$ points de pourcentage. Si les pourcentages ne sont pas écrits, mesure l'angle avec un rapporteur et convertis en pourcentage en divisant l'angle par $3,6$ (puisque $360^{\\circ}$ correspondent à $100\\%$). Cette méthode te donne une comparaison rigoureuse même sans légende numérique."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits : Panier 1 vs Panier 2",
+              "slices": [
+                {
+                  "label": "Pommes P1",
+                  "value": 40,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires P1",
+                  "value": 30,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes P1",
+                  "value": 30,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Pommes P2",
+                  "value": 25,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires P2",
+                  "value": 35,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes P2",
+                  "value": 40,
+                  "tone": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un tableau et en extraire une valeur précise.",
+                "Je sais lire un diagramme en barres et comparer les hauteurs.",
+                "Je sais lire un diagramme circulaire et identifier la plus grande part.",
+                "Je sais construire un tableau à partir de données brutes.",
+                "Je sais tracer un diagramme en barres avec une échelle adaptée.",
+                "Je sais tracer un diagramme circulaire en calculant les angles.",
+                "Je sais comparer deux tableaux en calculant des indicateurs.",
+                "Je sais comparer deux diagrammes en barres en vérifiant l'échelle commune.",
+                "Je sais comparer deux diagrammes circulaires en utilisant les pourcentages."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau comparatif ci‑dessus, quelle classe a la moyenne la plus élevée ?",
+              "answer": "Classe A",
+              "hint": "Compare les valeurs de la colonne \"Moyenne\".",
+              "explanation": "La moyenne de la classe A est $13,5$, celle de la classe B est $11,2$. Donc la classe A a la moyenne la plus élevée."
+            },
+            {
+              "question": "D'après le diagramme en barres, quel jour les filles ont-elles lu plus de livres que les garçons ?",
+              "answer": "Mardi",
+              "hint": "Compare les barres \"Mardi G\" et \"Mardi F\".",
+              "explanation": "Le mardi, la barre des filles (valeur $8$) est plus haute que celle des garçons (valeur $6$)."
+            },
+            {
+              "question": "Quel fruit a la plus grande part dans le Panier 1 et quelle est cette part en pourcentage ?",
+              "answer": "Pommes, $40\\%$",
+              "hint": "Regarde la part la plus large du premier camembert.",
+              "explanation": "Dans le Panier 1, la part des pommes est de $40\\%$, c'est la plus grande."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

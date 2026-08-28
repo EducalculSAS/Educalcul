@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Facteur commun",
+  "title": "Factorisation par extraction du facteur commun : algorithmes et code",
+  "blocks": [
+    {
+      "title": "Factorisation simple guidée",
+      "content": "Donne les instructions (en français, sous forme d'algorithme) pour factoriser l'expression $12a^2b + 18ab^2$ en extrayant le plus grand facteur commun.",
+      "correctAnswer": "1. Identifier les coefficients : 12 et 18. Leur PGCD est 6.\\n2. Identifier les variables communes : $a$ (puissance min 1) et $b$ (puissance min 1).\\n3. Le facteur commun est $6ab$.\\n4. Diviser chaque terme par $6ab$ : $12a^2b / 6ab = 2a$, $18ab^2 / 6ab = 3b$.\\n5. Écrire la factorisation : $6ab(2a + 3b)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le plus grand diviseur commun des coefficients (PGCD de 12 et 18 = 6) et la plus petite puissance de chaque variable présente dans tous les termes (ici $a^1$ et $b^1$). Le produit donne le facteur commun $6ab$. En factorisant, on obtient $6ab(2a+3b)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction Python pour factoriser une liste de monômes",
+      "content": "Écrire une fonction Python `factoriser_commun(termes)` qui reçoit une liste de tuples `(coeff, puissances)` représentant des monômes, par exemple `[(6, {'x':3}), (9, {'x':2}), (-12, {'x':1})]` pour $6x^3+9x^2-12x$, et qui retourne une chaîne de caractères de la forme `facteur*(...)` avec le facteur commun extrait.",
+      "correctAnswer": "def factoriser_commun(termes):\\n    # termes : liste de (coeff, dict_puissances)\\n    from math import gcd\\n    from functools import reduce\\n    # PGCD des coefficients\\n    coeffs = [t[0] for t in termes]\\n    pgcd_coeff = reduce(gcd, coeffs)\\n    # Variables communes avec exposant minimal\\n    vars_communes = {}\\n    for var in termes[0][1]:\\n        exposants = [t[1].get(var, 0) for t in termes]\\n        if all(e > 0 for e in exposants):\\n            vars_communes[var] = min(exposants)\\n    # Construire le facteur commun\\n    facteur_parts = []\\n    if pgcd_coeff != 1:\\n        facteur_parts.append(str(pgcd_coeff))\\n    for var, exp in vars_communes.items():\\n        facteur_parts.append(f\"{var}^{exp}\" if exp>1 else var)\\n    facteur = \"*\".join(facteur_parts) if facteur_parts else \"1\"\\n    # Construire le reste\\n    reste_parts = []\\n    for coeff, puiss in termes:\\n        c = coeff // pgcd_coeff\\n        var_part = []\\n        for var, exp in puiss.items():\\n            e = exp - vars_communes.get(var, 0)\\n            if e > 0:\\n                var_part.append(f\"{var}^{e}\" if e>1 else var)\\n        terme = str(c) + (\"*\" + \"*\".join(var_part) if var_part else \"\")\\n        reste_parts.append(terme)\\n    reste = \" + \".join(reste_parts).replace(\"+ -\", \"- \")\\n    return f\"{facteur}*({reste})\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction calcule le PGCD des coefficients avec `math.gcd` et `functools.reduce`. Elle détermine les variables présentes dans tous les monômes et prend l'exposant minimal pour chacune. Le facteur commun est le produit du PGCD des coefficients et des variables à leur exposant minimal. Chaque terme est ensuite divisé par ce facteur pour former la somme entre parenthèses. Le résultat est formaté en chaîne `facteur*(...)` .",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pseudocode général pour l'extraction du facteur commun",
+      "content": "Décrire, sous forme de pseudocode, l'algorithme général qui, étant donné une liste de $n$ monômes représentés par leur coefficient entier et un dictionnaire associant chaque variable à son exposant, extrait le facteur commun le plus grand et renvoie la factorisation. L'algorithme doit traiter le cas où le facteur commun est 1 (aucune factorisation possible).",
+      "correctAnswer": "ALGORITHME FactoriserCommun(liste_termes)\\nENTRÉE : liste_termes = [(c1, D1), (c2, D2), ..., (cn, Dn)]\\n    // ci : entier, Di : dictionnaire {variable -> exposant}\\nSORTIE : chaîne \"facteur*(reste)\" ou \"1*(expression_originale)\" si facteur=1\\n\\nDEBUT\\n    // 1. PGCD des coefficients\\n    pgcd_coeff <- liste_termes[0].coeff\\n    POUR chaque terme DANS liste_termes[1:] FAIRE\\n        pgcd_coeff <- PGCD(pgcd_coeff, terme.coeff)\\n    FIN POUR\\n\\n    // 2. Variables communes et exposants minimaux\\n    vars_communes <- DICTIONNAIRE VIDE\\n    POUR chaque variable DANS liste_termes[0].puissances CLES FAIRE\\n        present_dans_tous <- VRAI\\n        exp_min <- INFINI\\n        POUR chaque terme DANS liste_termes FAIRE\\n            SI variable NON DANS terme.puissances ALORS\\n                present_dans_tous <- FAUX\\n                SORTIR BOUCLE\\n            SINON\\n                SI terme.puissances[variable] < exp_min ALORS\\n                    exp_min <- terme.puissances[variable]\\n                FIN SI\\n            FIN SI\\n        FIN POUR\\n        SI present_dans_tous ALORS\\n            vars_communes[variable] <- exp_min\\n        FIN SI\\n    FIN POUR\\n\\n    // 3. Construction du facteur commun\\n    facteur <- \"\"\\n    SI pgcd_coeff != 1 ALORS facteur <- CHAÎNE(pgcd_coeff)\\n    POUR chaque (var, exp) DANS vars_communes FAIRE\\n        SI facteur != \"\" ALORS facteur <- facteur + \"*\"\\n        SI exp = 1 ALORS facteur <- facteur + var\\n        SINON facteur <- facteur + var + \"^\" + CHAÎNE(exp)\\n    FIN POUR\\n    SI facteur = \"\" ALORS facteur <- \"1\"\\n\\n    // 4. Construction du reste (somme des termes divisés)\\n    liste_reste <- LISTE VIDE\\n    POUR chaque terme DANS liste_termes FAIRE\\n        coeff_reste <- terme.coeff / pgcd_coeff\\n        partie_var <- LISTE VIDE\\n        POUR chaque (var, exp) DANS terme.puissances FAIRE\\n            exp_reste <- exp - vars_communes.get(var, 0)\\n            SI exp_reste > 0 ALORS\\n                SI exp_reste = 1 ALORS partie_var.AJOUTER(var)\\n                SINON partie_var.AJOUTER(var + \"^\" + CHAÎNE(exp_reste))\\n            FIN SI\\n        FIN POUR\\n        terme_str <- CHAÎNE(coeff_reste)\\n        SI partie_var NON VIDE ALORS terme_str <- terme_str + \"*\" + JOIN(partie_var, \"*\")\\n        liste_reste.AJOUTER(terme_str)\\n    FIN POUR\\n    reste <- JOIN(liste_reste, \" + \")\\n    reste <- REMPLACER(reste, \"+ -\", \"- \")\\n\\n    RENVOYER facteur + \"*(\" + reste + \")\"\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par calculer le PGCD de tous les coefficients. Ensuite, il détermine les variables présentes dans chaque monôme et conserve l'exposant minimal pour celles qui apparaissent partout. Le facteur commun est le produit du PGCD des coefficients et de ces variables à leur exposant minimal. Si ce produit vaut 1, on indique qu'aucune factorisation n'est possible. Chaque terme original est divisé par ce facteur pour former la somme restante. Le pseudocode utilise des structures de contrôle standards (boucles, conditions) et des opérations sur dictionnaires, adaptées au niveau Seconde.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

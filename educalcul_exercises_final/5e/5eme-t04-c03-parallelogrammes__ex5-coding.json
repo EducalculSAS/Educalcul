@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 397,
+  "_course_code": "5eme-t04-c03-parallelogrammes",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Propriétés",
+  "title": "Approfondissement sur les propriétés des parallélogrammes : algorithmes",
+  "blocks": [
+    {
+      "title": "Vérification d'un parallélogramme par les diagonales",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée les coordonnées de quatre points $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$, $D(x_D, y_D)$ et qui affiche « Parallélogramme » si le quadrilatère $ABCD$ est un parallélogramme, sinon « Non ». Utiliser la propriété : les diagonales d'un parallélogramme ont le même milieu.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, xB, yB, xC, yC, xD, yD.\\n2. Calculer milieuAC_x = (xA + xC) / 2, milieuAC_y = (yA + yC) / 2.\\n3. Calculer milieuBD_x = (xB + xD) / 2, milieuBD_y = (yB + yD) / 2.\\n4. Si milieuAC_x == milieuBD_x et milieuAC_y == milieuBD_y alors afficher « Parallélogramme » sinon afficher « Non ».",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la propriété caractéristique : dans un parallélogramme, les diagonales se coupent en leur milieu. On calcule les milieux des segments $[AC]$ et $[BD]$. S'ils coïncident, le quadrilatère est un parallélogramme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction du quatrième sommet d'un parallélogramme",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées de trois sommets consécutifs $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$ d'un parallélogramme $ABCD$ (dans l'ordre), détermine les coordonnées du quatrième sommet $D$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, xB, yB, xC, yC.\\n2. Calculer xD = xA + xC - xB.\\n3. Calculer yD = yA + yC - yB.\\n4. Afficher xD, yD.\\nExplication : Dans un parallélogramme, le vecteur $\\overrightarrow{AB}$ est égal au vecteur $\\overrightarrow{DC}$, donc $D = A + C - B$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la relation vectorielle $\\overrightarrow{AB} = \\overrightarrow{DC}$. Cela donne $B - A = C - D$, d'où $D = A + C - B$. L'algorithme applique cette formule aux coordonnées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'aire d'un parallélogramme",
+      "content": "Écrire un algorithme qui calcule l'aire d'un parallélogramme connaissant la longueur de sa base $b$ et la hauteur $h$ correspondante. Tester l'algorithme avec $b = 7$ cm et $h = 4$ cm.",
+      "correctAnswer": "Algorithme :\\n1. Lire b, h.\\n2. Calculer aire = b * h.\\n3. Afficher aire.\\nTest : avec b = 7 et h = 4, l'algorithme affiche 28 cm².",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'aire d'un parallélogramme est donnée par la formule $A = b \\times h$. L'algorithme implémente directement cette formule. Pour les valeurs données, $7 \\times 4 = 28$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

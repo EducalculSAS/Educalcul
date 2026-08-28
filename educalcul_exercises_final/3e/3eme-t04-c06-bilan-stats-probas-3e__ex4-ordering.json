@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Bilan - Stats-probas 3e",
+  "title": "Mise en ordre : Statistiques et probabilités",
+  "blocks": [
+    {
+      "title": "Calcul d'une moyenne",
+      "content": "Range les étapes suivantes dans l'ordre chronologique pour calculer la moyenne d'une série statistique à effectifs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Recenser l'effectif total de la série.",
+        "Calculer la somme des valeurs multipliées par leurs effectifs respectifs.",
+        "Diviser cette somme par l'effectif total.",
+        "Écrire la conclusion en donnant la valeur de la moyenne."
+      ],
+      "explanation": "Pour calculer la moyenne d'une série à effectifs, on commence par déterminer l'effectif total $N$ (somme des effectifs). Ensuite, on calcule la somme pondérée : somme de (valeur $\\times$ effectif). On divise ensuite cette somme par $N$. Enfin, on rédige la phrase de conclusion.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de probabilités",
+      "content": "On tire une carte au hasard dans un jeu de 52 cartes. Range les événements suivants dans l'ordre croissant de leur probabilité (du moins probable au plus probable).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tirer le roi de cœur (probabilité $1/52$).",
+        "Tirer un roi (probabilité $4/52 = 1/13$).",
+        "Tirer une figure (valet, dame, roi) (probabilité $12/52 = 3/13$).",
+        "Tirer un cœur (probabilité $13/52 = 1/4$)."
+      ],
+      "explanation": "On compare les probabilités : $1/52 \\approx 0,019$ (roi de cœur unique) < $4/52 \\approx 0,077$ (4 rois) < $12/52 \\approx 0,23$ (12 figures) < $13/52 = 0,25$ (13 cœurs). L'ordre est donc : roi de cœur, roi, figure, cœur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une boîte à moustaches",
+      "content": "Range les étapes de la construction d'une boîte à moustaches (box plot) dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ordonner les données de la série par ordre croissant.",
+        "Déterminer le minimum, le maximum, la médiane, le premier quartile (Q1) et le troisième quartile (Q3).",
+        "Tracer un axe gradué adapté à l'étendue de la série.",
+        "Dessiner le rectangle (la boîte) entre Q1 et Q3 en marquant la médiane à l'intérieur.",
+        "Tracer les moustaches du minimum à Q1 et de Q3 au maximum."
+      ],
+      "explanation": "La construction suit une logique précise : il faut d'abord ordonner les données pour pouvoir extraire les 5 valeurs caractéristiques (min, Q1, médiane, Q3, max). Ensuite, on trace l'axe, puis la boîte (représentant l'intervalle interquartile) et enfin les moustaches (représentant les valeurs extrêmes).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

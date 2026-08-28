@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 358,
+  "_course_code": "6eme-t06-c02-angles",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Mesurer",
+  "title": "Quiz - Mesurer les angles (6e)",
+  "questions": [
+    {
+      "text": "Quelle est la mesure de l'angle représenté sur le rapporteur ?",
+      "options": [
+        "$30^\\circ$",
+        "$45^\\circ$",
+        "$60^\\circ$",
+        "$90^\\circ$"
+      ],
+      "correctAnswer": "$45^\\circ$",
+      "explanation": "Le rapporteur indique que le second côté de l'angle se trouve sur la graduation 45, donc l'angle mesure 45 degrés.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 45,
+        "caption": "Angle de 45 degrés"
+      }
+    },
+    {
+      "text": "Quel type d'angle est représenté sur la figure ?",
+      "options": [
+        "Aigu",
+        "Droit",
+        "Obtus",
+        "Plat"
+      ],
+      "correctAnswer": "Obtus",
+      "explanation": "L'angle affiché mesure 120 degrés, ce qui est supérieur à 90 degrés et inférieur à 180 degrés, donc c'est un angle obtus.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 120,
+        "caption": "Angle de 120 degrés"
+      }
+    },
+    {
+      "text": "Lisez la mesure de l'angle sur le rapporteur ci-dessous.",
+      "options": [
+        "$70^\\circ$",
+        "$75^\\circ$",
+        "$80^\\circ$",
+        "$85^\\circ$"
+      ],
+      "correctAnswer": "$75^\\circ$",
+      "explanation": "Le second côté de l'angle coïncide avec la graduation 75 du rapporteur, donc la mesure est 75 degrés.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 75,
+        "caption": "Angle de 75 degrés"
+      }
+    },
+    {
+      "text": "Deux angles sont complémentaires. L'un mesure $30^\\circ$. Quelle est la mesure de l'autre ?",
+      "options": [
+        "$50^\\circ$",
+        "$60^\\circ$",
+        "$70^\\circ$",
+        "$80^\\circ$"
+      ],
+      "correctAnswer": "$60^\\circ$",
+      "explanation": "Deux angles complémentaires ont une somme de 90 degrés. 90 - 30 = 60 degrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un rapporteur mal positionné, la graduation 0 est décalée de $10^\\circ$. La lecture affichée est $50^\\circ$. Quelle est la vraie mesure de l'angle ?",
+      "options": [
+        "$40^\\circ$",
+        "$50^\\circ$",
+        "$60^\\circ$",
+        "$70^\\circ$"
+      ],
+      "correctAnswer": "$40^\\circ$",
+      "explanation": "Comme le zéro du rapporteur est décalé de 10 degrés, il faut soustraire ce décalage à la lecture : 50 - 10 = 40 degrés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

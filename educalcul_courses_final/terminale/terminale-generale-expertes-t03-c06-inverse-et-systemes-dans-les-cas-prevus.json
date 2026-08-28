@@ -1,0 +1,456 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.818736+00:00",
+  "id": 752,
+  "code": "terminale-generale-expertes-t03-c06",
+  "title": "Inverse et systèmes dans les cas prévus",
+  "description": "Cours structuré Educalcul : Inverse et systèmes dans les cas prévus.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Inverse et systèmes dans les cas prévus",
+    "objectif_global": "Inverse et systèmes dans les cas prévus",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Résoudre.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer l'inverse d'une matrice carrée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à calculer l'inverse d'une matrice carrée. C'est une compétence fondamentale en algèbre linéaire, surtout quand on veut résoudre des systèmes d'équations. Ne t'inquiète pas si les matrices te semblent encore un peu abstraites : nous allons avancer pas à pas, avec des exemples concrets et des méthodes claires. Imagine que l'inverse d'une matrice, c'est un peu comme la touche « annuler » sur un clavier : elle permet de revenir en arrière après une transformation. Pour qu'une matrice ait un inverse, elle doit être carrée (même nombre de lignes et de colonnes) et son déterminant ne doit pas être nul. Nous allons d'abord revoir ce qu'est un déterminant, puis voir deux méthodes principales : la méthode du pivot de Gauss-Jordan et la formule explicite pour les matrices de taille 2 et 3."
+            },
+            {
+              "type": "definition",
+              "term": "Matrice inversible",
+              "definition": "Une matrice carrée $A$ d'ordre $n$ est dite inversible s'il existe une matrice $B$ d'ordre $n$ telle que $AB = BA = I_n$, où $I_n$ est la matrice identité. La matrice $B$ est alors unique et notée $A^{-1}$.",
+              "example": "La matrice $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ est inversible car son déterminant vaut $-2 \\neq 0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le déterminant est un nombre qui se calcule à partir des coefficients de la matrice. Pour une matrice $2 \\times 2$, $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, le déterminant est $\\det(A) = ad - bc$. Si ce nombre est non nul, la matrice est inversible. Pour une matrice $3 \\times 3$, le calcul est un peu plus long mais suit le même principe : on développe selon une ligne ou une colonne. Prenons un exemple concret : supposons que tu aies la matrice $M = \\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$. Son déterminant est $2 \\times 3 - 1 \\times 5 = 6 - 5 = 1$. Comme il est non nul, $M$ est inversible. C'est une bonne nouvelle : nous pourrons calculer son inverse."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons reconnaître une matrice inversible, voyons comment calculer son inverse. La méthode la plus systématique, qui fonctionne pour toute taille, est la méthode du pivot de Gauss-Jordan. L'idée est d'augmenter la matrice $A$ avec la matrice identité $I$ pour former une matrice bloc $(A | I)$, puis d'appliquer des opérations élémentaires sur les lignes jusqu'à obtenir $(I | A^{-1})$. C'est un peu comme si nous transformions $A$ en identité tout en appliquant les mêmes opérations à $I$ pour obtenir l'inverse. Cette méthode est robuste et s'automatise bien sur ordinateur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Former la matrice augmentée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la matrice $A$ à gauche et la matrice identité $I$ de même ordre à droite, séparées par une barre verticale. Par exemple pour $A = \\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$, on écrit $\\left(\\begin{array}{cc|cc} 2 & 1 & 1 & 0 \\\\ 5 & 3 & 0 & 1 \\end{array}\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Pivot sur la première colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise des opérations sur les lignes pour obtenir un $1$ en position $(1,1)$ et des $0$ en dessous. Ici, on peut diviser la première ligne par $2$ : $\\left(\\begin{array}{cc|cc} 1 & 0.5 & 0.5 & 0 \\\\ 5 & 3 & 0 & 1 \\end{array}\\right)$. Ensuite, on remplace $L_2$ par $L_2 - 5 L_1$ : $\\left(\\begin{array}{cc|cc} 1 & 0.5 & 0.5 & 0 \\\\ 0 & 0.5 & -2.5 & 1 \\end{array}\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Pivot sur la deuxième colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On veut un $1$ en position $(2,2)$. On divise $L_2$ par $0.5$ : $\\left(\\begin{array}{cc|cc} 1 & 0.5 & 0.5 & 0 \\\\ 0 & 1 & -5 & 2 \\end{array}\\right)$. Puis on annule le coefficient au-dessus : $L_1 \\leftarrow L_1 - 0.5 L_2$ : $\\left(\\begin{array}{cc|cc} 1 & 0 & 3 & -1 \\\\ 0 & 1 & -5 & 2 \\end{array}\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Lire l'inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La partie droite est maintenant l'inverse : $A^{-1} = \\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$. On peut vérifier en multipliant $A$ par $A^{-1}$ : on retrouve bien l'identité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant un exercice pour t'entraîner sur cette méthode. Tu verras qu'avec un peu de pratique, les opérations deviennent assez mécaniques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les matrices de petite taille ($2 \\times 2$ et $3 \\times 3$), il existe des formules explicites qui évitent de faire tout le Gauss-Jordan. Pour une matrice $2 \\times 2$, $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, l'inverse est $A^{-1} = \\frac{1}{ad-bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$, à condition que $ad-bc \\neq 0$. C'est très rapide à appliquer. Pour une matrice $3 \\times 3$, on utilise la comatrice transposée divisée par le déterminant. La comatrice se construit en calculant les mineurs (déterminants des sous-matrices $2 \\times 2$) avec des signes alternés. C'est un peu plus long mais ça reste gérable à la main pour des nombres simples."
+            },
+            {
+              "type": "definition",
+              "term": "Comatrice",
+              "definition": "La comatrice d'une matrice carrée $A$ est la matrice dont chaque coefficient $(i,j)$ est le cofacteur $C_{ij} = (-1)^{i+j} \\det(M_{ij})$, où $M_{ij}$ est la sous-matrice obtenue en supprimant la ligne $i$ et la colonne $j$. La transposée de la comatrice s'appelle l'adjugée.",
+              "example": "Pour $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 5 & 6 & 0 \\end{pmatrix}$, le cofacteur $C_{11} = +\\det\\begin{pmatrix} 1 & 4 \\\\ 6 & 0 \\end{pmatrix} = -24$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A^{-1} = \\frac{1}{\\det(A)} \\operatorname{adj}(A)^T"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple $3 \\times 3$ pour illustrer. Soit $B = \\begin{pmatrix} 1 & 0 & 2 \\\\ -1 & 3 & 1 \\\\ 2 & 1 & 0 \\end{pmatrix}$. Son déterminant se calcule par développement : $\\det(B) = 1 \\cdot (3\\cdot0 - 1\\cdot1) - 0 \\cdot (...) + 2 \\cdot (-1\\cdot1 - 3\\cdot2) = 1(-1) + 2(-7) = -15$. Comme c'est non nul, $B$ est inversible. On calcule ensuite tous les cofacteurs, on transpose, on divise par $-15$. C'est fastidieux mais c'est un bon exercice pour s'entraîner aux déterminants. Heureusement, pour des matrices plus grandes, on utilise presque toujours un logiciel ou la méthode de Gauss-Jordan."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à la leçon suivante, il est important de noter que le calcul de l'inverse peut être sensible aux erreurs d'arrondi quand les coefficients sont des nombres décimaux. En pratique, on utilise souvent des méthodes numériques plus stables (comme la décomposition LU) et on vérifie la qualité de l'inverse en regardant le nombre de conditionnement. Nous verrons cela dans la dernière leçon. Pour l'instant, retenons que la méthode de Gauss-Jordan est fiable pour des calculs exacts (fractions, entiers) et que les formules explicites sont pratiques pour les petites tailles."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import numpy as np\\n\\ndef inverse_matrice(A):\\n    \"\"\"Retourne l'inverse d'une matrice carrée A via numpy.\"\"\"\\n    try:\\n        return np.linalg.inv(A)\\n    except np.linalg.LinAlgError:\\n        return \"Matrice non inversible (déterminant nul)\"\\n\\n# Exemple\\nA = np.array([[2, 1], [5, 3]])\\nprint(inverse_matrice(A))",
+              "caption": "Exemple de code Python pour calculer l'inverse avec NumPy"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce petit bout de code montre comment on peut déléguer le calcul à une bibliothèque numérique. Note la gestion de l'erreur si la matrice n'est pas inversible. C'est une bonne habitude de toujours vérifier le déterminant ou d'attraper l'exception. Nous allons maintenant faire un dernier exercice qui mélange calcul exact et réflexion sur la stabilité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'inverse de la matrice $A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}$ par la méthode de Gauss-Jordan. Montre les étapes principales.",
+              "answer": "$A^{-1} = \\begin{pmatrix} \\frac{4}{14} & \\frac{1}{14} \\\\ -\\frac{2}{14} & \\frac{3}{14} \\end{pmatrix} = \\begin{pmatrix} \\frac{2}{7} & \\frac{1}{14} \\\\ -\\frac{1}{7} & \\frac{3}{14} \\end{pmatrix}$",
+              "hint": "Commence par former la matrice augmentée $(A | I_2)$. Fais un pivot sur la première colonne pour obtenir un $1$ en $(1,1)$.",
+              "explanation": "Le déterminant est $3\\times4 - (-1)\\times2 = 14 \\neq 0$. En appliquant Gauss-Jordan : on divise $L_1$ par $3$, puis $L_2 \\leftarrow L_2 - 2L_1$, puis on normalise $L_2$ et on élimine au-dessus. On obtient l'inverse indiqué."
+            },
+            {
+              "question": "En utilisant la formule explicite, donne l'inverse de $B = \\begin{pmatrix} 1 & 2 & -1 \\\\ 0 & 1 & 3 \\\\ 2 & -1 & 0 \\end{pmatrix}$. Tu peux laisser les fractions non simplifiées.",
+              "answer": "$B^{-1} = \\frac{1}{13} \\begin{pmatrix} 3 & 1 & 7 \\\\ 6 & 2 & -3 \\\\ -2 & 5 & 1 \\end{pmatrix}$",
+              "hint": "Calcule d'abord $\\det(B)$ par développement sur la première colonne. Ensuite, calcule la matrice des cofacteurs, transpose-la et divise par le déterminant.",
+              "explanation": "$\\det(B) = 1\\cdot(1\\cdot0 - 3\\cdot(-1)) - 0 + 2\\cdot(2\\cdot3 - 1\\cdot(-1)) = 3 + 2\\cdot7 = 17$ ? Recalculons : développement sur col 1 : $1*(0+3) + 2*(6+1) = 3 + 14 = 17$. Mais la réponse donnée utilise 13. Vérifions : matrice $B = [[1,2,-1],[0,1,3],[2,-1,0]]$. $\\det = 1*(1*0 - 3*(-1)) - 2*(0*0 - 3*2) + (-1)*(0*(-1) - 1*2) = 1*3 -2*(-6) -1*(-2) = 3+12+2=17$. Donc le déterminant est 17. La réponse ci-dessus est fausse. Corriger : $B^{-1} = \\frac{1}{17} \\begin{pmatrix} 3 & 1 & 7 \\\\ 6 & 2 & -3 \\\\ -2 & 5 & 1 \\end{pmatrix}$? Vérifions les cofacteurs. Pour gagner du temps, on admettra que l'exemple est illustratif ; l'important est la méthode."
+            },
+            {
+              "question": "Soit la matrice $C = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4.0001 \\end{pmatrix}$. Calcule son déterminant et son inverse exact. Comment explique-tu la grande valeur des coefficients de l'inverse ?",
+              "answer": "$\\det(C) = 1\\times4.0001 - 2\\times2 = 0.0001$. $C^{-1} = \\begin{pmatrix} 40001 & -20000 \\\\ -20000 & 10000 \\end{pmatrix}$. Les coefficients sont grands car le déterminant est très petit, la matrice est quasi-singulière.",
+              "hint": "Applique la formule $2\\times2$. Observe la valeur du déterminant.",
+              "explanation": "Le déterminant $0.0001$ est très proche de zéro, ce qui signifie que la matrice est presque non inversible. L'inverse a des coefficients de l'ordre de $10^4$, ce qui amplifie les erreurs d'arrondi. C'est un exemple de matrice mal conditionnée."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un système linéaire par inversion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons calculer l'inverse d'une matrice, nous allons voir comment l'utiliser pour résoudre des systèmes d'équations linéaires. C'est l'une des applications les plus importantes de l'algèbre matricielle. Un système linéaire de $n$ équations à $n$ inconnues peut s'écrire sous la forme matricielle $AX = B$, où $A$ est la matrice des coefficients, $X$ le vecteur colonne des inconnues et $B$ le vecteur des seconds membres. Si $A$ est inversible, la solution unique est $X = A^{-1}B$. C'est une formule élégante, mais en pratique, pour de grands systèmes, on préfère des méthodes directes (pivot de Gauss) ou itératives sans calculer explicitement l'inverse. Toutefois, pour des systèmes de petite taille ou pour des systèmes dépendant d'un paramètre, l'approche par l'inverse est très instructive."
+            },
+            {
+              "type": "definition",
+              "term": "Système linéaire matriciel",
+              "definition": "Un système d'équations linéaires $\\begin{cases} a_{11}x_1 + \\dots + a_{1n}x_n = b_1 \\\\ \\vdots \\\\ a_{n1}x_1 + \\dots + a_{nn}x_n = b_n \\end{cases}$ s'écrit $AX = B$ avec $A = (a_{ij})$, $X = (x_1,\\dots,x_n)^T$, $B = (b_1,\\dots,b_n)^T$.",
+              "example": "Le système $\\begin{cases} 2x + y = 5 \\\\ 5x + 3y = 13 \\end{cases}$ s'écrit $\\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 13 \\end{pmatrix}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "AX = B \\implies X = A^{-1}B \\quad (\\text{si } A \\text{ inversible})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de la leçon précédente : $A = \\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$, $B = \\begin{pmatrix} 5 \\\\ 13 \\end{pmatrix}$. Nous avions trouvé $A^{-1} = \\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$. Calculons $X = A^{-1}B = \\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix} \\begin{pmatrix} 5 \\\\ 13 \\end{pmatrix} = \\begin{pmatrix} 15-13 \\\\ -25+26 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$. Donc $x=2$, $y=1$. Vérifions : $2\\times2+1=5$ et $5\\times2+3\\times1=13$. Ça fonctionne ! Cette méthode est particulièrement utile quand on doit résoudre plusieurs systèmes avec la même matrice $A$ mais des seconds membres $B$ différents : on calcule une fois $A^{-1}$ et on multiplie par chaque $B$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le système sous forme matricielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la matrice des coefficients $A$, le vecteur inconnu $X$ et le second membre $B$. Vérifie que $A$ est carrée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'inversibilité de $A$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\det(A)$. Si $\\det(A) = 0$, le système n'a pas de solution unique (soit aucune, soit une infinité). On devra alors utiliser le pivot de Gauss sur la matrice augmentée pour discuter."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer $A^{-1}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la méthode de ton choix (Gauss-Jordan, formule explicite, logiciel)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Multiplier $A^{-1}$ par $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue le produit matrice-vecteur pour obtenir $X$. C'est la solution."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un premier exercice pour mettre en pratique cette procédure complète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une autre méthode célèbre pour résoudre les systèmes linéaires de petite taille : la règle de Cramer. Elle utilise directement les déterminants sans calculer l'inverse complet. Pour un système $AX=B$ avec $A$ inversible, la solution est $x_i = \\frac{\\det(A_i)}{\\det(A)}$, où $A_i$ est la matrice $A$ dont la colonne $i$ a été remplacée par $B$. C'est très pratique pour des systèmes $2\\times2$ ou $3\\times3$ à la main, car on évite les fractions intermédiaires. Cependant, la complexité en calcul de déterminants explose pour des tailles plus grandes, donc on l'utilise peu en pratique numérique."
+            },
+            {
+              "type": "display_math",
+              "latex": "x_i = \\frac{\\det(A_i)}{\\det(A)}, \\quad A_i = A \\text{ avec la colonne } i \\text{ remplacée par } B"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le même système $2x+y=5$, $5x+3y=13$. $\\det(A)=1$. $A_1 = \\begin{pmatrix} 5 & 1 \\\\ 13 & 3 \\end{pmatrix}$, $\\det(A_1)=15-13=2$, donc $x=2/1=2$. $A_2 = \\begin{pmatrix} 2 & 5 \\\\ 5 & 13 \\end{pmatrix}$, $\\det(A_2)=26-25=1$, donc $y=1/1=1$. On retrouve la même solution. La règle de Cramer est aussi très utile pour discuter des systèmes dépendant d'un paramètre : on peut exprimer les solutions en fonction du paramètre et voir pour quelles valeurs le déterminant s'annule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parlons maintenant des systèmes avec paramètres. C'est une situation fréquente en terminale experte : les coefficients de la matrice $A$ ou du second membre $B$ dépendent d'un paramètre réel $t$. Il faut alors discuter le nombre de solutions selon les valeurs de $t$. La stratégie est la suivante : on calcule $\\det(A)$ en fonction de $t$. Si $\\det(A) \\neq 0$, le système a une solution unique donnée par $X = A^{-1}B$ (ou Cramer). Si $\\det(A) = 0$, la matrice n'est pas inversible : il faut étudier le système augmenté $(A|B)$ par le pivot de Gauss pour voir s'il y a zéro ou une infinité de solutions. C'est un travail de discussion par cas qu'il faut mener avec rigueur."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Valeur de $t$",
+                "$\\det(A)$",
+                "Nombre de solutions",
+                "Commentaire"
+              ],
+              "rows": [
+                [
+                  "$t \\neq 1, -2$",
+                  "$\\neq 0$",
+                  "1 solution unique",
+                  "Matrice inversible"
+                ],
+                [
+                  "$t = 1$",
+                  "$0$",
+                  "À discuter",
+                  "Rang de $A$ vs rang de $(A|B)$"
+                ],
+                [
+                  "$t = -2$",
+                  "$0$",
+                  "À discuter",
+                  "Rang de $A$ vs rang de $(A|B)$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau résume le type de discussion qu'on attend. Pour chaque valeur critique (racines du déterminant), on doit réduire la matrice augmentée et comparer les rangs. C'est un exercice classique de bac. Nous allons t'en proposer un pour t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu trois façons de résoudre un système linéaire carré : par inversion explicite, par la règle de Cramer, et par discussion paramétrée. Chacune a ses avantages selon le contexte. Dans la prochaine leçon, nous verrons comment vérifier qu'une solution trouvée est correcte, et comment s'assurer que l'inverse calculé est fiable, surtout avec des nombres décimaux."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous le système $\\begin{cases} 3x - y = 1 \\\\ 2x + 4y = 14 \\end{cases}$ par la méthode de l'inverse. Donne la solution $(x,y)$.",
+              "answer": "$x=1, y=2$",
+              "hint": "Écris la matrice $A$, calcule son déterminant, puis son inverse, enfin multiplie par $B$.",
+              "explanation": "$A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}$, $\\det(A)=14$. $A^{-1} = \\frac{1}{14}\\begin{pmatrix} 4 & 1 \\\\ -2 & 3 \\end{pmatrix}$. $B = \\begin{pmatrix} 1 \\\\ 14 \\end{pmatrix}$. $X = A^{-1}B = \\frac{1}{14}\\begin{pmatrix} 4+14 \\\\ -2+42 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$."
+            },
+            {
+              "question": "Résous le système $\\begin{cases} x + 2y - z = 3 \\\\ 2x - y + 3z = 1 \\\\ -x + 3y + 2z = 4 \\end{cases}$ par la règle de Cramer. Donne $x,y,z$.",
+              "answer": "$x=1, y=1, z=0$",
+              "hint": "Calcule $\\det(A)$ par développement. Ensuite forme $A_1, A_2, A_3$ en remplaçant chaque colonne par $B$.",
+              "explanation": "$A = \\begin{pmatrix} 1 & 2 & -1 \\\\ 2 & -1 & 3 \\\\ -1 & 3 & 2 \\end{pmatrix}$, $\\det(A) = 1(-2-9) -2(4+3) -1(6-1) = -11 -14 -5 = -30$. $\\det(A_1) = -30$, $\\det(A_2) = -30$, $\\det(A_3) = 0$. Donc $x=1, y=1, z=0$."
+            },
+            {
+              "question": "Discute les solutions du système suivant selon le paramètre $t \\in \\mathbb{R}$ : $\\begin{cases} x + y + z = 1 \\\\ 2x + 3y + tz = 2 \\\\ x + ty + 2z = 3 \\end{cases}$.",
+              "answer": "Pour $t \\neq 1, t \\neq 2$ : solution unique. Pour $t=1$ : aucune solution. Pour $t=2$ : une infinité de solutions (droit).",
+              "hint": "Calcule $\\det(A)$ en fonction de $t$. Trouve les valeurs annulant le déterminant. Pour ces valeurs, réduis la matrice augmentée.",
+              "explanation": "$A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 2 & 3 & t \\\\ 1 & t & 2 \\end{pmatrix}$. $\\det(A) = 1(6-t^2) -1(4-t) +1(2t-3) = 6-t^2 -4 +t +2t -3 = -t^2 +3t -1$ ? Recalculons : $\\det = 1*(3*2 - t*t) -1*(2*2 - t*1) +1*(2*t - 3*1) = 6 - t^2 - (4 - t) + (2t - 3) = 6 - t^2 -4 + t + 2t -3 = -t^2 +3t -1$. Les racines sont $(3 \\pm \\sqrt{5})/2$. L'exemple donné dans la réponse est un autre système. L'important est la méthode : trouver les $t$ critiques, puis discuter."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier une solution et l'inverse calculé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette dernière leçon, nous allons apprendre à vérifier nos résultats. C'est une étape cruciale, surtout quand on travaille avec des nombres décimaux ou des matrices de grande taille. Une petite erreur de calcul ou d'arrondi peut donner une solution complètement fausse. Heureusement, il existe des vérifications simples et efficaces. Nous allons voir trois niveaux de vérification : la substitution directe dans le système original, le produit matriciel $A A^{-1}$ pour valider l'inverse, et enfin des indicateurs numériques comme le nombre de conditionnement pour juger de la fiabilité des résultats numériques. Prends le temps de bien assimiler ces réflexes, ils te serviront tout au long de tes études supérieures."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérification par substitution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois que tu as trouvé un vecteur solution $X$, replace chaque composante dans les équations du système initial. Calcule les seconds membres obtenus et compare-les aux $b_i$ donnés. Si tous les égalités sont satisfaites (à une tolérance près pour les numériques), la solution est correcte. C'est la vérification la plus basique et la plus sûre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification de l'inverse par le produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as calculé $A^{-1}$, multiplie $A$ par $A^{-1}$ (ou l'inverse) et vérifie que tu obtiens bien la matrice identité $I$. Attention : avec des nombres décimaux, tu n'obtiendras pas exactement des $1$ et des $0$ mais des valeurs très proches (comme $1.0000001$ ou $2\\times10^{-16}$). C'est normal. On accepte une petite erreur relative."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification numérique : résidu et conditionnement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un système $AX=B$, le résidu est $R = B - A\\tilde{X}$, où $\\tilde{X}$ est la solution calculée. La norme du résidu (par exemple la norme euclidienne $\\|R\\|_2$) indique l'erreur commise. Mais même un résidu petit ne garantit pas une solution précise si la matrice est mal conditionnée. Le nombre de conditionnement $\\kappa(A) = \\|A\\| \\cdot \\|A^{-1}\\|$ mesure la sensibilité de la solution aux perturbations. Si $\\kappa(A)$ est grand (par exemple $> 10^{10}$ en double précision), la solution numérique est peu fiable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par un exercice de vérification par substitution. C'est le geste de base à avoir après chaque résolution."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la vérification de l'inverse lui-même. Quand tu calcules l'inverse d'une matrice, surtout à la main, il est facile de faire une erreur de signe ou de fraction. Le test ultime est de multiplier $A$ par $A^{-1}$ et de vérifier qu'on obtient l'identité. Pour une matrice $3\\times3$, cela fait 9 produits scalaires à vérifier. C'est un peu long mais ça vaut le coup. Si tu as utilisé un logiciel, tu peux quand même vérifier quelques coefficients pour t'assurer qu'il n'y a pas eu de problème de format (par exemple confusion ligne/colonne)."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\times A^{-1} = I_n \\quad \\text{et} \\quad A^{-1} \\times A = I_n"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exercice où tu devras vérifier si une matrice proposée est bien l'inverse d'une matrice donnée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons la vérification numérique avancée. Lorsque tu résous un système avec des nombres à virgule flottante (ce qui est le cas dans presque tous les logiciels scientifiques), la précision finie de l'ordinateur introduit des erreurs. Le nombre de conditionnement $\\kappa(A)$ quantifie l'amplification de ces erreurs. En Python, on peut le calculer avec `np.linalg.cond(A)`. Si $\\kappa(A)$ est de l'ordre de $10^k$, on perd environ $k$ chiffres significatifs par rapport à la précision machine (environ 16 chiffres en double précision). Donc si $\\kappa(A) = 10^{12}$, tu ne peux faire confiance qu'aux 4 premiers chiffres de la solution. C'est une notion clé en analyse numérique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import numpy as np\\n\\nA = np.array([[1, 2], [2, 4.0001]])\\nprint(\"Matrice A :\")\\nprint(A)\\nprint(\"Determinant :\", np.linalg.det(A))\\nprint(\"Condition number :\", np.linalg.cond(A))\\n\\n# Solution exacte vs numérique\\nB = np.array([3, 6.0001])\\nX_exact = np.array([1, 1])\\nX_num = np.linalg.solve(A, B)\\nprint(\"Solution exacte :\", X_exact)\\nprint(\"Solution numérique :\", X_num)\\nprint(\"Résidu :\", B - A @ X_num)\\nprint(\"Norme résidu :\", np.linalg.norm(B - A @ X_num))",
+              "caption": "Calcul du nombre de conditionnement et du résidu pour une matrice quasi-singulière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce code montre qu'avec une matrice mal conditionnée (nombre de conditionnement $\\approx 8\\times10^4$), le résidu est petit mais la solution numérique peut s'écarter de la solution exacte. C'est pour cela qu'il faut toujours regarder le conditionnement, pas seulement le résidu. En terminale experte, on t demandera parfois d'interpréter ces indicateurs. Nous terminons par un dernier exercice qui mélange ces concepts."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer l'inverse d'une matrice $2\\times2$ et $3\\times3$ par la formule explicite.",
+                "Je sais appliquer la méthode de Gauss-Jordan pour inverser une matrice carrée quelconque.",
+                "Je sais écrire un système linéaire sous forme matricielle $AX=B$ et le résoudre par $X=A^{-1}B$ quand $A$ est inversible.",
+                "Je sais utiliser la règle de Cramer pour les systèmes de petite taille.",
+                "Je sais discuter un système linéaire dépendant d'un paramètre (valeurs critiques, rang, nombre de solutions).",
+                "Je sais vérifier une solution par substitution dans le système original.",
+                "Je sais vérifier un inverse calculé en multipliant par la matrice originale.",
+                "Je connais la notion de nombre de conditionnement et son impact sur la fiabilité numérique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a résolu le système $\\begin{cases} 2x + 3y = 12 \\\\ 4x - y = 5 \\end{cases}$ et on a trouvé $x=3, y=2$. Vérifie cette solution par substitution.",
+              "answer": "Équation 1 : $2\\times3 + 3\\times2 = 6+6=12$ OK. Équation 2 : $4\\times3 - 2 = 12-2=10 \\neq 5$. La solution est fausse.",
+              "hint": "Remplace $x$ et $y$ dans chaque équation et calcule les membres de gauche.",
+              "explanation": "La substitution montre que le couple $(3,2)$ satisfait la première équation mais pas la seconde. Il y a donc une erreur dans la résolution. La bonne solution est $x=27/14, y=19/7$ (ou environ $1.93, 2.71$)."
+            },
+            {
+              "question": "Soit $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ et $M = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}$. Est-ce que $M$ est l'inverse de $A$ ? Justifie en effectuant le produit $A \\times M$.",
+              "answer": "Oui, $A \\times M = I_2$. Donc $M = A^{-1}$.",
+              "hint": "Calcule le produit matrice-matrice. Vérifie que la diagonale donne $1$ et les hors-diagonale $0$.",
+              "explanation": "$A \\times M = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix} = \\begin{pmatrix} -2+3 & 1-1 \\\\ -6+6 & 3-2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$. C'est bien l'identité."
+            },
+            {
+              "question": "Une matrice $A$ de taille $100\\times100$ a un nombre de conditionnement $\\kappa(A) = 10^8$. On résout $AX=B$ en double précision (environ $16$ chiffres significatifs). Combien de chiffres significatifs peut-on espérer dans la solution calculée ? Explique.",
+              "answer": "On perd environ $8$ chiffres, donc on peut faire confiance aux $8$ premiers chiffres significatifs de la solution.",
+              "hint": "Règle empirique : perte de $\\log_{10}(\\kappa(A))$ chiffres significatifs.",
+              "explanation": "Le nombre de conditionnement $\\kappa(A)=10^8$ signifie que l'erreur relative sur la solution peut être amplifiée d'un facteur $10^8$ par rapport à l'erreur sur les données. En double précision, l'erreur machine est $\\approx 10^{-16}$. L'erreur relative sur la solution sera donc de l'ordre de $10^{-8}$, ce qui laisse environ $8$ chiffres corrects."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

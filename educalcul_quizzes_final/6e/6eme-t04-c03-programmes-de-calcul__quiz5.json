@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Suivre",
+  "title": "Quiz : Programmes de calcul - Suivre un programme",
+  "questions": [
+    {
+      "text": "On suit le programme de calcul : choisissez un nombre, multipliez-le par $3$, puis ajoutez $5$. Si le nombre de départ est $4$, quel est le résultat final ?",
+      "options": [
+        "$17$",
+        "$12$",
+        "$27$",
+        "$19$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "On applique les étapes dans l'ordre : on part de $4$. Étape 1 : on multiplie par $3$, ce qui donne $4 \\times 3 = 12$. Étape 2 : on ajoute $5$, ce qui donne $12 + 5 = 17$. Le résultat $12$ correspond à l'oubli de l'addition finale. Le résultat $27$ correspond à l'erreur d'avoir additionné $5$ avant de multiplier : $(4 + 5) \\times 3 = 27$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme : choisissez un nombre, retranchez $2$, puis multipliez le résultat par $4$. Si le nombre de départ est $7$, quel est le résultat obtenu ?",
+      "options": [
+        "$20$",
+        "$26$",
+        "$10$",
+        "$30$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "On suit les instructions dans l'ordre : départ $7$. On retranche $2$ : $7 - 2 = 5$. On multiplie ce résultat par $4$ : $5 \\times 4 = 20$. Le distracteur $26$ correspond au calcul $7 \\times 4 - 2$ (mauvaise priorité des opérations). Le distracteur $10$ pourrait venir d'une confusion $7 - 2 = 5$ puis arrêt avant la multiplication, ou $7 - 2 \\times 4$ mal calculé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme de calcul est : choisissez un nombre, multipliez-le par $5$, puis retranchez $10$. Le résultat final affiché est $40$. Quel était le nombre de départ ?",
+      "options": [
+        "$10$",
+        "$6$",
+        "$8$",
+        "$50$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Il faut raisonner à l'envers (inverser les opérations dans l'ordre inverse). Résultat final $40$. Avant de retrancher $10$, on avait $40 + 10 = 50$. Avant de multiplier par $5$, on avait $50 \\div 5 = 10$. Le nombre de départ est donc $10$. Vérification : $10 \\times 5 = 50$, $50 - 10 = 40$. Le distracteur $50$ est le résultat avant la dernière étape. Le distracteur $6$ correspond à $(40 - 10) \\div 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique le programme suivant au nombre $10$ : ajoutez $6$, divisez le résultat par $2$, puis multipliez par $3$. Quel est le résultat final ?",
+      "options": [
+        "$24$",
+        "$22$",
+        "$39$",
+        "$18$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Calcul étape par étape : départ $10$. 1) Ajouter $6$ : $10 + 6 = 16$. 2) Diviser par $2$ : $16 \\div 2 = 8$. 3) Multiplier par $3$ : $8 \\times 3 = 24$. Le distracteur $22$ peut venir de $10 + 6 \\div 2 \\times 3$ sans parenthèses (priorité mal gérée). Le distracteur $39$ correspond à $(10 + 6) \\times 3 \\div 2$ ou erreur d'ordre. Le distracteur $18$ à $10 \\div 2 \\times 3 + 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux programmes pour un nombre de départ $3$. Programme A : multipliez par $4$, ajoutez $6$. Programme B : ajoutez $6$, multipliez par $4$. Quelle est la différence entre le résultat du programme B et celui du programme A ?",
+      "options": [
+        "$18$",
+        "$12$",
+        "$24$",
+        "$36$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "Calculons les deux résultats. Programme A : $3 \\times 4 = 12$, puis $12 + 6 = 18$. Programme B : $3 + 6 = 9$, puis $9 \\times 4 = 36$. La différence demandée est $36 - 18 = 18$. Le distracteur $36$ est le résultat du programme B seul. Le distracteur $12$ est le résultat de la première étape du programme A. Le distracteur $24$ n'a pas de lien direct évident, sert de leurre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

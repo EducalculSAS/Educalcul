@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 161,
+  "_course_code": "ce2-t03-c02-soustraction-posee-avec-echanges",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Vérifier avec l'addition",
+  "title": "Vérifier une soustraction par l'addition",
+  "questions": [
+    {
+      "text": "Pour vérifier une soustraction posée, quelle opération inverse doit-on effectuer ?",
+      "options": [
+        "On additionne le résultat et le nombre retranché.",
+        "On soustrait le résultat du nombre de départ.",
+        "On additionne le nombre de départ et le nombre retranché.",
+        "On multiplie le résultat par le nombre retranché."
+      ],
+      "correctAnswer": "On additionne le résultat et le nombre retranché.",
+      "explanation": "Pour vérifier une soustraction de la forme $A - B = C$, on utilise l'opération inverse : l'addition. On additionne le résultat $C$ (la différence) au nombre retranché $B$. Si le total retrouvé est égal au nombre de départ $A$, la soustraction est correcte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une soustraction : $452 - 178 = 274$. Quelle addition permet de vérifier ce résultat ?",
+      "options": [
+        "$274 + 452 = 726$",
+        "$274 + 178 = 452$",
+        "$178 + 452 = 630$",
+        "$452 - 274 = 178$"
+      ],
+      "correctAnswer": "$274 + 178 = 452$",
+      "explanation": "Le nombre de départ est $452$, le nombre retranché est $178$ et le résultat est $274$. Pour vérifier, on additionne le résultat ($274$) et le nombre retranché ($178$) : $274 + 178 = 452$. On retrouve bien le nombre de départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a calculé $603 - 245$ et a trouvé $368$. En vérifiant avec l'addition, que remarque-t-on ?",
+      "options": [
+        "L'addition $368 + 245$ donne $603$, le résultat est juste.",
+        "L'addition $368 + 245$ donne $613$, le résultat est faux.",
+        "L'addition $368 + 603$ donne $971$, le résultat est faux.",
+        "L'addition $245 + 603$ donne $848$, le résultat est juste."
+      ],
+      "correctAnswer": "L'addition $368 + 245$ donne $613$, le résultat est faux.",
+      "explanation": "Pour vérifier, on additionne le résultat trouvé par Léo ($368$) au nombre retranché ($245$). $368 + 245 = 613$. On ne retrouve pas le nombre de départ ($603$). Le résultat de la soustraction est donc erroné (le bon résultat est $358$ car $358 + 245 = 603$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la soustraction à trous $? - 136 = 425$, quel nombre écrire à la place du point d'interrogation ?",
+      "options": [
+        "$289$",
+        "$561$",
+        "$551$",
+        "$291$"
+      ],
+      "correctAnswer": "$561$",
+      "explanation": "Pour trouver le nombre de départ (le minuend), on additionne le résultat ($425$) et le nombre retranché ($136$). $425 + 136 = 561$. On vérifie : $561 - 136 = 425$. Les autres options correspondent à des erreurs de calcul ou de compréhension (soustraction au lieu d'addition).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bibliothèque possède $842$ livres. On en prête $267$. Il reste $575$ livres. Quelle addition vérifie ce calcul ?",
+      "options": [
+        "$575 + 267 = 842$",
+        "$842 + 267 = 1109$",
+        "$575 + 842 = 1417$",
+        "$842 - 575 = 267$"
+      ],
+      "correctAnswer": "$575 + 267 = 842$",
+      "explanation": "Le total de départ est $842$, le nombre retranché (prêtés) est $267$, le résultat (restants) est $575$. La vérification se fait en ajoutant les livres restants ($575$) et les livres prêtés ($267$) pour retrouver le total initial : $575 + 267 = 842$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

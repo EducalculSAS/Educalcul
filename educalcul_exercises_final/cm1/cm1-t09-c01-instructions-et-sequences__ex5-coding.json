@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Ordre des instructions",
+  "title": "L'ordre des instructions",
+  "blocks": [
+    {
+      "title": "L'ordre logique",
+      "content": "Un robot doit préparer un verre d'eau. Voici trois instructions : \\nInstruction A : Boire l'eau\\nInstruction B : Remplir le verre d'eau\\nInstruction C : Prendre un verre vide\\nDans quel ordre fautïil placer ces instructions pour que le robot réussisse sa mission ?",
+      "correctAnswer": "C, B, A",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour réussir, le robot doit d'abord avoir un contenant (prendre le verre), ensuite mettre le liquide dedans (remplir le verre) et enfin consommer l'eau (boire l'eau). Si on change l'ordre, le robot ne peut pas remplir un verre qu'il n'a pas encore pris, ni boire de l'eau qui n'est pas encore dans le verre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le chemin du robot",
+      "content": "Un robot se trouve sur une grille. On veut qu'il atteigne une cible située à $3$ cases vers la droite et $2$ cases vers le haut. \\nOn propose l'algorithme suivant : \\n$1$. Avancer de $2$ cases vers le haut\\n$2$. Avancer de $3$ cases vers la droite\\nEstïil possible d'inverser l'ordre des instructions et d'arriver au même endroit ? Pourquoi ?",
+      "correctAnswer": "Oui, car le déplacement final est le même peu importe l'ordre des directions",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans ce cas précis, se déplacer vers le haut puis vers la droite revient au même résultat que se déplacer vers la droite puis vers le haut. Le point d'arrivée reste le même car les directions sont indépendantes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction d'algorithme",
+      "content": "Un programme doit calculer le résultat de $(10 + 5) \\times 2$. \\nL'algorithme actuel est : \\n$1$. Multiplier par $2$\\n$2$. Ajouter $10$ et $5$\\nCet ordre estïil correct pour obtenir $30$ ? Si non, propose l'ordre correct.",
+      "correctAnswer": "Non, l'ordre correct est : 1. Ajouter 10 et 5, 2. Multiplier par 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme actuel fait d'abord la multiplication sans savoir quoi multiplier, ou multiplierait seulement le dernier nombre. Pour obtenir $30$, il faut d'abord calculer la somme $10 + 5 = 15$, puis multiplier ce résultat par $2$, car les parenthèses sont prioritaires.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

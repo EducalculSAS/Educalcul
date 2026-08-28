@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 130,
+  "_course_code": "ce1-t07-c05-segments-et-milieu",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Mesurer un segment",
+  "title": "Mesurer un segment",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour mesurer la longueur d'un segment ?",
+      "options": [
+        "Un compas",
+        "Une équerre",
+        "Une règle graduée",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une règle graduée",
+      "explanation": "La règle graduée est l'outil qui porte des graduations (les traits et les chiffres) pour lire une longueur en centimètres. Le compas sert à reporter une longueur ou tracer un cercle, l'équerre à tracer des angles droits et le rapporteur à mesurer des angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour mesurer un segment [AB] avec une règle graduée, où doit-on placer le zéro de la règle ?",
+      "options": [
+        "Au bord de la règle",
+        "Sur le point A",
+        "Sur le point B",
+        "Au milieu du segment"
+      ],
+      "correctAnswer": "Sur le point A",
+      "explanation": "Il faut aligner le trait du zéro (souvent au début de la règle, pas au bord plastique) exactement sur l'un des extrémités du segment, ici le point A. Si on met le zéro au bord de la règle ou au milieu, la mesure sera fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure. Le segment commence au zéro de la règle. Quelle est la longueur de ce segment ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Sur la figure, le segment commence au zéro et son autre bout arrive exactement sur le chiffre 6. La longueur est donc de 6 centimètres. Les autres chiffres correspondent aux graduations voisines qu'on pourrait lire par erreur si on ne regarde pas bien l'extrémité.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 6,
+        "unit": "cm",
+        "caption": "Mesure d'un segment de 6 cm"
+      }
+    },
+    {
+      "text": "Sur cette règle, le segment est bien placé pour être mesuré. Quelle est sa longueur ?",
+      "options": [
+        "$7$ cm",
+        "$8$ cm",
+        "$9$ cm",
+        "$10$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "Le segment démarre au zéro et se termine sur la graduation 8. Il ne faut pas compter les traits mais lire le chiffre où arrive la fin du segment. Ici, c'est le 8, donc la longueur est de 8 cm.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Mesure d'un segment de 8 cm"
+      }
+    },
+    {
+      "text": "Léa mesure un segment. Elle place le zéro de sa règle sur une extrémité du segment. L'autre extrémité arrive exactement sur le chiffre $9$. Quelle est la longueur du segment ?",
+      "options": [
+        "$8$ cm",
+        "$9$ cm",
+        "$10$ cm",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "$9$ cm",
+      "explanation": "Quand le zéro est bien placé au départ du segment, le chiffre lu à l'arrivée donne directement la longueur en centimètres. Comme l'arrivée est sur le 9, le segment mesure 9 cm. Pas besoin de connaître la règle pour répondre, c'est la définition de la mesure.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

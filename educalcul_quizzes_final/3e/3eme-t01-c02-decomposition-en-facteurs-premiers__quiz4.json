@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Décomposition en facteurs premiers",
+  "title": "Quiz : Application de la décomposition en facteurs premiers",
+  "questions": [
+    {
+      "text": "Décomposez $84$ en facteurs premiers.",
+      "options": [
+        "$2^2 \\times 3 \\times 7$",
+        "$2 \\times 3^2 \\times 7$",
+        "$2^2 \\times 3^2 \\times 7$",
+        "$2 \\times 3 \\times 7^2$"
+      ],
+      "correctAnswer": "$2^2 \\times 3 \\times 7$",
+      "explanation": "On divise $84$ par $2$ : $84 = 2 \\times 42$. $42 = 2 \\times 21$. $21 = 3 \\times 7$. Donc $84 = 2^2 \\times 3 \\times 7$. Les autres options contiennent des puissances incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En utilisant la décomposition en facteurs premiers, déterminez le PGCD de $180$ et $126$.",
+      "options": [
+        "$6$",
+        "$18$",
+        "$36$",
+        "$9$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "$180 = 2^2 \\times 3^2 \\times 5$ et $126 = 2 \\times 3^2 \\times 7$. Le PGCD prend les facteurs communs avec les plus petites puissances : $2^1 \\times 3^2 = 18$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez le PPCM de $48$ et $60$ à partir de leurs décompositions en facteurs premiers.",
+      "options": [
+        "$120$",
+        "$240$",
+        "$480$",
+        "$720$"
+      ],
+      "correctAnswer": "$240$",
+      "explanation": "$48 = 2^4 \\times 3$ et $60 = 2^2 \\times 3 \\times 5$. Le PPCM prend chaque facteur avec la plus grande puissance : $2^4 \\times 3 \\times 5 = 240$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez la fraction $\\frac{210}{330}$ en utilisant la décomposition en facteurs premiers.",
+      "options": [
+        "$\\frac{7}{11}$",
+        "$\\frac{14}{22}$",
+        "$\\frac{21}{33}$",
+        "$\\frac{5}{11}$"
+      ],
+      "correctAnswer": "$\\frac{7}{11}$",
+      "explanation": "$210 = 2 \\times 3 \\times 5 \\times 7$ et $330 = 2 \\times 3 \\times 5 \\times 11$. En supprimant les facteurs communs $2 \\times 3 \\times 5 = 30$, on obtient $\\frac{7}{11}$. Les autres fractions ne sont pas irréductibles ou sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est vraie pour le nombre $1001$ ?",
+      "options": [
+        "$1001$ est premier",
+        "$1001 = 7 \\times 11 \\times 13$",
+        "$1001 = 3 \\times 7 \\times 13$",
+        "$1001 = 2 \\times 7 \\times 71$"
+      ],
+      "correctAnswer": "$1001 = 7 \\times 11 \\times 13$",
+      "explanation": "On teste les diviseurs premiers jusqu'à $\\sqrt{1001} \\approx 31$. $1001$ est divisible par $7$ : $1001 = 7 \\times 143$. $143 = 11 \\times 13$. Donc $1001 = 7 \\times 11 \\times 13$. Les autres propositions sont fausses.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

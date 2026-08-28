@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Opérations et applications",
+  "title": "Quiz - Vecteurs : Opérations et applications",
+  "questions": [
+    {
+      "text": "Soient les vecteurs $\\vec{u} = (2, -3)$ et $\\vec{v} = (-1, 4)$. Calculez $\\vec{u} + \\vec{v}$.",
+      "options": [
+        "$(1, 1)$",
+        "$(3, -7)$",
+        "$(1, -7)$",
+        "$(3, 1)$"
+      ],
+      "correctAnswer": "$(1, 1)$",
+      "explanation": "L'addition de deux vecteurs se fait composante par composante : $(2 + (-1), -3 + 4) = (1, 1)$. Les autres options correspondent à des erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u} = (1, 2)$ et $\\vec{v} = (3, -1)$. Calculez $3\\vec{u} - 2\\vec{v}$.",
+      "options": [
+        "$(-3, 8)$",
+        "$(3, 8)$",
+        "$(-3, 4)$",
+        "$(3, 4)$"
+      ],
+      "correctAnswer": "$(-3, 8)$",
+      "explanation": "On multiplie d'abord : $3\\vec{u} = (3, 6)$ et $2\\vec{v} = (6, -2)$. Ensuite on soustrait : $(3 - 6, 6 - (-2)) = (-3, 8)$. Les distracteurs proviennent d'oubli du signe moins ou d'erreur sur la seconde composante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour quatre points $A, B, C, D$, que vaut $\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CD}$ d'après la relation de Chasles ?",
+      "options": [
+        "$\\overrightarrow{AD}$",
+        "$\\overrightarrow{AC}$",
+        "$\\overrightarrow{BD}$",
+        "$\\overrightarrow{AB}$"
+      ],
+      "correctAnswer": "$\\overrightarrow{AD}$",
+      "explanation": "La relation de Chasles stipule que la somme de vecteurs consécutifs relie l'origine du premier à l'extrémité du dernier : $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$, puis $\\overrightarrow{AC} + \\overrightarrow{CD} = \\overrightarrow{AD}$. Les autres options correspondent à des arrêts intermédiaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les vecteurs $\\vec{u} = (2, k)$ et $\\vec{v} = (4, 6)$ sont colinéaires. Déterminez la valeur de $k$.",
+      "options": [
+        "$3$",
+        "$2$",
+        "$4$",
+        "$6$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Deux vecteurs sont colinéaires si leurs composantes sont proportionnelles : $\\frac{2}{4} = \\frac{k}{6}$. Cela donne $\\frac{1}{2} = \\frac{k}{6}$, donc $k = 3$. Les autres valeurs ne respectent pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, $M$ est le milieu de $[AB]$ et $N$ le milieu de $[AC]$. Exprimez $\\overrightarrow{MN}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+      "options": [
+        "$\\frac{1}{2}(\\overrightarrow{AC} - \\overrightarrow{AB})$",
+        "$\\frac{1}{2}(\\overrightarrow{AB} - \\overrightarrow{AC})$",
+        "$\\frac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC})$",
+        "$\\frac{1}{2}(\\overrightarrow{AC} + \\overrightarrow{AB})$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}(\\overrightarrow{AC} - \\overrightarrow{AB})$",
+      "explanation": "On a $\\overrightarrow{AM} = \\frac{1}{2}\\overrightarrow{AB}$ et $\\overrightarrow{AN} = \\frac{1}{2}\\overrightarrow{AC}$. Alors $\\overrightarrow{MN} = \\overrightarrow{AN} - \\overrightarrow{AM} = \\frac{1}{2}(\\overrightarrow{AC} - \\overrightarrow{AB})$. Les autres options inversent l'ordre ou ajoutent les vecteurs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

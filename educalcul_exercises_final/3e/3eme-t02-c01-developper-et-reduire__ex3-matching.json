@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Réduire",
+  "title": "Réduire des expressions littérales",
+  "blocks": [
+    {
+      "title": "Réduction simple",
+      "content": "Relie chaque expression à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3x + 5x$",
+          "right": "$8x$"
+        },
+        {
+          "left": "$7y - 2y$",
+          "right": "$5y$"
+        },
+        {
+          "left": "$4a + 3b - a + 2b$",
+          "right": "$3a + 5b$"
+        },
+        {
+          "left": "$6m - 3n + 2m - n$",
+          "right": "$8m - 4n$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour réduire une expression, on regroupe les termes qui ont la même partie littérale (les $x$ entre eux, les $y$ entre eux, etc.) en additionnant ou soustrayant leurs coefficients. Par exemple pour $4a + 3b - a + 2b$ : on regroupe les $a$ ($4a - a = 3a$) et les $b$ ($3b + 2b = 5b$), ce qui donne $3a + 5b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réduction après distribution",
+      "content": "Relie chaque expression développée à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2(3x + 4) + 5x$",
+          "right": "$11x + 8$"
+        },
+        {
+          "left": "$3(2y - 1) - 4y$",
+          "right": "$2y - 3$"
+        },
+        {
+          "left": "$5(a + 2) - 2(a - 3)$",
+          "right": "$3a + 16$"
+        },
+        {
+          "left": "$4(2m - 3) + 3(5 - m)$",
+          "right": "$5m + 3$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut d'abord développer les parenthèses en multipliant le terme dehors par chaque terme dedans, puis réduire en regroupant les termes semblables. Exemple pour $5(a + 2) - 2(a - 3)$ : développement $\\rightarrow 5a + 10 - 2a + 6$ (attention au double moins), réduction $\\rightarrow (5a - 2a) + (10 + 6) = 3a + 16$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Réduction avec signes moins",
+      "content": "Relie chaque expression à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$7x - 3(2x - 5)$",
+          "right": "$x + 15$"
+        },
+        {
+          "left": "$4(3 - y) - 2(5 - 2y)$",
+          "right": "$2 + 0y$"
+        },
+        {
+          "left": "$6 - 2(3x - 4) - 5x$",
+          "right": "$14 - 11x$"
+        },
+        {
+          "left": "$-(4a - 3b) + 2(2a - b)$",
+          "right": "$b$"
+        }
+      ],
+      "items": [],
+      "explanation": "La vigilance est de mise sur les signes moins devant une parenthèse : ils changent le signe de tous les termes à l'intérieur. Pour $-(4a - 3b) + 2(2a - b)$ : le moins devant la première parenthèse donne $-4a + 3b$, le développement de la seconde donne $4a - 2b$. En réduisant : $-4a + 4a = 0$ et $3b - 2b = b$. Le résultat est $b$. Pour $4(3 - y) - 2(5 - 2y)$ : $12 - 4y - 10 + 4y = 2$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

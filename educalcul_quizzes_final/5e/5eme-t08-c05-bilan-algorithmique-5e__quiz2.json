@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Checklist",
+  "title": "Bilan Algorithmique 5e - Checklist et Validation",
+  "questions": [
+    {
+      "text": "Dans une démarche algorithmique, à quoi correspond exactement une « checklist » de validation ?",
+      "options": [
+        "La liste de toutes les variables utilisées dans le programme",
+        "La liste des tests à effectuer avec des valeurs précises pour vérifier le bon fonctionnement",
+        "Le code source complet de l'algorithme écrit dans un langage de programmation",
+        "La documentation destinée à l'utilisateur final pour expliquer comment lancer le programme"
+      ],
+      "correctAnswer": "La liste des tests à effectuer avec des valeurs précises pour vérifier le bon fonctionnement",
+      "explanation": "Une checklist de validation (ou jeu de tests) est un ensemble de cas de test préparés à l'avance. Chaque cas définit une entrée (valeur donnée), le déroulement attendu et la sortie attendue. Cela permet de vérifier systématiquement que l'algorithme répond aux spécifications pour des cas nominaux, limites et erronés. Les autres options correspondent au dictionnaire des variables, au code source et au manuel utilisateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nA $\\leftarrow$ 5\\nB $\\leftarrow$ 3\\nC $\\leftarrow$ A + B $\\times$ 2\\nAfficher C\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "11",
+        "16",
+        "13",
+        "8"
+      ],
+      "correctAnswer": "11",
+      "explanation": "Il faut respecter la priorité des opérateurs : la multiplication avant l'addition. On calcule d'abord B $\\times$ 2 = 3 $\\times$ 2 = 6. Ensuite on ajoute A : 5 + 6 = 11. L'option 16 correspond à l'erreur de calculer (A + B) $\\times$ 2 = 8 $\\times$ 2. L'option 8 correspond à A + B seulement. L'option 13 ne correspond à aucune erreur classique simple sur cette expression.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant :\\nLire N\\nSi N $>$ 10 Alors\\n  Afficher \"Grand\"\\nSinon\\n  Afficher \"Petit\"\\nFin Si\\nQue se passe-t-il si l'utilisateur entre la valeur 10 ?",
+      "options": [
+        "Le programme affiche \"Grand\"",
+        "Le programme affiche \"Petit\"",
+        "Le programme n'affiche rien",
+        "Le programme signale une erreur"
+      ],
+      "correctAnswer": "Le programme affiche \"Petit\"",
+      "explanation": "La condition testée est N $>$ 10 (strictement supérieur). Comme la valeur entrée est 10, la condition est fausse (10 n'est pas strictement supérieur à 10). Le programme exécute donc la branche \"Sinon\" et affiche \"Petit\". L'option \"Grand\" serait la réponse si la condition était N $\\ge$ 10. L'option \"Rien\" ignore l'existence du bloc Sinon. L'option \"Erreur\" est incorrecte car 10 est une entrée numérique valide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de fois l'instruction \"Afficher i\" est-elle exécutée dans la boucle suivante ?\\nPour i de 1 à 5 faire\\n  Afficher i\\nFin Pour",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "Cela dépend de la valeur de i au départ"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "La structure \"Pour i de 1 à 5 faire\" est une boucle bornée qui fait varier i de 1 jusqu'à 5 inclus, par pas de 1. Les valeurs successives de i sont : 1, 2, 3, 4, 5. Il y a donc exactement 5 itérations, et l'instruction d'affichage est exécutée 5 fois. L'option 4 fois correspond à l'erreur de compter les intervalles au lieu des valeurs (5-1). L'option 6 fois ajoute une itération fictive. La dernière option est fausse car la variable de boucle i est initialisée automatiquement à 1 par la structure Pour.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Cet algorithme doit calculer la somme des entiers de 1 à N (ex: pour N=3, somme=1+2+3=6).\\nSomme $\\leftarrow$ 0\\nPour i de 1 à N faire\\n  Somme $\\leftarrow$ Somme + 1\\nFin Pour\\nAfficher Somme\\nQuelle est l'erreur dans cet algorithme ?",
+      "options": [
+        "La boucle ne s'exécute pas car N n'est pas défini",
+        "On ajoute 1 à la somme au lieu d'ajouter la valeur de i",
+        "La variable Somme n'est pas initialisée avant la boucle",
+        "L'instruction Afficher Somme est mal placée, elle devrait être dans la boucle"
+      ],
+      "correctAnswer": "On ajoute 1 à la somme au lieu d'ajouter la valeur de i",
+      "explanation": "L'algorithme incrémente la variable Somme de 1 à chaque tour de boucle. Comme il y a N tours de boucle, le résultat final affiché sera N, et non la somme 1+2+...+N. Pour calculer la somme, il faut ajouter la valeur courante du compteur i à chaque itération : Somme $\\leftarrow$ Somme + i. La variable Somme est correctement initialisée à 0. La boucle s'exécute normalement si N est lu avant (bien que l'instruction Lire N soit omise dans l'extrait, l'erreur logique porte sur le calcul). L'affichage est correctement placé après la boucle pour donner le résultat final.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

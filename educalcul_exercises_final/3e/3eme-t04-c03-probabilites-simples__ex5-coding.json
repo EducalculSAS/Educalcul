@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Univers",
+  "title": "Algorithmes et univers probabilistes",
+  "blocks": [
+    {
+      "title": "Univers d'une expérience simple",
+      "content": "On lance un dé à six faces numérotées de $1$ à $6$. Écris un algorithme (en langage naturel ou style Python) qui affiche la liste de tous les résultats possibles (l'univers $\\Omega$).",
+      "correctAnswer": "Algorithme :\\nDébut\\n  Afficher \"L'univers est : \"\\n  Pour i allant de 1 à 6 faire\\n    Afficher i\\n  Fin pour\\nFin\\n\\nOu en Python :\\nomega = []\\npour i dans range(1, 7):\\n    omega.append(i)\\nafficher(omega)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'univers $\\Omega$ est l'ensemble de tous les résultats possibles. Pour un dé à six faces, $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Une boucle « Pour » permet de parcourir les entiers de $1$ à $6$ et de les afficher ou de les stocker dans une liste.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Univers d'une expérience composée",
+      "content": "On lance une pièce de monnaie (Face ou Pile) puis on lance un dé à six faces. Écris un algorithme qui construit et affiche l'univers $\\Omega$ sous forme de couples ordinés (résultat pièce, résultat dé).",
+      "correctAnswer": "Algorithme :\\nDébut\\n  Afficher \"L'univers est : \"\\n  Pour piece dans [\"Face\", \"Pile\"] faire\\n    Pour de allant de 1 à 6 faire\\n      Afficher (piece, de)\\n    Fin pour\\n  Fin pour\\nFin\\n\\nOu en Python :\\nomega = []\\npour piece dans [\"Face\", \"Pile\"]:\\n    pour de dans range(1, 7):\\n        omega.append((piece, de))\\nafficher(omega)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expérience est composée de deux étapes indépendantes. L'univers est le produit cartésien des deux univers élémentaires : $\\Omega = \\{\\text{Face}, \\text{Pile}\\} \\times \\{1, 2, 3, 4, 5, 6\\}$. Il contient $2 \\times 6 = 12$ couples. Deux boucles imbriquées permettent de générer tous les couples.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Cardinal de l'univers paramétré",
+      "content": "On lance $n$ fois un dé à $f$ faces (numérotées de $1$ à $f$). Écris un algorithme qui calcule et affiche le cardinal de l'univers $\\Omega$ (le nombre total de $n$-uplets possibles) en fonction des variables $n$ et $f$ données en entrée.",
+      "correctAnswer": "Algorithme :\\nDébut\\n  Lire n, f\\n  cardinal <- 1\\n  Pour i allant de 1 à n faire\\n    cardinal <- cardinal * f\\n  Fin pour\\n  Afficher \"Cardinal de l'univers : \", cardinal\\nFin\\n\\nOu en Python :\\nn = int(input(\"Nombre de lancers : \"))\\nf = int(input(\"Nombre de faces : \"))\\ncardinal = f ** n\\nprint(\"Cardinal de l'univers : \", cardinal)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "À chaque lancer, il y a $f$ issues possibles. Comme les lancers sont indépendants, le nombre total de $n$-uplets (le cardinal de l'univers) est $f \\times f \\times \\dots \\times f$ ($n$ fois), soit $f^n$. L'algorithme peut calculer cette puissance par une boucle multiplicative ou directement par l'opérateur puissance.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

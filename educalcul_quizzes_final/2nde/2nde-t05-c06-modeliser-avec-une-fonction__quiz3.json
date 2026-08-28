@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter une fonction",
+  "questions": [
+    {
+      "text": "On considère la fonction affine $f(x)=2x+3$ qui modélise le coût en euros d'un abonnement mensuel selon le nombre $x$ d'heures d'utilisation. Que signifie le coefficient directeur $2$ dans ce contexte ?",
+      "options": [
+        "Le coût fixe de l'abonnement est de 2 euros.",
+        "Chaque heure supplémentaire augmente le coût de 2 euros.",
+        "Le coût total pour 2 heures d'utilisation est de 3 euros.",
+        "Le coût diminue de 2 euros par heure."
+      ],
+      "correctAnswer": "Chaque heure supplémentaire augmente le coût de 2 euros.",
+      "explanation": "Dans une fonction affine $f(x)=ax+b$, le coefficient $a$ est le taux de variation : ici $a=2$ signifie que pour chaque unité ajoutée à $x$ (une heure de plus), la valeur de $f$ (le coût) augmente de $2$ euros. Les autres options confondent le terme constant $b=3$ (coût fixe) ou inversent le sens de la variation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La hauteur $h$ en mètres d'un projectile en fonction du temps $t$ en secondes est donnée par $h(t) = -5t^2 + 20t + 1$. Quelle est l'interprétation du sommet du parabole ?",
+      "options": [
+        "Le moment où le projectile touche le sol.",
+        "La hauteur maximale atteinte par le projectile et l'instant où elle est atteinte.",
+        "La hauteur initiale du projectile au lancement.",
+        "Le temps total de vol du projectile."
+      ],
+      "correctAnswer": "La hauteur maximale atteinte par le projectile et l'instant où elle est atteinte.",
+      "explanation": "Le sommet d'un trinôme du second degré $at^2+bt+c$ avec $a<0$ correspond au maximum de la fonction. Ses coordonnées donnent l'instant $t = -b/(2a)$ et la hauteur maximale $h(t)$. Les autres propositions correspondent aux zéros (contact au sol), à $h(0)$ (hauteur initiale) ou à la durée totale (différence entre les deux zéros).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un magasin propose une remise linéaire : le prix $p$ en euros d'un article après $x$ jours de soldes est $p(x)=100-10x$ pour $x$ dans $[0,10]$. Que représente la valeur $x=10$ ?",
+      "options": [
+        "Le prix initial de l'article avant les soldes.",
+        "Le nombre maximal de jours de soldes, après quoi le prix ne baisse plus.",
+        "Le prix de l'article après 10 jours de soldes.",
+        "Le taux de remise quotidien en pourcentage."
+      ],
+      "correctAnswer": "Le nombre maximal de jours de soldes, après quoi le prix ne baisse plus.",
+      "explanation": "Le domaine $[0,10]$ indique que la formule ne s'applique que pour $x$ entre $0$ et $10$ jours. À $x=10$, le prix atteint $p(10)=0$ euro, ce qui marque la fin de la période de remise. Les autres options confondent $p(0)=100$ (prix initial), $p(10)$ (prix final) ou le coefficient $-10$ (baisse quotidienne en euros, pas en pourcentage).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur le graphique d'une fonction exponentielle $g(x)=3 \\times 2^x$, le point de coordonnées $(3,24)$ est repéré. Quelle phrase interprète correctement ce point ?",
+      "options": [
+        "Lorsque $x=3$, la valeur de la fonction est $24$.",
+        "La fonction vaut $3$ lorsque $x=24$.",
+        "Le coefficient multiplicatif de la fonction est $24$.",
+        "L'exposant $x$ vaut $24$ pour une valeur initiale $3$."
+      ],
+      "correctAnswer": "Lorsque $x=3$, la valeur de la fonction est $24$.",
+      "explanation": "Un point $(x_0, y_0)$ sur le graphique d'une fonction signifie $y_0 = g(x_0)$. Ici $g(3)=3 \\times 2^3 = 3 \\times 8 = 24$. Les autres propositions inversent les coordonnées, confondent le coefficient initial $3$ avec la valeur de la fonction, ou interprètent mal l'exposant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction $f$ est strictement décroissante sur l'intervalle $[2,5]$. Que peut-on affirmer sur le signe de son taux de variation (ou de sa dérivée si elle existe) sur cet intervalle ?",
+      "options": [
+        "Il est positif.",
+        "Il est nul.",
+        "Il est négatif.",
+        "Il change de signe au milieu de l'intervalle."
+      ],
+      "correctAnswer": "Il est négatif.",
+      "explanation": "Une fonction strictement décroissante signifie que pour tout $x_1 < x_2$ dans l'intervalle, $f(x_1) > f(x_2)$. Le taux de variation $\\frac{f(x_2)-f(x_1)}{x_2-x_1}$ est donc strictement négatif, tout comme la dérivée (si elle existe). Les autres choix correspondent à une fonction croissante (positif), constante (nul) ou non monotone (changement de signe).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

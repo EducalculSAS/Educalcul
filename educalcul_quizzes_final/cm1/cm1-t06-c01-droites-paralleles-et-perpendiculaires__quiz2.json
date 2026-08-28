@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 248,
+  "_course_code": "cm1-t06-c01-droites-paralleles-et-perpendiculaires",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Vérifier",
+  "title": "Vérifier des droites parallèles et perpendiculaires",
+  "questions": [
+    {
+      "text": "Comment vérifier, à l'aide d'une équerre, que deux droites sont perpendiculaires ?",
+      "options": [
+        "On place le côté gradué de l'équerre sur une droite et on vérifie si l'autre droite passe par le zéro.",
+        "On place l'angle droit de l'équerre à l'intersection des deux droites et on vérifie si les côtés de l'équerre coïncident avec les droites.",
+        "On pose l'équerre n'importe où sur la feuille et on trace une nouvelle droite le long de son hypothénuse.",
+        "On mesure la distance entre les deux droites à l'aide du côté gradué de l'équerre."
+      ],
+      "correctAnswer": "On place l'angle droit de l'équerre à l'intersection des deux droites et on vérifie si les côtés de l'équerre coïncident avec les droites.",
+      "explanation": "Pour vérifier la perpendicularité, on utilise l'angle droit de l'équerre comme référence. On le place exactement à l'intersection des deux droites. Si les deux côtés de l'angle droit de l'équerre superposent parfaitement les deux droites, alors elles forment un angle droit ($90^\\circ$) et sont perpendiculaires. Les autres options décrivent des actions incorrectes : mesurer une distance, utiliser le zéro de la graduation ou tracer une nouvelle droite.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Équerre placée sur deux droites perpendiculaires",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Sur un quadrillage, comment vérifier que deux droites sont parallèles ?",
+      "options": [
+        "On compte le nombre de cases entre les deux droites : si le nombre est le même partout, elles sont parallèles.",
+        "On vérifie si les deux droites se coupent en dehors de la feuille.",
+        "On place une équerre sur une droite et on vérifie si l'autre droite passe par le sommet de l'angle droit.",
+        "On mesure la longueur de chaque droite avec une règle."
+      ],
+      "correctAnswer": "On compte le nombre de cases entre les deux droites : si le nombre est le même partout, elles sont parallèles.",
+      "explanation": "Sur un quadrillage, deux droites sont parallèles si la distance qui les sépare est constante. On peut le vérifier en comptant le nombre de cases (ou la distance) entre les deux droites à plusieurs endroits : si ce nombre est identique, les droites sont parallèles. L'option B est fausse car des droites parallèles ne se coupent jamais. L'option C décrit la vérification de la perpendicularité. L'option D ne prouve rien sur le parallélisme.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 8,
+        "highlighted": 12,
+        "caption": "Deux droites parallèles sur un quadrillage : la distance (nombre de cases) est constante"
+      }
+    },
+    {
+      "text": "Quelle propriété géométrique permet d'affirmer que deux droites sont parallèles sans les prolonger ?",
+      "options": [
+        "Deux droites perpendiculaires à une même troisième droite sont parallèles entre elles.",
+        "Deux droites qui forment un angle aigu avec une troisième droite sont parallèles.",
+        "Deux droites qui ne se coupent pas sur la feuille de papier sont obligatoirement parallèles.",
+        "Deux droites tracées avec la même règle sont parallèles."
+      ],
+      "correctAnswer": "Deux droites perpendiculaires à une même troisième droite sont parallèles entre elles.",
+      "explanation": "C'est une propriété fondamentale : dans un plan, si deux droites sont toutes les deux perpendiculaires à une même droite, alors elles sont parallèles entre elles. Cela permet de vérifier le parallélisme en construisant une perpendiculaire commune (avec l'équerre et la règle). L'option C est une erreur fréquente : des droites non parallèles peuvent ne pas se couper sur la portion visible de la feuille. L'option B est fausse (angle aigu). L'option D n'a pas de sens géométrique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, les droites (d) et (d') portent des double traits. Les droites (d) et (Δ) portent un petit carré à leur intersection. Que peut-on affirmer ?",
+      "options": [
+        "Les droites (d) et (d') sont perpendiculaires ; (d) et (Δ) sont parallèles.",
+        "Les droites (d) et (d') sont parallèles ; (d) et (Δ) sont perpendiculaires.",
+        "Les trois droites sont deux à deux perpendiculaires.",
+        "Les trois droites sont deux à deux parallèles."
+      ],
+      "correctAnswer": "Les droites (d) et (d') sont parallèles ; (d) et (Δ) sont perpendiculaires.",
+      "explanation": "En géométrie, le code graphique standard est : des double traits (ou flèches) sur deux droites indiquent qu'elles sont parallèles. Un petit carré à l'intersection de deux droites indique qu'elles sont perpendiculaires (angle droit). Ici, (d) et (d') ont des double traits -> parallèles. (d) et (Δ) ont un carré -> perpendiculaires. On ne peut rien affirmer directement sur (d') et (Δ) sans mesure, mais comme (d) // (d') et (d) ⟂ (Δ), alors (d') ⟂ (Δ) aussi (propriété du quiz précédent).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève trace deux droites sur sa copie et dit : \"Ces deux droites sont parallèles car elles ne se coupent pas sur ma feuille.\" Pourquoi cette affirmation est-elle incorrecte ?",
+      "options": [
+        "Parce que deux droites parallèles se coupent toujours à l'infini.",
+        "Parce qu'il faut utiliser un compas pour vérifier, pas les yeux.",
+        "Parce que deux droites non parallèles peuvent ne pas se couper sur la portion visible de la feuille.",
+        "Parce que les droites sont courbes sur une feuille de papier."
+      ],
+      "correctAnswer": "Parce que deux droites non parallèles peuvent ne pas se couper sur la portion visible de la feuille.",
+      "explanation": "C'est l'erreur classique de confusion entre 'droites' (infinies) et 'segments' ou 'traits' (finis). Sur une feuille, on ne voit qu'un morceau de droite. Deux droites sécantes (qui se coupent) peuvent avoir leur point d'intersection en dehors de la feuille. Pour affirmer qu'elles sont parallèles, il faut vérifier la propriété géométrique (équerre + règle, quadrillage, ou propriété des perpendiculaires), pas seulement l'absence d'intersection visible.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 164,
+  "_course_code": "ce2-t03-c05-multiplier-par-10-et-100",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Distinguer déplacement de valeur et ajout de zéro comme raccourci",
+  "title": "Multiplier par 10 et 100 : déplacement ou zéro ?",
+  "blocks": [
+    {
+      "title": "Le déplacement des chiffres",
+      "content": "Quand on multiplie un nombre entier par $10$, tous les chiffres se déplacent d'un rang vers la {{1}}. C'est la raison pour laquelle on a le droit d'écrire un {{2}} à la suite du nombre.",
+      "correctAnswer": "",
+      "blanks": [
+        "gauche|la gauche",
+        "zéro"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 10 décale chaque chiffre d'une position vers la gauche dans le tableau de numération (unités → dizaines, dizaines → centaines, etc.). La case des unités devient vide, on y place un zéro pour marquer qu'il n'y a plus aucune unité. Ajouter un zéro est donc la conséquence visuelle du déplacement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser un exemple",
+      "content": "Pour calculer $52 \\times 10$, on ne se contente pas d'ajouter un zéro. Le chiffre $5$ qui était au rang des {{1}} passe au rang des centaines, et le chiffre $2$ qui était au rang des {{2}} passe au rang des dizaines.",
+      "correctAnswer": "",
+      "blanks": [
+        "dizaines",
+        "unités"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le nombre 52, le 5 représente 5 dizaines et le 2 représente 2 unités. En multipliant par 10, chaque chiffre monte d'un rang : les 5 dizaines deviennent 5 centaines (500) et les 2 unités deviennent 2 dizaines (20). Le résultat est 520. On a ajouté un zéro à la fin, mais seulement parce que les chiffres ont bougé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Raccourci ou raison ?",
+      "content": "Paul affirme : « Multiplier par $100$, c'est ajouter deux zéros ». Le maître précise : « Ajouter des zéros est un {{1}} commode, mais la vraie raison est que les chiffres changent de {{2}} dans le tableau de position. »",
+      "correctAnswer": "",
+      "blanks": [
+        "raccourci",
+        "place|position|rang"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle 'j'ajoute des zéros' est un raccourci d'écriture (procédure). La compréhension mathématique (concept) est le changement de valeur de position des chiffres : ils se décalent de deux rangs vers la gauche (unités → centaines, dizaines → milliers...). Sans ce déplacement, le zéro n'aurait pas de sens.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 396,
+  "_course_code": "5eme-t04-c02-triangles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Propriétés",
+  "title": "Algorithmes sur les propriétés des triangles",
+  "blocks": [
+    {
+      "title": "Vérifier l'existence d'un triangle",
+      "content": "Écrire un algorithme (en pseudo-code ou style Python) qui prend en entrée trois longueurs $a$, $b$, $c$ et affiche Triangle possible si elles satisfont les inégalités triangulaires, sinon affiche Impossible.",
+      "correctAnswer": "Algorithme :\\nLire a, b, c\\nSi a + b > c et a + c > b et b + c > a alors\\n    Afficher Triangle possible\\nSinon\\n    Afficher Impossible\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme vérifie les trois inégalités triangulaires : la somme de deux côtés doit être strictement supérieure au troisième. Si toutes sont vraies, les longueurs peuvent former un triangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer le triangle selon ses côtés",
+      "content": "Compléter l'algorithme précédent pour qu'il indique aussi si le triangle est équilatéral, isocèle ou scalène. On suppose que les trois longueurs forment bien un triangle.",
+      "correctAnswer": "Algorithme :\\nLire a, b, c\\nSi a = b et b = c alors\\n    Afficher Equilaterale\\nSinon si a = b ou b = c ou a = c alors\\n    Afficher Isoscele\\nSinon\\n    Afficher Scalene\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après avoir vérifié l'existence du triangle, on compare les longueurs deux à deux. Si les trois sont égales, le triangle est équilatéral. Si exactement deux sont égales, il est isocèle. Sinon, il est scalène.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détecter un triangle rectangle",
+      "content": "Étendre l'algorithme pour tester si le triangle est rectangle en utilisant le théorème de Pythagore. On suppose que les longueurs forment un triangle. L'algorithme doit afficher Rectangle si c'est le cas, sinon Non rectangle.",
+      "correctAnswer": "Algorithme :\\nLire a, b, c\\n// Identifier le plus grand côté\\nSi a >= b et a >= c alors\\n    max = a ; x = b ; y = c\\nSinon si b >= a et b >= c alors\\n    max = b ; x = a ; y = c\\nSinon\\n    max = c ; x = a ; y = b\\nFin Si\\nSi max*max = x*x + y*y alors\\n    Afficher Rectangle\\nSinon\\n    Afficher Non rectangle\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On repère le côté le plus long (l'hypothénuse potentielle). Le théorème de Pythagore stipule que dans un triangle rectangle, le carré de l'hypothénuse égale la somme des carrés des deux autres côtés. L'algorithme teste cette égalité.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

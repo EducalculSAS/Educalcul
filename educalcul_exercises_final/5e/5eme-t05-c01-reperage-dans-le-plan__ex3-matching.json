@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Lire déplacement",
+  "title": "Lire un déplacement dans le plan",
+  "blocks": [
+    {
+      "title": "Coordonnées et description",
+      "content": "Relie chaque vecteur à la description de son déplacement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$",
+          "right": "Déplacement de 3 unités vers la droite et 2 unités vers le haut"
+        },
+        {
+          "left": "$\\begin{pmatrix} -2 \\\\ 4 \\end{pmatrix}$",
+          "right": "Déplacement de 2 unités vers la gauche et 4 unités vers le haut"
+        },
+        {
+          "left": "$\\begin{pmatrix} 0 \\\\ -5 \\end{pmatrix}$",
+          "right": "Déplacement de 5 unités vers le bas"
+        },
+        {
+          "left": "$\\begin{pmatrix} -1 \\\\ -1 \\end{pmatrix}$",
+          "right": "Déplacement de 1 unité vers la gauche et 1 unité vers le bas"
+        }
+      ],
+      "items": [],
+      "explanation": "Le premier nombre (abscisse) indique le déplacement horizontal : positif vers la droite, négatif vers la gauche. Le second nombre (ordonnée) indique le déplacement vertical : positif vers le haut, négatif vers le bas. Un zéro signifie aucun déplacement dans cette direction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Point d'arrivée",
+      "content": "Relie chaque point de départ et vecteur au point d'arrivée correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$A(1;2)$ et $\\vec{u}\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$",
+          "right": "$B(4;3)$"
+        },
+        {
+          "left": "$C(-2;0)$ et $\\vec{v}\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$",
+          "right": "$D(0;-3)$"
+        },
+        {
+          "left": "$E(0;5)$ et $\\vec{w}\\begin{pmatrix} -4 \\\\ 0 \\end{pmatrix}$",
+          "right": "$F(-4;5)$"
+        },
+        {
+          "left": "$G(3;-2)$ et $\\vec{z}\\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}$",
+          "right": "$H(3;2)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver le point d'arrivée, on ajoute les coordonnées du vecteur aux coordonnées du point de départ : $x_{arrivée} = x_{départ} + x_{vecteur}$ et $y_{arrivée} = y_{départ} + y_{vecteur}$. Exemple pour le premier : $1+3=4$ et $2+1=3$, donc $B(4;3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vecteur du déplacement",
+      "content": "Relie chaque déplacement entre deux points au vecteur correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$A(2;1) \\rightarrow B(5;3)$",
+          "right": "$\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$"
+        },
+        {
+          "left": "$C(-1;4) \\rightarrow D(-3;1)$",
+          "right": "$\\begin{pmatrix} -2 \\\\ -3 \\end{pmatrix}$"
+        },
+        {
+          "left": "$E(0;0) \\rightarrow F(0;-4)$",
+          "right": "$\\begin{pmatrix} 0 \\\\ -4 \\end{pmatrix}$"
+        },
+        {
+          "left": "$G(3;-2) \\rightarrow H(3;2)$",
+          "right": "$\\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le vecteur $\\overrightarrow{AB}$ a pour coordonnées la différence des coordonnées : $x_B - x_A$ et $y_B - y_A$. Pour $A(2;1)$ vers $B(5;3)$ : $5-2=3$ et $3-1=2$, donc $\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$. On fait de même pour les autres paires de points.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

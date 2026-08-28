@@ -1,0 +1,473 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.038902+00:00",
+  "id": 178,
+  "code": "ce2-t05-c01",
+  "title": "Modéliser avec un schéma",
+  "description": "Cours structuré Educalcul : Modéliser avec un schéma.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Modéliser avec un schéma",
+    "objectif_global": "Modéliser avec un schéma",
+    "mini_lecons_imposees": [
+      "Choisir barres ou dessin.",
+      "Nommer inconnue.",
+      "Relier schéma et calcul."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Choisir barres ou dessin.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir entre barres et dessin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux paniers de pommes. Paul a $5$ pommes et Léa en a $3$. Pour savoir combien ils ont ensemble, tu peux dessiner deux barres, une pour Paul et une pour Léa. C’est ce qu’on appelle un schéma en barres. Les barres montrent bien les quantités et leur addition, et elles t’aident à voir tout de suite le total."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le schéma en barres est très utile quand tu compares ou que tu ajoutes des groupes. Chaque barre représente un groupe, sa longueur montre le nombre d’objets. Tu poses les barres côte à côte et tu vois tout de suite la somme. C’est comme une petite règle visuelle qui rend le calcul clair."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paul",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Deux barres pour $5$ et $3$ pommes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une image simple suffit. Si tu dois compter les voitures garées dans la rue, tu peux dessiner chaque voiture une par une. Un dessin concret aide à visualiser chaque objet, surtout quand les nombres sont petits. C’est le choix du dessin plutôt que des barres, car tu vois chaque élément distinctement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dessin est parfait pour raconter une histoire avec des objets précis : des bonbons, des billes, des animaux. Tu représentes chaque objet par un petit symbole. Cela rend le problème vivant et facile à comprendre pour ton cerveau."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison : $4$ voitures dessinées vs $4$ barres",
+              "bars": [
+                {
+                  "label": "Dessin",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Barres",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décider, pose-toi deux questions : est-ce que je compare ou j’additionne des groupes ? Alors les barres sont idéales. Est-ce que je raconte une histoire avec des objets distincts ? Alors un dessin convient. Voici une petite méthode en trois étapes pour choisir le bon schéma à chaque fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "Étape 1 : lis le problème et repère les nombres. Étape 2 : demande-toi si les nombres sont des groupes à réunir (barres) ou des objets à compter un par un (dessin). Étape 3 : trace le schéma correspondant et écris le calcul. Cette routine te donne confiance et évite l’hésitation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Souligne chaque quantité mentionnée dans l’énoncé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le type de schéma",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Groupes à additionner → barres. Objets à compter → dessin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer et calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le schéma, puis écris l’addition ou la soustraction qui va avec."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $6$ billes rouges et $4$ billes bleues. Quel schéma choisis-tu pour trouver le total ?",
+              "answer": "Schéma en barres (deux barres).",
+              "hint": "Pense à réunir deux groupes.",
+              "explanation": "Les billes forment deux groupes distincts que l’on additionne. Le schéma en barres montre chaque groupe et leur somme $6+4=10$."
+            },
+            {
+              "question": "Il y a $3$ chats sur le tapis. Tu dessines chaque chat. Quel type de représentation utilises-tu ?",
+              "answer": "Un dessin concret.",
+              "hint": "Compte chaque animal un par un.",
+              "explanation": "Comme les chats sont des objets individuels et peu nombreux, un dessin avec un petit chat pour chaque animal est le plus clair."
+            },
+            {
+              "question": "Dans un problème, on te dit : « Marie a $8$ autocollants, elle en donne $3$ à son frère. » Quel schéma est le plus adapté ?",
+              "answer": "Schéma en barres (une barre totale, une partie donnée, une partie restante).",
+              "hint": "Il y a un total et une partie retirée.",
+              "explanation": "On a un total ($8$) et une partie enlevée ($3$). Le schéma en barres montre le total, la partie donnée et la partie qui reste ($8-3=5$)."
+            }
+          ]
+        },
+        {
+          "title": "Nommer inconnue.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer l’inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, dans un problème, tu ne connais pas un nombre. Par exemple : « Tu as $12$ bonbons, tu en donnes quelques-uns à ton ami, il t’en reste $7$. Combien en as-tu donné ? » Le nombre que tu ne connais pas encore, c’est l’inconnue. On lui donne un nom pour pouvoir travailler avec."
+            },
+            {
+              "type": "paragraph",
+              "content": "Appeler l’inconnue, c’est comme mettre une étiquette sur une boîte mystère. Tu peux l’appeler $x$, ou mettre un point d’interrogation, ou même un petit dessin de boîte vide. L’important, c’est de la repérer dans ton schéma pour ne pas l’oublier."
+            },
+            {
+              "type": "definition",
+              "term": "Inconnue",
+              "definition": "Une quantité que l’on ne connaît pas encore dans un problème. On lui donne un symbole (souvent une lettre) pour pouvoir écrire le calcul.",
+              "example": "Dans $12 - x = 7$, $x$ est l’inconnue."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Restant",
+                  "value": 7,
+                  "tone": "green"
+                },
+                {
+                  "label": "Donnés",
+                  "value": 0,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Schéma avec une partie inconnue (Donnés)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as repéré l’inconnue, donne-lui un nom clair. Dans un schéma en barres, tu écris le nom (par exemple $x$) sur la partie que tu ne connais pas. Cela transforme le dessin en une petite équation visuelle que tu pourras résoudre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, si tu as une barre totale de $15$ et une partie connue de $9$, la partie manquante s’appelle $y$. Tu écris $y$ sur la petite barre vide. Ainsi, tu vois tout de suite que $15 = 9 + y$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 15,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Connu",
+                  "value": 9,
+                  "tone": "green"
+                },
+                {
+                  "label": "Inconnue (y)",
+                  "value": 0,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Barre totale $15$, partie connue $9$, partie inconnue $y$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne jamais oublier l’inconnue, suis une petite routine en trois temps. D’abord, lis le problème et entoure le nombre manquant. Ensuite, choisis un symbole (une lettre ou un point d’interrogation) et écris-le sur ton schéma. Enfin, écris l’égalité que le schéma t’inspire. Cette habitude rend la résolution beaucoup plus fluide."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur plusieurs problèmes : addition, soustraction, même des situations de partage. Chaque fois, nomme l’inconnue, place-la dans le schéma et écris le calcul. Tu verras que le chemin vers la réponse devient évident."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Repérer le manque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Souligne la phrase qui dit « quelques-uns », « combien », « combien en reste-t-il ? »"
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Nommer l’inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis $x$, $y$, ou un point d’interrogation et écris-le sur la partie vide du schéma."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Écrire l’égalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traduis le schéma en calcul : total = connu + inconnue, ou total - connue = inconnue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a $20$ crayons dans la boîte. Après en avoir prêté quelques-uns, il en reste $13$. Combien as-tu prêté ? Nomme l’inconnue et écris le calcul.",
+              "answer": "Inconnue $x$ ; $20 - x = 10$ donc $x = 7$.",
+              "hint": "Total moins restant = prêté.",
+              "explanation": "Le total est $20$, le restant $13$. L’inconnue $x$ représente les crayons prêtés. L’équation $20 - x = 13$ donne $x = 7$."
+            },
+            {
+              "question": "Une barre totale mesure $18$ cm. Une partie connue mesure $11$ cm. Quelle est la longueur de l’autre partie ? Donne un nom à l’inconnue.",
+              "answer": "Inconnue $y$ ; $11 + y = 18$ donc $y = 7$ cm.",
+              "hint": "Additionne la partie connue et l’inconnue pour retrouver le total.",
+              "explanation": "Le schéma montre $18 = 11 + y$. En soustrayant $11$ des deux côtés, on trouve $y = 7$."
+            },
+            {
+              "question": "Dans un sac, il y a $25$ billes. Tu en sors une poignée, il en reste $16$. Combien as-tu sorti ? Utilise la routine en trois étapes.",
+              "answer": "Inconnue $z$ ; $25 - z = 16$ donc $z = 9$.",
+              "hint": "Suis les étapes : repère, nomme, écris l’égalité.",
+              "explanation": "Étape 1 : le nombre sorti est inconnu. Étape 2 : appelle-le $z$. Étape 3 : $25 - z = 16$, donc $z = 9$."
+            }
+          ]
+        },
+        {
+          "title": "Relier schéma et calcul.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier le schéma au calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois ton schéma dessiné et l’inconnue nommée, il est temps de passer au calcul. Le schéma te montre visuellement quelle opération faire : addition si tu réunis des barres, soustraction si tu retires une partie. Regarde l’exemple : deux barres de $5$ et $3$ côte à côte. Le total, c’est $5+3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ecris l’addition exactement comme elle apparaît sur le schéma. Pose l’opération en colonne si tu veux être bien ordonné. Le schéma est ton guide, le calcul est la traduction en chiffres. Tu verras que les deux disent la même chose."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Première barre",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Deuxième barre",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Deux barres $5$ et $3$ pour une addition"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "5",
+                "3"
+              ],
+              "result": "8",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une soustraction, le schéma montre un total et une partie enlevée. Imagine une grande barre de $10$ et une petite barre de $4$ à l’intérieur. Ce qui reste, c’est $10-4$. Le schéma te dit tout de suite quelle soustraction poser."
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace la grande barre, colorie la partie retirée, et la partie non colorée est la réponse. Écris la soustraction en colonne pour bien aligner les unités. Le lien entre l’image et le calcul devient une évidence."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Retirée",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Barre totale $10$, partie retirée $4$, reste $6$"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "10",
+                "4"
+              ],
+              "result": "6",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un problème demande deux étapes : d’abord additionner deux groupes, puis en retirer un troisième. Le schéma te guide : dessine les trois barres, nomme l’inconnue si besoin, puis écris les deux calculs l’un après l’autre. C’est comme suivre une recette en cuisine."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, tu as $7$ billes, tu en gagnes $5$, puis tu en perds $3$. Schéma : barre $7$, barre $5$ (addition), puis barre $3$ à retirer (soustraction). Calcule $7+5=12$, puis $12-3=9$. Le schéma te montre l’ordre exact des opérations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Dessiner toutes les barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une barre pour chaque quantité mentionnée, dans l’ordre du récit."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Nommer l’inconnue s’il y en a une",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place un $x$ ou un point d’interrogation sur la partie manquante."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Écrire les calculs dans l’ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne d’abord les barres qui s’ajoutent, puis soustrais celles qui partent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir entre un dessin et un schéma en barres selon le problème.",
+                "Je sais repérer et nommer l’inconnue dans un schéma.",
+                "Je sais transformer un schéma en addition ou soustraction posée.",
+                "Je peux résoudre un problème à deux étapes en reliant schéma et calculs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $6$ autocollants, ton ami t’en donne $4$. Dessine le schéma en barres et écris l’addition correspondante.",
+              "answer": "Deux barres $6$ et $4$ ; $6+4=10$.",
+              "hint": "Deux groupes qui se réunissent.",
+              "explanation": "Le schéma montre deux barres côte à côte. L’addition $6+4$ donne le total $10$ autocollants."
+            },
+            {
+              "question": "Une boîte contient $15$ bonbons. Tu en manges $6$. Représente la situation avec un schéma et écris la soustraction.",
+              "answer": "Barre totale $15$, partie mangée $6$, reste $9$ ; $15-6=9$.",
+              "hint": "Total moins partie enlevée.",
+              "explanation": "Le schéma affiche la barre totale $15$ et la partie $6$ retirée. La soustraction $15-6$ donne le reste $9$."
+            },
+            {
+              "question": "Léa a $8$ billes, elle en gagne $5$, puis elle en perd $2$. Utilise un schéma à trois barres pour trouver le nombre final.",
+              "answer": "Barres $8$, $5$, $2$ ; $8+5=13$, $13-2=11$ billes.",
+              "hint": "Suis les étapes : additionne les gains, puis soustrais la perte.",
+              "explanation": "Le schéma montre d’abord $8+5=13$ (gain), puis $13-2=11$ (perte). Le résultat final est $11$ billes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

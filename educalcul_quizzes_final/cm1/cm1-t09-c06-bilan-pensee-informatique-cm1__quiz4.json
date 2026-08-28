@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Bilan - Pensée informatique CM1",
+  "title": "Bilan de pensée informatique CM1",
+  "questions": [
+    {
+      "text": "Qu'est ce qu'un algorithme en informatique ?",
+      "options": [
+        "Une machine très puissante",
+        "Une suite d'instructions précises pour réaliser une tâche",
+        "Un logiciel de dessin",
+        "Le nom d'un ordinateur"
+      ],
+      "correctAnswer": "Une suite d'instructions précises pour réaliser une tâche",
+      "explanation": "Un algorithme est comme une recette de cuisine : c'est une liste d'étapes ordonnées que l'on suit pour arriver à un résultat précis.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si un robot doit avancer de $3$ cases, puis tourner à droite, et enfin avancer de $2$ cases, combien de cases a t il parcouru au total ?",
+      "options": [
+        " $3$ cases",
+        " $2$ cases",
+        " $5$ cases",
+        " $6$ cases"
+      ],
+      "correctAnswer": " $5$ cases",
+      "explanation": "On additionne les déplacements : $3$ cases plus $2$ cases font $5$ cases au total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un programme, à quoi sert une boucle ?",
+      "options": [
+        "À arrêter le programme",
+        "À effacer toutes les instructions",
+        "À répéter plusieurs fois la même action",
+        "À changer la couleur du robot"
+      ],
+      "correctAnswer": "À répéter plusieurs fois la même action",
+      "explanation": "Une boucle permet d'éviter d'écrire dix fois la même instruction en indiquant simplement au programme de répéter l'action un certain nombre de fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut créer un motif : un cercle, un carré, un cercle, un carré. Quelle est l'instruction la plus efficace pour continuer ce motif ?",
+      "options": [
+        "Dessiner un triangle",
+        "Répéter l'ensemble cercle et carré",
+        "Dessiner seulement des cercles",
+        "S'arrêter tout de suite"
+      ],
+      "correctAnswer": "Répéter l'ensemble cercle et carré",
+      "explanation": "Le motif est une répétition d'un bloc composé de deux formes. Utiliser une boucle pour répéter ce bloc est la méthode la plus efficace.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "cercle",
+          "carre"
+        ],
+        "options": [
+          "cercle",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Motif à compléter"
+      }
+    },
+    {
+      "text": "Qu'est ce qu'un bug dans un programme informatique ?",
+      "options": [
+        "Une pièce du clavier",
+        "Une erreur dans les instructions qui empêche le programme de marcher",
+        "Un virus qui vole des données",
+        "La vitesse de calcul de l'ordinateur"
+      ],
+      "correctAnswer": "Une erreur dans les instructions qui empêche le programme de marcher",
+      "explanation": "Un bug est une erreur de logique ou de frappe dans l'algorithme. Le programmeur doit alors faire du débogage pour trouver et corriger l'erreur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

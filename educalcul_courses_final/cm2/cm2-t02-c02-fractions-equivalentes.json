@@ -1,0 +1,451 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.356299+00:00",
+  "id": 283,
+  "code": "cm2-t02-c02",
+  "title": "Fractions équivalentes",
+  "description": "Cours structuré Educalcul : Fractions équivalentes.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions équivalentes",
+    "objectif_global": "Fractions équivalentes",
+    "mini_lecons_imposees": [
+      "Multiplier numérateur et dénominateur dans cas simples.",
+      "Simplifier visuellement.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Multiplier numérateur et dénominateur dans cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les fractions équivalentes par le partage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une grande barre de chocolat. Tu la coupes en $2$ parts égales et tu en prends $1$. Tu as mangé $\\frac{1}{2}$ de la barre. Maintenant, reprends la même barre, mais coupe-la cette fois en $4$ parts égales. Si tu en prends $2$, tu as mangé $\\frac{2}{4}$ de la barre. Est-ce que la quantité de chocolat est différente ? Non, c'est exactement la même quantité ! On dit que $\\frac{1}{2}$ et $\\frac{2}{4}$ sont des fractions équivalentes. Elles désignent la même part d'un tout, même si les chiffres ne sont pas les mêmes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                }
+              ],
+              "caption": "La moitié et les deux quarts couvrent la même longueur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les deux barres ci-dessus. La première est divisée en $2$ parts, la seconde en $4$. La zone colorée est identique. Comment est-on passé de $\\frac{1}{2}$ à $\\frac{2}{4}$ ? On a multiplié le nombre de parts totales (le dénominateur) par $2$ : $2 \\times 2 = 4$. Et pour que la part colorée reste la même, il a fallu multiplier aussi le nombre de parts prises (le numérateur) par $2$ : $1 \\times 2 = 2$. C'est la règle d'or : quand on multiplie le numérateur ET le dénominateur par le même nombre, on obtient une fraction équivalente."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un multiplicateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends un nombre entier, par exemple $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$1 \\times 3 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplie le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 \\times 3 = 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écris la nouvelle fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $\\frac{3}{6}$, équivalente à $\\frac{1}{2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un autre multiplicateur. Si on veut transformer $\\frac{1}{3}$ en une fraction équivalente, on peut multiplier par $2$, par $4$, ou même par $10$ ! L'important, c'est de faire exactement la même multiplication au-dessus et au-dessous de la barre de fraction. C'est comme si on découpait chaque part en plusieurs petits morceaux : le nombre de morceaux totaux augmente, et le nombre de morceaux pris augmente dans la même proportion."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 6
+                }
+              ],
+              "caption": "Un tiers devient deux sixièmes en multipliant par 2."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette nouvelle image, chaque tiers a été coupé en deux. Au lieu de $3$ parts au total, on en a $6$. Au lieu d'$1$ part prise, on en a $2$. La surface colorée n'a pas bougé d'un millimètre. On peut continuer ainsi : $\\frac{1}{3} = \\frac{3}{9} = \\frac{4}{12} = \\frac{5}{15}$... Il y a une infinité de fractions équivalentes à $\\frac{1}{3}$ ! C'est comme avoir plusieurs noms pour la même personne : « le tiers », « les deux sixièmes », « les trois neuvièmes »... tous désignent la même quantité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a besoin d'une fraction avec un dénominateur précis pour faire une addition ou une comparaison. Par exemple, pour ajouter $\\frac{1}{2}$ et $\\frac{1}{4}$, il est commode d'écrire $\\frac{1}{2}$ avec le dénominateur $4$. On cherche par quel nombre multiplier $2$ pour obtenir $4$ : c'est $2$. Alors on fait $\\frac{1 \\times 2}{2 \\times 2} = \\frac{2}{4}$. Maintenant, les deux fractions ont le même dénominateur, on peut les additionner facilement. C'est l'utilité principale de cette règle : fabriquer des fractions « cousines » qui parlent le même langage."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{1}{2} = \\frac{1 \\times 2}{2 \\times 2} = \\frac{2}{4}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'égalité pour obtenir une fraction équivalente à $\\frac{1}{2}$ : $\\frac{1}{2} = \\frac{\\square}{6}$.",
+              "answer": "3",
+              "hint": "Par quel nombre as-tu multiplié le dénominateur $2$ pour obtenir $6$ ? Fais la même chose au numérateur.",
+              "explanation": "On a multiplié le dénominateur par $3$ ($2 \\times 3 = 6$). Il faut multiplier le numérateur par $3$ aussi : $1 \\times 3 = 3$. Donc $\\frac{1}{2} = \\frac{3}{6}$."
+            },
+            {
+              "question": "Parmi ces fractions, lesquelles sont équivalentes à $\\frac{2}{3}$ ? $\\frac{4}{6}$, $\\frac{6}{9}$, $\\frac{8}{12}$, $\\frac{3}{5}$.",
+              "answer": "$\\frac{4}{6}$, $\\frac{6}{9}$, $\\frac{8}{12}$",
+              "hint": "Vérifie si le numérateur et le dénominateur ont été multipliés par le même nombre en partant de $\\frac{2}{3}$.",
+              "explanation": "$\\frac{2 \\times 2}{3 \\times 2} = \\frac{4}{6}$, $\\frac{2 \\times 3}{3 \\times 3} = \\frac{6}{9}$, $\\frac{2 \\times 4}{3 \\times 4} = \\frac{8}{12}$. Pour $\\frac{3}{5}$, ce n'est pas le même multiplicateur ($2 \\times 1,5 = 3$ mais $3 \\times 1,5 = 4,5 \\neq 5$)."
+            },
+            {
+              "question": "Tu veux additionner $\\frac{1}{5}$ et $\\frac{2}{10}$. Écris $\\frac{1}{5}$ avec le dénominateur $10$.",
+              "answer": "$\\frac{2}{10}$",
+              "hint": "Cherche le multiplicateur qui transforme $5$ en $10$ et applique-le au numérateur.",
+              "explanation": "$5 \\times 2 = 10$, donc on multiplie le numérateur par $2$ : $1 \\times 2 = 2$. On obtient $\\frac{2}{10}$. L'addition devient $\\frac{2}{10} + \\frac{2}{10} = \\frac{4}{10}$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier visuellement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier une fraction : faire le chemin inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, on a appris à *agrandir* une fraction en multipliant. Aujourd'hui, on va faire l'inverse : *rétrécir* la fraction pour la rendre plus simple, sans changer sa valeur. Reprenons notre barre de chocolat. Si tu as $\\frac{4}{8}$ de la barre, c'est beaucoup de chiffres pour dire une chose simple. Regarde : $4$ parts sur $8$, ça veut dire que la barre est coupée en $8$ et tu en as $4$. Mais si tu regroupes les parts deux par deux, tu retrouves $4$ grosses parts (les quarts) et tu en as $2$. Tu as $\\frac{2}{4}$ ! Et si tu regroupes encore par $2$, tu as $1$ part sur $2$ : $\\frac{1}{2}$. Tout cela, c'est la même quantité de chocolat."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 4,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                }
+              ],
+              "caption": "Quatre huitièmes, deux quarts, un demi : même longueur colorée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de $\\frac{4}{8}$ à $\\frac{2}{4}$, on a divisé le numérateur par $2$ ($4 \\div 2 = 2$) ET le dénominateur par $2$ ($8 \\div 2 = 4$). Pour passer de $\\frac{2}{4}$ à $\\frac{1}{2}$, on a encore divisé par $2$. C'est la règle du *simplifier* : on divise le numérateur ET le dénominateur par le même nombre (différent de zéro). La fraction obtenue est équivalente à la première, mais elle est « plus simple » car les chiffres sont plus petits. On dit qu'on a simplifié la fraction."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouve un diviseur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un nombre qui divise à la fois le numérateur et le dénominateur. Pour $\\frac{6}{9}$, $3$ va bien."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Divise le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$6 \\div 3 = 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Divise le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$9 \\div 3 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écris la fraction simplifiée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $\\frac{2}{3}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on peut simplifier en plusieurs étapes, et parfois en une seule fois si on voit le bon diviseur. Prenons $\\frac{12}{18}$. On voit bien que $2$ divise les deux : $\\frac{12 \\div 2}{18 \\div 2} = \\frac{6}{9}$. Mais $\\frac{6}{9}$ n'est pas encore tout à fait simple, car $3$ divise encore $6$ et $9$. On continue : $\\frac{6 \\div 3}{9 \\div 3} = \\frac{2}{3}$. Là, on s'arrête car $2$ et $3$ n'ont plus de diviseur commun (à part $1$). On a fait deux étapes. Mais si on avait vu tout de suite que $6$ divisait $12$ et $18$, on aurait fait en un coup : $\\frac{12 \\div 6}{18 \\div 6} = \\frac{2}{3}$. Le résultat final est le même !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 12,
+                  "denominator": 18
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 3
+                }
+              ],
+              "caption": "Douze dixi-huitièmes simplifiés directement en deux tiers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à une erreur fréquente : on ne simplifie *jamais* en divisant seulement le numérateur ou seulement le dénominateur. Si tu fais $\\frac{4}{8} = \\frac{2}{8}$, tu as changé la valeur ! C'est comme si tu mangeais la moitié du chocolat mais que tu prétendais n'en avoir mangé qu'un quart. La règle est stricte : **même opération au numérateur ET au dénominateur**. Aussi, on ne divise jamais par $0$ (c'est impossible). Et quand le numérateur et le dénominateur n'ont plus aucun diviseur commun (à part $1$), la fraction est dite **irréductible**. C'est sa forme la plus simple, son « nom le plus court »."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction irréductible",
+              "definition": "Une fraction dont le numérateur et le dénominateur n'ont pas de diviseur commun autre que $1$. On ne peut plus la simplifier.",
+              "example": "$\\frac{2}{3}$ est irréductible. $\\frac{4}{6}$ ne l'est pas car on peut diviser par $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $\\frac{8}{12}$ en une seule étape si possible, sinon en deux étapes.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Cherche le plus grand nombre qui divise à la fois $8$ et $12$. Sinon, commence par $2$ ou par $4$.",
+              "explanation": "$4$ divise $8$ et $12$. $\\frac{8 \\div 4}{12 \\div 4} = \\frac{2}{3}$. C'est irréductible. En deux étapes : $\\frac{8 \\div 2}{12 \\div 2} = \\frac{4}{6}$, puis $\\frac{4 \\div 2}{6 \\div 2} = \\frac{2}{3}$."
+            },
+            {
+              "question": "Parmi ces fractions, laquelle est déjà irréductible ? $\\frac{9}{12}$, $\\frac{5}{7}$, $\\frac{10}{15}$, $\\frac{6}{8}$.",
+              "answer": "$\\frac{5}{7}$",
+              "hint": "Vérifie pour chaque fraction si numérateur et dénominateur ont un diviseur commun (autre que 1).",
+              "explanation": "$\\frac{9}{12}$ se simplifie par $3$ ($\\frac{3}{4}$). $\\frac{10}{15}$ se simplifie par $5$ ($\\frac{2}{3}$). $\\frac{6}{8}$ se simplifie par $2$ ($\\frac{3}{4}$). $5$ et $7$ n'ont pas de diviseur commun, $\\frac{5}{7}$ est irréductible."
+            },
+            {
+              "question": "Erreur à corriger : Lucas a écrit $\\frac{15}{20} = \\frac{3}{20}$. Explique son erreur et donne le bon résultat.",
+              "answer": "Il a divisé seulement le numérateur par $5$. Il faut diviser les deux par $5$ : $\\frac{15 \\div 5}{20 \\div 5} = \\frac{3}{4}$.",
+              "hint": "Regarde ce qu'il a fait au numérateur (divisé par 5). A-t-il fait la même chose au dénominateur ?",
+              "explanation": "Lucas a divisé $15$ par $5$ pour obtenir $3$, mais il a laissé $20$ inchangé. La règle exige de diviser numérateur ET dénominateur par le même nombre. $20 \\div 5 = 4$, donc la fraction simplifiée est $\\frac{3}{4}$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi ça marche ? La justification par le partage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant *comment* multiplier ou diviser pour trouver des fractions équivalentes. Mais *pourquoi* est-ce que ça marche à tous les coups ? Ce n'est pas de la magie, c'est de la logique pure. Reprenons l'exemple du gâteau. Une fraction, c'est un partage : $\\frac{3}{5}$ veut dire « on partage en $5$ parts égales et on prend $3$ parts ». Si je décide de couper *chaque* part en $2$ petits morceaux, le gâteau est maintenant divisé en $5 \\times 2 = 10$ minuscules parts. Et les $3$ parts que j'avais ? Elles sont devenues $3 \\times 2 = 6$ petits morceaux. J'ai donc $\\frac{6}{10}$ du gâteau. La quantité de gâteau n'a pas changé, seul le découpage a changé. C'est pour cela qu'on multiplie numérateur et dénominateur par le même nombre : on raffine le découpage."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 5
+                },
+                {
+                  "numerator": 6,
+                  "denominator": 10
+                }
+              ],
+              "caption": "Chaque cinquième coupé en deux donne des dixièmes. 3 parts deviennent 6 parts."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la simplification, c'est le raisonnement inverse : on *regroupe* les petites parts pour en faire de plus grosses. Si j'ai $\\frac{6}{10}$ d'un gâteau (6 parts sur 10), et que je regroupe les parts deux par deux, je reconstitue des parts deux fois plus grosses. Il y a maintenant $10 \\div 2 = 5$ grosses parts au total, et j'en ai $6 \\div 2 = 3$. Je récupère $\\frac{3}{5}$. Diviser numérateur et dénominateur par le même nombre, c'est exactement faire ce regroupement. Rien n'est perdu, rien n'est créé, on change juste l'unité de mesure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Raisonner pour multiplier (équivalence)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Une fraction $\\frac{a}{b}$ : $a$ parts sur $b$ parts égales."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Je coupe chaque part en $k$ morceaux ($k$ entier $>0$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Nouveau total de parts : $b \\times k$ (dénominateur)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "4. Mes parts deviennent : $a \\times k$ (numérateur)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "5. Nouvelle fraction $\\frac{a \\times k}{b \\times k}$, même quantité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Raisonner pour diviser (simplification)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. J'ai $\\frac{a}{b}$ avec $a$ et $b$ divisibles par $k$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Je regroupe les parts par paquets de $k$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Nouveau total de grosses parts : $b \\div k$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "4. Mes gros paquets : $a \\div k$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "5. Fraction simplifiée $\\frac{a \\div k}{b \\div k}$, même quantité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a une autre façon de voir les choses, un peu plus « mathématique », qui te servira plus tard au collège. Une fraction, c'est aussi une division : $\\frac{a}{b} = a \\div b$. Or, on sait qu'en division, si on multiplie le dividende ET le diviseur par le même nombre, le quotient ne change pas. Par exemple : $6 \\div 3 = 2$ et $(6 \\times 2) \\div (3 \\times 2) = 12 \\div 6 = 2$. C'est la propriété fondamentale de la division. Puisque $\\frac{4}{6} = 4 \\div 6$, multiplier le numérateur et le dénominateur par $3$ revient à faire $(4 \\times 3) \\div (6 \\times 3) = 12 \\div 18$. Le résultat de la division est identique, donc les fractions sont équivalentes. C'est une justification très puissante qui marche pour tous les nombres !"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} = \\frac{a \\times k}{b \\times k} \\quad (k \\neq 0)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu as toutes les cartes en main. Tu sais *faire* (multiplier/diviser), tu sais *voir* (bandes de fractions, regroupement), et tu sais *justifier* (partage, division). C'est ça, être à l'aise avec les fractions équivalentes : pouvoir passer de l'une à l'autre sans hésiter, que ce soit pour simplifier un calcul, comparer deux parts de gâteau, ou résoudre un problème. La prochaine fois que tu verras $\\frac{12}{16}$, tu pourras dire fièrement : « Tiens, si je divise par $4$, ça fait $\\frac{3}{4}$ ! C'est plus simple et c'est exactement la même chose. »"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver une fraction équivalente en multipliant le numérateur et le dénominateur par le même nombre.",
+                "Je sais simplifier une fraction en divisant le numérateur et le dénominateur par un même diviseur.",
+                "Je sais reconnaître une fraction irréductible.",
+                "Je peux expliquer avec un dessin ou des mots pourquoi multiplier ou diviser les deux termes par le même nombre ne change pas la valeur de la fraction.",
+                "J'utilise les fractions équivalentes pour comparer ou additionner des fractions de dénominateurs différents."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Justifie par un dessin ou une phrase pourquoi $\\frac{2}{5} = \\frac{6}{15}$.",
+              "answer": "Chaque cinquième est coupé en 3 parts égales. Le tout fait 15 parts (5×3). Les 2 parts prises deviennent 6 petites parts (2×3). La surface colorée ne change pas.",
+              "hint": "Imagine une barre divisée en 5. Tu colories 2 parts. Ensuite, tu coupes chaque part en 3. Que se passe-t-il ?",
+              "explanation": "On raffine le partage : le dénominateur est multiplié par 3 (5→15), le numérateur aussi (2→6). La quantité reste identique."
+            },
+            {
+              "question": "En utilisant la propriété de la division, explique pourquoi $\\frac{9}{12} = \\frac{3}{4}$.",
+              "answer": "$\\frac{9}{12} = 9 \\div 12$. Si on divise le dividende et le diviseur par 3 : $(9 \\div 3) \\div (12 \\div 3) = 3 \\div 4 = \\frac{3}{4}$. Le quotient est inchangé.",
+              "hint": "Rappelle-toi : dans une division, multiplier ou diviser les deux nombres par la même valeur ne change pas le résultat.",
+              "explanation": "La fraction est une division. Diviser numérateur et dénominateur par 3, c'est diviser le dividende et le diviseur par 3. Le quotient (la valeur de la fraction) ne bouge pas."
+            },
+            {
+              "question": "Paul dit : « $\\frac{10}{15}$ simplifiée par 5 donne $\\frac{2}{3}$. Si je multiplie $\\frac{2}{3}$ par 5, je retrouve $\\frac{10}{15}$ ». Est-ce que Paul a raison ? Justifie.",
+              "answer": "Oui, Paul a raison. Multiplier par 5 numérateur et dénominateur de $\\frac{2}{3}$ donne $\\frac{10}{15}$. C'est l'opération inverse de la simplification.",
+              "hint": "Fais le calcul : $2 \\times 5 = ?$ et $3 \\times 5 = ?$.",
+              "explanation": "Simplifier (diviser par 5) et amplifier (multiplier par 5) sont des opérations inverses. $\\frac{2}{3} = \\frac{2 \\times 5}{3 \\times 5} = \\frac{10}{15}$. Les deux fractions sont équivalentes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

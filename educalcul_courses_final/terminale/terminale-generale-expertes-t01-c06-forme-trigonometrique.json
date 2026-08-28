@@ -1,0 +1,511 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.761869+00:00",
+  "id": 732,
+  "code": "terminale-generale-expertes-t01-c06",
+  "title": "Forme trigonométrique",
+  "description": "Cours structuré Educalcul : Forme trigonométrique.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Forme trigonométrique",
+    "objectif_global": "Forme trigonométrique",
+    "mini_lecons_imposees": [
+      "Passage.",
+      "Produit / quotient.",
+      "Puissances."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Passage.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme trigonométrique : une nouvelle façon de voir les nombres complexes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, tu as l'habitude d'écrire un nombre complexe sous la forme algébrique $z = a + ib$, avec une partie réelle $a$ et une partie imaginaire $b$. C'est commode pour additionner ou soustraire, mais dès qu'il s'agit de multiplier, diviser ou élever à une puissance, les calculs deviennent vite lourds. La forme trigonométrique va changer la donne : elle repose sur une idée géométrique simple. Chaque nombre complexe non nul correspond à un point $M$ dans le plan complexe, et ce point est entièrement déterminé par sa distance à l'origine (le module) et l'angle que fait le vecteur $\\overrightarrow{OM}$ avec l'axe des abscisses (l'argument)."
+            },
+            {
+              "type": "definition",
+              "term": "Module et argument",
+              "definition": "Pour un nombre complexe $z = a + ib \\neq 0$, son module est $|z| = \\sqrt{a^2 + b^2}$. C'est la distance $OM$. Son argument, noté $\\arg(z)$, est une mesure (en radians) de l'angle $\\left(\\vec{u}, \\overrightarrow{OM}\\right)$, où $\\vec{u}$ est le vecteur unitaire de l'axe des réels. L'argument est défini modulo $2\\pi$ : si $\\theta$ est un argument, alors $\\theta + 2k\\pi$ ($k \\in \\mathbb{Z}$) le sont aussi.",
+              "example": "Pour $z = 1 + i$, le module est $|z| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$. Un argument est $\\frac{\\pi}{4}$ car le point $(1,1)$ forme un angle de 45° avec l'axe des abscisses."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 1,
+              "im": 1,
+              "caption": "Représentation de $z = 1 + i$ : module $\\sqrt{2}$, argument $\\pi/4$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette description polaire permet d'écrire $z$ sous une forme compacte : $z = |z|(\\cos\\theta + i\\sin\\theta)$, où $\\theta$ est un argument de $z$. C'est la forme trigonométrique. Elle existe pour tout nombre complexe non nul. Pour $z = 0$, le module est nul et l'argument n'est pas défini. Remarque bien que le couple $(|z|, \\theta)$ n'est pas unique à cause de la périodicité $2\\pi$ du cosinus et du sinus : on a toujours $z = |z|(\\cos(\\theta+2k\\pi) + i\\sin(\\theta+2k\\pi))$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z = r(\\cos\\theta + i\\sin\\theta), \\quad r = |z| > 0, \\quad \\theta \\in \\arg(z)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la forme algébrique à la forme trigonométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as un nombre complexe $z = a + ib$ donné sous forme algébrique. Comment trouver sa forme trigonométrique ? La méthode est systématique et repose sur deux étapes : calculer le module $r = \\sqrt{a^2+b^2}$, puis déterminer un argument $\\theta$. Pour l'argument, tout se joue par le couple $(a,b)$ : on cherche un angle dont le cosinus vaut $\\frac{a}{r}$ et le sinus vaut $\\frac{b}{r}$. Le quadrant où se trouve le point $M(a,b)$ te guide pour choisir la valeur principale de l'argument, généralement dans $]-\\pi, \\pi]$ ou $[0, 2\\pi[$ selon les conventions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $r = \\sqrt{a^2 + b^2}$. Le module est toujours un réel strictement positif (sauf pour $z=0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer un argument",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\cos\\theta = \\frac{a}{r}$ et $\\sin\\theta = \\frac{b}{r}$. Repère le quadrant du point $M(a,b)$ : si $a>0, b>0$ (premier quadrant), $\\theta = \\arccos(a/r) = \\arcsin(b/r)$ dans $]0, \\frac{\\pi}{2}[$ ; si $a<0, b>0$ (deuxième quadrant), $\\theta = \\pi - \\arcsin(b/r)$ ; si $a<0, b<0$ (troisième quadrant), $\\theta = -\\pi + \\arcsin(|b|/r)$ ou $\\pi + \\arctan(b/a)$ ; si $a>0, b<0$ (quatrième quadrant), $\\theta = -\\arccos(a/r)$ ou $2\\pi - \\arccos(a/r)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la forme trigonométrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace dans $z = r(\\cos\\theta + i\\sin\\theta)$. Tu peux aussi utiliser la notation exponentielle $z = r e^{i\\theta}$ qui sera introduite plus tard, mais restons en trigonométrique pour l'instant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $z = -\\sqrt{3} + i$. Le module est $r = \\sqrt{(-\\sqrt{3})^2 + 1^2} = \\sqrt{3+1} = 2$. Le point $M(-\\sqrt{3}, 1)$ est dans le deuxième quadrant. On a $\\cos\\theta = -\\frac{\\sqrt{3}}{2}$ et $\\sin\\theta = \\frac{1}{2}$. L'angle qui convient dans $]0,\\pi[$ est $\\theta = \\frac{5\\pi}{6}$. Donc $z = 2\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)$. Vérifie : $2\\cos\\frac{5\\pi}{6} = 2\\times(-\\frac{\\sqrt{3}}{2}) = -\\sqrt{3}$ et $2\\sin\\frac{5\\pi}{6} = 2\\times\\frac{1}{2} = 1$. C'est bon."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": -1.732,
+              "im": 1,
+              "caption": "Point $M(-\\sqrt{3}, 1)$ : module 2, argument $5\\pi/6$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la forme trigonométrique à la forme algébrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse est plus directe : on te donne $z = r(\\cos\\theta + i\\sin\\theta)$ avec $r>0$ et $\\theta \\in \\mathbb{R}$. Il suffit de développer en utilisant les valeurs exactes ou approchées du cosinus et du sinus. La partie réelle sera $a = r\\cos\\theta$, la partie imaginaire $b = r\\sin\\theta$. Si $\\theta$ est un angle remarquable (multiples de $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{3}$), tu donnes le résultat exact avec des racines carrées. Sinon, une approximation décimale est attendue."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges classiques : si l'argument n'est pas dans l'intervalle principal (par exemple $\\theta = \\frac{13\\pi}{6}$), réduis-le modulo $2\\pi$ avant de calculer cosinus et sinus. Ici $\\frac{13\\pi}{6} = 2\\pi + \\frac{\\pi}{6}$, donc $\\cos\\frac{13\\pi}{6} = \\cos\\frac{\\pi}{6}$ et $\\sin\\frac{13\\pi}{6} = \\sin\\frac{\\pi}{6}$. Autre point de vigilance : le module $r$ est toujours positif. Si on te donne $z = -3(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4})$, ce n'est pas encore la forme trigonométrique standard car le coefficient devant la parenthèse est négatif. Il faut réécrire : $z = 3\\left(-\\cos\\frac{\\pi}{4} - i\\sin\\frac{\\pi}{4}\\right) = 3\\left(\\cos\\frac{5\\pi}{4} + i\\sin\\frac{5\\pi}{4}\\right)$ en ajoutant $\\pi$ à l'argument."
+            },
+            {
+              "type": "display_math",
+              "latex": "z = r(\\cos\\theta + i\\sin\\theta) \\implies a = r\\cos\\theta, \\; b = r\\sin\\theta"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et forme exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les nombres réels et imaginaires purs sont des cas limites de la forme trigonométrique. Un réel strictement positif $a>0$ s'écrit $a = a(\\cos 0 + i\\sin 0)$ (module $a$, argument $0$). Un réel strictement négatif $a<0$ s'écrit $a = |a|(\\cos\\pi + i\\sin\\pi)$ (module $|a|$, argument $\\pi$). Un imaginaire pur $ib$ avec $b>0$ donne $ib = b(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2})$ ; si $b<0$, $ib = |b|(\\cos(-\\frac{\\pi}{2}) + i\\sin(-\\frac{\\pi}{2}))$. Pour $z=0$, le module est $0$ et l'argument n'existe pas : on ne peut pas écrire de forme trigonométrique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une notation encore plus compacte, due à Euler, va devenir ton outil principal : $e^{i\\theta} = \\cos\\theta + i\\sin\\theta$. C'est la formule d'Euler. Elle permet d'écrire la forme trigonométrique sous forme exponentielle : $z = r e^{i\\theta}$. Cette notation n'est pas qu'un raccourci : elle transforme les produits, quotients et puissances en opérations sur les exposants, exactement comme pour les réels. Nous verrons cela dans la prochaine leçon. Pour l'instant, retiens que les deux écritures sont équivalentes : $r(\\cos\\theta + i\\sin\\theta) = r e^{i\\theta}$."
+            },
+            {
+              "type": "definition",
+              "term": "Forme exponentielle",
+              "definition": "Tout nombre complexe non nul $z$ s'écrit de manière unique $z = r e^{i\\theta}$ avec $r = |z| > 0$ et $\\theta \\in ]-\\pi, \\pi]$ (argument principal). La formule d'Euler $e^{i\\theta} = \\cos\\theta + i\\sin\\theta$ fait le lien avec la forme trigonométrique.",
+              "example": "$z = 2(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}) = 2 e^{i\\pi/3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire sous forme trigonométrique (avec argument principal dans $]-\\pi, \\pi]$) le nombre complexe $z = -2 - 2i$.",
+              "answer": "$z = 2\\sqrt{2}\\left(\\cos\\left(-\\frac{3\\pi}{4}\\right) + i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right)$",
+              "hint": "Calcule le module, puis repère le quadrant du point $M(-2,-2)$ pour choisir l'argument correct.",
+              "explanation": "Module : $|z| = \\sqrt{(-2)^2 + (-2)^2} = \\sqrt{8} = 2\\sqrt{2}$. Le point est dans le troisième quadrant. $\\cos\\theta = -2/(2\\sqrt{2}) = -1/\\sqrt{2}$, $\\sin\\theta = -1/\\sqrt{2}$. L'argument principal dans $]-\\pi,\\pi]$ est $-\\frac{3\\pi}{4}$ (ou equivalentement $\\frac{5\\pi}{4}$ mais hors intervalle principal)."
+            },
+            {
+              "question": "Donner la forme algébrique de $z = 4\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$.",
+              "answer": "$z = -2 + 2i\\sqrt{3}$",
+              "hint": "Utilise les valeurs exactes : $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$, $\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$.",
+              "explanation": "$a = 4 \\times (-\\frac{1}{2}) = -2$. $b = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$. Donc $z = -2 + 2i\\sqrt{3}$."
+            },
+            {
+              "question": "Réduire l'argument et écrire sous forme trigonométrique standard : $z = -5(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6})$.",
+              "answer": "$z = 5\\left(\\cos\\frac{7\\pi}{6} + i\\sin\\frac{7\\pi}{6}\\right)$",
+              "hint": "Un module négatif n'est pas standard. Ajoute $\\pi$ à l'argument et change le signe du module.",
+              "explanation": "On factorise le signe moins : $-5(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}) = 5(-\\cos\\frac{\\pi}{6} - i\\sin\\frac{\\pi}{6})$. Puisque $-\\cos\\theta = \\cos(\\theta+\\pi)$ et $-\\sin\\theta = \\sin(\\theta+\\pi)$, on obtient $5(\\cos(\\frac{\\pi}{6}+\\pi) + i\\sin(\\frac{\\pi}{6}+\\pi)) = 5(\\cos\\frac{7\\pi}{6} + i\\sin\\frac{7\\pi}{6})$."
+            },
+            {
+              "question": "Écrire sous forme exponentielle (argument principal) : $z = 1 - i\\sqrt{3}$.",
+              "answer": "$z = 2 e^{-i\\pi/3}$",
+              "hint": "Module $= 2$. Point dans le 4e quadrant. $\\cos\\theta = 1/2$, $\\sin\\theta = -\\sqrt{3}/2$. Argument principal $-\\pi/3$.",
+              "explanation": "$|z| = \\sqrt{1^2 + (-\\sqrt{3})^2} = 2$. $\\cos\\theta = 1/2$, $\\sin\\theta = -\\sqrt{3}/2$ $\\Rightarrow$ $\\theta = -\\pi/3$ (dans $]-\\pi,\\pi]$). Donc $z = 2 e^{-i\\pi/3}$."
+            }
+          ]
+        },
+        {
+          "title": "Produit / quotient.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi la forme trigonométrique simplifie les produits et quotients"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu te souviens qu'en forme algébrique, multiplier deux nombres complexes $z_1 = a+ib$ et $z_2 = c+id$ demande de développer $(a+ib)(c+id) = ac - bd + i(ad+bc)$. C'est fastidieux et source d'erreurs. En forme trigonométrique, la géométrie fait tout le travail : le module du produit est le produit des modules, et l'argument du produit est la somme des arguments. C'est une conséquence directe des formules d'addition du cosinus et du sinus. Regardons cela de près."
+            },
+            {
+              "type": "definition",
+              "term": "Propriété du produit en forme trigonométrique",
+              "definition": "Soient $z_1 = r_1(\\cos\\theta_1 + i\\sin\\theta_1)$ et $z_2 = r_2(\\cos\\theta_2 + i\\sin\\theta_2)$ deux nombres complexes non nuls. Alors leur produit est $z_1 z_2 = r_1 r_2 \\left(\\cos(\\theta_1+\\theta_2) + i\\sin(\\theta_1+\\theta_2)\\right)$. En forme exponentielle : $z_1 z_2 = (r_1 r_2) e^{i(\\theta_1+\\theta_2)}$.",
+              "example": "$z_1 = 2(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6})$, $z_2 = 3(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3})$ $\\Rightarrow$ $z_1 z_2 = 6(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}) = 6i$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Démonstration via les formules d'addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On développe le produit : $z_1 z_2 = r_1 r_2 (\\cos\\theta_1 + i\\sin\\theta_1)(\\cos\\theta_2 + i\\sin\\theta_2) = r_1 r_2 [\\cos\\theta_1\\cos\\theta_2 - \\sin\\theta_1\\sin\\theta_2 + i(\\sin\\theta_1\\cos\\theta_2 + \\cos\\theta_1\\sin\\theta_2)]$. Les parenthèses sont exactement $\\cos(\\theta_1+\\theta_2)$ et $\\sin(\\theta_1+\\theta_2)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Interprétation géométrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier par $z_2$ revient à faire une homothétie de rapport $r_2$ (le module se multiplie) suivie d'une rotation d'angle $\\theta_2$ (l'argument s'ajoute). C'est la clé pour comprendre la géométrie des nombres complexes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 1.732,
+              "im": 1,
+              "caption": "$z_1 = 2 e^{i\\pi/6}$ : module 2, angle 30°"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le quotient : division des modules, soustraction des arguments"
+            },
+            {
+              "type": "paragraph",
+              "content": "La division suit le même principe, mais en sens inverse. Pour diviser $z_1$ par $z_2$ (non nul), on divise les modules et on soustrait les arguments. C'est exactement ce qu'on ferait avec des puissances de 10 en notation scientifique, mais ici les exposants sont des angles. La formule s'obtient soit en multipliant numérateur et dénominateur par le conjugué de $z_2$ en forme algébrique, soit plus élégamment en utilisant l'inverse en forme exponentielle : $\\frac{1}{z_2} = \\frac{1}{r_2} e^{-i\\theta_2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{z_1}{z_2} = \\frac{r_1}{r_2} \\left(\\cos(\\theta_1-\\theta_2) + i\\sin(\\theta_1-\\theta_2)\\right) = \\frac{r_1}{r_2} e^{i(\\theta_1-\\theta_2)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un point subtil : l'argument du quotient $\\theta_1 - \\theta_2$ n'est pas nécessairement l'argument principal (dans $]-\\pi, \\pi]$). Après calcul, il faut souvent ajouter ou retrancher $2\\pi$ pour le ramener dans l'intervalle principal. Par exemple, si $\\theta_1 = \\frac{\\pi}{6}$ et $\\theta_2 = \\frac{5\\pi}{6}$, alors $\\theta_1 - \\theta_2 = -\\frac{2\\pi}{3}$ qui est déjà dans $]-\\pi, \\pi]$. Mais si $\\theta_1 = -\\frac{\\pi}{3}$ et $\\theta_2 = \\frac{2\\pi}{3}$, la différence est $-\\pi$, qui n'est pas dans l'intervalle ouvert $]-\\pi, \\pi]$ ; on préfère alors $\\pi$ (équivalent modulo $2\\pi$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : calculs rapides et géométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "La puissance de ces formules apparaît quand on enchaîne plusieurs opérations. Au lieu de développer laborieusement en forme algébrique, on passe en trigonométrique, on opère sur les modules et arguments, puis on revient en algébrique si besoin. C'est particulièrement utile pour calculer des puissances entières (prochaine leçon) ou pour résoudre des équations. En géométrie, le produit par un complexe de module 1 est une rotation pure : $z \\mapsto e^{i\\alpha} z$ fait tourner $z$ d'angle $\\alpha$ autour de l'origine. Le quotient $\\frac{z_1}{z_2}$ donne le rapport des longueurs et la différence des angles orientés, ce qui permet de caractériser des triangles semblables ou des angles inscrits."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : calculer $\\frac{(1+i)^3}{(\\sqrt{3}-i)^2}$. En forme algébrique, c'est un cauchemar. En trigonométrique : $1+i = \\sqrt{2} e^{i\\pi/4}$, donc $(1+i)^3 = (\\sqrt{2})^3 e^{i3\\pi/4} = 2\\sqrt{2} e^{i3\\pi/4}$. Et $\\sqrt{3}-i = 2 e^{-i\\pi/6}$, donc $(\\sqrt{3}-i)^2 = 4 e^{-i\\pi/3}$. Le quotient vaut $\\frac{2\\sqrt{2}}{4} e^{i(3\\pi/4 + \\pi/3)} = \\frac{\\sqrt{2}}{2} e^{i13\\pi/12}$. On ramène l'argument : $\\frac{13\\pi}{12} - 2\\pi = -\\frac{11\\pi}{12}$. Résultat : $\\frac{\\sqrt{2}}{2} e^{-i11\\pi/12}$. Remarque comme le calcul est devenu fluide."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 0.707,
+              "im": -0.707,
+              "caption": "Résultat $\\frac{\\sqrt{2}}{2} e^{-i11\\pi/12}$ visualisé"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés du conjugué et de l'inverse en forme trigonométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le conjugué d'un nombre complexe a une expression très simple en forme trigonométrique. Si $z = r(\\cos\\theta + i\\sin\\theta)$, alors $\\overline{z} = r(\\cos\\theta - i\\sin\\theta) = r(\\cos(-\\theta) + i\\sin(-\\theta))$ car le cosinus est pair et le sinus impair. En forme exponentielle : $\\overline{z} = r e^{-i\\theta}$. Le module ne change pas, l'argument change de signe. Géométriquement, c'est la symétrie par rapport à l'axe des réels."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{z} = r e^{-i\\theta}, \\quad z^{-1} = \\frac{1}{r} e^{-i\\theta}"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'inverse suit immédiatement : $z^{-1} = \\frac{\\overline{z}}{|z|^2} = \\frac{r e^{-i\\theta}}{r^2} = \\frac{1}{r} e^{-i\\theta}$. Le module devient l'inverse, l'argument change de signe. Ces formules sont essentielles pour manipuler des expressions rationnelles en nombres complexes. Par exemple, pour simplifier $\\frac{z}{\\overline{z}}$ avec $z = r e^{i\\theta}$, on obtient $\\frac{r e^{i\\theta}}{r e^{-i\\theta}} = e^{2i\\theta}$ : un nombre de module 1, donc un point sur le cercle unité. C'est une propriété qu'on retrouve souvent en géométrie complexe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $z_1 = 3 e^{i\\pi/4}$ et $z_2 = 2 e^{i\\pi/3}$. Calculer $z_1 z_2$ et $\\frac{z_1}{z_2}$ sous forme exponentielle avec argument principal dans $]-\\pi, \\pi]$.",
+              "answer": "$z_1 z_2 = 6 e^{i7\\pi/12}$ ; $\\frac{z_1}{z_2} = \\frac{3}{2} e^{-i\\pi/12}$",
+              "hint": "Multiplie les modules, ajoute les arguments pour le produit. Divise les modules, soustrais les arguments pour le quotient. Vérifie que les arguments sont dans $]-\\pi, \\pi]$.",
+              "explanation": "Produit : module $3\\times2=6$, argument $\\frac{\\pi}{4}+\\frac{\\pi}{3} = \\frac{7\\pi}{12} \\in ]-\\pi,\\pi]$. Quotient : module $3/2$, argument $\\frac{\\pi}{4}-\\frac{\\pi}{3} = -\\frac{\\pi}{12} \\in ]-\\pi,\\pi]$."
+            },
+            {
+              "question": "Simplifier l'expression $\\frac{2 e^{i\\pi/6}}{4 e^{-i\\pi/3}}$ et donner le résultat sous forme trigonométrique.",
+              "answer": "$\\frac{1}{2}\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right) = \\frac{1}{2} i$",
+              "hint": "Divise les modules : $2/4 = 1/2$. Soustrais les arguments : $\\pi/6 - (-\\pi/3) = \\pi/6 + \\pi/3 = \\pi/2$.",
+              "explanation": "Module : $2/4 = 1/2$. Argument : $\\pi/6 - (-\\pi/3) = \\pi/2$. Donc $\\frac{1}{2} e^{i\\pi/2} = \\frac{1}{2}(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}) = \\frac{1}{2} i$."
+            },
+            {
+              "question": "Soit $z = \\sqrt{2} e^{i\\pi/4}$. Calculer $\\frac{z}{\\overline{z}}$ et interpréter géométriquement le résultat.",
+              "answer": "$e^{i\\pi/2} = i$. C'est une rotation de $\\pi/2$ (90°) autour de l'origine.",
+              "hint": "Utilise $\\overline{z} = \\sqrt{2} e^{-i\\pi/4}$. Calcule le quotient. Le module du résultat est 1.",
+              "explanation": "$\\frac{z}{\\overline{z}} = \\frac{\\sqrt{2} e^{i\\pi/4}}{\\sqrt{2} e^{-i\\pi/4}} = e^{i(\\pi/4 + \\pi/4)} = e^{i\\pi/2} = i$. Module 1, argument $\\pi/2$ : le point est sur le cercle unité, obtenu par rotation de $z$ d'angle $\\pi/2$."
+            },
+            {
+              "question": "Donner la forme trigonométrique de l'inverse de $z = 5(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3})$.",
+              "answer": "$\\frac{1}{5}\\left(\\cos\\left(-\\frac{2\\pi}{3}\\right) + i\\sin\\left(-\\frac{2\\pi}{3}\\right)\\right)$",
+              "hint": "Module de l'inverse = $1/5$. Argument de l'inverse = opposé de l'argument initial.",
+              "explanation": "$z^{-1} = \\frac{1}{|z|} e^{-i\\arg(z)} = \\frac{1}{5} e^{-i2\\pi/3} = \\frac{1}{5}(\\cos(-\\frac{2\\pi}{3}) + i\\sin(-\\frac{2\\pi}{3}))$. Argument principal OK car $-\\frac{2\\pi}{3} \\in ]-\\pi,\\pi]$."
+            }
+          ]
+        },
+        {
+          "title": "Puissances.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule de Moivre : les puissances entières deviennent simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises le produit et le quotient, les puissances entières sont un cas particulier : $z^n = z \\times z \\times \\cdots \\times z$ ($n$ fois). En forme trigonométrique $z = r(\\cos\\theta + i\\sin\\theta)$, chaque multiplication multiplie le module par $r$ et ajoute $\\theta$ à l'argument. Après $n$ multiplications, le module devient $r^n$ et l'argument devient $n\\theta$. C'est la formule de Moivre, valable pour tout entier relatif $n$ (positif, nul, ou négatif si $z\\neq 0$)."
+            },
+            {
+              "type": "definition",
+              "term": "Formule de Moivre",
+              "definition": "Pour tout nombre complexe non nul $z = r(\\cos\\theta + i\\sin\\theta)$ et tout entier $n \\in \\mathbb{Z}$, $z^n = r^n (\\cos(n\\theta) + i\\sin(n\\theta))$. En forme exponentielle : $(r e^{i\\theta})^n = r^n e^{i n\\theta}$. Pour $n=0$, on a $z^0 = 1$ (convention).",
+              "example": "$z = 2(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6})$. Alors $z^3 = 8(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}) = 8i$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas $n \\ge 1$ : récurrence sur le produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On montre par récurrence que $z^n = r^n(\\cos n\\theta + i\\sin n\\theta)$. Initialisation $n=1$ trivial. Hérédité : si c'est vrai pour $n$, alors $z^{n+1} = z^n \\cdot z = r^n r (\\cos(n\\theta+\\theta) + i\\sin(n\\theta+\\theta)) = r^{n+1}(\\cos(n+1)\\theta + i\\sin(n+1)\\theta)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas $n \\le -1$ : utilisation de l'inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $n = -m$ avec $m \\ge 1$, $z^n = (z^{-1})^m$. Or $z^{-1} = \\frac{1}{r} e^{-i\\theta}$. En appliquant le cas positif : $(z^{-1})^m = \\frac{1}{r^m} e^{-i m\\theta} = r^{-m} e^{i(-m)\\theta} = r^n e^{i n\\theta}$. La formule s'étend donc à tout $\\mathbb{Z}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un exemple numérique : calculer $(1+i)^{10}$. En forme algébrique, c'est impensable à la main. En trigonométrique : $1+i = \\sqrt{2} e^{i\\pi/4}$. Donc $(1+i)^{10} = (\\sqrt{2})^{10} e^{i 10\\pi/4} = 2^5 e^{i 5\\pi/2} = 32 e^{i\\pi/2}$ (car $5\\pi/2 = 2\\pi + \\pi/2$). Résultat : $32i$. La réduction de l'argument modulo $2\\pi$ est cruciale ici : $n\\theta$ peut sortir de l'intervalle principal, il faut le ramener dans $]-\\pi, \\pi]$ ou $[0, 2\\pi[$ selon la convention demandée."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 0,
+              "im": 32,
+              "caption": "Résultat $(1+i)^{10} = 32i$ : module 32, argument $\\pi/2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les racines $n$-ièmes : résoudre $z^n = a$"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse de la puissance est l'extraction de racine. Résoudre $z^n = a$ où $a \\neq 0$ est donné et $n \\in \\mathbb{N}^*$, c'est trouver tous les complexes $z$ tels que $z^n = a$. En forme trigonométrique, si $a = r e^{i\\theta}$ ($r>0$), on cherche $z = \\rho e^{i\\phi}$ tel que $\\rho^n = r$ et $n\\phi = \\theta + 2k\\pi$ pour un certain entier $k$. La première équation donne $\\rho = \\sqrt[n]{r}$ (la racine $n$-ième réelle positive, unique). La seconde donne $\\phi = \\frac{\\theta}{n} + \\frac{2k\\pi}{n}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z_k = \\sqrt[n]{r} \\, e^{i\\left(\\frac{\\theta + 2k\\pi}{n}\\right)}, \\quad k = 0, 1, \\dots, n-1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a exactement $n$ solutions distinctes, obtenues pour $k = 0, 1, \\dots, n-1$. Pour $k \\ge n$, les arguments diffèrent de multiples de $2\\pi$ et redonnent les mêmes complexes. Géométriquement, ces $n$ racines sont les sommets d'un polygone régulier à $n$ côtés inscrit dans le cercle de rayon $\\sqrt[n]{r}$, centré à l'origine. L'un des sommets a pour argument $\\theta/n$ (la racine principale), les autres sont obtenus par rotations successives de $2\\pi/n$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 1,
+              "im": 0,
+              "caption": "Les 4 racines quatrièmes de 1 : sommets d'un carré sur le cercle unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations du type $z^n = a$ et applications"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est maintenant systématique : 1) Écrire $a$ sous forme exponentielle/trigonométrique avec un argument $\\theta$ (souvent l'argument principal). 2) Calculer le module de $z$ : $\\sqrt[n]{|a|}$. 3) Écrire les $n$ arguments : $\\frac{\\theta + 2k\\pi}{n}$ pour $k=0,\\dots,n-1$. 4) Si l'énoncé demande la forme algébrique, convertir chaque racine en calculant cosinus et sinus (valeurs exactes si angle remarquable, sinon approximation). 5) Vérifier qu'aucune racine n'est oubliée et qu'elles sont bien distinctes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple complet : résoudre $z^3 = -8$. Étape 1 : $-8 = 8 e^{i\\pi}$ (argument principal $\\pi$). Étape 2 : module $\\sqrt[3]{8} = 2$. Étape 3 : arguments $\\frac{\\pi + 2k\\pi}{3}$ pour $k=0,1,2$. $k=0$ : $\\pi/3$ ; $k=1$ : $\\pi$ ; $k=2$ : $5\\pi/3 \\equiv -\\pi/3$. Les trois solutions : $z_0 = 2 e^{i\\pi/3} = 1 + i\\sqrt{3}$, $z_1 = 2 e^{i\\pi} = -2$, $z_2 = 2 e^{-i\\pi/3} = 1 - i\\sqrt{3}$. Ce sont les sommets d'un triangle équilatéral de rayon 2. Note que $-2$ est la seule racine réelle, les deux autres sont conjuguées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Racines de l'unité et factorisation de $z^n - 1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas fondamental est $a=1$ : les $n$ racines de l'unité, solutions de $z^n = 1$. Elles s'écrivent $z_k = e^{2ik\\pi/n}$ pour $k=0,\\dots,n-1$. La racine primitive (celle qui engendre les autres par puissances successives) est souvent notée $\\omega_n = e^{2i\\pi/n}$. Ces racines ont des propriétés algébriques remarquables : leur somme est nulle ($1 + \\omega_n + \\omega_n^2 + \\dots + \\omega_n^{n-1} = 0$ pour $n\\ge 2$), et elles permettent de factoriser $z^n - 1 = \\prod_{k=0}^{n-1} (z - \\omega_n^k)$. Sur $\\mathbb{R}$, on regroupe les racines conjuguées deux à deux pour obtenir des facteurs quadratiques à coefficients réels. Par exemple, $z^4 - 1 = (z-1)(z+1)(z^2+1)$ et $z^3 - 1 = (z-1)(z^2+z+1)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\omega_n = e^{2i\\pi/n}, \\quad 1 + \\omega_n + \\dots + \\omega_n^{n-1} = 0 \\; (n\\ge 2)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces racines de l'unité apparaissent partout : en traitement du signal (transformée de Fourier discrète), en géométrie (polygones réguliers), en théorie des nombres (sommes de Gauss). Maîtriser leur manipulation en forme trigonométrique/exponentielle est un atout majeur pour la suite de tes études scientifiques. Tu as maintenant tous les outils pour passer aisément d'une forme à l'autre, calculer produits, quotients, puissances et racines. La leçon suivante (si tu continues) abordera la forme exponentielle et le logarithme complexe, mais ce cours s'arrête ici sur les bases solides de la trigonométrie complexe."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import cmath\\nimport math\\n\\ndef nth_roots(a, n):\\n    \"\"\"Retourne les n racines n-ièmes du complexe a.\"\"\"\\n    r = abs(a)\\n    theta = cmath.phase(a)  # argument principal dans ]-pi, pi]\\n    rho = r ** (1/n)\\n    roots = []\\n    for k in range(n):\\n        phi = (theta + 2*k*math.pi) / n\\n        roots.append(cmath.rect(rho, phi))\\n    return roots\\n\\n# Exemple : racines cubiques de -8\\na = -8 + 0j\\nroots = nth_roots(a, 3)\\nfor i, z in enumerate(roots):\\n    print(f\"z_{i} = {z:.4f}  (module={abs(z):.4f}, arg={cmath.phase(z):.4f} rad)\")",
+              "language": "python",
+              "caption": "Algorithme Python pour calculer les racines n-ièmes d'un complexe"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais passer de la forme algébrique à la forme trigonométrique (module + argument principal).",
+                "Je sais passer de la forme trigonométrique à la forme algébrique (calcul exact ou approché).",
+                "Je connais la formule du produit : modules se multiplient, arguments s'ajoutent.",
+                "Je connais la formule du quotient : modules se divisent, arguments se soustraient.",
+                "Je sais utiliser la formule de Moivre pour calculer $z^n$ ($n \\in \\mathbb{Z}$).",
+                "Je sais résoudre une équation $z^n = a$ et donner les $n$ solutions sous forme trigonométrique et algébrique.",
+                "Je sais identifier les racines $n$-ièmes de l'unité et utiliser leurs propriétés (somme nulle, factorisation)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $(\\sqrt{3} + i)^6$ sous forme algébrique.",
+              "answer": "$-64$",
+              "hint": "Convertis $\\sqrt{3}+i$ en forme exponentielle : module 2, argument $\\pi/6$. Applique Moivre : $2^6 e^{i\\pi} = 64 e^{i\\pi} = -64$.",
+              "explanation": "$\\sqrt{3}+i = 2(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}) = 2 e^{i\\pi/6}$. Puissance 6 : $2^6 e^{i\\pi} = 64(\\cos\\pi + i\\sin\\pi) = 64(-1 + 0i) = -64$."
+            },
+            {
+              "question": "Résoudre l'équation $z^4 = -16$ et donner les solutions sous forme trigonométrique (argument principal).",
+              "answer": "$z_0 = 2(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4})$, $z_1 = 2(\\cos\\frac{3\\pi}{4} + i\\sin\\frac{3\\pi}{4})$, $z_2 = 2(\\cos(-\\frac{3\\pi}{4}) + i\\sin(-\\frac{3\\pi}{4}))$, $z_3 = 2(\\cos(-\\frac{\\pi}{4}) + i\\sin(-\\frac{\\pi}{4}))$",
+              "hint": "Écris $-16 = 16 e^{i\\pi}$. Module $\\sqrt[4]{16}=2$. Arguments $\\frac{\\pi + 2k\\pi}{4}$ pour $k=0,1,2,3$. Ramène dans $]-\\pi,\\pi]$.",
+              "explanation": "$-16 = 16 e^{i\\pi}$. $\\rho = \\sqrt[4]{16} = 2$. Arguments : $k=0 \\Rightarrow \\pi/4$ ; $k=1 \\Rightarrow 3\\pi/4$ ; $k=2 \\Rightarrow 5\\pi/4 \\equiv -3\\pi/4$ ; $k=3 \\Rightarrow 7\\pi/4 \\equiv -\\pi/4$. Les 4 solutions sont les sommets d'un carré de rayon 2."
+            },
+            {
+              "question": "Soit $\\omega = e^{2i\\pi/5}$. Calculer $1 + \\omega + \\omega^2 + \\omega^3 + \\omega^4$.",
+              "answer": "$0$",
+              "hint": "C'est la somme des 5 racines cinquièmes de l'unité. Propriété : pour tout $n\\ge 2$, la somme des $n$ racines de l'unité vaut 0.",
+              "explanation": "Les 5 racines de $z^5=1$ sont $1, \\omega, \\omega^2, \\omega^3, \\omega^4$. Leur somme est le coefficient de $z^4$ dans $z^5-1$ (changé de signe), soit 0. Ou géométriquement : barycentre d'un pentagone régulier centré à l'origine = origine."
+            },
+            {
+              "question": "Factoriser $z^5 - 1$ en facteurs irréductibles sur $\\mathbb{R}$.",
+              "answer": "$(z-1)(z^2 - 2\\cos\\frac{2\\pi}{5} z + 1)(z^2 - 2\\cos\\frac{4\\pi}{5} z + 1)$",
+              "hint": "Les racines sont $1, \\omega, \\omega^2, \\omega^3, \\omega^4$ avec $\\omega = e^{2i\\pi/5}$. Regroupe conjugués : $\\omega$ et $\\omega^4 = \\overline{\\omega}$ ; $\\omega^2$ et $\\omega^3 = \\overline{\\omega^2}$.",
+              "explanation": "Racines : $1$, $\\omega = e^{2i\\pi/5}$, $\\omega^2 = e^{4i\\pi/5}$, $\\omega^3 = e^{6i\\pi/5} = e^{-4i\\pi/5} = \\overline{\\omega^2}$, $\\omega^4 = e^{8i\\pi/5} = e^{-2i\\pi/5} = \\overline{\\omega}$. Facteurs quadratiques : $(z-\\omega)(z-\\overline{\\omega}) = z^2 - 2\\cos(2\\pi/5)z + 1$ et $(z-\\omega^2)(z-\\overline{\\omega^2}) = z^2 - 2\\cos(4\\pi/5)z + 1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

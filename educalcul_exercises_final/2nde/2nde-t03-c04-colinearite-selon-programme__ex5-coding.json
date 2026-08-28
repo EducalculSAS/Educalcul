@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Reconnaissance de la colinéarité par algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui, étant données les coordonnées de trois points $A(x_A,y_A)$, $B(x_B,y_B)$ et $C(x_C,y_C)$, détermine si ces trois points sont colinéaires. L'algorithme doit utiliser le déterminant (ou le produit vectoriel) et afficher « Colinéaires » ou « Non colinéaires ».",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, xB, yB, xC, yC.\\n2. Calculer det = (xB - xA)*(yC - yA) - (yB - yA)*(xC - xA).\\n3. Si det = 0 alors afficher \"Colinéaires\" sinon afficher \"Non colinéaires\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le déterminant formé par les vecteurs AB et AC est nul si et seulement si les deux vecteurs sont colinéaires, ce qui équivaut à l'alignement des trois points. L'algorithme calcule ce déterminant et teste s'il est nul.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire une fonction Python nommée `sont_colineaires(u, v)` qui reçoit deux vecteurs du plan sous forme de couples $(u_x, u_y)$ et $(v_x, v_y)$ et qui renvoie `True` si les vecteurs sont colinéaires, `False` sinon. Utiliser le test du produit vectoriel nul.",
+      "correctAnswer": "def sont_colineaires(u, v):\\n    ux, uy = u\\n    vx, vy = v\\n    return ux * vy - uy * vx == 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux vecteurs $(u_x,u_y)$ et $(v_x,v_y)$ sont colinéaires si leur produit vectoriel (déterminant) $u_x v_y - u_y v_x$ vaut zéro. La fonction implémente directement ce test.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "On souhaite vérifier qu'une liste de $n \\ge 3$ points $P_1, P_2, ..., P_n$ sont tous colinéaires. Écrire un algorithme qui lit les coordonnées de ces points, utilise les deux premiers points pour définir une direction, puis teste chaque point suivant. L'algorithme affiche « Tous colinéaires » si la condition est satisfaite pour tous les points, sinon « Au moins un point non colinéaire ».",
+      "correctAnswer": "Algorithme :\\n1. Lire n.\\n2. Lire x1, y1.\\n3. Lire x2, y2.\\n4. Pour i de 3 à n faire :\\n   a. Lire xi, yi.\\n   b. Calculer det = (x2 - x1)*(yi - y1) - (y2 - y1)*(xi - x1).\\n   c. Si det ≠ 0 alors afficher \"Au moins un point non colinéaire\" et arrêter.\\n5. Après la boucle, afficher \"Tous colinéaires\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si tous les points sont colinéaires, chaque vecteur $P_1P_i$ est colinéaire au vecteur directeur $P_1P_2$. Le test du déterminant pour chaque point successif garantit la propriété globale. La boucle s'arrête dès qu'un point ne satisfait pas la condition.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

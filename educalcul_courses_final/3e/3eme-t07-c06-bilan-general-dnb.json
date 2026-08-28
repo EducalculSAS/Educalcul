@@ -1,0 +1,657 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.010735+00:00",
+  "id": 495,
+  "code": "3eme-t07-c06",
+  "title": "Bilan général DNB",
+  "description": "Cours structuré Educalcul : Bilan général DNB.",
+  "subject": "Algorithmique et préparation DNB",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Algorithmique et préparation DNB",
+    "titre_du_cours": "Bilan général DNB",
+    "objectif_global": "Bilan général DNB",
+    "mini_lecons_imposees": [
+      "Automatismes.",
+      "Méthodes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et préparation DNB",
+      "lessons": [
+        {
+          "title": "Automatismes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les variables et l'affectation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues à un jeu vidéo et que ton score change à chaque niveau. Pour que le programme sache quel est ton score à tout moment, il a besoin d'un endroit où stocker ce nombre : c'est ce qu'on appelle une variable. Une variable, c'est comme une petite boîte étiquetée où tu peux ranger une valeur, la regarder plus tard, et la remplacer par une nouvelle valeur quand c'est nécessaire. Au début, la boîte est vide, puis tu y mets ton premier score, par exemple 0. Chaque fois que tu gagnes des points, tu ouvres la boîte, tu lis l'ancien nombre, tu ajoutes les points gagnés, et tu remets le nouveau total dans la même boîte. C'est exactement ce que fait l'ordinateur quand il exécute une instruction d'affectation."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Un nom symbolique qui désigne un emplacement mémoire capable de contenir une valeur qui peut changer au cours de l'exécution du programme.",
+              "example": "score ← 0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom clair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne à ta variable un nom qui décrit ce qu'elle contient, par exemple « score » ou « niveau ». Évite les noms trop courts comme « x » sauf si le contexte est évident."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Initialiser la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant de l'utiliser, attribue-lui une valeur de départ avec l'opérateur d'affectation (souvent une flèche ou un signe égal). Par exemple : score ← 0."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Modifier la valeur quand c'est nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque fois que l'événement se produit (un point gagné, un niveau franchi), écris une nouvelle affectation qui utilise l'ancienne valeur : score ← score + 10."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "score = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais créer et modifier une variable, voyons comment le programme peut prendre des décisions en fonction de sa valeur. Les structures conditionnelles permettent d'exécuter certaines instructions seulement si une condition est vraie, un peu comme un feu de signalisation qui laisse passer les voitures seulement quand il est vert."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les structures conditionnelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu veuilles afficher un message différent selon que le joueur a atteint le niveau 5 ou non. Tu écris : si niveau ≥ 5 alors afficher « Bravo, tu es expert ! » sinon afficher « Continue, tu progresses ! ». Le mot « si » introduit la condition, « alors » la suite d'instructions à faire quand la condition est vraie, et « sinon » (facultatif) la suite quand elle est fausse. C'est la base de toute logique de branchement dans un algorithme."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Une expression qui peut être évaluée à vrai ou faux, utilisée pour diriger le flux d'exécution du programme.",
+              "example": "niveau ≥ 5"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise des opérateurs de comparaison (>, <, ≥, ≤, =, ≠) pour construire une expression booléenne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Placer les instructions du bloc « alors »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indentifie les instructions qui doivent s'exécuter si la condition est vraie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajouter un bloc « sinon » si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prévois ce qui se passe quand la condition est fausse, sinon le programme continue simplement après le « si »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Teste toujours ta condition avec plusieurs valeurs (juste en dessous, juste au-dessus, exactement à la limite) pour être sûr qu'elle se comporte comme prévu."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les décisions, il est souvent utile de répéter une série d'instructions plusieurs fois sans la réécrire. C'est le rôle des boucles. Elles permettent d'automatiser les tâches répétitives, comme afficher les nombres de 1 à 10 ou demander à l'utilisateur de deviner un nombre jusqu'à ce qu'il trouve le bon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe deux grandes formes : la boucle « pour » (ou « pour chaque ») quand on connaît à l'avance le nombre de répétitions, et la boucle « tant que » quand on continue tant qu'une condition reste vraie. Par exemple, pour afficher les entiers de 1 à 10, on écrit : pour i de 1 à 10 faire afficher i. La variable i prend successivement chaque valeur, et le corps de la boucle s'exécute à chaque tour. Avec « tant que », on pourrait écrire : tant que réponse ≠ secret faire demander réponse. La boucle s'arrête dès que la condition devient fausse."
+            },
+            {
+              "type": "definition",
+              "term": "boucle",
+              "definition": "Structure de contrôle qui permet de répéter un bloc d'instructions tant qu'une condition de continuation est satisfaite ou pour un nombre prédéterminé d'itérations.",
+              "example": "pour i de 1 à 10 faire …"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le type de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le nombre de tours est connu, utilise « pour ». Si tu dois attendre un événement, utilise « tant que »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Définir la variable de contrôle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour « pour », initialise le compteur (i ← 1) et fixe la borne finale. Pour « tant que », initialise la condition (réponse ← 0)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les instructions à répéter à l'intérieur, en veillant à modifier la variable de contrôle pour éviter une boucle infinie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs successives du compteur i dans une boucle pour de 1 à 10",
+              "min": 0,
+              "max": 11,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction d'affectation qui initialise la variable « points » à 0, puis l'instruction qui ajoute 5 à « points ».",
+              "answer": "points ← 0 ; points ← points + 5",
+              "hint": "Utilise la flèche d'affectation et pense à réutiliser la variable dans la seconde instruction.",
+              "explanation": "La première instruction crée la boîte « points » et y met 0. La seconde lit la valeur actuelle (0), ajoute 5, et remet le résultat (5) dans la même boîte."
+            },
+            {
+              "question": "Complète le fragment d'algorithme suivant pour afficher « Pair » si le nombre n est pair, sinon « Impair » : si … alors afficher « Pair » sinon afficher « Impair ».",
+              "answer": "n mod 2 = 0",
+              "hint": "Un nombre est pair quand le reste de sa division par 2 est nul.",
+              "explanation": "L'opérateur « mod » donne le reste de la division entière. Si n mod 2 = 0, le reste est 0 donc n est pair ; sinon il est impair."
+            },
+            {
+              "question": "Quel sera l'affichage de cet algorithme ? pour i de 1 à 4 faire afficher i * 2",
+              "answer": "2 4 6 8",
+              "hint": "Calcule i * 2 pour chaque valeur de i de 1 à 4.",
+              "explanation": "La boucle fait varier i de 1 à 4. À chaque tour, on affiche le double de i : 1*2=2, 2*2=4, 3*2=6, 4*2=8."
+            }
+          ]
+        },
+        {
+          "title": "Méthodes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le problème avant de coder"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant d'écrire la moindre ligne d'algorithme, prends le temps de lire l'énoncé plusieurs fois. Identifie les données d'entrée (ce qui est donné), les résultats attendus (ce qu'on doit produire) et les contraintes (limites de temps, formats de sortie). Imagine une situation concrète : on te demande de calculer la moyenne de trois notes. Les entrées sont les trois notes, la sortie est un nombre, et la contrainte est que chaque note est comprise entre 0 et 20. Note ces éléments sur une feuille, cela t'évitera de coder à l'aveugle."
+            },
+            {
+              "type": "definition",
+              "term": "donnée d'entrée",
+              "definition": "Information fournie au programme avant son exécution, qui servira de base aux calculs.",
+              "example": "Les trois notes : 12, 15, 9"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les entrées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque donnée avec son nom et son type (entier, réel, chaîne)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Définir la sortie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Précise ce que le programme doit afficher ou retourner, et sous quelle forme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Repérer les contraintes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie les limites (valeurs minimales, maximales, formats) pour éviter les erreurs à l'exécution."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Conseil",
+              "paragraphs": [
+                "Un bon problème bien compris est à moitié résolu. Ne saute jamais cette phase, même pour des exercices qui te semblent simples."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le problème clair, il faut concevoir l'algorithme. Le pseudocode est un langage intermédiaire, proche du français structuré, qui permet de décrire la logique sans se soucier de la syntaxe d'un langage de programmation précis. Écris les grandes étapes dans l'ordre, en utilisant les mots-clés « début », « fin », « si », « sinon », « pour », « tant que », « afficher ». Par exemple, pour la moyenne : début lire note1, note2, note3 ; somme ← note1 + note2 + note3 ; moyenne ← somme / 3 ; afficher moyenne ; fin. Cette écriture te sert de plan avant de passer au code réel."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le pseudocode"
+            },
+            {
+              "type": "definition",
+              "term": "pseudocode",
+              "definition": "Description informelle et structurée d'un algorithme, utilisant un mélange de langage naturel et de mots-clés algorithmiques, indépendante d'un langage de programmation.",
+              "example": "début lire a, b ; si a > b alors afficher a sinon afficher b fin"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Découper en sous-tâches",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les actions principales (lecture, calcul, test, affichage) et ordonne-les logiquement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Traduire chaque sous-tâche en pseudocode",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les mots-clés standards et indentation pour montrer la structure (blocs imbriqués)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relire et vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que chaque variable utilisée a été initialisée et que les boucles ont une condition de sortie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Pseudocode"
+              ],
+              "rows": [
+                [
+                  "Lecture",
+                  "lire note1, note2, note3"
+                ],
+                [
+                  "Calcul",
+                  "somme ← note1 + note2 + note3"
+                ],
+                [
+                  "Moyenne",
+                  "moyenne ← somme / 3"
+                ],
+                [
+                  "Affichage",
+                  "afficher moyenne"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le programme est écrit, mais il peut contenir des erreurs. Le test consiste à exécuter l'algorithme avec des jeux de données variés : cas nominal, cas limites (valeurs minimales, maximales), et cas inattendus (entrée vide, type incorrect). Si le résultat ne correspond pas à l'attendu, on débogue : on suit pas à pas l'exécution, on affiche les valeurs intermédiaires, on corrige l'instruction fautive, puis on reteste. C'est un cycle itératif qui garantit la fiabilité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester et déboguer"
+            },
+            {
+              "type": "definition",
+              "term": "débogage",
+              "definition": "Processus de recherche, d'analyse et de correction des erreurs (bugs) dans un algorithme ou un programme.",
+              "example": "Afficher la variable somme après chaque addition pour voir où elle diverge."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer des jeux de test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis au moins trois cas : normal, borne basse, borne haute."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécuter manuellement ou avec un traceur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suis l'algorithme instruction par instruction, note les valeurs des variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger et réitérer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Modifie l'instruction erronée, puis relance les tests jusqu'à ce que tous passent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne te contente pas d'un seul test réussi. Un algorithme qui marche pour un cas peut échouer pour un autre."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour le problème « calculer le périmètre d'un rectangle », liste les données d'entrée, la sortie attendue et une contrainte possible.",
+              "answer": "Entrées : longueur, largeur (nombres réels > 0). Sortie : périmètre (nombre réel). Contrainte : longueur et largeur strictement positives.",
+              "hint": "Le périmètre se calcule avec 2 * (longueur + largeur).",
+              "explanation": "On a besoin des deux dimensions pour calculer. La contrainte évite des valeurs négatives ou nulles qui n'ont pas de sens géométrique."
+            },
+            {
+              "question": "Écris le pseudocode complet pour déterminer le plus grand de trois nombres a, b, c.",
+              "answer": "début lire a, b, c ; max ← a ; si b > max alors max ← b fin si ; si c > max alors max ← c fin si ; afficher max ; fin",
+              "hint": "Initialise max avec a, puis compare successivement avec b et c.",
+              "explanation": "On part du principe que a est le maximum, puis on met à jour max si b ou c est plus grand. À la fin, max contient le plus grand des trois."
+            },
+            {
+              "question": "Lors du test de l'algorithme précédent, quels trois jeux de données proposerais-tu pour être raisonnablement sûr qu'il fonctionne ?",
+              "answer": "1) a=5, b=3, c=7 (maximum c) ; 2) a=10, b=10, c=2 (égalité a=b) ; 3) a=-1, b=-5, c=-3 (nombres négatifs).",
+              "hint": "Pense à un cas où le maximum est le premier, le deuxième, le troisième, et à des valeurs égales ou négatives.",
+              "explanation": "Ces cas couvrent les différentes positions du maximum, l'égalité et le domaine des nombres négatifs, ce qui teste la robustesse des comparaisons."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Check‑list des automatismes à maîtriser"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant l'examen, passe en revue chaque automatisme algorithmique comme on vérifie son sac avant un voyage. Pour les variables : sais‑tu déclarer, initialiser et modifier une variable sans hésiter ? Essaie sur un exemple nouveau : crée une variable « timer » à 30, puis décrémente‑la de 1 à chaque tour d'une boucle. Pour les conditions : écris sans regarder ton cours un « si » qui teste si une note est supérieure ou égale à 10 et affiche « Validé » sinon « Rattrapage ». Pour les boucles : code de tête une boucle « pour » qui affiche les carrés des entiers de 1 à 5. Si tu bloques sur l'un de ces points, reviens à la leçon correspondante et refais l'exercice associé."
+            },
+            {
+              "type": "definition",
+              "term": "automatisme",
+              "definition": "Compétence technique qu'on exécute rapidement et sans réflexion consciente grâce à un entraînement répété.",
+              "example": "Écrire « pour i de 1 à n faire … » sans chercher la syntaxe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les automatismes clés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Variables, affectation, conditions simples, conditions composées, boucle pour, boucle tant que."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : S'auto‑évaluer sur chacun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque item, écris un mini‑exemple de tête en moins de 30 secondes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Cibler les faiblesses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Revois uniquement les items où tu as hésité, en refaisant les exercices correspondants."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs de timer au cours d'une boucle de 30 à 0",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 30,
+                  "label": "Départ"
+                },
+                {
+                  "value": 15,
+                  "label": "Milieu"
+                },
+                {
+                  "value": 0,
+                  "label": "Fin"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "De la même façon, vérifie tes méthodes de résolution de problème. As‑tu le réflexe de lire l'énoncé, de lister entrées/sorties/contraintes, d'écrire le pseudocode, de tester avec au moins trois jeux de données ? Prends un sujet d'annales DNB (par exemple « calculer le prix total d'un panier avec remise ») et applique la méthode complète en 10 minutes chrono. Si tu dépasse le temps ou si tu oublies une étape, note l'étape manquante et répète l'exercice jusqu'à ce que le processus devienne fluide."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Check‑list des méthodes de résolution"
+            },
+            {
+              "type": "definition",
+              "term": "méthode de résolution",
+              "definition": "Procédé structuré en étapes (analyse, conception, codage, test) qui guide de l'énoncé à la solution algorithmique.",
+              "example": "Analyse → Pseudocode → Test → Correction"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Analyse (entrées, sorties, contraintes)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note tout ce qui est donné et ce qui est demandé, avec les limites."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Conception (pseudocode)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'algorithme en langage naturel structuré, sans syntaxe de programmation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Test (jeux de données)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prépare au moins trois cas : normal, limite, inhabituel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Correction (débogage)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si un test échoue, localise l'erreur, corrige, reteste."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Rappel",
+              "paragraphs": [
+                "La méthode est un filet de sécurité : même sous stress, elle t'empêche d'oublier une étape cruciale."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, combine les deux check‑lists dans une fiche unique que tu glisseras dans ta trousse le jour de l'épreuve. Écris‑la de ta main, avec tes propres mots, tes propres exemples (par exemple le minuteur de 30 secondes pour la boucle, le test de note ≥ 10 pour la condition). Relis‑la la veille de l'examen et le matin même : la simple lecture réactive les automatismes et apaise l'anxiété. Tu es prêt, tu as tout révisé, tu as des stratégies claires, tu vas réussir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fiche de révision finale"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais déclarer, initialiser et modifier une variable.",
+                "J'écris correctement une condition simple et une condition composée.",
+                "Je construis une boucle pour et une boucle tant que sans erreur.",
+                "J'analyse un énoncé : entrées, sorties, contraintes.",
+                "Je produis un pseudocode clair et indenté.",
+                "Je prépare au moins trois jeux de test (normal, limite, inattendu).",
+                "Je débogue en traçant les variables pas à pas.",
+                "J'ai ma fiche personnelle de révision prête pour le jour J."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris de tête un algorithme qui initialise une variable « compteur » à 10, puis utilise une boucle tant que pour afficher sa valeur et la décrémenter jusqu'à 0.",
+              "answer": "compteur ← 10 ; tant que compteur ≥ 0 faire afficher compteur ; compteur ← compteur - 1 fin tant que",
+              "hint": "Pense à la condition d'arrêt et à la modification de la variable à l'intérieur de la boucle.",
+              "explanation": "La boucle continue tant que compteur est supérieur ou égal à 0. À chaque tour, on affiche la valeur courante puis on retire 1, donc on voit 10, 9, …, 0."
+            },
+            {
+              "question": "Pour le problème « calculer le prix après une remise de 15 % sur un article », donne les entrées, la sortie, une contrainte, puis écris le pseudocode.",
+              "answer": "Entrées : prixInitial (réel > 0). Sortie : prixRemis (réel). Contrainte : prixInitial > 0. Pseudocode : début lire prixInitial ; remise ← prixInitial * 0.15 ; prixRemis ← prixInitial - remise ; afficher prixRemis ; fin",
+              "hint": "La remise est 15 % du prix initial, soit 0,15 fois ce prix.",
+              "explanation": "On calcule le montant de la remise, on le soustrait au prix initial, et on affiche le résultat. Les tests doivent inclure un prix entier, un prix décimal, et une valeur limite comme 0,01."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

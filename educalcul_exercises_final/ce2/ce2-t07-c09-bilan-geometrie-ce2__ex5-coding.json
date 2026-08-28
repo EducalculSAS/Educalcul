@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 204,
+  "_course_code": "ce2-t07-c09-bilan-geometrie-ce2",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître, décrire, construire",
+  "title": "Algorithmes et constructions géométriques",
+  "blocks": [
+    {
+      "title": "Compléter un algorithme : le carré",
+      "content": "On veut programmer le tracé d'un carré de côté $3$ cases sur un quadrillage. Le pointeur part de la case de départ (en bas à gauche) orienté vers la droite. Complète l'algorithme ci-dessous en écrivant les instructions manquantes (AVANCE, TOURNE À DROITE).\\n\\nDÉBUT\\nRÉPÈTER 4 FOIS\\n    AVANCE ... cases\\n    TOURNE À ...\\nFIN RÉPÉTER\\nFIN",
+      "correctAnswer": "DÉBUT\\nRÉPÈTER 4 FOIS\\n    AVANCE 3 cases\\n    TOURNE À DROITE\\nFIN RÉPÉTER\\nFIN",
+      "explanation": "Pour tracer un carré, il faut faire 4 côtés de même longueur. À chaque côté, on avance de 3 cases (la longueur du côté) puis on tourne à droite de 90 degrés (un quart de tour) pour changer de direction. On répète cela 4 fois pour fermer la figure.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 6,
+        "highlighted": 0,
+        "caption": "Quadrillage 6x6. Départ en bas à gauche (case 0), orientation vers la droite."
+      }
+    },
+    {
+      "title": "Lire un algorithme : quelle figure ?",
+      "content": "On exécute l'algorithme suivant sur un quadrillage. Le pointeur part au centre, orienté vers le haut.\\n\\nDÉBUT\\nRÉPÈTER 2 FOIS\\n    AVANCE 4 cases\\n    TOURNE À DROITE\\n    AVANCE 2 cases\\n    TOURNE À DROITE\\nFIN RÉPÉTER\\nFIN\\n\\nQuelle figure a été tracée ? Décris-la précisément (nom, longueurs des côtés).",
+      "correctAnswer": "C'est un rectangle de longueur 4 cases et de largeur 2 cases.",
+      "explanation": "La boucle se répète 2 fois. À chaque tour : on avance de 4 (grand côté), on tourne à droite, on avance de 2 (petit côté), on tourne à droite. Au total, on a tracé deux grands côtés de 4 cases et deux petits côtés de 2 cases, avec des angles droits. C'est donc un rectangle de dimensions 4 sur 2.",
+      "points": 3,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 8,
+        "cols": 8,
+        "highlighted": 0,
+        "caption": "Quadrillage 8x8. Départ au centre approximatif, orientation vers le haut."
+      }
+    },
+    {
+      "title": "Écrire un algorithme : le rectangle",
+      "content": "Écris un algorithme complet (avec DÉBUT, FIN, boucles si nécessaire) pour tracer un rectangle de longueur $5$ cases et de largeur $3$ cases. Le pointeur part en bas à gauche orienté vers la droite. Utilise les instructions : AVANCE ... cases, TOURNE À DROITE, RÉPÈTER ... FOIS.",
+      "correctAnswer": "DÉBUT\\nRÉPÈTER 2 FOIS\\n    AVANCE 5 cases\\n    TOURNE À DROITE\\n    AVANCE 3 cases\\n    TOURNE À DROITE\\nFIN RÉPÉTER\\nFIN",
+      "explanation": "Un rectangle a deux paires de côtés égaux. Pour éviter de répéter 4 fois les instructions, on utilise une boucle RÉPÉTER 2 FOIS. Dans la boucle : on trace la longueur (5 cases), on tourne à droite, on trace la largeur (3 cases), on tourne à droite. Après deux tours, les 4 côtés sont tracés et le pointeur revient à sa position et orientation initiales.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

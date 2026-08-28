@@ -1,0 +1,79 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Lire une fonction graphiquement",
+  "title": "Lire une fonction graphiquement : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Trouver l'image d'un nombre",
+      "content": "Le graphique ci-dessous représente la fonction affine $f(x)=2x+1$. Remets dans l'ordre les étapes pour déterminer $f(3)$ à partir de ce graphique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repère le point d'abscisse $3$ sur l'axe des abscisses.",
+        "Trace une ligne verticale passant par ce point jusqu'à rencontrer la courbe de la fonction.",
+        "Lis l'ordonnée du point d'intersection ; cette valeur est $f(3)$.",
+        "Conclus que $f(3)=7$."
+      ],
+      "explanation": "Pour lire l'image de $3$ sur le graphique de $f$, on commence par localiser l'abscisse $3$ sur l'axe horizontal. On monte ensuite verticalement jusqu'à la courbe, ce qui donne le point de la courbe d'abscisse $3$. L'ordonnée de ce point est la valeur cherchée. Comme la fonction est $f(x)=2x+1$, on trouve $f(3)=2\\times3+1=7$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -2,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=2x+1"
+      }
+    },
+    {
+      "title": "Trouver les antécédents d'une valeur",
+      "content": "Le graphique ci-dessous représente la fonction quadratique $f(x)=x^2-4x-1$. Remets dans l'ordre les étapes pour trouver les antécédents de $4$ par $f$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trace la ligne horizontale d'équation $y=4$ sur le graphique.",
+        "Repère les points d'intersection de cette ligne avec la courbe de la fonction.",
+        "Projette ces points sur l'axe des abscisses pour lire leurs abscisses.",
+        "Conclus que les antécédents de $4$ sont $x=-1$ et $x=5$."
+      ],
+      "explanation": "Pour trouver les antécédents de $4$, on trace l'horizontale $y=4$. Les intersections avec la courbe donnent les points dont l'ordonnée est $4$. En projetant sur l'axe des abscisses, on obtient les valeurs de $x$ telles que $f(x)=4$. La résolution de $x^2-4x-1=4$ donne $x^2-4x-5=0$, soit $(x-5)(x+1)=0$, donc $x=5$ ou $x=-1$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4*x-1",
+        "xmin": -3,
+        "xmax": 7,
+        "caption": "Graphique de la fonction f(x)=x^2-4x-1"
+      }
+    },
+    {
+      "title": "Déterminer les intervalles de variation",
+      "content": "Le graphique ci-dessous représente la fonction $f(x)=x^3-3x$. Remets dans l'ordre les étapes pour déterminer les intervalles de croissance et de décroissance de $f$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Observe la courbe de gauche à droite pour repérer les zones où elle monte ou descend.",
+        "Identifie les points où la courbe change de sens (les extrema).",
+        "Note les intervalles d'abscisses où la courbe monte : la fonction est croissante.",
+        "Note les intervalles d'abscisses où la courbe descend : la fonction est décroissante.",
+        "Rédige le tableau de variation en indiquant les intervalles de croissance et de décroissance."
+      ],
+      "explanation": "Pour étudier les variations d'une fonction à partir de son graphique, on parcourt la courbe de gauche à droite. Les points où la courbe passe de croissante à décroissante (ou inversement) sont les extrema. On repère ensuite les intervalles où la courbe monte (fonction croissante) et ceux où elle descend (fonction décroissante). Pour $f(x)=x^3-3x$, la dérivée $f'(x)=3x^2-3$ s'annule en $x=-1$ et $x=1$. La fonction est croissante sur $]-\\infty;-1]$ et $[1;+\\infty[$, décroissante sur $[-1;1]$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^3-3*x",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de la fonction f(x)=x^3-3x"
+      }
+    }
+  ]
+}

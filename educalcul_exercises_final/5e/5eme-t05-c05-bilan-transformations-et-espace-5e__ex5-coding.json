@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 404,
+  "_course_code": "5eme-t05-c05-bilan-transformations-et-espace-5e",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Repérage, transformations, solides",
+  "title": "Algorithmes de repérage, transformations et solides (5e)",
+  "blocks": [
+    {
+      "title": "Translation d'un point",
+      "content": "Écrire un algorithme (en pseudo-code) qui, étant donnés les coordonnées d'un point $A(x_A, y_A)$ et les composantes d'un vecteur de translation $\\vec{v}(a, b)$, affiche les coordonnées du point image $A'$ après la translation.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, a, b.\\n2. Calculer xAprime = xA + a.\\n3. Calculer yAprime = yA + b.\\n4. Afficher xAprime, yAprime.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation ajoute les composantes du vecteur aux coordonnées du point. Si $A(x_A,y_A)$ et $\\vec{v}(a,b)$, alors $A'(x_A+a, y_A+b)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rotation d'un demi-tour autour de l'origine",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées d'un point $A(x_A, y_A)$, affiche les coordonnées de son image $A'$ par une rotation de $180^{\\circ}$ (demi-tour) autour de l'origine $O(0,0)$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA.\\n2. Calculer xAprime = -xA.\\n3. Calculer yAprime = -yA.\\n4. Afficher xAprime, yAprime.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un demi-tour autour de l'origine change le signe des deux coordonnées : $A'( -x_A, -y_A )$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'un pavé droit et inclusion dans un cube",
+      "content": "Écrire un algorithme qui, étant donnés la longueur $L$, la largeur $l$ et la hauteur $h$ d'un pavé droit, calcule son volume $V$ et teste si ce pavé peut être placé entièrement à l'intérieur d'un cube de côté $c$ (sans rotation). L'algorithme doit afficher le volume et le résultat du test (VRAI ou FAUX).",
+      "correctAnswer": "Algorithme :\\n1. Lire L, l, h, c.\\n2. Calculer V = L * l * h.\\n3. Si (L <= c) et (l <= c) et (h <= c) alors afficher V, \"VRAI\" sinon afficher V, \"FAUX\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'un pavé droit est $V = L \\times l \\times h$. Pour tenir dans un cube de côté $c$ sans rotation, chaque dimension doit être inférieure ou égale à $c$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Application : Suites et motifs",
+  "title": "Ordre de résolution : suites et motifs",
+  "blocks": [
+    {
+      "title": "Suite géométrique répétitive",
+      "content": "Voici une suite de formes : $Triangle, Carre, Triangle, Carre, Triangle, Carre...$ Range les étapes dans l'ordre pour trouver la forme qui se trouve en $10^e$ position.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "J'identifie le motif qui se répète : Triangle, Carre.",
+        "Je compte le nombre de formes dans le motif : il y a $2$ formes.",
+        "Je divise la position demandée par la longueur du motif : $10 / 2 = 5$ reste $0$.",
+        "Comme le reste est $0$, la $10^e$ forme est la derniere du motif : le Carre."
+      ],
+      "explanation": "Le motif de base est 'Triangle, Carre' (longueur 2). Pour trouver la $10^e$ forme, on divise 10 par 2. Le quotient est 5 (le motif se repete 5 fois) et le reste est 0. Un reste de 0 signifie qu'on tombe pile sur le dernier element du motif, donc le Carre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite numérique croissante",
+      "content": "On considere la suite de nombres : $3, 6, 9, 12, 15...$ Range les etapes dans l'ordre pour determiner le $8^e$ terme de cette suite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "J'observe la difference entre deux termes consecutifs : $6 - 3 = 3$, $9 - 6 = 3$. La raison est $+3$.",
+        "Je reconnais la table de multiplication par $3$ : les termes sont les multiples de $3$.",
+        "Pour trouver le $8^e$ terme, je multiplie la raison par le numero du terme : $3 \\times 8$.",
+        "Je calcule : $3 \\times 8 = 24$. Le $8^e$ terme est $24$."
+      ],
+      "explanation": "C'est une suite arithmetique de raison 3. Le n-ieme terme vaut $3 \\times n$. Pour $n=8$, on calcule $3 \\times 8 = 24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probleme avec une suite",
+      "content": "Une plante mesure $10$ cm. Elle grandit de $2$ cm par semaine. Range les etapes pour trouver sa hauteur dans $5$ semaines.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je note la hauteur de depart : $10$ cm, et la croissance par semaine : $2$ cm.",
+        "Je calcule la croissance totale sur $5$ semaines : $2 \\times 5 = 10$ cm.",
+        "J'ajoute cette croissance a la hauteur de depart : $10 + 10 = 20$ cm.",
+        "La plante mesurera $20$ cm dans $5$ semaines."
+      ],
+      "explanation": "Hauteur finale = Hauteur initiale + (Croissance par semaine $\\times$ Nombre de semaines). Soit $10 + (2 \\times 5) = 10 + 10 = 20$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

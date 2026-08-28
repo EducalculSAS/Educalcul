@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 187,
+  "_course_code": "ce2-t06-c01-longueurs-mm-cm-m-km",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Choisir unité",
+  "title": "Choisir l'unité de longueur adaptée",
+  "blocks": [
+    {
+      "title": "Objets de la classe",
+      "content": "Écris un raisonnement sous forme d'étapes (algorithme) pour choisir entre le centimètre (cm) et le mètre (m) afin de mesurer la longueur d'un objet de la classe (ex: une règle, la largeur de la porte, un cahier).",
+      "correctAnswer": "Étape 1 : Observer l'objet.\\nÉtape 2 : Estimer sa taille.\\nÉtape 3 : Si l'objet est plus petit que la largeur d'une porte (environ 1 m), alors on utilise le centimètre (cm).\\nÉtape 4 : Si l'objet est plus grand ou égal à la largeur d'une porte, alors on utilise le mètre (m).\\nÉtape 5 : Mesurer avec l'unité choisie.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En CE2, on apprend à estimer l'ordre de grandeur. Les objets courants de la classe (règle, cahier, livre) mesurent quelques dizaines de centimètres, donc on utilise le cm. Les grandes dimensions (largeur de la porte, hauteur du tableau, longueur de la classe) dépassent largement 1 m, donc on utilise le m. L'algorithme structure cette estimation par un test 'Si... Alors... Sinon...'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Petits et grands objets",
+      "content": "Complète cet algorithme pour choisir l'unité la plus adaptée parmi millimètre (mm), centimètre (cm) et mètre (m).\\n\\nDébut\\n  Afficher \"Quelle est la taille de l'objet ?\"\\n  Si taille < 1 cm Alors\\n    Unité = \"...\"\\n  Sinon Si taille < 1 m Alors\\n    Unité = \"...\"\\n  Sinon\\n    Unité = \"...\"\\n  Fin Si\\n  Afficher \"Mesure en \" + Unité\\nFin",
+      "correctAnswer": "Début\\n  Afficher \"Quelle est la taille de l'objet ?\"\\n  Si taille < 1 cm Alors\\n    Unité = \"mm\"\\n  Sinon Si taille < 1 m Alors\\n    Unité = \"cm\"\\n  Sinon\\n    Unité = \"m\"\\n  Fin Si\\n  Afficher \"Mesure en \" + Unité\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise des seuils de conversion : 1 cm = 10 mm et 1 m = 100 cm. Si l'objet est très petit (moins de 1 cm, comme l'épaisseur d'une pièce ou un petit insecte), on utilise le millimètre (mm). Si l'objet est entre 1 cm et 1 m (comme un livre, une table, une feuille), on utilise le centimètre (cm). Si l'objet dépasse 1 m (comme une pièce, un arbre, un terrain), on utilise le mètre (m).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Distances longues : le kilomètre",
+      "content": "Écris un algorithme complet (Début ... Fin) avec des tests \"Si... Alors... Sinon\" pour choisir l'unité entre millimètre (mm), centimètre (cm), mètre (m) et kilomètre (km) selon la distance à mesurer. Pense aux seuils : 1 cm, 1 m, 1 km.",
+      "correctAnswer": "Début\\n  Afficher \"Quelle distance veux-tu mesurer ?\"\\n  Si distance < 1 cm Alors\\n    Unité = \"mm\"\\n  Sinon Si distance < 1 m Alors\\n    Unité = \"cm\"\\n  Sinon Si distance < 1 km Alors\\n    Unité = \"m\"\\n  Sinon\\n    Unité = \"km\"\\n  Fin Si\\n  Afficher \"L'unité adaptée est : \" + Unité\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute le kilomètre (km) pour les très grandes distances. Les seuils sont : 1 cm = 10 mm, 1 m = 100 cm, 1 km = 1000 m. L'algorithme teste la distance par ordre croissant. Exemples : épaisseur d'un cheveu -> mm ; longueur d'un stylo -> cm ; hauteur d'un arbre -> m ; distance entre deux villes -> km. La structure 'Sinon Si' permet d'enchaîner les tests sans les imbriquer trop profondément.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

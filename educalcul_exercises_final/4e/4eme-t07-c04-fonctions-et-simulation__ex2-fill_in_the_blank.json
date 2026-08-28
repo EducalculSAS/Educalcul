@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Appeler",
+  "title": "Appel de fonctions en algorithmique",
+  "blocks": [
+    {
+      "title": "Appel simple d'une fonction",
+      "content": "Soit une fonction `cube(n)` qui retourne le cube d'un nombre. Pour afficher le cube de $3$, on complète l'instruction suivante : `print({{1}})` .",
+      "correctAnswer": "",
+      "blanks": [
+        "cube(3)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour appeler une fonction qui attend un argument, on écrit son nom suivi de parenthèses contenant la valeur de l'argument. Ici, `cube(3)` calcule $3^3 = 27$ et `print` affiche le résultat retourné par la fonction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Stockage d'une valeur retournée",
+      "content": "La fonction `aire_carre(cote)` retourne l'aire d'un carré de côté `cote`. Pour affecter l'aire d'un carré de côté $7$ à la variable `A`, on écrit : `A = {{1}}` .",
+      "correctAnswer": "",
+      "blanks": [
+        "aire_carre(7)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'appel de fonction `aire_carre(7)` exécute le calcul $7 \\times 7$ et retourne la valeur $49$. Le symbole `=` permet d'affecter cette valeur retournée à la variable `A`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appel imbriqué dans une instruction",
+      "content": "On dispose d'une fonction `maximum(x, y)` qui renvoie le plus grand des deux nombres. Parmi les propositions ci-dessous, recopiez l'instruction correcte pour afficher le maximum de $-5$ et $12$ : {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "print(maximum(-5, 12)) | print(maximum(-5,12))"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction `maximum` doit être appelée avec ses deux arguments : `maximum(-5, 12)`. Elle compare les valeurs et retourne $12$. Pour afficher ce résultat, on imbrique cet appel à l'intérieur de la fonction `print` : `print(maximum(-5, 12))`.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

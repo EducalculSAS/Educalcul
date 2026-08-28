@@ -1,0 +1,546 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.542312+00:00",
+  "id": 659,
+  "code": "terminale-generale-complementaires-t06-c03",
+  "title": "Tests et diagnostics",
+  "description": "Cours structuré Educalcul : Tests et diagnostics.",
+  "subject": "Inférence bayésienne",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Inférence bayésienne",
+    "titre_du_cours": "Tests et diagnostics",
+    "objectif_global": "Tests et diagnostics",
+    "mini_lecons_imposees": [
+      "Sensibilité / spécificité selon contexte.",
+      "Probabilité a posteriori.",
+      "Communication."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Inférence bayésienne",
+      "lessons": [
+        {
+          "title": "Sensibilité / spécificité selon contexte.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contexte du test diagnostique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que vous soyez médecin dans un service d'urgence et qu'un patient arrive avec des symptômes qui pourraient correspondre à une infection bactérienne ou à une simple grippe virale. Vous disposez d'un test rapide qui change de couleur en présence d'un marqueur spécifique. Avant d'utiliser ce test, vous devez comprendre deux notions fondamentales : la sensibilité et la spécificité. La sensibilité mesure la capacité du test à identifier correctement les personnes qui sont réellement malades ; en d'autres termes, parmi tous les patients atteints, quelle proportion le test signale-t-il comme positifs ? La spécificité, quant à elle, mesure la capacité du test à identifier correctement les personnes qui ne sont pas malades ; parmi tous les patients sains, quelle proportion le test signale-t-il comme négatifs ? Ces deux quantités ne dépendent pas de la prévalence de la maladie dans la population testée, mais elles déterminent, ensemble avec la prévalence, les valeurs prédictives que vous communiquerez au patient. Dans cette leçon, nous allons d'abord définir précisément ces deux indicateurs, puis nous verrons comment les calculer à partir d'un tableau de contingence, et enfin nous illustrerons pourquoi le choix du seuil de décision modifie la sensibilité et la spécificité de manière opposée."
+            },
+            {
+              "type": "definition",
+              "term": "Sensibilité",
+              "definition": "Proportion de vrais positifs parmi l'ensemble des sujets malades : $Se = \\frac{VP}{VP+FN}$.",
+              "example": "Si un test détecte 90 malades sur 100 malades réels, sa sensibilité est de $0,90$."
+            },
+            {
+              "type": "definition",
+              "term": "Spécificité",
+              "definition": "Proportion de vrais négatifs parmi l'ensemble des sujets sains : $Sp = \\frac{VN}{VN+FP}$.",
+              "example": "Si un test classe correctement 85 sains sur 100 sains réels, sa spécificité est de $0,85$."
+            },
+            {
+              "type": "display_math",
+              "latex": "Se = \\frac{VP}{VP+FN} \\quad ; \\quad Sp = \\frac{VN}{VN+FP}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire le tableau de contingence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplissez les quatre cases : vrais positifs (VP), faux négatifs (FN), faux positifs (FP), vrais négatifs (VN) en croisant le résultat du test (positif/négatif) et la réalité (malade/sain)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la sensibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez la formule $Se = VP/(VP+FN)$ en utilisant les valeurs du tableau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la spécificité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez la formule $Sp = VN/(VN+FP)$ avec les mêmes données."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Test +",
+                "Test -",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Malade",
+                  "90",
+                  "10",
+                  "100"
+                ],
+                [
+                  "Sain",
+                  "15",
+                  "85",
+                  "100"
+                ],
+                [
+                  "Total",
+                  "105",
+                  "95",
+                  "200"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons extraire la sensibilité et la spécificité d'un tableau, penchons-nous sur l'impact du seuil de décision : en déplaçant la limite qui sépare un résultat positif d'un résultat négatif, nous modifions simultanément ces deux indicateurs, généralement en sens inverse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Influence du seuil de décision"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un test quantitatif fournit une valeur continue (par exemple une concentration en antigène). En choisissant un seuil bas, on augmente le nombre de positifs : la sensibilité grimpe car on capture davantage de malades, mais la spécificité chute car on classe à tort plus de sains comme positifs. À l'inverse, un seuil haut favorise la spécificité au détriment de la sensibilité. Ce compromis est au cœur de l'évaluation d'un test diagnostique et se visualise aisément à l'aide d'un graphique en barres comparant les deux indicateurs pour plusieurs seuils."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Sensibilité et spécificité pour trois seuils différents",
+              "bars": [
+                {
+                  "label": "Seuil bas",
+                  "value": 95,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Seuil bas",
+                  "value": 70,
+                  "tone": "red"
+                },
+                {
+                  "label": "Seuil moyen",
+                  "value": 85,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Seuil moyen",
+                  "value": 80,
+                  "tone": "red"
+                },
+                {
+                  "label": "Seuil haut",
+                  "value": 70,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Seuil haut",
+                  "value": 92,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le choix du seuil ne se fait pas au hasard : il dépend du contexte clinique, de la gravité de la maladie, des conséquences d'un faux positif versus d'un faux négatif, et des ressources disponibles pour la prise en charge ultérieure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choix du seuil selon le contexte clinique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une maladie grave mais traitable si détectée tôt (par exemple un cancer au stade précoce), on privilégiera une sensibilité élevée, acceptant plus de faux positifs qui seront ensuite écartés par des examens complémentaires. Pour une pathologie bénigne ou un test invasif de confirmation, on préférera une spécificité élevée pour éviter des interventions inutiles. Les sociétés savantes publient souvent des recommandations de seuils optimisés pour chaque situation, fondées sur des analyses de courbes ROC que nous aborderons plus tard."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def sens_spec(threshold, scores, labels):\\n    vp = sum(1 for s,l in zip(scores,labels) if s>=threshold and l==1)\\n    fn = sum(1 for s,l in zip(scores,labels) if s<threshold and l==1)\\n    fp = sum(1 for s,l in zip(scores,labels) if s>=threshold and l==0)\\n    vn = sum(1 for s,l in zip(scores,labels) if s<threshold and l==0)\\n    se = vp/(vp+fn) if vp+fn>0 else 0\\n    sp = vn/(vn+fp) if vn+fp>0 else 0\\n    return se, sp\\n\\n# Exemple d'utilisation\\nscores = [0.2,0.5,0.7,0.9,0.4,0.6,0.8,0.3]\\nlabels = [0,0,1,1,0,1,1,0]\\nfor th in [0.3,0.5,0.7]:\\n    print(f'Seuil {th}: Se={sens_spec(th,scores,labels)[0]:.2f}, Sp={sens_spec(th,scores,labels)[1]:.2f}')",
+              "language": "python",
+              "caption": "Calcul de la sensibilité et de la spécificité pour plusieurs seuils"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant les outils pour évaluer un test diagnostique, comprendre comment le seuil influence ses performances, et choisir un seuil adapté au contexte clinique. La prochaine leçon introduira le théorème de Bayes pour transformer ces caractéristiques en probabilités a posteriori directement exploitables par le patient."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "À partir du tableau de contingence ci-dessus, calculez la sensibilité et la spécificité du test. Exprimez vos résultats en pourcentages arrondis à l'entier le plus proche.",
+              "answer": "Sensibilité = 90 % ; Spécificité = 85 %",
+              "hint": "Utilisez les formules $Se = VP/(VP+FN)$ et $Sp = VN/(VN+FP)$ avec les valeurs du tableau.",
+              "explanation": "Le tableau donne VP=90, FN=10, VN=85, FP=15. Donc $Se = 90/(90+10)=0,90$ soit 90 %. $Sp = 85/(85+15)=0,85$ soit 85 %."
+            },
+            {
+              "question": "En observant le graphique en barres, quel seuil offre le meilleur équilibre entre sensibilité et spécificité si l'on souhaite que les deux indicateurs soient supérieurs à 80 % ?",
+              "answer": "Le seuil moyen (sensibilité 85 %, spécificité 80 %) remplit ce critère.",
+              "hint": "Recherchez la paire de barres (bleue pour la sensibilité, rouge pour la spécificité) dont les deux valeurs dépassent 80.",
+              "explanation": "Pour le seuil bas, la spécificité est 70 % (<80). Pour le seuil haut, la sensibilité est 70 % (<80). Seul le seuil moyen donne les deux au-dessus de 80 %."
+            },
+            {
+              "question": "Écrivez une fonction Python qui, donnée une liste de scores continus et les étiquettes vraies (0/1), renvoie la sensibilité et la spécificité pour un seuil fourni en argument. Testez-la avec les données de l'exemple de l'algo_sandbox pour le seuil 0.5.",
+              "answer": "Voir le code dans l'algo_sandbox ; pour le seuil 0.5, la sensibilité est 0.75 et la spécificité 0.75.",
+              "hint": "Reprenez la structure de la fonction 'sens_spec' fournie, puis appelez-la avec threshold=0.5.",
+              "explanation": "Avec les scores et labels donnés, le comptage donne VP=3, FN=1, FP=1, VN=3. Donc $Se=3/4=0,75$ et $Sp=3/4=0,75$."
+            }
+          ]
+        },
+        {
+          "title": "Probabilité a posteriori.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de Bayes en diagnostic"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le médecin qui vient de réaliser un test positif se trouve face à une question cruciale : quelle est la probabilité que le patient soit réellement malade, compte tenu de ce résultat ? C'est exactement ce que permet de calculer le théorème de Bayes. En termes probabilistes, on cherche la probabilité a posteriori $P(Maladie | Test+)$, c'est-à-dire la probabilité d'être malade sachant un test positif. Cette probabilité dépend de trois ingrédients : la prévalence $P(Maladie)$ (probabilité a priori d'être malade dans la population), la sensibilité $P(Test+ | Maladie)$ (probabilité d'un test positif si le patient est malade) et la spécificité $P(Test- | Sain)$ qui nous donne $P(Test+ | Sain) = 1 - Sp$. Le théorème de Bayes s'écrit alors $P(Maladie | Test+) = \\frac{P(Test+ | Maladie) \\cdot P(Maladie)}{P(Test+ | Maladie) \\cdot P(Maladie) + P(Test+ | Sain) \\cdot P(Sain)}$. Dans cette leçon, nous allons d'abord rappeler la formule, puis l'appliquer sur un exemple chiffré, et enfin explorer comment la prévalence et les caractéristiques du test font varier la probabilité a posteriori."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(M|T_+) = \\frac{P(T_+|M) \\, P(M)}{P(T_+|M) \\, P(M) + P(T_+|S) \\, P(S)}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la prévalence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez $P(M)$, la proportion de malades dans la population cible (par exemple 5 % pour une maladie rare)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter la sensibilité et la spécificité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Récupérez $Se = P(T_+|M)$ et $Sp = P(T_-|S)$ ; déduisez $P(T_+|S) = 1 - Sp$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule de Bayes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Insérez les trois nombres dans la formule pour obtenir $P(M|T_+)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple concret où nous calculerons la valeur prédictive positive (VPP), qui n'est autre que la probabilité a posteriori d'être malade après un test positif, pour deux prévalences différentes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple numérique : valeur prédictive positive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un test de dépistage d'une infection bactérienne avec une sensibilité de 90 % et une spécificité de 85 %. Imaginons deux populations : la population générale où la prévalence est de 2 %, et une population à risque (contacts étroits) où la prévalence grimpe à 20 %. Nous allons calculer la VPP dans les deux cas pour illustrer l'influence majeure de la prévalence sur la probabilité a posteriori."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Population",
+                "Prévalence",
+                "Sensibilité",
+                "Spécificité",
+                "VPP"
+              ],
+              "rows": [
+                [
+                  "Générale",
+                  "2 %",
+                  "90 %",
+                  "85 %",
+                  "?"
+                ],
+                [
+                  "À risque",
+                  "20 %",
+                  "90 %",
+                  "85 %",
+                  "?"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calcul pour la population générale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a $P(M)=0,02$, $Se=0,90$, $Sp=0,85$ donc $P(T_+|S)=0,15$. Numérateur = $0,90 \\times 0,02 = 0,018$. Dénominateur = $0,018 + 0,15 \\times 0,98 = 0,018 + 0,147 = 0,165$. VPP = $0,018/0,165 \\approx 0,109$ soit 10,9 %."
+                    }
+                  ]
+                },
+                {
+                  "title": "Calcul pour la population à risque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant $P(M)=0,20$, $P(S)=0,80$. Numérateur = $0,90 \\times 0,20 = 0,18$. Dénominateur = $0,18 + 0,15 \\times 0,80 = 0,18 + 0,12 = 0,30$. VPP = $0,18/0,30 = 0,60$ soit 60 %."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces calculs montrent que le même test peut passer d'une VPP faible (environ 11 %) à une VPP modérée (60 %) simplement parce que la prévalence change. Nous allons maintenant automatiser ce raisonnement pour explorer rapidement l'effet de la prévalence, de la sensibilité et de la spécificité sur la probabilité a posteriori."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effet de la prévalence et des caractéristiques du test"
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité a posteriori est une fonction croissante de la prévalence et de la sensibilité, et une fonction décroissante du taux de faux positifs (1 - spécificité). Pour aider à la prise de décision, il est utile de pouvoir tracer cette fonction ou de la calculer pour une grille de valeurs. Un petit script Python permet de le faire instantanément et de produire un tableau de résultats que l'on peut inclure dans un rapport médical."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def posterior(prev, se, sp):\\n    \"\"\"Renvoie P(Maladie | Test+) pour une prévalence, sensibilité, spécificité données.\"\"\"\\n    numerator = se * prev\\n    denominator = numerator + (1 - sp) * (1 - prev)\\n    return numerator / denominator if denominator > 0 else 0\\n\\n# Exploration\\nprevalences = [0.01, 0.05, 0.10, 0.20, 0.50]\\nfor p in prevalences:\\n    ppv = posterior(p, 0.90, 0.85)\\n    print(f'Prévalence {p*100:.0f}% -> VPP = {ppv*100:.1f}%')\\n\\n# On peut aussi varier la sensibilité\\nfor se in [0.70, 0.80, 0.90, 0.95]:\\n    ppv = posterior(0.10, se, 0.85)\\n    print(f'Se={se*100:.0f}% -> VPP = {ppv*100:.1f}%')",
+              "language": "python",
+              "caption": "Calcul automatisé de la probabilité a posteriori pour différentes prévalences et sensibilités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez désormais le passage des caractéristiques intrinsèques d'un test (sensibilité, spécificité) à la probabilité a posteriori qui guide la décision clinique. La dernière leçon de ce cours portera sur la manière de communiquer ces résultats aux patients et aux collègues, en intégrant les valeurs prédictives, les intervalles de confiance et les courbes ROC."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un test a une sensibilité de 80 % et une spécificité de 95 %. Dans une population où la prévalence de la maladie est de 10 %, calculez la probabilité a posteriori d'être malade après un test positif (VPP). Donnez le résultat en pourcentage arrondi à un chiffre après la virgule.",
+              "answer": "61,5 %",
+              "hint": "Appliquez la formule de Bayes avec $P(M)=0,10$, $Se=0,80$, $Sp=0,95$ donc $P(T_+|S)=0,05$.",
+              "explanation": "Numérateur = $0,80 \\times 0,10 = 0,08$. Dénominateur = $0,08 + 0,05 \\times 0,90 = 0,08 + 0,045 = 0,125$. VPP = $0,08/0,125 = 0,64$ soit 64,0 %. Arrondi à un chiffre après la virgule : 64,0 %."
+            },
+            {
+              "question": "En utilisant le tableau de l'exemple numérique, complétez les deux valeurs manquantes de VPP pour la population générale et la population à risque.",
+              "answer": "Population générale : 10,9 % ; Population à risque : 60,0 %",
+              "hint": "Reprenez les calculs détaillés dans les étapes de la leçon.",
+              "explanation": "Les calculs pas à pas ont été montrés : pour 2 % de prévalence, VPP ≈ 10,9 % ; pour 20 %, VPP = 60 %."
+            },
+            {
+              "question": "Modifiez le script Python fourni pour qu'il affiche également la valeur prédictive négative (VPN) pour chaque prévalence, en utilisant la formule $VPN = \\frac{Sp \\cdot (1-prev)}{Sp \\cdot (1-prev) + (1-Se) \\cdot prev}$. Testez avec les prévalences 0,01 ; 0,10 ; 0,50 et une sensibilité de 0,90, spécificité 0,85.",
+              "answer": "VPN pour 1 % : 99,9 % ; pour 10 % : 98,6 % ; pour 50 % : 92,9 % (valeurs arrondies à un dixième).",
+              "hint": "Ajoutez une fonction 'vpn(prev, se, sp)' symétrique à 'posterior' et appelez-la dans la boucle.",
+              "explanation": "La VPN utilise la spécificité et le taux de faux négatifs (1-Se). Pour prev=0,01 : denominateur = 0,85*0,99 + 0,10*0,01 = 0,8415+0,001=0,8425 ; numerateur = 0,85*0,99 = 0,8415 ; VPN = 0,8415/0,8425 ≈ 0,9988 soit 99,9 %. Les autres valeurs suivent le même principe."
+            }
+          ]
+        },
+        {
+          "title": "Communication.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Communiquer les valeurs prédictives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir calculé la probabilité a posteriori, le clinicien doit la transmettre de façon claire au patient. Dire « le test est positif, vous avez 60 % de chances d'être malade » est plus informatif que « le test est positif ». Pourtant, beaucoup de professionnels omettent de préciser la valeur prédictive négative (VPN), c'est-à-dire la probabilité d'être sain quand le test est négatif. Les deux valeurs prédictives dépendent de la prévalence, de la sensibilité et de la spécificité, et il est essentiel de les présenter ensemble pour éviter les malentendus. Dans cette leçon, nous définirons précisément ces deux indicateurs, puis nous verrons comment les illustrer à l'aide d'une courbe ROC, et enfin nous proposerons une check-list de bonnes pratiques pour la communication médicale."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur prédictive positive (VPP)",
+              "definition": "Probabilité d'être malade sachant un test positif : $VPP = P(M|T_+) = \\frac{Se \\cdot prev}{Se \\cdot prev + (1-Sp) \\cdot (1-prev)}$.",
+              "example": "Avec Se=90 %, Sp=85 %, prev=20 %, VPP = 60 %."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur prédictive négative (VPN)",
+              "definition": "Probabilité d'être sain sachant un test négatif : $VPN = P(S|T_-) = \\frac{Sp \\cdot (1-prev)}{Sp \\cdot (1-prev) + (1-Se) \\cdot prev}$.",
+              "example": "Mêmes paramètres, VPN = 98,6 %."
+            },
+            {
+              "type": "display_math",
+              "latex": "VPP = \\frac{Se \\, prev}{Se \\, prev + (1-Sp)(1-prev)} \\quad ; \\quad VPN = \\frac{Sp \\, (1-prev)}{Sp \\, (1-prev) + (1-Se) \\, prev}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les valeurs prédictives seules ne suffisent pas à résumer les performances d'un test sur l'ensemble des seuils possibles. La courbe ROC (Receiver Operating Characteristic) trace la sensibilité en fonction de 1 - spécificité pour tous les seuils, et l'aire sous cette courbe (AUC) synthétise la capacité discriminante globale du test."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La courbe ROC et l'aire sous la courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque point de la courbe ROC correspond à un couple (1-Sp, Se) obtenu en variant le seuil de décision. Une courbe qui remonte rapidement vers le coin supérieur gauche indique un test performant ; l'AUC vaut 1 pour un test parfait, 0,5 pour un test non discriminant. En pratique, on choisit souvent le seuil qui maximise l'indice de Youden $J = Se + Sp - 1$, ou celui qui correspond à un ratio coût/bénéfice clinique. Le graphique ci-dessous montre une courbe ROC typique pour un test de dépistage."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Courbe ROC illustrant le compromis sensibilité / (1-spécificité) ; l'aire sous la courbe (AUC) est de 0,87."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des chiffres, la communication efficace repose sur une structure claire : rappeler le contexte (prévalence), annoncer les valeurs prédictives avec leur intervalle de confiance, expliquer le sens des faux positifs et faux négatifs pour ce patient précis, et proposer une décision partagée. La check-list suivante résume les points à couvrir lors de l'annonce d'un résultat de test diagnostique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bonnes pratiques de communication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une communication de qualité suit plusieurs étapes : d'abord, situer le patient dans la population de référence ; ensuite, donner la VPP et la VPN en pourcentages simples ; puis, décrire les conséquences concrètes d'un faux positif (examens complémentaires, anxiété) et d'un faux négatif (retard de traitement) ; enfin, inviter le patient à exprimer ses préférences et à poser des questions. Cette approche favorise l'adhésion au plan thérapeutique et réduit le risque de contentieux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Contexte épidémiologique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indiquez la prévalence de la maladie dans le groupe auquel appartient le patient."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Valeurs prédictives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Annoncer VPP et VPN avec une phrase du type : « Sur 100 personnes comme vous qui ont un test positif, environ X sont réellement malades. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Conséquences des erreurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Expliquez ce qu'implique un faux positif (examens invasifs, stress) et un faux négatif (perte de chance thérapeutique)."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Décision partagée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Proposez les options (traitement, surveillance, test de confirmation) et demandez l'avis du patient."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la sensibilité et la spécificité et les calculer à partir d'un tableau de contingence.",
+                "Je sais appliquer le théorème de Bayes pour obtenir la probabilité a posteriori (VPP) et la VPN.",
+                "Je comprends comment le seuil de décision influence la sensibilité et la spécificité de manière opposée.",
+                "Je sais interpréter une courbe ROC et l'AUC pour juger de la performance globale d'un test.",
+                "Je suis capable de communiquer les résultats d'un test diagnostique en utilisant une structure claire et centrée sur le patient."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un test de dépistage a une sensibilité de 85 % et une spécificité de 90 %. Dans une population où la prévalence est de 5 %, calculez la VPP et la VPN. Donnez les deux résultats en pourcentages arrondis à un chiffre après la virgule.",
+              "answer": "VPP = 32,1 % ; VPN = 99,1 %",
+              "hint": "Utilisez les formules de VPP et VPN avec prev=0,05, Se=0,85, Sp=0,90.",
+              "explanation": "VPP = (0,85*0,05) / (0,85*0,05 + 0,10*0,95) = 0,0425 / (0,0425+0,095) = 0,0425/0,1375 ≈ 0,3091 → 30,9 % (arrondi 30,9 %). VPN = (0,90*0,95) / (0,90*0,95 + 0,15*0,05) = 0,855 / (0,855+0,0075) = 0,855/0,8625 ≈ 0,9913 → 99,1 %."
+            },
+            {
+              "question": "Sur la courbe ROC présentée, l'AUC est indiquée comme 0,87. Que signifie cette valeur pour la capacité discriminante du test ?",
+              "answer": "Une AUC de 0,87 indique une bonne capacité discriminante : le test classe correctement un couple malade/sain tiré au hasard dans 87 % des cas.",
+              "hint": "Rappelez-vous que l'AUC est la probabilité qu'un malade ait un score de test plus élevé qu'un sain.",
+              "explanation": "L'AUC mesure la surface sous la courbe ROC ; 0,5 correspond au hasard, 1 à la perfection. 0,87 est nettement au-dessus de 0,5, signifiant une bonne discrimination."
+            },
+            {
+              "question": "Rédigez un court paragraphe (3-4 phrases) que vous pourriez adresser à un patient dont le test de dépistage vient de revenir positif, en intégrant la prévalence (10 %), la VPP (calculée à 45 %) et la VPN (95 %), et en mentionnant les prochaines étapes (test de confirmation).",
+              "answer": "Exemple de réponse : « Votre test de dépistage est positif. Dans votre groupe de population, la maladie touche environ 10 % des personnes. Avec ce résultat, la probabilité que vous soyez réellement malade est d'environ 45 %. Si le test avait été négatif, cette probabilité serait tombée à moins de 5 %. Nous vous proposons donc de réaliser un test de confirmation plus spécifique pour lever toute ambiguïté avant d'envisager un traitement. »",
+              "hint": "Suivez la check-list : contexte, VPP, VPN, conséquences, décision partagée.",
+              "explanation": "La réponse doit contenir les quatre éléments de la check-list : prévalence, VPP, VPN, proposition de test de confirmation et invitation à discuter. L'exemple donné respecte cette structure."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

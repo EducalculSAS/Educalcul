@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 472,
+  "_course_code": "3eme-t03-c06-bilan-fonctions-3e",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Vocabulaire, graphes, modèles",
+  "title": "Quiz Vocabulaire, graphes, modèles - 3e",
+  "questions": [
+    {
+      "text": "Dans une fonction $f$, l'ensemble des valeurs que peut prendre $x$ s'appelle :",
+      "options": [
+        "l'image",
+        "l'antécédent",
+        "le domaine de définition",
+        "le codomaine"
+      ],
+      "correctAnswer": "le domaine de définition",
+      "explanation": "Le domaine de définition est l'ensemble des nombres pour lesquels la fonction est définie, c'est-à-dire les valeurs possibles de la variable indépendante $x$. L'image est la valeur $f(x)$, l'antécédent est la valeur $x$ qui donne une image donnée, et le codomaine est l'ensemble d'arrivée qui contient toutes les images possibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite représentant une fonction affine passe par les points $(0,2)$ et $(3,5)$. Quel est son coefficient directeur (pente) ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "0,5"
+      ],
+      "correctAnswer": "1",
+      "explanation": "Le coefficient directeur se calcule par $\\frac{y_2-y_1}{x_2-x_1} = \\frac{5-2}{3-0} = \\frac{3}{3} = 1$. Les autres valeurs correspondent à des erreurs de calcul ou à une inversion des coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un taxi facture un forfait de $3\\,€$ plus $2\\,€$ par kilomètre parcouru. Quelle fonction affine modélise le prix $p$ en fonction du nombre de kilomètres $k$ ?",
+      "options": [
+        "$f(k)=2k$",
+        "$f(k)=2k+3$",
+        "$f(k)=3k+2$",
+        "$f(k)=3k$"
+      ],
+      "correctAnswer": "$f(k)=2k+3$",
+      "explanation": "Le forfait fixe correspond à l'ordonnée à l'origine ($3$) et le coût par kilomètre au coefficient directeur ($2$). Donc $p(k)=2k+3$. Les autres options inversent les coefficients ou omettent le forfait.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphe de la fonction $f(x) = -x + 4$ coupe l'axe des ordonnées au point :",
+      "options": [
+        "(0, -4)",
+        "(0, 4)",
+        "(4, 0)",
+        "(-4, 0)"
+      ],
+      "correctAnswer": "(0, 4)",
+      "explanation": "L'intersection avec l'axe des ordonnées s'obtient pour $x=0$ : $f(0) = -0 + 4 = 4$, donc le point est $(0,4)$. Les points $(4,0)$ et $(-4,0)$ sont sur l'axe des abscisses, et $(0,-4)$ correspondrait à $f(x)=x-4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une fonction $g$, l'ensemble de toutes les valeurs $g(x)$ obtenues quand $x$ parcourt le domaine de définition s'appelle :",
+      "options": [
+        "le domaine de définition",
+        "l'ensemble des images",
+        "l'ensemble des antécédents",
+        "le codomaine"
+      ],
+      "correctAnswer": "l'ensemble des images",
+      "explanation": "L'ensemble des images (ou image de la fonction) regroupe toutes les valeurs prises par $g(x)$. Le domaine de définition concerne les $x$, les antécédents sont les $x$ associés à une image donnée, et le codomaine est un ensemble d'arrivée qui peut être plus grand que l'ensemble des images.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Coordonnées",
+  "title": "Quiz : Coordonnées dans le plan",
+  "questions": [
+    {
+      "text": "Le point $A$ a pour coordonnées $(3 ; -2)$. Quelle affirmation est exacte ?",
+      "options": [
+        "L'abscisse de $A$ est $3$ et son ordonnée est $-2$",
+        "L'abscisse de $A$ est $-2$ et son ordonnée est $3$",
+        "L'abscisse de $A$ est $3$ et son ordonnée est $2$",
+        "L'abscisse de $A$ est $-3$ et son ordonnée est $2$"
+      ],
+      "correctAnswer": "L'abscisse de $A$ est $3$ et son ordonnée est $-2$",
+      "explanation": "Dans un repère du plan, les coordonnées d'un point s'écrivent toujours sous la forme (abscisse ; ordonnée). Pour le point $A(3 ; -2)$, le premier nombre $3$ est l'abscisse (position horizontale) et le second nombre $-2$ est l'ordonnée (position verticale). Les autres options inversent l'ordre, changent les signes ou les deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un point $B$ a une abscisse négative et une ordonnée positive. Dans quel quadrant se trouve $B$ ?",
+      "options": [
+        "Deuxième quadrant",
+        "Premier quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Deuxième quadrant",
+      "explanation": "Les quadrants se numérotent dans le sens trigonométrique (inverse des aiguilles d'une montre) à partir du quadrant où abscisse et ordonnée sont positives (premier quadrant). Au deuxième quadrant, l'abscisse est négative (à gauche de l'axe des ordonnées) et l'ordonnée est positive (au-dessus de l'axe des abscisses). Le troisième a les deux négatives, le quatrième a l'abscisse positive et l'ordonnée négative.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le point $C(4 ; -5)$. Quelles sont les coordonnées du point $C'$, symétrique de $C$ par rapport à l'axe des ordonnées (axe $y$) ?",
+      "options": [
+        "$(-4 ; -5)$",
+        "$(4 ; 5)$",
+        "$(-4 ; 5)$",
+        "$(4 ; -5)$"
+      ],
+      "correctAnswer": "$(-4 ; -5)$",
+      "explanation": "La symétrie par rapport à l'axe des ordonnées (axe $y$) conserve l'ordonnée et change le signe de l'abscisse. Le point $C$ a pour coordonnées $(4 ; -5)$. Son symétrique $C'$ a donc pour abscisse $-4$ et pour ordonnée $-5$, soit $(-4 ; -5)$. L'option $(4 ; 5)$ correspond à une symétrie par rapport à l'origine, et $(-4 ; 5)$ à une symétrie par rapport à l'axe des abscisses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le plan muni d'un repère, on donne les points $A(1 ; 2)$, $B(4 ; 2)$ et $C(5 ; 5)$. On cherche le point $D$ tel que $ABCD$ soit un parallélogramme (dans cet ordre). Quelles sont les coordonnées de $D$ ?",
+      "options": [
+        "$(2 ; 5)$",
+        "$(8 ; 5)$",
+        "$(0 ; -1)$",
+        "$(2 ; -1)$"
+      ],
+      "correctAnswer": "$(2 ; 5)$",
+      "explanation": "Dans un parallélogramme $ABCD$, les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont égaux. On a $\\overrightarrow{AB} = (4-1 ; 2-2) = (3 ; 0)$. Comme $\\overrightarrow{DC} = \\overrightarrow{AB}$, on a $C - D = (3 ; 0)$, donc $D = C - (3 ; 0) = (5-3 ; 5-0) = (2 ; 5)$. On peut aussi utiliser $\\overrightarrow{AD} = \\overrightarrow{BC} = (1 ; 3)$, ce qui donne $D = A + (1 ; 3) = (2 ; 5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $E(-2 ; 3)$ et $F(4 ; -1)$ sont donnés. Quelles sont les coordonnées du milieu $I$ du segment $[EF]$ ?",
+      "options": [
+        "$(1 ; 1)$",
+        "$(3 ; 2)$",
+        "$(-3 ; 2)$",
+        "$(1 ; 2)$"
+      ],
+      "correctAnswer": "$(1 ; 1)$",
+      "explanation": "Les coordonnées du milieu $I$ d'un segment d'extrémités $E(x_E ; y_E)$ et $F(x_F ; y_F)$ sont $\\left(\\frac{x_E+x_F}{2} ; \\frac{y_E+y_F}{2}\\right)$. Ici, $x_I = \\frac{-2+4}{2} = \\frac{2}{2} = 1$ et $y_I = \\frac{3+(-1)}{2} = \\frac{2}{2} = 1$. Le milieu est donc $I(1 ; 1)$. L'option $(3 ; 2)$ correspond à la somme des coordonnées, $(-3 ; 2)$ à une erreur de signe sur l'abscisse, et $(1 ; 2)$ à une erreur de calcul sur l'ordonnée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

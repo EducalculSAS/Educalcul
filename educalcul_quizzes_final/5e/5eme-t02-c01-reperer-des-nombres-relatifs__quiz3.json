@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 384,
+  "_course_code": "5eme-t02-c01-reperer-des-nombres-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Comparer",
+  "title": "Comparer des nombres relatifs",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, on a repéré les nombres $3$ et $-2$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "$3 > -2$",
+        "$3 < -2$",
+        "$3 = -2$",
+        "On ne peut pas comparer $3$ et $-2$"
+      ],
+      "correctAnswer": "$3 > -2$",
+      "explanation": "Sur une droite graduée, un nombre est plus grand qu'un autre s'il est placé plus à droite. Le nombre $3$ est à droite de $0$, alors que $-2$ est à gauche de $0$. Donc $3$ est plus grand que $-2$, on écrit $3 > -2$. L'option '$3 < -2$' confond l'ordre (erreur classique : penser que 2 est plus grand que 3 en oubliant le signe).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repérage de 3 et -2",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -2,
+            "label": "A"
+          },
+          {
+            "value": 3,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Comment comparer les deux nombres relatifs $-4$ et $-7$ ?",
+      "options": [
+        "$-4 > -7$",
+        "$-4 < -7$",
+        "$-4 = -7$",
+        "$-4 > 7$"
+      ],
+      "correctAnswer": "$-4 > -7$",
+      "explanation": "Pour comparer deux nombres négatifs, on regarde leur position sur la droite graduée. Celui qui est le plus proche de zéro (le moins éloigné à gauche) est le plus grand. $-4$ est plus près de zéro que $-7$, donc $-4$ est plus grand que $-7$. On écrit $-4 > -7$. L'erreur '$-4 < -7$' consiste à comparer les valeurs absolues ($4 < 7$) en oubliant le signe moins qui inverse l'ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces inégalités est correcte pour les nombres décimaux relatifs $-0,5$ et $-0,3$ ?",
+      "options": [
+        "$-0,5 > -0,3$",
+        "$-0,5 < -0,3$",
+        "$-0,5 = -0,3$",
+        "$0,5 < 0,3$"
+      ],
+      "correctAnswer": "$-0,5 < -0,3$",
+      "explanation": "On compare la partie entière (ici $0$ pour les deux) puis les dixièmes. Sur la droite graduée, $-0,5$ se trouve à gauche de $-0,3$ (car $-0,5 = -5/10$ et $-0,3 = -3/10$). Le nombre le plus à gauche est le plus petit. Donc $-0,5$ est strictement inférieur à $-0,3$. L'option '$-0,5 > -0,3$' est l'erreur fréquente qui consiste à comparer $5$ et $3$ sans tenir compte du signe négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Rangez les nombres suivants dans l'ordre croissant (du plus petit au plus grand) : $5 ; -2 ; 0 ; -4 ; 3$.",
+      "options": [
+        "$-4 ; -2 ; 0 ; 3 ; 5$",
+        "$-2 ; -4 ; 0 ; 3 ; 5$",
+        "$5 ; 3 ; 0 ; -2 ; -4$",
+        "$-4 ; 0 ; -2 ; 3 ; 5$"
+      ],
+      "correctAnswer": "$-4 ; -2 ; 0 ; 3 ; 5$",
+      "explanation": "L'ordre croissant signifie du plus petit (le plus à gauche sur la droite) au plus grand (le plus à droite). Les nombres négatifs sont plus petits que $0$. Parmi les négatifs, $-4 < -2$. Ensuite vient $0$, puis les positifs $3 < 5$. La suite correcte est donc $-4 ; -2 ; 0 ; 3 ; 5$. L'option '$-2 ; -4 ; ...$' inverse les deux négatifs. L'option '$5 ; 3 ; ...$' donne l'ordre décroissant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les inégalités suivantes, laquelle est vraie ?",
+      "options": [
+        "$-6 > -2$",
+        "$-1 < -5$",
+        "$0 > -3$",
+        "$-8 > 2$"
+      ],
+      "correctAnswer": "$0 > -3$",
+      "explanation": "Analysons chaque proposition : $-6 > -2$ est faux car $-6$ est plus à gauche que $-2$ ($-6 < -2$). $-1 < -5$ est faux car $-1$ est plus à droite que $-5$ ($-1 > -5$). $-8 > 2$ est faux car tout nombre négatif est plus petit qu'un nombre positif. $0 > -3$ est vrai car $0$ est à droite de tout nombre négatif sur la droite graduée, donc $0$ est plus grand que $-3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

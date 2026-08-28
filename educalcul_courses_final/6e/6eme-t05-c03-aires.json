@@ -1,0 +1,862 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.597184+00:00",
+  "id": 354,
+  "code": "6eme-t05-c03",
+  "title": "Aires",
+  "description": "Cours structuré Educalcul : Aires.",
+  "subject": "Grandeurs et mesures",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Aires",
+    "objectif_global": "Aires",
+    "mini_lecons_imposees": [
+      "Rectangle / carré / triangle selon programme.",
+      "Unités.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Rectangle / carré / triangle selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aire du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois recouvrir le dessus d'une table rectangulaire avec du papier cadeau. Pour savoir combien de papier il te faut, tu dois mesurer la surface que la table occupe. Cette surface, on l'appelle l'aire, et elle se compte en petites cases carrées, comme les carreaux d'un damier. Si la table mesure 50 cm de long et 30 cm de large, tu peux imaginer 50 colonnes de 30 cases chacune. En les comptant, tu trouves 1500 petites cases, donc l'aire est de 1500 cm². C'est exactement ce que fait la formule que nous allons découvrir."
+            },
+            {
+              "type": "definition",
+              "term": "Aire",
+              "definition": "L'aire est la mesure de la surface d'une figure plane. On l'exprime en unités carrées (cm², m², etc.).",
+              "example": "Une feuille A4 a une aire d'environ 623 cm²."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = L \\\\times l"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesurer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la longueur $L$ et la largeur $l$ du rectangle avec une règle ou un mètre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie $L$ par $l$ pour obtenir l'aire $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute l'unité carrée correspondante (cm², m², etc.)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Longueur (cm)",
+                "Largeur (cm)",
+                "Aire (cm²)"
+              ],
+              "rows": [
+                [
+                  "12",
+                  "8",
+                  "96"
+                ],
+                [
+                  "25",
+                  "10",
+                  "250"
+                ],
+                [
+                  "7,5",
+                  "4",
+                  "30"
+                ]
+              ],
+              "caption": "Exemples d'aires de rectangles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer l'aire d'un rectangle, regardons un cas particulier : le carré. Un carré est un rectangle dont tous les côtés ont la même longueur. On note cette longueur $c$. Comme la longueur et la largeur sont égales, la formule devient $A = c \\\\times c$, ce qu'on écrit souvent $A = c^{2}$. C'est encore plus rapide : il suffit de multiplier le côté par lui-même."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aire du carré"
+            },
+            {
+              "type": "display_math",
+              "latex": "A = c^{2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesurer le côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la longueur d'un côté du carré, notée $c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie $c$ par $c$ (ou élève $c$ au carré)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime le résultat en unités carrées."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Côté (cm)",
+                "Aire (cm²)"
+              ],
+              "rows": [
+                [
+                  "5",
+                  "25"
+                ],
+                [
+                  "9",
+                  "81"
+                ],
+                [
+                  "12",
+                  "144"
+                ]
+              ],
+              "caption": "Exemples d'aires de carrés"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le triangle est une figure à trois côtés. Pour son aire, on a besoin de deux mesures : la base $b$ (un côté quelconque) et la hauteur $h$ (la distance perpendiculaire de la base au sommet opposé). L'aire est exactement la moitié de l'aire du rectangle qui aurait la même base et la même hauteur. Donc la formule est $A = \\\\frac{b \\\\times h}{2}$. On peut le vérifier en découpant un rectangle en deux triangles égaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aire du triangle"
+            },
+            {
+              "type": "definition",
+              "term": "Base",
+              "definition": "Côté du triangle choisi comme référence pour mesurer la hauteur.",
+              "example": "Dans un triangle rectangle, on prend souvent le côté horizontal comme base."
+            },
+            {
+              "type": "definition",
+              "term": "Hauteur",
+              "definition": "Segment perpendicular à la base qui relie le sommet opposé à la base (ou à son prolongement).",
+              "example": "La hauteur peut se trouver à l'extérieur du triangle si celui-ci est obtus."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\\\frac{b \\\\times h}{2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le côté qui servira de base $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer la hauteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la perpendicular depuis le sommet opposé jusqu'à la base (ou son prolongement) et mesure $h$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $b \\\\times h$, puis divise par 2."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne le résultat en unités carrées."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "b",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle avec base $b$ et hauteur $h$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les trois formules essentielles pour les figures planes de base. Elles te serviront tout au long de l'année, que ce soit pour des exercices de géométrie ou pour des problèmes concrets comme peindre un mur ou semer une pelouse."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle mesure 12 cm de long et 8 cm de large. Quelle est son aire en cm² ?",
+              "answer": "96 cm²",
+              "hint": "Utilise la formule $A = L \\\\times l$.",
+              "explanation": "On multiplie 12 par 8 ce qui donne 96. L'unité est le cm² car les mesures sont en cm."
+            },
+            {
+              "question": "Un carré a un côté de 7 cm. Calcule son aire.",
+              "answer": "49 cm²",
+              "hint": "La formule du carré est $A = c^{2}$.",
+              "explanation": "7 fois 7 = 49."
+            },
+            {
+              "question": "Un triangle a une base de 10 cm et une hauteur de 6 cm. Quelle est son aire ?",
+              "answer": "30 cm²",
+              "hint": "Utilise $A = \\\\frac{b \\\\times h}{2}$.",
+              "explanation": "10 fois 6 = 60, divisé par 2 = 30."
+            }
+          ]
+        },
+        {
+          "title": "Unités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités d'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on mesure une surface, on peut utiliser plusieurs unités selon la grandeur de l'objet. Pour une feuille de papier, le centimètre carré (cm²) est pratique. Pour une chambre, le mètre carré (m²) est plus adapté. Pour un champ, l'hectare (ha) ou l'are (a) sont courants. Pour des territoires entiers, le kilomètre carré (km²) s'impose. Toutes ces unités sont liées entre elles par des puissances de 10, ce qui rend les conversions simples une fois qu'on connaît les relations."
+            },
+            {
+              "type": "definition",
+              "term": "Mètre carré (m²)",
+              "definition": "Unité de base du système métrique pour les surfaces. C'est l'aire d'un carré de 1 m de côté.",
+              "example": "Une porte standard fait environ 2 m²."
+            },
+            {
+              "type": "definition",
+              "term": "Centimètre carré (cm²)",
+              "definition": "Aire d'un carré de 1 cm de côté. 1 m² = 10 000 cm².",
+              "example": "Un timbre-poste fait environ 1 cm²."
+            },
+            {
+              "type": "definition",
+              "term": "Kilomètre carré (km²)",
+              "definition": "Aire d'un carré de 1 km de côté. 1 km² = 1 000 000 m².",
+              "example": "Paris intra-muros fait environ 105 km²."
+            },
+            {
+              "type": "definition",
+              "term": "Hectare (ha)",
+              "definition": "Unité agraire égale à 10 000 m² (un carré de 100 m de côté).",
+              "example": "Un terrain de football fait environ 0,7 ha."
+            },
+            {
+              "type": "definition",
+              "term": "Are (a)",
+              "definition": "Équivaut à 100 m² (un carré de 10 m de côté).",
+              "example": "Un petit jardin peut faire 5 a."
+            },
+            {
+              "type": "definition",
+              "term": "Centiare (ca)",
+              "definition": "Équivaut à 1 m². C'est le multiple le plus petit de l'hectare.",
+              "example": "Un carrelage de 1 m² fait 1 ca."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 \\\\, m^{2} = 10^{4} \\\\, cm^{2} \\\\quad 1 \\\\, km^{2} = 10^{6} \\\\, m^{2} \\\\quad 1 \\\\, ha = 10^{4} \\\\, m^{2} \\\\quad 1 \\\\, a = 10^{2} \\\\, m^{2} \\\\quad 1 \\\\, ca = 1 \\\\, m^{2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'unité de départ et l'unité d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les sauts de puissances de 10",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque passage d'une unité à la suivante (ex: m² → dm² → cm²) correspond à un facteur 100."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier ou diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu vas vers une unité plus petite, multiplie par 100 à chaque saut. Si tu vas vers une unité plus grande, divise par 100."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N'oublie pas l'unité finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des principales unités d'aire (échelle logarithmique)",
+              "bars": [
+                {
+                  "label": "cm²",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "m²",
+                  "value": 10000,
+                  "tone": "green"
+                },
+                {
+                  "label": "a",
+                  "value": 1000000,
+                  "tone": "gold"
+                },
+                {
+                  "label": "ha",
+                  "value": 100000000,
+                  "tone": "red"
+                },
+                {
+                  "label": "km²",
+                  "value": 1000000000000,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux conversions entre les grandes unités. Imagine un agriculteur qui possède 2,5 hectares de blé. Pour savoir combien de mètres carrés cela représente, on utilise la relation 1 ha = 10 000 m². On multiplie simplement 2,5 par 10 000. Cette méthode fonctionne pour toutes les conversions entre unités d'aire : on repère le facteur de conversion et on applique la multiplication ou la division correspondante."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir des unités grandes"
+            },
+            {
+              "type": "display_math",
+              "latex": "2,5 \\\\, ha = 2,5 \\\\times 10^{4} \\\\, m^{2} = 25\\,000 \\\\, m^{2}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter la conversion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1 ha = 10 000 m²."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "2,5 × 10 000 = 25 000."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est en m²."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition d'un hectare en ares et centiares",
+              "slices": [
+                {
+                  "label": "1 ha = 100 a",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 a = 100 ca",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "1 ca = 1 m²",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, les dimensions sont parfois données dans des unités différentes. Par exemple, une pièce peut avoir une longueur en mètres et une largeur en centimètres. Avant de calculer l'aire, il faut ramener toutes les mesures dans la même unité. C'est une étape cruciale pour éviter les erreurs. On choisit généralement l'unité la plus grande (ici le mètre) et on convertit les autres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mélanger les unités dans un problème"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie chaque mesure et son unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme toutes les mesures dans la même unité (souvent le mètre)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'aire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule adaptée à la figure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Exprimer la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne le résultat dans l'unité demandée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Mesure initiale",
+                "Conversion",
+                "Mesure en m"
+              ],
+              "rows": [
+                [
+                  "4 m",
+                  "—",
+                  "4 m"
+                ],
+                [
+                  "300 cm",
+                  "÷ 100",
+                  "3 m"
+                ]
+              ],
+              "caption": "Conversion d'une largeur en centimètres vers les mètres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant passer d'une unité d'aire à une autre et gérer des mesures mixtes. Ces compétences te seront utiles pour tous les problèmes de surfaces, du calcul de peinture pour un mur à l'estimation d'un terrain agricole."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis 3 m² en cm².",
+              "answer": "30 000 cm²",
+              "hint": "1 m² = 10 000 cm².",
+              "explanation": "3 × 10 000 = 30 000."
+            },
+            {
+              "question": "Un champ fait 2,5 ha. Combien de m² cela représente-t-il ?",
+              "answer": "25 000 m²",
+              "hint": "1 ha = 10 000 m².",
+              "explanation": "2,5 × 10 000 = 25 000."
+            },
+            {
+              "question": "Une pièce rectangulaire mesure 4 m de long et 300 cm de large. Donne son aire en m².",
+              "answer": "12 m²",
+              "hint": "Convertis la largeur en mètres avant de multiplier.",
+              "explanation": "300 cm = 3 m. 4 × 3 = 12 m²."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème d'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand un énoncé te demande de trouver une aire, la première chose à faire est de bien lire le texte pour repérer les figures géométriques concernées. Souvent, il s'agit d'un rectangle, d'un carré ou d'un triangle, mais parfois plusieurs figures sont combinées. Note les dimensions données, choisis la bonne formule, effectue le calcul et termine par une phrase de réponse claire avec l'unité."
+            },
+            {
+              "type": "definition",
+              "term": "Problème",
+              "definition": "Situation concrète qui demande de mettre en œuvre des connaissances mathématiques pour trouver une réponse.",
+              "example": "Combien de carrelage faut-il pour couvrir un sol ?"
+            },
+            {
+              "type": "definition",
+              "term": "Donnée",
+              "definition": "Information numérique fournie dans l'énoncé (longueur, largeur, base, hauteur, etc.).",
+              "example": "Le jardin mesure 15 m de long."
+            },
+            {
+              "type": "definition",
+              "term": "Question",
+              "definition": "Ce que l'on cherche à déterminer (aire, dimension manquante, coût, etc.).",
+              "example": "Quelle est la surface du jardin ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé plusieurs fois. Identifie la ou les figures géométriques."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note toutes les mesures avec leurs unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rectangle : $A = L \\\\times l$. Carré : $A = c^{2}$. Triangle : $A = \\\\frac{b \\\\times h}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les multiplications et divisions nécessaires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la réponse complète avec l'unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "b",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Exemple de triangle rectangle pour un problème"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la figure n'est pas un simple rectangle ou triangle, mais un assemblage de plusieurs formes de base. On appelle cela une figure composée. La stratégie consiste à découper mentalement la figure en parties simples dont on connaît les formules d'aire, à calculer chaque partie séparément, puis à additionner les résultats. C'est comme faire un puzzle : on retrouve l'aire totale en recomposant les pièces."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Figures composées"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Découper",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace des traits pour séparer la figure en rectangles, carrés, triangles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule adaptée à chaque sous-figure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Somme les aires des parties pour obtenir l'aire totale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Partie",
+                "Formule",
+                "Calcul",
+                "Aire (m²)"
+              ],
+              "rows": [
+                [
+                  "Rectangle",
+                  "L × l",
+                  "8 × 5",
+                  "40"
+                ],
+                [
+                  "Triangle",
+                  "(b × h)/2",
+                  "(8 × 3)/2",
+                  "12"
+                ]
+              ],
+              "caption": "Décomposition d'une figure composée en rectangle et triangle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que l'on connaisse l'aire d'une figure et qu'il faille retrouver une dimension manquante, comme la hauteur d'un triangle ou la largeur d'un rectangle. On utilise alors la formule à l'envers : on isole l'inconnue avant de calculer. Cette démarche inverse renforce ta compréhension des relations entre les grandeurs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver une dimension manquante"
+            },
+            {
+              "type": "display_math",
+              "latex": "h = \\\\frac{2A}{b} \\\\quad\\\\text{ou}\\\\quad l = \\\\frac{A}{L}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis la formule de l'aire correspondant à la figure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Isoler l'inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les opérations inverses (division, multiplication) pour mettre l'inconnue seule d'un côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer par les valeurs connues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Insère l'aire et la dimension connue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens la valeur de la dimension cherchée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer l'aire d'un rectangle.",
+                "Je sais calculer l'aire d'un carré.",
+                "Je sais calculer l'aire d'un triangle.",
+                "Je sais convertir les unités d'aire.",
+                "Je sais résoudre un problème d'aire.",
+                "Je sais retrouver une dimension manquante."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un jardin rectangulaire mesure 15 m de long et 10 m de large. Combien de m² de gazon faut-il pour le couvrir ?",
+              "answer": "150 m²",
+              "hint": "Aire = longueur × largeur.",
+              "explanation": "15 × 10 = 150."
+            },
+            {
+              "question": "Une figure est formée d'un rectangle de 8 m sur 5 m et d'un triangle rectangle de base 8 m et hauteur 3 m posé sur le rectangle. Calcule l'aire totale.",
+              "answer": "52 m²",
+              "hint": "Calcule l'aire du rectangle et celle du triangle, puis additionne.",
+              "explanation": "Rectangle: 8×5=40. Triangle: (8×3)/2=12. Total 52."
+            },
+            {
+              "question": "Un triangle a une aire de 24 cm² et une base de 8 cm. Quelle est sa hauteur ?",
+              "answer": "6 cm",
+              "hint": "Utilise la formule $A = \\\\frac{b \\\\times h}{2}$ et isole $h$.",
+              "explanation": "24 = (8×h)/2 → 48 = 8h → h = 6."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

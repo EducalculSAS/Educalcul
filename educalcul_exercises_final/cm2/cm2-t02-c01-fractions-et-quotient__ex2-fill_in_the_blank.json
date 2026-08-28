@@ -1,0 +1,65 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 282,
+  "_course_code": "cm2-t02-c01-fractions-et-quotient",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Placer sur droite",
+  "title": "Placer des fractions sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Fraction simple",
+      "content": "Pour placer la fraction $\\frac{1}{4}$ sur une droite graduée allant de $0$ à $1$, je dois couper l'unité en {{1}} parts égales et prendre {{2}} part.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $\\frac{1}{4}$ indique en combien de parts on divise l'unité (ici $4$ parts). Le numérateur indique combien de ces parts on choisit (ici $1$ part).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fraction supérieure à l'unité",
+      "content": "Pour placer la fraction $\\frac{5}{3}$ sur une droite graduée, on remarque que $\\frac{5}{3}$ est égal à $1$ unité et {{1}} tiers. Ce point se situera donc entre le nombre {{2}} et le nombre $2$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décompose la fraction : $\\frac{5}{3} = \\frac{3}{3} + \\frac{2}{3} = 1 + \\frac{2}{3}$. La fraction $\\frac{5}{3}$ est comprise entre $1$ (car $3/3$) et $2$ (car $6/3$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'une droite",
+      "content": "Sur une droite graduée, l'unité est partagée en $8$ intervalles égaux. Le point situé au quatrième trait après le zéro correspond à la fraction $\\frac{4}{8}$, ce qui est identique à la fraction {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "$\\frac{1}{2}$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'unité est divisée en $8$ et on prend $4$ parts, ce qui donne $\\frac{4}{8}$. En simplifiant par $4$, on obtient $\\frac{4 \\div 4}{8 \\div 4} = \\frac{1}{2}$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de $0$ à $1$ avec $8$ intervalles",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.5,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

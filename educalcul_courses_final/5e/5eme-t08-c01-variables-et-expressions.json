@@ -1,0 +1,642 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.783234+00:00",
+  "id": 415,
+  "code": "5eme-t08-c01",
+  "title": "Variables et expressions",
+  "description": "Cours structuré Educalcul : Variables et expressions.",
+  "subject": "Pensée informatique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Variables et expressions",
+    "objectif_global": "Variables et expressions",
+    "mini_lecons_imposees": [
+      "Affecter.",
+      "Calculer.",
+      "Suivre."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Affecter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir ce qu'est une variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon. Aujourd'hui nous allons faire connaissance avec l'idée de variable, un outil qui permet à un programme de retenir une information pour la réutiliser plus tard. Imagine que tu as une boîte étiquetée « score » dans laquelle tu glisses un papier avec le nombre $0$ au début d'une partie. Chaque fois que tu marques un point, tu remplaces le papier par le nouveau total. C'est exactement ce que fait une variable dans un langage de programmation : elle porte un nom, elle contient une valeur et cette valeur peut changer au fil du temps."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Une variable est un espace de mémoire identifié par un nom (par exemple $x$ ou $score$) qui stocke une valeur. Cette valeur peut être modifiée par des instructions d'affectation.",
+              "example": "Dans l'instruction $x = 7$, la variable $x$ reçoit la valeur $7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot « affecter » vient du verbe affecter qui signifie « attribuer ». En programmation, on écrit souvent le symbole « = » pour dire « la variable à gauche prend la valeur de l'expression à droite ». Ce n'est pas une égalité mathématique au sens où les deux côtés sont toujours identiques ; c'est une action qui se produit à un instant précis. Pour bien visualiser, pense à un tiroir : tu y mets un objet, tu refermes le tiroir, et plus tard tu peux sortir l'objet pour voir ce qu'il y a dedans."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom clair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nom doit commencer par une lettre, peut contenir des chiffres ou le trait de soulignement, et ne doit pas être un mot réservé du langage. Par exemple $totalPoints$ est un bon nom, alors que $2points$ ne l'est pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'instruction d'affectation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On place le nom de la variable à gauche, le symbole « = », puis la valeur ou l'expression à droite. Exemple : $age = 12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après l'exécution, la variable contient la nouvelle valeur. On peut l'afficher pour s'en assurer, par exemple avec une instruction d'affichage."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeur de la variable $score$ après chaque affectation",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "départ"
+                },
+                {
+                  "value": 3,
+                  "label": "après 1er but"
+                },
+                {
+                  "value": 7,
+                  "label": "après 2e but"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment créer une variable et lui donner une première valeur, nous allons découvrir comment modifier cette valeur à l'aide d'une nouvelle affectation. C'est une opération très fréquente : on met à jour le contenu de la boîte pour refléter l'état actuel du programme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changer la valeur d'une variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du score. Au début $score = 0$. Quand l'équipe marque, on écrit $score = score + 1$. Remarque que le $score$ à droite de l'égalité est l'ancienne valeur, celle qui est déjà dans la boîte. Le programme la lit, ajoute $1$, puis range le résultat dans la même boîte. C'est comme si tu prenais le papier, tu y ajoutais un trait, puis tu le remettais à sa place."
+            },
+            {
+              "type": "definition",
+              "term": "affectation",
+              "definition": "L'affectation est l'instruction qui assigne une valeur à une variable. Elle s'écrit généralement sous la forme $variable = expression$.",
+              "example": "$total = total + 5$ augmente la variable $total$ de $5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est important de ne pas confondre l'affectation avec une égalité mathématique. En mathématiques, $x = x + 1$ n'a pas de solution, alors qu'en programmation c'est une instruction parfaitement valide qui incrémente $x$. Pour t'en souvenir, pense à une flèche qui va de droite vers gauche : la valeur calculée à droite « file » vers la variable à gauche."
+            },
+            {
+              "type": "display_math",
+              "latex": "score = score + 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons voir comment donner une valeur initiale à une variable dès le départ, avant même que le programme ne fasse quoi que ce soit d'autre. C'est ce qu'on appelle l'initialisation, et c'une bonne habitude pour éviter les surprises."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Initialiser une variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu crées une variable, il est prudent de lui attribuer une valeur de départ connue. Par exemple, si tu comptes le nombre de pommes dans un panier, tu commences par $pommes = 0$. Ainsi, si le programme essaie d'afficher $pommes$ avant d'avoir ajouté des fruits, il montrera $0$ au lieu d'une valeur indéfinie. C'est comme préparer une page blanche avant d'écrire ton devoir."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Toujours initialiser tes variables avant de les utiliser. Cela évite les erreurs bizarres et rend ton code plus facile à lire."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction qui crée une variable $nbLivres$ et lui donne la valeur $5$.",
+              "answer": "$nbLivres = 5$",
+              "hint": "Utilise le symbole d'affectation et place le nombre à droite.",
+              "explanation": "L'instruction $nbLivres = 5$ déclare la variable $nbLivres$ et y stocke la valeur $5$."
+            },
+            {
+              "question": "Si $score = 3$, quelle sera la valeur de $score$ après l'instruction $score = score + 2$ ?",
+              "answer": "$5$",
+              "hint": "Lis la valeur actuelle de $score$, ajoute $2$, puis stocke le résultat.",
+              "explanation": "L'ancien $score$ vaut $3$. L'expression $score + 2$ donne $5$. L'affectation remplace l'ancien contenu par $5$."
+            },
+            {
+              "question": "Pourquoi est-il recommandé d'initialiser une variable avant de l'utiliser ?",
+              "answer": "Pour éviter qu'elle contienne une valeur imprévisible et rendre le programme plus fiable.",
+              "hint": "Pense à une boîte vide qu'on n'a pas encore remplie.",
+              "explanation": "Sans initialisation, la variable pourrait contenir n'importe quoi (souvent $0$ mais pas garanti). L'initialisation garantit un état connu."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce qu'est une expression"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons explorer les expressions, ces morceaux de code qui produisent une valeur. Une expression peut être aussi simple qu'un nombre comme $42$, ou plus élaborée comme $3 * (4 + 2)$. Le programme évalue l'expression pour obtenir un résultat unique, un peu comme quand tu calcules le prix total de tes courses en ajoutant le prix de chaque article."
+            },
+            {
+              "type": "definition",
+              "term": "expression",
+              "definition": "Une expression est une combinaison de valeurs, de variables et d'opérateurs qui, une fois évaluée, donne une seule valeur.",
+              "example": "$2 * (age + 1)$ est une expression qui utilise la variable $age$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les opérateurs arithmétiques de base sont l'addition $+$, la soustraction $-$, la multiplication $*$ et la division $/$. Ils suivent des règles de priorité : la multiplication et la division sont effectuées avant l'addition et la soustraction, sauf si des parenthèses changent l'ordre. C'est la même règle que tu as apprise en mathématiques, ce qui rend le passage au code très naturel."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule d'abord ce qui se trouve entre parenthèses. Dans $3 * (4 + 2)$, on commence par $4 + 2 = 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la priorité des opérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ensuite, effectue les multiplications et divisions de gauche à droite. Ici $3 * 6 = 18$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Terminer par les additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'expression contient encore des $+$ ou $-$, traite-les de gauche à droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "3 * (4 + 2) = 18"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais évaluer une expression simple, voyons comment une expression peut contenir des variables. Quand le programme rencontre une variable, il la remplace par sa valeur actuelle avant de faire le calcul. C'est comme si tu ouvrais la boîte, tu lisais le nombre écrit dessus, puis tu l'utilisais dans ton calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expressions avec variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que $x = 5$ et $y = 3$. L'expression $x + y * 2$ se calcule ainsi : d'abord $y * 2 = 6$, puis $x + 6 = 11$. La variable $x$ garde sa valeur $5$ pendant tout le calcul, elle n'est pas modifiée. Seule une affectation pourrait la changer."
+            },
+            {
+              "type": "definition",
+              "term": "évaluation",
+              "definition": "L'évaluation est le processus qui consiste à remplacer chaque variable par sa valeur et à appliquer les opérateurs pour obtenir le résultat final.",
+              "example": "Évaluer $2 * a + 1$ quand $a = 4$ donne $2 * 4 + 1 = 9$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Résultat de l'expression $x + y * 2$ pour $x=5$, $y=3$",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 11,
+                  "label": "résultat"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, nous allons rencontrer la division entière et le reste, deux opérations très utiles en programmation. La division entière donne le quotient sans la partie décimale, tandis que l'opérateur modulo donne le reste. Cela permet par exemple de savoir si un nombre est pair ou impair."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Division entière et modulo"
+            },
+            {
+              "type": "paragraph",
+              "content": "En Python, l'opérateur // effectue la division entière et % donne le reste. Par exemple, $7 // 2 = 3$ car $2$ rentre trois fois dans $7$, et $7 % 2 = 1$ car il reste $1$. C'est exactement ce que tu fais quand tu partages des bonbons entre amis : chaque ami reçoit le même nombre (quotient) et il peut en rester quelques-uns (reste)."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Rappel",
+              "paragraphs": [
+                "Un nombre est pair si $nombre % 2 = 0$, impair si $nombre % 2 = 1$."
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "7 // 2 = 3 \\quad 7 \\% 2 = 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment combiner plusieurs expressions dans une même instruction d'affectation pour mettre à jour une variable de façon plus sophistiquée. Par exemple, $total = total + prix * quantite$ calcule le coût d'un achat et l'ajoute au total courant. C'est un pattern très courant dans les programmes de gestion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mettre à jour une variable avec une expression complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une caisse enregistreuse. Au début $total = 0$. Un client achète $3$ articles à $12$ euros chacun. L'instruction $total = total + 12 * 3$ évalue $12 * 3 = 36$, puis ajoute $36$ à $total$ qui devient $36$. Si un autre client achète $2$ articles à $5$ euros, on écrit $total = total + 5 * 2$, ce qui ajoute $10$ et $total$ vaut $46$. Chaque fois, l'expression à droite est évaluée avec les valeurs actuelles des variables."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le sous-total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le prix unitaire par la quantité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter au total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais l'addition avec la valeur actuelle de $total$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Stocker le nouveau total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'affectation remplace l'ancien $total$ par le nouveau."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Évalue l'expression $4 + 5 * 2$ en respectant les priorités.",
+              "answer": "$14$",
+              "hint": "Multiplie d'abord $5 * 2$.",
+              "explanation": "La multiplication a la priorité : $5 * 2 = 10$, puis $4 + 10 = 14$."
+            },
+            {
+              "question": "Si $a = 6$ et $b = 4$, quel est le résultat de $a - b // 2$ ?",
+              "answer": "$4$",
+              "hint": "Calcule d'abord la division entière $b // 2$.",
+              "explanation": "$b // 2 = 4 // 2 = 2$. Ensuite $a - 2 = 6 - 2 = 4$."
+            },
+            {
+              "question": "Donne le quotient et le reste de la division de $17$ par $5$ en utilisant les opérateurs // et %.",
+              "answer": "Quotient $3$, reste $2$",
+              "hint": "Utilise $17 // 5$ et $17 % 5$.",
+              "explanation": "$17 // 5 = 3$ car $5 \\times 3 = 15$. Le reste est $17 - 15 = 2$, donc $17 % 5 = 2$."
+            },
+            {
+              "question": "Écris l'instruction qui met à jour la variable $caisse$ en ajoutant le prix de $4$ articles à $7$ euros chacun.",
+              "answer": "$caisse = caisse + 7 * 4$",
+              "hint": "Pense à l'expression du sous-total puis à l'addition.",
+              "explanation": "L'expression $7 * 4$ donne $28$. L'affectation ajoute $28$ à la valeur actuelle de $caisse$."
+            }
+          ]
+        },
+        {
+          "title": "Suivre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suivre l'exécution pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette dernière leçon, nous allons apprendre à suivre l'exécution d'un petit programme ligne par ligne, comme un détective qui note chaque indice. Cela s'appelle faire un trace ou une table de suivi. C'est une compétence essentielle pour comprendre ce que fait ton code, trouver les erreurs et prévoir le résultat final."
+            },
+            {
+              "type": "definition",
+              "term": "trace",
+              "definition": "Un trace (ou table de suivi) est un tableau qui montre, pour chaque instruction exécutée, la valeur de toutes les variables concernées.",
+              "example": "Après $x = 3$ puis $x = x + 2$, le trace affiche $x=3$ puis $x=5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un trace, on écrit les numéros de ligne, l'instruction, et les variables qui changent. On lit le programme dans l'ordre, on met à jour les valeurs exactement comme l'ordinateur le ferait. C'est un exercice de rigueur : ne saute aucune ligne, même si elle te semble évidente."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un tableau avec une colonne pour le numéro de ligne, une pour l'instruction, et une colonne par variable."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécuter la première instruction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplis la ligne correspondante avec les nouvelles valeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer jusqu'à la fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répète pour chaque instruction suivante en utilisant les valeurs les plus récentes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Ligne",
+                "Instruction",
+                "x",
+                "y"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "x = 2",
+                  "2",
+                  ""
+                ],
+                [
+                  "2",
+                  "y = x + 3",
+                  "2",
+                  "5"
+                ],
+                [
+                  "3",
+                  "x = y - 1",
+                  "4",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais remplir un trace simple, nous allons voir comment gérer les boucles, c'est-à-dire des instructions qui se répètent. Suivre une boucle demande de noter chaque itération, car les variables peuvent changer à chaque tour. C'est comme regarder un manège tourner et noter la hauteur du cheval à chaque passage."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suivre une boucle simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère ce fragment : $i = 0$ ; tant que $i < 3$ : $i = i + 1$. Au départ $i = 0$. Première itération : la condition $0 < 3$ est vraie, on exécute $i = i + 1$ donc $i$ devient $1$. Deuxième itération : $1 < 3$ vrai, $i$ devient $2$. Troisième itération : $2 < 3$ vrai, $i$ devient $3$. Quatrième test : $3 < 3$ faux, la boucle s'arrête. Le trace montrera $i$ prenant les valeurs $0, 1, 2, 3$ au fil des lignes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Itération",
+                "Condition",
+                "i après incrémentation"
+              ],
+              "rows": [
+                [
+                  "0 (init)",
+                  "",
+                  "0"
+                ],
+                [
+                  "1",
+                  "0 < 3 vrai",
+                  "1"
+                ],
+                [
+                  "2",
+                  "1 < 3 vrai",
+                  "2"
+                ],
+                [
+                  "3",
+                  "2 < 3 vrai",
+                  "3"
+                ],
+                [
+                  "4",
+                  "3 < 3 faux",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, nous allons combiner affectations, expressions et boucles dans un petit programme complet et en faire le trace intégral. C'est l'occasion de réviser tout ce que tu as appris et de vérifier que tu te sens à l'aise pour lire un code comme une histoire dont tu connais chaque rebondissement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trace complet d'un programme exemple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Programme :\\n1. $total = 0$\\n2. $prix = 10$\\n3. $quantite = 4$\\n4. $total = total + prix * quantite$\\n5. $quantite = quantite - 1$\\n6. $total = total + prix * quantite$\\nSuivons les variables $total$, $prix$, $quantite$ à chaque ligne. Au début, aucune variable n'a de valeur. Ligne 1 : $total = 0$. Ligne 2 : $prix = 10$. Ligne 3 : $quantite = 4$. Ligne 4 : on calcule $prix * quantite = 10 * 4 = 40$, puis $total = 0 + 40 = 40$. Ligne 5 : $quantite = 4 - 1 = 3$. Ligne 6 : $prix * quantite = 10 * 3 = 30$, $total = 40 + 30 = 70$. À la fin, $total = 70$, $prix = 10$, $quantite = 3$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Ligne",
+                "Instruction",
+                "total",
+                "prix",
+                "quantite"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "total = 0",
+                  "0",
+                  "",
+                  ""
+                ],
+                [
+                  "2",
+                  "prix = 10",
+                  "0",
+                  "10",
+                  ""
+                ],
+                [
+                  "3",
+                  "quantite = 4",
+                  "0",
+                  "10",
+                  "4"
+                ],
+                [
+                  "4",
+                  "total = total + prix * quantite",
+                  "40",
+                  "10",
+                  "4"
+                ],
+                [
+                  "5",
+                  "quantite = quantite - 1",
+                  "40",
+                  "10",
+                  "3"
+                ],
+                [
+                  "6",
+                  "total = total + prix * quantite",
+                  "70",
+                  "10",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais créer une variable et lui donner une valeur initiale.",
+                "Je sais modifier la valeur d'une variable avec une affectation.",
+                "Je sais évaluer une expression en respectant les priorités des opérateurs.",
+                "Je sais utiliser la division entière // et le modulo %.",
+                "Je sais construire un trace ligne par ligne pour suivre l'exécution d'un programme.",
+                "Je sais suivre une boucle en notant chaque itération."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le trace pour le programme suivant :\\n1. a = 5\\n2. b = a + 2\\n3. a = b - 1\\nIndique les valeurs de a et b après chaque ligne.",
+              "answer": "Ligne1: a=5 ; Ligne2: a=5, b=7 ; Ligne3: a=6, b=7",
+              "hint": "Mets à jour les variables dans l'ordre, utilise les valeurs les plus récentes.",
+              "explanation": "Après ligne1, a=5. Ligne2 calcule b = 5+2 =7. Ligne3 calcule a = 7-1 =6. b reste 7."
+            },
+            {
+              "question": "Écris le trace de la boucle :\\n1. i = 0\\n2. tant que i < 4 :\\n3.    i = i + 2\\nMontre la valeur de i à chaque test de condition et après chaque incrémentation.",
+              "answer": "Init i=0 ; Test1 0<4 vrai -> i=2 ; Test2 2<4 vrai -> i=4 ; Test3 4<4 faux -> fin, i=4",
+              "hint": "Note la valeur avant le test, puis après l'incrémentation.",
+              "explanation": "La boucle s'exécute deux fois car i passe de 0 à 2 puis de 2 à 4. Au troisième test la condition est fausse."
+            },
+            {
+              "question": "Pour le programme du trace complet vu en cours, quelle est la valeur finale de total ?",
+              "answer": "70",
+              "hint": "Regarde la dernière ligne du tableau de trace.",
+              "explanation": "Le trace montre que après la ligne 6, total vaut 70."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

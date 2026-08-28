@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 167,
+  "_course_code": "ce2-t03-c08-choisir-entre-multiplication-et-division",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Identifier la structure",
+  "title": "Identifier la structure multiplicative ou divisitive",
+  "blocks": [
+    {
+      "title": "Multiplication simple",
+      "content": "Voici un énoncé : Il y a $5$ paquets de bonbons. Chaque paquet contient $8$ bonbons. Combien y a-t-il de bonbons au total ? Écris un algorithme simple (suite d'instructions) qui permet d'identifier l'opération à effectuer (multiplication ou division) et de calculer le résultat.",
+      "correctAnswer": "1. Lire l'énoncé.\\n2. Repérer les mots-clés : \"chaque\" et \"au total\" indiquent une multiplication.\\n3. Choisir l'opération : multiplication.\\n4. Identifier les nombres : nombre de groupes = $5$, taille de chaque groupe = $8$.\\n5. Calculer $5 × 8 = 40$.\\n6. Afficher le résultat $40$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'énoncé décrit des groupes égaux : $5$ groupes de $8$ objets. La question \"au total\" demande le nombre total d'objets, ce qui correspond à une multiplication. L'algorithme repère les mots-clés, choisit la multiplication, extrait les nombres, effectue le calcul $5 × 8 = 40$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division simple",
+      "content": "Voici un énoncé : Un enseignant a $36$ feutres. Il veut les répartir équitablement dans $6$ boîtes. Combien de feutres y aura-t-il dans chaque boîte ? Écris un algorithme simple qui permet d'identifier l'opération à effectuer et de calculer le résultat.",
+      "correctAnswer": "1. Lire l'énoncé.\\n2. Repérer les mots-clés : \"répartir équitablement\" et \"dans chaque\" indiquent une division.\\n3. Choisir l'opération : division.\\n4. Identifier les nombres : total = $36$, nombre de parts = $6$.\\n5. Calculer $36 ÷ 6 = 6$.\\n6. Afficher le résultat $6$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'énoncé décrit un partage équitable : un total de $36$ feutres divisé en $6$ parts égales. La question \"dans chaque\" demande la taille d'une part, ce qui correspond à une division. L'algorithme identifie la division, extrait le total et le nombre de parts, effectue le calcul $36 ÷ 6 = 6$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à deux étapes",
+      "content": "Voici un énoncé : Il y a $7$ tables dans une salle. Chaque table peut accueillir $4$ enfants. Combien d'enfants peuvent être assis au total ? Puis, si $28$ enfants sont présents, combien de tables faut-il utiliser ? Écris un algorithme qui permet de résoudre les deux questions en identifiant la structure de chaque partie.",
+      "correctAnswer": "1. Lire l'énoncé et séparer les deux questions.\\n2. Première question : mots-clés \"chaque\" et \"au total\" → multiplication.\\n   - Nombre de groupes = $7$, taille = $4$.\\n   - Calculer $7 × 4 = 28$.\\n   - Afficher $28$ enfants au total.\\n3. Deuxième question : mots-clés \"combien de tables\" avec un total connu → division.\\n   - Total d'enfants = $28$, capacité par table = $4$.\\n   - Calculer $28 ÷ 4 = 7$.\\n   - Afficher $7$ tables nécessaires.\\n4. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème comporte deux parties. La première demande le total d'enfants sachant le nombre de tables et la capacité par table : structure de groupes égaux → multiplication $7 × 4 = 28$. La seconde demande le nombre de tables nécessaires pour un total d'enfants donné : structure de partage → division $28 ÷ 4 = 7$. L'algorithme traite chaque partie indépendamment en repérant les mots-clés, choisissant l'opération adaptée, extrayant les nombres, calculant et affichant les résultats.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

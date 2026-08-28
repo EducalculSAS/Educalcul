@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Justifier comparaison",
+  "title": "Quiz : Justifier la comparaison de nombres décimaux (CM1)",
+  "questions": [
+    {
+      "text": "Parmi les justifications suivantes, laquelle est correcte pour comparer $4,5$ et $4,05$ ?",
+      "options": [
+        "$4,5 > 4,05$ car 5 dixièmes > 0 dixièmes",
+        "$4,5 < 4,05$ car 5 centièmes > 0 centièmes",
+        "$4,5 = 4,05$ car ils ont même partie entière",
+        "$4,5 > 4,05$ car 5 > 05"
+      ],
+      "correctAnswer": "$4,5 > 4,05$ car 5 dixièmes > 0 dixièmes",
+      "explanation": "On aligne les nombres à la virgule : $4,50$ et $4,05$. La partie entière est identique (4). On compare les dixièmes : 5 > 0, donc $4,5$ est plus grand. Les autres réponses confondent les rangs (centièmes) ou pensent que le nombre de chiffres détermine la grandeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation justifie correctement que $0,9 > 0,12$ ?",
+      "options": [
+        "$0,9 > 0,12$ car 9 dixièmes > 1 dixième",
+        "$0,9 < 0,12$ car 9 > 12",
+        "$0,9 = 0,12$ car même nombre de chiffres",
+        "$0,9 > 0,12$ car 0,9 a un chiffre après la virgule"
+      ],
+      "correctAnswer": "$0,9 > 0,12$ car 9 dixièmes > 1 dixième",
+      "explanation": "On écrit $0,90$ et $0,12$. Les dixièmes sont 9 et 1 ; 9 > 1, donc $0,9$ est plus grand. Les distracteurs comparent les chiffres sans tenir compte de leur position ou utilisent le nombre de chiffres comme critère.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces justifications montre correctement que $12,345 > 12,34$ ?",
+      "options": [
+        "La partie entière est identique, on compare les dixièmes : 3 = 3, puis les centièmes : 4 = 4, puis les millièmes : 5 > 0",
+        "$12,345$ a plus de chiffres donc il est plus grand",
+        "On compare les centièmes : 4 > 3",
+        "On compare les dixièmes : 3 > 4"
+      ],
+      "correctAnswer": "La partie entière est identique, on compare les dixièmes : 3 = 3, puis les centièmes : 4 = 4, puis les millièmes : 5 > 0",
+      "explanation": "Les deux nombres ont la même partie entière (12) et les mêmes dixièmes (3) et centièmes (4). Au rang des millièmes, $12,345$ a 5 alors que $12,34$ (équivalent à $12,340$) a 0, donc le premier est plus grand. Les autres options utilisent des règles erronées (nombre de chiffres, mauvais rang).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Choisissez la comparaison correctement justifiée entre $7,6$ et $7,58$.",
+      "options": [
+        "$7,6 > 7,58$ car 6 dixièmes > 5 dixièmes",
+        "$7,6 < 7,58$ car 6 centièmes < 58 centièmes",
+        "$7,6 = 7,58$ car même partie entière",
+        "$7,6 > 7,58$ car 6 > 58"
+      ],
+      "correctAnswer": "$7,6 > 7,58$ car 6 dixièmes > 5 dixièmes",
+      "explanation": "On aligne : $7,60$ et $7,58$. La partie entière est 7 pour les deux. Au rang des dixièmes, 6 > 5, donc $7,6$ est plus grand. Les autres réponses comparent les centièmes sans aligner ou comparent les chiffres comme des nombres entiers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour comparer $0,405$ et $0,41$, quel raisonnement est exact ?",
+      "options": [
+        "On ajoute un zéro à $0,41$ pour obtenir $0,410$, puis on compare les millièmes : 5 > 0 donc $0,405 < 0,41$",
+        "On compare les dixièmes : 4 = 4, puis les centièmes : 0 < 1 donc $0,405 < 0,41$",
+        "$0,405$ a trois chiffres après la virgule donc il est plus grand",
+        "$0,41$ a deux chiffres après la virgule donc il est plus petit"
+      ],
+      "correctAnswer": "On compare les dixièmes : 4 = 4, puis les centièmes : 0 < 1 donc $0,405 < 0,41$",
+      "explanation": "Les dixièmes sont égaux (4). Au rang des centièmes, $0,405$ a 0 alors que $0,41$ (équivalent à $0,410$) a 1. Donc $0,405 < 0,41$. La première option inverse la conclusion, les deux dernières utilisent le nombre de chiffres comme critère, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

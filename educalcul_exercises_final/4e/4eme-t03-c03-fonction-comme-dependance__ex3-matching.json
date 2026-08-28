@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Graphique",
+  "title": "Lecture et interprétation de graphiques",
+  "blocks": [
+    {
+      "title": "Repérer des points sur un graphique",
+      "content": "Le graphique ci-dessous représente la fonction affine $f : x \\mapsto 2x - 1$. Relie chaque point indiqué à ses coordonnées.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Point A (abscisse 0)",
+          "right": "(0 ; -1)"
+        },
+        {
+          "left": "Point B (abscisse 1)",
+          "right": "(1 ; 1)"
+        },
+        {
+          "left": "Point C (abscisse 3)",
+          "right": "(3 ; 5)"
+        },
+        {
+          "left": "Point D (ordonnée 3)",
+          "right": "(2 ; 3)"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver les coordonnées d'un point sur le graphique, on lit son abscisse sur l'axe horizontal et son ordonnée sur l'axe vertical. Pour le point A d'abscisse 0, on calcule $f(0) = 2 \\times 0 - 1 = -1$, d'où $(0 ; -1)$. Pour B d'abscisse 1 : $f(1) = 2 \\times 1 - 1 = 1$, d'où $(1 ; 1)$. Pour C d'abscisse 3 : $f(3) = 2 \\times 3 - 1 = 5$, d'où $(3 ; 5)$. Pour D d'ordonnée 3, on résout $2x - 1 = 3 \\Rightarrow 2x = 4 \\Rightarrow x = 2$, d'où $(2 ; 3)$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -1,
+        "xmax": 4,
+        "ymin": -2,
+        "ymax": 6,
+        "caption": "Graphique de la fonction $f(x) = 2x - 1$"
+      }
+    },
+    {
+      "title": "Caractéristiques d'une fonction affine",
+      "content": "Relie chaque fonction affine à son coefficient directeur (pente) et à son ordonnée à l'origine.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x) = 3x + 2$",
+          "right": "Coefficient directeur : 3 ; Ordonnée à l'origine : 2"
+        },
+        {
+          "left": "$g(x) = -2x + 5$",
+          "right": "Coefficient directeur : -2 ; Ordonnée à l'origine : 5"
+        },
+        {
+          "left": "$h(x) = 0,5x - 4$",
+          "right": "Coefficient directeur : 0,5 ; Ordonnée à l'origine : -4"
+        },
+        {
+          "left": "$k(x) = -x$",
+          "right": "Coefficient directeur : -1 ; Ordonnée à l'origine : 0"
+        }
+      ],
+      "items": [],
+      "explanation": "Une fonction affine s'écrit sous la forme $ax + b$. Le coefficient $a$ est le coefficient directeur (la pente de la droite) et $b$ est l'ordonnée à l'origine (le point où la droite coupe l'axe des ordonnées, pour $x=0$). Pour $f$, $a=3, b=2$. Pour $g$, $a=-2, b=5$. Pour $h$, $a=0,5, b=-4$. Pour $k(x) = -x$, on a $a=-1, b=0$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Situation et graphique correspondant",
+      "content": "Relie chaque situation à la description du graphique qui la modélise le mieux.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Un réservoir vide se remplit à débit constant de 10 litres par minute.",
+          "right": "Droite passant par l'origine, croissante (proportionnelle)"
+        },
+        {
+          "left": "Un réservoir contient 200 litres et se vide à débit constant de 5 litres par minute.",
+          "right": "Droite décroissante, ne passant pas par l'origine (affine)"
+        },
+        {
+          "left": "Un taxi coûte 2 euros de prise en charge plus 1,50 euro par kilomètre.",
+          "right": "Droite croissante, ne passant pas par l'origine (affine)"
+        },
+        {
+          "left": "La température reste stable à 20 degrés pendant toute l'expérience.",
+          "right": "Droite horizontale (fonction constante)"
+        }
+      ],
+      "items": [],
+      "explanation": "Le remplissage à partir de zéro au débit constant est une proportionnalité : graphique droite par l'origine, croissante. La vidange d'un volume initial non nul est une fonction affine décroissante (ordonnée à l'origine = volume initial). Le tarif taxi a un coût fixe (prise en charge) donc l'ordonnée à l'origine n'est pas nulle : affine croissante. La température constante donne une fonction constante : graphique horizontal.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

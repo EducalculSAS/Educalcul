@@ -1,0 +1,598 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.581821+00:00",
+  "id": 673,
+  "code": "terminale-generale-maths-t01-c01",
+  "title": "Principes additif et multiplicatif",
+  "description": "Cours structuré Educalcul : Principes additif et multiplicatif.",
+  "subject": "Dénombrement et algèbre",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Dénombrement et algèbre",
+    "titre_du_cours": "Principes additif et multiplicatif",
+    "objectif_global": "Principes additif et multiplicatif",
+    "mini_lecons_imposees": [
+      "Choisir principe.",
+      "Compter.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Dénombrement et algèbre",
+      "lessons": [
+        {
+          "title": "Choisir principe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand utiliser le principe additif ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois choisir un fruit pour ton goûter. Dans le panier, il y a $5$ pommes et $3$ oranges. Tu ne peux prendre qu'un seul fruit, et les pommes ne sont pas des oranges. Les deux groupes sont disjoints : aucun fruit n'appartient aux deux groupes à la fois. Pour savoir combien de choix possibles tu as, tu additionnes simplement le nombre de pommes et le nombre d'oranges. C'est l'idée centrale du principe additif : quand une situation se décompose en plusieurs cas exclusifs, le nombre total de possibilités est la somme des possibilités de chaque cas."
+            },
+            {
+              "type": "definition",
+              "term": "principe additif",
+              "definition": "Si un ensemble $E$ est la réunion disjointe de deux sous-ensembles $A$ et $B$ (c'est-à-dire $A \\cap B = \\varnothing$ et $E = A \\cup B$), alors le cardinal de $E$ est la somme des cardinaux : $|E| = |A| + |B|$.",
+              "example": "Avec $A = \\{\\text{pommes}\\}$ de cardinal $5$ et $B = \\{\\text{oranges}\\}$ de cardinal $3$, on a $|E| = 5 + 3 = 8$ choix."
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B| = |A| + |B| \\quad \\text{si } A \\cap B = \\varnothing"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une première boussole : dès que tu peux découper ton problème en options qui ne se chevauchent pas, le principe additif s'applique. Garde cette image du panier de fruits en tête, elle te servira de repère pour les exercices qui suivent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand utiliser le principe multiplicatif ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Changeons de décor. Tu ouvres ton placard et tu veux composer une tenue. Tu as $4$ chemises différentes et $3$ pantalons différents. Pour chaque chemise, tu peux choisir n'importe quel pantalon, et le choix du pantalon ne dépend pas de la chemise choisie. Les deux décisions sont indépendantes. Le nombre total de tenues possibles est le produit du nombre de chemises par le nombre de pantalons. C'est l'essence du principe multiplicatif : quand une tâche se réalise en plusieurs étapes indépendantes, le nombre total de façons de la réaliser est le produit des nombres de façons pour chaque étape."
+            },
+            {
+              "type": "definition",
+              "term": "principe multiplicatif",
+              "definition": "Si une expérience se décompose en $k$ étapes successives telles que le nombre de choix à l'étape $i$ ne dépend pas des choix faits aux étapes précédentes, et que ce nombre est $n_i$, alors le nombre total de résultats possibles est $n_1 \\times n_2 \\times \\dots \\times n_k$.",
+              "example": "Avec $4$ chemises et $3$ pantalons, on a $4 \\times 3 = 12$ tenues."
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\times B| = |A| \\times |B|"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les étapes successives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les décisions qui se font les unes après les autres. Ici : choisir une chemise, puis choisir un pantalon."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'indépendance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que le nombre d'options à la deuxième étape ne change pas selon le choix de la première. Tous les pantalons restent disponibles quelle que soit la chemise."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le nombre d'options de chaque étape : $4 \\times 3 = 12$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que le principe multiplicatif s'invite dès qu'il y a une suite de choix libres. Cette image de la tenue te sera utile pour reconnaître les produits cartésiens dans les problèmes plus abstraits."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Situations mixtes : combiner les deux principes"
+            },
+            {
+              "type": "paragraph",
+              "content": "La vie (et les examens) réservent souvent des problèmes où les deux principes dansent ensemble. Pense à un menu de restaurant : tu dois choisir une entrée parmi $2$ soupes ou $3$ salades (cas exclusifs, donc additif), puis un plat principal parmi $4$ viandes ou $5$ poissons (encore additif), et enfin un dessert parmi $3$ glaces (choix unique). Pour compter le nombre total de menus possibles, tu additionnes d'abord les options de chaque catégorie, puis tu multiplies les résultats des catégories successives. C'est une chorégraphie où l'addition prépare les effectifs de chaque étape, et la multiplication les assemble."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de choix pour le menu : addition au premier niveau, multiplication entre niveaux",
+              "branches": [
+                {
+                  "label": "Entrée",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Soupe (2)",
+                      "probability": 2
+                    },
+                    {
+                      "label": "Salade (3)",
+                      "probability": 3
+                    }
+                  ]
+                },
+                {
+                  "label": "Plat",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Viande (4)",
+                      "probability": 4
+                    },
+                    {
+                      "label": "Poisson (5)",
+                      "probability": 5
+                    }
+                  ]
+                },
+                {
+                  "label": "Dessert",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Glace (3)",
+                      "probability": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet arbre montre visuellement comment l'additif regroupe les alternatives d'une même étape, tandis que le multiplicatif relie les étapes entre elles. Tu as maintenant les trois clés pour choisir le bon principe : identifier les cas exclusifs, repérer les étapes indépendantes, et savoir les combiner."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une boîte, il y a $6$ billes rouges, $4$ billes bleues et $5$ billes vertes. Tu tires une bille au hasard. Combien y a-t-il de résultats possibles pour la couleur de la bille ?",
+              "answer": "15",
+              "hint": "Les couleurs sont mutuellement exclusives. Utilise le principe additif.",
+              "explanation": "Les trois couleurs forment une partition de l'ensemble des billes. On additionne les effectifs : $6 + 4 + 5 = 15$."
+            },
+            {
+              "question": "Un code de cadenas se compose de $3$ chiffres, chacun pouvant être $0$ à $9$. Combien de codes différents existent-ils ?",
+              "answer": "1000",
+              "hint": "Chaque chiffre est choisi indépendamment parmi $10$ possibilités. Applique le principe multiplicatif.",
+              "explanation": "Il y a $10$ choix pour le premier chiffre, $10$ pour le second, $10$ pour le troisième. Le total est $10 \\times 10 \\times 10 = 1000$."
+            },
+            {
+              "question": "Pour composer un mot de passe, tu dois choisir : une lettre majuscule parmi $26$, puis un chiffre parmi $10$, puis un symbole spécial parmi $4$. Combien de mots de passe différents peut-on former ?",
+              "answer": "1040",
+              "hint": "Trois étapes indépendantes. Multiplie les nombres d'options.",
+              "explanation": "Le nombre de choix pour la lettre est $26$, pour le chiffre $10$, pour le symbole $4$. Produit : $26 \\times 10 \\times 4 = 1040$."
+            }
+          ]
+        },
+        {
+          "title": "Compter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter avec le principe additif : union disjointe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'idée du panier de fruits, mais maintenant dans un contexte plus formel. Supposons que tu veux compter le nombre d'élèves d'un lycée qui pratiquent soit le football, soit le basket, en sachant qu'aucun élève ne pratique les deux sports. Si $30$ élèves font du football et $25$ font du basket, le principe additif te donne immédiatement $30 + 25 = 55$ élèves. La condition cruciale est la disjonction : les ensembles ne doivent pas se chevaucher. Si certains élèves pratiquaient les deux, il faudrait retirer l'intersection pour ne pas les compter deux fois."
+            },
+            {
+              "type": "definition",
+              "term": "réunion disjointe",
+              "definition": "Deux ensembles $A$ et $B$ sont dits disjoints si leur intersection est vide : $A \\cap B = \\varnothing$. Leur réunion $A \\cup B$ est alors une réunion disjointe.",
+              "example": "L'ensemble des footballeurs et celui des basketteurs sont disjoints dans l'exemple."
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B| = |A| + |B| \\quad (A \\cap B = \\varnothing)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la disjonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi qu'aucun élément n'appartient aux deux ensembles. Si c'est le cas, le principe additif direct ne s'applique pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les cardinaux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $|A|$ et $|B|$ séparément, puis fais la somme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre obtenu est le cardinal de la réunion, c'est-à-dire le nombre total d'éléments distincts."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode claire pour compter une union disjointe. Cette technique sera la base pour aborder des comptages plus complexes où il faudra parfois créer artificiellement une partition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter avec le principe multiplicatif : produit cartésien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le principe multiplicatif brille quand on doit compter des couples, des triplets, ou plus généralement des $k$-uplets formés en choisissant un élément dans chaque ensemble d'une famille. Par exemple, pour créer un identifiant de $2$ lettres majuscules suivies de $3$ chiffres, tu as $26$ choix pour la première lettre, $26$ pour la seconde, $10$ pour le premier chiffre, $10$ pour le second, $10$ pour le troisième. Le total est $26 \\times 26 \\times 10 \\times 10 \\times 10 = 676\\,000$. Chaque position est une étape indépendante, et l'ensemble des identifiants est le produit cartésien $L \\times L \\times C \\times C \\times C$ où $L$ est l'ensemble des lettres et $C$ celui des chiffres."
+            },
+            {
+              "type": "definition",
+              "term": "produit cartésien",
+              "definition": "Donné une famille d'ensembles $(E_i)_{i=1..k}$, leur produit cartésien $E_1 \\times \\dots \\times E_k$ est l'ensemble des $k$-uplets $(x_1,\\dots,x_k)$ avec $x_i \\in E_i$. Son cardinal est le produit des cardinaux si les ensembles sont finis.",
+              "example": "$\\{A,B\\} \\times \\{1,2\\} = \\{(A,1),(A,2),(B,1),(B,2)\\}$ de cardinal $2 \\times 2 = 4$."
+            },
+            {
+              "type": "display_math",
+              "latex": "|E_1 \\times \\dots \\times E_k| = |E_1| \\times \\dots \\times |E_k|"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les ensembles de choix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie chaque position ou rôle comme un ensemble distinct."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter chaque ensemble",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine le cardinal de chaque ensemble (nombre de possibilités pour cette position)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre total de $k$-uplets est le produit de ces cardinaux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit cartésien est un outil puissant : il transforme une suite de choix en un objet mathématique unique dont le cardinal se calcule par multiplication. Garde cette image d'une grille où chaque ligne correspond à un choix du premier ensemble et chaque colonne à un choix du second."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combiner addition et multiplication : stratégie de décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes réels mêlent souvent les deux principes. Imagine que tu dois former un comité de $3$ personnes parmi $10$ candidats, avec un président, un secrétaire et un trésorier, mais que deux candidats refusent de siéger ensemble. Tu peux d'abord compter tous les comités sans restriction (multiplicatif : $10 \\times 9 \\times 8 = 720$), puis soustraire ceux où les deux récalcitrants sont ensemble (additif pour les cas où ils sont tous les deux présents). Cette approche « compter tout, puis retirer les interdits » est une application classique de l'inclusion-exclusion, qui repose sur l'additif pour corriger le surcomptage."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de sélection du comité : branches pour chaque poste, puis élagage des cas interdits",
+              "branches": [
+                {
+                  "label": "Président",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Candidat A",
+                      "probability": 1
+                    },
+                    {
+                      "label": "Candidat B",
+                      "probability": 1
+                    },
+                    {
+                      "label": "Autres (8)",
+                      "probability": 8
+                    }
+                  ]
+                },
+                {
+                  "label": "Secrétaire",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Restants (9)",
+                      "probability": 9
+                    }
+                  ]
+                },
+                {
+                  "label": "Trésorier",
+                  "probability": 1,
+                  "children": [
+                    {
+                      "label": "Restants (8)",
+                      "probability": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet exemple montre comment l'additif et le multiplicatif s'entrelacent : le multiplicatif construit l'ensemble total, l'additif isole les cas à exclure. Maîtriser cette danse est la clé pour résoudre les problèmes de dénombrement les plus variés."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une classe, $12$ élèves jouent au piano, $8$ jouent de la guitare, et $3$ jouent des deux instruments. Combien d'élèves jouent d'au moins un de ces deux instruments ?",
+              "answer": "17",
+              "hint": "Utilise la formule d'inclusion-exclusion : $|A \\cup B| = |A| + |B| - |A \\cap B|$.",
+              "explanation": "On additionne $12 + 8 = 20$, puis on soustrait les $3$ comptés deux fois : $20 - 3 = 17$."
+            },
+            {
+              "question": "Un code PIN à $4$ chiffres est formé avec des chiffres de $0$ à $9$. Combien de codes différents existent-ils si le premier chiffre ne peut pas être $0$ ?",
+              "answer": "9000",
+              "hint": "Le premier chiffre a $9$ possibilités ($1$ à $9$), les trois suivants en ont $10$ chacun. Multiplie.",
+              "explanation": "Nombre de choix : $9 \\times 10 \\times 10 \\times 10 = 9000$."
+            },
+            {
+              "question": "On veut former un mot de $5$ lettres en utilisant l'alphabet français ($26$ lettres). Les lettres peuvent se répéter. Combien de mots possibles ?",
+              "answer": "11881376",
+              "hint": "Chaque position offre $26$ choix indépendants. Applique le principe multiplicatif $5$ fois.",
+              "explanation": "Produit : $26^5 = 26 \\times 26 \\times 26 \\times 26 \\times 26 = 11\\,881\\,376$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier le principe additif : partition et bijection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi le principe additif est-il vrai ? La réponse rigoureuse repose sur la notion de partition. Si un ensemble $E$ est la réunion disjointe de $A$ et $B$, alors chaque élément de $E$ appartient soit à $A$, soit à $B$, jamais aux deux. On peut donc établir une bijection entre $E$ et l'union disjointe $A \\sqcup B$ (qui est simplement $A \\cup B$ ici). Comme une bijection conserve le cardinal, $|E| = |A \\sqcup B| = |A| + |B|$. Cette justification montre que l'addition des cardinaux n'est pas une coïncidence, mais une conséquence directe de la structure des ensembles."
+            },
+            {
+              "type": "definition",
+              "term": "partition",
+              "definition": "Une partition d'un ensemble $E$ est une famille de sous-ensembles non vides, deux à deux disjoints, dont la réunion est $E$.",
+              "example": "L'ensemble $\\{1,2,3,4\\}$ peut être partitionné en $\\{\\{1,2\\},\\{3,4\\}\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "E = \\bigsqcup_{i=1}^k A_i \\implies |E| = \\sum_{i=1}^k |A_i|"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire la partition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que les sous-ensembles couvrent tout $E$ sans se chevaucher."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Établir la bijection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'application identité de $E$ vers la réunion disjointe est une bijection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure par égalité des cardinaux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le cardinal de la réunion disjointe est la somme des cardinaux, d'où la formule."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette démonstration te donne la confiance que le principe additif n'est pas une simple règle mnémotechnique, mais un théorème fondé sur la théorie des ensembles. Tu pourras l'invoquer avec assurance dans tes justifications."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier le principe multiplicatif : produit cartésien et bijection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le principe multiplicatif trouve sa justification dans la définition même du produit cartésien. Soit $k$ ensembles finis $E_1,\\dots,E_k$. Le produit cartésien $E_1 \\times \\dots \\times E_k$ est l'ensemble des $k$-uplets $(x_1,\\dots,x_k)$ avec $x_i \\in E_i$. On peut construire une bijection entre cet ensemble et l'ensemble des chemins dans un arbre de décision à $k$ niveaux, où chaque niveau $i$ a $|E_i|$ branches. Comme chaque chemin correspond à un unique $k$-uplet et vice versa, le nombre de chemins (qui se compte par multiplication successive des nombres de branches) égale le cardinal du produit cartésien. Ainsi, $|E_1 \\times \\dots \\times E_k| = |E_1| \\times \\dots \\times |E_k|$."
+            },
+            {
+              "type": "definition",
+              "term": "bijection",
+              "definition": "Une application $f : A \\to B$ est bijective si elle est à la fois injective (distincts antécédents donnent distincts images) et surjective (chaque élément de $B$ a un antécédent). Deux ensembles en bijection ont même cardinal.",
+              "example": "L'application $(x,y) \\mapsto x + y$ de $\\{1,2\\} \\times \\{1,2\\}$ vers $\\{2,3,4\\}$ n'est pas bijective, mais l'identité sur un produit cartésien l'est."
+            },
+            {
+              "type": "display_math",
+              "latex": "|E_1 \\times \\dots \\times E_k| = \\prod_{i=1}^k |E_i|"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Modéliser par un arbre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque niveau de l'arbre correspond au choix dans un ensemble $E_i$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les chemins",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de chemins complets est le produit des nombres de branches à chaque niveau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier la bijection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque chemin définit un unique $k$-uplet, et chaque $k$-uplet définit un unique chemin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donc le cardinal du produit cartésien est ce produit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "En reliant le principe multiplicatif à la structure d'un arbre de décision et à la bijection avec le produit cartésien, tu as maintenant une justification solide que tu pourras reproduire ou adapter dans tes propres preuves."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple complet : compter et justifier le nombre de fonctions d'un ensemble fini vers un autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un exemple qui réunit tout. Soient $A$ et $B$ deux ensembles finis avec $|A| = m$ et $|B| = n$. Combien y a-t-il de fonctions $f : A \\to B$ ? Pour chaque élément $a \\in A$, on doit choisir son image $f(a) \\in B$. Il y a $n$ choix possibles pour $f(a)$, et ces choix sont indépendants pour les différents $a$. Par le principe multiplicatif, le nombre total de fonctions est $n \\times n \\times \\dots \\times n$ ($m$ fois), soit $n^m$. Pour justifier rigoureusement, on observe que l'ensemble des fonctions de $A$ dans $B$ est en bijection avec le produit cartésien $B^A = \\underbrace{B \\times \\dots \\times B}_{m \\text{ fois}}$. Chaque fonction correspond à un $m$-uplet d'images, et réciproquement. Le cardinal de ce produit cartésien est $n^m$ par application répétée du principe multiplicatif. C'est une illustration parfaite de la façon dont l'additif (pour partitionner le domaine si besoin) et le multiplicatif (pour les choix d'images) collaborent, et de la manière dont la bijection avec un produit cartésien donne une preuve formelle."
+            },
+            {
+              "type": "display_math",
+              "latex": "|B^A| = |B|^{|A|} = n^m"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet exemple synthétise les trois leçons : choisir le bon principe (multiplicatif pour les images indépendantes), compter efficacement ($n^m$), et justifier par une bijection avec un produit cartésien. Tu es maintenant prêt à affronter sereinement tout problème de dénombrement du programme."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une situation relevant du principe additif (cas exclusifs).",
+                "Je sais reconnaître une situation relevant du principe multiplicatif (étapes indépendantes).",
+                "Je sais combiner les deux principes dans un même problème.",
+                "Je peux justifier le principe additif par une partition et une bijection.",
+                "Je peux justifier le principe multiplicatif par un produit cartésien et une bijection.",
+                "Je sais appliquer ces principes pour compter des fonctions, des mots, des codes, etc."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $E = \\{1,2,3\\}$ et $F = \\{a,b\\}$. Combien y a-t-il de fonctions de $E$ vers $F$ ? Justifie ta réponse en utilisant le principe multiplicatif.",
+              "answer": "8",
+              "hint": "Pour chaque élément de $E$, il y a $2$ images possibles dans $F$. Les choix sont indépendants.",
+              "explanation": "Il y a $3$ éléments dans $E$, chacun a $2$ images possibles. Par le principe multiplicatif : $2 \\times 2 \\times 2 = 2^3 = 8$."
+            },
+            {
+              "question": "On considère l'ensemble des parties de $\\{1,2,3,4\\}$. Combien cet ensemble contient-il d'éléments ? Explique le lien avec le principe multiplicatif.",
+              "answer": "16",
+              "hint": "Chaque élément de $\\{1,2,3,4\\}$ peut être soit dans la partie, soit pas. Deux choix par élément.",
+              "explanation": "Pour chacun des $4$ éléments, on a $2$ choix (présent ou absent). Le nombre de parties est $2^4 = 16$. C'est le cardinal du produit cartésien $\\{0,1\\}^4$."
+            },
+            {
+              "question": "Démontre que le nombre de bijections d'un ensemble $A$ à $m$ éléments vers lui-même est $m!$ en utilisant le principe multiplicatif.",
+              "answer": "$m!$",
+              "hint": "Construis une bijection en choisissant successivement les images de chaque élément de $A$ sans répétition.",
+              "explanation": "Pour le premier élément, $m$ choix d'image. Pour le second, $m-1$ choix restants, etc. Produit : $m \\times (m-1) \\times \\dots \\times 1 = m!$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,111 @@
+{
+  "_status": "done",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Simulations probabilistes",
+  "title": "Quiz : Applications des simulations probabilistes",
+  "questions": [
+    {
+      "text": "Dans une simulation probabiliste, on répète un grand nombre de fois une expérience aléatoire. Que représente la fréquence d'apparition d'un événement ?",
+      "options": [
+        "La probabilité théorique exacte",
+        "Une approximation de la probabilité",
+        "Le nombre total d'essais",
+        "Le nombre d'événements impossibles"
+      ],
+      "correctAnswer": "Une approximation de la probabilité",
+      "explanation": "La fréquence est le rapport entre le nombre de succès observés et le nombre total d'essais réalisés. Selon la loi des grands nombres, elle tend vers la probabilité théorique lorsque le nombre d'essais augmente, mais elle n'est jamais exactement égale à cette probabilité pour un nombre fini d'essais. C'est donc une estimation, une approximation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : N entier, G entier\\nDébut\\nG ← 0\\nPour i de 1 à 100 faire\\n  Si aleatoire() < 0,3 alors\\n    G ← G + 1\\n  Fin Si\\nFin Pour\\nAfficher G\\nFin\\nQue représente la valeur affichée par G à la fin ?",
+      "options": [
+        "La probabilité d'obtenir un nombre inférieur à 0,3",
+        "Le nombre de fois où un nombre aléatoire strictement inférieur à 0,3 a été obtenu sur 100 essais",
+        "La fréquence d'obtention d'un nombre supérieur à 0,3",
+        "La somme des 100 nombres aléatoires générés"
+      ],
+      "correctAnswer": "Le nombre de fois où un nombre aléatoire strictement inférieur à 0,3 a été obtenu sur 100 essais",
+      "explanation": "La variable G est initialisée à 0 et incrémentée de 1 à chaque fois que la condition 'aleatoire() < 0,3' est vraie. La boucle s'exécute 100 fois. G est donc un compteur, c'est-à-dire l'effectif (le nombre) de succès parmi les 100 essais. Ce n'est pas une fréquence (qui serait G/100) ni une probabilité théorique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule 200 lancers d'un dé équilibré à six faces. Le diagramme en barres ci-dessous représente les effectifs obtenus pour chaque face. Quelle est la fréquence d'apparition de la face 6 ?",
+      "options": [
+        "0,19",
+        "0,16",
+        "38",
+        "0,38"
+      ],
+      "correctAnswer": "0,19",
+      "explanation": "La fréquence se calcule en divisant l'effectif de l'événement par le nombre total d'essais. Le diagramme indique un effectif de 38 pour la face 6 (barre 'gold') sur un total de 200 lancers. La fréquence est donc 38 / 200 = 0,19. L'option 38 correspond à l'effectif, pas à la fréquence. L'option 0,16 est une approximation de la probabilité théorique 1/6.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs des faces obtenues lors de 200 lancers de dé",
+        "bars": [
+          {
+            "label": "1",
+            "value": 32,
+            "tone": "blue"
+          },
+          {
+            "label": "2",
+            "value": 35,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 31,
+            "tone": "blue"
+          },
+          {
+            "label": "4",
+            "value": 34,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "6",
+            "value": 38,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On souhaite estimer la probabilité d'obtenir 'Pile' en lançant une pièce de monnaie équilibrée par simulation. Laquelle des affirmations suivantes est correcte concernant la précision de l'estimation ?",
+      "options": [
+        "Avec 10 essais, la fréquence sera exactement 0,5",
+        "Avec 1 000 essais, la fréquence sera nécessairement plus proche de 0,5 qu'avec 10 essais",
+        "Augmenter le nombre d'essais tend à faire converger la fréquence vers la probabilité théorique",
+        "La fréquence obtenue ne dépend pas du nombre d'essais effectués"
+      ],
+      "correctAnswer": "Augmenter le nombre d'essais tend à faire converger la fréquence vers la probabilité théorique",
+      "explanation": "C'est l'énoncé de la loi des grands nombres : lorsque le nombre d'essais augmente, la fréquence observée se stabilise autour de la probabilité théorique. L'option 1 est fausse car l'aléa implique des fluctuations, surtout pour un petit nombre d'essais. L'option 2 est fausse car 'nécessairement' est trop fort : un essai de 1 000 lancers peut, par hasard, donner une fréquence plus éloignée de 0,5 qu'un essai de 10 lancers, même si c'est peu probable. L'option 4 est fausse car la fréquence dépend fortement du nombre d'essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simuler l'expérience : 'On lance deux dés à six faces et on note la somme des résultats'. Quelle instruction conditionnelle permet de compter le nombre de fois où la somme est égale à 7 ?",
+      "options": [
+        "Si de1 + de2 = 7 alors C ← C + 1",
+        "Si de1 = 7 ou de2 = 7 alors C ← C + 1",
+        "Si de1 × de2 = 7 alors C ← C + 1",
+        "Si aleatoire() < 7/36 alors C ← C + 1"
+      ],
+      "correctAnswer": "Si de1 + de2 = 7 alors C ← C + 1",
+      "explanation": "Pour simuler le lancer de deux dés, on génère deux nombres entiers aléatoires entre 1 et 6 (stockés dans de1 et de2). La somme est obtenue par l'addition de1 + de2. On teste si cette somme vaut 7. L'option 2 teste si un dé vaut 7 (impossible avec un dé à 6 faces). L'option 3 teste le produit. L'option 4 utilise directement la probabilité théorique (7/36) sans simuler les dés individuellement, ce qui ne correspond pas à la modélisation de l'expérience physique demandée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

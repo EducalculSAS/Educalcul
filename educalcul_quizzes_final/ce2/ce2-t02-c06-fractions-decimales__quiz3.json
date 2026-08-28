@@ -1,0 +1,130 @@
+{
+  "_status": "done",
+  "_course_id": 157,
+  "_course_code": "ce2-t02-c06-fractions-decimales",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Relier fraction décimale et monnaie / mesure",
+  "title": "Fractions décimales : monnaie et mesures",
+  "questions": [
+    {
+      "text": "Regarde la tirelire. Quelle fraction décimale correspond à la somme d'argent affichée ?",
+      "options": [
+        "$\\frac{250}{100}$ euros",
+        "$\\frac{205}{100}$ euros",
+        "$\\frac{25}{100}$ euros",
+        "$\\frac{250}{10}$ euros"
+      ],
+      "correctAnswer": "$\\frac{250}{100}$ euros",
+      "explanation": "La tirelire contient 2 euros et 50 centimes. 1 euro = 100 centimes. 2 euros = 200 centimes. Total = 200 + 50 = 250 centimes. Comme 1 euro = 100 centimes, la fraction décimale est 250 centimes sur 100, soit $\\frac{250}{100}$ euros. L'option $\\frac{205}{100}$ correspond à 2,05 €. L'option $\\frac{25}{100}$ correspond à 0,25 €. L'option $\\frac{250}{10}$ correspond à 25 €.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          200,
+          50
+        ],
+        "target": 450,
+        "caption": "Contenu de la tirelire : 2 pièces de 1 € et 1 pièce de 50 c"
+      }
+    },
+    {
+      "text": "Une corde mesure 1 mètre 25 centimètres. Quelle fraction décimale exprime cette longueur en mètres ?",
+      "options": [
+        "$\\frac{125}{100}$ m",
+        "$\\frac{1025}{100}$ m",
+        "$\\frac{125}{10}$ m",
+        "$\\frac{125}{1000}$ m"
+      ],
+      "correctAnswer": "$\\frac{125}{100}$ m",
+      "explanation": "1 mètre = 100 centimètres. 1 m 25 cm = 100 cm + 25 cm = 125 cm. Pour exprimer en mètres avec une fraction décimale, on met le nombre de centimètres au numérateur et 100 au dénominateur : $\\frac{125}{100}$ m. L'option $\\frac{1025}{100}$ m ferait 10,25 m. L'option $\\frac{125}{10}$ m ferait 12,5 m. L'option $\\frac{125}{1000}$ m ferait 0,125 m (soit 12,5 cm).",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 125,
+        "unit": "cm",
+        "caption": "Corde de 1 m 25 cm (125 cm)"
+      }
+    },
+    {
+      "text": "Le prix d'un jeu est affiché : 15 euros 75 centimes. Laquelle de ces écritures fractionnaires est exacte ?",
+      "options": [
+        "$\\frac{1575}{100}$ €",
+        "$\\frac{15075}{100}$ €",
+        "$\\frac{1575}{10}$ €",
+        "$\\frac{1575}{1000}$ €"
+      ],
+      "correctAnswer": "$\\frac{1575}{100}$ €",
+      "explanation": "15 € 75 c = 1500 c + 75 c = 1575 centimes. Comme 1 € = 100 c, la fraction décimale en euros est $\\frac{1575}{100}$ €. L'option $\\frac{15075}{100}$ € correspond à 150,75 €. L'option $\\frac{1575}{10}$ € correspond à 157,5 €. L'option $\\frac{1575}{1000}$ € correspond à 1,575 €.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 15.75,
+        "caption": "Tableau de position pour 15,75 €"
+      }
+    },
+    {
+      "text": "Paul a 3 pièces de 2 €, 2 pièces de 50 c et 5 pièces de 10 c. Quelle fraction décimale représente son total en euros ?",
+      "options": [
+        "$\\frac{750}{100}$ €",
+        "$\\frac{670}{100}$ €",
+        "$\\frac{705}{100}$ €",
+        "$\\frac{755}{100}$ €"
+      ],
+      "correctAnswer": "$\\frac{750}{100}$ €",
+      "explanation": "Calculons en centimes : 3 x 200 c = 600 c. 2 x 50 c = 100 c. 5 x 10 c = 50 c. Total = 600 + 100 + 50 = 750 centimes. En euros, cela fait $\\frac{750}{100}$ € (soit 7,50 €). L'option $\\frac{670}{100}$ oublie les 50 c des pièces de 10 c. L'option $\\frac{705}{100}$ inverse des chiffres. L'option $\\frac{755}{100}$ ajoute 5 c de trop.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          200,
+          200,
+          50,
+          50,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "target": 750,
+        "caption": "Pièces de Paul"
+      }
+    },
+    {
+      "text": "Un ruban mesure $\\frac{350}{100}$ m. On en coupe un morceau de 1 m 50 cm. Quelle fraction décimale donne la longueur restante ?",
+      "options": [
+        "$\\frac{200}{100}$ m",
+        "$\\frac{150}{100}$ m",
+        "$\\frac{500}{100}$ m",
+        "$\\frac{300}{100}$ m"
+      ],
+      "correctAnswer": "$\\frac{200}{100}$ m",
+      "explanation": "Convertissons tout en centièmes de mètre (centimètres). Le ruban initial : $\\frac{350}{100}$ m = 350 cm. Le morceau coupé : 1 m 50 cm = 100 cm + 50 cm = 150 cm = $\\frac{150}{100}$ m. Reste = 350 cm - 150 cm = 200 cm = $\\frac{200}{100}$ m (soit 2 m). L'option $\\frac{150}{100}$ m est la longueur coupée. L'option $\\frac{500}{100}$ m est une addition. L'option $\\frac{300}{100}$ m correspond à une soustraction erronée (350 - 50).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total 3,50 m",
+            "value": 350,
+            "tone": "blue"
+          },
+          {
+            "label": "Coupé 1,50 m",
+            "value": 150,
+            "tone": "red"
+          },
+          {
+            "label": "Restant ?",
+            "value": 200,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres : soustraction de longueurs"
+      }
+    }
+  ]
+}

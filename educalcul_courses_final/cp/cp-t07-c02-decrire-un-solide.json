@@ -1,0 +1,343 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.657176+00:00",
+  "id": 57,
+  "code": "cp-t07-c02",
+  "title": "Décrire un solide",
+  "description": "Cours structuré Educalcul : Décrire un solide.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Décrire un solide",
+    "objectif_global": "Décrire un solide",
+    "mini_lecons_imposees": [
+      "Observer faces et formes visibles.",
+      "Décrire avec vocabulaire simple.",
+      "Comparer deux solides."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Observer faces et formes visibles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Observer les solides autour de toi"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde autour de toi : la boîte de mouchoirs sur la table, le ballon dans le jardin, la boîte de conserve dans le placard. Tous ces objets sont des solides. Ils ont une forme qui ne change pas quand on les touche. Aujourd'hui, on va apprendre à les observer comme de vrais détectives !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 1,
+              "units": 1,
+              "caption": "Un cube (unité), un pavé droit (dizaine), une plaque (centaine)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien vu que le petit cube, la baguette et la grande plaque sont trois solides différents. Maintenant, penchons-nous sur leurs faces : ces surfaces planes qu'on peut toucher du doigt."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Regarder les faces plates"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends un dé entre tes mains. Tourne-le doucement. Combien de faces carrées comptes-tu ? $6$ faces, toutes identiques ! Chaque face est un carré. C'est comme les petites cases de ton cahier. On appelle ça une face plane parce qu'elle est bien plate."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 3,
+              "highlighted": 9,
+              "caption": "Une face carrée d'un cube"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant repérer les faces plates. Mais certains solides ont aussi des parties arrondies. Voyons ça de plus près."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les surfaces courbes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends une balle de tennis. Essaie de trouver une face plate... impossible ! La balle est toute ronde, elle a une surface courbe. Regarde maintenant une boîte de conserve : elle a deux faces circulaires plates (le haut et le bas) et une surface courbe tout autour. C'est magique, non ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 1,
+              "shape": "circle",
+              "caption": "Une face circulaire d'un cylindre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de faire un grand pas : tu sais observer les faces plates et les surfaces courbes. Dans la prochaine leçon, on va apprendre les mots justes pour décrire tout ça comme un pro !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces trois solides, lequel a seulement des faces carrées ?",
+              "answer": "Le cube (l'unité).",
+              "hint": "Regarde bien le petit cube de la base 10 : toutes ses faces sont des carrés.",
+              "explanation": "Le cube a $6$ faces carrées. Le pavé droit (la baguette) a des faces rectangulaires. La plaque (la centaine) a deux grandes faces carrées et quatre faces rectangulaires."
+            },
+            {
+              "question": "Combien de faces carrées a un cube ?",
+              "answer": "$6$ faces carrées.",
+              "hint": "Compte les faces du dé sur l'image ou dans ta main.",
+              "explanation": "Un cube a exactement $6$ faces, et chacune est un carré. C'est pour ça qu'on l'appelle aussi un hexaèdre régulier, mais pour l'instant, retiens juste : $6$ faces carrées."
+            },
+            {
+              "question": "Quel solide a une surface courbe et deux faces circulaires ?",
+              "answer": "Le cylindre (comme une boîte de conserve).",
+              "hint": "Pense à un objet de la cuisine qui roule et qui a deux ronds plats.",
+              "explanation": "Le cylindre a deux faces planes en forme de cercle (les bases) et une surface courbe qui les relie. La balle (sphère) n'a que du courbe, le cône a une base circulaire et un sommet."
+            }
+          ]
+        },
+        {
+          "title": "Décrire avec vocabulaire simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les mots magiques pour décrire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu observes bien, donnons des noms aux choses que tu vois. Pour parler d'un solide comme un grand, on utilise trois mots simples : face, arête et sommet. C'est comme apprendre le prénom de nouveaux copains !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre cube. Chaque surface plate, c'est une $face$. Le trait où deux faces se rencontrent, c'est une $arête$. Et le petit coin où plusieurs arêtes se croisent, c'est un $sommet$. Facile, non ?"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 6,
+              "caption": "Une face rectangulaire d'un pavé droit (6 petits carrés)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu connais maintenant les trois mots-clés. Allons un peu plus loin : tous les solides n'ont pas les mêmes nombres de faces, d'arêtes et de sommets. Jouons à les compter ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter sur un pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une boîte de chaussures. C'est un pavé droit. Il a $6$ faces (toutes rectangles), $12$ arêtes et $8$ sommets. Si tu as une boîte sous la main, touche chaque arête en comptant à voix haute : $1, 2, 3...$ jusqu'à $12$. C'est le meilleur moyen de retenir !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Une face coupée en deux : deux rectangles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et les solides tout ronds ? Eux aussi ont des mots à eux. La sphère (la balle) n'a ni face plate, ni arête, ni sommet : elle a une seule surface courbe. Le cylindre a $2$ faces circulaires, $2$ arêtes (les cercles) et $0$ sommet. Le cône a $1$ face circulaire, $1$ arête (le cercle) et $1$ sommet (la pointe)."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "carre",
+                "triangle"
+              ],
+              "options": [
+                "cercle",
+                "carre",
+                "triangle"
+              ],
+              "answer": "carre",
+              "caption": "Quelle forme de face pour le cube ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens incroyable ! Tu sais nommer et compter les éléments d'un solide. La dernière étape de ce cours sera de comparer deux solides pour voir leurs ressemblances et leurs différences. Prêt pour le défi ?"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment s'appelle le trait où deux faces se rencontrent ?",
+              "answer": "Une arête.",
+              "hint": "Passe ton doigt sur le bord d'une boîte.",
+              "explanation": "Quand deux faces plates se touchent, elles forment une ligne qu'on appelle arête. Sur un cube, il y en a $12$."
+            },
+            {
+              "question": "Combien d'arêtes a un pavé droit (boîte de chaussures) ?",
+              "answer": "$12$ arêtes.",
+              "hint": "Compte les arêtes du haut ($4$), du bas ($4$) et les $4$ arêtes verticales.",
+              "explanation": "Un pavé droit a exactement $12$ arêtes, comme le cube. La différence, c'est que ses faces sont des rectangles, pas tous des carrés."
+            },
+            {
+              "question": "Quel solide a un seul sommet ?",
+              "answer": "Le cône.",
+              "hint": "Pense à un chapeau d'anniversaire ou un cornet de glace.",
+              "explanation": "Le cône a une base circulaire (une face), un bord circulaire (une arête) et une pointe unique : le sommet. La sphère n'en a pas, le cylindre n'en a pas non plus."
+            }
+          ]
+        },
+        {
+          "title": "Comparer deux solides.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le grand jeu des ressemblances"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant observer et décrire. Place à la comparaison ! Prends un cube et une sphère. Pose-les côte à côte. Qu'est-ce qui est pareil ? Qu'est-ce qui est différent ? C'est comme chercher les $7$ différences dans un magazine, mais en 3D !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cube a des faces plates, des arêtes droites, des sommets pointus. La sphère n'a rien de tout ça : elle est toute lisse, toute ronde. Pourtant, les deux sont des solides : on peut les tenir, ils ont du volume. C'est leur point commun."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de faces plates : cube vs sphère",
+              "bars": [
+                {
+                  "label": "Cube",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sphère",
+                  "value": 0,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bien vu ! Maintenant, compare un cylindre et un cône. Tous les deux ont une base circulaire. Mais le cylindre a deux faces circulaires (haut et bas) et deux arêtes, alors que le cône n'a qu'une base, une arête et un sommet. C'est comme une famille : ils se ressemblent, mais chacun a sa personnalité."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "circle",
+              "caption": "Une base circulaire partagée en deux ? Non, deux bases pour le cylindre !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, imagine un petit défi : tu as un pavé droit et une pyramide à base carrée. Le pavé a $6$ faces rectangles, la pyramide a $1$ face carrée et $4$ faces triangulaires. Lequel a le plus de faces ? Lequel a des faces triangulaires ? En comparant, tu deviens un expert des solides !"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Une face triangulaire de la pyramide"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as terminé ce cours sur les solides. Tu sais observer, décrire et comparer. C'est une super base pour la géométrie. Garde ton œil de détective pour les prochaines aventures mathématiques !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les faces plates et les surfaces courbes sur un solide.",
+                "Je connais les mots face, arête, sommet et je peux les compter sur un cube ou un pavé.",
+                "Je peux comparer deux solides en disant ce qui est pareil et ce qui est différent."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la grande différence entre un cube et une sphère ?",
+              "answer": "Le cube a des faces plates, la sphère n'en a pas (surface courbe seulement).",
+              "hint": "Touche les deux : l'un a des coins, l'autre est tout lisse.",
+              "explanation": "Le cube a $6$ faces carrées plates, $12$ arêtes et $8$ sommets. La sphère a $0$ face plate, $0$ arête, $0$ sommet, seulement une surface courbe continue."
+            },
+            {
+              "question": "Combien de faces circulaires a un cylindre ? Combien en a un cône ?",
+              "answer": "Cylindre : $2$ faces circulaires. Cône : $1$ face circulaire.",
+              "hint": "Regarde une boîte de conserve (cylindre) et un cornet de glace (cône).",
+              "explanation": "Le cylindre a deux bases circulaires (haut et bas). Le cône n'a qu'une base circulaire ; son autre extrémité est un sommet pointu."
+            },
+            {
+              "question": "Lequel a des faces triangulaires : le pavé droit ou la pyramide à base carrée ?",
+              "answer": "La pyramide à base carrée.",
+              "hint": "Visualise une pyramide d'Égypte : ses côtés sont des triangles.",
+              "explanation": "Le pavé droit n'a que des faces rectangulaires ($6$). La pyramide à base carrée a $1$ face carrée (la base) et $4$ faces triangulaires (les côtés)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

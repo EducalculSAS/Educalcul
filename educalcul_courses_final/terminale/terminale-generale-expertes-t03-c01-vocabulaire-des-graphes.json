@@ -1,0 +1,584 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.803114+00:00",
+  "id": 747,
+  "code": "terminale-generale-expertes-t03-c01",
+  "title": "Vocabulaire des graphes",
+  "description": "Cours structuré Educalcul : Vocabulaire des graphes.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Vocabulaire des graphes",
+    "objectif_global": "Vocabulaire des graphes",
+    "mini_lecons_imposees": [
+      "Sommets / arêtes.",
+      "Degré.",
+      "Chemins."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Sommets / arêtes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sommets et arêtes : les briques de base d'un graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier rendez-vous consacré au vocabulaire des graphes. Tu vas voir, cette notion n'a rien d'abstraite : elle modélise des situations concrètes comme un réseau de routes, un organigramme d'entreprise ou même tes relations sur un réseau social. Pour commencer, posons les fondations avec deux objets simples mais puissants : le sommet et l'arête."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe",
+              "definition": "Un graphe $G$ est un couple ordonné $G = (V, E)$ où $V$ est un ensemble fini non vide dont les éléments sont appelés sommets (ou nœuds), et $E$ est un ensemble de paires d'éléments de $V$ appelées arêtes (ou arcs si le graphe est orienté).",
+              "example": "Si $V = \\{A, B, C\\}$ et $E = \\{\\{A,B\\}, \\{B,C\\}\\}$, on a un graphe à trois sommets et deux arêtes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une carte où des villes sont reliées par des routes. Chaque ville devient un sommet, chaque route une arête. Si la route est à double sens, l'arête est non orientée ; si c'est une rue à sens unique, on parle d'arc et on dessine une flèche. Cette distinction est cruciale : dans un graphe non orienté, l'arête $\\{u,v\\}$ est identique à $\\{v,u\\}$, alors que dans un graphe orienté, l'arc $(u,v)$ va de $u$ vers $v$ et n'est pas le même que $(v,u)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "G = (V, E) \\quad \\text{avec} \\quad V = \\{v_1, v_2, \\dots, v_n\\}, \\; E \\subseteq \\{\\{u,v\\} \\mid u,v \\in V, u \\neq v\\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attardons-nous sur deux particularités qui peuvent survenir. Une boucle est une arête qui relie un sommet à lui-même, notée $\\{v,v\\}$ ou simplement $(v,v)$ en orienté. Des arêtes multiples existent quand plusieurs arêtes relient le même couple de sommets. Un graphe sans boucles ni arêtes multiples est dit simple. C'est le cadre le plus courant en terminale experte, et nous y resterons sauf mention contraire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'ensemble des sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste tous les objets distincts qui jouent le rôle de nœuds : villes, personnes, serveurs, états d'un automate… Note-les $v_1, v_2, \\dots, v_n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les connexions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque lien (route, amitié, câble), décide s'il est orienté ou non. Écris l'ensemble $E$ en utilisant des accolades pour les arêtes non orientées, des parenthèses pour les arcs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la simplicité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi qu'aucun sommet n'est relié à lui-même (pas de boucle) et qu'il n'y a qu'une seule arête par couple de sommets. Si ce n'est pas le cas, précise que le graphe est un multigraphe ou un pseudographe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple vivant : un petit réseau de messagerie entre quatre amis : Alice, Bob, Charlie et Dana. Les sommets sont $V = \\{A, B, C, D\\}$. Alice discute avec Bob et Charlie, Bob discute avec Charlie, et Dana n'échange qu'avec Charlie. Comme les messages vont dans les deux sens, les arêtes sont non orientées : $E = \\{\\{A,B\\}, \\{A,C\\}, \\{B,C\\}, \\{C,D\\}\\}$. Ce graphe est simple, connexe (on verra ce mot plus tard) et il se dessine aisément."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sommet",
+                "Voisins (liste d'adjacence)"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "B, C"
+                ],
+                [
+                  "B",
+                  "A, C"
+                ],
+                [
+                  "C",
+                  "A, B, D"
+                ],
+                [
+                  "D",
+                  "C"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une première représentation commode : la liste d'adjacence. Elle montre pour chaque sommet ses voisins directs. Nous verrons plus loin la matrice d'adjacence, outil algébrique puissant. Mais avant de passer aux exercices, retenons l'essentiel : un graphe, c'est d'abord un ensemble de points et de traits qui racontent une relation entre ces points. La richesse viendra de la structure que ces traits créent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as manipulé la définition de base, explorons une façon compacte de coder un graphe : la matrice d'adjacence. C'est un tableau carré de taille $n \\times n$ où la case $(i,j)$ vaut $1$ s'il y a une arête entre $v_i$ et $v_j$, $0$ sinon. Pour un graphe non orienté, cette matrice est symétrique. C'est un passage du discret au continu qui ouvre la porte à l'algèbre linéaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_G = (a_{ij})_{1 \\le i,j \\le n}, \\quad a_{ij} = \\begin{cases} 1 & \\text{si } \\{v_i,v_j\\} \\in E \\\\ 0 & \\text{sinon} \\end{cases}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre exemple des quatre amis. En ordonnant les sommets $A, B, C, D$, la matrice d'adjacence s'écrit :"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "0",
+                  "1",
+                  "1",
+                  "0"
+                ],
+                [
+                  "B",
+                  "1",
+                  "0",
+                  "1",
+                  "0"
+                ],
+                [
+                  "C",
+                  "1",
+                  "1",
+                  "0",
+                  "1"
+                ],
+                [
+                  "D",
+                  "0",
+                  "0",
+                  "1",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque la diagonale nulle (pas de boucles) et la symétrie par rapport à cette diagonale (graphe non orienté). Si le graphe était orienté, la matrice ne serait pas nécessairement symétrique : $a_{ij}=1$ signifierait un arc de $v_i$ vers $v_j$. Cette matrice permet de compter les chemins de longueur $2$ en calculant $A^2$, mais c'est une histoire pour une prochaine leçon. Pour l'instant, exercer ton œil sur cette représentation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons cette leçon par une notion qui clarifie le vocabulaire : l'isomorphisme. Deux graphes $G_1=(V_1,E_1)$ et $G_2=(V_2,E_2)$ sont isomorphes s'il existe une bijection $\\phi : V_1 \\to V_2$ telle que $\\{u,v\\} \\in E_1 \\iff \\{\\phi(u),\\phi(v)\\} \\in E_2$. En termes simples, ils ont la même structure, seul le nom des sommets change. C'est l'équivalent graphique de « même forme, étiquettes différentes ». Nous y reviendrons quand nous classerons les graphes."
+            },
+            {
+              "type": "definition",
+              "term": "Isomorphisme de graphes",
+              "definition": "Une bijection entre les ensembles de sommets qui préserve l'adjacence. Deux graphes isomorphes sont indiscernables du point de vue de la théorie des graphes.",
+              "example": "Un cycle à 4 sommets dessiné en carré ou en losange sont isomorphes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant en main les outils pour décrire n'importe quel graphe simple : l'ensemble des sommets, l'ensemble des arêtes, la liste d'adjacence, la matrice d'adjacence, et l'idée d'isomorphisme. La prochaine leçon utilisera ce vocabulaire pour quantifier les connexions autour de chaque sommet : c'est le degré."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit le graphe $G$ défini par $V = \\{1,2,3,4,5\\}$ et $E = \\{\\{1,2\\}, \\{1,3\\}, \\{2,3\\}, \\{2,4\\}, \\{3,4\\}, \\{4,5\\}\\}$. Dessine ce graphe (description textuelle acceptée) et donne sa liste d'adjacence.",
+              "answer": "Sommets : 1,2,3,4,5. Arêtes : 1-2, 1-3, 2-3, 2-4, 3-4, 4-5. Liste d'adjacence : 1 : 2,3 ; 2 : 1,3,4 ; 3 : 1,2,4 ; 4 : 2,3,5 ; 5 : 4.",
+              "hint": "Commence par placer les 5 sommets, puis relie-les selon les paires données. Pour la liste, note pour chaque sommet ses voisins.",
+              "explanation": "Le graphe est simple, non orienté. On vérifie chaque arête pour construire la liste d'adjacence."
+            },
+            {
+              "question": "Écris la matrice d'adjacence du graphe $G$ de l'exercice précédent en ordonnant les sommets $1,2,3,4,5$.",
+              "answer": "Matrice 5x5 : ligne 1 : 0,1,1,0,0 ; ligne 2 : 1,0,1,1,0 ; ligne 3 : 1,1,0,1,0 ; ligne 4 : 0,1,1,0,1 ; ligne 5 : 0,0,0,1,0.",
+              "hint": "Rappelle-toi : $a_{ij}=1$ si $\\{i,j\\} \\in E$, $0$ sinon. La matrice est symétrique.",
+              "explanation": "On remplit la matrice case par case en vérifiant l'appartenance à $E$. La diagonale est nulle car pas de boucles."
+            },
+            {
+              "question": "Les graphes $G_1$ et $G_2$ suivants sont-ils isomorphes ? $G_1 : V_1=\\{a,b,c,d\\}, E_1=\\{\\{a,b\\},\\{b,c\\},\\{c,d\\},\\{d,a\\}\\}$ (cycle $C_4$). $G_2 : V_2=\\{1,2,3,4\\}, E_2=\\{\\{1,2\\},\\{2,3\\},\\{3,4\\},\\{4,1\\}\\}$.",
+              "answer": "Oui, ils sont isomorphes. La bijection $\\phi(a)=1, \\phi(b)=2, \\phi(c)=3, \\phi(d)=4$ préserve l'adjacence.",
+              "hint": "Compare la structure : les deux sont un cycle à 4 sommets. Cherche une correspondance qui conserve les voisins.",
+              "explanation": "L'isomorphisme ne dépend pas des noms des sommets mais de la structure d'adjacence. Ici, les deux graphes sont un cycle $C_4$."
+            }
+          ]
+        },
+        {
+          "title": "Degré.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le degré d'un sommet : mesurer sa connectivité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir appris à nommer les pièces du puzzle, nous allons maintenant les mesurer. Le degré d'un sommet est sans doute l'invariant le plus simple et le plus utilisé en théorie des graphes. Il répond à une question naturelle : « Combien de voisins a ce sommet ? » ou, dans notre analogie routière : « Combien de routes partent de cette ville ? »"
+            },
+            {
+              "type": "definition",
+              "term": "Degré (graphe non orienté)",
+              "definition": "Dans un graphe non orienté $G=(V,E)$, le degré d'un sommet $v \\in V$, noté $\\deg(v)$ ou $d(v)$, est le nombre d'arêtes incidentes à $v$. Une boucle compte pour $2$ (elle touche le sommet deux fois).",
+              "example": "Dans un graphe simple sans boucles, $\\deg(v)$ est simplement le nombre de voisins de $v$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre réseau d'amis : $V=\\{A,B,C,D\\}$, $E=\\{\\{A,B\\},\\{A,C\\},\\{B,C\\},\\{C,D\\}\\}$. Les degrés sont : $\\deg(A)=2$ (liens avec B et C), $\\deg(B)=2$ (A et C), $\\deg(C)=3$ (A, B, D), $\\deg(D)=1$ (seulement C). Remarque que la somme des degrés vaut $2+2+3+1 = 8$, ce qui est exactement le double du nombre d'arêtes ($|E|=4$). Ce n'est pas un hasard."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{v \\in V} \\deg(v) = 2|E|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette égalité est le célèbre lemme des poignées de main (Handshaking Lemma). Chaque arête contribue exactement $2$ à la somme des degrés : une pour chaque extrémité. C'est un outil de vérification rapide : si on te donne une suite de degrés, leur somme doit être paire, sinon ce n'est pas une suite de degrés réalisable par un graphe simple."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les arêtes incidentes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sommet, parcours la liste des arêtes et compte celles qui le contiennent. En présence de boucles, ajoute $2$ par boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la parité de la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne tous les degrés. Le total doit être pair et égal à $2 \\times$ (nombre d'arêtes). Si ce n'est pas le cas, il y a une erreur de comptage ou la suite n'est pas graphique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier les sommets particuliers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un sommet de degré $0$ est isolé. Un sommet de degré $1$ est une feuille (terme venu des arbres). Un sommet de degré $|V|-1$ est universel (connecté à tous les autres)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Intéressons-nous maintenant aux graphes orientés. Là, un sommet a deux types de degrés : le degré entrant (ou indegree) noté $\\deg^-(v)$ ou $d^-(v)$, qui compte les arcs arrivant sur $v$, et le degré sortant (outdegree) noté $\\deg^+(v)$ ou $d^+(v)$, qui compte les arcs partant de $v$. La somme des degrés entrants sur tous les sommets vaut la somme des degrés sortants, et les deux égalent le nombre total d'arcs $|E|$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{v \\in V} \\deg^-(v) = \\sum_{v \\in V} \\deg^+(v) = |E|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un réseau de citations entre articles scientifiques. Les sommets sont les articles, un arc $(u,v)$ signifie « l'article $u$ cite l'article $v$ ». Alors $\\deg^+(u)$ est le nombre de références dans l'article $u$, et $\\deg^-(v)$ est le nombre de fois où l'article $v$ est cité. Un article très cité a un grand indegree ; un article qui fait une longue revue de littérature a un grand outdegree."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Article",
+                "Indegree (citations reçues)",
+                "Outdegree (références faites)"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "5",
+                  "12"
+                ],
+                [
+                  "B",
+                  "0",
+                  "3"
+                ],
+                [
+                  "C",
+                  "8",
+                  "0"
+                ],
+                [
+                  "D",
+                  "2",
+                  "7"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un petit exercice de lecture de tableau pour t'habituer à ces deux notions. Mais avant, une propriété fondamentale : dans tout graphe (orienté ou non), le nombre de sommets de degré impair est pair. Cela découle directement du lemme des poignées de main : la somme des degrés est paire, donc il ne peut pas y avoir un nombre impair de termes impairs dans cette somme. C'est un critère nécessaire (mais non suffisant) pour qu'une suite d'entiers soit la suite des degrés d'un graphe simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la notion de suite de degrés (ou degré sequence). Donnée une suite d'entiers non négatifs $d_1 \\ge d_2 \\ge \\dots \\ge d_n$, existe-t-il un graphe simple dont les degrés des sommets sont exactement ces nombres ? Le théorème d'Erdős–Gallai (1960) donne une condition nécessaire et suffisante sous forme d'inégalités. Une version plus algorithmique est l'algorithme de Havel–Hakimi : on trie la suite décroissante, on retire le premier élément $d_1$, on soustrait $1$ aux $d_1$ éléments suivants, on recommence. Si on arrive à une suite nulle, la suite initiale est graphique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def havel_hakimi(seq):\\n    seq = sorted(seq, reverse=True)\\n    while seq and seq[0] > 0:\\n        d = seq.pop(0)\\n        if d > len(seq):\\n            return False\\n        for i in range(d):\\n            seq[i] -= 1\\n            if seq[i] < 0:\\n                return False\\n        seq.sort(reverse=True)\\n    return all(x == 0 for x in seq)",
+              "caption": "Algorithme de Havel-Hakimi pour tester si une suite de degrés est graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons sur la suite $(3,3,2,2,2)$. Trier : $(3,3,2,2,2)$. Retirer $3$, soustraire $1$ aux trois suivants : $(2,1,1,2)$ → trier : $(2,2,1,1)$. Retirer $2$, soustraire $1$ aux deux suivants : $(1,0,1)$ → trier : $(1,1,0)$. Retirer $1$, soustraire $1$ au suivant : $(0,0)$. Succès ! Cette suite est graphique. Elle correspond par exemple au graphe complet $K_4$ moins une arête, plus un sommet isolé ? Non, $K_4$ a degrés $(3,3,3,3)$. Ici on a 5 sommets. C'est le graphe « papillon » (deux triangles partageant un sommet) plus un sommet isolé ? Les degrés seraient $(4,2,2,2,0)$… Peu importe, l'algorithme dit que c'est possible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, évoquons le degré moyen d'un graphe : $\\bar{d} = \\frac{1}{|V|}\\sum_{v \\in V} \\deg(v) = \\frac{2|E|}{|V|}$. C'est une mesure globale de densité. Un graphe complet $K_n$ a degré moyen $n-1$. Un arbre (graphe connexe sans cycle) à $n$ sommets a exactement $n-1$ arêtes, donc degré moyen $2 - \\frac{2}{n}$, qui tend vers $2$ pour de grands arbres. Ces chiffres guident l'intuition : un graphe « dense » a un degré moyen proche de $|V|$, un graphe « creux » en a un petit. La prochaine leçon exploitera ces degrés pour explorer les chemins, ces enchaînements d'arêtes qui permettent de voyager dans le graphe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un graphe simple non orienté à 6 sommets, les degrés de 5 sommets sont : 3, 3, 2, 2, 1. Quel est le degré du 6e sommet ? (Indication : utilise le lemme des poignées de main.)",
+              "answer": "La somme des degrés connus est 11. Le total doit être pair, donc le degré manquant est impair. De plus, le nombre d'arêtes est entier. Essayons : si le 6e degré est 1, somme=12, |E|=6. Si 3, somme=14, |E|=7. Si 5, somme=16, |E|=8. Tous sont possibles a priori. Mais dans un graphe simple à 6 sommets, le degré max est 5. La réponse n'est pas unique sans info supplémentaire. Cependant, si on impose que la suite soit graphique, on teste avec Havel-Hakimi. La suite (3,3,2,2,1,1) triée : (3,3,2,2,1,1) → retirer 3 → (2,1,1,1,1) → trier (2,1,1,1,1) → retirer 2 → (0,0,1,1) → trier (1,1,0,0) → retirer 1 → (0,0,0) → OK. Donc degré 1 est possible. Degré 3 : (3,3,3,2,2,1) → ... possible aussi. Degré 5 : (5,3,3,2,2,1) → retirer 5 → (2,2,1,1,0) → ... possible. Donc plusieurs réponses. Mais l'exercice attendait probablement : la somme des degrés est paire, donc le degré manquant est impair.",
+              "hint": "Rappelle-toi : la somme de tous les degrés vaut 2|E|, donc elle est paire. La somme des cinq degrés donnés est 11 (impair). Le sixième degré doit donc être impair pour que le total soit pair.",
+              "explanation": "Le lemme des poignées de main impose que la somme des degrés soit paire. 11 + d_6 pair => d_6 impair. Les valeurs possibles sont 1, 3, 5 (max 5 dans un graphe simple à 6 sommets). Toutes donnent une suite graphique."
+            },
+            {
+              "question": "Applique l'algorithme de Havel-Hakimi à la suite (4,3,3,2,2,1). Est-elle graphique ?",
+              "answer": "Non, la suite n'est pas graphique. Étapes : (4,3,3,2,2,1) → retirer 4 → soustraire 1 aux 4 suivants : (2,2,1,1,1) → trier (2,2,1,1,1) → retirer 2 → (1,0,1,1) → trier (1,1,1,0) → retirer 1 → (0,1,0) → trier (1,0,0) → retirer 1 → (-1,0) → échec (négatif).",
+              "hint": "Suis pas à pas l'algorithme : trier, retirer le premier, décrémenter les d suivants, re-trier. Si un nombre devient négatif, ce n'est pas graphique.",
+              "explanation": "L'algorithme détecte l'impossibilité quand un degré devient négatif. Ici, après plusieurs étapes, on obtient -1."
+            },
+            {
+              "question": "Un graphe orienté a 5 sommets et 7 arcs. La somme des degrés sortants vaut 7. Vrai ou faux ? Justifie.",
+              "answer": "Vrai. Dans tout graphe orienté, la somme des degrés sortants est exactement le nombre d'arcs, car chaque arc contribue exactement 1 au degré sortant de son origine.",
+              "hint": "Chaque arc a une unique origine. Compter les arcs par leur origine donne la somme des outdegrees.",
+              "explanation": "C'est la version orientée du lemme des poignées de main : $\\sum \\deg^+(v) = |E|$."
+            }
+          ]
+        },
+        {
+          "title": "Chemins.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chemins, chaînes et cycles : voyager dans le graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons nommer les sommets et les arêtes, nous savons compter les connexions autour de chaque sommet. Il est temps de mettre le pied à l'étrier et de nous déplacer. Un chemin dans un graphe, c'est une suite de sommets où chaque étape suit une arête. C'est l'itinéraire que tu traces sur une carte, la navigation d'un paquet sur Internet, la propagation d'une rumeur entre amis. Formalisons cette idée intuitive."
+            },
+            {
+              "type": "definition",
+              "term": "Chemin (walk, trail, path)",
+              "definition": "Dans un graphe $G=(V,E)$, une marche (walk) est une suite alternée de sommets et d'arêtes $v_0, e_1, v_1, e_2, \\dots, e_k, v_k$ telle que $e_i = \\{v_{i-1}, v_i\\} \\in E$. Si toutes les arêtes sont distinctes, c'est une chaîne (trail). Si en plus tous les sommets sont distincts (sauf éventuellement $v_0=v_k$), c'est un chemin (path). Un cycle est un chemin fermé ($v_0=v_k$) de longueur $\\ge 3$ (ou $\\ge 1$ si boucles autorisées) avec tous les sommets internes distincts.",
+              "example": "Dans le graphe $A-B-C-D$ avec arêtes $\\{A,B\\},\\{B,C\\},\\{C,D\\}$, la suite $A,B,C,B$ est une marche, pas une chaîne (arête $\\{B,C\\}$ répétée). $A,B,C,D$ est un chemin."
+            },
+            {
+              "type": "paragraph",
+              "content": "La distinction entre marche, chaîne et chemin est subtile mais importante. Une marche autorise les répétitions d'arêtes et de sommets (tu peux faire demi-tour). Une chaîne interdit de réutiliser une arête (tu ne peux pas emprunter deux fois la même route), mais tu peux repasser par un carrefour. Un chemin est le plus strict : ni arête ni sommet répétés (sauf le départ/arrivée pour un cycle). En algorithmique, on cherche souvent des chemins, car ils sont les plus efficaces."
+            },
+            {
+              "type": "display_math",
+              "latex": "P = (v_0, v_1, \\dots, v_k) \\text{ chemin } \\iff \\forall i, \\{v_{i-1},v_i\\} \\in E \\text{ et } v_i \\text{ tous distincts}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La longueur d'un chemin est le nombre d'arêtes qu'il contient, soit $k$ pour une suite de $k+1$ sommets. Dans un graphe pondéré (où chaque arête a un poids), la longueur serait la somme des poids. Pour l'instant, restons sur les graphes non pondérés. La distance entre deux sommets $u$ et $v$, notée $d(u,v)$, est la longueur d'un plus court chemin les reliant. S'il n'existe aucun chemin, on pose $d(u,v) = +\\infty$. Cette distance satisfait les axiomes d'une distance métrique sur chaque composante connexe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'algorithme selon le graphe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Graphe non pondéré : parcours en largeur (BFS) depuis la source. Graphe pondéré à poids non négatifs : algorithme de Dijkstra. Poids négatifs possibles (sans cycle négatif) : Bellman-Ford."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécuter le BFS pour les distances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Initialise une file avec le sommet source $s$, distance $0$. Tant que file non vide : dépile $u$, pour chaque voisin $v$ non visité, marque $v$, distance $d(v)=d(u)+1$, enfile $v$. À la fin, $d(v)$ est la distance depuis $s$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reconstituer le chemin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde pour chaque sommet son prédécesseur dans le BFS. Pour obtenir un plus court chemin vers $v$, remonte les prédécesseurs jusqu'à $s$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple concret : le métro d'une petite ville. Les stations sont les sommets, les liaisons directes les arêtes. Tu veux aller de la station $A$ à la station $F$. Le plan donne : $A-B$, $A-C$, $B-D$, $C-D$, $D-E$, $E-F$, $C-F$. Un BFS depuis $A$ donne distances : $A:0$, $B:1$, $C:1$, $D:2$ (via B ou C), $E:3$, $F:2$ (via C directement). Le plus court chemin $A \\to F$ a longueur $2$ : $A-C-F$. Il y en a un autre de longueur $3$ : $A-B-D-E-F$, mais ce n'est pas un plus court."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sommet",
+                "Distance depuis A",
+                "Prédécesseur(s)"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "0",
+                  "–"
+                ],
+                [
+                  "B",
+                  "1",
+                  "A"
+                ],
+                [
+                  "C",
+                  "1",
+                  "A"
+                ],
+                [
+                  "D",
+                  "2",
+                  "B, C"
+                ],
+                [
+                  "E",
+                  "3",
+                  "D"
+                ],
+                [
+                  "F",
+                  "2",
+                  "C"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que $F$ a un seul prédécesseur ($C$) car le chemin le plus court est unique ici. $D$ en a deux ($B$ et $C$), reflétant deux plus courts chemins de même longueur depuis $A$. La notion de prédécesseur multiple est essentielle pour compter le nombre de plus courts chemins, ce qui mène à la centralité d'intermédiarité, mais c'est un sujet avancé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Explorons maintenant la connexité, propriété globale qui dépend des chemins. Un graphe non orienté est connexe s'il existe un chemin entre n'importe quels deux sommets. Sinon, il se décompose en composantes connexes maximales. Dans un graphe orienté, on distingue la connexité faible (le graphe sous-jacent non orienté est connexe) et la connexité forte (pour tout couple $u,v$, il existe un chemin orienté de $u$ vers $v$ ET un de $v$ vers $u$). Les composantes fortement connexes forment une partition des sommets, et le graphe condensé (chaque CFC contractée en un sommet) est un DAG (graphe orienté acyclique)."
+            },
+            {
+              "type": "definition",
+              "term": "Composante fortement connexe (CFC)",
+              "definition": "Sous-ensemble maximal de sommets où chaque sommet est accessible depuis tout autre par un chemin orienté. L'algorithme de Kosaraju ou de Tarjan les trouve en temps linéaire $O(|V|+|E|)$.",
+              "example": "Dans un graphe orienté $1\\to2, 2\\to3, 3\\to1, 3\\to4$, les CFC sont $\\{1,2,3\\}$ et $\\{4\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diamètre d'un graphe connexe est la plus grande distance entre deux sommets : $\\operatorname{diam}(G) = \\max_{u,v \\in V} d(u,v)$. C'est une mesure de l'étalement du graphe. Un graphe complet $K_n$ a diamètre $1$. Un chemin $P_n$ (ligne de $n$ sommets) a diamètre $n-1$. Un cycle $C_n$ a diamètre $\\lfloor n/2 \\rfloor$. Ces valeurs extrêmes aident à classifier les graphes selon leur « compacité »."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\operatorname{diam}(G) = \\max_{u,v \\in V} \\min \\{\\text{longueur d'un chemin } u \\to v\\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mentionnons les chemins eulériens et hamiltoniens, deux concepts célèbres qui utilisent notre vocabulaire. Un chemin eulérien visite chaque arête exactement une fois (c'est une chaîne qui couvre $E$). Un chemin hamiltonien visite chaque sommet exactement une fois (c'est un chemin qui couvre $V$). Déterminer l'existence d'un cycle hamiltonien est un problème NP-complet, alors qu'un cycle eulérien existe ssi le graphe est connexe et tous les degrés sont pairs (théorème d'Euler, 1736). Cette opposition complexité / simplicité est au cœur de l'informatique théorique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def has_eulerian_cycle(adj):\\n    # adj : liste d'adjacence (dict sommet -> liste voisins)\\n    # graphe non orienté, connexe supposé\\n    for v in adj:\\n        if len(adj[v]) % 2 != 0:\\n            return False\\n    return True",
+              "caption": "Test simple d'existence d'un cycle eulérien (degrés pairs + connexité)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète pour parler de déplacements dans un graphe : marche, chaîne, chemin, cycle, distance, diamètre, connexité, composantes fortes. Ces notions sont les fondations sur lesquelles reposent tous les algorithmes de parcours, de routage, d'analyse de réseaux. La checklist qui suit résume le vocabulaire clé de ce cours. Félicitations pour ton parcours !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un graphe (sommets, arêtes, orienté/non orienté, simple/multigraphe).",
+                "Je sais représenter un graphe par liste d'adjacence et matrice d'adjacence.",
+                "Je comprends la notion d'isomorphisme de graphes.",
+                "Je sais calculer le degré d'un sommet (entrant/sortant si orienté) et appliquer le lemme des poignées de main.",
+                "Je connais l'algorithme de Havel-Hakimi pour tester une suite de degrés.",
+                "Je distingue marche, chaîne, chemin, cycle et je sais définir la distance et le diamètre.",
+                "Je sais expliquer la connexité (faible/forte) et les composantes fortement connexes.",
+                "Je connais la condition d'existence d'un cycle eulérien (degrés pairs + connexité)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le graphe non orienté $G$ de l'exercice 1 de la leçon 1 ($V=\\{1,2,3,4,5\\}$, $E=\\{\\{1,2\\},\\{1,3\\},\\{2,3\\},\\{2,4\\},\\{3,4\\},\\{4,5\\}\\}$), donne un plus court chemin de $1$ à $5$ et sa longueur.",
+              "answer": "Un plus court chemin : $1-2-4-5$ ou $1-3-4-5$. Longueur : $3$.",
+              "hint": "Fais un BFS mental depuis 1. Les voisins de 1 sont 2 et 3. De 2 ou 3, on va à 4. De 4, on va à 5.",
+              "explanation": "Le BFS donne distances : 1:0, 2:1, 3:1, 4:2, 5:3. Les plus courts chemins ont 3 arêtes."
+            },
+            {
+              "question": "Un graphe non orienté connexe a 7 sommets et 9 arêtes. Peut-il avoir un cycle eulérien ? Justifie.",
+              "answer": "Non, pas nécessairement. Un cycle eulérien exige que tous les degrés soient pairs. La somme des degrés est $2\\times9=18$. Avec 7 sommets, la somme de 7 nombres pairs est paire (OK), mais rien ne force chaque degré à être pair. Exemple : degrés $(4,4,2,2,2,2,2)$ → somme 18, tous pairs → cycle eulérien possible. Degrés $(5,3,2,2,2,2,2)$ → somme 18, degrés impairs présents → pas de cycle eulérien. Donc la réponse est : c'est possible mais pas garanti.",
+              "hint": "Rappelle la condition nécessaire et suffisante : connexe + tous degrés pairs. Vérifie si les contraintes (7 sommets, 9 arêtes) imposent des degrés pairs.",
+              "explanation": "La condition d'Euler est précise. Les paramètres globaux ne contraignent pas la parité individuelle des degrés."
+            },
+            {
+              "question": "Soit le graphe orienté $G$ : $V=\\{A,B,C,D\\}$, $E=\\{(A,B),(B,C),(C,A),(C,D)\\}$. Donne les composantes fortement connexes et le graphe condensé.",
+              "answer": "CFC1 = $\\{A,B,C\\}$ (cycle $A\\to B\\to C\\to A$). CFC2 = $\\{D\\}$ (puits). Graphe condensé : deux sommets $X=\\{A,B,C\\}$, $Y=\\{D\\}$, avec un arc $X \\to Y$ (car $(C,D)$ relie les deux CFC).",
+              "hint": "Cherche les cycles orientés. $A,B,C$ forment un cycle, donc ils sont dans la même CFC. $D$ n'a pas de chemin vers les autres.",
+              "explanation": "La décomposition en CFC se fait en trouvant les cycles orientés. Le graphe condensé est toujours un DAG."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

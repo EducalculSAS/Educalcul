@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 386,
+  "_course_code": "5eme-t02-c03-nombres-rationnels",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Écritures fractionnaires",
+  "title": "Quiz : Écritures fractionnaires",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel est un nombre rationnel écrit sous forme fractionnaire ?",
+      "options": [
+        "$3,14$",
+        "$\\frac{5}{2}$",
+        "$\\sqrt{2}$",
+        "$-7$"
+      ],
+      "correctAnswer": "$\\frac{5}{2}$",
+      "explanation": "Un nombre rationnel est un nombre qui peut s'écrire sous la forme d'une fraction $\\frac{a}{b}$ avec $a$ entier relatif et $b$ entier naturel non nul. $\\frac{5}{2}$ est la seule écriture fractionnaire parmi les propositions. $3,14$ est un nombre décimal, $\\sqrt{2}$ est irrationnel et $-7$ est un entier relatif (qui peut s'écrire $-\\frac{7}{1}$ mais n'est pas présenté sous forme fractionnaire ici).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fraction $\\frac{-12}{18}$. Quelle est son écriture irréductible ?",
+      "options": [
+        "$\\frac{-2}{3}$",
+        "$\\frac{2}{-3}$",
+        "$\\frac{-6}{9}$",
+        "$\\frac{6}{-9}$"
+      ],
+      "correctAnswer": "$\\frac{-2}{3}$",
+      "explanation": "Pour rendre une fraction irréductible, on divise le numérateur et le dénominateur par leur PGCD. Le PGCD de $12$ et $18$ est $6$. $\\frac{-12 \\div 6}{18 \\div 6} = \\frac{-2}{3}$. On place habituellement le signe moins au numérateur. Les options $\\frac{-6}{9}$ et $\\frac{6}{-9}$ sont encore réductibles (PGCD 3). L'option $\\frac{2}{-3}$ est irréductible mais la convention veut que le dénominateur soit positif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction est égale à $\\frac{3}{5}$ ?",
+      "options": [
+        "$\\frac{6}{10}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{8}{15}$",
+        "$\\frac{9}{10}$"
+      ],
+      "correctAnswer": "$\\frac{6}{10}$",
+      "explanation": "Deux fractions sont égales si on passe de l'une à l'autre en multipliant (ou divisant) le numérateur et le dénominateur par le même nombre non nul. $\\frac{3}{5} = \\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$. Pour $\\frac{3}{10}$, le numérateur n'a pas été multiplié par 2. Pour $\\frac{8}{15}$ et $\\frac{9}{10}$, les multiplications ne sont pas les mêmes au numérateur et au dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut comparer les fractions $\\frac{4}{5}$ et $\\frac{7}{10}$. Quelle affirmation est exacte ?",
+      "options": [
+        "$\\frac{4}{5} < \\frac{7}{10}$",
+        "$\\frac{4}{5} = \\frac{7}{10}$",
+        "$\\frac{4}{5} > \\frac{7}{10}$",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$\\frac{4}{5} > \\frac{7}{10}$",
+      "explanation": "Pour comparer, on les met au même dénominateur. Le plus petit commun multiple de $5$ et $10$ est $10$. $\\frac{4}{5} = \\frac{4 \\times 2}{5 \\times 2} = \\frac{8}{10}$. On compare alors $\\frac{8}{10}$ et $\\frac{7}{10}$. Comme $8 > 7$, on a $\\frac{8}{10} > \\frac{7}{10}$, donc $\\frac{4}{5} > \\frac{7}{10}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre rationnel $-\\frac{11}{4}$ est écrit sous la forme d'un nombre mixte. Laquelle de ces écritures est correcte ?",
+      "options": [
+        "$-2 \\frac{3}{4}$",
+        "$-3 \\frac{1}{4}$",
+        "$2 \\frac{3}{4}$",
+        "$-2 \\frac{1}{4}$"
+      ],
+      "correctAnswer": "$-2 \\frac{3}{4}$",
+      "explanation": "On effectue la division euclidienne de $11$ par $4$ : $11 = 2 \\times 4 + 3$. Donc $\\frac{11}{4} = 2 + \\frac{3}{4} = 2 \\frac{3}{4}$. Comme le nombre de départ est négatif, on conserve le signe : $-\\frac{11}{4} = -(2 \\frac{3}{4}) = -2 \\frac{3}{4}$. Attention : $-2 \\frac{3}{4}$ signifie $-(2 + \\frac{3}{4})$, ce qui est bien $-2 - \\frac{3}{4} = -\\frac{11}{4}$. L'option $-3 \\frac{1}{4}$ vaudrait $-\\frac{13}{4}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

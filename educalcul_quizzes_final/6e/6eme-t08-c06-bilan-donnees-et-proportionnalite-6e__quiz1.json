@@ -1,0 +1,126 @@
+{
+  "_status": "done",
+  "_course_id": 373,
+  "_course_code": "6eme-t08-c06-bilan-donnees-et-proportionnalite-6e",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Statistiques, hasard, proportionnalité",
+  "title": "Quiz : Statistiques, hasard et proportionnalité (6e)",
+  "questions": [
+    {
+      "text": "Voici les notes obtenues par un élève lors de cinq contrôles : $12$, $15$, $10$, $13$, $14$. Quelle est la moyenne de ces notes ?",
+      "options": [
+        "$12,8$",
+        "$13$",
+        "$12,5$",
+        "$12$"
+      ],
+      "correctAnswer": "$12,8$",
+      "explanation": "Pour calculer la moyenne, on fait la somme des valeurs divisée par le nombre de valeurs. Somme = $12 + 15 + 10 + 13 + 14 = 64$. Nombre de notes = $5$. Moyenne = $64 / 5 = 12,8$. Les autres réponses correspondent à des erreurs de calcul ou à la médiane ($13$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous présente les notes d'une classe de sixièmes. Quel est l'effectif total de cette classe ?",
+      "options": [
+        "$12$",
+        "$14$",
+        "$13$",
+        "$15$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "L'effectif total est la somme des effectifs de chaque note. On additionne : $2 + 5 + 3 + 4 = 14$. Il y a donc quatorze élèves dans la classe.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Répartition des notes",
+        "headers": [
+          "Note",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "10",
+            "2"
+          ],
+          [
+            "12",
+            "5"
+          ],
+          [
+            "14",
+            "3"
+          ],
+          [
+            "16",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Un paquet de $6$ stylos coûte $4,50$ €. Combien coûte un paquet de $10$ stylos au même prix unitaire ?",
+      "options": [
+        "$7,00$ €",
+        "$7,50$ €",
+        "$8,00$ €",
+        "$6,50$ €"
+      ],
+      "correctAnswer": "$7,50$ €",
+      "explanation": "C'est une situation de proportionnalité. On calcule d'abord le prix unitaire : $4,50 / 6 = 0,75$ € par stylo. Puis le prix pour $10$ stylos : $0,75 \\times 10 = 7,50$ €. On peut aussi utiliser le coefficient de proportionnalité $10/6$ : $4,50 \\times (10/6) = 45/6 = 7,50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous est un tableau de proportionnalité. Quelle est la valeur manquante correspondante à $20$ cm ?",
+      "options": [
+        "$55$",
+        "$60$",
+        "$65$",
+        "$50$"
+      ],
+      "correctAnswer": "$60$",
+      "explanation": "On vérifie le coefficient de proportionnalité : $30 / 10 = 3$ et $45 / 15 = 3$. La masse est $3$ fois la longueur. Pour $20$ cm, la masse est $20 \\times 3 = 60$ g. La valeur $75$ pour $25$ cm confirme le coefficient ($25 \\times 3 = 75$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Longueur et masse d'un fil de fer",
+        "headers": [
+          "Longueur (cm)",
+          "Masse (g)"
+        ],
+        "rows": [
+          [
+            "10",
+            "30"
+          ],
+          [
+            "15",
+            "45"
+          ],
+          [
+            "20",
+            "?"
+          ],
+          [
+            "25",
+            "75"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Dans un sac opaque, il y a $3$ boules rouges, $5$ boules bleues et $2$ boules vertes. On prélève une boule au hasard. Quelle est la probabilité de tirer une boule bleue ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Le nombre total de boules est $3 + 5 + 2 = 10$. Il y a $5$ boules bleues favorables. La probabilité est le quotient du nombre de cas favorables sur le nombre de cas possibles : $5/10 = 1/2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

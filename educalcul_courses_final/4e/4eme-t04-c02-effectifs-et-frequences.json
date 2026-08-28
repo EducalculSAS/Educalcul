@@ -1,0 +1,493 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.848818+00:00",
+  "id": 436,
+  "code": "4eme-t04-c02",
+  "title": "Effectifs et fréquences",
+  "description": "Cours structuré Educalcul : Effectifs et fréquences.",
+  "subject": "Statistiques et probabilités",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Effectifs et fréquences",
+    "objectif_global": "Effectifs et fréquences",
+    "mini_lecons_imposees": [
+      "Tableaux.",
+      "Pourcentages.",
+      "Diagrammes."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Tableaux.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les tableaux de données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes les notes de tes camarades à un contrôle de mathématiques. Chaque note est une modalité, c'est-à-dire une valeur possible que peut prendre la variable étudiée. Le nombre d'élèves ayant obtenu cette note s'appelle l'effectif de cette modalité. Si tu additionnes tous les effectifs, tu obtiens l'effectif total, qui correspond simplement au nombre total d'élèves de la classe. C'est une idée toute simple, mais elle est le point de départ de toute analyse statistique : sans connaître les effectifs, tu ne peux ni comparer, ni calculer des pourcentages, ni tracer de diagrammes. Prenons un exemple concret : dans une classe de 28 élèves, 5 ont eu 10, 8 ont eu 12, 10 ont eu 14 et 5 ont eu 16. Les modalités sont 10, 12, 14, 16 et les effectifs respectifs sont 5, 8, 10, 5. La somme 5+8+10+5 donne 28, l'effectif total. Cette organisation en lignes et en colonnes s'appelle un tableau de valeurs. Il permet de voir d'un coup d'œil la répartition des notes et de repérer la modalité la plus fréquente, ici 14 avec un effectif de 10."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre d'occurrences d'une modalité dans une série statistique.",
+              "example": "Dans la série 10, 12, 12, 14, l'effectif de la modalité 12 est 2."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Note",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "10",
+                  "5"
+                ],
+                [
+                  "12",
+                  "8"
+                ],
+                [
+                  "14",
+                  "10"
+                ],
+                [
+                  "16",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire un tableau simple, nous allons enrichir notre outil en croisant deux variables. C'est ce qu'on appelle un tableau à double entrée : les lignes représentent les modalités d'une première variable, les colonnes celles d'une seconde variable, et chaque case contient l'effectif correspondant au croisement des deux modalités. C'est très utile pour comparer des groupes, par exemple les notes des garçons et des filles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les tableaux à double entrée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que nous voulions savoir si les garçons et les filles ont les mêmes résultats. Nous construisons un tableau où les lignes sont les notes (10, 12, 14, 16) et les colonnes sont le sexe (Garçons, Filles). Dans la case (14, Garçons) nous inscrivons le nombre de garçons ayant eu 14, et ainsi de suite. Les totaux de chaque ligne et de chaque colonne, appelés effectifs marginaux, permettent de retrouver les effectifs totaux de chaque variable prise séparément. Par exemple, si la ligne 14 affiche 6 garçons et 4 filles, l'effectif marginal de la note 14 est 10, ce qui correspond bien à l'effectif total de cette note dans le tableau simple. Cette structure croisée est la base de nombreuses analyses plus avancées, comme le test du chi‑deux, mais déjà en quatrième elle aide à visualiser des liens entre deux caractéristiques."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Garçons",
+                "Filles",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "10",
+                  "3",
+                  "2",
+                  "5"
+                ],
+                [
+                  "12",
+                  "4",
+                  "4",
+                  "8"
+                ],
+                [
+                  "14",
+                  "6",
+                  "4",
+                  "10"
+                ],
+                [
+                  "16",
+                  "2",
+                  "3",
+                  "5"
+                ],
+                [
+                  "Total",
+                  "15",
+                  "13",
+                  "28"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous abordons les effectifs cumulés. Ils permettent de répondre à des questions du type « Combien d'élèves ont obtenu au maximum 12 ? » ou « Combien ont obtenu au moins 14 ? ». On construit une colonne supplémentaire en ajoutant progressivement les effectifs : l'effectif cumulé croissant d'une modalité est la somme des effectifs de toutes les modalités inférieures ou égales ; l'effectif cumulé décroissant fait l'inverse. Ces deux colonnes donnent une vision rapide de la distribution et préparent le calcul des quartiles que tu verras plus tard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effectifs cumulés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le tableau simple des notes. Pour l'effectif cumulé croissant, on commence par la plus petite note : 10 a un effectif de 5, donc cumulé croissant = 5. Pour 12, on ajoute 8 à 5, ce qui donne 13. Pour 14, on ajoute 10 à 13, ce qui donne 23. Pour 16, on ajoute 5 à 23, ce qui donne 28, l'effectif total. L'effectif cumulé décroissant part de la plus grande note : 16 donne 5, 14 donne 5+10=15, 12 donne 15+8=23, 10 donne 23+5=28. Ces deux colonnes se lisent comme des marches d'escalier : chaque marche indique combien d'élèves sont « en dessous » ou « au-dessus » d'un seuil."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Note",
+                "Effectif",
+                "Cumulé croissant",
+                "Cumulé décroissant"
+              ],
+              "rows": [
+                [
+                  "10",
+                  "5",
+                  "5",
+                  "28"
+                ],
+                [
+                  "12",
+                  "8",
+                  "13",
+                  "23"
+                ],
+                [
+                  "14",
+                  "10",
+                  "23",
+                  "15"
+                ],
+                [
+                  "16",
+                  "5",
+                  "28",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau des notes ci‑dessus, quel est l'effectif de la modalité 12 ?",
+              "answer": "8",
+              "hint": "Regarde la ligne correspondante à la note 12.",
+              "explanation": "La ligne 12 affiche un effectif de 8 élèves."
+            },
+            {
+              "question": "Combien de filles ont obtenu la note 14 dans le tableau à double entrée ?",
+              "answer": "4",
+              "hint": "Repère la colonne Filles et la ligne 14.",
+              "explanation": "À l'intersection de la ligne 14 et de la colonne Filles, la case contient 4."
+            },
+            {
+              "question": "Quel est l'effectif cumulé croissant pour la note 14 ?",
+              "answer": "23",
+              "hint": "Additionne les effectifs des notes 10, 12 et 14.",
+              "explanation": "5 (note 10) + 8 (note 12) + 10 (note 14) = 23."
+            }
+          ]
+        },
+        {
+          "title": "Pourcentages.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fréquences et pourcentages"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir organisé les données dans un tableau, on veut souvent comparer des séries de tailles différentes. C'est là qu'interviennent les fréquences. La fréquence d'une modalité est le quotient de son effectif par l'effectif total. Elle s'exprime sous forme décimale (par exemple 0,25) ou sous forme de pourcentage (25\\%). Le pourcentage est simplement la fréquence multipliée par 100. Ces deux notions permettent de dire « 25\\% des élèves ont eu 14 » sans avoir à connaître le nombre total d'élèves. C'est très pratique quand on compare deux classes de tailles différentes : on compare les pourcentages, pas les effectifs bruts."
+            },
+            {
+              "type": "definition",
+              "term": "fréquence",
+              "definition": "Rapport entre l'effectif d'une modalité et l'effectif total de la série.",
+              "example": "Si 10 élèves sur 40 ont la note 14, la fréquence est 10/40 = 0,25."
+            },
+            {
+              "type": "display_math",
+              "latex": "f = \\frac{\\text{effectif}}{\\text{effectif total}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au calcul concret d'un pourcentage à partir d'un effectif. La méthode est toujours la même : on divise l'effectif de la modalité par l'effectif total, puis on multiplie le résultat par 100. Pour éviter les erreurs, on peut suivre trois étapes simples : 1) identifier l'effectif de la modalité ; 2) identifier l'effectif total ; 3) appliquer la formule. Par exemple, dans une enquête sur les moyens de transport, 18 élèves sur 60 viennent en vélo. L'effectif de la modalité « vélo » est 18, l'effectif total est 60. Le calcul donne (18/60) × 100 = 30\\%. On peut aussi faire l'inverse : si on sait que 30\\% des 60 élèves viennent en vélo, on retrouve l'effectif en faisant 30\\% × 60 = 18. Cette réversibilité est très utile pour vérifier ses résultats."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'effectif de la modalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche dans le tableau le nombre correspondant à la modalité qui t'intéresse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer l'effectif total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit il est donné en bas du tableau, soit tu fais la somme de tous les effectifs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le pourcentage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la division (effectif / total) puis multiplie par 100. Écris le résultat avec le symbole \\%."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les pourcentages permettent aussi de comparer l'évolution d'un phénomène dans le temps. Imaginons une enquête sur la pratique du sport dans un collège : en 2023, 40\\% des élèves pratiquaient un sport régulièrement ; en 2024, ce pourcentage passe à 55\\%. On dit qu'il y a une augmentation de 15 points de pourcentage. Attention : ce n'est pas une augmentation de 15\\% (ce serait relatif), mais bien de 15 points. Pour visualiser cette évolution, un diagramme en barres côte à côte est parfait : chaque année a sa barre, la hauteur représente le pourcentage. Ainsi, l'œil saisit immédiatement l'ampleur du changement. Nous verrons comment tracer ce type de diagramme dans la prochaine leçon."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Évolution du pourcentage d'élèves sportifs",
+              "bars": [
+                {
+                  "label": "2023",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2024",
+                  "value": 55,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une classe de 35 élèves, 14 ont les yeux bleus. Quel est le pourcentage d'élèves aux yeux bleus ?",
+              "answer": "40\\%",
+              "hint": "Utilise la formule (effectif / total) × 100.",
+              "explanation": "(14 / 35) × 100 = 0,4 × 100 = 40\\%."
+            },
+            {
+              "question": "Si 25\\% des 80 élèves d'un niveau ont choisi l'option latin, combien d'élèves cela représente‑t‑il ?",
+              "answer": "20 élèves",
+              "hint": "Multiplie le pourcentage (en décimal) par l'effectif total.",
+              "explanation": "0,25 × 80 = 20."
+            },
+            {
+              "question": "Le pourcentage d'élèves qui mangent à la cantine passe de 60\\% à 72\\%. De combien de points de pourcentage a‑t‑il augmenté ?",
+              "answer": "12 points",
+              "hint": "Soustrait l'ancien pourcentage du nouveau.",
+              "explanation": "72\\% - 60\\% = 12 points de pourcentage."
+            }
+          ]
+        },
+        {
+          "title": "Diagrammes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les diagrammes en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme en barres (ou diagramme à bâtons) représente chaque modalité par un rectangle dont la hauteur est proportionnelle à l'effectif ou au pourcentage. C'est le moyen le plus lisible pour comparer des quantités discrètes. Pour le construire, on choisit une échelle sur l'axe vertical : par exemple 1 cm pour 2 élèves. Ensuite, on trace une barre pour chaque modalité en respectant cette échelle. Les barres ont toutes la même largeur et sont espacées régulièrement. Le titre, les noms des axes et l'échelle doivent toujours figurer pour que le graphique soit compréhensible sans le texte qui l'accompagne. Prenons l'exemple des notes de la première leçon : 5 élèves ont 10, 8 ont 12, 10 ont 14, 5 ont 16. Avec une échelle de 1 cm pour 2 élèves, la barre de la note 14 montera à 5 cm, celle de la note 12 à 4 cm, etc. On voit tout de suite que 14 est la note la plus fréquente."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition des notes (effectifs)",
+              "bars": [
+                {
+                  "label": "10",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "14",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "16",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire, aussi appelé camembert, montre la part de chaque modalité dans le tout. Le cercle complet représente 100\\% (ou 360°). Chaque secteur a un angle proportionnel à la fréquence de la modalité : angle = fréquence × 360°. Pour tracer le camembert, on calcule d'abord les angles, puis on utilise un rapporteur pour les reporter sur le cercle. C'est une excellente façon de visualiser des proportions, mais il devient illisible s'il y a trop de modalités (généralement plus de 6). Reprenons nos notes : les fréquences sont 5/28 ≈ 0,179, 8/28 ≈ 0,286, 10/28 ≈ 0,357, 5/28 ≈ 0,179. Les angles correspondants sont environ 64°, 103°, 129°, 64°. Le secteur de la note 14 occupe plus d'un tiers du cercle, ce qui saute aux yeux."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des notes (pourcentages)",
+              "slices": [
+                {
+                  "label": "10",
+                  "value": 18,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12",
+                  "value": 29,
+                  "tone": "green"
+                },
+                {
+                  "label": "14",
+                  "value": 36,
+                  "tone": "gold"
+                },
+                {
+                  "label": "16",
+                  "value": 18,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut comparer deux séries sur les mêmes modalités, par exemple les notes des garçons et des filles. On utilise alors un diagramme en barres groupées : pour chaque note, on place deux barres côte à côte, l'une pour les garçons, l'autre pour les filles, avec des couleurs différentes. La lecture se fait en comparant la hauteur des deux barres d'un même groupe. Cela permet de voir immédiatement si les garçons ont plus souvent telle note que les filles. Pour construire ce diagramme, on garde la même échelle verticale pour les deux séries, on regroupe les barres par modalité et on ajoute une légende. C'est un outil puissant pour mettre en évidence des différences entre groupes."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Notes des garçons et des filles (effectifs)",
+              "bars": [
+                {
+                  "label": "10 G",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10 F",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "12 G",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12 F",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "14 G",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "14 F",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "16 G",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "16 F",
+                  "value": 3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et compléter un tableau de valeurs simples.",
+                "Je sais construire et interpréter un tableau à double entrée.",
+                "Je sais calculer une fréquence et la transformer en pourcentage.",
+                "Je sais retrouver un effectif à partir d'un pourcentage.",
+                "Je sais tracer et lire un diagramme en barres.",
+                "Je sais tracer et lire un diagramme circulaire.",
+                "Je sais comparer deux séries avec un diagramme en barres groupées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le diagramme en barres des notes, quelle note a la barre la plus haute ?",
+              "answer": "14",
+              "hint": "Compare les hauteurs des barres.",
+              "explanation": "La barre correspondant à la note 14 a une valeur de 10, la plus grande."
+            },
+            {
+              "question": "Quel est l'angle approximatif du secteur de la note 12 dans le camembert ?",
+              "answer": "103°",
+              "hint": "Calcule la fréquence puis multiplie par 360°.",
+              "explanation": "Fréquence = 8/28 ≈ 0,286 ; 0,286 × 360° ≈ 103°."
+            },
+            {
+              "question": "Dans le diagramme en barres groupées, pour quelle note les filles sont-elles plus nombreuses que les garçons ?",
+              "answer": "16",
+              "hint": "Compare les deux barres de chaque groupe.",
+              "explanation": "Pour la note 16, la barre Filles (3) est plus haute que la barre Garçons (2)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

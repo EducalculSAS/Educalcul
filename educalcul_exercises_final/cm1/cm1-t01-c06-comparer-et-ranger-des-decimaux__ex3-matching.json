@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Justifier comparaison",
+  "title": "Justifier la comparaison de nombres décimaux",
+  "blocks": [
+    {
+      "title": "Comparaisons simples",
+      "content": "Relie chaque comparaison à sa justification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3,4 > 3,2$",
+          "right": "Les parties entières sont égales, on compare les dixièmes : $4 > 2$"
+        },
+        {
+          "left": "$5,67 < 5,7$",
+          "right": "Les parties entières sont égales, on compare les dixièmes : $6 < 7$"
+        },
+        {
+          "left": "$2,5 = 2,50$",
+          "right": "Les deux nombres ont la même valeur, le zéro des centièmes ne change pas le nombre"
+        },
+        {
+          "left": "$8,09 > 8,01$",
+          "right": "Les parties entières sont égales, les dixièmes sont égaux ($0 = 0$), on compare les centièmes : $9 > 1$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour comparer deux nombres décimaux, on commence par comparer les parties entières. Si elles sont égales, on compare les dixièmes, puis les centièmes si nécessaire. Dans le premier cas, 4 dixièmes > 2 dixièmes. Dans le second, 6 dixièmes < 7 dixièmes. Le zéro ajouté à droite ne modifie pas la valeur. Pour le dernier, dixièmes égaux, on regarde les centièmes : 9 > 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaisons avec nombre de décimales différent",
+      "content": "Relie chaque comparaison à sa justification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12,3 > 12,28$",
+          "right": "On ajoute un zéro à $12,3$ pour obtenir $12,30$, puis on compare les centièmes : $30 > 28$"
+        },
+        {
+          "left": "$0,5 > 0,45$",
+          "right": "On ajoute un zéro à $0,5$ pour obtenir $0,50$, puis on compare les centièmes : $50 > 45$"
+        },
+        {
+          "left": "$7,06 = 7,060$",
+          "right": "Le zéro des millièmes ne change pas la valeur du nombre, $7,06 = 7,060$"
+        },
+        {
+          "left": "$4,9 > 4,89$",
+          "right": "On écrit $4,90$ pour aligner les décimales, puis on compare les centièmes : $90 > 89$"
+        }
+      ],
+      "items": [],
+      "explanation": "Quand les nombres n'ont pas le même nombre de chiffres après la virgule, on ajoute des zéros à droite pour les aligner. Ensuite on compare chiffre par chiffre. Pour 12,3 et 12,28, on écrit 12,30 : 30 centièmes > 28 centièmes. Pour 0,5 et 0,45, on écrit 0,50 : 50 > 45. Les zéros à droite après la virgule ne changent pas la valeur (7,06 = 7,060). Pour 4,9 et 4,89, on écrit 4,90 : 90 > 89.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaisons à plusieurs étapes",
+      "content": "Relie chaque comparaison à la justification détaillée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$15,4 > 15,39$",
+          "right": "Parties entières égales ($15 = 15$), dixièmes : $4 > 3$, donc $15,4 > 15,39$"
+        },
+        {
+          "left": "$0,08 < 0,1$",
+          "right": "On écrit $0,10$ pour aligner, dixièmes : $0 < 1$, donc $0,08 < 0,1$"
+        },
+        {
+          "left": "$6,005 = 6,0050$",
+          "right": "Les zéros à droite après la virgule ne changent pas la valeur"
+        },
+        {
+          "left": "$9,99 < 10$",
+          "right": "La partie entière $9$ est inférieure à $10$, donc $9,99 < 10$ sans comparer les décimales"
+        }
+      ],
+      "items": [],
+      "explanation": "On compare d'abord les parties entières. Si elles diffèrent, le nombre avec la plus grande partie entière est le plus grand (9,99 < 10). Si elles sont égales, on compare les dixièmes (15,4 vs 15,39 : 4 > 3). Si les dixièmes sont égaux, on compare les centièmes, etc. Pour aligner 0,08 et 0,1, on écrit 0,10 : 0 dixièmes < 1 dixième. Les zéros ajoutés à droite n'altèrent pas la valeur (6,005 = 6,0050).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

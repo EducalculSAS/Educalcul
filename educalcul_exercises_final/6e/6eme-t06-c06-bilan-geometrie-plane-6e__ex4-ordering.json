@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Bilan - Géométrie plane 6e",
+  "title": "Bilan constructions géométriques",
+  "blocks": [
+    {
+      "title": "Construction d'un triangle (SSS)",
+      "content": "Range les étapes dans l'ordre chronologique pour construire un triangle $ABC$ connaissant les longueurs de ses trois côtés $AB$, $AC$ et $BC$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer le segment $[AB]$ avec la règle.",
+        "Régler le compas sur la longueur $AC$, pointe sur $A$, tracer un arc de cercle.",
+        "Régler le compas sur la longueur $BC$, pointe sur $B$, tracer un arc de cercle coupant le précédent.",
+        "Nommer $C$ le point d'intersection des deux arcs.",
+        "Tracer les segments $[AC]$ et $[BC]$ pour compléter le triangle."
+      ],
+      "explanation": "La construction d'un triangle par trois côtés (cas SSS) suit un ordre logique strict : on commence par tracer une base $[AB]$. Ensuite, on utilise le compas pour reporter les deux autres longueurs depuis les extrémités $A$ et $B$. L'intersection des deux arcs détermine le troisième sommet $C$. Enfin, on relie $C$ à $A$ et $B$ pour fermer la figure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une bissectrice",
+      "content": "Range les étapes dans l'ordre pour construire la bissectrice d'un angle $\\widehat{xOy}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Placer la pointe du compas sur le sommet $O$ et tracer un arc coupant les deux côtés en $A$ et $B$.",
+        "Sans changer l'écartement, placer la pointe sur $A$ et tracer un arc à l'intérieur de l'angle.",
+        "Placer la pointe sur $B$ avec le même écartement et tracer un arc coupant le précédent en $C$.",
+        "Tracer la demi-droite $[OC)$. C'est la bissectrice de l'angle."
+      ],
+      "explanation": "Pour tracer une bissectrice, on commence par marquer deux points $A$ et $B$ équidistants du sommet $O$ sur les côtés de l'angle. Ensuite, on trouve un point $C$ équidistant de $A$ et $B$ en traçant deux arcs de même rayon. La droite passant par $O$ et $C$ coupe l'angle en deux angles égaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Perpendiculaire par un point de la droite",
+      "content": "Range les opérations dans l'ordre pour tracer la perpendiculaire à une droite $(d)$ passant par un point $O$ appartenant à $(d)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Placer la pointe du compas sur $O$, tracer un arc coupant $(d)$ en deux points $A$ et $B$.",
+        "Écarter le compas, pointe sur $A$, tracer un arc d'un côté de la droite.",
+        "Même écartement, pointe sur $B$, tracer un arc coupant le précédent en $C$.",
+        "Tracer la droite $(OC)$. Elle est perpendiculaire à $(d)$ en $O$."
+      ],
+      "explanation": "La construction de la perpendiculaire en un point de la droite repose sur la symétrie. On commence par créer deux points $A$ et $B$ symétriques par rapport à $O$ sur la droite. Ensuite, on construit un point $C$ équidistant de $A$ et $B$ (intersection d'arcs de même rayon). La droite $(OC)$ est alors l'axe de symétrie du segment $[AB]$, donc perpendiculaire à $(d)$ en $O$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

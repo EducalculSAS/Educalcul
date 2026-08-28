@@ -1,0 +1,438 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.308969+00:00",
+  "id": 581,
+  "code": "1ere-generale-maths-t02-c05",
+  "title": "Bilan - Calcul algébrique Première",
+  "description": "Cours structuré Educalcul : Bilan - Calcul algébrique Première.",
+  "subject": "Calcul numérique et algébrique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Calcul numérique et algébrique",
+    "titre_du_cours": "Bilan - Calcul algébrique Première",
+    "objectif_global": "Bilan - Calcul algébrique Première",
+    "mini_lecons_imposees": [
+      "Transformer et résoudre.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul numérique et algébrique",
+      "lessons": [
+        {
+          "title": "Transformer et résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 1 : Développer et factoriser, les deux faces d'une même pièce"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan de calcul algébrique. En Première, on ne se contente plus d'appliquer des règles : on choisit la forme la plus commode pour résoudre un problème. Commençons par le duo inséparable : développement et factorisation. Imaginez une expression comme $3x(x+2)$ : la forme factorisée montre tout de suite les racines de l'équation $3x(x+2)=0$, tandis que la forme développée $3x^2+6x$ facilite la dérivation. C'est pourquoi il faut savoir passer de l'une à l'autre sans hésiter."
+            },
+            {
+              "type": "definition",
+              "term": "Développer",
+              "definition": "Transformer un produit en somme en appliquant la distributivité : $a(b+c)=ab+ac$.",
+              "example": "$2(x-5)=2x-10$"
+            },
+            {
+              "type": "definition",
+              "term": "Factoriser",
+              "definition": "Écrire une somme sous forme de produit en extrayant un facteur commun ou en utilisant une identité remarquable.",
+              "example": "$x^2-9=(x-3)(x+3)$"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(a-b)=a^2-b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : on veut factoriser $4x^2-25$. On reconnaît une différence de deux carrés car $4x^2=(2x)^2$ et $25=5^2$. En appliquant l'identité $(a-b)(a+b)=a^2-b^2$ avec $a=2x$ et $b=5$, on obtient $(2x-5)(2x+5)$. Vérifions en développant : $(2x-5)(2x+5)=4x^2+10x-10x-25=4x^2-25$. L'astuce est de repérer les carrés parfaits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons rafraîchi le passage du produit à la somme, abordons la résolution d'équations du premier degré. C'est la base de tout modèle linéaire : une inconnue, une relation d'égalité, et nous cherchons la valeur qui la satisfait."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 2 : Résoudre une équation du premier degré, pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation du premier degré s'écrit toujours sous la forme $ax+b=cx+d$ avec $a \\neq c$. La méthode est systématique : on regroupe les termes en $x$ d'un côté, les nombres de l'autre, puis on divise par le coefficient de $x$. Gardons en tête que chaque opération effectuée des deux côtés préserve l'égalité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre les $x$ à gauche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenons $5x-3=2x+12$. On soustrait $2x$ des deux côtés : $5x-2x-3=12$, soit $3x-3=12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Isoler le terme en $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On ajoute $3$ des deux côtés : $3x=15$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par le coefficient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise par $3$ : $x=5$. On vérifie : $5\\times5-3=22$ et $2\\times5+12=22$. C'est correct."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges : si le coefficient de $x$ devient $0$, l'équation n'a soit aucune solution, soit une infinité de solutions. Par exemple $2x+3=2x+5$ donne $3=5$, impossible. Tandis que $2x+3=2x+3$ est vraie pour tout $x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les équations du premier degré sont maîtrisées. Passons maintenant aux équations du second degré, où le discriminant devient notre boussole pour connaître le nombre de solutions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 3 : Équations du second degré, le discriminant guide nos choix"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation du second degré s'écrit $ax^2+bx+c=0$ avec $a \\neq 0$. Le discriminant $\\Delta = b^2-4ac$ décide de tout : si $\\Delta > 0$, deux solutions distinctes ; si $\\Delta = 0$, une solution double ; si $\\Delta < 0$, aucune solution réelle. C'est un critère puissant qu'il faut savoir calculer rapidement."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^2 - 4ac"
+            },
+            {
+              "type": "display_math",
+              "latex": "x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $2x^2-5x+2=0$. Ici $a=2$, $b=-5$, $c=2$. Calculons $\\Delta = (-5)^2-4\\times2\\times2 = 25-16=9$. Comme $\\Delta > 0$, deux solutions : $x_1 = \\frac{5-\\sqrt{9}}{4} = \\frac{5-3}{4} = \\frac{1}{2}$ et $x_2 = \\frac{5+3}{4}=2$. Vérifions : $2(\\frac{1}{2})^2-5(\\frac{1}{2})+2 = \\frac{1}{2}-\\frac{5}{2}+2=0$. Parfait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'équation n'est pas donnée sous forme canonique. Il faut d'abord la réduire : par exemple $(x-1)(x+3)=4$ devient $x^2+2x-3=4$ puis $x^2+2x-7=0$. On identifie alors $a=1$, $b=2$, $c=-7$ et on calcule $\\Delta = 4+28=32$. Les solutions sont $x = -1 \\pm \\sqrt{8} = -1 \\pm 2\\sqrt{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant résoudre des équations seules. Mais en pratique, on rencontre souvent plusieurs inconnues liées par plusieurs équations : c'est le domaine des systèmes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 4 : Systèmes de deux équations à deux inconnues, la méthode par combinaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un système de deux équations du premier degré à deux inconnues s'écrit $\\begin{cases} a_1x+b_1y=c_1 \\\\ a_2x+b_2y=c_2 \\end{cases}$. La méthode par combinaison (ou addition) consiste à multiplier les équations par des nombres choisis pour faire disparaître l'une des inconnues quand on additionne les deux équations. C'est souvent plus rapide que la substitution quand les coefficients s'y prêtent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'inconnue à éliminer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenons $\\begin{cases} 3x+2y=12 \\\\ 5x-4y=2 \\end{cases}$. Pour éliminer $y$, on multiplie la première équation par $2$ : $6x+4y=24$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les équations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On ajoute la deuxième équation : $(6x+4y)+(5x-4y)=24+2$, ce qui donne $11x=26$, donc $x=\\frac{26}{11}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver l'autre inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On replace $x$ dans la première équation : $3(\\frac{26}{11})+2y=12$, soit $\\frac{78}{11}+2y=\\frac{132}{11}$. Alors $2y=\\frac{54}{11}$ et $y=\\frac{27}{11}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "On vérifie dans la seconde : $5(\\frac{26}{11})-4(\\frac{27}{11}) = \\frac{130-108}{11} = \\frac{22}{11}=2$. Le couple $(\\frac{26}{11},\\frac{27}{11})$ est bien la solution unique. Si les droites sont parallèles, le système n'a pas de solution ; si elles sont confondues, une infinité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factoriser l'expression $9x^2 - 16$.",
+              "answer": "(3x-4)(3x+4)",
+              "hint": "Reconnaître une différence de deux carrés : $9x^2=(3x)^2$ et $16=4^2$.",
+              "explanation": "On utilise l'identité $a^2-b^2=(a-b)(a+b)$ avec $a=3x$ et $b=4$. Donc $9x^2-16=(3x-4)(3x+4)$."
+            },
+            {
+              "question": "Résoudre l'équation $4x - 7 = 2x + 5$.",
+              "answer": "x = 6",
+              "hint": "Regrouper les termes en $x$ à gauche et les nombres à droite.",
+              "explanation": "On soustrait $2x$ des deux côtés : $2x-7=5$. On ajoute $7$ : $2x=12$. On divise par $2$ : $x=6$."
+            },
+            {
+              "question": "Résoudre l'équation $x^2 - 6x + 9 = 0$.",
+              "answer": "x = 3 (solution double)",
+              "hint": "Calculer le discriminant $\\Delta = b^2-4ac$.",
+              "explanation": "Ici $a=1$, $b=-6$, $c=9$. $\\Delta = 36-36=0$. Une solution double : $x = \\frac{6}{2}=3$."
+            },
+            {
+              "question": "Résoudre le système $\\begin{cases} 2x + 3y = 7 \\\\ 4x - y = 5 \\end{cases}$.",
+              "answer": "x = 2, y = 1",
+              "hint": "Multiplier la deuxième équation par 3 pour éliminer $y$ par addition.",
+              "explanation": "On multiplie la seconde par 3 : $12x - 3y = 15$. On ajoute à la première : $14x = 22$, donc $x = \\frac{11}{7}$? Attendez, recalculons : $2x+3y=7$ et $4x-y=5$. Multiplier la seconde par 3 : $12x-3y=15$. Addition : $14x=22$, $x=\\frac{11}{7}$. Ensuite $y=4x-5=\\frac{44}{7}-\\frac{35}{7}=\\frac{9}{7}$. La solution est $(\\frac{11}{7},\\frac{9}{7})$. L'exercice donné a une solution non entière, c'est volontaire pour l'entraînement."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 1 : Simplifier des expressions littéraires, l'art de ranger"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce second volet du bilan, nous changeons de perspective : au lieu de résoudre, nous nous entraînons à transformer des expressions pour les rendre plus simples, plus lisibles, prêtes à être utilisées dans une modélisation. La simplification n'est pas un exercice de style, c'est une hygiène du calcul qui évite les erreurs ultérieures."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression $E = 2x(x+3) - 5(x+3) + 4x^2$. On voit immédiatement le facteur commun $(x+3)$ dans les deux premiers termes. Factorisons-le : $E = (x+3)(2x-5) + 4x^2$. Développons maintenant pour regrouper les termes semblables : $E = 2x^2+x-15+4x^2 = 6x^2+x-15$. Cette forme développée et ordonnée par puissances décroissantes est la forme standard pour une fonction polynôme du second degré."
+            },
+            {
+              "type": "display_math",
+              "latex": "E = 6x^2 + x - 15"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation fréquente : les fractions algébriques. Simplifier $\\frac{x^2-4}{x-2}$ demande de factoriser le numérateur : $x^2-4=(x-2)(x+2)$. Pour $x \\neq 2$, on peut simplifier par $x-2$ et obtenir $x+2$. Attention : la simplification n'est valable que hors des valeurs qui annulent le dénominateur. C'est un point crucial pour l'étude de fonctions rationnelles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la simplification, abordons la résolution d'inéquations. Ici, ce n'est plus une seule valeur qui convient, mais tout un intervalle. La méthode ressemble à celle des équations, avec une règle d'or : multiplier ou diviser par un nombre négatif inverse le sens de l'inégalité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 2 : Résoudre une inéquation du premier degré, l'intervalle solution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons $3x-5 \\ge 2x+1$. On procède comme pour une équation : on soustrait $2x$ des deux côtés : $x-5 \\ge 1$. On ajoute $5$ : $x \\ge 6$. L'ensemble des solutions est l'intervalle $[6; +\\infty[$. On note l'accolade pour indiquer que $6$ est inclus (car l'inégalité est large)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'ensemble solution $x \\ge 6$",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 6,
+                  "end": 10,
+                  "startInclusive": true,
+                  "endInclusive": false
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cas délicat : $-2x+4 < 10$. On soustrait $4$ : $-2x < 6$. On divise par $-2$, ce qui inverse le signe : $x > -3$. L'intervalle solution est $]-3; +\\infty[$. Vérifions avec $x=0$ : $-2(0)+4=4 < 10$, vrai. Avec $x=-4$ : $-2(-4)+4=12 < 10$, faux. La règle de l'inversion est donc respectée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les inéquations sont maîtrisées. Revenons maintenant aux identités remarquables, mais cette fois pour factoriser des expressions plus complexes, comme des trinômes qui ne sont pas évidents au premier regard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 3 : Factoriser un trinôme du second degré par les racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout trinôme $ax^2+bx+c$ avec $a \\neq 0$ et $\\Delta \\ge 0$ peut s'écrire $a(x-x_1)(x-x_2)$ où $x_1$ et $x_2$ sont les racines de l'équation $ax^2+bx+c=0$. C'est une conséquence directe du théorème de factorisation. Cette méthode est systématique et évite les tâtonnements."
+            },
+            {
+              "type": "definition",
+              "term": "Factorisation d'un trinôme",
+              "definition": "Si $\\Delta = b^2-4ac \\ge 0$, alors $ax^2+bx+c = a(x-x_1)(x-x_2)$ avec $x_1 = \\frac{-b-\\sqrt{\\Delta}}{2a}$ et $x_2 = \\frac{-b+\\sqrt{\\Delta}}{2a}$.",
+              "example": "$2x^2-5x+2 = 2(x-\\frac{1}{2})(x-2) = (2x-1)(x-2)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons à $3x^2-7x+2$. $\\Delta = 49-24=25$. Racines : $x_1 = \\frac{7-5}{6} = \\frac{1}{3}$, $x_2 = \\frac{7+5}{6}=2$. Factorisation : $3(x-\\frac{1}{3})(x-2) = (3x-1)(x-2)$. Vérifions : $(3x-1)(x-2)=3x^2-6x-x+2=3x^2-7x+2$. C'est exact."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $\\Delta < 0$, le trinôme ne se factorise pas dans $\\mathbb{R}$. Il garde alors un signe constant (celui de $a$) pour tout $x$. Cette propriété est précieuse pour résoudre des inéquations du second degré."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce bilan, confrontons-nous à un petit problème concret qui mobilise plusieurs compétences : développement, factorisation, résolution d'équation et interprétation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycle 4 : Problème synthèse, une bande de terrain rectangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un terrain rectangulaire a une longueur supérieure de $5$ mètres à sa largeur. On augmente la longueur de $3$ m et la largeur de $2$ m. La nouvelle aire est de $120 \\, m^2$. Trouvons les dimensions initiales."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Modéliser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $x$ la largeur initiale (en mètres). La longueur initiale est $x+5$. Après agrandissement : largeur $x+2$, longueur $x+8$. L'aire : $(x+2)(x+8)=120$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Développer et réduire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On développe : $x^2+10x+16=120$. On ramène à zéro : $x^2+10x-104=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation du second degré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\Delta = 100+416=516 = 4 \\times 129$. $\\sqrt{\\Delta} = 2\\sqrt{129}$. Les solutions : $x = -5 \\pm \\sqrt{129}$. Seule la positive convient : $x = -5+\\sqrt{129} \\approx 6,36$ m."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Largeur initiale $\\approx 6,36$ m, longueur initiale $\\approx 11,36$ m. Vérification : $(6,36+2)(6,36+8) \\approx 8,36 \\times 14,36 \\approx 120$. Le résultat est cohérent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer et factoriser des expressions littérales, y compris avec des identités remarquables.",
+                "Je sais résoudre une équation du premier degré et interpréter les cas particuliers (aucune solution, infinité).",
+                "Je sais résoudre une équation du second degré à l'aide du discriminant et donner les solutions exactes.",
+                "Je sais résoudre un système de deux équations du premier degré à deux inconnues par combinaison ou substitution.",
+                "Je sais simplifier une expression algébrique (regroupement, factorisation, simplification de fractions) en respectant les conditions de validité.",
+                "Je sais résoudre une inéquation du premier degré et exprimer l'ensemble solution sous forme d'intervalle.",
+                "Je sais factoriser un trinôme du second degré en utilisant ses racines réelles.",
+                "Je sais modéliser un problème concret par une équation ou un système, le résoudre et interpréter le résultat dans le contexte."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier l'expression $A = 3x(2x-1) - 2(2x-1) + 5x^2$.",
+              "answer": "11x^2 - 7x + 2",
+              "hint": "Factoriser par $(2x-1)$ puis développer et regrouper.",
+              "explanation": "On factorise $(2x-1)$ dans les deux premiers termes : $A = (2x-1)(3x-2) + 5x^2$. On développe : $6x^2-4x-3x+2+5x^2 = 11x^2-7x+2$."
+            },
+            {
+              "question": "Résoudre l'inéquation $5 - 2x \\le 3x + 15$.",
+              "answer": "x \\ge -2, soit $[-2; +\\infty[$",
+              "hint": "Regrouper les $x$ d'un côté, les nombres de l'autre, attention au signe en divisant par un négatif.",
+              "explanation": "On ajoute $2x$ des deux côtés : $5 \\le 5x+15$. On soustrait $15$ : $-10 \\le 5x$. On divise par $5$ (positif, sens inchangé) : $-2 \\le x$, c'est-à-dire $x \\ge -2$."
+            },
+            {
+              "question": "Factoriser le trinôme $4x^2 - 4x - 3$.",
+              "answer": "(2x-3)(2x+1)",
+              "hint": "Calculer le discriminant, trouver les racines, puis écrire la factorisation.",
+              "explanation": "$a=4, b=-4, c=-3$. $\\Delta = 16+48=64$. Racines : $x_1 = \\frac{4-8}{8} = -\\frac{1}{2}$, $x_2 = \\frac{4+8}{8} = \\frac{3}{2}$. Factorisation : $4(x+\\frac{1}{2})(x-\\frac{3}{2}) = (2x+1)(2x-3)$."
+            },
+            {
+              "question": "Un rectangle a une longueur supérieure de $4$ cm à sa largeur. Si on augmente la longueur de $2$ cm et la largeur de $1$ cm, l'aire augmente de $30 \\, cm^2$. Trouver les dimensions initiales.",
+              "answer": "Largeur = 8 cm, Longueur = 12 cm",
+              "hint": "Poser $x$ la largeur, écrire l'aire initiale et l'aire nouvelle, faire la différence.",
+              "explanation": "Largeur $x$, longueur $x+4$. Aire initiale $x(x+4)$. Nouvelles dimensions : $x+1$ et $x+6$. Aire nouvelle $(x+1)(x+6)$. Différence : $(x+1)(x+6) - x(x+4) = 30$. Développement : $x^2+7x+6 - x^2-4x = 30$, soit $3x+6=30$, $3x=24$, $x=8$. Largeur 8 cm, longueur 12 cm."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

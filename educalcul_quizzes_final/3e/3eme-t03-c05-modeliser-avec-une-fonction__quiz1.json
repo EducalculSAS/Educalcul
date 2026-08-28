@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 471,
+  "_course_code": "3eme-t03-c05-modeliser-avec-une-fonction",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Choisir modèle",
+  "title": "Quiz : Choisir le modèle de fonction (3e)",
+  "questions": [
+    {
+      "text": "Dans une situation où une grandeur double lorsque l'autre double, quel type de fonction modélise le mieux cette relation ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction linéaire",
+        "Fonction quadratique"
+      ],
+      "correctAnswer": "Fonction proportionnelle",
+      "explanation": "Dans une relation de proportionnalité directe, le rapport entre les deux grandeurs est constant, ce qui s'écrit $y = kx$ avec $k$ constant. Le graphique passe par l'origine. Une fonction affine possède un terme constant, une fonction linéaire (au sens scolaire) est aussi proportionnelle mais le vocabulaire attendu est 'proportionnelle'. La fonction quadratique ne conserve pas ce rapport constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un service de location facture un forfait de 15 € plus 3 € par heure d'utilisation. Quelle fonction modélise le coût total $C$ en fonction du nombre d'heures $h$ ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction linéaire",
+        "Fonction quadratique"
+      ],
+      "correctAnswer": "Fonction affine",
+      "explanation": "Le coût total s'écrit $C = 3h + 15$, c'est une fonction affine (terme constant 15). Une fonction proportionnelle n'aurait pas de forfait initial, une fonction linéaire (au sens $y=ax$) ne comporte pas de terme constant, et une fonction quadratique donnerait une courbe parabolique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction $f$ :\\n$x$ : 0, 1, 2, 3\\n$f(x)$ : 4, 7, 10, 13\\nQuel type de fonction est-ce ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction linéaire",
+        "Fonction quadratique"
+      ],
+      "correctAnswer": "Fonction affine",
+      "explanation": "Les différences successives sont constantes ($+3$), ce qui indique une fonction affine de la forme $f(x)=3x+4$. Elle ne passe pas par l'origine, donc ce n'est pas une fonction proportionnelle ni une fonction linéaire (au sens $y=ax$). La fonction quadratique ne donnerait pas des différences constantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente la fonction $f(x)=x^2$. Quel modèle correspond à cette courbe ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction linéaire",
+        "Fonction quadratique"
+      ],
+      "correctAnswer": "Fonction quadratique",
+      "explanation": "Le graphique est une parabole symétrique par rapport à l'axe des ordonnées, d'équation $y=x^2$, ce qui définit une fonction quadratique. Les autres modèles (proportionnelle, affine, linéaire) donnent des droites.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=x^2"
+      }
+    },
+    {
+      "text": "Selon le vocabulaire officiel de 3e, comment nomme-t-on une fonction de la forme $f(x)=ax$ ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction linéaire",
+        "Fonction quadratique"
+      ],
+      "correctAnswer": "Fonction linéaire",
+      "explanation": "Le programme de 3e distingue la fonction linéaire ($f(x)=ax$) de la fonction affine ($f(x)=ax+b$). Le terme 'proportionnelle' décrit la relation de proportionnalité, mais le nom de la fonction est 'linéaire'. Une fonction quadratique a un degré 2.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

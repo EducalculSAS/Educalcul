@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Construire image",
+  "title": "Construction d'images par translation et rotation",
+  "blocks": [
+    {
+      "title": "Translation d'un point",
+      "content": "Le point $A$ a pour coordonnées $(2, 1)$. On considère le vecteur $\\vec{v}(3, -2)$. Construis l'image $A'$ de $A$ par la translation de vecteur $\\vec{v}$. Donne les coordonnées de $A'$.",
+      "correctAnswer": "(5, -1)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation de vecteur $\\vec{v}(3, -2)$ ajoute $3$ à l'abscisse et $-2$ à l'ordonnée. Pour le point $A(2, 1)$, l'image $A'$ a pour coordonnées $(2 + 3, 1 + (-2)) = (5, -1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rotation d'un point",
+      "content": "Le point $B$ a pour coordonnées $(0, 4)$. On effectue une rotation de centre $O(0, 0)$ et d'angle $90^{\\circ}$ dans le sens direct (anti-horaire). Construis l'image $B'$ de $B$. Donne les coordonnées de $B'$.",
+      "correctAnswer": "(-4, 0)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une rotation de centre $O$ et d'angle $90^{\\circ}$ direct transforme un point $M(x, y)$ en $M'(-y, x)$. Pour $B(0, 4)$, on obtient $B'(-4, 0)$. On peut vérifier que $OB = OB' = 4$ et que l'angle $\\widehat{BOB'}$ vaut $90^{\\circ}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Translation d'un triangle",
+      "content": "Le triangle $MNP$ a pour sommets $M(1, 2)$, $N(4, 2)$ et $P(1, 5)$. On translate ce triangle par le vecteur $\\vec{w}(-3, 1)$. Donne les coordonnées du sommet $P'$, image de $P$ par cette translation.",
+      "correctAnswer": "(-2, 6)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation de vecteur $\\vec{w}(-3, 1)$ ajoute $-3$ à l'abscisse et $1$ à l'ordonnée de chaque point. Le sommet $P$ a pour coordonnées $(1, 5)$. Son image $P'$ a donc pour coordonnées $(1 + (-3), 5 + 1) = (-2, 6)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

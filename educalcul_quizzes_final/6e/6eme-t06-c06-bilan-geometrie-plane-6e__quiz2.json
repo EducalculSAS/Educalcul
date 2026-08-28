@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Checklist",
+  "title": "Bilan Géométrie plane 6e - Checklist",
+  "questions": [
+    {
+      "text": "Parmi les propositions suivantes, laquelle correspond exactement à la définition d'un carré ?",
+      "options": [
+        "Un quadrilatère qui a quatre côtés de même longueur.",
+        "Un quadrilatère qui a quatre angles droits.",
+        "Un quadrilatère qui a quatre côtés de même longueur et quatre angles droits.",
+        "Un quadrilatère dont les diagonales se coupent en leur milieu."
+      ],
+      "correctAnswer": "Un quadrilatère qui a quatre côtés de même longueur et quatre angles droits.",
+      "explanation": "La définition du carré exige les deux conditions simultanément : quatre côtés de même longueur (comme un losange) ET quatre angles droits (comme un rectangle). Les options A et B ne décrivent que le losange ou le rectangle. L'option D est une propriété commune à tous les parallélogrammes, pas une définition du carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la propriété vraie concernant les diagonales d'un losange ?",
+      "options": [
+        "Elles ont la même longueur.",
+        "Elles sont perpendiculaires et se coupent en leur milieu.",
+        "Elles sont perpendiculaires et ont la même longueur.",
+        "Elles ne se coupent pas en leur milieu."
+      ],
+      "correctAnswer": "Elles sont perpendiculaires et se coupent en leur milieu.",
+      "explanation": "Dans un losange, les diagonales sont toujours perpendiculaires entre elles et elles se coupent en leur milieu (c'est un parallélogramme). En revanche, elles n'ont pas nécessairement la même longueur (c'est le cas seulement si le losange est un carré). L'option D est fausse car les diagonales de tout parallélogramme se coupent en leur milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle ABC tel que AB = AC et l'angle $\\widehat{BAC}$ est un angle droit. Comment nomme-t-on ce triangle ?",
+      "options": [
+        "Triangle rectangle",
+        "Triangle isocèle",
+        "Triangle équilatéral",
+        "Triangle rectangle et isocèle"
+      ],
+      "correctAnswer": "Triangle rectangle et isocèle",
+      "explanation": "Le triangle a deux côtés de même longueur (AB = AC), donc c'est un triangle isocèle. Il possède aussi un angle droit ($\\widehat{BAC}$), donc c'est un triangle rectangle. Il cumule les deux propriétés, on dit donc qu'il est rectangle et isocèle. Il n'est pas équilatéral car un triangle équilatéral a trois angles de $60^\\circ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un cercle de centre O et de rayon $4\\text{ cm}$, que peut-on affirmer sur le diamètre [AB] ?",
+      "options": [
+        "Il mesure $4\\text{ cm}$.",
+        "Il mesure $8\\text{ cm}$ et passe par le centre O.",
+        "Il mesure $8\\text{ cm}$ mais ne passe pas par le centre O.",
+        "Sa longueur est impossible à connaître."
+      ],
+      "correctAnswer": "Il mesure $8\\text{ cm}$ et passe par le centre O.",
+      "explanation": "Le diamètre est un segment qui relie deux points du cercle en passant par le centre. Sa longueur est le double du rayon : $2 \\times 4\\text{ cm} = 8\\text{ cm}$. L'option A confond rayon et diamètre. L'option C contredit la définition du diamètre (il passe obligatoirement par le centre).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La figure F' est l'image de la figure F par une symétrie axiale d'axe (d). Laquelle de ces affirmations est fausse ?",
+      "options": [
+        "L'axe (d) est la médiatrice du segment [MM'] pour tout point M et son image M'.",
+        "Les figures F et F' sont superposables par pliage le long de l'axe (d).",
+        "Les distances sont conservées : si A et B sont sur F, alors AB = A'B'.",
+        "L'axe (d) passe nécessairement par le milieu de tous les segments reliant un point de F à son image sur F'."
+      ],
+      "correctAnswer": "L'axe (d) passe nécessairement par le milieu de tous les segments reliant un point de F à son image sur F'.",
+      "explanation": "Cette affirmation est mal formulée et donc fausse : l'axe (d) passe par le milieu de CHAQUE segment [MM'] reliant un point M à son image M', mais il ne passe pas par le milieu de segments reliant un point de F à l'image d'un AUTRE point de F. Les trois autres affirmations sont des propriétés exactes de la symétrie axiale : l'axe est la médiatrice de [MM'], les figures se superposent par pliage, et les longueurs sont conservées (isométrie).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

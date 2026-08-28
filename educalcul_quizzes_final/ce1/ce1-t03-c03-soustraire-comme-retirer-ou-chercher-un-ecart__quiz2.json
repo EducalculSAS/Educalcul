@@ -1,0 +1,158 @@
+{
+  "_status": "done",
+  "_course_id": 90,
+  "_course_code": "ce1-t03-c03-soustraire-comme-retirer-ou-chercher-un-ecart",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Choisir une représentation",
+  "title": "Quiz : Choisir une représentation pour soustraire (CE1)",
+  "questions": [
+    {
+      "text": "Il y a $8$ pommes. On en mange $3$. Quelle représentation montre le mieux l'opération de retirer ?",
+      "options": [
+        "Un diagramme en barres montrant $8$ divisé en $3$ et $5$.",
+        "Une droite numérique où on part de $8$ et on recule de $3$.",
+        "Un diagramme en barres comparant $8$ et $3$ pour trouver l'écart.",
+        "Une addition $3 + 5 = 8$."
+      ],
+      "correctAnswer": "Un diagramme en barres montrant $8$ divisé en $3$ et $5$.",
+      "explanation": "L'énoncé demande de retirer $3$ pommes sur $8$, c'est une soustraction de type « retirer ». La représentation la plus adaptée est un diagramme en barres (modèle en barres) où le total $8$ est partagé en une partie retirée $3$ et le reste $5$. La droite numérique (option B) peut aussi montrer un recul, mais le modèle en barres est la représentation canonique pour « retirer » au CE1. L'option C correspond à une recherche d'écart, et l'option D est une addition inverse.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Retiré",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Restant",
+            "value": 5,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres pour 8 - 3"
+      }
+    },
+    {
+      "text": "Paul a $12$ billes. Léa a $7$ billes. Combien de billes Paul a-t-il de plus que Léa ? Choisis la représentation adaptée pour chercher l'écart.",
+      "options": [
+        "Un diagramme en barres avec deux barres de longueurs $12$ et $7$, l'écart visible.",
+        "Un diagramme en barres montrant $12$ divisé en $7$ et $5$.",
+        "Une droite numérique où on part de $7$ et on avance jusqu'à $12$.",
+        "Une soustraction $12 - 7 = 5$."
+      ],
+      "correctAnswer": "Un diagramme en barres avec deux barres de longueurs $12$ et $7$, l'écart visible.",
+      "explanation": "Il s'agit de comparer deux quantités pour trouver l'écart, c'est une soustraction de type « chercher un écart ». La représentation canonique est un diagramme en barres (modèle en barres) avec deux barres distinctes représentant les deux quantités ($12$ et $7$) et une partie mettant en évidence l'écart ($5$). L'option B représente un retirer, l'option C utilise une droite numérique (possible mais moins canonique), et l'option D est le calcul nu sans représentation visuelle.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paul",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Léa",
+            "value": 7,
+            "tone": "red"
+          },
+          {
+            "label": "Écart",
+            "value": 5,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres pour l'écart entre 12 et 7"
+      }
+    },
+    {
+      "text": "Il y a $15$ bonbons. On en donne $6$ à un ami. Quelle représentation illustre le mieux cette situation ?",
+      "options": [
+        "Un diagramme en barres avec $15$ total, une partie de $6$ retirée, le reste $9$.",
+        "Un diagramme en barres comparant $15$ et $6$.",
+        "Une droite numérique partant de $6$ jusqu'à $15$.",
+        "Une addition $6 + 9 = 15$."
+      ],
+      "correctAnswer": "Un diagramme en barres avec $15$ total, une partie de $6$ retirée, le reste $9$.",
+      "explanation": "C'est une situation de « retirer » : on part d'un total de $15$ et on en retire $6$. Le modèle en barres le plus clair montre le total $15$ divisé en deux parties : $6$ (donnés) et $9$ (restants). L'option B correspond à une comparaison (écart), l'option C utilise une droite numérique pour avancer (type écart), et l'option D est l'addition inverse.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Donnés",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Restants",
+            "value": 9,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres pour 15 - 6"
+      }
+    },
+    {
+      "text": "Pour calculer $23 - 9$ avec des blocs de base 10, quelle représentation est la plus adaptée ?",
+      "options": [
+        "Deux dizaines et trois unités, on retire $9$ unités en décomposant une dizaine.",
+        "Deux dizaines et trois unités, on ajoute $9$ unités.",
+        "Deux dizaines et trois unités, on compare avec $9$ dizaines.",
+        "Deux dizaines et trois unités, on fait une addition."
+      ],
+      "correctAnswer": "Deux dizaines et trois unités, on retire $9$ unités en décomposant une dizaine.",
+      "explanation": "La soustraction $23 - 9$ nécessite de retirer $9$ unités alors qu'il n'y a que $3$ unités. Il faut donc décomposer une dizaine en $10$ unités, ce qui donne $1$ dizaine et $13$ unités, puis retirer $9$ unités pour obtenir $1$ dizaine et $4$ unités ($14$). L'option A décrit exactement cette manipulation. Les autres options décrivent des actions incorrectes (ajouter, comparer avec des dizaines, addition).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 2,
+        "units": 3,
+        "caption": "23 représenté avec 2 dizaines et 3 unités"
+      }
+    },
+    {
+      "text": "Pour trouver l'écart entre $14$ et $9$, quelle représentation sur une droite numérique est correcte ?",
+      "options": [
+        "On place un point à $14$ et un à $9$, on compte les sauts entre eux.",
+        "On part de $14$ et on recule de $9$.",
+        "On part de $9$ et on avance de $14$.",
+        "On place un point à $14$ et on ajoute $9$."
+      ],
+      "correctAnswer": "On place un point à $14$ et un à $9$, on compte les sauts entre eux.",
+      "explanation": "Chercher l'écart entre deux nombres correspond à mesurer la distance sur la droite numérique. On place les deux nombres ($14$ et $9$) et on compte les unités qui les séparent ($5$). L'option B décrit un retrait (soustraire $9$ de $14$), l'option C fait une addition, et l'option D n'a pas de sens pour un écart.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérique pour trouver l'écart entre 14 et 9",
+        "min": 0,
+        "max": 20,
+        "points": [
+          {
+            "value": 9,
+            "label": "9"
+          },
+          {
+            "value": 14,
+            "label": "14"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

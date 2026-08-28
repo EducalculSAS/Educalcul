@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer à probabilité",
+  "title": "Quiz : Comparer fréquence et probabilité",
+  "questions": [
+    {
+      "text": "Quelle est la différence fondamentale entre une probabilité théorique et une fréquence observée lors d'une simulation ?",
+      "options": [
+        "La probabilité théorique change à chaque expérience, la fréquence est fixe.",
+        "La probabilité théorique est calculée avant l'expérience, la fréquence est observée après.",
+        "Elles sont toujours égales.",
+        "La fréquence est un nombre entre 0 et 1, la probabilité peut être supérieure à 1."
+      ],
+      "correctAnswer": "La probabilité théorique est calculée avant l'expérience, la fréquence est observée après.",
+      "explanation": "La probabilité théorique est une valeur mathématique prévisible (ex: 1/6 pour un dé). La fréquence est le résultat concret compté après avoir réalisé l'expérience (nombre de succès / nombre total d'essais). Elles ne sont pas toujours égales, surtout pour un petit nombre d'essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors d'une simulation de $50$ lancers d'un dé équilibré, on obtient le résultat $6$ exactement huit fois. Quelle est la fréquence de l'événement « obtenir un 6 » ?",
+      "options": [
+        "$0,08$",
+        "$0,16$",
+        "$0,20$",
+        "$1/6$"
+      ],
+      "correctAnswer": "$0,16$",
+      "explanation": "La fréquence se calcule en divisant le nombre de succès par le nombre total d'essais : $8 / 50 = 16 / 100 = 0,16$. L'option $0,08$ correspond à $8/100$, l'option $0,20$ à $10/50$, et $1/6$ est la probabilité théorique, non la fréquence observée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule un grand nombre de fois une expérience aléatoire dont la probabilité de succès est $0,3$. Que peut-on dire de la fréquence de succès lorsque le nombre de simulations augmente ?",
+      "options": [
+        "Elle devient exactement égale à $0,3$.",
+        "Elle s'éloigne de $0,3$.",
+        "Elle a tendance à se rapprocher de $0,3$.",
+        "Elle reste constante."
+      ],
+      "correctAnswer": "Elle a tendance à se rapprocher de $0,3$.",
+      "explanation": "C'est la loi des grands nombres : quand on répète un grand nombre de fois la même expérience aléatoire, la fréquence observée se stabilise autour de la probabilité théorique. Elle ne devient pas exactement égale (aléa résiduel), ne s'en éloigne pas et ne reste pas constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La probabilité théorique de tirer une boule rouge dans une urne est $0,25$. Après vingt tirages remis, on observe une fréquence de $0,4$. Après deux cents tirages remis, on observe une fréquence de $0,26$. Laquelle de ces affirmations est correcte ?",
+      "options": [
+        "La fréquence sur vingt tirages est une meilleure estimation car elle est plus grande.",
+        "La fréquence sur deux cents tirages est plus fiable car elle est plus proche de la probabilité théorique.",
+        "Les deux fréquences sont équivalentes car la probabilité ne change pas.",
+        "La fréquence sur deux cents tirages est fausse car elle n'est pas exactement $0,25$."
+      ],
+      "correctAnswer": "La fréquence sur deux cents tirages est plus fiable car elle est plus proche de la probabilité théorique.",
+      "explanation": "Avec un échantillon plus grand (deux cents tirages), les fluctuations aléatoires se compensent mieux. La fréquence $0,26$ est beaucoup plus proche de $0,25$ que $0,4$, ce qui montre une meilleure estimation. Une fréquence n'est jamais 'fausse' car elle n'est pas exactement égale à la probabilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour estimer au mieux par simulation la probabilité d'obtenir « pile » avec une pièce légèrement truquée, quel nombre de lancers faut-il privilégier ?",
+      "options": [
+        "dix lancers",
+        "cinquante lancers",
+        "mille lancers",
+        "Le nombre de lancers n'a aucune importance, le résultat sera le même."
+      ],
+      "correctAnswer": "mille lancers",
+      "explanation": "Plus le nombre d'essais est grand, plus la fréquence observée se rapproche de la probabilité réelle (loi des grands nombres). Mille lancers donneront une estimation bien plus précise et stable que dix ou cinquante, où le hasard peut créer de gros écarts.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

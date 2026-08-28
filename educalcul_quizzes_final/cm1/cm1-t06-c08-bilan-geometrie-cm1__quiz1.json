@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 255,
+  "_course_code": "cm1-t06-c08-bilan-geometrie-cm1",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Propriétés et constructions",
+  "title": "Quiz Géométrie CM1 : Propriétés et constructions",
+  "questions": [
+    {
+      "text": "Parmi les propositions suivantes, laquelle correspond à la définition d'un carré ?",
+      "options": [
+        "Un quadrilatère qui a quatre côtés de même longueur.",
+        "Un quadrilatère qui a quatre angles droits.",
+        "Un quadrilatère qui a quatre côtés de même longueur et quatre angles droits.",
+        "Un quadrilatère dont les diagonales se coupent en leur milieu."
+      ],
+      "correctAnswer": "Un quadrilatère qui a quatre côtés de même longueur et quatre angles droits.",
+      "explanation": "Un carré est un cas particulier de losange (4 côtés égaux) et de rectangle (4 angles droits). Il faut les deux propriétés simultanément. La première option décrit un losange, la deuxième un rectangle, la quatrième un parallélogramme (propriété commune).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer un triangle rectangle en A avec le compas et la règle, on a déjà tracé le segment $[AB]$. Quelle est l'étape suivante correcte pour construire l'angle droit en A ?",
+      "options": [
+        "Tracer un cercle de centre A passant par B.",
+        "Tracer la perpendiculaire à la droite $(AB)$ passant par A.",
+        "Tracer la médiatrice du segment $[AB]$.",
+        "Tracer un cercle de centre B de rayon $AB$."
+      ],
+      "correctAnswer": "Tracer la perpendiculaire à la droite $(AB)$ passant par A.",
+      "explanation": "Pour construire un angle droit en A, il faut tracer la droite perpendiculaire à $(AB)$ qui passe par A. Le point C du triangle sera choisi sur cette perpendiculaire. Tracer un cercle (option A ou D) ne crée pas d'angle droit directement. La médiatrice (option C) est perpendiculaire au milieu du segment, pas en A.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire un triangle isocèle en A de base $[BC]$ mesurant $6$ cm. Après avoir tracé le segment $[BC]$, on trace sa médiatrice. Où doit-on placer le sommet A ?",
+      "options": [
+        "N'importe où sur la droite $(BC)$.",
+        "N'importe où sur la médiatrice de $[BC]$, sauf au milieu de $[BC]$.",
+        "À l'intersection de la médiatrice et du cercle de centre B de rayon $6$ cm.",
+        "Au milieu du segment $[BC]$."
+      ],
+      "correctAnswer": "N'importe où sur la médiatrice de $[BC]$, sauf au milieu de $[BC]$.",
+      "explanation": "Dans un triangle isocèle en A, le sommet A est équidistant de B et de C. L'ensemble des points équidistants de B et C est la médiatrice de $[BC]$. Si A est au milieu de $[BC]$, les trois points sont alignés et il n'y a pas de triangle. L'option C donnerait un triangle équilatéral (cas particulier), pas n'importe quel triangle isocèle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un rectangle $ABCD$. On trace ses deux diagonales $[AC]$ et $[BD]$ qui se coupent en O. Quelle affirmation est fausse ?",
+      "options": [
+        "Les diagonales ont la même longueur.",
+        "Le point O est le milieu de $[AC]$ et de $[BD]$.",
+        "Les diagonales sont perpendiculaires entre elles.",
+        "Les quatre triangles $AOB$, $BOC$, $COD$, $DOA$ sont isocèles."
+      ],
+      "correctAnswer": "Les diagonales sont perpendiculaires entre elles.",
+      "explanation": "Dans un rectangle, les diagonales sont de même longueur et se coupent en leur milieu (propriétés du parallélogramme + rectangle). Les 4 triangles formés sont isocèles car OA=OB=OC=OD. En revanche, les diagonales ne sont perpendiculaires que dans un carré (cas particulier) ou un losange, pas dans un rectangle quelconque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un losange $ABCD$ de côté $5$ cm et d'angle $\\widehat{BAD} = 60^\\circ$, on commence par tracer $[AB] = 5$ cm. Quelle suite de constructions est correcte ?",
+      "options": [
+        "Tracer l'angle de $60^\\circ$ en A, reporter $5$ cm sur l'autre côté pour avoir D. Tracer les cercles de centres B et D de rayon $5$ cm, leur intersection est C.",
+        "Tracer le cercle de centre A de rayon $5$ cm. Choisir D sur le cercle. Tracer la parallèle à $(AB)$ par D et la parallèle à $(AD)$ par B, leur intersection est C.",
+        "Tracer la médiatrice de $[AB]$. Choisir O sur cette médiatrice. Tracer le cercle de centre O passant par A. Les intersections avec la médiatrice donnent C et D.",
+        "Tracer l'angle de $60^\\circ$ en B. Reporter $5$ cm pour avoir C. Tracer les parallèles à $(AB)$ par C et à $(BC)$ par A, leur intersection est D."
+      ],
+      "correctAnswer": "Tracer l'angle de $60^\\circ$ en A, reporter $5$ cm sur l'autre côté pour avoir D. Tracer les cercles de centres B et D de rayon $5$ cm, leur intersection est C.",
+      "explanation": "On construit le côté $[AB]$, puis l'angle donné en A pour placer D à $5$ cm (côté du losange). Comme tous les côtés font $5$ cm, C est à $5$ cm de B et à $5$ cm de D : c'est l'intersection des deux cercles. L'option B utilise des parallèles (construction parallélogramme) mais ne garantit pas $AD=5$ cm si D est choisi au hasard sur le cercle. L'option C construit un losange mais l'angle n'est pas contrôlé à $60^\\circ$. L'option D commence par l'angle en B qui n'est pas donné (l'angle en B serait $120^\\circ$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

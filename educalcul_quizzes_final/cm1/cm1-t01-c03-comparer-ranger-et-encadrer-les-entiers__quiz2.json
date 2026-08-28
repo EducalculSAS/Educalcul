@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_course_id": 213,
+  "_course_code": "cm1-t01-c03-comparer-ranger-et-encadrer-les-entiers",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Encadrer",
+  "title": "Quiz : Encadrer les nombres entiers (CM1)",
+  "questions": [
+    {
+      "text": "Quel est le bon encadrement du nombre $437$ à la dizaine près ?",
+      "options": [
+        "$430 < 437 < 440$",
+        "$400 < 437 < 500$",
+        "$437 < 440 < 450$",
+        "$300 < 437 < 400$"
+      ],
+      "correctAnswer": "$430 < 437 < 440$",
+      "explanation": "Pour encadrer un nombre à la dizaine près, on cherche la dizaine inférieure et la dizaine supérieure. Les dizaines qui entourent $437$ sont $430$ (inférieure) et $440$ (supérieure). L'option B correspond à un encadrement à la centaine près. L'option C place le nombre en premier, ce qui n'est pas la convention d'écriture. L'option D utilise des centaines trop éloignées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complétez l'encadrement à la centaine près : $... < 2\\,581 < ...$",
+      "options": [
+        "$2\\,500 < 2\\,581 < 2\\,600$",
+        "$2\\,000 < 2\\,581 < 3\\,000$",
+        "$2\\,580 < 2\\,581 < 2\\,590$",
+        "$2\\,500 < 2\\,581 < 2\\,700$"
+      ],
+      "correctAnswer": "$2\\,500 < 2\\,581 < 2\\,600$",
+      "explanation": "On regarde le chiffre des centaines (5) et on prend la centaine inférieure ($2\\,500$) et la centaine supérieure ($2\\,600$). L'option B est un encadrement au mille près. L'option C est un encadrement à la dizaine près. L'option D utilise une borne supérieure qui n'est pas la centaine consécutive ($2\\,700$ au lieu de $2\\,600$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les propositions suivantes, laquelle donne l'encadrement correct de $45\\,209$ à l'unité de mille près ?",
+      "options": [
+        "$45\\,000 < 45\\,209 < 46\\,000$",
+        "$40\\,000 < 45\\,209 < 50\\,000$",
+        "$45\\,200 < 45\\,209 < 45\\,300$",
+        "$45\\,000 < 45\\,209 < 45\\,100$"
+      ],
+      "correctAnswer": "$45\\,000 < 45\\,209 < 46\\,000$",
+      "explanation": "L'unité de mille est le chiffre des milliers. Pour $45\\,209$, le mille inférieur est $45\\,000$ et le mille supérieur est $46\\,000$. L'option B encadre à la dizaine de mille près. L'option C encadre à la centaine près. L'option D propose une borne supérieure ($45\\,100$) qui n'est pas un multiple de mille.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut encadrer le nombre $387\\,452$ à la dizaine de mille près. Quelle écriture est correcte ?",
+      "options": [
+        "$380\\,000 < 387\\,452 < 390\\,000$",
+        "$300\\,000 < 387\\,452 < 400\\,000$",
+        "$387\\,000 < 387\\,452 < 388\\,000$",
+        "$38\\,000 < 387\\,452 < 39\\,000$"
+      ],
+      "correctAnswer": "$380\\,000 < 387\\,452 < 390\\,000$",
+      "explanation": "Le chiffre des dizaines de mille est $8$ (dans $387\\,452$). La dizaine de mille inférieure est donc $380\\,000$ et la supérieure est $390\\,000$. L'option B correspond à un encadrement à la centaine de mille près. L'option C correspond à un encadrement au mille près. L'option D confond les dizaines de mille et les milliers (elle encadre $38\\,745$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A est repéré. Quel encadrement à la centaine près correspond à la position de A ?",
+      "options": [
+        "$1\\,300 < A < 1\\,400$",
+        "$1\\,200 < A < 1\\,300$",
+        "$1\\,340 < A < 1\\,350$",
+        "$1\\,000 < A < 2\\,000$"
+      ],
+      "correctAnswer": "$1\\,300 < A < 1\\,400$",
+      "explanation": "La droite montre un intervalle entre $1\\,300$ et $1\\,400$ (graduations principales). Le point A se situe entre ces deux centaines consécutives. L'option B correspond à l'intervalle précédent. L'option C serait un encadrement à la dizaine près (graduations secondaires non demandées ici). L'option D est un encadrement au mille près, trop large.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position du point A entre 1300 et 1400",
+        "min": 1200,
+        "max": 1400,
+        "points": [
+          {
+            "value": 1345,
+            "label": "A"
+          }
+        ],
+        "intervals": [
+          [
+            1300,
+            1400
+          ]
+        ]
+      }
+    }
+  ]
+}

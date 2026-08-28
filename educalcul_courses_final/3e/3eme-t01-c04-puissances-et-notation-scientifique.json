@@ -1,0 +1,242 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.908596+00:00",
+  "id": 458,
+  "code": "3eme-t01-c04",
+  "title": "Puissances et notation scientifique",
+  "description": "Cours structuré Educalcul : Puissances et notation scientifique.",
+  "subject": "Nombres, arithmétique, puissances et racines",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Nombres, arithmétique, puissances et racines",
+    "titre_du_cours": "Puissances et notation scientifique",
+    "objectif_global": "Puissances et notation scientifique",
+    "mini_lecons_imposees": [
+      "Règles.",
+      "Calculs.",
+      "Ordres de grandeur."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Nombres, arithmétique, puissances et racines",
+      "lessons": [
+        {
+          "title": "Règles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu publies une vidéo sur les réseaux sociaux. Au bout d'une heure, $2$ personnes la partagent. Une heure plus tard, chacune de ces $2$ personnes la partage à $2$ nouveaux amis, donc $2 \\times 2 = 4$ nouvelles personnes la voient. Si ce rythme continue, le nombre de partages explose très vite : $2$, $4$, $8$, $16$, $32$ et ainsi de suite. Écrire $2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2$ pour exprimer le nombre de vues après $10$ étapes serait extrêmement long et fatigant. C'est précisément pour éviter cet effort et simplifier l'écriture des multiplications répétées d'un même nombre que les mathématiciens ont inventé les puissances. C'est un outil magique qui permet de condenser l'information. Au lieu d'une longue ligne de chiffres, on utilise un petit chiffre placé en haut à droite, appelé exposant, qui nous indique combien de fois le nombre de base est multiplié par lui-même. C'est une notation universelle que tu rencontreras partout, de la biologie pour compter les bactéries à l'astronomie pour mesurer les distances stellaires."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une puissance est une notation qui permet d'exprimer la multiplication d'un nombre par lui-même plusieurs fois. Si on prend un nombre $a$ (appelé la base) et un nombre entier positif $n$ (appelé l'exposant), on écrit $a^n$ pour désigner le produit de $n$ facteurs égaux à $a$. Par exemple, $5^3$ signifie que l'on multiplie $5$ par lui-même $3$ fois : $5 \\times 5 \\times 5 = 125$. Il existe deux règles cruciales à mémoriser pour ne jamais être perdu : premièrement, tout nombre non nul élevé à la puissance $0$ est toujours égal à $1$, donc $a^0 = 1$. C'est une convention mathématique indispensable pour que les formules fonctionnent. Deuxièmement, tout nombre élevé à la puissance $1$ reste lui-même, soit $a^1 = a$. Il faut être très vigilant avec le signe de la base. Si la base est positive, le résultat sera toujours positif. Si la base est négative, le résultat dépend de l'exposant : il sera positif si l'exposant est pair (car les signes moins s'annulent deux par deux) et négatif si l'exposant est impair. C'est une nuance fondamentale pour réussir tes calculs en $3\\mathrm{{e}}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^n = \\underbrace{a \\times a \\times \\dots \\times a}_{n \\text{ facteurs}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour manipuler les puissances sans faire d'erreur, je te conseille de suivre rigoureusement ces étapes. D'abord, identifie clairement qui est la base et qui est l'exposant. La base est le grand nombre, l'exposant est le petit nombre en haut. Ensuite, si tu dois calculer la valeur, transforme la puissance en multiplication répétée. Par exemple, pour $4^3$, écris d'abord $4 \\times 4 \\times 4$. Cela évite l'erreur classique de multiplier la base par l'exposant. Troisième étape, effectue les multiplications une par une : $4 \\times 4 = 16$, puis $16 \\times 4 = 64$. Si la base est un nombre négatif, comme $(-2)^4$, commence par déterminer le signe final. L'exposant $4$ est pair, donc le résultat sera positif. Tu peux alors calculer $2 \\times 2 \\times 2 \\times 2 = 16$. Enfin, vérifie toujours si ton résultat est cohérent. Une puissance croît très rapidement, donc si tu trouves un petit nombre pour un exposant élevé, repose-toi sur ton calcul pour vérifier si tu n'as pas simplement fait une multiplication simple au lieu d'une puissance."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de $3^4$. Ici, la base est $3$ et l'exposant est $4$. Cela signifie que je dois multiplier le nombre $3$ par lui-même $4$ fois. Je commence par poser l'opération : $3 \\times 3 \\times 3 \\times 3$. Je procède étape par étape pour ne pas m'embrouiller. Je sais que $3 \\times 3 = 9$. Maintenant, je prends ce résultat et je le multiplie par le troisième $3$, ce qui me donne $9 \\times 3 = 27$. Enfin, je multiplie ce nouveau résultat par le quatrième et dernier $3$, soit $27 \\times 3$. Je peux décomposer mentalement : $20 \\times 3 = 60$ et $7 \\times 3 = 21$. En additionnant les deux, $60 + 21 = 81$. Le résultat final est donc $3^4 = 81$. On voit bien ici que le résultat est très différent de $3 \\times 4$ qui aurait donné $12$. La puissance représente une accélération de la valeur, pas une simple multiplication."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Examinons maintenant un cas avec une base négative : $(-5)^3$. C'est ici que beaucoup d'élèves hésitent, mais c'est très simple si on est organisé. La base est $(-5)$ et l'exposant est $3$. On écrit donc le produit : $(-5) \\times (-5) \\times (-5)$. On traite d'abord les signes. On sait que le produit de deux nombres négatifs est positif, donc $(-5) \\times (-5) = 25$. Maintenant, nous avons $25$ multiplied par le dernier facteur qui est $(-5)$. Un nombre positif multiplié par un nombre négatif donne un résultat négatif. On calcule donc $25 \\times 5 = 125$, et on ajoute le signe moins. Le résultat final est $(-5)^3 = -125$. Remarque bien que si l'exposant avait été $4$, le résultat serait devenu positif car on aurait multiplié $-125$ par $-5$, donnant $625$. C'est pourquoi il est essentiel de regarder si l'exposant est pair ou impair avant de commencer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus redoutable, et le plus courant, est de confondre la puissance et la multiplication. De nombreux élèves écrivent $2^3 = 6$ parce qu'ils font $2 \\times 3$. C'est une erreur majeure. Rappelle-toi que $2^3$ signifie $2 \\times 2 \\times 2 = 8$. Une autre erreur classique concerne les parenthèses avec les nombres négatifs. Il y a une différence immense entre $(-3)^2$ et $-3^2$. Dans le premier cas, $(-3)^2$, la base est $(-3)$, donc on fait $(-3) \\times (-3) = 9$. Dans le second cas, $-3^2$, le signe moins n'est pas protégé par des parenthèses. L'exposant $2$ ne porte que sur le $3$. On calcule donc $3^2 = 9$ et on place le signe moins devant à la fin, ce qui donne $-9$. C'est comme si on calculait $-(3 \\times 3)$. Pour éviter cela, demande-toi toujours : le signe moins fait-il partie de la base ? Si oui, il doit être dans des parenthèses."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le nombre $7^3$ sous la forme d'une multiplication répétée, puis calcule sa valeur exacte.",
+              "answer": "$7^3 = 7 \\times 7 \\times 7 = 343$",
+              "hint": "N'oublie pas de multiplier $7$ par lui-même $3$ fois, pas $7$ fois $3$.",
+              "explanation": "On a $7 \\times 7 = 49$, puis $49 \\times 7 = 343$."
+            },
+            {
+              "question": "Calcule la valeur de $(-2)^5$. Justifie le signe de ton résultat.",
+              "answer": "$-32$",
+              "hint": "L'exposant $5$ est-il pair ou impair ?",
+              "explanation": "L'exposant $5$ est impair, donc le résultat sera négatif. On a $2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$, donc $(-2)^5 = -32$."
+            },
+            {
+              "question": "Quelle est la valeur de $150^0$ et pourquoi ?",
+              "answer": "$1$",
+              "hint": "Rappelle-toi la règle spéciale pour l'exposant $0$.",
+              "explanation": "Par convention mathématique, tout nombre non nul élevé à la puissance $0$ est toujours égal à $1$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà essayé de ranger une chambre très encombrée ? Au lieu de déplacer chaque petit objet un par un, tu utilises des boîtes pour regrouper les choses similaires. En mathématiques, les règles de calcul des puissances fonctionnent exactement de la même manière. Quand on se retrouve face à des expressions comme $10^5 \\times 10^8$, on pourrait être tenté de calculer $100000$ puis $100000000$ et de multiplier ces deux nombres gigantesques. Mais ce serait un travail colossal et risqué, car on pourrait facilement oublier un zéro en route. Heureusement, les puissances nous offrent des raccourcis incroyables. Si on reconnaît que la base est la même, on peut simplement manipuler les exposants, comme si on déplaçait des étiquettes sur des boîtes. Ces règles nous permettent de transformer des calculs qui sembleraient impossibles à la main en simples additions ou soustractions de petits chiffres. C'est l'art de la simplification : on ne calcule pas la valeur finale tout de suite, on simplifie d'abord l'écriture pour rendre le problème trivial."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier les calculs de puissances, on utilise trois propriétés fondamentales, mais attention : elles ne s'appliquent QUE si la base est la même. La première est la règle du produit : quand on multiplie deux puissances d'une même base, on garde la base et on additionne les exposants. Formellement, $a^n \\times a^m = a^{n+m}$. La deuxième est la règle du quotient : quand on divise deux puissances d'une même base, on garde la base et on soustrait l'exposant du bas de celui du haut. Cela s'écrit $a^n / a^m = a^{n-m}$. Enfin, il y a la règle de la puissance de puissance : quand on élève une puissance à une autre puissance, on multiplie les exposants entre eux. Cela se note $(a^n)^m = a^{n \\times m}$. Ces règles sont extrêmement puissantes car elles permettent de réduire n'importe quelle chaîne de multiplications et divisions complexe en une seule puissance unique. Il est crucial de bien identifier la base avant d'agir. Par exemple, dans $2^3 \\times 5^2$, les bases sont $2$ et $5$. Elles sont différentes, donc aucune de ces règles ne peut être utilisée ici. On est obligé de calculer chaque terme séparément."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^n \\times a^m = a^{n+m} \\quad ; \\quad \\frac{a^n}{a^m} = a^{n-m} \\quad ; \\quad (a^n)^m = a^{n \\times m}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu arrives devant un calcul de puissances, ne te précipite pas. Suis ce protocole pour être sûr de toi. Étape 1 : Regarde les bases. Sont-elles identiques ? Si tu as $3^4 \\times 3^2$, la base est $3$ partout, donc c'est bon. Si tu as $3^4 \\times 2^2$, arrête-toi, les règles de simplification ne s'appliquent pas. Étape 2 : Identifie l'opération. Est-ce une multiplication, une division ou une parenthèse avec un exposant extérieur ? Si c'est une multiplication, tu choisis l'addition des exposants. Si c'est une division, tu choisis la soustraction. Si c'est une puissance de puissance, tu choisis la multiplication. Étape 3 : Applique l'opération sur les exposants. Pour $3^4 \\times 3^2$, tu fais $4 + 2 = 6$, ce qui donne $3^6$. Étape 4 : Vérifie si on te demande la valeur numérique ou simplement l'écriture simplifiée. Souvent, en $3\\mathrm{{e}}$, on te demande juste d'écrire le résultat sous forme d'une seule puissance sans calculer le nombre final, car celui-ci peut être trop grand pour être écrit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons l'expression $5^3 \\times 5^4$. Je commence par vérifier la base : elle est égale à $5$ pour les deux termes. C'est donc un produit de puissances d'une même base. J'applique la règle correspondante : je garde la base $5$ et j'additionne les exposants $3$ et $4$. Le calcul devient $5^{3+4}$. Je fais la petite addition : $3 + 4 = 7$. Le résultat simplifié est donc $5^7$. Si je m'étais trompé et que j'avais multiplié les exposants, j'aurais trouvé $5^{12}$, ce qui est une valeur immensément plus grande et totalement fausse. L'astuce pour s'en souvenir est de se dire que multiplier des puissances, c'est comme rajouter des facteurs à la liste. J'avais $3$ fois le nombre $5$, j'en rajoute $4$ fois, j'en ai donc $7$ fois au total. C'est une manière très visuelle de comprendre pourquoi on additionne les exposants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Abordons maintenant un cas de quotient : $\\frac{10^7}{10^3}$. Ici, la base est $10$ au numérateur et au dénominateur. On est donc dans le cas d'une division de puissances de même base. La règle nous dit de garder la base $10$ et de soustraire l'exposant du bas (le dénominateur) de celui du haut (le numérateur). L'expression devient $10^{7-3}$. Je calcule la différence : $7 - 3 = 4$. Le résultat final est donc $10^4$. Pour bien comprendre ce qui se passe, imagine les $10$ écrits en entier. En haut, tu as sept $10$ multipliés entre eux, et en bas, tu en as trois. Dans une fraction, on peut simplifier en barrant les éléments identiques en haut et en bas. On barre donc trois $10$ en haut et trois $10$ en bas. Il nous reste alors quatre $10$ en haut, ce qui correspond exactement à $10^4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est d'appliquer les règles alors que les bases sont différentes. Un élève pourrait écrire $2^3 \\times 3^2 = 6^5$ en additionnant les bases et les exposants. C'est totalement faux ! On ne peut additionner les exposants que si la base est identique. Une autre confusion classique survient avec la puissance de puissance. Certains élèves confondent $a^n \\times a^m$ (addition) avec $(a^n)^m$ (multiplication). Par exemple, $2^3 \\times 2^4 = 2^7$, mais $(2^3)^4 = 2^{12}$. Rappelle-toi que la parenthèse change tout : elle indique que l'on répète la puissance elle-même. Enfin, fais attention aux signes. Si tu as $(-2)^3 \\times (-2)^2$, la base est $(-2)$ pour les deux. On additionne les exposants $3+2=5$, donc le résultat est $(-2)^5$. Mais si tu as $-2^3 \\times -2^2$, sans parenthèses, les règles deviennent beaucoup plus glissantes car le signe moins n'est pas forcément inclus dans la base. Utilise toujours les parenthèses pour sécuriser tes calculs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie l'expression suivante sous la forme d'une seule puissance : $4^5 \\times 4^3$.",
+              "answer": "$4^8$",
+              "hint": "Les bases sont-elles identiques ? Que doit-on faire avec les exposants lors d'une multiplication ?",
+              "explanation": "La base est $4$. On additionne les exposants : $5 + 3 = 8$. On obtient $4^8$."
+            },
+            {
+              "question": "Simplifie l'expression $\\frac{7^{12}}{7^4}$ sous la forme d'une seule puissance.",
+              "answer": "$7^8$",
+              "hint": "Pour une division de puissances de même base, on soustrait les exposants.",
+              "explanation": "On garde la base $7$ et on calcule $12 - 4 = 8$. Le résultat est $7^8$."
+            },
+            {
+              "question": "Calcule la valeur de $(2^2)^3$ en utilisant la règle de la puissance de puissance.",
+              "answer": "$64$",
+              "hint": "Multiplie d'abord les exposants, puis calcule la valeur finale.",
+              "explanation": "On a $(2^2)^3 = 2^{2 \\times 3} = 2^6$. On calcule $2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 64$."
+            }
+          ]
+        },
+        {
+          "title": "Ordres de grandeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà essayé d'imaginer la distance entre la Terre et le Soleil ? Elle est d'environ $150\\,000\\,000\\,km$. Ou alors, as-tu pensé à la taille d'un virus qui pourrait être de $0,0000001$ mètres ? Écrire tous ces zéros est non seulement fastidieux, mais c'est aussi un cauchemar pour la lecture. On s'y perd, on en oublie un, et soudainement, on divise la taille d'une galaxie par mille ! Pour remédier à cela, les scientifiques utilisent la notation scientifique. C'est une manière élégante et précise d'écrire des nombres extrêmement grands ou extrêmement petits. C'est un peu comme un code secret qui nous permet de voir immédiatement l'ordre de grandeur d'une valeur. En un coup d'œil sur l'exposant de $10$, on peut savoir si on parle de quelque chose de microscopique ou de quelque chose de colossal. C'est l'outil indispensable de tout chercheur, qu'il étudie les trous noirs ou les atomes, et c'est une compétence clé que tu dois maîtriser pour tes futurs cours de physique et de chimie."
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation scientifique consiste à écrire un nombre sous la forme $a \\times 10^n$. Mais attention, il y a une règle très stricte pour le nombre $a$ : ce doit être un nombre décimal compris entre $1$ et $10$, exclu. Cela signifie que $a$ doit avoir exactement un seul chiffre avant la virgule, et ce chiffre ne peut pas être zéro. Par exemple, $1,5$ est autorisé, mais $15$ ou $0,15$ ne le sont pas. Le nombre $n$ est l'exposant de $10$ et il doit être un entier relatif. Si $n$ est positif, cela signifie que le nombre original était grand. Par exemple, $10^3$ représente $1\\,000$. Si $n$ est négatif, cela signifie que le nombre original était très petit, proche de zéro. Par exemple, $10^{-3}$ représente $0,001$. L'ordre de grandeur d'un nombre est la puissance de $10$ la plus proche. Cela nous permet d'estimer rapidement une valeur sans entrer dans les détails des chiffres après la virgule. Savoir passer d'une écriture décimale à l'écriture scientifique est essentiel pour simplifier les calculs et comparer des grandeurs différentes."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 3.2,
+              "exponent": 5,
+              "caption": "L'échelle des puissances de 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer un nombre en notation scientifique, imagine que la virgule est un curseur que tu déplaces. Étape 1 : Place ta virgule juste après le premier chiffre non nul en partant de la gauche. Ce nombre devient ton $a$. Par exemple, pour $45\\,000$, tu places la virgule après le $4$, ce qui donne $4,5$. Étape 2 : Compte le nombre de rangs dont tu as déplacé la virgule pour arriver à cette position. C'est ce nombre qui deviendra ton exposant $n$. Pour $45\\,000$, la virgule était à la fin et on l'a déplacée de $4$ rangs vers la gauche. Étape 3 : Détermine le signe de l'exposant. Si tu as déplacé la virgule vers la gauche (le nombre original était grand), l'exposant est positif. Si tu as déplacé la virgule vers la droite (le nombre original était petit), l'exposant est négatif. Pour $45\\,000$, on a bougé vers la gauche, donc $n = 4$. Le résultat est $4,5 \\times 10^4$. Étape 4 : Vérifie toujours que ton nombre $a$ est bien compris entre $1$ et $10$. Si tu as écrit $45 \\times 10^3$, c'est faux, car $45$ est trop grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Convertissons le nombre $320\\,000\\,000$ en notation scientifique. Je commence par chercher le premier chiffre non nul en partant de la gauche : c'est le $3$. Je place donc ma virgule juste après le $3$, ce qui me donne $3,2$ comme valeur pour $a$. Maintenant, je compte combien de places la virgule a voyagé depuis la fin du nombre original jusqu'à sa nouvelle position entre le $3$ et le $2$. On déplace la virgule de $8$ rangs vers la gauche. Comme le déplacement s'est fait vers la gauche (le nombre est bien supérieur à $1$), l'exposant de $10$ sera positif. J'obtiens donc $n = 8$. Je rassemble les deux parties pour former l'écriture finale : $3,2 \\times 10^8$. On peut vérifier en multipliant $3,2$ par $100\\,000\\,000$, on retombe bien sur $320\\,000\\,000$. C'est beaucoup plus compact et facile à lire !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un nombre très petit : $0,000078$. Je cherche le premier chiffre non nul en partant de la gauche. C'est le $7$. Je place donc ma virgule juste après le $7$, ce qui me donne $a = 7,8$. Maintenant, je compte le nombre de rangs nécessaires pour déplacer la virgule depuis sa position initiale jusqu'à sa nouvelle position. Pour passer de $0,000078$ à $7,8$, je dois décaler la virgule de $5$ rangs vers la droite. Rappelle-toi la règle : un déplacement vers la droite signifie que le nombre original est minuscule, donc l'exposant doit être négatif. J'obtiens donc $n = -5$. L'écriture scientifique est donc $7,8 \\times 10^{-5}$. Si on voulait revenir à l'écriture décimale, on diviserait $7,8$ par $10^5$, ce qui reviendrait à décaler la virgule de $5$ rangs vers la gauche, retrouvant ainsi nos nombreux zéros."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est de mal positionner la virgule et d'obtenir un nombre $a$ qui n'est pas dans l'intervalle $[1, 10[$. Par exemple, écrire $0,78 \\times 10^{-4}$ au lieu de $7,8 \\times 10^{-5}$. N'oublie jamais : il doit y avoir UN SEUL chiffre avant la virgule, et ce chiffre ne peut pas être $0$. Une autre erreur classique est de se tromper de signe pour l'exposant. Certains élèves mettent un exposant positif pour un petit nombre parce qu'ils ont compté $5$ rangs, oubliant que le déplacement vers la droite impose un signe moins. Pour éviter cela, fais un test de cohérence : $10^5$ est un grand nombre, $10^{-5}$ est un tout petit nombre. Si ton nombre de départ est $0,00...$, ton résultat DOIT avoir un exposant négatif. Enfin, fais attention aux nombres qui commencent déjà par un chiffre entre $1$ et $9$ mais qui ont des zéros, comme $1,005$. Ici, le nombre est déjà compris entre $1$ et $10$, donc l'exposant est simplement $10^0$ !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis le nombre $5\\,600\\,000$ en notation scientifique.",
+              "answer": "$5,6 \\times 10^6$",
+              "hint": "Déplace la virgule pour n'avoir qu'un seul chiffre avant elle.",
+              "explanation": "On déplace la virgule de $6$ rangs vers la gauche pour obtenir $5,6$, donc $n=6$."
+            },
+            {
+              "question": "Écris le nombre $0,00042$ sous forme scientifique.",
+              "answer": "$4,2 \\times 10^{-4}$",
+              "hint": "Le nombre est petit, l'exposant sera donc négatif.",
+              "explanation": "On déplace la virgule de $4$ rangs vers la droite pour obtenir $4,2$, donc $n=-4$."
+            },
+            {
+              "question": "Le nombre $12,5 \\times 10^3$ est-il écrit en notation scientifique ? Si non, corrige-le.",
+              "answer": "Non, la correction est $1,25 \\times 10^4$",
+              "hint": "Vérifie si le nombre avant la virgule est bien compris entre 1 et 10.",
+              "explanation": "$12,5$ est supérieur à $10$, ce n'est pas une notation scientifique. On transforme $12,5$ en $1,25 \\times 10^1$. Donc $1,25 \\times 10^1 \\times 10^3 = 1,25 \\times 10^4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

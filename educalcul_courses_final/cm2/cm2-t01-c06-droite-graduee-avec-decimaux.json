@@ -1,0 +1,477 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.346959+00:00",
+  "id": 280,
+  "code": "cm2-t01-c06",
+  "title": "Droite graduée avec décimaux",
+  "description": "Cours structuré Educalcul : Droite graduée avec décimaux.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Droite graduée avec décimaux",
+    "objectif_global": "Droite graduée avec décimaux",
+    "mini_lecons_imposees": [
+      "Lire échelle.",
+      "Placer.",
+      "Estimer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Lire échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre l'échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à lire une droite graduée qui affiche des nombres décimaux. Tu vas voir que chaque petit trait sur la ligne a une signification précise, et qu'avec un peu d'attention tu pourras retrouver n'importe quelle valeur sans te tromper. Prends le temps d'observer la figure, respire, et suis le chemin pas à pas. Nous allons d'abord identifier l'unité principale, puis les sous-divisions qui correspondent aux dixièmes et aux centièmes, afin que tu te sentes à l'aise dès le début."
+            },
+            {
+              "type": "definition",
+              "term": "graduation",
+              "definition": "Une graduation est un repère visible sur la droite qui indique une valeur numérique. Les grandes graduations marquent généralement les dixièmes, les petites les centièmes.",
+              "example": "Sur une droite de $0$ à $1$, le trait à $0,3$ est une grande graduation, les trois traits qui suivent sont des petites graduations."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite de $0$ à $1$ avec graduations tous les $0,1$ et sous-graduations tous les $0,01$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.23,
+                  "label": "P"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est une graduation, regarde la droite ci‑dessous : elle va de $0$ à $1$ et chaque grand trait marque un dixième. Essaie de repérer la valeur du point rouge qui se trouve exactement sur le troisième petit trait après $0,2$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un point précis"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu as lu ton premier point ! Continuons en apprenant à lire un point qui ne tombe pas pile sur un trait, mais entre deux graduations. C'est une situation très courante et tu verras qu'avec une méthode simple, tu y arrives sans difficulté."
+            },
+            {
+              "type": "number_line",
+              "caption": "Point bleu placé à $0,37$ entre les graduations $0,3$ et $0,4$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.37,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu sais maintenant lire n'importe quel point, même celui qui se cache entre les graduations. Passons à la dernière étape de cette leçon : mesurer la distance qui sépare deux points sur la droite. Cela te sera utile pour comparer des nombres ou pour résoudre des problèmes de longueur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer une distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la distance entre deux points, on lit d'abord la valeur de chaque point, puis on soustrait la plus petite de la plus grande. Par exemple, si le point A vaut $0,45$ et le point B vaut $0,62$, la distance est $0,62-0,45 = 0,17$. La figure suivante montre les deux points et la flèche qui relie l'un à l'autre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les deux valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la graduation la plus proche de chaque point et note le nombre décimal correspondant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la soustraction $valeur\\_supérieure - valeur\\_inférieure$ pour obtenir la distance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis la droite pour t'assurer que la distance trouvée correspond bien à l'écart visuel entre les deux points."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Points A ($0,45$) et B ($0,62$) avec flèche indiquant la distance",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.45,
+                  "label": "A"
+                },
+                {
+                  "value": 0.62,
+                  "label": "B"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0.45,
+                  "end": 0.62,
+                  "label": "0,17"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée de $0$ à $1$ avec des graduations tous les $0,1$, quel nombre correspond au point situé sur le troisième petit trait après $0,2$ ?",
+              "answer": "$0,23$",
+              "hint": "Compte les petits traits après $0,2$ ; chaque petit trait vaut $0,01$.",
+              "explanation": "Le point est à trois centièmes après $0,2$, donc $0,2+0,03=0,23$."
+            },
+            {
+              "question": "Le point bleu se trouve à $0,37$ sur la droite. Écris cette valeur en lettres.",
+              "answer": "zéro virgule trente-sept",
+              "hint": "Sépare la partie entière et la partie décimale.",
+              "explanation": "La partie entière est $0$, la partie décimale est $37$ centièmes, ce qui se lit zéro virgule trente-sept."
+            },
+            {
+              "question": "Quelle est la distance entre le point A à $0,45$ et le point B à $0,62$ ?",
+              "answer": "$0,17$",
+              "hint": "Soustraye la plus petite valeur de la plus grande.",
+              "explanation": "$0,62-0,45 = 0,17$."
+            }
+          ]
+        },
+        {
+          "title": "Placer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un nombre décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas apprendre à positionner toi‑même un nombre décimal sur une droite graduée. C'est comme déposer un pion sur un plateau de jeu : tu dois d'abord repérer la bonne case, puis l'occuper avec précision. Nous commençons par une droite qui va de $0$ à $2$ et qui montre les dixièmes. Prends ton temps, observe les repères, et suis la méthode pas à pas."
+            },
+            {
+              "type": "definition",
+              "term": "placer",
+              "definition": "Placer un nombre sur une droite graduée signifie identifier l'endroit exact où ce nombre se situe par rapport aux graduations existantes.",
+              "example": "Pour placer $1,4$, on cherche la graduation $1,4$ (le quatrième trait après $1$) et on y met un point."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite de $0$ à $2$ avec graduations tous les $0,1$",
+              "min": 0,
+              "max": 2,
+              "points": [],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as réussi à placer $1,4$ ? Super ! Maintenant, nous allons voir comment placer plusieurs nombres sur la même droite et comment les comparer visuellement. Cela t'aidera à comprendre l'ordre des décimaux sans avoir à faire de calculs compliqués."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer plusieurs nombres et les ordonner"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu dois placer deux nombres, commence par le plus petit : repère sa graduation, pose le point, puis fais de même pour le plus grand. Sur la figure ci‑dessous, les points $0,6$ et $0,58$ sont déjà placés. Observe leur position relative : $0,58$ se trouve juste avant $0,6$ car $58$ centièmes sont inférieurs à $60$ centièmes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Points $0,6$ (rouge) et $0,58$ (bleu) sur une droite de $0$ à $1$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.6,
+                  "label": "R"
+                },
+                {
+                  "value": 0.58,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu sais maintenant placer et ordonner deux nombres ! Pour finir cette leçon, nous allons aborder un cas un peu plus délicat : placer un nombre qui a des centièmes alors que la droite n'affiche que les dixièmes. Il faudra alors estimer l'emplacement entre deux grands traits."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un nombre au centième sur une droite aux dixièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que la droite ne montre que les graduations $0,7$ et $0,8$. Pour placer $0,73$, tu sais qu'il se trouve un peu après $0,7$, mais avant le milieu entre $0,7$ et $0,8$. La méthode consiste à diviser mentalement l'espace en dix parties égales et à avancer de trois de ces parties. La figure ci‑dessous illustre cette estimation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les deux graduations encadrantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les grands traits les plus proches : ici $0,7$ et $0,8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser l'intervalle en dix parts égales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque part correspond à $0,01$. Compte trois parts à partir de $0,7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Poser le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le point à la troisième division ; il représente $0,73$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite avec seulement les graduations $0,7$ et $0,8$, point estimé à $0,73$",
+              "min": 0.7,
+              "max": 0.8,
+              "points": [
+                {
+                  "value": 0.73,
+                  "label": "E"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite de $0$ à $2$ graduée tous les $0,1$, place le nombre $1,4$. Indique la graduation sur laquelle tu poses le point.",
+              "answer": "Graduation $1,4$ (quatrième trait après $1$)",
+              "hint": "Compte les dixièmes à partir de $1$ : $1,1$, $1,2$, $1,3$, $1,4$.",
+              "explanation": "Le nombre $1,4$ correspond exactement à la quatrième graduation après $1$, donc on place le point sur ce trait."
+            },
+            {
+              "question": "Place les nombres $0,6$ et $0,58$ sur la même droite de $0$ à $1$ graduée tous les $0,1$. Lequel se trouve le plus à gauche ?",
+              "answer": "$0,58$",
+              "hint": "Compare les parties décimales : $58$ centièmes < $60$ centièmes.",
+              "explanation": "$0,58$ est plus petit que $0,6$, donc son point est placé avant la graduation $0,6$, c'est-à-dire plus à gauche."
+            },
+            {
+              "question": "Sur une droite qui n'affiche que les graduations $0,7$ et $0,8$, estime la position de $0,73$ et décris comment tu as trouvé cet emplacement.",
+              "answer": "À trois dixièmes de l'intervalle après $0,7$, soit un peu avant le milieu.",
+              "hint": "Divise l'espace entre $0,7$ et $0,8$ en dix parties égales ; chaque partie vaut $0,01$.",
+              "explanation": "En comptant trois parties après $0,7$, on obtient $0,73$. Le point se place donc près du premier tiers de l'intervalle."
+            }
+          ]
+        },
+        {
+          "title": "Estimer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer une valeur sur une droite peu graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans la dernière leçon de ce cours. Ici, nous allons développer ton sens de l'estimation : tu vas apprendre à deviner la position d'un nombre décimal même quand la droite ne montre que quelques repères. C'est une compétence très utile pour vérifier rapidement un résultat ou pour comparer des nombres sans calculatrice. Respire, observe, et laisse ton intuition mathématique te guider."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une droite qui ne comporte que trois grandes graduations : $0$, $0,5$ et $1$. Si on te demande d'estimer où se trouve $0,38$, tu sais qu'il est plus proche de $0$ que de $0,5$, mais pas tout au début. En regardant l'espace, tu peux dire qu'il se situe un peu avant le tiers de l'intervalle. La figure ci‑dessous montre cette situation."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite avec graduations $0$, $0,5$, $1$ ; point estimé pour $0,38$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.38,
+                  "label": "E1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien visualisé la position de $0,38$ ? Parfait ! Maintenant, nous allons affiner l'estimation en utilisant deux graduations rapprochées. Quand la droite affiche $0,3$ et $0,4$, tu peux situer $0,36$ beaucoup plus précisément. C'est comme zoomer sur une carte : plus les repères sont proches, plus ton estimation est fiable."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer avec deux repères proches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la droite qui ne montre que $0,3$ et $0,4$. Pour estimer $0,36$, compte mentalement six centièmes après $0,3$. Comme l'intervalle ne vaut que $0,1$, six centièmes correspondent à un peu plus de la moitié de cet espace. La figure suivante place un point approximatif pour $0,36$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite avec graduations $0,3$ et $0,4$ ; point estimé pour $0,36$",
+              "min": 0.3,
+              "max": 0.4,
+              "points": [
+                {
+                  "value": 0.36,
+                  "label": "E2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Tu sais maintenant estimer un nombre avec un ou deux repères. Pour terminer, nous allons utiliser l'estimation pour ordonner plusieurs décimaux sans les placer exactement. C'est une astuce rapide pour comparer des valeurs lors d'un exercice ou d'un problème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner par estimation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu doives ranger $0,45$, $0,42$ et $0,48$ du plus petit au plus grand. Regarde la droite qui affiche seulement $0,4$ et $0,5$. Tu sais que $0,42$ est juste après $0,4$, $0,45$ est au milieu, et $0,48$ est proche de $0,5$. En estimant leur position respective, tu obtiens l'ordre $0,42 < 0,45 < 0,48$. La figure ci‑dessous montre les trois points approximatifs."
+            },
+            {
+              "type": "number_line",
+              "caption": "Points estimés pour $0,42$, $0,45$, $0,48$ entre $0,4$ et $0,5$",
+              "min": 0.4,
+              "max": 0.5,
+              "points": [
+                {
+                  "value": 0.42,
+                  "label": "A"
+                },
+                {
+                  "value": 0.45,
+                  "label": "B"
+                },
+                {
+                  "value": 0.48,
+                  "label": "C"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une graduation sur une droite graduée avec des dixièmes et des centièmes.",
+                "Je sais placer un nombre décimal sur une droite, même si elle ne montre que les dixièmes.",
+                "Je sais estimer la position d'un nombre quand les graduations sont espacées.",
+                "Je peux utiliser l'estimation pour comparer et ordonner plusieurs nombres décimaux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite qui n'affiche que les graduations $0$, $0,5$ et $1$, estime la position de $0,38$. Décris à quelle distance approximative de $0$ tu places le point.",
+              "answer": "Environ aux deux cinquièmes de l'intervalle $0$–$0,5$ (un peu avant le tiers de la droite totale).",
+              "hint": "Compare $0,38$ à $0,5$ ; $0,38$ est plus petit que la moitié de $0,5$.",
+              "explanation": "Puisque $0,38 < 0,5$, le point se situe dans la première moitié de la droite. $0,38$ représente $38\\%$ de $1$, donc il est placé un peu avant le repère $0,5$."
+            },
+            {
+              "question": "Avec une droite graduée seulement à $0,3$ et $0,4$, estime où placer $0,36$. Indique si le point est plus proche de $0,3$ ou de $0,4$.",
+              "answer": "Plus proche de $0,4$ (à six centièmes de $0,3$, soit un peu après le milieu).",
+              "hint": "Calcule la différence $0,36-0,3 = 0,06$ et compare à $0,1$.",
+              "explanation": "L'intervalle vaut $0,1$. $0,06$ correspond à $60\\%$ de cet intervalle, donc le point est un peu après le milieu, donc plus près de $0,4$."
+            },
+            {
+              "question": "Ordonne les nombres $0,45$, $0,42$, $0,48$ du plus petit au plus grand en t'appuyant sur une estimation entre $0,4$ et $0,5$.",
+              "answer": "$0,42 < 0,45 < 0,48$",
+              "hint": "Repère mentalement chaque nombre par rapport à $0,4$ et $0,5$.",
+              "explanation": "$0,42$ est à $2$ centièmes de $0,4$, $0,45$ au milieu, $0,48$ à $2$ centièmes de $0,5$. L'ordre croissant suit cette proximité."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Fonctions et simulation simples",
+  "title": "Algorithmes et simulations : mise en ordre",
+  "blocks": [
+    {
+      "title": "Écrire une fonction simple",
+      "content": "Rangez les lignes de code dans l'ordre correct pour définir une fonction nommée `carre` qui prend un nombre `x` en paramètre et renvoie son carré.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "def carre(x):",
+        "    resultat = x * x",
+        "    return resultat"
+      ],
+      "explanation": "En Python, une fonction se définit par le mot-clé `def` suivi du nom de la fonction et de ses paramètres entre parenthèses, puis deux-points. Le corps de la fonction est indenté (décalé vers la droite). On calcule d'abord le résultat (`x * x`) qu'on stocke dans une variable, puis on renvoie cette valeur avec l'instruction `return`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simuler des lancers de dé",
+      "content": "Voici un programme qui simule 100 lancers d'un dé à six faces équilibré et compte le nombre de fois où on obtient un 6. Remettez les instructions dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "from random import randint",
+        "nb_six = 0",
+        "for _ in range(100):",
+        "    if randint(1, 6) == 6:",
+        "        nb_six += 1"
+      ],
+      "explanation": "On commence par importer la fonction `randint` du module `random`. On initialise le compteur `nb_six` à 0 avant la boucle. La boucle `for _ in range(100):` répète 100 fois le bloc indenté qui suit. À chaque tour, `randint(1, 6)` tire un entier entre 1 et 6 ; si c'est un 6, on incrémente le compteur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimer une probabilité par simulation",
+      "content": "On veut estimer la fréquence d'un événement de probabilité 0,4 en simulant 1000 expériences. Rangez les lignes pour obtenir un programme complet et correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "from random import random",
+        "def experience(): return random() < 0.4",
+        "compteur = 0",
+        "for _ in range(1000):",
+        "    if experience(): compteur += 1"
+      ],
+      "explanation": "On importe `random` qui renvoie un nombre aléatoire entre 0 et 1. La fonction `experience` renvoie `True` si ce nombre est strictement inférieur à 0,4 (ce qui a une chance sur 2,5, soit une probabilité de 0,4). On initialise `compteur` à 0. La boucle répète 1000 fois l'appel à `experience()` et incrémente le compteur en cas de succès. La fréquence finale serait `compteur / 1000`.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

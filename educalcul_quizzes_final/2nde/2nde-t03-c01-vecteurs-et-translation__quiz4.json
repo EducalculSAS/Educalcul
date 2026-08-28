@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Vecteurs et translation",
+  "title": "Quiz : Applications des vecteurs et translations",
+  "questions": [
+    {
+      "text": "Soit $t$ la translation de vecteur $\\vec{u}$. Quelle est l'image du point $A$ par $t$ ?",
+      "options": [
+        "Le point $B$ tel que $\\vec{AB} = \\vec{u}$",
+        "Le point $B$ tel que $\\vec{BA} = \\vec{u}$",
+        "Le point $B$ tel que $\\vec{AB} = -\\vec{u}$",
+        "Le point $B$ tel que $A$ est le milieu de $[BB']$"
+      ],
+      "correctAnswer": "Le point $B$ tel que $\\vec{AB} = \\vec{u}$",
+      "explanation": "Par définition, la translation de vecteur $\\vec{u}$ transforme tout point $A$ en un point $B$ tel que le vecteur $\\vec{AB}$ soit égal au vecteur $\\vec{u}$ qui définit la translation. L'option B correspond au vecteur opposé, l'option C aussi, et l'option D décrit une symétrie centrale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, le point $A$ a pour coordonnées $(2; -1)$. On considère la translation $t$ de vecteur $\\vec{v}(3; 4)$. Quelles sont les coordonnées de l'image $A'$ de $A$ par $t$ ?",
+      "options": [
+        "$(5; 3)$",
+        "$(-1; -5)$",
+        "$(5; -5)$",
+        "$(-1; 3)$"
+      ],
+      "correctAnswer": "$(5; 3)$",
+      "explanation": "Les coordonnées de l'image $A'$ s'obtiennent en ajoutant les coordonnées du vecteur $\\vec{v}$ aux coordonnées du point $A$. On calcule : $x_{A'} = 2 + 3 = 5$ et $y_{A'} = -1 + 4 = 3$. Donc $A'(5; 3)$. Les autres options correspondent à des erreurs de signes (soustraction au lieu d'addition).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $t$ la translation qui transforme $A$ en $B$ et $C$ en $D$. Quelle relation vectorielle est nécessairement vraie ?",
+      "options": [
+        "$\\vec{AB} = \\vec{CD}$",
+        "$\\vec{AB} = \\vec{DC}$",
+        "$\\vec{AC} = \\vec{BD}$",
+        "$\\vec{AD} = \\vec{BC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} = \\vec{CD}$",
+      "explanation": "Une translation conserve les vecteurs : le vecteur qui envoie $A$ sur $B$ est exactement le vecteur de la translation. Ce même vecteur envoie $C$ sur $D$. Donc $\\vec{AB} = \\vec{CD} = \\vec{v}$ (vecteur de la translation). L'option B inverse le sens, les options C et D correspondent aux diagonales ou aux autres côtés du quadrilatère $ABDC$ qui est un parallélogramme, mais ne sont pas le vecteur directeur de la translation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $t_1$ la translation de vecteur $\\vec{u}(2; -3)$ et $t_2$ la translation de vecteur $\\vec{v}(-1; 5)$. La translation composée $t_2 \\circ t_1$ (on applique $t_1$ puis $t_2$) est la translation de vecteur :",
+      "options": [
+        "$\\vec{w}(1; 2)$",
+        "$\\vec{w}(3; -8)$",
+        "$\\vec{w}(-3; 8)$",
+        "$\\vec{w}(1; -2)$"
+      ],
+      "correctAnswer": "$\\vec{w}(1; 2)$",
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des vecteurs des deux translations. On calcule $\\vec{w} = \\vec{u} + \\vec{v} = (2 + (-1); -3 + 5) = (1; 2)$. L'ordre n'a pas d'importance pour la somme vectorielle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La translation $t$ transforme le point $E(4; 2)$ en $E'(1; 6)$. Quel est le vecteur $\\vec{v}$ de cette translation ?",
+      "options": [
+        "$\\vec{v}(-3; 4)$",
+        "$\\vec{v}(3; -4)$",
+        "$\\vec{v}(5; 8)$",
+        "$\\vec{v}(-5; -8)$"
+      ],
+      "correctAnswer": "$\\vec{v}(-3; 4)$",
+      "explanation": "Le vecteur de la translation est le vecteur $\\vec{EE'}$. Ses coordonnées sont $x_{E'} - x_E = 1 - 4 = -3$ et $y_{E'} - y_E = 6 - 2 = 4$. Donc $\\vec{v}(-3; 4)$. L'option B correspond au vecteur inverse $\\vec{E'E}$, et les options C et D sont des additions de coordonnées au lieu de soustractions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

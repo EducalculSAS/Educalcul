@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Lire un diagramme en bâtons",
+  "title": "Lire un diagramme en bâtons : Les animaux préférés",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous. Combien d'élèves ont choisi le chat comme animal préféré ?",
+      "options": [
+        "$4$ élèves",
+        "$6$ élèves",
+        "$8$ élèves",
+        "$2$ élèves"
+      ],
+      "correctAnswer": "$6$ élèves",
+      "explanation": "Sur le diagramme, la barre correspondante au « Chat » monte jusqu'à la graduation $6$. Il y a donc $6$ élèves qui préfèrent le chat. Les autres valeurs correspondent au lapin ($4$), au chien ($8$) et au hamster ($2$).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Quel est l'animal le plus préféré par les élèves de la classe ?",
+      "options": [
+        "Le chien",
+        "Le chat",
+        "Le lapin",
+        "Le hamster"
+      ],
+      "correctAnswer": "Le chien",
+      "explanation": "Il faut chercher la barre la plus haute. La barre du « Chien » monte jusqu'à $8$, c'est la plus grande valeur. Le chat est à $6$, le lapin à $4$ et le hamster à $2$. Le chien est donc l'animal le plus populaire.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il de différence entre le nombre d'élèves qui préfèrent le chien et ceux qui préfèrent le lapin ?",
+      "options": [
+        "$2$ élèves",
+        "$4$ élèves",
+        "$6$ élèves",
+        "$8$ élèves"
+      ],
+      "correctAnswer": "$4$ élèves",
+      "explanation": "Le chien compte $8$ élèves et le lapin $4$ élèves. Pour trouver la différence, on calcule $8 - 4 = 4$. Il y a $4$ élèves de plus qui préfèrent le chien plutôt que le lapin.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il d'élèves au total dans cette classe de CE1 ?",
+      "options": [
+        "$18$ élèves",
+        "$20$ élèves",
+        "$22$ élèves",
+        "$16$ élèves"
+      ],
+      "correctAnswer": "$20$ élèves",
+      "explanation": "Il faut additionner les effectifs de toutes les barres : $8$ (chien) $+ 6$ (chat) $+ 4$ (lapin) $+ 2$ (hamster) $= 20$. Il y a $20$ élèves au total dans la classe.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Combien y a-t-il de plus d'élèves qui préfèrent le chien que le hamster ?",
+      "options": [
+        "$4$ élèves",
+        "$6$ élèves",
+        "$8$ élèves",
+        "$10$ élèves"
+      ],
+      "correctAnswer": "$6$ élèves",
+      "explanation": "Le chien a $8$ voix et le hamster $2$ voix. La différence se calcule par $8 - 2 = 6$. Il y a $6$ élèves de plus qui préfèrent le chien au hamster.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

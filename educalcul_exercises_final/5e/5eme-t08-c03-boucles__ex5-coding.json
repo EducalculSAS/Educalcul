@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : For / répétition",
+  "title": "Boucles For - Approfondissement",
+  "blocks": [
+    {
+      "title": "Boucle simple",
+      "content": "Écrivez un algorithme qui affiche les entiers de $1$ à $5$ en utilisant une boucle « pour ».",
+      "correctAnswer": "Pour $i$ de $1$ à $5$ faire\\n    Afficher $i$\\nFin pour",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle pour prend une variable $i$ qui commence à $1$ et s'incrémente jusqu'à $5$. À chaque itération, la valeur de $i$ est affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme des entiers",
+      "content": "Écrivez un algorithme qui calcule la somme des entiers de $1$ à $10$ à l'aide d'une boucle « pour » et affiche le résultat.",
+      "correctAnswer": "Initialiser somme à zéro\\nPour $i$ de $1$ à $10$ faire\\n    somme devient somme plus $i$\\nFin pour\\nAfficher somme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable somme à zéro. La boucle pour fait varier $i$ de $1$ à $10$ et ajoute $i$ à somme à chaque tour. À la fin, somme vaut cinquante-cinq.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombres pairs",
+      "content": "Écrivez un algorithme qui affiche tous les nombres pairs de $2$ à $20$ en utilisant une boucle « pour » avec un pas de $2$.",
+      "correctAnswer": "Pour $i$ de $2$ à $20$ pas $2$ faire\\n    Afficher $i$\\nFin pour",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle pour commence à $2$, s'arrête à $20$ et augmente $i$ de $2$ à chaque itération, ce qui génère uniquement les nombres pairs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

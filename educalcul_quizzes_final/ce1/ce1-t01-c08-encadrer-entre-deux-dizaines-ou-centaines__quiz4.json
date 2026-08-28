@@ -1,0 +1,154 @@
+{
+  "_status": "done",
+  "_course_id": 75,
+  "_course_code": "ce1-t01-c08-encadrer-entre-deux-dizaines-ou-centaines",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Encadrer entre deux dizaines ou centaines",
+  "title": "Encadrer un nombre entre deux dizaines ou deux centaines",
+  "questions": [
+    {
+      "text": "Entre quelles deux dizaines se trouve le nombre $47$ ?",
+      "options": [
+        "Entre $40$ et $50$",
+        "Entre $30$ et $40$",
+        "Entre $50$ et $60$",
+        "Entre $47$ et $48$"
+      ],
+      "correctAnswer": "Entre $40$ et $50$",
+      "explanation": "Pour encadrer un nombre entre deux dizaines, on regarde le chiffre des dizaines. Le nombre $47$ a $4$ dizaines, donc il est supérieur à $40$ et strictement inférieur à $50$. Il se situe donc entre $40$ et $50$. L'option \"Entre $47$ et $48$\" correspond à un encadrement à l'unité, pas à la dizaine.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repérage de 47 entre 40 et 50",
+        "min": 35,
+        "max": 55,
+        "points": [
+          {
+            "value": 47,
+            "label": "47"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 40,
+            "end": 50,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Complète l'encadrement à la centaine pour le nombre $352$ : $... < 352 < ...$",
+      "options": [
+        "$300 < 352 < 400$",
+        "$350 < 352 < 360$",
+        "$200 < 352 < 300$",
+        "$300 < 352 < 350$"
+      ],
+      "correctAnswer": "$300 < 352 < 400$",
+      "explanation": "On demande un encadrement à la centaine. Le nombre $352$ possède $3$ centaines. La centaine précédente est $300$ et la centaine suivante est $400$. On a bien $300 < 352 < 400$. L'option \"$350 < 352 < 360$\" est un encadrement à la dizaine. L'option \"$200 < 352 < 300$\" est fausse car $352$ est plus grand que $300$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est encadré par $60$ et $70$ ?",
+      "options": [
+        "$64$",
+        "$58$",
+        "$72$",
+        "$60$"
+      ],
+      "correctAnswer": "$64$",
+      "explanation": "Un nombre encadré par $60$ et $70$ doit être strictement plus grand que $60$ et strictement plus petit que $70$. Le nombre $64$ vérifie cette condition ($60 < 64 < 70$). Le nombre $58$ est trop petit ($58 < 60$). Le nombre $72$ est trop grand ($72 > 70$). Le nombre $60$ est la borne inférieure, il n'est pas strictement compris entre les deux.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Nombres entre 60 et 70",
+        "min": 55,
+        "max": 75,
+        "points": [
+          {
+            "value": 64,
+            "label": "64"
+          },
+          {
+            "value": 58,
+            "label": "58"
+          },
+          {
+            "value": 72,
+            "label": "72"
+          },
+          {
+            "value": 60,
+            "label": "60"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 60,
+            "end": 70,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le nombre $809$ est encadré par quelles deux centaines ?",
+      "options": [
+        "$800$ et $900$",
+        "$700$ et $800$",
+        "$809$ et $810$",
+        "$80$ et $90$"
+      ],
+      "correctAnswer": "$800$ et $900$",
+      "explanation": "Le nombre $809$ s'écrit avec $8$ centaines, $0$ dizaine et $9$ unités. Pour l'encadrer à la centaine, on prend la centaine immédiatement inférieure ($800$) et la centaine immédiatement supérieure ($900$). On a donc $800 < 809 < 900$. L'option \"$700$ et $800$\" est fausse car $809 > 800$. Les deux dernières options correspondent à des encadrements à la dizaine ou à l'unité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un encadrement : $250 < □ < 260$. Lequel de ces nombres ne peut PAS être placé dans le carré ?",
+      "options": [
+        "$248$",
+        "$253$",
+        "$257$",
+        "$259$"
+      ],
+      "correctAnswer": "$248$",
+      "explanation": "L'encadrement $250 < □ < 260$ demande un nombre strictement supérieur à $250$ et strictement inférieur à $260$. Les nombres $253$, $257$ et $259$ sont tous compris entre $250$ et $260$. Le nombre $248$ est strictement inférieur à $250$, il ne respecte pas la borne inférieure de l'encadrement.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Encadrement entre 250 et 260",
+        "min": 245,
+        "max": 265,
+        "points": [
+          {
+            "value": 248,
+            "label": "248"
+          },
+          {
+            "value": 253,
+            "label": "253"
+          },
+          {
+            "value": 257,
+            "label": "257"
+          },
+          {
+            "value": 259,
+            "label": "259"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 250,
+            "end": 260,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Relier euros et centimes",
+  "title": "Relier euros et centimes : approfondissement",
+  "questions": [
+    {
+      "text": "Combien y a-t-il de centimes dans $3$ euros ?",
+      "options": [
+        "30 centimes",
+        "300 centimes",
+        "3 000 centimes",
+        "130 centimes"
+      ],
+      "correctAnswer": "300 centimes",
+      "explanation": "Pour passer des euros aux centimes, on multiplie par $100$ car $1$ euro $= 100$ centimes. Donc $3 \\times 100 = 300$ centimes. L'option \"30 centimes\" correspond à une multiplication par $10$, et \"3 000 centimes\" à une multiplication par $1\\,000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $450$ centimes. Quelle est l'écriture en euros avec une virgule ?",
+      "options": [
+        "4,50 €",
+        "45,0 €",
+        "4,05 €",
+        "450 €"
+      ],
+      "correctAnswer": "4,50 €",
+      "explanation": "On groupe les centimes par paquets de $100$ pour faire des euros. $450$ centimes $= 400$ centimes $+ 50$ centimes $= 4$ euros $+ 50$ centimes. En écriture décimale, on note les euros avant la virgule et les centimes (sur deux chiffres) après la virgule : $4,50$ €. L'option \"4,05 €\" correspond à $4$ euros et $5$ centimes seulement.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 4.5,
+        "caption": "Tableau de position pour 4,50 €"
+      }
+    },
+    {
+      "text": "Léo a une pièce de $2$ euros et trois pièces de $50$ centimes. Quelle somme possède-t-il ?",
+      "options": [
+        "2,50 €",
+        "3,00 €",
+        "3,50 €",
+        "2,15 €"
+      ],
+      "correctAnswer": "3,50 €",
+      "explanation": "La pièce de $2$ euros vaut $200$ centimes. Trois pièces de $50$ centimes valent $3 \\times 50 = 150$ centimes. Total en centimes : $200 + 150 = 350$ centimes. On convertit en euros : $350$ centimes $= 3$ euros $50$ centimes $= 3,50$ €. L'option \"2,50 €\" oublie d'additionner les euros des pièces de $50$ centimes ($2 \\times 50$ cts $= 1$ €).",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          50,
+          50,
+          50
+        ],
+        "target": 350,
+        "caption": "Pièces de Léo"
+      }
+    },
+    {
+      "text": "Parmi ces écritures, laquelle correspond à $7$ euros et $5$ centimes ?",
+      "options": [
+        "7,5 €",
+        "7,05 €",
+        "7,50 €",
+        "7,005 €"
+      ],
+      "correctAnswer": "7,05 €",
+      "explanation": "Après la virgule, on écrit toujours deux chiffres pour les centimes (dizaines de centimes puis unités de centimes). $5$ centimes s'écrit $05$ (zéro dixaine de centime, cinq centimes). Donc $7$ euros $5$ centimes $= 7,05$ €. L'écriture \"7,5 €\" signifie $7$ euros et $50$ centimes (cinq dixièmes d'euro).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare : $5$ euros et $480$ centimes. Laquelle des affirmations est vraie ?",
+      "options": [
+        "5 € < 480 cts",
+        "5 € = 480 cts",
+        "5 € > 480 cts",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "5 € > 480 cts",
+      "explanation": "Pour comparer, il faut la même unité. On convertit $5$ euros en centimes : $5 \\times 100 = 500$ centimes. On compare $500$ centimes et $480$ centimes. Comme $500 > 480$, alors $5$ euros $> 480$ centimes. L'erreur fréquente est de comparer $5$ et $480$ directement sans convertir.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

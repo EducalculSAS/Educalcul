@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Débogage",
+  "title": "Débogage : Structures conditionnelles",
+  "blocks": [
+    {
+      "title": "Sortie d'algorithme",
+      "content": "On exécute chaque algorithme ci-dessous avec la valeur $x = -2$. Relie chaque algorithme à ce qu'il affiche.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "SI x > 0 ALORS AFFICHER \"Positif\" SINON AFFICHER \"Négatif ou nul\" FIN SI",
+          "right": "Négatif ou nul"
+        },
+        {
+          "left": "SI x < 0 ALORS AFFICHER \"Négatif\" SINON AFFICHER \"Positif ou nul\" FIN SI",
+          "right": "Négatif"
+        },
+        {
+          "left": "SI x = 0 ALORS AFFICHER \"Nul\" SINON AFFICHER \"Non nul\" FIN SI",
+          "right": "Non nul"
+        },
+        {
+          "left": "SI x >= 0 ALORS AFFICHER \"Positif ou nul\" SINON AFFICHER \"Négatif\" FIN SI",
+          "right": "Négatif"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour $x = -2$ :\\n- Premier script : $-2 > 0$ est faux, on exécute le SINON : \"Négatif ou nul\".\\n- Deuxième script : $-2 < 0$ est vrai, on exécute ALORS : \"Négatif\".\\n- Troisième script : $-2 = 0$ est faux, on exécute SINON : \"Non nul\".\\n- Quatrième script : $-2 \\geq 0$ est faux, on exécute SINON : \"Négatif\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction de scripts",
+      "content": "Chaque script de la colonne de gauche contient une erreur (logique ou syntaxe). Relie-le à sa version corrigée dans la colonne de droite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "SI age > 18 ALORS AFFICHER \"Majeur\" SINON AFFICHER \"Mineur\" FIN SI",
+          "right": "SI age >= 18 ALORS AFFICHER \"Majeur\" SINON AFFICHER \"Mineur\" FIN SI"
+        },
+        {
+          "left": "SI note >= 10 ALORS AFFICHER \"Admis\" FIN SI",
+          "right": "SI note >= 10 ALORS AFFICHER \"Admis\" SINON AFFICHER \"Refusé\" FIN SI"
+        },
+        {
+          "left": "SI x > 0 ALORS AFFICHER \"+\" SINON AFFICHER \"-\" FIN SI",
+          "right": "SI x > 0 ALORS AFFICHER \"+\" SINON SI x < 0 ALORS AFFICHER \"-\" SINON AFFICHER \"0\" FIN SI FIN SI"
+        },
+        {
+          "left": "SI x > 5 ALORS AFFICHER \"Grand\" SINON AFFICHER \"Petit\"",
+          "right": "SI x > 5 ALORS AFFICHER \"Grand\" SINON AFFICHER \"Petit\" FIN SI"
+        }
+      ],
+      "items": [],
+      "explanation": "Analyse des corrections :\\n1. En France, la majorité est à 18 ans inclus, il faut $\\geq$ au lieu de $>$.\\n2. Le script original n'affichait rien si la note était $< 10$ ; il faut ajouter le bloc SINON.\\n3. Le script original affichait \"-\" pour $x=0$ (car $0 > 0$ est faux) ; il faut distinguer les trois cas ($>0$, $<0$, $=0$) avec un SI imbriqué.\\n4. Il manquait le mot-clé FIN SI à la fin de la structure conditionnelle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Localisation d'erreurs",
+      "content": "On considère le script suivant :\\n1. DEBUT\\n2. LIRE nombre\\n3. SI nombre > 10 ALORS\\n4.   AFFICHER \"Supérieur à 10\"\\n5. SINON\\n6.   SI nombre < 10 ALORS\\n7.     AFFICHER \"Inférieur à 10\"\\n8.   FIN SI\\n9. FIN\\n10. FIN\\n\\nRelie chaque anomalie détectée à la ligne (ou aux lignes) où elle se situe.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Il manque un FIN SI pour fermer le premier SI (ligne 3).",
+          "right": "Ligne 9 (remplacer FIN par FIN SI)"
+        },
+        {
+          "left": "Le cas où nombre vaut exactement 10 n'affiche rien.",
+          "right": "Lignes 6 à 8 (manque un SINON au SI de la ligne 6)"
+        },
+        {
+          "left": "La variable nombre n'est pas initialisée avant le test.",
+          "right": "Aucune (ligne 2 correcte : LIRE nombre)"
+        },
+        {
+          "left": "Le mot-clé ALORS est manquant à la ligne 3.",
+          "right": "Aucune (ligne 3 correcte : SI ... ALORS)"
+        }
+      ],
+      "items": [],
+      "explanation": "Examen du script ligne par ligne :\\n- Ligne 2 : LIRE nombre initialise la variable, pas d'erreur.\\n- Ligne 3 : La syntaxe SI ... ALORS est correcte.\\n- Lignes 3 à 9 : Le premier SI (ligne 3) est fermé par le FIN SI manquant à la ligne 9 (qui ne contient que FIN). Il faut écrire FIN SI.\\n- Lignes 6 à 8 : Le SI imbriqué teste nombre < 10. Si nombre = 10, la condition est fausse et il n'y a pas de SINON : rien ne s'affiche. Il faut ajouter un bloc SINON AFFICHER \"Égal à 10\" avant le FIN SI de la ligne 8.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

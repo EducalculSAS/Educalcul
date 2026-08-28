@@ -1,0 +1,328 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.405760+00:00",
+  "id": 291,
+  "code": "cm2-t03-c03",
+  "title": "Division euclidienne",
+  "description": "Cours structuré Educalcul : Division euclidienne.",
+  "subject": "Calcul et techniques opératoires",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Calcul et techniques opératoires",
+    "titre_du_cours": "Division euclidienne",
+    "objectif_global": "Division euclidienne",
+    "mini_lecons_imposees": [
+      "Quotient / reste.",
+      "Technique.",
+      "Vérification."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et techniques opératoires",
+      "lessons": [
+        {
+          "title": "Quotient / reste.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient et reste : partageons équitablement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $17$ bonbons et que tu veux les partager entre $3$ copains. Chaque copain reçoit le même nombre de bonbons, et il peut en rester quelques-uns qui ne peuvent pas être distribués. C'est exactement l'idée de la division euclidienne : on sépare un nombre en groupes de même taille."
+            },
+            {
+              "type": "definition",
+              "term": "Dividende",
+              "definition": "Le nombre qu'on veut partager. Dans notre exemple, c'est $17$.",
+              "example": "Pour $17 \\div 3$, le dividende est $17$."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Le nombre de parts qu'on veut faire. Ici, c'est $3$.",
+              "example": "Pour $17 \\div 3$, le diviseur est $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on fait $17 \\div 3$, on cherche combien de fois $3$ rentre dans $17$. On peut faire des groupes de $3$ : $3$, $6$, $9$, $12$, $15$. On a fait $5$ groupes complets. Il reste $2$ bonbons qu'on ne peut pas mettre dans un groupe de $3$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 7,
+              "caption": "17 représenté par 1 dizaine et 7 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nombre de groupes complets, c'est le quotient. Ce qui reste, c'est le reste. Le reste est toujours plus petit que le diviseur. Ici, le quotient est $5$ et le reste est $2$. On écrit : $17 = 3 \\times 5 + 2$."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient",
+              "definition": "Le nombre de groupes complets qu'on a pu former.",
+              "example": "Dans $17 \\div 3$, le quotient est $5$."
+            },
+            {
+              "type": "definition",
+              "term": "Reste",
+              "definition": "Ce qui reste après avoir fait le maximum de groupes complets. Il est toujours strictement plus petit que le diviseur.",
+              "example": "Dans $17 \\div 3$, le reste est $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un autre nombre. Si tu as $28$ billes et que tu veux les ranger dans des boîtes de $6$ billes chacune. Combien de boîtes pleines auras-tu ? Combien de billes resteront dehors ? Pense à faire des groupes de $6$ mentalement ou sur un papier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, retiens que la division euclidienne répond à deux questions : combien de groupes complets (quotient) et combien d'éléments restent (reste). La relation $dividende = diviseur \\times quotient + reste$ est toujours vraie. Nous verrons dans la prochaine leçon comment poser l'opération pour la calculer plus facilement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la division $24 \\div 5$, quel est le dividende, le diviseur, le quotient et le reste ?",
+              "answer": "Dividende = 24, diviseur = 5, quotient = 4, reste = 4",
+              "hint": "Combien de fois 5 rentre-t-il dans 24 ? 5 × 4 = 20, il reste 4.",
+              "explanation": "On cherche le plus grand multiple de 5 qui ne dépasse pas 24. C'est 20 (5 × 4). Le quotient est 4. Le reste est 24 - 20 = 4. Vérification : 5 × 4 + 4 = 24."
+            },
+            {
+              "question": "Complète l'égalité : $31 = 4 \\times \\ldots + \\ldots$ (quotient et reste).",
+              "answer": "31 = 4 × 7 + 3",
+              "hint": "Cherche le multiple de 4 le plus proche de 31 sans le dépasser.",
+              "explanation": "4 × 7 = 28, 4 × 8 = 32 (trop grand). Donc quotient = 7, reste = 31 - 28 = 3."
+            },
+            {
+              "question": "Vrai ou faux ? Dans une division euclidienne, le reste peut être égal au diviseur.",
+              "answer": "Faux",
+              "hint": "Le reste est toujours strictement plus petit que le diviseur.",
+              "explanation": "Par définition, le reste est le nombre d'éléments qui n'ont pas pu former un groupe complet. S'il était égal au diviseur, on pourrait former un groupe de plus."
+            }
+          ]
+        },
+        {
+          "title": "Technique.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La technique de la division posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce que sont le quotient et le reste, apprenons à poser l'opération pour la trouver rapidement, même avec de grands nombres. La division posée se fait de gauche à droite, chiffre par chiffre du dividende."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $152 \\div 4$. On écrit le dividende à l'intérieur de la 'maison', le diviseur à gauche. On regarde le premier chiffre du dividende : $1$. Est-ce que $4$ rentre dans $1$ ? Non, car $1 < 4$. On prend alors les deux premiers chiffres : $15$. Combien de fois $4$ rentre-t-il dans $15$ ? $4 \\times 3 = 12$, $4 \\times 4 = 16$ (trop grand). Donc on écrit $3$ au quotient."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Première division partielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise $15$ par $4$. Quotient partiel $3$, reste $15 - 12 = 3$. On écrit $3$ au-dessus du $5$. On met $12$ sous $15$ et on soustrait."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Abaisser le chiffre suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On abaisse le chiffre suivant du dividende : le $2$. Le nouveau nombre est $32$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Deuxième division partielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise $32$ par $4$. $4 \\times 8 = 32$ exactement. On écrit $8$ au quotient. Reste $0$. La division est terminée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column_operation",
+              "operator": "/",
+              "operands": [
+                "152",
+                "4"
+              ],
+              "result": "38",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Le quotient final est $38$ et le reste est $0$. On a $152 = 4 \\times 38 + 0$. Essaie maintenant avec un exemple où il y a un reste non nul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le premier chiffre du dividende est plus petit que le diviseur, comme dans $235 \\div 6$. On prend alors les deux premiers chiffres : $23$. $6 \\times 3 = 18$, $6 \\times 4 = 24$ (trop grand). On écrit $3$, on soustrait $18$ de $23$, reste $5$. On abaisse le $5$, on obtient $55$. $6 \\times 9 = 54$, reste $1$. Quotient $39$, reste $1$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "/",
+              "operands": [
+                "235",
+                "6"
+              ],
+              "result": "39",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : quand on abaisse un chiffre, on le colle à droite du reste précédent. Si le nouveau nombre est encore plus petit que le diviseur, on met un $0$ au quotient et on abaisse le chiffre suivant. C'est le cas par exemple pour $402 \\div 5$ : après la première étape, on a $0$ comme reste, on abaisse le $2$, $2 < 5$, on met $0$ au quotient, puis on abaisse le dernier chiffre (s'il y en a un)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, fais la division posée de $567 \\div 8$. Suis bien les étapes : regarde les chiffres de gauche à droite, trouve le multiple, soustrais, abaisse, recommence. N'oublie pas d'écrire le quotient au fur et à mesure au-dessus du dividende."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la division posée de $248 \\div 5$. Donne le quotient et le reste.",
+              "answer": "Quotient = 49, reste = 3",
+              "hint": "24 ÷ 5 = 4 (5×4=20), reste 4. Abaisser 8 → 48. 48 ÷ 5 = 9 (5×9=45), reste 3.",
+              "explanation": "On divise 24 par 5 → quotient 4, reste 4. On abaisse 8 → 48. 48 ÷ 5 = 9, reste 3. Résultat : 49 reste 3. Vérification : 5 × 49 + 3 = 245 + 3 = 248."
+            },
+            {
+              "question": "Pose et calcule $603 \\div 7$.",
+              "answer": "Quotient = 86, reste = 1",
+              "hint": "60 ÷ 7 = 8 (7×8=56), reste 4. Abaisser 3 → 43. 43 ÷ 7 = 6 (7×6=42), reste 1.",
+              "explanation": "60 ÷ 7 = 8, reste 4. Abaisser 3 → 43. 43 ÷ 7 = 6, reste 1. Quotient 86, reste 1. Vérification : 7 × 86 + 1 = 602 + 1 = 603."
+            },
+            {
+              "question": "Dans la division $412 \\div 6$, quel chiffre écriras-tu au quotient après avoir traité le premier chiffre $4$ ?",
+              "answer": "0",
+              "hint": "4 est plus petit que 6, donc on ne peut pas faire de groupe. On prend les deux premiers chiffres : 41.",
+              "explanation": "Comme 4 < 6, on ne peut pas diviser. On met 0 au quotient (au-dessus du 4) et on considère 41 pour la suite."
+            }
+          ]
+        },
+        {
+          "title": "Vérification.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier sa division : la relation fondamentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir fait une division, il est très important de vérifier qu'on n'a pas fait d'erreur. Heureusement, il existe une règle simple qui marche à tous les coups : le dividende doit être égal au diviseur multiplié par le quotient, plus le reste."
+            },
+            {
+              "type": "display_math",
+              "latex": "dividende = diviseur \\times quotient + reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre exemple $152 \\div 4$. Nous avions trouvé quotient $38$, reste $0$. Vérifions : $4 \\times 38 = 152$. On ajoute le reste $0$, on retrouve $152$. C'est bon !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un reste non nul : $235 \\div 6$ donnait quotient $39$, reste $1$. Calculons $6 \\times 39 = 234$. Ajoutons le reste $1$ : $234 + 1 = 235$. On retrouve bien le dividende de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as un doute sur ton quotient, tu peux aussi faire la multiplication à l'envers : divise le dividende par le quotient trouvé, tu dois retomber sur le diviseur (si le reste est nul). Mais la formule $dividende = diviseur \\times quotient + reste$ est la plus sûre et la plus rapide."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : le reste doit toujours être plus petit que le diviseur. Si ton reste est plus grand ou égal au diviseur, c'est qu'on peut encore faire au moins un groupe de plus. Par exemple, si tu trouves $17 \\div 3 = 4$ reste $5$, le reste $5$ est plus grand que $3$, donc le quotient devrait être $5$ et le reste $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne le dividende, le diviseur et le quotient, et tu dois trouver le reste. Il suffit de réorganiser la formule : $reste = dividende - (diviseur \\times quotient)$. Par exemple, pour $100 \\div 7$ avec quotient $14$, le reste est $100 - (7 \\times 14) = 100 - 98 = 2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le dividende, le diviseur, le quotient et le reste dans une division.",
+                "Je sais poser une division euclidienne et la calculer étape par étape.",
+                "Je sais vérifier ma division avec la relation : dividende = diviseur × quotient + reste.",
+                "Je sais que le reste est toujours strictement plus petit que le diviseur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie la division $348 \\div 5 = 69$ reste $3$. Est-ce correct ?",
+              "answer": "Oui, c'est correct.",
+              "hint": "Calcule 5 × 69 + 3 et compare à 348.",
+              "explanation": "5 × 69 = 345. 345 + 3 = 348. On retrouve le dividende, donc la division est juste."
+            },
+            {
+              "question": "Une division donne $56 \\div 8 = 6$ reste $8$. Pourquoi est-ce impossible ?",
+              "answer": "Le reste (8) est égal au diviseur (8), ce qui n'est pas permis. Le quotient devrait être 7 et le reste 0.",
+              "hint": "Le reste doit être strictement plus petit que le diviseur.",
+              "explanation": "Si le reste vaut 8, on peut encore faire un groupe de 8. Le vrai quotient est 7, reste 0 car 8 × 7 = 56."
+            },
+            {
+              "question": "Trouve le reste de la division $200 \\div 9$ si le quotient est $22$.",
+              "answer": "2",
+              "hint": "Utilise la formule : reste = dividende - (diviseur × quotient).",
+              "explanation": "9 × 22 = 198. 200 - 198 = 2. Le reste est 2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 128,
+  "_course_code": "ce1-t07-c03-carre-et-rectangle",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Construire sur quadrillage",
+  "title": "Quiz : Construire sur quadrillage (CE1)",
+  "questions": [
+    {
+      "text": "Observe la figure sur le quadrillage. Quelle figure géométrique est représentée ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un triangle",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "La figure colorée forme un carré car elle a quatre côtés de même longueur (3 petits carrés de côté) et quatre angles droits. Ce n'est pas un rectangle car les côtés ne sont pas de deux longueurs différentes, ce n'est ni un triangle ni un cercle.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 9,
+        "caption": "Un carré de 3 par 3"
+      }
+    },
+    {
+      "text": "Regarde ce rectangle sur le quadrillage. Quelles sont ses dimensions ?",
+      "options": [
+        "$4$ carrés sur $2$ carrés",
+        "$3$ carrés sur $3$ carrés",
+        "$5$ carrés sur $2$ carrés",
+        "$4$ carrés sur $3$ carrés"
+      ],
+      "correctAnswer": "$4$ carrés sur $2$ carrés",
+      "explanation": "En comptant les petits carrés, le rectangle mesure 4 petits carrés de long (horizontalement) et 2 petits carrés de large (verticalement). L'option $3$ sur $3$ serait un carré, les autres ne correspondent pas au comptage.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 4,
+        "highlighted": 8,
+        "caption": "Un rectangle de 4 par 2"
+      }
+    },
+    {
+      "text": "On a commencé à tracer un carré de $3$ carrés de côté. Combien de petits carrés faut-il encore colorier pour le terminer ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Un carré de $3$ carrés de côté contient $3 \\times 3 = 9$ petits carrés au total. La figure en L en compte déjà $5$. Il manque donc $9 - 5 = 4$ petits carrés pour compléter le grand carré.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 5,
+        "caption": "Carré incomplet (forme en L)"
+      }
+    },
+    {
+      "text": "Tu dois tracer un rectangle de $5$ carrés de long sur $3$ carrés de large. Combien de petits carrés vas-tu colorier en tout ?",
+      "options": [
+        "$8$",
+        "$15$",
+        "$16$",
+        "$14$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "Pour trouver le nombre total de petits carrés d'un rectangle sur quadrillage, on multiplie la longueur par la largeur : $5 \\times 3 = 15$. L'option $8$ correspond à l'addition $5+3$, ce qui est une erreur fréquente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, comment reconnaît-on un carré parmi les rectangles ?",
+      "options": [
+        "Il a $4$ côtés de même longueur",
+        "Il a $2$ côtés longs et $2$ côtés courts",
+        "Il a $3$ côtés",
+        "Ses côtés ne sont pas droits"
+      ],
+      "correctAnswer": "Il a $4$ côtés de même longueur",
+      "explanation": "Un carré est un rectangle particulier : il a 4 angles droits comme tout rectangle, mais ses 4 côtés ont exactement la même longueur. Sur quadrillage, on compte le même nombre de petits carrés sur chaque côté. Les autres propositions décrivent un rectangle non-carré, un triangle ou une figure courbe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

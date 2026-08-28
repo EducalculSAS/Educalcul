@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 291,
+  "_course_code": "cm2-t03-c03-division-euclidienne",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Application : Division euclidienne",
+  "title": "Application de la division euclidienne",
+  "questions": [
+    {
+      "text": "Un pâtissier a $45$ macarons. Il veut les répartir équitablement dans des boîtes de $6$ macarons. Combien de boîtes pourra-t-il remplir complètement et combien de macarons restera-t-il ?",
+      "options": [
+        "$7$ boîtes et il reste $3$ macarons",
+        "$6$ boîtes et il reste $9$ macarons",
+        "$7$ boîtes et il reste $1$ macaron",
+        "$8$ boîtes et il reste $0$ macaron"
+      ],
+      "correctAnswer": "$7$ boîtes et il reste $3$ macarons",
+      "explanation": "On effectue la division euclidienne de $45$ par $6$. On sait que $7 \\times 6 = 42$. Le reste est $45 - 42 = 3$. Le quotient est donc $7$ et le reste $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une école reçoit $134$ cahiers. On veut les distribuer équitablement entre $4$ classes. Combien de cahiers chaque classe recevra-t-elle et combien en restera-t-il pour le directeur ?",
+      "options": [
+        "$30$ cahiers et il en reste $14$",
+        "$33$ cahiers et il en reste $2$",
+        "$34$ cahiers et il en reste $1$",
+        "$32$ cahiers et il en reste $6$"
+      ],
+      "correctAnswer": "$33$ cahiers et il en reste $2$",
+      "explanation": "On divise $134$ par $4$. On a $4 \\times 30 = 120$ et $4 \\times 3 = 12$. Donc $4 \\times 33 = 132$. Le reste est $134 - 132 = 2$. Chaque classe a $33$ cahiers et il en reste $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jardinier a $215$ graines de tournesol. Il veut les planter sur $7$ rangées identiques. Quel est le nombre maximum de graines par rangée et combien de graines lui reste-t-il ?",
+      "options": [
+        "$30$ graines et il en reste $5$",
+        "$31$ graines et il en reste $2$",
+        "$30$ graines et il en reste $15$",
+        "$31$ graines et il en reste $4$"
+      ],
+      "correctAnswer": "$30$ graines et il en reste $5$",
+      "explanation": "On divise $215$ par $7$. On a $7 \\times 30 = 210$. Le reste est $215 - 210 = 5$. Le quotient est donc $30$ et le reste $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le maître a $58$ billes. Il veut faire des paquets de $5$ billes. Combien de paquets complets peut-il faire et combien de billes lui restent-elles ?",
+      "options": [
+        "$11$ paquets et $3$ billes",
+        "$10$ paquets et $8$ billes",
+        "$12$ paquets et $0$ bille",
+        "$11$ paquets et $8$ billes"
+      ],
+      "correctAnswer": "$11$ paquets et $3$ billes",
+      "explanation": "On divise $58$ par $5$. $11 \\times 5 = 55$. Le reste est $58 - 55 = 3$. On ne peut pas faire $12$ paquets car il faudrait $60$ billes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un transporteur doit livrer $843$ colis. Il utilise des camions pouvant transporter $9$ colis chacun. Combien de camions seront totalement remplis et combien de colis seront dans le dernier camion s'il n'est pas plein ?",
+      "options": [
+        "$93$ camions et $6$ colis",
+        "$90$ camions et $33$ colis",
+        "$93$ camions et $3$ colis",
+        "$94$ camions et $0$ colis"
+      ],
+      "correctAnswer": "$93$ camions et $6$ colis",
+      "explanation": "On effectue la division de $843$ par $9$. En $84$, il y a $9$ fois $9$ (car $9 \\times 9 = 81$), il reste $3$. On abaisse le $3$, on a $33$. En $33$, il y a $3$ fois $9$ (car $3 \\times 9 = 27$), il reste $6$. Le quotient est $93$ et le reste $6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

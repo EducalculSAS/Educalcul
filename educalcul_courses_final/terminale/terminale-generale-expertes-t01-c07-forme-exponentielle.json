@@ -1,0 +1,469 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.764558+00:00",
+  "id": 733,
+  "code": "terminale-generale-expertes-t01-c07",
+  "title": "Forme exponentielle",
+  "description": "Cours structuré Educalcul : Forme exponentielle.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Forme exponentielle",
+    "objectif_global": "Forme exponentielle",
+    "mini_lecons_imposees": [
+      "Notation.",
+      "Calculs.",
+      "Lien trigonométrique."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Notation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La notation exponentielle : une écriture compacte"
+            },
+            {
+              "type": "paragraph",
+              "content": "En terminale mathématiques expertes, nous manipulons les nombres complexes avec une aisance qui repose sur plusieurs représentations équivalentes. La forme algébrique $z = x + iy$ est la plus familière, mais elle masque la structure géométrique profonde du nombre complexe. La forme exponentielle, que nous allons découvrir, révèle immédiatement le module et l'argument, c'est-à-dire la distance à l'origine et l'angle orienté par rapport à l'axe réel positif. Cette écriture doit son nom à la formule d'Euler, qui lie l'exponentielle complexe aux fonctions trigonométriques : $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$. Cette égalité, véritable pierre angulaire de l'analyse complexe, permet d'écrire tout nombre complexe non nul sous la forme $z = r e^{i\\\\theta}$ avec $r > 0$ et $\\\\theta \\\\in \\\\mathbb{R}$. Le nombre $r$ est le module de $z$, noté $|z|$, et $\\\\theta$ est un argument de $z$, noté $\\\\arg(z)$. L'argument n'est pas unique : on peut y ajouter n'importe quel multiple entier de $2\\\\pi$. On privilégie souvent l'argument principal, noté $\\\\mathrm{Arg}(z)$, qui appartient à l'intervalle $]-\\\\pi,\\\\pi]$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 2,
+              "caption": "Représentation d'un nombre complexe $z = 3+2i$ dans le plan complexe : module $r = \\\\sqrt{13}$, argument $\\\\theta \\\\approx 0,588$ rad."
+            },
+            {
+              "type": "definition",
+              "term": "Forme exponentielle",
+              "definition": "Un nombre complexe non nul $z$ s'écrit $z = r e^{i\\\\theta}$ avec $r = |z| > 0$ et $\\\\theta = \\\\arg(z) \\\\in \\\\mathbb{R}$. La formule d'Euler $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$ assure le lien avec la forme trigonométrique $z = r(\\\\cos\\\\theta + i\\\\sin\\\\theta)$.",
+              "example": "Le nombre $z = 1+i$ a pour module $\\\\sqrt{2}$ et pour argument principal $\\\\pi/4$. Sa forme exponentielle est $z = \\\\sqrt{2} e^{i\\\\pi/4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé la définition, il est essentiel de bien distinguer les deux paramètres qui caractérisent un nombre complexe en écriture exponentielle : le module et l'argument. Ces notions ne sont pas de simples artifices de notation ; elles portent toute la géométrie du plan complexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Module et argument : les deux paramètres clés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le module $|z|$ d'un nombre complexe $z = x+iy$ est sa distance à l'origine dans le plan complexe. Il se calcule par $|z| = \\\\sqrt{x^2 + y^2}$. C'est un nombre réel positif (ou nul pour $z=0$). L'argument $\\\\arg(z)$ est l'angle orienté, en radians, que fait le vecteur $\\\\overrightarrow{Oz}$ avec l'axe des abscisses positives. Cet angle est défini modulo $2\\\\pi$ : si $\\\\theta$ est un argument, alors $\\\\theta + 2k\\\\pi$ ($k \\\\in \\\\mathbb{Z}$) en est aussi un. Pour lever cette ambiguïté, on introduit l'argument principal $\\\\mathrm{Arg}(z)$, l'unique argument qui appartient à l'intervalle $]-\\\\pi,\\\\pi]$. La connaissance du module et d'un argument suffit à reconstruire le nombre complexe grâce à la formule d'Euler. Réciproquement, à partir de $z = x+iy$, on détermine $r = \\\\sqrt{x^2+y^2}$ et on cherche $\\\\theta$ tel que $\\\\cos\\\\theta = x/r$ et $\\\\sin\\\\theta = y/r$. Le quadrant où se trouve le point $(x,y)$ détermine sans ambiguïté l'argument principal."
+            },
+            {
+              "type": "definition",
+              "term": "Module",
+              "definition": "Pour $z = x+iy$, le module est $|z| = \\\\sqrt{x^2+y^2}$. Il vérifie $|z|^2 = z \\\\overline{z}$ où $\\\\overline{z}$ est le conjugué.",
+              "example": "$|3+4i| = 5$."
+            },
+            {
+              "type": "definition",
+              "term": "Argument principal",
+              "definition": "L'unique argument $\\\\theta$ de $z \\\\neq 0$ tel que $-\\\\pi < \\\\theta \\\\le \\\\pi$. On le note $\\\\mathrm{Arg}(z)$.",
+              "example": "$\\\\mathrm{Arg}(-1) = \\\\pi$, $\\\\mathrm{Arg}(-i) = -\\\\pi/2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "|z| = \\\\sqrt{x^2+y^2}, \\\\quad \\\\mathrm{Arg}(z) \\\\in ]-\\\\pi,\\\\pi]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment passer concrètement de la forme algébrique $z = x + iy$ à la forme exponentielle $z = r e^{i\\\\theta}$. Cette conversion est un exercice classique qui demande de la rigueur dans le choix de l'argument."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conversion de la forme algébrique vers la forme exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode se déroule en trois étapes simples mais qu'il faut appliquer avec soin. Premièrement, calculez le module $r = \\\\sqrt{x^2 + y^2}$. Deuxièmement, déterminez le cosinus et le sinus de l'argument : $\\\\cos\\\\theta = x/r$, $\\\\sin\\\\theta = y/r$. Troisièmement, en vous aidant des signes de $x$ et $y$, identifiez le quadrant du point $(x,y)$ et choisissez l'angle $\\\\theta \\\\in ]-\\\\pi,\\\\pi]$ qui convient. Si $x>0$, on peut prendre $\\\\theta = \\\\arctan(y/x)$ ; si $x<0$ et $y\\\\ge 0$, $\\\\theta = \\\\arctan(y/x) + \\\\pi$ ; si $x<0$ et $y<0$, $\\\\theta = \\\\arctan(y/x) - \\\\pi$ ; si $x=0$, $\\\\theta = \\\\pi/2$ pour $y>0$ et $-\\\\pi/2$ pour $y<0$. Une fois $r$ et $\\\\theta$ trouvés, on écrit $z = r e^{i\\\\theta}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$r = \\\\sqrt{x^2 + y^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer $\\\\cos\\\\theta$ et $\\\\sin\\\\theta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\\\cos\\\\theta = \\\\frac{x}{r}$, $\\\\sin\\\\theta = \\\\frac{y}{r}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir l'argument principal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les signes de $x$ et $y$ pour placer $\\\\theta$ dans le bon quadrant et le ramener dans $]-\\\\pi,\\\\pi]$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention au quadrant",
+              "paragraphs": [
+                "Ne vous fiez pas uniquement à $\\\\arctan(y/x)$ : cette fonction ne donne des valeurs qu'entre $-\\\\pi/2$ et $\\\\pi/2$. Vérifiez toujours les signes de $x$ et $y$ pour corriger l'angle si nécessaire."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant l'écriture exponentielle d'un nombre complexe. Dans la prochaine leçon, nous verrons comment cette forme rend les calculs de produits, quotients, puissances et racines d'une simplicité remarquable."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire le nombre complexe $z = 1 + i$ sous forme exponentielle.",
+              "answer": "$z = \\\\sqrt{2} e^{i\\\\pi/4}$",
+              "hint": "Calculez le module $r = \\\\sqrt{1^2+1^2}$ et déterminez l'argument principal $\\\\theta$ tel que $\\\\cos\\\\theta = 1/r$ et $\\\\sin\\\\theta = 1/r$.",
+              "explanation": "Le module est $\\\\sqrt{2}$. Comme les parties réelle et imaginaire sont positives, l'argument principal est $\\\\pi/4$. Donc $z = \\\\sqrt{2} e^{i\\\\pi/4}$."
+            },
+            {
+              "question": "Donner le module et l'argument principal de $z = 2 e^{i\\\\pi/3}$.",
+              "answer": "Module : $2$, argument principal : $\\\\pi/3$",
+              "hint": "La forme exponentielle donne directement le module et l'argument.",
+              "explanation": "Dans l'écriture $z = r e^{i\\\\theta}$, $r$ est le module et $\\\\theta$ est un argument. Ici $r=2$ et $\\\\theta=\\\\pi/3$ qui appartient à $]-\\\\pi,\\\\pi]$, c'est donc l'argument principal."
+            },
+            {
+              "question": "Convertir $z = -\\\\sqrt{3} + i$ en forme exponentielle.",
+              "answer": "$z = 2 e^{i 5\\\\pi/6}$",
+              "hint": "Calculez le module, puis déterminez l'argument en utilisant les signes des parties réelle et imaginaire.",
+              "explanation": "Module $r = \\\\sqrt{(-\\\\sqrt{3})^2+1^2} = 2$. $\\\\cos\\\\theta = -\\\\sqrt{3}/2$, $\\\\sin\\\\theta = 1/2$, donc $\\\\theta = 5\\\\pi/6$ (deuxième quadrant)."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication et division : la simplicité de l'addition d'arguments"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'avantage majeur de la forme exponentielle réside dans la transformation des opérations algébriques en opérations sur les modules et les arguments. Soient deux nombres complexes non nuls $z_1 = r_1 e^{i\\\\theta_1}$ et $z_2 = r_2 e^{i\\\\theta_2}$. Leur produit s'obtient en multipliant les modules et en ajoutant les arguments : $z_1 z_2 = (r_1 r_2) e^{i(\\\\theta_1 + \\\\theta_2)}$. Leur quotient (pour $z_2 \\\\neq 0$) s'obtient en divisant les modules et en soustrayant les arguments : $\\\\frac{z_1}{z_2} = \\\\frac{r_1}{r_2} e^{i(\\\\theta_1 - \\\\theta_2)}$. Ces règles découlent directement des propriétés de l'exponentielle : $e^{i\\\\theta_1} e^{i\\\\theta_2} = e^{i(\\\\theta_1+\\\\theta_2)}$ et $\\\\frac{e^{i\\\\theta_1}}{e^{i\\\\theta_2}} = e^{i(\\\\theta_1-\\\\theta_2)}$. Elles évitent les calculs fastidieux de développement et de réduction qui seraient nécessaires en forme algébrique. De plus, elles donnent une interprétation géométrique immédiate : multiplier par $z_2$ revient à effectuer une homothétie de rapport $r_2$ suivie d'une rotation d'angle $\\\\theta_2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z_1 z_2 = r_1 r_2 e^{i(\\\\theta_1+\\\\theta_2)}, \\\\quad \\\\frac{z_1}{z_2} = \\\\frac{r_1}{r_2} e^{i(\\\\theta_1-\\\\theta_2)}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Multiplier les modules : $r = r_1 r_2$. 2. Additionner les arguments : $\\\\theta = \\\\theta_1 + \\\\theta_2$. 3. Écrire le résultat : $r e^{i\\\\theta}$ (ramener $\\\\theta$ dans $]-\\\\pi,\\\\pi]$ si nécessaire)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Diviser les modules : $r = r_1 / r_2$. 2. Soustraire les arguments : $\\\\theta = \\\\theta_1 - \\\\theta_2$. 3. Écrire le résultat : $r e^{i\\\\theta}$ (ramener $\\\\theta$ dans $]-\\\\pi,\\\\pi]$ si nécessaire)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété s'étend naturellement aux puissances entières, ce qui nous donne la célèbre formule de Moivre, un outil incontournable pour calculer des puissances de nombres complexes ou pour linéariser des expressions trigonométriques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Puissances entières et formule de Moivre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tout entier $n \\\\in \\\\mathbb{Z}$ et tout nombre complexe non nul $z = r e^{i\\\\theta}$, on a $z^n = r^n e^{i n \\\\theta}$. Cette égalité se démontre par récurrence pour $n \\\\ge 0$ et s'étend aux entiers négatifs en utilisant $z^{-n} = 1/z^n$. En notation trigonométrique, cela s'écrit $(\\\\cos\\\\theta + i\\\\sin\\\\theta)^n = \\\\cos(n\\\\theta) + i\\\\sin(n\\\\theta)$, ce qui est exactement la formule de Moivre. Cette formule permet de calculer rapidement des puissances élevées sans passer par le développement du binôme de Newton. Elle est aussi la clé pour exprimer $\\\\cos(n\\\\theta)$ et $\\\\sin(n\\\\theta)$ comme polynômes en $\\\\cos\\\\theta$ et $\\\\sin\\\\theta$ (polynômes de Tchebychev). Lorsqu'on élève un nombre complexe à une puissance, le module est élevé à cette puissance et l'argument est multiplié par cet entier. Attention : l'argument obtenu $n\\\\theta$ n'est pas nécessairement l'argument principal ; il faut le réduire modulo $2\\\\pi$ pour le ramener dans $]-\\\\pi,\\\\pi]$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(r e^{i\\\\theta})^n = r^n e^{i n \\\\theta}, \\\\quad (\\\\cos\\\\theta + i\\\\sin\\\\theta)^n = \\\\cos(n\\\\theta) + i\\\\sin(n\\\\theta)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calculer $z^n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Écrire $z$ sous forme exponentielle $r e^{i\\\\theta}$. 2. Calculer $r^n$. 3. Calculer $n\\\\theta$. 4. Réduire l'argument modulo $2\\\\pi$ pour obtenir l'argument principal si demandé. 5. Résultat : $r^n e^{i (n\\\\theta \\\\bmod 2\\\\pi)}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse, l'extraction de racine, révèle une multiplicité de résultats que nous allons explorer. Contrairement aux nombres réels positifs qui ont une unique racine $n$-ième positive, tout nombre complexe non nul possède exactement $n$ racines $n$-ièmes distinctes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Racines n-ièmes d'un nombre complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre l'équation $w^n = z$ où $z = r e^{i\\\\theta}$ ($r>0$) revient à trouver tous les nombres complexes $w$ tels que $w^n = z$. En écriture exponentielle, posons $w = \\\\rho e^{i\\\\phi}$. L'équation devient $\\\\rho^n e^{i n \\\\phi} = r e^{i\\\\theta}$. On en déduit $\\\\rho^n = r$, donc $\\\\rho = \\\\sqrt[n]{r}$ (la racine $n$-ième réelle positive), et $n\\\\phi = \\\\theta + 2k\\\\pi$ pour $k \\\\in \\\\mathbb{Z}$, c'est-à-dire $\\\\phi_k = \\\\frac{\\\\theta + 2k\\\\pi}{n}$. Les valeurs distinctes de $\\\\phi_k$ modulo $2\\\\pi$ sont obtenues pour $k = 0, 1, \\\\dots, n-1$. Cela donne exactement $n$ solutions distinctes : $w_k = \\\\sqrt[n]{r} \\, e^{i(\\\\theta + 2k\\\\pi)/n}$. Géométriquement, ces $n$ racines sont les sommets d'un polygone régulier à $n$ sommets inscrit dans le cercle de rayon $\\\\sqrt[n]{r}$, le premier sommet ayant pour argument $\\\\theta/n$."
+            },
+            {
+              "type": "display_math",
+              "latex": "w_k = \\\\sqrt[n]{r} \\\\, e^{i(\\\\theta + 2k\\\\pi)/n}, \\\\quad k = 0,1,\\\\dots,n-1"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Trouver les racines $n$-ièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Écrire $z$ sous forme exponentielle $r e^{i\\\\theta}$ (choisir un argument, par exemple le principal). 2. Calculer le module commun $\\\\rho = \\\\sqrt[n]{r}$. 3. Pour $k = 0$ à $n-1$, calculer $\\\\phi_k = (\\\\theta + 2k\\\\pi)/n$. 4. Les racines sont $w_k = \\\\rho e^{i\\\\phi_k}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Nombre de solutions",
+              "paragraphs": [
+                "Une équation $w^n = z$ avec $z \\\\neq 0$ a toujours exactement $n$ solutions complexes distinctes. Si $z=0$, l'unique solution est $w=0$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant tous les outils pour calculer efficacement avec les nombres complexes sous forme exponentielle. La prochaine leçon montrera le lien profond entre l'exponentielle et la trigonométrie, lien qui permet de linéariser des puissances de cosinus et de sinus et de calculer certaines intégrales autrement inaccessibles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer le produit $z_1 z_2$ et le quotient $z_1 / z_2$ pour $z_1 = 3 e^{i\\\\pi/6}$ et $z_2 = 2 e^{i\\\\pi/3}$.",
+              "answer": "$z_1 z_2 = 6 e^{i\\\\pi/2}$, $z_1 / z_2 = \\\\frac{3}{2} e^{-i\\\\pi/6}$",
+              "hint": "Multipliez les modules et ajoutez les arguments pour le produit ; divisez les modules et soustrayez les arguments pour le quotient.",
+              "explanation": "Produit : module $3\\\\times2=6$, argument $\\\\pi/6+\\\\pi/3=\\\\pi/2$. Quotient : module $3/2$, argument $\\\\pi/6-\\\\pi/3=-\\\\pi/6$."
+            },
+            {
+              "question": "Calculer $(1+i)^6$ en utilisant la forme exponentielle.",
+              "answer": "$(1+i)^6 = -8i$",
+              "hint": "Écrivez $1+i$ sous forme exponentielle, puis appliquez la formule de Moivre.",
+              "explanation": "$1+i = \\\\sqrt{2} e^{i\\\\pi/4}$. Puissance 6 : module $(\\\\sqrt{2})^6 = 8$, argument $6\\\\times\\\\pi/4 = 3\\\\pi/2$. Donc $8 e^{i3\\\\pi/2} = -8i$."
+            },
+            {
+              "question": "Trouver les racines cubiques de $z = 8 e^{i\\\\pi/2}$.",
+              "answer": "$w_0 = 2 e^{i\\\\pi/6}$, $w_1 = 2 e^{i5\\\\pi/6}$, $w_2 = 2 e^{i3\\\\pi/2}$",
+              "hint": "Module racine cubique de 8 = 2. Arguments : $(\\\\pi/2 + 2k\\\\pi)/3$ pour $k=0,1,2$.",
+              "explanation": "Module $r^{1/3}=2$. Arguments : $\\\\pi/6$, $5\\\\pi/6$, $3\\\\pi/2$ (ou $-\\\\pi/2$)."
+            }
+          ]
+        },
+        {
+          "title": "Lien trigonométrique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les formules d'Euler : le pont vers la trigonométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme exponentielle n'est pas seulement un outil de calcul commode ; elle est le révélateur d'une identité profonde entre l'exponentielle complexe et les fonctions trigonométriques. La formule d'Euler $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$ vaut pour tout réel $\\\\theta$. En remplaçant $\\\\theta$ par $-\\\\theta$, on obtient $e^{-i\\\\theta} = \\\\cos\\\\theta - i\\\\sin\\\\theta$ (car le cosinus est pair et le sinus impair). En ajoutant et en soustrayant ces deux égalités, on isole le cosinus et le sinus sous forme de combinaisons linéaires d'exponentielles complexes. Ce sont les formules d'Euler pour le cosinus et le sinus : $\\\\cos\\\\theta = \\\\frac{e^{i\\\\theta} + e^{-i\\\\\\theta}}{2}$ et $\\\\sin\\\\theta = \\\\frac{e^{i\\\\theta} - e^{-i\\\\theta}}{2i}$. Ces formules sont d'une puissance extraordinaire : elles permettent de transformer n'importe quelle expression trigonométrique en expression rationnelle en $e^{i\\\\theta}$ et $e^{-i\\\\theta}$, où les règles de l'algèbre usuelle (distributivité, binôme de Newton) s'appliquent sans aucune difficulté. C'est la clé de la linéarisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\cos\\\\theta = \\\\frac{e^{i\\\\theta}+e^{-i\\\\theta}}{2}, \\\\quad \\\\sin\\\\theta = \\\\frac{e^{i\\\\theta}-e^{-i\\\\theta}}{2i}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Démonstration",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Écrire $e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta$. 2. Écrire $e^{-i\\\\theta} = \\\\cos\\\\theta - i\\\\sin\\\\theta$. 3. Additionner : $e^{i\\\\theta}+e^{-i\\\\theta} = 2\\\\cos\\\\theta \\\\Rightarrow \\\\cos\\\\theta = (e^{i\\\\theta}+e^{-i\\\\theta})/2$. 4. Soustraire : $e^{i\\\\theta}-e^{-i\\\\theta} = 2i\\\\sin\\\\theta \\\\Rightarrow \\\\sin\\\\theta = (e^{i\\\\theta}-e^{-i\\\\theta})/(2i)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces formules permettent de linéariser les puissances de cosinus et de sinus, c'est-à-dire de les exprimer comme combinaisons linéaires de cosinus et sinus d'angles multiples. C'est une technique systématique qui évite les formules de trigonométrie classiques souvent fastidieuses."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Linéarisation des puissances de cosinus et de sinus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour linéariser $\\\\cos^n\\\\theta$ ou $\\\\sin^n\\\\theta$, on utilise les formules d'Euler pour réécrire le cosinus ou le sinus en exponentielles, on élève à la puissance $n$ grâce au binôme de Newton, puis on regroupe les termes symétriques pour faire réapparaître des cosinus ou des sinus d'angles multiples. Prenons l'exemple de $\\\\cos^4\\\\theta$. On a $\\\\cos\\\\theta = (e^{i\\\\theta}+e^{-i\\\\theta})/2$. En élevant à la puissance 4 : $\\\\cos^4\\\\theta = \\\\frac{1}{16}(e^{i\\\\theta}+e^{-i\\\\theta})^4$. Le développement du binôme donne $(e^{i\\\\theta}+e^{-i\\\\theta})^4 = e^{4i\\\\theta} + 4 e^{2i\\\\theta} + 6 + 4 e^{-2i\\\\theta} + e^{-4i\\\\theta}$. On regroupe les termes symétriques : $e^{4i\\\\theta}+e^{-4i\\\\theta} = 2\\\\cos 4\\\\theta$ et $e^{2i\\\\theta}+e^{-2i\\\\theta} = 2\\\\cos 2\\\\theta$. Ainsi $\\\\cos^4\\\\theta = \\\\frac{1}{16}(2\\\\cos 4\\\\theta + 8\\\\cos 2\\\\theta + 6) = \\\\frac{1}{8}(\\\\cos 4\\\\theta + 4\\\\cos 2\\\\theta + 3)$. La méthode est exactement la même pour $\\\\sin^n\\\\theta$ ou pour des produits comme $\\\\cos^p\\\\theta \\\\sin^q\\\\theta$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Linéariser $\\\\cos^n\\\\theta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Remplacer $\\\\cos\\\\theta$ par $(e^{i\\\\theta}+e^{-i\\\\theta})/2$. 2. Élever à la puissance $n$. 3. Développer avec le binôme de Newton. 4. Regrouper les termes $e^{ik\\\\theta}$ et $e^{-ik\\\\theta}$ pour former $2\\\\cos(k\\\\theta)$. 5. Simplifier les coefficients."
+                    }
+                  ]
+                },
+                {
+                  "title": "Linéariser $\\\\sin^n\\\\theta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Remplacer $\\\\sin\\\\theta$ par $(e^{i\\\\theta}-e^{-i\\\\theta})/(2i)$. 2. Élever à la puissance $n$. 3. Développer. 4. Regrouper : $e^{ik\\\\theta}-e^{-ik\\\\theta} = 2i\\\\sin(k\\\\theta)$ pour $k$ impair, $e^{ik\\\\theta}+e^{-ik\\\\theta} = 2\\\\cos(k\\\\theta)$ pour $k$ pair. 5. Simplifier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La linéarisation est un outil puissant pour calculer des intégrales trigonométriques ou résoudre certaines équations. Voyons un exemple d'application avec le calcul d'une intégrale définie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : intégration et résolution d'équations trigonométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'intégrale $I = \\\\int_0^{\\\\pi/2} \\\\cos^4 x \\\\, dx$. Grâce à la linéarisation obtenue précédemment, $\\\\cos^4 x = \\\\frac{3}{8} + \\\\frac{1}{2}\\\\cos 2x + \\\\frac{1}{8}\\\\cos 4x$. L'intégrale devient une somme d'intégrales élémentaires : $I = \\\\int_0^{\\\\pi/2} \\\\frac{3}{8} dx + \\\\frac{1}{2}\\\\int_0^{\\\\pi/2} \\\\cos 2x \\\\, dx + \\\\frac{1}{8}\\\\int_0^{\\\\pi/2} \\\\cos 4x \\\\, dx$. Les intégrales de $\\\\cos 2x$ et $\\\\cos 4x$ sur $[0,\\\\pi/2]$ sont nulles car ce sont des fonctions périodiques d'une période entière ou demi-entière sur l'intervalle. Il ne reste que $I = \\\\frac{3}{8} \\\\times \\\\frac{\\\\pi}{2} = \\\\frac{3\\\\pi}{16}$. Cette méthode s'applique à toute intégrale de puissance de cosinus ou de sinus, ou de produit de puissances, sur des intervalles adaptés. Elle permet aussi de résoudre des équations comme $\\\\cos^3 x = \\\\frac{1}{4}$ en linéarisant le membre de gauche pour obtenir une équation en $\\\\cos x$ et $\\\\cos 3x$, puis en utilisant la formule de triplication du cosinus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calculer $\\\\int_0^{\\\\pi/2} \\\\cos^4 x \\\\, dx$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Linéariser $\\\\cos^4 x = \\\\frac{3}{8} + \\\\frac{1}{2}\\\\cos 2x + \\\\frac{1}{8}\\\\cos 4x$. 2. Intégrer terme à terme sur $[0,\\\\pi/2]$. 3. Les intégrales de $\\\\cos 2x$ et $\\\\cos 4x$ valent 0. 4. Résultat : $\\\\frac{3}{8} \\\\times \\\\frac{\\\\pi}{2} = \\\\frac{3\\\\pi}{16}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire un nombre complexe sous forme exponentielle $z = r e^{i\\\\theta}$.",
+                "Je sais identifier le module et l'argument principal d'un nombre complexe donné sous forme exponentielle.",
+                "Je sais multiplier et diviser deux nombres complexes en forme exponentielle.",
+                "J'applique la formule de Moivre pour calculer des puissances entières.",
+                "Je sais déterminer les $n$ racines $n$-ièmes d'un nombre complexe.",
+                "J'utilise les formules d'Euler pour exprimer $\\\\cos\\\\theta$ et $\\\\sin\\\\theta$ avec des exponentielles.",
+                "Je sais linéariser $\\\\cos^n\\\\theta$ et $\\\\sin^n\\\\theta$ en combinaisons de cosinus et sinus d'angles multiples.",
+                "J'applique la linéarisation pour calculer des intégrales trigonométriques."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Exprimer $\\\\cos\\\\theta$ et $\\\\sin\\\\theta$ en fonction de $e^{i\\\\theta}$ et $e^{-i\\\\theta}$.",
+              "answer": "$\\\\cos\\\\theta = \\\\frac{e^{i\\\\theta}+e^{-i\\\\theta}}{2}$, $\\\\sin\\\\theta = \\\\frac{e^{i\\\\theta}-e^{-i\\\\theta}}{2i}$",
+              "hint": "Ajoutez et soustrayez les égalités $e^{i\\\\theta}=\\\\cos\\\\theta+i\\\\sin\\\\theta$ et $e^{-i\\\\theta}=\\\\cos\\\\theta-i\\\\sin\\\\theta$.",
+              "explanation": "En ajoutant : $e^{i\\\\theta}+e^{-i\\\\theta}=2\\\\cos\\\\theta$. En soustrayant : $e^{i\\\\theta}-e^{-i\\\\theta}=2i\\\\sin\\\\theta$."
+            },
+            {
+              "question": "Linéariser $\\\\cos^4\\\\theta$ en combinaison linéaire de cosinus d'angles multiples.",
+              "answer": "$\\\\cos^4\\\\theta = \\\\frac{3}{8} + \\\\frac{1}{2}\\\\cos 2\\\\theta + \\\\frac{1}{8}\\\\cos 4\\\\theta$",
+              "hint": "Écrivez $\\\\cos\\\\theta = (e^{i\\\\\\theta}+e^{-i\\\\theta})/2$, élevez à la puissance 4, développez avec le binôme, puis regroupez les termes.",
+              "explanation": "$\\\\cos^4\\\\theta = \\\\frac{1}{16}(e^{i\\\\\\theta}+e^{-i\\\\theta})^4 = \\\\frac{1}{16}(e^{4i\\\\theta}+4e^{2i\\\\\\theta}+6+4e^{-2i\\\\\\theta}+e^{-4i\\\\\\theta}) = \\\\frac{1}{8}(\\\\cos 4\\\\theta + 4\\\\cos 2\\\\theta + 3)$."
+            },
+            {
+              "question": "Calculer l'intégrale $\\\\int_0^{\\\\pi/2} \\\\cos^4 x \\\\, dx$ en utilisant la linéarisation.",
+              "answer": "$\\\\frac{3\\\\pi}{16}$",
+              "hint": "Remplacez $\\\\cos^4 x$ par son expression linéarisée, puis intégrez terme à terme.",
+              "explanation": "$\\\\int_0^{\\\\pi/2} (\\\\frac{3}{8} + \\\\frac{1}{2}\\\\cos 2x + \\\\frac{1}{8}\\\\cos 4x) dx = [\\\\frac{3}{8}x + \\\\frac{1}{4}\\\\sin 2x + \\\\frac{1}{32}\\\\sin 4x]_0^{\\\\pi/2} = \\\\frac{3\\\\pi}{16}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

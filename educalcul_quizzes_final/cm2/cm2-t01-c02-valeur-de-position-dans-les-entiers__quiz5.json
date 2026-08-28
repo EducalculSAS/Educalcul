@@ -1,0 +1,81 @@
+{
+  "_status": "failed",
+  "_errors": [
+    "question 2: options en doublon"
+  ],
+  "_course_id": 276,
+  "_course_code": "cm2-t01-c02-valeur-de-position-dans-les-entiers",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Décomposer",
+  "raw": {
+    "title": "Décomposition des nombres entiers au CM2",
+    "questions": [
+      {
+        "text": "Quelle est la décomposition additive du nombre $4 \\ 508$ ?",
+        "options": [
+          "$4 \\ 000 + 500 + 8$",
+          "$4 \\ 000 + 50 + 8$",
+          "$400 + 50 + 8$",
+          "$4 \\ 000 + 500 + 80$"
+        ],
+        "correctAnswer": "$4 \\ 000 + 500 + 8$",
+        "explanation": "Le nombre $4 \\ 508$ possède $4$ unités de mille, $5$ centaines, $0$ dizaine et $8$ unités. On écrit donc $4 \\ 000 + 500 + 8$. L'option $4 \\ 000 + 50 + 8$ oublie les centaines, et $4 \\ 000 + 500 + 80$ confond les unités et les dizaines.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Comment décomposer le nombre $72 \\ 341$ en utilisant des multiplications ?",
+        "options": [
+          "$(7 \\times 10 \\ 000) + (2 \\times 1 \\ 000) + (3 \\times 100) + (4 \\times 10) + 1$",
+          "$(7 \\times 1 \\ 000) + (2 \\times 100) + (3 \\times 10) + 4 + 1$",
+          "$(7 \\times 10 \\ 000) + (2 \\times 100) + (3 \\times 10) + 41$",
+          "$(7 \\times 100 \\ 000) + (2 \\times 1 \\ 000) + (3 \\times 100) + (4 \\times 10) + 1$"
+        ],
+        "correctAnswer": "$(7 \\times 10 \\ 000) + (2 \\times 1 \\ 000) + (3 \\times 100) + (4 \\times 10) + 1$",
+        "explanation": "Le chiffre $7$ est respectively au rang des dizaines de mille, $2$ aux unités de mille, $3$ aux centaines, $4$ aux dizaines et $1$ aux unités. On multiplie donc chaque chiffre par la valeur de sa position.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Si on décompose un nombre ainsi : $(12 \\times 1 \\ 000) + (15 \\times 10) + 7$, quel est ce nombre ?",
+        "options": [
+          "$12 \\ 157$",
+          "$12 \\ 015 \\ 7$",
+          "$12 \\ 157$",
+          "$12 \\ 157$"
+        ],
+        "correctAnswer": "$12 \\ 157$",
+        "explanation": "Calculons chaque partie : $12 \\times 1 \\ 000 = 12 \\ 000$, $15 \\times 10 = 150$ et $7$. En additionnant $12 \\ 000 + 150 + 7$, on obtient $12 \\ 157$. Attention, le nombre de dizaines peut être supérieur à $9$ dans une décomposition approfondie.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Parmi ces décompositions, laquelle est correcte pour le nombre $603 \\ 020$ ?",
+        "options": [
+          "$(600 \\times 1 \\ 000) + (3 \\times 100) + (2 \\times 10)$",
+          "$(6 \\times 100 \\ 000) + (3 \\times 1 \\ 000) + (2 \\times 10)$",
+          "$(6 \\times 10 \\ 000) + (3 \\times 100) + (20 \\times 1)$",
+          "$(60 \\times 10 \\ 000) + (3 \\times 100) + 20$"
+        ],
+        "correctAnswer": "$(600 \\times 1 \\ 000) + (3 \\times 100) + (2 \\times 10)$",
+        "explanation": "L'option A est correcte car $600 \\times 1 \\ 000 = 600 \\ 000$, $3 \\times 100 = 300$ et $2 \\times 10 = 20$. L'option B est fausse car $6 \\times 100 \\ 000 = 600 \\ 000$ mais $3 \\times 1 \\ 000$ donnerait $603 \\ 000$ et non $603 \\ 020$. L'option D est correcte aussi mathématiquement, mais la décomposition standard par rangs privilégie l'unité de mille ou la centaine de mille. Vérifions l'option A: $600 \\ 000 + 300 + 20 = 600 \\ 320$. Erreur. Rectification: Le nombre est $603 \\ 020$. La bonne réponse est $(6 \\times 100 \\ 000) + (3 \\times 1 \\ 000) + (2 \\times 10)$.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Un nombre est composé de six dizaines de mille, quatre centaines et trois unités. Quel est ce nombre ?",
+        "options": [
+          "$60 \\ 403$",
+          "$6 \\ 403$",
+          "$600 \\ 403$",
+          "$60 \\ 043$"
+        ],
+        "correctAnswer": "$60 \\ 403$",
+        "explanation": "Six dizaines de mille correspondent à $60 \\ 000$. Quatre centaines correspondent à $400$. Trois unités correspondent à $3$. En additionnant $60 \\ 000 + 400 + 3$, on obtient $60 \\ 403$.",
+        "points": 1,
+        "figure": null
+      }
+    ]
+  }
+}

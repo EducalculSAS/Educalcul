@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Bilan - Stats-probas 4e",
+  "title": "Bilan Statistiques et Probabilités - Association",
+  "blocks": [
+    {
+      "title": "Vocabulaire statistique",
+      "content": "Relie chaque terme à sa définition.",
+      "pairs": [
+        {
+          "left": "Population",
+          "right": "Ensemble de l'ensemble des individus étudiés"
+        },
+        {
+          "left": "Échantillon",
+          "right": "Sous-ensemble de la population sur lequel on porte l'étude"
+        },
+        {
+          "left": "Effectif total",
+          "right": "Somme de tous les effectifs"
+        },
+        {
+          "left": "Fréquence",
+          "right": "Quotient de l'effectif d'une valeur par l'effectif total"
+        }
+      ],
+      "explanation": "La population est l'ensemble complet des individus concernés par l'étude. L'échantillon est la partie de la population effectivement observée. L'effectif total est la somme des effectifs de toutes les valeurs. La fréquence d'une valeur est son effectif divisé par l'effectif total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs de paramètres",
+      "content": "On considère la série statistique suivante : $3 ; 5 ; 5 ; 7 ; 10 ; 12$. Relie chaque caractéristique à sa valeur.",
+      "pairs": [
+        {
+          "left": "Effectif total de la série",
+          "right": "$6$"
+        },
+        {
+          "left": "Mode de la série",
+          "right": "$5$"
+        },
+        {
+          "left": "Médiane de la série",
+          "right": "$6$"
+        },
+        {
+          "left": "Moyenne de la série",
+          "right": "$7$"
+        }
+      ],
+      "explanation": "La série contient 6 valeurs, donc l'effectif total est 6. La valeur 5 apparaît 2 fois (les autres une fois), c'est le mode. Pour la médiane, les valeurs centrales sont la 3e et la 4e : 5 et 7, la médiane est $(5+7)/2 = 6$. La moyenne est $(3+5+5+7+10+12)/6 = 42/6 = 7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs de probabilités",
+      "content": "Un sac contient 3 boules rouges, 4 boules bleues et 5 boules vertes. On tire une boule au hasard. Relie chaque événement à sa probabilité.",
+      "pairs": [
+        {
+          "left": "Tirer une boule rouge",
+          "right": "$\\frac{1}{4}$"
+        },
+        {
+          "left": "Tirer une boule bleue",
+          "right": "$\\frac{1}{3}$"
+        },
+        {
+          "left": "Tirer une boule verte",
+          "right": "$\\frac{5}{12}$"
+        },
+        {
+          "left": "Ne pas tirer une boule rouge",
+          "right": "$\\frac{3}{4}$"
+        }
+      ],
+      "explanation": "Il y a $3+4+5=12$ boules au total. P(Rouge) = $3/12 = 1/4$. P(Bleue) = $4/12 = 1/3$. P(Verte) = $5/12$. P(Pas rouge) = $1 - 1/4 = 3/4$ (ou $9/12 = 3/4$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

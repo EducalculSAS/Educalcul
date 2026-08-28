@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Simuler une expérience",
+  "title": "Simulation d'expériences aléatoires",
+  "blocks": [
+    {
+      "title": "Expériences aléatoires et issues possibles",
+      "content": "Relie chaque expérience à ses issues possibles.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Lancer une pièce de monnaie",
+          "right": "Deux issues : face ou pile"
+        },
+        {
+          "left": "Lancer un dé à $6$ faces",
+          "right": "Six issues : $1$, $2$, $3$, $4$, $5$, $6$"
+        },
+        {
+          "left": "Tourner une roulette à $4$ secteurs numérotés $1$ à $4$",
+          "right": "Quatre issues : $1$, $2$, $3$, $4$"
+        },
+        {
+          "left": "Tirer une carte dans un jeu de $32$ cartes",
+          "right": "$32$ issues possibles"
+        }
+      ],
+      "items": [],
+      "explanation": "Une pièce de monnaie a deux faces : face et pile. Un dé à six faces porte les numéros $1$ à $6$. Une roulette à quatre secteurs numérotés de $1$ à $4$ donne quatre issues. Un jeu de $32$ cartes contient $32$ cartes distinctes, donc $32$ issues possibles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Instructions de simulation et expériences modélisées",
+      "content": "Relie chaque instruction de simulation à l'expérience qu'elle modélise.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "choisir un nombre au hasard entre $1$ et $6$",
+          "right": "Simule un lancer de dé"
+        },
+        {
+          "left": "si nombre = $1$ alors afficher 'face' sinon afficher 'pile'",
+          "right": "Simule un lancer de pièce"
+        },
+        {
+          "left": "répéter $100$ fois : choisir un nombre au hasard entre $1$ et $4$",
+          "right": "Simule $100$ tours de roulette à $4$ secteurs"
+        },
+        {
+          "left": "compteur ← $0$ ; répéter $50$ fois : si choisir au hasard entre $1$ et $2$ = $1$ alors compteur ← compteur + $1$",
+          "right": "Compte le nombre de faces en $50$ lancers de pièce"
+        }
+      ],
+      "items": [],
+      "explanation": "L'instruction « choisir un nombre au hasard entre $1$ et $6$ » reproduit un lancer de dé. La structure conditionnelle avec $1$ pour face et sinon pile simule un lancer de pièce. La boucle « répéter $100$ fois » avec un choix entre $1$ et $4$ effectue $100$ tours de roulette à $4$ secteurs. L'algorithme avec un compteur initialisé à $0$ et une boucle de $50$ itérations comptant les occurrences de $1$ (face) donne le nombre de faces en $50$ lancers.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse des résultats d'une simulation",
+      "content": "Relie chaque notion d'analyse à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence de l'événement = $succès / essais$",
+          "right": "Calcul de la fréquence observée"
+        },
+        {
+          "left": "Si on répète l'expérience un grand nombre de fois, la fréquence se rapproche de la probabilité théorique",
+          "right": "Loi des grands nombres"
+        },
+        {
+          "left": "Afficher un histogramme des résultats",
+          "right": "Visualiser la distribution des fréquences"
+        },
+        {
+          "left": "Comparer la fréquence observée à $1/6$ pour un dé",
+          "right": "Vérifier l'équiprobabilité des faces"
+        }
+      ],
+      "items": [],
+      "explanation": "La fréquence observée se calcule par le quotient $succès / essais$. La loi des grands nombres stipule que la fréquence tend vers la probabilité théorique quand le nombre d'essais augmente. Un histogramme permet de visualiser la distribution des fréquences. Pour un dé équilibré, la probabilité théorique de chaque face est $1/6$ ; on compare la fréquence observée à cette valeur pour vérifier l'équiprobabilité.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

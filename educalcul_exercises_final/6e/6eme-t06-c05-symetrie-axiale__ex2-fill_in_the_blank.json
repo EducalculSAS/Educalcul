@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Propriétés",
+  "title": "Propriétés de la symétrie axiale",
+  "blocks": [
+    {
+      "title": "Définition et position relative",
+      "content": "Dans une symétrie axiale d'axe $d$, le symétrique d'un point $A$ est un point $A'$ tel que la droite $d$ est la {{1}} du segment $[AA']$. Si le point $A$ n'appartient pas à l'axe $d$, les droites $(AA')$ et $d$ sont {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "médiatrice",
+        "perpendiculaires"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Par définition de la symétrie axiale, l'axe de symétrie est la médiatrice du segment joignant un point à son image. Par conséquent, cet axe est perpendiculaire à ce segment et passe par son milieu. Si le point est sur l'axe, il est invariant (confondu avec son image).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Grandeurs conservées",
+      "content": "La symétrie axiale est une transformation qui conserve les {{1}}, les {{2}} et l'{{3}}. En revanche, elle change le sens de parcours des figures (l'orientation).",
+      "correctAnswer": "",
+      "blanks": [
+        "longueurs|distances",
+        "angles",
+        "alignement|alignements|collinéarité"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La symétrie axiale est une isométrie (déplacement rigide). Elle conserve donc toutes les longueurs (et les distances), les mesures d'angles, les aires, les périmètres et l'alignement des points (collinéarité). Seule l'orientation (le sens de parcours, par exemple horaire/trigonométrique) est inversée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction du point symétrique",
+      "content": "Pour construire le point $A'$, image de $A$ par la symétrie axiale d'axe $d$, on trace la perpendiculaire à $d$ passant par $A$. On note $H$ le {{1}} de cette perpendiculaire avec la droite $d$. Le point $A'$ est alors placé sur cette perpendiculaire de telle sorte que $H$ soit le {{2}} du segment $[AA']$.",
+      "correctAnswer": "",
+      "blanks": [
+        "point d'intersection|intersection",
+        "milieu"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction classique utilise les propriétés de la médiatrice : l'axe $d$ est perpendiculaire à $[AA']$ et passe par son milieu. Le point $H$ est le pied de la perpendiculaire (intersection de la perpendiculaire tracée et de l'axe $d$). Comme $d$ est la médiatrice de $[AA']$, $H$ est exactement le milieu de ce segment. On reporte alors la longueur $AH$ de l'autre côté de $d$ pour obtenir $A'$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 348,
+  "_course_code": "6eme-t04-c02-formules",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Lire une formule",
+  "title": "Lire une formule : variables, calcul et interprétation",
+  "questions": [
+    {
+      "text": "On considère la formule du périmètre d'un rectangle : $P = 2 \\times (L + l)$. Que représente la lettre $L$ dans cette formule ?",
+      "options": [
+        "Le périmètre du rectangle",
+        "La largeur du rectangle",
+        "La longueur du rectangle",
+        "L'aire du rectangle"
+      ],
+      "correctAnswer": "La longueur du rectangle",
+      "explanation": "Dans la formule $P = 2 \\times (L + l)$, $P$ désigne le périmètre, $L$ la longueur et $l$ la largeur. Les distracteurs correspondent aux autres grandeurs de la formule ou à une autre grandeur géométrique (l'aire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La formule de l'aire d'un rectangle est $A = L \\times l$. Si la longueur $L$ vaut $7$ cm et la largeur $l$ vaut $4$ cm, quelle opération permet de calculer l'aire ?",
+      "options": [
+        "$7 + 4$",
+        "$7 \\times 4$",
+        "$2 \\times (7 + 4)$",
+        "$7 \\div 4$"
+      ],
+      "correctAnswer": "$7 \\times 4$",
+      "explanation": "La formule $A = L \\times l$ indique qu'il faut multiplier la longueur par la largeur. Ici, on remplace $L$ par $7$ et $l$ par $4$, ce qui donne le calcul $7 \\times 4$. L'option $2 \\times (7 + 4)$ correspond au périmètre, les autres à des opérations incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer le volume d'un pavé droit, on utilise la formule $V = L \\times l \\times h$. Si $L = 3$, $l = 2$ et $h = 5$, dans quel ordre effectuera-t-on les multiplications ?",
+      "options": [
+        "On additionne d'abord $3$, $2$ et $5$",
+        "On multiplie $3$ par $2$, puis le résultat par $5$",
+        "On multiplie $2$ par $5$, puis on ajoute $3$",
+        "On fait $3 \\times 5$ puis on divise par $2$"
+      ],
+      "correctAnswer": "On multiplie $3$ par $2$, puis le résultat par $5$",
+      "explanation": "La formule ne contient que des multiplications. Par convention, on calcule de la gauche vers la droite : on commence par $L \\times l$ ($3 \\times 2 = 6$), puis on multiplie ce résultat par $h$ ($6 \\times 5 = 30$). Les autres options mélangent addition, division ou changent l'ordre de manière incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut exprimer la phrase suivante sous forme de formule : \"Le périmètre $P$ d'un carré de côté $c$ est égal à quatre fois le côté.\" Laquelle de ces formules est correcte ?",
+      "options": [
+        "$P = c + 4$",
+        "$P = 4 \\times c$",
+        "$P = c \\div 4$",
+        "$P = 4 + c$"
+      ],
+      "correctAnswer": "$P = 4 \\times c$",
+      "explanation": "L'expression \"quatre fois le côté\" se traduit par la multiplication $4 \\times c$ (ou $c \\times 4$). L'addition ($c+4$ ou $4+c$) correspond à \"quatre de plus que le côté\" et la division à \"le côté divisé par quatre\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise la formule $P = 2 \\times (L + l)$ pour un rectangle. Si le périmètre $P$ vaut $24$ cm et la longueur $L$ vaut $7$ cm, quelle est la largeur $l$ ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$12$ cm",
+        "$17$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "On remplace les valeurs connues : $24 = 2 \\times (7 + l)$. On divise les deux membres par $2$ : $12 = 7 + l$. On soustrait $7$ : $l = 5$. L'erreur \"$10$ cm\" vient d'un oubli de la division par $2$ ($24 - 7 - 7$), \"$12$ cm\" correspond à la demi-somme $L+l$, et \"$17$ cm\" à une addition incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

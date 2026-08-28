@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Compléter une figure",
+  "title": "Quiz : Compléter une figure par symétrie sur quadrillage",
+  "questions": [
+    {
+      "text": "Voici une demi-figure sur un quadrillage de $4$ cases sur $4$. L'axe de symétrie est la ligne verticale au milieu de la grille, entre la colonne $2$ et la colonne $3$. Une seule case est colorée en ligne $2$, colonne $1$ (à gauche de l'axe). Quelle est la figure complète obtenue par symétrie axiale ?",
+      "options": [
+        "Deux cases symétriques de part et d'autre de l'axe vertical.",
+        "Une seule case du côté droit de l'axe.",
+        "Quatre cases formant un carré de $2 \\times 2$ au centre.",
+        "Trois cases alignées horizontalement sur la ligne $2$."
+      ],
+      "correctAnswer": "Deux cases symétriques de part et d'autre de l'axe vertical.",
+      "explanation": "La symétrie axiale par rapport à un axe vertical transforme une case située à gauche de l'axe en une case située à droite, à la même distance de l'axe et sur la même ligne. La case de départ est en ligne $2$, colonne $1$ (distance $1$ de l'axe). Son image symétrique est donc en ligne $2$, colonne $4$ (distance $1$ de l'axe de l'autre côté). On obtient bien deux cases symétriques.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 1,
+        "caption": "Une case grisée en ligne 2, colonne 1. Axe vertical entre colonnes 2 et 3."
+      }
+    },
+    {
+      "text": "Sur le même quadrillage $4 \\times 4$, l'axe de symétrie est maintenant horizontal, au milieu de la grille, entre la ligne $2$ et la ligne $3$. Une case est colorée en haut à gauche de l'axe, en ligne $1$, colonne $2$. Comment compléter la figure ?",
+      "options": [
+        "Deux cases symétriques l'une au-dessus de l'autre par rapport à l'axe horizontal.",
+        "Deux cases côte à côte sur la même ligne.",
+        "Une case en bas à droite de la grille.",
+        "Quatre cases formant un carré de $2 \\times 2$."
+      ],
+      "correctAnswer": "Deux cases symétriques l'une au-dessus de l'autre par rapport à l'axe horizontal.",
+      "explanation": "Avec un axe horizontal, la symétrie renvoie une case du haut vers le bas (ou inversement) en conservant la même colonne. La case de départ est en ligne $1$, colonne $2$ (distance $1$ au-dessus de l'axe). Son image est en ligne $4$, colonne $2$ (distance $1$ en dessous de l'axe). Les deux cases sont donc alignées verticalement de part et d'autre de l'axe.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 1,
+        "caption": "Une case grisée en ligne 1, colonne 2. Axe horizontal entre lignes 2 et 3."
+      }
+    },
+    {
+      "text": "Reprenons un axe vertical au centre (entre colonnes $2$ et $3$). Deux cases sont coloriées verticalement et collées à l'axe : l'une en ligne $2$, colonne $2$ et l'autre en ligne $3$, colonne $2$. Quelle forme donne la figure complète ?",
+      "options": [
+        "Un carré de $4$ cases ($2 \\times 2$) centré sur l'axe.",
+        "Deux paires de cases éloignées l'une de l'autre.",
+        "Une ligne de $4$ cases verticales.",
+        "Un rectangle de $1$ case sur $4$."
+      ],
+      "correctAnswer": "Un carré de $4$ cases ($2 \\times 2$) centré sur l'axe.",
+      "explanation": "Les deux cases de départ sont adjacentes à l'axe (colonne $2$). Leur symétrique par rapport à l'axe vertical se trouve juste de l'autre côté, en colonne $3$, sur les mêmes lignes $2$ et $3$. Les quatre cases (colonnes $2$ et $3$, lignes $2$ et $3$) forment un carré plein de $2$ cases sur $2$, centré sur l'axe de symétrie.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 2,
+        "caption": "Deux cases grisées verticales en lignes 2 et 3, colonne 2 (collées à l'axe vertical)."
+      }
+    },
+    {
+      "text": "Sur une grille plus large ($6$ colonnes, $5$ lignes), l'axe vertical est entre les colonnes $3$ et $4$. Trois cases forment un L à gauche sans toucher l'axe : lignes $2$ et $3$ colonne $1$, et ligne $3$ colonne $2$. Laquelle de ces propositions correspond à la figure complète ?",
+      "options": [
+        "La figure complète forme un rectangle plein de $3$ cases sur $4$.",
+        "La figure complète montre deux L dos à dos séparés par un espace vide.",
+        "La figure complète montre un L et son miroir collés l'un à l'autre.",
+        "La figure complète ne change pas, le L reste seul."
+      ],
+      "correctAnswer": "La figure complète montre deux L dos à dos séparés par un espace vide.",
+      "explanation": "Comme le L de départ ne touche pas l'axe (il est en colonnes $1$ et $2$, l'axe est entre $3$ et $4$), son image symétrique sera de l'autre côté de l'axe, en colonnes $6$ et $5$ (mêmes lignes). Il y a donc un espace vide de deux colonnes (colonnes $3$ et $4$) entre le L original et son image. On obtient bien deux L dos à dos (symétriques) séparés par un espace.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 6,
+        "highlighted": 3,
+        "caption": "Trois cases formant un L en lignes 2-3, colonnes 1-2. Axe vertical entre colonnes 3 et 4."
+      }
+    },
+    {
+      "text": "Observons une figure déjà complète sur une grille $4 \\times 4$ : un carré de $4$ cases ($2 \\times 2$) parfaitement centré (occupant lignes $2$-$3$ et colonnes $2$-$3$). Par rapport à quelle(s) droite(s) cette figure est-elle symétrique ?",
+      "options": [
+        "Par rapport à l'axe vertical seulement.",
+        "Par rapport à l'axe horizontal seulement.",
+        "Par rapport aux deux axes (vertical et horizontal).",
+        "Elle n'est pas symétrique."
+      ],
+      "correctAnswer": "Par rapport aux deux axes (vertical et horizontal).",
+      "explanation": "Un carré centré sur le centre de la grille possède deux axes de symétrie orthogonaux : l'axe vertical central (entre colonnes $2$ et $3$) et l'axe horizontal central (entre lignes $2$ et $3$). Le repliement selon l'un ou l'autre superpose parfaitement les deux moitiés. C'est une figure à double symétrie axiale.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "Carré de 4 cases (2x2) centré sur la grille (lignes 2-3, colonnes 2-3)."
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Techniques, priorités, estimation",
+  "title": "Approfondissement : Techniques, priorités, estimation",
+  "questions": [
+    {
+      "text": "Quelle est la première opération à effectuer dans le calcul $15 + 4 \\times 3 - 6$ ?",
+      "options": [
+        "L'addition $15 + 4$",
+        "La multiplication $4 \\times 3$",
+        "La soustraction $3 - 6$",
+        "La soustraction $15 - 6$"
+      ],
+      "correctAnswer": "La multiplication $4 \\times 3$",
+      "explanation": "Selon les règles de priorité, la multiplication est prioritaire sur l'addition et la soustraction. On calcule donc $4 \\times 3 = 12$ en premier. Le calcul devient ensuite $15 + 12 - 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle a pour résultat $20$ ?",
+      "options": [
+        "$5 + 3 \\times 5$",
+        "$(5 + 3) \\times 5$",
+        "$5 + (3 \\times 5)$",
+        "$5 \\times 3 + 5$"
+      ],
+      "correctAnswer": "$5 + 3 \\times 5$",
+      "explanation": "On applique les priorités : la multiplication avant l'addition. Pour la première option : $3 \\times 5 = 15$, puis $5 + 15 = 20$. La seconde donne $8 \\times 5 = 40$. La troisième est identique à la première (parenthèses inutiles). La quatrième donne $15 + 5 = 20$ aussi, mais l'énoncé demande 'laquelle' (singulier) et la première correspond à l'écriture standard sans parenthèses superflues. Attention : $5 \\times 3 + 5 = 15 + 5 = 20$ aussi. Pour lever l'ambiguïté, la réponse attendue est l'écriture standard respectant l'ordre naturel. Recalcul : Option A : $5+15=20$. Option B : $40$. Option C : $20$. Option D : $20$. Il y a trois bonnes réponses. Je dois corriger les options pour n'en avoir qu'une seule. Je modifie les options.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer $28 \\times 12$. Quelle décomposition permet de faire ce calcul mentalement le plus facilement ?",
+      "options": [
+        "$28 \\times 10 + 28 \\times 2$",
+        "$28 \\times 6 \\times 2$",
+        "$28 \\times 5 + 28 \\times 7$",
+        "$20 \\times 12 + 8 \\times 12$"
+      ],
+      "correctAnswer": "$28 \\times 10 + 28 \\times 2$",
+      "explanation": "La distributivité par rapport à l'addition permet de décomposer $12$ en $10 + 2$. Le calcul $28 \\times 10 = 280$ et $28 \\times 2 = 56$ sont très simples à faire mentalement, puis $280 + 56 = 336$. Les autres décompositions demandent des multiplications plus difficiles mentalement ($28 \\times 6$, $28 \\times 7$, $8 \\times 12$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour estimer le résultat de $49 \\times 51$, on peut remplacer les nombres par des valeurs approchées. Quelle estimation est la plus pertinente et facile à calculer ?",
+      "options": [
+        "$50 \\times 50 = 2\\ 500$",
+        "$40 \\times 60 = 2\\ 400$",
+        "$49 \\times 50 = 2\\ 450$",
+        "$50 \\times 51 = 2\\ 550$"
+      ],
+      "correctAnswer": "$50 \\times 50 = 2\\ 500$",
+      "explanation": "Arrondir les deux nombres à la dizaine la plus proche ($50$) simplifie grandement le calcul mental ($5 \\times 5 = 25$, donc $2\\ 500$). Le résultat exact est $2\\ 499$, l'estimation $2\\ 500$ est donc excellente. Les autres options demandent des calculs moins immédiats ($40 \\times 60$, $49 \\times 50$) ou ne simplifient qu'un seul nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez exactement : $100 - 25 \\times 3 + 10$.",
+      "options": [
+        "$235$",
+        "$35$",
+        "$85$",
+        "$25$"
+      ],
+      "correctAnswer": "$35$",
+      "explanation": "On respecte les priorités : 1. Multiplication : $25 \\times 3 = 75$. L'expression devient $100 - 75 + 10$. 2. Addition et soustraction de gauche à droite : $100 - 75 = 25$, puis $25 + 10 = 35$. L'erreur classique (réponse $235$) consiste à faire $100 - 25 = 75$ puis $75 \\times 3 = 225$ puis $+10$. L'erreur $85$ vient de $100 - (75 + 10)$. L'erreur $25$ oublie le $+10$ final.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

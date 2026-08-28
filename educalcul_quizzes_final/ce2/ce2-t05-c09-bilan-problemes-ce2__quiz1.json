@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 186,
+  "_course_code": "ce2-t05-c09-bilan-problemes-ce2",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Mélanger structures",
+  "title": "Quiz - Mélanger les structures de problèmes CE2",
+  "questions": [
+    {
+      "text": "Lucas a $45$ billes. Il en perd $12$ en jouant. Ensuite, il en trouve $20$ dans sa poche. Combien de billes Lucas a-t-il maintenant ?",
+      "options": [
+        "$53$",
+        "$77$",
+        "$13$",
+        "$33$"
+      ],
+      "correctAnswer": "$53$",
+      "explanation": "Il faut faire deux opérations successives. D'abord une soustraction (transformation : il perd des billes) : $45 - 12 = 33$. Ensuite une addition (transformation : il en trouve) : $33 + 20 = 53$. L'option $77$ correspond à $45 + 12 + 20$ (on ajoute au lieu de soustraire la perte). L'option $13$ correspond à $45 - 12 - 20$ (on soustrouve aussi les billes trouvées). L'option $33$ est le résultat après la première étape seulement (on oublie d'ajouter les $20$ billes trouvées).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la classe, il y a $5$ tables. Sur chaque table, il y a $6$ cahiers. Sur le bureau du maître, il y a $8$ cahiers en plus. Combien y a-t-il de cahiers au total ?",
+      "options": [
+        "$38$",
+        "$19$",
+        "$48$",
+        "$30$"
+      ],
+      "correctAnswer": "$38$",
+      "explanation": "Ce problème mélange une multiplication (structure répétition) et une addition (structure réunion). D'abord, on calcule le nombre de cahiers sur les tables : $5 \\times 6 = 30$ cahiers. Ensuite, on ajoute ceux du bureau : $30 + 8 = 38$ cahiers. L'option $19$ correspond à l'addition des nombres donnés ($5 + 6 + 8$) sans tenir compte de la structure 'sur chaque table'. L'option $30$ oublie les $8$ cahiers du bureau. L'option $48$ pourrait venir d'une erreur de calcul ($5 \\times 8$ ou $30 + 18$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Emma a $28$ autocollants. Léa en a $12$ de plus qu'Emma. Combien d'autocollants ont-elles toutes les deux ensemble ?",
+      "options": [
+        "$68$",
+        "$40$",
+        "$52$",
+        "$16$"
+      ],
+      "correctAnswer": "$68$",
+      "explanation": "Ce problème mélange une structure de comparaison (Léa a 12 de plus) et une structure de réunion (total des deux). Étape 1 : Trouver le nombre de Léa (comparaison) : $28 + 12 = 40$ autocollants. Étape 2 : Additionner les deux quantités (réunion) : $28 + 40 = 68$ autocollants. L'option $40$ est le nombre de Léa seulement (on oublie d'ajouter ceux d'Emma). L'option $16$ est la différence ($28 - 12$) au lieu de la somme. L'option $52$ correspond à $28 + 12 + 12$ (on ajoute la différence deux fois).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a fait $36$ pains. Il les range dans $6$ paniers, en mettant le même nombre dans chaque panier. Il vend $2$ pains pris dans un panier. Combien de pains reste-t-il dans ce panier ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$34$",
+        "$8$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Ce problème mélange un partage (division) et une transformation (soustraction). Étape 1 : Partage équitable pour savoir combien de pains par panier : $36 \\div 6 = 6$ pains par panier. Étape 2 : Soustraction dans un panier (transformation) : $6 - 2 = 4$ pains. L'option $6$ est le contenu initial du panier (on oublie la vente). L'option $34$ correspond à $36 - 2$ (on soustrait du total au lieu du panier). L'option $8$ correspond à $6 + 2$ (on ajoute au lieu de soustraire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour un goûter, on achète $4$ paquets de jus. Chaque paquet contient $6$ bouteilles. Il y a déjà $5$ bouteilles au réfrigérateur. Combien y a-t-il de bouteilles en tout ?",
+      "options": [
+        "$29$",
+        "$15$",
+        "$30$",
+        "$24$"
+      ],
+      "correctAnswer": "$29$",
+      "explanation": "Problème à deux étapes mélangeant multiplication (répétition) et addition (réunion). Étape 1 : Calculer le nombre de bouteilles achetées : $4 \\times 6 = 24$ bouteilles. Étape 2 : Ajouter celles du réfrigérateur : $24 + 5 = 29$ bouteilles. L'option $15$ est la somme des nombres du texte ($4 + 6 + 5$) sans respecter la structure 'chaque paquet contient'. L'option $24$ oublie les $5$ bouteilles déjà là. L'option $30$ pourrait venir de $5 \\times 6$ (erreur sur le nombre de paquets) ou $24 + 6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

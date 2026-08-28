@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 164,
+  "_course_code": "ce2-t03-c05-multiplier-par-10-et-100",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Relier aux unités de numération",
+  "title": "Algorithmes de multiplication par 10 et 100",
+  "blocks": [
+    {
+      "title": "Multiplier par 10",
+      "content": "Écris un algorithme en pseudo‑code qui permet de multiplier un nombre entier par $10$ en utilisant le décalage des chiffres dans le tableau de numération.",
+      "correctAnswer": "Algorithme MultiplierPar10\\nEntrée : nombre N\\nTraitement : décaler chaque chiffre d'un rang vers la gauche (ajouter un zéro des unités)\\nSortie : afficher N × 10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour multiplier par $10$, on décale tous les chiffres d'un rang vers la gauche dans le tableau de numération : les unités deviennent des dizaines, les dizaines deviennent des centaines, etc. On ajoute ensuite un zéro à la place des unités. L'algorithme décrit cette opération étape par étape.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplier par 100",
+      "content": "Écris un algorithme en pseudo‑code qui permet de multiplier un nombre entier par $100$ en décalant les chiffres de deux rangs vers la gauche.",
+      "correctAnswer": "Algorithme MultiplierPar100\\nEntrée : nombre N\\nTraitement : décaler chaque chiffre de deux rangs vers la gauche (ajouter deux zéros des unités)\\nSortie : afficher N × 100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par $100$ revient à décaler les chiffres de deux rangs vers la gauche : les unités deviennent des centaines, les dizaines deviennent des milliers, etc. On ajoute deux zéros à la fin du nombre. L'algorithme formalise ce décalage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Combiner les multiplications",
+      "content": "Écris un algorithme qui définit deux fonctions : l'une pour multiplier par $10$, l'autre pour multiplier par $100$. Le programme principal lit un nombre, appelle les deux fonctions et affiche les deux résultats.",
+      "correctAnswer": "Fonction MultiplierPar10(N)\\n    Retourner N × 10\\nFonction MultiplierPar100(N)\\n    Retourner N × 100\\nProgramme principal\\n    Lire N\\n    R10 = MultiplierPar10(N)\\n    R100 = MultiplierPar100(N)\\n    Afficher R10\\n    Afficher R100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On sépare la logique en deux fonctions réutilisables. La première fonction effectue le décalage d'un rang (×10), la seconde le décalage de deux rangs (×100). Le programme principal lit le nombre, appelle chaque fonction et affiche les résultats. Cela montre la relation entre les unités de numération et les multiplications par 10 et 100.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : For / répétition",
+  "title": "Quiz : Boucles For / Répétition",
+  "questions": [
+    {
+      "text": "Dans un programme, une boucle for avec range($5$) exécute le bloc d'instructions combien de fois ?",
+      "options": [
+        "$5$ fois",
+        "$4$ fois",
+        "$6$ fois",
+        "Indéfini"
+      ],
+      "correctAnswer": "$5$ fois",
+      "explanation": "La fonction range($5$) génère les entiers de $0$ à $4$, soit $5$ valeurs. La boucle for itère donc exactement $5$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction permet de répéter un bloc de code un nombre précis de fois en Python ?",
+      "options": [
+        "while",
+        "for",
+        "if",
+        "def"
+      ],
+      "correctAnswer": "for",
+      "explanation": "L'instruction for, souvent utilisée avec range, permet de répéter un bloc un nombre déterminé de fois. while répète tant qu'une condition est vraie, if est une conditionnelle et def définit une fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Avec range($2$, $8$), combien d'itérations la boucle effectue-t-elle ?",
+      "options": [
+        "$6$ fois",
+        "$5$ fois",
+        "$7$ fois",
+        "$8$ fois"
+      ],
+      "correctAnswer": "$6$ fois",
+      "explanation": "range($2$, $8$) produit les nombres $2, 3, 4, 5, 6, 7$, soit $6$ éléments. La boucle s'exécute donc $6$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une boucle for imbriquée : for i in range($3$) : for j in range($4$) : print(i, j) , combien de fois l'instruction print est-elle exécutée ?",
+      "options": [
+        "$12$ fois",
+        "$7$ fois",
+        "$3$ fois",
+        "$4$ fois"
+      ],
+      "correctAnswer": "$12$ fois",
+      "explanation": "La boucle externe s'exécute $3$ fois et pour chaque itération, la boucle interne s'exécute $4$ fois. Le total est $3 * 4 = 12$ appels à print.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel sera l'affichage du code suivant ?\\nfor k in range($1$, $4$) :\\n    print(k * $2$)",
+      "options": [
+        "$2$ $4$ $6$",
+        "$1$ $2$ $3$",
+        "$2$ $3$ $4$",
+        "$0$ $2$ $4$"
+      ],
+      "correctAnswer": "$2$ $4$ $6$",
+      "explanation": "La variable $k$ prend les valeurs $1$, $2$, $3$. L'expression $k * 2$ donne $2$, $4$, $6$, qui sont affichés successivement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

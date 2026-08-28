@@ -1,0 +1,492 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.412307+00:00",
+  "id": 293,
+  "code": "cm2-t03-c05",
+  "title": "Calcul mental avancé du cycle 3",
+  "description": "Cours structuré Educalcul : Calcul mental avancé du cycle 3.",
+  "subject": "Calcul et techniques opératoires",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Calcul et techniques opératoires",
+    "titre_du_cours": "Calcul mental avancé du cycle 3",
+    "objectif_global": "Calcul mental avancé du cycle 3",
+    "mini_lecons_imposees": [
+      "Décomposition.",
+      "Compensation.",
+      "Distributivité intuitive."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et techniques opératoires",
+      "lessons": [
+        {
+          "title": "Décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découper un nombre pour mieux le comprendre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà l'idée : un nombre comme $347$ n'est pas un bloc unique, c'est une équipe de trois chiffres qui travaillent ensemble. Le $3$ représente $3$ centaines, le $4$ représente $4$ dizaines et le $7$ représente $7$ unités. Aujourd'hui, on va apprendre à séparer cette équipe pour faire des calculs de tête plus facilement. C'est comme démonter un meuble pour le transporter pièce par pièce : c'est plus léger, et à la fin, on retrouve le meuble entier."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 347,
+              "caption": "Le nombre 347 décomposé en centaines, dizaines et unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : chaque chiffre a sa place et sa valeur. Si je te demande $347 + 200$, tu vois tout de suite qu'il suffit d'ajouter $2$ centaines : $5$ centaines, $4$ dizaines, $7$ unités, donc $547$. Tu n'as pas besoin d'écrire une addition posée. C'est la force de la décomposition : on travaille chiffre par chiffre, à sa place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer pour additionner sans retenir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine l'addition $47 + 38$. Si tu essaies d'additionner $7 + 8$ dans ta tête, ça fait $15$, il faut retenir $1$… pas toujours simple de mémoire. Essayons autrement : on décompose chaque nombre en dizaines et unités. $47$, c'est $40 + 7$. $38$, c'est $30 + 8$. On additionne les dizaines entre elles : $40 + 30 = 70$. On additionne les unités entre elles : $7 + 8 = 15$. Et on rassemble : $70 + 15 = 85$. Tu as fait trois tout petits calculus au lieu d'un gros avec retenue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$47 = 40 + 7$ et $38 = 30 + 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$40 + 30 = 70$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$7 + 8 = 15$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Recomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$70 + 15 = 85$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer pour soustraire sans retenue"
+            },
+            {
+              "type": "paragraph",
+              "content": "La soustraction $84 - 37$ peut faire peur à cause du $4 - 7$ impossible sans retenir. Avec la décomposition, on change tout : $84 = 80 + 4$ et $37 = 30 + 7$. On soustrait les dizaines : $80 - 30 = 50$. Reste à faire $50 + 4 - 7$. Comme $4 - 7$ ne va pas, on « casse » une dizaine : $50$ devient $40 + 10$. On a maintenant $40 + 10 + 4 - 7 = 40 + 14 - 7 = 40 + 7 = 47$. C'est exactement ce que fait l'addition posée, mais en le racontant avec des mots, ça devient logique."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Quand les unités du haut sont plus petites, on « prête » une dizaine : on enlève $10$ aux dizaines et on l'ajoute aux unités. C'est la même chose que la retenue, mais tu le décides toi-même."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer un facteur pour multiplier"
+            },
+            {
+              "type": "paragraph",
+              "content": "La décomposition marche aussi pour la multiplication ! Prenons $14 \\times 6$. $14$, c'est $10 + 4$. Au lieu de multiplier $14$ par $6$ d'un coup, on multiplie chaque partie : $10 \\times 6 = 60$ et $4 \\times 6 = 24$. Puis on additionne : $60 + 24 = 84$. C'est la distributivité, mais on l'appelle ici « décomposer un facteur ». Essaie $23 \\times 4$ : $20 \\times 4 = 80$, $3 \\times 4 = 12$, $80 + 12 = 92$. Tu viens de faire une multiplication à deux chiffres dans ta tête."
+            },
+            {
+              "type": "display_math",
+              "latex": "14 \\times 6 = (10 + 4) \\times 6 = 10 \\times 6 + 4 \\times 6 = 60 + 24 = 84"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $528$ en centaines, dizaines et unités, puis écris l'addition correspondante.",
+              "answer": "$528 = 500 + 20 + 8$",
+              "hint": "Regarde la place de chaque chiffre : 5 centaines, 2 dizaines, 8 unités.",
+              "explanation": "Le chiffre $5$ est au rang des centaines, donc $500$. Le $2$ est au rang des dizaines, donc $20$. Le $8$ est au rang des unités. On rassemble : $500 + 20 + 8 = 528$."
+            },
+            {
+              "question": "Calcule $56 + 27$ en décomposant les nombres en dizaines et unités.",
+              "answer": "$70 + 13 = 83$",
+              "hint": "$56 = 50 + 6$ et $27 = 20 + 7$. Additionne les dizaines, puis les unités.",
+              "explanation": "$50 + 20 = 70$. $6 + 7 = 13$. $70 + 13 = 83$."
+            },
+            {
+              "question": "Calcule $92 - 48$ en décomposant. Explique comment tu gères $2 - 8$.",
+              "answer": "$92 - 48 = 44$",
+              "hint": "Décompose $92$ en $90 + 2$ et $48$ en $40 + 8$. Pour $2 - 8$, casse une dizaine de $90$.",
+              "explanation": "$90 - 40 = 50$. Mais $2 - 8$ ne va pas. On transforme $50 + 2$ en $40 + 12$. $12 - 8 = 4$. Résultat : $40 + 4 = 44$."
+            },
+            {
+              "question": "Calcule $16 \\times 5$ en décomposant $16$.",
+              "answer": "$80$",
+              "hint": "$16 = 10 + 6$. Multiplie chaque partie par $5$, puis additionne.",
+              "explanation": "$10 \\times 5 = 50$. $6 \\times 5 = 30$. $50 + 30 = 80$."
+            }
+          ]
+        },
+        {
+          "title": "Compensation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir pour calculer plus vite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un nombre est « presque » un nombre rond. $49$ est tout près de $50$, $98$ frôle $100$, $299$ rêve de $300$. L'astuce de la compensation, c'est d'oser arrondir ce nombre pour faire un calcul ultra-simple, puis de corriger le tir juste après. C'est comme quand tu prêtes $1 \\, \\text{\\u20ac}$ à un ami pour qu'il ait une somme ronde, et qu'il te le rend tout de suite après : le total ne change pas, mais le calcul devient un jeu d'enfant."
+            },
+            {
+              "type": "number_line",
+              "min": 40,
+              "max": 60,
+              "points": [
+                {
+                  "value": 49,
+                  "label": "49"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "caption": "49 est à 1 unité de 50"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette droite graduée : $49$ n'est qu'à un petit pas de $50$. Pour calculer $49 + 36$, on se dit : « Et si j'ajoutais $1$ à $49 $ pour faire $50 $ ? » Le calcul devient $50 + 36 = 86$. Mais comme j'ai ajouté $1$ au début, il faut l'enlever à la fin : $86 - 1 = 85 $. Vérifie : $49 + 36 = 85 $. Ça marche ! Tu as transformé une addition avec retenue en deux calculs sans retenue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compenser en soustraction : la même idée, mais à l'envers"
+            },
+            {
+              "type": "paragraph",
+              "content": "En soustraction, la compensation est encore plus magique. Prends $73 - 29$. $29$ est tout près de $30$. Si on soustrait $30$ au lieu de $29$, c'est facile : $73 - 30 = 43$. Mais attention : on a soustrait $1$ de trop (parce que $30$ est $1$ de plus que $29$). Du coup, il faut rendre ce $1$ : $43 + 1 = 44$. Le résultat est $44$. Vérifie : $73 - 29 = 44$. Tu as évité la retenue sur les unités ($3 - 9$) en la remplaçant par un simple $+1$ à la fin."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le nombre proche d'une dizaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, $29$ est tout près de $30$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Arrondir ce nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $73 - 30 = 43$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compenser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a soustrait $1$ de trop, donc on ajoute $1$ : $43 + 1 = 44$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compenser en multiplication : le facteur presque rond"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ça marche aussi pour multiplier ! $19 \\times 4$ : $19$ est à $1$ de $20$. On calcule $20 \\times 4 = 80$. Mais on a fait $1 \\times 4 = 4$ de trop (parce qu'on a remplacé $19$ par $20$, soit $1$ groupe de $4$ en plus). On enlève ce surplus : $80 - 4 = 76 $. Essaie $29 \\times 3$ : $30 \\times 3 = 90$, on enlève $1 \\times 3 = 3$, résultat $87$. C'est souvent plus rapide que de décomposer $19$ en $10 + 9$ puis de multiplier chaque partie."
+            },
+            {
+              "type": "display_math",
+              "latex": "19 \\times 4 = (20 - 1) \\times 4 = 20 \\times 4 - 1 \\times 4 = 80 - 4 = 76"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Quand choisir la compensation ?",
+              "paragraphs": [
+                "Dès qu'un terme se termine par $9$, $8$ (proche de la dizaine supérieure) ou $99$, $98$ (proche de la centaine). Si le terme se termine par $1$ ou $2$, la décomposition est souvent plus naturelle."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Double compensation : les deux nombres sont presque ronds"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si les deux nombres sont proches d'une dizaine ? $48 + 39$. $48$ est à $2$ de $50$, $39$ est à $1$ de $40$. On arrondit les deux : $50 + 40 = 90$. On a ajouté $2 + 1 = 3$ au total. On retire ce $3$ : $90 - 3 = 87$. C'est bluffant de rapidité. Essaie $52 + 28$ : $50 + 30 = 80$, on a enlevé $2$ et ajouté $2$, ça se compense tout seul, résultat $80$ direct !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $58 + 27$ en utilisant la compensation sur $58$.",
+              "answer": "$85$",
+              "hint": "Arrondis $58$ à $60$, additionne, puis retire ce que tu as ajouté.",
+              "explanation": "$58$ devient $60$ ($+2$). $60 + 27 = 87$. On retire $2$ : $87 - 2 = 85$."
+            },
+            {
+              "question": "Calcule $84 - 39$ par compensation.",
+              "answer": "$45$",
+              "hint": "Arrondis $39$ à $40$, soustrais, puis compense.",
+              "explanation": "$39$ devient $40$ ($+1$). $84 - 40 = 44$. On a soustrait $1$ de trop, on ajoute $1$ : $44 + 1 = 45$."
+            },
+            {
+              "question": "Calcule $18 \\times 6$ par compensation.",
+              "answer": "$108$",
+              "hint": "Arrondis $18$ à $20$, multiplie, puis retire l'excédent.",
+              "explanation": "$18$ devient $20$ ($+2$). $20 \\times 6 = 120$. L'excédent est $2 \\times 6 = 12$. $120 - 12 = 108$."
+            },
+            {
+              "question": "Calcule $47 + 38$ par double compensation.",
+              "answer": "$85$",
+              "hint": "Arrondis les deux nombres à la dizaine supérieure, additionne, puis retire le total ajouté.",
+              "explanation": "$47 \\to 50$ ($+3$), $38 \\to 40$ ($+2$). $50 + 40 = 90$. Total ajouté : $3 + 2 = 5$. $90 - 5 = 85$."
+            }
+          ]
+        },
+        {
+          "title": "Distributivité intuitive.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager la multiplication en deux parties"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà utilisé l'idée sans le savoir : quand tu fais $14 \\times 6$ en calculant $10 \\times 6$ et $4 \\times 6$, tu coupes le $14$ en deux morceaux. C'est exactement ce que fait la distributivité : on « distribue » la multiplication sur une addition. Aujourd'hui, on lui donne son vrai nom et on apprend à la repérer partout. C'est comme couper une grande pizza en deux parts pour la partager : chaque part est multipliée par le nombre de convives, et à la fin, tout le monde a mangé la même quantité."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 10,
+                  "height": 6,
+                  "label": "10 x 6"
+                },
+                {
+                  "width": 4,
+                  "height": 6,
+                  "label": "4 x 6"
+                }
+              ],
+              "caption": "14 x 6 découpé en deux rectangles : 10x6 et 4x6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce rectangle de $14$ sur $6$. Si je trace un trait après $10$, j'obtiens deux rectangles : un de $10 \\times 6$ (aire $60$) et un de $4 \\times 6$ (aire $24$). L'aire totale, c'est la somme des deux : $60 + 24 = 84$. Visuellement, c'est évident : couper ne change pas la surface totale. C'est ça, la distributivité : $(10 + 4) \\times 6 = 10 \\times 6 + 4 \\times 6$."
+            },
+            {
+              "type": "definition",
+              "term": "Distributivité de la multiplication sur l'addition",
+              "definition": "Multiplier une somme par un nombre revient à multiplier chaque terme de la somme par ce nombre, puis à additionner les résultats. En symbole : $(a + b) \\times c = a \\times c + b \\times c$.",
+              "example": "$(10 + 4) \\times 6 = 10 \\times 6 + 4 \\times 6 = 60 + 24 = 84$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distribuer sur une soustraction aussi"
+            },
+            {
+              "type": "paragraph",
+              "content": "La distributivité marche aussi avec un moins ! $(10 - 2) \\times 5 = 10 \\times 5 - 2 \\times 5 = 50 - 10 = 40$. C'est exactement ce qu'on faisait avec la compensation ($8 \\times 5$), mais écrit proprement. Essaie $12 \\times 9$ : $12$, c'est $10 + 2$. $(10 + 2) \\times 9 = 10 \\times 9 + 2 \\times 9 = 90 + 18 = 108$. Ou bien $12 \\times 9 = (10 + 2) \\times 9$, mais aussi $12 \\times (10 - 1) = 12 \\times 10 - 12 \\times 1 = 120 - 12 = 108$. Deux chemins, même résultat. Tu choisis le plus facile selon les nombres."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a - b) \\times c = a \\times c - b \\times c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les deux facteurs décomposés : la grille mentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on décompose les deux nombres ? $12 \\times 15$. $12 = 10 + 2$, $15 = 10 + 5$. On multiplie chaque partie du premier par chaque partie du second : $10 \\times 10 = 100$, $10 \\times 5 = 50$, $2 \\times 10 = 20$, $2 \\times 5 = 10$. On additionne tout : $100 + 50 + 20 + 10 = 180$. C'est le principe de la multiplication posée, mais vu de l'intérieur. Imagine un rectangle $12 \\times 15$ découpé en quatre petits rectangles. C'est la « grille » ou le « tableau de multiplication » que tu verras au collège."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 10,
+                  "height": 10,
+                  "label": "10 x 10"
+                },
+                {
+                  "width": 10,
+                  "height": 5,
+                  "label": "10 x 5"
+                },
+                {
+                  "width": 2,
+                  "height": 10,
+                  "label": "2 x 10"
+                },
+                {
+                  "width": 2,
+                  "height": 5,
+                  "label": "2 x 5"
+                }
+              ],
+              "caption": "12 x 15 découpé en 4 rectangles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec la multiplication posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la multiplication posée de $23 \\times 14$ : on calcule $23 \\times 4 = 92$ (c'est $23 \\times 4$), puis $23 \\times 10 = 230$ (c'est $23 \\times 1$ décalé), et on additionne $92 + 230 = 322$. En distributivité, on a fait exactement la même chose : $23 \\times (10 + 4) = 23 \\times 10 + 23 \\times 4 = 230 + 92 = 322$. La multiplication posée n'est qu'une écriture rangée de la distributivité ! Maintenant, quand tu poses une multiplication, tu sais pourquoi tu décalages et pourquoi tu additionnes à la fin."
+            },
+            {
+              "type": "column_operation",
+              "operator": "\\times",
+              "operands": [
+                "23",
+                "14"
+              ],
+              "result": "322",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en centaines, dizaines et unités pour additionner ou soustraire de tête.",
+                "Je sais utiliser la compensation (arrondir puis corriger) pour simplifier une addition, une soustraction ou une multiplication.",
+                "Je sais expliquer la distributivité avec mes mots et l'appliquer pour multiplier à deux chiffres mentalement.",
+                "Je fais le lien entre la distributivité et la multiplication posée.",
+                "Je choisis la meilleure stratégie (décomposition, compensation, distributivité) selon les nombres du calcul."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'égalité de distributivité pour $13 \\times 7$ en décomposant $13$ en $10 + 3$, puis calcule.",
+              "answer": "$13 \\times 7 = (10 + 3) \\times 7 = 10 \\times 7 + 3 \\times 7 = 70 + 21 = 91$",
+              "hint": "Applique la formule $(a + b) \\times c = a \\times c + b \\times c$ avec $a=10$, $b=3$, $c=7$.",
+              "explanation": "On distribue le $7$ sur $10$ et $3$ : $10 \\times 7 = 70$, $3 \\times 7 = 21$. $70 + 21 = 91$."
+            },
+            {
+              "question": "Calcule $15 \\times 12$ en décomposant $12$ en $10 + 2$.",
+              "answer": "$180$",
+              "hint": "$15 \\times (10 + 2) = 15 \\times 10 + 15 \\times 2$.",
+              "explanation": "$15 \\times 10 = 150$. $15 \\times 2 = 30$. $150 + 30 = 180$."
+            },
+            {
+              "question": "Calcule $24 \\times 13$ en décomposant les deux nombres (méthode des 4 produits).",
+              "answer": "$312$",
+              "hint": "$24 = 20 + 4$, $13 = 10 + 3$. Calcule les 4 produits : $20\\times10$, $20\\times3$, $4\\times10$, $4\\times3$.",
+              "explanation": "$20 \\times 10 = 200$. $20 \\times 3 = 60$. $4 \\times 10 = 40$. $4 \\times 3 = 12$. $200 + 60 + 40 + 12 = 312$."
+            },
+            {
+              "question": "Relie la multiplication posée $34 \\times 12$ à la distributivité : écris la décomposition qui correspond aux deux lignes intermédiaires de la pose.",
+              "answer": "$34 \\times 12 = 34 \\times (10 + 2) = 34 \\times 10 + 34 \\times 2 = 340 + 68 = 408$",
+              "hint": "La première ligne de la pose est $34 \\times 2$, la seconde (décalée) est $34 \\times 10$.",
+              "explanation": "En posant $34 \\times 12$, on calcule $34 \\times 2 = 68$ (première ligne) et $34 \\times 10 = 340$ (seconde ligne décalée). L'addition finale $68 + 340 = 408$ correspond à $34 \\times (2 + 10)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

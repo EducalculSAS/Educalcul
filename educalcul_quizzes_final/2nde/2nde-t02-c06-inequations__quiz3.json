@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter les inéquations (Seconde)",
+  "questions": [
+    {
+      "text": "On considère l'inéquation $x^2 - 4x + 3 < 0$. Quelle affirmation géométrique décrit correctement l'ensemble des solutions ?",
+      "options": [
+        "Les abscisses des points de la parabole $y = x^2 - 4x + 3$ situés strictement en dessous de l'axe des abscisses.",
+        "Les abscisses des points de la parabole $y = x^2 - 4x + 3$ situés strictement au-dessus de l'axe des abscisses.",
+        "Les abscisses des points d'intersection de la parabole $y = x^2 - 4x + 3$ avec l'axe des abscisses.",
+        "Les ordonnées des points de la parabole $y = x^2 - 4x + 3$ comprises entre $0$ et $3$."
+      ],
+      "correctAnswer": "Les abscisses des points de la parabole $y = x^2 - 4x + 3$ situés strictement en dessous de l'axe des abscisses.",
+      "explanation": "Résoudre $f(x) < 0$ revient à chercher les $x$ pour lesquels la courbe $y = f(x)$ passe en dessous de l'axe des abscisses (ordonnée négative). Ici, le trinôme a pour racines $1$ et $3$, il est négatif entre ces deux racines. La première option décrit exactement cela. La deuxième correspond à $f(x) > 0$. La troisième donne seulement les racines (solution de $f(x)=0$). La quatrième confond abscisses et ordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'ensemble de solutions d'une inéquation du type $f(x) \\ge 0$ est $S = [2 ; 5]$. Que peut-on dire du signe de $f(x)$ pour $x = 1$ et $x = 6$ ?",
+      "options": [
+        "f(1) < 0 et f(6) < 0",
+        "f(1) > 0 et f(6) > 0",
+        "f(1) < 0 et f(6) > 0",
+        "f(1) = 0 et f(6) = 0"
+      ],
+      "correctAnswer": "f(1) < 0 et f(6) < 0",
+      "explanation": "L'intervalle $[2 ; 5]$ correspond aux $x$ où $f(x)$ est positif ou nul. En dehors de cet intervalle, c'est-à-dire pour $x < 2$ (comme $1$) et pour $x > 5$ (comme $6$), l'inéquation n'est pas vérifiée, donc $f(x)$ est strictement négatif (puisque les bornes $2$ et $5$ sont les seules annulations incluses).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne l'inéquation $\\frac{x+1}{x-2} \\le 0$. Quel tableau de signes correspond à la bonne résolution ?",
+      "options": [
+        "x : -∞  -1  2  +∞ ; (x+1) : -  0  +  + ; (x-2) : -  -  0  + ; Quotient : +  0  -  + ; Solutions : [-1 ; 2[",
+        "x : -∞  -1  2  +∞ ; (x+1) : -  0  +  + ; (x-2) : -  -  0  + ; Quotient : -  0  +  - ; Solutions : ]-∞ ; -1] ∪ ]2 ; +∞[",
+        "x : -∞  -1  2  +∞ ; (x+1) : +  0  -  - ; (x-2) : +  +  0  - ; Quotient : +  0  -  + ; Solutions : [-1 ; 2[",
+        "x : -∞  -1  2  +∞ ; (x+1) : -  0  +  + ; (x-2) : +  +  0  - ; Quotient : -  0  +  - ; Solutions : ]-∞ ; -1] ∪ ]2 ; +∞["
+      ],
+      "correctAnswer": "x : -∞  -1  2  +∞ ; (x+1) : -  0  +  + ; (x-2) : -  -  0  + ; Quotient : +  0  -  + ; Solutions : [-1 ; 2[",
+      "explanation": "Le numérateur $x+1$ s'annule en $-1$ (signe - puis +). Le dénominateur $x-2$ s'annule en $2$ (interdit, signe - puis +). La règle des signes pour le quotient donne + sur $]-\\infty ; -1]$, 0 en $-1$, - sur $[-1 ; 2[$, non défini en $2$, + sur $]2 ; +\\infty[$. L'inéquation $\\le 0$ sélectionne le négatif et le nul : $[-1 ; 2[$. Les autres options contiennent des erreurs de signes (lignes numérateur/dénominateur inversées) ou de lecture du tableau (sélection du positif au lieu du négatif).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f$ une fonction définie sur $\\mathbb{R}$ par $f(x) = (x-3)(2x+1)$. On veut résoudre $f(x) > 0$. Quelle phrase interprète correctement la méthode du trinôme ?",
+      "options": [
+        "Le produit de deux facteurs est strictement positif lorsque les deux facteurs ont le même signe (tous les deux positifs ou tous les deux négatifs).",
+        "Le produit de deux facteurs est strictement positif lorsque les deux facteurs ont des signes contraires.",
+        "Il faut d'abord développer l'expression pour obtenir $2x^2 -5x -3$ puis calculer le discriminant.",
+        "Les solutions sont les valeurs $x$ qui annulent l'un des deux facteurs."
+      ],
+      "correctAnswer": "Le produit de deux facteurs est strictement positif lorsque les deux facteurs ont le même signe (tous les deux positifs ou tous les deux négatifs).",
+      "explanation": "C'est la règle fondamentale du signe d'un produit : $a \\times b > 0 \\Leftrightarrow (a>0 \\text{ et } b>0) \\text{ ou } (a<0 \\text{ et } b<0)$. La deuxième option décrit le cas $a \\times b < 0$. La troisième option est une méthode alternative (trinôme) mais n'est pas l'interprétation directe du forme factorisée. La quatrième option donne les racines (solutions de $f(x)=0$), excluses ici car inéquation stricte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a résolu l'inéquation $|x - 4| \\le 3$ et on a trouvé $S = [1 ; 7]$. Quelle interprétation géométrique (distance) est exacte ?",
+      "options": [
+        "L'ensemble des points $x$ dont la distance au point $4$ est inférieure ou égale à $3$.",
+        "L'ensemble des points $x$ dont la distance au point $3$ est inférieure ou égale à $4$.",
+        "L'ensemble des points $x$ dont la distance à l'origine est comprise entre $1$ et $7$.",
+        "L'ensemble des points $x$ tels que la différence $x - 4$ est comprise entre $-3$ et $3$ sans valeur absolue."
+      ],
+      "correctAnswer": "L'ensemble des points $x$ dont la distance au point $4$ est inférieure ou égale à $3$.",
+      "explanation": "Par définition, $|x - a|$ représente la distance entre $x$ et $a$ sur la droite graduée. L'inéquation $|x - 4| \\le 3$ signifie donc : distance($x$, $4$) $\\le 3$. Cela donne l'intervalle $[4-3 ; 4+3] = [1 ; 7]$. La deuxième option inverse les nombres. La troisième parle de distance à l'origine ($|x|$). La quatrième est une reformulation algébrique correcte ($-3 \\le x-4 \\le 3$) mais ce n'est pas l'interprétation géométrique 'distance' demandée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

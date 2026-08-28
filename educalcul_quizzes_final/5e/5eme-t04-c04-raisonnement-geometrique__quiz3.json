@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 398,
+  "_course_code": "5eme-t04-c04-raisonnement-geometrique",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Rédiger court",
+  "title": "Quiz : Rédiger un raisonnement géométrique court (5e)",
+  "questions": [
+    {
+      "text": "Quelle est la structure attendue pour rédiger court un raisonnement géométrique au collège ?",
+      "options": [
+        "J'écris ce que je vois sur la figure, puis je donne le nom du théorème.",
+        "J'énonce l'hypothèse, j'écris la propriété utilisée, je conclus.",
+        "Je donne la définition, puis je fais le calcul, enfin je réponds.",
+        "J'écris 'Donc' suivi de la conclusion, sans justifier."
+      ],
+      "correctAnswer": "J'énonce l'hypothèse, j'écris la propriété utilisée, je conclus.",
+      "explanation": "En géométrie, 'rédiger court' signifie structurer son argument en trois temps logiques : 1. Rappeler l'hypothèse (ce qu'on sait, ex: 'ABC est isocèle en A'), 2. Citer explicitement la propriété ou le théorème utilisé (ex: 'les angles à la base d'un triangle isocèle sont égaux'), 3. Énoncer la conclusion (ex: 'donc angle B = angle C'). Les autres options mélangent observation, calcul ou omission de la justification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites (d) et (d') sont parallèles. La droite (t) les coupe en A et B. Les angles $\\widehat{1}$ et $\\widehat{2}$ sont alternes-internes. Quelle rédaction est correcte pour justifier $\\widehat{1} = \\widehat{2}$ ?",
+      "options": [
+        "Comme (d) // (d'), alors $\\widehat{1} = \\widehat{2}$ car ce sont des angles alternes-internes.",
+        "$\\widehat{1} = \\widehat{2}$ car (d) // (d').",
+        "D'après le théorème des angles alternes-internes, $\\widehat{1} = \\widehat{2}$.",
+        "Les angles alternes-internes sont égaux donc (d) // (d')."
+      ],
+      "correctAnswer": "Comme (d) // (d'), alors $\\widehat{1} = \\widehat{2}$ car ce sont des angles alternes-internes.",
+      "explanation": "La rédaction correcte suit le modèle 'Si [hypothèse], alors [conclusion] car [propriété]'. Ici l'hypothèse est le parallélisme (d) // (d'), la propriété est 'angles alternes-internes égaux', la conclusion est l'égalité des angles. L'option B inverse l'ordre (conclusion avant hypothèse). L'option C omet l'hypothèse explicite. L'option D utilise la réciproque (prouver le parallélisme).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "ABC est un triangle isocèle en A. On veut affirmer que $\\widehat{B} = \\widehat{C}$. Quelle phrase est bien rédigée ?",
+      "options": [
+        "Comme AB = AC, alors $\\widehat{B} = \\widehat{C}$ (angles à la base d'un triangle isocèle).",
+        "$\\widehat{B} = \\widehat{C}$ car triangle isocèle en A.",
+        "Les angles à la base sont égaux donc AB = AC.",
+        "AB = AC donc $\\widehat{B} = \\widehat{C}$."
+      ],
+      "correctAnswer": "Comme AB = AC, alors $\\widehat{B} = \\widehat{C}$ (angles à la base d'un triangle isocèle).",
+      "explanation": "La propriété directe du triangle isocèle est : 'Si deux côtés sont égaux, alors les angles opposés sont égaux'. La rédaction doit citer l'hypothèse (côtés égaux AB=AC), la conclusion (angles égaux) et nommer la propriété ('angles à la base d'un triangle isocèle'). L'option B est trop imprécise (pas de nom de propriété). L'option C utilise la réciproque. L'option D manque le nom de la propriété.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a prouvé que dans le quadrilatère ABCD, (AB) // (CD) et (AD) // (BC). Comment conclure correctement ?",
+      "options": [
+        "Donc ABCD est un parallélogramme.",
+        "ABCD est un parallélogramme car ses côtés opposés sont parallèles deux à deux.",
+        "(AB) // (CD) et (AD) // (BC) donc ABCD parallélogramme.",
+        "D'après la définition, ABCD est un parallélogramme car ses côtés opposés sont parallèles."
+      ],
+      "correctAnswer": "ABCD est un parallélogramme car ses côtés opposés sont parallèles deux à deux.",
+      "explanation": "La conclusion doit reprendre la définition ou la caractérisation du parallélogramme : 'Un quadrilatère dont les côtés opposés sont parallèles deux à deux est un parallélogramme'. L'option A ne justifie pas. L'option C est une rédaction 'télégraphique' sans phrase correcte. L'option D est acceptable mais moins 'courte' et standard que la formulation de la caractérisation (option B) qui lie directement le fait géométrique observé à la nature du quadrilatère.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit : 'Comme $\\widehat{ABC} = \\widehat{ACB}$, le triangle ABC est isocèle en A.' Quelle est l'erreur de rédaction ?",
+      "options": [
+        "Il a confondu la propriété et sa réciproque.",
+        "Il a mal nommé le sommet principal de l'angle.",
+        "Les angles $\\widehat{ABC}$ et $\\widehat{ACB}$ ne sont pas les angles à la base.",
+        "Il faut écrire 'donc' au lieu de 'comme'."
+      ],
+      "correctAnswer": "Il a confondu la propriété et sa réciproque.",
+      "explanation": "La propriété directe est : 'Si ABC est isocèle en A, alors $\\widehat{ABC} = \\widehat{ACB}$'. La réciproque est : 'Si $\\widehat{ABC} = \\widehat{ACB}$, alors ABC est isocèle en A'. L'élève utilise le raisonnement de la réciproque (égalité des angles $\\Rightarrow$ triangle isocèle) mais l'introduit par 'Comme...' qui marque l'hypothèse de la propriété directe. Il doit écrire : 'D'après la réciproque du théorème sur le triangle isocèle, comme $\\widehat{ABC} = \\widehat{ACB}$, le triangle ABC est isocèle en A.'",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

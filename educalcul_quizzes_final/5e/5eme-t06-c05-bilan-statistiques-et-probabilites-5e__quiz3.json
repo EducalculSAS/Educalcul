@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 409,
+  "_course_code": "5eme-t06-c05-bilan-statistiques-et-probabilites-5e",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Bilan - Statistiques et probabilités 5e",
+  "title": "Bilan - Statistiques et probabilités 5e",
+  "questions": [
+    {
+      "text": "Quelle est la formule pour calculer la moyenne d'une série statistique ?",
+      "options": [
+        "La somme des valeurs divisée par le nombre de valeurs",
+        "La valeur la plus fréquente",
+        "La valeur centrale quand les valeurs sont triées",
+        "La différence entre la plus grande et la plus petite valeur"
+      ],
+      "correctAnswer": "La somme des valeurs divisée par le nombre de valeurs",
+      "explanation": "La moyenne d'une série statistique est obtenue en additionnant toutes les valeurs puis en divisant ce total par l'effectif (le nombre de valeurs). La valeur la plus fréquente correspond à la mode, la valeur centrale à la médiane, et la différence entre l'excès et le minimum à l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les notes obtenues par un élève sont $12, 15, 9, 14, 13$. Quelle est la médiane de cette série ?",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "correctAnswer": "13",
+      "explanation": "Il faut d'abord ranger les notes dans l'ordre croissant : $9, 12, 13, 14, 15$. Comme il y a cinq valeurs (un nombre impair), la médiane est la valeur du milieu, soit la troisième : $13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $4$ boules rouges, $3$ boules bleues et $3$ boules vertes. On tire une boule au hasard. Quelle est la probabilité d'obtenir une boule rouge ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{4}{7}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "Il y a $4$ boules rouges sur un total de $4+3+3 = 10$ boules. La probabilité est donc $\\frac{4}{10}$, qui se simplifie en $\\frac{2}{5}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le diagramme en barres ci-dessous, quel fruit a la fréquence la plus élevée ?",
+      "options": [
+        "Pommes",
+        "Poires",
+        "Bananes",
+        "Cerises"
+      ],
+      "correctAnswer": "Poires",
+      "explanation": "Le diagramme montre les fréquences : Pommes $5$, Poires $8$, Bananes $3$, Cerises $6$. La barre la plus haute correspond aux Poires avec une valeur de $8$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fréquences des fruits",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Cerises",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance un dé à six faces équilibré et on tire une carte parmi $4$ cartes numérotées de $1$ à $4$. Quelle est la probabilité d'obtenir un $6$ au dé et la carte $3$ ?",
+      "options": [
+        "$\\frac{1}{24}$",
+        "$\\frac{1}{10}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{4}$"
+      ],
+      "correctAnswer": "$\\frac{1}{24}$",
+      "explanation": "Les deux événements sont indépendants. La probabilité d'obtenir un $6$ au dé est $\\frac{1}{6}$. La probabilité de tirer la carte $3$ parmi $4$ cartes est $\\frac{1}{4}$. On multiplie les deux probabilités : $\\frac{1}{6} \\times \\frac{1}{4} = \\frac{1}{24}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

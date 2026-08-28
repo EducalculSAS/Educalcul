@@ -1,0 +1,338 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.460644+00:00",
+  "id": 309,
+  "code": "cm2-t05-c07",
+  "title": "Bilan - Grandeurs CM2",
+  "description": "Cours structuré Educalcul : Bilan - Grandeurs CM2.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Bilan - Grandeurs CM2",
+    "objectif_global": "Bilan - Grandeurs CM2",
+    "mini_lecons_imposees": [
+      "Périmètre, aire, volume.",
+      "Conversions.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Périmètre, aire, volume.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Périmètre, aire et volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier bilan ! Nous allons reprendre ensemble les trois grandeurs géométriques que tu as apprises cette année : le périmètre, l'aire et le volume. Rappelle-toi que le périmètre, c'est la longueur totale du contour d'une figure plane, comme si tu faisais le tour d'un terrain de sport avec un mètre ruban. L'aire, c'est la surface que la figure recouvre, par exemple la quantité de peinture nécessaire pour colorier un carré sur le tableau. Le volume, enfin, mesure l'espace qu'occupe un solide, comme le nombre de petits cubes qui rentrent dans une boîte. Ces trois notions sont différentes mais elles utilisent toutes des unités de mesure que tu connais déjà : le centimètre ($cm$), le mètre ($m$), le kilomètre ($km$) pour les longueurs ; le centimètre carré ($cm^2$), le mètre carré ($m^2$) pour les surfaces ; le centimètre cube ($cm^3$), le mètre cube ($m^3$) pour les volumes. Prends le temps de bien visualiser chaque grandeur avant de passer aux exercices."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Figure",
+                "Périmètre",
+                "Aire"
+              ],
+              "rows": [
+                [
+                  "Carré de côté $c$",
+                  "$4 \\times c$",
+                  "$c \\times c$"
+                ],
+                [
+                  "Rectangle de longueur $L$ et largeur $l$",
+                  "$2 \\times (L + l)$",
+                  "$L \\times l$"
+                ]
+              ],
+              "caption": "Formules du périmètre et de l'aire pour le carré et le rectangle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les formules du carré et du rectangle sont claires, tournons-nous vers le volume. Imagine une boîte à chaussures : sa longueur, sa largeur et sa hauteur sont trois nombres que tu peux mesurer avec une règle. Pour savoir combien de petits cubes de $1\\,cm^3$ peuvent tenir à l'intérieur, il suffit de multiplier ces trois mesures entre elles. C'est exactement la même idée que pour l'aire, où l'on multiplie deux longueurs, sauf qu'ici on en multiplie trois. Cette multiplication donne le volume en unités cubiques. Si la boîte mesure $10\\,cm$ de long, $6\\,cm$ de large et $4\\,cm$ de haut, son volume est $10 \\times 6 \\times 4 = 240\\,cm^3$. Essaie de visualiser les couches de cubes superposées pour bien comprendre pourquoi on multiplie les trois dimensions."
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Patron d'un cube de côté 4 cm pour visualiser le volume"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, comparons les périmètres de plusieurs figures ayant la même aire. Parfois, deux rectangles peuvent avoir la même surface mais des contours très différents. Prenons un rectangle de $12\\,cm$ sur $3\\,cm$ et un carré de $6\\,cm$ de côté. Tous deux ont une aire de $36\\,cm^2$, mais leurs périmètres sont respectivement $30\\,cm$ et $24\\,cm$. Cela montre que l'aire ne détermine pas le périmètre. Observer ces différences t'aidera à choisir la bonne formule selon la question posée. Garde en tête que le périmètre se calcule toujours en ajoutant les longueurs des côtés, tandis que l'aire et le volume font appel à des multiplications."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des périmètres pour une aire de 36 cm²",
+              "bars": [
+                {
+                  "label": "Rectangle 12×3",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Carré 6×6",
+                  "value": 24,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as révisé les trois grandeurs essentielles et tu sais maintenant distinguer quand utiliser une addition pour le périmètre, une multiplication à deux facteurs pour l'aire, et une multiplication à trois facteurs pour le volume. Relis les formules du tableau si tu as un doute, et n'hésite pas à dessiner les figures sur une feuille pour t'aider à visualiser."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le périmètre et l'aire d'un rectangle de longueur $8\\,cm$ et de largeur $5\\,cm$.",
+              "answer": "Périmètre = $26\\,cm$ ; Aire = $40\\,cm^2$",
+              "hint": "Utilise les formules $2\\times(L+l)$ pour le périmètre et $L\\times l$ pour l'aire.",
+              "explanation": "Le périmètre est $2\\times(8+5)=2\\times13=26\\,cm$. L'aire est $8\\times5=40\\,cm^2$."
+            },
+            {
+              "question": "Un pavé droit mesure $7\\,cm$ de long, $4\\,cm$ de large et $3\\,cm$ de haut. Quel est son volume ?",
+              "answer": "$84\\,cm^3$",
+              "hint": "Multiplie les trois dimensions : longueur $\\times$ largeur $\\times$ hauteur.",
+              "explanation": "Le volume vaut $7\\times4\\times3 = 84\\,cm^3$."
+            },
+            {
+              "question": "Deux figures ont la même aire de $20\\,cm^2$. L'une est un rectangle $10\\,cm \\times 2\\,cm$, l'autre un carré de côté $\\sqrt{20}\\approx4,47\\,cm$. Laquelle a le plus grand périmètre ?",
+              "answer": "Le rectangle a le plus grand périmètre ($24\\,cm$ contre environ $17,9\\,cm$).",
+              "hint": "Calcule le périmètre de chaque figure avec les formules adaptées.",
+              "explanation": "Rectangle : $2\\times(10+2)=24\\,cm$. Carré : $4\\times4,47\\approx17,9\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Conversions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conversions de grandeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons travailler les changements d'unité pour les longueurs, les aires et les volumes. Tu sais déjà que $1\\,m = 100\\,cm$ et que $1\\,km = 1000\\,m$. Pour les surfaces, la relation n'est pas la même : $1\\,m^2 = 10\\,000\\,cm^2$ car il faut multiplier les deux conversions de longueur ($100 \\times 100$). Pour les volumes, $1\\,m^3 = 1\\,000\\,000\\,cm^3$ ($100 \\times 100 \\times 100$). Ces sauts de puissances de dix peuvent surprendre, mais il suffit de retenir le nombre de zéros à ajouter ou à retirer selon que l'on passe à une unité plus grande ou plus petite. Nous allons pratiquer ensemble pour que ces conversions deviennent automatiques."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité de base",
+                "Multiple",
+                "Sous-multiple"
+              ],
+              "rows": [
+                [
+                  "Longueur : $m$",
+                  "$km$ ($\\times1000$)",
+                  "$cm$ ($\\div100$)"
+                ],
+                [
+                  "Aire : $m^2$",
+                  "$km^2$ ($\\times1\\,000\\,000$)",
+                  "$cm^2$ ($\\div10\\,000$)"
+                ],
+                [
+                  "Volume : $m^3$",
+                  "$km^3$ ($\\times1\\,000\\,000\\,000$)",
+                  "$cm^3$ ($\\div1\\,000\\,000$)"
+                ]
+              ],
+              "caption": "Tableau de conversion pour les trois grandeurs"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer la méthode, imaginons que tu dois convertir $3,5\\,km$ en mètres. Comme le kilomètre est plus grand que le mètre, tu vas multiplier par $1000$ : $3,5 \\times 1000 = 3500\\,m$. À l'inverse, pour passer de $4500\\,cm$ en mètres, tu divises par $100$ : $4500 \\div 100 = 45\\,m$. La même logique s'applique aux aires et aux volumes, mais avec plus de zéros. Par exemple, $2\\,m^2$ en $cm^2$ se fait en multipliant par $10\\,000$ : $2 \\times 10\\,000 = 20\\,000\\,cm^2$. Essaie de visualiser le déplacement de la virgule : chaque zéro correspond à un cran vers la droite (multiplication) ou vers la gauche (division)."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Longueur",
+                  "value": 1000,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Aire",
+                  "value": 10000,
+                  "tone": "green"
+                },
+                {
+                  "label": "Volume",
+                  "value": 1000000,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Facteurs de conversion entre mètre et centimètre selon la grandeur"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut enchaîner plusieurs conversions, par exemple passer de $km^2$ à $cm^2$. Tu peux le faire en deux étapes : d'abord $km^2$ vers $m^2$ (multiplier par $1\\,000\\,000$), puis $m^2$ vers $cm^2$ (multiplier par $10\\,000$). Le facteur total est donc $10^{12}$, c'est-à-dire un $1$ suivi de douze zéros. Pour éviter les erreurs, écris les puissances de dix sous forme d'exposants : $1\\,km^2 = 10^6\\,m^2 = 10^{12}\\,cm^2$. Cette notation compacte te permet de compter les zéros sans les écrire tous. Entraîne-toi sur l'exercice suivant pour maîtriser ces conversions à plusieurs étapes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle des puissances de dix pour les conversions d'aire",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "m²"
+                },
+                {
+                  "value": 6,
+                  "label": "km²"
+                },
+                {
+                  "value": 12,
+                  "label": "cm²"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour convertir n'importe quelle grandeur de longueur, d'aire ou de volume. Rappelle-toi la règle simple : plus l'unité est grande, plus le nombre devant est petit, et inversement. Utilise le tableau de conversion comme pense-bête et n'hésite pas à décomposer les conversions compliquées en plusieurs étapes simples."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $7,2\\,km$ en mètres.",
+              "answer": "$7200\\,m$",
+              "hint": "Multiplie par $1000$ car $1\\,km = 1000\\,m$.",
+              "explanation": "$7,2 \\times 1000 = 7200\\,m$."
+            },
+            {
+              "question": "Exprime $5\\,m^2$ en centimètres carrés.",
+              "answer": "$50\\,000\\,cm^2$",
+              "hint": "Multiplie par $10\\,000$ car $1\\,m^2 = 10\\,000\\,cm^2$.",
+              "explanation": "$5 \\times 10\\,000 = 50\\,000\\,cm^2$."
+            },
+            {
+              "question": "Combien de $cm^3$ y a-t-il dans $0,003\\,m^3$ ?",
+              "answer": "$3000\\,cm^3$",
+              "hint": "Multiplie par $1\\,000\\,000$ car $1\\,m^3 = 1\\,000\\,000\\,cm^3$.",
+              "explanation": "$0,003 \\times 1\\,000\\,000 = 3000\\,cm^3$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan et checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce bilan. L'objectif est de vérifier que tu te sens à l'aise avec les trois grandes notions abordées : calculer un périmètre, une aire, un volume, et convertir les unités correspondantes. Relis mentalement les formules : périmètre du carré $4c$, du rectangle $2(L+l)$ ; aire du carré $c^2$, du rectangle $L\\times l$ ; volume du pavé droit $L\\times l\\times h$. Rappelle-toi aussi les facteurs de conversion : $\\times100$ ou $\\div100$ pour les longueurs, $\\times10\\,000$ ou $\\div10\\,000$ pour les aires, $\\times1\\,000\\,000$ ou $\\div1\\,000\\,000$ pour les volumes. Si l'une de ces règles te semble encore floue, reviens sur la leçon correspondante avant de passer aux exercices de révision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier exercice de révision : on te donne un rectangle de $9\\,cm$ sur $4\\,cm$. Calcule son périmètre et son aire, puis exprime l'aire en $mm^2$ (sachant que $1\\,cm^2 = 100\\,mm^2$). Cet exercicio mélange calcul de base et conversion d'aire, ce qui est typique des problèmes du brevet. Prends le temps d'écrire chaque étape sur ton cahier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième exercice : un cube a un volume de $125\\,cm^3$. Quelle est la longueur de son côté ? Ensuite, convertis ce volume en $m^3$. Rappelle-toi que le volume d'un cube est $c^3$, donc il faut trouver le nombre dont le cube donne $125$. Pour la conversion, divise par $1\\,000\\,000$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième exercice : un terrain rectangulaire mesure $120\\,m$ de long et $80\\,m$ de large. On veut le clôturer avec un grillage vendu par rouleaux de $25\\,m$. Combien de rouleaux faut-il acheter ? Calcule d'abord le périmètre, puis divise par $25$ et arrondis à l'entier supérieur. Cet exercice montre comment les grandeurs s'utilisent dans la vie quotidienne."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le périmètre d'un carré et d'un rectangle.",
+                "Je sais calculer l'aire d'un carré et d'un rectangle.",
+                "Je sais calculer le volume d'un pavé droit et d'un cube.",
+                "Je sais convertir des longueurs entre km, m, cm, mm.",
+                "Je sais convertir des aires entre km², m², cm², mm².",
+                "Je sais convertir des volumes entre km³, m³, cm³, mm³.",
+                "Je sais choisir la bonne formule selon la question posée.",
+                "Je sais expliquer la différence entre périmètre, aire et volume avec mes propres mots."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rectangle de $9\\,cm$ sur $4\\,cm$ : périmètre, aire, aire en $mm^2$.",
+              "answer": "Périmètre = $26\\,cm$ ; Aire = $36\\,cm^2$ ; Aire = $3600\\,mm^2$",
+              "hint": "Périmètre $2\\times(9+4)$, aire $9\\times4$, conversion $1\\,cm^2 = 100\\,mm^2$.",
+              "explanation": "Périmètre $2\\times13=26\\,cm$. Aire $9\\times4=36\\,cm^2$. $36\\times100=3600\\,mm^2$."
+            },
+            {
+              "question": "Cube de volume $125\\,cm^3$ : côté et volume en $m^3$.",
+              "answer": "Côté = $5\\,cm$ ; Volume = $0,000125\\,m^3$",
+              "hint": "Racine cubique de $125$ pour le côté ; division par $1\\,000\\,000$ pour $m^3$.",
+              "explanation": "$5^3=125$, donc côté $5\\,cm$. $125\\div1\\,000\\,000=0,000125\\,m^3$."
+            },
+            {
+              "question": "Terrain $120\\,m \\times 80\\,m$, grillage par rouleaux de $25\\,m$. Nombre de rouleaux ?",
+              "answer": "13 rouleaux",
+              "hint": "Périmètre $2\\times(120+80)=400\\,m$. $400\\div25=16$, mais il faut arrondir au supérieur si pas entier. Ici $16$ exactement, mais vérifie si un rouleau partiel compte.",
+              "explanation": "Périmètre $400\\,m$. $400\\div25=16$ rouleaux exacts. Si le problème impose d'arrondir au supérieur, ce serait $16$ aussi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

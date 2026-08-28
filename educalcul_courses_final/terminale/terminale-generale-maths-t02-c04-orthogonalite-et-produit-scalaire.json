@@ -1,0 +1,726 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.604759+00:00",
+  "id": 681,
+  "code": "terminale-generale-maths-t02-c04",
+  "title": "Orthogonalité et produit scalaire",
+  "description": "Cours structuré Educalcul : Orthogonalité et produit scalaire.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Orthogonalité et produit scalaire",
+    "objectif_global": "Orthogonalité et produit scalaire",
+    "mini_lecons_imposees": [
+      "Calcul.",
+      "Droite-plan.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le produit scalaire dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au produit scalaire. Tu as déjà rencontré les vecteurs dans le plan, et ici nous étendons l'idée à l'espace à trois dimensions. Le produit scalaire est un outil puissant qui permet de mesurer l'angle entre deux directions, de tester l'orthogonalité et de projeter un vecteur sur un autre. Prends le temps de bien visualiser chaque notion, car elle sera la clé de tout ce qui suit."
+            },
+            {
+              "type": "definition",
+              "term": "Produit scalaire",
+              "definition": "Le produit scalaire de deux vecteurs $\\vec{u}$ et $\\vec{v}$ de l'espace est un nombre réel noté $\\vec{u}\\cdot\\vec{v}$. Il se calcule en multipliant les composantes correspondantes et en additionnant les résultats : $\\vec{u}\\cdot\\vec{v}=x_u x_v + y_u y_v + z_u z_v$.",
+              "example": "Par exemple, pour $\\vec{u}(1,2,3)$ et $\\vec{v}(4,5,6)$, le produit scalaire vaut $1\\times4+2\\times5+3\\times6=32$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=x_u x_v + y_u y_v + z_u z_v"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi définir le produit scalaire de manière géométrique : il est égal au produit des normes des deux vecteurs par le cosinus de l'angle $\\theta$ qu'ils forment. Cette définition montre immédiatement que le produit scalaire est nul précisément lorsque les vecteurs sont orthogonaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=\\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une base orthonormée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans une base orthonormée, les vecteurs de base ont pour norme $1$ et sont deux à deux orthogonaux. Cela simplifie considérablement le calcul du produit scalaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exprimer les vecteurs dans cette base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $\\vec{u}=x_u\\vec{i}+y_u\\vec{j}+z_u\\vec{k}$ et $\\vec{v}=x_v\\vec{i}+y_v\\vec{j}+z_v\\vec{k}$. En développant le produit $\\vec{u}\\cdot\\vec{v}$ et en utilisant l'orthogonalité des vecteurs de base, tous les termes croisés disparaissent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtenir la formule coordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il ne reste que $x_u x_v(\\vec{i}\\cdot\\vec{i})+y_u y_v(\\vec{j}\\cdot\\vec{j})+z_u z_v(\\vec{k}\\cdot\\vec{k})$. Comme $\\vec{i}\\cdot\\vec{i}=\\vec{j}\\cdot\\vec{j}=\\vec{k}\\cdot\\vec{k}=1$, on retrouve la formule $x_u x_v+y_u y_v+z_u z_v$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition et le calcul en coordonnées sont posés, nous allons explorer les propriétés algébriques qui font du produit scalaire un outil si commode. Ces propriétés te permettront de manipuler des expressions vectorielles sans avoir à revenir à la définition géométrique à chaque fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit scalaire possède trois propriétés essentielles : la bilinéarité, la symétrie et la positivité. La bilinéarité signifie qu'il est linéaire par rapport à chacun de ses arguments. La symétrie indique que l'ordre des vecteurs n'importe pas. La positivité garantit que le produit scalaire d'un vecteur par lui-même est toujours positif ou nul, et nul seulement pour le vecteur nul."
+            },
+            {
+              "type": "definition",
+              "term": "Bilinéarité",
+              "definition": "Pour tous vecteurs $\\vec{u},\\vec{v},\\vec{w}$ et réels $\\alpha,\\beta$, on a $(\\alpha\\vec{u}+\\beta\\vec{v})\\cdot\\vec{w}=\\alpha(\\vec{u}\\cdot\\vec{w})+\\beta(\\vec{v}\\cdot\\vec{w})$ et de même pour le second argument.",
+              "example": "Si $\\vec{u}=(1,0,0)$, $\\vec{v}=(0,1,0)$, $\\vec{w}=(0,0,1)$, alors $(2\\vec{u}+3\\vec{v})\\cdot\\vec{w}=0$."
+            },
+            {
+              "type": "definition",
+              "term": "Symétrie",
+              "definition": "Pour tous vecteurs $\\vec{u},\\vec{v}$, on a $\\vec{u}\\cdot\\vec{v}=\\vec{v}\\cdot\\vec{u}$.",
+              "example": "$\\vec{u}\\cdot\\vec{v}=32$ implique $\\vec{v}\\cdot\\vec{u}=32$."
+            },
+            {
+              "type": "definition",
+              "term": "Positivité",
+              "definition": "Pour tout vecteur $\\vec{u}$, $\\vec{u}\\cdot\\vec{u}\\ge0$, avec égalité si et seulement si $\\vec{u}=\\vec{0}$.",
+              "example": "$\\vec{u}=(1,2,3)$ donne $\\vec{u}\\cdot\\vec{u}=1^2+2^2+3^2=14>0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\alpha\\vec{u}+\\beta\\vec{v})\\cdot\\vec{w}=\\alpha(\\vec{u}\\cdot\\vec{w})+\\beta(\\vec{v}\\cdot\\vec{w})"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{v}=\\vec{v}\\cdot\\vec{u}"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}\\cdot\\vec{u}\\ge0\\quad\\text{et}\\quad\\vec{u}\\cdot\\vec{u}=0\\Leftrightarrow\\vec{u}=\\vec{0}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ces propriétés en main, il devient facile de calculer l'angle entre deux vecteurs non nuls. La formule $\\cos\\theta=\\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{u}\\|\\|\\vec{v}\\|}$ te donne directement le cosinus de l'angle, et tu n'as plus qu'à utiliser la fonction arccosinus de ta calculatrice pour obtenir $\\theta$ en degrés ou en radians."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de l'angle entre deux vecteurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $\\vec{u}=(1,2,2)$ et $\\vec{v}=(2,1,-2)$. Leur produit scalaire vaut $1\\times2+2\\times1+2\\times(-2)=2+2-4=0$. Les normes sont $\\|\\vec{u}\\|=\\sqrt{1^2+2^2+2^2}=3$ et $\\|\\vec{v}\\|=\\sqrt{2^2+1^2+(-2)^2}=3$. Le cosinus de l'angle est donc $0$, ce qui signifie que l'angle est de $90^{\\circ}$ : les vecteurs sont orthogonaux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le produit scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les composantes correspondantes et additionne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les normes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $\\|\\vec{u}\\|=\\sqrt{x_u^2+y_u^2+z_u^2}$ pour chaque vecteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\cos\\theta=\\frac{\\vec{u}\\cdot\\vec{v}}{\\|\\vec{u}\\|\\|\\vec{v}\\|}$, puis $\\theta=\\arccos(\\cos\\theta)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le test d'orthogonalité est l'une des applications les plus immédiates du produit scalaire. Deux vecteurs non nuls sont orthogonaux si et seulement si leur produit scalaire est nul. Ce critère est très utilisé pour vérifier si une droite est perpendiculaire à un plan, ou si deux plans sont perpendiculaires entre eux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Test d'orthogonalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu doives vérifier si le vecteur $\\vec{n}=(1,-2,3)$ est orthogonal au vecteur $\\vec{v}=(4,5,6)$. Il suffit de calculer $\\vec{n}\\cdot\\vec{v}=1\\times4+(-2)\\times5+3\\times6=4-10+18=12$. Comme le résultat n'est pas nul, les deux vecteurs ne sont pas orthogonaux. Si le produit avait été $0$, tu aurais pu conclure immédiatement à l'orthogonalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez le produit scalaire de $\\vec{u}(1,2,3)$ et $\\vec{v}(4,5,6)$.",
+              "answer": "32",
+              "hint": "Utilisez la formule $x_u x_v + y_u y_v + z_u z_v$.",
+              "explanation": "On multiplie les composantes correspondantes et on additionne : $1\\times4+2\\times5+3\\times6=32$."
+            },
+            {
+              "question": "Vérifiez la bilinéarité pour $\\vec{u}=(1,0,0)$, $\\vec{v}=(0,1,0)$, $\\vec{w}=(0,0,1)$ et $\\alpha=2$, $\\beta=3$ en calculant $(2\\vec{u}+3\\vec{v})\\cdot\\vec{w}$ et $2(\\vec{u}\\cdot\\vec{w})+3(\\vec{v}\\cdot\\vec{w})$.",
+              "answer": "Les deux expressions valent $0$.",
+              "hint": "Calculez d'abord $2\\vec{u}+3\\vec{v}$, puis faites le produit scalaire avec $\\vec{w}$.",
+              "explanation": "$2\\vec{u}+3\\vec{v}=(2,3,0)$. Son produit scalaire avec $\\vec{w}=(0,0,1)$ est $0$. De l'autre côté, $\\vec{u}\\cdot\\vec{w}=0$ et $\\vec{v}\\cdot\\vec{w}=0$, donc la combinaison linéaire donne aussi $0$."
+            },
+            {
+              "question": "Déterminez l'angle entre $\\vec{u}=(1,2,2)$ et $\\vec{v}=(2,1,-2)$.",
+              "answer": "$90^{\\circ}$ (ou $\\frac{\\pi}{2}$ radians).",
+              "hint": "Calculez le produit scalaire, les normes, puis $\\cos\\theta$.",
+              "explanation": "Produit scalaire $=0$, normes $=3$, $\\cos\\theta=0$, donc $\\theta=90^{\\circ}$."
+            },
+            {
+              "question": "Les vecteurs $\\vec{n}=(1,-2,3)$ et $\\vec{v}=(4,5,6)$ sont-ils orthogonaux ?",
+              "answer": "Non.",
+              "hint": "Calculez leur produit scalaire.",
+              "explanation": "$\\vec{n}\\cdot\\vec{v}=1\\times4+(-2)\\times5+3\\times6=12\\neq0$, donc ils ne sont pas orthogonaux."
+            }
+          ]
+        },
+        {
+          "title": "Droite-plan.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Droite et plan : orthogonalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce deuxième volet, nous allons voir comment le produit scalaire permet de caractériser la position relative d'une droite et d'un plan. L'idée centrale est qu'une droite est perpendiculaire à un plan exactement lorsque son vecteur directeur est orthogonal à tout vecteur du plan, ce qui revient à dire qu'il est orthogonal à un vecteur normal du plan."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur normal d'un plan",
+              "definition": "Un vecteur $\\vec{n}$ non nul est normal à un plan $\\mathcal{P}$ s'il est orthogonal à tout vecteur directeur de $\\mathcal{P}$. En coordonnées, si le plan a pour équation cartésienne $ax+by+cz+d=0$, alors $\\vec{n}=(a,b,c)$ est un vecteur normal.",
+              "example": "Le plan $2x-3y+z+4=0$ a pour vecteur normal $\\vec{n}=(2,-3,1)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax+by+cz+d=0\\quad\\Rightarrow\\quad\\vec{n}=(a,b,c)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une droite $\\mathcal{D}$ de vecteur directeur $\\vec{u}$ et un plan $\\mathcal{P}$ de vecteur normal $\\vec{n}$. La droite est perpendiculaire au plan si et seulement si $\\vec{u}$ est orthogonal à $\\vec{n}$, c'est-à-dire $\\vec{u}\\cdot\\vec{n}=0$. Cette condition est à la fois nécessaire et suffisante."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathcal{D}\\perp\\mathcal{P}\\Leftrightarrow\\vec{u}\\cdot\\vec{n}=0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le vecteur directeur de la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la droite est donnée paramétriquement par $\\vec{r}=\\vec{A}+t\\vec{u}$, alors $\\vec{u}$ est le vecteur directeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier un vecteur normal du plan",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de l'équation cartésienne $ax+by+cz+d=0$, lire $\\vec{n}=(a,b,c)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester l'orthogonalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\vec{u}\\cdot\\vec{n}$. Si le résultat est $0$, la droite est perpendiculaire au plan."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la condition d'orthogonalité comprise, il est naturel de s'intéresser à l'écriture de l'équation d'un plan lorsque l'on connaît un vecteur normal et un point du plan. C'est une situation très fréquente dans les problèmes de géométrie dans l'espace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équation d'un plan connaissant un vecteur normal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $\\vec{n}=(a,b,c)$ un vecteur normal non nul et $A(x_A,y_A,z_A)$ un point du plan $\\mathcal{P}$. Un point $M(x,y,z)$ appartient à $\\mathcal{P}$ si et seulement si le vecteur $\\overrightarrow{AM}$ est orthogonal à $\\vec{n}$, ce qui s'écrit $\\vec{n}\\cdot\\overrightarrow{AM}=0$. En développant, on obtient l'équation cartésienne $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$, soit $ax+by+cz+d=0$ avec $d=-(ax_A+by_A+cz_A)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a(x-x_A)+b(y-y_A)+c(z-z_A)=0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le scalaire $d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez $d=-(ax_A+by_A+cz_A)$ à partir des coordonnées du point connu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $a,b,c,d$ dans $ax+by+cz+d=0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit scalaire permet aussi de calculer la distance d'un point à un plan. Cette distance est la longueur de la projection orthogonale du vecteur reliant un point du plan au point considéré sur le vecteur normal. C'est une formule compacte qui s'obtient naturellement par le produit scalaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance d'un point à un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $\\mathcal{P}$ le plan d'équation $ax+by+cz+d=0$ et $M(x_M,y_M,z_M)$ un point. La distance de $M$ à $\\mathcal{P}$ est donnée par $\\frac{|ax_M+by_M+cz_M+d|}{\\sqrt{a^2+b^2+c^2}}$. Le numérateur est la valeur absolue du produit scalaire entre $\\vec{n}=(a,b,c)$ et $\\overrightarrow{OM}$ plus $d$, le dénominateur est la norme du vecteur normal."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M,\\mathcal{P})=\\frac{|ax_M+by_M+cz_M+d|}{\\sqrt{a^2+b^2+c^2}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $a,b,c,d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lisez les coefficients de l'équation du plan."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $x_M,y_M,z_M$ dans $|ax_M+by_M+cz_M+d|$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\sqrt{a^2+b^2+c^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le quotient est la distance cherchée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous abordons l'angle entre une droite et un plan. Cet angle est défini comme le complémentaire de l'angle entre le vecteur directeur de la droite et le vecteur normal du plan. En d'autres termes, si $\\phi$ est l'angle entre la droite et le plan, et $\\theta$ l'angle entre $\\vec{u}$ et $\\vec{n}$, alors $\\phi=90^{\\circ}-\\theta$ (ou $\\frac{\\pi}{2}-\\theta$ en radians). La formule $\\sin\\phi=\\frac{|\\vec{u}\\cdot\\vec{n}|}{\\|\\vec{u}\\|\\|\\vec{n}\\|}$ s'en déduit directement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Angle entre une droite et un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons une droite de vecteur directeur $\\vec{u}=(1,2,2)$ et un plan de vecteur normal $\\vec{n}=(2,-1,2)$. Le produit scalaire $\\vec{u}\\cdot\\vec{n}=1\\times2+2\\times(-1)+2\\times2=2-2+4=4$. Les normes sont $\\|\\vec{u}\\|=3$ et $\\|\\vec{n}\\|=\\sqrt{4+1+4}=3$. Donc $\\sin\\phi=\\frac{4}{9}$, ce qui donne $\\phi\\approx\\arcsin(0.444)\\approx26.4^{\\circ}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\vec{u}\\cdot\\vec{n}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Produit scalaire usuel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les normes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Normes de $\\vec{u}$ et $\\vec{n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver $\\sin\\phi$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divisez la valeur absolue du produit scalaire par le produit des normes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Obtenir l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez $\\arcsin$ (ou $\\arcsin$ en degrés selon le mode de la calculatrice)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La droite $\\mathcal{D}$ a pour vecteur directeur $\\vec{u}=(2,1,-1)$. Le plan $\\mathcal{P}$ a pour équation $x-2y+3z-4=0$. $\\mathcal{D}$ est-elle perpendiculaire à $\\mathcal{P}$ ?",
+              "answer": "Non.",
+              "hint": "Calculez $\\vec{u}\\cdot\\vec{n}$ avec $\\vec{n}=(1,-2,3)$.",
+              "explanation": "$\\vec{u}\\cdot\\vec{n}=2\\times1+1\\times(-2)+(-1)\\times3=2-2-3=-3\\neq0$, donc la droite n'est pas perpendiculaire au plan."
+            },
+            {
+              "question": "Trouvez l'équation cartésienne du plan passant par $A(1,2,-1)$ et de vecteur normal $\\vec{n}=(3,-1,2)$.",
+              "answer": "$3x-y+2z+1=0$.",
+              "hint": "Utilisez $a(x-x_A)+b(y-y_A)+c(z-z_A)=0$.",
+              "explanation": "$3(x-1)-1(y-2)+2(z+1)=0 \\Rightarrow 3x-3-y+2+2z+2=0 \\Rightarrow 3x-y+2z+1=0$."
+            },
+            {
+              "question": "Calculez la distance du point $M(2,-1,3)$ au plan $2x-y+2z-5=0$.",
+              "answer": "$2$.",
+              "hint": "Utilisez la formule $\\frac{|ax_M+by_M+cz_M+d|}{\\sqrt{a^2+b^2+c^2}}$.",
+              "explanation": "$a=2,b=-1,c=2,d=-5$. Numérateur $|2\\times2+(-1)\\times(-1)+2\\times3-5|=|4+1+6-5|=6$. Dénominateur $\\sqrt{4+1+4}=3$. Distance $=2$."
+            },
+            {
+              "question": "Déterminez l'angle entre la droite de vecteur directeur $\\vec{u}=(1,0,1)$ et le plan de vecteur normal $\\vec{n}=(0,1,1)$.",
+              "answer": "$30^{\\circ}$.",
+              "hint": "Calculez $\\sin\\phi=\\frac{|\\vec{u}\\cdot\\vec{n}|}{\\|\\vec{u}\\|\\|\\vec{n}\\|}$.",
+              "explanation": "$\\vec{u}\\cdot\\vec{n}=1\\times0+0\\times1+1\\times1=1$. $\\|\\vec{u}\\|=\\sqrt{2}$, $\\|\\vec{n}\\|=\\sqrt{2}$. $\\sin\\phi=1/2$, donc $\\phi=30^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes du produit scalaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce dernier volet, nous mettons en pratique tout ce que nous avons appris pour résoudre des problèmes classiques de géométrie dans l'espace. Tu verras que le produit scalaire est la clé de voûte pour projeter, symétriser et mesurer des distances entre objets qui ne se coupent pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Projection orthogonale d'un point sur un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un plan $\\mathcal{P}$ d'équation $ax+by+cz+d=0$ et un point $M$ hors du plan. La projection orthogonale $H$ de $M$ sur $\\mathcal{P}$ est le pied de la perpendiculaire issue de $M$ vers $\\mathcal{P}$. Le vecteur $\\overrightarrow{MH}$ est colinéaire au vecteur normal $\\vec{n}=(a,b,c)$. On peut écrire $H = M - \\frac{ax_M+by_M+cz_M+d}{a^2+b^2+c^2}\\vec{n}$. Cette formule se déduit directement de la définition de la projection orthogonale et du produit scalaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "H = M - \\frac{ax_M+by_M+cz_M+d}{a^2+b^2+c^2}\\vec{n}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le numérateur scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluez $S = ax_M+by_M+cz_M+d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $N = a^2+b^2+c^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver le vecteur $\\overrightarrow{MH}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\overrightarrow{MH} = -\\frac{S}{N}\\vec{n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Obtenir les coordonnées de $H$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoutez $\\overrightarrow{MH}$ aux coordonnées de $M$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La symétrie par rapport à un plan est une transformation qui associe à chaque point son image miroir de l'autre côté du plan, à distance égale. Le point image $M'$ est tel que le plan est le médiateur du segment $[MM']$. On obtient $M'$ en doublant le vecteur de projection : $M' = M - 2\\frac{ax_M+by_M+cz_M+d}{a^2+b^2+c^2}\\vec{n}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Symétrie par rapport à un plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du plan $2x-y+2z-5=0$ et du point $M(2,-1,3)$. Nous avons déjà trouvé la projection $H$ (qui est à distance $2$ du plan). Le symétrique $M'$ sera tel que $H$ est le milieu de $[MM']$. Donc $M' = M + 2\\overrightarrow{MH}$. Comme $\\overrightarrow{MH} = -\\frac{6}{9}(2,-1,2) = -\\frac{2}{3}(2,-1,2) = (-\\frac{4}{3},\\frac{2}{3},-\\frac{4}{3})$, on obtient $M' = (2,-1,3) + 2(-\\frac{4}{3},\\frac{2}{3},-\\frac{4}{3}) = (2-\\frac{8}{3}, -1+\\frac{4}{3}, 3-\\frac{8}{3}) = (-\\frac{2}{3}, \\frac{1}{3}, \\frac{1}{3})$."
+            },
+            {
+              "type": "display_math",
+              "latex": "M' = M - 2\\frac{ax_M+by_M+cz_M+d}{a^2+b^2+c^2}\\vec{n}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la projection $H$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la formule de la leçon précédente."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Doubler le vecteur $\\overrightarrow{MH}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\overrightarrow{MM'} = 2\\overrightarrow{MH}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtenir $M'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$M' = M + \\overrightarrow{MM'}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous abordons la distance entre deux droites gauches, c'est-à-dire deux droites qui ne sont pas parallèles et ne se coupent pas. La distance la plus courte entre elles est le long d'un segment perpendiculaire aux deux droites. Si $\\mathcal{D}_1$ a pour vecteur directeur $\\vec{u}_1$ et passe par $A_1$, et $\\mathcal{D}_2$ a pour vecteur directeur $\\vec{u}_2$ et passe par $A_2$, alors un vecteur orthogonal aux deux droites est $\\vec{n} = \\vec{u}_1 \\times \\vec{u}_2$ (produit vectoriel). La distance vaut $\\frac{|\\overrightarrow{A_1A_2}\\cdot\\vec{n}|}{\\|\\vec{n}\\|}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux droites gauches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\mathcal{D}_1$ passant par $A_1(1,0,0)$ de directeur $\\vec{u}_1=(1,1,0)$ et $\\mathcal{D}_2$ passant par $A_2(0,1,1)$ de directeur $\\vec{u}_2=(0,1,1)$. Le produit vectoriel $\\vec{n}=\\vec{u}_1\\times\\vec{u}_2 = (1,1,0)\\times(0,1,1) = (1\\cdot1-0\\cdot1, 0\\cdot0-1\\cdot1, 1\\cdot1-1\\cdot0) = (1, -1, 1)$. Le vecteur $\\overrightarrow{A_1A_2}=(-1,1,1)$. Le produit scalaire $\\overrightarrow{A_1A_2}\\cdot\\vec{n} = -1\\times1 + 1\\times(-1) + 1\\times1 = -1$. Valeur absolue $1$. Norme de $\\vec{n}$ est $\\sqrt{3}$. Distance $= \\frac{1}{\\sqrt{3}}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(\\mathcal{D}_1,\\mathcal{D}_2)=\\frac{|\\overrightarrow{A_1A_2}\\cdot(\\vec{u}_1\\times\\vec{u}_2)|}{\\|\\vec{u}_1\\times\\vec{u}_2\\|}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\vec{n}=\\vec{u}_1\\times\\vec{u}_2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Produit vectoriel des directeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $\\overrightarrow{A_1A_2}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vecteur reliant un point de la première droite à un point de la seconde."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Produit scalaire avec $\\vec{n}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$|\\overrightarrow{A_1A_2}\\cdot\\vec{n}|$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser par la norme de $\\vec{n}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtention de la distance."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru l'ensemble des notions clés de ce chapitre : produit scalaire, orthogonalité droite-plan, distance, projection, symétrie et distance entre droites gauches. Chaque outil s'appuie sur le même principe : transformer une question géométrique en un calcul algébrique grâce au produit scalaire. Continue à t'entraîner avec les exercices proposés, et n'hésite pas à revenir sur les démonstrations pas à pas si une étape te semble floue."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer un produit scalaire en coordonnées.",
+                "Je sais tester l'orthogonalité de deux vecteurs.",
+                "Je sais déterminer l'équation d'un plan à partir d'un vecteur normal et d'un point.",
+                "Je sais calculer la distance d'un point à un plan.",
+                "Je sais projeter orthogonale un point sur un plan.",
+                "Je sais construire le symétrique d'un point par rapport à un plan.",
+                "Je sais évaluer la distance entre deux droites gauches."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Projetez le point $M(3,2,1)$ sur le plan $x-2y+z-4=0$.",
+              "answer": "$H\\left(\\frac{11}{3},\\frac{2}{3},\\frac{5}{3}\\right)$.",
+              "hint": "Calculez $S = ax_M+by_M+cz_M+d$ et $N = a^2+b^2+c^2$, puis $H = M - \\frac{S}{N}\\vec{n}$.",
+              "explanation": "$a=1,b=-2,c=1,d=-4$. $S = 1\\times3 + (-2)\\times2 + 1\\times1 -4 = 3-4+1-4=-4$. $N=1+4+1=6$. $\\frac{S}{N}=-\\frac{2}{3}$. $\\vec{n}=(1,-2,1)$. $\\overrightarrow{MH} = -\\frac{-4}{6}(1,-2,1) = \\frac{2}{3}(1,-2,1) = (\\frac{2}{3},-\\frac{4}{3},\\frac{2}{3})$. $H = (3,2,1)+(\\frac{2}{3},-\\frac{4}{3},\\frac{2}{3}) = (\\frac{11}{3},\\frac{2}{3},\\frac{5}{3})$."
+            },
+            {
+              "question": "Trouvez le symétrique du point $M(1,2,3)$ par rapport au plan $2x-y+3z-6=0$.",
+              "answer": "$M'\\left(\\frac{1}{7},\\frac{17}{7},\\frac{12}{7}\\right)$.",
+              "hint": "Calculez d'abord la projection $H$, puis $M' = M + 2\\overrightarrow{MH}$.",
+              "explanation": "$a=2,b=-1,c=3,d=-6$. $S = 2\\times1 + (-1)\\times2 + 3\\times3 -6 = 2-2+9-6=3$. $N=4+1+9=14$. $\\frac{S}{N}=\\frac{3}{14}$. $\\vec{n}=(2,-1,3)$. $\\overrightarrow{MH} = -\\frac{3}{14}(2,-1,3) = (-\\frac{6}{14},\\frac{3}{14},-\\frac{9}{14}) = (-\\frac{3}{7},\\frac{3}{14},-\\frac{9}{14})$. $M' = M + 2\\overrightarrow{MH} = (1,2,3) + (-\\frac{6}{7},\\frac{3}{7},-\\frac{9}{7}) = (\\frac{1}{7},\\frac{17}{7},\\frac{12}{7})$."
+            },
+            {
+              "question": "Calculez la distance entre les droites $\\mathcal{D}_1 : \\frac{x-1}{1}=\\frac{y}{1}=\\frac{z}{0}$ (vecteur directeur $(1,1,0)$, point $A_1(1,0,0)$) et $\\mathcal{D}_2 : \\frac{x}{0}=\\frac{y-1}{1}=\\frac{z-1}{1}$ (vecteur directeur $(0,1,1)$, point $A_2(0,1,1)$).",
+              "answer": "$\\frac{1}{\\sqrt{3}}$.",
+              "hint": "Utilisez $\\vec{n}=\\vec{u}_1\\times\\vec{u}_2$ et la formule de distance.",
+              "explanation": "$\\vec{u}_1=(1,1,0)$, $\\vec{u}_2=(0,1,1)$. $\\vec{n}=(1,1,0)\\times(0,1,1) = (1\\cdot1-0\\cdot1, 0\\cdot0-1\\cdot1, 1\\cdot1-1\\cdot0) = (1,-1,1)$. $\\overrightarrow{A_1A_2}=(-1,1,1)$. Produit scalaire $=-1$. Valeur absolue $1$. Norme $\\sqrt{3}$. Distance $=1/\\sqrt{3}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

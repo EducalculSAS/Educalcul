@@ -1,0 +1,401 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.895809+00:00",
+  "id": 132,
+  "code": "ce1-t07-c07",
+  "title": "Cercle et compas",
+  "description": "Cours structuré Educalcul : Cercle et compas.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Cercle et compas",
+    "objectif_global": "Cercle et compas",
+    "mini_lecons_imposees": [
+      "Centre et rayon dans un langage simple.",
+      "Tracer un cercle.",
+      "Reproduire un cercle donné."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Centre et rayon dans un langage simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cercle autour de nous"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde autour de toi : une assiette, une roue de vélo, le fond d'un verre, une pièce de $1\\,\\text{euros}$. Toutes ces formes sont rondes, sans coin ni bord droit. En géométrie, on appelle cette forme un **cercle**. C'est une ligne fermée qui tourne toujours à la même distance d'un point secret caché au milieu. Aujourd'hui, nous allons découvrir ce point secret et cette distance magique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le point central : le centre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une araignée au milieu de sa toile. Elle est à égale distance de tous les fils qui partent vers l'extérieur. Pour le cercle, c'est pareil. Il existe un point tout au milieu d'où partent tous les rayons imaginaires vers le bord. Ce point a un nom très important : c'est le **centre**. On le repère souvent avec une grande lettre comme $O$. Sans centre, impossible de dessiner un joli cercle bien rond."
+            },
+            {
+              "type": "definition",
+              "term": "Centre",
+              "definition": "Le point exactement au milieu du cercle. C'est le point de départ de tous les rayons. On le note souvent par une lettre majuscule comme $O$.",
+              "example": "Sur ton ardoise, fais un point au milieu de ta page. Ce point sera le centre $O$ de ton futur cercle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais où se cache le centre, intéressons-nous à la distance qui relie ce centre au bord. C'est elle qui décide de la taille du cercle : grande distance pour un grand cercle, petite distance pour un petit cercle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La distance du centre au bord : le rayon"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends un morceau de ficelle. Pose une extrémité sur le centre $O$ et tends l'autre jusqu'au trait du cercle. La longueur de cette ficelle, c'est le **rayon**. C'est le nom de la distance entre le centre et n'importe quel point du cercle. Si tu changes de point sur le bord, la ficelle a toujours la même longueur. C'est la règle d'or du cercle : tous les rayons ont la même mesure."
+            },
+            {
+              "type": "definition",
+              "term": "Rayon",
+              "definition": "La distance entre le centre du cercle et un point quelconque sur le cercle. Tous les rayons d'un même cercle ont la même longueur. On note souvent sa mesure par la lettre $r$.",
+              "example": "Si le rayon mesure $3\\,\\text{cm}$, alors tous les segments du centre vers le bord mesurent $3\\,\\text{cm}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as compris l'idée essentielle : le centre est le chef d'orchestre, le rayon est la baguette qui donne la taille. Dans la prochaine leçon, nous allons utiliser un outil spécial pour matérialiser cette distance sur le papier."
+            },
+            {
+              "type": "display_math",
+              "latex": "r = r = r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le dessin, pointe le centre du cercle avec ton doigt. Comment s'appelle ce point ?",
+              "answer": "Ce point s'appelle le centre, souvent noté $O$.",
+              "hint": "Cherche le point qui est exactement au milieu de la figure ronde.",
+              "explanation": "Le centre est le point unique équidistant de tous les points du cercle. C'est le point de départ pour tracer le cercle."
+            },
+            {
+              "question": "Relie le centre $O$ au point $A$ sur le cercle. Comment s'appelle ce segment $[OA]$ ?",
+              "answer": "Ce segment s'appelle un rayon du cercle.",
+              "hint": "Rappelle-toi le nom de la distance qui part du centre vers le bord.",
+              "explanation": "Le segment qui joint le centre à un point du cercle est un rayon. Tous les rayons d'un même cercle ont la même longueur."
+            },
+            {
+              "question": "Vrai ou faux ? Dans un même cercle, un rayon peut mesurer $4\\,\\text{cm}$ et un autre rayon mesurer $5\\,\\text{cm}$.",
+              "answer": "Faux. Dans un même cercle, tous les rayons ont la même longueur.",
+              "hint": "Pense à la ficelle tendue du centre vers le bord : sa longueur ne change pas.",
+              "explanation": "La définition même du cercle impose que tous les points du bord soient à la même distance du centre. Donc tous les rayons sont égaux."
+            }
+          ]
+        },
+        {
+          "title": "Tracer un cercle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'outil magique : le compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un cercle parfait, pas question de le faire à main levée : ça ferait une patate ! Les géomètres utilisent un instrument précis depuis l'Antiquité : le **compas**. Regarde le tien : il a deux jambes articulées. L'une se termine par une pointe sèche (l'aiguille), l'autre par une mine de crayon (la plume). La vis au milieu permet de bloquer l'écartement des jambes. C'est cet écartement qui fixera la longueur du rayon."
+            },
+            {
+              "type": "definition",
+              "term": "Compas",
+              "definition": "Instrument de géométrie à deux branches mobiles autour d'une vis. Une branche porte une aiguille (pointe), l'autre une mine de crayon. Il sert à tracer des cercles ou reporter des longueurs.",
+              "example": "Je règle mon compas sur $4\\,\\text{cm}$ pour tracer un cercle de rayon $4\\,\\text{cm}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer, il faut régler l'ouverture du compas. C'est l'étape la plus importante : si tu te trompes de mesure, ton cercle aura la mauvaise taille. On utilise une règle graduée pour vérifier l'écartement exact entre la pointe et la mine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Régler l'ouverture : la méthode en trois temps"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Le zéro sur la pointe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la règle bien à plat. Place le zéro de la règle exactement sur la pointe sèche du compas. Tiens fermement la règle pour qu'elle ne bouge pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : La mine sur la graduation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écarte doucement la branche crayon jusqu'à ce que la mine arrive pile sur la graduation demandée (par exemple $3\\,\\text{cm}$). Regarde bien de face pour ne pas te tromper d'un millimètre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : On serre la vis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans bouger les branches, serre la vis centrale (ou le petit écrou) pour bloquer l'écartement. Ton compas garde maintenant la mesure exacte du rayon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ton compas est prêt, il a la bonne ouverture. Il ne reste plus qu'à tracer. Le geste demande un peu de souplesse : c'est le papier qu'on tourne, pas le compas ! La pointe reste plantée au centre comme un clou."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer le cercle : le tour complet"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Planter la pointe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la pointe sèche sur le point centre $O$ que tu as marqué. Appuie légèrement pour qu'elle ne glisse pas, mais pas trop fort pour ne pas déchirer la feuille."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Incliner un peu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Incline légèrement le compas vers l'avant (dans le sens où tu vas tourner). La mine doit effleurer le papier sans appuyer trop fort, sinon le trait sera trop épais."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tourner la feuille",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec l'autre main, fais tourner la feuille d'un tour complet ($360$ degrés) pendant que tu tiens le compas immobile par sa tête. Le trait se referme tout seul. Lâche la pointe : ton cercle est né !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Nomme les deux parties du compas qui touchent le papier quand on trace.",
+              "answer": "La pointe sèche (aiguille) et la mine de crayon (plume).",
+              "hint": "Regarde le bout des deux branches de ton compas.",
+              "explanation": "La pointe fixe le centre, la mine trace le trait du cercle. La vis sert seulement à bloquer l'écartement."
+            },
+            {
+              "question": "Tu veux tracer un cercle de rayon $5\\,\\text{cm}$. Sur la règle, où doit se trouver la mine si le zéro est sur la pointe ?",
+              "answer": "La mine doit être sur la graduation $5\\,\\text{cm}$.",
+              "hint": "L'écartement entre la pointe et la mine correspond à la longueur du rayon.",
+              "explanation": "Le rayon mesure $5\\,\\text{cm}$. L'ouverture du compas doit donc être de $5\\,\\text{cm}$. On aligne le zéro sur la pointe et on place la mine sur $5$."
+            },
+            {
+              "question": "Pourquoi est-il conseillé de tourner la feuille plutôt que le compas ?",
+              "answer": "Pour garder la pointe bien fixe au centre et faire un trait régulier sans déformer le cercle.",
+              "hint": "Imagine que la pointe est un clou planté dans le bois.",
+              "explanation": "Si tu tournes le compas, la pointe risque de glisser ou de s'enfoncer trop, ce qui décentre le cercle. En tournant la feuille, le centre reste parfaitement stable."
+            }
+          ]
+        },
+        {
+          "title": "Reproduire un cercle donné.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le défi : copier un cercle sans connaître sa mesure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine : ton ami a dessiné un joli cercle sur son cahier, mais il a oublié de noter la longueur du rayon. Tu veux faire **exactement le même cercle** sur ton cahier à toi. Comment faire sans règle ? Heureusement, ton compas sait faire bien plus que tracer : il sait **mémoriser une longueur** rien qu'en l'ouvrant sur le dessin de ton ami. C'est comme s'il prenait une empreinte du cercle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prendre la mesure du rayon mystère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Posons le cercle de ton ami devant toi. Tu vois son centre $O$ (souvent marqué d'un petit trait ou d'un point). Tu vas transformer ton compas en outil de mesure. Pas besoin de chiffre, le cercle lui-même te donne la bonne ouverture."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Pointe sur le centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plante la pointe sèche de ton compas bien au milieu du cercle de ton ami, sur son centre $O$. Vérifie qu'elle ne bouge plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mine sur le bord",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écarte la branche crayon jusqu'à ce que la mine vienne se poser exactement sur la ligne du cercle. Ni dedans, ni dehors : pile sur le trait."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Bloquer et garder",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Serrer la vis sans bouger les branches. Ton compas a maintenant **en mémoire** la longueur exacte du rayon du cercle de ton ami. Ne touche plus à la vis !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as la mesure dans ton compas. Maintenant, change de feuille ou trouve une place vide sur ton cahier. Choisis un endroit pour le nouveau centre, appelle-le $O'$. Tu vas rejouer la scène de la leçon précédente, mais avec l'ouverture déjà réglée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer la copie parfaite"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Marquer le nouveau centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais un petit point bien net à l'endroit choisi pour le centre de ton cercle. Note $O'$ à côté pour ne pas l'oublier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Planter la pointe sur $O'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la pointe de ton compas (qui a gardé l'ouverture) sur ce nouveau point $O'$. Appuie juste ce qu'il faut pour qu'elle tienne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Le tour de magie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Incline légèrement le compas, et tourne ta feuille d'un tour complet. Le trait se referme : tu as obtenu un cercle **identique** au premier, même rayon, même taille. Bravo, tu as reproduit un cercle !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr que tes deux cercles sont vraiment jumeaux, tu peux superposer les feuilles devant une fenêtre ou mesurer les deux rayons à la règle. Ils doivent donner le même chiffre. Tu sais maintenant utiliser ton compas pour tracer, mesurer et copier. Tu es prêt pour des constructions plus complexes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer le centre et le rayon d'un cercle.",
+                "Je sais régler mon compas sur une longueur donnée à la règle.",
+                "Je sais tracer un cercle en tournant la feuille.",
+                "Je sais reproduire un cercle en reportant son rayon avec le compas."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu poses la pointe du compas sur le centre $O$ d'un cercle donné. Où dois-tu placer la mine pour prendre la mesure du rayon ?",
+              "answer": "La mine doit se poser exactement sur la circonférence (le trait du cercle).",
+              "hint": "Le rayon va du centre jusqu'au bord du cercle.",
+              "explanation": "L'ouverture du compas correspond à la distance centre-bord. En posant la mine sur le trait, tu captures cette distance exacte sans avoir besoin de chiffre."
+            },
+            {
+              "question": "Après avoir pris la mesure sur le cercle de ton ami, tu changes de feuille. Quelle est la toute première chose à faire avant de tracer ?",
+              "answer": "Marquer un point pour le nouveau centre $O'$ et y planter la pointe du compas.",
+              "hint": "Le centre est le point fixe autour duquel le cercle va tourner.",
+              "explanation": "Sans nouveau centre, tu ne sais pas où tracer le cercle. Le point $O'$ joue le même rôle que $O$ sur le modèle."
+            },
+            {
+              "question": "Comment vérifier que ton cercle reproduit est bien identique au modèle ?",
+              "answer": "Mesurer les deux rayons à la règle : ils doivent avoir la même longueur. Ou superposer les feuilles à la lumière.",
+              "hint": "Deux cercles de même rayon sont superposables.",
+              "explanation": "La définition du cercle dit que la taille est fixée par le rayon. Si les rayons sont égaux, les cercles sont égaux (isométriques)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Fonctions affines",
+  "title": "Applications des fonctions affines : mise en ordre",
+  "blocks": [
+    {
+      "title": "Déterminer l'expression d'une fonction affine à partir de deux points",
+      "content": "Remets dans l'ordre les étapes pour trouver l'expression de la fonction affine $f$ telle que $f(2)=5$ et $f(5)=11$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le coefficient directeur $a = \\frac{11-5}{5-2}$.",
+        "Calculer l'ordonnée à l'origine $b$ en utilisant $5 = a \\times 2 + b$.",
+        "Écrire l'expression finale $f(x) = ax + b$."
+      ],
+      "explanation": "On commence par déterminer le coefficient directeur $a$ à partir des deux points $(2,5)$ et $(5,11)$ : $a = \\frac{11-5}{5-2} = 2$. Ensuite on utilise l'un des points, par exemple $(2,5)$, pour trouver $b$ : $5 = 2 \\times 2 + b$ donc $b = 1$. Finalement on écrit la fonction affine $f(x) = 2x + 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer la représentation graphique d'une fonction affine",
+      "content": "Classe les actions dans l'ordre chronologique pour tracer le graphique de la fonction affine $g(x) = -3x + 4$ dans un repère orthonormé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer l'ordonnée à l'origine $4$ sur l'axe des ordonnées et placer le point $A(0;4)$.",
+        "Utiliser le coefficient directeur $-3$ : partir de $A$, avancer de $1$ sur l'axe des abscisses et descendre de $3$ sur l'axe des ordonnées pour obtenir le point $B(1;1)$.",
+        "Tracer la droite passant par les points $A$ et $B$."
+      ],
+      "explanation": "Le tracé d'une fonction affine se fait en deux points. D'abord on place le point d'ordonnée à l'origine $(0;4)$. Ensuite, le coefficient directeur $-3$ signifie que pour une augmentation de $1$ en $x$, $y$ diminue de $3$ ; on obtient ainsi un second point $(1;1)$. La droite passant par ces deux points est le graphique de $g$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre un problème concret avec une fonction affine",
+      "content": "Range les étapes pour résoudre le problème : « Un taxi facture une prise en charge de $2\\,€$ plus $1,50\\,€$ par kilomètre. Quel est le prix pour un trajet de $12\\,km$ ? »",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Modéliser le prix $P$ en fonction de la distance $d$ par la fonction affine $P(d) = 1,5d + 2$.",
+        "Remplacer $d$ par $12$ dans l'expression : $P(12) = 1,5 \\times 12 + 2$.",
+        "Calculer le résultat : $18 + 2 = 20\\,€$."
+      ],
+      "explanation": "Le coût fixe (prise en charge) correspond à l'ordonnée à l'origine $2$, le coût par kilomètre au coefficient directeur $1,5$. La fonction affine est donc $P(d)=1,5d+2$. En évaluant pour $d=12$, on obtient $1,5\\times12=18$, puis $18+2=20$. Le trajet coûte $20\\,€$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

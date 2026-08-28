@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 247,
+  "_course_code": "cm1-t05-c07-bilan-grandeurs-cm1",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Conversions, temps, périmètre, aire",
+  "title": "Bilan Approfondi : Conversions, Temps, Périmètre et Aire",
+  "questions": [
+    {
+      "text": "Un élève doit convertir une longueur de $2 \\text{ km } 450 \\text{ m}$ en mètres seulement. Quelle est la bonne écriture ?",
+      "options": [
+        "2 450 m",
+        "2 045 m",
+        "2 405 m",
+        "24 500 m"
+      ],
+      "correctAnswer": "2 450 m",
+      "explanation": "Pour convertir en mètres, on écrit les kilomètres en mètres : $2 \\text{ km} = 2 \\times 1000 = 2000 \\text{ m}$. On ajoute ensuite les mètres restants : $2000 + 450 = 2450 \\text{ m}$. L'erreur '2 045 m' correspond à une confusion sur la place des centaines (450 vs 045). L'erreur '2 405 m' inverse les chiffres 4 et 0. L'erreur '24 500 m' correspond à une multiplication par 100 au lieu de 1000 pour les km.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un film commence à $14 \\text{ h } 20$ et se termine à $16 \\text{ h } 05$. Quelle est la durée du film ?",
+      "options": [
+        "1 h 45 min",
+        "2 h 15 min",
+        "1 h 85 min",
+        "2 h 25 min"
+      ],
+      "correctAnswer": "1 h 45 min",
+      "explanation": "On calcule par paliers : de $14 \\text{ h } 20$ à $15 \\text{ h } 20$, il s'écoule $1 \\text{ h}$. De $15 \\text{ h } 20$ à $16 \\text{ h } 05$, on ne peut pas aller jusqu'à $16 \\text{ h } 20$. On va de $15 \\text{ h } 20$ à $16 \\text{ h } 00$ ($40 \\text{ min}$) puis de $16 \\text{ h } 00$ à $16 \\text{ h } 05$ ($5 \\text{ min}$). Total : $1 \\text{ h } + 40 \\text{ min } + 5 \\text{ min} = 1 \\text{ h } 45 \\text{ min}$. L'option '1 h 85 min' n'est pas une écriture conventionnelle (il faut convertir 85 min en 1 h 25 min). L'option '2 h 15 min' correspond à une addition directe incorrecte ($14+2=16$, $20+5=25$...).",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 14,
+        "minutes": 20,
+        "caption": "Heure de début du film",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un rectangle a une longueur de $12 \\text{ cm}$ et une largeur de $5 \\text{ cm}$. Quelle est la formule et le résultat pour calculer son périmètre ?",
+      "options": [
+        "($12 + 5$) $\\times 2 = 34 \\text{ cm}$",
+        "$12 \\times 5 = 60 \\text{ cm}$",
+        "$12 + 5 = 17 \\text{ cm}$",
+        "$12 \\times 2 + 5 = 29 \\text{ cm}$"
+      ],
+      "correctAnswer": "($12 + 5$) $\\times 2 = 34 \\text{ cm}$",
+      "explanation": "Le périmètre d'un rectangle se calcule en ajoutant la longueur et la largeur, puis en multipliant la somme par 2 (car il y a deux longueurs et deux largeurs). Formule : $P = (L + l) \\times 2$. Calcul : $(12 + 5) \\times 2 = 17 \\times 2 = 34 \\text{ cm}$. L'option '$12 \\times 5$' calcule l'aire. L'option '$12 + 5$' ne fait que la demi-somme des côtés. L'option '$12 \\times 2 + 5$' oublie de doubler la largeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer l'aire d'un carré de côté $8 \\text{ cm}$. Un élève propose les calculs suivants. Lequel est correct ?",
+      "options": [
+        "$8 \\times 8 = 64 \\text{ cm}^2$",
+        "$8 + 8 + 8 + 8 = 32 \\text{ cm}^2$",
+        "$8 \\times 4 = 32 \\text{ cm}^2$",
+        "$8 + 8 = 16 \\text{ cm}^2$"
+      ],
+      "correctAnswer": "$8 \\times 8 = 64 \\text{ cm}^2$",
+      "explanation": "L'aire d'un carré se calcule en multipliant la mesure du côté par elle-même : $A = c \\times c$. Ici $8 \\times 8 = 64$. L'unité d'aire est le centimètre carré ($\\text{cm}^2$). Les autres options correspondent au calcul du périmètre ($8 \\times 4$ ou $8+8+8+8 = 32 \\text{ cm}$) ou à une addition partielle ($8+8=16$), et utilisent à tort l'unité $\\text{cm}^2$ pour une longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une salle de classe rectangulaire mesure $8 \\text{ m}$ de long et $6 \\text{ m}$ de large. On veut poser un carrelage au sol. Chaque carreau est un carré de $50 \\text{ cm}$ de côté. Combien de carreaux faut-il pour couvrir le sol ?",
+      "options": [
+        "192 carreaux",
+        "96 carreaux",
+        "48 carreaux",
+        "9 600 carreaux"
+      ],
+      "correctAnswer": "192 carreaux",
+      "explanation": "Il faut travailler dans la même unité. Convertissons les dimensions de la salle en cm : $8 \\text{ m} = 800 \\text{ cm}$ et $6 \\text{ m} = 600 \\text{ cm}$. Aire de la salle : $800 \\times 600 = 480 000 \\text{ cm}^2$. Aire d'un carreau : $50 \\times 50 = 2 500 \\text{ cm}^2$. Nombre de carreaux : $480 000 \\div 2 500 = 192$. Autre méthode : sur la longueur, $800 \\div 50 = 16$ carreaux. Sur la largeur, $600 \\div 50 = 12$ carreaux. Total : $16 \\times 12 = 192$. L'erreur '96' vient d'un oubli de conversion (calcul en m : $8 \\times 6 = 48 \\text{ m}^2$, $0,5 \\times 0,5 = 0,25 \\text{ m}^2$, $48 \\div 0,25 = 192$... mais si on fait $48 \\div 0,5 = 96$). L'erreur '48' est l'aire en $\\text{m}^2$. L'erreur '9 600' vient d'une erreur de conversion ($800 \\times 600 = 48 000$ au lieu de 480 000).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.922542+00:00",
+  "id": 463,
+  "code": "3eme-t02-c03",
+  "title": "Équations",
+  "description": "Cours structuré Educalcul : Équations.",
+  "subject": "Calcul littéral, équations et inéquations",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Calcul littéral, équations et inéquations",
+    "titre_du_cours": "Équations",
+    "objectif_global": "Équations",
+    "mini_lecons_imposees": [
+      "Premier degré.",
+      "Produit nul si prévu.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral, équations et inéquations",
+      "lessons": [
+        {
+          "title": "Premier degré.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es devant une balance à deux plateaux parfaitement à l'équilibre. Sur le plateau de gauche, tu as un coffre mystérieux dont tu ignores le poids, que nous appellerons $x$, et $3$ petits poids de $1$ $kg$ chacun. Sur le plateau de droite, tu as $7$ poids de $1$ $kg$. Pour que la balance reste bien droite, le total à gauche doit être exactement égal au total à droite. C'est précisément cela, une équation. On cherche la valeur cachée de $x$ pour que l'égalité soit vraie. Dans la vie, on utilise cela sans s'en rendre compte, par exemple quand on calcule combien d'argent il nous manque pour s'acheter un jeu vidéo à $60$ $ euros$ alors qu'on a déjà $25$ $ euros$ dans sa tirelire. On pose alors inconsciemment l'équation $25 + x = 60$. Apprendre à résoudre ces équations, c'est comme apprendre à déjouer une énigme mathématique en utilisant des règles de logique très précises pour isoler l'inconnue."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation du premier degré à une inconnue est une égalité où l'un des termes contient une lettre, généralement $x$, appelée l'inconnue. On dit qu'elle est du premier degré car l'exposant de $x$ est $1$ (on n'a pas de $x^{2}$ ou $x^{3}$). Résoudre l'équation signifie trouver la valeur numérique unique de $x$ qui rend l'égalité vraie. Pour cela, on utilise le principe fondamental de l'égalité : tout ce que l'on fait d'un côté du signe égale, on doit obligatoirement le faire de l'autre côté pour ne pas rompre l'équilibre. Si j'ajoute $2$ à gauche, je dois ajouter $2$ à droite. Si je divise par $3$ à gauche, je dois diviser par $3$ à droite. L'objectif final est d'arriver à une forme très simple : $x = nombre$. À ce moment là, l'énigme est résolue et on a trouvé la solution de l'équation. On parle alors de l'ensemble des solutions, noté $S$, qui contient la valeur trouvée."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "x",
+                "+3"
+              ],
+              "rightTerms": [
+                "7"
+              ],
+              "caption": "L'équilibre d'une équation : $x + 3 = 7$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre une équation du premier degré, on suit une stratégie de nettoyage pour isoler $x$ tout seul d'un côté. Étape 1 : On regroupe les termes contenant $x$ d'un côté et les nombres de l'autre. Pour déplacer un nombre, on utilise l'opération inverse. Si on a $+5$, on fait $-5$ des deux côtés. Si on a $-8$, on fait $+8$ des deux côtés. Étape 2 : On simplifie les calculs de chaque côté pour obtenir une expression du type $ax = b$, où $a$ est le coefficient de $x$. Étape 3 : On élimine le coefficient $a$ pour laisser $x$ totalement seul. Comme $ax$ signifie $a$ multiplié par $x$, l'opération inverse est la division. On divise donc les deux membres de l'équation par $a$. Attention, on ne peut diviser que si $a$ n'est pas égal à $0$. Une fois cette étape franchie, on obtient la valeur finale de $x$. Il est toujours prudent de remplacer $x$ par ce résultat dans l'équation de départ pour vérifier que l'équilibre est bien respecté."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'équation suivante : $x + 15 = 37$. Ici, nous voulons laisser $x$ tout seul à gauche. Actuellement, $x$ est accompagné d'un $+15$. Pour supprimer ce $+15$, nous allons effectuer l'opération inverse, c'est-à-dire soustraire $15$ des deux côtés de l'égalité. Le calcul devient donc : $x + 15 - 15 = 37 - 15$. À gauche, $15 - 15$ s'annule, il ne reste donc que $x$. À droite, on effectue la soustraction : $37 - 15 = 22$. Nous arrivons ainsi au résultat $x = 22$. Pour vérifier, on remplace $x$ par $22$ dans l'énoncé : $22 + 15$ font bien $37$. L'égalité est vérifiée, la solution est donc $22$. On écrit $S = \\{22\\}$. C'est un exemple simple où une seule opération a suffi pour isoler l'inconnue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant une équation un peu plus musclée : $4x - 7 = 13$. Ici, $x$ est multiplié par $4$ et on lui a soustrait $7$. On suit notre méthode pas à pas. D'abord, on s'occupe du terme constant $-7$. L'inverse de $-7$ est $+7$. On ajoute $7$ des deux côtés : $4x - 7 + 7 = 13 + 7$, ce qui nous donne $4x = 20$. Maintenant, nous avons $x$ multiplié par $4$. Pour l'isoler, on divise les deux membres par $4$. Le calcul devient : $\\frac{4x}{4} = \\frac{20}{4}$. On simplifie et on obtient $x = 5$. C'est terminé. Vérifions ensemble : si on remplace $x$ par $5$ dans $4x - 7$, on obtient $4 \\times 5 - 7 = 20 - 7 = 13$. Le résultat est identique au membre de droite. La solution est donc $5$. On note $S = \\{5\\}$. On voit bien que l'ordre des opérations est crucial : on gère d'abord les additions et soustractions avant de s'attaquer à la multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est l'oubli du changement de signe lors du déplacement d'un nombre. Par exemple, face à $x + 3 = 10$, certains élèves écrivent $x = 10 + 3$ au lieu de $x = 10 - 3$. Rappelle toi toujours que pour déplacer un terme, tu appliques l'opération inverse. Un autre piège classique arrive avec les coefficients négatifs. Si tu as $-2x = 10$, tu dois diviser par $-2$ et non par $2$. Le résultat sera $x = -5$. Beaucoup d'élèves oublient aussi de diviser l'intégralité du membre de droite. Par exemple, pour $3x = 12 + 6$, il faut d'abord calculer $12 + 6 = 18$, puis diviser $18$ par $3$. Enfin, attention à ne pas confondre $2x$ (qui est $2$ fois $x$) avec $x + 2$. Ce sont deux opérations totalement différentes qui demandent des méthodes de résolution opposées : la division pour l'un, la soustraction pour l'autre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation suivante : $x - 12 = 25$. Quelle est la valeur de $x$ ?",
+              "answer": "37",
+              "hint": "L'inverse de soustraire $12$ est ajouter $12$. Fais-le des deux côtés.",
+              "explanation": "On a $x - 12 = 25$. On ajoute $12$ des deux côtés : $x - 12 + 12 = 25 + 12$, donc $x = 37$."
+            },
+            {
+              "question": "Trouve la solution de l'équation $5x = 45$.",
+              "answer": "9",
+              "hint": "$5x$ signifie $5 \\times x$. Quelle est l'opération inverse de la multiplication ?",
+              "explanation": "L'inverse de la multiplication par $5$ est la division par $5$. On a $x = 45 / 5$, donc $x = 9$."
+            },
+            {
+              "question": "Résous l'équation $3x + 4 = 19$.",
+              "answer": "5",
+              "hint": "D'abord, déplace le $+4$ en faisant $-4$ des deux côtés, puis divise par $3$.",
+              "explanation": "$3x + 4 = 19 \\rightarrow 3x = 19 - 4 \\rightarrow 3x = 15 \\rightarrow x = 15 / 3 \\rightarrow x = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Produit nul si prévu.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As tu déjà remarqué qu'en mathématiques, le chiffre $0$ a un super-pouvoir ? Imagine que je te dise : Je pense à deux nombres, je les multiplie entre eux, et le résultat est $0$. Que peux tu en déduire ? C'est assez simple : pour obtenir zéro, il faut obligatoirement que l'un des deux nombres soit zéro, ou alors que les deux le soient. C'est comme si tu avais un coffre-fort avec deux serrures différentes. Pour ouvrir le coffre (pour que le produit soit nul), il suffit qu'une seule des deux clés soit la bonne. Cette propriété est incroyablement puissante car elle nous permet de transformer une équation qui a l'air très compliquée, avec des $x^{2}$, en deux petites équations très simples du premier degré. On ne cherche plus une seule valeur, mais potentiellement plusieurs valeurs qui pourraient rendre l'expression nulle."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équation produit nul repose sur une propriété fondamentale : un produit de facteurs est nul si, et seulement si, au moins l'un des facteurs est nul. Mathématiquement, on l'écrit : si $(ax + b)(cx + d) = 0$, alors soit $ax + b = 0$, soit $cx + d = 0$. C'est une notion cruciale en 3e car elle permet de résoudre des équations du second degré sans utiliser de formules complexes. Le secret est de toujours présenter l'équation sous la forme d'un produit égal à zéro. Si l'équation n'est pas factorisée, il faut d'abord utiliser les techniques de factorisation (comme le facteur commun ou les identités remarquables) pour y arriver. Une fois l'expression factorisée, on sépare le problème en deux branches indépendantes. On résout chaque branche comme une équation classique du premier degré. À la fin, on rassemble toutes les solutions trouvées dans l'ensemble $S$. Il est possible d'avoir une seule solution, deux solutions, ou même aucune si l'une des branches est impossible."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\times B = 0 \\iff A = 0 \\text{ ou } B = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre une équation produit nul, suis scrupuleusement ces étapes. Étape 1 : Se mettre sous forme produit. L'équation doit impérativement être de la forme $\\text{quelque chose} \\times \\text{quelque chose} = 0$. Si tu as une expression comme $x^{2} - 9 = 0$, utilise l'identité remarquable $(x-3)(x+3) = 0$. Étape 2 : Séparer les facteurs. Tu écris distinctement : Premier facteur $= 0$ OU Second facteur $= 0$. Le mot OU est très important car il indique que l'une ou l'autre des conditions suffit. Étape 3 : Résoudre chaque petite équation. Tu résous la première équation pour trouver $x_{1}$, puis tu résous la deuxième pour trouver $x_{2}$. Étape 4 : Conclure. Tu listes toutes les solutions trouvées. Par exemple, si tu as trouvé $3$ et $-2$, tu écris $S = \\{-2 ; 3\\}$. N'oublie pas de classer les nombres dans l'ordre croissant dans ton ensemble de solutions pour être bien rigoureux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons l'équation $(x - 5)(2x + 8) = 0$. On voit tout de suite que c'est un produit de deux facteurs qui est égal à zéro. Selon la propriété du produit nul, cela signifie que soit le premier facteur est nul, soit le second l'est. Cas 1 : $x - 5 = 0$. Pour isoler $x$, on ajoute $5$ des deux côtés, ce qui nous donne $x = 5$. Cas 2 : $2x + 8 = 0$. Ici, on déplace d'abord le $8$ : $2x = -8$. Ensuite, on divise par $2$ : $x = -8 / 2$, donc $x = -4$. Nous avons donc trouvé deux valeurs possibles pour $x$ qui rendent l'équation vraie : $5$ et $-4$. On vérifie rapidement : si $x = 5$, le premier crochet devient $0$, et $0 \\times \\text{n'importe quoi} = 0$. Si $x = -4$, le second crochet devient $0$, et $\\text{n'importe quoi} \\times 0 = 0$. Les deux fonctionnent ! On écrit l'ensemble des solutions : $S = \\{-4 ; 5\\}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas où l'équation n'est pas factorisée au départ : $x^{2} - 7x = 0$. Au premier regard, on voit un $x^{2}$, ce qui peut faire peur. Mais regarde bien : $x$ est un facteur commun aux deux termes. On peut donc factoriser par $x$. L'équation devient : $x(x - 7) = 0$. Maintenant, nous avons un produit nul avec deux facteurs : le premier est $x$ et le second est $(x - 7)$. Appliquons la méthode. Premier cas : $x = 0$. C'est déjà résolu ! La première solution est $0$. Deuxième cas : $x - 7 = 0$. On ajoute $7$ des deux côtés pour isoler $x$, on obtient $x = 7$. Nous avons donc deux solutions : $0$ et $7$. Faisons le test : si $x = 0$, alors $0^{2} - 7 \\times 0 = 0 - 0 = 0$. Si $x = 7$, alors $7^{2} - 7 \\times 7 = 49 - 49 = 0$. Tout est correct. On note $S = \\{0 ; 7\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus redoutable est d'essayer de diviser par $x$ pour simplifier l'équation. Par exemple, dans $x(x-7)=0$, certains élèves divisent par $x$ et trouvent seulement $x=7$. C'est une erreur grave car en divisant par $x$, on suppose que $x$ n'est pas nul, et on supprime ainsi la solution $x=0$ ! Ne divise jamais par une expression contenant l'inconnue. Un autre piège est l'oubli d'une des deux solutions. On a tendance à s'arrêter dès qu'on a trouvé le premier $x$, mais un produit nul offre souvent deux chemins. Pense toujours à vérifier combien de facteurs tu as au départ pour savoir combien de solutions tu dois potentiellement chercher. Enfin, attention aux erreurs de signes dans les petites équations. Un $x + 2 = 0$ donne $x = -2$ et non $x = 2$. Prends le temps de bien écrire chaque étape de résolution pour chaque facteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation $(x + 4)(x - 9) = 0$.",
+              "answer": "-4 et 9",
+              "hint": "Sépare l'équation en deux : $x + 4 = 0$ et $x - 9 = 0$.",
+              "explanation": "$x + 4 = 0 \\rightarrow x = -4$ et $x - 9 = 0 \\rightarrow x = 9$. Les solutions sont $-4$ et $9$."
+            },
+            {
+              "question": "Trouve les solutions de $3x(x - 2) = 0$.",
+              "answer": "0 et 2",
+              "hint": "Ici, les deux facteurs sont $3x$ et $(x - 2)$.",
+              "explanation": "$3x = 0 \\rightarrow x = 0$ et $x - 2 = 0 \\rightarrow x = 2$. Les solutions sont $0$ et $2$."
+            },
+            {
+              "question": "Résous l'équation $(2x - 10)(x + 1) = 0$.",
+              "answer": "5 et -1",
+              "hint": "Résous $2x - 10 = 0$ puis $x + 1 = 0$.",
+              "explanation": "$2x - 10 = 0 \\rightarrow 2x = 10 \\rightarrow x = 5$. Et $x + 1 = 0 \\rightarrow x = -1$. Les solutions sont $5$ et $-1$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu as passé des heures à résoudre un puzzle complexe. Une fois la dernière pièce posée, tu regardes l'image globale pour être sûr qu'il n'y a pas de pièce mal placée. En mathématiques, vérifier une solution, c'est exactement cela. C'est le moment où tu passes du rôle de celui qui cherche à celui qui contrôle. C'est une étape extrêmement gratifiante car elle te permet d'arriver à la fin de ton exercice avec une certitude absolue : tu sais que ta réponse est juste sans même avoir besoin que le professeur corrige ta copie. C'est comme avoir un correcteur automatique intégré dans ton cerveau. Que ce soit pour une équation simple ou un produit nul, la vérification est l'assurance vie de l'élève rigoureux. Elle permet de détecter une petite erreur de signe ou une division oubliée qui aurait pu fausser tout le résultat final."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifier une solution consiste à tester si le nombre trouvé rend l'égalité de l'équation initialement donnée vraie. On ne revient pas sur les étapes de résolution (car si tu as fait une erreur dans ta méthode, tu risques de répéter la même erreur en relisant), mais on repart de l'énoncé brut. On remplace chaque occurrence de la lettre $x$ par la valeur numérique trouvée. Ensuite, on calcule séparément la valeur du membre de gauche et la valeur du membre de droite. Si les deux résultats sont identiques, alors la valeur est bien une solution de l'équation. Si les résultats sont différents, même d'une seule unité, alors la valeur n'est pas une solution. Cela signifie soit que tu as fait une erreur dans tes calculs de vérification, soit que ta résolution initiale était fausse. Pour les équations produit nul, on vérifie généralement chaque solution l'une après l'autre, car chacune doit rendre l'un des facteurs nul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Remplacement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On remplace $x$ par la valeur trouvée dans l'équation initiale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcul séparé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule le membre de gauche, puis le membre de droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si Gauche = Droite, la solution est validée !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la marche à suivre pour une vérification parfaite et sans erreur. Étape 1 : On reprend l'équation telle qu'elle était écrite au tout début de l'exercice. Étape 2 : On remplace systématiquement $x$ par la valeur trouvée, en utilisant des parenthèses pour ne pas se tromper avec les signes, surtout s'il s'agit d'un nombre négatif. Étape 3 : On calcule le membre de gauche en respectant strictement les priorités opératoires (multiplications avant additions). Étape 4 : On calcule le membre de droite. Étape 5 : On compare les deux résultats. S'ils sont égaux, on écrit : L'égalité est vérifiée, donc $x = valeur$ est bien solution. Sinon, on réexamine la résolution. Par exemple, pour $2x + 3 = 11$ avec $x = 4$, on calcule $2 \\times 4 + 3 = 8 + 3 = 11$. Comme on a $11$ à gauche et $11$ à droite, c'est validé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions si $x = 3$ est solution de l'équation $4x - 5 = 7$. On commence par remplacer $x$ par $3$ dans le membre de gauche : $4 \\times 3 - 5$. On effectue la multiplication en priorité : $12 - 5 = 7$. Maintenant, on regarde le membre de droite de l'équation originale : il vaut $7$. On compare les deux résultats : $7 = 7$. L'égalité est parfaitement respectée. Nous pouvons donc affirmer avec certitude que $3$ est bien la solution de cette équation. Si nous avions trouvé $x = 4$, le calcul aurait donné $4 \\times 4 - 5 = 16 - 5 = 11$. Comme $11$ est différent de $7$, nous aurions su immédiatement que $4$ n'était pas la bonne réponse et qu'il fallait reprendre les calculs de résolution."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions si $x = 2$ est solution de l'équation produit nul $(x - 2)(3x + 1) = 0$. On remplace $x$ par $2$ dans l'expression : $(2 - 2)(3 \\times 2 + 1)$. On calcule d'abord l'intérieur des parenthèses. La première parenthèse donne $2 - 2 = 0$. La deuxième parenthèse donne $3 \\times 2 + 1 = 6 + 1 = 7$. L'expression devient alors $0 \\times 7$. Or, nous savons que n'importe quel nombre multiplié par $0$ donne $0$. Le résultat final est donc $0$. Comme le membre de droite de l'équation est également $0$, l'égalité $0 = 0$ est vraie. La valeur $x = 2$ est donc bien une solution. On remarque ici que le premier facteur est devenu nul, ce qui a suffi à rendre tout le produit nul, confirmant ainsi la théorie apprise dans la leçon précédente."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente lors de la vérification est de mélanger les deux membres de l'équation au lieu de les calculer séparément. Certains élèves essaient de résoudre à nouveau l'équation au lieu de simplement tester la valeur. Un autre piège majeur concerne les priorités de calcul. Par exemple, dans $3 + 2x$, si $x = 5$, certains font $(3 + 2) \\times 5 = 25$ au lieu de $3 + (2 \\times 5) = 13$. Souvenez-vous que la multiplication est toujours prioritaire ! Enfin, faites très attention aux signes moins. Si vous devez remplacer $x$ par $-3$ dans l'expression $x^2$, écrivez bien $(-3)^2$ ce qui donne $9$, et non $-3^2$ qui donnerait $-9$. L'utilisation systématique des parenthèses lors du remplacement de $x$ est la meilleure méthode pour éviter ces erreurs bêtes qui pourraient vous faire croire à tort que votre solution est fausse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si $x = 6$ est solution de l'équation $2x + 3 = 15$. Justifie ton résultat.",
+              "answer": "Oui",
+              "hint": "Calcule $2 \\times 6 + 3$ et regarde si tu trouves $15$.",
+              "explanation": "$2 \\times 6 + 3 = 12 + 3 = 15$. Le membre de gauche est égal au membre de droite, donc $x = 6$ est solution."
+            },
+            {
+              "question": "Est-ce que $x = -2$ est solution de $5x - 4 = 6$ ?",
+              "answer": "Non",
+              "hint": "Attention au signe moins : $5 \\times (-2)$ donne quoi ?",
+              "explanation": "$5 \\times (-2) - 4 = -10 - 4 = -14$. Comme $-14$ est différent de $6$, $x = -2$ n'est pas solution."
+            },
+            {
+              "question": "Vérifie si $x = 1$ est solution de $(x - 1)(2x + 5) = 0$.",
+              "answer": "Oui",
+              "hint": "Calcule la valeur du premier facteur $(x - 1)$ avec $x = 1$.",
+              "explanation": "$(1 - 1) \\times (2 \\times 1 + 5) = 0 \\times 7 = 0$. L'égalité $0=0$ est vraie, donc $x=1$ est solution."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

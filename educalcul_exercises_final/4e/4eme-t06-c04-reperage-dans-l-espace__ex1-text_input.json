@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Coordonnées / vues selon programme",
+  "title": "Repérage dans l'espace : coordonnées et vues",
+  "blocks": [
+    {
+      "title": "Projection sur un plan",
+      "content": "Dans un repère orthonormé (O ; $\\vec{i}$, $\\vec{j}$, $\\vec{k}$), le point A a pour coordonnées $(2; -1; 3)$. Quelles sont les coordonnées de sa projection orthogonale sur le plan $xOy$ ?",
+      "correctAnswer": "(2; -1; 0)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La projection orthogonale sur le plan $xOy$ conserve les coordonnées $x$ et $y$ et annule la coordonnée $z$. Donc $(2; -1; 3)$ devient $(2; -1; 0)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Sommet opposé d'un cube",
+      "content": "Un cube de côté $4$ cm est placé dans un repère orthonormé de telle sorte qu'un de ses sommets est à l'origine $O(0;0;0)$ et ses arêtes sont portées par les demi-axes positifs. Donne les coordonnées du sommet opposé à $O$.",
+      "correctAnswer": "(4; 4; 4)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le cube a ses arêtes sur les axes positifs, donc le sommet opposé à l'origine est à une distance du côté selon chaque axe. Avec un côté de $4$, les coordonnées sont $(4; 4; 4)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées à partir des vues",
+      "content": "Un point P a pour coordonnées $(x; y; z)$. Sa projection sur le plan $xOy$ (vue de dessus) est le point $(3; -2)$ et sa projection sur le plan $xOz$ (vue de face) est le point $(3; 5)$. Détermine les coordonnées de P.",
+      "correctAnswer": "(3; -2; 5)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La projection sur $xOy$ donne $x=3$ et $y=-2$. La projection sur $xOz$ donne $x=3$ et $z=5$. Donc P a pour coordonnées $(3; -2; 5)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

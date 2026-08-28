@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Bilan - Statistiques et probabilités Seconde",
+  "title": "Bilan - Statistiques et probabilités Seconde",
+  "questions": [
+    {
+      "text": "Dans une enquête, on interroge deux cents élèves de seconde sur leur moyen de transport préféré pour se rendre au lycée. Parmi les propositions suivantes, laquelle correspond au caractère étudié ?",
+      "options": [
+        "Le nombre d'élèves interrogés",
+        "Le moyen de transport préféré",
+        "La classe des élèves",
+        "L'effectif total de l'enquête"
+      ],
+      "correctAnswer": "Le moyen de transport préféré",
+      "explanation": "Le caractère étudié est la propriété, qualitative ou quantitative, que l'on observe sur chaque individu de la population. Ici, on observe le moyen de transport préféré pour chaque élève. Le nombre d'élèves interrogés est la taille de la population (ou effectif total), et la classe est une caractéristique des individus mais pas le caractère principal de cette étude statistique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On relève les notes sur vingt d'un devoir de mathématiques pour une classe de quatorze élèves. Le tableau ci-dessous donne la répartition des notes.\\nNote : $10$ ; Effectif : $3$\\nNote : $12$ ; Effectif : $5$\\nNote : $14$ ; Effectif : $2$\\nNote : $16$ ; Effectif : $4$\\nQuelle est la moyenne exacte de cette série statistique ?",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "13,5"
+      ],
+      "correctAnswer": "13",
+      "explanation": "La moyenne est la somme des valeurs multipliées par leurs effectifs respectifs, divisée par l'effectif total. Somme = $(10 \\times 3) + (12 \\times 5) + (14 \\times 2) + (16 \\times 4) = 30 + 60 + 28 + 64 = 182$. Effectif total = $3 + 5 + 2 + 4 = 14$. Moyenne = $182 / 14 = 13$. L'option 12 correspond à la médiane (la 7e et 8e valeur sont 12), l'option 14 est la valeur la plus fréquente après 12 (mode), et 13,5 est une approximation erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une série statistique dont le diagramme en boîte (boîte à moustaches) a pour valeurs caractéristiques : minimum $10$, premier quartile $15$, médiane $20$, troisième quartile $25$, maximum $30$. Quel pourcentage des valeurs de cette série est compris entre $15$ et $25$ ?",
+      "options": [
+        "25 %",
+        "50 %",
+        "75 %",
+        "100 %"
+      ],
+      "correctAnswer": "50 %",
+      "explanation": "Sur un diagramme en boîte, la boîte elle-même (entre le premier quartile $Q_1$ et le troisième quartile $Q_3$) contient exactement 50 % des valeurs de la série statistique. Ici, $Q_1 = 15$ et $Q_3 = 25$. L'intervalle $[15 ; 25]$ correspond donc à l'intervalle interquartile qui contient 50 % des données. 25 % correspondrait à un quart (ex: entre min et $Q_1$), 75 % à trois quarts, et 100 % à l'étendue totale.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte de la série statistique",
+        "min": 10,
+        "q1": 15,
+        "median": 20,
+        "q3": 25,
+        "max": 30
+      }
+    },
+    {
+      "text": "On pioche une carte au hasard dans un jeu de trente-deux cartes classique. On considère les événements : $A$ : \"La carte est un roi\" et $B$ : \"La carte est un cœur\". Quelle est la probabilité de l'événement $A \\cup B$ (roi ou cœur) ?",
+      "options": [
+        "12/32",
+        "11/32",
+        "13/32",
+        "3/8"
+      ],
+      "correctAnswer": "11/32",
+      "explanation": "Il y a 4 rois et 8 cœurs dans un jeu de 32 cartes. Le roi de cœur est compté dans les deux groupes. La formule de l'union est $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. $P(A) = 4/32$, $P(B) = 8/32$, $P(A \\cap B) = 1/32$ (le roi de cœur). Donc $P(A \\cup B) = 4/32 + 8/32 - 1/32 = 11/32$. L'option 12/32 oublie de retirer l'intersection (double comptage du roi de cœur). 3/8 vaut 12/32. 13/32 n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un lycée, on interroge deux cents élèves sur leur consommation de boissons énergisantes. Le tableau de contingence ci-dessous résume les résultats.\\n          | Boit | Ne boit pas | Total\\nHomme     | 30   | 70          | 100\\nFemme     | 20   | 80          | 100\\nTotal     | 50   | 150         | 200\\nOn choisit un élève au hasard. Sachant que cet élève boit des boissons énergisantes, quelle est la probabilité qu'il s'agisse d'un homme ?",
+      "options": [
+        "0,15",
+        "0,3",
+        "0,6",
+        "0,75"
+      ],
+      "correctAnswer": "0,6",
+      "explanation": "Il s'agit d'une probabilité conditionnelle : $P(\\text{Homme} | \\text{Boit})$. On se place dans la colonne \"Boit\" (effectif total 50). Parmi ces 50 élèves, 30 sont des hommes. La probabilité cherchée est donc $30 / 50 = 3/5 = 0,6$. L'option 0,15 correspond à $30/200$ (probabilité \"Homme et Boit\"). L'option 0,3 correspond à $30/100$ (probabilité \"Homme\" dans la population totale). L'option 0,75 n'a pas de sens direct ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 130,
+  "_course_code": "ce1-t07-c05-segments-et-milieu",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Mesurer un segment",
+  "title": "Mesurer un segment : algorithmes simples",
+  "blocks": [
+    {
+      "title": "Placer la règle correctement",
+      "content": "On a un segment $AB$ de longueur $7$ cm. Écris l'algorithme (ou la suite d'étapes) pour mesurer ce segment avec une règle graduée en centimètres.",
+      "correctAnswer": "1. Poser la règle sur le segment.\\n2. Aligner le zéro de la règle avec le point $A$.\\n3. Lire la graduation qui coïncide avec le point $B$.\\n4. La mesure lue est la longueur du segment en centimètres.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour mesurer un segment, il faut placer la règle de manière que le zéro corresponde au point de départ, puis lire la valeur au point d'arrivée. Ici, le zéro sur $A$ donne $7$ cm au point $B$.",
+      "points": 2,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 7,
+        "unit": "cm",
+        "caption": "Segment AB de 7 cm"
+      }
+    },
+    {
+      "title": "Mesurer et comparer deux segments",
+      "content": "On a deux segments $CD$ de $5$ cm et $EF$ de $8$ cm. Écris un algorithme qui compare leurs longueurs et affiche lequel est le plus long.",
+      "correctAnswer": "1. Mesurer le segment $CD$ : longueur $5$ cm.\\n2. Mesurer le segment $EF$ : longueur $8$ cm.\\n3. Comparer les deux nombres : $5$ < $8$.\\n4. Afficher : le segment $EF$ est plus long que le segment $CD$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On mesure chaque segment, on obtient deux nombres. Le plus grand nombre correspond au segment le plus long. Ici $8$ cm > $5$ cm, donc $EF$ est le plus long.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Additionner deux segments consécutifs",
+      "content": "Les points $G$, $H$, $I$ sont alignés dans cet ordre. Le segment $GH$ mesure $4$ cm et $HI$ mesure $6$ cm. Écris un algorithme qui calcule la longueur du segment $GI$.",
+      "correctAnswer": "1. Lire la longueur de $GH$ : $4$ cm.\\n2. Lire la longueur de $HI$ : $6$ cm.\\n3. Additionner les deux longueurs : $4 + 6 = 10$.\\n4. La longueur du segment $GI$ est $10$ cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quand trois points sont alignés dans l'ordre $G$, $H$, $I$, la longueur $GI$ est la somme des longueurs $GH$ et $HI$. L'addition donne $10$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

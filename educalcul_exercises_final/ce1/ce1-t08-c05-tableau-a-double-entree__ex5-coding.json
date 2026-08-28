@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Repérer ligne et colonne",
+  "title": "Repérer ligne et colonne dans un tableau à double entrée",
+  "blocks": [
+    {
+      "title": "Repérer une case par sa ligne et sa colonne",
+      "content": "Dans un tableau à double entrée de trois lignes et trois colonnes, écris en langage naturel un algorithme pour trouver la case qui se trouve à la ligne deux et à la colonne trois.",
+      "correctAnswer": "Algorithme : 1. Place-toi sur la première ligne. 2. Descends d'une ligne pour arriver à la ligne deux. 3. Place-toi sur la première colonne. 4. Avance de deux colonnes pour arriver à la colonne trois. 5. La case à l'intersection de la ligne deux et de la colonne trois est la case cherchée.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par repérer la ligne en comptant depuis le haut. La ligne deux est la deuxième ligne. Ensuite on repère la colonne en comptant depuis la gauche. La colonne trois est la troisième colonne. L'intersection donne la case demandée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec numéros de ligne et de colonne variables",
+      "content": "On a un tableau à double entrée de quatre lignes et cinq colonnes. Les lignes sont numérotées de un à quatre et les colonnes de un à cinq. Écris une suite d'instructions simple (pseudo-code) qui, étant donné un numéro de ligne $l$ et un numéro de colonne $c$, permet d'afficher le contenu de la case correspondante.",
+      "correctAnswer": "Pseudo-code :\\nLire $l$, $c$\\nPour $i$ de un à $l$ faire : aller à la ligne suivante\\nFin pour\\nPour $j$ de un à $c$ faire : aller à la colonne suivante\\nFin pour\\nAfficher case",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit les deux nombres $l$ et $c$. Ensuite il descend ligne par ligne jusqu'à atteindre la ligne $l$. Puis il avance colonne par colonne jusqu'à atteindre la colonne $c$. Finalement il affiche le contenu de la case trouvée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver la ligne et la colonne d'une case donnée",
+      "content": "Dans un tableau à double entrée, on te montre une case précise (par exemple la case qui contient un dessin de soleil). Écris un algorithme en langage naturel pour déterminer le numéro de ligne et le numéro de colonne de cette case.",
+      "correctAnswer": "Algorithme : 1. Compte le nombre de lignes entières au-dessus de la case choisie. Ce nombre est le numéro de ligne. 2. Compte le nombre de colonnes entières à gauche de la case choisie. Ce nombre est le numéro de colonne. 3. Donne les deux numéros trouvés.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour connaître la ligne, on compte combien de lignes se trouvent avant la case (en partant du haut). Pour la colonne, on compte combien de colonnes se trouvent avant la case (en partant de la gauche). Ces comptages donnent directement les coordonnées.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

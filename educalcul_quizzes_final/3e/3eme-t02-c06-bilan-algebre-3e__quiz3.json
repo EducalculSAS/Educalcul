@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Bilan - Algèbre 3e",
+  "title": "Bilan Algèbre 3e - Quiz",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $3x - 2(x - 4) + 5$.",
+      "options": [
+        "$x + 13$",
+        "$x + 3$",
+        "$5x + 13$",
+        "$5x + 3$"
+      ],
+      "correctAnswer": "$x + 13$",
+      "explanation": "On développe d'abord le terme $-2(x-4)$ ce qui donne $-2x+8$. L'expression devient $3x -2x +8 +5$. En regroupant les termes en $x$ on obtient $x$, et les constantes $8+5=13$. Le résultat simplifié est $x+13$. Les autres réponses correspondent à des erreurs de distribution ou de regroupement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $2(x + 3) = 4x - 6$.",
+      "options": [
+        "$x = 6$",
+        "$x = 3$",
+        "$x = 4$",
+        "$x = 2$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On développe le membre de gauche : $2x+6 = 4x-6$. On ramène les $x$ à droite et les constantes à gauche : $6+6 = 4x-2x$, soit $12 = 2x$. En divisant par $2$ on trouve $x=6$. Les autres valeurs proviennent d'erreurs de signe ou de division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'inéquation $5 - 2x > 1$.",
+      "options": [
+        "$x < 2$",
+        "$x > 2$",
+        "$x < -2$",
+        "$x > -2$"
+      ],
+      "correctAnswer": "$x < 2$",
+      "explanation": "On soustrait $5$ des deux côtés : $-2x > -4$. En divisant par $-2$, il faut inverser le sens de l'inégalité, ce qui donne $x < 2$. Les réponses $x>2$ ou $x<-2$ oublient l'inversion du signe, et $x>-2$ correspond à une division sans inversion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorise l'expression $x^2 - 9$.",
+      "options": [
+        "$(x - 3)(x + 3)$",
+        "$(x - 9)(x + 1)$",
+        "$(x - 3)^2$",
+        "$(x + 3)^2$"
+      ],
+      "correctAnswer": "$(x - 3)(x + 3)$",
+      "explanation": "L'expression est une différence de carrés : $x^2 - 9 = x^2 - 3^2$. La factorisation standard est $(x-3)(x+3)$. Les autres choix correspondent à une factorisation incorrecte (produit de deux binômes non conjugués) ou à un carré parfait qui ne correspond pas à l'expression donnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous le système $2x + 3y = 12$ et $x - y = 1$.",
+      "options": [
+        "$x = 3, y = 2$",
+        "$x = 2, y = 3$",
+        "$x = 4, y = 1$",
+        "$x = 1, y = 4$"
+      ],
+      "correctAnswer": "$x = 3, y = 2$",
+      "explanation": "On exprime $x$ depuis la deuxième équation : $x = y+1$. On substitue dans la première : $2(y+1)+3y = 12$ ce qui donne $2y+2+3y=12$, soit $5y=10$ et $y=2$. Alors $x = 2+1 = 3$. Les autres couples ne satisfont pas les deux équations simultanément.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

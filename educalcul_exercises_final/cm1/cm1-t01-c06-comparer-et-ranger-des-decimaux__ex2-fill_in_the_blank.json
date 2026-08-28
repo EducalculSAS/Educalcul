@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Ajouter zéros inutiles conceptuellement",
+  "title": "Ajouter des zéros inutiles pour comparer et ranger",
+  "blocks": [
+    {
+      "title": "Compléter pour comparer",
+      "content": "Pour comparer $3,5$ et $3,52$, on peut ajouter un {{1}} à $3,5$ pour l'écrire $3,{{2}}$. Ainsi, on compare facilement les chiffres des dixièmes et des {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "zéro|0",
+        "50",
+        "centièmes"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute un zéro à droite de la partie décimale de $3,5$ pour obtenir $3,50$. Cela ne change pas la valeur du nombre mais aligne les décimales : on a 3 unités, 5 dixièmes et 0 centièmes pour le premier, contre 3 unités, 5 dixièmes et 2 centièmes pour le second. La comparaison se fait alors chiffre par chiffre : $0 < 2$ aux centièmes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ranger en alignant les décimales",
+      "content": "Pour ranger $7,4 ; 7,38 ; 7,3$ dans l'ordre croissant, il faut qu'ils aient le même nombre de {{1}}. On obtient $7,40 ; 7,38 ; 7,30$. Le plus petit est $7,{{2}}$ et le plus grand est $7,{{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "chiffres après la virgule|décimales|chiffres décimaux",
+        "30",
+        "40"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les nombres $7,4$ et $7,3$ n'ont qu'un chiffre après la virgule (les dixièmes), alors que $7,38$ en a deux (jusqu'aux centièmes). On ajoute un zéro inutile à droite pour écrire $7,40$ et $7,30$. On compare alors : $7,30 < 7,38 < 7,40$. Le plus petit est $7,30$ (c'est-à-dire $7,3$) et le plus grand est $7,40$ (c'est-à-dire $7,4$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identifier le nombre intermédiaire",
+      "content": "Parmi les nombres $0,6 ; 0,58 ; 0,62$, celui qui a le moins de {{1}} est $0,6$. On l'écrit $0,{{2}}$ pour le comparer aux autres. Le nombre intermédiaire est $0,{{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "chiffres après la virgule|décimales",
+        "60",
+        "58"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "$0,6$ a un seul chiffre après la virgule (6 dixièmes), contrairement à $0,58$ et $0,62$ qui en ont deux (centièmes). On ajoute un zéro pour écrire $0,60$. On compare ensuite les centièmes : $58 < 60 < 62$. L'ordre croissant est $0,58 ; 0,60 ; 0,62$. Le nombre intermédiaire est donc $0,58$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

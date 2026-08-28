@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 512,
+  "_course_code": "2nde-t03-c03-coordonnees-d-un-vecteur",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Utiliser",
+  "title": "Quiz : Coordonnées d'un vecteur - Utiliser",
+  "questions": [
+    {
+      "text": "Soient les points $A(2, -3)$ et $B(5, 1)$. Quelles sont les coordonnées du vecteur $\\overrightarrow{AB}$ ?",
+      "options": [
+        "$(3, 4)$",
+        "$(3, -4)$",
+        "$(-3, 4)$",
+        "$(-3, -4)$"
+      ],
+      "correctAnswer": "$(3, 4)$",
+      "explanation": "Le vecteur $\\overrightarrow{AB}$ s'obtient en soustrayant les coordonnées de $A$ à celles de $B$ : $x_B - x_A = 5 - 2 = 3$ et $y_B - y_A = 1 - (-3) = 4$. Donc $\\overrightarrow{AB} = (3, 4)$. Les autres options correspondent à des erreurs de signe ou d'ordre de soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u} = (4, -2)$ et $\\vec{v} = (-1, 3)$. Calculez $2\\vec{u} + \\vec{v}$.",
+      "options": [
+        "$(7, -1)$",
+        "$(9, -7)$",
+        "$(7, -7)$",
+        "$(9, -1)$"
+      ],
+      "correctAnswer": "$(7, -1)$",
+      "explanation": "On calcule d'abord $2\\vec{u} = (8, -4)$. Ensuite on ajoute $\\vec{v}$ : $(8, -4) + (-1, 3) = (7, -1)$. Les distracteurs proviennent d'erreurs dans la multiplication par 2 ou dans l'addition composante par composante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des vecteurs suivants est collinéaire à $\\vec{w} = (2, -5)$ et a la même orientation ?",
+      "options": [
+        "$(4, -10)$",
+        "$(-2, 5)$",
+        "$(1, -2)$",
+        "$(-4, 10)$"
+      ],
+      "correctAnswer": "$(4, -10)$",
+      "explanation": "Deux vecteurs sont collinéaires et de même orientation si l'un est un multiple positif de l'autre. $(4, -10) = 2 \\times (2, -5)$ avec un coefficient positif 2. $(-2, 5)$ et $(-4, 10)$ sont des multiples négatifs (orientation opposée). $(1, -2)$ n'est pas un multiple de $(2, -5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $\\overrightarrow{AB} = (3, 2)$ et le point $A(1, 4)$. Quelles sont les coordonnées du point $B$ ?",
+      "options": [
+        "$(4, 6)$",
+        "$(4, 2)$",
+        "$(-2, 6)$",
+        "$(2, 6)$"
+      ],
+      "correctAnswer": "$(4, 6)$",
+      "explanation": "Les coordonnées de $B$ s'obtiennent en ajoutant le vecteur $\\overrightarrow{AB}$ aux coordonnées de $A$ : $x_B = 1 + 3 = 4$, $y_B = 4 + 2 = 6$. Donc $B(4, 6)$. Les autres options correspondent à des erreurs d'addition ou de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le milieu $I$ du segment $[AB]$ a pour coordonnées $(2, -1)$. Sachant que $A = (5, 3)$, déterminez les coordonnées de $B$.",
+      "options": [
+        "$(-1, -5)$",
+        "$(-1, 5)$",
+        "$(1, -5)$",
+        "$(1, 5)$"
+      ],
+      "correctAnswer": "$(-1, -5)$",
+      "explanation": "La formule du milieu donne $x_I = \\frac{x_A + x_B}{2}$ et $y_I = \\frac{y_A + y_B}{2}$. On en déduit $x_B = 2 \\times 2 - 5 = -1$ et $y_B = 2 \\times (-1) - 3 = -5$. Donc $B(-1, -5)$. Les distracteurs proviennent d'erreurs dans la résolution des équations ou dans les signes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

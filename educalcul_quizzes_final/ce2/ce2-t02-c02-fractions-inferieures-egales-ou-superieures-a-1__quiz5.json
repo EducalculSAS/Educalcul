@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 153,
+  "_course_code": "ce2-t02-c02-fractions-inferieures-egales-ou-superieures-a-1",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Comparer à l'unité",
+  "title": "Comparer une fraction à l'unité",
+  "questions": [
+    {
+      "text": "Laquelle de ces fractions est exactement égale à $1$ ?",
+      "options": [
+        "$5/5$",
+        "$5/6$",
+        "$6/5$",
+        "$4/5$"
+      ],
+      "correctAnswer": "$5/5$",
+      "explanation": "Une fraction est égale à $1$ lorsque son numérateur est identique à son dénominateur. Ici, $5/5$ signifie 5 parts sur 5, c'est-à-dire le tout. $5/6$ et $4/5$ sont inférieures à $1$ (numérateur plus petit), $6/5$ est supérieure à $1$ (numérateur plus grand).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est strictement inférieure à $1$ ?",
+      "options": [
+        "$7/7$",
+        "$8/5$",
+        "$3/8$",
+        "$9/9$"
+      ],
+      "correctAnswer": "$3/8$",
+      "explanation": "Une fraction est inférieure à $1$ quand le numérateur est plus petit que le dénominateur. $3/8$ correspond à 3 parts sur 8, ce qui ne fait pas l'unité entière. $7/7$ et $9/9$ valent $1$. $8/5$ est supérieure à $1$ car $8 > 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment classer la fraction $11/6$ par rapport à $1$ ?",
+      "options": [
+        "Égale à $1$",
+        "Inférieure à $1$",
+        "Supérieure à $1$",
+        "Impossible à comparer"
+      ],
+      "correctAnswer": "Supérieure à $1$",
+      "explanation": "On compare le numérateur ($11$) et le dénominateur ($6$). Comme $11 > 6$, la fraction représente plus d'une unité entière. En effet, $11/6 = 1 + 5/6$, elle est donc strictement supérieure à $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A est placé après l'unité. Quelle fraction correspond à ce point ?",
+      "options": [
+        "$3/4$",
+        "$5/4$",
+        "$4/5$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$5/4$",
+      "explanation": "La droite va de $0$ à $2$. Le point A se situe à la graduation $1,25$, soit un quart après $1$. Cela correspond à $1 + 1/4 = 5/4$. $3/4$ et $4/5$ sont avant $1$ (inférieures à $1$). $1/4$ est proche de $0$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 2",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.25,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Parmi cette liste, quelle est l'unique fraction supérieure à $1$ ?",
+      "options": [
+        "$2/3$",
+        "$4/5$",
+        "$6/6$",
+        "$7/5$"
+      ],
+      "correctAnswer": "$7/5$",
+      "explanation": "On examine chaque fraction : $2/3$ (numérateur < dénominateur) < $1$ ; $4/5$ (numérateur < dénominateur) < $1$ ; $6/6$ (numérateur = dénominateur) = $1$ ; $7/5$ (numérateur > dénominateur) > $1$. C'est la seule qui dépasse l'unité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Théorème de Pythagore",
+  "title": "Applications du théorème de Pythagore - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Identifier l'hypoténuse",
+      "content": "Range les étapes dans l'ordre logique pour identifier l'hypoténuse d'un triangle rectangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer l'angle droit du triangle.",
+        "L'hypoténuse est le côté opposé à l'angle droit.",
+        "Nommer les deux côtés adjacents à l'angle droit.",
+        "Conclure quel côté correspond à l'hypoténuse."
+      ],
+      "explanation": "Dans un triangle rectangle, l'angle droit est l'angle de $90^{\\circ}$. Le côté qui ne touche pas cet angle est l'hypoténuse, c'est le plus long côté. Les deux autres côtés sont les côtés de l'angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer un côté manquant",
+      "content": "Ordonne les étapes pour calculer la longueur du côté inconnu d'un triangle rectangle dont on connaît les deux autres côtés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire la relation du théorème de Pythagore : $a^2 + b^2 = c^2$.",
+        "Remplacer les longueurs connues dans l'équation.",
+        "Calculer les carrés des nombres connus.",
+        "Isoler l'inconnue et extraire la racine carrée pour obtenir la longueur."
+      ],
+      "explanation": "On commence par écrire $a^2+b^2=c^2$ où $c$ est l'hypoténuse. Après substitution, on effectue les opérations arithmétiques, puis on résout l'équation du type $x^2 = k$ en prenant $\\sqrt{k}$ (longueur positive).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème concret : l'échelle",
+      "content": "Une échelle de $5$ m est appuyée contre un mur, son pied est à $3$ m du mur. Range les étapes pour trouver la hauteur atteinte par l'échelle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Modéliser la situation par un triangle rectangle : l'échelle est l'hypoténuse, la distance au mur est un côté.",
+        "Identifier l'hypoténuse ($5$ m) et le côté adjacent connu ($3$ m).",
+        "Appliquer le théorème de Pythagore pour trouver le côté manquant (la hauteur).",
+        "Calculer la hauteur : $\\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4$ m."
+      ],
+      "explanation": "Le triangle rectangle a pour hypoténuse l'échelle ($5$ m) et pour base la distance du pied au mur ($3$ m). La hauteur $h$ vérifie $h^2 + 3^2 = 5^2$, donc $h^2 = 25 - 9 = 16$ et $h = 4$ m.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.236718+00:00",
+  "id": 245,
+  "code": "cm1-t05-c05",
+  "title": "Aire par pavage",
+  "description": "Cours structuré Educalcul : Aire par pavage.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Aire par pavage",
+    "objectif_global": "Aire par pavage",
+    "mini_lecons_imposees": [
+      "Unité d'aire.",
+      "Comparer aires.",
+      "Passer au rectangle."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Unité d'aire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unité d'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on veut savoir combien de place prend une surface, on a besoin d'une unité de mesure, tout comme on utilise le mètre pour la longueur. Imagine que tu veuilles recouvrir le sol de ta chambre avec des carreaux identiques : le nombre de carreaux nécessaires te donne l'aire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Exemple courant"
+              ],
+              "rows": [
+                [
+                  "Centimètre carré",
+                  "cm²",
+                  "Une feuille de papier"
+                ],
+                [
+                  "Mètre carré",
+                  "m²",
+                  "Un tapis de sol"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le centimètre carré convient pour les petites surfaces comme une feuille, une carte ou un cahier. Le mètre carré s'utilise pour des surfaces plus grandes : une salle de classe, un jardin ou un terrain de sport."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la taille de la surface et décide si le cm² ou le m² est plus pratique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser des carrés unitaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Imagine que tu poses des petits carrés de 1 cm de côté (ou de 1 m de côté) sans laisser d'espace."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total des carrés posés donne l'aire dans l'unité choisie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais choisir l'unité, voyons comment comparer deux surfaces en utilisant le même référentiel."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'unité adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la surface est entre les deux : un grand poster mesure environ 60 cm sur 90 cm. Exprimer son aire en cm² donne un nombre à trois chiffres, tandis qu'en m² ce serait un nombre décimal très petit. Choisir le cm² rend le calcul plus simple et le résultat plus lisible."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de la taille d'un cm² et d'un m²",
+              "bars": [
+                {
+                  "label": "1 cm²",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 m²",
+                  "value": 10000,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre qu'un mètre carré contient dix mille centimètres carrés. Cette différence d'échelle guide ton choix : pour une table de cuisine, le m² est plus parlant ; pour une carte de jeu, le cm² l'est davantage."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Estimer la dimension",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure ou imagine la longueur et la largeur de la surface."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer aux seuils",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux côtés sont inférieurs à 1 m, le cm² est souvent préférable."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter l'unité choisie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'unité à côté de ton résultat pour ne pas l'oublier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, il est utile de savoir convertir entre les deux unités quand le problème l'exige."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conversion entre cm² et m²"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un mètre carré est un carré de 1 m de côté. Comme 1 m équivaut à 100 cm, le côté du grand carré mesure 100 cm. En pavant ce grand carré avec des petits carrés de 1 cm², on en compte 100 fois 100, soit 10 000."
+            },
+            {
+              "type": "definition",
+              "term": "Mètre carré",
+              "definition": "Unité d'aire correspondant à la surface d'un carré de 1 mètre de côté. Elle vaut 10 000 centimètres carrés.",
+              "example": "Le sol de la classe fait environ 30 m²."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ainsi, pour passer de m² en cm², on multiplie par 10 000 ; pour faire l'inverse, on divise par 10 000."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'unité de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le nombre est en m² ou en cm²."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la bonne opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie par 10 000 pour m² → cm², divise par 10 000 pour cm² → m²."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le nombre de zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les zéros pour t'assurer que le résultat est cohérent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant le choix et la conversion des unités d'aire. La prochaine leçon te montrera comment comparer deux aires concrètement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité d'aire choisirais-tu pour mesurer la surface d'une feuille de papier A4 ?",
+              "answer": "cm²",
+              "hint": "Pense à la taille d'une feuille de papier.",
+              "explanation": "Une feuille A4 mesure environ 21 cm sur 29,7 cm, donc le centimètre carré est l'unité la plus pratique."
+            },
+            {
+              "question": "Pour mesurer la surface du sol d'une salle de classe, quelle unité est la plus adaptée ?",
+              "answer": "m²",
+              "hint": "Compare la taille de la salle à un mètre.",
+              "explanation": "Une salle de classe fait plusieurs mètres de côté, le mètre carré donne un nombre facile à lire."
+            },
+            {
+              "question": "Convertis 3 m² en centimètres carrés.",
+              "answer": "30 000 cm²",
+              "hint": "Rappelle-toi combien de cm² dans 1 m².",
+              "explanation": "1 m² = 10 000 cm², donc 3 m² = 3 × 10 000 = 30 000 cm²."
+            }
+          ]
+        },
+        {
+          "title": "Comparer aires.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des aires : compter les carrés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir laquelle de deux surfaces est la plus grande, on peut les pavérer avec le même carré unitaire et compter combien de carrés entrent dans chacune. C'est comme remplir deux boîtes avec des billes de même taille : celle qui en contient le plus est la plus grande."
+            },
+            {
+              "type": "number_line",
+              "caption": "Nombre de carrés unitaires dans un rectangle 4 cm × 3 cm",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12 carrés"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, le point 12 montre qu'un rectangle de 4 cm sur 3 cm contient exactement douze carrés de 1 cm². Ce comptage direct donne l'aire sans avoir à multiplier pour l'instant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner le pavage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un quadrillage de carrés de 1 cm² à l'intérieur de la figure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les cases pleines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque case pleine vaut 1 cm², additionne-les."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre obtenu est l'aire dans l'unité choisie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu sais compter, tu peux comparer deux aires simplement en regardant les totaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux surfaces"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux rectangles : l'un mesure 5 cm sur 2 cm, l'autre 4 cm sur 3 cm. En les pavant, le premier donne 10 carrés, le second 12 carrés. Le second rectangle a donc une aire plus grande."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des aires des deux rectangles",
+              "slices": [
+                {
+                  "label": "Rectangle A",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rectangle B",
+                  "value": 12,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le camembert montre visuellement que le rectangle B occupe une part plus importante du total. Comparer les nombres 10 et 12 suffit pour conclure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer chaque aire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte ou multiplie les côtés pour obtenir les deux nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plus grand nombre correspond à la plus grande surface."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple : « Le rectangle B a une aire plus grande que le rectangle A. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi ranger plusieurs aires du plus petit au plus grand pour organiser l'information."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner plusieurs aires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as trois surfaces de 8 cm², 15 cm² et 3 cm², il suffit de regarder les chiffres : 3 est le plus petit, puis 8, puis 15. L'ordre croissant est donc 3 cm², 8 cm², 15 cm²."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "Représentation de 15 cm² avec des blocs de base dix"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque aire avec son unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer chiffre par chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les dizaines puis les unités pour classer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la suite ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les aires du plus petit au plus grand."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer et ordonner des aires. La dernière leçon te montrera comment passer directement au calcul pour les rectangles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle mesure 4 cm sur 3 cm. Combien de carrés de 1 cm² peut-on y placer ?",
+              "answer": "12",
+              "hint": "Multiplie la longueur par la largeur.",
+              "explanation": "4 × 3 = 12 carrés unitaires."
+            },
+            {
+              "question": "Le rectangle A fait 5 cm sur 2 cm, le rectangle B fait 4 cm sur 3 cm. Lequel a la plus grande aire ?",
+              "answer": "Le rectangle B (12 cm² contre 10 cm²).",
+              "hint": "Calcule l'aire de chaque rectangle.",
+              "explanation": "Aire de A = 5×2=10 cm², aire de B = 4×3=12 cm², donc B est plus grand."
+            },
+            {
+              "question": "Trois surfaces ont les aires suivantes : 8 cm², 15 cm², 3 cm². Range-les du plus petit au plus grand.",
+              "answer": "3 cm², 8 cm², 15 cm²",
+              "hint": "Compare les nombres.",
+              "explanation": "Il suffit d'ordonner les valeurs numériques."
+            }
+          ]
+        },
+        {
+          "title": "Passer au rectangle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer les côtés du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un rectangle, il suffit de connaître la longueur et la largeur. Avec une règle graduée, tu mesures chaque côté en centimètres (ou en mètres) et tu notes les deux nombres. C'est la première étape avant tout calcul d'aire."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 12,
+              "caption": "Longueur du rectangle : 12 cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de numération montre que 12 se décompose en 1 dizaine et 2 unités. La largeur, par exemple 8 cm, s'écrirait de la même façon avec 0 dizaine et 8 unités."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aligne le zéro de la règle avec le bord du rectangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le chiffre qui coïncide avec l'autre bord."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter les deux dimensions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris longueur et largeur avec leur unité (cm)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les deux mesures connues, on peut calculer l'aire sans recompter de carrés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule de l'aire du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'aire d'un rectangle se trouve en multipliant sa longueur par sa largeur. Si la longueur vaut $L$ et la largeur $l$, l'aire $A$ s'écrit $A = L \\times l$. Le résultat s'exprime dans l'unité d'aire correspondante (cm² si les côtés sont en cm)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $L$ et $l$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère quelle mesure est la longueur, quelle est la largeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les deux nombres comme une multiplication posée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajouter l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris cm² (ou m²) après le produit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant sur un autre rectangle pour bien ancrer la méthode."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer la formule à des exemples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un rectangle de 7 cm de long et 5 cm de large. En appliquant la formule, on fait $7 \\times 5 = 35$. L'aire est donc 35 cm². La même démarche fonctionne pour n'importe quel rectangle, même grand."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les dimensions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Longueur = 7 cm, largeur = 5 cm."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "7 × 5 = 35."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'aire du rectangle est 35 cm²."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir l'unité d'aire adaptée (cm² ou m²).",
+                "Je sais comparer deux aires en comptant des carrés unitaires.",
+                "Je sais calculer l'aire d'un rectangle avec la formule longueur × largeur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle a une longueur de 12 cm et une largeur de 8 cm. Quelles sont ces deux mesures ?",
+              "answer": "Longueur 12 cm, largeur 8 cm",
+              "hint": "Relis l'énoncé.",
+              "explanation": "Les dimensions sont données directement."
+            },
+            {
+              "question": "Calcule l'aire du rectangle de 12 cm sur 8 cm.",
+              "answer": "96 cm²",
+              "hint": "Multiplie longueur × largeur.",
+              "explanation": "12 × 8 = 96, l'unité est cm²."
+            },
+            {
+              "question": "Un autre rectangle mesure 7 cm de long et 5 cm de large. Quelle est son aire ?",
+              "answer": "35 cm²",
+              "hint": "Utilise la même multiplication.",
+              "explanation": "7 × 5 = 35 cm²."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

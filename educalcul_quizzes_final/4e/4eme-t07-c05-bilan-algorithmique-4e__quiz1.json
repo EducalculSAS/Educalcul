@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Programmer et déboguer",
+  "title": "Quiz - Programmer et déboguer (Algorithmique 4e)",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\n  Variable n en entier\\n  n prend la valeur 10\\n  Tant que n > 0 faire\\n    n prend la valeur n - 3\\n  Fin Tant que\\n  Afficher n\\nFin\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "1",
+        "0",
+        "-2",
+        "3"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "On suit l'exécution pas à pas : n commence à 10. 1er tour : 10 > 0 vrai, n devient 7. 2e tour : 7 > 0 vrai, n devient 4. 3e tour : 4 > 0 vrai, n devient 1. 4e tour : 1 > 0 vrai, n devient -2. 5e tour : -2 > 0 faux, on sort de la boucle. La valeur affichée est -2. L'erreur fréquente est de s'arrêter quand n devient 1 (ou 0) sans faire le dernier tour où la condition est encore vraie au début.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a écrit ce programme pour calculer la somme des entiers de 1 à 5 (soit 1+2+3+4+5 = 15) :\\nDébut\\n  Variables somme, k en entier\\n  somme prend la valeur 0\\n  Pour k de 1 à 5 faire\\n    somme prend la valeur somme + k\\n  Fin Pour\\n  Afficher somme\\nFin\\nMais il a fait une erreur de saisie : il a écrit \"somme prend la valeur somme + 1\" au lieu de \"somme + k\". Quelle valeur le programme affiche-t-il avec cette erreur ?",
+      "options": [
+        "5",
+        "15",
+        "6",
+        "1"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Avec l'erreur, à chaque tour de boucle on ajoute 1 à la variable somme, au lieu d'ajouter la valeur de k. La boucle s'exécute 5 fois (k = 1, 2, 3, 4, 5). Au début somme = 0. Après 5 tours, somme = 0 + 1 + 1 + 1 + 1 + 1 = 5. Le programme compte le nombre de tours au lieu de faire la somme des valeurs de k.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut programmer un algorithme qui demande un nombre à l'utilisateur et qui affiche \"Positif\" si ce nombre est strictement supérieur à 0, \"Négatif\" s'il est strictement inférieur à 0, et \"Nul\" s'il vaut 0. Parmi les structures conditionnelles suivantes, laquelle est la correcte ?",
+      "options": [
+        "Si n > 0 alors Afficher \"Positif\" Sinon Si n < 0 alors Afficher \"Négatif\" Sinon Afficher \"Nul\"",
+        "Si n >= 0 alors Afficher \"Positif\" Sinon Si n <= 0 alors Afficher \"Négatif\" Sinon Afficher \"Nul\"",
+        "Si n > 0 alors Afficher \"Positif\" Sinon Afficher \"Négatif\" Sinon Si n = 0 alors Afficher \"Nul\"",
+        "Si n = 0 alors Afficher \"Nul\" Sinon Si n > 0 alors Afficher \"Positif\" Sinon Afficher \"Négatif\""
+      ],
+      "correctAnswer": "Si n > 0 alors Afficher \"Positif\" Sinon Si n < 0 alors Afficher \"Négatif\" Sinon Afficher \"Nul\"",
+      "explanation": "Il faut tester les trois cas exclusifs : strictement positif (n > 0), strictement négatif (n < 0), et le cas restant (n = 0). La première option utilise les bons opérateurs de comparaison stricts et la structure 'Sinon Si' imbriquée correcte. La deuxième confond >= et >. La troisième a une structure 'Sinon' mal placée qui empêche le test du cas nul. La quatrième fonctionne logiquement mais l'ordre des tests n'est pas celui demandé dans l'énoncé (on teste d'abord nul puis positif puis négatif), alors que la première correspond exactement à la description séquentielle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Analysons cet algorithme :\\nDébut\\n  Variable x en entier\\n  x prend la valeur 1\\n  Répéter\\n    x prend la valeur x * 2\\n  Jusqu'à x > 20\\n  Afficher x\\nFin\\nCombien de fois la boucle \"Répéter... Jusqu'à\" s'exécute-t-elle ?",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "3 fois"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "Dans une boucle 'Répéter... Jusqu'à', le corps s'exécute AU MOINS une fois, puis la condition est testée à la fin. Suivons x : début x=1. 1er tour : x=2 (2>20 faux). 2e tour : x=4 (4>20 faux). 3e tour : x=8 (8>20 faux). 4e tour : x=16 (16>20 faux). 5e tour : x=32 (32>20 vrai -> sortie). La boucle s'est donc exécutée 5 fois. L'erreur classique est de compter comme une boucle 'Tant que' (qui ferait 4 tours car 16>20 est faux avant le 5e tour).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme doit afficher les 10 premiers termes de la suite définie par u_0 = 3 et u_{n+1} = 2 * u_n + 1. Voici une proposition de code :\\nDébut\\n  Variables u, n en entier\\n  u prend la valeur 3\\n  Afficher u\\n  Pour n de 1 à 10 faire\\n    u prend la valeur 2 * u + 1\\n    Afficher u\\n  Fin Pour\\nFin\\nQuel est le défaut de ce programme par rapport à l'énoncé ?",
+      "options": [
+        "Il affiche 11 termes au lieu de 10",
+        "Il affiche 9 termes au lieu de 10",
+        "La formule de récurrence est fausse",
+        "La variable n n'est pas initialisée"
+      ],
+      "correctAnswer": "Il affiche 11 termes au lieu de 10",
+      "explanation": "Le programme affiche u_0 (valeur 3) AVANT la boucle. Ensuite, la boucle 'Pour n de 1 à 10' s'exécute 10 fois (pour n=1, 2, ..., 10) et affiche u_1 à u_{10}. Au total, cela affiche 1 + 10 = 11 termes (u_0 à u_{10}). Pour afficher exactement les 10 premiers termes (u_0 à u_9), il faut soit boucler de 1 à 9, soit mettre l'affichage initial à l'intérieur de la boucle avec un indice adapté. La formule de récurrence est correcte (2*u+1) et la variable n est gérée automatiquement par la structure 'Pour'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

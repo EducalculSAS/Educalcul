@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Modifier",
+  "title": "Modifier des variables simples",
+  "questions": [
+    {
+      "text": "Une variable nommée score contient la valeur $10$. On utilise l'instruction Modifier score par $15$. Quelle est la nouvelle valeur de la variable score ?",
+      "options": [
+        "$10$",
+        "$15$",
+        "$25$",
+        "$5$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "L'action de modifier une variable par une valeur précise remplace l'ancienne valeur par la nouvelle. Ici, le $10$ est effacé et remplacé par $15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a une variable points égale à $20$. On exécute l'instruction suivante : Modifier points par points $+$ $5$. Quelle est la valeur finale de points ?",
+      "options": [
+        "$20$",
+        "$5$",
+        "$25$",
+        "$15$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "L'ordinateur calcule d'abord la nouvelle valeur : $20 + 5 = 25$. Ensuite, il remplace l'ancienne valeur $20$ par ce nouveau résultat $25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une variable vies est égale à $3$. On veut retirer une vie après une erreur. Quelle instruction permet de modifier la variable pour qu'elle devienne $2$ ?",
+      "options": [
+        "Modifier vies par $3$",
+        "Modifier vies par vies $+$ $1$",
+        "Modifier vies par $1$",
+        "Modifier vies par vies $-$ $1$"
+      ],
+      "correctAnswer": "Modifier vies par vies $-$ $1$",
+      "explanation": "Pour diminuer une valeur de un, on utilise l'opération de soustraction. $3 - 1 = 2$. L'option Modifier vies par $1$ donnerait $1$ et non $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise une variable distance qui vaut $100$. On applique deux fois de suite l'instruction : Modifier distance par distance $+$ $10$. Quel est le résultat final ?",
+      "options": [
+        "$110$",
+        "$120$",
+        "$100$",
+        "$20$"
+      ],
+      "correctAnswer": "$120$",
+      "explanation": "Après la première modification, distance devient $100 + 10 = 110$. Après la deuxième modification, on part de $110$ et on ajoute encore $10$, ce qui donne $110 + 10 = 120$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une variable bonus vaut $50$. On veut doubler cette valeur. Quelle instruction est correcte pour modifier bonus ?",
+      "options": [
+        "Modifier bonus par $2$",
+        "Modifier bonus par bonus $+$ $2$",
+        "Modifier bonus par bonus $\\times$ $2$",
+        "Modifier bonus par $50 \\times 2$"
+      ],
+      "correctAnswer": "Modifier bonus par bonus $\\times$ $2$",
+      "explanation": "Doubler signifie multiplier par $2$. On prend la valeur actuelle de la variable et on la multiplie par $2$. L'instruction Modifier bonus par $2$ remplacerait simplement la valeur par le chiffre $2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.028936+00:00",
+  "id": 174,
+  "code": "ce2-t04-c06",
+  "title": "Multiplier par 10 et 100 mentalement",
+  "description": "Cours structuré Educalcul : Multiplier par 10 et 100 mentalement.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Multiplier par 10 et 100 mentalement",
+    "objectif_global": "Multiplier par 10 et 100 mentalement",
+    "mini_lecons_imposees": [
+      "Comprendre la valeur de position.",
+      "Calculer.",
+      "Vérifier avec décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Comprendre la valeur de position.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la valeur de position"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier atelier ! Aujourd'hui, nous allons découvrir ensemble pourquoi multiplier par $10$ ou par $100$ est un jeu d'enfant quand on regarde bien comment s'écrivent les nombres. Prends une grande inspiration, c'est parti."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $4$ billes dans ta main. Si tu les groupes par paquets de $10$, tu n'as plus $4$ unités, mais $4$ dizaines. Écris-le : $4$ devient $40$. Regarde bien : le chiffre $4$ a glissé d'une case vers la gauche, et un $0$ est apparu à sa droite pour marquer qu'il n'y a plus aucune unité."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 0,
+              "caption": "$40$ : $4$ dizaines et $0$ unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec $100$. Si tu as $4$ billes et que tu veux les multiplier par $100$, tu formes des paquets de $100$. Le chiffre $4$ saute deux cases vers la gauche : il se retrouve au rang des centaines. Écris $400$. Deux zéros sont nés pour montrer qu'il n'y a ni dizaine ni unité."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 4,
+              "tens": 0,
+              "units": 0,
+              "caption": "$400$ : $4$ centaines, $0$ dizaine, $0$ unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu le déplacement ? C'est comme si les chiffres prenaient l'ascenseur : fois $10$, ils montent d'un étage ; fois $100$, ils montent de deux étages. Essaie avec $7$ : $7 \\times 10 = 70$, $7 \\times 100 = 700$. Le $7$ voyage, les zéros tiennent la place."
+            },
+            {
+              "type": "display_math",
+              "latex": "7 \\times 10 = 70 \\quad 7 \\times 100 = 700"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre a déjà plusieurs chiffres ? Prenons $23$. Les deux chiffres montent ensemble : le $2$ (dizaines) devient centaines, le $3$ (unités) devient dizaines. On écrit $230$. Un seul zéro s'ajoute à la fin, car on a multiplié par $10$. Pour $100$, les deux chiffres montent de deux étages : $2300$. Deux zéros finalisent le voyage."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 0,
+              "caption": "$230$ : $2$ centaines, $3$ dizaines, $0$ unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de comprendre le secret de la valeur de position. Dans la prochaine leçon, nous allons t'entraîner à calculer vite dans ta tête. Mais avant, retiens bien cette image : les chiffres montent, les zéros gardent la place."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète : $5 \\times 10 = \\square$ et $5 \\times 100 = \\square$.",
+              "answer": "$50$ et $500$",
+              "hint": "Combien de zéros ajoutes-tu pour $\\times 10$ ? Pour $\\times 100$ ?",
+              "explanation": "Multiplier par $10$ ajoute un zéro, par $100$ en ajoute deux. Donc $5 \\times 10 = 50$ et $5 \\times 100 = 500$."
+            },
+            {
+              "question": "Écris le résultat de $8 \\times 10$ et de $8 \\times 100$.",
+              "answer": "$80$ et $800$",
+              "hint": "Le chiffre $8$ monte d'un étage puis de deux étages.",
+              "explanation": "$8 \\times 10 = 80$ (un zéro), $8 \\times 100 = 800$ (deux zéros)."
+            },
+            {
+              "question": "Si je multiplie $12$ par $10$, quel nombre j'obtiens ? Et par $100$ ?",
+              "answer": "$120$ et $1200$",
+              "hint": "Les deux chiffres $1$ et $2$ montent ensemble.",
+              "explanation": "$12 \\times 10 = 120$ (un zéro à la fin), $12 \\times 100 = 1200$ (deux zéros)."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer mentalement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Super, tu as bien visualisé le déplacement des chiffres. Maintenant, on va s'entraîner à répondre du tac-au-tac, sans écrire les étapes. C'est comme apprendre à faire du vélo : au début on regarde ses pieds, puis on pédale sans y penser."
+            },
+            {
+              "type": "paragraph",
+              "content": "Règle d'or : pour multiplier par $10$, j'ajoute **un** zéro à la fin du nombre. Pour multiplier par $100$, j'en ajoute **deux**. Essaie sur ton ardoise mentale : $6 \\times 10 = 60$, $6 \\times 100 = 600$. Facile, non ?"
+            },
+            {
+              "type": "display_math",
+              "latex": "6 \\times 10 = 60 \\quad 6 \\times 100 = 600"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux nombres à deux chiffres. Prends $15$. Pour $\\times 10$, colle un zéro : $150$. Pour $\\times 100$, colle deux zéros : $1500$. Le $1$ et le $5$ gardent leur ordre, ils ont juste pris de l'altitude. Fais le test avec $24$ : $240$ et $2400$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 5,
+              "units": 0,
+              "caption": "$150$ : $1$ centaine, $5$ dizaines, $0$ unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre finit déjà par un zéro ? Par exemple $30$. $30 \\times 10 = 300$ (un zéro de plus), $30 \\times 100 = 3000$ (deux zéros de plus). Les zéros s'accumulent, c'est normal. Essaie avec $50$ : $500$ et $5000$. Tu vois, la règle ne change pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "30 \\times 10 = 300 \\quad 30 \\times 100 = 3000"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Allongeons un peu : nombres à trois chiffres. $123 \\times 10 = 1230$, $123 \\times 100 = 12300$. Tous les chiffres glissent, les zéros font le ménage derrière. Tu es prêt pour le défi final de cette leçon ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu sais maintenant multiplier par $10$ et $100$ en un éclair. La prochaine étape, c'est de vérifier tes résultats en décomposant les nombres. C'est une astuce de pro pour ne jamais te tromper."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule mentalement : $9 \\times 10 = \\square$ ; $9 \\times 100 = \\square$.",
+              "answer": "$90$ ; $900$",
+              "hint": "Combien de zéros pour chaque multiplication ?",
+              "explanation": "$9 \\times 10 = 90$ (un zéro), $9 \\times 100 = 900$ (deux zéros)."
+            },
+            {
+              "question": "Donne le résultat de $27 \\times 10$ et de $27 \\times 100$.",
+              "answer": "$270$ et $2700$",
+              "hint": "Ajoute un zéro puis deux zéros au nombre $27$.",
+              "explanation": "$27 \\times 10 = 270$, $27 \\times 100 = 2700$."
+            },
+            {
+              "question": "Multiplie $40$ par $10$ puis par $100$.",
+              "answer": "$400$ et $4000$",
+              "hint": "$40$ a déjà un zéro, compte le total de zéros.",
+              "explanation": "$40 \\times 10 = 400$ (deux zéros au total), $40 \\times 100 = 4000$ (trois zéros)."
+            },
+            {
+              "question": "Quel est le produit de $305 \\times 10$ ? Et de $305 \\times 100$ ?",
+              "answer": "$3050$ et $30500$",
+              "hint": "Tous les chiffres montent, le zéro du milieu reste en place.",
+              "explanation": "$305 \\times 10 = 3050$, $305 \\times 100 = 30500$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier avec décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier avec décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens un as du calcul mental ! Mais les mathématiciens prudents aiment vérifier leurs réponses. Aujourd'hui, on va apprendre à décomposer un nombre pour être sûr de son coup. C'est comme démonter un jouet pour voir comment il fonctionne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $23 \\times 10$. Décompose $23$ en $20 + 3$. Multiplie chaque part par $10$ : $20 \\times 10 = 200$ et $3 \\times 10 = 30$. Remets ensemble : $200 + 30 = 230$. C'est exactement le même résultat que tout à l'heure. Magique, non ?"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "20",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Décomposition de $23$ en $20 + 3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec $100$ maintenant. $14 \\times 100$. Décompose $14$ en $10 + 4$. $10 \\times 100 = 1000$, $4 \\times 100 = 400$. Somme : $1000 + 400 = 1400$. Tu vois, la décomposition marche pour les deux multiplications. C'est ton filet de sécurité."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "10",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Décomposition de $14$ en $10 + 4$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre a trois chiffres ? $205 \\times 10$. Décompose en $200 + 0 + 5$ (le zéro ne change rien). $200 \\times 10 = 2000$, $5 \\times 10 = 50$. Total : $2050$. Pour $100$ : $200 \\times 100 = 20000$, $5 \\times 100 = 500$, total $20500$. La méthode est identique, il y a juste plus de parts."
+            },
+            {
+              "type": "display_math",
+              "latex": "205 \\times 10 = (200 \\times 10) + (5 \\times 10) = 2000 + 50 = 2050"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois super-pouvoirs : visualiser le déplacement des chiffres, calculer vite dans ta tête, et vérifier en décomposant. Tu es prêt pour la checklist finale qui résume tout ce que tu sais faire. Allez, dernière ligne droite !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais multiplier un nombre par 10 en ajoutant un zéro.",
+                "Je sais multiplier un nombre par 100 en ajoutant deux zéros.",
+                "Je peux expliquer pourquoi les chiffres changent de place.",
+                "Je sais vérifier mon résultat en décomposant le nombre.",
+                "Je réussis des multiplications par 10 et 100 avec des nombres à 1, 2 ou 3 chiffres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie $36 \\times 10$ par décomposition : $36 = 30 + 6$. Calcule $30 \\times 10$ et $6 \\times 10$, puis additionne.",
+              "answer": "$300 + 60 = 360$",
+              "hint": "Multiplie chaque part par 10.",
+              "explanation": "$30 \\times 10 = 300$, $6 \\times 10 = 60$, $300 + 60 = 360$. C'est le même résultat que $36 \\times 10 = 360$."
+            },
+            {
+              "question": "Vérifie $12 \\times 100$ en décomposant $12$ en $10 + 2$.",
+              "answer": "$1000 + 200 = 1200$",
+              "hint": "Multiplie $10$ par $100$ et $2$ par $100$.",
+              "explanation": "$10 \\times 100 = 1000$, $2 \\times 100 = 200$, $1000 + 200 = 1200$."
+            },
+            {
+              "question": "Décompose $403$ pour vérifier $403 \\times 10$.",
+              "answer": "$400 \\times 10 = 4000$, $3 \\times 10 = 30$, total $4030$",
+              "hint": "Pense aux centaines, dizaines, unités.",
+              "explanation": "$403 = 400 + 0 + 3$. $400 \\times 10 = 4000$, $3 \\times 10 = 30$. $4000 + 30 = 4030$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

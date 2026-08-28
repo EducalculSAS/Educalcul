@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Droites, segments et médiatrice",
+  "title": "Applications : Droites, segments et médiatrice - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Construction de la médiatrice",
+      "content": "Range les étapes suivantes dans l'ordre chronologique pour tracer la médiatrice d'un segment $[AB]$ à la règle et au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Placer la pointe du compas sur $A$ et tracer un arc de rayon supérieur à la moitié de $AB$.",
+        "Sans changer l'écartement, placer la pointe sur $B$ et tracer un second arc coupant le premier en deux points.",
+        "Relier les deux points d'intersection des arcs : cette droite est la médiatrice de $[AB]$.",
+        "Vérifier que la droite obtenue passe par le milieu de $[AB]$ et lui est perpendiculaire."
+      ],
+      "explanation": "On commence par tracer deux arcs de même rayon (supérieur à la demi-longueur) depuis les extrémités $A$ et $B$. Leurs intersections déterminent deux points alignés ; la droite qui les relie est la médiatrice. Elle passe par le milieu de $AB$ et est perpendiculaire à $AB$ par construction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés de la médiatrice",
+      "content": "Classe les propriétés suivantes de la médiatrice d'un segment dans l'ordre logique (de la définition aux conséquences).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "La médiatrice d'un segment passe par son milieu.",
+        "Elle est perpendiculaire à ce segment.",
+        "Tout point de la médiatrice est équidistant des deux extrémités du segment.",
+        "Réciproquement, tout point équidistant des extrémités appartient à la médiatrice."
+      ],
+      "explanation": "La définition de la médiatrice donne d'abord le passage par le milieu et la perpendicularité. De ces deux faits on déduit l'équidistance de tout point de la médiatrice aux extrémités. La propriété réciproque clôture la caractérisation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appartenance à la médiatrice",
+      "content": "Ordonne les étapes pour vérifier si un point $M$ appartient à la médiatrice d'un segment $[AB]$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Mesurer les distances $MA$ et $MB$.",
+        "Comparer les deux mesures obtenues.",
+        "Si $MA = MB$, alors $M$ appartient à la médiatrice de $[AB]$.",
+        "Si $MA \\neq MB$, alors $M$ n'appartient pas à la médiatrice."
+      ],
+      "explanation": "La caractérisation de la médiatrice par l'équidistance aux extrémités permet de tester l'appartenance : on mesure $MA$ et $MB$, on compare ; égalité signifie appartenance, inégalité signifie non-appartenance.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

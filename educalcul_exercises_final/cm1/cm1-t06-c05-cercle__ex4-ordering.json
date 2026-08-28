@@ -1,0 +1,64 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 252,
+  "_course_code": "cm1-t06-c05-cercle",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Application : Cercle",
+  "title": "Applications du cercle : constructions, comparaisons et calculs",
+  "blocks": [
+    {
+      "title": "Tracer un cercle au compas",
+      "content": "Range les étapes dans l'ordre chronologique pour tracer un cercle de centre O et de rayon donné au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je place la pointe sèche du compas sur le point O (le centre).",
+        "J'écarte la pointe du crayon pour que l'ouverture du compas corresponde à la longueur du rayon.",
+        "Je trace le cercle en faisant faire un tour complet au compas autour du centre O.",
+        "Je vérifie que la pointe sèche n'a pas bougé du point O pendant le tracé."
+      ],
+      "explanation": "Pour tracer un cercle au compas, on commence par positionner le centre (étape 1). On règle ensuite l'ouverture du compas sur la longueur du rayon (étape 2). On effectue le tracé en maintenant la pointe fixe sur le centre (étape 3). Enfin, on s'assure de la précision en vérifiant que le centre n'a pas bougé (étape 4).",
+      "points": 2,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Construction d'un cercle de centre O et de rayon 4 cm"
+      }
+    },
+    {
+      "title": "Comparer des longueurs dans un cercle",
+      "content": "Dans un cercle de rayon $4$ cm, une corde mesure $5$ cm. Range ces trois longueurs dans l'ordre croissant (de la plus petite à la plus grande).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le rayon ($4$ cm)",
+        "La corde ($5$ cm)",
+        "Le diamètre ($8$ cm)"
+      ],
+      "explanation": "Dans un cercle, le rayon est la plus petite de ces trois longueurs ($4$ cm). Le diamètre vaut deux fois le rayon, soit $8$ cm, c'est la plus grande longueur possible dans un cercle (c'est la plus grande corde). La corde donnée ($5$ cm) est comprise entre le rayon et le diamètre. L'ordre croissant est donc : rayon ($4$ cm) < corde ($5$ cm) < diamètre ($8$ cm).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le rayon à partir du diamètre",
+      "content": "Voici les étapes de résolution pour trouver le rayon d'un cercle dont le diamètre mesure $12$ cm. Range-les dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "J'identifie la donnée du problème : le diamètre mesure $12$ cm.",
+        "Je rappelle la propriété : le diamètre est le double du rayon (ou le rayon est la moitié du diamètre).",
+        "J'effectue le calcul : je divise la longueur du diamètre par $2$ ($12 \\div 2 = 6$).",
+        "J'écris la réponse : le rayon mesure $6$ cm."
+      ],
+      "explanation": "La résolution suit une démarche logique : 1) Lire et noter la donnée (diamètre = $12$ cm). 2) Rappeler le lien mathématique entre diamètre et rayon ($d = 2 \\times r$ donc $r = d \\div 2$). 3) Faire le calcul numérique ($12 \\div 2 = 6$). 4) Formuler la réponse finale avec l'unité (le rayon mesure $6$ cm).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

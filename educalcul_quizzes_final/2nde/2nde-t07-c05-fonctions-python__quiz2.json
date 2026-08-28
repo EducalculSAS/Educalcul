@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Retour",
+  "title": "Quiz : L'instruction return en Python",
+  "questions": [
+    {
+      "text": "Quelle instruction permet à une fonction Python de renvoyer une valeur au programme appelant ?",
+      "options": [
+        "return",
+        "print",
+        "input",
+        "output"
+      ],
+      "correctAnswer": "return",
+      "explanation": "L'instruction `return` termine l'exécution de la fonction et envoie une valeur au code qui a appelé la fonction. `print` se contente d'afficher du texte à l'écran sans rien renvoyer. `input` sert à demander une saisie à l'utilisateur. `output` n'est pas un mot-clé Python.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\ndef carre(x):\\n    print(x * x)\\n\\nresultat = carre(5)\\nprint(resultat)\\nQue affiche le programme ?",
+      "options": [
+        "25 puis None",
+        "25 puis 25",
+        "Rien puis None",
+        "Erreur"
+      ],
+      "correctAnswer": "25 puis None",
+      "explanation": "La fonction `carre` utilise `print` pour afficher $25$ (première ligne). Comme il n'y a pas d'instruction `return`, la fonction renvoie implicitement la valeur `None`. La variable `resultat` vaut donc `None`, qui est affiché par le second `print` (deuxième ligne).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction :\\ndef double(n):\\n    return 2 * n\\nQuelle instruction permet d'afficher le double de $7$ ?",
+      "options": [
+        "print(double(7))",
+        "double(7)",
+        "print(double)",
+        "return double(7)"
+      ],
+      "correctAnswer": "print(double(7))",
+      "explanation": "L'appel `double(7)` renvoie la valeur $14$ grâce au `return`. Pour afficher cette valeur, il faut l'encapsuler dans `print(...)`. L'option `double(7)` calcule la valeur mais ne l'affiche pas. `print(double)` affiche l'objet fonction, pas son résultat. `return` ne peut s'utiliser qu'à l'intérieur d'une définition de fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction :\\ndef signe(x):\\n    if x > 0:\\n        return 1\\n    elif x < 0:\\n        return -1\\n    else:\\n        return 0\\nQuelle est la valeur de l'expression $signe(-5) + signe(0)$ ?",
+      "options": [
+        "-1",
+        "0",
+        "1",
+        "-2"
+      ],
+      "correctAnswer": "-1",
+      "explanation": "L'appel `signe(-5)` entre dans le bloc `elif x < 0` et renvoie $-1$. L'appel `signe(0)` ne vérifie ni `x > 0` ni `x < 0`, il entre dans le `else` et renvoie $0$. La somme est $-1 + 0 = -1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que renvoie l'instruction suivante ?\\ndef min_max(a, b):\\n    if a < b:\\n        return a, b\\n    else:\\n        return b, a\\n\\ncouple = min_max(10, 3)\\nprint(couple)",
+      "options": [
+        "(3, 10)",
+        "(10, 3)",
+        "3 10",
+        "Erreur"
+      ],
+      "correctAnswer": "(3, 10)",
+      "explanation": "La fonction renvoie un couple (tuple) de deux valeurs. Comme $10 < 3$ est faux, le bloc `else` s'exécute : `return b, a` renvoie $(3, 10)$. La variable `couple` contient ce tuple, que `print` affiche avec ses parenthèses et sa virgule.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

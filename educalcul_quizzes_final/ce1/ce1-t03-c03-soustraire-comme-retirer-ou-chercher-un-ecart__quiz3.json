@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 90,
+  "_course_code": "ce1-t03-c03-soustraire-comme-retirer-ou-chercher-un-ecart",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Relier au calcul",
+  "title": "Soustraction : relier la situation au calcul",
+  "questions": [
+    {
+      "text": "Lucas a douze billes. Il en donne cinq à son frère. Quelle soustraction permet de savoir combien de billes il lui reste ?",
+      "options": [
+        "$12 + 5$",
+        "$12 - 5$",
+        "$5 - 12$",
+        "$12 - 7$"
+      ],
+      "correctAnswer": "$12 - 5$",
+      "explanation": "C'est une situation de « retirer » : on part de la quantité initiale (12) et on enlève la quantité donnée (5). L'opération est donc $12 - 5$. L'option $12 + 5$ correspondrait à un ajout, $5 - 12$ est impossible car on ne peut pas retirer plus que ce qu'on a, et $12 - 7$ ne correspond pas aux nombres de l'énoncé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a quinze cartes. Tom a neuf cartes. Quelle soustraction permet de trouver combien de cartes Léa a de plus que Tom ?",
+      "options": [
+        "$15 + 9$",
+        "$15 - 9$",
+        "$9 - 15$",
+        "$15 - 6$"
+      ],
+      "correctAnswer": "$15 - 9$",
+      "explanation": "C'est une situation de « chercher l'écart » ou comparer deux quantités. Pour savoir combien Léa a de plus, on calcule la différence entre la plus grande quantité (15) et la plus petite (9). L'opération est $15 - 9 = 6$. L'addition $15 + 9$ donnerait le total, $9 - 15$ n'a pas de sens ici, et $15 - 6$ utilise un nombre qui n'est pas dans l'énoncé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme en bandeaux. Il représente un total de 23 divisé en deux parties. Une partie vaut 8. Quelle soustraction permet de trouver la valeur de l'autre partie ?",
+      "options": [
+        "$23 + 8$",
+        "$23 - 8$",
+        "$8 - 23$",
+        "$31 - 8$"
+      ],
+      "correctAnswer": "$23 - 8$",
+      "explanation": "Le diagramme montre un tout (23) composé de deux parties. On connaît le tout (23) et une partie (8). Pour trouver la partie manquante, on retire la partie connue du tout : $23 - 8 = 15$. L'addition $23 + 8$ chercherait un tout plus grand, $8 - 23$ est impossible, et $31 - 8$ invente un total de 31 qui n'est pas sur le diagramme.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 23,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 1",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Partie 2",
+            "value": 15,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Diagramme en bandeaux : total 23, une partie 8, l'autre partie inconnue"
+      }
+    },
+    {
+      "text": "Il y a dix-huit enfants dans la cour. Certains rentrent en classe. Il en reste onze. Quelle soustraction écrit-on pour calculer combien d'enfants sont rentrés ?",
+      "options": [
+        "$18 - 11$",
+        "$18 + 11$",
+        "$11 - 18$",
+        "$18 - 7$"
+      ],
+      "correctAnswer": "$18 - 11$",
+      "explanation": "C'est un problème à trou (le changement est inconnu). On a le départ (18) et l'arrivée (11). Le nombre d'enfants partis est ce qu'on a retiré : $18 - 11 = 7$. L'addition $18 + 11$ n'a pas de sens physique ici, $11 - 18$ est impossible, et $18 - 7$ utilise la réponse (7) au lieu de la donnée (11).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier le calcul $24 - 9 = 15$, quelle addition doit-on faire ?",
+      "options": [
+        "$15 + 9$",
+        "$15 - 9$",
+        "$24 + 9$",
+        "$9 - 15$"
+      ],
+      "correctAnswer": "$15 + 9$",
+      "explanation": "La soustraction et l'addition sont des opérations inverses. Pour vérifier $24 - 9 = 15$, on repart du résultat (15) et on ajoute ce qu'on avait retiré (9). Si on retrouve le départ (24), le calcul est juste : $15 + 9 = 24$. Les autres options ne correspondent pas à cette relation inverse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

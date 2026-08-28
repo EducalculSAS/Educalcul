@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Prédire",
+  "title": "Quiz Prédire - Boucles 6e",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, la variable $a$ vaut $0$ au départ. On répète $5$ fois l'instruction $a \\leftarrow a + 2$. Quelle est la valeur finale de $a$ ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$6$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La boucle s'exécute $5$ fois. À chaque tour on ajoute $2$ à $a$. Donc $5 \\times 2 = 10$. Les autres réponses correspondent à un nombre de tours erroné ou à une addition mal comptée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme suivant, la variable $b$ vaut $10$ au départ. On répète $4$ fois l'instruction $b \\leftarrow b - 3$. Quelle est la valeur finale de $b$ ?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$-5$",
+        "$4$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "Chaque itération retire $3$ à $b$. Après $4$ tours, on a soustrait $4 \\times 3 = 12$. $10 - 12 = -2$. Les distracteurs proviennent d'une erreur sur le nombre de tours ou sur le signe de la soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme : $c \\leftarrow 1$ ; tant que $c < 10$ faire $c \\leftarrow c \\times 2$. Quelle est la valeur de $c$ à la fin de la boucle ?",
+      "options": [
+        "$8$",
+        "$16$",
+        "$32$",
+        "$10$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "La suite des valeurs de $c$ est $1, 2, 4, 8, 16$. La condition $c < 10$ est vraie jusqu'à $8$ ; au tour suivant $c$ devient $16$ et la boucle s'arrête. $8$ serait la valeur avant le dernier tour, $32$ serait après un tour de trop, $10$ n'est jamais atteinte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Algorithme : $d \\leftarrow 0$ ; répéter $3$ fois : répéter $2$ fois : $d \\leftarrow d + 1$. Valeur finale de $d$ ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La boucle intérieure incrémente $d$ de $1$ deux fois par tour extérieur. Avec $3$ tours extérieurs, on a $3 \\times 2 = 6$ incréments au total. Les autres nombres correspondent à un comptage erroné des boucles imbriquées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Algorithme : $e \\leftarrow 5$ ; tant que $e > 0$ faire $e \\leftarrow e - 2$. Combien de fois la boucle s'exécute-t-elle ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Les valeurs successives de $e$ sont $5, 3, 1, -1$. La condition $e > 0$ est vraie pour $5, 3, 1$ (trois fois) puis devient fausse pour $-1$. Donc la boucle s'exécute exactement $3$ fois.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

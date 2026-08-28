@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Tableau",
+  "title": "Quiz sur les tableaux de valeurs et dépendance fonctionnelle",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous donne des valeurs de $x$ et $y$ :\\n$x$ : $1$ $2$ $3$ $4$\\n$y$ : $3$ $6$ $9$ $12$\\nLaquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "Oui, car le rapport $y/x$ est constant",
+        "Non, car le rapport $y/x$ n'est pas constant",
+        "Oui, car les valeurs augmentent",
+        "Non, car le tableau n'est pas ordonné"
+      ],
+      "correctAnswer": "Oui, car le rapport $y/x$ est constant",
+      "explanation": "Pour chaque paire, le rapport $y/x$ vaut $3/1 = 3$, $6/2 = 3$, $9/3 = 3$, $12/4 = 3$. Comme le rapport est constant, le tableau représente une relation proportionnelle. Les autres affirmations sont fausses : le rapport est constant, la simple augmentation ne garantit pas la proportionnalité, et l'ordre du tableau n'a pas d'incidence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de proportionnalité, on a $x = 2$ correspond à $y = 10$. Quelle est la valeur de $y$ lorsque $x = 5$ ?",
+      "options": [
+        "$20$",
+        "$25$",
+        "$30$",
+        "$15$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "Le coefficient de proportionnalité $k$ vaut $y/x = 10/2 = 5$. Pour $x = 5$, on a $y = k \\times x = 5 \\times 5 = 25$. Les autres valeurs correspondent à des erreurs de calcul du coefficient ou de la multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant représente une fonction affine :\\n$x$ : $0$ $3$\\n$y$ : $4$ $10$\\nQuelle est l'expression de cette fonction ?",
+      "options": [
+        "$y = 2x + 4$",
+        "$y = 3x + 4$",
+        "$y = 2x + 3$",
+        "$y = 3x + 3$"
+      ],
+      "correctAnswer": "$y = 2x + 4$",
+      "explanation": "Le taux d'accroissement (pente) est $(10-4)/(3-0) = 6/3 = 2$. L'ordonnée à l'origine est la valeur de $y$ pour $x=0$, soit $4$. L'expression est donc $y = 2x + 4$. Les autres propositions ont une pente ou une ordonnée à l'origine incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez le tableau :\\n$x$ : $1$ $2$ $2$ $3$\\n$y$ : $5$ $7$ $9$ $11$\\nCe tableau définit-il une fonction ?",
+      "options": [
+        "Oui, chaque $x$ a une seule $y$",
+        "Non, car un $x$ correspond à deux $y$ différents",
+        "Oui, car les valeurs de $y$ sont toutes différentes",
+        "Non, car le tableau n'est pas complet"
+      ],
+      "correctAnswer": "Non, car un $x$ correspond à deux $y$ différents",
+      "explanation": "Une fonction associe à chaque $x$ une unique valeur $y$. Ici, $x = 2$ est associé à $y = 7$ et à $y = 9$. Cela viole la définition d'une fonction. Le fait que les $y$ soient distincts ou que le tableau soit incomplet ne change pas cette conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour le tableau :\\n$x$ : $1$ $4$\\n$y$ : $2$ $14$\\nCalculez le taux d'accroissement moyen entre $x = 1$ et $x = 4$.",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le taux d'accroissement moyen est $\\frac{y(4)-y(1)}{4-1} = \\frac{14-2}{3} = \\frac{12}{3} = 4$. Les autres valeurs correspondent à des erreurs de soustraction ou de division.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Identités",
+  "title": "Identités remarquables - Complétion et factorisation",
+  "blocks": [
+    {
+      "title": "Identité remarquable : carré d'une somme",
+      "content": "Complète l'identité remarquable : $(a+b)^2 = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "a^2 + 2ab + b^2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'identité $(a+b)^2 = a^2 + 2ab + b^2$ s'obtient en développant $(a+b)(a+b) = a^2 + ab + ba + b^2 = a^2 + 2ab + b^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identité remarquable : produit somme-différence",
+      "content": "Complète l'identité remarquable : $(a-b)(a+b) = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "a^2 - b^2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le produit $(a-b)(a+b)$ se développe en $a^2 + ab - ab - b^2 = a^2 - b^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation à l'aide d'une identité",
+      "content": "Factorise l'expression suivante en utilisant l'identité adéquate : $x^2 - 9 = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "(x-3)(x+3)|(x+3)(x-3)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On reconnaît $x^2 - 9 = x^2 - 3^2$, qui est une différence de carrés. En appliquant $(a-b)(a+b)=a^2-b^2$ avec $a=x$ et $b=3$, on obtient $(x-3)(x+3)$ (l'ordre des facteurs n'importe pas).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

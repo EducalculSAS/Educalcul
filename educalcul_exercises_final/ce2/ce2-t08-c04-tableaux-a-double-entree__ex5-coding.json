@@ -1,0 +1,67 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 208,
+  "_course_code": "ce2-t08-c04-tableaux-a-double-entree",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Repérer deux critères",
+  "title": "Algorithmes et tableaux à double entrée",
+  "blocks": [
+    {
+      "title": "Repérer une case",
+      "content": "On regarde le tableau ci-dessous qui montre les fruits préférés de deux classes.\\n\\nÉcris l'algorithme (la suite d'étapes) pour trouver le nombre d'élèves de $CE2 A$ qui préfèrent la $Banane$.",
+      "correctAnswer": "1. Regarde les titres des lignes pour trouver $CE2 A$.\\n2. Regarde les titres des colonnes pour trouver $Banane$.\\n3. Suis la ligne $CE2 A$ et la colonne $Banane$ jusqu'à leur intersection.\\n4. Lis le nombre inscrit dans cette case : $5$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un tableau à double entrée, une information se trouve à l'intersection d'une ligne (premier critère : la classe) et d'une colonne (deuxième critère : le fruit). L'algorithme décrit la recherche de ces deux critères puis la lecture de la case commune. Ici, la case à l'intersection de la ligne $CE2 A$ et de la colonne $Banane$ contient le chiffre $5$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pomme",
+          "Banane",
+          "Fraise"
+        ],
+        "rows": [
+          [
+            "CE2 A",
+            "8",
+            "5",
+            "7"
+          ],
+          [
+            "CE2 B",
+            "6",
+            "9",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Remplir une case",
+      "content": "On utilise le même tableau. Un nouvel élève arrive en $CE2 B$ et son fruit préféré est la $Pomme$. Il faut ajouter $1$ dans la case correspondante.\\n\\nÉcris l'algorithme pour mettre à jour le tableau.",
+      "correctAnswer": "1. Identifie le premier critère : la classe $CE2 B$ (ligne).\\n2. Identifie le deuxième critère : le fruit $Pomme$ (colonne).\\n3. Repère la case à l'intersection de la ligne $CE2 B$ et de la colonne $Pomme$.\\n4. Lis la valeur actuelle : $6$.\\n5. Calcule la nouvelle valeur : $6 + 1 = 7$.\\n6. Écris $7$ dans cette case.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme combine la localisation par double critère (ligne et colonne) et une opération de mise à jour. On repère d'abord la case vide ou à modifier grâce aux deux critères, on effectue le calcul nécessaire (addition de $1$), puis on enregistre le résultat. La valeur initiale était $6$, la nouvelle valeur est $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer un total partiel",
+      "content": "On veut connaître le nombre total d'élèves qui préfèrent la $Fraise$ (dans les deux classes).\\n\\nÉcris un algorithme qui utilise une boucle (répétition) pour additionner les valeurs de la colonne $Fraise$.",
+      "correctAnswer": "1. Fixe le critère colonne : $Fraise$.\\n2. Initialise le total à $0$.\\n3. Pour chaque ligne du tableau (critère ligne) :\\n   - Regarde la valeur à l'intersection de cette ligne et de la colonne $Fraise$.\\n   - Ajoute cette valeur au total.\\n4. À la fin, affiche le total.\\n\\nApplication :\\n- Ligne $CE2 A$ : valeur $7$, total devient $7$.\\n- Ligne $CE2 B$ : valeur $4$, total devient $11$.\\nRésultat : $11$ élèves.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme introduit la notion de parcours partiel du tableau. Le critère colonne est fixe ($Fraise$), le critère ligne varie (on parcourt toutes les lignes). C'est une structure 'Pour chaque ligne faire...' typique de l'algorithmique. On somme $7$ (CE2 A) et $4$ (CE2 B) pour obtenir $11$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

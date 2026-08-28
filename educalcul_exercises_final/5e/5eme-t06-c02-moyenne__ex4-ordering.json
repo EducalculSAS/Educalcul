@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Moyenne",
+  "title": "Mise en ordre : Calcul de la moyenne",
+  "blocks": [
+    {
+      "title": "Calculer une moyenne simple",
+      "content": "Range les étapes dans l'ordre pour calculer la moyenne de la série : $12 ; 15 ; 18 ; 9 ; 16$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Additionner toutes les valeurs : $12 + 15 + 18 + 9 + 16 = 70$.",
+        "Compter le nombre de valeurs : il y a $5$ nombres.",
+        "Diviser la somme par le nombre de valeurs : $70 \\div 5 = 14$.",
+        "Conclure : la moyenne de la série est $14$."
+      ],
+      "explanation": "Pour calculer une moyenne, on suit toujours la même méthode : 1) On fait la somme des valeurs ($12+15+18+9+16=70$). 2) On compte l'effectif total (ici $5$ valeurs). 3) On divise la somme par l'effectif ($70 \\div 5 = 14$). 4) On écrit la conclusion.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retrouver une valeur manquante",
+      "content": "La moyenne de $4$ nombres est $12$. Trois de ces nombres sont $10$, $14$ et $8$. Range les étapes pour trouver le quatrième nombre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la somme totale grâce à la moyenne : $12 \\times 4 = 48$.",
+        "Calculer la somme des trois nombres connus : $10 + 14 + 8 = 32$.",
+        "Soustraire la somme connue de la somme totale : $48 - 32 = 16$.",
+        "Conclure : le quatrième nombre est $16$."
+      ],
+      "explanation": "Si on connaît la moyenne et l'effectif, on retrouve la somme totale en faisant $\\text{moyenne} \\times \\text{effectif}$ ($12 \\times 4 = 48$). On soustrait ensuite la somme des valeurs connues ($10+14+8=32$) pour trouver la valeur manquante ($48-32=16$).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Moyenne à partir d'un tableau de valeurs",
+      "content": "Voici un tableau donnant les notes d'un élève et leur effectif. Range les étapes pour calculer sa moyenne.\\nNote : $10$ (effectif $2$), $12$ (effectif $3$), $8$ (effectif $1$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Multiplier chaque note par son effectif : $10 \\times 2 = 20$, $12 \\times 3 = 36$, $8 \\times 1 = 8$.",
+        "Additionner les résultats pour obtenir la somme des notes : $20 + 36 + 8 = 64$.",
+        "Additionner les effectifs pour obtenir l'effectif total : $2 + 3 + 1 = 6$.",
+        "Diviser la somme des notes par l'effectif total : $64 \\div 6 \\approx 10,67$.",
+        "Conclure : la moyenne est d'environ $10,67$."
+      ],
+      "explanation": "Avec un tableau de fréquences, on calcule la somme pondérée : chaque valeur multipliée par son effectif. Somme des notes = $10\\times2 + 12\\times3 + 8\\times1 = 64$. Effectif total = $2+3+1=6$. Moyenne = $64 \\div 6 \\approx 10,67$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

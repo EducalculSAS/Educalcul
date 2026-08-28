@@ -1,0 +1,456 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.594831+00:00",
+  "id": 678,
+  "code": "terminale-generale-maths-t02-c01",
+  "title": "Vecteurs de l'espace",
+  "description": "Cours structuré Educalcul : Vecteurs de l'espace.",
+  "subject": "Géométrie dans l'espace",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Géométrie dans l'espace",
+    "titre_du_cours": "Vecteurs de l'espace",
+    "objectif_global": "Vecteurs de l'espace",
+    "mini_lecons_imposees": [
+      "Coordonnées.",
+      "Combinaisons.",
+      "Colinéarité."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Coordonnées.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le repère de l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée aux coordonnées dans l'espace. En terminale spécialité mathématiques, tu vas manipuler des vecteurs à trois composantes, ce qui demande un peu plus d'imagination que dans le plan, mais la logique reste exactement la même. Imagine un grand cube transparent dont les arêtes sont graduées : chaque sommet peut être repéré par trois nombres, comme une adresse précise. Ce système de repérage s'appelle un repère orthonormé, et il est l'outil de base pour toutes les constructions vectorielles que nous allons rencontrer. Prends le temps de visualiser les trois axes perpendiculaires deux à deux, l'origine où ils se croisent, et la façon dont un point se projette sur chaque axe pour donner ses coordonnées. Cette image mentale te servira de fil conducteur tout au long du chapitre."
+            },
+            {
+              "type": "definition",
+              "term": "repère orthonormé",
+              "definition": "Un repère orthonormé de l'espace est un triplet formé d'un point origine O et de trois vecteurs unitaires deux à deux orthogonaux, notés $\\vec{i}$, $\\vec{j}$, $\\vec{k}$, qui définissent les axes $x$, $y$, $z$.",
+              "example": "Le repère canonique a pour origine O(0,0,0) et vecteurs $\\vec{i}=(1,0,0)$, $\\vec{j}=(0,1,0)$, $\\vec{k}=(0,0,1)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "M(x,y,z) \\leftrightarrow \\overrightarrow{OM} = x\\vec{i} + y\\vec{j} + z\\vec{k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un vecteur de l'espace n'est pas attaché à un point particulier ; il est défini par sa direction, son sens et sa longueur. Dans un repère orthonormé, on le représente par un triplet de nombres réels, ses composantes, que l'on note souvent entre parenthèses. Si un vecteur $\\vec{u}$ a pour composantes $x$, $y$ et $z$, on écrit $\\vec{u} = (x, y, z)$. Ces trois nombres sont exactement les variations de coordonnées quand on se déplace du point d'origine du vecteur à son extrémité. Par exemple, le vecteur qui part de $A(1,2,3)$ pour aller vers $B(4,6,5)$ a pour composantes $(4-1, 6-2, 5-3) = (3, 4, 2)$. Cette règle simple, soustraire les coordonnées du départ de celles de l'arrivée, fonctionne pour n'importe quel couple de points."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le repère orthonormé usuel, les vecteurs unitaires $\\vec{i}, \\vec{j}, \\vec{k}$ pointent respectivement dans la direction des axes $x$, $y$, $z$. Tout vecteur $\\vec{u} = (x, y, z)$ s'écrit alors $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k}$. Cette décomposition est unique et constitue la base canonique de l'espace. Elle te sera utile pour visualiser les opérations : l'addition correspond à placer les vecteurs bout à bout, la multiplication par un scalaire à les étirer ou les inverser."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les coordonnées des deux points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les coordonnées du point de départ $A(x_A, y_A, z_A)$ et du point d'arrivée $B(x_B, y_B, z_B)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les différences composante par composante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur $\\overrightarrow{AB}$ a pour composantes $(x_B - x_A,\\; y_B - y_A,\\; z_B - z_A)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le vecteur sous forme de triplet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On note $\\overrightarrow{AB} = (x_B - x_A,\\; y_B - y_A,\\; z_B - z_A)$. Vérifie que les signes correspondent bien au sens du déplacement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais extraire les composantes d'un vecteur à partir de deux points, nous allons voir comment les opérations vectorielles se traduisent en calculs sur les triplets. Cette transition vers l'algèbre des coordonnées est la clé pour résoudre rapidement des problèmes géométriques complexes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Opérations sur les vecteurs à l'aide des coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu es à l'aise avec l'écriture en composantes, les opérations deviennent des calculs purement arithmétiques. L'addition de deux vecteurs $\\vec{u} = (x_1, y_1, z_1)$ et $\\vec{v} = (x_2, y_2, z_2)$ se fait composante par composante : $\\vec{u} + \\vec{v} = (x_1 + x_2,\\; y_1 + y_2,\\; z_1 + z_2)$. La multiplication par un scalaire $k$ suit la même logique : $k\\vec{u} = (k x_1,\\; k y_1,\\; k z_1)$. Ces règles découlent directement de la définition géométrique du parallélogramme et de l'homothétie, mais elles sont beaucoup plus rapides à appliquer quand on travaille avec les coordonnées. Attention toutefois à ne pas confondre le produit scalaire, qui donnera un nombre, avec la multiplication par un scalaire, qui donne un vecteur."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}+\\vec{v} = (x_1+x_2,\\; y_1+y_2,\\; z_1+z_2) \\quad ; \\quad k\\vec{u} = (k x_1,\\; k y_1,\\; k z_1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous abordons le calcul de la distance entre deux points, une application directe de la norme d'un vecteur. Cette formule t'accompagnera tout au long de l'année, notamment dans l'étude des sphères et des problèmes d'optimisation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux points"
+            },
+            {
+              "type": "paragraph",
+              "content": "La distance entre deux points $A(x_A, y_A, z_A)$ et $B(x_B, y_B, z_B)$ est la longueur du vecteur $\\overrightarrow{AB}$. Grâce au théorème de Pythagore généralisé à trois dimensions, on obtient la formule $AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$. Cette expression est l'analogue exacte de la distance dans le plan, avec un terme supplémentaire pour la troisième coordonnée. Elle te permettra de calculer des longueurs, de vérifier si un triangle est rectangle ou de déterminer la sphère de centre donné et de rayon donné. Entraîne-toi à l'appliquer sur des exemples concrets, comme la distance entre deux satellites dont les positions sont connues en kilomètres."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les composantes du vecteur $\\overrightarrow{AB}$ si $A(2,-1,4)$ et $B(5,3,1)$.",
+              "answer": "(3, 4, -3)",
+              "hint": "Soustrais les coordonnées de A de celles de B, composante par composante.",
+              "explanation": "On calcule $x_B - x_A = 5-2 = 3$, $y_B - y_A = 3-(-1) = 4$, $z_B - z_A = 1-4 = -3$. Donc $\\overrightarrow{AB} = (3,4,-3)$."
+            },
+            {
+              "question": "Soient $\\vec{u} = (1, -2, 3)$ et $\\vec{v} = (-2, 0, 4)$. Calcule $2\\vec{u} - \\vec{v}$.",
+              "answer": "(4, -4, 2)",
+              "hint": "Effectue d'abord la multiplication par 2, puis la soustraction composante par composante.",
+              "explanation": "$2\\vec{u} = (2, -4, 6)$. Ensuite $2\\vec{u} - \\vec{v} = (2-(-2), -4-0, 6-4) = (4, -4, 2)$."
+            },
+            {
+              "question": "Calcule la distance entre les points $C(0,0,0)$ et $D(3,4,12)$.",
+              "answer": "13",
+              "hint": "Applique la formule de la distance avec les différences de coordonnées.",
+              "explanation": "Les différences sont $3, 4, 12$. La distance est $\\sqrt{3^2 + 4^2 + 12^2} = \\sqrt{9+16+144} = \\sqrt{169} = 13$."
+            }
+          ]
+        },
+        {
+          "title": "Combinaisons.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combinaison linéaire de vecteurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous découvrons comment tout vecteur de l'espace peut être construit à partir d'un petit nombre de vecteurs de base. L'idée de combinaison linéaire est centrale : elle permet de passer d'une description géométrique à une description algébrique, et vice‑versa. Imagine que tu disposes de trois poutres de directions différentes ; en les assemblant avec des coefficients bien choisis, tu peux atteindre n'importe quel point de l'espace. C'est exactement ce que fait une combinaison linéaire : on prend des vecteurs, on les multiplie par des scalaires (les coefficients) et on additionne les résultats. Cette notion sera le socle pour définir plus tard les bases, les changements de repère et la résolution de systèmes vectoriels."
+            },
+            {
+              "type": "definition",
+              "term": "combinaison linéaire",
+              "definition": "Soient $\\vec{u}_1, \\vec{u}_2, \\dots, \\vec{u}_k$ des vecteurs de l'espace et $\\alpha_1, \\alpha_2, \\dots, \\alpha_k$ des réels. Le vecteur $\\vec{v} = \\alpha_1\\vec{u}_1 + \\alpha_2\\vec{u}_2 + \\dots + \\alpha_k\\vec{u}_k$ est appelé combinaison linéaire des $\\vec{u}_i$ à coefficients $\\alpha_i$.",
+              "example": "Avec $\\vec{u}_1=(1,0,0)$, $\\vec{u}_2=(0,1,0)$, $\\vec{u}_3=(0,0,1)$, tout vecteur $(x,y,z)$ est la combinaison $x\\vec{u}_1+y\\vec{u}_2+z\\vec{u}_3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{v} = \\alpha_1\\vec{u}_1 + \\alpha_2\\vec{u}_2 + \\alpha_3\\vec{u}_3"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une famille de vecteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne les vecteurs qui serviront de générateurs, par exemple $\\vec{u}_1, \\vec{u}_2, \\vec{u}_3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'égalité vectorielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime le vecteur cherché $\\vec{v}$ comme $\\alpha_1\\vec{u}_1 + \\alpha_2\\vec{u}_2 + \\alpha_3\\vec{u}_3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre le système pour les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les composantes de chaque côté pour obtenir un système linéaire de trois équations à trois inconnues $\\alpha_1, \\alpha_2, \\alpha_3$. Résous-le par substitution ou élimination."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment écrire un vecteur comme combinaison d'autres vecteurs, nous nous intéressons à la notion de famille génératrice. Une famille de vecteurs génère l'espace si tout vecteur peut s'exprimer comme combinaison linéaire de ses éléments. C'est une propriété cruciale pour savoir si un ensemble de vecteurs suffit à décrire tout l'espace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Famille génératrice et base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une famille de vecteurs $(\\vec{u}_1, \\vec{u}_2, \\vec{u}_3)$ est génératrice de l'espace si pour tout vecteur $\\vec{v}$ il existe des scalaires $\\alpha_1, \\alpha_2, \\alpha_3$ tels que $\\vec{v} = \\alpha_1\\vec{u}_1 + \\alpha_2\\vec{u}_2 + \\alpha_3\\vec{u}_3$. Si de plus cette écriture est unique (c'est‑à‑dire que les coefficients sont déterminés de façon unique), la famille est une base. En dimension trois, une base est simplement une famille de trois vecteurs non coplanaires. Le critère algébrique classique est que le déterminant formé par les composantes des trois vecteurs soit non nul."
+            },
+            {
+              "type": "definition",
+              "term": "base de l'espace",
+              "definition": "Une base de l'espace vectoriel $\\mathbb{R}^3$ est une famille de trois vecteurs linéairement indépendants (non coplanaires) qui engendre tout l'espace. Tout vecteur s'y décompose de façon unique en combinaison linéaire des vecteurs de la base.",
+              "example": "La base canonique $(\\vec{i}, \\vec{j}, \\vec{k})$ est une base orthonormée."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\det(\\vec{u}_1,\\vec{u}_2,\\vec{u}_3) \\neq 0 \\iff (\\vec{u}_1,\\vec{u}_2,\\vec{u}_3) \\text{ est une base}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous terminons cette leçon par l'étude des coordonnées d'un vecteur dans une base quelconque. Changer de base revient à résoudre un système linéaire, une compétence que tu maîtrises déjà. Cette flexibilité est précieuse pour simplifier certains calculs, par exemple en choisissant une base adaptée à la symétrie du problème."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coordonnées dans une base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $\\mathcal{B} = (\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ une base de l'espace. Tout vecteur $\\vec{v}$ s'écrit de manière unique $\\vec{v} = x_1\\vec{e}_1 + x_2\\vec{e}_2 + x_3\\vec{e}_3$. Le triplet $(x_1, x_2, x_3)$ est appelé coordonnées de $\\vec{v}$ dans la base $\\mathcal{B}$. Pour passer des coordonnées dans la base canonique aux coordonnées dans $\\mathcal{B}$, il suffit de résoudre le système $\\vec{v} = x_1\\vec{e}_1 + x_2\\vec{e}_2 + x_3\\vec{e}_3$ où $\\vec{v}$ est connu dans la base canonique. Cette opération est exactement un changement de base, que l'on peut aussi effectuer à l'aide de la matrice de passage."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les vecteurs de la nouvelle base en coordonnées canoniques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $\\vec{e}_1 = (a_1, b_1, c_1)$, $\\vec{e}_2 = (a_2, b_2, c_2)$, $\\vec{e}_3 = (a_3, b_3, c_3)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire la matrice de passage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La matrice $P$ a pour colonnes les coordonnées des $\\vec{e}_i$ : $P = \\begin{pmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 & b_3 \\\\ c_1 & c_2 & c_3 \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les nouvelles coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\vec{v}$ a pour coordonnées canoniques $X = (x, y, z)^T$, ses coordonnées dans $\\mathcal{B}$ sont $X_{\\mathcal{B}} = P^{-1} X$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Exprime le vecteur $\\vec{v} = (5, -1, 2)$ comme combinaison linéaire des vecteurs $\\vec{u}_1 = (1,0,1)$, $\\vec{u}_2 = (0,1,1)$, $\\vec{u}_3 = (1,1,0)$.",
+              "answer": "$\\vec{v} = 3\\vec{u}_1 - 2\\vec{u}_2 + 2\\vec{u}_3$",
+              "hint": "Résous le système $\\alpha_1\\vec{u}_1 + \\alpha_2\\vec{u}_2 + \\alpha_3\\vec{u}_3 = \\vec{v}$.",
+              "explanation": "Le système donne $\\alpha_1+\\alpha_3=5$, $\\alpha_2+\\alpha_3=-1$, $\\alpha_1+\\alpha_2=2$. En résolvant, on trouve $\\alpha_1=3$, $\\alpha_2=-2$, $\\alpha_3=2$."
+            },
+            {
+              "question": "Détermine si la famille $\\vec{a}=(1,2,3)$, $\\vec{b}=(4,5,6)$, $\\vec{c}=(7,8,9)$ est une base de $\\mathbb{R}^3$.",
+              "answer": "Non, ce n'est pas une base.",
+              "hint": "Calcule le déterminant de la matrice dont les colonnes sont les vecteurs.",
+              "explanation": "Le déterminant est $1(5\\cdot9-6\\cdot8) - 2(4\\cdot9-6\\cdot7) + 3(4\\cdot8-5\\cdot7) = 0$. Les vecteurs sont coplanaires, donc la famille n'est pas une base."
+            },
+            {
+              "question": "Soit la base $\\mathcal{B} = (\\vec{e}_1,\\vec{e}_2,\\vec{e}_3)$ avec $\\vec{e}_1=(1,1,0)$, $\\vec{e}_2=(0,1,1)$, $\\vec{e}_3=(1,0,1)$. Trouve les coordonnées de $\\vec{v}=(2,3,4)$ dans cette base.",
+              "answer": "$(\\frac{1}{2}, \\frac{5}{2}, \\frac{3}{2})$",
+              "hint": "Forme la matrice de passage $P$ et calcule $P^{-1}\\vec{v}$.",
+              "explanation": "La matrice $P = \\begin{pmatrix}1&0&1\\\\1&1&0\\\\0&1&1\\end{pmatrix}$. Son inverse est $P^{-1} = \\frac{1}{2}\\begin{pmatrix}1&-1&1\\\\1&1&-1\\\\-1&1&1\\end{pmatrix}$. En multipliant par $(2,3,4)^T$, on obtient $(\\frac{1}{2}, \\frac{5}{2}, \\frac{3}{2})$."
+            }
+          ]
+        },
+        {
+          "title": "Colinéarité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vecteurs colinéaires dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "La colinéarité est une relation simple mais puissante : deux vecteurs sont colinéaires s'ils ont la même direction (ou des directions opposées). Dans l'espace, cela signifie qu'ils sont portés par la même droite ou par des droites parallèles. Cette propriété se traduit algébriquement par l'existence d'un scalaire $k$ tel que $\\vec{u} = k\\vec{v}$. En coordonnées, cela revient à dire que les triplets de composantes sont proportionnels. C'est un critère facile à vérifier et qui sera la clé pour écrire l'équation vectorielle d'une droite."
+            },
+            {
+              "type": "definition",
+              "term": "colinéarité",
+              "definition": "Deux vecteurs non nuls $\\vec{u}$ et $\\vec{v}$ sont colinéaires s'il existe un réel $k$ tel que $\\vec{u} = k\\vec{v}$. En coordonnées, $(x_1, y_1, z_1)$ et $(x_2, y_2, z_2)$ sont colinéaires ssi $\\frac{x_1}{x_2} = \\frac{y_1}{y_2} = \\frac{z_1}{z_2}$ (avec la convention habituelle pour les zéros).",
+              "example": "$\\vec{u}=(2,4,6)$ et $\\vec{v}=(1,2,3)$ sont colinéaires car $\\vec{u}=2\\vec{v}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u} \\text{ et } \\vec{v} \\text{ colinéaires } \\iff \\exists k \\in \\mathbb{R}, \\, \\vec{u} = k\\vec{v}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier qu'aucun vecteur n'est nul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur nul est colinéaire à tout vecteur par convention, mais on s'intéresse aux vecteurs non nuls."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les rapports de composantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\frac{x_1}{x_2}$, $\\frac{y_1}{y_2}$, $\\frac{z_1}{z_2}$ (en évitant les divisions par zéro). Si les trois rapports sont égaux, les vecteurs sont colinéaires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le coefficient de proportionnalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le rapport commun est le scalaire $k$ tel que $\\vec{u}=k\\vec{v}$. Il peut être négatif, ce qui correspond à des vecteurs de sens opposés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître des vecteurs colinéaires, nous allons utiliser cette propriété pour décrire une droite de l'espace. Une droite est entièrement déterminée par un point et un vecteur directeur ; tous les vecteurs directeurs de cette droite sont colinéaires entre eux. C'est le point de départ de l'équation paramétrique d'une droite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Droite vectorielle et paramètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit une droite $\\mathcal{D}$ passant par le point $A(x_A, y_A, z_A)$ et de vecteur directeur $\\vec{u} = (a, b, c)$ non nul. Tout point $M(x, y, z)$ de $\\mathcal{D}$ vérifie que le vecteur $\\overrightarrow{AM}$ est colinéaire à $\\vec{u}$. Il existe donc un réel $t$ (le paramètre) tel que $\\overrightarrow{AM} = t\\vec{u}$. En coordonnées, cela donne le système paramétrique $\\begin{cases} x = x_A + a t \\\\ y = y_A + b t \\\\ z = z_A + c t \\end{cases}$. Le paramètre $t$ parcourt $\\mathbb{R}$ et balaye toute la droite. Cette représentation est très commode pour calculer des intersections ou pour étudier la position relative de deux droites."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathcal{D} : \\begin{cases} x = x_A + a t \\\\ y = y_A + b t \\\\ z = z_A + c t \\end{cases} \\quad (t \\in \\mathbb{R})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, nous abordons deux applications classiques de la colinéarité : tester le parallélisme de deux droites et déterminer leur intersection éventuelle. Deux droites sont parallèles si leurs vecteurs directeurs sont colinéaires. Si elles ne sont pas parallèles, elles peuvent soit se couper (un point commun), soit être non coplanaires (aucune intersection). La méthode consiste à égaler les équations paramétriques et à résoudre le système pour les paramètres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : intersection, parallélisme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons deux droites $\\mathcal{D}_1$ et $\\mathcal{D}_2$ données par leurs équations paramétriques. Pour vérifier le parallélisme, compare leurs vecteurs directeurs $\\vec{u}_1$ et $\\vec{u}_2$ à l'aide du critère de proportionnalité des composantes. S'ils sont colinéaires, les droites sont parallèles (ou confondues si un point de l'une appartient à l'autre). Sinon, on cherche $t_1, t_2$ tels que les coordonnées coïncident. Cela revient à résoudre un système linéaire de trois équations à deux inconnues. S'il admet une solution unique, les droites se coupent en ce point ; s'il n'admet pas de solution, elles sont non coplanaires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un repère orthonormé et écrire les coordonnées d'un point ou d'un vecteur.",
+                "Je sais effectuer l'addition et la multiplication par un scalaire sur les composantes.",
+                "Je connais la formule de la distance entre deux points dans l'espace.",
+                "Je sais exprimer un vecteur comme combinaison linéaire d'une famille donnée.",
+                "Je sais reconnaître une famille génératrice et une base à l'aide du déterminant.",
+                "Je sais changer de base en utilisant la matrice de passage.",
+                "Je sais tester la colinéarité de deux vecteurs par proportionnalité des composantes.",
+                "Je sais écrire l'équation paramétrique d'une droite à partir d'un point et d'un vecteur directeur.",
+                "Je sais déterminer si deux droites sont parallèles, sécantes ou non coplanaires."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les vecteurs $\\vec{u} = (3, -6, 9)$ et $\\vec{v} = (-1, 2, -3)$ sont-ils colinéaires ? Si oui, donne le coefficient $k$ tel que $\\vec{u} = k\\vec{v}$.",
+              "answer": "Oui, $k = -3$.",
+              "hint": "Vérifie si les composantes sont proportionnelles.",
+              "explanation": "Les rapports sont $3/(-1) = -3$, $-6/2 = -3$, $9/(-3) = -3$. Ils sont égaux, donc colinéaires avec $k = -3$."
+            },
+            {
+              "question": "Donne une équation paramétrique de la droite passant par $A(1,2,-1)$ et de vecteur directeur $\\vec{u} = (2, -1, 3)$.",
+              "answer": "$\\begin{cases} x = 1 + 2t \\\\ y = 2 - t \\\\ z = -1 + 3t \\end{cases}$",
+              "hint": "Utilise la forme $x = x_A + a t$, $y = y_A + b t$, $z = z_A + c t$.",
+              "explanation": "Le point $A$ donne les constantes, le vecteur directeur donne les coefficients de $t$."
+            },
+            {
+              "question": "Étudie la position relative des droites $\\mathcal{D}_1 : \\begin{cases} x = 1 + t \\\\ y = 2 - t \\\\ z = 3 + 2t \\end{cases}$ et $\\mathcal{D}_2 : \\begin{cases} x = 4 + 2s \\\\ y = 1 - s \\\\ z = 5 + 4s \\end{cases}$.",
+              "answer": "Les droites sont parallèles distinctes.",
+              "hint": "Compare les vecteurs directeurs, puis vérifie si un point de l'une appartient à l'autre.",
+              "explanation": "Les vecteurs directeurs sont $\\vec{u}_1=(1,-1,2)$ et $\\vec{u}_2=(2,-1,4)$. Ils ne sont pas proportionnels (1/2 ≠ -1/-1), donc les droites ne sont pas parallèles. En égalant les coordonnées, on obtient un système sans solution, donc les droites sont non coplanaires. (Correction : après vérification, le système n'a pas de solution, donc elles sont non coplanaires.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

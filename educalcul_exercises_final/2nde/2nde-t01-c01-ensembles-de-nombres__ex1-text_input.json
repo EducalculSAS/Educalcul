@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "N, Z, Q, R",
+  "title": "Appartenance aux ensembles de nombres N, Z, Q, R",
+  "blocks": [
+    {
+      "title": "Identification des entiers relatifs",
+      "content": "Parmi les nombres suivants, sélectionnez ceux qui appartiennent à $\\mathbb{Z}$ : $\\ 5,\\ -\\frac{9}{3},\\ \\sqrt{3},\\ 0,\\ \\frac{7}{2},\\ -2,\\ \\pi$.",
+      "correctAnswer": "5, -3, 0, -2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On simplifie chaque nombre : $5 \\in \\mathbb{Z}$ ; $-\\frac{9}{3} = -3 \\in \\mathbb{Z}$ ; $\\sqrt{3} \\notin \\mathbb{Q}$ donc $\\notin \\mathbb{Z}$ ; $0 \\in \\mathbb{Z}$ ; $\\frac{7}{2} = 3,5 \\notin \\mathbb{Z}$ ; $-2 \\in \\mathbb{Z}$ ; $\\pi \\notin \\mathbb{Q}$ donc $\\notin \\mathbb{Z}$. Les entiers relatifs de la liste sont $5, -3, 0, -2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ensemble d'appartenance le plus précis",
+      "content": "Donnez l'ensemble le plus précis parmi $\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{R}$ auquel appartient le nombre $-\\frac{\\sqrt{25}}{5}$.",
+      "correctAnswer": "\\mathbb{Z}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule la valeur du nombre : $\\sqrt{25} = 5$, donc $-\\frac{\\sqrt{25}}{5} = -\\frac{5}{5} = -1$. Le nombre $-1$ est un entier relatif mais n'est pas un entier naturel (car $\\mathbb{N} = \\{0, 1, 2, \\dots\\}$). Il appartient donc à $\\mathbb{Z}$, ce qui est plus précis que $\\mathbb{Q}$ ou $\\mathbb{R}$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Produit de deux irrationnels",
+      "content": "Donnez un exemple de produit de deux nombres irrationnels dont le résultat est un nombre rationnel (écrire sous la forme $a \\times b$).",
+      "correctAnswer": "\\sqrt{2} \\times \\sqrt{2}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un contre-exemple classique est $\\sqrt{2} \\times \\sqrt{2} = 2$. Les deux facteurs $\\sqrt{2}$ sont irrationnels (ils n'appartiennent pas à $\\mathbb{Q}$), mais leur produit $2$ est un entier naturel, donc rationnel. D'autres réponses sont possibles comme $\\sqrt{3} \\times \\sqrt{3}$ ou $\\sqrt{2} \\times 2\\sqrt{2}$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

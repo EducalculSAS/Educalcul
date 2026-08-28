@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Repère, milieu et distance",
+  "title": "Applications repère milieu distance",
+  "blocks": [
+    {
+      "title": "Étape du milieu d'un segment",
+      "content": "Placez les étapes dans l'ordre pour déterminer les coordonnées du milieu d'un segment dont les extrémités sont A($x_A; y_A$) et B($x_B; y_B$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer les coordonnées des points A et B.",
+        "Appliquer la formule du milieu : $M\\left(\\frac{x_A+x_B}{2}; \\frac{y_A+y_B}{2}\\right)$.",
+        "Calculer les moyennes des abscisses et des ordonnées.",
+        "Écrire les coordonnées du point M."
+      ],
+      "explanation": "On commence par identifier les coordonnées des extrémités, puis on utilise la formule du milieu qui fait la moyenne des abscisses et des ordonnées, on effectue les calculs et on note le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la distance entre deux points",
+      "content": "Rangez les opérations dans l'ordre pour calculer la distance entre deux points A($x_A; y_A$) et B($x_B; y_B$) dans un repère orthonormé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer les coordonnées des points A et B.",
+        "Calculer les différences d'abscisses et d'ordonnées : $x_B - x_A$ et $y_B - y_A$.",
+        "Élever au carré ces différences et les additionner.",
+        "Extraire la racine carrée de la somme pour obtenir la distance $AB = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}$."
+      ],
+      "explanation": "On note d'abord les coordonnées, puis on calcule les différences, on applique le théorème de Pythagore en élevant au carré et en sommant, enfin on prend la racine carrée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification de l'alignement de trois points",
+      "content": "Ordonnez les étapes pour vérifier si trois points A, B et C sont alignés en utilisant les distances.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les distances AB, BC et AC.",
+        "Vérifier si la plus grande distance est égale à la somme des deux autres.",
+        "Conclure que les points sont alignés si l'égalité est vérifiée, sinon ils ne le sont pas."
+      ],
+      "explanation": "Si les points sont alignés, l'un d'eux se trouve entre les deux autres, donc la distance la plus grande égale la somme des deux autres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

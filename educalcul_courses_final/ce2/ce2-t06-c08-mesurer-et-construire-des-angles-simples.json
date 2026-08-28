@@ -1,0 +1,477 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.081616+00:00",
+  "id": 194,
+  "code": "ce2-t06-c08",
+  "title": "Mesurer et construire des angles simples",
+  "description": "Cours structuré Educalcul : Mesurer et construire des angles simples.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Mesurer et construire des angles simples",
+    "objectif_global": "Mesurer et construire des angles simples",
+    "mini_lecons_imposees": [
+      "Reconnaître angle droit.",
+      "Comparer angles.",
+      "Utiliser équerre."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Reconnaître angle droit.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un angle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ouvres un livre : les deux couvertures forment un angle. Plus tu l'ouvres grand, plus l'angle est grand. En géométrie, un angle est une figure formée par deux demi-droites qui ont le même point de départ. Ce point s'appelle le sommet, et les deux demi-droites sont les côtés de l'angle."
+            },
+            {
+              "type": "definition",
+              "term": "Angle",
+              "definition": "Figure formée par deux demi-droites ayant le même origine (le sommet).",
+              "example": "L'angle que forment les deux murs d'un coin de ta chambre."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un angle avec son sommet A et ses côtés [AB) et [AC).",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde autour de toi : les coins de ta table, les carreaux du carrelage, les pages d'un cahier. Tous ces coins ont quelque chose de commun : ils sont parfaitement « carrés ». C'est ce qu'on appelle un angle droit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'angle droit, un repère très utile"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle droit est un angle qui a la même forme que le coin d'une feuille de papier A4 ou le coin d'un livre fermé. C'est un angle « bien droit », ni trop ouvert, ni trop fermé. On le marque souvent par un petit carré dans le coin de l'angle, comme sur le dessin."
+            },
+            {
+              "type": "definition",
+              "term": "Angle droit",
+              "definition": "Angle qui a la même mesure que le quart de tour. On le repère grâce à un petit carré à l'intérieur de l'angle.",
+              "example": "Le coin de ton bureau est un angle droit."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un angle droit marqué par un petit carré au sommet A.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr qu'un angle est un angle droit, tu peux utiliser un gabarit : un coin de feuille, une équerre (qu'on verra plus tard) ou même ton poing fermé posé sur la table. Essaie : pose le coin d'une feuille sur l'angle du cadre de la porte. Si les deux bords coïncident parfaitement, c'est un angle droit !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître un angle droit sans outil"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu n'as pas de gabarit sous la main. Mais tu peux plier une feuille en deux, puis encore en deux : le pli formé est un angle droit. C'est une astuce de menuisier ! Regarde aussi les lettres majuscules : le L, le E, le F, le H, le T contiennent des angles droits. Amuse-toi à les repérer dans les titres de tes livres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la figure ci-dessous, montre du doigt le sommet de l'angle et nomme ses deux côtés.",
+              "answer": "Le sommet est le point A. Les côtés sont les demi-droites [AB) et [AC).",
+              "hint": "Le sommet est le point commun aux deux demi-droites.",
+              "explanation": "L'angle est formé par deux demi-droites qui partent du même point A. Ce point est le sommet. Les demi-droites sont les côtés."
+            },
+            {
+              "question": "Parmi ces angles, lesquels sont des angles droits ? Coche la ou les bonnes réponses.",
+              "answer": "Les angles marqués d'un petit carré sont des angles droits.",
+              "hint": "Cherche le petit carré à l'intérieur de l'angle.",
+              "explanation": "Le petit carré est le symbole universel de l'angle droit. S'il n'y a pas de carré, l'angle n'est pas nécessairement droit."
+            },
+            {
+              "question": "Plie une feuille de papier pour obtenir un angle droit. Combien de plis as-tu faits ?",
+              "answer": "Deux plis : un pli en deux, puis un autre pli en deux sur le premier.",
+              "hint": "Plie la feuille en deux une première fois, puis plie encore le bord sur le pli.",
+              "explanation": "Le premier pli donne un angle plat (demi-tour). Le second pli coupe cet angle plat en deux parties égales : ce sont deux angles droits."
+            }
+          ]
+        },
+        {
+          "title": "Comparer angles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment comparer deux angles ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà dire qu'un angle est plus grand ou plus petit qu'un autre en les regardant. Mais pour être précis, on peut les superposer. Imagine deux portes entrouvertes : l'une est entrouverte juste un peu, l'autre est grande ouverte. L'angle de la porte grande ouverte est plus grand que l'autre."
+            },
+            {
+              "type": "definition",
+              "term": "Comparer des angles",
+              "definition": "Déterminer si un angle est plus grand, plus petit ou égal à un autre angle, par superposition ou à l'aide d'un gabarit.",
+              "example": "L'angle de la porte entrouverte est plus petit que l'angle de la porte grande ouverte."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Deux angles : l'angle bleu est plus petit que l'angle rouge.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer sans bouger les figures, on utilise un gabarit d'angle. Tu peux en fabriquer un facilement : découpe un angle droit dans du carton (un coin de boîte de céréales). Pose ton gabarit sur le premier angle, marque l'ouverture avec un crayon, puis pose-le sur le second. Si la marque dépasse, le second angle est plus grand. Si elle ne suffit pas, il est plus petit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du gabarit pas à pas"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Fabriquer le gabarit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Découpe un angle droit dans du carton rigide. C'est ton gabarit de référence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser le gabarit sur le premier angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le sommet du gabarit sur le sommet de l'angle. Aligne un côté du gabarit avec un côté de l'angle. Trace un trait sur l'autre côté du gabarit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter sur le second angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans bouger le gabarit, pose-le sur le second angle de la même façon. Regarde où se trouve le trait par rapport au second côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le trait dépasse le côté : le premier angle est plus grand. Si le trait est avant le côté : le premier angle est plus petit. Si le trait tombe pile sur le côté : les deux angles sont égaux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'angle droit est un repère formidable pour classer les angles. Tout angle plus petit qu'un angle droit s'appelle un angle aigu. Tout angle plus grand qu'un angle droit (mais plus petit qu'un angle plat) s'appelle un angle obtus. Ces mots sont un peu savants, mais tu les entendras souvent. Pour l'instant, retiens simplement : plus petit que l'angle droit = aigu, plus grand = obtus."
+            },
+            {
+              "type": "definition",
+              "term": "Angle aigu",
+              "definition": "Angle plus petit qu'un angle droit.",
+              "example": "L'angle formé par les aiguilles d'une montre à 10 h 10."
+            },
+            {
+              "type": "definition",
+              "term": "Angle obtus",
+              "definition": "Angle plus grand qu'un angle droit et plus petit qu'un angle plat.",
+              "example": "L'angle formé par les aiguilles d'une montre à 8 h 00."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un angle aigu (à gauche), un angle droit (au milieu), un angle obtus (à droite).",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais comparer des angles entre eux et les classer par rapport à l'angle droit. Dans la prochaine leçon, nous allons découvrir l'outil indispensable du géomètre pour tracer et vérifier les angles droits : l'équerre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Observe les trois angles A, B, C. Classe-les du plus petit au plus grand.",
+              "answer": "A < C < B (ou l'ordre correspondant selon la figure fournie).",
+              "hint": "Utilise ton gabarit d'angle droit ou superpose-les mentalement.",
+              "explanation": "On compare l'ouverture de chaque angle. Le plus fermé est le plus petit, le plus ouvert est le plus grand."
+            },
+            {
+              "question": "Avec ton gabarit d'angle droit, dis si l'angle X est plus petit, plus grand ou égal à l'angle droit.",
+              "answer": "L'angle X est plus petit que l'angle droit (c'est un angle aigu).",
+              "hint": "Pose le sommet du gabarit sur le sommet de l'angle X et aligne un côté.",
+              "explanation": "Si le deuxième côté de l'angle X se trouve à l'intérieur du gabarit, l'angle est plus petit que l'angle droit."
+            },
+            {
+              "question": "Vrai ou faux ? Un angle obtus est plus petit qu'un angle droit.",
+              "answer": "Faux. Un angle obtus est plus grand qu'un angle droit.",
+              "hint": "Rappelle-toi : aigu = plus petit, obtus = plus grand.",
+              "explanation": "Par définition, un angle obtus est plus grand qu'un angle droit. Un angle aigu est plus petit."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser équerre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équerre, l'outil magique des angles droits"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu des équerres chez le menuisier ou dans la trousse de ton grand frère. C'est un instrument en forme de triangle rectangle, souvent en plastique transparent. L'équerre a un angle droit précis, gravé dans la matière. C'est l'outil de référence pour tous les angles droits."
+            },
+            {
+              "type": "definition",
+              "term": "Équerre",
+              "definition": "Instrument de géométrie en forme de triangle rectangle, utilisé pour tracer et vérifier les angles droits.",
+              "example": "L'équerre de ta trousse de géométrie."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Une équerre : un triangle rectangle avec un angle droit au sommet A.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier si un angle est un angle droit, on pose l'équerre dessus. C'est très simple, mais il faut être précis. Voici la méthode en trois temps, comme une recette de cuisine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier un angle droit avec l'équerre"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Poser le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le sommet de l'angle droit de l'équerre (le coin où il y a le petit carré) exactement sur le sommet de l'angle à vérifier."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Aligner un côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais coïncider l'un des côtés de l'équerre avec l'un des côtés de l'angle. L'équerre doit être bien à plat sur la feuille."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Regarder l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le deuxième côté de l'angle coïncide parfaitement avec le deuxième côté de l'équerre, c'est un angle droit. S'il y a un espace ou un débordement, ce n'est pas un angle droit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équerre ne sert pas qu'à vérifier, elle sert aussi à tracer des angles droits. C'est même son super-pouvoir ! Pour tracer une perpendiculaire à une droite passant par un point, on utilise l'équerre et la règle ensemble. C'est le duo inséparable du géomètre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un angle droit (une perpendiculaire)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Placer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la règle sur la droite donnée. Maintiens-la fermement avec ta main non écrivante."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Poser l'équerre contre la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Glisse l'équerre le long de la règle jusqu'à ce que le côté de l'angle droit de l'équerre passe par le point donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Tracer le trait",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le long de l'autre côté de l'équerre (celui qui forme l'angle droit avec la règle). Tu obtiens une droite perpendiculaire à la première."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges ! Si la règle bouge, ton angle ne sera pas droit. Si l'équerre n'est pas bien calée contre la règle, le trait sera de travers. Prends ton temps, appuie bien sur la règle, et vérifie toujours ton tracé en remettant l'équerre à l'envers : les deux traits doivent coïncider."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un angle droit dans mon environnement (coin de table, feuille, cadre).",
+                "Je sais comparer deux angles en utilisant un gabarit ou en les superposant.",
+                "Je connais les mots « angle aigu » (plus petit que l'angle droit) et « angle obtus » (plus grand que l'angle droit).",
+                "Je sais utiliser une équerre pour vérifier si un angle est droit.",
+                "Je sais tracer un angle droit (une perpendiculaire) à l'aide d'une règle et d'une équerre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, pose ton équerre sur l'angle marqué. Est-ce un angle droit ?",
+              "answer": "Oui, les deux côtés de l'équerre coïncident avec les côtés de l'angle.",
+              "hint": "Vérifie que le sommet de l'équerre est bien sur le sommet de l'angle.",
+              "explanation": "L'équerre est l'outil de référence. Si l'angle correspond exactement à l'angle droit de l'équerre, c'est un angle droit."
+            },
+            {
+              "question": "Trace un angle droit au point A sur la droite (d) à l'aide de ta règle et de ton équerre.",
+              "answer": "Une droite passant par A et perpendiculaire à (d).",
+              "hint": "Calé l'équerre contre la règle, fais glisser jusqu'au point A, trace le long de l'équerre.",
+              "explanation": "La règle guide l'équerre pour que le trait soit bien perpendiculaire à la droite initiale."
+            },
+            {
+              "question": "Tu as tracé un angle droit. Comment vérifier qu'il est bien droit sans refaire le tracé ?",
+              "answer": "En posant l'équerre à l'envers sur le tracé : les deux traits doivent coïncider.",
+              "hint": "Retourne l'équerre comme un livre et pose-la sur les deux traits.",
+              "explanation": "Si l'équerre coïncide dans les deux sens, l'angle est parfaitement droit. C'est la méthode des menuisiers."
+            },
+            {
+              "question": "Parmi ces angles tracés à main levée, lesquels sont des angles droits ? Vérifie avec ton équerre.",
+              "answer": "Seuls les angles où l'équerre coïncide parfaitement sont des angles droits.",
+              "hint": "Teste chaque angle avec ton équerre en suivant les trois étapes.",
+              "explanation": "L'œil peut se tromper. Seul l'équerre donne la certitude. C'est pour ça qu'on l'utilise."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

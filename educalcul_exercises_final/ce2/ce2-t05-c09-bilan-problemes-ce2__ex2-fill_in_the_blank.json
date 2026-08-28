@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 186,
+  "_course_code": "ce2-t05-c09-bilan-problemes-ce2",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Expliquer choix",
+  "title": "Expliquer le choix de l'opération",
+  "blocks": [
+    {
+      "title": "Choisir l'opération : perte",
+      "content": "Luc a $15$ billes. Il en donne $6$ à son frère. Pour savoir combien il lui en reste, je dois faire une {{1}}. En effet, Luc {{2}} des billes, donc la quantité {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "soustraction|une soustraction",
+        "donne|perd|retire|enlève",
+        "diminue|baisse|réduit"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Luc possède une quantité de départ ($15$ billes) et il en donne une partie ($6$ billes). C'est une situation de 'retrait' ou de 'perte'. La quantité totale diminue, donc on utilise l'opération soustraction : $15 - 6 = 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir l'opération : répétition",
+      "content": "Une boîte contient $8$ crayons. Combien de crayons y a-t-il dans $5$ boîtes ? Pour trouver le total, je choisis la {{1}}. Comme il y a $5$ groupes de $8$ crayons, j'utilise la {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "multiplication|une multiplication",
+        "multiplication|table de multiplication|multiplication par 5|multiplication par 8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a plusieurs groupes (les $5$ boîtes) qui contiennent tous la même quantité ($8$ crayons). C'est une situation de répétition d'une même quantité. Pour trouver le total sans additionner $8+8+8+8+8$, on utilise la multiplication : $5 \\times 8 = 40$ ou $8 \\times 5 = 40$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expliquer les étapes d'un problème à deux opérations",
+      "content": "Il y a $24$ élèves dans une classe. $9$ sont absents. Les présents sont répartis en $3$ groupes égaux. Combien d'élèves par groupe ? D'abord, je calcule le nombre d'élèves {{1}} en faisant une {{2}}. Ensuite, je {{3}} ce nombre en $3$ pour avoir la taille des groupes.",
+      "correctAnswer": "",
+      "blanks": [
+        "présents|présents à l'école|qui sont là",
+        "soustraction|une soustraction",
+        "divise|partage|répartis"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème comporte deux questions cachées. 1. Trouver le nombre d'élèves présents : on retire les absents du total, c'est une soustraction ($24 - 9 = 15$). 2. Répartir les $15$ élèves présents en $3$ groupes égaux : c'est un partage, donc une division ($15 \\div 3 = 5$). Il faut expliquer l'ordre logique : soustraction puis division.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 247,
+  "_course_code": "cm1-t05-c07-bilan-grandeurs-cm1",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Choix de formule",
+  "title": "Quiz CM1 - Choisir la bonne formule (Grandeurs et mesures)",
+  "questions": [
+    {
+      "text": "Pour calculer le périmètre d'un carré de côté $c$, quelle formule faut-il utiliser ?",
+      "options": [
+        "Périmètre = $c \\times c$",
+        "Périmètre = $4 \\times c$",
+        "Périmètre = $c + c$",
+        "Périmètre = $2 \\times c$"
+      ],
+      "correctAnswer": "Périmètre = $4 \\times c$",
+      "explanation": "Le périmètre d'un carré est la somme des longueurs de ses 4 côtés égaux. On additionne $c + c + c + c$, ce qui équivaut à multiplier la longueur d'un côté par 4 : $4 \\times c$. L'option $c \\times c$ calcule l'aire. L'option $c + c$ ne compte que deux côtés. L'option $2 \\times c$ correspond au périmètre d'un rectangle dont un côté serait nul ou à une erreur de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer l'aire d'un rectangle de longueur $L = 12$ cm et de largeur $l = 5$ cm. Parmi ces formules, laquelle est la bonne ?",
+      "options": [
+        "Aire = $L + l$",
+        "Aire = $2 \\times (L + l)$",
+        "Aire = $L \\times l$",
+        "Aire = $L \\div l$"
+      ],
+      "correctAnswer": "Aire = $L \\times l$",
+      "explanation": "L'aire d'un rectangle se calcule en multipliant sa longueur par sa largeur : $L \\times l$. Ici, $12 \\times 5 = 60$ cm². La formule $L + l$ additionne une longueur et une largeur (sans sens pour une surface). La formule $2 \\times (L + l)$ calcule le périmètre. La division $L \\div l$ donne un quotient sans unité de surface.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a un périmètre de $30$ cm. Sa longueur $L$ mesure $9$ cm. Quelle formule permet de trouver sa largeur $l$ ?",
+      "options": [
+        "$l = 30 - 9$",
+        "$l = (30 \\div 2) - 9$",
+        "$l = 30 - (2 \\times 9)$",
+        "$l = 30 \\div 9$"
+      ],
+      "correctAnswer": "$l = (30 \\div 2) - 9$",
+      "explanation": "La formule du périmètre est $P = 2 \\times (L + l)$. On sait que $P = 30$ et $L = 9$. On divise d'abord le périmètre par 2 pour obtenir la somme $L + l$ : $30 \\div 2 = 15$. Puis on soustrait la longueur : $15 - 9 = 6$ cm. L'option $30 - 9$ oublie le facteur 2 et le second côté. L'option $30 - (2 \\times 9)$ soustrait les deux longueurs du périmètre total, il resterait la somme des deux largeurs ($12$), il faudrait encore diviser par 2. La division $30 \\div 9$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour convertir une durée de $2$ heures $30$ minutes en minutes seulement, quelle méthode (formule) est correcte ?",
+      "options": [
+        "$2 \\times 60 + 30$",
+        "$2 + 30 \\times 60$",
+        "$(2 + 30) \\times 60$",
+        "$2 \\times 100 + 30$"
+      ],
+      "correctAnswer": "$2 \\times 60 + 30$",
+      "explanation": "Il faut convertir les heures en minutes en multipliant par 60 ($1$ h $= 60$ min), puis ajouter les minutes restantes. $2 \\times 60 = 120$ minutes, plus $30$ minutes font $150$ minutes. L'option $2 + 30 \\times 60$ fait la multiplication en premier (priorité opératoire) et donne $1802$, ce qui est faux. L'option $(2 + 30) \\times 60$ additionne les heures et les minutes avant de convertir, ce qui n'a pas de sens. L'option $2 \\times 100 + 30$ utilise une base 100 erronée pour le temps.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a une aire de $64$ cm². Quelle formule inverse permet de trouver la longueur de son côté $c$ ?",
+      "options": [
+        "$c = 64 \\div 4$",
+        "$c = 64 \\times 64$",
+        "$c = \\text{le nombre qui, multiplié par lui-même, donne } 64$",
+        "$c = 64 - 4$"
+      ],
+      "correctAnswer": "$c = \\text{le nombre qui, multiplié par lui-même, donne } 64$",
+      "explanation": "L'aire d'un carré est $A = c \\times c = c^2$. Pour retrouver le côté $c$ à partir de l'aire $64$, il faut chercher le nombre qui, multiplié par lui-même, donne $64$ (c'est la racine carrée, $8$ car $8 \\times 8 = 64$). Diviser par 4 ($64 \\div 4 = 16$) donnerait le côté si on confondait avec le périmètre. Multiplier par lui-même ($64 \\times 64$) donne l'aire d'un carré de côté 64. Soustraire 4 n'a aucun sens géométrique ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

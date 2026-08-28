@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Simplifier",
+  "title": "Simplification de fractions – algorithme et programmation",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de simplification",
+      "content": "Écrire en pseudocode un algorithme qui prend en entrée deux entiers positifs $a$ (numérateur) et $b$ (dénominateur) et qui affiche la fraction irréductible équivalente. Utiliser la fonction PGCD.",
+      "correctAnswer": "Algorithme SimplifierFraction\\nEntrées : a, b  // entiers > 0\\npgcd ← PGCD(a, b)\\nnum ← a / pgcd\\nden ← b / pgcd\\nAfficher num, /, den\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme calcule le plus grand commun diviseur (PGCD) du numérateur et du dénominateur, puis divise chacun par ce PGCD. Le résultat est la fraction irréductible car le numérateur et le dénominateur n'ont plus de diviseur commun autre que 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Implémenter en Python",
+      "content": "Écrire une fonction Python `simplifier(a, b)` qui retourne un couple `(num, den)` correspondant à la fraction irréductible de $\\frac{a}{b}$. On peut utiliser `math.gcd`.",
+      "correctAnswer": "import math\\n\\ndef simplifier(a, b):\\n    pgcd = math.gcd(a, b)\\n    return a // pgcd, b // pgcd",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction importe le module math pour accéder à `gcd`. Elle calcule le PGCD des deux entiers, puis effectue une division entière (//) du numérateur et du dénominateur par ce PGCD. Le couple retourné représente la fraction simplifiée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme",
+      "content": "Appliquer l'algorithme à la fraction $\\frac{84}{126}$. Montrer les étapes : calcul du PGCD, division du numérateur et du dénominateur, résultat final.",
+      "correctAnswer": "PGCD(84, 126) = 42\\n84 ÷ 42 = 2\\n126 ÷ 42 = 3\\nFraction irréductible : 2/3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PGCD de 84 et 126 est 42. En divisant le numérateur 84 par 42 on obtient 2, et le dénominateur 126 par 42 on obtient 3. La fraction $\\frac{84}{126}$ se simplifie donc en $\\frac{2}{3}$, qui est irréductible car 2 et 3 sont premiers entre eux.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

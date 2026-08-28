@@ -1,0 +1,473 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.524934+00:00",
+  "id": 329,
+  "code": "cm2-t08-c05",
+  "title": "Tester et déboguer",
+  "description": "Cours structuré Educalcul : Tester et déboguer.",
+  "subject": "Pensée informatique",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Tester et déboguer",
+    "objectif_global": "Tester et déboguer",
+    "mini_lecons_imposees": [
+      "Cas de test.",
+      "Repérer bug.",
+      "Corriger."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Cas de test.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un cas de test ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu écris un programme, tu veux être sûr qu'il fait ce que tu attends. Un cas de test est une situation précise que tu donnes à ton programme pour vérifier s'il réagit correctement. Imagine que tu as créé une petite machine qui additionne deux nombres. Pour être certain qu'elle ne se trompe pas, tu lui donnes plusieurs paires de nombres et tu regardes les résultats. Chaque paire de nombres avec le résultat attendu forme un cas de test. Plus tu as de cas de test variés, plus tu as confiance dans ton programme. C'est comme goûter plusieurs parts d'un gâteau pour être sûr qu'il est bon partout."
+            },
+            {
+              "type": "definition",
+              "term": "cas de test",
+              "definition": "Un ensemble de données d'entrée accompagné du résultat attendu, utilisé pour vérifier le comportement d'un programme.",
+              "example": "Entrée : 3 et 5 → Résultat attendu : 8"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'une fonction qui calcule le double d'un nombre. Si tu donnes 4, tu attends 8. Si tu donnes 0, tu attends 0. Si tu donnes -2, tu attends -4. Chaque ligne ci‑dessous est un cas de test complet avec l'entrée, le résultat attendu et un petit commentaire pour expliquer pourquoi ce cas est intéressant."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Entrée",
+                "Résultat attendu",
+                "Commentaire"
+              ],
+              "rows": [
+                [
+                  "4",
+                  "8",
+                  "Nombre positif simple"
+                ],
+                [
+                  "0",
+                  "0",
+                  "Vérifie le cas nul"
+                ],
+                [
+                  "-2",
+                  "-4",
+                  "Nombre négatif"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais à quoi ressemble un cas de test, voyons comment en construire un bon. La méthode se décompose en plusieurs étapes simples que tu peux suivre à chaque fois que tu écris un nouveau programme. Suis bien l'ordre, car chaque étape prépare la suivante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les entrées possibles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste tous les types de données que ton programme peut recevoir : nombres positifs, zéro, nombres négatifs, grands nombres, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir des valeurs représentatives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque type, sélectionne une ou deux valeurs typiques. Par exemple, pour les positifs, prends 1 et 100."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Définir le résultat attendu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule à la main ce que le programme doit afficher pour chaque valeur choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le cas de test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note l'entrée, le résultat attendu et un court commentaire dans un tableau comme celui ci‑dessus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, regardons comment choisir les cas de test les plus utiles. Tous les cas ne se valent pas : certains révèlent des erreurs cachées, d'autres ne font que confirmer ce qui marche déjà. Un bon mélange comprend des cas normaux, des cas limites et des cas invalides. Le graphique ci‑dessous montre la répartition idéale pour un petit programme."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition recommandée des cas de test",
+              "bars": [
+                {
+                  "label": "Cas normaux",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Cas limites",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Cas invalides",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la fonction double(x), écris un cas de test avec l'entrée 7.",
+              "answer": "Entrée : 7, Résultat attendu : 14",
+              "hint": "Le double de 7 est 14.",
+              "explanation": "On multiplie l'entrée par 2 pour obtenir le résultat attendu."
+            },
+            {
+              "question": "Selon la méthode en 4 étapes, quelle est la première chose à faire pour créer des cas de test ?",
+              "answer": "Identifier les entrées possibles.",
+              "hint": "Regarde l'étape 1 dans les étapes.",
+              "explanation": "La première étape consiste à lister tous les types de données d'entrée que le programme peut recevoir."
+            },
+            {
+              "question": "Dans le graphique, quel type de cas de test est le plus nombreux ?",
+              "answer": "Cas normaux",
+              "hint": "Regarde la barre la plus haute.",
+              "explanation": "La barre bleue correspond aux cas normaux avec une valeur de 5, ce qui est le plus grand nombre."
+            }
+          ]
+        },
+        {
+          "title": "Repérer bug.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un bug ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bug est une erreur cachée dans ton programme qui fait qu'il ne se comporte pas comme prévu. Parfois le programme s'arrête brutalement, parfois il affiche un résultat bizarre, et parfois il tourne sans fin sans rien produire. Ces comportements inattendus sont les symptômes qui te disent qu'un bug s'est glissé quelque part. Pour le trouver, il faut d'abord bien observer ce qui se passe, un peu comme un détective qui examine les indices sur une scène de crime. Plus tu es précis dans ta description du problème, plus il sera facile de le corriger."
+            },
+            {
+              "type": "definition",
+              "term": "bug",
+              "definition": "Une erreur dans le code qui entraîne un comportement incorrect ou imprévu du programme.",
+              "example": "Le programme affiche 9 au lieu de 8 pour double(4)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les symptômes les plus fréquents sont : un message d'erreur affiché, un plantage complet, un résultat numérique faux, ou une boucle qui ne s'arrête jamais. Chaque symptôme peut avoir plusieurs causes possibles, c'est pourquoi il faut procéder méthodiquement. Le graphique ci‑dessous montre la répartition typique des symptômes observés dans de petits projets scolaires."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence des symptômes de bug",
+              "bars": [
+                {
+                  "label": "Résultat faux",
+                  "value": 12,
+                  "tone": "red"
+                },
+                {
+                  "label": "Plantation",
+                  "value": 7,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Boucle infinie",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Message d'erreur",
+                  "value": 9,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déboguer efficacement, les informaticiens suivent une méthode en plusieurs étapes. Cette méthode t'aide à ne pas te perdre et à avancer calmement. Voici les quatre grandes étapes, chacune avec une action précise à réaliser."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Reproduire le bug",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais en sorte que le bug se manifeste à nouveau en utilisant les mêmes entrées. Si tu ne peux pas le reproduire, tu ne pourras pas vérifier ta correction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Isoler la zone fautive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réduis le programme à la plus petite partie qui produit encore le bug. Supprime le code inutile jusqu'à ne garder que le fragment suspect."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Formuler une hypothèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Propose une explication simple : par exemple, une variable mal initialisée ou une condition inversée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tester l'hypothèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Modifie le code selon ton hypothèse, relance le cas de test qui a échoué et observe si le bug disparaît."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Mettons la méthode en pratique. Imagine un petit programme qui doit afficher le triple d'un nombre. Quand tu entres 3, il affiche 6 au lieu de 9. Le diagramme de Venn ci‑dessous montre deux ensembles de symptômes : les bugs qui donnent un résultat faux et ceux qui font planter le programme. Certains bugs appartiennent aux deux ensembles en même temps."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Symptômes chevauchants",
+              "sets": [
+                {
+                  "label": "Résultat faux",
+                  "elements": [
+                    "Calcul incorrect",
+                    "Variable non initialisée"
+                  ]
+                },
+                {
+                  "label": "Plantation",
+                  "elements": [
+                    "Division par zéro",
+                    "Accès hors tableau"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si ton programme affiche 9 au lieu de 8 pour double(4), quel est le symptôme ?",
+              "answer": "Résultat incorrect",
+              "hint": "Compare le résultat obtenu au résultat attendu.",
+              "explanation": "Le programme donne une valeur différente de celle attendue, c'est un symptôme de type résultat faux."
+            },
+            {
+              "question": "Quelle est la deuxième étape de la méthode de débogage ?",
+              "answer": "Isoler la partie du code qui cause le problème.",
+              "hint": "Regarde l'étape 2 dans les étapes.",
+              "explanation": "Après avoir reproduit le bug, on cherche où il se situe en réduisant le code au fragment minimal qui produit encore l'erreur."
+            },
+            {
+              "question": "Dans le diagramme de Venn, quelle zone correspond aux bugs qui provoquent à la fois un plantage et un résultat faux ?",
+              "answer": "L'intersection des deux cercles.",
+              "hint": "Cherche la zone commune aux deux ensembles.",
+              "explanation": "L'intersection regroupe les bugs ayant les deux symptômes simultanément."
+            }
+          ]
+        },
+        {
+          "title": "Corriger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger un bug et vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu as identifié la cause du bug, il est temps de le corriger. La correction consiste à modifier le code pour que le programme se comporte comme prévu. Mais attention : une correction mal faite peut en créer d'autres. C'est pourquoi on suit une petite procédure de vérification après chaque modification. Cette procédure s'appelle le test de non‑régression : on s'assure que ce qui marchait avant continue de marcher."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Appliquer la correction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Change le code exactement là où l'hypothèse t'a conduit. Garde la modification la plus petite possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relancer les cas de test qui avaient échoué",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute à nouveau les tests qui révélaient le bug. Ils doivent maintenant passer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lancer toute la suite de tests",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ne te contente pas des tests qui ont échoué. Relance tous les cas de test pour détecter d'éventuelles régressions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Ajouter un test de non‑régression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enregistre le cas de test qui a révélé le bug dans ta suite permanente. Ainsi, si le bug réapparaît, il sera attrapé immédiatement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser l'effet de la correction, on utilise souvent un tableau avant/après. Ce tableau compare le comportement du programme avant la modification et après. C'est un excellent moyen de communiquer ton travail à un camarade ou à ton professeur."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Cas de test",
+                "Avant correction",
+                "Après correction"
+              ],
+              "rows": [
+                [
+                  "double(4)",
+                  "9",
+                  "8"
+                ],
+                [
+                  "double(0)",
+                  "0",
+                  "0"
+                ],
+                [
+                  "double(-2)",
+                  "-5",
+                  "-4"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, quelques bonnes habitudes rendent le débogage plus fluide. Écris des messages clairs dans tes logs, garde tes fonctions courtes et teste souvent. Chaque fois que tu ajoutes une fonctionnalité, ajoute aussi ses cas de test. Ainsi, ton code reste solide et facile à améliorer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour tester, repérer et corriger les bugs comme un vrai développeur. Récapitulons ce que tu sais faire."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un cas de test et en créer plusieurs variés.",
+                "Je sais repérer un bug en observant les symptômes.",
+                "Je sais suivre la méthode en quatre étapes pour déboguer.",
+                "Je sais corriger un bug et vérifier avec des tests de non‑régression."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Après avoir corrigé le bug, que dois-tu faire en premier ?",
+              "answer": "Relancer les cas de test qui avaient échoué.",
+              "hint": "Pense à la vérification immédiate.",
+              "explanation": "On s'assure que la correction a résolu le problème initial avant de lancer toute la suite."
+            },
+            {
+              "question": "Dans le tableau avant/après, quelle colonne montre le résultat après correction ?",
+              "answer": "La colonne 'Après correction'.",
+              "hint": "Regarde l'en-tête du tableau.",
+              "explanation": "Le tableau compare l'ancien et le nouveau comportement, la colonne de droite affiche le résultat après correction."
+            },
+            {
+              "question": "Quelle bonne pratique aide à éviter que le même bug revienne ?",
+              "answer": "Ajouter un cas de test pour ce bug dans la suite de tests.",
+              "hint": "Pense à la régression.",
+              "explanation": "Le test de non-régression garantit que le bug ne réapparaît pas lors de futures modifications."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Sinus / cosinus / tangente selon programme",
+  "title": "Algorithmes trigonométriques dans le triangle rectangle",
+  "blocks": [
+    {
+      "title": "Calcul des rapports trigonométriques",
+      "content": "Écrire un algorithme (ou un programme en Python) qui, étant donné un angle aigu $\\alpha$ en degrés, affiche les valeurs arrondies au centième du sinus, du cosinus et de la tangente de cet angle.\\nIndiquer les étapes de conversion en radians et l'utilisation des fonctions mathématiques.",
+      "correctAnswer": "Algorithme :\\n1. Lire l'angle en degrés.\\n2. Convertir cet angle en radians en le multipliant par pi et en divisant par cent quatre-vingts.\\n3. Calculer le sinus, le cosinus et la tangente de cette valeur en radians.\\n4. Arrondir chaque résultat au centième.\\n5. Afficher les trois valeurs.\\nEn Python, on peut importer le module math, utiliser la fonction radians pour la conversion, puis les fonctions sin, cos, tan, et afficher les valeurs arrondies à deux décimales avec la fonction round.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme convertit d'abord l'angle de degrés en radians car les fonctions trigonométriques des bibliothèques standards attendent des radians. On applique ensuite les fonctions sinus, cosinus et tangente, puis on arrondit au centième pour obtenir un résultat lisible.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination d'un angle à partir de deux côtés",
+      "content": "Dans un triangle rectangle ABC rectangle en A, on connaît les longueurs des côtés $AB = 6$ cm et $AC = 8$ cm. Écrire un algorithme qui détermine la mesure de l'angle $\\widehat{B}$ en degrés, arrondie au dixième.\\nPréciser la formule utilisée et les étapes de calcul.",
+      "correctAnswer": "Algorithme :\\n1. Identifier les côtés par rapport à l'angle B : le côté opposé mesure huit centimètres, le côté adjacent mesure six centimètres.\\n2. Calculer la tangente de l'angle B en divisant le côté opposé par le côté adjacent, ce qui donne quatre tiers.\\n3. Déterminer l'angle en radians en appliquant la fonction arctangente à cette valeur.\\n4. Convertir cet angle en degrés en le multipliant par cent quatre-vingts et en divisant par pi.\\n5. Arrondir le résultat au dixième de degré.\\n6. Afficher la mesure de l'angle B.\\nEn Python, on peut utiliser le module math, calculer le rapport huit sur six, appliquer la fonction atan, puis la fonction degrees, et arrondir à une décimale.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle en A, l'angle B a pour côté opposé AC et pour côté adjacent AB. Le rapport tangente égal à opposé sur adjacent permet de retrouver l'angle grâce à la fonction arctangente. La conversion radians degrés et l'arrondi final donnent la mesure demandée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix du rapport trigonométrique approprié",
+      "content": "Proposer un algorithme qui, connaissant les longueurs de deux côtés d'un triangle rectangle (ni l'hypoténuse ni l'angle droit ne sont donnés explicitement), décide quel rapport trigonométrique (sinus, cosinus ou tangente) utiliser pour calculer l'angle aigu opposé au côté le plus court, puis calcule cet angle en degrés arrondi au centième.\\nExpliquer la logique de sélection du rapport.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux longueurs des côtés de l'angle droit.\\n2. Identifier le côté le plus court et le côté le plus long.\\n3. L'hypoténuse peut être calculée si nécessaire par le théorème de Pythagore, mais elle n'est pas requise pour le choix du rapport.\\n4. L'angle opposé au côté le plus court a pour opposé ce côté court et pour adjacent l'autre côté.\\n5. Le rapport le plus direct est la tangente, qui est le quotient du côté opposé sur le côté adjacent.\\n6. Calculer la tangente en divisant la longueur du côté court par celle du côté long.\\n7. Obtenir l'angle en radians avec la fonction arctangente.\\n8. Convertir en degrés.\\n9. Arrondir au centième.\\n10. Afficher l'angle et indiquer que le rapport utilisé est la tangente.\\nEn Python, on peut utiliser le module math, déterminer le minimum et le maximum des deux longueurs, calculer le quotient, appliquer atan puis degrees, et arrondir à deux décimales.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque les deux côtés de l'angle droit sont connus, le rapport tangente (opposé sur adjacent) est le plus direct pour trouver l'angle aigu opposé au côté le plus court, car il ne nécessite pas de calculer l'hypoténuse. L'algorithme compare les deux longueurs, utilise la tangente, applique l'arctangente et convertit en degrés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

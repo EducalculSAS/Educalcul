@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître une situation proportionnelle",
+  "questions": [
+    {
+      "text": "Observez le tableau ci-dessous. Cette situation correspond-elle à une proportionnalité ?",
+      "options": [
+        "Oui, le coefficient de proportionnalité est 3",
+        "Oui, le coefficient de proportionnalité est 2",
+        "Non, car les valeurs ne sont pas proportionnelles",
+        "Non, car le coefficient change à chaque ligne"
+      ],
+      "correctAnswer": "Oui, le coefficient de proportionnalité est 3",
+      "explanation": "Dans ce tableau, pour passer de la première ligne à la seconde, on multiplie le nombre d'articles par 3 pour obtenir le prix : $2 \\times 3 = 6$, $4 \\times 3 = 12$, $5 \\times 3 = 15$, $7 \\times 3 = 21$. Le coefficient est constant et égal à 3, c'est donc une proportionnalité. L'option 'coefficient 2' est fausse car $2 \\times 2 = 4 \\neq 6$. Les options 'Non' sont incorrectes car il existe bien un coefficient constant.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Nombre d'articles",
+          "Prix en euros"
+        ],
+        "rows": [
+          [
+            "2",
+            "6"
+          ],
+          [
+            "4",
+            "12"
+          ],
+          [
+            "5",
+            "15"
+          ],
+          [
+            "7",
+            "21"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Un vendeur affirme : \"Pour 4 kg de pommes, le prix est 6 € ; pour 6 kg, c'est 9 € ; pour 10 kg, c'est 15 €.\" Cette affirmation décrit-elle une situation proportionnelle ?",
+      "options": [
+        "Oui, le coefficient de proportionnalité est 1,5",
+        "Oui, le coefficient de proportionnalité est 2",
+        "Non, car le prix n'augmente pas régulièrement",
+        "Non, car le coefficient n'est pas un nombre entier"
+      ],
+      "correctAnswer": "Oui, le coefficient de proportionnalité est 1,5",
+      "explanation": "On vérifie le rapport prix/masse : $6 / 4 = 1,5$, $9 / 6 = 1,5$, $15 / 10 = 1,5$. Le coefficient est constant (1,5 €/kg), donc c'est une proportionnalité. Le coefficient n'a pas besoin d'être un entier. L'option 'coefficient 2' donne $4 \\times 2 = 8 \\neq 6$. L'option 'prix n'augmente pas régulièrement' est fausse car l'augmentation est proportionnelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente l'évolution d'une quantité en fonction d'une autre. Peut-on dire qu'il y a proportionnalité ?",
+      "options": [
+        "Oui, car c'est une droite qui passe par l'origine",
+        "Oui, car c'est une droite qui monte",
+        "Non, car ce n'est pas une droite",
+        "Non, car la droite ne passe pas par l'origine"
+      ],
+      "correctAnswer": "Oui, car c'est une droite qui passe par l'origine",
+      "explanation": "Un graphique représente une proportionnalité si et seulement si les points sont alignés sur une droite qui passe par l'origine du repère (0;0). Ici, la droite passe par (0;0) et monte régulièrement. Une droite qui monte mais ne passe pas par l'origine (ordonnée à l'origine non nulle) ne serait pas une proportionnalité. Le fait que ce soit une droite qui monte ne suffit pas, il faut impérativement le passage par l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "1.5*x",
+        "xmin": 0,
+        "xmax": 10,
+        "caption": "Graphique d'une droite passant par l'origine"
+      }
+    },
+    {
+      "text": "Voici un tableau :\\n$2 \\rightarrow 5$\\n$4 \\rightarrow 7$\\n$6 \\rightarrow 9$\\nPourquoi ce tableau n'est-il pas un tableau de proportionnalité ?",
+      "options": [
+        "Non, car le coefficient de proportionnalité n'est pas constant",
+        "Oui, avec un coefficient de 2,5",
+        "Non, car on ajoute 3 à chaque fois",
+        "Oui, avec un coefficient de 1,5"
+      ],
+      "correctAnswer": "Non, car le coefficient de proportionnalité n'est pas constant",
+      "explanation": "On calcule les rapports (coefficients) : $5 / 2 = 2,5$, $7 / 4 = 1,75$, $9 / 6 = 1,5$. Les coefficients sont différents (2,5, puis 1,75, puis 1,5), donc ce n'est pas une proportionnalité. L'option 'on ajoute 3' décrit la relation additive ($2+3=5, 4+3=7...$) qui est l'erreur classique des élèves, mais la justification mathématique exacte de l'absence de proportionnalité est l'inconstance du coefficient multiplicateur. Les options 'Oui' sont fausses car aucun coefficient unique ne fonctionne pour toutes les lignes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de proportionnalité, on sait que 3 correspond à 12 et 5 correspond à 20. Quelle valeur correspond à 8 ?",
+      "options": [
+        "32",
+        "29",
+        "24",
+        "27"
+      ],
+      "correctAnswer": "32",
+      "explanation": "On détermine d'abord le coefficient de proportionnalité : $12 / 3 = 4$ et $20 / 5 = 4$. Le coefficient est bien constant et vaut 4. Pour trouver la valeur correspondant à 8, on multiplie 8 par ce coefficient : $8 \\times 4 = 32$. L'option 29 correspond à une erreur additive ($8 + 21$ ou logique 'on ajoute 9'). L'option 24 correspond à un coefficient 3. L'option 27 ne correspond à aucun calcul cohérent simple.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

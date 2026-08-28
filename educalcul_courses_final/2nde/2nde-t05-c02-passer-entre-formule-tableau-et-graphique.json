@@ -1,0 +1,459 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.083930+00:00",
+  "id": 521,
+  "code": "2nde-t05-c02",
+  "title": "Passer entre formule, tableau et graphique",
+  "description": "Cours structuré Educalcul : Passer entre formule, tableau et graphique.",
+  "subject": "Fonctions, représentations et variations",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Fonctions, représentations et variations",
+    "titre_du_cours": "Passer entre formule, tableau et graphique",
+    "objectif_global": "Passer entre formule, tableau et graphique",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Construire.",
+      "Comparer représentations."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions, représentations et variations",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une fonction à partir de sa formule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu rencontres une écriture comme $f(x)=2x+3$, tu tiens entre les mains la règle qui associe à chaque nombre $x$ un unique nombre $f(x)$. Cette règle s'appelle une fonction. Le symbole $f$ nomme la fonction, la variable $x$ est l'abscisse, et l'expression $2x+3$ décrit comment calculer l'ordonnée. Prends le temps de repérer le coefficient directeur $2$ : il te dit de combien l'ordonnée augmente quand l'abscisse augmente de $1$. Le terme constant $3$ indique la valeur de la fonction pour $x=0$. Essaie mentalement : si $x=1$, alors $f(1)=2\\times1+3=5$ ; si $x=-2$, $f(-2)=2\\times(-2)+3=-1$. Cette lecture directe te permet de prévoir la forme du graphique sans même le tracer."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction",
+              "definition": "Une fonction associe à chaque élément $x$ d'un ensemble de départ (le domaine) un unique élément $f(x)$ d'un ensemble d'arrivée. On note souvent $f : x \\mapsto f(x)$.",
+              "example": "La fonction $f(x)=2x+3$ associe à $4$ la valeur $11$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=2x+3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons maintenant comment le coefficient $2$ et le constant $3$ se traduisent visuellement. Le coefficient dirige la pente : une valeur positive fait monter la courbe de gauche à droite, une valeur négative la fait descendre. Le constant déplace la courbe verticalement : ici, le graphique coupe l'axe des ordonnées au point $(0,3)$. Essaie de deviner l'allure du trait : une droite qui passe par $(0,3)$ et qui monte de $2$ unités à chaque pas d'une unité vers la droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau de valeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau de valeurs présente simplement quelques couples $(x, f(x))$ choisis pour illustrer la fonction. Regarde le tableau ci‑dessous : chaque ligne donne une abscisse et l'ordonnée correspondante calculée avec la même règle $f(x)=2x+3$. Ce format est pratique pour repérer rapidement des valeurs précises, par exemple quand tu as besoin de $f(2)$ sans refaire le calcul. Remarque que les $x$ n'ont pas besoin d'être consécutifs ; tu peux choisir les valeurs qui t'intéressent pour ton problème."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x",
+                "f(x)"
+              ],
+              "rows": [
+                [
+                  "-2",
+                  "-1"
+                ],
+                [
+                  "0",
+                  "3"
+                ],
+                [
+                  "1",
+                  "5"
+                ],
+                [
+                  "3",
+                  "9"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "En lisant ce tableau, tu peux déjà deviner que la fonction est croissante : quand $x$ passe de $-2$ à $3$, $f(x)$ passe de $-1$ à $9$. Tu peux aussi vérifier la régularité : chaque augmentation de $1$ sur $x$ ajoute $2$ à $f(x)$. C'est exactement ce que le coefficient $2$ promet. Essaie d'ajouter une ligne pour $x=4$ et vois si le tableau reste cohérent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique d'une fonction est l'ensemble des points $(x, f(x))$ dans le plan muni d'un repère orthonormé. Sur la figure ci‑dessous, la droite représente $f(x)=2x+3$. Pour lire une valeur, place ton doigt sur l'abscisse voulue, monte verticalement jusqu'à la courbe, puis lis l'ordonnée sur l'axe vertical. Par exemple, pour $x=1$, tu arrives au point $(1,5)$ ; pour $x=-2$, tu tombes sur $(-2,-1)$. Le graphique te donne instantanément une vision globale : tu vois d'un coup que la fonction est croissante, qu'elle coupe l'axe des ordonnées en $3$, et que sa pente est constante."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+3",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphique de la fonction f(x)=2x+3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que le graphique ne montre que la portion tracée ; la fonction continue au‑delà des bords du dessin. Si tu as besoin d'une valeur en dehors de l'intervalle affiché, prolonge mentalement la droite en gardant la même pente. C'est là tout l'avantage du graphique : il donne une intuition rapide, tandis que la formule permet le calcul exact pour n'importe quel $x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir trois façons de lire la même fonction : la formule algébrique, le tableau numérique et le graphique géométrique. Chacune a ses atouts : la formule pour le calcul exact, le tableau pour des valeurs choisies, le graphique pour la vision d'ensemble. Dans la prochaine leçon, nous apprendrons à construire nous‑mêmes ces représentations à partir d'une seule d'entre elles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la valeur de $f(5)$ pour la fonction $f(x)=2x+3$.",
+              "answer": "13",
+              "hint": "Remplace $x$ par $5$ dans l'expression $2x+3$.",
+              "explanation": "En remplaçant $x$ par $5$, on obtient $2\\times5+3=10+3=13$."
+            },
+            {
+              "question": "Complète le tableau en calculant $f(4)$ pour $f(x)=2x+3$.",
+              "answer": "11",
+              "hint": "Utilise la même règle de calcul que pour les autres lignes.",
+              "explanation": "Pour $x=4$, $f(4)=2\\times4+3=8+3=11$."
+            },
+            {
+              "question": "Sur le graphique, quelle est l'ordonnée du point d'abscisse $-3$ ?",
+              "answer": "-3",
+              "hint": "Monte verticalement depuis $x=-3$ jusqu'à la droite, puis lis l'ordonnée.",
+              "explanation": "Le point d'abscisse $-3$ sur la droite $f(x)=2x+3$ a pour ordonnée $2\\times(-3)+3=-6+3=-3$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau de valeurs à partir d'une formule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que l'on te donne seulement la formule $g(x) = -x + 4$ et que tu dois remplir un tableau pour $x = -2, -1, 0, 1, 2$. La méthode est simple : choisis chaque $x$, remplace-le dans l'expression, effectue le calcul, et note le résultat. C'est exactement ce que tu faisais en lisant un tableau, mais ici tu es aux commandes. Prends le temps de faire chaque calcul posément ; la régularité du coefficient $-1$ te garantit que l'ordonnée diminue de $1$ à chaque augmentation de $1$ sur $x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionne une liste de valeurs de $x$ adaptée à ton problème. Pour une première approche, des entiers consécutifs autour de zéro fonctionnent bien."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque $x$, applique la formule : $g(x) = -x + 4$. Par exemple, $g(-2) = -(-2) + 4 = 2 + 4 = 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les couples $(x, g(x))$ dans un tableau à deux colonnes. Vérifie que la différence entre deux ordonnées successives est constante (ici $-1$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x",
+                "g(x)"
+              ],
+              "rows": [
+                [
+                  "-2",
+                  "6"
+                ],
+                [
+                  "-1",
+                  "5"
+                ],
+                [
+                  "0",
+                  "4"
+                ],
+                [
+                  "1",
+                  "3"
+                ],
+                [
+                  "2",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le tableau obtenu : les ordonnées décroissent régulièrement, ce qui confirme le coefficient négatif. Tu peux maintenant utiliser ce tableau pour tracer des points ou pour répondre à des questions comme « Pour quelle valeur de $x$ l'ordonnée vaut‑elle $5$ ? » (réponse : $x=-1$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer des points et dessiner le graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec le tableau en main, tu as déjà les coordonnées de plusieurs points du graphique. Place chaque couple $(x, g(x))$ dans le repère : d'abord l'abscisse sur l'axe horizontal, ensuite l'ordonnée sur l'axe vertical. Relie les points par un trait droit, car la fonction est affine (sa formule est de la forme $ax+b$). La droite obtenue prolonge les points au‑delà de l'intervalle choisi ; elle coupe l'axe des ordonnées en $4$ (le constant) et a une pente de $-1$ (le coefficient)."
+            },
+            {
+              "type": "graph",
+              "expression": "-x+4",
+              "xmin": -3,
+              "xmax": 5,
+              "caption": "Graphique de la fonction g(x) = -x + 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifie visuellement que la droite passe bien par les points du tableau : $(-2,6)$, $(0,4)$, $(2,2)$. Si un point semble décalé, reprends le calcul correspondant. Le graphique te donne aussi la possibilité de lire des valeurs non calculées, par exemple $g(3)=1$, en suivant la droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la cohérence entre tableau et graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le tableau construit et le graphique tracé, il est essentiel de s'assurer qu'ils racontent la même histoire. Compare chaque ligne du tableau avec le point correspondant sur la courbe. Si tu as un doute, utilise la formule comme juge de paix : recalcule $g(x)$ pour l'abscisse litigieuse. Cette habitude de vérification croisée évite les erreurs de recopie et renforce ta compréhension du lien entre les trois représentations."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des abscisses du tableau sur l'axe des x",
+              "min": -3,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "-2"
+                },
+                {
+                  "value": -1,
+                  "label": "-1"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite numérique ci‑dessus montre les abscisses choisies. Tu vois qu'elles sont espacées régulièrement, ce qui garantit que les points du graphique seront alignés. Si tu ajoutais une abscisse non entière, par exemple $x=0,5$, le point tomberait exactement au milieu entre $0$ et $1$ sur l'axe, et son ordonnée serait $g(0,5)=3,5$. Essaie de l'ajouter au tableau et au graphique pour t'exercer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire un tableau à partir d'une formule, placer ses points et dessiner le graphique associé. Tu as aussi appris à vérifier que les deux représentations sont cohérentes. Dans la dernière leçon, nous mettrons ces compétences en parallèle pour comparer plusieurs représentations d'une même fonction et choisir la plus adaptée à une question donnée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau pour $h(x)=3x-2$ avec $x = -1, 0, 1, 2$.",
+              "answer": "h(-1)=-5 ; h(0)=-2 ; h(1)=1 ; h(2)=4",
+              "hint": "Applique la formule $3x-2$ à chaque $x$.",
+              "explanation": "Pour $x=-1$ : $3\\times(-1)-2=-3-2=-5$. Pour $x=0$ : $-2$. Pour $x=1$ : $3-2=1$. Pour $x=2$ : $6-2=4$."
+            },
+            {
+              "question": "Trace les points du tableau précédent et dessine la droite correspondante. Quelle est l'ordonnée à l'origine ?",
+              "answer": "-2",
+              "hint": "L'ordonnée à l'origine correspond à $x=0$.",
+              "explanation": "Dans $h(x)=3x-2$, le terme constant $-2$ est l'ordonnée à l'origine. Le graphique coupe l'axe des ordonnées au point $(0,-2)$."
+            },
+            {
+              "question": "Vérifie que le point $(2,4)$ appartient bien au graphique de $h(x)=3x-2$.",
+              "answer": "Oui",
+              "hint": "Calcule $h(2)$ et compare avec l'ordonnée du point.",
+              "explanation": "$h(2)=3\\times2-2=6-2=4$, ce qui correspond à l'ordonnée du point $(2,4)$. Le point est donc sur la courbe."
+            }
+          ]
+        },
+        {
+          "title": "Comparer représentations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer la formule et le tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que l'on te donne la formule $p(x)=x^2-4$ et un tableau partiel : $x=-3 \\rightarrow 5$, $x=0 \\rightarrow -4$, $x=2 \\rightarrow 0$. Ton travail consiste à vérifier si le tableau respecte la formule. Pour chaque ligne, remplace $x$ dans $x^2-4$ et compare le résultat avec la valeur indiquée. C'est un exercice de contrôle qui développe ton sens du détail : une seule erreur de signe ou de carré peut faire dériver tout le tableau."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "x",
+                "p(x) (tableau)",
+                "p(x) (formule)"
+              ],
+              "rows": [
+                [
+                  "-3",
+                  "5",
+                  "5"
+                ],
+                [
+                  "0",
+                  "-4",
+                  "-4"
+                ],
+                [
+                  "2",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, les trois lignes concordent parfaitement : $(-3)^2-4 = 9-4 = 5$, $0^2-4 = -4$, $2^2-4 = 4-4 = 0$. Si une ligne avait donné $p(-3)=4$, tu aurais su immédiatement qu'il y a une erreur. Cette comparaison systématique est une habitude précieuse, surtout quand tu reçois des données expérimentales ou des résultats de logiciel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer le tableau et le graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine maintenant que tu as le même tableau et un graphique tracé à la main. Pour vérifier la cohérence, place chaque couple $(x, p(x))$ du tableau sur le graphique : le point doit tomber exactement sur la courbe. Si un point semble à côté, il y a soit une erreur de tracé, soit une erreur dans le tableau. Le graphique te permet aussi de voir la forme globale : ici, une parabole tournée vers le haut, avec un sommet en $(0,-4)$. Le tableau ne montre que trois points, mais le graphique révèle la symétrie par rapport à l'axe des ordonnées."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-4",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Graphique de la fonction p(x)=x^2-4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe que les points $(-3,5)$ et $(3,5)$ sont symétriques ; le tableau ne contient pas $x=3$, mais le graphique t'indique que $p(3)=5$ sans calcul supplémentaire. C'est la force du graphique : il extrapole visuellement ce que le tableau ne donne qu'en partie. À l'inverse, le tableau te donne des valeurs exactes pour des abscises précises, ce que le graphique ne permet pas toujours de lire avec une grande précision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la représentation la plus adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Selon la question posée, l'une des trois représentations sera plus commode. Si on te demande « Quelle est la valeur de $p(1,5)$ ? », la formule est la plus rapide : $1,5^2-4 = 2,25-4 = -1,75$. Si on te demande « Pour quelles valeurs de $x$ la fonction est‑elle négative ? », le graphique te montre immédiatement l'intervalle $]-2,2[$ où la courbe est sous l'axe des abscisses. Si on te demande « Donne trois couples $(x, p(x))$ avec $x$ entier », le tableau est parfait pour lister $(-2,0), (-1,-3), (0,-4)$. Apprends à basculer d'une représentation à l'autre selon le besoin ; c'est là la marque d'une bonne maîtrise des fonctions."
+            },
+            {
+              "type": "display_math",
+              "latex": "p(x)=x^2-4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine un problème : « Une balle est lancée et sa hauteur en mètres après $t$ secondes est $h(t) = -5t^2 + 20t + 1$. Quelle représentation utiliserais‑tu pour trouver l'instant où la balle atteint son maximum ? » Le graphique de la parabole te montre le sommet ; la formule te permet de calculer l'abscisse du sommet $t = -b/(2a) = 2$ secondes ; le tableau te donnerait des valeurs approchées autour de $2$. Chacune a son rôle, et ton travail est de choisir la plus efficace."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une valeur sur une formule, un tableau et un graphique.",
+                "Je sais construire un tableau de valeurs à partir d'une formule.",
+                "Je sais placer des points et tracer le graphique d'une fonction affine ou quadratique.",
+                "Je sais vérifier la cohérence entre deux représentations d'une même fonction.",
+                "Je sais choisir la représentation la plus adaptée pour répondre à une question précise."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le tableau ci‑dessus correspond‑il à la formule $q(x)=2x^2-3$ pour $x=-2, -1, 0, 1$ ?\\nTableau : $x=-2 \\rightarrow 5$, $x=-1 \\rightarrow -1$, $x=0 \\rightarrow -3$, $x=1 \\rightarrow -1$.",
+              "answer": "Non, la valeur pour $x=-2$ devrait être $5$ (correct), pour $x=-1$ : $2\\times1-3=-1$ (correct), pour $x=0$ : $-3$ (correct), pour $x=1$ : $-1$ (correct). En fait toutes les lignes sont correctes, donc oui le tableau correspond.",
+              "hint": "Calcule $2x^2-3$ pour chaque $x$ du tableau.",
+              "explanation": "Pour $x=-2$ : $2\\times4-3=8-3=5$. Pour $x=-1$ : $2\\times1-3=-1$. Pour $x=0$ : $-3$. Pour $x=1$ : $-1$. Toutes les valeurs coïncident."
+            },
+            {
+              "question": "Sur le graphique de $p(x)=x^2-4$, entre quelles abscisses la fonction est‑elle strictement négative ?",
+              "answer": "]-2 ; 2[",
+              "hint": "Repère la partie de la courbe située sous l'axe des abscisses.",
+              "explanation": "La parabole coupe l'axe des abscisses aux points $-2$ et $2$. Entre ces deux valeurs, l'ordonnée est négative, donc $p(x)<0$ pour $x \\in ]-2, 2[$."
+            },
+            {
+              "question": "Pour la fonction $h(t) = -5t^2 + 20t + 1$, quelle représentation utilises‑tu pour déterminer l'instant du maximum de hauteur ? Justifie ton choix en une phrase.",
+              "answer": "J'utilise la formule car l'abscisse du sommet d'une parabole $at^2+bt+c$ se calcule directement par $t = -b/(2a) = 2$ secondes.",
+              "hint": "Rappelle la formule du sommet d'une parabole.",
+              "explanation": "Le coefficient $a=-5$, $b=20$. Le sommet est à $t = -20/(2\\times -5) = 2$. La formule donne la réponse exacte sans lecture graphique approximative."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

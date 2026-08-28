@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 507,
+  "_course_code": "2nde-t02-c05-equations-du-premier-degre",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Vérifier",
+  "title": "Vérifier une solution d'équation du premier degré",
+  "blocks": [
+    {
+      "title": "Vérification simple",
+      "content": "Pour vérifier que $5$ est bien la solution de l'équation $3x - 7 = 8$, on remplace $x$ par $5$ dans le premier membre : $3 \\times 5 - 7 = 15 - 7 = {{1}}$. On obtient le second membre qui vaut $8$. L'égalité est {{2}}, donc $5$ est bien la solution.",
+      "correctAnswer": "",
+      "blanks": [
+        "8",
+        "vérifiée|vraie|juste"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On substitue $x = 5$ dans le premier membre : $3 \\times 5 - 7 = 15 - 7 = 8$. Le premier membre vaut $8$, ce qui est égal au second membre. L'égalité est donc vérifiée (ou vraie, ou juste), ce qui confirme que $5$ est la solution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification avec distributivité",
+      "content": "On veut vérifier que $x = 5$ est solution de $2(x + 4) = 18$. En remplaçant $x$ par $5$, le premier membre devient $2 \\times (5 + 4) = 2 \\times {{1}} = {{2}}$. Comme le second membre vaut $18$, l'égalité est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "9",
+        "18",
+        "vérifiée|vraie|juste"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule d'abord la parenthèse : $5 + 4 = 9$. Puis on multiplie par $2$ : $2 \\times 9 = 18$. Le premier membre vaut $18$, identique au second membre. L'égalité est vérifiée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification avec variable des deux côtés",
+      "content": "Vérifions que $x = 5$ satisfait l'équation $4x - 3 = 2x + 7$. Premier membre : $4 \\times 5 - 3 = 20 - 3 = {{1}}$. Second membre : $2 \\times 5 + 7 = 10 + 7 = {{2}}$. Les deux membres sont {{3}}, donc $x = 5$ est la solution.",
+      "correctAnswer": "",
+      "blanks": [
+        "17",
+        "17",
+        "égaux|identiques"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour le premier membre : $4 \\times 5 - 3 = 20 - 3 = 17$. Pour le second membre : $2 \\times 5 + 7 = 10 + 7 = 17$. Les deux membres valent $17$, ils sont donc égaux (ou identiques). La valeur $5$ est bien la solution de l'équation.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

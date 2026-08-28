@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Prédire",
+  "title": "Prédire les termes d'une suite ou d'un motif",
+  "blocks": [
+    {
+      "title": "Suite arithmétique",
+      "content": "On considère la suite numérique : $3 ; 7 ; 11 ; 15 ; \\ldots$\\nLe raisonnement additif est d'ajouter $4$ à chaque terme pour obtenir le suivant.\\nLe terme de rang $5$ est {{1}}.\\nLe terme de rang $10$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "19",
+        "39"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La suite augmente de $4$ à chaque étape (raison $4$). Le terme de rang $5$ suit le rang $4$ ($15$), donc $15 + 4 = 19$. Pour le terme de rang $10$, on ajoute $4$ neuf fois au premier terme : $3 + 9 \\times 4 = 39$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite géométrique",
+      "content": "Observons la suite : $2 ; 6 ; 18 ; 54 ; \\ldots$\\nLe raisonnement multiplicatif est de multiplier par $3$ chaque terme.\\nLe terme de rang $5$ est {{1}}.\\nLe terme de rang $6$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "162",
+        "486"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque terme est obtenu en multipliant le précédent par $3$ (raison $3$). Le terme de rang $5$ est $54 \\times 3 = 162$. Le terme de rang $6$ est $162 \\times 3 = 486$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Motif avec des allumettes",
+      "content": "On assemble des carrés identiques avec des allumettes.\\n- $1$ carré nécessite $4$ allumettes.\\n- $2$ carrés accolés nécessitent $7$ allumettes.\\n- $3$ carrés accolés nécessitent $10$ allumettes.\\nLe nombre d'allumettes augmente de {{1}} à chaque nouveau carré.\\nPour construire $5$ carrés, il faut {{2}} allumettes.\\nPour $10$ carrés, il faut {{3}} allumettes.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "16",
+        "31"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque nouveau carré ajoute $3$ allumettes (il partage un côté avec le précédent). La formule est $3 \\times n + 1$ où $n$ est le nombre de carrés. Pour $5$ carrés : $3 \\times 5 + 1 = 16$. Pour $10$ carrés : $3 \\times 10 + 1 = 31$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

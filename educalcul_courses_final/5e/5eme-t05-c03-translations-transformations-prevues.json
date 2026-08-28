@@ -1,0 +1,455 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.744842+00:00",
+  "id": 402,
+  "code": "5eme-t05-c03",
+  "title": "Translations / transformations prévues",
+  "description": "Cours structuré Educalcul : Translations / transformations prévues.",
+  "subject": "Repérage, transformations et géométrie dans l'espace",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Repérage, transformations et géométrie dans l'espace",
+    "titre_du_cours": "Translations / transformations prévues",
+    "objectif_global": "Translations / transformations prévues",
+    "mini_lecons_imposees": [
+      "Image d'un point.",
+      "Constructions.",
+      "Propriétés."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Repérage, transformations et géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Image d'un point.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une translation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu fasses glisser un livre sur une table sans le tourner, sans le soulever : il se déplace tout en gardant exactement la même orientation. C'est l'idée intuitive d'une translation. En géométrie, on ne déplace pas des livres mais des points, des segments, des figures entières. Pour décrire ce déplacement de manière précise, on utilise un outil mathématique appelé **vecteur**. Un vecteur, c'est une flèche qui possède trois caractéristiques : une direction (la droite qui la porte), un sens (vers où pointe la flèche) et une longueur (la distance entre son origine et son extrémité). On note souvent un vecteur par une lettre avec une petite flèche au-dessus, comme $\\vec{v}$, ou par deux lettres qui indiquent son origine et son extrémité, comme $\\vec{AB}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{v} = \\vec{AB}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on dit \"on applique la translation de vecteur $\\vec{v}$ à une figure\", cela veut dire que chaque point de la figure va glisser suivant ce vecteur : il parcourt la même distance, dans la même direction et le même sens. C'est comme si on donnait à chaque point le même ordre de marche. Aucune déformation n'apparaît : la figure garde sa forme, ses dimensions, ses angles. Elle change seulement de position dans le plan. C'est une transformation qui **conserve** tout ce qui fait l'identité de la figure, sauf sa place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée globale est en place, concentrons-nous sur ce qui arrive à un **seul point**. C'est la brique élémentaire : si on sait où va un point, on saura où va n'importe quelle figure, car une figure n'est qu'un ensemble de points."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'image d'un point par une translation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un point $M$ dans le plan et un vecteur $\\vec{v}$. L'image de $M$ par la translation de vecteur $\\vec{v}$ est le point $M'$ tel que le vecteur $\\vec{MM'}$ soit **exactement égal** au vecteur $\\vec{v}$. En d'autres termes, $M'$ est l'unique point qui satisfait $\\vec{MM'} = \\vec{v}$. Cela veut dire que le segment $[MM']$ a la même longueur que $\\vec{v}$, qu'il est parallèle à la direction de $\\vec{v}$ et qu'il est orienté dans le même sens. Si le vecteur est donné par deux points $A$ et $B$ (vecteur $\\vec{AB}$), alors $M'$ est le point tel que le quadrilatère $ABM'M$ soit un parallélogramme (ou un segment si les points sont alignés)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le vecteur de la translation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le vecteur $\\vec{v}$ : soit il est donné directement (par ses coordonnées ou par une flèche), soit il est défini par deux points $A$ et $B$ (vecteur $\\vec{AB}$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la direction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir du point $M$, trace une droite parallèle à la direction du vecteur $\\vec{v}$ (ou à la droite $(AB)$ si le vecteur est $\\vec{AB}$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur cette droite, en partant de $M$ et dans le **même sens** que le vecteur, reporte la longueur du vecteur (ou la distance $AB$). Le point obtenu est l'image $M'$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Point initial $M$",
+                "Vecteur $\\vec{v} = (x_v ; y_v)$",
+                "Image $M'$ (coordonnées)"
+              ],
+              "rows": [
+                [
+                  "$(2 ; 3)$",
+                  "$(4 ; -1)$",
+                  "$(6 ; 2)$"
+                ],
+                [
+                  "$(-1 ; 5)$",
+                  "$(-3 ; 2)$",
+                  "$(-4 ; 7)$"
+                ],
+                [
+                  "$(0 ; 0)$",
+                  "$(5 ; 5)$",
+                  "$(5 ; 5)$"
+                ]
+              ],
+              "caption": "Exemples numériques : on ajoute les coordonnées du vecteur à celles du point."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque bien : si tu travailles dans un repère orthonormé, la règle devient extrêmement simple. Si $M$ a pour coordonnées $(x_M ; y_M)$ et que le vecteur de translation est $\\vec{v} = (x_v ; y_v)$, alors l'image $M'$ a pour coordonnées $(x_M + x_v ; y_M + y_v)$. C'est une simple addition coordonnée par coordonnée. C'est souvent la méthode la plus rapide quand les coordonnées sont connues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisqu'une figure est un ensemble de points, pour translater une figure complète, il suffit de translater chacun de ses points caractéristiques. Prenons l'exemple d'un triangle $ABC$. Si on connaît les images $A'$, $B'$, $C'$ des trois sommets, le triangle image est simplement le triangle $A'B'C'$. Les côtés du nouveau triangle sont parallèles aux côtés de l'original et ont la même longueur. L'orientation du triangle (le sens de parcours des sommets) est conservée."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle $ABC$ avant translation. Imagine-le glisser vers la droite et vers le haut."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si on applique la translation de vecteur $\\vec{v}$ à ce triangle, chaque sommet se déplace suivant $\\vec{v}$. Le triangle $A'B'C'$ obtenu est superposable à l'original : il a exactement la même forme, la même taille, les mêmes angles. Seule sa position a changé. C'est cette propriété de **conservation** qui fait la force de la translation : elle ne déforme rien."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne le vecteur $\\vec{v} = \\vec{AB}$ avec $A(1;2)$ et $B(4;5)$. Parmi les propositions suivantes, laquelle correspond aux coordonnées du vecteur $\\vec{v}$ ?",
+              "answer": "$(3;3)$",
+              "hint": "Les coordonnées d'un vecteur $\\vec{AB}$ s'obtiennent en soustrayant les coordonnées de $A$ à celles de $B$ : $x_B - x_A$ et $y_B - y_A$.",
+              "explanation": "On calcule $x_B - x_A = 4 - 1 = 3$ et $y_B - y_A = 5 - 2 = 3$. Donc $\\vec{v} = (3;3)$."
+            },
+            {
+              "question": "Soit le point $M(-2; 4)$ et le vecteur $\\vec{u} = (5; -3)$. Donne les coordonnées de l'image $M'$ de $M$ par la translation de vecteur $\\vec{u}$.",
+              "answer": "$(3; 1)$",
+              "hint": "Ajoute les coordonnées du vecteur aux coordonnées du point : $x_{M'} = x_M + x_u$, $y_{M'} = y_M + y_u$.",
+              "explanation": "$x_{M'} = -2 + 5 = 3$ ; $y_{M'} = 4 + (-3) = 1$. Donc $M'(3;1)$."
+            },
+            {
+              "question": "Un triangle $RST$ a pour sommets $R(0;0)$, $S(4;0)$, $T(0;3)$. On le transforme par la translation de vecteur $\\vec{w} = (-2; 2)$. Quelles sont les coordonnées des sommets du triangle image $R'S'T'$ ?",
+              "answer": "$R'(-2;2)$, $S'(2;2)$, $T'(-2;5)$",
+              "hint": "Applique la translation à chaque sommet séparément : ajoute $(-2;2)$ aux coordonnées de $R$, puis de $S$, puis de $T$.",
+              "explanation": "$R'(0-2;0+2)=(-2;2)$, $S'(4-2;0+2)=(2;2)$, $T'(0-2;3+2)=(-2;5)$."
+            }
+          ]
+        },
+        {
+          "title": "Constructions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'image d'un point : la méthode du parallélogramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons vu comment calculer les coordonnées de l'image d'un point. Mais en géométrie, on est souvent face à une figure dessinée sur papier, sans repère ni coordonnées. Il faut alors **construire** l'image à la règle et au compas. La traduction géométrique de l'égalité $\\vec{MM'} = \\vec{AB}$ est la suivante : le quadrilatère $ABM'M$ doit être un parallélogramme. Si $A$, $B$, $M$ sont alignés, c'est un parallélogramme aplati (un segment), mais l'idée reste la même : $M'$ est le quatrième sommet du parallélogramme dont trois sommets sont $A$, $B$, $M$ (dans cet ordre)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer les parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Munis-toi de ta règle et de ton compas. Trace la droite parallèle à $(AB)$ passant par $M$. Puis trace la droite parallèle à $(AM)$ passant par $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux droites parallèles tracées à l'étape 1 se coupent en un point. Ce point d'intersection est exactement l'image $M'$ cherchée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le sens",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'ordre des points : en partant de $A$ vers $B$, puis de $B$ vers $M'$, puis de $M'$ vers $M$, et de $M$ vers $A$, on fait le tour du parallélogramme. Le vecteur $\\vec{MM'}$ a bien la même direction, le même sens et la même longueur que $\\vec{AB}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette construction fonctionne pour n'importe quel point $M$ et n'importe quel vecteur défini par $A$ et $B$. Elle ne demande que la capacité à tracer des parallèles (avec l'équerre et la règle, ou au compas selon les habitudes de la classe). C'est la méthode de base, celle qu'il faut maîtriser parfaitement avant d'attaquer des figures plus complexes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois qu'on sait construire l'image d'un point, on peut construire l'image de n'importe quelle figure. Le principe est toujours le même : on détermine les images des points **caractéristiques** de la figure, puis on relie ces images dans le même ordre. Pour un segment, les points caractéristiques sont ses deux extrémités. Pour une droite, il suffit de prendre deux points distincts sur cette droite. Pour un cercle, le point caractéristique est son centre (le rayon ne change pas)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Images des figures usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un segment $[CD]$. Pour construire son image par la translation de vecteur $\\vec{v}$, on construit $C'$ image de $C$ et $D'$ image de $D$ (méthode du parallélogramme). Le segment image est alors $[C'D']$. Il a la même longueur que $[CD]$ et lui est parallèle. Pour une droite $(d)$, on choisit deux points $P$ et $Q$ sur $(d)$, on construit leurs images $P'$ et $Q'$, puis on trace la droite $(P'Q')$. Cette droite est parallèle à $(d)$ (ou confondue avec $(d)$ si le vecteur de translation est dirigé suivant $(d)$). Pour un cercle de centre $O$ et de rayon $R$, l'image est le cercle de centre $O'$ (image de $O$) et de même rayon $R$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d' \\parallel d \\quad \\text{et} \\quad \\mathcal{C}(O,R) \\mapsto \\mathcal{C}(O',R)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés sont essentielles : elles te permettent de vérifier ta construction. Si ton segment image n'a pas la même longueur que l'original, ou s'il n'est pas parallèle, tu as fait une erreur quelque part. Le cercle image doit avoir exactement le même rayon ; seul son centre a bougé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une figure un peu plus riche : un triangle ou un quadrilatère. La méthode ne change pas, elle demande simplement plus de rigueur et d'organisation. Pour un triangle $ABC$, on construit $A'$, $B'$, $C'$ images de $A$, $B$, $C$ par la même translation. Ensuite, on trace les segments $[A'B']$, $[B'C']$, $[C'A']$. Le triangle $A'B'C'$ est l'image du triangle $ABC$. Tous les côtés sont parallèles deux à deux aux côtés correspondants, tous les angles sont égaux, les longueurs sont conservées. C'est une copie conforme, simplement déplacée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire l'image de chaque sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la méthode du parallélogramme pour $A$, $B$, $C$. Obtiens $A'$, $B'$, $C'$. Soigneux : utilise un crayon bien taillé, ne presse pas trop pour pouvoir gommer les traits de construction si besoin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relier les images dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace les segments $[A'B']$, $[B'C']$, $[C'A']$ avec une couleur ou un trait plus marqué que les traits de construction. C'est la figure finale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Contrôler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $A'B' = AB$, $B'C' = BC$, $C'A' = CA$ (à la règle ou au compas). Vérifie que $(A'B') \\parallel (AB)$, etc. Si tout est bon, ta construction est correcte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a un segment $[EF]$ et un vecteur $\\vec{v}$ donné par deux points $G$ et $H$ (non alignés avec $E,F$). Décris la construction de l'image de $[EF]$ par la translation de vecteur $\\vec{GH}$.",
+              "answer": "Construire $E'$ image de $E$ par la translation de vecteur $\\vec{GH}$ (méthode du parallélogramme $GHE'E$). Construire $F'$ image de $F$ de même façon (parallélogramme $GHF'F$). Tracer le segment $[E'F']$.",
+              "hint": "Il faut appliquer la construction du parallélogramme deux fois, une pour chaque extrémité du segment.",
+              "explanation": "L'image d'un segment est le segment dont les extrémités sont les images des extrémités initiales. La construction du parallélogramme garantit $\\vec{EE'} = \\vec{GH}$ et $\\vec{FF'} = \\vec{GH}$."
+            },
+            {
+              "question": "Une droite $(d)$ est tracée. On veut construire son image par une translation de vecteur $\\vec{u}$ (représenté par une flèche). Combien de points sur $(d)$ faut-il translater au minimum pour tracer la droite image ?",
+              "answer": "Deux points distincts.",
+              "hint": "Une droite est déterminée par deux points. Si tu n'en translates qu'un, tu as un point mais pas la direction de la droite image.",
+              "explanation": "Il faut au moins deux points sur $(d)$ pour construire leurs images et tracer la droite qui passe par ces deux images. Cette droite image sera parallèle à $(d)$."
+            },
+            {
+              "question": "Soit un triangle $JKL$ et un vecteur $\\vec{t}$. Après avoir construit le triangle image $J'K'L'$, tu mesures $J'K' = 5,2 \\, cm$ et $JK = 5,2 \\, cm$. Tu mesures aussi l'angle $\\widehat{J'} = 42^\\circ$ et $\\widehat{J} = 42^\\circ$. Que peux-tu conclure sur ta construction ?",
+              "answer": "La construction est correcte : les longueurs et les angles sont conservés, ce qui est une propriété de la translation.",
+              "hint": "Rappelle-toi les propriétés de conservation de la translation : longueurs, angles, parallélisme.",
+              "explanation": "La translation conserve les longueurs (donc $J'K' = JK$) et les angles (donc $\\widehat{J'} = \\widehat{J}$). Ces mesures égales confirment que la figure image est bien l'image par translation."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés fondamentales de la translation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons déjà rencontré l'idée que la translation ne déforme pas les figures. Il est temps de lister précisément ce qui est **conservé** et ce qui **change**. C'est la boîte à outils théorique qui te permettra de raisonner, de démontrer et de résoudre des problèmes sans avoir à tout reconstruire à chaque fois. Une translation conserve : les **longueurs** (distance entre deux points), les **angles** (mesure entre deux droites), le **parallélisme** (deux droites parallèles le restent), l'**alignement** (trois points alignés le restent), les **milieux** (le milieu d'un segment a pour image le milieu du segment image), les **aires** (surface des figures) et les **rapports de longueurs** sur une même droite. En revanche, elle change la **position** des objets dans le plan (sauf si le vecteur est nul)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } T_{\\vec{v}}(M)=M' \\text{ et } T_{\\vec{v}}(N)=N', \\text{ alors } M'N' = MN, \\ (M'N') \\parallel (MN), \\ \\widehat{(M'N', M'P')} = \\widehat{(MN, MP)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer ces propriétés. Imagine un triangle rectangle $XYZ$ avec un angle droit en $X$. Ses côtés mesurent $3 \\, cm$, $4 \\, cm$ et $5 \\, cm$. Appliquons-lui une translation quelconque. Le triangle image $X'Y'Z'$ sera **aussi** un triangle rectangle en $X'$, avec des côtés de $3 \\, cm$, $4 \\, cm$, $5 \\, cm$. L'angle droit est conservé (conservation des angles), les longueurs des côtés sont conservées, donc le triangle est isométrique à l'original. Si on traçait la médiane issue de $X$, son image serait la médiane issue de $X'$ (conservation des milieux). L'aire du triangle ($6 \\, cm^2$) ne change pas non plus."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention toutefois : la conservation des longueurs ne veut pas dire que les segments sont **superposés**. $[XY]$ et $[X'Y']$ sont distincts, parallèles, de même longueur, mais ils ne se confondent pas (sauf cas particulier où le vecteur de translation est nul ou parallèle à $(XY)$ avec une longueur multiple... mais ce sont des cas limites). De même, deux droites sécantes restent sécantes après translation, et l'angle qu'elles forment est inchangé. C'est ce qui permet de dire que deux figures images l'une de l'autre par translation sont **isométriques** (superposables par un déplacement rigide)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Image d'une droite et parallélisme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Zoomons sur une propriété particulièrement utile : l'image d'une droite. Soit une droite $(d)$ et une translation de vecteur $\\vec{v} \\neq \\vec{0}$. L'image de $(d)$ est une droite $(d')$. Deux cas se présentent : soit le vecteur $\\vec{v}$ a la même direction que $(d)$ (il est **parallèle** à $(d)$), soit il a une direction différente. Dans le premier cas, la droite $(d)$ est **globale ment invariante** : chaque point de $(d)$ glisse sur $(d)$ elle-même, donc $(d') = (d)$. Dans le second cas, $(d')$ est une droite **distincte** de $(d)$ mais **parallèle** à $(d)$. C'est une propriété fondamentale : *la translation transforme une droite en une droite parallèle (ou en elle-même)*."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas 1 : Vecteur parallèle à la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\vec{v} \\parallel (d)$, alors pour tout point $M \\in (d)$, son image $M'$ appartient aussi à $(d)$. La droite ne bouge pas en tant qu'ensemble de points, mais chaque point se décale sur la droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 2 : Vecteur non parallèle à la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\vec{v}$ n'est pas parallèle à $(d)$, prends deux points $A, B$ sur $(d)$. Leurs images $A', B'$ définissent la droite $(d') = (A'B')$. Par construction, $\\vec{AA'} = \\vec{BB'} = \\vec{v}$, donc le quadrilatère $ABB'A'$ est un parallélogramme. Donc $(A'B') \\parallel (AB)$, c'est-à-dire $(d') \\parallel (d)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété est un outil de raisonnement puissant. Si on te demande de prouver que deux droites sont parallèles dans une figure complexe, chercher une translation qui envoie l'une sur l'autre est souvent la voie la plus élégante. De même, si tu sais qu'une droite est l'image d'une autre par une translation, tu sais **immédiatement** qu'elles sont parallèles (ou confondues), sans avoir à mesurer d'angle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composition de deux translations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Que se passe-t-il si on applique deux translations successives ? D'abord une translation de vecteur $\\vec{u}$, puis une translation de vecteur $\\vec{v}$. Le résultat est-il encore une translation ? La réponse est **oui**, et c'est une excellente nouvelle : l'ensemble des translations forme une structure stable. La composition de deux translations est une translation dont le vecteur est la **somme** des deux vecteurs : $\\vec{u} + \\vec{v}$. Concrètement, si tu prends un point $M$, son image après la première translation est $M_1$ tel que $\\vec{MM_1} = \\vec{u}$. L'image de $M_1$ après la seconde est $M'$ tel que $\\vec{M_1M'} = \\vec{v}$. Par la relation de Chasles, $\\vec{MM'} = \\vec{MM_1} + \\vec{M_1M'} = \\vec{u} + \\vec{v}$. Donc $M'$ est l'image de $M$ par la translation de vecteur $\\vec{u} + \\vec{v}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "T_{\\vec{v}} \\circ T_{\\vec{u}} = T_{\\vec{u}+\\vec{v}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété a une conséquence visuelle très intuitive : si tu déplaces un objet d'un certain vecteur, puis que tu le déplaces encore d'un autre vecteur, le résultat final est exactement le même que si tu l'avais déplacé une seule fois du vecteur somme. C'est comme faire deux pas l'un après l'autre : le déplacement total est le vecteur qui va du point de départ au point d'arrivée final. Cette additivité des vecteurs est au cœur de la géométrie vectorielle et te servira énormément en physique (forces, vitesses) et en mathématiques supérieures."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons qu'une translation admet toujours une **translation inverse** : la translation de vecteur $-\\vec{v}$ (même longueur, même direction, sens opposé) annule l'effet de la translation de vecteur $\\vec{v}$. C'est ce qui permet de \"revenir en arrière\" et qui montre que les translations sont des bijections du plan sur lui-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une translation par un vecteur (direction, sens, longueur).",
+                "Je sais déterminer l'image d'un point par une translation (géométriquement et par coordonnées).",
+                "Je sais construire l'image d'un point, d'un segment, d'une droite, d'un cercle, d'un polygone à la règle et au compas.",
+                "Je connais les propriétés conservées par une translation : longueurs, angles, parallélisme, alignement, milieux, aires.",
+                "Je sais que l'image d'une droite est une droite parallèle (ou confondue).",
+                "Je sais que la composition de deux translations est une translation de vecteur somme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une translation conserve-t-elle l'aire d'un triangle ? Justifie ta réponse.",
+              "answer": "Oui, la translation conserve les aires. Le triangle image a la même base et la même hauteur que le triangle initial (les longueurs et le parallélisme sont conservés), donc la même aire.",
+              "hint": "Rappelle-toi la formule de l'aire d'un triangle : base $\\times$ hauteur $/ 2$. Que deviennent la base et la hauteur après une translation ?",
+              "explanation": "La translation conserve les longueurs (donc la base) et le parallélisme (donc la hauteur, distance entre deux parallèles). L'aire, qui ne dépend que de ces deux mesures, est donc inchangée."
+            },
+            {
+              "question": "Soit une droite $(d)$ d'équation $y = 2x + 1$ dans un repère orthonormé. On applique la translation de vecteur $\\vec{v} = (3; -2)$. Donne une équation de la droite image $(d')$.",
+              "answer": "$y = 2x - 7$",
+              "hint": "La droite image est parallèle à $(d)$ (même coefficient directeur). Il suffit de translater un point de $(d)$ pour trouver l'ordonnée à l'origine de $(d')$.",
+              "explanation": "Le coefficient directeur reste $2$. Prenons le point $A(0;1)$ sur $(d)$. Son image est $A'(3; -1)$. L'équation de $(d')$ est $y = 2x + b$. En remplaçant par $A'$ : $-1 = 2\\times3 + b \\Rightarrow b = -7$. Donc $y = 2x - 7$."
+            },
+            {
+              "question": "On effectue une translation de vecteur $\\vec{u} = (2; 5)$ suivie d'une translation de vecteur $\\vec{v} = (-4; 1)$. Quel est le vecteur de la translation équivalente à cette composition ?",
+              "answer": "$(-2; 6)$",
+              "hint": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. Ajoute les coordonnées.",
+              "explanation": "$\\vec{u} + \\vec{v} = (2 + (-4) ; 5 + 1) = (-2; 6)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

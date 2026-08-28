@@ -1,0 +1,374 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.511459+00:00",
+  "id": 648,
+  "code": "terminale-generale-complementaires-t03-c04",
+  "title": "Bilan - Logarithme",
+  "description": "Cours structuré Educalcul : Bilan - Logarithme.",
+  "subject": "Fonction logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Fonction logarithme",
+    "titre_du_cours": "Bilan - Logarithme",
+    "objectif_global": "Bilan - Logarithme",
+    "mini_lecons_imposees": [
+      "Propriétés et applications.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Fonction logarithme",
+      "lessons": [
+        {
+          "title": "Propriétés et applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel de la définition du logarithme népérien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur le logarithme. Vous avez déjà rencontré la fonction exponentielle et son inverse, le logarithme népérien, noté $\\ln$. Rappelons que pour tout nombre réel strictement positif $x$, $\\ln(x)$ est l'unique réel $y$ tel que $e^{y}=x$, où $e\\approx2,71828$ est la base des logarithmes népériens. Cette définition fonde toutes les propriétés que nous allons réviser. Prenez le temps de relire cette équivalence : $\\ln(x)=y \\iff e^{y}=x$. Elle est la clé pour passer d'une forme logarithmique à une forme exponentielle et vice‑versa. Dans la suite, nous allons manipuler des expressions concrètes pour ancrer cette relation. Par exemple, $\\ln(1)=0$ car $e^{0}=1$, et $\\ln(e)=1$ car $e^{1}=e$. Ces deux valeurs de référence vous serviront de repères tout au long du cours."
+            },
+            {
+              "type": "definition",
+              "term": "logarithme népérien",
+              "definition": "Le logarithme népérien d'un nombre strictement positif $x$ est l'exposant auquel il faut élever $e$ pour obtenir $x$. En notation : $\\ln(x)=y \\iff e^{y}=x$.",
+              "example": "$\\ln(7,389)\\approx2$ car $e^{2}\\approx7,389$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(ab)=\\ln(a)+\\ln(b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Propriété fondamentale : le logarithme d'un produit se transforme en somme des logarithmes. Prenons $a=3$ et $b=5$. Alors $\\ln(15)=\\ln(3\\times5)=\\ln(3)+\\ln(5)$. Avec des valeurs approchées $\\ln(3)\\approx1,099$ et $\\ln(5)\\approx1,609$, on trouve $\\ln(15)\\approx2,708$, ce que confirme la calculatrice. Cette règle vaut pour tout produit de deux nombres positifs, et par récurrence pour un produit de plusieurs facteurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la propriété du produit est bien ancrée, nous allons voir comment elle s'étend au quotient et à la puissance, puis nous aborderons le changement de base, un outil indispensable pour passer d'un logarithme à un autre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changement de base et logarithme en base a"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le logarithme népérien est commode, mais il arrive souvent de rencontrer des logarithmes en base $2$, $10$ ou toute autre base $a>0$, $a\\neq1$. La formule de changement de base permet d'exprimer n'importe quel logarithme à l'aide du logarithme népérien : $\\log_a(x)=\\frac{\\ln(x)}{\\ln(a)}$. Cette égalité se démontre en posant $y=\\log_a(x)$, ce qui signifie $a^{y}=x$. En appliquant $\\ln$ des deux côtés, on obtient $y\\ln(a)=\\ln(x)$, d'où la formule. Elle est valide pour tout $x>0$ et toute base admissible."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log_a(x)=\\frac{\\ln(x)}{\\ln(a)}"
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.1,
+              "xmax": 10,
+              "caption": "Courbe du logarithme népérien $\\ln(x)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé le changement de base, nous allons mettre ces outils en œuvre pour résoudre des équations et des inéquations logarithmiques, et nous verrons comment ils modélisent des phénomènes réels comme la décroissance radioactive ou l'échelle de Richter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations et modélisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une équation logarithmique revient souvent à la ramener à une équation exponentielle grâce à l'équivalence $\\ln(X)=Y \\iff X=e^{Y}$. Prenons l'exemple $\\ln(x+1)=2$. On applique l'exponentielle : $x+1=e^{2}$, donc $x=e^{2}-1$. Vérifions que l'argument $x+1$ est bien positif : $e^{2}-1+1=e^{2}>0$, la solution est admissible. Pour une inéquation comme $\\ln(x)\\le 1$, on exponentie : $x\\le e^{1}=e$, en gardant la condition $x>0$. Ainsi l'ensemble solution est $0<x\\le e$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation est déjà sous la forme $\\ln(x+1)=2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer l'exponentielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On élève $e$ à la puissance des deux membres : $e^{\\ln(x+1)}=e^{2}$, ce qui donne $x+1=e^{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation linéaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On soustrait $1$ : $x=e^{2}-1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la condition de positivité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x+1=e^{2}>0$, donc la solution est valide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x=e^{2}-1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un exemple classique de modélisation est la décroissance radioactive. La quantité de matière restante au temps $t$ suit $N(t)=N_0 e^{-\\lambda t}$. En prenant le logarithme népérien, on obtient $\\ln(N(t))=\\ln(N_0)-\\lambda t$, une relation affine qui permet de déterminer la constante de décroissance $\\lambda$ à partir de mesures expérimentales. De même, l'échelle de Richter pour les séismes utilise un logarithme en base $10$ : $M=\\log_{10}(A/A_0)$, où $A$ est l'amplitude mesurée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant des propriétés essentielles, de la formule de changement de base et d'une méthode robuste pour résoudre équations et inéquations. La leçon suivante fera le point sous forme de checklist pour ancrer durablement ces acquis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\ln(8)$ en utilisant les propriétés du logarithme népérien, sachant que $\\ln(2)\\approx0,693$.",
+              "answer": "$\\ln(8)=3\\ln(2)\\approx2,079$",
+              "hint": "Utilisez $\\ln(a^r)=r\\ln(a)$.",
+              "explanation": "Puisque $8=2^3$, on a $\\ln(8)=\\ln(2^3)=3\\ln(2)$."
+            },
+            {
+              "question": "Exprimer $\\log_5(25)$ en logarithme népérien et donner sa valeur exacte.",
+              "answer": "$\\log_5(25)=\\frac{\\ln(25)}{\\ln(5)}=\\frac{2\\ln(5)}{\\ln(5)}=2$",
+              "hint": "Utilisez la formule de changement de base.",
+              "explanation": "$25=5^2$, donc $\\ln(25)=2\\ln(5)$."
+            },
+            {
+              "question": "Résoudre l'équation $\\ln(x+1)=2$.",
+              "answer": "$x=e^2-1$",
+              "hint": "Appliquez l'exponentielle des deux côtés.",
+              "explanation": "On élève $e$ à la puissance des deux membres : $x+1=e^2$, donc $x=e^2-1$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse des propriétés essentielles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de synthèse, nous reprenons les propriétés clés du logarithme en les illustrant par des exemples nouveaux, différents de ceux vus précédemment, afin de renforcer votre mémoire sans répétition. L'objectif est de vous donner une vision d'ensemble claire, utilisable comme fiche de révision avant un contrôle. Prenez le temps de lire chaque propriété et de la visualiser avec un cas numérique simple."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le produit : si $a=4$ et $b=7$, alors $\\ln(28)=\\ln(4)+\\ln(7)$. Avec $\\ln(4)\\approx1,386$ et $\\ln(7)\\approx1,946$, la somme donne $3,332$, ce que $\\ln(28)$ confirme. Pour le quotient, prenons $a=20$, $b=5$ : $\\ln(4)=\\ln(20)-\\ln(5)$. Enfin, la puissance : $\\ln(2^5)=5\\ln(2)$. Ces trois règles sont le socle de tout calcul logarithmique."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Produit : $\\ln(ab)=\\ln(a)+\\ln(b)$ pour $a,b>0$.",
+                "Quotient : $\\ln\\left(\\frac{a}{b}\\right)=\\ln(a)-\\ln(b)$ pour $a,b>0$.",
+                "Puissance : $\\ln(a^{r})=r\\ln(a)$ pour $a>0$ et $r\\in\\mathbb{R}$."
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(a^{r})=r\\ln(a)"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour mémoriser le signe dans la propriété du quotient, pensez à la division : on soustrait l'exposant du diviseur, exactement comme pour les puissances : $\\frac{a^m}{a^n}=a^{m-n}$."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés s'appliquent aussi aux logarithmes en base quelconque grâce à la formule de changement de base. Garder ces trois formules en tête vous permettra de simplifier rapidement toute expression logarithmique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après ce rappel ordonné, nous allons détailler une méthode pas à pas pour aborder sereinement toute équation logarithmique, en insistant sur la vérification du domaine de définition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas pour résoudre une équation logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "La résolution systématique d'une équation logarithmique suit cinq étapes claires. La première consiste à écrire explicitement le domaine de définition : l'argument de chaque logarithme doit être strictement positif. Cette étape évite de conserver des solutions parasites. La deuxième étape vise à simplifier l'équation en utilisant les propriétés du logarithme pour regrouper les termes en un seul logarithme si possible. La troisième étape est le passage à la forme exponentielle grâce à l'équivalence fondamentale. La quatrième étape résout l'équation algébrique ou exponentielle obtenue. Enfin, la cinquième étape vérifie que chaque solution candidate appartient bien au domaine initial."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cette méthode sur un exemple inédit : $\\log_3(x^2-1)=2$. Domaine : $x^2-1>0$, donc $x<-1$ ou $x>1$. Simplification : déjà un seul logarithme. Forme exponentielle : $x^2-1=3^{2}=9$. Résolution : $x^2=10$, $x=\\pm\\sqrt{10}$. Vérification : $\\sqrt{10}>1$ et $-\\sqrt{10}<-1$, les deux conviennent. L'ensemble solution est $\\{-\\sqrt{10};\\sqrt{10}\\}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez les conditions sur l'argument du logarithme : il doit être strictement positif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les propriétés (produit, quotient, puissance) pour regrouper les logarithmes en un seul terme si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Passer à la forme exponentielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez l'équivalence $\\ln(X)=Y \\iff X=e^{Y}$ (ou $\\log_a(X)=Y \\iff X=a^{Y}$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Résoudre l'équation obtenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez l'équation algébrique ou exponentielle classique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Vérifier les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Gardez uniquement celles qui satisfont le domaine initial."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquez cette méthode à d'autres équations pour gagner en aisance. La régularité de la démarche est votre meilleure garantie contre les erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode est rodée, penchons-nous sur les erreurs classiques qui font perdre des points, et sur les astuces pour les éviter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges fréquents et astuces de vérification"
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne pas oublier la condition de positivité de l'argument : $\\ln(x)$ n'existe pas pour $x\\le0$.",
+                "Ne pas appliquer $\\ln$ des deux côtés d'une inéquation sans vérifier la monotonie de la fonction (le logarithme est strictement croissante).",
+                "Ne pas confondre $\\ln(ab)$ et $\\ln(a)\\ln(b)$ ; le logarithme d'un produit est une somme, pas un produit."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce pour vérifier rapidement une solution numérique : replacez-la dans l'équation originale et utilisez votre calculatrice en mode numérique. Si les deux membres diffèrent de moins de $10^{-6}$, la solution est correcte. Pensez aussi à tester des valeurs extrêmes du domaine pour les inéquations. Enfin, relisez toujours l'énoncé pour vous assurer que la réponse demandée est bien une valeur exacte ou une approximation."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre piège fréquent est d'oublier que le changement de base nécessite que la base et l'argument soient strictement positifs et que la base soit différente de $1$. Vérifiez systématiquement ces conditions avant d'appliquer la formule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant parcouru l'ensemble des notions, des méthodes et des pièges à éviter. La checklist ci‑dessous vous permettra de faire le point avant l'évaluation."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le logarithme népérien et passer de la forme logarithmique à la forme exponentielle.",
+                "Je connais les trois propriétés fondamentales (produit, quotient, puissance) et je sais les appliquer.",
+                "Je maîtrise la formule de changement de base $\\log_a(x)=\\frac{\\ln(x)}{\\ln(a)}$",
+                "Je sais résoudre une équation logarithmique en respectant le domaine de définition.",
+                "Je sais résoudre une inéquation logarithmique en utilisant la monotonie de la fonction.",
+                "Je repère les pièges classiques (argument négatif, confusion produit/somme, monotonie) et je sais les éviter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier $\\ln\\left(\\frac{e^3}{e}\\right)$.",
+              "answer": "$\\ln(e^2)=2$",
+              "hint": "Utilisez $\\ln(a/b)=\\ln a-\\ln b$.",
+              "explanation": "$\\frac{e^3}{e}=e^2$, donc $\\ln(e^2)=2$."
+            },
+            {
+              "question": "Résoudre $\\log_2(x)=3$.",
+              "answer": "$x=8$",
+              "hint": "Revenez à la forme exponentielle.",
+              "explanation": "$\\log_2(x)=3$ équivaut à $2^3=x$, donc $x=8$."
+            },
+            {
+              "question": "Vérifier si $x=-1$ est solution de $\\ln(x^2)=0$.",
+              "answer": "Oui, car $\\ln((-1)^2)=\\ln(1)=0$.",
+              "hint": "Attention au domaine du logarithme.",
+              "explanation": "Le logarithme népérien est défini pour les arguments strictement positifs ; $x^2=1>0$, donc $x=-1$ est admissible."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

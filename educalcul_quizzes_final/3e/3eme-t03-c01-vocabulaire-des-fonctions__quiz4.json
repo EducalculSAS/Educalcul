@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 467,
+  "_course_code": "3eme-t03-c01-vocabulaire-des-fonctions",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Vocabulaire des fonctions",
+  "title": "Application : Vocabulaire des fonctions",
+  "questions": [
+    {
+      "text": "Dans une fonction $f$, l'ensemble des valeurs que peut prendre la variable $x$ s'appelle :",
+      "options": [
+        "l'ensemble de définition",
+        "l'ensemble d'arrivée",
+        "l'ensemble des images",
+        "l'ensemble des antécédents"
+      ],
+      "correctAnswer": "l'ensemble de définition",
+      "explanation": "L'ensemble de définition (ou domaine) d'une fonction est l'ensemble des valeurs admises pour la variable indépendante $x$. L'ensemble d'arrivée est l'ensemble où prennent les valeurs $f(x)$, l'ensemble des images est l'ensemble des valeurs effectivement atteintes, et l'ensemble des antécédents est l'ensemble des $x$ qui ont une image.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $f(x)=2x+3$, quelle est l'image de $4$ par $f$ ?",
+      "options": [
+        "11",
+        "8",
+        "5",
+        "14"
+      ],
+      "correctAnswer": "11",
+      "explanation": "On calcule $f(4)=2\\times4+3=8+3=11$. Les autres valeurs correspondent à des erreurs de calcul : $8$ serait $2\\times4$, $5$ serait $2+3$, $14$ serait $2\\times4+6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "D'après le graphique ci-dessous, quel est l'antécédent de $5$ ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Le graphique représente la fonction $f(x)=2x+1$. Pour trouver l'antécédent de $5$, on résout $2x+1=5$, ce qui donne $2x=4$ donc $x=2$. Les autres valeurs ne satisfont pas l'équation.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=2x+1"
+      }
+    },
+    {
+      "text": "Le terme 'image' dans le contexte d'une fonction désigne :",
+      "options": [
+        "la valeur $f(x)$ associée à un antécédent $x$",
+        "l'ensemble des $x$ possibles",
+        "la pente de la droite",
+        "le coefficient directeur"
+      ],
+      "correctAnswer": "la valeur $f(x)$ associée à un antécédent $x$",
+      "explanation": "Par définition, pour une fonction $f$, l'image d'un élément $x$ de l'ensemble de définition est la valeur $f(x)$. L'ensemble des $x$ possibles est l'ensemble de définition, la pente et le coefficient directeur concernent les fonctions affines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction $g$ est définie par $g(x)=x^2-4$. Quel est l'antécédent(s) de $0$ ?",
+      "options": [
+        "2 et -2",
+        "2 seulement",
+        "-2 seulement",
+        "0"
+      ],
+      "correctAnswer": "2 et -2",
+      "explanation": "On résout $x^2-4=0$, soit $x^2=4$, d'où $x=2$ ou $x=-2$. Les deux nombres sont antécédents de $0$. Les autres options ne donnent pas $0$ comme image.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

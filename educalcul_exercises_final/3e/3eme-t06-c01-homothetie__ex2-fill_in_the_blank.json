@@ -1,0 +1,46 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Construire",
+  "title": "Construction par homothétie",
+  "blocks": [
+    {
+      "title": "Propriétés de base",
+      "content": "Pour construire l'image d'un point $M$ par l'homothétie de centre $O$ et de rapport $k$, les points $O$, $M$ et $M'$ doivent être alignés, c'est-à-dire appartenir à la même {{1}}. On a de plus la relation vectorielle $\\overrightarrow{OM'} = {{2}} \\times \\overrightarrow{OM}$.",
+      "blanks": [
+        "droite",
+        "k"
+      ],
+      "explanation": "La définition de l'homothétie impose que le centre, le point initial et son image soient alignés (sur la même droite). La relation vectorielle fondamentale est $\\overrightarrow{OM'} = k \\overrightarrow{OM}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction cas particulier",
+      "content": "Soit une homothétie de centre $O$ et de rapport $k = -2$. Pour construire l'image $A'$ d'un point $A$ distinct de $O$, on trace la droite $(OA)$. Le point $A'$ se situe sur la {{1}} de $O$ par rapport à $A$ (car le rapport est négatif) et la distance $OA'$ vaut {{2}} fois la distance $OA$.",
+      "blanks": [
+        "demi-droite opposée",
+        "2"
+      ],
+      "explanation": "Un rapport négatif ($k=-2$) place l'image sur la demi-droite opposée à $\\overrightarrow{OA}$. La valeur absolue du rapport ($|k|=2$) donne le coefficient de proportionnalité des distances : $OA' = 2 \\times OA$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriété des droites",
+      "content": "Soit un triangle $ABC$ et son image $A'B'C'$ par une homothétie de centre $O$ et de rapport $k \\neq 0, 1$. D'après les propriétés de l'homothétie, les droites $(AB)$ et $(A'B')$ sont {{1}}. De même, les droites $(BC)$ et $(B'C')$ sont {{2}} et les droites $(AC)$ et $(A'C')$ sont {{3}}.",
+      "blanks": [
+        "parallèles",
+        "parallèles",
+        "parallèles"
+      ],
+      "explanation": "Une homothétie transforme une droite en une droite parallèle (ou confondue si elle passe par le centre). Comme le centre $O$ n'est pas nécessairement sur les côtés du triangle, les côtés correspondants sont deux à deux parallèles : $(AB) \\parallel (A'B')$, $(BC) \\parallel (B'C')$, $(AC) \\parallel (A'C')$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

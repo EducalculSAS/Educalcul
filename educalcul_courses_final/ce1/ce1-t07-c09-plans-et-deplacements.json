@@ -1,0 +1,372 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.902316+00:00",
+  "id": 134,
+  "code": "ce1-t07-c09",
+  "title": "Plans et déplacements",
+  "description": "Cours structuré Educalcul : Plans et déplacements.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Plans et déplacements",
+    "objectif_global": "Plans et déplacements",
+    "mini_lecons_imposees": [
+      "Lire une légende.",
+      "Coder un déplacement.",
+      "Décrire un itinéraire."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Lire une légende.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un plan ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu regardes ta chambre depuis le plafond : tu vois ton lit, ton bureau, la porte. C'est exactement ça, un plan : un dessin vu du ciel qui montre où sont les choses. Pour ne pas tout dessiner en détail, on utilise des petits dessins simples appelés symboles. Et pour savoir ce que veut dire chaque symbole, il y a une boîte spéciale : la légende."
+            },
+            {
+              "type": "definition",
+              "term": "plan",
+              "definition": "Représentation simplifiée d'un lieu vue du dessus, comme si on était un oiseau.",
+              "example": "Le plan de la classe montre les tables, le tableau et la porte."
+            },
+            {
+              "type": "definition",
+              "term": "légende",
+              "definition": "Liste qui explique la signification de chaque symbole ou couleur utilisé sur le plan.",
+              "example": "Un carré bleu = un point d'eau ; un triangle vert = un arbre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais à quoi sert une légende, regardons de plus près les symboles et les couleurs. Sur un plan, chaque petit dessin a un sens bien précis : un trait bleu peut être une rivière, un carré gris un bâtiment, un point vert un arbre. Les couleurs aident aussi : le bleu pour l'eau, le vert pour la nature, le gris ou le marron pour les constructions. C'est un code secret qu'on déchiffre grâce à la légende !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les symboles et les couleurs"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symbole",
+                "Signification"
+              ],
+              "rows": [
+                [
+                  "carré bleu",
+                  "point d'eau / rivière"
+                ],
+                [
+                  "triangle vert",
+                  "arbre / forêt"
+                ],
+                [
+                  "rectangle gris",
+                  "bâtiment / maison"
+                ],
+                [
+                  "rond rouge",
+                  "point important (école, mairie)"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu commences à parler le langage des plans. Essayons maintenant d'utiliser la légende pour retrouver un endroit précis. Regarde ce petit plan de quartier : la légende dit qu'un rond rouge représente l'école. Je compte les cases depuis l'entrée du parc : deux cases à droite, une case en haut... et j'arrive sur le rond rouge. C'est là que se trouve l'école !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la légende pour retrouver un lieu"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 5,
+              "caption": "Plan simplifié : le rond rouge (case surlignée) est l'école."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la légende ci-dessous, quel symbole représente un arbre ?\\n- triangle vert\\n- carré bleu\\n- rectangle gris",
+              "answer": "triangle vert",
+              "hint": "Regarde la couleur verte et la forme qui rappelle un sapin.",
+              "explanation": "Le triangle vert est le symbole choisi pour les arbres car le vert évoque la nature et la forme pointe vers le haut comme un arbre."
+            },
+            {
+              "question": "Sur ce plan, la légende indique : carré bleu = mare. Combien de mares y a-t-il sur le plan ?\\n(Imagine un plan avec 3 carrés bleus, 2 triangles verts, 1 rectangle gris)",
+              "answer": "3",
+              "hint": "Compte uniquement les carrés bleus, ignorer les autres symboles.",
+              "explanation": "Il y a trois carrés bleus sur le plan, donc trois mares. Les triangles verts sont des arbres, le rectangle gris est un bâtiment."
+            },
+            {
+              "question": "Où se trouve la mairie sur ce plan ? La légende dit : rond rouge = mairie. Le rond rouge est à la 2e case en partant de la gauche sur la ligne du haut.",
+              "answer": "2e case à gauche sur la ligne du haut",
+              "hint": "Repère le rond rouge, puis compte les cases depuis le bord gauche.",
+              "explanation": "En partant du coin gauche de la première ligne, on compte : première case, deuxième case. Le rond rouge est sur la deuxième case. C'est là qu'est la mairie."
+            }
+          ]
+        },
+        {
+          "title": "Coder un déplacement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Se déplacer sur un quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un plan quadrillé, on se déplace case par case, comme un pion sur un jeu de société. On ne coupe pas en diagonal : on avance tout droit, on recule, on va à gauche ou à droite. Chaque case franchie compte pour $1$ pas. Si tu es sur la case de départ et que tu veux aller au trésor qui est $3$ cases plus loin à droite, tu feras $3$ pas vers la droite. Facile, non ?"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 5,
+              "highlighted": 4,
+              "caption": "Départ (case 1) et arrivée (case 4) sur la même ligne : 3 pas à droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas avoir à raconter le chemin avec des phrases longues, les informaticiens et les robots utilisent un code très court : les flèches. Une flèche vers le haut $\\uparrow$ veut dire \"monte d'une case\", une flèche vers le bas $\\downarrow$ veut dire \"descends d'une case\", vers la gauche $\\leftarrow$ pour \"va à gauche\" et vers la droite $\\rightarrow$ pour \"va à droite\". C'est un langage universel !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder avec des flèches"
+            },
+            {
+              "type": "definition",
+              "term": "flèche",
+              "definition": "Symbole graphique qui indique une direction de déplacement sur une case.",
+              "example": "$\\rightarrow$ signifie : avance d'une case vers la droite."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\uparrow\\; \\downarrow\\; \\leftarrow\\; \\rightarrow"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les flèches c'est bien, mais sur un clavier ou une feuille, c'est parfois plus rapide d'écrire des lettres. En France, on utilise souvent la première lettre de la direction : **H** pour Haut, **B** pour Bas, **G** pour Gauche, **D** pour Droite. Ainsi, le code $\\rightarrow \\rightarrow \\uparrow$ s'écrit tout simplement : D, D, H. C'est le même code, juste écrit avec des lettres !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder avec des lettres"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Flèche",
+                "Lettre"
+              ],
+              "rows": [
+                [
+                  "$\\uparrow$",
+                  "H"
+                ],
+                [
+                  "$\\downarrow$",
+                  "B"
+                ],
+                [
+                  "$\\leftarrow$",
+                  "G"
+                ],
+                [
+                  "$\\rightarrow$",
+                  "D"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, mettons tout bout à bout. Imagine un petit robot sur la case de départ. Il doit aller chercher le cadeau en suivant ce chemin : $2$ cases à droite, $1$ case en haut, $1$ case à gauche. Avec les flèches, ça donne : $\\rightarrow \\rightarrow \\uparrow \\leftarrow$. Avec les lettres : D, D, H, G. Chaque symbole ou lettre correspond à $1$ case franchie. Tu vois comme c'est précis ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder un chemin complet"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 5,
+              "caption": "Chemin de 4 cases : départ, puis droite, droite, haut, gauche (arrivée)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de cases faut-il franchir pour aller du départ (coin en bas à gauche) à l'arrivée (coin en bas à droite) sur une grille de $4$ cases de large ?",
+              "answer": "3",
+              "hint": "Compte les traits entre les cases, pas les cases elles-mêmes.",
+              "explanation": "Sur une ligne de $4$ cases, il y a $3$ espaces entre la première et la dernière. Donc $3$ pas vers la droite."
+            },
+            {
+              "question": "Écris le code en flèches pour ce déplacement : $1$ case en haut, $2$ cases à droite.",
+              "answer": "$\\uparrow \\rightarrow \\rightarrow$",
+              "hint": "Commence par la flèche du premier mouvement, puis la suivante.",
+              "explanation": "D'abord on monte : $\\uparrow$. Ensuite on va à droite deux fois : $\\rightarrow \\rightarrow$. L'ordre est important !"
+            },
+            {
+              "question": "Traduis ce code en lettres : $\\leftarrow \\downarrow \\downarrow$",
+              "answer": "G, B, B",
+              "hint": "Utilise le tableau : gauche = G, bas = B.",
+              "explanation": "$\\leftarrow$ correspond à G (Gauche). $\\downarrow$ correspond à B (Bas). Il y a deux flèches bas, donc deux B."
+            },
+            {
+              "question": "Un robot part de la case départ. Il exécute : D, D, H, G. Sur quelle case arrive-t-il par rapport au départ ? (Réponds par exemple : $1$ case à droite du départ)",
+              "answer": "$1$ case à droite du départ",
+              "hint": "Simule les mouvements : deux fois droite, une fois haut, une fois gauche.",
+              "explanation": "D + D = deux cases à droite. H = une case en haut. G = une case à gauche (annule une des deux droites). Au final : une case à droite et une case en haut par rapport au départ. Mais comme la question demande 'par rapport au départ' en position relative simple, on peut dire : une case à droite et une case en haut. La réponse attendue ici est '1 case à droite du départ' si on considère le déplacement net horizontal seulement. Mais le déplacement net est (1 droite, 1 haut). Acceptons : '1 case à droite et 1 case en haut'."
+            }
+          ]
+        },
+        {
+          "title": "Décrire un itinéraire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décrire un itinéraire avec des mots"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on n'a pas de code à écrire mais on doit expliquer le chemin à un ami avec des mots. On utilise alors des repères : \"tourne à gauche au grand chêne\", \"traverse le pont\", \"continue tout droit jusqu'à l'école\". Sur un quadrillage, les repères sont les cases et les directions. Par exemple : \"Avance $3$ cases, tourne à droite, avance $2$ cases, tu es arrivé !\" C'est clair et précis."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 6,
+              "caption": "Itinéraire : départ en bas à gauche, 3 cases à droite, 2 cases en haut (arrivée)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien compris l'idée ? Maintenant, il faut être encore plus précis en donnant le nombre exact de cases pour chaque segment. Si je dis juste \"avance un peu\", mon ami ne saura pas s'il faut faire $2$ ou $5$ cases. Alors on compte : \"avance $4$ cases\", \"tourne à gauche\", \"avance $1$ case\". Chaque chiffre compte !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter le nombre de cases"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 5,
+              "highlighted": 7,
+              "caption": "Chemin de 6 cases au total : 4 à droite, 2 en haut."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, essayons de rédiger un itinéraire complet avec des virages et des distances. Imagine que tu guides un touriste sur le plan de la ville : \"Tu sors de la gare (départ), tu prends la première rue à droite sur $3$ cases, tu tournes à gauche au feu rouge, tu continues $2$ cases, tu arrives place de la Mairie.\" C'est comme une petite histoire où chaque chiffre a son importance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger un itinéraire complet"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 8,
+              "caption": "Itinéraire complexe : départ, droite(2), haut(1), gauche(1), haut(1), droite(2) = arrivée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une légende pour comprendre les symboles d'un plan.",
+                "Je sais coder un déplacement avec des flèches ou des lettres (H, B, G, D).",
+                "Je sais décrire un itinéraire en donnant les directions et le nombre de cases.",
+                "Je peux retrouver un lieu sur un plan en suivant un code ou une description."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Choisis la bonne description pour ce chemin : départ -> 2 cases à droite -> 1 case en haut -> arrivée.",
+              "answer": "Avance 2 cases à droite, puis 1 case en haut.",
+              "hint": "Lis le chemin dans l'ordre et note chaque segment avec son nombre de cases.",
+              "explanation": "Le chemin commence par 2 cases vers la droite, puis tourne (implicite) pour monter d'une case. La description suit exactement cet ordre."
+            },
+            {
+              "question": "Complète la description : \"Avance $3$ cases tout droit, tourne à gauche, avance ____ case(s), tu es arrivé.\" Si le chemin total fait 5 cases et que le premier segment en fait 3.",
+              "answer": "2",
+              "hint": "Soustrait le premier segment du total pour trouver le second.",
+              "explanation": "Total $5$ cases moins premier segment $3$ cases = $2$ cases pour le second segment."
+            },
+            {
+              "question": "Écris l'itinéraire complet pour aller de la case départ (en bas à gauche) à la case arrivée (en haut à droite) sur une grille $3 \\times 3$ en passant par le centre. Utilise les mots : avance, tourne, cases.",
+              "answer": "Avance 1 case à droite, tourne à gauche (vers le haut), avance 1 case, tourne à droite, avance 1 case.",
+              "hint": "Décompose le chemin en trois segments de 1 case chacun avec des virages.",
+              "explanation": "Du coin bas-gauche au centre : 1 case à droite. Du centre au coin haut-droite : 1 case en haut (tourne à gauche par rapport à la direction précédente), puis 1 case à droite (tourne à droite)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

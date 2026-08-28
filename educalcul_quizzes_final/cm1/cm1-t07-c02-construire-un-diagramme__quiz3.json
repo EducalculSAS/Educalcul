@@ -1,0 +1,171 @@
+{
+  "_status": "done",
+  "_course_id": 257,
+  "_course_code": "cm1-t07-c02-construire-un-diagramme",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Légender",
+  "title": "Légender un diagramme",
+  "questions": [
+    {
+      "text": "Voici un diagramme en bâtons représentant les fruits préférés des élèves d'une classe. Quel est l'élément manquant indispensable pour comprendre ce que représentent les nombres sur l'axe vertical ?",
+      "options": [
+        "Le titre du diagramme",
+        "La légende des couleurs",
+        "L'unité de l'axe vertical (nombre d'élèves)",
+        "Les noms des fruits sur l'axe horizontal"
+      ],
+      "correctAnswer": "L'unité de l'axe vertical (nombre d'élèves)",
+      "explanation": "Sur un diagramme, l'axe vertical (ordonnées) indique une quantité. Sans l'unité (ici 'nombre d'élèves'), on ne sait pas si les chiffres correspondent à des élèves, des kilogrammes ou des euros. Le titre donne le sujet général, la légende des couleurs n'est utile que s'il y a plusieurs séries de données, et les noms des fruits sont déjà sur l'axe horizontal (abscisses).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Banane",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraise",
+            "value": 10,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour réaliser un diagramme en secteurs (camembert) sur les activités du mercredi, Léa a écrit : 'Lecture : 30 %, Vélo : 50 %, Jeux : 20 %'. Quelle information essentielle manque-t-il à cette légende pour qu'elle soit complète et compréhensible ?",
+      "options": [
+        "Le nombre total d'élèves interrogés",
+        "Le titre 'Activités du mercredi'",
+        "Les couleurs de chaque part",
+        "L'angle de chaque secteur en degrés"
+      ],
+      "correctAnswer": "Le titre 'Activités du mercredi'",
+      "explanation": "Une légende doit permettre de comprendre le sujet du diagramme sans avoir à deviner. Le titre 'Activités du mercredi' contextualise les pourcentages. Le nombre total d'élèves n'est pas obligatoire sur la légende (les pourcentages suffisent), les couleurs sont visuelles et non textuelles, et les angles se calculent (360° × pourcentage) mais ne s'écrivent pas dans la légende.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Activités du mercredi",
+        "slices": [
+          {
+            "label": "Lecture",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Vélo",
+            "value": 50,
+            "tone": "green"
+          },
+          {
+            "label": "Jeux",
+            "value": 20,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un diagramme en bâtons compare les notes de deux classes (Classe A et Classe B) à un contrôle. Comment doit-on légender les deux séries de bâtons pour distinguer clairement les résultats de chaque classe ?",
+      "options": [
+        "Écrire 'Notes' au-dessus du diagramme",
+        "Utiliser une légende avec deux couleurs : une pour 'Classe A', une pour 'Classe B'",
+        "Numéroter les bâtons de 1 à 20",
+        "Indiquer la moyenne de chaque classe sur l'axe vertical"
+      ],
+      "correctAnswer": "Utiliser une légende avec deux couleurs : une pour 'Classe A', une pour 'Classe B'",
+      "explanation": "Lorsque deux séries de données sont comparées sur le même diagramme (diagramme en bâtons groupés), une légende (ou 'légende des couleurs') est indispensable pour associer chaque couleur à la bonne classe. Le titre 'Notes' est trop vague, numéroter les bâtons ne dit pas quelle classe ils représentent, et la moyenne est une valeur calculée, pas une étiquette d'identification.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Notes des deux classes",
+        "bars": [
+          {
+            "label": "Classe A - Note 10",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Classe B - Note 10",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Classe A - Note 15",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Classe B - Note 15",
+            "value": 6,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Tom a construit un diagramme en bâtons pour montrer l'évolution de la température sur une semaine. Il a écrit 'Température' sur l'axe vertical et 'Jours' sur l'axe horizontal. Quelle précision manque-t-il sur l'axe vertical pour que la lecture soit exacte ?",
+      "options": [
+        "Le nom de la ville",
+        "L'unité de mesure (degrés Celsius)",
+        "La température maximale de la semaine",
+        "Le titre 'Météo de la semaine'"
+      ],
+      "correctAnswer": "L'unité de mesure (degrés Celsius)",
+      "explanation": "L'axe vertical porte une grandeur physique : la température. En sciences et en mathématiques, une grandeur s'exprime toujours avec une unité. 'Température' seul ne dit pas si l'on parle de degrés Celsius, Fahrenheit ou Kelvin. Le nom de la ville et le titre généralisent le sujet mais ne précisent pas l'échelle de lecture. La valeur maximale est une donnée, pas une légende d'axe.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Température de la semaine",
+        "bars": [
+          {
+            "label": "Lun",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Mar",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Mer",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Jeu",
+            "value": 13,
+            "tone": "blue"
+          },
+          {
+            "label": "Ven",
+            "value": 16,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Parmi ces propositions, laquelle correspond à un titre de diagramme correct, clair et informatif pour un diagramme montrant le nombre de livres lus par cinq élèves en un mois ?",
+      "options": [
+        "Livres lus",
+        "Nombre de livres lus par cinq élèves en janvier",
+        "Diagramme en bâtons",
+        "Résultats de la lecture"
+      ],
+      "correctAnswer": "Nombre de livres lus par cinq élèves en janvier",
+      "explanation": "Un bon titre répond aux questions : Quoi ? Qui ? Quand ? 'Nombre de livres lus par cinq élèves en janvier' précise la variable (nombre de livres), la population (cinq élèves) et la période (janvier). 'Livres lus' est trop vague (pourcentage ? nombre ?). 'Diagramme en bâtons' décrit la forme, pas le contenu. 'Résultats de la lecture' ne quantifie rien.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

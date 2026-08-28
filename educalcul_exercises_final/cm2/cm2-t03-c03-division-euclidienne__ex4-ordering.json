@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 291,
+  "_course_code": "cm2-t03-c03-division-euclidienne",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Application : Division euclidienne",
+  "title": "L'ordre de la division euclidienne",
+  "blocks": [
+    {
+      "title": "Lecture d'une division",
+      "content": "Remets dans l'ordre les étapes pour identifier les termes de la division suivante : $47 \\div 4 = 11$ reste $3$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le dividende est $47$",
+        "Le diviseur est $4$",
+        "Le quotient est $11$",
+        "Le reste est $3$"
+      ],
+      "explanation": "Dans une division euclidienne, le nombre que l'on divise est le dividende ($47$), le nombre par lequel on divise est le diviseur ($4$), le résultat entier est le quotient ($11$) et ce qu'il reste est le reste ($3$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification du résultat",
+      "content": "Remets dans l'ordre les étapes pour vérifier si la division $125 \\div 6 = 20$ reste $5$ est exacte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "On multiplie le quotient par le diviseur : $20 \\times 6 = 120$",
+        "On ajoute le reste au résultat : $120 + 5 = 125$",
+        "On constate que l'on retrouve bien le dividende $125$",
+        "On vérifie que le reste $5$ est plus petit que le diviseur $6$"
+      ],
+      "explanation": "La formule de vérification est : Dividende = (Diviseur $\\times$ Quotient) + Reste. Ici : $(6 \\times 20) + 5 = 120 + 5 = 125$. Comme le reste $5$ est inférieur au diviseur $6$, la division est correcte.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'un problème",
+      "content": "Un jardinier veut ranger $83$ plants de tomates dans $9$ rangées égales. Remets dans l'ordre les étapes de son raisonnement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "On effectue la division euclidienne de $83$ par $9$",
+        "On trouve un quotient de $9$ et un reste de $2$",
+        "On en déduit qu'il y a $9$ plants par rangée",
+        "On conclut qu'il reste $2$ plants qui ne sont pas en rangée"
+      ],
+      "explanation": "Pour partager $83$ en $9$ groupes, on divise $83$ par $9$. $83 = (9 \\times 9) + 2$. Le quotient $9$ indique le nombre de plants par rangée et le reste $2$ indique les plants restants.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

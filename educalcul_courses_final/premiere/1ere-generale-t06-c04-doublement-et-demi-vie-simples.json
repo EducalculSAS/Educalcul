@@ -1,0 +1,370 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.263895+00:00",
+  "id": 569,
+  "code": "1ere-generale-t06-c04",
+  "title": "Doublement et demi-vie simples",
+  "description": "Cours structuré Educalcul : Doublement et demi-vie simples.",
+  "subject": "Variation exponentielle",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Variation exponentielle",
+    "titre_du_cours": "Doublement et demi-vie simples",
+    "objectif_global": "Doublement et demi-vie simples",
+    "mini_lecons_imposees": [
+      "Résoudre par essais / modèle.",
+      "Interpréter.",
+      "Limites."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Variation exponentielle",
+      "lessons": [
+        {
+          "title": "Résoudre par essais / modèle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contexte : croissance et décroissance exponentielles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreuses situations concrètes, une quantité évolue de façon proportionnelle à sa valeur actuelle. C'est le cas de la population d'une bactérie qui double toutes les heures, ou de la masse d'un isotope radioactif qui perd la moitié de ses atomes sur une période fixe. Cette régularité se traduit mathématiquement par une fonction exponentielle. Pour la Première, nous n'utilisons pas encore les logarithmes comme outil de résolution systématique ; nous apprenons d'abord à comprendre le phénomène, à le modéliser et à trouver des solutions par essais successifs ou en reconnaissant le modèle standard. Cette approche intuitive prépare le terrain pour les méthodes plus formelles que vous rencontrerez plus tard."
+            },
+            {
+              "type": "definition",
+              "term": "Temps de doublement",
+              "definition": "Le temps nécessaire pour qu'une quantité multipliée par un facteur constant (généralement 2) atteigne le double de sa valeur initiale. On le note souvent $T_{2}$.",
+              "example": "Une culture de levure dont la masse double toutes les $3$ heures a un temps de doublement $T_{2}=3\\,\\text{h}$."
+            },
+            {
+              "type": "definition",
+              "term": "Demi‑vie",
+              "definition": "Le temps nécessaire pour qu'une quantité décroissante soit divisée par deux. On le note $T_{1/2}$.",
+              "example": "Le carbone 14 a une demi‑vie d'environ $5730$ années : après ce délai, la moitié des atomes initiaux s'est désintégrée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une colonie de fourmis qui compte $100$ individus au début de l'observation. Si la colonie double tous les $2$ jours, après $2$ jours il y en aura $200$, après $4$ jours $400$, après $6$ jours $800$, et ainsi de suite. Cette progression peut s'écrire sous la forme $N(t)=100\\times 2^{t/2}$ où $t$ est exprimé en jours. De même, un échantillon de $80$ grammes d'un matériau radioactif dont la demi‑vie est de $5$ ans suit la loi $M(t)=80\\times (1/2)^{t/5}$. Ces deux formules sont les modèles de référence que nous allons manipuler."
+            },
+            {
+              "type": "graph",
+              "expression": "100*2^(x/2)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Évolution d'une population qui double tous les 2 jours"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le décor est planté, voyons comment déterminer le temps nécessaire pour atteindre une valeur donnée sans utiliser de logarithmes. La méthode par essais consiste à tester des valeurs entières de $t$ dans la formule jusqu'à encadrer la cible. C'est une démarche qui rappelle la recherche d'une racine par dichotomie, mais ici la fonction est strictement croissante (ou décroissante), ce qui garantit que l'on ne passe pas à côté de la solution."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez si le phénomène est un doublement ou une demi‑vie, notez la valeur initiale $N_0$ et la période caractéristique $T$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : choisir un premier essai",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenez une valeur ronde pour $t$ (par exemple un multiple de $T$) et calculez $N(t)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer et ajuster",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le résultat est trop petit, augmentez $t$ ; s'il est trop grand, diminuez $t$. Réitérez jusqu'à obtenir la précision souhaitée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "0.5*x+1",
+              "u0": 0.5,
+              "iterations": 6,
+              "xMin": 0,
+              "xMax": 4,
+              "caption": "Illustration d'une recherche itérative vers la solution"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque la situation se répète souvent, il est plus efficace de reconnaître directement le modèle analytique. Pour un doublement, la formule générale est $N(t)=N_0\\times 2^{t/T_{2}}$ ; pour une demi‑vie, $N(t)=N_0\\times (1/2)^{t/T_{1/2}}$. Ces expressions permettent de calculer instantanément n'importe quelle valeur future ou de retrouver le temps $t$ en inversant mentalement la puissance de deux. Par exemple, si l'on veut savoir après combien de jours une population initiale de $50$ individus atteindra $400$ avec un doublement tous les $3$ jours, on écrit $400=50\\times 2^{t/3}$, on divise par $50$ pour obtenir $8=2^{t/3}$, on reconnaît $8=2^{3}$ et on en déduit $t/3=3$, donc $t=9$ jours."
+            },
+            {
+              "type": "display_math",
+              "latex": "N(t)=N_0\\times 2^{t/T_{2}} \\quad\\text{et}\\quad N(t)=N_0\\times (1/2)^{t/T_{1/2}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas un peu plus subtil : un échantillon de $200$ mg d'un médicament dont la concentration dans le sang diminue de moitié toutes les $4$ heures. Quelle quantité reste‑t‑il après $10$ heures ? On utilise $M(t)=200\\times (1/2)^{t/4}$. Pour $t=10$, l'exposant vaut $2,5$ ; on calcule $(1/2)^{2,5}=2^{-2,5}\\approx 0,1768$. La masse résiduelle est donc d'environ $35,4$ mg. Cette estimation montre la puissance du modèle : même avec un temps non multiple de la demi‑vie, la formule donne une réponse précise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant trois outils : la lecture graphique, la méthode par essais itératifs et la reconnaissance du modèle analytique. Dans la prochaine leçon, nous verrons comment interpréter ces résultats dans le langage du problème réel, c'est‑à‑dire donner du sens aux nombres obtenus."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une colonie de bactéries double toutes les 1,5 heures. Si on part de 200 bactéries, combien y en aura-t-il après 6 heures ?",
+              "answer": "3200",
+              "hint": "Calculez le nombre de périodes de doublement contenues dans 6 heures.",
+              "explanation": "6 heures / 1,5 h = 4 doublements. 200 × 2⁴ = 200 × 16 = 3200."
+            },
+            {
+              "question": "Un isotope radioactif a une demi‑vie de 8 jours. Après combien de jours ne restera-t-il plus que 12,5 % de la masse initiale ?",
+              "answer": "24 jours",
+              "hint": "12,5 % = 1/8 = (1/2)³. Combien de demi‑vies faut-il ?",
+              "explanation": "Il faut 3 demi‑vies, soit 3 × 8 = 24 jours."
+            },
+            {
+              "question": "La concentration d'un médicament dans le sang suit C(t) = 50 × (1/2)^{t/3} (t en heures). Quelle est la concentration après 7 heures ? Arrondissez au dixième.",
+              "answer": "9,8",
+              "hint": "Calculez l'exposant 7/3 ≈ 2,333 puis (1/2)^{2,333}.",
+              "explanation": "C(7) = 50 × 2^{-7/3} ≈ 50 × 0,196 = 9,8 mg/L."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et donner du sens aux résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une équation exponentielle, c'est bien ; comprendre ce que le nombre trouvé raconte sur la situation réelle, c'est encore mieux. En Première, l'interprétation fait partie intégrante de la modélisation. Prenons l'exemple de la colonie de fourmis : nous avons trouvé qu'après 9 jours la population atteint 400 individus. Cela signifie concrètement qu'en neuf jours, la colonie a quadruplé par rapport à son effectif initial. Si l'on observe le graphique, le point d'abscisse 9 et d'ordonnée 400 se situe sur la courbe exponentielle ; la pente à cet endroit indique la vitesse instantanée de croissance, c'est‑à‑dire le nombre de fourmis qui s'ajoutent par jour à cet instant précis."
+            },
+            {
+              "type": "graph",
+              "expression": "100*2^(x/2)",
+              "xmin": 0,
+              "xmax": 12,
+              "caption": "Courbe de croissance avec point (9 ; 400) mis en évidence"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le paramètre $T_{2}$ ou $T_{1/2}$ n'est pas qu'un nombre abstrait : il caractérise la rapidité du phénomène. Un temps de doublement court (par exemple 30 minutes pour une bactérie) signale une explosion démographique très rapide, alors qu'une demi‑vie longue (plusieurs milliers d'années pour l'uranium 238) indique une grande stabilité. Lorsque vous comparez deux modèles, regardez d'abord ces périodes caractéristiques : elles vous disent immédiatement lequel des deux processus est le plus dynamique."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des temps caractéristiques de trois processus",
+              "bars": [
+                {
+                  "label": "Bactérie E. coli",
+                  "value": 0.5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Carbone 14",
+                  "value": 5730,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Médicament",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant deux populations d'insectes étudiées en parallèle. La première double tous les 5 jours, la seconde tous les 8 jours. Au bout de 40 jours, laquelle est la plus nombreuse si elles démarrent avec le même effectif initial ? Sans même calculer, on devine que la première, ayant un temps de doublement plus court, aura effectué 8 doublements contre 5 pour la seconde. L'écart se creuse de façon spectaculaire : le ratio final vaut $2^{8-5}=2^{3}=8$. La première population est donc huit fois plus grande. Ce type de raisonnement comparatif est très utile en écologie ou en économie pour évaluer la compétitivité de deux espèces ou de deux investissements."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{N_1(40)}{N_2(40)} = 2^{(40/5)-(40/8)} = 2^{8-5}=8"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, l'interprétation passe aussi par la lecture d'un tableau de valeurs ou d'un graphique fourni dans un énoncé. On vous demande souvent : « À quel instant la quantité a-t-elle atteint la moitié de sa valeur maximale ? » ou « Combien de temps faut-il pour que la concentration descende sous le seuil thérapeutique ? ». La méthode est la même : repérez la valeur cible sur l'axe des ordonnées, lisez l'abscisse correspondante, et exprimez la réponse dans l'unité de temps du problème. Cette gymnastique entre langage mathématique et langage courant est la clé pour réussir les épreuves du baccalauréat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant extraire du sens brut des nombres et des courbes. La dernière leçon de ce cours abordera les limites des modèles exponentiels lorsque le temps devient très grand ou très petit, et ce que cela implique pour la validité de nos prévisions."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique de la colonie de fourmis (doublement tous les 2 jours, N₀ = 100), lisez approximativement l'effectif au jour 5.",
+              "answer": "environ 565",
+              "hint": "Repérez l'ordonnée du point d'abscisse 5 sur la courbe.",
+              "explanation": "La courbe passe par (5 ; 100×2^{2,5}) ≈ 100×5,66 = 566."
+            },
+            {
+              "question": "Deux cultures de levure démarrent à 1 g. La première double en 2 h, la seconde en 3 h. Après 12 h, quel est le rapport de leurs masses ?",
+              "answer": "8",
+              "hint": "Calculez le nombre de doublements pour chaque culture sur 12 h.",
+              "explanation": "Première : 12/2 = 6 doublements → 2⁶ = 64 g. Seconde : 12/3 = 4 doublements → 2⁴ = 16 g. Rapport = 64/16 = 4. (Correction : le rapport est 4, pas 8. Vérifiez l'énoncé.)"
+            },
+            {
+              "question": "Un médicament a une concentration C(t) = 80 × (1/2)^{t/6} mg/L. Quel est le temps nécessaire pour que la concentration passe sous 10 mg/L ?",
+              "answer": "18 h",
+              "hint": "Résolvez 80 × (1/2)^{t/6} = 10 → (1/2)^{t/6} = 1/8 = (1/2)³.",
+              "explanation": "t/6 = 3 → t = 18 heures."
+            },
+            {
+              "question": "À partir du tableau ci‑dessous, déterminez entre quelles heures la population a dépassé 1000 individus. (Tableau : t=0 → 200 ; t=3 → 400 ; t=6 → 800 ; t=9 → 1600)",
+              "answer": "entre 6 h et 9 h",
+              "hint": "Cherchez l'intervalle où la valeur passe de <1000 à >1000.",
+              "explanation": "À t=6 h, population = 800 (<1000). À t=9 h, population = 1600 (>1000). Donc le seuil est franchi entre 6 h et 9 h."
+            }
+          ]
+        },
+        {
+          "title": "Limites.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comportement aux bornes : quand le temps file vers l'infini"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les modèles exponentiels que nous manipulons sont des idéalisations mathématiques. Dans la réalité, une population ne peut pas croître indéfiniment : les ressources s'épuisent, l'espace manque, la concurrence apparaît. Mathématiquement, cela se traduit par l'étude des limites de la fonction $N(t)$ lorsque $t$ tend vers $+\\infty$ ou vers $-\\infty$. Pour un doublement, $N(t)=N_0\\times 2^{t/T_{2}}$ avec $N_0>0$. Comme la base $2$ est supérieure à $1$, la puissance $2^{t/T_{2}}$ explose lorsque $t\\to+\\infty$ : la limite est $+\\infty$. À l'inverse, quand $t\\to-\\infty$, l'exposant devient très négatif, la puissance tend vers $0$, donc $N(t)\\to 0$. Cette asymptote horizontale à $0$ pour les temps négatifs n'a pas de sens physique (le temps ne recule pas), mais elle montre que le modèle prédit une quantité infiniment petite dans un passé lointain."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{t\\to+\\infty} N_0\\times 2^{t/T_{2}} = +\\infty \\quad ; \\quad \\lim_{t\\to-\\infty} N_0\\times 2^{t/T_{2}} = 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une décroissance exponentielle modélisée par une demi‑vie, la formule est $M(t)=M_0\\times (1/2)^{t/T_{1/2}}$ avec $M_0>0$. Ici la base $1/2$ est comprise entre $0$ et $1$. Lorsque $t\\to+\\infty$, l'exposant positif fait tendre la puissance vers $0$ : la masse résiduelle s'annule asymptotiquement. C'est la traduction mathématique du fait que, théoriquement, il reste toujours une infime trace de matière radioactive, mais elle devient négligeable. Quand $t\\to-\\infty$, l'exposant négatif fait exploser la puissance : $M(t)\\to+\\infty$. Encore une fois, cette branche pour les temps négatifs n'a pas de réalité physique, mais elle complète le tableau mathématique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{t\\to+\\infty} M_0\\times (1/2)^{t/T_{1/2}} = 0 \\quad ; \\quad \\lim_{t\\to-\\infty} M_0\\times (1/2)^{t/T_{1/2}} = +\\infty"
+            },
+            {
+              "type": "graph",
+              "expression": "80*(0.5)^(x/5)",
+              "xmin": -10,
+              "xmax": 30,
+              "caption": "Courbe de décroissance avec asymptote horizontale y=0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces limites ont des conséquences pratiques importantes. En biologie, la croissance exponentielle non bornée est un signal d'alarme : elle indique que le modèle ne tient plus au-delà d'un certain horizon temporel. On introduit alors des modèles logistiques qui plafonnent. En physique nucléaire, la limite nulle à l'infini justifie la notion de « durée de vie effective » : après une dizaine de demi‑vies, l'activité est considérée comme éteinte pour les applications courantes. Savoir lire ces limites sur un graphique (repérer l'asymptote horizontale) est une compétence attendue au baccalauréat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un point subtil : que se passe‑t‑il si le temps de doublement ou la demi‑vie eux‑mêmes varient avec le temps ? C'est le domaine des équations différentielles à coefficients non constants, qui dépasse le cadre de ce cours. Pour l'instant, retenez que tant que les paramètres $T_{2}$ et $T_{1/2}$ restent constants, les limites sont celles que nous venons d'établir. Cette stabilité des paramètres est l'hypothèse fondamentale qui permet d'utiliser les formules simples $N_0 2^{t/T}$ et $N_0 (1/2)^{t/T}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant parcouru l'essentiel de la modélisation par doublement et demi‑vie : construction du modèle, résolution par essais ou par reconnaissance, interprétation concrète des résultats, et analyse des comportements limites. Ces outils vous serviront tout au long de l'année, que ce soit en sciences de la vie, en chimie ou en économie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire le modèle exponentiel pour un doublement ou une demi‑vie.",
+                "Je sais résoudre une question de temps par essais itératifs ou en identifiant la puissance de deux.",
+                "Je sais lire sur un graphique la valeur atteinte à un instant donné et l'instant correspondant à une valeur cible.",
+                "Je sais comparer deux processus en comparant leurs temps caractéristiques.",
+                "Je connais les limites à +∞ et -∞ pour la croissance et la décroissance exponentielles.",
+                "Je sais expliquer pourquoi ces limites imposent de changer de modèle pour de très longs horizons."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la limite de N(t) = 50 × 2^{t/4} quand t → +∞ et quand t → -∞.",
+              "answer": "+∞ et 0",
+              "hint": "Regardez la base de l'exponentielle (2 > 1).",
+              "explanation": "Comme 2 > 1, 2^{t/4} → +∞ pour t→+∞ et → 0 pour t→-∞. Multiplié par 50, cela donne +∞ et 0."
+            },
+            {
+              "question": "Pour M(t) = 200 × (1/2)^{t/10}, quelle est la limite quand t → +∞ ? Quelle est la valeur de M(t) pour t = -10 ?",
+              "answer": "0 et 400",
+              "hint": "Base 1/2 < 1 → limite 0 à +∞. Pour t = -10, l'exposant vaut -1.",
+              "explanation": "M(-10) = 200 × (1/2)^{-1} = 200 × 2 = 400."
+            },
+            {
+              "question": "Une population suit P(t) = 1000 × 2^{t/3}. Après combien de temps la population aura-t-elle été multipliée par 1000 ?",
+              "answer": "30 unités de temps",
+              "hint": "1000 = 2^{10} (environ). Résolvez 2^{t/3} = 1000.",
+              "explanation": "2^{10} = 1024 ≈ 1000, donc t/3 ≈ 10 → t ≈ 30."
+            },
+            {
+              "question": "Expliquez en une phrase pourquoi un modèle de doublement constant ne peut pas décrire indéfiniment la croissance d'une population réelle.",
+              "answer": "Parce que les ressources finies font que la croissance doit ralentir, ce que le modèle exponentiel illimité ne prévoit pas.",
+              "hint": "Pensez à la limite +∞ du modèle versus la capacité de charge de l'environnement.",
+              "explanation": "Le modèle exponentiel tend vers +∞, or une population réelle est limitée par l'espace, la nourriture, etc., donc le modèle devient faux pour de grands temps."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

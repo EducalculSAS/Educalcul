@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Vérifier",
+  "title": "Vérification des propriétés des triangles",
+  "blocks": [
+    {
+      "title": "Vérifier la nature d'un triangle d'après ses angles",
+      "content": "Relie chaque triplet d'angles à la nature correspondante du triangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$60^\\circ$, $60^\\circ$, $60^\\circ$",
+          "right": "Triangle équilatéral"
+        },
+        {
+          "left": "$90^\\circ$, $45^\\circ$, $45^\\circ$",
+          "right": "Triangle rectangle isocèle"
+        },
+        {
+          "left": "$110^\\circ$, $35^\\circ$, $35^\\circ$",
+          "right": "Triangle obtusangle isocèle"
+        },
+        {
+          "left": "$50^\\circ$, $60^\\circ$, $70^\\circ$",
+          "right": "Triangle acutangle quelconque"
+        }
+      ],
+      "items": [],
+      "explanation": "La somme des angles d'un triangle vaut $180^\\circ$. Un triangle est équilatéral si ses trois angles mesurent $60^\\circ$. Il est rectangle s'il a un angle de $90^\\circ$, isocèle s'il a deux angles égaux, obtusangle s'il a un angle $> 90^\\circ$, acutangle si tous ses angles sont $< 90^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier l'existence et la nature d'un triangle d'après ses longueurs",
+      "content": "Relie chaque triplet de longueurs (en cm) à la conclusion correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3$, $4$, $5$",
+          "right": "Triangle rectangle"
+        },
+        {
+          "left": "$5$, $5$, $8$",
+          "right": "Triangle isocèle"
+        },
+        {
+          "left": "$2$, $3$, $6$",
+          "right": "Triangle impossible"
+        },
+        {
+          "left": "$7$, $8$, $9$",
+          "right": "Triangle acutangle quelconque"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour exister, la plus grande longueur doit être strictement inférieure à la somme des deux autres (inégalité triangulaire) : $2+3=5 < 6$ donc impossible. Pour un triangle rectangle, on vérifie la réciproque de Pythagore : $3^2+4^2=5^2$. Le triplet $5,5,8$ a deux côtés égaux donc isocèle (et $5^2+5^2=50 < 8^2=64$ donc obtusangle). Pour $7,8,9$ : $7^2+8^2=113 > 9^2=81$ donc acutangle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Vérifier les définitions des droites remarquables",
+      "content": "Relie chaque définition à la droite remarquable correspondante dans un triangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Passe par un sommet et est perpendiculaire au côté opposé",
+          "right": "Hauteur"
+        },
+        {
+          "left": "Passe par le milieu d'un côté et est perpendiculaire à ce côté",
+          "right": "Médiatrice"
+        },
+        {
+          "left": "Passe par un sommet et coupe l'angle en deux angles égaux",
+          "right": "Bissectrice"
+        },
+        {
+          "left": "Passe par un sommet et le milieu du côté opposé",
+          "right": "Médiane"
+        }
+      ],
+      "items": [],
+      "explanation": "Ce sont les quatre définitions fondamentales des droites remarquables du triangle à connaître par cœur en 4e. La hauteur définit l'altitude, la médiatrice est l'ensemble des points équidistants des extrémités du segment, la bissectrice est l'ensemble des points équidistants des côtés de l'angle, la médiane relie un sommet au milieu du côté opposé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

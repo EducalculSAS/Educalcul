@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 229,
+  "_course_code": "cm1-t03-c04-division-euclidienne",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Application : Division euclidienne",
+  "title": "Applications de la division euclidienne",
+  "questions": [
+    {
+      "text": "Un instituteur a $24$ crayons. Il veut les répartir équitablement entre $6$ élèves. Combien de crayons chaque élève reçoit-il ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Il s'agit d'un partage équitable (division partition). On divise le nombre total de crayons ($24$) par le nombre d'élèves ($6$) : $24 : 6 = 4$. Chaque élève reçoit $4$ crayons. L'option $3$ correspondrait à $18$ crayons, $5$ à $30$ et $6$ à $36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $35$ bonbons. On fait des sachets de $5$ bonbons chacun. Combien de sachets peut-on faire ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Il s'agit d'un groupement (division par quotition). On cherche combien de fois $5$ rentre dans $35$ : $35 : 5 = 7$. On peut faire $7$ sachets. $6 \\times 5 = 30$ (trop peu), $8 \\times 5 = 40$ (trop).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $29$ élèves pour une sortie scolaire. Chaque voiture peut transporter $4$ élèves. Combien de voitures faut-il réserver pour que tous les élèves puissent partir ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$7$ reste $1$",
+        "$8$ reste $1$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La division euclidienne donne $29 = 4 \\times 7 + 1$. $7$ voitures transportent $28$ élèves, il en reste $1$ sans place. Il faut donc une $8^{\\text{ème}}$ voiture pour le dernier élève. La réponse n'est pas le quotient ($7$) ni le reste ($1$), mais le nombre de voitures nécessaires ($8$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue la division euclidienne de $53$ par $6$. Quelle est l'égalité qui permet de vérifier le résultat ?",
+      "options": [
+        "$53 = 6 \\times 8 + 5$",
+        "$53 = 6 \\times 9 - 1$",
+        "$53 = 6 \\times 7 + 11$",
+        "$53 = 6 \\times 8 + 3$"
+      ],
+      "correctAnswer": "$53 = 6 \\times 8 + 5$",
+      "explanation": "La relation fondamentale de la division euclidienne est : Dividende = Diviseur $\\times$ Quotient + Reste. Ici $53 : 6 = 8$ reste $5$ car $6 \\times 8 = 48$ et $53 - 48 = 5$. L'égalité de vérification est donc $53 = 6 \\times 8 + 5$. Les autres options donnent un reste supérieur au diviseur ($11 > 6$) ou un calcul faux ($6 \\times 9 - 1 = 53$ mais la forme n'est pas standard, $6 \\times 8 + 3 = 51$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pâtissier a $127$ madeleines. Il les range dans des boîtes de $8$ madeleines. Combien de boîtes pleines peut-il faire et combien de madeleines lui restent-il ?",
+      "options": [
+        "$15$ boîtes pleines et $7$ madeleines restantes",
+        "$16$ boîtes pleines et $1$ madeleine restante",
+        "$14$ boîtes pleines et $15$ madeleines restantes",
+        "$15$ boîtes pleines et $5$ madeleines restantes"
+      ],
+      "correctAnswer": "$15$ boîtes pleines et $7$ madeleines restantes",
+      "explanation": "On calcule $127 : 8$. $8 \\times 10 = 80$, reste $47$. $8 \\times 5 = 40$, reste $7$. Le quotient est $10 + 5 = 15$, le reste est $7$. Vérification : $15 \\times 8 + 7 = 120 + 7 = 127$. L'option $16$ boîtes demanderait $128$ madeleines. L'option $14$ boîtes laisse un reste $15$ qui est plus grand que $8$ (on pourrait faire une boîte de plus). L'option $15$ boîtes et $5$ restantes donne $125$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Algorithmes pour calculer la moyenne",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne d'une liste",
+      "content": "Écrire un algorithme (en pseudo-code ou en Python) qui prend en entrée une liste de nombres et affiche leur moyenne. La moyenne est donnée par $m = \\frac{S}{n}$ où $S$ est la somme des nombres et $n$ leur nombre.",
+      "correctAnswer": "Algorithme MoyenneListe\\nDonnées : liste L de nombres\\nRésultat : m\\nDébut\\n    S ← 0\\n    n ← 0\\n    Pour chaque x dans L faire\\n        S ← S + x\\n        n ← n + 1\\n    FinPour\\n    Si n ≠ 0 alors\\n        m ← S / n\\n        Afficher m\\n    Sinon\\n        Afficher \"Liste vide\"\\n    FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la somme S et le compteur n à zéro. On parcourt la liste en ajoutant chaque valeur à S et en incrémentant n. Après la boucle, si n est non nul, la moyenne m est le quotient S divisé par n, qu'on affiche. Sinon on signale que la liste est vide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Moyenne avec saisie jusqu'à zéro",
+      "content": "Modifier l'algorithme précédent pour qu'il demande à l'utilisateur d'entrer des nombres un par un. La saisie s'arrête quand l'utilisateur tape 0 (ce zéro n'est pas compté). L'algorithme affiche ensuite la moyenne des nombres saisis. La formule reste $m = \\frac{S}{n}$.",
+      "correctAnswer": "Algorithme MoyenneSaisie\\nDonnées : aucune\\nRésultat : m\\nDébut\\n    S ← 0\\n    n ← 0\\n    Lire x\\n    Tant que x ≠ 0 faire\\n        S ← S + x\\n        n ← n + 1\\n        Lire x\\n    FinTantQue\\n    Si n ≠ 0 alors\\n        m ← S / n\\n        Afficher m\\n    Sinon\\n        Afficher \"Aucun nombre saisi\"\\n    FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit le premier nombre avant la boucle. Tant que le nombre lu est différent de zéro, on l'ajoute à la somme S et on incrémente le compteur n, puis on lit le nombre suivant. Quand zéro est lu, la boucle s'arrête. On calcule la moyenne si au moins un nombre a été saisi.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Moyenne pondérée à partir de valeurs et effectifs",
+      "content": "Écrire un algorithme qui calcule la moyenne pondérée à partir de deux listes de même longueur : la liste des valeurs $v_i$ et la liste des effectifs $e_i$. La moyenne pondérée est $m = \\frac{\\sum v_i \\times e_i}{\\sum e_i}$.",
+      "correctAnswer": "Algorithme MoyennePonderee\\nDonnées : liste V de valeurs, liste E d'effectifs (même longueur)\\nRésultat : m\\nDébut\\n    num ← 0\\n    den ← 0\\n    Pour i de 0 à longueur(V)-1 faire\\n        num ← num + V[i] * E[i]\\n        den ← den + E[i]\\n    FinPour\\n    Si den ≠ 0 alors\\n        m ← num / den\\n        Afficher m\\n    Sinon\\n        Afficher \"Effectifs nuls\"\\n    FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise le numérateur num et le dénominateur den à zéro. On parcourt les deux listes simultanément : pour chaque indice i, on ajoute le produit V[i] × E[i] au numérateur et l'effectif E[i] au dénominateur. Après la boucle, la moyenne pondérée est le quotient num/den si le dénominateur n'est pas nul.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

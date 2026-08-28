@@ -1,0 +1,499 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.615551+00:00",
+  "id": 360,
+  "code": "6eme-t06-c04",
+  "title": "Cercle",
+  "description": "Cours structuré Educalcul : Cercle.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Cercle",
+    "objectif_global": "Cercle",
+    "mini_lecons_imposees": [
+      "Rayon / diamètre.",
+      "Constructions.",
+      "Propriétés de distance simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Rayon / diamètre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rayon et diamètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un rond parfait tracé sur une feuille de papier. Ce rond a un point central que l'on appelle le centre, et chaque point du contour est à la même distance de ce centre. Cette distance constante est ce que nous nommons le rayon. Si l'on relie deux points du contour en passant par le centre, on obtient un segment qui traverse tout le cercle ; ce segment s'appelle le diamètre. Dans cette leçon, tu vas découvrir comment ces deux mesures sont liées et comment les repérer sur une figure."
+            },
+            {
+              "type": "definition",
+              "term": "rayon",
+              "definition": "Segment qui joint le centre du cercle à un point quelconque du cercle. Sa longueur est notée $r$.",
+              "example": "Sur le cercle de centre O, le segment OA est un rayon."
+            },
+            {
+              "type": "definition",
+              "term": "diamètre",
+              "definition": "Segment qui relie deux points du cercle en passant par le centre. Sa longueur est notée $d$.",
+              "example": "Le segment AB qui traverse le centre O est un diamètre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le rayon est la distance du centre à n'importe quel point du cercle. Le diamètre est le double du rayon, car il est formé de deux rayons mis bout à bout. Par exemple, si le rayon mesure 4 cm, le diamètre mesurera 8 cm. Cette relation simple, $d = 2 \\times r$, est valable pour tous les cercles, quel que soit leur taille."
+            },
+            {
+              "type": "display_math",
+              "latex": "d = 2 \\times r"
+            },
+            {
+              "type": "compass_tool",
+              "radius": 4,
+              "centerLabel": "O",
+              "caption": "Cercle de centre O et de rayon 4 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec un compas, tu peux tracer un cercle en fixant la pointe sur le centre et en ouvrant les branches jusqu'à la longueur du rayon. Le compas te montre concrètement que tous les points du tracé restent à la même distance du centre. Essaie de reproduire ce geste sur ton cahier : pointe sur O, ouverture de 4 cm, puis tourne le compas pour obtenir le cercle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le rayon à partir du diamètre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la longueur du diamètre avec une règle graduée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par deux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la division du diamètre par 2 pour obtenir le rayon, car $r = d \\div 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Replace le compas sur le centre avec l'ouverture trouvée et trace le cercle ; il doit coïncider avec le cercle d'origine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le triangle formé par le centre O et les deux extrémités A et B d'un diamètre. Les côtés OA et OB sont des rayons, donc ils ont la même longueur. Le côté AB est le diamètre, il est donc deux fois plus long que chaque rayon. Cette figure te permet de visualiser pourquoi le diamètre est la plus grande corde possible dans un cercle."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "O",
+                "A",
+                "B"
+              ],
+              "sideLabels": [
+                "r",
+                "r",
+                "d"
+              ],
+              "rightAngleAt": -1,
+              "caption": "Triangle OAB avec OA = OB = r et AB = d"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, le rayon et le diamètre sont les deux mesures fondamentales d'un cercle. Le rayon part du centre vers le contour, le diamètre traverse le centre et relie deux points opposés. Retiens bien la formule $d = 2 \\times r$ et n'hésite pas à utiliser ton compas pour vérifier par toi‑même."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si le rayon d'un cercle mesure 5 cm, quelle est la longueur de son diamètre ?",
+              "answer": "10 cm",
+              "hint": "Utilise la relation $d = 2 \\times r$.",
+              "explanation": "Le diamètre est le double du rayon, donc $2 \\times 5 = 10$ cm."
+            },
+            {
+              "question": "Un cercle a un diamètre de 14 cm. Quelle est la mesure de son rayon ?",
+              "answer": "7 cm",
+              "hint": "Divise le diamètre par 2.",
+              "explanation": "Le rayon est la moitié du diamètre, $14 \\div 2 = 7$ cm."
+            },
+            {
+              "question": "Sur la figure, le segment AB est un diamètre. Si OA = 6 cm, quelle est la longueur de AB ?",
+              "answer": "12 cm",
+              "hint": "Le diamètre vaut deux fois le rayon.",
+              "explanation": "OA est un rayon, donc AB = 2 × 6 = 12 cm."
+            }
+          ]
+        },
+        {
+          "title": "Constructions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un cercle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le compas est l'outil indispensable pour tracer un cercle. Lorsque l'on connaît le centre et la longueur du rayon, la construction est directe : on place la pointe sèche sur le centre, on écarte les branches jusqu'à la mesure du rayon, puis on fait tourner le compas pour obtenir le contour. Cette opération montre concrètement la définition du cercle : l'ensemble des points situés à une distance fixe du centre. Prends le temps de bien régler l'ouverture du compas ; un écart trop grand ou trop petit modifierait la taille du cercle."
+            },
+            {
+              "type": "definition",
+              "term": "cercle",
+              "definition": "Ensemble des points du plan situés à une distance donnée (le rayon) d'un point fixe (le centre).",
+              "example": "Le cercle de centre O et de rayon 3 cm."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 3,
+              "centerLabel": "O",
+              "caption": "Cercle de centre O et de rayon 3 cm"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer la pointe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la pointe sèche du compas exactement sur le point O, centre du futur cercle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Régler l'ouverture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'aide d'une règle, ouvre les branches du compas jusqu'à ce que l'écart corresponde à la longueur du rayon (ici 3 cm)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En maintenant la pointe fixe, fais tourner le compas d'un tour complet pour dessiner le contour du cercle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne connaît pas le rayon mais les deux extrémités d'un diamètre. Dans ce cas, il faut d'abord retrouver le centre, qui est le milieu du segment formé par ces deux points. Une fois le milieu trouvé, la distance du milieu à l'une des extrémités donne le rayon. Cette méthode utilise la propriété selon laquelle le centre est équidistant de tous les points du cercle, et particulièrement des extrémités du diamètre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie les deux points donnés A et B par un segment droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la médiatrice du segment AB à l'aide du compas et de la règle ; son intersection avec AB est le milieu M."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le rayon",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La longueur MA (ou MB) est le rayon du cercle cherché."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer le cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur M, ouvre à la longueur MA et trace le cercle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une situation plus riche consiste à construire le cercle qui passe par trois points non alignés. Ce cercle est unique et son centre se trouve à l'intersection des médiatrices de deux côtés du triangle formé par les trois points. En traçant les médiatrices de AB et de BC, leur point de rencontre O est équidistant de A, B et C ; la distance OA devient le rayon. Cette construction montre la puissance des médiatrices pour localiser le centre d'un cercle circonscrit."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "c",
+                "a",
+                "b"
+              ],
+              "rightAngleAt": -1,
+              "caption": "Triangle ABC et son cercle circonscrit de centre O"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer les côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie les trois points deux à deux pour obtenir le triangle ABC."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Médiatrices",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Construis les médiatrices des segments AB et BC."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver le centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Leur intersection est le centre O du cercle circonscrit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Rayon et cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le rayon est OA ; place le compas sur O avec cette ouverture et trace le cercle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois méthodes pour construire un cercle : à partir du centre et du rayon, à partir d'un diamètre, ou à partir de trois points. Choisis la méthode adaptée aux données du problème et vérifie toujours que ton compas garde la même ouverture pendant tout le tracé."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace le cercle de centre O et de rayon 2,5 cm à l'aide du compas.",
+              "answer": "Cercle de centre O, rayon 2,5 cm.",
+              "hint": "Règle le compas sur 2,5 cm avant de tracer.",
+              "explanation": "Place la pointe sur O, ouvre le compas à 2,5 cm, puis fais un tour complet."
+            },
+            {
+              "question": "Les points A et B sont les extrémités d'un diamètre de longueur 10 cm. Construis le cercle correspondant.",
+              "answer": "Cercle de centre M (milieu de AB) et de rayon 5 cm.",
+              "hint": "Le centre est le milieu du diamètre ; le rayon est la moitié du diamètre.",
+              "explanation": "Le milieu M de AB se trouve à 5 cm de A et B ; trace le cercle de centre M et de rayon 5 cm."
+            },
+            {
+              "question": "Donne les étapes pour construire le cercle passant par les points A(0,0), B(4,0) et C(2,3).",
+              "answer": "Médiatrices de AB et BC → centre O → rayon OA → cercle.",
+              "hint": "Le centre est l'intersection des médiatrices de deux côtés du triangle.",
+              "explanation": "Trace AB et BC, construis leurs médiatrices, leur intersection O est le centre ; OA est le rayon."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés de distance simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de distance simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété fondamentale d'un cercle est que tous ses points sont à la même distance du centre. Cette distance est précisément le rayon. Si tu choisis n'importe quel point M sur le contour, le segment OM a toujours la même longueur, notée $r$. C'est ce qui donne au cercle sa forme parfaitement ronde et symétrique. Imagine une roue de vélo : chaque point de la jante est à la même distance de l'axe central, sinon la roue ne tournerait pas régulièrement."
+            },
+            {
+              "type": "display_math",
+              "latex": "OM = r \\; \\text{pour tout point } M \\text{ du cercle}"
+            },
+            {
+              "type": "definition",
+              "term": "corde",
+              "definition": "Segment dont les deux extrémités appartiennent au cercle.",
+              "example": "Le segment CD reliant deux points du cercle est une corde."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "O",
+                "M",
+                "A"
+              ],
+              "sideLabels": [
+                "r",
+                "r",
+                "c"
+              ],
+              "rightAngleAt": -1,
+              "caption": "Rayon OM et corde MA sur le cercle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tous les points du plan ne sont pas sur le cercle. Ceux qui se trouvent à l'intérieur sont plus près du centre que le rayon : leur distance au centre est strictement inférieure à $r$. À l'inverse, les points extérieurs sont plus éloignés : leur distance au centre est strictement supérieure à $r$. Cette distinction est essentielle pour résoudre des problèmes de position relative, par exemple pour savoir si un objet passe à travers un anneau circulaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "OM < r \\; (\\text{intérieur}), \\quad OM > r \\; (\\text{extérieur})"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesurer la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'aide d'une règle ou d'un compas, mesure la distance entre le centre O et le point étudié."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer au rayon",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la distance mesurée est égale au rayon, le point est sur le cercle ; si elle est plus petite, il est à l'intérieur ; si elle est plus grande, il est à l'extérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diamètre est la plus longue des cordes d'un cercle. De plus, si un rayon est perpendiculaire à une corde, il la coupe en son milieu. Cette propriété permet de retrouver le centre d'un cercle à partir d'une corde quelconque : trace la médiatrice de la corde, elle passe par le centre. En combinant deux cordes, l'intersection de leurs médiatrices donne le centre exact."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "O",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "r",
+                "c/2",
+                "c/2"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Rayon OC perpendiculaire à la corde CD, M milieu de CD"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le rayon et le diamètre d'un cercle.",
+                "Je sais utiliser un compas pour tracer un cercle connaissant son centre et son rayon.",
+                "Je sais retrouver le centre d'un cercle à partir d'un diamètre ou de trois points.",
+                "Je connais la propriété : tous les points du cercle sont à distance $r$ du centre.",
+                "Je sais distinguer un point intérieur, sur le cercle ou extérieur en comparant sa distance au centre avec le rayon."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un point M est tel que OM = 6 cm. Le cercle a un rayon de 6 cm. Où se trouve M par rapport au cercle ?",
+              "answer": "Sur le cercle",
+              "hint": "Compare OM au rayon.",
+              "explanation": "Puisque OM = r, le point M appartient au cercle."
+            },
+            {
+              "question": "Le rayon d'un cercle est 5 cm. Un point P est à 3 cm du centre. P est-il à l'intérieur, sur le cercle ou à l'extérieur ?",
+              "answer": "À l'intérieur",
+              "hint": "3 cm est-il plus petit, égal ou plus grand que 5 cm ?",
+              "explanation": "La distance OP = 3 cm < 5 cm = r, donc P est à l'intérieur du cercle."
+            },
+            {
+              "question": "Dans un cercle de centre O, une corde AB mesure 8 cm. Le rayon perpendiculaire à AB passe par le milieu M de AB. Si OM = 3 cm, quel est le rayon du cercle ?",
+              "answer": "5 cm",
+              "hint": "Utilise le triangle rectangle OMA avec OA = r, OM = 3, AM = 4.",
+              "explanation": "Dans le triangle rectangle OMA, $OA^2 = OM^2 + AM^2 = 3^2 + 4^2 = 25$, donc $OA = 5$ cm."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

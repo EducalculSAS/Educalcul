@@ -1,0 +1,354 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.784865+00:00",
+  "id": 99,
+  "code": "ce1-t04-c02",
+  "title": "Compléments à 10 et à la dizaine supérieure",
+  "description": "Cours structuré Educalcul : Compléments à 10 et à la dizaine supérieure.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Compléments à 10 et à la dizaine supérieure",
+    "objectif_global": "Compléments à 10 et à la dizaine supérieure",
+    "mini_lecons_imposees": [
+      "Complément à 10.",
+      "Complément à 20, 30....",
+      "Utiliser pour calculer."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Complément à 10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Complément à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des compléments à 10. Imagine que tu as quelques doigts levés et que tu veux savoir combien il t'en faut encore pour avoir les dix doigts de tes deux mains. C'est exactement ce qu'on appelle le complément à 10, le petit nombre qui transforme ton nombre en une dizaine complète."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "7 unités, il en manque 3 pour faire 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le dessin : il y a $7$ petits cubes unités. Pour arriver à $10$, il manque $3$ cubes. Essaie de compter mentalement : $7$, $8$, $9$, $10$. Tu vois, le complément de $7$ est $3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère ton nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ton doigt sur le chiffre de départ, ici $7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte jusqu'à 10",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $1$ à chaque fois : $8$, $9$, $10$. Le nombre d'ajouts faits est le complément."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite numérique de 0 à 10, point sur 7",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "7"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, tu vois le point sur $7$. En avançant de trois petites marques, tu arrives à $10$. C'est une autre façon de voir le même complément."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Tu as",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Il manque",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "4 bonbons + 6 bonbons = 10 bonbons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $4$ bonbons dans ta main. Le schéma montre qu'il te faut $6$ bonbons de plus pour remplir la boîte de $10$. Essaie de trouver le complément d'autres petits nombres tout seul."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le complément à 10 de $7$ ?",
+              "answer": "$3$",
+              "hint": "Compte à partir de $7$ jusqu'à $10$.",
+              "explanation": "En partant de $7$, on ajoute $1$ pour $8$, $1$ pour $9$, $1$ pour $10$, donc $3$ en tout."
+            },
+            {
+              "question": "Si tu as $4$ bonbons, combien t'en faut-il pour atteindre $10$ ?",
+              "answer": "$6$",
+              "hint": "Utilise tes doigts ou la droite numérique.",
+              "explanation": "De $4$ on compte $5,6,7,8,9,10$ : six nombres de plus."
+            },
+            {
+              "question": "Trouve le nombre qui ajouté à $2$ donne $10$.",
+              "answer": "$8$",
+              "hint": "Pense au couple qui fait $10$.",
+              "explanation": "$2+8=10$, donc le complément est $8$."
+            }
+          ]
+        },
+        {
+          "title": "Complément à 20, 30....",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Complément à 20, 30…"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais trouver le complément à 10, on va jouer avec les dizaines suivantes. Le principe est le même : on cherche combien il faut ajouter pour atteindre la dizaine supérieure, comme 20, 30 ou 40."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "13 : 1 dizaine et 3 unités, il manque 7 pour faire 20"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le matériel : il y a une dizaine ($10$) et trois unités ($3$), soit $13$. Pour arriver à $20$, il faut ajouter $7$ unités. Compte : $13$, $14$, $15$, $16$, $17$, $18$, $19$, $20$. Le complément de $13$ à $20$ est $7$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite numérique de 10 à 20, point sur 13",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 13,
+                  "label": "13"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, le point est sur $13$. En avançant de sept petites marques, tu reaches $20$. C'est une façon visuelle de voir le complément à la dizaine supérieure."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Tu as",
+                  "value": 24,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Il manque",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "24 + 6 = 30, le complément à 30"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le schéma montre $24$ et il manque $6$ pour arriver à $30$. Essaie de trouver le complément à $30$ de $18$, ou le complément à $40$ de $35$. Le même raisonnement marche pour toutes les dizaines."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le complément à 20 de $13$ ?",
+              "answer": "$7$",
+              "hint": "Compte de $13$ jusqu'à $20$ sur la droite numérique.",
+              "explanation": "De $13$ on ajoute $1$ sept fois : $14,15,16,17,18,19,20$, donc $7$."
+            },
+            {
+              "question": "Trouve le nombre à ajouter à $16$ pour obtenir $20$.",
+              "answer": "$4$",
+              "hint": "Utilise la droite de 10 à 20.",
+              "explanation": "$16+4=20$, le complément est $4$."
+            },
+            {
+              "question": "Complète : $24 + \\_\\_ = 30$.",
+              "answer": "$6$",
+              "hint": "Regarde le schéma en barres.",
+              "explanation": "Le schéma montre qu'il faut $6$ de plus pour passer de $24$ à $30$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser pour calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les compléments pour calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant trouver les compléments à 10, 20, 30… On va les utiliser pour faire des additions plus vite dans ta tête. L'idée est de transformer une addition un peu difficile en une addition facile avec une dizaine."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le complément à la dizaine la plus proche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $8+5$, le premier nombre $8$ est près de $10$. Son complément à $10$ est $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Décompose le deuxième nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends $2$ sur le $5$ pour faire $10$. Il reste $3$ ($5 = 2 + 3$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajoute le reste à la dizaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$10 + 3 = 13$. Donc $8+5 = 13$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "8 + 5 = 13, visualisé avec des blocs"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie la même astuce avec $7+6$. Le complément de $7$ à $10$ est $3$. Prends $3$ sur le $6$, il reste $3$. $10+3=13$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant passe aux dizaines supérieures. Pour $14+8$, le complément de $14$ à $20$ est $6$. Prends $6$ sur le $8$, il reste $2$. $20+2=22$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Et pour $23+9$, le complément de $23$ à $30$ est $7$. Prends $7$ sur le $9$, il reste $2$. $30+2=32$. Tu vois, la méthode marche pour tous les nombres."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver le complément à 10 d'un nombre de 1 à 9.",
+                "Je sais trouver le complément à la dizaine supérieure (20, 30, 40…).",
+                "Je sais utiliser le complément pour faire une addition mentale plus vite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $7+6$ en utilisant le complément à 10.",
+              "answer": "$13$",
+              "hint": "Complément de $7$ à $10$ est $3$, décompose $6$ en $3+3$.",
+              "explanation": "$7+3=10$, il reste $3$, $10+3=13$."
+            },
+            {
+              "question": "Calcule $14+8$ en utilisant le complément à 20.",
+              "answer": "$22$",
+              "hint": "Complément de $14$ à $20$ est $6$, décompose $8$ en $6+2$.",
+              "explanation": "$14+6=20$, il reste $2$, $20+2=22$."
+            },
+            {
+              "question": "Calcule $23+9$ en utilisant le complément à 30.",
+              "answer": "$32$",
+              "hint": "Complément de $23$ à $30$ est $7$, décompose $9$ en $7+2$.",
+              "explanation": "$23+7=30$, il reste $2$, $30+2=32$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

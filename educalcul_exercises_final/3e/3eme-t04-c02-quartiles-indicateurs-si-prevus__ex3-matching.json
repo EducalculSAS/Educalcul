@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Comparaison des quartiles",
+  "blocks": [
+    {
+      "title": "Définitions des quartiles",
+      "content": "Relie chaque terme à sa définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Médiane",
+          "right": "Deuxième quartile (Q2)"
+        },
+        {
+          "left": "Premier quartile (Q1)",
+          "right": "25 % des valeurs sont inférieures"
+        },
+        {
+          "left": "Troisième quartile (Q3)",
+          "right": "75 % des valeurs sont inférieures"
+        },
+        {
+          "left": "Étendue interquartile",
+          "right": "Q3 - Q1"
+        }
+      ],
+      "items": [],
+      "explanation": "La médiane correspond au deuxième quartile $Q2$, elle partage la série en deux parts égales. Le premier quartile $Q1$ laisse $25\\%$ des données en dessous. Le troisième quartile $Q3$ laisse $75\\%$ des données en dessous. L'étendue interquartile mesure la dispersion du centre de la série et se calcule $Q3 - Q1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des indicateurs sur une série",
+      "content": "Relie chaque indicateur à sa valeur pour la série suivante : $5$, $8$, $12$, $15$, $18$, $22$, $27$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Médiane",
+          "right": "$15$"
+        },
+        {
+          "left": "Premier quartile (Q1)",
+          "right": "$8$"
+        },
+        {
+          "left": "Troisième quartile (Q3)",
+          "right": "$22$"
+        },
+        {
+          "left": "Étendue interquartile",
+          "right": "$14$"
+        }
+      ],
+      "items": [],
+      "explanation": "La série comporte 7 valeurs ordonnées. La médiane est la 4e valeur : $15$. Le premier quartile est la médiane des trois premières valeurs $5$, $8$, $12$ donc $8$. Le troisième quartile est la médiane des trois dernières valeurs $18$, $22$, $27$ donc $22$. L'étendue interquartile vaut $22 - 8 = 14$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux séries",
+      "content": "Relie chaque affirmation à sa valeur de vérité pour les deux séries : Série 1 : $3$, $6$, $9$, $12$, $15$, $18$, $21$ ; Série 2 : $4$, $8$, $12$, $16$, $20$, $24$, $28$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Médiane série 1 $<$ Médiane série 2",
+          "right": "Vrai"
+        },
+        {
+          "left": "Étendue interquartile série 1 $>$ Étendue interquartile série 2",
+          "right": "Faux"
+        },
+        {
+          "left": "Premier quartile série 1 $=$ Premier quartile série 2",
+          "right": "Faux"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour la série 1, médiane = $12$, $Q1$ = $6$, $Q3$ = $18$, étendue interquartile = $12$. Pour la série 2, médiane = $16$, $Q1$ = $8$, $Q3$ = $24$, étendue interquartile = $16$. Donc la médiane de la série 1 est bien inférieure à celle de la série 2 (Vrai). L'étendue interquartile de la série 1 ($12$) n'est pas supérieure à celle de la série 2 ($16$) (Faux). Les premiers quartiles sont $6$ et $8$, ils ne sont pas égaux (Faux).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

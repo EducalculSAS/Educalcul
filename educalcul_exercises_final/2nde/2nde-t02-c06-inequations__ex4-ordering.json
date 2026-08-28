@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Inéquations",
+  "title": "Résolution de problèmes par inéquations : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Problème 1 : Budget courses",
+      "content": "Paul a 50 euros pour acheter des stylos à 2,50 euros l'unité et un cahier à 8 euros. On veut déterminer le nombre maximum de stylos qu'il peut acheter. Remets les étapes de la résolution dans l'ordre logique.",
+      "items": [
+        "On note $x$ le nombre de stylos achetés ($x$ entier naturel).",
+        "On écrit l'inéquation traduisant la contrainte budgétaire : $2,5x + 8 \\le 50$.",
+        "On résout l'inéquation : $2,5x \\le 42$ donc $x \\le 16,8$.",
+        "Comme $x$ est un entier naturel, les valeurs possibles sont $x \\in \\{0, 1, \\dots, 16\\}$.",
+        "Paul peut acheter au maximum 16 stylos."
+      ],
+      "explanation": "La démarche type d'un problème par inéquation : 1. Choix de la variable inconnue avec son ensemble de définition (entier naturel pour un nombre d'objets). 2. Traduction mathématique de l'énoncé (somme des coûts $\\le$ budget). 3. Résolution algébrique de l'inéquation. 4. Prise en compte de la condition d'entier (partie entière de la borne). 5. Phrase de conclusion répondant à la question.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Dimensions d'un rectangle",
+      "content": "La longueur d'un rectangle est supérieure de 4 cm à sa largeur. Son périmètre est strictement compris entre 20 cm et 40 cm. On cherche l'ensemble des largeurs possibles. Remets les étapes dans l'ordre.",
+      "items": [
+        "On note $x$ la largeur en cm ($x > 0$), la longueur est $x + 4$.",
+        "On exprime le périmètre $P = 2(x + x + 4) = 4x + 8$.",
+        "On traduit la condition sur le périmètre par l'inéquation double : $20 < 4x + 8 < 40$.",
+        "On résout l'inéquation double : $12 < 4x < 32$ puis $3 < x < 8$.",
+        "La largeur doit être strictement comprise entre 3 cm et 8 cm."
+      ],
+      "explanation": "Ordre logique : 1. Définition de la variable (largeur) et expression de l'autre dimension en fonction de celle-ci. 2. Formule du périmètre simplifiée. 3. Mise en forme de la contrainte (inéquation double car le périmètre est 'compris entre'). 4. Résolution par opérations identiques sur les trois membres. 5. Interprétation finale (intervalle ouvert car inégalités strictes).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Choix d'un forfait",
+      "content": "Deux loueurs de vélo proposent : Loueur A : 15 euros par jour. Loueur B : 5 euros par jour plus 2 euros par heure d'utilisation. À partir de quelle durée la location chez B devient-elle plus chère qu chez A ? Remets les étapes dans l'ordre.",
+      "items": [
+        "On note $h$ le nombre d'heures d'utilisation ($h \\ge 0$).",
+        "On écrit les coûts : $C_A(h) = 15$ et $C_B(h) = 5 + 2h$.",
+        "On cherche quand B est plus cher que A : $5 + 2h > 15$.",
+        "On résout l'inéquation : $2h > 10$ donc $h > 5$.",
+        "Pour une utilisation de plus de 5 heures, le loueur B est plus cher."
+      ],
+      "explanation": "Problème de comparaison de deux offres (seuil de rentabilité). Étapes : 1. Variable : durée d'utilisation. 2. Modélisation des deux coûts (fonctions affines). 3. Mise en place de l'inéquation correspondant à la question ('B plus cher que A'). 4. Résolution. 5. Conclusion en mots : au-delà de 5 heures, l'option forfaitaire (A) est plus avantageuse.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

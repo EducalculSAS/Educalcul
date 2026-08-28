@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Calculs / géométrie",
+  "title": "Racines carrées : Calculs et Géométrie",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $\\sqrt{75}$ sous la forme $a\\sqrt{b}$ avec $a$ et $b$ entiers et $b$ le plus petit possible.",
+      "options": [
+        "$5\\sqrt{3}$",
+        "$3\\sqrt{5}$",
+        "$25\\sqrt{3}$",
+        "$7\\sqrt{5}$"
+      ],
+      "correctAnswer": "$5\\sqrt{3}$",
+      "explanation": "On décompose 75 en produit d'un carré parfait et d'un autre nombre : $75 = 25 \\times 3$. Puis $\\sqrt{75} = \\sqrt{25 \\times 3} = \\sqrt{25} \\times \\sqrt{3} = 5\\sqrt{3}$. L'option $3\\sqrt{5}$ correspond à $\\sqrt{45}$, $25\\sqrt{3}$ à $\\sqrt{1875}$ et $7\\sqrt{5}$ à $\\sqrt{245}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule et simplifie $\\sqrt{12} + 2\\sqrt{27}$.",
+      "options": [
+        "$8\\sqrt{3}$",
+        "$5\\sqrt{3}$",
+        "$3\\sqrt{39}$",
+        "$14\\sqrt{3}$"
+      ],
+      "correctAnswer": "$8\\sqrt{3}$",
+      "explanation": "On simplifie chaque racine : $\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$ et $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$. L'expression devient $2\\sqrt{3} + 2 \\times 3\\sqrt{3} = 2\\sqrt{3} + 6\\sqrt{3} = 8\\sqrt{3}$. L'erreur $5\\sqrt{3}$ vient d'un oubli du coefficient 2 devant la seconde racine. $3\\sqrt{39}$ correspond à l'addition incorrecte sous le radical ($\\sqrt{12+27}$). $14\\sqrt{3}$ serait obtenu si l'on simplifiait $\\sqrt{27}$ en $9\\sqrt{3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $x^2 = 48$ dans $\\mathbb{R}$.",
+      "options": [
+        "$x = 4\\sqrt{3} \\text{ ou } x = -4\\sqrt{3}$",
+        "$x = 4\\sqrt{3}$",
+        "$x = -4\\sqrt{3}$",
+        "$x = 24$"
+      ],
+      "correctAnswer": "$x = 4\\sqrt{3} \\text{ ou } x = -4\\sqrt{3}$",
+      "explanation": "L'équation $x^2 = a$ avec $a > 0$ admet deux solutions : $x = \\sqrt{a}$ et $x = -\\sqrt{a}$. Ici $\\sqrt{48} = \\sqrt{16 \\times 3} = 4\\sqrt{3}$. Les solutions sont donc $4\\sqrt{3}$ et $-4\\sqrt{3}$. L'option $x = 4\\sqrt{3}$ oublie la solution négative. $x = 24$ confond $x^2 = 48$ avec $x = 48/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un rectangle $ABCD$, on a $AB = 6 \\text{ cm}$ et $BC = 8 \\text{ cm}$. Quelle est la longueur exacte de la diagonale $[AC]$ ?",
+      "options": [
+        "$10 \\text{ cm}$",
+        "$14 \\text{ cm}$",
+        "$\\sqrt{48} \\text{ cm}$",
+        "$48 \\text{ cm}$"
+      ],
+      "correctAnswer": "$10 \\text{ cm}$",
+      "explanation": "Le triangle $ABC$ est rectangle en $B$. D'après le théorème de Pythagore : $AC^2 = AB^2 + BC^2 = 6^2 + 8^2 = 36 + 64 = 100$. Donc $AC = \\sqrt{100} = 10 \\text{ cm}$. L'option $14 \\text{ cm}$ correspond à la somme des côtés ($6+8$). $\\sqrt{48}$ serait le résultat si l'on calculait $8^2 - 6^2$ ou $6^2+8^2$ mal fait. $48$ correspond au produit $6 \\times 8$ (aire) ou à l'oubli de la racine carrée.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 6,
+        "b": 8,
+        "c": 10,
+        "caption": "Rectangle ABCD avec triangle rectangle ABC"
+      }
+    },
+    {
+      "text": "Un carré a une aire de $50 \\text{ cm}^2$. Quelle est la longueur exacte de son côté ?",
+      "options": [
+        "$5\\sqrt{2} \\text{ cm}$",
+        "$25\\sqrt{2} \\text{ cm}$",
+        "$10\\sqrt{5} \\ \\text{cm}$",
+        "$7,07 \\text{ cm}$"
+      ],
+      "correctAnswer": "$5\\sqrt{2} \\text{ cm}$",
+      "explanation": "L'aire d'un carré de côté $c$ est $c^2$. On a $c^2 = 50$, donc $c = \\sqrt{50}$ (longueur positive). On simplifie : $\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$. L'option $25\\sqrt{2}$ correspond à $\\sqrt{1250}$. $10\\sqrt{5}$ correspond à $\\sqrt{500}$. $7,07$ est une valeur approchée au centième, non la valeur exacte demandée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

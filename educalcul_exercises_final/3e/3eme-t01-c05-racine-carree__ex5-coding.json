@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Définition",
+  "title": "Approfondissement : Définition de la racine carrée - Algorithmes",
+  "blocks": [
+    {
+      "title": "Méthode de Héron pour approximer une racine carrée",
+      "content": "Écrire un algorithme (ou un programme en Python) qui, étant donné un nombre réel positif $a$, calcule une approximation de $\\sqrt{a}$ par la méthode de Héron. L'algorithme doit effectuer au moins 5 itérations et afficher le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$ (réel positif).\\n2. Initialiser $x_0 = a$.\\n3. Pour $i = 1$ à $5$ faire : $x_i = \\frac{x_{i-1} + a / x_{i-1}}{2}$.\\n4. Afficher $x_5$ comme approximation de $\\sqrt{a}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode de Héron construit une suite définie par $x_{n+1} = \\frac{x_n + a/x_n}{2}$ qui converge vers $\\sqrt{a}$. En partant de $x_0 = a$, après 5 itérations la valeur $x_5$ est une bonne approximation de la racine carrée. L'algorithme implémente directement cette relation de récurrence.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partie entière de la racine carrée d'un entier",
+      "content": "Proposer un algorithme qui, pour un entier naturel $n$ donné, renvoie la partie entière de $\\sqrt{n}$, c'est-à-dire le plus grand entier $k$ tel que $k^2 \\le n$. L'algorithme doit utiliser une boucle simple sans utiliser de fonction racine carrée prédéfinie.",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$ (entier naturel).\\n2. Initialiser $k = 0$.\\n3. Tant que $(k+1)^2 \\le n$ faire : $k \\leftarrow k+1$.\\n4. Afficher $k$ (c'est la partie entière de $\\sqrt{n}$).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste successivement les entiers à partir de $0$. La boucle s'arrête lorsque $(k+1)^2$ dépasse $n$. À ce moment, $k$ est le plus grand entier dont le carré ne dépasse pas $n$, ce qui est exactement la définition de la partie entière de $\\sqrt{n}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de carré parfait",
+      "content": "Écrire un algorithme qui détermine si un entier naturel $n$ est un carré parfait. L'algorithme doit retourner VRAI si $n$ est un carré parfait, FAUX sinon. On ne doit pas utiliser de fonction racine carrée.",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$ (entier naturel).\\n2. Calculer $k$ la partie entière de $\\sqrt{n}$ avec l'algorithme de la question précédente.\\n3. Si $k^2 = n$ alors afficher VRAI sinon afficher FAUX.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un entier $n$ est un carré parfait s'il existe un entier $k$ tel que $k^2 = n$. La partie entière de $\\sqrt{n}$ est le candidat unique. Si son carré égal $n$, alors $n$ est un carré parfait ; sinon, il ne l'est pas.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

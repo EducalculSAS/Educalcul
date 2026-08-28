@@ -1,0 +1,403 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.522256+00:00",
+  "id": 328,
+  "code": "cm2-t08-c04",
+  "title": "Coordonnées et déplacements programmés",
+  "description": "Cours structuré Educalcul : Coordonnées et déplacements programmés.",
+  "subject": "Pensée informatique",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Coordonnées et déplacements programmés",
+    "objectif_global": "Coordonnées et déplacements programmés",
+    "mini_lecons_imposees": [
+      "Repère.",
+      "Instructions.",
+      "Tracer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Repère.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande feuille quadrillée, comme celle de ton cahier de brouillon, mais qui s'étendrait à l'infini dans toutes les directions. C'est notre terrain de jeu pour aujourd'hui. Pour nous repérer dessus, nous avons besoin de deux lignes droites qui se croisent : une horizontale et une verticale. On les appelle des axes. L'horizontal, on le note souvent $x$ (comme « axe des abscisses » si tu veux le nom savant), et le vertical, on le note $y$ (l'axe des ordonnées). Leur point de rencontre est très spécial : c'est l'origine, et on lui donne les coordonnées $(0;0)$. C'est le point de départ de toutes nos aventures sur ce quadrillage."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'axe horizontal $x$ avec l'origine au centre",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "O"
+                },
+                {
+                  "value": 3,
+                  "label": "A"
+                },
+                {
+                  "value": -2,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'image ci-dessus : le point $O$ est bien au milieu, à $0$. Le point $A$ est à $3$ graduations sur la droite, donc son abscisse est $3$. Le point $B$ est à $2$ graduations sur la gauche, son abscisse est $-2$. Sur l'axe vertical, ça fonctionne pareil : vers le haut, les nombres sont positifs ; vers le bas, ils sont négatifs. Pour donner l'adresse exacte d'un point n'importe où sur la feuille, on écrit toujours d'abord l'abscisse (le déplacement horizontal), puis l'ordonnée (le déplacement vertical), entre parenthèses et séparés par un point-virgule : $(x;y)$. C'est comme un code secret à deux chiffres !"
+            },
+            {
+              "type": "definition",
+              "term": "Coordonnées d'un point",
+              "definition": "C'est le couple de nombres $(x;y)$ qui indique la position d'un point par rapport à l'origine. $x$ dit combien on va à droite (positif) ou à gauche (négatif). $y$ dit combien on monte (positif) ou on descend (négatif).",
+              "example": "Le point $(4;-2)$ est à 4 cases à droite de l'origine et 2 cases en dessous."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une adresse sur le quadrillage, voyons comment on peut déplacer un petit robot ou un curseur d'un point à un autre. Imagine que tu es sur la case $(1;1)$. Si je te dis « avance de $3$ cases vers la droite », tu te retrouves sur $(4;1)$. Ton abscisse a augmenté de $3$, ton ordonnée n'a pas bougé. C'est ce qu'on appelle un déplacement horizontal. Si ensuite je dis « monte de $2$ cases », tu arrives en $(4;3)$ : cette fois, c'est l'ordonnée qui a augmenté de $2$. On peut combiner les deux : un déplacement est juste une paire de nombres qui dit « combien à droite/gauche » et « combien en haut/en bas »."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x_{\\text{arriv\\'ee}}; y_{\\text{arriv\\'ee}}) = (x_{\\text{d\\'epart}} + \\Delta x;\\; y_{\\text{d\\'epart}} + \\Delta y)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La flèche $\\Delta x$ (on lit « delta x ») représente le changement d'abscisse, et $\\Delta y$ le changement d'ordonnée. Si $\\Delta x$ est positif, on va à droite ; s'il est négatif, on va à gauche. Pareil pour $\\Delta y$ : positif = en haut, négatif = en bas. C'est une façon très pratique de noter un déplacement sans avoir à redessiner le quadrillage à chaque fois. Essaie de visualiser : partir de $(-2;0)$ et appliquer le déplacement $(+5;-3)$ te mène où ? Tu ajoutes $5$ à $-2$, ça fait $3$. Tu ajoutes $-3$ à $0$, ça fait $-3$. Tu arrives en $(3;-3)$. Magique, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut aller d'un point $A$ à un point $B$ sans connaître le déplacement à l'avance. Pas de panique : il suffit de soustraire les coordonnées de départ de celles d'arrivée ! Pour trouver $\\Delta x$, on fait $x_B - x_A$. Pour $\\Delta y$, on fait $y_B - y_A$. C'est comme quand tu veux savoir combien de marches il te reste pour monter au grenier : tu comptes le numéro de la marche d'arrivée moins celui où tu es. Si $A(-1;4)$ et $B(3;1)$, alors $\\Delta x = 3 - (-1) = 4$ et $\\Delta y = 1 - 4 = -3$. Le déplacement est $(4;-3)$ : $4$ cases à droite, $3$ cases en bas. Vérifie sur ton quadrillage mental : de $-1$ à $3$, c'est bien $4$ pas vers la droite ; de $4$ à $1$, c'est bien $3$ pas vers le bas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les coordonnées de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $x_A$ et $y_A$ du point de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les coordonnées d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $x_B$ et $y_B$ du point d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les déplacements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $\\Delta x = x_B - x_A$ et $\\Delta y = y_B - y_A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier sur le quadrillage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les cases pour t'assurer que le signe correspond bien à la direction (droite/gauche, haut/bas)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir les bases du repérage : un quadrillage, deux axes, une origine, et des coordonnées pour nommer chaque case. Tu sais aussi calculer un déplacement entre deux points ou appliquer un déplacement à un point de départ. C'est exactement ce dont un ordinateur a besoin pour déplacer un personnage à l'écran ou faire bouger un bras robotique ! Dans la prochaine leçon, on va voir comment écrire ces déplacements sous forme d'instructions précises, comme un vrai petit programme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un quadrillage, le point $A$ a pour coordonnées $(2;3)$. Donne les coordonnées du point $B$ qui se trouve $4$ cases à droite et $2$ cases au-dessus de $A$.",
+              "answer": "$(6;5)$",
+              "hint": "Ajoute $4$ à l'abscisse de $A$ et $2$ à son ordonnée.",
+              "explanation": "L'abscisse de $A$ est $2$. À droite, on ajoute : $2 + 4 = 6$. L'ordonnée de $A$ est $3$. En haut, on ajoute : $3 + 2 = 5$. Donc $B(6;5)$."
+            },
+            {
+              "question": "Tu es sur le point $(-3;1)$. Tu effectues le déplacement $(+2;-4)$. Quelles sont tes nouvelles coordonnées ?",
+              "answer": "$(-1;-3)$",
+              "hint": "Ajoute le déplacement aux coordonnées de départ : $\\Delta x$ à l'abscisse, $\\Delta y$ à l'ordonnée.",
+              "explanation": "Abscisse : $-3 + 2 = -1$. Ordonnée : $1 + (-4) = -3$. Tu arrives en $(-1;-3)$."
+            },
+            {
+              "question": "Le point $D$ est en $(5;-2)$ et le point $E$ est en $(1;3)$. Quel est le déplacement pour aller de $D$ vers $E$ ?",
+              "answer": "$(-4;5)$",
+              "hint": "Calcule $x_E - x_D$ pour $\\Delta x$ et $y_E - y_D$ pour $\\Delta y$.",
+              "explanation": "$\\Delta x = 1 - 5 = -4$ (donc $4$ cases à gauche). $\\Delta y = 3 - (-2) = 5$ (donc $5$ cases en haut). Le déplacement est $(-4;5)$."
+            }
+          ]
+        },
+        {
+          "title": "Instructions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parler le langage de la machine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais te repérer sur le quadrillage, il faut apprendre à donner des ordres clairs à un ordinateur ou à un robot. Contrairement à toi, la machine ne comprend pas « va par là » ou « tourne un peu ». Elle a besoin d'instructions précises, écrites dans un ordre exact, sans ambiguïté. C'est ce qu'on appelle un algorithme : une suite d'instructions simples qui, exécutées l'une après l'autre, permettent de réaliser une tâche. Pour nos déplacements, nous allons utiliser un vocabulaire minimaliste : « Avance $n$ », « Tourne à droite », « Tourne à gauche », et « Répète $k$ fois [instructions] ». C'est tout ! Avec ces quatre briques, on peut décrire n'importe quel chemin sur le quadrillage."
+            },
+            {
+              "type": "definition",
+              "term": "Algorithme",
+              "definition": "Une suite finie et ordonnée d'instructions simples et non ambiguës, qui permet de résoudre un problème ou d'accomplir une tâche. Ici, c'est un programme de déplacement.",
+              "example": "Avance 3 ; Tourne à droite ; Avance 2 ; Tourne à gauche ; Avance 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a un piège classique : l'orientation ! Au début, ton robot (ou ton curseur) regarde vers la droite, c'est-à-dire dans le sens des $x$ positifs. L'instruction « Avance $3$ » le fait avancer de $3$ cases vers la droite, donc son abscisse augmente de $3$. Mais si juste avant il a fait « Tourne à droite », il regarde maintenant vers le bas (les $y$ négatifs). « Avance $3$ » le fera alors descendre de $3$ cases. « Tourne à gauche » depuis le départ le ferait regarder vers le haut. Il faut toujours savoir dans quelle direction le robot est orienté avant de lui dire d'avancer. C'est comme quand tu joues à « Jacques a dit » : si tu tournes, ta droite et ta gauche changent !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter l'orientation de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par convention, le robot regarde vers la droite (axe $x$ positif) au tout début."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécuter les tours dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque « Tourne à droite » fait pivoter de $90^\\circ$ dans le sens des aiguilles d'une montre. « Tourne à gauche » pivote de $90^\\circ$ dans l'autre sens."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer « Avance » selon l'orientation actuelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si orienté à droite : $x$ augmente. Si orienté en haut : $y$ augmente. Si orienté à gauche : $x$ diminue. Si orienté en bas : $y$ diminue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, un chemin contient des motifs qui se répètent. Au lieu d'écrire « Avance 1 ; Tourne à droite ; Avance 1 ; Tourne à droite ; Avance 1 ; Tourne à droite ; Avance 1 ; Tourne à droite » pour faire un carré, on peut écrire : « Répète 4 fois [ Avance 1 ; Tourne à droite ] ». C'est plus court, plus lisible, et surtout ça évite les erreurs de copier-coller. La structure « Répète $k$ fois [ ... ] » s'appelle une boucle. Tout ce qui est entre les crochets sera exécuté $k$ fois de suite, dans l'ordre, avant de passer à l'instruction suivante. C'est la base de la programmation : factoriser ce qui se répète."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{R\\'ep\\`ete } k \\text{ fois } [ I_1 ; I_2 ; \\dots ; I_m ] \\equiv \\underbrace{I_1 ; I_2 ; \\dots ; I_m ; \\; I_1 ; \\dots ; I_m ; \\; \\dots ; \\; I_1 ; \\dots ; I_m}_{k \\text{ fois}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la flèche d'équivalence ci-dessus : la boucle n'est qu'une écriture condensée. L'ordinateur, lui, « déplie » la boucle et exécute les instructions les unes après les autres. Si tu as une boucle imbriquée dans une autre (une boucle dans une boucle), c'est pareil : on déplie la plus intérieure en premier. Par exemple, « Répète 2 fois [ Répète 3 fois [ Avance 1 ] ; Tourne à droite ] » veut dire : fais 3 fois « Avance 1 », puis tourne, puis refais 3 fois « Avance 1 », puis tourne. Au total, tu as avancé $6$ fois et tourné $2$ fois. Essaie de le tracer sur un coin de papier pour bien visualiser !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'on veuille faire un demi-tour. Pas d'instruction spéciale pour ça : « Tourne à droite ; Tourne à droite » fait pivoter de $180^\\circ$. De même, « Tourne à gauche ; Tourne à gauche » fait la même chose. Parfois, on voit l'instruction « Tourne demi-tour » comme raccourci, mais sache que c'est juste deux tours du même côté. Un dernier conseil : quand tu écris un programme, relis-le en simulant mentalement le robot (ou sur un brouillon quadrillé). Vérifie l'orientation avant chaque « Avance ». C'est la meilleure façon d'éviter les bugs ! Dans la prochaine leçon, on mettra tout ça en pratique pour tracer de vraies figures géométriques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le robot est au départ en $(0;0)$, orienté vers la droite. Programme : Avance 2 ; Tourne à gauche ; Avance 3. Quelles sont les coordonnées finales ?",
+              "answer": "$(2;3)$",
+              "hint": "Suis les instructions une par une. Après 'Tourne à gauche', le robot regarde vers le haut.",
+              "explanation": "Départ $(0;0)$, orienté droite. Avance 2 $\\rightarrow$ $(2;0)$. Tourne à gauche $\\rightarrow$ orienté vers le haut. Avance 3 $\\rightarrow$ $(2;3)$."
+            },
+            {
+              "question": "Écris le programme le plus court (avec une boucle) pour faire avancer le robot de $5$ cases vers la droite, en partant de l'origine orienté vers la droite.",
+              "answer": "Répète 5 fois [ Avance 1 ]",
+              "hint": "La boucle permet de répéter une instruction simple plusieurs fois.",
+              "explanation": "Au lieu d'écrire 'Avance 1' cinq fois, on utilise la boucle 'Répète 5 fois [ Avance 1 ]'. C'est plus court et plus clair."
+            },
+            {
+              "question": "Le robot part de $(1;1)$ orienté vers le haut. Programme : Répète 2 fois [ Avance 2 ; Tourne à droite ]. Donne les coordonnées finales et l'orientation finale.",
+              "answer": "Coordonnées $(3;3)$, orienté vers le bas",
+              "hint": "Déplie la boucle : fait 2 fois la séquence. Note l'orientation après chaque tour.",
+              "explanation": "Départ $(1;1)$, haut. 1er tour : Avance 2 $\\rightarrow$ $(1;3)$ ; Tourne à droite $\\rightarrow$ orienté droite. 2e tour : Avance 2 $\\rightarrow$ $(3;3)$ ; Tourne à droite $\\rightarrow$ orienté bas. Final : $(3;3)$, orienté bas."
+            }
+          ]
+        },
+        {
+          "title": "Tracer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner en programmant"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de réunir tout ce qu'on a appris : le repérage par coordonnées et les instructions de déplacement. On va maintenant programmer le tracé de figures géométriques sur le quadrillage. Le principe est simple : on place le robot (ou le « stylo ») au point de départ, on l'oriente correctement, et on lui donne la séquence d'instructions qui va dessiner la figure voulue. Chaque « Avance $n$ » trace un segment de longueur $n$ cases. Chaque « Tourne » change la direction du trait. À la fin, on obtient un dessin précis, reproductible à l'identique autant de fois qu'on veut. C'est la base des graphiques vectoriels et de la programmation graphique !"
+            },
+            {
+              "type": "definition",
+              "term": "Tracé programmé",
+              "definition": "Un dessin obtenu en exécutant une suite d'instructions de déplacement (avancer, tourner) depuis une position et une orientation initiales données. Le trait est laissé derrière le curseur à chaque 'Avance'.",
+              "example": "Départ $(0;0)$, orienté droite. Programme : Répète 4 fois [ Avance 3 ; Tourne à gauche ] trace un carré de côté 3."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le plus classique : le carré. Pour tracer un carré de côté $c$, il faut faire $4$ fois : avancer de $c$, puis tourner de $90^\\circ$ (donc « Tourne à gauche » ou « Tourne à droite » selon l'orientation de départ). Si on part de $(0;0)$ orienté vers la droite et qu'on veut un carré de côté $4$ dans le quadrant positif (vers le haut et la droite), on utilisera « Tourne à gauche » pour monter. Le programme complet : « Répète 4 fois [ Avance 4 ; Tourne à gauche ] ». Essaie de le simuler : le premier côté va de $(0;0)$ à $(4;0)$, le tour à gauche oriente vers le haut, le deuxième côté va à $(4;4)$, etc. À la fin, le robot est revenu au point de départ, orienté comme au début. C'est la propriété d'une figure fermée !"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Carr\\'e c\\^ot\\'e } c : \\quad \\text{R\\'ep\\`ete 4 fois } [ \\text{Avance } c ; \\text{ Tourne } 90^\\circ ]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on veut tracer un rectangle ? Un rectangle a deux longueurs différentes : la longueur $L$ et la largeur $l$. On ne peut pas faire une seule boucle de $4$ avec la même avance. Mais on peut faire une boucle de $2$ qui alterne les deux longueurs : « Répète 2 fois [ Avance $L$ ; Tourne à gauche ; Avance $l$ ; Tourne à gauche ] ». Chaque tour de boucle trace deux côtés adjacents. Après deux tours, les quatre côtés sont faits. Vérifie : départ $(0;0)$, droite. Avance $L$ (vers droite), tourne gauche (vers haut), avance $l$ (vers haut), tourne gauche (vers gauche). Deuxième tour : avance $L$ (vers gauche), tourne gauche (vers bas), avance $l$ (vers bas), tourne gauche (vers droite). Revenu au départ !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut tracer une figure qui n'est pas fermée, ou qui commence ailleurs qu'à l'origine. Il faut alors bien choisir le point de départ et l'orientation initiale. Par exemple, pour tracer un escalier qui monte vers la droite : on part de $(0;0)$ orienté à droite. Programme : « Répète 5 fois [ Avance 1 ; Tourne à gauche ; Avance 1 ; Tourne à droite ] ». Chaque itération fait une marche : un pas horizontal, un tour à gauche (vers le haut), un pas vertical, un tour à droite (retour vers la droite). À la fin, le robot est en $(5;5)$, orienté à droite. L'escalier a $5$ marches de hauteur et largeur $1$. Si tu veux des marches plus hautes, change le second « Avance 1 » en « Avance 2 »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le point de départ et l'orientation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le stylo aux coordonnées voulues et décide vers où il regarde (droite, haut, gauche, bas)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Décomposer la figure en segments et angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les longueurs des côtés et les angles de rotation (toujours $90^\\circ$ sur quadrillage orthogonal)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier les répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un motif qui se répète pour utiliser 'Répète k fois [ ... ]'."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le programme et le tester",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Simule mentalement ou sur papier pour vérifier que le tracé correspond à la figure visée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier défi : tracer un « L » majuscule. C'est une figure ouverte, faite de deux segments perpendiculaires. Si on veut un « L » de hauteur $4$ et de base $3$, parti du coin en bas à gauche : départ $(0;0)$, orienté vers le haut. Programme : « Avance 4 ; Tourne à droite ; Avance 3 ». C'est tout ! Pas de boucle nécessaire ici car il n'y a pas de répétition. Mais si on veut tracer une série de « L » les uns à la suite des autres pour faire une frise, on peut boucler : « Répète 3 fois [ Avance 4 ; Tourne à droite ; Avance 3 ; Tourne à gauche ; Avance 1 ; Tourne à gauche ] » (le dernier morceau sert à se repositionner pour le « L » suivant). Tu vois comme la programmation permet de créer des motifs complexes à partir de briques simples ? Bravo, tu as maintenant toutes les clés pour coder tes propres dessins sur quadrillage !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un point par ses coordonnées $(x;y)$ sur un quadrillage.",
+                "Je sais calculer le déplacement $( \\Delta x; \\Delta y )$ entre deux points.",
+                "Je sais écrire un programme de déplacement avec Avance, Tourne à gauche/droite, Répète.",
+                "Je sais tenir compte de l'orientation du robot avant chaque Avance.",
+                "Je sais tracer un carré, un rectangle ou un escalier en programmation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le programme complet pour tracer un carré de côté $5$ cases, en partant de $(0;0)$ orienté vers la droite, avec le carré dans le quadrant positif (vers le haut).",
+              "answer": "Répète 4 fois [ Avance 5 ; Tourne à gauche ]",
+              "hint": "Il faut 4 côtés. Chaque côté : Avance 5 puis tour de 90° vers le haut (gauche).",
+              "explanation": "Le carré a 4 côtés égaux. 'Répète 4 fois [ Avance 5 ; Tourne à gauche ]' trace les 4 côtés en tournant à gauche à chaque fois pour rester dans le quadrant positif."
+            },
+            {
+              "question": "Pour tracer un rectangle de longueur $6$ et largeur $2$, en partant de $(1;1)$ orienté vers la droite, quel programme avec une boucle 'Répète 2 fois' faut-il écrire ?",
+              "answer": "Répète 2 fois [ Avance 6 ; Tourne à gauche ; Avance 2 ; Tourne à gauche ]",
+              "hint": "Chaque tour de boucle fait deux côtés adjacents : un grand, un petit, avec deux tours à gauche.",
+              "explanation": "Un rectangle a deux paires de côtés égaux. La boucle de 2 fois alterne longueur (6) et largeur (2) avec deux tours à gauche par itération."
+            },
+            {
+              "question": "Le robot part de $(0;0)$ orienté vers la droite. Programme : Répète 3 fois [ Avance 2 ; Tourne à gauche ; Avance 1 ; Tourne à droite ]. Décris la figure tracée et donne les coordonnées finales.",
+              "answer": "Un escalier de 3 marches (largeur 2, hauteur 1). Coordonnées finales : (6;3).",
+              "hint": "Simule une itération : Avance 2 (droite), Tourne gauche (haut), Avance 1 (haut), Tourne droite (droite). Répète 3 fois.",
+              "explanation": "Chaque itération avance de 2 à droite et 1 en haut. Après 3 fois : $x = 3 \\times 2 = 6$, $y = 3 \\times 1 = 3$. Orientation finale : droite."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

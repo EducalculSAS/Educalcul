@@ -1,0 +1,497 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.455712+00:00",
+  "id": 629,
+  "code": "terminale-generale-t03-c03",
+  "title": "Corrélation et causalité",
+  "description": "Cours structuré Educalcul : Corrélation et causalité.",
+  "subject": "Statistiques et données",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Statistiques et données",
+    "titre_du_cours": "Corrélation et causalité",
+    "objectif_global": "Corrélation et causalité",
+    "mini_lecons_imposees": [
+      "Nuage.",
+      "Association.",
+      "Ne pas conclure causalité."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et données",
+      "lessons": [
+        {
+          "title": "Nuage.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un nuage de points ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes chaque jour la température maximale à midi et le nombre de glaces vendues dans une petite boutique du centre-ville. Chaque jour te donne un couple de valeurs : une température en degrés Celsius et un nombre de glaces. Si tu reports tous ces couples sur un repère orthonormé, tu obtiens un ensemble de points que l'on appelle un nuage de points. Ce nuage permet de visualiser d'un seul coup d'œil la façon dont les deux variables évoluent ensemble, sans avoir à lire un long tableau de chiffres."
+            },
+            {
+              "type": "definition",
+              "term": "Nuage de points",
+              "definition": "Représentation graphique d'une série statistique à deux variables : chaque individu est représenté par un point de coordonnées $(x_i, y_i)$ dans un repère orthonormé.",
+              "example": "Température ($x$) en $^{\\circ}$C et ventes de glaces ($y$) en unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire ce nuage, on commence par choisir une échelle adaptée sur l'axe des abscisses pour la variable $x$ (ici la température) et sur l'axe des ordonnées pour la variable $y$ (les ventes). Ensuite, pour chaque observation, on place un point à l'intersection de la valeur $x$ et de la valeur $y$. Si tu as $30$ jours de données, tu auras $30$ points. Le nuage obtenu peut former une forme allongée, un cercle diffus, ou présenter des groupes distincts. Chaque forme raconte une histoire différente sur la relation entre les deux grandeurs."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Jour",
+                "Température ($^{\\circ}$C)",
+                "Ventes (unités)"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "18",
+                  "12"
+                ],
+                [
+                  "2",
+                  "22",
+                  "18"
+                ],
+                [
+                  "3",
+                  "25",
+                  "25"
+                ],
+                [
+                  "4",
+                  "20",
+                  "15"
+                ],
+                [
+                  "5",
+                  "27",
+                  "30"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci-dessus : les cinq premiers jours montrent déjà une tendance. Lorsque la température augmente, les ventes semblent augmenter aussi. Sur le nuage, ces cinq points se disposeraient grossièrement le long d'une droite montante. Cette observation visuelle est la première étape avant toute analyse numérique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir les échelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine la valeur minimale et maximale de chaque variable. Pour la température, l'étendue va de $18$ à $27$ $^{\\circ}$C ; pour les ventes, de $12$ à $30$ unités. Choisis un pas de graduation qui permette de placer tous les points sans les écraser."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter les points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque jour, repère l'abscisse correspondant à la température et l'ordonnée correspondant aux ventes. Trace un petit point à l'intersection. Répète l'opération pour l'ensemble des observations."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Observer la forme globale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois tous les points placés, regarde la silhouette du nuage. Est-il étiré dans le sens de la diagonale montante (corrélation positive) ? Dans le sens de la diagonale descendante (corrélation négative) ? Ou bien forme-t-il un rond sans direction privilégiée (absence de corrélation linéaire) ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire et lire un nuage, nous allons examiner comment qualifier plus précisément la liaison entre les deux variables. La notion d'association statistique va nous permettre de mesurer l'intensité et le sens de cette liaison."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier le type d'association visuellement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un nuage de points peut suggérer trois grandes configurations. Premièrement, une association positive : les points s'étalent le long d'une droite qui monte de gauche à droite. Cela signifie que lorsque $x$ augmente, $y$ a tendance à augmenter aussi. Deuxièmement, une association négative : les points suivent une droite qui descend ; $x$ augmente tandis que $y$ diminue. Troisièmement, une absence d'association linéaire : les points forment un nuage circulaire ou diffus, sans orientation nette. Dans ce cas, connaître $x$ ne donne aucune information sur $y$ au sens linéaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "r = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum_{i=1}^{n}(x_i-\\bar{x})^2\\sum_{i=1}^{n}(y_i-\\bar{y})^2}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule du coefficient de corrélation linéaire $r$ (que nous étudierons en détail dans la prochaine leçon) résume numériquement ce que l'œil perçoit. Mais déjà, avant de calculer, l'inspection visuelle te permet de formuler une hypothèse : le nuage que tu viens de tracer pour les températures et les ventes penche clairement vers une association positive."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent que quelques points s'écartent fortement du motif principal. Ces points atypiques, appelés valeurs aberrantes ou outliers, peuvent masquer ou exagérer une tendance. Apprendre à les repérer est essentiel pour ne pas tirer de conclusions hâtives."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer et traiter les valeurs aberrantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un nuage, une valeur aberrante apparaît comme un point isolé, loin du groupe principal. Par exemple, imagine un jour de canicule à $35$ $^{\\circ}$C où la boutique est fermée pour raison technique : les ventes seraient $0$. Ce point se situerait très à droite et tout en bas, loin de la droite montante. Si tu le gardes dans le calcul du coefficient de corrélation, il va tirer la droite vers le bas et affaiblir artificiellement la corrélation positive. Deux stratégies existent : soit tu as une explication contextuelle (boutique fermée) et tu peux décider de l'exclure de l'analyse, soit tu le conserves mais tu signales sa présence et tu interprètes le coefficient avec prudence."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position d'une valeur aberrante par rapport au nuage principal",
+              "min": 0,
+              "max": 40,
+              "points": [
+                {
+                  "value": 35,
+                  "label": "Jour aberrant"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 18,
+                  "max": 27,
+                  "label": "Plage principale"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "À partir du tableau de données ci-dessus, trace le nuage de points sur une feuille quadrillée. Indique l'échelle choisie pour chaque axe.",
+              "answer": "Axe des abscisses : 1 cm pour 2 °C (de 16 à 28). Axe des ordonnées : 1 cm pour 4 unités (de 8 à 32). Les cinq points sont (18;12), (22;18), (25;25), (20;15), (27;30).",
+              "hint": "Commence par repérer les valeurs min et max de chaque variable pour fixer les bornes de tes axes.",
+              "explanation": "Le nuage obtenu montre une disposition grossièrement alignée sur une droite montante, ce qui suggère une association positive entre température et ventes."
+            },
+            {
+              "question": "Observe le nuage suivant (fourni dans l'énoncé). Décris en une phrase le type d'association qu'il suggère : positive, négative ou nulle.",
+              "answer": "Le nuage suggère une association positive car les points s'étalent le long d'une diagonale montante.",
+              "hint": "Regarde la direction générale du nuage : monte-t-il, descend-il ou est-il rond ?",
+              "explanation": "Une association positive se reconnaît à une pente globale ascendante du nuage de points."
+            },
+            {
+              "question": "Un nuage de points présente un point isolé à l'extrême droite et en bas. Explique pourquoi ce point peut être considéré comme une valeur aberrante et propose une décision raisonnée.",
+              "answer": "Ce point correspond probablement à une situation exceptionnelle (ex. fermeture du magasin). Il est aberrant car il ne suit pas la tendance générale. On peut l'exclure du calcul de corrélation si la cause est identifiée, sinon le conserver en le signalant.",
+              "hint": "Demine-toi : ce point respecte-t-il le motif global ? Quelle pourrait être sa cause contextuelle ?",
+              "explanation": "Les valeurs aberrantes déforment les indicateurs numériques ; il faut les identifier et décider de leur traitement en fonction du contexte."
+            }
+          ]
+        },
+        {
+          "title": "Association.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'association visuelle à la mesure numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons appris à regarder un nuage de points et à deviner si les deux variables semblent liées positivement, négativement ou pas du tout. Cette impression visuelle est utile, mais elle reste subjective : deux observateurs peuvent ne pas être d'accord sur l'intensité de la liaison. Pour rendre l'analyse rigoureuse, les statisticiens ont introduit une mesure numérique unique, le coefficient de corrélation linéaire, noté $r$. Ce nombre condense en une seule valeur à la fois le sens (positif ou négatif) et la force de la relation linéaire entre $x$ et $y$."
+            },
+            {
+              "type": "definition",
+              "term": "Coefficient de corrélation linéaire (r de Pearson)",
+              "definition": "Nombre réel compris entre $-1$ et $1$ qui quantifie l'intensité et la direction d'une relation linéaire entre deux variables quantitatives. $r=1$ : corrélation positive parfaite ; $r=-1$ : corrélation négative parfaite ; $r=0$ : absence de corrélation linéaire.",
+              "example": "Pour les données température/ventes, on obtient $r \\approx 0,96$, indiquant une corrélation positive très forte."
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule de $r$ peut sembler impressionnante au premier abord, mais elle repose sur une idée simple : comparer la façon dont $x$ et $y$ varient ensemble (covariance) à la façon dont chacune varie séparément (écarts-types). Le numérateur additionne les produits des écartements de chaque variable par rapport à sa moyenne ; le dénominateur normalise cette somme par le produit des écart-types. Ainsi, $r$ est sans dimension et ne dépend pas des unités de mesure."
+            },
+            {
+              "type": "display_math",
+              "latex": "r = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum_{i=1}^{n}(x_i-\\bar{x})^2\\sum_{i=1}^{n}(y_i-\\bar{y})^2}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les moyennes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\bar{x} = \\frac{1}{n}\\sum x_i$ et $\\bar{y} = \\frac{1}{n}\\sum y_i$. Ces deux nombres sont le centre de gravité du nuage."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les écartements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque observation, détermine $x_i-\\bar{x}$ et $y_i-\\bar{y}$. Ces valeurs peuvent être positives ou négatives ; elles indiquent de quel côté de la moyenne se situe le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Produits des écartements et sommes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les deux écartements pour chaque individu, puis additionne tous ces produits : $\\sum (x_i-\\bar{x})(y_i-\\bar{y})$. C'est la covariance (non divisée par $n$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écart-types",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\sqrt{\\sum (x_i-\\bar{x})^2}$ et $\\sqrt{\\sum (y_i-\\bar{y})^2}$. Ce sont les écart-types multipliés par $\\sqrt{n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Rapport final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise la covariance par le produit des deux écart-types. Le résultat est $r$, compris entre $-1$ et $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la mécanique du calcul est claire, intéressons-nous à l'interprétation des valeurs que $r$ peut prendre. Un coefficient proche de $1$ ou de $-1$ signale une liaison linéaire forte ; un coefficient proche de $0$ indique qu'aucune droite ne résume bien le nuage. Mais attention : $r$ ne capture que la composante linéaire. Deux variables peuvent avoir une relation parfaitement non-linéaire (par exemple parabolique) et pourtant afficher un $r$ proche de zéro."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter la valeur de r"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une grille de lecture courante : $|r| \\ge 0,8$ : corrélation forte ; $0,5 \\le |r| < 0,8$ : corrélation modérée ; $0,3 \\le |r| < 0,5$ : corrélation faible ; $|r| < 0,3$ : corrélation négligeable. Le signe de $r$ donne le sens : $r>0$ signifie que les variables évoluent dans le même sens, $r<0$ qu'elles évoluent en sens inverse. Il est crucial de toujours regarder le nuage en parallèle : un même $r$ peut masquer des formes très différentes (points alignés vs points en arc de cercle)."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples de valeurs de r et force d'association",
+              "bars": [
+                {
+                  "label": "r = 0,95",
+                  "value": 95,
+                  "tone": "green"
+                },
+                {
+                  "label": "r = 0,60",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "r = 0,20",
+                  "value": 20,
+                  "tone": "gray"
+                },
+                {
+                  "label": "r = -0,85",
+                  "value": 85,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il existe des situations où le coefficient de corrélation peut être trompeur. Les valeurs aberrantes que nous avons évoquées peuvent faire chuter ou monter $r$ de manière spectaculaire. De même, si la relation est non-linéaire mais forte, $r$ sera faible. C'est pourquoi tout bon statisticien commence par tracer le nuage, calcule $r$, puis examine les résidus et la forme du nuage avant de conclure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limites du coefficient de corrélation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une expérience où l'on mesure la vitesse d'une voiture ($x$) et la distance de freinage ($y$). La physique nous dit que la distance de freinage est proportionnelle au carré de la vitesse : $y = k x^2$. Le nuage de points forme une parabole. Si tu calcules $r$ sur ces données, tu obtiendras une valeur modérée (autour de $0,7$) alors que la relation est déterministe et très forte. Le coefficient linéaire ne « voit » pas la courbure. Pour capturer ce type de lien, on utilise d'autres outils (corrélation de rang, régression polynomiales, etc.) que nous verrons plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le coefficient de corrélation $r$ pour les cinq points du tableau de la leçon 1 (température/ventes). Donne le résultat arrondi à deux décimales.",
+              "answer": "$r \\approx 0,96$",
+              "hint": "Utilise les formules des étapes 1 à 5. Les moyennes sont $\\bar{x}=22,4$ et $\\bar{y}=20$.",
+              "explanation": "Le calcul détaillé donne une covariance de $68,8$, des écart-types de $3,36$ et $7,16$, d'où $r = 68,8/(3,36\\times7,16) \\approx 0,96$."
+            },
+            {
+              "question": "Un nuage de points donne $r = -0,42$. Comment interpréter cette valeur selon la grille de lecture ?",
+              "answer": "Corrélation négative faible : les variables ont tendance à évoluer en sens inverse, mais la liaison linéaire est peu marquée.",
+              "hint": "Regarde la valeur absolue et le signe.",
+              "explanation": "$|r|=0,42$ se situe entre $0,3$ et $0,5$ : corrélation faible. Le signe négatif indique une association inverse."
+            },
+            {
+              "question": "Explique pourquoi un coefficient de corrélation $r = 0,15$ ne permet pas d'affirmer qu'il n'y a aucune relation entre les deux variables.",
+              "answer": "Parce que $r$ ne mesure que la relation linéaire. Une relation non-linéaire forte (ex. quadratique) peut donner un $r$ proche de zéro.",
+              "hint": "Pense à la forme du nuage : droite vs courbe.",
+              "explanation": "Le coefficient de corrélation linéaire est aveugle aux relations courbes. Un nuage en parabole peut avoir $r \\approx 0$ tout en étant parfaitement déterministe."
+            }
+          ]
+        },
+        {
+          "title": "Ne pas conclure causalité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corrélation ne veut pas dire causalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'un des pièges les plus célèbres de la statistique : observer une forte corrélation entre deux variables et conclure que l'une cause l'autre. Pourtant, le coefficient $r$, aussi proche de $1$ ou de $-1$ soit-il, ne renseigne que sur la covariation, pas sur le mécanisme sous-jacent. Dans cette leçon, nous allons dissequer pourquoi cette confusion est dangereuse et comment l'éviter."
+            },
+            {
+              "type": "definition",
+              "term": "Causalité",
+              "definition": "Relation de cause à effet : la modification d'une variable (la cause) entraîne systématiquement la modification d'une autre variable (l'effet), toutes choses égales par ailleurs.",
+              "example": "L'administration d'un vaccin (cause) réduit la probabilité de contracter la maladie (effet)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de la température et des ventes de glaces. Le nuage montre une corrélation positive très forte ($r \\approx 0,96$). Pourrait-on affirmer que la chaleur cause l'achat de glaces ? Partiellement oui : la chaleur crée un besoin de se rafraîchir. Mais imagine qu'un troisième facteur, la saison estivale, influence simultanément la température et la fréquentation touristique, qui elle-même booste les ventes. Ici, la température n'est pas la cause unique ; elle est un indicateur d'un contexte plus large."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Facteurs influençant les ventes de glaces",
+              "sets": [
+                {
+                  "label": "Température",
+                  "value": 50,
+                  "tone": "red"
+                },
+                {
+                  "label": "Fréquentation touristique",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Promotions",
+                  "value": 20,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le concept de variable confondante (ou variable tierce) est central. Une variable confondante est liée à la fois à la variable explicative et à la variable réponse, créant une corrélation spurious entre elles. Si on ne la contrôle pas, on risque d'attribuer à tort un effet causal à la variable observée. Les epidemiologistes, les économistes et les data scientists passent beaucoup de temps à identifier et à neutraliser ces confondants."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier une variable confondante : exemple classique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un exemple historique : on a observé une forte corrélation positive entre le nombre de pompiers présents sur les lieux d'un incendie et les dégâts matériels. Conclure que les pompiers causent les dégâts serait absurde. La variable confondante est la gravité de l'incendie : un gros feu attire plus de camions et cause plus de dégâts. En contrôlant la gravité (par exemple en comparant des incendies de même ampleur), la corrélation disparaît."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour détecter un confondant, on cherche une variable qui : (1) est corrélée avec la variable supposée cause ; (2) est corrélée avec l'effet ; (3) n'est pas une conséquence de la cause. Si ces trois conditions sont remplies, le lien observé peut être purement artifactuel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Alors, comment passer de la corrélation à la causalité ? La méthode la plus solide est l'expérimentation randomisée : on assigne aléatoirement les sujets à un groupe traitement et à un groupe contrôle. La randomisation assure que, en moyenne, tous les facteurs confondants (connus ou inconnus) sont équilibrés entre les groupes. Toute différence observée sur l'effet peut alors être attribuée au traitement. Quand l'expérimentation est impossible (éthique, coût, temps), on utilise des méthodes quasi-expérimentales (variables instrumentales, appariement, régression avec variables de contrôle) qui tentent d'imiter la randomisation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'observation à l'inférence causale"
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, un nuage de points et son coefficient de corrélation sont des outils descriptifs puissants. Ils révèlent des associations, suggèrent des hypothèses, guident la conception d'études. Mais ils ne remplacent jamais un raisonnement causal rigoureux. En terminale, tu apprendras à formuler des modèles causaux, à tester leur plausibilité et à communiquer tes conclusions avec la prudence requise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire et lire un nuage de points.",
+                "Je sais calculer et interpréter le coefficient de corrélation $r$.",
+                "Je sais expliquer pourquoi corrélation n'implique pas causalité.",
+                "Je sais identifier une variable confondante dans un exemple concret.",
+                "Je connais la différence entre étude observationnelle et expérience randomisée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'exemple température/ventes, propose une variable confondante plausible et explique comment elle pourrait créer une corrélation spurious.",
+              "answer": "La saison estivale (ou le nombre de touristes) : l'été apporte à la fois de la chaleur et plus de clients, donc plus de ventes, même si la température n'était pas la cause directe.",
+              "hint": "Cherche un facteur qui varie en même temps que les deux variables observées.",
+              "explanation": "La variable confondante est corrélée à la fois avec la température (plus chaud en été) et avec les ventes (plus de monde), créant une association qui n'est pas causale directe."
+            },
+            {
+              "question": "Donne un exemple personnel où tu as observé une corrélation qui n'était pas causale. Décris la variable confondante.",
+              "answer": "Exemple : corrélation entre le nombre de nichoirs dans un jardin et le nombre d'oiseaux. Variable confondante : la taille du jardin (grand jardin -> plus de place pour nichoirs et plus d'oiseaux).",
+              "hint": "Pense à une situation du quotidien où deux choses varient ensemble sans lien direct.",
+              "explanation": "La taille du jardin influence les deux variables, créant une corrélation sans causalité directe entre nichoirs et oiseaux."
+            },
+            {
+              "question": "Pourquoi la randomisation dans une expérience permet-elle d'éliminer l'effet des variables confondantes ?",
+              "answer": "Parce qu'elle répartit aléatoirement tous les facteurs (connus ou non) entre les groupes, les rendant statistiquement comparables en moyenne.",
+              "hint": "Rappelle-toi l'objectif de la randomisation : équilibrer les groupes.",
+              "explanation": "Si l'assignation est aléatoire, chaque variable confondante a la même distribution dans le groupe traitement et le groupe contrôle, donc son effet est neutralisé lors de la comparaison."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

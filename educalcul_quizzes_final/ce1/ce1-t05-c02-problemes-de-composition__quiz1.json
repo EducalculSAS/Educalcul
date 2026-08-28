@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 109,
+  "_course_code": "ce1-t05-c02-problemes-de-composition",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Chercher le tout",
+  "title": "Problèmes de composition : Chercher le tout",
+  "questions": [
+    {
+      "text": "Léa a $4$ billes bleues et $3$ billes rouges. Combien de billes a-t-elle en tout ?",
+      "options": [
+        "6 billes",
+        "7 billes",
+        "8 billes",
+        "12 billes"
+      ],
+      "correctAnswer": "7 billes",
+      "explanation": "Pour trouver le total, on additionne les deux parties : $4 + 3 = 7$. L'option « 6 billes » correspond à l'erreur $4 + 2$. L'option « 8 billes » correspond à $4 + 4$ (double de la première partie). L'option « 12 billes » correspond à une multiplication $4 \\times 3$ au lieu d'une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la classe, il y a $12$ garçons et $10$ filles. Combien d'élèves y a-t-il en tout dans la classe ?",
+      "options": [
+        "21 élèves",
+        "22 élèves",
+        "23 élèves",
+        "2 élèves"
+      ],
+      "correctAnswer": "22 élèves",
+      "explanation": "Le tout est la somme des garçons et des filles : $12 + 10 = 22$. L'option « 21 élèves » vient d'un oubli de retenue ou d'un calcul $12 + 9$. L'option « 23 élèves » correspond à $12 + 11$. L'option « 2 élèves » est le résultat de la soustraction $12 - 10$, opération qui cherche la différence et non le total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pommier porte $15$ pommes rouges et $14$ pommes vertes. Combien de pommes y a-t-il au total sur l'arbre ?",
+      "options": [
+        "28 pommes",
+        "29 pommes",
+        "30 pommes",
+        "1 pomme"
+      ],
+      "correctAnswer": "29 pommes",
+      "explanation": "On additionne les deux quantités : $15 + 14 = 29$. L'option « 28 pommes » correspond à $15 + 13$ (erreur sur les unités). L'option « 30 pommes » correspond à $15 + 15$ (confusion avec le double). L'option « 1 pomme » est le résultat de $15 - 14$, qui cherche l'écart entre les deux parties.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le schéma ci-dessous. Il représente deux parties d'une collection de timbres. Combien y a-t-il de timbres en tout ?",
+      "options": [
+        "54 timbres",
+        "55 timbres",
+        "56 timbres",
+        "5 timbres"
+      ],
+      "correctAnswer": "55 timbres",
+      "explanation": "Le schéma montre deux parties : $25$ et $30$. Le tout se trouve en ajoutant les deux parties : $25 + 30 = 55$. L'option « 54 timbres » correspond à $25 + 29$. L'option « 56 timbres » correspond à $25 + 31$. L'option « 5 timbres » est le résultat de $30 - 25$, qui donne la différence entre les parties.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie 1",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 2",
+            "value": 30,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Diagramme en barres : deux parties (25 et 30) forment le tout."
+      }
+    },
+    {
+      "text": "Au rayon vêtements, il y a $32$ robes et $18$ jupes. Combien y a-t-il de vêtements au total ?",
+      "options": [
+        "49 vêtements",
+        "50 vêtements",
+        "51 vêtements",
+        "14 vêtements"
+      ],
+      "correctAnswer": "50 vêtements",
+      "explanation": "Le total des vêtements est la somme des robes et des jupes : $32 + 18 = 50$. L'option « 49 vêtements » vient d'une erreur de retenue ($32 + 17$). L'option « 51 vêtements » correspond à $32 + 19$. L'option « 14 vêtements » est le résultat de la soustraction $32 - 18$, qui ne répond pas à la question « au total ».",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

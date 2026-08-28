@@ -1,0 +1,313 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.492479+00:00",
+  "id": 6,
+  "code": "cp-t01-c06",
+  "title": "Lire et écrire les nombres de 11 à 59",
+  "description": "Cours structuré Educalcul : Lire et écrire les nombres de 11 à 59.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Lire et écrire les nombres de 11 à 59",
+    "objectif_global": "Lire et écrire les nombres de 11 à 59",
+    "mini_lecons_imposees": [
+      "Lire des nombres à deux chiffres réguliers.",
+      "Écrire un nombre entendu.",
+      "Relier écriture chiffrée et représentation dizaines-unités."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Lire des nombres à deux chiffres réguliers.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les nombres à deux chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui nous allons découvrir comment lire les nombres qui ont deux chiffres, comme $23$ ou $40$. Tu vas voir que chaque nombre est formé de dizaines et d'unités, un peu comme des petits paquets de dix bonbons et quelques bonbons tout seuls."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Une dizaine est un groupe de dix unités. Par exemple, $10$ bonbons forment une dizaine.",
+              "example": "Dans $23$, il y a $2$ dizaines."
+            },
+            {
+              "type": "definition",
+              "term": "unité",
+              "definition": "Une unité est un seul élément, comme un bonbon tout seul.",
+              "example": "Dans $23$, il y a $3$ unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire un nombre régulier, tu dis d'abord le nombre de dizaines, puis le nombre d'unités. Regarde $23$ : il y a $2$ dizaines (vingt) et $3$ unités (trois), donc on dit \"vingt‑trois\"."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : 2 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant essayons un nombre qui se termine par zéro. Quand il n'y a pas d'unités, on prononce seulement le nom des dizaines, comme \"quarante\" pour $40$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 0,
+              "caption": "$40$ : 4 dizaines et 0 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, regardons un nombre avec des unités différentes de zéro. Pour $27$, il y a $2$ dizaines (vingt) et $7$ unités (sept), on lit \"vingt‑sept\"."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 7,
+              "caption": "$27$ : 2 dizaines et 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire les nombres à deux chiffres en reconnaissant les dizaines et les unités. Continue à t'entraîner avec d'autres nombres jusqu'à $59$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel nombre lis-tu sur la représentation ? (2 dizaines, 3 unités)",
+              "answer": "$23$",
+              "hint": "Compte les groupes de dix et les unités restantes.",
+              "explanation": "Il y a $2$ groupes de dix (vingt) et $3$ unités (trois), donc le nombre est $23$."
+            },
+            {
+              "question": "Lis le nombre représenté par 4 dizaines et 0 unité.",
+              "answer": "$40$",
+              "hint": "Quand il n'y a pas d'unités, on dit seulement le nom des dizaines.",
+              "explanation": "Quatre dizaines font quarante, soit $40$."
+            },
+            {
+              "question": "Comment lit-on le nombre avec 2 dizaines et 7 unités ?",
+              "answer": "$27$",
+              "hint": "Dis d'abord les dizaines, puis les unités.",
+              "explanation": "Deux dizaines font vingt, sept unités font sept, ensemble cela donne vingt‑sept, soit $27$."
+            }
+          ]
+        },
+        {
+          "title": "Écrire un nombre entendu.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un nombre entendu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écoutons bien : quand quelqu'un dit un nombre, tu dois l'écrire en chiffres. Pour cela, repère combien de dizaines et combien d'unités tu entends."
+            },
+            {
+              "type": "definition",
+              "term": "chiffre",
+              "definition": "Un chiffre est un symbole qui sert à écrire les nombres : $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$.",
+              "example": "Le nombre $31$ utilise les chiffres $3$ et $1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons qu'on te dise \"trente‑et‑un\". Tu entends \"trente\" (trois dizaines) et \"un\" (une unité). Tu écris donc le chiffre $3$ pour les dizaines et $1$ pour les unités : $31$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 1,
+              "caption": "$31$ : 3 dizaines et 1 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant un nombre qui se termine par zéro, comme \"cinquante\". Tu entends seulement \"cinq dizaines\" et aucune unité. Tu écris $5$ pour les dizaines et $0$ pour les unités : $50$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 0,
+              "caption": "$50$ : 5 dizaines et 0 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, écoutons \"quarante‑six\". Tu entends \"quarante\" (quatre dizaines) et \"six\" (six unités). Tu écris $4$ puis $6$ : $46$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 6,
+              "caption": "$46$ : 4 dizaines et 6 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! À chaque fois, sépare bien les dizaines des unités avant d'écrire les deux chiffres. Tu es prêt à écrire tous les nombres de $11$ à $59$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres le nombre que tu entends : trente‑et‑un.",
+              "answer": "$31$",
+              "hint": "Combien de dizaines ? Combien d'unités ?",
+              "explanation": "Trente correspond à trois dizaines ($3$), un correspond à une unité ($1$), donc $31$."
+            },
+            {
+              "question": "Écris en chiffres le nombre : cinquante.",
+              "answer": "$50$",
+              "hint": "Il n'y a pas d'unités, seulement des dizaines.",
+              "explanation": "Cinq dizaines font cinquante, soit $50$ (chiffre $5$ pour les dizaines, $0$ pour les unités)."
+            },
+            {
+              "question": "Écris en chiffres : quarante‑six.",
+              "answer": "$46$",
+              "hint": "Quarante = quatre dizaines, six = six unités.",
+              "explanation": "Quatre dizaines ($4$) et six unités ($6$) donnent $46$."
+            }
+          ]
+        },
+        {
+          "title": "Relier écriture chiffrée et représentation dizaines-unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier l'écriture chiffrée et la représentation dizaines‑unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant nous allons faire le lien entre le nombre écrit en chiffres et sa décomposition en dizaines et unités. C'est comme associer un code à son dessin."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la représentation ci‑dessous : elle montre $1$ dizaine et $8$ unités. Quel nombre cela correspond‑il ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 8,
+              "caption": "$18$ : 1 dizaine et 8 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'inverse, si je te donne le nombre $35$, tu dois dire combien de dizaines et d'unités il contient. Regarde la représentation pour t'aider."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 5,
+              "caption": "$35$ : 3 dizaines et 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, essayons un mélange : le nombre $42$. Trouve la bonne représentation parmi celles proposées."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 2,
+              "caption": "$42$ : 4 dizaines et 2 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu sais maintenant passer de l'écriture chiffrée à la décomposition en dizaines et unités, et vice‑versa. Continue à t'amuser avec les nombres jusqu'à $59$."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un nombre à deux chiffres en identifiant les dizaines et les unités.",
+                "Je sais écrire en chiffres un nombre que j'entends.",
+                "Je sais associer un nombre écrit à sa représentation en dizaines et unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici la représentation : 1 dizaine et 8 unités. Écris le nombre en chiffres.",
+              "answer": "$18$",
+              "hint": "Une dizaine = 10, huit unités = 8.",
+              "explanation": "1 dizaine (10) + 8 unités = 18, donc le nombre est $18$."
+            },
+            {
+              "question": "Le nombre est 35. Combien y a‑t‑il de dizaines et d'unités ?",
+              "answer": "3 dizaines et 5 unités",
+              "hint": "Sépare le chiffre des dizaines et celui des unités.",
+              "explanation": "Le chiffre des dizaines est 3 (trente), le chiffre des unités est 5 (cinq), donc 3 dizaines et 5 unités."
+            },
+            {
+              "question": "Associe le nombre 42 à sa bonne représentation.",
+              "answer": "4 dizaines et 2 unités",
+              "hint": "Regarde les deux chiffres : 4 pour les dizaines, 2 pour les unités.",
+              "explanation": "42 est composé de 4 dizaines (quarante) et de 2 unités (deux), donc la représentation montre 4 groupes de dix et 2 unités."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,463 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.219873+00:00",
+  "id": 239,
+  "code": "cm1-t04-c06",
+  "title": "Suites et motifs",
+  "description": "Cours structuré Educalcul : Suites et motifs.",
+  "subject": "Résolution de problèmes et pensée algébrique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Résolution de problèmes et pensée algébrique",
+    "titre_du_cours": "Suites et motifs",
+    "objectif_global": "Suites et motifs",
+    "mini_lecons_imposees": [
+      "Identifier règle.",
+      "Poursuivre.",
+      "Décrire généralisation simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes et pensée algébrique",
+      "lessons": [
+        {
+          "title": "Identifier règle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des suites et des motifs ! Aujourd'hui, nous allons apprendre à repérer la règle qui se cache derrière une suite de nombres ou de formes. C'est comme être détective : on observe les indices pour découvrir le secret."
+            },
+            {
+              "type": "definition",
+              "term": "Suite",
+              "definition": "Une suite est une liste ordonnée de nombres ou de formes qui suivent une règle précise. Chaque élément s'appelle un terme.",
+              "example": "La suite $2, 4, 6, 8$ est une suite de nombres pairs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette suite de nombres : $3, 6, 9, 12$. Pour trouver la règle, demande-toi : que fait-on pour passer d'un terme au suivant ? Ici, on ajoute $3$ à chaque fois. C'est la règle de la suite ! On peut l'écrire : « terme suivant = terme précédent $+ 3$ »."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les sauts de $3$ sur la droite graduée",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, tu vois les sauts de $3$ en $3$. C'est une façon visuelle de comprendre la règle. Maintenant, essayons avec des formes. Regarde ce motif : carré, cercle, carré, cercle. Quelle est la règle ? C'est une alternance : un carré, puis un cercle, puis un carré, et ainsi de suite. Le motif de base est « carré, cercle » et il se répète."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Position",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ],
+              "rows": [
+                [
+                  "Forme",
+                  "carré",
+                  "cercle",
+                  "carré",
+                  "cercle",
+                  "carré",
+                  "cercle"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la règle n'est pas une simple addition. Observe : $10, 7, 4, 1$. Ici, on soustrait $3$ à chaque fois. La règle est « terme suivant = terme précédent $- 3$ ». On peut aussi avoir des règles de multiplication : $2, 4, 8, 16$ où on multiplie par $2$. Prends le temps d'observer les différences entre les termes consécutifs, c'est la clé."
+            },
+            {
+              "type": "definition",
+              "term": "Règle d'une suite",
+              "definition": "C'est l'opération ou la logique qui permet de passer d'un terme au suivant de manière constante.",
+              "example": "Pour $5, 10, 15, 20$, la règle est « ajouter $5$ »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a des suites où la règle change ! Par exemple : $1, 2, 4, 7, 11$. Les écarts sont $+1, +2, +3, +4$. La règle ici est « on ajoute $1$ de plus à chaque étape ». C'est une suite un peu plus complexe, mais le principe reste le même : on cherche ce qui change entre deux termes voisins."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de trouver la règle d'une suite géométrique un peu plus longue. Imagine un motif : triangle, triangle, carré, triangle, triangle, carré. Le motif de base a trois éléments : deux triangles puis un carré. Ce bloc de trois se répète. Pour décrire la règle, on dit : « Le motif « triangle, triangle, carré » se répète indéfiniment. »"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "rows": [
+                [
+                  "Forme",
+                  "triangle",
+                  "triangle",
+                  "carré",
+                  "triangle",
+                  "triangle",
+                  "carré",
+                  "triangle",
+                  "triangle",
+                  "carré"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la règle de la suite numérique : $4, 8, 12, 16$ ?",
+              "answer": "On ajoute $4$ à chaque fois.",
+              "hint": "Regarde la différence entre $8$ et $4$, puis entre $12$ et $8$.",
+              "explanation": "En calculant $8 - 4 = 4$, $12 - 8 = 4$, $16 - 12 = 4$, on voit que l'écart est constant et vaut $4$. La règle est donc d'ajouter $4$."
+            },
+            {
+              "question": "Complète la suite : $20, 15, 10, \\ldots, \\ldots$",
+              "answer": "$5, 0$",
+              "hint": "De combien diminue-t-on à chaque fois ?",
+              "explanation": "On passe de $20$ à $15$ en retirant $5$, puis de $15$ à $10$ en retirant encore $5$. La règle est « soustraire $5$ ». Donc $10 - 5 = 5$ et $5 - 5 = 0$."
+            },
+            {
+              "question": "Dans le motif : losange, losange, étoile, losange, losange, étoile, \\ldots quelle sera la $7^{\\text{ème}}$ forme ?",
+              "answer": "losange",
+              "hint": "Identifie le bloc qui se répète et compte jusqu'à $7$.",
+              "explanation": "Le motif de base est « losange, losange, étoile » (3 formes). Les rangs $1,2,3$ donnent ce bloc. Les rangs $4,5,6$ le répètent. Le rang $7$ commence un nouveau bloc, donc c'est un losange."
+            }
+          ]
+        },
+        {
+          "title": "Poursuivre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer la règle, nous allons apprendre à prolonger une suite. C'est comme continuer un chemin : on suit la trace laissée par les premiers termes. Tu vas voir, c'est très satisfaisant de voir la suite grandir sous ton crayon !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer les termes donnés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les termes les uns sous les autres ou sur une ligne. Regarde les deux premiers termes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la différence (ou le quotient) entre le deuxième et le premier terme. Vérifie que cette même opération marche pour passer du deuxième au troisième."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique l'opération trouvée au dernier terme connu pour obtenir le suivant. Recommence autant de fois que nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble avec la suite $5, 11, 17, 23$. Étape 1 : les termes sont là. Étape 2 : $11 - 5 = 6$, $17 - 11 = 6$, $23 - 17 = 6$. La règle est « ajouter $6$ ». Étape 3 : pour continuer, on fait $23 + 6 = 29$, puis $29 + 6 = 35$, etc. C'est aussi simple que ça !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "23",
+                "6"
+              ],
+              "result": "29",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la suite diminue. Regarde : $50, 45, 40, 35$. La règle est « soustraire $5$ ». Pour prolonger, on fait $35 - 5 = 30$, puis $30 - 5 = 25$. On peut aussi utiliser une opération posée pour être sûr de ne pas se tromper, surtout avec des nombres plus grands. C'est une bonne habitude à prendre."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "35",
+                "5"
+              ],
+              "result": "30",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les motifs de formes, la méthode est pareille : on identifie le bloc qui se répète, puis on le recopie. Par exemple : rond, carré, triangle, rond, carré, triangle. Le bloc est « rond, carré, triangle ». Pour continuer, on remet un rond, puis un carré, puis un triangle. On peut même dessiner le motif complet plusieurs fois pour bien voir la répétition."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "rows": [
+                [
+                  "Forme",
+                  "rond",
+                  "carré",
+                  "triangle",
+                  "rond",
+                  "carré",
+                  "triangle",
+                  "rond",
+                  "carré",
+                  "triangle"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe aussi des suites où la règle n'est pas une simple addition ou soustraction, mais une multiplication. Par exemple : $3, 6, 12, 24$. Ici, on multiplie par $2$ à chaque fois. Pour continuer : $24 \\times 2 = 48$, puis $48 \\times 2 = 96$. Attention, les nombres grandissent vite ! Vérifie toujours que la règle tient sur tous les termes donnés avant de te lancer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Prolonge la suite : $7, 14, 21, 28, \\ldots, \\ldots$",
+              "answer": "$35, 42$",
+              "hint": "Quelle est la différence entre deux termes consécutifs ?",
+              "explanation": "Les écarts sont $14-7=7$, $21-14=7$, $28-21=7$. La règle est « ajouter $7$ ». Donc $28+7=35$ et $35+7=42$."
+            },
+            {
+              "question": "Donne les trois termes suivants de la suite : $100, 90, 80, 70, \\ldots$",
+              "answer": "$60, 50, 40$",
+              "hint": "La suite diminue. De combien ?",
+              "explanation": "On soustrait $10$ à chaque fois : $70-10=60$, $60-10=50$, $50-10=40$."
+            },
+            {
+              "question": "Continue le motif : cœur, étoile, cœur, étoile, cœur, \\ldots, \\ldots",
+              "answer": "étoile, cœur",
+              "hint": "Quel est le motif de base qui se répète ?",
+              "explanation": "Le motif de base est « cœur, étoile » (2 formes). La suite alterne. Après le dernier cœur (rang 5), vient l'étoile (rang 6), puis le cœur (rang 7)."
+            },
+            {
+              "question": "Prolonge la suite : $2, 6, 18, 54, \\ldots, \\ldots$",
+              "answer": "$162, 486$",
+              "hint": "Regarde si on additionne ou si on multiplie pour passer au terme suivant.",
+              "explanation": "$6 \\div 2 = 3$, $18 \\div 6 = 3$, $54 \\div 18 = 3$. On multiplie par $3$. Donc $54 \\times 3 = 162$ et $162 \\times 3 = 486$."
+            }
+          ]
+        },
+        {
+          "title": "Décrire généralisation simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière étape : décrire une généralisation simple. Cela veut dire expliquer la règle avec des mots clairs, pour que n'importe qui puisse la comprendre et l'appliquer, même sans voir les premiers termes. C'est le langage des mathématiciens : être précis et concis."
+            },
+            {
+              "type": "definition",
+              "term": "Généralisation",
+              "definition": "C'est une phrase qui décrit la règle de la suite pour n'importe quel rang, sans avoir à tous les lister.",
+              "example": "« Chaque terme est le double du terme précédent. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la suite des nombres pairs : $2, 4, 6, 8, 10$. Au lieu de dire « on ajoute $2$ », on peut dire : « Le $n^{\\text{ème}}$ terme vaut $2 \\times n$ ». Pour le $1^{\\text{er}}$ terme : $2 \\times 1 = 2$. Pour le $5^{\\text{ème}}$ : $2 \\times 5 = 10$. C'est une généralisation puissante car elle donne n'importe quel terme directement !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang $n$",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "10"
+              ],
+              "rows": [
+                [
+                  "Terme $2 \\times n$",
+                  "2",
+                  "4",
+                  "6",
+                  "8",
+                  "10",
+                  "12",
+                  "20"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une suite qui commence à $3$ et où on ajoute $4$ : $3, 7, 11, 15$. La généralisation peut être : « Le premier terme est $3$, et chaque terme suivant s'obtient en ajoutant $4$ au précédent. » Ou bien, si on veut une formule : « Terme de rang $n$ = $3 + 4 \\times (n-1)$ ». Pour $n=1$ : $3+0=3$. Pour $n=2$ : $3+4=7$. Ça marche !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les motifs géométriques, la généralisation décrit le motif de base et sa répétition. Exemple : « Le motif « carré, triangle, triangle » se répète tous les $3$ termes. » Ainsi, on sait que les termes aux rangs multiples de $3$ sont des triangles, les rangs $1, 4, 7$... sont des carrés. C'est une façon élégante de décrire l'infini avec peu de mots."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "rows": [
+                [
+                  "Forme",
+                  "carré",
+                  "triangle",
+                  "triangle",
+                  "carré",
+                  "triangle",
+                  "triangle",
+                  "carré",
+                  "triangle",
+                  "triangle"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as maintenant toutes les clés pour explorer les suites : identifier la règle, la prolonger et la décrire en mots généraux. Ces compétences te serviront tout au long de tes études, car les motifs sont partout : dans la nature, en musique, en informatique, et bien sûr en mathématiques. Continue à observer le monde avec tes yeux de détective des suites !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer la règle d'une suite numérique (addition, soustraction, multiplication).",
+                "Je sais repérer le motif qui se répète dans une suite de formes.",
+                "Je sais prolonger une suite en appliquant sa règle.",
+                "Je sais décrire une règle avec une phrase claire (généralisation).",
+                "Je peux utiliser un tableau pour organiser les termes et leur rang."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une phrase qui décrit la règle de la suite : $5, 10, 15, 20, 25$.",
+              "answer": "Le $n^{\\text{ème}}$ terme vaut $5 \\times n$.",
+              "hint": "Regarde le lien entre le rang (1, 2, 3...) et le terme.",
+              "explanation": "Rang 1 : $5=5\\times1$, rang 2 : $10=5\\times2$, rang 3 : $15=5\\times3$. La généralisation est : terme de rang $n = 5n$."
+            },
+            {
+              "question": "Pour la suite $4, 9, 14, 19$, quelle phrase décrit la généralisation ?",
+              "answer": "Le premier terme est $4$ et on ajoute $5$ à chaque fois.",
+              "hint": "Donne le départ et l'opération répétée.",
+              "explanation": "C'est une description en mots de la règle de récurrence. On peut aussi dire : terme de rang $n = 4 + 5\\times(n-1)$."
+            },
+            {
+              "question": "Dans le motif : croix, rond, rond, croix, rond, rond, ... que dire des termes aux rangs multiples de $3$ ?",
+              "answer": "Ce sont des ronds.",
+              "hint": "Regarde les rangs 3, 6, 9 dans le tableau.",
+              "explanation": "Le motif de base a 3 formes : croix (rang 1), rond (rang 2), rond (rang 3). Il se répète. Donc les rangs 3, 6, 9... correspondent à la 3ème forme du motif : un rond."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

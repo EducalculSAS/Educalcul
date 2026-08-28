@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 427,
+  "_course_code": "4eme-t02-c03-equations-du-premier-degre",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Égalité",
+  "title": "Quiz : Les propriétés de l'égalité",
+  "questions": [
+    {
+      "text": "On considère l'égalité $7 + 4 = 11$. Si on ajoute $5$ au premier membre, que faut-il faire au second membre pour conserver l'égalité ?",
+      "options": [
+        "Ajouter $5$",
+        "Soustraire $5$",
+        "Multiplier par $5$",
+        "Ne rien changer"
+      ],
+      "correctAnswer": "Ajouter $5$",
+      "explanation": "La propriété fondamentale de l'égalité stipule que si on effectue la même opération des deux côtés, l'égalité reste vraie. Ici, on ajoute $5$ à gauche ($7+4+5$), il faut donc ajouter $5$ à droite ($11+5$) pour que les deux membres restent égaux ($16=16$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est obtenue à partir de $3x = 15$ en divisant les deux membres par $3$ ?",
+      "options": [
+        "$x = 5$",
+        "$x = 12$",
+        "$x = 18$",
+        "$3x = 5$"
+      ],
+      "correctAnswer": "$x = 5$",
+      "explanation": "En divisant les deux membres de $3x = 15$ par $3$, on obtient $(3x)/3 = 15/3$, soit $x = 5$. L'option $3x = 5$ correspond à une division du second membre seulement, ce qui est une erreur fréquente. Les options $x=12$ et $x=18$ correspondent à une addition ou soustraction de $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Est-ce que $x = 4$ est solution de l'équation $2x - 3 = 5$ ?",
+      "options": [
+        "Oui, car $2 \\times 4 - 3 = 5$",
+        "Non, car $2 \\times 4 - 3 = 11$",
+        "Non, car $2 \\times 4 - 3 = 8$",
+        "Oui, car $2 \\times 4 - 3 = 11$"
+      ],
+      "correctAnswer": "Oui, car $2 \\times 4 - 3 = 5$",
+      "explanation": "Pour vérifier si $4$ est solution, on remplace $x$ par $4$ dans le premier membre : $2 \\times 4 - 3 = 8 - 3 = 5$. On obtient $5$, qui est égal au second membre. L'égalité est donc vraie pour $x=4$. Les autres options contiennent des erreurs de calcul ($8-3=11$ ou $8-3=8$) ou une conclusion fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle opération permet de passer de l'équation $x + 9 = 14$ à l'équation $x = 5$ ?",
+      "options": [
+        "Soustraire $9$ aux deux membres",
+        "Ajouter $9$ aux deux membres",
+        "Soustraire $14$ aux deux membres",
+        "Diviser les deux membres par $9$"
+      ],
+      "correctAnswer": "Soustraire $9$ aux deux membres",
+      "explanation": "Pour isoler $x$, il faut annuler le $+9$ du premier membre. L'opération inverse est la soustraction de $9$. On effectue $x + 9 - 9 = 14 - 9$, ce qui donne $x = 5$. Ajouter $9$ donnerait $x+18=23$. Soustraire $14$ donnerait $x-5=0$. Diviser par $9$ ne simplifie pas le $+9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lesquelles de ces deux équations sont équivalentes (ont les mêmes solutions) ?",
+      "options": [
+        "$2x + 6 = 10$ et $x + 3 = 5$",
+        "$2x + 6 = 10$ et $2x = 16$",
+        "$2x + 6 = 10$ et $x + 6 = 5$",
+        "$2x + 6 = 10$ et $2x = 4$"
+      ],
+      "correctAnswer": "$2x + 6 = 10$ et $x + 3 = 5$",
+      "explanation": "Deux équations sont équivalentes si on passe de l'une à l'autre par une suite d'opérations autorisées (ajouter/soustraire le même nombre, multiplier/diviser par un nombre non nul). En divisant les deux membres de $2x+6=10$ par $2$, on obtient $x+3=5$. Elles ont la même solution $x=2$. L'option $2x=4$ s'obtient en soustrayant $6$ (correct) mais l'option propose $2x+6=10$ ET $2x=4$ comme paire, or la question demande quelle PAIRE est équivalente. La première paire est la seule où les deux équations listées sont équivalentes entre elles. $2x=16$ donne $x=8$. $x+6=5$ donne $x=-1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

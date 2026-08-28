@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Essayer une stratégie",
+  "title": "Algorithmes et stratégies de résolution - CE2",
+  "blocks": [
+    {
+      "title": "Addition successive d'une liste de nombres",
+      "content": "Tu as une liste de nombres : $4$, $7$, $2$, $5$. Écris un algorithme (suite d'instructions) qui permet de calculer la somme de ces nombres en essayant la stratégie « addition successive ».",
+      "correctAnswer": "Algorithme :\\n1. Initialiser la variable somme à $0$.\\n2. Pour chaque nombre de la liste (dans l'ordre) :\\n   - Ajouter le nombre à somme.\\n3. Afficher la valeur de somme.\\nRésultat attendu : $4 + 7 + 2 + 5 = 18$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence avec somme = 0. On ajoute 4 → 4, puis 7 → 11, puis 2 → 13, puis 5 → 18. La stratégie consiste à accumuler le total étape par étape.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du double d'un nombre par addition",
+      "content": "Choisis un nombre entier entre $1$ et $20$. Écris un algorithme qui, en utilisant la stratégie « additionner le nombre à lui-même », donne le double de ce nombre.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre choisi (appelons-le n).\\n2. Calculer double = n + n.\\n3. Afficher double.\\nExemple : si n = 12, double = 12 + 12 = 24.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le double d'un nombre s'obtient en l'additionnant à lui-même. L'algorithme met en œuvre cette stratégie simple.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comptage de boîtes par soustraction successive",
+      "content": "Il y a $24$ billes. On veut les ranger dans des boîtes de $6$ billes chacune. Écris un algorithme qui, en essayant la stratégie « soustraction successive », détermine combien de boîtes sont nécessaires.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser nombre_de_billes = 24 et boîtes = 0.\\n2. Tant que nombre_de_billes > 0 :\\n   - Soustraire 6 à nombre_de_billes.\\n   - Augmenter boîtes de 1.\\n3. Afficher boîtes.\\nRésultat : 24 - 6 = 18 (1), 18 - 6 = 12 (2), 12 - 6 = 6 (3), 6 - 6 = 0 (4) → 4 boîtes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On retire des groupes de 6 billes jusqu'à épuisement. Chaque retrait correspond à une boîte. Après 4 retraits, il ne reste plus de billes, donc 4 boîtes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

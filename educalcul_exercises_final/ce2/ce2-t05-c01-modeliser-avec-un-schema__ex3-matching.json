@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Relier schéma et calcul",
+  "title": "Relier un schéma en barres au calcul correspondant",
+  "blocks": [
+    {
+      "title": "Problème 1 : Regroupement",
+      "content": "Relie chaque schéma en barres au calcul qui permet de trouver le total.",
+      "pairs": [
+        {
+          "left": "Schéma A : Une barre unique divisée en deux parties. Partie 1 : $25$. Partie 2 : $18$. Total : $?$",
+          "right": "$25 + 18 = ?$"
+        },
+        {
+          "left": "Schéma B : Une barre unique divisée en deux parties. Partie 1 : $42$. Partie 2 : $36$. Total : $?$",
+          "right": "$42 + 36 = ?$"
+        },
+        {
+          "left": "Schéma C : Une barre unique divisée en deux parties. Partie 1 : $15$. Partie 2 : $27$. Total : $?$",
+          "right": "$15 + 27 = ?$"
+        }
+      ],
+      "explanation": "Dans un schéma en barres représentant un regroupement (deux parts forment un tout), on additionne les deux parties connues pour trouver le total. Le calcul est toujours : partie + partie = total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Partage ou Soustraction",
+      "content": "Relie chaque schéma en barres au calcul qui permet de trouver la partie manquante.",
+      "pairs": [
+        {
+          "left": "Schéma A : Une barre totale $50$. Une partie connue $20$ (colorée). L'autre partie $?$ (blanche).",
+          "right": "$50 - 20 = ?$"
+        },
+        {
+          "left": "Schéma B : Une barre totale $100$. Une partie connue $40$ (colorée). L'autre partie $?$ (blanche).",
+          "right": "$100 - 40 = ?$"
+        },
+        {
+          "left": "Schéma C : Une barre totale $75$. Une partie connue $25$ (colorée). L'autre partie $?$ (blanche).",
+          "right": "$75 - 25 = ?$"
+        }
+      ],
+      "explanation": "Quand le schéma montre un total et une seule partie connue, il faut retrancher la partie connue du total pour trouver la partie manquante. Le calcul est : total - partie connue = partie manquante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Comparaison (Différence)",
+      "content": "Relie chaque situation à la bonne modélisation en barres (schéma comparatif) et au calcul de la différence.",
+      "pairs": [
+        {
+          "left": "Léa a $35$ billes. Tom a $18$ billes. Combien Léa a-t-elle de billes de plus que Tom ?",
+          "right": "Deux barres alignées : Barre Léa ($35$), Barre Tom ($18$). Différence $?$. Calcul : $35 - 18 = ?$"
+        },
+        {
+          "left": "Un livre coûte $42$ euros. Un cahier coûte $15$ euros. De combien le livre est-il plus cher ?",
+          "right": "Deux barres alignées : Barre Livre ($42$), Barre Cahier ($15$). Différence $?$. Calcul : $42 - 15 = ?$"
+        },
+        {
+          "left": "L'école a $60$ crayons. La classe de CE2 en a $25$. Combien de crayons restent pour les autres classes ?",
+          "right": "Une barre totale ($60$) avec une partie CE2 ($25$) et le reste ($?$). Calcul : $60 - 25 = ?$"
+        }
+      ],
+      "explanation": "Attention à bien lire l'énoncé : les deux premiers sont des comparaisons (on cherche la différence entre deux quantités distinctes, on utilise deux barres alignées). Le troisième est une soustraction classique (partie manquante dans un total), on utilise une seule barre divisée en deux.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

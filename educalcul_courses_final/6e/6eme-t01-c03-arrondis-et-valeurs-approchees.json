@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.535508+00:00",
+  "id": 333,
+  "code": "6eme-t01-c03",
+  "title": "Arrondis et valeurs approchées",
+  "description": "Cours structuré Educalcul : Arrondis et valeurs approchées.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Arrondis et valeurs approchées",
+    "objectif_global": "Arrondis et valeurs approchées",
+    "mini_lecons_imposees": [
+      "Choisir précision.",
+      "Arrondir.",
+      "Contrôler."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Choisir précision.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi arrondir ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu mesures la longueur de ta chambre avec un mètre ruban. Tu vois $4,37$ mètres. Si quelqu'un te demande \"C'est combien ?\", tu ne vas pas répondre \"Quatre virgule trois sept mètres\" à chaque fois. Tu vas dire \"Environ $4,4$ mètres\" ou \"Un peu plus de $4$ mètres\". C'est ça, arrondir : donner une valeur plus simple, plus facile à retenir et à communiquer, qui reste proche de la vraie mesure."
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, on appelle ça une $valeur\\ approchee$. Le mot peut impressionner, mais l'idée est toute simple : on remplace un nombre exact par un nombre plus commode, en acceptant une petite différence. Cette différence, on la choisit nous-mêmes selon ce qu'on a besoin de faire. Pour un menuisier qui coupe une planche, le millimètre compte. Pour un randonneur qui regarde une carte, le kilomètre suffit. La $précision$, c'est exactement ça : le niveau de détail qu'on décide de garder."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur approchée",
+              "definition": "Un nombre qui remplace un nombre exact en étant plus simple à utiliser, tout en restant proche de lui. On choisit la précision selon le contexte.",
+              "example": "$3,14$ est une valeur approchée de $\\pi$ au centième près."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple concret. Le prix d'un jeu vidéo est de $49,99\\ \\text{\\euro}$. Si tu dis à tes parents \"Ça coûte $50\\ \\text{\\euro}$\", tu donnes une valeur approchée au $dix\\ \\text{\\euro}$ près (ou à l'$euro$ près). Si le caissier te demande la somme exacte, il aura besoin des centimes. Mais pour savoir si tu as assez d'argent de poche, l'euro suffit. Le choix de la précision dépend donc de la question qu'on se pose."
+            },
+            {
+              "type": "number_line",
+              "caption": "Le nombre $49,99$ se situe entre $40$ et $50$, tout près de $50$. Selon la précision choisie, on le remplace par $50$ (dizaine), $49$ (unité), $50,0$ (dixième) ou $49,99$ (centième).",
+              "min": 40,
+              "max": 60,
+              "points": [
+                {
+                  "value": 49.99,
+                  "label": "49,99"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 49,
+                  "label": "49"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les niveaux de précision usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au collège, on travaille surtout avec cinq précisions standard. La plus fine, c'est le $centième$ (deux chiffres après la virgule). Vient ensuite le $dixième$ (un chiffre après la virgule). Puis l'$unité$ (aucun chiffre après la virgule). Et pour les grands nombres, la $dizaine$ et la $centaine$. Chaque niveau a son vocabulaire : \"au centième près\", \"au dixième près\", \"à l'unité près\", \"à la dizaine près\", \"à la centaine près\"."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre $734,56$. Si on veut une valeur approchée à la $centaine$ près, on regarde les centaines : c'est $700$ ou $800$ ? Comme $734$ est plus proche de $700$, on dira $700$. À la $dizaine$ près, on hésite entre $730$ et $740$. À l'$unité$ près, entre $734$ et $735$. Au $dixième$ près, entre $734,5$ et $734,6$. Au $centième$ près, c'est déjà exact : $734,56$. Tu vois ? Plus la précision est fine, plus le nombre approché ressemble à l'original."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Précision",
+                "Valeur approchée de $734,56$",
+                "Écart avec l'exact"
+              ],
+              "rows": [
+                [
+                  "À la centaine près",
+                  "$700$",
+                  "$34,56$"
+                ],
+                [
+                  "À la dizaine près",
+                  "$730$",
+                  "$4,56$"
+                ],
+                [
+                  "À l'unité près",
+                  "$735$",
+                  "$0,44$"
+                ],
+                [
+                  "Au dixième près",
+                  "$734,6$",
+                  "$0,04$"
+                ],
+                [
+                  "Au centième près",
+                  "$734,56$",
+                  "$0$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les niveaux de précision, nous allons voir comment choisir le bon selon la situation. C'est une compétence essentielle : en sciences, en géographie, au quotidien, on ne donne jamais plus de chiffres qu'il n'en faut. Donner $12,345\\ 678\\ 9\\ \\text{km}$ pour la distance Terre-Lune serait ridicule : $384\\ 400\\ \\text{km}$ (au kilomètre près) ou $3,8\\times10^5\\ \\text{km}$ (notation scientifique) sont bien plus parlants. La leçon suivante t'apprendra la méthode précise pour arrondir correctement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour chacun de ces nombres, donne la valeur approchée demandée : $a)$ $2\\,847$ à la centaine près ; $b)$ $0,673$ au dixième près ; $c)$ $15,99$ à l'unité près ; $d)$ $402,5$ à la dizaine près.",
+              "answer": "$a)$ $2\\,800$ ; $b)$ $0,7$ ; $c)$ $16$ ; $d)$ $400$",
+              "hint": "Repère le chiffre qui correspond à la précision demandée, puis regarde le chiffre juste à sa droite pour savoir si on monte ou on reste.",
+              "explanation": "Pour $2\\,847$ à la centaine : le chiffre des centaines est $8$, le suivant est $4 < 5$, donc $2\\,800$. Pour $0,673$ au dixième : chiffre des dixièmes $6$, suivant $7 \\ge 5$, donc $0,7$. Pour $15,99$ à l'unité : chiffre des unités $5$, suivant $9 \\ge 5$, donc $16$. Pour $402,5$ à la dizaine : chiffre des dizaines $0$, suivant $2 < 5$, donc $400$."
+            },
+            {
+              "question": "Un élève mesure la température de l'eau : $36,7\\ ^\\circ\\text{C}$. Il écrit dans son cahier : \"Température $\\approx 37\\ ^\\circ\\text{C}\"$. Quelle précision a-t-il choisie ? Justifie.",
+              "answer": "Il a arrondi à l'unité près (au degré près). $36,7$ est plus proche de $37$ que de $36$.",
+              "hint": "Regarde s'il y a des chiffres après la virgule dans la valeur approchée.",
+              "explanation": "La valeur approchée $37$ n'a pas de chiffre après la virgule, c'est donc un arrondi à l'unité près. Le chiffre des dixièmes de la mesure exacte est $7 \\ge 5$, donc on arrondit l'unité supérieure : $36 \\rightarrow 37$."
+            }
+          ]
+        },
+        {
+          "title": "Arrondir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle de l'arrondi, étape par étape"
+            },
+            {
+              "type": "paragraph",
+              "content": "Arrondir, ce n'est pas deviner. C'est suivre une règle précise, comme une recette de cuisine. Si tu respectes les étapes dans l'ordre, tu ne te tromperas jamais. La règle s'applique exactement de la même façon, que tu arrondisses à la centaine, à l'unité ou au millième. Seule la position du chiffre qui t'intéresse change. Rassure-toi : avec un peu d'entraînement, ce geste deviendra automatique, comme attacher ses lacets."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le chiffre clé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le chiffre qui correspond à la précision demandée. Pour arrondir à la dizaine, c'est le chiffre des dizaines. Pour le dixième, c'est le premier chiffre après la virgule. Entoure-le mentalement ou sur ta feuille : c'est ton \"chiffre pivot\"."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarder le voisin de droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe le chiffre immédiatement à droite de ton chiffre pivot. C'est lui qui décide de la suite. S'il vaut $0, 1, 2, 3$ ou $4$ (strictement inférieur à $5$), on laisse le chiffre pivot tel quel. S'il vaut $5, 6, 7, 8$ ou $9$ (supérieur ou égal à $5$), on augmente le chiffre pivot de $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les chiffres à droite du chiffre pivot deviennent $0$ (ou disparaissent s'ils sont après la virgule). Les chiffres à gauche ne bougent pas, sauf si l'augmentation du chiffre pivot a provoqué une retenue (exemple : $9,96$ au dixième près $\\rightarrow$ le $9$ des dixièmes devient $10$, donc $10,0$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons ensemble sur $14,238$ arrondi au centième près. Étape 1 : le chiffre des centièmes est $3$. Étape 2 : son voisin de droite (millionièmes) est $8$. Comme $8 \\ge 5$, on augmente le $3$ en $4$. Étape 3 : on coupe après les centièmes. Résultat : $14,24$. Facile, non ?"
+            },
+            {
+              "type": "number_line",
+              "caption": "Sur cette droite, $14,238$ se trouve entre $14,23$ et $14,24$, mais beaucoup plus près de $14,24$. L'arrondi au centième choisit le plus proche.",
+              "min": 14.23,
+              "max": 14.24,
+              "points": [
+                {
+                  "value": 14.23,
+                  "label": "14,23"
+                },
+                {
+                  "value": 14.238,
+                  "label": "14,238"
+                },
+                {
+                  "value": 14.24,
+                  "label": "14,24"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention au cas où le chiffre pivot est un $9$ et qu'il faut l'augmenter ! Prenons $2,96$ arrondi au dixième près. Le chiffre des dixièmes est $9$. Son voisin est $6 \\ge 5$. On doit augmenter le $9$ : il devient $10$. Cela veut dire $1$ unité de plus à gauche, et $0$ aux dixièmes. Résultat : $3,0$. On n'écrit pas $2,10$ (ce qui voudrait dire $2$ unités et $10$ dixièmes), on écrit $3,0$ pour montrer qu'on a arrondi au dixième près."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre piège fréquent : oublier les zéros significatifs. Si on arrondit $402$ à la dizaine près, le chiffre des dizaines est $0$, son voisin est $2 < 5$, on garde le $0$. Résultat : $400$. Pas $4$ ! Le zéro des dizaines et le zéro des unités sont là pour montrer la précision : on a arrondi à la dizaine, donc on conserve deux zéros à droite. C'est ce qui distingue $400$ (dizaine) de $4$ (unité)."
+            },
+            {
+              "type": "display_math",
+              "latex": "2,96 \\xrightarrow{\\text{dixième}} 3,0 \\qquad 402 \\xrightarrow{\\text{dizaine}} 400 \\qquad 9\\,999 \\xrightarrow{\\text{centaine}} 10\\,000"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant la méthode complète pour arrondir n'importe quel nombre à n'importe quelle précision. La leçon suivante te montrera comment vérifier qu'un arrondi est correct, et comment exprimer l'erreur qu'on fait en arrondissant. C'est une étape importante pour ne plus jamais douter de tes résultats."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis les nombres suivants : $a)$ $5,678$ au centième près ; $b)$ $99,96$ au dixième près ; $c)$ $3\\,451$ à la centaine près ; $d)$ $0,999$ à l'unité près.",
+              "answer": "$a)$ $5,68$ ; $b)$ $100,0$ ; $c)$ $3\\,500$ ; $d)$ $1$",
+              "hint": "Applique les trois étapes : repère le chiffre pivot, regarde son voisin de droite, décide. Attention aux retenues quand le pivot est un 9 !",
+              "explanation": "$a)$ Pivot = $7$ (centièmes), voisin = $8 \\ge 5$ $\\rightarrow$ $5,68$. $b)$ Pivot = $9$ (dixièmes), voisin = $6 \\ge 5$ $\\rightarrow$ retenue : $99,96 \\rightarrow 100,0$. $c)$ Pivot = $4$ (centaines), voisin = $5 \\ge 5$ $\\rightarrow$ $3\\,500$. $d)$ Pivot = $0$ (unités de $0,999$), voisin = $9 \\ge 5$ $\\rightarrow$ $1$."
+            },
+            {
+              "question": "Un élève a arrondi $12,345$ au dixième près et a écrit $12,3$. Est-ce correct ? Explique l'erreur et donne le bon résultat.",
+              "answer": "Non, ce n'est pas correct. Le bon arrondi est $12,3$... attends, le chiffre des dixièmes est $3$, son voisin est $4 < 5$, donc on garde $3$. Résultat : $12,3$. L'élève a eu raison par hasard mais sa méthode n'est pas expliquée.",
+              "hint": "Identifie le chiffre des dixièmes et celui des centièmes dans $12,345$.",
+              "explanation": "Dans $12,345$, le chiffre des dixièmes est $3$. Le chiffre des centièmes (voisin de droite) est $4$. Comme $4 < 5$, on ne modifie pas le $3$. L'arrondi au dixième près est bien $12,3$. L'élève a trouvé le bon résultat."
+            }
+          ]
+        },
+        {
+          "title": "Contrôler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier un arrondi : l'encadrement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as arrondi un nombre. Comment être sûr(e) de ne pas t'être trompé(e) ? La méthode la plus sûre, c'est l'$encadrement$. Au lieu de donner une seule valeur approchée, on donne deux nombres : un plus petit que l'exact, un plus grand. Le nombre exact est \"encadré\" entre les deux. C'est comme dire : \"La température est entre $20$ et $21$ degrés\" au lieu de \"Environ $20$ degrés\". C'est plus précis, et ça prouve qu'on a bien arrondi."
+            },
+            {
+              "type": "definition",
+              "term": "Encadrement",
+              "definition": "Deux nombres, un inférieur et un supérieur, entre lesquels se trouve la valeur exacte. L'écart entre les deux nombres vaut exactement l'unité de la précision choisie (1 pour l'unité, 0,1 pour le dixième, 0,01 pour le centième...).",
+              "example": "$3,14 < \\pi < 3,15$ est un encadrement de $\\pi$ au centième près."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $14,238$ qu'on a arrondi au centième près en $14,24$. Pour vérifier, on écrit l'encadrement au centième : $14,23 \\le 14,238 < 14,24$. On voit tout de suite que $14,238$ est plus proche de $14,24$ que de $14,23$ (l'écart est $0,008$ d'un côté, $0,002$ de l'autre). L'arrondi est bon. Si on avait écrit $14,23$, l'encadrement aurait montré l'erreur : $14,238$ n'est pas dans $[14,22 ; 14,23[$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de $14,238$ au centième près. La valeur exacte est dans l'intervalle $[14,23 ; 14,24[$. Elle est plus proche de la borne supérieure.",
+              "min": 14.22,
+              "max": 14.25,
+              "points": [
+                {
+                  "value": 14.23,
+                  "label": "14,23"
+                },
+                {
+                  "value": 14.238,
+                  "label": "14,238"
+                },
+                {
+                  "value": 14.24,
+                  "label": "14,24"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 14.23,
+                  "end": 14.24,
+                  "label": "Encadrement"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'erreur d'arrondi et le symbole $\\approx$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on remplace un nombre exact par sa valeur approchée, on fait une petite erreur. Cette $erreur\\ d'arrondi$ est la différence (en valeur absolue) entre les deux. Elle est toujours strictement inférieure à la moitié de l'unité de précision. Par exemple, si on arrondit à l'unité près, l'erreur maximale possible est $0,5$. Si on arrondit au dixième près, l'erreur maximale est $0,05$. C'est une garantie : l'arrondi ne s'éloigne jamais de plus de la moitié du pas de précision."
+            },
+            {
+              "type": "paragraph",
+              "content": "On note le lien entre la valeur exacte et sa valeur approchée avec le symbole $\\approx$ (se lit \"est approximativement égal à\"). Par exemple : $\\pi \\approx 3,14$ (au centième près). Attention : on n'écrit jamais $\\pi = 3,14$ ! Le signe $=$ signifie \"est exactement égal à\", ce qui est faux. Le symbole $\\approx$ dit : \"C'est proche, mais ce n'est pas l'égalité exacte\". C'est une habitude de rigueur très importante au collège."
+            },
+            {
+              "type": "display_math",
+              "latex": "|\\text{valeur exacte} - \\text{valeur approch\\'ee}| < \\frac{\\text{unit\\'e de pr\\'ecision}}{2} \\qquad \\text{Exemple : } |14,238 - 14,24| = 0,002 < 0,005"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir et justifier sa précision"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons qu'un bon arrondi s'accompagne toujours de sa précision. Dire \"$3,14$\" sans dire \"au centième près\" est incomplet. Dans un exercice, on écrit : \"$3,14$ est une valeur approchée de $\\pi$ au centième près.\" Ou : \"$3,14 \\approx \\pi$ (au centième près).\" Cette phrase prouve que tu as réfléchi au niveau de détail nécessaire. En sciences physiques, en technologie, au brevet, on te demandera souvent : \"Donne une valeur approchée au dixième près.\" C'est une consigne précise, pas une suggestion."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés : choisir la précision selon le contexte, arrondir sans erreur grâce à la méthode en trois étapes, vérifier par l'encadrement, et noter le résultat avec le symbole $\\approx$. Ces outils te suivront tout au long du collège, au lycée, et même bien après dans la vie quotidienne. Bravo pour ton travail sur ce chapitre !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier la précision demandée (centième, dixième, unité, dizaine, centaine).",
+                "Je sais arrondir un nombre décimal à une précision donnée en appliquant la règle du chiffre pivot.",
+                "Je sais écrire l'encadrement d'un nombre à une précision donnée.",
+                "J'utilise correctement le symbole $\\approx$ pour lier une valeur exacte et sa valeur approchée.",
+                "Je sais calculer ou majorer l'erreur d'arrondi."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'encadrement au dixième près de $7,84$. En déduit l'arrondi au dixième près.",
+              "answer": "Encadrement : $7,8 \\le 7,84 < 7,9$. Arrondi : $7,8$.",
+              "hint": "Les bornes de l'encadrement au dixième sont les deux dixièmes consécutifs qui entourent le nombre.",
+              "explanation": "Au dixième près, on cherche les nombres à un chiffre après la virgule qui encadrent $7,84$. C'est $7,8$ et $7,9$. Comme $7,84$ est plus proche de $7,8$ (le chiffre des centièmes est $4 < 5$), l'arrondi est $7,8$."
+            },
+            {
+              "question": "On a arrondi un nombre à l'unité près et on a obtenu $15$. Quelle est l'erreur maximale possible ? Donne un exemple de nombre exact qui aurait pu donner cet arrondi.",
+              "answer": "Erreur maximale : $0,5$. Exemple : $14,7$ ou $15,3$ (tout nombre dans $[14,5 ; 15,5[$).",
+              "hint": "L'erreur maximale est la moitié de l'unité de précision. L'encadrement à l'unité près de $15$ est $[15 ; 16[$ ou $[14 ; 15[$ ?",
+              "explanation": "Arrondi à l'unité près $\\rightarrow$ précision $= 1$. Erreur max $= 0,5$. L'encadrement est $14,5 \\le x < 15,5$. Tout nombre dans cet intervalle s'arrondit à $15$ (sauf $15,5$ qui s'arrondit à $16$). Exemple : $14,7$, $15,2$, $15,49...$"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

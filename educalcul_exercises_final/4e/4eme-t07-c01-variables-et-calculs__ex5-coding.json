@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Affectations",
+  "title": "Approfondissement : Affectations",
+  "blocks": [
+    {
+      "title": "Affectation simple et calcul",
+      "content": "Écrire un algorithme qui affecte la valeur $12$ à la variable $a$, puis affecte à la variable $b$ la valeur de $a$ augmentée de $5$, et enfin affiche la valeur de $b$.",
+      "correctAnswer": "Début\\n$a$ $←$ $12$\\n$b$ $←$ $a$ $+$ $5$\\nAfficher $b$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par affecter $12$ à $a$. Ensuite, l'expression $a + 5$ est évaluée ($12 + 5 = 17$) et le résultat est affecté à $b$. Enfin, la valeur de $b$ ($17$) est affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échange de deux variables",
+      "content": "Écrire un algorithme qui échange les valeurs des variables $x$ et $y$ en utilisant une variable temporaire $temp$. On suppose que $x$ vaut $8$ et $y$ vaut $3$ au départ. L'algorithme doit afficher les valeurs de $x$ et $y$ après l'échange.",
+      "correctAnswer": "Début\\n$x$ $←$ $8$\\n$y$ $←$ $3$\\n$temp$ $←$ $x$\\n$x$ $←$ $y$\\n$y$ $←$ $temp$\\nAfficher $x$, $y$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On stocke la valeur de $x$ dans $temp$ ($8$). Puis on affecte à $x$ la valeur de $y$ ($3$). Enfin on affecte à $y$ la valeur stockée dans $temp$ ($8$). Après l'échange, $x$ vaut $3$ et $y$ vaut $8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme des premiers entiers avec affectations",
+      "content": "Écrire un algorithme qui demande un entier $n$ (supérieur ou égal à $1$), puis calcule la somme $S = 1 + 2 + ... + n$ en utilisant une boucle. Les variables $S$ (somme) et $i$ (compteur) sont initialisées par affectation, puis mises à jour à chaque itération. L'algorithme affiche le résultat $S$.",
+      "correctAnswer": "Début\\nLire $n$\\n$S$ $←$ $0$\\n$i$ $←$ $1$\\nTantQue $i$ $≤$ $n$ faire\\n    $S$ $←$ $S$ $+$ $i$\\n    $i$ $←$ $i$ $+$ $1$\\nFinTantQue\\nAfficher $S$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise $S$ à $0$ et $i$ à $1$. Tant que $i$ est inférieur ou égal à $n$, on ajoute $i$ à $S$ puis on incrémente $i$. À la fin, $S$ contient la somme des entiers de $1$ à $n$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

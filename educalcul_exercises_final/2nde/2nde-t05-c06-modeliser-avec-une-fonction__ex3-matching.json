@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter une fonction : graphique, contexte et tableau de variations",
+  "blocks": [
+    {
+      "title": "Lecture graphique",
+      "content": "On donne ci-dessous la courbe représentative d'une fonction $f$ définie sur $[-4 ; 4]$. Relier chaque caractéristique à la valeur ou l'intervalle correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Intervalle où $f$ est croissante",
+          "right": "$[-2 ; 1]$"
+        },
+        {
+          "left": "Maximum de $f$ sur $[-4 ; 4]$",
+          "right": "$3$"
+        },
+        {
+          "left": "Antécédent(s) de $0$ par $f$",
+          "right": "$-3$ et $2$"
+        },
+        {
+          "left": "Signe de $f$ sur l'intervalle $]1 ; 4]$",
+          "right": "Négatif"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur le graphique, la fonction monte de $x=-2$ à $x=1$ (croissante). Le point le plus haut a pour ordonnée $3$ (maximum). La coupe l'axe des abscisses pour $x=-3$ et $x=2$ (antécédents de $0$). Entre $1$ et $4$, la courbe est en dessous de l'axe des abscisses (négatif).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation physique : lancer de balle",
+      "content": "La hauteur $h$ (en mètres) d'une balle lancée verticalement en fonction du temps $t$ (en secondes) est modélisée par la fonction $h(t) = -5t^2 + 20t + 2$ pour $t \\in [0 ; 4]$. Relier chaque question à la bonne réponse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Hauteur initiale de la balle",
+          "right": "$2$ m"
+        },
+        {
+          "left": "Hauteur maximale atteinte",
+          "right": "$22$ m"
+        },
+        {
+          "left": "Instant où la hauteur est maximale",
+          "right": "$2$ s"
+        },
+        {
+          "left": "Durée pendant laquelle $h(t) > 17$",
+          "right": "$2$ s"
+        }
+      ],
+      "items": [],
+      "explanation": "Hauteur initiale : $h(0)=2$. Le sommet du trinôme $-5t^2+20t+2$ est à $t=-b/(2a)=-20/(2\\times-5)=2$ s, hauteur $h(2)=-20+40+2=22$ m. Inéquation $-5t^2+20t+2 > 17 \\Leftrightarrow -5t^2+20t-15 > 0 \\Leftrightarrow t^2-4t+3 < 0 \\Leftrightarrow (t-1)(t-3) < 0$, solution $t \\in ]1;3[$, durée $3-1=2$ s.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Tableau de variations et signe (fonction du second degré)",
+      "content": "Soit la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (x-1)(3-x)$. Relier chaque propriété de $f$ à l'expression correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Sens de variation de $f$ sur $]-\\infty ; 2]$",
+          "right": "Croissante"
+        },
+        {
+          "left": "Sens de variation de $f$ sur $[2 ; +\\infty[$",
+          "right": "Décroissante"
+        },
+        {
+          "left": "Coordonnées du sommet de la parabole",
+          "right": "$(2 ; 1)$"
+        },
+        {
+          "left": "Ensemble des solutions de $f(x) \\le 0$",
+          "right": "$]-\\infty ; 1] \\cup [3 ; +\\infty[$"
+        }
+      ],
+      "items": [],
+      "explanation": "Forme développée : $f(x) = -x^2+4x-3$. Coefficient de $x^2$ négatif, parabole tournée vers le bas. Racines $1$ et $3$. Sommet à l'abscisse $x_s = (1+3)/2 = 2$, ordonnée $f(2) = (1)(1) = 1$. Croissante avant $2$, décroissante après. $f(x) \\le 0$ hors des racines (signe de $a$ négatif).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

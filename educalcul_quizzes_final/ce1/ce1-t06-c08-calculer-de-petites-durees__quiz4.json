@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 124,
+  "_course_code": "ce1-t06-c08-calculer-de-petites-durees",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Calculer de petites durées",
+  "title": "Quiz : Calculer de petites durées",
+  "questions": [
+    {
+      "text": "Regarde l'horloge. Il est $9$ heures. Dans combien de minutes sera-t-il $9$ heures $15$ ?",
+      "options": [
+        "$15$ minutes",
+        "$30$ minutes",
+        "$45$ minutes",
+        "$60$ minutes"
+      ],
+      "correctAnswer": "$15$ minutes",
+      "explanation": "Pour passer de $9$ heures (minutes $= 0$) à $9$ heures $15$ (minutes $= 15$), on compte les minutes qui s'écoulent : $15 - 0 = 15$ minutes. L'aiguille des minutes avance de $3$ graduations (chaque graduation vaut $5$ minutes).",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 9,
+        "minutes": 0,
+        "caption": "Heure de départ : 9h00",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Une récréation commence à $10$ heures $10$ et se termine à $10$ heures $25$. Combien de temps dure-t-elle ?",
+      "options": [
+        "$10$ minutes",
+        "$15$ minutes",
+        "$25$ minutes",
+        "$35$ minutes"
+      ],
+      "correctAnswer": "$15$ minutes",
+      "explanation": "On calcule la différence entre l'heure de fin et l'heure de début : $25 - 10 = 15$ minutes. L'erreur fréquente est de lire l'heure de fin ($25$) ou d'additionner les deux ($10 + 25 = 35$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'horloge. Il est $14$ heures $20$. Quelle heure sera-t-il dans $20$ minutes ?",
+      "options": [
+        "$14$ heures $00$",
+        "$14$ heures $40$",
+        "$15$ heures $20$",
+        "$14$ heures $30$"
+      ],
+      "correctAnswer": "$14$ heures $40$",
+      "explanation": "On ajoute la durée aux minutes de départ : $20 + 20 = 40$ minutes. L'heure ne change pas car le total des minutes ($40$) est inférieur à $60$. L'aiguille des minutes avance de $4$ graduations ($4 \\times 5 = 20$ min).",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 14,
+        "minutes": 20,
+        "caption": "Heure de départ : 14h20",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un dessin animé commence à $16$ heures $50$ et dure $20$ minutes. À quelle heure se termine-t-il ?",
+      "options": [
+        "$16$ heures $70$",
+        "$17$ heures $10$",
+        "$17$ heures $00$",
+        "$16$ heures $30$"
+      ],
+      "correctAnswer": "$17$ heures $10$",
+      "explanation": "On ajoute $20$ minutes à $16$ h $50$ : $50 + 20 = 70$ minutes. Comme $70$ minutes $= 1$ heure ($60$ min) $+ 10$ minutes, on passe à l'heure suivante : $16$ h $+ 1$ h $= 17$ h, et il reste $10$ minutes. Donc $17$ h $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo commence ses devoirs à $17$ heures $15$ et les finit à $17$ heures $45$. Combien de temps a-t-il mis ?",
+      "options": [
+        "$20$ minutes",
+        "$30$ minutes",
+        "$45$ minutes",
+        "$60$ minutes"
+      ],
+      "correctAnswer": "$30$ minutes",
+      "explanation": "On soustrait l'heure de début de l'heure de fin : $45 - 15 = 30$ minutes. On peut aussi compter par sauts de $5$ minutes sur le cadran : $15 \\to 20 \\to 25 \\to 30 \\to 35 \\to 40 \\to 45$, ce qui fait $6$ sauts de $5$ min, soit $30$ min.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 17,
+        "minutes": 15,
+        "caption": "Heure de début : 17h15",
+        "interactive": false
+      }
+    }
+  ]
+}

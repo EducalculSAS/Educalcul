@@ -1,0 +1,128 @@
+{
+  "_status": "done",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Choisir échelle",
+  "title": "Choisir l'échelle sur une droite graduée",
+  "questions": [
+    {
+      "text": "Observe la droite graduée ci-dessous. Quelle est la valeur d'une graduation (l'écart entre deux traits successifs) ?",
+      "options": [
+        "0,1",
+        "0,01",
+        "1",
+        "10"
+      ],
+      "correctAnswer": "0,1",
+      "explanation": "La droite va de $0$ à $1$. Elle est découpée en $10$ intervalles égaux (il y a $10$ traits entre $0$ et $1$). La valeur d'une graduation est $1 \\div 10 = 0,1$. L'option $0,01$ correspondrait à $100$ intervalles, $1$ à un seul intervalle et $10$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 avec 10 intervalles",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 1,
+            "steps": 10
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur cette droite graduée qui va de $0$ à $1$, il y a $5$ intervalles égaux. Quelle est l'échelle (la valeur d'une graduation) ?",
+      "options": [
+        "0,5",
+        "0,2",
+        "0,1",
+        "0,02"
+      ],
+      "correctAnswer": "0,2",
+      "explanation": "L'intervalle total est $1 - 0 = 1$. Il est divisé en $5$ parties égales. La valeur d'une graduation est $1 \\div 5 = 0,2$. L'option $0,5$ serait pour $2$ intervalles, $0,1$ pour $10$ intervalles et $0,02$ pour $50$ intervalles.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 avec 5 intervalles",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 1,
+            "steps": 5
+          }
+        ]
+      }
+    },
+    {
+      "text": "On veut placer le nombre $3,7$ sur une droite qui va de $3$ à $4$ avec $10$ graduations. Quelle est la valeur d'une graduation ?",
+      "options": [
+        "0,1",
+        "0,01",
+        "1",
+        "0,5"
+      ],
+      "correctAnswer": "0,1",
+      "explanation": "La droite commence à $3$ et finit à $4$. L'écart total est $4 - 3 = 1$. Avec $10$ intervalles égaux, chaque graduation vaut $1 \\div 10 = 0,1$. Cela permet de placer les dixièmes : $3,1$, $3,2$, ..., $3,7$, ... $3,9$. Les autres valeurs ne correspondent pas à une division de $1$ en $10$ parties.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 3 à 4 avec 10 intervalles",
+        "min": 3,
+        "max": 4,
+        "points": [],
+        "intervals": [
+          {
+            "start": 3,
+            "end": 4,
+            "steps": 10
+          }
+        ]
+      }
+    },
+    {
+      "text": "Regarde cette droite graduée qui va de $0,5$ à $0,6$. Elle est divisée en $10$ intervalles. Quelle est la valeur d'une graduation ?",
+      "options": [
+        "0,1",
+        "0,01",
+        "0,001",
+        "1"
+      ],
+      "correctAnswer": "0,01",
+      "explanation": "L'écart entre $0,5$ et $0,6$ est $0,6 - 0,5 = 0,1$ (un dixième). Cet écart est divisé en $10$ parties égales. La valeur d'une graduation est $0,1 \\div 10 = 0,01$ (un centième). Cela permet de placer des nombres comme $0,51$, $0,52$, etc. L'option $0,1$ est l'écart total, pas la graduation.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0,5 à 0,6 avec 10 intervalles",
+        "min": 0.5,
+        "max": 0.6,
+        "points": [],
+        "intervals": [
+          {
+            "start": 0.5,
+            "end": 0.6,
+            "steps": 10
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour placer le nombre $2,35$ le plus précisément possible, quelle droite graduée faut-il choisir ?",
+      "options": [
+        "Une droite de $2$ à $3$ avec des graduations de $0,1$",
+        "Une droite de $2,3$ à $2,4$ avec des graduations de $0,01$",
+        "Une droite de $0$ à $10$ avec des graduations de $1$",
+        "Une droite de $2$ à $4$ avec des graduations de $0,5$"
+      ],
+      "correctAnswer": "Une droite de $2,3$ à $2,4$ avec des graduations de $0,01$",
+      "explanation": "Le nombre $2,35$ a deux chiffres après la virgule (centièmes). Il se situe entre $2,3$ et $2,4$. Une graduation de $0,01$ (centième) permet de le placer exactement sur le trait $2,35$. La première option (graduations de $0,1$) ne permet de placer que $2,3$ ou $2,4$. Les deux dernières options sont trop imprécises (graduations de $1$ ou $0,5$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

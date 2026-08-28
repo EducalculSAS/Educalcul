@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 69,
+  "_course_code": "ce1-t01-c02-lire-et-ecrire-jusqu-a-199",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lire les écritures chiffrées",
+  "title": "Algorithmes de lecture des nombres jusqu'à 199",
+  "blocks": [
+    {
+      "title": "Lire un nombre à deux chiffres",
+      "content": "Écris un algorithme (une suite d'étapes numérotées) qui permet de lire à voix haute un nombre écrit en chiffres entre $10$ et $99$. Par exemple, pour l'entrée $42$, l'algorithme doit produire \"quarante-deux\".",
+      "correctAnswer": "1. Regarder le chiffre des dizaines. 2. Dire le mot des dizaines (vingt, trente, quarante, cinquante, soixante). 3. Regarder le chiffre des unités. 4. Si les unités sont $0$, s'arrêter. 5. Si les unités sont $1$, ajouter \"-et-un\" (sauf pour $11$). 6. Sinon, ajouter un trait d'union puis le mot des unités (deux, trois...).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour lire un nombre à deux chiffres, on commence toujours par les dizaines. On nomme la dizaine (vingt, trente...), puis on ajoute les unités s'il y en a, en respectant les particularités comme le \"et\" pour $21, 31...$ et les nombres $11$ à $16$ qui ont des noms propres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lire un nombre à trois chiffres jusqu'à 199",
+      "content": "Complète l'algorithme suivant pour lire un nombre entre $100$ et $199$. L'algorithme doit gérer le mot \"cent\" (sans s) et la lecture de la fin du nombre.\\n\\nAlgorithme LIRE_NOMBRE_100_199(nombre)\\nDébut\\n  1. Le chiffre des centaines est $1$. Dire \"cent\".\\n  2. Regarder les deux derniers chiffres (dizaines et unités).\\n  3. Si ces deux chiffres sont $00$ : __________\\n  4. Sinon : __________\\nFin",
+      "correctAnswer": "3. Si ces deux chiffres sont $00$ : s'arrêter (le nombre est cent).\\n4. Sinon : appliquer l'algorithme de lecture des nombres à deux chiffres (de $1$ à $99$) pour la fin du nombre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Jusqu'à $199$, la centaine est toujours $1$, on dit donc simplement \"cent\" (sans s car il n'y a qu'une seule centaine). Ensuite, on lit la partie « dizaines-unités » exactement comme un nombre à deux chiffres. Par exemple $115$ se lit « cent quinze », $142$ se lit « cent quarante-deux ».",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet de $1$ à $199$",
+      "content": "Rédige un algorithme structuré (style « Si... Alors... Sinon ») qui prend en entrée un nombre entier $N$ entre $1$ et $199$ et qui affiche son écriture en lettres. Utilise les variables : c (centaines), d (dizaines), u (unités).",
+      "correctAnswer": "Algorithme LIRE_NOMBRE(N)\\nDébut\\n  c ← chiffre des centaines de N (0 ou 1)\\n  d ← chiffre des dizaines de N\\n  u ← chiffre des unités de N\\n\\n  Si c = 1 Alors\\n    Afficher \"cent\"\\n    Si d = 0 et u = 0 Alors\\n      Terminer\\n    FinSi\\n  FinSi\\n\\n  Si d = 1 Alors\\n    Cas particulier : lire 10, 11, 12, 13, 14, 15, 16 selon table\\n  Sinon\\n    Dire le mot de la dizaine (vingt, trente... soixante)\\n    Si u = 1 Alors\\n      Ajouter \"-et-un\"\\n    Sinon Si u > 1 Alors\\n      Ajouter \"-\" + mot de l'unité\\n    FinSi\\n  FinSi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme structure la lecture en trois blocs : la centaine (présente ou non), la dizaine (avec le cas spécial de la deuxième dizaine 10-16), et l'unité (avec la règle du « et » pour 1). Il couvre tous les cas de $1$ à $199$ de façon logique et programmable.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

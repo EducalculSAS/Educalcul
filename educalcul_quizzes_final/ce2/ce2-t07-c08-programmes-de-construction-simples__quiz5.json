@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Lire des étapes",
+  "title": "Quiz : Lire des étapes de construction",
+  "questions": [
+    {
+      "text": "Dans un programme de construction de figure géométrique, quelle instruction doit généralement être exécutée en tout premier ?",
+      "options": [
+        "Tracer un cercle avec le compas",
+        "Tracer un segment de départ à la règle",
+        "Colorier l'intérieur de la figure",
+        "Mesurer un angle avec le rapporteur"
+      ],
+      "correctAnswer": "Tracer un segment de départ à la règle",
+      "explanation": "Un programme de construction commence toujours par définir une base : on trace d'abord un segment à la règle (par exemple $[AB]$) qui servira de repère pour les étapes suivantes (perpendiculaires, cercles, report de longueurs). Les autres actions interviennent plus tard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les étapes d'un programme dans le désordre pour construire un triangle rectangle en B :\\n1. Tracer le segment $[AB]$ de $5$ cm.\\n2. Tracer la perpendiculaire à $(AB)$ passant par B.\\n3. Placer le point C sur cette perpendiculaire à $3$ cm de B.\\nQuel est l'ordre logique de ces étapes ?",
+      "options": [
+        "1, 2, 3",
+        "2, 1, 3",
+        "3, 2, 1",
+        "1, 3, 2"
+      ],
+      "correctAnswer": "1, 2, 3",
+      "explanation": "Il faut d'abord avoir le segment $[AB]$ (étape 1) pour pouvoir tracer la perpendiculaire en B (étape 2). Ce n'est qu'une fois cette droite tracée qu'on peut y reporter la longueur $3$ cm pour placer C (étape 3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe la figure ci-dessous. Quel programme de construction a permis de l'obtenir ?",
+      "options": [
+        "Programme d'un rectangle de $6$ cm sur $4$ cm",
+        "Programme d'un carré de côté $4$ cm",
+        "Programme d'un triangle rectangle isocèle",
+        "Programme d'un losange de côté $4$ cm"
+      ],
+      "correctAnswer": "Programme d'un carré de côté $4$ cm",
+      "explanation": "La figure montre un quadrillage de $4$ cases sur $4$ cases entièrement colorié, ce qui correspond à un carré de côté $4$ cm. Le programme associé est : 1. Tracer $[AB]=4$ cm. 2. Tracer les perpendiculaires en A et B. 3. Reporter $4$ cm sur ces perpendiculaires. 4. Relier les extrémités.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 16,
+        "caption": "Carré de 4 cm sur quadrillage"
+      }
+    },
+    {
+      "text": "Regarde le segment $[EF]$ sur la figure. Complète l'étape 3 du programme suivant :\\n1. Tracer une droite $(d)$.\\n2. Placer le point E sur $(d)$.\\n3. ...\\n4. Tracer le segment $[EF]$.",
+      "options": [
+        "Tracer un cercle de centre E et de rayon $6$ cm",
+        "Reporter la longueur $6$ cm sur la droite en partant de E pour obtenir F",
+        "Tracer la perpendiculaire à $(d)$ passant par E",
+        "Mesurer l'angle entre $(d)$ et $[EF]$"
+      ],
+      "correctAnswer": "Reporter la longueur $6$ cm sur la droite en partant de E pour obtenir F",
+      "explanation": "Le segment $[EF]$ mesure $6$ cm sur la règle. Une fois la droite $(d)$ et le point E placés, l'étape indispensable pour obtenir F est de reporter cette longueur sur la droite à l'aide du compas ou de la règle graduée. Tracer un cercle (option A) est une méthode possible mais l'instruction standard au CE2 est le report de longueur sur la droite.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 6,
+        "unit": "cm",
+        "caption": "Segment [EF] à reproduire"
+      }
+    },
+    {
+      "text": "Voici un programme pour construire le triangle équilatéral ABC de côté $5$ cm. Une étape est inutile pour tracer seulement le triangle ABC. Laquelle ?\\n1. Tracer le segment $[AB] = 5$ cm.\\n2. Tracer le cercle de centre A et de rayon $5$ cm.\\n3. Tracer le cercle de centre B et de rayon $5$ cm.\\n4. Les cercles se coupent en C et en D.\\n5. Tracer le segment $[CD]$.",
+      "options": [
+        "L'étape 1",
+        "L'étape 2",
+        "L'étape 4",
+        "L'étape 5"
+      ],
+      "correctAnswer": "L'étape 5",
+      "explanation": "Pour obtenir le triangle ABC, il faut le côté $[AB]$ (étape 1), les deux cercles pour trouver le troisième sommet C (étapes 2 et 3), identifier le point C (étape 4), puis tracer $[AC]$ et $[BC]$. Tracer $[CD]$ (étape 5) correspond à la médiatrice de $[AB]$, ce qui n'est pas un côté du triangle ABC.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Tester",
+  "title": "Tester dans un algorithme : structures conditionnelles",
+  "blocks": [
+    {
+      "title": "Instruction conditionnelle simple",
+      "content": "Relie chaque algorithme à la valeur affichée après son exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "x ← 7\\nSi x > 5 Alors\\n    Afficher \"Grand\"\\nSinon\\n    Afficher \"Petit\"\\nFin Si",
+          "right": "Grand"
+        },
+        {
+          "left": "x ← 3\\nSi x > 5 Alors\\n    Afficher \"Grand\"\\nSinon\\n    Afficher \"Petit\"\\nFin Si",
+          "right": "Petit"
+        },
+        {
+          "left": "x ← 5\\nSi x ≥ 5 Alors\\n    Afficher \"Grand ou égal\"\\nSinon\\n    Afficher \"Strictement petit\"\\nFin Si",
+          "right": "Grand ou égal"
+        },
+        {
+          "left": "x ← -2\\nSi x < 0 Alors\\n    Afficher \"Négatif\"\\nSinon\\n    Afficher \"Positif ou nul\"\\nFin Si",
+          "right": "Négatif"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour chaque algorithme, on évalue la condition du \"Si\" avec la valeur affectée à la variable x. \\n1. x=7, la condition 7>5 est vraie, on exécute le \"Alors\" : affichage \"Grand\".\\n2. x=3, la condition 3>5 est fausse, on exécute le \"Sinon\" : affichage \"Petit\".\\n3. x=5, la condition 5≥5 est vraie (5 est supérieur ou égal à 5), affichage \"Grand ou égal\".\\n4. x=-2, la condition -2<0 est vraie, affichage \"Négatif\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conditions composées avec \"Et\" et \"Ou\"",
+      "content": "Relie chaque algorithme utilisant des opérateurs logiques à la chaîne de caractères affichée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "a ← 4\\nb ← 6\\nSi a > 0 Et b > 0 Alors\\n    Afficher \"Premier quadrant\"\\nSinon\\n    Afficher \"Autre quadrant\"\\nFin Si",
+          "right": "Premier quadrant"
+        },
+        {
+          "left": "a ← -3\\nb ← 5\\nSi a > 0 Et b > 0 Alors\\n    Afficher \"Premier quadrant\"\\nSinon\\n    Afficher \"Autre quadrant\"\\nFin Si",
+          "right": "Autre quadrant"
+        },
+        {
+          "left": "note ← 12\\nSi note ≥ 10 Ou note < 0 Alors\\n    Afficher \"Valide ou aberrante\"\\nSinon\\n    Afficher \"Non valide\"\\nFin Si",
+          "right": "Valide ou aberrante"
+        },
+        {
+          "left": "age ← 16\\nmajeur ← 18\\nSi age ≥ majeur Ou age < 0 Alors\\n    Afficher \"Majeur ou erreur\"\\nSinon\\n    Afficher \"Mineur\"\\nFin Si",
+          "right": "Mineur"
+        }
+      ],
+      "items": [],
+      "explanation": "On évalue les conditions composées :\\n1. a=4>0 et b=6>0 : les deux sont vraies, \"Et\" donne vrai → \"Premier quadrant\".\\n2. a=-3>0 est faux, b=5>0 est vrai. \"Et\" nécessite que les deux soient vraies → faux → \"Autre quadrant\".\\n3. note=12≥10 est vrai, note<0 est faux. \"Ou\" donne vrai dès qu'une est vraie → \"Valide ou aberrante\".\\n4. age=16≥18 est faux, age<0 est faux. \"Ou\" donne faux → \"Mineur\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle et test imbriqués",
+      "content": "Relie chaque algorithme avec une boucle \"Pour\" et un test \"Si\" à la valeur finale de la variable S affichée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "S ← 0\\nPour k de 1 à 5\\n    Si k mod 2 = 0 Alors\\n        S ← S + k\\n    Fin Si\\nFin Pour\\nAfficher S",
+          "right": "6"
+        },
+        {
+          "left": "S ← 0\\nPour k de 1 à 5\\n    Si k mod 2 = 1 Alors\\n        S ← S + k\\n    Fin Si\\nFin Pour\\nAfficher S",
+          "right": "9"
+        },
+        {
+          "left": "P ← 1\\nPour k de 1 à 4\\n    Si k > 0 Alors\\n        P ← P × k\\n    Fin Si\\nFin Pour\\nAfficher P",
+          "right": "24"
+        },
+        {
+          "left": "C ← 0\\nPour k de 1 à 5\\n    Si k > 2 Alors\\n        C ← C + 1\\n    Fin Si\\nFin Pour\\nAfficher C",
+          "right": "3"
+        }
+      ],
+      "items": [],
+      "explanation": "On trace l'exécution de chaque boucle :\\n1. k prend 1,2,3,4,5. Condition k pair (mod 2 = 0) vraie pour 2 et 4. S = 0+2+4 = 6.\\n2. Condition k impair (mod 2 = 1) vraie pour 1, 3, 5. S = 0+1+3+5 = 9.\\n3. P=1. k=1,2,3,4. Condition k>0 toujours vraie. P = 1×1×2×3×4 = 24.\\n4. C=0. k=1,2,3,4,5. Condition k>2 vraie pour 3, 4, 5 (3 valeurs). C = 0+1+1+1 = 3.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

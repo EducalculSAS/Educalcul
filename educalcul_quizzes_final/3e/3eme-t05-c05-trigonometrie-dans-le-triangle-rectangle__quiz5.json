@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Sinus / cosinus / tangente selon programme",
+  "title": "Trigonométrie : Approfondissement sinus, cosinus, tangente",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $A$, on note $a = BC$, $b = AC$ et $c = AB$. Laquelle des égalités suivantes exprime le cosinus de l'angle $\\widehat{B}$ ?",
+      "options": [
+        "$\\frac{a}{b}$",
+        "$\\frac{b}{a}$",
+        "$\\frac{c}{a}$",
+        "$\\frac{a}{c}$"
+      ],
+      "correctAnswer": "$\\frac{c}{a}$",
+      "explanation": "Dans un triangle rectangle, le cosinus d'un angle aigu est égal au quotient du côté adjacent à cet angle par l'hypoténuse. Ici, l'angle est $\\widehat{B}$. L'hypoténuse est $BC = a$ (côté opposé à l'angle droit). Le côté adjacent à $\\widehat{B}$ est $AB = c$. Donc $\\cos(\\widehat{B}) = \\frac{c}{a}$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans un triangle $DEF$ rectangle en $E$, on sait que $\\widehat{D} = 30^{\\circ}$ et $DF = 10\\text{ cm}$. Quelle est la longueur exacte du côté $DE$ ?",
+      "options": [
+        "$5\\text{ cm}$",
+        "$5\\sqrt{3}\\text{ cm}$",
+        "$10\\text{ cm}$",
+        "$10\\sqrt{3}\\text{ cm}$"
+      ],
+      "correctAnswer": "$5\\sqrt{3}\\text{ cm}$",
+      "explanation": "Le côté $DE$ est adjacent à l'angle $\\widehat{D} = 30^{\\circ}$ et l'hypoténuse est $DF = 10$. On utilise le cosinus : $\\cos(30^{\\circ}) = \\frac{DE}{DF} = \\frac{DE}{10}$. Or $\\cos(30^{\\circ}) = \\frac{\\sqrt{3}}{2}$. Donc $DE = 10 \\times \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}\\text{ cm}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $GHI$ rectangle en $H$, on a $GH = 5\\text{ cm}$ et $HI = 5\\sqrt{3}\\text{ cm}$. Quelle est la mesure de l'angle $\\widehat{G}$ ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$45^{\\circ}$",
+        "$60^{\\circ}$",
+        "$90^{\\circ}$"
+      ],
+      "correctAnswer": "$60^{\\circ}$",
+      "explanation": "L'angle $\\widehat{G}$ a pour côté adjacent $GH = 5$ et pour côté opposé $HI = 5\\sqrt{3}$. La tangente de $\\widehat{G}$ est $\\tan(\\widehat{G}) = \\frac{HI}{GH} = \\frac{5\\sqrt{3}}{5} = \\sqrt{3}$. L'angle aigu dont la tangente vaut $\\sqrt{3}$ est $60^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle isocèle a pour hypoténuse $10\\text{ cm}$. Quelle est la longueur exacte de chacun des côtés de l'angle droit ?",
+      "options": [
+        "$5\\text{ cm}$",
+        "$5\\sqrt{2}\\text{ cm}$",
+        "$10\\text{ cm}$",
+        "$10\\sqrt{2}\\text{ cm}$"
+      ],
+      "correctAnswer": "$5\\sqrt{2}\\text{ cm}$",
+      "explanation": "Dans un triangle rectangle isocèle, les deux angles aigus valent $45^{\\circ}$. Soit $x$ la longueur des côtés de l'angle droit. D'après le théorème de Pythagore : $x^2 + x^2 = 10^2 \\Rightarrow 2x^2 = 100 \\Rightarrow x^2 = 50 \\Rightarrow x = \\sqrt{50} = 5\\sqrt{2}\\text{ cm}$. On peut aussi utiliser $\\cos(45^{\\circ}) = \\frac{x}{10} = \\frac{\\sqrt{2}}{2}$, d'où $x = 5\\sqrt{2}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5\\text{ m}$ de long est appuyée contre un mur vertical. Le pied de l'échelle est à $3\\text{ m}$ du mur. Quelle est la mesure approchée de l'angle que l'échelle forme avec le sol ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$37^{\\circ}$",
+        "$53^{\\circ}$",
+        "$60^{\\circ}$"
+      ],
+      "correctAnswer": "$53^{\\circ}$",
+      "explanation": "L'échelle est l'hypoténuse ($5\\text{ m}$). La distance du pied au mur est le côté adjacent à l'angle cherché ($3\\text{ m}$). Le cosinus de l'angle est $\\frac{3}{5} = 0,6$. À la calculatrice, $\\arccos(0,6) \\approx 53,13^{\\circ}$. L'arrondi le plus proche parmi les propositions est $53^{\\circ}$. (Note : c'est un triangle $3-4-5$, l'angle opposé au côté $3$ vaut environ $37^{\\circ}$, l'angle adjacent vaut environ $53^{\\circ}$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

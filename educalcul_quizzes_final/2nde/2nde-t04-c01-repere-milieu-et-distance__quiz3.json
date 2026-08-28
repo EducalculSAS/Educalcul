@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Distance selon programme",
+  "title": "Questionnaire : Distance dans le plan repéré (Seconde)",
+  "questions": [
+    {
+      "text": "Soit les points A($1$,$2$) et B($4$,$6$). Quelle est la distance AB ?",
+      "options": [
+        "$5$",
+        "$√29$",
+        "$7$",
+        "$√13$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On calcule $√((4-1)^2+(6-2)^2)=√(3^2+4^2)=√(9+16)=√25=5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit les points A($-3$,$-1$) et B($2$,$3$). Quelle est la distance AB ?",
+      "options": [
+        "$√41$",
+        "$9$",
+        "$√29$",
+        "$7$"
+      ],
+      "correctAnswer": "$√41$",
+      "explanation": "On calcule $√((2-(-3))^2+(3-(-1))^2)=√(5^2+4^2)=√(25+16)=√41$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit les points A($2$,$5$) et B($2$,$-3$). Quelle est la distance AB ?",
+      "options": [
+        "$8$",
+        "$√8$",
+        "$2$",
+        "$√34$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La distance est $|5-(-3)|=8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit A($0$,$0$) et B($6$,$y$) avec $y>0$. Si la distance AB vaut $10$, quelle est la valeur de $y$ ?",
+      "options": [
+        "$8$",
+        "$√28$",
+        "$10$",
+        "$6$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On a $√((6-0)^2+(y-0)^2)=10$, donc $36+y^2=100$, $y^2=64$ et $y=8$ (car $y>0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle de sommets A($1$,$1$), B($4$,$5$), C($7$,$1$), quelle affirmation est vraie ?",
+      "options": [
+        "Le triangle est isocèle en B",
+        "Le triangle est équilatéral",
+        "Le triangle est rectangle en A",
+        "Le triangle est scalène"
+      ],
+      "correctAnswer": "Le triangle est isocèle en B",
+      "explanation": "On calcule AB = $√((4-1)^2+(5-1)^2)=√(3^2+4^2)=5$, BC = $√((7-4)^2+(1-5)^2)=√(3^2+(-4)^2)=5$, AC = $6$. Comme AB = BC, le triangle est isocèle en B.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

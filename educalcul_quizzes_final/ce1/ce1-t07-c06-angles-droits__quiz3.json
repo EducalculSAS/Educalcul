@@ -1,0 +1,131 @@
+{
+  "_status": "done",
+  "_course_id": 131,
+  "_course_code": "ce1-t07-c06-angles-droits",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Chercher des angles droits dans une figure",
+  "title": "Quiz : Repérer les angles droits dans une figure",
+  "questions": [
+    {
+      "text": "Observe le triangle ci-dessous. Combien d'angles droits contient-il ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Un triangle rectangle possède exactement un angle droit. Les deux autres angles sont aigus (plus petits qu'un angle droit). Ici, le petit carré à l'angle A marque l'angle droit.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Regarde ce rectangle quadrillé. Combien d'angles droits peut-on compter à ses sommets ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Un rectangle a quatre sommets. À chaque sommet, l'angle formé est un angle droit. Il y a donc quatre angles droits au total.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 4,
+        "highlighted": 8,
+        "caption": "Rectangle de 2 sur 4 cases"
+      }
+    },
+    {
+      "text": "Voici une figure en forme de L. Combien d'angles droits y a-t-il à l'intérieur de cette figure ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La figure en L a six sommets convexes qui forment chacun un angle droit. Il y a aussi un sommet concave qui forme un angle de $270^\\circ$, ce n'est pas un angle droit. On compte donc six angles droits.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 3,
+            "height": 1,
+            "label": "bas"
+          },
+          {
+            "width": 1,
+            "height": 2,
+            "label": "jambe"
+          }
+        ],
+        "caption": "Figure en L composée de deux rectangles"
+      }
+    },
+    {
+      "text": "Parmi les figures suivantes, laquelle ne possède aucun angle droit ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un triangle équilatéral",
+        "Un triangle rectangle"
+      ],
+      "correctAnswer": "Un triangle équilatéral",
+      "explanation": "Le carré et le rectangle ont quatre angles droits. Le triangle rectangle en a un par définition. Le triangle équilatéral a trois angles égaux de $60^\\circ$, ce sont des angles aigus, aucun n'est droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compte les angles droits dans cette figure en escalier de trois marches.",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "En suivant le contour de l'escalier, on rencontre cinq sommets convexes formant un angle droit (les 'coins' extérieurs). Les trois coins intérieurs des marches forment des angles de $270^\\circ$ (angles rentrants), ce ne sont pas des angles droits. Total : cinq angles droits.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 3,
+            "height": 1,
+            "label": "marche 1"
+          },
+          {
+            "width": 2,
+            "height": 1,
+            "label": "marche 2"
+          },
+          {
+            "width": 1,
+            "height": 1,
+            "label": "marche 3"
+          }
+        ],
+        "caption": "Escalier à trois marches aligné à gauche"
+      }
+    }
+  ]
+}

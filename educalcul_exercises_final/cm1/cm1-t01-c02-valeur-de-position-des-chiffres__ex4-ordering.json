@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 212,
+  "_course_code": "cm1-t01-c02-valeur-de-position-des-chiffres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Valeur de position des chiffres",
+  "title": "Ordre des nombres : valeur de position",
+  "blocks": [
+    {
+      "title": "Ordre croissant : nombres entiers",
+      "content": "Classe ces nombres entiers par ordre croissant (du plus petit au plus grand) en te basant sur la valeur de position des chiffres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$2\\,345$",
+        "$2\\,354$",
+        "$2\\,435$",
+        "$2\\,534$",
+        "$2\\,543$"
+      ],
+      "explanation": "Tous les nombres ont 2 milliers et 3 centaines. On compare ensuite les dizaines : 4 (pour 2 345 et 2 354), 4 (pour 2 435), 5 (pour 2 534 et 2 543). Pour 2 345 et 2 354, on compare les unités : 5 < 4 est faux, 4 < 5 donc 2 345 < 2 354. Pour 2 534 et 2 543, on compare les dizaines : 3 < 4 donc 2 534 < 2 543. L'ordre final est : 2 345 < 2 354 < 2 435 < 2 534 < 2 543.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : nombres décimaux",
+      "content": "Classe ces nombres décimaux par ordre croissant (du plus petit au plus grand) en comparant soigneusement la partie entière puis les dixièmes et centièmes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$4,08$",
+        "$4,12$",
+        "$4,18$",
+        "$4,2$",
+        "$4,8$"
+      ],
+      "explanation": "Tous ont 4 unités. On compare les dixièmes : 0 (pour 4,08), 1 (pour 4,12 et 4,18), 2 (pour 4,2), 8 (pour 4,8). 0 < 1 < 2 < 8. Pour 4,12 et 4,18, même dixième (1), on compare les centièmes : 2 < 8. L'ordre est : 4,08 < 4,12 < 4,18 < 4,2 < 4,8. Attention : 4,2 vaut 4,20 qui est plus grand que 4,18.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant : écritures variées",
+      "content": "Classe ces nombres par ordre décroissant (du plus grand au plus petit). Ils sont écrits en chiffres, en lettres ou en décomposition additive.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Cinq mille trois cent quarante-deux",
+        "$5\\,000 + 300 + 40 + 1$",
+        "$5\\,335$",
+        "$5\\,000 + 300 + 20 + 7$",
+        "Cinq mille trois cent dix-huit"
+      ],
+      "explanation": "Convertis chaque écriture en chiffre : Cinq mille trois cent quarante-deux = 5 342 ; 5 000 + 300 + 40 + 1 = 5 341 ; 5 335 = 5 335 ; 5 000 + 300 + 20 + 7 = 5 327 ; Cinq mille trois cent dix-huit = 5 318. Tous ont 5 milliers et 3 centaines. On compare les dizaines : 4 (pour 5 342 et 5 341), 3 (pour 5 335), 2 (pour 5 327), 1 (pour 5 318). Pour 5 342 et 5 341, on compare les unités : 2 > 1. L'ordre décroissant est : 5 342 > 5 341 > 5 335 > 5 327 > 5 318.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

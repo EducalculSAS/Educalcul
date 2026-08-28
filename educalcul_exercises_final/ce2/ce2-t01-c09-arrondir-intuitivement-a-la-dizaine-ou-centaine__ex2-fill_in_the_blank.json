@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Choisir le plus proche",
+  "title": "Arrondi à la dizaine ou à la centaine : le plus proche",
+  "blocks": [
+    {
+      "title": "Proximité à la dizaine",
+      "content": "Le nombre $34$ est encadré par les dizaines $30$ et $40$. Il est plus proche de la dizaine {{1}}.",
+      "blanks": [
+        "30"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver la dizaine la plus proche de $34$, on compare la distance à $30$ et à $40$. $34 - 30 = 4$ et $40 - 34 = 6$. Comme $4 < 6$, $34$ est plus proche de $30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Proximité à la centaine",
+      "content": "Le nombre $267$ se situe entre les centaines $200$ et $300$. Le milieu est $250$. Comme $267 > 250$, il est plus proche de la centaine {{1}}.",
+      "blanks": [
+        "300"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche la centaine la plus proche de $267$. Les centaines encadrantes sont $200$ et $300$. Le milieu exact est $250$. Puisque $267$ est supérieur à $250$, il est plus près de $300$ que de $200$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de la dizaine pour un nombre à trois chiffres",
+      "content": "Pour arrondir $582$ à la dizaine la plus proche, on regarde le chiffre des unités : $2$. Comme $2 < 5$, on arrondit à la dizaine inférieure. $582$ est plus proche de {{1}} que de $590$.",
+      "blanks": [
+        "580"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Les dizaines encadrantes de $582$ sont $580$ et $590$. La règle de l'arrondi à la dizaine regarde le chiffre des unités (ici $2$). Si ce chiffre est $0, 1, 2, 3$ ou $4$, on arrondit à la dizaine inférieure ($580$). Si c'est $5, 6, 7, 8$ ou $9$, on arrondit à la dizaine supérieure. Ici $2 < 5$, donc $582$ est plus proche de $580$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

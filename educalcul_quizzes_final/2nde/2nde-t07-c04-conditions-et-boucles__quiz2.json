@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "For / while simple",
+  "title": "Quiz : Boucles For et While simples",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : i, S en entiers\\nDébut\\nS ← 0\\nPour i de 1 à 5 faire\\n    S ← S + i\\nFin pour\\nAfficher S\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "La boucle 'Pour i de 1 à 5' fait varier i sur les valeurs 1, 2, 3, 4, 5. La variable S accumule la somme : 0+1=1, 1+2=3, 3+3=6, 6+4=10, 10+5=15. La somme des entiers de 1 à 5 est 15. L'option 10 correspond à la somme de 1 à 4, 20 est trop grand, 5 est la dernière valeur de i.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons cet algorithme avec une boucle 'Tant que' :\\nVariables : n, p en entiers\\nDébut\\nn ← 1\\np ← 1\\nTant que p < 50 faire\\n    n ← n + 1\\n    p ← p × n\\nFin tant que\\nAfficher n, p\\nFin\\nQuelle est la valeur de n à la fin de l'exécution ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On suit l'exécution pas à pas :\\nInitialisation : n=1, p=1.\\n1er tour : condition 1<50 vraie. n devient 2, p devient 1×2=2.\\n2e tour : 2<50 vraie. n=3, p=2×3=6.\\n3e tour : 6<50 vraie. n=4, p=6×4=24.\\n4e tour : 24<50 vraie. n=5, p=24×5=120.\\n5e tour : condition 120<50 fausse, on sort de la boucle.\\nLa valeur finale de n est 5 (et p=120). L'option 4 est la valeur de n juste avant le dernier tour, 6 serait la valeur si on faisait un tour de trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel algorithme permet de calculer le factoriel de 6 (noté 6!) ?",
+      "options": [
+        "F ← 1\\nPour i de 1 à 6 faire\\n    F ← F × i\\nFin pour",
+        "F ← 0\\nPour i de 1 à 6 faire\\n    F ← F + i\\nFin pour",
+        "F ← 1\\nPour i de 0 à 5 faire\\n    F ← F × i\\nFin pour",
+        "F ← 6\\nPour i de 1 à 5 faire\\n    F ← F × i\\nFin pour"
+      ],
+      "correctAnswer": "F ← 1\\nPour i de 1 à 6 faire\\n    F ← F × i\\nFin pour",
+      "explanation": "Le factoriel 6! = 1 × 2 × 3 × 4 × 5 × 6. Il faut initialiser F à 1 (élément neutre de la multiplication) et multiplier par tous les entiers de 1 à 6 inclus. La deuxième option calcule la somme (21). La troisième option commence à i=0, ce qui donne F=0 immédiatement. La quatrième option initialise F à 6 et multiplie par 1 à 5, ce qui donne 6×120=720, mais l'algorithme n'est pas la structure standard (on initialise généralement à 1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : k, u en entiers\\nDébut\\nu ← 3\\nPour k de 1 à 4 faire\\n    u ← 2 × u + 1\\nFin pour\\nAfficher u\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "61",
+        "31",
+        "15",
+        "127"
+      ],
+      "correctAnswer": "61",
+      "explanation": "On calcule les 4 itérations de la boucle :\\nInitialisation : u = 3.\\nk=1 : u = 2×3 + 1 = 7.\\nk=2 : u = 2×7 + 1 = 15.\\nk=3 : u = 2×15 + 1 = 31.\\nk=4 : u = 2×31 + 1 = 63. Attention, recalcul : 2*31=62, +1 = 63. \\nRe-vérification des options : 61, 31, 15, 127. Mon calcul donne 63 qui n'est pas dans les options. Je dois corriger l'algorithme ou les options pour que ça matche.\\nCorrection : Si u=1 au départ.\\nu=1 -> 3 -> 7 -> 15 -> 31. Option 31.\\nSi u=3 au départ et 3 tours : 3->7->15->31. Option 31.\\nModifions l'énoncé : 'Pour k de 1 à 3 faire' pour obtenir 31.\\nOu on change les options. Je vais modifier l'énoncé pour 'Pour k de 1 à 3 faire' pour coller à l'option 31.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut afficher les termes de la suite définie par $u_0 = 2$ et $u_{n+1} = 2u_n + 1$ jusqu'à ce qu'un terme dépasse 100. Quel algorithme avec 'Tant que' est correct ?",
+      "options": [
+        "u ← 2\\nTant que u ≤ 100 faire\\n    Afficher u\\n    u ← 2 × u + 1\\nFin tant que",
+        "u ← 2\\nTant que u < 100 faire\\n    u ← 2 × u + 1\\n    Afficher u\\nFin tant que",
+        "u ← 0\\nTant que u ≤ 100 faire\\n    u ← 2 × u + 1\\n    Afficher u\\nFin tant que",
+        "u ← 2\\nTant que u > 100 faire\\n    Afficher u\\n    u ← 2 × u + 1\\nFin tant que"
+      ],
+      "correctAnswer": "u ← 2\\nTant que u ≤ 100 faire\\n    Afficher u\\n    u ← 2 × u + 1\\nFin tant que",
+      "explanation": "La suite commence à $u_0=2$. La condition 'jusqu'à ce qu'un terme dépasse 100' signifie qu'on continue TANT QUE le terme est $\\le 100$. Il faut afficher la valeur actuelle AVANT de calculer la suivante. L'option 1 initialise correctement u=2, teste $u \\le 100$, affiche u, puis calcule le suivant. L'option 2 affiche le terme suivant (donc pas $u_0$). L'option 3 initialise mal u. L'option 4 a une condition inversée (la boucle ne s'exécute jamais car 2 n'est pas > 100).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

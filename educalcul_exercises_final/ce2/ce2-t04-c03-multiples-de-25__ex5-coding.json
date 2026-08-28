@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 171,
+  "_course_code": "ce2-t04-c03-multiples-de-25",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : 25, 50, 75, 100",
+  "title": "Multiples de 25 : algorithmes",
+  "blocks": [
+    {
+      "title": "Tester un multiple de 25",
+      "content": "Écris un algorithme qui permet de savoir si un nombre entier est un multiple de $25$.",
+      "correctAnswer": "1. Lire le nombre $N$.\\n2. Extraire les deux derniers chiffres de $N$.\\n3. Si ces deux chiffres sont $00$, $25$, $50$ ou $75$ alors afficher \"Multiple de 25\" sinon afficher \"Pas multiple de 25\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre est multiple de $25$ si et seulement si ses deux derniers chiffres forment un multiple de $25$, car $100 = 4 \\times 25$. Les multiples de $25$ à deux chiffres sont $00$, $25$, $50$, $75$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lister les multiples de 25",
+      "content": "Écris un algorithme qui affiche les dix premiers multiples de $25$.",
+      "correctAnswer": "1. Initialiser $i = 1$.\\n2. Tant que $i \\le 10$ faire : afficher $i \\times 25$ ; $i = i + 1$.\\n3. Fin tant que.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les dix premiers multiples de $25$ sont $25$, $50$, $75$, $100$, $125$, $150$, $175$, $200$, $225$, $250$. La boucle répète le calcul $i \\times 25$ pour $i$ de $1$ à $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver le multiple suivant",
+      "content": "Écris un algorithme qui, étant donné un nombre $N$, trouve le plus petit multiple de $25$ strictement supérieur à $N$.",
+      "correctAnswer": "1. Lire $N$.\\n2. Calculer $reste = N \\bmod 25$.\\n3. Si $reste = 0$ alors $resultat = N + 25$ sinon $resultat = N + (25 - reste)$.\\n4. Afficher $resultat$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le reste de la division de $N$ par $25$ indique de combien $N$ dépasse le multiple précédent. Si le reste est $0$, $N$ est déjà un multiple, le suivant est $N + 25$. Sinon, on ajoute $25 - reste$ pour atteindre le multiple suivant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

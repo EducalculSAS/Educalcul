@@ -1,0 +1,471 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.044482+00:00",
+  "id": 180,
+  "code": "ce2-t05-c03",
+  "title": "Problèmes multiplicatifs",
+  "description": "Cours structuré Educalcul : Problèmes multiplicatifs.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes multiplicatifs",
+    "objectif_global": "Problèmes multiplicatifs",
+    "mini_lecons_imposees": [
+      "Groupes égaux.",
+      "Produit cartésien très concret.",
+      "Choisir multiplication."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Groupes égaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des groupes de même taille"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prépares des sachets de bonbons pour tes copains. Tu veux que tout le monde ait exactement la même chose, sinon ce n'est pas juste. Dans chaque sachet, tu mets $4$ bonbons. Tu as $3$ sachets. Regarde bien : ici, nous avons des groupes, et tous ces groupes sont égaux. C'est la situation de base pour la multiplication."
+            },
+            {
+              "type": "definition",
+              "term": "Groupe égal",
+              "definition": "C'est un ensemble d'objets qui contient exactement le même nombre d'éléments que les autres ensembles. Par exemple, $3$ sachets de $4$ bonbons forment $3$ groupes égaux de $4$.",
+              "example": "Des boîtes de $6$ œufs, des paquets de $10$ feutres."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Sachet 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sachet 2",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sachet 3",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "3 groupes égaux de 4 bonbons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons écrire ce que nous venons de voir avec le signe de la multiplication. Le signe $\\times$ se lit \"fois\". Il remplace l'addition répétée : au lieu d'écrire $4 + 4 + 4$, on écrit $3 \\times 4$. Le premier nombre, c'est le nombre de groupes ($3$ sachets). Le second nombre, c'est ce qu'il y a dans un groupe ($4$ bonbons)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien y a-t-il de sachets, de boîtes, de rangées ? Ici, $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter dans un groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien d'objets dans un seul sachet ? Ici, $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit : nombre de groupes $\\times$ nombre dans un groupe. Soit $3 \\times 4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "3 \\times 4 = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le total, le produit, tu peux additionner : $4 + 4 + 4 = 12$. Mais très vite, tu vas apprendre tes tables par cœur pour aller plus vite. Regarde ce quadrillage : il montre bien que $3$ lignes de $4$ cases font $12$ cases en tout. C'est une image mentale très utile pour retenir le résultat."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "3 lignes de 4 cases : 12 cases au total"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un énoncé, tu dois repérer les mots-clés : \"groupes de\", \"paquets de\", \"chaque\", \"par\". Par exemple : \"Il y a $5$ boîtes. Dans chaque boîte, il y a $6$ crayons.\" Tu as trouvé les deux nombres ? $5$ groupes de $6$. La multiplication est $5 \\times 6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Observe l'image : il y a 4 assiettes. Dans chaque assiette, il y a 3 cookies. Combien y a-t-il de groupes égaux ? Combien d'objets dans un groupe ?",
+              "answer": "4 groupes égaux de 3 objets.",
+              "hint": "Les assiettes sont les groupes. Les cookies sont les objets.",
+              "explanation": "Chaque assiette forme un groupe. Comme il y a 3 cookies par assiette, les groupes sont égaux. On a donc 4 groupes de 3."
+            },
+            {
+              "question": "Écris la multiplication qui correspond à : 6 boîtes de 10 feutres.",
+              "answer": "6 × 10",
+              "hint": "Le premier nombre est le nombre de boîtes. Le second est le nombre de feutres dans une boîte.",
+              "explanation": "Il y a 6 groupes (les boîtes) de 10 objets (les feutres). La multiplication s'écrit 6 × 10."
+            },
+            {
+              "question": "Calcule le produit : 4 × 3.",
+              "answer": "12",
+              "hint": "Tu peux compter par 3 : 3, 6, 9, 12. Ou par 4 : 4, 8, 12.",
+              "explanation": "4 × 3 veut dire 4 groupes de 3. En additionnant 3 + 3 + 3 + 3, on trouve 12."
+            },
+            {
+              "question": "Complète la phrase : Il y a 5 pots. Dans chaque pot, il y a 2 fleurs. Il y a ______ groupes de ______. La multiplication est ______.",
+              "answer": "5 groupes de 2. La multiplication est 5 × 2.",
+              "hint": "Relis la phrase : \"Il y a 5 pots\" donne le nombre de groupes. \"Dans chaque pot... 2 fleurs\" donne la taille du groupe.",
+              "explanation": "Les pots sont les groupes (5). Les fleurs sont les objets dans chaque groupe (2). On écrit 5 × 2."
+            }
+          ]
+        },
+        {
+          "title": "Produit cartésien très concret.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tous les mélanges possibles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, c'est différent. Tu ne fais plus des groupes identiques. Tu dois choisir une tenue pour la fête : tu as $2$ t-shirts (un rouge, un bleu) et $3$ shorts (un vert, un jaune, un noir). Combien de tenues différentes peux-tu composer ? Ce n'est plus \"groupes de\", c'est \"choisir un... ET un...\". On appelle cela un produit cartésien, mais tu verras, c'est très concret !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Short vert",
+                "Short jaune",
+                "Short noir"
+              ],
+              "rows": [
+                [
+                  "T-shirt rouge",
+                  "Rouge + Vert",
+                  "Rouge + Jaune",
+                  "Rouge + Noir"
+                ],
+                [
+                  "T-shirt bleu",
+                  "Bleu + Vert",
+                  "Bleu + Jaune",
+                  "Bleu + Noir"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : chaque case est une tenue possible. Pour trouver le total sans tout lister, c'est simple : tu multiplies le nombre de choix pour la première chose par le nombre de choix pour la deuxième chose. Ici, $2$ t-shirts $\\times$ $3$ shorts $= 6$ tenues. La multiplication marche encore, mais le sens change : on ne rajoute pas des groupes, on croise les choix."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les deux choix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Qu'est-ce qu'on choisit en premier ? (Ex : le t-shirt). Qu'est-ce qu'on choisit en second ? (Ex : le short)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les possibilités pour chaque choix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de t-shirts différents ? $2$. Combien de shorts différents ? $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nombre de choix 1 $\\times$ Nombre de choix 2. $2 \\times 3 = 6$ combinaisons."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 6,
+              "caption": "2 choix pour les t-shirts, 3 pour les shorts : 6 cases = 6 tenues"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple : au goûter, tu choisis une saveur de glace (fraise, chocolat, vanille) et un topping (pépites, sirop). Tu as $3$ saveurs et $2$ toppings. Même méthode : on fait un tableau mental ou on multiplie directement. $3 \\times 2 = 6$ desserts différents. Attention, ici l'ordre n'a pas d'importance : glace fraise + pépites, c'est la même chose que pépites + glace fraise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention à ne pas confondre",
+              "paragraphs": [
+                "Groupes égaux : on a DES groupes TOUS PAREILS (ex: 3 boîtes de 6 œufs).",
+                "Produit cartésien : on MÉLANGE des choix DIFFÉRENTS (ex: 3 parfums ET 2 coupes).",
+                "Dans les deux cas, on multiplie, mais l'histoire n'est pas la même !"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 2 paires de chaussettes (blanches, grises) et 3 paires de chaussures (bottes, baskets, sandales). Combien de couples chaussettes/chaussures différents peux-tu faire ? Liste-les.",
+              "answer": "6 couples : (blanches, bottes), (blanches, baskets), (blanches, sandales), (grises, bottes), (grises, baskets), (grises, sandales).",
+              "hint": "Fais un tableau avec les chaussettes en lignes et les chaussures en colonnes.",
+              "explanation": "Chaque chaussette peut aller avec chaque chaussure. 2 choix × 3 choix = 6 combinaisons."
+            },
+            {
+              "question": "Pour un menu, tu choisis une entrée (tomates, carottes, radis) et un plat (pâtes, riz). Écris la multiplication et donne le nombre de menus possibles.",
+              "answer": "3 × 2 = 6 menus.",
+              "hint": "Compte les entrées (3) et les plats (2). Multiplie-les.",
+              "explanation": "Il y a 3 choix d'entrée et 2 choix de plat. Chaque entrée va avec chaque plat. 3 × 2 = 6 menus différents."
+            },
+            {
+              "question": "Léo a 3 casquettes et 4 t-shirts. Combien de tenues (casquette + t-shirt) peut-il faire ?",
+              "answer": "12 tenues.",
+              "hint": "C'est un mélange : une casquette AVEC un t-shirt. Multiplie le nombre de casquettes par le nombre de t-shirts.",
+              "explanation": "3 choix de casquette × 4 choix de t-shirt = 12 combinaisons possibles."
+            },
+            {
+              "question": "Classe ces deux situations : A) 4 boîtes de 6 crayons. B) 4 parfums de glace et 3 types de cornets. Laquelle est 'groupes égaux' ? Laquelle est 'produit cartésien' ?",
+              "answer": "A) Groupes égaux. B) Produit cartésien.",
+              "hint": "Dans A, les boîtes sont identiques. Dans B, on associe deux choses différentes.",
+              "explanation": "A : on a 4 groupes identiques de 6 crayons (groupes égaux). B : on associe un parfum ET un cornet, ce sont des choix croisés (produit cartésien)."
+            }
+          ]
+        },
+        {
+          "title": "Choisir multiplication.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Détecter la bonne opération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant qu'il y a deux grandes histoires où la multiplication est la reine. Mais dans un problème, personne ne t'écrit \"multiplie\". Tu dois être détective ! Regarde les mots, imagine la scène dans ta tête, et tu sauras si c'est une multiplication."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Indices pour les groupes égaux",
+              "paragraphs": [
+                "Mots-clés : \"chaque\", \"par\", \"chaque groupe contient\", \"nombre de groupes\".",
+                "Question type : \"Combien en tout ?\" ou \"Combien au total ?\".",
+                "Image mentale : des paquets alignés, tous pareils."
+              ]
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Groupe 1",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 2",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 4",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ],
+              "caption": "4 groupes de 5 : 4 × 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, les indices pour le produit cartésien. Là, on ne parle pas de groupes identiques. On parle de choix, de combinaisons, de tenues, de menus. Les mots-clés sont : \"choisir un... et un...\", \"associer\", \"différentes combinaisons\", \"tenues\", \"menus\". La question est souvent : \"Combien de possibilités ?\" ou \"Combien de couples différents ?\"."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Option A",
+                "Option B",
+                "Option C"
+              ],
+              "rows": [
+                [
+                  "Choix 1",
+                  "1A",
+                  "1B",
+                  "1C"
+                ],
+                [
+                  "Choix 2",
+                  "2A",
+                  "2B",
+                  "2C"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une troisième situation où on multiplie : la comparaison multiplicative. C'est quand on compare deux quantités. Par exemple : \"Paul a 5 billes. Léa en a 3 fois plus.\" Ici, on ne fait pas des groupes, on n'associe pas des choix. On agrandit une quantité. Léa a $3 \\times 5 = 15$ billes. C'est comme si on étirait le groupe de Paul."
+            },
+            {
+              "type": "definition",
+              "term": "Comparaison multiplicative",
+              "definition": "On compare deux quantités : l'une est un multiple de l'autre (le double, le triple, 4 fois plus...). On multiplie la quantité de référence par le multiplicateur.",
+              "example": "Un ruban de 10 cm. Un autre ruban 4 fois plus long : 4 × 10 = 40 cm."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paul (référence)",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa (3 fois plus)",
+                  "value": 15,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Comparaison : Léa a 3 fois la quantité de Paul"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons nos trois détectives : 1) Groupes égaux : des paquets pareils → Multiplication. 2) Produit cartésien : des choix à croiser → Multiplication. 3) Comparaison : \"X fois plus / moins\" → Multiplication. Si l'histoire ne correspond à aucune de ces trois, pose-toi la question : est-ce qu'on rajoute (addition) ? Est-ce qu'on partage (division) ? Mais souvent, si tu entends \"fois\" ou \"chaque\", c'est la multiplication qui gagne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer des groupes égaux dans un énoncé (mots : chaque, par, paquet de).",
+                "Je sais repérer un produit cartésien (mots : choisir un... et un..., tenue, menu, combinaison).",
+                "Je sais repérer une comparaison multiplicative (mots : fois plus, fois moins, le double, le triple).",
+                "Je sais écrire la multiplication correspondante dans les trois cas.",
+                "Je sais calculer le produit en utilisant mes tables ou l'addition répétée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la classe, il y a 6 tables. Sur chaque table, il y a 4 cahiers. Quelle opération pour trouver le nombre total de cahiers ? Écris le calcul.",
+              "answer": "Multiplication : 6 × 4 = 24.",
+              "hint": "Est-ce qu'on a des groupes pareils ? Oui, les tables sont les groupes, les cahiers sont dedans.",
+              "explanation": "C'est une situation de groupes égaux : 6 groupes (tables) de 4 objets (cahiers). On multiplie 6 × 4 = 24 cahiers."
+            },
+            {
+              "question": "Pour faire une pizza, je choisis une base (fine, épaisse) et une garniture (jambon, champignons, ananas). Quelle opération pour savoir combien de pizzas différentes sont possibles ? Écris le calcul.",
+              "answer": "Multiplication : 2 × 3 = 6.",
+              "hint": "Est-ce qu'on associe deux choix différents ? Oui, base ET garniture. C'est un produit cartésien.",
+              "explanation": "On croise 2 choix de base avec 3 choix de garniture. 2 × 3 = 6 pizzas différentes possibles."
+            },
+            {
+              "question": "Un petit robot mesure 12 cm de haut. Un grand robot mesure 3 fois plus haut. Quelle opération pour trouver la hauteur du grand robot ? Écris le calcul.",
+              "answer": "Multiplication : 3 × 12 = 36 cm.",
+              "hint": "Cherche les mots \"fois plus\". C'est une comparaison. On multiplie la hauteur de référence par 3.",
+              "explanation": "C'est une comparaison multiplicative : le grand robot est 3 fois la taille du petit. 3 × 12 cm = 36 cm."
+            },
+            {
+              "question": "Problème mixte : A) 5 paniers de 6 pommes. B) 5 parfums de glace, 2 cornets. C) Un livre de 50 pages, un autre 2 fois plus épais. Pour chaque cas, dis si c'est Groupes égaux (G), Produit cartésien (P) ou Comparaison (C).",
+              "answer": "A) G. B) P. C) C.",
+              "hint": "Recherche les indices : paniers identiques (G) ; choix parfum ET cornet (P) ; fois plus (C).",
+              "explanation": "A : Paniers identiques = Groupes égaux. B : Association parfum/cornet = Produit cartésien. C : 2 fois plus = Comparaison multiplicative. Les trois utilisent la multiplication."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

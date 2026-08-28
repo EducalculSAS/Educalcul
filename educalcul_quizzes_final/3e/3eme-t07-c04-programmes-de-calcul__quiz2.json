@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer deux programmes de calcul",
+  "questions": [
+    {
+      "text": "On considère les deux programmes suivants :\\nProgramme A : Choisir un nombre, ajouter 3, multiplier le résultat par 2.\\nProgramme B : Choisir un nombre, le multiplier par 2, ajouter 6.\\nQuelle relation existe-t-il entre les résultats des deux programmes pour un même nombre de départ ?",
+      "options": [
+        "Le résultat du programme A est toujours supérieur à celui du programme B.",
+        "Le résultat du programme A est toujours inférieur à celui du programme B.",
+        "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+        "La relation dépend du nombre de départ choisi."
+      ],
+      "correctAnswer": "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+      "explanation": "Soit $x$ le nombre de départ. Programme A : $(x+3) \\times 2 = 2x+6$. Programme B : $x \\times 2 + 6 = 2x+6$. Les deux expressions littérales sont identiques, donc les résultats sont égaux pour toute valeur de $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme 1 : Choisir un nombre, ajouter 5, multiplier par 3.\\nProgramme 2 : Choisir un nombre, multiplier par 3, ajouter 5.\\nSi on choisit $4$ comme nombre de départ, comment comparer les résultats ?",
+      "options": [
+        "Le résultat du programme 1 est strictement supérieur à celui du programme 2.",
+        "Le résultat du programme 1 est strictement inférieur à celui du programme 2.",
+        "Les deux résultats sont égaux.",
+        "On ne peut pas comparer sans connaître le nombre de départ."
+      ],
+      "correctAnswer": "Le résultat du programme 1 est strictement supérieur à celui du programme 2.",
+      "explanation": "Pour $x=4$ : Programme 1 : $(4+5) \\times 3 = 9 \\times 3 = 27$. Programme 2 : $4 \\times 3 + 5 = 12 + 5 = 17$. On a bien $27 > 17$. En général, le programme 1 donne $3x+15$ et le programme 2 donne $3x+5$, donc le programme 1 est toujours supérieur de 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme A : $x \\mapsto 2x + 1$.\\nProgramme B : $x \\mapsto 3x - 2$.\\nPour quelle valeur de $x$ les deux programmes donnent-ils le même résultat ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On résout l'équation $2x + 1 = 3x - 2$. En soustrayant $2x$ des deux côtés : $1 = x - 2$. En ajoutant $2$ : $x = 3$. Vérification : Programme A : $2 \\times 3 + 1 = 7$. Programme B : $3 \\times 3 - 2 = 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare ces deux programmes :\\nProgramme 1 : Choisir un nombre, le diviser par 2, ajouter 4.\\nProgramme 2 : Choisir un nombre, ajouter 8, diviser le résultat par 2.\\nLaquelle de ces affirmations est vraie ?",
+      "options": [
+        "Le programme 1 donne toujours un résultat plus grand.",
+        "Le programme 2 donne toujours un résultat plus grand.",
+        "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+        "Les résultats sont égaux seulement si le nombre de départ est nul."
+      ],
+      "correctAnswer": "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+      "explanation": "Soit $x$ le nombre. Programme 1 : $\\frac{x}{2} + 4 = \\frac{x+8}{2}$. Programme 2 : $\\frac{x+8}{2}$. Les deux expressions sont identiques, donc les programmes sont équivalents pour tout $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme A : Choisir un nombre, le multiplier par 4, retrancher 12, diviser par 2.\\nProgramme B : Choisir un nombre, retrancher 3, multiplier par 2.\\nQue peut-on affirmer sur les résultats obtenus ?",
+      "options": [
+        "Le programme A donne toujours un résultat supérieur de 6 au programme B.",
+        "Le programme A donne toujours un résultat inférieur de 6 au programme B.",
+        "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+        "Les résultats sont égaux seulement pour le nombre de départ 3."
+      ],
+      "correctAnswer": "Les deux programmes donnent le même résultat pour tout nombre de départ.",
+      "explanation": "Soit $x$ le nombre. Programme A : $\\frac{4x - 12}{2} = 2x - 6$. Programme B : $2(x - 3) = 2x - 6$. Les expressions littérales simplifiées sont identiques, les programmes sont donc équivalents quels que soient le nombre de départ.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

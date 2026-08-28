@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Fonctions et simulation",
+  "title": "Quiz : Fonctions et simulation (4e)",
+  "questions": [
+    {
+      "text": "On définit la fonction Python suivante :\\ndef carre(x):\\n    return x * x\\n\\nQue renvoie l'instruction `carre(5)` ?",
+      "options": [
+        "$10$",
+        "$25$",
+        "$5$",
+        "Erreur"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "La fonction `carre` prend un paramètre `x` et renvoie le produit de `x` par lui-même ($x \\times x$). Lorsque l'on appelle `carre(5)`, la variable `x` vaut $5$. Le calcul effectué est donc $5 \\times 5 = 25$. L'option $10$ correspondrait à une addition ($5+5$), $5$ à un simple retour de la valeur sans calcul, et 'Erreur' est incorrect car la syntaxe est valide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction :\\ndef moyenne(a, b):\\n    return (a + b) / 2\\n\\nQuel est le résultat de l'appel `moyenne(4, 10)` ?",
+      "options": [
+        "$7$",
+        "$14$",
+        "$3$",
+        "$28$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La fonction `moyenne` calcule la moyenne arithmétique de ses deux paramètres `a` et `b`. La formule est $(a + b) / 2$. Avec $a=4$ et $b=10$, on obtient $(4 + 10) / 2 = 14 / 2 = 7$. L'option $14$ est la somme sans la division, $3$ pourrait venir d'une soustraction mal placée, et $28$ d'une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour simuler un lancer de dé à six faces équilibré, on utilise le module `random` et la fonction `randint`.\\nQuelle instruction renvoie un entier aléatoire entre $1$ et $6$ inclus ?",
+      "options": [
+        "Un nombre entier entre $1$ et $6$ inclus",
+        "Un nombre décimal entre $0$ et $1$",
+        "Un nombre entier entre $0$ et $5$",
+        "Une chaîne de caractères"
+      ],
+      "correctAnswer": "Un nombre entier entre $1$ et $6$ inclus",
+      "explanation": "La fonction `randint(a, b)` du module `random` renvoie un nombre entier aléatoire $n$ tel que $a \\le n \\le b$. Pour un dé à six faces numérotées de $1$ à $6$, on utilise `randint(1, 6)`. La fonction `random()` (sans argument) renvoie un décimal entre $0$ et $1$, et `randint(0, 5)` donnerait des valeurs de $0$ à $5$, ce qui ne correspond pas aux faces d'un dé standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\nfrom random import randint\\ndef compte_six(n):\\n    c = 0\\n    for i in range(n):\\n        if randint(1, 6) == 6:\\n            c = c + 1\\n    return c\\n\\nQue représente la valeur renvoyée par `compte_six(100)` ?",
+      "options": [
+        "Le nombre de $6$ obtenus sur $100$ lancers",
+        "La somme des valeurs obtenues",
+        "Le dernier résultat obtenu",
+        "La moyenne des valeurs"
+      ],
+      "correctAnswer": "Le nombre de $6$ obtenus sur $100$ lancers",
+      "explanation": "La fonction `compte_six` initialise un compteur `c` à $0$. Elle répète $n$ fois (ici $100$) une simulation de lancer de dé avec `randint(1, 6)`. À chaque fois que le résultat est égal à $6$, elle incrémente `c` de $1$. À la fin de la boucle, elle renvoie `c`, qui est donc le nombre total de fois où la face $6$ est apparue parmi les $100$ lancers. Ce n'est ni la somme, ni le dernier lancer, ni la moyenne.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $1000$ lancers d'une pièce de monnaie équilibrée (pile ou face). On obtient $512$ fois \"pile\".\\nQuelle est la fréquence d'apparition de \"pile\" estimée par cette simulation ?",
+      "options": [
+        "$0,512$",
+        "$512$",
+        "$0,488$",
+        "$1000$"
+      ],
+      "correctAnswer": "$0,512$",
+      "explanation": "La fréquence d'un événement est le quotient du nombre de fois où cet événement s'est produit sur le nombre total d'essais. Ici, l'événement \"pile\" s'est produit $512$ fois sur $1000$ essais. La fréquence est donc $512 / 1000 = 0,512$. L'option $512$ est l'effectif brut, $0,488$ est la fréquence de \"face\" ($1 - 0,512$), et $1000$ est le nombre total d'essais.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

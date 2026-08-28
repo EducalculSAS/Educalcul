@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Terminaison intuitive",
+  "title": "Quiz : Terminaison intuitive des boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nPour i de 1 à 10 faire\\n    Afficher i\\nFin pour\\nCombien de fois l'instruction « Afficher i » est-elle exécutée ?",
+      "options": [
+        "9 fois",
+        "10 fois",
+        "11 fois",
+        "Une infinité de fois"
+      ],
+      "correctAnswer": "10 fois",
+      "explanation": "La boucle « Pour i de 1 à 10 » parcourt exactement les valeurs entières de 1 à 10 comprises. Il y a 10 valeurs (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), donc 10 itérations. L'option 9 fois oublierait la borne finale, 11 fois en ajouterait une, et une boucle « Pour » bornée ne peut pas être infinie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 0\\nTant que x < 10 faire\\n    x ← x + 1\\nFin tant que\\nCombien de fois la condition x < 10 est-elle évaluée à vrai (c'est-à-dire combien de tours de boucle effectifs) ?",
+      "options": [
+        "9 fois",
+        "10 fois",
+        "11 fois",
+        "Une infinité de fois"
+      ],
+      "correctAnswer": "10 fois",
+      "explanation": "La variable x commence à 0. À chaque tour, elle augmente de 1. Les valeurs successives de x au début du tour sont 0, 1, 2, ..., 9. La condition x < 10 est vraie pour ces 10 valeurs. Lorsque x devient 10, la condition est fausse et la boucle s'arrête. Il y a donc exactement 10 tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 5\\nTant que x > 0 faire\\n    x ← x - 1\\nFin tant que\\nCombien de tours de boucle sont effectués ?",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "La boucle ne termine pas"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "x vaut 5 au départ. La condition x > 0 est vraie pour x = 5, 4, 3, 2, 1 (5 fois). À la fin du 5e tour, x vaut 0. La condition devient fausse et la boucle s'arrête. L'option 4 fois correspondrait à une condition x > 1. L'option 6 fois compterait le test final où x = 0. La boucle termine car x diminue strictement vers 0.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 0\\nTant que x ≠ 10 faire\\n    x ← x + 2\\nFin tant que\\nCet algorithme termine-t-il ?",
+      "options": [
+        "Oui, après 5 tours",
+        "Oui, après 10 tours",
+        "Non, c'est une boucle infinie",
+        "Oui, après 1 tour"
+      ],
+      "correctAnswer": "Oui, après 5 tours",
+      "explanation": "x prend les valeurs 0, 2, 4, 6, 8, 10. La condition x ≠ 10 est vraie pour les 5 premières valeurs (0, 2, 4, 6, 8). Au 5e tour, x devient 10. Au test suivant, la condition est fausse. La boucle s'arrête bien après 5 tours. Ce n'est pas une boucle infinie car x atteint exactement la valeur 10 (parité paire conservée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 10\\nTant que x > 0 faire\\n    Si x est pair alors\\n        x ← x - 2\\n    Sinon\\n        x ← x - 1\\n    Fin si\\nFin tant que\\nCombien de tours de boucle sont effectués ?",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "10 fois"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "On trace les valeurs de x au début de chaque tour :\\nTour 1 : x=10 (pair) → x=8\\nTour 2 : x=8 (pair) → x=6\\nTour 3 : x=6 (pair) → x=4\\nTour 4 : x=4 (pair) → x=2\\nTour 5 : x=2 (pair) → x=0\\nÀ la fin du 5e tour, x=0. La condition x > 0 devient fausse. La boucle s'arrête après 5 tours. x reste pair tout le long et diminue de 2 à chaque fois.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

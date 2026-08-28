@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 195,
+  "_course_code": "ce2-t06-c09-bilan-grandeurs-et-mesures-ce2",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Checklist",
+  "title": "Bilan Grandeurs et Mesures CE2 : Checklist",
+  "questions": [
+    {
+      "text": "Quelle est l'égalité fausse parmi les propositions suivantes ?",
+      "options": [
+        "$1$ km = $1000$ m",
+        "$1$ m = $100$ cm",
+        "$1$ cm = $10$ mm",
+        "$1$ km = $100$ m"
+      ],
+      "correctAnswer": "$1$ km = $100$ m",
+      "explanation": "Le kilomètre vaut $1000$ mètres, pas $100$. Les autres égalités sont exactes : $1$ m = $100$ cm et $1$ cm = $10$ mm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la masse la plus grande parmi celles-ci ?",
+      "options": [
+        "$300$ g",
+        "$3$ kg",
+        "$2$ kg $500$ g",
+        "$2500$ g"
+      ],
+      "correctAnswer": "$3$ kg",
+      "explanation": "On convertit tout en grammes : $3$ kg = $3000$ g, $2$ kg $500$ g = $2500$ g, $2500$ g = $2500$ g, $300$ g = $300$ g. La plus grande est $3000$ g soit $3$ kg.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille contient $1,5$ L de jus de fruits. Combien y a-t-il de centilitres ?",
+      "options": [
+        "$15$ cL",
+        "$150$ cL",
+        "$1500$ cL",
+        "$1,5$ cL"
+      ],
+      "correctAnswer": "$150$ cL",
+      "explanation": "Puisque $1$ L = $100$ cL, on multiplie $1,5$ par $100$ : $1,5 \\times 100 = 150$. La bouteille contient donc $150$ cL.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'horloge. Quelle heure indique-t-elle ?",
+      "options": [
+        "$4$ h $15$",
+        "$3$ h $15$",
+        "$4$ h $30$",
+        "$3$ h $30$"
+      ],
+      "correctAnswer": "$4$ h $15$",
+      "explanation": "La petite aiguille des heures est sur le $4$ (elle a légèrement dépassé), la grande aiguille des minutes est sur le $3$ ce qui correspond à $15$ minutes. Il est donc $4$ h $15$.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 15,
+        "caption": "Horloge indiquant 4h15",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Regarde le contenu de la bourse. Quelle est la somme totale ?",
+      "options": [
+        "$3,90$ €",
+        "$3,80$ €",
+        "$4,00$ €",
+        "$3,70$ €"
+      ],
+      "correctAnswer": "$3,90$ €",
+      "explanation": "On additionne les pièces : $2$ € + $1$ € + $0,50$ € + $0,20$ € + $0,10$ € + $0,10$ € = $3,90$ €.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200,
+          100,
+          50,
+          20,
+          10,
+          10
+        ],
+        "target": 390,
+        "caption": "Pièces : 2€, 1€, 50c, 20c, 10c, 10c"
+      }
+    }
+  ]
+}

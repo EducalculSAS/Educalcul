@@ -1,0 +1,424 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.911504+00:00",
+  "id": 137,
+  "code": "ce1-t08-c02",
+  "title": "Construire un tableau simple",
+  "description": "Cours structuré Educalcul : Construire un tableau simple.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Construire un tableau simple",
+    "objectif_global": "Construire un tableau simple",
+    "mini_lecons_imposees": [
+      "Organiser catégories et effectifs.",
+      "Compléter un tableau.",
+      "Lire une information."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Organiser catégories et effectifs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les catégories"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as ramassé $12$ feuilles dans le parc. Certaines sont rouges, d'autres jaunes, d'autres marron. Si tu les mélanges toutes, c'est difficile de savoir combien il y en a de chaque couleur. Pour t'aider, tu vas les ranger par groupes : toutes les rouges ensemble, toutes les jaunes ensemble, toutes les marron ensemble. Chaque groupe, c'est une $catégorie$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, compte les feuilles de chaque groupe. Tu as $5$ feuilles rouges, $4$ feuilles jaunes et $3$ feuilles marron. Ce nombre, c'est l'$effectif$ de la catégorie. L'effectif, c'est simplement le nombre d'éléments qui appartiennent à ce groupe."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de feuilles par couleur",
+              "bars": [
+                {
+                  "label": "Rouge",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Jaune",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Marron",
+                  "value": 3,
+                  "tone": "brown"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer des objets du quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde dans ta trousse. Tu as des crayons, des feutres, des gommes et des règles. Chaque type d'objet forme une catégorie. Pose-les sur la table en les rangeant par familles. Tu viens de créer tes premières catégories sans même t'en rendre compte !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Compte maintenant chaque famille. Note le résultat sur un papier : crayons $6$, feutres $4$, gommes $2$, règles $1$. Tu as trouvé les effectifs. Bravo, tu sais organiser des données !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Objet",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "Crayon",
+                  "6"
+                ],
+                [
+                  "Feutre",
+                  "4"
+                ],
+                [
+                  "Gomme",
+                  "2"
+                ],
+                [
+                  "Règle",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inventer ses propres catégories"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les catégories, tu peux les choisir toi-même selon ce qui t'intéresse. Si tu regardes les voitures qui passent dans la rue, tu peux les classer par couleur : bleues, rouges, blanches, noires. Ou bien par taille : petites, moyennes, grandes. C'est toi qui décides comment ranger l'information."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie à la maison : ouvre le frigo et classe les aliments par type (légumes, fruits, yaourts, boissons). Compte chaque groupe. Tu verras, c'est comme un jeu, et ça t'aide à voir ce qu'il y a le plus ou le moins."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la classe, il y a $8$ filles et $7$ garçons. Quelles sont les deux catégories ? Quel est l'effectif de chaque catégorie ?",
+              "answer": "Catégories : filles et garçons. Effectifs : $8$ filles, $7$ garçons.",
+              "hint": "Une catégorie, c'est un groupe. L'effectif, c'est le nombre dans le groupe.",
+              "explanation": "On a deux groupes : les filles et les garçons. Il y a $8$ filles, donc l'effectif de la catégorie « filles » est $8$. Il y a $7$ garçons, donc l'effectif de la catégorie « garçons » est $7$."
+            },
+            {
+              "question": "Tu as trié tes jouets : $5$ voitures, $3$ poupées, $4$ cubes, $2$ livres. Écris les catégories et leurs effectifs dans l'ordre.",
+              "answer": "Voitures : 5, Poupées : 3, Cubes : 4, Livres : 2",
+              "hint": "Note chaque type de jouet et le nombre correspondant.",
+              "explanation": "Chaque type de jouet est une catégorie. On écrit le nom de la catégorie et à côté son effectif (le nombre)."
+            },
+            {
+              "question": "Classe ces animaux en deux catégories : « à plumes » et « à poils ». Pigeon, chat, chien, moineau, lapin, canard. Donne l'effectif de chaque catégorie.",
+              "answer": "À plumes : pigeon, moineau, canard (effectif 3). À poils : chat, chien, lapin (effectif 3).",
+              "hint": "Regarde si l'animal a des plumes ou des poils sur le corps.",
+              "explanation": "Le pigeon, le moineau et le canard ont des plumes : catégorie « à plumes », effectif $3$. Le chat, le chien et le lapin ont des poils : catégorie « à poils », effectif $3$."
+            }
+          ]
+        },
+        {
+          "title": "Compléter un tableau.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À quoi ressemble un tableau ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau, c'est comme une petite grille bien rangée. En haut, il y a une ligne avec les noms des colonnes. La première colonne donne le nom de la $catégorie$, la deuxième colonne donne l'$effectif$. C'est tout simple : chaque ligne correspond à un groupe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau des fruits préférés de la classe. La première ligne dit : « Pomme » et « $6$ ». Ça veut dire que $6$ enfants ont choisi la pomme. La deuxième ligne : « Banane » et « $4$ ». Quatre enfants préfèrent la banane. C'est clair, non ?"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit préféré",
+                "Nombre d'enfants"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "6"
+                ],
+                [
+                  "Banane",
+                  "4"
+                ],
+                [
+                  "Fraise",
+                  "5"
+                ],
+                [
+                  "Orange",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Remplir les cases vides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le tableau a des trous. C'est à toi de les combler ! Regarde bien les informations qu'on te donne. Si on te dit : « $7$ enfants aiment le chocolat », tu cherches la ligne « Chocolat » et tu écris $7$ dans la case de l'effectif. Si la case de la catégorie est vide, tu lis l'effectif et tu devines de quel groupe il s'agit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple. Le tableau montre des animaux de compagnie. La ligne « Chat » a l'effectif $8$. La ligne « Chien » a l'effectif $5$. La ligne « Lapin » est vide pour l'effectif. On te dit : « $3$ enfants ont un lapin ». Tu écris $3$ en face de « Lapin ». Facile !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Animal",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "Chat",
+                  "8"
+                ],
+                [
+                  "Chien",
+                  "5"
+                ],
+                [
+                  "Lapin",
+                  "3"
+                ],
+                [
+                  "Poisson",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire son propre tableau de A à Z"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, c'est à toi de tout faire. Tu as une liste : $6$ billes rouges, $4$ billes bleues, $5$ billes vertes, $2$ billes jaunes. Première étape : écris le titre du tableau, par exemple « Mes billes ». Deuxième étape : écris les noms des colonnes : « Couleur » et « Nombre ». Troisième étape : remplis chaque ligne avec une couleur et son nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifie à la fin : as-tu bien mis les $4$ couleurs ? Les nombres sont-ils justes ? Si tu as tout bon, ton tableau est prêt ! Tu pourras le montrer à tes parents et leur expliquer ce que tu as fait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète ce tableau : \"Couleur - Nombre\". Rouge : 5, Bleu : ?, Vert : 3, Jaune : 2. On sait qu'il y a 4 billes bleues.",
+              "answer": "Bleu : 4",
+              "hint": "Cherche la ligne « Bleu » et écris le nombre qu'on te donne.",
+              "explanation": "La ligne « Bleu » avait une case vide. On te dit qu'il y a $4$ billes bleues, donc tu écris $4$ dans cette case."
+            },
+            {
+              "question": "Voici un tableau à trous : « Animal - Effectif ». Chat : 6, Chien : ?, Oiseau : 2. Au total, il y a 15 animaux. Combien de chiens ?",
+              "answer": "Chien : 7",
+              "hint": "Additionne les effectifs connus et retire du total.",
+              "explanation": "On a $6$ chats + $2$ oiseaux = $8$ animaux. Le total est $15$. Il manque $15 - 8 = 7$ chiens."
+            },
+            {
+              "question": "Tu as compté les voitures dans la rue : $9$ blanches, $6$ noires, $4$ grises, $3$ rouges. Fais ton tableau avec un titre et deux colonnes.",
+              "answer": "Titre : Voitures dans la rue. Colonnes : Couleur, Nombre. Lignes : Blanche 9, Noire 6, Grise 4, Rouge 3.",
+              "hint": "Écris d'abord le titre, puis les noms des colonnes, puis chaque couleur avec son nombre.",
+              "explanation": "Un tableau complet a un titre, deux noms de colonnes (catégorie et effectif), et une ligne par catégorie avec le bon nombre."
+            }
+          ]
+        },
+        {
+          "title": "Lire une information.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre à « Combien ? »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ton tableau est prêt, il sait te répondre ! Regarde ce tableau des goûters préférés. Si on te demande : « Combien d'enfants aiment le gâteau ? », tu cherches la ligne « Gâteau » et tu lis le nombre en face : $8$. C'est la réponse. Le tableau, c'est comme un petit dictionnaire des nombres."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Goûter",
+                "Nombre d'enfants"
+              ],
+              "rows": [
+                [
+                  "Gâteau",
+                  "8"
+                ],
+                [
+                  "Fruit",
+                  "5"
+                ],
+                [
+                  "Yaourt",
+                  "4"
+                ],
+                [
+                  "Biscuit",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie une autre question : « Combien d'enfants ont choisi le yaourt ? ». Tu regardes la ligne « Yaourt », tu lis $4$. Tu as trouvé ! À chaque fois, c'est le même geste : trouve la bonne ligne, lis le nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver le plus grand et le plus petit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la question est : « Quel est le goûter le plus aimé ? ». Pas de panique ! Tu compares les nombres. Le plus grand nombre, c'est le gagnant. Ici, $8$ pour le gâteau, $6$ pour le biscuit, $5$ pour le fruit, $4$ pour le yaourt. Le plus grand, c'est $8$. Donc le gâteau gagne !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et pour « le moins aimé » ? Tu cherches le plus petit nombre. Ici, c'est $4$ pour le yaourt. Le yaourt est le moins choisi. C'est comme une course : le plus grand effectif arrive en premier, le plus petit arrive en dernier."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Goûters préférés - comparaison visuelle",
+              "bars": [
+                {
+                  "label": "Gâteau",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Biscuit",
+                  "value": 6,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Fruit",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Yaourt",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Additionner des effectifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une dernière question piège : « Combien d'enfants ont choisi un goûter sucré ? ». Le gâteau ($8$), le biscuit ($6$) et le yaourt ($4$) sont sucrés. Il faut additionner : $8 + 6 + 4$. Tu peux le faire sur tes doigts ou en calcul posé. $8 + 6 = 14$, $14 + 4 = 18$. Il y a $18$ enfants qui aiment le sucré."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, un tableau ne sert pas seulement à lire un seul nombre. Il permet de faire des petits calculs pour répondre à des questions plus grandes. C'est pour ça qu'on l'aime bien : il range tout proprement pour qu'on retrouve l'info vite et bien."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une catégorie et son effectif.",
+                "Je sais remplir un tableau avec des catégories et des nombres.",
+                "Je sais lire une information précise dans un tableau.",
+                "Je sais trouver la catégorie qui a le plus grand effectif.",
+                "Je sais trouver la catégorie qui a le plus petit effectif.",
+                "Je peux additionner plusieurs effectifs pour répondre à une question."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde le tableau : « Sport - Enfants ». Foot : 10, Natation : 6, Vélo : 8, Judo : 4. Combien d'enfants font du vélo ?",
+              "answer": "8 enfants font du vélo.",
+              "hint": "Cherche la ligne « Vélo » et lis le nombre en face.",
+              "explanation": "Dans le tableau, la ligne « Vélo » a pour effectif $8$. Donc $8$ enfants font du vélo."
+            },
+            {
+              "question": "Avec le même tableau, quel est le sport le plus pratiqué ? Et le moins pratiqué ?",
+              "answer": "Le plus : Foot (10). Le moins : Judo (4).",
+              "hint": "Compare tous les nombres. Le plus grand gagne, le plus petit perd.",
+              "explanation": "Les effectifs sont : $10$, $6$, $8$, $4$. Le plus grand est $10$ (Foot). Le plus petit est $4$ (Judo)."
+            },
+            {
+              "question": "Toujours le même tableau. Combien d'enfants font un sport de ballon (Foot) ou un sport d'eau (Natation) ?",
+              "answer": "16 enfants (10 + 6).",
+              "hint": "Additionne l'effectif du Foot et l'effectif de la Natation.",
+              "explanation": "Foot = $10$, Natation = $6$. On additionne : $10 + 6 = 16$ enfants."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

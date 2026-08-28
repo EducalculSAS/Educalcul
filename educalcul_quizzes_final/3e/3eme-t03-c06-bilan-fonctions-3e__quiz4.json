@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 472,
+  "_course_code": "3eme-t03-c06-bilan-fonctions-3e",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Bilan - Fonctions 3e",
+  "title": "Bilan - Fonctions 3e : Applications",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction f. Quelle est l'expression de f(x) ?\\n\\nx | 0 | 1 | 2\\nf(x) | 3 | 5 | 7",
+      "options": [
+        "f(x)=2x+3",
+        "f(x)=3x+2",
+        "f(x)=2x-3",
+        "f(x)=x+3"
+      ],
+      "correctAnswer": "f(x)=2x+3",
+      "explanation": "Les valeurs montrent que pour x=0, f(0)=3, donc l'ordonnée à l'origine est 3. L'augmentation de f(x) quand x augmente de 1 est 2 (5-3=2, 7-5=2), ce qui donne un coefficient directeur de 2. L'expression est donc f(x)=2x+3. Les autres options ne correspondent pas à ces deux caractéristiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite passe par les points A(0,-2) et B(2,2). Quelle est l'équation de cette droite sous la forme f(x)=ax+b ?",
+      "options": [
+        "f(x)=2x-2",
+        "f(x)=x-2",
+        "f(x)=2x+2",
+        "f(x)=x+2"
+      ],
+      "correctAnswer": "f(x)=2x-2",
+      "explanation": "Le coefficient directeur a = (2-(-2))/(2-0) = 4/2 = 2. L'ordonnée à l'origine b est la valeur de y pour x=0, soit -2. L'équation est donc f(x)=2x-2. Les autres propositions donnent soit un coefficient directeur erroné, soit une ordonnée à l'origine erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction f définie par f(x) = -3x + 4. Quelle est l'image de 5 par f ?",
+      "options": [
+        "-11",
+        "-1",
+        "11",
+        "1"
+      ],
+      "correctAnswer": "-11",
+      "explanation": "On calcule f(5) = -3 * 5 + 4 = -15 + 4 = -11. Les autres valeurs correspondent à des erreurs de signe ou d'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la fonction f(x) = 0,5x - 3, déterminer l'antécédent de 0 (la valeur de x telle que f(x)=0).",
+      "options": [
+        "6",
+        "-6",
+        "3",
+        "-3"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On résout 0,5x - 3 = 0 => 0,5x = 3 => x = 3 / 0,5 = 6. Les autres nombres sont obtenus en oubliant de diviser par 0,5 ou en changeant le signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La location d'une voiture coûte 30 euros de frais fixes plus 0,20 euro par kilomètre parcouru. Écrire la fonction C(k) qui donne le coût total en euros pour k kilomètres.",
+      "options": [
+        "C(k)=0,2k+30",
+        "C(k)=30k+0,2",
+        "C(k)=0,2k-30",
+        "C(k)=30k-0,2"
+      ],
+      "correctAnswer": "C(k)=0,2k+30",
+      "explanation": "Le coût total est la somme du forfait (30) et du coût variable (0,20 * k). Donc C(k) = 0,2k + 30. Les autres formules inversent les coefficients ou utilisent une soustraction incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

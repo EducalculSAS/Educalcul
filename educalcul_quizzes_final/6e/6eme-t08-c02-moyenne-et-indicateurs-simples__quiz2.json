@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 369,
+  "_course_code": "6eme-t08-c02-moyenne-et-indicateurs-simples",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter la moyenne et les indicateurs simples",
+  "questions": [
+    {
+      "text": "Dans une classe, la moyenne des notes à un contrôle est de $12/20$. Que signifie concrètement cette valeur ?",
+      "options": [
+        "Tous les élèves ont eu exactement $12/20$.",
+        "La note la plus fréquente est $12/20$.",
+        "Si on redistribuait équitablement le total des points entre tous les élèves, chacun aurait $12/20$.",
+        "La moitié des élèves a eu plus de $12/20$ et l'autre moitié moins de $12/20$."
+      ],
+      "correctAnswer": "Si on redistribuait équitablement le total des points entre tous les élèves, chacun aurait $12/20$.",
+      "explanation": "La moyenne représente la valeur d'équilibre ou le partage équitable du total. L'option A est fausse car les notes peuvent être très différentes. L'option B correspond au mode (valeur la plus fréquente). L'option D correspond à la médiane (valeur du milieu).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par cinq élèves pendant les vacances. Quelle est la moyenne du nombre de livres lus ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "20"
+      ],
+      "correctAnswer": "4",
+      "explanation": "On additionne les valeurs lues sur le graphique : $3 + 5 + 4 + 6 + 2 = 20$ livres au total. On divise ce total par le nombre d'élèves, soit $5$. La moyenne est $20 / 5 = 4$ livres. L'option D correspond au total, pas à la moyenne.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par élève",
+        "bars": [
+          {
+            "label": "Alice",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Bob",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Chloé",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "David",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Emma",
+            "value": 2,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Deux séries de notes ont la même moyenne de $10/20$. La série A a une étendue de $4$ et la série B une étendue de $16$. Que peut-on dire de la dispersion des notes ?",
+      "options": [
+        "Les notes de la série A sont plus dispersées que celles de la série B.",
+        "Les notes de la série B sont plus dispersées que celles de la série A.",
+        "Les deux séries ont exactement les mêmes notes.",
+        "On ne peut rien dire de la dispersion avec l'étendue."
+      ],
+      "correctAnswer": "Les notes de la série B sont plus dispersées que celles de la série A.",
+      "explanation": "L'étendue (différence entre la valeur max et la valeur min) est un indicateur de dispersion. Plus l'étendue est grande, plus les valeurs sont éloignées les unes des autres. Comme $16 > 4$, la série B est plus dispersée. La moyenne étant identique, elle ne permet pas de comparer la dispersion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un groupe de $6$ élèves a une moyenne d'âge de $11$ ans. Un nouvel élève de $13$ ans rejoint le groupe. Que devient la moyenne d'âge ?",
+      "options": [
+        "Elle reste égale à $11$ ans.",
+        "Elle diminue.",
+        "Elle augmente.",
+        "Elle devient $12$ ans."
+      ],
+      "correctAnswer": "Elle augmente.",
+      "explanation": "L'âge du nouvel élève ($13$ ans) est supérieur à l'ancienne moyenne ($11$ ans). Ajouter une valeur supérieure à la moyenne tire la moyenne vers le haut. Le nouveau total d'âge est $6 \\times 11 + 13 = 79$ ans pour $7$ élèves, soit une nouvelle moyenne d'environ $11,3$ ans, qui est bien supérieure à $11$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La moyenne de quatre nombres est $15$. Trois de ces nombres sont $10$, $20$ et $14$. Quel est le quatrième nombre ?",
+      "options": [
+        "16",
+        "14",
+        "18",
+        "12"
+      ],
+      "correctAnswer": "16",
+      "explanation": "La somme des quatre nombres est $4 \\times 15 = 60$. La somme des trois nombres connus est $10 + 20 + 14 = 44$. Le quatrième nombre est la différence : $60 - 44 = 16$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

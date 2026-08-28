@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Quiz : Définir une fonction en algorithmique",
+  "questions": [
+    {
+      "text": "Quelle est la syntaxe correcte en Python pour définir une fonction nommée `carre` qui prend un paramètre $x$ et renvoie son carré ?",
+      "options": [
+        "function carre(x) { return x * x; }",
+        "def carre(x): return x * x",
+        "carre = function(x) { x * x }",
+        "def carre[x]: return x ** 2"
+      ],
+      "correctAnswer": "def carre(x): return x * x",
+      "explanation": "En Python, la définition d'une fonction commence par le mot-clé `def`, suivi du nom de la fonction, des parenthèses contenant les paramètres (ici `x`), et de deux-points. Le corps de la fonction est indenté. L'instruction `return` permet de renvoyer la valeur. La première option est une syntaxe JavaScript, la troisième utilise une affectation incorrecte, et la quatrième utilise des crochets au lieu de parenthèses pour les paramètres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n`def double(n):\\n    return n * 2\\nresultat = double(5)`\\nQuelle est la valeur de la variable `resultat` après l'exécution ?",
+      "options": [
+        "5",
+        "10",
+        "2",
+        "Rien (la fonction n'affiche rien)"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La fonction `double` reçoit l'argument `5` dans son paramètre `n`. Elle calcule `n * 2`, soit `10`, et renvoie cette valeur grâce à `return`. Cette valeur renvoyée est ensuite stockée dans la variable `resultat` lors de l'appel `double(5)`. L'option 4 confond `return` (renvoyer une valeur au programme) et `print` (afficher à l'écran).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la différence fondamentale entre l'instruction `print` et l'instruction `return` à l'intérieur d'une fonction ?",
+      "options": [
+        "`print` renvoie une valeur au programme principal, `return` affiche du texte à l'écran.",
+        "`return` renvoie une valeur utilisable pour la suite du programme, `print` affiche seulement à l'écran sans transmettre de valeur.",
+        "Il n'y a pas de différence, les deux permettent de récupérer le résultat de la fonction.",
+        "`print` arrête l'exécution de la fonction, `return` continue l'exécution."
+      ],
+      "correctAnswer": "`return` renvoie une valeur utilisable pour la suite du programme, `print` affiche seulement à l'écran sans transmettre de valeur.",
+      "explanation": "`return` termine la fonction et transmet une valeur à l'endroit où la fonction a été appelée (elle peut être stockée dans une variable ou réutilisée dans un calcul). `print` se contente d'afficher du texte dans la console pour l'utilisateur, mais ne renvoie aucune valeur exploitable par le programme (la fonction renvoie alors implicitement `None`).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\n`x = 10\\ndef change():\\n    x = 20\\nchange()\\nprint(x)`\\nQue affiche ce programme ?",
+      "options": [
+        "20",
+        "10",
+        "Une erreur",
+        "Rien"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La variable `x` définie au début est une variable globale (valeur 10). À l'intérieur de la fonction `change`, l'instruction `x = 20` crée une nouvelle variable locale nommée `x`, qui n'existe que dans la fonction. Cette variable locale masque la variable globale le temps de l'exécution de la fonction. À la fin de la fonction, la variable locale est détruite. L'instruction `print(x)` affiche donc la variable globale inchangée, soit 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut définir une fonction `est_pair(n)` qui renvoie `True` si l'entier $n$ est pair, et `False` sinon. Parmi les propositions suivantes, laquelle est la plus correcte et la plus 'pythonique' (conforme aux bonnes pratiques enseignées en 3e) ?",
+      "options": [
+        "def est_pair(n): return n % 2 = 0",
+        "def est_pair(n):\\n    if n % 2 == 0:\\n        return True\\n    else:\\n        return False",
+        "def est_pair(n): return n % 2 == 0",
+        "def est_pair(n): return n / 2 == 0"
+      ],
+      "correctAnswer": "def est_pair(n): return n % 2 == 0",
+      "explanation": "L'opérateur `%` (modulo) donne le reste de la division euclidienne. Un nombre est pair si le reste de sa division par 2 est 0, donc la condition `n % 2 == 0` est une expression booléenne qui vaut `True` ou `False`. On peut renvoyer directement cette expression avec `return`. L'option 1 utilise `=` (affectation) au lieu de `==` (comparaison), ce qui provoque une erreur de syntaxe. L'option 2 fonctionne mais est inutilement verbose (structure `if/else` pour renvoyer un booléen). L'option 4 utilise la division `/` qui donne un flottant (ex: `4 / 2 = 2.0`), la comparaison avec 0 est fausse pour tout nombre pair non nul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

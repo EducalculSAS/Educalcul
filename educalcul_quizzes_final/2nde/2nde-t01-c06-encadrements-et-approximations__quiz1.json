@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Arrondis",
+  "title": "Quiz : Arrondis (Seconde)",
+  "questions": [
+    {
+      "text": "On arrondit le nombre $12,345$ à l'unité près. Quelle valeur obtient-on ?",
+      "options": [
+        "12",
+        "13",
+        "12,3",
+        "12,4"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Pour arrondir à l'unité près, on regarde le chiffre des dixièmes (premier chiffre après la virgule). Ici, le chiffre des dixièmes est $3$. Comme $3 < 5$, on arrondit à l'entier inférieur, soit $12$. Les options $12,3$ et $12,4$ correspondent à des arrondis au dixième près, et $13$ serait le résultat si le chiffre des dixièmes était supérieur ou égal à $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On arrondit le nombre $7,896$ au centième près. Quelle est la bonne écriture du résultat ?",
+      "options": [
+        "7,89",
+        "7,90",
+        "7,9",
+        "8,00"
+      ],
+      "correctAnswer": "7,90",
+      "explanation": "Le chiffre des centièmes est $9$ et le chiffre suivant (millième) est $6$. Comme $6 \\ge 5$, on arrondit le $9$ à l'unité supérieure : $9+1=10$. On écrit $0$ au rang des centièmes et on reporte $1$ au rang des dixièmes : $8+1=9$. Le résultat est donc $7,90$. Il faut conserver le zéro des centièmes pour indiquer la précision demandée (au centième près). L'option $7,9$ est un arrondi au dixième près.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $x = 3,14159$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "L'arrondi au dixième près est $3,1$ et la troncature au dixième près est $3,1$.",
+        "L'arrondi au centième près est $3,14$ et la troncature au centième près est $3,14$.",
+        "L'arrondi au millième près est $3,142$ et la troncature au millième près est $3,141$.",
+        "L'arrondi à l'unité près est $4$ et la troncature à l'unité près est $3$."
+      ],
+      "correctAnswer": "L'arrondi au millième près est $3,142$ et la troncature au millième près est $3,141$.",
+      "explanation": "Analysons l'option correcte : au rang des millièmes (3e décimale), le chiffre est $1$ et le suivant (dix-millième) est $5$. Pour l'arrondi, comme le chiffre suivant est $5$, on arrondit à la valeur supérieure : $3,142$. Pour la troncature, on conserve simplement les 3 premières décimales sans modifier le dernier chiffre : $3,141$. Les autres options sont fausses : au dixième près, l'arrondi et la troncature donnent tous deux $3,1$ (option A vraie mais pas la seule distinction) ; au centième près, les deux donnent $3,14$ (option B vraie mais pas la seule distinction) ; à l'unité près, l'arrondi donne $3$ (chiffre des dixièmes $1 < 5$) et non $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule $A = 4,56 \\times 3,14$. On souhaite donner une valeur approchée de $A$ au dixième près. Quel est le résultat ?",
+      "options": [
+        "14,2",
+        "14,3",
+        "14,4",
+        "14,5"
+      ],
+      "correctAnswer": "14,3",
+      "explanation": "Il faut d'abord effectuer le calcul exact (ou avec une précision suffisante) : $4,56 \\times 3,14 = 14,3184$. Ensuite, on arrondit ce résultat au dixième près. Le chiffre des dixièmes est $3$, le chiffre des centièmes est $1$. Comme $1 < 5$, on arrondit à $14,3$. Attention : arrondir les nombres avant de calculer ($4,6 \\times 3,1 = 14,26$) peut entraîner une erreur sur le résultat final arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre $x$ arrondi au millième près vaut $2,345$. Quel est l'encadrement le plus précis de $x$ ?",
+      "options": [
+        "$2,344 \\le x < 2,346$",
+        "$2,3445 \\le x < 2,3455$",
+        "$2,34 \\le x < 2,35$",
+        "$2,345 \\le x < 2,346$"
+      ],
+      "correctAnswer": "$2,3445 \\le x < 2,3455$",
+      "explanation": "L'arrondi au millième près (3 chiffres après la virgule) signifie que la valeur exacte $x$ se situe à une distance strictement inférieure à $0,0005$ de la valeur arrondie $2,345$, sauf pour la borne inférieure où l'égalité est possible si le chiffre suivant est exactement $5$ suivi de zéros (règle de l'arrondi au plus pair non appliquée ici, on utilise l'encadrement standard). L'intervalle est donc $[2,345 - 0,0005 ; 2,345 + 0,0005[$, soit $[2,3445 ; 2,3455[$. L'option A correspond à un arrondi au centième près, l'option C à un arrondi au centième près aussi, l'option D oublie la moitié inférieure de l'intervalle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

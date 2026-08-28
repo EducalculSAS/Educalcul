@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 196,
+  "_course_code": "ce2-t07-c01-polygones-et-vocabulaire",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Côtés et sommets",
+  "title": "Côtés et sommets des polygones",
+  "questions": [
+    {
+      "text": "Observe le triangle ci-dessous. Combien a-t-il de côtés et de sommets ?",
+      "options": [
+        "$3$ côtés et $3$ sommets",
+        "$3$ côtés et $4$ sommets",
+        "$4$ côtés et $3$ sommets",
+        "$4$ côtés et $4$ sommets"
+      ],
+      "correctAnswer": "$3$ côtés et $3$ sommets",
+      "explanation": "Un triangle est un polygone à $3$ côtés et $3$ sommets. La figure montre bien trois segments [AB], [BC], [CA] et trois points A, B, C.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Quelle phrase est vraie pour tout polygone ?",
+      "options": [
+        "Il a plus de côtés que de sommets.",
+        "Il a le même nombre de côtés et de sommets.",
+        "Il a plus de sommets que de côtés.",
+        "Il a deux fois plus de côtés que de sommets."
+      ],
+      "correctAnswer": "Il a le même nombre de côtés et de sommets.",
+      "explanation": "Par définition, un polygone est une figure fermée constituée de segments. Chaque côté relie deux sommets et chaque sommet est l'extrémité de deux côtés, donc leur nombre est toujours égal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on un polygone qui a $4$ côtés et $4$ sommets ?",
+      "options": [
+        "Triangle",
+        "Quadrilatère",
+        "Pentagone",
+        "Hexagone"
+      ],
+      "correctAnswer": "Quadrilatère",
+      "explanation": "Le préfixe \"quadri-\" signifie $4$. Un quadrilatère a $4$ côtés et $4$ sommets. Le triangle en a $3$, le pentagone $5$ et l'hexagone $6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces polygones, lequel a le plus grand nombre de sommets ?",
+      "options": [
+        "Triangle",
+        "Carré",
+        "Pentagone",
+        "Ils ont tous le même nombre."
+      ],
+      "correctAnswer": "Pentagone",
+      "explanation": "Le triangle a $3$ sommets, le carré (un quadrilatère) en a $4$, le pentagone en a $5$. C'est le pentagone qui en a le plus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un polygone a $6$ sommets. Combien a-t-il de côtés ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Dans tout polygone, le nombre de côtés est égal au nombre de sommets. S'il y a $6$ sommets, il y a donc $6$ côtés. C'est un hexagone.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

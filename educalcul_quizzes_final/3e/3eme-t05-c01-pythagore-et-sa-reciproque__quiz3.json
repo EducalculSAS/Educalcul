@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Rédiger",
+  "title": "Quiz : Rédiger une démonstration avec Pythagore et sa réciproque",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, on veut appliquer le théorème de Pythagore pour calculer la longueur de l'hypoténuse. Quelle est la rédaction correcte de l'énoncé du théorème ?",
+      "options": [
+        "Dans un triangle rectangle, le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.",
+        "Dans tout triangle, la somme des carrés des deux côtés les plus courts est égale au carré du côté le plus long.",
+        "Si le carré d'un côté est égal à la somme des carrés des deux autres côtés, alors le triangle est rectangle.",
+        "Dans un triangle rectangle, l'hypoténuse est égale à la somme des deux autres côtés."
+      ],
+      "correctAnswer": "Dans un triangle rectangle, le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.",
+      "explanation": "Le théorème direct de Pythagore s'applique UNIQUEMENT dans un triangle rectangle (hypothèse). La conclusion porte sur les carrés des longueurs : le carré de l'hypoténuse (côté le plus long, opposé à l'angle droit) est égal à la somme des carrés des deux autres côtés. L'option 2 omet l'hypothèse 'triangle rectangle'. L'option 3 est l'énoncé de la réciproque. L'option 4 oublie les carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On connaît les trois longueurs d'un triangle : $a = 6$ cm, $b = 8$ cm et $c = 10$ cm. On veut utiliser la réciproque du théorème de Pythagore pour montrer qu'il est rectangle. Quelle rédaction est correcte ?",
+      "options": [
+        "On calcule $10^2 = 100$ et $6^2 + 8^2 = 36 + 64 = 100$. Comme $10^2 = 6^2 + 8^2$, le triangle est rectangle et l'angle droit est opposé au côté de longueur 10 cm.",
+        "On calcule $6^2 + 8^2 = 100$ et $10^2 = 100$. Comme $6^2 + 8^2 = 10^2$, le triangle est rectangle en A.",
+        "On calcule $10^2 = 100$ et $6^2 + 8^2 = 100$. Comme les deux sommes sont égales, le triangle est rectangle.",
+        "On calcule $6 + 8 = 14$ et $10 = 10$. Comme $14 > 10$, le triangle est rectangle."
+      ],
+      "correctAnswer": "On calcule $10^2 = 100$ et $6^2 + 8^2 = 36 + 64 = 100$. Comme $10^2 = 6^2 + 8^2$, le triangle est rectangle et l'angle droit est opposé au côté de longueur 10 cm.",
+      "explanation": "La réciproque nécessite de vérifier l'égalité : le carré de la PLUS GRANDE longueur (10) doit être égal à la somme des carrés des deux autres (6 et 8). Il faut expliciter les calculs ($10^2$ et $6^2+8^2$), conclure l'égalité, puis dire que le triangle est rectangle EN PRÉCISANT où se trouve l'angle droit (opposé au plus grand côté, ici 10). L'option 2 ne justifie pas pourquoi l'angle droit est en A. L'option 3 oublie de localiser l'angle droit. L'option 4 n'utilise pas les carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$ rectangle en $A$ tel que $AB = 5$ cm et $AC = 12$ cm. On cherche $BC$. Quelle est la rédaction correcte de la première ligne de calcul (application du théorème) ?",
+      "options": [
+        "D'après le théorème de Pythagore : $BC^2 = AB^2 + AC^2$.",
+        "D'après le théorème de Pythagore : $BC = AB^2 + AC^2$.",
+        "D'après le théorème de Pythagore : $AB^2 = BC^2 + AC^2$.",
+        "D'après le théorème de Pythagore : $BC^2 = AB + AC$."
+      ],
+      "correctAnswer": "D'après le théorème de Pythagore : $BC^2 = AB^2 + AC^2$.",
+      "explanation": "Dans un triangle rectangle en A, l'hypoténuse est BC (côté opposé à l'angle droit). Le théorème direct s'écrit : (hypoténuse)² = (côté 1)² + (côté 2)², soit $BC^2 = AB^2 + AC^2$. L'option 2 oublie le carré sur BC. L'option 3 place l'hypoténuse à gauche comme si AB était l'hypoténuse (erreur d'identification de l'angle droit). L'option 4 oublie les carrés sur AB et AC.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle $DEF$ avec $DE = 9$ cm, $EF = 12$ cm et $DF = 15$ cm. On veut rédiger la conclusion finale après avoir vérifié $15^2 = 9^2 + 12^2$. Quelle phrase termine correctement la démonstration ?",
+      "options": [
+        "Donc le triangle $DEF$ est rectangle en $E$ car l'angle droit est opposé au plus grand côté $DF$.",
+        "Donc le triangle $DEF$ est rectangle en $D$ car $DF$ est le plus grand côté.",
+        "Donc le triangle $DEF$ est rectangle car $15^2 = 9^2 + 12^2$.",
+        "Donc le triangle $DEF$ est rectangle en $F$ car $DF^2 = DE^2 + EF^2$."
+      ],
+      "correctAnswer": "Donc le triangle $DEF$ est rectangle en $E$ car l'angle droit est opposé au plus grand côté $DF$.",
+      "explanation": "La réciproque permet de conclure que le triangle est rectangle. L'angle droit est TOUJOURS opposé au plus grand côté (ici $DF = 15$). Le sommet opposé à $DF$ est $E$. Il est impératif de nommer le sommet de l'angle droit (en $E$) et de justifier par 'opposé au plus grand côté'. L'option 2 place l'angle droit à D (incorrect). L'option 3 ne localise pas l'angle droit (réponse incomplète). L'option 4 place l'angle droit en F (incorrect).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour démontrer qu'un triangle $JKL$ est rectangle en $J$, on a calculé $KL^2 = 169$ et $JK^2 + JL^2 = 25 + 144 = 169$. Laquelle de ces phrases constitue une rédaction complète et rigoureuse de la conclusion ?",
+      "options": [
+        "On a $KL^2 = JK^2 + JL^2$ donc, d'après la réciproque du théorème de Pythagore, le triangle $JKL$ est rectangle en $J$.",
+        "On a $KL^2 = JK^2 + JL^2$ donc le triangle $JKL$ est rectangle.",
+        "D'après le théorème de Pythagore, comme $KL^2 = JK^2 + JL^2$, le triangle $JKL$ est rectangle en $J$.",
+        "Comme $13^2 = 5^2 + 12^2$, le triangle $JKL$ est rectangle en $K$."
+      ],
+      "correctAnswer": "On a $KL^2 = JK^2 + JL^2$ donc, d'après la réciproque du théorème de Pythagore, le triangle $JKL$ est rectangle en $J$.",
+      "explanation": "Une rédaction rigoureuse suit la structure : Rappel de l'égalité vérifiée -> Citation du théorème utilisé (ici la RÉCIPROQUE) -> Conclusion précise (triangle rectangle EN J). L'option 2 cite mal le théorème (direct au lieu de réciproque) et ne localise pas l'angle droit. L'option 3 cite le mauvais théorème (direct au lieu de réciproque). L'option 4 localise mal l'angle droit (en K au lieu de J) et utilise des valeurs numériques non données dans l'énoncé au lieu des noms de segments.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

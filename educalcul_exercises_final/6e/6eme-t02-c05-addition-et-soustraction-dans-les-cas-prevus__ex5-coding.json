@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 340,
+  "_course_code": "6eme-t02-c05-addition-et-soustraction-dans-les-cas-prevus",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Dénominateurs communs simples",
+  "title": "Addition de fractions : dénominateurs communs simples",
+  "blocks": [
+    {
+      "title": "Algorithme pour dénominateurs 4 et 6",
+      "content": "Propose un algorithme (étapes numérotées) qui permet de calculer la somme de deux fractions ayant pour dénominateurs $4$ et $6$. Indique comment trouver le dénominateur commun et comment obtenir le numérateur de la somme.",
+      "correctAnswer": "1. Identifier les dénominateurs : $4$ et $6$.\\n2. Calculer le plus petit commun multiple (PPCM) de $4$ et $6$, qui est $12$.\\n3. Convertir chaque fraction au dénominateur $12$ : multiplier le numérateur et le dénominateur de la première fraction par $3$, et ceux de la seconde par $2$.\\n4. Additionner les nouveaux numérateurs.\\n5. Écrire la somme avec le dénominateur commun $12$.\\n6. Simplifier la fraction si possible.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le PPCM des dénominateurs $4$ et $6$, qui est $12$. On met les deux fractions au dénominateur $12$ en multipliant le numérateur et le dénominateur de la première par $3$ (car $4 \\times 3 = 12$) et de la seconde par $2$ (car $6 \\times 2 = 12$). On additionne ensuite les numérateurs obtenus. Le résultat est mis au dénominateur $12$ et on simplifie si le numérateur et le dénominateur ont un diviseur commun.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général d'addition de deux fractions",
+      "content": "Écris un algorithme (liste d'étapes) qui permet d'additionner deux fractions quelconques $\\frac{a}{b}$ et $\\frac{c}{d}$ en utilisant le plus petit commun multiple de leurs dénominateurs. Décris les étapes de calcul du PPCM, de conversion des fractions, d'addition des numérateurs et de simplification du résultat.",
+      "correctAnswer": "1. Entrées : numérateurs $a$, $c$ et dénominateurs $b$, $d$.\\n2. Calculer le PGCD de $b$ et $d$ par l'algorithme d'Euclide.\\n3. Déduire le PPCM : $\\text{PPCM} = \\frac{b \\times d}{\\text{PGCD}}$.\\n4. Convertir la première fraction : nouveau numérateur $a' = a \\times (\\text{PPCM} / b)$.\\n5. Convertir la seconde fraction : nouveau numérateur $c' = c \\times (\\text{PPCM} / d)$.\\n6. Additionner les numérateurs : $s = a' + c'$.\\n7. La somme est $\\frac{s}{\\text{PPCM}}$.\\n8. Simplifier la fraction en divisant $s$ et $\\text{PPCM}$ par leur PGCD.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise le PGCD pour obtenir le PPCM, ce qui garantit le plus petit dénominateur commun. Les fractions sont mises au même dénominateur par multiplication croisée. L'addition des numérateurs donne la fraction somme. La simplification finale assure une fraction irréductible.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application à l'exemple 3/8 + 5/12",
+      "content": "En suivant l'algorithme de la question précédente, calcule la somme des fractions $\\frac{3}{8}$ et $\\frac{5}{12}$. Détaille chaque étape : recherche du dénominateur commun, conversion, addition, simplification.",
+      "correctAnswer": "1. Dénominateurs : $8$ et $12$.\\n2. PPCM de $8$ et $12$ = $24$.\\n3. Conversion : $\\frac{3}{8} = \\frac{3 \\times 3}{8 \\times 3} = \\frac{9}{24}$ ; $\\frac{5}{12} = \\frac{5 \\times 2}{12 \\times 2} = \\frac{10}{24}$.\\n4. Addition des numérateurs : $9 + 10 = 19$.\\n5. Somme : $\\frac{19}{24}$.\\n6. La fraction $\\frac{19}{24}$ est déjà irréductible.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le PPCM de $8$ et $12$ est $24$. On multiplie le numérateur et le dénominateur de $\\frac{3}{8}$ par $3$ pour obtenir $\\frac{9}{24}$, et ceux de $\\frac{5}{12}$ par $2$ pour obtenir $\\frac{10}{24}$. L'addition donne $\\frac{19}{24}$. Comme $19$ est premier et ne divise pas $24$, la fraction est irréductible.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

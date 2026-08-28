@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Fonctions Python",
+  "title": "Exercices sur les fonctions Python",
+  "blocks": [
+    {
+      "title": "Définition et appel d'une fonction simple",
+      "content": "Remets dans l'ordre les lignes de code suivantes pour définir une fonction `saluer` qui affiche un message de bienvenue, puis l'appeler avec l'argument \"Alice\".",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "def saluer(nom):",
+        "    print(\"Bonjour\", nom)",
+        "saluer(\"Alice\")"
+      ],
+      "explanation": "La fonction est définie par `def saluer(nom):`, puis son corps affiche le message avec `print`. Enfin, on appelle la fonction en passant la chaîne \"Alice\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction avec paramètre et valeur de retour",
+      "content": "Remets dans l'ordre les lignes de code suivantes pour définir une fonction `carre` qui renvoie le carré d'un nombre, puis l'utiliser pour calculer le carré de $5$ et afficher le résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "def carre(x):",
+        "    return x * x",
+        "resultat = carre(5)",
+        "print(resultat)"
+      ],
+      "explanation": "On définit `carre` qui retourne `x * x`. On stocke le résultat de `carre(5)` dans `resultat` puis on l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction avec plusieurs paramètres et structure conditionnelle",
+      "content": "Remets dans l'ordre les lignes de code suivantes pour définir une fonction `max_deux` qui renvoie le plus grand de deux nombres, puis l'appeler avec les arguments $7$ et $3$ et afficher le résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "def max_deux(a, b):",
+        "    if a > b:",
+        "        return a",
+        "    else: return b",
+        "print(max_deux(7, 3))"
+      ],
+      "explanation": "La fonction `max_deux` compare `a` et `b`. Si `a > b`, elle renvoie `a`, sinon `b`. L'appel `max_deux(7, 3)` affiche donc `7`.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

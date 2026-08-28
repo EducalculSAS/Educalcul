@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Probabilités sur univers fini",
+  "title": "Applications des probabilités sur univers fini",
+  "blocks": [
+    {
+      "title": "Calcul d'une probabilité équiprobable",
+      "content": "On lance un dé à six faces équilibré. Rangez les étapes dans l'ordre pour calculer la probabilité d'obtenir un nombre pair.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier l'univers Ω = {1, 2, 3, 4, 5, 6} et noter que les issues sont équiprobables.",
+        "Définir l'événement A : « obtenir un nombre pair » soit A = {2, 4, 6}.",
+        "Compter les effectifs : Card(Ω) = six et Card(A) = trois.",
+        "Appliquer la formule $P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$.",
+        "Conclure : $P(A) = \\frac{3}{6} = \\frac{1}{2}$."
+      ],
+      "explanation": "L'univers contient six issues équiprobables. L'événement « nombre pair » contient trois issues favorables (2, 4, 6). La probabilité est le quotient des effectifs : $3/6 = 1/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité d'une réunion d'événements",
+      "content": "On tire une carte au hasard dans un jeu de trente-deux cartes. On note A : « la carte est un cœur » et B : « la carte est un roi ». Rangez les étapes pour calculer $P(A \\cup B)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les probabilités élémentaires : $P(A) = \\frac{8}{32}$, $P(B) = \\frac{4}{32}$, $P(A \\cap B) = \\frac{1}{32}$.",
+        "Écrire la formule de la réunion : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+        "Remplacer par les valeurs : $P(A \\cup B) = \\frac{8}{32} + \\frac{4}{32} - \\frac{1}{32}$.",
+        "Effectuer le calcul : $P(A \\cup B) = \\frac{11}{32}$.",
+        "Interpréter : la probabilité de tirer un cœur ou un roi est $\\frac{11}{32}$."
+      ],
+      "explanation": "Il y a 8 cœurs, 4 rois, et 1 roi de cœur (intersection). On applique la formule $P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 8/32 + 4/32 - 1/32 = 11/32$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilités conditionnelles et arbre pondéré",
+      "content": "Une urne contient cinq boules rouges et trois boules bleues. On tire deux boules successivement sans remise. Rangez les étapes pour calculer la probabilité que les deux boules soient rouges.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Noter R1 : « première boule rouge » et R2 : « deuxième boule rouge ». Calculer $P(R_1) = \\frac{5}{8}$.",
+        "Déterminer la probabilité conditionnelle $P(R_2 | R_1) = \\frac{4}{7}$ (il reste quatre rouges sur sept boules).",
+        "Utiliser la formule des probabilités composées : $P(R_1 \\cap R_2) = P(R_1) \\times P(R_2 | R_1)$.",
+        "Calculer le produit : $P(R_1 \\cap R_2) = \\frac{5}{8} \\times \\frac{4}{7} = \\frac{20}{56}$.",
+        "Simplifier et conclure : la probabilité buscate est $\\frac{5}{14}$."
+      ],
+      "explanation": "Au premier tirage, 5 rouges sur 8 boules. Si la première est rouge, il reste 4 rouges sur 7 boules. La probabilité des deux événements est le produit : $(5/8) \\times (4/7) = 20/56 = 5/14$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

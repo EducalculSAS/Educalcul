@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Application : Retirer des fractions simples de même dénominateur",
+  "title": "Quiz : Retirer des fractions de même dénominateur",
+  "questions": [
+    {
+      "text": "Regarde la figure. La barre représente les $\\frac{3}{4}$. On retire la partie colorée qui vaut $\\frac{1}{4}$. Quelle fraction reste-t-il ?",
+      "options": [
+        "$\\frac{2}{4}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{4}$"
+      ],
+      "correctAnswer": "$\\frac{2}{4}$",
+      "explanation": "On part de $\\frac{3}{4}$. On retire $\\frac{1}{4}$. Comme les dénominateurs sont les mêmes (4), on soustrait les numérateurs : $3 - 1 = 2$. Le dénominateur ne change pas. Il reste donc $\\frac{2}{4}$. L'option $\\frac{1}{4}$ correspond à ce qu'on a retiré, pas au reste. L'option $\\frac{4}{4}$ serait le tout.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Trois quarts, un quart retiré"
+      }
+    },
+    {
+      "text": "Effectue la soustraction suivante : $\\frac{4}{5} - \\frac{2}{5} = ?$",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{6}{5}$",
+        "$\\frac{2}{10}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "Les deux fractions ont le même dénominateur (5). On garde ce dénominateur et on soustrait les numérateurs : $4 - 2 = 2$. Le résultat est $\\frac{2}{5}$. L'option $\\frac{6}{5}$ correspond à une addition ($4+2$). L'option $\\frac{2}{10}$ correspond à l'erreur de soustraire aussi les dénominateurs ($5-5=0$ ou addition). L'option $\\frac{1}{5}$ est une erreur de calcul ($4-2=1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Emma a une tablette de chocolat divisée en 8 carrés égaux. Elle en donne 3 carrés à son frère. Quelle fraction de la tablette lui reste-t-il ?",
+      "options": [
+        "$\\frac{5}{8}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{11}{8}$",
+        "$\\frac{5}{16}$"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$",
+      "explanation": "La tablette entière fait $\\frac{8}{8}$. Emma donne $\\frac{3}{8}$. Pour trouver le reste, on soustrait : $\\frac{8}{8} - \\frac{3}{8} = \\frac{5}{8}$ (car $8 - 3 = 5$). L'option $\\frac{3}{8}$ est la part donnée. L'option $\\frac{11}{8}$ correspond à une addition. L'option $\\frac{5}{16}$ mélange numérateur et dénominateur.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 5,
+        "denominator": 8,
+        "shape": "bar",
+        "caption": "Cinq huitièmes restants"
+      }
+    },
+    {
+      "text": "Complète le trou pour que l'égalité soit juste : $\\frac{7}{10} - \\frac{\\square}{10} = \\frac{4}{10}$",
+      "options": [
+        "$3$",
+        "$11$",
+        "$4$",
+        "$7$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "On cherche le numérateur manquant. Comme les dénominateurs sont identiques (10), on fait la soustraction inverse : $7 - \\text{trou} = 4$. Le nombre qui ajouté à 4 fait 7 est 3 (car $4 + 3 = 7$). On peut aussi calculer $7 - 4 = 3$. Le numérateur manquant est donc 3. L'option 11 vient d'une addition ($7+4$). L'option 4 est le résultat. L'option 7 est le numérateur de départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban mesure 1 mètre. On coupe un premier morceau de $\\frac{3}{10}$ m puis un second de $\\frac{2}{10}$ m. Quelle longueur de ruban reste-t-il ?",
+      "options": [
+        "$\\frac{5}{10}$ m",
+        "$\\frac{3}{10}$ m",
+        "$\\frac{2}{10}$ m",
+        "$\\frac{1}{10}$ m"
+      ],
+      "correctAnswer": "$\\frac{5}{10}$ m",
+      "explanation": "Le ruban entier fait $\\frac{10}{10}$ m. On retire au total $\\frac{3}{10} + \\frac{2}{10} = \\frac{5}{10}$ m. Il reste $\\frac{10}{10} - \\frac{5}{10} = \\frac{5}{10}$ m. On peut aussi faire les soustractions l'une après l'autre : $\\frac{10}{10} - \\frac{3}{10} = \\frac{7}{10}$, puis $\\frac{7}{10} - \\frac{2}{10} = \\frac{5}{10}$. L'option $\\frac{3}{10}$ est la première coupe. L'option $\\frac{2}{10}$ est la seconde coupe. L'option $\\frac{1}{10}$ est une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 5,
+            "denominator": 10
+          }
+        ],
+        "caption": "Ruban restant : cinq dixièmes"
+      }
+    }
+  ]
+}

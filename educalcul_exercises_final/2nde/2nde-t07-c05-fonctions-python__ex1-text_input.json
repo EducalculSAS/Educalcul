@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Paramètres",
+  "title": "Paramètres de fonctions en Python",
+  "blocks": [
+    {
+      "title": "Appel de fonction simple",
+      "content": "On définit la fonction ajouter par :\\ndef ajouter(a, b):\\n    return a + b\\nQuel est le résultat de l'appel ajouter(3, 4) ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction ajouter prend deux paramètres a et b et renvoie leur somme. En appelant ajouter(3, 4), a vaut 3 et b vaut 4, donc le résultat est $3 + 4 = 7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Paramètre par défaut",
+      "content": "On définit la fonction multiplier par :\\ndef multiplier(x, y=2):\\n    return x * y\\nQuel est le résultat de l'appel multiplier(5) ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le paramètre y a une valeur par défaut 2. Lorsque l'on appelle multiplier(5) sans fournir de second argument, y vaut 2. Le résultat est $5 \\times 2 = 10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arguments nommés et paramètre par défaut",
+      "content": "On définit la fonction calculer par :\\ndef calculer(a, b=1, c=2):\\n    return a + b + c\\nQuel est le résultat de l'appel calculer(5, c=3) ?",
+      "correctAnswer": "9",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'appel calculer(5, c=3) assigne 5 au paramètre a, 3 au paramètre c par argument nommé, et b prend sa valeur par défaut 1. La somme est $5 + 1 + 3 = 9$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

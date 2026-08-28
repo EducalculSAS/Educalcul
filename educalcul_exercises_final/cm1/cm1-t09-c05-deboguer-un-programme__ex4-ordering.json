@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Déboguer un programme",
+  "title": "Déboguer un programme - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Parcours simple du robot",
+      "content": "Le programme ci-dessous doit faire avancer un robot de 3 cases, puis tourner à droite, puis avancer de 2 cases et enfin s'arrêter. Les instructions sont mélangées. Remets-les dans l'ordre correct pour que le robot suive le parcours voulu.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Avancer de 3 cases",
+        "Tourner à droite",
+        "Avancer de 2 cases",
+        "Arrêter"
+      ],
+      "explanation": "Le robot doit d'abord avancer de 3 cases, ensuite tourner à droite, puis avancer de 2 cases et enfin s'arrêter. Cet ordre respecte la logique du parcours décrit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle de déplacement",
+      "content": "Ce programme utilise une boucle pour répéter deux fois la séquence : avancer de 1 case puis tourner à gauche. Les lignes de code sont désordonnées. Replace-les dans l'ordre afin que la boucle fonctionne correctement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Répéter 2 fois",
+        "Avancer de 1 case",
+        "Tourner à gauche",
+        "Fin répéter"
+      ],
+      "explanation": "La boucle commence par l'instruction « Répéter 2 fois », ensuite le corps de la boucle contient « Avancer de 1 case » suivi de « Tourner à gauche », et se termine par « Fin répéter » pour fermer la boucle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition obstacle",
+      "content": "Le robot doit éviter un obstacle : s'il y a un obstacle devant, il tourne à droite ; sinon, il avance. Les blocs conditionnels sont mélangés. Ordonne-les pour que le programme réagisse correctement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Si obstacle devant",
+        "Tourner à droite",
+        "Sinon",
+        "Avancer"
+      ],
+      "explanation": "La structure conditionnelle commence par « Si obstacle devant », puis l'action à faire si c'est vrai : « Tourner à droite ». Le mot-clé « Sinon » introduit l'alternative, ici « Avancer » si aucun obstacle n'est détecté.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

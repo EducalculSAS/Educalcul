@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 414,
+  "_course_code": "5eme-t07-c05-bilan-proportionnalite-et-fonctions-5e",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Checklist",
+  "title": "Bilan - Proportionnalité : Checklist 5e",
+  "questions": [
+    {
+      "text": "Dans un tableau de proportionnalité, on a les valeurs : $x = 5$ correspond à $y = 15$. Quel est le coefficient de proportionnalité qui permet de passer de la ligne $x$ à la ligne $y$ ?",
+      "options": [
+        "3",
+        "5",
+        "0,33...",
+        "20"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le coefficient de proportionnalité $k$ est le nombre par lequel on multiplie les valeurs de la première ligne pour obtenir celles de la deuxième. Ici, $5 \\times k = 15$, donc $k = 15 \\div 5 = 3$. L'option 5 correspond à la valeur de départ, 0,33... est l'inverse (pour passer de $y$ à $x$), et 20 est la somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau présente quatre nombres : 4, 6, 10 et 15. Pour vérifier si ce tableau est un tableau de proportionnalité (avec 4 et 10 sur la première ligne), quelle égalité de produits en croix faut-il tester ?",
+      "options": [
+        "$4 \\times 15 = 6 \\times 10$",
+        "$4 \\times 6 = 10 \\times 15$",
+        "$4 + 15 = 6 + 10$",
+        "$4 \\times 10 = 6 \\times 15$"
+      ],
+      "correctAnswer": "$4 \\times 15 = 6 \\times 10$",
+      "explanation": "Dans un tableau de proportionnalité $\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, l'égalité des produits en croix s'écrit $a \\times d = b \\times c$. Ici, si la première ligne est 4 et 10, et la deuxième 6 et 15, on teste $4 \\times 15 = 6 \\times 10$ (soit $60 = 60$). Les autres options mélangent les colonnes ou utilisent l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique d'une fonction proportionnelle est obligatoirement :",
+      "options": [
+        "Une droite qui passe par l'origine du repère",
+        "Une courbe qui monte",
+        "Une droite parallèle à l'axe des abscisses",
+        "Un ensemble de points non alignés"
+      ],
+      "correctAnswer": "Une droite qui passe par l'origine du repère",
+      "explanation": "Une fonction proportionnelle s'écrit $f(x) = kx$. Son graphique est l'ensemble des points de coordonnées $(x, kx)$. Cela forme une droite qui passe par le point $(0,0)$ (l'origine) car $f(0) = 0$. Une courbe qui monte peut être non linéaire, une droite parallèle à l'axe des abscisses correspond à une fonction constante ($k=0$), et des points non alignés ne forment pas une fonction affine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour faire un gâteau pour 6 personnes, il faut 180 g de farine. En conservant les proportions, quelle quantité de farine faut-il pour 9 personnes ?",
+      "options": [
+        "270 g",
+        "240 g",
+        "120 g",
+        "300 g"
+      ],
+      "correctAnswer": "270 g",
+      "explanation": "C'est une situation de proportionnalité entre le nombre de personnes et la masse de farine. Le coefficient est $180 \\div 6 = 30$ g par personne. Pour 9 personnes : $9 \\times 30 = 270$ g. On peut aussi faire le produit en croix : $(180 \\times 9) \\div 6 = 1620 \\div 6 = 270$. L'option 240 g correspond à une erreur d'addition (180+60), 120 g à une division par 1,5 au lieu de multiplication, 300 g à un arrondi grossier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt 130 km en 2 heures. La vitesse est constante. Laquelle de ces affirmations est fausse ?",
+      "options": [
+        "En 30 minutes, la voiture parcourt 65 km.",
+        "Le coefficient de proportionnalité entre la distance et le temps est 65.",
+        "Pour parcourir 325 km, la voiture met 5 heures.",
+        "La distance parcourue est proportionnelle au temps mis."
+      ],
+      "correctAnswer": "En 30 minutes, la voiture parcourt 65 km.",
+      "explanation": "La vitesse (coefficient) est $130 \\div 2 = 65$ km/h. En 30 minutes (soit 0,5 heure), la distance est $65 \\times 0,5 = 32,5$ km, pas 65 km. L'option 65 km correspond à la distance en 1 heure. Les trois autres affirmations sont vraies : coefficient 65, temps pour 325 km = $325 \\div 65 = 5$ h, et relation proportionnelle distance/temps.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

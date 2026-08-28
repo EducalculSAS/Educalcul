@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 189,
+  "_course_code": "ce2-t06-c03-contenances-l-et-cl",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Comparer",
+  "title": "Comparer des contenances en litres et centilitres",
+  "blocks": [
+    {
+      "title": "Comparer deux volumes en litres",
+      "content": "Écrire un algorithme (suite d'instructions) qui permet de comparer deux volumes exprimés uniquement en litres ($L$) et d'afficher lequel est le plus grand.",
+      "correctAnswer": "1. Lire le premier volume V1 en litres.\\n2. Lire le deuxième volume V2 en litres.\\n3. Si V1 > V2 alors afficher \"V1 est plus grand\".\\n4. Sinon si V2 > V1 alors afficher \"V2 est plus grand\".\\n5. Sinon afficher \"Les deux volumes sont égaux\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare directement les deux nombres car ils sont dans la même unité. L'algorithme utilise une structure conditionnelle simple pour tester les trois cas possibles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer un volume en litres et un volume en centilitres",
+      "content": "Écrire un algorithme qui compare un volume V1 donné en litres ($L$) et un volume V2 donné en centilitres ($cL$). Rappel : $1 L = 100 cL$. L'algorithme doit afficher le plus grand volume dans son unité d'origine.",
+      "correctAnswer": "1. Lire V1 (en L) et V2 (en cL).\\n2. Convertir V1 en centilitres : V1_cL = V1 * 100.\\n3. Si V1_cL > V2 alors afficher \"V1 (en L) est plus grand\".\\n4. Sinon si V2 > V1_cL alors afficher \"V2 (en cL) est plus grand\".\\n5. Sinon afficher \"Les deux volumes sont égaux\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer, il faut mettre les deux volumes dans la même unité. On convertit les litres en centilitres en multipliant par 100, puis on compare les deux nombres entiers.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer trois volumes du plus petit au plus grand",
+      "content": "Proposer un algorithme (ou une suite d'étapes) pour ranger trois volumes A, B, C (donnés soit en $L$, soit en $cL$) du plus petit au plus grand. On suppose que chaque volume est déjà converti en centilitres avant le tri.",
+      "correctAnswer": "1. Lire les trois volumes en centilitres : A_cL, B_cL, C_cL.\\n2. Si A_cL > B_cL alors échanger A_cL et B_cL.\\n3. Si B_cL > C_cL alors échanger B_cL et C_cL.\\n4. Si A_cL > B_cL alors échanger A_cL et B_cL (de nouveau).\\n5. Afficher A_cL, B_cL, C_cL dans l'ordre (du plus petit au plus grand).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il s'agit d'un tri simple à trois éléments (tri à bulles sur trois valeurs). Après conversion en centilitres, on effectue des comparaisons et échanges successifs pour obtenir l'ordre croissant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

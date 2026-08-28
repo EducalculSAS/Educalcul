@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 235,
+  "_course_code": "cm1-t04-c02-schemas-en-barres-et-modeles",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Application : Schémas en barres et modèles",
+  "title": "Ordonner les étapes de la résolution par schéma en barres",
+  "blocks": [
+    {
+      "title": "Problème additif simple",
+      "content": "Voici un problème : $Léa a 25 billes. Elle en donne 9 à son frère. Combien de billes lui reste-t-il ?$ Classe les étapes de la résolution par schéma en barres dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je lis le problème et j'identifie les quantités connues (le total 25, la partie donnée 9) et l'inconnue (la partie restante).",
+        "Je dessine une grande barre pour représenter le total (25 billes) et je la sépare en deux parties : une pour les billes données (9) et une pour les billes restantes (?).",
+        "J'écris les nombres connus sur le schéma : 25 sur la grande barre, 9 sur la première petite partie.",
+        "Je calcule la valeur de la partie inconnue : $25 - 9 = 16$.",
+        "J'écris la réponse en phrase : Il lui reste 16 billes."
+      ],
+      "explanation": "La résolution suit toujours cet ordre : 1. Comprendre le problème et identifier les données. 2. Construire le modèle visuel (le schéma en barres) qui montre la relation entre le tout et les parties. 3. Reporter les valeurs connues sur le schéma. 4. Effectuer le calcul nécessaire pour trouver l'inconnue. 5. Formuler la réponse finale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème multiplicatif (recherche du total)",
+      "content": "Voici un problème : $Une boîte contient 6 crayons. Combien y a-t-il de crayons dans 4 boîtes ?$ Classe les étapes de la modélisation et de la résolution dans l'ordre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je comprends qu'il y a 4 groupes de même taille (les boîtes) et que chaque groupe contient 6 crayons. Je cherche le total.",
+        "Je dessine 4 barres de même taille alignées pour représenter les 4 boîtes. J'écris 6 dans chaque barre.",
+        "J'ajoute une accolade au-dessus des 4 barres pour montrer que je cherche le total (la somme des 4 groupes).",
+        "Je calcule le produit : $4 \\times 6 = 24$ (ou j'additionne $6 + 6 + 6 + 6$).",
+        "Je conclus : Il y a 24 crayons en tout."
+      ],
+      "explanation": "Pour un problème multiplicatif (recherche du tout), on commence par identifier la structure 'groupes de même taille'. Le schéma en barres montre alors plusieurs barres identiques (une par groupe). L'accolade regroupe l'ensemble pour symboliser la multiplication. Le calcul suit, puis la phrase de réponse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à deux étapes (avant / après)",
+      "content": "Voici un problème : $Paul a 50 €. Il achète un jeu à 28 €. Ensuite, il reçoit 10 € de sa grand-mère. Combien a-t-il maintenant ?$ Range les étapes pour résoudre ce problème à l'aide de schémas en barres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Étape 1 (Achats) : Je dessine une barre pour les 50 € de départ. Je la coupe en deux : 28 € pour le jeu et ? pour le reste. Je calcule $50 - 28 = 22$. Paul a 22 € après l'achat.",
+        "Étape 2 (Cadeau) : Je pars du résultat 22 €. J'ajoute une barre de 10 € à côté (ou je prolonge la barre). Je calcule $22 + 10 = 32$.",
+        "Je relis le problème et je sépare les deux actions successives : d'abord une soustraction (achat), ensuite une addition (cadeau).",
+        "J'écris la réponse finale : Paul a maintenant 32 €."
+      ],
+      "explanation": "Les problèmes à plusieurs étapes se décomposent en sous-problèmes. On fait un premier schéma pour la première action (soustraction : tout -> partie + partie). Le résultat devient le départ du deuxième schéma (addition : partie + partie -> tout). L'ordre chronologique des actions dicte l'ordre des schémas.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

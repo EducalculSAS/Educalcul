@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Tester",
+  "title": "Quiz : Conditions - Approfondissement : Tester",
+  "questions": [
+    {
+      "text": "Dans un algorithme, quelle instruction permet d'exécuter une action seulement si une condition est vraie ?",
+      "options": [
+        "SI ... ALORS",
+        "TANT QUE ... FAIRE",
+        "POUR ... FAIRE",
+        "REPETER ... JUSQU'A"
+      ],
+      "correctAnswer": "SI ... ALORS",
+      "explanation": "L'instruction SI ... ALORS permet d'exécuter un bloc d'instructions uniquement lorsque la condition testée est vraie. Les autres structures correspondent à des boucles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $x = 7$, quelle condition est vraie ?",
+      "options": [
+        "$x > 10$",
+        "$x < 5$",
+        "$x = 7$",
+        "$x \\neq 7$"
+      ],
+      "correctAnswer": "$x = 7$",
+      "explanation": "Puisque $x$ vaut 7, la condition $x = 7$ est vraie. Les autres comparaisons sont fausses car 7 n'est pas supérieur à 10, n'est pas inférieur à 5 et n'est pas différent de 7.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La condition $ (x > 3) \\text{ ET } (x < 10) $ est vraie pour quelle valeur de $x$ ?",
+      "options": [
+        "$2$",
+        "$5$",
+        "$12$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Pour que les deux parties soient vraies, $x$ doit être strictement supérieur à 3 et strictement inférieur à 10. La valeur 5 satisfait ces deux inégalités, contrairement à 2, 12 ou 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la structure SI ... ALORS ... SINON ..., que se passe-t-il si la condition est fausse ?",
+      "options": [
+        "Les instructions après ALORS sont exécutées",
+        "Les instructions après SINON sont exécutées",
+        "L'algorithme s'arrête",
+        "La condition est testée à nouveau"
+      ],
+      "correctAnswer": "Les instructions après SINON sont exécutées",
+      "explanation": "Lorsque la condition du SI est fausse, le programme saute le bloc ALORS et exécute le bloc qui suit SINON. Les autres propositions ne correspondent pas au fonctionnement de cette structure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On teste $x = 4$. Si $x > 0$ ALORS afficher 'Positif' SINON SI $x < 0$ ALORS afficher 'Négatif' SINON afficher 'Nul'. Quel message s'affiche ?",
+      "options": [
+        "'Positif'",
+        "'Négatif'",
+        "'Nul'",
+        "Aucun message"
+      ],
+      "correctAnswer": "'Positif'",
+      "explanation": "Comme $x$ vaut 4, la première condition $x > 0$ est vraie, donc le programme affiche 'Positif' et ne teste pas les autres branches.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

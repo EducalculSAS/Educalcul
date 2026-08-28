@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Programme",
+  "title": "Programme de simulation : lancer de dé",
+  "blocks": [
+    {
+      "title": "Analyse du programme",
+      "content": "On considère le programme suivant écrit en Python pour simuler 100 lancers d'un dé à six faces équilibré et compter le nombre de fois où on obtient un 6 :\\n$compteur = 0$\\n$for i in range(100):$\\n    $resultat = randint(1, 6)$\\n    $if resultat == 6:$\\n        $compteur = compteur + 1$\\n$print(compteur)$\\nCombien de fois la boucle $for$ s'exécute-t-elle ?",
+      "correctAnswer": "100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction $range(100)$ génère une suite de 100 entiers (de 0 à 99), la boucle s'exécute donc 100 fois, ce qui correspond au nombre de lancers simulés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter la condition",
+      "content": "On souhaite modifier le programme pour simuler 500 lancers et compter le nombre de fois où on obtient un nombre pair (2, 4 ou 6).\\nCompléter la ligne de la condition :\\n$if$ $...$ $:$\\n    $compteur = compteur + 1$",
+      "correctAnswer": "resultat % 2 == 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre est pair s'il est divisible par 2, ce que teste l'opérateur modulo $\\%$ : $resultat \\% 2 == 0$ est vrai pour 2, 4 et 6.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de fréquence",
+      "content": "Après exécution du programme initial (100 lancers, comptage des 6), la variable $compteur$ vaut 18.\\nQuelle est la fréquence simulée d'apparition du 6 ? Donne le résultat sous forme décimale.",
+      "correctAnswer": "0,18",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fréquence est le quotient du nombre de succès (18) par le nombre total d'essais (100) : $18 / 100 = 0,18$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

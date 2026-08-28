@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 145,
+  "_course_code": "ce2-t01-c04-valeur-de-position-m-c-d-u",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Identifier la valeur de chaque chiffre",
+  "title": "Algorithme de décomposition en valeur de position",
+  "blocks": [
+    {
+      "title": "Question 1 : Décomposer un nombre à trois chiffres",
+      "content": "Écris un algorithme (en pseudo‑code ou en langage proche de Python) qui, à partir d'un nombre entier à trois chiffres stocké dans la variable $n$, affiche la valeur de chaque chiffre selon sa position (centaines, dizaines, unités). Par exemple, si $n = 472$, l'algorithme doit afficher : centaines = 400, dizaines = 70, unités = 2.",
+      "correctAnswer": "Algorithme :\\n1. Lire n.\\n2. centaines = (n // 100) * 100\\n3. dizaines = ((n % 100) // 10) * 10\\n4. unites = n % 10\\n5. Afficher \"centaines = \", centaines\\n6. Afficher \"dizaines = \", dizaines\\n7. Afficher \"unités = \", unites",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division entière // et le modulo % pour isoler chaque chiffre. Pour les centaines, on divise par 100 puis on multiplie par 100 pour retrouver la valeur de position. Pour les dizaines, on prend le reste de la division par 100, on divise par 10 et on multiplie par 10. Les unités sont simplement le reste de la division par 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Étendre à un nombre à quatre chiffres",
+      "content": "Modifie l'algorithme précédent pour qu'il fonctionne avec un nombre entier à quatre chiffres (jusqu'à 9999) stocké dans $n$. L'algorithme doit afficher la valeur des milliers, centaines, dizaines et unités. Teste ton algorithme avec $n = 3581$.",
+      "correctAnswer": "Algorithme :\\n1. Lire n.\\n2. milliers = (n // 1000) * 1000\\n3. centaines = ((n % 1000) // 100) * 100\\n4. dizaines = ((n % 100) // 10) * 10\\n5. unites = n % 10\\n6. Afficher \"milliers = \", milliers\\n7. Afficher \"centaines = \", centaines\\n8. Afficher \"dizaines = \", dizaines\\n9. Afficher \"unités = \", unites",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute l'étape des milliers en divisant par 1000. Les autres étapes restent identiques en utilisant les restes successifs pour isoler chaque groupe de chiffres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Généraliser pour tout entier jusqu'à 9999",
+      "content": "Propose une version généralisée de l'algorithme qui utilise une boucle pour extraire chaque chiffre de $n$ (tant que $n > 0$) et afficher sa valeur de position correspondante. Indique comment tu gères le facteur de position (1, 10, 100, 1000).",
+      "correctAnswer": "Algorithme généralisé :\\n1. Lire n_original = n\\n2. facteur = 1\\n3. Tant que n > 0 faire\\n   a. chiffre = n % 10\\n   b. valeur_position = chiffre * facteur\\n   c. Afficher \"valeur de position \", facteur, \" = \", valeur_position\\n   d. n = n // 10\\n   e. facteur = facteur * 10\\n4. Fin tant que",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle extrait le chiffre des unités (n % 10), le multiplie par le facteur de position actuel (1, 10, 100, 1000) pour obtenir sa valeur de position, puis divise n par 10 pour passer au chiffre suivant et multiplie le facteur par 10. Cela fonctionne pour tout entier positif jusqu'à 9999 (ou plus).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

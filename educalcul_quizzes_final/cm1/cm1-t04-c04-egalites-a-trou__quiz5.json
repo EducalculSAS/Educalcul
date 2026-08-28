@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 237,
+  "_course_code": "cm1-t04-c04-egalites-a-trou",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Trouver valeur manquante",
+  "title": "Quiz : Égalités à trou - Approfondissement",
+  "questions": [
+    {
+      "text": "Quel nombre doit remplacer le carré pour que l'égalité soit vraie ?\\n$15 + \\square = 32$",
+      "options": [
+        "$17$",
+        "$47$",
+        "$18$",
+        "$16$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "Pour trouver le nombre manquant dans une addition, on soustrait le nombre connu du total : $32 - 15 = 17$. L'option $47$ correspond à l'addition $32 + 15$ (erreur d'opération). Les options $18$ et $16$ sont des erreurs de calcul proches du résultat exact.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'égalité suivante :\\n$\\square \\times 6 = 42$",
+      "options": [
+        "$7$",
+        "$48$",
+        "$36$",
+        "$8$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Il s'agit de trouver le facteur manquant dans une multiplication. On divise le produit par le facteur connu : $42 \\div 6 = 7$. L'option $48$ correspond à $42 + 6$, l'option $36$ à $42 - 6$, et $8$ est une approximation erronée de la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouve la valeur manquante dans cette égalité à deux opérations :\\n$4 \\times \\square + 8 = 40$",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$5$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On inverse les opérations dans l'ordre inverse. D'abord, on enlève $8$ du total : $40 - 8 = 32$. Ensuite, on divise par $4$ : $32 \\div 4 = 8$. L'option $10$ est obtenue si on divise $40$ par $4$ directement sans retirer $8$ avant. L'option $12$ correspond à $(40 + 8) \\div 4$. L'option $5$ ne correspond à aucune logique standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre manque pour équilibrer les deux membres ?\\n$25 + \\square = 18 + 15$",
+      "options": [
+        "$8$",
+        "$33$",
+        "$7$",
+        "$43$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On calcule d'abord le membre de droite : $18 + 15 = 33$. L'égalité devient $25 + \\square = 33$. On trouve le nombre manquant par une soustraction : $33 - 25 = 8$. L'option $33$ est le résultat du membre de droite, pas le nombre manquant. L'option $7$ pourrait venir de $25 - 18$ ou $15 - 8$. L'option $43$ est la somme des trois nombres visibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas a $45$ billes. Il en donne $12$ à son frère et partage le reste équitablement entre $3$ amis. Combien de billes reçoit chaque ami ?",
+      "options": [
+        "$11$",
+        "$15$",
+        "$19$",
+        "$33$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "On modélise par l'équation $(45 - 12) \\div 3 = \\square$. D'abord, on calcule le reste après le don : $45 - 12 = 33$. Ensuite, on partage en $3$ parts égales : $33 \\div 3 = 11$. L'option $15$ correspond à $45 \\div 3$ (oubli du don). L'option $19$ correspond à $(45 + 12) \\div 3$ (addition au lieu de soustraction). L'option $33$ est le nombre de billes restantes avant le partage, pas la part de chaque ami.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

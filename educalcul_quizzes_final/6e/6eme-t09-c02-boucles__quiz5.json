@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Répéter",
+  "title": "Quiz : Approfondissement - Instruction Répéter",
+  "questions": [
+    {
+      "text": "Dans un algorithme, l'instruction « Répéter 4 fois » fait exécuter le bloc d'instructions combien de fois ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "explanation": "L'instruction « Répéter 4 fois » signifie que le bloc d'instructions situé entre « Répéter » et « Fin Répéter » sera exécuté exactement quatre fois. Les autres nombres correspondent à des erreurs de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on écrit :\\nVariable i ← 0\\nRépéter 6 fois\\n    i ← i + 1\\nFin Répéter\\nQuelle est la valeur de i à la fin ?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "0"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La variable i commence à 0. À chaque itération de la boucle, on ajoute 1. Comme la boucle s'exécute 6 fois, i vaut 0 + 6 × 1 = 6 à la fin. Les valeurs 5 et 7 proviennent d'un décalage d'une itération, et 0 correspond à l'oubli de l'incrémentation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux boucles imbriquées :\\nRépéter 3 fois\\n    Répéter 2 fois\\n        Afficher « * »\\n    Fin Répéter\\nFin Répéter\\nCombien d'étoiles sont affichées au total ?",
+      "options": [
+        "5",
+        "6",
+        "3",
+        "2"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La boucle externe s'exécute 3 fois. À chaque tour, la boucle interne s'exécute 2 fois et affiche une étoile. Le total est donc 3 × 2 = 6 étoiles. Les autres réponses correspondent à une addition au lieu d'une multiplication ou à la prise en compte d'une seule boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la variable n vaut $5$, l'instruction « Répéter n fois » exécute le bloc combien de fois ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "n"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Le nombre de répétitions est la valeur actuelle de la variable n. Puisque n = 5, le bloc est exécuté 5 fois. La réponse « n » serait une confusion entre la variable et sa valeur, et 4 ou 6 sont des erreurs de ±1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le code suivant :\\nVariable k ← 0\\nRépéter 7 fois\\n    k ← k + 2\\nFin Répéter\\nQuelle est la valeur finale de k ?",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "7"
+      ],
+      "correctAnswer": "14",
+      "explanation": "k commence à 0. À chaque itération, on ajoute 2. Après 7 itérations, k = 0 + 7 × 2 = 14. La valeur 12 correspond à 6 itérations, 16 à 8 itérations, et 7 à une confusion entre le nombre de tours et l'incrément.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

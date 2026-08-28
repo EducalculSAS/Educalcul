@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Bilan - Stats-probas 3e",
+  "title": "Bilan Statistiques et Probabilités - 3e",
+  "questions": [
+    {
+      "text": "Dans une série statistique ordonnée, comment définit-on la médiane ?",
+      "options": [
+        "La valeur qui apparaît le plus souvent",
+        "La valeur centrale qui partage la série en deux parties d'effectifs égaux",
+        "La somme des valeurs divisée par l'effectif total",
+        "La différence entre la valeur maximale et la valeur minimale"
+      ],
+      "correctAnswer": "La valeur centrale qui partage la série en deux parties d'effectifs égaux",
+      "explanation": "La médiane est la valeur qui sépare la série en deux parties égales : 50 % des valeurs sont inférieures ou égales à la médiane et 50 % sont supérieures ou égales. L'option A correspond au mode, l'option C à la moyenne et l'option D à l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé équilibré à six faces numérotées de $1$ à $6$. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Les issues possibles sont $\\{1, 2, 3, 4, 5, 6\\}$, soit $6$ issues équiprobables. Les nombres pairs sont $\\{2, 4, 6\\}$, soit $3$ issues favorables. La probabilité est donc $3/6 = 1/2$. L'option A serait la probabilité d'obtenir un nombre précis (comme le $6$), l'option B celle d'obtenir un multiple de $3$, et l'option D n'est pas justifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne les notes d'un contrôle pour une classe de dix élèves : deux élèves ont obtenu $10$, trois élèves ont obtenu $12$ et cinq élèves ont obtenu $14$. Quelle est la moyenne de cette série ?",
+      "options": [
+        "$12$",
+        "$12,6$",
+        "$13$",
+        "$12,5$"
+      ],
+      "correctAnswer": "$12,6$",
+      "explanation": "La moyenne est la somme des valeurs multipliées par leurs effectifs, divisée par l'effectif total. Somme = $(2 \\times 10) + (3 \\times 12) + (5 \\times 14) = 20 + 36 + 70 = 126$. Effectif total = $2 + 3 + 5 = 10$. Moyenne = $126 / 10 = 12,6$. L'option A est la note médiane, l'option C est une approximation par excès, l'option D ne correspond à aucun calcul standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le diagramme en boîte (boîte à moustaches) suivant représentant les salaires mensuels (en milliers d'euros) d'un échantillon de salariés : minimum $10$, premier quartile $15$, médiane $20$, troisième quartile $25$, maximum $30$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "$25\\%$ des salaires sont supérieurs à $30$",
+        "$50\\%$ des salaires sont compris entre $15$ et $25$",
+        "La moyenne des salaires est égale à $20$",
+        "L'étendue de la série est égale à $10$"
+      ],
+      "correctAnswer": "$50\\%$ des salaires sont compris entre $15$ et $25$",
+      "explanation": "Dans une boîte à moustaches, la boîte représente l'intervalle interquartile $[Q1 ; Q3]$, ici $[15 ; 25]$. Elle contient exactement $50\\%$ des valeurs (les $25\\%$ entre Q1 et la médiane, et les $25\\%$ entre la médiane et Q3). L'option A est fausse car $30$ est le maximum. L'option C est fausse car la médiane est $20$, la moyenne n'est pas lisible sur le diagramme. L'option D est fausse car l'étendue est $30 - 10 = 20$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte des salaires",
+        "min": 10,
+        "q1": 15,
+        "median": 20,
+        "q3": 25,
+        "max": 30
+      }
+    },
+    {
+      "text": "Dans un lycée, $60\\%$ des élèves sont des filles et $40\\%$ sont des garçons. Lors du baccalauréat, $80\\%$ des filles et $70\\%$ des garçons obtiennent leur diplôme. On choisit un élève au hasard dans ce lycée. Quelle est la probabilité que cet élève ait obtenu le baccalauréat ?",
+      "options": [
+        "$0,75$",
+        "$0,76$",
+        "$0,78$",
+        "$0,80$"
+      ],
+      "correctAnswer": "$0,76$",
+      "explanation": "On utilise la formule des probabilités totales. $P(\\text{Bac}) = P(\\text{Fille}) \\times P(\\text{Bac} | \\text{Fille}) + P(\\text{Garçon}) \\times P(\\text{Bac} | \\text{Garçon}) = 0,6 \\times 0,8 + 0,4 \\times 0,7 = 0,48 + 0,28 = 0,76$. L'option A correspondrait à une moyenne simple $(80+70)/2$, l'option C à une inversion des proportions, l'option D au taux de réussite des filles seul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

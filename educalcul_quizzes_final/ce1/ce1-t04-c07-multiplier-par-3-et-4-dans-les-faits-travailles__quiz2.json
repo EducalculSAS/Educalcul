@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 104,
+  "_course_code": "ce1-t04-c07-multiplier-par-3-et-4-dans-les-faits-travailles",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Utiliser décomposition",
+  "title": "Multiplier par 3 et 4 en utilisant la décomposition",
+  "questions": [
+    {
+      "text": "Pour calculer $3 \\times 6$, on décompose 6 en $5 + 1$. Quelle égalité montre le bon raisonnement ?",
+      "options": [
+        "$3 \\times 5 + 3 \\times 1 = 15 + 3 = 18$",
+        "$3 \\times 5 + 1 = 15 + 1 = 16$",
+        "$3 \\times 6 + 3 \\times 1 = 18 + 3 = 21$",
+        "$3 \\times 5 + 3 = 15 + 3 = 18$"
+      ],
+      "correctAnswer": "$3 \\times 5 + 3 \\times 1 = 15 + 3 = 18$",
+      "explanation": "On décompose 6 en $5 + 1$. La multiplication par 3 se distribue : $3 \\times (5 + 1) = 3 \\times 5 + 3 \\times 1$. On calcule $3 \\times 5 = 15$ et $3 \\times 1 = 3$, puis $15 + 3 = 18$. L'option B oublie de multiplier le 1 par 3. L'option C additionne au lieu de décomposer. L'option D écrit $+3$ au lieu de $+ 3 \\times 1$, ce qui est moins précis pour montrer la décomposition.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "3 x 5",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "3 x 1",
+            "value": 3,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Décomposition de 3 x 6 en 3 x 5 et 3 x 1"
+      }
+    },
+    {
+      "text": "On veut calculer $4 \\times 7$ en décomposant 7 en $5 + 2$. Quel est le bon calcul détaillé ?",
+      "options": [
+        "$4 \\times 5 + 4 \\times 2 = 20 + 8 = 28$",
+        "$4 \\times 5 + 2 = 20 + 2 = 22$",
+        "$4 \\times 7 + 4 \\times 2 = 28 + 8 = 36$",
+        "$4 \\times 10 - 4 \\times 3 = 40 - 12 = 28$"
+      ],
+      "correctAnswer": "$4 \\times 5 + 4 \\times 2 = 20 + 8 = 28$",
+      "explanation": "La décomposition de 7 en $5 + 2$ donne $4 \\times (5 + 2) = 4 \\times 5 + 4 \\times 2$. On calcule $4 \\times 5 = 20$ (table de 5) et $4 \\times 2 = 8$ (double de 4). La somme $20 + 8$ fait 28. L'option B oublie de multiplier le 2 par 4. L'option C additionne le résultat final au lieu de le décomposer. L'option D utilise une autre stratégie (complément à 10) qui n'est pas celle demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa calcule $3 \\times 8$. Elle décompose 8 en $5 + 3$. Quelle opération écrit-elle ?",
+      "options": [
+        "$3 \\times 5 + 3 \\times 3 = 15 + 9 = 24$",
+        "$3 \\times 5 + 3 = 15 + 3 = 18$",
+        "$3 \\times 8 + 3 \\times 3 = 24 + 9 = 33$",
+        "$3 \\times 3 + 3 \\times 3 = 9 + 9 = 18$"
+      ],
+      "correctAnswer": "$3 \\times 5 + 3 \\times 3 = 15 + 9 = 24$",
+      "explanation": "En décomposant 8 en $5 + 3$, on applique la distributivité : $3 \\times (5 + 3) = 3 \\times 5 + 3 \\times 3$. Les résultats intermédiaires sont $3 \\times 5 = 15$ et $3 \\times 3 = 9$. La somme $15 + 9$ donne 24. L'option B oublie de multiplier le second 3. L'option C repart du résultat $3 \\times 8$. L'option D décompose 8 en $3 + 3$ (ce qui fait 6) au lieu de $5 + 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la décomposition pour trouver le résultat de $4 \\times 9$.\\n$4 \\times 9 = 4 \\times (5 + \\ldots) = 4 \\times 5 + 4 \\times \\ldots = 20 + \\ldots = 36$",
+      "options": [
+        "$4 ; 4 ; 16$",
+        "$4 ; 4 ; 14$",
+        "$3 ; 3 ; 12$",
+        "$2 ; 2 ; 8$"
+      ],
+      "correctAnswer": "$4 ; 4 ; 16$",
+      "explanation": "Pour décomposer 9 en partant de 5, on écrit $9 = 5 + 4$. Le premier trou est donc 4. On a $4 \\times 5 = 20$. Le second trou est aussi 4 car c'est $4 \\times 4$. Le produit $4 \\times 4 = 16$ remplit le troisième trou. On vérifie : $20 + 16 = 36$. L'option B donne un faux produit $4 \\times 4 = 14$. L'option C utilise une décomposition $5+3$ (total 8). L'option D utilise $5+2$ (total 7).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a 4 boîtes de crayons. Chaque boîte contient 8 crayons. Pour trouver le total, on décompose 8 en $5 + 3$. Combien y a-t-il de crayons en tout ?",
+      "options": [
+        "$4 \\times 5 + 4 \\times 3 = 20 + 12 = 32$ crayons",
+        "$4 \\times 5 + 3 = 20 + 3 = 23$ crayons",
+        "$4 \\times 8 = 32$ crayons",
+        "$4 \\times 5 + 4 \\times 2 = 20 + 8 = 28$ crayons"
+      ],
+      "correctAnswer": "$4 \\times 5 + 4 \\times 3 = 20 + 12 = 32$ crayons",
+      "explanation": "Le nombre total de crayons est $4 \\times 8$. En décomposant 8 en $5 + 3$, on calcule $4 \\times 5 = 20$ crayons pour la première partie et $4 \\times 3 = 12$ crayons pour la seconde. En les additionnant, $20 + 12 = 32$ crayons. L'option B oublie de multiplier les 3 crayons par 4 boîtes. L'option C donne le bon résultat mais n'utilise pas la décomposition demandée. L'option D décompose 8 en $5+2$ (ce qui fait 7) au lieu de $5+3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

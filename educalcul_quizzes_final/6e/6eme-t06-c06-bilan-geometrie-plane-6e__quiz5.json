@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Constructions et propriétés",
+  "title": "Approfondissement : Constructions et propriétés",
+  "questions": [
+    {
+      "text": "Quelle construction permet de tracer la médiatrice du segment $AB$ ?",
+      "options": [
+        "Tracer un cercle de centre $A$ passant par $B$.",
+        "Tracer deux arcs de même rayon depuis $A$ et $B$, puis relier leurs intersections.",
+        "Tracer la droite passant par $A$ et $B$.",
+        "Tracer un angle droit en $A$."
+      ],
+      "correctAnswer": "Tracer deux arcs de même rayon depuis $A$ et $B$, puis relier leurs intersections.",
+      "explanation": "La médiatrice d'un segment est la droite perpendiculaire qui passe par le milieu du segment. Pour la construire, on trace deux arcs de même rayon depuis les extrémités $A$ et $B$, les intersections de ces arcs déterminent deux points alignés avec le milieu, et la droite qui les relie est la médiatrice. Les autres propositions correspondent à d'autres constructions : un cercle de centre $A$ passant par $B$ donne un cercle, la droite $AB$ est le segment lui-même, et tracer un angle droit en $A$ ne garantit pas la médiatrice.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle, les trois médiatrices des côtés sont concourantes en un point appelé...",
+      "options": [
+        "Centre de gravité",
+        "Orthocentre",
+        "Circoncentre",
+        "Incentre"
+      ],
+      "correctAnswer": "Circoncentre",
+      "explanation": "Les trois médiatrices des côtés d'un triangle se coupent en un point unique appelé le circoncentre, qui est le centre du cercle circonscrit au triangle. Le centre de gravité est l'intersection des médianes, l'orthocentre est l'intersection des hauteurs, et l'incentre est l'intersection des bissectrices.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un triangle connaissant ses trois côtés $a$, $b$, $c$, on utilise...",
+      "options": [
+        "La règle et le compas pour tracer un côté, puis deux arcs de cercles de rayons égaux aux deux autres côtés.",
+        "Le rapporteur pour mesurer les angles.",
+        "La règle seulement.",
+        "Le compas seulement."
+      ],
+      "correctAnswer": "La règle et le compas pour tracer un côté, puis deux arcs de cercles de rayons égaux aux deux autres côtés.",
+      "explanation": "La construction d'un triangle à partir de ses trois côtés $a$, $b$, $c$ utilise la règle pour tracer un premier côté, puis le compas pour reporter les longueurs des deux autres côtés sous forme d'arcs de cercles, l'intersection des arcs donne le troisième sommet. Le rapporteur ne sert qu'à mesurer des angles, la règle seule ne permet pas de reporter des longueurs, et le compas seul ne permet pas de tracer le segment initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La bissectrice d'un angle est l'ensemble des points...",
+      "options": [
+        "Équidistants des deux côtés de l'angle.",
+        "Équidistants des deux sommets de l'angle.",
+        "Situés sur la droite qui passe par le sommet.",
+        "Situés à la même distance du sommet."
+      ],
+      "correctAnswer": "Équidistants des deux côtés de l'angle.",
+      "explanation": "La bissectrice d'un angle est définie comme l'ensemble des points du plan équidistants des deux demi-droites qui forment l'angle. Les points équidistants des sommets ne définissent pas la bissectrice, la droite passant par le sommet est simplement le côté de l'angle, et la distance au sommet est constante sur un cercle centré au sommet.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, la médiane issue de $A$, la bissectrice de l'angle $A$ et la hauteur issue de $A$ sont concourantes si et seulement si le triangle est...",
+      "options": [
+        "Équilatéral.",
+        "Isocèle en $A$.",
+        "Rectangle en $A$.",
+        "Quelconque."
+      ],
+      "correctAnswer": "Isocèle en $A$.",
+      "explanation": "Dans un triangle, la médiane, la bissectrice et la hauteur issues d'un même sommet sont confondues donc concourantes si et seulement si le triangle est isocèle à ce sommet, c'est à dire que les deux côtés adjacents sont égaux. Dans un triangle équilatéral cela est aussi vrai, mais la condition si et seulement si caractérise précisément le triangle isocèle en $A$. Un triangle rectangle en $A$ n'a pas cette propriété en général, et un triangle quelconque ne la vérifie pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

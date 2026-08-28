@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Racine carrée",
+  "title": "Applications de la racine carrée",
+  "questions": [
+    {
+      "text": "Un carré a une aire de $49\\,cm^2$. Quelle est la longueur de son côté ?",
+      "options": [
+        "$6\\,cm$",
+        "$7\\,cm$",
+        "$8\\,cm$",
+        "$49\\,cm$"
+      ],
+      "correctAnswer": "$7\\,cm$",
+      "explanation": "L'aire d'un carré est le carré de la longueur du côté. Pour trouver le côté, on prend la racine carrée de l'aire : $\\sqrt{49}=7$. Donc le côté mesure $7\\,cm$. Les autres options correspondent à des erreurs : $6$ et $8$ sont des approximations, $49$ confond aire et côté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6\\,cm$ et $8\\,cm$. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$9\\,cm$",
+        "$10\\,cm$",
+        "$11\\,cm$",
+        "$14\\,cm$"
+      ],
+      "correctAnswer": "$10\\,cm$",
+      "explanation": "D'après le théorème de Pythagore, l'hypoténuse $c$ vérifie $c^2 = 6^2 + 8^2 = 36 + 64 = 100$. Donc $c = \\sqrt{100} = 10\\,cm$. Les distracteurs proviennent d'additions erronées ou d'oubli de la racine carrée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez l'expression $\\sqrt{72}$.",
+      "options": [
+        "$6\\sqrt{2}$",
+        "$8\\sqrt{2}$",
+        "$12\\sqrt{2}$",
+        "$36\\sqrt{2}$"
+      ],
+      "correctAnswer": "$6\\sqrt{2}$",
+      "explanation": "On décompose $72 = 36 \\times 2$. Comme $\\sqrt{36}=6$, on a $\\sqrt{72} = \\sqrt{36 \\times 2} = \\sqrt{36}\\sqrt{2} = 6\\sqrt{2}$. Les autres choix correspondent à des décompositions incorrectes (par exemple $72 = 64 \\times 2$ donnant $8\\sqrt{2}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $\\sqrt{x} = 5$.",
+      "options": [
+        "$5$",
+        "$10$",
+        "$25$",
+        "$125$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "Élever les deux membres au carré donne $x = 5^2 = 25$. Vérification : $\\sqrt{25}=5$. Les distracteurs $5$ (oublie du carré), $10$ (double) et $125$ (cube) sont des erreurs courantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jardin carré a une aire de $121\\,m^2$. Quelle est la longueur de sa diagonale ?",
+      "options": [
+        "$11\\,m$",
+        "$11\\sqrt{2}\\,\\text{m}$",
+        "$22\\,m$",
+        "$121\\sqrt{2}\\,\\text{m}$"
+      ],
+      "correctAnswer": "$11\\sqrt{2}\\,\\text{m}$",
+      "explanation": "Le côté du carré vaut $\\sqrt{121}=11\\,m$. La diagonale d'un carré de côté $a$ est $a\\sqrt{2}$. Donc la diagonale mesure $11\\sqrt{2}\\,\\text{m}$. L'option $11\\,m$ donne le côté, $22\\,m$ double le côté, et $121\\sqrt{2}$ confond aire et côté.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

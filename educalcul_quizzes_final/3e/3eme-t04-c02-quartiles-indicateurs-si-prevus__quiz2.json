@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Quiz - Interpréter les quartiles et diagrammes en boîte (3e)",
+  "questions": [
+    {
+      "text": "Le diagramme en boîte ci‑dessous représente les notes d'une classe. Quelle est la médiane de cette série ?",
+      "options": [
+        "$12$",
+        "$18$",
+        "$24$",
+        "$30$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "La médiane correspond au trait central du rectangle du diagramme en boîte. Sur la figure, la médiane est indiquée à $18$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte des notes de la classe",
+        "min": 5,
+        "q1": 12,
+        "median": 18,
+        "q3": 24,
+        "max": 30
+      }
+    },
+    {
+      "text": "D'après le même diagramme en boîte, quelle est la valeur de l'écart interquartile ?",
+      "options": [
+        "$6$",
+        "$12$",
+        "$18$",
+        "$24$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'écart interquartile (EIQ) est la différence entre le troisième quartile (Q3 = $24$) et le premier quartile (Q1 = $12$), soit $24 - 12 = 12$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte des notes de la classe",
+        "min": 5,
+        "q1": 12,
+        "median": 18,
+        "q3": 24,
+        "max": 30
+      }
+    },
+    {
+      "text": "Deux classes ont passé le même test. La classe A a un diagramme en boîte avec Q1 = $10$, médiane = $14$, Q3 = $18$. La classe B a Q1 = $12$, médiane = $16$, Q3 = $24$. Quelle affirmation compare correctement la dispersion des notes ?",
+      "options": [
+        "La classe A a un écart interquartile plus grand que la classe B.",
+        "La classe B a un écart interquartile plus grand que la classe A.",
+        "Les deux classes ont le même écart interquartile.",
+        "On ne peut pas comparer les dispersions sans connaître les extrêmes."
+      ],
+      "correctAnswer": "La classe B a un écart interquartile plus grand que la classe A.",
+      "explanation": "EIQ(A) = $18 - 10 = 8$. EIQ(B) = $24 - 12 = 12$. Donc la classe B est plus dispersée au centre de la distribution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un diagramme en boîte, le rectangle (la boîte) représente :",
+      "options": [
+        "L'étendue totale des données (du minimum au maximum).",
+        "Les 50 % centraux des observations, entre le premier et le troisième quartile.",
+        "Seulement les valeurs inférieures à la médiane.",
+        "Les valeurs aberrantes (outliers)."
+      ],
+      "correctAnswer": "Les 50 % centraux des observations, entre le premier et le troisième quartile.",
+      "explanation": "La boîte s'étend de Q1 à Q3 et contient donc la moitié centrale des données (50 %). Les moustaches vont jusqu'aux valeurs extrêmes non aberrantes, et les points isolés représentent d'éventuelles valeurs aberrantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la série statistique suivante : $4$ ; $7$ ; $9$ ; $12$ ; $15$ ; $18$ ; $21$. Quel est le premier quartile (Q1) de cette série ?",
+      "options": [
+        "$7$",
+        "$9$",
+        "$10$",
+        "$12$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La série comporte $7$ valeurs. La médiane (Q2) est la $4$e valeur = $12$. Le premier quartile est la médiane de la moitié inférieure (les $3$ premières valeurs : $4$, $7$, $9$), soit la $2$e valeur = $7$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

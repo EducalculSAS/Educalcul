@@ -1,0 +1,404 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.301192+00:00",
+  "id": 266,
+  "code": "cm1-t08-c04",
+  "title": "Échelles simples",
+  "description": "Cours structuré Educalcul : Échelles simples.",
+  "subject": "Proportionnalité",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Proportionnalité",
+    "titre_du_cours": "Échelles simples",
+    "objectif_global": "Échelles simples",
+    "mini_lecons_imposees": [
+      "Lire une échelle.",
+      "Calculer longueur réelle simple.",
+      "Choisir unité."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité",
+      "lessons": [
+        {
+          "title": "Lire une échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une échelle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu regardes une carte au trésor ou le plan de ta future chambre. Le dessin est tout petit, mais la réalité, elle, est grande ! Pour passer de l'un à l'autre sans se tromper, on utilise une échelle. C'est comme un code secret qui dit : « Sur ce papier, $1$ centimètre représente $100$ centimètres dans la vraie vie. » C'est très pratique, car sinon il te faudrait une feuille de papier grande comme le terrain de foot pour dessiner ta maison !"
+            },
+            {
+              "type": "display_math",
+              "latex": "1/100 \\quad\\text{ou}\\quad 1:100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien cette écriture : le premier nombre (souvent $1$) concerne le dessin, le plan ou la carte. Le second nombre ($100$ ici) concerne la réalité. On lit « un centième » ou « un pour cent ». Cela veut dire que les distances sur le dessin sont $100$ fois plus petites que dans la vraie vie. Si tu mesures $1$ $cm$ sur la carte avec ta règle, il faut multiplier par $100$ pour savoir ce que ça fait dehors : $100$ $cm$, soit $1$ mètre. C'est magique, non ?"
+            },
+            {
+              "type": "number_line",
+              "caption": "Correspondance échelle 1/100 : 1 cm sur la carte = 100 cm en vrai",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "Carte (cm)"
+                },
+                {
+                  "value": 100,
+                  "label": "Réalité (cm)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe plein d'échelles différentes selon ce qu'on veut représenter. Pour un plan de quartier, on utilisera souvent $1/1\\,000$ ($1$ $cm$ pour $1\\,000$ $cm$, soit $10$ mètres). Pour une carte de France, ce sera $1/1\\,000\\,000$ ($1$ $cm$ pour $10$ kilomètres !). Plus le deuxième nombre est grand, plus le dessin est petit par rapport à la réalité. C'est comme zoomer ou dézoomer sur une photo avec un appareil."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Échelle",
+                "1 cm sur le document",
+                "Distance réelle"
+              ],
+              "rows": [
+                [
+                  "1/50",
+                  "1 cm",
+                  "50 cm"
+                ],
+                [
+                  "1/100",
+                  "1 cm",
+                  "100 cm (1 m)"
+                ],
+                [
+                  "1/1 000",
+                  "1 cm",
+                  "1 000 cm (10 m)"
+                ],
+                [
+                  "1/10 000",
+                  "1 cm",
+                  "10 000 cm (100 m)"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'échelle est écrite avec deux points ($1:200$) et parfois sous forme de fraction ($1/200$). C'est exactement la même chose ! Le nombre de gauche (ou du haut) reste celui du document, le nombre de droite (ou du bas) celui de la réalité. Prends l'habitude de toujours repérer le grand nombre : c'est lui qui te dit combien de fois la réalité est plus grande que ton dessin. C'est la clé pour ne jamais te tromper ensuite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire le code de l'échelle ! Tu sais repérer les deux nombres et dire ce qu'ils veulent dire concrètement : « $1$ $cm$ ici = $X$ $cm$ là-bas ». C'est la base indispensable pour pouvoir, dans la prochaine leçon, calculer des vraies longueurs à partir de mesures sur ton plan. Entraîne-toi bien à lire ces écritures, c'est comme apprendre l'alphabet avant d'écrire des phrases."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un plan, l'échelle est écrite $1/200$. Que signifie le nombre $200$ ?",
+              "answer": "Le nombre $200$ signifie que $1$ $cm$ sur le plan représente $200$ $cm$ dans la réalité.",
+              "hint": "Rappelle-toi : le premier nombre est pour le dessin, le second pour la vraie vie.",
+              "explanation": "Dans une échelle $1/200$, le numérateur $1$ correspond à la distance sur le document. Le dénominateur $200$ correspond à la distance réelle. Donc $1$ $cm$ sur le plan = $200$ $cm$ en vrai."
+            },
+            {
+              "question": "Une carte a pour échelle $1/10\\,000$. Quelle distance réelle correspond à $1$ $cm$ sur cette carte ?",
+              "answer": "10 000 cm (soit 100 m).",
+              "hint": "Le deuxième nombre de l'échelle donne directement la distance réelle en cm pour 1 cm sur la carte.",
+              "explanation": "L'échelle $1/10\\,000$ signifie $1$ $cm$ sur la carte = $10\\,000$ $cm$ dans la réalité. On lit directement le dénominateur."
+            },
+            {
+              "question": "Complète : Pour une échelle $1:500$, $1$ $cm$ sur le document = $\\ldots$ $cm$ dans la réalité.",
+              "answer": "500",
+              "hint": "Les deux points ':' remplacent la barre de fraction '/'. Le nombre de droite est le même.",
+              "explanation": "L'écriture $1:500$ est équivalente à $1/500$. Le nombre de droite ($500$) indique le coefficient de grossissement vers la réalité."
+            },
+            {
+              "question": "Parmi ces échelles, laquelle représente le plus petit dessin par rapport à la réalité : $1/50$, $1/100$ ou $1/1\\,000$ ?",
+              "answer": "1/1 000",
+              "hint": "Plus le deuxième nombre est grand, plus le dessin est réduit (petit) devant la réalité.",
+              "explanation": "Avec $1/1\\,000$, $1$ $cm$ sur le dessin vaut $1\\,000$ $cm$ en vrai. C'est une réduction beaucoup plus forte qu'avec $1/50$ ($50$ $cm$) ou $1/100$ ($100$ $cm$)."
+            }
+          ]
+        },
+        {
+          "title": "Calculer longueur réelle simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la carte au terrain : la multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire l'échelle, on va l'utiliser pour de vrai ! Imaginons que tu mesures une route sur une carte au $1/100$. Tu poses ta règle et tu trouves $3$ $cm$. Combien ça fait en vrai ? Rappelle-toi la règle d'or : le nombre de droite de l'échelle (le $100$) te dit combien de fois la réalité est plus grande. Donc, tu multiplies ta mesure sur la carte par ce nombre. Ici, $3 \\times 100 = 300$. La route fait $300$ $cm$ dans la réalité, c'est-à-dire $3$ mètres. C'est aussi simple que ça : on mesure, on multiplie, on a la réponse !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'échelle (ex: $1/100$). Le nombre du bas (ou de droite) est $100$. C'est ton multiplicateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer sur le document",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la longueur qui t'intéresse sur le plan ou la carte. Note le résultat en centimètres (ex: $3$ $cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule : mesure sur carte $\\times$ dénominateur. $3 \\times 100 = 300$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est en centimètres car tu as mesuré en $cm$. Écris : $300$ $cm$ (ou $3$ $m$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une échelle différente pour bien comprendre. Sur un plan de jardin au $1/50$, tu mesures la longueur du bassin : $4$ $cm$. Le dénominateur est $50$. Il faut calculer $4 \\times 50$. Tu peux le poser en opération si tu veux. $4 \\times 5 = 20$, donc $4 \\times 50 = 200$. Le bassin fait $200$ $cm$ de long dans la réalité, soit $2$ mètres. Tu vois, la méthode ne change jamais, seul le nombre par lequel on multiplie change selon l'échelle."
+            },
+            {
+              "type": "column_operation",
+              "operator": "x",
+              "operands": [
+                "50",
+                "4"
+              ],
+              "result": "200",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le calcul donne un grand nombre de centimètres. Sur une carte au $1/200$, tu mesures $6$ $cm$ entre deux villages. $6 \\times 200 = 1\\,200$. Cela fait $1\\,200$ $cm$. C'est correct, mais on préfère souvent exprimer cela en mètres. Pour passer des $cm$ aux $m$, on fait des paquets de $100$. $1\\,200$ $cm$, c'est $12$ paquets de $100$ $cm$, donc $12$ $m$. C'est plus facile à imaginer ! Dans la prochaine leçon, on verra comment choisir la meilleure unité tout le temps."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 1200,
+              "caption": "1 200 cm = 12 m : on voit les centaines et les dizaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Un petit truc pour vérifier si ton résultat est raisonnable : regarde l'échelle. Si c'est $1/100$, la réalité est $100$ fois plus grande. Ta mesure sur le papier était petite (quelques $cm$), ton résultat doit être cent fois plus grand (quelques mètres). Si tu trouves $30$ $cm$ pour une route sur une carte $1/100$, c'est qu'il y a une erreur : $30$ $cm$ c'est petit, ça ne peut pas être $100$ fois plus grand que $3$ $cm$ ! Relis bien ton opération. Tu es prêt pour t'entraîner ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un plan à l'échelle 1/100, tu mesures 5 cm. Quelle est la longueur réelle en cm ?",
+              "answer": "500 cm",
+              "hint": "Multiplie la mesure sur le plan (5) par le dénominateur de l'échelle (100).",
+              "explanation": "Échelle 1/100 : 1 cm sur le plan = 100 cm en vrai. Pour 5 cm : 5 × 100 = 500 cm."
+            },
+            {
+              "question": "Un mur mesure 6 cm sur un plan à l'échelle 1/50. Calcule sa longueur réelle en cm.",
+              "answer": "300 cm",
+              "hint": "Le dénominateur est 50. Calcule 6 × 50.",
+              "explanation": "Échelle 1/50 : 1 cm sur le plan = 50 cm en vrai. Longueur réelle = 6 × 50 = 300 cm."
+            },
+            {
+              "question": "Sur une carte au 1/200, la distance entre deux arbres est de 4 cm. Donne la distance réelle en mètres.",
+              "answer": "8 m",
+              "hint": "Calcule d'abord en cm (4 × 200), puis convertis en m en faisant des paquets de 100.",
+              "explanation": "4 cm × 200 = 800 cm. 800 cm = 8 × 100 cm = 8 m."
+            },
+            {
+              "question": "Un élève a mesuré 3 cm sur une carte 1/100 et a trouvé 30 cm comme longueur réelle. Est-ce correct ? Justifie.",
+              "answer": "Non, c'est faux. Le bon résultat est 300 cm (ou 3 m).",
+              "hint": "Vérifie la multiplication : 3 × 100 = ?",
+              "explanation": "L'élève a multiplié par 10 au lieu de 100. 3 × 100 = 300 cm. 30 cm serait 10 fois plus grand, pas 100 fois."
+            }
+          ]
+        },
+        {
+          "title": "Choisir unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des centimètres aux mètres : changer d'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu que les calculs d'échelle donnent souvent de grands nombres en centimètres : $300$ $cm$, $1\\,200$ $cm$, $5\\,000$ $cm$... C'est exact, mais ce n'est pas très pratique pour se représenter une longueur. Personne ne dit : « Ma chambre fait $400$ centimètres de large », on dit : « $4$ mètres » ! Il faut donc savoir convertir (changer d'unité) pour que le résultat parle à tout le monde. La règle est simple : $1$ mètre = $100$ centimètres. Pour passer des $cm$ aux $m$, on fait des groupes de $100$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,\\text{m} = 100\\,\\text{cm}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de tout à l'heure : $1\\,200$ $cm$. Dans un tableau de numération, on écrit les chiffres : $1$ mille, $2$ centaines, $0$ dizaines, $0$ unités. Les centaines, ce sont les mètres ! $1\\,200$ $cm$, c'est $12$ centaines de $cm$, donc $12$ $m$. Si tu as $350$ $cm$, tu as $3$ centaines ($3$ $m$) et $50$ $cm$ qui restent. On écrit $3$ $m$ $50$ $cm$ ou $3,50$ $m$. C'est beaucoup plus clair pour imaginer la taille d'un objet."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 350,
+              "caption": "350 cm = 3 m 50 cm : les centaines donnent les mètres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais comment choisir la bonne unité au départ ? Tout dépend de ce que tu mesures ! Si c'est un petit objet sur un plan (une table, une fenêtre), le mètre est parfait. Si c'est une grande distance sur une carte (entre deux villes, la longueur d'une rivière), le mètre devient trop petit, le nombre serait énorme. Là, on utilise le kilomètre ($km$). $1$ kilomètre = $1\\,000$ mètres. C'est l'échelle du grand voyage ! Pour une pièce de la maison : $m$. Pour un trajet en voiture : $km$. C'est le bon sens qui guide le choix."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Situation",
+                "Unité pratique"
+              ],
+              "rows": [
+                [
+                  "Longueur d'un crayon",
+                  "cm"
+                ],
+                [
+                  "Largeur d'une porte",
+                  "m"
+                ],
+                [
+                  "Distance Paris-Lyon",
+                  "km"
+                ],
+                [
+                  "Hauteur d'un arbre",
+                  "m"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Si ton calcul d'échelle te donne un nombre énorme en mètres (genre $15\\,000$ $m$), c'est le signal pour passer aux kilomètres. On fait des paquets de $1\\,000$ cette fois. $15\\,000$ $m$, c'est $15$ paquets de $1\\,000$ $m$, donc $15$ $km$. La règle des zéros marche tout le temps : pour aller aux $m$, on enlève deux zéros (divise par $100$) ; pour aller aux $km$, on en enlève trois de plus (divise par $1\\,000$). Tu as maintenant toutes les clés pour donner une réponse propre et adaptée !"
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,\\text{km} = 1\\,000\\,\\text{m} = 100\\,000\\,\\text{cm}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Récapitulons le chemin complet : 1) Je lis l'échelle (ex: $1/1\\,000$). 2) Je mesure sur le document ($4$ $cm$). 3) Je multiplie par le grand nombre ($4 \\times 1\\,000 = 4\\,000$ $cm$). 4) Je choisis l'unité qui va bien : $4\\,000$ $cm$ = $40$ $m$ (c'est une distance dans un parc, le mètre est top). Si c'était $40\\,000$ $m$, j'aurais dit $40$ $km$. Tu vois, ce n'est qu'une suite d'étapes logiques. À toi de jouer pour le bilan !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une échelle (ex: 1/100) et expliquer ce que signifient les deux nombres.",
+                "Je sais calculer une longueur réelle en multipliant la mesure sur le plan par le dénominateur de l'échelle.",
+                "Je sais convertir un résultat en centimètres en mètres (diviser par 100) ou en kilomètres (diviser par 1000).",
+                "Je sais choisir l'unité la plus adaptée (cm, m ou km) selon la situation (objet, pièce, trajet)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis 2 500 cm en mètres.",
+              "answer": "25 m",
+              "hint": "Combien y a-t-il de paquets de 100 cm dans 2 500 ?",
+              "explanation": "2 500 cm = 25 × 100 cm = 25 m."
+            },
+            {
+              "question": "Pour mesurer la distance entre ton école et la mairie, quelle unité choisis-tu : cm, m ou km ?",
+              "answer": "km (ou m si c'est très proche, mais km est standard pour une distance de trajet).",
+              "hint": "C'est une distance de trajet, comme en voiture ou à pied sur un long chemin.",
+              "explanation": "Les distances entre deux lieux dans une ville ou entre villes s'expriment généralement en kilomètres (km). Le mètre convient pour une pièce, le cm pour un objet."
+            },
+            {
+              "question": "Un fleuve mesure 12 cm sur une carte au 1/1 000 000. Donne sa longueur réelle en km.",
+              "answer": "120 km",
+              "hint": "Calcule d'abord en cm (12 × 1 000 000), puis passe en m (divise par 100), puis en km (divise par 1 000).",
+              "explanation": "12 × 1 000 000 = 12 000 000 cm. 12 000 000 cm = 120 000 m. 120 000 m = 120 km."
+            },
+            {
+              "question": "Après un calcul d'échelle, tu obtiens 8 500 cm. Écris cette longueur en mètres puis en kilomètres.",
+              "answer": "85 m ; 0,085 km (ou 85 m car < 1 km).",
+              "hint": "Pour les mètres : groupes de 100. Pour les km : groupes de 1 000 m.",
+              "explanation": "8 500 cm = 85 m (8 500 ÷ 100). 85 m = 0,085 km (85 ÷ 1 000). Comme c'est inférieur à 1 km, on garde les mètres (85 m)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

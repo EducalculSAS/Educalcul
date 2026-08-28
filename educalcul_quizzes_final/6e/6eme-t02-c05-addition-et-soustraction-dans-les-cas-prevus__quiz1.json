@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 340,
+  "_course_code": "6eme-t02-c05-addition-et-soustraction-dans-les-cas-prevus",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Dénominateurs communs simples",
+  "title": "Addition et soustraction : dénominateurs communs simples",
+  "questions": [
+    {
+      "text": "On veut additionner les fractions $1/3$ et $1/6$. Quel est le plus petit dénominateur commun qu'on peut utiliser ?",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "18"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Pour additionner $1/3$ et $1/6$, il faut trouver un multiple commun aux dénominateurs 3 et 6. Les multiples de 3 sont 3, 6, 9, 12... Les multiples de 6 sont 6, 12, 18... Le plus petit multiple commun est 6. On peut donc transformer $1/3$ en $2/6$ pour avoir le même dénominateur que $1/6$. Les distracteurs 3 (pas multiple de 6), 9 (pas multiple de 6) et 18 (multiple commun mais pas le plus petit) correspondent à des erreurs fréquentes.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 1,
+            "denominator": 6
+          }
+        ],
+        "caption": "Comparaison de $1/3$ et $1/6$"
+      }
+    },
+    {
+      "text": "Quelle fraction est égale à $2/5$ et a pour dénominateur 20 ?",
+      "options": [
+        "4/20",
+        "6/20",
+        "8/20",
+        "10/20"
+      ],
+      "correctAnswer": "8/20",
+      "explanation": "Pour obtenir le dénominateur 20 à partir de 5, on a multiplié par 4 car $5 \\times 4 = 20$. Il faut faire la même chose au numérateur : $2 \\times 4 = 8$. La fraction équivalente est donc $8/20$. L'option 4/20 correspond à une multiplication par 2 seulement, 6/20 à une addition de 4 au numérateur, et 10/20 à une multiplication par 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $1/4 + 3/8$.",
+      "options": [
+        "4/12",
+        "5/8",
+        "4/8",
+        "5/12"
+      ],
+      "correctAnswer": "5/8",
+      "explanation": "Le dénominateur commun simple est 8 car 8 est un multiple de 4. On transforme $1/4$ en $2/8$ (multiplication par 2). L'addition devient $2/8 + 3/8 = 5/8$. L'option 4/12 correspond à l'erreur classique d'additionner numérateurs et dénominateurs ($1+3=4$, $4+8=12$). L'option 4/8 correspond à une transformation incorrecte de $1/4$ en $1/8$. L'option 5/12 n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $7/10 - 2/5$.",
+      "options": [
+        "5/5",
+        "3/10",
+        "5/10",
+        "9/10"
+      ],
+      "correctAnswer": "3/10",
+      "explanation": "Le dénominateur commun simple est 10 car 10 est un multiple de 5. On transforme $2/5$ en $4/10$ (multiplication par 2). La soustraction devient $7/10 - 4/10 = 3/10$. L'option 5/5 correspond à la soustraction terme à terme ($7-2=5$, $10-5=5$). L'option 5/10 correspond à une transformation de $2/5$ en $2/10$ (oubli de multiplier le numérateur). L'option 9/10 correspond à une addition au lieu d'une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction faut-il ajouter à $1/2$ pour obtenir $5/6$ ?",
+      "options": [
+        "1/3",
+        "2/6",
+        "1/6",
+        "2/3"
+      ],
+      "correctAnswer": "1/3",
+      "explanation": "On cherche $x$ tel que $1/2 + x = 5/6$. Le dénominateur commun est 6. $1/2 = 3/6$. L'équation devient $3/6 + x = 5/6$, donc $x = 2/6$. En simplifiant $2/6$ par 2, on obtient $1/3$. L'option 2/6 est la fraction non simplifiée, mais on demande généralement la forme la plus simple. L'option 1/6 correspond à $5/6 - 4/6$ (erreur sur $1/2 = 4/6$). L'option 2/3 correspond à $4/6$ (erreur de calcul $5/6 - 1/6$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

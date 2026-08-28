@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 212,
+  "_course_code": "cm1-t01-c02-valeur-de-position-des-chiffres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Valeur de position des chiffres",
+  "title": "Quiz : Application de la valeur de position des chiffres (CM1)",
+  "questions": [
+    {
+      "text": "Dans le nombre $4\\,725\\,301$, quelle est la valeur du chiffre 7 ?",
+      "options": [
+        "700 000",
+        "70 000",
+        "7 000",
+        "700"
+      ],
+      "correctAnswer": "700 000",
+      "explanation": "Le nombre s'écrit 4 millions 725 mille 301. En partant de la droite, le 7 est le 6e chiffre : il est dans la colonne des centaines de milliers. Sa valeur est donc 7 × 100 000 = 700 000. L'option 70 000 correspondrait aux dizaines de milliers (chiffre 2), 7 000 aux unités de milliers (chiffre 5) et 700 aux centaines (chiffre 3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre correspond à la décomposition suivante : 3 millions, 4 centaines de milliers, 5 dizaines de milliers, 8 milliers, 2 centaines, 9 dizaines, 6 unités ?",
+      "options": [
+        "$3\\,458\\,296$",
+        "$3\\,485\\,296$",
+        "$3\\,548\\,296$",
+        "$3\\,458\\,926$"
+      ],
+      "correctAnswer": "$3\\,458\\,296$",
+      "explanation": "On place chaque chiffre dans sa colonne en partant de la gauche (millions) vers la droite (unités) : 3 (millions), 4 (centaines de milliers), 5 (dizaines de milliers), 8 (milliers), 2 (centaines), 9 (dizaines), 6 (unités). Cela donne 3 458 296. Les autres options inversent les chiffres des milliers (8 et 5), des dizaines de milliers (4 et 5) ou des dizaines et centaines (9 et 2).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre décimal $12,345$, quelle est la valeur du chiffre 4 ?",
+      "options": [
+        "4 dixièmes",
+        "4 centièmes",
+        "4 millièmes",
+        "4 unités"
+      ],
+      "correctAnswer": "4 centièmes",
+      "explanation": "Après la virgule, le premier chiffre (3) est le chiffre des dixièmes, le deuxième chiffre (4) est le chiffre des centièmes, le troisième (5) est le chiffre des millièmes. Le 4 représente donc 4 centièmes, soit $0,04$. L'option « 4 dixièmes » correspond au 3, « 4 millièmes » au 5, et « 4 unités » au 2 de la partie entière.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 12.345,
+        "caption": "Tableau de position pour 12,345"
+      }
+    },
+    {
+      "text": "Parmi ces quatre nombres, lequel est le plus grand ?",
+      "options": [
+        "$3\\,205\\,400$",
+        "$3\\,250\\,400$",
+        "$3\\,025\\,400$",
+        "$3\\,205\\,040$"
+      ],
+      "correctAnswer": "$3\\,250\\,400$",
+      "explanation": "Tous ont 3 millions. On compare les centaines de milliers : le 3e nombre a 0, les autres ont 2. Il est éliminé. Pour les trois restants, on compare les dizaines de milliers : le 1er et le 4e ont 0, le 2e a 5. Le 2e ($3\\,250\\,400$) est donc le plus grand. Pas besoin d'aller aux milliers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouve le nombre mystère à 6 chiffres :\\n- Il est compris entre 500 000 et 600 000.\\n- Le chiffre des dizaines de milliers est le double du chiffre des unités de milliers.\\n- Le chiffre des centaines est 3.\\n- Le chiffre des dizaines est 0.\\n- Le chiffre des unités est 5.",
+      "options": [
+        "542 305",
+        "524 305",
+        "542 035",
+        "543 205"
+      ],
+      "correctAnswer": "542 305",
+      "explanation": "Le nombre a 6 chiffres et commence par 5 (centaines de milliers). Soit $x$ le chiffre des unités de milliers. Le chiffre des dizaines de milliers est $2x$. Les couples possibles (x, 2x) sont (1,2), (2,4), (3,6), (4,8). Les centaines sont 3, les dizaines 0, les unités 5. Le nombre s'écrit 5 (2x) (x) 3 0 5. Avec x=2, on obtient 5 4 2 3 0 5 soit 542 305. L'option 524 305 inverse les deux chiffres du milieu, 542 035 inverse dizaines et unités, 543 205 ne respecte pas la règle du double.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

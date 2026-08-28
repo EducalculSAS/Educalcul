@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Repérer axe simple",
+  "title": "Repérer un axe de symétrie sur quadrillage",
+  "questions": [
+    {
+      "text": "Quand on plie une figure le long de son axe de symétrie, les deux parties obtenues se...",
+      "options": [
+        "superposent exactement",
+        "sont de tailles différentes",
+        "ne se touchent pas",
+        "forment un angle droit"
+      ],
+      "correctAnswer": "superposent exactement",
+      "explanation": "La définition de la symétrie axiale est que les deux moitiés de la figure se superposent parfaitement par pliage le long de l'axe. Les autres propositions décrivent des situations qui ne correspondent pas à la symétrie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, un carré de côté $4$ cases est tracé. Laquelle de ces droites est un axe de symétrie pour ce carré ?",
+      "options": [
+        "Une diagonale du carré",
+        "Une droite verticale passant par le milieu du carré",
+        "Une droite oblique ne passant pas par le centre",
+        "Aucune droite n'est un axe de symétrie"
+      ],
+      "correctAnswer": "Une droite verticale passant par le milieu du carré",
+      "explanation": "Un carré possède $4$ axes de symétrie : les deux médiatrices des côtés (verticale et horizontale) et les deux diagonales. Parmi les propositions, seule la droite verticale passant par le milieu (médiatrice) est listée correctement. La diagonale est aussi un axe mais n'est pas la bonne réponse ici car l'option 'Une diagonale' est ambiguë (il y en a deux) et souvent au CE1 on repère d'abord les axes verticaux/horizontaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle de $6$ cases de long sur $4$ cases de large est dessiné sur un quadrillage. Combien d'axes de symétrie orthogonaux (verticaux ou horizontaux) ce rectangle possède-t-il ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$4$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Un rectangle (qui n'est pas un carré) a exactement $2$ axes de symétrie orthogonaux : la médiatrice verticale (qui coupe la longueur en deux) et la médiatrice horizontale (qui coupe la largeur en deux). Les diagonales ne sont pas des axes de symétrie pour un rectangle non carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace une figure en forme de T majuscule sur quadrillage : une barre horizontale de $3$ cases en haut et une tige verticale de $3$ cases au centre vers le bas. Quel est l'axe de symétrie de cette figure ?",
+      "options": [
+        "Vertical seulement",
+        "Horizontal seulement",
+        "Vertical et horizontal",
+        "Aucun axe de symétrie"
+      ],
+      "correctAnswer": "Vertical seulement",
+      "explanation": "La figure en T est symétrique par rapport à la droite verticale qui passe par le milieu de la tige et du haut de la barre. Elle n'est pas symétrique horizontalement car le haut (barre) et le bas (tige) sont différents.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, une demi-figure est coloriée à gauche d'une ligne verticale : $3$ cases sont pleines. Pour obtenir une figure symétrique par rapport à cette ligne, combien de cases faut-il colorier à droite ?",
+      "options": [
+        "$3$",
+        "$6$",
+        "$2$",
+        "$4$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "La symétrie axiale conserve les distances par rapport à l'axe. Chaque case à gauche a son image symétrique à droite, à la même distance de l'axe. Il faut donc colorier exactement le même nombre de cases de l'autre côté, soit $3$ cases.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

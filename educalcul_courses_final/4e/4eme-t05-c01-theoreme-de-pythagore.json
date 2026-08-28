@@ -1,0 +1,622 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.859519+00:00",
+  "id": 440,
+  "code": "4eme-t05-c01",
+  "title": "Théorème de Pythagore",
+  "description": "Cours structuré Educalcul : Théorème de Pythagore.",
+  "subject": "Géométrie du triangle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Géométrie du triangle",
+    "titre_du_cours": "Théorème de Pythagore",
+    "objectif_global": "Théorème de Pythagore",
+    "mini_lecons_imposees": [
+      "Hypothèses.",
+      "Calculer longueur.",
+      "Rédiger."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie du triangle",
+      "lessons": [
+        {
+          "title": "Hypothèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Hypothèses du théorème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre sur le théorème de Pythagore. Tu as déjà rencontré les triangles rectangles en 6e et 5e, mais aujourd'hui nous allons découvrir une relation magique qui lie les trois côtés d'un tel triangle. Avant d'utiliser la formule, il est indispensable de bien comprendre **quand** elle s'applique. Le théorème de Pythagore ne fonctionne pas pour n'importe quel triangle : il a des conditions strictes, que l'on appelle les **hypothèses**. Si tu les respectes, la formule est infaillible ; si tu les oublies, le résultat sera faux. Prends le temps de bien les intégrer maintenant, cela t'évitera bien des erreurs par la suite."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle ABC, droit en A. L'hypoténuse est le côté [BC].",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "c",
+                "b"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce triangle $ABC$, rectangle en $A$. La première hypothèse, c'est que **le triangle doit être rectangle**. Ici, l'angle droit est en $A$, matérialisé par le petit carré dans l'angle. Si le triangle n'avait pas d'angle droit, le théorème ne s'appliquerait pas. La deuxième hypothèse concerne les côtés : on nomme **hypoténuse** le côté opposé à l'angle droit. C'est toujours le **plus long** des trois côtés. Dans notre figure, c'est le côté $[BC]$, que l'on note souvent $a$ (le côté opposé au sommet $A$). Les deux autres côtés, $[AB]$ et $[AC]$, sont les **côtés de l'angle droit** ; on les note $c$ et $b$ respectivement. Retiens bien : l'hypoténuse est unique, elle est face à l'angle droit, et elle est le plus grand côté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe le triangle. Y a-t-il un petit carré dans un angle ? Ce carré signifie que l'angle mesure $90^{\\circ}$. Si aucun angle n'est marqué comme droit, tu ne peux pas utiliser Pythagore."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'hypoténuse est le côté qui ne touche **pas** l'angle droit. Elle est en face de l'angle droit. C'est toujours le côté le plus long du triangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nommer les côtés de l'angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux côtés restants forment l'angle droit. Ils sont adjacents à l'angle droit. On les appelle parfois les « cathétus », mais « côtés de l'angle droit » est tout à fait correct."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître les trois ingrédients nécessaires (triangle rectangle, hypoténuse, côtés de l'angle droit), tu es prêt à vérifier si le théorème peut s'appliquer. C'est une gymnastique qui deviendra vite automatique. Avant de passer à la formule elle-même, entraînons-nous à ne pas confondre un triangle rectangle avec un triangle quelconque."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment repérer l'angle droit et l'hypoténuse. Mais attention : dans certains exercices, le triangle n'est pas dessiné à l'échelle, ou l'angle droit n'est pas marqué par un carré mais indiqué dans l'énoncé (par exemple : « triangle $DEF$ rectangle en $D$ »). Il faut alors lire attentivement l'énoncé et reporter l'information sur ton schéma. C'est une habitude de rigueur que tu dois prendre dès maintenant : **toujours recopier le triangle et marquer l'angle droit toi-même**."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle DEF rectangle en D. L'hypoténuse est [EF].",
+              "vertexLabels": [
+                "D",
+                "E",
+                "F"
+              ],
+              "sideLabels": [
+                "d",
+                "f",
+                "e"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, le triangle $DEF$ est rectangle en $D$. L'hypoténuse est donc $[EF]$, le côté opposé à $D$. Les côtés de l'angle droit sont $[DE]$ et $[DF]$. Remarque que la lettre du sommet de l'angle droit ($D$) ne figure **pas** dans le nom de l'hypoténuse ($EF$). C'est une astuce mnémotechnique très utile : **l'hypoténuse ne contient pas la lettre de l'angle droit**. Vérifie sur le triangle $ABC$ : angle droit en $A$, hypoténuse $BC$ (pas de $A$). Sur $DEF$ : angle droit en $D$, hypoténuse $EF$ (pas de $D$). Cette règle marche à tous les coups."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire l'énoncé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la phrase « triangle ... rectangle en ... ». Note le sommet de l'angle droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dessiner et marquer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le triangle (même approximatif) et place le petit carré dans l'angle droit indiqué."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nommer l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le côté opposé à l'angle droit est l'hypoténuse. Vérifie qu'il ne contient pas la lettre de l'angle droit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ces repères, tu ne pourras plus te tromper d'hypoténuse. C'est la base de tout : si tu identifies mal l'hypoténuse, toute la suite du calcul sera fausse. Dans la prochaine leçon, nous verrons comment utiliser ces noms pour écrire la fameuse égalité $a^2 = b^2 + c^2$ (ou $c^2 = a^2 + b^2$ selon les notations). Mais avant, un dernier entraînement pour bien fixer les idées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le triangle rectangle est « caché » dans une figure plus complexe : un rectangle, un losange, un trapèze, ou même deux triangles qui se partagent un côté. Le théorème de Pythagore s'applique alors à **chaque** triangle rectangle que tu peux isoler. Par exemple, la diagonale d'un rectangle coupe celui-ci en deux triangles rectangles. Si tu connais la longueur et la largeur du rectangle, tu peux calculer la diagonale grâce à Pythagore. C'est une application très classique au collège. L'important est de bien **isoler** le triangle rectangle qui t'intéresse, de le redessiner seul sur ton brouillon, et de marquer l'angle droit et l'hypoténuse. Ne te laisse pas impressionner par la figure globale."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "caption": "Les carrés sur les côtés d'un triangle rectangle 3-4-5. L'aire des deux petits carrés (9+16) égale l'aire du grand carré (25).",
+              "a": 3,
+              "b": 4,
+              "c": 5
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce visuel montre la géométrie derrière le théorème : si l'on construit des carrés sur chaque côté, la somme des aires des deux petits carrés (sur les côtés de l'angle droit) est exactement égale à l'aire du grand carré (sur l'hypoténuse). C'est ce que l'on écrira $a^2 = b^2 + c^2$ (si $a$ est l'hypoténuse). Mais attention : cette figure n'est valable **que** parce que le triangle est rectangle. Si l'angle n'est pas droit, les carrés ne s'emboîtent plus de cette façon. C'est pour cela que vérifier l'hypothèse de rectangle est la toute première étape, avant même d'écrire un chiffre. Tu as maintenant toutes les clés pour démarrer le calcul en toute sécurité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans chacun des triangles ci-dessous, dis si le théorème de Pythagore peut s'appliquer. Si oui, nomme l'hypoténuse et les deux côtés de l'angle droit. \\n1. Triangle $JKL$ rectangle en $J$. \\n2. Triangle $MNP$ avec $MN=5$, $NP=12$, $MP=13$ (pas d'indication d'angle droit). \\n3. Triangle $RST$ rectangle en $S$, avec $RS=8$, $ST=15$.",
+              "answer": "1. Oui, rectangle en $J$. Hypoténuse : $[KL]$. Côtés de l'angle droit : $[JK]$ et $[JL]$. \\n2. On ne sait pas s'il est rectangle. On ne peut pas appliquer Pythagore sans être sûr de l'angle droit. \\n3. Oui, rectangle en $S$. Hypoténuse : $[RT]$. Côtés de l'angle droit : $[RS]$ et $[ST]$.",
+              "hint": "Cherche l'angle droit (marqué ou énoncé). L'hypoténuse est le côté opposé. Vérifie que la lettre de l'angle droit n'est pas dans le nom de l'hypoténuse.",
+              "explanation": "Pour le 1, l'angle droit est en J, donc l'hypoténuse est KL (pas de J). Pour le 2, aucune info sur un angle droit : on ne peut pas utiliser le théorème. Pour le 3, angle droit en S, hypoténuse RT (pas de S)."
+            },
+            {
+              "question": "Le triangle $UVW$ est rectangle en $U$. Les côtés mesurent $UV = 6 \\, cm$ et $UW = 8 \\, cm$. \\nQuel côté est l'hypoténuse ? Quelle est sa longueur approximative ? (Tu peux utiliser une calculatrice pour la racine carrée).",
+              "answer": "L'hypoténuse est $[VW]$ car elle est opposée à l'angle droit $U$. Sa longueur est $\\sqrt{6^2+8^2} = \\sqrt{36+64} = \\sqrt{100} = 10 \\, cm$.",
+              "hint": "L'hypoténuse ne contient pas la lettre U. Applique la formule $VW^2 = UV^2 + UW^2$.",
+              "explanation": "Angle droit en U => hypoténuse VW. Calcul : $VW^2 = 6^2+8^2 = 100$, donc $VW=10$."
+            },
+            {
+              "question": "Un rectangle a une longueur de $12 \\, cm$ et une largeur de $5 \\, cm$. En traçant une diagonale, on obtient deux triangles rectangles. \\nDessine l'un de ces triangles, marque l'angle droit, nomme l'hypoténuse et calcule la longueur de la diagonale.",
+              "answer": "Le triangle rectangle a pour côtés de l'angle droit $12 \\, cm$ et $5 \\, cm$. L'hypoténuse est la diagonale. $d^2 = 12^2 + 5^2 = 144+25 = 169$, donc $d = 13 \\, cm$.",
+              "hint": "La diagonale est opposée à l'angle droit du rectangle (qui est un angle droit). Utilise Pythagore.",
+              "explanation": "Dans un rectangle, les angles sont droits. La diagonale coupe l'angle droit en deux mais le triangle formé a un angle droit au sommet du rectangle. L'hypoténuse est la diagonale. Calcul : $12^2+5^2=169$, racine carrée = 13."
+            }
+          ]
+        },
+        {
+          "title": "Calculer longueur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer une longueur avec le théorème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voilà au cœur du sujet : maintenant que tu sais reconnaître un triangle rectangle et nommer ses côtés, nous allons utiliser la célèbre égalité pour **calculer une longueur inconnue**. C'est la compétence principale que tu devras maîtriser pour la suite de l'année et pour le brevet. La formule s'écrit généralement $a^2 = b^2 + c^2$ où $a$ est l'hypoténuse (le plus grand côté) et $b, c$ sont les côtés de l'angle droit. Mais attention : les lettres changent selon les triangles ! L'essentiel est de retenir la phrase : **« Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés »**. Cette phrase, tu dois pouvoir la dire sans hésiter, même réveillé en pleine nuit."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "caption": "Triangle rectangle de côtés 5, 12, 13. Vérification : $5^2+12^2=25+144=169=13^2$.",
+              "a": 5,
+              "b": 12,
+              "c": 13
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce triangle classique $5-12-13$. Les carrés des deux petits côtés ($25$ et $144$) s'additionnent pour donner exactement le carré de l'hypoténuse ($169$). C'est une « triplette pythagoricienne » : trois nombres entiers qui satisfont la relation. Il en existe une infinité ($3-4-5$, $8-15-17$, $7-24-25$...), mais la plupart du temps, les nombres ne tombent pas aussi joliment. Tu devras souvent sortir une racine carrée non entière, et donner une valeur approchée au dixième ou au centième près. Pas de panique : la méthode est toujours la même, pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la relation de Pythagore",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie l'hypoténuse (appelle-la $h$ ou garde sa lettre) et les deux autres côtés ($c_1, c_2$). Écris : $h^2 = c_1^2 + c_2^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer par les valeurs connues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets les longueurs données (en $cm$, $m$, etc.). Si l'inconnue est l'hypoténuse, tu as $h^2 = \\text{nombre}$. Si l'inconnue est un côté de l'angle droit, tu as $\\text{nombre} = c^2 + \\text{autre nombre}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Isole le carré de l'inconnue. Puis prends la racine carrée (seule la racine positive a un sens pour une longueur)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure avec une phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne la longueur exacte (avec la racine) et/ou la valeur approchée demandée, en précisant l'unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre étapes est ta feuille de route. Applique-la systématiquement, même pour des calculs qui te paraissent simples. C'est comme cela qu'on évite les erreurs de distraction (oublier le carré, mélanger hypotenuse et côté, oublier l'unité). Essayons ensemble sur un premier exemple complet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment calculer l'hypoténuse quand on connaît les deux côtés de l'angle droit. Mais souvent, l'exercice donne l'hypoténuse et **un seul** côté de l'angle droit, et demande de trouver l'autre côté. La démarche est quasi identique : on écrit la relation, on replace les nombres, mais cette fois il faut **soustraire** le carré du côté connu du carré de l'hypoténuse pour isoler le carré de l'inconnue. C'est une soustraction, pas une addition. Veille à bien faire : $c^2 = h^2 - c_1^2$. Ne fais jamais $c^2 = c_1^2 - h^2$ (ce serait négatif, impossible pour un carré)."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle PQR, droit en Q. Hypoténuse PR = 13 cm, côté PQ = 5 cm. On cherche QR.",
+              "vertexLabels": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "sideLabels": [
+                "p",
+                "r",
+                "q"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce triangle $PQR$, l'angle droit est en $Q$. L'hypoténuse est donc $[PR] = 13 \\, cm$. On connaît $[PQ] = 5 \\, cm$. On cherche $[QR]$. On écrit : $PR^2 = PQ^2 + QR^2$. Donc $13^2 = 5^2 + QR^2$, soit $169 = 25 + QR^2$. On soustrait $25$ des deux côtés : $QR^2 = 169 - 25 = 144$. La racine carrée de $144$ est $12$. Donc $QR = 12 \\, cm$. Remarque que l'on a retrouvé la triplette $5-12-13$. Quand le résultat est un nombre entier, c'est souvent le signe que l'exercice a été bien conçu pour tomber juste."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Relation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$PR^2 = PQ^2 + QR^2$ (hypoténuse $PR$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$13^2 = 5^2 + QR^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Isolation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$QR^2 = 13^2 - 5^2 = 169 - 25 = 144$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Racine carrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$QR = \\sqrt{144} = 12 \\, cm$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, la structure est rigoureusement la même. La seule différence est l'opération arithmétique à l'étape 3 : addition si on cherche l'hypoténuse, soustraction si on cherche un côté de l'angle droit. Pour ne pas te tromper, garde en tête cette image : **l'hypoténuse est le « chef », son carré est la somme des deux autres**. Donc le carré de l'hypoténuse est **plus grand** que chacun des deux autres carrés. Si tu cherches un côté de l'angle droit, tu fais « grand moins petit ». Si tu cherches l'hypoténuse, tu fais « petit plus petit »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que les longueurs ne soient pas des entiers, ou que le résultat ne soit pas un carré parfait. Par exemple, un triangle rectangle avec des côtés de l'angle droit $7 \\, cm$ et $9 \\, cm$. L'hypoténuse $h$ vérifie $h^2 = 49 + 81 = 130$. Comme $130$ n'est pas un carré parfait ($11^2=121$, $12^2=144$), on laisse la réponse exacte sous la forme $\\sqrt{130} \\, cm$ et on donne une valeur approchée : $\\sqrt{130} \\approx 11,4 \\, cm$ (au dixième près). Ton professeur te précisera la précision demandée (au dixième, au centième, au millième). Sur ta calculatrice, utilise la touche $\\sqrt{\\cdot}$ ou la touche racine carrée. N'oublie pas de refermer la parenthèse si tu tapes $130$ directement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre piège fréquent : les unités. Si l'hypoténuse est donnée en $m$ et un côté en $cm$, **convertis tout dans la même unité** avant de calculer. Par exemple, $h = 1,2 \\, m = 120 \\, cm$ et $c_1 = 50 \\, cm$. Alors $c_2^2 = 120^2 - 50^2 = 14400 - 2500 = 11900$, donc $c_2 = \\sqrt{11900} \\approx 109,1 \\, cm$. Si tu avais gardé $1,2$ et $50$ sans convertir, tu aurais obtenu un résultat absurde. La conversion d'unités est une compétence transversale que tu dois avoir en tête à chaque exercice de géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, rappelons qu'on peut aussi utiliser le théorème « à l'envers » pour **prouver qu'un triangle est rectangle** (c'est la réciproque, que tu verras plus tard). Mais pour l'instant, concentre-toi sur le calcul direct : donnée une longueur, trouve l'autre. Entraîne-toi à écrire les étapes proprement, à ne pas sauter l'étape « écriture de la relation », et à toujours conclure par une phrase. C'est ce que nous allons approfondir dans la dernière leçon : la rédaction complète, celle qui te vaudra tous les points au contrôle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle rectangle $ABC$ droit en $A$, on donne $AB = 9 \\, cm$ et $AC = 12 \\, cm$. Calcule la longueur de l'hypoténuse $BC$. Donne la valeur exacte et une valeur approchée au dixième de $cm$ près.",
+              "answer": "L'hypoténuse est $[BC]$. $BC^2 = AB^2 + AC^2 = 9^2 + 12^2 = 81 + 144 = 225$. $BC = \\sqrt{225} = 15 \\, cm$. Valeur exacte : $15 \\, cm$. Approchée : $15,0 \\, cm$.",
+              "hint": "Identifie l'hypoténuse (côté opposé à l'angle droit en A). Applique $BC^2 = AB^2 + AC^2$.",
+              "explanation": "Angle droit en A => hypoténuse BC. $9^2+12^2=81+144=225$. Racine carrée de 225 = 15."
+            },
+            {
+              "question": "Triangle $DEF$ rectangle en $D$. L'hypoténuse $EF$ mesure $17 \\, cm$. Le côté $DE$ mesure $8 \\, cm$. Calcule la longueur du côté $DF$.",
+              "answer": "Angle droit en D => hypoténuse $EF=17$. $EF^2 = DE^2 + DF^2$. $17^2 = 8^2 + DF^2$. $289 = 64 + DF^2$. $DF^2 = 225$. $DF = 15 \\, cm$.",
+              "hint": "Hypoténuse = 17. Côté connu = 8. Cherche l'autre côté : soustraction des carrés.",
+              "explanation": "$17^2=289$, $8^2=64$, $289-64=225$, $\\sqrt{225}=15$."
+            },
+            {
+              "question": "Un triangle rectangle a pour côtés de l'angle droit $a = 1,5 \\, m$ et $b = 80 \\, cm$. Calcule l'hypoténuse en $cm$ (valeur exacte avec racine et valeur approchée au $mm$ près).",
+              "answer": "Conversion : $1,5 \\, m = 150 \\, cm$. $h^2 = 150^2 + 80^2 = 22500 + 6400 = 28900$. $h = \\sqrt{28900} = 170 \\, cm$. Exact : $170 \\, cm$ (ou $\\sqrt{28900} \\, cm$). Approchée au mm : $170,0 \\, cm$.",
+              "hint": "Convertis tout en cm avant de calculer. $1,5 m = 150 cm$.",
+              "explanation": "Conversion indispensable. $150^2+80^2=28900$. $\\sqrt{28900}=170$."
+            },
+            {
+              "question": "Une échelle de $5 \\, m$ de long est posée contre un mur. Le pied de l'échelle est à $1,5 \\, m$ du mur. À quelle hauteur du sol le sommet de l'échelle touche-t-il le mur ? (Donne le résultat en $m$ approché au $cm$ près).",
+              "answer": "L'échelle est l'hypoténuse ($5 \\, m$). La distance au mur est un côté de l'angle droit ($1,5 \\, m$). Soit $h$ la hauteur. $5^2 = 1,5^2 + h^2$. $25 = 2,25 + h^2$. $h^2 = 22,75$. $h = \\sqrt{22,75} \\approx 4,77 \\, m$. Donc environ $4,77 \\, m$ (soit $4 \\, m \\, 77 \\, cm$).",
+              "hint": "Modélise par un triangle rectangle : échelle = hypoténuse, distance au mur = un côté, hauteur = l'autre côté.",
+              "explanation": "Triangle rectangle : hypoténuse 5, côté 1,5. $h^2 = 5^2 - 1,5^2 = 25 - 2,25 = 22,75$. $h = \\sqrt{22,75} \\approx 4,77$."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger une démonstration complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant vérifier les hypothèses et calculer une longueur. Mais en mathématiques, et surtout au brevet, **le résultat seul ne suffit pas** : il faut **justifier** chaque étape par une phrase claire. C'est ce qu'on appelle la **rédaction**. Une bonne rédaction, c'est comme une petite histoire logique : on annonce ce qu'on va faire, on le fait, on conclut. Elle permet au correcteur (et à toi-même en relisant) de suivre ton raisonnement sans effort. Dans cette leçon, nous allons construire ensemble le modèle type de rédaction pour un exercice de Pythagore, afin que tu puisses le reproduire à l'identique à chaque fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "La rédaction suit toujours la même structure en **quatre temps** :\\n1. **Énoncer le théorème** (ou la propriété) en citant son nom.\\n2. **Vérifier les hypothèses** : dire que le triangle est rectangle et nommer l'angle droit.\\n3. **Écrire l'égalité** avec les noms des côtés du triangle concerné.\\n4. **Calculer et conclure** par une phrase réponse.\\nNe saute aucune de ces étapes, même si elles te paraissent évidentes. C'est la rigueur de l'énoncé qui montre que tu as compris la logique."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle MNO rectangle en N. MN = 20 cm, NO = 21 cm. Calculer MO.",
+              "vertexLabels": [
+                "M",
+                "N",
+                "O"
+              ],
+              "sideLabels": [
+                "m",
+                "o",
+                "n"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple du triangle $MNO$, rectangle en $N$. On知 $MN = 20 \\, cm$ et $NO = 21 \\, cm$. On veut $MO$. Voici comment on rédige proprement, ligne par ligne :\\n\\n**1. Énoncer le théorème** : « D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. »\\n\\n**2. Vérifier les hypothèses** : « Le triangle $MNO$ est rectangle en $N$ (donné). Donc l'hypoténuse est le côté $[MO]$, opposé à l'angle droit. Les côtés de l'angle droit sont $[MN]$ et $[NO]$. »\\n\\n**3. Écrire l'égalité** : « On a donc : $MO^2 = MN^2 + NO^2$. »\\n\\n**4. Calculer et conclure** : « $MO^2 = 20^2 + 21^2 = 400 + 441 = 841$. Donc $MO = \\sqrt{841} = 29 \\, cm$.\\n**Conclusion** : La longueur $MO$ mesure $29 \\, cm$.\""
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Temps 1 : Citer le théorème",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux côtés de l'angle droit. » C'est la phrase de référence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 2 : Vérifier les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis : « Le triangle [nom] est rectangle en [sommet] (donné / car...). L'hypoténuse est [côté opposé]. Les côtés de l'angle droit sont [côté1] et [côté2]. » Montre que tu as identifié les bons côtés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 3 : Écrire l'égalité adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace les lettres génériques par les noms réels des côtés : $[hyp]^2 = [côté1]^2 + [côté2]^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 4 : Calculer et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le calcul étape par étape. Termine par : « Donc [côté] = [valeur] [unité]. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette structure est immuable. Elle te servira pour tout exercice de Pythagore, que ce soit pour calculer l'hypoténuse, un côté de l'angle droit, ou même pour montrer qu'un triangle est rectangle (en utilisant la réciproque, mais la rédaction reste similaire). Entraînons-nous maintenant sur un cas où l'on cherche un côté de l'angle droit, car la rédaction change légèrement à l'étape 3 (soustraction au lieu d'addition)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un triangle $XYZ$ rectangle en $X$. L'hypoténuse $YZ$ mesure $25 \\, cm$ et le côté $XY$ mesure $15 \\, cm$. On cherche $XZ$. La rédaction commence pareil : on cite le théorème, on vérifie que le triangle est rectangle en $X$, donc l'hypoténuse est $[YZ]$. Mais à l'étape 3, l'égalité s'écrit : $YZ^2 = XY^2 + XZ^2$. Comme on cherche $XZ$, on isole son carré : $XZ^2 = YZ^2 - XY^2$. C'est la seule différence : **on écrit la relation dans le sens de l'hypoténuse, puis on la transforme pour isoler l'inconnue**. Ne saute pas l'écriture de la relation initiale ! C'est elle qui prouve que tu sais quelle formule utiliser."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la rédaction complète pour cet exemple :\\n\\n« D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux côtés de l'angle droit.\\nLe triangle $XYZ$ est rectangle en $X$ (donné). L'hypoténuse est donc $[YZ]$. Les côtés de l'angle droit sont $[XY]$ et $[XZ]$.\\nOn a : $YZ^2 = XY^2 + XZ^2$.\\n$25^2 = 15^2 + XZ^2$.\\n$625 = 225 + XZ^2$.\\n$XZ^2 = 625 - 225 = 400$.\\n$XZ = \\sqrt{400} = 20 \\, cm$.\\n**Conclusion** : La longueur $XZ$ mesure $20 \\, cm$. »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Temps 1 : Théorème",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« D'après le théorème de Pythagore... » (phrase type)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 2 : Hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Triangle $XYZ$ rectangle en $X$... Hypoténuse $[YZ]$... Côtés de l'angle droit $[XY]$ et $[XZ]$. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 3 : Relation + transformation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« $YZ^2 = XY^2 + XZ^2$ » puis « $XZ^2 = YZ^2 - XY^2$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Temps 4 : Calcul + conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcul détaillé, puis phrase finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque l'alignement des égalités et la clarté des opérations. Au brevet, on attend que tu présentes ton calcul verticalement ou bien aligné, pas en ligne continue. Écris chaque égalité sur une nouvelle ligne. Cela rend la lecture fluide et évite les erreurs de recopie. Aussi, n'oublie **jamais l'unité** dans la conclusion. Une longueur sans unité, c'est comme une adresse sans ville : incomplète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un cas particulier où la rédaction est encore plus importante : quand on doit **prouver qu'un triangle est rectangle** en utilisant la **réciproque du théorème de Pythagore**. La réciproque dit : « Si dans un triangle le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors ce triangle est rectangle et le plus grand côté est l'hypoténuse. » La rédaction suit alors ce schéma :\\n1. On calcule les carrés des trois côtés.\\n2. On vérifie l'égalité : $côté_{max}^2 = côté_1^2 + côté_2^2$.\\n3. On conclut par la réciproque : « Donc le triangle est rectangle en [sommet opposé au plus grand côté]. »\\nC'est un raisonnement « à l'envers » par rapport au calcul de longueur, mais la rigueur de l'écriture est la même."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle RST avec RS=7, ST=24, RT=25. Vérification de la réciproque.",
+              "vertexLabels": [
+                "R",
+                "S",
+                "T"
+              ],
+              "sideLabels": [
+                "r",
+                "t",
+                "s"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le triangle $RST$ avec $RS=7$, $ST=24$, $RT=25$. Le plus grand côté est $RT=25$. On calcule : $25^2=625$, $7^2=49$, $24^2=576$. $49+576=625$. L'égalité est vérifiée. Rédaction :\\n« Dans le triangle $RST$, le plus grand côté est $[RT]=25$.\\nOn a $RT^2 = 625$ et $RS^2 + ST^2 = 49 + 576 = 625$.\\nDonc $RT^2 = RS^2 + ST^2$.\\nD'après la réciproque du théorème de Pythagore, le triangle $RST$ est rectangle en $S$ (sommet opposé à $[RT]$). »\\nNote bien : on ne dit pas « donc l'angle S est droit » avant d'avoir invoqué la réciproque. La conclusion est la conséquence directe de l'égalité trouvée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour rédiger parfaitement n'importe quel exercice de Pythagore : calcul d'hypoténuse, calcul de côté de l'angle droit, ou démonstration qu'un triangle est rectangle. La rédaction n'est pas une contrainte administrative, c'est **la trace de ton raisonnement**. En l'écrivant, tu te forces à structurer ta pensée, et tu évites les erreurs de logique. Avant de finir, fais un dernier exercice complet qui mélange un peu tout : vérification d'hypothèses, calcul, et conclusion rédigée. Ensuite, nous ferons le bilan de ce chapitre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier l'angle droit et l'hypoténuse dans un triangle rectangle.",
+                "Je connais les deux hypothèses nécessaires pour appliquer le théorème de Pythagore (triangle rectangle, nommer l'hypoténuse).",
+                "Je sais calculer l'hypoténuse connaissant les deux côtés de l'angle droit (addition des carrés).",
+                "Je sais calculer un côté de l'angle droit connaissant l'hypoténuse et l'autre côté (soustraction des carrés).",
+                "Je sais donner une longueur exacte (avec racine carrée) et une valeur approchée au dixième ou centième près.",
+                "Je sais rédiger une démonstration complète en 4 temps : théorème, hypothèses, égalité, calcul et conclusion.",
+                "Je sais utiliser la réciproque pour prouver qu'un triangle est rectangle.",
+                "Je vérifie toujours les unités avant de calculer et je mets l'unité dans ma conclusion."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit un triangle $ABC$ rectangle en $A$. On donne $AB = 8 \\, cm$ et $AC = 6 \\, cm$. \\nRédige complètement la démonstration pour calculer $BC$.",
+              "answer": "D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux côtés de l'angle droit.\\nLe triangle $ABC$ est rectangle en $A$ (donné). L'hypoténuse est $[BC]$. Les côtés de l'angle droit sont $[AB]$ et $[AC]$.\\nOn a : $BC^2 = AB^2 + AC^2$.\\n$BC^2 = 8^2 + 6^2 = 64 + 36 = 100$.\\n$BC = \\sqrt{100} = 10 \\, cm$.\\nConclusion : La longueur $BC$ mesure $10 \\, cm$.",
+              "hint": "Suis le modèle en 4 temps : 1. Citer le théorème. 2. Vérifier hypothèses (rectangle en A => hypoténuse BC). 3. Écrire l'égalité. 4. Calculer et conclure.",
+              "explanation": "Application directe du modèle. Angle droit en A, donc hypoténuse BC. Calcul : 8^2+6^2=100, racine=10."
+            },
+            {
+              "question": "Triangle $PQR$ rectangle en $Q$. $PR = 29 \\, cm$, $PQ = 21 \\, cm$. \\nRédige le calcul de $QR$.",
+              "answer": "D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux côtés de l'angle droit.\\nLe triangle $PQR$ est rectangle en $Q$ (donné). L'hypoténuse est $[PR]$. Les côtés de l'angle droit sont $[PQ]$ et $[QR]$.\\nOn a : $PR^2 = PQ^2 + QR^2$.\\n$29^2 = 21^2 + QR^2$.\\n$841 = 441 + QR^2$.\\n$QR^2 = 841 - 441 = 400$.\\n$QR = \\sqrt{400} = 20 \\, cm$.\\nConclusion : La longueur $QR$ mesure $20 \\, cm$.",
+              "hint": "Hypoténuse PR = 29. Côté connu PQ = 21. On cherche QR : soustraction des carrés.",
+              "explanation": "29^2=841, 21^2=441, 841-441=400, sqrt(400)=20."
+            },
+            {
+              "question": "Un triangle a pour longueurs de côtés : $7 \\, cm$, $24 \\, cm$ et $25 \\, cm$. \\nRédige une démonstration pour prouver que ce triangle est rectangle. Précise où se trouve l'angle droit.",
+              "answer": "Le plus grand côté est $25 \\, cm$.\\nOn calcule : $25^2 = 625$.\\n$7^2 + 24^2 = 49 + 576 = 625$.\\nOn a bien $25^2 = 7^2 + 24^2$.\\nD'après la réciproque du théorème de Pythagore, ce triangle est rectangle et l'angle droit est opposé au côté de $25 \\, cm$.",
+              "hint": "Identifie le plus grand côté. Vérifie l'égalité des carrés. Conclus par la réciproque.",
+              "explanation": "Plus grand côté 25. 25^2=625. 7^2+24^2=49+576=625. Égalité vérifiée => triangle rectangle par la réciproque. Angle droit opposé au côté 25."
+            },
+            {
+              "question": "Une tente est maintenue par un hauban (câble) attaché au sommet du mât central et au sol, à $2,40 \\, m$ du pied du mât. Le hauban mesure $3 \\, m$. \\nLe mât est-il bien vertical ? (On suppose le sol horizontal). Justifie par une rédaction complète.",
+              "answer": "On modélise par un triangle rectangle : mât vertical, sol horizontal, hauban = hypoténuse.\\nSi le mât est vertical, le triangle formé est rectangle au pied du mât.\\nLe plus grand côté est le hauban ($3 \\, m = 300 \\, cm$). Distance au sol : $2,40 \\, m = 240 \\, cm$.\\nSoit $h$ la hauteur du mât. Si le triangle est rectangle : $300^2 = 240^2 + h^2$.\\n$90000 = 57600 + h^2$ => $h^2 = 32400$ => $h = 180 \\, cm = 1,80 \\, m$.\\nOn vérifie la réciproque : $300^2 = 90000$, $240^2 + 180^2 = 57600 + 32400 = 90000$.\\nL'égalité est vérifiée, donc d'après la réciproque du théorème de Pythagore, le triangle est rectangle au pied du mât. Le mât est bien vertical.",
+              "hint": "Convertis en cm. Utilise la réciproque : si l'égalité des carrés tient, l'angle est droit.",
+              "explanation": "Modélisation : hauban = hypoténuse (300 cm), distance = 240 cm. Calcul de la hauteur théorique : 180 cm. Vérification : 300^2 = 240^2 + 180^2. Égalité vraie => triangle rectangle => mât vertical."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

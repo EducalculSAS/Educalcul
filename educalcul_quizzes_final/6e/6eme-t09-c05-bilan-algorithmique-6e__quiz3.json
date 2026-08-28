@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Bilan - Algorithmique 6e",
+  "title": "Bilan Algorithmique 6e",
+  "questions": [
+    {
+      "text": "Comment appelle-t-on une suite finie et ordonnée d'instructions permettant de résoudre un problème ou d'obtenir un résultat ?",
+      "options": [
+        "Un algorithme",
+        "Une variable",
+        "Une boucle",
+        "Une condition"
+      ],
+      "correctAnswer": "Un algorithme",
+      "explanation": "Un algorithme est la définition exacte d'une suite d'opérations pour résoudre un problème. Une variable stocke une valeur, une boucle permet de répéter des instructions, une condition permet de choisir entre plusieurs actions selon un test.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le bloc suivant : Répéter $5$ fois [ Avancer de $10$ pas ]. Combien de fois l'instruction 'Avancer de $10$ pas' est-elle exécutée au total ?",
+      "options": [
+        "5 fois",
+        "10 fois",
+        "1 fois",
+        "50 fois"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "La boucle 'Répéter 5 fois' exécute le contenu des crochets exactement 5 fois. L'instruction 'Avancer de 10 pas' est donc réalisée 5 fois, ce qui fait avancer le sprite de $5 \\times 10 = 50$ pas au total, mais l'instruction elle-même est exécutée 5 fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La variable 'score' vaut $12$. On exécute : Si score > 10 Alors [ Dire 'Bravo' ] Sinon [ Dire 'Essaie encore' ]. Que dit le sprite ?",
+      "options": [
+        "Le sprite dit 'Bravo'",
+        "Le sprite dit 'Essaie encore'",
+        "Le sprite ne dit rien",
+        "Erreur de programme"
+      ],
+      "correctAnswer": "Le sprite dit 'Bravo'",
+      "explanation": "La condition 'score > 10' est testée. Comme la variable 'score' vaut $12$, la condition est vraie ($12 > 10$). Le programme exécute donc la branche 'Alors' et affiche 'Bravo'. La branche 'Sinon' est ignorée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Au départ, la variable 'nombre' contient la valeur $7$. On exécute l'instruction d'affectation : nombre ← nombre + 4. Quelle est la nouvelle valeur de la variable 'nombre' ?",
+      "options": [
+        "11",
+        "7",
+        "4",
+        "28"
+      ],
+      "correctAnswer": "11",
+      "explanation": "L'affectation 'nombre ← nombre + 4' signifie : on prend la valeur actuelle de 'nombre' ($7$), on y ajoute $4$, et on stocke le résultat ($11$) dans 'nombre'. L'ancienne valeur $7$ est remplacée par la nouvelle valeur $11$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour programmer le tracé d'un carré de côté $50$ pas avec un sprite, quelle structure de boucle faut-il utiliser ?",
+      "options": [
+        "Répéter 4 fois [ Avancer de 50 pas ; Tourner de 90 degrés ]",
+        "Répéter 50 fois [ Avancer de 4 pas ; Tourner de 90 degrés ]",
+        "Répéter 90 fois [ Avancer de 50 pas ; Tourner de 4 degrés ]",
+        "Répéter 4 fois [ Avancer de 50 pas ; Tourner de 45 degrés ]"
+      ],
+      "correctAnswer": "Répéter 4 fois [ Avancer de 50 pas ; Tourner de 90 degrés ]",
+      "explanation": "Un carré a 4 côtés égaux et 4 angles droits ($90^\\circ$). Il faut donc répéter 4 fois la séquence : avancer de la longueur du côté (50 pas) puis tourner de l'angle droit (90 degrés). Les autres options ne donnent pas un carré (mauvais nombre de côtés, mauvaise longueur, mauvais angle).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

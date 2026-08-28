@@ -1,0 +1,363 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.566721+00:00",
+  "id": 27,
+  "code": "cp-t03-c05",
+  "title": "Moitiés de petites quantités",
+  "description": "Cours structuré Educalcul : Moitiés de petites quantités.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Moitiés de petites quantités",
+    "objectif_global": "Moitiés de petites quantités",
+    "mini_lecons_imposees": [
+      "Partager une quantité paire en deux groupes égaux.",
+      "Relier moitié et double.",
+      "Reconnaître des moitiés usuelles."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Partager une quantité paire en deux groupes égaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager équitablement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $6$ bonbons et que tu veux les donner à deux amis pour qu'ils aient exactement la même quantité. Comment faire ? Tu poses un bonbon devant le premier, un devant le second, et tu continues jusqu'à ce qu'il n'en reste plus. À la fin, chaque ami a $3$ bonbons. On dit qu'on a partagé $6$ en deux groupes égaux."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                3
+              ],
+              "right": [
+                6
+              ],
+              "caption": "6 bonbons partagés en deux groupes de 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais repérer quand un partage est juste. Essayons avec une autre quantité : $8$ crayons. Tu peux les ranger par deux sur la table, un pour toi, un pour ton camarade. Quand tu as fini, tu comptes ta pile : $4$ crayons. L'autre pile en a aussi $4$. Le total $8$ est bien reparti en deux parts identiques."
+            },
+            {
+              "type": "display_math",
+              "latex": "8 = 4 + 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois le truc ? Pour partager un nombre pair, tu le coupes en deux tas qui se ressemblent. Si tu as $10$ billes, tu fais deux tas de $5$. Si tu as $12$ cartes, tu fais deux tas de $6$. À chaque fois, les deux tas ont le même nombre d'objets. C'est ça, la moitié : l'une des deux parts égales."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose tous les objets devant toi et compte-les à voix haute."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire deux tas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Distribue un objet à gauche, un à droite, jusqu'à ce qu'il n'en reste plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte chaque tas. Ils doivent afficher le même chiffre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $4$ pommes. Tu les partages en deux groupes égaux. Combien de pommes dans chaque groupe ?",
+              "answer": "$2$",
+              "hint": "Fais deux tas avec des jetons ou dessine des ronds.",
+              "explanation": "Quand on partage $4$ en deux groupes égaux, on obtient $2$ et $2$. Chaque groupe contient $2$ pommes."
+            },
+            {
+              "question": "Partage $10$ billes en deux tas identiques. Écris l'addition qui montre le partage.",
+              "answer": "$10 = 5 + 5$",
+              "hint": "Compte jusqu'à $10$ en faisant deux piles.",
+              "explanation": "Deux tas de $5$ billes font $10$ billes au total. L'addition $5 + 5 = 10$ représente ce partage."
+            },
+            {
+              "question": "Léa a $12$ autocollants. Elle en donne la moitié à son frère. Combien d'autocollants garde-t-elle ?",
+              "answer": "$6$",
+              "hint": "La moitié de $12$, c'est deux groupes de $6$.",
+              "explanation": "Partager $12$ en deux groupes égaux donne $6$ et $6$. Léa garde un groupe, donc $6$ autocollants."
+            }
+          ]
+        },
+        {
+          "title": "Relier moitié et double.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le double et la moitié, deux amis inséparables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà partagé des quantités en deux. Maintenant, regarde : si tu prends $4$ cubes et que tu les doubles, tu obtiens $8$ cubes. Et si tu reprends ces $8$ cubes et que tu en donnes la moitié, tu retrouves $4$ cubes. Le double et la moitié font l'effet inverse l'un de l'autre, comme aller et retour sur le même chemin."
+            },
+            {
+              "type": "number_line",
+              "caption": "Aller du double à la moitié sur une droite",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec d'autres nombres. Prends $2$ bonbons. Le double de $2$, c'est $4$. La moitié de $4$, c'est $2$. Prends $3$ billes. Le double de $3$, c'est $6$. La moitié de $6$, c'est $3$. Tu vois le lien ? Quand tu connais l'un, tu connais l'autre sans recompter."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Son double",
+                "Sa moitié"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "4",
+                  "1"
+                ],
+                [
+                  "3",
+                  "6",
+                  "1,5"
+                ],
+                [
+                  "4",
+                  "8",
+                  "2"
+                ],
+                [
+                  "5",
+                  "10",
+                  "2,5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette relation est très utile. Si on te demande : \"Quel nombre, doublé, donne $10$ ?\" Tu cherches la moitié de $10$, c'est $5$. Et si on te demande : \"Quelle est la moitié de $8$ ?\" Tu penses au double de $4$, c'est $8$, donc la moitié est $4$. C'est comme un jeu de miroir : le double regarde la moitié et la moitié regarde le double."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Pour trouver le double",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute le nombre à lui-même : $4 + 4 = 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Pour trouver la moitié",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche quel nombre ajouté à lui-même donne le total : $? + ? = 8$ → $4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le double de $3$ est $6$. Quelle est la moitié de $6$ ?",
+              "answer": "$3$",
+              "hint": "Repense au partage de $6$ en deux groupes égaux.",
+              "explanation": "Puisque $3 + 3 = 6$, la moitié de $6$ est $3$. Le double et la moitié sont des opérations inverses."
+            },
+            {
+              "question": "Complète : Le double de $5$ est $\\ldots$ ; la moitié de $10$ est $\\ldots$",
+              "answer": "10 ; 5",
+              "hint": "Utilise tes doigts ou des jetons pour vérifier.",
+              "explanation": "$5 + 5 = 10$, donc le double de $5$ est $10$. Et comme $10 = 5 + 5$, la moitié de $10$ est $5$."
+            },
+            {
+              "question": "Paul a $6$ billes. Il les double. Puis il donne la moitié de son nouveau total. Combien de billes lui reste-t-il ?",
+              "answer": "$6$",
+              "hint": "Double $6$ → $12$. Moitié de $12$ → $6$.",
+              "explanation": "Le double de $6$ est $12$. La moitié de $12$ est $6$. Paul retrouve son nombre de départ."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître des moitiés usuelles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les moitiés qu'on rencontre tout le temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie de tous les jours, certains nombres reviennent sans cesse : $2$, $4$, $6$, $8$, $10$. Leur moitié est facile à retenir si on l'associe à une image. La moitié de $2$ ? Un seul doigt levé de chaque main. La moitié de $4$ ? Deux roues d'un côté, deux de l'autre sur un petit camion. La moitié de $6$ ? Trois bougies sur chaque moitié du gâteau."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "La moitié, c'est une part sur deux égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous à les reconnaître vite. Montre $8$ doigts (les deux mains sans les pouces). Plie la moitié : il te reste $4$ doigts levés. Montre $10$ doigts (les deux mains). La moitié, c'est $5$ doigts, exactement une main. Ces paires $(2,1)$, $(4,2)$, $(6,3)$, $(8,4)$, $(10,5)$ sont comme des amis : dès qu'on voit l'un, on pense à l'autre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Les moitiés usuelles jusqu'à 10",
+              "bars": [
+                {
+                  "label": "2 → 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4 → 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "6 → 3",
+                  "value": 6,
+                  "tone": "gold"
+                },
+                {
+                  "label": "8 → 4",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "10 → 5",
+                  "value": 10,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi t'amuser à chercher la moitié de nombres un peu plus grands, comme $12$ ou $14$, en utilisant ce que tu sais déjà. La moitié de $12$, c'est $6$ parce que $6+6=12$. La moitié de $14$, c'est $7$ parce que $7+7=14$. Plus tu joues avec ces doubles et ces moitiés, plus ils deviennent automatiques, comme une comptine qu'on connaît par cœur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partager une quantité paire en deux groupes égaux.",
+                "Je sais que le double et la moitié sont inverses.",
+                "Je reconnais les moitiés de 2, 4, 6, 8, 10 sans compter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la moitié de $8$ ?",
+              "answer": "$4$",
+              "hint": "Pense au double de $4$.",
+              "explanation": "Puisque $4 + 4 = 8$, la moitié de $8$ est $4$."
+            },
+            {
+              "question": "Associe chaque nombre à sa moitié : $6$, $10$, $4$, $2$.",
+              "answer": "6→3, 10→5, 4→2, 2→1",
+              "hint": "Utilise le tableau des moitiés usuelles.",
+              "explanation": "Les paires sont : $2$ et $1$, $4$ et $2$, $6$ et $3$, $10$ et $5$."
+            },
+            {
+              "question": "Tu as $12$ crayons. Tu donnes la moitié à ton voisin. Combien de crayons te reste-t-il ?",
+              "answer": "$6$",
+              "hint": "Cherche le nombre qui, ajouté à lui-même, donne $12$.",
+              "explanation": "$6 + 6 = 12$, donc la moitié de $12$ est $6$. Tu gardes $6$ crayons."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

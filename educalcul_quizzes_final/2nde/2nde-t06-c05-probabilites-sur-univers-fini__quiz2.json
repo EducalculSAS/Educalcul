@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Réunion / intersection simple",
+  "title": "Quiz : Réunion et intersection d'événements",
+  "questions": [
+    {
+      "text": "On considère l'univers $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$ équiprobable. Soient les événements $A = \\{1, 2, 3\\}$ et $B = \\{3, 4, 5\\}$. Quelle est l'intersection $A \\cap B$ ?",
+      "options": [
+        "\\{3\\}",
+        "\\{1, 2, 3, 4, 5\\}",
+        "\\{1, 2, 4, 5\\}",
+        "\\emptyset"
+      ],
+      "correctAnswer": "\\{3\\}",
+      "explanation": "L'intersection $A \\cap B$ est l'ensemble des éléments qui appartiennent à la fois à $A$ et à $B$. $A$ contient 1, 2, 3. $B$ contient 3, 4, 5. Le seul élément commun est 3. L'union aurait donné $\\{1,2,3,4,5\\}$, la différence symétrique $\\{1,2,4,5\\}$, et l'ensemble vide serait la réponse si $A$ et $B$ étaient incompatibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un univers $\\Omega$ équiprobable à 10 issues, on a $P(A) = 0,4$, $P(B) = 0,3$ et $P(A \\cap B) = 0,1$. Quelle est la valeur de $P(A \\cup B)$ ?",
+      "options": [
+        "0,6",
+        "0,7",
+        "0,8",
+        "0,5"
+      ],
+      "correctAnswer": "0,6",
+      "explanation": "On utilise la formule $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. On calcule $0,4 + 0,3 - 0,1 = 0,6$. L'option 0,7 correspond à l'erreur d'oublier de soustraire l'intersection (somme simple). L'option 0,8 n'a pas de sens direct ici. L'option 0,5 correspondrait à une soustraction incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les événements $A$ et $B$ sont incompatibles. On sait que $P(A) = 0,3$ et $P(B) = 0,4$. Quelle est la probabilité de la réunion $A \\cup B$ ?",
+      "options": [
+        "0,7",
+        "0,12",
+        "0,1",
+        "0,0"
+      ],
+      "correctAnswer": "0,7",
+      "explanation": "Deux événements incompatibles ont une intersection vide : $A \\cap B = \\emptyset$, donc $P(A \\cap B) = 0$. La formule de la réunion donne $P(A \\cup B) = P(A) + P(B) - 0 = 0,3 + 0,4 = 0,7$. L'option 0,12 est le produit $P(A) \\times P(B)$ (indépendance, pas incompatibilité). L'option 0,1 est une différence. L'option 0,0 serait l'intersection.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme de Venn ci-dessous représente deux événements $A$ et $B$ dans un univers $\\Omega$. La partie hachurée correspond à $A \\cap B$. Si $P(A) = 0,5$, $P(B) = 0,6$ et $P(A \\cup B) = 0,8$, quelle est la probabilité de la partie hachurée ?",
+      "options": [
+        "0,3",
+        "0,2",
+        "0,4",
+        "0,1"
+      ],
+      "correctAnswer": "0,3",
+      "explanation": "On utilise la relation $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. On en déduit $P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0,5 + 0,6 - 0,8 = 0,3$. La partie hachurée représente bien l'intersection. L'option 0,2 correspond à $P(A) + P(B) - 1$ (erreur de formule). L'option 0,4 est $P(B) - P(A \\cup B)$ (sans sens). L'option 0,1 est une valeur au hasard.",
+      "points": 1,
+      "figure": {
+        "type": "venn_diagram",
+        "caption": "Diagramme de Venn : intersection A ∩ B hachurée",
+        "sets": [
+          {
+            "label": "A",
+            "value": 0.5,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 0.6,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de 1 à 6. Soit $A$ l'événement \"obtenir un nombre pair\" et $B$ l'événement \"obtenir un multiple de 3\". Quelle est la réunion $A \\cup B$ ?",
+      "options": [
+        "\\{2, 3, 4, 6\\}",
+        "\\{2, 4, 6\\}",
+        "\\{3, 6\\}",
+        "\\{1, 2, 3, 4, 5, 6\\}"
+      ],
+      "correctAnswer": "\\{2, 3, 4, 6\\}",
+      "explanation": "L'événement $A$ (pair) correspond à $\\{2, 4, 6\\}$. L'événement $B$ (multiple de 3) correspond à $\\{3, 6\\}$. La réunion $A \\cup B$ rassemble tous les éléments qui sont dans $A$ ou dans $B$ (ou les deux) : $\\{2, 3, 4, 6\\}$. L'option $\\{2, 4, 6\\}$ est seulement $A$. L'option $\\{3, 6\\}$ est seulement $B$. L'option $\\{1, 2, 3, 4, 5, 6\\}$ est l'univers $\\Omega$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

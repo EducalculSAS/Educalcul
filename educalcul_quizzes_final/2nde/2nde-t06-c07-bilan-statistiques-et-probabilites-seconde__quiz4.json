@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Bilan - Statistiques et probabilités Seconde",
+  "title": "Bilan - Statistiques et probabilités Seconde : Application",
+  "questions": [
+    {
+      "text": "Calculez la moyenne de la série statistique suivante : $4$, $7$, $9$, $10$, $10$.",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La somme des valeurs est $4+7+9+10+10 = 40$. Il y a $5$ données, donc la moyenne est $40/5 = 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la médiane de la même série : $4$, $7$, $9$, $10$, $10$ ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "La série ordonnée est déjà $4, 7, 9, 10, 10$. Avec $5$ valeurs, la médiane est la troisième valeur, soit $9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminez l'écart type (écart type de la population) de la série $4$, $7$, $9$, $10$, $10$.",
+      "options": [
+        "$2,0$",
+        "$2,28$",
+        "$2,5$",
+        "$3,0$"
+      ],
+      "correctAnswer": "$2,28$",
+      "explanation": "Moyenne $=8$. Écart à la moyenne : $-4,-1,1,2,2$. Carrés : $16,1,1,4,4$. Somme $=26$. Variance $=26/5 = 5,2$. Écart type $=\\sqrt{5,2}\\approx 2,28$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $3$ boules rouges, $5$ bleues et $2$ vertes. On tire une boule au hasard. Quelle est la probabilité d'obtenir une boule rouge ?",
+      "options": [
+        "$0,2$",
+        "$0,3$",
+        "$0,4$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,3$",
+      "explanation": "Nombre total de boules $=3+5+2=10$. Boules rouges $=3$. Probabilité $=3/10 = 0,3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux dés à six faces. Sachant que la somme des faces est $8$, quelle est la probabilité qu'un des dés montre un $5$ ?",
+      "options": [
+        "$0,2$",
+        "$0,3$",
+        "$0,4$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,4$",
+      "explanation": "Les couples donnant une somme de $8$ sont $(2,6),(3,5),(4,4),(5,3),(6,2)$ : $5$Issu equiprobables. Ceux contenant un $5$ sont $(3,5)$ et $(5,3)$ : $2$ cas favorables. Probabilité $=2/5 = 0,4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

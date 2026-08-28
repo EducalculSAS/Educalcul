@@ -1,0 +1,81 @@
+{
+  "_status": "failed",
+  "_errors": [
+    "question 4: correctAnswer ne correspond à aucune option"
+  ],
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Ordre des instructions",
+  "raw": {
+    "title": "L ordre des instructions en informatique",
+    "questions": [
+      {
+        "text": "Pour préparer un bol de céréales, quelle est l ordre logique des instructions ?",
+        "options": [
+          "Verser le lait, manger, verser les céréales",
+          "Verser les céréales, verser le lait, manger",
+          "Manger, verser le lait, verser les céréales",
+          "Verser le lait, verser les céréales, préparer le bol"
+        ],
+        "correctAnswer": "Verser les céréales, verser le lait, manger",
+        "explanation": "Une séquence doit suivre un ordre logique. On ne peut pas manger avant d avoir mis les ingrédients, et on met généralement les céréales avant le lait pour éviter les éclaboussures.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Un robot doit se déplacer de $3$ cases vers la droite, puis de $2$ cases vers le haut. Que se passe t il si on inverse l ordre des instructions ?",
+        "options": [
+          "Le robot arrive au même endroit",
+          "Le robot revient à son point de départ",
+          "Le robot s arrête après $3$ cases",
+          "Le robot tourne en rond"
+        ],
+        "correctAnswer": "Le robot arrive au même endroit",
+        "explanation": "Dans ce cas précis, faire $2$ pas en haut puis $3$ pas à droite mène à la même position finale que l inverse, car les directions sont perpendiculaires.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Voici une séquence : 1. Ouvrir la porte. 2. Sortir de la maison. 3. Fermer la porte. Pourquoi l instruction 2 ne peut pas être placée avant l instruction 1 ?",
+        "options": [
+          "Parce que le robot est trop lent",
+          "Parce qu on ne peut pas sortir si la porte est fermée",
+          "Parce que la porte est trop lourde",
+          "Parce que l instruction 3 devient inutile"
+        ],
+        "correctAnswer": "Parce qu on ne peut pas sortir si la porte est fermée",
+        "explanation": "L ordre des instructions est crucial quand une action dépend de la réussite de la précédente. Sortir nécessite que l ouverture de la porte ait été effectuée avant.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Un programme dit : 1. Avancer de $5$ cm. 2. Tourner à droite. 3. Avancer de $2$ cm. Si on change l ordre en : 1. Tourner à droite, 2. Avancer de $2$ cm, 3. Avancer de $5$ cm, le résultat est",
+        "options": [
+          "Exactement le même",
+          "Différent car le robot change de direction dès le début",
+          "Le même car on avance de $7$ cm au total",
+          "Impossible à réaliser"
+        ],
+        "correctAnswer": "Différent car le robot change de direction dès le début",
+        "explanation": "Changer l ordre d une instruction de rotation modifie la direction de tous les déplacements qui suivent. Le robot ne suivra pas le même chemin.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Pour dessiner un carré, un robot doit faire : Avancer, Tourner, Avancer, Tourner, Avancer, Tourner, Avancer, Tourner. Que se passe t il si on retire une seule instruction Tourner ?",
+        "options": [
+          "Le robot dessine quand même un carré",
+          "Le robot dessine un triangle",
+          "Le robot ne ferme pas la forme et ne dessine pas un carré",
+          "Le robot s arrête immédiatement"
+        ],
+        "correctAnswer": "Le robot ne ferme la forme et ne dessine pas un carré",
+        "explanation": "Pour fermer un carré, il faut exactement quatre angles droits. Si on oublie un tournant, le robot continuera en ligne droite ou dans une mauvaise direction, et la figure ne sera pas fermée.",
+        "points": 1,
+        "figure": null
+      }
+    ]
+  }
+}

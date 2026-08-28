@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Placer / estimer un nombre",
+  "title": "Quiz : Placer et estimer un nombre sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur une droite graduée de $0$ à $100$ par pas de $10$, entre quelles deux graduations se trouve le nombre $37$ ?",
+      "options": [
+        "Entre $30$ et $40$",
+        "Entre $20$ et $30$",
+        "Entre $40$ et $50$",
+        "Entre $10$ et $20$"
+      ],
+      "correctAnswer": "Entre $30$ et $40$",
+      "explanation": "La droite est graduée tous les $10$ : $0, 10, 20, 30, 40, 50, …$. Le nombre $37$ est supérieur à $30$ et inférieur à $40$, donc il se situe entre les graduations $30$ et $40$. Les autres intervalles ne contiennent pas $37$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $1000$ par pas de $100$, quelle graduation est la plus proche de $560$ ?",
+      "options": [
+        "$500$",
+        "$600$",
+        "$400$",
+        "$700$"
+      ],
+      "correctAnswer": "$600$",
+      "explanation": "Les graduations sont $0, 100, 200, …, 500, 600, 700, …$. La distance entre $560$ et $500$ est $60$, tandis que la distance entre $560$ et $600$ est $40$. $600$ est donc la graduation la plus proche. $400$ et $700$ sont encore plus éloignés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a une droite graduée de $0$ à $200$ par pas de $20$. Le point $B$ est placé exactement sur la graduation $120$. Quel nombre correspond au point $B$ ?",
+      "options": [
+        "$100$",
+        "$120$",
+        "$140$",
+        "$80$"
+      ],
+      "correctAnswer": "$120$",
+      "explanation": "Les graduations sont $0, 20, 40, 60, 80, 100, 120, 140, …$. Puisque le point $B$ est placé exactement sur la graduation $120$, la valeur associée est $120$. Les autres options correspondent à d'autres graduations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure. La graduation $A$ se trouve sur la droite graduée de $0$ à $100$. Quelle est la valeur de $A$ ?",
+      "options": [
+        "$35$",
+        "$45$",
+        "$55$",
+        "$65$"
+      ],
+      "correctAnswer": "$45$",
+      "explanation": "La figure montre une droite graduée de $0$ à $100$ avec un point marqué $A$ à la position $45$. En lisant la graduation correspondante, on obtient la valeur $45$. Les autres nombres ne correspondent pas à la position du point $A$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100 avec le point A à 45",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 45,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $50$ par pas de $5$, un point $C$ est placé entre les graduations $25$ et $30$, mais plus près de $30$. Quelle estimation est la plus raisonnable pour $C$ ?",
+      "options": [
+        "$26$",
+        "$28$",
+        "$29$",
+        "$31$"
+      ],
+      "correctAnswer": "$29$",
+      "explanation": "Les graduations sont $0, 5, 10, 15, 20, 25, 30, 35, …$. Le point $C$ se situe entre $25$ et $30$ et est plus proche de $30$. Parmi les nombres proposés, $29$ est le plus proche de $30$ tout en restant entre $25$ et $30$. $26$ et $28$ sont plus près de $25$, et $31$ dépasse la graduation $30$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

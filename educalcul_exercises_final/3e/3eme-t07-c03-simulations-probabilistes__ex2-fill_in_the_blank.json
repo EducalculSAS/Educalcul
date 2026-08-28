@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Compter",
+  "title": "Exercices de dénombrement : Compter",
+  "blocks": [
+    {
+      "title": "Principe de multiplication",
+      "content": "Pour composer un menu, on doit choisir une entrée parmi $3$ propositions, un plat principal parmi $4$ propositions et un dessert parmi $2$ propositions. Le nombre total de menus différents possibles est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "24"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le principe de multiplication : il y a $3$ choix pour l'entrée, $4$ pour le plat et $2$ pour le dessert. Le nombre total de combinaisons est $3 \\times 4 \\times 2 = 24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrangements",
+      "content": "Une course de vélo compte $8$ coureurs. On veut établir le podium (1er, 2e, 3e) de la course. Le nombre de podiums différents possibles (sans ex-aequo) est un arrangement de $3$ éléments parmi $8$. Sa valeur est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "336"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il s'agit de choisir et d'ordonner $3$ coureurs parmi $8$. C'est un arrangement de $3$ parmi $8$ : $A_8^3 = 8 \\times 7 \\times 6 = 336$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Permutations",
+      "content": "On considère le mot « MATHS » qui comporte $5$ lettres toutes distinctes. Le nombre de mots de $5$ lettres (sensés ou non) que l'on peut former en utilisant toutes les lettres de ce mot est une permutation de $5$ éléments. Ce nombre vaut {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "120"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les $5$ lettres sont toutes distinctes et qu'on les utilise toutes, il s'agit d'une permutation de $5$ éléments : $5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

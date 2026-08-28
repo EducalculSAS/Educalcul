@@ -1,0 +1,109 @@
+{
+  "_status": "done",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Aire par pavage",
+  "title": "Quiz Aire par pavage - CM1",
+  "questions": [
+    {
+      "text": "Une rectangle de $4$ cm sur $3$ cm est pavé de carrés unitaires de $1$ cm de côté. Combien de carrés unitaires sont nécessaires pour couvrir tout le rectangle ?",
+      "options": [
+        "$12$",
+        "$10$",
+        "$14$",
+        "$8$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'aire du rectangle est $4 \\times 3 = 12$ $cm^2$. Comme chaque carré unitaire a une aire de $1$ $cm^2$, il faut exactement $12$ carrés pour le pavage.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Rectangle 4 par 3 pavé de carrés unitaires"
+      }
+    },
+    {
+      "text": "Une figure est formée de deux rectangles accolés : le premier mesure $5$ cm sur $2$ cm, le second mesure $3$ cm sur $2$ cm. Quelle est l'aire totale de la figure ?",
+      "options": [
+        "$16$",
+        "$14$",
+        "$18$",
+        "$12$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "L'aire du premier rectangle est $5 \\times 2 = 10$ $cm^2$, celle du second est $3 \\times 2 = 6$ $cm^2$. En les additionnant, on obtient $10 + 6 = 16$ $cm^2$.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 5,
+            "height": 2,
+            "label": "A"
+          },
+          {
+            "width": 3,
+            "height": 2,
+            "label": "B"
+          }
+        ],
+        "caption": "Deux rectangles accolés"
+      }
+    },
+    {
+      "text": "Un carré de côté $6$ cm est pavé de carrés de côté $2$ cm. Combien de grands carrés de $2$ cm peuvent tenir dans le grand carré ?",
+      "options": [
+        "$9$",
+        "$12$",
+        "$6$",
+        "$18$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Le côté du grand carré mesure $6$ cm. En le divisant par le côté du petit carré $2$ cm, on obtient $6 / 2 = 3$ petits carrés par côté. Le nombre total est $3 \\times 3 = 9$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 9,
+        "caption": "Carré 6 cm pavé de carrés 2 cm"
+      }
+    },
+    {
+      "text": "Laquelle de ces méthodes permet de déterminer l'aire d'une figure plane par pavage ?",
+      "options": [
+        "Compter le nombre de carrés unitaires qui recouvrent la figure sans chevauchement ni trou",
+        "Mesurer le périmètre et le diviser par 4",
+        "Multiplier la longueur par la largeur seulement si la figure est un rectangle",
+        "Additionner les longueurs de tous les côtés"
+      ],
+      "correctAnswer": "Compter le nombre de carrés unitaires qui recouvrent la figure sans chevauchement ni trou",
+      "explanation": "L'aire par pavage consiste à couvrir la figure avec des unités de surface (carrés unitaires) sans espace vide ni superposition, puis à compter ces unités. Les autres propositions correspondent au périmètre ou à une formule spécifique aux rectangles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure en L est obtenue en enlevant un carré de $2$ cm de côté dans un coin d'un carré de $4$ cm de côté. Quelle est l'aire de cette figure en L ?",
+      "options": [
+        "$12$",
+        "$14$",
+        "$10$",
+        "$16$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'aire du grand carré est $4 \\times 4 = 16$ $cm^2$. L'aire du petit carré retiré est $2 \\times 2 = 4$ $cm^2$. L'aire de la figure en L est $16 - 4 = 12$ $cm^2$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Carré 4x4 avec un coin 2x2 manquant"
+      }
+    }
+  ]
+}

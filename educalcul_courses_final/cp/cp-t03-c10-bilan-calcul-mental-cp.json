@@ -1,0 +1,347 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.580779+00:00",
+  "id": 32,
+  "code": "cp-t03-c10",
+  "title": "Bilan - Calcul mental CP",
+  "description": "Cours structuré Educalcul : Bilan - Calcul mental CP.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Bilan - Calcul mental CP",
+    "objectif_global": "Bilan - Calcul mental CP",
+    "mini_lecons_imposees": [
+      "Réactiver faits numériques.",
+      "Choisir une stratégie courte.",
+      "Checklist de fluence."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Réactiver faits numériques.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réactiver les faits numériques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les nombres jusqu'à $10$. Regarde ce cube : il y a $7$ petits cubes, on peut les séparer en $5$ et $2$ pour voir la décomposition. C'est une façon concrète de visualiser l'addition."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "$7 = 5 + 2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pensons aux doubles. Quand tu additionnes deux nombres identiques, le résultat est le double de ce nombre, une astuce qui rend le calcul plus rapide. Essaie de le voir avec des objets familiers."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les doubles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, $4 + 4$ fait $8$. Imagine deux groupes de $4$ billes qui se rejoignent pour former un groupe de $8$. Cette image t'aidera à retenir le double de $4$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                4,
+                4
+              ],
+              "right": [
+                8
+              ],
+              "caption": "$4 + 4 = 8$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les compléments à $10$ sont très utiles pour calculer vite. Si tu as $6$, il te faut $4$ pour atteindre $10$, et cela marche pour tous les couples qui forment $10$. Garde cette idée en tête."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléments à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la balance, $6$ et $4$ équilibrent exactement $10$. C'est une image mentale que tu pourras utiliser à chaque addition pour trouver le complément rapidement."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                6,
+                4
+              ],
+              "right": [
+                10
+              ],
+              "caption": "$6 + 4 = 10$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as réactivé tes faits numériques. Continue à t'entraîner pour les avoir en tête et les utiliser sans hésiter. Tu verras que les calculs deviendront plus fluides."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $5 + 2$ ?",
+              "answer": "$7$",
+              "hint": "Compte à partir de $5$.",
+              "explanation": "En ajoutant $2$ à $5$, on obtient $7$."
+            },
+            {
+              "question": "Quel est le double de $4$ ?",
+              "answer": "$8$",
+              "hint": "Pense à $4 + 4$.",
+              "explanation": "Le double de $4$ est $4 + 4 = 8$."
+            },
+            {
+              "question": "Complète : $6 + \\square = 10$",
+              "answer": "$4$",
+              "hint": "Combien faut-il ajouter à $6$ pour faire $10$ ?",
+              "explanation": "Le complément de $6$ à $10$ est $4$ car $6 + 4 = 10$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une stratégie courte.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une stratégie courte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu dois additionner, plusieurs petites astuces existent. La première est de compter en avant sur une droite numérique. C'est simple et ça marche pour tous les calculs."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 11,
+                  "label": "11"
+                }
+              ],
+              "intervals": [],
+              "caption": "Compter de $8$ à $11$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre astuce est d'utiliser les doubles que tu connais bien. Pour $6 + 7$, pense au double de $6$ qui est $12$, puis ajoute $1$. Cela évite de recompter depuis le début."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les doubles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la décomposition : $6 + 7 = 6 + 6 + 1$. Le double de $6$ donne $12$, et il ne reste qu'à ajouter $1$ pour obtenir $13$. C'est souvent plus rapide que de compter un par un."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "$13 = 6 + 7$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La troisième stratégie, très efficace, consiste à faire un dix. Si tu as $9 + 5$, prends $1$ sur le $5$ pour transformer $9$ en $10$, puis ajoute le $4$ restant. Tu gagnes du temps."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire un dix"
+            },
+            {
+              "type": "paragraph",
+              "content": "Visualise le porte‑monnaie : tu as $9$ euros et tu ajoutes $1$ euro pour faire $10$ euros, puis tu rajoutes $4$ euros. Le total est $14$ euros. Cette méthode marche dès que l'un des nombres est proche de $10$."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                500,
+                500,
+                100,
+                100,
+                100,
+                100
+              ],
+              "target": 1400,
+              "caption": "$9 + 5 = 14$ en faisant un dix"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils dans ta boîte à outils : compter, doubler, faire un dix. Choisis celui qui te semble le plus simple selon les nombres. Avec de l'entraînement, le choix deviendra automatique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $8 + 3$ en comptant sur la droite numérique.",
+              "answer": "$11$",
+              "hint": "Part de $8$ et avance de $3$.",
+              "explanation": "En comptant trois nombres après $8$, on arrive à $11$."
+            },
+            {
+              "question": "Calcule $6 + 7$ en utilisant le double de $6$.",
+              "answer": "$13$",
+              "hint": "Le double de $6$ est $12$, ajoute $1$.",
+              "explanation": "$6 + 7 = 6 + 6 + 1 = 12 + 1 = 13$."
+            },
+            {
+              "question": "Calcule $9 + 5$ en faisant un dix.",
+              "answer": "$14$",
+              "hint": "Ajoute $1$ à $9$ pour faire $10$, puis ajoute le reste.",
+              "explanation": "$9 + 5 = 9 + 1 + 4 = 10 + 4 = 14$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist de fluence.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist de fluence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, fais le point sur ta fluence. Tu vas vérifier trois choses : tes faits numériques, ton choix de stratégie et ta rapidité. C'est ton moment de briller et de voir tout le chemin parcouru depuis le début de l'année."
+            },
+            {
+              "type": "paragraph",
+              "content": "D'abord, rappelle-toi les compléments à $10$. Si tu vois $7+3$, tu sais tout de suite que cela fait $10$. Ce sont des paires que tu as rencontrées souvent, comme $6+4$ ou $2+8$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, choisis la stratégie la plus courte. Pour $8+6$, faire un dix ($8+2=10$ puis $+4$) est souvent le plus rapide. Parfois, compter en avant marche bien, mais faire un dix gagne du temps."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, entraîne-toi à répondre vite. Essaie de donner le résultat de $9+1$ en moins de deux secondes. Chronomètre-toi si tu veux, mais l'important est de rester juste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la liste ci-dessous et coche ce que tu sais faire sans aide. Chaque case cochée est une victoire pour ton calcul mental."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Mes résultats de fluence",
+              "bars": [
+                {
+                  "label": "Faits",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Stratégie",
+                  "value": 7,
+                  "tone": "green"
+                },
+                {
+                  "label": "Rapidité",
+                  "value": 6,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je connais mes tables d'addition jusqu'à 10.",
+                "Je choisis la meilleure stratégie pour chaque calcul.",
+                "Je réponds vite et sans hésiter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le résultat de $7 + 3$ rapidement.",
+              "answer": "$10$",
+              "hint": "Pense au complément à $10$.",
+              "explanation": "$7 + 3 = 10$ car $3$ est le complément de $7$ à $10$."
+            },
+            {
+              "question": "Calcule $8 + 6$ avec la stratégie qui te semble la plus rapide.",
+              "answer": "$14$",
+              "hint": "Essaie de faire un dix : $8 + 2 = 10$, puis $+4$.",
+              "explanation": "$8 + 6 = 8 + 2 + 4 = 10 + 4 = 14$."
+            },
+            {
+              "question": "Quel est le résultat de $9 + 1$ ?",
+              "answer": "$10$",
+              "hint": "C'est un complément à $10$ immédiat.",
+              "explanation": "$9 + 1 = 10$ directement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

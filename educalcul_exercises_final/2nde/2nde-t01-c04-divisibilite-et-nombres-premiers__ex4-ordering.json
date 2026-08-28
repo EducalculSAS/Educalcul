@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Divisibilité et nombres premiers",
+  "title": "Applications de la divisibilité et des nombres premiers",
+  "blocks": [
+    {
+      "title": "Démonstration du lemme d'Euclide",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour démontrer que si un nombre premier $p$ divise le produit $ab$, alors $p$ divise $a$ ou $p$ divise $b$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Supposer que $p$ divise $ab$ et que $p$ ne divise pas $a$.",
+        "En déduire que le PGCD de $p$ et $a$ est égal à $1$.",
+        "Appliquer le théorème de Bézout : il existe des entiers $u$ et $v$ tels que $up+va=1$.",
+        "Multiplier l'égalité par $b$ pour obtenir $upb+vab=b$.",
+        "Conclure que $p$ divise $b$ car il divise les deux termes du second membre."
+      ],
+      "explanation": "La preuve commence par l'hypothèse que $p$ divise $ab$ mais pas $a$. Comme $p$ est premier, son seul diviseur commun avec $a$ est $1$, d'où PGCD$(p,a)=1$. Le théorème de Bézout donne une combinaison linéaire $up+va=1$. En multipliant par $b$, on obtient $upb+vab=b$. Le premier terme est multiple de $p$ car il contient $p$, le second aussi car $p$ divise $ab$. Donc $p$ divise la somme, c'est-à-dire $b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Crible d'Eratosthène jusqu'à 30",
+      "content": "Classez les opérations du crible d'Eratosthène pour obtenir tous les nombres premiers inférieurs à $30$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire la liste des entiers de $2$ à $30$.",
+        "Entourer $2$ (premier nombre premier) et barrer tous ses multiples.",
+        "Passer au plus petit nombre non barré, l'entourer ($3$) et barrer ses multiples.",
+        "Répéter l'opération avec les nombres non barrés suivants ($5$, $7$) tant que leur carré est inférieur ou égal à $30$.",
+        "Les nombres restants non barrés sont les nombres premiers inférieurs à $30$."
+      ],
+      "explanation": "On commence par lister les candidats de $2$ à $30$. Le premier nombre non barré est $2$, qui est premier ; on barre tous ses multiples. Le suivant non barré est $3$, premier ; on barre ses multiples. On continue avec $5$ et $7$ car $5^2=25\\le30$ et $7^2=49>30$, donc on s'arrête après $5$. Les nombres non barrés à la fin sont exactement les nombres premiers : $2,3,5,7,11,13,17,19,23,29$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une fraction par factorisation",
+      "content": "Ordonnez les étapes pour simplifier la fraction $\\frac{84}{126}$ en utilisant la décomposition en facteurs premiers.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer le numérateur et le dénominateur en produits de facteurs premiers : $84=2^2\\times3\\times7$, $126=2\\times3^2\\times7$.",
+        "Identifier les facteurs communs : $2$, $3$ et $7$.",
+        "Simplifier la fraction en supprimant les facteurs communs au numérateur et au dénominateur.",
+        "Obtenir la fraction irréductible $\\frac{2}{3}$."
+      ],
+      "explanation": "On factorise $84$ et $126$ : $84=2^2\\times3\\times7$, $126=2\\times3^2\\times7$. Les facteurs communs sont un $2$, un $3$ et un $7$. En les annulant, il reste $2$ au numérateur et $3$ au dénominateur, soit la fraction simplifiée $\\frac{2}{3}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

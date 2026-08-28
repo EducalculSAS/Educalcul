@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Thalès",
+  "title": "Quiz Thalès - Applications",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, la droite $DE$ est parallèle à $BC$ avec $D$ sur $AB$ et $E$ sur $AC$. Si $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm, quelle est la longueur de $EC$ ?",
+      "options": [
+        "2 cm",
+        "4 cm",
+        "6 cm",
+        "8 cm"
+      ],
+      "correctAnswer": "8 cm",
+      "explanation": "D'après le théorème de Thalès, $AD/DB = AE/EC$. On a $3/6 = 4/EC$, soit $1/2 = 4/EC$. En croisant les produits, $EC = 8$ cm. Les autres valeurs ne satisfont pas l'égalité des rapports.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle $XYZ$ et une droite $UV$ coupant $XY$ en $U$ et $XZ$ en $V$. Si $XU = 5$ cm, $UY = 10$ cm, $XV = 6$ cm et $VZ = 12$ cm, la droite $UV$ est-elle parallèle à $YZ$ ?",
+      "options": [
+        "Oui, car les rapports sont égaux",
+        "Non, car les rapports sont différents",
+        "Oui, car $XU = XV$",
+        "Non, car $UY \\neq VZ$"
+      ],
+      "correctAnswer": "Oui, car les rapports sont égaux",
+      "explanation": "On calcule $XU/UY = 5/10 = 1/2$ et $XV/VZ = 6/12 = 1/2$. Les deux rapports sont égaux, donc par la réciproque de Thalès, $UV$ est parallèle à $YZ$. Les autres affirmations sont fausses : l'égalité des segments $XU$ et $XV$ n'est pas vérifiée, et l'inégalité $UY \\neq VZ$ ne contredit pas le parallélisme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour mesurer la hauteur d'un arbre, on place un bâton de $1,5$ m de haut à $2$ m de l'arbre. L'ombre du bâton mesure $0,75$ m et l'ombre de l'arbre mesure $6$ m. En supposant que les rayons du soleil sont parallèles, quelle est la hauteur de l'arbre ?",
+      "options": [
+        "12 m",
+        "9 m",
+        "6 m",
+        "4,5 m"
+      ],
+      "correctAnswer": "12 m",
+      "explanation": "Les triangles formés par le bâton et son ombre d'une part, l'arbre et son ombre d'autre part, sont semblables (Thalès). Donc hauteur_arbre / ombre_arbre = hauteur_bâton / ombre_bâton. Soit $h/6 = 1,5/0,75 = 2$. Ainsi $h = 12$ m. Les autres valeurs ne respectent pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $PQR$, les points $S$ et $T$ sont sur $PQ$ et $PR$ respectivement, avec $ST$ parallèle à $QR$. On sait que $PS = 2x$ cm, $SQ = 4$ cm, $PT = 5$ cm et $TR = 10$ cm. Trouve la valeur de $x$.",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "1",
+      "explanation": "D'après Thalès, $PS/SQ = PT/TR$. Cela donne $(2x)/4 = 5/10$, soit $x/2 = 1/2$. Donc $x = 1$. Les autres entiers ne satisfont pas l'égalité des rapports.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, la droite $DE$ est parallèle à $BC$ avec $D$ sur $AB$ et $E$ sur $AC$. On a $AD = 2x$ cm, $DB = 5$ cm, $AE = 3x-1$ cm, $EC = 7$ cm. Détermine la valeur de $x$.",
+      "options": [
+        "5",
+        "4",
+        "3",
+        "2"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Thalès donne $AD/DB = AE/EC$, soit $(2x)/5 = (3x-1)/7$. En croisant les produits : $14x = 15x - 5$, donc $x = 5$. Les autres valeurs ne vérifient pas l'équation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

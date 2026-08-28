@@ -1,0 +1,341 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.700298+00:00",
+  "id": 72,
+  "code": "ce1-t01-c05",
+  "title": "Centaines, dizaines et unités",
+  "description": "Cours structuré Educalcul : Centaines, dizaines et unités.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Centaines, dizaines et unités",
+    "objectif_global": "Centaines, dizaines et unités",
+    "mini_lecons_imposees": [
+      "Identifier la valeur de chaque chiffre.",
+      "Échanger 10 unités contre 1 dizaine.",
+      "Échanger 10 dizaines contre 1 centaine."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Identifier la valeur de chaque chiffre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ouvres un sachet de bonbons et que tu comptes chaque bonbon un par un. Chaque bonbon représente une unité, le plus petit morceau que l’on puisse compter. Si tu en as sept, tu peux dire que tu as sept unités. C’est la base de tous les nombres. Tu peux les aligner sur une table et les toucher un par un pour bien sentir ce que veut dire une unité."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "$7$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois ce qu’est une unité, regardons ce qui se passe quand on en met dix ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends dix bonbons et attache‑les avec un petit élastique. Ce paquet de dix s’appelle une dizaine. C’est comme une petite boîte qui contient exactement dix unités. Quand tu as une dizaine, tu n’as plus besoin de compter chaque bonbon, tu sais qu’il y en a dix. Si tu as deux paquets, tu as deux dizaines, soit vingt unités. Essaie de visualiser deux boîtes côte à côte."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "$1$ dizaine = $10$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant ce qui arrive quand on rassemble dix dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine dix boîtes de dix bonbons chacune. Si tu les empiles, tu obtiens un gros cube de cent bonbons. Ce gros cube, c’est une centaine. Une centaine vaut dix dizaines, soit cent unités. C’est le grand paquet qui nous aide à écrire les nombres à trois chiffres. Quand tu vois le chiffre 3 à la place des centaines, cela veut dire trois de ces gros cubes, soit trois cents."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "$1$ centaine = $10$ dizaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire la valeur de chaque chiffre selon sa place."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $7$, quelle est la valeur du chiffre $7$ ?",
+              "answer": "$7$ unités",
+              "hint": "Regarde la place des unités.",
+              "explanation": "Le chiffre $7$ est tout à droite, donc il compte des unités."
+            },
+            {
+              "question": "Dans le nombre $40$, quelle est la valeur du chiffre $4$ ?",
+              "answer": "$4$ dizaines",
+              "hint": "Le $4$ est à la place des dizaines.",
+              "explanation": "Le chiffre $4$ se trouve au milieu, il représente quatre groupes de dix."
+            },
+            {
+              "question": "Dans le nombre $300$, quelle est la valeur du chiffre $3$ ?",
+              "answer": "$3$ centaines",
+              "hint": "Le $3$ est à la place des centaines.",
+              "explanation": "Le chiffre $3$ est le plus à gauche, il compte trois groupes de cent."
+            }
+          ]
+        },
+        {
+          "title": "Échanger 10 unités contre 1 dizaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Échanger 10 unités contre 1 dizaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as dix bonbons posés sur la table. Si tu les groupes ensemble avec un élastique, tu crées une dizaine. C’est un échange : dix unités deviennent une seule dizaine. Sur la balance, les deux côtés pèsent le même poids, ce qui montre que $10$ unités équivalent à $1$ dizaine. C’est comme changer dix pièces de un centime contre une pièce de dix centimes. La valeur ne change pas, seulement la forme."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                10
+              ],
+              "right": [
+                1
+              ],
+              "caption": "$10$ unités = $1$ dizaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec vingt unités pour voir combien de dizaines tu obtiens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux dizaines font vingt unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place vingt bonbons devant toi. Forme deux paquets de dix. Chaque paquet est une dizaine, donc tu as deux dizaines. En les comptant, tu retrouves vingt unités. C’est la même quantité, simplement organisée différemment. Si tu écris le nombre, tu mets un $2$ à la place des dizaines et un $0$ aux unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 0,
+              "caption": "$20$ unités = $2$ dizaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, mélange des dizaines et des unités pour construire un nombre à deux chiffres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un nombre à deux chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons le nombre vingt‑trois. Il est composé de deux dizaines (vingt) et de trois unités (trois). Sur le tableau de valeur, tu places le $2$ dans la colonne des dizaines et le $3$ dans la colonne des unités. Ainsi, $23$ se lit deux dizaines trois unités. Tu peux vérifier en recomptant : deux paquets de dix font vingt, plus trois bonbons font vingt‑trois."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ = $2$ dizaines $3$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant échanger des unités en dizaines et écrire le nombre qui en résulte."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $10$ bonbons. Combien de dizaines peux‑tu faire ?",
+              "answer": "$1$ dizaine",
+              "hint": "Groupe les bonbons par $10$.",
+              "explanation": "Dix unités regroupées forment exactement une dizaine."
+            },
+            {
+              "question": "Tu as $20$ bonbons. Combien de dizaines ?",
+              "answer": "$2$ dizaines",
+              "hint": "Deux groupes de $10$.",
+              "explanation": "Chaque groupe de dix donne une dizaine, donc deux groupes donnent deux dizaines."
+            },
+            {
+              "question": "Écris le nombre qui a $2$ dizaines et $3$ unités.",
+              "answer": "$23$",
+              "hint": "$2$ dizaines = $20$, plus $3$ unités.",
+              "explanation": "Le chiffre des dizaines est $2$, celui des unités est $3$, donc le nombre est $23$."
+            }
+          ]
+        },
+        {
+          "title": "Échanger 10 dizaines contre 1 centaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Échanger 10 dizaines contre 1 centaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends dix paquets de dix bonbons chacun. Si tu les rassembles, tu formes un gros cube de cent bonbons. Ce gros cube, c’est une centaine. L’échange est simple : dix dizaines deviennent une centaine. Sur la balance, les deux plateaux sont équilibrés, prouvant que $10$ dizaines valent $1$ centaine. C’est comme changer dix billets de dix euros contre un billet de cent euros. La somme reste la même."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "$10$ dizaines = $1$ centaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce qui se passe avec trente dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trente dizaines font trois centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aligne trente paquets de dix. Groupe‑les par dix paquets pour obtenir trois gros cubes. Chaque gros cube est une centaine, donc tu as trois centaines. En unités, cela fait trois cents bonbons. L’écriture du nombre place un $3$ dans la colonne des centaines. Si tu ajoutes encore des dizaines ou des unités, tu complètes le nombre."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 0,
+              "caption": "$30$ dizaines = $3$ centaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Assemblons maintenant centaines, dizaines et unités pour former un nombre à trois chiffres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un nombre à trois chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre trois cent quarante‑cinq. Il contient trois centaines ($300$), quatre dizaines ($40$) et cinq unités ($5$). Sur le tableau de valeur, tu mets $3$ dans la case centaines, $4$ dans la case dizaines, $5$ dans la case unités. En lisant de gauche à droite, tu dis trois centaines quatre dizaines cinq unités. Vérifie en recomptant : trois fois cent font trois cents, plus quarante, plus cinq, total trois cent quarante‑cinq."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 5,
+              "caption": "$345$ = $3$ centaines $4$ dizaines $5$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les échanges entre unités, dizaines et centaines."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier la valeur d’un chiffre selon sa place.",
+                "Je sais échanger $10$ unités contre $1$ dizaine.",
+                "Je sais échanger $10$ dizaines contre $1$ centaine.",
+                "Je peux écrire un nombre à trois chiffres en décomposant centaines, dizaines, unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $10$ paquets de $10$ bonbons. Combien de centaines ?",
+              "answer": "$1$ centaine",
+              "hint": "$10$ dizaines = $1$ centaine.",
+              "explanation": "Dix groupes de dix forment un groupe de cent."
+            },
+            {
+              "question": "Tu as $30$ paquets de $10$ bonbons. Combien de centaines ?",
+              "answer": "$3$ centaines",
+              "hint": "$30$ dizaines = $3$ centaines.",
+              "explanation": "Trente groupes de dix se regroupent en trois groupes de cent."
+            },
+            {
+              "question": "Écris le nombre qui a $3$ centaines, $4$ dizaines et $5$ unités.",
+              "answer": "$345$",
+              "hint": "$3$ centaines = $300$, $4$ dizaines = $40$, $5$ unités = $5$.",
+              "explanation": "On place $3$ aux centaines, $4$ aux dizaines, $5$ aux unités, ce qui donne $345$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

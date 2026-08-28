@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 436,
+  "_course_code": "4eme-t04-c02-effectifs-et-frequences",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Tableaux",
+  "title": "Approfondissement : Tableaux - Algorithmes sur les effectifs et fréquences",
+  "blocks": [
+    {
+      "title": "Calcul du total des effectifs",
+      "content": "On dispose de deux tableaux de même longueur $n$ : le tableau $valeurs$ contenant les modalités et le tableau $effectifs$ contenant les effectifs correspondants. Écrire un algorithme (en pseudo‑code ou en Python) qui calcule et affiche le total des effectifs (c'est‑à‑dire la somme de tous les éléments du tableau $effectifs$).",
+      "correctAnswer": "Algorithme TotalEffectifs(valeurs, effectifs)\\n    total ← 0\\n    pour i de 0 à longueur(effectifs) - 1 faire\\n        total ← total + effectifs[i]\\n    fin pour\\n    afficher total\\nFin Algorithme\\n\\nVersion Python :\\ndef total_effectifs(effectifs):\\n    total = 0\\n    for e in effectifs:\\n        total += e\\n    return total",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt le tableau des effectifs, ajoute chaque effectif à une variable total initialisée à 0, puis affiche le résultat. La version Python utilise une boucle for sur la liste effectifs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la moyenne à partir d'un tableau de fréquences",
+      "content": "En utilisant les mêmes tableaux $valeurs$ et $effectifs$, écrire un algorithme qui calcule la moyenne de la série statistique. Rappel : la moyenne $m$ est donnée par $m = \\frac{\\sum (valeurs_i \\times effectifs_i)}{\\sum effectifs_i}$.",
+      "correctAnswer": "Algorithme Moyenne(valeurs, effectifs)\\n    sommePonderee ← 0\\n    totalEffectifs ← 0\\n    pour i de 0 à longueur(valeurs) - 1 faire\\n        sommePonderee ← sommePonderee + valeurs[i] * effectifs[i]\\n        totalEffectifs ← totalEffectifs + effectifs[i]\\n    fin pour\\n    si totalEffectifs ≠ 0 alors\\n        moyenne ← sommePonderee / totalEffectifs\\n        afficher moyenne\\n    sinon\\n        afficher \"Effectif total nul\"\\n    fin si\\nFin Algorithme\\n\\nVersion Python :\\ndef moyenne(valeurs, effectifs):\\n    somme = 0\\n    total = 0\\n    for v, e in zip(valeurs, effectifs):\\n        somme += v * e\\n        total += e\\n    if total != 0:\\n        return somme / total\\n    else:\\n        return None",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule la somme pondérée en multipliant chaque modalité par son effectif, on accumule aussi le total des effectifs, puis on divise la somme pondérée par le total. La version Python utilise zip pour parcourir les deux listes simultanément.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de la classe médiane dans un tableau groupé",
+      "content": "On considère un tableau de fréquences groupées en classes d'amplitude constante. Le tableau contient trois colonnes : $borneInf$ (borne inférieure de chaque classe), $borneSup$ (borne supérieure) et $effectifs$. Écrire un algorithme qui détermine la classe médiane, c'est‑à‑dire la première classe pour laquelle l'effectif cumulé dépasse ou atteint la moitié de l'effectif total. L'algorithme doit afficher la borne inférieure et la borne supérieure de cette classe.",
+      "correctAnswer": "Algorithme ClasseMediane(borneInf, borneSup, effectifs)\\n    total ← 0\\n    pour e dans effectifs faire\\n        total ← total + e\\n    fin pour\\n    moitie ← total / 2\\n    cumule ← 0\\n    pour i de 0 à longueur(effectifs) - 1 faire\\n        cumule ← cumule + effectifs[i]\\n        si cumule ≥ moitie alors\\n            afficher \"Classe médiane : [\" , borneInf[i] , \" ; \" , borneSup[i] , \"]\"\\n            sortir de la boucle\\n        fin si\\n    fin pour\\nFin Algorithme\\n\\nVersion Python :\\ndef classe_mediane(borne_inf, borne_sup, effectifs):\\n    total = sum(effectifs)\\n    moitie = total / 2\\n    cumule = 0\\n    for i, e in enumerate(effectifs):\\n        cumule += e\\n        if cumule >= moitie:\\n            return (borne_inf[i], borne_sup[i])\\n    return None",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule d'abord l'effectif total, puis la moitié. On parcourt les classes en cumulant les effectifs jusqu'à atteindre ou dépasser cette moitié ; la classe correspondante est la classe médiane. La version Python utilise enumerate pour obtenir l'indice.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

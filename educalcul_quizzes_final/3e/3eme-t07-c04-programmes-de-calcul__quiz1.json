@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Traduire",
+  "title": "Quiz : Traduire un énoncé en programme de calcul",
+  "questions": [
+    {
+      "text": "On considère la phrase : \"Choisir un nombre, ajouter 7, puis multiplier le résultat par 4.\" Quelle expression littérale correspond à ce programme de calcul ?",
+      "options": [
+        "$4(x+7)$",
+        "$4x+7$",
+        "$x+28$",
+        "$4x+28$"
+      ],
+      "correctAnswer": "$4(x+7)$",
+      "explanation": "L'ordre des opérations est crucial. On commence par $x$ (le nombre choisi). « Ajouter 7 » donne $x+7$. « Multiplier le résultat par 4 » signifie multiplier la somme entière par 4, d'où les parenthèses : $4 \\times (x+7)$ soit $4(x+7)$. L'option $4x+7$ correspond à « multiplier par 4 puis ajouter 7 ». L'option $x+28$ correspond à « ajouter 28 ». L'option $4x+28$ est la forme développée de la bonne réponse, mais la traduction littérale directe garde la forme factorisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des programmes suivants correspond à l'expression littérale $\\frac{x-5}{3}$ ?",
+      "options": [
+        "Choisir un nombre, retrancher 5, puis diviser le résultat par 3.",
+        "Choisir un nombre, diviser par 3, puis retrancher 5.",
+        "Choisir un nombre, retrancher 5, puis multiplier par 3.",
+        "Choisir un nombre, multiplier par 3, puis retrancher 5."
+      ],
+      "correctAnswer": "Choisir un nombre, retrancher 5, puis diviser le résultat par 3.",
+      "explanation": "La barre de fraction $\\frac{x-5}{3}$ indique que le numérateur entier $(x-5)$ est divisé par 3. Il faut donc d'abord effectuer la soustraction $x-5$ (retrancher 5 au nombre de départ), puis diviser ce résultat par 3. La deuxième option donnerait $\\frac{x}{3}-5$. Les options avec une multiplication ne correspondent pas à une division par 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme : \"Choisir un nombre, l'élever au carré, ajouter 12.\" Si on note $x$ le nombre de départ, quelle est l'expression littérale obtenue ?",
+      "options": [
+        "$x^2+12$",
+        "$(x+12)^2$",
+        "$2x+12$",
+        "$x^2+144$"
+      ],
+      "correctAnswer": "$x^2+12$",
+      "explanation": "« L'élever au carré » se traduit par $x^2$. « Ajouter 12 » se traduit par $+12$. L'expression est donc $x^2+12$. L'option $(x+12)^2$ correspond à « ajouter 12 puis élever au carré » (ordre inversé). L'option $2x+12$ confond « élever au carré » ($x^2$) et « multiplier par 2 » ($2x$). L'option $x^2+144$ serait le résultat si on élevait 12 au carré, ce qui n'est pas demandé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel énoncé en français décrit exactement le programme de calcul : $2 \\times (3x + 6)$ ?",
+      "options": [
+        "Choisir un nombre, multiplier par 3, ajouter 6, puis multiplier le tout par 2.",
+        "Choisir un nombre, multiplier par 3, multiplier par 2, puis ajouter 6.",
+        "Choisir un nombre, ajouter 6, multiplier par 3, puis multiplier par 2.",
+        "Choisir un nombre, multiplier par 6, ajouter 3, puis multiplier par 2."
+      ],
+      "correctAnswer": "Choisir un nombre, multiplier par 3, ajouter 6, puis multiplier le tout par 2.",
+      "explanation": "On lit l'expression de l'intérieur vers l'extérieur en respectant la priorité des parenthèses. $3x$ : multiplier le nombre choisi par 3. $3x+6$ : ajouter 6 au résultat. $2 \\times (3x+6)$ : multiplier ce résultat final par 2. La deuxième option donnerait $2 \\times 3x + 6 = 6x+6$. La troisième option donnerait $2 \\times (3(x+6)) = 6x+36$. La quatrième option ne correspond à aucune structure de l'expression.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Traduire en expression littérale : \"Choisir un nombre, le multiplier par lui-même, retrancher le double de ce nombre, puis ajouter 1.\"",
+      "options": [
+        "$x^2 - 2x + 1$",
+        "$x^2 - 2 + 1$",
+        "$(x-1)^2$",
+        "$2x - 2x + 1$"
+      ],
+      "correctAnswer": "$x^2 - 2x + 1$",
+      "explanation": "Étape par étape : « le multiplier par lui-même » $\\rightarrow x \\times x = x^2$. « retrancher le double de ce nombre » $\\rightarrow - 2x$. « ajouter 1 » $\\rightarrow + 1$. On obtient $x^2 - 2x + 1$. L'option $x^2 - 2 + 1$ oublie la variable $x$ dans le terme « le double de ce nombre ». L'option $(x-1)^2$ est la forme factorisée (égale), mais la traduction directe de l'énoncé donne la forme développée. L'option $2x - 2x + 1$ confond « multiplier par lui-même » ($x^2$) et « multiplier par 2 » ($2x$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

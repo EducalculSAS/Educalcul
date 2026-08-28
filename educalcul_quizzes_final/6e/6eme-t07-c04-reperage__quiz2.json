@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 366,
+  "_course_code": "6eme-t07-c04-reperage",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Placer",
+  "title": "Quiz : Repérage - Placer des points",
+  "questions": [
+    {
+      "text": "Sur une droite graduée, l'origine est le point de coordonnée $0$. Le point A est à trois graduations à droite de l'origine. Quelle est l'abscisse de A ?",
+      "options": [
+        "$3$",
+        "$-3$",
+        "$0$",
+        "$6$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Sur une droite graduée, l'abscisse d'un point correspond à sa distance algébrique à l'origine. Vers la droite, les abscisses sont positives. Comme A est à trois graduations à droite de l'origine (zéro), son abscisse est $3$. L'option $-3$ correspondrait à un point à gauche. L'option $0$ est l'origine. L'option $6$ serait deux fois plus loin.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe la droite graduée ci-dessous. Quelle est l'abscisse du point A ?",
+      "options": [
+        "$2$",
+        "$2,5$",
+        "$3$",
+        "$2,05$"
+      ],
+      "correctAnswer": "$2,5$",
+      "explanation": "Le point A se situe exactement au milieu de la graduation $2$ et de la graduation $3$. Sa coordonnée est donc $2,5$. L'option $2$ correspond à la graduation de gauche. L'option $3$ correspond à la graduation de droite. L'option $2,05$ est une erreur de lecture de la graduation (confusion entre demi et centième).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 5",
+        "min": 0,
+        "max": 5,
+        "points": [
+          {
+            "value": 2.5,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Dans un repère orthogonal $(O ; I, J)$, le point B a pour coordonnées $(4 ; -2)$. Laquelle de ces phrases décrit correctement la position de B ?",
+      "options": [
+        "B est à quatre unités à droite de l'axe des ordonnées et deux unités en dessous de l'axe des abscisses.",
+        "B est à quatre unités à gauche de l'axe des ordonnées et deux unités au-dessus de l'axe des abscisses.",
+        "B est à deux unités à droite de l'axe des ordonnées et quatre unités en dessous de l'axe des abscisses.",
+        "B est à quatre unités à droite de l'axe des abscisses et deux unités au-dessus de l'axe des ordonnées."
+      ],
+      "correctAnswer": "B est à quatre unités à droite de l'axe des ordonnées et deux unités en dessous de l'axe des abscisses.",
+      "explanation": "Dans un repère, la première coordonnée (abscisse $4$) donne la position par rapport à l'axe des ordonnées (axe vertical) : positif signifie à droite. La deuxième coordonnée (ordonnée $-2$) donne la position par rapport à l'axe des abscisses (axe horizontal) : négatif signifie en dessous. Les autres options inversent les signes, les axes ou les valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut placer le point C de coordonnées $(-3 ; 1)$ dans un repère orthogonal. Quelle est la bonne méthode de placement ?",
+      "options": [
+        "Je pars de l'origine, je vais trois graduations vers la gauche, puis une graduation vers le haut.",
+        "Je pars de l'origine, je vais trois graduations vers la droite, puis une graduation vers le bas.",
+        "Je pars de l'origine, je vais une graduation vers la gauche, puis trois graduations vers le haut.",
+        "Je pars de l'origine, je vais trois graduations vers la gauche, puis une graduation vers le bas."
+      ],
+      "correctAnswer": "Je pars de l'origine, je vais trois graduations vers la gauche, puis une graduation vers le haut.",
+      "explanation": "L'abscisse est $-3$ : on se déplace de $3$ unités vers la gauche (négatif) depuis l'origine. L'ordonnée est $1$ : on se déplace ensuite d'$1$ unité vers le haut (positif). La deuxième option inverse les deux signes. La troisième option inverse les valeurs (abscisse et ordonnée). La quatrième option inverse le signe de l'ordonnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthogonal, on a placé les points D$(2 ; 3)$, E$(2 ; -1)$ et F$(-2 ; -1)$. Quel point G faut-il placer pour que DEFG soit un rectangle dans cet ordre ?",
+      "options": [
+        "$(-2 ; 3)$",
+        "$(2 ; 3)$",
+        "$(-2 ; -3)$",
+        "$(2 ; -1)$"
+      ],
+      "correctAnswer": "$(-2 ; 3)$",
+      "explanation": "Pour former un rectangle DEFG, les côtés opposés doivent être parallèles et de même longueur. DE est un segment vertical (même abscisse $2$) de longueur $4$. FG doit être vertical de même longueur et même abscisse que F ($-2$), donc G a pour abscisse $-2$. EF est horizontal (même ordonnée $-1$) de longueur $4$. DG doit être horizontal de même longueur et même ordonnée que D ($3$), donc G a pour ordonnée $3$. Les coordonnées de G sont donc $(-2 ; 3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

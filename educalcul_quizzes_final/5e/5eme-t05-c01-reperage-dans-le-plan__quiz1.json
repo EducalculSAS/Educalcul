@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Coordonnées relatifs",
+  "title": "Quiz : Coordonnées relatives dans le plan",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé, le point $A$ a pour abscisse $-3$ et pour ordonnée $2$. Quelles sont les coordonnées du point $A$ ?",
+      "options": [
+        "$(-3; 2)$",
+        "$(2; -3)$",
+        "$(3; -2)$",
+        "$(-2; 3)$"
+      ],
+      "correctAnswer": "$(-3; 2)$",
+      "explanation": "Les coordonnées d'un point s'écrivent toujours dans l'ordre : (abscisse ; ordonnée). Ici, l'abscisse est $-3$ et l'ordonnée est $2$, donc les coordonnées sont $(-3; 2)$. L'option $(2; -3)$ inverse l'ordre, les deux autres changent les signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $B$ a pour coordonnées $(4; -5)$. Dans quel quadrant se trouve ce point ?",
+      "options": [
+        "Premier quadrant",
+        "Deuxième quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Quatrième quadrant",
+      "explanation": "Dans un repère orthonormé, le quatrième quadrant correspond aux points dont l'abscisse est positive et l'ordonnée est négative. Ici, $4 > 0$ et $-5 < 0$, donc le point $B$ est bien dans le quatrième quadrant. Le premier quadrant a les deux coordonnées positives, le deuxième a l'abscisse négative et l'ordonnée positive, le troisième a les deux négatives.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $C$ a pour coordonnées $(1; -2)$. Le point $D$ est le symétrique de $C$ par rapport à l'axe des ordonnées (axe $y$). Quelles sont les coordonnées de $D$ ?",
+      "options": [
+        "$(-1; -2)$",
+        "$(1; 2)$",
+        "$(-1; 2)$",
+        "$(2; -1)$"
+      ],
+      "correctAnswer": "$(-1; -2)$",
+      "explanation": "La symétrie par rapport à l'axe des ordonnées change le signe de l'abscisse et conserve l'ordonnée. L'abscisse de $C$ est $1$, elle devient $-1$. L'ordonnée de $C$ est $-2$, elle reste $-2$. Les coordonnées de $D$ sont donc $(-1; -2)$. L'option $(1; 2)$ correspond à la symétrie par rapport à l'origine, $(-1; 2)$ à la symétrie par rapport à l'axe des abscisses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $E(-2; 3)$ et $F(4; 3)$ sont alignés horizontalement. Le point $G$ se trouve sur la même droite horizontale et a pour abscisse $1$. Quelles sont les coordonnées de $G$ ?",
+      "options": [
+        "$(1; 3)$",
+        "$(3; 1)$",
+        "$(-2; 1)$",
+        "$(4; 3)$"
+      ],
+      "correctAnswer": "$(1; 3)$",
+      "explanation": "Deux points alignés horizontalement ont la même ordonnée. Les points $E$ et $F$ ont tous les deux pour ordonnée $3$. Le point $G$ est sur cette même droite, donc son ordonnée est aussi $3$. Son abscisse est donnée comme étant $1$. Ses coordonnées sont donc $(1; 3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $J(-3; 1)$, $K(2; 1)$ et $L(2; -4)$ sont trois sommets d'un rectangle $JKLM$. Quelles sont les coordonnées du quatrième sommet $M$ ?",
+      "options": [
+        "$(-3; -4)$",
+        "$(3; -4)$",
+        "$(-3; 4)$",
+        "$(2; 1)$"
+      ],
+      "correctAnswer": "$(-3; -4)$",
+      "explanation": "Dans un rectangle, les côtés opposés sont parallèles aux axes si les points donnés le suggèrent. $J$ et $K$ ont même ordonnée ($1$) : $JK$ est horizontal. $K$ et $L$ ont même abscisse ($2$) : $KL$ est vertical. Le sommet $M$ est opposé à $K$. Il a donc l'abscisse de $J$ ($-3$) et l'ordonnée de $L$ ($-4$). Ses coordonnées sont $(-3; -4)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

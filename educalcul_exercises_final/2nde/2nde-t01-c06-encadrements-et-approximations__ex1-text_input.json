@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Arrondis",
+  "title": "Exercice sur les arrondis",
+  "blocks": [
+    {
+      "title": "Arrondi à l'unité",
+      "content": "Arrondis le nombre $12,347$ à l'unité près.",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour arrondir à l'unité, on regarde le chiffre des dixièmes qui est 3. Comme il est strictement inférieur à 5, on conserve la partie entière. Donc $12,347$ arrondi à l'unité vaut $12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi à deux chiffres significatifs",
+      "content": "Arrondis le nombre $0,004567$ à deux chiffres significatifs.",
+      "correctAnswer": "0,0046",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les deux premiers chiffres significatifs sont 4 et 5. Le chiffre suivant est 6, qui est supérieur ou égal à 5, donc on augmente le dernier chiffre significatif (5) de 1, ce qui donne 6. L'arrondi à deux chiffres significatifs est $0,0046$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au centième",
+      "content": "Arrondis le nombre $3,14159$ au centième près.",
+      "correctAnswer": "3,14",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour arrondir au centième, on observe le chiffre des millièmes qui est 1. Comme il est strictement inférieur à 5, on ne modifie pas le chiffre des centièmes (4). L'arrondi au centième est donc $3,14$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

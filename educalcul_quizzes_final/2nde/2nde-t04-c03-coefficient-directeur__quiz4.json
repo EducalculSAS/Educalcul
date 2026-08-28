@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Coefficient directeur",
+  "title": "Application du coefficient directeur",
+  "questions": [
+    {
+      "text": "Soient les points A(2, 3) et B(5, 11). Quel est le coefficient directeur de la droite (AB) ?",
+      "options": [
+        "8/3",
+        "3/8",
+        "8",
+        "3"
+      ],
+      "correctAnswer": "8/3",
+      "explanation": "Le coefficient directeur se calcule par la différence des ordonnées sur la différence des abscisses : $(11-3)/(5-2) = 8/3$. Les autres options correspondent à l'inverse, à la différence des abscisses ou à la différence des ordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite d'équation $y = -2x + 5$ a pour coefficient directeur :",
+      "options": [
+        "-2",
+        "2",
+        "-1/2",
+        "1/2"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "Dans l'équation réduite $y = ax + b$, le coefficient directeur est $a$. Ici $a = -2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite d1 passe par (0, 0) et (4, 6). La droite d2 passe par (1, 2) et (5, y). Pour que d1 et d2 soient parallèles, quelle doit être la valeur de y ?",
+      "options": [
+        "8",
+        "6",
+        "4",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La droite d1 a pour coefficient directeur $(6-0)/(4-0) = 3/2$. Pour que d2 soit parallèle, son coefficient directeur doit être égal à $3/2$. Donc $(y-2)/(5-1) = 3/2$ ce qui donne $y = 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite a pour coefficient directeur $4/5$. Quel est le coefficient directeur d'une droite perpendiculaire à celle-ci ?",
+      "options": [
+        "-5/4",
+        "5/4",
+        "-4/5",
+        "4/5"
+      ],
+      "correctAnswer": "-5/4",
+      "explanation": "Deux droites sont perpendiculaires si le produit de leurs coefficients directeurs vaut $-1$. Donc $m \\times 4/5 = -1 \\Rightarrow m = -5/4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt 150 km en 2 heures, puis 225 km en 3 heures. Quel est le coefficient directeur moyen de la fonction distance en fonction du temps pour l'ensemble du trajet ?",
+      "options": [
+        "75",
+        "70",
+        "80",
+        "65"
+      ],
+      "correctAnswer": "75",
+      "explanation": "Le taux de variation moyen sur l'ensemble du trajet est la distance totale divisée par le temps total : $(150+225)/(2+3) = 375/5 = 75$ km/h.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

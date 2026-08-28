@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 204,
+  "_course_code": "ce2-t07-c09-bilan-geometrie-ce2",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Bilan - Géométrie CE2",
+  "title": "Bilan Géométrie CE2",
+  "questions": [
+    {
+      "text": "Observe le patron ci-dessous. Quel solide peut-on construire en le pliant ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Le patron présenté est composé de six carrés identiques disposés en croix. En les pliant le long des traits, les six faces se rejoignent pour former un cube, qui a six faces carrées, huit sommets et douze arêtes. Un pavé droit a des faces rectangulaires, une pyramide a une base et des triangles, et un cylindre a des faces courbes.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Parmi les quadrilatères suivants, lequel a exactement quatre angles droits et quatre côtés de même longueur ?",
+      "options": [
+        "Le rectangle",
+        "Le carré",
+        "Le losange",
+        "Le trapèze"
+      ],
+      "correctAnswer": "Le carré",
+      "explanation": "Le carré est le seul quadrilatère qui possède à la fois quatre angles droits (comme le rectangle) et quatre côtés de même longueur (comme le losange). Le rectangle a des côtés deux à deux égaux, le losange n'a pas d'angle droit en général, et le trapèze n'a qu'une paire de côtés parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure est symétrique par rapport à un axe. Si un point A est placé à $3$ cases de l'axe de symétrie, à quelle distance se trouve son image A' ?",
+      "options": [
+        "$1$ case",
+        "$3$ cases",
+        "$6$ cases",
+        "$9$ cases"
+      ],
+      "correctAnswer": "$3$ cases",
+      "explanation": "Dans une symétrie axiale, l'axe est la médiatrice du segment qui relie un point à son image. Le point et son image sont donc à la même distance de l'axe. Si A est à $3$ cases, A' est aussi à $3$ cases de l'axe, de l'autre côté.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de sommets, d'arêtes et de faces possède un pavé droit ?",
+      "options": [
+        "8 sommets, 12 arêtes, 6 faces",
+        "6 sommets, 12 arêtes, 8 faces",
+        "8 sommets, 8 arêtes, 6 faces",
+        "5 sommets, 8 arêtes, 5 faces"
+      ],
+      "correctAnswer": "8 sommets, 12 arêtes, 6 faces",
+      "explanation": "Un pavé droit (comme une boîte de chaussures) a $6$ faces (rectangles), $12$ arêtes (segments où deux faces se rencontrent) et $8$ sommets (points où trois arêtes se rejoignent). La première option est la seule qui correspond à ces nombres. La deuxième inverse les sommets et les faces, la troisième donne un nombre d'arêtes incorrect, la quatrième décrit une pyramide à base carrée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, je pars d'un point. Je me déplace de $4$ cases vers la droite, puis $3$ cases vers le haut, puis $4$ cases vers la gauche. Où suis-je par rapport au point de départ ?",
+      "options": [
+        "Au point de départ",
+        "$3$ cases au-dessus du point de départ",
+        "$4$ cases à droite du point de départ",
+        "$7$ cases au-dessus du point de départ"
+      ],
+      "correctAnswer": "$3$ cases au-dessus du point de départ",
+      "explanation": "Les déplacements horizontaux s'annulent : $4$ cases à droite puis $4$ cases à gauche ramènent sur la même verticale que le départ. Il reste seulement le déplacement vertical de $3$ cases vers le haut. La position finale est donc exactement $3$ cases au-dessus du point de départ.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

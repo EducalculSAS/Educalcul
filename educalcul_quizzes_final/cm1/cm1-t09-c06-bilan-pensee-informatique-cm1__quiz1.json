@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Séquences, boucles, conditions",
+  "title": "Séquences, boucles et conditions",
+  "questions": [
+    {
+      "text": "En informatique, qu'est ce qu'une séquence d'instructions ?",
+      "options": [
+        "Une liste d'actions à faire dans un ordre précis",
+        "Une action qui se répète sans fin",
+        "Un choix entre deux chemins différents",
+        "Un programme qui ne contient qu'une seule étape"
+      ],
+      "correctAnswer": "Une liste d'actions à faire dans un ordre précis",
+      "explanation": "Une séquence est l'ordre logique et successif des étapes d'un algorithme. Si l'on change l'ordre, le résultat final peut être différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "À quoi sert une boucle dans un programme ?",
+      "options": [
+        "À arrêter le programme immédiatement",
+        "À répéter plusieurs fois les mêmes instructions",
+        "À poser une question à l'utilisateur",
+        "À changer la couleur du texte"
+      ],
+      "correctAnswer": "À répéter plusieurs fois les mêmes instructions",
+      "explanation": "Une boucle permet d'éviter d'écrire dix fois la même ligne de code. On indique simplement le nombre de répétitions, par exemple $10$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut qu'un robot avance de $4$ pas. Quelle instruction est la plus courte ?",
+      "options": [
+        "Avance d'un pas, avance d'un pas, avance d'un pas, avance d'un pas",
+        "Avance de $1$ pas",
+        "Répéter $4$ fois : avance d'un pas",
+        "Si le robot est loin, avance d'un pas"
+      ],
+      "correctAnswer": "Répéter $4$ fois : avance d'un pas",
+      "explanation": "L'utilisation d'une boucle Répéter permet de condenser les instructions. La première option est juste mais plus longue, la deuxième ne fait qu'un seul pas, et la quatrième est une condition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Qu'est ce qu'une condition dans un programme ?",
+      "options": [
+        "Une règle qui oblige le programme à s'arrêter",
+        "Un calcul mathématique complexe",
+        "Une instruction qui s'exécute seulement si un test est vrai",
+        "Un moyen de dessiner des formes géométriques"
+      ],
+      "correctAnswer": "Une instruction qui s'exécute seulement si un test est vrai",
+      "explanation": "Une condition utilise souvent le mot SI. Par exemple : SI le capteur touche un mur, ALORS tourne à gauche. L'action dépend du résultat du test.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe cette suite : Répéter $3$ fois (Avancer $2$ pas, Tourner à droite). Combien de pas le robot a t il fait au total ?",
+      "options": [
+        "$3$ pas",
+        "$5$ pas",
+        "$6$ pas",
+        "$2$ pas"
+      ],
+      "correctAnswer": "$6$ pas",
+      "explanation": "Le robot fait $2$ pas à chaque répétition. Comme il répète l'action $3$ fois, on calcule $3 \\times 2 = 6$. Il a donc parcouru $6$ pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

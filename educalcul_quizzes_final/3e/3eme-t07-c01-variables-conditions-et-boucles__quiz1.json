@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Lire programme",
+  "title": "Quiz : Lecture de programmes algorithmiques (3e)",
+  "questions": [
+    {
+      "text": "Dans le programme suivant :\\n$a ← 5$\\n$b ← a + 3$\\nafficher $b$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$3$",
+        "$15$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La variable $a$ reçoit la valeur $5$. Ensuite $b$ reçoit $a + 3$, soit $5 + 3 = 8$. L'instruction afficher $b$ affiche donc $8$. Les autres options correspondent à une lecture erronée de l'affectation ou de l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme suivant :\\n$x ← 7$\\nsi $x > 10$ alors\\n   afficher \\\"Grand\\\"\\nsinon\\n   afficher \\\"Petit\\\"\\nfinsi\\nQuelle chaîne de caractères est affichée ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "$7$",
+        "Rien"
+      ],
+      "correctAnswer": "Petit",
+      "explanation": "La condition $x > 10$ est évaluée avec $x = 7$. Comme $7 > 10$ est faux, le bloc sinon est exécuté et affiche la chaîne Petit. L'option Grand correspondrait à une condition vraie, $7$ à l'affichage de la variable, et Rien à l'absence d'instruction d'affichage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme suivant :\\n$s ← 0$\\npour $i$ de $1$ à $4$ faire\\n   $s ← s + i$\\nfin pour\\nafficher $s$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$10$",
+        "$6$",
+        "$4$",
+        "$1$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La boucle pour fait varier $i$ de $1$ à $4$. À chaque itération, $s$ accumule la valeur de $i$ : $0+1=1$, $1+2=3$, $3+3=6$, $6+4=10$. À la fin, $s$ vaut $10$, qui est affiché. L'option $6$ correspond à la somme après trois itérations, $4$ au nombre d'itérations, et $1$ à la première valeur de $i$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme suivant :\\n$a ← 12$\\n$b ← 5$\\nsi $a$ mod $b$ = $0$ alors\\n   afficher \\\"Multiple\\\"\\nsinon\\n   afficher \\\"Non multiple\\\"\\nfinsi\\nQuelle chaîne est affichée ?",
+      "options": [
+        "Multiple",
+        "Non multiple",
+        "$12$",
+        "$5$"
+      ],
+      "correctAnswer": "Non multiple",
+      "explanation": "Le reste de la division euclidienne de $12$ par $5$ est $2$, donc $12$ mod $5 = 2$ et est différent de $0$. La condition est fausse, le bloc sinon s'exécute et affiche Non multiple. L'option Multiple serait choisie si le reste était nul, $12$ et $5$ correspondent à l'affichage erroné des variables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme suivant :\\n$n ← 1$\\ntantque $n < 8$ faire\\n   $n ← n × 2$\\nfin tantque\\nafficher $n$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$8$",
+        "$16$",
+        "$4$",
+        "$2$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La boucle tantque s'exécute tant que $n < 8$. Au départ $n=1$ : $1<8$ vrai, $n$ devient $2$. Deuxième tour : $2<8$ vrai, $n$ devient $4$. Troisième tour : $4<8$ vrai, $n$ devient $8$. Quatrième test : $8<8$ faux, la boucle s'arrête et $n$ vaut $8$, qui est affiché. L'option $16$ correspondrait à une itération de trop, $4$ à l'arrêt après deux itérations, $2$ après une seule.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

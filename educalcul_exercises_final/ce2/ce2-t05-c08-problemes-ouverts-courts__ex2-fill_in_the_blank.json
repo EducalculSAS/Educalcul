@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 185,
+  "_course_code": "ce2-t05-c08-problemes-ouverts-courts",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Organiser les essais",
+  "title": "Organiser ses essais pour résoudre des problèmes",
+  "blocks": [
+    {
+      "title": "Les tenues de Léa",
+      "content": "Léa a deux pantalons (bleu et noir) et trois t-shirts (rouge, vert, jaune). Elle veut trouver toutes les tenues possibles en associant un pantalon et un t-shirt. En rangeant ses essais dans un tableau, elle compte {{1}} tenues au total.",
+      "correctAnswer": "",
+      "blanks": [
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On peut organiser les essais dans un tableau à double entrée : les pantalons en lignes et les t-shirts en colonnes. Pour le pantalon bleu, il y a 3 tenues possibles (avec rouge, vert, jaune). Pour le pantalon noir, il y a aussi 3 tenues possibles. Au total, cela fait 3 + 3 = 6 tenues. On peut aussi calculer 2 × 3 = 6.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le nombre mystère de Tom",
+      "content": "Tom cherche un nombre mystère compris entre $10$ et $30$. Il a deux indices : c'est un multiple de $5$ et la somme de ses chiffres vaut $7$. En listant les essais possibles de manière ordonnée, il trouve le nombre {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On liste d'abord tous les multiples de $5$ entre $10$ et $30$ : $10, 15, 20, 25, 30$. Ensuite, on calcule la somme des chiffres pour chacun : $10 \\rightarrow 1+0=1$ ; $15 \\rightarrow 1+5=6$ ; $20 \\rightarrow 2+0=2$ ; $25 \\rightarrow 2+5=7$ ; $30 \\rightarrow 3+0=3$. Seul le nombre $25$ correspond aux deux indices.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Les places sur le banc",
+      "content": "Ana, Boris et Clara s'assoient sur un banc qui a trois places. Ils veulent tester tous les ordres possibles pour s'asseoir. En organisant leurs essais de manière systématique, ils trouvent {{1}} arrangements différents.",
+      "correctAnswer": "",
+      "blanks": [
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On peut fixer la personne sur la première place (3 choix : Ana, Boris ou Clara). Pour chaque choix, il reste 2 personnes pour la deuxième place, et la dernière prend la troisième place. Cela donne 3 × 2 × 1 = 6 arrangements. La liste complète est : Ana-Boris-Clara, Ana-Clara-Boris, Boris-Ana-Clara, Boris-Clara-Ana, Clara-Ana-Boris, Clara-Boris-Ana.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

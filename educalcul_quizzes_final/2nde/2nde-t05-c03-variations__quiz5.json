@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Croissante / décroissante",
+  "title": "Approfondissement : Croissante / décroissante",
+  "questions": [
+    {
+      "text": "La fonction f est croissante sur un intervalle I si et seulement si pour tous $x_1, x_2 \\in I$ avec $x_1 < x_2$, on a :",
+      "options": [
+        "A) $f(x_1) < f(x_2)$",
+        "B) $f(x_1) \\le f(x_2)$",
+        "C) $f(x_1) > f(x_2)$",
+        "D) $f(x_1) \\ge f(x_2)$"
+      ],
+      "correctAnswer": "B) $f(x_1) \\le f(x_2)$",
+      "explanation": "La définition d'une fonction croissante (au sens large) sur un intervalle I est : pour tous $x_1, x_2 \\in I$, si $x_1 < x_2$ alors $f(x_1) \\le f(x_2)$. L'option A correspond à une fonction strictement croissante, les options C et D correspondent à décroissante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit f dérivable sur $\\mathbb{R}$ et $f'(x) = 2x - 4$. Sur quel intervalle f est-elle croissante ?",
+      "options": [
+        "A) $(-\\infty, 2)$",
+        "B) $(2, +\\infty)$",
+        "C) $(-\\infty, 2]$",
+        "D) $[2, +\\infty)$"
+      ],
+      "correctAnswer": "B) $(2, +\\infty)$",
+      "explanation": "La dérivée $f'(x)=2x-4$ est positive pour $x>2$. Donc f est croissante sur $(2, +\\infty)$. Sur $(-\\infty,2)$ la dérivée est négative, f y est décroissante. En $x=2$ la dérivée est nulle, ce qui ne change pas la monotonie stricte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau de variations de f indique que f décroît sur $(-\\infty, -1]$, croît sur $[-1, 3]$, puis décroît sur $[3, +\\infty)$. Sur quel intervalle f est-elle croissante ?",
+      "options": [
+        "A) $(-\\infty, -1]$",
+        "B) $[-1, 3]$",
+        "C) $[3, +\\infty)$",
+        "D) $\\mathbb{R}$"
+      ],
+      "correctAnswer": "B) $[-1, 3]$",
+      "explanation": "D'après le tableau de variations donné, f décroît jusqu'à $-1$, puis croît jusqu'à $3$, puis décroît à nouveau. L'intervalle de croissance est donc $[-1,3]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f(x) = x^3 - 3x$. Déterminer l'intervalle(s) sur lequel f est croissante.",
+      "options": [
+        "A) $(-\\infty, -1) \\cup (1, +\\infty)$",
+        "B) $(-\\infty, -1] \\cup [1, +\\infty)$",
+        "C) $(-1, 1)$",
+        "D) $\\mathbb{R}$"
+      ],
+      "correctAnswer": "B) $(-\\infty, -1] \\cup [1, +\\infty)$",
+      "explanation": "On calcule $f'(x)=3x^2-3=3(x-1)(x+1)$. Le signe de $f'$ est positif pour $x<-1$ et $x>1$, nul en $-1$ et $1$. Ainsi f est croissante sur $(-\\infty,-1] \\cup [1,+\\infty)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit f une fonction croissante sur $\\mathbb{R}$. On définit $g(x) = f(2x+1)$. Quelle est la variation de g sur $\\mathbb{R}$ ?",
+      "options": [
+        "A) g est décroissante",
+        "B) g est constante",
+        "C) g est croissante",
+        "D) on ne peut pas conclure"
+      ],
+      "correctAnswer": "C) g est croissante",
+      "explanation": "La fonction $x \\mapsto 2x+1$ est strictement croissante sur $\\mathbb{R}$. La composition de deux fonctions croissantes est croissante. Donc $g$ est croissante sur $\\mathbb{R}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

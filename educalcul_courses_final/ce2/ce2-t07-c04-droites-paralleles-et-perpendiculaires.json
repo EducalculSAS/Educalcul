@@ -1,0 +1,464 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.097449+00:00",
+  "id": 199,
+  "code": "ce2-t07-c04",
+  "title": "Droites parallèles et perpendiculaires",
+  "description": "Cours structuré Educalcul : Droites parallèles et perpendiculaires.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Droites parallèles et perpendiculaires",
+    "objectif_global": "Droites parallèles et perpendiculaires",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Vérifier avec instruments.",
+      "Tracer."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les droites qui ne se croisent jamais"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux rails de train qui s'enfuient vers l'horizon. Ils restent toujours à la même distance l'un de l'autre, sans jamais se toucher, même si on les prolonge très loin. En géométrie, on appelle cela des droites parallèles. C'est comme deux amis qui marchent côte à côte sur un trottoir très large : ils gardent le même écart du début à la fin."
+            },
+            {
+              "type": "definition",
+              "term": "Parallèles",
+              "definition": "Deux droites sont parallèles si elles ne se coupent pas, même si on les prolonge indéfiniment. Elles gardent toujours la même distance.",
+              "example": "Les deux côtés opposés d'une porte sont parallèles."
+            },
+            {
+              "type": "display_math",
+              "latex": "d_1 // d_2"
+            },
+            {
+              "type": "paragraph",
+              "content": "On note le parallélisme avec deux petits traits obliques : $//$. Si tu vois ce signe entre deux droites, tu sais tout de suite qu'elles ne se rencontreront jamais. Regarde autour de toi : les lignes d'un cahier, les bords d'une règle, les montants d'une échelle... Les parallèles sont partout !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, penchons-nous sur des droites qui se croisent, mais d'une façon bien particulière. Elles forment un angle bien net, comme le coin d'une feuille de papier ou l'intersection de deux rues qui se coupent à angle droit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les droites qui font un angle droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose ta main à plat sur la table. Ton pouce et ton index forment un angle droit, un angle bien carré de $90^\\circ$. Quand deux droites se croisent en formant cet angle parfait, on dit qu'elles sont perpendiculaires. C'est comme un carrefour où les rues se coupent bien proprement, sans pencher d'un côté ni de l'autre."
+            },
+            {
+              "type": "definition",
+              "term": "Perpendiculaires",
+              "definition": "Deux droites sont perpendiculaires si elles se coupent en formant un angle droit ($90^\\circ$).",
+              "example": "Le bord vertical et le bord horizontal d'une fenêtre sont perpendiculaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "d_1 \\perp d_2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le symbole ressemble à un T renversé : $\\perp$. C'est le signe qui crie \"angle droit !\" dès qu'on le voit. Dans un carré ou un rectangle, tous les côtés se coupent deux à deux en angles droits : chaque côté est perpendiculaire à ses deux voisins."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant une figure connue : le rectangle. Il cache à la fois des parallèles et des perpendiculaires. C'est le terrain de jeu idéal pour t'entraîner à les repérer ensemble."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Rectangle ABCD : côtés opposés parallèles, côtés adjacents perpendiculaires."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce rectangle, les côtés $[AB]$ et $[CD]$ sont parallèles, tout comme $[AD]$ et $[BC]$. Mais $[AB]$ est perpendiculaire à $[AD]$ et à $[BC]$. Tu vois ? Les deux idées travaillent ensemble pour construire la figure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Observe cette figure : deux droites horizontales et une droite verticale qui les coupe. Les deux droites horizontales sont-elles parallèles ou perpendiculaires ?",
+              "answer": "Parallèles",
+              "hint": "Regarde si elles se croisent ou si elles gardent la même distance.",
+              "explanation": "Les deux droites horizontales ne se coupent pas, elles restent à distance constante. Elles sont donc parallèles. La verticale, elle, est perpendiculaire aux deux."
+            },
+            {
+              "question": "Sur ton cahier, trace deux segments qui se coupent. Comment vérifier s'ils sont perpendiculaires sans mesurer l'angle ?",
+              "answer": "Utiliser l'équerre ou le coin d'une feuille de papier pour voir s'ils forment un angle droit.",
+              "hint": "Quel objet du quotidien a un angle parfait de $90^\\circ$ ?",
+              "explanation": "Le coin d'une feuille A4 ou une équerre sert de référence. Si le coin coïncide exactement avec l'angle formé par les segments, ils sont perpendiculaires."
+            },
+            {
+              "question": "Dans un rectangle, combien y a-t-il de paires de côtés parallèles ? Et de paires de côtés perpendiculaires ?",
+              "answer": "2 paires de côtés parallèles et 4 paires de côtés perpendiculaires.",
+              "hint": "Compte les côtés opposés pour les parallèles. Pour les perpendiculaires, chaque coin fait une paire.",
+              "explanation": "Les côtés opposés sont parallèles (2 paires). Chaque sommet forme un angle droit entre deux côtés adjacents, ce qui donne 4 paires de côtés perpendiculaires."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier avec instruments.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle : mesureur d'écarts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as repéré des droites qui semblent parallèles à l'œil nu. Mais en géométrie, l'œil peut se tromper ! Pour en être certain, il faut sortir la règle graduée. L'astuce : on mesure la distance entre les deux droites en plusieurs endroits. Si la distance ne change pas, c'est gagné, elles sont bien parallèles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Place ta règle perpendiculairement aux deux droites (on verra comment faire tout à l'heure). Lis la mesure au niveau de la première droite, puis au niveau de la seconde. La différence donne l'écart. Recommence plus loin. Même écart ? Elles sont parallèles. Écart différent ? Elles finiraient par se croiser."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 8,
+              "unit": "cm",
+              "caption": "Mesure de la distance entre deux droites à deux endroits différents."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier un angle droit, la règle ne suffit pas. Heureusement, tu as dans ta trousse un outil spécialement fait pour ça : l'équerre. C'est un triangle rectangle en plastique ou en métal. Son angle le plus pointu est exactement un angle droit de $90^\\circ$. C'est ton détecteur d'angle droit officiel."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équerre : détecteur d'angle droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose l'équerre sur l'intersection des deux droites. Fais coïncider les deux bords de l'angle droit de l'équerre avec les deux droites. Si les traits épousent parfaitement les bords de l'équerre sans dépasser ni laisser d'espace, c'est un angle droit. Les droites sont perpendiculaires. Si tu vois un petit jour ou un chevauchement, l'angle n'est pas droit."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "O",
+                "A",
+                "B"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Vérification d'un angle droit avec l'équerre au point O."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sais-tu que l'équerre sait aussi vérifier des parallèles ? C'est un tour de magie géométrique. On utilise la règle comme rail et l'équerre comme wagon qui glisse dessus. Si l'équerre garde le contact parfait avec les deux droites pendant qu'elle glisse, alors les droites sont parallèles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le duo règle-équerre pour les parallèles"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la règle sur l'une des deux droites. Elle sert de guide fixe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre contre la règle, son angle droit contre le bord. Le grand côté de l'équerre pointe vers l'autre droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser et regarder",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle. Si son grand côté reste exactement sur l'autre droite tout du long, les deux droites sont parallèles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu mesures l'écart entre deux droites à trois endroits différents. Tu trouves $3$ cm, $3$ cm et $3$ cm. Quelle conclusion ?",
+              "answer": "Les droites sont parallèles.",
+              "hint": "La distance reste-t-elle constante ?",
+              "explanation": "Comme la distance mesurée perpendiculairement ne change pas ($3$ cm à chaque fois), les droites gardent toujours le même écart. C'est la définition des parallèles."
+            },
+            {
+              "question": "Tu poses ton équerre sur deux droites qui se coupent. Un petit espace blanc apparaît entre le bord de l'équerre et l'une des droites. Que conclure ?",
+              "answer": "Les droites ne sont pas perpendiculaires.",
+              "hint": "L'équerre doit épouser parfaitement les deux droites.",
+              "explanation": "L'espace blanc prouve que l'angle formé n'est pas exactement de $90^\\circ$. Il est soit plus grand, soit plus petit. Les droites ne sont donc pas perpendiculaires."
+            },
+            {
+              "question": "Pour vérifier si deux droites sont parallèles avec la règle et l'équerre, quel outil reste fixe et quel outil glisse ?",
+              "answer": "La règle reste fixe sur une droite, l'équerre glisse le long de la règle.",
+              "hint": "Quel outil sert de rail ?",
+              "explanation": "La règle est posée sur la première droite et ne bouge pas. L'équerre glisse le long de la règle : si son bord suit exactement la deuxième droite, elles sont parallèles."
+            }
+          ]
+        },
+        {
+          "title": "Tracer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer une perpendiculaire sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as une droite tracée et un point $A$ qui se trouve juste dessus. Comment tracer la droite qui coupe la tienne en formant un angle droit pile au point $A$ ? C'est la base de beaucoup de constructions ! Sors ta règle et ton équerre, on y va pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Règle sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ta règle exactement sur la droite donnée. Maintiens-la bien ferme avec ta main qui n'écrit pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Équerre contre la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ton équerre contre le bord de la règle. L'angle droit de l'équerre doit être du côté où tu veux tracer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser jusqu'au point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle jusqu'à ce que le bord de l'équerre passe pile sur le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tiens l'équerre fermement et trace le trait le long de son bord. Tu as ta perpendiculaire !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est un peu plus délicat mais tout à fait faisable : le point $B$ n'est pas sur la droite, il est à côté. Tu dois tracer la droite qui passe par $B$ et qui coupe la première droite en angle droit. On va utiliser le même duo, mais dans un ordre différent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer une perpendiculaire depuis un point extérieur"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Équerre sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose l'équerre directement sur la droite donnée. Un de ses bords (celui de l'angle droit) coïncide avec la droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Règle contre l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ta règle contre l'autre bord de l'angle droit de l'équerre. La règle est maintenant perpendiculaire à la droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser vers le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintiens l'équerre fixe. Fais glisser la règle le long de l'équerre jusqu'à ce que son bord passe par le point $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tiens la règle bien en place et trace le trait le long de son bord. C'est ta perpendiculaire passant par $B$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier défi : tracer une droite parallèle à une droite donnée, qui passe par un point $C$ extérieur. Rappelle-toi : deux droites perpendiculaires à une même troisième sont parallèles entre elles. On va faire deux perpendiculaires de suite !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer une parallèle : la méthode des deux perpendiculaires"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Une première perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une droite perpendiculaire à la droite de départ, n'importe où (méthode du point sur la droite). Appelle-la droite intermédiaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : La seconde perpendiculaire au point $C$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace maintenant la perpendiculaire à cette droite intermédiaire qui passe par le point $C$ (méthode du point extérieur)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette dernière droite est parallèle à la toute première. Magie de la géométrie : deux perpendiculaires à la même droite sont parallèles !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître des droites parallèles (elles ne se coupent pas) et perpendiculaires (angle droit).",
+                "Je sais vérifier des parallèles en mesurant des écarts constants à la règle.",
+                "Je sais vérifier des perpendiculaires en posant l'équerre sur l'intersection.",
+                "Je sais tracer une perpendiculaire passant par un point sur la droite (règle + équerre qui glisse).",
+                "Je sais tracer une perpendiculaire passant par un point extérieur (équerre fixe + règle qui glisse).",
+                "Je sais tracer une parallèle par un point extérieur en faisant deux perpendiculaires de suite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé une perpendiculaire à une droite $(d)$ en un point $A$. Tu mesures l'angle formé avec ton équerre. Quelle valeur doit-il avoir ?",
+              "answer": "$90^\\circ$",
+              "hint": "C'est la définition même de la perpendiculaire.",
+              "explanation": "Une perpendiculaire forme un angle droit avec la droite de départ. Un angle droit vaut exactement $90^\\circ$. L'équerre est l'instrument de référence pour cet angle."
+            },
+            {
+              "question": "Pour tracer une perpendiculaire à une droite $(d)$ passant par un point $B$ en dehors de $(d)$, quel outil poses-tu en premier sur $(d)$ ?",
+              "answer": "L'équerre.",
+              "hint": "Quel outil a un angle droit déjà fait ?",
+              "explanation": "On pose d'abord l'équerre sur la droite $(d)$ pour caler l'angle droit. Ensuite seulement on pose la règle contre l'équerre et on glisse la règle vers le point $B$."
+            },
+            {
+              "question": "Tu veux tracer une parallèle à une droite $(d)$ passant par un point $C$. Tu traces une première perpendiculaire à $(d)$, puis une seconde perpendiculaire à cette première en $C$. Pourquoi la dernière droite est-elle parallèle à $(d)$ ?",
+              "answer": "Deux droites perpendiculaires à une même troisième sont parallèles entre elles.",
+              "hint": "Pense à la propriété des droites perpendiculaires à une même droite.",
+              "explanation": "La première droite tracée est perpendiculaire à $(d)$. La seconde est perpendiculaire à la première. Comme toutes deux sont perpendiculaires à la même droite (la première tracée), elles sont parallèles entre elles. La seconde passe par $C$ : c'est la parallèle cherchée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

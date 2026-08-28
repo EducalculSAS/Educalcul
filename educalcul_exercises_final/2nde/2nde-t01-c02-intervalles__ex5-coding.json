@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Notation",
+  "title": "Notation des intervalles - Algorithmes",
+  "blocks": [
+    {
+      "title": "Test d'appartenance",
+      "content": "Écrire une fonction Python `appartient(x, a, b, ouvert_gauche, ouvert_droit)` qui renvoie `True` si $x$ appartient à l'intervalle défini par les bornes $a$ et $b$ avec les indicateurs d'ouverture (True = borne ouverte, False = borne fermée).",
+      "correctAnswer": "def appartient(x, a, b, ouvert_gauche, ouvert_droit):\\n    if ouvert_gauche:\\n        if not (x > a):\\n            return False\\n    else:\\n        if not (x >= a):\\n            return False\\n    if ouvert_droit:\\n        if not (x < b):\\n            return False\\n    else:\\n        if not (x <= b):\\n            return False\\n    return True",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction vérifie successivement la borne gauche et la borne droite. Si la borne est ouverte (True), on utilise une inégalité stricte (> ou <). Si elle est fermée (False), on utilise une inégalité large (>= ou <=). Si les deux conditions sont satisfaites, x appartient à l'intervalle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intersection de deux intervalles",
+      "content": "Écrire une fonction Python `intersection(i1, i2)` où chaque intervalle est représenté par un tuple `(a, b, ouvert_gauche, ouvert_droit)`. La fonction doit retourner un tuple décrivant l'intersection, ou `None` si l'intersection est vide.",
+      "correctAnswer": "def intersection(i1, i2):\\n    a1, b1, og1, od1 = i1\\n    a2, b2, og2, od2 = i2\\n    # borne gauche de l'intersection\\n    if a1 > a2:\\n        a = a1\\n        og = og1\\n    elif a2 > a1:\\n        a = a2\\n        og = og2\\n    else:  # a1 == a2\\n        a = a1\\n        og = og1 or og2  # ouverte si au moins l'une l'est\\n    # borne droite de l'intersection\\n    if b1 < b2:\\n        b = b1\\n        od = od1\\n    elif b2 < b1:\\n        b = b2\\n        od = od2\\n    else:  # b1 == b2\\n        b = b1\\n        od = od1 or od2\\n    # vérifier si l'intersection n'est pas vide\\n    if a > b:\\n        return None\\n    if a == b and (og or od):\\n        return None\\n    return (a, b, og, od)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine la borne gauche comme le maximum des deux bornes gauches ; si elles sont égales, la borne est ouverte si l'une des deux l'est. De même pour la borne droite (minimum). Ensuite on teste la non-vacuité : si a > b l'intersection est vide ; si a == b il faut que les deux bornes soient fermées pour contenir ce point unique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion vers la notation mathématique",
+      "content": "Écrire une fonction Python `notation_intervalle(a, b, ouvert_gauche, ouvert_droit)` qui renvoie la chaîne de caractères correspondant à la notation usuelle de l'intervalle (par exemple $[a;b[$, $]a;b]$, $[a;b]$, $]a;b[$).",
+      "correctAnswer": "def notation_intervalle(a, b, ouvert_gauche, ouvert_droit):\\n    gauche = ']' if ouvert_gauche else '['\\n    droite = '[' if ouvert_droit else ']'\\n    return f'{gauche}{a};{b}{droite}'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La notation française utilise un crochet ferme '[' pour une borne fermée et un crochet ouvrant ']' pour une borne ouverte. La fonction choisit le symbole approprié selon les booléens, puis formate la chaîne avec les bornes a et b séparées par un point-virgule.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

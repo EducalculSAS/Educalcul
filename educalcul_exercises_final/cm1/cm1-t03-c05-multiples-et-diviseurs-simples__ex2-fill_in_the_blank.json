@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 230,
+  "_course_code": "cm1-t03-c05-multiples-et-diviseurs-simples",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Chercher diviseurs simples",
+  "title": "Chercher les diviseurs simples",
+  "blocks": [
+    {
+      "title": "Identifier des diviseurs",
+      "content": "On veut trouver les diviseurs de $24$ parmi les nombres $4$, $5$ et $6$. Un diviseur permet une division exacte, sans reste. Les diviseurs de $24$ dans cette liste sont {{1}} et {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour savoir si un nombre est diviseur de $24$, on effectue la division : $24 : 4 = 6$ (reste $0$), $24 : 5 = 4$ reste $4$, $24 : 6 = 4$ (reste $0$). Seuls $4$ et $6$ donnent un reste nul, ce sont donc les diviseurs de $24$ dans la liste.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter la liste des diviseurs",
+      "content": "On cherche tous les diviseurs de $16$. On teste les divisions successives : $16 : 1 = 16$, $16 : 2 = 8$, $16 : 3$ ne tombe pas juste, $16 : 4 = 4$, $16 : 5$ ne tombe pas juste... La liste complète des diviseurs de $16$ classés par ordre croissant est : $1$, {{1}}, {{2}}, $8$, $16$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les diviseurs de $16$ sont les nombres qui divisent $16$ sans reste. On trouve : $1$ ($16 = 1 \\times 16$), $2$ ($16 = 2 \\times 8$), $4$ ($16 = 4 \\times 4$), $8$ ($16 = 8 \\times 2$) et $16$ ($16 = 16 \\times 1$). Les nombres manquants sont $2$ et $4$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Trouver tous les diviseurs",
+      "content": "Donne la liste complète des diviseurs de $30$ en complétant les trous : $1$, $2$, $3$, {{1}}, {{2}}, {{3}}, $30$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "6",
+        "10|15"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver les diviseurs de $30$, on cherche tous les couples de nombres dont le produit fait $30$ : $1 \\times 30$, $2 \\times 15$, $3 \\times 10$, $5 \\times 6$. En les classant par ordre croissant, on obtient : $1$, $2$, $3$, $5$, $6$, $10$, $15$, $30$. Les trois nombres manquants sont $5$, $6$ et $10$ (ou $15$ selon l'ordre, mais ici l'ordre croissant impose $5$, $6$, $10$).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

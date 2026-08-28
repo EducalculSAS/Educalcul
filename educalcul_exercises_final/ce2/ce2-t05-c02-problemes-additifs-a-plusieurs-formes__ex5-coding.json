@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 179,
+  "_course_code": "ce2-t05-c02-problemes-additifs-a-plusieurs-formes",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Composition",
+  "title": "Approfondissement : Composition - Algorithmes additifs",
+  "blocks": [
+    {
+      "title": "Somme de deux parties",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo-code) qui permet de trouver le total lorsque l'on connaît deux parties : la première partie vaut $a$ et la deuxième partie vaut $b$.",
+      "correctAnswer": "Lire $a$.\\nLire $b$.\\nCalculer $a + b$ et stocker le résultat dans total.\\nAfficher total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit les deux valeurs $a$ et $b$, effectue l'addition $a + b$ pour obtenir le total, puis affiche ce total. Cela correspond à la composition additive de deux parties.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de trois parties",
+      "content": "Écris un algorithme qui calcule le total de trois parties dont les valeurs sont $a$, $b$ et $c$.",
+      "correctAnswer": "Lire $a$, $b$, $c$.\\nCalculer $a + b + c$ et stocker le résultat dans total.\\nAfficher total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit les trois valeurs $a$, $b$, $c$, additionne les trois nombres $a + b + c$ pour composer le total, puis l'affiche. C'est une extension directe du cas à deux parties.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme d'une liste de nombres",
+      "content": "Écris un algorithme qui calcule la somme d'une liste de nombres donnés (par exemple une liste de 5 nombres). Utilise une boucle pour additionner chaque nombre à un total qui commence à $0$.",
+      "correctAnswer": "Initialiser total à $0$.\\nPour chaque nombre dans la liste :\\n    total $=$ total $+$ nombre.\\nAfficher total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence avec total égal à $0$. Pour chaque élément de la liste, on met à jour total en ajoutant la valeur de l'élément (total $=$ total $+$ nombre). Après le parcours de toute la liste, total contient la somme de tous les nombres, ce qui réalise la composition additive de plusieurs parties.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

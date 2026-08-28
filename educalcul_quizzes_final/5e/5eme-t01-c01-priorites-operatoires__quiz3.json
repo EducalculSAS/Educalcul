@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Calculer et justifier",
+  "title": "Quiz : Priorités opératoires - Calculer et justifier",
+  "questions": [
+    {
+      "text": "On veut calculer l'expression $15 - 5 \\times 2 + 8 \\div 4$. Quelle est la bonne suite d'opérations à effectuer en respectant les priorités ?",
+      "options": [
+        "On calcule $5 \\times 2 = 10$, puis $8 \\div 4 = 2$, puis $15 - 10 = 5$, enfin $5 + 2 = 7$.",
+        "On calcule de gauche à droite : $15 - 5 = 10$, puis $10 \\times 2 = 20$, puis $20 + 8 = 28$, enfin $28 \\div 4 = 7$.",
+        "On calcule $5 \\times 2 = 10$, puis $15 - 10 = 5$, puis $5 + 8 = 13$, enfin $13 \\div 4 = 3,25$.",
+        "On calcule $8 \\div 4 = 2$, puis $5 \\times 2 = 10$, puis $10 + 2 = 12$, enfin $15 - 12 = 3$."
+      ],
+      "correctAnswer": "On calcule $5 \\times 2 = 10$, puis $8 \\div 4 = 2$, puis $15 - 10 = 5$, enfin $5 + 2 = 7$.",
+      "explanation": "La règle des priorités impose d'effectuer les multiplications et divisions avant les additions et soustractions. Ici, on commence par $5 \\times 2 = 10$ et $8 \\div 4 = 2$ (de gauche à droite). L'expression devient $15 - 10 + 2$. On termine par les additions et soustractions de gauche à droite : $15 - 10 = 5$ puis $5 + 2 = 7$. L'option 2 ne respecte pas les priorités (calcul strictement séquentiel). L'option 3 fait la multiplication puis soustraction avant la division. L'option 4 additionne les résultats de la multiplication et de la division avant de soustraire de 15.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez et justifiez le résultat de l'expression : $(12 + 3) \\times 2 - 10 \\div 5$.",
+      "options": [
+        "On calcule la parenthèse $12 + 3 = 15$, puis $15 \\times 2 = 30$, puis $10 \\div 5 = 2$, enfin $30 - 2 = 28$.",
+        "On calcule $12 + 3 = 15$, puis $2 - 10 = -8$, puis $15 \\times -8 = -120$, enfin $-120 \\div 5 = -24$.",
+        "On calcule $3 \\times 2 = 6$, puis $12 + 6 = 18$, puis $10 \\div 5 = 2$, enfin $18 - 2 = 16$.",
+        "On calcule $10 \\div 5 = 2$, puis $12 + 3 = 15$, puis $15 \\times 2 = 30$, enfin $30 - 2 = 28$."
+      ],
+      "correctAnswer": "On calcule la parenthèse $12 + 3 = 15$, puis $15 \\times 2 = 30$, puis $10 \\div 5 = 2$, enfin $30 - 2 = 28$.",
+      "explanation": "Les parenthèses ont la priorité absolue : on calcule d'abord $12 + 3 = 15$. L'expression devient $15 \\times 2 - 10 \\div 5$. Ensuite, priorité aux multiplications et divisions : $15 \\times 2 = 30$ et $10 \\div 5 = 2$ (ordre indifférent car indépendantes). Il reste $30 - 2 = 28$. L'option 2 ne respecte aucune priorité. L'option 3 multiplie $3 \\times 2$ avant d'avoir résolu la parenthèse. L'option 4 donne le bon résultat final mais la justification écrit la division avant la multiplication alors que l'écriture naturelle suit l'ordre de lecture ; cependant l'option 1 détaille mieux l'enchaînement logique parenthèses -> mult/div -> add/soustr.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le calcul $4 \\times (5 + 3) - 6 \\div 2$, quelle est la toute première opération à effectuer ?",
+      "options": [
+        "L'addition dans la parenthèse : $5 + 3$.",
+        "La multiplication : $4 \\times 5$.",
+        "La division : $6 \\div 2$.",
+        "La soustraction : $(5 + 3) - 6$."
+      ],
+      "correctAnswer": "L'addition dans la parenthèse : $5 + 3$.",
+      "explanation": "Les parenthèses ont la priorité la plus forte. Il faut donc commencer par calculer ce qui se trouve à l'intérieur : $5 + 3 = 8$. Ensuite seulement on pourra faire la multiplication $4 \\times 8$ et la division $6 \\div 2$. Choisir la multiplication $4 \\times 5$ (option 2) revient à ignorer la parenthèse. La division (option 3) et la soustraction (option 4) sont de priorité inférieure ou mal placées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est correcte et bien justifiée pour $20 - 4 \\times 3 + 12 \\div 6$ ?",
+      "options": [
+        "$20 - 4 \\times 3 + 12 \\div 6 = 20 - 12 + 2 = 8 + 2 = 10$.",
+        "$20 - 4 \\times 3 + 12 \\div 6 = 16 \\times 3 + 2 = 48 + 2 = 50$.",
+        "$20 - 4 \\times 3 + 12 \\div 6 = 20 - 12 + 12 \\div 6 = 8 + 12 \\div 6 = 20 \\div 6 = 3,33...$.",
+        "$20 - 4 \\times 3 + 12 \\div 6 = 20 - 12 + 2 = 20 - 14 = 6$."
+      ],
+      "correctAnswer": "$20 - 4 \\times 3 + 12 \\div 6 = 20 - 12 + 2 = 8 + 2 = 10$.",
+      "explanation": "On applique les priorités : multiplications et divisions d'abord. $4 \\times 3 = 12$ et $12 \\div 6 = 2$. L'expression devient $20 - 12 + 2$. Ensuite additions et soustractions de gauche à droite : $20 - 12 = 8$, puis $8 + 2 = 10$. L'option 2 commence par $20 - 4$ (erreur de priorité). L'option 3 fait $8 + 12$ avant la division (erreur de priorité). L'option 4 fait $12 + 2 = 14$ avant de soustraire de 20 (erreur sur l'associativité de la soustraction/addition : il faut aller de gauche à droite).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez exactement l'expression $5 \\times (10 - 4 \\div 2) + 7$ en détaillant les étapes.",
+      "options": [
+        "Dans la parenthèse : $4 \\div 2 = 2$, puis $10 - 2 = 8$. Ensuite $5 \\times 8 = 40$. Enfin $40 + 7 = 47$.",
+        "Dans la parenthèse : $10 - 4 = 6$, puis $6 \\div 2 = 3$. Ensuite $5 \\times 3 = 15$. Enfin $15 + 7 = 22$.",
+        "$5 \\times 10 = 50$, puis $50 - 4 = 46$, puis $46 \\div 2 = 23$, enfin $23 + 7 = 30$.",
+        "Dans la parenthèse : $4 \\div 2 = 2$, puis $10 - 2 = 8$. Ensuite $5 \\times 8 = 40$. Enfin $40 + 7 = 35$."
+      ],
+      "correctAnswer": "Dans la parenthèse : $4 \\div 2 = 2$, puis $10 - 2 = 8$. Ensuite $5 \\times 8 = 40$. Enfin $40 + 7 = 47$.",
+      "explanation": "À l'intérieur de la parenthèse, la division a priorité sur la soustraction : $4 \\div 2 = 2$, puis $10 - 2 = 8$. L'expression devient $5 \\times 8 + 7$. La multiplication a priorité sur l'addition : $5 \\times 8 = 40$. Enfin l'addition : $40 + 7 = 47$. L'option 2 fait la soustraction avant la division dans la parenthèse. L'option 3 ignore totalement les parenthèses. L'option 4 a les bons étapes mais se trompe sur l'addition finale ($40+7=47$ pas $35$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

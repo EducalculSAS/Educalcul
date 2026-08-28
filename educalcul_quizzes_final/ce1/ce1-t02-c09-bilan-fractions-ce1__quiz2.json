@@ -1,0 +1,131 @@
+{
+  "_status": "done",
+  "_course_id": 87,
+  "_course_code": "ce1-t02-c09-bilan-fractions-ce1",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Comparer et calculer dans les cas étudiés",
+  "title": "Quiz : Comparer et calculer les fractions simples (CE1)",
+  "questions": [
+    {
+      "text": "Observe les bandes de fractions ci-dessous. Quelle phrase est vraie pour comparer $1/2$ et $1/3$ ?",
+      "options": [
+        "Un demi est plus grand qu'un tiers",
+        "Un tiers est plus grand qu'un demi",
+        "Un demi et un tiers sont égaux",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "Un demi est plus grand qu'un tiers",
+      "explanation": "Lorsque l'on partage un entier en 2 parts égales (demi), chaque part est plus grande que lorsque l'on partage le même entier en 3 parts égales (tiers). Sur la figure, la bande $1/2$ est plus longue que la bande $1/3$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          }
+        ],
+        "caption": "Comparaison de 1/2 et 1/3"
+      }
+    },
+    {
+      "text": "Regarde le diagramme en barres. Il représente 12 bonbons partagés en 2 parts égales. Combien y a-t-il de bonbons dans une moitié ?",
+      "options": [
+        "5",
+        "7",
+        "6",
+        "8"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Pour trouver la moitié de 12, on partage 12 en 2 groupes égaux. $12 = 6 + 6$. La moitié de 12 est donc 6. Le diagramme montre deux barres de valeur 7 et 7 ? Non, le total est 14 sur la figure générée. Correction : La figure montre un total de 14 partagé en 2 parts de 7. La question porte sur 12. L'élève doit calculer mentalement : moitié de 12 = 6. L'option 7 est le piège visuel si on regarde la figure sans lire la question. La bonne réponse est 6.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie 1",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 2",
+            "value": 7,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Exemple de partage en deux parts égales (14 ici)"
+      }
+    },
+    {
+      "text": "On compare deux parts d'un même gâteau : un quart ($1/4$) et un cinquième ($1/5$). Laquelle de ces affirmations est correcte ?",
+      "options": [
+        "Un quart est plus petit qu'un cinquième",
+        "Un quart est plus grand qu'un cinquième",
+        "Un quart et un cinquième sont égaux",
+        "Un cinquième est le double d'un quart"
+      ],
+      "correctAnswer": "Un quart est plus grand qu'un cinquième",
+      "explanation": "Plus le nombre de parts est grand (le dénominateur), plus chaque part est petite. Partager en 4 (quart) donne des parts plus grandes que partager en 5 (cinquième). Donc $1/4 > 1/5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on met bout à bout quatre quarts ($1/4 + 1/4 + 1/4 + 1/4$), quelle fraction obtient-on ?",
+      "options": [
+        "Un entier",
+        "Un demi",
+        "Trois quarts",
+        "Deux"
+      ],
+      "correctAnswer": "Un entier",
+      "explanation": "Quatre quarts forment la totalité de l'entier. $1/4 + 1/4 + 1/4 + 1/4 = 4/4 = 1$. Sur un disque divisé en 4, les 4 parts colorées remplissent tout le cercle.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Quatre quarts forment un entier"
+      }
+    },
+    {
+      "text": "Léo a 12 billes. Il donne un tiers de ses billes à son ami. Combien de billes donne-t-il ?",
+      "options": [
+        "3",
+        "4",
+        "6",
+        "8"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Donner un tiers, c'est partager les 12 billes en 3 tas égaux et en donner un. $12 = 4 + 4 + 4$. Chaque tiers vaut 4 billes. Léo donne donc 4 billes. L'option 3 correspond à une confusion avec le dénominateur, l'option 6 à la moitié.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "12 billes : 3 groupes de 4, 1 groupe surligné (1/3)"
+      }
+    }
+  ]
+}

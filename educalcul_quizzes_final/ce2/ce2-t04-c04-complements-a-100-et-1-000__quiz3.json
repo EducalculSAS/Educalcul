@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 172,
+  "_course_code": "ce2-t04-c04-complements-a-100-et-1-000",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Choisir une stratégie rapide",
+  "title": "Quiz : Choisir une stratégie rapide pour les compléments à 100 et 1 000",
+  "questions": [
+    {
+      "text": "Quelle est la première étape la plus rapide pour trouver le nombre à ajouter à $47$ pour obtenir $100$ ?",
+      "options": [
+        "Ajouter $3$ pour atteindre $50$.",
+        "Ajouter $50$ pour atteindre $97$.",
+        "Retrancher $47$ de $100$ en posant une soustraction.",
+        "Ajouter $30$ pour atteindre $77$."
+      ],
+      "correctAnswer": "Ajouter $3$ pour atteindre $50$.",
+      "explanation": "La stratégie standard en CE2 pour les compléments à 100 est d'aller d'abord à la dizaine supérieure. Pour $47$, on ajoute $3$ pour faire $50$ (étape facile), puis on ajoute $50$ pour faire $100$. Le total à ajouter est $3 + 50 = 53$. Les autres options ne mènent pas directement au but ou utilisent une méthode lente (soustraction posée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer mentalement $62 + ? = 100$, quel raisonnement est le plus efficace ?",
+      "options": [
+        "J'ajoute $8$ pour faire $70$, puis $30$ pour faire $100$, donc $38$.",
+        "J'ajoute $40$ pour faire $102$, puis j'enlève $2$.",
+        "Je sais que $60 + 40 = 100$, donc la réponse est $48$.",
+        "Je fais $100 - 60 = 40$, puis $40 - 2 = 38$."
+      ],
+      "correctAnswer": "J'ajoute $8$ pour faire $70$, puis $30$ pour faire $100$, donc $38$.",
+      "explanation": "La méthode du 'saut à la dizaine' puis 'saut à la centaine' est la plus automatisée. $62 + 8 = 70$, puis $70 + 30 = 100$. Le total est $8 + 30 = 38$. L'option B utilise une compensation moins directe. L'option C oublie les unités ($2 + 8 = 10$, donc une dizaine de plus). L'option D est une soustraction mentale correcte mais souvent moins fluide que l'addition à rebours pour les compléments.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le complément à $100$ de $76$ ?",
+      "options": [
+        "24",
+        "34",
+        "26",
+        "36"
+      ],
+      "correctAnswer": "24",
+      "explanation": "Stratégie rapide : $76 \\rightarrow 80$ (il faut $4$), puis $80 \\rightarrow 100$ (il faut $20$). $4 + 20 = 24$. L'erreur $34$ vient de $70 + 30 = 100$ (oubli de la retenue des unités $6+4=10$). L'erreur $26$ ne complète que les unités. L'erreur $36$ additionne mal les dizaines et les unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour trouver rapidement $1000 - 278$, quelle décomposition mentale est la plus adaptée ?",
+      "options": [
+        "De $278$ à $300$ il faut $22$, puis de $300$ à $1000$ il faut $700$, total $722$.",
+        "De $278$ à $280$ il faut $2$, puis de $280$ à $1000$ il faut $720$, total $722$.",
+        "Je fais $1000 - 200 = 800$, puis $800 - 78 = 722$.",
+        "Je sais que $278 + 722 = 1000$ car $8+2=10$, $7+2=9$, $2+7=9$."
+      ],
+      "correctAnswer": "De $278$ à $300$ il faut $22$, puis de $300$ à $1000$ il faut $700$, total $722$.",
+      "explanation": "La stratégie de référence pour le complément à 1000 est d'aller à la centaine supérieure ($300$) puis au millier ($1000$). $278 + 22 = 300$ (facile : $22$ pour faire $300$), puis $300 + 700 = 1000$. Total $722$. L'option B passe par la dizaine ($280$) ce qui ajoute une étape. L'option C est une soustraction par morceaux valide mais moins 'standardisée' comme automatisme de complément. L'option D vérifie le résultat mais ne décrit pas la stratégie de construction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces calculs, lequel est le plus simple pour trouver le nombre manquant dans $345 + ? = 1000$ ?",
+      "options": [
+        "$345 + 55 = 400$ puis $400 + 600 = 1000$, donc $55 + 600 = 655$.",
+        "$1000 - 300 = 700$, $700 - 40 = 660$, $660 - 5 = 655$.",
+        "$345 + 600 = 945$, puis $945 + 55 = 1000$, donc $655$.",
+        "$345 + 655 = 1000$ car $5+5=10$, $4+5=9$, $3+6=9$."
+      ],
+      "correctAnswer": "$345 + 55 = 400$ puis $400 + 600 = 1000$, donc $55 + 600 = 655$.",
+      "explanation": "La stratégie experte pour le complément à 1000 est d'atteindre la centaine supérieure ($400$) puis le millier ($1000$). $345 \\rightarrow 400$ demande $55$ (car $45+55=100$). $400 \\rightarrow 1000$ demande $600$. Total $655$. L'option B est une soustraction successive correcte mais plus lourde. L'option C part sur une addition de centaines ($+600$) qui ne tombe pas sur un repère rond ($945$). L'option D est une vérification par addition, pas une stratégie de recherche.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

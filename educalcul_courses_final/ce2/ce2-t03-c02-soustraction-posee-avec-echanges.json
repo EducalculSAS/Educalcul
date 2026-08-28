@@ -1,0 +1,380 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.988440+00:00",
+  "id": 161,
+  "code": "ce2-t03-c02",
+  "title": "Soustraction posée avec échanges",
+  "description": "Cours structuré Educalcul : Soustraction posée avec échanges.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Soustraction posée avec échanges",
+    "objectif_global": "Soustraction posée avec échanges",
+    "mini_lecons_imposees": [
+      "Préparer les échanges.",
+      "Calculer colonne par colonne.",
+      "Vérifier avec l'addition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Préparer les échanges.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Préparer les échanges"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu regardes un nombre à deux chiffres, le premier chiffre compte les dizaines et le second les unités. Par exemple dans $52$, il y a $5$ dizaines et $2$ unités. Cette organisation te permet de savoir exactement combien vaut chaque colonne quand tu écris une soustraction posée. Tu verras que la colonne de gauche représente les groupes de dix et la colonne de droite les unités simples."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 2,
+              "caption": "$52$ : 5 dizaines et 2 unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarde les unités du haut et du bas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le chiffre du haut est plus grand ou égal, tu n'as pas besoin d'échange. Sinon, passe à l'étape suivante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Prends une dizaine, transforme-la en dix unités et note l'échange",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Barre la dizaine d'origine, écris un $1$ au-dessus de la colonne des dizaines et ajoute $10$ aux unités du haut."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les unités du haut sont plus petites que celles du bas, comme dans $52 - 34$. Alors tu ne peux pas enlever $4$ unités de $2$ unités directement. Tu dois prendre une dizaine du chiffre des dizaines, la transformer en $10$ unités et l'ajouter aux unités du haut. C'est ce qu'on appelle préparer l'échange, une étape indispensable avant de calculer."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10 unités",
+                  "value": 10,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Une dizaine vaut 10 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comment une dizaine peut être découpée en dix unités. Sur le schéma, une barre de dix est remplacée par dix petites barres d'une unité. Ainsi tu vois concrètement que $1$ dizaine vaut $10$ unités, et tu comprends pourquoi on peut « casser » une dizaine pour aider la colonne des unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as fait l'échange, tu écris un petit $1$ au-dessus de la colonne des dizaines pour montrer que tu as pris une dizaine. Ensuite tu augmentes les unités du haut de $10$ et tu barreras la dizaine d'origine. Cette notation aide à ne pas oublier l'emprunt pendant le calcul et à garder ton travail bien ordonné."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{array}{c@{}c@{}c} & 1 & \\\\ 5 & 2 \\\\ - & 3 & 4 \\\\ \\hline & 1 & 8 \\end{array}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la soustraction $52 - 34$, quelle dizaine dois-tu casser pour pouvoir soustraire les unités ?",
+              "answer": "La dizaine des $5$ dizaines (soit une dizaine).",
+              "hint": "Regarde les unités : $2$ est plus petit que $4$.",
+              "explanation": "Comme $2 < 4$, tu prends une dizaine des $5$ dizaines, il reste $4$ dizaines et tu as $12$ unités."
+            },
+            {
+              "question": "Représente l'échange pour $73 - 28$ en écrivant le petit $1$ au-dessus de la colonne des dizaines.",
+              "answer": "On écrit un $1$ au-dessus du $7$ des dizaines.",
+              "hint": "Combien de dizaines restent après avoir pris une dizaine ?",
+              "explanation": "On prend une dizaine du $7$, il reste $6$ dizaines, et on ajoute $10$ aux $3$ unités pour obtenir $13$ unités."
+            },
+            {
+              "question": "Complète la soustraction posée $64 - 27$ en notant l'échange.",
+              "answer": "On met un $1$ au-dessus du $6$, on a $14$ unités, $14-7=7$, $5-2=3$, résultat $37$.",
+              "hint": "Pense à emprunter une dizaine si les unités du haut sont trop petites.",
+              "explanation": "Les unités $4$ sont plus petites que $7$, on emprunte une dizaine : $14-7=7$. Il reste $5$ dizaines, $5-2=3$. Le résultat est $37$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer colonne par colonne.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer colonne par colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais préparer l'échange, tu vas faire la soustraction posée colonne par colonne. Commence toujours par les unités, puis passe aux dizaines, et enfin aux centaines s'il y en a. À chaque colonne, si le chiffre du haut est plus petit, tu empruntes une unité de la colonne de gauche."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "73",
+                "28"
+              ],
+              "result": "45",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Soustrais les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les unités du haut sont $3$, celles du bas $8$. Comme $3 < 8$, tu emprunes une dizaine : $13 - 8 = 5$. Écris $5$ sous la colonne des unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustrais les dizaines après l'emprunt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu as pris une dizaine, il reste $6$ dizaines en haut. $6 - 2 = 4$. Écris $4$ sous la colonne des dizaines. Le résultat final est $45$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un autre exemple où l'emprunt se fait sur les dizaines. Dans $84 - 37$, les unités du haut sont $4$ et celles du bas $7$. Tu dois encore emprunter une dizaine. Après l'emprunt, tu as $14$ unités et $7$ dizaines restantes. La méthode reste la même : unités d'abord, puis dizaines."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "84",
+                "37"
+              ],
+              "result": "47",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le nombre du haut a trois chiffres, comme $305 - 128$. Il faut alors gérer deux emprunts : un pour les unités et un pour les dizaines. Commence par les unités, emprunte une dizaine (qui vient des centaines), puis traite les dizaines, et enfin les centaines. Chaque emprunt se note par un petit $1$ au-dessus de la colonne concernée."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "305",
+                "128"
+              ],
+              "result": "177",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Effectue la soustraction posée $73 - 28$.",
+              "answer": "$45$",
+              "hint": "Commence par les unités, n'oublie pas l'échange.",
+              "explanation": "Les unités $3$ sont plus petites que $8$, on emprunte une dizaine : $13-8=5$. Il reste $6$ dizaines, $6-2=4$. Résultat $45$."
+            },
+            {
+              "question": "Calcule $84 - 37$.",
+              "answer": "$47$",
+              "hint": "Regarde les unités, emprunte si nécessaire.",
+              "explanation": "Unités $4<7$, emprunt : $14-7=7$. Dizaines $7-3=4$. Résultat $47$."
+            },
+            {
+              "question": "Trouve le résultat de $305 - 128$.",
+              "answer": "$177$",
+              "hint": "Il y a deux emprunts, un pour les unités et un pour les dizaines.",
+              "explanation": "Unités $5<8$, emprunt : $15-8=7$. Dizaines $0$ devient $9$ après emprunt, $9-2=7$. Centaines $3-1=2$. Résultat $177$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier avec l'addition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier avec l'addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir fait une soustraction posée, tu peux toujours vérifier ton résultat en faisant l'addition inverse. Tu ajoutes le résultat que tu as trouvé au nombre que tu as soustrait. Si tu retrouves le nombre de départ, ton calcul est correct. C'est une astuce très utile pour éviter les erreurs."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "45",
+                "28"
+              ],
+              "result": "73",
+              "carries": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris l'addition de vérification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le résultat de la soustraction au-dessus et le soustrait en dessous. Aligne bien les unités sous les unités, les dizaines sous les dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionne colonne par colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les unités, puis les dizaines. Si le total dépasse $9$, note la retenue. Compare le total obtenu avec le nombre de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple complet avec emprunt : $152 - 47 = 105$. Pour vérifier, tu fais $105 + 47$. Sur la droite numérique, tu peux voir que partir de $105$ et avancer de $47$ te ramène exactement à $152$. Cette représentation visuelle confirme que la soustraction est juste."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vérification de $152 - 47 = 105$",
+              "min": 0,
+              "max": 200,
+              "points": [
+                {
+                  "value": 105,
+                  "label": "Résultat"
+                },
+                {
+                  "value": 152,
+                  "label": "Départ"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges fréquents : ne pas inverser l'ordre de l'addition de vérification, oublier une retenue, ou mal aligner les colonnes. Relis toujours ton addition de haut en bas et compare le total au nombre initial. Si quelque chose ne correspond pas, refais la soustraction calmement."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège à éviter",
+              "paragraphs": [
+                "L'addition de vérification est toujours résultat + soustrait = nombre de départ. Ne fais pas nombre de départ + soustrait."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais préparer un échange avant de soustraire.",
+                "Je sais soustraire colonne par colonne avec emprunt.",
+                "Je sais vérifier ma soustraction par l'addition."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie la soustraction $73 - 28 = 45$ en faisant l'addition.",
+              "answer": "$45 + 28 = 73$",
+              "hint": "Ajoute le résultat au nombre qu'on a soustrait.",
+              "explanation": "Si l'addition redonne le nombre de départ, la soustraction est correcte."
+            },
+            {
+              "question": "Après avoir calculé $152 - 47 = 105$, quelle addition dois-tu faire pour vérifier ?",
+              "answer": "$105 + 47 = 152$",
+              "hint": "Le résultat plus le soustrait doit redonner le nombre initial.",
+              "explanation": "L'addition inverse confirme le calcul."
+            },
+            {
+              "question": "Quelle erreur fréquente faut-il éviter quand on vérifie ?",
+              "answer": "Ne pas inverser les nombres : il faut ajouter le résultat au soustrait, pas au nombre de départ.",
+              "hint": "Relis l'ordre de l'addition de vérification.",
+              "explanation": "L'addition de vérification est toujours résultat + soustrait = initial."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

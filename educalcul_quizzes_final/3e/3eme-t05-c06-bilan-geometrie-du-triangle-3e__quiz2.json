@@ -1,0 +1,132 @@
+{
+  "_status": "done",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Choix du théorème (Pythagore, Thalès, Trigonométrie)",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $A$, on connaît les longueurs $AB = 3$ cm et $AC = 4$ cm. Quel théorème permet de calculer directement la longueur $BC$ ?",
+      "options": [
+        "Le théorème de Pythagore",
+        "Le théorème de Thalès",
+        "Le cosinus de l'angle $\\widehat{B}$",
+        "La tangente de l'angle $\\widehat{C}$"
+      ],
+      "correctAnswer": "Le théorème de Pythagore",
+      "explanation": "La présence d'un angle droit ($\\widehat{A} = 90^\\circ$) et la recherche du troisième côté à partir des deux autres côtés du triangle rectangle imposent l'utilisation du théorème de Pythagore : $BC^2 = AB^2 + AC^2$. Thalès nécessite des droites parallèles. Les rapports trigonométriques (cosinus, tangente) nécessitent de connaître un angle aigu et un côté, ce qui n'est pas le cas ici.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans le triangle $ABC$, les points $M$ et $N$ appartiennent respectivement aux segments $[AB]$ et $[AC]$. La droite $(MN)$ est parallèle à $(BC)$. On sait $AB = 6$ cm, $AC = 9$ cm et $AM = 4$ cm. Quel théorème permet de calculer la longueur $AN$ ?",
+      "options": [
+        "Le théorème de Thalès",
+        "Le théorème de Pythagore",
+        "Le sinus de l'angle $\\widehat{A}$",
+        "La tangente de l'angle $\\widehat{B}$"
+      ],
+      "correctAnswer": "Le théorème de Thalès",
+      "explanation": "La configuration décrite (deux droites sécantes $AB$ et $AC$ coupées par deux droites parallèles $MN$ et $BC$) est la configuration type du théorème de Thalès. Les rapports de longueurs sont égaux : $\\frac{AM}{AB} = \\frac{AN}{AC}$. Pythagore ne s'applique qu'aux triangles rectangles. La trigonométrie n'est pas nécessaire car on n'a pas d'information sur les angles (mesure en degrés).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec MN parallele a BC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $B$, on connaît la mesure de l'angle $\\widehat{A} = 30^\\circ$ et la longueur $AB = 10$ cm. Quel rapport trigonométrique faut-il utiliser pour calculer la longueur $BC$ ?",
+      "options": [
+        "La tangente de l'angle $\\widehat{A}$",
+        "Le cosinus de l'angle $\\widehat{A}$",
+        "Le sinus de l'angle $\\widehat{A}$",
+        "Le théorème de Pythagore"
+      ],
+      "correctAnswer": "La tangente de l'angle $\\widehat{A}$",
+      "explanation": "Par rapport à l'angle $\\widehat{A}$ (30°), le côté $AB$ est le côté adjacent et le côté $BC$ est le côté opposé. Le rapport qui lie le côté opposé et le côté adjacent est la tangente : $\\tan(30^\\circ) = \\frac{BC}{AB}$. Le cosinus lie l'adjacent et l'hypoténuse, le sinus lie l'opposé et l'hypoténuse. Pythagore ne s'applique pas car on ne connaît qu'un seul côté du triangle rectangle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $C$, on connaît $AC = 5$ cm et $BC = 12$ cm. On veut calculer la mesure de l'angle $\\widehat{A}$. Quelle est la méthode la plus directe ?",
+      "options": [
+        "Utiliser directement la tangente : $\\tan(\\widehat{A}) = \\frac{BC}{AC}$",
+        "Calculer $AB$ par Pythagore puis utiliser le cosinus",
+        "Utiliser le théorème de Thalès",
+        "Utiliser le sinus : $\\sin(\\widehat{A}) = \\frac{AC}{BC}$"
+      ],
+      "correctAnswer": "Utiliser directement la tangente : $\\tan(\\widehat{A}) = \\frac{BC}{AC}$",
+      "explanation": "Par rapport à l'angle $\\widehat{A}$, le côté $BC$ est opposé et $AC$ est adjacent. On connaît les deux, donc la tangente donne directement l'angle : $\\tan(\\widehat{A}) = \\frac{12}{5}$. La méthode via Pythagore puis cosinus fonctionne mais est plus longue (deux étapes). Thalès ne s'applique pas (pas de parallèles). La dernière option inverse les côtés : $\\sin(\\widehat{A}) = \\frac{BC}{AB}$ (opposé sur hypoténuse), or $AB$ est inconnu.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en C",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 2
+      }
+    },
+    {
+      "text": "On considère un triangle $DEF$ tel que $DE = 8$ cm, $EF = 6$ cm et $DF = 10$ cm. Quelle affirmation est correcte ?",
+      "options": [
+        "Le triangle est rectangle en $E$ car $8^2 + 6^2 = 10^2$",
+        "Le triangle est rectangle en $F$ car $8^2 + 10^2 = 6^2$",
+        "On ne peut pas conclure sur la nature du triangle sans connaître un angle",
+        "Le triangle est rectangle en $D$ car $6^2 + 10^2 = 8^2$"
+      ],
+      "correctAnswer": "Le triangle est rectangle en $E$ car $8^2 + 6^2 = 10^2$",
+      "explanation": "On utilise la réciproque du théorème de Pythagore. Le plus grand côté est $DF = 10$ cm, c'est l'hypoténuse potentielle. On vérifie si le carré de ce côté est égal à la somme des carrés des deux autres : $8^2 + 6^2 = 64 + 36 = 100 = 10^2$. L'égalité est vraie, donc le triangle est rectangle. L'angle droit est opposé à l'hypoténuse $DF$, donc il est en $E$. Les autres options proposent de fausses égalités ($164 \\neq 36$ et $136 \\neq 64$) ou placent l'angle droit au mauvais sommet.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

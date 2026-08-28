@@ -1,0 +1,375 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.772716+00:00",
+  "id": 95,
+  "code": "ce1-t03-c08",
+  "title": "Comprendre partage et groupement",
+  "description": "Cours structuré Educalcul : Comprendre partage et groupement.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Comprendre partage et groupement",
+    "objectif_global": "Comprendre partage et groupement",
+    "mini_lecons_imposees": [
+      "Partager en parts égales.",
+      "Former des groupes de taille donnée.",
+      "Identifier quotient concret et reste éventuel."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Partager en parts égales.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager en parts égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $10$ bonbons et que tu veux les donner à deux copains pour que chacun ait la même quantité. C'est ce qu'on appelle un partage équitable. On pose les bonbons un par un devant chaque copain jusqu'à ce qu'il n'en reste plus. Ici, chaque copain reçoit $5$ bonbons. C'est juste et tout le monde est content."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 5,
+              "highlighted": 10,
+              "caption": "10 bonbons partagés en 2 parts égales : 2 lignes de 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec $15$ billes que tu veux répartir dans $3$ petites boîtes. Tu commences par mettre une bille dans chaque boîte, puis une deuxième, et tu continues jusqu'à épuisement. Chaque boîte finit par contenir $5$ billes. Tu as fait $3$ parts égales de $5$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 5,
+              "highlighted": 15,
+              "caption": "15 billes partagées en 3 parts égales : 3 lignes de 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour partager sans te tromper, tu peux suivre une méthode simple en trois étapes. D'abord, compte le total d'objets. Ensuite, décide en combien de parts tu veux les diviser. Enfin, distribue un par un dans chaque part jusqu'à la fin. Si tu as $18$ autocollants à donner à $3$ amis, tu donnes $6$ à chacun."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compte le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde combien d'objets tu as au départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis le nombre de parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide entre combien de personnes ou de boîtes tu vas partager."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Distribue un par un",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne un objet à chaque part, puis un deuxième, continue jusqu'à ce qu'il n'en reste plus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir comment partager équitablement. Dans la prochaine leçon, nous allons découvrir l'autre visage de la division : former des groupes d'une taille fixe. C'est comme ranger des livres par piles de même hauteur."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $12$ bonbons à partager équitablement entre $3$ enfants. Combien de bonbons chaque enfant reçoit-il ?",
+              "answer": "$4$ bonbons",
+              "hint": "Distribue les bonbons un par un dans trois tas.",
+              "explanation": "En donnant un bonbon à chaque enfant à tour de rôle, tu formes $3$ tas de $4$ bonbons. Il n'en reste pas."
+            },
+            {
+              "question": "Il y a $15$ crayons à répartir dans $3$ boîtes pour que chaque boîte en contienne le même nombre. Combien de crayons par boîte ?",
+              "answer": "$5$ crayons",
+              "hint": "Fais trois tas en ajoutant un crayon dans chaque tas à la fois.",
+              "explanation": "Au bout de $5$ tours, chaque tas a $5$ crayons. Total $15$."
+            },
+            {
+              "question": "Partage $20$ autocollants entre $4$ copains. Combien en a chaque copain ?",
+              "answer": "$5$ autocollants",
+              "hint": "Donne un autocollant à chaque copain, puis un deuxième, continue jusqu'à la fin.",
+              "explanation": "Chaque copain reçoit $5$ autocollants, $4 \\times 5 = 20$."
+            }
+          ]
+        },
+        {
+          "title": "Former des groupes de taille donnée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Former des groupes de taille donnée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne sait pas combien de parts on va faire, mais on connaît la taille de chaque groupe. Imagine une boîte de $12$ œufs. Tu veux les ranger dans des boîtes de $6$ œufs. Combien de boîtes pleines vas-tu remplir ? Tu fais des groupes de $6$ : un premier groupe, un deuxième, et c'est fini. Tu as formé $2$ groupes."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 6,
+              "highlighted": 12,
+              "caption": "12 œufs rangés par groupes de 6 : 2 lignes de 6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prenons $20$ billes et faisons des groupes de $4$. Tu alignes $4$ billes, c'est le premier groupe. Tu recommences : encore $4$, c'est le deuxième. Tu continues jusqu'à avoir $5$ groupes de $4$ billes. Il n'en reste aucune. Le nombre de groupes trouvés est le résultat du groupement."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 5,
+              "cols": 4,
+              "highlighted": 20,
+              "caption": "20 billes groupées par 4 : 5 lignes de 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une petite astuce pour grouper vite : compte le total, puis enlève la taille du groupe autant de fois que possible. Avec $18$ crayons et des groupes de $6$, tu retires $6$ une fois, il en reste $12$. Tu retires encore $6$, il en reste $6$. Une dernière fois, il en reste $0$. Tu as fait $3$ groupes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Note le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nombre d'objets que tu as au début."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Fixe la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis combien d'objets doit contenir chaque groupe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Forme les groupes un par un",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends la taille du groupe, compte un groupe, recommence jusqu'à ce qu'il n'y en ait plus assez pour un groupe complet."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant former des groupes. Mais que se passe-t-il quand le total ne tombe pas juste ? La dernière leçon nous apprendra à repérer le quotient et le reste, ces petits morceaux qui ne rentrent pas dans les groupes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $15$ billes. Tu veux faire des groupes de $3$ billes. Combien de groupes peux-tu former ?",
+              "answer": "$5$ groupes",
+              "hint": "Enlève $3$ billes, compte un groupe, recommence.",
+              "explanation": "Tu peux faire $5$ groupes de $3$, $5 \\times 3 = 15$."
+            },
+            {
+              "question": "Range $20$ livres par piles de $4$. Combien de piles ?",
+              "answer": "$5$ piles",
+              "hint": "Fais des tas de $4$ livres jusqu'à épuisement.",
+              "explanation": "$5$ tas de $4$ font $20$."
+            },
+            {
+              "question": "Avec $18$ œufs, tu fais des boîtes de $6$ œufs. Combien de boîtes pleines ?",
+              "answer": "$3$ boîtes",
+              "hint": "Compte par $6$ : $6, 12, 18$.",
+              "explanation": "$3$ groupes de $6$ donnent $18$."
+            }
+          ]
+        },
+        {
+          "title": "Identifier quotient concret et reste éventuel.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier quotient concret et reste éventuel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, en partageant ou en groupant, il reste des objets qui ne peuvent pas former une part complète ou un groupe complet. C'est ce qu'on appelle le reste. Le nombre de parts ou de groupes complets, c'est le quotient. Prenons $13$ bonbons à partager entre $3$ enfants. Chaque enfant reçoit $4$ bonbons, et il en reste $1$. Le quotient est $4$, le reste est $1$."
+            },
+            {
+              "type": "definition",
+              "term": "quotient",
+              "definition": "Le nombre de parts égales ou de groupes complets obtenus.",
+              "example": "Dans $13 \\div 3$, le quotient est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "reste",
+              "definition": "Ce qui reste après avoir fait le maximum de parts ou de groupes égaux.",
+              "example": "Dans $13 \\div 3$, le reste est $1$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "13 bonbons : 1 dizaine et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons côté groupement : tu as $14$ œufs et des boîtes de $6$. Tu remplis une première boîte ($6$), une deuxième ($6$), il en reste $2$. Tu as fait $2$ boîtes pleines, le quotient est $2$, et le reste est $2$ œufs qui n'ont pas de boîte."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 6,
+              "highlighted": 12,
+              "caption": "12 œufs dans 2 boîtes de 6, il en reste 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver quotient et reste à coup sûr, suis ces étapes : note le total, décide si tu partages (nombre de parts connu) ou tu groupes (taille du groupe connue), puis fais la distribution ou le groupement jusqu'à ce que tu ne puisses plus faire une part ou un groupe complet. Ce qui reste est le reste."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien d'objets as-tu au départ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis partage ou groupement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu sais en combien de parts partager, c'est un partage. Si tu sais la taille des groupes, c'est un groupement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compte les parts ou groupes complets (quotient)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de fois peux-tu faire une part entière ou un groupe entier ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Note ce qui reste (reste)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les objets qui ne forment pas une part ou un groupe complet sont le reste."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partager équitablement entre plusieurs personnes.",
+                "Je sais former des groupes d'une taille donnée.",
+                "Je sais trouver le quotient et le reste dans un partage ou un groupement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Partage $13$ bonbons entre $3$ enfants. Quel est le quotient et le reste ?",
+              "answer": "Quotient $4$, reste $1$",
+              "hint": "Donne $4$ bonbons à chacun, regarde ce qui reste.",
+              "explanation": "$3 \\times 4 = 12$, il reste $1$."
+            },
+            {
+              "question": "Tu as $14$ œufs et des boîtes de $6$. Combien de boîtes pleines et combien d'œufs restants ?",
+              "answer": "Quotient $2$, reste $2$",
+              "hint": "Remplis les boîtes une par une.",
+              "explanation": "$2 \\times 6 = 12$, il reste $2$ œufs."
+            },
+            {
+              "question": "Forme des groupes de $4$ avec $17$ billes. Quotient et reste ?",
+              "answer": "Quotient $4$, reste $1$",
+              "hint": "Fais des groupes de $4$ jusqu'à ce qu'il en reste moins de $4$.",
+              "explanation": "$4 \\times 4 = 16$, il reste $1$ bille."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

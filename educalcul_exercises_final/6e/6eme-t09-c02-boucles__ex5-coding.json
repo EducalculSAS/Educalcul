@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Répéter",
+  "title": "Approfondissement : Répéter - Algorithmique 6e",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme avec une boucle Répéter",
+      "content": "Écrire un algorithme qui affiche les entiers de $1$ à $5$ en utilisant une structure « Répéter ... fois ».",
+      "correctAnswer": "Algorithme :\\nDébut\\n  Pour i de 1 à 5 faire\\n    Afficher i\\n  Fin pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle « Répéter 5 fois » (ou « Pour i de 1 à 5 ») permet d'exécuter l'instruction d'affichage cinq fois. À chaque itération, la variable i prend la valeur 1, 2, 3, 4, 5, ce qui affiche les nombres demandés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer le résultat d'un algorithme donné",
+      "content": "On considère l'algorithme suivant :\\nDébut\\n  compteur ← 0\\n  Répéter 4 fois\\n    compteur ← compteur + 2\\n    Afficher compteur\\n  Fin répéter\\nFin\\nQue va afficher cet algorithme ?",
+      "correctAnswer": "L'algorithme affichera :\\n2\\n4\\n6\\n8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Initialement compteur vaut 0. À chaque tour de la boucle, on ajoute 2 à compteur puis on l'affiche. Après le premier tour compteur = 2, après le second 4, puis 6, puis 8. La boucle s'exécute exactement 4 fois.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un algorithme qui calcule la somme des premiers entiers",
+      "content": "Écrire un algorithme qui demande un entier $n$ (supérieur ou égal à $1$), puis utilise une boucle « Répéter ... fois » pour calculer la somme $1 + 2 + \\dots + n$ et afficher le résultat.",
+      "correctAnswer": "Algorithme :\\nDébut\\n  Afficher \"Entrez un entier n : \"\\n  Lire n\\n  somme ← 0\\n  Pour i de 1 à n faire\\n    somme ← somme + i\\n  Fin pour\\n  Afficher \"La somme est \", somme\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise somme à 0. La boucle répète n fois, à chaque itération on ajoute la valeur courante de i (qui vaut 1, 2, ..., n) à somme. À la fin, somme contient $1+2+\\dots+n$, que l'on affiche.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

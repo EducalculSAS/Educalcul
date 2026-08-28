@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Ordre de grandeur",
+  "title": "Ordre de grandeur - Exercices à trous",
+  "blocks": [
+    {
+      "title": "Ordre de grandeur d'un nombre entier",
+      "content": "L'ordre de grandeur de $347$ est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "10^2|100"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'ordre de grandeur d'un nombre est la puissance de 10 la plus proche. Pour $347$, la puissance de 10 la plus proche est $10^2 = 100$. On peut aussi répondre $100$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre de grandeur d'un nombre décimal",
+      "content": "L'ordre de grandeur de $0,0045$ est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "10^{-3}|0,001"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un nombre décimal, on cherche la puissance de 10 la plus proche. $0,0045$ est proche de $0,001 = 10^{-3}$. L'ordre de grandeur est donc $10^{-3}$ (ou $0,001$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation d'un produit par ordre de grandeur",
+      "content": "On veut estimer le produit $47 \\times 312$. L'ordre de grandeur de ce produit est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "10^4|10000"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On arrondit chaque facteur à un chiffre significatif : $47 \\approx 5 \\times 10^1$ et $312 \\approx 3 \\times 10^2$. Le produit est environ $15 \\times 10^3 = 1,5 \\times 10^4$, dont l'ordre de grandeur est $10^4$ (soit $10\\,000$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

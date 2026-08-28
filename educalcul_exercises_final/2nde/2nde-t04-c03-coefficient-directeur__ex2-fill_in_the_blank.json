@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation du coefficient directeur",
+  "blocks": [
+    {
+      "title": "Question 1 : Interprétation numérique",
+      "content": "Dans l'équation $y = 2x + 3$, le coefficient directeur est {{1}} ; il indique que pour une augmentation de $1$ de l'abscisse, l'ordonnée augmente de {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation $y = 2x + 3$ est de la forme $y = ax + b$ où $a$ est le coefficient directeur. Ici $a = 2$. Cela signifie que pour chaque augmentation de $1$ de $x$, $y$ augmente de $2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Interprétation graphique",
+      "content": "Si le coefficient directeur d'une droite est positif, la droite est {{1}} ; s'il est négatif, elle est {{2}} ; s'il est nul, elle est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "croissante|montante",
+        "décroissante|descendante",
+        "horizontale"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un coefficient directeur positif ($a > 0$) donne une droite croissante (montante) de gauche à droite. Un coefficient directeur négatif ($a < 0$) donne une droite décroissante (descendante). Un coefficient directeur nul ($a = 0$) donne une droite horizontale (parallèle à l'axe des abscisses).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Interprétation dans un contexte réel",
+      "content": "Une voiture parcourt une distance $d$ (en kilomètres) en fonction du temps $t$ (en heures) selon la relation $d = 60t + 10$. Le coefficient directeur $60$ représente la {{1}} de la voiture, exprimée en {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "vitesse|vitesse moyenne",
+        "km/h|kilomètres par heure"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans la relation $d = 60t + 10$, le coefficient directeur $60$ correspond au taux de variation de la distance par rapport au temps, c'est-à-dire la vitesse (ou vitesse moyenne) de la voiture. Comme $d$ est en kilomètres et $t$ en heures, l'unité est le kilomètre par heure (km/h).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

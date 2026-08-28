@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 164,
+  "_course_code": "ce2-t03-c05-multiplier-par-10-et-100",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Distinguer déplacement de valeur et ajout de zéro comme raccourci",
+  "title": "Multiplier par 10 et 100 : déplacement ou ajout de zéro ?",
+  "questions": [
+    {
+      "text": "Pour calculer $23 \\times 10$, que se passe-t-il réellement avec les chiffres du nombre 23 ?",
+      "options": [
+        "On ajoute simplement un zéro à la fin du nombre pour obtenir 230.",
+        "Les chiffres 2 et 3 se décalent d'un rang vers la gauche, et un zéro prend la place des unités.",
+        "On multiplie le chiffre 2 par 10 et le chiffre 3 par 10 séparément.",
+        "Le nombre ne change pas, on écrit juste un zéro à côté."
+      ],
+      "correctAnswer": "Les chiffres 2 et 3 se décalent d'un rang vers la gauche, et un zéro prend la place des unités.",
+      "explanation": "Multiplier par 10, c'est augmenter la valeur de position de chaque chiffre : les unités deviennent des dizaines, les dizaines deviennent des centaines. Le chiffre 2 (dizaines) passe au rang des centaines, le chiffre 3 (unités) passe au rang des dizaines. Comme il n'y a plus aucune unité, on écrit 0 au rang des unités. L'option A décrit le raccourci d'écriture, pas le mécanisme mathématique. L'option C est une erreur fréquente (on ne multiplie pas les chiffres individuellement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa et Max calculent $45 \\times 10$. Léa dit : « J'ajoute un zéro, ça fait 450. » Max dit : « Le 4 va aux centaines, le 5 aux dizaines, je mets 0 aux unités. » Quelle explication correspond au fonctionnement du système de numération ?",
+      "options": [
+        "Celle de Léa, car c'est la méthode officielle pour multiplier par 10.",
+        "Celle de Max, car il décrit le déplacement des valeurs de position.",
+        "Les deux, car le résultat est identique.",
+        "Aucune, il faut faire l'addition $45 + 45 + ...$ dix fois."
+      ],
+      "correctAnswer": "Celle de Max, car il décrit le déplacement des valeurs de position.",
+      "explanation": "Le système de numération est positionnel : la valeur d'un chiffre dépend de sa place. Multiplier par 10 décale chaque chiffre d'un rang vers la gauche (vers les valeurs supérieures). Max explique ce déplacement (4 dizaines → 4 centaines, 5 unités → 5 dizaines). Léa utilise un raccourci d'écriture (ajout de zéro) qui fonctionne pour les nombres entiers mais ne explique pas le « pourquoi ». L'option D est la définition itérative, pas la méthode de calcul en CE2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer $14 \\times 100$. Pourquoi écrit-on deux zéros dans le résultat $1\\,400$ ?",
+      "options": [
+        "Parce que la règle dit : « multiplier par 100 = ajouter deux zéros ».",
+        "Parce que les chiffres 1 et 4 se décalent de deux rangs vers la gauche : les rangs des unités et des dizaines deviennent vides, on les remplit avec des zéros.",
+        "Parce qu'on fait $\\times 10$ (un zéro) puis encore $\\times 10$ (un autre zéro).",
+        "Parce que le 1 vaut 100 et le 4 vaut 400, donc ça fait deux zéros."
+      ],
+      "correctAnswer": "Parce que les chiffres 1 et 4 se décalent de deux rangs vers la gauche : les rangs des unités et des dizaines deviennent vides, on les remplit avec des zéros.",
+      "explanation": "Multiplier par 100, c'est multiplier par 10 deux fois de suite, ce qui décale les chiffres de deux rangs vers la gauche. Le 1 (dizaines) va aux dizaines de milliers ? Non, 14 : 1 dizaine, 4 unités. $\\times 100$ : 1 dizaine → 1 dizaine de milliers ? Non. 14 = 1 dixaine + 4 unités. $\\times 100$ = 1 mille + 4 centaines = 1400. Le 1 passe des dizaines aux milliers (2 rangs), le 4 passe des unités aux centaines (2 rangs). Les rangs des unités et des dizaines sont vides, on y met des zéros. L'option A est le raccourci. L'option C décrit la décomposition de l'opération mais pas le mécanisme unique de $\\times 100$. L'option D confond valeur du chiffre et valeur du nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule $30 \\times 10 = 300$. Pourquoi y a-t-il deux zéros dans le résultat ?",
+      "options": [
+        "Parce qu'on a ajouté un zéro au zéro qui était déjà à la fin de 30.",
+        "Parce que le 3 (dizaines) devient 3 centaines, le 0 (unités) devient 0 dizaines, et on place un 0 aux unités.",
+        "Parce que $3 \\times 10 = 30$ et on recopie le zéro de départ.",
+        "Parce que multiplier par 10 ajoute toujours un seul zéro, donc c'est une erreur."
+      ],
+      "correctAnswer": "Parce que le 3 (dizaines) devient 3 centaines, le 0 (unités) devient 0 dizaines, et on place un 0 aux unités.",
+      "explanation": "C'est le piège classique du « zéro déjà présent ». Appliquer bêtement la règle « j'ajoute un zéro » masque la compréhension. En réalité, tous les chiffres bougent : le 3 passe des dizaines aux centaines. Le premier zéro (qui était aux unités) passe au rang des dizaines (valeur 0 dizaines). Le rang des unités se libère, on y met un nouveau zéro. Il y a donc bien deux zéros pour deux raisons différentes : l'un vient du déplacement du zéro initial, l'autre marque la nouvelle place des unités vide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul et Julie expliquent $12 \\times 100 = 1\\,200$. Paul : « J'ai mis deux zéros derrière 12. » Julie : « Le 1 et le 2 ont glissé de deux cases vers la gauche. » Quelle explication prouve la compréhension du système décimal ?",
+      "options": [
+        "Celle de Paul, car c'est plus rapide et le résultat est bon.",
+        "Celle de Julie, car elle justifie le résultat par le changement de valeur de position des chiffres.",
+        "Les deux sont valides au même titre en CE2.",
+        "Aucune, car $12 \\times 100$ fait $120$."
+      ],
+      "correctAnswer": "Celle de Julie, car elle justifie le résultat par le changement de valeur de position des chiffres.",
+      "explanation": "Le programme attend que l'élève comprenne que multiplier par 10, 100, 1000 modifie la valeur de position des chiffres (décalage vers la gauche). Julie décrit ce mécanisme fondamental : le 1 (dizaines) devient 1 mille, le 2 (unités) devient 2 centaines. Paul utilise un automatisme d'écriture (raccourci) qui ne fonctionne que pour les nombres entiers et ne prépare pas à la multiplication des nombres décimaux (ex: $1,2 \\times 10$). L'option D donne un résultat faux ($\\times 10$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

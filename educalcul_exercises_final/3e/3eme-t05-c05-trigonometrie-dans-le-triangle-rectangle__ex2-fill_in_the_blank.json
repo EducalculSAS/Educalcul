@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Calcul longueur",
+  "title": "Exercices de trigonométrie : calcul de longueurs",
+  "blocks": [
+    {
+      "title": "Calcul d'un côté adjacent",
+      "content": "Dans le triangle rectangle $ABC$, rectangle en $B$, l'angle $\\widehat{A}$ mesure $30^\\circ$ et l'hypoténuse $AC$ mesure $10$ cm. La longueur du côté $AB$ (adjacent à l'angle $\\widehat{A}$) vaut {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "5\\sqrt{3}|8,66"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle, le cosinus d'un angle aigu est le rapport du côté adjacent sur l'hypoténuse. Donc $\\cos 30^\\circ = \\frac{AB}{AC}$. On sait que $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$ et $AC = 10$. Ainsi $AB = AC \\times \\cos 30^\\circ = 10 \\times \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}$ cm, soit environ $8,66$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle ABC, angle droit en B, angle A = 30°, AC = 10 cm",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "AB",
+          "BC",
+          "AC"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Dans le triangle rectangle $DEF$, rectangle en $E$, l'angle $\\widehat{D}$ mesure $45^\\circ$ et le côté $DE$ (adjacent à l'angle $\\widehat{D}$) mesure $7$ cm. La longueur de l'hypoténuse $DF$ vaut {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "7\\sqrt{2}|9,90"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le cosinus de l'angle $\\widehat{D}$ est le rapport du côté adjacent $DE$ sur l'hypoténuse $DF$ : $\\cos 45^\\circ = \\frac{DE}{DF}$. Comme $\\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$, on a $DF = \\frac{DE}{\\cos 45^\\circ} = \\frac{7}{\\frac{\\sqrt{2}}{2}} = 7 \\times \\frac{2}{\\sqrt{2}} = 7\\sqrt{2}$ cm, soit environ $9,90$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle DEF, angle droit en E, angle D = 45°, DE = 7 cm",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "DE",
+          "EF",
+          "DF"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "title": "Calcul de l'hypoténuse par Pythagore",
+      "content": "Dans le triangle rectangle $GHI$, rectangle en $H$, les côtés de l'angle droit mesurent $GH = 6$ cm et $HI = 8$ cm. La longueur de l'hypoténuse $GI$ vaut {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle, le théorème de Pythagore donne $GI^2 = GH^2 + HI^2$. Donc $GI^2 = 6^2 + 8^2 = 36 + 64 = 100$, donc $GI = \\sqrt{100} = 10$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle GHI, angle droit en H, GH = 6 cm, HI = 8 cm",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "GH",
+          "HI",
+          "GI"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

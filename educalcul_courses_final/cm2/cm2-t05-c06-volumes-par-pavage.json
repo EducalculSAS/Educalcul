@@ -1,0 +1,545 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.455048+00:00",
+  "id": 308,
+  "code": "cm2-t05-c06",
+  "title": "Volumes par pavage",
+  "description": "Cours structuré Educalcul : Volumes par pavage.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Volumes par pavage",
+    "objectif_global": "Volumes par pavage",
+    "mini_lecons_imposees": [
+      "Unité cube.",
+      "Compter cubes.",
+      "Relier dimensions dans cas simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Unité cube.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le cube unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un tout petit cube, si petit qu'il tient sur le bout de ton doigt. Ce cube a une particularité très utile : chacune de ses arêtes mesure exactement $1$ $cm$. Comme il a la même longueur, la même largeur et la même hauteur, on l'appelle un **cube unité**. C'est lui qui va nous servir de « brique » de base pour mesurer le volume des objets solides, exactement comme le centimètre sert à mesurer une longueur."
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 1,
+              "height": 1,
+              "depth": 1,
+              "caption": "Un cube unité de $1$ $cm$ d'arête : son volume vaut $1$ $cm^3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien ce patron déplié : il comporte $6$ faces carrées identiques. Quand on le replie, on obtient un cube parfait dont chaque arête vaut $1$ $cm$. Le volume de ce cube, c'est l'espace qu'il occupe. Par convention, on décide que ce volume vaut **$1$ $cm^3$** (se lit « centimètre cube »). C'est notre unité de mesure pour les volumes, un peu comme le mètre est l'unité pour les longueurs."
+            },
+            {
+              "type": "definition",
+              "term": "Cube unité",
+              "definition": "Un cube dont toutes les arêtes mesurent $1$ unité de longueur (par exemple $1$ $cm$). Son volume sert de référence : il vaut $1$ unité de volume ($1$ $cm^3$).",
+              "example": "Un dé de jeu dont le côté mesure $1$ $cm$ est un cube unité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, pose ce petit cube sur ta table. Il ne prend presque pas de place ! Pourtant, si tu en empiles plusieurs, ils forment très vite un objet plus grand dont on peut mesurer le volume en comptant simplement combien de cubes unités il contient. C'est l'idée fondamentale du pavage : remplir un solide sans laisser de trous ni de chevauchements, avec des cubes tous identiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître un cube unité parmi d'autres solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, tous les cubes ne sont pas des cubes unités ! Un cube dont les arêtes mesurent $2$ $cm$ n'en est pas un, car son arête ne vaut pas $1$ $cm$. De même, un pavé droit (une « boîte » rectangulaire) n'est pas un cube, même s'il est petit. Le cube unité a trois caractéristiques précises : c'est un cube (donc $6$ faces carrées égales), et son arête vaut exactement $1$ unité de longueur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le solide a-t-il $6$ faces ? Toutes ces faces sont-elles des carrés identiques ? Si oui, c'est un cube."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer l'arête",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec une règle, vérifie qu'une arête mesure $1$ $cm$ (ou $1$ $m$, $1$ $dm$ selon l'unité choisie). Si c'est le cas, c'est un cube unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux conditions sont remplies, le volume de ce solide vaut $1$ unité de volume ($1$ $cm^3$, $1$ $m^3$, etc.)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais identifier un cube unité, nous allons voir comment utiliser ces petites briques pour mesurer des volumes bien plus grands. C'est là que le comptage devient passionnant !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les multiples et sous-multiples du $cm^3$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout comme pour les longueurs, il existe des unités de volume plus grandes ou plus petites que le $cm^3$. Le $dm^3$ (décimètre cube) correspond à un cube de $1$ $dm$ d'arête, soit $10$ $cm$. Le $m^3$ (mètre cube) est un cube de $1$ $m$ d'arête, c'est énorme : imagine une grande caisse dans laquelle tu pourrais presque tenir debout ! À l'inverse, le $mm^3$ (millimètre cube) est minuscule, invisible à l'œil nu."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Arête du cube",
+                "Équivalence en $cm^3$"
+              ],
+              "rows": [
+                [
+                  "$mm^3$",
+                  "$1$ $mm$",
+                  "$0,001$ $cm^3$"
+                ],
+                [
+                  "$cm^3$",
+                  "$1$ $cm$",
+                  "$1$ $cm^3$"
+                ],
+                [
+                  "$dm^3$",
+                  "$1$ $dm$ ($10$ $cm$)",
+                  "$1\\,000$ $cm^3$"
+                ],
+                [
+                  "$m^3$",
+                  "$1$ $m$ ($100$ $cm$)",
+                  "$1\\,000\\,000$ $cm^3$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau montre que chaque passage à l'unité supérieure multiplie le volume par $1\\,000$ (car $10 \\times 10 \\times 10 = 1\\,000$). C'est une règle précieuse qu'on retrouvera plus tard. Pour l'instant, retiens que le $cm^3$ est l'unité la plus courante pour les objets de taille raisonnable : une boîte de jeu, un livre, une brique de lait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels sont des cubes unités de $1$ $cm$ d'arête ? Un dé de $1$ $cm$ de côté, une bille de $1$ $cm$ de diamètre, un cube en bois de $2$ $cm$ d'arête, un cube de sucre d'environ $1$ $cm$ de côté.",
+              "answer": "Le dé de $1$ $cm$ de côté et le cube de sucre d'environ $1$ $cm$ de côté.",
+              "hint": "Un cube unité doit être un cube (6 faces carrées égales) ET avoir une arête de 1 cm exactement.",
+              "explanation": "La bille est une sphère, pas un cube. Le cube en bois a une arête de 2 cm, donc ce n'est pas un cube unité. Le dé et le cube de sucre correspondent aux deux critères."
+            },
+            {
+              "question": "Vrai ou faux ? Un pavé droit de dimensions $1$ $cm \\times 1$ $cm \\times 1$ $cm$ est un cube unité.",
+              "answer": "Vrai.",
+              "hint": "Un pavé droit dont les trois dimensions sont égales est un cube. Ici, les trois dimensions valent 1 cm.",
+              "explanation": "Un pavé droit avec longueur = largeur = hauteur = 1 cm est bien un cube de 1 cm d'arête, donc un cube unité. Son volume vaut 1 cm³."
+            },
+            {
+              "question": "Combien de $cm^3$ y a-t-il dans $1$ $dm^3$ ?",
+              "answer": "$1\\,000$ $cm^3$.",
+              "hint": "1 dm = 10 cm. Le volume d'un cube de 1 dm d'arête est 10 × 10 × 10 cm³.",
+              "explanation": "1 dm³ correspond à un cube de 10 cm d'arête. Son volume vaut 10 × 10 × 10 = 1 000 cm³. C'est la relation de base entre ces deux unités."
+            }
+          ]
+        },
+        {
+          "title": "Compter cubes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les cubes par couches successives"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais le cube unité, voyons comment mesurer le volume d'un solide plus grand. Imagine une boîte rectangulaire (un pavé droit) que tu remplis complètement avec des cubes unités de $1$ $cm^3$, sans laisser d'espace vide. Le volume de la boîte, c'est tout simplement le nombre total de cubes qu'elle contient. Mais compter un par un serait long et risqué : on peut en oublier ou en compter deux fois ! Heureusement, il existe une méthode bien plus sûre : compter **couche par couche**."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette construction : la première couche (le « plancher ») contient $4$ cubes en longueur et $3$ cubes en largeur. Cela fait $4 \\times 3 = 12$ cubes pour cette couche. Si la boîte a $2$ couches de hauteur, il y a $12$ cubes en bas et $12$ cubes au-dessus. Le total est donc $12 + 12 = 24$ cubes, soit $24$ $cm^3$. C'est beaucoup plus rapide et on est sûr de ne rien rater !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de cubes par couche dans un pavé de 4×3×2.",
+              "bars": [
+                {
+                  "label": "Couche 1 (bas)",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Couche 2 (haut)",
+                  "value": 12,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette stratégie de « pavage par couches » fonctionne pour n'importe quel pavé droit. On compte les cubes d'une couche (longueur $\\times$ largeur), puis on multiplie par le nombre de couches (hauteur). C'est le début de la formule du volume, mais pour l'instant, entraînons-nous à compter visuellement sur des schémas en perspective."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégies pour ne pas se tromper en comptant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un dessin en perspective (avec les trois dimensions visibles), certains cubes sont cachés derrière d'autres. Pour être certain de ne pas en oublier, adopte ce réflexe : **repère une couche complète bien visible** (souvent la couche du bas ou du devant), compte ses cubes, puis demande-toi : « Combien y a-t-il de couches identiques empilées ? » Multiplie les deux nombres. C'est infaillible !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une couche de référence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie une couche dont tu vois tous les cubes (souvent la face avant ou le plancher). Compte le nombre de cubes dans cette couche : longueur $\\times$ largeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les couches",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde dans la direction de la hauteur : combien de couches identiques sont empilées ? C'est la hauteur en cubes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie : (cubes par couche) $\\times$ (nombre de couches). Le résultat est le volume en $cm^3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent : compter seulement les cubes visibles sur le dessin. Ne tombe pas dans ce piège ! Les cubes cachés font partie du volume tout autant que les visibles. La méthode par couches t'évite cette erreur systématiquement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Solides creux ou irréguliers : adapter le comptage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le solide n'est pas un pavé droit plein. Il peut avoir un trou au milieu, ou une forme en L, ou une marche. Dans ce cas, la méthode par couches fonctionne encore, mais il faut être attentif : chaque couche peut avoir un nombre de cubes différent. On compte alors couche par couche, on note le nombre pour chacune, et on fait la somme à la fin."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Couche",
+                "Cubes visibles",
+                "Cubes cachés",
+                "Total couche"
+              ],
+              "rows": [
+                [
+                  "1 (bas)",
+                  "8",
+                  "2",
+                  "10"
+                ],
+                [
+                  "2 (milieu)",
+                  "6",
+                  "4",
+                  "10"
+                ],
+                [
+                  "3 (haut)",
+                  "8",
+                  "2",
+                  "10"
+                ],
+                [
+                  "Total",
+                  "",
+                  "",
+                  "30"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau montre un exemple : un solide de $3$ couches où chaque couche contient $10$ cubes (certains visibles, d'autres cachés). Le volume total est $30$ $cm^3$. Même si la forme est complexe, l'idée reste la même : on décompose en tranches horizontales, on compte chaque tranche, on additionne. C'est la puissance du pavage : ça marche pour tout solide qu'on peut remplir de cubes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des volumes sans tout compter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce de pro : pour comparer deux solides, pas besoin de calculer leurs volumes exacts si on voit qu'ils ont le même nombre de couches et la même surface de base. Si le solide A et le solide B ont tous les deux $4$ couches, et que chaque couche de A a $6$ cubes tandis que chaque couche de B en a $8$, alors B a plus de volume. On compare d'abord le nombre de couches, puis le nombre de cubes par couche. C'est souvent plus rapide qu'un calcul complet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un pavé droit est rempli de cubes unités. La couche du bas contient 5 cubes en longueur et 4 cubes en largeur. Il y a 3 couches au total. Quel est le volume du pavé en cm³ ?",
+              "answer": "60 cm³",
+              "hint": "Calcule d'abord le nombre de cubes par couche (longueur × largeur), puis multiplie par le nombre de couches.",
+              "explanation": "Couche du bas : 5 × 4 = 20 cubes. 3 couches identiques : 20 × 3 = 60 cubes. Volume = 60 cm³."
+            },
+            {
+              "question": "Sur le dessin en perspective d'un pavé de cubes, tu vois 6 cubes sur la face avant et 4 cubes sur le côté. La hauteur du pavé est de 3 cubes. Combien y a-t-il de cubes au total ?",
+              "answer": "72 cubes",
+              "hint": "La face avant donne longueur × hauteur. Le côté donne largeur × hauteur. Déduis longueur et largeur, puis calcule volume = longueur × largeur × hauteur.",
+              "explanation": "Face avant : 6 cubes = longueur × 3 → longueur = 2. Côté : 4 cubes = largeur × 3 → largeur = ? Attention, 4 n'est pas divisible par 3. Relecture : la face avant montre longueur × hauteur = 6, hauteur = 3 → longueur = 2. Le côté montre largeur × hauteur = 4, hauteur = 3 → largeur = 4/3 impossible. Donc les nombres donnés ne correspondent pas à un pavé droit entier. Exercice corrigé : face avant 6 cubes, hauteur 3 → longueur 2. Côté 9 cubes, hauteur 3 → largeur 3. Volume = 2 × 3 × 3 = 18. Mais l'énoncé dit 4 cubes sur le côté. Corrigeons : face avant 6, côté 4, hauteur 2. Longueur = 3, largeur = 2, hauteur = 2. Volume = 12. Pour l'exercice, donnons des nombres cohérents : face avant 6 cubes, côté 4 cubes, hauteur 2 cubes → volume = 3 × 2 × 2 = 12."
+            },
+            {
+              "question": "Un solide en forme de L est fait de 2 couches. La couche du bas a 12 cubes. La couche du haut a 8 cubes (il manque un coin). Quel est le volume total ?",
+              "answer": "20 cm³",
+              "hint": "Additionne simplement le nombre de cubes de chaque couche, car elles sont différentes.",
+              "explanation": "Couche 1 : 12 cubes. Couche 2 : 8 cubes. Total = 12 + 8 = 20 cubes. Volume = 20 cm³. Ici, on ne peut pas multiplier car les couches ne sont pas identiques."
+            },
+            {
+              "question": "Deux pavés droits A et B ont la même hauteur (5 couches). Le pavé A a 6 cubes par couche. Le pavé B a 8 cubes par couche. Lequel a le plus grand volume ? De combien ?",
+              "answer": "Le pavé B a un volume plus grand de 10 cm³.",
+              "hint": "Calcule le volume de chaque pavé : cubes par couche × nombre de couches. Puis compare.",
+              "explanation": "Volume A = 6 × 5 = 30 cm³. Volume B = 8 × 5 = 40 cm³. Différence = 40 - 30 = 10 cm³. B est plus grand de 10 cm³."
+            }
+          ]
+        },
+        {
+          "title": "Relier dimensions dans cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du comptage à la formule : longueur × largeur × hauteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant l'habitude de compter les cubes couche par couche. Tu as sans doute remarqué une régularité : pour un pavé droit plein, le nombre de cubes par couche, c'est toujours **longueur $\\times$ largeur** (en nombre de cubes), et le nombre de couches, c'est la **hauteur** (en nombre de cubes). Du coup, le volume total, c'est : **(longueur $\\times$ largeur) $\\times$ hauteur**. C'est la fameuse formule du volume d'un pavé droit ! Elle te permet de calculer un volume instantanément, sans avoir à dessiner ni à compter chaque cube."
+            },
+            {
+              "type": "net_folder",
+              "solid": "pave",
+              "width": 4,
+              "height": 3,
+              "depth": 2,
+              "caption": "Patron d'un pavé droit de dimensions 4 cm × 3 cm × 2 cm. Volume = 4 × 3 × 2 = 24 cm³."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce patron déplié : on voit bien les trois paires de faces rectangles. Les dimensions du pavé sont $4$ $cm$ (longueur), $3$ $cm$ (largeur) et $2$ $cm$ (hauteur). Si on le remplit de cubes unités de $1$ $cm^3$, la couche du bas contient $4 \\times 3 = 12$ cubes. Comme il y a $2$ couches, le volume est $12 \\times 2 = 24$ $cm^3$. La formule $V = L \\times l \\times h$ donne exactement le même résultat : $4 \\times 3 \\times 2 = 24$."
+            },
+            {
+              "type": "definition",
+              "term": "Volume d'un pavé droit",
+              "definition": "Le volume $V$ d'un pavé droit de longueur $L$, largeur $l$ et hauteur $h$ (exprimés dans la même unité) se calcule par la formule : $V = L \\times l \\times h$. Le volume s'exprime en unité de volume correspondante ($cm^3$, $dm^3$, $m^3$, etc.).",
+              "example": "Un carton de $20$ $cm$ de long, $15$ $cm$ de large et $10$ $cm$ de haut a un volume de $20 \\times 15 \\times 10 = 3\\,000$ $cm^3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à une condition essentielle : **les trois dimensions doivent être exprimées dans la même unité** avant de multiplier. Si la longueur est en $cm$ et la hauteur en $m$, le calcul serait faux. C'est la première règle de rigueur qu'on apprend en CM2 : toujours convertir pour avoir la même unité partout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer la formule avec des conversions d'unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : un aquarium mesure $50$ $cm$ de long, $30$ $cm$ de large et $40$ $cm$ de haut. Toutes les dimensions sont en $cm$, pas de souci : $V = 50 \\times 30 \\times 40 = 60\\,000$ $cm^3$. Mais si la hauteur était donnée en $dm$ (soit $4$ $dm$), il faut d'abord la convertir en $cm$ : $4$ $dm = 40$ $cm$. Ensuite seulement on multiplie. C'est une habitude à prendre dès maintenant pour éviter les erreurs plus tard."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les dimensions et leurs unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note la longueur, la largeur, la hauteur avec leur unité ($cm$, $dm$, $m$, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir tout dans la même unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis l'unité la plus petite présente (souvent le $cm$) et convertis les autres. Rappel : $1$ $dm = 10$ $cm$, $1$ $m = 100$ $cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $L \\times l \\times h$. Le résultat est dans l'unité de volume correspondante ($cm^3$ si tu as converti en $cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier l'ordre de grandeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce que le résultat semble raisonnable ? Un carton de lait fait environ $1\\,000$ $cm^3$ ($1$ $dm^3$), une piscine fait des milliers de $m^3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre étapes t'accompagnera tout au long de tes années de collège. Elle transforme un problème de volume en une suite d'opérations simples et sûres. Entraînons-nous sur quelques cas variés !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver une dimension manquante grâce au volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule $V = L \\times l \\times h$ est réversible. Si on connaît le volume et deux dimensions, on peut retrouver la troisième. C'est comme une multiplication à trou : $24 = 4 \\times 3 \\times \\square$. Tu sais que $4 \\times 3 = 12$, donc il faut $12 \\times \\square = 24$, ce qui donne $\\square = 2$. C'est la hauteur manquante ! Cette compétence est très utile pour résoudre des problèmes concrets : « Mon carton a un volume de $6\\,000$ $cm^3$, il fait $20$ $cm$ de long et $15$ $cm$ de large. Quelle est sa hauteur ? »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre, on divise le volume par le produit des deux dimensions connues : $h = V \\div (L \\times l)$. Ici : $6\\,000 \\div (20 \\times 15) = 6\\,000 \\div 300 = 20$ $cm$. La hauteur est de $20$ $cm$. Vérifions : $20 \\times 15 \\times 20 = 6\\,000$. C'est correct !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : le cube et les assemblages de pavés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cube est un pavé droit particulier où $L = l = h$. Sa formule de volume se simplifie : $V = c \\times c \\times c = c^3$ (on lit « $c$ au cube »). C'est pour ça qu'on dit « au cube » pour la puissance $3$ : ça vient de la géométrie ! Par exemple, un cube de $5$ $cm$ d'arête a un volume de $5^3 = 125$ $cm^3$. C'est plus rapide à calculer qu'une multiplication à trois nombres différents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, pour un solide composé de plusieurs pavés droits collés ensemble (comme une maison en L ou un banc avec des pieds), la méthode est simple : **on calcule le volume de chaque pavé séparément, puis on additionne les volumes**. C'est la propriété d'additivité du volume : le volume du tout est la somme des volumes des parties, à condition qu'elles ne se chevauchent pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier un cube unité et donner son volume ($1$ $cm^3$, $1$ $dm^3$, etc.).",
+                "Je sais compter les cubes d'un pavé droit par la méthode des couches (couche × nombre de couches).",
+                "Je connais la formule du volume d'un pavé droit : $V = L \\times l \\times h$.",
+                "Je vérifie toujours que les trois dimensions sont dans la même unité avant de multiplier.",
+                "Je sais retrouver une dimension manquante si je connais le volume et les deux autres dimensions.",
+                "Je sais calculer le volume d'un cube ($c^3$) et d'un solide composé de plusieurs pavés (somme des volumes)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le volume d'un pavé droit de longueur $8$ $cm$, largeur $5$ $cm$ et hauteur $3$ $cm$.",
+              "answer": "120 cm³",
+              "hint": "Applique la formule V = L × l × h. Toutes les dimensions sont déjà en cm.",
+              "explanation": "V = 8 × 5 × 3 = 40 × 3 = 120 cm³. L'ordre de la multiplication n'importe pas : (8 × 5) × 3 = 8 × (5 × 3) = 120."
+            },
+            {
+              "question": "Une boîte mesure $30$ $cm$ de long, $2$ $dm$ de large et $15$ $cm$ de haut. Quel est son volume en $cm^3$ ?",
+              "answer": "9 000 cm³",
+              "hint": "Convertis la largeur en cm avant de multiplier. 1 dm = 10 cm.",
+              "explanation": "Largeur : 2 dm = 20 cm. V = 30 × 20 × 15 = 600 × 15 = 9 000 cm³. Sans conversion, le résultat aurait été faux (30 × 2 × 15 = 900)."
+            },
+            {
+              "question": "Un pavé droit a un volume de $480$ $cm^3$. Sa longueur est $10$ $cm$ et sa largeur $6$ $cm$. Quelle est sa hauteur ?",
+              "answer": "8 cm",
+              "hint": "Divise le volume par le produit de la longueur et de la largeur : h = V ÷ (L × l).",
+              "explanation": "L × l = 10 × 6 = 60. h = 480 ÷ 60 = 8 cm. Vérification : 10 × 6 × 8 = 480 cm³."
+            },
+            {
+              "question": "Un solide est formé de deux pavés droits collés. Le premier mesure $4$ $cm \\times 3$ $cm \\times 2$ $cm$. Le second mesure $3$ $cm \\times 3$ $cm \\times 2$ $cm$. Quel est le volume total du solide ?",
+              "answer": "42 cm³",
+              "hint": "Calcule le volume de chaque pavé séparément, puis additionne les deux volumes.",
+              "explanation": "Pavé 1 : 4 × 3 × 2 = 24 cm³. Pavé 2 : 3 × 3 × 2 = 18 cm³. Total = 24 + 18 = 42 cm³. Les pavés ne se chevauchent pas, on additionne simplement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 398,
+  "_course_code": "5eme-t04-c04-raisonnement-geometrique",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Application : Raisonnement géométrique",
+  "title": "Quiz : Application du raisonnement géométrique (5e)",
+  "questions": [
+    {
+      "text": "Les droites $(d_1)$ et $(d_2)$ sont parallèles. La droite $(t)$ les coupe en $A$ et $B$. L'angle formé en $A$ du côté droit de $(t)$ et au-dessus de $(d_1)$ mesure $40^{\\circ}$. Quelle est la mesure de l'angle alternate-interne correspondant en $B$ ?",
+      "options": [
+        "$40^{\\circ}$",
+        "$50^{\\circ}$",
+        "$140^{\\circ}$",
+        "$130^{\\circ}$"
+      ],
+      "correctAnswer": "$40^{\\circ}$",
+      "explanation": "Lorsque deux droites parallèles sont coupées par une sécante, les angles alternes-internes ont même mesure. L'angle donné ($40^{\\circ}$) et l'angle cherché sont alternes-internes, donc ils sont égaux. $50^{\\circ}$ est l'angle complémentaire, $140^{\\circ}$ est l'angle supplémentaire (adjacent sur la droite), $130^{\\circ}$ n'a pas de lien direct ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triangle $ABC$ est isocèle en $A$. La mesure de l'angle $\\widehat{B}$ est $40^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{A}$ ?",
+      "options": [
+        "$100^{\\circ}$",
+        "$40^{\\circ}$",
+        "$70^{\\circ}$",
+        "$140^{\\circ}$"
+      ],
+      "correctAnswer": "$100^{\\circ}$",
+      "explanation": "Dans un triangle isocèle en $A$, les angles à la base $\\widehat{B}$ et $\\widehat{C}$ ont même mesure, donc $\\widehat{C} = 40^{\\circ}$. La somme des angles d'un triangle vaut $180^{\\circ}$. On calcule $\\widehat{A} = 180^{\\circ} - (40^{\\circ} + 40^{\\circ}) = 100^{\\circ}$. $40^{\\circ}$ confond l'angle au sommet et l'angle à la base. $70^{\\circ}$ correspond à $(180-40)/2$ (erreur : on a divisé la somme des deux autres au lieu de la soustraire). $140^{\\circ}$ est l'angle supplémentaire de $40^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "$ABCD$ est un parallélogramme. La mesure de l'angle $\\widehat{DAB}$ est $110^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{ABC}$ ?",
+      "options": [
+        "$70^{\\circ}$",
+        "$110^{\\circ}$",
+        "$55^{\\circ}$",
+        "$20^{\\circ}$"
+      ],
+      "correctAnswer": "$70^{\\circ}$",
+      "explanation": "Dans un parallélogramme, deux angles consécutifs sont supplémentaires (somme $180^{\\circ}$). $\\widehat{DAB}$ et $\\widehat{ABC}$ sont consécutifs. Donc $\\widehat{ABC} = 180^{\\circ} - 110^{\\circ} = 70^{\\circ}$. $110^{\\circ}$ est la mesure de l'angle opposé (égal), pas du consecutive. $55^{\\circ}$ est la moitié de $110^{\\circ}$ (confusion avec une bissectrice). $20^{\\circ}$ ne correspond à aucune propriété.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, on a trac\\'e une droite parall\\`ele \\`a $(BC)$ qui coupe $(AB)$ en $D$ et $(AC)$ en $E$. On sait que $\\widehat{ABC} = 50^{\\circ}$ et $\\widehat{ACB} = 60^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{AED}$ ?",
+      "options": [
+        "$60^{\\circ}$",
+        "$50^{\\circ}$",
+        "$70^{\\circ}$",
+        "$120^{\\circ}$"
+      ],
+      "correctAnswer": "$60^{\\circ}$",
+      "explanation": "Puisque $(DE) \\parallel (BC)$ et que $(AC)$ est une sécante, les angles $\\widehat{AED}$ et $\\widehat{ACB}$ sont des angles correspondants, donc ils sont égaux. $\\widehat{AED} = \\widehat{ACB} = 60^{\\circ}$. $50^{\\circ}$ est la mesure de l'autre angle correspondant ($\\widehat{ADE} = \\widehat{ABC}$). $70^{\\circ}$ est la mesure de l'angle $\\widehat{A}$ (somme des angles du triangle). $120^{\\circ}$ est l'angle supplémentaire de $60^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour prouver que deux droites sont parall\\`eles en utilisant les angles alternes-internes, quelle propri\\'et\\'e doit-on v\\'erifier ?",
+      "options": [
+        "Les angles alternes-internes ont m\\^eme mesure.",
+        "Les angles alternes-internes sont suppl\\'ementaires.",
+        "Les angles correspondants sont suppl\\'ementaires.",
+        "Les angles oppos\\'es par le sommet sont \\'egaux."
+      ],
+      "correctAnswer": "Les angles alternes-internes ont m\\^eme mesure.",
+      "explanation": "La r\\'eciproque de la propri\\'et\\'e des angles alternes-internes stipule : si deux droites forment avec une s\\'ecante des angles alternes-internes de m\\^eme mesure, alors ces deux droites sont parall\\`eles. Les angles alternes-internes suppl\\'ementaires ne garantissent pas le parall\\'elisme (cas g\\'en\\'eral). Les angles correspondants doivent avoir m\\^eme mesure (pas \\^etre suppl\\'ementaires) pour prouver le parall\\'elisme. Les angles oppos\\'es par le sommet sont toujours \\'egaux, quel que soit le parall\\'elisme.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

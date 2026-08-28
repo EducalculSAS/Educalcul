@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Lire des étapes",
+  "title": "Quiz : Lire des étapes d'un programme de construction",
+  "questions": [
+    {
+      "text": "Voici les étapes d'un programme de construction :\\n1. Tracer un segment $[AB]$ de $6$ cm.\\n2. Tracer la droite perpendiculaire à $[AB]$ passant par $A$.\\n3. Placer le point $C$ sur cette droite de sorte que $AC = 4$ cm.\\nQuelle est la deuxième étape de ce programme ?",
+      "options": [
+        "Tracer le segment $[AB]$.",
+        "Tracer la droite perpendiculaire à $[AB]$ passant par $A$.",
+        "Placer le point $C$.",
+        "Mesurer l'angle $\\widehat{BAC}$."
+      ],
+      "correctAnswer": "Tracer la droite perpendiculaire à $[AB]$ passant par $A$.",
+      "explanation": "Le programme est une liste ordonnée. La première étape est le tracé du segment $[AB]$. La deuxième étape, indiquée par le numéro 2, est bien le tracé de la perpendiculaire en $A$. Les autres options correspondent à l'étape 1, l'étape 3 ou une action non demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un programme, on lit : « Tracer la droite $(AB)$ ». Que faut-il faire ?",
+      "options": [
+        "Tracer un segment qui s'arrête aux points $A$ et $B$.",
+        "Tracer une ligne droite qui passe par $A$ et $B$ et qui continue de chaque côté.",
+        "Tracer un rayon qui commence en $A$ et passe par $B$.",
+        "Tracer un cercle de centre $A$ passant par $B$."
+      ],
+      "correctAnswer": "Tracer une ligne droite qui passe par $A$ et $B$ et qui continue de chaque côté.",
+      "explanation": "En géométrie, la notation $(AB)$ désigne la droite qui passe par les points $A$ et $B$. Elle est infinie dans les deux sens. Le segment se note $[AB]$, la demi-droite $[AB)$ et le cercle nécessite un centre et un rayon.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme :\\n1. Tracer un segment $[AB]$ de $5$ cm.\\n2. Tracer le cercle de centre $A$ et de rayon $3$ cm.\\n3. Tracer le cercle de centre $B$ et de rayon $3$ cm.\\n4. Nommer $C$ un point d'intersection des deux cercles.\\nQuelle est la longueur du segment $[AC]$ ?",
+      "options": [
+        "$5$ cm",
+        "$3$ cm",
+        "$8$ cm",
+        "$6$ cm"
+      ],
+      "correctAnswer": "$3$ cm",
+      "explanation": "Le point $C$ est placé sur le cercle de centre $A$ et de rayon $3$ cm (étape 2). Par définition, tout point sur un cercle est à une distance du centre égale au rayon. Donc $AC = 3$ cm. La longueur $AB = 5$ cm ne concerne pas la distance $AC$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un triangle isocèle en $C$ de base $[AB] = 6$ cm, on propose ce programme :\\n1. Tracer le segment $[AB] = 6$ cm.\\n2. Tracer la médiatrice de $[AB]$.\\n3. Choisir un point $C$ sur cette médiatrice.\\n4. Tracer les segments $[AC]$ et $[BC]$.\\nPourquoi le triangle $ABC$ est-il isocèle en $C$ ?",
+      "options": [
+        "Parce que $AB = AC$.",
+        "Parce que $AC = BC$.",
+        "Parce que l'angle $\\widehat{ACB}$ est droit.",
+        "Parce que $C$ est le milieu de $[AB]$."
+      ],
+      "correctAnswer": "Parce que $AC = BC$.",
+      "explanation": "La médiatrice d'un segment est l'ensemble des points équidistants des extrémités de ce segment. Comme $C$ est sur la médiatrice de $[AB]$, il est à égale distance de $A$ et de $B$, donc $AC = BC$. C'est la définition d'un triangle isocèle en $C$. L'angle en $C$ n'est pas nécessairement droit et $C$ n'est pas le milieu de $[AB]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute ce programme :\\n1. Tracer un segment $[AB]$ de $8$ cm.\\n2. Tracer le cercle de centre $A$ de rayon $5$ cm.\\n3. Tracer le cercle de centre $B$ de rayon $5$ cm.\\n4. Les cercles se coupent en deux points ; on nomme $C$ celui du haut.\\n5. Tracer $[AC]$ et $[BC]$.\\nQuelle est la nature du triangle $ABC$ ?",
+      "options": [
+        "Rectangle en $C$.",
+        "Isocèle en $C$.",
+        "Équilatéral.",
+        "Rectangle en $A$."
+      ],
+      "correctAnswer": "Isocèle en $C$.",
+      "explanation": "Le point $C$ est un point d'intersection des deux cercles. Il appartient donc au cercle de centre $A$ (rayon $5$ cm) et au cercle de centre $B$ (rayon $5$ cm). On a donc $AC = 5$ cm et $BC = 5$ cm. Les deux côtés $AC$ et $BC$ ont la même longueur, le triangle est isocèle en $C$. Il n'est pas équilatéral car $AB = 8$ cm. Rien ne prouve qu'il est rectangle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

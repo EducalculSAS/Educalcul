@@ -1,0 +1,660 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.495069+00:00",
+  "id": 318,
+  "code": "cm2-t07-c01",
+  "title": "Tableaux, diagrammes et courbes",
+  "description": "Cours structuré Educalcul : Tableaux, diagrammes et courbes.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Tableaux, diagrammes et courbes",
+    "objectif_global": "Tableaux, diagrammes et courbes",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Comparer.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première partie, tu vas apprendre à lire un tableau de données. Un tableau organise les informations en lignes et en colonnes, comme une petite grille. Chaque ligne correspond à un objet ou une catégorie, et chaque colonne donne une caractéristique, par exemple le nombre de fruits vendus. Pour trouver une valeur, tu repères d'abord la ligne qui t'intéresse, puis tu regardes la colonne qui porte le nom de la donnée recherchée. C'est comme chercher un mot dans un dictionnaire : tu suis le doigt le long de la ligne jusqu'à la bonne case."
+            },
+            {
+              "type": "definition",
+              "term": "tableau",
+              "definition": "Une grille qui range des données en lignes et en colonnes pour les lire facilement.",
+              "example": "Un tableau des ventes de fruits avec les colonnes Fruit et Quantité."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Catégorie",
+                "Valeur"
+              ],
+              "rows": [
+                [
+                  "Pommes",
+                  "12"
+                ],
+                [
+                  "Poires",
+                  "8"
+                ],
+                [
+                  "Bananes",
+                  "15"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais déchiffrer un tableau, passe au diagramme en barres, qui montre les mêmes nombres sous forme visuelle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres transforme les nombres en rectangles dont la hauteur est proportionnelle à la valeur. L'axe vertical porte les nombres, l'axe horizontal les catégories. Pour lire une barre, tu poses ton doigt sur son sommet, tu descends verticalement jusqu'à l'axe des valeurs et tu notes le chiffre indiqué. Si la barre ne tombe pas exactement sur un trait, tu估imes la valeur entre deux graduations. Cette lecture te donne une image rapide des grandeurs comparées."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme en barres",
+              "definition": "Un graphique qui utilise des rectangles verticaux pour représenter des quantités.",
+              "example": "Un diagramme où chaque fruit a une barre dont la hauteur montre le nombre vendu."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Ventes de fruits",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Poires",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 15,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'axe des valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'axe vertical gradué ; chaque trait correspond à un nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la hauteur de la barre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le doigt sur le sommet de la barre et descend jusqu'à l'axe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nombre lu ; si ce n'est pas un trait exact, estime entre deux graduations."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, découvre le diagramme circulaire, où les parts d'un tout sont représentées par des secteurs colorés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme circulaire, aussi appelé camembert, partage un cercle en parts proportionnelles aux pourcentages ou aux quantités. Chaque part porte une étiquette et une couleur. Pour lire une part, tu regardes son angle ou le pourcentage écrit à côté. Si le camembert n'a pas de chiffres, tu peux comparer les tailles des parts à l'œil : la plus grande part correspond à la catégorie la plus importante. C'est très utile pour voir la répartition d'un budget ou d'un sondage."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme circulaire",
+              "definition": "Un cercle divisé en secteurs dont l'angle représente la part de chaque catégorie.",
+              "example": "Un camembert montrant 40 % pommes, 30 % poires, 30 % bananes."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits",
+              "slices": [
+                {
+                  "label": "Pommes",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Poires",
+                  "value": 30,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 30,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, regarde comment une courbe relie des points pour montrer une évolution dans le temps."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une courbe simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une courbe trace le chemin d'une quantité qui change, par exemple la température au fil des jours. L'horizontal indique le temps (jours, mois), le vertical la valeur (degrés). Chaque point marque une mesure précise ; en les reliant, tu vois la tendance : monte, descend, reste stable. Pour lire la courbe, tu choisis un jour sur l'axe horizontal, tu montes jusqu'à la courbe, puis tu vas horizontalement vers l'axe vertical pour lire la température. C'est comme suivre un chemin sur une carte."
+            },
+            {
+              "type": "definition",
+              "term": "courbe",
+              "definition": "Une ligne qui relie des points pour montrer comment une valeur évolue.",
+              "example": "Une courbe de température sur une semaine."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Température sur 10 jours"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau ci-dessus, quelle est la valeur pour la catégorie « Poires » ?",
+              "answer": "8",
+              "hint": "Regarde la ligne Poires et la colonne Valeur.",
+              "explanation": "La ligne Poires croise la colonne Valeur à 8."
+            },
+            {
+              "question": "Quelle est la hauteur de la barre « Pommes » sur le diagramme en barres ?",
+              "answer": "12",
+              "hint": "Suis le sommet de la barre jusqu'à l'axe vertical.",
+              "explanation": "La barre Pommes atteint 12 sur l'axe des valeurs."
+            },
+            {
+              "question": "Quel pourcentage représente la part « Bananes » sur le camembert ?",
+              "answer": "30 %",
+              "hint": "Regarde l'étiquette sur la part Bananes.",
+              "explanation": "La part Bananes est annotée 30 %."
+            },
+            {
+              "question": "Quelle température la courbe indique-t-elle pour le jour 3 ?",
+              "answer": "18 °C",
+              "hint": "Monte verticalement depuis le jour 3 jusqu'à la courbe, puis lis sur l'axe vertical.",
+              "explanation": "Le point au jour 3 se situe à 18 sur l'axe vertical."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux tableaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas comparer deux tableaux qui présentent les mêmes catégories mais pour des périodes différentes, par exemple les ventes de janvier et de février. Tu regardes chaque ligne : la catégorie est identique, les valeurs changent. Pour voir la différence, tu soustrais le chiffre de janvier à celui de février. Si le résultat est positif, les ventes ont augmenté ; s'il est négatif, elles ont baissé. Cette méthode te permet de repérer rapidement les hausses et les baisses sans te perdre dans les chiffres."
+            },
+            {
+              "type": "definition",
+              "term": "comparer",
+              "definition": "Mettre en regard deux ensembles de données pour voir les différences ou les similitudes.",
+              "example": "Comparer les ventes de janvier et février pour chaque fruit."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Catégorie",
+                "Janvier",
+                "Février"
+              ],
+              "rows": [
+                [
+                  "Pommes",
+                  "10",
+                  "12"
+                ],
+                [
+                  "Poires",
+                  "9",
+                  "8"
+                ],
+                [
+                  "Bananes",
+                  "14",
+                  "15"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la comparaison de deux diagrammes en barres, qui offrent une vue visuelle immédiate."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux diagrammes en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque deux diagrammes en barres sont superposés, chaque catégorie possède deux barres côte à côte, souvent de couleurs différentes. Pour comparer, tu observes la hauteur de chaque paire : la barre la plus haute indique la valeur la plus grande pour cette période. Tu peux aussi lire les deux valeurs exactes en suivant la méthode de lecture déjà apprise. Ainsi, tu vois d'un coup d'œil si les ventes de pommes ont dépassé celles de poires en février."
+            },
+            {
+              "type": "definition",
+              "term": "barres groupées",
+              "definition": "Deux barres accolées pour la même catégorie, chacune représentant une série différente.",
+              "example": "Barres bleues pour janvier, rouges pour février."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Ventes janvier (bleu) vs février (rouge)",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Pommes",
+                  "value": 12,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 9,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Poires",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 15,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, compare deux diagrammes circulaires pour comprendre comment la répartition a évolué."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux diagrammes circulaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux camemberts côte à côte montrent la même totalité (par exemple 100 % des votes) mais avec des parts de tailles différentes. Tu compares les angles ou les pourcentages écrits sur chaque part. Si la part « Oui » passe de 60 % à 45 %, tu sais que l'opinion a changé. Tu peux aussi calculer la différence en soustrayant les pourcentages. Cette lecture t'aide à suivre l'évolution d'un sondage ou d'un budget."
+            },
+            {
+              "type": "definition",
+              "term": "évolution des parts",
+              "definition": "Changement de la proportion de chaque catégorie entre deux moments.",
+              "example": "Part « Oui » 60 % puis 45 %."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Sondage janvier",
+              "slices": [
+                {
+                  "label": "Oui",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Non",
+                  "value": 40,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, vois comment deux courbes sur le même graphique révèlent des tendances croisées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux courbes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux courbes sont tracées sur les mêmes axes, tu peux observer leurs intersections et leurs écarts. Si la courbe rouge (température matin) croise la courbe bleue (température après-midi), le point de croisement indique le moment où les deux températures sont égales. Entre deux intersections, la courbe la plus haute montre la température la plus élevée. En suivant les deux lignes, tu décris l'évolution comparative jour après jour."
+            },
+            {
+              "type": "definition",
+              "term": "intersection",
+              "definition": "Point où deux courbes se coupent, indiquant des valeurs égales.",
+              "example": "Les courbes du matin et de l'après-midi se croisent le jour 5."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Températures matin (bleu) et après-midi (rouge)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans les deux tableaux, de combien les ventes de « Pommes » ont-elles augmenté de janvier à février ?",
+              "answer": "2",
+              "hint": "Soustrais la valeur de janvier à celle de février.",
+              "explanation": "Janvier 10, février 12, différence 2."
+            },
+            {
+              "question": "Quelle catégorie a la plus grande différence entre les deux barres ?",
+              "answer": "Pommes",
+              "hint": "Compare la hauteur des deux barres pour chaque catégorie.",
+              "explanation": "Pommes : 12 vs 10, différence 2 ; Poires : 8 vs 9, différence 1."
+            },
+            {
+              "question": "De combien le pourcentage « Oui » a-t-il baissé entre le premier et le second camembert ?",
+              "answer": "15 %",
+              "hint": "Soustrais le deuxième pourcentage du premier.",
+              "explanation": "Premier 60 %, second 45 %, baisse 15 %."
+            },
+            {
+              "question": "À quel jour les deux courbes se croisent-elles ?",
+              "answer": "Jour 5",
+              "hint": "Cherche le point où les deux lignes se rejoignent.",
+              "explanation": "Les courbes se coupent au jour 5, valeurs égales."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu vas construire ton propre tableau à partir d'une liste de données brutes. Imagine que tu as noté le nombre de livres lus par chaque élève de la classe : 3, 5, 2, 4, 6. La première étape est de choisir les colonnes : « Prénom » et « Nombre de livres ». Ensuite, tu écris chaque prénom sur une ligne et tu informes le chiffre correspondant dans la colonne adéquate. Vérifie que chaque ligne ne contient qu'une seule information par colonne. Ton tableau devient alors un outil clair pour lire, trier ou comparer les résultats."
+            },
+            {
+              "type": "definition",
+              "term": "données brutes",
+              "definition": "Des informations non organisées, juste une liste de valeurs.",
+              "example": "3, 5, 2, 4, 6 livres lus."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Prénom",
+                "Nombre de livres"
+              ],
+              "rows": [
+                [
+                  "Léa",
+                  "4"
+                ],
+                [
+                  "Tom",
+                  "6"
+                ],
+                [
+                  "Nina",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après le tableau, transforme ces nombres en un diagramme en barres coloré."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour dessiner un diagramme en barres, tu reprends le tableau que tu viens de créer. Sur l'axe horizontal, tu écris les prénoms ; sur l'axe vertical, tu choisis une échelle qui monte jusqu'au nombre maximum, ici 6. Puis, pour chaque élève, tu traces un rectangle dont la hauteur atteint la valeur exacte. Utilise une règle pour que les barres soient droites et de même largeur. Colorie chaque barre différemment pour rendre le graphique agréable à lire."
+            },
+            {
+              "type": "definition",
+              "term": "échelle",
+              "definition": "La graduation de l'axe qui permet de convertir une hauteur en nombre.",
+              "example": "Un trait tous les 1 livre jusqu'à 6."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Livres lus par élève",
+              "bars": [
+                {
+                  "label": "Léa",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Tom",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Nina",
+                  "value": 3,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, apprends à représenter les mêmes données sous forme de camembert."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire montre la part de chaque élève dans le total des livres lus. D'abord, additionne tous les nombres pour obtenir le total, ici 13. Puis, pour chaque élève, calcule son pourcentage : (nombre ÷ total) × 100. Par exemple, 4 livres donnent environ 31 %. Sur un cercle, tu traces un angle proportionnel : 31 % correspondent à environ 112 degrés (360° × 0,31). Dessine chaque secteur avec un rapporteur, colorie-le et ajoute l'étiquette. Le camembert complet visualise la répartition globale."
+            },
+            {
+              "type": "definition",
+              "term": "pourcentage",
+              "definition": "Une part sur 100, utile pour comparer des parts d'un tout.",
+              "example": "31 % signifie 31 sur 100."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des livres lus",
+              "slices": [
+                {
+                  "label": "Léa",
+                  "value": 31,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Tom",
+                  "value": 46,
+                  "tone": "green"
+                },
+                {
+                  "label": "Nina",
+                  "value": 23,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, trace une courbe qui montre l'évolution des lectures sur plusieurs semaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une courbe simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une courbe se construit point par point. Supposons que tu aies noté le total de livres lus chaque semaine pendant quatre semaines : 5, 8, 7, 10. Sur l'axe horizontal, marque les semaines 1 à 4 ; sur le vertical, une échelle jusqu'à 10. Place un point au-dessus de chaque semaine à la hauteur correspondante. Relie les points par des segments droits pour obtenir une ligne continue. La courbe te permet de voir d'un coup d'œil si la lecture augmente, diminue ou reste stable au fil du temps."
+            },
+            {
+              "type": "definition",
+              "term": "courbe d'évolution",
+              "definition": "Une ligne qui relie des points chronologiques pour montrer une tendance.",
+              "example": "Total de livres lus semaine par semaine."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 1,
+              "xmax": 4,
+              "caption": "Livres lus par semaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un tableau de données.",
+                "Je sais comparer deux diagrammes en barres.",
+                "Je sais construire un diagramme circulaire à partir de pourcentages.",
+                "Je sais tracer une courbe d'évolution."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau avec les données : Léa 4, Tom 6, Nina 3.",
+              "answer": "Tableau avec trois lignes remplies correctement.",
+              "hint": "Écris chaque prénom et son nombre dans les bonnes colonnes.",
+              "explanation": "Chaque ligne associe un prénom à son nombre de livres."
+            },
+            {
+              "question": "Trace la barre pour Tom dont la valeur est 6.",
+              "answer": "Barre de hauteur 6 au-dessus de Tom.",
+              "hint": "Utilise l'échelle verticale jusqu'à 6.",
+              "explanation": "La barre Tom atteint 6 sur l'axe vertical."
+            },
+            {
+              "question": "Calcule le pourcentage pour Léa si le total est 13.",
+              "answer": "31 % (arrondi)",
+              "hint": "Divise 4 par 13 et multiplie par 100.",
+              "explanation": "4/13 ≈ 0,3077 → 30,8 % ≈ 31 %."
+            },
+            {
+              "question": "Place le point pour la semaine 3 avec valeur 7.",
+              "answer": "Point au-dessus de la semaine 3 à la hauteur 7.",
+              "hint": "Trouve la semaine 3 sur l'axe horizontal et monte jusqu'à 7.",
+              "explanation": "Le point (3,7) marque la troisième semaine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

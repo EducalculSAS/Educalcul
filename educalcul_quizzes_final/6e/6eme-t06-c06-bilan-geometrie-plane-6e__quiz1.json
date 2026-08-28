@@ -1,0 +1,103 @@
+{
+  "_status": "done",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Constructions et propriétés",
+  "title": "Constructions et propriétés - Géométrie plane 6e",
+  "questions": [
+    {
+      "text": "Pour tracer la médiatrice d'un segment $[AB]$, on place le compas en $A$ et on trace un arc de cercle de rayon supérieur à la moitié de $AB$. Que fait-on ensuite avec le même rayon ?",
+      "options": [
+        "On trace un arc de cercle centre $B$ qui coupe le premier arc en deux points.",
+        "On trace un arc de cercle centre $B$ qui passe par $A$.",
+        "On trace un arc de cercle centre $A$ de l'autre côté du segment.",
+        "On relie directement $A$ et $B$ à la règle."
+      ],
+      "correctAnswer": "On trace un arc de cercle centre $B$ qui coupe le premier arc en deux points.",
+      "explanation": "La construction de la médiatrice nécessite deux arcs de même rayon (supérieur à la demi-longueur du segment) tracés depuis les extrémités $A$ et $B$. Leurs intersections déterminent deux points équidistants de $A$ et $B$, ce qui permet de tracer la droite médiatrice. L'option B donne un rayon égal à $AB$, trop grand pour garantir l'intersection symétrique. L'option C ne crée pas d'intersection utile. L'option D trace le segment lui-même, pas sa médiatrice.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "A",
+        "caption": "Premier arc de cercle centre A pour la médiatrice de [AB]"
+      }
+    },
+    {
+      "text": "On a construit la bissectrice de l'angle $\\widehat{xOy}$. Un point $M$ est placé sur cette bissectrice. Quelle propriété géométrique relie les distances de $M$ aux côtés de l'angle ?",
+      "options": [
+        "Le point $M$ est équidistant des deux côtés de l'angle.",
+        "Le point $M$ est à la même distance du sommet $O$ que des côtés.",
+        "Le point $M$ est plus proche du côté le plus court.",
+        "Les distances de $M$ aux côtés sont proportionnelles aux longueurs des côtés."
+      ],
+      "correctAnswer": "Le point $M$ est équidistant des deux côtés de l'angle.",
+      "explanation": "La bissectrice d'un angle est l'ensemble des points intérieurs à l'angle qui sont équidistants des deux côtés de cet angle. C'est la propriété caractéristique de la bissectrice. Les distances en question sont les distances perpendiculaires (courtes) du point aux droites portant les côtés. Les autres affirmations sont fausses : la distance au sommet $O$ n'est pas égale aux distances aux côtés (sauf cas particuliers), il n'y a pas de notion de 'côté le plus court' pour une droite, et il n'y a pas de proportionnalité avec des longueurs de segments non définies ici.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 60,
+        "caption": "Angle xOy et sa bissectrice (point M sur la bissectrice)"
+      }
+    },
+    {
+      "text": "On veut tracer la perpendiculaire à une droite $(d)$ passant par un point $A$ appartenant à $(d)$. Après avoir tracé un arc de cercle centre $A$ coupant $(d)$ en $B$ et $C$, quelle est l'étape suivante ?",
+      "options": [
+        "Avec le même rayon, tracer des arcs centres $B$ et $C$ qui se coupent en $D$ ; tracer $(AD)$.",
+        "Changer de rayon, tracer un arc centre $B$ et un arc centre $C$ qui se coupent ; tracer la droite passant par $A$ et cette intersection.",
+        "Tracer le cercle de diamètre $[BC]$.",
+        "Mesurer l'angle $\\widehat{BAC}$ au rapporteur et tracer la droite formant $90^{\\circ}$."
+      ],
+      "correctAnswer": "Avec le même rayon, tracer des arcs centres $B$ et $C$ qui se coupent en $D$ ; tracer $(AD)$.",
+      "explanation": "C'est la construction classique de la perpendiculaire par un point de la droite. On utilise un rayon d'ouverture du compas inchangé (ou au moins supérieur à la demi-distance $BC$) pour tracer deux arcs depuis $B$ et $C$. Leur intersection $D$ est équidistante de $B$ et $C$, donc la droite $(AD)$ est la médiatrice de $[BC]$, donc perpendiculaire à $(d)$ en $A$. L'option B suggère de changer de rayon, ce qui n'est pas nécessaire et source d'erreur. L'option C (cercle de diamètre $[BC]$) est une propriété (Thalès) mais pas une construction au compas/règle standard ici. L'option D utilise le rapporteur, ce n'est pas une construction au compas.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "A",
+        "caption": "Construction de la perpendiculaire en A : arcs centres B et C"
+      }
+    },
+    {
+      "text": "On trace un triangle $ABC$ tel que $AB = 5\\,cm$, $AC = 5\\,cm$ et $BC = 6\\,cm$. Quelle construction au compas permet d'obtenir le sommet $A$ une fois la base $[BC]$ tracée ?",
+      "options": [
+        "Tracer un cercle centre $B$ de rayon $5\\,cm$ et un cercle centre $C$ de rayon $5\\,cm$ ; $A$ est une intersection.",
+        "Tracer un cercle centre $B$ de rayon $6\\,cm$ et un cercle centre $C$ de rayon $5\\,cm$.",
+        "Tracer la médiatrice de $[BC]$ et y placer $A$ à $5\\,cm$ de $B$ au compas.",
+        "Tracer un cercle centre $B$ de rayon $5\\,cm$ et la médiatrice de $[BC]$ ; $A$ est l'intersection."
+      ],
+      "correctAnswer": "Tracer un cercle centre $B$ de rayon $5\\,cm$ et un cercle centre $C$ de rayon $5\\,cm$ ; $A$ est une intersection.",
+      "explanation": "Le triangle est isocèle en $A$ ($AB = AC = 5\\,cm$). La construction SSS (trois côtés) consiste à tracer deux cercles : l'un centre $B$ de rayon $AB$, l'autre centre $C$ de rayon $AC$. Leurs intersections donnent les deux positions possibles pour $A$. L'option B utilise de mauvais rayons. L'option C et D mélangent construction de la médiatrice (propriété du triangle isocèle) et mesure au compas ; bien que géométriquement valides pour *trouver* A, ce ne sont pas la construction standard 'trois côtés' (SSS) demandée implicitement par 'quelle construction au compas permet d'obtenir le sommet A une fois la base tracée' (méthode des arcs de cercles). La méthode des deux cercles est la construction fondamentale SSS.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A (AB=AC=5, BC=6)",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "5 cm",
+          "6 cm"
+        ]
+      }
+    },
+    {
+      "text": "On possède trois segments de longueurs $3\\,cm$, $4\\,cm$ et $9\\,cm$. Peut-on construire un triangle avec ces trois segments comme côtés ?",
+      "options": [
+        "Non, car la somme des deux plus petits ($3+4=7$) est inférieure au plus grand ($9$).",
+        "Oui, car $3+4+9=16$ ce qui fait un périmètre correct.",
+        "Non, car $9$ est un multiple de $3$.",
+        "Oui, il suffit de tracer les trois cercles avec ces rayons."
+      ],
+      "correctAnswer": "Non, car la somme des deux plus petits ($3+4=7$) est inférieure au plus grand ($9$).",
+      "explanation": "Dans tout triangle, la somme des longueurs de deux côtés quelconques est strictement supérieure à la longueur du troisième côté (inégalité triangulaire). Ici, les deux plus petits côtés font $3$ et $4$, leur somme est $7$. Le plus grand côté fait $9$. Comme $7 < 9$, l'inégalité triangulaire n'est pas vérifiée : les arcs de cercles de rayons $3$ et $4$ tracés aux extrémités du segment de longueur $9$ ne se couperont pas. Il est donc impossible de construire ce triangle. L'option B confond périmètre et condition d'existence. L'option C est sans lien géométrique. L'option D ignore la condition d'intersection des cercles.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

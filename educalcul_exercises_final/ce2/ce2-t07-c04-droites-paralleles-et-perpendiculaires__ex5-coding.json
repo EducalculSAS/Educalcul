@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 199,
+  "_course_code": "ce2-t07-c04-droites-paralleles-et-perpendiculaires",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Algorithmes : Droites parallèles et perpendiculaires",
+  "blocks": [
+    {
+      "title": "Vérifier la perpendicularité",
+      "content": "Écris l'algorithme (la suite d'étapes dans l'ordre) pour vérifier si deux droites sont perpendiculaires en utilisant une équerre.",
+      "correctAnswer": "1. Placer le bord de l'équerre le long de la première droite.\\n2. Vérifier si la seconde droite coïncide avec l'autre bord de l'équerre (celui qui forme l'angle droit).\\n3. Si oui, les droites sont perpendiculaires (elles forment un angle droit de $90^\\circ$). Sinon, elles ne le sont pas.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour vérifier la perpendicularité, on utilise l'angle droit de l'équerre comme référence. On aligne un côté de l'équerre sur une droite, puis on regarde si l'autre droite passe exactement par l'autre côté de l'angle droit. C'est la définition même de deux droites perpendiculaires : elles se coupent en formant un angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer une perpendiculaire",
+      "content": "Écris l'algorithme pour tracer une droite perpendiculaire à une droite $d$ passant par un point $A$ donné, en utilisant une règle et une équerre.",
+      "correctAnswer": "1. Placer la règle le long de la droite $d$.\\n2. Poser l'équerre contre la règle, avec son angle droit du côté où l'on veut tracer.\\n3. Faire glisser l'équerre le long de la règle jusqu'à ce que le bord de l'équerre passe par le point $A$.\\n4. Tracer le trait le long du bord de l'équerre qui passe par $A$ : c'est la perpendiculaire cherchée.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction classique utilise la règle comme guide pour l'équerre. L'équerre conserve l'angle droit. En la faisant glisser le long de la règle (qui suit la droite $d$), on déplace cet angle droit le long de $d$. Quand le bord de l'équerre passe par $A$, on trace la droite qui est donc perpendiculaire à $d$ en $A$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Vérifier le parallélisme",
+      "content": "Écris l'algorithme pour vérifier si deux droites sont parallèles en utilisant une règle et une équerre. Précise la propriété utilisée.",
+      "correctAnswer": "Propriété : Deux droites perpendiculaires à une même troisième droite sont parallèles entre elles.\\nAlgorithme :\\n1. Tracer une droite $p$ perpendiculaire à la première droite (avec la règle et l'équerre).\\n2. Vérifier, en gardant la règle sur la droite $p$, si l'équerre montre que la seconde droite est aussi perpendiculaire à $p$.\\n3. Si les deux droites sont perpendiculaires à $p$, alors elles sont parallèles. Sinon, elles ne le sont pas.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ne peut pas mesurer l'écartement entre deux droites indéfinies avec une règle seule. La méthode géométrique standard au CE2 utilise la propriété : 'Deux droites perpendiculaires à une même droite sont parallèles'. On trace donc une perpendiculaire commune (la droite $p$) à la première droite, puis on teste si cette même droite $p$ est aussi perpendiculaire à la seconde. Si c'est le cas, les deux droites initiales sont parallèles.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

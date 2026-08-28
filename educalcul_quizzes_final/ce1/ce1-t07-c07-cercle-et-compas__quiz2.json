@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 132,
+  "_course_code": "ce1-t07-c07-cercle-et-compas",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Tracer un cercle",
+  "title": "Quiz : Tracer un cercle au compas",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour tracer un cercle parfait ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Un compas",
+      "explanation": "Le compas est l'outil spécifique pour tracer des cercles. La règle trace des segments, l'équerre trace des angles droits et le rapporteur mesure les angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on le point au milieu du cercle, où l'on pose la pointe sèche du compas et qui ne bouge pas ?",
+      "options": [
+        "Le rayon",
+        "Le diamètre",
+        "Le centre",
+        "La circonférence"
+      ],
+      "correctAnswer": "Le centre",
+      "explanation": "Le centre est le point fixe (souvent noté $O$). Le rayon est la distance du centre au bord, le diamètre traverse le cercle en passant par le centre, la circonférence est le tracé du cercle lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on la distance entre le centre du cercle et n'importe quel point sur le tracé ?",
+      "options": [
+        "Le diamètre",
+        "Le rayon",
+        "Le centre",
+        "Le périmètre"
+      ],
+      "correctAnswer": "Le rayon",
+      "explanation": "Le rayon est la distance constante du centre au cercle. Le diamètre est le double du rayon (il traverse le cercle). Le périmètre est la longueur totale du tour du cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour régler l'écartement du compas à $3$ cm, que fait-on avec la règle ?",
+      "options": [
+        "On pose la pointe sur le $0$ de la règle et le crayon sur le $3$",
+        "On pose les deux pointes sur le $3$",
+        "On trace un trait de $3$ cm au crayon",
+        "On tourne le compas trois fois"
+      ],
+      "correctAnswer": "On pose la pointe sur le $0$ de la règle et le crayon sur le $3$",
+      "explanation": "Pour obtenir un rayon de $3$ cm, on écarte les deux branches du compas en alignant la pointe sèche sur le zéro de la règle et la mine (crayon) sur la graduation $3$. Les autres propositions ne correspondent pas à la bonne méthode de réglage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure, le point $O$ est le centre du cercle. Quelle est la longueur du rayon de ce cercle ?",
+      "options": [
+        "$2$ cm",
+        "$4$ cm",
+        "$6$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$4$ cm",
+      "explanation": "La figure montre un compas ouvert avec un rayon réglé sur $4$. Le rayon est la distance du centre $O$ au trait du cercle, elle vaut donc $4$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et de rayon 4 cm"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Facteur commun",
+  "title": "Factorisation : Approfondissement - Facteur commun",
+  "questions": [
+    {
+      "text": "Quel est le facteur commun le plus simple de l'expression $6x^3 + 9x^2$ ?",
+      "options": [
+        "$3x^2$",
+        "$3x$",
+        "$6x^2$",
+        "$9x$"
+      ],
+      "correctAnswer": "$3x^2$",
+      "explanation": "Le PGCD des coefficients 6 et 9 est 3. La plus petite puissance de $x$ présente dans les deux termes est $x^2$. Donc le facteur commun est $3x^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $12a^2b - 18ab^2$ en extrayant le facteur commun.",
+      "options": [
+        "$6ab(2a - 3b)$",
+        "$6ab(2a + 3b)$",
+        "$3ab(4a - 6b)$",
+        "$6a(2ab - 3b^2)$"
+      ],
+      "correctAnswer": "$6ab(2a - 3b)$",
+      "explanation": "Le PGCD des coefficients 12 et 18 est 6. Les variables communes sont $a$ (puissance minimale 1) et $b$ (puissance minimale 1), donc $ab$. En factorisant $6ab$, il reste $2a - 3b$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez complètement $5x^2y + 10xy^2 - 15xy$.",
+      "options": [
+        "$5xy(x + 2y - 3)$",
+        "$5x(y + 2y - 3)$",
+        "$5y(x^2 + 2xy - 3x)$",
+        "$5xy(x + 2y + 3)$"
+      ],
+      "correctAnswer": "$5xy(x + 2y - 3)$",
+      "explanation": "Le PGCD des coefficients 5, 10, 15 est 5. Les variables communes sont $x$ (puissance minimale 1) et $y$ (puissance minimale 1), donc $xy$. En factorisant $5xy$, on obtient $x + 2y - 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus grand facteur commun de $8x^3y + 12x^2y^2$ ?",
+      "options": [
+        "$4x^2y$",
+        "$4xy$",
+        "$2x^2y$",
+        "$8x^2y$"
+      ],
+      "correctAnswer": "$4x^2y$",
+      "explanation": "Les coefficients 8 et 12 ont pour PGCD 4. La plus petite puissance de $x$ est $x^2$, celle de $y$ est $y$. Le facteur commun maximal est donc $4x^2y$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez $9m^2n^3 - 6mn^2 + 3m^3n$ en extrayant le facteur commun le plus grand.",
+      "options": [
+        "$3mn(3mn^2 - 2n + m^2)$",
+        "$mn(9mn^2 - 6n + 3m^2)$",
+        "$3mn(3mn^2 - 2n - m^2)$",
+        "$3mn(3mn^2 + 2n + m^2)$"
+      ],
+      "correctAnswer": "$3mn(3mn^2 - 2n + m^2)$",
+      "explanation": "Le PGCD des coefficients 9, 6, 3 est 3. La plus petite puissance de $m$ est $m^1$, celle de $n$ est $n^1$, donc le facteur commun est $3mn$. En divisant chaque terme par $3mn$, on obtient $3mn^2$, $-2n$, $m^2$, ce qui donne $3mn(3mn^2 - 2n + m^2)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

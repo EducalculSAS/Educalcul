@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 447,
+  "_course_code": "4eme-t06-c03-pyramides-et-cones",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Patrons / vues",
+  "title": "Algorithmes pour patrons de pyramides et cônes",
+  "blocks": [
+    {
+      "title": "Patron d'une pyramide à base carrée",
+      "content": "Écrire un algorithme (en pseudocode ou syntaxe Python) qui, connaissant la longueur $a$ du côté de la base carrée et la hauteur $h$ de la pyramide, calcule la hauteur de pente $l$ des faces latérales et affiche les dimensions du patron (carré de côté $a$ et quatre triangles isocèles de base $a$ et hauteur $l$).",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$ et $h$.\\n2. Calculer la demi-diagonale de la base : $d = a / 2$.\\n3. Calculer la hauteur de pente $l = \\sqrt{h^2 + d^2}$ (théorème de Pythagore dans le triangle rectangle formé par la hauteur, la demi-diagonale et la génératrice).\\n4. Afficher : \"Base : carré de côté\", $a$.\\n5. Afficher : \"Faces latérales : 4 triangles isocèles de base\", $a$, \"et de hauteur\", $l$.\\n6. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La hauteur de pente $l$ est l'hypoténuse du triangle rectangle dont les cathètes sont la hauteur $h$ de la pyramide et la distance du centre de la base au milieu d'un côté, soit $a/2$. Le patron se compose d'un carré de côté $a$ et de quatre triangles isocèles ayant pour base $a$ et pour hauteur $l$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Patron d'un cône de révolution",
+      "content": "Écrire un algorithme qui, donnés le rayon $r$ du disque de base et la hauteur $h$ du cône, détermine le rayon $l$ du secteur circulaire (la génératrice) et l'angle au centre $\\theta$ (en degrés) du secteur formant le patron du cône.",
+      "correctAnswer": "Algorithme :\\n1. Lire $r$ et $h$.\\n2. Calculer la génératrice $l = \\sqrt{r^2 + h^2}$ (théorème de Pythagore).\\n3. Calculer l'angle au centre en radians : $\\theta_{rad} = 2 \\pi r / l$.\\n4. Convertir en degrés : $\\theta = \\theta_{rad} \\times 180 / \\pi$.\\n5. Afficher : \"Rayon du secteur (génératrice) :\", $l$.\\n6. Afficher : \"Angle au centre du secteur :\", $\\theta$, \"degrés\".\\n7. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le patron d'un cône est un secteur de cercle de rayon égal à la génératrice $l$. La longueur de l'arc du secteur doit égaler le périmètre de la base $2\\pi r$, ce qui donne l'angle $\\theta = 2\\pi r / l$ en radians, puis conversion en degrés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification d'un patron de pyramide régulière",
+      "content": "Écrire un algorithme qui reçoit une liste de polygones (chacun décrit par ses longueurs de côtés et ses angles) et décide si cet ensemble peut être le patron d'une pyramide à base polygonale régulière. L'algorithme doit vérifier qu'il y a exactement un polygone dont tous les côtés sont égaux (la base) et que les autres polygones sont des triangles isocèles congrus ayant pour base les côtés de ce polygone.",
+      "correctAnswer": "Algorithme :\\n1. Lire la liste des polygones.\\n2. Identifier les polygones qui ont tous leurs côtés égaux (candidats base).\\n3. S'il n'y a pas exactement un tel polygone, retourner Faux.\\n4. Soit $B$ ce polygone, avec $n$ côtés de longueur $c$.\\n5. Vérifier que le nombre de polygones restants est $n$.\\n6. Pour chaque polygone restant :\\n   a. Vérifier qu'il a 3 côtés (triangle).\\n   b. Vérifier que deux côtés sont égaux (isocèle) et que le troisième côté vaut $c$.\\n   c. Vérifier que les deux côtés égaux ont la même longueur pour tous les triangles (congruence).\\n7. Si toutes les vérifications réussissent, retourner Vrai, sinon Faux.\\n8. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un patron de pyramide régulière comprend une base polygonale régulière (tous côtés égaux) et autant de triangles isocèles congru que de côtés de la base, chaque triangle partageant un côté avec la base. L'algorithme teste ces conditions structurelles.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

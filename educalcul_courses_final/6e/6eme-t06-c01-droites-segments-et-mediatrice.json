@@ -1,0 +1,467 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.605396+00:00",
+  "id": 357,
+  "code": "6eme-t06-c01",
+  "title": "Droites, segments et médiatrice",
+  "description": "Cours structuré Educalcul : Droites, segments et médiatrice.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Droites, segments et médiatrice",
+    "objectif_global": "Droites, segments et médiatrice",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Construire.",
+      "Utiliser propriété simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une droite ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une route qui ne s'arrête jamais, ni au début ni à la fin, et qui n'a aucune épaisseur : c'est l'image mentale d'une droite. En géométrie, on dit qu'une droite est infinie, elle ne possède pas de longueur mesurable, mais on peut la repérer grâce à deux points qui lui appartiennent. Quand tu traces un trait avec ta règle et que tu le prolonges bien au-delà des points, tu donnes une représentation concrète de cette idée abstraite."
+            },
+            {
+              "type": "definition",
+              "term": "droite",
+              "definition": "Une droite est une ligne infinie, sans épaisseur, qui passe par deux points quelconques. On la note souvent par une lettre minuscule comme $d$ ou par deux points qui lui appartiennent, par exemple $(AB)$.",
+              "example": "La droite $(AB)$ passe par $A$ et $B$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée avec deux points $A$ et $B$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as une image claire de la droite infinie, tournons-nous vers la partie de droite qui a deux bornes précises : le segment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le segment, portion de droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un segment est la portion de droite comprise entre deux points que l'on appelle les extrémités. Contrairement à la droite, il possède une longueur finie que l'on peut mesurer avec une règle graduée. On le note en mettant les deux lettres des extrémités entre crochets, par exemple $[AB]$, et sa longueur s'écrit simplement $AB$ sans crochets. Pense à un bâton que tu poserais entre deux clous : le bâton représente le segment, les clous sont les extrémités."
+            },
+            {
+              "type": "definition",
+              "term": "segment",
+              "definition": "Un segment est la portion de droite limitée par deux points appelés extrémités. Il a une longueur mesurable et se note $[AB]$ pour le segment d'extrémités $A$ et $B$.",
+              "example": "Le segment $[AB]$ a pour extrémités $A$ et $B$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Notation",
+                "Signification"
+              ],
+              "rows": [
+                [
+                  "$[AB]$",
+                  "Segment d'extrémités $A$ et $B$"
+                ],
+                [
+                  "$AB$",
+                  "Longueur du segment $AB$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons découvert la droite sans fin et le segment borné. La médiatrice va relier ces deux idées en introduisant une droite particulière qui est liée à un segment de façon très précise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La médiatrice d'un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiatrice d'un segment $[AB]$ est la droite qui passe par le milieu de ce segment et qui lui est perpendiculaire. Elle coupe donc le segment en son milieu $M$ et forme un angle droit avec lui. Cette droite est très utile car tout point qui s'y trouve est à la même distance de $A$ et de $B$. Imagine un fil tendu au milieu d'une corde, parfaitement perpendiculaire : ce fil représente la médiatrice."
+            },
+            {
+              "type": "definition",
+              "term": "médiatrice",
+              "definition": "La médiatrice d'un segment $[AB]$ est la droite perpendiculaire à $[AB]$ qui passe par son milieu $M$. Elle est l'ensemble des points équidistants de $A$ et de $B$.",
+              "example": "Si $M$ est le milieu de $[AB]$, la droite $(MQ)$ perpendiculaire à $[AB]$ en $M$ est la médiatrice."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Segment $[AB]$, son milieu $M$ et sa médiatrice $m_{AB}$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "M"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 2
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette première leçon, apprenons comment on écrit le nom de la médiatrice dans un énoncé ou sur une figure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment note-t-on la médiatrice ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "On utilise souvent la lettre $m$ suivie des noms des extrémités du segment, comme $m_{AB}$. Cette notation désigne la droite qui est perpendiculaire à $[AB]$ en son milieu. Parfois on rencontre aussi la lettre $\\mathcal{M}$ avec les mêmes indices, mais les deux veulent dire exactement la même chose."
+            },
+            {
+              "type": "display_math",
+              "latex": "m_{AB}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment note-t-on une droite qui passe par les points $A$ et $B$ ?",
+              "answer": "On la note $(AB)$ ou $d$.",
+              "hint": "Une droite n'a pas d'extrémités, elle est infinie.",
+              "explanation": "La notation $(AB)$ indique la droite infinie qui passe par $A$ et $B$. Une lettre minuscule comme $d$ peut aussi la désigner."
+            },
+            {
+              "question": "Quelle notation utilise-t-on pour le segment d'extrémités $A$ et $B$ ?",
+              "answer": "On écrit $[AB]$.",
+              "hint": "Les crochets montrent que c'est une portion bornée.",
+              "explanation": "Les crochets distinguent le segment $[AB]$ de la droite $(AB)$ et de la longueur $AB$."
+            },
+            {
+              "question": "Quelle est la propriété fondamentale de la médiatrice d'un segment $[AB]$ ?",
+              "answer": "C'est la droite perpendiculaire à $[AB]$ qui passe par son milieu.",
+              "hint": "La médiatrice coupe le segment en son milieu et forme un angle droit.",
+              "explanation": "Par définition, la médiatrice est la droite qui est à la fois perpendiculaire au segment et qui passe par son milieu."
+            },
+            {
+              "question": "Comment note-t-on la médiatrice du segment $[AB]$ ?",
+              "answer": "On la note $m_{AB}$.",
+              "hint": "La lettre $m$ suivie des indices du segment.",
+              "explanation": "La notation $m_{AB}$ est la plus courante pour désigner la médiatrice du segment $[AB]$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les instruments pour tracer une médiatrice"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de construire, il faut réunir les bons outils. Une règle graduée te permettra de tracer des droites bien droites, un compas te servira à reporter des longueurs sans les mesurer, et un crayon bien taillé garantit des traits fins et précis. Prends le temps de vérifier que ton compas s'ouvre et se ferme facilement, cela évitera des imprécisions."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Une règle graduée pour tracer des droites droites",
+                "Un compas pour reporter des longueurs",
+                "Un crayon bien taillé"
+              ]
+            },
+            {
+              "type": "compass_tool",
+              "radius": 4,
+              "centerLabel": "O",
+              "caption": "Un compas prêt à tracer un arc de cercle de rayon 4 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tes instruments sont prêts, découvrons pas à pas la méthode classique pour obtenir la médiatrice d'un segment donné."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les étapes de la construction"
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction suit trois étapes simples mais rigoureuses. Respecte l'ordre et ne modifie pas l'écartement du compas entre la première et la deuxième étape, c'est la clé de la précision."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer le compas sur $A$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ouvre le compas à une ouverture supérieure à la moitié du segment $[AB]$. Place la pointe sur $A$ et trace un arc de cercle au-dessus et au-dessous du segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Même ouverture sur $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'écartement, place la pointe sur $B$ et trace un second arc qui coupe les deux premiers arcs en deux points $P$ et $Q$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la médiatrice",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'aide de la règle, relie les points $P$ et $Q$. La droite $(PQ)$ est la médiatrice de $[AB]$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une construction n'est valide que si on peut la vérifier. Voici comment t'assurer que ta droite est bien la médiatrice."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier que la construction est correcte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux critères doivent être satisfaits : le point d'intersection de la médiatrice avec $[AB]$ doit être le milieu $M$ (donc $AM = MB$), et la médiatrice doit être perpendiculaire à $[AB]$. Avec ton équerre, tu peux contrôler l'angle droit, et avec ta règle, tu peux mesurer les deux demi-segments."
+            },
+            {
+              "type": "display_math",
+              "latex": "AM = MB et (AB) \\\\perp (PQ)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine un triangle $ABC$ et construis la médiatrice de son côté $[AB]$. Cette médiatrice coupera $[AB]$ en son milieu et sera perpendiculaire à ce côté."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire la médiatrice d'un côté d'un triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle quelconque, la médiatrice d'un côté se construit exactement de la même manière que pour un segment isolé. Elle jouera un rôle important plus tard pour trouver le centre du cercle circonscrit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel instrument permet de reporter une longueur sans la mesurer ?",
+              "answer": "Le compas.",
+              "hint": "C'est l'outil qui s'ouvre et se ferme pour garder une distance.",
+              "explanation": "Le compas sert à reporter des distances égales, ce qui est indispensable pour tracer les arcs de la médiatrice."
+            },
+            {
+              "question": "Quelle est la première étape pour construire la médiatrice de $[AB]$ ?",
+              "answer": "Placer le compas sur $A$ avec une ouverture supérieure à la moitié de $AB$ et tracer des arcs au-dessus et au-dessous du segment.",
+              "hint": "L'ouverture doit être assez grande pour que les arcs se coupent.",
+              "explanation": "Cette étape crée les deux points d'intersection qui permettront de tracer la droite médiatrice."
+            },
+            {
+              "question": "Comment vérifier que la droite tracée est bien la médiatrice ?",
+              "answer": "Vérifier qu'elle passe par le milieu de $[AB]$ et qu'elle est perpendiculaire à $[AB]$.",
+              "hint": "Utilise la règle pour le milieu et l'équerre pour l'angle droit.",
+              "explanation": "La médiatrice a exactement ces deux propriétés : elle coupe le segment en son milieu et forme un angle droit avec lui."
+            },
+            {
+              "question": "Dans le triangle $ABC$, on construit la médiatrice de $[AB]$. Quel point cette médiatrice coupe-t-elle ?",
+              "answer": "Elle coupe $[AB]$ en son milieu.",
+              "hint": "La médiatrice passe toujours par le milieu du segment dont elle est la médiatrice.",
+              "explanation": "Par définition, la médiatrice d'un segment passe par le milieu de ce segment, quel que soit le contexte (triangle ou segment seul)."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser propriété simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La propriété caractéristique de la médiatrice"
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiatrice possède une propriété remarquable : tout point qui se trouve sur elle est à la même distance des deux extrémités du segment. En d'autres termes, si $M$ appartient à la médiatrice de $[AB]$, alors $MA = MB$. C'est cette propriété qui fait de la médiatrice l'outil idéal pour trouver des points équidistants."
+            },
+            {
+              "type": "definition",
+              "term": "équidistant",
+              "definition": "Un point est équidistant de deux points $A$ et $B$ s'il satisfait $MA = MB$.",
+              "example": "Le milieu $M$ de $[AB]$ est équidistant de $A$ et de $B$."
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 90,
+              "caption": "Angle droit entre la médiatrice et le segment $[AB]$",
+              "xMin": -5,
+              "xMax": 5
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce à cette propriété, il devient facile de placer un point qui soit à égale distance de deux points donnés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la propriété pour placer un point équidistant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un segment $[AB]$. Trace sa médiatrice. Choisis n'importe quel point $P$ sur cette médiatrice. Par construction, $PA = PB$. Tu as ainsi obtenu un point équidistant de $A$ et $B$ sans avoir à mesurer les distances. Essaie sur ton cahier : trace un segment, construis sa médiatrice, place un point dessus et vérifie à la règle que les deux distances sont égales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La réciproque est tout aussi vraie et très utile : si un point a des distances égales aux extrémités d'un segment, alors il se trouve forcément sur la médiatrice."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réciproque : un point équidistant est sur la médiatrice"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un point $Q$ tel que $QA = QB$. Sans même tracer la médiatrice, on peut affirmer que $Q$ appartient à la médiatrice de $[AB]$. Cette réciproque permet de prouver qu'une droite est une médiatrice simplement en vérifiant l'égalité des distances pour un point de cette droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En rassemblant la propriété et sa réciproque, on comprend que la médiatrice est exactement l'ensemble de tous les points équidistants de $A$ et de $B$. C'est ce qu'on appelle le lieu géométrique de ces points."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le lieu des points équidistants de $A$ et $B$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lieu géométrique des points équidistants de deux points distincts $A$ et $B$ est la médiatrice du segment $[AB]$. Cela signifie que si tu cherches tous les points du plan qui sont à la même distance de $A$ et de $B$, tu obtiendras précisément la droite médiatrice. C'est une idée forte qui reviendra souvent en géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une droite, un segment et une médiatrice.",
+                "Je sais construire une médiatrice à la règle et au compas.",
+                "Je sais utiliser la propriété des points équidistants pour reconnaître une médiatrice.",
+                "Je sais expliquer pourquoi la médiatrice est le lieu des points équidistants de deux points."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si un point $M$ appartient à la médiatrice de $[AB]$, que peut-on dire des distances $MA$ et $MB$ ?",
+              "answer": "Elles sont égales : $MA = MB$.",
+              "hint": "Rappelle-toi la propriété de la médiatrice.",
+              "explanation": "Tout point de la médiatrice est équidistant des extrémités du segment."
+            },
+            {
+              "question": "Sur la figure, le point $P$ est sur la médiatrice de $[AB]$. Quelle distance est égale à $PA$ ?",
+              "answer": "$PB$.",
+              "hint": "Utilise la propriété des points équidistants.",
+              "explanation": "Puisque $P$ est sur la médiatrice, $PA = PB$ par définition de la médiatrice."
+            },
+            {
+              "question": "Un point $Q$ vérifie $QA = QB$. Où se trouve $Q$ par rapport à $[AB]$ ?",
+              "answer": "$Q$ appartient à la médiatrice de $[AB]$.",
+              "hint": "C'est la réciproque de la propriété.",
+              "explanation": "L'ensemble des points équidistants de $A$ et $B$ est exactement la médiatrice."
+            },
+            {
+              "question": "Quel est le lieu géométrique des points équidistants de deux points distincts $A$ et $B$ ?",
+              "answer": "C'est la médiatrice du segment $[AB]$.",
+              "hint": "Pense à la définition du lieu géométrique.",
+              "explanation": "Par définition, la médiatrice est l'ensemble de tous les points du plan qui sont à la même distance de $A$ et de $B$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

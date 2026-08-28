@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Nombres décimaux",
+  "title": "Quiz : Applications des nombres décimaux (6e)",
+  "questions": [
+    {
+      "text": "Parmi les prix suivants, lequel est le plus élevé ?",
+      "options": [
+        "$12,50$ €",
+        "$12,05$ €",
+        "$12,55$ €",
+        "$12,5$ €"
+      ],
+      "correctAnswer": "$12,55$ €",
+      "explanation": "Pour comparer des nombres décimaux, on aligne la virgule et on compare chiffre par chiffre de gauche à droite. Tous ont $12$ unités. Aux dixièmes : $5$ (pour $12,50$, $12,55$, $12,5$) contre $0$ (pour $12,05$). $12,05$ est le plus petit. Pour les trois autres, on regarde les centièmes : $12,50$ a $0$, $12,5$ a $0$ (équivalent à $12,50$), $12,55$ a $5$. Donc $12,55 > 12,50 = 12,5 > 12,05$. Le plus élevé est $12,55$ €.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie achète un cahier à $3,40$ € et un stylo à $1,60$ €. Combien dépense-t-elle au total ?",
+      "options": [
+        "$4,00$ €",
+        "$5,00$ €",
+        "$5,10$ €",
+        "$4,10$ €"
+      ],
+      "correctAnswer": "$5,00$ €",
+      "explanation": "Il faut additionner les deux prix : $3,40 + 1,60$. On additionne les centièmes : $0 + 0 = 0$. Les dixièmes : $4 + 6 = 10$, on écrit $0$ et on retient $1$ unité. Les unités : $3 + 1 + 1 (retenue) = 5$. Le total est $5,00$ €. L'erreur courante est de mal aligner la virgule ou d'oublier la retenue des dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul achète un jeu à $18,75$ €. Il paie avec un billet de $20$ €. Combien la caissière doit-elle lui rendre ?",
+      "options": [
+        "$1,25$ €",
+        "$2,25$ €",
+        "$1,35$ €",
+        "$2,75$ €"
+      ],
+      "correctAnswer": "$1,25$ €",
+      "explanation": "Il faut calculer la différence $20,00 - 18,75$. On pose la soustraction en alignant les virgules. Aux centièmes : $0 - 5$ impossible, on emprunte aux dixièmes (qui empruntent aux unités, etc.). $10 - 5 = 5$. Aux dixièmes : $9 - 7 = 2$. Aux unités : $9 - 8 = 1$. Aux dizaines : $1 - 1 = 0$. Le résultat est $1,25$ €. On peut vérifier : $18,75 + 1,25 = 20,00$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille d'eau coûte $0,80$ €. Combien coûtent 6 bouteilles ?",
+      "options": [
+        "$4,80$ €",
+        "$48,00$ €",
+        "$4,08$ €",
+        "$5,40$ €"
+      ],
+      "correctAnswer": "$4,80$ €",
+      "explanation": "Il faut multiplier $0,80$ par $6$. $0,80 \\times 6 = (80 \\text{ centimes}) \\times 6 = 480 \\text{ centimes} = 4,80$ €. On peut aussi calculer $8 \\times 6 = 48$ et replacer la virgule pour avoir deux chiffres après (car $0,80$ en a deux) : $4,80$. L'option $48,00$ correspond à une erreur de placement de la virgule (oubli des centièmes). L'option $5,40$ correspond à $0,90 \\times 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trois amis partagent équitablement l'addition d'un repas qui coûte $45,60$ €. Combien chaque ami doit-il payer ?",
+      "options": [
+        "$15,20$ €",
+        "$15,02$ €",
+        "$14,20$ €",
+        "$152,0$ €"
+      ],
+      "correctAnswer": "$15,20$ €",
+      "explanation": "Il faut diviser $45,60$ par $3$. On pose la division : $45 \\div 3 = 15$ (reste $0$). On abaisse le $6$ (dixièmes) : $6 \\div 3 = 2$. On abaisse le $0$ (centièmes) : $0 \\div 3 = 0$. Le quotient est $15,20$. On vérifie : $15,20 \\times 3 = 45,60$. L'option $15,02$ inverse les chiffres après la virgule. L'option $14,20$ provient d'une erreur sur la division de $45$ par $3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

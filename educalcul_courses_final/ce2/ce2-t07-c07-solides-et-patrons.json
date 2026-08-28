@@ -1,0 +1,447 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.107300+00:00",
+  "id": 202,
+  "code": "ce2-t07-c07",
+  "title": "Solides et patrons",
+  "description": "Cours structuré Educalcul : Solides et patrons.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Solides et patrons",
+    "objectif_global": "Solides et patrons",
+    "mini_lecons_imposees": [
+      "Faces, arêtes, sommets.",
+      "Reconnaître un patron de cube / pavé simple.",
+      "Assembler mentalement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Faces, arêtes, sommets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des objets solides tout autour de nous"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde autour de toi : une boîte de crayons, un dé, une boîte de céréales, une balle de tennis. Tous ces objets ont une forme en $3$ dimensions : ils ont de la largeur, de la hauteur et de la profondeur. En géométrie, on les appelle des **solides**. Contrairement aux figures plates comme le carré ou le triangle que tu connais déjà, les solides occupent de l'espace : on peut les tenir dans la main, les faire rouler, les empiler."
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons nous intéresser à deux solides très courants : le **cube** (comme un dé) et le **pavé droit** (comme une boîte de céréales ou un carton de lait). Pour bien les décrire, les mathématiciens ont donné des noms précis à leurs parties. C'est ce que nous allons découvrir ensemble, pas à pas."
+            },
+            {
+              "type": "definition",
+              "term": "Solide",
+              "definition": "Un objet qui a trois dimensions (largeur, hauteur, profondeur) et qui occupe de l'espace.",
+              "example": "Un dé, une boîte de chaussures, une balle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les faces : les surfaces plates"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose un dé devant toi. Touche chaque côté plat avec ton doigt. Chaque surface plate que tu touches s'appelle une **face**. Sur un cube, toutes les faces ont exactement la même forme : ce sont des **carrés**. Compte-les bien : il y en a $6$ au total. Imagine que tu veux emballer le dé dans du papier cadeau : il te faut $6$ morceaux carrés pour recouvrir toutes les faces sans en oublier aucune."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde maintenant une boîte de céréales (un pavé droit). Ses faces sont des **rectangles**. Il y a aussi $6$ faces, mais elles ne sont pas toutes identiques : il y a $3$ paires de faces identiques deux à deux. Les faces du dessus et du dessous sont pareilles, celles de devant et de derrière sont pareilles, et celles de gauche et de droite sont pareilles."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "Chacune des surfaces plates qui limitent un solide.",
+              "example": "Un cube a $6$ faces carrées. Un pavé droit a $6$ faces rectangulaires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les arêtes : où deux faces se rencontrent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passe ton doigt le long du bord où deux faces du dé se touchent. Ce trait droit, cette ligne où deux faces se rejoignent, s'appelle une **arête**. Sur un cube, toutes les arêtes ont la même longueur. Essaie de les compter sans en rater : il y en a $12$. Tu peux les repérer en suivant le contour : $4$ arêtes sur le dessus, $4$ sur le dessous, et $4$ arêtes verticales qui relient le haut et le bas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le pavé droit, c'est pareil : il y a aussi $12$ arêtes. Mais attention, elles n'ont pas toutes la même longueur ! Il y a $3$ groupes de $4$ arêtes de même longueur : les $4$ arêtes de la hauteur, les $4$ de la largeur, et les $4$ de la profondeur. C'est pour cela qu'un pavé droit peut être plus long que large, ou plus haut que large."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Le segment de droite où deux faces se rencontrent.",
+              "example": "Un cube a $12$ arêtes de même longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les sommets : les coins du solide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les pointes du dé, là où plusieurs arêtes se croisent. Chaque coin du solide s'appelle un **sommet** (on dit \"un sommet\", mais \"des sommets\" au pluriel). Sur un cube, $3$ arêtes se retrouvent à chaque sommet. Compte les coins : il y en a $8$ au total. Tu peux les imaginer comme les $8$ coins d'une chambre rectangulaire : $4$ en bas, $4$ en haut."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le pavé droit a aussi $8$ sommets, exactement comme le cube. Ce qui change, c'est la forme des faces et la longueur des arêtes, mais le nombre de sommets reste identique. Pour t'aider à retenir, pense à un coffre au trésor : il a $8$ coins bien nets, que le coffre soit un cube parfait ou une longue caisse rectangulaire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6 carrés",
+                  "12 (égales)",
+                  "8"
+                ],
+                [
+                  "Pavé droit",
+                  "6 rectangles",
+                  "12 (3 longueurs)",
+                  "8"
+                ]
+              ],
+              "caption": "Récapitulatif des éléments du cube et du pavé droit"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels sont des solides ? Une feuille de papier, une balle, un livre, un dessin sur un tableau.",
+              "answer": "Une balle et un livre sont des solides. Une feuille de papier est plate (presque 2D) et un dessin sur un tableau est une figure plane.",
+              "hint": "Un solide a de l'épaisseur, on peut le tenir en main.",
+              "explanation": "La balle et le livre ont une largeur, une hauteur et une épaisseur : ce sont des solides. La feuille de papier est très fine mais a quand même une petite épaisseur, pourtant en géométrie on la considère souvent comme une surface plane. Le dessin sur le tableau n'a aucune épaisseur : c'est une figure plane."
+            },
+            {
+              "question": "Combien de faces a un cube ? Quelle est la forme de chaque face ?",
+              "answer": "Un cube a $6$ faces. Chaque face est un carré.",
+              "hint": "Compte les côtés d'un dé : dessus, dessous, devant, derrière, gauche, droite.",
+              "explanation": "Un cube a exactement $6$ faces. Comme toutes les faces sont identiques, ce sont des carrés. C'est ce qui fait la particularité du cube : toutes ses faces sont des carrés de la même taille."
+            },
+            {
+              "question": "Vrai ou faux ? Un pavé droit a $12$ arêtes, mais elles n'ont pas toutes la même longueur.",
+              "answer": "Vrai.",
+              "hint": "Pense à une boîte de céréales : la hauteur, la largeur et la profondeur sont souvent différentes.",
+              "explanation": "Un pavé droit a bien $12$ arêtes, regroupées en $3$ groupes de $4$ arêtes de même longueur. Comme les trois dimensions (longueur, largeur, hauteur) peuvent être différentes, les arêtes n'ont pas toutes la même mesure."
+            },
+            {
+              "question": "Complete le tableau : un pavé droit a ___ faces, ___ arêtes et ___ sommets.",
+              "answer": "Un pavé droit a $6$ faces, $12$ arêtes et $8$ sommets.",
+              "hint": "Le nombre de faces, arêtes et sommets est le même pour le cube et le pavé droit.",
+              "explanation": "Cube et pavé droit ont la même structure : $6$ faces, $12$ arêtes, $8$ sommets. Ce qui change, c'est la forme des faces (carrés ou rectangles) et les longueurs des arêtes."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître un patron de cube / pavé simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un patron ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte en carton pliée à plat, comme quand tu reçois un colis qu'il faut monter. Ce carton déplié, tout plat sur la table, avec toutes les faces du solide attachées les unes aux autres par leurs arêtes, c'est ce qu'on appelle un **patron**. C'est comme la \"peau\" du solide qu'on aurait découpée et étalée. Si tu replies le patron le long des traits, tu retrouves le solide en volume."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tous les solides n'ont pas qu'un seul patron. Pour un cube, il existe $11$ patrons différents ! Mais ils ont tous quelque chose en commun : ils sont composés de $6$ carrés identiques, collés bord à bord. Pour un pavé droit, le patron est fait de $6$ rectangles (trois paires de rectangles identiques). Apprendre à reconnaître un patron, c'est apprendre à voir le solide en 3D rien qu'en regardant une figure plate."
+            },
+            {
+              "type": "definition",
+              "term": "Patron",
+              "definition": "Figure plate obtenue en dépliant un solide le long de ses arêtes. En le repliant, on retrouve le solide.",
+              "example": "Un patron de cube est formé de $6$ carrés joints par leurs côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les patrons de cube : la forme en croix et ses variantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le patron de cube le plus connu ressemble à une grande croix : $4$ carrés alignés verticalement, avec un carré collé à gauche du deuxième et un carré collé à droite du deuxième. Visualise-le dans ta tête : c'est comme un \"T\" allongé. Mais il y a d'autres patrons valides ! Par exemple, une ligne de $3$ carrés, avec un carré au-dessus du premier, un au-dessus du deuxième, et un au-dessus du troisième (ça fait un escalier). Ou encore $4$ carrés en ligne, avec un carré au-dessus du premier et un au-dessus du dernier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier si un patron de cube est correct, il y a une astuce : compte les carrés (il doit y en avoir $6$), puis imagine que tu plies. Chaque carré doit devenir une face du cube. Si deux carrés se retrouvent au même endroit en se repliant, ou s'il manque une face, le patron ne marche pas. Par exemple, $6$ carrés tous en ligne droite ne forment pas un patron de cube : en pliant, le premier et le dernier carré se superposeraient !"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Un patron de cube valide a toujours exactement $6$ carrés. Si tu en comptes plus ou moins, ce n'est pas un patron de cube."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les patrons de pavé droit : des rectangles bien rangés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le pavé droit, le patron est composé de $6$ rectangles. Comme il y a trois paires de faces identiques, le patron montre souvent les trois paires côte à côte. Un patron classique : un grand rectangle central (la face du devant), avec au-dessus le rectangle du dessus, en dessous celui du dessous, à gauche celui de gauche, à droite celui de droite, et derrière le grand rectangle central, le rectangle du derrière (souvent attaché à l'un des côtés)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Contrairement au cube, les rectangles n'ont pas tous la même taille. Il y a deux rectangles de chaque dimension : deux grands (par exemple le devant et le derrière), deux moyens (le dessus et le dessous), deux petits (la gauche et la droite). Quand tu regardes un patron de pavé droit, repère les paires de rectangles identiques : ils deviendront les faces opposées du solide."
+            },
+            {
+              "type": "definition",
+              "term": "Faces opposées",
+              "definition": "Deux faces qui ne se touchent pas et qui sont parallèles. Sur un pavé droit, elles sont identiques.",
+              "example": "Le dessus et le dessous d'une boîte sont des faces opposées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges à éviter : les faux patrons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tous les arrangements de $6$ carrés ou de $6$ rectangles ne font pas un patron valide. Il y a deux pièges fréquents. Premier piège : les faces qui se chevauchent. Si en pliant mentalement, deux faces veulent occuper la même place dans l'espace, le patron est impossible. Deuxième piège : le patron en plusieurs morceaux. Un vrai patron est **un seul morceau** : tous les carrés ou rectangles sont connectés par au moins un côté. Si tu as deux groupes séparés, ce n'est pas un patron."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre cas trompeur : une forme qui a le bon nombre de faces mais qui ne se referme pas. Par exemple, $5$ carrés en croix avec le $6$e carré collé au bout d'une branche : ça fait $6$ carrés, mais en pliant, il reste un trou. Pour t'entraîner, découpe des patrons en papier et essaie de les plier : c'est la meilleure façon de comprendre !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Qu'est-ce qu'un patron en géométrie ?",
+              "answer": "C'est une figure plate formée de toutes les faces d'un solide, jointes par leurs arêtes, qu'on peut replier pour reconstruire le solide.",
+              "hint": "Pense à une boîte en carton qu'on aplatit.",
+              "explanation": "Un patron est le développement à plat d'un solide. Toutes les faces sont attachées les unes aux autres par leurs arêtes communes. En repliant le long de ces arêtes, on retrouve le volume du solide."
+            },
+            {
+              "question": "Combien de carrés compose un patron de cube ?",
+              "answer": "Un patron de cube est toujours composé de $6$ carrés.",
+              "hint": "Un cube a $6$ faces, donc son patron a $6$ carrés.",
+              "explanation": "Puisqu'un cube a $6$ faces carrées, son patron doit contenir exactement $6$ carrés. C'est une condition nécessaire (mais pas suffisante : l'arrangement compte aussi)."
+            },
+            {
+              "question": "Dans un patron de pavé droit, comment repérer les faces qui seront opposées dans le solide ?",
+              "answer": "Ce sont les deux rectangles de même dimensions qui ne sont pas collés l'un à l'autre dans le patron.",
+              "hint": "Cherche les paires de rectangles identiques.",
+              "explanation": "Un pavé droit a trois paires de faces identiques. Dans le patron, les deux rectangles de même taille qui ne partagent pas de côté deviendront les faces opposées (par exemple le devant et le derrière)."
+            },
+            {
+              "question": "Pourquoi $6$ carrés alignés en ligne droite ne forment-ils pas un patron de cube ?",
+              "answer": "En pliant, le premier et le dernier carré se superposeraient, et il manquerait des faces pour fermer le cube.",
+              "hint": "Essaie de plier mentalement : les carrés 1 et 6 veulent aller au même endroit.",
+              "explanation": "Avec $6$ carrés en ligne, quand on plie les carrés 2, 3, 4, 5 pour faire les faces latérales, les carrés 1 et 6 se retrouvent tous les deux au même endroit (face du dessus ou du dessous). Le cube ne peut pas se refermer correctement."
+            }
+          ]
+        },
+        {
+          "title": "Assembler mentalement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Apprendre à plier dans sa tête"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu des patrons sur papier. Maintenant, nous allons entraîner ton imagination : regarder un patron plat et **voir le solide se former dans ta tête**, sans le découper. C'est comme un super-pouvoir ! Les architectes, les designers, les ingénieurs font cela tout le temps. Pour y arriver, il y a une méthode simple en trois étapes que tu vas pouvoir utiliser à chaque fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "Première étape : **choisis une face de départ**. Celle qui te semble la plus centrale dans le patron, celle qui a le plus de voisines. Pose ton doigt mental dessus et dis : \"Celle-ci, ce sera le dessous de mon cube (ou le devant de mon pavé)\". Deuxième étape : **plie les faces voisines une par une**, en tournant autour de la face de départ. À chaque pli, imagine l'angle de $90$ degrés qui se forme. Troisième étape : **vérifie que les dernières faces viennent bien se fermer** le solide sans trou ni chevauchement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la face de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la face qui a le plus de voisins collés à elle. C'est ton point d'ancrage."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Plier les faces adjacentes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais tourner mentalement chaque face voisine de $90^\\circ$ vers le haut. Elles deviennent les faces latérales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fermer le solide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La dernière face restante doit venir se poser exactement sur l'ouverture du haut. Si elle est trop grande, trop petite, ou mal placée, le patron n'est pas valide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'astuce des faces opposées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un patron de cube, les faces qui seront **opposées** dans le cube (celles qui ne se touchent jamais) ont une particularité : **dans le patron, elles ne sont jamais collées bord à bord**. Elles sont séparées par au moins une autre face. Regarde le patron en croix : le carré du haut et le carré du bas de la croix verticale deviendront des faces opposées. Le carré de gauche et celui de droite deviendront les deux autres faces opposées. La face du centre et celle qui est tout au bout (la sixième) seront la dernière paire opposée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette règle vaut aussi pour le pavé droit : dans le patron, les deux rectangles de même taille qui ne se touchent pas deviendront les faces opposées. C'est un repère très utile pour vérifier ton pliage mental : si tu vois deux carrés identiques collés ensemble dans le patron, ils ne pourront pas être opposés dans le cube, ils seront forcément côte à côte."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Règle d'or",
+              "paragraphs": [
+                "Dans un patron, deux faces qui partagent un côté (sont collées) deviendront **voisines** dans le solide. Deux faces qui ne se touchent pas dans le patron deviendront **opposées**."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement : un patron de cube pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce patron imaginaire : $4$ carrés en ligne verticale (numérotons-les $1$, $2$, $3$, $4$ de haut en bas). Un carré $5$ collé à droite du carré $2$. Un carré $6$ collé à gauche du carré $3$. Ferme les yeux et suis mes mots. Choisis le carré $2$ comme base (le dessous). Plie le carré $1$ vers le haut : il devient la face arrière. Plie le carré $5$ (à droite de $2$) vers le haut : face droite. Plie le carré $3$ (sous $2$) vers le haut : face avant. Maintenant, le carré $6$ (à gauche de $3$) se plie aussi : il devient la face gauche. Il reste le carré $4$ (sous $3$) : il se rabat sur le dessus et ferme le cube parfaitement ! Tous les $6$ carrés ont trouvé leur place."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec le carré $3$ comme base. Tu verras que ça marche aussi, mais les faces opposées changent de place. C'est normal : le cube est le même, mais tu l'as posé sur une autre face. L'important, c'est que le patron se referme sans trou ni conflit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement : un patron de pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un patron de pavé droit : un grand rectangle $A$ au centre. Au-dessus, un rectangle moyen $B$. En dessous, un rectangle moyen $C$ (identique à $B$). À gauche de $A$, un petit rectangle $D$. À droite de $A$, un petit rectangle $E$ (identique à $D$). Derrière $A$ (collé sous $C$ par exemple), le dernier grand rectangle $F$ (identique à $A$). Choisis $A$ comme face du devant. Plie $B$ vers l'arrière : c'est le dessus. Plie $C$ vers l'avant : c'est le dessous. Plie $D$ vers la droite : face gauche. Plie $E$ vers la gauche : face droite. Enfin, $F$ se rabat par-dessus et devient la face arrière, exactement de la même taille que $A$. Le pavé est fermé !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque une chose : les deux grands rectangles $A$ et $F$ ne se touchent pas dans le patron (ils sont séparés par $C$), et ils deviennent opposés. Les deux moyens $B$ et $C$ sont séparés par $A$, ils deviennent opposés (dessus/dessous). Les deux petits $D$ et $E$ sont de part et d'autre de $A$, ils deviennent opposés (gauche/droite). La règle des faces opposées fonctionne à tous les coups !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les faces, arêtes et sommets d'un cube et d'un pavé droit.",
+                "Je sais reconnaître un patron valide de cube ou de pavé droit.",
+                "Je sais repérer les faces opposées sur un patron.",
+                "Je peux plier mentalement un patron pour vérifier s'il forme bien le solide.",
+                "Je connais la différence entre un patron de cube (6 carrés) et un patron de pavé droit (6 rectangles, 3 paires identiques)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la première étape pour plier mentalement un patron ?",
+              "answer": "Choisir une face de base, de préférence celle qui a le plus de voisines.",
+              "hint": "Cherche la face la plus connectée aux autres.",
+              "explanation": "Choisir une face centrale comme point d'ancrage permet de plier les faces voisines autour d'elle de manière organisée. C'est comme poser la première brique d'une construction."
+            },
+            {
+              "question": "Dans un patron de cube, deux carrés qui sont collés bord à bord deviendront-ils des faces opposées dans le cube ?",
+              "answer": "Non, ils deviendront des faces voisines (qui se touchent par une arête).",
+              "hint": "Les faces opposées ne se touchent jamais dans le solide, donc elles ne peuvent pas être collées dans le patron.",
+              "explanation": "Si deux faces partagent un côté dans le patron, elles partageront une arête dans le solide : elles seront donc adjacentes, pas opposées. Les faces opposées sont toujours séparées dans le patron."
+            },
+            {
+              "question": "Tu as un patron de cube en forme de croix (4 carrés verticaux, 1 à gauche du 2e, 1 à droite du 2e). Si tu choisis le carré du haut de la croix comme base, quelle face devient le dessus du cube ?",
+              "answer": "Le carré du bas de la croix (le 4e) devient la face du dessus.",
+              "hint": "Plie mentalement : le 2e, 3e, 4e se lèvent, le 4e arrive en dernier au sommet.",
+              "explanation": "En prenant le carré du haut comme base (dessous), les carrés 2, 3, 4 se plient successivement pour former les faces latérales. Le carré 4, étant le dernier de la chaîne, vient se placer sur le dessus. Les carrés de gauche et droite (collés au 2e) forment les deux autres faces latérales."
+            },
+            {
+              "question": "Sur un patron de pavé droit, tu vois deux rectangles identiques qui ne se touchent pas. Que deviendront-ils dans le solide ?",
+              "answer": "Ils deviendront des faces opposées (par exemple le dessus et le dessous, ou l'avant et l'arrière).",
+              "hint": "Rappelle-toi la règle : faces non jointes dans le patron = faces opposées dans le solide.",
+              "explanation": "Dans un pavé droit, les faces identiques deux à deux sont opposées. Dans le patron, ces paires sont toujours séparées par d'autres faces. C'est un repère fiable pour vérifier ton pliage mental."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

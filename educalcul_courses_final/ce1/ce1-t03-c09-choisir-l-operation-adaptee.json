@@ -1,0 +1,406 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.776173+00:00",
+  "id": 96,
+  "code": "ce1-t03-c09",
+  "title": "Choisir l'opération adaptée",
+  "description": "Cours structuré Educalcul : Choisir l'opération adaptée.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Choisir l'opération adaptée",
+    "objectif_global": "Choisir l'opération adaptée",
+    "mini_lecons_imposees": [
+      "Repérer mots et structure sans se fier à un mot-clé.",
+      "Justifier +, -, × ou partage.",
+      "Vérifier la cohérence de la réponse."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Repérer mots et structure sans se fier à un mot-clé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le problème comme une histoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis un problème, imagine la scène dans ta tête. Pose-toi la question : qu'est-ce qui se passe ? Par exemple, « Léa a 5 billes, elle en reçoit 3 de plus. Combien a-t-elle maintenant ? » Tu vois Léa qui tient ses billes, puis on lui en donne d'autres. Cette image t'aide à sentir si on doit ajouter ou non."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Départ",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ajout",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "5 + 3 = ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les quantités et la question"
+            },
+            {
+              "type": "paragraph",
+              "content": "Repère maintenant les nombres que tu connais et ce qu'on te demande. Dans l'exemple, tu sais qu'il y a $5$ billes au départ et qu'on en ajoute $3$. La question demande le total. Écris les deux quantités sur une ligne : $5$ et $3$. Le trou à combler, c'est le résultat final."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "5",
+                "3"
+              ],
+              "result": "8",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'opération sans mot-clé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, décide quelle opération correspond à l'histoire. Si on met ensemble, c'est une addition. Si on enlève, c'est une soustraction. Si on répète le même groupe plusieurs fois, c'est une multiplication. Si on partage en parts égales, c'est un partage. Regarde l'action décrite : « reçoit de plus » veut dire mettre ensemble, donc tu choisis le signe $+$."
+            },
+            {
+              "type": "display_math",
+              "latex": "+\\text{ pour mettre ensemble}, -\\text{ pour enlever}, \\times\\text{ pour répéter}, \\div\\text{ pour partager}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire un petit dessin pour confirmer ton choix"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessine vite ce que raconte le problème. Pour l'exemple de Léa, trace cinq petits cercles, puis trois autres à côté. Compte l'ensemble : tu obtiens huit. Ce petit schéma te prouve que l'addition est la bonne opération. Essaie la même idée avec d'autres histoires."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "Le total 8"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Léa a 5 billes. Elle reçoit 3 billes. Combien a-t-elle au total ?",
+              "answer": "8",
+              "hint": "Imagine les billes qui s'ajoutent.",
+              "explanation": "On additionne 5 et 3 pour obtenir 8."
+            },
+            {
+              "question": "Tom a 10 autocollants. Il en donne 4 à son ami. Combien lui reste-t-il ?",
+              "answer": "6",
+              "hint": "Pense à enlever.",
+              "explanation": "On soustrait 4 de 10, il reste 6."
+            },
+            {
+              "question": "Il y a 4 boîtes. Dans chaque boîte il y a 3 crayons. Combien de crayons en tout ?",
+              "answer": "12",
+              "hint": "Regarde les groupes égaux.",
+              "explanation": "On multiplie 4 par 3, cela fait 12."
+            },
+            {
+              "question": "12 bonbons sont partagés équitablement entre 3 enfants. Combien chaque enfant reçoit-il ?",
+              "answer": "4",
+              "hint": "Partage en parts égales.",
+              "explanation": "On divise 12 par 3, chaque enfant a 4 bonbons."
+            }
+          ]
+        },
+        {
+          "title": "Justifier +, -, × ou partage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'addition : mettre ensemble"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition sert quand on réunit deux quantités. Imagine que tu as 7 billes dans une main et 5 dans l'autre. Si tu les mets toutes dans le même sac, tu veux savoir combien il y en a au total. Le signe $+$ montre cette mise ensemble. Écris $7 + 5$ et compte."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "7",
+                "5"
+              ],
+              "result": "12",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La soustraction : enlever ou comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "La soustraction apparaît quand on retire quelque chose ou quand on compare deux nombres. Par exemple, tu as 14 bonbons et tu en manges 6. Combien en reste-t-il ? Le signe $-$ marque l'enlèvement. Écris $14 - 6$ et retrouve le nombre qui manque."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "14",
+                "6"
+              ],
+              "result": "8",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La multiplication : des groupes égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication, c'est répéter le même groupe plusieurs fois. Si tu as 3 boîtes et que dans chaque boîte il y a 4 crayons, tu veux le total sans compter un par un. Le signe $\\times$ veut dire « 3 fois 4 ». Dessine 3 lignes de 4 points chacune pour voir le résultat."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "3 × 4 = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le partage : répartir équitablement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le partage, c'est diviser une quantité en parts toutes égales. Tu as 15 billes et 5 amis. Tu donnes le même nombre à chaque ami pour que ce soit juste. Le signe $\\div$ montre ce partage. Pose 15 billes et forme 5 tas identiques."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Ami 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ami 2",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Ami 3",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Ami 4",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Ami 5",
+                  "value": 3,
+                  "tone": "gray"
+                }
+              ],
+              "caption": "15 billes partagées en 5 parts de 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Ajoute 7 et 5.",
+              "answer": "12",
+              "hint": "Mets les deux nombres ensemble.",
+              "explanation": "7 + 5 = 12."
+            },
+            {
+              "question": "Enlève 6 de 14.",
+              "answer": "8",
+              "hint": "Compte en arrière.",
+              "explanation": "14 - 6 = 8."
+            },
+            {
+              "question": "3 groupes de 4 pommes.",
+              "answer": "12",
+              "hint": "Compte les pommes par groupes.",
+              "explanation": "3 × 4 = 12."
+            },
+            {
+              "question": "Partage 15 billes entre 5 amis.",
+              "answer": "3",
+              "hint": "Donne le même nombre à chacun.",
+              "explanation": "15 ÷ 5 = 3."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier la cohérence de la réponse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relire la question avant de répondre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir fait ton calcul, relis la phrase qui pose la question. Demande-toi : « Est-ce que ma réponse répond vraiment à ce qu'on me demande ? » Par exemple, si le problème dit « Combien de billes restent ? » et que tu as trouvé 14, vérifie que 14 correspond bien au nombre qui reste."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 14,
+                  "label": "Résultat"
+                }
+              ],
+              "caption": "Estimation : 23 - 9 = 14"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer le résultat pour voir si c'est plausible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de finir, fais une estimation rapide. Arrondis les nombres au dix près et calcule mentalement. Si tu as 23 crayons et tu en donnes 9, pense à 20 - 10 = 10. Le vrai résultat doit être proche de 10. Si tu trouves 30, tu sais qu'il y a une erreur."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 4,
+              "caption": "Le résultat 14"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester avec l'opération inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une bonne façon de vérifier, c'est de refaire le chemin en sens inverse. Si tu as additionné $8 + 5 = 13$, fais la soustraction $13 - 5$ et regarde si tu retrouves $8$. Si c'est le cas, ton addition est sûrement juste. Essaie aussi avec la multiplication et la division."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "13",
+                "5"
+              ],
+              "result": "8",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "display_math",
+              "latex": "3 \\\\times 7 = 21"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un problème et imaginer l'histoire.",
+                "Je sais choisir le bon signe +, -, × ou ÷.",
+                "Je sais vérifier ma réponse en faisant l'opération inverse."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 23 crayons et tu en donnes 9. Est-ce que le résultat est plus grand que 10 ?",
+              "answer": "Oui",
+              "hint": "23 - 10 = 13, donc plus de 10.",
+              "explanation": "23 - 9 = 14, ce qui est bien plus grand que 10."
+            },
+            {
+              "question": "Tu as trouvé 8 + 5 = 13. Quelle soustraction peux-tu faire pour vérifier ?",
+              "answer": "13 - 5 = 8",
+              "hint": "Utilise l'opération inverse.",
+              "explanation": "Si l'addition est juste, la soustraction inverse retrouve le nombre de départ."
+            },
+            {
+              "question": "Un problème demande : « Combien de jours dans 3 semaines ? » Tu réponds 18. Est-ce cohérent ?",
+              "answer": "Non",
+              "hint": "Une semaine a 7 jours.",
+              "explanation": "3 × 7 = 21 jours, donc 18 n'est pas correct."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

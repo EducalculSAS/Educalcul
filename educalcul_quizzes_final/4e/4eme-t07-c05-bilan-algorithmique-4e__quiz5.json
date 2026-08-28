@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Programmer et déboguer",
+  "title": "Quiz Algorithmique 4e - Programmer et déboguer",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariable $x <- 0$\\nPour $i$ de $1$ à $4$ faire\\n    $x <- x + i$\\nFin pour\\nAfficher $x$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$10$",
+        "$6$",
+        "$4$",
+        "$0$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La boucle ajoute successivement $1$, $2$, $3$, $4$ à $x$. La somme est $1+2+3+4 = 10$. Les autres options correspondent à une somme partielle ($6$), à la dernière valeur de $i$ ($4$) ou à la valeur initiale ($0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariable $x <- 5$\\nSi $x > 5$ Alors\\n    $x <- x + 1$\\nSinon\\n    $x <- x - 1$\\nFin si\\nAfficher $x$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$5$",
+        "$3$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "La condition $x > 5$ est fausse car $x$ vaut $5$. Le bloc Sinon s'exécute et soustrait $1$, donnant $4$. Les options $6$ et $5$ correspondent à une mauvaise évaluation de la condition, $3$ à une double soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariable $x <- 1$\\nTant que $x < 10$ faire\\n    $x <- x + 2$\\nFin tant que\\nCombien de fois le corps de la boucle est il exécuté ?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Les valeurs successives de $x$ au début de chaque itération sont $1, 3, 5, 7, 9$. À la cinquième itération $x$ devient $11$ et la condition devient fausse. Donc le corps s'exécute $5$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'instruction « Pour $i$ de $0$ à $5$ faire », combien de fois le corps de la boucle s'execute t il ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La borne inférieure $0$ et la borne supérieure $5$ sont incluses. Les valeurs prises par $i$ sont $0,1,2,3,4,5$, soit $6$ itérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer la factorielle de $n = 4$ avec l'algorithme suivant :\\nVariable $factorielle <- 1$\\nPour $i$ de $0$ à $4$ faire\\n    $factorielle <- factorielle * i$\\nFin pour\\nAfficher $factorielle$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$0$",
+        "$24$",
+        "$1$",
+        "$4$"
+      ],
+      "correctAnswer": "$0$",
+      "explanation": "La boucle commence à $i = 0$. Dès la première itération $factorielle$ est multiplié par $0$, ce qui le rend $0$ pour le reste du programme. La factorielle correcte ($24$) serait obtenue en commençant à $i = 1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

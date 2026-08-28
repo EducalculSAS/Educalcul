@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Application : Résoudre un seuil",
+  "title": "Résolution de seuils",
+  "blocks": [
+    {
+      "title": "Seuil linéaire",
+      "content": "Une entreprise a des coûts fixes de $500$ euros et un coût variable de $10$ euros par produit. Le chiffre d'affaires est de $25$ euros par produit. Pour quel nombre de produits $x$ l'entreprise atteint elle le seuil de rentabilité ? Ordonnez les étapes de la résolution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'équation du profit : $25x = 10x + 500$",
+        "Isoler les termes en $x$ : $15x = 500$",
+        "Calculer la valeur de $x$ : $x = 500 / 15$",
+        "Conclure que le seuil est atteint pour environ $34$ produits"
+      ],
+      "explanation": "On cherche le moment où les revenus égalent les coûts : $25x = 10x + 500$. On soustrait $10x$ des deux côtés pour obtenir $15x = 500$, puis on divise par $15$. Le résultat est environ $33,33$, donc le seuil est franchi à partir du $34$ème produit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Seuil exponentiel",
+      "content": "La population d'une bactérie suit la fonction $f(t) = 100 \\times e^{0,5t}$ où $t$ est le temps en heures. À quel moment la population atteint elle le seuil de $1000$ individus ? Ordonnez les étapes du calcul.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Poser l'équation $100 \\times e^{0,5t} = 1000$",
+        "Simplifier par $100$ : $e^{0,5t} = 10$",
+        "Appliquer la fonction logarithme népérien : $0,5t = \\ln(10)$",
+        "Isoler $t$ : $t = 2 \\times \\ln(10)$"
+      ],
+      "explanation": "Pour résoudre $100 \\times e^{0,5t} = 1000$, on divise d'abord par $100$ pour obtenir $e^{0,5t} = 10$. On utilise ensuite la propriété $\\ln(e^x) = x$ pour obtenir $0,5t = \\ln(10)$. Enfin, on multiplie par $2$ pour trouver $t$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Seuil et fonction rationnelle",
+      "content": "Le coût moyen de production d'un objet est donné par $C(x) = 2 + \\frac{100}{x}$ où $x$ est le nombre d'objets. On souhaite que ce coût moyen descende sous le seuil de $7$ euros. Ordonnez la démarche de résolution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'inéquation $2 + \\frac{100}{x} \\leq 7$",
+        "Soustraire $2$ de chaque côté : $\\frac{100}{x} \\leq 5$",
+        "Multiplier par $x$ et diviser par $5$ : $x \\geq 20$",
+        "Conclure qu'il faut produire au moins vingt objets"
+      ],
+      "explanation": "On résout $2 + \\frac{100}{x} \\leq 7$. En isolant la fraction, on a $\\frac{100}{x} \\leq 5$. Puisque $x$ est positif, on peut multiplier par $x$ pour obtenir $100 \\leq 5x$, ce qui donne $x \\geq 20$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

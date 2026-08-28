@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 410,
+  "_course_code": "5eme-t07-c01-reconnaitre-la-proportionnalite",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Contre-exemple",
+  "title": "Quiz : Contre-exemple en proportionnalité (5e)",
+  "questions": [
+    {
+      "text": "Parmi les relations suivantes, laquelle n'est pas une relation proportionnelle ?",
+      "options": [
+        "$y = 3x$",
+        "$y = 5x + 2$",
+        "$y = 0,5x$",
+        "$y = 7x$"
+      ],
+      "correctAnswer": "$y = 5x + 2$",
+      "explanation": "Dans une relation proportionnelle, l'équation est de la forme $y = kx$ et le graphique passe par l'origine. La relation $y = 5x + 2$ possède un terme constant 2, donc elle ne passe pas par l'origine ; c'est une relation affine, non proportionnelle. Les trois autres sont bien de la forme $y = kx$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des droites décrites ci-dessous ne passe pas par l'origine, et donc ne représente pas une relation proportionnelle ?",
+      "options": [
+        "Droite passant par $(0,0)$ et $(2,4)$",
+        "Droite passant par $(0,2)$ et $(2,6)$",
+        "Droite passant par $(0,0)$ et $(3,9)$",
+        "Droite passant par $(0,0)$ et $(1,5)$"
+      ],
+      "correctAnswer": "Droite passant par $(0,2)$ et $(2,6)$",
+      "explanation": "Une relation proportionnelle exige que la droite passe par l'origine $(0,0)$. La droite passant par $(0,2)$ a un ordonnée à l'origine 2, donc elle ne passe pas par l'origine. Les trois autres droites contiennent le point $(0,0)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quelle situation le prix total n'est pas proportionnel à la quantité achetée ?",
+      "options": [
+        "Des pommes à $2$ € le kilo, prix total = $2 \\times$ nombre de kilos",
+        "Un abonnement mensuel de $10$ € plus $1$ € par film loué",
+        "Des stylos à $0,50$ € l'unité, prix total = $0,5 \\times$ nombre de stylos",
+        "Du tissu à $8$ € le mètre, prix total = $8 \\times$ nombre de mètres"
+      ],
+      "correctAnswer": "Un abonnement mensuel de $10$ € plus $1$ € par film loué",
+      "explanation": "La proportionnalité signifie prix total = prix unitaire × quantité, sans frais fixes. L'abonnement ajoute un coût constant de 10 € indépendamment du nombre de films, ce qui brise la proportionnalité. Les trois autres situations sont des proportionnalités directes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous montre deux couples $(x,y)$ qui respectent une proportionnalité : $(1,3)$ et $(2,6)$. Quel troisième couple $(3,y)$ serait un contre-exemple à la proportionnalité ?",
+      "options": [
+        "$(3,9)$",
+        "$(3,10)$",
+        "$(3,12)$",
+        "$(3,15)$"
+      ],
+      "correctAnswer": "$(3,10)$",
+      "explanation": "Pour une proportionnalité, le rapport $y/x$ doit être constant. Ici $3/1 = 6/2 = 3$, donc $k=3$. Le couple $(3,9)$ donne $9/3=3$ (proportionnel), $(3,12)$ donne $4$, $(3,15)$ donne $5$. Seul $(3,10)$ donne $10/3 \\approx 3,33$, différent de 3, c'est donc un contre-exemple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le tableau suivant, quelle ligne ne respecte pas la proportionnalité entre $x$ et $y$ ?\\n$x$ : 1 ; 2 ; 3 ; 4\\n$y$ : 5 ; 10 ; 16 ; 20",
+      "options": [
+        "Ligne 1",
+        "Ligne 2",
+        "Ligne 3",
+        "Ligne 4"
+      ],
+      "correctAnswer": "Ligne 3",
+      "explanation": "Le rapport $y/x$ doit être constant. Pour les lignes 1, 2 et 4 on a $5/1=5$, $10/2=5$, $20/4=5$. Pour la ligne 3, $16/3 \\approx 5,33$, ce qui diffère de 5. Donc la ligne 3 ne respecte pas la proportionnalité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

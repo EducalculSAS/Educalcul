@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 363,
+  "_course_code": "6eme-t07-c01-solides-usuels",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Faces / arêtes / sommets",
+  "title": "Quiz : Faces, arêtes et sommets des solides",
+  "questions": [
+    {
+      "text": "Combien de faces, d'arêtes et de sommets possède un cube ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "6 faces, 8 arêtes, 12 sommets",
+        "8 faces, 12 arêtes, 6 sommets",
+        "12 faces, 6 arêtes, 8 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Un cube est un pavé droit dont les six faces sont des carrés. Il possède $6$ faces, $12$ arêtes (segments où se rejoignent deux faces) et $8$ sommets (points où se rejoignent trois arêtes). Les autres propositions inversent les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une pyramide à base carrée a 5 faces et 5 sommets. Combien a-t-elle d'arêtes ?",
+      "options": [
+        "6 arêtes",
+        "8 arêtes",
+        "10 arêtes",
+        "12 arêtes"
+      ],
+      "correctAnswer": "8 arêtes",
+      "explanation": "On peut compter : $4$ arêtes sur la base carrée et $4$ arêtes qui joignent le sommet au sommet de la base, soit $8$ au total. On peut aussi utiliser la relation d'Euler $S + F = A + 2$ (Sommets + Faces = Arêtes + 2) : $5 + 5 = A + 2 \\Rightarrow 10 = A + 2 \\Rightarrow A = 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces solides n'a aucune face plane ?",
+      "options": [
+        "Un cube",
+        "Un cylindre",
+        "Un cône",
+        "Une sphère"
+      ],
+      "correctAnswer": "Une sphère",
+      "explanation": "Une sphère est une surface courbe continue ; elle ne possède aucune face plane (ni arête, ni sommet). Le cube a $6$ faces planes. Le cylindre a $2$ faces planes (les bases). Le cône a $1$ face plane (la base).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit a des dimensions différentes (longueur, largeur, hauteur). Combien a-t-il de faces, d'arêtes et de sommets ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "6 faces, 8 arêtes, 10 sommets",
+        "8 faces, 12 arêtes, 6 sommets",
+        "4 faces, 6 arêtes, 4 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Le pavé droit et le cube ont la même structure topologique : $6$ faces (rectangles pour le pavé, carrés pour le cube), $12$ arêtes et $8$ sommets. Seules les dimensions des faces changent, pas leur nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le patron ci-contre. Combien de faces le cube correspondant possédera-t-il ?",
+      "options": [
+        "4 faces",
+        "5 faces",
+        "6 faces",
+        "8 faces"
+      ],
+      "correctAnswer": "6 faces",
+      "explanation": "Un patron de cube est constitué de $6$ carrés accolés. Une fois plié, chaque carré devient une face du cube. Le cube a donc $6$ faces. Le patron représenté montre bien les $6$ carrés nécessaires.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    }
+  ]
+}

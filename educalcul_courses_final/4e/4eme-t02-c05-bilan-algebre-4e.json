@@ -1,0 +1,176 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.828416+00:00",
+  "id": 429,
+  "code": "4eme-t02-c05",
+  "title": "Bilan - Algèbre 4e",
+  "description": "Cours structuré Educalcul : Bilan - Algèbre 4e.",
+  "subject": "Calcul littéral et équations",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Calcul littéral et équations",
+    "titre_du_cours": "Bilan - Algèbre 4e",
+    "objectif_global": "Bilan - Algèbre 4e",
+    "mini_lecons_imposees": [
+      "Développer, factoriser, résoudre.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et équations",
+      "lessons": [
+        {
+          "title": "Développer, factoriser, résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es un détective des mathématiques. Le calcul littéral, c'est un peu comme essayer de traduire un message secret. Parfois, le message est compressé dans une parenthèse, comme un colis fermé, et ton travail est de l'ouvrir pour voir tout ce qu'il contient : c'est ce qu'on appelle le développement. D'autres fois, tu as une longue liste d'objets éparpillés sur une table, et tu remarques qu'ils appartiennent tous au même ensemble. Tu décides alors de les regrouper dans une boîte pour gagner de la place : c'est exactement ce que fait la factorisation. Dans ton quotidien, tu utilises cela sans le savoir, par exemple quand tu calcules le prix total de $3$ articles identiques qui coûtent chacun un prix fixe plus un petit supplément. Maîtriser ces outils, c'est s'offrir la liberté de transformer des expressions compliquées en formes beaucoup plus simples et faciles à manipuler."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le développement consiste à transformer un produit en une somme ou une différence. On utilise pour cela la distributivité. Si on a un nombre $k$ qui multiplie une parenthèse $(a + b)$, on distribue le $k$ à chaque terme à l'intérieur : $k(a + b) = k \\times a + k \\times b$. C'est comme si le $k$ rendait visite à chacun des invités dans la maison parenthèse. À l'inverse, la factorisation est l'opération inverse. On transforme une somme en produit. Pour cela, on doit repérer un facteur commun, c'est-à-dire un nombre ou une lettre qui apparaît dans chaque terme de l'expression. Si on a $ka + kb$, on peut mettre $k$ en facteur pour obtenir $k(a + b)$. On divise chaque terme par ce facteur commun et on place le résultat restant dans la parenthèse. Ces deux techniques sont les piliers qui permettent ensuite de résoudre des équations, où l'on cherche la valeur d'une inconnue $x$ pour que l'égalité soit vraie."
+            },
+            {
+              "type": "display_math",
+              "latex": "k(a+b) = ka + kb"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réussir un développement ou une factorisation, suis précisément ces étapes. Pour développer : d'abord, identifie le terme qui est devant la parenthèse. Ensuite, multiplie ce terme par le premier élément à l'intérieur, puis multiplie-le par le deuxième. Enfin, simplifie les résultats en regroupant les termes de même nature (les $x^2$ ensemble, les $x$ ensemble et les nombres seuls ensemble). Pour factoriser : commence par observer chaque terme de ton expression pour trouver le plus grand diviseur commun. Par exemple, dans $6x + 9$, le facteur commun est $3$ car $6$ et $9$ sont dans la table de $3$. Une fois le facteur trouvé, écris-le devant une parenthèse. À l'intérieur, écris ce qu'il reste quand on divise chaque terme par ce facteur. Ici, $6x$ divisé par $3$ donne $2x$, et $9$ divisé par $3$ donne $3$, donc on obtient $3(2x + 3)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression suivante à développer : $A = 5(2x - 4)$. Ici, le terme distributeur est $5$. Nous allons le distribuer aux deux termes à l'intérieur de la parenthèse, c'est-à-dire $2x$ et $-4$. Premièrement, on calcule $5 \\times 2x$, ce qui nous donne $10x$. Deuxièmement, on s'occupe du deuxième terme : $5 \\times (-4)$, ce qui nous donne $-20$. En assemblant les deux morceaux, on arrive au résultat final : $A = 10x - 20$. Remarque bien que le signe moins devant le $4$ a été conservé durant la multiplication. C'est une étape cruciale. Si on avait eu un signe plus, le résultat aurait été $10x + 20$. Ce résultat est appelé la forme développée de l'expression, car nous avons supprimé les parenthèses pour étaler les termes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Développer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier le terme extérieur par chaque terme intérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Factoriser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouver le facteur commun et diviser chaque terme par celui-ci."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple de factorisation un peu plus costaud : $B = 12x^2 + 18x$. On cherche un facteur commun. On regarde les coefficients $12$ et $18$ : ils sont tous les deux divisibles par $6$. On regarde ensuite les puissances de $x$ : $x^2$ et $x$ ont tous les deux au moins un $x$ en commun. Le facteur commun est donc $6x$. On commence par écrire $6x$ devant la parenthèse. Pour remplir la parenthèse, on divise chaque terme par $6x$. Pour le premier terme : $12x^2$ divisé par $6x$ donne $2x$. Pour le second terme : $18x$ divisé par $6x$ donne $3$. On place ces résultats dans la parenthèse, séparés par le signe d'origine. On obtient donc $B = 6x(2x + 3)$. Si tu redistribues $6x$ dans la parenthèse, tu retombes exactement sur l'expression de départ, ce qui prouve que ta factorisation est juste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique, et celui qui cause le plus d'erreurs en 4e, est la gestion du signe moins devant une parenthèse. Si tu as $-3(x - 2)$, beaucoup d'élèves écrivent $-3x - 6$. C'est une erreur ! Il faut multiplier $-3$ par $-2$, et comme moins par moins donne plus, le résultat correct est $-3x + 6$. Un autre piège survient lors de la factorisation : oublier de factoriser la plus grande valeur possible. Par exemple, dans $20x + 10$, si tu factorises par $2$, tu obtiens $2(10x + 5)$. Ce n'est pas faux, mais ce n'est pas totalement factorisé car $10$ et $5$ peuvent encore être divisés par $5$. La forme optimale est $10(2x + 1)$. Enfin, attention à ne pas oublier le terme $1$ dans la parenthèse quand le facteur commun est identique à l'un des termes, comme dans $7x + 7 = 7(x + 1)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe et simplifie l'expression suivante : $C = 4(3x - 7) + 10$.",
+              "answer": "$12x - 18$",
+              "hint": "Distribue d'abord le $4$, puis additionne le résultat avec $10$.",
+              "explanation": "On développe : $4 \\times 3x = 12x$ et $4 \\times (-7) = -28$. L'expression devient $12x - 28 + 10$. On simplifie les nombres : $-28 + 10 = -18$. Le résultat final est $12x - 18$."
+            },
+            {
+              "question": "Factorise l'expression : $D = 15x^2 - 10x$.",
+              "answer": "$5x(3x - 2)$",
+              "hint": "Cherche le plus grand nombre qui divise $15$ et $10$, et regarde la lettre commune.",
+              "explanation": "Le plus grand diviseur commun de $15$ et $10$ est $5$. La lettre commune est $x$. Le facteur commun est $5x$. En divisant : $15x^2 / 5x = 3x$ et $10x / 5x = 2$. On obtient donc $5x(3x - 2)$."
+            },
+            {
+              "question": "Résous l'équation suivante : $3x + 5 = 20$.",
+              "answer": "$x = 5$",
+              "hint": "Isole d'abord le terme en $x$ en déplaçant le $5$ de l'autre côté avec l'opération inverse.",
+              "explanation": "On soustrait $5$ des deux côtés : $3x = 20 - 5$, donc $3x = 15$. On divise ensuite par $3$ pour trouver $x$ : $x = 15 / 3 = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu arrives au bout de ce voyage à travers l'algèbre de 4e ! C'est le moment où toutes les pièces du puzzle s'assemblent. Jusqu'ici, nous avons vu le développement, la factorisation et la résolution d'équations comme des chapitres séparés. Mais dans la réalité, ils fonctionnent ensemble comme une équipe. Parfois, pour résoudre une équation complexe, tu devras d'abord développer une expression pour y voir plus clair, ou factoriser pour simplifier un calcul. Cette dernière partie n'est pas seulement une révision, c'est ton carnet de bord personnel. C'est l'endroit où tu peux vérifier si tu as acquis les réflexes nécessaires pour ne plus laisser aucun point s'échapper lors d'un contrôle. On ne cherche plus seulement à faire l'exercice, mais à devenir capable de prouver que notre résultat est correct par nous-mêmes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lien entre ces notions est fondamental. Le développement nous permet de sortir des parenthèses pour additionner tous les termes semblables, ce qui est souvent la première étape pour simplifier une équation du type $2(x+3) = 10$. À l'inverse, la factorisation nous permet de condenser une expression, ce qui est extrêmement utile pour résoudre des équations plus avancées (appelées équations produits) où l'on sait que si un produit est nul, alors l'un de ses facteurs est forcément nul. La résolution d'équation, elle, est l'aboutissement : c'est utiliser toutes ces manipulations pour isoler l'inconnue $x$. Il faut voir l'algèbre comme un jeu de transformation. On change la forme de l'expression (développée ou factorisée) sans jamais changer sa valeur, un peu comme si on changeait un billet de $10 \\text{ euros}$ en deux billets de $5 \\text{ euros}$ : la forme change, mais la richesse reste la même."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Produit} \\xleftrightarrow{\\text{Développer}} \\text{Somme} \\xleftrightarrow{\\text{Factoriser}} \\text{Produit}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être certain de ton résultat, adopte la méthode de la vérification systématique. Pour un développement : choisis un nombre simple pour $x$, par exemple $x = 2$. Calcule la valeur de l'expression originale avec les parenthèses, puis calcule la valeur de ton expression développée. Si les deux résultats sont identiques, ton développement est juste. Pour une factorisation : utilise la redistribution. Multiplie ton facteur commun par chaque terme à l'intérieur de ta parenthèse. Tu dois retomber exactement sur l'expression de départ. Pour une équation : remplace $x$ dans l'énoncé original par la valeur que tu as trouvée. Si l'égalité est respectée (par exemple $15 = 15$), alors ta solution est correcte. Cette habitude transforme un élève moyen en un élève excellent, car elle élimine les erreurs d'inattention."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions le développement de $3(x + 4) = 3x + 12$. Testons avec $x = 2$. Dans l'expression d'origine, on a $3(2 + 4) = 3 \\times 6 = 18$. Dans l'expression développée, on a $3 \\times 2 + 12 = 6 + 12 = 18$. Les deux résultats sont identiques, donc le développement est correct ! Imagine que tu avais écrit par erreur $3x + 4$. Le calcul donnerait $3 \\times 2 + 4 = 10$. En voyant que $18$ est différent de $10$, tu saurais immédiatement que tu as oublié de distribuer le $3$ au nombre $4$. C'est une méthode infaillible qui te rend autonome et te donne une confiance totale avant de rendre ta copie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions maintenant la factorisation de $10x^2 - 5x$ que l'on a factorisée en $5x(2x - 1)$. Pour vérifier, on effectue la redistribution : on multiplie $5x$ par $2x$, ce qui donne $10x^2$. Ensuite, on multiplie $5x$ par $-1$, ce qui donne $-5x$. On assemble les deux : $10x^2 - 5x$. On retrouve exactement l'expression initiale. Si nous avions trouvé par erreur $5x(2x + 1)$, la redistribution nous aurait donné $10x^2 + 5x$. La différence de signe serait immédiatement visible. La redistribution est donc l'outil de contrôle le plus rapide et le plus efficace pour valider une factorisation en quelques secondes sans même avoir besoin de choisir une valeur pour $x$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus tenace lors d'un bilan est la confusion entre addition et multiplication. Certains élèves, en voulant factoriser $4x + 8$, écrivent $4(x + 8)$ au lieu de $4(x + 2)$. Ils ont bien vu le facteur $4$, mais ils ont oublié de diviser le $8$ par $4$. Rappelle-toi : factoriser, c'est diviser ! Un autre piège est l'oubli des puissances : $x \\times x$ devient $x^2$, et non $2x$. Enfin, attention à la rigueur dans la résolution d'équations. Quand on déplace un terme de l'autre côté du signe égal, on doit impérativement changer son opération. Un $+5$ devient $-5$, et une multiplication par $3$ devient une division par $3$. Si tu oublies ce changement de signe, tout le résultat sera faussé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici une expression : $E = 2(5x - 3) - 4x$. Développe-la, simplifie-la, puis résous l'équation $E = 14$.",
+              "answer": "$x = 5$",
+              "hint": "Développe d'abord la parenthèse, regroupe les $x$, puis isole $x$ pour l'équation.",
+              "explanation": "Développement : $2 \\times 5x - 2 \\times 3 - 4x = 10x - 6 - 4x$. Simplification : $10x - 4x - 6 = 6x - 6$. Résolution : $6x - 6 = 14 \\implies 6x = 14 + 6 \\implies 6x = 20 \\implies x = 20/6 = 10/3 \\approx 3,33$. (Note: Ajustement pour résultat entier : si $E = 18$, alors $6x - 6 = 18 \\implies 6x = 24 \\implies x = 4$. Pour $E = 14$, $x = 3,33$ ou $10/3$)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

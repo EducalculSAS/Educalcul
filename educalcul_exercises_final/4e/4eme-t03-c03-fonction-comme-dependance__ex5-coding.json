@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Variable",
+  "title": "Algorithmes et variables : affectation, condition, boucle",
+  "blocks": [
+    {
+      "title": "Valeur finale d'une variable",
+      "content": "On considère l'algorithme suivant :\\nVariables $a$, $b$, $c$ en nombre\\nDébut\\n$a \\leftarrow 5$\\n$b \\leftarrow 3$\\n$c \\leftarrow a + b \\times 2$\\n$a \\leftarrow c - 4$\\nAfficher $a$\\nFin\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On suit les affectations pas à pas : $a$ vaut $5$, $b$ vaut $3$. On calcule $c = a + b \\times 2 = 5 + 3 \\times 2 = 5 + 6 = 11$. Puis on modifie $a$ : $a = c - 4 = 11 - 4 = 7$. La valeur affichée est donc $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec condition",
+      "content": "On exécute l'algorithme ci-dessous avec la valeur $x = -2$ entrée par l'utilisateur.\\nVariables $x$, $y$ en nombre\\nDébut\\nAfficher \"Entrez un nombre :\"\\nDemander $x$\\nSi $x > 0$\\nAlors $y \\leftarrow x \\times 2$\\nSinon $y \\leftarrow x + 5$\\nFin Si\\nAfficher $y$\\nFin\\nQuelle valeur est affichée ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur entrée est $x = -2$. La condition $x > 0$ est fausse car $-2$ n'est pas strictement positif. On exécute donc la branche « Sinon » : $y = x + 5 = -2 + 5 = 3$. La valeur affichée est $3$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour calculer une somme",
+      "content": "On considère l'algorithme suivant :\\nVariables $n$, $i$, $somme$ en nombre\\nDébut\\n$somme \\leftarrow 0$\\nPour $i$ de $1$ à $4$ faire\\n$somme \\leftarrow somme + i \\times 2$\\nFin Pour\\nAfficher $somme$\\nFin\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "correctAnswer": "20",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle répète l'instruction pour $i = 1$, $2$, $3$, $4$. On accumule dans $somme$ :\\n$i=1$ : $somme = 0 + 1 \\times 2 = 2$\\n$i=2$ : $somme = 2 + 2 \\times 2 = 6$\\n$i=3$ : $somme = 6 + 3 \\times 2 = 12$\\n$i=4$ : $somme = 12 + 4 \\times 2 = 20$\\nOn peut aussi calculer $2 \\times (1+2+3+4) = 2 \\times 10 = 20$. La valeur affichée est $20$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

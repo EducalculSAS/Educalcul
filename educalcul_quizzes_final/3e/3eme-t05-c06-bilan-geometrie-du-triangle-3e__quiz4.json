@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Bilan - Géométrie du triangle 3e",
+  "title": "Quiz - Bilan Géométrie du triangle 3e",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ cm et $8$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$10$ cm",
+        "$14$ cm",
+        "$12$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "D'après le théorème de Pythagore, $6^2+8^2=36+64=100$, donc l'hypoténuse vaut $\\sqrt{100}=10$ cm. Les autres valeurs ne satisfont pas l'égalité $a^2+b^2=c^2$.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 6,
+        "b": 8,
+        "c": 10,
+        "caption": "Triangle rectangle avec côtés 6, 8 et hypoténuse 10"
+      }
+    },
+    {
+      "text": "Dans le triangle $ABC$, la droite $DE$ est parallèle à $BC$ avec $D$ sur $AB$ et $E$ sur $AC$. On sait que $AD=3$ cm, $DB=6$ cm et $AE=4$ cm. Quelle est la longueur de $EC$ ?",
+      "options": [
+        "$8$ cm",
+        "$6$ cm",
+        "$10$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "D'après le théorème de Thalès, $\\frac{AD}{DB}=\\frac{AE}{EC}$. Ainsi $\\frac{3}{6}=\\frac{4}{EC}$ ce qui donne $EC=8$ cm. Les autres longueurs ne respectent pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, l'angle aigu mesure $30^{\\circ}$ et le côté opposé à cet angle mesure $5$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$10$ cm",
+        "$5\\sqrt{3}$ cm",
+        "$5$ cm",
+        "$20$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Dans un triangle rectangle, $\\sin 30^{\\circ} = \\frac{1}{2} = \\frac{\\text{côté opposé}}{\\text{hypoténuse}}$. Donc $\\text{hypoténuse} = \\frac{5}{1/2}=10$ cm. La valeur $5\\sqrt{3}$ cm correspondrait au côté adjacent pour un angle de $30^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $7$ cm, $24$ cm et $25$ cm. Ce triangle est-il rectangle ?",
+      "options": [
+        "Oui, c'est un triangle rectangle",
+        "Non, ce n'est pas un triangle rectangle",
+        "On ne peut pas savoir",
+        "C'est un triangle isocèle"
+      ],
+      "correctAnswer": "Oui, c'est un triangle rectangle",
+      "explanation": "On vérifie la relation de Pythagore : $7^2+24^2=49+576=625=25^2$. L'égalité est vérifiée, donc le triangle est rectangle. Il n'est pas isocèle car les trois côtés sont distincts.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 7,
+        "b": 24,
+        "c": 25,
+        "caption": "Triangle rectangle 7-24-25"
+      }
+    },
+    {
+      "text": "Une échelle de $5$ m est appuyée contre un mur. Son pied est à $3$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$4$ m",
+        "$3$ m",
+        "$5$ m",
+        "$2$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "On applique le théorème de Pythagore au triangle rectangle formé par l'échelle (hypoténuse $5$ m), la distance au pied ($3$ m) et la hauteur $h$ : $h^2+3^2=5^2 \\Rightarrow h^2=25-9=16 \\Rightarrow h=4$ m.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Échelle contre un mur",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "3",
+          "4",
+          "5"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

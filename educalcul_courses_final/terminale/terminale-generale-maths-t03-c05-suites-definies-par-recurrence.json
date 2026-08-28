@@ -1,0 +1,612 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.626304+00:00",
+  "id": 688,
+  "code": "terminale-generale-maths-t03-c05",
+  "title": "Suites définies par récurrence",
+  "description": "Cours structuré Educalcul : Suites définies par récurrence.",
+  "subject": "Suites",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Suites",
+    "titre_du_cours": "Suites définies par récurrence",
+    "objectif_global": "Suites définies par récurrence",
+    "mini_lecons_imposees": [
+      "Étudier.",
+      "Conjecturer.",
+      "Prouver selon programme."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Suites",
+      "lessons": [
+        {
+          "title": "Étudier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une suite définie par récurrence : de quoi parle-t-on ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux suites définies par récurrence. Tu as déjà croisé les suites arithmétiques et géométriques, où le passage d'un terme au suivant repose sur une addition ou une multiplication constante. Ici, nous changeons d'échelle : la relation qui lie $u_{n+1}$ à $u_n$ est donnée par une fonction $f$, souvent non linéaire. On écrit $u_{n+1} = f(u_n)$, avec une valeur initiale $u_0$ (parfois $u_1$) précisée. C'est ce couple $(f, u_0)$ qui définit entièrement la suite. Prends le temps de bien visualiser cette mécanique : on part de $u_0$, on applique $f$ pour obtenir $u_1$, on réapplique $f$ à $u_1$ pour obtenir $u_2$, et ainsi de suite. C'est une véritable \"machine à itérer\"."
+            },
+            {
+              "type": "definition",
+              "term": "Suite définie par récurrence",
+              "definition": "Une suite $(u_n)$ est dite définie par récurrence s'il existe une fonction $f$ définie sur un intervalle $I$ et une valeur initiale $u_0 \\in I$ telle que pour tout entier naturel $n$, $u_n \\in I$ et $u_{n+1} = f(u_n)$.",
+              "example": "La suite logistique $u_{n+1} = 3,5 u_n (1 - u_n)$ avec $u_0 = 0,2$ est définie par récurrence sur $[0;1]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La toute première question à se poser, avant même de chercher une limite, est celle du domaine de définition. La fonction $f$ doit être applicable à chaque terme produit. Si $f(x) = \\sqrt{x-1}$, il faut que $u_n \\ge 1$ pour tout $n$, sinon la suite s'arrête brutalement. On vérifie donc que l'ensemble des valeurs prises par la suite reste inclus dans le domaine de $f$. C'est une condition de \"bonne définition\" qu'on ne saurait négliger, surtout en spécialité où la rigueur est attendue."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représentation graphique : l'escalier de la récurrence"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'outil visuel le plus puissant pour comprendre le comportement d'une suite récurrente est la construction graphique en escalier (ou toile d'araignée). On trace dans un même repère la courbe $y = f(x)$ et la droite $y = x$ (première bissectrice). En partant de $u_0$ sur l'axe des abscisses, on monte verticalement jusqu'à la courbe pour lire $u_1 = f(u_0)$, puis on va horizontalement vers la bissectrice pour reporter cette valeur en abscisse, et on recommence. Cet aller-retour vertical-horizontal matérialise l'itération $u_{n+1} = f(u_n)$. C'est une méthode qui permet de conjecturer la monotonie, la majoration/minoration, et même la convergence vers un point fixe."
+            },
+            {
+              "type": "graph",
+              "expression": "3.5*x*(1-x)",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Courbe $y = 3,5x(1-x)$ et droite $y=x$ pour la suite logistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : la courbe parabolique croise la bissectrice en deux points. Ces intersections sont précisément les points fixes de $f$, c'est-à-dire les solutions de $f(x) = x$. Si la suite converge, sa limite ne peut être qu'un point fixe. Mais attention : tous les points fixes ne sont pas attractifs ! La pente de $f$ en ce point joue un rôle décisif, nous y reviendrons."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Monotonie et majoration/minoration : les outils de l'analyse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour étudier une suite récurrente, on cherche souvent à établir sa monotonie (croissante ou décroissante) et sa bornitude (majorée ou minorée). La méthode standard consiste à comparer $u_{n+1}$ et $u_n$, c'est-à-dire à étudier le signe de $u_{n+1} - u_n = f(u_n) - u_n$. On définit alors la fonction auxiliaire $g(x) = f(x) - x$ sur l'intervalle pertinent. Le signe de $g$ sur cet intervalle dicte la monotonie : si $g(x) \\ge 0$, la suite est croissante ; si $g(x) \\le 0$, elle est décroissante. C'est une idée simple mais terriblement efficace, à condition de bien déterminer l'intervalle où vivent les termes de la suite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $u_{n+1} = \\frac{1}{2}(u_n + \\frac{2}{u_n})$ avec $u_0 = 2$. Ici $f(x) = \\frac{1}{2}(x + \\frac{2}{x})$ sur $]0;+\\infty[$. On calcule $g(x) = f(x) - x = \\frac{1}{2}(\\frac{2}{x} - x) = \\frac{2-x^2}{2x}$. Pour $x > 0$, le signe de $g$ est celui de $2 - x^2$. Donc $g(x) \\ge 0$ si $0 < x \\le \\sqrt{2}$, et $g(x) \\le 0$ si $x \\ge \\sqrt{2}$. Comme $u_0 = 2 > \\sqrt{2}$, on a $g(u_0) \\le 0$, donc $u_1 \\le u_0$. Mais il faut aussi vérifier que $u_1$ reste $\\ge \\sqrt{2}$ pour que la suite continue de décroître ! On montre par récurrence que $u_n \\ge \\sqrt{2}$ pour tout $n$ (inégalité arithmético-géométrique), ce qui assure que la suite est décroissante et minorée par $\\sqrt{2}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir $g(x) = f(x) - x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule l'expression de $g(x)$ et détermine son signe sur l'intervalle où se situent les termes de la suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Étudier le signe de $g$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous l'inégalité $g(x) \\ge 0$ (ou $\\le 0$) pour connaître la monotonie en fonction de la valeur de $u_n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'invariance de l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montre que si $u_n$ appartient à un certain intervalle $J$, alors $u_{n+1} = f(u_n)$ appartient aussi à $J$. C'est souvent une récurrence simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure sur monotonie et bornitude",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la suite est monotone et bornée, elle converge (théorème de la monotone convergence)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre temps est ton fil conducteur pour l'exercice qui suit. Elle structure ta pensée et garantit que tu n'oublies aucune hypothèse cruciale, notamment l'invariance de l'intervalle qui est souvent le point délicat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'outil algorithmique : calculer pour voir"
+            },
+            {
+              "type": "paragraph",
+              "content": "En Terminale spécialité, l'algorithmique n'est pas une option, c'est un langage de pensée. Écrire un petit programme qui calcule les premiers termes d'une suite récurrente permet de se faire une idée précise de son comportement avant de se lancer dans la démonstration. Tu peux tester différentes valeurs initiales, observer la vitesse de convergence, repérer un éventuel chaos. C'est ce qu'on appelle l'expérimentation numérique, et elle guide l'intuition mathématique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def suite_recurrente(f, u0, n):\\n    u = u0\\n    termes = [u]\\n    for i in range(n):\\n        u = f(u)\\n        termes.append(u)\\n    return termes\\n\\n# Exemple : suite de Héron pour racine de 2\\nf = lambda x: 0.5 * (x + 2/x)\\nprint(suite_recurrente(f, 2.0, 10))",
+              "caption": "Algorithme générique pour calculer les termes d'une suite récurrente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce code Python définit une fonction générique `suite_recurrente` qui prend en arguments la fonction $f$, la valeur initiale $u_0$ et le nombre d'itérations $n$. Il retourne la liste des termes calculés. Pour la suite de Héron (racine carrée de 2), on voit converger très vite vers $1,4142...$. Essaie de modifier `u0` ou `f` pour explorer d'autres comportements !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \\sqrt{u_n + 2}$ pour tout $n \\in \\mathbb{N}$. \\n1. Montrer que pour tout $n$, $u_n \\in [1; 2]$. \\n2. Étudier la monotonie de la suite. \\n3. En déduire que la suite converge et déterminer sa limite.",
+              "answer": "1. Par récurrence : $u_0=1 \\in [1;2]$. Si $u_n \\in [1;2]$, alors $u_n+2 \\in [3;4]$, donc $u_{n+1} = \\sqrt{u_n+2} \\in [\\sqrt{3}; 2] \\subset [1;2]$. \\n2. $u_{n+1} - u_n = \\sqrt{u_n+2} - u_n$. Posons $g(x) = \\sqrt{x+2} - x$ sur $[1;2]$. $g'(x) = \\frac{1}{2\\sqrt{x+2}} - 1 < 0$, $g$ décroît. $g(1) = \\sqrt{3}-1 > 0$, $g(2) = 2-2 = 0$. Donc $g(x) \\ge 0$ sur $[1;2]$, la suite est croissante. \\n3. Suite croissante majorée par 2, donc convergente. Limite $l$ solution de $l = \\sqrt{l+2}$ avec $l \\ge 1$, soit $l^2 - l - 2 = 0$, $l = 2$ (l'autre racine -1 est exclue).",
+              "hint": "Pour la majoration, utilise la croissance de la fonction racine carrée. Pour la monotonie, étudie le signe de $g(x) = f(x) - x$ sur l'intervalle trouvé.",
+              "explanation": "Cet exercice illustre la méthode complète : invariance de l'intervalle par récurrence, étude de $g(x)=f(x)-x$ pour la monotonie, application du théorème de convergence monotone, puis résolution de $l=f(l)$ pour la limite."
+            },
+            {
+              "question": "Soit la suite $(v_n)$ définie par $v_0 = 3$ et $v_{n+1} = \\frac{v_n}{2} + \\frac{1}{v_n}$.\\n1. Montrer que $v_n > 0$ pour tout $n$.\\n2. Montrer que pour tout $n \\ge 1$, $v_n \\ge \\sqrt{2}$.\\n3. Étudier la monotonie de $(v_n)$ pour $n \\ge 1$.\\n4. Conclure.",
+              "answer": "1. $v_0=3>0$. Si $v_n>0$, $v_{n+1}$ somme de deux termes positifs, donc $>0$. \\n2. Inégalité arithmético-géométrique : $\\frac{v_n}{2} + \\frac{1}{v_n} \\ge 2\\sqrt{\\frac{v_n}{2} \\cdot \\frac{1}{v_n}} = \\sqrt{2}$. Égalité si $\\frac{v_n}{2} = \\frac{1}{v_n}$ i.e. $v_n = \\sqrt{2}$. \\n3. $v_{n+1} - v_n = \\frac{1}{v_n} - \\frac{v_n}{2} = \\frac{2 - v_n^2}{2v_n}$. Pour $n\\ge 1$, $v_n \\ge \\sqrt{2}$ donc $v_n^2 \\ge 2$, le numérateur $\\le 0$, dénominateur $>0$, donc $v_{n+1} - v_n \\le 0$ : suite décroissante pour $n\\ge 1$. \\n4. Suite décroissante minorée par $\\sqrt{2}$, donc convergente. Limite $l \\ge \\sqrt{2}$ solution de $l = \\frac{l}{2} + \\frac{1}{l}$, soit $l^2 = 2$, $l = \\sqrt{2}$.",
+              "hint": "Utilise l'inégalité arithmético-géométrique pour la majoration. Pour la monotonie, ramène au même dénominateur et utilise la majoration trouvée en 2.",
+              "explanation": "Variante de la suite de Héron (racine de 2). Montre l'importance de l'inégalité AG et du décalage d'indice pour la monotonie (valable seulement à partir de $n=1$)."
+            },
+            {
+              "question": "Écrire un algorithme (en Python ou en pseudo-code) qui calcule et affiche les 15 premiers termes de la suite définie par $u_0 = 0,5$ et $u_{n+1} = 3,8 u_n (1 - u_n)$. Que peut-on conjecturer sur le comportement de cette suite ?",
+              "answer": "Algorithme :\\n```\\nu ← 0,5\\nPour i de 0 à 14 :\\n    Afficher i, u\\n    u ← 3,8 × u × (1 - u)\\nFin pour\\n```\\nLes termes ne semblent pas converger vers une valeur fixe ; ils oscillent de façon apparemment irrégulière (comportement chaotique).",
+              "hint": "Implémente la boucle d'itération. Observe les valeurs affichées : se stabilisent-elles ?",
+              "explanation": "Cet exercice met en évidence qu'une suite récurrente peut ne pas converger. Pour $r=3,8$, la suite logistique présente un comportement chaotique : sensibilité aux conditions initiales, pas de convergence vers un point fixe ni un cycle périodique simple."
+            }
+          ]
+        },
+        {
+          "title": "Conjecturer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'observation à la conjecture : l'art de deviner juste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir appris à étudier rigoureusement une suite récurrente, nous voici au cœur de la démarche scientifique : conjecturer. En mathématiques, une conjecture n'est pas un coup de dé, c'est une hypothèse formulée à partir d'indices solides : calculs numériques, représentation graphique, analyse de la fonction $f$. Tu as maintenant les outils pour ne pas conjecturer au hasard. Regarde la suite logistique $u_{n+1} = r u_n (1-u_n)$ : pour $r=2,5$, l'escalier converge vers un point ; pour $r=3,2$, il tourne autour d'un cycle d'ordre 2 ; pour $r=3,8$, il remplit l'intervalle de façon erratique. Chaque image te suggère une conjecture différente. C'est cette lecture graphique que tu dois maîtriser."
+            },
+            {
+              "type": "definition",
+              "term": "Point fixe attractif / répulsif",
+              "definition": "Soit $l$ un point fixe de $f$ (i.e. $f(l)=l$). Si $|f'(l)| < 1$, $l$ est attractif : les suites starting près de $l$ convergent vers $l$. Si $|f'(l)| > 1$, $l$ est répulsif : les suites s'en écartent. Si $|f'(l)| = 1$, le test est indécis (cas critique).",
+              "example": "Pour $f(x) = \\frac{1}{2}(x + \\frac{2}{x})$, $l=\\sqrt{2}$ est point fixe. $f'(x) = \\frac{1}{2}(1 - \\frac{2}{x^2})$, $f'(\\sqrt{2}) = 0$, donc attractif (convergence quadratique)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce critère de la dérivée en le point fixe est un outil de conjecture d'une puissance remarquable. Il te permet de prédire, rien qu'en calculant $f'(l)$, si une suite convergera vers $l$ ou s'en éloignera, pour peu que $u_0$ soit assez proche. Attention toutefois : c'est un critère local. Il ne garantit pas la convergence pour tout $u_0$ du domaine, seulement dans un voisinage de $l$. Mais en pratique, c'est souvent le point de départ de ta conjecture : \"Je parie que la suite converge vers $l$ car $f'(l) = 0,3 < 1$\"."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*(x+2/x)",
+              "xmin": 0.5,
+              "xmax": 3,
+              "caption": "Courbe $y = \\frac{1}{2}(x + \\frac{2}{x})$ et $y=x$ : point fixe attractif en $\\sqrt{2}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cycles d'ordre 2 et bifurcations : quand la suite ne converge pas vers un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Toutes les suites récurrentes ne convergent pas vers un point fixe. Certaines s'installent dans une oscillation permanente entre deux valeurs $a$ et $b$ : $u_{2n} \\to a$, $u_{2n+1} \\to b$, avec $b = f(a)$ et $a = f(b)$. On dit que la suite admet un cycle d'ordre 2 (ou 2-cycle). Graphiquement, l'escalier ne monte plus vers l'intersection avec $y=x$, mais dessine un rectangle entre les deux branches de la courbe. Ce phénomène apparaît quand le point fixe devient répulsif ($|f'(l)| > 1$) et qu'un cycle attractif naît : c'est une bifurcation. C'est le début de la route vers le chaos, un territoire passionnant que le programme de spécialité effleure."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour détecter un 2-cycle, on étudie les points fixes de la composée $f \\circ f$, c'est-à-dire les solutions de $f(f(x)) = x$ qui ne sont pas solutions de $f(x)=x$. Si tu trouves deux telles valeurs $a$ et $b$ distinctes, et que $|(f \\circ f)'(a)| = |f'(a)f'(b)| < 1$, alors le cycle est attractif. C'est un critère généralisable aux cycles d'ordre $k$ : on regarde $(f^k)'(x)$ sur le cycle. Mais pour le bac, savoir repérer un 2-cycle sur le graphique et conjecturer son existence suffit souvent."
+            },
+            {
+              "type": "graph",
+              "expression": "3.2*x*(1-x)",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Suite logistique $r=3,2$ : apparition d'un 2-cycle attractif"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conjecturer la limite : le rôle des bornes et de la monotonie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une suite est monotone et bornée, le théorème de convergence monotone garantit l'existence d'une limite finie. Mais quelle est cette limite ? La conjecture la plus naturelle est : la limite est l'unique point fixe de $f$ dans l'intervalle où la suite est piégée. Si la suite est croissante et majorée par $M$, et que $f$ n'a qu'un seul point fixe $l \\le M$ dans cet intervalle, alors $l$ est le candidat idéal. De même, si la suite est décroissante et minorée par $m$, et que $f$ a un unique point fixe $l \\ge m$, on conjecture $u_n \\to l$. C'est un raisonnement par \"piège à limite\" : la suite ne peut pas sortir de son intervalle, et le seul point stable à l'intérieur est $l$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $u_{n+1} = \\frac{2u_n + 3}{u_n + 2}$ avec $u_0 = 0$. $f(x) = \\frac{2x+3}{x+2}$ sur $[0; +\\infty[$. $f'(x) = \\frac{1}{(x+2)^2} > 0$, $f$ est croissante. $u_1 = 1,5 > u_0$. Par récurrence, la suite est croissante. $f(x) - x = \\frac{3-x^2}{x+2}$. Pour $x \\in [0; \\sqrt{3}]$, $f(x) \\ge x$, et $f(x) \\le \\sqrt{3}$. Donc la suite est majorée par $\\sqrt{3}$. Elle converge. L'unique point fixe dans $[0; \\sqrt{3}]$ est $l = \\sqrt{3}$ (solution de $x^2=3$). Conjecture : $u_n \\to \\sqrt{3}$. C'est exactement ce que tu devras prouver au prochain chapitre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer quelques termes (algo ou main)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens $u_0, u_1, u_2, u_3, u_4$ pour te faire une idée numérique de la tendance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer l'escalier graphique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine $y=f(x)$ et $y=x$. Suit la construction en escalier depuis $u_0$. La suite monte-t-elle ? Descend-elle ? Oscille-t-elle ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier les points fixes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous $f(x)=x$. Combien de solutions dans l'intervalle visité ? Calcule $f'(x)$ en ces points pour tester l'attractivité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Formuler la conjecture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris noir sur blanc : \"Je conjecture que $(u_n)$ converge vers $l = ...$ car la suite est monotone/bornée et $l$ est un point fixe attractif de $f$ dans l'intervalle d'invariance.\""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces quatre étapes constituent ta grille de lecture pour tout exercice de conjecture. Ne les saute pas, même si l'exercice ne demande que la conjecture : c'est en les suivant que tu construis une intuition fiable, celle qui te permettra d'écrire une démonstration propre par la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère la suite $(u_n)$ définie par $u_0 = 0,5$ et $u_{n+1} = \\cos(u_n)$.\\n1. Calculer $u_1, u_2, u_3, u_4$ (valeurs approchées au $10^{-4}$).\\n2. Tracer (schématiquement) la courbe $y = \\cos x$ et la droite $y=x$ sur $[0;1]$. Construire l'escalier.\\n3. Montrer que $f(x)=\\cos x$ a un unique point fixe $l$ dans $[0;1]$. Donner une approximation de $l$.\\n4. Calculer $f'(l)$. Que peux-tu conjecturer sur la convergence de $(u_n)$ ?",
+              "answer": "1. $u_1 \\approx 0,8776$, $u_2 \\approx 0,6390$, $u_3 \\approx 0,8027$, $u_4 \\approx 0,6948$.\\n2. L'escalier oscille autour du point fixe, en spiralant vers lui.\\n3. $g(x)=\\cos x - x$. $g(0)=1>0$, $g(1)=\\cos 1 - 1 < 0$. $g'=-\\sin x -1 < 0$ sur $[0;1]$, donc $g$ strictement décroissante, un unique zéro $l \\in [0;1]$. $l \\approx 0,7391$.\\n4. $f'(x)=-\\sin x$, $|f'(l)| = |-\\sin l| = \\sin l \\approx 0,6736 < 1$. Point fixe attractif. Conjecture : $(u_n)$ converge vers $l \\approx 0,7391$ (convergence oscillatoire).",
+              "hint": "Pour l'unicité du point fixe, étudie la fonction $g(x)=\\cos x - x$ (dérivée, signe). Pour $f'(l)$, rappelle-toi que $l=\\cos l$, donc $\\sin l = \\sqrt{1-l^2}$.",
+              "explanation": "Exemple classique de convergence oscillatoire vers un point fixe attractif. La dérivée négative explique l'alternance au-dessus/en-dessous de la limite."
+            },
+            {
+              "question": "Soit $f(x) = \\frac{1}{3}x^3 - x + 1$ et la suite $u_{n+1} = f(u_n)$ avec $u_0 = 0,5$.\\n1. Étudier les variations de $f$ sur $\\mathbb{R}$.\\n2. Montrer que $f$ a trois points fixes. Les situer approximativement.\\n3. Déterminer leur nature (attractif/répulsif).\\n4. Conjecturer le comportement de $(u_n)$ pour $u_0 = 0,5$.",
+              "answer": "1. $f'(x)=x^2-1$. $f$ croît sur $]-\\infty;-1]$, décroît sur $[-1;1]$, croît sur $[1;+\\infty[$.\\n2. $f(x)=x \\Leftrightarrow x^3 - 3x + 3 = 0$... Wait, $f(x)=x \\Rightarrow \\frac{1}{3}x^3 - x + 1 = x \\Rightarrow x^3 - 6x + 3 = 0$. Trois racines réelles car variations : $f(-1)-(-1) = \\frac{5}{3} > 0$, $f(1)-1 = -\\frac{5}{3} < 0$. Racines approx : $l_1 \\approx -2,6$, $l_2 \\approx 0,5$, $l_3 \\approx 2,1$.\\n3. $f'(l_1) \\approx 5,8 > 1$ (répulsif), $f'(l_2) \\approx -0,75$ (attractif, $|f'|<1$), $f'(l_3) \\approx 3,4 > 1$ (répulsif).\\n4. $u_0=0,5$ proche de $l_2$ attractif. Conjecture : convergence vers $l_2 \\approx 0,5$.",
+              "hint": "Résous $f(x)=x$ en multipliant par 3. Utilise le tableau de variations de $g(x)=f(x)-x$ pour localiser les racines. Évalue $|f'|$ en chaque point fixe.",
+              "explanation": "Illustre le cas où $f$ a plusieurs points fixes : seul l'attractif peut être limite pour des valeurs initiales proches. $u_0=0,5$ est dans le bassin d'attraction de $l_2$."
+            },
+            {
+              "question": "La suite logistique $u_{n+1} = r u_n (1-u_n)$ avec $u_0 = 0,3$.\\nPour $r = 2,9$, la suite converge vers un point fixe. Pour $r = 3,3$, elle converge vers un 2-cycle.\\nExpliquer graphiquement pourquoi le point fixe devient répulsif et un 2-cycle attractif apparaît entre $r=3$ et $r=3,3$. (Indication : regarde $f'(l)$ en fonction de $r$).",
+              "answer": "Point fixe non nul : $l = 1 - 1/r$. $f'(x) = r(1-2x)$, donc $f'(l) = r(1 - 2(1-1/r)) = r(2/r - 1) = 2 - r$.\\nPour $r < 3$, $|f'(l)| = |2-r| < 1$ : attractif.\\nPour $r > 3$, $|f'(l)| > 1$ : répulsif.\\nÀ $r=3$, $f'(l) = -1$ : bifurcation de période-double. Un 2-cycle naît et devient attractif pour $r$ légèrement supérieur à 3.",
+              "hint": "Calcule le point fixe non nul $l$ en fonction de $r$, puis $f'(l)$. Étudie quand $|f'(l)|$ passe la valeur 1.",
+              "explanation": "C'est la première bifurcation de la suite logistique. La dérivée en le point fixe passe par -1, ce qui crée un 2-cycle attractif. Phénomène universel en dynamique discrète."
+            }
+          ]
+        },
+        {
+          "title": "Prouver selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prouver : la structure d'une démonstration complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à l'étape finale, celle qui transforme une conjecture en certitude mathématique : la preuve. En Terminale spécialité, une démonstration sur les suites récurrentes suit un canevas très codifié, presque ritualisé, que tu dois connaître par cœur. Ce n'est pas de la bureaucratie : chaque étape répond à une nécessité logique. Oublier l'invariance de l'intervalle, c'est risquer que $f(u_n)$ n'ait pas de sens. Oublier de vérifier que la limite trouvée appartient bien à l'intervalle, c'est laisser une porte ouverte à l'erreur. Je vais te dérouler ce canevas étape par étape, avec le niveau d'exigence du bac."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Bien-definition et intervalle d'invariance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montre par récurrence que pour tout $n$, $u_n$ appartient à un intervalle $J$ inclus dans le domaine de définition de $f$. C'est la base : sans ça, la suite n'existe pas au-delà d'un certain rang."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Monotonie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$ sur $J$. Soit directement par étude de la fonction $g(x)=f(x)-x$, soit par récurrence si la forme s'y prête. Conclus : « La suite est croissante (ou décroissante) sur $J$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Bornitude",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la suite est croissante, elle est majorée par la borne sup de $J$ (souvent un point fixe). Si elle est décroissante, elle est minorée par la borne inf de $J$. C'est souvent immédiat une fois l'invariance montrée."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Convergence (Théorème de la monotone convergence)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cite le théorème : « Toute suite monotone et bornée converge vers une limite finie. » Donc $(u_n)$ converge vers une limite $l \\in J$."
+                    }
+                  ]
+                },
+                {
+                  "title": "5. Identification de la limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Passe à la limite dans la relation de récurrence : $u_{n+1} = f(u_n)$. Par continuité de $f$ sur $J$, $l = f(l)$. Résous cette équation dans $J$. Si $f$ a plusieurs points fixes dans $J$, utilise la monotonie et $u_0$ pour sélectionner le bon."
+                    }
+                  ]
+                },
+                {
+                  "title": "6. Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Énonce clairement : « La suite $(u_n)$ converge vers $l = ...$ »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce canevas en six temps est ta feuille de route pour tout exercice de preuve. Ne t'en écarte pas. Même si certaines étapes te semblent évidentes (comme la positivité des termes), écris-les. Le correcteur attend de voir chaque maillon de la chaîne logique. Une démonstration complète, c'est une démonstration qui ne laisse aucune place au doute."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le piège de la continuité et le cas des fonctions non continues"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'étape 5 (passage à la limite) utilise la continuité de $f$ : $\\lim f(u_n) = f(\\lim u_n)$. C'est légitime si $f$ est continue sur l'intervalle $J$, ce qui est le cas pour toutes les fonctions usuelles du programme (polynômes, rationnelles sur leur domaine, racine carrée, exponentielle, logarithme, cosinus, sinus...). Mais si $f$ n'est pas continue en $l$, l'égalité $l = f(l)$ n'est pas garantie ! Heureusement, en spécialité, on ne te donnera quasi jamais une $f$ discontinue en le point fixe suspecté. Mais sache que cette hypothèse de continuité est nécessaire, et qu'elle est satisfaite dans 99 % des cas traités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre subtilité : quand la suite n'est pas monotone (cas oscillatoire), on ne peut pas appliquer directement le théorème de la monotone convergence. On utilise alors souvent le théorème de convergence pour les suites adjacentes (en isolant les sous-suites de rang pair et impair), ou on montre que la suite est de Cauchy, ou on utilise un théorème de point fixe (Banach-Picard) si $|f'(x)| \\le k < 1$ sur un intervalle invariant. Ce dernier cas est au programme : si $f$ est $k$-lipschitzienne avec $k<1$ sur un intervalle invariant, alors $f$ est une contraction et la suite converge vers l'unique point fixe, quelle que soit la valeur initiale dans cet intervalle. C'est un outil très puissant pour les suites oscillantes comme $u_{n+1} = \\cos(u_n)$."
+            },
+            {
+              "type": "definition",
+              "term": "Application contractante / Théorème de point fixe (Banach-Picard)",
+              "definition": "Soit $f : I \\to I$ une fonction définie sur un intervalle fermé $I$. Si $f$ est $k$-lipschitzienne avec $0 \\le k < 1$ (i.e. $|f(x)-f(y)| \\le k|x-y|$ pour tout $x,y \\in I$), alors $f$ admet un unique point fixe $l \\in I$, et pour toute suite $u_{n+1}=f(u_n)$ avec $u_0 \\in I$, on a $u_n \\to l$. De plus, $|u_n - l| \\le \\frac{k^n}{1-k} |u_1-u_0|$.",
+              "example": "$f(x) = \\cos x$ sur $[0;1]$ : $|f'(x)| = |-\\sin x| \\le \\sin 1 \\approx 0,84 < 1$, donc $f$ est contractante. La suite converge vers l'unique point fixe $l \\approx 0,739$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce théorème est une perle du programme : il permet de prouver la convergence sans même étudier la monotonie ! Il suffit de vérifier que $f$ mappe $I$ dans $I$ (invariance) et que $|f'| \\le k < 1$ sur $I$ (contraction). C'est souvent plus court et plus élégant que l'approche monotone. Mais attention : il demande que $f$ soit dérivable avec dérivée bornée en valeur absolue par $k<1$ sur tout l'intervalle, pas seulement en le point fixe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démonstration complète : l'exemple type au bac"
+            },
+            {
+              "type": "paragraph",
+              "content": "Posons $u_0 = 2$ et $u_{n+1} = \\frac{1}{2}\\left(u_n + \\frac{3}{u_n}\\right)$. C'est la suite de Héron pour $\\sqrt{3}$. Écrivons ensemble une démonstration modèle, celle qui prendrait tous les points au bac."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Intervalle d'invariance : $[\\sqrt{3}; +\\infty[$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrons par récurrence que $u_n \\ge \\sqrt{3}$ pour tout $n$. $u_0 = 2 \\ge \\sqrt{3}$. Supposons $u_n \\ge \\sqrt{3}$. Alors par inégalité arithmético-géométrique : $u_{n+1} = \\frac{1}{2}(u_n + \\frac{3}{u_n}) \\ge \\sqrt{u_n \\cdot \\frac{3}{u_n}} = \\sqrt{3}$. L'intervalle $[\\sqrt{3}; +\\infty[$ est invariant par $f$."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Monotonie : décroissante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $x \\ge \\sqrt{3}$, $g(x) = f(x) - x = \\frac{1}{2}(\\frac{3}{x} - x) = \\frac{3-x^2}{2x} \\le 0$. Donc $u_{n+1} \\le u_n$. La suite est décroissante."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Bornitude : minorée par $\\sqrt{3}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déjà montré à l'étape 1 : $u_n \\ge \\sqrt{3}$ pour tout $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Convergence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suite décroissante et minorée, donc convergente (théorème de la monotone convergence). Soit $l$ sa limite. Comme $u_n \\ge \\sqrt{3}$, on a $l \\ge \\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "5. Identification de la limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$f$ est continue sur $[\\sqrt{3}; +\\infty[$. On passe à la limite : $l = f(l) = \\frac{1}{2}(l + \\frac{3}{l})$. Donc $2l = l + \\frac{3}{l}$, soit $l = \\frac{3}{l}$, i.e. $l^2 = 3$. Les solutions sont $\\pm\\sqrt{3}$. Comme $l \\ge \\sqrt{3}$, on a $l = \\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "6. Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La suite $(u_n)$ converge vers $\\sqrt{3}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque la fluidité de l'écriture : chaque étape est annoncée, justifiée, conclue. Pas de calculs en vrac, pas de phrases elliptiques. C'est ce niveau de clarté que l'examinateur attend. Maintenant, c'est à toi de jouer sur un exercice similaire mais avec une fonction différente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particulier : convergence par le théorème de point fixe (contraction)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la suite n'est pas monotone (elle oscille), mais on peut quand même prouver sa convergence grâce au théorème de Banach-Picard. C'est le cas typique de $u_{n+1} = \\cos(u_n)$ ou $u_{n+1} = \\frac{1}{2}\\sin(u_n) + 1$. La méthode est différente : on ne montre pas la monotonie, on montre la contraction. Voici le canevas adapté :"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Intervalle invariant $I = [a;b]$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve un intervalle fermé $I$ tel que $f(I) \\subset I$ et $u_0 \\in I$. Montre que $f$ mappe $I$ dans $I$ (souvent par étude de variations de $f$ sur $I$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Contraction : $|f'(x)| \\le k < 1$ sur $I$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f'(x)$. Montre que sur $I$, $|f'(x)| \\le k$ avec $k < 1$ (souvent $k = \\max_{x \\in I} |f'(x)|$). Par inégalité des accroissements finis, $f$ est $k$-lipschitzienne sur $I$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Application du théorème de point fixe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $f : I \\to I$ est contractante, elle admet un unique point fixe $l \\in I$, et pour toute suite $u_{n+1}=f(u_n)$ avec $u_0 \\in I$, on a $u_n \\to l$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Identification de $l$ (optionnel si demandé)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous $l = f(l)$ dans $I$. Souvent on laisse sous forme implicite (ex: $l = \\cos l$) ou on donne une approximation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce canevas « contraction » est ton atout maître pour les suites oscillantes. Il évite l'étude fastidieuse des sous-suites paires/impaires. Mais il faut que $|f'|$ soit strictement minoré par 1 sur TOUT l'intervalle, pas seulement en le point fixe. C'est une condition plus forte, mais quand elle est satisfaite, la preuve est d'une élégance redoutable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une suite par récurrence $u_{n+1}=f(u_n)$ et vérifier son intervalle d'invariance.",
+                "Je sais construire l'escalier graphique (courbe $y=f(x)$ et droite $y=x$) pour visualiser le comportement.",
+                "Je sais étudier la monotonie via $g(x)=f(x)-x$ et la bornitude pour conjecturer la convergence.",
+                "Je sais identifier les points fixes de $f$ et tester leur attractivité avec $|f'(l)| < 1$ ou $> 1$.",
+                "Je sais repérer graphiquement un 2-cycle et comprendre la bifurcation quand $f'(l)$ passe par $-1$.",
+                "Je sais écrire une preuve complète en 6 étapes : invariance, monotonie, bornitude, convergence, identification limite, conclusion.",
+                "Je sais utiliser le théorème de point fixe (contraction) pour les suites oscillantes quand $|f'| \\le k < 1$ sur un intervalle invariant.",
+                "Je sais implémenter un algorithme de calcul des termes pour expérimenter et conjecturer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \\frac{2u_n + 1}{u_n + 2}$.\\nProuver que la suite converge et déterminer sa limite.",
+              "answer": "1. Invariance : $f(x)=\\frac{2x+1}{x+2}$ sur $[0;+\\infty[$. $u_0=1 \\ge 0$. Si $u_n \\ge 0$, $u_{n+1} \\ge 0$. De plus, $f(x) \\le 2$ car $2x+1 \\le 2x+4$. Donc $u_n \\in [0;2]$.\\n2. Monotonie : $g(x)=f(x)-x = \\frac{1-x^2}{x+2}$. Sur $[0;1]$, $g(x) \\ge 0$ (croissante) ; sur $[1;2]$, $g(x) \\le 0$ (décroissante). $u_0=1$, $u_1=1$... suite constante ? Attendez : $u_1 = \\frac{2+1}{1+2}=1$. Donc $u_n=1$ pour tout $n$. Suite constante, converge vers 1.\\n(Note : $1$ est point fixe, $f'(1)=-\\frac{1}{3}$, attractif.)",
+              "hint": "Calcule $u_1$. Tu verras que la suite est constante. C'est un cas particulier où $u_0$ est déjà le point fixe.",
+              "explanation": "Exercice piège : $u_0$ est exactement le point fixe. La preuve formelle montre l'invariance, puis que $u_1=u_0$, donc suite constante. La limite est immédiate."
+            },
+            {
+              "question": "Soit $f(x) = \\frac{1}{2}\\sin x + 1$ et la suite $u_{n+1} = f(u_n)$ avec $u_0 = 0$.\\n1. Montrer que $f$ mappe $[1; \\frac{3}{2}]$ dans lui-même.\\n2. Montrer que $f$ est contractante sur cet intervalle.\\n3. En déduire que la suite converge vers l'unique point fixe $l \\in [1; \\frac{3}{2}]$.",
+              "answer": "1. $f$ est croissante sur $\\mathbb{R}$ ($f'(x)=\\frac{1}{2}\\cos x > 0$ sur $[1;\\frac{3}{2}]$ car $\\cos > 0$). $f(1) = \\frac{1}{2}\\sin 1 + 1 \\approx 1,42 > 1$. $f(\\frac{3}{2}) = \\frac{1}{2}\\sin(\\frac{3}{2}) + 1 \\approx 1,497 < \\frac{3}{2}$. Donc $f([1;\\frac{3}{2}]) \\subset [1;\\frac{3}{2}]$. $u_0=0 \\notin [1;\\frac{3}{2}]$, mais $u_1 = f(0)=1 \\in [1;\\frac{3}{2}]$, donc pour $n\\ge 1$, $u_n \\in [1;\\frac{3}{2}]$.\\n2. $|f'(x)| = \\frac{1}{2}|\\cos x| \\le \\frac{1}{2} < 1$ sur $\\mathbb{R}$, donc sur $[1;\\frac{3}{2}]$. $f$ est $\\frac{1}{2}$-lipschitzienne.\\n3. Par théorème de point fixe, $f$ a un unique point fixe $l$ dans $[1;\\frac{3}{2}]$, et $(u_n)_{n\\ge 1}$ converge vers $l$. Donc $(u_n)$ converge vers $l$. $l$ solution de $l = \\frac{1}{2}\\sin l + 1$.",
+              "hint": "Étudie les variations de $f$ sur l'intervalle pour l'invariance. Pour la contraction, majorer $|f'|$ par une constante $<1$.",
+              "explanation": "Cas typique de convergence par contraction sans monotonie (la suite oscille car $f'>0$ mais $f(x)-x$ change de signe). Le théorème de Banach-Picard s'applique directement dès $n\\ge 1$."
+            },
+            {
+              "question": "Soit la suite $(v_n)$ définie par $v_0 = 2$ et $v_{n+1} = \\sqrt{v_n + 2}$.\\nProuver par récurrence que pour tout $n$, $\\sqrt{2} \\le v_n \\le 2$.\\nEn déduire que la suite converge et calculer sa limite.",
+              "answer": "1. Récurrence : $v_0=2 \\in [\\sqrt{2};2]$. Supposons $v_n \\in [\\sqrt{2};2]$. Alors $v_n+2 \\in [\\sqrt{2}+2; 4]$. $v_{n+1} = \\sqrt{v_n+2} \\in [\\sqrt{\\sqrt{2}+2}; 2]$. Comme $\\sqrt{\\sqrt{2}+2} > \\sqrt{2}$ (car $\\sqrt{2}+2 > 2$), on a $v_{n+1} \\in [\\sqrt{2};2]$.\\n2. Monotonie : $g(x) = \\sqrt{x+2} - x$. $g'(x) = \\frac{1}{2\\sqrt{x+2}} - 1 < 0$ sur $[\\sqrt{2};2]$. $g(2)=0$, donc $g(x) \\ge 0$ sur $[\\sqrt{2};2]$. Suite croissante.\\n3. Croissante et majorée par 2, donc convergente. Limite $l$ solution de $l = \\sqrt{l+2}$, $l \\ge \\sqrt{2}$. $l^2 = l+2$, $l=2$ ou $l=-1$. Donc $l=2$.\\n4. Conclusion : $(v_n)$ converge vers 2.",
+              "hint": "Pour la récurrence, utilise la croissance de la racine carrée. Pour la monotonie, étudie $g(x)=f(x)-x$ sur l'intervalle trouvé.",
+              "explanation": "Exercice classique de convergence monotone vers un point fixe attractif. La majoration par 2 est facile, la minoration par $\\sqrt{2}$ demande un peu de soin. La limite 2 est le point fixe attractif ($f'(2)=1/4<1$)."
+            },
+            {
+              "question": "On considère $f(x) = \\frac{x}{2} + \\frac{1}{x}$ sur $]0;+\\infty[$ et la suite $u_{n+1}=f(u_n)$ avec $u_0 > 0$.\\n1. Montrer que pour tout $x > 0$, $f(x) \\ge \\sqrt{2}$ (inégalité arithmético-géométrique).\\n2. Montrer que pour $x \\ge \\sqrt{2}$, $f(x) \\le x$.\\n3. En déduire que pour tout $u_0 > 0$, la suite $(u_n)$ converge vers $\\sqrt{2}$.",
+              "answer": "1. AG : $\\frac{x}{2} + \\frac{1}{x} \\ge 2\\sqrt{\\frac{x}{2} \\cdot \\frac{1}{x}} = \\sqrt{2}$. Égalité si $x=\\sqrt{2}$.\\n2. Pour $x \\ge \\sqrt{2}$, $f(x)-x = \\frac{1}{x} - \\frac{x}{2} = \\frac{2-x^2}{2x} \\le 0$, donc $f(x) \\le x$.\\n3. Pour $n \\ge 1$, $u_n \\ge \\sqrt{2}$ (d'après 1). Donc pour $n \\ge 1$, $u_{n+1} \\le u_n$ (d'après 2). La suite $(u_n)_{n\\ge 1}$ est décroissante et minorée par $\\sqrt{2}$, donc convergente vers $l \\ge \\sqrt{2}$. Passage à la limite : $l = f(l) = \\frac{l}{2} + \\frac{1}{l} \\Rightarrow l^2 = 2 \\Rightarrow l = \\sqrt{2}$ (car $l>0$). La suite entière converge vers $\\sqrt{2}$.",
+              "hint": "Utilise l'inégalité AG pour la minoration. Pour la monotonie, ramène au même dénominateur. Attention : la monotonie ne démarre qu'à partir de $n=1$ si $u_0 < \\sqrt{2}$.",
+              "explanation": "Preuve complète de la convergence de la suite de Héron pour $\\sqrt{2}$, quel que soit $u_0 > 0$. Montre l'importance du décalage d'indice pour la monotonie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

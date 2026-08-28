@@ -1,0 +1,383 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.703208+00:00",
+  "id": 711,
+  "code": "terminale-generale-maths-t06-c05",
+  "title": "Aire entre deux courbes selon programme",
+  "description": "Cours structuré Educalcul : Aire entre deux courbes selon programme.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Aire entre deux courbes selon programme",
+    "objectif_global": "Aire entre deux courbes selon programme",
+    "mini_lecons_imposees": [
+      "Différence.",
+      "Bornes.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Différence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Différence de deux fonctions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment l'aire située entre deux courbes se calcule à partir de la différence de leurs ordonnées. Imagine que tu as deux fonctions, l'une au-dessus de l'autre sur un intervalle donné, et que tu souhaites mesurer la région plane qu'elles encadrent. L'idée fondamentale est simple : si tu soustrais la valeur de la fonction du bas à celle de la fonction du haut pour chaque abscisse, tu obtiens une nouvelle fonction dont l'intégrale sur cet intervalle donne exactement l'aire cherchée. Cette approche transforme un problème géométrique en un calcul d'intégrale, ce qui est très puissant car tu pourras ensuite utiliser toutes les techniques d'intégration que tu as déjà apprises. Rassure-toi, nous allons avancer pas à pas, en prenant le temps de bien visualiser chaque étape, et tu verras que la notion devient rapidement familière."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x - x^2",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 10,
+              "caption": "Aire entre y=x et y=x^2 sur [0,1]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu l'illustration, prenons le temps de formaliser la démarche. La première chose à faire est d'identifier laquelle des deux courbes se trouve au-dessus de l'autre sur l'intervalle considéré. Pour cela, il suffit de comparer les valeurs des fonctions en quelques points tests, ou mieux, de résoudre l'équation f(x)=g(x) afin de repérer les éventuels points d'intersection. Une fois cet ordonnancement établi, tu peux écrire l'intégrale de la différence f(x)-g(x) si f est au-dessus, ou g(x)-f(x) dans le cas contraire. Cette étape de décision est cruciale car elle garantit que l'intégrale calcule une aire positive, conformément à la définition géométrique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les points d'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour commencer, résous l'équation f(x)=g(x) afin de trouver toutes les abscisses où les deux courbes se rencontrent. Ces points seront les bornes potentielles de tes intégrales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer l'ordre sur chaque sous-intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur test dans chaque intervalle délimité par les intersections. Évalue f et g en ce point : si f(x) > g(x), alors f est au-dessus sur tout cet intervalle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la somme des intégrales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sous-intervalle, intègre la différence dans le sens qui donne une valeur positive, puis additionne les résultats. C'est l'aire totale entre les courbes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple complet pour ancrer la méthode. Considère les fonctions f(x)=x^2 et g(x)=x sur l'intervalle [0,1]. Tout d'abord, on vérifie que pour tout x dans cet intervalle, x^2 ≤ x, donc g est au-dessus. L'aire cherchée est donc l'intégrale de g(x)-f(x) = x - x^2 de 0 à 1. En calculant cette intégrale, on trouve [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6. Tu vois que le résultat est un nombre positif, ce qui correspond bien à une aire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la question de savoir comment déterminer quelle courbe domine sur un intervalle où les deux fonctions se croisent. Si les courbes se coupent, l'ordre peut changer et il faut alors découper l'intervalle en sous-intervalles sur chacun desquels l'ordre est constant. Cette découpe se fait en résolvant f(x)=g(x) pour trouver les abscisses d'intersection, puis en testant un point à l'intérieur de chaque sous-intervalle. C'est une étape un peu plus technique, mais elle suit exactement la même logique que précédemment."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b |f(x)-g(x)|\\,dx"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment écrire l'intégrale complète une fois les bornes et l'ordre connus. Il suffit de sommer les intégrales sur chaque sous-intervalle en prenant à chaque fois la différence dans le bon sens. Par exemple, si les courbes se croisent en x=c, l'aire totale entre a et b s'écrit ∫_a^c (f-g) dx + ∫_c^b (g-f) dx, en supposant que f≥g sur [a,c] et g≥f sur [c,b]. Cette écriture systématique évite toute erreur de signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous approfondirons la recherche des bornes d'intégration et la gestion des intervalles multiples, ce qui te permettra de traiter des situations encore plus générales."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'aire entre les courbes y = x^2 et y = x sur l'intervalle [0,1].",
+              "answer": "1/6",
+              "hint": "Détermine quelle fonction est au-dessus, puis intègre la différence.",
+              "explanation": "Sur [0,1], x ≥ x^2, donc l'aire est ∫_0^1 (x - x^2) dx = [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6."
+            },
+            {
+              "question": "Les fonctions f(x)=sin x et g(x)=cos x se croisent sur [0, π/2]. Trouve l'abscisse d'intersection.",
+              "answer": "π/4",
+              "hint": "Résous sin x = cos x.",
+              "explanation": "sin x = cos x ⇔ tan x = 1 ⇒ x = π/4 dans l'intervalle donné."
+            },
+            {
+              "question": "Écris l'intégrale qui donne l'aire entre f(x)=x^3 et g(x)=x sur [-1,1].",
+              "answer": "∫_{-1}^0 (x - x^3) dx + ∫_{0}^1 (x^3 - x) dx",
+              "hint": "Trouve les intersections, puis détermine l'ordre sur chaque sous-intervalle.",
+              "explanation": "Les intersections sont x=-1,0,1. Sur [-1,0], x ≥ x^3, sur [0,1], x^3 ≥ x. L'aire totale est la somme des intégrales de la différence positive."
+            }
+          ]
+        },
+        {
+          "title": "Bornes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bornes d'intégration"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans la deuxième leçon où nous allons nous concentrer sur la détermination précise des bornes d'intégration. Jusqu'ici, nous avons supposé que l'intervalle était donné, mais dans la plupart des problèmes réels, ce sont les points d'intersection des courbes qui définissent naturellement les limites de l'aire à calculer. Savoir trouver ces bornes est donc une compétence essentielle, et nous allons la travailler ensemble avec bienveillance et rigueur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer, prenons les fonctions f(x)=e^x et g(x)=x+1. Elles se croisent en un point unique que l'on peut trouver en résolvant e^x = x+1. Bien que cette équation ne se résolve pas elementairement, on peut montrer graphiquement qu'il existe une unique solution proche de 0. En utilisant une méthode numérique ou une calculatrice, on obtient environ x≈0.567. Cette valeur devient alors la borne de l'intégrale si l'on veut l'aire entre les courbes de -1 à ce point d'intersection."
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque les courbes se coupent plusieurs fois, il faut trouver toutes les solutions de f(x)=g(x) dans l'intervalle d'intérêt. Par exemple, avec f(x)=sin x et g(x)=cos x sur [0, 2π], les intersections se produisent aux points où tan x = 1, soit x = π/4, 5π/4. Ces deux abscisses découpent l'intervalle en trois sous-intervalles sur lesquels l'ordre des fonctions change. C'est pourquoi il est indispensable de lister toutes les intersections avant d'écrire les intégrales."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.283185307179586,
+              "caption": "Courbe de sin x sur [0,2π]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les bornes identifiées, tu dois vérifier l'ordre des fonctions sur chaque sous-intervalle. Choisis un point test simple, comme le milieu de l'intervalle, et compare les valeurs. Cette vérification te permet d'écrire la différence dans le bon sens, garantissant que chaque intégrale calcule une aire positive. C'est une étape de contrôle qui évite bien des erreurs de signe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'équation f(x)=g(x)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Commence par mettre les deux expressions égales. C'est l'équation dont les solutions sont les abscisses d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les méthodes algébriques ou numériques appropriées pour trouver toutes les solutions réelles dans l'intervalle considéré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Classer les solutions et tester l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ordonne les solutions croissantes, ajoute les bornes de l'intervalle global, puis choisis un point test dans chaque sous-intervalle pour savoir quelle fonction est au-dessus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple complet : calcule l'aire entre y = x^2 et y = 2 - x^2 sur l'intervalle où elles s'intersectent. Résous x^2 = 2 - x^2 ⇒ 2x^2 = 2 ⇒ x = ±1. Les bornes sont donc -1 et 1. Sur cet intervalle, 2 - x^2 ≥ x^2, donc l'aire est ∫_{-1}^{1} (2 - 2x^2) dx = [2x - 2x^3/3]_{-1}^{1} = (2 - 2/3) - (-2 + 2/3) = 8/3."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous maintenant à trouver les points d'intersection pour une paire de fonctions polynomiales. Cette compétence te servira à chaque fois que tu devras poser une intégrale d'aire sans bornes explicites."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons écrire l'intégrale complète d'une aire entre deux courbes trigonométriques sur un intervalle où elles se croisent deux fois. Cela mettra en pratique toutes les étapes que nous venons de voir."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous verrons comment interpréter le résultat d'une telle intégrale, en distinguant aire algébrique et aire géométrique, et nous aborderons des applications concrètes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve les points d'intersection des courbes y = x^3 et y = x.",
+              "answer": "x = -1, 0, 1",
+              "hint": "Résous x^3 = x.",
+              "explanation": "x^3 - x = x(x-1)(x+1) = 0 donne les trois solutions."
+            },
+            {
+              "question": "Pour les fonctions f(x)=e^x et g(x)=2, détermine l'intervalle sur lequel f(x) ≥ g(x).",
+              "answer": "[ln 2, +∞)",
+              "hint": "Résous e^x = 2.",
+              "explanation": "e^x ≥ 2 ⇔ x ≥ ln 2."
+            },
+            {
+              "question": "Écris l'intégrale qui donne l'aire entre y = sin x et y = cos x sur [0, 2π].",
+              "answer": "∫_0^{π/4} (cos x - sin x) dx + ∫_{π/4}^{5π/4} (sin x - cos x) dx + ∫_{5π/4}^{2π} (cos x - sin x) dx",
+              "hint": "Trouve les intersections et l'ordre sur chaque sous-intervalle.",
+              "explanation": "Les intersections sont π/4 et 5π/4. Sur [0,π/4], cos≥sin ; sur [π/4,5π/4], sin≥cos ; sur [5π/4,2π], cos≥sin."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter l'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce module, consacrée à l'interprétation de l'aire que tu viens d'apprendre à calculer. Jusqu'ici, nous avons manipulé des intégrales de différences de fonctions, mais il est crucial de comprendre ce que ces nombres représentent vraiment dans le monde réel ou dans d'autres contextes mathématiques. Prends le temps de lire attentivement, car cette compréhension te sera précieuse pour les épreuves et pour la suite de tes études."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intégrale de la différence f-g sur un intervalle où f≥g donne une aire géométrique positive, c'est-à-dire la mesure de la région plane comprise entre les deux courbes. En revanche, si tu intègres f-g sans t'assurer de l'ordre, le résultat peut être négatif ou nul, ce qui correspond à une aire algébrique, c'est-à-dire une somme signée de surfaces. Pour obtenir l'aire géométrique totale lorsque les courbes se croisent, il faut intégrer la valeur absolue de la différence, ce qui revient à découper l'intervalle aux points d'intersection et à sommer les aires positives de chaque morceau."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une application physique : la vitesse d'un objet est donnée par v(t) = t^2 - 4t + 3 sur [0,4]. L'aire entre la courbe de v et l'axe horizontal (v=0) représente la distance parcourue, mais seulement si l'on prend la valeur absolue de la vitesse lorsque celle-ci devient négative (l'objet recule). En calculant ∫_0^4 |v(t)| dt, on obtient la distance totale, tandis que ∫_0^4 v(t) dt donne le déplacement net. Cette distinction est fondamentale en cinématique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'aider à visualiser cette idée, nous allons utiliser un petit programme Python qui approxime l'aire par la méthode des rectangles. Tu n'as pas besoin de savoir coder, il suffit d'observer comment la somme des rectangles converge vers la valeur exacte lorsque le nombre de rectangles augmente. C'est une illustration concrète de la définition de l'intégrale comme limite de sommes de Riemann."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def riemann_sum(f, a, b, n):\\n    dx = (b - a) / n\\n    total = 0.0\\n    for i in range(n):\\n        x = a + i * dx\\n        total += abs(f(x)) * dx\\n    return total\\n\\nimport math\\nf = lambda x: x**3 - x\\nprint(riemann_sum(f, -1, 2, 10000))",
+              "language": "python",
+              "caption": "Approximation de l'aire totale entre y=x^3-x et l'axe des x sur [-1,2]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple numérique : calcule l'aire totale entre y = x^3 - x et y = 0 sur [-1,2]. Les zéros de la fonction sont x = -1, 0, 1. Sur [-1,0], la fonction est positive, sur [0,1] négative, sur [1,2] positive. L'aire totale est ∫_{-1}^0 (x^3 - x) dx - ∫_0^1 (x^3 - x) dx + ∫_1^2 (x^3 - x) dx. En évaluant, on trouve 1/4 + 1/4 + 9/4 = 11/4."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver toutes les intersections",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous f(x)=g(x) pour obtenir toutes les abscisses où les courbes se coupent. Ces points sont les frontières des sous-intervalles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer le signe de la différence sur chaque sous-intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un point test dans chaque sous-intervalle. Si f(x)-g(x) > 0, alors f est au-dessus ; sinon g est au-dessus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Intégrer la valeur absolue en sommant les intégrales positives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sous-intervalle, intègre la différence dans le sens qui donne un nombre positif, puis additionne tous les résultats. C'est l'aire géométrique totale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelle-toi que l'aire entre deux courbes se calcule toujours par l'intégrale de la différence en valeur absolue, ce qui impose de trouver les intersections, de découper l'intervalle et de sommer les contributions positives. Cette méthode systématique fonctionne pour toutes les fonctions continues sur un intervalle fermé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant un exercice qui mélange calcul d'aire et interprétation physique. Tu verras que la même technique s'applique, il suffit de bien identifier ce que représente l'intégrale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, une question de réflexion pour vérifier que tu as bien saisi la différence entre aire algébrique et aire géométrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer l'aire entre deux courbes en intégrant la différence.",
+                "Je sais trouver les bornes d'intégration en résolvant f(x)=g(x).",
+                "Je sais découper l'intervalle lorsque les courbes se croisent.",
+                "Je distingue aire algébrique et aire géométrique.",
+                "Je peux interpréter une intégrale d'aire dans un contexte concret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'aire totale entre y = x^2 - 1 et l'axe des x sur [-2,2].",
+              "answer": "8/3",
+              "hint": "Trouve les zéros, découpe l'intervalle, intègre la valeur absolue.",
+              "explanation": "Zéros en x=±1. Sur [-2,-1] et [1,2], x^2-1 ≥0 ; sur [-1,1], ≤0. Aire = 2∫_1^2 (x^2-1)dx + 2∫_0^1 (1-x^2)dx = 8/3."
+            },
+            {
+              "question": "Un objet se déplace avec la vitesse v(t)=3t-2 sur [0,3]. Quelle est la distance totale parcourue ?",
+              "answer": "13/2",
+              "hint": "Trouve quand v(t)=0, puis intègre |v|.",
+              "explanation": "v=0 à t=2/3. Distance = ∫_0^{2/3} (2-3t) dt + ∫_{2/3}^3 (3t-2) dt = 13/2."
+            },
+            {
+              "question": "Explique pourquoi l'intégrale de f-g sur [a,b] peut être négative même si l'aire géométrique est positive.",
+              "answer": "Parce que l'intégrale signe la différence ; si g>f sur une partie, la contribution est négative.",
+              "hint": "Pense à la définition de l'intégrale comme somme signée.",
+              "explanation": "L'intégrale additionne les valeurs de f-g ; lorsque g>f, la différence est négative, ce qui soustrait de l'aire totale. L'aire géométrique utilise la valeur absolue."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

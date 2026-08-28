@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 422,
+  "_course_code": "4eme-t01-c03-puissances-de-10",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Exposants entiers",
+  "title": "Algorithmes et puissances de 10 : exposants entiers",
+  "blocks": [
+    {
+      "title": "Calcul de 10 puissance n",
+      "content": "Écrire un algorithme (en langage naturel ou en syntaxe Python) qui calcule $10^n$ pour un entier $n$ donné (positif, nul ou négatif). L'algorithme ne doit pas utiliser l'opérateur de puissance natif.",
+      "correctAnswer": "Algorithme :\\n1. Lire n.\\n2. Si n = 0, afficher 1 et terminer.\\n3. Initialiser resultat = 1.\\n4. Si n > 0 : répéter n fois : resultat = resultat * 10.\\n5. Si n < 0 : répéter -n fois : resultat = resultat / 10.\\n6. Afficher resultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un exposant positif, on multiplie 10 par lui-même n fois. Pour un exposant nul, la valeur est 1. Pour un exposant négatif, on divise 1 par 10 autant de fois que la valeur absolue de l'exposant. L'algorithme utilise une boucle simple et respecte la définition des puissances de 10 à exposant entier.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exposant de la notation scientifique",
+      "content": "Écrire une fonction (en langage naturel ou en Python) qui, étant donné un nombre réel positif $x$, détermine l'entier $k$ tel que $x = m \\times 10^k$ avec $1 \\le m < 10$. La fonction doit retourner $k$.",
+      "correctAnswer": "Fonction exposant_scientifique(x) :\\n1. Si x = 0, retourner 0 (cas particulier).\\n2. Initialiser k = 0.\\n3. Tant que x >= 10 : x = x / 10 ; k = k + 1.\\n4. Tant que x < 1 : x = x * 10 ; k = k - 1.\\n5. Retourner k.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La notation scientifique demande un mantisse m entre 1 inclus et 10 exclus. On divise x par 10 tant qu'il est supérieur ou égal à 10, en incrémentant k. On multiplie x par 10 tant qu'il est strictement inférieur à 1, en décrémentant k. À la fin, k est l'exposant cherché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit de puissances de 10",
+      "content": "Écrire un algorithme qui, étant donné une liste d'entiers $[e_1, e_2, \\dots, e_p]$, calcule le produit $\\prod_{i=1}^p 10^{e_i}$ en utilisant la propriété des exposants. L'algorithme doit renvoyer le résultat sous la forme $10^S$ où $S$ est la somme des exposants.",
+      "correctAnswer": "Algorithme :\\n1. Lire la liste exposants.\\n2. Initialiser somme = 0.\\n3. Pour chaque e dans exposants : somme = somme + e.\\n4. Afficher \"10^\" suivi de la valeur de somme.\\n(Optionnel : calculer la valeur numérique en appliquant l'algorithme de la question 1 avec n = somme.)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété $10^{e_1} \\times 10^{e_2} \\times \\dots \\times 10^{e_p} = 10^{e_1+e_2+\\dots+e_p}$ permet de réduire le produit à une seule puissance de 10. Il suffit donc de sommer tous les exposants de la liste. L'algorithme parcourt la liste une fois, ce qui est efficace.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

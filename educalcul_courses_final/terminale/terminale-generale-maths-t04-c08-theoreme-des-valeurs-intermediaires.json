@@ -1,0 +1,375 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.662097+00:00",
+  "id": 697,
+  "code": "terminale-generale-maths-t04-c08",
+  "title": "Théorème des valeurs intermédiaires",
+  "description": "Cours structuré Educalcul : Théorème des valeurs intermédiaires.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Théorème des valeurs intermédiaires",
+    "objectif_global": "Théorème des valeurs intermédiaires",
+    "mini_lecons_imposees": [
+      "Hypothèses.",
+      "Existence.",
+      "Encadrement de solution."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Hypothèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les hypothèses du théorème des valeurs intermédiaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au théorème des valeurs intermédiaires, un outil majeur de l'analyse en terminale. Avant d'énoncer le résultat lui-même, nous allons prendre le temps de décortiquer chacune de ses hypothèses. C'est une étape fondamentale : en mathématiques, un théorème est une implication logique, et si l'une des conditions n'est pas vérifiée, la conclusion peut devenir fausse. Nous allons donc examiner, l'une après l'autre, la continuité sur un intervalle fermé, la notion d'intervalle lui-même, et la valeur intermédiaire que l'on cherche à atteindre. Prends le temps de bien visualiser chaque notion, car elles seront les piliers de tout ce qui suivra."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la continuité. Une fonction $f$ est continue sur un intervalle fermé $[a;b]$ lorsque, intuitivement, son graphe se trace sans lever le crayon, sans saut ni trou, depuis l'abscisse $a$ jusqu'à l'abscisse $b$. Plus rigoureusement, cela signifie que pour tout point $x_0$ dans $[a;b]$, la limite de $f(x)$ quand $x$ tend vers $x_0$ existe et vaut exactement $f(x_0)$. Cette condition globale est cruciale : elle garantit que la fonction ne fait pas de bonds brusques qui lui feraient « rater » des valeurs. Si tu as un doute sur la définition $\\varepsilon-\\delta$, rappelle-toi que l'image par $f$ d'un intervalle fermé par une fonction continue est encore un intervalle fermé : c'est une propriété profonde que nous utiliserons implicitement."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3 - x",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Graphe d'une fonction continue sur $[-2;2]$ : pas de rupture, le trait est ininterrompu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons ce graphe : la courbe passe par tous les $y$ compris entre $f(-2)=-6$ et $f(2)=6$. C'est exactement l'esprit du théorème. Mais attention : la continuité doit être vérifiée sur **tout** l'intervalle, y compris aux bornes $a$ et $b$. Une fonction continue sur $]a;b[$ mais discontinue en $a$ ou $b$ ne satisfait pas l'hypothèse. Par exemple, la fonction $f(x)=1/x$ sur $[-1;1]$ n'est pas définie en $0$, donc pas continue sur l'intervalle fermé ; le théorème ne s'applique pas, et effectivement elle ne prend pas la valeur $0$ bien que $f(-1)=-1$ et $f(1)=1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la seconde hypothèse : l'intervalle lui-même. Le théorème exige un intervalle **fermé** $[a;b]$ avec $a<b$. Pourquoi fermé ? Parce que les bornes $a$ et $b$ doivent appartenir au domaine de définition pour que $f(a)$ et $f(b)$ aient un sens. Si l'intervalle était ouvert $]a;b[$, les valeurs aux bornes ne seraient pas atteintes, et la fonction pourrait « filer » vers l'infini sans jamais prendre certaines valeurs intermédiaires. Prenons $f(x)=1/x$ sur $]0;1[$ : $f$ est continue sur cet intervalle ouvert, $f(x)$ tend vers $+\\infty$ près de $0$ et vaut $1$ en $1$, mais elle ne prend jamais la valeur $1/2$ ? Si, elle la prend. Mauvais exemple. Prenons $f(x)=\\sin(1/x)$ sur $]0;1[$ : elle oscille infiniment près de $0$ et prend toutes les valeurs entre $-1$ et $1$ une infinité de fois, mais le théorème ne s'applique pas car l'intervalle n'est pas fermé. L'hypothèse d'intervalle fermé est donc essentielle pour encadrer le comportement de la fonction aux extrémités."
+            },
+            {
+              "type": "display_math",
+              "latex": "[a;b] = \\{ x \\in \\mathbb{R} \\mid a \\le x \\le b \\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième hypothèse : l'existence d'un réel $k$ **strictement compris** entre $f(a)$ et $f(b)$. Cela signifie que $k$ appartient à l'intervalle ouvert borné par ces deux images. Peu importe l'ordre : soit $f(a) < k < f(b)$, soit $f(b) < k < f(a)$. Le théorème ne demande pas que $f(a) < f(b)$ ; il suffit que $k$ soit entre les deux. Si $k$ est égal à l'une des bornes, la conclusion est triviale ($c=a$ ou $c=b$), mais le théorème est généralement énoncé pour $k$ strictement entre les deux, ce qui garantit l'existence d'un $c$ **dans l'intervalle ouvert** $]a;b[$. C'est une nuance importante : la valeur intermédiaire est atteinte **à l'intérieur** de l'intervalle, pas aux bornes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, résumons les trois piliers : (1) $f$ continue sur $[a;b]$ ; (2) $[a;b]$ intervalle fermé non vide ; (3) $k$ réel tel que $f(a) < k < f(b)$ ou $f(b) < k < f(a)$. Si l'une de ces conditions manque, le théorème ne garantit rien. Nous verrons dans la prochaine leçon comment, lorsque toutes ces hypothèses sont réunies, on peut affirmer l'existence d'au moins un $c \\in [a;b]$ tel que $f(c)=k$. Essaie maintenant de vérifier par toi-même si les hypothèses sont satisfaites sur quelques exemples concrets."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = \\frac{1}{x-1}$ définie sur $[0;2]$. Les hypothèses du théorème des valeurs intermédiaires sont-elles vérifiées pour $k=0$ ? Justifie.",
+              "answer": "Non. La fonction n'est pas continue sur $[0;2]$ car elle n'est pas définie en $x=1$ (asymptote verticale). L'hypothèse de continuité sur l'intervalle fermé n'est pas satisfaite.",
+              "hint": "Regarde le domaine de définition de $f$ et vérifie si $1$ appartient à $[0;2]$.",
+              "explanation": "L'intervalle $[0;2]$ contient $1$, or $f(1)$ n'existe pas. Donc $f$ n'est pas continue sur $[0;2]$. Le théorème ne s'applique pas."
+            },
+            {
+              "question": "Soit $g(x) = x^2$ sur $[-2;1]$. Pour $k=2$, les hypothèses sont-elles remplies ?",
+              "answer": "Oui. $g$ est continue sur $\\mathbb{R}$ donc sur $[-2;1]$. $g(-2)=4$, $g(1)=1$. $k=2$ est bien strictement entre $1$ et $4$.",
+              "hint": "Calcule $g(-2)$ et $g(1)$, puis compare avec $k=2$.",
+              "explanation": "Les trois conditions sont satisfaites : continuité sur l'intervalle fermé, intervalle bien défini, $k$ strictement entre les images des bornes."
+            },
+            {
+              "question": "Donne un exemple de fonction continue sur un intervalle **ouvert** $]a;b[$ et d'un réel $k$ entre $f(a)$ et $f(b)$ (limites aux bornes) pour lequel il n'existe **pas** de $c \\in ]a;b[$ tel que $f(c)=k$.",
+              "answer": "Exemple : $f(x) = x$ sur $]0;1[$. Les limites aux bornes sont $0$ et $1$. Pour $k=1/2$, il existe $c=1/2$. Mais si on prend $f(x) = \\arctan(x)$ sur $]-\\infty;+\\infty[$, les limites sont $-\\pi/2$ et $\\pi/2$, et pour $k=0$, $c=0$ existe. Un contre-exemple classique : $f(x) = \\sin(1/x)$ sur $]0;1[$, bornes $0$ et $1$, $k=0.5$ ? Elle l'atteint. En fait, sur intervalle ouvert, le théorème peut encore être vrai mais n'est pas garanti. Un exemple où il échoue : $f(x)=1/x$ sur $]0;1[$, limites $+\\infty$ et $1$, $k=2$ n'est pas atteint car $f(x)>1$ pour tout $x\\in]0;1[$.",
+              "hint": "Cherche une fonction continue sur un intervalle ouvert dont l'image n'est pas un intervalle.",
+              "explanation": "Sur $]0;1[$, $f(x)=1/x$ a pour image $]1;+\\infty[$. La valeur $k=2$ est entre la limite en $1$ (qui est $1$) et la limite en $0^+$ (qui est $+\\infty$), mais $2$ n'est pas atteint car $f(x)>1$. L'intervalle n'étant pas fermé, le théorème ne s'applique pas."
+            }
+          ]
+        },
+        {
+          "title": "Existence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'existence d'une valeur intermédiaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du théorème : une fois les hypothèses posées, que nous garantit exactement le théorème des valeurs intermédiaires ? Il affirme qu'il existe **au moins un** réel $c$ appartenant à l'intervalle $[a;b]$ tel que $f(c)=k$. Remarque la formulation : « au moins un ». Cela signifie qu'il peut y en avoir plusieurs, et c'est souvent le cas lorsque la fonction oscille. La conclusion est une affirmation d'existence pure : on ne nous donne pas de formule pour calculer $c$, on sait juste qu'il est là, quelque part entre $a$ et $b$. C'est typique des théorèmes dits « non constructifs » en analyse : ils prouvent qu'un objet existe sans nécessairement fournir une méthode explicite pour le trouver. Pourtant, comme nous le verrons dans la prochaine leçon, on peut malgré tout encadrer $c$ avec une précision arbitraire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Visualisons cela géométriquement. Le graphe de $f$ est une courbe continue reliant le point $A(a,f(a))$ au point $B(b,f(b))$. La droite horizontale d'équation $y=k$ coupe l'axe des ordonnées entre $f(a)$ et $f(b)$. Comme la courbe est continue, elle ne peut pas passer « au-dessus » puis « en dessous » de cette droite sans la couper. Elle est obligée de la traverser au moins une fois. C'est l'intuition derrière le théorème : une courbe continue ne peut pas sauter par-dessus une barre horizontale placée entre ses deux extrémités. Essaie d'imaginer une courbe continue qui irait de $A$ à $B$ sans jamais toucher la ligne $y=k$ : c'est impossible, elle devrait faire un saut, ce qui contredirait la continuité."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.28,
+              "caption": "La courbe $y=\\sin x$ sur $[0;2\\pi]$ et la ligne $y=0.5$ : deux intersections, donc deux valeurs $c$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment démontrer rigoureusement ce résultat ? La preuve classique repose sur la propriété de la borne supérieure (ou la méthode de dichotomie). On considère l'ensemble $E = \\{ x \\in [a;b] \\mid f(x) \\le k \\}$ (en supposant $f(a) < k < f(b)$). Cet ensemble est non vide (il contient $a$) et majoré par $b$, donc il admet une borne supérieure $c = \\sup E$. On montre ensuite, par continuité de $f$ en $c$, que $f(c)$ ne peut être ni strictement inférieur à $k$ (sinon $c$ ne serait pas une borne supérieure), ni strictement supérieur à $k$ (sinon il existerait des éléments de $E$ supérieurs à $c$). Donc $f(c)=k$. C'est une démonstration élégante qui utilise la complétude de $\\mathbb{R}$. Nous allons la dérouler pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir l'ensemble $E$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose $f(a) < k < f(b)$. On pose $E = \\{ x \\in [a;b] \\mid f(x) \\le k \\}$. Comme $f(a) < k$, $a \\in E$, donc $E \\neq \\emptyset$. De plus, $E \\subset [a;b]$, donc $E$ est majoré par $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Existence de la borne supérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par la propriété de la borne supérieure dans $\\mathbb{R}$, $E$ admet une borne supérieure, notée $c = \\sup E$. On a $a \\le c \\le b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Montrer $f(c) \\ge k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par définition de la borne supérieure, il existe une suite $(x_n)$ dans $E$ telle que $x_n \\to c$. Comme $f$ est continue, $f(x_n) \\to f(c)$. Mais $f(x_n) \\le k$ pour tout $n$, donc par passage à la limite $f(c) \\le k$ ? Attends : si $x_n \\in E$, alors $f(x_n) \\le k$, donc la limite $f(c) \\le k$. Cela donne $f(c) \\le k$. Pour obtenir $f(c) \\ge k$, on raisonne par l'absurde : si $f(c) < k$, par continuité il existe un voisinage de $c$ où $f(x) < k$, ce qui contredit que $c$ est une borne supérieure de $E$. Donc $f(c) \\ge k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Montrer $f(c) \\le k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $c=b$, alors $f(c)=f(b) > k$, ce qui contredit $f(c) \\le k$ obtenu par la suite dans $E$. Donc $c < b$. S'il existait $x > c$ avec $f(x) \\le k$, alors $x \\in E$, contredisant que $c$ est une borne supérieure. Par continuité à droite, on en déduit $f(c) \\le k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Finalement $f(c) = k$ avec $c \\in [a;b]$. Si $f(a) > k > f(b)$, on applique le théorème à $-f$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette démonstration montre la puissance de la complétude des réels. Elle nous donne aussi une méthode algorithmique pour approcher $c$ : la dichotomie, que nous étudierons bientôt. Note bien que le théorème ne dit pas que $c$ est unique. Si la fonction est strictement monotone sur $[a;b]$, alors $c$ est unique. Mais en général, il peut y avoir une infinité de $c$ (pense à une fonction constante par morceaux, ou à $\\sin x$ sur un grand intervalle). La prochaine leçon expliquera comment, malgré cette non-unicité possible, on peut encadrer une solution avec une précision aussi fine que souhaitée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons ta compréhension : le théorème garantit l'existence d'un $c$ dans $[a;b]$. Peut-on affirmer que $c$ appartient à $]a;b[$ ? Oui, car $k$ est strictement entre $f(a)$ et $f(b)$, donc $c$ ne peut pas être $a$ ni $b$ (sinon $f(c)$ serait égal à $f(a)$ ou $f(b)$, ce qui contredit la stricte inégalité). Ainsi, le théorème place la solution **à l'intérieur** de l'intervalle. C'est un détail important pour la suite, quand on cherchera à encadrer $c$ par des intervalles de plus en plus petits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelle-toi que le théorème des valeurs intermédiaires est un théorème **d'existence**. Il ne fournit pas la valeur exacte de $c$, mais il nous assure qu'elle existe. C'est souvent la première étape pour résoudre une équation $f(x)=k$ : on vérifie les hypothèses, on conclut qu'une solution existe, puis on utilise des méthodes numériques (dichotomie, Newton, etc.) pour l'approcher. La leçon suivante sera entièrement consacrée à cet encadrement. Prépare-toi à manipuler des intervalles et à comprendre comment l'algorithme de dichotomie réduit l'incertitude pas à pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x)=x^3-2$ sur $[1;2]$. Montrer que l'équation $f(x)=0$ admet au moins une solution dans $[1;2]$.",
+              "answer": "La fonction $f$ est continue sur $\\mathbb{R}$ donc sur $[1;2]$. $f(1)=-1 < 0$ et $f(2)=6 > 0$. Par le théorème des valeurs intermédiaires, il existe $c \\in [1;2]$ tel que $f(c)=0$.",
+              "hint": "Vérifie les hypothèses : continuité, intervalle fermé, $0$ entre $f(1)$ et $f(2)$.",
+              "explanation": "Toutes les conditions sont remplies, le théorème s'applique directement."
+            },
+            {
+              "question": "Soit $f$ continue sur $[0;1]$ telle que $f(0)=1$ et $f(1)=0$. Montrer qu'il existe $c \\in [0;1]$ tel que $f(c)=c$.",
+              "answer": "On considère $g(x)=f(x)-x$. $g$ est continue sur $[0;1]$. $g(0)=1>0$, $g(1)=-1<0$. Par le TVI, $\\exists c \\in [0;1], g(c)=0$, c'est-à-dire $f(c)=c$.",
+              "hint": "Définis une fonction auxiliaire $g(x)=f(x)-x$ et applique le TVI à $g$ pour $k=0$.",
+              "explanation": "C'est une application classique : point fixe. La fonction $g$ satisfait les hypothèses du TVI pour $k=0$."
+            },
+            {
+              "question": "Donne un exemple de fonction continue sur $[0;1]$ prenant les valeurs $0$ et $1$ aux bornes, et pour laquelle l'équation $f(x)=1/2$ admet une infinité de solutions.",
+              "answer": "Exemple : $f(x) = \\frac{1}{2} + \\frac{1}{2}\\sin(1/x)$ pour $x>0$ et $f(0)=0$ ? Pas continue en 0. Mieux : une fonction qui oscille infiniment près de 0 mais continue. Ou plus simple : une fonction constante par morceaux ? Pas continue. Une fonction continue qui oscille : $f(x) = x \\sin(1/x)$ pour $x\\neq0$, $f(0)=0$ sur $[0;1]$ ? $f(1)=\\sin 1 \\approx 0.84$. Pas 1. Construisons : $f(x) = \\frac{1}{2} + \\frac{1}{2} \\sin(\\frac{1}{x})$ pour $x \\in ]0;1]$, $f(0)=\\frac{1}{2}$ ? Pas continue. Utilisons une fonction qui fait des allers-retours : $f(x) = x(1-x)\\sin(1/x)$ pour $x>0$, $f(0)=0$. $f(1)=0$. Ne prend pas 1. Un exemple simple : $f(x) = \\frac{1}{2} + \\frac{1}{2}\\cos(2\\pi/x)$ ? Discontinue en 0. En fait, toute fonction continue sur $[0;1]$ avec $f(0)=0, f(1)=1$ qui a une infinité d'oscillations (comme $x\\sin(1/x)$ prolongée) mais il faut qu'elle atteigne 1. Prenons $f(x) = x + x(1-x)\\sin(1/x)$ pour $x>0$, $f(0)=0$. $f(1)=1$. Elle oscille autour de $y=x$ et coupe $y=1/2$ une infinité de fois près de 0.",
+              "hint": "Cherche une fonction qui oscille une infinité de fois près d'une borne tout en restant continue.",
+              "explanation": "La fonction $f(x)=x+x(1-x)\\sin(1/x)$ (avec $f(0)=0$) est continue sur $[0;1]$, $f(0)=0$, $f(1)=1$, et comme $\\sin(1/x)$ oscille entre $-1$ et $1$ une infinité de fois près de $0$, $f(x)$ coupe la ligne $y=1/2$ une infinité de fois."
+            },
+            {
+              "question": "Vrai ou faux ? Si $f$ est continue sur $[a;b]$ et $f(a) < k < f(b)$, alors il existe **exactement un** $c \\in [a;b]$ tel que $f(c)=k$.",
+              "answer": "Faux. L'unicité n'est pas garantie. Contre-exemple : $f(x)=\\sin x$ sur $[0;2\\pi]$, $f(0)=0$, $f(2\\pi)=0$, mais pour $k=0$ il y a trois solutions ($0, \\pi, 2\\pi$). Pour $k=0.5$, il y en a deux.",
+              "hint": "Pense à une fonction qui monte puis redescend.",
+              "explanation": "Le théorème assure l'existence d'**au moins un** $c$. L'unicité nécessite une condition supplémentaire (monotonie stricte)."
+            }
+          ]
+        },
+        {
+          "title": "Encadrement de solution.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrement d'une solution par la méthode de dichotomie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant qu'une solution existe. Mais comment la localiser concrètement ? C'est tout l'objet de cette dernière leçon : transformer l'existence théorique en un encadrement numérique précis. La méthode de référence est la **dichotomie** (ou méthode de bisection). Elle repose sur une idée simple et puissante : si une fonction continue change de signe sur un intervalle, alors elle a une racine à l'intérieur. En coupant l'intervalle en deux, on regarde dans quelle moitié le changement de signe persiste, et on recommence. À chaque étape, l'intervalle d'encadrement est divisé par deux. C'est un algorithme garanti, robuste, et qui converge vers une solution. Nous allons le détailler pas à pas, puis voir comment l'implémenter et quand l'arrêter."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de l'équation $x^3-2=0$ sur $[1;2]$. On a $f(1)=-1 < 0$ et $f(2)=6 > 0$. Le milieu est $m=1.5$. $f(1.5)=1.375 > 0$. Comme $f(1)<0$ et $f(1.5)>0$, la racine est dans $[1;1.5]$. On recommence : milieu $1.25$, $f(1.25)=-0.046875 < 0$. Donc la racine est dans $[1.25;1.5]$. À chaque itération, la longueur de l'intervalle est divisée par deux. Après $n$ étapes, l'intervalle a pour longueur $(b-a)/2^n$. On peut donc encadrer la solution avec une précision arbitraire. C'est ce que nous formalisons maintenant."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def dichotomie(f, a, b, epsilon):\\n    \"\"\"Retourne un encadrement de largeur <= epsilon d'une racine de f sur [a,b].\\n       Précondition : f continue, f(a)*f(b) < 0.\"\"\"\\n    while b - a > epsilon:\\n        m = (a + b) / 2\\n        if f(a) * f(m) <= 0:\\n            b = m\\n        else:\\n            a = m\\n    return a, b\\n\\n# Exemple d'utilisation :\\n# f = lambda x: x**3 - 2\\n# a, b = dichotomie(f, 1, 2, 1e-6)\\n# print(f\"Racine dans [{a}, {b}]\")",
+              "caption": "Algorithme de dichotomie en Python. La condition f(a)*f(m) <= 0 teste le changement de signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons l'algorithme. La boucle `while b - a > epsilon` continue tant que l'intervalle est plus large que la précision demandée. Le point milieu `m` partage l'intervalle en deux. Le test `f(a) * f(m) <= 0` vérifie si $f(a)$ et $f(m)$ ont des signes opposés (ou si l'un est nul). Si c'est le cas, la racine est dans $[a;m]$, donc on réduit l'intervalle à `[a, m]` en faisant `b = m`. Sinon, elle est dans `[m, b]`, et on fait `a = m`. Remarque l'invariant de boucle : à chaque itération, $f(a)$ et $f(b)$ ont des signes contraires (ou l'un est nul), donc le théorème des valeurs intermédiaires garantit qu'une racine reste dans l'intervalle. Cet invariant est la clé de la correction de l'algorithme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a un intervalle $[a_0;b_0]$ tel que $f(a_0)f(b_0) < 0$. La racine $c$ est dans $[a_0;b_0]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Itération $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $m_k = (a_k + b_k)/2$. Si $f(a_k)f(m_k) \\le 0$, on pose $a_{k+1}=a_k$, $b_{k+1}=m_k$. Sinon $a_{k+1}=m_k$, $b_{k+1}=b_k$. Dans les deux cas, $f(a_{k+1})f(b_{k+1}) \\le 0$ et $b_{k+1}-a_{k+1} = (b_k-a_k)/2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Arrêt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dès que $b_n - a_n \\le \\varepsilon$, on stoppe. Tout point de $[a_n;b_n]$ (par exemple le milieu) est une approximation de $c$ avec une erreur absolue au plus $\\varepsilon/2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Combien d'itérations sont nécessaires pour obtenir une précision $\\varepsilon$ ? La longueur initiale est $L_0 = b-a$. Après $n$ itérations, $L_n = L_0 / 2^n$. On veut $L_n \\le \\varepsilon$, soit $2^n \\ge L_0 / \\varepsilon$, donc $n \\ge \\log_2(L_0/\\varepsilon)$. Par exemple, pour encadrer $\\sqrt[3]{2}$ sur $[1;2]$ avec une précision $10^{-6}$, $L_0=1$, il faut $n \\ge \\log_2(10^6) \\approx 20$ itérations. C'est très peu ! La dichotomie converge linéairement (le nombre de chiffres exacts double à chaque étape ? Non, il augmente d'un facteur constant). En fait, on gagne environ un chiffre binaire par itération, soit $\\log_{10}2 \\approx 0.3$ chiffre décimal. Pour 6 décimales, il faut environ 20 itérations. C'est une convergence garantie mais pas la plus rapide ; des méthodes comme Newton convergent plus vite (quadratique) mais nécessitent la dérivée et une bonne initialisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "n \\ge \\left\\lceil \\log_2\\left(\\frac{b-a}{\\varepsilon}\\right) \\right\\rceil"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : la dichotomie ne trouve qu'**une** racine, même s'il y en a plusieurs dans l'intervalle initial. Si $f$ a plusieurs zéros, l'algorithme en convergera vers un, selon les signes aux bornes. De plus, la méthode exige que $f$ soit continue et que $f(a)f(b) < 0$. Si la fonction touche l'axe sans le croiser (racine d'ordre pair), le produit $f(a)f(b)$ peut être positif et la dichotomie ne s'applique pas directement. Dans ce cas, on peut chercher un changement de signe de la dérivée ou utiliser d'autres méthodes. Enfin, en machine, les arrondis peuvent perturber le test de signe quand l'intervalle devient très petit ; on fixe alors un nombre maximal d'itérations. Tu as maintenant tous les outils pour encadrer numériquement les solutions d'équations $f(x)=k$ dès lors que $f$ est continue. C'est une compétence essentielle, utilisée dans tous les logiciels de calcul scientifique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais énoncer les trois hypothèses du théorème des valeurs intermédiaires.",
+                "Je sais vérifier si les hypothèses sont satisfaites sur un exemple concret.",
+                "Je comprends la conclusion : existence d'au moins un $c \\in [a;b]$ tel que $f(c)=k$.",
+                "Je sais expliquer l'idée géométrique : une courbe continue ne peut pas sauter par-dessus une ligne horizontale placée entre ses extrémités.",
+                "Je connais la démonstration par la borne supérieure (ou la dichotomie).",
+                "Je sais appliquer le théorème pour montrer l'existence d'une solution à une équation $f(x)=k$.",
+                "Je sais mettre en œuvre l'algorithme de dichotomie pour encadrer une racine avec une précision donnée.",
+                "Je connais la formule du nombre d'itérations nécessaires pour atteindre une précision $\\varepsilon$.",
+                "Je connais les limites de la dichotomie : une seule racine trouvée, nécessité d'un changement de signe, convergence linéaire."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Applique deux étapes de la dichotomie pour encadrer une solution de $x^3-2=0$ sur $[1;2]$. Donne l'intervalle final.",
+              "answer": "Étape 1 : $m=1.5$, $f(1.5)=1.375>0$, donc intervalle $[1;1.5]$. Étape 2 : $m=1.25$, $f(1.25)=-0.046875<0$, donc intervalle $[1.25;1.5]$.",
+              "hint": "Calcule $f$ au milieu, regarde le signe, garde le sous-intervalle où le signe change.",
+              "explanation": "À chaque étape, on coupe en deux et on garde la moitié où $f$ change de signe."
+            },
+            {
+              "question": "Écris en Python une fonction `dichotomie(f, a, b, n)` qui effectue exactement $n$ itérations de la dichotomie et retourne l'intervalle final. Teste-la sur $f(x)=x^3-2$ avec $n=5$.",
+              "answer": "def dichotomie_n(f, a, b, n):\\n    for _ in range(n):\\n        m = (a + b) / 2\\n        if f(a) * f(m) <= 0:\\n            b = m\\n        else:\\n            a = m\\n    return a, b\\n\\nf = lambda x: x**3 - 2\\nprint(dichotomie_n(f, 1, 2, 5))  # donne environ (1.25, 1.265625)",
+              "hint": "Utilise une boucle for sur range(n). Le corps est le même que dans l'algorithme vu en cours.",
+              "explanation": "La fonction répète n fois l'étape de bisection. Après 5 itérations, la longueur de l'intervalle est $1/2^5 = 1/32 = 0.03125$."
+            },
+            {
+              "question": "Combien d'itérations de la dichotomie sont nécessaires pour encadrer une racine de $f(x)=x^3-2$ sur $[1;2]$ avec une erreur absolue au plus $10^{-9}$ ?",
+              "answer": "Il faut $n \\ge \\log_2(1/10^{-9}) = \\log_2(10^9) \\approx 29,9$, donc $n=30$ itérations.",
+              "hint": "Utilise la formule $n \\ge \\log_2((b-a)/\\varepsilon)$ avec $b-a=1$ et $\\varepsilon=10^{-9}$.",
+              "explanation": "La longueur de l'intervalle après $n$ itérations est $1/2^n$. On veut $1/2^n \\le 10^{-9}$, d'où $2^n \\ge 10^9$."
+            },
+            {
+              "question": "La fonction $f(x) = (x-1)^2$ sur $[0;2]$ a une racine en $x=1$. Peut-on utiliser la dichotomie sur $[0;2]$ pour la trouver ? Justifie.",
+              "answer": "Non. $f(0)=1>0$, $f(2)=1>0$, donc $f(0)f(2) > 0$. Il n'y a pas de changement de signe car la racine est d'ordre pair (la fonction touche l'axe sans le traverser). La dichotomie ne s'applique pas.",
+              "hint": "Regarde les signes de $f$ aux bornes de l'intervalle.",
+              "explanation": "La dichotomie nécessite un changement de signe (produit négatif). Ici, la fonction est positive des deux côtés de la racine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

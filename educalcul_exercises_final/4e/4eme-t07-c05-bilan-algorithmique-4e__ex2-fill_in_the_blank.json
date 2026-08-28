@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Checklist",
+  "title": "Checklist de validation d'un algorithme",
+  "blocks": [
+    {
+      "title": "Initialisation des variables",
+      "content": "Dans la checklist de validation d'un algorithme, on vérifie systématiquement que toute variable utilisée comme {{1}} a reçu une valeur de départ avant d'entrer dans la boucle.",
+      "correctAnswer": "",
+      "blanks": [
+        "compteur|indice|variable de boucle"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Avant de démarrer une boucle, la variable qui va compter les tours (compteur, indice) doit être initialisée, sinon son contenu est inconnu et l'algorithme est incorrect.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évolution de la variable de boucle",
+      "content": "Pour éviter une boucle infinie, la checklist impose de vérifier que la variable de boucle est bien {{1}} à l'intérieur du bloc d'instructions de la boucle 'Tant que'.",
+      "correctAnswer": "",
+      "blanks": [
+        "modifiée|incrémentée|changée|mise à jour"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition d'arrêt de la boucle 'Tant que' dépend de la variable de boucle. Si cette variable n'est pas modifiée dans la boucle, la condition ne changera jamais et la boucle ne s'arrêtera pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position de l'affichage",
+      "content": "Lors de la relecture du code, on contrôle que l'instruction {{1}} du résultat final est placée après la fin de la boucle (dédentée) et non à l'intérieur, afin d'éviter d'afficher les valeurs intermédiaires.",
+      "correctAnswer": "",
+      "blanks": [
+        "Afficher|Écrire|Afficher la valeur|Ecrire"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si l'instruction d'affichage est à l'intérieur de la boucle, elle s'exécute à chaque tour. Pour n'avoir que le résultat final, elle doit se trouver après le 'Fin Tant que', au même niveau d'indentation que le début de la boucle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

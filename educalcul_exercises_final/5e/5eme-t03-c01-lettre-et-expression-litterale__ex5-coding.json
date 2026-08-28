@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Lettre comme nombre",
+  "title": "Algorithmes et lettres comme nombres",
+  "blocks": [
+    {
+      "title": "Algorithme simple avec une lettre",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo code) qui prend un nombre $x$, lui ajoute $5$, multiplie le résultat par $2$ et affiche le résultat final.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Calculer y = (x + 5) * 2\\n3. Afficher y",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par lire la valeur de la variable $x$. On ajoute $5$ à $x$, ce qui donne $x+5$. On multiplie cette somme par $2$, ce qui donne $(x+5)\\times2$. Enfin on affiche le résultat stocké dans $y$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour le périmètre d'un rectangle",
+      "content": "Le périmètre $P$ d'un rectangle de longueur $L$ et de largeur $l$ est donné par la formule $P = 2 \\times (L + l)$. Écris un algorithme qui demande à l'utilisateur les valeurs de $L$ et $l$, calcule $P$ et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Lire L\\n2. Lire l\\n3. Calculer P = 2 * (L + l)\\n4. Afficher P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme demande d'abord la longueur $L$ puis la largeur $l$. Il applique la formule du périmètre $P = 2 \\times (L + l)$ en effectuant l'addition $L+l$ puis la multiplication par $2$. Le résultat $P$ est ensuite affiché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme Python pour une fonction quadratique",
+      "content": "Écris un programme en langage Python qui définit la fonction $f(x) = 3x^2 - 4x + 7$, calcule $f(2)$ et $f(-1)$ et affiche les deux résultats.",
+      "correctAnswer": "def f(x):\\n    return 3*x**2 - 4*x + 7\\n\\nprint(f(2))\\nprint(f(-1))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On définit une fonction f qui prend un paramètre x et renvoie $3x^2 - 4x + 7$. Ensuite on appelle cette fonction avec les arguments $2$ et $-1$ et on imprime les valeurs retournées. Pour $x=2$, $f(2)=3\\times4 - 8 + 7 = 12 - 8 + 7 = 11$. Pour $x=-1$, $f(-1)=3\\times1 + 4 + 7 = 3 + 4 + 7 = 14$. Les affichages sont donc 11 et 14.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

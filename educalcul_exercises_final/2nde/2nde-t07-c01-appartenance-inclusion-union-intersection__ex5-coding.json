@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 534,
+  "_course_code": "2nde-t07-c01-appartenance-inclusion-union-intersection",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Notations",
+  "title": "Exercices sur les notations d'appartenance, union, intersection et inclusion",
+  "blocks": [
+    {
+      "title": "Test d'appartenance",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui détermine si un nombre réel $x$ appartient à l'ensemble $A = \\{x \\in \\mathbb{R} \\mid x^2 < 4\\}$. L'algorithme doit afficher « Vrai » si $x \\in A$ et « Faux » sinon.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Si x*x < 4 alors afficher « Vrai »\\n3. Sinon afficher « Faux »\\nEn Python :\\nx = float(input())\\nif x**2 < 4:\\n    print('Vrai')\\nelse:\\n    print('Faux')",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'ensemble A contient les réels dont le carré est strictement inférieur à 4, c'est-à-dire les nombres entre -2 et 2 non inclus. Le test x**2 < 4 vérifie exactement cette condition. Si elle est vraie, x appartient à A, sinon il n'en fait pas partie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Union et intersection de deux ensembles",
+      "content": "Écrire un algorithme qui, étant donnés deux ensembles finis $A$ et $B$ représentés par des listes (sans doublons), calcule et affiche leur union $A \\cup B$ et leur intersection $A \\cap B$, chaque résultat étant une liste sans doublons.",
+      "correctAnswer": "Algorithme :\\n1. Lire listeA, listeB\\n2. union = listeA copiée\\n3. Pour chaque élément e dans listeB :\\n       si e non dans union : ajouter e à union\\n4. intersection = liste vide\\n5. Pour chaque élément e dans listeA :\\n       si e dans listeB : ajouter e à intersection\\n6. Afficher union, intersection\\nEn Python :\\ndef union_intersection(A, B):\\n    union = list(A)\\n    for e in B:\\n        if e not in union:\\n            union.append(e)\\n    inter = [e for e in A if e in B]\\n    return union, inter",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'union rassemble tous les éléments présents dans au moins l'un des deux ensembles, en évitant les doublons. L'intersection ne conserve que les éléments présents dans les deux. Le parcours des listes et les tests d'appartenance permettent de construire ces deux ensembles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test d'inclusion",
+      "content": "Écrire une fonction qui, étant donnés deux ensembles finis $A$ et $B$ représentés par des listes, renvoie Vrai si $A \\subseteq B$ (c'est-à-dire tout élément de $A$ appartient à $B$) et Faux sinon. La fonction doit correctement traiter le cas où $A$ est vide.",
+      "correctAnswer": "Fonction en Python :\\ndef est_inclus(A, B):\\n    for e in A:\\n        if e not in B:\\n            return False\\n    return True\\n\\nExemple d'utilisation :\\nprint(est_inclus([1,2], [1,2,3]))  # True\\nprint(est_inclus([], [1,2]))       # True\\nprint(est_inclus([4], [1,2]))      # False",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour vérifier l'inclusion, il suffit de parcourir tous les éléments de A et de s'assurer que chacun se trouve dans B. Si un élément manque, l'inclusion est fausse. Si A est vide, la boucle ne s'exécute pas et la fonction renvoie True, ce qui est correct car l'ensemble vide est inclus dans tout ensemble.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

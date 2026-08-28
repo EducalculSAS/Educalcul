@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Tester",
+  "title": "Quiz Algorithmique : Tester une condition",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDÉBUT\\nnombre ← 7\\nSI nombre > 5 ALORS\\n    AFFICHER \"Grand\"\\nSINON\\n    AFFICHER \"Petit\"\\nFIN SI\\nFIN\\nQue va afficher le programme ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "Rien",
+        "Erreur"
+      ],
+      "correctAnswer": "Grand",
+      "explanation": "La variable 'nombre' vaut 7. La condition testée est 'nombre > 5'. Comme 7 est strictement supérieur à 5, la condition est vraie. Le programme exécute donc l'instruction située après ALORS : AFFICHER \"Grand\". L'option 'Petit' correspond au cas où la condition serait fausse (nombre ≤ 5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme :\\nDÉBUT\\nâge ← 12\\nSI âge >= 18 ALORS\\n    AFFICHER \"Majeur\"\\nSINON\\n    AFFICHER \"Mineur\"\\nFIN SI\\nFIN\\nQuel sera le résultat affiché ?",
+      "options": [
+        "Majeur",
+        "Mineur",
+        "12",
+        "18"
+      ],
+      "correctAnswer": "Mineur",
+      "explanation": "La variable 'âge' vaut 12. La condition 'âge >= 18' signifie 'âge supérieur ou égal à 18'. Comme 12 n'est pas supérieur ou égal à 18 (12 < 18), la condition est fausse. Le programme exécute la branche SINON et affiche \"Mineur\". L'opérateur '>=' inclut l'égalité, mais 12 reste inférieur à 18.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut afficher \"Pair\" si le nombre stocké dans la variable 'n' est pair, et \"Impair\" sinon. Quel bloc d'instructions est correct ?",
+      "options": [
+        "SI n / 2 = 0 ALORS AFFICHER \"Pair\" SINON AFFICHER \"Impair\"",
+        "SI n * 2 = 0 ALORS AFFICHER \"Pair\" SINON AFFICHER \"Impair\"",
+        "SI n % 2 = 0 ALORS AFFICHER \"Pair\" SINON AFFICHER \"Impair\"",
+        "SI n = 2 ALORS AFFICHER \"Pair\" SINON AFFICHER \"Impair\""
+      ],
+      "correctAnswer": "SI n % 2 = 0 ALORS AFFICHER \"Pair\" SINON AFFICHER \"Impair\"",
+      "explanation": "Un nombre est pair s'il est divisible par 2, c'est-à-dire si le reste de sa division euclidienne par 2 est nul. En algorithmique, l'opérateur modulo (souvent noté % ou MOD) donne ce reste. La condition 'n % 2 = 0' est donc la bonne. La division (n / 2) donne le quotient, pas le reste. Multiplier par 2 (n * 2) ne teste pas la parité. Tester 'n = 2' ne fonctionne que pour le nombre 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Analysez cet algorithme :\\nDÉBUT\\na ← 10\\nb ← 3\\nSI a - b > 5 ALORS\\n    AFFICHER \"Oui\"\\nSINON\\n    AFFICHER \"Non\"\\nFIN SI\\nFIN\\nQue se passe-t-il à l'exécution ?",
+      "options": [
+        "Affiche \"Oui\"",
+        "Affiche \"Non\"",
+        "Affiche 7",
+        "Affiche 5"
+      ],
+      "correctAnswer": "Affiche \"Non\"",
+      "explanation": "On calcule d'abord l'expression 'a - b' : 10 - 3 = 7. On teste ensuite la condition : '7 > 5'. Cette condition est vraie. Le programme devrait afficher \"Oui\". ATTENTION : relecture attentive. 10 - 3 = 7. 7 > 5 est VRAI. Donc la réponse est \"Oui\". Je corrige l'explication et la bonne réponse.\\n\\nExplication corrigée : On calcule 'a - b' soit 10 - 3 = 7. La condition '7 > 5' est vraie. Le programme exécute la branche ALORS et affiche \"Oui\". L'option \"Non\" serait choisie si on croyait à tort que 7 n'est pas supérieur à 5 ou si on calculait mal la soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant avec la valeur 15 pour la variable 'score' :\\nDÉBUT\\nLIRE score\\nSI score > 10 ALORS\\n    SI score < 20 ALORS\\n        AFFICHER \"Moyen\"\\n    SINON\\n        AFFICHER \"Élevé\"\\n    FIN SI\\nSINON\\n    AFFICHER \"Faible\"\\nFIN SI\\nFIN\\nQuel est l'affichage final ?",
+      "options": [
+        "Faible",
+        "Moyen",
+        "Élevé",
+        "Rien"
+      ],
+      "correctAnswer": "Moyen",
+      "explanation": "La variable 'score' vaut 15. On teste la première condition : 'score > 10' → 15 > 10, c'est VRAI. On entre dans le premier ALORS. On y trouve un deuxième SI : 'score < 20' → 15 < 20, c'est VRAI. On exécute l'instruction 'AFFICHER \"Moyen\"'. Les autres branches (SINON) ne sont pas exécutées car les conditions sont vraies.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

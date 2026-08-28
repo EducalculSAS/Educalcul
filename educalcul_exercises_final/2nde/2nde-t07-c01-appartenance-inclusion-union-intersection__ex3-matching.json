@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 534,
+  "_course_code": "2nde-t07-c01-appartenance-inclusion-union-intersection",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Applications",
+  "title": "Applications des ensembles : appartenance, inclusion, union, intersection",
+  "blocks": [
+    {
+      "title": "Appartenance et inclusion",
+      "content": "Soit $A = \\{1,2,3,4\\}$, $B = \\{3,4,5,6\\}$, $C = \\{1,2\\}$. Relie chaque affirmation à sa valeur de vérité.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$1 \\in A$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$5 \\in A$",
+          "right": "Faux"
+        },
+        {
+          "left": "$C \\subset A$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$B \\subset A$",
+          "right": "Faux"
+        }
+      ],
+      "items": [],
+      "explanation": "1 appartient à A car 1 est dans la liste de A. 5 n'appartient pas à A. C est inclus dans A car tous les éléments de C (1 et 2) sont dans A. B n'est pas inclus dans A car 5 et 6 ne sont pas dans A.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Union et intersection",
+      "content": "Soit $A = \\{1,2,3,4\\}$ et $B = \\{3,4,5,6\\}$. Relie chaque expression à l'ensemble qui lui correspond.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$A \\cup B$",
+          "right": "\\{1,2,3,4,5,6\\}"
+        },
+        {
+          "left": "$A \\cap B$",
+          "right": "\\{3,4\\}"
+        },
+        {
+          "left": "$A \\setminus B$",
+          "right": "\\{1,2\\}"
+        },
+        {
+          "left": "$B \\setminus A$",
+          "right": "\\{5,6\\}"
+        }
+      ],
+      "items": [],
+      "explanation": "L'union reúne tous les éléments de A et B. L'intersection ne garde que les éléments communs (3 et 4). La différence A\\B garde les éléments de A qui ne sont pas dans B (1,2). La différence B\\A garde les éléments de B qui ne sont pas dans A (5,6).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application : enquête",
+      "content": "Dans une classe de 30 élèves, 18 aiment le football, 12 aiment le basket, 5 aiment les deux. Relie chaque question à sa réponse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Nombre d'élèves aimant au moins un des deux sports",
+          "right": "25"
+        },
+        {
+          "left": "Nombre d'élèves n'aimant aucun des deux sports",
+          "right": "5"
+        },
+        {
+          "left": "Nombre d'élèves aimant uniquement le football",
+          "right": "13"
+        },
+        {
+          "left": "Nombre d'élèves aimant uniquement le basket",
+          "right": "7"
+        }
+      ],
+      "items": [],
+      "explanation": "Seulement football = 18 - 5 = 13. Seulement basket = 12 - 5 = 7. Au moins un = 13 + 7 + 5 = 25. Aucun = 30 - 25 = 5.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

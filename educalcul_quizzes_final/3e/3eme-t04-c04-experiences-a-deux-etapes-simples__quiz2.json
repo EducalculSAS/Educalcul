@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Quiz : Expériences à deux étapes - Calcul",
+  "questions": [
+    {
+      "text": "On lance une pièce de monnaie équilibrée deux fois de suite. Quelle est la probabilité d'obtenir « face » aux deux lancers ?",
+      "options": [
+        "$1/4$",
+        "$1/2$",
+        "$1/3$",
+        "$1/8$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Les deux lancers sont indépendants. La probabilité d'obtenir face à un lancer est $1/2$. Pour deux lancers indépendants, on multiplie les probabilités : $1/2 × 1/2 = 1/4$. Les autres options correspondent à des erreurs : $1/2$ serait la probabilité d'un seul lancer, $1/3$ n'a pas de sens ici, $1/8$ correspondrait à trois lancers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire deux cartes successivement sans remise dans un jeu de $52$ cartes contenant $4$ as. Quelle est la probabilité d'obtenir deux as ?",
+      "options": [
+        "$1/221$",
+        "$1/169$",
+        "$1/13$",
+        "$1/26$"
+      ],
+      "correctAnswer": "$1/221$",
+      "explanation": "Sans remise, les tirages sont dépendants. Probabilité premier as $4/52 = 1/13$. Après avoir retiré un as, il reste $3$ as sur $51$ cartes, donc $3/51 = 1/17$. On multiplie : $1/13 × 1/17 = 1/221$. L'option $1/169$ correspond à l'erreur de considérer les tirages indépendants (avec remise). $1/13$ est la probabilité du premier tirage seulement. $1/26$ n'a pas de justification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à $6$ faces équilibré, puis on lance une pièce équilibrée. Quelle est la probabilité d'obtenir un nombre pair au dé et « face » à la pièce ?",
+      "options": [
+        "$1/4$",
+        "$1/6$",
+        "$1/12$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Le dé et la pièce sont indépendants. Probabilité nombre pair = $3/6 = 1/2$. Probabilité face = $1/2$. Produit = $1/2 × 1/2 = 1/4$. Les autres options correspondent à des erreurs : $1/6$ serait la probabilité d'un seul résultat du dé, $1/12$ serait $1/2 × 1/6$, $1/3$ serait $2/6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $3$ boules rouges et $2$ boules bleues. On tire une boule, on note sa couleur, on la remet dans l'urne, puis on tire une seconde boule. Quelle est la probabilité que les deux boules tirées soient rouges ?",
+      "options": [
+        "$9/25$",
+        "$3/5$",
+        "$6/25$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$9/25$",
+      "explanation": "Avec remise, les tirages sont indépendants. Probabilité rouge à chaque tirage = $3/5$. Probabilité deux rouges = $3/5 × 3/5 = 9/25$. L'option $3/5$ correspond à un seul tirage. $6/25$ serait $2 × 3/5 × 2/5$ (probabilité d'une rouge et une bleue dans un ordre donné). $1/5$ n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux fois une pièce équilibrée. Quelle est la probabilité d'obtenir au moins une « face » ?",
+      "options": [
+        "$3/4$",
+        "$1/2$",
+        "$1/4$",
+        "$1$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "Il est plus simple de calculer le complémentaire : aucune face (deux piles) a une probabilité $1/2 × 1/2 = 1/4$. Donc au moins une face = $1 - 1/4 = 3/4$. L'option $1/2$ correspond à la probabilité d'exactement une face, $1/4$ à celle de deux faces, $1$ serait certaine ce qui est faux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

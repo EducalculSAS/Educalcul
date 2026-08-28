@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Appartenance / inclusion",
+  "title": "Quiz : Appartenance et inclusion dans les ensembles de nombres",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel appartient à l'ensemble des nombres décimaux $D$ mais n'appartient pas à l'ensemble des entiers relatifs $Z$ ?",
+      "options": [
+        "-3",
+        "2/5",
+        "sqrt(2)",
+        "0"
+      ],
+      "correctAnswer": "2/5",
+      "explanation": "$-3$ et $0$ sont des entiers relatifs, donc dans $Z$. $sqrt(2)$ est irrationnel, il n'est pas dans $D$. $2/5 = 0,4$ est un nombre décimal (écriture décimale finie) mais pas un entier, donc il est dans $D$ et pas dans $Z$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'ensemble de destination du nombre $-\\frac{7}{3}$ est :",
+      "options": [
+        "N seulement",
+        "Z seulement",
+        "Q seulement",
+        "Q et R"
+      ],
+      "correctAnswer": "Q et R",
+      "explanation": "$-\\frac{7}{3}$ est un quotient d'entiers (denominateur non nul), c'est un nombre rationnel, donc il appartient à $Q$. Comme $Q \\subset R$, il appartient aussi à $R$. Ce n'est pas un entier (pas dans $Z$) ni un entier naturel (pas dans $N$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des chaînes d'inclusion suivantes est correcte pour les ensembles de nombres usuels ?",
+      "options": [
+        "N \\subset Z \\subset Q \\subset D \\subset R",
+        "N \\subset Z \\subset D \\subset Q \\subset R",
+        "Z \\subset N \\subset D \\subset Q \\subset R",
+        "N \\subset D \\subset Z \\subset Q \\subset R"
+      ],
+      "correctAnswer": "N \\subset Z \\subset D \\subset Q \\subset R",
+      "explanation": "Les entiers naturels $N$ sont dans les entiers relatifs $Z$. Les entiers relatifs sont des décimaux (ex: $-3 = -3,0$), donc $Z \\subset D$. Les décimaux sont des rationnels (ex: $0,4 = 2/5$), donc $D \\subset Q$. Les rationnels sont des réels, donc $Q \\subset R$. L'ordre est donc $N \\subset Z \\subset D \\subset Q \\subset R$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $x = \\sqrt{16} - 3$. Le plus petit ensemble (le plus restrictif) parmi $N, Z, D, Q$ qui contient $x$ est :",
+      "options": [
+        "N",
+        "Z",
+        "D",
+        "Q"
+      ],
+      "correctAnswer": "N",
+      "explanation": "On calcule $x = \\sqrt{16} - 3 = 4 - 3 = 1$. Le nombre $1$ est un entier naturel. Il appartient donc à $N$. Comme $N \\subset Z \\subset D \\subset Q$, il appartient aux autres, mais $N$ est le plus petit (le plus précis).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le nombre $y = \\frac{\\pi}{2} + \\frac{3}{2}$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "y \\in Q",
+        "y \\in R \\setminus Q",
+        "y \\in Z",
+        "y \\in D"
+      ],
+      "correctAnswer": "y \\in R \\setminus Q",
+      "explanation": "$\\pi$ est irrationnel, donc $\\frac{\\pi}{2}$ est irrationnel. $\\frac{3}{2}$ est rationnel. La somme d'un irrationnel et d'un rationnel est irrationnelle. $y$ est donc un réel qui n'est pas rationnel : $y \\in R \\setminus Q$. Il n'est ni dans $Q$, ni dans $Z$, ni dans $D$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

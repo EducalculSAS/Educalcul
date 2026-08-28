@@ -1,0 +1,542 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.754553+00:00",
+  "id": 405,
+  "code": "5eme-t06-c01",
+  "title": "Effectifs et fréquences",
+  "description": "Cours structuré Educalcul : Effectifs et fréquences.",
+  "subject": "Statistiques et probabilités",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Effectifs et fréquences",
+    "objectif_global": "Effectifs et fréquences",
+    "mini_lecons_imposees": [
+      "Tableau.",
+      "Calcul fréquence.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Tableau.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau statistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu interroges tes camarades sur leur fruit préféré. Tu obtiens une liste de réponses comme pomme, banane, pomme, orange, banane, pomme. Pour organiser ces réponses, on utilise un tableau statistique. Ce tableau possède deux colonnes : la première colonne indique la modalité, c'est‑à‑dire chaque valeur possible (pomme, banane, orange), et la deuxième colonne indique l'effectif, c'est‑le nombre de fois que cette modalité apparaît. En rangeant les données ainsi, tu passes d'une liste désordonnée à une vue claire qui permet de comparer rapidement les choix."
+            },
+            {
+              "type": "definition",
+              "term": "modalité",
+              "definition": "Valeur distincte que peut prendre la variable étudiée (par exemple : pomme, banane, orange).",
+              "example": "Dans l'enquête sur les fruits, les modalités sont pomme, banane et orange."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre d'observations correspondant à une modalité donnée.",
+              "example": "L'effectif de la modalité pomme est 3 car trois élèves ont choisi la pomme."
+            },
+            {
+              "type": "definition",
+              "term": "total",
+              "definition": "Somme de tous les effectifs du tableau ; il correspond au nombre total d'observations.",
+              "example": "Le total est 3 + 2 + 1 = 6 élèves interrogés."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Modalité",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "3"
+                ],
+                [
+                  "Banane",
+                  "2"
+                ],
+                [
+                  "Orange",
+                  "1"
+                ]
+              ],
+              "caption": "Tableau des fruits préférés"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les modalités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie toutes les valeurs différentes présentes dans les données brutes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter chaque effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque modalité, compte combien de fois elle apparaît dans la liste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Insère les modalités dans la première colonne et les effectifs correspondants dans la deuxième."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne tous les effectifs pour obtenir le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le tableau est construit, il est temps d'apprendre à le lire pour en extraire des informations précises. La lecture d'un tableau statistique consiste à identifier chaque ligne, à associer la modalité à son effectif et à comprendre ce que ces nombres racontent sur l'ensemble du groupe observé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les effectifs dans le tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le tableau que nous venons de créer, la première ligne montre que la modalité Pomme a un effectif de $3$. Cela signifie que trois élèves ont choisi la pomme. La deuxième ligne indique que la banane a un effectif de $2$, et la troisième ligne que l'orange a un effectif de $1$. En parcourant les lignes de haut en bas, tu peux immédiatement voir quelle modalité est la plus représentée et laquelle est la moins représentée, sans avoir à recompter les réponses une par une."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs des fruits préférés",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir lu les effectifs, il reste une étape importante : vérifier que la somme de tous les effectifs correspond bien au nombre total d'élèves interrogés. Ce contrôle garantit qu'aucune réponse n'a été oubliée et que le tableau est complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier le total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour obtenir le total, on additionne simplement les effectifs de chaque ligne. Dans notre exemple, $3 + 2 + 1 = 6$. Ce total de $6$ correspond exactement aux six réponses que nous avions au départ. Si la somme était différente, il faudrait revoir le comptage ou vérifier qu'aucune modalité n'a été omise."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 2 + 1 = 6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire un tableau statistique, le lire et vérifier son total. Ces compétences seront la base pour calculer les fréquences dans la leçon suivante."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici les réponses de 8 élèves sur leur couleur préférée : bleu, rouge, bleu, vert, bleu, rouge, jaune, bleu. Construis le tableau statistique (modalité, effectif).",
+              "answer": "Modalité : bleu (4), rouge (2), vert (1), jaune (1). Total = 8.",
+              "hint": "Compte combien de fois chaque couleur apparaît dans la liste.",
+              "explanation": "On liste les quatre couleurs différentes, on compte leurs occurrences : bleu 4 fois, rouge 2 fois, vert 1 fois, jaune 1 fois. On remplit le tableau avec ces effectifs et on vérifie que la somme fait 8."
+            },
+            {
+              "question": "Dans le tableau suivant, quelle est l'effectif de la modalité 'vert' ?\\n\\nModalité | Effectif\\n--- | ---\\nbleu | 4\\nrouge | 2\\nvert | 1\\njaune | 1",
+              "answer": "1",
+              "hint": "Regarde la ligne correspondant à la modalité vert.",
+              "explanation": "La ligne 'vert' affiche l'effectif 1, ce qui signifie qu'un seul élève a choisi le vert."
+            },
+            {
+              "question": "Vérifie que le total des effectifs correspond au nombre d'élèves interrogés dans le tableau ci‑dessus.",
+              "answer": "Total = 4 + 2 + 1 + 1 = 8, ce qui correspond aux 8 élèves.",
+              "hint": "Additionne tous les effectifs du tableau.",
+              "explanation": "En additionnant 4, 2, 1 et 1, on obtient 8. Ce total est égal au nombre d'élèves ayant répondu, donc le tableau est complet."
+            }
+          ]
+        },
+        {
+          "title": "Calcul fréquence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définir la fréquence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as appris à organiser des données dans un tableau et à lire les effectifs. Maintenant, nous allons passer à une notion qui permet de comparer les effectifs entre eux, quel que soit le nombre total d'observations. Cette notion s'appelle la fréquence. La fréquence d'une modalité est le quotient de son effectif par le total des effectifs. Elle exprime la part que cette modalité représente dans l'ensemble des données."
+            },
+            {
+              "type": "definition",
+              "term": "fréquence",
+              "definition": "Rapport de l'effectif d'une modalité sur le total des effectifs. Elle se note souvent $f = \\frac{\\text{effectif}}{\\text{total}}$.",
+              "example": "Pour la pomme (effectif 3, total 6), la fréquence est $\\frac{3}{6}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f = \\\\frac{\\\\text{effectif}}{\\\\text{total}}"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Fréquence de la pomme : 3/6"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'effectif de la modalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère dans le tableau le nombre associé à la modalité choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total est la somme de tous les effectifs, souvent indiqué en bas du tableau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser l'effectif par le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue la division pour obtenir une fraction, puis simplifie si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Noter la fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le résultat sous forme de fraction, de décimal ou de pourcentage selon le besoin."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la fréquence obtenue sous forme de fraction, il est souvent utile de l'exprimer sous forme décimale ou en pourcentage pour faciliter la comparaison. La conversion suit des règles simples que nous allons détailler."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir la fréquence en décimal et en pourcentage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer une fraction en nombre décimal, il suffit de faire la division du numérateur par le dénominateur. Par exemple, la fréquence de la pomme est $\\frac{3}{6}$. En effectuant la division $3 \\div 6$, on obtient $0,5$. Pour passer au pourcentage, on multiplie le décimal par $100$, ce qui donne $50\\%$. Ainsi, la pomme représente la moitié des choix. La même opération s'applique à chaque modalité."
+            },
+            {
+              "type": "display_math",
+              "latex": "0,5 \\\\times 100 = 50\\\\%"
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fréquences en pourcentage",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 50,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 33.33,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 16.67,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir calculé et converti toutes les fréquences, il reste une vérification essentielle : la somme de toutes les fréquences doit être égale à $1$ (ou $100\\%$). Cette propriété permet de détecter d'éventuelles erreurs de calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la somme des fréquences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons nos trois fréquences : $\\frac{3}{6}$, $\\frac{2}{6}$ et $\\frac{1}{6}$. En les additionnant, on obtient $\\frac{3+2+1}{6} = \\frac{6}{6} = 1$. En pourcentage, cela donne $50\\% + 33,\\overline{3}\\% + 16,\\overline{6}\\% = 100\\%$. Si la somme était différente de $1$, il faudrait reprendre chaque calcul pour trouver l'erreur."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\frac{3}{6}+\\\\frac{2}{6}+\\\\frac{1}{6}=1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer une fréquence, la convertir en décimal et en pourcentage, et vérifier que l'ensemble des fréquences forme un tout cohérent. La prochaine leçon t'apprendra à interpréter ces nombres pour répondre à des questions concrètes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la fréquence de la modalité 'bleu' dans le tableau de l'exercice précédent (bleu 4, rouge 2, vert 1, jaune 1, total 8).",
+              "answer": "Fréquence = 4/8 = 1/2.",
+              "hint": "Divise l'effectif de bleu (4) par le total (8).",
+              "explanation": "L'effectif de bleu est 4, le total est 8. La fraction 4/8 se simplifie en 1/2. C'est la fréquence de la modalité bleu."
+            },
+            {
+              "question": "Exprime la fréquence de 'rouge' sous forme décimale et en pourcentage.",
+              "answer": "Fréquence = 2/8 = 0,25 = 25%.",
+              "hint": "Effectue la division 2 ÷ 8, puis multiplie le résultat par 100.",
+              "explanation": "2 divisé par 8 donne 0,25. En multipliant 0,25 par 100, on obtient 25 %. Donc la fréquence de rouge est 0,25 ou 25 %."
+            },
+            {
+              "question": "Vérifie que la somme des fréquences des quatre couleurs vaut 1.",
+              "answer": "1/2 + 1/4 + 1/8 + 1/8 = 1.",
+              "hint": "Additionne les fractions en les mettant au même dénominateur.",
+              "explanation": "Les fréquences sont : bleu 1/2, rouge 1/4, vert 1/8, jaune 1/8. En les additionnant : 4/8 + 2/8 + 1/8 + 1/8 = 8/8 = 1. La somme est bien 1."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les fréquences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises le calcul des fréquences, nous allons voir comment les utiliser pour tirer des conclusions sur les données. L'interprétation consiste à lire les fréquences, à les comparer entre elles et à répondre à des questions comme : quelle modalité est la plus fréquente ? Quelle proportion du groupe choisit une option donnée ? Est‑ce que les résultats sont équilibrés ?"
+            },
+            {
+              "type": "definition",
+              "term": "fréquence relative",
+              "definition": "Synonyme de fréquence ; part d'une modalité par rapport au total, souvent exprimée en décimal ou en pourcentage.",
+              "example": "La fréquence relative de la banane est 33,3 %. "
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences en pourcentage par fruit",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 50,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 33.33,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 16.67,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire chaque fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la valeur (fraction, décimal ou pourcentage) associée à chaque modalité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Range les fréquences du plus grand au plus petit pour voir l'ordre de préférence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier la modalité maximale/minimale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La plus grande fréquence correspond à la modalité la plus choisie, la plus petite à la moins choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Formuler une réponse en phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rédige une phrase complète qui répond à la question posée, en citant la valeur numérique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au‑delà de la simple comparaison, les fréquences permettent de répondre à des questions précises posées dans un énoncé. Par exemple, on peut demander : « Quelle est la proportion d'élèves qui préfèrent la banane ? » ou « La pomme est‑elle choisie par plus de la moitié de la classe ? »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre à des questions d'interprétation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour répondre, il suffit de lire la fréquence correspondante. Dans notre tableau, la fréquence de la banane est $\\frac{2}{6}$, soit environ $0,33$ ou $33,\\overline{3}\\%$. Cela signifie qu'un peu moins d'un tiers des élèves préfère la banane. Pour la pomme, la fréquence est $\\frac{3}{6}=0,5=50\\%$. Comme $50\\%$ n'est pas strictement supérieur à $50\\%$, on ne peut pas dire que la pomme est choisie par plus de la moitié ; elle l'est exactement par la moitié."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\frac{2}{6}\\\\approx 0,33"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, une bonne interprétation s'accompagne toujours d'un contrôle de cohérence. On vérifie que la somme des fréquences vaut $1$ et que les pourcentages additionnés donnent $100\\%$. Ce contrôle valide l'ensemble du raisonnement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contrôler la cohérence des résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les trois fréquences exprimées en pourcentage : $50\\%$ pour la pomme, $33,\\overline{3}\\%$ pour la banane et $16,\\overline{6}\\%$ pour l'orange. En les additionnant, on obtient $100\\%$. Si un énoncé te donne des fréquences qui ne somment pas à $100\\%$, tu sais qu'il y a une erreur soit dans les données, soit dans tes calculs."
+            },
+            {
+              "type": "display_math",
+              "latex": "50\\\\%+33,\\\\overline{3}\\\\%,+16,\\\\overline{6}\\\\%=100\\\\%"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un tableau statistique à partir de données brutes.",
+                "Je sais lire les effectifs et calculer le total.",
+                "Je sais calculer une fréquence (effectif / total).",
+                "Je sais convertir une fréquence en décimal et en pourcentage.",
+                "Je sais vérifier que la somme des fréquences vaut 1 (ou 100 %).",
+                "Je sais interpréter les fréquences pour répondre à des questions concrètes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la modalité la plus fréquente ? Justifie ta réponse.",
+              "answer": "La pomme est la plus fréquente avec une fréquence de 1/2 (50 %).",
+              "hint": "Compare les fréquences des trois fruits.",
+              "explanation": "Les fréquences sont : pomme 1/2, banane 1/3, orange 1/6. La plus grande est 1/2, donc la pomme est la modalité la plus fréquente."
+            },
+            {
+              "question": "Quel pourcentage d'élèves a choisi le vert dans le tableau de la leçon 1 (vert effectif 1, total 6) ?",
+              "answer": "16,6 % (environ).",
+              "hint": "Calcule la fréquence 1/6, puis convertis en pourcentage.",
+              "explanation": "1 divisé par 6 donne environ 0,1667. Multiplié par 100, cela donne 16,67 %. Arrondi à 16,6 %."
+            },
+            {
+              "question": "Si un nouvel élève choisit le jaune, comment les fréquences changent-elles ? Calcule la nouvelle fréquence du jaune.",
+              "answer": "Nouvel effectif jaune = 2, nouveau total = 9, fréquence = 2/9 ≈ 22,2 %. ",
+              "hint": "Ajoute 1 à l'effectif jaune et 1 au total, puis divise.",
+              "explanation": "Au départ, jaune avait un effectif de 1 sur 6. Après l'ajout, l'effectif devient 2 et le total 9. La fréquence est 2/9, soit environ 0,222 = 22,2 %."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,435 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.717017+00:00",
+  "id": 716,
+  "code": "terminale-generale-maths-t07-c02",
+  "title": "Schéma de Bernoulli et loi binomiale",
+  "description": "Cours structuré Educalcul : Schéma de Bernoulli et loi binomiale.",
+  "subject": "Probabilités",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Probabilités",
+    "titre_du_cours": "Schéma de Bernoulli et loi binomiale",
+    "objectif_global": "Schéma de Bernoulli et loi binomiale",
+    "mini_lecons_imposees": [
+      "Paramètres.",
+      "Calcul.",
+      "Espérance."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités",
+      "lessons": [
+        {
+          "title": "Paramètres.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience de Bernoulli ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie équilibrée. Il n'y a que deux issues possibles : pile ou face. Si tu décides que « pile » est un succès, alors chaque lancer est une expérience de Bernoulli : une épreuve aléatoire qui ne produit que deux résultats, qu'on appelle traditionnellement succès et échec. La probabilité du succès, notée $p$, reste la même à chaque lancer, et le résultat d'un lancer n'influence pas le suivant. C'est cette simplicité, cette régularité, qui fait de l'expérience de Bernoulli la brique élémentaire de nombreux modèles probabilistes. Dans la vie courante, on retrouve cette structure partout : un contrôle qualité où chaque pièce est soit conforme, soit défectueuse ; un questionnaire à choix multiples où chaque réponse est soit juste, soit fausse ; ou encore un essai clinique où un patient guérit ou non. À chaque fois, on peut modéliser la situation par une expérience de Bernoulli pourvu que les conditions d'indépendance et de probabilité constante soient respectées."
+            },
+            {
+              "type": "definition",
+              "term": "expérience de Bernoulli",
+              "definition": "Une épreuve aléatoire qui ne comporte que deux issues possibles, appelées succès (probabilité $p$) et échec (probabilité $1-p$). Les épreuves sont indépendantes et la probabilité de succès ne change pas d'une épreuve à l'autre.",
+              "example": "Lancer une pièce équilibrée : succès = pile ($p=0,5$), échec = face."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilité pour une expérience de Bernoulli unique",
+              "branches": [
+                {
+                  "label": "Succès",
+                  "probability": "p",
+                  "children": []
+                },
+                {
+                  "label": "Échec",
+                  "probability": "1-p",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'expérience de base est claire, voyons comment on la répète plusieurs fois de suite pour construire un schéma de Bernoulli complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le schéma de Bernoulli : n épreuves indépendantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un schéma de Bernoulli, c'est simplement la répétition d'une même expérience de Bernoulli un nombre fixe de fois, disons $n$. On effectue $n$ épreuves indépendantes les unes des autres, chacune avec la même probabilité de succès $p$. Le résultat global est alors une suite de $n$ lettres, par exemple S pour succès et E pour échec : S, E, S, S, E, … . Ce qui nous intéresse le plus souvent, ce n'est pas l'ordre exact des succès, mais le nombre total de succès obtenus au cours des $n$ épreuves. On note alors $X$ cette variable aléatoire qui compte les succès. Par construction, $X$ ne peut prendre que des valeurs entières entre $0$ et $n$. C'est cette variable $X$ qui suit une loi binomiale, que l'on note $B(n,p)$. Les deux paramètres $n$ et $p$ caractérisent entièrement la distribution : $n$ est le nombre d'épreuves, $p$ la probabilité de succès à chaque épreuve. Si l'une de ces conditions n'est pas remplie (épreuves dépendantes, probabilité qui change), ce n'est plus un schéma de Bernoulli et la loi binomiale ne s'applique pas."
+            },
+            {
+              "type": "definition",
+              "term": "schéma de Bernoulli",
+              "definition": "Répétition de $n$ expériences de Bernoulli indépendantes, identiquement distribuées, avec une probabilité de succès constante $p$. La variable aléatoire $X$ comptant le nombre de succès suit une loi binomiale de paramètres $n$ et $p$.",
+              "example": "Lancer 10 fois un dé équilibré et compter le nombre de fois où l'on obtient un 6 : $n=10$, $p=1/6$."
+            },
+            {
+              "type": "display_math",
+              "latex": "X \\\\sim B(n,p)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant les deux paramètres essentiels. Il reste à comprendre comment ils déterminent la forme exacte de la loi binomiale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les paramètres de la loi binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi binomiale $B(n,p)$ donne la probabilité d'obtenir exactement $k$ succès sur les $n$ épreuves. Cette probabilité s'écrit $P(X=k) = \\binom{n}{k} p^{k} (1-p)^{n-k}$. Le terme $\\binom{n}{k}$ est le coefficient binomial, qui compte le nombre de façons de choisir les $k$ épreuves qui seront des succès parmi les $n$ épreuves. Le facteur $p^{k}$ correspond à la probabilité que ces $k$ épreuves choisies soient effectivement des succès, et $(1-p)^{n-k}$ à la probabilité que les $n-k$ autres soient des échecs. En multipliant ces trois éléments, on obtient la probabilité de toute suite précise contenant $k$ succès, puis on additionne sur toutes les suites possibles grâce au coefficient binomial. C'est une formule puissante qui permet de calculer n'importe quelle probabilité ponctuelle dès qu'on connaît $n$ et $p$. Remarque importante : la somme de toutes ces probabilités pour $k$ variant de $0$ à $n$ vaut $1$, ce qui est une vérification utile quand on fait des calculs à la main ou avec une calculatrice."
+            },
+            {
+              "type": "definition",
+              "term": "loi binomiale",
+              "definition": "Loi de probabilité discrète qui décrit le nombre de succès $X$ dans un schéma de Bernoulli de paramètres $n$ (nombre d'épreuves) et $p$ (probabilité de succès). Sa fonction de masse est $P(X=k)=\\binom{n}{k}p^{k}(1-p)^{n-k}$ pour $k=0,1,\\dots,n$.",
+              "example": "Pour $n=5$, $p=0,3$, $P(X=2)=\\binom{5}{2}0,3^{2}0,7^{3}\\approx0,3087$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X=k) = \\\\binom{n}{k} p^{k} (1-p)^{n-k}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance une pièce de monnaie équilibrée $8$ fois. On note $X$ le nombre de faces obtenues. Quelle est la loi suivie par $X$ ? Donne ses paramètres.",
+              "answer": "$X$ suit une loi binomiale $B(8, 0,5)$.",
+              "hint": "Identifie le nombre d'épreuves $n$ et la probabilité de succès $p$ (ici face = succès).",
+              "explanation": "Chaque lancer est une expérience de Bernoulli avec $p=0,5$. On répète $n=8$ fois indépendamment, donc $X \\\\sim B(8,0,5)$."
+            },
+            {
+              "question": "Dans un lot de $20$ composants électroniques, $5\\%$ sont défectueux. On prélève $10$ composants au hasard avec remise. Soit $Y$ le nombre de composants défectueux dans l'échantillon. Précise la loi de $Y$ et ses paramètres.",
+              "answer": "$Y \\\\sim B(10, 0,05)$.",
+              "hint": "Le prélèvement avec remise garantit l'indépendance et la probabilité constante de défaut.",
+              "explanation": "Chaque composant a une probabilité $p=0,05$ d'être défectueux. On fait $n=10$ tirages indépendants, donc $Y$ suit $B(10,0,05)$."
+            },
+            {
+              "question": "On effectue un schéma de Bernoulli à $n=12$ épreuves avec une probabilité de succès $p=0,25$. Écrire la formule donnant $P(X=3)$ sans la calculer.",
+              "answer": "$P(X=3) = \\\\binom{12}{3} (0,25)^{3} (0,75)^{9}$.",
+              "hint": "Utilise la formule générale de la loi binomiale avec $k=3$.",
+              "explanation": "On applique directement $P(X=k)=\\\\binom{n}{k}p^{k}(1-p)^{n-k}$ avec $n=12$, $p=0,25$, $k=3$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule des probabilités binomiales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculer une probabilité binomiale, c'est évaluer $P(X=k) = \\binom{n}{k} p^{k} (1-p)^{n-k}$. Cette formule peut sembler impressionnante au premier abord, mais elle se décompose en trois parties très concrètes. Le coefficient binomial $\\binom{n}{k}$ compte les combinaisons : de combien de façons peut-on placer $k$ succès parmi $n$ positions ? C'est un nombre entier qu'on obtient soit par la formule factorielle, soit en utilisant la touche « nCr » de la calculatrice. Le terme $p^{k}$ est la probabilité que les $k$ succès choisis se produisent tous, et $(1-p)^{n-k}$ celle que les $n-k$ échecs restants se produisent. Comme les épreuves sont indépendantes, on multiplie ces probabilités. Ensuite, comme n'importe laquelle des $\\binom{n}{k}$ combinaisons convient, on multiplie par ce coefficient. En pratique, on entre directement les valeurs dans la calculatrice (fonction « binomialpdf » ou équivalent) pour obtenir le résultat numérique. Il est bon de vérifier que la somme des probabilités pour $k=0$ à $n$ vaut $1$, ce qui constitue un contrôle de cohérence."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X=k) = \\\\binom{n}{k} p^{k} (1-p)^{n-k}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $n$, $p$ et $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé pour repérer le nombre total d'épreuves $n$, la probabilité de succès $p$ à chaque épreuve, et le nombre de succès $k$ qui t'intéresse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le coefficient binomial",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la touche « nCr » de ta calculatrice (ou la formule $\\\\frac{n!}{k!(n-k)!}$) pour obtenir $\\\\binom{n}{k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les puissances et multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $p^{k}$ et $(1-p)^{n-k}$, puis multiplie les trois nombres : coefficient $\\times$ $p^{k}$ $\\times$ $(1-p)^{n-k}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode de calcul ponctuel est maîtrisée, penchons-nous sur le coefficient binomial lui-même, car c'est souvent là que se cachent les erreurs de calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer le coefficient binomial"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient binomial $\\binom{n}{k}$ se lit « $n$ choisissent $k$ ». Il représente le nombre de sous-ensembles à $k$ éléments qu'on peut former à partir d'un ensemble à $n$ éléments. Sa formule factorielle est $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$. Les factorielles grandissent très vite, donc il vaut mieux simplifier avant de multiplier. Par exemple, $\\binom{10}{3} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$. Sur calculatrice, la touche « nCr » fait tout automatiquement. Attention : $\\binom{n}{k} = \\binom{n}{n-k}$, ce qui peut simplifier le calcul quand $k > n/2$. Par exemple, $\\binom{12}{9} = \\binom{12}{3}$. C'est une astuce précieuse pour éviter de manipuler de grands factorielles. Enfin, souviens-toi que $\\binom{n}{0} = \\binom{n}{n} = 1$ et $\\binom{n}{1} = \\binom{n}{n-1} = n$."
+            },
+            {
+              "type": "definition",
+              "term": "coefficient binomial",
+              "definition": "Nombre de façons de choisir $k$ objets parmi $n$ sans tenir compte de l'ordre. Noté $\\\\binom{n}{k}$ et calculé par $\\\\frac{n!}{k!(n-k)!}$.",
+              "example": "$\\binom{7}{2} = \\frac{7 \\times 6}{2 \\times 1} = 21$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\binom{n}{k} = \\\\frac{n!}{k!(n-k)!}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on ne cherche pas une probabilité exacte pour une seule valeur de $k$, mais la probabilité que $X$ soit inférieur ou égal à un certain seuil. C'est ce qu'on appelle une probabilité cumulée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilités cumulées et tables"
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité cumulée $P(X \\le k)$ est la somme des probabilités ponctuelles de $0$ à $k$ : $P(X \\le k) = \\sum_{i=0}^{k} \\binom{n}{i} p^{i} (1-p)^{n-i}$. Sur calculatrice, la fonction « binomialcdf » (ou « binomiale cumulative ») donne directement ce résultat. Il existe aussi des tables de la loi binomiale pour des valeurs usuelles de $n$ et $p$, mais de nos jours la calculatrice est l'outil standard. Pour $P(X \\ge k)$, on utilise la complémentaire : $P(X \\ge k) = 1 - P(X \\le k-1)$. De même, $P(X > k) = 1 - P(X \\le k)$ et $P(X < k) = P(X \\le k-1)$. Ces relations permettent de répondre à n'importe quelle question d'intervalle. Il est crucial de bien identifier si l'inégalité est stricte ou large pour choisir le bon argument de la fonction cumulative."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X \\\\le k) = \\\\sum_{i=0}^{k} \\\\binom{n}{i} p^{i} (1-p)^{n-i}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X \\sim B(15, 0,4)$. Calculer $P(X=5)$ en utilisant la formule. Donne le résultat arrondi à $10^{-4}$.",
+              "answer": "$0,0612$ (environ).",
+              "hint": "Calcule $\\binom{15}{5}$, puis $0,4^{5}$ et $0,6^{10}$, multiplie le tout.",
+              "explanation": "$\\binom{15}{5}=3003$, $0,4^{5}=0,01024$, $0,6^{10}\\approx0,0060466$. Produit $\\approx0,0612$."
+            },
+            {
+              "question": "Calculer le coefficient binomial $\\binom{20}{3}$ sans calculatrice, en simplifiant les factorielles.",
+              "answer": "$1140$.",
+              "hint": "Écris $\\frac{20 \\times 19 \\times 18}{3 \\times 2 \\times 1}$.",
+              "explanation": "$\\binom{20}{3} = \\frac{20!}{3!17!} = \\frac{20 \\times 19 \\times 18}{6} = 20 \\times 19 \\times 3 = 1140$."
+            },
+            {
+              "question": "Pour $X \\sim B(10, 0,3)$, déterminer $P(X \\le 2)$ à l'aide de la fonction cumulative de la calculatrice. Donner la valeur arrondie à $10^{-4}$.",
+              "answer": "$0,3828$ (environ).",
+              "hint": "Utilise la fonction « binomialcdf » avec $n=10$, $p=0,3$, $k=2$.",
+              "explanation": "La somme $P(X=0)+P(X=1)+P(X=2)$ donne environ $0,3828$."
+            }
+          ]
+        },
+        {
+          "title": "Espérance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance d'une variable binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'espérance, ou valeur moyenne, d'une variable aléatoire binomiale $X \\sim B(n,p)$ est remarquablement simple : $E(X) = n p$. Cela signifie qu'en moyenne, sur un grand nombre de répétitions du schéma de Bernoulli, le nombre de succès observés sera proche de $n p$. Cette formule s'obtient en utilisant la linéarité de l'espérance : on écrit $X$ comme la somme de $n$ variables de Bernoulli $X_i$ (chaque $X_i$ vaut $1$ si l'épreuve $i$ est un succès, $0$ sinon). Comme $E(X_i)=p$ pour chaque $i$, on a $E(X) = \\sum_{i=1}^{n} E(X_i) = n p$. C'est un résultat très pratique : pas besoin de sommer $k \\times P(X=k)$ pour $k=0$ à $n$, la réponse est immédiate dès qu'on connaît $n$ et $p$. Par exemple, si on lance $100$ fois une pièce équilibrée ($p=0,5$), le nombre moyen de faces attendues est $100 \\times 0,5 = 50$."
+            },
+            {
+              "type": "display_math",
+              "latex": "E(X) = n p"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire $X$ comme somme de variables de Bernoulli",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Posons $X_i = 1$ si l'épreuve $i$ est un succès, $0$ sinon. Alors $X = X_1 + X_2 + \\dots + X_n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'espérance de chaque $X_i$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque $X_i$ suit une loi de Bernoulli de paramètre $p$, donc $E(X_i) = 1 \\times p + 0 \\times (1-p) = p$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la linéarité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$E(X) = \\sum_{i=1}^{n} E(X_i) = n \\times p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'espérance, la variance mesure la dispersion des valeurs autour de cette moyenne. Elle aussi a une forme très simple pour la loi binomiale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variance d'une variable binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "La variance de $X \\sim B(n,p)$ est $V(X) = n p (1-p)$. Elle s'obtient encore grâce à la décomposition en variables de Bernoulli indépendantes. Puisque les $X_i$ sont indépendantes, la variance de la somme est la somme des variances : $V(X) = \\sum_{i=1}^{n} V(X_i)$. Or, pour une variable de Bernoulli, $V(X_i) = p(1-p)$. Donc $V(X) = n p (1-p)$. L'écart-type, qui a la même unité que $X$, est $\\sigma_X = \\sqrt{n p (1-p)}$. Cette formule montre que la dispersion est maximale pour $p=0,5$ (car $p(1-p)$ est maximal à $0,25$) et diminue quand $p$ se rapproche de $0$ ou $1$. C'est intuitif : si le succès est très rare ou quasi certain, le nombre de succès varie peu d'une réalisation à l'autre."
+            },
+            {
+              "type": "display_math",
+              "latex": "V(X) = n p (1-p)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Variance d'une variable de Bernoulli",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $X_i \\sim \\text{Bernoulli}(p)$, $E(X_i)=p$ et $E(X_i^2)=p$, donc $V(X_i)=p-p^2=p(1-p)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Indépendance et additivité des variances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme les $X_i$ sont indépendantes, $V(\\sum X_i) = \\sum V(X_i) = n \\times p(1-p)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écart-type",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\sigma_X = \\sqrt{n p (1-p)}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, voyons comment l'espérance et la variance permettent d'approximer la loi binomiale par une loi normale lorsque $n$ est grand, ce qui simplifie grandement certains calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Approximation normale et utilisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème central limite assure que, pour $n$ suffisamment grand, la distribution de $X \\sim B(n,p)$ est bien approchée par une loi normale de même espérance $np$ et même variance $np(1-p)$. En pratique, on utilise cette approximation quand $np \\ge 5$ et $n(1-p) \\ge 5$. On standardise alors $X$ en $Z = \\frac{X - np}{\\sqrt{np(1-p)}}$ qui suit approximativement une loi normale centrée réduite $\\mathcal{N}(0,1)$. Pour améliorer la précision, on applique une correction de continuité : par exemple, $P(X \\le k) \\approx P\\left(Z \\le \\frac{k+0,5 - np}{\\sqrt{np(1-p)}}\\right)$. Cette technique évite de sommer de nombreux termes binomiaux quand $n$ est grand (typiquement $n > 30$). Attention toutefois : l'approximation n'est valable que si les conditions sur $np$ et $n(1-p)$ sont respectées, sinon la loi binomiale reste trop asymétrique pour être bien mimée par une gaussienne."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(-(x-5)^2/2)",
+              "xmin": -2,
+              "xmax": 12,
+              "caption": "Courbe de densité normale approchant une binomiale $B(10,0,5)$ (moyenne 5, variance 2,5)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un schéma de Bernoulli et identifier les paramètres $n$ et $p$.",
+                "Je sais calculer une probabilité ponctuelle $P(X=k)$ avec la formule binomiale.",
+                "Je sais utiliser la fonction cumulative pour obtenir $P(X \\le k)$.",
+                "Je connais les formules de l'espérance $E(X)=np$ et de la variance $V(X)=np(1-p)$.",
+                "Je sais quand et comment approximer une loi binomiale par une loi normale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X \\sim B(50, 0,2)$. Calculer l'espérance et l'écart-type de $X$.",
+              "answer": "$E(X)=10$, $\\\\sigma_X = \\sqrt{8} \\approx 2,828$.",
+              "hint": "Utilise $E(X)=np$ et $V(X)=np(1-p)$, puis racine carrée pour l'écart-type.",
+              "explanation": "$E(X)=50 \\times 0,2 = 10$. $V(X)=50 \\times 0,2 \\times 0,8 = 8$. $\\\\sigma_X = \\sqrt{8} \\approx 2,828$."
+            },
+            {
+              "question": "On effectue $200$ essais indépendants avec une probabilité de succès $p=0,03$. La condition $np \\ge 5$ est-elle satisfaite pour utiliser l'approximation normale ?",
+              "answer": "Non, car $np = 6 \\ge 5$ mais $n(1-p) = 194 \\ge 5$, les deux conditions sont remplies, donc l'approximation est possible. (Attention : $np=6$ seulement, l'approximation reste grossière.)",
+              "hint": "Calcule $np$ et $n(1-p)$ et compare à $5$.",
+              "explanation": "$np = 200 \\times 0,03 = 6 \\ge 5$, $n(1-p) = 200 \\times 0,97 = 194 \\ge 5$. Les deux conditions sont satisfaites, mais $np$ est proche de $5$, la précision est limitée."
+            },
+            {
+              "question": "Pour $X \\sim B(30, 0,4)$, estimer $P(X \\le 10)$ par approximation normale avec correction de continuité. Donner la valeur de $z$ utilisée.",
+              "answer": "$z = \\frac{10,5 - 12}{\\sqrt{7,2}} \\approx -0,559$.",
+              "hint": "Calcule $np=12$, $\\sigma=\\sqrt{30 \\times 0,4 \\times 0,6} = \\sqrt{7,2}$, puis $z = (10,5 - 12)/\\sigma$.",
+              "explanation": "Avec correction de continuité, on utilise $k+0,5 = 10,5$. $z = (10,5 - 12)/\\sqrt{7,2} \\approx -0,559$. On lira ensuite $P(Z \\le -0,559)$ dans la table de la loi normale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

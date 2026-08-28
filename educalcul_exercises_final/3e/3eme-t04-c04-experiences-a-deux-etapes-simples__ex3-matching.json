@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation d'expériences à deux étapes",
+  "blocks": [
+    {
+      "title": "Lancer de pièce et dé",
+      "content": "Relie chaque expression à sa valeur.",
+      "pairs": [
+        {
+          "left": "Obtenir face puis un 1",
+          "right": "$\\frac{1}{12}$"
+        },
+        {
+          "left": "Obtenir face puis un multiple de 3",
+          "right": "$\\frac{1}{6}$"
+        },
+        {
+          "left": "Obtenir pile puis un nombre pair",
+          "right": "$\\frac{1}{4}$"
+        },
+        {
+          "left": "Obtenir face puis un nombre inférieur ou égal à 4",
+          "right": "$\\frac{1}{3}$"
+        }
+      ],
+      "explanation": "Les deux étapes sont indépendantes : la pièce donne face ou pile avec probabilité 1/2, le dé donne chaque face avec probabilité 1/6. On multiplie les probabilités correspondantes. Face puis 1 : 1/2 × 1/6 = 1/12. Face puis multiple de 3 (3 ou 6) : 1/2 × 2/6 = 1/6. Pile puis pair (2,4,6) : 1/2 × 3/6 = 1/4. Face puis ≤4 (1,2,3,4) : 1/2 × 4/6 = 1/3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Roue à quatre secteurs et dé",
+      "content": "Relie chaque expression à sa valeur.",
+      "pairs": [
+        {
+          "left": "Roue sur 1 et dé pair",
+          "right": "$\\frac{1}{8}$"
+        },
+        {
+          "left": "Roue sur 2 ou 3 et dé multiple de 3",
+          "right": "$\\frac{1}{6}$"
+        },
+        {
+          "left": "Roue sur 4 et dé 6",
+          "right": "$\\frac{1}{24}$"
+        },
+        {
+          "left": "Roue sur un chiffre impair et dé impair",
+          "right": "$\\frac{1}{4}$"
+        }
+      ],
+      "explanation": "La roue a 4 secteurs équiprobables (probabilité 1/4 chacun). Le dé a 6 faces équiprobables. On multiplie les probabilités des deux étapes indépendantes. Roue sur 1 (1/4) et dé pair (3/6 = 1/2) → 1/4 × 1/2 = 1/8. Roue sur 2 ou 3 (2/4 = 1/2) et dé multiple de 3 (2/6 = 1/3) → 1/2 × 1/3 = 1/6. Roue sur 4 (1/4) et dé 6 (1/6) → 1/4 × 1/6 = 1/24. Roue sur impair (1 ou 3, 2/4 = 1/2) et dé impair (3/6 = 1/2) → 1/2 × 1/2 = 1/4.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arbre de probabilités à deux étages",
+      "content": "Relie chaque expression à sa valeur.",
+      "pairs": [
+        {
+          "left": "A puis B",
+          "right": "$\\frac{21}{50}$"
+        },
+        {
+          "left": "A puis C",
+          "right": "$\\frac{9}{50}$"
+        },
+        {
+          "left": "non-A puis B",
+          "right": "$\\frac{2}{25}$"
+        },
+        {
+          "left": "non-A puis C",
+          "right": "$\\frac{8}{25}$"
+        }
+      ],
+      "explanation": "L'arbre indique : P(A) = 0,6 = 3/5, P(non-A) = 0,4 = 2/5. Si A, alors P(B|A) = 0,7 = 7/10 et P(C|A) = 0,3 = 3/10. Si non-A, alors P(B|non-A) = 0,2 = 1/5 et P(C|non-A) = 0,8 = 4/5. Les probabilités des issues finales s'obtiennent en multipliant les probabilités le long des branches : A et B : 3/5 × 7/10 = 21/50. A et C : 3/5 × 3/10 = 9/50. non-A et B : 2/5 × 1/5 = 2/25. non-A et C : 2/5 × 4/5 = 8/25.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

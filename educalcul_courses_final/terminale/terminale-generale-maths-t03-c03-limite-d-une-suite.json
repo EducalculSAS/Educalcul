@@ -1,0 +1,505 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.620094+00:00",
+  "id": 686,
+  "code": "terminale-generale-maths-t03-c03",
+  "title": "Limite d'une suite",
+  "description": "Cours structuré Educalcul : Limite d'une suite.",
+  "subject": "Suites",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Suites",
+    "titre_du_cours": "Limite d'une suite",
+    "objectif_global": "Limite d'une suite",
+    "mini_lecons_imposees": [
+      "Sens.",
+      "Limites usuelles.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Suites",
+      "lessons": [
+        {
+          "title": "Sens.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une limite ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier rendez-vous avec les limites de suites. Vous allez decouvrir comment on peut decrire le comportement d'une suite lorsque l'indice devient tres grand, sans avoir a calculer chaque terme un par un. Imaginez une suite comme une liste de nombres qui s'allonge indefiniment : $u_1, u_2, u_3, \\\\dots$. Parfois, ces nombres semblent se rapprocher d'une valeur precise, comme si la suite voulait se poser quelque part. C'est cette idee intuitive que nous allons transformer en un outil mathematique precis, tout en gardant des exemples concrets pour que le concept reste vivant."
+            },
+            {
+              "type": "definition",
+              "term": "limite d'une suite",
+              "definition": "On dit que la suite $(u_n)$ a pour limite le nombre réel $L$ si, quel que soit l'ecart $\\\\varepsilon > 0$ qu'on fixe, on peut trouver un rang $N$ tel que pour tout $n \\\\ge N$, la distance entre $u_n$ et $L$ soit inferieure a $\\\\varepsilon$. En symboles : $\\\\forall \\\\varepsilon > 0, \\\\exists N \\\\in \\\\mathbb{N}, \\\\forall n \\\\ge N, |u_n - L| < \\\\varepsilon$.",
+              "example": "La suite $u_n = \\\\frac{1}{n}$ a pour limite $0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique $u_n = \\\\frac{1}{n}$. Les premiers termes sont $1, \\\\frac{1}{2}, \\\\frac{1}{3}, \\\\frac{1}{4}, \\\\dots$. On voit bien qu'ils deviennent de plus en plus petits et semblent coller a $0$. Si je vous demande : « A partir de quel rang les termes sont-ils a moins de $0,001$ de $0$ ? », vous repondrez des $n > 1000$. C'est exactement l'idee derriere la definition formelle : on peut rendre l'ecart aussi petit qu'on veut, a condition d'aller assez loin dans la suite."
+            },
+            {
+              "type": "graph",
+              "expression": "1/x",
+              "xmin": 1,
+              "xmax": 20,
+              "caption": "Representation graphique des premiers termes de la suite $u_n = 1/n$. Les points se rapprochent de l'axe des abscisses."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le graphique, chaque point correspond a un terme de la suite. Vous remarquez que les points s'approchent de plus en plus de l'axe horizontal $y=0$ sans jamais le toucher. Cette image visuelle renforce l'intuition : la limite est la valeur vers laquelle les termes tendent, meme s'ils ne l'atteignent jamais."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'intuition est en place, passons a la formulation rigoureuse qui permet de demontrer qu'une limite existe, sans aucune ambiguïte. C'est le langage $\\\\varepsilon$-$N$ qui va nous servir de criterium universel."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Definition rigoureuse : le langage epsilon-N"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Fixer la precision",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On choisit un nombre $\\\\varepsilon > 0$ aussi petit qu'on veut. Ce $\\\\varepsilon$ represente la tolerance : on veut que les termes soient a moins de $\\\\varepsilon$ de la limite candidate $L$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Trouver le rang seuil",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On cherche un entier $N$ (qui depend de $\\\\varepsilon$) tel que pour tout $n \\\\ge N$, l'inegalite $|u_n - L| < \\\\varepsilon$ soit verifiee. Ce $N$ est le moment a partir duquel la suite reste definitivement dans le couloir de largeur $2\\\\varepsilon$ centre en $L$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Verifier la condition pour tout n superieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il ne suffit pas que l'inegalite soit vraie pour un seul $n$ ; elle doit l'etre pour tous les $n \\\\ge N$. Si on y parvient, on a prouve que $\\\\lim_{n\\\\to\\\\infty} u_n = L$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Voisinage $\\\\varepsilon$ autour de la limite $L$ : tout terme de rang $\\\\ge N$ doit tomber dans l'intervalle $(L-\\\\varepsilon, L+\\\\varepsilon)$.",
+              "min": -0.5,
+              "max": 0.5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "L"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -0.1,
+                  "end": 0.1,
+                  "label": "$\\\\varepsilon = 0,1$"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée ci-dessus montre concretement ce que signifie l'inegalite $|u_n - L| < \\\\varepsilon$. L'intervalle bleu est le « couloir » de tolerance. La definition exige qu'a partir d'un certain rang, tous les termes tombent a l'interieur de ce couloir, quel que soit son etroitesse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Toutes les suites n'ont pas une limite finie. Certaines s'eloignent sans borne, d'autres oscillent indéfiniment. Nous allons maintenant explorer ces cas pour completer le tableau."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suites divergentes et limites infinies"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite comme $v_n = n$ prend des valeurs $1, 2, 3, \\\\dots$ qui grandissent sans cesse. On ne peut pas trouver un nombre reel $L$ qui joue le role de limite au sens precedent. On dit alors que la limite est $+\\\\infty$ : pour tout nombre $M$ aussi grand soit-il, il existe un rang $N$ tel que $v_n > M$ des que $n \\\\ge N$. C'est la definition formelle d'une limite infinie."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\lim_{n\\\\to\\\\infty} n = +\\\\infty \\\\quad\\\\text{car} \\\\forall M > 0, \\\\exists N \\\\in \\\\mathbb{N}, \\\\forall n \\\\ge N, n > M"
+            },
+            {
+              "type": "paragraph",
+              "content": "De meme, la suite $w_n = n^2$ tend vers $+\\\\infty$ encore plus rapidement. Il existe aussi des suites qui n'ont aucune limite, meme infinie, comme $x_n = (-1)^n$ qui alterne entre $1$ et $-1$. Elles sont dites divergentes sans limite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les suites suivantes, laquelle admet une limite finie ? $a_n = \\\\frac{2n+1}{n}$, $b_n = \\\\sqrt{n}$, $c_n = ( -1)^n \\\\frac{1}{n}$.",
+              "answer": "$a_n \\\\to 2$ et $c_n \\\\to 0$ ont une limite finie. $b_n$ tend vers $+\\\\infty$.",
+              "hint": "Calculez la limite de $a_n$ en divisant numerateur et denominateur par $n$. Pour $c_n$, utilisez le fait que $|c_n| = 1/n \\\\to 0$.",
+              "explanation": "Pour $a_n = 2 + 1/n$, la limite est $2$. Pour $b_n = \\\\sqrt{n}$, la suite croît sans borne. Pour $c_n$, la valeur absolue tend vers $0$, donc la suite tend vers $0$."
+            },
+            {
+              "question": "Donnez un entier $N$ tel que pour tout $n \\\\ge N$, $|\\\\frac{1}{n} - 0| < 0,001$.",
+              "answer": "$N = 1001$ (ou tout entier $\\\\ge 1001$).",
+              "hint": "Resolvez l'inegalite $1/n < 0,001$.",
+              "explanation": "L'inegalite $1/n < 0,001$ est equivalent a $n > 1000$. Le plus petit entier $N$ convenable est donc $1001$."
+            },
+            {
+              "question": "La suite $u_n = \\\\frac{n^2+3n}{2n^2-1}$ a-t-elle une limite finie ? Si oui, laquelle ?",
+              "answer": "Oui, la limite est $\\\\frac{1}{2}$.",
+              "hint": "Divisez numerateur et denominateur par $n^2$ et faites tendre $n$ vers l'infini.",
+              "explanation": "$u_n = \\\\frac{1 + 3/n}{2 - 1/n^2} \\\\to \\\\frac{1}{2}$ car $3/n \\\\to 0$ et $1/n^2 \\\\to 0$."
+            }
+          ]
+        },
+        {
+          "title": "Limites usuelles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites usuelles : vos outils du quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette lecon, nous passons en revue les limites que vous rencontrerez le plus souvent. Les connaitre par cœur vous fera gagner un temps precieux lors des exercices et des demonstrations. Pensez a ces limites comme a des briques de base : une fois maitrisees, vous pourrez construire des raisonnements plus complexes en les combinant."
+            },
+            {
+              "type": "definition",
+              "term": "limites usuelles",
+              "definition": "Ce sont les limites de suites simples dont le resultat est connu sans calcul supplementaire : $\\\\lim_{n\\\\to\\\\infty} \\\\frac{1}{n^p} = 0$ pour $p>0$, $\\\\lim_{n\\\\to\\\\infty} a^n = 0$ si $|a|<1$, $\\\\lim_{n\\\\to\\\\infty} \\\\frac{\\\\ln n}{n} = 0$, etc.",
+              "example": "$\\lim_{n\\to\\infty} (1/2)^n = 0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commencons par les puissances inverses : pour tout $p > 0$, $\\\\frac{1}{n^p}$ tend vers $0$. Plus $p$ est grand, plus la convergence est rapide. Ensuite, les suites geometriques : si $|q| < 1$, alors $q^n \\\\to 0$ ; si $q = 1$, la limite est $1$ ; si $q > 1$, la limite est $+\\\\infty$ ; si $q \\\\le -1$, la suite n'a pas de limite (elle diverge par oscillation ou vers $\\\\pm\\\\infty$ selon la parite de $n$)."
+            },
+            {
+              "type": "graph",
+              "expression": "(0.5)^x",
+              "xmin": 1,
+              "xmax": 15,
+              "caption": "Evolution de la suite geometrique $u_n = (1/2)^n$. Les termes decroissent exponentiellement vers $0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique illustre la convergence exponentielle : les points se collent tres vite a l'axe horizontal. C'est une caracteristique des suites geometriques de rapport inferieur a $1$ en valeur absolue : elles atteignent la zone $\\\\varepsilon$ bien plus tot que les suites polynomiales comme $1/n$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les briques de base sont posees, voyons comment les combiner. Les limites respectent les operations algebriques usuelles, sous reserve de ne pas tomber dans des formes indeterminees. C'est ce que l'on appelle les regles de calcul sur les limites."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de limites par operations algebriques"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ecrivez la suite sous forme de somme, produit, quotient ou composition de suites dont vous connaissez les limites. Par exemple, $u_n = \\\\frac{n^2+3n}{2n^2-1}$ est un quotient de deux polynomes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Factoriser la puissance dominante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans un quotient de polynomes, factorisez la plus grande puissance de $n$ au numerateur et au denominateur. Ici, $n^2$ : $u_n = \\\\frac{n^2(1+3/n)}{n^2(2-1/n^2)} = \\\\frac{1+3/n}{2-1/n^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Appliquer les limites usuelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez $\\\\lim 3/n = 0$ et $\\\\lim 1/n^2 = 0$. La limite du quotient devient $\\\\frac{1+0}{2-0} = \\\\frac{1}{2}$, car la limite du denominateur n'est pas nulle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\text{Si } \\\\lim u_n = L \\\\text{ et } \\\\lim v_n = M \\\\text{ avec } M \\\\neq 0, \\\\text{ alors } \\\\lim \\\\frac{u_n}{v_n} = \\\\frac{L}{M}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La regle affichee ci-dessus resume la condition essentielle : le denominateur ne doit pas tendre vers $0$. Si c'est le cas, on se trouve face a une forme indeterminee qu'il faut traiter par d'autres methodes (factorisation, changement de variable, theoreme de comparaison, etc.)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une suite est coincee entre deux autres suites dont on connait la limite commune. C'est le theoreme des gendarmes, ou theoreme d'encadrement, qui permet de conclure sans calculer directement la limite de la suite centrale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Theoreme d'encadrement (theoreme des gendarmes)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si trois suites verifient $a_n \\\\le u_n \\\\le b_n$ pour tout $n$ assez grand, et si $\\\\lim a_n = \\\\lim b_n = L$, alors $\\\\lim u_n = L$. C'est une idee tres visuelle : la suite $u_n$ est obligee de suivre le meme chemin que ses deux « gardes du corps »."
+            },
+            {
+              "type": "number_line",
+              "caption": "Illustration du theoreme des gendarmes : $a_n$ (bleu) et $b_n$ (rouge) encadrent $u_n$ (vert) et convergent toutes deux vers $L$.",
+              "min": -1,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "L"
+                },
+                {
+                  "value": -0.2,
+                  "label": "$a_n$"
+                },
+                {
+                  "value": 0.2,
+                  "label": "$b_n$"
+                },
+                {
+                  "value": 0.05,
+                  "label": "$u_n$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, vous voyez les trois suites au meme instant $n$. Les deux exterieures se resserrent autour de $L$, forcant la du milieu a faire de meme. Ce theoreme est particularly utile pour les suites definies par des expressions contenant des sinus, cosinus, ou parties entieres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Determinez la limite de la suite $u_n = \\\\left(\\\\frac{2}{3}\\\\right)^n + \\\\frac{\\\\ln n}{n}$.",
+              "answer": "La limite est $0$.",
+              "hint": "Utilisez les limites usuelles : $(2/3)^n \\\\to 0$ car $|2/3|<1$, et $\\\\ln n / n \\\\to 0$.",
+              "explanation": "Chaque terme tend vers $0$, donc la somme tend vers $0+0=0$."
+            },
+            {
+              "question": "Calculez $\\\\lim_{n\\\\to\\\\infty} \\\\frac{3n^2 - 5n + 2}{4n^2 + n - 1}$.",
+              "answer": "$\\\\frac{3}{4}$.",
+              "hint": "Factorisez $n^2$ au numerateur et au denominateur.",
+              "explanation": "$\\\\frac{3 - 5/n + 2/n^2}{4 + 1/n - 1/n^2} \\\\to \\\\frac{3}{4}$."
+            },
+            {
+              "question": "On sait que $\\\\frac{n}{n+1} \\\\le u_n \\\\le \\\\frac{n+1}{n}$ pour tout $n \\\\ge 1$. Quelle est la limite de $(u_n)$ ?",
+              "answer": "La limite est $1$.",
+              "hint": "Calculez les limites des deux suites encadrantes.",
+              "explanation": "Les deux suites encadrantes tendent vers $1$, donc par le theoreme des gendarmes, $u_n \\\\to 1$."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpretation graphique et geometrique de la limite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Apres avoir manipule les definitions et les regles de calcul, prenons du recul pour visualiser ce que la limite signifie vraiment sur un graphique. Cette interpretation geometrique est un guide puissant pour verifier vos resultats et pour comprendre le comportement asymptotique des suites."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un plan muni d'un repere orthonorme, on represent les points de coordonnees $(n, u_n)$ pour $n = 1, 2, 3, \\\\dots$. La limite $L$ correspond a une ligne horizontale $y = L$ que les points approchent de plus en plus pres a mesure que $n$ augmente. Pour tout $\\\\varepsilon > 0$, il existe un rang $N$ tel que tous les points d'indice $n \\\\ge N$ se trouvent dans la bande horizontale de largeur $2\\\\varepsilon$ centree sur $y=L$."
+            },
+            {
+              "type": "graph",
+              "expression": "1/x + 2",
+              "xmin": 1,
+              "xmax": 30,
+              "caption": "Suite $u_n = 2 + 1/n$ : les points se rapprochent de la ligne horizontale $y=2$ (asymptote)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre clairement l'asymptote horizontale $y=2$. Les points sont au-dessus de cette ligne et s'en approchent monotonement. Si la limite etait $-\\\\infty$, les points s'eloigneraient vers le bas sans borne. Cette vision geometrique aide a deviner la limite avant tout calcul formel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La notion de limite de suite est etroitement liee a celle de limite de fonction. En effet, si l'on prolonge une suite en une fonction continue sur $\\\\mathbb{R}_+$, la limite de la suite au sens de $n \\\\to \\\\infty$ coicide avec la limite de la fonction en $+\\\\infty$. De plus, toute sous-suite d'une suite convergente converge vers la meme limite. Cette propriete caracterise meme la convergence : une suite converge si et seulement si toutes ses sous-suites convergent vers la meme limite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-suites et critere de Cauchy"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Definir une sous-suite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une sous-suite est obtenue en selectionnant une infinité d'indices strictement croissants $\\\\varphi(n)$. Par exemple, les indices pairs $2n$ ou les indices premiers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Propriete fundamentale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $(u_n)$ converge vers $L$, alors toute sous-suite $(u_{\\\\varphi(n)})$ converge aussi vers $L$. Reciproquement, si deux sous-suites convergent vers des limites differentes, la suite mere diverge."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Critere de Cauchy",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une suite de reels converge si et seulement si elle est de Cauchy : $\\\\forall \\\\varepsilon > 0, \\\\exists N, \\\\forall p,q \\\\ge N, |u_p - u_q| < \\\\varepsilon$. Ce critere ne fait pas intervenir la limite inconnue, ce qui est precieux pour demontrer l'existence d'une limite sans la calculer."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\text{Suite de Cauchy : } \\\\forall \\\\varepsilon>0, \\\\exists N, \\\\forall p,q\\\\ge N, |u_p-u_q|<\\\\varepsilon"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le critere de Cauchy est l'outil theoriquement le plus important pour etudier la convergence dans les espaces completes. En Terminale, vous l'utiliserez surtout pour justifier qu'une suite converge sans en connaitre la limite explicite, par exemple dans l'etude de suites definies par recurrence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour cloturer ce cours, abordons deux notions qui affinent la description du comportement asymptotique : la limite superieure et la limite inferieure. Elles existent pour toute suite bornee (et meme pour les suites non bornees en etendant les valeurs a $\\\\pm\\\\infty$) et donnent les bornes extremes des valeurs d'adherence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limite superieure et limite inferieure"
+            },
+            {
+              "type": "paragraph",
+              "content": "La limite superieure $\\\\limsup u_n$ est la plus grande valeur d'adherence de la suite, c'est-a-dire la limite la plus grande parmi toutes les limites de sous-suites. La limite inferieure $\\\\liminf u_n$ est la plus petite. Si les deux coincident, la suite converge vers cette valeur commune. Sinon, la suite oscille entre ces deux bornes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Representation de $\\\\liminf$ et $\\\\limsup$ pour la suite $u_n = (-1)^n + 1/n$. Les valeurs d'adherence sont $-1$ et $1$.",
+              "min": -1.5,
+              "max": 1.5,
+              "points": [
+                {
+                  "value": -1,
+                  "label": "$\\\\liminf = -1$"
+                },
+                {
+                  "value": 1,
+                  "label": "$\\\\limsup = 1$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, les deux points rouges marquent les bornes extremes. La suite alterne au voisinage de $-1$ et $1$, donc elle n'a pas de limite, mais ses limites superieure et inferieure existent et sont distinctes. Ce concept est essentiel pour l'etude des series et des suites non monotones."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la definition formelle $\\\\varepsilon$-$N$ de la limite d'une suite.",
+                "Je connais les limites usuelles : $1/n^p$, $q^n$, $\\\\ln n / n$, etc.",
+                "Je sais appliquer les regles de calcul sur les limites (somme, produit, quotient) en evitant les formes indeterminees.",
+                "Je sais utiliser le theoreme d'encadrement pour determiner une limite.",
+                "Je comprends l'interpretation graphique : asymptote horizontale et bande $\\\\varepsilon$.",
+                "Je connais le lien entre convergence de la suite et convergence de ses sous-suites.",
+                "Je sais expliquer le critere de Cauchy et son interet.",
+                "Je sais definir et interpreter $\\\\liminf$ et $\\\\limsup$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique de la suite $u_n = 2 + (-1)^n/n$, quelle est la limite superieure et la limite inferieure ?",
+              "answer": "$\\\\limsup u_n = 2$, $\\\\liminf u_n = 2$.",
+              "hint": "Observez les valeurs pour $n$ pair et $n$ impair.",
+              "explanation": "Pour $n$ pair, $u_n = 2 + 1/n \\\\to 2$. Pour $n$ impair, $u_n = 2 - 1/n \\\\to 2$. Les deux sous-suites convergent vers $2$, donc $\\\\limsup = \\\\liminf = 2$ et la suite converge vers $2$."
+            },
+            {
+              "question": "Montrez que la suite $u_n = \\\\frac{(-1)^n n}{n+1}$ n'admet pas de limite en utilisant les sous-suites.",
+              "answer": "Les sous-suites d'indices pairs et impairs convergent vers $1$ et $-1$ respectivement, donc la suite diverge.",
+              "hint": "Calculez $u_{2k}$ et $u_{2k+1}$.",
+              "explanation": "$u_{2k} = \\\\frac{2k}{2k+1} \\\\to 1$, $u_{2k+1} = \\\\frac{-(2k+1)}{2k+2} \\\\to -1$. Deux limites differentes impliquent divergence."
+            },
+            {
+              "question": "Une suite $(u_n)$ verifie $|u_{n+1} - u_n| \\\\le \\\\frac{1}{2^n}$ pour tout $n$. Montrez que $(u_n)$ converge.",
+              "answer": "La suite est de Cauchy, donc convergente dans $\\\\mathbb{R}$.",
+              "hint": "Majorez $|u_p - u_q|$ par une somme geometrique.",
+              "explanation": "Pour $p>q$, $|u_p - u_q| \\\\le \\\\sum_{k=q}^{p-1} 1/2^k < 1/2^{q-1}$. Donne $\\\\varepsilon$, choisissez $N$ tel que $1/2^{N-1} < \\\\varepsilon$. Le critere de Cauchy est satisfait."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

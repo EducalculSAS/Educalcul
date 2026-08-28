@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Simulation : Comparer les résultats",
+  "blocks": [
+    {
+      "title": "Vocabulaire des intervalles",
+      "content": "Relie chaque terme à sa définition correcte dans le contexte de la simulation.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Intervalle de fluctuation",
+          "right": "Intervalle dans lequel la fréquence observée doit se trouver avec une probabilité de $0,95$ si l'hypothèse sur la probabilité théorique est vraie"
+        },
+        {
+          "left": "Intervalle de confiance",
+          "right": "Intervalle estimé pour la probabilité inconnue, construit à partir de la fréquence observée dans l'échantillon"
+        },
+        {
+          "left": "Probabilité théorique",
+          "right": "Valeur attendue de la fréquence pour un très grand nombre de répétitions de l'expérience aléatoire"
+        },
+        {
+          "left": "Fréquence observée",
+          "right": "Rapport entre le nombre de succès obtenus et le nombre total d'essais réalisés lors d'une simulation"
+        }
+      ],
+      "items": [],
+      "explanation": "L'intervalle de fluctuation permet de tester une hypothèse sur une probabilité connue (on regarde si la fréquence tombe dedans). L'intervalle de confiance permet d'estimer une probabilité inconnue à partir de la fréquence. La probabilité théorique est la valeur exacte (souvent inconnue dans la réalité, supposée dans un test). La fréquence observée est le résultat concret de la simulation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décision par intervalle de fluctuation",
+      "content": "On teste l'hypothèse $p = 0,4$ avec un échantillon de taille $n = 100$. L'intervalle de fluctuation au seuil de $95\\%$ est approximativement $[0,304 ; 0,496]$. Relie chaque fréquence observée à la décision correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence observée $f = 0,35$",
+          "right": "Appartient à l'intervalle : on ne rejette pas l'hypothèse $p = 0,4$"
+        },
+        {
+          "left": "Fréquence observée $f = 0,25$",
+          "right": "N'appartient pas à l'intervalle : on rejette l'hypothèse $p = 0,4$"
+        },
+        {
+          "left": "Fréquence observée $f = 0,50$",
+          "right": "N'appartient pas à l'intervalle : on rejette l'hypothèse $p = 0,4$"
+        },
+        {
+          "left": "Fréquence observée $f = 0,40$",
+          "right": "Appartient à l'intervalle : on ne rejette pas l'hypothèse $p = 0,4$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'intervalle de fluctuation $[0,304 ; 0,496]$ contient les fréquences compatibles avec $p=0,4$ au risque de $5\\%$. Les valeurs $0,35$ et $0,40$ sont à l'intérieur : l'hypothèse n'est pas rejetée. Les valeurs $0,25$ et $0,50$ sont à l'extérieur : l'hypothèse est rejetée (l'écart est trop grand pour être dû au hasard).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Largeur de l'intervalle de confiance",
+      "content": "On construit un intervalle de confiance au niveau $95\\%$ pour une probabilité inconnue. Relie chaque modification des conditions à son effet sur la largeur de l'intervalle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Augmenter la taille de l'échantillon $n$",
+          "right": "Diminue la largeur de l'intervalle de confiance"
+        },
+        {
+          "left": "Augmenter le niveau de confiance (ex : passer de $95\\%$ à $99\\%$)",
+          "right": "Augmente la largeur de l'intervalle de confiance"
+        },
+        {
+          "left": "Obtenir une fréquence observée proche de $0,5$",
+          "right": "Donne un intervalle de confiance plus large qu'une fréquence proche de $0$ ou $1$"
+        },
+        {
+          "left": "Formule de l'intervalle de confiance au seuil $95\\%$",
+          "right": "$\\left[ f - 1,96 \\sqrt{\\frac{f(1-f)}{n}} ; f + 1,96 \\sqrt{\\frac{f(1-f)}{n}} \\right]$"
+        }
+      ],
+      "items": [],
+      "explanation": "La largeur dépend de $\\frac{1}{\\sqrt{n}}$ (donc augmente $n$ réduit la largeur), du coefficient $z$ (plus le niveau de confiance est haut, plus $z$ est grand, plus l'intervalle est large), et de $\\sqrt{f(1-f)}$ qui est maximal pour $f=0,5$. La formule exacte utilise $1,96$ pour $95\\%$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

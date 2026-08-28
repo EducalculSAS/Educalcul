@@ -1,0 +1,435 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.713717+00:00",
+  "id": 715,
+  "code": "terminale-generale-maths-t07-c01",
+  "title": "Conditionnement et indépendance",
+  "description": "Cours structuré Educalcul : Conditionnement et indépendance.",
+  "subject": "Probabilités",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Probabilités",
+    "titre_du_cours": "Conditionnement et indépendance",
+    "objectif_global": "Conditionnement et indépendance",
+    "mini_lecons_imposees": [
+      "Arbres.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités",
+      "lessons": [
+        {
+          "title": "Arbres.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construction d'un arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu observes une expérience qui se déroule en deux temps, par exemple le lancement d'une pièce suivie du tirage d'une carte dans un jeu de 32 cartes. La première étape crée deux issues possibles : face ou pile, chacune avec sa probabilité. À chaque issue de la première étape, la deuxième étape se déploie avec ses propres probabilités, qui peuvent dépendre de ce qui s'est passé avant. Pour garder une vue d'ensemble claire, on dessine un arbre dont les branches portent les probabilités conditionnelles : la probabilité de tirer un roi sachant que la pièce est tombée sur face, la probabilité de tirer un roi sachant que la pièce est tombée sur pile, et ainsi de suite. Cet arbre permet de visualiser toutes les issues élémentaires et de calculer la probabilité de chaque chemin en multipliant les nombres inscrits sur les branches successives. C'est un outil puissant car il transforme un raisonnement séquentiel en une figure géométrique simple à lire."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre à deux étages : pièce puis carte",
+              "branches": [
+                {
+                  "label": "Face",
+                  "probability": 0.5,
+                  "children": [
+                    {
+                      "label": "Roi",
+                      "probability": 0.125
+                    },
+                    {
+                      "label": "Autre",
+                      "probability": 0.875
+                    }
+                  ]
+                },
+                {
+                  "label": "Pile",
+                  "probability": 0.5,
+                  "children": [
+                    {
+                      "label": "Roi",
+                      "probability": 0.125
+                    },
+                    {
+                      "label": "Autre",
+                      "probability": 0.875
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'arbre est en place, nous allons apprendre à lire directement les probabilités conditionnelles qui y sont inscrites."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lecture des probabilités conditionnelles sur l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque branche qui part d'un nœud porte une probabilité conditionnelle : c'est la probabilité de l'événement associé à cette branche sachant que l'on est déjà parvenu au nœud parent. Par exemple, sur la branche \"Roi\" qui suit \"Face\", le nombre 0,125 représente $ \\mathbb{P}(\\text{Roi} \\mid \\text{Face}) $. Pour obtenir la probabilité jointe de l'ensemble du chemin, on multiplie les probabilités conditionnelles rencontrées le long du chemin : $ \\mathbb{P}(\\text{Face} \\cap \\text{Roi}) = \\mathbb{P}(\\text{Face}) \\times \\mathbb{P}(\\text{Roi} \\mid \\text{Face}) $. Cette règle de multiplication s'applique à tout arbre, quel que soit le nombre d'étages, et elle est la clé pour passer des probabilités conditionnelles aux probabilités absolues des événements composés."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité conditionnelle",
+              "definition": "Pour deux événements $A$ et $B$ avec $\\mathbb{P}(B)>0$, la probabilité conditionnelle de $A$ sachant $B$ est $\\mathbb{P}(A\\mid B)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)}$.",
+              "example": "Si on tire une carte d'un jeu de 32 cartes, $\\mathbb{P}(\\text{Roi} \\mid \\text{Figure}) = \\frac{4/32}{12/32} = \\frac{1}{3}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(A\\mid B)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant voir comment l'arbre révèle immédiatement si deux événements sont indépendants."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Indépendance et arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux événements $A$ et $B$ sont indépendants si la survenue de l'un ne modifie pas la probabilité de l'autre, ce qui se traduit par $\\mathbb{P}(A\\mid B)=\\mathbb{P}(A)$ ou, de façon équivalente, $\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\mathbb{P}(B)$. Sur un arbre, cette indépendance se reconnaît aisément : les probabilités conditionnelles inscrites sur les branches issues d'un même niveau sont identiques, quel que soit le chemin emprunté pour atteindre ce niveau. Dans notre exemple, la probabilité de tirer un roi après face (0,125) est exactement la même que celle de tirer un roi après pile (0,125) ; de plus, elle coïncide avec la probabilité marginale de tirer un roi ($\\frac{4}{32}=0,125$). Cette régularité visuelle est la signature de l'indépendance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les probabilités conditionnelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis sur chaque branche le nombre qui suit le symbole «|» (donné savoir)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer avec les probabilités marginales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule ou rappelle la probabilité de l'événement sans conditionnement. Si les deux nombres coïncident pour toutes les branches, les événements sont indépendants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la conclusion : « Les événements A et B sont indépendants » ou « Ils ne le sont pas »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour construire, lire et interpréter un arbre de probabilités, et pour décider si deux événements sont indépendants en observant la régularité des branches."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'arbre ci-dessus, quelle est la probabilité d'atteindre la feuille correspondant à l'événement Face puis Roi ?",
+              "answer": "0,5 × 0,125 = 0,0625",
+              "hint": "Multiplie les probabilités le long du chemin Face → Roi.",
+              "explanation": "Chaque branche porte une probabilité conditionnelle ; le produit des branches successives donne la probabilité jointe de l'ensemble du chemin."
+            },
+            {
+              "question": "Si $\\mathbb{P}(\\text{Roi}\\mid\\text{Face})=0,125$ et $\\mathbb{P}(\\text{Face})=0,5$, calcule $\\mathbb{P}(\\text{Face}\\cap\\text{Roi})$.",
+              "answer": "0,0625",
+              "hint": "Utilise la définition $\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\mathbb{P}(B\\mid A)$.",
+              "explanation": "La probabilité jointe s'obtient en multipliant la probabilité de la première étape par la probabilité conditionnelle de la deuxième étape."
+            },
+            {
+              "question": "Deux événements sont-ils indépendants si $\\mathbb{P}(B\\mid A)=\\mathbb{P}(B)$ ?",
+              "answer": "Oui, c'est la définition même de l'indépendance.",
+              "hint": "Compare la probabilité conditionnelle à la probabilité marginale de B.",
+              "explanation": "L'indépendance signifie que la connaissance de A ne change pas la probabilité de B ; l'égalité des deux nombres en est la traduction mathématique."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi des probabilités totales et formule de Bayes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'espace des issues se partage en une partition complète d'événements mutuellement exclusifs et exhaustifs, par exemple $A$ et son complémentaire $\\overline{A}$, la probabilité d'un événement $B$ peut être obtenue en sommant les probabilités conditionnelles de $B$ sachant chaque partie de la partition, chacune pondérée par la probabilité de cette partie. C'est la loi des probabilités totales : $\\mathbb{P}(B)=\\mathbb{P}(B\\mid A)\\mathbb{P}(A)+\\mathbb{P}(B\\mid \\overline{A})\\mathbb{P}(\\overline{A})$. Cette formule est extrêmement utile car elle permet de calculer une probabilité marginale à partir de probabilités conditionnelles souvent plus faciles à estimer dans la pratique, par exemple à partir de données d'enquêtes ou de tests médicaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(B)=\\sum_{i}\\mathbb{P}(B\\mid A_i)\\mathbb{P}(A_i)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la probabilité totale de $B$ connue, on peut renverser le conditionnement grâce à la formule de Bayes, qui exprime $\\mathbb{P}(A\\mid B)$ en fonction de $\\mathbb{P}(B\\mid A)$, $\\mathbb{P}(A)$ et $\\mathbb{P}(B)$. Cette inversion est au cœur de nombreux problèmes de diagnostic, de classification ou de mise à jour de croyances."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Formule de Bayes et mise à jour de l'information"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule de Bayes s'écrit $\\mathbb{P}(A\\mid B)=\\frac{\\mathbb{P}(B\\mid A)\\mathbb{P}(A)}{\\mathbb{P}(B)}$. Le numérateur est la probabilité jointe de $A$ et $B$ ; le dénominateur, obtenu par la loi des probabilités totales, normalise pour que la somme des probabilités a posteriori sur toute la partition vaille 1. Concrètement, si tu connais la sensibilité et la spécificité d'un test médical ainsi que la prévalence d'une maladie, Bayes te donne la probabilité d'être réellement malade après un test positif, une quantité souvent contre-intuitive mais cruciale pour la prise de décision."
+            },
+            {
+              "type": "definition",
+              "term": "Formule de Bayes",
+              "definition": "Pour une partition $(A_i)$ et un événement $B$ de probabilité non nulle, $\\mathbb{P}(A_i\\mid B)=\\frac{\\mathbb{P}(B\\mid A_i)\\mathbb{P}(A_i)}{\\sum_j \\mathbb{P}(B\\mid A_j)\\mathbb{P}(A_j)}$.",
+              "example": "Test de dépistage : sensibilité 0,95, spécificité 0,90, prévalence 0,02 → valeur prédictive positive ≈ 0,162."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la partition et l'événement observé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine les hypothèses exclusives (malade / sain) et l'évidence (test positif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la probabilité totale de l'évidence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la loi des probabilités totales : $\\mathbb{P}(\\text{positif}) = \\mathbb{P}(\\text{positif}\\mid\\text{malade})\\mathbb{P}(\\text{malade}) + \\mathbb{P}(\\text{positif}\\mid\\text{sain})\\mathbb{P}(\\text{sain})$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer Bayes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise la probabilité jointe de l'hypothèse d'intérêt par la probabilité totale de l'évidence pour obtenir la probabilité a posteriori."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment l'indépendance se traduit dans les calculs de probabilités totales et de Bayes, et comment elle simplifie les expressions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Indépendance et simplification des formules"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $A$ et $B$ sont indépendants, alors $\\mathbb{P}(B\\mid A)=\\mathbb{P}(B)$ et $\\mathbb{P}(A\\mid B)=\\mathbb{P}(A)$. Dans la loi des probabilités totales, cela signifie que $\\mathbb{P}(B)=\\mathbb{P}(B)\\mathbb{P}(A)+\\mathbb{P}(B)\\mathbb{P}(\\overline{A}) = \\mathbb{P}(B)(\\mathbb{P}(A)+\\mathbb{P}(\\overline{A})) = \\mathbb{P}(B)$, une identité triviale qui confirme la cohérence. De même, Bayes donne $\\mathbb{P}(A\\mid B)=\\frac{\\mathbb{P}(B)\\mathbb{P}(A)}{\\mathbb{P}(B)}=\\mathbb{P}(A)$ : l'observation de $B$ n'apporte aucune information sur $A$. Cette propriété est souvent utilisée pour vérifier l'indépendance à partir de données : on compare les probabilités estimées conditionnelles aux marginales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant la loi des probabilités totales, la formule de Bayes et leur lien avec l'indépendance ; ces outils sont les piliers du raisonnement probabiliste avancé."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "En utilisant la loi des probabilités totales, calcule $\\mathbb{P}(B)$ si $\\mathbb{P}(B\\mid A)=0,4$, $\\mathbb{P}(B\\mid \\overline{A})=0,2$, $\\mathbb{P}(A)=0,3$.",
+              "answer": "0,4×0,3 + 0,2×0,7 = 0,12 + 0,14 = 0,26",
+              "hint": "Somme les probabilités conditionnelles pondérées par les probabilités de la partition.",
+              "explanation": "La loi des probabilités totales décompose $\\mathbb{P}(B)$ selon les issues de la partition $A,\\overline{A}$."
+            },
+            {
+              "question": "Applique la formule de Bayes pour trouver $\\mathbb{P}(A\\mid B)$ avec les mêmes nombres.",
+              "answer": "$\\frac{0,4\\times0,3}{0,26} \\approx 0,4615$",
+              "hint": "Utilise le résultat de l'exercice précédent pour le dénominateur.",
+              "explanation": "Bayes inverse le conditionnement : $\\mathbb{P}(A\\mid B)=\\frac{\\mathbb{P}(B\\mid A)\\mathbb{P}(A)}{\\mathbb{P}(B)}$."
+            },
+            {
+              "question": "Si $\\mathbb{P}(A\\mid B)=\\mathbb{P}(A)$, que peux-tu dire sur $A$ et $B$ ?",
+              "answer": "Ils sont indépendants.",
+              "hint": "Rappelle la définition de l'indépendance via les probabilités conditionnelles.",
+              "explanation": "L'égalité entre probabilité conditionnelle et probabilité marginale caractérise l'indépendance."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation graphique des probabilités conditionnelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les diagrammes en secteurs (camemberts) et les histogrammes offrent une lecture visuelle immédiate des probabilités conditionnelles et jointes. Imagine un camembert représentant l'espace probabilisé total : chaque part correspond à un événement élémentaire ou à une union d'événements. Si l'on colore différemment les parties qui satisfont une condition $B$, la fraction de la surface colorée qui appartient aussi à $A$ illustre $\\mathbb{P}(A\\mid B)$. Cette représentation géométrique aide à comprendre pourquoi $\\mathbb{P}(A\\mid B)$ peut être très différente de $\\mathbb{P}(A)$ lorsque $A$ et $B$ sont liés, et pourquoi elles coïncident en cas d'indépendance."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition de l'espace probabilisé : A∩B (12%), A∩\\overline{B} (18%), \\overline{A}∩B (28%), \\overline{A}∩\\overline{B} (42%)",
+              "slices": [
+                {
+                  "label": "A∩B",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "A∩\\overline{B}",
+                  "value": 18,
+                  "tone": "green"
+                },
+                {
+                  "label": "\\overline{A}∩B",
+                  "value": 28,
+                  "tone": "red"
+                },
+                {
+                  "label": "\\overline{A}∩\\overline{B}",
+                  "value": 42,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple concret : l'interprétation d'un test de dépistage à l'aide de la valeur prédictive positive."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple réel : valeur prédictive positive d'un test médical"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons un test de dépistage d'une maladie rare dont la prévalence dans la population est de $2\\%$. Le test a une sensibilité de $95\\%$ (probabilité d'être positif si on est malade) et une spécificité de $90\\%$ (probabilité d'être négatif si on est sain). Beaucoup de gens pensent qu'un test positif signifie qu'on est malade à $95\\%$, mais la valeur prédictive positive (VPP) est en réalité bien plus faible car les faux positifs sont nombreux parmi la grande majorité de personnes saines. En appliquant la formule de Bayes, on trouve $\\text{VPP} = \\frac{0,95 \\times 0,02}{0,95 \\times 0,02 + 0,10 \\times 0,98} \\approx 0,162$, soit seulement $16,2\\%$ de chance d'être réellement malade après un test positif. Ce résultat contre-intuitif illustre l'importance de raisonner avec les probabilités conditionnelles plutôt qu'avec les seules caractéristiques du test."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur prédictive positive (VPP)",
+              "definition": "Probabilité d'être malade sachant que le test est positif : $\\mathbb{P}(\\text{malade}\\mid\\text{positif})$.",
+              "example": "Avec prévalence 0,02, sensibilité 0,95, spécificité 0,90, VPP ≈ 0,162."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{VPP}=\\frac{\\text{sensibilit\\'e}\\times\\text{pr\\'evalence}}{\\text{sensibilit\\'e}\\times\\text{pr\\'evalence}+ (1-\\text{sp\\'ecificit\\'e})\\times(1-\\text{pr\\'evalence})}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous abordons la décision d'indépendance à partir de données observées, par exemple un tableau de contingence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester l'indépendance à partir d'un tableau de contingence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on dispose de fréquences observées pour deux variables qualitatives, on peut vérifier l'indépendance en comparant les effectifs observés aux effectifs théoriques attendus sous l'hypothèse d'indépendance. Les effectifs théoriques se calculent comme le produit des totaux marginaux divisé par le total global : $E_{ij} = \\frac{(total\\ ligne\\ i)\\times(total\\ colonne\\ j)}{N}$. Si les écarts entre observés et théoriques sont faibles, l'hypothèse d'indépendance est plausible ; s'ils sont grands, on la rejette. Le test du chi-carré formalise cette comparaison en fournissant une $p$-value. Cette démarche est la base de l'analyse de tableaux croisés en statistiques inférentielles."
+            },
+            {
+              "type": "definition",
+              "term": "Effectif théorique sous indépendance",
+              "definition": "Pour une cellule $(i,j)$ d'un tableau de contingence, $E_{ij} = \\frac{n_{i\\cdot} n_{\\cdot j}}{n_{\\cdot\\cdot}}$ où $n_{i\\cdot}$ et $n_{\\cdot j}$ sont les totaux marginaux.",
+              "example": "Si total ligne 1 = 50, total colonne 1 = 40, total global = 200 → $E_{11}=10$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision complète : construire et lire un arbre, calculer avec la loi des probabilités totales et Bayes, interpréter graphiquement et numériquement les probabilités conditionnelles, et tester l'indépendance sur des données réelles."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire et lire un arbre de probabilités à plusieurs étages.",
+                "Je sais appliquer la loi des probabilités totales et la formule de Bayes pour inverser un conditionnement.",
+                "Je sais interpréter une valeur prédictive positive et comprendre pourquoi elle peut être faible malgré une bonne sensibilité.",
+                "Je sais calculer les effectifs théoriques sous indépendance et utiliser le test du chi-carré pour décider si deux variables sont indépendantes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Interpréte un diagramme en secteurs où la part de l'événement $A\\cap B$ est 0,12 sur un total de 1.",
+              "answer": "La probabilité conjointe $\\mathbb{P}(A\\cap B)$ vaut 12 %.",
+              "hint": "La surface du secteur représente la probabilité de l'intersection.",
+              "explanation": "Le camembert montre la proportion de l'espace probabilisé occupée par $A\\cap B$."
+            },
+            {
+              "question": "Dans un test médical, la sensibilité est 0,95, la spécificité 0,90, la prévalence 0,02. Calcule la valeur prédictive positive.",
+              "answer": "$\\frac{0,95\\times0,02}{0,95\\times0,02+0,10\\times0,98} \\approx 0,162$",
+              "hint": "Applique la formule de Bayes avec les données du test.",
+              "explanation": "La VPP est la probabilité d'être malade sachant un test positif ; elle tient compte de la rareté de la maladie."
+            },
+            {
+              "question": "Comment décider si deux variables sont indépendantes à partir d'un tableau de contingence ?",
+              "answer": "Vérifie si les fréquences observées égalent les fréquences théoriques sous indépendance, puis utilise le test du chi-carré.",
+              "hint": "Compare les produits des marges au total global pour chaque cellule.",
+              "explanation": "L'indépendance implique que l'effectif observé dans chaque cellule corresponde à l'effectif attendu calculé à partir des totaux marginaux."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

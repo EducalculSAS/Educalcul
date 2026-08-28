@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Pair / impair",
+  "title": "Parité et algorithmes : pair / impair",
+  "blocks": [
+    {
+      "title": "Question 1 : Test de parité",
+      "content": "Écrire un algorithme sous forme de pseudo code ou de code Python qui reçoit un entier $n$ en entrée et affiche le mot pair si $n$ est pair, sinon le mot impair.",
+      "correctAnswer": "Algorithme :\\nEntrée : n entier\\nSi n modulo 2 = 0 alors afficher \"pair\" sinon afficher \"impair\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le reste de la division euclidienne par 2. Si le reste est 0, le nombre est pair, sinon il est impair. L'opérateur modulo 2 donne directement ce reste.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Parité d'une somme sans calculer la somme",
+      "content": "Écrire une fonction qui prend deux entiers $a$ et $b$ et renvoie la parité de leur somme (pair ou impair) sans calculer explicitement $a+b$. Utiliser uniquement la parité de $a$ et $b$.",
+      "correctAnswer": "Fonction parite_somme(a, b) :\\nSi (a modulo 2) = (b modulo 2) alors retourner \"pair\" sinon retourner \"impair\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux entiers est paire si les deux ont la même parité (tous deux pairs ou tous deux impairs), et impaire sinon. On compare donc les restes modulo 2.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Comptage des pairs et impairs dans une liste",
+      "content": "Écrire un algorithme qui parcourt une liste d'entiers et compte combien sont pairs et combien sont impairs. L'algorithme renvoie le couple (nombre pairs, nombre impairs).",
+      "correctAnswer": "Algorithme :\\nEntrée : liste L d'entiers\\nInitialiser nb_pairs = 0, nb_impairs = 0\\nPour chaque x dans L faire\\n    Si x modulo 2 = 0 alors nb_pairs = nb_pairs + 1\\n    Sinon nb_impairs = nb_impairs + 1\\nFin pour\\nRetourner (nb_pairs, nb_impairs)\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise deux compteurs à zéro. Pour chaque élément, on teste sa parité avec modulo 2 et on incrémente le compteur correspondant. À la fin, le couple donne les effectifs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

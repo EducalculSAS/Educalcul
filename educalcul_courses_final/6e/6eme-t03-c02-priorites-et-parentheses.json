@@ -1,0 +1,420 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.567444+00:00",
+  "id": 343,
+  "code": "6eme-t03-c02",
+  "title": "Priorités et parenthèses",
+  "description": "Cours structuré Educalcul : Priorités et parenthèses.",
+  "subject": "Calcul et automatismes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Calcul et automatismes",
+    "titre_du_cours": "Priorités et parenthèses",
+    "objectif_global": "Priorités et parenthèses",
+    "mini_lecons_imposees": [
+      "Lire expression.",
+      "Ordre de calcul.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et automatismes",
+      "lessons": [
+        {
+          "title": "Lire expression.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expression ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une expression est une suite de nombres, de signes d’opération et parfois de parenthèses qui raconte un calcul sans le terminer. Quand tu la lis, tu commences toujours par le premier symbole à gauche et tu avances vers la droite, comme tu lis une phrase. Les nombres peuvent être entiers comme $12$ ou décimaux comme $3,5$, et les signes sont $+$, $-$, $\\times$ ou $\\div$. Les parenthèses, elles, forment des groupes qu’il faut repérer avant de continuer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t’entraîner, imagine que tu dois lire à voix haute l’expression $8 + 3 \\times 2$. Tu dis d’abord le nombre $8$, ensuite le signe plus, puis le nombre $3$, puis le signe fois, et enfin le nombre $2$. Cette lecture linéaire te permet de voir la structure avant même de calculer."
+            },
+            {
+              "type": "display_math",
+              "latex": "8 + 3 \\\\times 2",
+              "caption": "Exemple d’expression simple"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment les parenthèses changent la lecture en créant des blocs prioritaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rôle des parenthèses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les parenthèses indiquent une partie de l’expression qui doit être traitée en premier. Quand tu rencontres une parenthèse ouvrante, tu sais que tout ce qui suit jusqu’à la parenthèse fermante forme un mini‑calcul à part entière. Par exemple, dans $(5 + 2) \\times 4$, le bloc $5 + 2$ est isolé et doit être lu et calculé avant la multiplication par $4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire correctement, tu peux suivre trois étapes simples : repérer la première parenthèse ouvrante, lire tout le contenu jusqu’à la fermante, puis continuer la lecture après la parenthèse. Cette méthode évite de mélanger les opérations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le premier symbole « ( » dans l’expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire le contenu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis les nombres et les signes qui se trouvent entre cette parenthèse et sa correspondante « ) »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer la lecture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reprends la lecture après la parenthèse fermante jusqu’à la fin de l’expression."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, voyons comment lire une expression qui contient plusieurs paires de parenthèses, ce qui arrive souvent dans les problèmes un peu plus longs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expressions à plusieurs parenthèses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand plusieurs paires de parenthèses apparaissent, tu les traites dans l’ordre où elles se présentent de gauche à droite. Dans $(4 + 2) \\times (3 - 1)$, tu lis d’abord le bloc $4 + 2$, puis le signe fois, puis le second bloc $3 - 1$. Chaque bloc est indépendant, mais l’ordre de lecture reste linéaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce pour ne pas te perdre : surligne chaque paire de parenthèses avec une couleur différente. Cela te donne une image mentale claire des zones prioritaires avant même de poser le calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "(4 + 2) \\\\times (3 - 1)",
+              "caption": "Expression avec deux paires de parenthèses"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis l'expression $8 + 3 \\\\times 2$ en disant les nombres et les opérations dans l'ordre.",
+              "answer": "Huit, plus, trois, fois, deux.",
+              "hint": "Commence par le premier nombre à gauche.",
+              "explanation": "On lit de gauche à droite : $8$, puis $+$, puis $3$, puis $\\\\times$, puis $2$."
+            },
+            {
+              "question": "Dans l'expression $(5 + 2) \\\\times 4$, quel calcul fais-tu en premier ?",
+              "answer": "Le calcul à l'intérieur des parenthèses : $5 + 2$.",
+              "hint": "Les parenthèses indiquent la priorité.",
+              "explanation": "On commence toujours par ce qui est entre parenthèses."
+            },
+            {
+              "question": "Écris l'expression suivante avec des mots : $(7 - 3) + (2 \\\\times 5)$.",
+              "answer": "Sept moins trois, plus, deux fois cinq.",
+              "hint": "Traduis chaque symbole.",
+              "explanation": "On lit chaque nombre et chaque signe dans l'ordre, en respectant les parenthèses."
+            }
+          ]
+        },
+        {
+          "title": "Ordre de calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les priorités de calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une expression, il faut savoir dans quel ordre effectuer les calculs. La règle fondamentale est simple : les parenthèses d’abord, ensuite les multiplications et les divisions, enfin les additions et les soustractions. Cette hiérarchie évite les ambiguïtés et donne un résultat unique pour chaque expression."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l’exemple $ (6 + 2) \\times 3 $. La parenthèse oblige à calculer $6 + 2 = 8$ avant de multiplier par $3$. Si tu oubliais la parenthèse et faisais $6 + 2 \\times 3$, tu obtiendrais $6 + 6 = 12$, ce qui est faux. La priorité des parenthèses change tout."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer dans les parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie chaque paire de parenthèses et résous le calcul qu’elle contient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplications et divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois les parenthèses disparues, effectue toutes les multiplications et divisions de gauche à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Termine par les additions et soustractions, toujours de gauche à droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment les multiplications et les divisions s’intercalent avant les additions et les soustractions, même sans parenthèses."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication et division avant addition et soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une expression comme $12 \\div 3 + 4$, il n’y a pas de parenthèses. La division $12 \\div 3$ doit être faite avant l’addition $+ 4$. Le résultat est donc $4 + 4 = 8$. Si tu additionnais d’abord, tu obtiendrais $12 \\div 7$, ce qui n’a pas de sens ici."
+            },
+            {
+              "type": "paragraph",
+              "content": "De même, pour $5 \\times 2 - 3$, la multiplication $5 \\times 2 = 10$ précède la soustraction, donnant $10 - 3 = 7$. Respecter cet ordre te garantit le bon résultat à chaque fois."
+            },
+            {
+              "type": "display_math",
+              "latex": "12 \\\\div 3 + 4 = 8",
+              "caption": "Division avant addition"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un cas fréquent : plusieurs opérations de même priorité, comme une suite d’additions et de soustractions. La règle est alors de procéder de gauche à droite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même priorité : de gauche à droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère $5 - 2 + 3$. Les signes $-$ et $+$ ont la même priorité. Tu commences par la première opération à gauche : $5 - 2 = 3$. Ensuite tu continues avec $3 + 3 = 6$. Si tu faisais $2 + 3$ d’abord, tu obtiendrais $5 - 5 = 0$, ce qui est incorrect."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette règle de gauche à droite s’applique aussi aux multiplications et divisions successives : $12 \\div 3 \\times 2$ se calcule $12 \\div 3 = 4$ puis $4 \\times 2 = 8$. Garde toujours cet ordre en tête."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 - 2 + 3 = 6",
+              "caption": "Addition et soustraction de gauche à droite"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $ (6 + 2) \\\\times 3 $ en respectant l'ordre des priorités.",
+              "answer": "$24$",
+              "hint": "D'abord les parenthèses.",
+              "explanation": "Parenthèses : $6+2=8$, puis multiplication $8 \\\\times 3 = 24$."
+            },
+            {
+              "question": "Quel est le résultat de $ 12 \\\\div 3 + 4 $ ?",
+              "answer": "$8$",
+              "hint": "Division avant addition.",
+              "explanation": "Division $12 \\\\div 3 = 4$, puis addition $4 + 4 = 8$."
+            },
+            {
+              "question": "Pour $ 5 - 2 + 3 $, quel calcul effectues-tu en premier ?",
+              "answer": "La soustraction $5 - 2$.",
+              "hint": "Même priorité, on va de gauche à droite.",
+              "explanation": "Les opérations $-$ et $+$ ont même priorité, on calcule de gauche à droite : $5-2=3$, puis $3+3=6$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier un calcul étape par étape"
+            },
+            {
+              "type": "paragraph",
+              "content": "Justifier, c’est expliquer pourquoi tu as fait chaque opération dans cet ordre. En sixième, on attend que tu écrives une chaîne d’égalités qui montre la transformation de l’expression initiale jusqu’au résultat final. Cela prouve que tu as respecté les priorités et que tu n’as pas sauté d’étapes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, pour $ (4 + 1) \\times 2 $, tu écris : $ (4 + 1) \\times 2 = 5 \\times 2 = 10 $. La première égalité remplace la parenthèse par son résultat, la seconde effectue la multiplication. Chaque ligne est une justification claire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Résoudre les parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le contenu de chaque parenthèse et remplace-la par sa valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer multiplications et divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue ces opérations dans l’ordre où elles apparaissent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Terminer par additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Finis le calcul en respectant la lecture de gauche à droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Apprenons maintenant à écrire une justification complète sous forme de chaîne d’égalités, ce qui est la façon standard de présenter ton raisonnement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une chaîne d’égalités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une chaîne d’égalités aligne chaque étape sur la ligne suivante, en gardant le signe égal à gauche. Pour $18 \\div 3 - 2$, tu écris : $18 \\div 3 - 2 = 6 - 2 = 4$. La première égalité montre la division, la seconde la soustraction. Cette présentation lisible permet à ton professeur de suivre ton cheminement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas mélanger les étapes : n’écris pas $18 \\div 3 - 2 = 18 \\div 1 = 18$. Chaque signe égal doit correspondre à une seule opération prioritaire effectuée."
+            },
+            {
+              "type": "display_math",
+              "latex": "18 \\\\div 3 - 2 = 6 - 2 = 4",
+              "caption": "Chaîne d’égalités pour une division puis une soustraction"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment vérifier ton résultat en refaisant le calcul à l’envers, une technique utile pour t’assurer qu’aucune erreur n’a été commise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier par les opérations inverses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as trouvé $ (9 - 3) \\times 2 = 12 $, tu peux contrôler en repartant du résultat. Divise $12$ par $2$, tu retrouves $6$. Ajoute $3$ à $6$, tu retrouves $9$, le nombre de départ. Cette marche arrière confirme que chaque étape était correcte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode de vérification s’applique à tout calcul : l’inverse de la multiplication est la division, l’inverse de l’addition est la soustraction. En t’exerçant à faire ce contrôle, tu gagnes en autonomie et en confiance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une expression en identifiant nombres, signes et parenthèses.",
+                "Je connais l'ordre des priorités : parenthèses, puis multiplications/divisions, puis additions/soustractions.",
+                "Je sais justifier un calcul par une chaîne d’égalités claire.",
+                "Je sais vérifier mon résultat en utilisant les opérations inverses."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Justifie le calcul de $ (4 + 1) \\\\times 2 $ étape par étape.",
+              "answer": "D'abord $4+1=5$, ensuite $5 \\\\times 2 = 10$.",
+              "hint": "Écris chaque égalité.",
+              "explanation": "On écrit $ (4+1) \\\\times 2 = 5 \\\\times 2 = 10 $."
+            },
+            {
+              "question": "Écris une chaîne d'égalités pour $ 18 \\\\div 3 - 2 $.",
+              "answer": "$18 \\\\div 3 - 2 = 6 - 2 = 4$",
+              "hint": "Division puis soustraction.",
+              "explanation": "On effectue la division d'abord, puis la soustraction."
+            },
+            {
+              "question": "Vérifie le résultat de $ (9 - 3) \\\\times 2 $ en refaisant le calcul à l'envers.",
+              "answer": "Résultat $12$, vérification $12 \\\\div 2 = 6$, $6 + 3 = 9$.",
+              "hint": "Utilise les opérations inverses.",
+              "explanation": "On retrouve les nombres de départ en inversant les opérations."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

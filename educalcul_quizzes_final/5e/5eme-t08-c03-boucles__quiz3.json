@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Prédire",
+  "title": "Quiz : Prédire le comportement des boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$compteur \\leftarrow 0$\\n$\\text{Répéter } 7 \\text{ fois}$\\n$\\quad compteur \\leftarrow compteur + 1$\\n$\\text{Fin Répéter}$\\nQuelle est la valeur finale de la variable $compteur$ ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$0$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La boucle $Répéter 7 fois$ exécute l'instruction $compteur \\leftarrow compteur + 1$ exactement $7$ fois. La variable $compteur$ commence à $0$. Après la 1re itération elle vaut $1$, après la 2e $2$, ..., après la 7e itération elle vaut $7$. Les distracteurs $6$ et $8$ correspondent à des erreurs de comptage (début à 1 ou tour de boucle en trop), et $0$ à l'oubli de l'exécution de la boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$somme \\leftarrow 0$\\n$\\text{Répéter } 5 \\text{ fois}$\\n$\\quad somme \\leftarrow somme + 2$\\n$\\text{Fin Répéter}$\\nQuelle est la valeur finale de la variable $somme$ ?",
+      "options": [
+        "$7$",
+        "$10$",
+        "$5$",
+        "$12$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "L'instruction $somme \\leftarrow somme + 2$ ajoute $2$ à la variable $somme$ à chaque tour de boucle. Comme la boucle effectue $5$ tours ($Répéter 5 fois$), on ajoute $5 \\times 2 = 10$ à la valeur initiale $0$. La valeur finale est donc $10$. Le distracteur $7$ correspond à $5+2$, $5$ au nombre de tours seulement, et $12$ à $6 \\times 2$ (un tour de trop).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec une boucle conditionnelle :\\n$x \\leftarrow 10$\\n$\\text{Tant que } x > 4 \\text{ faire}$\\n$\\quad x \\leftarrow x - 3$\\n$\\text{Fin Tant que}$\\nQuelle est la valeur finale de la variable $x$ ?",
+      "options": [
+        "$1$",
+        "$4$",
+        "$7$",
+        "$-2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "On trace l'exécution :\\nDébut : $x = 10$.\\n1er test : $10 > 4$ est vrai, on entre dans la boucle, $x$ devient $10 - 3 = 7$.\\n2e test : $7 > 4$ est vrai, on entre, $x$ devient $7 - 3 = 4$.\\n3e test : $4 > 4$ est faux (strictement supérieur), on sort de la boucle.\\nLa valeur finale est $4$. Le distracteur $1$ correspondrait à un test $x \\ge 4$, $7$ à l'arrêt après un seul tour, $-2$ à deux tours de trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$i \\leftarrow 0$\\n$\\text{Répéter } 10 \\text{ fois}$\\n$\\quad i \\leftarrow i + 2$\\n$\\text{Fin Répéter}$\\nQuelle est la valeur finale de la variable $i$ ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$20$",
+        "$5$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "La boucle $Répéter 10 fois$ effectue exactement $10$ itérations. À chaque itération, on ajoute $2$ à $i$. La valeur finale est donc $10 \\times 2 = 20$. Le distracteur $10$ confond le nombre de tours et la valeur finale, $12$ correspond à $10+2$, et $5$ à $10/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec deux boucles imbriquées :\\n$\\text{Répéter } 3 \\text{ fois}$\\n$\\quad \\text{Répéter } 4 \\text{ fois}$\\n$\\quad \\quad \\text{Afficher } \"*\"$\\n$\\quad \\text{Fin Répéter}$\\n$\\text{Fin Répéter}$\\nCombien de fois le caractère $*$ est-il affiché au total ?",
+      "options": [
+        "$7$",
+        "$12$",
+        "$10$",
+        "$3$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La boucle externe s'exécute $3$ fois. Pour chaque tour de la boucle externe, la boucle interne s'exécute $4$ fois et affiche $*$. Le nombre total d'affichages est le produit du nombre de tours de la boucle externe par celui de la boucle interne : $3 \\times 4 = 12$. Le distracteur $7$ est la somme $3+4$, $10$ et $3$ ne correspondent à aucune logique standard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

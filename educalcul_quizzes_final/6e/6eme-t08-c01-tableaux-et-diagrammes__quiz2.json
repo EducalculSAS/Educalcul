@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Construire",
+  "title": "Construire des tableaux et des diagrammes",
+  "questions": [
+    {
+      "text": "Voici les notes sur $20$ obtenues par $10$ élèves : $12$, $15$, $12$, $18$, $14$, $12$, $16$, $15$, $12$, $17$.\\nOn veut construire un tableau des effectifs avec la note, les traits de comptage et l'effectif.\\nQuelle sera la ligne correcte pour la note $12$ ?",
+      "options": [
+        "Note $12$ | |||| | Effectif $4$",
+        "Note $12$ | |||| | Effectif $5$",
+        "Note $12$ | ||| | Effectif $3$",
+        "Note $12$ | |||| / | Effectif $6$"
+      ],
+      "correctAnswer": "Note $12$ | |||| | Effectif $4$",
+      "explanation": "Dans la liste, la note $12$ apparaît $4$ fois (positions 1, 3, 6, 9). Pour le comptage, on trace une barre verticale à chaque occurrence. Au cinquième, on barre les quatre précédentes. Comme il y a $4$ occurrences, on trace $4$ barres verticales (||||) sans les barrer. L'effectif est bien $4$. L'option avec $5$ barres compte une note en trop, celle avec $3$ en oublie une, et celle avec la barre oblique correspond à $5$ ou $6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un diagramme en barres représentant les effectifs d'un tableau, le plus grand effectif est $24$. La hauteur maximale disponible sur la feuille est de $12$ cm.\\nQuelle échelle faut-il choisir pour que le diagramme tienne sur la feuille et soit le plus grand possible ?",
+      "options": [
+        "1 cm pour 2 unités d'effectif",
+        "1 cm pour 1 unité d'effectif",
+        "1 cm pour 3 unités d'effectif",
+        "1 cm pour 4 unités d'effectif"
+      ],
+      "correctAnswer": "1 cm pour 2 unités d'effectif",
+      "explanation": "Avec une échelle de $1$ cm pour $2$ unités, la plus grande barre mesurera $24 / 2 = 12$ cm, ce qui correspond exactement à la hauteur disponible. C'est l'échelle la plus précise qui permet de tout faire tenir. L'échelle $1$ cm pour $1$ unité donnerait $24$ cm (trop grand). Les échelles $1$ cm pour $3$ ou $4$ unités donneraient des barres plus petites ($8$ cm ou $6$ cm), moins lisibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On construit un diagramme en barres avec l'échelle : $1$ cm représente $5$ élèves.\\nLe tableau indique qu'il y a $23$ élèves qui ont choisi l'option 'Cinéma'.\\nQuelle hauteur de barre faut-il tracer pour 'Cinéma' ?",
+      "options": [
+        "4,6 cm",
+        "4,5 cm",
+        "5 cm",
+        "4 cm"
+      ],
+      "correctAnswer": "4,6 cm",
+      "explanation": "La hauteur se calcule en divisant l'effectif par la valeur représentée par $1$ cm. Ici, $23 / 5 = 4,6$. Il faut donc tracer une barre de $4,6$ cm. Arrondir à $4,5$ cm ou $5$ cm fausserait la représentation graphique proportionnelle. $4$ cm correspondrait à $20$ élèves seulement.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Option",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Cinéma",
+            "23"
+          ],
+          [
+            "Sport",
+            "15"
+          ],
+          [
+            "Lecture",
+            "12"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Pour construire un diagramme circulaire (camembert), on calcule l'angle de chaque secteur.\\nSur $30$ élèves interrogés, $10$ pratiquent la natation.\\nQuelle est la mesure de l'angle du secteur 'Natation' ?",
+      "options": [
+        "120°",
+        "100°",
+        "90°",
+        "60°"
+      ],
+      "correctAnswer": "120°",
+      "explanation": "L'angle total du cercle est $360°$. La part des nageurs est $10 / 30 = 1/3$. L'angle correspondant est $360° \\times (1/3) = 120°$. On peut aussi faire une proportionnalité : $30$ élèves $\\rightarrow 360°$, donc $10$ élèves $\\rightarrow (10 \\times 360) / 30 = 120°$. $90°$ correspondrait au quart ($7,5$ élèves), $60°$ au sixième ($5$ élèves).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On commence à construire un tableau à double entrée pour classer $50$ élèves selon qu'ils pratiquent un sport (Oui/Non) et un instrument de musique (Oui/Non).\\nOn sait que :\\n- $20$ élèves font du sport.\\n- $15$ élèves jouent d'un instrument.\\n- $8$ élèves font les deux.\\nCombien d'élèves ne font ni sport, ni musique ?",
+      "options": [
+        "23",
+        "15",
+        "7",
+        "12"
+      ],
+      "correctAnswer": "23",
+      "explanation": "On remplit le tableau :\\n- Cases 'Sport Oui' et 'Musique Oui' : $8$.\\n- Cases 'Sport Oui' total $20$ : donc 'Sport Oui, Musique Non' = $20 - 8 = 12$.\\n- Cases 'Musique Oui' total $15$ : donc 'Sport Non, Musique Oui' = $15 - 8 = 7$.\\n- Total 'Sport Oui' + 'Sport Non' = $50$.\\nSomme des cases connues : $8 + 12 + 7 = 27$.\\nCase restante 'Sport Non, Musique Non' = $50 - 27 = 23$.\\nDistracteurs : $15$ (total musique), $7$ (musique seulement), $12$ (sport seulement).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

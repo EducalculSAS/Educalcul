@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Choisir précision",
+  "title": "Arrondir un nombre décimal : choisir la précision",
+  "blocks": [
+    {
+      "title": "Arrondi au dixième",
+      "content": "Arrondis le nombre $3,456$ au dixième près : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3,5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des centièmes est 5, donc on arrondit le chiffre des dixièmes (4) à 5, ce qui donne $3,5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Règle de l'arrondi au centième",
+      "content": "Pour arrondir $12,789$ au centième près, on observe le chiffre des {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "millièmes"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle de l'arrondi dit de regarder le chiffre immédiatement à droite de la précision demandée. Pour le centième, c'est le chiffre des millièmes (9 ici).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi à l'unité",
+      "content": "En arrondissant $0,999$ à l'unité, on obtient {{1}} car le chiffre des dixièmes est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des dixièmes est 9 (≥5), donc on arrondit l'unité 0 à 1. Le résultat est $1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

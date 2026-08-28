@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Répéter expérience",
+  "title": "Algorithmes pour répéter une expérience de fréquence expérimentale",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme pour une expérience simple",
+      "content": "Écris un algorithme (en pseudo‑code ou en Python simplifié) qui simule le lancer d'une pièce équilibrée 20 fois, compte le nombre de faces « pile » et affiche la fréquence expérimentale de « pile ». La fréquence expérimentale se calcule par $ \\frac{\\text{nombre de piles}}{20} $.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser compteur_pile = 0\\n2. Répéter 20 fois :\\n   a. Générer un nombre aléatoire 0 ou 1 (0 = face, 1 = pile)\\n   b. Si résultat = 1 alors compteur_pile = compteur_pile + 1\\n3. Calculer frequence = compteur_pile / 20\\n4. Afficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise un compteur à zéro. Une boucle de 20 itérations simule chaque lancer : on tire un nombre aléatoire 0 ou 1, on incrémente le compteur si le résultat correspond à « pile ». Après la boucle, on divise le nombre de piles par 20 pour obtenir la fréquence expérimentale, puis on l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Répéter l'expérience plusieurs fois",
+      "content": "Modifie l'algorithme précédent pour répéter l'expérience 5 fois. À chaque répétition, l'algorithme doit afficher la fréquence expérimentale de « pile » obtenue sur les 20 lancers.",
+      "correctAnswer": "Algorithme :\\n1. Répéter 5 fois :\\n   a. Initialiser compteur_pile = 0\\n   b. Répéter 20 fois :\\n        i. Générer un nombre aléatoire 0 ou 1\\n        ii. Si résultat = 1 alors compteur_pile = compteur_pile + 1\\n   c. Calculer frequence = compteur_pile / 20\\n   d. Afficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute une boucle externe qui s'exécute 5 fois. À chaque tour de cette boucle, on réinitialise le compteur, on effectue les 20 lancers, on calcule la fréquence et on l'affiche. Ainsi on obtient 5 fréquences expérimentales successives.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer une fréquence moyenne sur de nombreuses répétitions",
+      "content": "Écris un algorithme qui répète l'expérience du lancer de pièce 20 fois, un grand nombre de fois (par exemple 1000 répétitions). L'algorithme doit calculer la moyenne des fréquences expérimentales de « pile » obtenues à chaque répétition et afficher cette moyenne.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser somme_frequences = 0\\n2. Répéter 1000 fois :\\n   a. Initialiser compteur_pile = 0\\n   b. Répéter 20 fois :\\n        i. Générer un nombre aléatoire 0 ou 1\\n        ii. Si résultat = 1 alors compteur_pile = compteur_pile + 1\\n   c. Calculer frequence = compteur_pile / 20\\n   d. Ajouter frequence à somme_frequences\\n3. Calculer moyenne = somme_frequences / 1000\\n4. Afficher moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise un accumulateur somme_frequences initialisé à 0. La boucle externe effectue 1000 répétitions de l'expérience de 20 lancers. À chaque répétition, on calcule la fréquence et on l'ajoute à l'accumulateur. Après la boucle, on divise la somme par 1000 pour obtenir la moyenne des fréquences expérimentales, qui approche la probabilité théorique 0,5.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

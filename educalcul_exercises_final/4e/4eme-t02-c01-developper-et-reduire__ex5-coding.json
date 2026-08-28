@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 425,
+  "_course_code": "4eme-t02-c01-developper-et-reduire",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Distributivité",
+  "title": "Approfondissement : Distributivité - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme de développement simple",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui reçoit deux nombres $a$ et $b$ et affiche le développement de $(a+b)(a-b)$ en utilisant la distributivité.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b\\n2. Calculer terme1 = a * a\\n3. Calculer terme2 = a * (-b)\\n4. Calculer terme3 = b * a\\n5. Calculer terme4 = b * (-b)\\n6. Somme = terme1 + terme2 + terme3 + terme4\\n7. Afficher Somme\\n\\nEn Python :\\n\\ndef dev_simple(a, b):\\n    return a*a - a*b + b*a - b*b\\n\\n# Ce qui se réduit à a**2 - b**2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la distributivité : $(a+b)(a-b) = a(a-b) + b(a-b) = a^2 - ab + ab - b^2 = a^2 - b^2$. L'algorithme suit exactement ces étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Développement pas à pas",
+      "content": "Pour l'expression $(2x+3)(x-4)$, décrire un algorithme qui effectue le développement et la réduction terme à terme.",
+      "correctAnswer": "Algorithme pas à pas :\\n1. Identifier les termes du premier facteur : 2x et 3.\\n2. Identifier les termes du second facteur : x et -4.\\n3. Multiplier chaque terme du premier par chaque terme du second :\\n   - 2x * x = 2x^2\\n   - 2x * (-4) = -8x\\n   - 3 * x = 3x\\n   - 3 * (-4) = -12\\n4. Additionner les résultats : 2x^2 - 8x + 3x - 12\\n5. Regrouper les termes semblables : -8x + 3x = -5x\\n6. Résultat final : 2x^2 - 5x - 12\\n\\nEn Python :\\n\\ndef dev_expr():\\n    # coefficients pour 2x+3 -> [2,3], pour x-4 -> [1,-4]\\n    p = [2,3]\\n    q = [1,-4]\\n    res = [0]*(len(p)+len(q)-1)\\n    for i,cp in enumerate(p):\\n        for j,cq in enumerate(q):\\n            res[i+j] += cp*cq\\n    return res  # [2, -5, -12] correspond à 2x^2 -5x -12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On développe en appliquant la distributivité deux fois : chaque terme du premier binôme multiplie chaque terme du second. Puis on réduit en regroupant les termes en $x$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Fonction générique de développement",
+      "content": "Proposer une fonction Python `dev_produit(p, q)` où `p` et `q` sont des listes de coefficients représentant des polynômes (par exemple $[2,3]$ pour $2x+3$) et qui renvoie la liste des coefficients du produit développé.",
+      "correctAnswer": "def dev_produit(p, q):\\n    \"\"\"p et q sont des listes de coefficients du plus haut degré au plus bas.\\n    Exemple : [2,3] représente 2x+3.\"\"\"\\n    # degré du résultat = len(p)+len(q)-2\\n    res = [0] * (len(p) + len(q) - 1)\\n    for i, cp in enumerate(p):\\n        for j, cq in enumerate(q):\\n            res[i + j] += cp * cq\\n    return res\\n\\n# Test :\\n# dev_produit([2,3], [1,-4]) -> [2, -5, -12] ce qui correspond à 2x^2 -5x -12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction implémente la distributivité généralisée : chaque coefficient du premier polynôme multiplie chaque coefficient du second, et les produits de même degré s'additionnent. La liste résultat contient les coefficients du polynôme produit du degré le plus élevé au constant.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

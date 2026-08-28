@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 218,
+  "_course_code": "cm1-t01-c08-bilan-nombres-cm1",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Entiers et décimaux",
+  "title": "Algorithmes et nombres décimaux",
+  "blocks": [
+    {
+      "title": "Construire un nombre",
+      "content": "Écris un algorithme en langage naturel (style pseudo-code) qui permet de construire un nombre décimal à partir de ses chiffres. L'algorithme demande à l'utilisateur de saisir cinq chiffres entiers : le chiffre des centaines (h), le chiffre des dizaines (d), le chiffre des unités (u), le chiffre des dixièmes (di) et le chiffre des centièmes (ci). Il calcule ensuite la valeur du nombre décimal et l'affiche.",
+      "correctAnswer": "Début\\n  Afficher \"Entrez le chiffre des centaines : \"\\n  Lire h\\n  Afficher \"Entrez le chiffre des dizaines : \"\\n  Lire d\\n  Afficher \"Entrez le chiffre des unités : \"\\n  Lire u\\n  Afficher \"Entrez le chiffre des dixièmes : \"\\n  Lire di\\n  Afficher \"Entrez le chiffre des centièmes : \"\\n  Lire ci\\n  nombre ← h × 100 + d × 10 + u + di ÷ 10 + ci ÷ 100\\n  Afficher \"Le nombre construit est : \", nombre\\nFin",
+      "explanation": "L'algorithme suit la décomposition positionnelle d'un nombre décimal. Chaque chiffre est multiplié par sa valeur de position : centaines ($100$), dizaines ($10$), unités ($1$), dixièmes ($0,1$ ou $1/10$), centièmes ($0,01$ ou $1/100$). La somme de ces produits donne le nombre final. La structure 'Début ... Fin' encadre la séquence d'instructions. Les flèches '←' indiquent l'affectation du résultat du calcul à la variable 'nombre'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux nombres",
+      "content": "Écris un algorithme qui compare deux nombres décimaux A et B saisis par l'utilisateur. L'algorithme doit afficher \"A est plus grand que B\", \"B est plus grand que A\" ou \"A est égal à B\" selon le cas. Utilise une structure conditionnelle 'Si ... Alors ... Sinon ... Fin Si'.",
+      "correctAnswer": "Début\\n  Afficher \"Entrez le nombre A : \"\\n  Lire A\\n  Afficher \"Entrez le nombre B : \"\\n  Lire B\\n  Si A > B Alors\\n    Afficher \"A est plus grand que B\"\\n  Sinon\\n    Si A < B Alors\\n      Afficher \"B est plus grand que A\"\\n    Sinon\\n      Afficher \"A est égal à B\"\\n    Fin Si\\n  Fin Si\\nFin",
+      "explanation": "Cet algorithme utilise des imbrications de structures conditionnelles ('Si ... Alors ... Sinon ... Fin Si') pour tester les trois relations d'ordre possibles entre deux nombres. On teste d'abord si A est strictement supérieur à B. Si c'est faux, on teste si A est strictement inférieur à B. Si les deux tests sont faux, cela signifie nécessairement que A est égal à B. Cette logique couvre tous les cas de figure pour la comparaison de deux nombres décimaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet de la multiplication par 10 et 100",
+      "content": "Écris un algorithme qui prend en entrée un nombre décimal N. L'algorithme calcule N × 10 et N × 100, puis affiche les trois nombres (N, N × 10, N × 100) ainsi qu'une phrase expliquant ce qui arrive à la virgule à chaque multiplication.",
+      "correctAnswer": "Début\\n  Afficher \"Entrez un nombre décimal N : \"\\n  Lire N\\n  N_fois_10 ← N × 10\\n  N_fois_100 ← N × 100\\n  Afficher \"N = \", N\\n  Afficher \"N × 10 = \", N_fois_10\\n  Afficher \"N × 100 = \", N_fois_100\\n  Afficher \"Quand on multiplie par 10, la virgule se décale d'un rang vers la droite.\"\\n  Afficher \"Quand on multiplie par 100, la virgule se décale de deux rangs vers la droite.\"\\nFin",
+      "explanation": "Cet algorithme illustre la règle du décalage de la virgule lors de la multiplication par $10$, $100$, etc. La variable N stocke le nombre initial. Les variables N_fois_10 et N_fois_100 stockent les résultats des calculs. L'affichage final présente les valeurs numériques et la règle verbale correspondante : multiplier par $10$ décale la virgule d'un rang vers la droite (ajoute un zéro ou fait passer un chiffre des dixièmes aux unités), multiplier par $100$ la décale de deux rangs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

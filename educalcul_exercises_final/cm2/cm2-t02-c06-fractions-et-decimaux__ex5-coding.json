@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 287,
+  "_course_code": "cm2-t02-c06-fractions-et-decimaux",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Fractions décimales",
+  "title": "Algorithmes et Fractions Décimales",
+  "blocks": [
+    {
+      "title": "Conversion Fraction vers Décimal",
+      "content": "Imagine que tu dois créer un petit programme pour transformer une fraction décimale en nombre décimal. Écris le raisonnement structuré (ou un algorithme simple) pour convertir la fraction $\\frac{457}{100}$ en nombre décimal.",
+      "correctAnswer": "1. Identifier le dénominateur pour savoir combien il y a de zéros. Ici, $100$ a deux zéros.\\n2. Placer la virgule dans le numérateur en partant de la droite et en décalant vers la gauche d'autant de rangs qu'il y a de zéros. On décale de deux rangs pour $457$.\\n3. Le résultat est $4,57$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fraction décimale a un dénominateur comme $10$, $100$ ou $1000$. Le nombre de zéros du dénominateur indique le nombre de chiffres après la virgule. Pour $\\frac{457}{100}$, on déplace la virgule de deux rangs vers la gauche, ce qui donne $4,57$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": " Conversion Décimal vers Fraction",
+      "content": "Tu veux maintenant programmer l'inverse. Écris les étapes de calcul pour transformer le nombre décimal $12,309$ en une fraction décimale.",
+      "correctAnswer": "1. Compter le nombre de chiffres après la virgule. Il y a trois chiffres : $3$, $0$ et $9$.\\n2. Écrire le nombre sans la virgule au numérateur : $12309$.\\n3. Écrire $1$ suivi d'autant de zéros qu'il y avait de chiffres après la virgule au dénominateur : $1000$.\\n4. La fraction est $\\frac{12309}{1000}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer d'un décimal à une fraction, on utilise le nombre de chiffres après la virgule pour déterminer la puissance de $10$ au dénominateur. Trois chiffres correspondent à un dénominateur de $1000$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposition Algorithmique",
+      "content": "Crée une formule ou un raisonnement qui permet de décomposer n'importe quelle fraction décimale en une somme d'un nombre entier et d'une fraction décimale. Applique ce raisonnement à la fraction $\\frac{725}{10}$.",
+      "correctAnswer": "Raisonnement :\\n1. Effectuer la division du numérateur par le dénominateur pour trouver le quotient entier et le reste.\\n2. Le quotient devient le nombre entier.\\n3. Le reste devient le nouveau numérateur de la fraction décimale, avec le même dénominateur.\\nApplication à $\\frac{725}{10}$ :\\n$725$ divisé par $10$ égale $72$ et il reste $5$.\\nLe résultat est $72 + \\frac{5}{10}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Décomposer une fraction consiste à extraire la partie entière. Pour $\\frac{725}{10}$, on a $72$ groupes de $10$ et il reste $5$ unités de dixièmes. Cela s'écrit $72 + \\frac{5}{10}$ ou $72,5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.792469+00:00",
+  "id": 102,
+  "code": "ce1-t04-c05",
+  "title": "Tables de multiplication par 5",
+  "description": "Cours structuré Educalcul : Tables de multiplication par 5.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Tables de multiplication par 5",
+    "objectif_global": "Tables de multiplication par 5",
+    "mini_lecons_imposees": [
+      "Compter de 5 en 5.",
+      "Repérer régularités.",
+      "Utiliser en monnaie et groupements."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Compter de 5 en 5.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter de 5 en 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une main avec cinq doigts. Si tu comptes tes doigts un par un, tu dis 1, 2, 3, 4, $5$. Maintenant, ajoutons une autre main. Tu continues à compter : 6, 7, 8, 9, $10$. Tu viens de faire un saut de cinq en cinq. C'est le début de la table de multiplication par $5$."
+            },
+            {
+              "type": "definition",
+              "term": "multiple",
+              "definition": "Un multiple de $5$ est un nombre que l'on obtient en ajoutant $5$ plusieurs fois de suite. Par exemple, $10$ est un multiple de $5$ car $5 + 5 = 10$.",
+              "example": "$10$, $15$, $20$ sont des multiples de $5$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter de 5 en 5 sur une droite numérique",
+              "min": 0,
+              "max": 50,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 35,
+                  "label": "35"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois les nombres s'aligner, regardons quelle particularité ils partagent tous."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les chiffres des unités : $5$, $10$, $15$, $20$, $25$, $30$... Tu vois que le dernier chiffre alterne entre $5$ et $0$. Cette régularité aide à deviner le nombre suivant sans recompter."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 1,
+              "cols": 5,
+              "highlighted": 5,
+              "caption": "Un groupe de 5 cases"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi écrire ces sauts sous forme de multiplication, ce qui est plus rapide pour calculer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as un groupe de $5$ objets, tu peux dire $1$ fois $5$. Si tu as deux groupes, c'est $2$ fois $5$, ce qui fait $10$. Écrivons cela avec le signe de multiplication."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 \\\\times 5 = 5"
+            },
+            {
+              "type": "display_math",
+              "latex": "2 \\\\times 5 = 10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la suite de nombres si tu comptes de 5 en 5 à partir de 0 jusqu'à 25 ?",
+              "answer": "0, 5, 10, 15, 20, 25",
+              "hint": "Ajoute 5 à chaque fois.",
+              "explanation": "En partant de 0, chaque saut de 5 donne le nombre suivant : $0+5=5$, $5+5=10$, $10+5=15$, $15+5=20$, $20+5=25$."
+            },
+            {
+              "question": "Combien de cases sont coloriées dans le groupe de 5 cases ?",
+              "answer": "5",
+              "hint": "Compte les cases une par une.",
+              "explanation": "Le groupe affiche exactement 5 cases, donc le total est $5$."
+            },
+            {
+              "question": "Calcule $2 \\\\times 5$.",
+              "answer": "10",
+              "hint": "Deux groupes de 5 font 10.",
+              "explanation": "$2 \\\\times 5$ signifie deux fois 5, soit $5+5=10$."
+            }
+          ]
+        },
+        {
+          "title": "Repérer régularités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer régularités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as vu que les multiples de $5$ finissent toujours par $0$ ou par $5$. Cette régularité est comme un code secret qui te permet de reconnaître vite un multiple de $5$."
+            },
+            {
+              "type": "definition",
+              "term": "régularité",
+              "definition": "Une régularité est une règle qui se répète de la même façon. Ici, le chiffre des unités suit un motif fixe : $5$, $0$, $5$, $0$...",
+              "example": "La suite $5$, $10$, $15$, $20$ montre cette régularité."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition des multiples de 5 jusqu'à 50",
+              "bars": [
+                {
+                  "label": "Termine par 0",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Termine par 5",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons comment les nombres s'éloignent les uns des autres sur la droite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite graduée, chaque multiple de $5$ est exactement à $5$ unités du précédent. C'est comme faire des sauts de même longueur. Cette distance constante est une autre régularité très utile."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sauts de 5 sur la droite numérique",
+              "min": 0,
+              "max": 55,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 35,
+                  "label": "35"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 55,
+                  "label": "55"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce à ces deux régularités, tu peux deviner n'importe quel multiple de $5$, même grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, pour trouver $11$ fois $5$, tu sais que le résultat finit par $5$ car $11$ est impair. Tu peux aussi ajouter $5$ à $50$, ce qui donne $55$. Écrivons cette multiplication."
+            },
+            {
+              "type": "display_math",
+              "latex": "11 \\\\times 5 = 55"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les nombres $12$, $25$, $30$, $37$, $45$, lesquels sont des multiples de $5$ ?",
+              "answer": "25, 30, 45",
+              "hint": "Regarde le dernier chiffre.",
+              "explanation": "Les multiples de $5$ se terminent par $0$ ou $5$. Donc $25$, $30$ et $45$ sont des multiples de $5$."
+            },
+            {
+              "question": "Complète la suite : $20$, $25$, $30$, __, $40$.",
+              "answer": "35",
+              "hint": "Ajoute $5$ au nombre précédent.",
+              "explanation": "Chaque terme augmente de $5$ : $30+5=35$."
+            },
+            {
+              "question": "Calcule $11 \\\\times 5$.",
+              "answer": "55",
+              "hint": "Utilise la régularité : $11$ est impair, donc le résultat finit par $5$.",
+              "explanation": "$11 \\\\times 5 = 55$ car $10 \\\\times 5 = 50$ et on ajoute encore $5$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser en monnaie et groupements.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser en monnaie et groupements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les pièces de $5$ centimes et les billets de $5$ euros sont des exemples concrets de la table de $5$. Si tu as trois pièces de $5$ centimes, tu as $15$ centimes en tout. C'est exactement $3$ fois $5$."
+            },
+            {
+              "type": "definition",
+              "term": "groupement",
+              "definition": "Un groupement est un ensemble d'objets réunis par paquets de même taille. Ici, chaque paquet contient $5$ objets.",
+              "example": "Un groupement de $4$ paquets de $5$ crayons donne $20$ crayons."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 5,
+              "highlighted": 15,
+              "caption": "3 groupes de 5 pièces"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les groupements ne concernent pas seulement l'argent, ils aident aussi à compter des objets du quotidien."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une boîte de crayons. Chaque paquet contient $5$ crayons. Si tu as $6$ paquets, tu peux multiplier $6$ par $5$ pour savoir combien de crayons tu possèdes au total."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de crayons selon le nombre de paquets",
+              "bars": [
+                {
+                  "label": "1 paquet",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "2 paquets",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "3 paquets",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "4 paquets",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "5 paquets",
+                  "value": 25,
+                  "tone": "green"
+                },
+                {
+                  "label": "6 paquets",
+                  "value": 30,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous allons utiliser la table de $5$ pour résoudre un petit problème d'achat au magasin."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu veux acheter $4$ cahiers qui coûtent chacun $5$ euros. Pour connaître le prix total, tu multiplies $4$ par $5$. Le calcul donne $20$ euros. C'est rapide grâce à la table de $5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "4 \\\\times 5 = 20"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais compter de 5 en 5.",
+                "Je reconnais les multiples de 5 à leur chiffre des unités.",
+                "J'utilise la table de 5 pour l'argent et les groupements."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu as 3 pièces de 5 centimes, combien as-tu en tout ?",
+              "answer": "15 centimes",
+              "hint": "Multiplie 3 par 5.",
+              "explanation": "$3 \\\\times 5 = 15$, donc 15 centimes."
+            },
+            {
+              "question": "Il y a 6 paquets de 5 crayons. Combien de crayons au total ?",
+              "answer": "30 crayons",
+              "hint": "6 fois 5.",
+              "explanation": "$6 \\\\times 5 = 30$ crayons."
+            },
+            {
+              "question": "Tu achètes 4 cahiers à 5 euros chacun. Quel est le prix total ?",
+              "answer": "20 euros",
+              "hint": "4 fois 5 euros.",
+              "explanation": "$4 \\\\times 5 = 20$ euros."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

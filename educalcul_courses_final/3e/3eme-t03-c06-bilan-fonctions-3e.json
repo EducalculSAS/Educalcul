@@ -1,0 +1,195 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.947852+00:00",
+  "id": 472,
+  "code": "3eme-t03-c06",
+  "title": "Bilan - Fonctions 3e",
+  "description": "Cours structuré Educalcul : Bilan - Fonctions 3e.",
+  "subject": "Proportionnalité et fonctions",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Proportionnalité et fonctions",
+    "titre_du_cours": "Bilan - Fonctions 3e",
+    "objectif_global": "Bilan - Fonctions 3e",
+    "mini_lecons_imposees": [
+      "Vocabulaire, graphes, modèles.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité et fonctions",
+      "lessons": [
+        {
+          "title": "Vocabulaire, graphes, modèles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu possèdes une machine magique. Tu y glisses un nombre, et la machine, selon sa programmation interne, transforme ce nombre pour en sortir un résultat unique. Par exemple, si la machine ajoute toujours $5$ au nombre d'entrée, tu lui donnes $10$ et elle te rend $15$. En mathématiques, cette machine s'appelle une fonction. C'est un outil incroyable qui permet de modéliser presque tout dans notre quotidien. Pense au prix total de ton ticket de bus qui dépend du nombre de trajets, ou à la hauteur d'une plante qui grandit chaque jour d'un certain nombre de millimètres. Comprendre les fonctions, c'est apprendre à lire le langage secret qui lie deux quantités entre elles. Au début, les notations comme $f(x)$ peuvent sembler intimidantes, comme un nouveau code informatique, mais rassure-toi : c'est simplement une manière plus rapide d'écrire'le résultat dépend de la valeur choisie'. Nous allons ensemble explorer comment dompter ces machines et lire leurs plans, que ce soit sous forme d'équations ou de courbes sur un papier millimétré."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction est un procédé qui, à un nombre $x$ appelé antécédent, associe un unique nombre appelé image, que l'on note $f(x)$. On peut voir $x$ comme l'entrée de la machine et $f(x)$ comme la sortie. Si on a l'expression $f(x) = 3x - 2$, cela signifie que pour n'importe quel nombre choisi, on le multiplie par $3$ puis on soustrait $2$. On distingue principalement deux types de fonctions en $3\\text{e}$. La fonction linéaire est la plus simple : elle représente une situation de proportionnalité directe et s'écrit $f(x) = ax$. Sa représentation graphique est toujours une droite qui passe par l'origine $(0,0)$. Ensuite, nous avons la fonction affine, qui est une généralisation de la précédente. Elle s'écrit $f(x) = ax + b$. Ici, $a$ est le coefficient directeur, qui indique la pente de la droite, et $b$ est l'ordonnée à l'origine, c'est-à-dire l'endroit où la droite coupe l'axe vertical. Si $b$ est nul, on retombe sur une fonction linéaire. Ces modèles permettent de traduire des situations réelles en langage mathématique rigoureux."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x + 1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphique d'une fonction affine $f(x) = 2x + 1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour maîtriser les fonctions, il faut savoir naviguer entre trois représentations : l'expression, le tableau et le graphique. Voici la démarche à suivre selon l'objectif. Pour calculer une image, c'est l'étape la plus simple : on remplace la lettre $x$ dans l'expression par le nombre donné, puis on effectue les calculs en respectant les priorités opératoires. Par exemple, pour $f(4)$ avec $f(x) = 5x + 1$, on fait $5 \\times 4 + 1 = 21$. Pour trouver un antécédent, c'est l'inverse : on cherche quel $x$ permet d'obtenir un résultat précis. On pose alors une équation. Si on cherche l'antécédent de $11$ pour la même fonction, on écrit $5x + 1 = 11$, on soustrait $1$ des deux côtés, puis on divise par $5$. Enfin, pour lire un graphique, on utilise les axes. Pour l'image, on part de l'axe des abscisses $x$, on monte ou descend jusqu'à la courbe, puis on lit la valeur correspondante sur l'axe des ordonnées $y$. Pour l'antécédent, on part de l'axe $y$, on se déplace horizontalement jusqu'à la courbe, puis on descend vers l'axe $x$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la fonction affine $f$ définie par $f(x) = -3x + 7$. Nous voulons calculer l'image de $2$ par cette fonction. La première étape consiste à identifier que l'on nous demande de calculer $f(2)$. On remplace donc chaque occurrence de $x$ par le nombre $2$ dans l'expression. On obtient l'opération suivante : $-3 \\times 2 + 7$. On effectue d'abord la multiplication, car elle est prioritaire sur l'addition : $-3 \\times 2$ nous donne $-6$. Ensuite, nous ajoutons $7$ à ce résultat : $-6 + 7 = 1$. Nous avons donc trouvé que l'image de $2$ par la fonction $f$ est $1$. On peut écrire cela sous la forme $f(2) = 1$. Ce résultat signifie que sur le graphique de cette fonction, le point de coordonnées $(2,1)$ se trouve exactement sur la droite. C'est un calcul simple, mais il demande une vigilance particulière avec les signes, surtout quand le coefficient directeur est négatif comme c'est le cas ici avec $-3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un cas légèrement plus complexe avec la fonction $g(x) = \\frac{1}{2}x - 4$. On nous demande de trouver l'antécédent de $3$. Ici, attention : on ne cherche pas $g(3)$, mais on cherche le nombre $x$ tel que $g(x) = 3$. Nous devons donc résoudre l'équation suivante : $\\frac{1}{2}x - 4 = 3$. La première étape pour isoler $x$ est de déplacer le terme constant. On ajoute $4$ des deux côtés de l'égalité, ce qui nous donne $\\frac{1}{2}x = 3 + 4$, soit $\\frac{1}{2}x = 7$. Pour éliminer la fraction $\\frac{1}{2}$ devant le $x$, on multiplie les deux membres de l'équation par $2$. On obtient ainsi $x = 7 \\times 2$, donc $x = 14$. L'antécédent de $3$ par la fonction $g$ est donc $14$. Pour vérifier notre résultat, on peut calculer l'image de $14$ : $\\frac{1}{2} \\times 14 - 4 = 7 - 4 = 3$. Le compte est bon, notre raisonnement est validé."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est la confusion entre l'image et l'antécédent. Rappelle-toi : l'antécédent est le point de départ (l'entrée), et l'image est le résultat (la sortie). Si un énoncé dit 'Trouvez l'image de $5$', tu calcules $f(5)$. S'il dit 'Trouvez l'antécédent de $5$', tu résous $f(x) = 5$. Un autre piège classique concerne la lecture du graphique. Beaucoup d'élèves confondent l'axe des abscisses (horizontal) et l'axe des ordonnées (vertical). Pour ne plus te tromper, imagine que l'abscisse est le sol et l'ordonnée est l'ascenseur qui te monte à l'étage de l'image. Enfin, fais très attention aux signes lors des calculs avec des fonctions affines dont le coefficient $a$ est négatif. Par exemple, dans $f(x) = -2x + 3$, si $x = -4$, le calcul devient $-2 \\times (-4) + 3$, ce qui donne $8 + 3 = 11$, et non $-8 + 3 = -5$. La multiplication de deux nombres négatifs donne toujours un résultat positif."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la fonction $f(x) = 4x - 5$. Quelle est l'image de $3$ par cette fonction ?",
+              "answer": "7",
+              "hint": "Remplace $x$ par $3$ dans l'expression $4 \\times 3 - 5$.",
+              "explanation": "On calcule $f(3) = 4 \\times 3 - 5 = 12 - 5 = 7$. L'image de $3$ est donc $7$."
+            },
+            {
+              "question": "Soit la fonction $g(x) = 2x + 10$. Quel est l'antécédent de $20$ par cette fonction ?",
+              "answer": "5",
+              "hint": "Résous l'équation $2x + 10 = 20$.",
+              "explanation": "On a $2x + 10 = 20$, donc $2x = 20 - 10 = 10$, d'où $x = 10 / 2 = 5$. L'antécédent de $20$ est $5$."
+            },
+            {
+              "question": "Une fonction linéaire $h$ a pour coefficient $a = -3$. Quelle est l'image de $-2$ ?",
+              "answer": "6",
+              "hint": "L'expression d'une fonction linéaire est $h(x) = ax$.",
+              "explanation": "On a $h(x) = -3x$. On calcule $h(-2) = -3 \\times (-2) = 6$. L'image de $-2$ est $6$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Félicitations, tu es arrivé au terme de ton exploration sur les fonctions ! C'est le moment du bilan, l'étape où toutes les pièces du puzzle s'assemblent pour former une image claire. Imagine que tu es un détective : tu as appris à identifier les indices (le coefficient $a$ et l'ordonnée à l'origine $b$), à suivre des pistes (les calculs d'images) et à remonter à la source (la recherche d'antécédents). Ce bilan n'est pas un simple rappel, c'est ton guide de survie pour les examens et pour la suite de ton parcours mathématique. Tu as peut-être eu quelques doutes au début, mais regarde le chemin parcouru : tu es maintenant capable de traduire un problème concret en une expression algébrique et de visualiser cette expression sous forme de droite. C'est une compétence puissante qui te servira dans bien d'autres matières comme la physique ou l'économie. Prends un instant pour respirer, sois fier de ta progression, et plongeons ensemble dans cette synthèse finale pour graver ces notions dans ta mémoire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour conclure notre étude, rappelons les points fondamentaux. Une fonction est une relation unique entre un antécédent et son image. La fonction linéaire, $f(x) = ax$, est le modèle pur de la proportionnalité. Elle est caractérisée par une droite passant par l'origine. La fonction affine, $f(x) = ax + b$, ajoute une constante $b$, décalant la droite vers le haut ou vers le bas. Le coefficient $a$ détermine la direction et la raideur de la pente : s'il est positif, la fonction monte ; s'il est négatif, elle descend. Savoir jongler entre l'expression algébrique et la représentation graphique est le cœur de ce chapitre. Un point $M(x, y)$ appartient à la courbe d'une fonction si et seulement si $y$ est l'image de $x$ par cette fonction. Cette propriété est essentielle car elle permet de vérifier la justesse d'un graphique ou de trouver une expression manquante. Enfin, n'oublie pas que l'antécédent est l'élément que l'on cherche quand on connaît déjà le résultat, ce qui nous mène systématiquement à la résolution d'une équation du premier degré."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Expression",
+                "Graphique",
+                "Propriété"
+              ],
+              "rows": [
+                [
+                  "Linéaire",
+                  "$f(x) = ax$",
+                  "Droite passant par $(0,0)$",
+                  "Proportionnalité"
+                ],
+                [
+                  "Affine",
+                  "$f(x) = ax + b$",
+                  "Droite",
+                  "Translation de la linéaire"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à un exercice de bilan, je te suggère d'adopter un réflexe de vérification en trois étapes. Première étape : l'analyse de la nature de la fonction. Est-on dans un cas de proportionnalité directe (linéaire) ou y a-t-il une valeur initiale non nulle (affine) ? Cela te permet de savoir si tu dois chercher un $b$ ou non. Deuxième étape : la validation des calculs. Chaque fois que tu calcules une image, demande-toi si le résultat est cohérent avec le signe du coefficient $a$. Si $a$ est positif et que $x$ augmente, $f(x)$ doit augmenter. Troisième étape : la double vérification graphique. Si tu as tracé une droite, vérifie un point au hasard. Prends une valeur de $x$ sur ton dessin, calcule son image avec l'expression, et regarde si le point correspond bien à ta droite. Cette méthode simple évite la majorité des erreurs d'inattention et te donne une confiance totale dans tes résultats avant de rendre ta copie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons ensemble une situation complète. On nous donne la fonction $f(x) = -2x + 4$. On nous demande successivement l'image de $-3$ et l'antécédent de $0$. Pour l'image, on applique la méthode directe : $f(-3) = -2 \\times (-3) + 4$. On calcule d'abord la multiplication : $-2 \\times (-3) = 6$. Puis on ajoute $4$ : $6 + 4 = 10$. L'image de $-3$ est donc $10$. Pour l'antécédent de $0$, on pose l'équation $-2x + 4 = 0$. On déplace le $4$ : $-2x = -4$. On divise ensuite par $-2$ pour isoler $x$ : $x = \\frac{-4}{-2}$, ce qui nous donne $x = 2$. L'antécédent de $0$ est $2$. On remarque ici que l'antécédent de $0$ correspond en fait à l'intersection de la droite avec l'axe des abscisses, ce qu'on appelle parfois la racine de la fonction. Tout est lié : le calcul, l'équation et la géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant qu'on te donne un graphique et qu'on te demande d'en déduire l'expression. La droite passe par l'origine $(0,0)$ et par le point $(3, 9)$. Puisque la droite passe par l'origine, on sait immédiatement qu'il s'agit d'une fonction linéaire de la forme $f(x) = ax$. Pour trouver $a$, on utilise le point $(3, 9)$. Cela signifie que l'image de $3$ est $9$, donc $f(3) = 9$. On remplace dans l'expression : $a \\times 3 = 9$. On divise par $3$ et on trouve $a = 3$. L'expression de la fonction est donc $f(x) = 3x$. Si la droite n'était pas passée par l'origine, par exemple si elle coupait l'axe $y$ à $-2$, on aurait commencé par poser $f(x) = ax - 2$ puis on aurait utilisé un point de la droite pour trouver $a$ de la même manière. C'est cette logique de déduction qui rend l'étude des fonctions passionnante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce bilan, rappelle-toi du piège ultime : l'oubli des parenthèses lors du remplacement d'un nombre négatif. Écrire $-2 \\times -3 + 4$ sans parenthèses peut porter à confusion ; écris toujours $-2(-3) + 4$ pour bien visualiser la multiplication. Un autre point de vigilance concerne la lecture des ordonnées à l'origine. Certains élèves confondent $b$ avec l'image de $1$. Attention : $b$ est l'image de $0$, car $f(0) = a \\times 0 + b = b$. C'est l'endroit exact où la droite traverse l'axe vertical. Enfin, méfie-toi des énoncés qui utilisent des termes comme 'valeur initiale' ou 'prix de base'. Ces termes désignent presque toujours l'ordonnée à l'origine $b$ dans un modèle affine. En gardant ces réflexes en tête, tu transformes les pièges en simples formalités et tu sécurises ta note."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une fonction affine est définie par $f(x) = -5x + 2$. Quelle est l'image de $0$ ?",
+              "answer": "2",
+              "hint": "L'image de $0$ correspond à l'ordonnée à l'origine $b$.",
+              "explanation": "$f(0) = -5 \\times 0 + 2 = 0 + 2 = 2$."
+            },
+            {
+              "question": "Si $f$ est une fonction linéaire telle que $f(4) = 12$, quelle est son expression ?",
+              "answer": "f(x) = 3x",
+              "hint": "Cherche le coefficient $a$ tel que $a \\times 4 = 12$.",
+              "explanation": "Comme $f$ est linéaire, $f(x) = ax$. On a $a \\times 4 = 12$, donc $a = 12 / 4 = 3$. L'expression est $f(x) = 3x$."
+            },
+            {
+              "question": "Quelle est l'image de $2$ par la fonction $f(x) = 3x - 8$ ?",
+              "answer": "-2",
+              "hint": "Calcule $3 \\times 2 - 8$.",
+              "explanation": "$f(2) = 3 \\times 2 - 8 = 6 - 8 = -2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

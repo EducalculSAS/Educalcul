@@ -1,0 +1,445 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.340337+00:00",
+  "id": 278,
+  "code": "cm2-t01-c04",
+  "title": "Comparer et ranger des décimaux",
+  "description": "Cours structuré Educalcul : Comparer et ranger des décimaux.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Comparer et ranger des décimaux",
+    "objectif_global": "Comparer et ranger des décimaux",
+    "mini_lecons_imposees": [
+      "Valeur positionnelle.",
+      "Encadrer.",
+      "Intercaler."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Valeur positionnelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les dixièmes, centièmes et millièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une barre de chocolat de $1$ mètre de long. Si tu la coupes en $10$ parts égales, chaque morceau mesure un dixième de mètre, qu'on écrit $0,1$ m. Si tu coupes l'un de ces morceaux en $10$ nouveaux petits bouts, tu obtiens des centièmes : $0,01$ m. Et si tu recommences encore une fois, tu atteins les millièmes : $0,001$ m. C'est exactement la même logique que pour les nombres entiers, mais de l'autre côté de la virgule !"
+            },
+            {
+              "type": "place_value_chart",
+              "number": 12.345,
+              "caption": "Le nombre 12,345 décomposé : 1 dizaine, 2 unités, 3 dixièmes, 4 centièmes, 5 millièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien le tableau : chaque colonne a une valeur $10$ fois plus petite que celle de sa voisine de gauche. Les unités valent $1$, les dixièmes valent $0,1$, les centièmes $0,01$, les millièmes $0,001$. Pour lire $12,345$, on dit : douze unités, trois dixièmes, quatre centièmes, cinq millièmes. On peut aussi l'écrire en décomposition additive : $12,345 = 1 \\times 10 + 2 \\times 1 + 3 \\times 0,1 + 4 \\times 0,01 + 5 \\times 0,001$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer chaque chiffre, voyons comment comparer deux nombres décimaux. La règle d'or : on aligne les virgules, puis on compare chiffre par chiffre en partant de la gauche, exactement comme pour les nombres entiers. Le premier chiffre différent décide du plus grand. C'est comme une course : celui qui a le meilleur chiffre dès la première case gagne !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Aligner les virgules",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux nombres l'un sous l'autre en faisant coïncider les virgules. Ajoute des zéros à droite si besoin pour avoir le même nombre de chiffres après la virgule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les parties entières",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les chiffres avant la virgule. Celui qui a le plus grand nombre d'unités (ou de dizaines) est le plus grand. Si elles sont égales, passe à l'étape 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les dixièmes, puis centièmes, etc.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare le premier chiffre après la virgule (les dixièmes). Si égal, compare les centièmes, puis les millièmes... Le premier chiffre différent départage les deux nombres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec $4,56$ et $4,5$ : j'aligne les virgules, j'ajoute un zéro à $4,5$ pour obtenir $4,50$. Parties entières égales ($4$). Dixièmes égaux ($5$). Centièmes : $6$ contre $0$, donc $4,56 > 4,50$. Simple, non ? Attention au piège classique : croire que $4,5$ est plus grand que $4,56$ parce que $5 > 6$... mais on compare des centièmes avec des dixièmes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ranger plusieurs décimaux, on utilise la même méthode : on les aligne tous, on compare les parties entières, puis les dixièmes, etc. C'est comme trier des coureurs par leur temps de course. Parfois, deux nombres semblent différents mais sont égaux : $0,5 = 0,50 = 0,500$. Les zéros à droite ne changent pas la valeur, ils précisent juste la précision de la mesure. C'est utile en sciences !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de 2,3 ; 2,35 ; 2,4 sur une droite graduée",
+              "min": 2,
+              "max": 2.5,
+              "points": [
+                {
+                  "value": 2.3,
+                  "label": "2,3"
+                },
+                {
+                  "value": 2.35,
+                  "label": "2,35"
+                },
+                {
+                  "value": 2.4,
+                  "label": "2,4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de maîtriser la valeur positionnelle des décimaux jusqu'aux millièmes. Tu sais maintenant aligner, comparer et ranger n'importe quels nombres décimaux. Cette compétence te servira tout le temps : pour comparer des prix au supermarché, des temps de course, des mesures en sciences... Dans la prochaine leçon, on verra comment encadrer un décimal entre deux nombres plus simples. C'est une astuce très pratique pour estimer un résultat sans calculatrice !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le nombre 7,208 en décomposition additive (somme de produits).",
+              "answer": "7 × 1 + 2 × 0,1 + 0 × 0,01 + 8 × 0,001",
+              "hint": "Repère la valeur de chaque chiffre grâce au tableau de numération : 7 unités, 2 dixièmes, 0 centièmes, 8 millièmes.",
+              "explanation": "Le chiffre 7 est dans la colonne des unités (×1), le 2 dans les dixièmes (×0,1), le 0 dans les centièmes (×0,01) et le 8 dans les millièmes (×0,001). On ajoute chaque produit."
+            },
+            {
+              "question": "Compare les deux nombres : 12,4 et 12,38. Lequel est le plus grand ?",
+              "answer": "12,4 > 12,38",
+              "hint": "Aligne les virgules : 12,40 et 12,38. Compare les dixièmes : 4 contre 3.",
+              "explanation": "En ajoutant un zéro à 12,4 pour obtenir 12,40, on voit que les parties entières sont égales (12). Aux dixièmes, 4 est plus grand que 3. Donc 12,40 > 12,38, c'est-à-dire 12,4 > 12,38."
+            },
+            {
+              "question": "Range ces nombres du plus petit au plus grand : 0,7 ; 0,65 ; 0,72 ; 0,6",
+              "answer": "0,6 < 0,65 < 0,7 < 0,72",
+              "hint": "Écris-les avec deux chiffres après la virgule : 0,70 ; 0,65 ; 0,72 ; 0,60. Puis compare.",
+              "explanation": "Avec deux décimales : 0,60 ; 0,65 ; 0,70 ; 0,72. Parties entières égales (0). Dixièmes : 6 < 7. Parmi ceux qui ont 6 dixièmes, 0 centième < 5 centièmes. Parmi ceux qui ont 7 dixièmes, 0 centième < 2 centièmes."
+            }
+          ]
+        },
+        {
+          "title": "Encadrer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer un décimal par deux entiers consécutifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà l'encadrement pour les nombres entiers : $7$ est entre $7$ et $8$. Pour les décimaux, c'est la même idée ! Prenons $4,7$. La partie entière est $4$, donc $4,7$ se trouve quelque part après $4$ et avant $5$. On écrit : $4 < 4,7 < 5$. Les deux entiers $4$ et $5$ sont consécutifs (ils se suivent), et $4,7$ est coincé entre eux. C'est comme si $4,7$ habitait dans l'appartement situé entre le $4^{\\text{ème}}$ et le $5^{\\text{ème}}$ étage !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de 4,7 entre 4 et 5",
+              "min": 3,
+              "max": 6,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 4.7,
+                  "label": "4,7"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est ultra-simple : garde seulement la partie entière (les chiffres avant la virgule). C'est ton borne inférieure. Pour la borne supérieure, ajoute $1$ à cette partie entière. Par exemple, pour $12,345$ : partie entière $= 12$, donc $12 < 12,345 < 13$. Ça marche à tous les coups, même pour $0,001$ : partie entière $0$, donc $0 < 0,001 < 1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a besoin d'être plus précis. On peut encadrer un décimal par deux dixièmes consécutifs ! Reprenons $4,73$. Les dixièmes sont $4,7$ et $4,8$. Comme $4,73$ a $7$ dixièmes et $3$ centièmes, il se trouve entre $4,7$ et $4,8$. On écrit : $4,7 < 4,73 < 4,8$. Pour trouver ces bornes, on regarde le chiffre des dixièmes (ici $7$), on garde ce chiffre pour la borne basse, et on ajoute $1$ aux dixièmes pour la borne haute."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le chiffre des dixièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $4,73$, le chiffre des dixièmes est $7$. La borne inférieure sera $4,7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter 1 aux dixièmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$7 + 1 = 8$, donc la borne supérieure est $4,8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4,7 < 4,73 < 4,8$. Vérifie sur la droite graduée : $4,73$ est bien plus près de $4,7$ que de $4,8$ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aller encore plus loin : encadrer par deux centièmes consécutifs. C'est utile quand on veut une grande précision, par exemple pour une mesure scientifique. Avec $4,736$, les centièmes sont $4,73$ et $4,74$. Le chiffre des centièmes est $3$, donc borne basse $4,73$, borne haute $4,74$ (car $3+1=4$). On obtient $4,73 < 4,736 < 4,74$. Remarque : plus l'encadrement est précis, plus l'intervalle est petit. C'est comme zoomer sur une carte !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom sur les centièmes : 4,736 entre 4,73 et 4,74",
+              "min": 4.72,
+              "max": 4.75,
+              "points": [
+                {
+                  "value": 4.73,
+                  "label": "4,73"
+                },
+                {
+                  "value": 4.736,
+                  "label": "4,736"
+                },
+                {
+                  "value": 4.74,
+                  "label": "4,74"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "L'encadrement est un outil formidable pour estimer un résultat sans faire le calcul exact. Si tu dois ajouter $12,7 + 8,4$, tu sais que $12,7$ est entre $12$ et $13$, et $8,4$ entre $8$ et $9$. La somme est donc entre $20$ et $22$. Ça te donne une idée rapide pour vérifier si ton calcul final est raisonnable. Dans la prochaine leçon, on verra l'intercalation : trouver un nombre décimal entre deux autres. C'est l'opération inverse de l'encadrement, et c'est tout aussi amusant !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'encadrement de 23,56 par deux entiers consécutifs.",
+              "answer": "23 < 23,56 < 24",
+              "hint": "La partie entière de 23,56 est 23. L'entier suivant est 24.",
+              "explanation": "On garde la partie entière (23) comme borne inférieure. On ajoute 1 pour obtenir la borne supérieure (24). 23,56 est bien compris entre 23 et 24."
+            },
+            {
+              "question": "Encadre le nombre 0,84 par deux dixièmes consécutifs.",
+              "answer": "0,8 < 0,84 < 0,9",
+              "hint": "Regarde le chiffre des dixièmes (8). La borne basse est 0,8. La borne haute est 0,9 (8+1=9 aux dixièmes).",
+              "explanation": "Le chiffre des dixièmes est 8. Les deux dixièmes consécutifs qui encadrent 0,84 sont donc 0,8 et 0,9. On vérifie : 0,8 = 0,80 et 0,9 = 0,90. 0,84 est bien entre les deux."
+            },
+            {
+              "question": "Complète l'encadrement par deux centièmes consécutifs : 5,672 est entre ___ et ___.",
+              "answer": "5,67 et 5,68",
+              "hint": "Regarde le chiffre des centièmes (7). La borne basse garde ce chiffre aux centièmes. La borne haute ajoute 1 aux centièmes.",
+              "explanation": "Le chiffre des centièmes est 7. La borne inférieure est 5,67. Pour la borne supérieure, on ajoute 1 aux centièmes : 7+1=8, donc 5,68. On a bien 5,67 < 5,672 < 5,68."
+            }
+          ]
+        },
+        {
+          "title": "Intercaler.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver un décimal entre deux autres : l'intercalation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant encadrer un nombre. L'intercalation, c'est l'inverse : on te donne deux nombres, et tu dois en trouver un troisième qui se glisse pile entre eux ! C'est comme chercher une place de parking entre deux voitures déjà garées. Par exemple, entre $3,4$ et $3,5$, je peux mettre $3,45$. Il y a de la place car $3,4 = 3,40$ et $3,5 = 3,50$. Tout nombre entre $3,40$ et $3,50$ convient : $3,41$, $3,42$, ..., $3,49$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intercaler un nombre entre 3,4 et 3,5",
+              "min": 3.3,
+              "max": 3.6,
+              "points": [
+                {
+                  "value": 3.4,
+                  "label": "3,4"
+                },
+                {
+                  "value": 3.45,
+                  "label": "3,45"
+                },
+                {
+                  "value": 3.5,
+                  "label": "3,5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus simple : ajoute un zéro à droite du nombre qui a le moins de décimales, puis choisis un chiffre entre les deux pour la nouvelle décimale. Entre $2,6$ et $2,7$ : j'écris $2,60$ et $2,70$. Je prends $5$ au milieu, ça donne $2,65$. Entre $0,3$ et $0,31$ : j'écris $0,30$ et $0,31$. Je peux prendre $0,305$ (millièmes) ou simplement $0,301$ à $0,309$. Il y a toujours de la place !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, parfois les deux nombres ont le même nombre de décimales et sont très proches. Entre $4,56$ et $4,57$, il n'y a pas de place aux centièmes. Il faut aller aux millièmes ! J'ajoute un zéro : $4,560$ et $4,570$. Maintenant je peux intercaler $4,565$, ou $4,561$, $4,562$... jusqu'à $4,569$. La règle d'or : tant que les deux nombres sont différents, il existe une infinité de décimaux entre eux. C'est la propriété de densité des nombres décimaux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Même nombre de décimales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute des zéros à droite du plus court pour que les deux nombres aient le même nombre de chiffres après la virgule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarder s'il y a un écart",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les derniers chiffres diffèrent de plus de 1 (ex: 4 et 7), choisis un chiffre entre les deux à cette position. Si ils diffèrent de 1 seulement (ex: 6 et 7), passe à l'étape 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Aller à la décimale suivante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute un zéro à chacun, puis choisis un chiffre entre 1 et 9 pour la nouvelle dernière décimale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intercalation est super utile dans la vie de tous les jours. Imagine deux coureurs : l'un fait $12,4$ secondes, l'autre $12,5$ secondes. Un troisième coureur arrive entre eux : son temps pourrait être $12,45$ s. Ou en cuisine : ta recette demande entre $200$ g et $210$ g de farine. Tu peux mettre $205$ g, ou $207$ g... Tout nombre entre les deux bornes convient. C'est aussi ce qu'utilisent les GPS pour affiner ta position !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 35,
+                  "denominator": 100
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 10
+                }
+              ],
+              "caption": "3/10 (0,3) < 35/100 (0,35) < 4/10 (0,4) : intercaler, c'est trouver une fraction entre deux autres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant toutes les clés pour maîtriser les nombres décimaux : tu connais la valeur de chaque chiffre (leçon 1), tu sais encadrer un décimal pour l'estimer (leçon 2), et tu sais en intercaler un nouveau entre deux bornes (cette leçon). Ces trois compétences forment un trio inséparable : comparer, encadrer, intercaler. Elles te seront utiles au collège, en sciences, en technologie, et même pour gérer ton budget plus tard !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire un nombre décimal jusqu'aux millièmes.",
+                "Je sais décomposer un décimal (ex: 12,345 = 12 + 0,3 + 0,04 + 0,005).",
+                "Je sais comparer deux décimaux en alignant les virgules.",
+                "Je sais ranger plusieurs décimaux du plus petit au plus grand.",
+                "Je sais encadrer un décimal par deux entiers consécutifs.",
+                "Je sais encadrer un décimal par deux dixièmes consécutifs.",
+                "Je sais encadrer un décimal par deux centièmes consécutifs.",
+                "Je sais intercaler un décimal entre deux nombres donnés.",
+                "Je comprends qu'il y a une infinité de décimaux entre deux nombres différents."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne un nombre décimal compris entre 1,2 et 1,3.",
+              "answer": "1,25 (ou 1,21, 1,22, ..., 1,29)",
+              "hint": "Écris 1,20 et 1,30. Choisis un chiffre entre 0 et 9 pour les centièmes.",
+              "explanation": "1,2 = 1,20 et 1,3 = 1,30. Tout nombre de 1,21 à 1,29 convient. 1,25 est pile au milieu."
+            },
+            {
+              "question": "Intercale un nombre entre 7,84 et 7,85.",
+              "answer": "7,845 (ou 7,841 à 7,849)",
+              "hint": "Les centièmes sont 4 et 5, ils sont consécutifs. Il faut aller aux millièmes : 7,840 et 7,850.",
+              "explanation": "Comme 7,84 = 7,840 et 7,85 = 7,850, on peut choisir n'importe quel nombre entre 7,841 et 7,849. 7,845 est au milieu."
+            },
+            {
+              "question": "Entre quels deux dixièmes consécutifs se trouve 0,307 ? Donne un nombre entre 0,3 et ce décimal.",
+              "answer": "0,307 est entre 0,3 et 0,4. Un nombre entre 0,3 et 0,307 : 0,305 (ou 0,301 à 0,306).",
+              "hint": "D'abord l'encadrement aux dixièmes : chiffre des dixièmes = 3, donc entre 0,3 et 0,4. Puis pour intercaler entre 0,3 et 0,307, écris 0,300 et 0,307.",
+              "explanation": "Le chiffre des dixièmes de 0,307 est 3, donc l'encadrement aux dixièmes est 0,3 < 0,307 < 0,4. Pour trouver un nombre entre 0,3 et 0,307 : 0,3 = 0,300. Entre 0,300 et 0,307, on peut prendre 0,301 à 0,306. 0,305 convient parfaitement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

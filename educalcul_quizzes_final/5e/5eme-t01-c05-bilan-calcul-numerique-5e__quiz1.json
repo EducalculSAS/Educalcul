@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 383,
+  "_course_code": "5eme-t01-c05-bilan-calcul-numerique-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Priorités, fractions, estimation",
+  "title": "Quiz Priorités, fractions, estimation",
+  "questions": [
+    {
+      "text": "Calcule $2 + 3 \\times 4$ en respectant les priorités des opérations.",
+      "options": [
+        "14",
+        "20",
+        "11",
+        "5"
+      ],
+      "correctAnswer": "14",
+      "explanation": "La multiplication a la priorité sur l'addition. On calcule d'abord $3 \\times 4 = 12$, puis on ajoute $2$ pour obtenir $14$. Les autres réponses correspondent à des erreurs : $20$ si on additionne avant de multiplier, $11$ si on fait $2+3=5$ puis $5\\times4=20$ puis on soustrait $9$, $5$ si on ignore la multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue l'addition $\\frac{1}{2} + \\frac{1}{3}$.",
+      "options": [
+        "$\\frac{5}{6}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{1}{6}$"
+      ],
+      "correctAnswer": "$\\frac{5}{6}$",
+      "explanation": "Pour additionner deux fractions, on les met au même dénominateur. Le plus petit commun multiple de $2$ et $3$ est $6$. On obtient $\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$. Les autres choix proviennent d'erreurs fréquentes : additionner numérateurs et dénominateurs ($\\frac{2}{5}$), inverser les fractions ($\\frac{3}{5}$), ou ne pas réduire ($\\frac{1}{6}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Estime le produit $47 \\times 6$ au dixième le plus proche.",
+      "options": [
+        "280",
+        "300",
+        "260",
+        "320"
+      ],
+      "correctAnswer": "280",
+      "explanation": "Le produit exact est $282$. Arrondi au dixième le plus proche, on regarde l'unité : $2$ est inférieur à $5$, donc on arrondit à $280$. $300$ correspond à un arrondi au cent, $260$ et $320$ sont trop éloignés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $\\frac{2}{3} + \\frac{1}{4} \\times 2$ en respectant les priorités.",
+      "options": [
+        "1 1/6",
+        "1 1/3",
+        "1 1/2",
+        "1 2/3"
+      ],
+      "correctAnswer": "1 1/6",
+      "explanation": "La multiplication précède l'addition. On calcule $\\frac{1}{4} \\times 2 = \\frac{2}{4} = \\frac{1}{2}$. Ensuite $\\frac{2}{3} + \\frac{1}{2} = \\frac{4}{6} + \\frac{3}{6} = \\frac{7}{6} = 1 \\frac{1}{6}$. Les autres réponses correspondent à des erreurs : additionner avant de multiplier ($1 \\frac{1}{3}$), confondre $\\frac{1}{2}$ avec $\\frac{2}{3}$ ($1 \\frac{1}{2}$), ou mal réduire ($1 \\frac{2}{3}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Estime le quotient $93 \\div 4$ au nombre entier le plus proche.",
+      "options": [
+        "23",
+        "24",
+        "22",
+        "25"
+      ],
+      "correctAnswer": "23",
+      "explanation": "Le quotient exact est $23,25$. La partie décimale $0,25$ est inférieure à $0,5$, donc on arrondit à l'entier inférieur $23$. $24$ serait l'arrondi au supérieur, $22$ et $25$ sont trop éloignés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

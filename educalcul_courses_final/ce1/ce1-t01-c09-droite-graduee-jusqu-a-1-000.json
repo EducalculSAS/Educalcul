@@ -1,0 +1,467 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.711910+00:00",
+  "id": 76,
+  "code": "ce1-t01-c09",
+  "title": "Droite graduée jusqu'à 1 000",
+  "description": "Cours structuré Educalcul : Droite graduée jusqu'à 1 000.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Droite graduée jusqu'à 1 000",
+    "objectif_global": "Droite graduée jusqu'à 1 000",
+    "mini_lecons_imposees": [
+      "Lire l'échelle.",
+      "Placer un nombre.",
+      "Estimer une position entre deux graduations."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lire l'échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une longue route droite sur laquelle sont plantés des panneaux tous les $10$ kilomètres. Chaque panneau indique un nombre : $0$, $10$, $20$, $30$... jusqu'à $100$. C'est exactement ce qu'est une droite graduée : une ligne avec des repères réguliers qui nous aident à situer les nombres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $100$ par pas de $10$",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 60,
+                  "label": "60"
+                },
+                {
+                  "value": 70,
+                  "label": "70"
+                },
+                {
+                  "value": 80,
+                  "label": "80"
+                },
+                {
+                  "value": 90,
+                  "label": "90"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien l'échelle : la distance entre deux graduations successives est toujours la même. Ici, chaque grand trait vaut $10$. Pour lire l'échelle, on repère d'abord le pas : de combien en combien les nombres augmentent-ils ? On compte les sauts entre $0$ et la première graduation, entre la première et la deuxième, etc. Si tu comptes $10$ unités à chaque fois, l'échelle est par $10$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'échelle change. Sur une autre droite, les graduations peuvent valoir $1$, ou $100$, ou même $50$. Il faut toujours vérifier le pas avant de lire les nombres. Pose ton doigt sur $0$, saute vers la première graduation et demande-toi : \"Combien ai-je ajouté ?\" C'est ton pas."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $1000$ par pas de $100$",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                },
+                {
+                  "value": 200,
+                  "label": "200"
+                },
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                },
+                {
+                  "value": 600,
+                  "label": "600"
+                },
+                {
+                  "value": 700,
+                  "label": "700"
+                },
+                {
+                  "value": 800,
+                  "label": "800"
+                },
+                {
+                  "value": 900,
+                  "label": "900"
+                },
+                {
+                  "value": 1000,
+                  "label": "1000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, chaque grand trait représente $100$. Si tu veux savoir quelle valeur porte la graduation $700$, tu comptes les sauts de $100$ depuis $0$ : $100$, $200$, $300$, $400$, $500$, $600$, $700$. C'est comme monter les marches d'un escalier où chaque marche fait $100$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine une droite qui va de $0$ à $1000$ mais avec un pas de $50$. Les graduations seraient $0$, $50$, $100$, $150$... jusqu'à $1000$. Le principe reste identique : on identifie le pas, puis on lit chaque nombre en suivant l'échelle. Essaie de visualiser les nombres $250$ et $850$ sur cette droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée de $0$ à $100$ par pas de $10$, quelle est la valeur de la graduation qui se trouve après $60$ ?",
+              "answer": "$70$",
+              "hint": "Compte $10$ de plus que $60$.",
+              "explanation": "L'échelle avance de $10$ en $10$. Après $60$, on ajoute $10$ : $60 + 10 = 70$."
+            },
+            {
+              "question": "Sur la droite de $0$ à $1000$ par pas de $100$, quel nombre est indiqué par la 5ème graduation après $0$ ?",
+              "answer": "$500$",
+              "hint": "Chaque graduation vaut $100$. Multiplie le numéro de la graduation par $100$.",
+              "explanation": "La 1ère graduation vaut $100$, la 2ème $200$, ... la 5ème vaut $5 \\times 100 = 500$."
+            },
+            {
+              "question": "Si une droite graduée va de $0$ à $1000$ par pas de $50$, quelle est la valeur de la 3ème graduation ?",
+              "answer": "$150$",
+              "hint": "Le pas est $50$. $3 \\times 50 = ?$",
+              "explanation": "Les graduations valent $50$, $100$, $150$... La 3ème est $3 \\times 50 = 150$."
+            }
+          ]
+        },
+        {
+          "title": "Placer un nombre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poser un nombre sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant lire l'échelle. Place à l'action : on va déposer un nombre précis sur la droite, comme on pose un pion sur un plateau de jeu. Supposons qu'on te donne le nombre $340$ sur une droite qui va de $0$ à $1000$ par pas de $100$. Comment faire ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, le pas est $100$. Les graduations principales sont $0$, $100$, $200$, $300$, $400$..."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver les deux graduations encadrantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$340$ est plus grand que $300$ et plus petit que $400$. Il se situera donc entre ces deux traits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les petits pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre $300$ et $400$, il y a $100$. Si on divise cet espace en $10$ petits traits (chaque petit trait vaut $10$), on compte $4$ petits traits après $300$ pour atteindre $340$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Marquer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu poses ton point exactement sur le 4ème petit trait après $300$. C'est fait !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de $340$ sur une droite par pas de $100$ avec sous-graduations de $10$",
+              "min": 300,
+              "max": 400,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 340,
+                  "label": "340"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la droite n'affiche que les grandes graduations (par $100$) et il faut imaginer les petites. Pour placer $760$, tu repères $700$ et $800$. $760$ est $60$ de plus que $700$, donc tu vas un peu plus loin que la moitié de l'intervalle. C'est comme couper une baguette en $10$ morceaux égaux et en prendre $6$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de $760$ entre $700$ et $800$",
+              "min": 700,
+              "max": 800,
+              "points": [
+                {
+                  "value": 700,
+                  "label": "700"
+                },
+                {
+                  "value": 760,
+                  "label": "760"
+                },
+                {
+                  "value": 800,
+                  "label": "800"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si l'échelle est par $10$ ? Disons qu'on veut placer $53$ sur une droite de $0$ à $100$ par pas de $10$. Les grandes graduations sont $50$ et $60$. $53$ est $3$ unités après $50$. Tu comptes $3$ petits traits (chaque petit trait vaut $1$) après $50$. Facile, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $1000$ par pas de $100$, entre quelles deux graduations principales se trouve le nombre $480$ ?",
+              "answer": "Entre $400$ et $500$",
+              "hint": "Cherche les multiples de $100$ juste avant et juste après $480$.",
+              "explanation": "$400 < 480 < 500$. Donc $480$ se place entre les graduations $400$ et $500$."
+            },
+            {
+              "question": "Pour placer $760$ entre $700$ et $800$, combien de dizaines faut-il ajouter à $700$ ?",
+              "answer": "$6$ dizaines",
+              "hint": "Calcule $760 - 700$.",
+              "explanation": "$760 - 700 = 60$, soit $6$ dizaines. On avance de $6$ petits traits de $10$ après $700$."
+            },
+            {
+              "question": "Sur une droite de $0$ à $100$ par pas de $10$, où places-tu le nombre $53$ ?",
+              "answer": "Entre $50$ et $60$, sur le 3ème petit trait après $50$",
+              "hint": "$53 = 50 + 3$.",
+              "explanation": "Les grandes graduations sont $50$ et $60$. $53$ est $3$ unités après $50$. On compte $3$ petits traits."
+            }
+          ]
+        },
+        {
+          "title": "Estimer une position entre deux graduations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer quand le nombre n'est pas sur un trait"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le nombre qu'on veut placer ne tombe pas exactement sur une graduation, même petite. Imagine une droite qui n'affiche que les centaines : $0$, $100$, $200$... jusqu'à $1000$. On te demande de placer $370$. Il n'y a pas de trait pour $370$ ! Il faut estimer sa position."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode du repère du milieu est très utile. Entre $300$ et $400$, le milieu exact est $350$. Si ton nombre est $370$, il est un peu plus loin que le milieu, vers $400$. Tu peux aussi penser en quarts : le premier quart est $325$, le deuxième quart (le milieu) est $350$, le troisième quart est $375$. $370$ est juste avant $375$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation de $370$ entre $300$ et $400$ avec repères de quart",
+              "min": 300,
+              "max": 400,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 325,
+                  "label": "325"
+                },
+                {
+                  "value": 350,
+                  "label": "350"
+                },
+                {
+                  "value": 370,
+                  "label": "370"
+                },
+                {
+                  "value": 375,
+                  "label": "375"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un autre exemple : placer $820$ sur une droite qui ne montre que les centaines ($800$ et $900$). Le milieu est $850$. $820$ est plus proche de $800$ que de $850$. En fait, $820$ n'est qu'à $20$ de $800$, alors que l'intervalle total fait $100$. C'est comme si tu avais fait $1/5$ du chemin. Tu poses ton point assez près de $800$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation de $820$ entre $800$ et $900$",
+              "min": 800,
+              "max": 900,
+              "points": [
+                {
+                  "value": 800,
+                  "label": "800"
+                },
+                {
+                  "value": 820,
+                  "label": "820"
+                },
+                {
+                  "value": 850,
+                  "label": "850"
+                },
+                {
+                  "value": 900,
+                  "label": "900"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'échelle est par $10$ (graduations $10$, $20$, $30$...) et tu dois placer un nombre comme $47$. Les graduations visibles sont $40$ et $50$. Le milieu est $45$. $47$ est juste après $45$, très proche de $50$. Tu peux aussi te dire : $47$ est $7$ unités après $40$, il reste $3$ unités pour atteindre $50$. Donc c'est aux $7/10$ de l'intervalle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'échelle d'une droite graduée (identifier le pas).",
+                "Je sais placer un nombre exact sur une graduation ou entre deux graduations principales.",
+                "Je sais estimer la position d'un nombre quand il n'y a pas de graduation précise pour lui."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite qui affiche seulement $300$ et $400$, où estimes-tu la position de $370$ ?",
+              "answer": "Un peu après le milieu ($350$), vers $400$",
+              "hint": "Compare $370$ au milieu $350$.",
+              "explanation": "Le milieu entre $300$ et $400$ est $350$. $370$ est $20$ de plus que $350$, donc on le place un peu après le milieu, en direction de $400$."
+            },
+            {
+              "question": "Pour placer $820$ entre $800$ et $900$, est-ce plus près de $800$ ou de $900$ ?",
+              "answer": "Plus près de $800$",
+              "hint": "Calcule $820 - 800$ et $900 - 820$.",
+              "explanation": "$820 - 800 = 20$ et $900 - 820 = 80$. Comme $20 < 80$, $820$ est plus près de $800$."
+            },
+            {
+              "question": "Sur une droite graduée par $10$ ($40$, $50$...), où se situe $47$ par rapport au milieu $45$ ?",
+              "answer": "Juste après $45$, près de $50$",
+              "hint": "$47 = 45 + 2$.",
+              "explanation": "Le milieu entre $40$ et $50$ est $45$. $47$ est $2$ unités après $45$, donc très proche de $50$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

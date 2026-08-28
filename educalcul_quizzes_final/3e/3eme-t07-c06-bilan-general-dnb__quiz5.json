@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Automatismes",
+  "title": "Quiz Automatismes Algorithmiques - 3e",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$s \\leftarrow 0$\\nPour $i$ de $1$ à $5$ faire\\n   $s \\leftarrow s + i \\times 2$\\nFin pour\\nAfficher $s$\\nQuelle valeur est affichée ?",
+      "options": [
+        "30",
+        "15",
+        "20",
+        "60"
+      ],
+      "correctAnswer": "30",
+      "explanation": "La boucle calcule la somme $s = \\sum_{i=1}^{5} (i \\times 2) = 2 \\times (1+2+3+4+5) = 2 \\times 15 = 30$. L'option 15 correspond à la somme des indices sans le facteur 2, 20 et 60 sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$compteur \\leftarrow 0$\\nPour $k$ de $1$ à $10$ faire\\n   Si $k \\bmod 3 = 0$ Alors\\n      $compteur \\leftarrow compteur + 1$\\n   Fin Si\\nFin Pour\\nAfficher $compteur$\\nQuelle valeur est affichée ?",
+      "options": [
+        "3",
+        "4",
+        "10",
+        "0"
+      ],
+      "correctAnswer": "3",
+      "explanation": "La condition $k \\bmod 3 = 0$ est vraie pour les multiples de 3 dans l'intervalle $[1, 10]$ : ce sont 3, 6 et 9. Il y a donc 3 passages dans le Si. L'option 4 compte erronément 12 (hors intervalle), 10 est le nombre total de tours, 0 signifie que la condition n'est jamais remplie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant (algorithme d'Euclide par soustractions successives) :\\n$x \\leftarrow 20$\\n$y \\leftarrow 8$\\nTantQue $x \\neq y$ faire\\n   Si $x > y$ Alors\\n      $x \\leftarrow x - y$\\n   Sinon\\n      $y \\leftarrow y - x$\\n   Fin Si\\nFin TantQue\\nAfficher $x$\\nQuelle valeur est affichée ?",
+      "options": [
+        "4",
+        "8",
+        "12",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "explanation": "On trace l'algorithme : départ (20, 8). 1er tour : $x>y$, $x=12$. 2e tour : $x>y$, $x=4$. 3e tour : $y>x$, $y=4$. 4e tour : $x=y=4$, fin de la boucle. La valeur affichée est 4, qui est le PGCD de 20 et 8. Les autres options correspondent à des valeurs intermédiaires ou au mauvais PGCD.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a écrit cet algorithme pour calculer la moyenne de cinq nombres saisis au clavier :\\nPour $i$ de $1$ à $5$ faire\\n   $somme \\leftarrow 0$\\n   Lire $nombre$\\n   $somme \\leftarrow somme + nombre$\\nFin Pour\\n$moyenne \\leftarrow somme / 5$\\nAfficher $moyenne$\\nPourquoi cet algorithme ne donne-t-il pas le bon résultat ?",
+      "options": [
+        "La variable somme est réinitialisée à 0 à chaque tour de boucle",
+        "La division par 5 est incorrecte",
+        "La boucle ne s'exécute que quatre fois",
+        "La variable moyenne n'est pas initialisée"
+      ],
+      "correctAnswer": "La variable somme est réinitialisée à 0 à chaque tour de boucle",
+      "explanation": "L'instruction $somme \\leftarrow 0$ se trouve à l'intérieur de la boucle Pour. À chaque itération, la somme accumulée est remise à zéro avant d'ajouter le nouveau nombre. À la fin, $somme$ ne contient que le dernier nombre saisi. Il faut placer l'initialisation $somme \\leftarrow 0$ avant le début de la boucle. La division par 5 est correcte, la boucle s'exécute bien 5 fois, et moyenne est initialisée par l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nPour $i$ de $1$ à $3$ faire\\n   Pour $j$ de $1$ à $4$ faire\\n      Afficher \"*\"\\n   Fin Pour\\n   Aller à la ligne\\nFin Pour\\nCombien de fois l'instruction « Afficher \"*\" » est-elle exécutée au total ?",
+      "options": [
+        "12",
+        "7",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Il s'agit de deux boucles imbriquées. La boucle extérieure (index $i$) s'exécute 3 fois. Pour chaque tour de la boucle extérieure, la boucle intérieure (index $j$) s'exécute 4 fois. Le nombre total d'exécutions de l'instruction intérieure est donc le produit $3 \\times 4 = 12$. L'option 7 est la somme, 3 est le nombre de lignes, 4 le nombre de colonnes par ligne.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

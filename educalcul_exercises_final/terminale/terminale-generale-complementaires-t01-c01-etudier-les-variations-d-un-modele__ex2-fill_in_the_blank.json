@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Signe",
+  "title": "Étude du signe et variations d'un modèle",
+  "blocks": [
+    {
+      "title": "Lien entre dérivée et signe",
+      "content": "Pour étudier les variations d'une fonction $f$ définissant un modèle, on étudie le signe de sa {{1}}. Si cette expression est {{2}} sur un intervalle, alors la fonction $f$ est croissante sur cet intervalle.",
+      "correctAnswer": "",
+      "blanks": [
+        "dérivée",
+        "positive|strictement positive"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le signe de la dérivée $f'$ détermine le sens de variation de la fonction $f$. Une dérivée positive sur un intervalle implique que la fonction est croissante sur cet intervalle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse du signe d'un produit",
+      "content": "Soit un modèle défini par la fonction $f(x) = (2x - 6)e^{x}$. Pour déterminer le signe de $f(x)$, on sait que l'exponentielle est toujours {{1}}. Le signe de $f(x)$ dépend donc uniquement du signe de l'expression {{2}}, qui s'annule pour $x = {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "positive|strictement positive",
+        "2x - 6",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme $e^{x} > 0$ pour tout réel $x$, le signe de $f(x)$ est celui de $2x - 6$. L'équation $2x - 6 = 0$ donne $2x = 6$, soit $x = 3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation du signe dans un modèle",
+      "content": "Dans l'étude d'un modèle de croissance, si la dérivée $f'$ est {{1}} pour $x$ appartenant à l'intervalle $[a, b]$, alors le modèle indique une {{2}} de la quantité étudiée. On dira que le modèle est {{3}} sur cet intervalle.",
+      "correctAnswer": "",
+      "blanks": [
+        "négative|strictement négative",
+        "diminution|baisse",
+        "décroissant"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une dérivée négative signifie que la fonction $f$ est décroissante, ce qui se traduit concrètement par une diminution de la valeur représentée par le modèle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

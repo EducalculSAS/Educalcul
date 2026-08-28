@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Problèmes",
+  "title": "Algorithmes et triangle rectangle",
+  "blocks": [
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Écrire un algorithme (ou une suite d'instructions) qui, étant donnés les longueurs $a$ et $b$ des deux côtés de l'angle droit d'un triangle rectangle, calcule et affiche la longueur de l'hypoténuse $c$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$, $b$.\\n2. Calculer $c = \\sqrt{a^2 + b^2}$.\\n3. Afficher $c$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle, le théorème de Pythagore donne $c^2 = a^2 + b^2$. On calcule donc la racine carrée de la somme des carrés des deux côtés pour obtenir l'hypoténuse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Distance entre deux points",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées $(x_1; y_1)$ et $(x_2; y_2)$ de deux points dans le plan, calcule et affiche la distance $d$ entre ces deux points.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_1$, $y_1$, $x_2$, $y_2$.\\n2. Calculer $dx = x_2 - x_1$ et $dy = y_2 - y_1$.\\n3. Calculer $d = \\sqrt{dx^2 + dy^2}$.\\n4. Afficher $d$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distance entre deux points s'obtient en appliquant le théorème de Pythagore au triangle rectangle formé par les projections horizontale et verticale : $d^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Côté manquant et aire",
+      "content": "Un triangle rectangle a un côté de l'angle droit de longueur $a = 6$ cm et une hypoténuse de longueur $c = 10$ cm. Écrire un algorithme qui détermine la longueur de l'autre côté $b$, puis calcule et affiche l'aire du triangle.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a = 6$, $c = 10$.\\n2. Calculer $b = \\sqrt{c^2 - a^2}$.\\n3. Calculer $aire = (a \\times b) / 2$.\\n4. Afficher $b$ et $aire$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le théorème de Pythagore pour trouver le côté manquant : $b^2 = c^2 - a^2$. Ensuite, l'aire d'un triangle rectangle vaut le produit des deux côtés de l'angle droit divisé par deux.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

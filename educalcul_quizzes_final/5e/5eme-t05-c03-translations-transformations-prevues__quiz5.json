@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Image d'un point",
+  "title": "Quiz : Image d'un point par translation (5e)",
+  "questions": [
+    {
+      "text": "Dans une translation de vecteur $\\vec{u}$, l'image $A'$ d'un point $A$ est définie par la relation :",
+      "options": [
+        "$\\vec{AA'} = \\vec{u}$",
+        "$\\vec{A'A} = \\vec{u}$",
+        "$A'$ est le symétrique de $A$ par rapport à l'origine",
+        "$A'$ est le milieu du segment $[AA']$"
+      ],
+      "correctAnswer": "$\\vec{AA'} = \\vec{u}$",
+      "explanation": "Par définition, une translation de vecteur $\\vec{u}$ envoie tout point $A$ sur le point $A'$ tel que le vecteur $\\vec{AA'}$ soit égal à $\\vec{u}$. Les autres options correspondent à des transformations différentes : la symétrie centrale, la symétrie axiale ou une erreur de sens du vecteur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire l'image $A'$ du point $A$ par la translation de vecteur $\\vec{u} = \\vec{BC}$, on utilise la règle du parallélogramme. Quelle construction est correcte ?",
+      "options": [
+        "On trace le parallélogramme $ABCA'$ (dans cet ordre) ; $A'$ est le sommet opposé à $A$.",
+        "On trace le parallélogramme $ABC'A$ ; $A'$ est le sommet opposé à $B$.",
+        "On trace le parallélogramme $AB'CA$ ; $A'$ est le sommet opposé à $C$.",
+        "On trace le parallélogramme $A'BAC$ ; $A'$ est le sommet adjacent à $A$."
+      ],
+      "correctAnswer": "On trace le parallélogramme $ABCA'$ (dans cet ordre) ; $A'$ est le sommet opposé à $A$.",
+      "explanation": "La translation de vecteur $\\vec{BC}$ envoie $A$ sur $A'$ tel que $\\vec{AA'} = \\vec{BC}$. Le quadrilatère $ABCA'$ est un parallélogramme car $\\vec{AA'} = \\vec{BC}$ et $\\vec{AB} = \\vec{A'C}$. Ainsi $A'$ est le sommet opposé à $A$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une translation de vecteur $\\vec{u}(3;-2)$. Quel est le couple de coordonnées de l'image $A'$ du point $A( -1 ; 4 )$ ?",
+      "options": [
+        "$A'(2;2)$",
+        "$A'(-4;6)$",
+        "$A'(2;6)$",
+        "$A'(-4;2)$"
+      ],
+      "correctAnswer": "$A'(2;2)$",
+      "explanation": "Les coordonnées de l'image s'obtiennent en ajoutant les composantes du vecteur de translation aux coordonnées du point initial : $x_{A'} = -1 + 3 = 2$, $y_{A'} = 4 + (-2) = 2$. Donc $A'(2;2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une translation $t$ de vecteur $\\vec{u}$. Pour quels couples de points $(A,B)$ l'égalité $A'B' = AB$ est-elle toujours vraie ? (où $A'$, $B'$ sont les images de $A$, $B$ par $t$)",
+      "options": [
+        "Pour tous les points $A$ et $B$ du plan",
+        "Uniquement si $A$ et $B$ sont alignés avec le vecteur $\\vec{u}$",
+        "Uniquement si $A$ et $B$ sont distincts",
+        "Uniquement si $A$ et $B$ sont les extrémités du vecteur $\\vec{u}$"
+      ],
+      "correctAnswer": "Pour tous les points $A$ et $B$ du plan",
+      "explanation": "Une translation est une isométrie : elle conserve les longueurs, les angles et les aires. Quelle que soit la position des points $A$ et $B$, la distance entre leurs images $A'$ et $B'$ est égale à la distance $AB$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue une translation de vecteur $\\vec{u}(2;1)$ suivie d'une translation de vecteur $\\vec{v}(-3;4)$. Quel est le vecteur de la translation composée ?",
+      "options": [
+        "$\\vec{w}(-1;5)$",
+        "$\\vec{w}(5;-3)$",
+        "$\\vec{w}(-1;-5)$",
+        "$\\vec{w}(5;3)$"
+      ],
+      "correctAnswer": "$\\vec{w}(-1;5)$",
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs : $\\vec{w} = \\vec{u} + \\vec{v} = (2+(-3); 1+4) = (-1;5)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

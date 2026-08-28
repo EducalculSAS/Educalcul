@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Croissante / décroissante",
+  "title": "Quiz : Croissante / décroissante (Seconde)",
+  "questions": [
+    {
+      "text": "Quelle est la définition d'une fonction croissante sur un intervalle I ?",
+      "options": [
+        "Pour tout $x_1 < x_2$ dans I, on a $f(x_1) < f(x_2)$.",
+        "Pour tout $x_1 < x_2$ dans I, on a $f(x_1) > f(x_2)$.",
+        "Pour tout $x_1 < x_2$ dans I, on a $f(x_1) = f(x_2)$.",
+        "Pour tout $x_1 < x_2$ dans I, on a $f(x_1) \\le f(x_2)$."
+      ],
+      "correctAnswer": "Pour tout $x_1 < x_2$ dans I, on a $f(x_1) \\le f(x_2)$.",
+      "explanation": "Une fonction est dite croissante (au sens large) sur un intervalle si l'ordre des images respecte l'ordre des antécédents, c'est-à-dire $x_1 < x_2 \\Rightarrow f(x_1) \\le f(x_2)$. L'option A correspond à une fonction strictement croissante, l'option B à une fonction décroissante, l'option C à une fonction constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne le tableau de valeurs suivant pour une fonction $f$ définie sur $[0;4]$ :\\n$x$ : 0 , 1 , 2 , 3 , 4\\n$f(x)$ : 2 , 5 , 5 , 8 , 8\\nLa fonction $f$ est-elle croissante sur $[0;4]$ ?",
+      "options": [
+        "Oui, car les valeurs ne diminuent jamais.",
+        "Non, car $f(1)=f(2)$ donc la fonction n'est pas strictement croissante.",
+        "Non, car $f(3)=f(4)$ donc la fonction n'est pas croissante.",
+        "Oui, car $f$ est strictement croissante."
+      ],
+      "correctAnswer": "Oui, car les valeurs ne diminuent jamais.",
+      "explanation": "La définition de croissante (au sens large) impose seulement $f(x_1) \\le f(x_2)$ pour $x_1<x_2$. Ici, les valeurs sont $2 \\le 5 = 5 \\le 8 = 8$, donc la condition est satisfaite. Les options B et C confondent croissante et strictement croissante. L'option D est fausse car la fonction n'est pas stricte (il y a des égalités).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f$ une fonction dérivable sur un intervalle I. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "Si $f'(x) > 0$ pour tout $x \\in I$, alors $f$ est croissante sur I.",
+        "Si $f'(x) \\ge 0$ pour tout $x \\in I$, alors $f$ est strictement croissante sur I.",
+        "Si $f'(x) < 0$ pour tout $x \\in I$, alors $f$ est croissante sur I.",
+        "Si $f'(x) = 0$ pour tout $x \\in I$, alors $f$ est croissante sur I."
+      ],
+      "correctAnswer": "Si $f'(x) > 0$ pour tout $x \\in I$, alors $f$ est croissante sur I.",
+      "explanation": "Le théorème des variations dit : si $f'(x) > 0$ sur I, alors $f$ est strictement croissante, donc en particulier croissante. L'option B est fausse car $f'(x) \\ge 0$ ne garantit que la croissance au sens large, pas la strictitude. L'option C décrit une fonction décroissante. L'option D correspond à une fonction constante, qui est croissante au sens large mais l'affirmation \"alors $f$ est croissante\" est trompeuse car elle ne distingue pas le cas constant ; de plus, l'énoncé ne précise pas le sens large.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les graphiques suivants, lequel représente une fonction croissante sur $\\mathbb{R}$ ?",
+      "options": [
+        "Une courbe qui monte de gauche à droite sans jamais redescendre.",
+        "Une courbe qui descend de gauche à droite sans jamais remonter.",
+        "Une courbe en forme de V avec un minimum au milieu.",
+        "Une courbe horizontale."
+      ],
+      "correctAnswer": "Une courbe qui monte de gauche à droite sans jamais redescendre.",
+      "explanation": "Une fonction croissante (au sens large) a un graphe qui ne descend jamais quand l'abscisse augmente. La première description correspond à ce comportement. La deuxième décrit une fonction décroissante. La troisième n'est pas monotone sur $\\mathbb{R}$. La quatrième représente une fonction constante, qui est croissante au sens large mais l'énoncé demande un exemple typique de croissance ; la première option est la plus représentative.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $g$ une fonction décroissante sur $\\mathbb{R}$ et $h$ une fonction croissante sur $\\mathbb{R}$. Que peut-on dire de la fonction composée $g \\circ h$ ?",
+      "options": [
+        "La fonction $g \\circ h$ est décroissante sur $\\mathbb{R}$.",
+        "La fonction $g \\circ h$ est croissante sur $\\mathbb{R}$.",
+        "La fonction $g \\circ h$ est constante sur $\\mathbb{R}$.",
+        "On ne peut pas conclure sans connaître les expressions de $g$ et $h$."
+      ],
+      "correctAnswer": "La fonction $g \\circ h$ est décroissante sur $\\mathbb{R}$.",
+      "explanation": "Si $h$ est croissante, alors $x_1 < x_2 \\Rightarrow h(x_1) \\le h(x_2)$. Comme $g$ est décroissante, l'ordre s'inverse : $h(x_1) \\le h(x_2) \\Rightarrow g(h(x_1)) \\ge g(h(x_2))$. Donc $x_1 < x_2 \\Rightarrow (g\\circ h)(x_1) \\ge (g\\circ h)(x_2)$, ce qui signifie que $g\\circ h$ est décroissante (au sens large). Les autres options sont contraires à cette règle de composition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

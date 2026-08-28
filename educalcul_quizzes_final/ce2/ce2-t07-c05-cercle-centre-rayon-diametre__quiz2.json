@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 200,
+  "_course_code": "ce2-t07-c05-cercle-centre-rayon-diametre",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Tracer au compas",
+  "title": "Quiz : Tracer un cercle au compas (CE2)",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour tracer un cercle ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Un compas",
+      "explanation": "Le compas est l'outil spécifique pour tracer des cercles. La règle sert à tracer des segments et mesurer des longueurs, l'équerre à tracer des angles droits et le rapporteur à mesurer des angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quel ordre faut-il faire les gestes pour tracer un cercle au compas ?",
+      "options": [
+        "Je place la pointe sur le centre, j'ouvre le compas au rayon voulu, je tourne le compas.",
+        "J'ouvre le compas au rayon voulu, je place la pointe sur le centre, je tourne le compas.",
+        "Je tourne le compas, j'ouvre le compas au rayon voulu, je place la pointe sur le centre.",
+        "Je place la pointe sur le centre, je tourne le compas, j'ouvre le compas au rayon voulu."
+      ],
+      "correctAnswer": "J'ouvre le compas au rayon voulu, je place la pointe sur le centre, je tourne le compas.",
+      "explanation": "La première étape est toujours de régler l'écartement du compas (le rayon) sur la règle. Ensuite, on pose la pointe sèche sur le centre O. Enfin, on fait tourner le compas d'un tour complet pour tracer le cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut tracer un cercle de rayon $4\\,\\text{cm}$. Comment régler le compas sur la règle ?",
+      "options": [
+        "On écarte les branches jusqu'à la graduation $2\\,\\text{cm}$.",
+        "On écarte les branches jusqu'à la graduation $4\\,\\text{cm}$.",
+        "On écarte les branches jusqu'à la graduation $8\\,\\text{cm}$.",
+        "On place la pointe sur $0$ et le crayon sur $2\\,\\text{cm}$."
+      ],
+      "correctAnswer": "On écarte les branches jusqu'à la graduation $4\\,\\text{cm}$.",
+      "explanation": "L'écartement entre la pointe sèche et la mine du compas correspond exactement au rayon du cercle. Pour un rayon de $4\\,\\text{cm}$, il faut ouvrir le compas sur $4\\,\\text{cm}$ sur la règle. $2\\,\\text{cm}$ correspond à la moitié du rayon, $8\\,\\text{cm}$ au diamètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure. Le compas est réglé pour tracer un cercle. Quelle est la longueur du rayon de ce cercle ?",
+      "options": [
+        "$2\\,\\text{cm}$",
+        "$3\\,\\text{cm}$",
+        "$6\\,\\text{cm}$",
+        "$9\\,\\text{cm}$"
+      ],
+      "correctAnswer": "$3\\,\\text{cm}$",
+      "explanation": "Sur la figure, l'écartement du compas (la distance entre la pointe et le crayon) est réglé sur $3\\,\\text{cm}$. Cet écartement représente le rayon du cercle qui sera tracé. Le diamètre serait le double, soit $6\\,\\text{cm}$.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas réglé sur 3 cm"
+      }
+    },
+    {
+      "text": "Léa a tracé un cercle de centre O. Elle mesure la distance OM et trouve $5\\,\\text{cm}$. Elle mesure la distance ON et trouve $5\\,\\text{cm}$. M et N sont deux points sur le cercle. Que peut-on dire ?",
+      "options": [
+        "Le cercle n'est pas bien tracé car OM et ON sont égaux.",
+        "Le rayon du cercle est $5\\,\\text{cm}$ et le diamètre est $10\\,\\text{cm}$.",
+        "Le diamètre du cercle est $5\\,\\text{cm}$.",
+        "La distance MN est le rayon du cercle."
+      ],
+      "correctAnswer": "Le rayon du cercle est $5\\,\\text{cm}$ et le diamètre est $10\\,\\text{cm}$.",
+      "explanation": "Par définition, tous les points d'un cercle sont à la même distance du centre : c'est le rayon. Comme OM = ON = $5\\,\\text{cm}$, le rayon vaut $5\\,\\text{cm}$. Le diamètre est le double du rayon, donc $10\\,\\text{cm}$. MN est une corde, ce n'est pas forcément un diamètre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

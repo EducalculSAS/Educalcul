@@ -1,0 +1,289 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.583329+00:00",
+  "id": 33,
+  "code": "cp-t04-c01",
+  "title": "Reconnaître des groupes identiques",
+  "description": "Cours structuré Educalcul : Reconnaître des groupes identiques.",
+  "subject": "Premiers problèmes de multiplication et de partage",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Premiers problèmes de multiplication et de partage",
+    "titre_du_cours": "Reconnaître des groupes identiques",
+    "objectif_global": "Reconnaître des groupes identiques",
+    "mini_lecons_imposees": [
+      "Repérer des groupes de même taille.",
+      "Décrire nombre de groupes et taille d'un groupe.",
+      "Distinguer groupes égaux et groupes inégaux."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Premiers problèmes de multiplication et de partage",
+      "lessons": [
+        {
+          "title": "Repérer des groupes de même taille.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer des groupes de même taille"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as devant toi plusieurs petits sacs de billes. Certains sacs contiennent $3$ billes, d'autres $4$ billes, et d'autres encore $3$ billes. Quand deux sacs ont exactement le même nombre de billes, on dit qu'ils forment des groupes de même taille. C'est comme si tu avais deux équipes avec le même nombre de joueurs : le jeu est équitable !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                3
+              ],
+              "right": [
+                6
+              ],
+              "caption": "Deux groupes de $3$ billes équilibrent un groupe de $6$ billes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la balance : à gauche, j'ai mis deux groupes de $3$ billes chacun. À droite, un seul groupe de $6$ billes. La balance est en équilibre ! Cela veut dire que les deux côtés ont la même quantité totale. Mais ce qui nous intéresse ici, c'est de voir que les deux groupes de gauche ont la même taille : $3$ billes chacun."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons une rangée de boîtes de crayons. La première boîte a $4$ crayons, la deuxième en a $2$, la troisième en a $4$, et la quatrième en a $3$. Prends le temps de compter chaque groupe. Tu vois que la première et la troisième boîte ont le même nombre de crayons : $4$. Elles forment donc des groupes de même taille. Les autres boîtes ont des tailles différentes."
+            },
+            {
+              "type": "display_math",
+              "latex": "4 = 4 \\quad\\text{mais}\\quad 4 \\neq 2 \\quad\\text{et}\\quad 4 \\neq 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec des images d'animaux. Dessine ou imagine trois enclos : le premier contient $2$ lapins, le second $2$ poules, le troisième $3$ moutons. Même si les animaux sont différents, les deux premiers enclos ont le même nombre d'animaux : $2$. On ne regarde pas le type d'animal, seulement le nombre. C'est ça, repérer des groupes de même taille : comparer les quantités, pas la nature des objets."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant repérer quand plusieurs groupes ont la même taille. Dans la prochaine leçon, nous allons apprendre à dire combien il y a de groupes et de combien chaque groupe est composé. C'est une étape passionnante pour bien organiser nos collections !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces groupes de fruits, lesquels ont la même taille ? Groupe A : $3$ pommes. Groupe B : $2$ poires. Groupe C : $3$ bananes.",
+              "answer": "Les groupes A et C ont la même taille ($3$ fruits).",
+              "hint": "Compte les fruits dans chaque groupe et compare les nombres.",
+              "explanation": "Le groupe A a $3$ pommes, le groupe C a $3$ bananes. Les deux groupes contiennent $3$ éléments, donc ils ont la même taille. Le groupe B n'a que $2$ poires, sa taille est différente."
+            },
+            {
+              "question": "Voici $4$ pots de yaourt : $2$ pots à la fraise, $1$ pot nature, $1$ pot à la vanille. Combien y a-t-il de groupes de même taille ?",
+              "answer": "Il y a un groupe de $2$ pots (fraise) et deux groupes de $1$ pot (nature et vanille). Les groupes de $1$ pot ont la même taille.",
+              "hint": "Regroupe les pots par saveur et compte chaque groupe.",
+              "explanation": "Les pots à la fraise forment un groupe de $2$. Le pot nature et le pot à la vanille forment chacun un groupe de $1$. Ces deux groupes de $1$ ont la même taille."
+            },
+            {
+              "question": "Dans la classe, il y a $3$ tables de $4$ élèves et $2$ tables de $3$ élèves. Quelles tables forment des groupes de même taille ?",
+              "answer": "Les $3$ tables de $4$ élèves forment des groupes de même taille entre elles. Les $2$ tables de $3$ élèves forment aussi des groupes de même taille entre elles.",
+              "hint": "Compare le nombre d'élèves par table.",
+              "explanation": "Chaque table de $4$ élèves a la même taille : $4$. Chaque table de $3$ élèves a la même taille : $3$. Mais une table de $4$ et une table de $3$ n'ont pas la même taille."
+            }
+          ]
+        },
+        {
+          "title": "Décrire nombre de groupes et taille d'un groupe.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décrire nombre de groupes et taille d'un groupe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer des groupes de même taille, nous allons apprendre à les décrire avec précision. Imagine un étal de marché avec des paniers de pommes. Il y a $3$ paniers, et dans chaque panier il y a $4$ pommes. Pour décrire cette situation, on donne deux informations : le nombre de groupes (ici $3$ paniers) et la taille de chaque groupe (ici $4$ pommes par panier)."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10,
+                10
+              ],
+              "target": 40,
+              "caption": "$3$ groupes de $4$ pièces de $10$ centimes : $3 \\times 4 = 12$ pièces au total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le porte-monnaie : j'ai rangé les pièces par petits tas de $4$ pièces. Il y a $3$ tas. Chaque tas est un groupe de taille $4$. On peut dire : « Il y a $3$ groupes de $4$ pièces. » C'est une façon très claire de décrire une collection sans avoir à tout compter un par un."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec des boîtes de jouets. Tu as $5$ boîtes, et dans chaque boîte il y a $2$ petites voitures. Pour décrire cet ensemble, tu dis : « Il y a $5$ groupes de $2$ voitures. » Le nombre de groupes, c'est $5$ (les boîtes). La taille du groupe, c'est $2$ (les voitures par boîte). Essaie de le dire tout haut en montrant du doigt chaque boîte : un groupe de $2$, un autre groupe de $2$, encore un groupe de $2$..."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 \\text{ groupes de } 2 = 5 \\times 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les groupes ne sont pas dans des contenants séparés. Regarde ce dessin : $4$ rangées de $3$ fleurs chacune. Ici, les groupes sont les rangées. Il y a $4$ groupes (les rangées) et chaque groupe a une taille de $3$ (les fleurs par rangée). On peut aussi voir les colonnes : $3$ groupes de $4$ fleurs. Les deux descriptions sont justes, ça change juste le point de vue !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens très fort pour décrire des groupes ! Dans la dernière leçon, nous allons voir comment reconnaître tout de suite si des groupes sont égaux ou inégaux, sans même avoir besoin de les compter en détail. C'est un super pouvoir pour résoudre des problèmes de partage."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a $4$ nids dans un arbre. Chaque nid contient $3$ œufs. Complète : Il y a $\\square$ groupes de $\\square$ œufs.",
+              "answer": "Il y a $4$ groupes de $3$ œufs.",
+              "hint": "Le nombre de nids donne le nombre de groupes. Le nombre d'œufs par nid donne la taille du groupe.",
+              "explanation": "Les nids sont les groupes : il y en a $4$. Chaque nid contient $3$ œufs, donc la taille du groupe est $3$."
+            },
+            {
+              "question": "Sur une plaque de gâteaux, il y a $3$ rangées de $4$ gâteaux. Écris la description en groupes.",
+              "answer": "Il y a $3$ groupes de $4$ gâteaux (ou $4$ groupes de $3$ gâteaux).",
+              "hint": "Compte les rangées pour le nombre de groupes, compte les gâteaux par rangée pour la taille.",
+              "explanation": "Si on prend les rangées comme groupes : $3$ rangées, chaque rangée a $4$ gâteaux → $3$ groupes de $4$. Si on prend les colonnes : $4$ colonnes, chaque colonne a $3$ gâteaux → $4$ groupes de $3$. Les deux sont corrects."
+            },
+            {
+              "question": "Dans un jeu, tu as $6$ pions. Tu les ranges en $2$ tas égaux. Combien de pions dans chaque tas ? Complète : $2$ groupes de $\\square$ pions.",
+              "answer": "$2$ groupes de $3$ pions.",
+              "hint": "Partage les $6$ pions en $2$ tas identiques et compte.",
+              "explanation": "Si tu fais $2$ tas égaux avec $6$ pions, chaque tas contient $3$ pions. Donc $2$ groupes de $3$ pions."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer groupes égaux et groupes inégaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distinguer groupes égaux et groupes inégaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant décrire des groupes. Allons plus loin : comment savoir tout de suite si des groupes sont égaux ou inégaux ? Imagine deux enfants qui partagent des bonbons. Léa a $5$ bonbons dans sa main, Paul a $5$ bonbons dans la sienne. Ils ont le même nombre : leurs groupes sont égaux. Mais si Léa a $5$ bonbons et Paul en a $4$, leurs groupes sont inégaux : l'un a plus que l'autre."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5
+              ],
+              "right": [
+                4,
+                1
+              ],
+              "caption": "Un groupe de $5$ équivaut à un groupe de $4$ et un groupe de $1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "La balance nous aide à voir l'égalité. À gauche, un groupe de $5$ cubes. À droite, un groupe de $4$ cubes et un groupe de $1$ cube. La balance penche ? Non, elle est en équilibre car $4+1=5$. Mais les groupes ne sont pas tous égaux entre eux : le groupe de $5$ est plus grand que le groupe de $4$, et plus grand que le groupe de $1$. Seuls des groupes qui ont exactement le même nombre sont égaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons une situation de partage. Tu as $8$ crayons à répartir entre $2$ copains. Si tu donnes $4$ crayons à chacun, les deux groupes sont égaux : $4$ et $4$. Mais si tu donnes $5$ crayons à l'un et $3$ à l'autre, les groupes sont inégaux : $5$ et $3$. Pour vérifier vite, tu peux aligner les crayons par paires : si chaque crayon du premier groupe trouve un camarade dans le second groupe sans reste, c'est gagné, ils sont égaux !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "$8$ unités : peuvent former $2$ groupes égaux de $4$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a plusieurs groupes à comparer. Supposons trois boîtes de kapla : la première a $6$ pièces, la deuxième $6$ pièces, la troisième $4$ pièces. Les deux premières boîtes forment des groupes égaux entre elles ($6=6$). Mais la troisième boîte forme un groupe inégal par rapport aux deux autres ($4 \\neq 6$). On dit alors : « Il y a deux groupes égaux de $6$ et un groupe différent de $4$. » C'est une description complète et précise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as terminé ce cours sur les groupes identiques. Tu sais maintenant repérer des groupes de même taille, décrire leur nombre et leur taille, et distinguer groupes égaux et inégaux. Ces compétences te seront très utiles pour comprendre la multiplication et le partage plus tard. Continue ainsi, tu progresses à grands pas !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer des groupes qui ont le même nombre d'objets.",
+                "Je sais dire combien il y a de groupes et combien d'objets dans chaque groupe.",
+                "Je sais reconnaître si des groupes sont égaux ou inégaux en comparant leurs quantités.",
+                "Je peux décrire une collection en groupes égaux (ex : 3 groupes de 4)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux enfants ont des billes. Ana a $6$ billes, Ben a $6$ billes. Leurs groupes sont-ils égaux ?",
+              "answer": "Oui, leurs groupes sont égaux car tous les deux ont $6$ billes.",
+              "hint": "Compare les deux nombres.",
+              "explanation": "Ana a $6$ billes, Ben a $6$ billes. $6 = 6$, donc les groupes ont la même taille : ils sont égaux."
+            },
+            {
+              "question": "Dans un bac, il y a $3$ tas de cubes : $4$ cubes, $4$ cubes, $5$ cubes. Quels tas sont égaux ?",
+              "answer": "Les deux premiers tas ($4$ cubes) sont égaux entre eux. Le troisième tas ($5$ cubes) est inégal par rapport aux autres.",
+              "hint": "Regarde quels tas ont exactement le même nombre de cubes.",
+              "explanation": "Les deux tas de $4$ cubes ont la même taille, ils sont égaux. Le tas de $5$ cubes a une taille différente, il est inégal par rapport aux tas de $4$."
+            },
+            {
+              "question": "Tu as $10$ bonbons à partager entre $2$ amis. Comment faire pour que les groupes soient égaux ?",
+              "answer": "Donner $5$ bonbons à chaque ami. Cela fait $2$ groupes égaux de $5$ bonbons.",
+              "hint": "Partage les bonbons en deux tas identiques.",
+              "explanation": "Pour que les deux groupes soient égaux, il faut mettre le même nombre de bonbons dans chaque part. $10$ divisé en $2$ parts égales donne $5$ bonbons par part. Donc $2$ groupes de $5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

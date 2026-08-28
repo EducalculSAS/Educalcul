@@ -1,0 +1,164 @@
+{
+  "_status": "done",
+  "_course_id": 410,
+  "_course_code": "5eme-t07-c01-reconnaitre-la-proportionnalite",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Tableau",
+  "title": "Approfondissement : Tableau - Proportionnalité",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous montre des valeurs de $x$ et $y$. Ce tableau représente-t-il une relation proportionnelle ?",
+      "options": [
+        "Oui, le rapport $y/x$ est constant",
+        "Non, le rapport $y/x$ varie",
+        "Oui, car les nombres augmentent",
+        "Non, car il manque une valeur"
+      ],
+      "correctAnswer": "Oui, le rapport $y/x$ est constant",
+      "explanation": "Dans un tableau proportionnel, le rapport $y/x$ doit être le même pour toutes les lignes. Ici $6/2 = 3$, $12/4 = 3$, $15/5 = 3$, le rapport est constant, donc la relation est proportionnelle. Les autres réponses confondent augmentation et proportionnalité ou pensent qu'une valeur manquante empêche la proportionnalité.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "2",
+            "6"
+          ],
+          [
+            "4",
+            "12"
+          ],
+          [
+            "5",
+            "15"
+          ]
+        ],
+        "caption": "Tableau de valeurs"
+      }
+    },
+    {
+      "text": "Dans le tableau proportionnel suivant, quelle est la valeur manquante ?",
+      "options": [
+        "$21$",
+        "$18$",
+        "$24$",
+        "$27$"
+      ],
+      "correctAnswer": "$21$",
+      "explanation": "Le coefficient de proportionnalité est $k = y/x = 6/2 = 3$. Pour $x = 7$, on a $y = 3 \\times 7 = 21$. Les autres valeurs correspondent à des erreurs de calcul (par exemple $3 \\times 6 = 18$ ou $3 \\times 8 = 24$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "2",
+            "6"
+          ],
+          [
+            "4",
+            "12"
+          ],
+          [
+            "7",
+            "?"
+          ]
+        ],
+        "caption": "Tableau avec une valeur manquante"
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous contient trois colonnes. Laquelle est proportionnelle à la colonne A ?",
+      "options": [
+        "Colonne B",
+        "Colonne C",
+        "Les deux colonnes",
+        "Aucune"
+      ],
+      "correctAnswer": "Colonne B",
+      "explanation": "On calcule le rapport B/A : $6/2 = 3$, $12/4 = 3$, $15/5 = 3$, il est constant. Pour la colonne C, les rapports sont $6/2 = 3$, $8/4 = 2$, $9/5 = 1,8$, ils varient. Donc seule la colonne B est proportionnelle à A.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "A",
+          "B",
+          "C"
+        ],
+        "rows": [
+          [
+            "2",
+            "6",
+            "6"
+          ],
+          [
+            "4",
+            "12",
+            "8"
+          ],
+          [
+            "5",
+            "15",
+            "9"
+          ]
+        ],
+        "caption": "Tableau à trois colonnes"
+      }
+    },
+    {
+      "text": "Quel est le coefficient de proportionnalité du tableau suivant ?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le coefficient $k$ est $y/x$. Pour la première ligne $12/3 = 4$, pour la deuxième $20/5 = 4$, pour la troisième $32/8 = 4$. Le coefficient est donc $4$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "3",
+            "12"
+          ],
+          [
+            "5",
+            "20"
+          ],
+          [
+            "8",
+            "32"
+          ]
+        ],
+        "caption": "Tableau pour trouver le coefficient"
+      }
+    },
+    {
+      "text": "Une recette de gâteau utilise $250$ g de farine pour $4$ œufs. Quel tableau représente correctement la proportionnalité entre la farine (en grammes) et le nombre d'œufs ?",
+      "options": [
+        "Farine (g) : $250$, $500$, $750$ ; Œufs : $4$, $8$, $12$",
+        "Farine (g) : $250$, $500$, $800$ ; Œufs : $4$, $8$, $12$",
+        "Farine (g) : $250$, $400$, $600$ ; Œufs : $4$, $8$, $12$",
+        "Farine (g) : $250$, $500$, $750$ ; Œufs : $4$, $9$, $12$"
+      ],
+      "correctAnswer": "Farine (g) : $250$, $500$, $750$ ; Œufs : $4$, $8$, $12$",
+      "explanation": "La proportionnalité impose un rapport constant farine/œufs = $250/4 = 62,5$. Dans le premier tableau, les couples sont $(250,4)$, $(500,8)$, $(750,12)$ ; le rapport est toujours $62,5$. Les autres tableaux rompent cette constance : le deuxième a $800/12 \\approx 66,7$, le troisième $400/8 = 50$, le quatrième $500/9 \\approx 55,6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

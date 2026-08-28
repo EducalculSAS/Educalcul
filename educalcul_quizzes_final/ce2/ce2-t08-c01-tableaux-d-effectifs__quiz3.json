@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Répondre à des questions",
+  "title": "Quiz : Lire un tableau d'effectifs (CE2)",
+  "questions": [
+    {
+      "text": "Voici un tableau d'effectifs montrant les âges des élèves d'une classe de CE2. Combien d'élèves ont 8 ans ?",
+      "options": [
+        "3 élèves",
+        "4 élèves",
+        "6 élèves",
+        "5 élèves"
+      ],
+      "correctAnswer": "6 élèves",
+      "explanation": "Dans le tableau, on cherche la ligne \"Âge 8 ans\" et on lit l'effectif correspondant qui est 6.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Âge (en ans)",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "6"
+          ],
+          [
+            "9",
+            "5"
+          ],
+          [
+            "10",
+            "3"
+          ]
+        ],
+        "caption": "Âges des élèves de la classe"
+      }
+    },
+    {
+      "text": "En te servant du même tableau, quel est le nombre total d'élèves dans la classe ?",
+      "options": [
+        "16 élèves",
+        "17 élèves",
+        "18 élèves",
+        "19 élèves"
+      ],
+      "correctAnswer": "18 élèves",
+      "explanation": "On additionne tous les effectifs : $4 + 6 + 5 + 3 = 18$ élèves au total.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Âge (en ans)",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "6"
+          ],
+          [
+            "9",
+            "5"
+          ],
+          [
+            "10",
+            "3"
+          ]
+        ],
+        "caption": "Âges des élèves de la classe"
+      }
+    },
+    {
+      "text": "Quelle est l'âge le plus représenté dans cette classe (la modalité qui a le plus grand effectif) ?",
+      "options": [
+        "7 ans",
+        "8 ans",
+        "9 ans",
+        "10 ans"
+      ],
+      "correctAnswer": "8 ans",
+      "explanation": "On compare les effectifs : 4 pour 7 ans, 6 pour 8 ans, 5 pour 9 ans, 3 pour 10 ans. Le plus grand effectif est 6, correspondant à 8 ans.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Âge (en ans)",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "6"
+          ],
+          [
+            "9",
+            "5"
+          ],
+          [
+            "10",
+            "3"
+          ]
+        ],
+        "caption": "Âges des élèves de la classe"
+      }
+    },
+    {
+      "text": "Combien y a-t-il de plus d'élèves qui ont 9 ans que d'élèves qui ont 7 ans ?",
+      "options": [
+        "1 élève",
+        "2 élèves",
+        "3 élèves",
+        "4 élèves"
+      ],
+      "correctAnswer": "1 élève",
+      "explanation": "Effectif 9 ans = 5, effectif 7 ans = 4. La différence est $5 - 4 = 1$ élève.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Âge (en ans)",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "6"
+          ],
+          [
+            "9",
+            "5"
+          ],
+          [
+            "10",
+            "3"
+          ]
+        ],
+        "caption": "Âges des élèves de la classe"
+      }
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie d'après le tableau ?",
+      "options": [
+        "Il y a plus d'élèves de 9 ans que de 8 ans.",
+        "Il y a moins d'élèves de 10 ans que de 7 ans.",
+        "Il y a autant d'élèves de 7 ans que de 9 ans.",
+        "Le nombre d'élèves de 8 ans est inférieur à celui des 7 ans."
+      ],
+      "correctAnswer": "Il y a moins d'élèves de 10 ans que de 7 ans.",
+      "explanation": "Effectif 10 ans = 3, effectif 7 ans = 4. 3 est bien inférieur à 4. Les autres affirmations sont fausses : 5 < 6, 4 ≠ 5, 6 > 4.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Âge (en ans)",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "7",
+            "4"
+          ],
+          [
+            "8",
+            "6"
+          ],
+          [
+            "9",
+            "5"
+          ],
+          [
+            "10",
+            "3"
+          ]
+        ],
+        "caption": "Âges des élèves de la classe"
+      }
+    }
+  ]
+}

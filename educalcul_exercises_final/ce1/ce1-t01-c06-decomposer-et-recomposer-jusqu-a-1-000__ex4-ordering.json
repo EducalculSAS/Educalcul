@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 73,
+  "_course_code": "ce1-t01-c06-decomposer-et-recomposer-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Décomposer et recomposer jusqu'à 1 000",
+  "title": "Ordonner des nombres jusqu'à 1 000",
+  "blocks": [
+    {
+      "title": "Ordre croissant : nombres en chiffres",
+      "content": "Range ces nombres du plus petit au plus grand.",
+      "items": [
+        "$245$",
+        "$312$",
+        "$389$",
+        "$406$"
+      ],
+      "explanation": "On compare d'abord le chiffre des centaines : $2$ centaines < $3$ centaines < $4$ centaines. Pour $312$ et $389$, même centaine ($3$), on compare les dizaines : $1$ dizaine < $8$ dizaines. L'ordre est donc $245$, $312$, $389$, $406$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant : nombres décomposés",
+      "content": "Range ces décompositions du plus grand au plus petit.",
+      "items": [
+        "$5$ centaines $2$ dizaines $7$ unités",
+        "$4$ centaines $9$ dizaines $1$ unité",
+        "$4$ centaines $3$ dizaines $8$ unités",
+        "$3$ centaines $9$ dizaines $9$ unités"
+      ],
+      "explanation": "On convertit en nombres : $527$, $491$, $438$, $399$. On compare les centaines : $5$ > $4$ > $3$. Pour les deux nombres à $4$ centaines, on compare les dizaines : $9$ > $3$. L'ordre décroissant est $527$, $491$, $438$, $399$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : représentations variées",
+      "content": "Range ces nombres du plus petit au plus grand.",
+      "items": [
+        "$2$ centaines $5$ dizaines $4$ unités",
+        "$200 + 60 + 3$",
+        "$271$",
+        "deux cent quatre-vingt-dix"
+      ],
+      "explanation": "On écrit tous les nombres en chiffres : $254$, $263$, $271$, $290$. Ils ont tous $2$ centaines. On compare les dizaines : $5$ < $6$ < $7$ < $9$. L'ordre croissant est $254$, $263$, $271$, $290$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.504927+00:00",
+  "id": 646,
+  "code": "terminale-generale-complementaires-t03-c02",
+  "title": "Propriétés du logarithme",
+  "description": "Cours structuré Educalcul : Propriétés du logarithme.",
+  "subject": "Fonction logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Fonction logarithme",
+    "titre_du_cours": "Propriétés du logarithme",
+    "objectif_global": "Propriétés du logarithme",
+    "mini_lecons_imposees": [
+      "Produit / quotient.",
+      "Calcul.",
+      "Transformer."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Fonction logarithme",
+      "lessons": [
+        {
+          "title": "Produit / quotient.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le logarithme d'un produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur les propriétés du logarithme. Aujourd'hui nous allons découvrir pourquoi le logarithme transforme une multiplication en une addition, ce qui est l'une des idées les plus puissantes de l'analyse. Imagine que tu as deux nombres positifs, appelons-les $a$ et $b$. Leur produit $ab$ peut être vu comme la mise bout à bout de deux grandeurs. Le logarithme, qui est l'opération inverse de l'exponentiation, va nous permettre de « déplier » ce produit. En terme concret, si tu connais $\\log a$ et $\\log b$, tu peux retrouver $\\log(ab)$ sans avoir à multiplier $a$ et $b$ eux‑mêmes. C'est un gain de temps énorme quand les nombres deviennent très grands ou très petits, comme en chimie ou en acoustique. Prends un moment pour visualiser : le logarithme agit comme un traducteur qui change le langage de la multiplication en celui de l'addition, tout en gardant le sens exact de l'information."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log(ab) = \\log a + \\log b"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Posons $u = \\log a$ et $v = \\log b$. Par définition, $a = 10^{u}$ et $b = 10^{v}$ (ou $e^{u}$ et $e^{v}$ si l'on travaille en base $e$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit $ab$ devient $10^{u} \\times 10^{v} = 10^{u+v}$ grâce à la règle des puissances $x^{m}x^{n}=x^{m+n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En prenant le logarithme des deux côtés, $\\log(ab) = \\log(10^{u+v}) = u+v = \\log a + \\log b$. La démonstration est achevée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons la formule avec des nombres concrets : $\\log 2 \\approx 0,3010$ et $\\log 5 \\approx 0,6990$. Leur somme vaut $1,0000$, ce qui est bien $\\log(2 \\times 5) = \\log 10 = 1$. Tu vois que la propriété fonctionne parfaitement, même avec des valeurs approchées. Essaie toi‑même avec $\\log 3$ et $\\log 4$ pour vérifier que $\\log 12$ se retrouve."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le logarithme d'un quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "La même idée s'applique quand on divise. Si tu connais $\\log a$ et $\\log b$, le logarithme du quotient $\\frac{a}{b}$ se calcule simplement en soustrayant : $\\log\\left(\\frac{a}{b}\\right) = \\log a - \\log b$. C'est très utile pour simplifier des expressions où apparaissent des fractions, par exemple en chimie quand on manipule des concentrations ou en acoustique pour les niveaux sonores. Visualise la division comme l'opération inverse de la multiplication : le logarithme transforme cette inversion en une soustraction, ce qui garde la structure additive si commode."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log\\left(\\frac{a}{b}\\right) = \\log a - \\log b"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Utiliser la propriété du produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $\\frac{a}{b} = a \\times \\frac{1}{b}$. Le logarithme du produit donne $\\log a + \\log\\left(\\frac{1}{b}\\right)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Logarithme de l'inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\frac{1}{b} = b^{-1}$, on a $\\log\\left(b^{-1}\\right) = -\\log b$ d'après la règle des puissances $\\log(x^{k}) = k\\log x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En rassemblant, $\\log\\left(\\frac{a}{b}\\right) = \\log a - \\log b$. La propriété est démontrée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple numérique : $\\log 100 = 2$ et $\\log 4 \\approx 0,6021$. Alors $\\log\\left(\\frac{100}{4}\\right) = \\log 25 \\approx 1,3979$, ce qui correspond bien à $2 - 0,6021 = 1,3979$. Essaie avec $\\frac{50}{2}$ ou $\\frac{81}{9}$ pour t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse des deux propriétés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous disposons maintenant de deux outils complémentaires : le logarithme change une multiplication en addition et une division en soustraction. Ensemble, elles permettent de décomposer n'importe quelle expression formée de produits, quotients et puissances en une somme ou différence de logarithmes simples. C'est la clé pour simplifier des calculs complexes, résoudre des équations logarithmiques ou même dériver des fonctions composées. Garde ces formules sous la main : $\\log(ab) = \\log a + \\log b$ et $\\log\\left(\\frac{a}{b}\\right) = \\log a - \\log b$. Elles seront tes compagnons constants dans la suite du chapitre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases}\\log(ab)=\\log a+\\log b\\\\\\log\\left(\\frac{a}{b}\\right)=\\log a-\\log b\\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\log(6 \\times 7)$ en utilisant $\\log 6 \\approx 0,7782$ et $\\log 7 \\approx 0,8451$.",
+              "answer": "1,6233",
+              "hint": "Utilise la propriété $\\log(ab)=\\log a+\\log b$.",
+              "explanation": "On additionne les deux logarithmes donnés : $0,7782 + 0,8451 = 1,6233$, ce qui est bien $\\log 42$."
+            },
+            {
+              "question": "Simplifier $\\log\\left(\\frac{1000}{10}\\right)$ sans calculatrice.",
+              "answer": "2",
+              "hint": "Applique $\\log\\left(\\frac{a}{b}\\right)=\\log a-\\log b$ et connais $\\log 1000$ et $\\log 10$.",
+              "explanation": "$\\log 1000 = 3$ car $10^{3}=1000$, et $\\log 10 = 1$. Donc $3-1=2$, ce qui est $\\log 100$."
+            },
+            {
+              "question": "Écrire $\\log(12 \\times 5) - \\log 3$ sous la forme d'un seul logarithme.",
+              "answer": "\\log 20",
+              "hint": "Regroupe d'abord le produit puis utilise la propriété du quotient.",
+              "explanation": "$\\log(12 \\times 5) = \\log 60$. Ensuite $\\log 60 - \\log 3 = \\log\\left(\\frac{60}{3}\\right) = \\log 20$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un logarithme avec les propriétés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons mettre en pratique les propriétés vues précédemment pour évaluer des logarithmes sans avoir besoin d'une calculatrice à chaque étape. Le logarithme en base 10, noté $\\log$, et le logarithme naturel, noté $\\ln$, obéissent aux mêmes règles. Savoir manipuler ces formules te permettra de simplifier des expressions comme $\\log 250$ ou $\\ln\\left(\\frac{e^{3}}{5}\\right)$ en quelques secondes. Rappelle‑toi que $\\log 10 = 1$ et $\\ln e = 1$ ; ces valeurs de référence sont les piliers sur lesquels tu vas t'appuyer."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log(10^{k}) = k \\quad \\text{et} \\quad \\ln(e^{k}) = k"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer le nombre en facteurs connus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $\\log 250$, écris $250 = 25 \\times 10 = 5^{2} \\times 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la propriété du produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\log 250 = \\log(5^{2}) + \\log 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la puissance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\log(5^{2}) = 2\\log 5$. Si tu connais $\\log 5 \\approx 0,6990$, tu obtiens $2 \\times 0,6990 + 1 = 2,3980$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec $\\ln\\left(\\frac{e^{3}}{5}\\right)$. Écris le quotient, sépare le numérateur et le dénominateur, puis simplifie $\\ln e^{3}$ en $3$. Il te restera $3 - \\ln 5$. Si $\\ln 5 \\approx 1,6094$, le résultat vaut environ $1,3906$. Cette méthode fonctionne pour toute expression combinant produits, quotients et puissances."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changement de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois tu dois évaluer un logarithme dans une base qui n'est pas 10 ni $e$, par exemple $\\log_{2} 8$. La formule de changement de base te permet de passer par une base commode : $\\log_{a} b = \\frac{\\log b}{\\log a} = \\frac{\\ln b}{\\ln a}$. Cette égalité se démontre en posant $x = \\log_{a} b$, donc $a^{x}=b$, puis en prenant le logarithme usuel des deux côtés. C'est un outil indispensable quand la calculatrice ne propose que $\\log$ et $\\ln$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log_{a} b = \\frac{\\log b}{\\log a} = \\frac{\\ln b}{\\ln a}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser $x = \\log_{a} b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Alors $a^{x}=b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Prendre le logarithme usuel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\log(a^{x}) = \\log b \\Rightarrow x\\log a = \\log b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Isoler $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = \\frac{\\log b}{\\log a}$. Le même raisonnement vaut avec $\\ln$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons : $\\log_{2} 8 = \\frac{\\log 8}{\\log 2}$. Comme $8 = 2^{3}$, on sait que $\\log 8 = 3\\log 2$, donc le quotient vaut $3$. Vérifie avec $\\log_{5} 125$ : $\\frac{\\log 125}{\\log 5} = \\frac{3\\log 5}{\\log 5}=3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs combinés et pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand plusieurs opérations s'enchaînent, l'ordre compte. Par exemple $\\log(2 \\times 3^{2})$ ne se simplifie pas en $\\log 2 \\times 2\\log 3$ ; il faut d'abord traiter la puissance : $\\log(2 \\times 9) = \\log 2 + \\log 9 = \\log 2 + 2\\log 3$. Un piège fréquent est d'oublier que $\\log(a+b) \\neq \\log a + \\log b$. Le logarithme ne « distribue » pas sur la somme. Garde cette distinction claire pour ne pas perdre de points bêtement."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log(a+b) \\neq \\log a + \\log b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne‑toi sur $\\ln\\left(\\frac{e^{2} \\times 4}{2}\\right)$. Simplifie d'abord la fraction : $\\frac{e^{2} \\times 4}{2} = 2e^{2}$. Puis $\\ln(2e^{2}) = \\ln 2 + \\ln e^{2} = \\ln 2 + 2$. Avec $\\ln 2 \\approx 0,6931$, le résultat est $2,6931$. Cette approche pas‑à‑pas évite les erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Évaluer $\\log 500$ en sachant $\\log 5 \\approx 0,6990$.",
+              "answer": "2,6990",
+              "hint": "Écris $500 = 5 \\times 100$ et utilise $\\log 100 = 2$.",
+              "explanation": "$\\log 500 = \\log 5 + \\log 100 = 0,6990 + 2 = 2,6990$."
+            },
+            {
+              "question": "Calculer $\\log_{3} 81$ par changement de base avec $\\log$.",
+              "answer": "4",
+              "hint": "Utilise $\\log_{3} 81 = \\frac{\\log 81}{\\log 3}$ et remarque que $81 = 3^{4}$.",
+              "explanation": "$\\log 81 = 4\\log 3$, donc le quotient vaut $4$."
+            },
+            {
+              "question": "Simplifier $\\ln\\left(\\frac{e^{4} \\times 3}{9}\\right)$.",
+              "answer": "4 + \\ln 3 - \\ln 9",
+              "hint": "Réduis la fraction puis sépare le produit.",
+              "explanation": "$\\frac{e^{4} \\times 3}{9} = \\frac{e^{4}}{3}$. Alors $\\ln\\left(\\frac{e^{4}}{3}\\right) = \\ln e^{4} - \\ln 3 = 4 - \\ln 3$. Comme $\\ln 9 = 2\\ln 3$, on peut aussi écrire $4 + \\ln 3 - \\ln 9$."
+            }
+          ]
+        },
+        {
+          "title": "Transformer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Transformer une expression logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce chapitre. Ici, l'objectif est d'apprendre à réécrire une expression contenant des logarithmes sous une forme plus simple, ou au contraire à développer un logarithme unique en somme et différence de termes plus élémentaires. Cette gymnastique est essentielle pour résoudre des équations, pour dériver des fonctions logarithmiques ou pour intégrer des fractions rationnelles. Rappelle‑toi les trois piliers : produit, quotient, puissance. Chaque transformation doit respecter le domaine de définition : les arguments des logarithmes restent strictement positifs."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log(a^{k}) = k\\log a"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les opérations internes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les multiplications, divisions et puissances à l'intérieur du logarithme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer les propriétés dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'abord la puissance, puis le produit, enfin le quotient, ou toute combinaison qui te semble la plus claire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi que chaque argument obtenu est $>0$ ; sinon la transformation n'est pas valide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\log\\left(\\frac{x^{2}\\sqrt{y}}{z^{3}}\\right)$ avec $x,y,z>0$. La racine carrée s'écrit $y^{1/2}$. On applique la puissance : $\\log(x^{2}) = 2\\log x$, $\\log(y^{1/2}) = \\frac{1}{2}\\log y$, $\\log(z^{3}) = 3\\log z$. Le quotient donne $2\\log x + \\frac{1}{2}\\log y - 3\\log z$. L'expression est maintenant une combinaison linéaire de logarithmes simples, facile à dériver ou à intégrer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une équation logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés permettent aussi de résoudre des équations comme $\\log(x-1) + \\log(x+1) = 1$. En regroupant le côté gauche avec la propriété du produit, on obtient $\\log\\big((x-1)(x+1)\\big) = 1$, soit $\\log(x^{2}-1) = 1$. En revenant à la forme exponentielle : $x^{2}-1 = 10^{1} = 10$, d'où $x^{2}=11$ et $x=\\sqrt{11}$ (la racine négative est exclue car $x-1>0$). Vérifie toujours que les solutions appartiennent au domaine initial."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log(x-1)+\\log(x+1)=1 \\implies x=\\sqrt{11}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regrouper les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\log((x-1)(x+1)) = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Passer à l'exponentielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$(x-1)(x+1) = 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre et filtrer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x^{2}=11 \\Rightarrow x=\\pm\\sqrt{11}$. Seule $x=\\sqrt{11}$ satisfait $x>1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne‑toi sur $\\ln(x+2) - \\ln(x-2) = \\ln 3$. Transforme la différence en quotient : $\\ln\\left(\\frac{x+2}{x-2}\\right) = \\ln 3$. Les logarithmes naturels s'annulent, donnant $\\frac{x+2}{x-2}=3$. Résous l'équation rationnelle : $x+2 = 3x-6 \\Rightarrow 2x = 8 \\Rightarrow x=4$. Vérifie que $x=4$ rend les arguments positifs ($6$ et $2$), c'est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan et checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les trois propriétés fondamentales du logarithme : produit, quotient, puissance. Tu sais les combiner pour simplifier des expressions, changer de base, calculer des valeurs approchées et résoudre des équations. Chaque fois que tu rencontres un logarithme, demande‑toi : « Y a‑t‑il un produit, un quotient ou une puissance à l'intérieur ? » Si oui, déploie les formules. N'oublie jamais de vérifier le domaine de définition, c'est la condition sine qua non pour que tes manipulations soient légitimes. Avec de l'entraînement, ces transformations deviendront automatiques, comme un réflexe mathématique."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire $\\log(ab)=\\log a+\\log b$ et $\\log(a/b)=\\log a-\\log b$.",
+                "Je sais utiliser $\\log(a^{k})=k\\log a$ pour extraire les exposants.",
+                "Je sais changer de base avec $\\log_{a}b=\\frac{\\log b}{\\log a}$.",
+                "Je sais simplifier une expression logarithmique en somme/différence de termes simples.",
+                "Je sais résoudre une équation logarithmique en revenant à l'exponentielle et en vérifiant le domaine."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réécrire $\\log\\left(\\frac{x^{3}\\sqrt{y}}{z^{2}}\\right)$ en somme et différence de logarithmes simples (suppose $x,y,z>0$).",
+              "answer": "3\\log x + \\frac{1}{2}\\log y - 2\\log z",
+              "hint": "Transforme la racine en puissance $1/2$ puis applique les trois propriétés.",
+              "explanation": "$\\log(x^{3}) = 3\\log x$, $\\log(y^{1/2}) = \\frac12\\log y$, $\\log(z^{2}) = 2\\log z$. Le quotient donne la somme des deux premiers moins le troisième."
+            },
+            {
+              "question": "Résoudre $\\log_{2}(x-1) + \\log_{2}(x+1) = 3$.",
+              "answer": "3",
+              "hint": "Regroupe en produit, passe en exponentielle base 2, résous le trinôme et garde la solution admissible.",
+              "explanation": "$\\log_{2}((x-1)(x+1)) = 3 \\Rightarrow (x-1)(x+1)=2^{3}=8 \\Rightarrow x^{2}-1=8 \\Rightarrow x^{2}=9 \\Rightarrow x=\\pm3$. Seule $x=3$ satisfait $x>1$."
+            },
+            {
+              "question": "Simplifier $\\ln\\left(\\frac{e^{5}}{x^{2}}\\right) - 2\\ln x$ en un seul logarithme.",
+              "answer": "\\ln\\left(\\frac{e^{5}}{x^{4}}\\right)",
+              "hint": "Utilise $\\ln(e^{5})=5$ et regroupe les termes en logarithme de quotient.",
+              "explanation": "$\\ln\\left(\\frac{e^{5}}{x^{2}}\\right) - 2\\ln x = 5 - \\ln x^{2} - 2\\ln x = 5 - 4\\ln x = \\ln e^{5} - \\ln x^{4} = \\ln\\left(\\frac{e^{5}}{x^{4}}\\right)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

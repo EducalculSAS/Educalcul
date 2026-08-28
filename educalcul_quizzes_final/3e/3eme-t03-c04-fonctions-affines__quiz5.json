@@ -1,0 +1,99 @@
+{
+  "_status": "done",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Approfondissement : a et b",
+  "title": "Quiz : Les coefficients a et b d'une fonction affine",
+  "questions": [
+    {
+      "text": "Soit la fonction $f$ définie par $f(x) = -3x + 7$. Quels sont les valeurs des coefficients $a$ et $b$ ?",
+      "options": [
+        "$a = 3$ et $b = 7$",
+        "$a = -3$ et $b = 7$",
+        "$a = 7$ et $b = -3$",
+        "$a = -3$ et $b = -7$"
+      ],
+      "correctAnswer": "$a = -3$ et $b = 7$",
+      "explanation": "Dans l'expression canonique $f(x) = ax + b$, le coefficient directeur $a$ est le nombre qui multiplie $x$ (ici $-3$) et l'ordonnée à l'origine $b$ est le terme constant (ici $7$). L'option A oublie le signe moins, l'option C inverse les rôles, l'option D change le signe de $b$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction affine $g$. Déterminez les coefficients $a$ et $b$ de l'expression $g(x) = ax + b$.",
+      "options": [
+        "$a = 3$ et $b = 4$",
+        "$a = -3$ et $b = 4$",
+        "$a = -3$ et $b = 1$",
+        "$a = 1$ et $b = 4$"
+      ],
+      "correctAnswer": "$a = -3$ et $b = 4$",
+      "explanation": "L'ordonnée à l'origine $b$ est la valeur de la fonction pour $x = 0$, soit $g(0) = 4$. Le coefficient directeur $a$ est le taux d'accroissement : quand $x$ augmente de $1$, $g(x)$ passe de $4$ à $1$, donc une variation de $-3$. Ainsi $a = -3$. L'option A donne un $a$ positif, l'option C prend $g(1)$ pour $b$, l'option D confond variation et valeur.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "$x$",
+          "$0$",
+          "$1$",
+          "$2$"
+        ],
+        "rows": [
+          [
+            "$g(x)$",
+            "$4$",
+            "$1$",
+            "$-2$"
+          ]
+        ],
+        "caption": "Valeurs de la fonction g"
+      }
+    },
+    {
+      "text": "Une fonction affine $h$ passe par les points $A(2 ; 5)$ et $B(4 ; 1)$. Quelle est son expression sous la forme $h(x) = ax + b$ ?",
+      "options": [
+        "$h(x) = -2x + 9$",
+        "$h(x) = 2x + 9$",
+        "$h(x) = -2x + 1$",
+        "$h(x) = -0,5x + 6$"
+      ],
+      "correctAnswer": "$h(x) = -2x + 9$",
+      "explanation": "Le coefficient directeur $a = \\frac{y_B - y_A}{x_B - x_A} = \\frac{1 - 5}{4 - 2} = \\frac{-4}{2} = -2$. On cherche $b$ : $5 = -2 \\times 2 + b \\Rightarrow 5 = -4 + b \\Rightarrow b = 9$. L'expression est donc $h(x) = -2x + 9$. L'option B a un $a$ positif, l'option C a un $b$ incorrect (prise de l'ordonnée de B), l'option D inverse le calcul de la pente ($\\frac{x_B - x_A}{y_B - y_A}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix $P$ (en euros) d'une course de taxi en fonction de la distance $d$ (en kilomètres) est modélisé par la fonction affine $P(d) = 2,5d + 3$. Quelle est l'interprétation correcte des coefficients $a = 2,5$ et $b = 3$ ?",
+      "options": [
+        "$a$ est le prix au kilomètre et $b$ est le prix de la prise en charge",
+        "$a$ est le prix de la prise en charge et $b$ est le prix au kilomètre",
+        "$a$ est le prix total et $b$ est la distance",
+        "$a$ est la distance et $b$ est le prix total"
+      ],
+      "correctAnswer": "$a$ est le prix au kilomètre et $b$ est le prix de la prise en charge",
+      "explanation": "Dans un problème modélisé par $f(x) = ax + b$, $x$ est la variable indépendante (ici la distance $d$) et $f(x)$ la variable dépendante (ici le prix $P$). Le coefficient $a$ correspond au taux de variation unitaire : l'augmentation du prix pour un kilomètre de plus, soit le prix au kilomètre. Le coefficient $b$ est la valeur de $f(x)$ quand $x = 0$ : le prix pour une distance nulle, soit le prix de la prise en charge (forfait de départ).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne la représentation graphique d'une fonction affine $k$ dans un repère orthonormé. La droite coupe l'axe des ordonnées en $y = 2$ et l'axe des abscisses en $x = 4$. Elle est descendante. Quels sont les signes de $a$ et $b$ ?",
+      "options": [
+        "$a > 0$ et $b > 0$",
+        "$a < 0$ et $b < 0$",
+        "$a < 0$ et $b > 0$",
+        "$a > 0$ et $b < 0$"
+      ],
+      "correctAnswer": "$a < 0$ et $b > 0$",
+      "explanation": "Le coefficient $b$ est l'ordonnée à l'origine, c'est-à-dire l'intersection avec l'axe des ordonnées ($x=0$). La droite coupe cet axe en $y=2$, donc $b = 2 > 0$. Le coefficient $a$ est le coefficient directeur : comme la droite est descendante (la fonction est strictement décroissante), $a$ est strictement négatif. On a donc $a < 0$ et $b > 0$. L'option A correspondrait à une droite montante, l'option B à une droite descendante coupant l'axe des ordonnées en négatif, l'option D à une droite montante coupant en négatif.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-0.5*x+2",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction k"
+      }
+    }
+  ]
+}

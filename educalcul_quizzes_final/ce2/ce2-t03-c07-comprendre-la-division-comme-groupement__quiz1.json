@@ -1,0 +1,107 @@
+{
+  "_status": "done",
+  "_course_id": 166,
+  "_course_code": "ce2-t03-c07-comprendre-la-division-comme-groupement",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Former des groupes",
+  "title": "Quiz : La division comme groupement - Former des groupes",
+  "questions": [
+    {
+      "text": "Il y a $12$ pommes. On veut faire des groupes de $3$ pommes. Combien de groupes peut-on former ?",
+      "options": [
+        "3 groupes",
+        "4 groupes",
+        "6 groupes",
+        "9 groupes"
+      ],
+      "correctAnswer": "4 groupes",
+      "explanation": "Pour trouver le nombre de groupes, on divise le total ($12$) par la taille de chaque groupe ($3$). $12 : 3 = 4$. On peut former 4 groupes. L'option '3 groupes' confond le nombre de groupes et la taille du groupe. '6 groupes' correspond à la moitié du total. '9 groupes' est une erreur de soustraction ($12 - 3$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 3,
+            "tone": "blue"
+          }
+        ],
+        "caption": "12 pommes réparties en groupes de 3"
+      }
+    },
+    {
+      "text": "Quinze élèves sont dans la cour. Le maître forme des équipes de $5$ élèves pour un jeu. Combien d'équipes y a-t-il ?",
+      "options": [
+        "2 équipes",
+        "3 équipes",
+        "5 équipes",
+        "10 équipes"
+      ],
+      "correctAnswer": "3 équipes",
+      "explanation": "On cherche le nombre d'équipes (groupes). On divise le nombre total d'élèves ($15$) par le nombre d'élèves par équipe ($5$). $15 : 5 = 3$. Il y a donc 3 équipes. '2 équipes' est trop peu. '5 équipes' confond le nombre d'équipes avec la taille de l'équipe. '10 équipes' correspond à une soustraction ($15 - 5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $20$ bonbons. Elle veut faire des sachets contenant chacun $4$ bonbons. Combien de sachets Léa pourra-t-elle remplir ?",
+      "options": [
+        "4 sachets",
+        "5 sachets",
+        "6 sachets",
+        "16 sachets"
+      ],
+      "correctAnswer": "5 sachets",
+      "explanation": "Le total est $20$ bonbons. La taille de chaque groupe (sachet) est $4$ bonbons. L'opération est $20 : 4 = 5$. Léa remplit 5 sachets. '4 sachets' confond le nombre de sachets et le contenu. '6 sachets' est une approximation excessive. '16 sachets' correspond à la soustraction $20 - 4$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 5,
+        "highlighted": 20,
+        "caption": "20 bonbons organisés en 5 groupes de 4 (4 lignes de 5)"
+      }
+    },
+    {
+      "text": "Quelle division permet de calculer le nombre de groupes de $3$ que l'on peut faire avec $18$ objets ?",
+      "options": [
+        "$18 \\times 3$",
+        "$18 - 3$",
+        "$18 : 3$",
+        "$18 + 3$"
+      ],
+      "correctAnswer": "$18 : 3$",
+      "explanation": "Former des groupes de taille connue à partir d'un total est une division (division groupement). On divise le total ($18$) par la taille du groupe ($3$). L'écriture correcte est $18 : 3$. La multiplication ($18 \\times 3$) donnerait le total si on connaissait le nombre de groupes. La soustraction ($18 - 3$) n'enlève qu'un seul groupe. L'addition ($18 + 3$) augmente le total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $30$ crayons. L'enseignant veut faire des paquets de $5$ crayons pour les élèves. Combien de paquets pourra-t-il faire ?",
+      "options": [
+        "5 paquets",
+        "6 paquets",
+        "7 paquets",
+        "25 paquets"
+      ],
+      "correctAnswer": "6 paquets",
+      "explanation": "Il faut diviser le nombre total de crayons ($30$) par le nombre de crayons par paquet ($5$). $30 : 5 = 6$. L'enseignant fera 6 paquets. '5 paquets' confond le nombre de paquets et le contenu. '7 paquets' est une erreur de calcul. '25 paquets' correspond à la soustraction $30 - 5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

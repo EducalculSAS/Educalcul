@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 509,
+  "_course_code": "2nde-t02-c07-bilan-calcul-algebrique-seconde",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Transformer et résoudre",
+  "title": "Algorithmes : Transformer et résoudre des expressions algébriques",
+  "blocks": [
+    {
+      "title": "Développement et réduction d'un produit de deux binômes",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo-code) qui, étant donnés quatre nombres réels $a$, $b$, $c$, $d$, calcule et affiche l'expression développée et réduite du produit $(ax+b)(cx+d)$.",
+      "correctAnswer": "1. Lire les valeurs de a, b, c, d.\\n2. Calculer le coefficient de x^2 : coef2 = a * c.\\n3. Calculer le coefficient de x : coef1 = a * d + b * c.\\n4. Calculer le terme constant : const = b * d.\\n5. Afficher \"Expression développée : \" + coef2 + \"x^2 + \" + coef1 + \"x + \" + const.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la distributivité : (ax+b)(cx+d) = ax*cx + ax*d + b*cx + b*d = ac x^2 + (ad+bc)x + bd. L'algorithme effectue ces trois multiplications et l'addition, puis affiche le polynôme réduit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation du premier degré à deux membres",
+      "content": "Écrire un algorithme qui résout l'équation $ax+b = cx+d$ avec $a \\neq c$. L'algorithme doit lire les coefficients $a$, $b$, $c$, $d$ et afficher la valeur de $x$.",
+      "correctAnswer": "1. Lire a, b, c, d.\\n2. Si a = c alors afficher \"Cas particulier : a = c, équation impossible ou indéterminée\" et arrêter.\\n3. Sinon calculer x = (d - b) / (a - c).\\n4. Afficher \"Solution : x = \" + x.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes en x à gauche et les constantes à droite : ax - cx = d - b, soit (a-c)x = d-b. Comme a ≠ c, on divise par a-c pour obtenir x = (d-b)/(a-c). L'algorithme traduit cette résolution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division euclidienne d'un trinôme par un binôme",
+      "content": "Écrire un algorithme qui effectue la division euclidienne du trinôme $ax^2+bx+c$ par le binôme $dx+e$ (avec $d \\neq 0$). L'algorithme doit afficher le quotient $Q(x)$ et le reste $R$ sous la forme $Q(x) + \\frac{R}{dx+e}$.",
+      "correctAnswer": "1. Lire a, b, c, d, e.\\n2. Calculer q1 = a / d (coefficient de x dans le quotient).\\n3. Calculer r1 = b - q1 * e (coefficient de x du reste partiel).\\n4. Calculer q2 = r1 / d (terme constant du quotient).\\n5. Calculer reste = c - q2 * e.\\n6. Afficher \"Quotient : \" + q1 + \"x + \" + q2.\\n7. Afficher \"Reste : \" + reste.\\n8. Afficher \"Résultat : \" + q1 + \"x + \" + q2 + \" + (\" + reste + \")/(\" + d + \"x + \" + e + \").",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division euclidienne de $ax^2+bx+c$ par $dx+e$ donne un quotient de degré 1 : $Q(x)=q_1x+q_2$ et un reste constant $R$. On détermine $q_1 = a/d$ en divisant les termes de plus haut degré. On soustrait $q_1x \\times (dx+e)$ du dividende, ce qui donne un nouveau polynôme de degré 1. On réitère pour trouver $q_2$ et le reste. L'algorithme suit exactement ces étapes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

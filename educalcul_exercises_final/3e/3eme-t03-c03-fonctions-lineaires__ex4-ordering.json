@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 469,
+  "_course_code": "3eme-t03-c03-fonctions-lineaires",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Fonctions linéaires",
+  "title": "Applications des fonctions linéaires - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Déterminer l'expression d'une fonction linéaire",
+      "content": "Remets dans l'ordre les étapes pour trouver l'expression d'une fonction linéaire $f(x)=ax+b$ à partir de deux points $A(x_1;y_1)$ et $B(x_2;y_2)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le coefficient directeur $a = \\frac{y_2 - y_1}{x_2 - x_1}$.",
+        "Utiliser un point pour trouver l'ordonnée à l'origine $b = y_1 - a x_1$.",
+        "Écrire la fonction $f(x) = ax + b$.",
+        "Vérifier que le second point satisfait l'équation obtenue."
+      ],
+      "explanation": "On commence par déterminer le coefficient directeur $a$ à l'aide de la formule du taux d'accroissement entre les deux points. Ensuite, on substitue les coordonnées d'un point (par exemple $A$) dans l'équation $y = ax + b$ pour isoler $b$. On écrit alors l'expression complète $f(x)=ax+b$. Enfin, on contrôle que le point $B$ vérifie bien cette équation, ce qui valide le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer la courbe d'une fonction linéaire",
+      "content": "Remets dans l'ordre les étapes pour tracer la courbe représentative d'une fonction linéaire $f(x)=ax+b$ dans un repère orthogonal.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer l'ordonnée à l'origine $b$ sur l'axe des ordonnées.",
+        "À partir de ce point, utiliser le coefficient directeur $a$ pour trouver un second point (par exemple en augmentant $x$ de $1$).",
+        "Tracer la droite passant par les deux points obtenus.",
+        "Indiquer l'équation de la droite sur le graphique."
+      ],
+      "explanation": "La première étape consiste à placer le point $(0;b)$ qui est l'intersection de la droite avec l'axe des ordonnées. Le coefficient directeur $a$ donne la variation de $y$ quand $x$ augmente de $1$ ; on obtient ainsi un second point $(1;a+b)$. En reliant ces deux points, on trace la droite. On termine en notant l'équation $f(x)=ax+b$ à côté du tracé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre un problème avec une fonction linéaire",
+      "content": "Remets dans l'ordre les étapes pour résoudre un problème concret en modélisant la situation par une fonction linéaire.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les variables et écrire la relation sous la forme $f(x)=ax+b$.",
+        "Déterminer les valeurs de $a$ et $b$ à partir des données du problème.",
+        "Calculer la valeur demandée en remplaçant $x$ dans la fonction.",
+        "Interpréter le résultat dans le contexte du problème."
+      ],
+      "explanation": "On commence par choisir la variable indépendante $x$ et la variable dépendante $y$, puis on exprime le lien entre elles comme une fonction affine $f(x)=ax+b$. Les données du problème (par exemple un coût fixe et un coût unitaire) permettent de trouver $a$ (taux de variation) et $b$ (valeur initiale). On évalue ensuite la fonction pour la valeur de $x$ demandée. Enfin, on donne du sens au nombre obtenu en le reliant à la question posée (prix total, distance parcourue, etc.).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

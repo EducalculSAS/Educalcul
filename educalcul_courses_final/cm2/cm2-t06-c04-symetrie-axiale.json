@@ -1,0 +1,500 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.472364+00:00",
+  "id": 313,
+  "code": "cm2-t06-c04",
+  "title": "Symétrie axiale",
+  "description": "Cours structuré Educalcul : Symétrie axiale.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Symétrie axiale",
+    "objectif_global": "Symétrie axiale",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Construction.",
+      "Figures invariantes simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la symétrie axiale ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prennes une feuille de papier, que tu la plies en deux et que tu dessines un cœur sur une moitié. Quand tu déplies, tu vois deux cœurs parfaitement identiques, l'un étant le miroir de l'autre. C'est exactement ça, la symétrie axiale : une figure a un axe de symétrie si, en la pliant le long de cet axe, les deux parties se superposent exactement. L'axe de symétrie, c'est la ligne de pliure, une droite qui coupe la figure en deux moitiés miroirs."
+            },
+            {
+              "type": "definition",
+              "term": "Axe de symétrie",
+              "definition": "Droite par rapport à laquelle une figure est symétrique : en pliant la figure le long de cette droite, les deux parties coïncident.",
+              "example": "Le pli central d'une feuille pliée en deux est un axe de symétrie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un point, son symétrique par rapport à une droite est l'autre point qui se trouve à la même distance de la droite, de l'autre côté, et tel que le segment qui les relie soit perpendiculaire à la droite. On note souvent $A'$ le symétrique de $A$."
+            },
+            {
+              "type": "definition",
+              "term": "Point symétrique",
+              "definition": "Point $A'$ tel que la droite $d$ soit la médiatrice du segment $[AA']$.",
+              "example": "Si $A$ est à $3$ cm à gauche de $d$, alors $A'$ est à $3$ cm à droite de $d$."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle isocèle ABC avec son axe de symétrie (la hauteur issue de A)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce triangle isocèle. Sa hauteur issue du sommet A est aussi son axe de symétrie : si tu plies le triangle le long de cette hauteur, les deux côtés se superposent parfaitement. Les points B et C sont symétriques l'un de l'autre par rapport à cet axe."
+            },
+            {
+              "type": "display_math",
+              "latex": "d \\\\text{ est la médiatrice de } [AA']"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété est fondamentale : l'axe de symétrie est toujours la médiatrice du segment qui joint un point à son symétrique. Cela veut dire que l'axe coupe ce segment en son milieu et forme un angle droit avec lui. Tu peux t'en servir pour vérifier si deux points sont symétriques : mesure les distances à la droite et regarde si le segment est perpendiculaire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la perpendiculaire à la droite $d$ passant par le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la distance entre $A$ et l'intersection $H$ de la perpendiculaire avec $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $H$ est bien le milieu de $[AA']$ et que $AH = HA'$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur ton cahier : trace une droite $d$, place un point $A$ à $4$ cm de $d$. Construis son symétrique $A'$ en suivant les étapes. Vérifie que $d$ passe bien par le milieu de $[AA']$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais reconnaître des points symétriques, voyons ce qui arrive à un segment tout entier quand on le reflète dans un miroir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Symétrie d'un segment et d'une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu prends un segment $[AB]$ et que tu construis les symétriques $A'$ et $B'$ de ses extrémités, le segment $[A'B']$ est l'image de $[AB]$ par la symétrie. Il a la même longueur que $[AB]$, et il est parallèle à $[AB]$ si le segment original est perpendiculaire à l'axe, sinon ils se coupent sur l'axe. C'est une propriété très utile : la symétrie conserve les longueurs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une droite, c'est encore plus simple : l'image d'une droite par une symétrie axiale est toujours une droite. Si la droite est parallèle à l'axe, son image est une droite parallèle de l'autre côté à la même distance. Si elle coupe l'axe, son image est la droite symétrique par rapport à l'axe, elles se coupent sur l'axe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir que la symétrie axiale conserve les longueurs et transforme les droites en droites. Regardons maintenant ce qui se passe pour un angle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Symétrie d'un angle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle est formé de deux demi-droites. Son symétrique est l'angle formé par les symétriques de ces demi-droites. La mesure de l'angle ne change pas : la symétrie conserve les mesures d'angles. Si l'axe de symétrie est la bissectrice de l'angle, alors l'angle est invariant : il se superpose à lui-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu maîtrises maintenant les propriétés de base de la symétrie axiale. Dans la leçon suivante, nous allons passer à la pratique : comment tracer précisément le symétrique d'un point, d'un segment ou d'une figure complète."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure ci-dessous, la droite $d$ est un axe de symétrie. Le point $A$ est à $3$ cm de $d$. À quelle distance de $d$ se trouve son symétrique $A'$ ?",
+              "answer": "$3$ cm",
+              "hint": "La symétrie axiale conserve les distances à l'axe.",
+              "explanation": "Par définition, le symétrique d'un point est à la même distance de l'axe, de l'autre côté."
+            },
+            {
+              "question": "Le segment $[AB]$ mesure $5$ cm. Son image par symétrie axiale est le segment $[A'B']$. Quelle est la longueur de $[A'B']$ ?",
+              "answer": "$5$ cm",
+              "hint": "La symétrie axiale conserve les longueurs.",
+              "explanation": "L'image d'un segment par une symétrie axiale est un segment de même longueur."
+            },
+            {
+              "question": "Un angle de $40^{\\circ}$ est réfléchi par rapport à sa bissectrice. Quelle est la mesure de l'angle image ?",
+              "answer": "$40^{\\circ}$",
+              "hint": "La symétrie conserve les mesures d'angles.",
+              "explanation": "L'image d'un angle par une symétrie axiale a la même mesure que l'angle initial."
+            }
+          ]
+        },
+        {
+          "title": "Construction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà deviné que pour tracer le symétrique d'un point, il faut utiliser la propriété de la médiatrice. Avec ta règle et ton équerre (ou ton compas), tu peux le faire très précisément. Voici la méthode pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre le long de la droite $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire glisser la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser la règle le long de l'équerre jusqu'à ce qu'elle passe par $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la perpendiculaire à $d$ passant par $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Mesurer la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure la distance $AH$ où $H$ est l'intersection de la perpendiculaire avec $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Reporter la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reporte cette distance de l'autre côté de $d$ sur la perpendiculaire pour obtenir $A'$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu n'as pas d'équerre, tu peux utiliser le compas : place la pointe sur $A$, trace un arc de cercle qui coupe la droite $d$ en deux points, puis avec le même rayon, trace deux arcs de part et d'autre de $d$ pour trouver le milieu, etc. Mais la méthode à l'équerre est plus rapide."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Place l'équerre le long de la droite $d$."
+                ],
+                [
+                  "2",
+                  "Fais glisser la règle le long de l'équerre jusqu'à ce qu'elle passe par $A$."
+                ],
+                [
+                  "3",
+                  "Trace la perpendiculaire à $d$ passant par $A$."
+                ],
+                [
+                  "4",
+                  "Mesure la distance $AH$ où $H$ est l'intersection de la perpendiculaire avec $d$."
+                ],
+                [
+                  "5",
+                  "Reporte cette distance de l'autre côté de $d$ sur la perpendiculaire pour obtenir $A'$."
+                ]
+              ],
+              "caption": "Construction du symétrique d'un point à la règle et à l'équerre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur ton cahier : trace une droite $d$, un point $A$ à $5$ cm de $d$. Construis $A'$ en suivant le tableau. Vérifie que $AH = HA'$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire le symétrique d'un point, tu peux construire le symétrique de n'importe quelle figure : il suffit de construire le symétrique de chaque point caractéristique (sommet d'un polygone, centre d'un cercle, etc.) et de les relier dans le même ordre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un polygone"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un triangle $ABC$, tu construis $A'$, $B'$, $C'$ symétriques de $A$, $B$, $C$. Ensuite, tu relis $A'B'$, $B'C'$, $C'A'$. Le triangle $A'B'C'$ est l'image de $ABC$. Attention à bien respecter l'ordre des sommets pour ne pas croiser les côtés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le polygone a un côté sur l'axe de symétrie, ce côté reste fixe : ses points sont leurs propres symétriques. C'est le cas pour un triangle isocèle dont la base est sur l'axe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les cercles aussi ont leur symétrique : le symétrique d'un cercle est un cercle de même rayon, dont le centre est le symétrique du centre initial. C'est très simple à tracer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un cercle et d'une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un cercle de centre $O$ et de rayon $r$, trace $O'$ symétrique de $O$. Puis trace le cercle de centre $O'$ et de même rayon $r$. Tu obtiens l'image du cercle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une droite, il suffit de prendre deux points sur la droite, de construire leurs symétriques, et de tracer la droite qui passe par ces deux nouveaux points. Si la droite est parallèle à l'axe, ses deux points symétriques détermineront une droite parallèle de l'autre côté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire des symétriques avec tes instruments. Dans la dernière leçon, nous allons découvrir quelles figures ne changent pas quand on les reflète : les figures invariantes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace une droite $d$ et un point $A$ à $4$ cm de $d$. Construis le symétrique $A'$ de $A$ par rapport à $d$ à la règle et à l'équerre. Quelle est la distance $AA'$ ?",
+              "answer": "$8$ cm",
+              "hint": "La distance $AA'$ est le double de la distance de $A$ à $d$.",
+              "explanation": "Puisque $A$ est à $4$ cm de $d$, son symétrique $A'$ est aussi à $4$ cm de $d$ de l'autre côté, donc $AA' = 8$ cm."
+            },
+            {
+              "question": "Le triangle $ABC$ a $AB = 4$ cm, $BC = 5$ cm, $CA = 6$ cm. On construit son symétrique $A'B'C'$ par rapport à une droite $d$. Quelle est la longueur de $B'C'$ ?",
+              "answer": "$5$ cm",
+              "hint": "La symétrie conserve les longueurs.",
+              "explanation": "Le segment $[B'C']$ est l'image de $[BC]$, ils ont donc la même longueur."
+            },
+            {
+              "question": "Un cercle de centre $O$ et de rayon $3$ cm est réfléchi par rapport à une droite $d$. Le centre $O$ est à $2$ cm de $d$. Quel est le rayon du cercle image ?",
+              "answer": "$3$ cm",
+              "hint": "La symétrie conserve les distances, donc le rayon ne change pas.",
+              "explanation": "Le cercle image a même rayon que le cercle initial, seul le centre change de place."
+            }
+          ]
+        },
+        {
+          "title": "Figures invariantes simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une figure invariante ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une figure invariante par symétrie axiale, c'est une figure qui, quand on la reflète dans son miroir (son axe de symétrie), se superpose exactement à elle-même. Elle ne change pas d'apparence, elle ne bouge pas. C'est comme si la figure était son propre reflet."
+            },
+            {
+              "type": "definition",
+              "term": "Figure invariante",
+              "definition": "Figure qui coïncide avec son image par une symétrie axiale.",
+              "example": "Un carré a quatre axes de symétrie : il est invariant par rapport à chacun d'eux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les figures invariantes les plus simples sont celles que tu connais bien : le triangle isocèle, le losange, le rectangle, le carré, le cercle, et aussi certains quadrilatères comme le cerf-volant (ou deltoïde). Chacune a au moins un axe de symétrie."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'axes de symétrie de quelques figures invariantes",
+              "bars": [
+                {
+                  "label": "Triangle isocèle",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Losange",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Cercle",
+                  "value": 100,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : le carré est le champion avec quatre axes de symétrie (les deux diagonales et les deux médiatrices des côtés). Le cercle en a une infinité : n'importe quel diamètre est un axe de symétrie. Le triangle isocèle n'en a qu'un seul : la hauteur issue du sommet principal."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment reconnaître si une figure est invariante ? Il faut trouver au moins une droite telle que, pour chaque point de la figure, son symétrique par rapport à cette droite appartienne aussi à la figure. En pratique, on cherche des axes qui passent par des sommets ou des milieux de côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés des figures invariantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si une figure a un axe de symétrie, cet axe passe souvent par des points remarquables : des sommets, des milieux de segments, ou le centre pour un cercle. De plus, les angles de part et d'autre de l'axe sont égaux, et les côtés symétriques ont même longueur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, dans un losange, les diagonales sont les axes de symétrie. Elles se coupent à angle droit et coupent les angles du losange en deux parties égales. Dans un rectangle, les axes sont les médiatrices des côtés : ils passent par les milieux des côtés opposés et sont parallèles aux autres côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les figures invariantes sont partout autour de nous : les ailes d'un papillon, les feuilles de certains arbres, les flocons de neige, les motifs sur les tapis, les logos de marques. La nature adore la symétrie !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La symétrie dans la vie quotidienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde tes mains : elles sont symétriques l'une de l'autre par rapport au plan qui passe par ton corps. Ton visage est presque symétrique (axe vertical). Les architectes utilisent la symétrie pour créer des bâtiments harmonieux. En géométrie, repérer les axes de symétrie aide à comprendre la structure d'une figure et à résoudre des problèmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la symétrie axiale et son axe.",
+                "Je connais les propriétés des points symétriques (distance, perpendicularité).",
+                "Je sais construire le symétrique d'un point, d'un segment, d'un polygone et d'un cercle.",
+                "Je reconnais les figures invariantes simples : triangle isocèle, losange, rectangle, carré, cercle.",
+                "Je sais donner le nombre d'axes de symétrie de ces figures."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures, laquelle a exactement deux axes de symétrie ?",
+              "answer": "Le rectangle",
+              "hint": "Pense aux médiatrices des côtés.",
+              "explanation": "Le rectangle a deux axes de symétrie : les médiatrices de ses côtés. Le carré en a quatre, le triangle isocèle n'en a qu'un."
+            },
+            {
+              "question": "Un losange a pour axes de symétrie ses deux diagonales. Vrai ou faux ?",
+              "answer": "Vrai",
+              "hint": "Les diagonales d'un losange se coupent perpendiculairement et sont axes de symétrie.",
+              "explanation": "Dans un losange, les diagonales sont perpendiculaires et chacune est l'axe de symétrie de la figure."
+            },
+            {
+              "question": "Combien d'axes de symétrie a un cercle ?",
+              "answer": "Une infinité",
+              "hint": "Tout diamètre est un axe de symétrie.",
+              "explanation": "Un cercle est invariant par rapport à n'importe quelle droite passant par son centre, il a donc une infinité d'axes de symétrie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

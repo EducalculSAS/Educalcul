@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Variables et affectations",
+  "title": "Quiz : Variables et affectations - Application",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\n  a ← 5\\n  b ← 12\\n  a ← b\\n  b ← a\\nFin\\nQuelles sont les valeurs finales des variables a et b ?",
+      "options": [
+        "a = 5 et b = 12",
+        "a = 12 et b = 5",
+        "a = 12 et b = 12",
+        "a = 5 et b = 5"
+      ],
+      "correctAnswer": "a = 12 et b = 12",
+      "explanation": "Au début, a vaut 5 et b vaut 12. L'instruction 'a ← b' affecte la valeur de b (12) à a. Maintenant a = 12 et b = 12. L'instruction 'b ← a' affecte la valeur actuelle de a (12) à b. b reste 12. Les valeurs initiales sont écrasées successivement, on ne peut pas échanger deux variables sans variable temporaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut échanger les valeurs de deux variables x et y (au départ x = 8 et y = 3) en utilisant une variable temporaire t. Quelle suite d'instructions est correcte ?",
+      "options": [
+        "t ← x ; x ← y ; y ← t",
+        "x ← y ; y ← x ; t ← x",
+        "t ← y ; y ← x ; x ← t",
+        "x ← t ; t ← y ; y ← x"
+      ],
+      "correctAnswer": "t ← x ; x ← y ; y ← t",
+      "explanation": "L'échange standard utilise trois affectations : 1. On sauvegarde la valeur de x dans t (t ← 8). 2. On met la valeur de y dans x (x ← 3). 3. On met la valeur sauvegardée t dans y (y ← 8). Résultat final : x = 3, y = 8. Les autres propositions écrasent les valeurs avant de les sauvegarder ou utilisent t avant de lui donner une valeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme :\\nDébut\\n  nombre ← 7\\n  nombre ← nombre + 3\\n  nombre ← nombre × 2\\nFin\\nQuelle est la valeur finale de la variable nombre ?",
+      "options": [
+        "17",
+        "20",
+        "13",
+        "23"
+      ],
+      "correctAnswer": "20",
+      "explanation": "On suit la trace pas à pas : 1. nombre prend la valeur 7. 2. 'nombre ← nombre + 3' calcule 7 + 3 = 10 et affecte ce résultat à nombre (nombre = 10). 3. 'nombre ← nombre × 2' calcule 10 × 2 = 20 et affecte ce résultat à nombre. La valeur finale est 20. L'erreur '17' correspond à 7 + 3 × 2 sans respecter l'ordre séquentiel des affectations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le script suivant :\\nDébut\\n  a ← 10\\n  b ← 4\\n  a ← a - b\\n  b ← a + b\\nFin\\nQuelles sont les valeurs de a et b à la fin ?",
+      "options": [
+        "a = 6 et b = 10",
+        "a = 6 et b = 4",
+        "a = 10 et b = 14",
+        "a = 4 et b = 10"
+      ],
+      "correctAnswer": "a = 6 et b = 10",
+      "explanation": "Trace détaillée : 1. a = 10, b = 4. 2. 'a ← a - b' : a devient 10 - 4 = 6. b est inchangé (4). 3. 'b ← a + b' : on utilise la nouvelle valeur de a (6) et la valeur actuelle de b (4). b devient 6 + 4 = 10. Final : a = 6, b = 10. L'option 'a = 6 et b = 4' oublie la dernière instruction. L'option 'a = 4 et b = 10' confond avec un échange.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un algorithme, on a les instructions :\\n  largeur ← 5\\n  longueur ← 8\\n  aire ← largeur × longueur\\n  largeur ← 10\\nQuelle est la valeur de la variable aire après ces instructions ?",
+      "options": [
+        "40",
+        "50",
+        "80",
+        "13"
+      ],
+      "correctAnswer": "40",
+      "explanation": "L'affectation 'aire ← largeur × longueur' calcule le produit des valeurs *actuelles* de largeur (5) et longueur (8) soit 40, et stocke ce nombre dans aire. La modification ultérieure de largeur (largeur ← 10) ne change pas la valeur déjà stockée dans aire. Une variable ne garde pas le lien avec la formule, seulement le résultat numérique calculé au moment de l'affectation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

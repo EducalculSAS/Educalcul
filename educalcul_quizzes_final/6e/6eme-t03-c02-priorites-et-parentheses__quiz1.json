@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Lire expression",
+  "title": "Quiz : Lire une expression - Priorités et parenthèses",
+  "questions": [
+    {
+      "text": "Dans l'expression $3 + 4 \\times 2$, quelle opération est effectuée en premier ?",
+      "options": [
+        "L'addition $3 + 4$",
+        "La multiplication $4 \\times 2$",
+        "La soustraction",
+        "La division"
+      ],
+      "correctAnswer": "La multiplication $4 \\times 2$",
+      "explanation": "Selon les priorités, la multiplication est prioritaire sur l'addition. On calcule d'abord $4 \\times 2 = 8$, puis on ajoute $3$ pour obtenir $11$. Les autres opérations ne sont pas présentes ou ne sont pas prioritaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $(5 + 3) \\times 2$, quelle partie est calculée en premier ?",
+      "options": [
+        "La multiplication par $2$",
+        "L'addition à l'intérieur des parenthèses $5 + 3$",
+        "La soustraction",
+        "La division"
+      ],
+      "correctAnswer": "L'addition à l'intérieur des parenthèses $5 + 3$",
+      "explanation": "Les parenthèses ont la priorité la plus forte. On calcule d'abord $5 + 3 = 8$, puis on multiplie par $2$ pour obtenir $16$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $12 - 6 \\div 2$, quelle opération est réalisée en premier ?",
+      "options": [
+        "La soustraction $12 - 6$",
+        "La division $6 \\div 2$",
+        "L'addition",
+        "La multiplication"
+      ],
+      "correctAnswer": "La division $6 \\div 2$",
+      "explanation": "La division est prioritaire sur la soustraction. On calcule d'abord $6 \\div 2 = 3$, puis on fait $12 - 3 = 9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes donne le résultat $20$ ?",
+      "options": [
+        "$5 \\times 4 + 0$",
+        "$5 + 4 \\times 3$",
+        "$(5 + 4) \\times 2$",
+        "$5 \\times (4 + 1)$"
+      ],
+      "correctAnswer": "$5 \\times 4 + 0$",
+      "explanation": "On évalue chaque expression en respectant les priorités. $5 \\times 4 + 0 = 20 + 0 = 20$. $5 + 4 \\times 3 = 5 + 12 = 17$. $(5 + 4) \\times 2 = 9 \\times 2 = 18$. $5 \\times (4 + 1) = 5 \\times 5 = 25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $8 + 2 \\times (3 + 1)$, quelle est la première opération à effectuer ?",
+      "options": [
+        "L'addition $8 + 2$",
+        "La multiplication $2 \\times (3 + 1)$",
+        "L'addition à l'intérieur des parenthèses $3 + 1$",
+        "La division"
+      ],
+      "correctAnswer": "L'addition à l'intérieur des parenthèses $3 + 1$",
+      "explanation": "Les parenthèses sont prioritaires. On commence par $3 + 1 = 4$. Ensuite on fait la multiplication $2 \\times 4 = 8$, puis l'addition $8 + 8 = 16$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

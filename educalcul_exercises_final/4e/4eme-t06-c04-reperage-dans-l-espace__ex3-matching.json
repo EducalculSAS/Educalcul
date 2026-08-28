@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Interpréter",
+  "title": "Repérage dans l'espace : Interpréter",
+  "blocks": [
+    {
+      "title": "Vocabulaire du repérage",
+      "content": "Relie chaque description à la propriété correspondante sur les coordonnées dans un repère orthonormé $(O;\\vec{i},\\vec{j},\\vec{k})$.",
+      "pairs": [
+        {
+          "left": "Un point de l'axe des abscisses",
+          "right": "Ses coordonnées sont de la forme $(x;0;0)$"
+        },
+        {
+          "left": "Un point du plan $(xOy)$",
+          "right": "Sa coordonnée $z$ est nulle"
+        },
+        {
+          "left": "L'origine du repère",
+          "right": "Ses coordonnées sont $(0;0;0)$"
+        },
+        {
+          "left": "Un point de l'axe des ordonnées",
+          "right": "Ses coordonnées sont de la forme $(0;y;0)$"
+        },
+        {
+          "left": "Un point de l'axe des cotes",
+          "right": "Ses coordonnées sont de la forme $(0;0;z)$"
+        }
+      ],
+      "explanation": "Dans un repère de l'espace :\\n- L'axe des abscisses (axe $x$) est l'ensemble des points de coordonnées $(x;0;0)$.\\n- L'axe des ordonnées (axe $y$) est l'ensemble des points de coordonnées $(0;y;0)$.\\n- L'axe des cotes (axe $z$) est l'ensemble des points de coordonnées $(0;0;z)$.\\n- Le plan $(xOy)$ est l'ensemble des points dont la cote $z$ est nulle : $(x;y;0)$.\\n- L'origine $O$ est le point nul de coordonnées $(0;0;0)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétriques et translation",
+      "content": "Soit le point $A(2;-1;3)$. Relie chaque construction géométrique aux coordonnées du point obtenu.",
+      "pairs": [
+        {
+          "left": "Le point symétrique de $A$ par rapport à l'origine $O$",
+          "right": "$(-2;1;-3)$"
+        },
+        {
+          "left": "Le point symétrique de $A$ par rapport au plan $(xOy)$",
+          "right": "$(2;-1;-3)$"
+        },
+        {
+          "left": "Le point symétrique de $A$ par rapport à l'axe des abscisses",
+          "right": "$(2;1;-3)$"
+        },
+        {
+          "left": "Le point $B$ tel que $\\vec{AB} = \\begin{pmatrix} -2 \\\\ 0 \\\\ 4 \\end{pmatrix}$",
+          "right": "$(0;-1;7)$"
+        }
+      ],
+      "explanation": "Calculs détaillés :\\n- Symétrique par rapport à $O$ : on change le signe des trois coordonnées : $(-2;1;-3)$.\\n- Symétrique par rapport au plan $(xOy)$ : la cote $z$ change de signe, $x$ et $y$ restent inchangés : $(2;-1;-3)$.\\n- Symétrique par rapport à l'axe des abscisses ($x$) : $y$ et $z$ changent de signe, $x$ reste : $(2;1;-3)$.\\n- Translation par le vecteur $\\vec{AB} = \\begin{pmatrix} -2 \\\\ 0 \\\\ 4 \\end{pmatrix}$ : on ajoute les composantes aux coordonnées de $A$ : $(2+(-2); -1+0; 3+4) = (0;-1;7)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interpréter un déplacement vectoriel",
+      "content": "Un drone se déplace dans un repère où $\\vec{i}$ pointe vers l'avant, $\\vec{j}$ vers la gauche et $\\vec{k}$ vers le haut. Relie chaque instruction de vol au vecteur colonne correspondant.",
+      "pairs": [
+        {
+          "left": "Avancer de 3 mètres",
+          "right": "$\\begin{pmatrix} 3 \\\\ 0 \\\\ 0 \\end{pmatrix}$"
+        },
+        {
+          "left": "Monter verticalement de 2 mètres",
+          "right": "$\\begin{pmatrix} 0 \\\\ 0 \\\\ 2 \\end{pmatrix}$"
+        },
+        {
+          "left": "Se décaler à gauche de 4 mètres",
+          "right": "$\\begin{pmatrix} 0 \\\\ 4 \\\\ 0 \\end{pmatrix}$"
+        },
+        {
+          "left": "Reculer de 1 mètre et monter de 5 mètres",
+          "right": "$\\begin{pmatrix} -1 \\\\ 0 \\\\ 5 \\end{pmatrix}$"
+        }
+      ],
+      "explanation": "Dans le repère défini :\\n- L'axe $x$ (vecteur $\\vec{i}$) correspond à l'avant/arrière. Avancer est positif, reculer est négatif.\\n- L'axe $y$ (vecteur $\\vec{j}$) correspond à la gauche/droite. Aller à gauche est positif (selon l'énoncé), à droite serait négatif.\\n- L'axe $z$ (vecteur $\\vec{k}$) correspond au haut/bas. Monter est positif, descendre est négatif.\\n\\nOn construit donc le vecteur $\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}$ en reportant les valeurs signées selon ces axes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

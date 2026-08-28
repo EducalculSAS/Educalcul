@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Comparer aires",
+  "title": "Comparer des aires par pavage",
+  "blocks": [
+    {
+      "title": "Compter et comparer",
+      "content": "On considère deux figures pavées avec des carrés unités. La figure A est un rectangle de $3$ carrés de large sur $4$ carrés de long. La figure B est un carré de côté $3$ carrés. L'aire de la figure A est de ${{1}}$ carrés unités. L'aire de la figure B est de ${{2}}$ carrés unités. Donc, la figure ${{3}}$ a la plus grande aire.",
+      "blanks": [
+        "12",
+        "9",
+        "A"
+      ],
+      "explanation": "L'aire de la figure A (rectangle) se calcule en multipliant la largeur par la longueur : $3 \\times 4 = 12$ carrés unités. L'aire de la figure B (carré) se calcule en multipliant le côté par lui-même : $3 \\times 3 = 9$ carrés unités. Comme $12 > 9$, la figure A a la plus grande aire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Même aire, forme différente",
+      "content": "On a découpé un rectangle de $6$ carrés sur $2$ carrés pour former un nouveau rectangle de $4$ carrés sur $3$ carrés. L'aire du premier rectangle est de ${{1}}$ carrés unités. L'aire du second rectangle est de ${{2}}$ carrés unités. On peut dire que les deux rectangles ont ${{3}}$ aire.",
+      "blanks": [
+        "12",
+        "12",
+        "la même"
+      ],
+      "explanation": "Le premier rectangle a une aire de $6 \\times 2 = 12$ carrés unités. Le second rectangle a une aire de $4 \\times 3 = 12$ carrés unités. Comme on a seulement découpé et déplacé les carrés sans en perdre ni en ajouter, l'aire totale est conservée. Les deux rectangles ont donc la même aire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer sans compter tous les carrés",
+      "content": "Pour comparer l'aire d'un rectangle de $5$ cm sur $4$ cm et celle d'un carré de côté $5$ cm, on peut raisonner sur les dimensions. Le rectangle a une aire de ${{1}}$ cm$^2$. Le carré a une aire de ${{2}}$ cm$^2$. Le ${{3}}$ a la plus grande aire car sa plus petite dimension ($5$ cm) est plus grande que la plus petite dimension du rectangle ($4$ cm), alors qu'ils partagent la même grande dimension ($5$ cm).",
+      "blanks": [
+        "20",
+        "25",
+        "carré"
+      ],
+      "explanation": "Aire du rectangle : $5 \\times 4 = 20$ cm$^2$. Aire du carré : $5 \\times 5 = 25$ cm$^2$. On compare $20$ et $25$, le carré a la plus grande aire. On peut aussi comparer sans calculer : les deux figures ont une dimension de $5$ cm. L'autre dimension est $4$ cm pour le rectangle et $5$ cm pour le carré. Comme $5 > 4$, le carré est plus grand.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

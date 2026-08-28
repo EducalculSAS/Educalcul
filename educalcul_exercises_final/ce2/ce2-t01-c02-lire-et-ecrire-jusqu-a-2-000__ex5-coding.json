@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 143,
+  "_course_code": "ce2-t01-c02-lire-et-ecrire-jusqu-a-2-000",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lire avec zéros internes",
+  "title": "Algorithme de lecture des nombres avec zéros internes",
+  "blocks": [
+    {
+      "title": "Étape par étape : nombre à trois chiffres",
+      "content": "On veut lire le nombre $107$ en appliquant un algorithme. Complète les instructions manquantes pour obtenir l'écriture en lettres.\\n\\nAlgorithme :\\n1. Identifier le chiffre des centaines : $1$ → écrire \"cent\".\\n2. Identifier le chiffre des dizaines : $0$ → instruction manquante.\\n3. Identifier le chiffre des unités : $7$ → écrire \"sept\".\\n4. Assembler le tout.",
+      "correctAnswer": "Instruction 2 : Comme le chiffre des dizaines est 0, on n'écrit rien pour les dizaines (on ne dit pas \"zéro dix\").\\nRésultat final : cent sept.",
+      "explanation": "Dans la lecture d'un nombre, un zéro interne (au milieu du nombre) ne se prononce pas. Pour 107, on a 1 centaine (cent), 0 dizaine (rien), 7 unités (sept). On assemble : cent sept.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Cas du nombre à quatre chiffres avec zéros",
+      "content": "On applique un algorithme de lecture au nombre $1\\,005$. Les étapes 1 et 4 sont données. Écris les instructions pour les étapes 2 et 3 en tenant compte des zéros.\\n\\nAlgorithme :\\n1. Chiffre des milliers : $1$ → écrire \"mille\".\\n2. Chiffre des centaines : $0$ → ...\\n3. Chiffre des dizaines : $0$ → ...\\n4. Chiffre des unités : $5$ → écrire \"cinq\".\\n5. Assembler.",
+      "correctAnswer": "Étape 2 : Le chiffre des centaines est 0, on n'écrit rien pour les centaines.\\nÉtape 3 : Le chiffre des dizaines est 0, on n'écrit rien pour les dizaines.\\nAssemblage final : mille cinq.",
+      "explanation": "Pour 1005, on a 1 mille, 0 centaine (rien), 0 dizaine (rien), 5 unités (cinq). Les zéros internes consécutifs ne génèrent aucun mot. Le nombre se lit simplement \"mille cinq\".",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Écriture d'un algorithme complet (style Python)",
+      "content": "Écris un algorithme structuré (style Python simplifié) qui permet de lire n'importe quel nombre entre $100$ et $2000$ en gérant correctement les zéros internes. Utilise les variables `milliers`, `centaines`, `dizaines`, `unites` et une variable `resultat` (texte).\\n\\nIndication : Utilise des conditions `si ... alors ... sinon`.",
+      "correctAnswer": "resultat = \"\"\\nsi milliers > 0 alors\\n    resultat = resultat + str(milliers) + \" mille \"\\nsi centaines > 0 alors\\n    resultat = resultat + str(centaines) + \" cent \"\\nsi dizaines > 0 alors\\n    resultat = resultat + str(dizaines) + \" dix \"  # ou table de correspondance pour 20, 30...\\nsi unites > 0 alors\\n    resultat = resultat + str(unites)\\n# Nettoyer les espaces superflus\\nafficher resultat",
+      "explanation": "L'algorithme teste chaque classe (milliers, centaines, dizaines, unités). Si le chiffre est 0, la condition `si > 0` est fausse et rien n'est ajouté à `resultat`, ce qui gère automatiquement les zéros internes. Pour un niveau CE2, on simplifie la conversion chiffres/mots (ex: table pour 11-16, dizaines entières). L'essentiel est la structure conditionnelle qui saute l'écriture quand le chiffre vaut 0.",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

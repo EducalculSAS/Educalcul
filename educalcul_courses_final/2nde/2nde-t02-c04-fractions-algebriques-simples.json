@@ -1,0 +1,283 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.039869+00:00",
+  "id": 506,
+  "code": "2nde-t02-c04",
+  "title": "Fractions algébriques simples",
+  "description": "Cours structuré Educalcul : Fractions algébriques simples.",
+  "subject": "Calcul algébrique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Calcul algébrique",
+    "titre_du_cours": "Fractions algébriques simples",
+    "objectif_global": "Fractions algébriques simples",
+    "mini_lecons_imposees": [
+      "Domaine.",
+      "Simplifier.",
+      "Calculs simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul algébrique",
+      "lessons": [
+        {
+          "title": "Domaine.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu gères un petit réseau de partage de données. Dans ton système, tu as une formule qui calcule la vitesse de transfert en fonction du nombre d'utilisateurs $x$ connectés. La formule ressemble à une fraction où le dénominateur dépend de $x$. Tout se passe bien, jusqu'au moment où, pour une certaine valeur de $x$, le dénominateur devient exactement égal à $0$. À cet instant précis, ton logiciel plante et affiche une erreur critique : 'Division par zéro impossible'. C'est exactement ce qui se passe en mathématiques avec les fractions algébriques. Contrairement aux fractions avec des nombres fixes comme $\\frac{3}{4}$, une fraction algébrique contient des variables. Cela signifie que sa valeur change selon le nombre que l'on choisit pour $x$. Mais attention, il y a une règle d'or absolue et non négociable en mathématiques : on ne peut jamais diviser par zéro. Si on essayait, le résultat n'existerait tout simplement pas. Trouver le domaine d'une fraction algébrique, c'est comme dresser la liste des 'invités autorisés' pour $x$. On cherche toutes les valeurs possibles, sauf celles qui provoqueraient ce crash mathématique en annulant le dénominateur. C'est une étape de sécurité indispensable avant tout calcul, car travailler sur une valeur interdite rendrait tout ton raisonnement faux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction algébrique est une expression de la forme $\\frac{P(x)}{Q(x)}$, où $P$ et $Q$ sont des polynômes. Le concept central ici est celui de 'valeur interdite'. En effet, pour que la fraction ait un sens mathématique, il est impératif que le dénominateur $Q(x)$ soit différent de $0$. L'ensemble de toutes les valeurs de $x$ pour lesquelles l'expression est calculable s'appelle le domaine de définition, souvent noté $D_f$. Pour déterminer ce domaine, on ne s'intéresse pas du tout au numérateur $P(x)$, car celui-ci a le droit d'être égal à $0$ sans aucun problème. On se concentre uniquement sur le bas de la fraction. On cherche donc à résoudre l'équation $Q(x) = 0$. Les solutions de cette équation sont précisément les valeurs que nous devons bannir de notre ensemble de définition. Par exemple, si on a une fraction avec $x-5$ au dénominateur, on voit que si $x=5$, on obtient $5-5=0$, ce qui est interdit. On dira alors que le domaine est l'ensemble des nombres réels $\\mathbb{R}$ privé de la valeur $5$, ce que l'on note $D_f = \\mathbb{R} \\setminus {5}$. C'est une notion de rigueur : on définit d'abord où l'on a le droit de travailler avant de manipuler l'expression."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": -2,
+              "upperBound": 3,
+              "lowerOpen": true,
+              "upperOpen": false,
+              "caption": "Exemple de domaine excluant des points spécifiques sur la droite des réels $\\mathbb{R}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le domaine de définition d'une fraction algébrique, je te propose de suivre systématiquement ces trois étapes pour ne rien oublier. Premièrement, isole le dénominateur. Ignore totalement le numérateur, même s'il a l'air complexe, car il ne joue aucun rôle dans la détermination des valeurs interdites. Deuxièmement, pose l'équation d'exclusion. Tu écris l'expression du dénominateur égale à zéro, soit $Q(x) = 0$. Selon la complexité de l'expression, tu utiliseras différentes techniques : une simple résolution d'équation du premier degré, une factorisation ou même l'utilisation du discriminant $\\Delta$ pour un polynôme du second degré. Troisièmement, identifie et exclue les solutions. Une fois que tu as trouvé les valeurs de $x$ qui annulent le dénominateur, tu les retires de l'ensemble des nombres réels $\\mathbb{R}$. Pour rédiger ton résultat, utilise la notation $\\mathbb{R} \\setminus {a, b, ...}$ où $a$ et $b$ sont tes valeurs interdites. Si le dénominateur ne peut jamais être nul, par exemple $x^2+1$, alors le domaine est simplement $\\mathbb{R}$ tout entier. Prends l'habitude de toujours écrire cette phrase de conclusion : 'L'expression est définie pour tout $x$ tel que $Q(x) \\neq 0$'."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'expression suivante : $A(x) = \\frac{2x+7}{3x-12}$. Nous voulons trouver pour quelles valeurs de $x$ cette expression a un sens. On commence par isoler le dénominateur, qui est $3x-12$. On cherche alors la valeur interdite en résolvant $3x-12 = 0$. On déplace le $-12$ de l'autre côté de l'égalité, ce qui nous donne $3x = 12$. En divisant ensuite par $3$ des deux côtés, on trouve $x = \\frac{12}{3}$, soit $x = 4$. Cela signifie que si on remplaçait $x$ par $4$ dans la fraction, on aurait $3 \\times 4 - 12 = 0$ au dénominateur, ce qui est strictement interdit. Toutes les autres valeurs de $x$ sont en revanche parfaitement acceptables. On conclut donc en écrivant que le domaine de définition est l'ensemble des nombres réels privés de $4$. La notation mathématique correcte est $D_A = \\mathbb{R} \\setminus {4}$. On peut aussi l'écrire sous la forme d'un intervalle : $]-\\infty, 4[ \\cup ]4, +\\infty[$. C'est un exemple simple où une seule valeur pose problème."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas un peu plus stimulant : $B(x) = \\frac{x^2-4}{(x-2)(x+5)}$. Ici, le dénominateur est déjà sous forme factorisée, ce qui nous facilite grandement la tâche. On cherche les valeurs de $x$ telles que $(x-2)(x+5) = 0$. C'est un produit nul, donc il suffit que l'un des deux facteurs soit nul pour que tout le résultat soit nul. On a donc deux possibilités : soit $x-2 = 0$, ce qui donne $x = 2$, soit $x+5 = 0$, ce qui donne $x = -5$. Nous avons ici deux valeurs interdites distinctes. Il est crucial de noter qu'au numérateur, on a $x^2-4$, qui peut être factorisé en $(x-2)(x+2)$. On pourrait être tenté de simplifier le $(x-2)$ en haut et en bas avant de chercher le domaine. C'est une erreur grave. Le domaine se détermine toujours sur l'expression originale, avant toute simplification. Même si le terme $(x-2)$ finit par disparaître, la valeur $x=2$ reste interdite car elle annulait le dénominateur de départ. Le domaine de définition est donc l'ensemble des réels privés de $-5$ et de $2$, noté $D_B = \\mathbb{R} \\setminus {-5, 2}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant, et sans doute le plus traître, est de vouloir simplifier la fraction avant de chercher le domaine de définition. Comme je l'ai mentionné dans l'exemple précédent, si tu simplifies un facteur commun au numérateur et au dénominateur, tu 'effaces' visuellement une valeur interdite, mais elle reste interdite dans la réalité mathématique. Imagine que tu coupes un pont : même si tu reconstruis un petit passage à côté, le point de rupture original existe toujours. Un deuxième piège consiste à confondre le numérateur et le dénominateur. Certains élèves cherchent les valeurs qui annulent le haut de la fraction. Rappelle-toi que le numérateur peut être égal à $0$ sans aucun souci, cela rend simplement toute la fraction égale à $0$. Le danger ne vient que du bas. Enfin, fais attention aux signes lors de la résolution de l'équation $Q(x) = 0$. Par exemple, pour $x+3=0$, la solution est $x=-3$, et non $x=3$. Une erreur de signe ici te conduirait à exclure la mauvaise valeur et à accepter une valeur interdite, ce qui fausserait tout ton exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine le domaine de définition de l'expression $F(x) = \\frac{5x-1}{2x+8}$.",
+              "answer": "\\mathbb{R} \\setminus {-4}",
+              "hint": "Résous l'équation $2x+8=0$ pour trouver la valeur interdite.",
+              "explanation": "On cherche $x$ tel que $2x+8=0$. Cela donne $2x=-8$, donc $x=-4$. La valeur interdite est $-4$, donc le domaine est $\\mathbb{R} \\setminus {-4}$."
+            },
+            {
+              "question": "Trouve les valeurs interdites de l'expression $G(x) = \\frac{1}{x^2-9}$.",
+              "answer": "-3 \\text{ et } 3",
+              "hint": "L'expression $x^2-9$ est une identité remarquable de la forme $a^2-b^2$.",
+              "explanation": "On résout $x^2-9=0$, soit $x^2=9$. Les solutions sont $x=3$ et $x=-3$. Ce sont les deux valeurs interdites."
+            },
+            {
+              "question": "Quel est le domaine de définition de $H(x) = \\frac{x+2}{(x-1)(x-7)}$ ?",
+              "answer": "\\mathbb{R} \\setminus {1, 7}",
+              "hint": "Le dénominateur est un produit, utilise la règle du produit nul.",
+              "explanation": "Le dénominateur s'annule si $x-1=0$ (donc $x=1$) ou si $x-7=0$ (donc $x=7$). Le domaine est $\\mathbb{R} \\setminus {1, 7}$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà remarqué que simplifier une fraction numérique rend les calculs beaucoup plus simples ? Par exemple, travailler avec $\\frac{3}{4}$ est bien plus agréable qu'avec $\\frac{135}{180}$. On divise simplement le haut et le bas par le plus grand diviseur commun. Et bien, avec les fractions algébriques, c'est exactement la même logique, mais avec une petite complication : on ne voit pas tout de suite quel est le diviseur commun car il est caché derrière des additions et des multiplications. C'est comme si la fraction était un puzzle emballé. Pour pouvoir simplifier, on ne peut pas juste regarder les nombres, il faut d'abord 'déballer' l'expression. En mathématiques, 'déballer' signifie factoriser. Transformer une somme en produit est la clé magique qui nous permet de voir les facteurs identiques en haut et en bas. Une fois que ces facteurs sont mis à nu, on peut les simplifier, c'est-à-dire les diviser pour les faire disparaître, car n'importe quel nombre non nul divisé par lui-même donne $1$. C'est ce processus de nettoyage qui nous permet de passer d'une expression monstrueuse et illisible à une petite expression élégante et facile à utiliser pour la suite du problème."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifier une fraction algébrique consiste à réduire l'expression à sa forme la plus simple possible sans en modifier la valeur pour les $x$ du domaine de définition. La règle fondamentale est la suivante : on ne peut simplifier que des facteurs, jamais des termes. Un facteur est un élément qui est multiplié, tandis qu'un terme est un élément qui est additionné ou soustrait. Par exemple, dans l'expression $3(x+2)$, le nombre $3$ et la parenthèse $(x+2)$ sont des facteurs. Dans l'expression $x+2$, $x$ et $2$ sont des termes. Si on a le même facteur au numérateur et au dénominateur, on peut les simplifier car $\\frac{a \\times b}{a \\times c} = \\frac{b}{c}$. Pour y parvenir, la stratégie est systématiquement la même : on factorise le numérateur $P(x)$ et le dénominateur $Q(x)$ au maximum. On utilise pour cela les techniques de facteur commun, les identités remarquables ou la résolution d'équations du second degré. Une fois que la fraction est écrite comme un quotient de produits, on identifie les parenthèses identiques. On peut alors les barrer, ce qui revient à diviser le numérateur et le dénominateur par ce même facteur."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{(x-5)(x+5)}{(x-5)(x-5)} = \\frac{x+5}{x-5}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier une fraction algébrique sans faire d'erreur, je te conseille de suivre rigoureusement ce protocole en quatre étapes. Première étape : l'analyse du numérateur. Regarde s'il y a un facteur commun évident ou si c'est une identité remarquable (comme $a^2-b^2$). Factorise-le complètement. Deuxième étape : l'analyse du dénominateur. Applique la même méthode de factorisation pour le bas de la fraction. Il est très fréquent que le dénominateur soit déjà factorisé dans les énoncés, mais vérifie toujours. Troisième étape : l'identification. Compare les facteurs obtenus en haut et en bas. Cherche les expressions identiques, comme $(x+3)$ ou $(2x-1)$. Quatrième étape : la simplification finale. Barre les facteurs communs. Attention, tu ne peux barrer un facteur qu'une seule fois en haut et une seule fois en bas. S'il reste des éléments, réécris la fraction simplifiée avec soin. N'oublie pas que cette simplification est valable uniquement si $x$ appartient au domaine de définition initial. Si tu as barré $(x-2)$, la valeur $x=2$ demeure interdite même si elle n'est plus visible dans l'expression finale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions l'expression $A(x) = \\frac{4x+12}{2x}$. Ici, le numérateur est $4x+12$. Je remarque que $4$ et $12$ sont tous deux divisibles par $4$, donc $4$ est un facteur commun. Je factorise le numérateur : $4x+12 = 4(x+3)$. Le dénominateur est $2x$, ce qui est déjà un produit de $2$ et $x$. L'expression devient $A(x) = \\frac{4(x+3)}{2x}$. Maintenant, je regarde les nombres. J'ai $4$ en haut et $2$ en bas. Je sais que $\\frac{4}{2} = 2$. Je peux donc simplifier les coefficients numériques. L'expression se simplifie ainsi : $A(x) = \\frac{2(x+3)}{x}$. On ne peut plus simplifier car il n'y a plus de facteurs communs entre le numérateur $2(x+3)$ et le dénominateur $x$. Le résultat final est $\\frac{2x+6}{x}$ ou simplement $\\frac{2(x+3)}{x}$. On a réussi à rendre l'expression plus compacte en éliminant le facteur commun $2$ qui était présent des deux côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "S'attaquons à une expression plus complexe : $B(x) = \\frac{x^2-25}{x^2-10x+25}$. C'est ici que les identités remarquables sont essentielles. Au numérateur, je reconnais $x^2-5^2$, ce qui est la forme $a^2-b^2$. Je factorise donc le numérateur en $(x-5)(x+5)$. Au dénominateur, je vois $x^2-10x+25$. Je remarque que $x^2$ est le carré de $x$ et $25$ est le carré de $5$, et que le terme central $-10x$ est exactement $-2 \\times x \\times 5$. C'est donc l'identité $(a-b)^2$. Je factorise le dénominateur en $(x-5)^2$, ce qui s'écrit $(x-5)(x-5)$. L'expression devient $B(x) = \\frac{(x-5)(x+5)}{(x-5)(x-5)}$. Je repère maintenant le facteur commun $(x-5)$ présent en haut et en bas. Je peux en barrer un exemplaire de chaque côté. Il me reste alors $B(x) = \\frac{x+5}{x-5}$. On a transformé une fraction avec des carrés en une fraction linéaire beaucoup plus simple."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège absolu, celui que font presque tous les élèves au début, est de simplifier des termes au lieu de facteurs. Par exemple, dans $\\frac{x+5}{x}$, certains sont tentés de barrer le $x$ en haut et en bas pour n'avoir que $5$. C'est une erreur monumentale ! Le $x$ en haut est un terme additionné, pas un facteur multiplié. On ne peut pas simplifier une addition. Pour barrer un $x$, il faudrait que l'expression soit $\\frac{x(5)}{x}$, où le $x$ est multiplié par $5$. Une autre erreur est d'oublier de factoriser complètement. Si tu vois $2x-4$ et $x-2$, tu ne peux pas les barrer directement. Tu dois d'abord transformer $2x-4$ en $2(x-2)$. Une fois que la parenthèse $(x-2)$ apparaît explicitement, alors seulement tu peux simplifier. Enfin, méfie-toi des signes. Le facteur $(x-3)$ n'est pas le même que $(3-x)$. Cependant, ils sont opposés. Si tu as $(3-x)$ en haut et $(x-3)$ en bas, tu peux simplifier en laissant un signe moins devant la fraction, car $(3-x) = -1 \\times (x-3)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie l'expression $P(x) = \\frac{3x-9}{x-3}$.",
+              "answer": "3",
+              "hint": "Factorise d'abord le numérateur en cherchant un facteur commun.",
+              "explanation": "Le numérateur $3x-9$ se factorise en $3(x-3)$. L'expression devient $\\frac{3(x-3)}{x-3}$. On simplifie par $(x-3)$ et il reste $3$."
+            },
+            {
+              "question": "Simplifie $Q(x) = \\frac{x^2-16}{x+4}$.",
+              "answer": "x-4",
+              "hint": "Utilise l'identité remarquable $a^2-b^2$ au numérateur.",
+              "explanation": "$x^2-16$ est $(x-4)(x+4)$. La fraction est $\\frac{(x-4)(x+4)}{x+4}$. En simplifiant par $(x+4)$, on obtient $x-4$."
+            },
+            {
+              "question": "Simplifie $R(x) = \\frac{2x+6}{x^2-9}$.",
+              "answer": "\\frac{2}{x-3}",
+              "hint": "Factorise le numérateur et le dénominateur (attention au dénominateur !).",
+              "explanation": "Numérateur : $2(x+3)$. Dénominateur : $(x-3)(x+3)$. L'expression est $\\frac{2(x+3)}{(x-3)(x+3)}$. On simplifie par $(x+3)$, il reste $\\frac{2}{x-3}$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "L'addition de fractions a toujours été un peu intimidante au primaire, tu t'en souviens ? On ne pouvait pas juste additionner les chiffres du haut et du bas. Il fallait obligatoirement passer par l'étape du même dénominateur pour que les 'parts' soient de la même taille. Avec les fractions algébriques, c'est exactement le même combat, mais avec des lettres. Imagine que tu additionnes des parts de gâteaux dont la taille change selon la valeur de $x$. Si tu as une fraction sur $x$ et une autre sur $x+2$, tu ne peux pas les fusionner immédiatement car elles n'ont pas la même 'base'. Pour les réunir, tu dois trouver un dénominateur commun, c'est-à-dire une expression qui contient tous les facteurs de chaque dénominateur. C'est un peu comme trouver un terrain d'entente. Pour la multiplication, c'est beaucoup plus simple : c'est comme un grand mélange où tout le monde se multiplie et on simplifie à la fin. La clé du succès ici est l'organisation. Si on se précipite, on s'emmêle les pinceaux dans les parenthèses et les signes. Mais avec une méthode rigoureuse, on peut transformer des opérations complexes en résultats très simples."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour effectuer des calculs avec des fractions algébriques, on distingue deux types d'opérations. Pour la multiplication, c'est l'opération la plus directe : on multiplie les numérateurs entre eux et les dénominateurs entre eux. $\\frac{A}{B} \\times \\frac{C}{D} = \\frac{A \\times C}{B \\times D}$. Le secret est de factoriser tout ce qui peut l'être avant de multiplier, afin de simplifier an instantanément. Pour la division, on multiplie la première fraction par l'inverse de la seconde : $\\frac{A}{B} \\div \\frac{C}{D} = \\frac{A}{B} \\times \\frac{D}{C}$. L'addition et la soustraction sont plus délicates. Pour calculer $\\frac{A}{B} + \\frac{C}{D}$, on doit d'abord transformer les fractions pour qu'elles aient le même dénominateur. Le dénominateur commun est généralement le produit des dénominateurs simplifiés. On multiplie le numérateur de chaque fraction par le facteur qui manque à son dénominateur pour devenir le dénominateur commun. Une fois que les bases sont identiques, on additionne les numérateurs et on conserve le dénominateur commun. Enfin, on vérifie systématiquement si le résultat final peut être simplifié."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Factorisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On décompose les dénominateurs en produits pour trouver les facteurs simples."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Dénominateur Commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On crée un dénominateur qui contient tous les facteurs trouvés."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Ajustement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On multiplie chaque numérateur par le facteur manquant."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Simplification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On additionne les numérateurs et on simplifie la fraction finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la marche à suivre pour additionner ou soustraire deux fractions algébriques, une méthode qui t'évitera la majorité des erreurs. Étape 1 : Factorisation. Avant toute chose, factorise les dénominateurs. Cela permet de voir s'ils ont déjà des facteurs communs, ce qui rend le dénominateur commun plus petit et plus facile à manipuler. Étape 2 : Recherche du dénominateur commun. Le dénominateur commun est l'expression qui regroupe tous les facteurs distincts présents dans les deux dénominateurs. Étape 3 : Ajustement des numérateurs. Pour chaque fraction, regarde ce qu'il manque au dénominateur pour atteindre le dénominateur commun. Multiplie le numérateur par ce facteur manquant. C'est l'étape cruciale : si tu changes le bas, tu dois obligatoirement changer le haut pour garder la même valeur. Étape 4 : Fusion et réduction. Écris tout sur une seule fraction. Additionne ou soustrais les termes du numérateur. Fais très attention aux signes, surtout lors d'une soustraction où le signe moins s'applique à tout le numérateur suivant. Étape 5 : Simplification finale. Une fois le numérateur réduit, regarde s'il peut être factorisé pour être simplifié avec le dénominateur commun."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons la somme $S = \\frac{2}{x} + \\frac{3}{x+1}$. Les dénominateurs sont $x$ et $x+1$. Ils n'ont aucun facteur commun, donc le dénominateur commun est leur produit : $x(x+1)$. Pour la première fraction, il manque $(x+1)$ au dénominateur, donc je multiplie le numérateur $2$ par $(x+1)$, ce qui donne $2(x+1)$. Pour la seconde fraction, il manque $x$ au dénominateur, donc je multiplie le numérateur $3$ par $x$, ce qui donne $3x$. Je peux maintenant réunir le tout : $S = \\frac{2(x+1) + 3x}{x(x+1)}$. Je développe le numérateur : $2x + 2 + 3x$. Je simplifie : $5x + 2$. Le résultat final est $S = \\frac{5x+2}{x(x+1)}$. On ne peut plus simplifier car $5x+2$ ne possède pas de facteur commun avec le dénominateur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Effettuons la multiplication $M = \\frac{x^2-4}{3x} \\times \\frac{6x^2}{x-2}$. La règle d'or ici est de factoriser avant de multiplier. Au numérateur de la première fraction, $x^2-4$ devient $(x-2)(x+2)$. Le dénominateur $3x$ reste tel quel. Dans la deuxième fraction, $6x^2$ est $6 \\times x \\times x$ et $x-2$ reste tel quel. On peut maintenant tout écrire sur une seule ligne : $M = \\frac{(x-2)(x+2) \\times 6x^2}{3x \\times (x-2)}$. Je repère immédiatement les facteurs communs : le $(x-2)$ en haut et en bas s'annulent. De plus, $\\frac{6x^2}{3x} = 2x$. Il ne me reste donc que $M = (x+2) \\times 2x$. En développant, j'obtiens $M = 2x^2 + 4x$. C'est beaucoup plus rapide que de multiplier les expressions brutes et de devoir factoriser un polynôme géant à la fin."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est l'addition directe : $\\frac{1}{x} + \\frac{1}{y} = \\frac{2}{x+y}$. C'est absolument faux ! On n'additionne jamais les dénominateurs entre eux. Reste vigilant sur le signe moins. Dans l'opération $\\frac{1}{x} - \\frac{x-2}{x+1}$, quand tu mets au même dénominateur, le numérateur devient $(x+1) - (x-2)$. L'erreur est d'écrire $x+1 - x-2$. Le signe moins devant la parenthèse change tous les signes à l'intérieur : $x+1 - x + 2$, ce qui donne $3$. Un autre piège est d'oublier de multiplier le numérateur quand on change le dénominateur. Si tu multiplies le bas par $(x+3)$, tu dois impérativement multiplier le haut par $(x+3)$. Enfin, n'oublie jamais de vérifier le domaine de définition au début. Même si ton résultat final simplifiée semble définie partout, les valeurs qui annulaient les dénominateurs de départ restent interdites."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la somme $S = \\frac{1}{x+1} + \\frac{1}{x-1}$.",
+              "answer": "\\frac{2x}{x^2-1}",
+              "hint": "Le dénominateur commun est le produit $(x+1)(x-1)$.",
+              "explanation": "$S = \\frac{1(x-1) + 1(x+1)}{(x+1)(x-1)} = \\frac{x-1+x+1}{x^2-1} = \\frac{2x}{x^2-1}$."
+            },
+            {
+              "question": "Simplifie le produit $P = \\frac{x}{x+3} \\times \\frac{x^2-9}{x^2}$.",
+              "answer": "\\frac{x-3}{x}",
+              "hint": "Factorise $x^2-9$ avant de simplifier.",
+              "explanation": "$P = \\frac{x}{x+3} \\times \\frac{(x-3)(x+3)}{x^2}$. On simplifie par $(x+3)$ et par $x$. Il reste $\\frac{x-3}{x}$."
+            },
+            {
+              "question": "Calcule la différence $D = \\frac{3}{x} - \\frac{2}{x+2}$.",
+              "answer": "\\frac{x+6}{x(x+2)}",
+              "hint": "Mets au même dénominateur : $x(x+2)$.",
+              "explanation": "$D = \\frac{3(x+2) - 2x}{x(x+2)} = \\frac{3x+6-2x}{x(x+2)} = \\frac{x+6}{x(x+2)}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

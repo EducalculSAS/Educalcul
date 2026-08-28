@@ -1,0 +1,115 @@
+{
+  "_status": "done",
+  "_course_id": 80,
+  "_course_code": "ce1-t02-c02-lire-une-fraction-unitaire",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Représenter une fraction unitaire",
+  "title": "Quiz : Représenter une fraction unitaire",
+  "questions": [
+    {
+      "text": "Quelle fraction unitaire est représentée par la figure ci-dessous ?",
+      "options": [
+        "$1/4$",
+        "$1/3$",
+        "$1/2$",
+        "$2/4$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "La figure montre un cercle divisé en 4 parties égales dont une seule est colorée. Cela correspond à la fraction unitaire $1/4$. Les autres options ne correspondent pas : $1/3$ serait un tiers, $1/2$ une moitié, $2/4$ équivaut à $1/2$ mais n'est pas une fraction unitaire.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Cercle divisé en 4 parts égales, une part colorée"
+      }
+    },
+    {
+      "text": "La figure ci-dessous représente une fraction unitaire. Laquelle est-ce ?",
+      "options": [
+        "$1/3$",
+        "$1/4$",
+        "$2/3$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "La barre est divisée en 3 parties égales et une seule est colorée, ce qui représente la fraction unitaire $1/3$. $1/4$ correspondrait à 4 parties, $2/3$ à deux parties sur trois, et $1/2$ à une moitié.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 3,
+        "shape": "bar",
+        "caption": "Barre divisée en 3 parts égales, une part colorée"
+      }
+    },
+    {
+      "text": "Sur la droite graduée, le point A indique quelle fraction unitaire ?",
+      "options": [
+        "$1/4$",
+        "$1/3$",
+        "$1/2$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "La droite va de 0 à 1. Le point A est placé au quart de la distance, soit à 0,25, ce qui correspond à la fraction unitaire $1/4$. Les autres fractions ne correspondent pas à cette position.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.25,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quelle fraction unitaire est montrée par la bande de fractions ?",
+      "options": [
+        "$1/5$",
+        "$1/4$",
+        "$1/6$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$1/5$",
+      "explanation": "La bande est divisée en 5 parties égales et une seule est colorée, ce qui représente $1/5$. $1/4$ aurait 4 parties, $1/6$ en aurait 6, et $2/5$ n'est pas une fraction unitaire car le numérateur est 2.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 5
+          }
+        ],
+        "caption": "Bande de fraction divisée en 5 parts égales, une part colorée"
+      }
+    },
+    {
+      "text": "La grille ci-dessous met en évidence une fraction unitaire. Laquelle ?",
+      "options": [
+        "$1/3$",
+        "$1/2$",
+        "$1/4$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "La grille comporte 3 cases au total (1 ligne, 3 colonnes) et une seule est colorée. Cela représente la fraction unitaire $1/3$. $1/2$ nécessiterait 2 cases au total, $1/4$ en 4, et $2/3$ aurait 2 cases colorées sur 3.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 1,
+        "cols": 3,
+        "highlighted": 1,
+        "caption": "Grille de 1 ligne et 3 colonnes, une case colorée"
+      }
+    }
+  ]
+}

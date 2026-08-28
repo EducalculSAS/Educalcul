@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 114,
+  "_course_code": "ce1-t05-c07-problemes-de-groupement",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Taille des groupes connue",
+  "title": "Problèmes de groupement : taille des groupes connue",
+  "blocks": [
+    {
+      "title": "Sachets de billes",
+      "content": "Luc a $15$ billes. Il veut faire des sachets de $3$ billes. Combien de sachets peut-il faire ?",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un problème de groupement où l'on connaît le total ($15$) et la taille de chaque groupe ($3$). On cherche le nombre de groupes. On divise $15$ par $3$ : $15 / 3 = 5$. Luc peut faire $5$ sachets.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 5,
+        "highlighted": 15,
+        "caption": "15 billes rangées par groupes de 3"
+      }
+    },
+    {
+      "title": "Boîtes de crayons",
+      "content": "La maîtresse a $40$ crayons. Elle les range dans des boîtes de $10$ crayons. Combien de boîtes lui faut-il ?",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On connaît le total ($40$) et la taille des groupes ($10$). On cherche le nombre de boîtes. On divise $40$ par $10$ : $40 / 10 = 4$. Il faut $4$ boîtes.",
+      "points": 2,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 4,
+        "units": 0,
+        "caption": "40 crayons représentés par 4 dizaines"
+      }
+    },
+    {
+      "title": "Paquets de bonbons",
+      "content": "Il y a $24$ bonbons. On fait des paquets de $4$ bonbons. Combien y a-t-il de paquets ?",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total est $24$, la taille des groupes est $4$. Le calcul est $24 / 4 = 6$. Il y a donc $6$ paquets.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

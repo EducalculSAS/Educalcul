@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 134,
+  "_course_code": "ce1-t07-c09-plans-et-deplacements",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Coder un déplacement",
+  "title": "Coder un déplacement - CE1",
+  "questions": [
+    {
+      "text": "Sur un quadrillage, le robot se trouve sur la case de départ (coin en bas à gauche). Il exécute le code suivant : $→ → ↑$. Sur quelle case arrive-t-il ?",
+      "options": [
+        "La case au-dessus de la case de départ",
+        "La case deux cases à droite et une case au-dessus",
+        "La case deux cases au-dessus et une case à droite",
+        "La case à droite de la case de départ"
+      ],
+      "correctAnswer": "La case deux cases à droite et une case au-dessus",
+      "explanation": "Le code $→ → ↑$ signifie : une case à droite, encore une case à droite (donc deux cases à droite au total), puis une case en haut. Le robot se retrouve donc décalé de deux cases vers la droite et d'une case vers le haut par rapport au départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le quadrillage ci-dessous. Le robot doit aller du départ (case verte en bas à gauche) à l'arrivée (case rouge en haut à droite) en suivant le chemin tracé. Quel est le code correct ?",
+      "options": [
+        "$→ → ↑ ↑$",
+        "$→ ↑ → ↑$",
+        "$↑ ↑ → →$",
+        "$→ → → ↑$"
+      ],
+      "correctAnswer": "$→ → ↑ ↑$",
+      "explanation": "Le chemin tracé montre deux déplacements vers la droite ($→ →$) suivis de deux déplacements vers le haut ($↑ ↑$). L'option $→ ↑ → ↑$ correspondrait à un chemin en escalier, $↑ ↑ → →$ irait d'abord en haut, et $→ → → ↑$ irait trop loin à droite.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 5,
+        "caption": "Départ en bas à gauche (case verte), arrivée en haut à droite (case rouge). Chemin : deux cases à droite, deux cases en haut."
+      }
+    },
+    {
+      "text": "Léa a écrit ce code pour déplacer le robot : $→ ↑ ← ↑$. Pourquoi ce code ne permet-il pas d'avancer efficacement vers la droite ?",
+      "options": [
+        "Il y a trop de flèches dans le code",
+        "Le robot revient sur sa colonne de départ avec $←$",
+        "Il manque une flèche $→$ à la fin",
+        "La flèche $↑$ est interdite"
+      ],
+      "correctAnswer": "Le robot revient sur sa colonne de départ avec $←$",
+      "explanation": "Le code commence par $→$ (une case à droite), puis $↑$ (une case en haut), puis $←$ (une case à gauche). La flèche $←$ annule le déplacement vers la droite effectué au début : le robot se retrouve aligné verticalement avec sa case de départ. C'est une erreur fréquente : faire un aller-retour horizontal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le robot est sur la case de départ. On lui donne le code : $→ → ↑ ←$. Où se trouve-t-il par rapport à la case de départ ?",
+      "options": [
+        "Une case à droite",
+        "Une case à droite et une case en haut",
+        "Deux cases à droite",
+        "Sur la case de départ"
+      ],
+      "correctAnswer": "Une case à droite et une case en haut",
+      "explanation": "Calculons le bilan : $→ →$ fait avancer de deux cases à droite. $←$ fait reculer d'une case à gauche. Le bilan horizontal est $2 - 1 = 1$ case à droite. La flèche $↑$ fait monter d'une case en haut. Le robot est donc décalé d'une case à droite et d'une case en haut.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le quadrillage. Le robot a suivi le chemin tracé en partant du coin en bas à gauche. Quel code a-t-il exécuté pour arriver à la case finale ?",
+      "options": [
+        "$→ → ↑ ← ↑ ↑$",
+        "$→ ↑ → ← ↑ ↑$",
+        "$→ → ↑ ↑ ← ↑$",
+        "$↑ → → ← ↑ ↑$"
+      ],
+      "correctAnswer": "$→ → ↑ ← ↑ ↑$",
+      "explanation": "En suivant le chemin pas à pas depuis le départ (bas gauche) : 1. $→$ (droite), 2. $→$ (droite), 3. $↑$ (haut), 4. $←$ (gauche), 5. $↑$ (haut), 6. $↑$ (haut). Cela correspond exactement au code $→ → ↑ ← ↑ ↑$. Les autres options inversent l'ordre des déplacements ou commencent par le haut.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 7,
+        "caption": "Chemin parcouru : départ bas gauche, 2 droite, 1 haut, 1 gauche, 2 haut. Arrivée case finale."
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 218,
+  "_course_code": "cm1-t01-c08-bilan-nombres-cm1",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Bilan - Nombres CM1",
+  "title": "Bilan Nombres CM1 - Application",
+  "questions": [
+    {
+      "text": "Écris en chiffres le nombre : trois mille deux cent quarante-six.",
+      "options": [
+        "$3246$",
+        "$3426$",
+        "$3264$",
+        "$3462$"
+      ],
+      "correctAnswer": "$3246$",
+      "explanation": "Le nombre se décompose en 3 milliers, 2 centaines, 4 dizaines et 6 unités, ce qui s'écrit 3246. Les autres propositions inversent des chiffres ou changent leur ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le nombre qui suit $4999$ ?",
+      "options": [
+        "$5000$",
+        "$5009$",
+        "$5099$",
+        "$5999$"
+      ],
+      "correctAnswer": "$5000$",
+      "explanation": "Après 4999, on ajoute 1 unité ce qui fait passer les 9 unités à 0 et provoque une retenue jusqu'aux milliers, donnant 5000. Les autres nombres sont supérieurs de plusieurs dizaines ou centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre affiché, quelle est la valeur du chiffre 4 ?",
+      "options": [
+        "$4$",
+        "$40$",
+        "$0,4$",
+        "$400$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le tableau de position montre le nombre 304,5. Le chiffre 4 se trouve dans la colonne des unités, sa valeur est donc 4 unités = 4. Les autres options correspondent aux dizaines, dixièmes ou centaines.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 304.5,
+        "caption": "Tableau de position pour le nombre 304,5"
+      }
+    },
+    {
+      "text": "Arrondis $2,67$ à l'unité la plus proche.",
+      "options": [
+        "$2$",
+        "$3$",
+        "$2,6$",
+        "$2,7$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "La partie décimale 0,67 est supérieure à 0,5, donc on arrondit à l'entier supérieur, soit 3. Les options 2,6 et 2,7 sont des arrondis au dixième, et 2 correspond à un arrondi par défaut incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel calcul donne $56$ ?",
+      "options": [
+        "$7 \\times 8$",
+        "$6 \\times 9$",
+        "$8 \\times 6$",
+        "$9 \\times 5$"
+      ],
+      "correctAnswer": "$7 \\times 8$",
+      "explanation": "7 multiplié par 8 égale 56. 6×9=54, 8×6=48 et 9×5=45, ce qui ne correspond pas au résultat demandé.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

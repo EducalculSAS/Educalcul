@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 144,
+  "_course_code": "ce2-t01-c03-lire-et-ecrire-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Étendre la numération",
+  "title": "Algorithmes et numération jusqu'à 10 000",
+  "blocks": [
+    {
+      "title": "Décomposer un nombre",
+      "content": "Écris un algorithme qui prend un nombre entier $n$ (compris entre $0$ et $9999$) et affiche sa décomposition en milliers, centaines, dizaines et unités.",
+      "correctAnswer": "ALGORITHME Decomposition\\nVARIABLES n, m, c, d, u : ENTIER\\nDEBUT\\n  AFFICHER \"Entrez un nombre entre 0 et 9999 : \"\\n  SAISIR n\\n  m <- n DIV 1000\\n  c <- (n MOD 1000) DIV 100\\n  d <- (n MOD 100) DIV 10\\n  u <- n MOD 10\\n  AFFICHER m, \" milliers \", c, \" centaines \", d, \" dizaines \", u, \" unités\"\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la division euclidienne (DIV pour le quotient, MOD pour le reste) pour isoler chaque chiffre selon sa position. On commence par les milliers (division par 1000), puis on travaille sur le reste pour les centaines (division par 100), puis les dizaines (division par 10), l'unité étant le reste final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux nombres",
+      "content": "Écris un algorithme qui compare deux nombres entiers $a$ et $b$ (inférieurs à $10000$) et affiche le plus grand des deux, ou le mot \"égaux\" s'ils sont identiques.",
+      "correctAnswer": "ALGORITHME Comparaison\\nVARIABLES a, b : ENTIER\\nDEBUT\\n  AFFICHER \"Entrez le premier nombre : \"\\n  SAISIR a\\n  AFFICHER \"Entrez le second nombre : \"\\n  SAISIR b\\n  SI a > b ALORS\\n    AFFICHER \"Le plus grand est \", a\\n  SINON SI b > a ALORS\\n    AFFICHER \"Le plus grand est \", b\\n  SINON\\n    AFFICHER \"égaux\"\\n  FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La structure conditionnelle SI ... ALORS ... SINON SI ... SINON ... FIN SI permet de traiter les trois cas possibles : $a$ strictement supérieur à $b$, $b$ strictement supérieur à $a$, ou les deux nombres égaux. Cela respecte la logique de comparaison des nombres entiers.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconstituer un nombre",
+      "content": "Écris un algorithme qui reçoit quatre variables $m$ (milliers), $c$ (centaines), $d$ (dizaines), $u$ (unités) comprises entre $0$ et $9$, calcule le nombre entier correspondant $n$ et l'affiche.",
+      "correctAnswer": "ALGORITHME Reconstitution\\nVARIABLES m, c, d, u, n : ENTIER\\nDEBUT\\n  AFFICHER \"Entrez les milliers : \"\\n  SAISIR m\\n  AFFICHER \"Entrez les centaines : \"\\n  SAISIR c\\n  AFFICHER \"Entrez les dizaines : \"\\n  SAISIR d\\n  AFFICHER \"Entrez les unités : \"\\n  SAISIR u\\n  n <- m * 1000 + c * 100 + d * 10 + u\\n  AFFICHER \"Le nombre est \", n\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme applique le principe de la numération de position : chaque chiffre est multiplié par la valeur de sa position (1000, 100, 10, 1) et les résultats sont additionnés pour former le nombre final $n$. C'est l'opération inverse de la décomposition.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

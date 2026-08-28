@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 165,
+  "_course_code": "ce2-t03-c06-comprendre-la-division-comme-partage",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Partager équitablement",
+  "title": "Approfondissement : Partager équitablement - Algorithmes",
+  "blocks": [
+    {
+      "title": "Partage simple",
+      "content": "Écris un algorithme (suite d'étapes) pour partager $12$ pommes équitablement entre $3$ enfants. Indique le nombre de pommes que chaque enfant reçoit.",
+      "correctAnswer": "Algorithme :\\n1. Commencer avec $12$ pommes.\\n2. Compter $3$ enfants.\\n3. Diviser $12$ par $3$ : $12 ÷ 3 = 4$.\\n4. Chaque enfant reçoit $4$ pommes.\\n5. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour partager équitablement, on effectue la division du nombre total d'objets par le nombre de parts. Ici, $12$ pommes divisées par $3$ enfants donnent $4$ pommes par enfant. L'algorithme décrit ces étapes de manière séquentielle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partage avec répétition",
+      "content": "Écris un algorithme qui partage $20$ crayons entre $4$ élèves en utilisant une répétition (boucle) qui donne un crayon à chaque élève jusqu'à ce qu'il n'y en ait plus.",
+      "correctAnswer": "Algorithme :\\n1. crayons = $20$\\n2. élèves = $4$\\n3. donner = $0$\\n4. Répéter tant que crayons > $0$ :\\n   - Pour chaque élève de $1$ à $4$ :\\n       si crayons > $0$ alors\\n           donner = donner + $1$\\n           crayons = crayons - $1$\\n       fin si\\n   fin pour\\n5. Afficher donner (nombre de crayons par élève)\\n6. Fin.\\nRésultat : chaque élève reçoit $5$ crayons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle distribue un crayon à chaque élève à tour de rôle jusqu'à épuisement. Comme $20$ est un multiple de $4$, chaque élève reçoit exactement $5$ crayons. L'algorithme montre la logique de partage itératif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général de partage",
+      "content": "Écris un algorithme général qui partage un nombre quelconque d'objets $total$ entre un nombre quelconque de personnes $nbPersonnes$. Utilise les variables $total$ et $nbPersonnes$ et affiche le quotient (nombre d'objets par personne).",
+      "correctAnswer": "Algorithme :\\n1. Lire $total$\\n2. Lire $nbPersonnes$\\n3. Si $nbPersonnes = 0$ alors afficher \"Erreur\" et arrêter\\n4. $quotient = total ÷ nbPersonnes$\\n5. Afficher $quotient$\\n6. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme utilise la division pour calculer directement le nombre d'objets par personne. Il vérifie que le nombre de personnes n'est pas nul pour éviter une division par zéro. Le quotient obtenu correspond au partage équitable.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

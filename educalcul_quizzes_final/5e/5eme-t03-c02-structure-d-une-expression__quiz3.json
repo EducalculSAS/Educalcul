@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 390,
+  "_course_code": "5eme-t03-c02-structure-d-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Parenthèses",
+  "title": "Quiz sur les parenthèses",
+  "questions": [
+    {
+      "text": "Calcule $3 \\times (4 + 2)$.",
+      "options": [
+        "18",
+        "14",
+        "20",
+        "12"
+      ],
+      "correctAnswer": "18",
+      "explanation": "On commence par résoudre l'opération entre parenthèses : $4 + 2 = 6$. Ensuite on multiplie : $3 \\times 6 = 18$. Les autres réponses correspondent à des erreurs comme multiplier avant d'additionner ou oublier les parenthèses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5 - (2 + 3)$.",
+      "options": [
+        "0",
+        "6",
+        "10",
+        "3"
+      ],
+      "correctAnswer": "0",
+      "explanation": "Les parenthèses imposent de faire $2 + 3 = 5$ en premier. On obtient $5 - 5 = 0$. L'option 6 vient de l'erreur $5 - 2 + 3$, l'option 10 de $5 + 2 + 3$ et l'option 3 de $5 - 2$ en ignorant le $+3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $y = 5$. Calcule $3 \\times (y - 2)$.",
+      "options": [
+        "9",
+        "13",
+        "15",
+        "3"
+      ],
+      "correctAnswer": "9",
+      "explanation": "On remplace $y$ par $5$ : $3 \\times (5 - 2) = 3 \\times 3 = 9$. L'option 13 correspond à $3 \\times 5 - 2$, l'option 15 à $3 \\times 5$ (oubli de la soustraction) et l'option 3 à une mauvaise application de la distributivité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $4 + (3 \\times (2 + 1))$.",
+      "options": [
+        "13",
+        "11",
+        "21",
+        "7"
+      ],
+      "correctAnswer": "13",
+      "explanation": "On résout la parenthèse intérieure : $2 + 1 = 3$. Puis la multiplication : $3 \\times 3 = 9$. Enfin l'addition : $4 + 9 = 13$. L'option 11 vient de $4 + 3 \\times 2 + 1$ (oubli de la parenthèse intérieure), l'option 21 de $(4 + 3) \\times (2 + 1)$ et l'option 7 de $4 + 3$ en ignorant le reste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $10 - (4 - (2 + 1))$.",
+      "options": [
+        "9",
+        "7",
+        "5",
+        "13"
+      ],
+      "correctAnswer": "9",
+      "explanation": "Parenthèse intérieure : $2 + 1 = 3$. Parenthèse extérieure : $4 - 3 = 1$. Finalement $10 - 1 = 9$. L'option 7 correspond à $10 - (4 - 2 + 1)$, l'option 5 à $10 - 4 - 2 + 1$ (toutes les parenthèses ignorées) et l'option 13 à une addition erronée à la fin.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

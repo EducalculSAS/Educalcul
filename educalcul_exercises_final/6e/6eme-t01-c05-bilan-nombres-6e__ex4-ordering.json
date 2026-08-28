@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 335,
+  "_course_code": "6eme-t01-c05-bilan-nombres-6e",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Bilan - Nombres 6e",
+  "title": "Mise en ordre : Bilan Nombres 6e",
+  "blocks": [
+    {
+      "title": "Ordre croissant : grands nombres entiers",
+      "content": "Range les nombres suivants dans l'ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$42\\,500$",
+        "$425\\,000$",
+        "$4\\,025\\,000$",
+        "$4\\,250\\,000$"
+      ],
+      "explanation": "On compare les nombres en regardant le chiffre des millions, puis des centaines de milliers, etc. $42\\,500$ a 5 chiffres (dizaines de milliers). $425\\,000$ a 6 chiffres (centaines de milliers). $4\\,025\\,000$ et $4\\,250\\,000$ ont 7 chiffres (millions). Entre ces deux derniers, on compare le chiffre des centaines de milliers : $0 < 2$, donc $4\\,025\\,000 < 4\\,250\\,000$. L'ordre est : $42\\,500 < 425\\,000 < 4\\,025\\,000 < 4\\,250\\,000$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant : nombres décimaux",
+      "content": "Range les nombres décimaux suivants dans l'ordre décroissant (du plus grand au plus petit).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$3,401$",
+        "$3,4$",
+        "$3,14$",
+        "$3,04$"
+      ],
+      "explanation": "On aligne les nombres à la virgule et on compare chiffre par chiffre en partant de la gauche. Parties entières : toutes $3$. Dixièmes : $4$ (pour $3,4$ et $3,401$), $1$ (pour $3,14$), $0$ (pour $3,04$). $3,04$ est le plus petit. $3,14$ suit. Pour départager $3,4$ et $3,401$, on écrit $3,4 = 3,400$. Au centièmes : $0$ pour $3,400$ et $0$ pour $3,401$. Au millièmes : $0 < 1$, donc $3,4 < 3,401$. L'ordre décroissant est : $3,401 > 3,4 > 3,14 > 3,04$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : écritures diverses",
+      "content": "Range les nombres suivants dans l'ordre croissant. Ils sont écrits sous forme décimale, en puissance de 10 ou en notation scientifique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$3 \\times 10^2$",
+        "$2 \\times 10^3$",
+        "$0,4 \\times 10^4$",
+        "$5 \\times 10^3$"
+      ],
+      "explanation": "On convertit chaque nombre en écriture décimale standard pour comparer facilement. $3 \\times 10^2 = 300$. $2 \\times 10^3 = 2\\,000$. $0,4 \\times 10^4 = 4\\,000$. $5 \\times 10^3 = 5\\,000$. On ordonne ces valeurs : $300 < 2\\,000 < 4\\,000 < 5\\,000$. L'ordre correspondant aux écritures initiales est donc : $3 \\times 10^2$, $2 \\times 10^3$, $0,4 \\times 10^4$, $5 \\times 10^3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

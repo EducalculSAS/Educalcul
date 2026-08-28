@@ -1,0 +1,501 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.558291+00:00",
+  "id": 340,
+  "code": "6eme-t02-c05",
+  "title": "Addition et soustraction dans les cas prévus",
+  "description": "Cours structuré Educalcul : Addition et soustraction dans les cas prévus.",
+  "subject": "Fractions",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Fractions",
+    "titre_du_cours": "Addition et soustraction dans les cas prévus",
+    "objectif_global": "Addition et soustraction dans les cas prévus",
+    "mini_lecons_imposees": [
+      "Dénominateurs communs simples.",
+      "Calculer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Dénominateurs communs simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dénominateurs communs simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur l'addition et la soustraction des fractions ! Aujourd'hui, nous allons découvrir pourquoi il est parfois nécessaire de transformer les fractions avant de les additionner ou de les soustraire. Imagine que tu as une pizza coupée en $4$ parts égales et une autre pizza coupée en $8$ parts égales. Si tu veux savoir combien de parts tu as en tout, tu ne peux pas simplement ajouter $1$ part de la première pizza et $1$ part de la seconde, car les parts n'ont pas la même taille. C'est exactement le même problème avec les fractions : pour les additionner, il faut qu'elles parlent de la même unité, c'est-à-dire qu'elles aient le même dénominateur."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre qui se trouve sous la barre de fraction. Il indique en combien de parties égales l'unité est divisée.",
+              "example": "Dans la fraction $\\frac{3}{4}$, le dénominateur est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre qui se trouve au-dessus de la barre de fraction. Il indique combien de ces parties on prend.",
+              "example": "Dans $\\frac{3}{4}$, le numérateur est $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre exemple des pizzas. La première pizza est coupée en $4$ parts, donc chaque part vaut $\\frac{1}{4}$ de pizza. La seconde est coupée en $8$ parts, chaque part vaut $\\frac{1}{8}$ de pizza. Si tu prends une part de chaque, tu as $\\frac{1}{4} + \\frac{1}{8}$. Pour additionner, il faut exprimer les deux fractions avec le même dénominateur. Ici, $8$ est un multiple de $4$ : on peut transformer $\\frac{1}{4}$ en une fraction au dénominateur $8$ en multipliant le numérateur et le dénominateur par $2$. On obtient $\\frac{2}{8}$. Maintenant, $\\frac{2}{8} + \\frac{1}{8} = \\frac{3}{8}$. Tu as donc $3$ parts sur $8$ au total."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Une part sur 4 : 1/4"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "Deux parts sur 8 : 2/8, équivalent à 1/4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que $\\frac{1}{4}$ et $\\frac{2}{8}$ représentent la même quantité. C'est ce qu'on appelle des fractions équivalentes. Pour trouver un dénominateur commun simple, on cherche souvent un multiple commun des deux dénominateurs. Quand l'un des dénominateurs est un multiple de l'autre, c'est très facile : on utilise le plus grand des deux comme dénominateur commun."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux fractions. Note leurs dénominateurs. Par exemple, pour $\\frac{3}{5}$ et $\\frac{2}{10}$, les dénominateurs sont $5$ et $10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver un multiple commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si l'un des dénominateurs est un multiple de l'autre. Ici, $10 = 5 \\times 2$, donc $10$ est un multiple de $5$. On choisit $10$ comme dénominateur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Transformer la fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur et le dénominateur de la fraction qui n'a pas encore le dénominateur commun par le même nombre. Pour $\\frac{3}{5}$, on multiplie par $2$ : $\\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire les deux fractions avec le même dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant, on a $\\frac{6}{10}$ et $\\frac{2}{10}$. Elles sont prêtes à être additionnées ou soustraites !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la méthode sur un exemple simple, essayons un cas où les dénominateurs ne sont pas l'un multiple de l'autre, mais où il existe un multiple commun facile à trouver. Par exemple, $\\frac{1}{3}$ et $\\frac{1}{6}$. Ici, $6$ est un multiple de $3$, donc on utilise $6$ comme dénominateur commun. Mais si on a $\\frac{1}{4}$ et $\\frac{1}{6}$, aucun n'est multiple de l'autre. On cherche alors un multiple commun : les multiples de $4$ sont $4, 8, 12, 16...$ ; les multiples de $6$ sont $6, 12, 18...$. Le plus petit multiple commun est $12$. On transforme alors $\\frac{1}{4}$ en $\\frac{3}{12}$ (multiplié par $3$) et $\\frac{1}{6}$ en $\\frac{2}{12}$ (multiplié par $2$)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de 1/4, 1/6 et 1/12 sur une droite graduée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.25,
+                  "label": "1/4"
+                },
+                {
+                  "value": 0.16666666666666666,
+                  "label": "1/6"
+                },
+                {
+                  "value": 0.08333333333333333,
+                  "label": "1/12"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, tu vois que $\\frac{1}{4}$ correspond à $3$ graduations sur $12$, et $\\frac{1}{6}$ correspond à $2$ graduations sur $12$. Cela confirme que $\\frac{1}{4} = \\frac{3}{12}$ et $\\frac{1}{6} = \\frac{2}{12}$. C'est une manière visuelle de comprendre pourquoi on cherche un dénominateur commun : pour que les fractions pointent vers les mêmes repères sur la droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, retenons l'idée essentielle : quand on veut additionner ou soustraire des fractions, il faut d'abord les mettre au même dénominateur. Si l'un des dénominateurs est un multiple de l'autre, on utilise le plus grand. Sinon, on cherche un multiple commun, de préférence le plus petit pour simplifier les calculs. Cette étape de mise au même dénominateur est la clé qui rendra les calculs possibles dans la leçon suivante. Prends le temps de bien t'entraîner à trouver ce dénominateur commun, c'est la base de tout !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Transforme la fraction $\\frac{2}{5}$ en une fraction équivalente de dénominateur $15$.",
+              "answer": "$\\frac{6}{15}$",
+              "hint": "Par quel nombre faut-il multiplier $5$ pour obtenir $15$ ? Multiplie le numérateur par ce même nombre.",
+              "explanation": "Pour passer de $5$ à $15$, on multiplie par $3$. On fait la même chose au numérateur : $2 \\times 3 = 6$. Donc $\\frac{2}{5} = \\frac{6}{15}$."
+            },
+            {
+              "question": "Trouve un dénominateur commun pour les fractions $\\frac{3}{4}$ et $\\frac{5}{6}$, puis écris ces deux fractions avec ce dénominateur commun.",
+              "answer": "Dénominateur commun : $12$. $\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$.",
+              "hint": "Liste les multiples de $4$ et de $6$ jusqu'à trouver un commun. Le plus petit est $12$.",
+              "explanation": "Multiples de $4$ : $4, 8, 12, 16...$ ; multiples de $6$ : $6, 12, 18...$. Le plus petit commun est $12$. Pour $\\frac{3}{4}$, on multiplie numérateur et dénominateur par $3$ : $\\frac{9}{12}$. Pour $\\frac{5}{6}$, on multiplie par $2$ : $\\frac{10}{12}$."
+            },
+            {
+              "question": "Parmi les paires de fractions suivantes, lesquelles ont déjà un dénominateur commun ? \\n a) $\\frac{2}{7}$ et $\\frac{3}{7}$ \\n b) $\\frac{1}{3}$ et $\\frac{2}{5}$ \\n c) $\\frac{4}{9}$ et $\\frac{5}{9}$",
+              "answer": "a) et c) ont déjà le même dénominateur ($7$ pour a, $9$ pour c).",
+              "hint": "Regarde le nombre sous la barre de fraction. S'il est identique, le dénominateur est commun.",
+              "explanation": "Dans a), les deux fractions ont pour dénominateur $7$. Dans c), le dénominateur est $9$ pour les deux. Dans b), les dénominateurs sont $3$ et $5$, ils sont différents."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer : addition et soustraction de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant mettre deux fractions au même dénominateur. Dans cette leçon, nous allons passer à l'action : additionner et soustraire ces fractions une fois qu'elles ont le même dénominateur. C'est une étape très satisfaisante car la règle est simple et logique. Rappelle-toi : quand les fractions ont le même dénominateur, elles sont exprimées dans la même unité. On peut alors ajouter ou retrancher les parts directement, sans toucher au dénominateur."
+            },
+            {
+              "type": "definition",
+              "term": "Addition de fractions de même dénominateur",
+              "definition": "On additionne les numérateurs et on garde le dénominateur commun.",
+              "example": "$\\frac{2}{7} + \\frac{3}{7} = \\frac{2+3}{7} = \\frac{5}{7}$"
+            },
+            {
+              "type": "definition",
+              "term": "Soustraction de fractions de même dénominateur",
+              "definition": "On soustrait les numérateurs et on garde le dénominateur commun.",
+              "example": "$\\frac{5}{9} - \\frac{2}{9} = \\frac{5-2}{9} = \\frac{3}{9} = \\frac{1}{3}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une barre de chocolat divisée en $12$ carrés identiques. Tu en manges $5$ carrés, soit $\\frac{5}{12}$ de la barre. Ton ami en mange $3$ carrés, soit $\\frac{3}{12}$. Ensemble, vous avez mangé $5+3 = 8$ carrés sur les $12$, c'est-à-dire $\\frac{8}{12}$ de la barre. Remarque que le dénominateur $12$ n'a pas changé : l'unité (le carré) reste la même. C'est exactement ce que fait la règle : $\\frac{5}{12} + \\frac{3}{12} = \\frac{5+3}{12} = \\frac{8}{12}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "5/12 de la barre"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "3/12 de la barre"
+            },
+            {
+              "type": "fraction",
+              "numerator": 8,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "8/12 de la barre au total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le résultat peut se simplifier. Dans l'exemple ci-dessus, $\\frac{8}{12}$ peut se simplifier en divisant numérateur et dénominateur par $4$ : $\\frac{8 \\div 4}{12 \\div 4} = \\frac{2}{3}$. Tu as donc mangé $\\frac{2}{3}$ de la barre au total. La simplification n'est pas obligatoire pour que le calcul soit juste, mais elle donne une fraction plus simple à lire. Nous verrons la simplification en détail plus tard, mais n'hésite pas à le faire si tu repères un diviseur commun."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le dénominateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que les deux fractions ont bien le même dénominateur. Si ce n'est pas le cas, reviens à la leçon précédente pour les transformer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer l'opération sur les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne ou soustrais les numérateurs selon le signe. Écris le résultat au numérateur, garde le dénominateur inchangé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le numérateur et le dénominateur du résultat ont un diviseur commun (autre que $1$). Si oui, divise les deux par ce diviseur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, entraînons-nous sur des cas où il faut d'abord trouver le dénominateur commun, puis calculer. C'est la situation complète : tu combines les deux compétences. Par exemple, calcule $\\frac{2}{3} + \\frac{1}{6}$. D'abord, dénominateur commun : $6$ est multiple de $3$, donc on utilise $6$. On transforme $\\frac{2}{3}$ en $\\frac{4}{6}$. Ensuite, on additionne : $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$. Le résultat ne se simplifie pas. Essaie de faire la même chose avec une soustraction : $\\frac{5}{6} - \\frac{1}{3}$. Dénominateur commun $6$, $\\frac{1}{3} = \\frac{2}{6}$, donc $\\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}$ après simplification."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{2}{3} + \\frac{1}{6} = \\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{5}{6} - \\frac{1}{3} = \\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que la méthode est toujours la même : 1) Trouver un dénominateur commun. 2) Transformer les fractions. 3) Additionner ou soustraire les numérateurs. 4) Simplifier le résultat si c'est possible. C'est une petite routine qui devient vite automatique avec un peu d'entraînement. Ne te précipite pas : écris chaque étape, cela t'évitera les erreurs d'inattention."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, regardons un cas un peu plus délicat : l'addition de trois fractions. La règle ne change pas ! Il faut mettre les trois fractions au même dénominateur, puis additionner les trois numérateurs. Par exemple, $\\frac{1}{4} + \\frac{1}{6} + \\frac{1}{12}$. Le plus petit multiple commun de $4, 6, 12$ est $12$. On transforme : $\\frac{1}{4} = \\frac{3}{12}$, $\\frac{1}{6} = \\frac{2}{12}$, $\\frac{1}{12}$ reste $\\frac{1}{12}$. Somme des numérateurs : $3+2+1 = 6$. Résultat : $\\frac{6}{12} = \\frac{1}{2}$. C'est comme si tu ajoutais trois parts de gâteaux de tailles différentes après les avoir recoupées en parts égales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\frac{3}{8} + \\frac{2}{8}$. Donne le résultat simplifié si possible.",
+              "answer": "$\\frac{5}{8}$",
+              "hint": "Additionne les numérateurs, garde le dénominateur. Vérifie si $5$ et $8$ ont un diviseur commun.",
+              "explanation": "$\\frac{3}{8} + \\frac{2}{8} = \\frac{3+2}{8} = \\frac{5}{8}$. $5$ et $8$ n'ont pas de diviseur commun (autre que $1$), la fraction est déjà simplifiée."
+            },
+            {
+              "question": "Calcule $\\frac{7}{10} - \\frac{2}{5}$. Pense à mettre au même dénominateur d'abord.",
+              "answer": "$\\frac{3}{10}$",
+              "hint": "Le dénominateur commun est $10$. Transforme $\\frac{2}{5}$ en dixièmes, puis soustrais.",
+              "explanation": "$\\frac{2}{5} = \\frac{4}{10}$. Alors $\\frac{7}{10} - \\frac{4}{10} = \\frac{3}{10}$. Le résultat est déjà simplifié."
+            },
+            {
+              "question": "Calcule $\\frac{1}{3} + \\frac{1}{4} + \\frac{1}{6}$.",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Trouve le plus petit multiple commun de $3, 4, 6$ (c'est $12$). Transforme chaque fraction, puis additionne les numérateurs.",
+              "explanation": "Multiples communs : $12$. $\\frac{1}{3} = \\frac{4}{12}$, $\\frac{1}{4} = \\frac{3}{12}$, $\\frac{1}{6} = \\frac{2}{12}$. Somme : $4+3+2 = 9$. $\\frac{9}{12} = \\frac{3}{4}$ après simplification par $3$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter : donner du sens aux résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. Tu sais maintenant trouver un dénominateur commun et effectuer des additions ou soustractions de fractions. Mais les mathématiques ne sont pas seulement des calculs : elles servent à comprendre le monde qui nous entoure. Dans cette leçon, nous allons apprendre à interpréter les résultats, à les remettre dans un contexte concret, et à vérifier s'ils sont raisonnables. C'est une compétence essentielle pour résoudre des problèmes et pour ne pas faire n'importe quoi avec les nombres !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du chocolat. Si le calcul te donne $\\frac{8}{12}$ de la barre mangée, tu peux l'interpréter : \"Les deux amis ont mangé 8 carrés sur les 12, il en reste 4 carrés, soit $\\frac{4}{12} = \\frac{1}{3}$ de la barre.\" Cette phrase donne du sens au nombre. De même, si tu calcules $\\frac{5}{6} - \\frac{1}{3} = \\frac{1}{2}$, tu peux dire : \"Au départ, il y avait 5 parts sur 6. On en retire 2 parts sur 6 (car $\\frac{1}{3} = \\frac{2}{6}$). Il reste 3 parts sur 6, c'est-à-dire la moitié.\" Essaie toujours de reformuler le résultat avec des mots simples."
+            },
+            {
+              "type": "definition",
+              "term": "Interpréter un résultat",
+              "definition": "Expliquer ce que le nombre obtenu signifie dans la situation concrète du problème, en utilisant des mots et des unités (parts, mètres, litres, euros...).",
+              "example": "Si je calcule $\\frac{3}{4} + \\frac{1}{4} = 1$, j'interprète : \"Les deux fractions forment un tout, il n'y a rien de restant.\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le résultat est une fraction impropre (numérateur plus grand que le dénominateur), comme $\\frac{7}{4}$. Il est alors utile de l'écrire en nombre mixte : $\\frac{7}{4} = 1 + \\frac{3}{4} = 1\\frac{3}{4}$. Cela veut dire qu'on a un entier et trois quarts. Par exemple, si tu as $\\frac{7}{4}$ de litre de jus, tu as 1 litre entier et encore $\\frac{3}{4}$ de litre. Cette forme est souvent plus parlante dans la vie de tous les jours."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Relire l'énoncé et identifier la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Qu'est-ce qu'on cherche ? Une quantité ? Une différence ? Une part restante ? Note l'unité (litres, mètres, euros, parts...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer le calcul de fractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets au même dénominateur, additionne ou soustrais, simplifie si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire une phrase de réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Complète la phrase : \"Donc, ...\" en remettant le résultat dans le contexte. Si le résultat est une fraction impropre, transforme-le en nombre mixte pour plus de clarté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est-il plausible ? (Ex: une longueur ne peut pas être négative, une part mangée ne peut pas dépasser le tout)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant un problème complet. \"Léa a un ruban de $\\frac{5}{6}$ m. Elle en coupe un morceau de $\\frac{1}{3}$ m pour faire un nœud. Quelle longueur de ruban lui reste-t-il ?\" On cherche une longueur restante, donc une soustraction. Dénominateur commun : $6$. $\\frac{1}{3} = \\frac{2}{6}$. Calcul : $\\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}$. Interprétation : \"Il lui reste $\\frac{1}{2}$ mètre de ruban.\" Vérification : $\\frac{1}{2}$ m est positif et plus petit que $\\frac{5}{6}$ m, c'est cohérent."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueurs de ruban : initial, coupé, restant",
+              "bars": [
+                {
+                  "label": "Initial",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Coupé",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restant",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique en barres montre visuellement les trois longueurs exprimées en sixièmes de mètre : l'initial (5/6), le coupé (2/6) et le restant (3/6). Cela aide à voir que le restant est bien la différence entre l'initial et le coupé. Utiliser un dessin ou un graphique est une excellente habitude pour vérifier ton interprétation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le problème demande de comparer deux quantités après calcul. Par exemple : \"Paul a lu $\\frac{3}{5}$ d'un livre, Léa a lu $\\frac{4}{7}$ du même livre. Qui a lu le plus ? De combien ?\" Il faut d'abord mettre au même dénominateur : $35$. $\\frac{3}{5} = \\frac{21}{35}$, $\\frac{4}{7} = \\frac{20}{35}$. Paul a lu $\\frac{21}{35}$, Léa $\\frac{20}{35}$. Paul a lu plus. La différence : $\\frac{21}{35} - \\frac{20}{35} = \\frac{1}{35}$ du livre. Interprétation : \"Paul a lu $\\frac{1}{35}$ du livre de plus que Léa.\" C'est une toute petite différence, mais le calcul nous le donne exactement."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Part du livre lue par Paul (21/35) et Léa (20/35), reste non lu (14/35)",
+              "slices": [
+                {
+                  "label": "Paul",
+                  "value": 21,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "Non lu",
+                  "value": 14,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le camembert montre que Paul et Léa ont lu des parts presque égales, et qu'il reste une bonne partie du livre non lue. L'interprétation ne se limite pas au chiffre : elle décrit la situation. C'est ce qui donne tout son sens aux mathématiques. Tu as maintenant toutes les clés pour aborder sereinement les additions et soustractions de fractions dans les cas prévus au programme. Continue à t'entraîner, et n'oublie jamais de dire ce que signifie ton résultat !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais mettre deux fractions au même dénominateur quand l'un est multiple de l'autre.",
+                "Je sais trouver un multiple commun pour deux dénominateurs quelconques.",
+                "Je sais additionner et soustraire des fractions de même dénominateur.",
+                "Je sais simplifier une fraction après un calcul.",
+                "Je sais écrire une fraction impropre sous forme de nombre mixte.",
+                "Je sais interpréter le résultat d'un calcul de fractions dans un problème concret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un seau contient $\\frac{7}{8}$ L d'eau. On en verse $\\frac{1}{4}$ L pour arroser les fleurs. Quelle quantité d'eau reste-t-il dans le seau ? Donne la réponse en litres sous forme de fraction simplifiée.",
+              "answer": "$\\frac{5}{8}$ L",
+              "hint": "Mets $\\frac{1}{4}$ au dénominateur $8$, puis soustrais.",
+              "explanation": "$\\frac{1}{4} = \\frac{2}{8}$. $\\frac{7}{8} - \\frac{2}{8} = \\frac{5}{8}$. Il reste $\\frac{5}{8}$ L d'eau."
+            },
+            {
+              "question": "Dans une classe, $\\frac{2}{5}$ des élèves sont des filles et $\\frac{1}{3}$ des élèves portent des lunettes. On suppose que ces deux groupes sont distincts. Quelle fraction de la classe est constituée soit de filles, soit d'élèves portant des lunettes ?",
+              "answer": "$\\frac{11}{15}$",
+              "hint": "Additionne les deux fractions après les avoir mises au même dénominateur (15).",
+              "explanation": "$\\frac{2}{5} = \\frac{6}{15}$, $\\frac{1}{3} = \\frac{5}{15}$. Somme : $\\frac{6}{15} + \\frac{5}{15} = \\frac{11}{15}$."
+            },
+            {
+              "question": "Tom a couru $\\frac{3}{4}$ km, puis il a marché $\\frac{2}{3}$ km. Quelle distance totale a-t-il parcourue ? Exprime le résultat en km sous forme de nombre mixte.",
+              "answer": "$1\\frac{5}{12}$ km",
+              "hint": "Dénominateur commun 12. Additionne, puis transforme la fraction impropre en nombre mixte.",
+              "explanation": "$\\frac{3}{4} = \\frac{9}{12}$, $\\frac{2}{3} = \\frac{8}{12}$. Somme : $\\frac{17}{12} = 1 + \\frac{5}{12} = 1\\frac{5}{12}$ km."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

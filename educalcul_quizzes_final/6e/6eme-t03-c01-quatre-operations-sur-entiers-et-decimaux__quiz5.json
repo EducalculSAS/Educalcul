@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 342,
+  "_course_code": "6eme-t03-c01-quatre-operations-sur-entiers-et-decimaux",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Choisir opération",
+  "title": "Choisir l'opération : problèmes additifs, multiplicatifs et à plusieurs étapes",
+  "questions": [
+    {
+      "text": "Léa a $34$ billes. Elle en gagne $18$ de plus en jouant. Combien de billes a-t-elle maintenant ?",
+      "options": [
+        "Il faut faire $34 - 18$",
+        "Il faut faire $34 + 18$",
+        "Il faut faire $34 \\times 18$",
+        "Il faut faire $34 \\div 18$"
+      ],
+      "correctAnswer": "Il faut faire $34 + 18$",
+      "explanation": "Le problème décrit une mise ensemble : on possède une quantité initiale ($34$) et on y ajoute une quantité supplémentaire ($18$). L'opération qui modélise l'action d'ajouter, de réunir deux quantités, est l'addition. La soustraction serait utilisée si Léa perdait des billes. La multiplication et la division ne correspondent pas à cette situation simple d'ajout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un roman coûte $12,50$ euros. Un magazine coûte $4,80$ euros. De combien le roman est-il plus cher que le magazine ?",
+      "options": [
+        "Il faut faire $12,50 + 4,80$",
+        "Il faut faire $12,50 \\times 4,80$",
+        "Il faut faire $12,50 - 4,80$",
+        "Il faut faire $12,50 \\div 4,80$"
+      ],
+      "correctAnswer": "Il faut faire $12,50 - 4,80$",
+      "explanation": "La question demande \"de combien\" l'un est plus cher que l'autre, ce qui demande une comparaison pour trouver la différence entre deux montants. Pour trouver un écart, une différence, on soustrait le plus petit nombre du plus grand. L'addition donnerait le prix total des deux articles, ce qui n'est pas la question.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $6$ paquets de crayons. Dans chaque paquet, il y a $12$ crayons. Combien y a-t-il de crayons au total dans la boîte ?",
+      "options": [
+        "Il faut faire $6 + 12$",
+        "Il faut faire $12 - 6$",
+        "Il faut faire $6 \\times 12$",
+        "Il faut faire $12 \\div 6$"
+      ],
+      "correctAnswer": "Il faut faire $6 \\times 12$",
+      "explanation": "On a plusieurs groupes (les $6$ paquets) de même taille (chacun contient $12$ crayons). Pour trouver le total, on répète l'addition $12 + 12 + ...$ six fois, ce qui est exactement la définition de la multiplication : $6 \\times 12$. L'addition $6 + 12$ ne compte que les crayons d'un seul paquet plus le nombre de paquets, ce qui n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le boulanger a fabriqué $84$ croissants. Il les range dans des boîtes de $6$ croissants chacune. Combien de boîtes remplit-il ?",
+      "options": [
+        "Il faut faire $84 + 6$",
+        "Il faut faire $84 - 6$",
+        "Il faut faire $84 \\times 6$",
+        "Il faut faire $84 \\div 6$"
+      ],
+      "correctAnswer": "Il faut faire $84 \\div 6$",
+      "explanation": "On connaît le total ($84$ croissants) et la taille de chaque groupe (une boîte de $6$). On cherche le nombre de groupes (le nombre de boîtes). C'est un partage quotitatif : \"Combien de fois $6$ dans $84$ ?\" ou \"Combien de groupes de $6$ peut-on faire avec $84$ ?\". L'opération est la division : $84 \\div 6$. La multiplication donnerait un nombre énorme qui ne correspond pas à un nombre de boîtes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une fête, on achète $5$ packs de jus de fruit à $3,20$ euros le pack et $2$ gâteaux à $8,50$ euros chacun. Quelle suite d'opérations permet de calculer le prix total à payer ?",
+      "options": [
+        "$(5 + 2) \\times (3,20 + 8,50)$",
+        "$(5 \\times 3,20) + (2 \\times 8,50)$",
+        "$(5 \\times 8,50) + (2 \\times 3,20)$",
+        "$5 \\times 3,20 + 2 \\times 8,50$ (sans parenthèses)"
+      ],
+      "correctAnswer": "$(5 \\times 3,20) + (2 \\times 8,50)$",
+      "explanation": "C'est un problème à deux étapes. D'abord, calculer le coût total des jus : nombre de packs $\\times$ prix unitaire = $5 \\times 3,20$. Ensuite, calculer le coût total des gâteaux : nombre de gâteaux $\\times$ prix unitaire = $2 \\times 8,50$. Enfin, additionner ces deux sous-totaux pour obtenir le total. Les parenthèses ne sont pas obligatoires car la priorité aux multiplications est respectée, mais elles clarifient la démarche. L'option 1 additionne les quantités et les prix, ce qui est absurde. L'option 3 inverse les prix.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

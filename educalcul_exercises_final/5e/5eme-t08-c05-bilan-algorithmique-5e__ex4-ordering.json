@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Bilan - Algorithmique 5e",
+  "title": "Bilan algorithmique 5e - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Algorithme simple : doubler un nombre",
+      "content": "Range les instructions dans l'ordre logique pour écrire un algorithme qui demande un nombre à l'utilisateur et affiche son double.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Demander un nombre à l'utilisateur",
+        "Stocker ce nombre dans une variable",
+        "Calculer le double de cette variable",
+        "Afficher le résultat"
+      ],
+      "explanation": "L'algorithme commence par demander la donnée à l'utilisateur. Cette valeur doit être mémorisée dans une variable pour pouvoir être utilisée ensuite. On calcule ensuite le double de cette variable, puis on affiche le résultat obtenu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour calculer une somme",
+      "content": "Range les blocs dans l'ordre correct pour construire un algorithme qui calcule la somme des entiers de un à cinq à l'aide d'une boucle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Initialiser la variable somme à zéro",
+        "Pour chaque nombre de un à cinq faire",
+        "Ajouter le nombre à la variable somme",
+        "Fin pour",
+        "Afficher la valeur de la variable somme"
+      ],
+      "explanation": "On initialise d'abord la variable qui va accumuler la somme. La boucle parcourt ensuite les nombres de un à cinq, et à chaque itération on ajoute le nombre courant à la somme. Après la fin de la boucle, on affiche la valeur finale de la variable somme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Structure conditionnelle : signe d'un nombre",
+      "content": "Range les instructions dans l'ordre pour écrire un algorithme qui demande un nombre et affiche s'il est positif, négatif ou nul.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Demander un nombre à l'utilisateur",
+        "Si le nombre est supérieur à zéro alors afficher positif",
+        "Sinon si le nombre est inférieur à zéro alors afficher négatif",
+        "Sinon afficher nul",
+        "Fin si"
+      ],
+      "explanation": "L'algorithme commence par la saisie du nombre. La structure conditionnelle teste d'abord si le nombre est strictement positif, puis s'il est strictement négatif, et enfin le cas restant (zéro). Chaque branche affiche le message correspondant. La fin de la structure conditionnelle termine l'algorithme.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

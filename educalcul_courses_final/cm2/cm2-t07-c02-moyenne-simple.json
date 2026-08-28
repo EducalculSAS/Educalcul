@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.497817+00:00",
+  "id": 319,
+  "code": "cm2-t07-c02",
+  "title": "Moyenne simple",
+  "description": "Cours structuré Educalcul : Moyenne simple.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Moyenne simple",
+    "objectif_global": "Moyenne simple",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Interpréter.",
+      "Comparer séries courtes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer une moyenne simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as joué à un jeu vidéo trois fois et que tu as obtenu les scores 12, 15 et 9. Tu veux savoir ton score moyen pour te comparer à tes amis, comme on compare les moyennes de notes à l'école."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Scores de trois parties",
+              "bars": [
+                {
+                  "label": "Partie 1",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie 2",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "Partie 3",
+                  "value": 9,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "moyenne",
+              "definition": "La moyenne est le résultat obtenu quand on partage équitablement le total d'une série de nombres entre tous ses éléments.",
+              "example": "Pour les scores 12, 15 et 9, la moyenne est 12."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la moyenne, il faut d'abord additionner toutes les valeurs de la série. Ici, $12 + 15 + 9 = 36$. Ensuite, on compte combien de valeurs il y a : la série comporte $3$ nombres. C'est la première étape, simple et concrète, qui pose les bases du calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne toutes les valeurs de la série. Ici, $12 + 15 + 9 = 36$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de valeurs il y a. La série comporte $3$ nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le total par le nombre de valeurs : $36 \\div 3 = 12$. Ce résultat est la moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la méthode complète, essayons une autre série pour bien ancrer la procédure. Pense à un panier de pommes : trois paniers contiennent 4, 6 et 5 pommes. La moyenne te dira combien de pommes par panier si on les répartissait équitablement."
+            },
+            {
+              "type": "display_math",
+              "latex": "moyenne = \\\\frac{\\\\text{somme}}{\\\\text{nombre}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les pommes, la somme est $4 + 6 + 5 = 15$ et il y a $3$ paniers. En divisant $15$ par $3$, on obtient $5$ pommes par panier en moyenne. Vérifie toujours que le résultat se situe entre la plus petite et la plus grande valeur : ici $4 \\le 5 \\le 6$, c'est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller un peu plus loin, regarde cette série de cinq nombres : $8, 12, 5, 10, 7$. D'abord, additionne-les : $8+12+5+10+7 = 42$. Il y a $5$ nombres, donc on divise $42$ par $5$. La division ne tombe pas juste, on obtient $8,4$. On peut arrondir au dixième près si besoin. Essaie de refaire le calcul tout seul pour t'assurer que tu as bien compris chaque étape."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de traverser tout le chemin : additionner, compter, diviser. Avec un peu d'entraînement, tu le feras tout seul, que ce soit pour des scores de jeu, des pommes ou des notes de contrôle. La méthode reste identique, c'est la régularité qui fait la force."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la moyenne de 6, 9 et 12 ?",
+              "answer": "9",
+              "hint": "Additionne les trois nombres puis divise par 3.",
+              "explanation": "6 + 9 + 12 = 27, 27 ÷ 3 = 9."
+            },
+            {
+              "question": "Une série de cinq nombres donne un total de 35. Combien vaut la moyenne ?",
+              "answer": "7",
+              "hint": "Divise le total par le nombre de valeurs (5).",
+              "explanation": "35 ÷ 5 = 7."
+            },
+            {
+              "question": "Trouve la moyenne des nombres 4, 10, 6, 8.",
+              "answer": "7",
+              "hint": "Additionne les quatre nombres, puis divise par 4.",
+              "explanation": "4 + 10 + 6 + 8 = 28, 28 ÷ 4 = 7."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter une moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu mesures la taille de cinq copains : 130, 135, 140, 138 et 137 centimètres. La moyenne de ces tailles est 136 cm. Que veut dire ce nombre pour toi ? C'est une question d'interprétation, pas seulement de calcul."
+            },
+            {
+              "type": "number_line",
+              "caption": "Tailles des cinq copains et leur moyenne",
+              "min": 125,
+              "max": 145,
+              "points": [
+                {
+                  "value": 130,
+                  "label": "A"
+                },
+                {
+                  "value": 135,
+                  "label": "B"
+                },
+                {
+                  "value": 136,
+                  "label": "Moyenne"
+                },
+                {
+                  "value": 137,
+                  "label": "C"
+                },
+                {
+                  "value": 138,
+                  "label": "D"
+                },
+                {
+                  "value": 140,
+                  "label": "E"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La moyenne représente un partage équitable : si on mettait toutes les tailles bout à bout et qu'on les redistribuait de façon égale, chaque copain mesurerait 136 cm. C'est une valeur repère qui se trouve toujours entre la plus petite et la plus grande valeur de la série. Ici, 130 cm ≤ 136 cm ≤ 140 cm, ce qui est cohérent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la moyenne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la moyenne sur la droite graduée. Elle se situe au centre de l'ensemble des points."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer aux valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si la moyenne est proche de certaines valeurs ou éloignée. Cela t'indique si le groupe est homogène ou s'il y a de grands écarts."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la moyenne ne correspond à aucune valeur de la série. Prenons les nombres 2, 4 et 8. Leur somme est 14, il y a 3 nombres, donc la moyenne est 14 ÷ 3 ≈ 4,67. Aucun des trois nombres n'est égal à 4,67. Cela montre que la moyenne est une valeur de synthèse, pas nécessairement une donnée observée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la moyenne peut t'aider à prendre une décision. Imagine un joueur de basket qui marque en moyenne 15 points par match sur 4 matchs. Si tu dois choisir entre lui et un autre joueur dont la moyenne est 12 points, tu sais que le premier apporte généralement plus de points à l'équipe. La moyenne devient un outil de comparaison concret."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les clés pour lire une moyenne : la situer par rapport aux données, vérifier si elle appartient à la série, et l'utiliser pour comparer des situations. C'est une compétence qui te servira bien au-delà des mathématiques, dans le sport, les notes ou même la météo."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La moyenne de 130, 135, 140, 138, 137 est 136. Laquelle de ces affirmations est vraie ?",
+              "answer": "La moyenne se trouve entre la plus petite et la plus grande valeur.",
+              "hint": "Regarde les valeurs extrêmes de la série.",
+              "explanation": "La plus petite valeur est 130, la plus grande est 140. La moyenne 136 est bien comprise entre elles."
+            },
+            {
+              "question": "Pour la série 2, 4, 8, la moyenne est 4,67 (arrondi). Est-ce que cette valeur appartient à la série ?",
+              "answer": "Non",
+              "hint": "Compare la moyenne à chaque nombre de la série.",
+              "explanation": "Les nombres sont 2, 4, 8. La moyenne 4,67 n'est pas l'un d'eux."
+            },
+            {
+              "question": "Un joueur marque en moyenne 15 points par match sur 4 matchs. Combien de points a-t-il marqués au total ?",
+              "answer": "60",
+              "hint": "Multiplie la moyenne par le nombre de matchs.",
+              "explanation": "15 × 4 = 60 points au total."
+            }
+          ]
+        },
+        {
+          "title": "Comparer séries courtes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux séries courtes grâce à la moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as deux équipes de foot. L'équipe A a marqué 3, 2 et 4 buts en trois matchs. L'équipe B a marqué 1, 5 et 2 buts. Quelle équipe est plus performante en moyenne ? C'est une situation typique où la moyenne permet de trancher."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Moyennes de buts par match pour les deux équipes",
+              "bars": [
+                {
+                  "label": "Équipe A",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Équipe B",
+                  "value": 2.67,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la moyenne de chaque série",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Équipe A : (3 + 2 + 4) ÷ 3 = 3. Équipe B : (1 + 5 + 2) ÷ 3 = 8 ÷ 3 ≈ 2,67."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les deux moyennes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "3 est plus grand que 2,67, donc l'équipe A a une moyenne de buts supérieure."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une autre situation : les notes de deux élèves sur trois contrôles. L'élève 1 a obtenu 12, 14 et 13. L'élève 2 a obtenu 15, 11 et 14. Calcule chaque moyenne et dis qui a la meilleure moyenne. C'est un exercice parfait pour vérifier que tu maîtrises la comparaison."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les moyennes sont très proches. Regarde ces deux séries : la première est 8, 10, 12 (moyenne 10). La deuxième est 5, 10, 15 (moyenne 10 aussi). Elles ont la même moyenne, mais la deuxième est plus dispersée : ses valeurs vont de 5 à 15, tandis que la première reste entre 8 et 12. La moyenne seule ne raconte pas toute l'histoire, il faut aussi regarder l'écart."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer une moyenne simple.",
+                "Je sais interpréter ce que représente une moyenne.",
+                "Je sais comparer deux séries courtes en utilisant leurs moyennes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Équipe A : 3, 2, 4 buts. Équipe B : 1, 5, 2 buts. Quelle équipe a la moyenne la plus élevée ?",
+              "answer": "Équipe A",
+              "hint": "Calcule la moyenne de chaque équipe.",
+              "explanation": "Équipe A : (3+2+4)/3 = 3. Équipe B : (1+5+2)/3 = 8/3 ≈ 2,67. 3 > 2,67."
+            },
+            {
+              "question": "Élève 1 : 12, 14, 13. Élève 2 : 15, 11, 14. Qui a la meilleure moyenne ?",
+              "answer": "Élève 2",
+              "hint": "Additionne les notes de chaque élève puis divise par 3.",
+              "explanation": "Élève 1 : 12+14+13 = 39 → 13. Élève 2 : 15+11+14 = 40 → 13,33. 13,33 > 13."
+            },
+            {
+              "question": "Deux séries ont la même moyenne 10. La première série est 8, 10, 12. La deuxième est 5, 10, 15. Laquelle est plus dispersée ?",
+              "answer": "La deuxième série",
+              "hint": "Regarde l'écart entre les valeurs extrêmes.",
+              "explanation": "Première série : valeurs entre 8 et 12 (écart 4). Deuxième série : entre 5 et 15 (écart 10). La deuxième est plus dispersée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

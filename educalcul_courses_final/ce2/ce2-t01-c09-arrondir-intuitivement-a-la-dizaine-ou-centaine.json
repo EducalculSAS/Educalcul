@@ -1,0 +1,493 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.948546+00:00",
+  "id": 150,
+  "code": "ce2-t01-c09",
+  "title": "Arrondir intuitivement à la dizaine ou centaine",
+  "description": "Cours structuré Educalcul : Arrondir intuitivement à la dizaine ou centaine.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Arrondir intuitivement à la dizaine ou centaine",
+    "objectif_global": "Arrondir intuitivement à la dizaine ou centaine",
+    "mini_lecons_imposees": [
+      "Repérer les deux repères voisins.",
+      "Choisir le plus proche.",
+      "Justifier sans algorithme abstrait."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Repérer les deux repères voisins.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce cours où tu vas apprendre à repérer les repères qui encadrent un nombre. Imagine que tu marches sur un chemin balisé par des panneaux tous les dix mètres : les panneaux sont les dizaines, et tu veux savoir quels deux panneaux se trouvent de chaque côté de ta position."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Une dizaine est un groupe de dix unités. Les nombres 10, 20, 30, 40, 50... sont des dizaines.",
+              "example": "47 se trouve entre la dizaine 40 et la dizaine 50."
+            },
+            {
+              "type": "definition",
+              "term": "centaine",
+              "definition": "Une centaine est un groupe de cent unités. Les nombres 100, 200, 300, 400... sont des centaines.",
+              "example": "347 se trouve entre la centaine 300 et la centaine 400."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dizaines voisines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $47$. Les dizaines les plus proches sont $40$ et $50$. $40$ est la dizaine juste avant, $50$ celle juste après. Tu peux les imaginer comme deux poteaux de chaque côté du nombre, l'un un peu plus bas, l'autre un peu plus haut."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 7,
+              "caption": "$47$ : 4 dizaines et 7 unités"
+            },
+            {
+              "type": "number_line",
+              "caption": "Les dizaines voisines de $47$",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 47,
+                  "label": "47"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, faisons la même chose avec les centaines. Le principe ne change pas, seul l'échelle grandit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines voisines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $347$. Les centaines voisines sont $300$ et $400$. $300$ est la centaine précédente, $400$ la suivante. Sur la droite numérique, $347$ se trouve entre ces deux repères, un peu plus près de $300$ que de $400$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les centaines voisines de $347$",
+              "min": 200,
+              "max": 500,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 347,
+                  "label": "347"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre se trouve pile au milieu de deux repères ? C'est le cas de $45$ entre $40$ et $50$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas du milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec $45$, les deux dizaines sont $40$ et $50$. La distance vers $40$ est de $5$ unités, vers $50$ aussi de $5$ unités. Les deux repères sont à la même distance, on verra plus tard comment choisir."
+            },
+            {
+              "type": "number_line",
+              "caption": "Le milieu entre $40$ et $50$",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, tu apprendras à décider lequel des deux repères est le plus proche."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les deux dizaines qui encadrent $47$ ?",
+              "answer": "40 et 50",
+              "hint": "Regarde les dizaines juste avant et juste après 47 sur la droite numérique.",
+              "explanation": "$47$ se trouve entre $40$ et $50$, ce sont les deux dizaines voisines."
+            },
+            {
+              "question": "Quels sont les deux centaines qui encadrent $347$ ?",
+              "answer": "300 et 400",
+              "hint": "Cherche les centaines immédiatement inférieures et supérieures.",
+              "explanation": "$347$ est entre $300$ et $400$, ce sont les deux centaines voisines."
+            },
+            {
+              "question": "Quels sont les deux dizaines autour de $45$ ?",
+              "answer": "40 et 50",
+              "hint": "$45$ est exactement au milieu.",
+              "explanation": "$45$ est à égale distance de $40$ et $50$, les deux dizaines voisines."
+            }
+          ]
+        },
+        {
+          "title": "Choisir le plus proche.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les deux repères voisins, tu vas apprendre à choisir celui qui est le plus proche. C'est comme décider vers quel panneau de signalisation tu te diriges le plus naturellement."
+            },
+            {
+              "type": "definition",
+              "term": "arrondi",
+              "definition": "Arrondir un nombre, c'est le remplacer par le repère (dizaine ou centaine) le plus proche.",
+              "example": "Arrondir $47$ à la dizaine donne $50$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les distances aux dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $47$. Pour savoir si $40$ ou $50$ est plus près, compte les unités qui séparent $47$ de chaque dizaine. De $47$ à $40$, il y a $7$ unités. De $47$ à $50$, il y a $3$ unités. Le plus petit écart gagne."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Distances de $47$ aux dizaines voisines",
+              "parts": [
+                {
+                  "label": "Vers 40",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vers 50",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Faisons la même comparaison pour les centaines avec $347$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les distances aux centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule l'écart entre $347$ et $300$ : $347 - 300 = 47$. Calcule l'écart entre $400$ et $347$ : $400 - 347 = 53$. Comme $47$ est plus petit que $53$, la centaine $300$ est la plus proche."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Distances de $347$ aux centaines voisines",
+              "parts": [
+                {
+                  "label": "Vers 300",
+                  "value": 47,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vers 400",
+                  "value": 53,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois que les deux distances soient égales, comme pour $45$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas équidistant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $45$, la distance vers $40$ est de $5$ et vers $50$ aussi de $5$. Les deux dizaines sont à la même distance. On verra dans la leçon suivante comment trancher."
+            },
+            {
+              "type": "number_line",
+              "caption": "Équidistance à $45$",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant choisir le repère le plus proche. La dernière leçon t'aidera à justifier ton choix avec des mots simples."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel dix est le plus proche de $47$ ?",
+              "answer": "50",
+              "hint": "Compte les unités entre $47$ et $40$, puis entre $47$ et $50$.",
+              "explanation": "Il y a $3$ unités jusqu'à $50$ et $7$ jusqu'à $40$, donc $50$ est plus près."
+            },
+            {
+              "question": "Quel cent est le plus proche de $347$ ?",
+              "answer": "300",
+              "hint": "Calcule la distance à $300$ et à $400$.",
+              "explanation": "$347-300 = 47$, $400-347 = 53$, donc $300$ est plus proche."
+            },
+            {
+              "question": "Pour $45$, les deux dizaines sont-elles à la même distance ?",
+              "answer": "Oui",
+              "hint": "Compte les unités de $45$ à $40$ et à $50$.",
+              "explanation": "$45-40 = 5$ et $50-45 = 5$, distance égale."
+            }
+          ]
+        },
+        {
+          "title": "Justifier sans algorithme abstrait.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as repéré les repères voisins et tu sais lequel est le plus proche. À présent, tu vas apprendre à expliquer ton choix sans utiliser de règle abstraite, juste en te servant de ce que tu vois sur la droite numérique."
+            },
+            {
+              "type": "definition",
+              "term": "justifier",
+              "definition": "Justifier, c'est donner une raison claire et courte qui montre pourquoi ta réponse est correcte.",
+              "example": "Je choisis $50$ parce que $47$ est à $3$ unités de $50$ et à $7$ unités de $40$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier l'arrondi aux dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde $47$ sur la droite. Les deux dizaines voisines sont $40$ et $50$. Compte les pas : de $47$ à $50$, il faut avancer de $3$ ; de $47$ à $40$, il faut reculer de $7$. Comme $3$ est plus petit que $7$, tu dis : \"$47$ s'arrondit à $50$ parce qu'il est plus près de $50$.\""
+            },
+            {
+              "type": "number_line",
+              "caption": "Justification pour $47$",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 47,
+                  "label": "47"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons le même raisonnement aux centaines avec $347$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier l'arrondi aux centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les centaines voisines sont $300$ et $400$. L'écart vers $300$ est $47$, vers $400$ est $53$. Puisque $47 < 53$, tu expliques : \"$347$ s'arrondit à $300$ car la distance à $300$ est plus courte.\""
+            },
+            {
+              "type": "number_line",
+              "caption": "Justification pour $347$",
+              "min": 200,
+              "max": 500,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 347,
+                  "label": "347"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un nombre un peu plus grand pour t'entraîner à justifier tout seul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement mixte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends $562$. Les centaines voisines sont $500$ et $600$. Calcule les écarts : $562-500 = 62$ et $600-562 = 38$. Comme $38$ est plus petit, tu conclus que $562$ s'arrondit à $600$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arrondir $562$ à la centaine",
+              "min": 400,
+              "max": 700,
+              "points": [
+                {
+                  "value": 500,
+                  "label": "500"
+                },
+                {
+                  "value": 562,
+                  "label": "562"
+                },
+                {
+                  "value": 600,
+                  "label": "600"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les deux dizaines qui encadrent un nombre.",
+                "Je sais repérer les deux centaines qui encadrent un nombre.",
+                "Je sais dire laquelle des deux est la plus proche en comptant les unités.",
+                "Je sais expliquer mon choix avec une phrase simple."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Explique pourquoi $47$ s'arrondit à $50$.",
+              "answer": "Parce que $47$ est plus près de $50$ que de $40$ (3 unités contre 7).",
+              "hint": "Regarde les distances sur la droite numérique.",
+              "explanation": "La distance à $50$ est $3$, à $40$ est $7$, donc on choisit $50$."
+            },
+            {
+              "question": "Explique pourquoi $347$ s'arrondit à $300$.",
+              "answer": "Parce que $347$ est plus près de $300$ ($47$) que de $400$ ($53$).",
+              "hint": "Compare les écarts aux centaines voisines.",
+              "explanation": "Écart à $300 = 47$, à $400 = 53$, donc $300$."
+            },
+            {
+              "question": "Arrondis $562$ à la centaine et justifie.",
+              "answer": "600",
+              "hint": "Quelles sont les centaines voisines de $562$ ?",
+              "explanation": "$562$ est entre $500$ et $600$, distance à $600 = 38$, à $500 = 62$, donc $600$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

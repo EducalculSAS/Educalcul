@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Décomposer",
+  "title": "Décomposition en facteurs premiers",
+  "blocks": [
+    {
+      "title": "Factorisation de 180",
+      "content": "Décomposez $180$ en produit de facteurs premiers.",
+      "correctAnswer": "2^2 * 3^2 * 5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise successivement par les nombres premiers : $180 = 2 \\times 90 = 2 \\times 2 \\times 45 = 2^2 \\times 3 \\times 15 = 2^2 \\times 3 \\times 3 \\times 5 = 2^2 \\times 3^2 \\times 5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de diviseurs de 504",
+      "content": "En utilisant la décomposition en facteurs premiers de $504$, déterminez le nombre de diviseurs positifs de $504$.",
+      "correctAnswer": "24",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La décomposition de $504$ est $504 = 2^3 \\times 3^2 \\times 7^1$. Le nombre de diviseurs est $(3+1)(2+1)(1+1) = 4 \\times 3 \\times 2 = 24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de l'exposant c",
+      "content": "Soit $n = 2^a \\times 3^b \\times 5^c$ un entier naturel dont la décomposition en facteurs premiers contient exactement $60$ diviseurs positifs. Si $a=3$ et $b=2$, trouver la valeur de $c$.",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre de diviseurs de $n$ est $(a+1)(b+1)(c+1) = 60$. Avec $a=3$ et $b=2$, on a $(3+1)(2+1)(c+1) = 4 \\times 3 \\times (c+1) = 12(c+1) = 60$. Donc $c+1 = 5$ et $c = 4$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

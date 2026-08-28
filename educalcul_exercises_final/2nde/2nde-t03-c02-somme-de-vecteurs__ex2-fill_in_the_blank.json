@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Construction",
+  "title": "Construction de la somme de deux vecteurs",
+  "blocks": [
+    {
+      "title": "Règle du triangle",
+      "content": "Pour construire la somme de deux vecteurs $\\vec{u}$ et $\\vec{v}$ par la méthode du triangle, on place l'origine du vecteur $\\vec{v}$ à l'{{1}} du vecteur $\\vec{u}$. Le vecteur somme $\\vec{u}+\\vec{v}$ est alors le vecteur qui joint l'{{2}} de $\\vec{u}$ à l'extrémité de $\\vec{v}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "extrémité",
+        "origine"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle du triangle consiste à placer les vecteurs bout à bout : l'origine du second coïncide avec l'extrémité du premier. La somme est le vecteur qui relie l'origine du premier à l'extrémité du second.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Règle du parallélogramme",
+      "content": "La règle du parallélogramme consiste à placer les deux vecteurs $\\vec{u}$ et $\\vec{v}$ de sorte qu'ils aient la même {{1}}. On construit ensuite le parallélogramme ayant $\\vec{u}$ et $\\vec{v}$ comme {{2}}. La {{3}} issue de l'origine commune représente le vecteur somme $\\vec{u}+\\vec{v}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "origine",
+        "côtés adjacents",
+        "diagonale"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Avec la règle du parallélogramme, les deux vecteurs partent du même point. En complétant le parallélogramme, la diagonale qui part de l'origine commune correspond à la somme des deux vecteurs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des composantes",
+      "content": "Si $\\vec{u} = (2, -1)$ et $\\vec{v} = (-3, 4)$, alors les composantes de $\\vec{u}+\\vec{v}$ sont $({{1}}, {{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "-1",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les composantes correspondantes : $2+(-3)=-1$ pour la première composante et $-1+4=3$ pour la seconde. Donc $\\vec{u}+\\vec{v}=(-1, 3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

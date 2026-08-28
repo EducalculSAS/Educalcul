@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 190,
+  "_course_code": "ce2-t06-c04-monnaie-avec-nombres-decimaux",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Monnaie avec nombres décimaux",
+  "title": "Quiz : Monnaie avec nombres décimaux (CE2)",
+  "questions": [
+    {
+      "text": "Combien font $345$ centimes exprimés en euros ?",
+      "options": [
+        "3,45 €",
+        "34,5 €",
+        "345 €",
+        "0,345 €"
+      ],
+      "correctAnswer": "3,45 €",
+      "explanation": "Pour convertir des centimes en euros, on divise par $100$ (ou on décale la virgule de deux rangs vers la gauche). $345$ centimes = $3$ euros et $45$ centimes, donc $3,45$ €. L'option $34,5$ € correspond à une division par $10$, $345$ € à aucune conversion, et $0,345$ € à une division par $1000$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.45,
+        "caption": "Tableau de position pour 3,45 €"
+      }
+    },
+    {
+      "text": "Calcule la somme : $12,50$ € $+$ $4,80$ €.",
+      "options": [
+        "16,30 €",
+        "17,30 €",
+        "17,13 €",
+        "5,70 €"
+      ],
+      "correctAnswer": "17,30 €",
+      "explanation": "On aligne les virgules et on additionne : $0 + 0 = 0$ centimes, $5 + 8 = 13$ dixièmes (soit $1$ euro et $3$ dixièmes), $2 + 4 + 1$ (retenue) $= 7$ euros, $1$ dizaine. Résultat : $17,30$ €. L'erreur $16,30$ € oublie la retenue des dixièmes. $17,13$ € traite les décimales comme des nombres entiers ($50+80=130$). $5,70$ € est une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Je paie un jouet à $7,60$ € avec un billet de $10$ €. Combien le marchand me rend-il ?",
+      "options": [
+        "2,40 €",
+        "3,40 €",
+        "2,60 €",
+        "17,60 €"
+      ],
+      "correctAnswer": "2,40 €",
+      "explanation": "Il faut calculer la différence : $10,00 - 7,60$. On peut faire le complément : de $7,60$ à $8,00$ il faut $0,40$ €, et de $8,00$ à $10,00$ il faut $2,00$ €. Total : $2,40$ €. L'option $3,40$ € oublie de décomposer correctement (ex: $10-7=3$ sans gérer les centimes). $2,60$ € additionne les centimes au lieu de les soustraire. $17,60$ € est une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces ensembles de pièces et billets, lequel correspond exactement à $15,35$ € ?",
+      "options": [
+        "1 billet de 10 €, 1 billet de 5 €, 1 pièce de 20 c, 1 pièce de 10 c, 1 pièce de 5 c",
+        "1 billet de 10 €, 1 billet de 5 €, 1 pièce de 50 c, 1 pièce de 20 c, 1 pièce de 5 c",
+        "1 billet de 10 €, 1 billet de 5 €, 1 pièce de 20 c, 1 pièce de 10 c",
+        "1 billet de 10 €, 1 pièce de 2 €, 1 pièce de 2 €, 1 pièce de 1 €, 1 pièce de 20 c, 1 pièce de 10 c, 1 pièce de 5 c"
+      ],
+      "correctAnswer": "1 billet de 10 €, 1 billet de 5 €, 1 pièce de 20 c, 1 pièce de 10 c, 1 pièce de 5 c",
+      "explanation": "On additionne : $10 + 5 = 15$ €. Pour les centimes : $20 + 10 + 5 = 35$ c. Total $15,35$ €. La deuxième option fait $15,75$ € (pièce de 50 c au lieu de 20 c). La troisième fait $15,30$ € (manque 5 c). La quatrième fait $15,35$ € mais utilise 2 pièces de 2 € au lieu d'un billet de 5 € ; bien que la somme soit bonne, la première option est la représentation standard avec le moins de pièces/billets (rendu de monnaie optimal).",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          1000,
+          500,
+          20,
+          10,
+          5
+        ],
+        "target": 1535,
+        "caption": "Monnaie pour 15,35 €"
+      }
+    },
+    {
+      "text": "J'achète un livre à $6,45$ € et un cahier à $3,20$ €. Je paie avec un billet de $20$ €. Quelle est la monnaie ?",
+      "options": [
+        "10,35 €",
+        "9,35 €",
+        "10,65 €",
+        "29,65 €"
+      ],
+      "correctAnswer": "10,35 €",
+      "explanation": "D'abord, calculer le total des achats : $6,45 + 3,20 = 9,65$ €. Ensuite, soustraire ce total du billet : $20,00 - 9,65$. Complément : $9,65 \\to 10,00 = 0,35$ € ; $10,00 \\to 20,00 = 10,00$ €. Monnaie = $10,35$ €. L'option $9,35$ € oublie les $10$ € du complément. $10,65$ € additionne les centimes au lieu de soustraire ($100 - 65 = 35$, pas $65$). $29,65$ € additionne le prix et le billet.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

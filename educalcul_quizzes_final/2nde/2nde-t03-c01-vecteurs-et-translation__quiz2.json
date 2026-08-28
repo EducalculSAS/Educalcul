@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Représenter",
+  "title": "Représenter un vecteur",
+  "questions": [
+    {
+      "text": "Quelles sont les trois caractéristiques qui définissent complètement un vecteur dans le plan ?",
+      "options": [
+        "Sa direction et sa norme uniquement",
+        "Son sens et sa norme uniquement",
+        "Sa direction, son sens et sa norme",
+        "Ses coordonnées x et y uniquement"
+      ],
+      "correctAnswer": "Sa direction, son sens et sa norme",
+      "explanation": "Un vecteur est une quantité mathématique caractérisée par trois attributins indissociables : sa direction (la droite porteuse), son sens (l'orientation sur cette droite) et sa norme (sa longueur). Les coordonnées sont une représentation numérique dans un repère, mais la définition géométrique fondamentale repose sur ces trois éléments.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, on donne les points $A(2; -1)$ et $B(5; 3)$. Quelles sont les coordonnées du vecteur $\\vec{AB}$ ?",
+      "options": [
+        "(3; 4)",
+        "(7; 2)",
+        "(-3; -4)",
+        "(5; 3)"
+      ],
+      "correctAnswer": "(3; 4)",
+      "explanation": "Les coordonnées d'un vecteur $\\vec{AB}$ se calculent en soustrayant les coordonnées du point de départ A aux coordonnées du point d'arrivée B : $x_B - x_A = 5 - 2 = 3$ et $y_B - y_A = 3 - (-1) = 4$. Le vecteur a donc pour coordonnées $(3; 4)$. L'option $(-3; -4)$ correspond au vecteur $\\vec{BA}$, l'option $(7; 2)$ est une addition erronée, et $(5; 3)$ sont les coordonnées du point B.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le vecteur $\\vec{u}$ a pour coordonnées $(-2; 5)$ dans un repère orthonormé. Si on le représente par une flèche dont l'origine est le point $O(0; 0)$, quelles sont les coordonnées de son extrémité ?",
+      "options": [
+        "(-2; 5)",
+        "(2; -5)",
+        "(5; -2)",
+        "(-5; 2)"
+      ],
+      "correctAnswer": "(-2; 5)",
+      "explanation": "Lorsqu'un vecteur est représenté à partir de l'origine du repère $O(0;0)$, les coordonnées de son extrémité sont exactement les coordonnées du vecteur lui-même. Ici $\\vec{u}(-2; 5)$ place l'extrémité à l'abscisse -2 et à l'ordonnée 5. L'option $(2; -5)$ correspond au vecteur opposé $-\\vec{u}$, les deux autres sont des permutations incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le vecteur $\\vec{v}$ de coordonnées $(4; -3)$. Quelles sont les coordonnées du vecteur opposé $-\\vec{v}$ ?",
+      "options": [
+        "(-4; 3)",
+        "(4; 3)",
+        "(-4; -3)",
+        "(3; -4)"
+      ],
+      "correctAnswer": "(-4; 3)",
+      "explanation": "Le vecteur opposé $-\\vec{v}$ a la même direction et la même norme que $\\vec{v}$, mais un sens contraire. Ses coordonnées sont les opposées des coordonnées de $\\vec{v}$ : on change le signe de chaque composante. Donc $(4; -3)$ devient $(-4; 3)$. L'option $(4; 3)$ ne change que le signe de l'ordonnée, $(-4; -3)$ ne change que le signe de l'abscisse, et $(3; -4)$ permute les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les paires de points suivantes, laquelle définit un vecteur égal à $\\vec{w}(2; -1)$ ?",
+      "options": [
+        "C(1; 2) et D(3; 1)",
+        "E(0; 0) et F(1; -2)",
+        "G(-1; 3) et H(1; 4)",
+        "I(4; -2) et J(5; -4)"
+      ],
+      "correctAnswer": "C(1; 2) et D(3; 1)",
+      "explanation": "Deux vecteurs sont égaux s'ils ont les mêmes coordonnées. Pour chaque paire, on calcule les coordonnées du vecteur : $\\vec{CD} = (3-1; 1-2) = (2; -1)$ qui correspond à $\\vec{w}$. $\\vec{EF} = (1; -2)$, $\\vec{GH} = (2; 1)$, $\\vec{IJ} = (1; -2)$. Seule la première paire donne le vecteur recherché.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Programme",
+  "title": "Quiz : Algorithmes et simulation (3e)",
+  "questions": [
+    {
+      "text": "On souhaite simuler l'expérience aléatoire suivante : on lance un dé à six faces numérotées de 1 à 6, parfaitement équilibré. Quelle instruction Python permet d'obtenir un entier aléatoire entre 1 et 6 inclus ?",
+      "options": [
+        "random.random() * 6",
+        "random.randint(1, 6)",
+        "random.uniform(1, 6)",
+        "random.choice([1, 6])"
+      ],
+      "correctAnswer": "random.randint(1, 6)",
+      "explanation": "La fonction `random.randint(a, b)` renvoie un entier choisi aléatoirement dans l'intervalle [a, b] bornes incluses. `random.random()` donne un flottant entre 0 et 1. `random.uniform` donne un flottant. `random.choice([1, 6])` ne choisit qu'entre les deux valeurs 1 et 6, pas tous les entiers entre les deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On programme une simulation pour estimer la fréquence d'apparition d'un \"6\" au lancer d'un dé. On répète l'expérience $N$ fois. Quelle structure de contrôle est la plus adaptée pour répéter exactement $N$ fois le lancer de dé ?",
+      "options": [
+        "Une boucle while avec une condition d'arrêt sur le nombre de 6 obtenus",
+        "Une boucle for i in range(N) :",
+        "Une instruction if N > 0 :",
+        "Une boucle while True : avec un break manuel"
+      ],
+      "correctAnswer": "Une boucle for i in range(N) :",
+      "explanation": "La boucle `for i in range(N)` permet d'exécuter un bloc d'instructions exactement $N$ fois, ce qui correspond au nombre d'essais fixé à l'avance. Une boucle `while` est utilisée quand le nombre d'itérations n'est pas connu à l'avance. Un `if` ne s'exécute qu'une fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un extrait d'algorithme pour compter le nombre de fois où l'on obtient un 6 lors de $N$ lancers :\\ncompteur <- 0\\nPour i de 1 à N faire\\n    lancer <- ALEA.ENTIER(1, 6)\\n    Si lancer = 6 alors\\n        compteur <- compteur + 1\\n    Fin Si\\nFin Pour\\nAfficher compteur / N\\nQuelle valeur cet algorithme affiche-t-il à la fin ?",
+      "options": [
+        "Le nombre total de 6 obtenus",
+        "La fréquence d'apparition du 6",
+        "La probabilité théorique d'avoir un 6",
+        "Le dernier lancer effectué"
+      ],
+      "correctAnswer": "La fréquence d'apparition du 6",
+      "explanation": "La variable `compteur` accumule le nombre de succès (nombre de 6). À la fin de la boucle, on divise ce nombre de succès par le nombre total d'essais $N$. Le quotient `compteur / N` est par définition la fréquence observée de l'événement « obtenir un 6 ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule l'expérience : \"On lance deux dés équilibrés et on note la somme des résultats\". On veut estimer la probabilité d'obtenir une somme supérieure ou égale à 10. Parmi les lignes suivantes, laquelle correspond à la condition à tester dans le `Si` pour incrémenter le compteur de succès ?",
+      "options": [
+        "Si (de1 + de2) > 10 alors",
+        "Si (de1 >= 10) ou (de2 >= 10) alors",
+        "Si (de1 + de2) >= 10 alors",
+        "Si (de1 = 6) et (de2 = 6) alors"
+      ],
+      "correctAnswer": "Si (de1 + de2) >= 10 alors",
+      "explanation": "L'événement étudié est \"somme supérieure ou égale à 10\". La somme des deux dés se note `de1 + de2`. La condition mathématique est donc `somme >= 10`. L'option `> 10` exclut le cas somme=10. L'option sur les dés individuellement ne correspond pas à la somme. L'option `de1=6 et de2=6` ne teste que le cas somme=12.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir exécuté une simulation de $10\\,000$ lancers de deux dés, on obtient une fréquence de $0,166$ pour l'événement \"somme $\\ge$ 10\". La probabilité théorique exacte de cet événement est $\\frac{1}{6} \\approx 0,1667$. Quelle conclusion peut-on tirer de la comparaison entre la fréquence simulée et la probabilité théorique ?",
+      "options": [
+        "Le programme contient une erreur car les valeurs ne sont pas identiques",
+        "La fréquence obtenue est une estimation proche de la probabilité théorique, ce qui est normal",
+        "Il faut relancer la simulation car $10\\,000$ essais ne suffisent pas",
+        "La probabilité théorique est fausse car la simulation donne $0,166$"
+      ],
+      "correctAnswer": "La fréquence obtenue est une estimation proche de la probabilité théorique, ce qui est normal",
+      "explanation": "D'après la loi des grands nombres, la fréquence observée converge vers la probabilité théorique lorsque le nombre d'essais augmente. Avec $10\\,000$ essais, une fréquence de $0,166$ pour une probabilité de $0,1667$ montre une excellente concordance. Les petites différences sont dues au hasard inhérent à la simulation ; elles ne constituent pas une erreur de programmation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

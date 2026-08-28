@@ -1,0 +1,584 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.130042+00:00",
+  "id": 209,
+  "code": "ce2-t08-c05",
+  "title": "Choisir une représentation",
+  "description": "Cours structuré Educalcul : Choisir une représentation.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Choisir une représentation",
+    "objectif_global": "Choisir une représentation",
+    "mini_lecons_imposees": [
+      "Comparer tableau et diagramme.",
+      "Choisir selon la question.",
+      "Justifier le choix."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Comparer tableau et diagramme.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer un tableau et un diagramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd’hui tu vas découvrir comment un tableau et un diagramme racontent la même histoire mais pas de la même façon. Imagine que tu as noté le nombre de fruits dans ton panier : pommes, poires, bananes. Le tableau range les chiffres en lignes et en colonnes, le diagramme les montre avec des barres ou des parts de gâteau. Les deux sont utiles, mais ils ne se lisent pas pareil."
+            },
+            {
+              "type": "definition",
+              "term": "tableau",
+              "definition": "Un tableau organise des données en lignes et en colonnes pour que l’on retrouve vite chaque nombre.",
+              "example": "Ligne “pommes” – colonne “quantité” = $5$."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme",
+              "definition": "Un diagramme transforme les nombres en formes visuelles (barres, parts de cercle) pour comparer d’un coup d’œil.",
+              "example": "Une barre qui monte jusqu’à $5$ pour les pommes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Quantité"
+              ],
+              "rows": [
+                [
+                  "Pommes",
+                  "5"
+                ],
+                [
+                  "Poires",
+                  "3"
+                ],
+                [
+                  "Bananes",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : chaque fruit a sa ligne, le chiffre est écrit en clair. Tu peux lire le nombre exact sans compter. C’est précis et ordonné, parfait pour retrouver une valeur précise."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Quantité de fruits dans le panier",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres utilise la hauteur pour montrer la quantité. D’un seul regard, tu vois que les pommes sont les plus nombreuses. C’est rapide pour comparer, mais il faut parfois estimer la hauteur si l’échelle n’est pas détaillée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve la ligne du fruit cherché, puis lis le chiffre dans la colonne quantité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire le diagramme en barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la barre du fruit, regarde jusqu’où elle monte sur l’échelle verticale et note la valeur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons un autre type de diagramme : le diagramme en secteurs, aussi appelé camembert. Il montre la part de chaque fruit dans le total."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits",
+              "slices": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le camembert découpe un cercle en parts proportionnelles. La plus grande part correspond aux pommes. C’est idéal pour voir quelle fraction du total chaque fruit représente, mais moins pratique pour lire un chiffre exact."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la part",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la couleur de la part, lis l’étiquette et note la valeur ou le pourcentage indiqué."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les angles : la part la plus large montre la quantité la plus grande."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, compare les trois représentations : le tableau donne le chiffre exact, le diagramme en barres compare vite les grandeurs, le camembert montre les parts du total. Choisis celui qui répond le mieux à ta question."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau, combien de pommes y a-t-il ?",
+              "answer": "$5$",
+              "hint": "Regarde la ligne pommes.",
+              "explanation": "Le tableau montre 5 pommes."
+            },
+            {
+              "question": "Dans le diagramme en barres, quelle hauteur a la barre des poires ?",
+              "answer": "$3$",
+              "hint": "Compte les carrés de l’échelle.",
+              "explanation": "La barre des poires monte jusqu’à 3."
+            },
+            {
+              "question": "Lequel des deux montre plus vite la plus grande quantité ?",
+              "answer": "Le diagramme en barres",
+              "hint": "Compare d’un coup d’œil les hauteurs.",
+              "explanation": "Le diagramme en barres permet de voir la plus grande quantité immédiatement."
+            }
+          ]
+        },
+        {
+          "title": "Choisir selon la question.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir selon la question"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque question que l’on se pose sur des données appelle une représentation adaptée. Si tu demandes “Combien de pommes ?”, le tableau donne la réponse tout de suite. Si tu demandes “Quelle part des fruits sont des pommes ?”, le camembert est parfait. Si tu veux savoir “Y a-t-il plus de pommes que de poires ?”, les barres alignées rendent la comparaison évidente."
+            },
+            {
+              "type": "definition",
+              "term": "question de quantité",
+              "definition": "Une question qui demande un nombre exact, comme “Combien ?”.",
+              "example": "Combien de bananes ?"
+            },
+            {
+              "type": "definition",
+              "term": "question de proportion",
+              "definition": "Une question qui demande la part d’un tout, comme “Quel pourcentage ?”.",
+              "example": "Quelle part des fruits sont des pommes ?"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Poires",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparaison pommes et poires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le schéma en barres (tape diagram) place les deux quantités côte à côte. Tu vois tout de suite que la barre des pommes est plus longue. C’est l’outil idéal pour répondre à une question de comparaison."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le type de question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demande‑toi si tu cherches un nombre exact, une part du total ou une comparaison."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la représentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nombre exact → tableau. Part du total → camembert. Comparaison → barres ou tape diagram."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une droite graduée aide à situer une valeur par rapport aux autres. Elle montre l’ordre et les écarts, utile pour les questions “Où se place ce nombre ?”."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des quantités de fruits",
+              "min": 0,
+              "max": 6,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Poires"
+                },
+                {
+                  "value": 4,
+                  "label": "Bananes"
+                },
+                {
+                  "value": 5,
+                  "label": "Pommes"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, chaque graduation vaut 1. Les points montrent visuellement que les pommes sont les plus nombreuses, les poires les moins nombreuses. C’est une façon simple de comparer sans dessin de barres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire la graduation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le zéro, puis compte les traits jusqu’au point du fruit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les positions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point le plus à droite correspond à la plus grande quantité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, pour montrer une part dans un total, on peut aussi utiliser une fraction visuelle. La fraction colore la partie concernée sur une barre entière."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "Part des pommes sur 12 fruits"
+            },
+            {
+              "type": "paragraph",
+              "content": "La barre est découpée en 12 parts égales, 5 sont colorées pour les pommes. Cela répond à “Quelle fraction des fruits sont des pommes ?”. C’est une autre façon de voir la proportion."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne tous les fruits pour obtenir le dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter le fruit choisi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de ce fruit devient le numérateur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si on veut savoir quelle part représente les pommes, quelle représentation choisirais-tu ?",
+              "answer": "Le diagramme en secteurs",
+              "hint": "Pense aux parts d’un tout.",
+              "explanation": "Le diagramme en secteurs montre les parts."
+            },
+            {
+              "question": "Pour comparer le nombre de pommes et de poires, quelle représentation est la plus simple ?",
+              "answer": "Le diagramme en barres",
+              "hint": "Les barres se placent côte à côte.",
+              "explanation": "Les barres alignées facilitent la comparaison."
+            },
+            {
+              "question": "Sur une droite graduée, où placerais-tu le nombre 4 ?",
+              "answer": "Au repère 4",
+              "hint": "Compte les graduations depuis zéro.",
+              "explanation": "Chaque graduation vaut 1, donc le point 4 se trouve au quatrième trait."
+            }
+          ]
+        },
+        {
+          "title": "Justifier le choix.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier le choix"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais choisir, il faut expliquer pourquoi tu as pris tel ou tel diagramme. Une bonne justification cite la question posée et la force de la représentation choisie. Par exemple : “J’ai pris le diagramme en barres parce que la question demandait de comparer les quantités.”"
+            },
+            {
+              "type": "definition",
+              "term": "justifier",
+              "definition": "Donner une raison claire qui prouve que ton choix est le meilleur pour la question.",
+              "example": "J’ai choisi le camembert car la question portait sur la part des pommes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Relire la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le mot‑clé : quantité, part, comparaison."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Nommer la représentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nom du tableau ou du diagramme que tu as sélectionné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Expliquer le lien",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis pourquoi cette représentation répond bien à ce mot‑clé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, mesurer une longueur sur un dessin aide à justifier. Une règle graduée montre la taille exacte d’une barre, confirmant ton choix."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 5,
+              "unit": "cm",
+              "caption": "Longueur de la barre des pommes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose la règle à côté de la barre des pommes. Le zéro coïncide avec le début, le trait 5 cm tombe au bout. Cette mesure prouve que la barre représente bien 5 unités."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Aligner le zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le début de la règle au départ de la barre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la graduation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde quel chiffre correspond à la fin de la barre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, les blocs de base dix peuvent représenter un nombre et servir de preuve visuelle. Ils montrent les dizaines et les unités, ce qui justifie un choix de tableau pour les nombres exacts."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "Représentation de 23 avec des blocs de base dix"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux barres de dix et trois cubes unitaires forment 23. Si la question demande le nombre exact de pommes, le tableau ou les blocs de base dix sont parfaits car ils donnent le chiffre sans approximation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque grande barre vaut 10, compte combien il y en a."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque petit cube vaut 1, ajoute-les aux dizaines."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir un tableau pour une question de quantité exacte.",
+                "Je sais choisir un diagramme en barres pour comparer.",
+                "Je sais choisir un camembert pour une part du total.",
+                "Je sais justifier mon choix avec une phrase complète."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour justifier ton choix, que dois-tu écrire ?",
+              "answer": "J'ai choisi le diagramme en barres car il compare facilement les quantités.",
+              "hint": "Utilise le mot parce que.",
+              "explanation": "La justification explique la raison du choix."
+            },
+            {
+              "question": "Mesure la longueur de la barre des pommes avec la règle. Quelle valeur trouves-tu ?",
+              "answer": "$5$ cm",
+              "hint": "Aligne le zéro de la règle au début de la barre.",
+              "explanation": "La règle indique 5 cm, confirmant la quantité."
+            },
+            {
+              "question": "Avec des blocs de base dix, représente le nombre 23. Combien de dizaines et d'unités ?",
+              "answer": "$2$ dizaines et $3$ unités",
+              "hint": "Regroupe par dix.",
+              "explanation": "23 = 2×10 + 3, soit 2 barres de dix et 3 cubes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

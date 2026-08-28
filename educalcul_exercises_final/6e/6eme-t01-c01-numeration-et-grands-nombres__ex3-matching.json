@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 331,
+  "_course_code": "6eme-t01-c01-numeration-et-grands-nombres",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Comparer",
+  "title": "Comparer des nombres entiers et décimaux",
+  "blocks": [
+    {
+      "title": "Comparer des grands nombres entiers",
+      "content": "Relie chaque comparaison au signe qui la rend vraie.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3\\ 456\\ 789 \\dots 3\\ 456\\ 798$",
+          "right": "$<$"
+        },
+        {
+          "left": "$1\\ 000\\ 000\\ 000 \\dots 999\\ 999\\ 999$",
+          "right": "$>$"
+        },
+        {
+          "left": "$5\\ 020\\ 300 \\dots 5\\ 020\\ 300$",
+          "right": "$=$"
+        },
+        {
+          "left": "$42\\ 000\\ 105 \\dots 42\\ 000\\ 015$",
+          "right": "$>$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour comparer deux nombres entiers :\\n1. Compte le nombre de chiffres : celui qui en a le plus est le plus grand.\\n2. Si même nombre de chiffres, compare chiffre par chiffre de la gauche vers la droite.\\n- $3\\ 456\\ 789$ a 9 chiffres, $3\\ 456\\ 798$ a 9 chiffres. Identiques jusqu'aux dizaines : $8 < 9$, donc $3\\ 456\\ 789 < 3\\ 456\\ 798$.\\n- $1\\ 000\\ 000\\ 000$ a 10 chiffres, $999\\ 999\\ 999$ en a 9. Le premier est plus grand.\\n- Les deux nombres $5\\ 020\\ 300$ sont identiques.\\n- $42\\ 000\\ 105$ et $42\\ 000\\ 015$ : identiques jusqu'aux centaines. $1 > 0$ aux dizaines, donc le premier est plus grand.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer des nombres décimaux : Vrai ou Faux ?",
+      "content": "Relie chaque affirmation à \"Vrai\" ou \"Faux\".",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12,5 > 12,45$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$0,06 < 0,006$",
+          "right": "Faux"
+        },
+        {
+          "left": "$7,400 = 7,4$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$100,01 < 100,1$",
+          "right": "Vrai"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour comparer des décimaux, aligne la virgule et complète par des zéros à droite pour avoir le même nombre de chiffres après la virgule.\\n- $12,5 = 12,50$. $50 > 45$, donc $12,5 > 12,45$ (Vrai).\\n- $0,06 = 0,060$ et $0,006 = 0,006$. $60 > 6$ aux millièmes, donc $0,06 > 0,006$. L'affirmation dit $<$ : c'est Faux.\\n- Les zéros à droite après la virgule ne changent pas la valeur : $7,400 = 7,4$ (Vrai).\\n- $100,01 = 100,01$ et $100,1 = 100,10$. $1 < 10$ aux centièmes, donc $100,01 < 100,1$ (Vrai).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre et comparaison mixte",
+      "content": "Relie chaque expression au bon symbole de comparaison ($<$, $>$ ou $=$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$4\\ 500\\ 000 \\dots 4,5 \\times 10^6$",
+          "right": "$=$"
+        },
+        {
+          "left": "$0,7 \\dots 0,699$",
+          "right": "$>$"
+        },
+        {
+          "left": "$12\\ 000\\ 005 \\dots 12\\ 000\\ 50$",
+          "right": "$<$"
+        },
+        {
+          "left": "$3,1415 \\dots 3,142$",
+          "right": "$<$"
+        }
+      ],
+      "items": [],
+      "explanation": "Attention aux pièges : écriture scientifique, zéros non significatifs, nombres de décimales différents.\\n- $4,5 \\times 10^6 = 4,5 \\times 1\\ 000\\ 000 = 4\\ 500\\ 000$. Égalité.\\n- $0,7 = 0,700$. $700 > 699$ millièmes, donc $0,7 > 0,699$.\\n- $12\\ 000\\ 005$ (12 millions 5) vs $12\\ 000\\ 50$ (12 millions 50). $5 < 50$, donc le premier est plus petit.\\n- $3,1415$ vs $3,1420$ (en ajoutant un zéro). Aux millièmes : $1 < 2$, donc $3,1415 < 3,142$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

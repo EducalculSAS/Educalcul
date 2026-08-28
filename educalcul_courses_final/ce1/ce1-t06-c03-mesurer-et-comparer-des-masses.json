@@ -1,0 +1,335 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.853904+00:00",
+  "id": 119,
+  "code": "ce1-t06-c03",
+  "title": "Mesurer et comparer des masses",
+  "description": "Cours structuré Educalcul : Mesurer et comparer des masses.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Mesurer et comparer des masses",
+    "objectif_global": "Mesurer et comparer des masses",
+    "mini_lecons_imposees": [
+      "Utiliser g et kg en contexte.",
+      "Lire une balance simple.",
+      "Comparer des masses."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Utiliser g et kg en contexte.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le gramme et le kilogramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pomme dans ta main. Elle pèse environ cent cinquante grammes, ce qui est léger. À côté, un sac de farine pèse un kilogramme, soit mille grammes. Le gramme ($g$) sert pour les choses légères, le kilogramme ($kg$) pour les choses lourdes. Tu vois la différence quand tu poses la pomme sur la balance et le sac à côté. C'est pour cela qu'on choisit l'unité selon ce qu'on pèse."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Masse d'une pomme et d'un sac de farine",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 150,
+                  "tone": "green"
+                },
+                {
+                  "label": "Sac de farine",
+                  "value": 1000,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment passer du kilogramme au gramme. Pour convertir, on multiplie par mille. Un kilogramme équivaut à mille grammes. Si tu as deux kilogrammes, tu as deux mille grammes. C'est une règle simple qui marche à chaque fois. Tu peux aussi diviser par mille pour aller du gramme au kilogramme. Essaie avec trois kilogrammes : cela fait trois mille grammes. Ainsi, la conversion devient un jeu d'enfant."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\\\,kg = 1000\\\\,g"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisir l'unité adaptée rend la lecture plus facile. Quand tu dois peser un objet, demande-toi s'il est léger comme une plume ou lourd comme une valise. Pour une plume, le gramme est parfait. Pour une valise, le kilogramme est plus pratique. Choisir la bonne unité évite les grands nombres difficiles à lire. Par exemple, un livre de poche pèse environ trois cents grammes, alors qu'un cartable peut atteindre deux kilogrammes. Ainsi, tu gagnes du temps et tu évites les erreurs."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repères grammes et kilogrammes",
+              "min": 0,
+              "max": 2000,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "Livre"
+                },
+                {
+                  "value": 2000,
+                  "label": "Cartable"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité utilises-tu pour peser une pomme d'environ 150 g ?",
+              "answer": "gramme ($g$)",
+              "hint": "La pomme est légère.",
+              "explanation": "Comme la pomme pèse moins d'un kilogramme, on utilise le gramme."
+            },
+            {
+              "question": "Combien de grammes y a-t-il dans 2 kg ?",
+              "answer": "2000 g",
+              "hint": "1 kg = 1000 g.",
+              "explanation": "Multiplie 2 par 1000."
+            },
+            {
+              "question": "Choisis l'unité la plus adaptée pour un cartable de 2 kg.",
+              "answer": "kilogramme ($kg$)",
+              "hint": "Le cartable est lourd.",
+              "explanation": "Pour des masses de plusieurs kilogrammes, le kilogramme est plus pratique."
+            }
+          ]
+        },
+        {
+          "title": "Lire une balance simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une balance à aiguille"
+            },
+            {
+              "type": "paragraph",
+              "content": "Devant toi, une balance à aiguille affiche des nombres de zéro à mille. L'aiguille bouge quand tu poses un objet sur le plateau. Regarde où elle s'arrête : le chiffre indiqué est la masse en grammes. C'est comme une montre qui te donne l'heure, mais pour le poids. Si l'aiguille marque deux cent cinquante, l'objet pèse deux cent cinquante grammes. Tu peux aussi voir des graduations plus fines pour être précis."
+            },
+            {
+              "type": "number_line",
+              "caption": "Lecture d'une balance en grammes",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 250,
+                  "label": "Objet"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire la masse en grammes, suis trois étapes faciles. Première étape : pose l'objet doucement. Deuxième étape : attends que l'aiguille soit immobile. Troisième étape : note le nombre pointé par l'aiguille. C'est tout, tu as la masse. Essaie avec une pomme : l'aiguille s'arrête à cent cinquante. Note le chiffre et tu sais que la pomme pèse cent cinquante grammes. Plus tu t'entraînes, plus c'est rapide."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose l'objet sur le plateau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Attends que l'aiguille ne bouge plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le nombre indiqué."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la balance montre des kilogrammes. Un kilogramme vaut mille grammes. Si l'aiguille pointe sur deux, cela signifie deux kilogrammes, soit deux mille grammes. Repère le grand trait qui sépare les centaines des milliers. Entraîne-toi à lire trois kilogrammes : l'aiguille est sur le trois. Ainsi, tu passes du gramme au kilogramme sans te tromper. C'est utile pour peser un sac de courses ou un petit chien."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\\\,kg = 2000\\\\,g"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la balance, l'aiguille s'arrête sur 250. Quelle est la masse en grammes ?",
+              "answer": "250 g",
+              "hint": "Regarde le chiffre pointé.",
+              "explanation": "L'aiguille indique directement la masse en grammes."
+            },
+            {
+              "question": "Quelles sont les trois étapes pour lire une masse en grammes ?",
+              "answer": "Poser l'objet, attendre que l'aiguille s'immobilise, noter le nombre.",
+              "hint": "Suis l'ordre.",
+              "explanation": "Ces étapes garantissent une lecture correcte."
+            },
+            {
+              "question": "Si l'aiguille pointe sur 3 sur une balance en kilogrammes, quelle est la masse en grammes ?",
+              "answer": "3000 g",
+              "hint": "1 kg = 1000 g.",
+              "explanation": "3 kg correspondent à 3 × 1000 g = 3000 g."
+            }
+          ]
+        },
+        {
+          "title": "Comparer des masses.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux masses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as deux boîtes : l'une pèse trois cents grammes, l'autre pèse un kilogramme. Pour savoir laquelle est plus lourde, compare les nombres. Trois cents grammes est plus petit que mille grammes. Donc la boîte d'un kilogramme est la plus lourde. Tu peux aussi écrire le signe « plus petit que » entre les deux masses. Cela donne : $300\\\\,g < 1\\\\,kg$. Le symbole pointe vers la plus petite valeur. Essaie avec d'autres objets pour t'habituer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de deux boîtes",
+              "bars": [
+                {
+                  "label": "Boîte A",
+                  "value": 300,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte B",
+                  "value": 1000,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, range trois jouets du plus léger au plus lourd. Note leurs masses : une voiturette à cinquante grammes, un ours en peluche à deux cents grammes, un camion à huit cents grammes. Écris-les dans l'ordre croissant. Tu obtiens : cinquante grammes, deux cents grammes, huit cents grammes. Tu vois que chaque jouet est plus lourd que le précédent. C'est comme monter les marches d'un escalier. Continue avec d'autres séries pour bien maîtriser."
+            },
+            {
+              "type": "number_line",
+              "caption": "Ordre croissant de trois masses",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 50,
+                  "label": "Voiturette"
+                },
+                {
+                  "value": 200,
+                  "label": "Ours"
+                },
+                {
+                  "value": 800,
+                  "label": "Camion"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les signes de comparaison sont tes alliés. Le signe « égal » ($=$) signifie que les deux masses sont identiques. Le signe « plus grand que » ($>$) montre que la première masse est plus lourde. Le signe « plus petit que » ($<$) fait l'inverse. Utilise-les pour écrire tes résultats. Par exemple, $500\\\\,g = 0,5\\\\,kg$ et $1\\\\,kg > 800\\\\,g$. Entraîne-toi à écrire ces phrases pour chaque paire d'objets."
+            },
+            {
+              "type": "display_math",
+              "latex": "500\\\\,g = 0,5\\\\,kg"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir entre $g$ et $kg$ selon l'objet.",
+                "Je sais lire une balance à aiguille en grammes et en kilogrammes.",
+                "Je sais comparer des masses avec les signes $<$, $>$ et $=$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare 300 g et 1 kg avec le bon signe.",
+              "answer": "300 g < 1 kg",
+              "hint": "Convertis 1 kg en grammes.",
+              "explanation": "1 kg = 1000 g, donc 300 g est plus petit."
+            },
+            {
+              "question": "Range ces masses du plus léger au plus lourd : 50 g, 200 g, 800 g.",
+              "answer": "50 g, 200 g, 800 g",
+              "hint": "Regarde les nombres.",
+              "explanation": "Les nombres croissants donnent l'ordre croissant des masses."
+            },
+            {
+              "question": "Écris la comparaison entre 500 g et 0,5 kg.",
+              "answer": "500 g = 0,5 kg",
+              "hint": "Convertis 0,5 kg en grammes.",
+              "explanation": "0,5 kg = 500 g, donc les deux masses sont égales."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Conditions",
+  "title": "Mise en ordre : Structures conditionnelles",
+  "blocks": [
+    {
+      "title": "Condition simple",
+      "content": "Remets les instructions de l'algorithme suivant dans l'ordre logique : lire une température, la comparer à 20, afficher un message selon le résultat.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire la température",
+        "Comparer la température à 20",
+        "Si la température est supérieure à 20 alors afficher \"Il fait chaud\"",
+        "Sinon afficher \"Il fait frais\""
+      ],
+      "explanation": "L'algorithme commence par la lecture de la valeur, puis effectue la comparaison. Selon le résultat du test, l'une des deux instructions d'affichage est exécutée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition multiple",
+      "content": "Ordonne les étapes pour déterminer si un nombre est positif, négatif ou nul.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire le nombre",
+        "Si le nombre est strictement supérieur à 0 alors afficher \"Positif\"",
+        "Sinon si le nombre est strictement inférieur à 0 alors afficher \"Négatif\"",
+        "Sinon afficher \"Nul\""
+      ],
+      "explanation": "Après la lecture, on teste d'abord la positivité, ensuite la négativité, et le cas restant correspond à zéro. L'ordre des tests est essentiel pour éviter les chevauchements.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle avec condition d'arrêt",
+      "content": "Replace les instructions pour afficher les valeurs de 0 à 4 à l'aide d'une boucle contrôlée par une condition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Initialiser le compteur à 0",
+        "Tant que le compteur est strictement inférieur à 5 faire",
+        "Afficher la valeur du compteur",
+        "Augmenter le compteur de 1",
+        "Fin tant que"
+      ],
+      "explanation": "La boucle commence par l'initialisation. La condition de continuation est testée avant chaque itération. À l'intérieur, on affiche puis on incrémente. Lorsque le compteur atteint 5, la condition devient fausse et la boucle se termine.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

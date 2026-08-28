@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 225,
+  "_course_code": "cm1-t02-c07-bilan-fractions-cm1",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Représenter, comparer, relier aux décimaux",
+  "title": "Algorithmes fractions et décimaux",
+  "blocks": [
+    {
+      "title": "Conversion fraction vers décimal",
+      "content": "Écris un algorithme qui permet de convertir une fraction dont le dénominateur est $10$ ou $100$ en nombre décimal. L'algorithme demande le numérateur et le dénominateur, puis affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Demander numerateur\\n2. Demander denominateur\\n3. Si denominateur = 10 Alors\\n4.     resultat <- numerateur / 10\\n5. Sinon Si denominateur = 100 Alors\\n6.     resultat <- numerateur / 100\\n7. Fin Si\\n8. Afficher resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la valeur du dénominateur. S'il vaut $10$, on divise le numérateur par $10$ (ce qui décale la virgule d'un rang vers la gauche). S'il vaut $100$, on divise par $100$ (deux rangs). On affiche ensuite le quotient obtenu qui est l'écriture décimale de la fraction.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer fraction et décimal",
+      "content": "Écris un algorithme qui compare une fraction (dont le dénominateur est $2$, $4$, $5$ ou $10$) et un nombre décimal. L'algorithme doit afficher \"Supérieur\", \"Inférieur\" ou \"Égal\".",
+      "correctAnswer": "Algorithme :\\n1. Demander numerateur, denominateur, nombreDecimal\\n2. valeurFraction <- numerateur / denominateur\\n3. Si valeurFraction > nombreDecimal Alors\\n4.     Afficher \"Supérieur\"\\n5. Sinon Si valeurFraction < nombreDecimal Alors\\n6.     Afficher \"Inférieur\"\\n7. Sinon\\n8.     Afficher \"Égal\"\\n9. Fin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule d'abord la valeur décimale de la fraction en effectuant la division du numérateur par le dénominateur. On compare ensuite cette valeur au nombre décimal donné à l'aide de tests conditionnels (supérieur, inférieur, sinon égal) pour afficher le résultat de la comparaison.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture décimal en fraction",
+      "content": "Écris un algorithme qui transforme un nombre décimal (avec un ou deux chiffres après la virgule) en fraction simplifiée si possible. L'algorithme affiche le numérateur et le dénominateur de la fraction obtenue.",
+      "correctAnswer": "Algorithme :\\n1. Demander nombreDecimal\\n2. Si nombreDecimal a 1 chiffre après la virgule Alors\\n3.     numerateur <- nombreDecimal * 10\\n4.     denominateur <- 10\\n5. Sinon Si nombreDecimal a 2 chiffres après la virgule Alors\\n6.     numerateur <- nombreDecimal * 100\\n7.     denominateur <- 100\\n8. Fin Si\\n9. Tant que numerateur et denominateur divisibles par 2, 5 ou 10 Faire\\n10.    Diviser numerateur et denominateur par ce diviseur\\n11. Fin Tant que\\n12. Afficher numerateur, denominateur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine le nombre de chiffres après la virgule pour choisir le dénominateur ($10$ ou $100$). On multiplie le nombre décimal par ce dénominateur pour obtenir le numérateur (ce qui supprime la virgule). On simplifie ensuite la fraction en divisant numérateur et dénominateur par leurs diviseurs communs ($2$, $5$, $10$) tant que c'est possible.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

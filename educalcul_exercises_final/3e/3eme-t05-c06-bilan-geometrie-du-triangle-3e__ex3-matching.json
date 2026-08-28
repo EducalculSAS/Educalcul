@@ -1,0 +1,99 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Bilan - Géométrie du triangle 3e",
+  "title": "Bilan : Géométrie du triangle - Association",
+  "blocks": [
+    {
+      "title": "Théorèmes et définitions",
+      "content": "Relie chaque théorème ou notion à son énoncé principal ou sa condition d'application.",
+      "pairs": [
+        {
+          "left": "Théorème de Pythagore",
+          "right": "Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés."
+        },
+        {
+          "left": "Réciproque du théorème de Pythagore",
+          "right": "Si dans un triangle le carré du plus grand côté est égal à la somme des carrés des deux autres, alors c'est un triangle rectangle."
+        },
+        {
+          "left": "Théorème de Thalès",
+          "right": "Deux droites sécantes coupées par des droites parallèles déterminent des segments proportionnels."
+        },
+        {
+          "left": "Réciproque du théorème de Thalès",
+          "right": "Si les segments déterminés sont proportionnels et que les points sont dans le même ordre, alors les droites sont parallèles."
+        },
+        {
+          "left": "Relations trigonométriques",
+          "right": "Dans un triangle rectangle, le cosinus, le sinus ou la tangente d'un angle aigu rapportent deux côtés de ce triangle."
+        }
+      ],
+      "explanation": "Le théorème direct de Pythagore permet de calculer une longueur dans un triangle rectangle connu. Sa réciproque permet de prouver qu'un triangle est rectangle. Le théorème de Thalès direct calcule une longueur grâce à des parallèles ; sa réciproque prouve que des droites sont parallèles. La trigonométrie (cos, sin, tan) lie angles et longueurs dans un triangle rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs de longueurs et angles",
+      "content": "Relie chaque situation géométrique à la valeur exacte de la longueur ou de l'angle cherché.",
+      "pairs": [
+        {
+          "left": "Triangle $ABC$ rectangle en $A$, $AB = 3$, $AC = 4$. Longueur $BC$.",
+          "right": "$5$"
+        },
+        {
+          "left": "Triangle $DEF$ rectangle en $D$, $DE = 5$, $\\widehat{E} = 30^{\\circ}$. Longueur $DF$ (côté opposé).",
+          "right": "$2,5$"
+        },
+        {
+          "left": "Triangle $MNP$ rectangle en $N$, $MN = 4$, $\\widehat{M} = 60^{\\circ}$. Longueur $MP$ (hypoténuse).",
+          "right": "$8$"
+        },
+        {
+          "left": "Configuration de Thalès : $A, B, C$ alignés ; $A, E, D$ alignés ; $(BC) \\parallel (ED)$. $AB = 2$, $AC = 6$, $BC = 3$. Longueur $ED$.",
+          "right": "$9$"
+        },
+        {
+          "left": "Triangle $RST$ rectangle en $S$, $RS = 6$, $ST = 8$. Valeur arrondie au degré de $\\widehat{R}$.",
+          "right": "$53^{\\circ}$"
+        }
+      ],
+      "explanation": "1) Pythagore : $BC^2 = 3^2 + 4^2 = 25 \\Rightarrow BC = 5$. 2) $\\sin 30^{\\circ} = 1/2 = DF/DE \\Rightarrow DF = 2,5$. 3) $\\cos 60^{\\circ} = 1/2 = MN/MP \\Rightarrow MP = 8$. 4) Thalès : $AC/AB = ED/BC \\Rightarrow 6/2 = ED/3 \\Rightarrow ED = 9$. 5) $\\tan(\\widehat{R}) = 8/6 = 4/3 \\Rightarrow \\widehat{R} \\approx 53,13^{\\circ} \\approx 53^{\\circ}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de la méthode",
+      "content": "Relie chaque problème à la méthode ou au théorème le plus adapté pour le résoudre.",
+      "pairs": [
+        {
+          "left": "On connaît les longueurs des trois côtés d'un triangle. On veut savoir s'il est rectangle.",
+          "right": "Réciproque du théorème de Pythagore"
+        },
+        {
+          "left": "Dans un triangle rectangle, on connaît un angle aigu et la longueur de l'hypoténuse. On cherche la longueur du côté adjacent.",
+          "right": "Cosinus (trigonométrie)"
+        },
+        {
+          "left": "Deux droites sont coupées par deux droites parallèles. On connaît trois longueurs sur ces droites. On cherche la quatrième.",
+          "right": "Théorème de Thalès (direct)"
+        },
+        {
+          "left": "On veut prouver que deux droites sont parallèles en utilisant des longueurs mesurées sur des sécantes.",
+          "right": "Réciproque du théorème de Thalès"
+        },
+        {
+          "left": "Dans un triangle rectangle, on connaît les longueurs des deux côtés de l'angle droit. On cherche la mesure de l'un des angles aigus.",
+          "right": "Tangente (trigonométrie) puis calcul inverse"
+        }
+      ],
+      "explanation": "La réciproque de Pythagore est le test de rectangularité. Le cosinus lie l'angle, l'hypoténuse et le côté adjacent. Thalès direct calcule une longueur manquante dans une configuration de parallèles. La réciproque de Thalès prouve le parallélisme. La tangente (opposé/adjacent) permet de trouver un angle via la fonction arctan sur la calculatrice.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

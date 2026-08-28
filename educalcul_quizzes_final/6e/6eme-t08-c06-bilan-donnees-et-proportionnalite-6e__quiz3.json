@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 373,
+  "_course_code": "6eme-t08-c06-bilan-donnees-et-proportionnalite-6e",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Bilan - Données et proportionnalité 6e",
+  "title": "Bilan Données et Proportionnalité 6e",
+  "questions": [
+    {
+      "text": "Dans le tableau ci-dessous, les notes de cinq élèves sont $12$, $15$, $9$, $14$, $11$. Quelle est la moyenne de ces notes ?",
+      "options": [
+        "$12,2$",
+        "$12$",
+        "$13$",
+        "$11,8$"
+      ],
+      "correctAnswer": "$12,2$",
+      "explanation": "La somme des notes est $12 + 15 + 9 + 14 + 11 = 61$. En divisant par le nombre d'élèves $5$, on obtient $61 / 5 = 12,2$. Les autres propositions correspondent à des erreurs de calcul ou à l'arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la médiane de la série $3$, $7$, $5$, $9$, $11$ ?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$9$",
+        "$6$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On range les valeurs par ordre croissant : $3, 5, 7, 9, 11$. La médiane est la valeur centrale, soit $7$. Les distracteurs sont les autres valeurs de la série ou une moyenne erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $4$ kg de pommes coûtent $12$ €, combien coûtent $7$ kg de pommes ?",
+      "options": [
+        "$18$ €",
+        "$21$ €",
+        "$24$ €",
+        "$28$ €"
+      ],
+      "correctAnswer": "$21$ €",
+      "explanation": "Le prix au kilo est $12 / 4 = 3$ €/kg. Pour $7$ kg, le coût est $7 \\times 3 = 21$ €. Les autres réponses proviennent d'une multiplication ou division incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet de $6$ stylos coûte $4,50$ €. Quel est le prix d'un stylo ?",
+      "options": [
+        "$0,70$ €",
+        "$0,75$ €",
+        "$0,80$ €",
+        "$0,85$ €"
+      ],
+      "correctAnswer": "$0,75$ €",
+      "explanation": "On divise le prix total par le nombre de stylos : $4,50 / 6 = 0,75$ €. Les distracteurs correspondent à des erreurs de division ou d'arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel mois a le plus grand nombre de livres lus ?",
+      "options": [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril"
+      ],
+      "correctAnswer": "Février",
+      "explanation": "Le diagramme en barres montre les valeurs : Janvier $5$, Février $8$, Mars $3$, Avril $7$. La barre la plus haute correspond à Février avec $8$ livres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par mois",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Mars",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Avril",
+            "value": 7,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

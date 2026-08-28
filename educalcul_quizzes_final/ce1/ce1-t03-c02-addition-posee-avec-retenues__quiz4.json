@@ -1,0 +1,117 @@
+{
+  "_status": "done",
+  "_course_id": 89,
+  "_course_code": "ce1-t03-c02-addition-posee-avec-retenues",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Application : Addition posée avec retenues",
+  "title": "Quiz : Addition posée avec retenues",
+  "questions": [
+    {
+      "text": "Effectue l'addition posée suivante : $47 + 38$.",
+      "options": [
+        "$75$",
+        "$85$",
+        "$715$",
+        "$815$"
+      ],
+      "correctAnswer": "$85$",
+      "explanation": "On additionne les unités : $7 + 8 = 15$. On écrit $5$ et on retient $1$ dizaine. On additionne les dizaines : $4 + 3 + 1 (retenue) = 8$. Le résultat est $85$. L'option $75$ oublie la retenue, $715$ et $815$ confondent addition et concaténation.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "47",
+          "38"
+        ],
+        "result": "85",
+        "carries": [
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Calcule $65 + 48$ en posant l'opération.",
+      "options": [
+        "$103$",
+        "$113$",
+        "$1113$",
+        "$1013$"
+      ],
+      "correctAnswer": "$113$",
+      "explanation": "Unités : $5 + 8 = 13$, j'écris $3$, je retiens $1$. Dizaines : $6 + 4 + 1 = 11$, j'écris $11$. Le total est $113$. L'option $103$ oublie la retenue des dizaines, les autres sont des erreurs de placement.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "65",
+          "48"
+        ],
+        "result": "113",
+        "carries": [
+          "1",
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Résous l'addition posée : $128 + 97$.",
+      "options": [
+        "$215$",
+        "$225$",
+        "$1115$",
+        "$205$"
+      ],
+      "correctAnswer": "$225$",
+      "explanation": "Unités : $8 + 7 = 15$ ($5$, retenue $1$). Dizaines : $2 + 9 + 1 = 12$ ($2$, retenue $1$). Centaines : $1 + 1 = 2$. Résultat $225$. L'option $215$ oublie la retenue sur les centaines, $1115$ traite les colonnes indépendamment.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "128",
+          "97"
+        ],
+        "result": "225",
+        "carries": [
+          "1",
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Lucas a $58$ billes. Il en gagne $36$ de plus. Combien a-t-il de billes au total ?",
+      "options": [
+        "$84$",
+        "$94$",
+        "$814$",
+        "$914$"
+      ],
+      "correctAnswer": "$94$",
+      "explanation": "C'est une addition : $58 + 36$. Unités : $8 + 6 = 14$ ($4$, retenue $1$). Dizaines : $5 + 3 + 1 = 9$. Total $94$ billes. L'option $84$ oublie la retenue, les autres mélangent les chiffres.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 9,
+        "units": 4,
+        "caption": "Résultat 94"
+      }
+    },
+    {
+      "text": "Trouve le chiffre manquant dans l'addition posée : $5\\square + 28 = 82$.",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "On cherche l'unité du premier nombre. Unités : $\\square + 8$ doit donner $2$ (avec retenue $1$ car $8+\\square > 9$). $\\square = 4$ car $4 + 8 = 12$. Dizaines : $5 + 2 + 1 = 8$. L'addition est $54 + 28 = 82$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

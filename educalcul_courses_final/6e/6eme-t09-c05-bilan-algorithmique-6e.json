@@ -1,0 +1,445 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.666492+00:00",
+  "id": 378,
+  "code": "6eme-t09-c05",
+  "title": "Bilan - Algorithmique 6e",
+  "description": "Cours structuré Educalcul : Bilan - Algorithmique 6e.",
+  "subject": "Algorithmique",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algorithmique",
+    "titre_du_cours": "Bilan - Algorithmique 6e",
+    "objectif_global": "Bilan - Algorithmique 6e",
+    "mini_lecons_imposees": [
+      "Variables, boucles, conditions.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique",
+      "lessons": [
+        {
+          "title": "Variables, boucles, conditions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan d'algorithmique ! Nous allons revoir ensemble les trois piliers qui te permettent d'écrire tes premiers programmes. Commençons par les variables. Une variable, c'est comme une petite boîte étiquetée où tu peux ranger une information, par exemple un nombre ou un mot. Tu choisis le nom de la boîte, par exemple $age$ ou $score$, et tu y places une valeur à l'aide d'une flèche d'affectation. Ce nom doit commencer par une lettre et ne pas contenir d'espace. Quand tu écris $age \\leftarrow 12$, tu dis à l'ordinateur : « dans la boîte nommée age, mets le nombre 12 ». Tu peux ensuite utiliser ce nom partout dans ton algorithme pour retrouver la valeur stockée. C'est très pratique pour éviter de répéter le même chiffre plusieurs fois."
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Une variable est un espace de stockage nommé qui peut contenir une valeur (nombre, texte, etc.). On l'utilise pour mémoriser une information et la réutiliser plus tard dans l'algorithme.",
+              "example": "Exemple : $compteur \\leftarrow 0$ crée une variable appelée compteur avec la valeur 0."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom clair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nom doit commencer par une lettre, par exemple $total$ ou $prenom$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la flèche d'affectation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On utilise le symbole $\\leftarrow$ (ou := selon les langages) pour dire « reçoit »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Indiquer la valeur à stocker",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après la flèche, on écrit la valeur, par exemple $total \\leftarrow 150$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais créer et remplir une variable, voyons comment la faire évoluer automatiquement grâce aux boucles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une boucle permet de répéter une série d'instructions sans avoir à les réécrire. En 6e, tu utilises souvent la boucle « répéter … fois » qui exécute le bloc d'instructions un nombre précis de fois. Imagine que tu veux afficher les nombres de 1 à 5. Au lieu d'écrire cinq fois « afficher », tu écris une seule fois la boucle : « répéter 5 fois » puis « afficher $i$ » où $i$ est un compteur qui augmente à chaque tour. À la première itération, $i$ vaut 1, au deuxième tour $i$ vaut 2, et ainsi de suite jusqu'à 5. Cette structure rend ton algorithme plus court, plus lisible et facile à modifier si tu veux changer le nombre de répétitions."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "Valeur de $i$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "2"
+                ],
+                [
+                  "3",
+                  "3"
+                ],
+                [
+                  "4",
+                  "4"
+                ],
+                [
+                  "5",
+                  "5"
+                ]
+              ],
+              "caption": "Évolution du compteur $i$ dans une boucle « répéter 5 fois »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le mot-clé « répéter »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suivi du nombre de tours, par exemple « répéter 5 fois »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ouvrir un bloc d'instructions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On indente les lignes qui seront répétées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fermer le bloc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le mot « fin répéter » marque la fin de la boucle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les boucles, découvrons comment faire des choix dans nos algorithmes grâce aux conditions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les conditions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une condition permet d'exécuter des instructions seulement si une affirmation est vraie. On utilise la structure « si … alors … sinon … fin si ». Par exemple, pour tester si un nombre $n$ est positif, on écrit : « si $n > 0$ alors afficher « positif » sinon afficher « négatif ou nul » fin si ». L'ordinateur évalue l'expression $n > 0$ : si elle est vraie, il fait la partie « alors », sinon il fait la partie « sinon ». Tu peux imbriquer des conditions dans des boucles pour créer des programmes plus intelligents, comme afficher seulement les nombres pairs d'une liste."
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Une condition est une expression qui peut être vraie ou fausse. Elle dirige le flux du programme en choisissant quelle série d'instructions exécuter.",
+              "example": "Exemple : $x \\ge 10$ est une condition."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire « si » suivi de l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple « si $score > 50$ alors »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Indiquer les instructions si vrai",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ces instructions sont indentées après « alors »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : (Optionnel) Ajouter « sinon » et les instructions si faux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu omites « sinon », rien ne se passe quand la condition est fausse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Terminer par « fin si »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cela referme la structure conditionnelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu maîtrises maintenant les variables, les boucles et les conditions, les trois outils de base pour construire n'importe quel algorithme en 6e. Continue à t'entraîner pour les combiner avec aisance."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction qui affecte la valeur $7$ à la variable $age$.",
+              "answer": "$age \\leftarrow 7$",
+              "hint": "Utilise la flèche d'affectation.",
+              "explanation": "La flèche $\\leftarrow$ signifie que la variable reçoit la valeur indiquée à droite."
+            },
+            {
+              "question": "Combien de fois l'instruction « afficher $i$ » sera-t-elle exécutée dans la boucle « répéter 4 fois afficher $i$ fin répéter » ?",
+              "answer": "$4$ fois",
+              "hint": "Le nombre après « répéter » donne le nombre de tours.",
+              "explanation": "La boucle répète le bloc exactement le nombre de fois indiqué, ici 4."
+            },
+            {
+              "question": "Si la variable $note$ vaut $12$, que va afficher l'algorithme : « si $note \\ge 10$ alors afficher « réussi » sinon afficher « raté » fin si » ?",
+              "answer": "réussi",
+              "hint": "Évalue la condition $12 \\ge 10$.",
+              "explanation": "Puisque 12 est supérieur ou égal à 10, la condition est vraie, donc la branche « alors » est exécutée."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les variables avec un exemple différent : imagine que tu programmes un jeu où le joueur gagne des points. Tu crées une variable $score$ et tu l'initialises à $0$ avec $score \\leftarrow 0$. Chaque fois que le joueur réussit une action, tu augmentes le score en écrivant $score \\leftarrow score + 10$. Cette façon de faire montre qu'une variable peut être modifiée plusieurs fois au cours du programme. Le nom $score$ reste le même, mais sa valeur change. C'est exactement comme un compteur que tu fais tourner à la main."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Créer la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$score \\leftarrow 0$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Augmenter la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$score \\leftarrow score + 10$ ajoute 10 à la valeur actuelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la nouvelle valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plus tard, tu peux afficher $score$ pour voir le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les boucles, prenons l'exemple de l'affichage des nombres pairs jusqu'à 10. Tu peux utiliser une boucle « répéter 5 fois » avec un compteur $k$ qui commence à 1. À chaque tour, tu calcules $pair \\leftarrow 2 \\times k$ et tu affiches $pair$. Ainsi, au premier tour $k=1$ donne 2, au deuxième $k=2$ donne 4, et ainsi de suite jusqu'à 10. La boucle évite d'écrire cinq lignes d'affichage séparées. Tu vois que le compteur $k$ est une variable qui change à chaque itération, ce qui lie les boucles et les variables."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "$k$",
+                "$pair$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "2",
+                  "4"
+                ],
+                [
+                  "3",
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "4",
+                  "8"
+                ],
+                [
+                  "5",
+                  "5",
+                  "10"
+                ]
+              ],
+              "caption": "Calcul des nombres pairs avec une boucle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des conditions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, révisons les conditions avec un test sur l'âge pour accéder à un manège. L'algorithme demande l'âge, le stocke dans $age$, puis écrit : « si $age \\ge 12$ alors afficher « Accès autorisé » sinon afficher « Accès interdit » fin si ». Si tu entres 10, la condition $10 \\ge 12$ est fausse, donc le message « Accès interdit » s'affiche. Si tu entres 15, la condition est vraie et « Accès autorisé » s'affiche. Les conditions permettent donc de réagir différemment selon les données entrées par l'utilisateur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demander à l'utilisateur d'entrer son âge et le stocker dans $age$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« si $age \\ge 12$ alors »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Prévoir les deux cas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Afficher le message adapté dans chaque branche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer avec « fin si »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indique la fin de la structure conditionnelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, voici une liste de contrôle pour vérifier tes acquis."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais créer et nommer une variable.",
+                "Je sais utiliser une boucle pour répéter des instructions.",
+                "Je sais écrire une condition avec si / alors / sinon.",
+                "Je peux combiner variables, boucles et conditions dans un petit algorithme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si $score$ vaut $20$ et que tu exécutes $score \\leftarrow score + 15$, quelle est la nouvelle valeur de $score$ ?",
+              "answer": "$35$",
+              "hint": "Ajoute 15 à la valeur actuelle.",
+              "explanation": "L'instruction prend la valeur actuelle (20), y ajoute 15, et stocke le résultat (35) dans la même variable."
+            },
+            {
+              "question": "Dans la boucle « répéter 3 fois $k \\leftarrow k + 1$ fin répéter » avec $k$ initialisé à $0$, quelle est la valeur de $k$ à la fin ?",
+              "answer": "$3$",
+              "hint": "Chaque tour augmente $k$ de 1.",
+              "explanation": "La boucle s'exécute 3 fois, donc $k$ passe de 0 à 3."
+            },
+            {
+              "question": "Pour $age = 12$, que va afficher : « si $age > 12$ alors « grand » sinon « petit » fin si » ?",
+              "answer": "petit",
+              "hint": "Teste si 12 est strictement supérieur à 12.",
+              "explanation": "12 n'est pas strictement supérieur à 12, la condition est fausse, donc la branche « sinon » est choisie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

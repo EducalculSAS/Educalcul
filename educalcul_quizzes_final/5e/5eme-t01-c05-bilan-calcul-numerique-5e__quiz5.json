@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 383,
+  "_course_code": "5eme-t01-c05-bilan-calcul-numerique-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Priorités, fractions, estimation",
+  "title": "Approfondissement : Priorités, fractions, estimation",
+  "questions": [
+    {
+      "text": "Calcule l'expression suivante en respectant les priorités opératoires : $4 + \\frac{1}{2} \\times 6 - 3$.",
+      "options": [
+        "4",
+        "18",
+        "10",
+        "1"
+      ],
+      "correctAnswer": "4",
+      "explanation": "On effectue d'abord la multiplication : $\\frac{1}{2} \\times 6 = 3$. L'expression devient $4 + 3 - 3$. On calcule ensuite de gauche à droite : $4 + 3 = 7$, puis $7 - 3 = 4$. L'option 18 correspond à un calcul de gauche à droite sans priorité ($(4+0,5)\\times6-3$). L'option 10 correspond à $4 + (3 \\times 2)$ en confondant la fraction. L'option 1 correspond à $4 + 3 - 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la meilleure estimation du produit $51 \\times 19$ ?",
+      "options": [
+        "1000",
+        "750",
+        "1200",
+        "900"
+      ],
+      "correctAnswer": "1000",
+      "explanation": "Pour estimer un produit, on arrondit chaque nombre au chiffre des dizaines le plus proche. $51$ s'arrondit à $50$ et $19$ s'arrondit à $20$. Le produit estimé est $50 \\times 20 = 1000$. Le résultat exact est $969$, ce qui confirme que $1000$ est l'estimation la plus proche parmi les choix proposés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule en respectant les priorités : $\\frac{3}{5} + \\frac{2}{3} \\times \\frac{3}{4}$.",
+      "options": [
+        "1 1/10",
+        "1",
+        "3/4",
+        "1 1/2"
+      ],
+      "correctAnswer": "1 1/10",
+      "explanation": "La multiplication est prioritaire : $\\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{12} = \\frac{1}{2}$. Il reste à faire l'addition : $\\frac{3}{5} + \\frac{1}{2} = \\frac{6}{10} + \\frac{5}{10} = \\frac{11}{10} = 1 \\frac{1}{10}$. L'option 1 correspond à une addition erronée des numérateurs et dénominateurs. L'option 3/4 correspond à une multiplication seule. L'option 1 1/2 correspond à une addition faite avant la multiplication ($\\frac{3}{5}+\\frac{2}{3} = \\frac{19}{15} \\approx 1,26$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $12 / (4 - 2) + 5 \\times 2$ ?",
+      "options": [
+        "16",
+        "11",
+        "4",
+        "22"
+      ],
+      "correctAnswer": "16",
+      "explanation": "On commence par la parenthèse : $4 - 2 = 2$. L'expression devient $12 / 2 + 5 \\times 2$. La division et la multiplication sont prioritaires sur l'addition : $12 / 2 = 6$ et $5 \\times 2 = 10$. Enfin, on additionne : $6 + 10 = 16$. L'option 11 correspond à l'erreur de ne pas faire la parenthèse en premier ($12/4 - 2 + 10 = 11$). L'option 4 correspond à une division par la somme $(4-2+10)$. L'option 22 correspond à une addition avant multiplication ($12/2 + 5 = 11 \\times 2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer le quotient $198 / 4$. Quelle opération donne la meilleure approximation ?",
+      "options": [
+        "200 / 4",
+        "190 / 4",
+        "200 / 5",
+        "100 / 2"
+      ],
+      "correctAnswer": "200 / 4",
+      "explanation": "Pour estimer une division, on arrondit le dividende (198) à une valeur proche et facile à diviser par le diviseur (4). $198$ est très proche de $200$, qui se divise aisément par $4$ ($200 / 4 = 50$). L'option $190 / 4$ donne $47,5$, moins simple mentalement. L'option $200 / 5$ change le diviseur. L'option $100 / 2$ divise le dividende par 2 et le diviseur par 2, ce qui change la valeur du quotient (donne 50 mais la méthode n'est pas une estimation par arrondi standard).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

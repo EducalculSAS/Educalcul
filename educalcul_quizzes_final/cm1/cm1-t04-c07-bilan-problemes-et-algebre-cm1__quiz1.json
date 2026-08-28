@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 240,
+  "_course_code": "cm1-t04-c07-bilan-problemes-et-algebre-cm1",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Choix de modèle",
+  "title": "Quiz - Choix de modèle pour résoudre des problèmes (CM1)",
+  "questions": [
+    {
+      "text": "Léa a $15$ billes. Elle en gagne $8$ de plus. Quel modèle en barres (diagramme en bandes) représente le mieux la situation pour trouver le nombre total de billes ?",
+      "options": [
+        "Une barre unique de $15$ divisée en deux parties : $8$ et l'inconnu.",
+        "Deux barres distinctes : une de $15$ et une de $8$, placées bout à bout pour former un total.",
+        "Une barre de $15$ au-dessus, une barre de $8$ en dessous, une flèche indiquant la différence.",
+        "Quatre barres de $8$ placées à la suite pour faire un total de $15$."
+      ],
+      "correctAnswer": "Deux barres distinctes : une de $15$ et une de $8$, placées bout à bout pour former un total.",
+      "explanation": "Il s'agit d'un problème de composition (ajout) : on possède une quantité initiale ($15$) et on y ajoute une quantité ($8$). Le modèle en barres adapté montre les deux parties (l'état initial et l'ajout) qui forment le tout (le total). L'option A représente une soustraction (partie manquante). L'option C représente une comparaison (différence). L'option D représente une multiplication ($4 \\times 8$) qui ne correspond pas aux nombres du problème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet contient $6$ crayons. L'institutrice en achète $4$ paquets identiques. Quel modèle permet de trouver le nombre total de crayons ?",
+      "options": [
+        "Une barre de $6$ divisée en $4$ parties égales.",
+        "Quatre barres identiques de valeur $6$ mises bout à bout.",
+        "Une barre de $4$ divisée en $6$ parties égales.",
+        "Une balance avec $6$ d'un côté et $4$ de l'autre."
+      ],
+      "correctAnswer": "Quatre barres identiques de valeur $6$ mises bout à bout.",
+      "explanation": "C'est un problème de multiplication (groupes égaux) : $4$ groupes de $6$ objets. Le modèle en barres montre la répétition de la même quantité ($6$) un certain nombre de fois ($4$). L'option A et C représentent des divisions (partage ou groupement). L'option D (balance) sert à comparer des masses ou à résoudre des équations simples, pas à modéliser une multiplication de groupes égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $12$ euros. Il achète $3$ cahiers à $2$ euros chacun. Quelle équation modélise correctement la situation pour savoir combien il lui reste ?",
+      "options": [
+        "$12 - (3 \\times 2) = x$",
+        "$(12 - 3) \\times 2 = x$",
+        "$12 - 3 + 2 = x$",
+        "$12 \\div 3 \\times 2 = x$"
+      ],
+      "correctAnswer": "$12 - (3 \\times 2) = x$",
+      "explanation": "Le problème comporte deux étapes : d'abord calculer le coût total des cahiers (multiplication : $3 \\times 2 = 6$ euros), ensuite soustraire ce coût de la somme de départ ($12 - 6 = 6$ euros). L'équation $12 - (3 \\times 2) = x$ respecte l'ordre des opérations (priorité à la multiplication grâce aux parenthèses). L'option B soustrait d'abord le nombre de cahiers, ce qui n'a pas de sens. L'option C additionne le prix d'un cahier au lieu de multiplier. L'option D utilise une division inadaptée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marie a $20$ cartes. Luc en a $4$ fois moins. Quel modèle en barres représente la situation pour trouver le nombre de cartes de Luc ?",
+      "options": [
+        "Une barre pour Marie ($20$) et une barre pour Luc de la même longueur.",
+        "Une barre pour Marie ($20$) divisée en $4$ parties égales ; la barre de Luc correspond à une de ces parties.",
+        "Une barre pour Marie ($20$) et une barre pour Luc $4$ fois plus longue.",
+        "Une barre de $20$ dont on retire une partie de $4$."
+      ],
+      "correctAnswer": "Une barre pour Marie ($20$) divisée en $4$ parties égales ; la barre de Luc correspond à une de ces parties.",
+      "explanation": "L'expression \"$4$ fois moins\" indique une comparaison multiplicative (division). La quantité de Marie ($20$) est le tout, qui est $4$ fois la quantité de Luc. Il faut donc diviser la barre de $20$ en $4$ parties égales pour trouver la valeur d'une partie (celle de Luc). L'option A montre l'égalité. L'option C montre \"$4$ fois plus\". L'option D montre une soustraction ($20 - 4$), ce qui correspond à \"$4$ de moins\" et non \"$4$ fois moins\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a donné $7$ bonbons à son frère. Il lui en reste $13$. Combien en avait-elle au départ ? Choisis le modèle le plus adapté pour raisonner.",
+      "options": [
+        "Un rectangle total divisé en deux parties connues : $7$ (donnés) et $13$ (restants). Le total est inconnu.",
+        "Un rectangle de $13$ prolongé par un rectangle de $7$.",
+        "Un rectangle de $7$ divisé en $13$ parties.",
+        "Deux rectangles de $13$ et $7$ séparés sans lien visuel."
+      ],
+      "correctAnswer": "Un rectangle total divisé en deux parties connues : $7$ (donnés) et $13$ (restants). Le total est inconnu.",
+      "explanation": "C'est un problème à état initial inconnu (début inconnu). On connaît les deux parties finales : la partie \"donnée\" ($7$) et la partie \"restante\" ($13$). Le modèle \"Partie-Partie-Tout\" (un tout divisé en deux parties) est le plus puissant algébriquement car il montre directement la relation $Tout = Partie_1 + Partie_2$, soit $x = 7 + 13$. L'option B montre l'action de reconstitution (inverse de l'action), ce qui est valide pour calculer mais moins formel comme modèle de structure. L'option C est une division absurde. L'option D ne montre pas la relation d'inclusion des parties dans le tout.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

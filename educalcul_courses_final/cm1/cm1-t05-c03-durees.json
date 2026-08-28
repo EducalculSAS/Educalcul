@@ -1,0 +1,406 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.230844+00:00",
+  "id": 243,
+  "code": "cm1-t05-c03",
+  "title": "Durées",
+  "description": "Cours structuré Educalcul : Durées.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Durées",
+    "objectif_global": "Durées",
+    "mini_lecons_imposees": [
+      "h/min/s selon attendus.",
+      "Calcul de durée.",
+      "Heure de départ / arrivée."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "h/min/s selon attendus.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les unités de temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des durées ! Aujourd’hui, nous allons apprendre à reconnaître les trois unités principales que tu croises tous les jours : l’$h$ (heure), le $min$ (minute) et le $s$ (seconde). Imagine que tu regardes un dessin animé qui dure une heure, que tu chronomètres une course de $60$ secondes ou que tu mets un minuteur pour la cuisson d’un gâteau pendant $30$ minutes. Chaque situation utilise une unité adaptée à la longueur de l’événement."
+            },
+            {
+              "type": "definition",
+              "term": "heure",
+              "definition": "Unité de mesure du temps égale à $60$ minutes. On l’écrit avec la lettre $h$.",
+              "example": "Le film commence à $14\\,h$ et finit à $16\\,h$."
+            },
+            {
+              "type": "definition",
+              "term": "minute",
+              "definition": "Unité de mesure du temps égale à $60$ secondes. On l’écrit $min$.",
+              "example": "La récréation dure $15\\,min$."
+            },
+            {
+              "type": "definition",
+              "term": "seconde",
+              "definition": "Unité de mesure du temps la plus courte du système usuel. On l’écrit $s$.",
+              "example": "Le chronomètre affiche $45\\,s$ au sprint."
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 15,
+              "caption": "Une horloge indiquant 3 h 15",
+              "interactive": true
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l’horloge ci‑dessus : les deux aiguilles montrent $3\\,h\\,15\\,min$. L’aiguille des heures pointe entre le $3$ et le $4$, l’aiguille des minutes est sur le $3$ (ce qui correspond à $15$ minutes). Essaie de bouger les aiguilles pour afficher $8\\,h\\,30\\,min$ ou $11\\,h\\,45\\,min$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais identifier les unités, voyons comment elles s’imbriquent. Une heure contient exactement $60$ minutes, et une minute contient $60$ secondes. C’est comme des poupées russes : chaque grande unité en renferme une plus petite, toujours par paquets de $60$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer l’unité de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demande‑toi : est‑ce que je pars d’heures, de minutes ou de secondes ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : multiplier ou diviser par $60$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour passer d’une unité plus grande à une plus petite, tu multiplies par $60$. Pour l’inverse, tu divises par $60$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire le résultat avec la bonne abréviation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N’oublie pas d’ajouter $h$, $min$ ou $s$ derrière le nombre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,h = 60\\,min \\quad 1\\,min = 60\\,s"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut enchaîner deux conversions, par exemple transformer des heures directement en secondes. Tu multiplies alors par $60$ deux fois de suite : $1\\,h = 60\\,min = 60 \\times 60 = 3600\\,s$. C’est le même principe que pour passer des mètres aux centimètres, mais avec le facteur $60$ au lieu de $100$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Retiens le couple magique $60$ : $1\\,h = 60\\,min$ et $1\\,min = 60\\,s$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant jongler entre heures, minutes et secondes. Dans la prochaine leçon, nous utiliserons ces unités pour mesurer la durée qui sépare deux moments de la journée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $2\\,h$ en minutes.",
+              "answer": "$120\\,min$",
+              "hint": "Multiplie le nombre d’heures par $60$.",
+              "explanation": "Puisque $1\\,h = 60\\,min$, $2\\,h = 2 \\times 60 = 120\\,min$."
+            },
+            {
+              "question": "Combien d’heures y a‑t‑il dans $90\\,min$ ?",
+              "answer": "$1\\,h\\,30\\,min$",
+              "hint": "Divise $90$ par $60$ pour obtenir les heures entières, le reste sont les minutes.",
+              "explanation": "$90 \\div 60 = 1$ reste $30$, donc $1\\,h\\,30\\,min$."
+            },
+            {
+              "question": "Transforme $150\\,s$ en minutes et secondes.",
+              "answer": "$2\\,min\\,30\\,s$",
+              "hint": "Divise $150$ par $60$.",
+              "explanation": "$150 \\div 60 = 2$ reste $30$, donc $2\\,min\\,30\\,s$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul de durée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer une durée entre deux instants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu ailles au cinéma. La séance commence à $14\\,h\\,30\\,min$ et se termine à $16\\,h\\,15\\,min$. Combien de temps as‑tu passé dans la salle ? Pour le savoir, nous allons apprendre à soustraire l’heure de début de l’heure de fin, exactement comme on soustrait deux nombres, mais en respectant les changements d’unité ($60$ minutes = $1$ heure)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repère temporel de 14 h à 17 h",
+              "min": 14,
+              "max": 17,
+              "points": [
+                {
+                  "value": 14.5,
+                  "label": "Début"
+                },
+                {
+                  "value": 16.25,
+                  "label": "Fin"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la frise ci‑dessus, le point « Début » se situe à $14\\,h\\,30\\,min$ (soit $14,5$ sur l’échelle) et le point « Fin » à $16\\,h\\,15\\,min$ (soit $16,25$). La distance entre les deux points représente la durée que nous cherchons."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire les deux heures l’une sous l’autre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aligne les heures, les minutes et les secondes en colonnes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : emprunter si les minutes de départ sont plus grandes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les minutes du début ($30$) sont supérieures à celles de la fin ($15$), retire $1$ heure à la fin ($16\\,h$ devient $15\\,h$) et ajoute $60$ minutes aux minutes de la fin ($15+60 = 75\\,min$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : soustraire colonne par colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Heures : $15 - 14 = 1\\,h$. Minutes : $75 - 30 = 45\\,min$. La durée est $1\\,h\\,45\\,min$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un autre exemple : un match de foot commence à $10\\,h\\,20\\,min$ et se termine à $12\\,h\\,5\\,min$. Les minutes de fin ($5$) sont plus petites que celles de début ($20$), donc nous empruntons une heure. La fin devient $11\\,h\\,65\\,min$. La soustraction donne $1\\,h\\,45\\,min$ encore une fois ! Remarque que la durée peut être identique même si les horaires changent."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Rappel",
+              "paragraphs": [
+                "Toujours vérifier si un emprunt est nécessaire avant de soustraire les minutes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la durée dépasse une heure et demie, comme un long trajet en train. Prenons un départ à $8\\,h\\,40\\,min$ et une arrivée à $11\\,h\\,10\\,min$. Empruntons une heure à l’arrivée : $10\\,h\\,70\\,min$. Soustraction : $10 - 8 = 2\\,h$, $70 - 40 = 30\\,min$. Durée = $2\\,h\\,30\\,min$. Tu vois, la méthode reste la même, quel que soit l’écart."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant le calcul de durée entre deux moments. Prochaine étape : retrouver l’heure de départ ou d’arrivée quand on connaît la durée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une émission commence à $9\\,h\\,10\\,min$ et finit à $10\\,h\\,50\\,min$. Quelle est sa durée ?",
+              "answer": "$1\\,h\\,40\\,min$",
+              "hint": "Emprunte une heure à l’heure de fin si nécessaire.",
+              "explanation": "Fin $10\\,h\\,50\\,min$ → emprunt → $9\\,h\\,110\\,min$. Soustraction : $9-9=0\\,h$, $110-10=100\\,min = 1\\,h\\,40\\,min$."
+            },
+            {
+              "question": "Un atelier débute à $14\\,h\\,45\\,min$ et se termine à $16\\,h\\,20\\,min$. Calcule la durée.",
+              "answer": "$1\\,h\\,35\\,min$",
+              "hint": "Les minutes de fin sont plus petites, emprunte $1\\,h$.",
+              "explanation": "Fin $16\\,h\\,20\\,min$ → $15\\,h\\,80\\,min$. $15-14=1\\,h$, $80-45=35\\,min$."
+            },
+            {
+              "question": "Un train part à $6\\,h\\,55\\,min$ et arrive à $9\\,h\\,30\\,min$. Combien dure le voyage ?",
+              "answer": "$2\\,h\\,35\\,min$",
+              "hint": "Emprunte une heure à l’arrivée pour avoir assez de minutes.",
+              "explanation": "Arrivée $9\\,h\\,30\\,min$ → $8\\,h\\,90\\,min$. $8-6=2\\,h$, $90-55=35\\,min$."
+            }
+          ]
+        },
+        {
+          "title": "Heure de départ / arrivée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver l’heure de départ ou d’arrivée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu connais l’heure de début d’une activité et sa durée, et tu veux savoir à quelle heure elle se termine. D’autres fois, tu sais quand elle finit et combien elle a duré, et tu cherches l’heure de début. C’est exactement l’inverse du calcul de durée que nous venons de faire."
+            },
+            {
+              "type": "clock",
+              "hours": 10,
+              "minutes": 0,
+              "caption": "Horloge pour visualiser l’ajout de minutes",
+              "interactive": true
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l’horloge : il est $10\\,h\\,0\\,min$. Si tu ajoutes $45\\,min$, l’aiguille des minutes avance de $45$ graduations et l’aiguille des heures bouge un peu. Le résultat est $10\\,h\\,45\\,min$. Essaie d’ajouter $1\\,h\\,20\\,min$ : tu obtiens $11\\,h\\,20\\,min$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : additionner les minutes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les minutes de la durée aux minutes de l’heure de départ. Si le total dépasse $60$, transforme $60\\,min$ en $1\\,h$ et garde le reste en minutes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : additionner les heures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les heures de la durée aux heures de départ, sans oublier l’éventuelle heure venue de la conversion des minutes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire l’heure d’arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le résultat sous la forme $h\\,min$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, inversons la situation : tu sais que ton cours de danse se termine à $18\\,h\\,30\\,min$ et qu’il a duré $1\\,h\\,15\\,min$. Pour retrouver l’heure de début, tu soustrais la durée à l’heure de fin, exactement comme dans la leçon précédente. Si les minutes de fin ($30$) sont plus petites que celles de la durée ($15$), pas d’emprunt nécessaire ici. $18\\,h - 1\\,h = 17\\,h$, $30\\,min - 15\\,min = 15\\,min$. Le cours a commencé à $17\\,h\\,15\\,min$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention",
+              "paragraphs": [
+                "Quand tu soustrais, vérifie toujours si un emprunt d’une heure est indispensable."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas où l’emprunt est obligatoire. Ton film se termine à $20\\,h\\,10\\,min$ et a duré $2\\,h\\,40\\,min$. Les minutes de fin ($10$) sont inférieures à $40$, donc on emprunte $1\\,h$ à $20\\,h$ → $19\\,h\\,70\\,min$. Soustraction : $19 - 2 = 17\\,h$, $70 - 40 = 30\\,min$. Le film a commencé à $17\\,h\\,30\\,min$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant passer d’une heure à l’autre dans les deux sens. Tu as toutes les clés pour gérer ton emploi du temps, programmer un minuteur ou organiser une sortie entre amis."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais convertir des heures en minutes et en secondes.",
+                "Je sais calculer la durée entre deux instants.",
+                "Je sais trouver l’heure d’arrivée connaissant le départ et la durée.",
+                "Je sais retrouver l’heure de départ connaissant l’arrivée et la durée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il est $11\\,h\\,20\\,min$. Dans $3\\,h\\,50\\,min$, quelle heure sera‑t‑il ?",
+              "answer": "$15\\,h\\,10\\,min$",
+              "hint": "Ajoute les minutes, transforme $60\\,min$ en $1\\,h$ si besoin.",
+              "explanation": "$20+50=70\\,min = 1\\,h\\,10\\,min$. $11+3+1=15\\,h$. Résultat $15\\,h\\,10\\,min$."
+            },
+            {
+              "question": "Une fête se termine à $23\\,h\\,45\\,min$ et a duré $4\\,h\\,20\\,min$. À quelle heure a‑t‑elle commencé ?",
+              "answer": "$19\\,h\\,25\\,min$",
+              "hint": "Soustrais la durée à l’heure de fin, emprunte si les minutes de fin sont plus petites.",
+              "explanation": "Fin $23\\,h\\,45\\,min$ → emprunt → $22\\,h\\,105\\,min$. $22-4=18\\,h$, $105-20=85\\,min = 1\\,h\\,25\\,min$. $18+1=19\\,h$, $25\\,min$."
+            },
+            {
+              "question": "Ton bus part à $7\\,h\\,55\\,min$ et le trajet dure $1\\,h\\,35\\,min$. À quelle heure arriveras‑tu ?",
+              "answer": "$9\\,h\\,30\\,min$",
+              "hint": "Additionne les minutes, gère le passage à l’heure supérieure.",
+              "explanation": "$55+35=90\\,min = 1\\,h\\,30\\,min$. $7+1+1=9\\,h$. Résultat $9\\,h\\,30\\,min$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

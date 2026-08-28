@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Graphes",
+  "title": "Graphes de fonctions de référence",
+  "blocks": [
+    {
+      "title": "Droite affine",
+      "content": "Le graphique de la fonction affine $f(x)=2x-3$ est une droite. Son coefficient directeur est {{1}} et son ordonnée à l'origine est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "-3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction affine s'écrit sous la forme $f(x)=ax+b$. Le coefficient directeur est $a=2$ et l'ordonnée à l'origine est $b=-3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Sommet d'une parabole",
+      "content": "Pour la fonction $f(x)=x^2-4x+5$, le sommet de la parabole a pour abscisse {{1}} et pour ordonnée {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On écrit $f(x)=x^2-4x+5 = (x-2)^2+1$. Le sommet a pour coordonnées $(2;1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Domaine et ensemble d'images d'une racine carrée",
+      "content": "La fonction $f(x)=\\sqrt{x-1}$ est définie pour $x$ appartenant à {{1}} et son ensemble d'images est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "[1; +∞[",
+        "[0; +∞["
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La radicande $x-1$ doit être positive ou nulle, donc $x\\ge 1$, soit l'intervalle $[1; +\\infty[$. La racine carrée donne des valeurs positives ou nulles, donc l'ensemble d'images est $[0; +\\infty[$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

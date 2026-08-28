@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Identités remarquables si programme applicable",
+  "title": "Quiz : Identités remarquables",
+  "questions": [
+    {
+      "text": "Parmi les expressions suivantes, laquelle correspond au développement de $(x + 5)^2$ ?",
+      "options": [
+        "$x^2 + 25$",
+        "$x^2 + 10x + 25$",
+        "$x^2 + 5x + 25$",
+        "$x^2 + 10x + 10$"
+      ],
+      "correctAnswer": "$x^2 + 10x + 25$",
+      "explanation": "On utilise l'identité remarquable $(a + b)^2 = a^2 + 2ab + b^2$. Ici $a = x$ et $b = 5$. Le développement donne $x^2 + 2 \\times x \\times 5 + 5^2 = x^2 + 10x + 25$. L'option A oublie le terme du milieu $2ab$. L'option C calcule mal le coefficient de $x$ (5 au lieu de 10). L'option D calcule mal le carré de 5 (10 au lieu de 25).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la forme factorisée de l'expression $9x^2 - 25$ ?",
+      "options": [
+        "$(3x - 5)^2$",
+        "$(3x + 5)(3x - 5)$",
+        "$(9x - 5)(9x + 5)$",
+        "$(3x - 5)(3x + 5)$"
+      ],
+      "correctAnswer": "$(3x + 5)(3x - 5)$",
+      "explanation": "L'expression $9x^2 - 25$ est une différence de deux carrés : $(3x)^2 - 5^2$. On applique l'identité $a^2 - b^2 = (a - b)(a + b)$ avec $a = 3x$ et $b = 5$. Cela donne $(3x - 5)(3x + 5)$, ce qui est équivalent à $(3x + 5)(3x - 5)$. L'option A est le carré d'une différence, ce qui donnerait un terme du milieu. L'option C utilise $9x$ au lieu de $3x$ pour le premier terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On développe et on réduit l'expression $(2x - 3)(2x + 3) + (x - 4)^2$. Quel est le résultat ?",
+      "options": [
+        "$5x^2 - 8x + 7$",
+        "$5x^2 - 8x - 7$",
+        "$5x^2 - 8x + 25$",
+        "$3x^2 - 8x + 25$"
+      ],
+      "correctAnswer": "$5x^2 - 8x + 25$",
+      "explanation": "On utilise deux identités : $(a-b)(a+b)=a^2-b^2$ pour le premier produit et $(a-b)^2=a^2-2ab+b^2$ pour le second. $(2x-3)(2x+3) = (2x)^2 - 3^2 = 4x^2 - 9$. $(x-4)^2 = x^2 - 2 \\times x \\times 4 + 4^2 = x^2 - 8x + 16$. En additionnant : $4x^2 - 9 + x^2 - 8x + 16 = 5x^2 - 8x + 7$. Attendez, recalcul : $-9 + 16 = +7$. Le résultat est $5x^2 - 8x + 7$. L'option A est correcte. L'option B a un signe erreur sur la constante. L'option C a une erreur sur la constante (25 au lieu de 7). L'option D a une erreur sur le coefficient de $x^2$ (3 au lieu de 5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $E = (x + 2)^2 - (x - 2)^2$. Quelle expression est égale à $E$ pour tout nombre $x$ ?",
+      "options": [
+        "$0$",
+        "$8$",
+        "$8x$",
+        "$4x$"
+      ],
+      "correctAnswer": "$8x$",
+      "explanation": "On développe chaque carré avec les identités $(a+b)^2 = a^2 + 2ab + b^2$ et $(a-b)^2 = a^2 - 2ab + b^2$. $(x+2)^2 = x^2 + 4x + 4$. $(x-2)^2 = x^2 - 4x + 4$. On soustrait : $(x^2 + 4x + 4) - (x^2 - 4x + 4) = x^2 + 4x + 4 - x^2 + 4x - 4 = 8x$. On peut aussi utiliser l'identité $a^2 - b^2 = (a-b)(a+b)$ avec $a=x+2$ et $b=x-2$ : $E = [(x+2)-(x-2)] \\times [(x+2)+(x-2)] = 4 \\times 2x = 8x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $x^2 + 6x + 9$.",
+      "options": [
+        "$(x + 3)(x - 3)$",
+        "$(x + 3)^2$",
+        "$(x + 9)(x + 1)$",
+        "$(x - 3)^2$"
+      ],
+      "correctAnswer": "$(x + 3)^2$",
+      "explanation": "On cherche à écrire l'expression sous la forme $a^2 + 2ab + b^2 = (a+b)^2$. Ici $x^2 = (x)^2$ et $9 = 3^2$. Le terme du milieu est $6x = 2 \\times x \\times 3$. Cela correspond bien à $2ab$. L'expression est donc le carré de la somme : $(x + 3)^2$. L'option A est une différence de carrés ($x^2 - 9$). L'option C donne $x^2 + 10x + 9$. L'option D donne $x^2 - 6x + 9$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

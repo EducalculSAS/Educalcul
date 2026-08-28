@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester une situation",
+  "title": "Tester une situation avec des conditions",
+  "blocks": [
+    {
+      "title": "La condition simple",
+      "content": "En informatique, pour tester si une situation est vraie, on utilise une structure appelée {{1}}. Par exemple, si on veut savoir si un nombre est plus grand que $10$, on écrit : SI le nombre est supérieur à $10$, ALORS on affiche un message.",
+      "correctAnswer": "condition",
+      "blanks": [
+        "condition|structure conditionnelle"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une condition est un test qui permet à l'ordinateur de décider quelle action effectuer selon que le résultat est vrai ou faux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'alternative avec SINON",
+      "content": "Pour prévoir une action quand la condition n'est pas respectée, on utilise le mot {{1}}. Par exemple : SI le score est égal à $100$, ALORS on affiche GAGNÉ, {{2}} on affiche CONTINUE DE JOUER.",
+      "correctAnswer": "SINON",
+      "blanks": [
+        "SINON",
+        "SINON"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le mot SINON permet de définir l'action à réaliser si la condition du SI est fausse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester un nombre",
+      "content": "On a le nombre $15$. On teste la condition suivante : SI le nombre est inférieur à $12$, ALORS on affiche PETIT, SINON on affiche {{1}}. Dans ce cas, l'ordinateur affichera {{2}} car $15$ n'est pas inférieur à $12$.",
+      "correctAnswer": "GRAND, GRAND",
+      "blanks": [
+        "GRAND",
+        "GRAND"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre $15$ est supérieur à $12$. La condition SI $15 < 12$ est donc fausse, l'ordinateur exécute donc l'instruction située après le SINON.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

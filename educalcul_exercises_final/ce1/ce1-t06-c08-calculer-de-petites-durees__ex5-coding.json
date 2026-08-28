@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 124,
+  "_course_code": "ce1-t06-c08-calculer-de-petites-durees",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Comparer heures de début et fin",
+  "title": "Comparer heures de début et fin - Algorithmes",
+  "blocks": [
+    {
+      "title": "Durée en heures entières",
+      "content": "Écris un algorithme (en langage naturel ou pseudo‑code) qui prend en entrée l'heure de début $h_d$ et l'heure de fin $h_f$ (nombre entier d'heures, par exemple 9 et 12) et qui affiche la durée en heures.",
+      "correctAnswer": "Algorithme :\\n1. Lire $h_d$.\\n2. Lire $h_f$.\\n3. Si $h_f \\ge h_d$ alors durée $\\leftarrow h_f - h_d$ sinon durée $\\leftarrow (24 - h_d) + h_f$.\\n4. Afficher durée.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On soustrait l'heure de début à l'heure de fin. Si l'heure de fin est plus petite (passage minuit), on ajoute 24 heures avant de soustraire. Le résultat est la durée en heures entières.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Durée en minutes avec heures et minutes",
+      "content": "Écris un algorithme qui reçoit l'heure de début $h_d$ et les minutes $m_d$, puis l'heure de fin $h_f$ et les minutes $m_f$ (par exemple 8 h 30 et 10 h 15) et qui calcule la durée totale en minutes.",
+      "correctAnswer": "Algorithme :\\n1. Lire $h_d$, $m_d$, $h_f$, $m_f$.\\n2. Convertir chaque instant en minutes depuis minuit : $t_d \\leftarrow h_d \\times 60 + m_d$, $t_f \\leftarrow h_f \\times 60 + m_f$.\\n3. Si $t_f \\ge t_d$ alors durée $\\leftarrow t_f - t_d$ sinon durée $\\leftarrow (24 \\times 60 - t_d) + t_f$.\\n4. Afficher durée (en minutes).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On transforme les heures et minutes en un nombre total de minutes. La différence donne la durée. Si l'heure de fin est antérieure (passage minuit), on ajoute les minutes d'une journée complète (1440) avant de soustraire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux activités",
+      "content": "Deux activités A et B ont chacune une heure de début et une heure de fin (avec minutes). Écris un algorithme qui détermine quelle activité dure le plus longtemps et affiche \"A\" ou \"B\" (ou \"Égal\" si même durée).",
+      "correctAnswer": "Algorithme :\\n1. Lire $h_{dA}$, $m_{dA}$, $h_{fA}$, $m_{fA}$.\\n2. Lire $h_{dB}$, $m_{dB}$, $h_{fB}$, $m_{fB}$.\\n3. Calculer $t_{dA} \\leftarrow h_{dA} \\times 60 + m_{dA}$, $t_{fA} \\leftarrow h_{fA} \\times 60 + m_{fA}$.\\n4. Calculer $t_{dB} \\leftarrow h_{dB} \\times 60 + m_{dB}$, $t_{fB} \\leftarrow h_{fB} \\times 60 + m_{fB}$.\\n5. Calculer duréeA : si $t_{fA} \\ge t_{dA}$ alors $d_A \\leftarrow t_{fA} - t_{dA}$ sinon $d_A \\leftarrow (1440 - t_{dA}) + t_{fA}$.\\n6. Calculer duréeB de la même façon.\\n7. Si $d_A > d_B$ afficher \"A\" ; sinon si $d_B > d_A$ afficher \"B\" ; sinon afficher \"Égal\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la méthode de conversion en minutes pour chaque activité, on gère le passage minuit, on compare les deux durées et on affiche le résultat correspondant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

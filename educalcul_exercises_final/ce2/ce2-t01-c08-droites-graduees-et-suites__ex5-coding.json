@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lire une échelle",
+  "title": "Lecture d'échelles et algorithmes",
+  "blocks": [
+    {
+      "title": "Échelle simple (origine $0$, pas $10$)",
+      "content": "Observe la droite graduée ci-dessous. L'origine est $0$ et le pas entre deux graduations consécutives est $10$. Le point A se trouve sur la quatrième graduation après l'origine. Écris un algorithme (une suite d'étapes claires) pour déterminer la valeur du point A.",
+      "correctAnswer": "Étape un : Identifier la valeur de l'origine ($0$).\\nÉtape deux : Compter le nombre de graduations entre l'origine et le point A ($4$).\\nÉtape trois : Multiplier ce nombre par le pas ($4 \\times 10 = 40$).\\nÉtape quatre : Ajouter ce produit à la valeur de l'origine ($0 + 40 = 40$).\\nÉtape cinq : Conclure que la valeur du point A est $40$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour lire une valeur sur une droite graduée, on repère d'abord l'origine (ici $0$). On compte ensuite le nombre de graduations qui séparent l'origine du point (ici $4$). Comme chaque graduation vaut le pas ($10$), on multiplie le nombre de graduations par le pas ($4 \\times 10 = 40$). Enfin, on ajoute ce résultat à la valeur de l'origine ($0 + 40 = 40$). La valeur du point A est donc $40$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 50 par pas de 10",
+        "min": 0,
+        "max": 50,
+        "points": [
+          {
+            "value": 0,
+            "label": "O"
+          },
+          {
+            "value": 40,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Échelle avec origine non nulle (origine $20$, pas $5$)",
+      "content": "Observe la droite graduée ci-dessous. L'origine est $20$ et le pas entre deux graduations consécutives est $5$. Le point A se trouve sur la sixième graduation après l'origine. Écris un algorithme (une suite d'étapes claires) pour déterminer la valeur du point A.",
+      "correctAnswer": "Étape un : Identifier la valeur de l'origine ($20$).\\nÉtape deux : Compter le nombre de graduations entre l'origine et le point A ($6$).\\nÉtape trois : Multiplier ce nombre par le pas ($6 \\times 5 = 30$).\\nÉtape quatre : Ajouter ce produit à la valeur de l'origine ($20 + 30 = 50$).\\nÉtape cinq : Conclure que la valeur du point A est $50$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par noter la valeur de l'origine ($20$). On compte le nombre de graduations jusqu'au point A ($6$). Chaque graduation représente le pas ($5$), donc on calcule $6 \\times 5 = 30$. On ajoute ce produit à l'origine : $20 + 30 = 50$. La valeur du point A est $50$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 20 à 60 par pas de 5",
+        "min": 20,
+        "max": 60,
+        "points": [
+          {
+            "value": 20,
+            "label": "O"
+          },
+          {
+            "value": 50,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Échelle avec pas non décimal (origine $50$, pas $2$)",
+      "content": "Observe la droite graduée ci-dessous. L'origine est $50$ et le pas entre deux graduations consécutives est $2$. Le point A se trouve sur la douzième graduation après l'origine. Écris un algorithme (une suite d'étapes claires) pour déterminer la valeur du point A.",
+      "correctAnswer": "Étape un : Identifier la valeur de l'origine ($50$).\\nÉtape deux : Compter le nombre de graduations entre l'origine et le point A ($12$).\\nÉtape trois : Multiplier ce nombre par le pas ($12 \\times 2 = 24$).\\nÉtape quatre : Ajouter ce produit à la valeur de l'origine ($50 + 24 = 74$).\\nÉtape cinq : Conclure que la valeur du point A est $74$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'origine vaut $50$. Il y a $12$ graduations entre l'origine et le point A. Le pas est $2$, donc on multiplie $12 \\times 2 = 24$. On ajoute ce résultat à l'origine : $50 + 24 = 74$. La valeur du point A est $74$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 50 à 80 par pas de 2",
+        "min": 50,
+        "max": 80,
+        "points": [
+          {
+            "value": 50,
+            "label": "O"
+          },
+          {
+            "value": 74,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

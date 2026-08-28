@@ -1,0 +1,185 @@
+{
+  "_status": "done",
+  "_course_id": 373,
+  "_course_code": "6eme-t08-c06-bilan-donnees-et-proportionnalite-6e",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Application : Bilan - Données et proportionnalité 6e",
+  "title": "Bilan - Données et proportionnalité 6e",
+  "questions": [
+    {
+      "text": "D'après le diagramme en barres ci-dessous, quel intervalle correspond à la mode du nombre de livres lus ?",
+      "options": [
+        "0-2",
+        "3-5",
+        "6-8",
+        "9-11"
+      ],
+      "correctAnswer": "3-5",
+      "explanation": "La mode est la valeur qui apparaît le plus souvent. Sur le diagramme, l'intervalle 3-5 a la barre la plus haute (7 élèves), donc c'est la mode.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par les élèves",
+        "bars": [
+          {
+            "label": "0-2",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "3-5",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "6-8",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "9-11",
+            "value": 2,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous donne les effectifs de quatre valeurs. Calculez la moyenne de cette série statistique.",
+      "options": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "correctAnswer": "13",
+      "explanation": "Moyenne = (10×3 + 12×5 + 14×2 + 16×4) / (3+5+2+4) = (30+60+28+64) / 14 = 182 / 14 = 13.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Valeur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "10",
+            "3"
+          ],
+          [
+            "12",
+            "5"
+          ],
+          [
+            "14",
+            "2"
+          ],
+          [
+            "16",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Si $3$ kg de pommes coûtent $6$ €, combien coûtent $5$ kg ?",
+      "options": [
+        "8 €",
+        "9 €",
+        "10 €",
+        "12 €"
+      ],
+      "correctAnswer": "10 €",
+      "explanation": "Le prix est proportionnel à la masse. Prix au kg = 6 € / 3 kg = 2 €/kg. Pour 5 kg : 5 × 2 € = 10 €.",
+      "points": 1,
+      "figure": {
+        "type": "ratio_mixer",
+        "ratios": [
+          {
+            "label": "Prix pour 3 kg",
+            "value": 6,
+            "tone": "gold"
+          },
+          {
+            "label": "Prix pour 5 kg",
+            "value": 10,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Proportionnalité prix/kg"
+      }
+    },
+    {
+      "text": "Le camembert montre les fruits préférés des élèves. Quel pourcentage correspond aux oranges ?",
+      "options": [
+        "20 %",
+        "25 %",
+        "30 %",
+        "35 %"
+      ],
+      "correctAnswer": "25 %",
+      "explanation": "Le total des parts est 100. La part oranges vaut 25, donc le pourcentage est 25 %.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Fruits préférés des élèves",
+        "slices": [
+          {
+            "label": "Pommes",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 25,
+            "tone": "orange"
+          },
+          {
+            "label": "Fraises",
+            "value": 25,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "La recette pour 4 personnes utilise 200 g de farine. Quelle quantité de farine faut-il pour 6 personnes ?",
+      "options": [
+        "250 g",
+        "300 g",
+        "350 g",
+        "400 g"
+      ],
+      "correctAnswer": "300 g",
+      "explanation": "La quantité de farine est proportionnelle au nombre de personnes. 200 g pour 4 personnes ⇒ 200/4 = 50 g par personne. Pour 6 personnes : 6 × 50 g = 300 g.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Farine",
+            "value": 200,
+            "tone": "blue"
+          },
+          {
+            "label": "Sucre",
+            "value": 100,
+            "tone": "green"
+          },
+          {
+            "label": "Beurre",
+            "value": 100,
+            "tone": "yellow"
+          }
+        ],
+        "caption": "Recette pour 4 personnes"
+      }
+    }
+  ]
+}

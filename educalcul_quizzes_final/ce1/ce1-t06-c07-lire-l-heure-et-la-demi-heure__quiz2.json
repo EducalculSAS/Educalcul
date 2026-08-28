@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 123,
+  "_course_code": "ce1-t06-c07-lire-l-heure-et-la-demi-heure",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Associer heure et demi-heure",
+  "title": "Quiz : Associer l'heure et la demi-heure",
+  "questions": [
+    {
+      "text": "Regarde l'horloge ci-dessous. Quelle heure indique-t-elle ?",
+      "options": [
+        "3 heures",
+        "3 heures et demie",
+        "9 heures",
+        "9 heures et demie"
+      ],
+      "correctAnswer": "3 heures",
+      "explanation": "La grande aiguille (des minutes) pointe sur le 12, ce qui indique une heure pile. La petite aiguille (des heures) pointe exactement sur le 3. C'est donc 3 heures.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 0,
+        "caption": "Horloge indiquant 3 heures",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Observe cette horloge. Quelle heure affiche-t-elle ?",
+      "options": [
+        "4 heures",
+        "4 heures et demie",
+        "6 heures",
+        "6 heures et demie"
+      ],
+      "correctAnswer": "4 heures et demie",
+      "explanation": "La grande aiguille pointe sur le 6, ce qui correspond à 30 minutes passées, donc 'et demie'. La petite aiguille est située entre le 4 et le 5, car il est passé 4 heures mais pas encore 5 heures. C'est 4 heures et demie.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 30,
+        "caption": "Horloge indiquant 4 heures et demie",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Cette horloge indique une heure pile. Laquelle ?",
+      "options": [
+        "10 heures",
+        "10 heures et demie",
+        "2 heures",
+        "2 heures et demie"
+      ],
+      "correctAnswer": "10 heures",
+      "explanation": "La grande aiguille est sur le 12 (heure pile). La petite aiguille pointe exactement sur le 10. Il ne faut pas confondre avec la position de la grande aiguille qui pourrait faire penser aux minutes (sur 10 = 50 minutes), mais ici la grande aiguille est sur 12.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 10,
+        "minutes": 0,
+        "caption": "Horloge indiquant 10 heures",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Quelle heure correspond à l'horloge suivante ?",
+      "options": [
+        "11 heures",
+        "11 heures et demie",
+        "12 heures",
+        "12 heures et demie"
+      ],
+      "correctAnswer": "11 heures et demie",
+      "explanation": "La grande aiguille est sur le 6 (demi-heure). La petite aiguille est à mi-chemin entre le 11 et le 12. Cela signifie qu'il est passé 11 heures mais pas encore midi (12 heures). C'est donc 11 heures et demie.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 11,
+        "minutes": 30,
+        "caption": "Horloge indiquant 11 heures et demie",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Attention au piège ! Quelle est l'heure exacte sur cette horloge ?",
+      "options": [
+        "6 heures",
+        "6 heures et demie",
+        "12 heures",
+        "12 heures et demie"
+      ],
+      "correctAnswer": "6 heures et demie",
+      "explanation": "C'est un cas classique de confusion. La grande aiguille sur le 6 indique la demi-heure (30 minutes). La petite aiguille est entre le 6 et le 7. L'heure est donc 6 heures et demie. Ce n'est pas 12 heures car la petite aiguille n'est pas sur le 12.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 6,
+        "minutes": 30,
+        "caption": "Horloge indiquant 6 heures et demie",
+        "interactive": false
+      }
+    }
+  ]
+}

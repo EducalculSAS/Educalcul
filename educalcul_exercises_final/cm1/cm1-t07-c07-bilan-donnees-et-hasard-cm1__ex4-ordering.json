@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Bilan - Données et hasard CM1",
+  "title": "Bilan : Ordonner en données et hasard",
+  "blocks": [
+    {
+      "title": "Démarche statistique",
+      "content": "Remets dans l'ordre les 5 étapes d'une enquête statistique, de la première à la dernière.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Poser une question précise",
+        "Recueillir les données (relever, compter)",
+        "Organiser les données dans un tableau",
+        "Représenter les données (diagramme en barres, camembert...)",
+        "Interpréter les résultats et répondre à la question"
+      ],
+      "explanation": "Une enquête statistique suit toujours ce cheminement logique : on commence par se poser une question, puis on collecte l'information, on la range dans un tableau pour la lire facilement, on la visualise avec un graphique, et enfin on analyse ce graphique pour répondre à la question de départ.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échelle des probabilités",
+      "content": "Classe ces événements au lancer d'un dé à 6 faces numérotés de 1 à 6, du plus impossible au plus certain.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Obtenir un 7 (impossible)",
+        "Obtenir un 6 (peu probable, $1/6$)",
+        "Obtenir un nombre pair (autant de chances, $1/2$)",
+        "Obtenir un nombre inférieur à 5 (très probable, $4/6$)",
+        "Obtenir un nombre inférieur à 7 (certain)"
+      ],
+      "explanation": "On compare les chances de chaque événement : obtenir 7 ne peut jamais arriver (0/6), obtenir 6 est rare (1/6), obtenir un nombre pair (2, 4, 6) arrive une fois sur deux (3/6), obtenir un nombre < 5 (1, 2, 3, 4) arrive souvent (4/6), obtenir un nombre < 7 arrive à tous les coups (6/6).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de la médiane",
+      "content": "Voici une série de notes sur 10 : $4, 7, 5, 9, 6, 8, 5, 7, 10, 6$. Remets dans l'ordre les étapes pour trouver la médiane.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ranger les 10 notes dans l'ordre croissant : $4, 5, 5, 6, 6, 7, 7, 8, 9, 10$",
+        "Compter le nombre total de valeurs (ici 10, un nombre pair)",
+        "Identifier les deux valeurs du milieu (la 5e et la 6e valeur : 6 et 7)",
+        "Calculer la moyenne de ces deux valeurs centrales : $(6 + 7) / 2 = 6,5$",
+        "Conclure : la médiane est $6,5$"
+      ],
+      "explanation": "Pour trouver la médiane d'une série statistique, il faut d'abord ordonner les valeurs. Comme il y a 10 valeurs (nombre pair), la médiane est la moyenne des deux valeurs centrales (5e et 6e). Ici, les valeurs sont 6 et 7, donc la médiane est $6,5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

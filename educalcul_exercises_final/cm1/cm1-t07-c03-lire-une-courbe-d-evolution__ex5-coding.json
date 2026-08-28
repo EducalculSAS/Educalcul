@@ -1,0 +1,42 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Axes",
+  "title": "Les axes d'une courbe d'évolution",
+  "blocks": [
+    {
+      "title": "Identifier les axes",
+      "content": "On considère la courbe d'évolution ci-dessous représentant la hauteur d'une plante en centimètres au fil des semaines. Quelle est la grandeur représentée par l'axe horizontal (abscisses) et quelle est son unité ? Quelle est la grandeur représentée par l'axe vertical (ordonnées) et quelle est son unité ?",
+      "correctAnswer": "L'axe horizontal représente le temps en semaines. L'axe vertical représente la hauteur en centimètres.",
+      "explanation": "Sur une courbe d'évolution, l'axe horizontal (abscisses) correspond toujours à la variable temps (ici les semaines) et l'axe vertical (ordonnées) à la quantité mesurée (ici la hauteur en cm).",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x+1",
+        "xmin": 0,
+        "xmax": 10,
+        "caption": "Hauteur de la plante (cm) en fonction des semaines"
+      }
+    },
+    {
+      "title": "Déterminer l'échelle de l'axe vertical",
+      "content": "La hauteur maximale atteinte par la plante est de $50$ cm. L'axe vertical mesure $10$ carreaux (ou graduations principales). Écris la formule de calcul (ou l'algorithme) pour trouver la valeur d'un carreau (le pas de l'échelle). Calcule ensuite cette valeur.",
+      "correctAnswer": "Formule : Valeur d'un carreau = Valeur maximale / Nombre de carreaux. Calcul : $50 / 10 = 5$. Un carreau vaut $5$ cm.",
+      "explanation": "Pour choisir l'échelle de l'axe vertical, on divise la plus grande valeur à représenter par le nombre de graduations disponibles. Ici $50$ divisé par $10$ donne $5$ cm par carreau.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de lecture d'une valeur",
+      "content": "Tu veux savoir la hauteur de la plante à la semaine $4$. Écris les étapes successives (l'algorithme) pour lire cette valeur sur la courbe, en partant de l'axe horizontal.",
+      "correctAnswer": "1. Repère la valeur $4$ sur l'axe horizontal (semaines). 2. Monte verticalement jusqu'à rencontrer le point de la courbe. 3. De ce point, va horizontalement vers l'axe vertical. 4. Lis la valeur sur l'axe vertical (hauteur en cm).",
+      "explanation": "La lecture d'une courbe suit toujours ce chemin : abscisse -> courbe -> ordonnée. On part de l'axe du temps pour aller vers l'axe de la grandeur mesurée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

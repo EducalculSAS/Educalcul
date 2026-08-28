@@ -1,0 +1,199 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.018783+00:00",
+  "id": 498,
+  "code": "2nde-t01-c03",
+  "title": "Valeur absolue et distance",
+  "description": "Cours structuré Educalcul : Valeur absolue et distance.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Valeur absolue et distance",
+    "objectif_global": "Valeur absolue et distance",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Interpréter géométriquement.",
+      "Résoudre inégalités simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu utilises un GPS pour rejoindre un point précis, et que l'application t'indique que tu es à $-50$ $m$ de l'arrivée. À première vue, cela semble étrange : comment peut-on être à une distance négative ? Dans la vie courante, quand on parle d'un écart, d'une distance ou d'une erreur de mesure, on ne s'intéresse pas à la direction, mais seulement à l'intensité de l'écart. Que tu sois $50$ $m$ avant l'arrivée ou $50$ $m$ après, l'effort à fournir pour atteindre le point zéro est le même : $50$ $m$. C'est exactement ce besoin qui a conduit les mathématiques à créer le concept de valeur absolue. C'est un outil puissant qui permet d'isoler la grandeur d'un nombre en ignorant totalement son signe. Que l'on traite d'un solde bancaire négatif ou d'une température glaciale, la valeur absolue nous permet de quantifier l'ampleur d'une variation sans se laisser distraire par le sens de celle-ci. C'est une notion fondamentale en seconde, car elle prépare le terrain pour comprendre les intervalles et les distances sur une droite numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "La valeur absolue d'un nombre réel $x$, notée $|x|$, représente la distance between ce nombre et le zéro sur une droite graduée. Par définition, une distance est toujours positive ou nulle, ce qui explique pourquoi le résultat d'une valeur absolue ne peut jamais être un nombre négatif. Mathématiquement, on définit $|x|$ selon deux cas distincts. Si le nombre $x$ est positif ou nul ($x \\text{ }  $ 0), alors sa valeur absolue est simplement le nombre lui-même : $|x| = x$. Par exemple, $|5| = 5$. En revanche, si le nombre $x$ est strictement négatif ($x < 0$), la valeur absolue est égale à l'opposé de ce nombre, ce qui permet de transformer ce signe moins en signe plus : $|x| = -x$. Par exemple, si on prend $-7$, son opposé est $-(-7)$, ce qui donne $7$. Ainsi, $|-7| = 7$. Il est crucial de comprendre que l'écriture $-x$ dans la définition ne signifie pas que le résultat est négatif, mais que l'on prend l'opposé d'un nombre qui était, lui, déjà négatif. La valeur absolue agit donc comme un filtre qui transforme tout nombre en sa version positive."
+            },
+            {
+              "type": "display_math",
+              "latex": "|x| = \\begin{cases} x & \\text{si } x \\ge 0 \\ -x & \\text{si } x < 0 \\end{cases}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer ou simplifier une valeur absolue, il faut suivre une démarche rigoureuse basée sur le signe de l'élément situé entre les barres. Voici la méthode étape par étape. Premièrement, identifiez l'expression à l'intérieur des barres de valeur absolue, que nous appellerons l'argument. Deuxièmement, déterminez le signe de cet argument. S'il s'agit d'un nombre connu, c'est immédiat. S'il s'agit d'une expression avec une variable comme $x$, vous devez envisager les différents cas possibles. Troisièmement, appliquez la règle de simplification. Si l'argument est positif, retirez simplement les barres de valeur absolue sans rien modifier. Si l'argument est négatif, retirez les barres mais changez le signe de l'expression en multipliant tout l'intérieur par $-1$. Par exemple, pour simplifier $|x - 3|$, vous devez vous demander si $x - 3$ est positif ou négatif. Si $x \\text{ }  $ 3, alors $|x - 3| = x - 3$. Si $x < 3$, alors $|x - 3| = -(x - 3) = -x + 3$. Cette distinction est la clé pour résoudre des équations ou des inéquations plus tard dans le cours."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons le calcul suivant : calculer la valeur de $A = |-12,5| + |3,2|$. Nous allons traiter chaque terme séparément pour ne pas nous embrouiller. Pour le premier terme, on a $|-12,5|$. Ici, le nombre à l'intérieur des barres est $-12,5$, qui est strictement négatif. Selon notre définition, on doit prendre son opposé. L'opposé de $-12,5$ est $12,5$. On a donc $|-12,5| = 12,5$. Pour le second terme, on a $|3,2|$. Le nombre $3,2$ est positif, donc sa valeur absolue est identique à lui-même : $|3,2| = 3,2$. Maintenant, nous pouvons effectuer l'addition finale : $A = 12,5 + 3,2$. Le résultat est donc $A = 15,7$. On remarque bien que même si l'un des nombres de départ était négatif, il a contribué positivement au résultat final, car la valeur absolue a supprimé le signe moins. C'est un exemple simple, mais il illustre parfaitement le mécanisme de transformation."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas plus complexe où nous devons simplifier l'expression $B = |2x - 6|$ en fonction d'une condition sur $x$. Supposons que l'on nous dise que $x$ est un nombre inférieur à $3$, c'est-à-dire $x < 3$. Nous devons analyser le signe de l'expression $2x - 6$. Si $x < 3$, alors en multipliant par $2$, on a $2x < 6$, et en soustrayant $6$, on obtient $2x - 6 < 0$. Le contenu de la valeur absolue est donc strictement négatif. Pour simplifier $|2x - 6|$, nous devons donc prendre l'opposé de l'expression entière. On écrit : $|2x - 6| = -(2x - 6)$. En distribuant le signe moins à l'intérieur de la parenthèse, on obtient $-2x + 6$. Ainsi, pour tout $x < 3$, l'expression $B$ est égale à $-2x + 6$. Si, à l'inverse, on nous avait dit que $x \\text{ }  $ 3, alors l'expression $2x - 6$ aurait été positive ou nulle, et on aurait simplement écrit $B = 2x - 6$. Cela montre que la valeur absolue dépend entièrement de la valeur de la variable."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique consiste à croire que $|x|$ est toujours égal à $x$. C'est faux dès que $x$ est négatif. Un autre piège très courant est de penser que $|-x| = -x$. En réalité, $|-x|$ est toujours positif. Par exemple, si $x = 5$, alors $|-5| = 5$. Si $x = -5$, alors $|-(-5)| = |5| = 5$. Dans tous les cas, le résultat est positif. Un autre point de vigilance concerne l'écriture $-x$ dans la définition $|x| = -x$ pour $x < 0$. Beaucoup d'élèves voient le signe moins et pensent que le résultat est négatif. Il faut bien se rappeler que si $x$ est déjà négatif, alors $-x$ devient positif. Enfin, attention à ne pas confondre la valeur absolue avec les parenthèses. Les parenthèses servent à prioriser les calculs, alors que les barres de valeur absolue effectuent une opération mathématique de transformation du signe. Pour éviter ces erreurs, je vous conseille de toujours écrire explicitement le signe de l'expression intérieure avant de retirer les barres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur de l'expression $E = |-7,4| - |2,1|$.",
+              "answer": "$5,3$",
+              "hint": "Calcule d'abord chaque valeur absolue séparément, puis fais la soustraction.",
+              "explanation": "$|-7,4| = 7,4$ car on prend l'opposé du nombre négatif. $|2,1| = 2,1$ car le nombre est positif. On a donc $E = 7,4 - 2,1 = 5,3$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter géométriquement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu te trouves sur une immense règle graduée tracée au sol. Tu es positionné au nombre $2$ et ton ami se trouve au nombre $5$. Pour savoir combien de pas tu dois faire pour le rejoindre, tu calcules naturellement $5 - 2 = 3$ pas. Maintenant, imagine que tu es au nombre $-3$ et ton ami au nombre $2$. Si tu fais simplement $2 - (-3)$, tu trouves $5$. Mais que se passerait-il si tu avais fait le calcul dans l'autre sens, $-3 - 2$ ? Tu trouverais $-5$. Pourtant, la distance physique entre vous deux ne change pas, peu importe qui commence le calcul. C'est là que l'interprétation géométrique de la valeur absolue devient magique. Elle nous permet de dire que la distance entre deux points $A$ et $B$ sur une droite est égale à la valeur absolue de la différence de leurs coordonnées. Cela garantit que, peu importe l'ordre de la soustraction, le résultat sera toujours une distance positive, cohérente avec la réalité physique de l'espace."
+            },
+            {
+              "type": "paragraph",
+              "content": "En géométrie sur une droite numérique, on note souvent la distance entre deux points $A$ et $B$ par $d(A, B)$ ou $AB$. Si le point $A$ a pour abscisse $x_A$ et le point $B$ a pour abscisse $x_B$, alors la distance $AB$ est définie par la formule $AB = |x_B - x_A|$. Cette formule est fondamentale car elle utilise la valeur absolue pour neutraliser le signe du résultat de la soustraction. En effet, $x_B - x_A$ peut être positif (si $B$ est à droite de $A$) ou négatif (si $B$ est à gauche de $A$), mais la distance, elle, doit rester positive. On peut donc aussi écrire $AB = |x_A - x_B|$, car la valeur absolue de deux nombres opposés est la même : $|5| = |-5|$. Cette propriété montre que l'ordre des points dans la soustraction n'a aucune importance pour le calcul d'une distance. C'est l'outil idéal pour mesurer des écarts de température, des différences de hauteur ou des distances temporelles, car il transforme systématiquement un écart algébrique en une mesure géométrique concrète."
+            },
+            {
+              "type": "number_line",
+              "caption": "Distance entre -3 et 2",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 2,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la distance entre deux points sur une droite graduée, suivez scrupuleusement ces étapes. Premièrement, identifiez les abscisses des deux points. Appelons-les $a$ et $b$. Deuxièmement, écrivez la différence entre ces deux nombres. L'ordre n'est pas crucial, mais pour être organisé, vous pouvez prendre le point le plus à droite moins le point le plus à gauche. Troisièmement, placez ce résultat à l'intérieur de barres de valeur absolue. Quatrièmement, simplifiez le résultat pour obtenir une valeur positive. Par exemple, pour trouver la distance entre $-8$ et $3$, on écrit $|3 - (-8)|$. On simplifie d'abord l'intérieur : $3 + 8 = 11$. On a alors $|11|$, ce qui donne $11$. Si on avait fait l'inverse, $|-8 - 3|$, on aurait eu $|-11|$, ce qui donne également $11$. Cette méthode garantit qu'aucune erreur de signe ne viendra fausser votre résultat final. Pensez toujours à bien gérer les doubles signes moins lors de la soustraction, car c'est là que se cachent la plupart des erreurs de calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons la distance entre le point $M$ d'abscisse $4,5$ et le point $N$ d'abscisse $12,8$. Ici, nous appliquons la formule de la distance $MN = |x_N - x_M|$. Nous remplaçons les lettres par les valeurs : $MN = |12,8 - 4,5|$. Effectuons la soustraction à l'intérieur des barres : $12,8 - 4,5 = 8,3$. Nous obtenons donc $MN = |8,3|$. Comme $8,3$ est un nombre positif, sa valeur absolue est identique à lui-même. Le résultat final est $MN = 8,3$. Dans ce cas précis, comme le point $N$ est situé à droite du point $M$, la soustraction était déjà positive, donc la valeur absolue n'a pas modifié le nombre. Cependant, l'utilisation de la formule reste la meilleure habitude à prendre pour éviter toute confusion, surtout quand on commence à manipuler des nombres plus complexes ou des expressions littérales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cherchons maintenant la distance entre le point $P$ d'abscisse $-5$ et le point $Q$ d'abscisse $-2$. Appliquons la même rigueur : $PQ = |x_Q - x_P|$. En remplaçant, on a $PQ = |-2 - (-5)|$. Attention ici au signe moins devant la parenthèse : soustraire $-5$ revient à ajouter $5$. L'expression devient $PQ = |-2 + 5|$. On calcule l'intérieur : $-2 + 5 = 3$. On a alors $PQ = |3|$, ce qui donne $3$. Vérifions avec l'autre sens de soustraction : $PQ = |-5 - (-2)| = |-5 + 2| = |-3|$. La valeur absolue de $-3$ est $3$. On retrouve bien le même résultat. Ce deuxième exemple est important car il montre que même lorsque les deux points sont dans la zone négative de la droite, l'écart entre eux reste une valeur positive. On peut s'imaginer être à $-5$ degrés et voir la température monter à $-2$ degrés : l'écart est bien de $3$ degrés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est d'oublier la valeur absolue et d'écrire qu'une distance est négative. En mathématiques, écrire $AB = -5$ est une erreur grave, car une distance est par définition positive. Un autre point de confusion arrive lors de la soustraction d'un nombre négatif. Beaucoup d'élèves écrivent $|-2 - (-5)| = |-2 - 5| = |-7|$, oubliant que le double signe moins devient un plus. Prenez toujours le temps d'écrire l'étape intermédiaire de simplification des signes avant de calculer la valeur absolue. Enfin, certains élèves pensent que pour calculer une distance, il suffit d'additionner les valeurs absolues des deux nombres. Par exemple, pour $-5$ et $-2$, ils feraient $|-5| + |-2| = 5 + 2 = 7$. C'est totalement faux. Il faut absolument faire la différence des abscisses avant d'appliquer la valeur absolue, car on cherche l'écart entre les points, et non leur distance cumulée par rapport à l'origine zéro."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la distance entre le point $S$ d'abscisse $-1,5$ et le point $T$ d'abscisse $4,5$ ?",
+              "answer": "$6$",
+              "hint": "Utilise la formule $|x_T - x_S|$.",
+              "explanation": "$ST = |4,5 - (-1,5)| = |4,5 + 1,5| = |6| = 6$."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre inégalités simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu travailles dans une usine de précision qui fabrique des vis. La longueur théorique d'une vis doit être de exactement $10$ $mm$. Cependant, aucune machine n'est parfaite. On accepte donc une marge d'erreur, une sorte de zone de tolérance : la vis est acceptée si elle s'éloigne de $10$ $mm$ de moins de $0,1$ $mm$. En langage mathématique, cela signifie que la distance entre la longueur réelle $x$ et la valeur cible $10$ doit être inférieure à $0,1$. On écrira alors $|x - 10| < 0,1$. Cette notation est extrêmement élégante car elle résume en une seule petite expression tout un concept de proximité. Au lieu d'écrire que la vis peut mesurer entre $9,9$ $mm$ et $10,1$ $mm$, on exprime simplement que l'écart absolu est limité. C'est ainsi que fonctionnent les normes de qualité industrielle, les seuils de sécurité en aviation ou même les marges d'erreur dans les sondages politiques. Maîtriser ces inégalités, c'est apprendre à définir mathématiquement ce que signifie être proche d'une valeur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une inégalité avec une valeur absolue du type $|x - a| < r$ (où $r$ est un nombre positif) se lit comme suit : la distance entre $x$ et $a$ est strictement inférieure à $r$. Géométriquement, cela signifie que $x$ se trouve dans un intervalle centré en $a$, avec un rayon de $r$. Pour résoudre ce type d'inégalité, on utilise une propriété fondamentale : $|X| < r$ est équivalent à $-r < X < r$. En appliquant cela à $|x - a| < r$, on obtient l'encadrement $-r < x - a < r$. Pour isoler $x$, on ajoute $a$ à chaque membre de l'inégalité, ce qui nous donne $a - r < x < a + r$. De la même manière, si l'on a $|x - a| > r$, cela signifie que la distance entre $x$ et $a$ est plus grande que $r$. Dans ce cas, $x$ est soit très loin à gauche, soit très loin à droite. Cela se traduit par deux possibilités distinctes : soit $x - a < -r$ (ce qui donne $x < a - r$), soit $x - a > r$ (ce qui donne $x > a + r$). On obtient alors une réunion de deux intervalles disjoints."
+            },
+            {
+              "type": "interval_builder",
+              "min": -10,
+              "max": 10,
+              "lowerBound": 1,
+              "upperBound": 5,
+              "lowerOpen": true,
+              "upperOpen": true,
+              "caption": "Solutions de |x-3| < 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre une inégalité avec valeur absolue, suivez cette méthode systématique. Premièrement, mettez l'expression à l'intérieur des barres sous la forme $x - a$. Si vous avez $|x + 2|$, transformez-le en $|x - (-2)|$ pour identifier que le centre est $-2$. Deuxièmement, identifiez le rayon $r$, qui est le nombre à droite du signe d'inégalité. Troisièmement, choisissez la transformation selon le signe. Si c'est un signe inférieur ($<$ ou $\\text{ }  $), transformez l'inégalité en un encadrement unique : $-r < x - a < r$. Ajoutez ensuite $a$ partout pour trouver l'intervalle. Si c'est un signe supérieur ($>$ ou $\\text{ }  $), séparez le problème en deux cas : $x - a < -r$ OU $x - a > r$. Résolvez chaque inéquation séparément. Quatrièmement, exprimez le résultat final soit sous forme d'intervalle, soit sous forme d'inégalités. Par exemple, pour $|x - 5| < 2$, on a $-2 < x - 5 < 2$, donc $5 - 2 < x < 5 + 2$, d'où $3 < x < 7$. Le résultat est l'intervalle $]3, 7[$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons l'inégalité $|x - 3| < 2$. Ici, nous cherchons tous les nombres $x$ dont la distance avec $3$ est strictement inférieure à $2$. Nous appliquons la propriété de l'encadrement. L'inégalité $|x - 3| < 2$ est équivalente à $-2 < x - 3 < 2$. Pour isoler $x$, nous devons supprimer le $-3$ au centre. Nous ajoutons donc $3$ aux trois membres de l'inégalité : $-2 + 3 < x - 3 + 3 < 2 + 3$. Ce qui nous donne $1 < x < 5$. On peut interpréter ce résultat très simplement : si on part de $3$ et qu'on s'éloigne de moins de $2$ unités, on reste coincé entre $1$ et $5$. Le résultat peut donc s'écrire sous la forme d'un intervalle : $x \\text{ appartient à } ]1, 5[$. Si on teste un nombre comme $4$, on a $|4 - 3| = |1| = 1$, et $1 < 2$, donc ça marche. Si on teste $6$, on a $|6 - 3| = |3| = 3$, et $3$ n'est pas inférieur à $2$, donc $6$ n'est pas solution."
+            },
+            {
+              "type": "paragraph",
+              "content": "S'attaquons à une inégalité de type supérieur : $|x + 1| \\text{ }  $ 4. La première étape est de réécrire l'expression pour faire apparaître la forme distance : $|x - (-1)| \\text{ }  $ 4. Le centre est donc $a = -1$ et le rayon est $r = 4$. Puisque nous avons un signe supérieur ou égal, nous devons considérer les deux zones extérieures. Premier cas : $x - (-1) \\text{ }  $ -4. Ce qui donne $x + 1 \\text{ }  $ -4, d'où $x \\text{ }  $ -5. Second cas : $x - (-1) \\text{ }  $ 4. Ce qui donne $x + 1 \\text{ }  $ 4, d'où $x \\text{ }  $ 3. Les solutions sont donc tous les nombres qui sont soit inférieurs ou égaux à $-5$, soit supérieurs ou égaux à $3$. En notation d'intervalle, on écrit que $x$ appartient à $]-\\text{infini}, -5] \\text{ union } [3, \\text{infini}[$. On voit ici que la valeur absolue nous a permis de définir deux zones d'exclusion autour du centre $-1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fatale est de supprimer les barres de valeur absolue et d'écrire directement $-r < x - a < r$ sans réfléchir au signe d'inégalité. Si vous avez un signe $>$ et que vous faites un encadrement, votre résultat sera totalement faux. Un autre piège classique est l'oubli du changement de signe lors du passage à l'intervalle. Par exemple, pour $|x + 4| < 1$, certains écrivent $x + 4 < 1$ et $x + 4 < -1$, ce qui est absurde. Rappelez-vous : l'un est un encadrement (intérieur), l'autre est une séparation (extérieur). Enfin, faites attention aux crochets. Si l'inégalité est stricte ($<$), on utilise des crochets ouverts $]$. Si elle est large ($\\text{ }  $), on utilise des crochets fermés $]$. Une confusion ici peut coûter des points précieux. Pour ne plus vous tromper, je vous conseille de toujours dessiner une petite droite numérique et de marquer le centre $a$ et le rayon $r$ avant de commencer vos calculs algébriques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'inégalité $|x - 7| < 3$ et donne le résultat sous forme d'intervalle.",
+              "answer": "$]4, 10[$",
+              "hint": "L'inégalité $|x - 7| < 3$ est équivalente à $-3 < x - 7 < 3$.",
+              "explanation": "$-3 < x - 7 < 3 \\text{ }  $ adding $7$ on all sides: $-3 + 7 < x < 3 + 7$, so $4 < x < 10$. The interval is $]4, 10[$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

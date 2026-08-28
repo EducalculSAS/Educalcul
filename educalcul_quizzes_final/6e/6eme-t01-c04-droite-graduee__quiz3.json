@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Distance entre deux nombres positifs",
+  "title": "Distance entre deux nombres positifs sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur une droite graduée, le point A a pour abscisse $3$ et le point B a pour abscisse $8$. Quelle est la distance AB ?",
+      "options": [
+        "$5$",
+        "$11$",
+        "$3$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La distance entre deux points sur une droite graduée est la valeur absolue de la différence de leurs abscisses. Ici, la distance AB est $|8 - 3| = 5$. L'option $11$ correspond à une addition, $3$ et $8$ sont les abscisses elles-mêmes.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Points A(3) et B(8)",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 3,
+            "label": "A"
+          },
+          {
+            "value": 8,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Calcule la distance entre les nombres décimaux $12,5$ et $7,2$.",
+      "options": [
+        "$5,3$",
+        "$19,7$",
+        "$5,7$",
+        "$4,3$"
+      ],
+      "correctAnswer": "$5,3$",
+      "explanation": "La distance est la différence entre le plus grand et le plus petit nombre : $12,5 - 7,2 = 5,3$. L'option $19,7$ est la somme, $5,7$ résulte d'une erreur de retenue (soustraction mal alignée), $4,3$ d'une erreur de calcul (12 - 7 = 5 au lieu de 12,5 - 7,2).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point C a pour abscisse $15$. Le point D est à une distance de $6,5$ de C et se trouve à gauche de C sur la droite. Quelle est l'abscisse de D ?",
+      "options": [
+        "$8,5$",
+        "$21,5$",
+        "$9,5$",
+        "$9$"
+      ],
+      "correctAnswer": "$8,5$",
+      "explanation": "Puisque D est à gauche de C, son abscisse est plus petite. On soustrait la distance : $15 - 6,5 = 8,5$. L'option $21,5$ correspond à une addition (point à droite), $9,5$ à une erreur de calcul (15 - 5,5), $9$ à un arrondi incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les paires de nombres suivantes, laquelle correspond à la plus grande distance ?",
+      "options": [
+        "$12$ et $20$",
+        "$15$ et $25$",
+        "$8$ et $17$",
+        "$5$ et $16$"
+      ],
+      "correctAnswer": "$5$ et $16$",
+      "explanation": "On calcule chaque distance : $|20-12|=8$, $|25-15|=10$, $|17-8|=9$, $|16-5|=11$. La plus grande distance est $11$, obtenue pour la paire $5$ et $16$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux points E et F sont placés sur une droite graduée. La distance EF vaut $12,4$. L'abscisse de E est $4,6$ et les deux abscisses sont des nombres positifs. Quelle est l'abscisse de F ?",
+      "options": [
+        "$17$",
+        "$-7,8$",
+        "$7,8$",
+        "$16,4$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "Il y a deux positions possibles pour F : à droite de E ($4,6 + 12,4 = 17$) ou à gauche ($4,6 - 12,4 = -7,8$). Comme l'énoncé précise que les abscisses sont des nombres positifs, F ne peut pas être en $-7,8$. L'abscisse de F est donc $17$. L'option $7,8$ correspond à $12,4 - 4,6$, $16,4$ à une erreur d'addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

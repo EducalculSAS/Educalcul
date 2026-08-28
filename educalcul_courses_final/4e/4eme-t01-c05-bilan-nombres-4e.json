@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.810798+00:00",
+  "id": 424,
+  "code": "4eme-t01-c05",
+  "title": "Bilan - Nombres 4e",
+  "description": "Cours structuré Educalcul : Bilan - Nombres 4e.",
+  "subject": "Nombres relatifs, fractions et puissances",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Nombres relatifs, fractions et puissances",
+    "titre_du_cours": "Bilan - Nombres 4e",
+    "objectif_global": "Bilan - Nombres 4e",
+    "mini_lecons_imposees": [
+      "Relatifs, fractions, puissances.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, fractions et puissances",
+      "lessons": [
+        {
+          "title": "Relatifs, fractions, puissances.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres relatifs : repérage et opérations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! On commence par revoir les nombres relatifs, ces nombres qui portent un signe $+$ ou $-$ et qui nous permettent de mesurer des écarts, des températures ou des altitudes. Rappelle-toi : sur une droite graduée, le zéro est le point de départ. Les nombres positifs sont à droite, les négatifs à gauche. Plus un nombre négatif est loin de zéro, plus il est petit. Par exemple, $-8 < -3$ car $-8$ est plus à gauche."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérage de $-5$, $0$ et $4$ sur une droite graduée",
+              "min": -6,
+              "max": 5,
+              "points": [
+                {
+                  "value": -5,
+                  "label": "A"
+                },
+                {
+                  "value": 0,
+                  "label": "O"
+                },
+                {
+                  "value": 4,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour additionner deux relatifs, on regarde leurs signes. Même signe ? On additionne les valeurs absolues et on garde le signe commun. Signes contraires ? On fait la différence des valeurs absolues et on prend le signe de celui qui a la plus grande valeur absolue. Exemple : $(-12) + (+7) = -5$ car $12 > 7$ et le signe du $12$ est $-$. Pour la multiplication, la règle des signes est simple : $+ \\times + = +$, $- \\times - = +$, $+ \\times - = -$. C'est comme pour l'addition mais en plus rapide : deux signes identiques donnent $+$, deux signes différents donnent $-$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux nombres. Sont-ils tous les deux positifs, tous les deux négatifs, ou l'un de chaque ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Choisir l'opération sur les valeurs absolues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mêmes signes : addition. Signes contraires : soustraction (grand moins petit)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Attribuer le signe du résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mêmes signes : on garde ce signe. Signes contraires : on prend le signe du nombre qui avait la plus grande valeur absolue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les relatifs sont rafraîchis, passons aux fractions. Elles reviennent sans cesse au collège, alors assurons-nous qu'elles sont parfaitement maîtrisées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les fractions : calculer et comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction $\\frac{a}{b}$ représente un partage : $a$ parts sur $b$ parts égales. Le numérateur $a$ compte les parts prises, le dénominateur $b$ compte le total des parts. Deux fractions sont égales si on multiplie ou divise numérateur et dénominateur par le même nombre non nul. C'est la base pour simplifier : $\\frac{18}{24} = \\frac{18 \\div 6}{24 \\div 6} = \\frac{3}{4}$. Pour additionner ou soustraire, il faut impérativement un dénominateur commun. On cherche souvent le plus petit multiple commun (PPMC) des dénominateurs."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La fraction $\\frac{3}{4}$ : 3 parts sur 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication est plus directe : on multiplie les numérateurs entre eux et les dénominateurs entre eux. $\\frac{2}{3} \\times \\frac{5}{7} = \\frac{10}{21}$. Pour la division, on multiplie par l'inverse : $\\frac{2}{3} \\div \\frac{5}{7} = \\frac{2}{3} \\times \\frac{7}{5} = \\frac{14}{15}$. Attention aux pièges : on ne simplifie jamais « en travers » avant une addition ou une soustraction, seulement avant une multiplication. Et on ne simplifie que des facteurs (choses qui multiplient), jamais des termes (choses qui s'additionnent)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions sont en place. Attaquons-nous maintenant aux puissances, un outil indispensable pour écrire de très grands nombres ou de très petits sans s'épuiser à écrire des zéros."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les puissances : écriture et propriétés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une puissance $a^n$ signifie qu'on multiplie $a$ par lui-même $n$ fois. $a$ est la base, $n$ l'exposant. En 4e, les exposants sont des entiers relatifs. Les propriétés fondamentales sont : $a^m \\times a^n = a^{m+n}$ (produit de puissances de même base), $\\frac{a^m}{a^n} = a^{m-n}$ (quotient), $(a^m)^n = a^{m \\times n}$ (puissance d'une puissance). Elles ne marchent que si la base $a$ est la même ! On ne peut pas simplifier $2^3 \\times 3^4$ avec ces règles."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^m \\times a^n = a^{m+n} \\quad ; \\quad \\frac{a^m}{a^n} = a^{m-n} \\quad ; \\quad (a^m)^n = a^{m \\times n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exposant négatif n'est pas un nombre négatif, c'est une instruction : $a^{-n} = \\frac{1}{a^n}$. Cela permet d'écrire des nombres très petits. L'écriture scientifique normalise un nombre sous la forme $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier relatif. C'est la langue universelle des sciences pour parler des distances interstellaires ou de la taille d'un atome."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "caption": "Conversion de $3\\,200\\,000$ en notation scientifique : $3.2 \\times 10^6$",
+              "value": 3.2,
+              "exponent": 6
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, voyons comment tout mélanger. Dans un calcul long, l'ordre de priorité est ta boussole : parenthèses, puissances, multiplications/divisions (de gauche à droite), additions/soustractions (de gauche à droite). Les fractions comportent des parenthèses invisibles : le trait de fraction sépare un numérateur et un dénominateur qu'il faut calculer chacun de son côté avant de diviser."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Parentheses et barres de fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule ce qui est dans chaque parenthèse. Pour une fraction, calcule le haut (numérateur) et le bas (dénominateur) séparément."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Puissances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traite toutes les puissances avant les multiplications."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Multiplications et divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De la gauche vers la droite, sans priorité entre elles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De la gauche vers la droite, pour finir."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $A = (-15) + (+8) - (-6)$.",
+              "answer": "-1",
+              "hint": "Transforme la soustraction d'un négatif en addition. Fais les opérations de gauche à droite.",
+              "explanation": "$A = -15 + 8 + 6 = -7 + 6 = -1$."
+            },
+            {
+              "question": "Donne le résultat simplifié de $B = \\frac{5}{6} - \\frac{3}{8}$.",
+              "answer": "$\\frac{11}{24}$",
+              "hint": "Cherche un dénominateur commun (PPMC de 6 et 8). Transforme les fractions avant de soustraire les numérateurs.",
+              "explanation": "PPMC(6,8) = 24. $\\frac{5}{6} = \\frac{20}{24}$ et $\\frac{3}{8} = \\frac{9}{24}$. $B = \\frac{20-9}{24} = \\frac{11}{24}$."
+            },
+            {
+              "question": "Écris $C = 10^4 \\times 10^{-7}$ sous la forme d'une seule puissance de 10.",
+              "answer": "$10^{-3}$",
+              "hint": "Utilise la règle du produit de puissances de même base : on ajoute les exposants.",
+              "explanation": "$10^4 \\times 10^{-7} = 10^{4+(-7)} = 10^{-3}$."
+            },
+            {
+              "question": "Calcule $D = \\frac{(-2)^3 \\times 5 - 10}{-5}$.",
+              "answer": "10",
+              "hint": "Respecte l'ordre de priorité : parenthèses (numérateur), puissance, multiplication, soustraction, puis division finale.",
+              "explanation": "Numérateur : $(-2)^3 = -8$. $-8 \\times 5 = -40$. $-40 - 10 = -50$. Division : $\\frac{-50}{-5} = 10$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan des compétences : je sais me repérer et calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette deuxième leçon est ton tableau de bord final. L'objectif n'est pas d'apprendre du nouveau, mais de vérifier que chaque outil est bien aiguisé dans ta boîte à outils. Commençons par les relatifs. Imagine un plongeur à $-12\\,m$ de profondeur. Il remonte de $5\\,m$, puis redescend de $3\\,m$. Où se trouve-t-il ? On modélise : $-12 + 5 - 3 = -10$. Il est à $10\\,m$ de profondeur. Le repérage sur une droite ou un axe vertical (comme un thermomètre) reste la meilleure image mentale pour ne pas confondre 'plus grand' et 'plus loin de zéro'."
+            },
+            {
+              "type": "number_line",
+              "caption": "Mouvements du plongeur : départ $-12$, arrivee $-10$",
+              "min": -15,
+              "max": 0,
+              "points": [
+                {
+                  "value": -12,
+                  "label": "Départ"
+                },
+                {
+                  "value": -7,
+                  "label": "Palier 1"
+                },
+                {
+                  "value": -10,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les opérations, la règle des signes au produit est un automatisme à avoir. $(-4) \\times (-3) \\times (-2)$ : deux moins donnent un plus ($+12$), puis plus fois moins donne moins ($-24$). Compte le nombre de signes $-$ : s'il est pair, le résultat est $+$ ; s'il est impair, le résultat est $-$. C'est une astuce rapide pour vérifier ton signe final sans tout refaire. Entraîne-toi à poser mentalement la question : 'Combien de moins ?' avant d'écrire le résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux fractions et aux puissances. Elles s'entremêlent souvent dans les expressions littérales ou les problèmes de géométrie. Savoir basculer de l'écriture fractionnaire à l'écriture en puissances (et inversement) est un super-pouvoir. Par exemple, $\\frac{1}{10^3} = 10^{-3}$ et $\\frac{10^5}{10^2} = 10^3$. Cette fluidité te fait gagner un temps fou au brevet. Rappelle-toi aussi qu'une fraction $\\frac{a}{b}$ est un nombre, pas une opération en attente. On peut la placer sur une droite graduée, la comparer à $1$ ou à $\\frac{1}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a^m}{a^n} = a^{m-n} \\quad ; \\quad a^{-n} = \\frac{1}{a^n} \\quad ; \\quad \\sqrt[n]{a^m} = a^{\\frac{m}{n}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un point de vigilance : la priorité des opérations ne prend pas de vacances. Dans $\\frac{2^3 + 4}{5 - 1}$, la barre de fraction agit comme des parenthèses. On calcule $2^3+4=12$ en haut, $5-1=4$ en bas, puis $12 \\div 4 = 3$. Ne fais jamais $2^3 + \\frac{4}{5} - 1$ ! C'est l'erreur classique qui coûte des points. Prends l'habitude de tracer mentalement les parenthèses invisibles autour du numérateur et du dénominateur avant de te lancer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, résoudre un problème, c'est comme cuisiner un plat complexe : il faut une recette (la méthode), des ingrédients (les données) et de l'ordre. La méthode en 4 étapes (Lire/Comprendre, Modéliser/Calculer, Vérifier, Répondre) structure ta pensée. Face à un énoncé long, surligne les nombres et les mots-clés ('partage', 'différence', 'produit', 'puissance'). Fais un schéma si ça aide : un trait pour une longueur, un rectangle pour une aire. La vérification n'est pas une option : refais le calcul à l'envers ou estime l'ordre de grandeur. Si tu trouves qu'une piscine contient $50\\,L$ d'eau, il y a un souci !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Lire et comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la question finale. Surligne les données numériques et les unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Modéliser et calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis l'opération ou la formule. Écris les calculs en respectant les priorités. Utilise le brouillon."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ordres de grandeur, calcul inverse, cohérence des unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Phrase complète, unité, encadré."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais situer et comparer des nombres relatifs sur une droite graduée.",
+                "J'applique correctement les règles des signes pour l'addition, la soustraction, la multiplication et la division des relatifs.",
+                "Je simplifie une fraction, je la réduis au dénominateur commun pour l'addition/la soustraction.",
+                "Je multiplie et je divise des fractions (produit en croix, multiplication par l'inverse).",
+                "J'utilise les propriétés des puissances (produit, quotient, puissance d'une puissance) avec des exposants entiers relatifs.",
+                "J'écris un nombre en notation scientifique ($a \\times 10^n$, $1 \\le a < 10$) et j'en reviens à l'écriture décimale.",
+                "Je respecte l'ordre de priorité des opérations, y compris avec des barres de fraction et des puissances.",
+                "Je résous un problème en suivant les 4 étapes : comprendre, modéliser, vérifier, répondre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un thermomètre indique $-4\\,^{\\circ}\\text{C}$. La température monte de $7\\,^{\\circ}\\text{C}$ puis descend de $10\\,^{\\circ}\\text{C}$. Quelle est la température finale ?",
+              "answer": "$-7\\,^{\\circ}\\text{C}$",
+              "hint": "Traduis en suite d'additions : $-4 + 7 - 10$. Fais les opérations dans l'ordre.",
+              "explanation": "$-4 + 7 = 3$. $3 - 10 = -7$. La température finale est $-7\\,^{\\circ}\\text{C}$."
+            },
+            {
+              "question": "Simplifie l'expression $E = \\frac{3^4 \\times 3^{-2}}{3^{-1}}$.",
+              "answer": "$27$",
+              "hint": "Utilise les propriétés des puissances au numérateur (produit) puis au quotient. Garde la base 3.",
+              "explanation": "Numérateur : $3^4 \\times 3^{-2} = 3^{4+(-2)} = 3^2$. Quotient : $\\frac{3^2}{3^{-1}} = 3^{2-(-1)} = 3^3 = 27$."
+            },
+            {
+              "question": "Un rectangle a pour dimensions $\\frac{2}{3}\\,\\text{m}$ et $\\frac{5}{6}\\,\\text{m}$. Calcule son aire en $\\,\\text{m}^2$. Donne le résultat sous forme de fraction simplifiée.",
+              "answer": "$\\frac{5}{9}\\,\\text{m}^2$",
+              "hint": "Aire = longueur $\\times$ largeur. Multiplie les deux fractions. Simplifie avant ou après le produit.",
+              "explanation": "Aire = $\\frac{2}{3} \\times \\frac{5}{6} = \\frac{10}{18} = \\frac{5}{9}\\,\\text{m}^2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

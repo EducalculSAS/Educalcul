@@ -1,0 +1,491 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.024592+00:00",
+  "id": 500,
+  "code": "2nde-t01-c05",
+  "title": "Parité et raisonnements simples",
+  "description": "Cours structuré Educalcul : Parité et raisonnements simples.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Parité et raisonnements simples",
+    "objectif_global": "Parité et raisonnements simples",
+    "mini_lecons_imposees": [
+      "Pair / impair.",
+      "Somme / produit.",
+      "Contre-exemple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Pair / impair.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres pairs et impairs : une première classification"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre consacré à l'arithmétique élémentaire. Nous allons commencer par quelque chose que vous connaissez déjà intuitivement : la distinction entre les nombres pairs et les nombres impairs. Pourtant, derrière cette idée simple se cache une structure mathématique puissante qui nous servira tout au long de l'année. Prenons le temps de poser les définitions avec rigueur, car c'est la base de tout raisonnement ultérieur."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre pair",
+              "definition": "Un entier relatif $n$ est pair s'il existe un entier $k$ tel que $n = 2k$. En d'autres termes, c'est un multiple de $2$.",
+              "example": "$-4$, $0$, $6$, $42$ sont pairs car $-4 = 2 \\\\times (-2)$, $0 = 2 \\\\times 0$, $6 = 2 \\\\times 3$, $42 = 2 \\\\times 21$."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre impair",
+              "definition": "Un entier relatif $n$ est impair s'il existe un entier $k$ tel que $n = 2k + 1$. Ce n'est pas un multiple de $2$ ; il en diffère exactement de $1$.",
+              "example": "$-3$, $1$, $7$, $99$ sont impairs car $-3 = 2 \\\\times (-2) + 1$, $1 = 2 \\\\times 0 + 1$, $7 = 2 \\\\times 3 + 1$, $99 = 2 \\\\times 49 + 1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarquez que zéro est pair : il s'écrit $0 = 2 \\\\times 0$. C'est un point qui surprend parfois, mais la définition l'impose naturellement. Les nombres négatifs suivent la même règle : la parité ne dépend pas du signe, seulement du reste dans la division par $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Alternance des nombres pairs (bleu) et impairs (rouge) sur une droite numérique",
+              "min": -6,
+              "max": 6,
+              "points": [
+                {
+                  "value": -6,
+                  "label": "-6"
+                },
+                {
+                  "value": -5,
+                  "label": "-5"
+                },
+                {
+                  "value": -4,
+                  "label": "-4"
+                },
+                {
+                  "value": -3,
+                  "label": "-3"
+                },
+                {
+                  "value": -2,
+                  "label": "-2"
+                },
+                {
+                  "value": -1,
+                  "label": "-1"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, vous voyez l'alternance parfaite : pair, impair, pair, impair... Cette régularité est la clé pour reconnaître la parité d'un nombre écrit en base dix : il suffit de regarder son chiffre des unités. Si ce chiffre est $0$, $2$, $4$, $6$ ou $8$, le nombre est pair ; s'il est $1$, $3$, $5$, $7$ ou $9$, il est impair. C'est une conséquence directe de l'écriture décimale : tout nombre se décompose en une somme de multiples de $10$ (donc pairs) plus le chiffre des unités."
+            },
+            {
+              "type": "display_math",
+              "latex": "n = 10q + r \\\\quad (0 \\\\le r \\\\le 9) \\\\implies n \\\\equiv r \\\\pmod{2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ainsi, $1234$ est pair car son chiffre des unités est $4$, tandis que $-567$ est impair car son chiffre des unités est $7$ (le signe ne change rien). Cette astuce vous permettra de gagner un temps précieux dans les exercices."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons identifier la parité d'un nombre donné, intéressons-nous à une propriété fondamentale : tout entier est soit pair, soit impair, jamais les deux à la fois. C'est ce qu'on appelle une partition de l'ensemble des entiers. Nous allons le démontrer brièvement pour ancrer l'idée que les mathématiques ne reposent pas sur l'intuition seule, mais sur des arguments logiques."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Division euclidienne par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour tout entier $n$, il existe un unique couple $(q, r)$ d'entiers tel que $n = 2q + r$ avec $0 \\\\le r < 2$. Le reste $r$ ne peut être que $0$ ou $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Interprétation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $r = 0$, alors $n = 2q$ : $n$ est pair. Si $r = 1$, alors $n = 2q + 1$ : $n$ est impair. Les deux cas sont mutuellement exclusifs et exhaustifs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donc tout entier est soit pair, soit impair, et jamais les deux. Cette partition est la base de nombreux raisonnements par disjonction de cas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette démonstration utilise la division euclidienne, un outil que vous retrouverez souvent. Elle montre aussi pourquoi la parité est une notion si commode : elle ne laisse aucune place à l'ambiguïté. Passons maintenant à un petit exercice pour vérifier que vous êtes à l'aise avec ces définitions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, notez que la parité se conserve par translation de $2$ : si $n$ est pair, $n+2$ est pair ; si $n$ est impair, $n+2$ est impair. C'est évident avec l'écriture $n=2k$ ou $n=2k+1$. Cette propriété nous servira dès la prochaine leçon quand nous étudierons les sommes et produits. Prenez un moment pour relire les définitions et visualiser la droite numérique : l'alternance est votre meilleure alliée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer la parité des nombres suivants : $-18$, $0$, $101$, $-500$, $2^{10}$.",
+              "answer": "$-18$ pair, $0$ pair, $101$ impair, $-500$ pair, $2^{10}=1024$ pair.",
+              "hint": "Regardez le chiffre des unités pour les nombres écrits en décimal. Pour $2^{10}$, rappelez-vous qu'une puissance de $2$ (sauf $2^0$) est toujours paire.",
+              "explanation": "Un nombre est pair s'il est multiple de $2$. $-18 = 2 \\\\times (-9)$, $0 = 2 \\\\times 0$, $101 = 2 \\\\times 50 + 1$, $-500 = 2 \\\\times (-250)$, $2^{10} = 1024 = 2 \\\\times 512$."
+            },
+            {
+              "question": "Écrire sous la forme $2k$ ou $2k+1$ les entiers : $-7$, $14$, $-22$, $37$.",
+              "answer": "$-7 = 2 \\\\times (-4) + 1$, $14 = 2 \\\\times 7$, $-22 = 2 \\\\times (-11)$, $37 = 2 \\\\times 18 + 1$.",
+              "hint": "Divisez le nombre par $2$ : le quotient est $k$, le reste ($0$ ou $1$) vous donne la forme.",
+              "explanation": "On effectue la division euclidienne par $2$. Pour $-7$ : $-7 = 2 \\\\times (-4) + 1$ (car $-8+1=-7$). Pour $14$ : $14 = 2 \\\\times 7 + 0$. Pour $-22$ : $-22 = 2 \\\\times (-11) + 0$. Pour $37$ : $37 = 2 \\\\times 18 + 1$."
+            },
+            {
+              "question": "Vrai ou faux ? Justifiez brièvement. \\n1. Un nombre pair terminé par $0$ est toujours divisible par $10$. \\n2. Un nombre impair ne peut pas être divisible par $3$. \\n3. La somme de deux nombres pairs est toujours paire.",
+              "answer": "1. Vrai. 2. Faux (ex: $9$). 3. Vrai.",
+              "hint": "Pour 1, un nombre terminé par $0$ est multiple de $10$. Pour 2, cherchez un multiple impair de $3$. Pour 3, utilisez la forme $2k$.",
+              "explanation": "1. Un entier terminé par $0$ s'écrit $10k = 2 \\\\times (5k)$, donc pair et multiple de $10$. 2. $9 = 3 \\\\times 3$ est impair et divisible par $3$. 3. Soit $2a$ et $2b$ deux pairs, leur somme $2a+2b = 2(a+b)$ est multiple de $2$."
+            }
+          ]
+        },
+        {
+          "title": "Somme / produit.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parité de la somme et du produit : des règles toutes simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant reconnaître un nombre pair ou impair. La prochaine étape naturelle est de comprendre ce qui se passe quand on les combine par addition ou multiplication. Vous avez sans doute déjà remarqué que « pair + pair = pair » ou « impair × impair = impair ». Nous allons établir ces règles de façon systématique, en utilisant les formes algébriques $2k$ et $2k+1$. C'est un excellent exercice de manipulation d'expressions littérales, une compétence clé en seconde."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la somme. Prenons deux entiers $a$ et $b$. Selon leur parité, quatre cas sont possibles. Au lieu de les énumérer brutalement, nous allons raisonner par calcul : remplaçons $a$ et $b$ par leurs expressions en fonction de $k$ et $k'$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas 1 : Deux nombres pairs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $a = 2k$, $b = 2k'$. Alors $a+b = 2k + 2k' = 2(k+k')$, qui est un multiple de $2$. Donc la somme de deux pairs est paire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 2 : Deux nombres impairs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $a = 2k+1$, $b = 2k'+1$. Alors $a+b = 2k+1 + 2k'+1 = 2(k+k'+1)$, encore un multiple de $2$. La somme de deux impairs est paire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 3 : Un pair et un impair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $a = 2k$, $b = 2k'+1$. Alors $a+b = 2k + 2k'+1 = 2(k+k')+1$, qui est de la forme $2 \\\\times \\\\text{entier} + 1$. La somme est impaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons : pair + pair = pair, impair + impair = pair, pair + impair = impair. Vous pouvez retenir que la somme a la même parité que la somme des parités (si on code pair par $0$ et impair par $1$, c'est l'addition modulo $2$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\begin{array}{c|cc} + & \\\\text{pair} & \\\\text{impair} \\\\\\\\ \\\\hline \\\\text{pair} & \\\\text{pair} & \\\\text{impair} \\\\\\\\ \\\\text{impair} & \\\\text{impair} & \\\\text{pair} \\\\end{array}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au produit. La méthode est identique : on substitue les formes $2k$ ou $2k+1$ et on factorise par $2$ quand c'est possible. Vous verrez que les règles sont encore plus simples."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Cas 1 : Au moins un facteur pair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a = 2k$ (pair), alors quel que soit $b$ (pair ou impair), $a \\\\times b = 2k \\\\times b = 2(kb)$. Le produit contient le facteur $2$, donc il est pair. En résumé : dès qu'un facteur est pair, le produit est pair."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas 2 : Deux facteurs impairs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $a = 2k+1$, $b = 2k'+1$. Leur produit : $(2k+1)(2k'+1) = 4kk' + 2k + 2k' + 1 = 2(2kk' + k + k') + 1$. C'est de la forme $2 \\\\times \\\\text{entier} + 1$, donc impair. Le produit de deux impairs est impair."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le tableau récapitulatif pour le produit :"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\begin{array}{c|cc} \\\\times & \\\\text{pair} & \\\\text{impair} \\\\\\\\ \\\\hline \\\\text{pair} & \\\\text{pair} & \\\\text{pair} \\\\\\\\ \\\\text{impair} & \\\\text{pair} & \\\\text{impair} \\\\end{array}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces règles sont d'une utilité constante. Par exemple, pour savoir si un grand produit comme $123 \\\\times 456 \\\\times 789$ est pair ou impair, il suffit de repérer un seul facteur pair ($456$) pour conclure que le produit est pair. Pas besoin de calculer ! De même, la somme $123 + 456 + 789$ : deux impairs ($123$ et $789$) et un pair ($456$) donnent pair + impair = impair, puis impair + impair = pair. La somme est paire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attardons-nous sur un piège fréquent : la différence. La parité de la différence $a-b$ suit exactement les mêmes règles que la somme, car $a-b = a + (-b)$ et l'opposé d'un nombre a la même parité que lui-même (si $n=2k$, $-n=2(-k)$ ; si $n=2k+1$, $-n=2(-k-1)+1$). Donc pair - pair = pair, impair - impair = pair, pair - impair = impair, impair - pair = impair. Gardez cela en mémoire pour les exercices."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, notez que ces règles s'étendent naturellement à toute somme ou produit de plusieurs entiers : la parité d'une somme dépend uniquement du nombre de termes impairs (pair si ce nombre est pair, impair sinon) ; la parité d'un produit est impaire si et seulement si tous les facteurs sont impairs. C'est une propriété très puissante pour résoudre rapidement des problèmes de parité sans calculs lourds. La prochaine leçon changera de perspective : nous apprendrons à réfuter une affirmation fausse en trouvant un contre-exemple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sans calculer, donnez la parité des résultats : \\n1. $42 + 57$ \\n2. $-18 \\\\times 33$ \\n3. $101 + 202 + 303$ \\n4. $(-7) \\\\times (-9) \\\\times 4$",
+              "answer": "1. Impair (pair + impair). 2. Pair (pair × impair). 3. Pair (impair + pair + impair = (impair+impair)+pair = pair+pair = pair). 4. Pair (car facteur 4 pair).",
+              "hint": "Identifiez la parité de chaque terme. Pour la somme, comptez le nombre de termes impairs. Pour le produit, cherchez un facteur pair.",
+              "explanation": "1. $42$ pair, $57$ impair → pair+impair = impair. 2. $-18$ pair, $33$ impair → pair×impair = pair. 3. $101$ impair, $202$ pair, $303$ impair → deux impairs (nombre pair d'impairs) → somme paire. 4. Le facteur $4$ est pair, donc le produit est pair."
+            },
+            {
+              "question": "Soit $n$ un entier. Déterminer la parité des expressions suivantes en fonction de la parité de $n$ : \\n1. $n^2$ \\n2. $n^2 + n$ \\n3. $n^3 - n$",
+              "answer": "1. $n^2$ a la même parité que $n$. 2. $n^2+n$ est toujours pair. 3. $n^3-n$ est toujours pair.",
+              "hint": "Étudiez les deux cas : $n$ pair ($n=2k$) et $n$ impair ($n=2k+1$). Factorisez si possible.",
+              "explanation": "1. Si $n=2k$, $n^2=4k^2$ pair. Si $n=2k+1$, $n^2=4k^2+4k+1=2(2k^2+2k)+1$ impair. 2. $n^2+n = n(n+1)$. Parmi deux entiers consécutifs, l'un est pair, donc le produit est pair. 3. $n^3-n = n(n-1)(n+1)$, produit de trois entiers consécutifs, dont au moins un est pair, donc le produit est pair."
+            },
+            {
+              "question": "Vrai ou faux ? Justifiez. \\n1. La différence de deux nombres impairs est impaire. \\n2. Le produit de trois nombres impairs est impair. \\n3. Si $a+b$ est pair, alors $a$ et $b$ ont la même parité.",
+              "answer": "1. Faux (ex: $7-3=4$ pair). 2. Vrai. 3. Vrai.",
+              "hint": "Pour 1, testez un exemple. Pour 2, utilisez la règle du produit. Pour 3, rappelez-vous le tableau de la somme.",
+              "explanation": "1. Impair - impair = pair (car $(2k+1)-(2k'+1)=2(k-k')$). 2. Produit d'impairs = impair, par récurrence. 3. D'après le tableau, la somme est paire exactement dans les cas pair+pair et impair+impair, c'est-à-dire même parité."
+            },
+            {
+              "question": "On considère l'entier $N = 2^{20} + 3^{15}$. Quelle est la parité de $N$ ? Justifiez sans calculer les puissances.",
+              "answer": "$N$ est impair.",
+              "hint": "Parité de $2^{20}$ et de $3^{15}$. Une puissance d'un nombre pair est paire. Une puissance d'un nombre impair est impaire.",
+              "explanation": "$2^{20}$ est pair (multiple de $2$). $3^{15}$ est impair (produit de $15$ facteurs impairs). Pair + impair = impair. Donc $N$ est impair."
+            }
+          ]
+        },
+        {
+          "title": "Contre-exemple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le contre-exemple : l'arme absolue pour dire « non »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons établi des règles vraies pour tous les entiers. Mais en mathématiques, on rencontre souvent des affirmations qui semblent plausibles mais qui sont fausses. Comment prouver qu'une proposition générale est fausse ? Il suffit de trouver un seul cas où elle ne marche pas : c'est ce qu'on appelle un contre-exemple. Cette idée est d'une simplicité désarmante, mais elle est au cœur de l'esprit critique mathématique. Dans cette leçon, nous allons apprendre à chasser les contre-exemples, notamment dans le domaine de la parité."
+            },
+            {
+              "type": "definition",
+              "term": "Contre-exemple",
+              "definition": "Soit une proposition de la forme « Pour tout $x$ dans $E$, $P(x) $ est vraie ». Un contre-exemple est un élément $x_0 \\\\in E$ tel que $P(x_0)$ est fausse. L'existence d'un seul contre-exemple suffit à réfuter la proposition.",
+              "example": "Proposition : « Tout nombre impair est premier. » Contre-exemple : $9$ est impair mais n'est pas premier ($9=3\\\\times3$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarquez la puissance de l'outil : pour détruire une affirmation universelle (« pour tout »), un unique exemple contraire suffit. Inversement, pour prouver une affirmation universelle, il faut un raisonnement général (comme nous l'avons fait pour les règles de parité). Cette asymétrie est fondamentale : il est souvent plus facile de montrer qu'une chose est fausse que de montrer qu'elle est vraie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à la parité. Supposons que quelqu'un avance : « La somme de deux nombres impairs est impaire. » Nous savons que c'est faux (la somme de deux impairs est paire). Pour le convaincre, nous n'avons pas besoin de refaire la démonstration générale ; il suffit de donner un exemple numérique : $3 + 5 = 8$, qui est pair. Ce couple $(3,5)$ est un contre-exemple."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 5 = 8 \\\\quad (\\\\text{impair} + \\\\text{impair} = \\\\text{pair})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Chercher un contre-exemple demande parfois un peu d'imagination. La méthode la plus efficace est de tester de petits nombres, car les contre-exemples se cachent souvent parmi les valeurs simples. Essayons sur une affirmation un peu plus subtile : « Si le produit de deux entiers est pair, alors les deux entiers sont pairs. » Est-ce vrai ? Testons : $2 \\\\times 3 = 6$ (pair), mais $3$ est impair. Donc $(2,3)$ est un contre-exemple. L'affirmation est fausse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comprendre l'affirmation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez la condition (hypothèse) et la conclusion. Ici : « produit pair » ⇒ « les deux facteurs pairs »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tester des cas simples",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Essayez des combinaisons avec $0$, $1$, $2$, $-1$, etc. Cherchez un cas où l'hypothèse est vraie mais la conclusion fausse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si vous trouvez un tel cas, l'affirmation est fausse et vous avez votre contre-exemple. Si aucun cas simple ne marche, l'affirmation pourrait être vraie (mais ce n'est pas une preuve)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette démarche est systématique. Elle fonctionne pour toute conjecture arithmétique. Entraînons-nous maintenant à en trouver d'autres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une affirmation est vraie pour beaucoup de nombres mais fausse pour un seul cas particulier. C'est le piège des « presque toujours ». Par exemple : « Pour tout entier $n$, $n^2 + n + 41 $ est premier. » Cette formule donne des nombres premiers pour $n=0,1,2,...,39$, mais échoue pour $n=40$ : $40^2+40+41 = 1681 = 41^2$. Un seul contre-exemple suffit à réfuter l'affirmation, même si elle marche 40 fois de suite ! C'est pourquoi en mathématiques, on ne se fie jamais à l'induction empirique (tester quelques valeurs) pour prouver une généralité."
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'inverse, si vous voulez prouver qu'une affirmation est vraie, vous devez raisonner de manière générale, comme nous l'avons fait avec les formes $2k$ et $2k+1$. Le contre-exemple est l'outil de la réfutation, la démonstration est l'outil de la validation. Les deux sont indispensables."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce chapitre, retenez que l'esprit critique en mathématiques consiste à toujours se demander : « Est-ce toujours vrai ? » Si vous avez un doute, cherchez un contre-exemple. Si vous n'en trouvez pas, essayez de démontrer. Cette alternance entre conjecture, test, contre-exemple et démonstration est le moteur de l'avancée mathématique. Vous avez maintenant les bases de la parité et du raisonnement par contre-exemple ; ces outils vous accompagneront tout au long de l'année, notamment dans l'étude des nombres réels et des fonctions."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un nombre pair et un nombre impair avec l'écriture $2k$ ou $2k+1$.",
+                "Je sais reconnaître la parité d'un nombre à son chiffre des unités.",
+                "Je connais les règles de parité pour la somme, la différence et le produit.",
+                "Je sais utiliser ces règles pour déterminer la parité d'une expression sans la calculer.",
+                "Je sais ce qu'est un contre-exemple et comment en trouver un pour réfuter une affirmation fausse.",
+                "Je comprends la différence entre prouver une affirmation (raisonnement général) et la réfuter (un seul contre-exemple)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Chacune des affirmations suivantes est fausse. Donnez un contre-exemple numérique. \\n1. « La différence de deux nombres pairs est impaire. » \\n2. « Si un nombre est impair, alors son carré est pair. » \\n3. « Le produit de deux entiers consécutifs est toujours impair. »",
+              "answer": "1. $4 - 2 = 2$ (pair). 2. $3^2 = 9$ (impair). 3. $2 \\\\times 3 = 6$ (pair).",
+              "hint": "Testez de très petits nombres : $0, 1, 2, 3$.",
+              "explanation": "1. Deux pairs : $4=2\\\\times2$, $2=2\\\\times1$, différence $2=2\\\\times1$ pair. 2. Un impair s'écrit $2k+1$, son carré $4k^2+4k+1=2(2k^2+2k)+1$ est impair. 3. Parmi deux entiers consécutifs, l'un est pair, donc le produit est pair."
+            },
+            {
+              "question": "On affirme : « Pour tout entier $n$, si $n^2$ est pair alors $n$ est pair. » Cette affirmation est-elle vraie ? Si non, donnez un contre-exemple. Si oui, expliquez pourquoi on ne peut pas en trouver.",
+              "answer": "L'affirmation est vraie. Il n'existe pas de contre-exemple.",
+              "hint": "Rappelez-vous la règle du produit : le produit de deux impairs est impair. Donc si $n$ était impair, $n^2$ serait impair. Par contraposée, si $n^2$ est pair, $n$ ne peut pas être impair, donc $n$ est pair.",
+              "explanation": "C'est une affirmation vraie. On la démontre par contraposition : si $n$ est impair, $n=2k+1$, alors $n^2 = 4k^2+4k+1 = 2(2k^2+2k)+1$ est impair. Donc si $n^2$ est pair, $n$ ne peut pas être impair, donc $n$ est pair. Aucun contre-exemple n'existe."
+            },
+            {
+              "question": "Trouvez un contre-exemple à l'affirmation : « Pour tout entier $n$, $n^2 - n + 11 $ est premier. »",
+              "answer": "$n = 11$ donne $11^2 - 11 + 11 = 121 = 11^2$, qui n'est pas premier.",
+              "hint": "Essayez de faire en sorte que l'expression soit un multiple évident de $11$.",
+              "explanation": "On cherche $n$ tel que $n^2 - n + 11$ soit divisible par $11$. Pour $n=11$, on a $121 - 11 + 11 = 121 = 11^2$, non premier. $n=0$ donne $11$ (premier), $n=1$ donne $11$ (premier), ... le premier contre-exemple est $11$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

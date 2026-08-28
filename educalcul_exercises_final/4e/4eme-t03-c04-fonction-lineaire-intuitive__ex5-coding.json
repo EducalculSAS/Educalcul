@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Proportionnalité",
+  "title": "Algorithmes et proportionnalité",
+  "blocks": [
+    {
+      "title": "Tester la proportionnalité",
+      "content": "On donne un tableau de valeurs avec deux lignes : la première ligne contient les valeurs de $x$ ($x_1, x_2, x_3$) et la seconde les valeurs correspondantes de $y$ ($y_1, y_2, y_3$). Écris un algorithme (en langage naturel ou style Python) qui permet de tester si le tableau est proportionnel. L'algorithme doit afficher \"Proportionnel\" si les rapports $y_i / x_i$ sont tous égaux (et $x_i \\neq 0$), sinon \"Non proportionnel\".",
+      "correctAnswer": "Algorithme :\\n1. Lire les listes x = [x1, x2, x3] et y = [y1, y2, y3].\\n2. Si x1 = 0 ou x2 = 0 ou x3 = 0 alors afficher \"Non proportionnel\" et arrêter.\\n3. Calculer r1 = y1 / x1, r2 = y2 / x2, r3 = y3 / x3.\\n4. Si r1 = r2 et r2 = r3 alors afficher \"Proportionnel\".\\nSinon afficher \"Non proportionnel\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour qu'un tableau soit proportionnel, il faut que tous les coefficients de proportionnalité (rapports y/x) soient identiques et que aucun x ne soit nul (division impossible). L'algorithme vérifie ces deux conditions successivement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la valeur manquante",
+      "content": "On a un tableau de proportionnalité avec une case vide :\\n$\\begin{array}{c|ccc} x & 5 & 12 & a \\\\ y & 15 & b & 33 \\end{array}$\\nÉcris un algorithme qui calcule les valeurs manquantes $a$ et $b$ en utilisant le coefficient de proportionnalité (produit en croix). L'algorithme doit afficher les valeurs de $a$ et $b$.",
+      "correctAnswer": "Algorithme :\\n1. On connaît deux colonnes complètes : (5 ; 15) et (12 ; b) et (a ; 33).\\n2. Calculer le coefficient k = 15 / 5 = 3.\\n3. Calculer b = k * 12 = 3 * 12 = 36.\\n4. Calculer a = 33 / k = 33 / 3 = 11.\\n5. Afficher a = 11 et b = 36.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un tableau proportionnel, le rapport y/x est constant. On le calcule d'abord avec une colonne complète (ici 15/5 = 3). Ensuite, pour trouver b, on multiplie x par k (12 * 3). Pour trouver a, on divise y par k (33 / 3). C'est l'application du produit en croix : 5*b = 12*15 et a*15 = 5*33.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Situation proportionnelle ou non ?",
+      "content": "Un plombier facture un déplacement fixe de $30\\,\\text{€}$ plus $40\\,\\text{€}$ de l'heure de travail. Écris un algorithme qui :\\n- Demande le nombre d'heures $h$ travaillé.\\n- Calcule le prix total $P$.\\n- Teste si la situation est proportionnelle (le prix est-il proportionnel au nombre d'heures ?).\\n- Affiche le prix et la réponse (\"Oui\" ou \"Non\") avec une justification.",
+      "correctAnswer": "Algorithme :\\n1. Lire h (nombre d'heures).\\n2. Calculer P = 30 + 40 * h.\\n3. Afficher \"Prix total : \" + P + \" €\".\\n4. Si h = 0 alors P = 30 (différent de 0).\\n   Ou : calculer le rapport P/h pour deux valeurs différentes de h (ex: h=1 -> P=70, rapport=70 ; h=2 -> P=110, rapport=55).\\n   Les rapports ne sont pas égaux.\\n5. Afficher \"Non, le prix n'est pas proportionnel au nombre d'heures car il y a un coût fixe de 30 € (la droite ne passe pas par l'origine).\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction linéaire $f(x) = ax + b$ est proportionnelle seulement si $b = 0$ (la droite passe par l'origine). Ici $P(h) = 40h + 30$, donc $b = 30 \\neq 0$. Pour 0 heure, le prix est 30 €, pas 0 €. Le rapport $P/h$ n'est pas constant (70 pour 1h, 55 pour 2h...).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

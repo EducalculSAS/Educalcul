@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Problèmes type DNB",
+  "title": "Quiz : Problèmes type DNB - Applications",
+  "questions": [
+    {
+      "text": "Un bassin cylindrique a un rayon de $0,5$ m et une hauteur de $1,2$ m. On souhaite le remplir d'eau. Sachant que $1$ m$^3$ = $1000$ L, quel volume d'eau en litres faut-il pour remplir complètement le bassin ? (On donnera une valeur approchée au litre près).",
+      "options": [
+        "942 L",
+        "94 L",
+        "9420 L",
+        "300 L"
+      ],
+      "correctAnswer": "942 L",
+      "explanation": "Le volume d'un cylindre est $V = \\pi \\times r^2 \\times h$. Ici $r = 0,5$ m et $h = 1,2$ m. $V = \\pi \\times 0,25 \\times 1,2 = 0,3\\pi \\approx 0,942$ m$^3$. En litres : $0,942 \\times 1000 = 942$ L. L'option 94 L correspond à une erreur de conversion (division par 10 au lieu de multiplication par 1000). L'option 9420 L correspond à une erreur de facteur 10. L'option 300 L correspond au calcul $r^2 \\times h \\times 1000$ sans $\\pi$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On choisit un nombre, on le multiplie par $3$, on retranche $5$, on obtient le double de ce nombre augmenté de $10$. Quel est ce nombre ?",
+      "options": [
+        "15",
+        "5",
+        "3",
+        "-15"
+      ],
+      "correctAnswer": "15",
+      "explanation": "Soit $x$ le nombre cherché. L'énoncé se traduit par l'équation $3x - 5 = 2x + 10$. En soustrayant $2x$ des deux membres : $x - 5 = 10$. En ajoutant $5$ : $x = 15$. Vérification : $3 \\times 15 - 5 = 40$ et $2 \\times 15 + 10 = 40$. L'option 5 est obtenue si l'on fait $3x - 5 = 2x - 10$. L'option 3 correspond à une confusion avec les coefficients. L'option -15 correspond à une erreur de signe en fin de résolution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'une course de taxi est calculé avec la formule $p = 2,5 + 1,8 \\times d$ où $p$ est le prix en euros et $d$ la distance en kilomètres. Quel est le prix d'une course de $15$ km ?",
+      "options": [
+        "29,50 €",
+        "27,00 €",
+        "32,00 €",
+        "43,50 €"
+      ],
+      "correctAnswer": "29,50 €",
+      "explanation": "On remplace $d$ par $15$ dans la formule : $p = 2,5 + 1,8 \\times 15 = 2,5 + 27 = 29,5$. Le prix est donc $29,50$ €. L'option 27,00 € correspond à l'oubli de la prise en charge ($2,5$ €). L'option 32,00 € correspond à un calcul approché ou une erreur sur le produit. L'option 43,50 € correspond à l'addition $2,5 + 1,8 + 15$ ou une erreur de priorité opératoire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $4$ boules rouges, $6$ boules bleues et $5$ boules vertes. On prélève une boule au hasard. Quelle est la probabilité de tirer une boule qui n'est pas bleue ?",
+      "options": [
+        "3/5",
+        "2/5",
+        "3/10",
+        "6/15"
+      ],
+      "correctAnswer": "3/5",
+      "explanation": "Nombre total de boules : $4 + 6 + 5 = 15$. Boules non bleues (rouges + vertes) : $4 + 5 = 9$. Probabilité = $\\frac{9}{15} = \\frac{3}{5}$. L'option 2/5 est la probabilité de tirer une boule bleue ($6/15$). L'option 3/10 correspond à une erreur de total (ex: 30 boules). L'option 6/15 est la probabilité de tirer une boule bleue non simplifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariable x prend la valeur 10.\\nRépéter 3 fois :\\n    x prend la valeur x + 2.\\nFin répéter\\nAfficher x.\\nQuelle valeur est affichée ?",
+      "options": [
+        "16",
+        "12",
+        "18",
+        "10"
+      ],
+      "correctAnswer": "16",
+      "explanation": "Valeur initiale : $x = 10$. 1er tour : $x = 12$. 2e tour : $x = 14$. 3e tour : $x = 16$. La boucle s'exécute exactement 3 fois, on ajoute $2$ trois fois soit $+6$ au total. $10 + 6 = 16$. L'option 12 correspond à un seul tour de boucle. L'option 18 correspond à 4 tours de boucle. L'option 10 correspond à l'absence d'exécution de la boucle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

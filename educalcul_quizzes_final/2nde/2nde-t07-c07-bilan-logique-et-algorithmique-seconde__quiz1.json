@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Notations, code, automatismes",
+  "title": "Quiz Notations, code et automatismes - Seconde",
+  "questions": [
+    {
+      "text": "Quel symbole représente l'appartenance d'un élément à un ensemble ?",
+      "options": [
+        "$\\in$",
+        "$\\notin$",
+        "$\\subset$",
+        "$\\cup$"
+      ],
+      "correctAnswer": "$\\in$",
+      "explanation": "Le symbole $\\in$ signifie « appartient à ». $\\notin$ signifie « n'appartient pas à », $\\subset$ désigne l'inclusion stricte d'ensembles et $\\cup$ la réunion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel symbole représente l'implication logique ?",
+      "options": [
+        "$\\Rightarrow$",
+        "$\\Leftrightarrow$",
+        "$\\wedge$",
+        "$\\vee$"
+      ],
+      "correctAnswer": "$\\Rightarrow$",
+      "explanation": "L'implication logique s'écrit $\\Rightarrow$ (si ... alors). $\\Leftrightarrow$ est l'équivalence, $\\wedge$ la conjonction (et) et $\\vee$ la disjonction (ou).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un algorithme, quelle instruction affecte la valeur 5 à la variable x ?",
+      "options": [
+        "x ← 5",
+        "x = 5",
+        "x == 5",
+        "5 → x"
+      ],
+      "correctAnswer": "x ← 5",
+      "explanation": "En algorithmique, l'affectation utilise la flèche gauche « ← ». « = » est souvent utilisé pour l'égalité mathématique, « == » pour le test d'égalité et « 5 → x » n'est pas une notation standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle structure de contrôle permet de répéter un bloc d'instructions tant qu'une condition est vraie ?",
+      "options": [
+        "Boucle Pour",
+        "Boucle TantQue",
+        "Si Alors",
+        "Choix Selon"
+      ],
+      "correctAnswer": "Boucle TantQue",
+      "explanation": "La boucle « TantQue » (ou « While ») répète tant que la condition reste vraie. « Boucle Pour » itère un nombre déterminé de fois, « Si Alors » est une conditionnelle simple et « Choix Selon » correspond à un switch.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de l'expression $3 + 4 \\times 2$ ?",
+      "options": [
+        "14",
+        "11",
+        "20",
+        "9"
+      ],
+      "correctAnswer": "11",
+      "explanation": "La priorité des opérations impose de faire la multiplication avant l'addition : $4 \\times 2 = 8$, puis $3 + 8 = 11$. Les autres réponses correspondent à des erreurs de priorité ou de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

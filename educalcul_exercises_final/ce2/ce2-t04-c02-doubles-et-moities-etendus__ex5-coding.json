@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 170,
+  "_course_code": "ce2-t04-c02-doubles-et-moities-etendus",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Doubles de nombres usuels",
+  "title": "Doubles de nombres usuels - Algorithmes",
+  "blocks": [
+    {
+      "title": "Double d'un nombre simple",
+      "content": "Écris un algorithme en langage naturel qui permet de calculer le double d'un nombre entier $n$ compris entre $1$ et $20$.",
+      "correctAnswer": "1. Lire le nombre $n$. 2. Calculer $n + n$. 3. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir le double, on additionne le nombre à lui-même. L'algorithme lit le nombre, effectue l'addition et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Double par décomposition",
+      "content": "Écris un algorithme qui calcule le double de $27$ en décomposant ce nombre en dizaines et unités.",
+      "correctAnswer": "1. Décomposer $27$ en $20$ (dizaines) et $7$ (unités). 2. Doubler les dizaines : $20 + 20 = 40$. 3. Doubler les unités : $7 + 7 = 14$. 4. Additionner les deux résultats : $40 + 14 = 54$. 5. Afficher $54$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décompose le nombre pour faciliter le calcul mental. Le double de $20$ est $40$, le double de $7$ est $14$, leur somme donne $54$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Double de plusieurs nombres",
+      "content": "Propose un algorithme qui, pour une liste de trois nombres donnés ($12$, $15$, $19$), calcule et affiche chacun de leurs doubles.",
+      "correctAnswer": "1. Définir la liste des nombres : $12$, $15$, $19$. 2. Pour chaque nombre de la liste : a. Calculer le double en ajoutant le nombre à lui-même. b. Afficher le résultat. 3. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt les trois nombres, calcule le double de chacun ($24$, $30$, $38$) et les affiche successivement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire axes",
+  "title": "Lire les axes d'un graphique d'évolution",
+  "questions": [
+    {
+      "text": "Un graphique représente la température extérieure au cours d'une semaine. L'axe horizontal porte les jours (lundi, mardi, etc.) et l'axe vertical porte des nombres de 0 à 20 suivis du symbole °C. Que représente l'axe vertical ?",
+      "options": [
+        "Les jours de la semaine",
+        "La température en degrés Celsius",
+        "Le nombre d'heures de soleil",
+        "La vitesse du vent"
+      ],
+      "correctAnswer": "La température en degrés Celsius",
+      "explanation": "L'axe vertical (aussi appelé ordonnées) indique la grandeur mesurée avec son unité. Ici, les nombres vont de 0 à 20 et l'unité est le degré Celsius (°C), c'est donc la température. L'axe horizontal (abscisses) représente le temps qui passe (les jours).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un graphique montrant la hauteur d'une plante en centimètres sur 4 semaines, l'axe vertical est gradué de 0 à 20 par 2 (0, 2, 4... 20). Le point de la semaine 2 se trouve exactement sur la graduation 12. Quelle est la hauteur de la plante à la semaine 2 ?",
+      "options": [
+        "$10$ cm",
+        "$12$ cm",
+        "$14$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$12$ cm",
+      "explanation": "Il faut repérer la graduation sur laquelle se trouve le point. L'axe vertical va de 0 à 20 par pas de 2. Les graduations sont 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20. Le point est sur la graduation 12, donc la hauteur est de 12 cm. Les autres options correspondent aux graduations voisines (erreur de lecture d'une graduation).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique suit le niveau d'eau d'un réservoir en litres. L'axe vertical est gradué de 0 à 10 par 1. Le point du mercredi se situe exactement à mi-hauteur entre les graduations 6 et 7. Quel est le niveau d'eau le mercredi ?",
+      "options": [
+        "$6$ L",
+        "$6,5$ L",
+        "$7$ L",
+        "$7,5$ L"
+      ],
+      "correctAnswer": "$6,5$ L",
+      "explanation": "Le point n'est pas sur une graduation principale mais entre deux. Les graduations sont les nombres entiers : 6 et 7. Mi-hauteur correspond à la moitié de l'intervalle, soit 6,5 litres (six virgule cinq litres). Choisir 6 ou 7 serait une erreur de lecture (arrondi au plus proche au lieu de lire la position exacte).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique d'évolution montre le nombre de livres lus par une classe chaque mois. L'axe horizontal indique les mois (janvier à juin). L'axe vertical est gradué par 5 (0, 5, 10, 15, 20). En janvier, le point est sur 10. En mars, le point est sur 20. De combien le nombre de livres a-t-il augmenté entre janvier et mars ?",
+      "options": [
+        "$5$ livres",
+        "$10$ livres",
+        "$15$ livres",
+        "$20$ livres"
+      ],
+      "correctAnswer": "$10$ livres",
+      "explanation": "Il faut calculer la différence entre la valeur de mars et la valeur de janvier. Valeur mars = 20, valeur janvier = 10. Augmentation = 20 - 10 = 10 livres. L'option 5 correspond à un pas de graduation, 15 à la valeur de janvier + un pas, 20 à la valeur de mars (confusion valeur finale / augmentation).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique représente la croissance d'un chiot en kilogrammes selon son âge en mois. L'axe horizontal : âge (mois 1, 2, 3, 4). L'axe vertical : masse (kg, gradué par 1 de 0 à 5). Le point du mois 3 est sur la graduation 3. À quel âge le chiot pèse-t-il 3 kg ?",
+      "options": [
+        "Mois 1",
+        "Mois 2",
+        "Mois 3",
+        "Mois 4"
+      ],
+      "correctAnswer": "Mois 3",
+      "explanation": "La question demande de lire l'axe horizontal (l'âge) en connaissant la valeur sur l'axe vertical (la masse 3 kg). On repère 3 kg sur l'axe vertical, on suit la ligne horizontale imaginaire jusqu'au point du graphique, puis on descend vers l'axe horizontal pour lire l'âge : mois 3. C'est une lecture inverse (ordonnée -> abscisse).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

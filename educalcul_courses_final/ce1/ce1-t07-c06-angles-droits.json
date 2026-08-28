@@ -1,0 +1,303 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.891159+00:00",
+  "id": 131,
+  "code": "ce1-t07-c06",
+  "title": "Angles droits",
+  "description": "Cours structuré Educalcul : Angles droits.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Angles droits",
+    "objectif_global": "Angles droits",
+    "mini_lecons_imposees": [
+      "Reconnaître un angle droit.",
+      "Utiliser une équerre.",
+      "Chercher des angles droits dans une figure."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître un angle droit.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un angle droit ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine le coin de ta feuille de cahier, ou le coin d'une porte bien fermée. Ce coin bien net, qui ne penche ni d'un côté ni de l'autre, c'est un $angle$ $droit$. C'est une forme en « L » bien parfaite, comme le coin d'un livre posé à plat sur la table. Tu en vois partout autour de toi : les coins des fenêtres, les coins des tableaux, les coins des cartes à jouer."
+            },
+            {
+              "type": "definition",
+              "term": "Angle droit",
+              "definition": "Un angle qui a la même forme que le coin d'une feuille de papier. On le repère grâce à un petit carré tracé dans le coin.",
+              "example": "Le coin de cette page est un angle droit."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un angle droit avec son petit carré",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment on signale un angle droit sur un dessin. On ne écrit pas le mot « droit » à chaque fois, ce serait trop long. Les mathématiciens ont inventé un petit code secret : on dessine un tout petit $carré$ juste dans le coin de l'angle. Ce petit carré veut dire : « Attention, ici, l'angle est bien droit, bien carré ! » C'est comme une petite médaille qu'on donne à l'angle parfait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur ton ardoise : trace deux traits qui se coupent comme un « L ». Puis, avec ton crayon, dessine un tout petit carré dans le coin, bien à l'intérieur. Bravo, tu viens de marquer ton premier angle droit comme un grand géomètre ! Regarde bien : si le carré ne rentre pas pile dans le coin, c'est que l'angle n'est pas droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'angle est tourné dans l'autre sens, ou bien il est à l'envers, comme un « Γ » ou un « ┐ ». Mais tant que le coin est bien net, bien carré, comme le coin de ta règle, c'est toujours un angle droit. Le petit carré se met toujours dans le coin, peu importe la direction des traits. C'est un peu comme une boussole : le carré indique toujours le bon coin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces trois angles, lequel a la forme d'un angle droit ? (Le petit carré est déjà tracé sur le bon).",
+              "answer": "Le deuxième angle (celui avec le petit carré dans le coin).",
+              "hint": "Cherche le coin qui ressemble exactement au coin de ta feuille de cahier.",
+              "explanation": "L'angle droit forme un « L » parfait. Le petit carré marqué dans le coin est le signe officiel pour le reconnaître."
+            },
+            {
+              "question": "Sur ton cahier, dessine un angle droit et marque le petit carré dans le coin.",
+              "answer": "Un angle en forme de L avec un petit carré tracé à l'intérieur du coin.",
+              "hint": "Trace un trait vertical, un trait horizontal qui se touchent au bout, puis le petit carré.",
+              "explanation": "Le petit carré se place toujours à l'intérieur de l'angle, bien au fond du coin."
+            },
+            {
+              "question": "Voici trois angles tournés différemment. Lequel n'est PAS un angle droit ?",
+              "answer": "L'angle qui est ouvert trop grand (obtus) ou trop petit (aigu), sans petit carré.",
+              "hint": "Pose le coin de ta règle sur chaque angle. Si ça ne colle pas pile, ce n'est pas droit.",
+              "explanation": "Peu importe la rotation, un angle droit garde sa forme de coin de feuille. Le petit carré confirme qu'il est droit."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser une équerre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'outil magique : l'équerre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr à cent pour cent qu'un angle est droit, on a un outil spécial dans ta trousse : l'$équerre$. Regarde-la bien : elle est plate, souvent en plastique transparent, et elle a la forme d'un triangle. Mais attention, ce n'est pas n'importe quel triangle : elle a un angle qui est parfaitement droit, exactement comme le coin de ta feuille. Les deux autres coins sont pointus, mais celui-là, il est carré."
+            },
+            {
+              "type": "definition",
+              "term": "Équerre",
+              "definition": "Un outil en forme de triangle rectangle qui sert à vérifier ou à tracer des angles droits.",
+              "example": "Je pose mon équerre sur l'angle pour voir s'il est droit."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Une équerre : le coin droit est au sommet B",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment on s'en sert pour vérifier un angle ? C'est très simple, suis bien les étapes. D'abord, tu poses la pointe de l'équerre (le coin droit) pile sur le sommet de l'angle que tu veux contrôler. Ensuite, tu fais glisser l'équerre pour que l'un de ses bords soit bien collé sur l'un des côtés de l'angle. Regarde alors l'autre bord de l'équerre : s'il tombe pile sur l'autre côté de l'angle, c'est gagné, l'angle est droit !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le coin droit de l'équerre sur le sommet de l'angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aligne un bord de l'équerre sur un côté de l'angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si l'autre bord coïncide avec l'autre côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équerre sert aussi à dessiner de beaux angles droits, bien nets, pour faire des carrés, des rectangles ou des maisons. Trace d'abord un trait avec ta règle. Pose ton équerre sur ce trait, le bord bien collé dessus, le coin droit au bout du trait. Tiens bien l'équerre fort pour qu'elle ne bouge pas, et trace le deuxième trait le long de l'autre bord. Relève l'équerre : tu as un angle droit parfait !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur cette image, l'équerre est posée sur un angle. L'angle est-il droit ?",
+              "answer": "Oui, les deux bords de l'équerre coïncident avec les côtés de l'angle.",
+              "hint": "Regarde si les traits de l'angle continuent exactement les bords de l'équerre.",
+              "explanation": "Quand l'équerre épouse parfaitement l'angle sans dépasser ni laisser d'espace, l'angle est droit."
+            },
+            {
+              "question": "Tu veux vérifier si le coin de ta table est droit. Quelle partie de l'équerre poses-tu dans le coin de la table ?",
+              "answer": "Le coin droit de l'équerre (l'angle à 90 degrés).",
+              "hint": "Cherche l'angle de l'équerre qui a un petit carré gravé dessus.",
+              "explanation": "Seul le coin droit de l'équerre permet de tester un angle droit. Les autres coins sont pointus."
+            },
+            {
+              "question": "Trace un segment [AB]. Puis, avec ton équerre, trace un angle droit en A.",
+              "answer": "Un trait horizontal [AB] et un trait vertical parti de A, formant un L avec un petit carré.",
+              "hint": "Pose le bord de l'équerre sur [AB], le coin droit sur A, trace le long de l'autre bord.",
+              "explanation": "L'équerre guide ton crayon pour que le deuxième trait soit parfaitement perpendiculaire au premier."
+            }
+          ]
+        },
+        {
+          "title": "Chercher des angles droits dans une figure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chasse aux angles droits dans les figures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as l'œil exercé et ton équerre en main, on va jouer aux détectives ! Dans un dessin un peu compliqué, comme une maison avec un toit pointu, une cheminée et une porte, les angles droits se cachent un peu partout. Mais attention, le toit fait souvent un angle pointu (on appelle ça un angle aigu), pas un angle droit. Ton mission : repérer tous les petits carrés possibles."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Une maison : compte les angles droits",
+              "vertexLabels": [
+                "",
+                "",
+                ""
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde un rectangle ou un carré. Combien d'angles droits y a-t-il ? Quatre ! Un à chaque coin. C'est pour ça qu'on dit qu'un rectangle a « quatre angles droits ». C'est sa carte d'identité. Si tu vois une figure avec quatre coins carrés, c'est sûrement un rectangle ou un carré. Avec ton équerre, tu peux vérifier chaque coin un par un : pose, aligne, regarde. C'est une enquête minutieuse !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une figure en a beaucoup plus, comme une grille ou un escalier. Et parfois, il n'y en a aucun, comme dans un triangle tout pointu ou un losange penché. L'important, c'est de ne pas deviner au hasard : tu sors ton équerre, tu testes chaque coin suspect. Si le petit carré de l'équerre rentre pile, tu as trouvé un angle droit. Sinon, tu passes au suivant. Tu es devenu un vrai chasseur d'angles !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un angle droit à sa forme de coin de feuille.",
+                "Je sais repérer le petit carré qui marque l'angle droit sur un dessin.",
+                "Je sais utiliser mon équerre pour vérifier si un angle est droit.",
+                "Je sais tracer un angle droit avec mon équerre et ma règle.",
+                "Je sais compter les angles droits dans une figure géométrique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans ce dessin de maison, combien d'angles droits peux-tu compter ? (Fenêtres, porte, murs, sol).",
+              "answer": "Il y a au moins 8 angles droits (4 pour la porte, 4 pour chaque fenêtre, 4 pour le contour de la maison...).",
+              "hint": "Cherche tous les coins qui forment un L parfait. Le toit n'en a pas.",
+              "explanation": "Les murs, le sol, les cadres de fenêtres et de portes sont formés d'angles droits. Le toit forme des angles aigus."
+            },
+            {
+              "question": "Voici un rectangle. Combien a-t-il d'angles droits ?",
+              "answer": "Quatre angles droits.",
+              "hint": "Compte les coins. Vérifie chacun avec ton équerre.",
+              "explanation": "Un rectangle a toujours quatre angles droits, un à chaque sommet. C'est sa définition."
+            },
+            {
+              "question": "Trie ces angles : « Angle droit » ou « Pas angle droit ».",
+              "answer": "Le coin du cahier : Angle droit. Le toit de la maison : Pas angle droit. Le coin de l'équerre : Angle droit. La pointe d'un crayon : Pas angle droit.",
+              "hint": "Teste mentalement : est-ce que le coin de ma règle rentre pile dedans ?",
+              "explanation": "L'angle droit est une forme précise (90°). Tout ce qui est plus ouvert ou plus fermé n'en est pas un."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

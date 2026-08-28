@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Variables et affectations : Approfondissement Lire",
+  "blocks": [
+    {
+      "title": "Lecture d'un nombre et affichage du double",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir un nombre entier, puis qui affiche le double de ce nombre.",
+      "correctAnswer": "Algorithme Double\\nDébut\\n    Lire x\\n    Afficher $2 \\times x$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction Lire permet de récupérer la valeur saisie par l'utilisateur et de l'affecter à la variable x. On calcule ensuite le double en multipliant x par 2, ce qui s'écrit $2 \\times x$, et on l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de deux nombres lus au clavier",
+      "content": "Écrire un algorithme qui lit deux nombres entiers saisis par l'utilisateur et qui affiche leur somme.",
+      "correctAnswer": "Algorithme SommeDeux\\nDébut\\n    Lire a\\n    Lire b\\n    Afficher $a + b$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise deux instructions Lire pour affecter les valeurs saisies aux variables a et b. La somme s'obtient par l'addition $a + b$, qui est ensuite affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de positivité après lecture",
+      "content": "Écrire un algorithme qui lit un nombre entier, puis qui affiche \"Positif\" si ce nombre est strictement supérieur à 0, sinon qui affiche \"Non positif\".",
+      "correctAnswer": "Algorithme TestPositif\\nDébut\\n    Lire n\\n    Si $n > 0$ Alors\\n        Afficher \"Positif\"\\n    Sinon\\n        Afficher \"Non positif\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après la lecture de n, on teste la condition $n > 0$. Si elle est vraie, on affiche Positif, sinon on affiche Non positif. L'instruction Si ... Alors ... Sinon ... Fin Si permet ce choix.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

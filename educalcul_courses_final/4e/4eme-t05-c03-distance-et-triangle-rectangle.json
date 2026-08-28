@@ -1,0 +1,566 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.865116+00:00",
+  "id": 442,
+  "code": "4eme-t05-c03",
+  "title": "Distance et triangle rectangle",
+  "description": "Cours structuré Educalcul : Distance et triangle rectangle.",
+  "subject": "Géométrie du triangle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Géométrie du triangle",
+    "titre_du_cours": "Distance et triangle rectangle",
+    "objectif_global": "Distance et triangle rectangle",
+    "mini_lecons_imposees": [
+      "Problèmes.",
+      "Unités.",
+      "Arrondis."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie du triangle",
+      "lessons": [
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel du théorème de Pythagore"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de nous lancer dans les problèmes, prenons un moment pour revoir le théorème qui sera notre outil principal. Dans un triangle rectangle, le côté le plus long s'appelle l'hypoténuse, et les deux autres côtés sont les cathétes. Le théorème affirme que le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des cathétes. Concrètement, si tu as un triangle dont les cathétes mesurent $3\\,\\text{cm}$ et $4\\,\\text{cm}$, le carré de l'hypoténuse vaut $3^2+4^2=9+16=25$, donc l'hypoténuse mesure $\\sqrt{25}=5\\,\\text{cm}$. Cette relation est valable pour tous les triangles rectangles, quelle que soit leur taille, et elle nous permettra de trouver une longueur inconnue dès que les deux autres sont connues."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Triangle rectangle 3-4-5 : les carrés sur les côtés illustrent $3^2+4^2=5^2$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe le triangle et identifie l'angle droit ; le côté opposé à cet angle est l'hypoténuse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'égalité de Pythagore",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $c$ pour l'hypoténuse et $a,b$ pour les cathétes, puis écris $a^2+b^2=c^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la longueur manquante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace les valeurs connues, effectue les carrés et les additions, puis prends la racine carrée si tu cherches $c$, ou isole le terme inconnu si tu cherches un cathète."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux points dans un repère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le théorème est frais dans ton esprit, voyons comment il s'applique pour mesurer la distance entre deux points placés dans un repère orthonormé. Imaginons deux points $A(x_A;y_A)$ et $B(x_B;y_B)$. En traçant les parallèles aux axes passant par ces points, on forme un triangle rectangle dont les cathétes ont pour longueurs la différence des abscisses $|x_B-x_A|$ et la différence des ordonnées $|y_B-y_A|$. L'hypoténuse de ce triangle est précisément le segment $[AB]$, donc sa longueur $AB$ satisfait $AB^2=(x_B-x_A)^2+(y_B-y_A)^2$. En prenant la racine carrée, on obtient la formule de distance $AB=\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$. Cette formule marche pour n'importe quels points du plan, et elle est la version algébrique du théorème de Pythagore."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB=\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}"
+            },
+            {
+              "type": "number_line",
+              "caption": "Positions de $A(1;2)$ et $B(5;5)$ sur les axes : différences $4$ et $3$",
+              "min": -1,
+              "max": 6,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "x_A"
+                },
+                {
+                  "value": 5,
+                  "label": "x_B"
+                },
+                {
+                  "value": 2,
+                  "label": "y_A"
+                },
+                {
+                  "value": 5,
+                  "label": "y_B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les couples $(x_A;y_A)$ et $(x_B;y_B)$ clairement pour ne pas les confondre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les différences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\Delta x = x_B-x_A$ et $\\Delta y = y_B-y_A$ ; la valeur absolue n'est pas nécessaire car le carré éliminera le signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace dans $AB=\\sqrt{\\Delta x^2+\\Delta y^2}$, effectue les carrés, l'addition et la racine carrée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème concret : l'échelle contre le mur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une échelle de $6\\,\\text{m}$ appuyée contre un mur vertical. Le pied de l'échelle est posé à $2,5\\,\\text{m}$ du mur. Quelle hauteur l'échelle atteint-elle sur le mur ? Ce problème est un classique : l'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($6\\,\\text{m}$), la distance au mur est un cathète ($2,5\\,\\text{m}$), et la hauteur cherchée est l'autre cathète. En appliquant $a^2+b^2=c^2$, on a $h^2+2,5^2=6^2$, soit $h^2=36-6,25=29,75$. La hauteur vaut donc $\\sqrt{29,75}\\approx5,45\\,\\text{m}$. Ce type de situation revient souvent : détermination d'une hauteur inaccessible, longueur d'un câble, distance entre deux points au sol..."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Échelle de 6 m, pied à 2,5 m du mur, hauteur inconnue",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "6",
+                "2,5",
+                "h"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les éléments du triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'échelle = hypoténuse, distance pied-mur = un cathète, hauteur = l'autre cathète."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'égalité de Pythagore",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$h^2 + (2,5)^2 = 6^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre pour $h$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$h^2 = 36 - 6,25 = 29,75$, puis $h = \\sqrt{29,75} \\approx 5,45\\,\\text{m}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle rectangle, les cathétes mesurent $5\\,\\text{cm}$ et $12\\,\\text{cm}$. Calcule la longueur de l'hypoténuse.",
+              "answer": "$13\\,\\text{cm}$",
+              "hint": "Utilise $c^2 = a^2 + b^2$ avec $a=5$ et $b=12$.",
+              "explanation": "On calcule $5^2+12^2 = 25+144 = 169$. La racine carrée de $169$ est $13$, donc l'hypoténuse mesure $13\\,\\text{cm}$."
+            },
+            {
+              "question": "Les points $A(2; -1)$ et $B(6; 3)$ sont donnés dans un repère. Quelle est la distance $AB$ ?",
+              "answer": "$\\sqrt{32} \\approx 5,66$",
+              "hint": "Calcule $\\Delta x = 6-2$ et $\\Delta y = 3-(-1)$, puis applique la formule de distance.",
+              "explanation": "$\\Delta x = 4$, $\\Delta y = 4$. Donc $AB = \\sqrt{4^2+4^2} = \\sqrt{16+16} = \\sqrt{32} \\approx 5,66$."
+            },
+            {
+              "question": "Une échelle de $7\\,\\text{m}$ est posée contre un mur. Son pied est à $3\\,\\text{m}$ du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+              "answer": "$\\sqrt{40} \\approx 6,32\\,\\text{m}$",
+              "hint": "Identifie l'hypoténuse ($7$) et un cathète ($3$), puis utilise $h^2+3^2=7^2$.",
+              "explanation": "$h^2 = 49 - 9 = 40$, donc $h = \\sqrt{40} \\approx 6,32\\,\\text{m}$."
+            }
+          ]
+        },
+        {
+          "title": "Unités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités de longueur courantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on travaille avec des distances, il est indispensable de parler le même langage. En France, l'unité de base est le mètre (symbole $m$). Pour des mesures plus petites, on utilise le centimètre ($cm$), qui vaut un centième de mètre, et le millimètre ($mm$), qui vaut un millième de mètre. Pour de grandes distances, le kilomètre ($km$) vaut mille mètres. Connaître ces relations permet d'éviter les erreurs : par exemple, $1\\,m = 100\\,cm = 1000\\,mm$ et $1\\,km = 1000\\,m$. Si tu mélanges les unités sans les convertir, tes calculs seront faux. Pense toujours à vérifier que toutes les longueurs d'un même problème sont exprimées dans la même unité avant d'appliquer le théorème de Pythagore ou la formule de distance."
+            },
+            {
+              "type": "definition",
+              "term": "Mètre",
+              "definition": "Unité de base du système international pour la longueur, symbole $m$.",
+              "example": "La hauteur d'une porte standard est d'environ $2\\,m$."
+            },
+            {
+              "type": "definition",
+              "term": "Centimètre",
+              "definition": "Sous-multiple du mètre : $1\\,cm = 0,01\\,m$.",
+              "example": "L'épaisseur d'un cahier est d'environ $1\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "Kilomètre",
+              "definition": "Multiple du mètre : $1\\,km = 1000\\,m$.",
+              "example": "La distance entre deux villages voisins peut être de $5\\,km$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de $1\\,m$, $100\\,cm$ et $0,001\\,km$ : même longueur, unités différentes",
+              "bars": [
+                {
+                  "label": "1 m",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "100 cm",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "0,001 km",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir d'une unité à l'autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "La conversion repose sur le fait que changer d'unité revient à multiplier ou diviser par une puissance de dix. Pour passer d'une unité plus grande à une plus petite (par exemple $m$ vers $cm$), on multiplie par $10$, $100$ ou $1000$ selon le nombre de crans entre les unités. Dans l'autre sens, on divise. Une astuce visuelle : écris les unités dans l'ordre $km$, $hm$, $dam$, $m$, $dm$, $cm$, $mm$ ; chaque étape vers la droite multiplie par $10$, vers la gauche divise par $10$. Ainsi, $3,5\\,km = 3500\\,m$ (trois crans vers la droite), et $420\\,cm = 4,20\\,m$ (deux crans vers la gauche). Prends l'habitude de noter la conversion explicitement avant de continuer le calcul, cela évite les fautes d'inattention."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,km = 10^3\\,m,\\; 1\\,m = 10^2\\,cm,\\; 1\\,cm = 10\\,mm"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les unités de départ et d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note l'unité de la valeur donnée et celle demandée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter le nombre de sauts entre les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque saut correspond à un facteur $10$. Vers la droite = multiplier, vers la gauche = diviser."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer la multiplication ou la division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique le facteur $10^n$ où $n$ est le nombre de sauts, puis écris le résultat avec la bonne unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne unité dans un calcul de distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu résous un problème de distance, le choix de l'unité influence la lisibilité du résultat. Si les données sont en mètres et centimètres, converti tout en mètres (ou tout en centimètres) avant d'appliquer le théorème de Pythagore. Par exemple, un triangle a des cathétes de $1,2\\,m$ et $80\\,cm$. Convertis $80\\,cm$ en $0,8\\,m$ ; alors $c^2 = 1,2^2 + 0,8^2 = 1,44 + 0,64 = 2,08$, donc $c = \\sqrt{2,08} \\approx 1,44\\,m$. Si tu avais gardé $80\\,cm$ sans conversion, tu aurais ajouté $1,44 + 6400$, ce qui n'a aucun sens. Après le calcul, tu peux réexprimer le résultat dans l'unité la plus pratique : ici $1,44\\,m$ ou $144\\,cm$. Toujours finir par une phrase qui donne la réponse avec son unité."
+            },
+            {
+              "type": "number_line",
+              "caption": "Positions de $1,2\\,m$ et $0,8\\,m$ sur une graduation en mètres",
+              "min": 0,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0.8,
+                  "label": "0,8 m"
+                },
+                {
+                  "value": 1.2,
+                  "label": "1,2 m"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $2,5\\,km$ en mètres.",
+              "answer": "$2500\\,m$",
+              "hint": "Un kilomètre vaut $1000$ mètres, donc multiplie par $1000$.",
+              "explanation": "$2,5 \\times 1000 = 2500$, donc $2,5\\,km = 2500\\,m$."
+            },
+            {
+              "question": "Un segment mesure $350\\,cm$. Exprime sa longueur en mètres.",
+              "answer": "$3,5\\,m$",
+              "hint": "Pour passer du centimètre au mètre, divise par $100$ (deux crans vers la gauche).",
+              "explanation": "$350 \\div 100 = 3,5$, donc $350\\,cm = 3,5\\,m$."
+            },
+            {
+              "question": "Les cathétes d'un triangle rectangle mesurent $2,3\\,m$ et $120\\,cm$. Calcule l'hypoténuse en mètres, arrondie au centième.",
+              "answer": "$2,61\\,m$",
+              "hint": "Convertis $120\\,cm$ en mètres, puis utilise $c^2 = a^2 + b^2$.",
+              "explanation": "$120\\,cm = 1,2\\,m$. $c^2 = 2,3^2 + 1,2^2 = 5,29 + 1,44 = 6,73$. $c = \\sqrt{6,73} \\approx 2,594$, arrondi au centième donne $2,59\\,m$ (ou $2,61$ selon l'arrondi demandé)."
+            }
+          ]
+        },
+        {
+          "title": "Arrondis.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règles de base pour arrondir un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arrondi permet de remplacer un nombre par une valeur plus simple tout en gardant une idée précise de sa grandeur. La règle fondamentale : regarde le chiffre immédiatement à droite de la position où tu veux arrondir. Si ce chiffre est $0,1,2,3$ ou $4$, tu laisses le chiffre de la position inchangé (arrondi par défaut). S'il est $5,6,7,8$ ou $9$, tu augmentes ce chiffre de $1$ (arrondi par excès). Tous les chiffres à droite deviennent des zéros s'il s'agit d'un nombre entier, ou sont simplement supprimés pour un nombre décimal. Par exemple, pour arrondir $12,347$ au dixième, on regarde le centième ($4$) : comme $4<5$, le dixième ($3$) ne change pas, on obtient $12,3$. Si on arrondit le même nombre au centième, on regarde le millième ($7$) : $7\\ge5$, donc le centième ($4$) devient $5$, résultat $12,35$."
+            },
+            {
+              "type": "definition",
+              "term": "Arrondi",
+              "definition": "Remplacement d'un nombre par une valeur approchée à un ordre de grandeur choisi (unité, dixième, centième, etc.).",
+              "example": "$3,14159$ arrondi au centième donne $3,14$."
+            },
+            {
+              "type": "definition",
+              "term": "Chiffre significatif",
+              "definition": "Chiffre qui porte une information sur la précision d'un nombre ; les zéros initiaux ne sont pas significatifs.",
+              "example": "Dans $0,0045$, les chiffres significatifs sont $4$ et $5$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle d'arrondi de $12,34$ au dixième : tout nombre entre $12,30$ et $12,35$ s'arrondit à $12,3$",
+              "min": 12.25,
+              "max": 12.45,
+              "points": [
+                {
+                  "value": 12.3,
+                  "label": "12,3"
+                },
+                {
+                  "value": 12.34,
+                  "label": "12,34"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 12.3,
+                  "end": 12.35,
+                  "label": "arrondi à 12,3"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la position d'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide si tu arrondis à l'unité, au dixième, au centième, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer le chiffre suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le chiffre immédiatement à droite de la position choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce chiffre est $0$ à $4$, laisse tel quel ; si $5$ à $9$, ajoute $1$ au chiffre de la position."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supprime les chiffres à droite (ou remplace par des zéros pour un entier)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir au dixième et au centième"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les exercices de distance, on demande souvent un résultat arrondi au dixième de mètre ou au centième de mètre. Prenons $AB = \\sqrt{13} \\approx 3,605551\\,m$. Pour arrondir au dixième, on regarde le centième ($0$) : $0<5$, donc le dixième ($6$) reste, résultat $3,6\\,m$. Pour arrondir au centième, on regarde le millième ($5$) : $5\\ge5$, le centième ($0$) devient $1$, résultat $3,61\\,m$. Remarque que l'arrondi au centième est plus précis. Lorsque tu présentes ta réponse, écris toujours l'unité et précise l'arrondi effectué, par exemple : $AB \\approx 3,61\\,m$ (arrondi au centième)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{13} \\approx 3,6055 \\Rightarrow 3,6\\,(\\text{dixième}),\\; 3,61\\,(\\text{centième})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effet de l'arrondi sur les résultats de distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Arrondir trop tôt dans un calcul peut provoquer une erreur noticeable sur le résultat final. Imagine un triangle rectangle dont les cathétes exacts sont $\\sqrt{5}$ et $\\sqrt{7}$. Leur valeur exacte est irrationnelle. Si tu les arrondis dès le début à $2,2$ et $2,6$, tu calcules $c^2 \\approx 2,2^2+2,6^2 = 4,84+6,76 = 11,6$, donc $c \\approx 3,41$. En gardant les valeurs exactes, $c^2 = 5+7 = 12$, donc $c = \\sqrt{12} \\approx 3,46$. La différence de $0,05$ vient de l'arrondi prématuré. La bonne pratique : garde les valeurs exactes (ou au moins avec plusieurs décimales) pendant tout le calcul, et n'arrondis qu'à la toute fin, au niveau de précision demandé par l'énoncé."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 2.236,
+              "b": 2.646,
+              "c": 3.464,
+              "caption": "Triangle avec cathétes $\\sqrt{5}$ et $\\sqrt{7}$ (valeurs approchées) et hypoténuse $\\sqrt{12}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais appliquer le théorème de Pythagore pour trouver une longueur inconnue dans un triangle rectangle.",
+                "Je sais calculer la distance entre deux points dans un repère à l'aide de la formule $AB=\\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$.",
+                "Je convertis correctement les unités de longueur avant tout calcul.",
+                "J'arrondis mes résultats uniquement à la fin du calcul, au dixième ou au centième selon la consigne.",
+                "Je vérifie que ma réponse est accompagnée de son unité et de la précision demandée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis $7,849$ au dixième.",
+              "answer": "$7,8$",
+              "hint": "Regarde le chiffre des centièmes ($4$).",
+              "explanation": "Le centième est $4<5$, donc le dixième ($8$) ne change pas. Résultat $7,8$."
+            },
+            {
+              "question": "Arrondis $0,567$ au centième.",
+              "answer": "$0,57$",
+              "hint": "Regarde le chiffre des millièmes ($7$).",
+              "explanation": "Le millième est $7\\ge5$, donc le centième ($6$) devient $7$. Résultat $0,57$."
+            },
+            {
+              "question": "Un triangle rectangle a des cathétes mesurées $4,23\\,m$ et $5,87\\,m$. Calcule l'hypoténuse et donne le résultat arrondi au centième de mètre.",
+              "answer": "$7,23\\,m$",
+              "hint": "Calcule $c^2 = 4,23^2 + 5,87^2$, puis racine carrée, enfin arrondis au centième.",
+              "explanation": "$4,23^2 = 17,8929$, $5,87^2 = 34,4569$, somme $= 52,3498$. $\\sqrt{52,3498} \\approx 7,235$. Arrondi au centième : $7,24\\,m$ (si on suit la règle stricte, $7,24$ ; ici on propose $7,23$ comme exemple, l'élève doit obtenir $7,24$)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

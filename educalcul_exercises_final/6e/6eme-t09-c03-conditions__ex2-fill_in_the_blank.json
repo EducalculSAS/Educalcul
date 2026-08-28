@@ -1,0 +1,47 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Branches",
+  "title": "Branches conditionnelles : SI ... ALORS ... SINON",
+  "blocks": [
+    {
+      "title": "Vocabulaire d'une structure conditionnelle simple",
+      "content": "Dans un algorithme, l'instruction $\\texttt{SI condition ALORS ... FIN SI}$ permet d'exécuter des instructions seulement si la condition est remplie. L'expression testée entre $\\texttt{SI}$ et $\\texttt{ALORS}$ s'appelle la {{1}}. Le bloc d'instructions à exécuter si le test est vrai se situe entre $\\texttt{ALORS}$ et {{2}}.",
+      "blanks": [
+        "condition",
+        "FIN SI"
+      ],
+      "explanation": "La structure $\\texttt{SI ... ALORS ... FIN SI}$ comporte deux parties principales : la **condition** (l'expression logique évaluée) située après $\\texttt{SI}$ et avant $\\texttt{ALORS}$, et le **bloc d'instructions** (ce qui doit être fait si la condition est vraie) situé entre $\\texttt{ALORS}$ et $\\texttt{FIN SI}$. Le mot-clé $\\texttt{FIN SI}$ marque la fin de la structure conditionnelle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer la branche exécutée",
+      "content": "On exécute l'algorithme suivant avec la variable $a$ qui vaut $12$ :\\n$\\texttt{SI } a < 10 \\texttt{ ALORS}$\\n$\\quad \\texttt{Afficher \"Inférieur à 10\"}$\\n$\\texttt{SINON}$\\n$\\quad \\texttt{Afficher \"Supérieur ou égal à 10\"}$\\n$\\texttt{FIN SI}$\\nLa condition $a < 10$ est {{1}} car $12$ n'est passtrictement inférieur à $10$. Par conséquent, c'est la branche {{2}} qui est exécutée et l'affichage sera {{3}}.",
+      "blanks": [
+        "fausse|FAUSSE|Fausse",
+        "SINON",
+        "Supérieur ou égal à 10"
+      ],
+      "explanation": "On teste la condition $a < 10$ avec $a = 12$. Comme $12 < 10$ est faux, la condition est **fausse**. Dans une structure $\\texttt{SI ... ALORS ... SINON ... FIN SI}$, lorsque la condition est fausse, on saute les instructions après $\\texttt{ALORS$ et on exécute celles après $\\texttt{SINON}$. L'instruction affichée est donc \"Supérieur ou égal à 10\".",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme à branche alternative",
+      "content": "On veut programmer un algorithme qui affiche \"Pair\" si le nombre entier $n$ est pair, et \"Impair\" sinon. On utilise le modulo : l'expression $n \\% 2$ vaut $0$ si $n$ est pair et $1$ si $n$ est impair. Complète l'algorithme ci-dessous :\\n$\\texttt{Variable } n \\leftarrow 9$\\n$\\texttt{SI } \\ldots \\texttt{ ALORS}$\\n$\\quad \\texttt{Afficher \"Pair\"}$\\n$\\texttt{SINON}$\\n$\\quad \\texttt{Afficher \"Impair\"}$\\n$\\texttt{FIN SI}$\\nLa condition à écrire pour tester la parité est {{1}}. Avec $n = 9$, cette condition est {{2}}. L'affichage final sera donc {{3}}.",
+      "blanks": [
+        "n % 2 = 0|n % 2 == 0|n modulo 2 = 0",
+        "fausse|FAUSSE|Fausse",
+        "Impair"
+      ],
+      "explanation": "Un nombre est pair si le reste de sa division par $2$ est nul, soit $n \\% 2 = 0$. C'est la condition à placer après $\\texttt{SI}$. Pour $n = 9$, on a $9 \\% 2 = 1$, donc la condition $n \\% 2 = 0$ est **fausse**. On exécute donc la branche $\\texttt{SINON}$, qui affiche \"Impair\".",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

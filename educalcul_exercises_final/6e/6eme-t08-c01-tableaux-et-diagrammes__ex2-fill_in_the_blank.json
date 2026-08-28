@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Construire",
+  "title": "Construction de tableaux et diagrammes statistiques",
+  "blocks": [
+    {
+      "title": "Vocabulaire du tableau d'effectifs",
+      "content": "Pour construire un tableau d'effectifs à partir d'une liste de valeurs, la première colonne contient les différentes {{1}} (les catégories). La deuxième colonne indique les {{2}} correspondants. La somme de tous les effectifs donne le {{3}} qui doit être égal au nombre total de valeurs de la liste.",
+      "correctAnswer": "",
+      "blanks": [
+        "modalités|valeurs|catégories",
+        "effectifs|nombres",
+        "total|effectif total"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un tableau de répartition statistique, on range les modalités (les différentes valeurs observées) dans la première colonne. En face de chaque modalité, on note son effectif (le nombre de fois qu'elle apparaît). La somme de tous les effectifs constitue l'effectif total de la série statistique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Paramètres d'un diagramme en bâtons",
+      "content": "Pour tracer un diagramme en bâtons, on doit choisir une {{1}} sur l'axe vertical (par exemple $1$ cm pour $2$ unités). L'axe horizontal porte les {{2}} et l'axe vertical porte les {{3}}. Chaque bâton a une hauteur proportionnelle à l'{{4}} de la modalité.",
+      "correctAnswer": "",
+      "blanks": [
+        "échelle|graduation",
+        "modalités|catégories",
+        "effectifs|nombres",
+        "effectif|nombre"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction d'un diagramme en bâtons respecte des règles précises : l'axe des abscisses (horizontal) reçoit les modalités qualitatives, l'axe des ordonnées (vertical) reçoit les effectifs avec une échelle adaptée. La hauteur de chaque rectangle (bâton) est proportionnelle à l'effectif de la modalité correspondante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix et construction d'un diagramme circulaire",
+      "content": "On souhaite représenter la répartition de $14$ voitures par couleur. Un diagramme {{1}} (ou camembert) est adapté pour visualiser les parts de chaque couleur dans le total. Le cercle entier représente $100\\%$ soit $360^{\\circ}$. La part \"bleu\" ($5$ voitures) correspond à un angle de $\\frac{5}{14} \\times 360^{\\circ} \\approx {{2}}^{\\circ}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "circulaire|en secteurs|camembert",
+        "129|128,6|128.6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le diagramme circulaire (camembert) permet de comparer les parts d'un tout. L'angle au centre de chaque secteur se calcule par proportionnalité : (effectif de la modalité / effectif total) × 360°. Pour la couleur bleue : (5/14) × 360 ≈ 128,57°, on arrondit généralement à 129° au degré près.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

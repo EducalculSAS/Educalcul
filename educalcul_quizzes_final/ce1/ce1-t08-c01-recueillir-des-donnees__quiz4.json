@@ -1,0 +1,120 @@
+{
+  "_status": "done",
+  "_course_id": 136,
+  "_course_code": "ce1-t08-c01-recueillir-des-donnees",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Recueillir des données",
+  "title": "Quiz : Recueillir des données (Application)",
+  "questions": [
+    {
+      "text": "Léo veut connaître le fruit préféré des élèves de sa classe. Quelle est la toute première étape pour recueillir ces données ?",
+      "options": [
+        "Compter les réponses déjà obtenues",
+        "Poser la question à chaque élève",
+        "Dessiner un graphique en barres",
+        "Écrire les résultats dans un tableau"
+      ],
+      "correctAnswer": "Poser la question à chaque élève",
+      "explanation": "Avant de compter, de faire un tableau ou un graphique, il faut d'abord interroger les élèves pour obtenir les réponses. C'est l'étape de la collecte : on pose la question, on note les réponses (souvent avec des traits), puis on organise et on présente les résultats.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici le tableau de dépouillement pour la couleur préférée :\\nBleu : $|||| |$\\nRouge : $||||$\\nVert : $|||$\\nCombien d'élèves ont choisi la couleur Bleue ?",
+      "options": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Au groupe de 5 traits ($||||$) s'ajoute 1 trait supplémentaire ($|$), ce qui fait $5 + 1 = 6$ élèves. Rouge correspond à 5 traits (5 élèves) et Vert à 3 traits (3 élèves).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Traits",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Bleu",
+            "|||| |",
+            "6"
+          ],
+          [
+            "Rouge",
+            "||||",
+            "5"
+          ],
+          [
+            "Vert",
+            "|||",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On demande à $10$ élèves leur animal préféré. Voici les réponses :\\nChat, Chien, Chat, Lapin, Chien, Chat, Chien, Chat, Lapin, Chien.\\nCombien de traits faut-il tracer pour \"Chat\" dans le tableau de dépouillement ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Il faut compter les occurrences du mot \"Chat\" dans la liste : 1er, 3e, 6e, 8e. Il y a donc 4 réponses \"Chat\", ce qui correspond à 4 traits (souvent groupés par 5, mais ici seulement 4 traits simples).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, on a recueilli le nombre de frères ou sœurs par élève :\\n$0$ frère/sœur : $5$ élèves\\n$1$ frère/sœur : $8$ élèves\\n$2$ frères/sœurs : $3$ élèves\\nCombien d'élèves ont au moins un frère ou une sœur ?",
+      "options": [
+        "8",
+        "11",
+        "16",
+        "3"
+      ],
+      "correctAnswer": "11",
+      "explanation": "\"Au moins un\" signifie $1$ ou $2$ (ou plus). Il faut additionner les effectifs correspondants : $8$ élèves (pour $1$) $+$ $3$ élèves (pour $2$) $= 11$ élèves. Les $5$ élèves qui ont $0$ frère/sœur ne sont pas comptés.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Nombre de frères/sœurs",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "0",
+            "5"
+          ],
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "La maîtresse veut savoir quel jeu de cour est le plus apprécié pour acheter du nouveau matériel. Quelle est la meilleure méthode pour recueillir cette information ?",
+      "options": [
+        "Demander seulement à son meilleur ami",
+        "Faire un sondage auprès de tous les élèves de la classe",
+        "Deviner en fonction de ce qu'elle aime",
+        "Regarder dans un catalogue de jouets"
+      ],
+      "correctAnswer": "Faire un sondage auprès de tous les élèves de la classe",
+      "explanation": "Pour avoir une information fiable et représentative des goûts de toute la classe, il faut interroger tout le monde (faire un sondage exhaustif). Demander à une seule personne, deviner ou regarder un catalogue ne donne pas les vrais souhaits des élèves.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

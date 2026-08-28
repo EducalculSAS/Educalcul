@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 88,
+  "_course_code": "ce1-t03-c01-additionner-des-nombres-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Choisir calcul mental ou posé",
+  "title": "Choisir entre calcul mental et calcul posé",
+  "blocks": [
+    {
+      "title": "Identifier la méthode adaptée",
+      "content": "Pour calculer $200 + 300$, j'utilise le calcul {{1}} car ce sont des centaines entières. Pour calculer $456 + 278$, je préfère le calcul {{2}} car il y a des retenues sur les dizaines et les centaines.",
+      "correctAnswer": "",
+      "blanks": [
+        "mental|de tête",
+        "posé|en colonne"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le calcul mental est efficace pour les nombres ronds (multiples de 10 ou 100) ou les petites additions sans retenue. Le calcul posé (en colonne) est nécessaire quand il y a plusieurs retenues ou que les nombres sont complexes à garder en tête.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer les additions",
+      "content": "Lis chaque addition et choisis la meilleure méthode en écrivant \"mental\" ou \"posé\". $54 + 10 = 64$ -> calcul {{1}}. $345 + 152 = 497$ -> calcul {{2}}. $600 + 200 = 800$ -> calcul {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "mental|de tête",
+        "posé|en colonne",
+        "mental|de tête"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "$54 + 10$ et $600 + 200$ sont des additions simples (ajout de dizaines ou de centaines) qu'on fait facilement en tête. $345 + 152$ demande d'additionner centaines, dizaines et unités avec une retenue sur les dizaines : le calcul posé est plus sûr pour ne pas se tromper.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Adapter sa stratégie",
+      "content": "Pour $285 + 60$, je peux faire un calcul {{1}} en ajoutant seulement les dizaines : $285 + 60 = 345$. Pour $285 + 67$, c'est plus difficile car il faut ajouter dizaines et unités avec une retenue, je fais donc un calcul {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "mental|de tête",
+        "posé|en colonne"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ajouter un multiple de 10 ($60$) à un nombre se fait aisément en calcul mental en ne modifiant que le chiffre des dizaines. Ajouter $67$ (soit $60 + 7$) demande de gérer l'addition des unités ($5 + 7 = 12$) qui génère une retenue sur les dizaines : le calcul posé permet de poser cette retenue clairement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

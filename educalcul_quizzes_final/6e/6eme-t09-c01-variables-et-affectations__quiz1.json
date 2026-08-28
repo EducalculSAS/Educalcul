@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Lire",
+  "title": "Quiz : Instruction Lire",
+  "questions": [
+    {
+      "text": "Que fait l'instruction $Lire\\ x$ dans un algorithme ?",
+      "options": [
+        "Affiche la valeur de $x$",
+        "Demande à l'utilisateur d'entrer une valeur qui sera stockée dans $x$",
+        "Ajoute 1 à $x$",
+        "Supprime la variable $x$"
+      ],
+      "correctAnswer": "Demande à l'utilisateur d'entrer une valeur qui sera stockée dans $x$",
+      "explanation": "L'instruction $Lire$ permet de récupérer une saisie clavier et de l'affecter à la variable indiquée. Elle n'affiche rien, ne modifie pas la valeur par un calcul et ne supprime pas la variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution de $Lire\\ age$ et la saisie de $12$ par l'utilisateur, quelle est la valeur de la variable $age$ ?",
+      "options": [
+        "$12$",
+        "$\"12\"$",
+        "$0$",
+        "indéfinie"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'instruction $Lire$ convertit la saisie en nombre lorsque la variable est numérique, donc $age$ prend la valeur numérique $12$ et non une chaîne de caractères.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des séquences suivantes lit correctement deux nombres $a$ et $b$ puis affiche leur somme ?",
+      "options": [
+        "$Lire\\ a;\\ Lire\\ b;\\ Afficher\\ a+b$",
+        "$Lire\\ a,b;\\ Afficher\\ a+b$",
+        "$Afficher\\ a+b;\\ Lire\\ a;\\ Lire\\ b$",
+        "$Lire\\ a;\\ Afficher\\ a;\\ Lire\\ b;\\ Afficher\\ b$"
+      ],
+      "correctAnswer": "$Lire\\ a;\\ Lire\\ b;\\ Afficher\\ a+b$",
+      "explanation": "Il faut d'abord lire les deux variables, puis afficher le résultat de l'addition. Les autres propositions inversent l'ordre ou utilisent une syntaxe incorrecte pour la lecture multiple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'utilisateur saisit le mot $quinze$ lors de l'exécution de $Lire\\ note$, que se passe-t-il ?",
+      "options": [
+        "$note$ vaut $15$",
+        "Erreur car $quinze$ n'est pas un nombre",
+        "$note$ vaut $quinze$",
+        "Le programme s'arrête immédiatement"
+      ],
+      "correctAnswer": "Erreur car $quinze$ n'est pas un nombre",
+      "explanation": "L'instruction $Lire$ attend une valeur numérique pour une variable de type nombre. La saisie d'un mot provoque une erreur de conversion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour garantir que la variable $n$ lue soit un entier strictement positif, quelle structure de contrôle utiliser ?",
+      "options": [
+        "$Lire\\ n;\\ Si\\ n>0\\ Alors\\ ...\\ Fin\\ Si$",
+        "$Lire\\ n;\\ Tant\\ que\\ n\\le 0\\ Faire\\ Lire\\ n\\ Fin\\ Tant\\ que$",
+        "$Lire\\ n;\\ Pour\\ i\\ de\\ 1\\ à\\ n\\ Faire\\ ...\\ Fin\\ Pour$",
+        "$Lire\\ n;\\ Afficher\\ n$"
+      ],
+      "correctAnswer": "$Lire\\ n;\\ Tant\\ que\\ n\\le 0\\ Faire\\ Lire\\ n\\ Fin\\ Tant\\ que$",
+      "explanation": "La boucle $Tant\\ que$ permet de redemander la saisie tant que la condition $n\\le 0$ est vraie, assurant ainsi que $n$ devienne strictement positif. Le $Si$ seul ne redemande pas, le $Pour$ suppose déjà $n$ connu, et l'affichage ne contrôle rien.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 429,
+  "_course_code": "4eme-t02-c05-bilan-algebre-4e",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Checklist",
+  "title": "Checklist Algèbre 4e : Calcul littéral et équations",
+  "questions": [
+    {
+      "text": "Développer et réduire l'expression $3(2x - 5)$.",
+      "options": [
+        "$6x - 15$",
+        "$6x - 5$",
+        "$5x - 15$",
+        "$6x + 15$"
+      ],
+      "correctAnswer": "$6x - 15$",
+      "explanation": "On applique la distributivité : $3 \\times 2x = 6x$ et $3 \\times (-5) = -15$. L'expression réduite est donc $6x - 15$. Les autres réponses correspondent à des erreurs de signe ou de multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $12x + 8$.",
+      "options": [
+        "$4(3x + 2)$",
+        "$2(6x + 4)$",
+        "$4(3x + 8)$",
+        "$12(x + 8)$"
+      ],
+      "correctAnswer": "$4(3x + 2)$",
+      "explanation": "On cherche le plus grand commun diviseur de 12 et 8, qui est 4. On écrit $12x = 4 \\times 3x$ et $8 = 4 \\times 2$. L'expression factorisée est $4(3x + 2)$. L'option $2(6x + 4)$ n'est pas complètement factorisée car 6 et 4 ont encore un facteur commun 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer la valeur de l'expression $5x^2 - 3x + 1$ pour $x = -2$.",
+      "options": [
+        "$27$",
+        "$15$",
+        "$13$",
+        "$25$"
+      ],
+      "correctAnswer": "$27$",
+      "explanation": "On remplace $x$ par $-2$ : $5(-2)^2 - 3(-2) + 1 = 5(4) + 6 + 1 = 20 + 6 + 1 = 27$. Attention au carré : $(-2)^2 = 4$ (positif) et au double signe : $-3 \\times (-2) = +6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'équation $4x - 7 = 2x + 5$.",
+      "options": [
+        "$x = 6$",
+        "$x = 1$",
+        "$x = -1$",
+        "$x = -6$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On regroupe les $x$ à gauche : $4x - 2x = 5 + 7$, soit $2x = 12$. On divise par 2 : $x = 6$. Vérification : $4(6) - 7 = 24 - 7 = 17$ et $2(6) + 5 = 12 + 5 = 17$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triple d'un nombre augmenté de 4 vaut 19. Quelle équation permet de trouver ce nombre $x$ ?",
+      "options": [
+        "$3x + 4 = 19$",
+        "$3(x + 4) = 19$",
+        "$3x - 4 = 19$",
+        "$x + 3 \\times 4 = 19$"
+      ],
+      "correctAnswer": "$3x + 4 = 19$",
+      "explanation": "Le triple du nombre s'écrit $3x$. Augmenté de 4 signifie qu'on ajoute 4 : $3x + 4$. Cela vaut 19, d'où l'équation $3x + 4 = 19$. L'option $3(x + 4)$ correspond au triple de la somme du nombre et de 4, ce qui est différent.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Checklist",
+  "title": "Quiz Algorithmique : La Checklist de vérification",
+  "questions": [
+    {
+      "text": "À quoi sert principalement une checklist lors de la création d'un algorithme ?",
+      "options": [
+        "Vérifier que l'algorithme répond au problème posé et fonctionne pour différents cas de test",
+        "Écrire le code plus rapidement sans réfléchir à la logique",
+        "Décorer le script avec des commentaires colorés",
+        "Remplacer l'étape de la traduction en langage de programmation"
+      ],
+      "correctAnswer": "Vérifier que l'algorithme répond au problème posé et fonctionne pour différents cas de test",
+      "explanation": "La checklist est une liste de points de contrôle. Elle permet de s'assurer que l'algorithme est correct : les variables sont bien initialisées, les boucles s'arrêtent, les calculs sont justes et le résultat affiché correspond à la demande. Les autres options sont incorrectes : la checklist ne remplace pas la réflexion, le codage ni la traduction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un algorithme :\\nDébut\\n  nombre ← 0\\n  Tant que nombre < 10 faire\\n    Afficher nombre\\n  Fin Tant que\\nFin\\nQuel point de la checklist signale l'erreur principale ?",
+      "options": [
+        "La variable 'nombre' n'est pas modifiée à l'intérieur de la boucle, risquant une boucle infinie",
+        "L'affichage doit se faire avant la condition 'Tant que'",
+        "La variable 'nombre' devrait être initialisée à 10",
+        "Il manque l'instruction 'Fin' à la fin de l'algorithme"
+      ],
+      "correctAnswer": "La variable 'nombre' n'est pas modifiée à l'intérieur de la boucle, risquant une boucle infinie",
+      "explanation": "Dans une boucle 'Tant que', la condition de sortie doit pouvoir devenir fausse. Ici, 'nombre' vaut 0 au départ et n'est jamais modifié (pas d'incrémentation comme 'nombre ← nombre + 1'). La condition 'nombre < 10' reste donc toujours vraie : la boucle ne s'arrête jamais. C'est un point classique de la checklist : vérifier la modification du compteur ou de la variable de condition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tester un algorithme qui calcule le double d'un nombre $x$, quelles valeurs de test sont les plus pertinentes à mettre dans sa checklist ?",
+      "options": [
+        "Un nombre positif, zéro, et un nombre négatif",
+        "Uniquement des nombres entiers positifs comme 2, 5, 10",
+        "Uniquement le nombre 0",
+        "Des nombres très grands uniquement, comme 1 000 000"
+      ],
+      "correctAnswer": "Un nombre positif, zéro, et un nombre négatif",
+      "explanation": "Une bonne checklist de test prévoit des cas 'normaux' (positif), des cas 'limites' (zéro) et des cas 'particuliers' (négatif) pour s'assurer que la formule $2 \\times x$ marche dans tous les cas. Tester seulement des positifs ou seulement zéro ne garantit pas le bon fonctionnement pour tous les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a écrit cet algorithme pour afficher les entiers de 1 à 5 :\\nDébut\\n  i ← 1\\n  Tant que i ≤ 5 faire\\n    Afficher i\\n    i ← i + 1\\n  Fin Tant que\\nFin\\nIl coche 'Boucle terminée' sur sa checklist. Quel autre point indispensable doit-il vérifier avant de valider ?",
+      "options": [
+        "L'initialisation de la variable i avant la boucle",
+        "La présence d'une instruction 'Sinon' dans la boucle",
+        "Le fait que la boucle s'exécute exactement 10 fois",
+        "La suppression de l'instruction 'Afficher i'"
+      ],
+      "correctAnswer": "L'initialisation de la variable i avant la boucle",
+      "explanation": "La checklist doit vérifier l'initialisation des variables (ici $i \\leftarrow 1$ avant 'Tant que'), la condition d'arrêt ($i \\le 5$), l'évolution de la variable ($i \\leftarrow i + 1$) et l'affichage. L'initialisation est cruciale : sans elle, la variable 'i' n'a pas de valeur de départ connue. Il n'y a pas de 'Sinon' dans une boucle 'Tant que', la boucle fait 5 tours (pas 10), et l'affichage est l'objectif du programme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une checklist de vérification, on distingue souvent 'Erreur de syntaxe' et 'Erreur logique'. Laquelle de ces situations est une erreur logique ?",
+      "options": [
+        "L'algorithme s'exécute sans planter mais affiche le périmètre au lieu de l'aire du rectangle",
+        "L'instruction 'Afficher' est mal orthographiée 'Afiicher'",
+        "Il manque le mot 'Fin' à la fin du 'Tant que'",
+        "Une variable est utilisée avant d'avoir été déclarée"
+      ],
+      "correctAnswer": "L'algorithme s'exécute sans planter mais affiche le périmètre au lieu de l'aire du rectangle",
+      "explanation": "Une erreur de syntaxe (orthographe, mot-clé manquant, déclaration manquante) empêche le programme de démarrer. Une erreur logique laisse le programme tourner mais produit un résultat faux par rapport au cahier des charges. Ici, le calcul du périmètre ($2 \\times (L+l)$) au lieu de l'aire ($L \\times l$) est une erreur de logique/algorithme, pas d'écriture.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

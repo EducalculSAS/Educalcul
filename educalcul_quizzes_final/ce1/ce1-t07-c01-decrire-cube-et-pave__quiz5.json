@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 126,
+  "_course_code": "ce1-t07-c01-decrire-cube-et-pave",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Faces, arêtes et sommets",
+  "title": "Quiz : Faces, arêtes et sommets du cube et du pavé droit",
+  "questions": [
+    {
+      "text": "Combien de faces, d'arêtes et de sommets a un cube ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "6 faces, 8 arêtes, 12 sommets",
+        "8 faces, 12 arêtes, 6 sommets",
+        "6 faces, 6 arêtes, 6 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Un cube possède $6$ faces carrées, $12$ arêtes de même longueur et $8$ sommets. Les autres réponses inversent les nombres ou donnent des valeurs incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase décrit exactement les faces d'un pavé droit ?",
+      "options": [
+        "Toutes ses faces sont des carrés.",
+        "Toutes ses faces sont des rectangles, mais jamais des carrés.",
+        "Ses faces sont des rectangles, certaines peuvent être des carrés.",
+        "Il a des faces triangulaires."
+      ],
+      "correctAnswer": "Ses faces sont des rectangles, certaines peuvent être des carrés.",
+      "explanation": "Un pavé droit a $6$ faces qui sont toutes des rectangles. Si le pavé est un cube, les $6$ faces sont des carrés (le carré est un rectangle particulier). Sinon, il a $4$ faces rectangles identiques deux à deux et $2$ faces rectangles (ou carrés) pour le dessus et le dessous.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici le patron d'un cube. Combien de carrés composent ce patron ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Un cube a $6$ faces. Son patron, c'est-à-dire la figure plane obtenue en découpant le long des arêtes pour l'aplatir, est donc toujours composé de $6$ carrés attachés les uns aux autres.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Lucas compte les arêtes d'un pavé droit : $4$ sur le dessus, $4$ sur le dessous et $4$ verticales. Combien d'arêtes y a-t-il en tout ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$16$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Il faut additionner les trois groupes d'arêtes : $4 + 4 + 4 = 12$. Un pavé droit, comme un cube, a toujours $12$ arêtes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie pour un cube mais fausse pour un pavé droit qui n'est pas un cube ?",
+      "options": [
+        "Il a $6$ faces.",
+        "Il a $12$ arêtes.",
+        "Toutes ses faces sont des carrés.",
+        "Il a $8$ sommets."
+      ],
+      "correctAnswer": "Toutes ses faces sont des carrés.",
+      "explanation": "Le cube et le pavé droit ont tous les deux $6$ faces, $12$ arêtes et $8$ sommets. La différence est la forme des faces : le cube a $6$ faces carrées, alors que le pavé droit (qui n'est pas un cube) a des faces rectangulaires qui ne sont pas toutes des carrés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

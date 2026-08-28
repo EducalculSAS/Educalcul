@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 410,
+  "_course_code": "5eme-t07-c01-reconnaitre-la-proportionnalite",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Tableau",
+  "title": "Reconnaître la proportionnalité à partir d'un tableau",
+  "blocks": [
+    {
+      "title": "Vérifier la proportionnalité d'un tableau complet",
+      "content": "On donne un tableau contenant les paires (2,6), (4,12), (5,15), (7,21). Écrire un algorithme (en pseudo‑code) qui parcourt le tableau et détermine si les valeurs sont proportionnelles. L'algorithme doit afficher « Proportionnel » ou « Non proportionnel ».",
+      "correctAnswer": "Algorithme :\\n1. Lire la première paire (x0, y0).\\n2. Calculer k = y0 / x0.\\n3. Pour chaque paire (xi, yi) du tableau :\\n   - Si xi * k ≠ yi alors afficher « Non proportionnel » et arrêter.\\n4. Après la boucle, afficher « Proportionnel ».",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule le coefficient de proportionnalité k à partir de la première ligne. Ensuite on vérifie que pour chaque ligne le produit xi * k donne bien yi. Si une seule ligne ne respecte pas l'égalité, le tableau n'est pas proportionnel.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le coefficient de proportionnalité",
+      "content": "Soit le tableau suivant : (3,9), (6,18), (10,30), (12,36). Écrire une formule mathématique pour calculer le coefficient de proportionnalité $k$ à partir de deux lignes quelconques, puis décrire la vérification à effectuer pour toutes les lignes.",
+      "correctAnswer": "Formule : $k = \\frac{y_i}{x_i}$ pour toute ligne $i$ avec $x_i \\neq 0$.\\nVérification : pour chaque ligne $(x_j, y_j)$ du tableau, tester si $y_j = k \\times x_j$. Si toutes les égalités sont vraies, le tableau est proportionnel.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient $k$ est constant pour une relation proportionnelle. On le calcule une fois (par exemple avec la première ligne $k = 9/3 = 3$). Puis on vérifie que chaque autre ligne satisfait $y = 3x$. Ici $18 = 3\\times6$, $30 = 3\\times10$, $36 = 3\\times12$, donc le tableau est proportionnel.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau et tester la proportionnalité en Python",
+      "content": "On a un tableau incomplet : (4, ?), (?, 20), (8, 40). En supposant une relation proportionnelle, compléter les valeurs manquantes. Ensuite écrire une fonction Python `est_proportionnel(table)` qui reçoit une liste de couples (x,y) et renvoie `True` si le tableau est proportionnel, `False` sinon.",
+      "correctAnswer": "Complétion :\\n- À partir de (8,40) on trouve $k = 40/8 = 5$.\\n- Pour (4, ?) : $y = 5 \\times 4 = 20$.\\n- Pour (?, 20) : $x = 20 / 5 = 4$.\\nLe tableau complet est (4,20), (4,20), (8,40).\\n\\nFonction Python :\\ndef est_proportionnel(table):\\n    if not table:\\n        return True\\n    x0, y0 = table[0]\\n    if x0 == 0:\\n        return False\\n    k = y0 / x0\\n    for x, y in table:\\n        if x * k != y:\\n            return False\\n    return True",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine d'abord le coefficient $k$ à partir d'une ligne complète (8,40) ce qui donne $k=5$. On utilise ensuite $k$ pour trouver les valeurs manquantes : $y = kx$ et $x = y/k$. La fonction Python implémente exactement la vérification décrite : calcul de $k$ sur la première ligne, puis test de l'égalité $x \\times k = y$ pour chaque couple.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

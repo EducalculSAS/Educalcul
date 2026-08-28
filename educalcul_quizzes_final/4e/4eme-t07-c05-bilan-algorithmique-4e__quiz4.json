@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Bilan - Algorithmique 4e",
+  "title": "Bilan Algorithmique 4e : Questionnaire",
+  "questions": [
+    {
+      "text": "Dans le pseudocode enseigné en 4e, quelle notation représente l'affectation de la valeur $5$ à la variable $x$ ?",
+      "options": [
+        "x ← $5$",
+        "x = $5$",
+        "x == $5$",
+        "x := $5$"
+      ],
+      "correctAnswer": "x ← $5$",
+      "explanation": "Le symbole ← est la flèche d'affectation utilisée en algorithmique au collège, les autres symboles correspondent à l'égalité mathématique, au test d'égalité ou à une notation de langage de programmation différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que fait l'algorithme suivant ?\\nPour i de $1$ à $5$ faire\\n    Afficher i\\nFinPour",
+      "options": [
+        "Il affiche les nombres $1$, $2$, $3$, $4$, $5$",
+        "Il affiche les nombres $0$, $1$, $2$, $3$, $4$",
+        "Il affiche seulement le nombre $5$",
+        "Il n'affiche rien"
+      ],
+      "correctAnswer": "Il affiche les nombres $1$, $2$, $3$, $4$, $5$",
+      "explanation": "La boucle « Pour i de $1$ à $5$ » parcourt les valeurs entières de $1$ à $5$ incluses, et l'instruction Afficher i est exécutée à chaque itération.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme :\\nSi x > $10$ Alors\\n    Afficher \"Grand\"\\nSinon\\n    Afficher \"Petit\"\\nFinSi\\nQue s'affiche-t-il si $x = 10$ ?",
+      "options": [
+        "Grand",
+        "Petit",
+        "Rien",
+        "Erreur"
+      ],
+      "correctAnswer": "Petit",
+      "explanation": "La condition teste strictement $x > 10$. Pour $x = 10$ la condition est fausse, donc la branche « Sinon » est exécutée et affiche « Petit ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'algorithme ci-dessous calcule la somme des premiers $n$ entiers naturels non nuls.\\nVariable somme ← 0\\nPour i de $1$ à $n$ faire\\n    somme ← somme + i\\nFinPour\\nAfficher somme\\nQuelle valeur est affichée pour $n = 4$ ?",
+      "options": [
+        "$10$",
+        "$6$",
+        "$8$",
+        "$12$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La somme $1 + 2 + 3 + 4$ vaut $10$, donc la variable somme contient $10$ à la fin de la boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme suivant, une instruction est erronée.\\nVariable somme ← 0\\nPour i de $1$ à $10$ faire\\n    somme ← somme + $1$\\nFinPour\\nAfficher somme\\nQuelle instruction contient l'erreur ?",
+      "options": [
+        "L'initialisation de somme",
+        "La condition de la boucle",
+        "L'instruction d'incrémentation de somme",
+        "L'affichage final"
+      ],
+      "correctAnswer": "L'instruction d'incrémentation de somme",
+      "explanation": "L'instruction « somme ← somme + $1$ » ajoute $1$ à chaque tour au lieu d'ajouter la valeur courante de $i$. La somme affichée sera $10$ au lieu de $55$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

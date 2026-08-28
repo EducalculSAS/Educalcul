@@ -1,0 +1,419 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.066291+00:00",
+  "id": 515,
+  "code": "2nde-t04-c01",
+  "title": "Repère, milieu et distance",
+  "description": "Cours structuré Educalcul : Repère, milieu et distance.",
+  "subject": "Droites du plan et géométrie repérée",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Droites du plan et géométrie repérée",
+    "titre_du_cours": "Repère, milieu et distance",
+    "objectif_global": "Repère, milieu et distance",
+    "mini_lecons_imposees": [
+      "Coordonnées.",
+      "Milieu.",
+      "Distance selon programme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Droites du plan et géométrie repérée",
+      "lessons": [
+        {
+          "title": "Coordonnées.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coordonnées : le repère du plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des coordonnées. Imagine une grande feuille quadrillée qui s'étend à l'infini dans toutes les directions. Au centre de cette feuille, on place un point particulier que l'on appelle l'origine, souvent noté $O$. Deux droites perpendiculaires se croisent en $O$ : l'axe horizontal, que l'on nomme l'axe des abscisses, et l'axe vertical, l'axe des ordonnées. Chaque point du plan peut alors être identifié par un couple ordonné de nombres : le premier nombre indique à quelle distance du centre on se trouve vers la droite (si le nombre est positif) ou vers la gauche (si le nombre est négatif), le second nombre indique la distance vers le haut (positif) ou vers le bas (négatif). Ce couple s'écrit $(x ; y)$ et on dit que $x$ est l'abscisse du point, $y$ son ordonnée. C'est un peu comme donner une adresse : le numéro de la rue (l'abscisse) et le numéro de l'immeuble (l'ordonnée). Avec ce repère, on peut parler de n'importe quel point, le tracer, le déplacer, et même calculer des distances ou des milieux plus tard. Prends le temps de visualiser cette grille dans ta tête, elle sera ton terrain de jeu pour tout le chapitre."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": -2,
+              "vx": 0,
+              "vy": 0,
+              "caption": "Vecteur de coordonnées $(3 ; -2)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les coordonnées d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le repère est en place, regardons comment on récupère les coordonnées d'un point déjà tracé. Place ton regard sur le point et suis mentalement une ligne verticale jusqu'à l'axe des abscisses : le nombre que tu lis là est l'abscisse. Ensuite, suis une ligne horizontale jusqu'à l'axe des ordonnées : le nombre lu est l'ordonnée. Attention, l'ordre est crucial : on note toujours l'abscisse en premier, puis l'ordonnée, séparés par un point-virgule. Si le point se trouve à gauche de l'origine, l'abscisse sera négative ; s'il est en dessous, l'ordonnée le sera aussi. Entraîne-toi à lire plusieurs points sur une même figure, cela deviendra un réflexe naturel. N'hésite pas à tracer les droites de projection avec un crayon pour bien voir les nombres correspondants."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x ; y)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un point à partir de ses coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse consiste à prendre un couple $(x ; y)$ et à le reporter sur le repère. Commence toujours par l'origine $O$. Déplace-toi horizontalement de $|x|$ unités : vers la droite si $x>0$, vers la gauche si $x<0$. Arrête-toi là, puis déplace-toi verticalement de $|y|$ unités : vers le haut si $y>0$, vers le bas si $y<0$. Le point où tu t'arrêtes est exactement le point de coordonnées $(x ; y)$. Essaie avec plusieurs couples, y compris des nombres négatifs, pour bien sentir la symétrie du repère. Cette méthode pas à pas évite les erreurs de signe et t'aide à visualiser la position du point avant même de le dessiner."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'origine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton crayon sur le point $O$ où les deux axes se coupent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déplacement horizontal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte $|x|$ graduations sur l'axe des abscisses dans le sens indiqué par le signe de $x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déplacement vertical",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis cette nouvelle position, compte $|y|$ graduations sur l'axe des ordonnées selon le signe de $y$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Marquer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point final est le point cherché ; note ses coordonnées à côté pour vérifier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour naviguer dans le plan à l'aide de coordonnées. La prochaine leçon utilisera ce repère pour trouver le milieu d'un segment, une idée qui prolonge naturellement la notion de position."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le point $A$ a pour coordonnées $(3 ; -2)$. Quelle est l'abscisse de $A$ et quelle est son ordonnée ?",
+              "answer": "L'abscisse est $3$ et l'ordonnée est $-2$.",
+              "hint": "Rappelle-toi que le premier nombre du couple est l'abscisse.",
+              "explanation": "Dans le couple $(x ; y)$, $x$ est l'abscisse et $y$ l'ordonnée. Donc pour $(3 ; -2)$, $x=3$, $y=-2$."
+            },
+            {
+              "question": "Sur le repère ci-dessous, le point $B$ se trouve à deux unités à droite de l'origine et trois unités en haut. Écris les coordonnées de $B$.",
+              "answer": "$(2 ; 3)$",
+              "hint": "Droite correspond à l'abscisse positive, haut à l'ordonnée positive.",
+              "explanation": "Deux unités à droite donne $x=2$, trois unités en haut donne $y=3$."
+            },
+            {
+              "question": "Place le point $C$ de coordonnées $(-4 ; 1)$ sur un repère. Décris la marche à suivre.",
+              "answer": "Depuis l'origine, va de $4$ unités vers la gauche (abscisse $-4$), puis $1$ unité vers le haut (ordonnée $1$).",
+              "hint": "Négatif à gauche, positif à droite ; négatif en bas, positif en haut.",
+              "explanation": "L'abscisse $-4$ indique un déplacement vers la gauche, l'ordonnée $1$ un déplacement vers le haut."
+            }
+          ]
+        },
+        {
+          "title": "Milieu.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Milieu : definition et repérage sur une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le milieu d'un segment est ce point qui le coupe en deux parties de même longueur. Sur une droite graduée, c'est très simple : si les extrémités portent les nombres $a$ et $b$, le milieu porte le nombre $\\frac{a+b}{2}$. C'est exactement la moyenne arithmétique des deux nombres. Imagine deux amis qui se tiennent aux marques $2$ et $10$ sur un trottoir numéroté ; le point de rencontre équitable se trouve à la marque $6$, parce que $(2+10)/2 = 6$. Cette idée de partage équitable va nous servir pour construire le milieu dans le plan, où chaque point a deux coordonnées. Prends le temps de visualiser la droite, les deux points et le point central ; c'est la base de tout ce qui suit."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "A"
+                },
+                {
+                  "value": 10,
+                  "label": "B"
+                },
+                {
+                  "value": 6,
+                  "label": "M"
+                }
+              ],
+              "intervals": [],
+              "caption": "Milieu de $[AB]$ sur une droite graduée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Milieu dans le plan : formule des coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le plan, un segment a deux extrémités $P(x_P ; y_P)$ et $Q(x_Q ; y_Q)$. Le milieu $M$ a pour abscisse la moyenne des abscisses et pour ordonnée la moyenne des ordonnées. On écrit donc $M\\left(\\frac{x_P+x_Q}{2} ; \\frac{y_P+y_Q}{2}\\right)$. C'est une généralisation directe de ce que nous venons de voir sur la droite : on traite les deux coordonnées indépendamment. Si tu traces le segment et ses projections sur les axes, tu verras que le projeté du milieu sur l'axe des abscisses est exactement le milieu des projetés de $P$ et $Q$ ; de même pour l'axe des ordonnées. Cette propriété visuelle aide à mémoriser la formule sans la retenir par cœur."
+            },
+            {
+              "type": "display_math",
+              "latex": "M\\left(\\frac{x_P+x_Q}{2} ; \\frac{y_P+y_Q}{2}\\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver une extrémité quand on connaît le milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le milieu $M$ et l'une des extrémités, disons $A$, et on cherche l'autre extrémité $B$. Comme les coordonnées de $M$ sont les moyennes, on peut inverser la relation : $x_M = \\frac{x_A+x_B}{2}$ donc $x_B = 2x_M - x_A$, et de même pour $y$. C'est une petite manipulation algébrique très utile, par exemple en géométrie analytique pour construire un segment symétrique. Entraîne-toi à faire ce calcul mentalement : double la coordonnée du milieu, puis soustrais la coordonnée connue. Cette astuce évite de résoudre un système à chaque fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les formules du milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x_M = \\frac{x_A+x_B}{2}$ et $y_M = \\frac{y_A+y_B}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Isoler l'inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x_B = 2x_M - x_A$ ; $y_B = 2y_M - y_A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x_M, y_M, x_A, y_A$ par leurs valeurs numériques."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant le milieu sur une droite et dans le plan, ainsi que la recherche d'une extrémité manquante. La prochaine leçon exploitera ces coordonnées pour mesurer des distances, une notion essentielle pour étudier les figures géométriques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le milieu du segment d'extrémités $A(2)$ et $B(10)$ sur une droite graduée.",
+              "answer": "$6$",
+              "hint": "Le milieu est la moyenne des deux nombres.",
+              "explanation": "Le milieu $M$ a pour coordinate $(2+10)/2 = 6$."
+            },
+            {
+              "question": "Soient $P(1 ; 4)$ et $Q(5 ; -2)$. Détermine les coordonnées du milieu $M$ de $[PQ]$.",
+              "answer": "$(3 ; 1)$",
+              "hint": "Utilise la formule $M\\left(\\frac{x_P+x_Q}{2} ; \\frac{y_P+y_Q}{2}\\right)$.",
+              "explanation": "Abscisse : $(1+5)/2 = 3$. Ordonnée : $(4+(-2))/2 = 1$."
+            },
+            {
+              "question": "Le milieu $M$ de $[AB]$ a pour coordonnées $(0 ; 3)$. Si $A$ est $( -2 ; 5 )$, trouve $B$.",
+              "answer": "$(2 ; 1)$",
+              "hint": "Les coordonnées du milieu sont la moyenne des coordonnées des extrémités.",
+              "explanation": "Soit $B(x ; y)$. Alors $(-2+x)/2 = 0 \\Rightarrow x=2$. $(5+y)/2 = 3 \\Rightarrow y=1$."
+            }
+          ]
+        },
+        {
+          "title": "Distance selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance sur une droite : valeur absolue de la différence"
+            },
+            {
+              "type": "paragraph",
+              "content": "La distance entre deux points sur une droite graduée ne dépend pas de leur ordre : c'est la longueur du segment qui les relie. Si les points portent les nombres $a$ et $b$, la distance vaut $|a-b|$, c'est-à-dire la valeur absolue de leur différence. Imagine deux gares sur une ligne de train numérotée : gare $A$ au kilomètre $-3$ et gare $B$ au kilomètre $4$. Pour connaître la longueur du trajet, on calcule $|4-(-3)| = |7| = 7$ kilomètres. La valeur absolue garantit un résultat positif, car une distance ne peut pas être négative. Ce concept simple est la pierre angulaire de la distance dans le plan, où l'on applique le théorème de Pythagore aux différences d'abscisses et d'ordonnées."
+            },
+            {
+              "type": "number_line",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 4,
+                  "label": "B"
+                }
+              ],
+              "intervals": [],
+              "caption": "Distance entre $A(-3)$ et $B(4)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance dans le plan : formule issue de Pythagore"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le plan, deux points $C(x_1 ; y_1)$ et $D(x_2 ; y_2)$ forment un segment oblique. En projetant ce segment sur les axes, on obtient un triangle rectangle dont les cathétus mesurent $|x_2-x_1|$ et $|y_2-y_1|$. Le segment $CD$ est l'hypoténuse, donc sa longueur $d$ vérifie $d^2 = (x_2-x_1)^2 + (y_2-y_1)^2$. On en déduit la formule $d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$. Cette formule marche pour tous les couples de points, qu'ils soient alignés horizontalement, verticalement ou obliquement. Elle est la traduction algébrique du théorème de Pythagore et te permettra de mesurer n'importe quelle distance dans le repère."
+            },
+            {
+              "type": "display_math",
+              "latex": "d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la distance pour reconnaître un triangle rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu connais les trois sommets d'un triangle, tu peux calculer les trois longueurs de ses côtés grâce à la formule de distance. Ensuite, il suffit de tester la relation de Pythagore : si le carré de la plus grande longueur équivaut à la somme des carrés des deux autres, le triangle est rectangle, et l'angle droit se trouve au sommet opposé au plus grand côté. C'est une méthode puissante pour vérifier la nature d'un triangle sans avoir à tracer la figure avec une grande précision. Entraîne-toi à calculer les trois distances, à les ranger par ordre croissant, et à appliquer le test. C'est un excellent exercice de synthèse entre coordonnées, milieu et distance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les trois distances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $d = \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ à chaque paire de sommets."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le plus grand côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la longueur maximale ; elle sera l'hypoténuse potentielle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester l'égalité de Pythagore",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si $c^2 = a^2 + b^2$ où $c$ est le plus grand côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'égalité est vraie, le triangle est rectangle ; sinon, il ne l'est pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un point grâce à ses coordonnées.",
+                "Je sais calculer le milieu d'un segment dans le plan.",
+                "Je sais calculer la distance entre deux points.",
+                "Je sais utiliser la distance pour vérifier si un triangle est rectangle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la distance entre les points $A(-3)$ et $B(4)$ sur une droite ?",
+              "answer": "$7$",
+              "hint": "Distance = valeur absolue de la différence.",
+              "explanation": "$|4-(-3)| = |7| = 7$."
+            },
+            {
+              "question": "Calcule la distance entre $C(1 ; 2)$ et $D(4 ; 6)$.",
+              "answer": "$5$",
+              "hint": "Applique la formule $d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$.",
+              "explanation": "Différences : $3$ et $4$. $3^2+4^2=9+16=25$. Racine carrée = 5."
+            },
+            {
+              "question": "Les points $E(0 ; 0)$, $F(3 ; 0)$, $G(0 ; 4)$ forment-ils un triangle rectangle ? Justifie.",
+              "answer": "Oui, car $EF=3$, $EG=4$, $FG=5$ et $3^2+4^2=5^2$.",
+              "hint": "Calcule les trois distances et teste le théorème de Pythagore.",
+              "explanation": "Distances : $EF=3$, $EG=4$, $FG=\\sqrt{3^2+4^2}=5$. Comme $3^2+4^2=5^2$, le triangle est rectangle en $E$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

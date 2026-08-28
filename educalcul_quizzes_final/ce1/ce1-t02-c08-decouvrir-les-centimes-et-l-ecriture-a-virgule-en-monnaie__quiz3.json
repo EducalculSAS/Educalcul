@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Comparer de petits montants en contexte",
+  "title": "Comparer de petits montants en euros et centimes",
+  "questions": [
+    {
+      "text": "Léo veut acheter une barre de chocolat. Dans le magasin A, elle coûte $1,20\\,\\text{\\u20ac}$. Dans le magasin B, elle coûte $1,50\\,\\text{\\u20ac}$. Où est-elle la moins chère ?",
+      "options": [
+        "Au magasin A",
+        "Au magasin B",
+        "Les deux coûtent le même prix",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Au magasin A",
+      "explanation": "On compare les parties entières (les euros) : les deux prix ont 1 euro. On compare ensuite les parties décimales (les centimes) : 20 centimes est plus petit que 50 centimes. Donc $1,20\\,\\text{\\u20ac} < 1,50\\,\\text{\\u20ac}$. Le magasin A est moins cher.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un petit camion coûte $2\\,\\text{\\u20ac}$. Une poupée coûte $1,80\\,\\text{\\u20ac}$. Lequel est le plus cher ?",
+      "options": [
+        "Le camion",
+        "La poupée",
+        "Ils coûtent le même prix",
+        "La poupée car 80 est plus grand que 2"
+      ],
+      "correctAnswer": "Le camion",
+      "explanation": "Il faut comparer $2\\,\\text{\\u20ac}$ (soit $2,00\\,\\text{\\u20ac}$) et $1,80\\,\\text{\\u20ac}$. On regarde les euros : 2 euros est plus grand que 1 euro. Donc $2\\,\\text{\\u20ac} > 1,80\\,\\text{\\u20ac}$. Le camion est plus cher. La dernière proposition est une erreur fréquente : on ne compare pas 80 et 2 sans regarder la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Mia a une pièce de $2\\,\\text{\\u20ac}$. Elle veut acheter un cahier à $1,70\\,\\text{\\u20ac}$. Quelle phrase est vraie ?",
+      "options": [
+        "Mia a assez d'argent et il lui restera $0,30\\,\\text{\\u20ac}$",
+        "Mia n'a pas assez d'argent",
+        "Mia a juste la somme exacte",
+        "Mia a assez d'argent et il lui restera $1,30\\,\\text{\\u20ac}$"
+      ],
+      "correctAnswer": "Mia a assez d'argent et il lui restera $0,30\\,\\text{\\u20ac}$",
+      "explanation": "Mia a $2,00\\,\\text{\\u20ac}$. Le cahier coûte $1,70\\,\\text{\\u20ac}$. Comme $2,00 > 1,70$, elle a assez. Pour trouver le reste, on calcule la différence : $2,00 - 1,70 = 0,30$. Il lui reste donc $0,30\\,\\text{\\u20ac}$ (30 centimes).",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          200
+        ],
+        "target": 170,
+        "caption": "Mia a 2 euros (200 centimes), le cahier coûte 1,70 euro (170 centimes)."
+      }
+    },
+    {
+      "text": "Au goûter, une pomme coûte $0,50\\,\\text{\\u20ac}$, un jus coûte $0,80\\,\\text{\\u20ac}$ et un gâteau coûte $1,20\\,\\text{\\u20ac}$. Classe ces prix du moins cher au plus cher.",
+      "options": [
+        "Pomme ($0,50\\,\\text{\\u20ac}$), Jus ($0,80\\,\\text{\\u20ac}$), Gâteau ($1,20\\,\\text{\\u20ac}$)",
+        "Jus ($0,80\\,\\text{\\u20ac}$), Pomme ($0,50\\,\\text{\\u20ac}$), Gâteau ($1,20\\,\\text{\\u20ac}$)",
+        "Gâteau ($1,20\\,\\text{\\u20ac}$), Jus ($0,80\\,\\text{\\u20ac}$), Pomme ($0,50\\,\\text{\\u20ac}$)",
+        "Pomme ($0,50\\,\\text{\\u20ac}$), Gâteau ($1,20\\,\\text{\\u20ac}$), Jus ($0,80\\,\\text{\\u20ac}$)"
+      ],
+      "correctAnswer": "Pomme ($0,50\\,\\text{\\u20ac}$), Jus ($0,80\\,\\text{\\u20ac}$), Gâteau ($1,20\\,\\text{\\u20ac}$)",
+      "explanation": "On compare d'abord le nombre d'euros : la pomme et le jus coûtent 0 euro, le gâteau coûte 1 euro. Le gâteau est donc le plus cher. Entre la pomme ($0,50$) et le jus ($0,80$), on compare les centimes : 50 < 80. L'ordre est : Pomme, Jus, Gâteau.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tom a $3\\,\\text{\\u20ac}$. Il veut acheter une glace à $1,50\\,\\text{\\u20ac}$ et une boisson à $1,20\\,\\text{\\u20ac}$. Est-ce qu'il a assez d'argent ?",
+      "options": [
+        "Oui, le total est $2,70\\,\\text{\\u20ac}$, il lui reste $0,30\\,\\text{\\u20ac}$",
+        "Non, le total est $3,70\\,\\text{\\u20ac}$, il lui manque $0,70\\,\\text{\\u20ac}$",
+        "Oui, le total est $2,30\\,\\text{\\u20ac}$, il lui reste $0,70\\,\\text{\\u20ac}$",
+        "Non, le total est $2,70\\,\\text{\\u20ac}$, il lui manque $0,30\\,\\text{\\u20ac}$"
+      ],
+      "correctAnswer": "Oui, le total est $2,70\\,\\text{\\u20ac}$, il lui reste $0,30\\,\\text{\\u20ac}$",
+      "explanation": "On additionne les deux prix : $1,50 + 1,20 = 2,70\\,\\text{\\u20ac}$. Tom a $3,00\\,\\text{\\u20ac}$. On compare : $3,00 > 2,70$, donc il a assez. La monnaie est $3,00 - 2,70 = 0,30\\,\\text{\\u20ac}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

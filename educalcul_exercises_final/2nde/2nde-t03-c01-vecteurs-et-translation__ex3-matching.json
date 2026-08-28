@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Égalité",
+  "title": "Égalité de vecteurs",
+  "blocks": [
+    {
+      "title": "Définition et caractérisation",
+      "content": "Relie chaque propriété à sa formulation correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Deux vecteurs sont égaux si",
+          "right": "ils ont même direction, même sens et même norme."
+        },
+        {
+          "left": "Le vecteur nul est le seul vecteur",
+          "right": "de norme nulle."
+        },
+        {
+          "left": "Deux vecteurs opposés ont",
+          "right": "même direction, même norme mais sens contraires."
+        },
+        {
+          "left": "La norme d'un vecteur correspond à",
+          "right": "la longueur du segment le représentant."
+        }
+      ],
+      "items": [],
+      "explanation": "Deux vecteurs $\\overrightarrow{u}$ et $\\overrightarrow{v}$ sont égaux ($\\overrightarrow{u} = \\overrightarrow{v}$) si et seulement s'ils ont la même direction, le même sens et la même norme. Le vecteur nul $\\overrightarrow{0}$ est l'unique vecteur de norme 0. Deux vecteurs opposés partagent la direction et la norme mais ont des sens contraires. La norme (ou longueur) est la mesure du segment orienté.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Égalité et géométrie : parallélogramme et droites",
+      "content": "Relie chaque affirmation à sa conséquence géométrique ou algébrique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\overrightarrow{AB} = \\overrightarrow{CD}$ $\\Leftrightarrow$",
+          "right": "ABCD est un parallélogramme (dans cet ordre)."
+        },
+        {
+          "left": "Si $\\overrightarrow{u} = \\overrightarrow{v}$ alors",
+          "right": "$\\overrightarrow{u}$ et $\\overrightarrow{v}$ ont mêmes coordonnées dans tout repère."
+        },
+        {
+          "left": "Dans un parallélogramme ABCD, $\\overrightarrow{AB} = $",
+          "right": "$\\overrightarrow{DC}$"
+        },
+        {
+          "left": "Si $\\overrightarrow{AB} = \\overrightarrow{CD}$ alors les droites (AB) et (CD) sont",
+          "right": "parallèles ou confondues."
+        }
+      ],
+      "items": [],
+      "explanation": "L'égalité $\\overrightarrow{AB} = \\overrightarrow{CD}$ caractérise le parallélogramme ABCD (les points sont donnés dans l'ordre). L'égalité vectorielle implique l'égalité des coordonnées. Dans un parallélogramme, les côtés opposés sont représentés par des vecteurs égaux : $\\overrightarrow{AB} = \\overrightarrow{DC}$. Deux vecteurs égaux ont même direction, donc leurs droites porteuses sont parallèles (ou confondues si les points sont alignés).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Applications : coordonnées et milieux",
+      "content": "Relie chaque situation au résultat correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Soit $\\overrightarrow{u}(2; -3)$ et $\\overrightarrow{v}(x; y)$. $\\overrightarrow{u} = \\overrightarrow{v} \\Rightarrow$",
+          "right": "$x=2$ et $y=-3$"
+        },
+        {
+          "left": "A(1;2), B(4;5), C(2;1). D tel que $\\overrightarrow{AB} = \\overrightarrow{CD} \\Rightarrow$ D(",
+          "right": "$5 ; 4$"
+        },
+        {
+          "left": "I milieu de [AB]. $\\overrightarrow{AI} = $",
+          "right": "$\\frac{1}{2}\\overrightarrow{AB}$"
+        },
+        {
+          "left": "$\\overrightarrow{AB} = \\overrightarrow{BA} \\Leftrightarrow$",
+          "right": "A = B"
+        }
+      ],
+      "items": [],
+      "explanation": "1) L'égalité des vecteurs implique l'égalité de leurs coordonnées respectives. 2) $\\overrightarrow{AB} = (3;3)$. Pour $\\overrightarrow{CD} = (x_D-2; y_D-1) = (3;3)$, on trouve $D(5;4)$. 3) Par définition du milieu, $\\overrightarrow{AI} = \\frac{1}{2}\\overrightarrow{AB}$. 4) $\\overrightarrow{AB} = \\overrightarrow{BA} \\Leftrightarrow \\overrightarrow{AB} = -\\overrightarrow{AB} \\Leftrightarrow 2\\overrightarrow{AB} = \\overrightarrow{0} \\Leftrightarrow \\overrightarrow{AB} = \\overrightarrow{0} \\Leftrightarrow A=B$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

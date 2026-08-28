@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Approfondissement : Coordonnées",
+  "title": "Algorithmes et coordonnées dans le plan",
+  "blocks": [
+    {
+      "title": "Calcul du milieu d'un segment",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir les coordonnées de deux points $A(x_A; y_A)$ et $B(x_B; y_B)$ puis qui calcule et affiche les coordonnées du milieu $I$ du segment $[AB]$.",
+      "correctAnswer": "Algorithme MilieuSegment\\nVariables : xA, yA, xB, yB, xI, yI en réels\\nDébut\\n    Afficher \"Entrez xA : \"\\n    Lire xA\\n    Afficher \"Entrez yA : \"\\n    Lire yA\\n    Afficher \"Entrez xB : \"\\n    Lire xB\\n    Afficher \"Entrez yB : \"\\n    Lire yB\\n    xI <- (xA + xB) / 2\\n    yI <- (yA + yB) / 2\\n    Afficher \"Le milieu I a pour coordonnées (\", xI, \"; \", yI, \")\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le milieu $I$ d'un segment $[AB]$ a pour coordonnées la moyenne des coordonnées des extrémités : $x_I = \\frac{x_A + x_B}{2}$ et $y_I = \\frac{y_A + y_B}{2}$. L'algorithme suit cette formule en lisant les quatre coordonnées, en effectuant les calculs, puis en affichant le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test d'alignement de trois points",
+      "content": "Écrire un algorithme qui lit les coordonnées de trois points $A(x_A; y_A)$, $B(x_B; y_B)$ et $C(x_C; y_C)$ et qui affiche \"Alignés\" si les trois points sont alignés, \"Non alignés\" sinon. On utilisera la condition du déterminant nul pour les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+      "correctAnswer": "Algorithme TestAlignement\\nVariables : xA, yA, xB, yB, xC, yC, det en réels\\nDébut\\n    Afficher \"Entrez xA, yA : \"\\n    Lire xA, yA\\n    Afficher \"Entrez xB, yB : \"\\n    Lire xB, yB\\n    Afficher \"Entrez xC, yC : \"\\n    Lire xC, yC\\n    det <- (xB - xA) * (yC - yA) - (yB - yA) * (xC - xA)\\n    Si det = 0 Alors\\n        Afficher \"Alignés\"\\n    Sinon\\n        Afficher \"Non alignés\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Trois points $A, B, C$ sont alignés si et seulement si les vecteurs $\\overrightarrow{AB}(x_B-x_A; y_B-y_A)$ et $\\overrightarrow{AC}(x_C-x_A; y_C-y_A)$ sont colinéaires, c'est-à-dire si leur déterminant est nul : $(x_B-x_A)(y_C-y_A) - (y_B-y_A)(x_C-x_A) = 0$. L'algorithme calcule ce déterminant et teste s'il vaut zéro.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Symétrique d'un point par rapport à un centre",
+      "content": "Écrire un algorithme qui, étant données les coordonnées d'un point $A(x_A; y_A)$ et d'un point $O(x_O; y_O)$, calcule et affiche les coordonnées du point $A'$, symétrique de $A$ par rapport à $O$.",
+      "correctAnswer": "Algorithme SymetrieCentrale\\nVariables : xA, yA, xO, yO, xAp, yAp en réels\\nDébut\\n    Afficher \"Entrez xA, yA : \"\\n    Lire xA, yA\\n    Afficher \"Entrez xO, yO : \"\\n    Lire xO, yO\\n    xAp <- 2 * xO - xA\\n    yAp <- 2 * yO - yA\\n    Afficher \"Le symétrique A' a pour coordonnées (\", xAp, \"; \", yAp, \")\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le point $O$ est le milieu du segment $[AA']$. On a donc $x_O = \\frac{x_A + x_{A'}}{2}$ et $y_O = \\frac{y_A + y_{A'}}{2}$. En isolant $x_{A'}$ et $y_{A'}$, on obtient $x_{A'} = 2x_O - x_A$ et $y_{A'} = 2y_O - y_A$. L'algorithme applique ces formules directement après la lecture des coordonnées.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

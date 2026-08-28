@@ -1,0 +1,242 @@
+{
+  "_status": "done",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Arbre / tableau si prévu",
+  "title": "Quiz : Arbre et tableau pour expériences à deux étapes",
+  "questions": [
+    {
+      "text": "On lance une pièce de monnaie biaisée (probabilité de Pile $= 0,6$) puis on lance un dé à six faces équilibré. L'arbre ci-dessous modélise cette expérience. Quelle est la probabilité d'obtenir « Pile » puis un nombre pair ?",
+      "options": [
+        "0,1",
+        "0,2",
+        "0,3",
+        "0,6"
+      ],
+      "correctAnswer": "0,3",
+      "explanation": "Les deux étapes sont indépendantes. La probabilité de « Pile » est $0,6$. La probabilité d'obtenir un nombre pair (2, 4 ou 6) avec un dé équilibré est $\\frac{3}{6} = 0,5$. La probabilité du chemin « Pile » puis « Pair » est le produit des probabilités sur les branches : $0,6 \\times 0,5 = 0,3$. L'option 0,1 correspond à $0,6 \\times \\frac{1}{6}$ (un seul chiffre), 0,2 à une erreur de calcul et 0,6 à la seule première étape.",
+      "points": 1,
+      "figure": {
+        "type": "probability_tree",
+        "caption": "Arbre : pièce biaisée (Pile 0,6 ; Face 0,4) puis dé équilibré (1 à 6, chacun 1/6)",
+        "branches": [
+          {
+            "label": "Pile",
+            "probability": "0,6",
+            "children": [
+              {
+                "label": "1",
+                "probability": "1/6"
+              },
+              {
+                "label": "2",
+                "probability": "1/6"
+              },
+              {
+                "label": "3",
+                "probability": "1/6"
+              },
+              {
+                "label": "4",
+                "probability": "1/6"
+              },
+              {
+                "label": "5",
+                "probability": "1/6"
+              },
+              {
+                "label": "6",
+                "probability": "1/6"
+              }
+            ]
+          },
+          {
+            "label": "Face",
+            "probability": "0,4",
+            "children": [
+              {
+                "label": "1",
+                "probability": "1/6"
+              },
+              {
+                "label": "2",
+                "probability": "1/6"
+              },
+              {
+                "label": "3",
+                "probability": "1/6"
+              },
+              {
+                "label": "4",
+                "probability": "1/6"
+              },
+              {
+                "label": "5",
+                "probability": "1/6"
+              },
+              {
+                "label": "6",
+                "probability": "1/6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une urne contient trois boules rouges (R) et deux boules bleues (B). On tire deux boules successivement sans remise. L'arbre ci-dessous représente l'expérience. Quelle est la probabilité d'obtenir deux boules de couleurs différentes ?",
+      "options": [
+        "0,3",
+        "0,4",
+        "0,6",
+        "0,8"
+      ],
+      "correctAnswer": "0,6",
+      "explanation": "L'événement « deux boules de couleurs différentes » correspond aux chemins « Rouge puis Bleu » et « Bleu puis Rouge ». Pour R puis B : $\\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = 0,3$. Pour B puis R : $\\frac{2}{5} \\times \\frac{3}{4} = \\frac{6}{20} = 0,3$. La probabilité totale est $0,3 + 0,3 = 0,6$. L'option 0,3 ne correspond qu'à un seul des deux chemins. L'option 0,4 serait le résultat avec remise ($2 \\times 0,6 \\times 0,4$). L'option 0,8 n'a pas de sens ici.",
+      "points": 1,
+      "figure": {
+        "type": "probability_tree",
+        "caption": "Arbre : urne 3R 2B, deux tirages sans remise",
+        "branches": [
+          {
+            "label": "R",
+            "probability": "3/5",
+            "children": [
+              {
+                "label": "R",
+                "probability": "2/4"
+              },
+              {
+                "label": "B",
+                "probability": "2/4"
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "probability": "2/5",
+            "children": [
+              {
+                "label": "R",
+                "probability": "3/4"
+              },
+              {
+                "label": "B",
+                "probability": "1/4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance deux dés à six faces équilibrés (un rouge, un bleu) et on note la somme des résultats. Le tableau à double entrée ci-dessous donne les sommes. Quelle est la probabilité d'obtenir une somme supérieure ou égale à 10 ?",
+      "options": [
+        "1/6",
+        "1/4",
+        "1/12",
+        "1/3"
+      ],
+      "correctAnswer": "1/6",
+      "explanation": "Le tableau comporte $6 \\times 6 = 36$ issues équiprobables. Les sommes supérieures ou égales à 10 sont 10, 11 et 12. Somme 10 : (4,6), (5,5), (6,4) -> 3 cases. Somme 11 : (5,6), (6,5) -> 2 cases. Somme 12 : (6,6) -> 1 case. Total favorable : $3 + 2 + 1 = 6$ cases. Probabilité = $\\frac{6}{36} = \\frac{1}{6}$. L'option 1/4 correspond à 9 cases (somme $\\ge$ 9), 1/12 à 3 cases (somme = 10 seulement), 1/3 à 12 cases.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Tableau des sommes pour deux dés (lignes : dé rouge, colonnes : dé bleu)",
+        "headers": [
+          "",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "rows": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          [
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          [
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          [
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Une urne contient quatre boules vertes (V) et six boules rouges (R). On effectue deux tirages successifs avec remise. On construit l'arbre probabiliste associé. Quelle est la probabilité d'obtenir deux boules de couleurs différentes ?",
+      "options": [
+        "0,24",
+        "0,48",
+        "0,52",
+        "0,76"
+      ],
+      "correctAnswer": "0,48",
+      "explanation": "Avec remise, les tirages sont indépendants. $P(V) = 0,4$ et $P(R) = 0,6$. L'événement « couleurs différentes » est l'union de « V puis R » et « R puis V ». $P(V \\text{ puis } R) = 0,4 \\times 0,6 = 0,24$. $P(R \\text{ puis } V) = 0,6 \\times 0,4 = 0,24$. Somme = $0,24 + 0,24 = 0,48$. L'option 0,24 correspond à un seul ordre. L'option 0,52 est $1 - 0,48$ (probabilité même couleur). L'option 0,76 n'a pas de sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un arbre de probabilités modélisant une expérience à deux étapes, les probabilités inscrites sur les branches partant de la racine (première étape) sont $0,3$ et $0,7$. Quelle est la somme des probabilités des quatre feuilles (issues finales) de cet arbre ?",
+      "options": [
+        "0,21",
+        "1",
+        "1,4",
+        "0,3"
+      ],
+      "correctAnswer": "1",
+      "explanation": "Quelle que soit la structure de l'arbre (indépendant ou non), la somme des probabilités de toutes les issues élémentaires (les feuilles) est toujours égale à 1, car elles forment une partition de l'univers des possibles. La somme des branches de la première étape est $0,3 + 0,7 = 1$. Pour chaque branche de la première étape, la somme des branches de la seconde étape vaut 1 (propriété des probabilités conditionnelles). Donc la somme des produits (feuilles) vaut $1 \\times 1 = 1$. L'option 0,21 est le produit $0,3 \\times 0,7$. L'option 1,4 est la somme $0,3+0,7+0,3+0,7$ (erreur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

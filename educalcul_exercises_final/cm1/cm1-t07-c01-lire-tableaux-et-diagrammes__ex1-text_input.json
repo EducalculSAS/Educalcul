@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Effectifs",
+  "title": "Lire des effectifs dans des tableaux et diagrammes",
+  "blocks": [
+    {
+      "title": "Tableau des fruits préférés",
+      "content": "Voici un tableau récapitulant les fruits préférés des élèves d'une classe de CM1.\\n\\n| Fruit   | Effectif |\\n|---------|----------|\\n| Pomme   | $8$      |\\n| Banane  | $5$      |\\n| Fraise  | $7$      |\\n\\nQuel est l'effectif total d'élèves interrogés ?",
+      "correctAnswer": "20",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver l'effectif total, on additionne les effectifs de chaque catégorie : $8 + 5 + 7 = 20$. Il y a donc 20 élèves au total.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "8"
+          ],
+          [
+            "Banane",
+            "5"
+          ],
+          [
+            "Fraise",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Diagramme en bâtons des animaux",
+      "content": "Le diagramme en bâtons ci-dessous représente les animaux de compagnie des élèves.\\n\\nLis le diagramme et indique combien d'élèves ont un chien.",
+      "correctAnswer": "9",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur le diagramme, la barre correspondant à « Chien » monte jusqu'à la graduation 9. Donc 9 élèves ont un chien.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux de compagnie",
+        "bars": [
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Chien",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Poisson",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tableau à compléter (sports)",
+      "content": "Un élève a relevé les sports pratiqués par sa classe. Il a oublié de noter l'effectif pour la natation. Le total est de 30 élèves.\\n\\n| Sport      | Effectif |\\n|------------|----------|\\n| Football   | $12$     |\\n| Basket     | $8$      |\\n| Natation   | ?        |\\n| Total      | $30$     |\\n\\nQuel est l'effectif pour la natation ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On connaît le total (30) et les effectifs du football (12) et du basket (8). On soustrait la somme des effectifs connus du total : $30 - (12 + 8) = 30 - 20 = 10$. L'effectif pour la natation est 10.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Sport",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Football",
+            "12"
+          ],
+          [
+            "Basket",
+            "8"
+          ],
+          [
+            "Natation",
+            "?"
+          ],
+          [
+            "Total",
+            "30"
+          ]
+        ]
+      }
+    }
+  ]
+}

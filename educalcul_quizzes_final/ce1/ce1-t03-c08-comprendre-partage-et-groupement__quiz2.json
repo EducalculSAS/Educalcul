@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 95,
+  "_course_code": "ce1-t03-c08-comprendre-partage-et-groupement",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Former des groupes de taille donnée",
+  "title": "Quiz : Former des groupes de taille donnée",
+  "questions": [
+    {
+      "text": "Nous avons douze billes. On veut faire des groupes de trois billes. Combien de groupes peut-on former ?",
+      "options": [
+        "Quatre",
+        "Trois",
+        "Six",
+        "Neuf"
+      ],
+      "correctAnswer": "Quatre",
+      "explanation": "Pour trouver le nombre de groupes, on divise le total par la taille de chaque groupe : $12 / 3 = 4$. On peut donc former quatre groupes de trois. L'option 'Trois' correspond à la taille du groupe, pas au nombre de groupes. 'Six' est la moitié du total. 'Neuf' est la différence entre le total et la taille d'un groupe.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 3,
+        "highlighted": 12,
+        "caption": "Douze billes organisées en quatre groupes de trois"
+      }
+    },
+    {
+      "text": "Dans la classe, il y a vingt élèves. Le maître forme des groupes de quatre élèves pour un jeu. Combien y a-t-il de groupes ?",
+      "options": [
+        "Cinq",
+        "Quatre",
+        "Six",
+        "Huit"
+      ],
+      "correctAnswer": "Cinq",
+      "explanation": "On partage le nombre total d'élèves par le nombre d'élèves par groupe : $20 / 4 = 5$. Il y a donc cinq groupes. 'Quatre' est le nombre d'élèves par groupe. 'Huit' est le double de la taille du groupe. 'Six' ne correspond à aucune opération simple ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet contient quinze bonbons. On prépare des sachets avec cinq bonbons chacun. Combien de sachets peut-on remplir ?",
+      "options": [
+        "Trois",
+        "Deux",
+        "Cinq",
+        "Dix"
+      ],
+      "correctAnswer": "Trois",
+      "explanation": "On divise le nombre total de bonbons par le nombre de bonbons par sachet : $15 / 5 = 3 $. On remplit trois sachets. 'Cinq' est le contenu d'un sachet. 'Dix' correspond à deux sachets. 'Deux' serait le résultat si on mettait sept ou huit bonbons par sachet, ce qui n'est pas le cas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la kermesse, on a vingt-quatre tickets. On compose des lots de trois tickets. Combien de lots obtient-on ?",
+      "options": [
+        "Huit",
+        "Six",
+        "Sept",
+        "Neuf"
+      ],
+      "correctAnswer": "Huit",
+      "explanation": "Il faut calculer $24 / 3$. $3 \\times 8 = 24$, donc on obtient huit lots. 'Six' serait le nombre de lots si on en faisait de quatre ($24 / 4 = 6$). 'Neuf' et 'Sept' ne permettent pas de retomber sur vingt-quatre avec des groupes de trois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le bibliothécaire range trente livres. Il place cinq livres sur chaque étagère. Combien d'étagères utilise-t-il ?",
+      "options": [
+        "Six",
+        "Cinq",
+        "Quatre",
+        "Sept"
+      ],
+      "correctAnswer": "Six",
+      "explanation": "Le nombre d'étagères correspond au nombre de groupes de cinq dans trente : $30 / 5 = 6$. Il utilise six étagères. 'Cinq' est le nombre de livres par étagère. 'Quatre' donnerait vingt livres au total ($4 \\times 5 = 20$). 'Sept' donnerait trente-cinq livres ($7 \\times 5 = 35$), ce qui dépasse le total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

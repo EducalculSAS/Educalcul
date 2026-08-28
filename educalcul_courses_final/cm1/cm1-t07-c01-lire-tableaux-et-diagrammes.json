@@ -1,0 +1,401 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.271771+00:00",
+  "id": 256,
+  "code": "cm1-t07-c01",
+  "title": "Lire tableaux et diagrammes",
+  "description": "Cours structuré Educalcul : Lire tableaux et diagrammes.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Lire tableaux et diagrammes",
+    "objectif_global": "Lire tableaux et diagrammes",
+    "mini_lecons_imposees": [
+      "Effectifs.",
+      "Comparer.",
+      "Répondre."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Effectifs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effectifs : qu est-ce que c est ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as demandé à tes camarades de classe quel fruit ils préfèrent parmi la pomme, la banane et l'orange. Tu as noté chaque réponse sur une feuille et maintenant tu veux savoir combien de fois chaque fruit a été choisi. C'est exactement ce que l'on appelle un effectif : le nombre de fois qu'une valeur apparaît dans une liste de données. Quand tu comptes les réponses, tu obtiens un chiffre pour chaque fruit, et ce chiffre te dit à quel point ce fruit est populaire dans ton groupe."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "Nombre de fois qu'une valeur donnée se rencontre dans une série de données.",
+              "example": "Dans l'enquête sur les fruits, l'effectif de la pomme est $8$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "8"
+                ],
+                [
+                  "Banane",
+                  "5"
+                ],
+                [
+                  "Orange",
+                  "7"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessus. La première colonne donne le nom du fruit, la deuxième colonne indique l'effectif correspondant. Pour lire l'effectif des pommes, tu regardes la ligne « pomme » et tu lis le nombre qui se trouve à droite. Ici, les pommes ont été choisies $8$ fois, les bananes $5$ fois et les oranges $7$ fois. En ajoutant les trois effectifs, tu retrouves le nombre total d'élèves interrogés : $8 + 5 + 7 = 20$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, transformons ces nombres en un diagramme en barres. Chaque barre représente un fruit et sa hauteur montre l'effectif. La barre la plus haute correspond au fruit le plus choisi. Observe le graphique ci‑dessous et compare les hauteurs : la barre de la pomme monte jusqu'à $8$, celle de l'orange jusqu'à $7$ et celle de la banane jusqu'à $5$. Cela te permet de voir d'un coup d'œil quel fruit est le plus populaire."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs des fruits préférés",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 5,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Orange",
+                  "value": 7,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre moyen de voir la répartition est le diagramme circulaire. Le cercle entier représente tous les élèves interrogés, soit $20$ personnes. Chaque part de gâteau montre la part de chaque fruit. La part la plus grande appartient aux pommes ($8$ sur $20$), puis aux oranges ($7$ sur $20$), puis aux bananes ($5$ sur $20$). En regardant les angles, tu peux estimer visuellement quelle fraction du groupe préfère chaque fruit."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits préférés",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 5,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Orange",
+                  "value": 7,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois façons de lire les mêmes données : un tableau, un diagramme en barres et un diagramme circulaire. Chacun te donne une information utile selon la question que tu te poses. Si tu veux savoir exactement combien de fois un fruit a été choisi, le tableau est le plus précis. Si tu veux comparer rapidement les popularités, le diagramme en barres est idéal. Si tu veux voir la part de chaque fruit dans l'ensemble, le diagramme circulaire te parle tout de suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau, quel est l'effectif de la banane ?",
+              "answer": "$5$",
+              "hint": "Regarde la ligne qui porte le mot « banane » et lis le nombre à droite.",
+              "explanation": "La ligne « Banane » indique $5$ dans la colonne Effectif, donc l'effectif de la banane est $5$."
+            },
+            {
+              "question": "Quelle barre est la plus haute sur le diagramme en barres ?",
+              "answer": "La barre de la pomme",
+              "hint": "Compare les hauteurs des trois barres.",
+              "explanation": "La barre de la pomme atteint $8$, ce qui est plus haut que $7$ (orange) et $5$ (banane)."
+            },
+            {
+              "question": "Quelle part du cercle est la plus grande sur le diagramme circulaire ?",
+              "answer": "La part de la pomme",
+              "hint": "Cherche la part qui occupe le plus grand angle.",
+              "explanation": "La pomme a un effectif de $8$ sur $20$, soit la plus grande fraction, donc sa part est la plus grande."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des effectifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire les effectifs, tu vas apprendre à les comparer. Comparer, c'est dire si un nombre est plus grand, plus petit ou égal à un autre. Par exemple, avec nos fruits, l'effectif de la pomme ($8$) est plus grand que celui de la banane ($5$). On écrit $8 > 5$. De même, l'effectif de l'orange ($7$) est plus petit que celui de la pomme ($8$), ce qui s'écrit $7 < 8$. Si deux fruits avaient le même effectif, on écrirait le signe $=$."
+            },
+            {
+              "type": "definition",
+              "term": "comparer",
+              "definition": "Mettre en relation deux nombres pour savoir lequel est le plus grand, le plus petit ou s'ils sont égaux.",
+              "example": "$8 > 5$ signifie que $8$ est plus grand que $5$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs des fruits pour comparer",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 5,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Orange",
+                  "value": 7,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le diagramme en barres. La hauteur de chaque barre te donne l'effectif. Pour comparer la pomme et la banane, tu regardes quelle barre monte le plus haut. La barre de la pomme dépasse celle de la banane, donc $8 > 5$. Pour comparer l'orange et la banane, la barre de l'orange est plus haute, donc $7 > 5$. Enfin, pour comparer la pomme et l'orange, la barre de la pomme est encore plus haute, donc $8 > 7$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire permet aussi de comparer, mais cette fois en regardant la taille des parts. La part la plus grande correspond à l'effectif le plus grand. Ici, la part de la pomme est la plus grande, puis celle de l'orange, puis celle de la banane. Cela te donne l'ordre $8 > 7 > 5$ sans même lire les chiffres. C'est très pratique quand tu as beaucoup de catégories."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Parts des fruits pour comparer",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 5,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Orange",
+                  "value": 7,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux également placer les effectifs sur une droite numérique pour les ordonner. Trace une droite graduée de $0$ à $10$ et place un point pour chaque effectif : $5$ pour la banane, $7$ pour l'orange, $8$ pour la pomme. En lisant de gauche à droite, tu vois immédiatement l'ordre croissant : banane, orange, pomme. Cette méthode est utile quand tu dois classer plusieurs nombres rapidement."
+            },
+            {
+              "type": "number_line",
+              "caption": "Effectifs sur une droite numérique",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Banane"
+                },
+                {
+                  "value": 7,
+                  "label": "Orange"
+                },
+                {
+                  "value": 8,
+                  "label": "Pomme"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour comparer des effectifs : les signes $>$, $<$, $=$ avec les nombres, les barres du diagramme en barres, les parts du diagramme circulaire et la position sur une droite numérique. Choisis celui qui te semble le plus clair selon la situation."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la comparaison entre l'effectif de la pomme ($8$) et celui de la banane ($5$) avec le signe approprié.",
+              "answer": "$8 > 5$",
+              "hint": "Le nombre le plus grand se place à gauche du signe $>$.",
+              "explanation": "Puisque $8$ est plus grand que $5$, on écrit $8 > 5$."
+            },
+            {
+              "question": "Sur le diagramme circulaire, quelle part est la plus petite ?",
+              "answer": "La part de la banane",
+              "hint": "Repère la part qui occupe le plus petit angle.",
+              "explanation": "La banane a l'effectif le plus faible ($5$), donc sa part est la plus petite."
+            },
+            {
+              "question": "Place les trois effectifs $5$, $7$, $8$ sur une droite numérique de $0$ à $10$ et dis quel fruit se trouve le plus à droite.",
+              "answer": "La pomme ($8$) est le plus à droite.",
+              "hint": "Le plus grand nombre se trouve le plus à droite sur la droite.",
+              "explanation": "Sur la droite, $8$ est à droite de $7$ et $5$, donc la pomme est le plus à droite."
+            }
+          ]
+        },
+        {
+          "title": "Répondre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre à des questions sur les données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire et comparer, tu vas répondre à des questions précises posées sur les tableaux ou les diagrammes. Les questions typiques sont : « Quel fruit est le plus choisi ? », « Combien de fois la pomme a-t-elle été choisie de plus que la banane ? », « Quelle fraction du groupe préfère l'orange ? ». Pour chaque question, tu choisis l'outil le plus adapté : le tableau pour les chiffres exacts, le diagramme en barres pour les différences, le diagramme circulaire pour les parts."
+            },
+            {
+              "type": "fraction_strips",
+              "caption": "Fraction du groupe qui préfère l'orange",
+              "fractions": [
+                {
+                  "numerator": 7,
+                  "denominator": 20
+                },
+                {
+                  "numerator": 8,
+                  "denominator": 20
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 20
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les réglettes de fractions. La réglette du haut montre la part de l'orange : $7$ sur $20$, soit la fraction $\\frac{7}{20}$. Celle du milieu montre la pomme : $\\frac{8}{20}$ qui se simplifie en $\\frac{2}{5}$. Celle du bas montre la banane : $\\frac{5}{20}$ soit $\\frac{1}{4}$. Ainsi, pour répondre à « Quelle fraction du groupe préfère l'orange ? », tu lis $\\frac{7}{20}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la question « Combien de fois la pomme a-t-elle été choisie de plus que la banane ? », tu fais une soustraction : $8 - 5 = 3$. Le diagramme en barres te le montre visuellement : la barre de la pomme dépasse celle de la banane de trois unités. C'est une différence de $3$ choix."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Différence entre pomme et banane",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 5,
+                  "tone": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, pour vérifier tes réponses, tu peux toujours revenir au tableau original. Additionne les effectifs pour retrouver le total ($8+5+7=20$), assure-toi que les fractions donnent bien ce total quand tu les additionnes ($\\frac{8}{20}+\\frac{5}{20}+\\frac{7}{20}=1$). Cette vérification te donne confiance dans tes résultats."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un tableau d'effectifs.",
+                "Je sais comparer des effectifs avec $>$, $<$, $=$.",
+                "Je sais répondre à des questions en utilisant un diagramme en barres, un diagramme circulaire ou une droite numérique.",
+                "Je sais exprimer une part sous forme de fraction."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle fraction du groupe préfère l'orange ?",
+              "answer": "$\\frac{7}{20}$",
+              "hint": "Regarde la réglette qui correspond à l'orange.",
+              "explanation": "L'effectif de l'orange est $7$ sur un total de $20$, donc la fraction est $\\frac{7}{20}$."
+            },
+            {
+              "question": "Combien de fois la pomme a-t-elle été choisie de plus que la banane ?",
+              "answer": "$3$",
+              "hint": "Soustrais l'effectif de la banane de celui de la pomme.",
+              "explanation": "$8 - 5 = 3$, donc la pomme a été choisie $3$ fois de plus."
+            },
+            {
+              "question": "Vérifie que la somme des trois fractions $\\frac{8}{20}$, $\\frac{5}{20}$, $\\frac{7}{20}$ fait bien $1$.",
+              "answer": "Oui, la somme vaut $1$.",
+              "hint": "Additionne les numérateurs car les dénominateurs sont égaux.",
+              "explanation": "$8+5+7 = 20$, donc $\\frac{20}{20}=1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

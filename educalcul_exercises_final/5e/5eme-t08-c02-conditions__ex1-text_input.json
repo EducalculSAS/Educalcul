@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "If / else",
+  "title": "Structures conditionnelles : If / Else",
+  "blocks": [
+    {
+      "title": "Condition simple",
+      "content": "On exécute l'algorithme suivant :\\n$x \\leftarrow 7$\\nSi $x > 5$ Alors\\n$\\quad$ Afficher \"A\"\\nSinon\\n$\\quad$ Afficher \"B\"\\nFin Si\\nQue affiche l'algorithme ?",
+      "correctAnswer": "A",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $x$ vaut $7$. La condition $x > 5$ est vraie car $7 > 5$. On exécute donc l'instruction du bloc « Alors » qui affiche « A ». Le bloc « Sinon » est ignoré.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition composée avec OU",
+      "content": "On exécute l'algorithme suivant :\\n$age \\leftarrow 12$\\n$estEleve \\leftarrow \\text{Vrai}$\\nSi $age \\ge 18$ OU $estEleve = \\text{Faux}$ Alors\\n$\\quad$ Afficher \"Tarif plein\"\\nSinon\\n$\\quad$ Afficher \"Tarif réduit\"\\nFin Si\\nQue affiche l'algorithme ?",
+      "correctAnswer": "Tarif réduit",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $age$ vaut $12$, donc la condition $age \\ge 18$ est fausse. La variable $estEleve$ vaut Vrai, donc la condition $estEleve = \\text{Faux}$ est fausse. L'opérateur OU exige qu'au moins une des deux conditions soit vraie pour que l'ensemble soit vrai. Ici, les deux sont fausses, la condition globale est fausse. On exécute le bloc « Sinon » qui affiche « Tarif réduit ».",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modification de variable dans un branchement",
+      "content": "On exécute l'algorithme suivant :\\n$score \\leftarrow 15$\\nSi $score \\ge 10$ Alors\\n$\\quad score \\leftarrow score + 5$\\nSinon\\n$\\quad score \\leftarrow score - 2$\\nFin Si\\nAfficher $score$\\nQuelle est la valeur affichée à la fin ?",
+      "correctAnswer": "20",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $score$ vaut initialement $15$. La condition $score \\ge 10$ est vraie. On exécute l'instruction du bloc « Alors » : $score$ prend la valeur $15 + 5 = 20$. L'instruction du bloc « Sinon » est ignorée. L'affichage final donne $20$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

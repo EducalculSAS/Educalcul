@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 229,
+  "_course_code": "cm1-t03-c04-division-euclidienne",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Quotient et reste",
+  "title": "Division euclidienne : Quotient et reste",
+  "questions": [
+    {
+      "text": "Quels sont le quotient et le reste de la division euclidienne de $47$ par $5$ ?",
+      "options": [
+        "Le quotient est 9 et le reste est 2",
+        "Le quotient est 8 et le reste est 7",
+        "Le quotient est 9 et le reste est 3",
+        "Le quotient est 10 et le reste est -3"
+      ],
+      "correctAnswer": "Le quotient est 9 et le reste est 2",
+      "explanation": "On cherche le plus grand multiple de $5$ inférieur ou égal à $47$. $5 \\times 9 = 45$. Le reste est $47 - 45 = 2$, qui est bien strictement inférieur au diviseur $5$. Les autres propositions donnent soit un reste trop grand, soit un reste négatif, ce qui est impossible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $53$ bonbons à partager équitablement entre $6$ enfants. Combien de bonbons chaque enfant reçoit‑il et combien en reste‑t‑il ?",
+      "options": [
+        "Chaque enfant reçoit 8 bonbons et il en reste 5",
+        "Chaque enfant reçoit 9 bonbons et il en reste -1",
+        "Chaque enfant reçoit 7 bonbons et il en reste 11",
+        "Chaque enfant reçoit 8 bonbons et il en reste 4"
+      ],
+      "correctAnswer": "Chaque enfant reçoit 8 bonbons et il en reste 5",
+      "explanation": "La division euclidienne de $53$ par $6$ donne $6 \\times 8 = 48$ et un reste de $53 - 48 = 5$. Le reste $5$ est bien inférieur au diviseur $6$. Les autres choix présentent un reste négatif, un reste supérieur au diviseur ou un mauvais calcul du quotient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le quotient est $7$ et le reste $4$ lors d'une division par $8$, quel est le dividende ?",
+      "options": [
+        "$7 \\times 8 + 4 = 60$",
+        "$7 \\times 8 - 4 = 52$",
+        "$7 + 8 \\times 4 = 39$",
+        "$7 \\times 4 + 8 = 36$"
+      ],
+      "correctAnswer": "$7 \\times 8 + 4 = 60$",
+      "explanation": "Dans une division euclidienne, le dividende est égal au quotient multiplié par le diviseur plus le reste : $7 \\times 8 + 4 = 56 + 4 = 60$. Les autres formules ne respectent pas cette relation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes sur la division euclidienne est fausse ?",
+      "options": [
+        "Le reste est toujours strictement inférieur au diviseur",
+        "Le reste peut être égal au diviseur",
+        "Le quotient peut être zéro",
+        "Le dividende est égal au quotient fois le diviseur plus le reste"
+      ],
+      "correctAnswer": "Le reste peut être égal au diviseur",
+      "explanation": "Par définition, le reste doit être strictement inférieur au diviseur. Il ne peut jamais être égal au diviseur. Les trois autres affirmations sont vraies : le quotient peut être zéro si le dividende est plus petit que le diviseur, et la relation dividende = quotient × diviseur + reste est toujours vérifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue la division euclidienne de $123$ par $11$. Quel est le quotient et quel est le reste ?",
+      "options": [
+        "Le quotient est 11 et le reste est 2",
+        "Le quotient est 10 et le reste est 13",
+        "Le quotient est 12 et le reste est -9",
+        "Le quotient est 11 et le reste est 3"
+      ],
+      "correctAnswer": "Le quotient est 11 et le reste est 2",
+      "explanation": "On cherche le plus grand multiple de $11$ ne dépassant pas $123$. $11 \\times 11 = 121$. Le reste est $123 - 121 = 2$, qui est bien inférieur à $11$. Les autres propositions donnent soit un reste supérieur au diviseur, soit un reste négatif, soit un mauvais quotient.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

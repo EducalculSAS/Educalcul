@@ -1,0 +1,73 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 73,
+  "_course_code": "ce1-t01-c06-decomposer-et-recomposer-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Décomposition en C-D-U",
+  "title": "Décomposition en centaines, dizaines, unités (C-D-U)",
+  "blocks": [
+    {
+      "title": "Décomposer un nombre avec du matériel",
+      "content": "Regarde la représentation en matériel de base dix. Le nombre représenté s'écrit $342$. Il est composé de ${{1}}$ centaines, ${{2}}$ dizaines et ${{3}}$ unités.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "4",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compte les plaques (centaines), les barres (dizaines) et les cubes (unités). Il y a 3 plaques, donc 3 centaines. Il y a 4 barres, donc 4 dizaines. Il y a 2 cubes, donc 2 unités. La décomposition est 3 centaines, 4 dizaines, 2 unités.",
+      "points": 2,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 3,
+        "tens": 4,
+        "units": 2,
+        "caption": "Représentation de 342 en matériel de base dix"
+      }
+    },
+    {
+      "title": "Recomposer le nombre à partir des C-D-U",
+      "content": "Complète le tableau des centaines, dizaines et unités pour former le nombre. ${{1}}$ centaines, ${{2}}$ dizaines, ${{3}}$ unités forment le nombre $561$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "6",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On place les chiffres dans le bon ordre dans le tableau de valeur de position : 5 dans la colonne des centaines, 6 dans la colonne des dizaines, 1 dans la colonne des unités. Cela forme le nombre 561.",
+      "points": 2,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 561,
+        "caption": "Tableau de valeur de position pour 561"
+      }
+    },
+    {
+      "title": "Décomposition avec un chiffre nul",
+      "content": "Dans la décomposition du nombre $708$, il y a ${{1}}$ centaines, ${{2}}$ dizaines et ${{3}}$ unités.",
+      "correctAnswer": "",
+      "blanks": [
+        "7",
+        "0",
+        "8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des centaines est 7, celui des dizaines est 0 (il n'y a aucune dizaine dans ce nombre), celui des unités est 8. Il est important d'écrire le 0 des dizaines pour bien marquer la position des centaines et des unités.",
+      "points": 2,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 7,
+        "tens": 0,
+        "units": 8,
+        "caption": "Représentation de 708 en matériel de base dix"
+      }
+    }
+  ]
+}

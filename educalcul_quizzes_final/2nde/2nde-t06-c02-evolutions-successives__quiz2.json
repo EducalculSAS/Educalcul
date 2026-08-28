@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Taux global",
+  "title": "Quiz : Taux global d'évolution successive",
+  "questions": [
+    {
+      "text": "Un prix augmente de $10\\%$ puis de $20\\%$. Quel est le taux global d'évolution ?",
+      "options": [
+        "$30\\%$",
+        "$32\\%$",
+        "$33\\%$",
+        "$31\\%$"
+      ],
+      "correctAnswer": "$32\\%$",
+      "explanation": "Le multiplicateur global est $1,1 \\\\times 1,2 = 1,32$, ce qui correspond à une augmentation de $32\\%$. L'erreur fréquente est d'additionner les pourcentages ($10\\%+20\\%=30\\%$) ou d'arrondir mal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une quantité diminue de $15\\%$ puis augmente de $15\\%$. Quel est le taux global d'évolution ?",
+      "options": [
+        "$-2,25\\%$",
+        "$0\\%$",
+        "$2,25\\%$",
+        "$-3\\%$"
+      ],
+      "correctAnswer": "$-2,25\\%$",
+      "explanation": "Le multiplicateur global est $0,85 \\\\times 1,15 = 0,9775$, soit une diminution de $2,25\\%$. L'option $0\\%$ correspond à l'erreur de croire que les variations s'annulent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après deux évolutions successives, le taux global est de $44\\%$. La première évolution est une augmentation de $20\\%$. Quelle est la seconde évolution ?",
+      "options": [
+        "$20\\%$",
+        "$24\\%$",
+        "$10\\%$",
+        "$44\\%$"
+      ],
+      "correctAnswer": "$20\\%$",
+      "explanation": "Soit $x$ le taux de la seconde évolution. On a $1,2 \\\\times (1 + x/100) = 1,44$, donc $1 + x/100 = 1,2$ et $x = 20\\%$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une population de $5000$ habitants augmente de $8\\%$ puis diminue de $5\\%$. Quelle est la population finale ?",
+      "options": [
+        "$5130$",
+        "$5140$",
+        "$5120$",
+        "$5000$"
+      ],
+      "correctAnswer": "$5130$",
+      "explanation": "Après la hausse : $5000 \\\\times 1,08 = 5400$. Après la baisse : $5400 \\\\times 0,95 = 5130$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après deux remises successives de $10\\%$ et $20\\%$, un article coûte $72$ euros. Quel était son prix initial ?",
+      "options": [
+        "cent euros",
+        "quatre-vingt-dix euros",
+        "quatre-vingts euros",
+        "cent dix euros"
+      ],
+      "correctAnswer": "cent euros",
+      "explanation": "Soit $P$ le prix initial. Après les remises : $P \\\\times 0,9 \\\\times 0,8 = 0,72 P = 72$, donc $P = 100$ euros, soit cent euros.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

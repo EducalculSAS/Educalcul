@@ -1,0 +1,128 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 257,
+  "_course_code": "cm1-t07-c02-construire-un-diagramme",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Légender",
+  "title": "Légender un diagramme",
+  "blocks": [
+    {
+      "title": "Vocabulaire du diagramme",
+      "content": "Relie chaque élément d'un diagramme à sa définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Titre",
+          "right": "Indique le sujet du diagramme"
+        },
+        {
+          "left": "Axe horizontal",
+          "right": "Présente les catégories (ex : les mois, les fruits)"
+        },
+        {
+          "left": "Axe vertical",
+          "right": "Indique l'échelle des valeurs (ex : nombre d'élèves)"
+        },
+        {
+          "left": "Légende",
+          "right": "Explique le code des couleurs ou des motifs utilisés"
+        },
+        {
+          "left": "Graduation",
+          "right": "Repère les valeurs numériques sur l'axe vertical"
+        }
+      ],
+      "items": [],
+      "explanation": "Le titre résume l'information globale. L'axe horizontal (abscisses) porte les catégories. L'axe vertical (ordonnées) porte l'échelle numérique avec ses graduations. La légende est indispensable si plusieurs séries de données sont représentées par des couleurs ou motifs différents.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en barres : Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Banane",
+            "value": 5,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraise",
+            "value": 10,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Légendes contextualisées",
+      "content": "Relie chaque information à l'endroit où elle doit apparaître sur un diagramme en barres représentant les sports préférés d'une classe.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Les sports préférés des élèves de CM1",
+          "right": "Titre du diagramme"
+        },
+        {
+          "left": "Sports",
+          "right": "Nom de l'axe horizontal (catégories)"
+        },
+        {
+          "left": "Nombre d'élèves",
+          "right": "Nom de l'axe vertical (valeurs)"
+        },
+        {
+          "left": "Football, Natation, Vélo",
+          "right": "Étiquettes des catégories (modalités)"
+        },
+        {
+          "left": "$1$ carré = $2$ élèves",
+          "right": "Échelle / Unité de représentation"
+        }
+      ],
+      "items": [],
+      "explanation": "Le titre doit être clair et complet. L'axe horizontal reçoit le nom de la variable qualitative (Sports) et ses modalités (Football...). L'axe vertical reçoit le nom de la variable quantitative (Nombre d'élèves) et son unité. L'échelle précise la correspondance entre la hauteur de la barre et la quantité (ici 1 carré pour 2 élèves).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Repérer les légendes manquantes",
+      "content": "Relie chaque description d'un diagramme incomplet à l'élément de légende qu'il faut ajouter.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Un diagramme en barres sans titre",
+          "right": "Il manque le sujet principal"
+        },
+        {
+          "left": "Un axe vertical avec des chiffres mais sans unité",
+          "right": "Il manque le nom de l'axe vertical (ex : 'Effectif')"
+        },
+        {
+          "left": "Des barres de couleurs différentes sans explication",
+          "right": "Il manque la légende"
+        },
+        {
+          "left": "Des catégories écrites dans le désordre",
+          "right": "Il manque un classement logique (alphabétique ou croissant)"
+        },
+        {
+          "left": "Une graduation qui saute des nombres ($0$, $5$, $15$)",
+          "right": "Il manque une graduation régulière"
+        }
+      ],
+      "items": [],
+      "explanation": "Un diagramme lisible nécessite un titre explicite. Les axes doivent être nommés avec leur unité. Si des codes visuels (couleurs) différencient des séries, une légende les explique. Les catégories doivent être ordonnées pour faciliter la lecture. La graduation doit être régulière (même écart entre deux traits) pour respecter la proportionnalité.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

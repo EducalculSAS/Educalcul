@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_course_id": 347,
+  "_course_code": "6eme-t04-c01-egalites-et-valeurs-manquantes",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Trouver inconnue simple",
+  "title": "Quiz : Trouver l'inconnue simple",
+  "questions": [
+    {
+      "text": "Quelle est la valeur de $x$ dans l'égalité $x + 7 = 15$ ?",
+      "options": [
+        "$x = 8$",
+        "$x = 22$",
+        "$x = 7$",
+        "$x = 15$"
+      ],
+      "correctAnswer": "$x = 8$",
+      "explanation": "Pour isoler $x$, il faut faire l'opération inverse de l'addition, c'est-à-dire une soustraction. On retire $7$ des deux côtés : $x = 15 - 7$, donc $x = 8$. L'option $22$ correspond à une addition ($15+7$), les autres ne respectent pas l'égalité.",
+      "points": 1,
+      "figure": {
+        "type": "equation_balancer",
+        "leftTerms": [
+          "x",
+          "+7"
+        ],
+        "rightTerms": [
+          "15"
+        ],
+        "caption": "Balance : x + 7 = 15"
+      }
+    },
+    {
+      "text": "Résous l'équation $5x = 35$.",
+      "options": [
+        "$x = 7$",
+        "$x = 30$",
+        "$x = 40$",
+        "$x = 5$"
+      ],
+      "correctAnswer": "$x = 7$",
+      "explanation": "Ici, $x$ est multiplié par $5$. Pour trouver $x$, il faut diviser les deux côtés par $5$ : $x = 35 / 5 = 7$. L'option $30$ vient d'une soustraction ($35-5$), $40$ d'une addition ($35+5$), et $5$ correspond au coefficient au lieu du résultat.",
+      "points": 1,
+      "figure": {
+        "type": "equation_balancer",
+        "leftTerms": [
+          "5x"
+        ],
+        "rightTerms": [
+          "35"
+        ],
+        "caption": "Balance : 5x = 35"
+      }
+    },
+    {
+      "text": "Trouve la valeur de $x$ si $3x - 4 = 11$.",
+      "options": [
+        "$x = 5$",
+        "$x = 7$",
+        "$x = 15$",
+        "$x = 3$"
+      ],
+      "correctAnswer": "$x = 5$",
+      "explanation": "C'est une équation à deux étapes. D'abord, on annule la soustraction en ajoutant $4$ des deux côtés : $3x = 11 + 4 = 15$. Ensuite, on divise par $3$ : $x = 15 / 3 = 5$. L'option $7$ correspond à $11-4$ puis oubli de diviser, $15$ est le résultat intermédiaire ($3x$), $3$ vient d'une division de $11$ par $3$ approximative.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle valeur de $x$ vérifie l'égalité $2x + 6 = x + 12$ ?",
+      "options": [
+        "$x = 6$",
+        "$x = 3$",
+        "$x = 18$",
+        "$x = 2$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On regroupe les $x$ à gauche en soustrayant $x$ des deux côtés : $2x - x + 6 = 12$, soit $x + 6 = 12$. On soustrait ensuite $6$ : $x = 12 - 6 = 6$. L'option $3$ vient d'une division par $2$ trop précoce, $18$ d'une addition des constants, $2$ d'une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a un certain nombre de billes. Elle en achète $8$ de plus et en a maintenant $25$. Quelle équation permet de trouver le nombre de billes $b$ qu'elle avait au départ ?",
+      "options": [
+        "$b + 8 = 25$",
+        "$b - 8 = 25$",
+        "$8b = 25$",
+        "$b = 25 + 8$"
+      ],
+      "correctAnswer": "$b + 8 = 25$",
+      "explanation": "Le nombre de départ est $b$. Elle en ajoute $8$, le total est $25$. Cela s'écrit $b + 8 = 25$. L'option $b - 8 = 25$ correspondrait à une perte de billes, $8b = 25$ à une multiplication, et $b = 25 + 8$ donne directement le résultat sans être l'équation modélisant la situation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

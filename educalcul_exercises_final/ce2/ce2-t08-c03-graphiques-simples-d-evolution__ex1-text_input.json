@@ -1,0 +1,135 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire axes",
+  "title": "Lecture d'axes sur un graphique d'évolution",
+  "blocks": [
+    {
+      "title": "Lecture directe",
+      "content": "Quelle est la hauteur de la plante au jour $3$ ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur le graphique, la barre correspondant au jour $3$ monte jusqu'à la valeur $3$ sur l'axe vertical. Donc la hauteur est $3$.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Évolution de la hauteur d'une plante sur 5 jours",
+        "bars": [
+          {
+            "label": "Jour 1",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 4",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 5",
+            "value": 4,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Comparaison",
+      "content": "De combien la hauteur a-t-elle augmenté entre le jour $2$ et le jour $4$ ?",
+      "correctAnswer": "1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La hauteur au jour $2$ est $5$ et au jour $4$ est $6$. L'augmentation est $6 - 5 = 1$.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Évolution de la hauteur d'une plante sur 5 jours",
+        "bars": [
+          {
+            "label": "Jour 1",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 4",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 5",
+            "value": 4,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Maximum",
+      "content": "Quel est le jour où la hauteur est maximale ?",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La hauteur maximale est $6$, atteinte au jour $4$. Donc le jour est $4$.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Évolution de la hauteur d'une plante sur 5 jours",
+        "bars": [
+          {
+            "label": "Jour 1",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 3",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 4",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Jour 5",
+            "value": 4,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

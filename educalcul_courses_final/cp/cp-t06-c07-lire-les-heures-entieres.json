@@ -1,0 +1,269 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.645566+00:00",
+  "id": 53,
+  "code": "cp-t06-c07",
+  "title": "Lire les heures entières",
+  "description": "Cours structuré Educalcul : Lire les heures entières.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Lire les heures entières",
+    "objectif_global": "Lire les heures entières",
+    "mini_lecons_imposees": [
+      "Lire la petite aiguille.",
+      "Associer affichage et moment de journée.",
+      "Placer une heure entière."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Lire la petite aiguille.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans notre première découverte de l'horloge ! Aujourd'hui, on va apprendre à lire l'heure grâce à la petite aiguille. C'est elle qui nous dit quelle heure il est, comme un petit guide qui montre le chemin sur le cadran."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien l'horloge : elle a un cercle avec des chiffres de $1$ à $12$. La petite aiguille est courte et épaisse. Quand elle pointe exactement sur un chiffre, c'est l'heure pile. Par exemple, si elle est sur le $3$, il est $3$ heures. Si elle est sur le $7$, il est $7$ heures. C'est aussi simple que ça !"
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 0,
+              "caption": "La petite aiguille montre $3$ heures pile.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons ensemble avec d'autres heures. La petite aiguille fait le tour complet du cadran en $12$ heures. Elle passe sur chaque chiffre un par un, tranquillement. Quand elle arrive sur le $12$, c'est midi ou minuit, le début d'un nouveau tour."
+            },
+            {
+              "type": "clock",
+              "hours": 12,
+              "minutes": 0,
+              "caption": "La petite aiguille sur $12$ : midi ou minuit.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? La petite aiguille ne ment jamais. Elle reste bien plantée sur son chiffre tant que l'heure ne change pas. C'est comme un doigt qui montre : \"Regarde, c'est l'heure !\" Essaie de la déplacer sur l'horloge interactive pour bien comprendre."
+            },
+            {
+              "type": "clock",
+              "hours": 6,
+              "minutes": 0,
+              "caption": "Place la petite aiguille sur $6$ heures.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'horloge, la petite aiguille pointe sur le $5$. Quelle heure est-il ?",
+              "answer": "$5$ heures",
+              "hint": "Regarde le chiffre sur lequel la petite aiguille est plantée.",
+              "explanation": "La petite aiguille montre l'heure. Si elle est sur $5$, il est $5$ heures pile."
+            },
+            {
+              "question": "Il est $8$ heures. Sur quel chiffre la petite aiguille se trouve-t-elle ?",
+              "answer": "Sur le $8$",
+              "hint": "L'heure affichée correspond au chiffre pointé par la petite aiguille.",
+              "explanation": "À $8$ heures pile, la petite aiguille indique exactement le chiffre $8$ sur le cadran."
+            },
+            {
+              "question": "Déplace la petite aiguille pour afficher $11$ heures sur l'horloge.",
+              "answer": "Petite aiguille sur $11$",
+              "hint": "Compte les chiffres jusqu'à $11$ en partant de $12$.",
+              "explanation": "On place la courte aiguille sur le chiffre $11$. Il est alors $11$ heures pile."
+            }
+          ]
+        },
+        {
+          "title": "Associer affichage et moment de journée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu sais maintenant lire la petite aiguille. Mais une horloge, ça sert aussi à savoir où on en est dans la journée. Est-ce le matin ? L'après-midi ? Le soir ? On va associer chaque heure à un moment de la vie quotidienne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine ta journée. À $7$ heures, la petite aiguille est sur $7$ : c'est l'heure de se lever, le soleil se lève. À $12$ heures, elle est sur $12$ : c'est l'heure du déjeuner, le soleil est haut dans le ciel. À $16$ heures, elle est sur $4$ : c'est l'heure du goûter après l'école. Et à $20$ heures, elle est sur $8$ : c'est l'heure du dîner, la nuit tombe."
+            },
+            {
+              "type": "clock",
+              "hours": 7,
+              "minutes": 0,
+              "caption": "$7$ heures : l'heure de se lever le matin.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, le cadran ne va que jusqu'à $12$ ! Pourtant, la journée a $24$ heures. La petite aiguille fait donc deux tours complets par jour. Le premier tour, c'est le matin et le début d'après-midi (de minuit à midi). Le deuxième tour, c'est la fin d'après-midi, le soir et la nuit (de midi à minuit)."
+            },
+            {
+              "type": "clock",
+              "hours": 4,
+              "minutes": 0,
+              "caption": "$4$ heures : peut-être l'heure du goûter !",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas confondre, on dit souvent \"du matin\" ou \"du soir\". Par exemple, $8$ heures du matin, c't l'heure de l'école. $8$ heures du soir, c'est l'heure du coucher. La petite aiguille est au même endroit sur le cadran, mais le moment de la journée est totalement différent !"
+            },
+            {
+              "type": "clock",
+              "hours": 8,
+              "minutes": 0,
+              "caption": "$8$ heures : matin ou soir ? À toi de deviner !",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il est $12$ heures, le soleil est au plus haut. Est-ce midi ou minuit ?",
+              "answer": "Midi",
+              "hint": "Le soleil haut dans le ciel, c'est le milieu de la journée.",
+              "explanation": "À $12$ heures avec le soleil au zénith, c'est midi, l'heure du déjeuner."
+            },
+            {
+              "question": "Tu rentres de l'école et tu prends ton goûter. La petite aiguille est sur $4$. Est-ce $4$ heures du matin ou $4$ heures de l'après-midi ?",
+              "answer": "$4$ heures de l'après-midi",
+              "hint": "Le goûter se prend après l'école, pas en pleine nuit.",
+              "explanation": "L'heure du goûter est vers $16$ heures, soit $4$ heures de l'après-midi (deuxième tour de l'aiguille)."
+            },
+            {
+              "question": "Associe : $7$ heures → lever / $20$ heures → coucher. La petite aiguille montre $7$ pour les deux. Comment faire la différence ?",
+              "answer": "On ajoute \"du matin\" ou \"du soir\"",
+              "hint": "Le cadran ne change pas, mais le moment de la journée si.",
+              "explanation": "Même position de l'aiguille (sur $7$), mais $7$ heures du matin = lever, $7$ heures du soir ($19$h) = dîner. On précise le moment."
+            }
+          ]
+        },
+        {
+          "title": "Placer une heure entière.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais lire l'heure et la situer dans la journée. Maintenant, on va apprendre à placer toi-même la petite aiguille sur l'horloge. C'est comme régler une montre : tu décides l'heure et tu poses l'aiguille au bon endroit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le cadran : les chiffres sont espacés régulièrement. Pour placer $2$ heures, tu mets la petite aiguille pile sur le $2$. Pour $10$ heures, tu la mets sur le $10$. L'aiguille doit pointer exactement vers le centre du chiffre, pas à côté. C'est comme viser une cible !"
+            },
+            {
+              "type": "clock",
+              "hours": 2,
+              "minutes": 0,
+              "caption": "Place la petite aiguille sur $2$ heures.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut montrer une heure qui n'est pas encore arrivée. Par exemple, il est $9$ heures et tu veux régler ton réveil pour $11$ heures. Tu fais avancer la petite aiguille de deux chiffres : $9$ → $10$ → $11$. Elle saute d'un chiffre à l'autre, tranquillement, dans le sens des aiguilles d'une montre (le sens qui tourne à droite)."
+            },
+            {
+              "type": "clock",
+              "hours": 11,
+              "minutes": 0,
+              "caption": "Règle l'horloge sur $11$ heures pour le réveil.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on veut revenir en arrière ? Facile ! Tu fais reculer la petite aiguille dans l'autre sens. Par exemple, de $5$ heures à $3$ heures : $5$ → $4$ → $3$. L'aiguille revient vers les petits chiffres. Maintenant, tu sais placer n'importe quelle heure entière, en avant ou en arrière. Tu es prêt pour la grande aiguille plus tard !"
+            },
+            {
+              "type": "clock",
+              "hours": 3,
+              "minutes": 0,
+              "caption": "Remets l'horloge à $3$ heures.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'heure quand la petite aiguille pointe un chiffre.",
+                "Je sais dire si c'est le matin ou le soir pour une même heure.",
+                "Je sais placer la petite aiguille sur l'heure demandée.",
+                "Je connais le sens de rotation des aiguilles (vers la droite)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place la petite aiguille pour afficher $6$ heures sur l'horloge.",
+              "answer": "Petite aiguille sur $6$",
+              "hint": "Cherche le chiffre $6$ en bas du cadran.",
+              "explanation": "Le $6$ est tout en bas. La petite aiguille pointe vers le bas pour $6$ heures."
+            },
+            {
+              "question": "Il est $9$ heures. Tu veux régler l'horloge sur $12$ heures. Combien de chiffres la petite aiguille doit-elle avancer ?",
+              "answer": "$3$ chiffres",
+              "hint": "Compte : $9$ → $10$ → $11$ → $12$.",
+              "explanation": "De $9$ à $12$, l'aiguille passe par $10$, $11$ et arrive à $12$ : trois sauts."
+            },
+            {
+              "question": "Tu as mis la petite aiguille sur $10$. Est-ce $10$ heures du matin ou $10$ heures du soir ? Comment le savoir ?",
+              "answer": "On ne peut pas le savoir sans plus d'infos (contexte).",
+              "hint": "Le cadran seul ne distingue pas les deux tours de la journée.",
+              "explanation": "La position sur $10$ est identique pour $10$ h matin et $22$ h soir. Il faut le contexte (lever, école, dîner...) pour savoir."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

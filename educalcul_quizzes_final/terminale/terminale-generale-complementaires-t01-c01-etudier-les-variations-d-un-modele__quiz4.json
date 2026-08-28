@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Application : Étudier les variations d'un modèle",
+  "title": "Variations d'un modèle mathématique",
+  "questions": [
+    {
+      "text": "Un modèle décrit par la fonction $f(x) = -2x^2 + 12x - 10$ représente le profit d'une entreprise. Pour quelle valeur de $x$ le profit est ilmu maximum ?",
+      "options": [
+        "$x = 2$",
+        "$x = 3$",
+        "$x = 6$",
+        "$x = 10$"
+      ],
+      "correctAnswer": "$x = 3$",
+      "explanation": "La fonction $f$ est une fonction polynôme du second degré de la forme $ax^2 + bx + c$ avec $a = -2$ et $b = 12$. Comme $a < 0$, le maximum est atteint au sommet d'abscisse $x = -b/(2a)$. On a donc $x = -12 / (2 \\times -2) = -12 / -4 = 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le modèle $g(t) = 100 \\times e^{-0,5t}$ représentant la quantité d'un médicament dans le sang après $t$ heures. Quel est le signe de la dérivée $g'(t)$ sur l'intervalle $[0, +\\infty[$ ?",
+      "options": [
+        "$g'(t) > 0$ pour tout $t$",
+        "$g'(t) < 0$ pour tout $t$",
+        "$g'(t) = 0$ pour tout $t$",
+        "$g'(t)$ change de signe en $t = 0,5$"
+      ],
+      "correctAnswer": "$g'(t) < 0$ pour tout $t$",
+      "explanation": "La dérivée de $g(t)$ est $g'(t) = 100 \\times (-0,5) \\times e^{-0,5t} = -50 \\times e^{-0,5t}$. Comme l'exponentielle est toujours strictement positive, le produit d'un nombre négatif par une exponentielle est strictement négatif. La fonction est donc strictement décroissante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une population est modélisée par la fonction $h(t) = \\frac{500t}{t + 2}$ pour $t \\geq 0$. Quelle est la limite de cette population quand $t$ tend vers $+\\infty$ ?",
+      "options": [
+        "$0$",
+        "$250$",
+        "$500$",
+        "$+\\infty$"
+      ],
+      "correctAnswer": "$500$",
+      "explanation": "Pour $h(t) = \\frac{500t}{t + 2}$, on factorise par le terme de plus haut degré au numérateur et au dénominateur : $h(t) = \\frac{t(500)}{t(1 + 2/t)}$. Quand $t$ tend vers $+\\infty$, le terme $2/t$ tend vers $0$. La limite est donc $500 / 1 = 500$, ce qui correspond à la capacité de charge du milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le modèle $f(x) = x^3 - 3x + 1$ sur l'intervalle $[-2, 2]$. Sur quel intervalle la fonction est elle décroissante ?",
+      "options": [
+        "$[-2, -1]$",
+        "$[-1, 1]$",
+        "$[1, 2]$",
+        "$[-2, 2]$"
+      ],
+      "correctAnswer": "$[-1, 1]$",
+      "explanation": "On calcule la dérivée : $f'(x) = 3x^2 - 3 = 3(x^2 - 1) = 3(x - 1)(x + 1)$. La dérivée est négative lorsque $x^2 - 1 < 0$, c'est à dire lorsque $x$ appartient à l'intervalle ouvert $]-1, 1[$. La fonction est donc décroissante sur l'intervalle $[-1, 1]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un modèle de coût est donné par $C(x) = x^2 + \\frac{16}{x}$ pour $x > 0$. Pour quelle valeur de $x$ le coût minimal est ilmu atteint ?",
+      "options": [
+        "$x = 2$",
+        "$x = 4$",
+        "$x = 8$",
+        "$x = 16$"
+      ],
+      "correctAnswer": "$x = 2$",
+      "explanation": "On calcule la dérivée : $C'(x) = 2x - \\frac{16}{x^2}$. Pour trouver le minimum, on cherche $C'(x) = 0$, soit $2x = \\frac{16}{x^2}$, ce qui donne $x^3 = 8$. La solution réelle est $x = \\sqrt[3]{8} = 2$. Le coût est minimum pour $x = 2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

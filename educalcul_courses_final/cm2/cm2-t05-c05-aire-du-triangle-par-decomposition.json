@@ -1,0 +1,453 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.451785+00:00",
+  "id": 307,
+  "code": "cm2-t05-c05",
+  "title": "Aire du triangle par décomposition",
+  "description": "Cours structuré Educalcul : Aire du triangle par décomposition.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Aire du triangle par décomposition",
+    "objectif_global": "Aire du triangle par décomposition",
+    "mini_lecons_imposees": [
+      "Doubler / moitié d'un rectangle.",
+      "Calculer.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Doubler / moitié d'un rectangle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le lien entre triangle et rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une feuille de papier rectangulaire, comme une page de cahier. Si tu la plies en deux en joignant deux coins opposés, tu obtiens un triangle. En dépliant, tu vois que le rectangle est composé de deux triangles identiques. C'est une idée simple mais puissante : chaque triangle rectangle est exactement la moitié d'un rectangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "8 cm",
+                "5 cm",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Un triangle rectangle de base $8$ cm et de hauteur $5$ cm inscrit dans un rectangle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce triangle rectangle. Ses deux côtés qui forment l'angle droit mesurent $8$ cm et $5$ cm. Si on prend un deuxième triangle pareil et qu'on le retourne, on peut les coller ensemble pour reconstruire un rectangle de $8$ cm sur $5$ cm. L'aire de ce rectangle se calcule facilement : on multiplie la longueur par la largeur."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{rectangle}} = 8 \\times 5 = 40 \\text{ cm}^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque le triangle est la moitié de ce rectangle, son aire est la moitié de $40$ cm², soit $20$ cm². C'est la clé pour calculer l'aire de n'importe quel triangle rectangle : on multiplie les deux côtés de l'angle droit, puis on divise par deux."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Le triangle représente la moitié de l'aire du rectangle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le principe sur un triangle rectangle, nous allons apprendre à repérer la base et la hauteur sur n'importe quel triangle, même s'il n'a pas d'angle droit. C'est la même idée : on cherche le côté qui servira de base et la hauteur correspondante, celle qui tombe perpendiculairement sur cette base."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier la base et la hauteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle quelconque, on peut choisir n'importe quel côté comme base. La hauteur est alors la distance perpendicular à cette base, mesurée depuis le sommet opposé. Parfois la hauteur tombe à l'intérieur du triangle (triangle aigu), parfois à l'extérieur (triangle obtus). L'important, c'est de bien tracer ce segment perpendicular."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "10 cm",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1,
+              "caption": "Triangle aigu : la base $BC$ mesure $10$ cm, la hauteur relative à cette base est $6$ cm."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons ce triangle dont la base mesure $10$ cm et la hauteur correspondante $6$ cm. Si on double ce triangle en le retournant, on obtient un parallélogramme dont l'aire est base fois hauteur. Le triangle en est donc la moitié."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{triangle}} = \\frac{10 \\times 6}{2} = 30 \\text{ cm}^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien maîtriser cette notion, entraînons-nous avec des triangles de formes différentes : un triangle obtus où la hauteur se trouve à l'extérieur, et un triangle rectangle où la hauteur est l'un des côtés de l'angle droit. À chaque fois, la méthode reste la même : identifier la base, mesurer la hauteur, appliquer la formule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des triangles sous toutes les formes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce triangle obtus. Sa base mesure $12$ cm. La hauteur relative à cette base sort du triangle et mesure $4$ cm. Même si la hauteur est à l'extérieur, la formule fonctionne parfaitement : on multiplie la base par la hauteur, puis on divise par deux."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\frac{12 \\times 4}{2} = 24 \\text{ cm}^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et voici un triangle rectangle où les deux côtés de l'angle droit font office de base et de hauteur. Si la base est $9$ cm et l'autre côté $7$ cm, l'aire est la moitié de $9 \\times 7$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\frac{9 \\times 7}{2} = 31,5 \\text{ cm}^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle rectangle a pour base $6$ cm et pour hauteur $4$ cm. Quelle est son aire ?",
+              "answer": "$12$ cm²",
+              "hint": "Multiplie la base par la hauteur, puis divise par deux.",
+              "explanation": "L'aire d'un triangle rectangle est la moitié de l'aire du rectangle formé par ses deux côtés de l'angle droit. $6 \\times 4 = 24$, $24 / 2 = 12$ cm²."
+            },
+            {
+              "question": "Un triangle a pour base $10$ cm et pour hauteur $6$ cm. Calcule son aire.",
+              "answer": "$30$ cm²",
+              "hint": "Utilise la formule : aire = (base × hauteur) / 2.",
+              "explanation": "On multiplie $10$ par $6$ pour obtenir $60$, puis on divise par $2$ ce qui donne $30$ cm²."
+            },
+            {
+              "question": "Un triangle obtus a une base de $12$ cm et une hauteur de $4$ cm. Quelle est son aire ?",
+              "answer": "$24$ cm²",
+              "hint": "La formule est la même même si la hauteur est à l'extérieur du triangle.",
+              "explanation": "Base $12$ cm, hauteur $4$ cm. $12 \\times 4 = 48$, $48 / 2 = 24$ cm²."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel de la formule et premier calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant le secret : l'aire d'un triangle se calcule avec la formule $A = \\frac{b \\times h}{2}$, où $b$ est la longueur de la base choisie et $h$ la hauteur correspondante. Cette formule marche pour tous les triangles, qu'ils soient rectangles, aigus ou obtus. Prenons un exemple concret : un jardin triangulaire dont la base mesure $8$ mètres et la hauteur $5$ mètres. Combien de mètres carrés de gazon faut-il acheter ?"
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\frac{8 \\times 5}{2} = 20 \\text{ m}^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "On multiplie $8$ par $5$, ce qui fait $40$, puis on divise par $2$ pour obtenir $20$ m². C'est exactement la surface du jardin. Note bien que l'unité de l'aire est toujours une unité de surface : m², cm², km², etc., selon les unités utilisées pour la base et la hauteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à des nombres un peu plus grands pour t'entraîner à faire le calcul en plusieurs étapes. Imagine une voile de bateau triangulaire : sa base mesure $12$ mètres et sa hauteur $7$ mètres. Le tissu se vend au mètre carré, il faut donc connaître l'aire exacte."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer avec des nombres plus grands"
+            },
+            {
+              "type": "paragraph",
+              "content": "On pose la multiplication $12 \\times 7$. $12 \\times 7 = 84$. Ensuite on divise $84$ par $2$, ce qui donne $42$. L'aire de la voile est donc $42$ m². Si tu veux vérifier, tu peux aussi diviser d'abord un des nombres par $2$ : $12 / 2 = 6$, puis $6 \\times 7 = 42$. Les deux méthodes donnent le même résultat, choisis celle qui te semble la plus simple."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier base et hauteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Base $b = 12$ m, hauteur $h = 7$ m."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$12 \\times 7 = 84$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$84 / 2 = 42$ m²."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît l'aire et l'une des dimensions, et on doit retrouver l'autre. C'est un calcul inverse très utile. Par exemple, un triangle a une aire de $36$ cm² et sa base mesure $9$ cm. Quelle est sa hauteur ? On raisonne à l'envers : on multiplie l'aire par $2$ pour retrouver le produit base × hauteur, puis on divise par la base connue."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver une dimension manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aire $A = 36$ cm², base $b = 9$ cm. On calcule $2 \\times A = 72$. Ce $72$ est égal à $b \\times h$, donc $9 \\times h = 72$. La hauteur est $72 / 9 = 8$ cm. Vérifions : $(9 \\times 8) / 2 = 36$ cm², c'est correct."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Donnée",
+                "Valeur"
+              ],
+              "rows": [
+                [
+                  "Aire",
+                  "36 cm²"
+                ],
+                [
+                  "Base",
+                  "9 cm"
+                ],
+                [
+                  "Hauteur cherchée",
+                  "8 cm"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant l'exercice inverse : tu as l'aire et la hauteur, trouve la base. La méthode est exactement la même, il suffit d'échanger les rôles de la base et de la hauteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'aire d'un triangle de base $15$ cm et de hauteur $4$ cm.",
+              "answer": "$30$ cm²",
+              "hint": "Multiplie $15$ par $4$, puis divise par $2$.",
+              "explanation": "$15 \\times 4 = 60$, $60 / 2 = 30$ cm²."
+            },
+            {
+              "question": "Une voile triangulaire a une base de $12$ m et une hauteur de $7$ m. Quelle est son aire ?",
+              "answer": "$42$ m²",
+              "hint": "Utilise la méthode en trois étapes : identifier, multiplier, diviser par deux.",
+              "explanation": "$12 \\times 7 = 84$, $84 / 2 = 42$ m²."
+            },
+            {
+              "question": "Un triangle a une aire de $36$ cm² et une hauteur de $8$ cm. Trouve sa base.",
+              "answer": "$9$ cm",
+              "hint": "Multiplie l'aire par $2$, puis divise par la hauteur connue.",
+              "explanation": "$2 \\times 36 = 72$, $72 / 8 = 9$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi la formule marche-t-elle pour un triangle rectangle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre feuille de papier rectangulaire. Quand on la plie en diagonale, on crée deux triangles rectangles congrus. Si on les sépare, chaque triangle a exactement la même surface. L'aire du rectangle est base × hauteur. Comme le triangle en est la moitié, on divise par deux. C'est une justification visuelle et concrète qu'on peut refaire à la maison avec n'importe quel rectangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "b",
+                "h",
+                ""
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle rectangle de base $b$ et hauteur $h$ : deux triangles forment un rectangle $b \\times h$."
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi le voir comme une décomposition : le rectangle se décompose en deux triangles de même aire. Donc l'aire d'un triangle rectangle est la moitié du produit de ses deux côtés perpendiculaires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le triangle n'a pas d'angle droit ? On peut tracer la hauteur relative à une base choisie. Cette hauteur coupe le triangle en deux triangles rectangles. L'aire du triangle initial est la somme des aires de ces deux triangles rectangles. Chacun a pour aire la moitié de (partie de base × hauteur). En additionnant, on retrouve la formule générale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justification pour tout triangle par la hauteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un triangle aigu. On choisit une base, par exemple $BC = 10$ cm. On trace la hauteur depuis le sommet $A$ perpendicular à $BC$, elle mesure $6$ cm. Cette hauteur divise le triangle en deux triangles rectangles. Le premier a pour base $BD$ et hauteur $6$ cm, le second a pour base $DC$ et même hauteur. L'aire totale est $\\frac{BD \\times 6}{2} + \\frac{DC \\times 6}{2} = \\frac{(BD+DC) \\times 6}{2} = \\frac{10 \\times 6}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\frac{(BD+DC) \\times h}{2} = \\frac{b \\times h}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une autre façon élégante de justifier la formule pour n'importe quel triangle : le doublement par parallélogramme. Si on prend deux triangles identiques et qu'on les assemble bord à bord en les retournant, on obtient toujours un parallélogramme. L'aire d'un parallélogramme est base × hauteur. Comme le triangle est la moitié de ce parallélogramme, sa aire est la moitié du produit base × hauteur. Cette méthode marche même pour les triangles obtus."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du parallélogramme"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Prendre deux triangles identiques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a un triangle quelconque et son double obtenu par symétrie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les assembler pour former un parallélogramme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En les collant par un côté, on obtient un parallélogramme de même base et de même hauteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aire du parallélogramme = base × hauteur. Aire du triangle = moitié de cela = (base × hauteur) / 2."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voilà, tu as maintenant trois façons de comprendre et de justifier la formule de l'aire du triangle. Chacune te donne une image mentale différente : le rectangle pour le triangle rectangle, la décomposition en deux triangles rectangles pour le triangle aigu, et le parallélogramme pour le cas général. Choisis celle qui te parle le plus pour l'expliquer à un camarade."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer pourquoi l'aire d'un triangle rectangle est la moitié de l'aire du rectangle construit sur ses côtés de l'angle droit.",
+                "Je sais identifier la base et la hauteur sur n'importe quel triangle (aigu, rectangle, obtus).",
+                "Je sais calculer l'aire d'un triangle en utilisant la formule A = (b × h) / 2.",
+                "Je sais retrouver la base ou la hauteur quand je connais l'aire et l'autre dimension.",
+                "Je peux justifier la formule par décomposition en deux triangles rectangles ou par construction d'un parallélogramme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Explique avec tes mots pourquoi l'aire d'un triangle rectangle de base $b$ et hauteur $h$ vaut $\\frac{b \\times h}{2}$.",
+              "answer": "Deux triangles rectangles identiques forment un rectangle de dimensions $b$ et $h$. L'aire du rectangle est $b \\times h$, donc chaque triangle en est la moitié.",
+              "hint": "Pense à la feuille de papier pliée en deux.",
+              "explanation": "En doublant le triangle rectangle, on obtient un rectangle dont l'aire est base × hauteur. Le triangle est donc la moitié de cette aire."
+            },
+            {
+              "question": "Un triangle aigu a une base de $10$ cm. La hauteur le divise en deux parties de $4$ cm et $6$ cm. La hauteur mesure $5$ cm. Calcule l'aire du triangle en additionnant les aires des deux triangles rectangles.",
+              "answer": "$25$ cm²",
+              "hint": "Calcule l'aire de chaque petit triangle rectangle puis additionne.",
+              "explanation": "Premier triangle : $(4 \\times 5)/2 = 10$ cm². Deuxième : $(6 \\times 5)/2 = 15$ cm². Total $25$ cm². Vérification : $(10 \\times 5)/2 = 25$ cm²."
+            },
+            {
+              "question": "En utilisant la méthode du parallélogramme, justifie que l'aire d'un triangle obtus de base $12$ cm et de hauteur $4$ cm est $24$ cm².",
+              "answer": "Deux triangles obtus identiques forment un parallélogramme de base $12$ cm et de hauteur $4$ cm. Aire du parallélogramme = $12 \\times 4 = 48$ cm². Aire du triangle = $48 / 2 = 24$ cm².",
+              "hint": "Imagine deux triangles identiques qu'on assemble pour faire un parallélogramme.",
+              "explanation": "Le parallélogramme a pour aire base × hauteur. Le triangle en est la moitié."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

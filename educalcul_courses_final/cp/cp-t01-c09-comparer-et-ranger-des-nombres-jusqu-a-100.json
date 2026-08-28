@@ -1,0 +1,361 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.510809+00:00",
+  "id": 9,
+  "code": "cp-t01-c09",
+  "title": "Comparer et ranger des nombres jusqu'à 100",
+  "description": "Cours structuré Educalcul : Comparer et ranger des nombres jusqu'à 100.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Comparer et ranger des nombres jusqu'à 100",
+    "objectif_global": "Comparer et ranger des nombres jusqu'à 100",
+    "mini_lecons_imposees": [
+      "Comparer d'abord les dizaines.",
+      "Comparer ensuite les unités si nécessaire.",
+      "Ranger plusieurs nombres du plus petit au plus grand et inversement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Comparer d'abord les dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dizaines décident"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu regardes un nombre à deux chiffres, le premier chiffre te dit combien de groupes de dix il y a. C'est ce qu'on appelle la dizaine. Par exemple, dans $43$, le $4$ signifie quatre dizaines, soit quarante."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Un groupe de dix unités. Le chiffre des dizaines montre combien de groupes de dix il y a dans le nombre.",
+              "example": "Dans $57$, la dizaine est $5$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 3,
+              "caption": "43 : 4 dizaines et 3 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir quel nombre est le plus grand, regarde d'abord les dizaines. Le nombre qui a le plus de dizaines est le plus grand, peu importe les unités."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarde le chiffre des dizaines de chaque nombre.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le premier chiffre de chaque nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Le plus grand chiffre des dizaines gagne.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Celui qui a plus de dizaines est le plus grand."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essaye avec trois nombres. Même règle : compare seulement les dizaines pour les ranger du plus petit au plus grand."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as vu que les dizaines suffisent souvent pour décider. Dans la prochaine leçon, on verra quoi faire quand les dizaines sont égales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel nombre est plus grand : $43$ ou $57$ ?",
+              "answer": "$57$",
+              "hint": "Regarde le chiffre des dizaines.",
+              "explanation": "Le chiffre des dizaines de $57$ est $5$, celui de $43$ est $4$. Cinq dizaines valent plus que quatre dizaines."
+            },
+            {
+              "question": "Range ces trois nombres du plus petit au plus grand : $32$, $45$, $28$.",
+              "answer": "$28$, $32$, $45$",
+              "hint": "Compare seulement les dizaines.",
+              "explanation": "Les dizaines sont $2$, $4$, $3$. L'ordre des dizaines donne $2$, $3$, $4$."
+            },
+            {
+              "question": "Entre $61$ et $69$, lequel a le plus de dizaines ?",
+              "answer": "Ils ont le même nombre de dizaines.",
+              "hint": "Regarde le premier chiffre.",
+              "explanation": "Les deux nombres ont $6$ dizaines. On ne peut pas décider avec les dizaines seules."
+            }
+          ]
+        },
+        {
+          "title": "Comparer ensuite les unités si nécessaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les dizaines sont égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois deux nombres ont le même chiffre des dizaines, comme $42$ et $46$. Alors les dizaines ne peuvent pas départager. Il faut regarder le deuxième chiffre, celui des unités."
+            },
+            {
+              "type": "definition",
+              "term": "unité",
+              "definition": "Une seule chose, pas un groupe de dix. Le chiffre des unités montre combien il reste après les dizaines.",
+              "example": "Dans $46$, l'unité est $6$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 2,
+              "caption": "42 : 4 dizaines et 2 unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 6,
+              "caption": "46 : 4 dizaines et 6 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque les dizaines sont identiques, le nombre qui a le plus d'unités est le plus grand."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compare les dizaines. Si elles sont égales, passe à l'étape 2.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si le premier chiffre est le même."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compare les unités. Le plus grand gagne.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le deuxième chiffre pour départager."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec trois nombres qui ont la même dizaine. Range-les en ne regardant que les unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as compris ! Quand les dizaines sont pareilles, les unités font la différence. La dernière leçon te montrera comment ranger une liste complète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $42$ et $46$. Lequel est plus grand ?",
+              "answer": "$46$",
+              "hint": "Les dizaines sont égales, regarde les unités.",
+              "explanation": "Les deux ont $4$ dizaines. L'unité de $46$ est $6$, celle de $42$ est $2$. Six unités valent plus."
+            },
+            {
+              "question": "Range $31$, $35$, $33$ du plus petit au plus grand.",
+              "answer": "$31$, $33$, $35$",
+              "hint": "Même dizaine, compare les unités.",
+              "explanation": "Tous ont $3$ dizaines. Les unités $1$, $3$, $5$ donnent l'ordre."
+            },
+            {
+              "question": "Quel nombre est le plus petit entre $58$ et $53$ ?",
+              "answer": "$53$",
+              "hint": "Mêmes dizaines, compare les unités.",
+              "explanation": "Les dizaines sont $5$ pour les deux. L'unité $3$ est plus petite que $8$."
+            }
+          ]
+        },
+        {
+          "title": "Ranger plusieurs nombres du plus petit au plus grand et inversement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ranger une liste de nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant tu sais comparer deux nombres. Pour ranger plusieurs nombres, tu fais la même chose à plusieurs reprises : compare les dizaines, puis les unités si besoin."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 23,
+                  "label": "23"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 78,
+                  "label": "78"
+                }
+              ],
+              "caption": "Place les nombres sur la ligne"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris tous les nombres.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note chaque nombre que tu dois ranger."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compare les dizaines de chaque nombre.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Classe-les selon le chiffre des dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Si des dizaines sont égales, compare les unités.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise le deuxième chiffre pour affiner l'ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écris les nombres dans l'ordre demandé.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Du plus petit au plus grand ou l'inverse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ranger du plus grand au plus petit, tu fais le même travail mais tu inverses l'ordre à la fin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant comparer et ranger tous les nombres jusqu'à $100$."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux nombres en regardant d'abord les dizaines.",
+                "Je sais comparer les unités quand les dizaines sont égales.",
+                "Je sais ranger plusieurs nombres du plus petit au plus grand.",
+                "Je sais ranger plusieurs nombres du plus grand au plus petit."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Range ces nombres du plus petit au plus grand : $23$, $45$, $12$, $78$.",
+              "answer": "$12$, $23$, $45$, $78$",
+              "hint": "Compare d'abord les dizaines.",
+              "explanation": "Dizaines : $1$, $2$, $4$, $7$. L'ordre suit les dizaines."
+            },
+            {
+              "question": "Range les mêmes nombres du plus grand au plus petit.",
+              "answer": "$78$, $45$, $23$, $12$",
+              "hint": "Fais le même tri puis inverse l'ordre.",
+              "explanation": "L'ordre croissant est $12$, $23$, $45$, $78$. L'ordre décroissant est l'inverse."
+            },
+            {
+              "question": "Parmi $34$, $39$, $31$, lequel est au milieu quand on range du plus petit au plus grand ?",
+              "answer": "$34$",
+              "hint": "Trie les trois nombres.",
+              "explanation": "Ordre croissant : $31$, $34$, $39$. Le nombre du milieu est $34$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

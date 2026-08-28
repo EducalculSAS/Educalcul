@@ -1,0 +1,120 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire axe et catégories",
+  "title": "Algorithmes de lecture d'un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Identifier les catégories",
+      "content": "Voici un diagramme en bâtons montrant les fruits préférés des élèves. Écris un algorithme (une suite d'instructions numérotées) pour trouver et lister le nom de toutes les catégories présentes sur l'axe horizontal.",
+      "correctAnswer": "1. Regarder l'axe horizontal (celui du bas).\\n2. Lire les étiquettes écrites sous chaque bâtons.\\n3. Noter chaque nom trouvé : Pommes, Bananes, Fraises, Raisins.\\n4. La liste des catégories est complète.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'axe horizontal d'un diagramme en bâtons porte toujours les catégories (ici les noms des fruits). Pour les lire, on regarde simplement les mots écrits sous chaque barre. Il y a quatre catégories distinctes.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Fraises",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Déterminer l'échelle de l'axe vertical",
+      "content": "En observant l'axe vertical (celui de gauche) du même diagramme, écris un algorithme pour trouver la valeur que représente chaque graduation (le pas de l'échelle).",
+      "correctAnswer": "1. Repérer le plus grand nombre écrit sur l'axe vertical (ici $8$).\\n2. Compter le nombre de graduations (traits) entre $0$ et ce nombre (ici $8$ traits).\\n3. Diviser le nombre max par le nombre de traits : $8 \\div 8 = 1$.\\n4. Conclure : chaque graduation vaut $1$ élève.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'axe vertical indique les effectifs. Le maximum est $8$ (pour les bananes). Il y a $8$ graduations de $0$ à $8$. Le pas de l'échelle est donc de $1$ en $1$. Chaque trait horizontal correspond à $1$ élève.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Fraises",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Lire la valeur pour une catégorie",
+      "content": "Tu veux connaître le nombre d'élèves qui ont choisi 'Bananes'. Écris un algorithme précis qui utilise les deux axes pour trouver cette valeur exacte.",
+      "correctAnswer": "1. Chercher l'étiquette 'Bananes' sur l'axe horizontal.\\n2. Repérer le bâtons qui se trouve juste au-dessus de cette étiquette.\\n3. Suivre le haut de ce bâtons vers la gauche jusqu'à l'axe vertical.\\n4. Lire le nombre en face sur l'axe vertical : $8$.\\n5. Résultat : $8$ élèves préfèrent les bananes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On combine la lecture des deux axes. L'axe horizontal donne la catégorie (Bananes), l'axe vertical donne la quantité. En reliant le sommet de la barre à l'axe vertical, on lit la valeur $8$, ce qui correspond à la hauteur de la barre (8 graduations de 1).",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Fraises",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

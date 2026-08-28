@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 219,
+  "_course_code": "cm1-t02-c01-fraction-comme-nombre",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Quotient / partage dans sens accessible",
+  "title": "Quiz : Fraction comme quotient (Partage)",
+  "questions": [
+    {
+      "text": "On partage 2 barres de chocolat identiques entre 3 enfants de manière équitable. Quelle fraction d'une barre chaque enfant reçoit-il ?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Le partage de 2 objets entre 3 personnes s'écrit $2 \\div 3$, ce qui correspond à la fraction $\\frac{2}{3}$. Chaque enfant reçoit 2 parts sur les 3 parties égales d'une barre. L'option $\\frac{3}{2}$ correspondrait à partager 3 barres entre 2 enfants. Les options $\\frac{1}{3}$ et $\\frac{1}{2}$ ne tiennent pas compte du nombre total de barres (2).",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 2,
+            "denominator": 3
+          }
+        ],
+        "caption": "Résultat du partage : 2/3 de barre par enfant"
+      }
+    },
+    {
+      "text": "Quelle écriture fractionnaire correspond exactement au partage $5 \\div 2$ ?",
+      "options": [
+        "$\\frac{5}{2}$",
+        "$\\frac{2}{5}$",
+        "$2 \\frac{1}{2}$",
+        "$5,5$"
+      ],
+      "correctAnswer": "$\\frac{5}{2}$",
+      "explanation": "Une division $a \\div b$ s'écrit sous forme de fraction $\\frac{a}{b}$. Ici $5 \\div 2 = \\frac{5}{2}$. L'option $\\frac{2}{5}$ inverse le numérateur et le dénominateur. L'écriture $2 \\frac{1}{2}$ est un nombre mixte (valeur égale mais pas l'écriture fractionnaire directe du quotient). L'écriture $5,5$ est la forme décimale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a partagé un certain nombre de bonbons équitablement entre 4 amis. Chacun a reçu $\\frac{3}{4}$ de bonbon. Combien de bonbons Léo avait-il au départ ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$7$",
+        "$12$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Si 4 amis reçoivent chacun $\\frac{3}{4}$ de bonbon, le total est $4 \\times \\frac{3}{4} = \\frac{12}{4} = 3$ bonbons. On retrouve le sens inverse du partage : nombre de parts $\\times$ taille d'une part = quantité totale. L'option 4 correspond au nombre d'amis. L'option 12 est le numérateur avant simplification. L'option 7 est une addition incorrecte ($4+3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On partage 7 mètres de ruban entre 3 élèves. Quelle longueur de ruban chaque élève reçoit-il ?",
+      "options": [
+        "$\\frac{7}{3}$ m",
+        "$\\frac{3}{7}$ m",
+        "$2$ m",
+        "$3$ m"
+      ],
+      "correctAnswer": "$\\frac{7}{3}$ m",
+      "explanation": "Le partage de 7 mètres par 3 élèves s'écrit $7 \\div 3 = \\frac{7}{3}$ m. C'est une fraction impropre qui exprime exactement le quotient. L'option $\\frac{3}{7}$ inverse les nombres. Les options $2$ m et $3$ m sont des approximations entières (la partie entière de $\\frac{7}{3}$ est 2, mais il reste $\\frac{1}{3}$ m).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quelle situation suivante chaque enfant reçoit-il la plus grande part de gâteau ?",
+      "options": [
+        "3 gâteaux partagés entre 4 enfants",
+        "2 gâteaux partagés entre 3 enfants",
+        "5 gâteaux partagés entre 6 enfants",
+        "1 gâteau partagé entre 2 enfants"
+      ],
+      "correctAnswer": "5 gâteaux partagés entre 6 enfants",
+      "explanation": "Il faut comparer les fractions : $\\frac{3}{4}=0,75$, $\\frac{2}{3}\\approx0,66$, $\\frac{5}{6}\\approx0,83$, $\\frac{1}{2}=0,5$. La plus grande fraction est $\\frac{5}{6}$, correspondant au partage de 5 gâteaux entre 6 enfants. Les distracteurs correspondent aux autres partages proposés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

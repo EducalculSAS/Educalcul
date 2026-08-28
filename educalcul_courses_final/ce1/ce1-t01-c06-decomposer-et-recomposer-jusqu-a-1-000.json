@@ -1,0 +1,476 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.703439+00:00",
+  "id": 73,
+  "code": "ce1-t01-c06",
+  "title": "Décomposer et recomposer jusqu'à 1 000",
+  "description": "Cours structuré Educalcul : Décomposer et recomposer jusqu'à 1 000.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Décomposer et recomposer jusqu'à 1 000",
+    "objectif_global": "Décomposer et recomposer jusqu'à 1 000",
+    "mini_lecons_imposees": [
+      "Décomposition additive.",
+      "Décomposition en C-D-U.",
+      "Recomposer depuis plusieurs écritures."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Décomposition additive.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition additive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $345$ bonbons dans un grand sac. Tu veux les partager en trois groupes : les centaines, les dizaines et les unités. C'est ce qu'on appelle une décomposition additive : on écrit le nombre comme une somme de parties plus petites."
+            },
+            {
+              "type": "definition",
+              "term": "décomposition additive",
+              "definition": "C'est écrire un nombre comme une somme de plusieurs nombres plus simples, par exemple $345 = 300 + 40 + 5$.",
+              "example": "$276 = 200 + 70 + 6$"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 5,
+              "caption": "345 : 3 centaines, 4 dizaines, 5 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décomposer, tu regardes d'abord combien de centaines il y a. Dans $345$, il y a $3$ centaines, donc $300$. Ensuite tu comptes les dizaines : $4$ dizaines font $40$. Enfin les unités : $5$ unités font $5$. En les ajoutant, tu retrouves $345$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un autre nombre pour bien ancrer l'idée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $512$. Il y a $5$ centaines soit $500$, $1$ dizaine soit $10$ et $2$ unités soit $2$. La décomposition additive s'écrit $500 + 10 + 2$. Tu peux visualiser chaque partie avec un schéma en barres."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "500",
+                  "value": 500,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "2",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Décomposition de 512"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr de ne pas te tromper, tu peux recomposer le nombre en ajoutant les parties."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu ajoutes $300$, $40$ et $5$, tu arrives à $345$. Sur une droite numérique, tu fais un saut de $300$, puis de $40$, puis de $5$ et tu tombes exactement sur $345$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vérification de 345",
+              "min": 0,
+              "max": 400,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 340,
+                  "label": "340"
+                },
+                {
+                  "value": 345,
+                  "label": "345"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $276$ en centaines, dizaines et unités.",
+              "answer": "$200 + 70 + 6$",
+              "hint": "Regarde le chiffre des centaines, puis celui des dizaines, enfin celui des unités.",
+              "explanation": "Le chiffre $2$ vaut $2$ centaines soit $200$, le $7$ vaut $7$ dizaines soit $70$, le $6$ vaut $6$ unités."
+            },
+            {
+              "question": "Écris la décomposition additive de $512$.",
+              "answer": "$500 + 10 + 2$",
+              "hint": "Combien de centaines dans $512$ ?",
+              "explanation": "$5$ centaines = $500$, $1$ dizaine = $10$, $2$ unités = $2$."
+            },
+            {
+              "question": "Recompose le nombre dont les parties sont $300$, $40$ et $5$.",
+              "answer": "$345$",
+              "hint": "Additionne les trois parties.",
+              "explanation": "$300 + 40 + 5 = 345$."
+            }
+          ]
+        },
+        {
+          "title": "Décomposition en C-D-U.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition en C-D-U"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais décomposer un nombre, apprenons à nommer chaque groupe. Les centaines, les dizaines et les unités ont des noms précis qui aident à lire et écrire les nombres jusqu'à $1000$."
+            },
+            {
+              "type": "definition",
+              "term": "centaine",
+              "definition": "Un groupe de cent unités. Le chiffre des centaines indique combien de groupes de cent il y a.",
+              "example": "Dans $437$, le $4$ signifie $4$ centaines."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Un groupe de dix unités. Le chiffre des dizaines montre combien de groupes de dix il y a.",
+              "example": "Dans $437$, le $3$ signifie $3$ dizaines."
+            },
+            {
+              "type": "definition",
+              "term": "unité",
+              "definition": "Une seule unité. Le chiffre des unités donne le nombre d'unités restantes.",
+              "example": "Dans $437$, le $7$ signifie $7$ unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette façon d'écrire s'appelle la décomposition en C‑D‑U. Elle montre directement la valeur de chaque chiffre selon sa position."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 4,
+              "tens": 3,
+              "units": 7,
+              "caption": "437 : 4 centaines, 3 dizaines, 7 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $437$. Le chiffre $4$ se trouve au rang des centaines, le $3$ au rang des dizaines et le $7$ au rang des unités. On dit donc : $4$ centaines, $3$ dizaines, $7$ unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux vérifier en recomposant : $400 + 30 + 7 = 437$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi avec un autre exemple."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $682$, il y a $6$ centaines ($600$), $8$ dizaines ($80$) et $2$ unités ($2$). Écris la décomposition en C‑D‑U : $6$ centaines, $8$ dizaines, $2$ unités."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "600",
+                  "value": 600,
+                  "tone": "blue"
+                },
+                {
+                  "label": "80",
+                  "value": 80,
+                  "tone": "green"
+                },
+                {
+                  "label": "2",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Décomposition de 682"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifie : $600 + 80 + 2 = 682$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, fais le chemin inverse : du C‑D‑U au nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si l'on te donne $3$ centaines, $5$ dizaines et $9$ unités, tu reconstructis le nombre en ajoutant $300$, $50$ et $9$. Le résultat est $359$. Tu peux le vérifier sur une droite graduée."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vérification de 359",
+              "min": 0,
+              "max": 400,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 350,
+                  "label": "350"
+                },
+                {
+                  "value": 359,
+                  "label": "359"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de recomposer toi‑même avec d'autres groupes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le nombre de centaines, de dizaines et d'unités dans $437$ ?",
+              "answer": "$4$ centaines, $3$ dizaines, $7$ unités",
+              "hint": "Regarde chaque chiffre de gauche à droite.",
+              "explanation": "Le $4$ est au rang des centaines, le $3$ au rang des dizaines, le $7$ au rang des unités."
+            },
+            {
+              "question": "Écris en chiffres le nombre qui a $6$ centaines, $8$ dizaines et $2$ unités.",
+              "answer": "$682$",
+              "hint": "Place chaque chiffre à sa bonne place.",
+              "explanation": "$6$ centaines = $600$, $8$ dizaines = $80$, $2$ unités = $2$, total $682$."
+            },
+            {
+              "question": "Si j'ai $3$ centaines, $5$ dizaines et $9$ unités, quel nombre cela fait-il ?",
+              "answer": "$359$",
+              "hint": "Additionne $300$, $50$ et $9$.",
+              "explanation": "$300 + 50 + 9 = 359$."
+            }
+          ]
+        },
+        {
+          "title": "Recomposer depuis plusieurs écritures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Recomposer depuis plusieurs écritures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà décomposer un nombre en centaines, dizaines et unités. Maintenant, nous allons apprendre à faire le chemin inverse : recomposer le nombre à partir de plusieurs écritures différentes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une méthode simple en trois étapes pour recomposer à partir d'une décomposition additive."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer les parties",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la décomposition additive et note chaque partie : les centaines, les dizaines, les unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : écrire la valeur de chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme chaque groupe en nombre : $200$, $50$, $8$ par exemple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : additionner pour recomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les trois nombres pour obtenir le nombre complet."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Étape 1 : identifie les centaines, les dizaines et les unités dans la décomposition. Étape 2 : écris chaque groupe avec sa valeur (par exemple $200$, $50$, $8$). Étape 3 : additionne les trois valeurs pour obtenir le nombre final."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 5,
+              "units": 8,
+              "caption": "258 : 2 centaines, 5 dizaines, 8 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec cet exemple."
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi recomposer à partir de la notation C‑D‑U. C'est très utile quand tu lis un nombre écrit en mots."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un exemple pour t'entraîner."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "700",
+                  "value": 700,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Recomposition de 714"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier, tu peux additionner $700 + 10 + 4 = 714$. Sur une droite numérique, fais un saut de $700$, puis de $10$, puis de $4$ et tu arrives à $714$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, reconstruis le nombre quand il est écrit en lettres, comme « trois cent soixante‑deux »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis « trois cent soixante‑deux », repère les centaines (trois cents = $300$), les dizaines (soixante = $60$) et les unités (deux = $2$). Additionne-les pour obtenir $362$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vérification de 362",
+              "min": 0,
+              "max": 400,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 360,
+                  "label": "360"
+                },
+                {
+                  "value": 362,
+                  "label": "362"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en centaines, dizaines et unités.",
+                "Je sais recomposer un nombre à partir d'une décomposition additive.",
+                "Je sais écrire un nombre en C‑D‑U et le relire.",
+                "Je sais passer de l'écriture en lettres aux chiffres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Recompose le nombre à partir de $200 + 50 + 8$.",
+              "answer": "$258$",
+              "hint": "Additionne les trois nombres.",
+              "explanation": "$200 + 50 + 8 = 258$."
+            },
+            {
+              "question": "Quel nombre correspond à $7$ centaines, $1$ dizaine et $4$ unités ?",
+              "answer": "$714$",
+              "hint": "Transforme chaque groupe en chiffre.",
+              "explanation": "$7$ centaines = $700$, $1$ dizaine = $10$, $4$ unités = $4$, total $714$."
+            },
+            {
+              "question": "Écris en chiffres le nombre : trois cent soixante‑deux.",
+              "answer": "$362$",
+              "hint": "Identifie les centaines, les dizaines et les unités dans les mots.",
+              "explanation": "Trois cents = $300$, soixante = $60$, deux = $2$, donc $362$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

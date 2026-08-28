@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 469,
+  "_course_code": "3eme-t03-c03-fonctions-lineaires",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Graphique",
+  "title": "Graphiques de fonctions linéaires",
+  "blocks": [
+    {
+      "title": "Pente et ordonnée à l'origine",
+      "content": "Relie chaque équation de fonction linéaire à sa pente et son ordonnée à l'origine.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=2x+3$",
+          "right": "Pente $2$, ordonnée à l'origine $3$"
+        },
+        {
+          "left": "$g(x)=-x+1$",
+          "right": "Pente $-1$, ordonnée à l'origine $1$"
+        },
+        {
+          "left": "$h(x)=\\frac{1}{2}x-4$",
+          "right": "Pente $0,5$, ordonnée à l'origine $-4$"
+        },
+        {
+          "left": "$k(x)=3x$",
+          "right": "Pente $3$, ordonnée à l'origine $0$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour une fonction linéaire de la forme $ax+b$, le coefficient $a$ est la pente et $b$ est l'ordonnée à l'origine. On lit directement ces valeurs dans chaque expression.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation à partir de deux points",
+      "content": "Relie chaque description de droite (deux points) à son équation réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Droite passant par $(0,2)$ et $(1,5)$",
+          "right": "$y=3x+2$"
+        },
+        {
+          "left": "Droite passant par $(0,-1)$ et $(2,3)$",
+          "right": "$y=2x-1$"
+        },
+        {
+          "left": "Droite passant par $(1,1)$ et $(3,5)$",
+          "right": "$y=2x-1$"
+        },
+        {
+          "left": "Droite passant par $(0,0)$ et $(4,-2)$",
+          "right": "$y=-\\frac{1}{2}x$"
+        }
+      ],
+      "items": [],
+      "explanation": "La pente se calcule par $\\frac{y_2-y_1}{x_2-x_1}$. L'ordonnée à l'origine est la coordonnée $y$ du point d'abscisse $0$. On écrit ensuite l'équation sous la forme $y=ax+b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Point d'abscisse donnée",
+      "content": "Relie chaque fonction linéaire aux coordonnées du point de son graphique d'abscisse $2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=4x-3$",
+          "right": "Point $(2,5)$"
+        },
+        {
+          "left": "$g(x)=-2x+7$",
+          "right": "Point $(2,3)$"
+        },
+        {
+          "left": "$h(x)=\\frac{3}{2}x+1$",
+          "right": "Point $(2,4)$"
+        },
+        {
+          "left": "$k(x)= -x$",
+          "right": "Point $(2,-2)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On remplace $x$ par $2$ dans chaque expression pour obtenir l'ordonnée correspondante. Par exemple pour $f(x)=4x-3$, $f(2)=4\\times2-3=5$, d'où le point $(2,5)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

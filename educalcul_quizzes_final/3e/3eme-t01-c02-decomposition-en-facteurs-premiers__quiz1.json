@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Décomposer",
+  "title": "Quiz : Décomposition en facteurs premiers",
+  "questions": [
+    {
+      "text": "Quelle est la décomposition en facteurs premiers de $36$ ?",
+      "options": [
+        "$2^2 \\times 3^2$",
+        "$2 \\times 3^3$",
+        "$2^3 \\times 3$",
+        "$6 \\times 6$"
+      ],
+      "correctAnswer": "$2^2 \\times 3^2$",
+      "explanation": "On divise 36 par 2 : 36 = 2 × 18. 18 = 2 × 9. 9 = 3 × 3. Donc 36 = 2 × 2 × 3 × 3 = $2^2 \\times 3^2$. Les autres options correspondent à des erreurs : $2 \\times 3^3 = 54$, $2^3 \\times 3 = 24$, $6 \\times 6$ n'est pas une décomposition en facteurs premiers car 6 n'est pas premier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel a pour décomposition en facteurs premiers $2^3 \\times 5$ ?",
+      "options": [
+        "$40$",
+        "$30$",
+        "$50$",
+        "$80$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "$2^3 \\times 5 = 8 \\times 5 = 40$. Les autres nombres donnent : $30 = 2 \\times 3 \\times 5$, $50 = 2 \\times 5^2$, $80 = 2^4 \\times 5$. Seul 40 correspond exactement à la décomposition demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la décomposition en facteurs premiers de $84$ : $84 = 2^2 \\times 3 \\times \\dots$",
+      "options": [
+        "$5$",
+        "$7$",
+        "$11$",
+        "$13$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "84 = 2 × 42 = 2 × 2 × 21 = $2^2 \\times 3 \\times 7$. Le facteur manquant est donc 7. Les autres nombres premiers proposés ne divisent pas 84.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $180$ s'écrit $2^2 \\times 3^2 \\times 5$. Quel est le plus grand diviseur premier de $180$ ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Les diviseurs premiers de 180 sont 2, 3 et 5. Le plus grand parmi eux est 5. L'option 6 n'est pas un nombre premier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En utilisant la décomposition en facteurs premiers, détermine le PGCD de $48$ et $180$.",
+      "options": [
+        "$12$",
+        "$6$",
+        "$24$",
+        "$36$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "48 = $2^4 \\times 3$, 180 = $2^2 \\times 3^2 \\times 5$. Le PGCD prend les puissances minimales des facteurs communs : $2^{\\min(4,2)} \\times 3^{\\min(1,2)} = 2^2 \\times 3 = 12$. Les autres options correspondent à des erreurs de sélection des exposants ou à l'utilisation de facteurs non communs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

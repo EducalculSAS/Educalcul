@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Droite graduée avec décimaux",
+  "title": "La droite graduée et les nombres décimaux",
+  "questions": [
+    {
+      "text": "Sur une droite graduée où l'unité est le centimètre, un point A est placé à $3,4$ cm de l'origine. Que représente le chiffre $4$ dans ce nombre ?",
+      "options": [
+        "L'unité",
+        "Le dixième",
+        "Le centième",
+        "Le millième"
+      ],
+      "correctAnswer": "Le dixième",
+      "explanation": "Dans le nombre $3,4$, le chiffre $3$ est l'unité et le chiffre $4$ est le premier chiffre après la virgule, il représente donc $4$ dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée, on place le point B à $2,5$ et le point C à $3,2$. Lequel de ces points est le plus proche de l'origine $0$ ?",
+      "options": [
+        "Le point B",
+        "Le point C",
+        "Les deux sont à la même distance",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le point B",
+      "explanation": "On compare les nombres décimaux : $2,5$ est plus petit que $3,2$. Le point B est donc situé plus près du zéro que le point C.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite est graduée avec des graduations tous les $0,1$. Entre le nombre $4$ et le nombre $5$, combien y a t it de petites graduations (sans compter le $5$)?",
+      "options": [
+        "S neuf",
+        "Dix",
+        "Onze",
+        "Cinq"
+      ],
+      "correctAnswer": "S neuf",
+      "explanation": "Entre $4$ et $5$, on trouve $4,1$ $4,2$ $4,3$ $4,4$ $4,5$ $4,6$ $4,7$ $4,8$ et $4,9$. Cela fait neuf graduations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe la droite graduée. Le point P est placé exactement au milieu entre $6,2$ et $6,4$. Quelle est la position du point P ?",
+      "options": [
+        "$6,1$",
+        "$6,3$",
+        "$6,5$",
+        "$6,6$"
+      ],
+      "correctAnswer": "$6,3$",
+      "explanation": "Le nombre qui se trouve exactement entre $6,2$ et $6,4$ est $6,3$ car $6,3$ est égal à $6,2 + 0,1$ et $6,4$ est égal à $6,3 + 0,1$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée avec points",
+        "min": 6,
+        "max": 7,
+        "points": [
+          {
+            "value": 6.2,
+            "label": "A"
+          },
+          {
+            "value": 6.4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée, je pars du point $0$. Je me déplace de $2,8$ unités vers la droite, puis je recule de $1,2$ unité vers la gauche. Où je me trouve ?",
+      "options": [
+        "$4,0$",
+        "$1,8$",
+        "$1,6$",
+        "$2,6$"
+      ],
+      "correctAnswer": "$1,6$",
+      "explanation": "Le déplacement vers la droite est une addition et le recul est une soustraction. Le calcul est $2,8 - 1,2 = 1,6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

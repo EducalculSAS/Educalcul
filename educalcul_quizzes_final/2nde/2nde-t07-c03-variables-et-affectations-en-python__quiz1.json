@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Lire",
+  "title": "Quiz Python : Lire une entrée utilisateur",
+  "questions": [
+    {
+      "text": "Quelle fonction intégrée permet de lire une ligne saisie au clavier dans un programme Python ?",
+      "options": [
+        "input()",
+        "read()",
+        "scan()",
+        "get()"
+      ],
+      "correctAnswer": "input()",
+      "explanation": "La fonction input() lit une ligne depuis l'entrée standard et la renvoie sous forme de chaîne de caractères. Les autres fonctions n'existent pas dans le langage Python standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le type de la valeur renvoyée par input() ?",
+      "options": [
+        "entier",
+        "chaîne de caractères",
+        "booléen",
+        "liste"
+      ],
+      "correctAnswer": "chaîne de caractères",
+      "explanation": "input() renvoie toujours une chaîne de caractères (type str), même si l'utilisateur tape des chiffres. Il faut la convertir explicitement pour obtenir un nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment convertir directement la saisie en un nombre entier ?",
+      "options": [
+        "int(input())",
+        "input(int())",
+        "str(input())",
+        "float(input())"
+      ],
+      "correctAnswer": "int(input())",
+      "explanation": "int(input()) appelle d'abord input() pour obtenir la chaîne, puis int() la convertit en entier. Les autres formes sont syntaxiquement incorrectes ou ne font pas la conversion voulue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour lire deux entiers séparés par une espace sur une même ligne, quelle instruction est correcte ?",
+      "options": [
+        "a, b = input().split()",
+        "a, b = map(int, input().split())",
+        "a, b = int(input().split())",
+        "a, b = input().split(int)"
+      ],
+      "correctAnswer": "a, b = map(int, input().split())",
+      "explanation": "input().split() renvoie une liste de chaînes ; map(int, ...) applique int à chaque élément, puis le déballage affecte les deux entiers à a et b. Les autres options provoquent une erreur de type ou de syntaxe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que se passe-t-il si l'utilisateur ferme le flux d'entrée (par exemple avec Ctrl+D) avant de taper quelque chose ?",
+      "options": [
+        "La fonction renvoie None",
+        "La fonction lève une exception EOFError",
+        "La fonction renvoie une chaîne vide",
+        "La fonction lève une exception ValueError"
+      ],
+      "correctAnswer": "La fonction lève une exception EOFError",
+      "explanation": "Lorsque le flux standard est fermé sans données, input() ne peut pas lire de ligne et lève l'exception EOFError. Elle ne renvoie ni None ni chaîne vide, et ValueError n'est pas concernée ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

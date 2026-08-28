@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 356,
+  "_course_code": "6eme-t05-c05-bilan-grandeurs-6e",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Conversions, aires, volumes",
+  "title": "Approfondissement : Conversions, aires et volumes",
+  "questions": [
+    {
+      "text": "On souhaite convertir $1,5$ km² en m². Quelle est la bonne écriture du résultat ?",
+      "options": [
+        "1 500 m²",
+        "15 000 m²",
+        "1 500 000 m²",
+        "150 000 m²"
+      ],
+      "correctAnswer": "1 500 000 m²",
+      "explanation": "Pour convertir des km² en m², on multiplie par $1 000 \\times 1 000 = 1 000 000$ (deux sauts de deux zéros). $1,5 \\times 1 000 000 = 1 500 000$. L'erreur classique est de ne multiplier que par $1 000$ (un saut) ce qui donne $1 500$ m², ou de mal placer la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit a pour dimensions $50$ cm, $20$ cm et $10$ cm. Quel est son volume en litres ?",
+      "options": [
+        "10 L",
+        "100 L",
+        "1 L",
+        "1 000 L"
+      ],
+      "correctAnswer": "10 L",
+      "explanation": "Le volume en cm³ est $50 \\times 20 \\times 10 = 10 000$ cm³. Sachant que $1$ L $= 1$ dm³ $= 1 000$ cm³, on divise par $1 000$ : $10 000 / 1 000 = 10$ L. L'option $100$ L correspondrait à une division par $100$, et $1$ L à une division par $10 000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a une base de $4$ dm et une hauteur de $30$ cm. Quelle est son aire en cm² ?",
+      "options": [
+        "60 cm²",
+        "120 cm²",
+        "600 cm²",
+        "1 200 cm²"
+      ],
+      "correctAnswer": "600 cm²",
+      "explanation": "Il faut d'abord mettre les mesures dans la même unité. $4$ dm $= 40$ cm. L'aire d'un triangle est $(\\text{base} \\times \\text{hauteur}) / 2$. Donc $(40 \\times 30) / 2 = 1 200 / 2 = 600$ cm². L'option $1 200$ cm² correspond à l'oubli de la division par $2$. L'option $120$ cm² vient d'une erreur de conversion ($4$ dm pris pour $4$ cm).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On convertit $2,5$ m³ en dm³. Quel résultat obtient-on ?",
+      "options": [
+        "250 dm³",
+        "2 500 dm³",
+        "25 000 dm³",
+        "0,0025 dm³"
+      ],
+      "correctAnswer": "2 500 dm³",
+      "explanation": "Pour passer des m³ aux dm³, on fait trois sauts de trois zéros (ou on multiplie par $1 000$) car $1$ m $= 10$ dm, donc $1$ m³ $= 10 \\times 10 \\times 10 = 1 000$ dm³. $2,5 \\times 1 000 = 2 500$. L'option $250$ correspond à une multiplication par $100$ (deux sauts), $25 000$ à une multiplication par $10 000$ (quatre sauts).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un bac rectangulaire mesure $1$ m de long, $50$ cm de large et $40$ cm de haut. Quel volume d'eau (en litres) peut-il contenir au maximum ?",
+      "options": [
+        "20 L",
+        "200 L",
+        "2 000 L",
+        "2 L"
+      ],
+      "correctAnswer": "200 L",
+      "explanation": "On convertit tout en cm : $1$ m $= 100$ cm. Volume $= 100 \\times 50 \\times 40 = 200 000$ cm³. Comme $1$ L $= 1 000$ cm³, le volume est $200 000 / 1 000 = 200$ L. On peut aussi calculer en dm : $10 \\times 5 \\times 4 = 200$ dm³ $= 200$ L. L'option $20$ L correspond à l'oubli d'un zéro lors de la conversion ou du calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

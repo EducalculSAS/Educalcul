@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Contre-exemple",
+  "title": "Repérer les contre-exemples",
+  "blocks": [
+    {
+      "title": "Identités remarquables et distributivité",
+      "content": "Relie chaque affirmation au contre-exemple qui la rend fausse, ou à « Vrai » si elle est toujours correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pour tout nombre $a$, $(a+2)^2 = a^2 + 4$",
+          "right": "Faux : avec $a=1$, $(1+2)^2=9$ et $1^2+4=5$"
+        },
+        {
+          "left": "Pour tout nombre $x$, $3(x+4) = 3x+12$",
+          "right": "Vrai (distributivité)"
+        },
+        {
+          "left": "Pour tout nombre $n$, $n^2 \\ge n$",
+          "right": "Faux : avec $n=0,5$, $0,25 < 0,5$"
+        },
+        {
+          "left": "Pour tout nombre $b$, $b \\times 0 = 0$",
+          "right": "Vrai (propriété absorbante)"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour $(a+2)^2$, le développement correct est $a^2+4a+4$, pas $a^2+4$. Pour $n^2 \\ge n$, cela ne marche pas pour les nombres décimaux entre 0 et 1. Les deux autres sont des propriétés toujours vraies.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Erreurs classiques de calcul littéral",
+      "content": "Relie chaque conjecture à son contre-exemple ou à « Vrai » si elle est exacte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pour tout nombre $x$, $\\frac{x+5}{5} = x+1$",
+          "right": "Faux : avec $x=5$, $\\frac{10}{5}=2$ mais $5+1=6$"
+        },
+        {
+          "left": "Pour tout nombre $k$, $-(k-3) = -k+3$",
+          "right": "Vrai (distributivité du signe moins)"
+        },
+        {
+          "left": "Pour tous nombres $m$ et $n$, $(m+n)^2 = m^2 + n^2$",
+          "right": "Faux : avec $m=2$ et $n=3$, $25 \\neq 13$"
+        },
+        {
+          "left": "Pour tout nombre $p$, $5p - 2p = 3p$",
+          "right": "Vrai (réduction des termes semblables)"
+        }
+      ],
+      "items": [],
+      "explanation": "On ne simplifie pas $\\frac{x+5}{5}$ par 5 car c'est une somme au numérateur. $(m+n)^2 = m^2+2mn+n^2$, le terme $2mn$ manque dans la conjecture. Les deux autres sont des règles valides.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés des nombres et puissances",
+      "content": "Relie chaque affirmation à la bonne réponse (contre-exemple ou validation).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pour tout entier $n$, $n(n+1)$ est un nombre pair",
+          "right": "Vrai (produit de deux entiers consécutifs)"
+        },
+        {
+          "left": "Pour tout nombre $a$, $a^3 > a^2$",
+          "right": "Faux : avec $a=1$, $1 \\ngtr 1$ ; avec $a=-1$, $-1 \\ngtr 1$"
+        },
+        {
+          "left": "Pour tout nombre $x$, $x + (-x) = 0$",
+          "right": "Vrai (définition de l'opposé)"
+        },
+        {
+          "left": "Si un entier se termine par 2, il est divisible par 4",
+          "right": "Faux : 22 se termine par 2 mais $22 \\div 4 = 5,5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Parmi deux entiers consécutifs, l'un est pair, donc le produit est pair. $a^3 > a^2$ est faux pour 0, 1 et les négatifs. Un nombre fini par 2 est pair mais pas forcément multiple de 4 (ex: 2, 6, 10, 14, 18, 22...).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

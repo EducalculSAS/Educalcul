@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 223,
+  "_course_code": "cm1-t02-c05-fractions-decimales-et-decimaux",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Dixièmes / centièmes",
+  "title": "Quiz : Dixièmes et centièmes",
+  "questions": [
+    {
+      "text": "Quelle fraction décimale est représentée par la figure ci-dessous ?",
+      "options": [
+        "$3/10$",
+        "$3/100$",
+        "$10/3$",
+        "$0,3$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "La figure montre une grille de 10 cases (dixièmes) dont 3 sont colorées. Cela correspond à 3 parties sur 10, soit la fraction $3/10$. L'option $0,3$ est l'écriture décimale, pas la fraction. $3/100$ serait 3 centièmes (grille de 100). $10/3$ est une fraction impropre supérieure à 1.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 1,
+        "cols": 10,
+        "highlighted": 3,
+        "caption": "Représentation de trois dixièmes"
+      }
+    },
+    {
+      "text": "Comment écrit-on le nombre décimal qui correspond à la fraction $7/10$ ?",
+      "options": [
+        "$0,7$",
+        "$0,07$",
+        "$7$",
+        "$70$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "La fraction $7/10$ signifie 7 dixièmes. En notation décimale, on écrit 0 unités et 7 dixièmes après la virgule : $0,7$. L'option $0,07$ correspond à 7 centièmes ($7/100$). $7$ et $70$ sont des nombres entiers, bien plus grands que 7 dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $45/100$ s'écrit en notation décimale :",
+      "options": [
+        "$0,45$",
+        "$0,405$",
+        "$4,5$",
+        "$45$"
+      ],
+      "correctAnswer": "$0,45$",
+      "explanation": "Le dénominateur 100 indique des centièmes. Il faut deux chiffres après la virgule. 45 centièmes s'écrit $0,45$ (4 dixièmes et 5 centièmes). $0,405$ aurait un chiffre de trop (millièmes). $4,5$ vaut 45 dixièmes ($45/10$). $45$ est un nombre entier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la décomposition en fractions du nombre décimal $0,63$ ?",
+      "options": [
+        "$6/10 + 3/100$",
+        "$6/100 + 3/10$",
+        "$63/10$",
+        "$63/100$"
+      ],
+      "correctAnswer": "$6/10 + 3/100$",
+      "explanation": "Le chiffre 6 est au rang des dixièmes (premier après la virgule), il vaut $6/10$. Le chiffre 3 est au rang des centièmes (deuxième après la virgule), il vaut $3/100$. La somme donne $6/10 + 3/100$. L'option $6/100 + 3/10$ inverse les valeurs de position. $63/100$ est la fraction décimale globale, pas la décomposition. $63/10$ vaut 6,3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est le plus grand ?",
+      "options": [
+        "$0,8$",
+        "$0,75$",
+        "$0,08$",
+        "$0,81$"
+      ],
+      "correctAnswer": "$0,81$",
+      "explanation": "On compare les parties entières (toutes 0), puis les dixièmes. $0,81$ et $0,8$ ont 8 dixièmes. $0,75$ en a 7. $0,08$ en a 0. Entre $0,81$ (81 centièmes) et $0,8$ (80 centièmes), $0,81$ est plus grand car il a 1 centième de plus. $0,81 > 0,8 > 0,75 > 0,08$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

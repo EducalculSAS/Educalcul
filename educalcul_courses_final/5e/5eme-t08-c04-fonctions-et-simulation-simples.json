@@ -1,0 +1,489 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.790366+00:00",
+  "id": 418,
+  "code": "5eme-t08-c04",
+  "title": "Fonctions et simulation simples",
+  "description": "Cours structuré Educalcul : Fonctions et simulation simples.",
+  "subject": "Pensée informatique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Fonctions et simulation simples",
+    "objectif_global": "Fonctions et simulation simples",
+    "mini_lecons_imposees": [
+      "Définir une procédure.",
+      "Appeler.",
+      "Simuler une expérience."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Définir une procédure.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une procédure ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois préparer une recette de gâteau plusieurs fois dans la semaine. Au lieu de réécrire à chaque fois la liste complète des ingrédients et des étapes, tu écris la recette une seule fois sur une fiche et tu donnes un nom à cette fiche : « Gâteau au yaourt ». Ensuite, chaque fois que tu veux faire le gâteau, tu te contentes de lire le nom de la fiche et de suivre les instructions qui y sont écrites. En programmation, cette fiche s'appelle une procédure. C'est un bloc d'instructions que tu définis une fois, que tu donnes un nom clair, et que tu peux réutiliser autant de fois que tu le veux sans avoir à tout réécrire. Cela rend ton programme plus court, plus lisible et plus facile à corriger si tu découvres une erreur."
+            },
+            {
+              "type": "definition",
+              "term": "procédure",
+              "definition": "Ensemble nommé d'instructions qui effectue une tâche précise. Elle peut recevoir des informations (paramètres) et peut renvoyer un résultat (valeur de retour).",
+              "example": "procédure afficherBonjour() { écrire \"Bonjour !\" }"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une procédure se compose de trois parties principales. D'abord, son nom : il doit décrire l'action réalisée, par exemple « calculerAire » ou « dessinerCarré ». Ensuite, la liste des paramètres entre parenthèses : ce sont les données que la procédure attend pour travailler, comme la longueur d'un côté pour un carré. Enfin, le corps de la procédure, c'est-à-dire la suite d'instructions qui seront exécutées quand on l'appellera. Si la procédure doit donner un résultat, on utilise le mot‑clé « retourner » suivi de l'expression à renvoyer. Tous ces éléments sont écrits dans un ordre précis pour que l'ordinateur sache exactement quoi faire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom clair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nom doit être un verbe à l'infinitif qui décrit l'action, sans espace ni caractère spécial. Exemple : « calculerPerimetre »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Définir les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre parenthèses, écris les noms des valeurs dont la procédure a besoin, séparés par des virgules. Exemple : « (côté) » pour un carré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les instructions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'intérieur d'accolades, place chaque instruction sur une ligne, en respectant l'indentation. C'est ici que se trouve l'algorithme proprement dit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Prévoir un retour si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la procédure doit fournir un résultat, termine par « retourner » suivi de l'expression calculée. Sinon, la procédure se termine simplement après la dernière instruction."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment structurer une procédure, essayons d'en écrire une ensemble. Nous allons créer une procédure qui calcule l'aire d'un carré à partir de la longueur de son côté. Cette première mise en pratique te permettra de vérifier que tu as bien compris chaque élément."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les paramètres et la valeur de retour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les paramètres sont comme des cases vides que tu donnes à la procédure pour qu'elle puisse travailler avec des données différentes à chaque appel. Par exemple, la procédure « calculerAire(côté) » attend un nombre qui représente la longueur du côté. Quand tu appelles la procédure avec la valeur $5$, le paramètre « côté » prend la valeur $5$ à l'intérieur de la procédure. La valeur de retour, quant à elle, est le résultat que la procédure renvoie à l'endroit où elle a été appelée. Dans notre exemple, l'instruction « retourner côté × côté » envoie le nombre $25$ là où l'appel a été fait. Cela permet d'utiliser le résultat dans d'autres calculs ou de l'afficher directement."
+            },
+            {
+              "type": "display_math",
+              "latex": "proc\\'edure calculerAire(c\\^ot\\'e) \\\\{ aire = c\\^ot\\'e \\\\times c\\^ot\\'e ; retourner aire \\\\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que le nom du paramètre (« côté ») n'existe qu'à l'intérieur de la procédure. À l'extérieur, tu peux appeler la procédure avec n'importe quelle variable ou nombre littéral. Essaie maintenant d'écrire une procédure qui reçoit deux nombres et retourne leur somme. Cela t'aidera à manipuler plusieurs paramètres et à voir comment le retour fonctionne avec une opération simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bonnes habitudes d'écriture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que tes procédures restent lisibles, adopte dès maintenant quelques habitudes simples. Indente le corps de la procédure de deux espaces ou d'une tabulation par rapport au mot‑clé « procédure ». Utilise des noms de paramètres explicites : « largeur » et « hauteur » sont plus parlants que « a » et « b ». Ajoute un court commentaire au-dessus de la procédure pour expliquer son but, par exemple « // Calcule l'aire d'un rectangle ». Évite les procédures trop longues : si une tâche comporte plusieurs sous‑étapes distinctes, crée une procédure pour chaque sous‑étape et appelle-les depuis une procédure principale. Enfin, teste chaque procédure isolément avec quelques valeurs avant de l'intégrer dans un programme plus grand. Ces réflexes te feront gagner un temps précieux quand tes programmes deviendront plus complexes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la définition complète d'une procédure nommée « calculerPerimetre » qui reçoit un paramètre « côté » et retourne le périmètre d'un carré.",
+              "answer": "procédure calculerPerimetre(côté) { périmètre = 4 × côté ; retourner périmètre }",
+              "hint": "Rappelle-toi la formule du périmètre d'un carré : $4 \\times \\text{côté}$.",
+              "explanation": "La procédure prend le paramètre « côté », calcule $4 \\times \\text{côté}$ et renvoie ce résultat avec « retourner »."
+            },
+            {
+              "question": "Propose une procédure « somme » qui accepte deux paramètres « a » et « b » et retourne leur somme.",
+              "answer": "procédure somme(a, b) { resultat = a + b ; retourner resultat }",
+              "hint": "Utilise l'opérateur « + » entre les deux paramètres.",
+              "explanation": "Les deux paramètres sont ajoutés ensemble, le résultat est stocké dans une variable puis retourné."
+            },
+            {
+              "question": "Parmi les trois procédures ci-dessous, laquelle respecte les bonnes habitudes d'écriture (nom clair, indentation, commentaire) ?\\n1. procédure x(y){return y*2;}\\n2. // Double la valeur\\n   procédure doubler(valeur) {\\n     retour = valeur * 2 ;\\n     retourner retour ;\\n   }\\n3. procédure calc(z){r=z*2;return r;}",
+              "answer": "2",
+              "hint": "Cherche un nom de procédure verbe à l'infinitif, un commentaire, une indentation propre et un nom de paramètre explicite.",
+              "explanation": "La deuxième proposition utilise un nom clair « doubler », un commentaire explicatif, une indentation correcte et un paramètre nommé « valeur »."
+            }
+          ]
+        },
+        {
+          "title": "Appeler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appeler une procédure : le concept d'appel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois qu'une procédure est définie, elle ne fait rien tant qu'on ne la demande pas de s'exécuter. Cette demande s'appelle un appel. Pour appeler une procédure, tu écris son nom suivi de parenthèses. Si la procédure attend des paramètres, tu places les valeurs correspondantes à l'intérieur des parenthèses, dans le même ordre que dans la définition. Par exemple, si tu as défini « calculerAire(côté) », tu peux écrire « calculerAire(5) » pour obtenir l'aire d'un carré de côté $5$. L'appel peut être utilisé directement dans une écriture, une affectation ou une condition. C'est le mécanisme qui permet de réutiliser le code que tu as soigneusement préparé."
+            },
+            {
+              "type": "definition",
+              "term": "appel de procédure",
+              "definition": "Action d'exécuter une procédure en écrivant son nom suivi de la liste des arguments entre parenthèses. L'appel peut produire une valeur de retour qui remplace l'appel dans l'expression.",
+              "example": "aire = calculerAire(7)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu écris un appel, l'ordinateur effectue trois actions successives. Premièrement, il évalue les arguments que tu as fournis (ce peuvent être des nombres, des variables ou même d'autres appels). Deuxièmement, il saute à la définition de la procédure, associe chaque paramètre à la valeur correspondante et exécute les instructions du corps. Troisièmement, si la procédure contient un « retourner », la valeur renvoyée prend la place de l'appel dans le programme principal. Si la procédure ne retourne rien, l'appel se comporte comme une instruction simple qui ne produit pas de valeur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Évaluer les arguments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule chaque expression placée entre les parenthèses avant de passer à la procédure. Exemple : pour « calculerAire(3+2) », l'argument vaut $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécuter le corps",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les paramètres reçoivent les valeurs des arguments, puis les instructions s'enchaînent dans l'ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Récupérer le retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si un « retourner » est présent, sa valeur remplace l'appel. Sinon, l'appel ne laisse aucune trace de valeur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant d'appeler la procédure « calculerPerimetre » que tu as écrite dans la leçon précédente avec plusieurs valeurs différentes. Observe comment le résultat change à chaque appel et note-le dans ton cahier. Cela t'aidera à visualiser le lien entre l'argument fourni et la valeur retournée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appels imbriqués et composition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rien n'empêche d'appeler une procédure à l'intérieur d'une autre procédure, ou d'utiliser le retour d'un appel comme argument d'un second appel. C'est ce qu'on appelle la composition. Par exemple, si tu as une procédure « carre(x) » qui retourne $x^2$ et une procédure « somme(a,b) » qui retourne $a+b$, tu peux écrire « somme(carre(3), carre(4)) ». L'ordinateur évaluera d'abord « carre(3) » (résultat $9$) et « carre(4) » (résultat $16$), puis appellera « somme(9,16) » qui retournera $25$. Cette technique permet de construire des calculs complexes à partir de briques simples et bien testées."
+            },
+            {
+              "type": "display_math",
+              "latex": "somme(carr\\'e(3), carr\\'e(4)) = 25"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention cependant à la lisibilité : trop d'imbrications sur une seule ligne rendent le code difficile à relire. Une bonne pratique consiste à stocker les résultats intermédiaires dans des variables aux noms explicites avant de les passer à l'appel suivant. Écris maintenant une petite séquence qui calcule la somme des carrés de $2$ et $5$ en utilisant deux appels à « carre » et un appel à « somme », en stockant chaque carré dans une variable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déboguer un appel : erreurs fréquentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même les programmeurs expérimentés font des erreurs lors des appels. Les plus courantes sont : oublier un argument (nombre d'arguments différent du nombre de paramètres), inverser l'ordre des arguments, ou passer un argument de type incompatible (par exemple une chaîne de caractères là où un nombre est attendu). Quand une erreur se produit, l'environnement de programmation affiche généralement un message indiquant la ligne de l'appel et le type de problème. Pour déboguer, relis la définition de la procédure, compare la liste des paramètres avec les arguments que tu as fournis, et vérifie que chaque argument a le bon type. Utilise aussi des affichages temporaires (par exemple « écrire » la valeur de l'argument juste avant l'appel) pour voir ce qui est réellement passé. Essaie de corriger l'appel suivant qui contient une erreur volontaire : « calculerAire(\"cinq\") »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction qui appelle la procédure « calculerPerimetre » avec l'argument $6$ et stocke le résultat dans la variable « p ».",
+              "answer": "p = calculerPerimetre(6)",
+              "hint": "Utilise le signe « = » pour l'affectation et place l'appel entre parenthèses.",
+              "explanation": "L'appel « calculerPerimetre(6) » retourne $24$, qui est ensuite affecté à la variable « p »."
+            },
+            {
+              "question": "Complète le code suivant pour calculer la somme des carrés de $2$ et $5$ en utilisant les procédures « carre » et « somme » et des variables intermédiaires.\\ncarre2 = ____\\ncarre5 = ____\\nresultat = ____",
+              "answer": "carre2 = carre(2)\\ncarre5 = carre(5)\\nresultat = somme(carre2, carre5)",
+              "hint": "Appelle « carre » pour chaque nombre, stocke les résultats, puis appelle « somme » avec ces deux variables.",
+              "explanation": "Les deux appels à « carre » produisent $4$ et $25$. L'appel à « somme » avec ces valeurs retourne $29$."
+            },
+            {
+              "question": "Identifie l'erreur dans l'appel « calculerAire(\"cinq\") » et propose la correction.",
+              "answer": "L'argument est une chaîne de caractères au lieu d'un nombre. Correction : calculerAire(5).",
+              "hint": "Regarde le type attendu par le paramètre « côté » dans la définition de la procédure.",
+              "explanation": "La procédure attend une valeur numérique pour effectuer une multiplication. Passer \"cinq\" provoque une erreur de type."
+            }
+          ]
+        },
+        {
+          "title": "Simuler une expérience.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une simulation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une simulation, c'est comme jouer à un jeu où l'ordinateur imite une expérience réelle en suivant des règles précises. Imagine que tu veux savoir quelle est la probabilité d'obtenir un « 6 » en lançant un dé. Au lieu de lancer un vrai dé des centaines de fois, tu peux écrire une procédure qui choisit un nombre au hasard entre $1$ et $6$, et tu appelles cette procédure plusieurs milliers de fois. Les résultats obtenus te donnent une estimation de la probabilité. C'est exactement ce que font les scientifiques, les ingénieurs ou les météorologues : ils créent des modèles informatiques qui reproduisent des phénomènes complexes (météo, propagation d'un virus, trafic routier) pour faire des prévisions sans avoir à réaliser l'expérience dans la réalité."
+            },
+            {
+              "type": "definition",
+              "term": "simulation",
+              "definition": "Reproduction informatique d'un processus réel ou imaginaire en exécutant répétitivement un algorithme qui utilise des choix aléatoires ou déterministes pour produire des résultats statistiques.",
+              "example": "Lancer virtuel d'un dé 10 000 fois pour estimer la fréquence du 6."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire une simulation, tu as besoin de trois ingrédients. Premièrement, une procédure qui représente une seule épreuve de l'expérience (par exemple « lancerDe() » qui retourne un entier entre $1$ et $6$). Deuxièmement, une boucle qui répète cette épreuve un grand nombre de fois (souvent plusieurs milliers) et qui compte les occurrences de chaque résultat. Troisièmement, une façon d'afficher ou d'analyser les compteurs à la fin (pourcentage, moyenne, histogramme). Chaque ingrédient est une pièce que tu sais déjà assembler : définition de procédure, appel, variables, boucles. La nouveauté réside dans l'utilisation d'une fonction aléatoire pour introduire l'incertitude."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir l'épreuve élémentaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris une procédure sans paramètre qui utilise la fonction aléatoire de ton langage (souvent « aleatoire(1,6) ») et retourne le résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Préparer les compteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Crée un tableau ou six variables initialisées à zéro pour compter chaque face du dé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Boucler et accumuler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répète l'appel de l'épreuve (par exemple 10 000 fois). À chaque tour, incrémente le compteur correspondant à la valeur retournée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Analyser les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la fréquence de chaque face en divisant le compteur par le nombre total d'essais. Affiche les fréquences ou trace un histogramme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Mettons cela en pratique. Écris la procédure « lancerDe » qui retourne un entier aléatoire entre $1$ et $6$. Puis écris un programme principal qui appelle cette procédure $1000$ fois, compte les résultats et affiche la fréquence du « 6 ». Tu verras que la fréquence se rapproche de $\\frac{1}{6}$ à mesure que le nombre d'essais augmente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les fractions pour exprimer les probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une simulation, on compare souvent le nombre d'occurrences d'un événement au nombre total d'essais. Cette comparaison s'écrit naturellement sous forme de fraction. Par exemple, si sur $1000$ lancers tu as obtenu $168$ fois le « 6 », la fréquence observée est $\\frac{168}{1000}$, ce qui se simplifie en $\\frac{42}{250}$ ou en décimal $0,168$. La probabilité théorique d'un dé équilibré est $\\frac{1}{6} \\approx 0,1667$. Plus le nombre d'essais est grand, plus la fraction observée se rapproche de la fraction théorique. C'est la loi des grands nombres en action, et c'est exactement ce que la simulation te permet de visualiser."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Probabilité théorique d'obtenir un 6 avec un dé équilibré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de modifier ton programme pour qu'il affiche la fréquence de chaque face sous forme de fraction simplifiée. Tu pourras utiliser une procédure « simplifierFraction(numérateur, dénominateur) » que tu écriras toi‑même (indice : utilise l'algorithme d'Euclide pour le PGCD). Cela t'entraînera à combiner simulation, calcul de PGCD et affichage de fractions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Aller plus loin : simuler une expérience à deux dés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois à l'aise avec un dé, tu peux simuler le lancer de deux dés et étudier la somme des deux faces. La procédure élémentaire appellera « lancerDe » deux fois, additionnera les résultats et retournera la somme (un entier entre $2$ et $12$). Tu devras alors prévoir onze compteurs (un pour chaque somme possible). En lançant la simulation $10\\,000$ fois, tu observeras que les sommes centrales ($7$) apparaissent beaucoup plus souvent que les extrêmes ($2$ ou $12$). Cette distribution en forme de cloche est un exemple classique de loi de probabilité discrète. Pour la visualiser, tu peux afficher un diagramme en barres où la hauteur de chaque barre est proportionnelle à la fréquence observée."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences théoriques des sommes de deux dés (en pourcentage)",
+              "bars": [
+                {
+                  "label": "2",
+                  "value": 2.78,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 5.56,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 8.33,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 11.11,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 13.89,
+                  "tone": "blue"
+                },
+                {
+                  "label": "7",
+                  "value": 16.67,
+                  "tone": "gold"
+                },
+                {
+                  "label": "8",
+                  "value": 13.89,
+                  "tone": "blue"
+                },
+                {
+                  "label": "9",
+                  "value": 11.11,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 8.33,
+                  "tone": "blue"
+                },
+                {
+                  "label": "11",
+                  "value": 5.56,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12",
+                  "value": 2.78,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant les bases pour définir tes propres procédures, les appeler, les combiner et les utiliser dans des simulations qui imitent le hasard. Ces compétences sont au cœur de la pensée informatique et te serviront dans de nombreux projets, du jeu vidéo à l'analyse de données scientifiques. Continue à expérimenter, à tester tes idées et à partager tes programmes avec tes camarades."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une procédure avec un nom clair, des paramètres et un retour.",
+                "Je sais appeler une procédure en passant les bons arguments et récupérer sa valeur de retour.",
+                "Je sais composer plusieurs appels pour construire un calcul plus complexe.",
+                "Je sais écrire une simulation simple en utilisant une fonction aléatoire et une boucle.",
+                "Je sais exprimer les résultats d'une simulation sous forme de fractions ou de pourcentages.",
+                "Je sais identifier et corriger les erreurs fréquentes lors des appels de procédures."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la procédure « lancerDe » qui ne prend aucun paramètre et retourne un entier aléatoire entre $1$ et $6$.",
+              "answer": "procédure lancerDe() { retourner aleatoire(1, 6) }",
+              "hint": "Utilise la fonction « aleatoire(min, max) » fournie par ton environnement.",
+              "explanation": "La procédure appelle la fonction aléatoire avec les bornes $1$ et $6$ et renvoie directement le résultat."
+            },
+            {
+              "question": "Complète le programme principal pour simuler $1000$ lancers, compter les « 6 » et afficher la fréquence sous forme de fraction simplifiée.\\nnombreSix = 0\\npour i de 1 à 1000 faire\\n    si lancerDe() == 6 alors\\n        nombreSix = nombreSix + 1\\n    fin si\\nfin pour\\n// À toi d'afficher la fraction simplifiée\\n",
+              "answer": "afficher simplifierFraction(nombreSix, 1000)",
+              "hint": "Appelle la procédure « simplifierFraction » avec le compteur et le total d'essais.",
+              "explanation": "La fraction $\\frac{nombreSix}{1000}$ est simplifiée par la procédure avant d'être affichée."
+            },
+            {
+              "question": "Dans la simulation de deux dés, quelle somme a la plus grande probabilité théorique ?",
+              "answer": "7",
+              "hint": "Regarde le diagramme en barres : la barre la plus haute correspond à la somme la plus fréquente.",
+              "explanation": "Il y a six combinaisons qui donnent $7$ (1+6, 2+5, 3+4, 4+3, 5+2, 6+1) sur $36$ issues possibles, soit une probabilité de $\\frac{6}{36} = \\frac{1}{6}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

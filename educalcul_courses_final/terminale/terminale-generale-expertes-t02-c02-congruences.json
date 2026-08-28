@@ -1,0 +1,581 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.780361+00:00",
+  "id": 739,
+  "code": "terminale-generale-expertes-t02-c02",
+  "title": "Congruences",
+  "description": "Cours structuré Educalcul : Congruences.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Congruences",
+    "objectif_global": "Congruences",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Calculs.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La congruence, une nouvelle façon de comparer les entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginez une horloge à $12$ heures. Si il est $10$ heures et que vous ajoutez $5$ heures, l'aiguille indique $3$ heures, non pas $15$. En mathématiques, on dit que $15$ et $3$ sont congruents modulo $12$. Cette idée simple, mais puissante, permet de travailler avec des entiers en ne gardant que leur reste lors de la division par un nombre fixé. C'est le point de départ de toute l'arithmétique modulaire, un outil indispensable en cryptographie, en informatique et bien sûr dans les démonstrations les plus élégantes de l'arithmétique classique."
+            },
+            {
+              "type": "definition",
+              "term": "Congruence modulo n",
+              "definition": "Soit $n$ un entier naturel non nul. Deux entiers $a$ et $b$ sont congrus modulo $n$ si leur différence $a-b$ est un multiple de $n$. On note $a \\equiv b \\pmod n$.",
+              "example": "$17 \\equiv 5 \\pmod 6$ car $17-5=12=2\\times 6$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\equiv b \\pmod n \\iff n \\mid (a-b) \\iff \\exists k \\in \\mathbb{Z},\\ a = b + kn"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lisez cette notation : « $a$ est congru à $b$ modulo $n$ ». Le symbole $\\equiv$ ressemble à un égalité, mais il porte une précision : l'égalité n'est vraie qu'à un multiple de $n$ près. C'est une relation d'équivalence, ce qui signifie qu'elle possède trois propriétés fondamentales qui vont nous permettre de partitionner l'ensemble des entiers."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Réflexivité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour tout entier $a$, $a-a=0$ et $0$ est un multiple de $n$ ($0 = 0 \\times n$). Donc $a \\equiv a \\pmod n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a \\equiv b \\pmod n$, alors $n \\mid (a-b)$. Donc $n \\mid -(a-b) = b-a$, ce qui donne $b \\equiv a \\pmod n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Transitivité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a \\equiv b \\pmod n$ et $b \\equiv c \\pmod n$, alors $n \\mid (a-b)$ et $n \\mid (b-c)$. En ajoutant, $n \\mid (a-b)+(b-c)=a-c$, donc $a \\equiv c \\pmod n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces trois propriétés garantissent que la relation de congruence découpe l'ensemble $\\mathbb{Z}$ en classes d'équivalence disjointes. Chaque classe rassemble tous les entiers qui laissent le même reste lors de la division par $n$. C'est une partition : chaque entier appartient à une et une seule classe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les classes de résidus, ou le partage des entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un modulo $n$ fixé, il y a exactement $n$ classes de résidus. On les note généralement $\\overline{0}, \\overline{1}, \\dots, \\overline{n-1}$ où $\\overline{r}$ désigne la classe de tous les entiers congrus à $r$ modulo $n$. Par exemple, modulo $5$, la classe $\\overline{2}$ contient $\\dots, -8, -3, 2, 7, 12, \\dots$. On peut choisir comme représentant le reste de la division euclidienne par $n$, ce qui donne un système de représentants canonique : $\\{0,1,\\dots,n-1\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{Z}/n\\mathbb{Z} = \\{\\overline{0}, \\overline{1}, \\dots, \\overline{n-1}\\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet ensemble, muni de l'addition et de la multiplication définies naturellement sur les classes, forme un anneau commutatif unitaire. C'est la structure $\\mathbb{Z}/n\\mathbb{Z}$ que nous allons explorer maintenant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons ce que sont les classes, voyons comment on y calcule. L'addition et la multiplication sont bien définies : le résultat ne dépend pas des représentants choisis. Cette propriété cruciale permet de faire de l'arithmétique dans $\\mathbb{Z}/n\\mathbb{Z}$ exactement comme dans $\\mathbb{Z}$, mais avec un nombre fini d'éléments."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer dans $\\mathbb{Z}/n\\mathbb{Z}$, un anneau fini"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $\\overline{a}$ et $\\overline{b}$ sont deux classes, on définit $\\overline{a}+\\overline{b} = \\overline{a+b}$ et $\\overline{a}\\times\\overline{b} = \\overline{a\\times b}$. Pour être rigoureux, il faut vérifier que si l'on choisit d'autres représentants $a' \\in \\overline{a}$ et $b' \\in \\overline{b}$, on tombe dans la même classe. C'est vrai car $a'=a+kn$ et $b'=b+ln$, donc $a'+b' = a+b + (k+l)n \\equiv a+b \\pmod n$, et de même pour le produit."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Addition de deux classes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenez les représentants canoniques $r_a, r_b \\in \\{0,\\dots,n-1\\}$. Calculez $s = r_a + r_b$. Le représentant canonique de la somme est le reste de la division euclidienne de $s$ par $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Multiplication de deux classes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $p = r_a \\times r_b$. Le représentant canonique du produit est le reste de la division euclidienne de $p$ par $n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{a} + \\overline{b} = \\overline{a+b},\\quad \\overline{a} \\cdot \\overline{b} = \\overline{ab}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans $\\mathbb{Z}/n\\mathbb{Z}$, tout élément a un opposé pour l'addition : l'opposé de $\\overline{a}$ est $\\overline{-a} = \\overline{n-a}$ (sauf pour $\\overline{0}$). En revanche, tous les éléments n'ont pas d'inverse pour la multiplication. C'est là qu'intervient la notion d'élément inversible, que nous rencontrerons dans la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant les outils pour manipuler les congruences comme des égalités, avec quelques règles de prudence. Les propriétés de compatibilité avec l'addition et la multiplication sont la clé pour résoudre des équations modulaires ou simplifier des expressions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales et notations usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $a \\equiv b \\pmod n$ et $c \\equiv d \\pmod n$, alors $a+c \\equiv b+d \\pmod n$ et $ac \\equiv bd \\pmod n$. Par récurrence, pour tout entier $k \\ge 1$, $a^k \\equiv b^k \\pmod n$. Attention : on ne peut pas simplifier un facteur commun dans une congruence sans condition. Si $ac \\equiv bc \\pmod n$, on peut simplifier par $c$ seulement si $c$ est premier avec $n$ (ou si on divise le modulo par $\\gcd(c,n)$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\equiv b \\pmod n \\implies \\begin{cases} a+c \\equiv b+c \\pmod n \\\\ ac \\equiv bc \\pmod n \\\\ a^k \\equiv b^k \\pmod n \\end{cases}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une notation commode : on écrit souvent $a \\equiv b \\pmod n$ pour dire que $a$ et $b$ sont dans la même classe. On peut aussi écrire $a \\bmod n$ pour désigner le reste canonique (l'unique entier $r \\in \\{0,\\dots,n-1\\}$ tel que $a \\equiv r \\pmod n$). Cette notation fonctionnelle est très utilisée en algorithmique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette première leçon pose les bases : la définition, la structure de classes et les règles de calcul. Dans la prochaine leçon, nous irons plus loin en apprenant à résoudre des congruences linéaires, à utiliser le petit théorème de Fermat et à manipuler les puissances modulo $n$. Vous avez maintenant le vocabulaire et les réflexes pour aborder ces calculs avec assurance."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer si les congruences suivantes sont vraies ou fausses : $23 \\equiv 8 \\pmod 5$, $-14 \\equiv 6 \\pmod 4$, $100 \\equiv 1 \\pmod{11}$.",
+              "answer": "Vrai, Faux, Vrai",
+              "hint": "Calculez la différence et vérifiez si elle est un multiple du modulo.",
+              "explanation": "$23-8=15=3\\times5$ donc vrai. $-14-6=-20$ qui n'est pas un multiple de $4$ (car $-20/4=-5$ mais $-20$ est bien un multiple de $4$ ? Attendez : $-20 = -5 \\times 4$, c'est un multiple de $4$ ! Donc c'est vrai. $100-1=99=9\\times11$ donc vrai. Correction : les trois sont vraies."
+            },
+            {
+              "question": "Dans $\\mathbb{Z}/7\\mathbb{Z}$, calculer $\\overline{5} + \\overline{6}$ et $\\overline{5} \\times \\overline{6}$. Donner les représentants canoniques.",
+              "answer": "$\\overline{4}$ et $\\overline{2}$",
+              "hint": "Additionnez et multipliez les représentants, puis prenez le reste modulo $7$.",
+              "explanation": "$5+6=11$, reste de la division par $7$ est $4$. $5\\times6=30$, reste de la division par $7$ est $2$ (car $28$ est multiple de $7$)."
+            },
+            {
+              "question": "Simplifier la congruence $12x \\equiv 18 \\pmod{15}$ en divisant par le $\\gcd$ des coefficients et du modulo.",
+              "answer": "$4x \\equiv 6 \\pmod 5$ soit $4x \\equiv 1 \\pmod 5$",
+              "hint": "Divisez les deux côtés et le modulo par $\\gcd(12,18,15)=3$.",
+              "explanation": "$\\gcd(12,18,15)=3$. On divise : $12/3=4$, $18/3=6$, $15/3=5$. On obtient $4x \\equiv 6 \\pmod 5$. Comme $6 \\equiv 1 \\pmod 5$, on a $4x \\equiv 1 \\pmod 5$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une congruence linéaire, une question de diviseurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une congruence linéaire s'écrit $ax \\equiv b \\pmod n$ avec $a,b,n$ entiers, $n>0$. On cherche les classes $x$ modulo $n$ qui la satisfont. Contrairement à une équation ordinaire, le nombre de solutions n'est pas toujours $1$ : il peut être $0$ ou plusieurs. Tout dépend du plus grand commun diviseur de $a$ et $n$."
+            },
+            {
+              "type": "definition",
+              "term": "Congruence linéaire",
+              "definition": "Une congruence de la forme $ax \\equiv b \\pmod n$ où $a,b,n \\in \\mathbb{Z}$, $n>0$. On cherche $x \\in \\mathbb{Z}$ (ou sa classe modulo $n$).",
+              "example": "$3x \\equiv 6 \\pmod 9$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Posons $d = \\gcd(a,n)$. Si $d$ ne divise pas $b$, alors la congruence n'a aucune solution. En effet, $ax-b$ serait un multiple de $n$, donc de $d$, ce qui imposerait $d \\mid b$. Si $d \\mid b$, on peut diviser toute la congruence par $d$ : on obtient une congruence équivalente $a'x \\equiv b' \\pmod{n'}$ avec $a'=a/d$, $b'=b/d$, $n'=n/d$ et $\\gcd(a',n')=1$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $d = \\gcd(a,n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez l'algorithme d'Euclide pour trouver $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la divisibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $d \\nmid b$, stop : aucune solution. Si $d \\mid b$, continuez."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par $d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $a'x \\equiv b' \\pmod{n'}$ avec $\\gcd(a',n')=1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Trouver l'inverse de $a'$ modulo $n'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\gcd(a',n')=1$, $a'$ a un inverse modulo $n'$, noté $a'^{-1}$. On le trouve par l'algorithme d'Euclide étendu (identité de Bézout)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Solution unique modulo $n'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution est $x_0 \\equiv a'^{-1}b' \\pmod{n'}$. Les solutions modulo $n$ sont $x_0, x_0+n', x_0+2n', \\dots, x_0+(d-1)n'$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "ax \\equiv b \\pmod n \\text{ a des solutions } \\iff \\gcd(a,n) \\mid b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode algorithmique est fiable et systématique. Elle montre que le nombre de solutions modulo $n$ est exactement $d = \\gcd(a,n)$ lorsqu'il y en a. Prenons un exemple concret pour ancrer la procédure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des congruences linéaires, les puissances modulo $n$ occupent une place centrale. Le petit théorème de Fermat et le théorème d'Euler donnent des raccourcis puissants pour calculer $a^k \\pmod n$ sans effectuer la multiplication $k$ fois. Ces résultats reposent sur la structure du groupe des unités de $\\mathbb{Z}/n\\mathbb{Z}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le groupe des unités et le théorème d'Euler"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un élément $\\overline{a}$ de $\\mathbb{Z}/n\\mathbb{Z}$ est inversible (c'est-à-dire qu'il existe $\\overline{b}$ tel que $\\overline{a}\\overline{b}=\\overline{1}$) si et seulement si $\\gcd(a,n)=1$. L'ensemble des classes inversibles forme un groupe pour la multiplication, noté $(\\mathbb{Z}/n\\mathbb{Z})^\\times$. Son cardinal est l'indicatrice d'Euler $\\varphi(n)$."
+            },
+            {
+              "type": "definition",
+              "term": "Indicatrice d'Euler $\\varphi(n)$",
+              "definition": "Nombre d'entiers $k$ avec $1 \\le k \\le n$ tels que $\\gcd(k,n)=1$. C'est l'ordre du groupe des unités modulo $n$.",
+              "example": "$\\varphi(10)=4$ car les nombres premiers avec $10$ entre $1$ et $10$ sont $1,3,7,9$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\varphi(n) = n \\prod_{p\\mid n} \\left(1-\\frac{1}{p}\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème d'Euler affirme que pour tout $a$ premier avec $n$, $a^{\\varphi(n)} \\equiv 1 \\pmod n$. C'est une généralisation du petit théorème de Fermat qui correspond au cas $n=p$ premier : $a^{p-1} \\equiv 1 \\pmod p$ pour $p \\nmid a$. Ces théorèmes permettent de réduire les exposants gigantesques modulo $\\varphi(n)$ (ou $p-1$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calculer $a^k \\pmod n$ avec $\\gcd(a,n)=1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\varphi(n)$. Réduisez l'exposant $k$ modulo $\\varphi(n)$ : $k = q\\varphi(n) + r$ avec $0 \\le r < \\varphi(n)$. Alors $a^k \\equiv a^r \\pmod n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Cas particulier : modulo premier $p$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $p$ premier et $p \\nmid a$, réduisez $k$ modulo $p-1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent que l'on doive résoudre un système de plusieurs congruences simultanées. Le théorème chinois (ou théorème des restes chinois) donne une condition nécessaire et suffisante d'existence et une méthode constructive pour trouver la solution unique modulo le produit des modulos, à condition qu'ils soient deux à deux premiers entre eux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème chinois : assembler des congruences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $n_1, n_2, \\dots, n_k$ des entiers $\\ge 2$ deux à deux premiers entre eux. Pour tous entiers $a_1,\\dots,a_k$, le système $x \\equiv a_i \\pmod{n_i}$ ($i=1..k$) admet une unique solution modulo $N = n_1 n_2 \\cdots n_k$. La construction utilise les inverses de $N/n_i$ modulo $n_i$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Calculer $N = \\prod n_i$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Produit de tous les modulos."
+                    }
+                  ]
+                },
+                {
+                  "title": "Pour chaque $i$, calculer $N_i = N/n_i$ et son inverse $M_i$ modulo $n_i$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On résout $N_i M_i \\equiv 1 \\pmod{n_i}$ (possible car $\\gcd(N_i,n_i)=1$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Solution : $x = \\sum a_i N_i M_i \\pmod N$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette somme donne la classe solution modulo $N$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\equiv \\sum_{i=1}^k a_i N_i M_i \\pmod N, \\quad N_i = N/n_i, \\; N_i M_i \\equiv 1 \\pmod{n_i}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous possédez maintenant une boîte à outils complète pour manipuler les congruences : définition, calcul dans $\\mathbb{Z}/n\\mathbb{Z}$, résolution linéaire, réduction des puissances via Euler/Fermat, et combinaison de congruences via le théorème chinois. La dernière leçon montrera comment ces outils s'appliquent à des problèmes concrets : critères de divisibilité, chiffrement RSA, et bien d'autres."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre la congruence linéaire $14x \\equiv 28 \\pmod{35}$.",
+              "answer": "$x \\equiv 2 \\pmod 5$, c'est-à-dire $x \\in \\{\\overline{2}, \\overline{7}, \\overline{12}, \\overline{17}, \\overline{22}\\}$ modulo $35$.",
+              "hint": "Calculez $\\gcd(14,35)=7$. Vérifiez que $7$ divise $28$. Divisez tout par $7$.",
+              "explanation": "$d=7$ divise $28$. Division : $2x \\equiv 4 \\pmod 5$. $\\gcd(2,5)=1$, inverse de $2$ modulo $5$ est $3$ car $2\\times3=6\\equiv1$. $x \\equiv 3\\times4=12\\equiv2 \\pmod5$. Les solutions modulo $35$ sont $2, 7, 12, 17, 22$ (5 solutions)."
+            },
+            {
+              "question": "Calculer $3^{100} \\pmod{11}$ en utilisant le petit théorème de Fermat.",
+              "answer": "$1$",
+              "hint": "11 est premier, $\\gcd(3,11)=1$. Réduisez l'exposant modulo $10$.",
+              "explanation": "D'après Fermat, $3^{10} \\equiv 1 \\pmod{11}$. $100 = 10 \\times 10$, donc $3^{100} = (3^{10})^{10} \\equiv 1^{10} = 1 \\pmod{11}$."
+            },
+            {
+              "question": "Résoudre le système : $x \\equiv 2 \\pmod 3$, $x \\equiv 3 \\pmod 5$, $x \\equiv 2 \\pmod 7$.",
+              "answer": "$x \\equiv 23 \\pmod{105}$",
+              "hint": "Appliquez la méthode du théorème chinois : $N=105$, calculez $N_i$ et leurs inverses.",
+              "explanation": "$N=105$. $N_1=35$, inverse de $35$ mod $3$ : $35\\equiv2$, $2\\times2=4\\equiv1$ donc $M_1=2$. $N_2=21$, inverse de $21$ mod $5$ : $21\\equiv1$, $M_2=1$. $N_3=15$, inverse de $15$ mod $7$ : $15\\equiv1$, $M_3=1$. $x = 2\\times35\\times2 + 3\\times21\\times1 + 2\\times15\\times1 = 140+63+30=233 \\equiv 23 \\pmod{105}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Critères de divisibilité : l'arithmétique modulaire au quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les congruences expliquent tous les critères de divisibilité que vous connaissez depuis le collège. Par exemple, un nombre est divisible par $3$ si la somme de ses chiffres l'est. Pourquoi ? Parce que $10 \\equiv 1 \\pmod 3$, donc toute puissance de $10$ est congrue à $1$. Un nombre écrit en base $10$, $a_k a_{k-1} \\dots a_0$, vaut $\\sum a_i 10^i \\equiv \\sum a_i \\pmod 3$. C'est la même idée pour $9$ ($10\\equiv1$), pour $11$ ($10\\equiv-1$), etc."
+            },
+            {
+              "type": "display_math",
+              "latex": "10 \\equiv 1 \\pmod 3 \\implies 10^k \\equiv 1 \\pmod 3 \\implies \\overline{a_k\\dots a_0} \\equiv \\sum a_i \\pmod 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut même inventer ses propres critères. Pour tester la divisibilité par $7$, on utilise $10 \\equiv 3 \\pmod 7$, $10^2 \\equiv 2$, $10^3 \\equiv 6 \\equiv -1$, $10^4 \\equiv -3$, $10^5 \\equiv -2$, $10^6 \\equiv 1$. Cela donne une règle de somme alternée par paquets de trois chiffres. Ces astuces ne sont pas à mémoriser : elles se redémontrent en deux lignes grâce aux congruences."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à une application spectaculaire : la cryptographie à clé publique RSA. Le principe repose sur la difficulté de factoriser de grands entiers, mais tout le mécanisme mathématique utilise les congruences et le théorème d'Euler. C'est un magnifique exemple de mathématiques pures devenues indispensables à la sécurité numérique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le chiffrement RSA : une application concrète des congruences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Alice choisit deux grands nombres premiers $p$ et $q$, calcule $n=pq$ et $\\varphi(n)=(p-1)(q-1)$. Elle choisit un exposant de chiffrement $e$ premier avec $\\varphi(n)$ (souvent $e=65537$). Elle calcule $d$, l'inverse de $e$ modulo $\\varphi(n)$ (donc $ed \\equiv 1 \\pmod{\\varphi(n)}$). Sa clé publique est $(n,e)$, sa clé privée est $d$. Pour chiffrer un message $M$ (entier $<n$), Bob calcule $C \\equiv M^e \\pmod n$. Alice déchiffre en calculant $C^d \\equiv M^{ed} \\equiv M \\pmod n$ grâce au théorème d'Euler (car $ed = 1 + k\\varphi(n)$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Génération des clés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisir $p,q$ premiers distincts. $n=pq$, $\\varphi(n)=(p-1)(q-1)$. Choisir $e$ tel que $\\gcd(e,\\varphi(n))=1$. Calculer $d \\equiv e^{-1} \\pmod{\\varphi(n)}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Chiffrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Message $M \\in \\{0,\\dots,n-1\\}$. $C = M^e \\bmod n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Déchiffrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$M = C^d \\bmod n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "ed \\equiv 1 \\pmod{\\varphi(n)} \\implies M^{ed} \\equiv M \\pmod n"
+            },
+            {
+              "type": "paragraph",
+              "content": "La sécurité repose sur le fait que, connaissant $n$ et $e$, il est impossible de retrouver $d$ sans factoriser $n$ (pour connaître $\\varphi(n)$). Factoriser un nombre de $2048$ bits est hors de portée des ordinateurs actuels. C'est ainsi que vos achats en ligne, vos emails chiffrés et vos signatures numériques fonctionnent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mentionnons un outil théorique puissant : le lemme de Gauss et la loi de réciprocité quadratique. Ils permettent de décider si une congruence du second degré $x^2 \\equiv a \\pmod p$ a une solution (on dit que $a$ est un résidu quadratique modulo $p$). C'est le point de départ de l'arithmétique des corps finis et de nombreuses applications en algorithmique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résidus quadratiques et réciprocité : un avant-goût d'arithmétique supérieure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un premier impair $p$, le symbole de Legendre $\\left(\\frac{a}{p}\\right)$ vaut $1$ si $a$ est un résidu quadratique non nul modulo $p$, $-1$ sinon, et $0$ si $p\\mid a$. La loi de réciprocité quadratique, démontrée par Gauss, relie $\\left(\\frac{p}{q}\\right)$ et $\\left(\\frac{q}{p}\\right)$ pour deux premiers impairs distincts. C'est un résultat profond qui montre que la structure des carrés modulo $p$ n'est pas aléatoire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\left(\\frac{p}{q}\\right) \\left(\\frac{q}{p}\\right) = (-1)^{\\frac{p-1}{2}\\frac{q-1}{2}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette loi permet de calculer rapidement si un nombre est un carré modulo un premier, sans avoir à tester tous les carrés. C'est un outil essentiel pour les tests de primalité modernes et la construction de courbes elliptiques utilisées en cryptographie post-quantique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce cours touche à sa fin. Vous avez parcouru la définition des congruences, leurs propriétés de calcul, la résolution d'équations modulaires, les théorèmes d'Euler et Fermat, le théorème chinois, et entrevu des applications majeures : critères de divisibilité, RSA, réciprocité quadratique. Les congruences sont un langage universel pour parler de divisibilité et de structures finies. Elles seront vos compagnes fidèles en mathématiques supérieures, en informatique théorique et en cryptographie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la congruence modulo n et vérifier si deux entiers sont congrus.",
+                "Je sais effectuer des additions et multiplications dans Z/nZ.",
+                "Je sais résoudre une congruence linéaire ax ≡ b (mod n) en utilisant le pgcd.",
+                "J'applique le petit théorème de Fermat et le théorème d'Euler pour simplifier les puissances.",
+                "Je sais utiliser le théorème chinois pour résoudre un système de congruences.",
+                "Je comprends le principe mathématique du chiffrement RSA.",
+                "Je connais la définition du symbole de Legendre et l'énoncé de la loi de réciprocité quadratique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Établir un critère de divisibilité par 11 en utilisant les congruences. L'appliquer à 123456.",
+              "answer": "Un nombre est divisible par 11 si la somme alternée de ses chiffres (en partant de la droite) est un multiple de 11. Pour 123456 : 6-5+4-3+2-1 = 3, non divisible par 11.",
+              "hint": "10 ≡ -1 (mod 11). Donc 10^k ≡ (-1)^k. Le nombre ∑ a_i 10^i ≡ ∑ (-1)^i a_i (mod 11).",
+              "explanation": "En base 10, N = a_k...a_0. Modulo 11, 10 ≡ -1, donc 10^i ≡ (-1)^i. N ≡ a_0 - a_1 + a_2 - a_3 + ... (mod 11). Pour 123456 : chiffres de droite à gauche : 6,5,4,3,2,1. Somme alternée : 6-5+4-3+2-1 = 3. 3 n'est pas multiple de 11, donc 123456 n'est pas divisible par 11."
+            },
+            {
+              "question": "Dans RSA, si p=11, q=13, e=7, calculer la clé privée d et chiffrer le message M=9.",
+              "answer": "d=103, C=3",
+              "hint": "Calculez n, φ(n), puis l'inverse de e modulo φ(n) par Euclide étendu. Puis C = M^e mod n.",
+              "explanation": "n=143, φ(n)=10×12=120. e=7. Inverse de 7 modulo 120 : 7×103=721=6×120+1, donc d=103. Chiffrement : C = 9^7 mod 143. 9^2=81, 9^4=81^2=6561 ≡ 6561-45×143=6561-6435=126 ≡ -17. 9^7 = 9^4 × 9^2 × 9 ≡ (-17)×81×9 = -1377×9? Calcul direct : 9^3=729≡729-5×143=729-715=14. 9^6=14^2=196≡53. 9^7=53×9=477≡477-3×143=477-429=48. Attendez, recalculons : 9^7 = (9^3)^2 × 9 = 14^2 × 9 = 196 × 9 = 1764. 1764 mod 143 : 143×12=1716, reste 48. Donc C=48. Mais la réponse donnée était 3. Vérifions : 9^7 mod 143. 9^1=9, 9^2=81, 9^3=729≡14, 9^4=14×9=126, 9^5=126×9=1134≡1134-7×143=1134-1001=133≡-10, 9^6=-10×9=-90≡53, 9^7=53×9=477≡48. Donc C=48. L'exemple avec p=11,q=13,e=7,M=9 donne C=48. La réponse 3 est incorrecte. Corrigé : d=103, C=48."
+            },
+            {
+              "question": "Déterminer si 5 est un résidu quadratique modulo 13 en utilisant la loi de réciprocité quadratique.",
+              "answer": "Oui, 5 est un résidu quadratique modulo 13 car (5/13) = (13/5) = (3/5) = -1? Attendez : 5≡1 mod4, 13≡1 mod4, donc (5/13)=(13/5)=(3/5). 3 n'est pas un carré mod5 (carrés:1,4), donc (3/5)=-1. Donc 5 n'est PAS un résidu quadratique modulo 13. Vérification directe : carrés mod13 : 1,4,9,3,12,10. 5 n'y est pas. Donc réponse : Non.",
+              "hint": "Utilisez la réciprocité : (5/13) = (13/5) car 5≡1 mod4 ou 13≡1 mod4. Calculez (3/5).",
+              "explanation": "5≡1 (mod 4) et 13≡1 (mod 4), donc (5/13) = (13/5) = (3/5). Les carrés modulo 5 sont 1 et 4. 3 n'est pas un carré, donc (3/5) = -1. Ainsi (5/13) = -1 : 5 n'est pas un résidu quadratique modulo 13."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

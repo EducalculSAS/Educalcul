@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Réduire",
+  "title": "Quiz : Réduire une expression littérale",
+  "questions": [
+    {
+      "text": "Réduis l'expression $3x + 2x - 5 + 7$.",
+      "options": [
+        "$5x + 2$",
+        "$5x - 2$",
+        "$6x + 2$",
+        "$5x + 12$"
+      ],
+      "correctAnswer": "$5x + 2$",
+      "explanation": "On regroupe les termes en $x$ : $3x + 2x = 5x$. On regroupe les constantes : $-5 + 7 = 2$. L'expression réduite est donc $5x + 2$. Les autres réponses correspondent à des erreurs de signe ou d'addition des coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis l'expression $2(3x - 4) + 5x$.",
+      "options": [
+        "$11x - 8$",
+        "$11x + 8$",
+        "$6x - 8 + 5x$",
+        "$6x - 4 + 5x$"
+      ],
+      "correctAnswer": "$11x - 8$",
+      "explanation": "On distribue d'abord : $2 \\times 3x = 6x$ et $2 \\times (-4) = -8$. L'expression devient $6x - 8 + 5x$. On regroupe les termes en $x$ : $6x + 5x = 11x$. Le résultat final est $11x - 8$. Les distracteurs oublient la distribution du signe moins ou ne terminent pas la réduction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis l'expression $\\frac{4x}{2} + \\frac{6}{3} - x$.",
+      "options": [
+        "$x + 2$",
+        "$2x + 2$",
+        "$3x + 2$",
+        "$x - 2$"
+      ],
+      "correctAnswer": "$x + 2$",
+      "explanation": "On simplifie chaque fraction : $\\frac{4x}{2} = 2x$ et $\\frac{6}{3} = 2$. L'expression devient $2x + 2 - x$. On regroupe les termes en $x$ : $2x - x = x$. Le résultat est $x + 2$. Les autres choix proviennent d'une mauvaise simplification des fractions ou d'une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis l'expression $3a + 2b - a + 4b - 5$.",
+      "options": [
+        "$2a + 6b - 5$",
+        "$4a + 6b - 5$",
+        "$2a + 2b - 5$",
+        "$2a + 6b + 5$"
+      ],
+      "correctAnswer": "$2a + 6b - 5$",
+      "explanation": "On regroupe les termes en $a$ : $3a - a = 2a$. On regroupe les termes en $b$ : $2b + 4b = 6b$. La constante $-5$ reste inchangée. L'expression réduite est $2a + 6b - 5$. Les distracteurs correspondent à une addition incorrecte des coefficients de $a$ ou $b$, ou à un changement de signe de la constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis l'expression $2x^2 + 3x - x^2 + 4x - 5$.",
+      "options": [
+        "$x^2 + 7x - 5$",
+        "$3x^2 + 7x - 5$",
+        "$x^2 + 7x + 5$",
+        "$x^2 - x - 5$"
+      ],
+      "correctAnswer": "$x^2 + 7x - 5$",
+      "explanation": "On regroupe les termes en $x^2$ : $2x^2 - x^2 = x^2$. On regroupe les termes en $x$ : $3x + 4x = 7x$. La constante $-5$ ne change pas. Le résultat est $x^2 + 7x - 5$. Les autres réponses viennent d'une addition erronée des coefficients de $x^2$, d'un signe inversé pour la constante ou d'une mauvaise addition des termes en $x$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

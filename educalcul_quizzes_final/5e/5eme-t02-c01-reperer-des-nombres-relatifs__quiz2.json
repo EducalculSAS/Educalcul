@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 384,
+  "_course_code": "5eme-t02-c01-reperer-des-nombres-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Opposé",
+  "title": "Quiz : L'opposé d'un nombre relatif",
+  "questions": [
+    {
+      "text": "Quel est l'opposé du nombre $7$ ?",
+      "options": [
+        "$-7$",
+        "$7$",
+        "$0$",
+        "$\\frac{1}{7}$"
+      ],
+      "correctAnswer": "$-7$",
+      "explanation": "L'opposé d'un nombre est le nombre qui, ajouté à l'original, donne $0$. Ici, $7 + (-7) = 0$. L'option $7$ est le nombre lui-même, $0$ est l'élément neutre de l'addition, et $\\frac{1}{7}$ est l'inverse multiplicatif, pas l'opposé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est l'opposé de $-12$ ?",
+      "options": [
+        "$12$",
+        "$-12$",
+        "$0$",
+        "$-21$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'opposé d'un nombre négatif est le nombre positif de même valeur absolue. L'opposé de $-12$ s'écrit $-(-12)$, ce qui vaut $12$. L'option $-12$ est le nombre de départ, $0$ n'est l'opposé que de lui-même, et $-21$ est un autre nombre négatif sans lien.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée, les points A et B sont symétriques par rapport à l'origine O. Si A a pour abscisse $-4$, quelle est l'abscisse de B ?",
+      "options": [
+        "$4$",
+        "$-4$",
+        "$0$",
+        "$-8$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "La symétrie par rapport à l'origine (le point $0$) correspond exactement à la notion d'opposé. L'abscisse de B est l'opposé de l'abscisse de A. L'opposé de $-4$ est $4$. L'option $-4$ correspond au point A lui-même, $0$ est l'origine, et $-8$ n'a pas de lien géométrique direct avec cette symétrie.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée avec origine O, point A en -4 et point B en 4",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -4,
+            "label": "A"
+          },
+          {
+            "value": 0,
+            "label": "O"
+          },
+          {
+            "value": 4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quelle affirmation est vraie pour tout nombre relatif $a$ ?",
+      "options": [
+        "L'opposé de l'opposé de $a$ est $a$.",
+        "L'opposé de $a$ est toujours positif.",
+        "L'opposé de $a$ est toujours plus grand que $a$.",
+        "L'opposé de $a$ est égal à $a$."
+      ],
+      "correctAnswer": "L'opposé de l'opposé de $a$ est $a$.",
+      "explanation": "C'est une propriété fondamentale : $-(-a) = a$. Par exemple, si $a = -5$, son opposé est $5$, et l'opposé de $5$ est $-5$, on retrouve $a$. Les autres affirmations sont fausses : l'opposé d'un positif est négatif, l'opposé d'un négatif est plus grand mais l'opposé d'un positif est plus petit, et l'opposé n'est égal au nombre que pour $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'égalité $x + (-9) = 0$. Quelle est la valeur de $x$ ?",
+      "options": [
+        "$9$",
+        "$-9$",
+        "$0$",
+        "$1$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Pour que la somme de deux nombres soit nulle, ils doivent être opposés. $x$ doit donc être l'opposé de $-9$. L'opposé de $-9$ est $9$. On vérifie : $9 + (-9) = 0$. L'option $-9$ donnerait $-18$, $0$ donnerait $-9$, et $1$ donnerait $-8$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

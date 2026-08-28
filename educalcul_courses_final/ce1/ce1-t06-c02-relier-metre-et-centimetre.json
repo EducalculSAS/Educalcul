@@ -1,0 +1,442 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.850066+00:00",
+  "id": 118,
+  "code": "ce1-t06-c02",
+  "title": "Relier mètre et centimètre",
+  "description": "Cours structuré Educalcul : Relier mètre et centimètre.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Relier mètre et centimètre",
+    "objectif_global": "Relier mètre et centimètre",
+    "mini_lecons_imposees": [
+      "Comprendre 1 m = 100 cm.",
+      "Convertir des cas entiers simples.",
+      "Résoudre une petite situation."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Comprendre 1 m = 100 cm.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le mètre"
+            },
+            {
+              "type": "definition",
+              "term": "mètre",
+              "definition": "Un mètre est une unité de longueur qui correspond à un grand pas.",
+              "example": "La hauteur d'une porte fait environ 2 m."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu fais un grand pas dans le couloir de l'école. Ce pas mesure à peu près un mètre. Le mètre est l'unité que l'on utilise pour mesurer les longues distances, comme la longueur d'une table ou la hauteur d'une porte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu poses un mètre-ruban par terre, tu vois une graduation tous les centimètres. Le grand trait qui marque le début et la fin du ruban correspond à un mètre entier."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "1 m = 100 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu à quoi ressemble un mètre, découvrons ensemble ce qu'est un centimètre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le centimètre"
+            },
+            {
+              "type": "definition",
+              "term": "centimètre",
+              "definition": "Un centimètre est une toute petite unité de longueur, à peu près la largeur d'un gros crayon.",
+              "example": "L'espace entre deux traits fins sur une règle fait 1 cm."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un centimètre, c'est la largeur d'un gros crayon à papier. C'est une toute petite mesure que l'on repère facilement sur une règle grâce aux traits fins qui se succèdent."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose ton doigt sur le premier trait de la règle, puis compte dix traits. Tu arrives exactement à un décimètre, soit dix centimètres. Continue jusqu'à cent traits pour obtenir un mètre."
+            },
+            {
+              "type": "number_line",
+              "caption": "0 cm et 100 cm",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant les deux unités, voyons comment elles s'emboîtent l'une dans l'autre ensemble facilement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier mètre et centimètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant tu sais que $1$ $m$ vaut exactement $100$ $cm$. C'est comme si tu alignais cent crayons bout à bout pour obtenir la longueur d'un grand pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux retenir cette équivalence en pensant à une grande boîte qui contient cent petites boîtes. Chaque petite boîte représente un centimètre, la grande boîte représente le mètre."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\\\,m = 100\\\\,cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de centimètres y a-t-il dans 1 mètre ?",
+              "answer": "100 cm",
+              "hint": "Regarde le cube de base dix.",
+              "explanation": "Le gros cube représente 100 petits cubes, chaque petit cube = 1 cm."
+            },
+            {
+              "question": "Combien de centimètres y a-t-il entre 0 et 100 sur la droite ?",
+              "answer": "100 cm",
+              "hint": "Compte les traits sur la droite.",
+              "explanation": "Chaque trait correspond à 1 cm, il y en a 100."
+            },
+            {
+              "question": "Écris l'égalité entre mètre et centimètre.",
+              "answer": "1 m = 100 cm",
+              "hint": "Utilise le symbole =.",
+              "explanation": "Un mètre contient exactement cent centimètres."
+            }
+          ]
+        },
+        {
+          "title": "Convertir des cas entiers simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De mètres en centimètres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as une longueur exprimée en mètres et que tu veux la même longueur en centimètres, tu multiplies par cent. C'est comme si tu ouvrais une grande boîte et que tu comptais toutes les petites boîtes qu'elle contient."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est très simple : écris le nombre de mètres, puis ajoute deux zéros à droite. Le nombre obtenu est la longueur en centimètres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris le nombre de mètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le chiffre des mètres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute deux zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris deux zéros à droite du nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lis le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre obtenu est la longueur en centimètres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir transformé des mètres en centimètres, apprenons à faire le chemin inverse très facilement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De centimètres en mètres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu possèdes un nombre de centimètres qui est un multiple de cent, tu peux retrouver le nombre de mètres. Il suffit d'enlever les deux zéros de la fin du nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, $200$ $cm$ deviennent $2$ $m$ et $500$ $cm$ deviennent $5$ $m$. Tu vois que le chiffre des centaines devient le nombre de mètres."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison 200 cm et 2 m",
+              "bars": [
+                {
+                  "label": "200 cm",
+                  "value": 200,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2 m",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais aller dans les deux sens, essayons ensemble quelques conversions mélangées très bien."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement mixte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de passer d'une unité à l'autre avec plusieurs nombres différents. Par exemple, $3$ $m$ devient $300$ $cm$ et $500$ $cm$ devient $5$ $m$. Tu peux aussi essayer $4$ $m$ ou $700$ $cm$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Utilise le tableau ci‑dessous pour vérifier tes réponses. Chaque ligne montre le même nombre de mètres et de centimètres, ce qui t'aide à ne pas te tromper."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Mètres",
+                "Centimètres"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "100"
+                ],
+                [
+                  "2",
+                  "200"
+                ],
+                [
+                  "3",
+                  "300"
+                ]
+              ],
+              "caption": "Tableau de conversion"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis 3 m en centimètres.",
+              "answer": "300 cm",
+              "hint": "Ajoute deux zéros.",
+              "explanation": "3 × 100 = 300."
+            },
+            {
+              "question": "Convertis 400 cm en mètres.",
+              "answer": "4 m",
+              "hint": "Enlève les deux zéros.",
+              "explanation": "400 ÷ 100 = 4."
+            },
+            {
+              "question": "Complète le tableau : 2 m = ? cm ; ? m = 600 cm.",
+              "answer": "200 cm ; 6 m",
+              "hint": "Utilise la multiplication ou la division par 100.",
+              "explanation": "2 m × 100 = 200 cm ; 600 cm ÷ 100 = 6 m."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre une petite situation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le problème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que ton professeur te demande : « La classe a mesuré la longueur du couloir. Elle a trouvé $12$ $m$ et $45$ $cm$. Combien de centimètres cela fait‑il au total ? » La première étape est de repérer les deux nombres donnés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, tu as $12$ $m$ et $45$ $cm$. Les mètres sont une grande unité, les centimètres une petite unité. Tu vas devoir tout transformer en centimètres pour additionner."
+            },
+            {
+              "type": "number_line",
+              "caption": "12 m = 1200 cm et 45 cm",
+              "min": 0,
+              "max": 1300,
+              "points": [
+                {
+                  "value": 1200,
+                  "label": "1200 cm"
+                },
+                {
+                  "value": 1245,
+                  "label": "1245 cm"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les données repérées, voyons comment convertir les mètres en centimètres pour tout additionner."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir et additionner"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà que $1$ $m$ = $100$ $cm$. Donc $12$ $m$ correspondent à $12$ × $100$ = $1200$ $cm$. Ajoute ensuite les $45$ $cm$ restants."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition donne $1200$ $cm$ + $45$ $cm$ = $1245$ $cm$. C'est la longueur totale du couloir exprimée uniquement en centimètres."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "1200",
+                "45"
+              ],
+              "result": "1245",
+              "carries": [
+                ""
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as la réponse en centimètres, tu peux aussi la redonner en mètres et centimètres si on te le demande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exprimer le résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour remettre $1245$ $cm$ en mètres et centimètres, sépare les centaines. $1245$ $cm$ = $12$ $m$ $45$ $cm$. Tu retrouves les nombres de départ."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est comme si tu rangeais les petites boîtes dans des grandes boîtes de cent. Tu as douze grandes boîtes pleines et quarante‑cinq petites boîtes en plus."
+            },
+            {
+              "type": "display_math",
+              "latex": "1245\\\\,cm = 12\\\\,m\\\\,45\\\\,cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais relier mètre et centimètre.",
+                "Je sais convertir des mètres en centimètres.",
+                "Je sais convertir des centimètres en mètres.",
+                "Je sais résoudre un petit problème de longueur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le problème, quels sont les deux nombres donnés ?",
+              "answer": "12 m et 45 cm",
+              "hint": "Relis la phrase du problème.",
+              "explanation": "Le problème donne une longueur en mètres et une en centimètres."
+            },
+            {
+              "question": "Combien de centimètres au total ?",
+              "answer": "1245 cm",
+              "hint": "Transforme les mètres en centimètres puis additionne.",
+              "explanation": "12 m = 1200 cm, 1200 + 45 = 1245 cm."
+            },
+            {
+              "question": "Écris 1245 cm en mètres et centimètres.",
+              "answer": "12 m 45 cm",
+              "hint": "Sépare les centaines.",
+              "explanation": "1245 cm = 12×100 cm + 45 cm = 12 m 45 cm."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

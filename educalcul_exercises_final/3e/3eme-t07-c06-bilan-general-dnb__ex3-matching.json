@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Checklist",
+  "title": "Checklist algorithmique : notions clés pour le DNB",
+  "blocks": [
+    {
+      "title": "Vocabulaire de base",
+      "content": "Relie chaque notion algorithmique à sa définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Variable",
+          "right": "Espace de stockage nommé qui contient une valeur modifiable"
+        },
+        {
+          "left": "Boucle",
+          "right": "Structure qui permet de répéter une suite d'instructions"
+        },
+        {
+          "left": "Condition",
+          "right": "Structure qui exécute des instructions seulement si un test est vrai"
+        },
+        {
+          "left": "Affectation",
+          "right": "Opération qui donne une valeur à une variable (ex : $x \\leftarrow 5$)"
+        },
+        {
+          "left": "Affichage",
+          "right": "Instruction qui permet de communiquer un résultat vers l'écran"
+        }
+      ],
+      "items": [],
+      "explanation": "Une variable stocke une donnée. Une boucle (Pour, Tant que) répète des ordres. Une condition (Si... Sinon) choisit une branche. L'affectation modifie le contenu d'une variable. L'affichage (print, afficher) montre le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Instructions Python et Scratch",
+      "content": "Relie l'instruction Python à son équivalent ou son rôle en algorithmique (Scratch).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "print($x$)",
+          "right": "Afficher la valeur de la variable $x$"
+        },
+        {
+          "left": "input()",
+          "right": "Demander une saisie au clavier (entrée utilisateur)"
+        },
+        {
+          "left": "randint(1,6)",
+          "right": "Générer un nombre entier aléatoire entre 1 et 6"
+        },
+        {
+          "left": "range(5)",
+          "right": "Produire une suite de 5 entiers : 0, 1, 2, 3, 4"
+        },
+        {
+          "left": "while $x > 0$:",
+          "right": "Boucle 'Tant que' : répéter tant que la condition est vraie"
+        }
+      ],
+      "items": [],
+      "explanation": "print() correspond au bloc 'dire' de Scratch. input() attend l'utilisateur. randint simule un dé. range(5) donne les indices 0 à 4 pour une boucle 'Pour'. while est la boucle 'Tant que'.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Structure d'une boucle 'Pour'",
+      "content": "Relie chaque étape de la construction d'une boucle 'Pour' (compteur) à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialisation",
+          "right": "Donner une valeur de départ au compteur (ex : $i \\leftarrow 0$)"
+        },
+        {
+          "left": "Condition d'arrêt",
+          "right": "Test qui détermine si on continue (ex : $i < 10$)"
+        },
+        {
+          "left": "Incrémentation",
+          "right": "Modifier le compteur à chaque tour (ex : $i \\leftarrow i + 1$)"
+        },
+        {
+          "left": "Corps de la boucle",
+          "right": "Instructions répétées à chaque itération"
+        },
+        {
+          "left": "Sortie de boucle",
+          "right": "Instructions exécutées une fois la condition fausse"
+        }
+      ],
+      "items": [],
+      "explanation": "Toute boucle structurée suit ce schéma : on initialise le compteur, on teste la condition, on exécute le corps, on incrémente, on reteste. Quand la condition devient fausse, on sort de la boucle.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

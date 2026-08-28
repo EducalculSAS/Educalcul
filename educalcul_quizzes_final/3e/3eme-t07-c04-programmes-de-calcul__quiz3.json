@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Conjecturer",
+  "title": "Quiz : Conjecturer avec des programmes de calcul",
+  "questions": [
+    {
+      "text": "Le programme suivant affiche une suite de nombres :\\nDébut\\nn ← 1\\nTant que n ≤ 10 faire\\nAfficher n\\nn ← n + 2\\nFin tant que\\nFin\\nQuels nombres sont affichés ?",
+      "options": [
+        "1 3 5 7 9",
+        "2 4 6 8 10",
+        "1 2 3 4 5",
+        "0 2 4 6 8"
+      ],
+      "correctAnswer": "1 3 5 7 9",
+      "explanation": "La variable n commence à 1. La boucle tant que s'exécute tant que n ≤ 10. À chaque tour, n est affiché puis augmenté de 2. Les valeurs successives sont 1, 3, 5, 7, 9. Au tour suivant n deviendrait 11, ce qui arrête la boucle. Les autres options correspondent à un pas de 1, un départ à 2 ou un départ à 0.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme ci‑dessous, la variable x est initialisée à 3 puis multipliée par 2 quatre fois de suite :\\nDébut\\nx ← 3\\nRépéter 4 fois\\nx ← x * 2\\nFin répéter\\nAfficher x\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "48",
+        "24",
+        "12",
+        "96"
+      ],
+      "correctAnswer": "48",
+      "explanation": "x vaut 3 au départ. Après chaque répétition, x est multiplié par 2. Après 4 répétitions, x = 3 × 2⁴ = 3 × 16 = 48. L'option 24 correspond à 3 répétitions, 12 à 2 répétitions, 96 à 5 répétitions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant calcule la somme des entiers de 1 à n :\\nDébut\\nk ← 0\\nPour i de 1 à n faire\\nk ← k + i\\nFin pour\\nAfficher k\\nFin\\nQuelle formule donne la valeur finale de k en fonction de n ?",
+      "options": [
+        "k = $n(n+1)/2$",
+        "k = $n^2$",
+        "k = $2n$",
+        "k = $n(n-1)/2$"
+      ],
+      "correctAnswer": "k = $n(n+1)/2$",
+      "explanation": "La boucle ajoute successivement 1, 2, 3, …, n. La somme des premiers entiers est connue : 1 + 2 + … + n = n(n+1)/2. L'option n² serait la somme des premiers nombres impairs, 2n est le double de n, et n(n-1)/2 est la somme de 1 à n-1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant compare deux nombres a et b :\\nDébut\\nLire a, b\\nSi a > b alors\\nAfficher a\\nSinon\\nAfficher b\\nFin si\\nFin\\nPour a = 7 et b = 12, quel nombre est affiché ?",
+      "options": [
+        "7",
+        "12",
+        "19",
+        "5"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La condition a > b est fausse car 7 n'est pas strictement supérieur à 12. Le programme exécute donc la branche Sinon et affiche b, soit 12. Les autres valeurs correspondent à l'affichage de a, à la somme ou à la différence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme ci‑dessous calcule une suite :\\nDébut\\nu ← 1\\nPour i de 1 à 5 faire\\nu ← 2 * u + 1\\nFin pour\\nAfficher u\\nFin\\nQuelle est la valeur finale de u ?",
+      "options": [
+        "63",
+        "31",
+        "15",
+        "7"
+      ],
+      "correctAnswer": "63",
+      "explanation": "On part de u = 1. À chaque itération on applique u ← 2u + 1. Les valeurs successives sont : i=1 → 3, i=2 → 7, i=3 → 15, i=4 → 31, i=5 → 63. Après 5 itérations, u vaut 63. Les autres options correspondent aux valeurs après 4, 3 ou 2 itérations.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "_status": "done",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Effectifs",
+  "title": "Approfondissement : Effectifs",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous montre le nombre de fruits vendus. Quel est l'effectif total ?",
+      "options": [
+        "$30$",
+        "$28$",
+        "$32$",
+        "$26$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "On additionne les effectifs de chaque catégorie : $12 + 8 + 10 = 30$. Les autres propositions correspondent à des erreurs d'addition.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "12"
+          ],
+          [
+            "Poires",
+            "8"
+          ],
+          [
+            "Bananes",
+            "10"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres représente le nombre de livres lus chaque jour. Quel jour a l'effectif le plus grand ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi"
+      ],
+      "correctAnswer": "Mardi",
+      "explanation": "La barre la plus haute correspond à Mardi avec une valeur de $9$. Les autres jours ont des valeurs inférieures.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 7,
+            "tone": "red"
+          },
+          {
+            "label": "Jeudi",
+            "value": 6,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans le tableau, l'effectif total est $50$. Quelle est la valeur manquante pour les cerises ?",
+      "options": [
+        "$13$",
+        "$12$",
+        "$14$",
+        "$11$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "La somme des effectifs connus est $15 + 12 + 10 = 37$. L'effectif manquant est $50 - 37 = 13$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Fraises",
+            "15"
+          ],
+          [
+            "Framboises",
+            "12"
+          ],
+          [
+            "Myrtilles",
+            "10"
+          ],
+          [
+            "Cerises",
+            "?"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres montre le nombre de garçons et de filles dans une classe. Quelle est la différence entre les effectifs ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$3$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "L'effectif des filles est $22$ et celui des garçons est $18$. La différence est $22 - 18 = 4$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs garçons et filles",
+        "bars": [
+          {
+            "label": "Garçons",
+            "value": 18,
+            "tone": "blue"
+          },
+          {
+            "label": "Filles",
+            "value": 22,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau présente les effectifs classés par ordre croissant. Quel est l'effectif cumulé jusqu'à la catégorie C incluse ?",
+      "options": [
+        "$22$",
+        "$20$",
+        "$25$",
+        "$18$"
+      ],
+      "correctAnswer": "$22$",
+      "explanation": "On additionne les effectifs de A, B et C : $3 + 7 + 12 = 22$. Les autres propositions correspondent à des cumuls partiels ou erronés.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Catégorie",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "A",
+            "3"
+          ],
+          [
+            "B",
+            "7"
+          ],
+          [
+            "C",
+            "12"
+          ],
+          [
+            "D",
+            "20"
+          ]
+        ]
+      }
+    }
+  ]
+}

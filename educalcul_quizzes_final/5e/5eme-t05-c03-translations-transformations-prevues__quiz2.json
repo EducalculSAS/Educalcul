@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Constructions",
+  "title": "Quiz : Constructions des translations (5e)",
+  "questions": [
+    {
+      "text": "Pour construire l'image $M'$ d'un point $M$ par la translation de vecteur $\\vec{v}$, quelle est la méthode correcte à la règle et au compas ?",
+      "options": [
+        "On trace le cercle de centre $M$ et de rayon la longueur de $\\vec{v}$.",
+        "On construit le parallélogramme ayant $M$ et l'extrémité de $\\vec{v}$ comme sommets opposés.",
+        "On trace la droite parallèle à $\\vec{v}$ passant par $M$ et on reporte la longueur de $\\vec{v}$ sur cette droite en partant de $M$ dans le même sens.",
+        "On trace la médiatrice du segment $[M, \\text{extrémité de } \\vec{v}]$."
+      ],
+      "correctAnswer": "On trace la droite parallèle à $\\vec{v}$ passant par $M$ et on reporte la longueur de $\\vec{v}$ sur cette droite en partant de $M$ dans le même sens.",
+      "explanation": "La construction standard de l'image d'un point par une translation consiste à tracer la parallèle à la droite porteuse du vecteur passant par le point, puis à reporter la longueur du vecteur sur cette parallèle dans le même sens. L'option A donne un cercle (lieu des points à distance fixe), l'option B décrit une propriété du parallélogramme mais pas la construction pratique à la règle et au compas, l'option D construit la médiatrice qui n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un segment $[AB]$ et une translation de vecteur $\\vec{u}$. On note $A'$ et $B'$ les images de $A$ et $B$. Quelle propriété le segment $[A'B']$ possède-t-il par rapport à $[AB]$ ?",
+      "options": [
+        "$[A'B']$ est perpendiculaire à $[AB]$.",
+        "$[A'B']$ a la même longueur que $[AB]$ et est parallèle à $(AB)$.",
+        "$[A'B']$ a une longueur double de celle de $[AB]$.",
+        "$[A'B']$ et $[AB]$ ont le même milieu."
+      ],
+      "correctAnswer": "$[A'B']$ a la même longueur que $[AB]$ et est parallèle à $(AB)$.",
+      "explanation": "Une translation conserve les longueurs, les angles et le parallélisme. Le quadrilatère $ABB'A'$ est un parallélogramme, donc ses côtés opposés $[AB]$ et $[A'B']$ sont parallèles et de même longueur. Les autres options correspondent à des erreurs : perpendicularité (rotation de 90°), homothétie de rapport 2, ou symétrie centrale (même milieu).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire l'image du triangle $ABC$ par la translation qui transforme $A$ en $A'$. Après avoir construit $A'$, quelle est la suite logique des opérations pour obtenir $B'$ et $C'$ ?",
+      "options": [
+        "On trace les droites $(A'B')$ et $(A'C')$ parallèles à $(AB)$ et $(AC)$, puis on y reporte les longueurs $AB$ et $AC$.",
+        "On construit $B'$ comme l'image de $B$ par la translation de vecteur $\\overrightarrow{AA'}$, puis $C'$ comme l'image de $C$ par le même vecteur.",
+        "On trace le cercle de centre $A'$ et de rayon $AB$ pour trouver $B'$, et le cercle de centre $A'$ et de rayon $AC$ pour trouver $C'$.",
+        "On relie $A'$ à $B$ et $A'$ à $C$, puis on trace les parallèles à ces droites passant par $A$."
+      ],
+      "correctAnswer": "On construit $B'$ comme l'image de $B$ par la translation de vecteur $\\overrightarrow{AA'}$, puis $C'$ comme l'image de $C$ par le même vecteur.",
+      "explanation": "Une translation est définie par un unique vecteur. Ici, ce vecteur est $\\overrightarrow{AA'}$. Il suffit d'appliquer ce même vecteur à chaque sommet du triangle (construction par parallélogramme ou par parallèle + report de longueur). L'option A décrit une construction possible mais fastidieuse et source d'erreur (on utilise $A'$ comme centre de reporter des longueurs au lieu d'appliquer le vecteur). L'option C utilise des cercles (intersections ambiguës). L'option D ne correspond à aucune construction standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une figure, le triangle $A'B'C'$ est l'image du triangle $ABC$ par une translation. Comment déterminer le vecteur de cette translation ?",
+      "options": [
+        "C'est le vecteur $\\overrightarrow{AB}$.",
+        "C'est le vecteur $\\overrightarrow{AA'}$ (ou $\\overrightarrow{BB'}$ ou $\\overrightarrow{CC'}$).",
+        "C'est le vecteur $\\overrightarrow{A'B'}$.",
+        "C'est le vecteur $\\overrightarrow{BC}$."
+      ],
+      "correctAnswer": "C'est le vecteur $\\overrightarrow{AA'}$ (ou $\\overrightarrow{BB'}$ ou $\\overrightarrow{CC'}$).",
+      "explanation": "Par définition, le vecteur d'une translation est le vecteur qui relie un point quelconque à son image. Comme la translation est la même pour tous les points de la figure, les vecteurs $\\overrightarrow{AA'}$, $\\overrightarrow{BB'}$ et $\\overrightarrow{CC'}$ sont égaux (même direction, même sens, même longueur). Les vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{A'B'}$ ou $\\overrightarrow{BC}$ sont des vecteurs côtés du triangle, ils ne définissent pas le déplacement global de la figure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une droite $(d)$ et une translation de vecteur $\\vec{v}$ non nul. On note $(d')$ l'image de $(d)$ par cette translation. Quelle est la position relative de $(d)$ et $(d')$ ?",
+      "options": [
+        "Les droites $(d)$ et $(d')$ sont sécantes en un point unique.",
+        "Les droites $(d)$ et $(d')$ sont confondues.",
+        "Les droites $(d)$ et $(d')$ sont parallèles (ou confondues si $\\vec{v}$ est un vecteur directeur de $(d)$).",
+        "Les droites $(d)$ et $(d')$ sont perpendiculaires."
+      ],
+      "correctAnswer": "Les droites $(d)$ et $(d')$ sont parallèles (ou confondues si $\\vec{v}$ est un vecteur directeur de $(d)$).",
+      "explanation": "L'image d'une droite par une translation est toujours une droite parallèle à la droite initiale. Si le vecteur de translation $\\vec{v}$ a la même direction que la droite $(d)$ (c'est-à-dire si $\\vec{v}$ est un vecteur directeur de $(d)$), alors la droite glisse sur elle-même et $(d')$ est confondue avec $(d)$. Dans les autres cas, les droites sont distinctes et strictement parallèles. Elles ne sont jamais sécantes ni perpendiculaires.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

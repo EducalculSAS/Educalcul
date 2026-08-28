@@ -1,0 +1,473 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.286997+00:00",
+  "id": 574,
+  "code": "1ere-generale-maths-t01-c04",
+  "title": "Boucles et seuils",
+  "description": "Cours structuré Educalcul : Boucles et seuils.",
+  "subject": "Outils, automatismes, logique et algorithmique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Outils, automatismes, logique et algorithmique",
+    "titre_du_cours": "Boucles et seuils",
+    "objectif_global": "Boucles et seuils",
+    "mini_lecons_imposees": [
+      "For / while.",
+      "Chercher premier rang.",
+      "Terminaison intuitive."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Outils, automatismes, logique et algorithmique",
+      "lessons": [
+        {
+          "title": "For / while.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles « pour » : répéter un nombre connu de fois"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives écrire les nombres de 1 à 10 sur ton cahier. Tu pourrais le faire un par un, mais en algorithmique, on préfère dire à l'ordinateur : « Répète cette action 10 fois ». C'est exactement le rôle de la boucle « pour » (souvent notée `for` en anglais). Elle est idéale quand tu connais à l'avance le nombre de répétitions. Par exemple, pour calculer la somme des 100 premiers entiers, tu sais que tu devras ajouter 100 nombres. La boucle « pour » va gérer le compteur pour toi, en l'incrémentant automatiquement à chaque tour. C'est comme un chef d'orchestre qui donne le tempo : il sait combien de mesures il y a dans le morceau et il n'a pas besoin de vérifier à chaque fois si la fin est proche."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons la structure typique d'une boucle « pour » en pseudo-code :\\n```\\nPour i de 1 à 10 faire\\n    Afficher i\\nFin pour\\n```\\nIci, la variable `i` prend successivement les valeurs 1, 2, 3, ..., 10. À chaque itération, l'instruction `Afficher i` est exécutée. Remarque que la borne de fin (10) est incluse. En Python, on écrirait `for i in range(1, 11):` car la borne supérieure est exclue. Cette petite différence est importante à retenir pour ne pas être surpris par un décalage d'indice. La boucle « pour » garantit que le corps de la boucle s'exécutera exactement le nombre de fois prévu, ni plus ni moins, ce qui la rend très sûre pour des tâches comme le parcours d'un tableau ou le calcul d'une somme finie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le nombre de répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant d'écrire la boucle, demande-toi : « Combien de fois dois-je répéter l'action ? » Si la réponse est un nombre fixe (par exemple 100, ou la longueur d'une liste connue), la boucle « pour » est le bon choix."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la variable de boucle et ses bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne un nom clair au compteur (souvent `i`, `k`, ou `index`). Définis la valeur de départ (souvent 0 ou 1) et la valeur de fin. Vérifie si la borne finale est incluse ou exclue selon le langage utilisé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place à l'intérieur les instructions qui doivent être répétées. Pense à utiliser la variable de boucle si elle est nécessaire dans les calculs (par exemple pour accéder à l'élément `i` d'un tableau)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tester avec un petit nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant de lancer sur de grandes valeurs, essaie mentalement avec 3 ou 4 itérations pour vérifier que la logique est correcte. Cela évite bien des erreurs de décalage (les fameux « off-by-one »)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment fonctionne une boucle « pour » quand le nombre de tours est fixé, penchons-nous sur les situations où l'on ne connaît pas ce nombre à l'avance. C'est là qu'intervient la boucle « tant que », qui va vérifier une condition à chaque passage pour décider de continuer ou de s'arrêter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles « tant que » : répéter tant qu'une condition est vraie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu veuilles trouver le premier entier dont le carré dépasse 1000. Tu ne sais pas d'avance combien d'entiers il faudra tester : ce pourrait être 31, 32, ou 33. Une boucle « pour » serait maladroite car il faudrait deviner une borne supérieure. La boucle « tant que » (souvent `while` en anglais) est faite pour ça : elle répète un bloc d'instructions **tant que** une condition reste vraie. Dès que la condition devient fausse, la boucle s'arrête immédiatement. C'est comme un gardien qui laisse passer les gens tant qu'ils ont un billet valide ; dès qu'une personne n'a pas de billet, il ferme la porte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la structure générale :\\n```\\nInitialiser la variable de condition\\nTant que condition faire\\n    Instructions\\n    Modifier la variable de condition\\nFin tant que\\n```\\nL'initialisation est cruciale : la condition doit être évaluable avant le premier tour. Ensuite, à l'intérieur de la boucle, **il faut impérativement faire évoluer la variable qui intervient dans la condition**, sinon la boucle tournerait indéfiniment (c'est la redoutable boucle infinie). Par exemple, pour trouver le premier entier $n$ tel que $n^2 > 1000$ :\\n```\\nn <- 1\\nTant que n*n <= 1000 faire\\n    n <- n + 1\\nFin tant que\\nAfficher n\\n```\\nIci, `n` commence à 1, la condition `n*n <= 1000` est vraie, on incrémente `n`, et on recommence. Dès que `n` vaut 32, $32^2 = 1024 > 1000$, la condition devient fausse, on sort de la boucle et on affiche 32. Remarque que la modification de `n` se fait **à l'intérieur** de la boucle, pas après."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser les variables avant la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toute variable testée dans la condition doit avoir une valeur de départ. Sans cela, le programme ne sait pas si la condition est vraie ou fausse au tout début."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la condition de continuation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La condition doit exprimer « on continue tant que... ». Elle est l'opposé de la condition d'arrêt. Si tu veux t'arrêter quand $x > 10$, la condition de continuation est $x \\le 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Modifier la variable de condition dans le corps",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le point le plus important : chaque tour doit rapprocher la condition de sa valeur fausse. Si tu oublies cette modification, la boucle ne s'arrêtera jamais."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Prévoir les instructions après la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand la boucle se termine, la condition est devenue fausse. C'est souvent le moment d'utiliser la valeur finale de la variable pour afficher un résultat ou prendre une décision."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "0.5*x+1",
+              "u0": 0.5,
+              "iterations": 5,
+              "xMin": 0,
+              "xMax": 4,
+              "caption": "Visualisation par toile d'araignée des 5 premières itérations de la suite $u_{n+1} = 0.5 u_n + 1$ avec $u_0 = 0.5$. Chaque segment horizontal puis vertical représente un tour de boucle « tant que » si on s'arrête quand $u_n$ dépasse 1.5."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux outils puissants : « pour » quand le nombre de tours est connu, « tant que » quand il dépend d'une condition. Mais comment choisir dans la pratique ? Parfois les deux sont possibles, mais l'un sera plus clair ou plus efficace. C'est ce que nous allons explorer pour terminer cette leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir entre « pour » et « tant que » : critères de décision"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle d'or est simple : **si tu peux déterminer le nombre exact d'itérations avant d'entrer dans la boucle, utilise « pour »**. C'est plus lisible, plus sûr (pas de risque de boucle infinie si tu gères bien les bornes), et souvent plus rapide car le compilateur peut optimiser. Exemple : calculer $10!$, parcourir une liste de 50 élèves, afficher un triangle de 20 lignes. Dans tous ces cas, le nombre de tours est fixé dès le départ.\\n\\n**Si le nombre de tours dépend de données qui ne sont pas connues à l'avance** (résultat d'un calcul, entrée utilisateur, convergence d'une suite), **« tant que » s'impose**. Par exemple : « Tant que l'utilisateur n'a pas saisi un nombre positif », « Tant que l'erreur entre deux approximations est supérieure à $10^{-6}$ », « Tant que la pile n'est pas vide ». Ici, on ne peut pas écrire `Pour i de 1 à ?` car le point d'arrêt est dynamique.\\n\\nIl arrive qu'un problème puisse être résolu avec les deux styles. Par exemple, chercher le premier entier $n$ tel que $n^2 > 1000$ : on pourrait utiliser une boucle « pour » avec une borne haute arbitraire (disons 100) et une instruction `Si n*n > 1000 Alors Sortir de la boucle`. Mais c'est moins élégant et moins lisible que le « tant que » naturel. À l'inverse, une boucle « pour » de 1 à 10 pourrait s'écrire avec un « tant que » en initialisant `i=1` et en incrémentant jusqu'à 10, mais ce serait plus verbeux et plus source d'erreurs. Le choix du bon outil montre ta maturité algorithmique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire en pseudo-code une boucle « pour » qui affiche les multiples de 7 de 7 à 70 inclus.",
+              "answer": "Pour k de 1 à 10 faire\\n    Afficher 7*k\\nFin pour",
+              "hint": "Il y a 10 multiples de 7 entre 7 et 70. Utilise un compteur k qui va de 1 à 10.",
+              "explanation": "La boucle « pour » est parfaite car le nombre de tours (10) est connu. La variable k parcourt 1..10 et on affiche 7*k à chaque tour."
+            },
+            {
+              "question": "Écrire en pseudo-code une boucle « tant que » qui demande à l'utilisateur un nombre strictement positif et ne s'arrête que quand il en a saisi un. On suppose une fonction `Saisir()` qui renvoie le nombre entré.",
+              "answer": "x <- 0\\nTant que x <= 0 faire\\n    Afficher \"Entrez un nombre positif : \"\\n    x <- Saisir()\\nFin tant que\\nAfficher \"Merci, vous avez saisi \", x",
+              "hint": "Initialise x avec une valeur qui ne satisfait pas la condition (par exemple 0). La condition de continuation est « x <= 0 ».",
+              "explanation": "On utilise « tant que » car on ne sait pas combien de fois l'utilisateur se trompera. La boucle continue tant que x n'est pas strictement positif."
+            },
+            {
+              "question": "Pour calculer la somme $1 + 2 + \\dots + N$ où $N$ est saisi par l'utilisateur, quelle boucle choisir ? Justifie et écris le pseudo-code correspondant.",
+              "answer": "Boucle « pour » car N est connu dès le début (après la saisie).\\nSomme <- 0\\nPour i de 1 à N faire\\n    Somme <- Somme + i\\nFin pour\\nAfficher Somme",
+              "hint": "Même si N vient de l'utilisateur, une fois saisi, le nombre de tours est fixé. C'est le cas typique du « pour ».",
+              "explanation": "Dès que N est connu, le nombre d'itérations est déterminé. La boucle « pour » est plus claire et évite d'avoir à gérer manuellement l'incrémentation de i."
+            }
+          ]
+        },
+        {
+          "title": "Chercher premier rang.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Recherche du premier rang : quand une suite franchit un seuil"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreux problèmes mathématiques ou informatiques, on cherche non pas la valeur d'une suite à un rang donné, mais **le premier rang** à partir duquel la suite vérifie une certaine propriété. Par exemple : « À partir de quel rang les termes de la suite $u_n = 2^n$ dépassent-ils 1000 ? » ou « Quel est le premier jour où le nombre de bactéries dépasse 1 million ? ». Ce type de question revient sans cesse en algorithmique, en analyse numérique, et même en finance (premier mois où l'épargne dépasse un objectif). La méthode générale consiste à générer les termes de la suite les uns après les autres, en testant la condition à chaque étape, jusqu'à ce qu'elle devienne vraie. C'est une application directe de la boucle « tant que » que nous avons vue précédemment."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : la suite définie par $u_0 = 3$ et $u_{n+1} = 1.5 \\times u_n - 2$. On veut trouver le plus petit $n$ tel que $u_n > 50$. On ne connaît pas la formule explicite de $u_n$, mais on peut calculer les termes itérativement. L'algorithme naturel est :\\n```\\nu <- 3\\nn <- 0\\nTant que u <= 50 faire\\n    u <- 1.5 * u - 2\\n    n <- n + 1\\nFin tant que\\nAfficher n, u\\n```\\nRemarque l'initialisation : `u` prend la valeur $u_0$, `n` vaut 0. La condition `u <= 50` signifie « on continue tant qu'on n'a pas dépassé 50 ». À chaque tour, on calcule le terme suivant (donc on avance d'un rang) et on incrémente `n`. Quand la boucle s'arrête, `n` est exactement le premier rang où $u_n > 50$, et `u` contient cette valeur. C'est élégant et cela évite de stocker tous les termes précédents."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser le terme de rang 0 et le compteur de rang",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Affecte à une variable (par exemple `u`) la valeur initiale $u_0$. Initialise le compteur `n` à 0 (ou 1 selon l'indexation de la suite). Cette initialisation doit être cohérente avec la condition de la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la condition de continuation comme l'opposé du but recherché",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu cherches le premier $n$ tel que $u_n > 50$, la condition pour continuer est $u_n \\le 50$. La boucle s'arrêtera exactement quand cette condition deviendra fausse, c'est-à-dire quand $u_n > 50$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le terme suivant et incrémenter le rang dans le corps",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le cœur de l'itération : applique la relation de récurrence pour obtenir $u_{n+1}$ à partir de $u_n$, puis augmente `n` de 1. L'ordre n'a pas d'importance tant que les deux sont faits avant le test suivant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Après la boucle, le compteur `n` est la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À la sortie, la condition est fausse, donc $u_n$ vérifie la propriété souhaitée. La variable `n` contient le premier rang. Tu peux alors afficher `n` et/ou la valeur `u`."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exemple précédent utilisait une suite définie par récurrence simple. Mais souvent, la suite n'est pas donnée par une formule de récurrence évidente, ou bien on cherche un seuil sur une suite définie par une fonction (comme $u_n = n^2 + 3n$). Dans ce cas, on peut soit calculer directement $u_n$ à partir de $n$ à chaque tour, soit utiliser une variable intermédiaire. Voyons comment adapter l'algorithme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suite définie par formule explicite : calculer $u_n$ à la volée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons $u_n = n^2 + 3n$ et on cherche le plus petit $n$ tel que $u_n \\ge 200$. Ici, pas besoin de mémoriser le terme précédent : on peut calculer $u_n$ directement à partir de `n` à chaque itération. L'algorithme devient :\\n```\\nn <- 0\\nTant que n*n + 3*n < 200 faire\\n    n <- n + 1\\nFin tant que\\nAfficher n\\n```\\nC'est encore plus simple : la variable `u` a disparu, on teste directement l'expression en fonction de `n`. Attention cependant : si la formule est complexe (factorielle, puissances), la recalculer à chaque tour peut être coûteux. Dans ce cas, il vaut mieux utiliser une variable `u` qu'on met à jour par une relation de récurrence (par exemple $u_{n+1} = u_n + 2n + 4$ pour cette suite). Le choix dépend de la complexité du calcul et de la clarté du code."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent est l'**erreur de décalage d'indice** (off-by-one). Si la suite commence à $u_1$ au lieu de $u_0$, il faut initialiser `n` à 1 et adapter la condition. Par exemple, pour $v_n = 2^n$ avec $n \\ge 1$, chercher le premier $n$ tel que $v_n > 1000$ :\\n```\\nn <- 1\\nv <- 2\\nTant que v <= 1000 faire\\n    v <- v * 2\\n    n <- n + 1\\nFin tant que\\nAfficher n\\n```\\nIci, on initialise `v` avec $v_1 = 2$ et `n=1$. La condition `v <= 1000` est testée sur $v_1$, puis on calcule $v_2$, etc. À la fin, `n` est bien le premier indice $\\ge 1$ vérifiant la propriété. Vérifie toujours ton algorithme sur un cas simple (par exemple seuil = 2) pour être sûr que le premier rang trouvé est correct."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1} = u_n + 2n + 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la condition d'arrêt ne porte pas sur la valeur de la suite elle-même, mais sur une **différence entre deux termes successifs** (critère d'arrêt pour une suite convergente) ou sur une **somme partielle**. Par exemple : « Trouver le plus petit $n$ tel que $|u_{n+1} - u_n| < 10^{-4}$ » ou « Trouver le premier $n$ pour lequel la somme $S_n = \\sum_{k=0}^n u_k$ dépasse 100 ». Dans ces cas, il faut mémoriser plus d'informations : soit le terme précédent, soit la somme accumulée. La structure de la boucle reste la même, mais le corps s'enrichit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Critères d'arrêt sur différence ou somme : mémoriser l'historique nécessaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un critère sur la différence $|u_{n+1} - u_n|$, il faut garder en mémoire le terme précédent. Voici le schéma :\\n```\\nu_prec <- u_0  // terme de rang 0\\nu_cour <- u_1  // terme de rang 1, calculé via la récurrence\\nn <- 1\\nTant que |u_cour - u_prec| >= 1e-4 faire\\n    u_prec <- u_cour\\n    u_cour <- f(u_cour)  // calcul du terme suivant\\n    n <- n + 1\\nFin tant que\\nAfficher n\\n```\\nRemarque qu'on initialise avec deux termes ($u_0$ et $u_1$) car la différence a besoin de deux valeurs. La variable `n` représente le rang du terme **courant** (`u_cour`). À chaque tour, on décale : l'ancien courant devient précédent, on calcule le nouveau courant, et on incrémente `n`.\\n\\nPour une somme $S_n$, on ajoute simplement un accumulateur :\\n```\\nS <- u_0\\nn <- 0\\nTant que S <= 100 faire\\n    n <- n + 1\\n    S <- S + u_n   // où u_n est calculé soit par récurrence, soit par formule\\nFin tant que\\nAfficher n\\n```\\nIci, `S` contient la somme des termes de rang 0 à `n`. La condition teste si la somme a dépassé le seuil. Note que l'incrémentation de `n` se fait **avant** l'ajout du nouveau terme, car on veut ajouter $u_{n}$ (le terme du nouveau rang). C'est un détail subtil mais crucial pour éviter un décalage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire un algorithme qui trouve le plus petit entier $n \\ge 0$ tel que $u_n = 3 \\times 2^n - 1 > 500$. Utilise une boucle « tant que » avec calcul direct de $u_n$.",
+              "answer": "n <- 0\\nTant que 3*2^n - 1 <= 500 faire\\n    n <- n + 1\\nFin tant que\\nAfficher n",
+              "hint": "Initialise n à 0. La condition de continuation est l'opposé de l'objectif : tant que $u_n \\le 500$, on continue.",
+              "explanation": "On teste directement la formule explicite. La boucle s'arrête dès que $3 \\times 2^n - 1 > 500$, et n est alors le premier rang."
+            },
+            {
+              "question": "La suite $(v_n)$ est définie par $v_0 = 1$ et $v_{n+1} = \\frac{v_n}{2} + 1$. Écrire un algorithme qui trouve le premier rang $n$ tel que $|v_{n+1} - v_n| < 0.001$.",
+              "answer": "v_prec <- 1\\nv_cour <- 1/2 + 1   // v_1 = 1.5\\nn <- 1\\nTant que |v_cour - v_prec| >= 0.001 faire\\n    v_prec <- v_cour\\n    v_cour <- v_cour/2 + 1\\n    n <- n + 1\\nFin tant que\\nAfficher n",
+              "hint": "Il faut deux variables pour mémoriser $v_n$ et $v_{n+1}$. Initialise avec $v_0$ et $v_1$, n commence à 1.",
+              "explanation": "La condition porte sur la différence entre deux termes consécutifs. On met à jour v_prec et v_cour à chaque tour, et n suit le rang de v_cour."
+            },
+            {
+              "question": "On considère la suite $w_n = \\frac{1}{n+1}$. Trouver le plus petit $n$ tel que la somme $S_n = \\sum_{k=0}^n w_k > 3$. Écrire l'algorithme correspondant.",
+              "answer": "S <- 1   // w_0 = 1\\nn <- 0\\nTant que S <= 3 faire\\n    n <- n + 1\\n    S <- S + 1/(n+1)\\nFin tant que\\nAfficher n",
+              "hint": "Initialise la somme avec le premier terme (n=0). Incrémente n avant d'ajouter le terme suivant pour que l'indice corresponde.",
+              "explanation": "L'accumulateur S contient la somme partielle. La boucle continue tant que S <= 3. À chaque tour, on passe au rang suivant (n+1) et on ajoute w_{n} = 1/(n+1)."
+            }
+          ]
+        },
+        {
+          "title": "Terminaison intuitive.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre pourquoi une boucle s'arrête : l'intuition de la terminaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu écris une boucle « tant que », tu as l'assurance qu'elle s'arrêtera **si** la condition de continuation finit par devenir fausse. Mais comment en être certain sans exécuter le programme ? C'est la question de la **terminaison**. En algorithmique, on ne se contente pas de tester quelques valeurs ; on cherche un argument logique qui garantit que la boucle ne tournera pas indéfiniment. Cette compétence est essentielle : elle évite les boucles infinies qui font planter les programmes, et elle permet de raisonner sur la complexité (combien de tours maximum ?). L'intuition de la terminaison repose souvent sur l'existence d'une ** grandeur qui diminue strictement à chaque itération et qui ne peut pas descendre indéfiniment** (car elle est minorée). C'est ce qu'on appelle un **variant de boucle**."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique de la recherche du premier entier $n$ tel que $n^2 > 1000$ :\\n```\\nn <- 1\\nTant que n*n <= 1000 faire\\n    n <- n + 1\\nFin tant que\\n```\\nIci, la variable `n` augmente de 1 à chaque tour. Mais ce n'est pas `n` qui est le variant (il augmente). Le variant naturel est la **distance au but** : $1000 - n^2$ (ou simplement la valeur de $1000 - n^2$ tant qu'elle est positive). Cette quantité est positive au début, elle **diminue strictement** à chaque itération (car $n^2$ augmente), et elle ne peut pas devenir négative sans que la condition $n^2 \\le 1000$ ne devienne fausse. Donc après un nombre fini d'étapes, elle passera sous zéro et la boucle s'arrêtera. C'est cet argument qu'il faut pouvoir formuler : « À chaque tour, l'écart entre $n^2$ et 1000 se réduit, et comme $n$ est entier, il ne peut y avoir qu'un nombre fini de tours. »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une quantité numérique qui évolue à chaque tour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une expression qui dépend des variables de la boucle et qui change à chaque itération. Souvent, c'est la différence entre une valeur cible et la valeur courante, ou un compteur qui monte vers une borne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier que cette quantité varie dans le « bon sens »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la boucle doit s'arrêter quand la quantité devient négative (ou nulle), elle doit **diminuer** à chaque tour. Si elle doit s'arrêter quand elle atteint un maximum, elle doit **augmenter**. La monotonie stricte est cruciale : pas de stagnation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier que la quantité est bornée du côté vers lequel elle va",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une quantité qui diminue strictement ne peut pas le faire indéfiniment si elle a une borne inférieure (par exemple 0, ou -infini mais avec des valeurs entières). De même, une quantité qui augmente strictement doit avoir une borne supérieure. Cette bornitude garantit qu'on atteindra le seuil en temps fini."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure que la condition de sortie sera éventuellement remplie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme la quantité évolue monotoniement vers sa borne, elle finira par franchir le seuil qui rend la condition de continuation fausse. La boucle se termine donc toujours."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exemple précédent était simple car la variable `n` augmentait de 1 à chaque fois. Mais les boucles réelles peuvent être plus subtiles : la variable peut être modifiée de manière non linéaire, ou plusieurs variables peuvent intervenir. Il faut alors trouver un variant plus élaboré. Examinons deux cas fréquents : la **division par deux** (recherche dichotomique) et les **suites convergentes**."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variants non linéaires : division par deux et convergence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons une boucle qui divise un nombre par 2 jusqu'à ce qu'il devienne inférieur à 1 :\\n```\\nx <- 1000\\nTant que x >= 1 faire\\n    x <- x / 2\\nFin tant que\\n```\\nIci, `x` est divisé par 2 à chaque tour. La quantité `x` elle-même est un variant : elle est positive, elle **diminue strictement** (car division par 2 > 1), et elle est minorée par 0. Mais attention : `x` ne devient jamais négatif, elle tend vers 0. La condition `x >= 1` deviendra fausse dès que `x < 1`. Comme `x` est divisé par 2 à chaque fois, après un nombre fini d'étapes (environ $\\log_2(1000) \\approx 10$), `x` passera sous 1. L'argument de terminaison repose sur le fait qu'une suite géométrique de raison $1/2$ converge vers 0, donc elle finira par sortir de l'intervalle $[1, +\\infty)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une suite convergente définie par $u_{n+1} = f(u_n)$ avec un critère d'arrêt $|u_{n+1} - u_n| < \\varepsilon$, le variant naturel est la **distance entre termes successifs** $d_n = |u_{n+1} - u_n|$. Si on peut montrer que $d_{n+1} \\le k \\cdot d_n$ avec $0 < k < 1$ (contraction), alors $d_n$ tend vers 0 géométriquement. Comme $\\varepsilon > 0$ est fixé, il existe un rang où $d_n < \\varepsilon$. La boucle termine donc. Mais attention : **toute suite convergente ne garantit pas une diminution monotone de $d_n$**. Il faut soit prouver la contraction, soit utiliser un autre argument (comme la monotonie de la suite elle-même si elle est croissante et majorée). En pratique, pour les suites du programme (souvent issues de méthodes numériques comme Newton ou point fixe), on admet souvent que la convergence implique la terminaison pour $\\varepsilon$ fixé, mais il est bon de savoir qu'un variant rigoureux existe."
+            },
+            {
+              "type": "graph",
+              "expression": "1000*(0.5)^x",
+              "xMin": 0,
+              "xMax": 15,
+              "caption": "Évolution de x dans la boucle de division par 2 : x_n = 1000 * (0.5)^n. La courbe montre la décroissance exponentielle vers 0. La boucle s'arrête quand x < 1 (zone hachurée)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la terminaison n'est pas évidente car la variable de boucle ne varie pas monotoniement, ou bien la condition de continuation est complexe. Dans ces cas, on peut utiliser un **variant composé** (couple de grandeurs) ou raisonner par **récurrence forte** sur un ensemble bien ordonné (comme les entiers naturels). Le principe de base reste : il existe une mesure de « progression » qui ne peut pas reculer indéfiniment. Si tu ne trouves pas de variant simple, c'est souvent le signe que l'algorithme est mal conçu ou qu'il y a un risque de boucle infinie. C'est pourquoi, avant de coder, on doit toujours se demander : « Quelle quantité assure que j'avance vers la sortie ? »"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges courants et bonnes pratiques pour garantir la terminaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici trois erreurs fréquentes qui conduisent à des boucles infinies, et comment les éviter :\\n1. **Oublier de modifier la variable testée** : `Tant que x > 0 faire ...` sans jamais changer `x` à l'intérieur. Solution : assure-toi qu'au moins une variable de la condition est modifiée dans le corps.\\n2. **Modifier la variable dans le « mauvais sens »** : `Tant que x < 10 faire x <- x - 1`. Ici `x` diminue, donc s'éloigne de 10. La condition restera vraie indéfiniment (ou jusqu'à débordement). Solution : vérifie que la modification rapproche la condition de sa valeur fausse.\\n3. **Utiliser des nombres réels avec un test d'égalité** : `Tant que x != 0 faire x <- x - 0.1`. À cause des erreurs d'arrondi, `x` ne vaudra peut-être jamais exactement 0. Solution : utilise une tolérance (`Tant que |x| > 1e-10`) ou travaille en entiers (centimes au lieu d'euros).\\n\\nUne bonne habitude : **écris le variant en commentaire** au-dessus de la boucle. Par exemple :\\n```\\n// Variant : 1000 - n^2 (décroît strictement, minoré par -infini, mais condition n^2 <= 1000 assure fin)\\nTant que n*n <= 1000 faire\\n    n <- n + 1\\nFin tant que\\n```\\nCela force à clarifier sa pensée et aide le relecteur (ou toi-même plus tard) à valider la terminaison."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une boucle « pour » quand le nombre d'itérations est connu.",
+                "Je sais écrire une boucle « tant que » quand l'arrêt dépend d'une condition.",
+                "Je sais choisir entre les deux selon la situation.",
+                "Je sais trouver le premier rang d'une suite vérifiant une propriété (seuil, différence, somme).",
+                "Je sais identifier un variant de boucle pour argumenter la terminaison.",
+                "Je repère les pièges classiques : oubli de modification, mauvais sens, test d'égalité sur réels."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la boucle suivante, donner un variant et expliquer pourquoi elle termine :\\n```\\ni <- 10\\nTant que i > 0 faire\\n    i <- i - 2\\nFin tant que\\n```",
+              "answer": "Variant : i (ou la valeur de i). i diminue de 2 à chaque tour, reste entier, et est minoré par 0. La condition i > 0 devient fausse quand i <= 0. Comme i diminue strictement, elle sera fausse après au plus 5 tours.",
+              "hint": "Regarde comment évolue i. Est-ce qu'il se rapproche de la valeur qui rend la condition fausse ?",
+              "explanation": "i commence à 10, diminue de 2 chaque fois : 10, 8, 6, 4, 2, 0. À i=0, la condition i>0 est fausse, boucle s'arrête. Le variant i est strictement décroissant et borné inferiorement par 0."
+            },
+            {
+              "question": "La boucle ci-dessous termine-t-elle toujours ? Justifie.\\n```\\nx <- 5\\nTant que x != 0 faire\\n    x <- x - 0.2\\nFin tant que\\n```",
+              "answer": "Non, pas nécessairement. x prend les valeurs 5, 4.8, 4.6, ... En raison des erreurs d'arrondi en binaire, x ne sera peut-être jamais exactement égal à 0.0. La boucle risque de continuer indéfiniment (ou jusqu'à sous-flot).",
+              "hint": "Pense à la représentation des nombres décimaux en binaire. 0.2 n'est pas exact en binaire.",
+              "explanation": "0.2 s'écrit en binaire 0.001100110011... (périodique). Les soustractions successives accumulent des erreurs d'arrondi. x ne vaudra probablement jamais exactement 0. Mieux vaut utiliser une tolérance : Tant que |x| > 1e-10."
+            },
+            {
+              "question": "Proposer un variant pour la boucle de recherche dichotomique suivante (on cherche une valeur dans un tableau trié) :\\n```\\ngauche <- 0\\ndroite <- N-1\\nTant que gauche <= droite faire\\n    milieu <- (gauche + droite) // 2\\n    Si tableau[milieu] == valeur Alors\\n        Retourner milieu\\n    Sinon Si tableau[milieu] < valeur Alors\\n        gauche <- milieu + 1\\n    Sinon\\n        droite <- milieu - 1\\n    Fin Si\\nFin tant que\\n```",
+              "answer": "Variant : droite - gauche + 1 (la taille de l'intervalle de recherche). Cet entier positif diminue strictement à chaque itération (car soit gauche augmente, soit droite diminue, et l'intervalle se rétrécit d'au moins 1). Il est minoré par 0. Quand il devient 0, la condition gauche <= droite est fausse.",
+              "hint": "Quelle quantité mesure l'étendue de la zone où la valeur peut se trouver ? Comment évolue-t-elle ?",
+              "explanation": "L'intervalle [gauche, droite] contient les indices candidats. Sa longueur droite-gauche+1 diminue strictement à chaque tour car on exclut au moins l'indice milieu. Comme c'est un entier naturel, il finit par atteindre 0, ce qui arrête la boucle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

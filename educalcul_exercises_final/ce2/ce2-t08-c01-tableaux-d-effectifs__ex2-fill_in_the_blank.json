@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Calculer un total",
+  "title": "Calculer le total d'un tableau d'effectifs",
+  "blocks": [
+    {
+      "title": "Total d'un tableau simple",
+      "content": "Voici le tableau des fruits préférés des élèves de la classe :\\nPomme : $5$ élèves\\nBanane : $3$ élèves\\nFraise : $4$ élèves\\n\\nLe nombre total d'élèves interrogés est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver le total, on additionne tous les effectifs : $5 + 3 + 4 = 12$. Il y a donc 12 élèves au total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du total avec plus de catégories",
+      "content": "Lors d'une enquête sur les couleurs préférées, on a obtenu les résultats suivants :\\nBleu : $8$ élèves\\nRouge : $6$ élèves\\nVert : $5$ élèves\\nJaune : $4$ élèves\\n\\nLe total des effectifs est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "23"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les effectifs de chaque couleur : $8 + 6 + 5 + 4 = 23$. Le total est 23 élèves.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à partir d'un tableau d'effectifs",
+      "content": "Le tableau ci-dessous montre le nombre de livres lus par les élèves pendant les vacances.\\n\\n$1$ livre : $4$ élèves\\n$2$ livres : $7$ élèves\\n$3$ livres : $5$ élèves\\n$4$ livres : $2$ élèves\\n\\nCombien d'élèves ont participé à cette enquête ? {{1}} élèves.",
+      "correctAnswer": "",
+      "blanks": [
+        "18"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour connaître le nombre total d'élèves, on additionne les effectifs de chaque ligne : $4 + 7 + 5 + 2 = 18$. Donc 18 élèves ont participé.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

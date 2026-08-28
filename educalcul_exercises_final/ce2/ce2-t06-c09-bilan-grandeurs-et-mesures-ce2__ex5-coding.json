@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 195,
+  "_course_code": "ce2-t06-c09-bilan-grandeurs-et-mesures-ce2",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Unités et conversions",
+  "title": "Algorithmes de conversion de longueurs",
+  "blocks": [
+    {
+      "title": "Conversion mètre vers centimètre",
+      "content": "Écris un algorithme (une suite d'instructions) pour convertir une longueur donnée en mètres ($m$) en centimètres ($cm$). Utilise les mots : DEBUT, LIRE, CALCULER, AFFICHER, FIN. Rappel : $1 m = 100 cm$.",
+      "correctAnswer": "DEBUT\\nLIRE longueur_metres\\nCALCULER longueur_centimetres = longueur_metres * 100\\nAFFICHER longueur_centimetres\\nFIN",
+      "explanation": "Pour passer des mètres aux centimètres, on multiplie par 100 car 1 mètre vaut 100 centimètres. L'algorithme lit la valeur en mètres, effectue la multiplication par 100, puis affiche le résultat en centimètres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion kilomètre vers mètre",
+      "content": "Complète l'algorithme ci-dessous pour convertir une longueur en kilomètres ($km$) en mètres ($m$). Rappel : $1 km = 1000 m$.\\n\\nDEBUT\\nLIRE distance_km\\n... \\nAFFICHER distance_m\\nFIN",
+      "correctAnswer": "CALCULER distance_m = distance_km * 1000",
+      "explanation": "Pour convertir des kilomètres en mètres, on multiplie le nombre de kilomètres par 1000 car 1 kilomètre vaut 1000 mètres. L'instruction manquante est donc le calcul de la multiplication par 1000.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec choix d'unité",
+      "content": "On veut un algorithme qui demande une longueur en mètres, puis demande si on veut la convertir en centimètres (choix 1) ou en millimètres (choix 2). Écris la structure complète avec un SI / ALORS / SINON / FIN SI. Rappels : $1 m = 100 cm$ et $1 m = 1000 mm$.",
+      "correctAnswer": "DEBUT\\nLIRE longueur_m\\nLIRE choix\\nSI choix = 1 ALORS\\n    CALCULER resultat = longueur_m * 100\\n    AFFICHER \"En cm : \", resultat\\nSINON\\n    SI choix = 2 ALORS\\n        CALCULER resultat = longueur_m * 1000\\n        AFFICHER \"En mm : \", resultat\\n    FIN SI\\nFIN SI\\nFIN",
+      "explanation": "L'algorithme commence par lire la longueur en mètres et le choix de l'utilisateur. La structure conditionnelle SI/ALORS/SINON permet de tester le choix : si choix 1, on multiplie par 100 pour les centimètres ; si choix 2, on multiplie par 1000 pour les millimètres. Chaque branche affiche le résultat avec son unité.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

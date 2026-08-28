@@ -1,0 +1,693 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.879250+00:00",
+  "id": 447,
+  "code": "4eme-t06-c03",
+  "title": "Pyramides et cônes",
+  "description": "Cours structuré Educalcul : Pyramides et cônes.",
+  "subject": "Transformations, espace, grandeurs et mesures",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Transformations, espace, grandeurs et mesures",
+    "titre_du_cours": "Pyramides et cônes",
+    "objectif_global": "Pyramides et cônes",
+    "mini_lecons_imposees": [
+      "Patrons / vues.",
+      "Volumes.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace, grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Patrons / vues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le patron d'une pyramide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginez que vous ayez une pyramide à base carrée entre les mains, comme une petite tente en carton. Si vous la dépliez complètement à plat, vous obtenez une figure plane appelée patron. Ce patron est constitué d'un carré pour la base et de quatre triangles isocèles qui correspondent aux faces latérales. Chaque triangle partage un côté avec le carré et les deux autres côtés avec les triangles voisins. En regardant ce patron, vous pouvez voir exactement comment les faces s'assemblent pour reformer le volume de la pyramide."
+            },
+            {
+              "type": "definition",
+              "term": "patron",
+              "definition": "Figure plane obtenue en découpant et en aplatissant toutes les faces d'un solide, sans les déformer, de manière à pouvoir le reconstruire en repliant le long des arêtes.",
+              "example": "Le patron d'une pyramide à base carrée est formé d'un carré et de quatre triangles."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Une face latérale de la pyramide (triangle isocèle)",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tracez un carré de côté $a$ au centre de votre feuille. Ce carré sera la base de la pyramide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les triangles latéraux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur chaque côté du carré, construisez un triangle isocèle dont la base coïncide avec le côté du carré et dont la hauteur est la hauteur de la face $h_f$. Les quatre triangles doivent être identiques."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les arêtes communes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez-vous que chaque triangle partage exactement un côté avec le carré et que deux triangles voisins se touchent le long d'une arête latérale de la pyramide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez construire le patron, nous allons découvrir comment représenter la pyramide sous trois angles différents : de face, de dessus et de profil. Ces vues sont très utiles pour visualiser l'objet sans le manipuler."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois vues principales"
+            },
+            {
+              "type": "paragraph",
+              "content": "La vue de face montre la pyramide comme si vous la regardiez droit devant vous : vous voyez un triangle isocèle posé sur un segment (le côté visible de la base). La vue de dessus, appelée aussi plan, ne révèle que la base carrée, car les faces latérales sont cachées. La vue de profil, prise sur le côté, présente à nouveau un triangle isocèle, mais cette fois la base du triangle correspond à un autre côté du carré. Ces trois projections orthogonales permettent de reconstituer mentalement le solide."
+            },
+            {
+              "type": "definition",
+              "term": "vue de face",
+              "definition": "Projection orthogonale du solide sur un plan vertical parallèle à une face latérale, montrant la hauteur et la base de cette face.",
+              "example": "Pour une pyramide à base carrée, la vue de face est un triangle isocèle."
+            },
+            {
+              "type": "definition",
+              "term": "vue de dessus",
+              "definition": "Projection orthogonale sur un plan horizontal, ne montrant que la base du solide.",
+              "example": "La vue de dessus d'une pyramide à base carrée est un carré."
+            },
+            {
+              "type": "definition",
+              "term": "vue de profil",
+              "definition": "Projection orthogonale sur un plan vertical perpendiculaire à la vue de face, révélant une autre face latérale.",
+              "example": "La vue de profil d'une pyramide à base carrée est aussi un triangle isocèle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Vue de profil de la pyramide (triangle isocèle)",
+              "vertexLabels": [
+                "D",
+                "E",
+                "F"
+              ],
+              "sideLabels": [
+                "d",
+                "e",
+                "f"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'orientation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Placez la pyramide de manière qu'une face latérale soit parallèle à votre regard pour la vue de face."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la vue de face",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessinez le triangle isocèle correspondant à cette face, en indiquant la hauteur $h$ et la base $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la vue de dessus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projetez la base sur un plan horizontal : vous obtenez un carré de côté $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer la vue de profil",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tournez le solide de 90° et dessinez le triangle isocèle de l'autre face latérale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons apprendre à vérifier si un patron donné peut vraiment se replier en une pyramide. Il ne suffit pas d'avoir les bonnes pièces ; il faut aussi que les arêtes se correspondent correctement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître un patron correct"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un patron valide doit respecter trois conditions : chaque face latérale doit être un triangle ayant pour base un côté du polygone de base ; les triangles doivent être disposés autour de la base dans l'ordre cyclique sans chevauchement ; enfin, les arêtes latérales qui se rejoignent au sommet doivent avoir la même longueur sur les deux triangles adjacents. Si l'une de ces conditions manque, le patron ne se refermera pas en une pyramide régulière."
+            },
+            {
+              "type": "definition",
+              "term": "arête commune",
+              "definition": "Segment partagé par deux faces adjacentes d'un solide ; dans le patron, c'est le côté que deux triangles latéraux ont en commun une fois repliés.",
+              "example": "Dans le patron d'une pyramide, chaque arête latérale apparaît deux fois, une sur chaque triangle voisin."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = \\text{côté de la base}, \\quad h_f = \\text{hauteur de la face latérale}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez le polygone central (carré, triangle, pentagone…) qui servira de base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier les triangles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comptez les triangles autour de la base ; leur nombre doit être égal au nombre de côtés de la base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Contrôler les arêtes communes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez-vous que chaque paire de triangles voisins partage un côté de même longueur ; c'est la future arête latérale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le patron ci-dessous, la base est un carré de côté $4\\,cm$. Chaque triangle latéral a une hauteur de $5\\,cm$. Calculez l'aire totale du patron.",
+              "answer": "$56\\,cm^2$",
+              "hint": "Calculez l'aire du carré et l'aire des quatre triangles, puis additionnez.",
+              "explanation": "L'aire du carré est $4\\times4 = 16\\,cm^2$. L'aire d'un triangle est $\\frac{1}{2}\\times4\\times5 = 10\\,cm^2$. Il y a quatre triangles, donc $4\\times10 = 40\\,cm^2$. Total $16+40 = 56\\,cm^2$."
+            },
+            {
+              "question": "Quelle vue (face, dessus, profil) permet de voir la hauteur de la pyramide ? Justifiez votre réponse.",
+              "answer": "La vue de face (ou de profil) montre la hauteur.",
+              "hint": "Regardez quelle projection fait apparaître le segment reliant le sommet au centre de la base.",
+              "explanation": "Dans la vue de face, le triangle isocèle montre la hauteur $h$ comme la médiane du triangle. La vue de dessus ne montre que la base, donc pas la hauteur."
+            },
+            {
+              "question": "Parmi les trois patrons proposés, lequel peut se replier en une pyramide à base carrée ? Expliquez en utilisant les conditions vues en cours.",
+              "answer": "Le patron où les quatre triangles sont identiques et placés autour du carré dans l'ordre cyclique.",
+              "hint": "Vérifiez que chaque triangle a la même base que le côté du carré et que les arêtes latérales correspondent.",
+              "explanation": "Seul le patron respectant les trois conditions (base carrée, quatre triangles isocèles identiques, arêtes communes de même longueur) se referme correctement."
+            }
+          ]
+        },
+        {
+          "title": "Volumes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le volume d'une pyramide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le volume d'une pyramide mesure l'espace qu'elle occupe. La formule universelle, valable pour toute pyramide quel que soit le polygone de base, est $V = \\frac{1}{3} \\times \\text{Aire de la base} \\times \\text{hauteur}$. La hauteur est la distance perpendiculaire du sommet au plan de la base. Cette relation montre que le volume d'une pyramide est exactement le tiers du volume du prisme ayant même base et même hauteur. C'est une propriété fondamentale qui s'obtient par découpage ou par intégration, mais en 4e on l'admet comme une définition."
+            },
+            {
+              "type": "definition",
+              "term": "volume",
+              "definition": "Mesure de l'espace occupé par un solide, exprimée en unités cubiques (par exemple $cm^3$, $m^3$).",
+              "example": "Une pyramide de volume $120\\,cm^3$ remplit un espace équivalent à $120$ cubes de $1\\,cm$ de côté."
+            },
+            {
+              "type": "definition",
+              "term": "hauteur d'une pyramide",
+              "definition": "Distance perpendiculaire du sommet au plan contenant la base.",
+              "example": "Si le sommet est à $9\\,cm$ au-dessus du plan de la base, la hauteur vaut $9\\,cm$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\frac{1}{3} \\times B \\times h"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer l'aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la forme de la base (carré, rectangle, triangle, etc.), appliquez la formule d'aire appropriée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier la hauteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez la longueur du segment perpendiculaire du sommet au plan de la base ; c'est la hauteur $h$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multipliez l'aire de la base par la hauteur, puis divisez le résultat par $3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au cône. Un cône peut être vu comme une pyramide dont la base est un disque. Sa formule de volume en découle naturellement, mais il faut bien identifier le rayon du disque et la hauteur du cône."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le volume d'un cône"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le volume d'un cône de rayon $r$ et de hauteur $h$ s'écrit $V = \\frac{1}{3} \\pi r^2 h$. Ici $\\pi r^2$ est l'aire du disque de base. Comme pour la pyramide, le volume du cône est le tiers de celui du cylindre de même base et même hauteur. Cette analogie aide à mémoriser la formule : imaginez trois cônes identiques qui remplissent exactement un cylindre."
+            },
+            {
+              "type": "definition",
+              "term": "cône",
+              "definition": "Solide engendré par la rotation d'un triangle rectangle autour de l'un de ses côtés de l'angle droit ; sa base est un disque.",
+              "example": "Un cornet de glace est un cône (approximativement)."
+            },
+            {
+              "type": "definition",
+              "term": "rayon",
+              "definition": "Distance du centre du disque de base à son bord.",
+              "example": "Si le disque a un diamètre de $6\\,cm$, le rayon vaut $3\\,cm$."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Triangle rectangle dans le cône : rayon $r=3$, hauteur $h=4$, génératrice $g=5$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Relever le rayon et la hauteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesurez ou lisez dans l'énoncé le rayon $r$ du disque de base et la hauteur $h$ du cône."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la formule du disque $A = \\pi r^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule du volume",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $V = \\frac{1}{3} \\times (\\pi r^2) \\times h$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment utiliser ces formules dans des situations concrètes, notamment quand les dimensions sont données en unités différentes (centimètres, mètres, litres). La conversion d'unités de volume suit la règle des puissances de $10$ : $1\\,m^3 = 1000\\,dm^3 = 1\\,000\\,000\\,cm^3$, et $1\\,L = 1\\,dm^3$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications et conversions d'unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons une pyramide à base carrée de côté $20\\,cm$ et de hauteur $30\\,cm$. Son volume en $cm^3$ est $V = \\frac{1}{3} \\times (20\\times20) \\times 30 = 4000\\,cm^3$. Pour l'exprimer en litres, on divise par $1000$ car $1\\,L = 1000\\,cm^3$, ce qui donne $4\\,L$. Si la hauteur était donnée en mètres ($0,3\\,m$), il faut d'abord convertir toutes les longueurs dans la même unité avant de calculer, sinon le résultat serait faux."
+            },
+            {
+              "type": "definition",
+              "term": "unité de volume",
+              "definition": "Unité de mesure pour les volumes ; les principales sont le $cm^3$, le $dm^3$ (litre), le $m^3$.",
+              "example": "$1\\,m^3 = 1000\\,L = 1\\,000\\,000\\,cm^3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,m^3 = 10^3\\,dm^3 = 10^6\\,cm^3"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'unité cible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décidez si vous voulez le résultat en $cm^3$, $dm^3$ (litres) ou $m^3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir les longueurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Passez toutes les dimensions (côté, rayon, hauteur) dans l'unité correspondante avant de calculer l'aire et le volume."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convertir le volume final si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si vous avez calculé en $cm^3$ mais que l'énoncé demande des litres, divisez par $1000$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une pyramide à base triangulaire a une base d'aire $12\\,cm^2$ et une hauteur de $9\\,cm$. Calculez son volume en $cm^3$.",
+              "answer": "$36\\,cm^3$",
+              "hint": "Appliquez $V = \\frac{1}{3} \\times B \\times h$.",
+              "explanation": "Le volume vaut $\\frac{1}{3} \\times 12 \\times 9 = 36\\,cm^3$."
+            },
+            {
+              "question": "Un cône a un rayon de $4\\,cm$ et une hauteur de $6\\,cm$. Donnez son volume exact en fonction de $\\pi$, puis une valeur approchée au $cm^3$ près.",
+              "answer": "$V = \\frac{1}{3}\\pi \\times 4^2 \\times 6 = 32\\pi \\approx 101\\,cm^3$",
+              "hint": "Calculez $\\pi r^2 h$ puis divisez par $3$.",
+              "explanation": "L'aire de la base est $\\pi \\times 16 = 16\\pi$. Le volume est $\\frac{1}{3} \\times 16\\pi \\times 6 = 32\\pi$. Avec $\\pi \\approx 3,14$, $32\\times3,14 \\approx 100,5$, arrondi à $101\\,cm^3$."
+            },
+            {
+              "question": "Une pyramide à base carrée de côté $50\\,cm$ a une hauteur de $1,2\\,m$. Exprimez son volume en litres.",
+              "answer": "$100\\,L$",
+              "hint": "Convertissez toutes les longueurs en décimètres avant de calculer.",
+              "explanation": "Côté $50\\,cm = 5\\,dm$, hauteur $1,2\\,m = 12\\,dm$. Aire de la base $= 5\\times5 = 25\\,dm^2$. Volume $= \\frac{1}{3} \\times 25 \\times 12 = 100\\,dm^3 = 100\\,L$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème : retrouver la hauteur d'une pyramide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un problème classique : on connaît le volume d'une pyramide et l'aire de sa base, mais la hauteur est inconnue. Par exemple, une pyramide à base rectangulaire a un volume de $240\\,cm^3$ et sa base mesure $8\\,cm$ sur $5\\,cm$. Pour trouver la hauteur, on inverse la formule $V = \\frac{1}{3} B h$ en isolant $h = \\frac{3V}{B}$. L'aire de la base est $8 \\times 5 = 40\\,cm^2$. En remplaçant, on obtient $h = \\frac{3 \\times 240}{40} = 18\\,cm$. Cette démarche montre comment l'algèbre permet de passer du volume à une dimension linéaire."
+            },
+            {
+              "type": "definition",
+              "term": "hauteur inconnue",
+              "definition": "Longueur à déterminer lorsque le volume et l'aire de la base sont donnés ; on l'obtient en résolvant $h = \\frac{3V}{B}$.",
+              "example": "Dans l'exemple ci-dessus, la hauteur inconnue vaut $18\\,cm$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer l'aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les dimensions de la base pour trouver $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule inversée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $h = \\frac{3V}{B}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Replacer $h$ dans la formule directe pour retrouver le volume initial."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant comparer les volumes d'une pyramide et d'un cône qui partagent la même base et la même hauteur. Cette situation met en évidence le facteur $\\pi$ présent seulement dans le cône."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème : comparer le volume d'une pyramide et d'un cône"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une pyramide à base carrée de côté $6\\,cm$ et un cône de rayon $3\\,cm$, tous deux de hauteur $9\\,cm$. Le volume de la pyramide est $V_p = \\frac{1}{3} \\times 36 \\times 9 = 108\\,cm^3$. Le volume du cône est $V_c = \\frac{1}{3} \\pi \\times 9 \\times 9 = 27\\pi \\approx 84,8\\,cm^3$. Bien que la base du cône (disque de rayon $3$) ait une aire $9\\pi \\approx 28,3\\,cm^2$, inférieure à l'aire du carré ($36\\,cm^2$), le facteur $\\pi$ dans la formule du cône fait que son volume peut être plus grand ou plus petit selon les dimensions. Ici, la pyramide a un volume supérieur."
+            },
+            {
+              "type": "definition",
+              "term": "comparaison de volumes",
+              "definition": "Évaluation de la grandeur relative de deux solides en calculant chacun de leurs volumes avec les formules adaptées.",
+              "example": "Comparer $V_{pyramide}$ et $V_{cône}$ pour même hauteur."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{pyramide} = \\frac{1}{3} a^2 h, \\quad V_{cône} = \\frac{1}{3} \\pi r^2 h"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les dimensions communes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notez la hauteur $h$ commune et les dimensions de chaque base (côté $a$ pour le carré, rayon $r$ pour le disque)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les deux volumes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez les formules respectives."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez lequel est le plus grand et expliquez pourquoi en fonction des aires de base."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, nous abordons les problèmes inverses où l'on cherche une dimension de la base (côté, rayon) connaissant le volume et la hauteur. La méthode est symétrique : on isole l'aire de la base, puis on en déduit la dimension linéaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème inverse : déterminer une dimension manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cône de volume $150\\pi\\,cm^3$ et de hauteur $10\\,cm$. On cherche son rayon. La formule $V = \\frac{1}{3} \\pi r^2 h$ donne $r^2 = \\frac{3V}{\\pi h} = \\frac{3 \\times 150\\pi}{\\pi \\times 10} = 45$. Donc $r = \\sqrt{45} = 3\\sqrt{5} \\approx 6,7\\,cm$. Pour une pyramide à base carrée de volume $500\\,cm^3$ et hauteur $12\\,cm$, l'aire de la base est $B = \\frac{3V}{h} = \\frac{1500}{12} = 125\\,cm^2$, donc le côté vaut $\\sqrt{125} = 5\\sqrt{5} \\approx 11,2\\,cm$. Ces calculs montrent l'intérêt de bien manipuler les formules dans les deux sens."
+            },
+            {
+              "type": "definition",
+              "term": "problème inverse",
+              "definition": "Problème où l'on connaît le volume et une dimension (hauteur) et où l'on doit retrouver une autre dimension (côté, rayon).",
+              "example": "Trouver le rayon d'un cône connaissant $V$ et $h$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler l'aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez $B = \\frac{3V}{h}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Retrouver la dimension linéaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un carré : $a = \\sqrt{B}$ ; pour un disque : $r = \\sqrt{\\frac{B}{\\pi}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier par calcul direct",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Replacez la dimension trouvée dans la formule du volume pour confirmer le résultat."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire le patron d'une pyramide et vérifier sa validité.",
+                "Je sais tracer les trois vues (face, dessus, profil) d'une pyramide.",
+                "Je connais la formule du volume d'une pyramide : $V = \\frac{1}{3} B h$.",
+                "Je connais la formule du volume d'un cône : $V = \\frac{1}{3} \\pi r^2 h$.",
+                "Je sais convertir un volume entre $cm^3$, $dm^3$ (litres) et $m^3$.",
+                "Je sais résoudre un problème inverse pour trouver une hauteur, un côté ou un rayon."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une pyramide à base carrée a un volume de $300\\,cm^3$ et une hauteur de $10\\,cm$. Calculez la longueur du côté de la base.",
+              "answer": "$a = \\sqrt{90} = 3\\sqrt{10} \\approx 9,5\\,cm$",
+              "hint": "Trouvez d'abord l'aire de la base avec $B = \\frac{3V}{h}$, puis prenez la racine carrée.",
+              "explanation": "L'aire de la base est $B = \\frac{3 \\times 300}{10} = 90\\,cm^2$. Comme la base est un carré, $a = \\sqrt{90} = 3\\sqrt{10} \\approx 9,5\\,cm$."
+            },
+            {
+              "question": "Une pyramide à base carrée de côté $8\\,cm$ et un cône de rayon $4\\,cm$ ont la même hauteur $12\\,cm$. Lequel a le plus grand volume ? Justifiez par le calcul.",
+              "answer": "La pyramide a un volume plus grand ($256\\,cm^3$ contre $64\\pi \\approx 201\\,cm^3$).",
+              "hint": "Calculez $V_{pyr} = \\frac{1}{3} \\times 64 \\times 12$ et $V_{cône} = \\frac{1}{3} \\pi \\times 16 \\times 12$.",
+              "explanation": "Pyramide : $V = \\frac{1}{3} \\times 64 \\times 12 = 256\\,cm^3$. Cône : $V = \\frac{1}{3} \\pi \\times 16 \\times 12 = 64\\pi \\approx 201\\,cm^3$. La pyramide l'emporte."
+            },
+            {
+              "question": "Un cône a un volume de $200\\pi\\,cm^3$ et une hauteur de $8\\,cm$. Déterminez son rayon exact.",
+              "answer": "$r = 5\\sqrt{3}\\,cm$",
+              "hint": "Utilisez $r^2 = \\frac{3V}{\\pi h}$.",
+              "explanation": "$r^2 = \\frac{3 \\times 200\\pi}{\\pi \\times 8} = \\frac{600}{8} = 75$. Donc $r = \\sqrt{75} = 5\\sqrt{3}\\,cm$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

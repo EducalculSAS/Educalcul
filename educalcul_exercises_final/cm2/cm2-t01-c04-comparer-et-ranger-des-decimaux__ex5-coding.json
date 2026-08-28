@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 278,
+  "_course_code": "cm2-t01-c04-comparer-et-ranger-des-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Valeur positionnelle",
+  "title": "Approfondissement : Valeur positionnelle - Algorithmes sur les décimaux",
+  "blocks": [
+    {
+      "title": "Comparaison de deux nombres décimaux",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui reçoit deux nombres décimaux sous forme de chaînes de caractères (par exemple \"12,34\" et \"12,3\") et qui renvoie -1 si le premier est plus petit, 0 s'ils sont égaux, 1 si le premier est plus grand. L'algorithme doit aligner les parties décimales en ajoutant des zéros à droite si nécessaire, puis comparer chiffre par chiffre à partir de la gauche.",
+      "correctAnswer": "Algorithme comparer_decimaux(a, b) :\\n1. Séparer la partie entière et la partie décimale de a et b en utilisant la virgule.\\n2. Compléter la partie décimale la plus courte avec des zéros à droite pour qu'elles aient la même longueur.\\n3. Comparer les parties entières : si ent_a < ent_b renvoyer -1 ; si ent_a > ent_b renvoyer 1.\\n4. Sinon, comparer les parties décimales chiffre par chiffre de gauche à droite :\\n   pour i de 0 à longueur-1 :\\n      si dec_a[i] < dec_b[i] renvoyer -1\\n      si dec_a[i] > dec_b[i] renvoyer 1\\n5. Si toutes les comparaisons sont égales, renvoyer 0.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par isoler la partie entière et la partie décimale. L'ajout de zéros à droite ne change pas la valeur du nombre mais permet une comparaison position par position. La comparaison se fait d'abord sur la partie entière, puis, si elles sont égales, sur chaque chiffre de la partie décimale dans l'ordre. Le premier chiffre différent détermine le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tri d'une liste de nombres décimaux",
+      "content": "En réutilisant l'algorithme de comparaison de la question précédente, écrire un algorithme qui prend en entrée une liste de nombres décimaux (sous forme de chaînes) et qui renvoie la liste triée dans l'ordre croissant. Vous pouvez utiliser un tri simple (tri à bulles, tri par insertion, etc.) mais vous devez appeler la fonction de comparaison pour ordonner les éléments.",
+      "correctAnswer": "Algorithme trier_decimaux(liste) :\\n1. Pour i de 0 à longueur(liste)-2 :\\n2.   Pour j de 0 à longueur(liste)-2-i :\\n3.       si comparer_decimaux(liste[j], liste[j+1]) == 1 :\\n4.           échanger liste[j] et liste[j+1]\\n5. Renvoyer liste.\\n\\nIci comparer_decimaux est la fonction définie précédemment. Le tri à bulles compare chaque paire adjacente et les échange si elles sont dans le mauvais ordre, en répétant jusqu'à ce que la liste soit triée.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le tri à bulles est facile à comprendre : on parcourt la liste plusieurs fois, à chaque passage on compare deux éléments consécutifs grâce à la fonction de comparaison. Si le premier est plus grand (renvoie 1), on les échange. Après chaque passage complet, le plus grand élément restant remonte à la fin. Au bout de n-1 passages, la liste est triée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposition en valeur de position",
+      "content": "Écrire un algorithme qui reçoit un nombre décimal sous forme de chaîne (par exemple \"304,56\") et qui renvoie une liste de couples (chiffre, valeur de position) pour chaque chiffre significatif. La valeur de position doit être exprimée en puissance de 10 (par exemple 10^2 pour les centaines, 10^-1 pour les dixièmes). Ignorer les zéros non significatifs à gauche de la partie entière et à droite de la partie décimale.",
+      "correctAnswer": "Algorithme decomposer_position(nombre) :\\n1. Séparer partie_entiere, partie_decimale = nombre.split(\",\")\\n2. Supprimer les zéros initiaux de partie_entiere (sauf si elle devient vide, alors mettre \"0\").\\n3. Supprimer les zéros finaux de partie_decimale.\\n4. Initialiser liste_resultat = []\\n5. Pour chaque index i, chiffre dans partie_entiere (de gauche à droite) :\\n      position = longueur(partie_entiere) - i - 1\\n      valeur = 10^position\\n      ajouter (int(chiffre), valeur) à liste_resultat\\n6. Pour chaque index i, chiffre dans partie_decimale (de gauche à droite) :\\n      position = -(i + 1)\\n      valeur = 10^position\\n      ajouter (int(chiffre), valeur) à liste_resultat\\n7. Renvoyer liste_resultat.\\n\\nExemple pour \"304,56\" : [(3, 10^2), (0, 10^1), (4, 10^0), (5, 10^-1), (6, 10^-2)].",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On traite séparément la partie entière et la partie décimale. Pour la partie entière, le chiffre le plus à gauche a la plus grande puissance de 10 (longueur-1), puis on diminue l'exposant à chaque chiffre suivant. Pour la partie décimale, le premier chiffre après la virgule correspond à 10^-1 (dixièmes), le suivant à 10^-2 (centièmes), etc. Les zéros non significatifs sont supprimés pour ne garder que les chiffres qui portent une information de valeur de position.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

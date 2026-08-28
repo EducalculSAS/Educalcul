@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Variable",
+  "title": "Quiz : La notion de variable",
+  "questions": [
+    {
+      "text": "Dans l'expression $A = 2x + 5$, quelle est la variable ?",
+      "options": [
+        "Le nombre 2",
+        "Le nombre 5",
+        "La lettre x",
+        "Le signe +"
+      ],
+      "correctAnswer": "La lettre x",
+      "explanation": "Une variable est une lettre qui représente un nombre qui peut changer ou varier. Dans l'expression $A = 2x + 5$, la lettre $x$ est la variable. Les nombres 2 et 5 sont des coefficients et des constantes (des nombres fixes). Le signe + est un opérateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le programme de calcul : « Choisir un nombre, le multiplier par 3, puis ajouter 4 ». Si on note $x$ le nombre choisi au départ, quelle expression traduit le résultat final ?",
+      "options": [
+        "$3x + 4$",
+        "$3(x + 4)$",
+        "$4x + 3$",
+        "$7x$"
+      ],
+      "correctAnswer": "$3x + 4$",
+      "explanation": "Le nombre choisi est $x$. L'opération 'multiplier par 3' donne $3x$. L'opération 'ajouter 4' donne $3x + 4$. L'option $3(x+4)$ correspondrait à 'ajouter 4 puis multiplier par 3'. L'option $4x+3$ inverse les coefficients. L'option $7x$ additionne incorrectement les coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'expression $E = 5x - 2$. Quelle est la valeur de $E$ lorsque $x = 3$ ?",
+      "options": [
+        "13",
+        "5",
+        "25",
+        "1"
+      ],
+      "correctAnswer": "13",
+      "explanation": "On remplace la variable $x$ par la valeur 3 dans l'expression : $E = 5 \\times 3 - 2$. On effectue la multiplication en priorité : $15 - 2 = 13$. L'option 5 correspond à $5 \\times 1$. L'option 25 correspond à $5 \\times 5$ ou $5 \\times (3+2)$. L'option 1 correspond à $5 - 2 \\times 2$ ou une erreur de priorité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le périmètre $P$ d'un carré de côté $c$ est donné par la formule $P = 4c$. Parmi les affirmations suivantes, laquelle est exacte ?",
+      "options": [
+        "La variable est $P$ car c'est le résultat.",
+        "Les variables sont $P$ et $c$ car toutes deux peuvent varier.",
+        "La seule variable est $c$, $P$ est une constante.",
+        "Il n'y a pas de variable car 4 est un nombre fixe."
+      ],
+      "correctAnswer": "Les variables sont $P$ et $c$ car toutes deux peuvent varier.",
+      "explanation": "Dans une relation fonctionnelle comme $P = 4c$, la variable indépendante (celle qu'on choisit) est $c$ (le côté). La variable dépendante (qui dépend de $c$) est $P$ (le périmètre). Les deux sont des variables car leurs valeurs changent selon les carrés considérés. Le nombre 4 est une constante (coefficient).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne la formule $V = s \\times h$ pour le volume d'un prisme droit (s = aire de la base, h = hauteur). Si on divise la hauteur par 2 tout en gardant la même base, que devient le volume ?",
+      "options": [
+        "Il est multiplié par 2.",
+        "Il est divisé par 2.",
+        "Il ne change pas.",
+        "Il est divisé par 4."
+      ],
+      "correctAnswer": "Il est divisé par 2.",
+      "explanation": "La formule est $V = s \\times h$. Si $h$ devient $h/2$ et $s$ ne change pas, le nouveau volume est $V' = s \\times (h/2) = (s \\times h) / 2 = V/2$. Le volume est donc divisé par 2. C'est une relation de proportionnalité entre $V$ et $h$ lorsque $s$ est constant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

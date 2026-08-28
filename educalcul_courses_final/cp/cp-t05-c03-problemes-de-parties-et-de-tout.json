@@ -1,0 +1,364 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.605295+00:00",
+  "id": 41,
+  "code": "cp-t05-c03",
+  "title": "Problèmes de parties et de tout",
+  "description": "Cours structuré Educalcul : Problèmes de parties et de tout.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de parties et de tout",
+    "objectif_global": "Problèmes de parties et de tout",
+    "mini_lecons_imposees": [
+      "Identifier deux parties.",
+      "Chercher le tout ou une partie.",
+      "Relier à addition ou soustraction."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Identifier deux parties.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tout et les parties"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un sac avec $5$ billes dedans. Ce sac, c'est le tout : il y a tout le groupe, rien ne manque. Regarde bien, on peut vider le sac et faire deux petits tas sur la table. Un tas avec $2$ billes, l'autre avec $3$ billes. Ces deux tas, ce sont les parties. Ensemble, elles refont le tout."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "Le tout : 5 jetons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, sépare les $5$ jetons en deux groupes. Pose $2$ jetons d'un côté et $3$ de l'autre. Tu as créé deux parties. La première partie vaut $2$, la deuxième partie vaut $3$. Si tu les remets ensemble, tu retrouves $5$. C'est comme un puzzle : les morceaux forment l'image complète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette image : il y a $7$ ballons qui volent dans le ciel. $3$ sont rouges et $4$ sont bleus. Le tout, c'est les $7$ ballons au complet. Une partie, ce sont les $3$ ballons rouges. L'autre partie, ce sont les $4$ ballons bleus. Les deux parties sont différentes, mais ensemble, elles font tout le bouquet."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 7,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Rouges"
+                },
+                {
+                  "value": 7,
+                  "label": "Total"
+                }
+              ],
+              "intervals": [],
+              "caption": "Les 3 rouges et les 4 bleus forment le tout 7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Donnons des noms précis pour bien se comprendre. Le tout, c'est la collection entière, le groupe au complet. Une partie, c'est un morceau de ce groupe. L'autre partie, c'est tout ce qui reste quand on a pris la première. Parfois les parties sont égales, comme $4$ bonbons partagés en $2$ et $2$, parfois elles sont différentes, comme $5$ en $2$ et $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Le tout",
+              "definition": "C'est la quantité totale, le groupe entier réuni.",
+              "example": "$6$ pommes dans le panier."
+            },
+            {
+              "type": "definition",
+              "term": "Une partie",
+              "definition": "C'est une portion du tout, un sous-groupe.",
+              "example": "$2$ pommes vertes sur les $6$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer le tout et les parties dans une image ou une petite histoire. À la leçon suivante, on va apprendre à retrouver un nombre qui manque : soit le tout, soit une partie."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde le dessin : il y a $6$ fleurs. $2$ sont jaunes. Les autres sont rouges. Combien y a-t-il de fleurs rouges ?",
+              "answer": "$4$",
+              "hint": "Compte les fleurs qui ne sont pas jaunes sur l'image.",
+              "explanation": "Le tout est $6$. Une partie (jaunes) est $2$. L'autre partie (rouges) est ce qui reste : $6$ moins $2$ font $4$."
+            },
+            {
+              "question": "Dans un paquet, il y a $5$ biscuits. $2$ sont au chocolat. Les autres sont à la vanille. Combien y a-t-il de biscuits à la vanille ?",
+              "answer": "$3$",
+              "hint": "Utilise tes doigts : montre $2$ doigts pour le chocolat, ajoute des doigts jusqu'à $5$.",
+              "explanation": "Le tout est $5$. La partie chocolat est $2$. La partie vanille est $3$ car $2 + 3 = 5$."
+            },
+            {
+              "question": "Complète la phrase : Le tout est $8$. Une partie est $3$. L'autre partie est $\\ldots$",
+              "answer": "$5$",
+              "hint": "Mets $3$ doigts levés, compte combien il faut en ajouter pour arriver à $8$.",
+              "explanation": "On cherche la partie manquante. $3 + 5 = 8$, donc l'autre partie vaut $5$."
+            }
+          ]
+        },
+        {
+          "title": "Chercher le tout ou une partie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver le tout ou une partie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Paul a $4$ billes dans sa main gauche. Il en a $3$ dans sa main droite. Il veut savoir combien il a de billes en tout. Ici, on connait les deux parties : $4$ et $3$. Ce qu'on cherche, c'est le tout. Pour le trouver, on rassemble les deux groupes dans la tête ou sur les doigts."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Main gauche"
+                },
+                {
+                  "value": 7,
+                  "label": "Total"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 4,
+                  "end": 7
+                }
+              ],
+              "caption": "On part de 4, on saute 3, on arrive à 7"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite numérique, place ton doigt sur $4$. Saute $3$ cases vers la droite : $5$, $6$, $7$. Tu arrives sur $7$. Le tout, c'est $7$ billes. Quand on met les deux parties bout à bout, on construit le tout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Changeons de situation. Dans une boîte, il y a $9$ crayons. $5$ sont rouges. Les autres sont bleus. Combien y a-t-il de crayons bleus ? Cette fois, on connait le tout ($9$) et une partie ($5$ rouges). On cherche l'autre partie. C'est comme si on enlevait les rouges de la boîte pour ne garder que les bleus."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                9
+              ],
+              "right": [
+                5
+              ],
+              "caption": "Le tout (9) d'un côté, la partie connue (5) de l'autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une balance de Roberval. Dans le plateau de gauche, tu poses le tout : $9$ jetons. Dans le plateau de droite, tu poses la partie connue : $5$ jetons. La balance penche à gauche. Il faut ajouter des jetons à droite pour l'équilibrer. Tu en ajoutes un par un : $6$, $7$, $8$, $9$. Tu as ajouté $4$ jetons. La partie manquante vaut $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Retiens bien cette relation : le tout est toujours égal à la première partie plus la deuxième partie. Si tu connais les deux parties, tu les mets ensemble pour trouver le tout. Si tu connais le tout et une partie, tu retires cette partie du tout pour trouver l'autre. C'est la clé pour résoudre tous les problèmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "Tout = Partie + Partie"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à voir le lien entre l'histoire et le calcul. La prochaine leçon, on va mettre les vrais signes $+$ et $-$ sur ces actions pour écrire les opérations comme un grand."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Léa a $3$ autocollants. Son frère lui en donne $4$ de plus. Combien Léa a-t-elle d'autocollants maintenant ?",
+              "answer": "$7$",
+              "hint": "Dessine les $3$ autocollants de Léa, puis les $4$ de son frère, et compte le total.",
+              "explanation": "On connait les deux parties : $3$ et $4$. On cherche le tout. On additionne : $3 + 4 = 7$."
+            },
+            {
+              "question": "Il y a $8$ oiseaux sur un fil. $3$ s'envolent. Combien d'oiseaux restent sur le fil ?",
+              "answer": "$5$",
+              "hint": "Barre $3$ oiseaux sur ton dessin, compte ceux qui ne sont pas barrés.",
+              "explanation": "Le tout est $8$. Une partie ($3$) part. On cherche l'autre partie. On soustrait : $8 - 3 = 5$."
+            },
+            {
+              "question": "Choisis le bon calcul pour cette histoire : Il y a $6$ chats. $2$ dorment. Combien ne dorment pas ? A) $6 + 2$  B) $6 - 2$",
+              "answer": "B) $6 - 2$",
+              "hint": "On connait le total des chats ($6$) et une partie ($2$ qui dorment). On cherche l'autre partie.",
+              "explanation": "Comme on cherche une partie manquante, on fait une soustraction : $6 - 2 = 4$ chats ne dorment pas."
+            }
+          ]
+        },
+        {
+          "title": "Relier à addition ou soustraction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition ou soustraction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer le tout et les parties, on va écrire les vrais calculs. Quand l'histoire dit : « Il y a $4$ pommes ici et $3$ pommes là, combien en tout ? », on met les deux parties ensemble. C'est une addition. Le signe $+$ veut dire « et encore ». On écrit $4 + 3 = 7$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "4",
+                "3"
+              ],
+              "result": "7",
+              "carries": [],
+              "caption": "Addition : on rassemble les parties"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand l'histoire dit : « Il y a $8$ billes dans le sac. On en sort $3$. Combien en reste-t-il ? », on connait le tout ($8$) et on enlève une partie ($3$). C'est une soustraction. Le signe $-$ veut dire « on retire » ou « il en manque ». On écrit $8 - 3 = 5$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "8",
+                "3"
+              ],
+              "result": "5",
+              "carries": [],
+              "caption": "Soustraction : on retire une partie du tout"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas te tromper, suis cette méthode en quatre étapes. Première étape : lis bien le problème et entoure les nombres. Deuxième étape : dessine un petit schéma en barres. Une grande barre pour le tout, deux petites pour les parties. Troisième étape : regarde ce qui manque. Si le tout manque, c'est $+$. Si une partie manque, c'est $-$. Quatrième étape : écris le calcul et trouve le résultat."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Je lis et j'entoure les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je repère les chiffres donnés dans le texte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Je dessine mon schéma",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une grande barre (le tout), deux petites (les parties)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Je choisis le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tout manquant $\\rightarrow$ $+$. Partie manquante $\\rightarrow$ $-$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Je calcule et je réponds",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "J'écris l'opération et je donne la réponse en toutes lettres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire ce qu'est le tout et ce qu'est une partie dans une histoire.",
+                "Je sais trouver le tout quand je connais les deux parties (addition).",
+                "Je sais trouver une partie manquante quand je connais le tout et l'autre partie (soustraction).",
+                "Je sais choisir le signe $+$ ou $-$ en regardant mon schéma en barres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'addition correspondante : Il y a $5$ voitures rouges et $2$ voitures bleues dans le garage. Combien de voitures en tout ?",
+              "answer": "$5 + 2 = 7$",
+              "hint": "Les deux nombres donnés sont les parties. Le tout manque. Signe $+$.",
+              "explanation": "Partie 1 = $5$, partie 2 = $2$. On cherche le tout : $5 + 2 = 7$ voitures."
+            },
+            {
+              "question": "Écris la soustraction correspondante : $9$ enfants jouent dans la cour. $4$ rentrent en classe. Combien restent dans la cour ?",
+              "answer": "$9 - 4 = 5$",
+              "hint": "Le premier nombre est le tout. Le deuxième est une partie qui part. Signe $-$.",
+              "explanation": "Tout = $9$, partie partie = $4$. On cherche l'autre partie : $9 - 4 = 5$ enfants."
+            },
+            {
+              "question": "Problème complet : $10$ bonbons dans une boîte. $6$ sont mangés. Combien en reste-t-il ? Fais ton schéma, écris le calcul et la réponse.",
+              "answer": "Schéma : barre 10, partie 6, partie ?. Calcul : $10 - 6 = 4$. Réponse : Il reste $4$ bonbons.",
+              "hint": "Dessine une barre de $10$, colorie $6$ cases. Combien de cases blanches ?",
+              "explanation": "Le tout est $10$. Une partie ($6$) est mangée. On cherche l'autre partie. C'est une soustraction : $10 - 6 = 4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

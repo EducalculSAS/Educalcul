@@ -1,0 +1,368 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.696038+00:00",
+  "id": 388,
+  "code": "5eme-t02-c05",
+  "title": "Bilan - Relatifs et puissances 5e",
+  "description": "Cours structuré Educalcul : Bilan - Relatifs et puissances 5e.",
+  "subject": "Nombres relatifs, rationnels et puissances",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Nombres relatifs, rationnels et puissances",
+    "titre_du_cours": "Bilan - Relatifs et puissances 5e",
+    "objectif_global": "Bilan - Relatifs et puissances 5e",
+    "mini_lecons_imposees": [
+      "Repérage, calculs, rationnels.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, rationnels et puissances",
+      "lessons": [
+        {
+          "title": "Repérage, calculs, rationnels.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérage sur une droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Aujourd'hui, on remet tout à plat sur les nombres relatifs et les puissances. Pas de panique : tu as déjà vu ces notions, et on va les revoir calmement, avec des exemples concrets pour que tout devienne limpide. Commençons par le repérage. Imagine un thermomètre qui descend bien en dessous de zéro : c'est exactement une droite graduée verticale. Le zéro est au milieu, les nombres positifs montent vers le haut, les négatifs descendent vers le bas. Chaque trait correspond à un entier relatif : $1$, $2$, $3$... au-dessus, $-1$, $-2$, $-3$... en dessous. C'est comme les étages d'un immeuble qui aurait des sous-sols : le rez-de-chaussée est le zéro, le premier étage est $1$, le deuxième sous-sol est $-2$."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -4,
+                  "label": "A"
+                },
+                {
+                  "value": 7,
+                  "label": "B"
+                },
+                {
+                  "value": 0,
+                  "label": "O"
+                }
+              ],
+              "caption": "Repère les points A($-4$), B($7$) et O($0$) sur ce thermomètre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le thermomètre : le point A est à $-4$, donc quatre degrés sous zéro. Le point B est à $7$, sept degrés au-dessus. Le point O est exactement à l'origine. Pour comparer deux nombres, il suffit de voir qui est le plus haut : $7 > -4$ parce que B est au-dessus de A. Et n'oublie pas : plus un nombre négatif est grand en valeur absolue (loin de zéro), plus il est petit ! Donc $-8 < -3$. C'est contre-intuitif au début, mais l'image du thermomètre aide : $-8$ degrés, c'est plus froid que $-3$ degrés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition et soustraction des relatifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, faisons bouger notre petit personnage sur la droite. Pour additionner, on avance : $+3$ signifie \"avance de 3\", $-5$ signifie \"recule de 5\". Si je suis à $2$ et que j'ajoute $-4$, je recule de $4$ et j'arrive à $-2$. Pour soustraire, on fait l'inverse : soustraire $+3$, c'est reculer de $3$ ; soustraire $-4$, c'est avancer de $4$ (parce que l'opposé de $-4$ est $+4$). La règle d'or : $a - b = a + (-b)$. Donc $5 - (-2) = 5 + 2 = 7$. Et $5 - 2 = 5 + (-2) = 3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux nombres : sont-ils positifs ou négatifs ? Repère le signe de l'opération (addition ou soustraction)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transformer la soustraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c'est une soustraction, change le signe du deuxième nombre et transforme en addition : $a - b$ devient $a + (-b)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la règle des signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mêmes signes : on additionne les valeurs absolues et on garde le signe. Signes différents : on soustrait la plus petite valeur absolue de la plus grande, et on prend le signe du nombre qui a la plus grande valeur absolue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le départ et fais le déplacement pour contrôler mentalement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie mentalement : $(-6) + (+3)$. Signes différents, valeurs absolues $6$ et $3$. $6-3=3$, le signe du plus grand ($6$) est négatif, donc $-3$. Et $(-6) - (-3)$ ? On transforme : $(-6) + (+3) = -3$ aussi. Mais $(-6) - (+3) = (-6) + (-3) = -9$ (mêmes signes, on additionne $6+3=9$, signe négatif). Prends le temps de visualiser les flèches sur la droite, ça ancre le raisonnement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication et division : la règle des signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier ou diviser, on oublie les déplacements, on ne garde que les signes. C'est plus simple : deux nombres de même signe donnent un résultat positif ; deux nombres de signes différents donnent un résultat négatif. Pourquoi ? Pense à une dette : si tu as $-5$ euros (tu dois 5 euros) et que tu multiplies par $3$ (trois dettes identiques), tu dois $3 \\times 5 = 15$ euros, donc $-15$. Si tu multiplies par $-3$, ça veut dire \"l'opposé de trois dettes\", donc tu gagnes $15$ euros : $+15$. La division suit exactement la même règle car c'est l'opération inverse."
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\text{même signe}) \\Rightarrow + \\qquad (\\text{signes différents}) \\Rightarrow -"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges : $-4 \\times -2 = +8$ (même signe), mais $-4 \\times 2 = -8$ (signes différents). Et pour une suite de multiplications, compte le nombre de signes moins : s'il y en a un nombre pair, le résultat est positif ; impair, il est négatif. Exemple : $(-2) \\times (-3) \\times (-4) = -24$ (trois moins, impair). Pour la division, $-24 \\div (-6) = +4$ (même signe), $-24 \\div 6 = -4$ (signes différents)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres rationnels : fractions et décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un nombre rationnel, c'est simplement un nombre qu'on peut écrire sous la forme d'une fraction $\\frac{a}{b}$ avec $a$ entier (positif, négatif ou zéro) et $b$ entier non nul. Tous les entiers relatifs sont rationnels ($-3 = \\frac{-3}{1}$). Les nombres décimaux (comme $2,5$ ou $-0,75$) le sont aussi car on peut les convertir en fraction : $2,5 = \\frac{25}{10} = \\frac{5}{2}$, $-0,75 = -\\frac{75}{100} = -\\frac{3}{4}$. En 5e, on travaille beaucoup avec ces écritures fractionnaires car elles sont exactes, contrairement aux écritures décimales qui peuvent être approchées (comme $\\frac{1}{3} = 0,333...$)."
+            },
+            {
+              "type": "definition",
+              "term": "Nombre rationnel",
+              "definition": "Un nombre qu'on peut écrire sous la forme $\\frac{a}{b}$ où $a$ est un entier relatif et $b$ un entier non nul. L'ensemble des rationnels se note $\\mathbb{Q}$.",
+              "example": "$-\\frac{7}{3}$, $0$, $4$, $2,5$ sont des rationnels."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La fraction $\\frac{3}{4}$ représente 3 parts sur 4 égales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer d'une fraction à un nombre décimal, on fait la division du numérateur par le dénominateur : $\\frac{5}{2} = 5 \\div 2 = 2,5$. Pour simplifier une fraction, on divise le numérateur et le dénominateur par leur plus grand commun diviseur. $\\frac{18}{24} = \\frac{18 \\div 6}{24 \\div 6} = \\frac{3}{4}$. Et pour comparer deux fractions, on les met au même dénominateur ou on les convertit en décimaux. $\\frac{2}{3}$ vs $\\frac{3}{5}$ : $\\frac{10}{15} > \\frac{9}{15}$, donc $\\frac{2}{3} > \\frac{3}{5}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée, place les nombres $-6$, $2$, $-1$, $5$, $0$. Lequel est le plus grand ? Lequel est le plus petit ?",
+              "answer": "Le plus grand est $5$, le plus petit est $-6$.",
+              "hint": "Repère le zéro. Les nombres positifs sont à droite (ou en haut), les négatifs à gauche (ou en bas). Plus on va vers la droite/haut, plus le nombre est grand.",
+              "explanation": "Sur la droite, $5$ est le plus à droite (ou le plus haut), donc le plus grand. $-6$ est le plus à gauche (ou le plus bas), donc le plus petit. L'ordre croissant est : $-6 < -1 < 0 < 2 < 5$."
+            },
+            {
+              "question": "Calcule : $(-8) + (+5)$ ; $(-8) - (+5)$ ; $(-8) - (-5)$ ; $12 + (-15)$.",
+              "answer": "$(-8)+(+5)=-3$ ; $(-8)-(+5)=-13$ ; $(-8)-(-5)=-3$ ; $12+(-15)=-3$.",
+              "hint": "Pour la soustraction, transforme en addition de l'opposé. Ensuite, applique la règle : mêmes signes = addition des valeurs absolues + signe commun ; signes différents = différence des valeurs absolues + signe du plus grand en valeur absolue.",
+              "explanation": "1) $(-8)+(+5)$ : signes différents, $8-5=3$, signe du plus grand ($8$) est $-$, donc $-3$. 2) $(-8)-(+5)=(-8)+(-5)$ : mêmes signes, $8+5=13$, signe $-$, donc $-13$. 3) $(-8)-(-5)=(-8)+(+5)=-3$ (comme le 1). 4) $12+(-15)$ : signes différents, $15-12=3$, signe du plus grand ($15$) est $-$, donc $-3$."
+            },
+            {
+              "question": "Calcule : $(-6) \\times (-4)$ ; $(-6) \\times 4$ ; $(-24) \\div (-6)$ ; $(-24) \\div 3$ ; $(-2) \\times (-3) \\times (-5)$.",
+              "answer": "$(-6)\\times(-4)=24$ ; $(-6)\\times4=-24$ ; $(-24)\\div(-6)=4$ ; $(-24)\\div3=-8$ ; $(-2)\\times(-3)\\times(-5)=-30$.",
+              "hint": "Règle des signes : même signe $\\rightarrow$ $+$, signes différents $\\rightarrow$ $-$. Pour une suite de multiplications, compte les signes moins : pair $\\rightarrow$ $+$, impair $\\rightarrow$ $-$.",
+              "explanation": "1) Deux moins : même signe $\\rightarrow +$, $6\\times4=24$. 2) Signes différents $\\rightarrow -$, $6\\times4=24$ donc $-24$. 3) Division même signe $\\rightarrow +$, $24\\div6=4$. 4) Signes différents $\\rightarrow -$, $24\\div3=8$ donc $-8$. 5) Trois signes moins (impair) $\\rightarrow$ résultat négatif, $2\\times3\\times5=30$ donc $-30$."
+            },
+            {
+              "question": "Écris sous forme de fraction irréductible : $0,6$ ; $-2,5$ ; $\\frac{15}{25}$ ; $\\frac{-18}{12}$. Compare $\\frac{4}{5}$ et $\\frac{5}{6}$.",
+              "answer": "$0,6=\\frac{3}{5}$ ; $-2,5=-\\frac{5}{2}$ ; $\\frac{15}{25}=\\frac{3}{5}$ ; $\\frac{-18}{12}=-\\frac{3}{2}$. $\\frac{4}{5} < \\frac{5}{6}$.",
+              "hint": "Pour un décimal, compte les chiffres après la virgule pour le dénominateur (10, 100...). Simplifie en divisant numérateur et dénominateur par leur PGCD. Pour comparer, mets au même dénominateur (30 ici).",
+              "explanation": "$0,6 = \\frac{6}{10} = \\frac{3}{5}$. $-2,5 = -\\frac{25}{10} = -\\frac{5}{2}$. $\\frac{15}{25} = \\frac{15\\div5}{25\\div5} = \\frac{3}{5}$. $\\frac{-18}{12} = -\\frac{18\\div6}{12\\div6} = -\\frac{3}{2}$. Comparaison : $\\frac{4}{5} = \\frac{24}{30}$, $\\frac{5}{6} = \\frac{25}{30}$, donc $\\frac{4}{5} < \\frac{5}{6}$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérage et comparaison : un coup de projecteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "On attaque ce bilan final par un rappel visuel, mais avec une droite horizontale cette fois, comme une règle de mesure qui irait dans les deux sens. Imagine une ligne de métro : la station centrale est le zéro. Vers l'est, les numéros sont positifs ($1, 2, 3...$), vers l'ouest, ils sont négatifs ($-1, -2, -3...$). Pour comparer $-2,5$ et $-1,8$, pose-les sur la ligne : $-1,8$ est plus près du zéro (plus à l'est), donc $-1,8 > -2,5$. C'est le même principe que le thermomètre, mais horizontal. Et pour des nombres comme $\\frac{-4}{3}$ et $-1,2$ ? Convertis $\\frac{-4}{3} \\approx -1,333...$ : $-1,2$ est plus grand car $-1,2 > -1,333...$. Prends l'habitude de convertir en décimal pour comparer vite fait."
+            },
+            {
+              "type": "number_line",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2.5,
+                  "label": "A"
+                },
+                {
+                  "value": -1.8,
+                  "label": "B"
+                },
+                {
+                  "value": -1.33,
+                  "label": "C"
+                }
+              ],
+              "intervals": [],
+              "caption": "Place A($-2,5$), B($-1,8$), C($-\\frac{4}{3}$). Ordonne-les."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, A est le plus à gauche, puis C, puis B. L'ordre croissant est $A < C < B$, soit $-2,5 < -\\frac{4}{3} < -1,8$. Note que $-\\frac{4}{3}$ est entre $-1$ et $-2$, plus proche de $-1$. Cette gymnastique entre fraction et décimal est ton meilleur outil pour ne pas te tromper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs mêlés : priorités et parenthèses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, mélangeons les opérations. Tu connais l'ordre : parenthèses d'abord, puis puissances (on y vient), puis multiplications et divisions (de gauche à droite), enfin additions et soustractions (de gauche à droite). Avec les relatifs, la seule difficulté supplémentaire est de bien gérer les signes à chaque étape. Écris les étapes intermédiaires, ne saute rien ! C'est le secret pour éviter les erreurs bêtes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Parentheses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule ce qui est entre parenthèses. Si plusieurs niveaux, commence par les plus intérieures."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Puissances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traite les exposants. Attention : $(-3)^2 = 9$ mais $-3^2 = -9$ (l'exposant ne porte que sur le 3)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplications/Divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De gauche à droite, applique la règle des signes à chaque opération."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additions/Soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De gauche à droite, transforme les soustractions en additions de l'opposé si ça t'aide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : $-5 + 2 \\times (-3) - (-4)^2 \\div 2$. 1) Pas de parenthèses à calculer. 2) Puissances : $(-4)^2 = 16$. Expression : $-5 + 2 \\times (-3) - 16 \\div 2$. 3) Multiplications/divisions : $2 \\times (-3) = -6$ ; $16 \\div 2 = 8$. Expression : $-5 + (-6) - 8$. 4) Additions/soustractions : $-5 + (-6) = -11$ ; $-11 - 8 = -19$. Résultat : $-19$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Puissances de 10 et changements d'unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par les puissances de 10, tes alliées pour les conversions d'unités et les grands nombres. $10^1 = 10$, $10^2 = 100$, $10^3 = 1000$, et pour les puissances négatives : $10^{-1} = 0,1 = \\frac{1}{10}$, $10^{-2} = 0,01 = \\frac{1}{100}$, $10^{-3} = 0,001 = \\frac{1}{1000}$. La règle : $10^n$ est un 1 suivi de $n$ zéros si $n>0$, ou un « 0, » suivi de $|n|-1$ zéros puis 1 si $n<0$. Ça permet d'écrire n'importe quel nombre décimal en notation scientifique (un chiffre avant la virgule, fois une puissance de 10). Exemple : $4500 = 4,5 \\times 10^3$ ; $0,0072 = 7,2 \\times 10^{-3}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "10^n = \\underbrace{10 \\times \\dots \\times 10}_{n \\text{ fois}} \\ (n>0) \\quad ; \\quad 10^{-n} = \\frac{1}{10^n} = 0,\\underbrace{00\\dots0}_{n-1 \\text{ zéros}}1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour changer d'unité, on multiplie ou divise par la bonne puissance de 10. $1 \\text{ km} = 10^3 \\text{ m} = 1000 \\text{ m}$ ; $1 \\text{ cm} = 10^{-2} \\text{ m} = 0,01 \\text{ m}$ ; $1 \\text{ g} = 10^{-3} \\text{ kg}$. Donc $3,5 \\text{ km} = 3,5 \\times 10^3 \\text{ m} = 3500 \\text{ m}$. Et $450 \\text{ mg} = 450 \\times 10^{-3} \\text{ g} = 0,45 \\text{ g}$. C'est juste un déplacement de la virgule ! Vers la droite pour multiplier par $10^n$ ($n$ positions), vers la gauche pour diviser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais placer et comparer des nombres relatifs sur une droite graduée (horizontale ou verticale).",
+                "Je sais additionner et soustraire des relatifs en utilisant la règle des signes ou le déplacement sur la droite.",
+                "Je sais multiplier et diviser des relatifs : même signe $\\rightarrow$ $+$, signes différents $\\rightarrow$ $-$.",
+                "Je reconnais un nombre rationnel et je sais passer de l'écriture fractionnaire à l'écriture décimale (et inversement).",
+                "Je sais simplifier une fraction et comparer deux fractions (même dénominateur ou conversion décimale).",
+                "Je respecte l'ordre des priorités dans un calcul mêlé avec des relatifs (parenthèses, puissances, $\\times/\\div$, $+/$).",
+                "J'utilise les puissances de 10 ($10^n$, $n$ entier) pour convertir des unités de longueur, masse, volume...",
+                "J'écris un nombre en notation scientifique : $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place sur une droite graduée : $-3,2$ ; $-\\frac{7}{2}$ ; $1,5$ ; $-1$ ; $0$. Range-les par ordre croissant.",
+              "answer": "Ordre croissant : $-3,2 < -\\frac{7}{2} < -1 < 0 < 1,5$.",
+              "hint": "Convertis $-\\frac{7}{2} = -3,5$. Repère chaque nombre par rapport au zéro. Le plus à gauche est le plus petit.",
+              "explanation": "$-\\frac{7}{2} = -3,5$. Sur la droite : $-3,5$ (le plus à gauche), puis $-3,2$, puis $-1$, puis $0$, puis $1,5$ (le plus à droite). Donc $-3,5 < -3,2 < -1 < 0 < 1,5$."
+            },
+            {
+              "question": "Calcule en détaillant les étapes : $(-4)^2 - 3 \\times (-2) + 10 \\div (-5) - (-6)$.",
+              "answer": "$16 - (-6) + (-2) - (-6) = 16 + 6 - 2 + 6 = 26$.",
+              "hint": "Suis l'ordre : puissances, puis $\\times/\\div$ de gauche à droite, puis $+/$ de gauche à droite. Transforme les soustractions en additions de l'opposé si besoin.",
+              "explanation": "1) Puissance : $(-4)^2 = 16$. 2) Multiplication : $3 \\times (-2) = -6$. Division : $10 \\div (-5) = -2$. Expression : $16 - (-6) + (-2) - (-6)$. 3) Transforme les soustractions : $16 + 6 + (-2) + 6$. 4) Additions de gauche à droite : $16+6=22$ ; $22+(-2)=20$ ; $20+6=26$."
+            },
+            {
+              "question": "Écris en notation scientifique : $0,00056$ ; $8700000$. Convertis : $4,2 \\text{ km}$ en $\\text{cm}$ ; $0,003 \\text{ g}$ en $\\text{mg}$.",
+              "answer": "$0,00056 = 5,6 \\times 10^{-4}$ ; $8700000 = 8,7 \\times 10^6$. $4,2 \\text{ km} = 420000 \\text{ cm}$ ; $0,003 \\text{ g} = 3 \\text{ mg}$.",
+              "hint": "Notation scientifique : un seul chiffre non nul avant la virgule. Pour les conversions, repère la puissance de 10 entre les unités (km $\\rightarrow$ m $\\rightarrow$ cm : $\\times 10^3$ puis $\\times 10^2$ = $\\times 10^5$).",
+              "explanation": "$0,00056$ : virgule à droite de 5,6 $\\rightarrow$ 4 sauts $\\rightarrow 10^{-4}$. $8700000$ : virgule à droite de 8,7 $\\rightarrow$ 6 sauts $\\rightarrow 10^6$. $4,2 \\text{ km} = 4,2 \\times 10^3 \\text{ m} = 4,2 \\times 10^3 \\times 10^2 \\text{ cm} = 4,2 \\times 10^5 \\text{ cm} = 420000 \\text{ cm}$. $0,003 \\text{ g} = 3 \\times 10^{-3} \\text{ g} = 3 \\text{ mg}$ (car $1 \\text{ mg} = 10^{-3} \\text{ g}$)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

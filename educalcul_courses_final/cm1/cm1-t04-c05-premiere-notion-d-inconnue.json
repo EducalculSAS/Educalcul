@@ -1,0 +1,348 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.216258+00:00",
+  "id": 238,
+  "code": "cm1-t04-c05",
+  "title": "Première notion d'inconnue",
+  "description": "Cours structuré Educalcul : Première notion d'inconnue.",
+  "subject": "Résolution de problèmes et pensée algébrique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Résolution de problèmes et pensée algébrique",
+    "titre_du_cours": "Première notion d'inconnue",
+    "objectif_global": "Première notion d'inconnue",
+    "mini_lecons_imposees": [
+      "Utiliser symbole / lettre comme nombre à trouver.",
+      "Exprimer une relation simple.",
+      "Tester une valeur."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes et pensée algébrique",
+      "lessons": [
+        {
+          "title": "Utiliser symbole / lettre comme nombre à trouver.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une inconnue ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as un panier avec 7 pommes. Tu en ajoutes d'autres, mais tu ne sais pas combien. À la fin, tu comptes 12 pommes au total. Le nombre de pommes ajoutées est caché, on ne le voit pas encore. En mathématiques, on appelle ce nombre caché une inconnue. C'est comme un tiroir fermé : on sait qu'il y a quelque chose à l'intérieur, mais il faut l'ouvrir pour le découvrir. Ici, le tiroir est le carré vide dans l'addition."
+            },
+            {
+              "type": "definition",
+              "term": "inconnue",
+              "definition": "Nombre que l'on ne connaît pas encore et que l'on cherche à trouver. On le représente souvent par un carré vide, un point d'interrogation ou une lettre.",
+              "example": "Dans $\\square + 7 = 12$, le carré est l'inconnue."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\square + 7 = 12"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi utiliser une lettre, comme $x$, pour noter ce nombre mystère. La lettre $x$ ne change pas le sens de l'addition, elle dit simplement : « ici se trouve un nombre que je ne connais pas ». Ainsi, $\\square + 7 = 12$ devient $x + 7 = 12$. C'est plus pratique quand on écrit plusieurs inconnues dans le même problème."
+            },
+            {
+              "type": "display_math",
+              "latex": "x + 7 = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment on peut retrouver la valeur cachée en raisonnant à l'envers. Si on sait que le total est 12 et qu'une partie vaut 7, il suffit d'enlever 7 à 12 pour savoir ce qui manque. C'est l'idée de la soustraction inverse de l'addition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver la valeur manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver l'inconnue, on procède en trois étapes simples. D'abord, on identifie ce que l'on connaît : le total et l'autre terme. Ensuite, on soustrait le terme connu du total. Enfin, on vérifie que le résultat trouvé remet bien l'égalité en place. Cette méthode marche à chaque fois que l'inconnue est un terme d'une addition."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le total et le terme connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $x + 7 = 12$, le total est 12 et le terme connu est 7."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire le terme connu du total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $12 - 7 = 5$. Ce résultat est la valeur de l'inconnue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On replace : $5 + 7 = 12$. C'est vrai, donc $x = 5$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant une situation où l'inconnue se trouve au début de l'addition, comme $\\square + 5 = 9$. Le raisonnement est exactement le même : le total est 9, le terme connu est 5, on fait $9 - 5 = 4$. Le carré vaut donc 4."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\square + 5 = 9"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'addition $\\square + 6 = 13$, quel nombre se cache dans le carré ?",
+              "answer": "7",
+              "hint": "Pense à ce que tu dois ajouter à 6 pour obtenir 13.",
+              "explanation": "On soustrait 6 de 13 : $13 - 6 = 7$."
+            },
+            {
+              "question": "Si $x + 8 = 15$, trouve la valeur de $x$.",
+              "answer": "7",
+              "hint": "Retire 8 de 15.",
+              "explanation": "On fait $15 - 8 = 7$, donc $x = 7$."
+            },
+            {
+              "question": "Complète : $\\square + 4 = 11$.",
+              "answer": "7",
+              "hint": "Quelle somme donne 11 avec 4 ?",
+              "explanation": "On calcule $11 - 4 = 7$."
+            }
+          ]
+        },
+        {
+          "title": "Exprimer une relation simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une relation avec une inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand un problème raconte une histoire avec des quantités, on peut la transformer en une phrase mathématique appelée équation. Par exemple : « Il y a 5 billes rouges et quelques billes bleues, au total 12 billes. » On sait qu'il y a deux groupes qui forment le total. On écrit donc une addition où l'un des termes est l'inconnue. Cela donne $5 + \\square = 12$. Le carré représente le nombre de billes bleues qu'on ne connaît pas encore."
+            },
+            {
+              "type": "definition",
+              "term": "équation",
+              "definition": "Égalité qui contient une ou plusieurs inconnues. Résoudre l'équation, c'est trouver la valeur de l'inconnue qui rend l'égalité vraie.",
+              "example": "$5 + x = 12$ est une équation."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 + \\square = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'inconnue n'est pas un terme à ajouter, mais un terme à retirer. Dans l'histoire : « J'ai 9 bonbons, j'en donne quelques-uns, il m'en reste 4. » Le nombre donné est l'inconnue. On peut l'écrire $9 - \\square = 4$ ou, avec une lettre, $9 - x = 4$. Les deux écritures disent la même chose : on part de 9, on enlève l'inconnue, et on arrive à 4."
+            },
+            {
+              "type": "display_math",
+              "latex": "9 - x = 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les relations peuvent aussi mélanger multiplication et addition. Prenons : « Le double d'un nombre plus 3 donne 11. » Le double d'un nombre s'écrit $2 \\times x$ ou simplement $2x$. En ajoutant 3, on obtient $2x + 3 = 11$. Cette équation montre comment on combine plusieurs opérations pour décrire une situation."
+            },
+            {
+              "type": "display_math",
+              "latex": "2x + 3 = 11"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une addition pour : « Il y a 5 billes rouges et quelques billes bleues, au total 12 billes. »",
+              "answer": "$5 + \\square = 12$",
+              "hint": "Le total est la somme des deux groupes.",
+              "explanation": "On représente les billes bleues par un carré."
+            },
+            {
+              "question": "Utilise une lettre pour noter l'inconnue : « J'ai 9 bonbons, j'en donne quelques-uns, il m'en reste 4. »",
+              "answer": "$9 - x = 4$ ou $x + 4 = 9$",
+              "hint": "Pense à ce qui a été donné.",
+              "explanation": "Le nombre donné est l'inconnue, on peut écrire $9 - x = 4$."
+            },
+            {
+              "question": "Traduis en équation : « Le double d'un nombre plus 3 donne 11. »",
+              "answer": "$2x + 3 = 11$",
+              "hint": "Le double se note $2x$.",
+              "explanation": "On écrit $2 \\times x + 3 = 11$."
+            }
+          ]
+        },
+        {
+          "title": "Tester une valeur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester une valeur pour vérifier une équation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois qu'on a écrit une équation, on peut proposer une valeur pour l'inconnue et voir si l'égalité devient vraie. C'est comme essayer une clé dans une serrure : si la porte s'ouvre, la clé est la bonne. Par exemple, pour $2x + 3 = 11$, on se demande : « Et si $x = 4$ ? » On remplace $x$ par 4, on calcule $2 \\times 4 + 3 = 8 + 3 = 11$. Comme le résultat correspond au total, $x = 4$ est la bonne valeur."
+            },
+            {
+              "type": "definition",
+              "term": "tester une valeur",
+              "definition": "Remplacer l'inconnue par un nombre précis dans l'équation et calculer pour savoir si l'égalité est respectée.",
+              "example": "Pour $x + 6 = 10$, tester $x = 4$ donne $4 + 6 = 10$, donc c'est vrai."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une valeur à tester",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On prend un nombre qui semble plausible, par exemple 4."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer l'inconnue par cette valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $2x + 3 = 11$, on écrit $2 \\times 4 + 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer et comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient 11, ce qui est égal au second membre. L'égalité est vérifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut essayer plusieurs valeurs avant de trouver la bonne. Imaginons l'équation $3x = 12$. On peut tester $x = 3$ : $3 \\times 3 = 9$, ce n'est pas 12. On teste alors $x = 4$ : $3 \\times 4 = 12$, c'est exact. La méthode consiste à tester systématiquement jusqu'à ce que l'égalité soit vraie."
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs testées pour $3x = 12$",
+              "min": 0,
+              "max": 6,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "x=3"
+                },
+                {
+                  "value": 4,
+                  "label": "x=4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand l'équation est un peu plus complexe, on peut encore tester des valeurs, mais on commence à voir qu'une méthode plus rapide existe : isoler l'inconnue. Toutefois, tester reste un excellent moyen de vérifier une solution trouvée ou de comprendre le comportement de l'équation. Par exemple, pour $x + 6 = 10$, tester $x = 5$ donne $5 + 6 = 11$, ce qui est trop grand. On comprend alors que la valeur cherchée est plus petite."
+            },
+            {
+              "type": "display_math",
+              "latex": "3x = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais représenter un nombre inconnu par un carré ou une lettre.",
+                "Je sais écrire une équation à partir d'un énoncé simple.",
+                "Je sais tester une valeur pour voir si elle convient à l'équation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Est-ce que $x = 4$ convient pour $2x + 3 = 11$ ?",
+              "answer": "Oui",
+              "hint": "Remplace $x$ par 4 et calcule.",
+              "explanation": "On calcule $2 \\times 4 + 3 = 8 + 3 = 11$, l'égalité est vraie."
+            },
+            {
+              "question": "Teste $x = 5$ dans l'équation $x + 6 = 10$.",
+              "answer": "Non",
+              "hint": "Calcule $5 + 6$.",
+              "explanation": "$5 + 6 = 11$, ce n'est pas 10."
+            },
+            {
+              "question": "Quelle valeur de $x$ rend vraie $3x = 12$ ? Teste $x = 3$ et $x = 4$.",
+              "answer": "$x = 4$",
+              "hint": "Multiplie 3 par chaque valeur.",
+              "explanation": "$3 \\times 3 = 9$ (faux), $3 \\times 4 = 12$ (vrai)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

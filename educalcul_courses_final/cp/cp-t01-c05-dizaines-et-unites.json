@@ -1,0 +1,272 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.488837+00:00",
+  "id": 5,
+  "code": "cp-t01-c05",
+  "title": "Dizaines et unités",
+  "description": "Cours structuré Educalcul : Dizaines et unités.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Dizaines et unités",
+    "objectif_global": "Dizaines et unités",
+    "mini_lecons_imposees": [
+      "Distinguer dizaines et unités.",
+      "Lire la position des deux chiffres.",
+      "Composer et décomposer un nombre en dizaines et unités."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Distinguer dizaines et unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une unité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as devant toi une poignée de billes. Tu les comptes une par une : $1$, $2$, $3$... Chaque bille toute seule, c'est une $unité$. On écrit souvent un petit $1$ pour la représenter. Regarde bien : si tu as $5$ billes, tu as $5$ unités. C'est simple, non ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "5 unités : 5 petits cubes tout seuls"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde ce qui se passe quand tu as beaucoup d'unités. Si tu en as $10$, tu peux les attacher ensemble pour faire un petit paquet. Ce paquet de $10$, on l'appelle une $dizaine$. C'est comme une baguette de $10$ cubes collés les uns aux autres. Une dizaine, c'est plus gros qu'une unité, et ça va plus vite à compter !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "1 dizaine : une barre de 10 cubes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de comparer : dans ta main, une dizaine c'est une barre, une unité c'est un tout petit cube. Si tu as $1$ dizaine et $3$ unités, tu as $13$ objets en tout. On écrit $13$ avec deux chiffres : le $1$ pour la dizaine, le $3$ pour les unités. Tu vois la différence ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "1 dizaine et 3 unités = 13"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien y a-t-il d'unités sur l'image ?",
+              "answer": "5",
+              "hint": "Compte les petits cubes un par un.",
+              "explanation": "Il y a 5 petits cubes, donc 5 unités."
+            },
+            {
+              "question": "Combien de cubes y a-t-il dans une barre de dizaine ?",
+              "answer": "10",
+              "hint": "Une dizaine, c'est un groupe de 10.",
+              "explanation": "La barre de dizaine est formée de 10 cubes collés ensemble."
+            },
+            {
+              "question": "Si j'ai 1 dizaine et 4 unités, quel nombre est-ce ?",
+              "answer": "14",
+              "hint": "La dizaine vaut 10, plus 4 unités fait 14.",
+              "explanation": "1 dizaine = 10, 4 unités = 4, donc 10 + 4 = 14."
+            }
+          ]
+        },
+        {
+          "title": "Lire la position des deux chiffres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le chiffre de gauche, le chiffre de droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on écrit un nombre à deux chiffres comme $27$, les deux chiffres n'ont pas le même rôle. Le premier chiffre, celui de gauche, nous dit combien il y a de $dizaines$. Le deuxième chiffre, celui de droite, nous dit combien il y a d'$unités$. C'est comme une petite maison : à gauche la pièce des dizaines, à droite la pièce des unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 7,
+              "caption": "27 : 2 dizaines (2 barres) et 7 unités (7 cubes)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $43$. Le chiffre $4$ est à gauche, donc c'est $4$ dizaines. Le chiffre $3$ est à droite, donc c'est $3$ unités. En matériel, tu poses $4$ barres de dix et $3$ petits cubes. Essaie de le faire avec tes doigts : montre $4$ fois dix doigts, puis $3$ doigts de plus. Ça fait combien en tout ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 3,
+              "caption": "43 : 4 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention au piège ! Dans $12$, le $1$ est à gauche : c'est $1$ dizaine. Le $2$ est à droite : ce sont $2$ unités. Mais dans $21$, le $2$ est à gauche : ce sont $2$ dizaines, et le $1$ est à droite : c'est $1$ unité. La place du chiffre change tout. C'est pour ça qu'on lit toujours de gauche à droite."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 1,
+              "caption": "21 : 2 dizaines et 1 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre 35, quel chiffre représente les dizaines ?",
+              "answer": "3",
+              "hint": "Regarde le chiffre de gauche.",
+              "explanation": "Le 3 est à gauche, il indique 3 dizaines."
+            },
+            {
+              "question": "Combien d'unités y a-t-il dans le nombre 43 ?",
+              "answer": "3",
+              "hint": "Regarde le chiffre de droite.",
+              "explanation": "Le 3 est à droite, il indique 3 unités."
+            },
+            {
+              "question": "Est-ce que 12 et 21 sont le même nombre ?",
+              "answer": "Non",
+              "hint": "Compare les dizaines et les unités.",
+              "explanation": "12 a 1 dizaine et 2 unités. 21 a 2 dizaines et 1 unité. Ce n'est pas la même quantité."
+            }
+          ]
+        },
+        {
+          "title": "Composer et décomposer un nombre en dizaines et unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un nombre avec des dizaines et des unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, c'est à toi de jouer ! Si je te dis : « Prends $3$ dizaines et $6$ unités », tu poses $3$ barres et $6$ cubes. Combien as-tu en tout ? Tu comptes les barres par dix : $10$, $20$, $30$, puis tu ajoutes les cubes : $31$, $32$, $33$, $34$, $35$, $36$. Tu as fait le nombre $36$. C'est ça, $composer$ un nombre."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 6,
+              "caption": "3 dizaines et 6 unités = 36"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi faire le chemin inverse : $décomposer$ un nombre. Regarde le nombre $52$. Tu as devant toi $5$ barres de dix et $2$ cubes. Tu peux dire : « $52$, c'est $5$ dizaines et $2$ unités. » Ou bien tu écris : $52 = 5$ dizaines $+ 2$ unités. C'est comme casser un chiffre en deux morceaux pour bien voir ce qu'il y a dedans."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 2,
+              "caption": "52 décomposé : 5 dizaines et 2 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $28$ : tu as $2$ dizaines (donc $20$) et $8$ unités. Et avec $94$ : $9$ dizaines ($90$) et $4$ unités. Plus tu t'entraînes, plus c'est facile de voir les dizaines et les unités rien qu'en regardant les deux chiffres. Tu deviens un expert des nombres jusqu'à $99$ !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 9,
+              "units": 4,
+              "caption": "94 : 9 dizaines et 4 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire ce qu'est une dizaine et une unité.",
+                "Je sais lire les dizaines et les unités dans un nombre à deux chiffres.",
+                "Je sais composer un nombre à partir de ses dizaines et unités.",
+                "Je sais décomposer un nombre en dizaines et unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si je prends 2 dizaines et 5 unités, quel nombre j'obtiens ?",
+              "answer": "25",
+              "hint": "2 dizaines = 20, plus 5 unités = 25.",
+              "explanation": "2 barres de 10 font 20, 5 cubes font 5, total 25."
+            },
+            {
+              "question": "Décompose le nombre 37 en dizaines et unités.",
+              "answer": "3 dizaines et 7 unités",
+              "hint": "Le chiffre des dizaines est 3, celui des unités est 7.",
+              "explanation": "37 = 3 dizaines (30) + 7 unités."
+            },
+            {
+              "question": "Complète : 48 = ___ dizaines + ___ unités",
+              "answer": "4 dizaines + 8 unités",
+              "hint": "Regarde les deux chiffres du nombre 48.",
+              "explanation": "Le 4 est le chiffre des dizaines, le 8 est le chiffre des unités."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

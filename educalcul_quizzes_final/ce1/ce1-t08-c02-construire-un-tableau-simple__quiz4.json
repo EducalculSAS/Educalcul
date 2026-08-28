@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Construire un tableau simple",
+  "title": "Construire un tableau simple",
+  "questions": [
+    {
+      "text": "Dans la classe, les élèves disent leur fruit préféré : pomme, poire, pomme, banane, poire, pomme. Quels titres faut-il écrire en haut du tableau pour ranger ces résultats ?",
+      "options": [
+        "Fruit / Nombre",
+        "Prénom / Fruit",
+        "Jour / Fruit",
+        "Couleur / Nombre"
+      ],
+      "correctAnswer": "Fruit / Nombre",
+      "explanation": "On veut compter combien de fois chaque fruit est cité. La première colonne doit indiquer le nom du fruit (Fruit) et la deuxième le nombre de fois qu'il apparait (Nombre). Les autres propositions ne correspondent pas aux données à classer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici la liste des couleurs préférées d'un groupe : $Bleu, Rouge, Bleu, Vert, Bleu, Rouge$. En construisant le tableau, quel nombre doit-on écrire en face de $Bleu$ ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On compte les occurrences du mot $Bleu$ dans la liste : il apparait à la 1ère, 3ème et 5ème position, soit $3$ fois. Les autres nombres correspondent à un mauvais comptage ($2$ pour $Rouge$, $1$ pour $Vert$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a compté les véhicules dans la rue : $4$ voitures, $2$ camions, $3$ vélos. Laquelle de ces phrases décrit le tableau correctement rempli ?",
+      "options": [
+        "Ligne Voiture : 4, Ligne Camion : 2, Ligne Vélo : 3",
+        "Ligne Voiture : 2, Ligne Camion : 4, Ligne Vélo : 3",
+        "Ligne Voiture : 3, Ligne Camion : 2, Ligne Vélo : 4",
+        "Ligne Voiture : 4, Ligne Camion : 3, Ligne Vélo : 2"
+      ],
+      "correctAnswer": "Ligne Voiture : 4, Ligne Camion : 2, Ligne Vélo : 3",
+      "explanation": "Il faut reporter exactement les nombres donnés dans l'énoncé pour chaque catégorie. La première option est la seule qui associe $4$ aux voitures, $2$ aux camions et $3$ aux vélos.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau récapitule les animaux de la ferme : $Chien : 3$, $Chat : ?$, $Oiseau : 2$. Le total indiqué en bas du tableau est $8$. Combien y a-t-il de $Chat$ ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On connait le total ($8$) et deux nombres ($3$ et $2$). On calcule le nombre manquant : $8 - 3 - 2 = 3$. Il y a donc $3$ chats. L'option $2$ correspond au nombre d'oiseaux, $4$ et $5$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau des votes pour la récréation : $Cache-cache : 5$, $Ballon : 7$, $Corde : 4$. Quel jeu a obtenu le plus de votes ?",
+      "options": [
+        "Cache-cache",
+        "Ballon",
+        "Corde",
+        "Ballon et Cache-cache"
+      ],
+      "correctAnswer": "Ballon",
+      "explanation": "On compare les nombres de votes : $5$ pour Cache-cache, $7$ pour Ballon, $4$ pour Corde. Le plus grand nombre est $7$, qui correspond au Ballon. C'est donc le jeu préféré.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

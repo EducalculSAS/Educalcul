@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 365,
+  "_course_code": "6eme-t07-c03-vues-et-perspectives",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Interpréter",
+  "title": "Vues et perspectives : Interpréter les vues d'un solide",
+  "questions": [
+    {
+      "text": "On considère un solide constitué de $3$ cubes identiques alignés au sol. Quelle est la vue de face de ce solide ?",
+      "options": [
+        "Un carré",
+        "Un rectangle composé de $2$ carrés",
+        "Un rectangle composé de $3$ carrés côte à côte",
+        "Une colonne de $3$ carrés empilés"
+      ],
+      "correctAnswer": "Un rectangle composé de $3$ carrés côte à côte",
+      "explanation": "Les trois cubes sont posés au sol côte à côte. Vu de face, on voit les trois faces avant alignées horizontalement, ce qui forme un rectangle de trois carrés. L'option « Une colonne de 3 carrés empilés » correspondrait à une tour verticale. L'option « Un carré » ne montre qu'un seul cube. L'option « Un rectangle composé de 2 carrés » ignore l'un des trois cubes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un solide est formé de $3$ cubes : deux cubes posés au sol côte à côte, et un troisième cube posé par-dessus le cube de gauche. Quelle est la vue de dessus (le « plan ») de ce solide ?",
+      "options": [
+        "Un seul carré",
+        "Deux carrés côte à côte",
+        "Trois carrés en forme de L",
+        "Deux carrés l'un au-dessus de l'autre"
+      ],
+      "correctAnswer": "Deux carrés côte à côte",
+      "explanation": "La vue de dessus ne montre que l'empreinte au sol (la projection verticale). Les deux cubes du bas occupent deux cases au sol. Le cube du haut est exactement au-dessus du cube de gauche, il ne rajoute donc pas de case visible depuis le dessus. On voit donc deux carrés côte à côte. L'option « Trois carrés en forme de L » serait la vue de face ou de profil. L'option « Un seul carré » correspondrait à une tour unique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a construit un solide avec $4$ cubes formant un carré de $2$ par $2$ au sol. On retire le cube situé à l'avant à droite. Quelle est la vue de face du solide restant ?",
+      "options": [
+        "Un grand carré de $2$ par $2$ carreaux",
+        "Deux carrés côte à côte sur le bas, et un seul carré au-dessus à gauche",
+        "Une colonne de deux carrés",
+        "Deux carrés côte à côte"
+      ],
+      "correctAnswer": "Deux carrés côte à côte sur le bas, et un seul carré au-dessus à gauche",
+      "explanation": "Initialement, la vue de face est un carré $2 \\times 2$. En retirant le cube avant-droit, on enlève le carreau en bas à droite de cette vue. Il reste donc le cube avant-gauche (en bas à gauche), le cube arrière-gauche (au-dessus du premier) et le cube arrière-droit (au-dessus du trou, mais masqué par l'arrière-gauche vu de face ? Non, vu de face, on voit la colonne de gauche (2 cubes) et la colonne de droite (1 cube seulement, le cube arrière). La description exacte : colonne gauche de hauteur 2, colonne droite de hauteur 1. Cela correspond à « Deux carrés côte à côte sur le bas, et un seul carré au-dessus à gauche ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les trois vues principales d'un solide mystère :\\n- Vue de face : une colonne de $2$ carrés.\\n- Vue de côté : une colonne de $2$ carrés.\\n- Vue de dessus : un seul carré.\\nQuel est ce solide ?",
+      "options": [
+        "Une tour de $2$ cubes empilés",
+        "Une tour de $4$ cubes empilés",
+        "Deux cubes côte à côte au sol",
+        "Un seul cube"
+      ],
+      "correctAnswer": "Une tour de $2$ cubes empilés",
+      "explanation": "La vue de dessus (un seul carré) indique que l'empreinte au sol tient sur une seule case : les cubes sont empilés verticalement. La vue de face (2 carrés) et la vue de côté (2 carrés) indiquent que la hauteur est de 2 cubes. C'est donc une tour de 2 cubes. Une tour de 4 cubes donnerait des vues de face et de côté de 4 carrés. Deux cubes côte à côte donneraient une vue de dessus de 2 carrés. Un seul cube donnerait des vues de 1 carré partout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un solide en « escalier » est fait de $6$ cubes : $3$ cubes sur la rangée du bas, $2$ cubes sur la rangée du milieu (alignés à gauche), $1$ cube sur le dessus (à gauche). Quelle est la vue de profil droit (côté droit) de ce solide ?",
+      "options": [
+        "Un rectangle de $3$ carrés de large sur $1$ de haut",
+        "Un grand carré de $3$ par $3$",
+        "Une forme en escalier de $3$ marches montant vers la gauche",
+        "Une forme en escalier de $3$ marches montant vers la droite"
+      ],
+      "correctAnswer": "Une forme en escalier de $3$ marches montant vers la gauche",
+      "explanation": "Vu du côté droit, on voit les profondeurs des rangées. La rangée du bas a 3 cubes de profondeur, celle du milieu 2, celle du haut 1. Depuis la droite, la rangée du bas (3 cubes) est la plus éloignée, elle forme la marche du bas (à gauche sur le dessin de profil). La rangée du milieu (2 cubes) forme la marche du milieu. Le cube du haut (1 cube) forme la marche du haut. L'escalier monte donc vers la gauche. L'option « montant vers la droite » serait la vue de profil gauche. Les options rectangles ne tiennent pas compte des hauteurs variables.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.050858+00:00",
+  "id": 510,
+  "code": "2nde-t03-c01",
+  "title": "Vecteurs et translation",
+  "description": "Cours structuré Educalcul : Vecteurs et translation.",
+  "subject": "Vecteurs et géométrie",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Vecteurs et géométrie",
+    "titre_du_cours": "Vecteurs et translation",
+    "objectif_global": "Vecteurs et translation",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Représenter.",
+      "Égalité."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Vecteurs et géométrie",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues à un jeu vidéo en monde ouvert. Ton personnage se trouve à un point $A$ et tu veux qu'il se déplace vers un point $B$. Pour programmer ce mouvement, le moteur du jeu n'a pas besoin de savoir où tu es exactement sur la carte, mais plutôt quelle 'instruction de déplacement' appliquer. Cette instruction, c'est exactement ce qu'est un vecteur en mathématiques. C'est comme une flèche qui dit : 'Déplace-toi de telle distance, dans telle direction et dans tel sens'. Ce qui est magique, c'est que cette instruction peut être appliquée n'importe où. Si tu décales ton personnage de $10$ mètres vers la droite, peu importe qu'il soit au début du niveau ou à la fin, l'action de 'se déplacer de $10$ mètres vers la droite' reste la même. C'est là que réside toute la puissance des vecteurs : ils ne représentent pas un endroit fixe, mais un mouvement, une translation. En seconde, on va apprendre à formaliser cet outil pour naviguer avec précision dans le plan, en passant d'une sensation intuitive de glissement à une description mathématique rigoureuse qui nous permettra plus tard de calculer des trajectoires complexes ou des forces physiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "En géométrie, on appelle vecteur $\\vec{AB}$ l'objet qui représente le déplacement du point $A$ vers le point $B$. Le point $A$ est appelé l'origine et le point $B$ l'extrémité. Pour définir un vecteur de manière unique, on utilise trois caractéristiques fondamentales. Tout d'abord, la direction : c'est la droite $(AB)$ qui supporte le vecteur. On dit que deux vecteurs ont la même direction s'ils sont portés par des droites parallèles. Ensuite, le sens : c'est l'orientation du mouvement, du point $A$ vers le point $B$. Attention, deux vecteurs peuvent avoir la même direction (être sur la même ligne) mais des sens opposés. Enfin, la norme : c'est la longueur du segment $[AB]$, notée $||\\vec{AB}||$. Elle représente la distance parcourue. Un vecteur est donc entièrement caractérisé par ce trio : direction, sens et norme. On peut aussi parler de vecteur $\\vec{u}$ sans préciser de points $A$ et $B$ particuliers, car un vecteur est une entité libre. Si on déplace la flèche sans changer sa longueur ni son orientation, on a toujours le même vecteur. C'est ce qu'on appelle la translation : glisser une figure dans le plan selon un vecteur donné."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": 0,
+              "vx": 0,
+              "vy": 2,
+              "caption": "Représentation de deux vecteurs $\\vec{u}$ (horizontal) et $\\vec{v}$ (vertical) partant d'un même point."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour définir ou identifier un vecteur $\\vec{AB}$ avec précision, je te conseille de suivre systématiquement ces trois étapes. Premièrement, détermine la direction. Regarde la droite qui passe par $A$ et $B$. Pour savoir si un autre vecteur a la même direction, vérifie si sa droite supportive est parallèle à $(AB)$. Deuxièmement, identifie le sens. Le vecteur 'part' de $A$ et 'arrive' à $B$. C'est l'ordre des lettres qui est crucial : $\\vec{AB}$ n'est pas du tout la même chose que $\\vec{BA}$, car le sens est inversé. Troisièmement, mesure la norme. Utilise ta règle pour mesurer la distance entre $A$ et $B$. Cette valeur est toujours positive ou nulle. Si tu dois construire un vecteur $\\vec{u}$ à partir d'un point $M$, tu dois connaître sa direction (par exemple, parallèle à une droite donnée), son sens (indiqué par une flèche) et sa norme (par exemple, $4$ $cm$). Tu traces alors une droite passant par $M$ avec la bonne direction, tu places ton point d'arrivée $N$ à la distance requise dans le bon sens, et tu obtiens le vecteur $\\vec{MN}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un segment $[AB]$ de longueur $5$ $cm$. Nous définissons le vecteur $\\vec{u} = \\vec{AB}$. Ici, l'origine est le point $A$ et l'extrémité est le point $B$. La direction est la droite $(AB)$. Le sens est celui qui mène de $A$ vers $B$. La norme est $||\\vec{u}|| = 5$ $cm$. Si nous créons un point $C$ tel que le segment $[AC]$ soit perpendiculaire à $[AB]$ et mesure $3$ $cm$, le vecteur $\\vec{AC}$ possède une direction différente de celle de $\\vec{AB}$ (car les droites $(AB)$ et $(AC)$ sont perpendiculaires et non parallèles). Leur norme est également différente : $3$ $cm$ contre $5$ $cm$. Ces deux vecteurs sont donc totalement distincts. On voit bien que pour changer un vecteur, il suffit de modifier un seul de ses trois paramètres. Dans ce cas, le changement de direction et de norme suffit à créer un nouveau vecteur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant un triangle $ABC$ équilatéral de côté $6$ $cm$. On s'intéresse au vecteur $\\vec{AB}$ et au vecteur $\\vec{CB}$. Le vecteur $\\vec{AB}$ a pour direction la droite $(AB)$, pour sens $A \\to B$ et pour norme $6$ $cm$. Le vecteur $\\vec{CB}$ a pour direction la droite $(CB)$, pour sens $C \\to B$ et pour norme $6$ $cm$. Comparons-les : ils ont la même norme ($6$ $cm$), mais ils n'ont pas la même direction car les droites $(AB)$ et $(CB)$ se coupent au point $B$ sans être confondues. Ils ne peuvent donc pas être le même vecteur. Par contre, si on définit un point $D$ tel que $B$ soit le milieu de $[AD]$, alors le vecteur $\\vec{AB}$ et le vecteur $\\vec{BD}$ auront la même direction (la droite $(AD)$), le même sens (vers la droite du schéma) et la même norme ($6$ $cm$). On pourra alors dire que $\\vec{AB} = \\vec{BD}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est de confondre direction et sens. Retiens bien ceci : la direction, c'est la 'route' (la droite), alors que le sens, c'est le 'choix du côté' sur cette route. Dire que deux vecteurs ont la même direction ne signifie pas qu'ils vont dans le même sens. Par exemple, $\\vec{AB}$ et $\\vec{BA}$ ont exactement la même direction, mais des sens opposés. Un autre piège est de confondre le vecteur et le segment. Un segment $[AB]$ est une portion de droite avec deux extrémités fixes, il a une longueur mais pas de sens. Un vecteur $\\vec{AB}$ est un déplacement. On peut avoir mille vecteurs différents qui ont tous la même norme (la même longueur) mais des directions totalement différentes. Enfin, fais attention à la notation : ne confonds pas la distance $AB$ (nombre positif) avec le vecteur $\\vec{AB}$ (objet géométrique). On écrit $AB = 5$ $cm$ pour la distance et $| |\\vec{AB}| | = 5$ $cm$ pour la norme du vecteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit un segment $[MN]$ de longueur $7$ $cm$. Si on crée un vecteur $\\vec{v} = \\vec{MN}$, quelle est sa norme et quelle est sa direction ?",
+              "answer": "La norme est $| |\\vec{v}| | = 7$ $cm$ et la direction est la droite $(MN)$.",
+              "hint": "La norme correspond à la longueur du segment qui définit le vecteur.",
+              "explanation": "Par définition, le vecteur $\\vec{MN}$ a pour norme la longueur du segment $[MN]$, soit $7$ $cm$, et sa direction est la droite passant par ses extrémités $M$ et $N$."
+            }
+          ]
+        },
+        {
+          "title": "Représenter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As tu déjà utilisé la fonction 'copier-coller' sur ton ordinateur ? Quand tu sélectionnes une image et que tu la glisses vers un autre endroit de l'écran, tu effectues exactement ce que les mathématiciens appellent une translation. L'image ne change pas de taille, elle ne tourne pas sur elle-même, elle ne se déforme pas. Elle subit simplement un glissement pur. Ce glissement est défini par un vecteur : il nous dit vers où aller et de quelle distance. En géométrie, représenter un vecteur, c'est dessiner cette 'flèche de glissement'. Mais le plus intéressant, c'est de voir comment ce vecteur agit sur des points ou des figures entières. Si tu as un point $M$ et que tu lui appliques le vecteur $\\vec{u}$, tu obtiens un nouveau point $M'$. Le vecteur $\\vec{u}$ est alors le pont qui relie $M$ à $M'$. C'est un outil formidable pour créer des motifs répétitifs, comme les pavages sur les sols de certaines salles de bain ou les motifs d'un tissu. Apprendre à représenter ces mouvements nous permet de manipuler l'espace avec une précision chirurgicale, en s'assurant que chaque point d'une figure subit exactement le même déplacement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Représenter un vecteur consiste à tracer un segment orienté (une flèche). Si on nous donne un vecteur $\\vec{u}$ défini par $\\vec{u} = \\vec{AB}$, on peut le représenter n'importe où dans le plan tant qu'on respecte sa direction, son sens et sa norme. La notion clé ici est la translation. Une translation est une transformation géométrique qui à tout point $M$ associe un point $M'$ tel que le vecteur $\\vec{MM'}$ soit égal au vecteur de translation $\\vec{u}$. On écrit alors : 'L'image de $M$ par la translation de vecteur $\\vec{u}$ est $M'$'. Visuellement, cela signifie qu'on part de $M$, on suit la direction et le sens de $\\vec{u}$ sur la distance de sa norme, et on place $M'$. Une propriété fondamentale est que si on translate un point $M$ en $M'$ et un point $N$ en $N'$ selon le même vecteur $\\vec{u}$, alors le quadrilatère $MM'N'N$ est un parallélogramme (si $M, M', N$ ne sont pas alignés). Cela s'explique simplement : puisque $\\vec{MM'} = \\vec{u}$ et $\\vec{NN'} = \\vec{u}$, on a $\\vec{MM'} = \\vec{NN'}$. Le vecteur $\\vec{MM'}$ et le vecteur $\\vec{NN'}$ ont la même direction, le même sens et la même longueur, ce qui définit la structure d'un parallélogramme."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Translation d'un triangle : chaque sommet $A, B, C$ est décalé selon le même vecteur $\\vec{u}$ pour former le triangle $A'B'C'$.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire l'image $M'$ d'un point $M$ par une translation de vecteur $\\vec{u} = \\vec{AB}$, suis ces étapes. Premièrement, identifie les caractéristiques de $\\vec{u}$. Regarde la droite $(AB)$, le sens de $A$ vers $B$ et mesure la distance $AB$. Deuxièmement, trace une droite passant par $M$ qui soit parallèle à la droite $(AB)$. C'est l'étape cruciale pour garantir la direction. Troisièmement, sur cette droite, place le point $M'$ tel qu'il soit du même côté par rapport à $M$ que $B$ l'est par rapport à $A$. Enfin, vérifie que la distance $MM'$ est exactement égale à la distance $AB$. Un petit conseil : pour traduire une figure entière (comme un triangle $ABC$), ne translate pas la figure d'un bloc. Translate chaque sommet individuellement : $A$ devient $A'$, $B$ devient $B'$ et $C$ devient $C'$. Ensuite, relie les nouveaux points $A'$, $B'$ et $C'$ pour reconstruire la figure. Tu constateras que le triangle $A'B'C'$ est identique au triangle $ABC$, juste déplacé dans le plan."
+            },
+            {
+              "type": "paragraph",
+              "content": "On dispose d'un vecteur $\\vec{u} = \\vec{EF}$ où $EF = 4$ $cm$ et la droite $(EF)$ est horizontale. On veut trouver l'image $A'$ du point $A$ par la translation de vecteur $\\vec{u}$. Le point $A$ est situé à $2$ $cm$ au-dessus de la droite $(EF)$. Pour placer $A'$, je trace d'abord une ligne horizontale passant par $A$. Je pars de $A$ et je me déplace vers la droite (le sens de $E$ vers $F$) sur une distance de $4$ $cm$. Je place le point $A'$. On a maintenant $\\vec{AA'} = \\vec{EF} = \\vec{u}$. Le point $A'$ se trouve donc exactement à la même hauteur que $A$, mais décalé de $4$ $cm$ vers la droite. Le vecteur $\\vec{AA'}$ a la même direction, le même sens et la même norme que $\\vec{u}$, ce qui confirme que $A'$ est bien l'image de $A$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un segment $[BC]$ de longueur $3$ $cm$. On applique une translation de vecteur $\\vec{v} = \\vec{GH}$ pour obtenir un segment $[B'C']$. Le vecteur $\\vec{v}$ est porté par une droite oblique et mesure $5$ $cm$. On commence par traduire le point $B$ : on trace la parallèle à $(GH)$ passant par $B$, on mesure $5$ $cm$ dans le sens de $\\vec{v}$ et on place $B'$. On fait la même chose pour le point $C$ : parallèle à $(GH)$, distance de $5$ $cm$, sens de $\\vec{v}$, on place $C'$. En reliant $B'$ et $C'$, on obtient le segment image. Si on mesure $B'C'$, on trouvera exactement $3$ $cm$. On remarque également que le segment $[B'C']$ est parallèle au segment $[BC]$. C'est une propriété importante : la translation conserve les distances et le parallélisme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus fréquent lors de la représentation est de mal placer le point d'arrivée $M'$. Souvent, les élèves tracent la bonne distance mais se trompent de sens, plaçant $M'$ de l'autre côté de $M$. Toujours vérifier l'ordre des lettres du vecteur : pour $\\vec{u} = \\vec{AB}$, on va de $A$ vers $B$. Une autre erreur est d'oublier l'utilisation de la règle et de l'équerre pour garantir que la droite $(MM')$ est strictement parallèle à $(AB)$. Si le parallélisme n'est pas parfait, le résultat ne sera pas une translation. Enfin, lors de la translation d'une figure, certains sont tentés de 'deviner' la forme finale. C'est risqué. La seule méthode sûre est de traduire chaque point remarquable (sommets) un par un, puis de les rejoindre. N'oublie jamais que le vecteur $\\vec{MM'}$ doit être identique au vecteur de translation, pas seulement de même longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le point $M$ est l'image du point $A$ par la translation de vecteur $\\vec{u}$. Le point $N$ est l'image du point $B$ par la même translation de vecteur $\\vec{u}$. Que peut-on dire du quadrilatère $ABNM$ ?",
+              "answer": "Le quadrilatère $ABNM$ est un parallélogramme.",
+              "hint": "Rappelle-toi la définition desk vecteurs $\\vec{AN}$ et $\\vec{BM}$.",
+              "explanation": "Par définition de la translation, $\\vec{AN} = \\vec{u}$ et $\\vec{BM} = \\vec{u}$. On en déduit que $\\vec{AN} = \\vec{BM}$, ce qui signifie que les côtés $[AN]$ et $[BM]$ sont parallèles et de même longueur, caractéristique d'un parallélogramme."
+            }
+          ]
+        },
+        {
+          "title": "Égalité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux flèches dessinées sur une feuille. Pour décider si ces deux flèches représentent le même vecteur, tu ne regardes pas où elles sont placées sur la feuille, mais seulement comment elles sont 'construites'. C'est comme si tu pouvais découper l'une des flèches avec des ciseaux et essayer de la superposer exactement sur l'autre. Si tu peux faire glisser la première flèche jusqu'à ce qu'elle recouvre parfaitement la seconde, sans la faire tourner ni la déformer, alors tu as deux vecteurs égaux. C'est l'idée de 'copie conforme'. Dans le monde des vecteurs, on ne s'intéresse pas à la position (le point de départ), mais à l'action. C'est pour cela que $\\vec{AB}$ peut être égal à $\\vec{CD}$ même si les points $A, B, C$ et $D$ sont aux quatre coins de ta feuille. Cette égalité est l'outil principal pour démontrer des propriétés géométriques. Par exemple, si tu arrives à prouver que $\\vec{AB} = \\vec{DC}$, tu as instantanément prouvé que la figure $ABCD$ est un parallélogramme. C'est un raccourci mathématique extrêmement puissant qui évite de mesurer toutes les longueurs et tous les angles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont dits égaux, et on écrit $\\vec{u} = \\vec{v}$, si et seulement si ils possèdent la même direction, le même sens et la même norme. Si l'une de ces trois conditions manque, les vecteurs ne sont pas égaux. Un cas particulier important est le vecteur nul, noté $\\vec{0}$. C'est le vecteur dont l'origine et l'extrémité sont confondues (par exemple $\\vec{AA}$). Sa norme est $0$, et il est égal à tout autre vecteur de norme $0$. On dit aussi que $\\vec{0}$ est le vecteur neutre de la translation : traduire un point par $\\vec{0}$ revient à ne pas le bouger. Par ailleurs, on définit le vecteur opposé : le vecteur $\\vec{BA}$ est l'opposé du vecteur $\\vec{AB}$. On écrit $\\vec{BA} = -\\vec{AB}$. Ils ont la même direction et la même norme, mais des sens contraires. Une propriété fondamentale lie l'égalité des vecteurs et le milieu d'un segment : si $I$ est le milieu du segment $[AB]$, alors $\\vec{AI} = \\vec{IB}$. C'est parce que $I$ est à égale distance de $A$ et $B$ et se trouve sur la droite $(AB)$ dans le sens $A \\to B$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sur une droite, $\\vec{AB}$ et $\\vec{CD}$ sont égaux s'ils ont la même longueur et le même sens. $\\vec{BA}$ serait son opposé.",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 1,
+                  "label": "B"
+                },
+                {
+                  "value": 2,
+                  "label": "C"
+                },
+                {
+                  "value": 5,
+                  "label": "D"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour prouver l'égalité de deux vecteurs $\\vec{u}$ et $\\vec{v}$, je te suggère d'utiliser l'une de ces deux approches selon les données de ton exercice. La première méthode est la vérification exhaustive : montre que les droites support sont parallèles (même direction), que les flèches pointent du même côté (même sens) et que les segments ont la même longueur (même norme). Si les trois sont vrais, alors $\\vec{u} = \\vec{v}$. La seconde méthode est l'approche par le parallélogramme : si tu dois prouver que $\\vec{AB} = \\vec{DC}$, regarde la figure $ABCD$. Si tu sais déjà que $ABCD$ est un parallélogramme, alors par définition, les côtés opposés sont parallèles et de même longueur et sont orientés dans le même sens, donc $\\vec{AB} = \\vec{DC}$. Attention à l'ordre des lettres : $\\vec{AB} = \\vec{CD}$ signifierait que le parallélogramme est $ABDC$ et non $ABCD$. Pour prouver qu'un point $M$ est le milieu de $[AB]$, il suffit de démontrer que $\\vec{AM} = \\vec{MB}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un quadrilatère $ABCD$. On nous dit que le point $A$ est traduit en $B$ par un vecteur $\\vec{u}$ et que le point $D$ est traduit en $C$ par ce même vecteur $\\vec{u}$. On a donc $\\vec{AB} = \\vec{u}$ et $\\vec{DC} = \\vec{u}$. Par transitivité, on en déduit que $\\vec{AB} = \\vec{DC}$. Puisque ces deux vecteurs sont égaux, ils ont la même direction, le même sens et la même norme. Cela implique que la droite $(AB)$ est parallèle à la droite $(DC)$ et que la longueur $AB$ est égale à la longueur $DC$. Un quadrilatère qui a deux côtés opposés parallèles et de même longueur est un parallélogramme. On a donc prouvé que $ABCD$ est un parallélogramme sans même avoir besoin de tracer la figure ou de mesurer quoi que ce soit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un segment $[EF]$. On place un point $G$ tel que $\\vec{EG} = -\\vec{EF}$. Que peut-on dire du point $G$ ? Ici, le signe moins indique que $\\vec{EG}$ est l'opposé de $\\vec{EF}$. Cela signifie que $\\vec{EG}$ a la même direction que $\\vec{EF}$ et la même norme, mais un sens opposé. Si on part de $E$ pour aller vers $F$, le vecteur $\\vec{EF}$ nous emmène vers la droite. Pour que $\\vec{EG}$ soit l'opposé, il doit nous emmener vers la gauche, en partant de $E$. Le point $G$ se trouve donc sur la droite $(EF)$, de l'autre côté du point $E$ par rapport à $F$. La distance $EG$ est égale à la distance $EF$. On peut alors dire que $E$ est le milieu du segment $[GF]$. On a ici utilisé la notion de vecteur opposé pour positionner un point précisément dans l'espace."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus redoutable est de croire que si deux vecteurs ont la même norme, ils sont égaux. C'est faux ! Ils peuvent pointer dans des directions totalement différentes. Pense à deux voitures roulant toutes les deux à $50$ $km/h$ : l'une va vers le Nord, l'autre vers l'Est. Leurs vecteurs vitesse ont la même norme, mais ils ne sont pas égaux. Un autre piège classique concerne l'ordre des points. $\\vec{AB}$ est égal à $\\vec{DC}$ dans un parallélogramme $ABCD$, mais $\\vec{AB}$ n'est PAS égal à $\\vec{CD}$. Pourquoi ? Parce que $\\vec{CD}$ va de $C$ vers $D$, alors que $\\vec{DC}$ va de $D$ vers $C$. Ils ont des sens opposés. Enfin, ne confonds pas le vecteur nul $\\vec{0}$ avec le nombre $0$. Le nombre $0$ est une valeur numérique, le vecteur $\\vec{0}$ est un objet géométrique (un point) qui représente un déplacement nul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si $\\vec{u} = \\vec{AB}$ et $\\vec{v} = \\vec{BA}$, quelle est la relation entre $\\vec{u}$ et $\\vec{v}$ ?",
+              "answer": "$\\vec{u} = -\\vec{v}$ (ou $\\vec{v} = -\\vec{u}$).",
+              "hint": "Regarde le sens du déplacement pour $\\vec{AB}$ et $\\vec{BA}$.",
+              "explanation": "Les vecteurs $\\vec{AB}$ et $\\vec{BA}$ ont la même direction et la même norme, mais ils ont des sens opposés. Par définition, ils sont donc opposés."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

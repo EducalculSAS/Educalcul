@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 156,
+  "_course_code": "ce2-t02-c05-comparer-des-fractions-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Comparer à 1",
+  "title": "Comparer des fractions à 1",
+  "questions": [
+    {
+      "text": "Regarde la figure ci-dessous. Comment comparer cette fraction au nombre 1 ?",
+      "options": [
+        "Elle est plus petite que 1",
+        "Elle est égale à 1",
+        "Elle est plus grande que 1",
+        "On ne peut pas le savoir"
+      ],
+      "correctAnswer": "Elle est égale à 1",
+      "explanation": "La figure montre une barre divisée en 4 parties égales, dont les 4 sont colorées. Cela représente la fraction $4/4$. Une fraction dont le numérateur est égal au dénominateur vaut toujours 1 entier.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 4,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Fraction 4/4"
+      }
+    },
+    {
+      "text": "Comment comparer la fraction $3/5$ au nombre 1 ?",
+      "options": [
+        "$3/5$ est plus grand que 1",
+        "$3/5$ est égal à 1",
+        "$3/5$ est plus petit que 1",
+        "$3/5$ est égal à 5/3"
+      ],
+      "correctAnswer": "$3/5$ est plus petit que 1",
+      "explanation": "Pour comparer une fraction à 1, on regarde le numérateur et le dénominateur. Ici, le numérateur (3) est plus petit que le dénominateur (5). La fraction représente une partie de l'entier, donc elle est strictement inférieure à 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $7/4$ est-elle plus petite, égale ou plus grande que 1 ?",
+      "options": [
+        "Plus petite que 1",
+        "Égale à 1",
+        "Plus grande que 1",
+        "Égale à 1 3/4 donc on ne peut pas comparer"
+      ],
+      "correctAnswer": "Plus grande que 1",
+      "explanation": "Le numérateur (7) est plus grand que le dénominateur (4). La fraction est une fraction impropre. Elle contient 1 entier ($4/4$) et il reste $3/4$. Elle est donc supérieure à 1. La dernière option est un piège : savoir qu'elle vaut $1 3/4$ prouve qu'elle est plus grande que 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces fractions, laquelle est strictement plus grande que 1 ?",
+      "options": [
+        "$2/3$",
+        "$5/5$",
+        "$8/6$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$8/6$",
+      "explanation": "On compare chaque numérateur à son dénominateur : $2 < 3$ donc $2/3 < 1$ ; $5 = 5$ donc $5/5 = 1$ ; $1 < 4$ donc $1/4 < 1$ ; $8 > 6$ donc $8/6 > 1$. Seule la fraction $8/6$ a un numérateur plus grand que son dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite numérotée graduée de 0 à 2, où se situe le point qui représente la fraction $5/3$ par rapport à 1 ?",
+      "options": [
+        "Avant le 1",
+        "Exactement sur le 1",
+        "Entre le 1 et le 2",
+        "Après le 2"
+      ],
+      "correctAnswer": "Entre le 1 et le 2",
+      "explanation": "La fraction $5/3$ est une fraction impropre car $5 > 3$. Elle vaut $1 + 2/3$, c'est-à-dire $1 2/3$. Sur la droite, 1 correspond à $3/3$ et 2 correspond à $6/3$. Puisque $5/3$ est entre $3/3$ et $6/3$, le point se place entre 1 et 2.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 2",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1,
+            "label": "1"
+          },
+          {
+            "value": 1.66,
+            "label": "5/3"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

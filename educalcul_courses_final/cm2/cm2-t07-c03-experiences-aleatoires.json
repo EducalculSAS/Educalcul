@@ -1,0 +1,440 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.500564+00:00",
+  "id": 320,
+  "code": "cm2-t07-c03",
+  "title": "Expériences aléatoires",
+  "description": "Cours structuré Educalcul : Expériences aléatoires.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Expériences aléatoires",
+    "objectif_global": "Expériences aléatoires",
+    "mini_lecons_imposees": [
+      "Issues.",
+      "Possible / impossible / certain.",
+      "Répéter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Issues.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces sur la table. Tu ne sais pas à l'avance sur quelle face il va tomber, mais tu sais que le résultat sera l'un des nombres $1$, $2$, $3$, $4$, $5$ ou $6$. C'est exactement ce qu'on appelle une expérience aléatoire : une action dont le résultat ne peut pas être prédit avec certitude, même si on connaît toutes les issues possibles."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience aléatoire",
+              "definition": "Une action ou un processus dont le résultat ne peut pas être connu avant de la réaliser, mais dont on peut lister toutes les issues possibles.",
+              "example": "Lancer un dé, tirer une carte d'un jeu, faire tourner une roulette."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque résultat possible d'une expérience aléatoire s'appelle une issue. Pour le dé, il y a six issues : $1$, $2$, $3$, $4$, $5$, $6$. Comme le dé est équilibré, chaque issue a la même chance d'apparaître. On dit que les issues sont équiprobables."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Probabilité de chaque face du dé : $1/6$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'expérience",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine quelle action tu vas observer (lancer le dé, tirer une carte, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister toutes les issues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque résultat possible sans en oublier. Pour le dé : $1, 2, 3, 4, 5, 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'objet est symétrique et bien fait, chaque issue a la même chance. Sinon, il faut pondérer."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lister les issues, regardons comment on peut les représenter visuellement pour mieux les comparer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences observées après 30 lancers d'un dé",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "3",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "4",
+                  "value": 5,
+                  "tone": "gold"
+                },
+                {
+                  "label": "5",
+                  "value": 5,
+                  "tone": "navy"
+                },
+                {
+                  "label": "6",
+                  "value": 5,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, essayons avec un autre objet : un petit jeu de cartes contenant seulement $4$ cartes (as, roi, dame, valet). Les issues sont différentes, mais la démarche reste la même."
+            },
+            {
+              "type": "definition",
+              "term": "Issue",
+              "definition": "Chaque résultat possible d'une expérience aléatoire.",
+              "example": "Pour un tirage de carte parmi as, roi, dame, valet, les issues sont : as, roi, dame, valet."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu tires une carte au hasard dans ce jeu de $4$ cartes, il y a $4$ issues équiprobables. La probabilité de tomber sur l'as est donc $1/4$. Essaie de lister les issues pour d'autres petits jeux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien y a-t-il d'issues possibles quand on lance un dé à six faces ?",
+              "answer": "$6$",
+              "hint": "Compte les faces du dé.",
+              "explanation": "Un dé standard a six faces numérotées de $1$ à $6$, donc six issues possibles."
+            },
+            {
+              "question": "Si on lance le dé $30$ fois, quelle issue a été obtenue le plus souvent selon le graphique ?",
+              "answer": "$3$",
+              "hint": "Regarde la barre la plus haute.",
+              "explanation": "La barre correspondant à la face $3$ atteint $6$, c'est la plus haute."
+            },
+            {
+              "question": "Dans un jeu de $4$ cartes (as, roi, dame, valet), quelle est la probabilité de tirer le roi ?",
+              "answer": "$\\frac{1}{4}$",
+              "hint": "Il y a $4$ issues équiproposables.",
+              "explanation": "Chaque carte a la même chance d'être tirée, donc $1$ chance sur $4$."
+            }
+          ]
+        },
+        {
+          "title": "Possible / impossible / certain.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Possible, impossible ou certain ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lister les issues, classe-les selon leur chance d'arriver. Certains résultats sont possibles, d'autres sont impossibles, et parfois un résultat est certain. Prenons l'exemple d'un dé à six faces : obtenir un $7$ est impossible, obtenir un nombre entre $1$ et $6$ est certain, et obtenir un $4$ est possible."
+            },
+            {
+              "type": "definition",
+              "term": "Événement possible",
+              "definition": "Un résultat qui peut se produire, même s'il n'est pas garanti.",
+              "example": "Tirer un as dans un jeu de $4$ cartes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un événement possible a une probabilité strictement comprise entre $0$ et $1$. Par exemple, la probabilité de tirer l'as est $1/4$, celle d'obtenir un nombre pair au dé est $3/6 = 1/2$. Ces valeurs ne sont ni $0$ ni $1$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des probabilités : possible, impossible, certain",
+              "slices": [
+                {
+                  "label": "Possible (ex: pair au dé)",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Impossible (ex: 7 au dé)",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Certain (ex: 1 à 6 au dé)",
+                  "value": 50,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant ce qui rend un événement impossible. C'est simple : l'événement ne figure pas dans la liste des issues de l'expérience."
+            },
+            {
+              "type": "definition",
+              "term": "Événement impossible",
+              "definition": "Un résultat qui ne peut jamais se produire pour l'expérience considérée.",
+              "example": "Obtenir un $8$ en lançant un dé à six faces."
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité d'un événement impossible est toujours $0$. Rien ne peut le faire apparaître, même si tu répètes l'expérience mille fois. C'est une certitude mathématique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les issues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris toutes les issues possibles de l'expérience."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer l'événement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'événement n'est pas dans la liste, c'est impossible. S'il y est, c'est possible. Si la liste ne contient que cet événement, c'est certain."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, un événement certain est celui qui se produira à coup sûr. Pour un dé à six faces, l'événement \"le résultat est un nombre entre $1$ et $6$\" est certain."
+            },
+            {
+              "type": "definition",
+              "term": "Événement certain",
+              "definition": "Un résultat qui se produira à chaque réalisation de l'expérience.",
+              "example": "Obtenir un nombre compris entre $1$ et $6$ en lançant un dé standard."
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité d'un événement certain vaut $1$. C'est la valeur maximale. Quel que soit le nombre de lancers, tu obtiendras toujours un nombre entre $1$ et $6$. Essaie d'inventer d'autres événements certains, possibles ou impossibles avec des objets du quotidien."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Classifie l'événement : \"Obtenir un nombre pair en lançant un dé à six faces\".",
+              "answer": "Possible",
+              "hint": "Regarde si l'événement figure parmi les issues $1$ à $6$.",
+              "explanation": "Les nombres pairs $2,4,6$ sont dans la liste des issues, donc l'événement peut se produire, mais pas à chaque fois."
+            },
+            {
+              "question": "Quelle est la probabilité d'un événement impossible ?",
+              "answer": "$0$",
+              "hint": "Rappelle-toi la définition d'impossible.",
+              "explanation": "Un événement impossible ne peut jamais arriver, sa probabilité est nulle."
+            },
+            {
+              "question": "Donne un exemple d'événement certain avec une pièce de monnaie équilibrée.",
+              "answer": "Obtenir soit face, soit pile.",
+              "hint": "Quels sont les deux résultats possibles ?",
+              "explanation": "Une pièce n'a que deux faces, donc à chaque lancer tu obtiens obligatoirement face ou pile."
+            }
+          ]
+        },
+        {
+          "title": "Répéter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répéter l'expérience pour voir les fréquences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu lances une pièce une seule fois, tu obtiens face ou pile, mais tu ne peux pas deviner laquelle. En revanche, si tu la lances $10$ fois, puis $100$ fois, puis $1000$ fois, tu vas voir les fréquences de face et de pile se rapprocher de $1/2$. C'est l'idée de la répétition : plus on répète, plus les fréquences observées se stabilisent autour de la probabilité théorique."
+            },
+            {
+              "type": "definition",
+              "term": "Répétition d'une expérience aléatoire",
+              "definition": "Réaliser plusieurs fois la même expérience dans les mêmes conditions pour observer l'évolution des fréquences.",
+              "example": "Lancer une pièce $10$, $100$, $1000$ fois et compter les faces."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu fasses l'expérience chez toi. Tu notes le résultat à chaque lancer. Au début, tu peux avoir $7$ faces sur $10$ lancers, ce qui donne une fréquence de $0,7$. Mais à $100$ lancers, tu seras souvent près de $50$ faces, soit $0,5$. À $1000$ lancers, la fréquence sera encore plus proche de $0,5$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence de face selon le nombre de lancers",
+              "bars": [
+                {
+                  "label": "10 lancers",
+                  "value": 70,
+                  "tone": "blue"
+                },
+                {
+                  "label": "100 lancers",
+                  "value": 52,
+                  "tone": "green"
+                },
+                {
+                  "label": "1000 lancers",
+                  "value": 503,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien mener une répétition, suis une méthode simple : décide du nombre de répétitions, note chaque résultat, puis calcule la fréquence de l'événement qui t'intéresse. Essaie avec un dé : compte combien de fois tu obtiens un $6$ sur $60$ lancers."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le nombre de répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plus le nombre est grand, plus la fréquence sera précise. Commence par $20$, puis $60$, puis $200$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Enregistrer les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise un tableau à deux colonnes : numéro du lancer et résultat obtenu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fréquence = (nombre de fois où l'événement s'est produit) / (nombre total de lancers)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce que tu observes, c'est une loi naturelle : en répétant beaucoup, les fréquences se rapprochent de la probabilité théorique. Les mathématiciens appellent cela la loi des grands nombres, mais pour l'instant retiens simplement que la régularité apparaît avec le nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lister les issues d'une expérience aléatoire.",
+                "Je sais dire si un événement est possible, impossible ou certain.",
+                "Je sais expliquer pourquoi les fréquences se stabilisent en répétant l'expérience."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu lances une pièce $10$ fois et obtiens $7$ faces, quelle est la fréquence de face ?",
+              "answer": "$0,7$",
+              "hint": "Fréquence = nombre de faces / nombre total de lancers.",
+              "explanation": "$7$ faces sur $10$ lancers donne $7/10 = 0,7$."
+            },
+            {
+              "question": "Après $60$ lancers d'un dé, tu as obtenu le $6$ dix fois. Quelle est la fréquence du $6$ ?",
+              "answer": "$\\frac{10}{60} = \\frac{1}{6}$",
+              "hint": "Divise le nombre de succès par le total.",
+              "explanation": "$10$ succès sur $60$ essais donne $10/60$, qui se simplifie en $1/6$, la probabilité théorique."
+            },
+            {
+              "question": "Pourquoi la fréquence de face se rapproche-t-elle de $0,5$ quand on augmente le nombre de lancers ?",
+              "answer": "Parce que la pièce est équilibrée et que la loi des grands nombres fait converger les fréquences vers la probabilité théorique.",
+              "hint": "Pense à la stabilité des résultats sur le long terme.",
+              "explanation": "Chaque lancer est indépendant et a une chance sur deux de donner face. En multipliant les essais, les fluctuations s'annulent et la fréquence observée tend vers $1/2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

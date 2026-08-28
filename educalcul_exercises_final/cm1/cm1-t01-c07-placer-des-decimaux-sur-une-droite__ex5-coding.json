@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Choisir échelle",
+  "title": "Choisir l'échelle d'une droite graduée",
+  "blocks": [
+    {
+      "title": "Choisir le pas de graduation",
+      "content": "On veut placer les nombres $1,2$ ; $1,5$ ; $1,8$ sur une droite graduée de $20$ cm de long. L'origine est à $0$ et le maximum affiché est $2$. Quel pas de graduation (en cm) choisir pour que chaque graduation corresponde à $0,1$ ? Écris la formule de calcul.",
+      "correctAnswer": "Nombre d'intervalles = (Max - Min) / Pas valeur = (2 - 0) / 0,1 = 20 intervalles.\\nPas en cm = Longueur totale / Nombre d'intervalles = 20 cm / 20 = 1 cm.\\nLa distance entre deux graduations successives doit être de 1 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour choisir l'échelle, on calcule d'abord combien d'intervalles de $0,1$ il y a entre $0$ et $2$ : $2 / 0,1 = 20$ intervalles. Puis on divise la longueur physique de la droite ($20$ cm) par ce nombre d'intervalles : $20 / 20 = 1$ cm. Chaque graduation sera espacée de $1$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 2 pour placer des dixièmes",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.2,
+            "label": "A"
+          },
+          {
+            "value": 1.5,
+            "label": "B"
+          },
+          {
+            "value": 1.8,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Adapter l'échelle à la feuille",
+      "content": "Tu dois placer $0,05$ ; $0,15$ ; $0,25$ sur une droite de $30$ cm. L'étendue va de $0$ à $0,3$. Si tu veux une graduation tous les $0,05$, quelle sera la distance en cm entre deux graduations successives ? Donne le raisonnement structuré.",
+      "correctAnswer": "Étendue en valeur = $0,3 - 0 = 0,3$.\\nPas de valeur souhaité = $0,05$.\\nNombre d'intervalles = $0,3 / 0,05 = 6$.\\nLongueur totale = $30$ cm.\\nDistance entre graduations (pas en cm) = $30 / 6 = 5$ cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine le nombre d'intervalles nécessaires pour couvrir l'étendue $0,3$ avec un pas de $0,05$ : $(0,3 - 0) / 0,05 = 6$ intervalles. On partage ensuite la longueur totale de la droite ($30$ cm) en $6$ parties égales : $30 / 6 = 5$ cm. Le trait de graduation sera tous les $5$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 0,3 pour placer des centièmes",
+        "min": 0,
+        "max": 0.3,
+        "points": [
+          {
+            "value": 0.05,
+            "label": "A"
+          },
+          {
+            "value": 0.15,
+            "label": "B"
+          },
+          {
+            "value": 0.25,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Algorithme de choix d'échelle",
+      "content": "Écris un algorithme (style Python) qui, étant donné la valeur minimum `vmin`, la valeur maximum `vmax`, la longueur de la droite `L` (en cm) et le pas de valeur souhaité `pas_v`, calcule et affiche la distance en cm entre deux graduations (`pas_cm`). Pense à vérifier que le nombre d'intervalles est un entier.",
+      "correctAnswer": "DEBUT\\n  LIRE vmin, vmax, L, pas_v\\n  etendue_v <- vmax - vmin\\n  nb_intervalles <- etendue_v / pas_v\\n  SI nb_intervalles != ENTIER(nb_intervalles) ALORS\\n    AFFICHER \"Pas de valeur inadapté : nombre d'intervalles non entier\"\\n  SINON\\n    pas_cm <- L / nb_intervalles\\n    AFFICHER pas_cm\\n  FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit trois étapes : 1) Calculer l'étendue des nombres (`vmax - vmin`). 2) Calculer le nombre d'intervalles en divisant l'étendue par le pas de valeur souhaité. 3) Vérifier que ce nombre est un entier (division exacte), sinon l'échelle ne tombe pas juste sur les graduations. Si c'est valide, on divise la longueur physique `L` par le nombre d'intervalles pour obtenir `pas_cm`.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

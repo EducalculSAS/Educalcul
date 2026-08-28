@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 395,
+  "_course_code": "5eme-t04-c01-angles-et-paralleles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Angles particuliers",
+  "title": "Algorithmes sur les angles particuliers",
+  "blocks": [
+    {
+      "title": "Angle correspondant",
+      "content": "Écrire un algorithme (en pseudo‑code ou style Python) qui, étant donné la mesure $a$ en degrés d'un angle formé par une sécante coupant deux droites parallèles, affiche la mesure de l'angle correspondant.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$\\n2. Si $a$ < 0 ou $a$ > 180 alors afficher \"Angle invalide\" et arrêter\\n3. $angle\\_correspondant$ = $a$\\n4. Afficher $angle\\_correspondant$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les angles correspondants formés par une sécante intersectant deux droites parallèles ont la même mesure. L'algorithme vérifie que la valeur est comprise entre 0 et 180 degrés puis renvoie cette même valeur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Angles alternes internes",
+      "content": "Écrire un algorithme qui, étant donné les mesures $a$ et $b$ en degrés de deux angles alternes internes, détermine si les deux droites sont parallèles (afficher \"Parallèles\" ou \"Non parallèles\").",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$, $b$\\n2. Si $a$ < 0 ou $a$ > 180 ou $b$ < 0 ou $b$ > 180 alors afficher \"Angles invalides\" et arrêter\\n3. Si $a$ = $b$ alors afficher \"Parallèles\" sinon afficher \"Non parallèles\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux droites sont parallèles si et seulement si les angles alternes internes sont égaux. L'algorithme compare les deux mesures après validation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Troisième angle d'un triangle",
+      "content": "Écrire un algorithme qui, étant donné les mesures $a$ et $b$ en degrés de deux angles d'un triangle, calcule et affiche la mesure du troisième angle.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$, $b$\\n2. Si $a$ <= 0 ou $b$ <= 0 ou $a$ + $b$ >= 180 alors afficher \"Angles invalides\" et arrêter\\n3. $c$ = 180 - $a$ - $b$\\n4. Afficher $c$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des angles d'un triangle vaut $180$ degrés. Après avoir vérifié que les deux angles donnés sont strictement positifs et que leur somme est inférieure à $180$, on soustrait leur somme à $180$ pour obtenir le troisième angle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

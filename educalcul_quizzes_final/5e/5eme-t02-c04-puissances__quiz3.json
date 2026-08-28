@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 387,
+  "_course_code": "5eme-t02-c04-puissances",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Calculs simples",
+  "title": "Quiz : Puissances - Calculs simples (5e)",
+  "questions": [
+    {
+      "text": "Calcule $2^4$.",
+      "options": [
+        "$6$",
+        "$8$",
+        "$16$",
+        "$32$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "La puissance $2^4$ signifie multiplier $2$ par lui-même $4$ fois : $2 \\times 2 \\times 2 \\times 2 = 16$. Les autres choix correspondent à des erreurs de multiplication ou de comptage des facteurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5^3$.",
+      "options": [
+        "$15$",
+        "$25$",
+        "$125$",
+        "$75$"
+      ],
+      "correctAnswer": "$125$",
+      "explanation": "$5^3 = 5 \\times 5 \\times 5 = 25 \\times 5 = 125$. $15$ est $5 \\times 3$, $25$ est $5^2$ et $75$ est $5 \\times 15$, ce qui ne respecte pas la définition d'une puissance.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $10^2$.",
+      "options": [
+        "$20$",
+        "$100$",
+        "$1000$",
+        "$12$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "$10^2 = 10 \\times 10 = 100$. $20$ correspond à $10 \\times 2$, $1000$ à $10^3$ et $12$ n'a aucun lien avec la puissance de $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $3^2 \\times 3^3$ en une seule puissance de $3$.",
+      "options": [
+        "$3^5$",
+        "$3^6$",
+        "$9^5$",
+        "$6^5$"
+      ],
+      "correctAnswer": "$3^5$",
+      "explanation": "En utilisant la règle $a^m \\times a^n = a^{m+n}$, on additionne les exposants : $3^2 \\times 3^3 = 3^{2+3} = 3^5$. $3^6$ ajouterait un exposant de trop, $9^5$ change la base et $6^5$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $(2^3)^2$ en une seule puissance de $2$.",
+      "options": [
+        "$2^5$",
+        "$2^6$",
+        "$2^9$",
+        "$4^3$"
+      ],
+      "correctAnswer": "$2^6$",
+      "explanation": "La règle $(a^m)^n = a^{m \\times n}$ donne $(2^3)^2 = 2^{3 \\times 2} = 2^6$. $2^5$ serait $2^{3+2}$, $2^9$ serait $2^{3 \\times 3}$ et $4^3$ change la base en $4=2^2$ sans appliquer la règle correctement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

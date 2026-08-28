@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Organiser des données",
+  "title": "Organiser des données - Tableaux d'effectifs",
+  "questions": [
+    {
+      "text": "Voici la liste des fruits préférés des élèves d'une classe : pomme, poire, pomme, banane, pomme, poire, banane, pomme. Quel tableau d'effectifs correspond à cette liste ?",
+      "options": [
+        "Fruit | Effectif\\npomme | 4\\npoire | 2\\nbanane | 2",
+        "Fruit | Effectif\\npomme | 3\\npoire | 3\\nbanane | 2",
+        "Fruit | Effectif\\npomme | 4\\npoire | 1\\nbanane | 3",
+        "Fruit | Effectif\\npomme | 5\\npoire | 2\\nbanane | 1"
+      ],
+      "correctAnswer": "Fruit | Effectif\\npomme | 4\\npoire | 2\\nbanane | 2",
+      "explanation": "Il faut compter chaque occurrence : 'pomme' apparaît 4 fois, 'poire' 2 fois et 'banane' 2 fois. Le premier tableau est le seul à proposer ces trois effectifs exacts.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour réaliser un tableau d'effectifs, on utilise souvent des barres pour compter. Que représente le trait oblique (la 5ème barre) dans un groupement de 5 barres ?",
+      "options": [
+        "Il indique une erreur de comptage",
+        "Il permet de compter plus vite par groupes de 5",
+        "Il sépare deux catégories différentes",
+        "Il signifie que le total est impair"
+      ],
+      "correctAnswer": "Il permet de compter plus vite par groupes de 5",
+      "explanation": "La méthode des barres (ou tally marks) consiste à tracer 4 barres verticales et la 5ème en travers pour former un groupe de 5. Cela facilite le comptage final par paquets de 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau d'effectifs présente le nombre de frères et sœurs des élèves :\\n0 frères/sœurs : 5 élèves\\n1 frère/sœur : 8 élèves\\n2 frères/sœurs : 4 élèves\\n3 frères/sœurs : 2 élèves\\nCombien y a-t-il d'élèves au total dans la classe ?",
+      "options": [
+        "17 élèves",
+        "18 élèves",
+        "19 élèves",
+        "20 élèves"
+      ],
+      "correctAnswer": "19 élèves",
+      "explanation": "Pour trouver le total, on additionne tous les effectifs : $5 + 8 + 4 + 2 = 19$. Il y a donc 19 élèves dans la classe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau d'effectifs sur les yeux des élèves, on lit :\\nBleus : 6\\nVerts : 4\\nMarron : 12\\nNoisette : 3\\nQuelle est la couleur d'yeux la plus fréquente (le mode) ?",
+      "options": [
+        "Bleus",
+        "Verts",
+        "Marron",
+        "Noisette"
+      ],
+      "correctAnswer": "Marron",
+      "explanation": "La valeur la plus fréquente (le mode) est celle qui a le plus grand effectif. Ici, 'Marron' a un effectif de 12, ce qui est supérieur à 6, 4 et 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau d'effectifs sur les animaux de compagnie manque d'une case :\\nChien : 5\\nChat : 7\\nLapin : ?\\nPoisson : 3\\nTotal : 20 élèves\\nQuel est l'effectif manquant pour 'Lapin' ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La somme des effectifs connus est $5 + 7 + 3 = 15$. Pour atteindre le total de 20, il manque $20 - 15 = 5$ élèves pour la catégorie 'Lapin'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

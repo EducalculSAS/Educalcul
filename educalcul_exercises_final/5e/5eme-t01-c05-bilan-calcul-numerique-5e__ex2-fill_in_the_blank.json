@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 383,
+  "_course_code": "5eme-t01-c05-bilan-calcul-numerique-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Checklist",
+  "title": "Bilan : Checklist du calcul numérique",
+  "blocks": [
+    {
+      "title": "Priorités opératoires",
+      "content": "Dans l'expression $12 + 3 \\times 4$, l'opération prioritaire est la {{1}}. Le résultat de cette opération est {{2}}. Le résultat final de l'expression est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "multiplication",
+        "12",
+        "24"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expression est $12 + 3 \\times 4$. La multiplication est prioritaire sur l'addition. On calcule d'abord $3 \\times 4 = 12$. Puis on effectue l'addition $12 + 12 = 24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs avec les nombres décimaux",
+      "content": "Pour additionner deux nombres décimaux, on aligne les {{1}} (virgules) et on complète par des zéros si nécessaire. Pour multiplier un nombre décimale par $10$, on décale la virgule d'un rang vers la {{2}}. Pour diviser par $100$, on décale la virgule de deux rangs vers la {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "chiffres|virgules",
+        "droite",
+        "gauche"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour additionner des décimaux, on aligne les virgules (donc les chiffres de même rang). Multiplier par $10$ décale la virgule d'un rang vers la droite. Diviser par $100$ décale la virgule de deux rangs vers la gauche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculs avec les fractions",
+      "content": "Pour additionner deux fractions de même dénominateur, on {{1}} les numérateurs et on {{2}} le dénominateur. Pour multiplier deux fractions, on {{3}} les numérateurs entre eux et les dénominateurs entre eux.",
+      "correctAnswer": "",
+      "blanks": [
+        "additionne|additionnent",
+        "garde|conserve",
+        "multiplie|multiplient"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Addition même dénominateur : on additionne les numérateurs, le dénominateur reste inchangé (on le garde ou on le conserve). Multiplication : on multiplie les numérateurs entre eux et les dénominateurs entre eux.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

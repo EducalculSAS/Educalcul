@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Application : Suites et motifs",
+  "title": "Quiz : Suites et motifs - Applications",
+  "questions": [
+    {
+      "text": "Observe la suite de figures ci-dessous. Quelle figure vient ensuite ?",
+      "options": [
+        "cercle",
+        "carré",
+        "triangle",
+        "rectangle"
+      ],
+      "correctAnswer": "cercle",
+      "explanation": "La suite suit un motif alterné simple : cercle, carré, cercle, carré. Le motif de base est « cercle, carré » qui se répète. Après le dernier carré affiché, la figure suivante est donc un cercle.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "cercle",
+          "carre"
+        ],
+        "options": [
+          "cercle",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Suite de figures : cercle, carré, cercle, carré"
+      }
+    },
+    {
+      "text": "Complète la suite numérique suivante : $2$, $4$, $6$, $8$, ...",
+      "options": [
+        "$9$",
+        "$10$",
+        "$11$",
+        "$12$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Il s'agit d'une suite arithmétique où l'on ajoute $2$ à chaque terme pour obtenir le suivant : $2+2=4$, $4+2=6$, $6+2=8$, donc $8+2=10$. Les autres options correspondent à une addition de $1$, $3$ ou $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite de formes géométriques : triangle, carré, rond, triangle, carré, ... Quelle est la forme manquante ?",
+      "options": [
+        "rond",
+        "triangle",
+        "carré",
+        "losange"
+      ],
+      "correctAnswer": "rond",
+      "explanation": "Le motif de base est composé de trois figures qui se répètent dans l'ordre : triangle, carré, rond. La suite donnée montre deux cycles incomplets : triangle, carré, rond | triangle, carré, ?. La troisième figure du motif est le rond.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "triangle",
+          "carre",
+          "rond",
+          "triangle",
+          "carre"
+        ],
+        "options": [
+          "rond",
+          "losange"
+        ],
+        "answer": "rond",
+        "caption": "Suite : triangle, carré, rond, triangle, carré"
+      }
+    },
+    {
+      "text": "Quel est le terme suivant de la suite : $1$, $3$, $7$, $15$, ... ?",
+      "options": [
+        "$31$",
+        "$30$",
+        "$29$",
+        "$32$"
+      ],
+      "correctAnswer": "$31$",
+      "explanation": "On observe la relation entre les termes : $1 \\times 2 + 1 = 3$, $3 \\times 2 + 1 = 7$, $7 \\times 2 + 1 = 15$. La règle est « multiplier par $2$ puis ajouter $1$ ». Appliquons-la au dernier terme : $15 \\times 2 + 1 = 30 + 1 = 31$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la suite $5$, $8$, $11$, $14$... on ajoute $3$ à chaque fois. Quel est le $10^{\\text{ème}}$ terme de cette suite ?",
+      "options": [
+        "$29$",
+        "$32$",
+        "$35$",
+        "$38$"
+      ],
+      "correctAnswer": "$32$",
+      "explanation": "Le premier terme est $5$. Pour aller du $1^{\\text{er}}$ au $10^{\\text{ème}}$ terme, on effectue $9$ sauts de $+3$. Calcul : $5 + (9 \\times 3) = 5 + 27 = 32$. On peut aussi lister les termes : $5, 8, 11, 14, 17, 20, 23, 26, 29, 32$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

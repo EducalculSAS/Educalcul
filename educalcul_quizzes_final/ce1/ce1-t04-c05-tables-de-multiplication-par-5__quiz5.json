@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 102,
+  "_course_code": "ce1-t04-c05-tables-de-multiplication-par-5",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Compter de 5 en 5",
+  "title": "Quiz : Compter de 5 en 5 (Approfondissement)",
+  "questions": [
+    {
+      "text": "Complète la suite de nombres en comptant de $5$ en $5$ : $5$, $10$, $15$, ..., $25$.",
+      "options": [
+        "$18$",
+        "$20$",
+        "$22$",
+        "$25$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "En comptant de $5$ en $5$, on ajoute $5$ au nombre précédent. $15 + 5 = 20$. Les autres options correspondent à des erreurs : $18$ (compter de $3$ en $3$), $22$ (ajouter $7$), $25$ (sauter un nombre).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Comptage de 5 en 5 sur une droite numérique",
+        "min": 0,
+        "max": 30,
+        "points": [
+          {
+            "value": 5,
+            "label": "5"
+          },
+          {
+            "value": 10,
+            "label": "10"
+          },
+          {
+            "value": 15,
+            "label": "15"
+          },
+          {
+            "value": 25,
+            "label": "25"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Voici un comptage à rebours de $5$ en $5$ : $40$, $35$, $30$, ..., $20$. Quel nombre manque-t-il ?",
+      "options": [
+        "$24$",
+        "$25$",
+        "$26$",
+        "$28$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "En comptant à rebours de $5$ en $5$, on retire $5$ au nombre précédent. $30 - 5 = 25$. Les distracteurs $24$ et $26$ sont proches mais ne respectent pas le pas de $5$, $28$ correspond à une soustraction de $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On commence à $25$ et on compte de $5$ en $5$ : $25$, $30$, ..., $40$. Quel est le nombre manquant ?",
+      "options": [
+        "$33$",
+        "$34$",
+        "$35$",
+        "$36$"
+      ],
+      "correctAnswer": "$35$",
+      "explanation": "La suite progresse par sauts de $5$. Après $30$, on ajoute $5$ pour obtenir $35$, puis $5$ de plus pour atteindre $40$. Les options $33$, $34$, $36$ ne sont pas des multiples de $5$ suivants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un paquet, il y a $5$ bonbons. Combien y a-t-il de bonbons au total dans $6$ paquets ?",
+      "options": [
+        "$25$",
+        "$30$",
+        "$35$",
+        "$40$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "Il faut compter $6$ fois $5$ bonbons : $5$, $10$, $15$, $20$, $25$, $30$. On arrive à $30$. $25$ correspond à $5$ paquets, $35$ à $7$ paquets, $40$ à $8$ paquets.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'on compte de $5$ en $5$ en partant de $0$ jusqu'à $35$ ($5$, $10$, $15$...), combien de nombres prononce-t-on au total ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La suite est : $5$ (1er), $10$ (2e), $15$ (3e), $20$ (4e), $25$ (5e), $30$ (6e), $35$ (7e). On prononce donc $7$ nombres. L'erreur fréquente est de compter le nombre de sauts ($6$) au lieu du nombre de termes dits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

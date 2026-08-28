@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 269,
+  "_course_code": "cm1-t09-c01-instructions-et-sequences",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Instructions et séquences",
+  "title": "Application des instructions et séquences",
+  "questions": [
+    {
+      "text": "Un robot doit se déplacer sur un quadrillage. On lui donne la séquence suivante : Avancer de $1$ case, Tourner à droite, Avancer de $1$ case. Si le robot regarde vers le nord au départ, vers quelle direction regarde t il à la fin de la séquence ?",
+      "options": [
+        "Vers le nord",
+        "Vers l'est",
+        "Vers le sud",
+        "Vers l'ouest"
+      ],
+      "correctAnswer": "Vers l'est",
+      "explanation": "Le robot avance vers le nord, puis effectue un quart de tour vers la droite. La droite du nord correspond à l'est. Il avance ensuite d'une case tout en regardant vers l'est.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une séquence d'instructions pour dessiner une figure : \\n1. Tracer un segment de $5$ cm\\n2. Tourner à droite de $90$ degrés\\n3. Tracer un segment de $5$ cm\\n4. Tourner à droite de $90$ degrés\\n5. Tracer un segment de $5$ cm\\n6. Tourner à droite de $90$ degrés\\n7. Tracer un segment de $5$ cm\\nQuelle figure a été dessinée ?",
+      "options": [
+        "Un triangle",
+        "Un rectangle",
+        "Un carré",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "L'algorithme décrit quatre segments de même longueur ($5$ cm) séparés par des angles droits de $90$ degrés, ce qui correspond exactement à la définition d'un carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme utilise une boucle pour répéter une action. L'instruction est : Répéter $3$ fois (Avancer de $2$ pas, Sauter). Combien de pas le personnage a t il faits au total à la fin de l'exécution ?",
+      "options": [
+        "$2$ pas",
+        "$3$ pas",
+        "$5$ pas",
+        "$6$ pas"
+      ],
+      "correctAnswer": "$6$ pas",
+      "explanation": "Le programme répète l'action trois fois. À chaque répétition, le personnage avance de $2$ pas. Le calcul est donc $3 \\times 2 = 6$ pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa crée une séquence pour un robot : \\nSéquence A : Avancer, Avancer, Tourner à gauche\\nSéquence B : Avancer, Tourner à droite\\nSi elle exécute la séquence A, puis la séquence B, combien de fois le robot a t il avancé au total ?",
+      "options": [
+        "$2$ fois",
+        "$3$ fois",
+        "$4$ fois",
+        "$5$ fois"
+      ],
+      "correctAnswer": "$3$ fois",
+      "explanation": "Dans la séquence A, le robot avance $2$ fois. Dans la séquence B, il avance $1$ fois. Le total est de $2 + 1 = 3$ instructions d'avancement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme doit placer un pion sur la case $10$ d'une ligne. Le pion est actuellement sur la case $4$. Quelle séquence d'instructions est correcte pour atteindre la cible ?",
+      "options": [
+        "Avancer de $4$ cases",
+        "Avancer de $5$ cases",
+        "Avancer de $6$ cases",
+        "Avancer de $14$ cases"
+      ],
+      "correctAnswer": "Avancer de $6$ cases",
+      "explanation": "Pour passer de la case $4$ à la case $10$, il faut calculer la différence : $10 - 4 = 6$. Le robot doit donc avancer de $6$ cases.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

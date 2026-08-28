@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer des séries statistiques (Seconde)",
+  "questions": [
+    {
+      "text": "Quel indicateur de position centrale est le plus robuste face aux valeurs extrêmes (aberrantes) dans une série statistique ?",
+      "options": [
+        "La moyenne",
+        "La médiane",
+        "Le mode",
+        "L'étendue"
+      ],
+      "correctAnswer": "La médiane",
+      "explanation": "La médiane ne dépend que de la valeur centrale ordonnée et n'est pas influencée par des valeurs très grandes ou très petites, contrairement à la moyenne qui prend en compte toutes les valeurs, au mode qui peut ne pas exister ou ne pas être unique, et à l'étendue qui mesure la dispersion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour comparer la dispersion de deux séries ayant la même moyenne, quel indicateur est le plus couramment utilisé en Seconde ?",
+      "options": [
+        "L'écart type",
+        "L'étendue",
+        "L'intervalle interquartile",
+        "La variance"
+      ],
+      "correctAnswer": "L'écart type",
+      "explanation": "L'écart type (ou la variance) mesure la dispersion autour de la moyenne ; en Seconde, on privilégie l'écart type car il s'exprime dans la même unité que les données. L'étendue ne prend en compte que les valeurs extrêmes, l'intervalle interquartile ne concerne que la partie centrale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les caractéristiques de deux séries statistiques représentées par des boîtes à moustaches. Série X : minimum $10$, premier quartile $15$, médiane $20$, troisième quartile $25$, maximum $30$. Série Y : minimum $12$, premier quartile $18$, médiane $22$, troisième quartile $26$, maximum $28$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "La médiane de X est supérieure à celle de Y",
+        "L'étendue de X est plus grande que celle de Y",
+        "L'intervalle interquartile de X est plus petit que celui de Y",
+        "Les deux séries ont la même médiane"
+      ],
+      "correctAnswer": "L'étendue de X est plus grande que celle de Y",
+      "explanation": "L'étendue de X vaut $30-10=20$, celle de Y vaut $28-12=16$, donc l'étendue de X est plus grande. La médiane de X ($20$) est inférieure à celle de Y ($22$). L'intervalle interquartile de X ($25-15=10$) est plus grand que celui de Y ($26-18=8$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux séries A et B ont la même moyenne $50$. La série A a un écart type $5$, la série B un écart type $12$. Laquelle des séries est la plus homogène ?",
+      "options": [
+        "La série A est plus homogène que la série B",
+        "La série B est plus homogène que la série A",
+        "Les deux séries sont aussi homogènes",
+        "On ne peut pas comparer l'homogénéité sans connaître les effectifs"
+      ],
+      "correctAnswer": "La série A est plus homogène que la série B",
+      "explanation": "L'homogénéité d'une série est liée à la faiblesse de sa dispersion ; un écart type plus petit indique que les valeurs sont plus resserrées autour de la moyenne. Comme $5 < 12$, la série A est plus homogène.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lorsqu'on souhaite comparer la position centrale de deux distributions tout en limitant l'influence des valeurs aberrantes, quel indicateur choisir ?",
+      "options": [
+        "La moyenne",
+        "La médiane",
+        "L'écart type",
+        "Le coefficient de variation"
+      ],
+      "correctAnswer": "La médiane",
+      "explanation": "La médiane est un indicateur de position centrale robuste, insensible aux valeurs extrêmes, contrairement à la moyenne. L'écart type et le coefficient de variation mesurent la dispersion, pas la position centrale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

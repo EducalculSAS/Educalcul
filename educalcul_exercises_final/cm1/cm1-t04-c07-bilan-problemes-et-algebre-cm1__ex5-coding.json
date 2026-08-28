@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 240,
+  "_course_code": "cm1-t04-c07-bilan-problemes-et-algebre-cm1",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Choix de modèle",
+  "title": "Choix de modèle algorithmique - CM1",
+  "blocks": [
+    {
+      "title": "Algorithme simple",
+      "content": "Écris un algorithme (en pseudo‑code ou style Python) qui prend un nombre $n$, le double et ajoute $5$. Affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Lire n\\n2. resultat <- 2 * n + 5\\n3. Afficher resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On double le nombre avec l'opérateur * 2, puis on ajoute 5. L'ordre des opérations est respecté : multiplication avant addition.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix du modèle de division",
+      "content": "Il y a $12$ pommes. On veut les partager équitablement en donnant $3$ pommes à chaque ami. Quel modèle choisir (division, soustraction répétée, etc.) ? Écris l'algorithme correspondant pour trouver le nombre d'amis.",
+      "correctAnswer": "Modèle : division (partage équitable).\\nAlgorithme :\\n1. total <- 12\\n2. part <- 3\\n3. nombreAmis <- total / part\\n4. Afficher nombreAmis",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème demande de répartir un total en parts égales, c'est une division. L'algorithme divise le total par la taille d'une part.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule et algorithme du périmètre",
+      "content": "Un rectangle a une longueur $L$ et une largeur $l$. Écris la formule du périmètre puis un algorithme qui calcule et affiche ce périmètre.",
+      "correctAnswer": "Formule : $P = 2 \\times (L + l)$\\nAlgorithme :\\n1. Lire L\\n2. Lire l\\n3. perimetre <- 2 * (L + l)\\n4. Afficher perimetre",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un rectangle est la somme des quatre côtés, soit deux fois la somme de la longueur et de la largeur. L'algorithme applique directement cette formule.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

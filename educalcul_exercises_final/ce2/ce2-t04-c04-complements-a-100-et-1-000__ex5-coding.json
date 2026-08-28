@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 172,
+  "_course_code": "ce2-t04-c04-complements-a-100-et-1-000",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Compléter une dizaine / centaine",
+  "title": "Compléments à 10 et 100 : algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme pour compléter une dizaine",
+      "content": "Écris un algorithme (une suite d'étapes) qui permet de trouver le nombre à ajouter à un nombre entier $n$ (compris entre $1$ et $99$) pour obtenir la dizaine suivante. Par exemple, pour $n = 37$, le résultat attendu est $3$ car $37 + 3 = 40$.",
+      "correctAnswer": "Algorithme :\\n1. Regarder le chiffre des unités de $n$.\\n2. Si ce chiffre est $0$, le complément est $0$.\\n3. Sinon, calculer $10 - \\text{chiffre des unités}$.\\n4. Le résultat est le nombre à ajouter pour atteindre la dizaine suivante.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde le chiffre des unités car les dizaines sont déjà fixes. Pour passer à la dizaine supérieure, il faut ajouter ce qui manque pour faire 10 unités. Si les unités sont déjà 0, le nombre est déjà une dizaine.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour compléter une centaine",
+      "content": "Écris un algorithme qui permet de trouver le nombre à ajouter à un nombre entier $n$ (compris entre $1$ et $999$) pour obtenir la centaine suivante. Par exemple, pour $n = 256$, le résultat attendu est $44$ car $256 + 44 = 300$.",
+      "correctAnswer": "Algorithme :\\n1. Regarder les deux derniers chiffres de $n$ (le nombre des dizaines et des unités).\\n2. Si ces deux chiffres forment $00$, le complément est $0$.\\n3. Sinon, calculer $100 - \\text{nombre formé par les dizaines et les unités}$.\\n4. Le résultat est le nombre à ajouter pour atteindre la centaine suivante.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour aller à la centaine supérieure, il faut compléter les dizaines et unités jusqu'à 100. On soustrait donc la partie 'dizaines-unités' de 100.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application combinée",
+      "content": "Pour le nombre $n = 473$, utilise les deux algorithmes précédents pour trouver :\\na) le complément à la dizaine suivante,\\nb) le complément à la centaine suivante.\\nÉcris les étapes de calcul pour chaque partie.",
+      "correctAnswer": "a) Complément à la dizaine :\\n- Chiffre des unités = 3.\\n- $10 - 3 = 7$.\\n- Donc $473 + 7 = 480$.\\nb) Complément à la centaine :\\n- Nombre formé par les dizaines et unités = 73.\\n- $100 - 73 = 27$.\\n- Donc $473 + 27 = 500$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la méthode de la dizaine en ne regardant que les unités (3 → 7). Pour la centaine, on regarde les deux derniers chiffres (73) et on fait 100 - 73 = 27.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

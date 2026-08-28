@@ -1,0 +1,498 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.876584+00:00",
+  "id": 446,
+  "code": "4eme-t06-c02",
+  "title": "Agrandissement et réduction",
+  "description": "Cours structuré Educalcul : Agrandissement et réduction.",
+  "subject": "Transformations, espace, grandeurs et mesures",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Transformations, espace, grandeurs et mesures",
+    "titre_du_cours": "Agrandissement et réduction",
+    "objectif_global": "Agrandissement et réduction",
+    "mini_lecons_imposees": [
+      "Rapport.",
+      "Longueurs.",
+      "Aires intuitives selon programme."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace, grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Rapport.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rapport"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir ce qu'est un rapport et comment l'utiliser pour comparer deux grandeurs. Imagine que tu prépares une limonade : pour $1$ litre d'eau tu ajoutes $200$ grammes de sucre. Le lien entre la quantité de sucre et la quantité d'eau est un rapport, il se lit comme une fraction et il ne change pas si tu doubles les doses. Dans ce cours nous prendrons le temps de bien poser les bases, avec des mots simples et des exemples concrets, pour que tu te sentes à l'aise dès le début."
+            },
+            {
+              "type": "definition",
+              "term": "rapport",
+              "definition": "Le rapport de deux nombres $a$ et $b$ (avec $b \\neq 0$) est le nombre obtenu en divisant $a$ par $b$. On l'écrit souvent sous la forme d'une fraction $\\frac{a}{b}$ ou avec deux points $a:b$.",
+              "example": "Le rapport de $6$ à $3$ est $\\frac{6}{3}=2$ ou $6:3=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple chiffré : tu as $12$ bonbons et tu veux les partager équitablement entre $4$ amis. Le rapport entre le nombre total de bonbons et le nombre d'amis s'écrit $\\frac{12}{4}=3$. Cela signifie que chaque ami reçoit $3$ bonbons. Remarque que le rapport n'a pas d'unité, c'est un nombre pur qui exprime une relation de proportionnalité."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Le rapport $3$ sur $4$ représenté par une barre partagée en $4$ parties dont $3$ sont colorées"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le rapport sous forme de fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les deux grandeurs à comparer et place la première au numérateur, la seconde au dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier la fraction si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le numérateur et le dénominateur par leur plus grand commun diviseur pour obtenir un rapport irreducible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprimer le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le rapport simplifié peut être laissé sous forme de fraction, écrit avec deux points ou converti en nombre décimal selon ce qui est demandé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais écrire et simplifier un rapport, nous allons examiner ses propriétés fondamentales pour comprendre pourquoi il est si utile dans les problèmes de proportionnalité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés du rapport"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un rapport ne change pas si l'on multiplie ou divise ses deux termes par le même nombre non nul. C'est la propriété de base qui permet de passer d'un rapport à un autre équivalent. Par exemple $\\frac{6}{9}$ et $\\frac{2}{3}$ représentent le même rapport car on a divisé le numérateur et le dénominateur par $3$. De plus, l'ordre des termes compte : le rapport $a:b$ n'est généralement pas égal à $b:a$ sauf si $a=b$."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Multiplier ou diviser les deux termes par le même nombre non nul conserve le rapport.",
+                "L'inverse d'un rapport $a:b$ est $b:a$.",
+                "Deux rapports égaux forment une proportion."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons voir comment un rapport permet de comparer des grandeurs concrètes, comme les ingrédients d'une recette ou les dimensions d'un plan, et nous ferons un petit exercice d'application."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser un rapport pour comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois préparer une pâte à crêpes pour $6$ personnes alors que la recette de base est donnée pour $4$ personnes. Le rapport entre le nombre de personnes souhaité et le nombre de personnes de la recette est $\\frac{6}{4}=\\frac{3}{2}$. Ce coefficient te dit qu'il faut multiplier toutes les quantités d'ingrédients par $1,5$ pour obtenir les bonnes proportions. C'est exactement ce que l'on fait quand on agrandit ou réduit une figure géométrique."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des quantités de farine pour $4$ et $6$ personnes",
+              "bars": [
+                {
+                  "label": "4 personnes",
+                  "value": 200,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6 personnes",
+                  "value": 300,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le rapport de $18$ à $24$ sous forme de fraction irreducible.",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Divise les deux nombres par leur plus grand commun diviseur.",
+              "explanation": "Le PGCD de $18$ et $24$ est $6$. En divisant le numérateur et le dénominateur par $6$, on obtient $\\frac{18\\div6}{24\\div6}=\\frac{3}{4}$."
+            },
+            {
+              "question": "Les deux rapports $\\frac{5}{8}$ et $\\frac{15}{24}$ sont-ils égaux ? Justifie ta réponse.",
+              "answer": "Oui, ils sont égaux.",
+              "hint": "Simplifie le deuxième rapport ou multiplie le premier par un même nombre.",
+              "explanation": "En divisant $15$ et $24$ par $3$, on obtient $\\frac{5}{8}$. Les deux rapports sont donc équivalents."
+            },
+            {
+              "question": "Une recette pour $5$ personnes demande $250\\,g$ de farine. Quelle quantité de farine faut‑il pour $8$ personnes ?",
+              "answer": "$400\\,g$",
+              "hint": "Calcule le rapport $\\frac{8}{5}$ et multiplie la quantité de base.",
+              "explanation": "Le coefficient d'agrandissement est $\\frac{8}{5}=1,6$. En multipliant $250\\,g$ par $1,6$, on obtient $400\\,g$."
+            }
+          ]
+        },
+        {
+          "title": "Longueurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le coefficient d'agrandissement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous passons du rapport abstrait à son utilisation concrète sur les longueurs. Quand on agrandit ou réduit une figure, chaque longueur est multipliée par un même nombre que l'on appelle coefficient d'agrandissement. Si ce coefficient est plus grand que $1$, la figure s'agrandit ; s'il est compris entre $0$ et $1$, elle se réduit. Nous allons découvrir comment le déterminer et comment l'appliquer, avec des exemples tirés de la vie de tous les jours comme le zoom sur une photo ou le tracé d'un plan à l'échelle."
+            },
+            {
+              "type": "definition",
+              "term": "coefficient d'agrandissement",
+              "definition": "Le coefficient d'agrandissement $k$ est le rapport entre une longueur de la figure transformée et la longueur correspondante de la figure initiale. On a $k = \\frac{\\text{longueur image}}{\\text{longueur originale}}$.",
+              "example": "Si un segment de $5\\,cm$ devient $15\\,cm$ après agrandissement, le coefficient est $k=\\frac{15}{5}=3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple simple : un rectangle mesure $4\\,cm$ de largeur et $6\\,cm$ de hauteur. On veut l'agrandir avec un coefficient $k=2,5$. La nouvelle largeur sera $4 \\times 2,5 = 10\\,cm$ et la nouvelle hauteur $6 \\times 2,5 = 15\\,cm$. Remarque que le coefficient est le même pour les deux dimensions, c'est ce qui garantit que la forme reste semblable à l'originale."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Deux triangles semblables avec coefficient $k=2$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une paire de longueurs correspondantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un côté de la figure originale et le côté correspondant sur la figure transformée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le coefficient $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise la longueur de l'image par la longueur de l'originale. Si le résultat est supérieur à $1$, c'est un agrandissement ; s'il est inférieur à $1$, c'est une réduction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer $k$ à toutes les autres longueurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie chaque longueur de la figure originale par $k$ pour obtenir les dimensions de la figure transformée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment déterminer le coefficient à partir d'une seule paire de longueurs. Maintenant, nous allons vérifier que ce même coefficient s'applique à toutes les dimensions d'une figure, ce qui est la définition même de la similitude."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer le coefficient à plusieurs longueurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un triangle rectangle dont les côtés de l'angle droit mesurent $3\\,cm$ et $4\\,cm$. L'hypoténuse mesure donc $5\\,cm$ d'après le théorème de Pythagore. Si nous appliquons un coefficient $k=1,5$, les nouveaux côtés deviennent $4,5\\,cm$, $6\\,cm$ et l'hypoténuse $7,5\\,cm$. On peut vérifier que $4,5^2 + 6^2 = 7,5^2$, ce qui confirme que le triangle obtenu est bien rectangle et semblable au premier. Cette vérification est une bonne habitude pour s'assurer qu'aucune erreur de calcul n'a été commise."
+            },
+            {
+              "type": "display_math",
+              "latex": "k = \\frac{\\text{longueur image}}{\\text{longueur originale}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, nous allons apprendre à reconnaître si deux figures sont bien issues l'une de l'autre par un agrandissement ou une réduction, en comparant les rapports de leurs longueurs correspondantes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la proportionnalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux figures sont semblables si et seulement si les rapports de leurs longueurs correspondantes sont tous égaux au même coefficient $k$. Concrètement, il suffit de calculer le rapport pour deux paires de côtés ; si les deux rapports sont identiques, on peut être confiant que la proportionnalité tient pour toute la figure. Cette méthode évite de devoir mesurer tous les côtés quand on n'a qu'un croquis partiel."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Si tu as un doute, calcule le rapport pour trois paires de côtés. Trois résultats identiques valident la similitude."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un segment $AB$ mesure $7\\,cm$. Après agrandissement, son image $A'B'$ mesure $21\\,cm$. Quel est le coefficient d'agrandissement ?",
+              "answer": "$k=3$",
+              "hint": "Divise la longueur de l'image par la longueur originale.",
+              "explanation": "$k = \\frac{21}{7}=3$. Le coefficient est supérieur à $1$, c'est donc un agrandissement."
+            },
+            {
+              "question": "Un rectangle $4\\,cm \\times 6\\,cm$ est réduit avec un coefficient $k=0,4$. Quelles sont les dimensions du rectangle réduit ?",
+              "answer": "$1,6\\,cm \\times 2,4\\,cm$",
+              "hint": "Multiplie chaque côté par $0,4$.",
+              "explanation": "Largeur : $4 \\times 0,4 = 1,6\\,cm$. Hauteur : $6 \\times 0,4 = 2,4\\,cm$."
+            },
+            {
+              "question": "Deux triangles ont des côtés correspondants $5\\,cm$ et $10\\,cm$ pour le premier couple, $8\\,cm$ et $16\\,cm$ pour le second. Sont-ils semblables ?",
+              "answer": "Oui, ils sont semblables avec $k=2$.",
+              "hint": "Calcule les deux rapports et compare-les.",
+              "explanation": "Le premier rapport est $\\frac{10}{5}=2$, le second $\\frac{16}{8}=2$. Les deux rapports sont égaux, donc les triangles sont semblables avec un coefficient $k=2$."
+            }
+          ]
+        },
+        {
+          "title": "Aires intuitives selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aire et l'agrandissement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. Jusqu'ici nous avons travaillé sur les longueurs, mais quand on agrandit une figure, sa surface change aussi. Si tu as déjà posé un papier peint sur un mur, tu sais que doubler la largeur et la hauteur d'un motif ne double pas la quantité de papier nécessaire : elle est multipliée par quatre. C'est la règle fondamentale que nous allons établir ensemble, pas à pas, pour que tu puisses l'appliquer en toute confiance."
+            },
+            {
+              "type": "definition",
+              "term": "aire",
+              "definition": "L'aire d'une figure plane est la mesure de sa surface. Elle s'exprime en unités carrées (par exemple $cm^2$, $m^2$).",
+              "example": "Un rectangle de $3\\,cm$ sur $4\\,cm$ a une aire de $12\\,cm^2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le rectangle de la leçon précédente : $4\\,cm$ par $6\\,cm$, aire $24\\,cm^2$. Avec un coefficient $k=2$, les nouvelles dimensions sont $8\\,cm$ et $12\\,cm$. La nouvelle aire est $8 \\times 12 = 96\\,cm^2$. On constate que $96 = 24 \\times 4$ et que $4 = 2^2 = k^2$. En général, quand on multiplie toutes les longueurs par $k$, l'aire est multipliée par $k^2$. Cette relation vaut pour n'importe quelle figure plane, pas seulement pour les rectangles."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{image}} = k^2 \\times A_{\\text{originale}}"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des aires pour $k=1$, $k=2$, $k=3$ sur une aire de base $10\\,cm^2$",
+              "bars": [
+                {
+                  "label": "k=1",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=2",
+                  "value": 40,
+                  "tone": "green"
+                },
+                {
+                  "label": "k=3",
+                  "value": 90,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le coefficient $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine $k$ à partir des longueurs comme vu dans la leçon précédente."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $k^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Élève $k$ au carré. Si $k=1,5$, alors $k^2=2,25$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier l'aire originale par $k^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La nouvelle aire est le produit de l'aire de départ par $k^2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la formule est claire, nous allons l'appliquer à une situation concrète : le remplacement d'un tapis dans une pièce après un agrandissement du plan au sol."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple concret : un tapis"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tapis rectangulaire mesure $2\\,m$ sur $3\\,m$, donc son aire est $6\\,m^2$. Le propriétaire décide d'agrandir la pièce avec un coefficient $k=1,5$. Les nouvelles dimensions du tapis seront $3\\,m$ sur $4,5\\,m$. L'aire nouvelle est $3 \\times 4,5 = 13,5\\,m^2$. On peut aussi calculer directement $6 \\times 1,5^2 = 6 \\times 2,25 = 13,5\\,m^2$. Les deux méthodes donnent le même résultat, ce qui montre la cohérence de la règle $k^2$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition de l'aire avant et après agrandissement (part totale = aire finale)",
+              "slices": [
+                {
+                  "label": "Aire originale",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Aire supplémentaire",
+                  "value": 7.5,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, nous allons résoudre un problème complet qui combine longueurs et aires, afin de vérifier que tu sais passer de l'un à l'autre sans te tromper."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème d'agrandissement de surface"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un jardin carré de côté $10\\,m$ doit être agrandi pour devenir un carré de côté $15\\,m$. Le coefficient d'agrandissement est $k=\\frac{15}{10}=1,5$. L'aire initiale est $100\\,m^2$, l'aire finale est $225\\,m^2$. On vérifie que $225 = 100 \\times 1,5^2 = 100 \\times 2,25$. Si le prix du gazon est de $5\\,\\text{\\euro}$ le $m^2$, le coût supplémentaire sera $(225-100) \\times 5 = 625\\,\\text{\\euro}$. Ce type de raisonnement est exactement ce qu'on attend de toi en contrôle."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne confonds pas le coefficient des longueurs $k$ et celui des aires $k^2$. Une erreur fréquente est de multiplier l'aire par $k$ au lieu de $k^2$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le rapport de deux nombres et l'écrire sous forme de fraction.",
+                "Je sais simplifier un rapport et reconnaître deux rapports égaux.",
+                "Je sais calculer le coefficient d'agrandissement $k$ à partir de deux longueurs correspondantes.",
+                "J'applique $k$ à toutes les longueurs d'une figure pour obtenir l'image agrandie ou réduite.",
+                "Je sais que l'aire est multipliée par $k^2$ et je sais l'utiliser pour résoudre un problème concret."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle a une aire de $12\\,cm^2$. On l'agrandit avec un coefficient $k=3$. Quelle est l'aire du triangle agrandi ?",
+              "answer": "$108\\,cm^2$",
+              "hint": "Calcule $k^2$ puis multiplie l'aire originale.",
+              "explanation": "$k^2 = 9$. Aire nouvelle $= 12 \\times 9 = 108\\,cm^2$."
+            },
+            {
+              "question": "Un carré de côté $5\\,cm$ est réduit avec $k=0,6$. Donne l'aire du carré réduit.",
+              "answer": "$9\\,cm^2$",
+              "hint": "Trouve le nouveau côté puis calcule l'aire, ou utilise $k^2$ directement.",
+              "explanation": "Nouveau côté $= 5 \\times 0,6 = 3\\,cm$. Aire $= 3^2 = 9\\,cm^2$. Vérification : $k^2 = 0,36$, $25 \\times 0,36 = 9$."
+            },
+            {
+              "question": "Une photo rectangulaire $10\\,cm \\times 15\\,cm$ est agrandie pour devenir $25\\,cm \\times 37,5\\,cm$. Quel est le coefficient d'agrandissement et par quel facteur l'aire a-t-elle été multipliée ?",
+              "answer": "$k=2,5$ ; l'aire est multipliée par $6,25$.",
+              "hint": "Calcule $k$ sur une longueur, puis $k^2$.",
+              "explanation": "Sur la largeur : $k = \\frac{25}{10}=2,5$. $k^2 = 6,25$. L'aire initiale $150\\,cm^2$, finale $937,5\\,cm^2$, rapport $=6,25$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

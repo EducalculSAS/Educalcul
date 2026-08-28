@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 512,
+  "_course_code": "2nde-t03-c03-coordonnees-d-un-vecteur",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Calcul des coordonnées d'un vecteur - Algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées de deux points $A(x_1, y_1)$ et $B(x_2, y_2)$ dans le plan, calcule les coordonnées du vecteur $AB$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_1$, $y_1$, $x_2$, $y_2$.\\n2. Calculer $v_x = x_2 - x_1$.\\n3. Calculer $v_y = y_2 - y_1$.\\n4. Afficher $(v_x, v_y)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du vecteur $AB$ s'obtiennent en soustrayant les coordonnées du point de départ $A$ aux coordonnées du point d'arrivée $B$. Ainsi, le premier composant est $x_2 - x_1$ et le second composant est $y_2 - y_1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui, connaissant les coordonnées d'un point $A(x_A, y_A)$ et les coordonnées d'un vecteur $v(v_x, v_y)$, détermine les coordonnées du point $B$ tel que le vecteur $AB$ soit égal à $v$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_A$, $y_A$, $v_x$, $v_y$.\\n2. Calculer $x_B = x_A + v_x$.\\n3. Calculer $y_B = y_A + v_y$.\\n4. Afficher $(x_B, y_B)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si le vecteur $AB$ est égal à $v$, alors les coordonnées de $B$ s'obtiennent en ajoutant les composantes du vecteur $v$ aux coordonnées de $A$ : $x_B = x_A + v_x$ et $y_B = y_A + v_y$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées de trois points $A(x_A, y_A)$, $B(x_B, y_B)$ et $C(x_C, y_C)$, calcule les coordonnées du vecteur $AC$ en utilisant la relation de Chasles ($AB + BC = AC$).",
+      "correctAnswer": "Algorithme :\\n1. Lire $x_A$, $y_A$, $x_B$, $y_B$, $x_C$, $y_C$.\\n2. Calculer $AB_x = x_B - x_A$, $AB_y = y_B - y_A$.\\n3. Calculer $BC_x = x_C - x_B$, $BC_y = y_C - y_B$.\\n4. Calculer $AC_x = AB_x + BC_x$, $AC_y = AB_y + BC_y$.\\n5. Afficher $(AC_x, AC_y)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la relation de Chasles, le vecteur $AC$ est la somme des vecteurs $AB$ et $BC$. On calcule d'abord les composantes de $AB$ et de $BC$, puis on les additionne composante par composante pour obtenir les composantes de $AC$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 367,
+  "_course_code": "6eme-t07-c05-bilan-espace-6e",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Bilan - Espace 6e",
+  "title": "Bilan Espace 6e",
+  "questions": [
+    {
+      "text": "Lequel de ces solides a exactement 6 faces, 12 arêtes et 8 sommets ?",
+      "options": [
+        "Cube",
+        "Cylindre",
+        "Pyramide à base carrée",
+        "Cône"
+      ],
+      "correctAnswer": "Cube",
+      "explanation": "Un cube est un pavé droit dont les six faces sont des carrés. Il possède 6 faces, 12 arêtes et 8 sommets. Le cylindre a 2 faces planes et 1 face courbe, la pyramide à base carrée a 5 faces et 8 arêtes, le cône a 1 face plane et 1 face courbe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La figure ci-contre représente un patron. De quel solide est-ce le patron ?",
+      "options": [
+        "Cube",
+        "Pavé droit",
+        "Pyramide à base carrée",
+        "Cylindre"
+      ],
+      "correctAnswer": "Cube",
+      "explanation": "Le patron présenté est composé de 6 carrés identiques reliés entre eux. En le repliant, on obtient un cube. Un pavé droit aurait des rectangles, une pyramide comporterait des triangles et un cylindre des rectangles et des cercles.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Dans un cercle de centre O et de rayon $4$ cm, quelle est la longueur du diamètre ?",
+      "options": [
+        "$2$ cm",
+        "$4$ cm",
+        "$8$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "Le diamètre d'un cercle est un segment passant par le centre et dont les extrémités sont sur le cercle. Sa longueur est le double du rayon : $2 \\times 4 = 8$ cm. L'option $2$ cm correspond à la moitié du rayon, $4$ cm au rayon, $16$ cm au quadruple du rayon.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, un des angles aigus mesure $30^{\\circ}$. Quelle est la mesure de l'autre angle aigu ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$60^{\\circ}$",
+        "$90^{\\circ}$",
+        "$150^{\\circ}$"
+      ],
+      "correctAnswer": "$60^{\\circ}$",
+      "explanation": "La somme des angles d'un triangle vaut $180^{\\circ}$. Dans un triangle rectangle, un angle vaut $90^{\\circ}$. La somme des deux angles aigus est donc $180 - 90 = 90^{\\circ}$. Si l'un vaut $30^{\\circ}$, l'autre vaut $90 - 30 = 60^{\\circ}$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Deux droites qui ne se coupent pas dans le plan sont nécessairement :",
+      "options": [
+        "Perpendiculaires",
+        "Parallèles",
+        "Sécantes",
+        "Confondues"
+      ],
+      "correctAnswer": "Parallèles",
+      "explanation": "Dans un plan, deux droites ont trois positions relatives possibles : elles sont sécantes (se coupent en un point), parallèles (ne se coupent pas), ou confondues (infiniment de points communs). Comme elles ne se coupent pas et ne sont pas confondues (ce qui n'est pas précisé mais 'nécessairement' implique la définition stricte), elles sont parallèles. Les droites perpendiculaires sont des droites sécantes formant un angle droit.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

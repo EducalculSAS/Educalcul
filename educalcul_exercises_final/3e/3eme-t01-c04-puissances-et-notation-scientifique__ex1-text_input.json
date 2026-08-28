@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Règles",
+  "title": "Les règles de calcul sur les puissances",
+  "blocks": [
+    {
+      "title": "Produit de puissances",
+      "content": "Écrire sous la forme d'une seule puissance de 3 : $3^4 \\times 3^{-2}$.",
+      "correctAnswer": "$3^2$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la règle du produit de puissances de même base : $a^n \\times a^m = a^{n+m}$. Ici, les exposants sont 4 et -2. On calcule $4 + (-2) = 2$. Donc $3^4 \\times 3^{-2} = 3^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Puissance d'une puissance",
+      "content": "Simplifier l'expression $(5^2)^3 \\times 5^{-4}$ en l'écrivant sous la forme d'une seule puissance de 5.",
+      "correctAnswer": "$5^2$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique d'abord la règle de la puissance d'une puissance : $(a^n)^m = a^{n \\times m}$. Donc $(5^2)^3 = 5^{2 \\times 3} = 5^6$. Ensuite, on utilise la règle du produit : $5^6 \\times 5^{-4} = 5^{6 + (-4)} = 5^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quotient de puissances",
+      "content": "Écrire sous la forme d'une seule puissance de 2 : $\\frac{2^{-3} \\times 2^5}{2^2}$.",
+      "correctAnswer": "$2^0$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On simplifie d'abord le numérateur avec la règle du produit : $2^{-3} \\times 2^5 = 2^{-3+5} = 2^2$. L'expression devient $\\frac{2^2}{2^2}$. On applique la règle du quotient : $\\frac{a^n}{a^m} = a^{n-m}$. Donc $\\frac{2^2}{2^2} = 2^{2-2} = 2^0$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

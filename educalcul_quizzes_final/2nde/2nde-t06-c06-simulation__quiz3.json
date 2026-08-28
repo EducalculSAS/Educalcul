@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Interprétation",
+  "title": "Quiz : Interprétation des résultats de simulation",
+  "questions": [
+    {
+      "text": "Après avoir simulé $1000$ essais d'une expérience aléatoire, la proportion de succès observée est $0,42$. Que représente cette valeur ?",
+      "options": [
+        "La probabilité exacte de succès",
+        "Une estimation de la probabilité avec une marge d'erreur",
+        "La probabilité théorique de l'expérience",
+        "Le nombre de succès obtenus"
+      ],
+      "correctAnswer": "Une estimation de la probabilité avec une marge d'erreur",
+      "explanation": "La proportion observée dans une simulation est une estimation empirique de la probabilité réelle. Elle est affectée par le hasard d'échantillonnage, donc on l'accompagne généralement d'un intervalle de confiance ou d'une marge d'erreur. Les autres options confondent estimation et valeur exacte ou comptage brut.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un intervalle de confiance à $95\\%$ pour une proportion obtenue par simulation est [$0,38$ ; $0,46$]. Quelle conclusion peut-on tirer ?",
+      "options": [
+        "La proportion vraie est exactement $0,42$",
+        "On est sûr à $95\\%$ que la proportion vraie se trouve dans cet intervalle",
+        "$95\\%$ des simulations donneront une proportion dans cet intervalle",
+        "L'intervalle contient $95\\%$ des proportions observées"
+      ],
+      "correctAnswer": "On est sûr à $95\\%$ que la proportion vraie se trouve dans cet intervalle",
+      "explanation": "Un intervalle de confiance à $95\\%$ signifie que si l'on répétait indéfiniment la procédure de simulation, $95\\%$ des intervalles construits contiendraient le paramètre réel. Ce n'est pas une probabilité sur le paramètre fixe, ni une description de la dispersion des résultats d'une seule simulation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $600$ lancers d'un dé équilibré. La fréquence observée de la face 6 est $0,18$ alors que la probabilité théorique est $1/6 ≈ 0,1667$. Comment interpréter cet écart ?",
+      "options": [
+        "La simulation est erronée",
+        "L'écart est dû aux fluctuations aléatoires inhérentes à tout échantillonnage",
+        "Le dé est truqué",
+        "Il faut augmenter le nombre de lancers jusqu'à ce que l'écart disparaisse complètement"
+      ],
+      "correctAnswer": "L'écart est dû aux fluctuations aléatoires inhérentes à tout échantillonnage",
+      "explanation": "Même avec un dé parfait, la fréquence empirique fluctue autour de la probabilité théorique. La loi des grands nombres garantit que l'écart tend à diminuer en moyenne quand le nombre d'essais augmente, mais il ne devient jamais nul pour un nombre fini d'essais. Les autres réponses confondent variabilité d'échantillonnage et biais systématique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève effectue $200$ simulations pour estimer la moyenne d'une distribution. La moyenne des $200$ moyennes d'échantillon est $12,3$ avec un erreur standard de $0,4$. Que signifie cet erreur standard ?",
+      "options": [
+        "La moyenne vraie vaut $12,3 ± 0,4$",
+        "L'erreur standard estime la variabilité de la moyenne d'échantillon d'une simulation à l'autre",
+        "$95\\%$ des moyennes d'échantillon seront comprises entre $11,9$ et $12,7$",
+        "L'erreur standard est l'écart type de la distribution originale"
+      ],
+      "correctAnswer": "L'erreur standard estime la variabilité de la moyenne d'échantillon d'une simulation à l'autre",
+      "explanation": "L'erreur standard (standard error) quantifie la dispersion des moyennes d'échantillon qu'on obtiendrait en répétant l'expérience de simulation. Elle n'est pas un intervalle de confiance à elle seule, ni l'écart type de la population, et elle ne donne pas directement une probabilité sur la valeur vraie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace l'histogramme des moyennes d'échantillon obtenues par de nombreuses simulations d'une même expérience. La forme de cet histogramme se rapproche d'une courbe en cloche (normale) quand le nombre de simulations augmente. Quel théorème cela illustre-t-il ?",
+      "options": [
+        "La distribution originale est normale",
+        "La distribution des moyennes d'échantillon tend vers une loi normale quelle que soit la distribution initiale",
+        "La simulation est mal programmée",
+        "Il faut que la taille de l'échantillon soit au moins $30$"
+      ],
+      "correctAnswer": "La distribution des moyennes d'échantillon tend vers une loi normale quelle que soit la distribution initiale",
+      "explanation": "C'est le théorème central limite : pour un échantillon de taille suffisante, la distribution de la moyenne d'échantillon est approximativement normale, indépendamment de la forme de la distribution de départ. La condition « taille ≥ $30$ » est une règle pratique, pas une condition stricte du théorème, et la normalité de la distribution originale n'est pas requise.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

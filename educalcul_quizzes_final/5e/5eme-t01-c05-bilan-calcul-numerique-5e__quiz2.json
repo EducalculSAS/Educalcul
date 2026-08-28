@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 383,
+  "_course_code": "5eme-t01-c05-bilan-calcul-numerique-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Checklist",
+  "title": "Bilan Calcul numérique 5e - Checklist",
+  "questions": [
+    {
+      "text": "Calcule l'expression suivante en respectant les priorités opératoires : $12 + 3 \\times 4 - 6 / 2$.",
+      "options": [
+        "$21$",
+        "$18$",
+        "$24$",
+        "$15$"
+      ],
+      "correctAnswer": "$21$",
+      "explanation": "On effectue d'abord la multiplication et la division : $3 \\times 4 = 12$ et $6 / 2 = 3$. L'expression devient $12 + 12 - 3$. On calcule ensuite de gauche à droite : $12 + 12 = 24$, puis $24 - 3 = 21$. Les distracteurs correspondent à des erreurs d'ordre (ex: $12+3=15$ puis $15\\times4=60$...) ou de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Donne le résultat de la multiplication décimale : $2,5 \\times 0,4$.",
+      "options": [
+        "$1$",
+        "$10$",
+        "$0,1$",
+        "$100$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "On peut calculer $25 \\times 4 = 100$. Il y a au total deux chiffres après la virgule dans les facteurs (un pour $2,5$ et un pour $0,4$), donc on place la virgule pour avoir deux décimales : $1,00$ soit $1$. L'option $10$ correspond à une erreur de placement de virgule (un seul décalage), $0,1$ à un décalage de trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $(-15) + 8 - (-3)$ ?",
+      "options": [
+        "$-4$",
+        "$-10$",
+        "$-22$",
+        "$4$"
+      ],
+      "correctAnswer": "$-4$",
+      "explanation": "On simplifie l'expression : soustraire $-3$ revient à ajouter $+3$. On a donc $(-15) + 8 + 3$. On regroupe les positifs : $8 + 3 = 11$. Puis on ajoute le négatif : $-15 + 11 = -4$. L'option $-10$ vient de $-15+8=-7$ puis $-7-3=-10$ (erreur de signe devant le 3). L'option $-22$ vient de $-15-8-3$ (tout mis en négatif).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la division décimale : $45,6 / 100$.",
+      "options": [
+        "$0,456$",
+        "$4,56$",
+        "$456$",
+        "$0,0456$"
+      ],
+      "correctAnswer": "$0,456$",
+      "explanation": "Diviser par $100$ revient à décaler la virgule de deux rangs vers la gauche. $45,6$ devient $0,456$. L'option $4,56$ correspond à une division par $10$ (un seul décalage). L'option $456$ correspond à une multiplication par $10$ (décalage à droite). L'option $0,0456$ correspond à une division par $1000$ (trois décalages).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trois kilogrammes de pommes coûtent $4,50 \\text{ €}$. Combien coûtent $7 \\text{ kg}$ de ces mêmes pommes ?",
+      "options": [
+        "$10,50 \\text{ €}$",
+        "$9,50 \\text{ €}$",
+        "$11,50 \\text{ €}$",
+        "$10,00 \\text{ €}$"
+      ],
+      "correctAnswer": "$10,50 \\text{ €}$",
+      "explanation": "C'est une situation de proportionnalité. On cherche le prix au kilogramme (unité) : $4,50 / 3 = 1,50 \\text{ €/kg}$. Pour $7 \\text{ kg}$, on multiplie : $1,50 \\times 7 = 10,50 \\text{ €}$. On peut aussi faire un produit en croix : $(4,50 \\times 7) / 3 = 31,50 / 3 = 10,50$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

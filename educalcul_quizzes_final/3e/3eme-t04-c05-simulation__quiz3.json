@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Simulation - Comparer",
+  "questions": [
+    {
+      "text": "Lorsqu'on simule un grand nombre de fois une expérience aléatoire, que peut-on dire de la fréquence obtenue par rapport à la probabilité théorique ?",
+      "options": [
+        "Elle est toujours exactement égale à la probabilité théorique.",
+        "Elle s'en écarte de plus en plus au fil des essais.",
+        "Elle a tendance à se rapprocher de la probabilité théorique.",
+        "Elle n'a aucun lien avec la probabilité théorique."
+      ],
+      "correctAnswer": "Elle a tendance à se rapprocher de la probabilité théorique.",
+      "explanation": "C'est la loi des grands nombres : lorsque le nombre d'essais augmente, la fréquence observée d'un événement se stabilise autour de sa probabilité théorique. Les options A et D sont fausses car il y a toujours des fluctuations aléatoires. L'option B est l'inverse du phénomène observé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous montre les fréquences (en %) observées pour un événement de probabilité théorique $0,5$ après différents nombres d'essais. Quelle affirmation est correcte ?",
+      "options": [
+        "La fréquence après $10$ essais est la plus fiable car elle est la plus élevée.",
+        "Plus le nombre d'essais augmente, plus la fréquence se stabilise autour de $0,5$.",
+        "La fréquence après $1\\,000$ essais prouve que la probabilité n'est pas $0,5$.",
+        "Il faut exactement $100$ essais pour obtenir la probabilité exacte."
+      ],
+      "correctAnswer": "Plus le nombre d'essais augmente, plus la fréquence se stabilise autour de $0,5$.",
+      "explanation": "Le graphique montre une fréquence de $60\\%$ pour $10$ essais, $52\\%$ pour $100$ essais et $50\\%$ pour $1\\,000$ essais. On voit clairement la convergence vers la valeur théorique $50\\%$ ($0,5$) quand le nombre d'essais croît. La fiabilité augmente avec le nombre d'essais, on n'obtient jamais la valeur exacte (option D) et $1\\,000$ essais donnent une fréquence très proche de $0,5$ (option C fausse).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fréquences (en %) observées pour une probabilité théorique de $0,5$",
+        "bars": [
+          {
+            "label": "10 essais",
+            "value": 60,
+            "tone": "blue"
+          },
+          {
+            "label": "100 essais",
+            "value": 52,
+            "tone": "blue"
+          },
+          {
+            "label": "1 000 essais",
+            "value": 50,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On souhaite estimer la probabilité d'obtenir « 6 » avec un dé équilibré par simulation. Parmi les choix suivants, quel nombre d'essais permettra d'obtenir l'estimation la plus fiable ?",
+      "options": [
+        "$20$ essais",
+        "$100$ essais",
+        "$1\\,000$ essais",
+        "$10\\,000$ essais"
+      ],
+      "correctAnswer": "$10\\,000$ essais",
+      "explanation": "La précision d'une estimation par simulation dépend du nombre d'essais : plus il est grand, plus l'intervalle de fluctuation est étroit et plus la fréquence observée est proche de la probabilité théorique ($1/6 \\approx 0,1667$). $10\\,000$ essais offrent une bien meilleure stabilité que $1\\,000$, $100$ ou $20$ essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simuler la somme de deux dés à six faces équilibrés. Pourquoi l'algorithme suivant est-il incorrect ?\\n`x <- randint(2, 12)`\\n`si x == 7 alors ...`",
+      "options": [
+        "La fonction `randint` n'existe pas en Python.",
+        "Les sommes possibles (de 2 à 12) ne sont pas équiprobables.",
+        "Il faut obligatoirement utiliser une boucle `while`.",
+        "La probabilité d'obtenir 7 avec deux dés est nulle."
+      ],
+      "correctAnswer": "Les sommes possibles (de 2 à 12) ne sont pas équiprobables.",
+      "explanation": "Avec deux dés, il y a $36$ résultats équiprobables. La somme 7 a 6 chances sur 36 (1+6, 2+5, 3+4, 4+3, 5+2, 6+1), alors que la somme 2 n'a qu'une chance (1+1). L'instruction `randint(2,12)` tire un entier entre 2 et 12 avec la même probabilité ($1/11$), ce qui ne modélise pas la réalité. Il faut simuler les deux dés séparément : `randint(1,6) + randint(1,6)`.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $1\\,000$ lancers d'une pièce de monnaie et on obtient $580$ faces. Pour une pièce équilibrée, l'intervalle de fluctuation au seuil de $95\\%$ est approximativement $[0,47 ; 0,53]$. Quelle conclusion tirer ?",
+      "options": [
+        "La pièce est certainement équilibrée.",
+        "La pièce est certainement truquée.",
+        "Le résultat est compatible avec une pièce équilibrée.",
+        "Le résultat n'est pas compatible avec une pièce équilibrée."
+      ],
+      "correctAnswer": "Le résultat n'est pas compatible avec une pièce équilibrée.",
+      "explanation": "La fréquence observée est $580/1000 = 0,58$. Cette valeur est en dehors de l'intervalle de fluctuation $[0,47 ; 0,53]$ calculé sous l'hypothèse d'une pièce équilibrée ($p=0,5$). Un tel écart a moins de 5 % de chances de se produire si la pièce est équilibrée. On rejette donc l'hypothèse d'équilibre : le résultat n'est pas compatible. Attention : en statistiques, on ne prouve pas la certitude (options A et B), on parle de compatibilité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

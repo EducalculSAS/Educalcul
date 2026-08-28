@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Suivre",
+  "title": "Suivi d'algorithmes : programmes de calcul",
+  "blocks": [
+    {
+      "title": "Exécution pas à pas",
+      "content": "On considère le programme de calcul suivant :\\n1. Choisir un nombre de départ.\\n2. Ajouter 5.\\n3. Multiplier par 3.\\n4. Soustraire 4.\\n5. Afficher le résultat.\\n\\nComplète le suivi pour un nombre de départ égal à 7.\\nÉtape 1 : nombre = ...\\nÉtape 2 : ...\\nÉtape 3 : ...\\nÉtape 4 : ...\\nRésultat final : ...",
+      "correctAnswer": "Étape 1 : 7 ; Étape 2 : 12 ; Étape 3 : 36 ; Étape 4 : 32 ; Résultat final : 32",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique les instructions dans l'ordre : on commence par 7. Étape 2 : 7 + 5 = 12. Étape 3 : 12 × 3 = 36. Étape 4 : 36 - 4 = 32. Le résultat affiché est 32.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle Repeter",
+      "content": "On exécute l'algorithme suivant avec la variable N initialisée à 4 :\\nVariables : N (entier), S (entier)\\nDébut\\n  S ← 0\\n  Repeter N fois\\n    S ← S + 3\\n  Fin Repeter\\n  Afficher S\\nFin\\n\\nQuelle valeur est affichée ? Donne la valeur de S au départ et après chaque tour de boucle.",
+      "correctAnswer": "Au départ S = 0 ; après tour 1 : S = 3 ; après tour 2 : S = 6 ; après tour 3 : S = 9 ; après tour 4 : S = 12. Valeur affichée : 12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle s'exécute exactement N fois, ici 4 fois. La variable S commence à 0. À chaque tour, on ajoute 3. Après 4 tours, S vaut 0 + 3 + 3 + 3 + 3 = 12. C'est cette valeur qui est affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Remonter le programme",
+      "content": "Un programme de calcul est défini par les étapes suivantes :\\n1. Choisir un nombre x.\\n2. Le multiplier par 3.\\n3. Ajouter 6.\\n4. Diviser par 2.\\n5. Soustraire 3.\\n6. Afficher le résultat.\\n\\nSi le résultat affiché est 12, quel était le nombre de départ x ? Explique le raisonnement en remontant le programme (opérations inverses).",
+      "correctAnswer": "Le nombre de départ est 8.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part du résultat 12 et on fait les opérations inverses dans l'ordre inverse :\\n- Inverse de 'soustraire 3' : on ajoute 3 → 12 + 3 = 15.\\n- Inverse de 'diviser par 2' : on multiplie par 2 → 15 × 2 = 30.\\n- Inverse d' 'ajouter 6' : on soustrait 6 → 30 - 6 = 24.\\n- Inverse de 'multiplier par 3' : on divise par 3 → 24 ÷ 3 = 8.\\nLe nombre de départ était donc 8. Vérification : 8 × 3 = 24 ; 24 + 6 = 30 ; 30 ÷ 2 = 15 ; 15 - 3 = 12.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

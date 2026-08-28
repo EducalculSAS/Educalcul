@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Union / intersection simple",
+  "title": "Quiz : Union et intersection d'intervalles (Seconde)",
+  "questions": [
+    {
+      "text": "Soient $I_1 = [2, 5]$ et $I_2 = [4, 7]$. Quelle est l'intersection $I_1 \\cap I_2$ ?",
+      "options": [
+        "$[2, 7]$",
+        "$[4, 5]$",
+        "$[2, 4]$",
+        "$[5, 7]$"
+      ],
+      "correctAnswer": "$[4, 5]$",
+      "explanation": "L'intersection contient les nombres appartenant aux deux intervalles. Le plus grand des bornes inférieures est 4, le plus petit des bornes supérieures est 5. Les deux intervalles sont fermés, donc l'intersection est l'intervalle fermé $[4, 5]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $I_1 = [1, 3]$ et $I_2 = [5, 6]$. Quelle est l'union $I_1 \\cup I_2$ ?",
+      "options": [
+        "$[1, 6]$",
+        "$[1, 3] \\cup [5, 6]$",
+        "$[3, 5]$",
+        "$[1, 5]$"
+      ],
+      "correctAnswer": "$[1, 3] \\cup [5, 6]$",
+      "explanation": "Les deux intervalles sont disjoints (le premier se termine à 3, le second commence à 5). L'union n'est donc pas un seul intervalle continu, mais la réunion des deux intervalles : $[1, 3] \\cup [5, 6]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $I_1 = (-2, 4]$ et $I_2 = [1, 6)$. Quelle est l'intersection $I_1 \\cap I_2$ ?",
+      "options": [
+        "$(-2, 6)$",
+        "$[1, 4]$",
+        "$(1, 4]$",
+        "$[1, 4)$"
+      ],
+      "correctAnswer": "$[1, 4]$",
+      "explanation": "L'intersection prend la borne inférieure la plus grande (1, incluse car $I_2$ est fermé à 1) et la borne supérieure la plus petite (4, incluse car $I_1$ est fermé à 4). Donc l'intersection est l'intervalle fermé $[1, 4]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'union de $(-\\infty, 0)$ et $[0, +\\infty)$ ?",
+      "options": [
+        "$\\mathbb{R}$",
+        "$(-\\infty, 0) \\cup [0, +\\infty)$",
+        "$(-\\infty, 0)$",
+        "$[0, +\\infty)$"
+      ],
+      "correctAnswer": "$\\mathbb{R}$",
+      "explanation": "Le premier intervalle contient tous les réels strictement négatifs, le second contient 0 et tous les réels positifs. Ensemble, ils couvrent tous les nombres réels sans omission, donc l'union est l'ensemble des réels $\\mathbb{R}$ (équivalent à $(-\\infty, +\\infty)$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a < c < b < d$. On considère les intervalles $I_1 = [a, b]$ et $I_2 = [c, d]$. Quelle est l'intersection $I_1 \\cap I_2$ ?",
+      "options": [
+        "$[a, d]$",
+        "$[c, b]$",
+        "$[a, c]$",
+        "$[b, d]$"
+      ],
+      "correctAnswer": "$[c, b]$",
+      "explanation": "La borne inférieure de l'intersection est le maximum des bornes inférieures : $\\max(a, c) = c$. La borne supérieure est le minimum des bornes supérieures : $\\min(b, d) = b$. Les deux intervalles sont fermés, donc l'intersection est l'intervalle fermé $[c, b]$ (non vide car $c < b$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

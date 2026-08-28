@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Résoudre système simple",
+  "title": "Résolution de systèmes simples",
+  "blocks": [
+    {
+      "title": "Système 1",
+      "content": "Résous le système suivant :\\n$\\begin{cases} x + y = 5 \\\\ 2x - y = 1 \\end{cases}$\\nLa solution est $x = {{1}}$ et $y = {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les deux équations pour éliminer $y$ : $(x+y)+(2x-y)=5+1$ ce qui donne $3x=6$, donc $x=2$. En remplaçant $x$ dans la première équation : $2+y=5$, d'où $y=3$. La solution du système est $(2;3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Système 2",
+      "content": "Résous le système suivant par élimination :\\n$\\begin{cases} x + 2y = 5 \\\\ 2x - y = 5 \\end{cases}$\\nOn trouve $x = {{1}}$ et $y = {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie la première équation par $2$ : $2x+4y=10$. On soustrait la deuxième équation : $(2x+4y)-(2x-y)=10-5$, ce qui donne $5y=5$, donc $y=1$. En remplaçant $y$ dans la première équation : $x+2=5$, d'où $x=3$. La solution est $(3;1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Système 3",
+      "content": "Résous le système suivant :\\n$\\begin{cases} x - y = -1 \\\\ 2x + y = 13 \\end{cases}$\\nLa solution est $x = {{1}}$ et $y = {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les deux équations pour éliminer $y$ : $(x-y)+(2x+y)=-1+13$, ce qui donne $3x=12$, donc $x=4$. En remplaçant $x$ dans la première équation : $4-y=-1$, d'où $y=5$. La solution du système est $(4;5)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

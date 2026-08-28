@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 200,
+  "_course_code": "ce2-t07-c05-cercle-centre-rayon-diametre",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Cercle : centre, rayon, diamètre",
+  "title": "Quiz : Applications du cercle (centre, rayon, diamètre)",
+  "questions": [
+    {
+      "text": "Sur la figure, le compas est ouvert sur un rayon de $3$ cm. Quelle est la longueur du diamètre de ce cercle ?",
+      "options": [
+        "$6$ cm",
+        "$3$ cm",
+        "$9$ cm",
+        "$1,5$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Le diamètre d'un cercle vaut deux fois le rayon. Ici, le rayon mesure $3$ cm, donc le diamètre mesure $2 \\times 3 = 6$ cm. L'option $3$ cm confond rayon et diamètre, $9$ cm correspond à trois fois le rayon et $1,5$ cm à la moitié du rayon.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas ouvert sur un rayon de 3 cm"
+      }
+    },
+    {
+      "text": "Le segment [AB] passe par le centre O d'un cercle et ses extrémités A et B sont sur le cercle. Comment nomme-t-on ce segment ?",
+      "options": [
+        "Un rayon",
+        "Un diamètre",
+        "Une corde",
+        "Un arc"
+      ],
+      "correctAnswer": "Un diamètre",
+      "explanation": "Par définition, un diamètre est un segment qui passe par le centre du cercle et dont les deux extrémités sont sur le cercle. Un rayon a une seule extrémité sur le cercle (l'autre est le centre), une corde ne passe pas forcément par le centre, et un arc est une partie de la circonférence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un diamètre de $10$ cm. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$20$ cm",
+        "$2,5$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "Le rayon est la moitié du diamètre. Il faut diviser la longueur du diamètre par $2$ : $10 \\div 2 = 5$ cm. L'option $10$ cm confond les deux notions, $20$ cm correspond au double du diamètre et $2,5$ cm au quart du diamètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer un cercle de rayon $4$ cm au compas, quelle distance doit-on régler entre la pointe et le crayon ?",
+      "options": [
+        "$4$ cm",
+        "$8$ cm",
+        "$2$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$4$ cm",
+      "explanation": "L'écartement du compas (distance entre la pointe sèche et la mine) correspond exactement à la longueur du rayon du cercle que l'on veut tracer. Pour un rayon de $4$ cm, on règle donc le compas sur $4$ cm. $8$ cm est le diamètre, $2$ cm est la moitié du rayon et $16$ cm n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le cercle A a un rayon de $3$ cm. Le cercle B a un diamètre de $8$ cm. Quel cercle a le plus grand diamètre ?",
+      "options": [
+        "Le cercle B",
+        "Le cercle A",
+        "Ils ont le même diamètre",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le cercle B",
+      "explanation": "Le diamètre du cercle A vaut $2 \\times 3 = 6$ cm. Le diamètre du cercle B vaut $8$ cm. On compare $6$ cm et $8$ cm : $8 > 6$, donc le cercle B a le plus grand diamètre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.708923+00:00",
+  "id": 713,
+  "code": "terminale-generale-maths-t06-c07",
+  "title": "Applications de l'intégration",
+  "description": "Cours structuré Educalcul : Applications de l'intégration.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Applications de l'intégration",
+    "objectif_global": "Applications de l'intégration",
+    "mini_lecons_imposees": [
+      "Modéliser.",
+      "Calculer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Modéliser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux applications de l'intégration. Ici, nous ne cherchons pas encore à calculer, mais à comprendre comment naît l'idée d'une intégrale à partir d'une situation concrète. C'est une étape décisive : en Terminale, on attend de toi que tu saches traduire un problème physique, géométrique ou probabiliste en une écriture mathématique précise, celle de l'intégrale définie $\\int_a^b f(x)\\,dx$. Rassure-toi, cette modélisation suit une logique très naturelle que nous allons décortiquer ensemble, pas à pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la somme discrète à la somme continue : l'intuition des rectangles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles mesurer la surface d'un terrain bordé par une rivière au tracé capricieux. Tu ne connais pas de formule toute faite pour cette forme irrégulière. L'idée géniale, qui remonte à Archimède et a été formalisée par Riemann, consiste à découper le terrain en tranches verticales très fines, à approximer chaque tranche par un rectangle, puis à additionner les aires de ces rectangles. Plus les tranches sont fines, meilleure est l'approximation. Au limite, lorsque la largeur des rectangles tend vers $0$, la somme des aires devient exactement l'aire cherchée. C'est cette limite qu'on note $\\int_a^b f(x)\\,dx$, où $f(x)$ donne la hauteur du rectangle à l'abscisse $x$, et $dx$ symbolise l'infinie finesse de la tranche."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 8,
+              "caption": "Approximation de l'aire sous $y=x^2$ sur $[0;2]$ par 8 rectangles. Augmente le nombre de rectangles pour voir la convergence."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'animation ci-dessus : avec seulement 8 rectangles, l'approximation est déjà assez bonne, mais on voit bien les petits espaces vides ou les dépassements au-dessus de la courbe. En augmentant le nombre de rectangles, ces défauts disparaissent et la somme des aires des rectangles colle parfaitement à l'aire réelle. C'est exactement ce que signifie l'intégrale : la limite de ces sommes de Riemann lorsque le pas de discrétisation tend vers $0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette idée de passage du discret au continu est universelle. Elle ne sert pas qu'à calculer des aires : chaque fois qu'une quantité varie continûment et qu'on veut en connaître le total accumulé, l'intégrale s'impose naturellement. C'est ce que nous allons voir maintenant avec trois grandes familles d'applications."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Aires entre courbes : quand deux fonctions se disputent l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, la région qui nous intéresse n'est pas simplement bornée par l'axe des abscisses et une courbe, mais par deux courbes $y=f(x)$ et $y=g(x)$ qui se croisent ou s'encadrent. L'aire de cette région, sur un intervalle $[a;b]$ où $f(x) \\ge g(x)$, s'obtient en sommant les hauteurs des rectangles qui vont de la courbe du bas vers la courbe du haut. La hauteur d'un rectangle à l'abscisse $x$ vaut donc $f(x) - g(x)$, et l'aire totale s'écrit $\\int_a^b \\bigl(f(x) - g(x)\\bigr)\\,dx$. Attention : il faut toujours vérifier qui est au-dessus sur tout l'intervalle ! Si les courbes se croisent, il faut découper l'intervalle en sous-intervalles où l'ordre reste constant."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -1,
+              "xmax": 2,
+              "caption": "Aire entre $y=x^2$ (bleu) et $y=x$ (rouge) sur $[0;1]$. Ici $x \\ge x^2$, donc l'aire est $\\int_0^1 (x - x^2)\\,dx$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le graphique, tu vois bien que la droite $y=x$ passe au-dessus de la parabole $y=x^2$ entre $0$ et $1$. La hauteur de chaque rectangle vertical est exactement l'écart entre les deux courbes. C'est cette différence qu'on intègre. Si on avait inversé l'ordre, on aurait trouvé une aire négative, ce qui n'a pas de sens géométrique : l'aire est une grandeur positive. Toujours faire un petit croquis ou un tableau de signes de $f-g$ avant de se lancer !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment modéliser des aires planes, changeons de dimension. L'intégrale sait aussi fabriquer des volumes, en empilant non plus des rectangles mais des disques ou des cylindres. C'est le domaine des solides de révolution, un grand classique du programme qui allie géométrie dans l'espace et calcul intégral."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volumes de révolution : des disques empilés pour remplir l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends une courbe $y=f(x)$ positive sur $[a;b]$ et fais-la tourner autour de l'axe des abscisses. Elle génère un solide de révolution, comme un vase ou une bouteille. Pour en calculer le volume, on le tranche perpendiculairement à l'axe de rotation : chaque tranche est un disque de rayon $f(x)$ et d'épaisseur $dx$. Son volume vaut $\\pi f(x)^2 \\, dx$. En sommant tous ces disques infinitésimaux, on obtient la formule célèbre : $V = \\pi \\int_a^b f(x)^2 \\, dx$. C'est le même raisonnement par sommes de Riemann, mais appliqué à des volumes élémentaires au lieu d'aires élémentaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\pi \\int_a^b [f(x)]^2 \\, dx"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si la région tournée est bornée par deux courbes $f(x)$ et $g(x)$ (avec $f \\ge g \\ge 0$), chaque tranche devient un anneau (un disque percé) : le volume élémentaire vaut $\\pi (f(x)^2 - g(x)^2) dx$. On intègre cette différence de carrés. Cette formule est parfois appelée « méthode des anneaux » ou « méthode des washers » en anglais. Elle s'applique aussi pour une rotation autour de l'axe des ordonnées, en exprimant $x$ en fonction de $y$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Les volumes de révolution sont magnifiques, mais l'intégration ne s'arrête pas à la géométrie statique. En physique, elle permet de calculer le travail d'une force variable, le centre de masse d'un objet non homogène, ou encore la charge électrique accumulée. Chaque fois, le schéma est identique : on identifie une grandeur élémentaire (travail élémentaire, masse élémentaire, charge élémentaire), on l'exprime en fonction d'une variable de position, et on intègre sur tout le domaine. C'est cette universalité du raisonnement qui fait la force de l'outil intégral."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications physiques : travail, centre de masse, probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple du travail d'une force variable $F(x)$ qui déplace un objet le long de l'axe des abscisses de $a$ à $b$. Sur un minuscule déplacement $dx$, la force est pratiquement constante, le travail élémentaire vaut $dW = F(x)\\,dx$. Le travail total est la somme de ces travaux élémentaires : $W = \\int_a^b F(x)\\,dx$. C'est exactement la même structure que pour l'aire ! De même, pour une tige de densité linéique $\\rho(x)$ (masse par unité de longueur), la masse totale est $M = \\int_a^b \\rho(x)\\,dx$, et l'abscisse du centre de masse est $\\bar{x} = \\frac{1}{M} \\int_a^b x\\,\\rho(x)\\,dx$. En probabilités, si $f(x)$ est une densité de probabilité sur $[a;b]$, la probabilité que la variable aléatoire se trouve dans $[c;d] \\subset [a;b]$ est $\\int_c^d f(x)\\,dx$. Partout le même patron : une densité (hauteur, force, masse, probabilité) multipliée par un élément de longueur, sommée sur un intervalle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la grandeur élémentaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle est la petite quantité qu'on additionne ? Aire d'un rectangle ($f(x)dx$), volume d'un disque ($\\pi f(x)^2 dx$), travail élémentaire ($F(x)dx$), masse élémentaire ($\\rho(x)dx$), probabilité élémentaire ($f(x)dx$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exprimer cette grandeur en fonction de la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire la formule de l'élément en fonction de $x$ (ou $y$, ou $t$ selon le contexte). Vérifier les unités : l'élément doit avoir la dimension de la grandeur totale (aire en $m^2$, volume en $m^3$, travail en joules, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer les bornes d'intégration",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur quel intervalle la variable parcourt-elle tout le domaine ? Ce sont les bornes $a$ et $b$ de l'intégrale. Attention aux changements de variable ou aux symétries qui peuvent simplifier les bornes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire l'intégrale définitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assembler : $\\int_a^b (\\text{expression de l'élément})\\,dx$. Relire pour vérifier la cohérence : l'intégrand est-il positif si la grandeur totale est positive ? Les unités sont-elles homogènes ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces quatre étapes constituent ta check-list personnelle pour chaque problème de modélisation. Ne les saute pas, même quand l'exercice te paraît simple : c'est en les appliquant systématiquement que tu gagneras en rigueur et en vitesse. Maintenant, essayons un dernier exercice qui mélange plusieurs de ces idées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère la courbe $\\mathcal{C}$ d'équation $y = \\sqrt{x}$ sur l'intervalle $[0;4]$. On veut modéliser l'aire du domaine borné par $\\mathcal{C}$, l'axe des abscisses et les droites $x=0$ et $x=4$. Écrire l'intégrale qui donne cette aire, sans la calculer. Expliquer en une phrase le sens de chaque symbole ($\\int$, $0$, $4$, $\\sqrt{x}$, $dx$).",
+              "answer": "L'aire est donnée par $\\int_0^4 \\sqrt{x}\\,dx$. Le symbole $\\int$ signifie « somme continue » (limite de sommes de Riemann). $0$ et $4$ sont les bornes : l'abscisse de départ et l'abscisse d'arrivée. $\\sqrt{x}$ est la hauteur du rectangle élémentaire à l'abscisse $x$. $dx$ est la largeur infiniment petite de ce rectangle.",
+              "hint": "Rappelle-toi la définition de l'intégrale comme limite de sommes d'aires de rectangles de largeur $dx$ et de hauteur $f(x)$.",
+              "explanation": "C'est l'application directe de la définition de l'intégrale comme aire sous la courbe. Chaque symbole a un sens géométrique précis qu'il faut savoir expliciter."
+            },
+            {
+              "question": "Soient les courbes $\\mathcal{C}_f : y = x^2$ et $\\mathcal{C}_g : y = 2x - x^2$. Elles se coupent en $A(0;0)$ et $B(1;1)$. Modéliser l'aire du domaine borné par ces deux arcs de courbe entre $A$ et $B$. Quelle fonction est au-dessus sur $[0;1]$ ? Écrire l'intégrale correspondante.",
+              "answer": "Sur $[0;1]$, on a $2x - x^2 \\ge x^2$ car $2x - 2x^2 = 2x(1-x) \\ge 0$. L'aire est $\\int_0^1 \\bigl((2x - x^2) - x^2\\bigr)\\,dx = \\int_0^1 (2x - 2x^2)\\,dx$.",
+              "hint": "Étudie le signe de la différence $g(x) - f(x) = 2x - 2x^2$ sur $[0;1]$. Factorise pour voir le signe.",
+              "explanation": "Il faut toujours vérifier quelle courbe est au-dessus avant d'écrire l'intégrale. Ici $g(x) - f(x) = 2x(1-x)$ est positif sur $]0;1[$, donc $g$ est au-dessus. L'intégrand est la différence des deux fonctions."
+            },
+            {
+              "question": "On fait tourner autour de l'axe des abscisses la région du plan bornée par la courbe $y = \\sin x$, l'axe des abscisses et les droites $x=0$ et $x=\\pi$. Modéliser le volume du solide engendré. Écrire l'intégrale, sans la calculer.",
+              "answer": "Le volume est $V = \\pi \\int_0^{\\pi} \\sin^2 x\\,dx$. Chaque tranche perpendiculaire à l'axe est un disque de rayon $\\sin x$, d'aire $\\pi \\sin^2 x$, d'épaisseur $dx$.",
+              "hint": "Utilise la formule du volume de révolution autour de l'axe des abscisses : disque de rayon $f(x)$, aire $\\pi f(x)^2$.",
+              "explanation": "C'est l'application directe de la méthode des disques. La fonction $\\sin x$ est positive sur $[0;\\pi]$, donc le rayon est bien $\\sin x$. L'intégrale donne la somme des volumes des disques infinitésimaux."
+            },
+            {
+              "question": "Une tige de longueur $1\\,m$ a une densité linéique (masse par mètre) qui varie selon l'abscisse $x$ (en mètres) par $\\rho(x) = 2 + x^2$ (en $kg/m$). Modéliser : (a) la masse totale de la tige, (b) l'abscisse de son centre de masse. Écrire les deux intégrales, sans les calculer.",
+              "answer": "(a) $M = \\int_0^1 (2 + x^2)\\,dx$. (b) $\\bar{x} = \\frac{1}{M} \\int_0^1 x(2 + x^2)\\,dx$.",
+              "hint": "Masse élémentaire : $\\rho(x)dx$. Moment par rapport à l'origine : $x \\cdot \\rho(x)dx$. Centre de masse = moment total / masse totale.",
+              "explanation": "On applique les formules de physique : masse = intégrale de la densité, centre de masse = intégrale de $x\\rho(x)$ divisée par la masse. Les bornes vont de $0$ à $1$ car la tige fait $1\\,m$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du sujet : maintenant que nous savons modéliser une situation par une intégrale, il faut la calculer. En Terminale, tu disposes d'une boîte à outils bien fournie : intégration par parties, changement de variable, décomposition en éléments simples, et aussi les intégrales impropres pour les domaines non bornés ou les fonctions non bornées. Ce n'est pas une simple liste de techniques à mémoriser : chaque méthode répond à une structure précise de la fonction à intégrer. Apprendre à reconnaître cette structure, c'est gagner du temps et de la justesse. Nous allons passer en revue les situations types, avec des exemples concrets et des pièges à éviter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intégration par parties : quand le produit appelle la dérivée"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule $\\int u\\,dv = uv - \\int v\\,du$ (ou $\\int f g' = fg - \\int f' g$) est l'alliée des produits où l'un des facteurs se simplifie en se dérivant, et l'autre s'intègre facilement. Le choix de $u$ et $dv$ (ou $f$ et $g'$) est crucial. La règle mnémotechnique classique « LIATE » (Logarithme, Inverse trigonométrique, Algébrique, Trigonométrique, Exponentielle) suggère de choisir comme $u$ le facteur qui apparaît en premier dans cette liste, car sa dérivée sera plus simple. Par exemple, pour $\\int x \\ln x\\,dx$, on pose $u = \\ln x$ (logarithme) et $dv = x\\,dx$ (algébrique). Alors $du = \\frac{1}{x}dx$ et $v = \\frac{x^2}{2}$. L'intégrale devient $\\frac{x^2}{2}\\ln x - \\int \\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{1}{2}\\int x\\,dx$, qui est immédiate."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le produit et choisir $u$ et $dv$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérer les deux facteurs. Choisir $u$ comme celui qui se simplifie en se dérivant (souvent polynôme, logarithme, arccos, arcsin...). Le reste sera $dv$, qu'il faut savoir intégrer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $du$ et $v$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dériver $u$ pour obtenir $du$. Intégrer $dv$ pour obtenir $v$ (sans constante, on l'ajoute à la fin). Vérifier que $\\int v\\,du$ est plus simple que l'intégrale de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire $uv - \\int v\\,du$. Calculer l'intégrale restante. Ajouter la constante $+C$ (intégrale indéfinie) ou évaluer entre les bornes (intégrale définie)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : parfois il faut appliquer l'intégration par parties deux fois de suite, par exemple pour $\\int x^2 e^x\\,dx$ ou $\\int e^x \\cos x\\,dx$. Dans ce dernier cas, on tombe sur l'intégrale de départ avec un signe moins, ce qui permet de la résoudre par une astuce algébrique. Ne te décourage pas si l'intégrale ne se résout pas du premier coup : c'est le jeu normal de cette méthode."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intégration par parties est puissante, mais elle ne suffit pas face aux fonctions composées. C'est là qu'intervient le changement de variable, l'outil le plus utilisé au quotidien. Il repose sur la formule de dérivation des fonctions composées (règle de la chaîne), lue à l'envers."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changement de variable : dompter les fonctions composées"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'idée est de remplacer la variable $x$ par une nouvelle variable $t = \\varphi(x)$, choisie pour simplifier l'expression sous le signe intégrale. La relation $dt = \\varphi'(x)\\,dx$ permet de substituer $dx$. Pour une intégrale définie $\\int_a^b f(x)\\,dx$, les bornes changent aussi : $t$ varie de $\\varphi(a)$ à $\\varphi(b)$. C'est souvent plus sûr que de revenir à $x$ à la fin, car ça évite les erreurs de back-substitution. Par exemple, pour $\\int_0^1 \\frac{2x}{1+x^2}\\,dx$, on pose $t = 1+x^2$, $dt = 2x\\,dx$. Les bornes : $x=0 \\Rightarrow t=1$, $x=1 \\Rightarrow t=2$. L'intégrale devient $\\int_1^2 \\frac{dt}{t} = [\\ln t]_1^2 = \\ln 2$. Élégant et sans retour en arrière."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f(\\varphi(x))\\,\\varphi'(x)\\,dx = \\int_{\\varphi(a)}^{\\varphi(b)} f(t)\\,dt"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les changements de variable classiques à connaître par cœur : $t = \\sqrt{ax+b}$ pour les racines, $t = \\tan(x/2)$ pour les intégrales rationnelles en $\\sin x$ et $\\cos x$ (substitution d'Euler), $t = x^2$ quand on voit $x\\,dx$ et $x^2$ ensemble. Mais le vrai talent, c'est de sentir le bon changement en regardant la forme de l'intégrand : cherche une fonction et sa dérivée (ou un multiple constant) qui apparaissent ensemble. C'est le signe qu'un changement de variable va tout simplifier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'intégrand est une fraction rationnelle (quotient de deux polynômes) où le degré du numérateur est inférieur à celui du dénominateur. Ni l'intégration par parties ni le changement de variable standard ne marchent bien. Il faut alors décomposer cette fraction en une somme de fractions plus simples, appelées éléments simples, dont les intégrales sont immédiates (logarithmes ou arctangentes). C'est la méthode de la décomposition en éléments simples, systématique et algorithmique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition en éléments simples : diviser pour régner"
+            },
+            {
+              "type": "paragraph",
+              "content": "La procédure est rigoureuse : 1) Si le degré du numérateur $\\ge$ degré du dénominateur, faire la division euclidienne pour obtenir une partie polynôme + un reste de degré inférieur. 2) Factoriser le dénominateur en facteurs irréductibles sur $\\mathbb{R}$ (premier degré : $x-a$ ; second degré : $x^2+bx+c$ avec $\\Delta < 0$). 3) Écrire la forme de la décomposition : pour chaque facteur $(x-a)^k$, on met $\\frac{A_1}{x-a} + \\frac{A_2}{(x-a)^2} + \\dots + \\frac{A_k}{(x-a)^k}$. Pour chaque facteur $(x^2+bx+c)^k$, on met $\\frac{B_1 x + C_1}{x^2+bx+c} + \\dots + \\frac{B_k x + C_k}{(x^2+bx+c)^k}$. 4) Identifier les coefficients en mettant au même dénominateur ou en utilisant des valeurs astucieuses de $x$. 5) Intégrer chaque terme : $\\int \\frac{A}{x-a}\\,dx = A\\ln|x-a|$, $\\int \\frac{Bx+C}{x^2+bx+c}\\,dx$ se ramène à $\\frac{B}{2}\\ln(x^2+bx+c) + \\frac{2C-Bb}{\\sqrt{4c-b^2}} \\arctan\\frac{2x+b}{\\sqrt{4c-b^2}}$ après complétion du carré."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def decomposition_elements_simples(num, den):\\n    \"\"\"\\n    Exemple conceptuel : décomposition de (2x+3)/(x^2+3x+2)\\n    Dénominateur = (x+1)(x+2)\\n    Forme : A/(x+1) + B/(x+2)\\n    2x+3 = A(x+2) + B(x+1)\\n    x=-1 -> 1 = A\\n    x=-2 -> -1 = -B -> B=1\\n    Résultat : 1/(x+1) + 1/(x+2)\\n    Intégrale : ln|x+1| + ln|x+2| + C\\n    \"\"\"\\n    pass",
+              "caption": "Algorithme de décomposition en éléments simples pour une fraction rationnelle simple."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet algorithme peut sembler fastidieux, mais il est d'une efficacité redoutable. Une fois les coefficients trouvés, l'intégration devient mécanique. Le piège principal : oublier la division euclidienne quand le numérateur a un degré trop grand, ou mal factoriser le dénominateur (rater un facteur du second degré). Prends le temps de bien factoriser, c'est la clé de la réussite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste une famille d'intégrales qui sort du cadre habituel : les intégrales impropres. Elles apparaissent quand l'intervalle d'intégration n'est pas borné (ex: $\\int_1^{+\\infty} \\frac{dx}{x^2}$) ou quand la fonction n'est pas bornée sur l'intervalle (ex: $\\int_0^1 \\frac{dx}{\\sqrt{x}}$). Dans les deux cas, on définit l'intégrale comme une limite d'intégrales propres. Si cette limite existe et est finie, on dit que l'intégrale converge ; sinon, elle diverge. C'est un concept subtil mais essentiel, notamment en probabilités (lois continues sur $\\mathbb{R}$) et en physique (champs à l'infini)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intégrales impropres : l'infini et les singularités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une intégrale sur $[a;+\\infty[$, on pose $\\int_a^{+\\infty} f(x)\\,dx = \\lim_{b \\to +\\infty} \\int_a^b f(x)\\,dx$. Pour une singularité en $a$ (fonction non bornée près de $a$), on pose $\\int_a^b f(x)\\,dx = \\lim_{\\varepsilon \\to 0^+} \\int_{a+\\varepsilon}^b f(x)\\,dx$. Si l'intervalle a deux problèmes (ex: $\\int_0^{+\\infty}$), on coupe en deux en un point quelconque $c$ : $\\int_0^{+\\infty} = \\int_0^c + \\int_c^{+\\infty}$, et il faut que les deux convergent. Les critères de comparaison sont précieux : si $0 \\le f(x) \\le g(x)$ et $\\int g$ converge, alors $\\int f$ converge. Si $f(x) \\ge g(x) \\ge 0$ et $\\int g$ diverge, alors $\\int f$ diverge. L'intégrale de référence est $\\int_1^{+\\infty} \\frac{dx}{x^p}$ : elle converge si $p>1$, diverge si $p \\le 1$. De même près de $0$ : $\\int_0^1 \\frac{dx}{x^p}$ converge si $p<1$, diverge si $p \\ge 1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_1^{+\\infty} \\frac{dx}{x^p} \\text{ converge } \\iff p > 1, \\qquad \\int_0^1 \\frac{dx}{x^p} \\text{ converge } \\iff p < 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces critères de comparaison évitent souvent de calculer une primitive explicite. Par exemple, $\\int_1^{+\\infty} \\frac{\\sin^2 x}{x^2}\\,dx$ converge car $0 \\le \\frac{\\sin^2 x}{x^2} \\le \\frac{1}{x^2}$ et $\\int_1^{+\\infty} \\frac{dx}{x^2}$ converge ($p=2>1$). C'est un gain de temps énorme en examen. Mais attention : la comparaison ne marche que pour des fonctions positives ! Si $f$ change de signe, il faut étudier la convergence absolue ($\\int |f|$) ou utiliser d'autres arguments."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision d'ensemble des techniques de calcul. Chaque méthode a son domaine de prédilection, et les problèmes d'examen mélangent souvent plusieurs d'entre elles : un changement de variable qui ramène à une fraction rationnelle, puis une décomposition en éléments simples, ou une intégration par parties qui fait apparaître une intégrale impropre. L'entraînement régulier sur des exercices variés est le seul moyen de développer l'intuition du bon choix. Le prochain exercice te propose un cas mixte pour tester ta capacité à enchaîner les outils."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer l'intégrale $I = \\int_0^1 x \\ln(1+x)\\,dx$ en utilisant une intégration par parties bien choisie. Détailler le choix de $u$ et $dv$, calculer $du$ et $v$, puis conclure.",
+              "answer": "On pose $u = \\ln(1+x)$ (logarithme, se simplifie en se dérivant) et $dv = x\\,dx$. Alors $du = \\frac{dx}{1+x}$ et $v = \\frac{x^2}{2}$. $I = [\\frac{x^2}{2}\\ln(1+x)]_0^1 - \\int_0^1 \\frac{x^2}{2}\\cdot\\frac{dx}{1+x} = \\frac{1}{2}\\ln 2 - \\frac{1}{2}\\int_0^1 \\frac{x^2}{1+x}\\,dx$. Division euclidienne : $\\frac{x^2}{1+x} = x - 1 + \\frac{1}{1+x}$. Donc $\\int_0^1 \\frac{x^2}{1+x}\\,dx = [\\frac{x^2}{2} - x + \\ln(1+x)]_0^1 = \\frac{1}{2} - 1 + \\ln 2 = \\ln 2 - \\frac{1}{2}$. Finalement $I = \\frac{1}{2}\\ln 2 - \\frac{1}{2}(\\ln 2 - \\frac{1}{2}) = \\frac{1}{4}$.",
+              "hint": "Choisis $u = \\ln(1+x)$ car sa dérivée $\\frac{1}{1+x}$ est rationnelle. Pour l'intégrale restante, fais une division euclidienne de $x^2$ par $1+x$.",
+              "explanation": "C'est un cas classique où l'intégration par parties transforme un produit logarithmique en une fraction rationnelle, qu'on traite ensuite par division euclidienne. Le choix de $u$ est guidé par la règle LIATE."
+            },
+            {
+              "question": "Calculer $J = \\int_0^{\\pi/2} \\frac{\\sin x}{1+\\cos^2 x}\\,dx$ par un changement de variable judicieux. Préciser le changement, les nouvelles bornes, et l'intégrale transformée.",
+              "answer": "Posons $t = \\cos x$, alors $dt = -\\sin x\\,dx$. Bornes : $x=0 \\Rightarrow t=1$, $x=\\pi/2 \\Rightarrow t=0$. $J = \\int_1^0 \\frac{-dt}{1+t^2} = \\int_0^1 \\frac{dt}{1+t^2} = [\\arctan t]_0^1 = \\frac{\\pi}{4}$.",
+              "hint": "Cherche une fonction et sa dérivée (à un signe près) dans l'intégrand. Ici $\\cos x$ et $-\\sin x$ sont présents.",
+              "explanation": "Le numérateur $\\sin x\\,dx$ est (à un signe près) la différentielle de $\\cos x$ qui apparaît au dénominateur. Le changement $t=\\cos x$ rend l'intégrale immédiate (arctangente). Le changement de bornes évite le retour à la variable $x$."
+            },
+            {
+              "question": "Décomposer en éléments simples et calculer $\\int \\frac{3x+5}{x^2+3x+2}\\,dx$. Factoriser le dénominateur, trouver la forme de la décomposition, identifier les coefficients, puis intégrer.",
+              "answer": "Dénominateur : $x^2+3x+2 = (x+1)(x+2)$. Forme : $\\frac{A}{x+1} + \\frac{B}{x+2}$. $3x+5 = A(x+2)+B(x+1)$. $x=-1 : 2 = A$. $x=-2 : -1 = -B \\Rightarrow B=1$. Décomposition : $\\frac{2}{x+1} + \\frac{1}{x+2}$. Intégrale : $2\\ln|x+1| + \\ln|x+2| + C = \\ln((x+1)^2|x+2|) + C$.",
+              "hint": "Factorise $x^2+3x+2$. La décomposition a deux termes car deux facteurs du premier degré distincts. Utilise la méthode des valeurs particulières pour trouver $A$ et $B$ rapidement.",
+              "explanation": "La factorisation du dénominateur guide la forme de la décomposition. La méthode des valeurs particulières (annuler chaque facteur) est la plus rapide pour identifier les coefficients. L'intégration donne des logarithmes."
+            },
+            {
+              "question": "Étudier la convergence de l'intégrale impropre $K = \\int_1^{+\\infty} \\frac{\\ln x}{x^2}\\,dx$. Si elle converge, la calculer. Utiliser un critère de comparaison pour la convergence, puis intégration par parties pour le calcul.",
+              "answer": "Convergence : pour $x \\ge 1$, $\\ln x \\le \\sqrt{x}$ (car $\\ln x \\le x^a$ pour tout $a>0$ grand $x$), donc $\\frac{\\ln x}{x^2} \\le \\frac{\\sqrt{x}}{x^2} = \\frac{1}{x^{3/2}}$. Comme $\\int_1^{+\\infty} \\frac{dx}{x^{3/2}}$ converge ($p=3/2>1$), $K$ converge par comparaison. Calcul : IPP avec $u=\\ln x$, $dv=\\frac{dx}{x^2}$. $du=\\frac{dx}{x}$, $v=-\\frac{1}{x}$. $K = [-\\frac{\\ln x}{x}]_1^{+\\infty} + \\int_1^{+\\infty} \\frac{dx}{x^2}$. La limite en $+\\infty$ de $\\frac{\\ln x}{x}$ est $0$ (croissance plus lente que $x$). Donc $K = 0 - 0 + [-\\frac{1}{x}]_1^{+\\infty} = 1$.",
+              "hint": "Pour la convergence, compare $\\frac{\\ln x}{x^2}$ à $\\frac{1}{x^p}$ avec $p>1$. Pour le calcul, IPP avec $u=\\ln x$ (dérivée $1/x$) et $dv=dx/x^2$ (primitive $-1/x$).",
+              "explanation": "On combine critère de comparaison (convergence) et intégration par parties (calcul). La majoration $\\ln x \\le \\sqrt{x}$ pour $x$ grand est un standard. L'IPP élimine le logarithme et laisse une intégrale de Riemann convergente."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais modéliser une situation par une intégrale et tu maîtrises les techniques pour la calculer. Mais le travail n'est pas fini : en mathématiques, et encore plus en spécialité, un résultat brut sans interprétation n'a que peu de valeur. Cette dernière leçon t'apprendra à donner du sens à tes calculs : vérifier la cohérence des unités, estimer l'erreur commise si tu as utilisé une méthode numérique, relier l'intégrale à la primitive via le théorème fondamental, et valider ton modèle face à la réalité. C'est cette capacité à faire parler les nombres qui fait la différence entre un bon exécutant et un vrai mathématicien."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unités et homogénéité : le premier garde-fou"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant même de regarder la valeur numérique, vérifie les unités. Si tu as modélisé un volume par $\\pi \\int f(x)^2 dx$, et que $x$ et $f(x)$ sont en mètres, alors $f(x)^2$ est en $m^2$, $dx$ en $m$, le produit en $m^3$ : bon, c'est un volume. Si tu trouves $m^2$, il y a une erreur quelque part (oubli du $\\pi$, confusion aire/volume, mauvaise formule). De même, pour un travail $\\int F(x)dx$, force en newtons ($N$), distance en mètres ($m$), travail en joules ($J = N\\cdot m$). Pour une probabilité $\\int f(x)dx$, $f(x)$ est en $1/\\text{unité de }x$, $dx$ en unité de $x$, le produit est sans dimension (un nombre entre $0$ et $1$). Cette analyse dimensionnelle, rapide et systématique, élimine 90 % des erreurs de modélisation. Fais-en un réflexe."
+            },
+            {
+              "type": "display_math",
+              "latex": "[\\int_a^b f(x)\\,dx] = [f] \\times [x] \\quad \\text{(unité de l'intégrale = unité de l'intégrande $\\times$ unité de la variable)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, si tu calcules le centre de masse $\\bar{x} = \\frac{\\int x\\rho(x)dx}{\\int \\rho(x)dx}$, le numérateur a pour unité $\\text{(longueur)} \\times \\text{(masse/longueur)} \\times \\text{(longueur)} = \\text{masse} \\times \\text{longueur}$, le dénominateur a pour unité $\\text{masse}$, le quotient a pour unité $\\text{longueur}$ : cohérent pour une abscisse. Si tu obtiens une unité différente, revoie ton modèle. C'est un filet de sécurité infaillible, et il ne coûte que quelques secondes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les unités valident la forme, mais que dire de la précision ? En pratique, beaucoup d'intégrales n'ont pas de primitive exprimable en fonctions élémentaires (pensons à $\\int e^{-x^2}dx$, l'intégrale d'erreur, ou $\\int \\frac{\\sin x}{x}dx$, l'intégrale si). On utilise alors des méthodes numériques : rectangles, trapèzes, Simpson. Chaque méthode a un ordre de convergence et une erreur qu'on peut majorer. Savoir estimer cette erreur, c'est garantir la fiabilité de ton résultat. C'est ce que nous allons voir maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Erreur de quadrature : savoir jusqu'où on peut faire confiance au nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode des rectangles (somme de Riemann) a une erreur proportionnelle au pas $h = \\frac{b-a}{n}$ : $E \\approx \\frac{(b-a)}{2} f'(\\xi) h$ pour une fonction dérivable. La méthode des trapèzes, qui approxime la courbe par des segments, a une erreur en $h^2$ : $E \\approx -\\frac{(b-a)}{12} f''(\\xi) h^2$. La méthode de Simpson, qui approxime par des arcs de parabole, a une erreur en $h^4$ : $E \\approx -\\frac{(b-a)}{180} f^{(4)}(\\xi) h^4$. Cela signifie qu'en divisant le pas par 2, l'erreur des rectangles se divise par 2, celle des trapèzes par 4, celle de Simpson par 16 ! Simpson est doncExtraordinairement plus efficace pour une même précision. Mais attention : ces formules supposent que $f$ est suffisamment dérivable. Si $f$ a une singularité ou une dérivée discontinue, l'ordre de convergence peut se dégrader."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "exp(-x^2)",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 10,
+              "caption": "Approximation de $\\int_0^1 e^{-x^2}\\,dx$ (intégrale d'erreur) par la méthode des rectangles. Essaie d'augmenter le nombre de rectangles pour voir la convergence."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'animation, tu vois l'approximation de l'intégrale d'erreur $\\int_0^1 e^{-x^2}dx$ par rectangles. Cette intégrale n'a pas de primitive élémentaire, donc le calcul numérique est la seule voie. Avec 10 rectangles, on a déjà une idée de l'ordre de grandeur. En passant à 100, puis 1000 rectangles, les chiffres se stabilisent. C'est la convergence numérique. En examen, on te demandera souvent de majorer l'erreur pour garantir un nombre de chiffres significatifs. La formule d'erreur des trapèzes, par exemple, te permet de choisir $n$ assez grand pour avoir $10^{-4}$ de précision sans faire tourner l'ordinateur des heures."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà du calcul numérique, l'interprétation la plus profonde de l'intégrale vient du théorème fondamental de l'analyse : l'intégrale est une primitive, et la dérivée de l'intégrale à borne variable redonne la fonction. Ce lien dualité dérivation/intégration est le cœur vivant du calcul infinitésimal. Il permet de comprendre l'intégrale non plus comme une somme statique, mais comme une fonction d'accumulation qui évolue quand on déplace la borne supérieure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fonction intégrale et théorème fondamental : l'accumulation en mouvement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $f$ continue sur $[a;b]$. On définit la fonction intégrale $F(x) = \\int_a^x f(t)\\,dt$ pour $x \\in [a;b]$. Le théorème fondamental dit que $F$ est dérivable sur $]a;b[$ et $F'(x) = f(x)$. En mots : le taux de variation instantané de la quantité accumulée jusqu'à $x$ vaut exactement la densité $f(x)$ à cet instant. C'est une idée puissante : si $f(t)$ est un débit (en $L/s$), $F(x)$ est le volume total écoulé depuis $a$ jusqu'à $x$, et sa dérivée $F'(x)$ est le débit instantané à l'instant $x$. Cette lecture dynamique transforme l'intégrale en un outil pour résoudre des équations différentielles, étudier la monotonie de fonctions définies par une intégrale, ou calculer des limites d'intégrales paramétrées."
+            },
+            {
+              "type": "graph",
+              "expression": "int_0^x exp(-t^2) dt",
+              "xmin": 0,
+              "xmax": 3,
+              "caption": "Fonction intégrale $F(x) = \\int_0^x e^{-t^2}\\,dt$ (fonction d'erreur). Sa dérivée en $x$ vaut $e^{-x^2}$. Remarque la forme en S : croissance rapide au début, puis ralentissement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre la fonction d'erreur $F(x) = \\int_0^x e^{-t^2}dt$. Elle part de $0$ en $x=0$, croît (car $f(t)>0$), avec une pente initiale $F'(0)=e^0=1$, puis la pente diminue car $e^{-x^2}$ décroît. $F$ est concave puis convexe (point d'inflexion où $f'(x)=0$, ici $x=0$). Cette analyse qualitative (signe de $f$, variations de $f$, convexité) se fait sans calculer une seule primitive explicite ! C'est tout l'intérêt de la fonction intégrale : elle donne accès aux propriétés globales de l'accumulation à partir de la connaissance locale de la densité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, interpretar un résultat, c'est aussi le confronter à la réalité du problème initial. Tu as modélisé une aire, un volume, un travail, une probabilité. Le nombre que tu as trouvé est-il plausible ? L'ordre de grandeur est-il correct ? Le signe est-il celui attendu ? Y a-t-il des symétries qui auraient pu simplifier le calcul ou servir de vérification ? C'est ce travail de validation, souvent négligé, qui distingue l'expert du novice. Nous allons terminer par une check-list de validation à appliquer systématiquement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valider son résultat : la check-list de l'expert"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici les 5 questions à te poser à la fin de tout exercice d'application de l'intégration : 1) **Cohérence dimensionnelle** : les unités du résultat correspondent-elles à la grandeur cherchée ? 2) **Signe et ordre de grandeur** : le résultat est-il positif si c'est une aire, un volume, une masse ? Est-il dans une plage raisonnable (ex: une probabilité entre 0 et 1) ? 3) **Symétries et parité** : si la fonction est paire/impaire et l'intervalle symétrique, as-tu utilisé la simplification $\\int_{-a}^a f = 2\\int_0^a f$ (paire) ou $0$ (impaire) ? Le résultat respecte-t-il cette propriété ? 4) **Cas limites** : si tu fais tendre un paramètre vers une valeur extrême (ex: $a \\to 0$, $b \\to +\\infty$), le résultat a-t-il le comportement attendu ? 5) **Dérivation de vérification** : pour une intégrale indéfinie, dérive ton résultat : retombes-tu sur l'intégrand ? Pour une intégrale définie avec paramètre, dérive par rapport au paramètre (théorème de dérivation sous le signe $\\int$) pour vérifier la cohérence."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérification 1 : Unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire l'unité de chaque facteur dans l'intégrande, multiplier par l'unité de $dx$, vérifier que ça donne l'unité de la grandeur finale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 2 : Signe et ordre de grandeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intégrale d'une fonction positive est positive. Une probabilité est dans $[0;1]$. Un volume est en $m^3$ (ou $cm^3$). Estimer grossièrement : $f(x) \\approx \\text{cste}$, intégrale $\\approx \\text{cste} \\times (b-a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 3 : Symétries",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fonction paire sur $[-a;a]$ : intégrale = $2\\int_0^a$. Fonction impaire : intégrale = $0$. Vérifier que le résultat numérique respecte cette propriété exacte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 4 : Cas limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tester le comportement quand un paramètre tend vers une borne (ex: largeur $\\to 0$, hauteur $\\to \\infty$). Le résultat tend-il vers $0$, vers une limite finie, ou diverge-t-il logiquement ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 5 : Dérivation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une primitive $F$, vérifier $F' = f$. Pour une intégrale $I(\\lambda) = \\int f(x,\\lambda)dx$, vérifier $\\frac{dI}{d\\lambda} = \\int \\frac{\\partial f}{\\partial \\lambda} dx$ (si conditions remplies)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette check-list n'est pas une formalité : c'est ton assurance-vie en examen et ton gage de professionnalisme plus tard. Chaque point ne prend que quelques secondes, mais ensemble ils forment un filet qui attrape presque toutes les erreurs. Applique-la sans attendre, sur chaque exercice, chaque devoir, chaque sujet d'annales. C'est ainsi que tu construis la rigueur qui fait la force de la spécialité mathématiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais modéliser une aire, un volume, un travail, une masse ou une probabilité par une intégrale définie.",
+                "Je sais choisir et appliquer la bonne technique de calcul : intégration par parties, changement de variable, décomposition en éléments simples, intégrales impropres.",
+                "Je sais vérifier la cohérence dimensionnelle (unités) de mon intégrale et de mon résultat.",
+                "Je sais estimer l'erreur d'une méthode numérique (rectangles, trapèzes, Simpson) et choisir le pas adapté.",
+                "Je sais interpréter la fonction intégrale $F(x) = \\int_a^x f(t)dt$ comme une accumulation et utiliser le théorème fondamental ($F' = f$).",
+                "Je sais valider mon résultat par les 5 vérifications : unités, signe/ordre de grandeur, symétries, cas limites, dérivation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On modélise le travail (en joules) d'une force variable $F(x) = 3x^2 + 2$ (en newtons) déplaçant un objet de $x=0$ à $x=2$ mètres. Écrire l'intégrale, calculer le travail, et vérifier l'homogénéité des unités à chaque étape.",
+              "answer": "Travail $W = \\int_0^2 (3x^2 + 2)\\,dx = [x^3 + 2x]_0^2 = 8 + 4 = 12\\,J$. Unités : $F$ en $N$, $dx$ en $m$, $F\\,dx$ en $N\\cdot m = J$. L'intégrale somme des $J$, donc $W$ en $J$. Vérifié : $12\\,J$ est une énergie, cohérent.",
+              "hint": "Intègre le polynôme terme à terme. Pour les unités : $[F] = N = kg\\cdot m/s^2$, $[dx] = m$, donc $[F\\,dx] = kg\\cdot m^2/s^2 = J$.",
+              "explanation": "Calcul direct d'une intégrale de polynôme. La vérification des unités confirme que l'intégrale d'une force par rapport à une distance donne bien un travail/énergie en joules."
+            },
+            {
+              "question": "On veut approximer $I = \\int_0^1 e^{-x^2}\\,dx$ par la méthode des trapèzes avec un pas $h=0.25$ (donc 4 sous-intervalles). Calculer l'approximation $T_4$. On admet que $|f''(x)| \\le 2$ sur $[0;1]$. Majorer l'erreur $|I - T_4|$. Combien de sous-intervalles faut-il pour garantir une erreur $< 10^{-4}$ ?",
+              "answer": "$h=0.25$, $x_i = 0, 0.25, 0.5, 0.75, 1$. $f(x)=e^{-x^2}$. $f(0)=1$, $f(0.25)=e^{-0.0625}\\approx 0.9394$, $f(0.5)=e^{-0.25}\\approx 0.7788$, $f(0.75)=e^{-0.5625}\\approx 0.5698$, $f(1)=e^{-1}\\approx 0.3679$. $T_4 = \\frac{0.25}{2}[1 + 2(0.9394+0.7788+0.5698) + 0.3679] \\approx 0.7472$. Erreur : $|E| \\le \\frac{(b-a)}{12} \\max|f''| h^2 = \\frac{1}{12} \\times 2 \\times 0.25^2 = \\frac{1}{12} \\times 2 \\times 0.0625 = \\frac{0.125}{12} \\approx 0.0104$. Pour $|E| < 10^{-4}$ : $\\frac{1}{12} \\times 2 \\times h^2 < 10^{-4} \\Rightarrow h^2 < 6\\times 10^{-4} \\Rightarrow h < 0.0245$. $n = \\frac{1}{h} > 40.8$, donc $n \\ge 41$ sous-intervalles.",
+              "hint": "Formule des trapèzes : $T_n = \\frac{h}{2}[f(x_0) + 2\\sum_{i=1}^{n-1} f(x_i) + f(x_n)]$. Majoration d'erreur : $|E| \\le \\frac{b-a}{12} M_2 h^2$ avec $M_2 = \\max |f''|$.",
+              "explanation": "Application concrète de la méthode des trapèzes et de sa majoration d'erreur. Le calcul de $T_4$ demande d'évaluer $f$ aux 5 points. La majoration d'erreur utilise la borne sur $f''$. L'inversion de la formule donne le $n$ requis pour une précision cible."
+            },
+            {
+              "question": "Soit $F(x) = \\int_0^x \\frac{dt}{1+t^2}$ pour $x \\ge 0$. Étudier les variations de $F$, sa convexité, et sa limite en $+\\infty$. Donner une interprétation géométrique de $F(x)$.",
+              "answer": "$F'(x) = \\frac{1}{1+x^2} > 0$ pour tout $x$, donc $F$ est strictement croissante sur $[0;+\\infty[$. $F''(x) = \\frac{-2x}{(1+x^2)^2} \\le 0$ sur $[0;+\\infty[$, donc $F$ est concave. $\\lim_{x\\to+\\infty} F(x) = \\int_0^{+\\infty} \\frac{dt}{1+t^2} = [\\arctan t]_0^{+\\infty} = \\frac{\\pi}{2}$. Géométriquement, $F(x)$ est l'aire sous la courbe $y=\\frac{1}{1+t^2}$ entre $0$ et $x$. C'est la fonction arctangente : $F(x) = \\arctan x$.",
+              "hint": "Utilise le théorème fondamental : $F'(x) = f(x)$. Étudie le signe de $f$ et de $f'$ pour les variations et la convexité. La limite en $+\\infty$ est une intégrale impropre.",
+              "explanation": "Exemple classique de fonction intégrale : l'arctangente. L'analyse qualitative (variations, convexité, limite) se fait sans calculer explicitement la primitive, juste en étudiant $f$ et $f'$. La limite donne l'aire totale sous la cloche de Cauchy."
+            },
+            {
+              "question": "On a calculé le volume d'un solide de révolution : $V = \\pi \\int_0^2 (4 - x^2)^2 dx = \\frac{512\\pi}{15}$. Vérifier ce résultat en appliquant les 5 points de la check-list de validation. (On ne demande pas de refaire le calcul, mais de montrer comment chaque vérification s'applique.)",
+              "answer": "1) Unités : $x$ en $m$, $4-x^2$ en $m$, $(4-x^2)^2$ en $m^2$, $dx$ en $m$, $\\pi$ sans unité $\\Rightarrow$ intégrale en $m^3$, volume OK. 2) Signe/ordre : intégrand $\\ge 0$, $V>0$. Valeur approx $512\\times 3.14 / 15 \\approx 107\\,m^3$. Pour un solide de rayon max $2\\,m$ sur hauteur $2\\,m$, volume cylindre équivalent $\\pi\\times 4 \\times 2 \\approx 25\\,m^3$... Attendez, $107 > 25$ ? Recalcul : $\\int_0^2 (16 - 8x^2 + x^4)dx = [16x - \\frac{8}{3}x^3 + \\frac{1}{5}x^5]_0^2 = 32 - \\frac{64}{3} + \\frac{32}{5} = \\frac{480 - 320 + 96}{15} = \\frac{256}{15}$. $V = \\pi \\times \\frac{256}{15} = \\frac{256\\pi}{15} \\approx 53.6\\,m^3$. Le résultat donné $\\frac{512\\pi}{15}$ est le double ! Erreur détectée. 3) Symétries : fonction paire mais intervalle $[0;2]$ pas symétrique, pas applicable. 4) Cas limite : si hauteur $\\to 0$ (borne sup $\\to 0$), $V\\to 0$ OK. 5) Dérivation : dériver $V(b) = \\pi \\int_0^b (4-x^2)^2 dx$ donne $\\pi(4-b^2)^2$, aire du disque à l'abscisse $b$, cohérent. Conclusion : le résultat proposé a une erreur de facteur 2 (probablement oubli de diviser par 2 quelque part).",
+              "hint": "Applique chaque point de la check-list méthodiquement. Pour l'ordre de grandeur, compare au volume du cylindre circonscrit. Le point 2 va révéler l'erreur.",
+              "explanation": "Cet exercice met en pratique la check-list complète. Le point 2 (ordre de grandeur) permet de détecter que le résultat annoncé est le double de la valeur correcte. Les autres points confirment la cohérence du modèle. C'est exactement ce genre de vérification qui sauve des points en examen."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

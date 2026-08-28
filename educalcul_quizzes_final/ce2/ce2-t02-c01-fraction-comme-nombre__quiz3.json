@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 152,
+  "_course_code": "ce2-t02-c01-fraction-comme-nombre",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Distinguer fraction et simple coloriage",
+  "title": "Quiz : Différencier fraction et simple coloriage",
+  "questions": [
+    {
+      "text": "Observez le cercle ci-dessous. Quelle fraction représente la partie colorée ?",
+      "options": [
+        "$1/4$",
+        "$1/3$",
+        "$1/2$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Le cercle est divisé en 4 parties égales et une seule est colorée. La fraction correspondante est donc $1/4$. Les autres options ne correspondent pas au nombre de parties égales ou au nombre de parties colorées.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Cercle divisé en 4 parties égales, 1 partie colorée"
+      }
+    },
+    {
+      "text": "Le rectangle est partagé en 3 parties égales. Deux parties sont colorées. Quelle fraction cela représente-t-il ?",
+      "options": [
+        "$2/3$",
+        "$1/3$",
+        "$3/2$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$2/3$",
+      "explanation": "Il y a 3 parties égales au total (dénominateur 3) et 2 sont colorées (numérateur 2), donc la fraction est $2/3$. Les autres choix inversent numérateur et dénominateur ou utilisent un mauvais total.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 3,
+        "shape": "bar",
+        "caption": "Rectangle divisé en 3 parties égales, 2 parties colorées"
+      }
+    },
+    {
+      "text": "Regardez la grille 4×4 où 5 cases sont coloriées au hasard. Cette figure représente-t-elle une fraction ?",
+      "options": [
+        "Oui, car 5 cases sont colorées",
+        "Non, car les parties ne sont pas égales",
+        "Oui, car le total est 16",
+        "Non, car il n'y a pas de couleur"
+      ],
+      "correctAnswer": "Non, car les parties ne sont pas égales",
+      "explanation": "Une fraction nécessite que le tout soit divisé en parties égales. Ici les cases coloriées ne forment pas des parties égales du tout, donc ce n'est pas une fraction.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 5,
+        "caption": "Grille 4×4 avec 5 cases coloriées de manière aléatoire"
+      }
+    },
+    {
+      "text": "Une barre est divisée en 5 parties égales. Trois parties sont colorées. Quel est le numérateur de la fraction correspondante ?",
+      "options": [
+        "3",
+        "5",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le numérateur indique le nombre de parties colorées. Comme 3 parties sur 5 sont colorées, le numérateur est 3. Le dénominateur serait 5, mais la question ne demande que le numérateur.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 5,
+        "shape": "bar",
+        "caption": "Barre divisée en 5 parties égales, 3 parties colorées"
+      }
+    },
+    {
+      "text": "Un cercle est partagé en 8 parties égales et aucune n'est colorée. Quelle fraction représente la partie colorée ?",
+      "options": [
+        "$0/8$",
+        "$1/8$",
+        "$8/0$",
+        "$8/8$"
+      ],
+      "correctAnswer": "$0/8$",
+      "explanation": "Aucune partie n'est colorée, donc le numérateur est 0. Le dénominateur reste le nombre total de parties égales, ici 8. La fraction est donc $0/8$. Les autres options indiquent une partie colorée ou une division par zéro, ce qui est incorrect.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 0,
+        "denominator": 8,
+        "shape": "circle",
+        "caption": "Cercle divisé en 8 parties égales, aucune partie colorée"
+      }
+    }
+  ]
+}

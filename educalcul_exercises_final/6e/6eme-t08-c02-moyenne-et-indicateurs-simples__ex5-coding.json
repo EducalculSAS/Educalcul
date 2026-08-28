@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 369,
+  "_course_code": "6eme-t08-c02-moyenne-et-indicateurs-simples",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Calculer moyenne",
+  "title": "Approfondissement : Calculer la moyenne - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme de calcul de la moyenne simple",
+      "content": "Écrire un algorithme (ou un programme en pseudo-code) qui calcule la moyenne d’une liste de nombres. La liste est donnée sous la forme d’un tableau `notes = [12, 15, 9, 14, 11]`. L’algorithme doit afficher le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser somme à 0.\\n2. Pour chaque note dans notes faire\\n   somme ← somme + note\\nFin pour\\n3. moyenne ← somme / taille(notes)\\n4. Afficher moyenne.\\nExemple de pseudo-code :\\nnotes ← [12, 15, 9, 14, 11]\\nsomme ← 0\\nPour chaque note dans notes faire\\n    somme ← somme + note\\nFin pour\\nmoyenne ← somme / taille(notes)\\nAfficher moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne toutes les notes puis on divise par le nombre de notes. Pour la liste donnée, la somme est $12+15+9+14+11 = 61$ et il y a $5$ notes, donc la moyenne est $61/5 = 12,2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de calcul de la moyenne pondérée",
+      "content": "Écrire un algorithme qui calcule la moyenne pondérée d’une série de notes avec leurs coefficients. Les données sont : notes = [10, 14, 12] et coefficients = [2, 3, 1]. L’algorithme doit afficher la moyenne pondérée.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser somme_ponderee à 0 et somme_coeff à 0.\\n2. Pour i de 0 à taille(notes)-1 faire\\n   somme_ponderee ← somme_ponderee + notes[i] * coefficients[i]\\n   somme_coeff ← somme_coeff + coefficients[i]\\nFin pour\\n3. moyenne_ponderee ← somme_ponderee / somme_coeff\\n4. Afficher moyenne_ponderee.\\nExemple de pseudo-code :\\nnotes ← [10, 14, 12]\\ncoeff ← [2, 3, 1]\\nsomme_p ← 0\\nsomme_c ← 0\\nPour i de 0 à taille(notes)-1 faire\\n    somme_p ← somme_p + notes[i] * coeff[i]\\n    somme_c ← somme_c + coeff[i]\\nFin pour\\nmoyenne ← somme_p / somme_c\\nAfficher moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne pondérée se calcule en sommant les produits note×coefficient puis en divisant par la somme des coefficients. Ici $10\\times2 + 14\\times3 + 12\\times1 = 20+42+12 = 74$ et la somme des coefficients est $2+3+1 = 6$, donc la moyenne pondérée est $74/6 \\approx 12,33$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour déterminer les valeurs supérieures à la moyenne",
+      "content": "Écrire un algorithme qui, à partir d’une liste de nombres, calcule la moyenne puis affiche tous les éléments de la liste qui sont strictement supérieurs à cette moyenne. Exemple de liste : `valeurs = [5, 8, 12, 7, 10, 3]`.",
+      "correctAnswer": "Algorithme :\\n1. Calculer la moyenne de la liste valeurs (comme dans l’exercice 1).\\n2. Créer une liste vide superieures.\\n3. Pour chaque v dans valeurs faire\\n   Si v > moyenne Alors\\n       Ajouter v à superieures\\n   Fin si\\nFin pour\\n4. Afficher la liste superieures.\\nExemple de pseudo-code :\\nvaleurs ← [5, 8, 12, 7, 10, 3]\\nsomme ← 0\\nPour chaque v dans valeurs faire\\n    somme ← somme + v\\nFin pour\\nmoyenne ← somme / taille(valeurs)\\nsuperieures ← []\\nPour chaque v dans valeurs faire\\n    Si v > moyenne Alors\\n        Ajouter v à superieures\\n    Fin si\\nFin pour\\nAfficher superieures",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des valeurs est $5+8+12+7+10+3 = 45$, il y a $6$ valeurs, donc la moyenne est $45/6 = 7,5$. Les nombres strictement supérieurs à $7,5$ sont $8, 12, 10$. L’algorithme les collecte et les affiche.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

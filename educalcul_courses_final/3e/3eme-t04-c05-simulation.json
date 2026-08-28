@@ -1,0 +1,222 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.961286+00:00",
+  "id": 477,
+  "code": "3eme-t04-c05",
+  "title": "Simulation",
+  "description": "Cours structuré Educalcul : Simulation.",
+  "subject": "Statistiques et probabilités",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Simulation",
+    "objectif_global": "Simulation",
+    "mini_lecons_imposees": [
+      "Programme.",
+      "Fréquence.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles savoir combien de fois tu vas gagner à un jeu de société très complexe si tu y joues $1000$ fois de suite. Est-ce que tu vas vraiment passer tes prochaines semaines à lancer des dés et à noter chaque résultat sur un carnet ? Ce serait épuisant et très long ! C'est là qu'intervient la simulation. Au lieu de faire l'expérience physiquement, on demande à un ordinateur de 'faire semblant' de jouer. On crée un modèle mathématique qui imite la réalité. Par exemple, si on simule un lancer de dé, l'ordinateur choisit un nombre entier au hasard entre $1$ et $6$. En quelques millisecondes, il peut répéter cette action $10\\text{ }000$ fois. C'est exactement comme cela que les météorologues prévoient la pluie ou que les ingénieurs testent la résistance d'un pont avant de le construire. On ne détruit pas un vrai pont pour voir quand il s'écroule, on simule sa chute sur un écran. C'est un outil puissant qui nous permet d'explorer des situations impossibles ou trop longues à réaliser dans le monde réel."
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, un programme de simulation est un algorithme qui reproduit le hasard d'une expérience réelle. Pour qu'une simulation soit valable, elle doit respecter les mêmes règles que l'expérience physique. Si on simule un lancer de pièce, il y a $2$ issues possibles : 'Pile' ou 'Face'. Le programme doit donc avoir $50\\text{ }$\\% de chance de choisir l'une ou l'autre. On utilise pour cela des fonctions de hasard, comme la fonction 'aléatoire' disponible dans la plupart des langages de programmation. La simulation ne nous donne pas le résultat d'un seul essai, mais nous permet d'observer le comportement d'un phénomène sur un très grand nombre de répétitions. On appelle cela une expérience stochastique. Le but n'est pas de prédire l'avenir avec certitude, car le hasard reste du hasard, mais d'obtenir une tendance globale. Plus on répète l'expérience (on augmente la taille de l'échantillon), plus les résultats de la simulation se rapprochent des probabilités théoriques calculées sur papier. C'est le pont invisible entre la théorie mathématique et la pratique concrète."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\n\\nsucces = 0\\nrepetitions = 1000\\n\\nfor i in range(repetitions):\\n    resultat = random.randint(1, 6)\\n    if resultat == 6:\\n        succes += 1\\n\\nprint(f'Le 6 est sorti {succes} fois sur {repetitions} lancers')",
+              "language": "python",
+              "caption": "Simuler 1000 lancers de dé pour compter les 6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour créer un programme de simulation efficace, on suit généralement un protocole rigoureux en quatre étapes. D'abord, on définit précisément l'univers des possibles. Si on simule un jeu de cartes, on liste toutes les cartes possibles dans une liste informatique. Ensuite, on choisit un mécanisme de sélection aléatoire. On utilise une commande qui tire un élément au hasard dans cette liste, en s'assurant que chaque élément a la même probabilité d'être choisi si le jeu est équitable. La troisième étape consiste à créer une boucle de répétition. On ne lance pas la simulation une seule fois, mais on demande à l'ordinateur de répéter l'opération $N$ fois, où $N$ peut être $100$, $1000$ ou même $1\\text{ }000\\text{ }000$. Enfin, on met en place un système de comptage. À chaque répétition, on vérifie si l'événement surveillé s'est produit et, si c'est le cas, on ajoute $1$ à un compteur. À la fin du programme, on récupère le total des succès pour analyser les résultats."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la simulation d'un lancer de dé à $6$ faces. Nous voulons savoir combien de fois le chiffre $6$ apparaît sur $100$ lancers. Le programme fonctionne ainsi : l'ordinateur génère un nombre $X$ appartenant à l'ensemble $\\{1, 2, 3, 4, 5, 6\\}$. On initialise un compteur $C$ à $0$. À chaque tour de boucle, si $X = 6$, alors on fait $C = C + 1$. Après $100$ itérations, le programme nous affiche la valeur de $C$. Supposons que le programme affiche $18$. Cela signifie que dans cette simulation précise, le chiffre $6$ est sorti $18$ fois. On note que le résultat n'est pas exactement $100 \\div 6$ (soit environ $16,67$), car le hasard fait que chaque simulation est unique. Cependant, si on relançait la simulation sur $10\\text{ }000$ lancers, on s'attendrait à ce que le résultat soit beaucoup plus proche de $16,67\\text{ }$\\% du total."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une urne contenant $3$ boules rouges et $7$ boules vertes. On simule $500$ tirages successifs avec remise. Pour modéliser cela, on peut créer une liste contenant $10$ éléments : $3$ fois le mot 'Rouge' et $7$ fois le mot 'Vert'. Le programme tire alors un mot au hasard dans cette liste. Si le mot tiré est 'Rouge', on incrémente le compteur des rouges. Après $500$ répétitions, le programme nous indique que nous avons obtenu $142$ boules rouges. Pour analyser ce résultat, on calcule la part des boules rouges : $142 \\div 500 = 0,284$. En multipliant par $100$, on trouve $28,4\\text{ }$\\%. On remarque que c'est très proche de la probabilité théorique qui est de $3 \\div 10 = 0,3$ (soit $30\\text{ }$\\%). La simulation a donc bien reproduit le comportement de l'urne physique."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est de croire qu'une simulation donne la réponse exacte et systématique. Certains élèves pensent que si la probabilité est de $30\\text{ }$\\%, alors sur $100$ essais, on obtiendra forcément $30$ succès. C'est faux ! La simulation produit un résultat aléatoire. C'est ce qu'on appelle la variabilité. Un autre piège est d'utiliser un nombre de répétitions trop faible. Si on simule un lancer de pièce seulement $4$ fois, on peut obtenir $4$ fois 'Pile' par pur hasard, ce qui pourrait nous faire croire à tort que la pièce est truquée. Pour éviter cela, il faut toujours viser un grand nombre d'essais pour stabiliser les résultats. Enfin, attention à bien définir l'échantillon : si on simule un tirage sans remise, le programme doit supprimer l'élément tiré de la liste, sinon la simulation est fausse car elle correspondrait à un tirage avec remise."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On souhaite simuler le lancer d'une pièce équilibrée $200$ fois. Quel doit être le mécanisme de choix aléatoire du programme pour que la simulation soit juste ?",
+              "answer": "Le programme doit choisir aléatoirement entre deux options (Pile ou Face) avec une probabilité de $1 \\div 2$ (soit $50\\text{ }$\\% ) pour chacune.",
+              "hint": "Pense à l'équité de la pièce : chaque face a la même chance de sortir.",
+              "explanation": "Pour refléter la réalité d'une pièce équilibrée, l'algorithme doit garantir que chaque issue possible a exactement la même chance d'apparaître à chaque essai."
+            }
+          ]
+        },
+        {
+          "title": "Fréquence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu t'entraînes aux lancers francs au basket. Tu lances le ballon $50$ fois et tu réussis $30$ paniers. Si on te demande : 'Quelle est ta réussite ?', tu ne vas pas répondre 'C'est le destin', mais tu vas donner un chiffre. Tu vas dire que tu as réussi $30$ fois sur $50$. Ce chiffre, c'est ce qu'on appelle en mathématiques la fréquence. La fréquence, c'est l'outil qui permet de transformer une observation concrète en une valeur numérique. Elle nous dit combien de fois un événement s'est produit par rapport au nombre total de tentatives. C'est très utile quand on ne connaît pas la probabilité théorique d'un événement. Par exemple, on ne sait pas à l'avance quelle sera la probabilité qu'il pleuve demain précisément à $14\\text{ }h$, mais on peut regarder la fréquence des jours de pluie à cette heure-là sur les $10$ dernières années untuk faire une estimation. C'est le passage du 'on dirait que' au 'le calcul montre que'."
+            },
+            {
+              "type": "paragraph",
+              "content": "La fréquence d'un événement $E$ est le rapport entre le nombre de fois où cet événement s'est réalisé et le nombre total d'expériences effectuées. On la note souvent $f(E)$. La formule est simple : $f(E) = \\frac{\\text{Nombre de succès}}{\\text{Nombre total d'essais}}$. Le résultat est toujours un nombre compris entre $0$ et $1$. Pour l'exprimer en pourcentage, on multiplie simplement ce résultat par $100$. Il est crucial de distinguer la fréquence de la probabilité. La probabilité est une valeur théorique, calculée avant l'expérience (par exemple, la probabilité d'avoir Pile est $0,5$). La fréquence, elle, est une valeur expérimentale, calculée après avoir réalisé l'expérience. Si tu lances une pièce $10$ fois, tu n'obtiendras peut-être pas $5$ fois Pile, mais $6$ fois. La probabilité reste $0,5$, mais la fréquence sera de $6 \\div 10 = 0,6$. Plus on augmente le nombre d'essais, plus la fréquence observée a tendance à se rapprocher de la probabilité théorique."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fréquences de l'exemple 2",
+              "slices": [
+                {
+                  "label": "Rouge",
+                  "value": 41,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 32,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vert",
+                  "value": 27,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la fréquence d'un événement lors d'une simulation ou d'une expérience, on peut suivre ces étapes. D'abord, on identifie le nombre total d'essais réalisés, que l'on note souvent $N$. C'est le dénominateur de notre fraction. Ensuite, on compte précisément le nombre de fois où l'événement que l'on observe est apparu. C'est le nombre de 'succès', que l'on note $s$. On écrit alors la fraction $\\frac{s}{N}$. Pour obtenir une valeur exploitable, on effectue la division pour transformer cette fraction en nombre décimal. Enfin, si l'on veut une lecture plus intuitive, on convertit ce nombre en pourcentage en multipliant par $100$. Par exemple, si on a $12$ succès sur $40$ essais, on calcule $12 \\div 40 = 0,3$, ce qui correspond à une fréquence de $30\\text{ }$\\%. Il est important de bien vérifier que la somme des fréquences de tous les résultats possibles est toujours égale à $1$ (ou $100\\text{ }$\\%), car cela permet de vérifier qu'on n'a pas oublié d'essais ou fait d'erreur de calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "On simule $200$ lancers de dés et on s'aperçoit que le chiffre $4$ est sorti $37$ fois. Calculons la fréquence d'apparition du chiffre $4$. Ici, le nombre de succès $s$ est $37$ et le nombre total d'essais $N$ est $200$. On applique la formule : $f(4) = 37 \\div 200$. En faisant le calcul, on trouve $0,185$. Pour exprimer ce résultat en pourcentage, on multiplie par $100$, ce qui nous donne $18,5\\text{ }$\\%. Ce résultat signifie que dans cette série de lancers, le chiffre $4$ est apparu dans $18,5\\text{ }$\\% des cas. On peut comparer cela à la probabilité théorique qui est de $1 \\div 6 \\approx 0,167$ (soit $16,7\\text{ }$\\%). La fréquence est ici légèrement supérieure à la probabilité, ce qui est tout à fait normal pour un échantillon de $200$ essais."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un logiciel simule le tirage de $1000$ boules colorées dans une urne. Les résultats sont les suivants : $410$ boules rouges, $320$ boules bleues et $270$ boules vertes. Calculons la fréquence pour chaque couleur. Pour le rouge : $f(\\text{rouge}) = 410 \\div 1000 = 0,41$ (soit $41\\text{ }$\\%). Pour le bleu : $f(\\text{bleu}) = 320 \\div 1000 = 0,32$ (soit $32\\text{ }$\\%). Pour le vert : $f(\\text{vert}) = 270 \\div 1000 = 0,27$ (soit $27\\text{ }$\\%). On vérifie la somme : $0,41 + 0,32 + 0,27 = 1,00$. Le compte est bon. Si on nous avait dit que l'urne contenait $40\\text{ }$\\% de boules rouges, on pourrait conclure que la simulation est très fidèle à la réalité, car $0,41$ est très proche de $0,40$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est de confondre le nombre de succès avec la fréquence. Un élève pourrait répondre 'La fréquence est de $37$' alors qu'il s'agit du nombre d'apparitions. La fréquence doit toujours être un nombre entre $0$ et $1$ (ou un pourcentage). Un autre piège est d'oublier que la fréquence dépend de l'échantillon. Si tu fais $10$ essais et que tu obtiens $3$ succès, ta fréquence est de $0,3$. Si tu refais $10$ essais et que tu as $1$ succès, ta fréquence devient $0,1$. Cela ne signifie pas que la probabilité a changé, mais que l'échantillon est petit. C'est pour cela qu'en statistiques, on se méfie des petites fréquences basées sur peu d'essais. Enfin, attention aux arrondis : quand on divise $1$ par $3$, on obtient $0,333...$. Il faut préciser le nombre de chiffres après la virgule pour garder une précision suffisante dans les comparaisons."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une simulation de $500$ lancers de pièces, on obtient $262$ fois 'Face'. Quelle est la fréquence d'apparition de 'Face' ? Donne le résultat sous forme décimale et en pourcentage.",
+              "answer": "Fréquence décimale : $0,524$ ; Fréquence en pourcentage : $52,4\\text{ }$\\%.",
+              "hint": "Divise le nombre de succès par le nombre total d'essais.",
+              "explanation": "On calcule $262 \\div 500 = 0,524$. Pour le pourcentage, $0,524 \\times 100 = 52,4\\text{ }$\\%."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues à un jeu de hasard avec un ami. Il te dit que tu as $1$ chance sur $2$ de gagner, soit une probabilité de $0,5$. Mais après $100$ parties, tu te rends compte que tu n'as gagné que $30$ fois. Tu commences à te demander si ton ami ne t'a pas trompé avec un dé truqué ! C'est là que la comparaison entre fréquence et probabilité devient passionnante. On devient un peu comme des détectives des mathématiques. On ne peut pas prouver avec une certitude absolue qu'un jeu est truqué après seulement quelques parties, car le hasard peut faire des séries étranges. Cependant, en comparant la fréquence observée (ce qui s'est passé) et la probabilité théorique (ce qui devrait se passer), on peut estimer si le résultat est acceptable ou s'il y a une anomalie. C'est exactement ainsi que les casinos surveillent leurs tables : si la fréquence des gains d'un joueur s'écarte trop de la probabilité théorique sur des milliers de mains, ils vérifient si le matériel n'est pas manipulé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer une fréquence $\\text{ }f(E)\\text{ }$ et une probabilité $\\text{ }P(E)\\text{ }$ revient à mesurer l'écart entre la théorie et la pratique. En mathématiques, on s'appuie sur un principe fondamental appelé la loi des grands nombres. Ce principe nous dit que plus le nombre d'essais $N$ est grand, plus la fréquence observée se rapproche de la probabilité théorique. Si on lance une pièce $10$ fois, obtenir $7$ fois Pile (fréquence $0,7$) est assez courant et ne signifie pas que la pièce est truquée. Mais si on lance la pièce $10\\text{ }000$ fois et qu'on obtient $7\\text{ }000$ fois Pile, l'écart est énorme et très improbable. On peut alors conclure que le modèle théorique ($P = 0,5$) ne correspond pas à la réalité de l'objet testé. Pour comparer, on calcule souvent l'écart absolu : $|f(E) - P(E)|$. Si cet écart est très petit, on dit que la simulation est fidèle ou que l'expérience confirme la théorie. Si l'écart est significatif et que $N$ est grand, on suspecte une erreur dans le programme ou un biais dans l'expérience."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la fréquence observée par rapport à la probabilité théorique (0,5)",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "P(E)"
+                },
+                {
+                  "value": 0.484,
+                  "label": "f(E)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer rigoureusement une fréquence et une probabilité, on suit une démarche analytique. Premièrement, on rappelle la probabilité théorique $P(E)$, celle qui est calculée par le calcul mathématique. Deuxièmement, on calcule la fréquence expérimentale $f(E)$ à partir des résultats de la simulation. Troisièmement, on calcule la différence entre les deux : $\\text{Écart} = f(E) - P(E)$. On regarde la valeur absolue de cet écart pour savoir à quelle distance on se trouve de la cible. Quatrièmement, et c'est l'étape la plus importante, on analyse cet écart en fonction de la taille de l'échantillon $N$. Si $N$ est petit (ex: $N < 50$), on accepte des écarts assez larges car le hasard est instable. Si $N$ est grand (ex: $N > 1000$), on s'attend à ce que l'écart soit minuscule (souvent inférieur à $0,02$ ou $2\\text{ }$\\%). Enfin, on conclut : soit la simulation confirme la théorie, soit elle l'infirme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On simule $500$ lancers de pièces. La probabilité théorique d'avoir Pile est $P = 0,5$. Le programme nous indique que Pile est sorti $242$ fois. Calculons la fréquence : $f = 242 \\div 500 = 0,484$. Comparons maintenant : l'écart est de $|0,484 - 0,5| = 0,016$. En pourcentage, cela représente un écart de $1,6\\text{ }$\\%. Pour un échantillon de $500$ essais, un écart de $1,6\\text{ }$\\% est tout à fait raisonnable. On peut donc conclure que la simulation est fidèle à la théorie et que la pièce simulée est bien équilibrée. Le résultat observé est proche de la valeur attendue, ce qui valide notre modèle numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "On teste un dé dont on soupçonne la face $6$ d'être favorisée. La probabilité théorique d'un dé normal est $P(6) = 1 \\div 6 \\approx 0,167$. On effectue une simulation de $1000$ lancers et on obtient le chiffre $6$ sebanyak $250$ fois. Calculons la fréquence : $f(6) = 250 \\div 1000 = 0,25$. Calculons l'écart : $|0,25 - 0,167| = 0,083$. Ici, l'écart est de $8,3\\text{ }$\\%. Sur $1000$ lancers, un écart de plus de $8\\text{ }$\\% est très important. Dans un dé équilibré, il est extrêmement rare de s'éloigner autant de la moyenne sur un tel nombre d'essais. On peut donc fortement suspecter que le dé est truqué ou que le programme de simulation comporte un biais en faveur du chiffre $6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est de conclure trop vite sur un petit échantillon. C'est l'erreur du 'petit nombre'. Par exemple, si tu lances une pièce $2$ fois et que tu obtiens $2$ fois Pile, tu as une fréquence de $1,0$ alors que la probabilité est de $0,5$. L'écart est énorme ($0,5$), mais on ne peut absolument pas dire que la pièce est truquée car l'échantillon est minuscule. Un autre piège est de confondre la précision et l'exactitude. Une simulation peut être très précise (donner toujours le même résultat) mais inexacte (si le programme est mal écrit, il donnera toujours un mauvais résultat). Enfin, attention à ne pas confondre l'écart absolu et l'écart relatif. Un écart de $0,05$ est énorme si la probabilité est de $0,1$, mais c'est assez petit si la probabilité est de $0,8$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une simulation de $10\\text{ }000$ lancers de dés donne une fréquence de $0,172$ pour le chiffre $3$. La probabilité théorique est d'environ $0,167$. L'écart est-il acceptable ? Justifie ta réponse.",
+              "answer": "Oui, l'écart est acceptable.",
+              "hint": "Calcule l'écart et regarde la taille de l'échantillon.",
+              "explanation": "L'écart est de $|0,172 - 0,167| = 0,005$ (soit $0,5\\text{ }$\\%). Pour un échantillon très grand de $10\\text{ }000$ essais, cet écart est minuscule, ce qui confirme que la simulation est très fidèle à la théorie."
+            },
+            {
+              "question": "On lance une pièce $4$ fois et on obtient $3$ fois Pile. La fréquence est de $0,75$ alors que la probabilité est de $0,5$. Peut-on affirmer que la pièce est truquée ? Pourquoi ?",
+              "answer": "Non, on ne peut pas l'affirmer.",
+              "hint": "L'échantillon est-il assez grand pour être fiable ?",
+              "explanation": "L'échantillon est beaucoup trop petit (seulement $4$ essais). Sur un si petit nombre, les variations dues au hasard sont très fortes, donc un écart de $0,25$ ne prouve rien."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

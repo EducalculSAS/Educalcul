@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Variables, conditions, boucles",
+  "title": "Approfondissement algorithmique : variables, conditions, boucles",
+  "blocks": [
+    {
+      "title": "Condition simple",
+      "content": "Écrire un algorithme qui demande un nombre à l'utilisateur, le stocke dans une variable $x$, puis affiche \"Positif\" si $x > 0$ sinon affiche \"Négatif ou nul\".",
+      "correctAnswer": "Algorithme : Début Lire x Si x > 0 Alors Afficher \"Positif\" Sinon Afficher \"Négatif ou nul\" FinSi Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par la lecture de la valeur entrée par l'utilisateur et la stocke dans la variable $x$. La structure conditionnelle Si Alors Sinon FinSi permet de tester la condition $x > 0$. Si elle est vraie, le programme affiche \"Positif\", sinon il affiche \"Négatif ou nul\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour calculer une somme",
+      "content": "Écrire un algorithme qui demande un entier naturel $n$ à l'utilisateur, puis calcule la somme des entiers de $1$ à $n$ à l'aide d'une boucle, et affiche le résultat.",
+      "correctAnswer": "Algorithme : Début Lire n somme ← 0 Pour i de 1 à n faire somme ← somme + i FinPour Afficher somme Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la variable $somme$ à $0$. La boucle Pour i de 1 à n parcourt chaque entier $i$ de $1$ jusqu'à $n$ et ajoute $i$ à $somme$. Après la boucle, $somme$ contient $1 + 2 + ... + n$, que l'on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle tant que et comptage",
+      "content": "Écrire un algorithme qui demande successivement des nombres entiers à l'utilisateur jusqu'à ce qu'il entre $0$. L'algorithme doit compter combien de nombres pairs (différents de $0$) ont été saisis et afficher ce compteur à la fin.",
+      "correctAnswer": "Algorithme : Début compteur ← 0 Lire nombre TantQue nombre différent de 0 faire Si nombre modulo 2 = 0 Alors compteur ← compteur + 1 FinSi Lire nombre FinTantQue Afficher compteur Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise $compteur$ à $0$. On lit le premier nombre. La boucle TantQue nombre différent de 0 se répète tant que l'utilisateur n'entre pas $0$. À chaque itération, on teste si le nombre est pair grâce à l'opérateur modulo (nombre modulo 2 = 0). Si c'est le cas, on incrémente $compteur$. On lit ensuite le nombre suivant. Lorsque $0$ est entré, la boucle s'arrête et on affiche la valeur finale de $compteur$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

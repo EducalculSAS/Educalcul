@@ -1,0 +1,99 @@
+{
+  "_status": "done",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Effectuer la soustraction",
+  "title": "Quiz : Soustraction posée avec échange",
+  "questions": [
+    {
+      "text": "Calcule la soustraction suivante : $54 - 28$.",
+      "options": [
+        "$26$",
+        "$36$",
+        "$34$",
+        "$24$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "On pose l'opération. Aux unités, on ne peut pas faire $4 - 8$, on fait un échange : une dizaine devient $10$ unités, il reste $4$ dizaines et on a $14$ unités. $14 - 8 = 6$. Aux dizaines, $4 - 2 = 2$. Le résultat est $26$. L'option $36$ correspond à l'oubli de l'échange (on fait $14-8=6$ mais on laisse $5$ dizaines au lieu de $4$, donc $5-2=3$). L'option $34$ correspond à l'erreur $8-4=4$ aux unités. L'option $24$ combine des erreurs aux dizaines et aux unités.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "54",
+          "28"
+        ],
+        "result": "26",
+        "carries": [
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Quel est le résultat de $72 - 45$ ?",
+      "options": [
+        "$27$",
+        "$37$",
+        "$33$",
+        "$23$"
+      ],
+      "correctAnswer": "$27$",
+      "explanation": "Échange aux unités : on transforme une dizaine en $10$ unités, il reste $6$ dizaines et on a $12$ unités. $12 - 5 = 7$. Aux dizaines, $6 - 4 = 2$. Le résultat est $27$. L'option $37$ correspond à l'oubli de réduire les dizaines après l'échange ($7-4=3$ au lieu de $6-4=2$). L'option $33$ correspond à l'erreur classique de soustraire le plus petit du plus grand à chaque colonne ($5-2=3$ aux unités et $7-4=3$ aux dizaines). L'option $23$ mélange une bonne retenue aux unités et une inversion aux dizaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la soustraction posée : $143 - 57$.",
+      "options": [
+        "$86$",
+        "$96$",
+        "$114$",
+        "$84$"
+      ],
+      "correctAnswer": "$86$",
+      "explanation": "Unités : échange depuis les dizaines, $13 - 7 = 6$. Dizaines : il restait $3$ dizaines, on ne peut pas faire $3 - 5$, nouvel échange depuis les centaines : $13 - 5 = 8$. Centaines : $0$. Résultat $86$. L'option $96$ correspond à l'oubli du second échange (on fait $14-5=9$ aux dizaines sans avoir prêté aux unités). L'option $114$ correspond à l'erreur de soustraire le plus petit du plus grand à chaque colonne ($7-3=4$, $5-4=1$, $1-0=1$). L'option $84$ correspond à une erreur aux unités ($7-3=4$) mais un bon calcul aux dizaines après échange.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "143",
+          "57"
+        ],
+        "result": "86",
+        "carries": [
+          "1",
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Calcule $204 - 58$.",
+      "options": [
+        "$146$",
+        "$156$",
+        "$144$",
+        "$254$"
+      ],
+      "correctAnswer": "$146$",
+      "explanation": "Unités : $4 - 8$ impossible, mais il y a $0$ dizaines. On échange une centaine : $1$ centaine = $10$ dizaines. On prête une dizaine aux unités : il reste $9$ dizaines et on a $14$ unités. $14 - 8 = 6$. Dizaines : $9 - 5 = 4$. Centaines : $1 - 0 = 1$. Résultat $146$. L'option $156$ correspond à l'oubli de réduire les dizaines après l'échange vers les unités (on fait $10-5=5$ au lieu de $9-5=4$). L'option $144$ correspond à l'erreur $8-4=4$ aux unités. L'option $254$ correspond à l'absence totale d'échanges (soustraction chiffre par chiffre sans tenir compte de l'ordre).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le résultat de $361 - 148$ est :",
+      "options": [
+        "$213$",
+        "$223$",
+        "$217$",
+        "$327$"
+      ],
+      "correctAnswer": "$213$",
+      "explanation": "Unités : échange, $11 - 8 = 3$. Dizaines : il reste $5$ dizaines, $5 - 4 = 1$. Centaines : $3 - 1 = 2$. Résultat $213$. L'option $223$ correspond à l'oubli de réduire les dizaines après l'échange aux unités (on fait $6-4=2$ au lieu de $5-4=1$). L'option $217$ correspond à l'erreur $8-1=7$ aux unités (soustraction dans le mauvais sens). L'option $327$ correspond à l'absence d'échange aux unités ($11-8=3$ mais centaines $3-1=2$, dizaines $6-4=2$? Non, $327$ suggère $3-1=2$, $6-4=2$, $8-1=7$ : pas d'échange et inversion aux unités).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Fonctions Python",
+  "title": "Quiz : Application des fonctions Python",
+  "questions": [
+    {
+      "text": "On définit la fonction Python suivante :\\n\\ndef carre(x):\\n    return x * x\\n\\nQue renvoie l'appel `carre(5)` ?",
+      "options": [
+        "$10$",
+        "$25$",
+        "$5$",
+        "Erreur"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "La fonction `carre` prend un paramètre `x` et retourne le produit de `x` par lui-même. Lorsque l'on appelle `carre(5)`, la variable `x` vaut $5$. L'instruction `return x * x` calcule donc $5 \\times 5 = 25$. La valeur $25$ est renvoyée. L'option $10$ correspondrait à une addition, $5$ à un oubli de calcul, et il n'y a pas d'erreur de syntaxe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n\\nx = 10\\ndef modifier():\\n    x = 5\\nmodifier()\\nprint(x)\\n\\nQuelle valeur est affichée ?",
+      "options": [
+        "$5$",
+        "$10$",
+        "Erreur",
+        "$15$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La variable `x` définie au début (`x = 10`) est une variable globale. À l'intérieur de la fonction `modifier`, l'instruction `x = 5` crée une nouvelle variable locale nommée `x` qui n'existe que dans la fonction. Cette variable locale masque la variable globale le temps de l'exécution de la fonction. À la fin de la fonction, la variable locale est détruite. L'instruction `print(x)` affiche donc la variable globale qui n'a pas été modifiée, soit $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction :\\n\\ndef signe(x):\\n    if x > 0:\\n        return \"positif\"\\n    elif x < 0:\\n        return \"négatif\"\\n    else:\\n        return \"nul\"\\n\\nQuel est le résultat de `signe(-3)` ?",
+      "options": [
+        "\"positif\"",
+        "\"négatif\"",
+        "\"nul\"",
+        "Erreur"
+      ],
+      "correctAnswer": "\"négatif\"",
+      "explanation": "La fonction teste la valeur de `x`. Comme `-3` est strictement inférieur à $0$, la condition `elif x < 0:` est vraie. La fonction exécute donc `return \"négatif\"` et se termine immédiatement. La chaîne de caractères \"négatif\" est renvoyée. Les autres options correspondent aux autres branches de la structure conditionnelle qui ne sont pas exécutées ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction ci-dessous :\\n\\ndef puissance(x, n=2):\\n    return x ** n\\n\\nQue vaut `puissance(3)` ?",
+      "options": [
+        "$6$",
+        "$9$",
+        "$27$",
+        "$8$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "La fonction `puissance` possède deux paramètres : `x` et `n`. Le paramètre `n` a une valeur par défaut fixée à $2$ (écrit `n=2`). Lors de l'appel `puissance(3)`, seul l'argument `3` est fourni pour `x`. Le paramètre `n` conserve donc sa valeur par défaut $2$. La fonction calcule $3^{2} = 9$. L'option $27$ correspondrait à `puissance(3, 3)`, $6$ à une multiplication par $2$, et $8$ à $2^{3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite calculer le discriminant $\\Delta = b^{2} - 4ac$ d'un trinôme $ax^{2}+bx+c$. On écrit la fonction :\\n\\ndef delta(a, b, c):\\n    return b * b - 4 * a * c\\n\\nQuelle valeur renvoie `delta(1, -3, 2)` ?",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$5$",
+        "$17$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "On substitue les valeurs dans la formule : $a=1$, $b=-3$, $c=2$. Le calcul est $\\Delta = (-3)^{2} - 4 \\times 1 \\times 2$. On a $(-3)^{2} = 9$ et $4 \\times 1 \\times 2 = 8$. Donc $\\Delta = 9 - 8 = 1$. L'option $-1$ viendrait d'une erreur de signe sur $b^{2}$ (ex: $-3^{2}$ au lieu de $(-3)^{2}$), $5$ d'une erreur sur le terme $4ac$ (ex: $4+1+2$), et $17$ si l'on additionne au lieu de soustraire ($9+8$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

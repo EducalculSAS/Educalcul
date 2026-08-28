@@ -1,0 +1,466 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.715452+00:00",
+  "id": 77,
+  "code": "ce1-t01-c10",
+  "title": "Suites numériques et comptages",
+  "description": "Cours structuré Educalcul : Suites numériques et comptages.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Suites numériques et comptages",
+    "objectif_global": "Suites numériques et comptages",
+    "mini_lecons_imposees": [
+      "Compter de 2, 5, 10.",
+      "Compter de 100 en 100.",
+      "Trouver la règle d'une suite simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Compter de 2, 5, 10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter de 2 en 2 : le rythme des paires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu marches sur une ligne de carreaux. Tu poses un pied sur le premier, puis tu sautes un carreau, tu poses l'autre pied, tu sautes encore... Tu avances de $2$ en $2$ ! C'est comme chanter une comptine : $2$, $4$, $6$, $8$, $10$... Chaque nombre est un \"pas de deux\"."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "cercle",
+                "carré",
+                "carré",
+                "cercle",
+                "cercle"
+              ],
+              "options": [
+                "cercle",
+                "carré",
+                "triangle"
+              ],
+              "answer": "cercle",
+              "caption": "Deux cercles, deux carrés, deux cercles... Quel motif vient ensuite ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la suite : on groupe par deux. Si tu continues, après les deux carrés, tu remets deux cercles. C'est la régularité qui fait une suite. Essaie de la dire à voix haute en tapant dans tes mains à chaque nombre pair."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons de pas. Au lieu de sauter un carreau, imagine que tu as cinq doigts sur une main. Si tu lève les mains une par une, tu comptes $5$, $10$, $15$, $20$... C'est compter de $5$ en $5$, très utile pour lire l'heure ou compter des pièces."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 5,
+              "highlighted": 10,
+              "caption": "Deux rangées de cinq cases : $10$ cases au total. Compte de $5$ en $5$ : $5$, $10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le quadrillage, colorie $5$ cases, puis $5$ autres. Tu vois deux groupes de $5$. Si tu continues, le prochain groupe fera $15$, puis $20$. Les nombres finissent toujours par $5$ ou $0$ : c'est le signe distinctif du comptage par $5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier grand pas, c'est celui de $10$ en $10$. Pense aux boîtes de $10$ crayons. Une boîte : $10$. Deux boîtes : $20$. Trois boîtes : $30$. C'est le comptage des dizaines, la base de notre système de numération."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 0,
+              "caption": "Trois barres de dix : $30$. Chaque barre vaut $10$ unités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les barres de dix, tu vois concrètement que $30$ c'est $3$ dizaines. Si tu ajoutes une barre, tu passes à $40$. Les chiffres des unités restent à $0$, seul le chiffre des dizaines change. C'est comme gravir les marches d'un escalier de dix en dix."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mélangeons un peu. Parfois on compte de $2$, parfois de $5$, parfois de $10$. L'important est de repérer l'écart entre deux nombres successifs. Si tu vois $10$, $20$, $30$, l'écart est $10$. Si tu vois $5$, $10$, $15$, l'écart est $5$. À toi de jouer pour deviner le pas !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la suite : $2$, $4$, $6$, $\\square$, $10$, $\\square$.",
+              "answer": "$8$, $12$",
+              "hint": "Ajoute $2$ à chaque fois. Compte sur tes doigts par sauts de deux.",
+              "explanation": "On ajoute $2$ au nombre précédent : $6+2=8$, puis $10+2=12$. La suite continue : $2,4,6,8,10,12$."
+            },
+            {
+              "question": "Quels sont les trois nombres qui suivent $20$ quand on compte de $5$ en $5$ ?",
+              "answer": "$25$, $30$, $35$",
+              "hint": "Les nombres finissent par $5$ ou $0$. Après $20$ vient $25$.",
+              "explanation": "On ajoute $5$ à chaque fois : $20+5=25$, $25+5=30$, $30+5=35$."
+            },
+            {
+              "question": "Si j'ai $4$ barres de dix, quel nombre cela fait-il ? Écris le nombre en chiffres.",
+              "answer": "$40$",
+              "hint": "Chaque barre vaut $10$. Compte $10$, $20$, $30$, $40$.",
+              "explanation": "4 barres de 10 font $4 \\times 10 = 40$. Le chiffre des dizaines est $4$, celui des unités est $0$."
+            },
+            {
+              "question": "Voici une suite : $15$, $20$, $25$, $30$. De combien compte-t-on ?",
+              "answer": "De $5$ en $5$",
+              "hint": "Calcule la différence entre deux nombres qui se suivent.",
+              "explanation": "$20-15=5$, $25-20=5$, $30-25=5$. L'écart est toujours $5$, donc on compte de $5$ en $5$."
+            }
+          ]
+        },
+        {
+          "title": "Compter de 100 en 100.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines : de 100 en 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais bien les dizaines. Maintenant, imagine une grande boîte qui contient $10$ barres de dix. Cette grande boîte, c'est une centaine. Elle vaut $100$ unités. C'est un nouveau palier, plus grand, pour compter loin sans s'essouffler."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "Une plaque de cent : $100$ unités, soit $10$ dizaines."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la plaque : elle est plate et carrée, elle représente $100$. Si tu en as deux, tu as $200$. Trois plaques font $300$. Les centaines se comptent comme les dizaines, mais en plus grand : $100$, $200$, $300$, $400$... jusqu'à $1000$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien voir le lien, construisons $100$ avec des barres de dix. Pose une barre, puis une deuxième, jusqu'à dix barres. Elles forment exactement la plaque de cent. C'est pour ça qu'on dit : $10$ dizaines $= 1$ centaine. C'est la même idée que $10$ unités $= 1$ dizaine."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 dizaine",
+                  "value": 10,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "Dix barres de dix alignées forment une centaine."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le schéma en barres, chaque rectangle bleu vaut $10$. Il y en a $10$. Ensemble, ils font $100$. Si tu comptes de $10$ en $10$ jusqu'à $100$, tu as dit $10$ nombres. C'est la même chose que de compter une centaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, entraînes-toi à dire la suite des centaines à voix haute : $100$, $200$, $300$, $400$, $500$, $600$, $700$, $800$, $900$, $1000$. Remarque que les deux derniers chiffres sont toujours $00$. Seul le chiffre des centaines change, comme pour les dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 5,
+              "tens": 0,
+              "units": 0,
+              "caption": "Cinq plaques de cent : $500$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec cinq plaques, on a $500$. Si on en ajoute une, on obtient $600$. C'est très régulier. Essaie d'écrire ces nombres en chiffres : le chiffre des centaines augmente de $1$ à chaque fois, les autres restent à $0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la suite ne commence pas à $100$. Par exemple : $300$, $400$, $500$, $\\square$. Tu dois trouver le suivant. C'est le même principe : on ajoute $100$. Ici, après $500$ vient $600$. Cela marche aussi à l'envers : $800$, $700$, $600$... on retire $100$ à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de dizaines y a-t-il dans une centaine ?",
+              "answer": "$10$ dizaines",
+              "hint": "Regarde la plaque de cent : elle est faite de 10 barres.",
+              "explanation": "Une plaque de cent = 10 barres de dix. Donc 1 centaine = 10 dizaines."
+            },
+            {
+              "question": "Écris les nombres qui manquent : $200$, $\\square$, $400$, $\\square$, $600$.",
+              "answer": "$300$, $500$",
+              "hint": "Compte de 100 en 100 à partir de 200.",
+              "explanation": "On ajoute 100 à chaque fois : 200+100=300, 400+100=500."
+            },
+            {
+              "question": "Quelle est la suite de 3 centaines ? $300$, $400$, $\\square$, $\\square$, $\\square$.",
+              "answer": "$500$, $600$, $700$",
+              "hint": "Continue d'ajouter 100.",
+              "explanation": "400+100=500, 500+100=600, 600+100=700."
+            },
+            {
+              "question": "Complète la suite décroissante : $900$, $800$, $\\square$, $600$, $\\square$.",
+              "answer": "$700$, $500$",
+              "hint": "Cette fois, on retire 100 à chaque étape.",
+              "explanation": "800-100=700, 600-100=500. La suite descend de 100 en 100."
+            }
+          ]
+        },
+        {
+          "title": "Trouver la règle d'une suite simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la règle d'une suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite de nombres, c'est comme une recette : il y a un ingrédient secret qui fait passer d'un nombre au suivant. Cet ingrédient, c'est le \"pas\" : la quantité qu'on ajoute (ou qu'on retire) à chaque fois. Pour le trouver, on joue aux détectives : on soustrait un nombre du suivant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarde deux nombres qui se suivent",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le deuxième nombre et enlève le premier. Par exemple, dans $10$, $15$, $20$ : $15 - 10 = 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifie avec la paire d'après",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $20 - 15$. Si tu retrouves $5$, c'est gagné : le pas est $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprime la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On dit : \"On compte de 5 en 5\" ou \"La règle est +5\"."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur cette suite : $4$, $7$, $10$, $13$. $7-4=3$, $10-7=3$, $13-10=3$. Le pas est $3$. La règle : on ajoute $3$ à chaque fois. C'est une suite croissante, les nombres grandissent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la suite descend. Regarde : $50$, $45$, $40$, $35$. Ici, $45-50 = -5$ (on a retiré $5$). $40-45 = -5$. Le pas est $-5$, ou on dit \"on compte de 5 en 5 en arrière\". C'est une suite décroissante."
+            },
+            {
+              "type": "number_line",
+              "min": 30,
+              "max": 55,
+              "points": [
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 35,
+                  "label": "35"
+                }
+              ],
+              "intervals": [],
+              "caption": "La suite descend de 5 en 5 sur la droite numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, les flèches vont vers la gauche. Chaque saut vaut $5$. Si tu continues, après $35$ vient $30$, puis $25$. La règle est la même, mais on soustrait au lieu d'ajouter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, des suites avec des nombres plus grands, comme celles qu'on a vues : $200$, $300$, $400$... Le pas est $100$. Ou $10$, $20$, $30$... pas de $10$. Ou $25$, $30$, $35$... pas de $5$. Le détective doit toujours soustraire deux nombres voisins pour trouver le pas, peu importe la taille des nombres."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "triangle",
+                "carré",
+                "cercle",
+                "triangle",
+                "carré"
+              ],
+              "options": [
+                "cercle",
+                "triangle",
+                "carré",
+                "étoile"
+              ],
+              "answer": "cercle",
+              "caption": "Ici, le motif se répète tous les 3 formes. C'est une suite visuelle avec une règle de répétition."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les suites ne sont pas seulement numériques. Elles peuvent être des formes, des couleurs, des gestes. La règle, c'est ce qui se répète de façon prévisible. Pour les nombres, la règle est une addition ou une soustraction constante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "À ton tour d'inventer une suite ! Choisis un nombre de départ et un pas (par exemple $+2$, $+5$, $+10$ ou $-5$). Écris les 5 premiers termes. Puis donne ta suite à un camarade : sauras-t-il retrouver ta règle ? C'est le meilleur moyen de vérifier qu'on a bien compris."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais compter de 2 en 2, de 5 en 5 et de 10 en 10.",
+                "Je sais compter de 100 en 100 jusqu'à 1000.",
+                "Je sais trouver le pas d'une suite en soustrayant deux nombres successifs.",
+                "Je sais dire si une suite est croissante (on ajoute) ou décroissante (on retire).",
+                "Je peux inventer une suite numérique et expliquer sa règle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve le pas de cette suite : $12$, $17$, $22$, $27$.",
+              "answer": "$5$",
+              "hint": "Calcule 17 - 12, puis 22 - 17.",
+              "explanation": "17-12=5, 22-17=5, 27-22=5. Le pas est 5, on ajoute 5 à chaque fois."
+            },
+            {
+              "question": "Cette suite est-elle croissante ou décroissante ? $60$, $55$, $50$, $45$.",
+              "answer": "Décroissante",
+              "hint": "Les nombres deviennent-ils plus grands ou plus petits ?",
+              "explanation": "Chaque nombre est plus petit que le précédent : on retire 5. C'est une suite décroissante."
+            },
+            {
+              "question": "Quelle est la règle de la suite : $300$, $400$, $500$, $600$ ?",
+              "answer": "Compter de 100 en 100 (ajouter 100)",
+              "hint": "Quelle différence entre 400 et 300 ?",
+              "explanation": "400-300=100, 500-400=100, 600-500=100. Le pas est 100."
+            },
+            {
+              "question": "Invente une suite de 4 nombres en comptant de 3 en 3 à partir de 6.",
+              "answer": "$6$, $9$, $12$, $15$",
+              "hint": "Commence à 6, ajoute 3 trois fois.",
+              "explanation": "6+3=9, 9+3=12, 12+3=15. La suite est 6, 9, 12, 15."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

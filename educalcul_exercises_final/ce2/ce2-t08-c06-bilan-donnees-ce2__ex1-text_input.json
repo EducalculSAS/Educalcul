@@ -1,0 +1,120 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire et produire",
+  "title": "Bilan - Données CE2 : Lire et produire",
+  "blocks": [
+    {
+      "title": "Question 1 : Lecture d'un diagramme en barres",
+      "content": "Le diagramme en barres ci-dessous montre le nombre de livres lus par quatre élèves au mois de septembre. Combien de livres a lu Léa ?",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde la barre correspondant à Léa. Sa hauteur indique $5$ livres.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus en septembre",
+        "bars": [
+          {
+            "label": "Léa",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Tom",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Sara",
+            "value": 7,
+            "tone": "red"
+          },
+          {
+            "label": "Nino",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Question 2 : Lecture d'un tableau",
+      "content": "Le tableau suivant indique les fruits préférés des élèves de la classe. Quel fruit a été choisi par le plus grand nombre d'élèves ?",
+      "correctAnswer": "pomme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les effectifs : pomme $12$, banane $8$, fraise $5$, orange $4$. Le maximum est pour la pomme.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "caption": "Fruits préférés",
+        "headers": [
+          "Fruit",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "pomme",
+            "12"
+          ],
+          [
+            "banane",
+            "8"
+          ],
+          [
+            "fraise",
+            "5"
+          ],
+          [
+            "orange",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Question 3 : Lecture d'un diagramme circulaire",
+      "content": "Le diagramme circulaire représente la répartition des moyens de transport pour aller à l'école. Quelle part (en pourcentage) correspondent aux élèves qui viennent à pied ?",
+      "correctAnswer": "30",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La part « À pied » occupe $30\\%$ du cercle, donc la réponse est $30$.",
+      "points": 2,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Moyens de transport pour aller à l'école",
+        "slices": [
+          {
+            "label": "À pied",
+            "value": 30,
+            "tone": "blue"
+          },
+          {
+            "label": "Vélo",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "Bus",
+            "value": 35,
+            "tone": "red"
+          },
+          {
+            "label": "Voiture",
+            "value": 15,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

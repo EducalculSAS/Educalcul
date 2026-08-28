@@ -1,0 +1,452 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.809299+00:00",
+  "id": 749,
+  "code": "terminale-generale-expertes-t03-c03",
+  "title": "Matrice d'adjacence",
+  "description": "Cours structuré Educalcul : Matrice d'adjacence.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Matrice d'adjacence",
+    "objectif_global": "Matrice d'adjacence",
+    "mini_lecons_imposees": [
+      "Construire.",
+      "Lire.",
+      "Relier au graphe."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une matrice d'adjacence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée à la construction d'une matrice d'adjacence. Imagine que tu disposes d'un graphe orienté ou non orienté, composé de sommets reliés par des arcs ou des arêtes. La matrice d'adjacence est un outil algébrique qui encode toute cette information de connexion dans un tableau carré dont la taille correspond au nombre de sommets. Chaque ligne et chaque colonne représente un sommet, et la case située à l'intersection de la ligne $i$ et de la colonne $j$ contient le nombre d'arcs qui partent du sommet $i$ pour arriver au sommet $j$. Dans le cas d'un graphe simple sans boucles, cette valeur est soit $0$, soit $1$. Pour un graphe pondéré, on y place le poids de l'arc. Ce passage du dessin au tableau permet ensuite d'appliquer toute la puissance du calcul matriciel : multiplication, puissances, valeurs propres, etc. Tu verras que la construction est très systématique et qu'elle ne laisse place à aucune ambiguïté, pourvu que l'on respecte l'ordre choisi pour les sommets."
+            },
+            {
+              "type": "definition",
+              "term": "Matrice d'adjacence",
+              "definition": "Tableau carré $A = (a_{ij})$ de taille $n \\times n$ où $n$ est le nombre de sommets du graphe. Le coefficient $a_{ij}$ vaut le nombre d'arcs orientés du sommet $i$ vers le sommet $j$ (ou $1$ s'il existe une arête non orientée entre $i$ et $j$).",
+              "example": "Pour le graphe à trois sommets $1,2,3$ avec des arêtes $\\{1,2\\}$ et $\\{2,3\\}$, la matrice est $\\begin{pmatrix}0&1&0\\\\1&0&1\\\\0&1&0\\end{pmatrix}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour bien visualiser la procédure. Considérons un graphe non orienté à quatre sommets $1,2,3,4$ et les arêtes suivantes : $\\{1,2\\}$, $\\{1,3\\}$, $\\{2,4\\}$, $\\{3,4\\}$. L'ordre des sommets est fixé à $1,2,3,4$. Nous allons remplir une matrice $4 \\times 4$ initialisée à zéro. Pour chaque arête $\\{u,v\\}$, nous ajoutons $1$ aux cases $(u,v)$ et $(v,u)$ car le graphe n'est pas orienté. Après avoir traité les quatre arêtes, la matrice obtenue est symétrique et chaque ligne (ou colonne) contient exactement le degré du sommet correspondant. Cette matrice nous servira de base pour les exercices qui suivent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les sommets dans un ordre fixé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un ordre pour les sommets, par exemple l'ordre naturel $1,2,\\dots,n$. Cet ordre déterminera l'indice de chaque ligne et de chaque colonne de la matrice. Il est essentiel de ne pas changer cet ordre en cours de construction, sinon la matrice ne correspondrait plus au graphe d'origine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Créer un tableau vide de taille $n \\times n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Initialise une matrice carrée $A$ de dimension $n$ avec des zéros partout. Dans un langage de programmation, cela correspond à une matrice nulle ; sur papier, trace un carré divisé en $n$ lignes et $n$ colonnes et écris $0$ dans chaque case."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Parcourir chaque arc et incrémenter la case correspondante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque arc orienté $i \\to j$, ajoute $1$ à $a_{ij}$. Si le graphe est non orienté, traite l'arête $\\{i,j\\}$ comme deux arcs opposés : incrémente $a_{ij}$ et $a_{ji}$. Si le graphe est pondéré, ajoute le poids de l'arc au lieu de $1$. À la fin, la matrice $A$ est la matrice d'adjacence du graphe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a_{ij} = \\text{nombre d'arcs de } i \\text{ vers } j"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "0",
+                  "1",
+                  "1",
+                  "0"
+                ],
+                [
+                  "2",
+                  "1",
+                  "0",
+                  "0",
+                  "1"
+                ],
+                [
+                  "3",
+                  "1",
+                  "0",
+                  "0",
+                  "1"
+                ],
+                [
+                  "4",
+                  "0",
+                  "1",
+                  "1",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons construire la matrice, voyons comment en extraire le degré d'un sommet directement à partir de la matrice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment utiliser cette matrice pour compter les chemins de longueur deux entre deux sommets donnés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit le graphe non orienté à $4$ sommets avec les arêtes $\\{1,2\\}$, $\\{1,3\\}$, $\\{2,4\\}$, $\\{3,4\\}$. Écris sa matrice d'adjacence.",
+              "answer": "\\begin{pmatrix}0&1&1&0\\\\1&0&0&1\\\\1&0&0&1\\\\0&1&1&0\\end{pmatrix}",
+              "hint": "Rappelle-toi que pour une arête non orientée $\\{u,v\\}$, tu dois mettre $1$ aux positions $(u,v)$ et $(v,u)$.",
+              "explanation": "En suivant l'ordre $1,2,3,4$, on place un $1$ pour chaque arête. La matrice est symétrique car le graphe n'est pas orienté."
+            },
+            {
+              "question": "Donne le degré du sommet $2$ à partir de la matrice obtenue.",
+              "answer": "$2$",
+              "hint": "Le degré d'un sommet dans un graphe non orienté est la somme des coefficients de sa ligne (ou de sa colonne).",
+              "explanation": "La ligne $2$ de la matrice est $(1,0,0,1)$ ; sa somme vaut $2$, ce qui correspond aux arêtes $\\{1,2\\}$ et $\\{2,4\\}$."
+            },
+            {
+              "question": "Calcule $A^2$ et interprète le coefficient $(1,4)$.",
+              "answer": "Le coefficient $(1,4)$ de $A^2$ vaut $2$.",
+              "hint": "Le produit matriciel $A^2 = A \\times A$ ; le coefficient $(i,j)$ compte les chemins de longueur $2$ de $i$ vers $j$.",
+              "explanation": "En multipliant la matrice par elle-même, on trouve deux chemins de longueur $2$ du sommet $1$ au sommet $4$ : $1 \\to 2 \\to 4$ et $1 \\to 3 \\to 4$. Donc $(A^2)_{14}=2$."
+            }
+          ]
+        },
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une matrice d'adjacence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à lire une matrice d'adjacence pour en extraire des informations structurales sur le graphe sans avoir à le redessiner. Une fois la matrice construite, elle devient une source complète de données : on peut y lire les degrés des sommets, détecter la présence de boucles, savoir si le graphe est orienté ou non, et même compter les chemins de longueur donnée grâce aux puissances de la matrice. La lecture se fait en examinant les lignes, les colonnes et la diagonale. Pour un graphe non orienté simple, la matrice est symétrique et la diagonale est nulle. Pour un graphe orienté, la symétrie n'est pas garantie et la diagonale peut contenir des valeurs non nulles si des boucles existent. Nous allons détailler chaque indice de lecture avec des exemples chiffrés pour que tu puisses t'entraîner à reconnaître ces motifs à coup sûr."
+            },
+            {
+              "type": "definition",
+              "term": "Degré d'un sommet",
+              "definition": "Dans un graphe non orienté, le degré $d(i)$ du sommet $i$ est le nombre d'arêtes incidentes à $i$. Il se calcule par $d(i) = \\sum_{j=1}^{n} a_{ij}$ (ou la somme de la colonne $i$ car la matrice est symétrique). Dans un graphe orienté, on distingue le degré sortant $d^+(i)=\\sum_j a_{ij}$ et le degré entrant $d^-(i)=\\sum_j a_{ji}$.",
+              "example": "Pour la matrice $\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}$, le degré de chaque sommet est $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la matrice de la leçon précédente : $\\begin{pmatrix}0&1&1&0\\\\1&0&0&1\\\\1&0&0&1\\\\0&1&1&0\\end{pmatrix}$. En lisant la première ligne, on voit des $1$ aux colonnes $2$ et $3$, ce qui signifie que le sommet $1$ est adjacent aux sommets $2$ et $3$. La somme de cette ligne est $2$, donc le degré du sommet $1$ vaut $2$. La deuxième ligne contient des $1$ aux colonnes $1$ et $4$, donc le sommet $2$ a aussi degré $2$. La diagonale principale ne contient que des zéros, ce qui confirme l'absence de boucles. Comme la matrice est symétrique, le graphe est non orienté. Si nous avions vu des valeurs différentes au-dessus et au-dessous de la diagonale, nous aurions su que le graphe était orienté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare $a_{ij}$ et $a_{ji}$ pour tout $i,j$. Si elles sont égales partout, le graphe est non orienté ; sinon, il est orienté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire les degrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sommet $i$, additionne les éléments de la ligne $i$ (degré sortant) et de la colonne $i$ (degré entrant). Dans le cas non orienté, les deux sommes sont égales et donnent le degré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Repérer les boucles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les coefficients diagonaux $a_{ii}$ indiquent le nombre de boucles sur le sommet $i$. Un zéro signifie qu'il n'y en a pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "d(i) = \\sum_{j=1}^{n} a_{ij} \\quad (\\text{graphe non orienté})"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distribution des degrés pour la matrice d'exemple",
+              "bars": [
+                {
+                  "label": "Sommet 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sommet 2",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Sommet 3",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Sommet 4",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir lu les degrés, nous allons voir comment détecter la présence de cycles de longueur trois en examinant la trace de $A^3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous utiliserons la matrice pour déterminer si le graphe est connexe en étudiant les puissances successives."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la matrice $A = \\begin{pmatrix}0&1&0&1\\\\1&0&1&0\\\\0&1&0&1\\\\1&0&1&0\\end{pmatrix}$. Le graphe est-il orienté ? Justifie.",
+              "answer": "Non, le graphe n'est pas orienté car $A$ est symétrique ($a_{ij}=a_{ji}$ pour tout $i,j$).",
+              "hint": "Vérifie si la matrice est égale à sa transposée.",
+              "explanation": "La transposée de $A$ est $A$ lui-même, donc la relation d'adjacence est symétrique : chaque arête est non orientée."
+            },
+            {
+              "question": "Calcule les degrés sortants et entrants de chaque sommet pour la matrice $A$ ci-dessus.",
+              "answer": "Degré sortant = degré entrant = $2$ pour tous les sommets.",
+              "hint": "Somme chaque ligne pour le degré sortant, chaque colonne pour le degré entrant.",
+              "explanation": "Chaque ligne et chaque colonne contient exactement deux $1$, donc $d^+(i)=d^-(i)=2$."
+            },
+            {
+              "question": "La trace de $A^3$ vaut $0$. Que peux-tu en déduire sur les triangles (cycles de longueur $3$) dans le graphe ?",
+              "answer": "Il n'y a aucun triangle dans le graphe.",
+              "hint": "Le coefficient $(i,i)$ de $A^3$ compte les chemins de longueur $3$ partant et revenant au sommet $i$ ; la trace est la somme de ces coefficients.",
+              "explanation": "Comme la trace est nulle, aucun sommet n'est le point de départ et d'arrivée d'un chemin de longueur $3$, donc il n'existe pas de cycle à $3$ sommets."
+            }
+          ]
+        },
+        {
+          "title": "Relier au graphe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier la matrice au graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon montre comment la matrice d'adjacence devient un véritable pont entre l'algèbre linéaire et la théorie des graphes. En élevant la matrice à la puissance $k$, on obtient une nouvelle matrice dont le coefficient $(i,j)$ compte exactement le nombre de chemins de longueur $k$ reliant le sommet $i$ au sommet $j$. Cette propriété fondamentale permet de résoudre des problèmes de connectivité, de distance, et même d'énumération de cycles sans jamais tracer le graphe. Nous allons d'abord démontrer la relation par récurrence, puis l'illustrer sur notre exemple à quatre sommets, et enfin voir comment la matrice peut révéler si le graphe est connexe en examinant les puissances successives jusqu'à $n-1$. Chaque étape sera accompagnée d'un calcul explicite pour que tu puisses reproduire le raisonnement sur n'importe quel graphe de taille modeste."
+            },
+            {
+              "type": "definition",
+              "term": "Chemin de longueur $k$",
+              "definition": "Un chemin de longueur $k$ dans un graphe est une suite de $k$ arcs (ou arêtes) consécutifs $(v_0,v_1), (v_1,v_2), \\dots, (v_{k-1},v_k)$. Le nombre de tels chemins de $i$ vers $j$ est noté $(A^k)_{ij}$.",
+              "example": "Dans le graphe de la leçon 1, il existe deux chemins de longueur $2$ de $1$ vers $4$ : $1\\to2\\to4$ et $1\\to3\\to4$, donc $(A^2)_{14}=2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Démontrons la propriété par récurrence sur $k$. Pour $k=1$, $A^1=A$ et par définition $a_{ij}$ compte les arcs directs de $i$ vers $j$, ce qui sont exactement les chemins de longueur $1$. Supposons la propriété vraie pour $k$. Alors $(A^{k+1})_{ij} = \\sum_{m=1}^{n} (A^k)_{im} a_{mj}$. Le terme $(A^k)_{im}$ compte les chemins de longueur $k$ de $i$ à $m$, et $a_{mj}$ compte les arcs de $m$ à $j$. En sommant sur tous les sommets intermédiaires $m$, on concatène chaque chemin de longueur $k$ avec un arc final, obtenant tous les chemins de longueur $k+1$ de $i$ à $j$. La récurrence est donc établie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $A^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie la matrice $A$ par elle-même. Pour chaque paire $(i,j)$, additionne les produits $a_{i1}a_{1j}+a_{i2}a_{2j}+\\dots+a_{in}a_{nj}$. Le résultat donne le nombre de chemins de longueur $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $A^3$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie $A^2$ par $A$ de la même manière. Le coefficient $(i,j)$ de $A^3$ compte les chemins de longueur $3$. La trace de $A^3$ donne six fois le nombre de triangles (chaque triangle étant compté dans les deux sens et pour chaque sommet de départ)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester la connexité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un graphe non orienté est connexe si et seulement si pour tout couple $(i,j)$ il existe un $k \\le n-1$ tel que $(A^k)_{ij} > 0$. En pratique, on calcule $A, A^2, \\dots, A^{n-1}$ et on vérifie que la somme de ces matrices n'a aucune entrée nulle hors diagonale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(A^{k+1})_{ij} = \\sum_{m=1}^{n} (A^k)_{im} a_{mj}"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "2"
+                ],
+                [
+                  "2",
+                  "0",
+                  "2",
+                  "2",
+                  "0"
+                ],
+                [
+                  "3",
+                  "0",
+                  "2",
+                  "2",
+                  "0"
+                ],
+                [
+                  "4",
+                  "2",
+                  "0",
+                  "0",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant utiliser $A^3$ pour compter les triangles présents dans le graphe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, nous vérifierons la connexité du graphe en examinant les puissances jusqu'à $A^3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire la matrice d'adjacence d'un graphe donné.",
+                "Je sais lire les degrés, la présence de boucles et l'orientation à partir de la matrice.",
+                "Je sais utiliser les puissances de la matrice pour compter les chemins de longueur $k$ et tester la connexité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $A^2$ pour la matrice $A = \\begin{pmatrix}0&1&1&0\\\\1&0&0&1\\\\1&0&0&1\\\\0&1&1&0\\end{pmatrix}$.",
+              "answer": "\\begin{pmatrix}2&0&0&2\\\\0&2&2&0\\\\0&2&2&0\\\\2&0&0&2\\end{pmatrix}",
+              "hint": "Effectue le produit matriciel classique ; chaque coefficient $(i,j)$ est la somme des produits $a_{ik}a_{kj}$.",
+              "explanation": "Par exemple $(A^2)_{11}=a_{12}a_{21}+a_{13}a_{31}=1\\cdot1+1\\cdot1=2$. Les autres coefficients s'obtiennent de la même façon."
+            },
+            {
+              "question": "Combien de triangles (cycles de longueur $3$) contient le graphe associé à cette matrice ?",
+              "answer": "$0$",
+              "hint": "Calcule la trace de $A^3$ et divise par $6$.",
+              "explanation": "On trouve $A^3 = \\begin{pmatrix}0&6&6&0\\\\6&0&0&6\\\\6&0&0&6\\\\0&6&6&0\\end{pmatrix}$. Sa trace est $0$, donc aucun triangle."
+            },
+            {
+              "question": "Le graphe est-il connexe ? Justifie en utilisant les puissances de $A$.",
+              "answer": "Oui, le graphe est connexe.",
+              "hint": "Vérifie que pour chaque paire $(i,j)$ avec $i\\neq j$, il existe $k\\le3$ tel que $(A^k)_{ij}>0$.",
+              "explanation": "Dans $A$, les paires adjacentes ont déjà un coefficient positif. Pour les paires non adjacentes comme $(1,4)$, $(A^2)_{14}=2>0$. Ainsi tout couple de sommets est relié par un chemin de longueur au plus $2$, ce qui prouve la connexité."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

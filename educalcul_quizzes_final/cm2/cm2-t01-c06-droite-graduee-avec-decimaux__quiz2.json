@@ -1,0 +1,107 @@
+{
+  "_status": "done",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Placer",
+  "title": "Placer des nombres décimaux sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, les graduations principales représentent les entiers. Quelle est la valeur du point A ?",
+      "options": [
+        "2,3",
+        "2,03",
+        "3,2",
+        "2,7"
+      ],
+      "correctAnswer": "2,3",
+      "explanation": "La droite va de 2 à 3. L'espace entre deux entiers est divisé en 10 parties égales (les dixièmes). Chaque petite graduation vaut 0,1. Le point A est placé sur la 3e petite graduation après 2, ce qui correspond à 2 + 0,3 = 2,3. L'option 2,03 correspondrait à 3 centièmes après 2 (il faudrait 100 divisions). L'option 3,2 est après 3. L'option 2,7 correspondrait à la 7e graduation.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 2 à 3",
+        "min": 2,
+        "max": 3,
+        "points": [
+          {
+            "value": 2.3,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On veut placer le nombre $4,65$ sur une droite graduée où l'unité est divisée en 10 parties égales (dixièmes). Entre quelles deux graduations de dixièmes se trouve ce nombre ?",
+      "options": [
+        "Entre 4,6 et 4,7",
+        "Entre 4,5 et 4,6",
+        "Entre 4,7 et 4,8",
+        "Entre 4,65 et 4,66"
+      ],
+      "correctAnswer": "Entre 4,6 et 4,7",
+      "explanation": "Le nombre 4,65 a 6 dixièmes (chiffre des dixièmes = 6) et 5 centièmes. Sur une droite graduée au dixième, les repères visibles sont 4,6 et 4,7. Puisque 4,65 est supérieur à 4,6 et strictement inférieur à 4,7, il se place entre ces deux graduations. L'option 4,65 et 4,66 correspondrait à une graduation au centième, qui n'existe pas sur cette droite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la droite graduée. Les grandes graduations sont les entiers. Les moyennes sont les dixièmes. Le point B est placé exactement sur la 4e petite graduation après le nombre 1. Quelle est la valeur de B ?",
+      "options": [
+        "1,4",
+        "1,04",
+        "1,004",
+        "4,1"
+      ],
+      "correctAnswer": "1,4",
+      "explanation": "Le point B se trouve après 1. Comme les moyennes graduations représentent les dixièmes, la 1re vaut 1,1, la 2e 1,2, la 3e 1,3 et la 4e 1,4. L'erreur 1,04 correspond à une lecture en centièmes (4e graduation sur 100). L'erreur 4,1 inverse les chiffres.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 1 à 2",
+        "min": 1,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de 0 à 1 divisée en 10 parties égales, on place les points C ($0,25$), D ($0,5$) et E ($0,75$). Lequel de ces points se trouve exactement sur une graduation principale (celle des dixièmes) ?",
+      "options": [
+        "Le point D",
+        "Le point C",
+        "Le point E",
+        "Aucun des trois"
+      ],
+      "correctAnswer": "Le point D",
+      "explanation": "Les graduations principales (dixièmes) sur [0 ; 1] sont 0,1 ; 0,2 ; 0,3 ; 0,4 ; 0,5 ; 0,6 ; 0,7 ; 0,8 ; 0,9. Le point D est 0,5, il tombe exactement sur la graduation 0,5. Le point C (0,25) est au milieu entre 0,2 et 0,3. Le point E (0,75) est au milieu entre 0,7 et 0,8.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite ci-dessous est graduée par pas de 0,2 (deux dixièmes). Les grandes graduations indiquent : 0 ; 0,2 ; 0,4 ; 0,6 ; 0,8 ; 1. Où placer le nombre $0,5$ ?",
+      "options": [
+        "Au milieu entre 0,4 et 0,6",
+        "Sur la graduation 0,4",
+        "Sur la graduation 0,6",
+        "Au milieu entre 0,2 et 0,4"
+      ],
+      "correctAnswer": "Au milieu entre 0,4 et 0,6",
+      "explanation": "Le pas de graduation est 0,2. Les repères sont 0,4 et 0,6. Le nombre 0,5 est exactement la moyenne de 0,4 et 0,6 : (0,4 + 0,6) / 2 = 0,5. Il se place donc pile au milieu de l'intervalle. Il n'est pas sur une graduation existante car 0,5 n'est pas un multiple de 0,2.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 par pas de 0,2",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 131,
+  "_course_code": "ce1-t07-c06-angles-droits",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Angles droits",
+  "title": "Ordre des étapes : Applications des angles droits",
+  "blocks": [
+    {
+      "title": "Vérifier un angle droit",
+      "content": "Range les étapes dans l'ordre pour vérifier si un angle est un angle droit à l'aide d'une équerre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je place l'équerre sur l'angle à vérifier.",
+        "J'aligne un côté de l'équerre avec un côté de l'angle.",
+        "Je regarde si l'autre côté de l'angle coïncide exactement avec l'autre côté de l'équerre.",
+        "Si les deux côtés coïncident, c'est un angle droit."
+      ],
+      "explanation": "Pour vérifier un angle droit, on commence par poser l'équerre sur l'angle. On aligne ensuite un bord de l'équerre sur un côté de l'angle. On observe si le second côté de l'angle tombe pile sur le second bord de l'équerre. Si c'est le cas, l'angle est droit.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Angle à vérifier avec l'équerre",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Tracer un angle droit",
+      "content": "Range les étapes dans l'ordre pour tracer un angle droit à la règle et à l'équerre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je trace un premier segment avec la règle.",
+        "Je place l'équerre le long de la règle, le coin de l'équerre au bout du segment.",
+        "Je trace le long de l'autre côté de l'équerre pour faire le second segment.",
+        "J'obtiens un angle droit entre les deux segments."
+      ],
+      "explanation": "On trace d'abord une droite ou un segment de base. On positionne ensuite l'équerre contre la règle pour avoir un repère bien droit. En traçant le long du bord perpendiculaire de l'équerre, on crée un angle de 90 degrés, c'est-à-dire un angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construire un carré sur quadrillage",
+      "content": "Range les étapes dans l'ordre pour tracer un carré de $4$ cases de côté sur un quadrillage.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je trace un segment horizontal de $4$ cases sur les lignes du quadrillage.",
+        "À chaque extrémité, je trace un segment vertical de $4$ cases en suivant les lignes.",
+        "Je relie les deux sommets du haut par un segment horizontal de $4$ cases.",
+        "Je vérifie que les $4$ angles sont droits grâce aux lignes du quadrillage."
+      ],
+      "explanation": "Sur un quadrillage, les lignes sont perpendiculaires, elles forment des angles droits. On trace la base en comptant $4$ cases. On monte les côtés verticaux de $4$ cases. On ferme la figure par le haut. Les angles sont droits car on a suivi les lignes du quadrillage.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 5,
+        "highlighted": 16,
+        "caption": "Carré de 4 cases de côté sur quadrillage"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Vérifier",
+  "title": "Factoriser : Vérifier une factorisation",
+  "questions": [
+    {
+      "text": "On propose la factorisation suivante : $x^2 + 7x + 10 = (x + 2)(x + 5)$. Quelle opération permet de vérifier si cette égalité est exacte ?",
+      "options": [
+        "Développer $(x + 2)(x + 5)$ et comparer à $x^2 + 7x + 10$",
+        "Factoriser $x^2 + 7x + 10$ à nouveau",
+        "Remplacer $x$ par $0$ dans les deux expressions",
+        "Résoudre l'équation $x^2 + 7x + 10 = 0$"
+      ],
+      "correctAnswer": "Développer $(x + 2)(x + 5)$ et comparer à $x^2 + 7x + 10$",
+      "explanation": "Pour vérifier une factorisation, la méthode rigoureuse consiste à développer l'expression factorisée (ici le produit $(x + 2)(x + 5)$) à l'aide de la distributivité. On obtient $x^2 + 5x + 2x + 10 = x^2 + 7x + 10$, ce qui correspond bien à l'expression de départ. Remplacer $x$ par une valeur (option 3) ne prouve l'égalité que pour cette valeur, pas pour tout $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a factorisé $6x^2 - 18x$ ainsi : $6x(x - 3)$. Comment vérifier rapidement que cette factorisation est correcte ?",
+      "options": [
+        "Calculer $6x \\times x$ et $6x \\times (-3)$ puis additionner",
+        "Diviser $6x^2$ par $6x$",
+        "Chercher le discriminant de $6x^2 - 18x$",
+        "Mettre $x = 1$ et comparer les résultats"
+      ],
+      "correctAnswer": "Calculer $6x \\times x$ et $6x \\times (-3)$ puis additionner",
+      "explanation": "Vérifier une factorisation sous forme de produit (facteur commun) revient à appliquer la distributivité : on multiplie le facteur commun $6x$ par chaque terme de la parenthèse $(x - 3)$. On obtient $6x^2 - 18x$, ce qui retrouve l'expression initiale. L'option 4 (test numérique) n'est pas une preuve générale. L'option 2 ne vérifie qu'un seul terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les égalités suivantes, laquelle est une factorisation correcte de $x^2 - 12x + 36$ ?",
+      "options": [
+        "$(x - 6)^2$",
+        "$(x + 6)^2$",
+        "$(x - 6)(x + 6)$",
+        "$(x - 36)(x - 1)$"
+      ],
+      "correctAnswer": "$(x - 6)^2$",
+      "explanation": "On reconnaît la forme d'un trinôme du type $a^2 - 2ab + b^2 = (a - b)^2$. Ici $a = x$ et $b = 6$ car $6^2 = 36$ et $2 \\times x \\times 6 = 12x$. Le développement de $(x - 6)^2$ donne $x^2 - 12x + 36$. L'option 2 donne $x^2 + 12x + 36$. L'option 3 est une différence de carrés ($x^2 - 36$). L'option 4 donne $x^2 - 37x + 36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier l'égalité $4x^2 - 25 = (2x - 5)(2x + 5)$ pour tout nombre $x$, la méthode la plus sûre est :",
+      "options": [
+        "Développer $(2x - 5)(2x + 5)$ à l'aide de l'identité $(a-b)(a+b)=a^2-b^2$",
+        "Tester l'égalité avec $x = 0$",
+        "Tester l'égalité avec $x = 5$",
+        "Factoriser $4x^2 - 25$ en cherchant deux nombres dont le produit est $-25$"
+      ],
+      "correctAnswer": "Développer $(2x - 5)(2x + 5)$ à l'aide de l'identité $(a-b)(a+b)=a^2-b^2$",
+      "explanation": "L'égalité propose une factorisation par différence de deux carrés. La vérification algébrique rigoureuse consiste à développer le second membre. En posant $a = 2x$ et $b = 5$, on applique $(a-b)(a+b) = a^2 - b^2 = (2x)^2 - 5^2 = 4x^2 - 25$, ce qui prouve l'égalité pour tout $x$. Les tests numériques (options 2 et 3) ne valident l'égalité que pour des valeurs précises, pas pour tout $x$. L'option 4 décrit une méthode de factorisation pour un trinôme, inappropriée ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit : $9x^2 - 24x + 16 = (3x - 4)(3x + 4)$. En vérifiant, on s'aperçoit que :",
+      "options": [
+        "C'est faux, le développement donne $9x^2 - 16$, ce n'est pas l'expression de départ",
+        "C'est faux, le développement donne $9x^2 + 24x + 16$",
+        "C'est exact, c'est une identité remarquable de type $(a-b)^2$",
+        "C'est exact, c'est une identité remarquable de type $(a-b)(a+b)$"
+      ],
+      "correctAnswer": "C'est faux, le développement donne $9x^2 - 16$, ce n'est pas l'expression de départ",
+      "explanation": "L'élève a confondu deux identités. L'expression $(3x - 4)(3x + 4)$ correspond à la forme $(a-b)(a+b) = a^2 - b^2$ avec $a=3x$ et $b=4$. Son développement est $9x^2 - 16$ (différence de deux carrés), il manque le terme du milieu $-24x$. L'expression de départ $9x^2 - 24x + 16$ est un trinôme qui se factorise en $(3x - 4)^2$ (carré d'une différence), car $(3x)^2 - 2 \\times 3x \\times 4 + 4^2 = (3x - 4)^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

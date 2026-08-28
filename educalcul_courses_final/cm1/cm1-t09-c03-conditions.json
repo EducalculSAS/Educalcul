@@ -1,0 +1,380 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.316588+00:00",
+  "id": 271,
+  "code": "cm1-t09-c03",
+  "title": "Conditions",
+  "description": "Cours structuré Educalcul : Conditions.",
+  "subject": "Pensée informatique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Conditions",
+    "objectif_global": "Conditions",
+    "mini_lecons_imposees": [
+      "Si / alors.",
+      "Tester une situation.",
+      "Construire décision simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Si / alors.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la condition « Si … alors … »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu regardes par la fenêtre avant de sortir. S'il pleut, alors tu prends ton parapluie. Sinon, tu laisses le parapluie à la maison. Ce petit raisonnement, tu le fais tous les jours sans y penser. En informatique, on appelle cela une $condition$ : on teste une situation et, selon le résultat, on décide quoi faire. C'est comme un petit guide qui dit : « Si ceci est vrai, alors fais cela. »"
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Une instruction qui permet au programme de choisir une action en fonction du résultat d'un test (vrai ou faux).",
+              "example": "Si $score > 10$ alors afficher « Bravo ! »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On commence par écrire $Si$ suivi de la situation à vérifier, par exemple $temps = \"pluvieux\"$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter l'action",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $alors$ suivi de ce qui doit se passer si la condition est vraie, ici $prendre\\_parapluie()$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la structure, regardons comment on l'écrit sous forme de code. En programmation, on utilise souvent des mots-clés en anglais comme $if$ et $then$, mais en français on garde $Si$ et $alors$. L'important, c'est de bien séparer le test de l'action. Prenons un exemple concret : tu veux afficher un message seulement si le joueur a gagné. On écrit : $Si$ $partie\\_gagnee$ $alors$ $afficher(\"Félicitations !\")$. Le test $partie\\_gagnee$ est soit vrai, soit faux. Si c'est vrai, le message s'affiche ; sinon, rien ne se passe."
+            },
+            {
+              "type": "display_math",
+              "latex": "Si\\ condition\\ alors\\ action"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a plusieurs actions à faire quand la condition est vraie. On les écrit simplement les unes après les autres, en les indentant pour bien voir qu'elles appartiennent au $alors$. Par exemple, s'il pleut, tu prends ton parapluie $et$ tu mets tes bottes. En code : $Si$ $pleut$ $alors$ $\\quad$ $prendre\\_parapluie()$ $\\quad$ $mettre\\_bottes()$. L'indentation (le décalage) aide à lire le programme. Essaie d'écrire une condition avec deux actions pour une situation de ton choix."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la phrase « Si j'ai faim, alors je mange une pomme », quelle est la condition et quelle est l'action ?",
+              "answer": "Condition : j'ai faim. Action : je mange une pomme.",
+              "hint": "Repère le mot « Si » et le mot « alors ».",
+              "explanation": "La condition est ce qui suit « Si », l'action est ce qui suit « alors »."
+            },
+            {
+              "question": "Écris en pseudo-code : « Si le nombre est pair, alors affiche « Pair » ».",
+              "answer": "Si nombre_est_pair alors afficher(\"Pair\")",
+              "hint": "Utilise les mots-clés Si et alors.",
+              "explanation": "La condition est « nombre_est_pair », l'action est l'affichage."
+            },
+            {
+              "question": "Complète : Si $temperature > 30$ $alors$ $…$ (deux actions : boire de l'eau et mettre un chapeau).",
+              "answer": "boire_eau() ; mettre_chapeau()",
+              "hint": "Sépare les deux actions par un point-virgule ou une nouvelle ligne indentée.",
+              "explanation": "On peut mettre plusieurs actions à la suite dans le bloc « alors »."
+            }
+          ]
+        },
+        {
+          "title": "Tester une situation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester une situation : vrai ou faux ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de prendre une décision, le programme doit évaluer la condition. C'est comme quand tu te demandes : « Est-ce que $7 > 4$ ? » La réponse est évidente : oui, c'est vrai. En informatique, on appelle cela un $test$. Le résultat d'un test est toujours soit $vrai$, soit $faux$. Il n'y a pas de « peut-être ». Cette certitude permet au programme de savoir exactement quelle branche suivre."
+            },
+            {
+              "type": "definition",
+              "term": "Test",
+              "definition": "Évaluation d'une expression qui renvoie une valeur booléenne : $vrai$ ou $faux$.",
+              "example": "$5 < 8$ renvoie $vrai$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Expression",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "$10 = 10$",
+                  "vrai"
+                ],
+                [
+                  "$3 > 9$",
+                  "faux"
+                ],
+                [
+                  "$6 \\neq 6$",
+                  "faux"
+                ]
+              ],
+              "caption": "Exemples de tests simples"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi combiner plusieurs tests avec les mots $et$ et $ou$. Par exemple, pour aller à la piscine, il faut qu'il fasse beau $et$ que tu aies ton maillot. Si l'un des deux manque, tu n'y vas pas. En code, on écrit : $Si$ $beau\\_temps$ $et$ $maillot\\_present$ $alors$ $aller\\_piscine()$. Le $et$ exige que les deux conditions soient vraies. Le $ou$, lui, est satisfait dès qu'au moins l'une des deux est vraie. C'est très utile pour prévoir plusieurs cas de figure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les sous-conditions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les tests élémentaires : ici $beau\\_temps$ et $maillot\\_present$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le lien logique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide si tu as besoin de $et$ (les deux vraies) ou de $ou$ (au moins une vraie)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la condition complète",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assemble : $Si$ $condition1$ $et$ $condition2$ $alors$ $action$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les variables peuvent changer au cours du programme. Imaginons un jeu où $score$ vaut $12$ au début. Plus tard, le joueur gagne des points et $score$ devient $18$. Le test $score > 15$ était $faux$ au début, il devient $vrai$ après. C'est pour cela qu'on teste la condition au moment où on en a besoin, pas une fois pour toutes. Essaie d'imaginer une variable $age$ qui augmente chaque année : le test $age >= 18$ passera de $faux$ à $vrai$ le jour de tes 18 ans."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Évalue le test : $9 < 5$.",
+              "answer": "faux",
+              "hint": "Compare les deux nombres.",
+              "explanation": "9 n'est pas plus petit que 5, donc le test est faux."
+            },
+            {
+              "question": "Si $a = 7$ et $b = 3$, le test $a > 5$ $et$ $b < 10$ est-il vrai ou faux ?",
+              "answer": "vrai",
+              "hint": "Vérifie chaque partie séparément.",
+              "explanation": "$7 > 5$ est vrai, $3 < 10$ est vrai, donc le « et » est vrai."
+            },
+            {
+              "question": "Une variable $vies$ vaut $3$. On exécute : $Si$ $vies > 0$ $alors$ $continuer()$. Que se passe-t-il ?",
+              "answer": "La fonction continuer() est exécutée car le test est vrai.",
+              "hint": "Remplace $vies$ par sa valeur.",
+              "explanation": "$3 > 0$ est vrai, donc l'action se déclenche."
+            }
+          ]
+        },
+        {
+          "title": "Construire décision simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une décision simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais tester une situation, tu vas assembler les pièces pour créer un vrai petit algorithme qui prend une décision. Pense à un distributeur de boissons : tu choisis une boisson, la machine vérifie si tu as mis assez d'argent. Si c'est le cas, elle te donne la boisson ; sinon, elle te rend ta monnaie. C'est une décision simple avec deux issues possibles. En programmation, on ajoute souvent le mot $sinon$ pour gérer le cas où la condition est fausse."
+            },
+            {
+              "type": "definition",
+              "term": "Sinon",
+              "definition": "Partie optionnelle d'une condition qui s'exécute quand le test est faux.",
+              "example": "Si $argent >= prix$ alors $donner\\_boisson()$ sinon $rendre\\_monnaie()$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir le problème",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle décision le programme doit-il prendre ? Exemple : autoriser l'accès si le mot de passe est correct."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Formule le test : $mot\\_de\\_passe == \"secret\"$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Prévoir les deux cas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'action pour $vrai$ (accès autorisé) et pour $faux$ (accès refusé)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Assembler en pseudo-code",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $condition$ alors $action\\_vrai$ sinon $action\\_faux$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple complet : un programme qui dit si un nombre est pair ou impair. Le test est $nombre \\% 2 == 0$ (le reste de la division par 2 est 0). Si c'est vrai, on affiche « Pair », sinon on affiche « Impair ». Essaie d'écrire cet algorithme en suivant les quatre étapes. N'hésite pas à tester avec plusieurs nombres dans ta tête : $4$, $7$, $10$."
+            },
+            {
+              "type": "display_math",
+              "latex": "Si\\ nombre\\ \\%\\ 2\\ ==\\ 0\\ alors\\ afficher(\"Pair\")\\ sinon\\ afficher(\"Impair\")"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien vérifier ton algorithme, on utilise un $tableau\\ de\\ tests$. On y met plusieurs valeurs d'entrée et le résultat attendu. C'est comme faire une liste de courses avant d'aller au magasin : on s'assure de ne rien oublier. Voici un exemple pour le test pair/impair :"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre entré",
+                "Résultat attendu"
+              ],
+              "rows": [
+                [
+                  "$4$",
+                  "Pair"
+                ],
+                [
+                  "$7$",
+                  "Impair"
+                ],
+                [
+                  "$10$",
+                  "Pair"
+                ],
+                [
+                  "$1$",
+                  "Impair"
+                ]
+              ],
+              "caption": "Tableau de tests pour l'algorithme pair/impair"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une condition « Si … alors … ».",
+                "Je sais évaluer un test (vrai ou faux).",
+                "Je sais combiner des tests avec « et » ou « ou ».",
+                "Je sais construire une décision avec « sinon ».",
+                "Je sais créer un tableau de tests pour vérifier mon algorithme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'algorithme qui affiche « Majeur » si $age >= 18$, sinon « Mineur ».",
+              "answer": "Si age >= 18 alors afficher(\"Majeur\") sinon afficher(\"Mineur\")",
+              "hint": "Utilise la structure complète avec sinon.",
+              "explanation": "Le test compare age à 18, les deux cas sont prévus."
+            },
+            {
+              "question": "Complète le tableau de tests pour l'algorithme ci-dessus : | Age | Résultat |.",
+              "answer": "15 -> Mineur ; 18 -> Majeur ; 25 -> Majeur ; 10 -> Mineur",
+              "hint": "Teste chaque âge avec la condition.",
+              "explanation": "15 et 10 sont < 18, 18 et 25 sont >= 18."
+            },
+            {
+              "question": "Propose une situation de la vie quotidienne qui nécessite une décision avec deux cas, et écris le pseudo-code correspondant.",
+              "answer": "Exemple : Si feu_vert alors traverser sinon attendre. (Réponse variable)",
+              "hint": "Choisis une situation avec un choix binaire.",
+              "explanation": "Toute situation avec deux issues possibles convient."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Justifier sans algorithme abstrait",
+  "title": "Arrondir intuitivement à la dizaine ou à la centaine",
+  "questions": [
+    {
+      "text": "Quel nombre est le plus proche de $47$ : $40$ ou $50$ ?",
+      "options": [
+        "40",
+        "50",
+        "45",
+        "55"
+      ],
+      "correctAnswer": "50",
+      "explanation": "47 est à 3 unités de 50 et à 7 unités de 40, donc 50 est le plus proche.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position de 47 entre 40 et 50",
+        "min": 40,
+        "max": 50,
+        "points": [
+          {
+            "value": 47,
+            "label": "47"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quel nombre se trouve exactement au milieu entre 100 et 200 pour aider à arrondir à la centaine ?",
+      "options": [
+        "100",
+        "150",
+        "200",
+        "120"
+      ],
+      "correctAnswer": "150",
+      "explanation": "Le milieu entre 100 et 200 est 150 ; si le nombre est inférieur à 150 on arrondit à 100, sinon à 200.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Entre quelles deux dizaines se trouve le nombre $268$ ?",
+      "options": [
+        "260 et 270",
+        "200 et 300",
+        "250 et 260",
+        "270 et 280"
+      ],
+      "correctAnswer": "260 et 270",
+      "explanation": "268 est supérieur à 260 et inférieur à 270, donc il se situe entre ces deux dizaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase justifie correctement l'arrondi de $745$ à la centaine ?",
+      "options": [
+        "745 est plus proche de 700 que de 800",
+        "745 est plus proche de 800 que de 700",
+        "745 est exactement au milieu",
+        "745 est plus proche de 750"
+      ],
+      "correctAnswer": "745 est plus proche de 700 que de 800",
+      "explanation": "La distance entre 745 et 700 est 45, entre 745 et 800 est 55 ; 745 est donc plus près de 700.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quand on arrondit $399$ à la dizaine, quel nombre obtient-on et pourquoi ?",
+      "options": [
+        "400 car 399 est plus proche de 400 que de 390",
+        "390 car 399 est plus proche de 390 que de 400",
+        "400 car 399 est exactement au milieu",
+        "390 car 399 est plus grand que 395"
+      ],
+      "correctAnswer": "400 car 399 est plus proche de 400 que de 390",
+      "explanation": "399 n'est qu'à 1 de 400 et à 9 de 390, donc l'arrondi à la dizaine donne 400.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Stocker une valeur",
+  "title": "Stocker une valeur dans une variable",
+  "questions": [
+    {
+      "text": "Si on crée une variable nommée Score et qu'on lui donne la valeur $10$, que contient la variable Score ?",
+      "options": [
+        "Le mot Score",
+        "Le nombre $10$",
+        "Le nombre $0$",
+        "Rien du tout"
+      ],
+      "correctAnswer": "Le nombre $10$",
+      "explanation": "Une variable agit comme une boîte. Quand on stocke $10$ dans la variable Score, la boîte contient désormais le nombre $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a une variable nommée Points qui vaut $15$. On exécute l'instruction : Points prend la valeur $20$. Quelle est la nouvelle valeur de Points ?",
+      "options": [
+        "$15$",
+        "$35$",
+        "$20$",
+        "$5$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "Lorsqu'on donne une nouvelle valeur à une variable, l'ancienne valeur est effacée et remplacée par la nouvelle. Le $15$ est remplacé par $20$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise deux variables : A vaut $5$ et B vaut $10$. On exécute l'instruction : A prend la valeur de B. Quelle est la valeur de A maintenant ?",
+      "options": [
+        "$5$",
+        "$10$",
+        "$15$",
+        "$0$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "L'instruction demande à A de copier le contenu de B. Comme B contient $10$, A contient maintenant aussi $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une variable nommée Total contient $50$. On veut ajouter $10$ à ce Total. Quelle instruction doit on utiliser ?",
+      "options": [
+        "Total prend la valeur $10$",
+        "Total prend la valeur de Total plus $10$",
+        "Total vaut $50$",
+        "Total prend la valeur $50$"
+      ],
+      "correctAnswer": "Total prend la valeur de Total plus $10$",
+      "explanation": "Pour modifier une valeur existante, on doit prendre l'ancienne valeur (Total), lui ajouter le nombre souhaité ($+ 10$), puis stocker le résultat dans la variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a les variables suivantes : X vaut $12$, Y vaut $8$ et Z vaut $0$. On suit ces étapes : \\n1. Z prend la valeur de X \\n2. Z prend la valeur de Z plus Y \\nQuelle est la valeur finale de Z ?",
+      "options": [
+        "$12$",
+        "$8$",
+        "$20$",
+        "$0$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "À l'étape 1, Z devient $12$ car il copie X. À l'étape 2, on calcule $12 + 8$, ce qui fait $20$. Z contient donc $20$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

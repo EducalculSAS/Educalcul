@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Unités",
+  "title": "Unités et triangle rectangle",
+  "blocks": [
+    {
+      "title": "Choix de l'unité",
+      "content": "Pour mesurer la longueur de la diagonale d'une porte de chambre, l'unité la plus adaptée est le {{1}}.",
+      "blanks": [
+        "mètre|m"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "La diagonale d'une porte mesure environ 2 mètres. Le mètre (m) est l'unité légale de longueur adaptée aux dimensions humaines. Le centimètre donnerait un nombre trop grand (200 cm) et le kilomètre un nombre trop petit (0,002 km).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion avant calcul",
+      "content": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $300$ cm et $4$ m. Pour appliquer le théorème de Pythagore, il faut utiliser la même unité. En convertissant en mètres, $300$ cm = {{1}} m.",
+      "blanks": [
+        "3"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour convertir des centimètres en mètres, on divise par $100$ car $1$ m = $100$ cm. Donc $300 \\div 100 = 3$. Les deux côtés valent $3$ m et $4$ m, l'hypoténuse sera $5$ m.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec unités mélangées",
+      "content": "Un triangle rectangle a pour côtés de l'angle droit $a = 0,5$ m et $b = 80$ cm. On veut calculer l'hypoténuse $c$ en centimètres. On convertit $a$ en cm : $a = 50$ cm. On applique Pythagore : $c = \\sqrt{50^2 + 80^2} = \\sqrt{2500 + 6400} = \\sqrt{8900} \\approx {{1}}$ cm (arrondi au dixième).",
+      "blanks": [
+        "94,3"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut d'abord convertir toutes les longueurs dans la même unité. $0,5$ m = $50$ cm. Puis $c^2 = 50^2 + 80^2 = 2500 + 6400 = 8900$. La racine carrée de $8900$ vaut environ $94,3398...$ On arrondit au dixième : $94,3$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

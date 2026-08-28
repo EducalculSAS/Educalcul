@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : For / while simple",
+  "title": "Quiz : Boucles For et While simples",
+  "questions": [
+    {
+      "text": "Combien de fois l'instruction \"Afficher 'Bonjour'\" est-elle exécutée dans l'algorithme suivant ?\\nPOUR i DE 1 A 5 FAIRE\\n    Afficher \"Bonjour\"\\nFIN POUR",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "3 fois"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "La boucle POUR i DE 1 A 5 FAIRE exécute le bloc d'instructions pour chaque valeur entière de i de 1 jusqu'à 5 inclus. Cela correspond aux valeurs 1, 2, 3, 4, 5, soit $5$ itérations au total. L'option 4 fois correspond à une erreur de décompte (exclusion de la borne supérieure), 6 fois à une inclusion d'une valeur de trop, et 3 fois à une confusion avec un autre intervalle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\ni ← 0\\nTANT QUE i < 4 FAIRE\\n    i ← i + 1\\nFIN TANT QUE\\nQuelle est la valeur de i à la fin de l'exécution ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "0"
+      ],
+      "correctAnswer": "4",
+      "explanation": "La variable i commence à $0$. La condition i < 4 est testée avant chaque tour. \\n1er tour : i=0 (<4 vrai) → i devient 1.\\n2e tour : i=1 (<4 vrai) → i devient 2.\\n3e tour : i=2 (<4 vrai) → i devient 3.\\n4e tour : i=3 (<4 vrai) → i devient 4.\\n5e test : i=4 (<4 faux) → sortie de boucle. La valeur finale est donc $4$. L'option 3 correspond à la valeur avant le dernier incrément, 5 à un tour de trop, et 0 à l'oubli de l'incrémentation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de la variable somme à la fin de cet algorithme ?\\nsomme ← 0\\nPOUR k DE 1 A 4 FAIRE\\n    somme ← somme + k\\nFIN POUR",
+      "options": [
+        "6",
+        "10",
+        "15",
+        "4"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La boucle ajoute successivement les valeurs de k à la variable somme initialisée à $0$. \\nk=1 : somme = 0+1 = 1.\\nk=2 : somme = 1+2 = 3.\\nk=3 : somme = 3+3 = 6.\\nk=4 : somme = 6+4 = 10.\\nLa somme des quatre premiers entiers est $1+2+3+4 = 10$. L'option 6 est la somme après trois tours seulement, 15 est la somme jusqu'à 5, et 4 est le nombre de tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nn ← 10\\nTANT QUE n > 0 FAIRE\\n    n ← n - 3\\nFIN TANT QUE\\nQuelle est la valeur finale de n ?",
+      "options": [
+        "1",
+        "-2",
+        "0",
+        "-3"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "La variable n commence à $10$. On soustrait $3$ tant que n reste strictement positif. \\n1er tour : n=10 (>0) → n=7.\\n2e tour : n=7 (>0) → n=4.\\n3e tour : n=4 (>0) → n=1.\\n4e tour : n=1 (>0) → n=-2.\\nTest suivant : n=-2 (>0 faux) → fin. La valeur finale est $-2$. L'option 1 est la valeur avant le dernier tour, 0 n'est jamais atteinte car on soustrait 3, et -3 serait le résultat si on continuait encore.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de fois la boucle TANT QUE va-t-elle s'exécuter avec cet algorithme ?\\ni ← 1\\nTANT QUE i ≤ 20 FAIRE\\n    i ← i × 2\\nFIN TANT QUE",
+      "options": [
+        "4 fois",
+        "5 fois",
+        "6 fois",
+        "3 fois"
+      ],
+      "correctAnswer": "5 fois",
+      "explanation": "On suit la valeur de i au fil des tours :\\nDébut : i=1.\\n1er tour : 1 ≤ 20 vrai → i devient 2.\\n2e tour : 2 ≤ 20 vrai → i devient 4.\\n3e tour : 4 ≤ 20 vrai → i devient 8.\\n4e tour : 8 ≤ 20 vrai → i devient 16.\\n5e tour : 16 ≤ 20 vrai → i devient 32.\\n6e test : 32 ≤ 20 faux → sortie.\\nLa boucle a été exécutée $5$ fois. L'option 4 fois s'arrête avant le dernier tour valide, 6 fois compte le test de sortie, et 3 fois sous-estime la croissance.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

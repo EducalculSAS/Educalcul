@@ -1,0 +1,464 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.658940+00:00",
+  "id": 375,
+  "code": "6eme-t09-c02",
+  "title": "Boucles",
+  "description": "Cours structuré Educalcul : Boucles.",
+  "subject": "Algorithmique",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algorithmique",
+    "titre_du_cours": "Boucles",
+    "objectif_global": "Boucles",
+    "mini_lecons_imposees": [
+      "Répéter.",
+      "Compter.",
+      "Prédire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique",
+      "lessons": [
+        {
+          "title": "Répéter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répéter : découvrons la boucle simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois taper dans tes mains cinq fois de suite pour fêter une victoire. Au lieu d'écrire cinq fois l'instruction « taper dans les mains », tu peux dire à l'ordinateur : « Répète 5 fois : taper dans les mains ». C'est exactement ce qu'une boucle « répéter » fait : elle exécute un bloc d'instructions un nombre précis de fois sans que tu aies à le réécrire. Dans ce cours, tu vas apprendre à reconnaître ce motif, à l'écrire en pseudo‑code et à suivre pas à pas ce qui se passe à chaque tour de boucle."
+            },
+            {
+              "type": "definition",
+              "term": "Boucle",
+              "definition": "Structure qui permet d'exécuter plusieurs fois de suite la même série d'instructions.",
+              "example": "REPEAT 3 TIMES … END"
+            },
+            {
+              "type": "definition",
+              "term": "Itération",
+              "definition": "Chaque exécution unique du bloc d'instructions à l'intérieur de la boucle.",
+              "example": "La 2e itération correspond au deuxième passage dans le bloc."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu veux allumer une guirlande de quatre ampoules, une après l'autre, en appuyant sur un bouton. Sans boucle, tu écrirais : allume ampoule 1, allume ampoule 2, allume ampoule 3, allume ampoule 4. Avec une boucle « répéter 4 fois », tu écris une seule fois l'action « allume l'ampoule suivante » et l'ordinateur la refait automatiquement quatre fois. Cela rend le programme plus court, plus lisible et plus facile à modifier si tu changes d'avis et veux six ampoules au lieu de quatre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le programme lit le nombre de répétitions, ici $4$, et prépare un compteur interne à $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : test du compteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que le compteur est strictement inférieur à $4$, on entre dans le bloc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : exécution du bloc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'instruction « allume l'ampoule suivante » est réalisée, puis le compteur est augmenté de $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : retour au test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On revient à l'étape 2. Quand le compteur atteint $4$, la condition n'est plus vraie et la boucle s'arrête."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le déroulement pas à pas, essaye de prédire ce qui s'affichera si la boucle contient l'instruction « écris \"coucou\" » et qu'elle répète $3$ fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour vérifier ton programme, compte mentalement les itérations : 1, 2, 3… chaque chiffre correspond à un passage dans le bloc."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Une utilisation très courante de la boucle « répéter » est le dessin de figures géométriques. Pour tracer un carré, tu peux dire : « Répète 4 fois : avance de $5$ cm, tourne de $90$ degrés ». À chaque itération, le crayon avance et tourne, et après quatre tours le carré est refermé. Essaie d'écrire cet algorithme en pseudo‑code et imagine le tracé sur une feuille."
+            },
+            {
+              "type": "display_math",
+              "latex": "REPEAT\\ 4\\ TIMES\\ \\{ FORWARD\\ 5;\\ TURN\\ 90 \\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe que le nombre de côtés du polygone correspond exactement au nombre de répétitions. Si tu changes le nombre de répétitions à $6$ et l'angle à $60$ degrés, tu obtiens un hexagone régulier. C'est la puissance de la boucle : une toute petite modification produit une figure complètement différente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut arrêter une boucle avant la fin prévue, par exemple si un capteur détecte un obstacle. En algorithmique, on utilise alors une condition de sortie à l'intérieur du bloc. Bien que ce soit une notion plus avancée, sache qu'une boucle « répéter » peut contenir un test « si … alors sors de la boucle ». Cela permet de rendre le programme réactif à son environnement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les bases pour construire des boucles simples, les lire et en prévoir le résultat. Dans la prochaine leçon, nous verrons comment compter les itérations avec une variable explicite, ce qui ouvre la porte à des calculs plus précis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le pseudo‑code d'une boucle qui affiche le mot \"coucou\" trois fois.",
+              "answer": "REPEAT 3 TIMES { DISPLAY \"coucou\" }",
+              "hint": "Utilise le mot-clé REPEAT suivi du nombre de répétitions.",
+              "explanation": "La boucle répète le bloc d'instructions exactement trois fois, donc le mot s'affiche trois fois de suite."
+            },
+            {
+              "question": "Quel polygone est tracé par l'algorithme : REPEAT 6 TIMES { FORWARD 4; TURN 60 } ?",
+              "answer": "Un hexagone régulier.",
+              "hint": "Le nombre de répétitions donne le nombre de côtés, l'angle de rotation doit être 360 divisé par ce nombre.",
+              "explanation": "Six répétitions avec un angle de 60 degrés (360/6) ferment la figure après six côtés égaux."
+            },
+            {
+              "question": "Si une boucle REPEAT 5 TIMES contient l'instruction ADD 2 TO total, et que total vaut $0$ au départ, quelle est la valeur de total à la fin ?",
+              "answer": "$10$",
+              "hint": "Chaque itération ajoute $2$, il y a $5$ itérations.",
+              "explanation": "5 × 2 = 10, donc total vaut 10 après la boucle."
+            }
+          ]
+        },
+        {
+          "title": "Compter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter : la boucle avec un compteur explicite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, la boucle savait toute seule combien de fois tourner grâce au mot « répéter ». Mais souvent, nous avons besoin de connaître le numéro du tour actuel pour l'utiliser dans les calculs. C'est là qu'intervient le compteur, une variable qui change à chaque itération. Pense à un enfant qui monte les marches d'un escalier en comptant : « une, deux, trois… » À chaque marche, le nombre augmente et il peut s'en servir pour savoir quelle marche il vient de gravir."
+            },
+            {
+              "type": "definition",
+              "term": "Compteur",
+              "definition": "Variable qui prend une valeur différente à chaque itération, généralement augmentée de $1$ à chaque tour.",
+              "example": "FOR i FROM 1 TO 10"
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Espace de stockage nommé qui peut contenir une valeur et dont la valeur peut changer pendant l'exécution.",
+              "example": "i, total, note"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple simple : calculer la somme des entiers de $1$ à $5$. Sans boucle, tu ferais $1+2+3+4+5$. Avec une boucle à compteur, tu écris : total ← 0 ; FOR i FROM 1 TO 5 DO total ← total + i ; END. À la première itération, i vaut $1$ et total devient $1$. À la deuxième, i vaut $2$ et total devient $3$, et ainsi de suite jusqu'à i = 5 où total atteint $15$. Le compteur i te permet d'ajouter exactement le bon nombre à chaque tour."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "total ← 0 ; i ← 1"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : test de la borne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant que i ≤ 5, on continue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "total ← total + i ; i ← i + 1"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand i devient 6, la condition i ≤ 5 est fausse, la boucle s'arrête et total vaut 15."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de tracer mentalement l'évolution de la variable total si la boucle va de $1$ à $4$ au lieu de $5$. Combien vaut total à la fin ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs successives du compteur i de 1 à 5",
+              "min": 0,
+              "max": 6,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite numérique ci-dessus montre les valeurs successives du compteur. Remarque que chaque point correspond à une itération. Cette visualisation aide à comprendre que le compteur prend des valeurs discrètes et ordonnées, ce qui est essentiel quand on l'utilise dans des formules."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le pas du compteur n'est pas $1$. Par exemple, pour additionner seulement les nombres pairs de $2$ à $10$, on écrit : FOR i FROM 2 TO 10 STEP 2 DO total ← total + i. Ici, i vaut successivement $2, 4, 6, 8, 10$. Le mot-clé STEP indique de combien augmenter le compteur à chaque tour. Cela permet de parcourir des suites arithmétiques sans écrire chaque terme."
+            },
+            {
+              "type": "display_math",
+              "latex": "FOR\\ i\\ FROM\\ 2\\ TO\\ 10\\ STEP\\ 2\\ \\{ total\\ \\leftarrow\\ total\\ +\\ i \\}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule la valeur finale de total si on part de $0$ avec cette boucle. Tu verras que le résultat est $30$, la somme des cinq premiers nombres pairs. Cette technique est très utile pour traiter des séries régulières sans avoir à lister chaque élément."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant maîtrisé l'utilisation d'un compteur explicite pour contrôler le nombre d'itérations et pour exploiter la valeur du tour courant dans tes calculs. La prochaine leçon te montrera comment prédire le résultat d'une boucle sans l'exécuter pas à pas, en raisonnant sur la structure de l'algorithme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la valeur de total après l'exécution de : total ← 0 ; FOR i FROM 1 TO 4 DO total ← total + i ; END ?",
+              "answer": "$10$",
+              "hint": "Additionne 1, 2, 3 et 4.",
+              "explanation": "1+2+3+4 = 10."
+            },
+            {
+              "question": "Sur la droite numérique, combien d'itérations la boucle FOR i FROM 1 TO 5 effectue-t-elle ?",
+              "answer": "$5$",
+              "hint": "Compte les points marqués de 1 à 5.",
+              "explanation": "Chaque entier de 1 à 5 correspond à une itération, donc 5 itérations."
+            },
+            {
+              "question": "Avec la boucle FOR i FROM 2 TO 10 STEP 2, quelle est la somme accumulée dans total (initialisé à 0) ?",
+              "answer": "$30$",
+              "hint": "Les valeurs de i sont 2, 4, 6, 8, 10.",
+              "explanation": "2+4+6+8+10 = 30."
+            }
+          ]
+        },
+        {
+          "title": "Prédire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire : anticiper le résultat d'une boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons exécuté les boucles pas à pas pour voir ce qui se passe. Mais en algorithmique, une compétence clé est de pouvoir prédire le résultat final sans simuler chaque itération. C'est comme regarder une recette de cuisine et savoir à l'avance combien de gâteaux tu obtiendras si tu doubles les ingrédients. Pour y parvenir, on identifie le motif répétitif et on utilise des formules mathématiques ou un raisonnement par récurrence."
+            },
+            {
+              "type": "definition",
+              "term": "Prédiction",
+              "definition": "Déterminer le résultat final d'un algorithme avant de l'exécuter, en analysant sa structure.",
+              "example": "Savoir que REPEAT 10 TIMES { ADD 3 TO total } donne total = 30 si total commence à 0."
+            },
+            {
+              "type": "definition",
+              "term": "Invariant de boucle",
+              "definition": "Propriété qui reste vraie avant et après chaque itération, utile pour raisonner sur la correction.",
+              "example": "Après k itérations, total = 3 × k."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de la somme des premiers entiers. Au lieu d'ajouter un par un, on connaît la formule $S_n = n(n+1)/2$. Si une boucle fait FOR i FROM 1 TO n DO total ← total + i, on peut prédire qu'à la fin total vaut $n(n+1)/2$. Pour $n = 100$, le résultat est $5050$ sans avoir à faire cent additions. Cette formule est un invariant puissant : elle est vraie après chaque itération si on remplace $n$ par le compteur actuel."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier le motif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque itération ajoute la valeur courante du compteur à total."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : exprimer le motif mathématiquement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après k itérations, total = 1 + 2 + … + k = k(k+1)/2."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : appliquer à la borne finale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace k par la valeur finale du compteur (ici n) pour obtenir le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de prédire le nombre d'affichages du mot \"bonjour\" pour l'algorithme : REPEAT 7 TIMES { DISPLAY \"bonjour\" }."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Conseil",
+              "paragraphs": [
+                "Quand tu vois une boucle simple, demande-toi : quelle opération est répétée ? Combien de fois ? Quel est l'effet cumulé ?"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la boucle contient une condition qui modifie le comportement selon la valeur du compteur. Par exemple : FOR i FROM 1 TO 10 DO IF i MOD 2 = 0 THEN DISPLAY i. Ici, on n'affiche que les nombres pairs. Pour prédire le résultat, compte combien de nombres pairs il y a entre $1$ et $10$ : il y en a $5$ (2, 4, 6, 8, 10). Tu n'as pas besoin de simuler chaque test, tu raisonnes sur l'ensemble."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas plus subtil : une boucle qui double une variable à chaque tour. total ← 1 ; REPEAT 4 TIMES { total ← total × 2 }. Au lieu de multiplier quatre fois, tu reconnais une puissance de deux : après 4 itérations, total = $2^4 = 16$. Cette capacité à transformer une répétition en expression exponentielle est au cœur de l'analyse d'algorithmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "total\\ =\\ 2^{4}\\ =\\ 16"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne-toi maintenant à prédire le résultat de boucles mêlant addition, multiplication et conditions. C'est un excellent exercice pour développer ton intuition algorithmique avant d'écrire du code réel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as parcouru les trois piliers des boucles : répéter une action simple, compter avec un compteur explicite, et prédire le résultat sans exécution pas à pas. Ces compétences te serviront tout au long de tes projets de programmation, du plus petit script au plus gros logiciel."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une boucle REPEAT n TIMES pour répéter une instruction.",
+                "Je sais utiliser un compteur avec FOR i FROM a TO b STEP p.",
+                "Je peux prédire le résultat final d'une boucle en identifiant le motif mathématique.",
+                "Je comprends la notion d'invariant de boucle pour vérifier la correction."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de fois le mot \"bonjour\" s'affiche-t-il avec REPEAT 7 TIMES { DISPLAY \"bonjour\" } ?",
+              "answer": "$7$",
+              "hint": "Le nombre de répétitions est donné directement.",
+              "explanation": "La boucle exécute l'affichage exactement 7 fois."
+            },
+            {
+              "question": "Pour la boucle FOR i FROM 1 TO 10 DO IF i MOD 2 = 0 THEN DISPLAY i, combien de nombres seront affichés ?",
+              "answer": "$5$",
+              "hint": "Compte les entiers pairs entre 1 et 10.",
+              "explanation": "Les nombres pairs sont 2, 4, 6, 8, 10 → 5 nombres."
+            },
+            {
+              "question": "Si total ← 1 ; REPEAT 5 TIMES { total ← total × 3 }, quelle est la valeur finale de total ?",
+              "answer": "$243$",
+              "hint": "C'est une puissance : 3^5.",
+              "explanation": "1 × 3^5 = 243."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

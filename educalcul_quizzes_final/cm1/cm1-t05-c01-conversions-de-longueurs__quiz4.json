@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 241,
+  "_course_code": "cm1-t05-c01-conversions-de-longueurs",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Conversions de longueurs",
+  "title": "Applications des conversions de longueurs",
+  "questions": [
+    {
+      "text": "Un parcours de santé mesure $1\\,\\text{km}\\,200\\,\\text{m}$. Quelle est sa longueur exprimée uniquement en mètres ?",
+      "options": [
+        "1200 m",
+        "1020 m",
+        "120 m",
+        "1002 m"
+      ],
+      "correctAnswer": "1200 m",
+      "explanation": "Pour convertir en mètres, on utilise le tableau de conversion des longueurs. On place le $1$ au kilomètre ($\\text{km}$) et le $200$ à partir des mètres ($\\text{m}$) : $1$ dans la colonne $\\text{km}$, $2$ dans la colonne $\\text{hm}$, $0$ dans la colonne $\\text{dam}$, $0$ dans la colonne $\\text{m}$. On obtient $1\\,200\\,\\text{m}$. L'erreur $1020$ m vient d'une mauvaise gestion des zéros (confusion hectomètre/décamètre), $120$ m oublie le kilomètre, $1002$ m est une erreur de placement des chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a un ruban de $2\\,\\text{m}\\,50\\,\\text{cm}$. Il en coupe $1\\,\\text{m}\\,80\\,\\text{cm}$ pour faire un nœud. Quelle longueur de ruban lui reste-t-il ?",
+      "options": [
+        "70 cm",
+        "1 m 30 cm",
+        "30 cm",
+        "1 m 70 cm"
+      ],
+      "correctAnswer": "70 cm",
+      "explanation": "On effectue la soustraction $2\\,\\text{m}\\,50\\,\\text{cm} - 1\\,\\text{m}\\,80\\,\\text{cm}$. Comme on ne peut pas retrancher $80\\,\\text{cm}$ à $50\\,\\text{cm}$, on casse $1\\,\\text{m}$ du $2\\,\\text{m}$ en $100\\,\\text{cm}$. On a alors $1\\,\\text{m}\\,150\\,\\text{cm} - 1\\,\\text{m}\\,80\\,\\text{cm} = 70\\,\\text{cm}$. La réponse $1\\,\\text{m}\\,30\\,\\text{cm}$ correspond à l'erreur de ne pas faire la retenue ($50-80=30$ en valeur absolue). $30\\,\\text{cm}$ ignore les mètres. $1\\,\\text{m}\\,70\\,\\text{cm}$ est une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour faire le tour d'un terrain rectangulaire, Léa mesure les côtés : $50\\,\\text{m}$, $30\\,\\text{m}$, $50\\,\\text{m}$, $30\\,\\text{m}$. Quelle est la distance totale parcourue en kilomètres ?",
+      "options": [
+        "0,160 km",
+        "1,6 km",
+        "16 km",
+        "160 km"
+      ],
+      "correctAnswer": "0,160 km",
+      "explanation": "On calcule d'abord le périmètre en mètres : $50 + 30 + 50 + 30 = 160\\,\\text{m}$. Pour convertir les mètres en kilomètres, on divise par $1000$ (on décale la virgule de trois rangs vers la gauche). $160\\,\\text{m} = 0,160\\,\\text{km}$. L'erreur $1,6\\,\\text{km}$ correspond à une division par $100$ (hectomètres), $16\\,\\text{km}$ à une division par $10$ (décamètres), $160\\,\\text{km}$ à l'absence de conversion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les longueurs suivantes, laquelle est la plus grande ?",
+      "options": [
+        "3 km",
+        "300 m",
+        "30 000 cm",
+        "3 000 dm"
+      ],
+      "correctAnswer": "3 km",
+      "explanation": "On convertit tout en mètres pour comparer : $3\\,\\text{km} = 3\\,000\\,\\text{m}$. $300\\,\\text{m} = 300\\,\\text{m}$. $30\\,000\\,\\text{cm} = 300\\,\\text{m}$ (division par $100$). $3\\,000\\,\\text{dm} = 300\\,\\text{m}$ (division par $10$). Les trois dernières sont égales ($300\\,\\text{m}$) et sont dix fois plus petites que $3\\,\\text{km}$ ($3\\,000\\,\\text{m}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un kangourou saute $3\\,\\text{m}\\,40\\,\\text{cm}$ au premier bond et $2\\,\\text{m}\\,80\\,\\text{cm}$ au second. Quelle est la distance totale parcourue exprimée en mètres ?",
+      "options": [
+        "6,20 m",
+        "5,120 m",
+        "5,20 m",
+        "620 cm"
+      ],
+      "correctAnswer": "6,20 m",
+      "explanation": "On additionne les mètres et les centimètres séparément : $3\\,\\text{m} + 2\\,\\text{m} = 5\\,\\text{m}$ et $40\\,\\text{cm} + 80\\,\\text{cm} = 120\\,\\text{cm}$. $120\\,\\text{cm} = 1\\,\\text{m}\\,20\\,\\text{cm}$. Total : $5\\,\\text{m} + 1\\,\\text{m}\\,20\\,\\text{cm} = 6\\,\\text{m}\\,20\\,\\text{cm} = 6,20\\,\\text{m}$. L'erreur $5,120\\,\\text{m}$ oublie de convertir $120\\,\\text{cm}$ en $1,20\\,\\text{m}$. $5,20\\,\\text{m}$ traite les centimètres comme des centièmes de mètre sans conversion ($40+80=120 \\rightarrow 0,20$). $620\\,\\text{cm}$ est la bonne valeur mais en centimètres, pas en mètres comme demandé.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "_status": "done",
+  "_course_id": 111,
+  "_course_code": "ce1-t05-c04-problemes-de-comparaison",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Problèmes de comparaison",
+  "title": "Quiz : Problèmes de comparaison (CE1)",
+  "questions": [
+    {
+      "text": "Léa a $12$ billes. Tom a $5$ billes de plus que Léa. Combien de billes a Tom ?",
+      "options": [
+        "$7$ billes",
+        "$17$ billes",
+        "$5$ billes",
+        "$12$ billes"
+      ],
+      "correctAnswer": "$17$ billes",
+      "explanation": "Tom a $5$ billes **de plus** que Léa. Il faut donc ajouter $5$ aux $12$ billes de Léa : $12 + 5 = 17$. L'option $7$ correspond à une soustraction (erreur de sens), $5$ ignore le nombre de Léa, et $12$ ignore la différence.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Léa",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Différence",
+            "value": 5,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Comparaison : Tom a plus que Léa"
+      }
+    },
+    {
+      "text": "Dans la cour, il y a $18$ garçons. Il y a $4$ filles de moins que de garçons. Combien y a-t-il de filles ?",
+      "options": [
+        "$22$ filles",
+        "$14$ filles",
+        "$4$ filles",
+        "$18$ filles"
+      ],
+      "correctAnswer": "$14$ filles",
+      "explanation": "Il y a $4$ filles **de moins** que de garçons. Il faut retrancher $4$ du nombre de garçons : $18 - 4 = 14$. L'option $22$ correspond à une addition (erreur de sens), $4$ ne prend que la différence, et $18$ ignore la différence.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Garçons",
+            "value": 18,
+            "tone": "blue"
+          },
+          {
+            "label": "Différence",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Comparaison : Filles moins nombreuses"
+      }
+    },
+    {
+      "text": "Paul a $15$ autocollants. Il en a $6$ de plus que Sarah. Combien d'autocollants Sarah a-t-elle ?",
+      "options": [
+        "$21$ autocollants",
+        "$9$ autocollants",
+        "$6$ autocollants",
+        "$15$ autocollants"
+      ],
+      "correctAnswer": "$9$ autocollants",
+      "explanation": "Paul a **plus** que Sarah ($6$ de plus). Pour trouver le nombre de Sarah, il faut retrancher la différence du total de Paul : $15 - 6 = 9$. L'option $21$ ajoute au lieu de retrancher, $6$ ne retient que la différence, et $15$ ignore la comparaison.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Sarah",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Différence",
+            "value": 6,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Recherche de la quantité plus petite"
+      }
+    },
+    {
+      "text": "Un pommier a donné $25$ pommes. Un poirier a donné $8$ poires de moins que de pommes. Quelle opération permet de trouver le nombre de poires ?",
+      "options": [
+        "$25 + 8$",
+        "$25 - 8$",
+        "$8 - 25$",
+        "$25 + 25$"
+      ],
+      "correctAnswer": "$25 - 8$",
+      "explanation": "Le poirier a donné **moins** de fruits ($8$ de moins). Pour trouver une quantité plus petite, on effectue une soustraction : quantité de référence moins la différence. $25 - 8 = 17$ poires. Les autres opérations ne correspondent pas à l'énoncé (addition pour 'moins', soustraction inversée, doublement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a lu $32$ pages. Kevin a lu $14$ pages de moins que Julie. Combien de pages Kevin a-t-il lues ?",
+      "options": [
+        "$46$ pages",
+        "$18$ pages",
+        "$14$ pages",
+        "$32$ pages"
+      ],
+      "correctAnswer": "$18$ pages",
+      "explanation": "Kevin a lu **moins** de pages ($14$ de moins). On soustrait la différence au nombre de pages de Julie : $32 - 14 = 18$. Calcul : $32 - 10 = 22$, puis $22 - 4 = 18$. L'option $46$ est une addition, $14$ ne garde que la différence, $32$ ignore la comparaison.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Pages lues",
+        "bars": [
+          {
+            "label": "Julie",
+            "value": 32,
+            "tone": "blue"
+          },
+          {
+            "label": "Kevin",
+            "value": 18,
+            "tone": "green"
+          }
+        ]
+      }
+    }
+  ]
+}

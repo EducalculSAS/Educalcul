@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Droites graduées et suites",
+  "title": "Quiz : Droites graduées et suites - Application",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quel nombre est repéré par le point A ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$14$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La graduation est espacée de $2$ en $2$. Le point A se trouve sur la cinquième graduation après $0$, donc $5 × 2 = 10$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 20 par pas de 2",
+        "min": 0,
+        "max": 20,
+        "points": [
+          {
+            "value": 10,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Complète la suite numérique : $3$, $6$, $9$, ?, $15$.",
+      "options": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La suite augmente de $3$ à chaque terme : $3+3=6$, $6+3=9$, $9+3=12$, $12+3=15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, quel nombre correspond au point B ?",
+      "options": [
+        "$-6$",
+        "$-4$",
+        "$-2$",
+        "$0$"
+      ],
+      "correctAnswer": "$-4$",
+      "explanation": "Le point B est placé sur la graduation $-4$, qui se trouve à quatre unités à gauche de $0$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -10 à 10",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": -4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quelle est la règle de la suite $2$, $5$, $8$, $11$, ... ? Quel est le 7e terme ?",
+      "options": [
+        "$17$",
+        "$18$",
+        "$19$",
+        "$20$"
+      ],
+      "correctAnswer": "$20$",
+      "explanation": "La suite ajoute $3$ à chaque terme. Le 1er terme est $2$, le 7e terme est $2 + 6 × 3 = 20$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $100$ par pas de $10$, le point C est placé sur la 8e graduation après $0$. Quel nombre représente-t-il ?",
+      "options": [
+        "$70$",
+        "$80$",
+        "$90$",
+        "$100$"
+      ],
+      "correctAnswer": "$80$",
+      "explanation": "Chaque graduation vaut $10$. La 8e graduation après $0$ correspond à $8 × 10 = 80$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100 par pas de 10",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 80,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

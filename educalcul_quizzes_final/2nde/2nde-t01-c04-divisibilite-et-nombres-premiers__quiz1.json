@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Multiples / diviseurs",
+  "title": "Quiz : Multiples et diviseurs",
+  "questions": [
+    {
+      "text": "Lequel des nombres suivants est un multiple de $12$ ?",
+      "options": [
+        "$84$",
+        "$50$",
+        "$55$",
+        "$70$"
+      ],
+      "correctAnswer": "$84$",
+      "explanation": "Un multiple de $12$ s'obtient en multipliant $12$ par un entier. $12 \\times 7 = 84$, donc $84$ est un multiple de $12$. Les nombres $50$, $55$ et $70$ ne sont pas divisibles par $12$ (le reste de la division euclidienne n'est pas nul).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de diviseurs positifs le nombre $36$ possède-t-il ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "La décomposition en facteurs premiers de $36$ est $2^{2} \\times 3^{2}$. Le nombre de diviseurs positifs est $(2+1)\\times(2+1)=9$. Les diviseurs sont $1,2,3,4,6,9,12,18,36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le plus grand commun diviseur (PGCD) de $48$ et $180$ est :",
+      "options": [
+        "$12$",
+        "$24$",
+        "$6$",
+        "$36$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Décomposons : $48 = 2^{4} \\times 3$, $180 = 2^{2} \\times 3^{2} \\times 5$. Les facteurs communs sont $2^{2}$ et $3$, donc PGCD $= 2^{2} \\times 3 = 12$. Les autres valeurs ne correspondent pas aux puissances minimales communes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le plus petit commun multiple (PPCM) de $15$ et $20$ est :",
+      "options": [
+        "$30$",
+        "$60$",
+        "$45$",
+        "$75$"
+      ],
+      "correctAnswer": "$60$",
+      "explanation": "Factorisons : $15 = 3 \\times 5$, $20 = 2^{2} \\times 5$. Le PPCM prend chaque facteur premier à la plus grande puissance : $2^{2} \\times 3 \\times 5 = 60$. $30$ manque un facteur $2$, $45$ manque $2^{2}$, $75$ manque $2^{2}$ et $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "Tout nombre pair est un multiple de $2$.",
+        "Si $d$ divise $n$, alors $n$ est un multiple de $d$.",
+        "Le nombre $1$ est un diviseur de tout entier naturel.",
+        "Le nombre $0$ est un diviseur de tout entier naturel."
+      ],
+      "correctAnswer": "Le nombre $0$ est un diviseur de tout entier naturel.",
+      "explanation": "Les trois premières affirmations sont vraies : un nombre pair s'écrit $2k$, donc multiple de $2$ ; si $d|n$ alors $n = d \\times q$ donc $n$ multiple de $d$ ; $1$ divise tout entier. En revanche, $0$ ne divise aucun nombre car la division par $0$ n'est pas définie ; on dit que $0$ est multiple de tout entier, mais pas diviseur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

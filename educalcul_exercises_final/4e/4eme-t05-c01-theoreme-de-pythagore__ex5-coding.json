@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Hypothèses",
+  "title": "Théorème de Pythagore : Hypothèses - Algorithmes",
+  "blocks": [
+    {
+      "title": "Vérification des hypothèses du théorème",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui reçoit trois nombres $a$, $b$, $c$ représentant les longueurs des côtés d'un triangle. L'algorithme doit renvoyer Vrai si ces trois longueurs satisfont les hypothèses du théorème de Pythagore (triangle rectangle) et Faux sinon. Rappeler que l'hypothèse principale est que le triangle est rectangle, c'est‑à‑dire que le carré de la plus grande longueur est égal à la somme des carrés des deux autres.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c.\\n2. Si a <= 0 ou b <= 0 ou c <= 0 alors renvoyer Faux.\\n3. Trier les trois nombres pour obtenir x <= y <= z.\\n4. Si x*x + y*y == z*z alors renvoyer Vrai sinon renvoyer Faux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par vérifier que les longueurs sont strictement positives, condition nécessaire pour former un triangle. Ensuite on trie les côtés pour identifier l'hypothénuse potentielle (la plus grande). L'hypothèse du théorème de Pythagore est que le triangle est rectangle, ce qui se traduit par l'égalité $x^2 + y^2 = z^2$. Si l'égalité est vérifiée, les hypothèses sont satisfaites.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'hypothénuse avec vérification des hypothèses",
+      "content": "Écrire une fonction qui prend en paramètre les longueurs des deux côtés de l'angle droit $a$ et $b$ et qui retourne la longueur de l'hypothénuse $c$. La fonction doit d'abord vérifier les hypothèses : les deux nombres doivent être strictement positifs. Si une hypothèse n'est pas respectée, la fonction affiche un message d'erreur et ne calcule pas $c$.",
+      "correctAnswer": "Fonction hypotenuse(a, b):\\n    Si a <= 0 ou b <= 0 alors:\\n        Afficher \"Erreur : les longueurs doivent être positives.\"\\n        Retourner Aucun\\n    Sinon:\\n        c = racine_carree(a*a + b*b)\\n        Retourner c",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les hypothèses du théorème de Pythagore pour calculer l'hypothénuse sont que le triangle est rectangle (donné par l'énoncé) et que les côtés de l'angle droit sont de longueurs positives. La vérification $a>0$ et $b>0$ garantit que les carrés existent et que le triangle a un sens géométrique. On applique ensuite la formule $c = \\sqrt{a^2 + b^2}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décider de l'applicabilité du théorème",
+      "content": "On connaît deux côtés d'un triangle et la mesure d'un angle. Écrire un algorithme structuré qui détermine si on peut appliquer le théorème de Pythagore pour calculer le troisième côté. L'algorithme doit vérifier : (1) l'angle connu est un angle droit ($90^\\circ$), (2) les deux côtés connus sont soit les deux côtés de l'angle droit, soit l'hypothénuse et un côté de l'angle droit. Si les conditions sont remplies, l'algorithme indique quelle formule utiliser ($c^2 = a^2 + b^2$ ou $a^2 = c^2 - b^2$).",
+      "correctAnswer": "Algorithme :\\n1. Lire angle, côté1, côté2.\\n2. Si angle différent de 90 alors :\\n       Afficher \"Théorème inapplicable : l'angle n'est pas droit.\"\\n       Fin.\\n3. Identifier le plus grand des deux côtés connus (le_plus_grand) et le plus petit (le_plus_petit).\\n4. Si on connaît l'hypothénuse et un côté (cas où le_plus_grand correspond à l'hypothénuse) alors :\\n       Calculer côté_manquant = racine_carree(le_plus_grand*le_plus_grand - le_plus_petit*le_plus_petit).\\n       Afficher \"Utiliser a^2 = c^2 - b^2\".\\n   Sinon (on connaît les deux côtés de l'angle droit) :\\n       Calculer hypothénuse = racine_carree(côté1*côté1 + côté2*côté2).\\n       Afficher \"Utiliser c^2 = a^2 + b^2\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le théorème de Pythagore ne s'applique que dans un triangle rectangle. La première hypothèse est donc que l'angle connu mesure $90^\\circ$. Ensuite, selon les côtés connus, on distingue deux situations : soit on connaît les deux côtés de l'angle droit (on cherche l'hypothénuse avec $c^2 = a^2 + b^2$), soit on connaît l'hypothénuse et un côté de l'angle droit (on cherche l'autre côté avec $a^2 = c^2 - b^2$). L'algorithme teste ces hypothèses avant de proposer la formule adaptée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

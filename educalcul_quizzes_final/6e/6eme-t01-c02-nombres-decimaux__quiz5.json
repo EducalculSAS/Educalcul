@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Valeur positionnelle",
+  "title": "Approfondissement : Valeur positionnelle",
+  "questions": [
+    {
+      "text": "Dans le nombre $12,345$, quel chiffre occupe la position des centièmes ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le nombre $12,345$ s'écrit avec une virgule. Le premier chiffre après la virgule est les dixièmes ($3$), le deuxième est les centièmes ($4$), le troisième est les millièmes ($5$). Donc le chiffre des centièmes est $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau de position ci‑dessous représente un nombre décimal. Quel est ce nombre ?",
+      "options": [
+        "$304,5$",
+        "$30,45$",
+        "$3,045$",
+        "$3045$"
+      ],
+      "correctAnswer": "$304,5$",
+      "explanation": "Le tableau montre 3 centaines, 0 dizaine, 4 unités, 5 dixièmes. Cela correspond à $304,5$. Les autres options déplacent la virgule ou omettent la partie décimale.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 304.5,
+        "caption": "Tableau de position pour 304,5"
+      }
+    },
+    {
+      "text": "Lequel des deux nombres suivants est le plus grand : $0,6$ ou $0,58$ ?",
+      "options": [
+        "$0,6$",
+        "$0,58$",
+        "Ils sont égaux",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$0,6$",
+      "explanation": "On compare chiffre par chiffre à partir de la gauche. Aux dixièmes, $0,6$ a $6$ alors que $0,58$ a $5$. Puisque $6 > 5$, $0,6$ est plus grand que $0,58$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur du chiffre $7$ dans le nombre $5,274$ ?",
+      "options": [
+        "$0,07$",
+        "$0,7$",
+        "$7$",
+        "$0,007$"
+      ],
+      "correctAnswer": "$0,07$",
+      "explanation": "Dans $5,274$, les chiffres après la virgule sont : $2$ dixièmes, $7$ centièmes, $4$ millièmes. Le $7$ représente donc $7$ centièmes, soit $0,07$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel chiffre doit-on écrire au millième pour obtenir le nombre $12,305$ à partir de $12,3$ ?",
+      "options": [
+        "$5$",
+        "$0$",
+        "$3$",
+        "$1$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "$12,3$ équivaut à $12,300$. Pour arriver à $12,305$, il faut mettre $5$ au rang des millièmes (troisième chiffre après la virgule). Les autres chiffres ne donnent pas le bon résultat.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Application : Translations / transformations prévues",
+  "title": "Quiz : Applications des translations en 5e",
+  "questions": [
+    {
+      "text": "Soit la translation de vecteur $\\vec{v}(2;-3)$. Quelle est l'image du point $A(4;1)$ ?",
+      "options": [
+        "$A'(6;-2)$",
+        "$A'(2;4)$",
+        "$A'(6;4)$",
+        "$A'(2;-2)$"
+      ],
+      "correctAnswer": "$A'(6;-2)$",
+      "explanation": "Pour obtenir l'image d'un point par une translation, on ajoute les composantes du vecteur aux coordonnées du point. Ici $4+2=6$ et $1+(-3)=-2$, donc $A'(6;-2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $B(-1;5)$ est transformé en $B'(3;2)$ par une translation. Quel est le vecteur de cette translation ?",
+      "options": [
+        "$\\vec{v}(4;-3)$",
+        "$\\vec{v}(-4;3)$",
+        "$\\vec{v}(2;-3)$",
+        "$\\vec{v}(4;3)$"
+      ],
+      "correctAnswer": "$\\vec{v}(4;-3)$",
+      "explanation": "Le vecteur de translation est obtenu en soustrayant les coordonnées du point initial de celles de son image : $3-(-1)=4$ et $2-5=-3$, donc $\\vec{v}(4;-3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue d'abord la translation de vecteur $\\vec{u}(1;2)$ puis celle de vecteur $\\vec{v}(-3;4)$. Quel est le vecteur de la translation composée ?",
+      "options": [
+        "$\\vec{w}(-2;6)$",
+        "$\\vec{w}(-2;2)$",
+        "$\\vec{w}(4;6)$",
+        "$\\vec{w}(2;6)$"
+      ],
+      "correctAnswer": "$\\vec{w}(-2;6)$",
+      "explanation": "La composition de deux translations correspond à la somme de leurs vecteurs : $(1+(-3); 2+4)=(-2;6)$, donc $\\vec{w}(-2;6)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triangle $ABC$ a pour sommets $A(0;0)$, $B(3;0)$, $C(0;4)$. Il est translaté par le vecteur $\\vec{t}(-2;1)$. Quelles sont les coordonnées de $A'$ ?",
+      "options": [
+        "$A'(-2;1)$",
+        "$A'(2;-1)$",
+        "$A'(-2;-1)$",
+        "$A'(2;1)$"
+      ],
+      "correctAnswer": "$A'(-2;1)$",
+      "explanation": "L'image de $A$ s'obtient en ajoutant le vecteur de translation à ses coordonnées : $0+(-2)=-2$ et $0+1=1$, donc $A'(-2;1)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une translation envoie le segment $[PQ]$ sur $[P'Q']$. Si $P(2;3)$ et $P'(5;7)$, quelle est l'image de $Q(4;1)$ ?",
+      "options": [
+        "$Q'(7;5)$",
+        "$Q'(7;1)$",
+        "$Q'(1;5)$",
+        "$Q'(1;1)$"
+      ],
+      "correctAnswer": "$Q'(7;5)$",
+      "explanation": "Le vecteur de translation est $\\vec{v}=P'P=(5-2;7-3)=(3;4)$. On l'ajoute à $Q$ : $4+3=7$ et $1+4=5$, donc $Q'(7;5)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.283021+00:00",
+  "id": 260,
+  "code": "cm1-t07-c05",
+  "title": "Impossible, possible, certain",
+  "description": "Cours structuré Educalcul : Impossible, possible, certain.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Impossible, possible, certain",
+    "objectif_global": "Impossible, possible, certain",
+    "mini_lecons_imposees": [
+      "Classer événements.",
+      "Justifier.",
+      "Expériences simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Classer événements.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer les événements : impossible, possible, certain"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons apprendre à ranger les événements dans trois grandes familles : impossible, possible et certain. Imagine que tu ouvres un sac de billes : si le sac est vide, il est impossible d'en sortir une bille ; si le sac contient des billes rouges et bleues, tirer une bille rouge est possible ; si le sac ne contient que des billes rouges, tirer une bille rouge est certain. Ces trois mots nous aident à parler de ce qui peut arriver sans avoir à deviner."
+            },
+            {
+              "type": "definition",
+              "term": "impossible",
+              "definition": "Un événement impossible ne peut jamais se produire, quoi qu'il arrive.",
+              "example": "Lancer un dé à six faces et obtenir 7."
+            },
+            {
+              "type": "definition",
+              "term": "possible",
+              "definition": "Un événement possible peut se produire, mais ce n'est pas garanti.",
+              "example": "Tirer une carte rouge dans un jeu de 32 cartes."
+            },
+            {
+              "type": "definition",
+              "term": "certain",
+              "definition": "Un événement certain se produira à coup sûr.",
+              "example": "Le soleil se lève à l'est chaque matin."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Trois familles d'événements",
+              "bars": [
+                {
+                  "label": "Impossible",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "Possible",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Certain",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les trois catégories, nous allons regarder des exemples concrets pour t'entraîner à les reconnaître tout seul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples concrets de classement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons trois situations : (a) il pleuvra demain, (b) le soleil se lèvera à l'ouest, (c) tu as 10 ans aujourd'hui. Pour (a) nous ne savons pas la météo, donc c'est possible. Pour (b) le soleil se lève toujours à l'est, donc c'est impossible. Pour (c) si c'est ton anniversaire, c'est certain, sinon c'est possible. Essaie de trouver la catégorie de chaque événement avant de regarder la réponse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer l'événement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis bien la description de l'événement et imagine la situation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chercher des indices",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demande‑toi : est‑ce que ça peut arriver ? Est‑ce que c'est sûr ? Est‑ce que c'est exclu ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Décider la catégorie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis impossible, possible ou certain selon tes indices."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Événement",
+                "Catégorie"
+              ],
+              "rows": [
+                [
+                  "Lancer un dé et obtenir 7",
+                  "Impossible"
+                ],
+                [
+                  "Tirer une carte rouge",
+                  "Possible"
+                ],
+                [
+                  "Le soleil se lever à l'est",
+                  "Certain"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons vivre une petite histoire qui met en scène un sac de billes colorées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une petite histoire pour s'entraîner"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un sac, il y a 3 billes rouges et 2 billes bleues. Tu fermes les yeux et tu tires une bille. Quel est le classement de l'événement « tirer une bille verte » ? Il n'y a aucune bille verte dans le sac, donc cet événement est impossible. Et si on demande « tirer une bille rouge » ? C'est possible, car il y a des billes rouges, mais ce n'est pas certain car tu pourrais tomber sur une bleue. Enfin, « tirer une bille rouge ou bleue » est certain, car ce sont les seules couleurs présentes."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Contenu du sac de billes",
+              "slices": [
+                {
+                  "label": "Rouge",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 2,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les événements suivants, lesquels sont impossibles ? (a) Lancer un dé à six faces et obtenir 7. (b) Tirer une carte rouge d'un jeu de 32 cartes. (c) Faire tomber une pièce sur sa tranche.",
+              "answer": "Seul (a) est impossible.",
+              "hint": "Rappelle‑toi qu'un dé à six faces ne montre que les nombres 1 à 6.",
+              "explanation": "Un dé à six faces ne possède pas la face 7, donc cet événement ne peut jamais se produire. Les deux autres événements peuvent arriver, même s'ils sont rares."
+            },
+            {
+              "question": "Classe ces événements : (a) Pleuvoir demain. (b) Le soleil se lever à l'ouest. (c) Avoir 10 ans aujourd'hui.",
+              "answer": "(a) possible, (b) impossible, (c) certain.",
+              "hint": "Pense à ce qui est sûr, ce qui peut arriver, ce qui ne peut pas arriver.",
+              "explanation": "Le soleil se lève toujours à l'est, donc à l'ouest c'est impossible. Avoir 10 ans aujourd'hui est certain si c'est ton anniversaire, sinon c'est possible. La météo de demain n'est pas connue, c'est possible."
+            },
+            {
+              "question": "Dans un sac il y a 3 billes rouges et 2 billes bleues. Quel est le classement de l'événement « tirer une bille verte » ?",
+              "answer": "Impossible.",
+              "hint": "Regarde les couleurs présentes dans le sac.",
+              "explanation": "Il n'y a aucune bille verte dans le sac, donc cet événement ne peut jamais se produire."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier son classement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir dire impossible, possible ou certain, c'est bien. Mais il faut aussi pouvoir expliquer pourquoi on a fait ce choix. Une justification claire utilise le mot « parce que » suivi d'une raison précise. Par exemple, « l'événement est impossible parce que le dé n'a pas de face 7 ». Cette phrase montre que tu as réfléchi et que tu ne devines pas."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour justifier, utilise le mot « parce que » suivi d'une raison précise."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons voir comment construire une justification étape par étape pour ne rien oublier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment écrire une justification claire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour justifier, suis ces trois étapes : d'abord nomme l'événement, ensuite donne la raison concrète (ce qui existe ou n'existe pas), enfin conclus par la catégorie. Par exemple, pour « tirer une carte cœur d'un jeu de 32 cartes », on écrit : « Cet événement est possible parce qu'il y a 8 cœurs dans le jeu, donc on peut en tirer une. »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Nommer l'événement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris exactement ce dont tu parles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Donner la raison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Explique ce qui rend l'événement possible, impossible ou certain."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure la catégorie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Termine par « donc c'est impossible / possible / certain »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Événement",
+                "Justification",
+                "Catégorie"
+              ],
+              "rows": [
+                [
+                  "Obtenir 8 avec un dé à six faces",
+                  "Le dé n'a que les faces 1 à 6",
+                  "Impossible"
+                ],
+                [
+                  "Tirer une carte cœur",
+                  "Il y a 8 cœurs dans le jeu",
+                  "Possible"
+                ],
+                [
+                  "Le soleil se lever à l'est",
+                  "C'est une loi de la nature",
+                  "Certain"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant de placer des événements sur une échelle qui va de 0 (impossible) à 1 (certain). Cela t'aidera à visualiser le degré de chance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement sur de nouvelles situations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces. L'événement « obtenir un nombre pair » correspond à trois faces sur six. Sur l'échelle, cela se place à 0,5, c'est‑à‑dire exactement au milieu entre impossible et certain. D'autres événements, comme « obtenir un 3 », se placent à 1/6 environ. Essaie de placer toi‑même quelques événements sur cette droite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle de probabilité de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Impossible"
+                },
+                {
+                  "value": 0.5,
+                  "label": "Possible"
+                },
+                {
+                  "value": 1,
+                  "label": "Certain"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pourquoi l'événement « obtenir 8 en lançant un dé à six faces » est‑il impossible ?",
+              "answer": "Parce que les faces du dé vont de 1 à 6 seulement.",
+              "hint": "Regarde les numéros inscrits sur le dé.",
+              "explanation": "Un dé à six faces ne possède que les nombres 1,2,3,4,5,6. Le nombre 8 n'est sur aucune face, donc l'événement ne peut pas se réaliser."
+            },
+            {
+              "question": "Écris une justification pour dire que « tirer une carte cœur d'un jeu de 32 cartes » est possible.",
+              "answer": "Il y a des cartes cœur dans le jeu, donc on peut en tirer une.",
+              "hint": "Combien y a‑t‑il de cœurs dans un jeu de 32 ?",
+              "explanation": "Un jeu de 32 cartes contient 8 cœurs. Puisqu'il y a au moins une carte cœur, l'événement peut se produire, même s'il n'est pas certain."
+            },
+            {
+              "question": "Sur une échelle de 0 (impossible) à 1 (certain), où placerais‑tu l'événement « obtenir un nombre pair en lançant un dé à six faces » ?",
+              "answer": "0,5 (ou 1/2).",
+              "hint": "Combien de faces paires y a‑t‑il sur six ?",
+              "explanation": "Il y a trois faces paires (2,4,6) sur six faces au total, donc la chance est 3/6 = 1/2, ce qui correspond à 0,5 sur l'échelle."
+            }
+          ]
+        },
+        {
+          "title": "Expériences simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expériences simples : lancer une pièce et un dé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons faire de vraies petites expériences pour voir comment les événements impossibles, possibles et certains se manifestent dans la réalité. Nous commencerons par lancer une pièce de monnaie, puis un dé à six faces. Chaque expérience nous donnera des résultats que nous pourrons classer et comparer à ce que la théorie nous prédit."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Expérience",
+                "Résultats possibles"
+              ],
+              "rows": [
+                [
+                  "Lancer une pièce",
+                  "Face, Pile"
+                ],
+                [
+                  "Lancer un dé à six faces",
+                  "1, 2, 3, 4, 5, 6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, passons à la pratique : tu vas lancer un dé dix fois et noter chaque résultat. Ensuite, nous compterons combien de fois un nombre pair est apparu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réaliser l'expérience et noter les résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lance un dé à six faces 10 fois de suite. Écris les résultats dans l'ordre, par exemple : 2, 5, 1, 6, 3, 4, 2, 5, 1, 6. Compte ensuite les nombres pairs (2, 4, 6) et les nombres impairs (1, 3, 5). Cette activité te montre que même si chaque face a la même chance, les résultats réels peuvent varier un peu."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Résultats de 10 lancers de dé",
+              "bars": [
+                {
+                  "label": "Pair",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Impair",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, comparons ce que nous avons obtenu avec ce que la théorie prévoit. Si on lance le dé 60 fois, on s'attend à voir chaque face environ 10 fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer l'expérience à la théorie"
+            },
+            {
+              "type": "paragraph",
+              "content": "La théorie dit que la chance d'obtenir un 3 est 1 sur 6. Sur 60 lancers, cela donne environ 10 fois. Si ton expérience de 10 lancers a donné 1 fois le 3, c'est proche de la proportion attendue (1/10 ≈ 1/6). Les petites différences sont normales : plus on fait de lancers, plus les résultats se rapprochent de la théorie."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Comparaison théorie vs expérience",
+              "slices": [
+                {
+                  "label": "Théorique 1/6",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "Expérimental",
+                  "value": 9,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire si un événement est impossible, possible ou certain.",
+                "Je sais justifier mon choix avec une phrase claire.",
+                "Je peux réaliser une expérience simple et comparer les résultats à la théorie."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les résultats possibles quand on lance une pièce de monnaie ?",
+              "answer": "Face ou pile.",
+              "hint": "Une pièce a deux faces.",
+              "explanation": "Une pièce de monnaie classique a une face et une pile, donc seulement ces deux résultats sont possibles."
+            },
+            {
+              "question": "Tu lances un dé à six faces 10 fois et tu notes : 2,5,1,6,3,4,2,5,1,6. Combien de fois as‑tu obtenu un nombre pair ?",
+              "answer": "5 fois.",
+              "hint": "Les nombres pairs sont 2,4,6.",
+              "explanation": "Dans la liste, les nombres pairs sont 2,6,4,2,6 soit 5 occurrences."
+            },
+            {
+              "question": "Si tu lances un dé 60 fois, environ combien de fois t'attends‑tu à obtenir un 3 ?",
+              "answer": "Environ 10 fois.",
+              "hint": "La probabilité d'un 3 est 1 sur 6.",
+              "explanation": "Chaque face a la même chance, donc 1/6 des 60 lancers donne 60/6 = 10 fois en moyenne."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

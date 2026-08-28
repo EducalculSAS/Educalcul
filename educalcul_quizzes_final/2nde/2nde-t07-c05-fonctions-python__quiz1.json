@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Paramètres",
+  "title": "Quiz : Paramètres des fonctions Python",
+  "questions": [
+    {
+      "text": "Dans la définition $def calculer(x, y):$, comment appelle-t-on $x$ et $y$ ?",
+      "options": [
+        "Des arguments",
+        "Des paramètres",
+        "Des variables globales",
+        "Des valeurs de retour"
+      ],
+      "correctAnswer": "Des paramètres",
+      "explanation": "Dans la signature de la fonction (la ligne def), les noms placés entre parenthèses sont les paramètres. Ce sont des variables locales qui recevront les valeurs au moment de l'appel. Les arguments sont les valeurs réelles fournies lors de l'appel (par exemple calculer(3, 5)).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $def afficher(prenom, nom):$. Quel appel utilise exclusivement des arguments nommés (keyword arguments) ?",
+      "options": [
+        "afficher(\"Alice\", \"Dupont\")",
+        "afficher(nom=\"Dupont\", prenom=\"Alice\")",
+        "afficher(\"Alice\", nom=\"Dupont\")",
+        "afficher(prenom=\"Alice\", \"Dupont\")"
+      ],
+      "correctAnswer": "afficher(nom=\"Dupont\", prenom=\"Alice\")",
+      "explanation": "Les arguments nommés utilisent la syntaxe parametre=valeur. L'option B est la seule où les deux arguments sont nommés (l'ordre n'importe plus). L'option C mélange positionnel et nommé (valide mais pas exclusif). L'option D est une erreur de syntaxe : un argument positionnel ne peut pas suivre un argument nommé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction $def puissance(base, exposant=2):$. Que retourne l'appel $puissance(3)$ ?",
+      "options": [
+        "Une erreur car il manque un argument",
+        "$9$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "Le paramètre $exposant$ possède une valeur par défaut ($2$). Lors de l'appel $puissance(3)$, l'argument $3$ est assigné à $base$. Comme $exposant$ n'est pas fourni, sa valeur par défaut $2$ est utilisée. Le calcul est donc $3^2 = 9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces définitions de fonction est **incorrecte** et provoquera une erreur de syntaxe (SyntaxError) ?",
+      "options": [
+        "def f(a, b=1):",
+        "def f(a=1, b):",
+        "def f(a, b):",
+        "def f(a=1, b=2):"
+      ],
+      "correctAnswer": "def f(a=1, b):",
+      "explanation": "En Python, la règle stricte impose que les paramètres sans valeur par défaut (paramètres positionnels obligatoires) doivent être déclarés avant les paramètres avec valeur par défaut (paramètres optionnels). Ici, $b$ n'a pas de valeur par défaut mais suit $a=1$, ce qui est interdit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n$def modifier(liste):$\\n$    liste.append(99)$\\n$ma_liste = [1, 2, 3]$\\n$modifier(ma_liste)$\\nQuelle est la valeur de $ma_liste$ à la fin ?",
+      "options": [
+        "[1, 2, 3]",
+        "[1, 2, 3, 99]",
+        "[99]",
+        "Erreur : liste non définie"
+      ],
+      "correctAnswer": "[1, 2, 3, 99]",
+      "explanation": "En Python, les listes sont des objets mutables. Le paramètre $liste$ reçoit la référence (l'adresse mémoire) du même objet que $ma_liste$. La méthode $append$ modifie cet objet en place. La modification est donc visible à l'extérieur de la fonction. Il n'y a pas de création de nouvelle liste locale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

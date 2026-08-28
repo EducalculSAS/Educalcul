@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 219,
+  "_course_code": "cm1-t02-c01-fraction-comme-nombre",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Quotient / partage dans sens accessible",
+  "title": "Quiz : La fraction comme quotient (partage)",
+  "questions": [
+    {
+      "text": "On partage $1$ barre de chocolat équitablement entre $4$ enfants. Quelle fraction de la barre chaque enfant reçoit-il ?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{4}{1}$",
+        "$\\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "Partager $1$ objet entre $4$ personnes revient à faire la division $1 \\div 4$. En écriture fractionnaire, le numérateur est le nombre d'objets partagés ($1$) et le dénominateur est le nombre de parts ($4$). Chaque enfant reçoit donc $\\frac{1}{4}$ de la barre. L'option $\\frac{4}{1}$ correspond à $4$ barres pour $1$ enfant, ce qui est l'inverse.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "1 barre partagée en 4 parts égales"
+      }
+    },
+    {
+      "text": "Trois pizzas identiques sont partagées équitablement entre quatre amis. Quelle part de pizza chaque ami mange-t-il ?",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "On partage $3$ pizzas (le tout à partager) entre $4$ amis (le nombre de parts). La fraction quotient s'écrit $\\frac{\\text{nombre d'objets}}{\\text{nombre de parts}} = \\frac{3}{4}$. Chaque ami reçoit $\\frac{3}{4}$ d'une pizza. L'erreur fréquente est d'inverser numérateur et dénominateur ($\\frac{4}{3}$) ou de ne considérer qu'une seule pizza ($\\frac{1}{4}$).",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "3 pizzas partagées en 4 : chaque part vaut 3/4"
+      }
+    },
+    {
+      "text": "Quelle écriture fractionnaire correspond exactement au partage $2 \\div 5$ (deux objets partagés en cinq parts égales) ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{5}{2}$",
+        "$2 \\times 5$",
+        "$5 - 2$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "La fraction quotient associe directement la division à une fraction : le dividende (le nombre d'objets au départ) devient le numérateur, et le diviseur (le nombre de parts) devient le dénominateur. Donc $2 \\div 5 = \\frac{2}{5}$. L'option $\\frac{5}{2}$ inverse les rôles. Les options $2 \\times 5$ et $5 - 2$ ne représentent pas un partage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On verse $5$ litres de jus de pomme dans $8$ verres identiques, chacun recevant la même quantité. Combien de litres y a-t-il dans un verre ?",
+      "options": [
+        "$\\frac{5}{8}$ litre",
+        "$\\frac{8}{5}$ litres",
+        "$1$ litre",
+        "$\\frac{3}{8}$ litre"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$ litre",
+      "explanation": "C'est une situation de partage de $5$ litres (quantité totale) en $8$ parts (les verres). La quantité dans un verre est le quotient $5 \\div 8$, soit la fraction $\\frac{5}{8}$. Comme le numérateur est plus petit que le dénominateur, la fraction est inférieure à $1$ (ce qui est logique : on ne peut pas mettre plus d'un litre dans un verre si on n'a que $5$ litres pour $8$ verres).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "5 litres",
+            "value": 5,
+            "tone": "blue"
+          }
+        ],
+        "caption": "5 litres au total à répartir dans 8 verres"
+      }
+    },
+    {
+      "text": "Chaque élève d'un groupe reçoit $\\frac{2}{3}$ d'une tablette de chocolat. Si on a distribué $4$ tablettes entières au total, combien y a-t-il d'élèves dans le groupe ?",
+      "options": [
+        "$6$ élèves",
+        "$8$ élèves",
+        "$4$ élèves",
+        "$12$ élèves"
+      ],
+      "correctAnswer": "$6$ élèves",
+      "explanation": "C'est un partage inverse : on connaît la part ($\\frac{2}{3}$) et le total ($4$ tablettes), on cherche le nombre de parts (élèves). Il faut calculer $4 \\div \\frac{2}{3}$. Au niveau CM1, on raisonne par multiplication : combien de fois $\\frac{2}{3}$ dans $4$ ? $4 = \\frac{12}{3}$. Il y a $\\frac{12}{3} \\div \\frac{2}{3} = 6$ parts. Ou bien : $1$ tablette sert pour $1 \\div \\frac{2}{3} = \\frac{3}{2}$ élèves (donc $1$ élève et demi par tablette, ce qui ne veut rien dire seul). Mieux : $3$ demi-parts ($\\frac{2}{3}$) font $2$ tablettes. Donc pour $4$ tablettes, on a $2 \\times 3 = 6$ élèves.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

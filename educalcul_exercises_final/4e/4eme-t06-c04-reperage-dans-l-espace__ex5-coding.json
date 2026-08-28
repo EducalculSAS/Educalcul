@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Coordonnées / vues selon programme",
+  "title": "Algorithmes sur les coordonnées dans l'espace",
+  "blocks": [
+    {
+      "title": "Distance entre deux points",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui demande les coordonnées de deux points $A(x_A,y_A,z_A)$ et $B(x_B,y_B,z_B)$ et qui affiche la distance $AB$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, zA, xB, yB, zB.\\n2. Calculer dx = xB - xA, dy = yB - yA, dz = zB - zA.\\n3. Calculer distance = racine_carrée(dx*dx + dy*dy + dz*dz).\\n4. Afficher distance.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distance entre deux points de l'espace de coordonnées $(x_A,y_A,z_A)$ et $(x_B,y_B,z_B)$ s'obtient par la formule $AB = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2 + (z_B-z_A)^2}$. L'algorithme implémente directement cette formule.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Milieu d'un segment",
+      "content": "Écrire un algorithme qui lit les coordonnées de deux points $A(x_A,y_A,z_A)$ et $B(x_B,y_B,z_B)$ et qui affiche les coordonnées du milieu $I$ du segment $[AB]$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xA, yA, zA, xB, yB, zB.\\n2. Calculer xI = (xA + xB) / 2, yI = (yA + yB) / 2, zI = (zA + zB) / 2.\\n3. Afficher xI, yI, zI.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du milieu d'un segment d'extrémités $A(x_A,y_A,z_A)$ et $B(x_B,y_B,z_B)$ sont les moyennes des coordonnées correspondantes : $I\\left(\\frac{x_A+x_B}{2},\\frac{y_A+y_B}{2},\\frac{z_A+z_B}{2}\\right)$. L'algorithme calcule ces trois moyennes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Translation d'un point par un vecteur",
+      "content": "Écrire un algorithme qui lit les coordonnées d'un point $P(x_P,y_P,z_P)$ et les composantes d'un vecteur $\\vec{v}(v_x,v_y,v_z)$, puis qui affiche les coordonnées du point $P'$ image de $P$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xP, yP, zP, vx, vy, vz.\\n2. Calculer xP2 = xP + vx, yP2 = yP + vy, zP2 = zP + vz.\\n3. Afficher xP2, yP2, zP2.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation de vecteur $\\vec{v}(v_x,v_y,v_z)$ ajoute les composantes du vecteur aux coordonnées du point : $P'(x_P+v_x,\\;y_P+v_y,\\;z_P+v_z)$. L'algorithme effectue ces trois additions.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Domaine",
+  "title": "Algorithmes et domaine de définition",
+  "blocks": [
+    {
+      "title": "Domaine d'une fonction rationnelle",
+      "content": "On considère la fonction $f$ définie par $f(x) = \\frac{2x + 1}{x - 3}$.\\nÉcrire un algorithme en langage naturel ou sous forme de code (type Python) qui détermine et affiche le domaine de définition de $f$. L'algorithme doit identifier la valeur interdite et exprimer le domaine sous forme d'intervalle ou de réunion d'intervalles.",
+      "correctAnswer": "Algorithme :\\n1. Identifier le dénominateur : $x - 3$.\\n2. Résoudre l'équation $x - 3 = 0$, ce qui donne $x = 3$.\\n3. Le domaine est l'ensemble des réels sauf $3$ : $D_f = \\mathbb{R} \\setminus \\{3\\}$ ou $]-\\infty; 3[ \\cup ]3; +\\infty[$.\\n4. Afficher le résultat.\\n\\nExemple en Python :\\nimport sympy as sp\\nx = sp.symbols('x')\\nexpr = (2*x + 1) / (x - 3)\\ndenom = sp.denom(expr)\\nvaleur_interdite = sp.solve(denom, x)\\nprint(f\"Domaine : R \\\\ {valeur_interdite[0]}\")",
+      "explanation": "Pour une fonction rationnelle, le domaine de définition est l'ensemble des réels pour lesquels le dénominateur est non nul. Ici, le dénominateur est $x-3$. Il s'annule pour $x=3$. Cette valeur est donc exclue du domaine. L'algorithme formalise cette recherche de zéros du dénominateur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Domaine d'une fonction racine carrée",
+      "content": "On considère la fonction $g$ définie par $g(x) = \\sqrt{5 - 2x}$.\\nÉcrire un algorithme qui détermine et affiche le domaine de définition de $g$. L'algorithme doit résoudre l'inéquation associée au radicand et afficher le domaine sous forme d'intervalle.",
+      "correctAnswer": "Algorithme :\\n1. Identifier le radicand (expression sous la racine) : $5 - 2x$.\\n2. Poser la condition d'existence : $5 - 2x \\ge 0$.\\n3. Résoudre l'inéquation : $-2x \\ge -5$ soit $x \\le \\frac{5}{2}$ (attention au changement de sens en divisant par $-2$).\\n4. Le domaine est $D_g = ]-\\infty; \\frac{5}{2}]$.\\n5. Afficher le résultat.\\n\\nExemple en Python :\\nimport sympy as sp\\nx = sp.symbols('x')\\nexpr = sp.sqrt(5 - 2*x)\\nradicand = expr**2  # ou accéder aux arguments\\ncond = sp.solve_univariate_inequality(radicand >= 0, x)\\nprint(f\"Domaine : {cond}\")",
+      "explanation": "La fonction racine carrée $\\sqrt{u(x)}$ est définie si et seulement si $u(x) \\ge 0$. Ici $u(x) = 5 - 2x$. On résout $5 - 2x \\ge 0 \\Leftrightarrow 2x \\le 5 \\Leftrightarrow x \\le 2,5$. Le domaine est l'intervalle $]-\\infty; 2,5]$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Domaine d'une fonction composée (racine et fraction)",
+      "content": "On considère la fonction $h$ définie par $h(x) = \\frac{\\sqrt{x + 4}}{x + 1}$.\\nÉcrire un algorithme complet qui détermine le domaine de définition de $h$ en combinant les conditions sur le numérateur (racine carrée) et le dénominateur (non nul). L'algorithme doit afficher l'intersection des deux conditions sous forme d'intervalle ou réunion d'intervalles.",
+      "correctAnswer": "Algorithme :\\n1. Condition C1 (numérateur) : $x + 4 \\ge 0 \\Rightarrow x \\ge -4$. Domaine partiel $D_1 = [-4; +\\infty[$.\\n2. Condition C2 (dénominateur) : $x + 1 \\neq 0 \\Rightarrow x \\neq -1$. Domaine partiel $D_2 = \\mathbb{R} \\setminus \\{-1\\}$.\\n3. Domaine final $D_h = D_1 \\cap D_2$.\\n4. On exclut $-1$ de l'intervalle $[-4; +\\infty[$.\\n5. Résultat : $D_h = [-4; -1[ \\cup ]-1; +\\infty[$.\\n6. Afficher le résultat.\\n\\nExemple en Python :\\nimport sympy as sp\\nx = sp.symbols('x')\\nnumer = sp.sqrt(x + 4)\\ndenom = x + 1\\ncond1 = sp.solve_univariate_inequality(x + 4 >= 0, x)\\ncond2 = sp.Ne(x, -1)  # Not Equal\\n# Intersection manuelle ou via sets\\ndom = sp.Interval(-4, sp.oo, left_open=False, right_open=True)\\ndom = dom - sp.FiniteSet(-1)\\nprint(f\"Domaine : {dom}\")",
+      "explanation": "La fonction est un quotient dont le numérateur contient une racine carrée. Deux conditions simultanées s'appliquent : le radicand doit être positif ou nul ($x+4 \\ge 0$) ET le dénominateur doit être non nul ($x+1 \\neq 0$). La première donne $x \\ge -4$. La seconde exclut $-1$. Comme $-1 \\in [-4; +\\infty[$, on le retire de l'intervalle, ce qui donne la réunion de deux intervalles : $[-4; -1[ \\cup ]-1; +\\infty[$.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

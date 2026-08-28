@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 392,
+  "_course_code": "5eme-t03-c04-reduire-des-termes-semblables",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Reconnaître réduction impossible",
+  "title": "Reconnaître une réduction impossible",
+  "blocks": [
+    {
+      "title": "Niveau 1 : Termes semblables ou non",
+      "content": "Relie chaque expression à sa forme réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2a + 3b$",
+          "right": "$2a + 3b$"
+        },
+        {
+          "left": "$5x + 2x$",
+          "right": "$7x$"
+        },
+        {
+          "left": "$4y^2 + 3y$",
+          "right": "$4y^2 + 3y$"
+        },
+        {
+          "left": "$7m - 3m$",
+          "right": "$4m$"
+        }
+      ],
+      "items": [],
+      "explanation": "On ne peut réduire que les termes qui ont exactement la même partie littérale (même lettre et même exposant).\\n- $2a$ et $3b$ : lettres différentes, réduction impossible.\\n- $5x$ et $2x$ : même lettre $x$, exposant 1, on additionne les coefficients : $5+2=7$, donc $7x$.\\n- $4y^2$ et $3y$ : même lettre $y$ mais exposants différents ($2$ et $1$), réduction impossible.\\n- $7m$ et $3m$ : même lettre $m$, on soustrait les coefficients : $7-3=4$, donc $4m$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 2 : Plusieurs termes à trier",
+      "content": "Relie chaque expression à sa forme réduite après avoir regroupé les termes semblables.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3a + 4b - 2a$",
+          "right": "$a + 4b$"
+        },
+        {
+          "left": "$5x^2 + 2x - x^2$",
+          "right": "$4x^2 + 2x$"
+        },
+        {
+          "left": "$6p + 3q - 2p + q$",
+          "right": "$4p + 4q$"
+        },
+        {
+          "left": "$4t^3 + 2t^2$",
+          "right": "$4t^3 + 2t^2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut regrouper les termes par partie littérale identique.\\n- $3a - 2a = a$, le terme $4b$ reste seul : $a + 4b$.\\n- $5x^2 - x^2 = 4x^2$, le terme $2x$ reste seul (exposant 1) : $4x^2 + 2x$.\\n- $6p - 2p = 4p$ et $3q + q = 4q$ : $4p + 4q$.\\n- $4t^3$ (exposant 3) et $2t^2$ (exposant 2) : exposants différents, réduction impossible, l'expression ne change pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 3 : Expressions à quatre termes",
+      "content": "Relie chaque expression à sa forme réduite la plus simple.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2x + 3y - x + 5y$",
+          "right": "$x + 8y$"
+        },
+        {
+          "left": "$7a^2 - 3a + 2a^2$",
+          "right": "$9a^2 - 3a$"
+        },
+        {
+          "left": "$4m + 5n - 2m - n$",
+          "right": "$2m + 4n$"
+        },
+        {
+          "left": "$6k^2 + 3k$",
+          "right": "$6k^2 + 3k$"
+        }
+      ],
+      "items": [],
+      "explanation": "On trie les termes par partie littérale avant de calculer.\\n- Termes en $x$ : $2x - x = x$. Termes en $y$ : $3y + 5y = 8y$. Résultat : $x + 8y$.\\n- Termes en $a^2$ : $7a^2 + 2a^2 = 9a^2$. Terme en $a$ : $-3a$ reste seul. Résultat : $9a^2 - 3a$.\\n- Termes en $m$ : $4m - 2m = 2m$. Termes en $n$ : $5n - n = 4n$. Résultat : $2m + 4n$.\\n- $6k^2$ (exposant 2) et $3k$ (exposant 1) : pas termes semblables, expression déjà réduite.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

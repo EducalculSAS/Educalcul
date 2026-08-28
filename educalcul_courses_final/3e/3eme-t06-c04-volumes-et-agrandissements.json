@@ -1,0 +1,552 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.993107+00:00",
+  "id": 488,
+  "code": "3eme-t06-c04",
+  "title": "Volumes et agrandissements",
+  "description": "Cours structuré Educalcul : Volumes et agrandissements.",
+  "subject": "Transformations, espace et grandeurs",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Transformations, espace et grandeurs",
+    "titre_du_cours": "Volumes et agrandissements",
+    "objectif_global": "Volumes et agrandissements",
+    "mini_lecons_imposees": [
+      "Formules.",
+      "Effet d'un rapport.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace et grandeurs",
+      "lessons": [
+        {
+          "title": "Formules.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les volumes des solides usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce chapitre consacré aux volumes des solides les plus courants. Tu as déjà rencontré l'aire au cours des années précédentes, et maintenant nous allons ajouter la troisième dimension pour mesurer l'espace occupé par un objet. Le volume s'exprime en unités cubes, par exemple en centimètres cubes ($cm^3$) ou en mètres cubes ($m^3$), et il permet de comparer la capacité de contenants très différents comme une boîte de céréales, une canette ou un ballon. Pour commencer, rappelons qu'un pavé droit, c'est-à-dire une boîte rectangulaire, possède une base qui est un rectangle. Si l'on connaît l'aire de cette base et la hauteur du pavé, le volume s'obtient simplement en multipliant ces deux grandeurs. C'est la règle fondamentale qui servira de point de départ pour tous les autres solides."
+            },
+            {
+              "type": "definition",
+              "term": "Volume",
+              "definition": "Quantité d'espace occupée par un solide, mesurée en unités cubes.",
+              "example": "Le volume d'un cube de côté 3 cm est $27 cm^3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = A_{\\text{base}} \\times h"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Aire de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la forme de la base (rectangle, carré, etc.) et calcule son aire avec la formule adaptée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplication par la hauteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie l'aire de la base par la hauteur du solide pour obtenir le volume."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime le résultat dans l'unité cube correspondante (cm³, m³, etc.)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux solides de révolution, le cylindre et le cône, que l'on retrouve partout autour de nous : une boîte de conserve, un entonnoir, un verre. Leur base est un disque, donc l'aire de la base se calcule avec la formule du cercle, $\\pi r^2$. En multipliant cette aire par la hauteur, on obtient le volume du cylindre. Pour le cône, il faut prendre un tiers de ce produit, car le cône occupe exactement le tiers du cylindre de même base et de même hauteur. Cette relation du tiers est une découverte géométrique fondamentale que tu pourras vérifier en remplissant un cône de sable et en le versant dans un cylindre de mêmes dimensions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cylindre et cône"
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{cylindre}} = \\pi r^2 h"
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{cône}} = \\frac{1}{3} \\pi r^2 h"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Le facteur $\\frac{1}{3}$ pour le volume du cône"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Rayon de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure ou repère le rayon $r$ du disque qui forme la base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aire du disque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule l'aire de la base avec $\\pi r^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Volume",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour le cylindre, multiplie par la hauteur $h$. Pour le cône, multiplie par $h$ puis divise par $3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons cette première leçon par deux solides un peu plus surprenants : la sphère, comme un ballon, et la pyramide, comme les monuments d'Égypte. La sphère n'a pas de base plate, mais son volume dépend uniquement de son rayon grâce à la formule $V = \\frac{4}{3} \\pi r^3$. Le facteur $\\frac{4}{3}$ peut sembler mystérieux, mais il provient d'une intégration que tu découvriras plus tard. Pour la pyramide, quelle que soit la forme de sa base (carré, triangle, polygone), le volume vaut toujours le tiers de l'aire de la base fois la hauteur. C'est la même règle du tiers que pour le cône, ce qui montre une belle unité dans la géométrie de l'espace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sphère et pyramide"
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{sphère}} = \\frac{4}{3} \\pi r^3"
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{pyramide}} = \\frac{1}{3} A_{\\text{base}} h"
+            },
+            {
+              "type": "fraction",
+              "numerator": 4,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Le facteur $\\frac{4}{3}$ pour le volume de la sphère"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les mesures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour la sphère, note le rayon $r$. Pour la pyramide, détermine l'aire de la base $A_{\\text{base}}$ et la hauteur $h$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $\\frac{4}{3}\\pi r^3$ pour la sphère, $\\frac{1}{3}A_{\\text{base}}h$ pour la pyramide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que le résultat est bien exprimé en unités cubes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "N'oublie jamais d'élever le rayon au cube pour la sphère, et non au carré."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le volume d'un pavé droit dont la base mesure $5 cm \\times 4 cm$ et dont la hauteur est $6 cm$.",
+              "answer": "$120 cm^3$",
+              "hint": "Calcule d'abord l'aire de la base, puis multiplie par la hauteur.",
+              "explanation": "L'aire de la base est $5 \\times 4 = 20 cm^2$. En multipliant par la hauteur $6 cm$, on obtient $20 \\times 6 = 120 cm^3$."
+            },
+            {
+              "question": "Un cylindre a un rayon de $3 cm$ et une hauteur de $10 cm$. Donne son volume exact en fonction de $\\pi$.",
+              "answer": "$90\\pi cm^3$",
+              "hint": "Utilise la formule $V = \\pi r^2 h$.",
+              "explanation": "L'aire du disque de base est $\\pi \\times 3^2 = 9\\pi cm^2$. Multiplié par la hauteur $10 cm$, le volume est $9\\pi \\times 10 = 90\\pi cm^3$."
+            },
+            {
+              "question": "Quelle est le volume d'une sphère de rayon $2 cm$ ? Donne le résultat exact avec $\\pi$.",
+              "answer": "$\\frac{32}{3}\\pi cm^3$",
+              "hint": "Applique la formule $V = \\frac{4}{3}\\pi r^3$.",
+              "explanation": "Le cube du rayon est $2^3 = 8$. En multipliant par $\\frac{4}{3}\\pi$, on obtient $\\frac{4}{3}\\pi \\times 8 = \\frac{32}{3}\\pi cm^3$."
+            }
+          ]
+        },
+        {
+          "title": "Effet d'un rapport.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'agrandissement et le rapport d'homothétie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons explorer ce qui se passe lorsque l'on agrandit ou réduit un solide en conservant sa forme. Imagine que tu as un petit cube en bois de côté $2 cm$ et que tu le photographies avec un projecteur qui grossit l'image trois fois. Le nouveau cube aura un côté de $6 cm$, mais son volume ne sera pas trois fois plus grand : il sera $27$ fois plus grand ! En effet, chaque longueur est multipliée par le rapport $k = 3$, chaque aire par $k^2 = 9$, et chaque volume par $k^3 = 27$. Cette règle vaut pour n'importe quel solide, du pavé droit à la sphère, à condition que l'agrandissement soit une homothétie, c'est-à-dire une transformation qui multiplie toutes les distances par le même nombre."
+            },
+            {
+              "type": "definition",
+              "term": "Rapport d'agrandissement (homothétie)",
+              "definition": "Nombre $k > 0$ qui multiplie toutes les longueurs d'une figure pour produire une figure semblable.",
+              "example": "Si $k = 2$, toutes les longueurs sont doublées."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne confonds pas l'effet sur les aires ($k^2$) et sur les volumes ($k^3$) : c'est une erreur fréquente."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Volume initial",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le volume $V$ du solide avant transformation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Rapport $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le rapport d'agrandissement $k$ (donné ou calculé à partir de deux longueurs correspondantes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nouveau volume",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $V_{\\text{new}} = k^3 \\times V$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du cube de côté $2 cm$. Son volume initial est $V = 2^3 = 8 cm^3$. Avec un rapport $k = 3$, le nouveau volume est $V' = 3^3 \\times 8 = 27 \\times 8 = 216 cm^3$. On peut vérifier en calculant directement le côté agrandi $2 \\times 3 = 6 cm$ puis $6^3 = 216 cm^3$. Les deux méthodes donnent le même résultat, ce qui confirme la règle du cube du rapport."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des volumes avant et après agrandissement (k=3)",
+              "bars": [
+                {
+                  "label": "Volume initial",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Volume agrandi",
+                  "value": 216,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le volume final et le volume initial, et on cherche le rapport d'agrandissement. Il suffit de diviser le volume final par le volume initial, puis de prendre la racine cubique du quotient. Par exemple, si un ballon passe de $36 \\pi cm^3$ à $288 \\pi cm^3$, le quotient est $8$ et la racine cubique de $8$ est $2$. Le ballon a donc été agrandi avec un rapport $k = 2$. Cette opération inverse est très utile quand on part d'une maquette pour retrouver l'objet réel."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Quotient des volumes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $V_{\\text{final}} / V_{\\text{initial}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Racine cubique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Extrait la racine cubique du quotient pour obtenir $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie en recomputant $k^3 \\times V_{\\text{initial}}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux cônes semblables : le petit a une hauteur de $4 cm$ et un volume de $16 \\pi cm^3$, le grand a une hauteur de $10 cm$. Puisque les hauteurs sont dans le rapport $10/4 = 2,5$, le rapport d'agrandissement est $k = 2,5$. Le volume du grand cône sera donc $k^3 \\times 16 \\pi = 15,625 \\times 16 \\pi = 250 \\pi cm^3$. On voit que la hauteur a été multipliée par $2,5$, mais le volume a été multiplié par $15,625$, illustrant puissamment l'effet du cube."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un pavé droit a un volume de $24 cm^3$. On l'agrandit avec un rapport $k = 2$. Quel est le volume du nouveau pavé ?",
+              "answer": "$192 cm^3$",
+              "hint": "Le volume est multiplié par $k^3$.",
+              "explanation": "Le rapport $k = 2$ donne $k^3 = 8$. Le nouveau volume est $24 \\times 8 = 192 cm^3$."
+            },
+            {
+              "question": "Un cube de côté $3 cm$ est réduit avec un rapport $k = 0,5$. Calcule son nouveau volume.",
+              "answer": "$3,375 cm^3$",
+              "hint": "Calcule $k^3$ puis multiplie par le volume initial.",
+              "explanation": "Volume initial $3^3 = 27 cm^3$. $k^3 = 0,5^3 = 0,125$. Nouveau volume $27 \\times 0,125 = 3,375 cm^3$."
+            },
+            {
+              "question": "Un cône passe d'un volume de $12\\pi cm^3$ à $96\\pi cm^3$. Quel est le rapport d'agrandissement ?",
+              "answer": "$2$",
+              "hint": "Divise les volumes et prends la racine cubique.",
+              "explanation": "Le quotient est $96\\pi / 12\\pi = 8$. La racine cubique de $8$ est $2$, donc $k = 2$."
+            },
+            {
+              "question": "Deux pyramides semblables ont des hauteurs $6 cm$ et $15 cm$. Si le volume de la petite est $18 cm^3$, quel est le volume de la grande ?",
+              "answer": "$281,25 cm^3$",
+              "hint": "Le rapport des hauteurs donne $k$, puis $k^3$ pour les volumes.",
+              "explanation": "Rapport $k = 15/6 = 2,5$. $k^3 = 15,625$. Volume grand = $18 \\times 15,625 = 281,25 cm^3$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des problèmes de volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Abordons maintenant des situations concrètes où il faut mobiliser les formules de volume et la règle de l'agrandissement. La première étape, c'est de lire attentivement l'énoncé pour repérer quel solide est concerné : est-ce un pavé droit, un cylindre, une sphère, une pyramide ou un assemblage de plusieurs solides ? Ensuite, on note toutes les dimensions données, en veillant à ce qu'elles soient dans la même unité. Si l'énoncé parle d'une maquette à l'échelle, on identifie le rapport d'agrandissement pour passer du modèle à la réalité. Enfin, on choisit la bonne formule, on effectue le calcul et on rédige une phrase de réponse complète avec l'unité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le solide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine de quel solide il s'agit (pavé, cylindre, cône, sphère, pyramide, ou combinaison)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les mesures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note toutes les dimensions utiles (longueur, largeur, hauteur, rayon, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Convertir les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que toutes les mesures sont dans la même unité avant de calculer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule de volume adaptée au solide identifié."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Gérer l'agrandissement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si un rapport d'échelle est présent, multiplie le volume par $k^3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 6 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la réponse finale avec l'unité appropriée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'un architecte ait construit une maquette d'un immeuble à l'échelle $1/100$. La maquette est un pavé droit de dimensions $20 cm \\times 15 cm \\times 30 cm$. Son volume est donc $20 \\times 15 \\times 30 = 9000 cm^3$. Pour obtenir le volume de l'immeuble réel, on utilise le rapport d'agrandissement $k = 100$. Le volume réel vaut $k^3 \\times 9000 = 1\\,000\\,000 \\times 9000 = 9\\times 10^9 cm^3$, soit $9000 m^3$ après conversion. Cette conversion d'unités est une étape cruciale pour donner un sens concret au résultat."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{réel}} = k^3 \\times V_{\\text{maquette}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un silo agricole est souvent constitué d'un cylindre surmonté d'un cône. Imaginons un silo dont la partie cylindrique a un rayon de $2 m$ et une hauteur de $5 m$, et dont le toit conique a le même rayon et une hauteur de $1,5 m$. Le volume du cylindre est $\\pi \\times 2^2 \\times 5 = 20\\pi m^3$. Le volume du cône est $\\frac{1}{3} \\pi \\times 2^2 \\times 1,5 = 2\\pi m^3$. Le volume total du silo est donc $22\\pi m^3$, soit environ $69,1 m^3$. Ce type de problème montre l'intérêt de savoir décomposer un solide complexe en pièces simples."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{total}} = V_{\\text{cylindre}} + V_{\\text{cône}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le volume d'un solide et l'une de ses dimensions, et il faut retrouver l'autre. Par exemple, un cylindre a un volume de $150\\pi cm^3$ et un rayon de $3 cm$. On cherche sa hauteur. On écrit la formule $V = \\pi r^2 h$, on remplace $V$ et $r$, ce qui donne $150\\pi = \\pi \\times 9 \\times h$. En simplifiant par $\\pi$, on obtient $150 = 9h$, donc $h = 150/9 = 50/3 cm$. Cette résolution d'équation simple est un excellent entraînement pour l'algèbre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le volume d'un pavé droit, d'un cylindre, d'un cône, d'une sphère et d'une pyramide.",
+                "Je sais appliquer la règle $k^3$ pour un agrandissement ou une réduction.",
+                "Je sais résoudre un problème de volume avec changement d'échelle.",
+                "Je sais décomposer un solide complexe en solides simples pour en trouver le volume total."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un bac à sable en forme de pavé droit mesure $2 m$ de long, $1,5 m$ de large et $0,4 m$ de haut. Quel volume de sable peut-il contenir ?",
+              "answer": "$1,2 m^3$",
+              "hint": "Multiplie les trois dimensions.",
+              "explanation": "$2 \\times 1,5 \\times 0,4 = 1,2 m^3$."
+            },
+            {
+              "question": "Une maquette de voiture est à l'échelle $1/20$. Son volume est $50 cm^3$. Quel est le volume réel de la voiture en $m^3$ ?",
+              "answer": "$0,4 m^3$",
+              "hint": "Utilise $k = 20$, calcule $k^3$, puis convertis $cm^3$ en $m^3$.",
+              "explanation": "$k = 20$, $k^3 = 8000$. Volume réel $= 50 \\times 8000 = 400\\,000 cm^3$. $1 m^3 = 1\\,000\\,000 cm^3$, donc $400\\,000 cm^3 = 0,4 m^3$."
+            },
+            {
+              "question": "Un silo est composé d'un cylindre de rayon $2 m$ et hauteur $5 m$ surmonté d'un cône de même rayon et de hauteur $1,5 m$. Calcule son volume total exact en fonction de $\\pi$.",
+              "answer": "$22\\pi m^3$",
+              "hint": "Additionne le volume du cylindre et celui du cône.",
+              "explanation": "Cylindre : $\\pi \\times 2^2 \\times 5 = 20\\pi$. Cône : $\\frac{1}{3}\\pi \\times 2^2 \\times 1,5 = 2\\pi$. Total $22\\pi m^3$."
+            },
+            {
+              "question": "Un cylindre a un volume de $150\\pi cm^3$ et un rayon de $3 cm$. Détermine sa hauteur.",
+              "answer": "$\\frac{50}{3} cm$",
+              "hint": "Isole $h$ dans la formule $V = \\pi r^2 h$.",
+              "explanation": "On a $150\\pi = \\pi \\times 9 \\times h$, donc $150 = 9h$, $h = 150/9 = 50/3 cm$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

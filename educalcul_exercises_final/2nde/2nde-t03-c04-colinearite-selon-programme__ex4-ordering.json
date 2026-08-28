@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Colinéarité selon programme",
+  "title": "Applications de la colinéarité : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Méthode : Démontrer l'alignement de trois points",
+      "content": "Rangez les étapes dans l'ordre logique pour démontrer que trois points A, B et C sont alignés en utilisant les vecteurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les coordonnées des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+        "Vérifier s'il existe un nombre réel $k$ tel que $\\overrightarrow{AB} = k \\overrightarrow{AC}$ (ou tester l'égalité du déterminant à 0).",
+        "Conclure que les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires.",
+        "En déduire que les points A, B et C sont alignés."
+      ],
+      "explanation": "La méthode standard pour prouver l'alignement de trois points par les vecteurs suit toujours ce schéma : 1. Calculer deux vecteurs ayant une même origine (ici A). 2. Vérifier la relation de proportionnalité (colinéarité) entre ces deux vecteurs. 3. Affirmer la colinéarité des vecteurs. 4. Utiliser la propriété : si deux vecteurs de même origine sont colinéaires, alors leurs points extrêmes sont alignés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique : Déterminer une coordonnée",
+      "content": "On donne les points $A(2 ; 1)$, $B(5 ; 4)$ et $C(8 ; k)$. Rangez les étapes pour trouver la valeur de $k$ telle que A, B et C soient alignés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ k-1 \\end{pmatrix}$.",
+        "Écrire la condition de colinéarité : le déterminant est nul, soit $3(k-1) - 3 \\times 6 = 0$.",
+        "Résoudre l'équation : $3k - 3 - 18 = 0 \\iff 3k = 21 \\iff k = 7$.",
+        "Conclure : pour $k = 7$, les points A, B et C sont alignés."
+      ],
+      "explanation": "On calcule d'abord les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. La colinéarité se traduit par l'annulation du déterminant (ou l'égalité des rapports des coordonnées). On obtient l'équation $3(k-1) - 18 = 0$, d'où $k = 7. On vérifie alors que $\\overrightarrow{AC} = 2 \\overrightarrow{AB}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application vectorielle : Colinéarité par combinaison linéaire",
+      "content": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs non colinéaires. On définit les points A, B, C par : $\\overrightarrow{AB} = 2\\vec{u} - 3\\vec{v}$ et $\\overrightarrow{AC} = -4\\vec{u} + 6\\vec{v}$. Rangez les étapes pour montrer que A, B, C sont alignés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Observer les expressions de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ en fonction de $\\vec{u}$ et $\\vec{v}$.",
+        "Factoriser $\\overrightarrow{AC}$ : $\\overrightarrow{AC} = -2(2\\vec{u} - 3\\vec{v})$.",
+        "Identifier $\\overrightarrow{AB}$ dans l'expression factorisée : $\\overrightarrow{AC} = -2 \\overrightarrow{AB}$.",
+        "Conclure que $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires, donc A, B, C alignés."
+      ],
+      "explanation": "Comme $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, on ne peut pas utiliser leurs coordonnées directement. Il faut manipuler les combinaisons linéaires. On remarque que $\\overrightarrow{AC} = -2 \\overrightarrow{AB}$. Cela prouve que les deux vecteurs sont colinéaires (l'un est un multiple de l'autre). Comme ils partagent le point A, les points A, B, C sont alignés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

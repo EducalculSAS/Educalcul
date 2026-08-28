@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 68,
+  "_course_code": "ce1-t01-c01-construire-la-centaine",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Construire la centaine",
+  "title": "Quiz : Construire la centaine",
+  "questions": [
+    {
+      "text": "Combien y a-t-il de groupes de dix dans la centaine ?",
+      "options": [
+        "$5$ groupes",
+        "$10$ groupes",
+        "$20$ groupes",
+        "$100$ groupes"
+      ],
+      "correctAnswer": "$10$ groupes",
+      "explanation": "La centaine correspond à $10$ dizaines. Chaque dizaine est un groupe de $10$ unités. Donc $10 \\times 10 = 100$ unités. Les autres options confondent le nombre d'unités ($100$), la moitié ($5$) ou le double ($20$) du nombre de dizaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez la représentation en matériel de base dix. Quel nombre est représenté ?",
+      "options": [
+        "$90$",
+        "$100$",
+        "$101$",
+        "$110$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "La figure montre $10$ barres de dix (chaque barre vaut $10$). Il n'y a pas d'unités isolées. $10 \\times 10 = 100$. L'option $90$ correspondrait à $9$ barres, $101$ ajouterait une unité, et $110$ correspondrait à $11$ barres.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 10,
+        "units": 0,
+        "caption": "Dix barres de dix formant une plaque de cent"
+      }
+    },
+    {
+      "text": "Quelle décomposition est correcte pour le nombre $100$ ?",
+      "options": [
+        "$10$ dizaines et $10$ unités",
+        "$10$ dizaines et $0$ unité",
+        "$9$ dizaines et $10$ unités",
+        "$1$ dizaine et $90$ unités"
+      ],
+      "correctAnswer": "$10$ dizaines et $0$ unité",
+      "explanation": "Par définition, $100$ s'écrit avec $1$ chiffre des centaines, $0$ chiffre des dizaines et $0$ chiffre des unités. En dizaines pures, cela fait exactement $10$ dizaines ($10 \\times 10 = 100$) et $0$ unité. Les autres options mélangent dizaines et unités de façon incorrecte pour la notation standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $60$ billes. Combien de dizaines lui faut-il encore pour avoir exactement $100$ billes ?",
+      "options": [
+        "$3$ dizaines",
+        "$4$ dizaines",
+        "$40$ dizaines",
+        "$6$ dizaines"
+      ],
+      "correctAnswer": "$4$ dizaines",
+      "explanation": "Léa a $6$ dizaines ($60$). Pour atteindre $10$ dizaines ($100$), il lui manque $10 - 6 = 4$ dizaines. L'option $40$ dizaines confond le nombre d'unités manquantes ($40$) avec le nombre de dizaines. $3$ dizaines donneraient $90$, et $6$ dizaines donneraient $120$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite numérique graduée par dizaines, quelle graduation correspond à la centaine ?",
+      "options": [
+        "La $5^{\\text{ième}}$ graduation après $0$",
+        "La $10^{\\text{ième}}$ graduation après $0$",
+        "La $100^{\\text{ième}}$ graduation après $0$",
+        "La $1^{\\text{ière}}$ graduation après $0$"
+      ],
+      "correctAnswer": "La $10^{\\text{ième}}$ graduation après $0$",
+      "explanation": "Si la droite est graduée par dizaines ($10, 20, 30...$), la première graduation est $10$, la deuxième $20$, etc. La centaine ($100$) est atteinte à la dixième graduation car $10 \\times 10 = 100$. La $5^{\\text{ième}}$ est $50$, la $1^{\\text{ière}}$ est $10$, et la $100^{\\text{ième}}$ serait $1000$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

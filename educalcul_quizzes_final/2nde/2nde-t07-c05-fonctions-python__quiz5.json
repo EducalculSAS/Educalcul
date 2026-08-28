@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Paramètres",
+  "title": "Quiz : Approfondissement sur les paramètres en Python",
+  "questions": [
+    {
+      "text": "On exécute le code suivant :\\ndef afficher(message=\"Bonjour\"):\\n    print(message)\\nafficher()\\nQuelle est la sortie affichée ?",
+      "options": [
+        "Bonjour",
+        "message",
+        "Rien (aucune sortie)",
+        "Erreur d'exécution"
+      ],
+      "correctAnswer": "Bonjour",
+      "explanation": "La fonction afficher possède un paramètre message avec une valeur par défaut \"Bonjour\". Lors de l'appel afficher() sans argument, la valeur par défaut est utilisée et affichée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction :\\ndef calculer(a, b, c=5):\\n    return a + b * c\\nQuel est le résultat de l'appel calculer(b=2, a=3) ?",
+      "options": [
+        "23",
+        "32",
+        "13",
+        "Erreur : ordre des arguments invalide"
+      ],
+      "correctAnswer": "23",
+      "explanation": "Les arguments nommés (keyword arguments) permettent de changer l'ordre. Ici a vaut 3, b vaut 2, et c prend sa valeur par défaut 5. Le calcul est 3 + 2 * 5 = 3 + 10 = 23.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le code :\\ndef ajouter(liste, element):\\n    liste.append(element)\\nma_liste = [1, 2]\\najouter(ma_liste, 3)\\nprint(ma_liste)\\nQue contient ma_liste après exécution ?",
+      "options": [
+        "[1, 2, 3]",
+        "[1, 2]",
+        "[3]",
+        "Erreur : liste non modifiable"
+      ],
+      "correctAnswer": "[1, 2, 3]",
+      "explanation": "En Python, les listes sont des objets mutables. Le paramètre liste reçoit une référence vers le même objet que ma_liste. La méthode append modifie cet objet en place, la modification est donc visible à l'extérieur de la fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute :\\ndef modifier(x):\\n    x = x + 10\\nvaleur = 5\\nmodifier(valeur)\\nprint(valeur)\\nQuelle est la valeur affichée ?",
+      "options": [
+        "5",
+        "15",
+        "10",
+        "Erreur"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Les entiers sont des objets immuables. L'instruction x = x + 10 crée un nouvel entier local à la fonction et lie le nom local x à ce nouvel objet. La variable globale valeur n'est pas modifiée et conserve sa valeur initiale 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des lignes suivantes provoquerait une erreur de syntaxe (SyntaxError) lors de l'appel de la fonction def f(a, b, c): pass ?",
+      "options": [
+        "f(1, 2, 3)",
+        "f(a=1, b=2, c=3)",
+        "f(1, b=2, c=3)",
+        "f(1, b=2, 3)"
+      ],
+      "correctAnswer": "f(1, b=2, 3)",
+      "explanation": "En Python, il est interdit de placer un argument positionnel (ici le dernier 3) après un argument nommé (keyword argument, ici b=2). Les trois autres appels respectent la règle : soit tout positionnel, soit tout nommé, soit positionnels puis nommés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

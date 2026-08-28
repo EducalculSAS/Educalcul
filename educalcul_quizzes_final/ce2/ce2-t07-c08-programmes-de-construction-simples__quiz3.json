@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Vérifier la figure",
+  "title": "Quiz : Vérifier une figure géométrique (CE2)",
+  "questions": [
+    {
+      "text": "Voici un programme de construction :\\n1. Sur un quadrillage, trace un segment horizontal de 3 cases.\\n2. Aux extrémités, trace deux segments verticaux de 3 cases.\\n3. Relie les extrémités des segments verticaux.\\nQuelle figure obtient-on ?",
+      "options": [
+        "Un rectangle de 3 cases sur 4 cases",
+        "Un carré de 3 cases de côté",
+        "Un triangle rectangle",
+        "Un losange de 3 cases de côté"
+      ],
+      "correctAnswer": "Un carré de 3 cases de côté",
+      "explanation": "Le programme décrit la construction d'un carré : un segment horizontal de 3 cases, deux perpendiculaires de même longueur (3 cases) et le quatrième côté qui ferme la figure. Comme les quatre côtés mesurent 3 cases et les angles sont droits (horizontal/vertical sur quadrillage), c'est un carré. Le rectangle aurait des côtés de longueurs différentes, le triangle n'a que 3 côtés, le losange n'a pas forcément d'angles droits.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 9,
+        "caption": "Carré de 3 cases de côté sur quadrillage"
+      }
+    },
+    {
+      "text": "Le programme suivant est exécuté :\\n1. Trace un segment $[AB]$ de $4$ cm.\\n2. Trace le cercle de centre $A$ et de rayon $4$ cm.\\n3. Trace le cercle de centre $B$ et de rayon $4$ cm.\\n4. Nomme $C$ un point d'intersection des deux cercles.\\n5. Trace les segments $[AC]$ et $[BC]$.\\nQuelle figure a été construite ?",
+      "options": [
+        "Un triangle rectangle en $A$",
+        "Un triangle isocèle en $A$",
+        "Un triangle équilatéral",
+        "Un carré de côté $4$ cm"
+      ],
+      "correctAnswer": "Un triangle équilatéral",
+      "explanation": "Les segments $[AB]$, $[AC]$ et $[BC]$ mesurent tous $4$ cm : $[AB]$ par construction, $[AC]$ car c'est un rayon du cercle de centre $A$, $[BC]$ car c'est un rayon du cercle de centre $B$. Un triangle ayant ses trois côtés de même longueur est un triangle équilatéral. Ce n'est pas un triangle rectangle (angles de $60^\\circ$), ni isocèle seulement (il l'est mais plus précisément équilatéral), ni un carré (4 côtés).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle équilatéral ABC de côté 4 cm",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "4 cm",
+          "4 cm",
+          "4 cm"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Léa doit construire un rectangle $ABCD$ avec $AB = 6$ cm et $BC = 4$ cm. Elle suit ce programme :\\n1. Trace $[AB] = 6$ cm.\\n2. Trace la perpendiculaire à $(AB)$ passant par $A$.\\n3. Sur cette perpendiculaire, place $D$ tel que $AD = 4$ cm.\\n4. Trace la perpendiculaire à $(AB)$ passant par $B$.\\n5. Sur cette perpendiculaire, place $C$ tel que $BC = 4$ cm.\\n6. Trace $[CD]$.\\nEn vérifiant sa figure, elle s'aperçoit que $CD$ mesure $5,5$ cm au lieu de $6$ cm. Quelle est l'erreur probable ?",
+      "options": [
+        "Elle a mal mesuré $AB$ au départ",
+        "Les droites tracées aux étapes 2 et 4 ne sont pas parallèles",
+        "Elle a inversé les longueurs $4$ cm et $6$ cm",
+        "Le point $C$ n'est pas sur la perpendiculaire passant par $B$"
+      ],
+      "correctAnswer": "Les droites tracées aux étapes 2 et 4 ne sont pas parallèles",
+      "explanation": "Dans un rectangle, les côtés opposés sont parallèles et de même longueur. $[AB]$ et $[CD]$ doivent faire $6$ cm. Si $CD$ mesure $5,5$ cm, c'est que les droites $(AD)$ et $(BC)$ (tracées perpendiculaires à $(AB)$) ne sont pas parallèles entre elles (elles divergent ou convergent). Si elles étaient bien parallèles, $ABCD$ serait un parallélogramme rectangle donc un rectangle, et $CD$ serait égal à $AB = 6$ cm. L'erreur vient de la perpendicularité mal réalisée à l'étape 2 ou 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un losange de côté $5$ cm, on commence par tracer un segment $[AB] = 5$ cm. Quelle est la suite correcte du programme ?",
+      "options": [
+        "Trace le cercle centre $A$ rayon $5$ cm et cercle centre $B$ rayon $5$ cm ; $C$ intersection ; trace $[AC]$ et $[BC]$.",
+        "Trace la perpendiculaire à $(AB)$ en $A$ ; place $D$ à $5$ cm ; trace $(DC) // (AB)$ ; place $C$ à $5$ cm de $D$.",
+        "Trace le cercle centre $A$ rayon $5$ cm ; choisis $D$ sur ce cercle ; trace le cercle centre $D$ rayon $5$ cm ; $C$ intersection avec le cercle centre $B$ rayon $5$ cm.",
+        "Trace un angle droit en $A$ ; place $D$ à $5$ cm ; trace $[DC] = 5$ cm parallèle à $[AB]$ ; trace $[BC]$."
+      ],
+      "correctAnswer": "Trace le cercle centre $A$ rayon $5$ cm ; choisis $D$ sur ce cercle ; trace le cercle centre $D$ rayon $5$ cm ; $C$ intersection avec le cercle centre $B$ rayon $5$ cm.",
+      "explanation": "Un losange a 4 côtés égaux. On a $AB=5$. Pour avoir $AD=5$, $D$ doit être sur le cercle centre $A$ rayon $5$. Pour avoir $CD=5$ et $BC=5$, $C$ doit être à la fois sur le cercle centre $D$ rayon $5$ et sur le cercle centre $B$ rayon $5$. La première option construit un triangle équilatéral (3 côtés). La deuxième et la quatrième construisent un rectangle (angles droits imposés), ce qui est un cas particulier de losange (carré) mais pas la méthode générale pour un losange quelconque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tom a tracé une figure en suivant un programme. Il veut vérifier si l'angle en $A$ est un angle droit. Il pose son gabarit d'angle droit (ou une équerre) le long de $[AB]$ et le coin sur $A$. Que doit-il observer pour valider l'angle droit ?",
+      "options": [
+        "Le bord de l'équerre passe exactement par le point $C$",
+        "Le bord de l'équerre coïncide exactement avec la demi-droite $[AD$",
+        "Le bord de l'équerre coupe le segment $[CD]$ au milieu",
+        "Le bord de l'équerre est parallèle à la droite $(BC)$"
+      ],
+      "correctAnswer": "Le bord de l'équerre coïncide exactement avec la demi-droite $[AD$",
+      "explanation": "Pour vérifier qu'un angle $\\widehat{DAB}$ est droit, on aligne un côté de l'équerre sur $[AB]$ avec le sommet sur $A$. L'autre côté de l'équerre doit alors se superposer parfaitement à l'autre côté de l'angle, c'est-à-dire la demi-droite $[AD$ (ou $[AC$ selon le nommage). Si ça coïncide, l'angle est droit. L'option A suppose que $C$ est sur la perpendiculaire, ce qui n'est pas garanti. L'option C (milieu) et D (parallèle) ne sont pas des méthodes de vérification d'un angle droit au gabarit.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Vérification d'un angle droit de 90 degrés à l'équerre"
+      }
+    }
+  ]
+}

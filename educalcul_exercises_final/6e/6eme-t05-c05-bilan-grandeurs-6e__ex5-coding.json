@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 356,
+  "_course_code": "6eme-t05-c05-bilan-grandeurs-6e",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Conversions, aires, volumes",
+  "title": "Algorithmes de conversion, aires et volumes",
+  "blocks": [
+    {
+      "title": "Conversion de longueur",
+      "content": "Écris un algorithme (en pseudo‑code ou style Python) qui demande à l'utilisateur une longueur en centimètres, la convertit en mètres et affiche le résultat. Rappelle que $1\\,m = 100\\,cm$.",
+      "correctAnswer": "Algorithme :\\n1. Demander la longueur en cm (variable longueur_cm).\\n2. Calculer longueur_m = longueur_cm / 100.\\n3. Afficher longueur_m avec l'unité m.\\nExemple en Python :\\nlongueur_cm = float(input(\"Longueur en cm : \"))\\nlongueur_m = longueur_cm / 100\\nprint(f\"{longueur_m} m\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise la valeur en centimètres par 100 car il y a 100 centimètres dans un mètre. L'algorithme suit les trois étapes : saisie, calcul, affichage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Aire d'un rectangle et conversion",
+      "content": "Écris un algorithme qui demande la longueur et la largeur d'un rectangle en centimètres, calcule son aire en centimètres carrés, puis convertit cette aire en mètres carrés et affiche les deux résultats. Rappelle que $1\\,m^2 = 10\\,000\\,cm^2$.",
+      "correctAnswer": "Algorithme :\\n1. Demander longueur_cm et largeur_cm.\\n2. Calculer aire_cm2 = longueur_cm * largeur_cm.\\n3. Calculer aire_m2 = aire_cm2 / 10000.\\n4. Afficher aire_cm2 avec l'unité cm² et aire_m2 avec l'unité m².\\nExemple en Python :\\nlongueur_cm = float(input(\"Longueur en cm : \"))\\nlargeur_cm = float(input(\"Largeur en cm : \"))\\naire_cm2 = longueur_cm * largeur_cm\\naire_m2 = aire_cm2 / 10000\\nprint(f\"Aire = {aire_cm2} cm²\")\\nprint(f\"Aire = {aire_m2} m²\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'aire en cm² s'obtient par le produit longueur × largeur. Pour passer en m², on divise par 10 000 car un mètre carré contient 10 000 centimètres carrés (100 cm × 100 cm).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'un pavé droit et conversion en litres",
+      "content": "Écris un algorithme qui demande les trois dimensions (longueur, largeur, hauteur) d'un pavé droit en centimètres, calcule son volume en centimètres cubes, puis convertit ce volume en litres et affiche les deux résultats. Rappelle que $1\\,L = 1\\,000\\,cm^3$.",
+      "correctAnswer": "Algorithme :\\n1. Demander longueur_cm, largeur_cm, hauteur_cm.\\n2. Calculer volume_cm3 = longueur_cm * largeur_cm * hauteur_cm.\\n3. Calculer volume_L = volume_cm3 / 1000.\\n4. Afficher volume_cm3 avec l'unité cm³ et volume_L avec l'unité L.\\nExemple en Python :\\nlongueur_cm = float(input(\"Longueur en cm : \"))\\nlargeur_cm = float(input(\"Largeur en cm : \"))\\nhauteur_cm = float(input(\"Hauteur en cm : \"))\\nvolume_cm3 = longueur_cm * largeur_cm * hauteur_cm\\nvolume_L = volume_cm3 / 1000\\nprint(f\"Volume = {volume_cm3} cm³\")\\nprint(f\"Volume = {volume_L} L\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume en cm³ est le produit des trois dimensions. Un litre équivaut à 1 000 cm³, donc on divise le volume en cm³ par 1 000 pour obtenir le volume en litres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

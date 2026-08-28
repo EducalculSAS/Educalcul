@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Données à deux variables qualitatives selon programme",
+  "title": "Analyse de deux variables qualitatives : étapes de la méthode",
+  "blocks": [
+    {
+      "title": "Construction du tableau de contingence",
+      "content": "Range dans l'ordre logique les étapes permettant de construire un tableau de contingence à partir de données brutes sur deux variables qualitatives.",
+      "items": [
+        "Lister les modalités de chaque variable qualitative.",
+        "Croiser les effectifs pour chaque couple de modalités.",
+        "Calculer les effectifs marginaux (totaux par ligne et par colonne).",
+        "Vérifier que la somme des effectifs marginaux correspond à l'effectif total."
+      ],
+      "explanation": "On commence par identifier les modalités des deux variables pour définir la structure du tableau (lignes et colonnes). On remplit ensuite les cases centrales en croisant les effectifs observés. Les effectifs marginaux (sommes par ligne et par colonne) se calculent ensuite. La dernière étape est une vérification de cohérence : la somme des totaux lignes (ou colonnes) doit être égale à l'effectif total de l'échantillon.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des fréquences conditionnelles (profils-lignes)",
+      "content": "Range dans l'ordre les étapes pour calculer et utiliser les profils-lignes (fréquences conditionnelles) à partir d'un tableau de contingence.",
+      "items": [
+        "Identifier l'effectif total de la ligne conditionnante (effectif marginal).",
+        "Diviser chaque effectif de la ligne par l'effectif total de cette ligne.",
+        "Exprimer les résultats en pourcentages ou en nombres compris entre $0$ et $1$.",
+        "Comparer les profils-lignes pour voir si la répartition change selon la modalité de la variable en ligne."
+      ],
+      "explanation": "Le calcul des profils-lignes vise à comparer la répartition de la variable en colonnes pour chaque modalité de la variable en lignes. On isole d'abord le total de la ligne considérée (le conditionnant). Chaque effectif de cette ligne est ensuite divisé par ce total. On obtient des fréquences (entre $0$ et $1$ ou en %). L'intérêt est la comparaison : si les profils-lignes sont très différents, la variable en lignes influence la répartition de la variable en colonnes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation : recherche d'un lien statistique",
+      "content": "Range dans l'ordre les étapes du raisonnement pour conclure à l'existence d'un lien statistique entre les deux variables qualitatives.",
+      "items": [
+        "Observer les profils-lignes (ou colonnes) calculés précédemment.",
+        "Constater si les profils sont très différents les uns des autres.",
+        "Conclure à l'existence d'un lien statistique entre les deux variables si les profils diffèrent notablement.",
+        "Nuancer : un lien statistique n'implique pas une relation de cause à effet."
+      ],
+      "explanation": "L'analyse statistique d'un lien repose sur la comparaison des profils. Si les profils-lignes sont identiques (ou très proches), la répartition de la variable en colonnes ne dépend pas de la modalité de la variable en lignes : les variables sont indépendantes (pas de lien). Si les profils sont très différents, il y a un lien statistique. La dernière étape est essentielle en Sciences : corrélation (lien statistique) ne signifie pas causalité (cause à effet).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

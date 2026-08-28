@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 427,
+  "_course_code": "4eme-t02-c03-equations-du-premier-degre",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Opérations sur les deux membres",
+  "title": "Quiz : Opérations sur les deux membres d'une équation",
+  "questions": [
+    {
+      "text": "Quelle opération faut-il effectuer sur les deux membres de l'équation $x - 7 = 12$ pour isoler $x$ ?",
+      "options": [
+        "Ajouter $7$",
+        "Soustraire $7$",
+        "Multiplier par $7$",
+        "Diviser par $7$"
+      ],
+      "correctAnswer": "Ajouter $7$",
+      "explanation": "Pour isoler $x$ dans $x - 7 = 12$, il faut annuler le $-7$ du premier membre. L'opération inverse de la soustraction est l'addition. On ajoute donc $7$ des deux côtés : $x - 7 + 7 = 12 + 7$, ce qui donne $x = 19$. Soustraire $7$ donnerait $x - 14 = 5$, ce qui ne isole pas $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir effectué la même opération sur les deux membres de l'équation $5x = 35$, on obtient $x = 7$. Quelle est cette opération ?",
+      "options": [
+        "Diviser par $5$",
+        "Multiplier par $5$",
+        "Soustraire $5$",
+        "Ajouter $5$"
+      ],
+      "correctAnswer": "Diviser par $5$",
+      "explanation": "L'équation $5x = 35$ signifie $5$ fois $x$. Pour isoler $x$, il faut faire l'opération inverse de la multiplication, c'est-à-dire la division. On divise les deux membres par $5$ : $\\frac{5x}{5} = \\frac{35}{5}$, d'où $x = 7$. Multiplier par $5$ donnerait $25x = 175$. Ajouter ou soustraire $5$ ne permet pas d'annuler le coefficient $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On résout l'équation $3x + 4 = 19$. Quelle est la première opération à effectuer sur les deux membres ?",
+      "options": [
+        "Soustraire $4$",
+        "Ajouter $4$",
+        "Diviser par $3$",
+        "Multiplier par $3$"
+      ],
+      "correctAnswer": "Soustraire $4$",
+      "explanation": "La règle est de traiter les termes sans $x$ (les constantes) en premier pour les passer de l'autre côté du signe $=$. Ici, on a $+4$ à gauche. Pour l'annuler, on soustrait $4$ des deux membres : $3x + 4 - 4 = 19 - 4$, ce qui simplifie en $3x = 15$. Diviser par $3$ dès le début donnerait $x + \\frac{4}{3} = \\frac{19}{3}$, ce qui complique les calculs avec des fractions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique l'opération 'diviser par $2$' aux deux membres de l'équation $6x - 10 = 8$. Quelle est la nouvelle équation obtenue ?",
+      "options": [
+        "$3x - 5 = 4$",
+        "$3x - 10 = 4$",
+        "$6x - 5 = 4$",
+        "$12x - 20 = 16$"
+      ],
+      "correctAnswer": "$3x - 5 = 4$",
+      "explanation": "Diviser les deux membres par $2$ signifie diviser **chaque terme** de l'équation par $2$. À gauche : $\\frac{6x}{2} - \\frac{10}{2} = 3x - 5$. À droite : $\\frac{8}{2} = 4$. L'équation devient donc $3x - 5 = 4$. L'option '$3x - 10 = 4$' oublie de diviser $-10$ par $2$. L'option '$6x - 5 = 4$' oublie de diviser $6x$ par $2$. La dernière option correspond à une multiplication par $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève résout $4(x - 2) = 16$ et écrit l'étape suivante : $4x - 2 = 16$. Quelle erreur a-t-il commise ?",
+      "options": [
+        "Il n'a pas distribué la multiplication à tous les termes de la parenthèse",
+        "Il a divisé par $4$ au lieu de multiplier",
+        "Il a soustrait $2$ au lieu de l'ajouter",
+        "Il a oublié d'écrire le $x$"
+      ],
+      "correctAnswer": "Il n'a pas distribué la multiplication à tous les termes de la parenthèse",
+      "explanation": "La distributivité impose de multiplier le $4$ par **chaque** terme à l'intérieur de la parenthèse : $4 \\times x$ et $4 \\times (-2)$. Le développement correct est $4x - 8 = 16$. L'élève a correctement fait $4 \\times x = 4x$ mais a oublié de multiplier $-2$ par $4$, écrivant $-2$ au lieu de $-8$. C'est une erreur classique de non-distributivité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

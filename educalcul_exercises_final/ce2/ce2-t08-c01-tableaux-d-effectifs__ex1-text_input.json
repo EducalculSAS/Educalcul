@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Organiser des données",
+  "title": "Organiser des données dans un tableau d'effectifs",
+  "blocks": [
+    {
+      "title": "Compléter un tableau",
+      "content": "Léo a interrogé ses camarades sur leur fruit préféré. Voici les réponses : Pomme, Poire, Pomme, Banane, Pomme, Poire, Banane, Pomme. Complète le tableau d'effectifs ci-dessous et indique l'effectif du fruit \"Pomme\".\\n\\nFruit | Effectif\\nPomme | ...\\nPoire | ...\\nBanane | ...",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut compter le nombre de fois où le mot \"Pomme\" apparaît dans la liste : 1ère, 3ème, 5ème et 8ème réponse. Il y a donc $4$ fois le fruit Pomme. L'effectif de Pomme est $4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver un effectif manquant",
+      "content": "Voici un tableau d'effectifs sur les couleurs préférées d'une classe. Le total des élèves est $15$. Quel est l'effectif de la couleur Rouge ?\\n\\nCouleur | Effectif\\nBleu | 5\\nRouge | ...\\nVert | 3",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des effectifs connus est $5 + 3 = 8$. Le total de la classe est $15$ élèves. Pour trouver l'effectif manquant, on fait $15 - 8 = 7$. L'effectif de la couleur Rouge est $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer des effectifs",
+      "content": "Un tableau récapitule les animaux de compagnie des élèves de CE2.\\n\\nAnimal | Effectif\\nChien | 6\\nChat | 8\\nLapin | 2\\n\\nCombien y a-t-il d'élèves qui ont un chien ou un chat ?",
+      "correctAnswer": "14",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut additionner l'effectif des chiens ($6$) et l'effectif des chats ($8$). On calcule $6 + 8 = 14$. Il y a $14$ élèves qui ont un chien ou un chat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

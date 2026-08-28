@@ -1,0 +1,615 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.440167+00:00",
+  "id": 303,
+  "code": "cm2-t05-c01",
+  "title": "Conversions de longueurs, masses et contenances",
+  "description": "Cours structuré Educalcul : Conversions de longueurs, masses et contenances.",
+  "subject": "Grandeurs et mesures",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Conversions de longueurs, masses et contenances",
+    "objectif_global": "Conversions de longueurs, masses et contenances",
+    "mini_lecons_imposees": [
+      "Unités.",
+      "Conversions.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi avons-nous besoin d'unités ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veilles mesurer la longueur de ton bureau. Si tu utilises ton pied comme unité, ton ami utilisera le sien et vous n'obtiendrez pas le même résultat. Pour que tout le monde parle le même langage, les scientifiques ont inventé des unités de mesure officielles, identiques partout dans le monde. C'est comme une langue commune pour les grandeurs."
+            },
+            {
+              "type": "definition",
+              "term": "unité de mesure",
+              "definition": "Une référence fixe et identique pour tous, qui permet de quantifier une grandeur (longueur, masse, contenance).",
+              "example": "Le mètre est l'unité de référence pour la longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu comprends l'intérêt d'une unité commune, découvrons la famille des unités de longueur. Elles sont toutes construites autour du mètre, grâce à des préfixes qui indiquent si l'unité est plus grande ou plus petite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités de longueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le tableau des unités de longueur, du plus grand au plus petit. Chaque trait d'union représente un facteur 10 :"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Rapport au mètre"
+              ],
+              "rows": [
+                [
+                  "Kilomètre",
+                  "$km$",
+                  "$1\\,km = 1000\\,m$"
+                ],
+                [
+                  "Hectomètre",
+                  "$hm$",
+                  "$1\\,hm = 100\\,m$"
+                ],
+                [
+                  "Décamètre",
+                  "$dam$",
+                  "$1\\,dam = 10\\,m$"
+                ],
+                [
+                  "Mètre",
+                  "$m$",
+                  "Unité de base"
+                ],
+                [
+                  "Décimètre",
+                  "$dm$",
+                  "$1\\,m = 10\\,dm$"
+                ],
+                [
+                  "Centimètre",
+                  "$cm$",
+                  "$1\\,m = 100\\,cm$"
+                ],
+                [
+                  "Millimètre",
+                  "$mm$",
+                  "$1\\,m = 1000\\,mm$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour te repérer : la distance entre deux villes se compte en kilomètres ($km$), ta taille en mètres ($m$), la largeur de ton doigt en centimètres ($cm$) et l'épaisseur d'une pièce de monnaie en millimètres ($mm$). Les préfixes \"kilo\", \"hecto\", \"deca\" veulent dire « mille », « cent », « dix » fois l'unité de base. Les préfixes \"deci\", \"centi\", \"milli » veulent dire « dixième », « centième », « millième »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les unités de masse fonctionnent sur le même principe, mais l'unité de base est le gramme ($g$). On parle souvent de kilogramme ($kg$) pour les objets du quotidien, car le gramme est très léger."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités de masse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le tableau de masse. Remarque que le kilogramme est l'unité la plus utilisée pour les courses, alors qu'il est un multiple du gramme."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Rapport au gramme"
+              ],
+              "rows": [
+                [
+                  "Kilogramme",
+                  "$kg$",
+                  "$1\\,kg = 1000\\,g$"
+                ],
+                [
+                  "Hectogramme",
+                  "$hg$",
+                  "$1\\,hg = 100\\,g$"
+                ],
+                [
+                  "Décagramme",
+                  "$dag$",
+                  "$1\\,dag = 10\\,g$"
+                ],
+                [
+                  "Gramme",
+                  "$g$",
+                  "Unité de base"
+                ],
+                [
+                  "Décigramme",
+                  "$dg$",
+                  "$1\\,g = 10\\,dg$"
+                ],
+                [
+                  "Centigramme",
+                  "$cg$",
+                  "$1\\,g = 100\\,cg$"
+                ],
+                [
+                  "Milligramme",
+                  "$mg$",
+                  "$1\\,g = 1000\\,mg$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un sac de farine pèse 1 $kg$, une lettre affranchie pèse quelques grammes ($g$), et un comprimé de médicament se dose en milligrammes ($mg$). Le préfixe \"kilo\" signifie encore mille fois, mais ici il est attaché au gramme, ce qui donne le kilogramme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la contenance (ou capacité) mesure le volume des liquides ou des gaz. Son unité de base est le litre ($L$), et les préfixes sont exactement les mêmes que pour la longueur et la masse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités de contenance"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Rapport au litre"
+              ],
+              "rows": [
+                [
+                  "Kilolitre",
+                  "$kL$",
+                  "$1\\,kL = 1000\\,L$"
+                ],
+                [
+                  "Hectolitre",
+                  "$hL$",
+                  "$1\\,hL = 100\\,L$"
+                ],
+                [
+                  "Décalitre",
+                  "$daL$",
+                  "$1\\,daL = 10\\,L$"
+                ],
+                [
+                  "Litre",
+                  "$L$",
+                  "Unité de base"
+                ],
+                [
+                  "Décilitre",
+                  "$dL$",
+                  "$1\\,L = 10\\,dL$"
+                ],
+                [
+                  "Centilitre",
+                  "$cL$",
+                  "$1\\,L = 100\\,cL$"
+                ],
+                [
+                  "Millilitre",
+                  "$mL$",
+                  "$1\\,L = 1000\\,mL$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Une piscine municipale contient des centaines de mètres cubes, soit des kilolitres ($kL$). Une bouteille d'eau fait 1 $L$ ou 100 $cL$. Une cuillère à café contient environ 5 $mL$. Tu vois, les mêmes préfixes reviennent : c'est une logique unique pour toutes les grandeurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité utiliserais-tu pour mesurer la longueur de ta classe ?",
+              "answer": "Le mètre (m) est l'unité adaptée.",
+              "hint": "Pense à la taille d'une pièce.",
+              "explanation": "La classe mesure quelques mètres, donc le mètre est l'unité de base pour cette longueur."
+            },
+            {
+              "question": "Quel est le symbole de l'unité qui vaut 1000 mètres ?",
+              "answer": "km",
+              "hint": "Le préfixe 'kilo' signifie mille.",
+              "explanation": "Kilomètre s'écrit km et vaut 1000 m."
+            },
+            {
+              "question": "Quelle unité pour peser un éléphant ?",
+              "answer": "Le kilogramme (kg).",
+              "hint": "Un éléphant pèse plusieurs milliers de kilogrammes.",
+              "explanation": "Le kg est l'unité courante pour les masses lourdes."
+            },
+            {
+              "question": "Quel symbole pour l'unité qui vaut 1/1000 de litre ?",
+              "answer": "mL",
+              "hint": "Le préfixe 'milli' signifie millième.",
+              "explanation": "Le millilitre (mL) est le millième du litre."
+            }
+          ]
+        },
+        {
+          "title": "Conversions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau de conversion, ton meilleur allié"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour changer d'unité sans te tromper, le plus sûr est d'utiliser un tableau de conversion. C'est un tableau à colonnes, chaque colonne correspondant à une unité. La règle d'or : quand tu passes d'une colonne à la suivante vers la droite, tu multiplies par 10 ; vers la gauche, tu divises par 10. La virgule se déplace d'un cran à chaque fois."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3.45,
+              "caption": "3,45 m placé dans le tableau de conversion des longueurs"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'unité de départ et l'unité d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux colonnes concernées. Ici, on part du mètre ($m$) pour aller au centimètre ($cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le nombre en alignant le chiffre des unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le chiffre des unités de 3,45 (le 3) dans la colonne $m$. La virgule reste à sa place."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déplacer la virgule jusqu'à la colonne d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour aller de $m$ à $cm$, il faut avancer de deux colonnes (vers la droite). La virgule saute de deux crans : 3,45 devient 345."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Compléter par des zéros si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, pas besoin de zéro. Résultat : 3,45 $m$ = 345 $cm$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le nombre de départ contient déjà une virgule, le déplacement fonctionne exactement de la même façon. Il faut juste faire attention à ne pas perdre la virgule en route."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir vers des unités plus petites (multiplier)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons 2,5 $kg$. On veut des grammes ($g$). Dans le tableau de masse, on place le 2 dans la colonne $kg$ (car c'est le chiffre des kilogrammes). La virgule est après le 2. Pour aller au $g$, on avance de trois colonnes (kilo -> hecto -> deca -> base). La virgule saute de trois crans vers la droite : 2,5 devient 2500. On a ajouté deux zéros pour combler les cases vides."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 2.5,
+              "caption": "2,5 kg converti en grammes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse consiste à passer d'une unité plus petite à une unité plus grande. Cette fois, la virgule se déplace vers la gauche, ce qui revient à diviser par 10, 100, 1000..."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir vers des unités plus grandes (diviser)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : 4500 $mm$ en mètres ($m$). On écrit 4500 en alignant le chiffre des unités (le dernier 0) dans la colonne $mm$. Pour remonter au $m$, on recule de trois colonnes vers la gauche. La virgule (qui était après le dernier zéro, invisible) saute de trois crans vers la gauche : on obtient 4,500, soit 4,5 $m$. Les zéros inutiles à droite de la virgule peuvent être supprimés."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 4500,
+              "caption": "4500 mm converti en mètres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, on rencontre souvent des mesures composées, comme 3 $km$ 250 $m$. Pour les convertir en une seule unité, on transforme chaque partie dans l'unité choisie, puis on additionne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les mesures composées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour exprimer 3 $km$ 250 $m$ en mètres : convertis 3 $km$ en $m$ (3 $\\times$ 1000 = 3000 $m$), puis ajoute 250 $m$. Total : 3250 $m$. Si tu veux le résultat en kilomètres, convertis 250 $m$ en $km$ (250 $\\div$ 1000 = 0,25 $km$) et ajoute à 3 $km$ : 3,25 $km$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis 4,2 m en cm.",
+              "answer": "420 cm",
+              "hint": "De m à cm, on avance de deux colonnes vers la droite.",
+              "explanation": "On déplace la virgule de deux crans vers la droite : 4,2 devient 420."
+            },
+            {
+              "question": "Convertis 0,75 L en mL.",
+              "answer": "750 mL",
+              "hint": "De L à mL, on avance de trois colonnes.",
+              "explanation": "0,75 L = 750 mL (virgule déplacée de 3 crans vers la droite)."
+            },
+            {
+              "question": "Convertis 3200 g en kg.",
+              "answer": "3,2 kg",
+              "hint": "De g à kg, on recule de trois colonnes vers la gauche.",
+              "explanation": "3200 g = 3,2 kg (virgule déplacée de 3 crans vers la gauche)."
+            },
+            {
+              "question": "Exprime 2 kg 300 g en grammes.",
+              "answer": "2300 g",
+              "hint": "Convertis les kg en g puis additionne.",
+              "explanation": "2 kg = 2000 g, plus 300 g = 2300 g."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire, comprendre, convertir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à un problème, la première étape est de bien identifier ce qu'on sait (les données) et ce qu'on cherche (la question). Ensuite, on met toutes les grandeurs dans la même unité avant de calculer. C'est la clé pour ne pas mélanger des pommes et des oranges."
+            },
+            {
+              "type": "definition",
+              "term": "donnée",
+              "definition": "Une information numérique fournie par l'énoncé.",
+              "example": "2 km 300 m est une donnée de longueur."
+            },
+            {
+              "type": "definition",
+              "term": "question",
+              "definition": "Ce que le problème demande de trouver.",
+              "example": "Quelle distance totale en mètres ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire et surligner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les nombres et leurs unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir tout dans la même unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis l'unité la plus pratique (souvent la plus petite présente)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Addition, soustraction, multiplication ou division selon la question."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répondre par une phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N'oublie pas l'unité dans ta réponse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes de contenance suivent le même schéma. Il faut simplement bien repérer les unités (litre, centilitre, millilitre) et convertir avant de soustraire ou d'additionner."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraire après conversion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : Une bouteille contient 1,5 $L$ de jus. On verse 3 verres de 25 $cL$ chacun. Combien reste-t-il de jus en centilitres ? D'abord, convertis 1,5 $L$ en $cL$ : 1,5 $\\times$ 100 = 150 $cL$. Ensuite, calcule le total versé : 3 $\\times$ 25 = 75 $cL$. Enfin, soustrais : 150 - 75 = 75 $cL$. Il reste 75 $cL$ de jus."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Calcul",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "Conversion",
+                  "1,5 L = 150 cL",
+                  "150 cL"
+                ],
+                [
+                  "Multiplication",
+                  "3 × 25 cL",
+                  "75 cL"
+                ],
+                [
+                  "Soustraction",
+                  "150 - 75",
+                  "75 cL"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut diviser une grandeur totale en parts égales, ou multiplier une quantité unitaire par un nombre. La conversion reste la première marche à gravir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager ou multiplier des grandeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un sac de 5 $kg$ de farine. Chaque gâteau nécessite 250 $g$ de farine. Combien de gâteaux peut-on faire ? Convertis 5 $kg$ en $g$ : 5 $\\times$ 1000 = 5000 $g$. Divise 5000 par 250 : 5000 $\\div$ 250 = 20. On peut faire 20 gâteaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, un petit défi qui mélange deux grandeurs différentes. Tu verras que la méthode ne change pas : on traite chaque grandeur de son côté, avec ses propres unités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un problème qui mélange les grandeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une recette, il faut 500 $g$ de farine et 25 $cL$ de lait. Si on veut faire 4 fois la recette, quelle masse de farine en kilogrammes et quelle contenance de lait en litres ? Pour la farine : 500 $g$ $\\times$ 4 = 2000 $g$ = 2 $kg$. Pour le lait : 25 $cL$ $\\times$ 4 = 100 $cL$ = 1 $L$. Réponse : 2 $kg$ de farine et 1 $L$ de lait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer les unités de longueur, de masse et de contenance.",
+                "Je sais utiliser le tableau de conversion pour passer d'une unité à une autre.",
+                "Je sais résoudre un problème en convertissant d'abord toutes les mesures dans la même unité.",
+                "Je vérifie toujours que ma réponse est accompagnée de la bonne unité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Emma a marché 3 km 400 m puis 2 km 600 m. Distance totale en mètres ?",
+              "answer": "6000 m",
+              "hint": "Convertis chaque partie en mètres puis additionne.",
+              "explanation": "3 km 400 m = 3400 m, 2 km 600 m = 2600 m, total = 6000 m."
+            },
+            {
+              "question": "Un seau de 10 L. On en verse 2 L 500 mL. Reste en mL ?",
+              "answer": "7500 mL",
+              "hint": "Convertis tout en mL : 10 L = 10000 mL, 2 L 500 mL = 2500 mL.",
+              "explanation": "10000 - 2500 = 7500 mL."
+            },
+            {
+              "question": "Une corde de 12 m. On coupe des morceaux de 80 cm. Combien de morceaux ?",
+              "answer": "15 morceaux",
+              "hint": "Convertis 12 m en cm : 1200 cm. Divise par 80.",
+              "explanation": "1200 ÷ 80 = 15."
+            },
+            {
+              "question": "Un camion transporte 3 tonnes de sable (1 t = 1000 kg). On charge 500 kg de plus. Masse totale en kg ?",
+              "answer": "3500 kg",
+              "hint": "Convertis les tonnes en kg : 3 t = 3000 kg. Ajoute 500 kg.",
+              "explanation": "3000 + 500 = 3500 kg."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

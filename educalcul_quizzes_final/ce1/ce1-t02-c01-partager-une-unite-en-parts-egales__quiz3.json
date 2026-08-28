@@ -1,0 +1,123 @@
+{
+  "_status": "done",
+  "_course_id": 79,
+  "_course_code": "ce1-t02-c01-partager-une-unite-en-parts-egales",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Distinguer part égale et part inégale",
+  "title": "Quiz : Parts égales ou inégales",
+  "questions": [
+    {
+      "text": "Observe ce disque. Est-il divisé en parts égales ?",
+      "options": [
+        "Oui, les deux parts sont égales",
+        "Non, les deux parts sont inégales",
+        "Il y a trois parts égales",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Oui, les deux parts sont égales",
+      "explanation": "Le disque est coupé en deux moitiés identiques par un diamètre. Les deux parts ont exactement la même surface et la même forme, ce sont donc des parts égales.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Disque divisé en 2 parts égales"
+      }
+    },
+    {
+      "text": "Ce rectangle est divisé en trois parties. Comment sont ces parties ?",
+      "options": [
+        "Trois parts égales",
+        "Trois parts inégales",
+        "Deux parts égales et une petite",
+        "Quatre parts inégales"
+      ],
+      "correctAnswer": "Trois parts inégales",
+      "explanation": "Le rectangle est découpé en trois bandes de largeurs différentes : une grande, une moyenne et une petite. Comme les surfaces ne sont pas les mêmes, ce sont des parts inégales.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "A",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 2,
+            "tone": "red"
+          },
+          {
+            "label": "C",
+            "value": 1,
+            "tone": "green"
+          }
+        ],
+        "caption": "Rectangle divisé en 3 parts inégales"
+      }
+    },
+    {
+      "text": "Que veut dire « partager en parts égales » ?",
+      "options": [
+        "Faire des parts de tailles différentes",
+        "Faire des parts de la même taille",
+        "Faire le plus de parts possible",
+        "Ne faire qu'une seule part"
+      ],
+      "correctAnswer": "Faire des parts de la même taille",
+      "explanation": "Partager en parts égales signifie diviser un tout en plusieurs portions qui ont toutes la même grandeur (même surface, même volume ou même nombre d'objets). C'est la définition même de l'équité dans le partage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $6$ bonbons. Elle les partage entre $2$ amis comme le montre le diagramme. Ce partage est-il équitable ?",
+      "options": [
+        "Oui, chaque ami a $3$ bonbons",
+        "Non, un ami en a $4$ et l'autre $2$",
+        "Non, un ami en a $5$ et l'autre $1$",
+        "Oui, chaque ami a $2$ bonbons"
+      ],
+      "correctAnswer": "Oui, chaque ami a $3$ bonbons",
+      "explanation": "Le diagramme montre deux groupes contenant chacun $3$ bonbons. Comme les deux amis reçoivent le même nombre de bonbons ($3$ chacun), le partage est équitable, ce sont des parts égales.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Ami 1",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Ami 2",
+            "value": 3,
+            "tone": "green"
+          }
+        ],
+        "caption": "Partage de 6 bonbons entre 2 amis"
+      }
+    },
+    {
+      "text": "Ce carré est divisé en $4$ parties. Les parties sont-elles égales ?",
+      "options": [
+        "Oui, les $4$ parts ont la même surface",
+        "Non, les parts ont des formes différentes",
+        "Non, les parts ont des surfaces différentes",
+        "Oui, mais seulement $2$ parts sont égales"
+      ],
+      "correctAnswer": "Oui, les $4$ parts ont la même surface",
+      "explanation": "La grille montre un carré découpé en $4$ petits carrés identiques par une ligne horizontale et une ligne verticale au milieu. Chaque petit carré a la même surface, donc les $4$ parts sont égales.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 2,
+        "highlighted": 4,
+        "caption": "Carré divisé en 4 petits carrés égaux"
+      }
+    }
+  ]
+}

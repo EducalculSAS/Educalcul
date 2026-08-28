@@ -1,0 +1,154 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.064096+00:00",
+  "id": 514,
+  "code": "2nde-t03-c05",
+  "title": "Bilan - Vecteurs Seconde",
+  "description": "Cours structuré Educalcul : Bilan - Vecteurs Seconde.",
+  "subject": "Vecteurs et géométrie",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Vecteurs et géométrie",
+    "titre_du_cours": "Bilan - Vecteurs Seconde",
+    "objectif_global": "Bilan - Vecteurs Seconde",
+    "mini_lecons_imposees": [
+      "Opérations et applications.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Vecteurs et géométrie",
+      "lessons": [
+        {
+          "title": "Opérations et applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu pilotes un drone dans ton jardin pour prendre une photo d'un arbre. Pour atteindre sa cible, le drone ne se contente pas de bouger au hasard, il suit un trajet précis. Il se déplace d'abord de $5\\text{ m}$ vers l'est, puis de $3\\text{ m}$ vers le nord. Ce trajet est en réalité une succession de déplacements que l'on peut modéliser mathématiquement par des vecteurs. En physique comme en mathématiques, un vecteur ne représente pas un point fixe, mais un mouvement, une translation. Que ce soit pour calculer la trajectoire d'un satellite ou simplement pour déplacer un curseur sur ton écran d'ordinateur, les vecteurs sont les outils indispensables pour décrire comment on passe d'un point $A$ à un point $B$. C'est cette notion de glissement, où l'on conserve la direction et la longueur, qui rend les vecteurs si puissants. Dans ce cours de bilan, nous allons redécouvrir comment manipuler ces flèches mathématiques pour résoudre des problèmes de géométrie avec une précision absolue, en transformant des dessins complexes en calculs simples et élégants."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un vecteur $\\vec{u}$ est défini par trois caractéristiques fondamentales : sa direction (la droite qui le porte), son sens (vers où il pointe) et sa norme (sa longueur, notée $||\\vec{u}||$). En géométrie analytique, si on a deux points $A(x_A, y_A)$ et $B(x_B, y_B)$, le vecteur $\\vec{AB}$ représente le déplacement de $A$ vers $B$. Ses coordonnées sont calculées par la différence des coordonnées des extrémités : $\\vec{AB}(x_B - x_A, y_B - y_A)$. Un point crucial est la relation de Chasles, qui est la base de tout calcul vectoriel. Elle stipule que pour tous points $A$, $B$ et $C$, on a $\\vec{AB} + \\vec{BC} = \\vec{AC}$. Cela signifie que faire le trajet de $A$ vers $B$ puis de $B$ vers $C$ revient exactement au même que de faire le trajet direct de $A$ vers $C$. On parle également de vecteurs colinéaires lorsque deux vecteurs $\\vec{u}$ et $\\vec{v}$ ont la même direction. Mathématiquement, cela signifie qu'il existe un nombre réel $k$ tel que $\\vec{v} = k \\vec{u}$. Cette propriété est essentielle pour prouver que des points sont alignés ou que des droites sont parallèles."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": 1,
+              "vx": 2,
+              "vy": 2,
+              "caption": "Somme de deux vecteurs $\\vec{u}$ et $\\vec{v}$ pour obtenir le vecteur résultant $\\vec{u}+\\vec{v}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour manipuler les vecteurs avec succès, suis rigoureusement ces étapes selon la situation. Si tu dois calculer les coordonnées d'un vecteur $\\vec{AB}$ à partir de deux points, commence par identifier clairement les coordonnées du point d'arrivée $B$ et du point de départ $A$. Soustrais ensuite l'abscisse de $A$ de celle de $B$, puis l'ordonnée de $A$ de celle de $B$. Fais très attention aux signes, surtout si les coordonnées sont négatives. Si tu dois simplifier une expression vectorielle, cherche des paires de vecteurs qui s'enchaînent, comme $\\vec{XY}$ et $\\vec{YZ}$. Applique la relation de Chasles pour les fusionner en un seul vecteur $\\vec{XZ}$. Si l'expression est longue, procède étape par étape en isolant chaque groupe. Pour vérifier la colinéarité de deux vecteurs $\\vec{u}(x, y)$ et $\\vec{v}(x', y')$, utilise la règle du déterminant : calcule $x y' - x' y$. Si le résultat est égal à $0$, alors les vecteurs sont colinéaires. Cette méthode est beaucoup plus rapide que de chercher le coefficient $k$ à tâtons, surtout quand les nombres sont complexes ou fractionnaires."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons deux points $A(-2, 3)$ et $B(4, -1)$ dans un repère orthonormé. Nous voulons déterminer les coordonnées du vecteur $\\vec{AB}$. Nous appliquons la formule des coordonnées : l'abscisse est $x_B - x_A$ et l'ordonnée est $y_B - y_A$. Pour l'abscisse, nous avons $4 - (-2)$, ce qui devient $4 + 2 = 6$. Pour l'ordonnée, nous avons $-1 - 3$, ce qui donne $-4$. Le vecteur $\\vec{AB}$ a donc pour coordonnées $(6, -4)$. Pour interpréter ce résultat concrètement, cela signifie que pour aller de $A$ vers $B$, on se déplace de $6$ unités vers la droite et de $4$ unités vers le bas. C'est un calcul simple, mais c'est la base de toute la géométrie vectorielle. Si on nous demandait la norme de ce vecteur, on utiliserait le théorème de Pythagore : $||\\vec{AB}|| = \\sqrt{6^2 + (-4)^2} = \\sqrt{36 + 16} = \\sqrt{52}$, ce qui peut se simplifier en $2\\sqrt{13} \\text{ unités}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "On nous demande de simplifier l'expression suivante : $\\vec{v} = \\vec{AM} + \\vec{MB} + \\vec{BC} + \\vec{CA}$. Ici, nous allons utiliser la relation de Chasles de manière successive pour réduire l'expression. Étape $1$ : On regarde les deux premiers termes, $\\vec{AM} + \\vec{MB}$. Selon la relation de Chasles, cela nous donne $\\vec{AB}$. Notre expression devient donc $\\vec{v} = \\vec{AB} + \\vec{BC} + \\vec{CA}$. Étape $2$ : On s'occupe maintenant des termes $\\vec{AB} + \\vec{BC}$. À nouveau, la relation de Chasles nous permet de simplifier cela en $\\vec{AC}$. L'expression est maintenant $\\vec{v} = \\vec{AC} + \\vec{CA}$. Étape $3$ : On remarque que $\\vec{CA}$ est l'opposé du vecteur $\\vec{AC}$, c'est-à-dire $\\vec{CA} = -\\vec{AC}$. On a donc $\\vec{v} = \\vec{AC} - \\vec{AC}$, ce qui est égal au vecteur nul $\\vec{0}$. Le résultat final est donc $\\vec{v} = \\vec{0}$. Cela signifie que le parcours total forme une boucle fermée qui revient exactement au point de départ $A$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est l'inversion des points lors du calcul des coordonnées. Beaucoup d'élèves font $x_A - x_B$ au lieu de $x_B - x_A$. Souvenez vous toujours que c'est l'Arrivée moins le Départ. Un autre piège courant concerne la gestion des signes : soustraire un nombre négatif revient à additionner sa valeur absolue. Par exemple, $2 - (-5) = 7$. Ne vous précipitez pas et écrivez bien la soustraction avec les parenthèses. Concernant la relation de Chasles, attention à ne pas essayer de l'appliquer si les lettres ne se suivent pas. Par exemple, $\\vec{AB} + \\vec{CD}$ ne peut pas être simplifié directement car le point d'arrivée du premier vecteur ($B$) n'est pas le point de départ du second ($C$). Il faut d'abord réorganiser l'expression ou introduire des points intermédiaires si nécessaire. Enfin, ne confondez pas la norme d'un vecteur $||\\vec{u}||$, qui est une distance toujours positive, avec les coordonnées du vecteur qui peuvent être négatives."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient les points $M(1, 5)$ et $N(-3, 2)$. Quelles sont les coordonnées du vecteur $\\vec{MN}$ ?",
+              "answer": "(-4, -3)",
+              "hint": "Utilise la formule : $x_N - x_M$ et $y_N - y_M$.",
+              "explanation": "L'abscisse est $-3 - 1 = -4$ et l'ordonnée est $2 - 5 = -3$. On obtient donc $\\vec{MN}(-4, -3)$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu veuilles placer un point de rencontre exactement à mi-chemin entre la maison de deux amis, Alice et Bob. Si tu regardes une carte, tu ne cherches pas la distance qui les sépare, mais le point central qui équilibre les deux positions. En mathématiques, c'est exactement ce que nous faisons quand nous cherchons le milieu d'un segment. Cette notion de centre est fondamentale car elle nous permet de définir des symétries et de simplifier des calculs de forces en physique. Le milieu d'un segment est le point où les influences des deux extrémités s'annulent, créant un équilibre parfait. C'est une application directe de la combinaison linéaire de vecteurs. Lorsque nous disons qu'un point $I$ est le milieu de $[AB]$, nous créons un lien géométrique fort : le vecteur $\\vec{AI}$ est égal au vecteur $\\vec{IB}$, et le vecteur $\\vec{AB}$ est exactement le double du vecteur $\\vec{AI}$. C'est ce pont entre la géométrie visuelle et le calcul algébrique qui rend l'étude des milieux si fascinante et utile pour la suite de tes études en seconde et première."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le milieu d'un segment $[AB]$ est le point $I$ tel que $\\vec{AI} = \\vec{IB}$. En termes de coordonnées, le point $I$ est la moyenne arithmétique des coordonnées de $A$ et $B$. Si $A(x_A, y_A)$ et $B(x_B, y_B)$, alors $I$ a pour coordonnées $(\\frac{x_A + x_B}{2}, \\frac{y_A + y_B}{2})$. C'est une formule simple mais puissante. Par ailleurs, nous rencontrons souvent la notion de combinaison linéaire. Une combinaison linéaire de deux vecteurs $\\vec{u}$ et $\\vec{v}$ est une expression de la forme $a\\vec{u} + b\\vec{v}$, où $a$ et $b$ sont des nombres réels. Par exemple, si on a un point $I$ milieu de $[AB]$, on peut prouver que pour tout point $M$ du plan, $\\vec{MA} + \\vec{MB} = 2\\vec{MI}$. Cette égalité est fondamentale car elle permet de simplifier des sommes de vecteurs en les ramenant à un seul vecteur partant du milieu. On utilise aussi beaucoup la notion de vecteur nul $\\vec{0}$, qui est le seul vecteur ayant une norme égale à $0$ et dont le point de départ et d'arrivée sont confondus."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation du point milieu $I$ entre $A$ et $B$ sur un axe",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 4,
+                  "label": "B"
+                },
+                {
+                  "value": 1,
+                  "label": "I"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver les coordonnées du milieu $I$ d'un segment $[AB]$, suis ces étapes. Première étape : Additionne les abscisses $x_A$ et $x_B$. Divise ensuite ce résultat par $2$. Ce nombre est l'abscisse $x_I$. Deuxième étape : Additionne les ordonnées $y_A$ et $y_B$, puis divise également par $2$. Tu obtiens l'ordonnée $y_I$. Si tu dois prouver qu'un point $I$ est le milieu de $[AB]$ à l'aide de vecteurs, tu as deux options. Soit tu calcules les coordonnées de $\\vec{AI}$ et de $\\vec{IB}$ et tu vérifies qu'elles sont identiques. Soit tu calcules les coordonnées de $\\vec{AB}$ et tu vérifies que $\\vec{AI}$ est égal à $\\frac{1}{2}\\vec{AB}$. Pour manipuler des combinaisons linéaires comme $2\\vec{u} + 3\\vec{v}$ avec des coordonnées, multiplie chaque coordonnée de $\\vec{u}$ par $2$, chaque coordonnée de $\\vec{v}$ par $3$, puis additionne les résultats entre eux. C'est une opération linéaire : on traite les $x$ ensemble et les $y$ ensemble, sans jamais les mélanger."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un segment $[AB]$ avec $A(2, -4)$ et $B(6, 8)$. Nous cherchons les coordonnées du point $I$, milieu de ce segment. Pour l'abscisse, nous faisons la moyenne : $x_I = \\frac{2 + 6}{2} = \\frac{8}{2} = 4$. Pour l'ordonnée, nous faisons : $y_I = \\frac{-4 + 8}{2} = \\frac{4}{2} = 2$. Le point milieu $I$ a donc pour coordonnées $(4, 2)$. Vérifions rapidement avec les vecteurs pour être sûrs. Le vecteur $\\vec{AI}$ a pour coordonnées $(4 - 2, 2 - (-4)) = (2, 6)$. Le vecteur $\\vec{IB}$ a pour coordonnées $(6 - 4, 8 - 2) = (2, 6)$. Les deux vecteurs sont identiques, ce qui confirme que $I$ est bien le milieu du segment $[AB]$. On peut aussi voir que le vecteur $\\vec{AB}$ a pour coordonnées $(6 - 2, 8 - (-4)) = (4, 12)$, et on remarque bien que $\\vec{AI}$ est la moitié de $\\vec{AB}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "On considère un point $M(0, 0)$ et un segment $[AB]$ avec $A(-2, 1)$ et $B(4, 3)$. Le point $I$ est le milieu de $[AB]$. Nous voulons calculer la somme vectorielle $\\vec{MA} + \\vec{MB}$ en utilisant la propriété du milieu. D'abord, trouvons $I$. Ses coordonnées sont $x_I = \\frac{-2 + 4}{2} = 1$ et $y_I = \\frac{1 + 3}{2} = 2$. Le point $I$ est donc $(1, 2)$. Le vecteur $\\vec{MI}$ a pour coordonnées $(1 - 0, 2 - 0) = (1, 2)$. Selon la propriété, $\\vec{MA} + \\vec{MB} = 2\\vec{MI}$. Calculons $2\\vec{MI}$ : on multiplie les coordonnées de $\\vec{MI}$ par $2$, ce qui donne $(2 \\times 1, 2 \\times 2) = (2, 4)$. Vérifions par le calcul direct : $\\vec{MA}$ a pour coordonnées $(-2, 1)$ et $\\vec{MB}$ a pour coordonnées $(4, 3)$. Leur somme est $(-2 + 4, 1 + 3) = (2, 4)$. Le résultat est identique, ce qui valide la propriété du milieu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est la confusion totale entre la formule du milieu et celle du vecteur. Pour le vecteur $\\vec{AB}$, on soustrait ($B - A$). Pour le milieu $I$, on additionne et on divise par deux ($\\frac{A+B}{2}$). C'est une erreur fréquente car les deux formules utilisent les mêmes points. Une autre erreur arrive lors du calcul de la moyenne avec des nombres négatifs : par exemple, pour $\\frac{-6 + 2}{2}$, certains élèves écrivent $\\frac{-8}{2}$ au lieu de $\\frac{-4}{2}$ car ils oublient la règle des signes. Faites attention également à la notation : $2\\vec{MI}$ n'est pas la même chose que $\\vec{2MI}$. Le coefficient multiplicateur se place toujours devant le symbole du vecteur. Enfin, rappelez vous que si $\\vec{u}$ et $\\vec{v}$ sont colinéaires, ils n'ont pas forcément la même norme ni le même sens, ils partagent seulement la même direction (ils sont sur des droites parallèles)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $P(-5, 2)$ et $Q(3, 10)$. Quelles sont les coordonnées du point $K$ milieu de $[PQ]$ ?",
+              "answer": "(-1, 6)",
+              "hint": "Additionne les abscisses puis divise par $2$, fais de même pour les ordonnées.",
+              "explanation": "$x_K = \\frac{-5 + 3}{2} = \\frac{-2}{2} = -1$ et $y_K = \\frac{2 + 10}{2} = \\frac{12}{2} = 6$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

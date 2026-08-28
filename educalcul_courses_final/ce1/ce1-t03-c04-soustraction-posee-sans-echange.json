@@ -1,0 +1,316 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.762351+00:00",
+  "id": 91,
+  "code": "ce1-t03-c04",
+  "title": "Soustraction posée sans échange",
+  "description": "Cours structuré Educalcul : Soustraction posée sans échange.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Soustraction posée sans échange",
+    "objectif_global": "Soustraction posée sans échange",
+    "mini_lecons_imposees": [
+      "Aligner les chiffres.",
+      "Soustraire colonne par colonne.",
+      "Contrôler avec addition simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Aligner les chiffres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Aligner les chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $45$ billes et que tu en donnes $23$ à ton ami. Pour savoir combien il t'en reste, on écrit une soustraction. Mais attention : il faut que les unités soient bien sous les unités, et les dizaines sous les dizaines. Sinon, on risque de mélanger les paquets de dix et les billes toutes seules."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 5,
+              "caption": "$45$ : $4$ dizaines et $5$ unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : $2$ dizaines et $3$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les deux représentations : les bâtons de dizaines sont bien rangés ensemble, et les petits cubes d'unités aussi. Quand on écrit l'opération en colonnes, on fait exactement la même chose : on place le $5$ au-dessus du $3$ (les unités), et le $4$ au-dessus du $2$ (les dizaines)."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "45",
+                "23"
+              ],
+              "result": "",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec d'autres nombres. Si je te dis $67 - 34$, tu dois écrire le $7$ au-dessus du $4$ et le $6$ au-dessus du $3$. C'est comme ranger tes jouets : les petites voitures avec les petites voitures, les gros camions avec les gros camions. Prends ton temps pour bien placer chaque chiffre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le nombre du haut",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le plus grand nombre (le nombre de départ) en haut."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aligner les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le chiffre des unités du deuxième nombre juste sous le chiffre des unités du premier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Aligner les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais de même pour les dizaines : le chiffre des dizaines du bas sous celui du haut."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant aligner les chiffres correctement. Dans la prochaine leçon, nous allons voir comment soustraire chaque colonne pour trouver le résultat."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la soustraction $58 - 24$ en colonnes en alignant bien les chiffres.",
+              "answer": "  58\\n- 24",
+              "hint": "Place le $8$ au-dessus du $4$ et le $5$ au-dessus du $2$.",
+              "explanation": "Les unités ($8$ et $4$) sont alignées, les dizaines ($5$ et $2$) sont alignées. C'est prêt pour la suite !"
+            },
+            {
+              "question": "Parmi ces trois écritures, laquelle est bien alignée pour $76 - 52$ ?\\nA) $76 - 52$\\nB) $76 - 25$\\nC) $76 - 52$ (avec le $2$ sous le $7$)",
+              "answer": "A",
+              "hint": "Vérifie que les unités sont l'une au-dessus de l'autre et les dizaines aussi.",
+              "explanation": "Dans A, le $6$ est au-dessus du $2$ (unités) et le $7$ au-dessus du $5$ (dizaines). C'est la bonne alignment."
+            }
+          ]
+        },
+        {
+          "title": "Soustraire colonne par colonne.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraire colonne par colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nos chiffres sont bien rangés, on peut calculer. On commence toujours par la colonne des unités, celle de droite. C'est comme si tu enlevais d'abord les billes toutes seules, puis les paquets de dix. Regardons $45 - 23$ : on fait $5 - 3 = 2$ pour les unités, puis $4 - 2 = 2$ pour les dizaines. Le résultat est $22$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "45",
+                "23"
+              ],
+              "result": "22",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un exemple un peu plus grand : $68 - 35$. On soustrait les unités : $8 - 5 = 3$. Ensuite les dizaines : $6 - 3 = 3$. On obtient $33$. Note que l'on ne fait jamais $5 - 8$ ni $3 - 6$ : le chiffre du haut est toujours plus grand ou égal, car il n'y a pas d'échange dans ce cours."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "68",
+                "35"
+              ],
+              "result": "33",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a un zéro dans le nombre du haut, comme dans $50 - 20$. Pas de panique ! $0 - 0 = 0$ pour les unités, et $5 - 2 = 3$ pour les dizaines. Le résultat est $30$. Le zéro reste à sa place, il ne bouge pas."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "50",
+                "20"
+              ],
+              "result": "30",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant la méthode pour soustraire sans échange : unités d'abord, puis dizaines. La leçon suivante te montrera comment vérifier ton résultat avec une addition."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $39 - 17$ en posant l'opération.",
+              "answer": "22",
+              "hint": "Soustrait les unités : $9 - 7$, puis les dizaines : $3 - 1$.",
+              "explanation": "$9 - 7 = 2$ (unités), $3 - 1 = 2$ (dizaines). Résultat : $22$."
+            },
+            {
+              "question": "Complète la soustraction posée :\\n  $74$\\n- $3$\\n----\\n  $?$",
+              "answer": "71",
+              "hint": "Aligne le $3$ sous le $4$ (unités). Il n'y a pas de dizaine à soustraire.",
+              "explanation": "On écrit $03$ sous $74$. $4 - 3 = 1$ (unités), $7 - 0 = 7$ (dizaines). Résultat : $71$."
+            },
+            {
+              "question": "Vrai ou faux ? $80 - 40 = 40$.",
+              "answer": "Vrai",
+              "hint": "Soustrait les dizaines : $8 - 4$. Les unités sont $0 - 0$.",
+              "explanation": "$0 - 0 = 0$ pour les unités, $8 - 4 = 4$ pour les dizaines. Donc $40$."
+            }
+          ]
+        },
+        {
+          "title": "Contrôler avec addition simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contrôler avec addition simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as fini une soustraction, tu peux vérifier si le résultat est juste. Le secret : on additionne le résultat trouvé au nombre qu'on a soustrait. Si on retrouve le nombre de départ, c'est gagné ! C'est comme défaire un nœud pour voir si le lacet était bien attaché."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $45 - 23 = 22$. Pour contrôler, on fait $22 + 23$. $2 + 3 = 5$ (unités), $2 + 2 = 4$ (dizaines). On retrouve $45$, le nombre du départ. Le contrôle est bon."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "22",
+                "23"
+              ],
+              "result": "45",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : le contrôle se fait toujours avec une addition posée, bien alignée. Si tu as calculé $68 - 35 = 33$, tu vérifies en posant $33 + 35$. $3 + 5 = 8$ (unités), $3 + 3 = 6$ (dizaines). On retombe sur $68$. C'est une sécurité pour ne pas laisser d'erreur."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "33",
+                "35"
+              ],
+              "result": "68",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le contrôle ne retombe pas sur le nombre de départ ? Par exemple, tu as trouvé $45 - 23 = 21$ par erreur. Tu contrôles : $21 + 23 = 44$, pas $45$. Tu sais alors qu'il y a une erreur et tu peux recommencer calmement. C'est la force du contrôle : il te guide vers le bon chemin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais aligner les chiffres (unités sous unités, dizaines sous dizaines).",
+                "Je sais soustraire colonne par colonne en commençant par les unités.",
+                "Je sais vérifier mon résultat en faisant une addition du résultat et du nombre soustrait."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si $56 - 24 = 32$ est correct en utilisant l'addition.",
+              "answer": "Correct",
+              "hint": "Additionne $32 + 24$ et regarde si tu retrouves $56$.",
+              "explanation": "$32 + 24 = 56$ ($2+4=6$, $3+2=5$). Le résultat $32$ est bon."
+            },
+            {
+              "question": "Tu as calculé $72 - 41 = 31$. Fais le contrôle et dis si c'est juste ou faux.",
+              "answer": "Juste",
+              "hint": "Pose $31 + 41$ et compare avec $72$.",
+              "explanation": "$31 + 41 = 72$ ($1+1=2$, $3+4=7$). Le calcul est exact."
+            },
+            {
+              "question": "Le contrôle de $63 - 22 = 40$ donne $40 + 22 = 62$. Que dois-tu conclure ?",
+              "answer": "Il y a une erreur dans la soustraction.",
+              "hint": "Le contrôle ne retrouve pas le nombre de départ ($63$).",
+              "explanation": "$40 + 22 = 62$, pas $63$. Donc $40$ n'est pas le bon résultat. Le bon résultat est $41$ car $41 + 22 = 63$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

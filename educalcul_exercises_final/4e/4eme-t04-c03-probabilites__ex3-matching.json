@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calculs",
+  "title": "Exercices de probabilités - Calculs",
+  "blocks": [
+    {
+      "title": "Question 1 : Probabilités simples",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Probabilité d'obtenir un $6$ en lançant un dé à six faces équilibré",
+          "right": "$\\frac{1}{6}$"
+        },
+        {
+          "left": "Probabilité de tirer une carte rouge dans un jeu de $52$ cartes",
+          "right": "$\\frac{26}{52} = \\frac{1}{2}$"
+        },
+        {
+          "left": "Probabilité d'obtenir un nombre pair en lançant un dé à six faces",
+          "right": "$\\frac{3}{6} = \\frac{1}{2}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour un dé équilibré à six faces, chaque face a la même chance : $1/6$.\\nDans un jeu de 52 cartes, il y a 26 cartes rouges (cœurs et carreaux) donc la probabilité est $26/52 = 1/2$.\\nLes nombres pairs sur un dé sont 2, 4, 6 soit 3 issues favorables sur 6 : $3/6 = 1/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Événements contraires",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Probabilité de ne pas obtenir un $4$ en lançant un dé à six faces",
+          "right": "$\\frac{5}{6}$"
+        },
+        {
+          "left": "Probabilité de ne pas tirer un as dans un jeu de $52$ cartes",
+          "right": "$\\frac{48}{52} = \\frac{12}{13}$"
+        },
+        {
+          "left": "Probabilité de ne pas obtenir un nombre multiple de $3$ en lançant un dé à six faces",
+          "right": "$\\frac{4}{6} = \\frac{2}{3}$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'événement contraire à \"obtenir un 4\" est \"ne pas obtenir un 4\" : $1 - 1/6 = 5/6$.\\nIl y a 4 as dans un jeu de 52 cartes, donc 48 cartes ne sont pas des as : $48/52 = 12/13$.\\nLes multiples de 3 sur un dé sont 3 et 6 (2 issues), donc les non-multiples sont 4 issues : $4/6 = 2/3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Probabilités composées (deux dés)",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Probabilité d'obtenir deux $6$ en lançant deux dés à six faces",
+          "right": "$\\frac{1}{36}$"
+        },
+        {
+          "left": "Probabilité d'obtenir au moins un $6$ en lançant deux dés",
+          "right": "$\\frac{11}{36}$"
+        },
+        {
+          "left": "Probabilité d'obtenir une somme de $7$ en lançant deux dés",
+          "right": "$\\frac{6}{36} = \\frac{1}{6}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Avec deux dés, il y a $6 \\times 6 = 36$ résultats équiprobables.\\nUn seul donne deux 6 : $(6,6)$ donc $1/36$.\\nPour \"au moins un 6\", on compte les couples contenant au moins un 6 : 11 couples, donc $11/36$.\\nLes couples donnant une somme de 7 sont : $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$ soit 6 couples, donc $6/36 = 1/6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

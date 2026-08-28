@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Construire un diagramme en bâtons",
+  "title": "Quiz : Construire un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Quelle est la première étape pour construire un diagramme en bâtons à partir d'un tableau de données ?",
+      "options": [
+        "Choisir les couleurs des bâtons",
+        "Compter les données pour chaque catégorie",
+        "Dessiner les axes",
+        "Écrire le titre"
+      ],
+      "correctAnswer": "Compter les données pour chaque catégorie",
+      "explanation": "Avant de tracer le diagramme, il faut connaître les effectifs de chaque catégorie en comptant les données du tableau. Les autres étapes viennent après.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un diagramme en bâtons, que représente la hauteur de chaque bâton ?",
+      "options": [
+        "Le nombre de catégories",
+        "La valeur ou la quantité de la catégorie",
+        "La largeur du bâton",
+        "Le titre du diagramme"
+      ],
+      "correctAnswer": "La valeur ou la quantité de la catégorie",
+      "explanation": "La hauteur (ou la longueur) du bâton est proportionnelle à la valeur numérique associée à la catégorie. Ce n'est pas le nombre de catégories ni la largeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le tableau indique : Pommes : $5$, Poires : $3$, Bananes : $7$, quelle hauteur aura le bâton des bananes si chaque unité correspond à $1$ cm ?",
+      "options": [
+        "$3$ cm",
+        "$5$ cm",
+        "$7$ cm",
+        "$10$ cm"
+      ],
+      "correctAnswer": "$7$ cm",
+      "explanation": "Le tableau donne $7$ bananes. Comme une unité vaut $1$ cm, la hauteur du bâton des bananes est $7 \\times 1 = 7$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour que le diagramme soit facile à lire, quel élément doit être ajouté sur l'axe vertical ?",
+      "options": [
+        "Des images de fruits",
+        "Une échelle avec des nombres",
+        "Une légende en bas",
+        "Des traits de couleur"
+      ],
+      "correctAnswer": "Une échelle avec des nombres",
+      "explanation": "L'échelle graduée (les nombres) sur l'axe vertical permet de lire directement les valeurs représentées par la hauteur des bâtons.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous. Combien d'élèves ont choisi le football comme sport préféré ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$8$",
+        "$10$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Le bâton « Football » monte jusqu'à la valeur $6$ sur l'échelle verticale, donc $6$ élèves ont choisi le football.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons des sports préférés",
+        "bars": [
+          {
+            "label": "Football",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Basketball",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Tennis",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Natation",
+            "value": 5,
+            "tone": "navy"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 130,
+  "_course_code": "ce1-t07-c05-segments-et-milieu",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Mesurer un segment",
+  "title": "Mesurer un segment - Approfondissement CE1",
+  "questions": [
+    {
+      "text": "Regarde la figure. Quelle est la longueur du segment représenté sur la règle ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$7$ cm",
+      "explanation": "Le segment commence au repère $0$ et se termine exactement au repère $7$. La longueur est donc de $7$ centimètres. Les autres réponses correspondent à une lecture décalée d'un cran sur la règle.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 7,
+        "unit": "cm",
+        "caption": "Règle graduée montrant un segment de 0 à 7 cm"
+      }
+    },
+    {
+      "text": "Sur une règle, un segment commence au repère $3$ et finit au repère $9$. Quelle est sa longueur ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$9$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Quand le segment ne commence pas à zéro, on calcule la différence entre le repère d'arrivée et le repère de départ : $9 - 3 = 6$. La longueur est de $6$ cm. Répondre $9$ cm est l'erreur de lire seulement le repère final, $3$ cm celui de lire le repère initial, $12$ cm celui d'additionner les deux.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Règle graduée de 0 à 10 avec points A à 3 et B à 9",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 3,
+            "label": "A"
+          },
+          {
+            "value": 9,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Le segment [AB] mesure $4$ cm. Le segment [BC] mesure $5$ cm. Les points A, B et C sont alignés dans cet ordre. Quelle est la longueur du segment [AC] ?",
+      "options": [
+        "$1$ cm",
+        "$8$ cm",
+        "$9$ cm",
+        "$20$ cm"
+      ],
+      "correctAnswer": "$9$ cm",
+      "explanation": "Puisque les points sont alignés dans l'ordre A, B, C, le segment [AC] est la somme des segments [AB] et [BC]. On calcule $4 + 5 = 9$. La longueur de [AC] est $9$ cm. $1$ cm correspondrait à la différence, $8$ cm à une addition erronée ($4+4$), $20$ cm à une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'instrument le plus adapté pour mesurer la longueur d'un segment en centimètres ?",
+      "options": [
+        "Le compas",
+        "La règle graduée",
+        "L'équerre",
+        "Le rapporteur"
+      ],
+      "correctAnswer": "La règle graduée",
+      "explanation": "La règle graduée porte des repères (centimètres, millimètres) qui permettent de lire directement une longueur. Le compas sert à reporter une longueur ou tracer un cercle, l'équerre à tracer des lignes perpendiculaires ou vérifier un angle droit, le rapporteur à mesurer des angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un segment rouge mesure $12$ cm. On en coupe un morceau de $5$ cm. Quelle est la longueur du morceau qui reste ?",
+      "options": [
+        "$5$ cm",
+        "$6$ cm",
+        "$7$ cm",
+        "$17$ cm"
+      ],
+      "correctAnswer": "$7$ cm",
+      "explanation": "Il s'agit d'une soustraction : la longueur totale moins la partie coupée. $12 - 5 = 7$. Le reste mesure $7$ cm. $5$ cm est la longueur du morceau coupé, $6$ cm une erreur de calcul ($12-6$), $17$ cm une addition au lieu d'une soustraction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

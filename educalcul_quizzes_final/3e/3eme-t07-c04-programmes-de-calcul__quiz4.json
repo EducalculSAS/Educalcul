@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Programmes de calcul",
+  "title": "Quiz : Applications des programmes de calcul",
+  "questions": [
+    {
+      "text": "On exécute le programme de calcul suivant :\\n1. Choisir un nombre.\\n2. Lui ajouter 4.\\n3. Multiplier le résultat par 5.\\n4. Soustraire 10.\\nSi on choisit le nombre 6 au départ, quel est le résultat final ?",
+      "options": [
+        "40",
+        "30",
+        "50",
+        "24"
+      ],
+      "correctAnswer": "40",
+      "explanation": "On applique les étapes dans l'ordre avec le nombre de départ 6 : 6 + 4 = 10 ; 10 × 5 = 50 ; 50 - 10 = 40. L'option 30 correspond à l'oubli de la dernière soustraction (50 - 10). L'option 50 correspond à l'oubli de la soustraction finale. L'option 24 correspond à une erreur d'ordre (6 × 5 = 30 puis 30 - 10 + 4 ?).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme de calcul :\\n1. Choisir un nombre $x$.\\n2. Le multiplier par 3.\\n3. Ajouter 12.\\n4. Diviser le résultat par 2.\\nLe résultat final obtenu est 18. Quel était le nombre de départ $x$ ?",
+      "options": [
+        "8",
+        "4",
+        "12",
+        "6"
+      ],
+      "correctAnswer": "8",
+      "explanation": "On résout l'équation inverse : $(3x + 12) / 2 = 18$ ⇔ $3x + 12 = 36$ ⇔ $3x = 24$ ⇔ $x = 8$. Vérification : $(8 × 3 + 12) / 2 = 36 / 2 = 18$. L'option 4 vient de $36 / 2 = 18$ puis $18 / 3 = 6$ (oubli du +12). L'option 12 vient de $18 × 2 = 36$ puis $36 / 3 = 12$ (oubli du -12). L'option 6 correspond à $18 / 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel programme de calcul correspond à l'expression algébrique $4(2x + 7)$ ?",
+      "options": [
+        "Choisir un nombre $x$, le multiplier par 2, ajouter 7, puis multiplier le tout par 4.",
+        "Choisir un nombre $x$, le multiplier par 2, ajouter 7, puis multiplier seulement le 7 par 4.",
+        "Choisir un nombre $x$, ajouter 7, multiplier par 2, puis multiplier par 4.",
+        "Choisir un nombre $x$, le multiplier par 8, puis ajouter 7."
+      ],
+      "correctAnswer": "Choisir un nombre $x$, le multiplier par 2, ajouter 7, puis multiplier le tout par 4.",
+      "explanation": "L'expression $4(2x + 7)$ se lit : on calcule d'abord $2x$ (multiplier $x$ par 2), on ajoute 7 (parenthèses), puis on multiplie cette somme par 4 (facteur devant la parenthèse). La deuxième option donne $2x + 28$. La troisième donne $4(2(x+7)) = 8x + 56$. La quatrième donne $8x + 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le programme :\\n1. Choisir un entier $n$.\\n2. Calculer $(n + 3)^2 - n^2$.\\nLaquelle de ces affirmations est correcte ?",
+      "options": [
+        "Le résultat est toujours un multiple de 3 car l'expression se factorise en $3(2n + 3)$.",
+        "Le résultat n'est jamais un multiple de 3 car il vaut $6n + 9$.",
+        "Le résultat est un multiple de 3 seulement si $n$ est un multiple de 3.",
+        "Le résultat est toujours égal à 9 quel que soit l'entier $n$ choisi."
+      ],
+      "correctAnswer": "Le résultat est toujours un multiple de 3 car l'expression se factorise en $3(2n + 3)$.",
+      "explanation": "On développe : $(n+3)^2 - n^2 = n^2 + 6n + 9 - n^2 = 6n + 9$. En factorisant par 3, on obtient $3(2n + 3)$. Comme $2n+3$ est un entier, le résultat est bien un multiple de 3 pour tout entier $n$. La deuxième option est fausse car $6n+9 = 3(2n+3)$ est bien un multiple de 3. La troisième est fausse car la propriété est vraie pour tout $n$. La quatrième est fausse (ex: $n=1$ donne $16-1=15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 5\\ny ← 12\\nSi x < y Alors\\n    x ← x + y\\nSinon\\n    y ← y - x\\nFin Si\\nAfficher x, y\\nQuelles valeurs sont affichées à la fin ?",
+      "options": [
+        "x = 17 et y = 12",
+        "x = 5 et y = 7",
+        "x = 17 et y = 7",
+        "x = 5 et y = 12"
+      ],
+      "correctAnswer": "x = 17 et y = 12",
+      "explanation": "Au début, $x=5$ et $y=12$. La condition $x < y$ (5 < 12) est vraie. On exécute donc l'instruction 'Alors' : $x$ prend la valeur $x + y = 5 + 12 = 17$. La variable $y$ n'est pas modifiée et reste 12. L'instruction 'Sinon' est ignorée. L'affichage final donne $x=17$ et $y=12$. L'option B correspond au cas où la condition serait fausse. L'option C modifie les deux variables. L'option D correspond à l'absence d'exécution du bloc conditionnel.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,555 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.467094+00:00",
+  "id": 633,
+  "code": "terminale-generale-t04-c02",
+  "title": "Arbres simples",
+  "description": "Cours structuré Educalcul : Arbres simples.",
+  "subject": "Probabilités et modélisation",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Probabilités et modélisation",
+    "titre_du_cours": "Arbres simples",
+    "objectif_global": "Arbres simples",
+    "mini_lecons_imposees": [
+      "Construire.",
+      "Calculer.",
+      "Lire."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités et modélisation",
+      "lessons": [
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu te trouves devant une urne qui contient six boules rouges et quatre boules bleues. Tu vas tirer une première boule, noter sa couleur, la remettre dans l'urne, puis tirer une seconde boule. Cette situation, bien que simple, cache une structure riche que l'on peut représenter par un arbre de probabilités. Avant de te lancer dans le dessin, prends le temps de visualiser l'expérience : chaque tirage est une étape, chaque couleur possible est une branche qui part du nœud précédent. L'arbre va te permettre de voir d'un coup d'œil tous les chemins possibles, de la racine jusqu'aux feuilles, et d'associer à chaque branche la probabilité correspondante. C'est un outil puissant parce qu'il transforme une suite d'événements en une image claire, où le calcul devient une simple multiplication le long d'un chemin. Dans cette leçon, nous allons construire pas à pas ton premier arbre, en prenant soin de bien nommer les nœuds, de respecter l'ordre des étapes et de vérifier que la somme des probabilités arrivant aux feuilles vaut bien 1. Prends une feuille de papier, un crayon, et suis-moi dans cette construction."
+            },
+            {
+              "type": "definition",
+              "term": "arbre de probabilités",
+              "definition": "Un arbre de probabilités est un diagramme en forme d'arbre qui représente toutes les issues possibles d'une expérience aléatoire à plusieurs étapes. Chaque nœud correspond à un stade de l'expérience, chaque branche à une issue possible à ce stade, et chaque branche porte la probabilité de cette issue conditionnée aux choix précédents.",
+              "example": "Pour deux tirages avec remise dans une urne 6 rouges / 4 bleues, l'arbre a deux niveaux de branches."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bâtir ton arbre, commence par identifier les étapes successives de l'expérience. Ici, il y a deux tirages, donc deux niveaux de branches après la racine. Dessine un point de départ, appelle-le racine, et trace deux branches qui en partent : l'une pour « Rouge » avec une probabilité de $6/10$, l'autre pour « Bleu » avec une probabilité de $4/10$. Comme tu remets la boule après le premier tirage, les probabilités du second tirage restent identiques à celles du premier. Depuis chaque nœud de premier niveau, trace à nouveau deux branches : « Rouge » et « Bleu », avec les mêmes probabilités $6/10$ et $4/10$. Tu obtiens ainsi quatre feuilles, chacune correspondant à une issue complète : Rouge‑Rouge, Rouge‑Bleu, Bleu‑Rouge, Bleu‑Bleu. N'oublie pas d'étiqueter chaque branche avec sa probabilité, et d'indiquer sur chaque feuille la suite des couleurs obtenue. Cette méthode systématique garantit que tu n'oublies aucune issue possible et que la structure de l'arbre reflète fidèlement le déroulement chronologique de l'expérience."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner la racine et les branches du premier tirage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place un point au centre de ta feuille pour représenter la racine. De ce point, trace deux flèches orientées vers la droite : l'une étiquetée « Rouge » avec la probabilité $0,6$, l'autre « Bleu » avec $0,4$. Ces deux branches matérialisent les deux issues possibles du premier tirage."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les branches du second tirage depuis chaque nœud",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'extrémité de chaque branche du premier niveau, répète l'opération : dessine deux nouvelles flèches, une pour « Rouge » ($0,6$) et une pour « Bleu » ($0,4$). Comme le tirage est avec remise, les probabilités ne changent pas. Tu as maintenant quatre chemins complets de la racine aux feuilles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Étiqueter les feuilles et vérifier la somme des probabilités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur chaque feuille, écris la séquence des couleurs obtenue (par exemple « Rouge, Bleu »). Calcule la probabilité de chaque chemin en multipliant les probabilités des branches parcourues : $0,6 \\times 0,4 = 0,24$ pour le chemin Rouge‑Bleu. Additionne les quatre probabilités obtenues ; tu dois retrouver $1$. Si ce n'est pas le cas, relis tes branches."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux tirages avec remise : 6 rouges, 4 bleues",
+              "branches": [
+                {
+                  "label": "Rouge (0,6)",
+                  "probability": "0.6",
+                  "children": [
+                    {
+                      "label": "Rouge (0,6)",
+                      "probability": "0.6"
+                    },
+                    {
+                      "label": "Bleu (0,4)",
+                      "probability": "0.4"
+                    }
+                  ]
+                },
+                {
+                  "label": "Bleu (0,4)",
+                  "probability": "0.4",
+                  "children": [
+                    {
+                      "label": "Rouge (0,6)",
+                      "probability": "0.6"
+                    },
+                    {
+                      "label": "Bleu (0,4)",
+                      "probability": "0.4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ton arbre est dessiné, tu vas pouvoir y attacher des calculs concrets. Le prochain cycle te montrera comment utiliser la règle de multiplication pour obtenir la probabilité de chaque chemin, et comment vérifier que l'ensemble des feuilles forme bien une partition de l'espace des possibles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Attribuer les probabilités aux branches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque branche de l'arbre porte une probabilité conditionnelle : c'est la probabilité de l'issue correspondante sachant que l'on est parvenu au nœud parent. Dans notre exemple, la probabilité de tirer un rouge au premier tirage est $6/10 = 0,6$. Comme le tirage est avec remise, la probabilité de tirer un rouge au second tirage, sachant que le premier était rouge, reste $0,6$. De même, la probabilité de bleu au second tirage sachant un premier rouge est $0,4$. Cette invariance simplifie grandement l'écriture des nombres sur l'arbre. En général, si les tirages sont sans remise, les probabilités du second niveau dépendraient de ce qui a été retiré ; il faudrait alors recalculer les effectifs restants. Prends l'habitude de noter explicitement la condition sous chaque branche, par exemple $P(\\text{Rouge}_2 | \\text{Rouge}_1) = 0,6$, cela évite les confusions lorsque l'expérience devient plus complexe."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cap B) = P(A) \\times P(B|A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comment peupler ton arbre de nombres. Le dernier cycle de cette leçon consiste à vérifier la cohérence globale : la somme des probabilités de toutes les feuilles doit être égale à 1. C'est une vérification indispensable qui te permettra de repérer d'éventuelles erreurs de copie ou de calcul avant de passer aux exercices d'application."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier que la somme des probabilités des feuilles vaut 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour chaque feuille, multiplie les probabilités rencontrées le long du chemin qui y mène. Dans notre arbre, les quatre feuilles ont les probabilités suivantes : $P(\\text{Rouge},\\text{Rouge}) = 0,6 \\times 0,6 = 0,36$, $P(\\text{Rouge},\\text{Bleu}) = 0,6 \\times 0,4 = 0,24$, $P(\\text{Bleu},\\text{Rouge}) = 0,4 \\times 0,6 = 0,24$, $P(\\text{Bleu},\\text{Bleu}) = 0,4 \\times 0,4 = 0,16$. En additionnant : $0,36 + 0,24 + 0,24 + 0,16 = 1,00$. Cette égalité confirme que l'arbre est complet et que les probabilités sont correctement réparties. Si tu obtiens une somme différente de 1, revois chaque branche : une probabilité mal copiée, un oubli de branche, ou une erreur de multiplication sont les causes les plus fréquentes. Cette habitude de vérification te servira tout au long de l'année, notamment quand les arbres comporteront trois ou quatre niveaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations, tu as construit ton premier arbre de probabilités, tu y as attaché les bonnes valeurs et tu as vérifié sa cohérence. Tu es prêt à passer à la leçon suivante où nous apprendrons à exploiter cet arbre pour calculer des probabilités d'événements composés."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine l'arbre de probabilités pour l'expérience suivante : une urne contient 3 boules vertes et 7 boules jaunes. On tire une boule, on note sa couleur, on la remet, puis on tire une seconde boule. Indique les probabilités sur chaque branche.",
+              "answer": "Racine -> Vert (0,3) et Jaune (0,7). Depuis chaque nœud, deux branches Vert (0,3) et Jaune (0,7). Quatre feuilles : Vert‑Vert (0,09), Vert‑Jaune (0,21), Jaune‑Vert (0,21), Jaune‑Jaune (0,49).",
+              "hint": "Rappelle-toi que le remise conserve les mêmes probabilités à chaque tirage.",
+              "explanation": "Comme les tirages sont avec remise, les probabilités ne changent pas entre les deux étapes. Multiplie les probabilités le long de chaque chemin pour obtenir les probabilités des feuilles."
+            },
+            {
+              "question": "Calcule la probabilité d'obtenir exactement une boule verte au cours des deux tirages de l'exercice précédent.",
+              "answer": "Les chemins avec exactement une verte sont Vert‑Jaune et Jaune‑Vert. Leur probabilité respective est $0,3 \\times 0,7 = 0,21$ et $0,7 \\times 0,3 = 0,21$. La somme vaut $0,42$.",
+              "hint": "Identifie les feuilles qui correspondent à l'événement « exactement une verte » et additionne leurs probabilités.",
+              "explanation": "L'événement « exactement une verte » correspond à l'union disjointe de deux feuilles. Comme les feuilles sont disjointes, on additionne leurs probabilités."
+            },
+            {
+              "question": "Vérifie que la somme des probabilités des quatre feuilles de l'arbre de l'exercice 1 est bien égale à 1.",
+              "answer": "$0,09 + 0,21 + 0,21 + 0,49 = 1,00$.",
+              "hint": "Additionne les quatre produits obtenus dans l'exercice 1.",
+              "explanation": "La somme des probabilités de toutes les issues élémentaires d'une expérience aléatoire doit toujours valoir 1. C'est une propriété fondamentale de la probabilité."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer des probabilités à partir d'un arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire un arbre, nous allons apprendre à l'utiliser pour calculer la probabilité d'événements plus complexes. Reprenons l'urne à six boules rouges et quatre bleues, mais cette fois nous ne remettons pas la boule après le premier tirage. Le fait de ne pas remettre change les probabilités du second tirage : si tu as tiré un rouge, il ne reste plus que cinq rouges et quatre bleues, soit neuf boules au total. L'arbre va refléter cette dépendance en affichant des probabilités différentes sur les branches du second niveau. Nous verrons comment multiplier les probabilités le long d'un chemin pour obtenir la probabilité de l'issue complète, comment additionner les probabilités de plusieurs feuilles pour obtenir la probabilité d'un événement composé, et comment lire une probabilité conditionnelle directement sur l'arbre. Chaque étape sera illustrée par un exemple chiffré que tu pourras reproduire sur ton papier."
+            },
+            {
+              "type": "definition",
+              "term": "règle de multiplication",
+              "definition": "La règle de multiplication affirme que la probabilité de l'intersection de deux événements A et B s'obtient en multipliant la probabilité de A par la probabilité conditionnelle de B sachant A : $P(A \\cap B) = P(A) \\times P(B|A)$. Sur un arbre, cela correspond au produit des probabilités inscrites sur les branches successives d'un chemin.",
+              "example": "Pour tirer rouge puis bleu sans remise : $P(R_1 \\cap B_2) = 0,6 \\times 4/9 = 0,266\\dots$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construisons l'arbre pour l'expérience sans remise. Première étape : la racine donne deux branches, Rouge avec $6/10 = 0,6$ et Bleu avec $4/10 = 0,4$. Deuxième étape : depuis le nœud Rouge, il reste 5 rouges et 4 bleues, donc les branches sont Rouge ($5/9$) et Bleu ($4/9$). Depuis le nœud Bleu, il reste 6 rouges et 3 bleues, donc les branches sont Rouge ($6/9$) et Bleu ($3/9$). Écris ces fractions ou leurs approximations décimales sur chaque branche. Tu obtiens quatre feuilles : Rouge‑Rouge, Rouge‑Bleu, Bleu‑Rouge, Bleu‑Bleu. Pour chaque feuille, multiplie les deux probabilités du chemin. Par exemple, la feuille Rouge‑Bleu a une probabilité $0,6 \\times 4/9 = 0,266\\dots$. Fais de même pour les trois autres feuilles. Cette multiplication est l'application concrète de la règle de multiplication."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les probabilités du premier niveau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $P(R_1)=6/10=0,6$ et $P(B_1)=4/10=0,4$ sur les deux branches partant de la racine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer les probabilités conditionnelles du second niveau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le premier tirage est Rouge, l'urne contient 5R et 4B : $P(R_2|R_1)=5/9$, $P(B_2|R_1)=4/9$. Si le premier est Bleu, l'urne contient 6R et 3B : $P(R_2|B_1)=6/9$, $P(B_2|B_1)=3/9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier le long de chaque chemin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque feuille, multiplie la probabilité de la première branche par celle de la seconde branche. Note le résultat sur la feuille."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre sans remise : 6 rouges, 4 bleues",
+              "branches": [
+                {
+                  "label": "Rouge (0,6)",
+                  "probability": "0.6",
+                  "children": [
+                    {
+                      "label": "Rouge (5/9)",
+                      "probability": "5/9"
+                    },
+                    {
+                      "label": "Bleu (4/9)",
+                      "probability": "4/9"
+                    }
+                  ]
+                },
+                {
+                  "label": "Bleu (0,4)",
+                  "probability": "0.4",
+                  "children": [
+                    {
+                      "label": "Rouge (6/9)",
+                      "probability": "6/9"
+                    },
+                    {
+                      "label": "Bleu (3/9)",
+                      "probability": "3/9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les probabilités de chaque issue élémentaire. Le prochain cycle te montrera comment regrouper certaines feuilles pour obtenir la probabilité d'un événement comme « les deux boules sont de couleur différente » ou « la seconde boule est rouge »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Additionner les probabilités des feuilles pour un événement composé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un événement composé correspond souvent à l'union de plusieurs feuilles de l'arbre. Comme les feuilles représentent des issues disjointes deux à deux, la probabilité de l'union est simplement la somme des probabilités de ces feuilles. Par exemple, l'événement « les deux boules ont des couleurs différentes » correspond aux feuilles Rouge‑Bleu et Bleu‑Rouge. Leur probabilité respective est $0,6 \\times 4/9 = 0,266\\dots$ et $0,4 \\times 6/9 = 0,266\\dots$. En les additionnant, on obtient environ $0,533$. De même, l'événement « la seconde boule est rouge » regroupe les feuilles Rouge‑Rouge et Bleu‑Rouge. Calcule leurs probabilités et additionne-les. Cette technique d'addition des feuilles est la traduction visuelle de la formule des probabilités totales : $P(E) = \\sum_{i} P(E \\cap F_i)$ où les $F_i$ forment une partition."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(E) = \\sum_{i} P(E \\cap F_i)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment lire une probabilité conditionnelle directement sur l'arbre sans refaire tous les calculs. La probabilité conditionnelle $P(A|B)$ se trouve en divisant la probabilité de l'intersection $P(A \\cap B)$ (somme des feuilles où A et B se réalisent) par la probabilité de l'événement conditionnant $P(B)$ (somme des feuilles où B se réalise). Sur l'arbre, cela revient à ne considérer que les branches qui mènent aux feuilles compatibles avec B, et à renormaliser leurs probabilités. Cette lecture visuelle est très utile pour gagner du temps lors des examens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une probabilité conditionnelle sur l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu veuilles connaître la probabilité que le premier tirage soit rouge sachant que le second tirage est rouge. Identifie les feuilles où le second tirage est rouge : ce sont Rouge‑Rouge et Bleu‑Rouge. Leur probabilité totale est $P(R_2) = P(R_1 \\cap R_2) + P(B_1 \\cap R_2) = 0,6 \\times 5/9 + 0,4 \\times 6/9 = 0,333\\dots + 0,266\\dots = 0,6$. Parmi ces deux feuilles, celle où le premier tirage est aussi rouge est Rouge‑Rouge, avec une probabilité $0,333\\dots$. La probabilité conditionnelle cherchée est donc $0,333\\dots / 0,6 = 5/9 \\approx 0,555\\dots$. Remarque que ce résultat coïncide avec la probabilité conditionnelle $P(R_1|R_2) = 5/9$ que l'on pouvait lire directement sur la branche du second niveau partant du nœud Rouge du premier niveau. L'arbre permet ainsi de passer du calcul global à la lecture locale en un clin d'œil."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour exploiter un arbre de probabilités : construire, calculer les probabilités des feuilles, additionner pour obtenir des événements composés, et lire des conditionnelles. La prochaine leçon te proposera de mettre tout cela en pratique sur des situations variées, et se terminera par une liste de contrôle pour t'assurer que tu maîtrises chaque compétence."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour l'urne 6 rouges / 4 bleues sans remise, calcule la probabilité d'obtenir deux boules de la même couleur.",
+              "answer": "Les feuilles même couleur sont Rouge‑Rouge ($0,6 \\times 5/9 = 0,333\\dots$) et Bleu‑Bleu ($0,4 \\times 3/9 = 0,133\\dots$). Somme = $0,466\\dots$ soit $7/15$.",
+              "hint": "Additionne les probabilités des deux feuilles où les couleurs sont identiques.",
+              "explanation": "L'événement « même couleur » est l'union disjointe de deux feuilles. On additionne leurs probabilités obtenues par multiplication le long des chemins."
+            },
+            {
+              "question": "Dans le même arbre, quelle est la probabilité que la seconde boule soit bleue ?",
+              "answer": "Les feuilles avec seconde bleue sont Rouge‑Bleu ($0,6 \\times 4/9 = 0,266\\dots$) et Bleu‑Bleu ($0,4 \\times 3/9 = 0,133\\dots$). Somme = $0,4$ exactement.",
+              "hint": "Regroupe les feuilles dont la seconde branche est bleue et additionne.",
+              "explanation": "La probabilité de la seconde boule bleue ne dépend pas du premier tirage grâce à la symétrie de l'expérience ; on le retrouve en additionnant les feuilles concernées."
+            },
+            {
+              "question": "Détermine $P(\\text{Premier rouge} \\mid \\text{Second bleu})$ à partir de l'arbre sans remise.",
+              "answer": "Feuilles avec second bleu : Rouge‑Bleu ($0,266\\dots$) et Bleu‑Bleu ($0,133\\dots$). Probabilité totale second bleu = $0,4$. Parmi elles, celle avec premier rouge a probabilité $0,266\\dots$. Donc $P = 0,266\\dots / 0,4 = 2/3 \\approx 0,666\\dots$.",
+              "hint": "Utilise la définition $P(A|B) = P(A \\cap B) / P(B)$ en identifiant les feuilles correspondantes.",
+              "explanation": "On restreint l'espace aux issues où le second est bleu, puis on regarde la part où le premier est rouge."
+            }
+          ]
+        },
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et interpréter les résultats d'un arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette dernière leçon, nous allons consolider ta capacité à lire un arbre de probabilités pour répondre à des questions variées : probabilité d'un événement simple, probabilité conditionnelle, et même inversion de conditionnement grâce à la formule de Bayes. Nous reprendrons l'exemple de l'urne sans remise, mais nous ajouterons une troisième étape pour montrer comment l'arbre s'étend naturellement. Imagine que tu tires trois boules successives sans remise, en notant la couleur à chaque fois. L'arbre aura trois niveaux, huit feuilles, et les probabilités sur les branches du troisième niveau dépendront des deux tirages précédents. Ne t'inquiète pas, la méthode reste la même : multiplie le long du chemin, additionne les feuilles correspondant à l'événement, et pour une conditionnelle, divise l'intersection par la condition. Nous allons voir comment organiser tes calculs pour ne pas te perdre dans la multitude de branches."
+            },
+            {
+              "type": "definition",
+              "term": "formule de Bayes",
+              "definition": "La formule de Bayes permet d'inverser un conditionnement : $P(A|B) = \\frac{P(B|A) \\times P(A)}{P(B)}$. Sur un arbre, $P(B|A)$ se lit sur la branche menant de A à B, $P(A)$ est la probabilité d'atteindre le nœud A, et $P(B)$ est la somme des probabilités de toutes les feuilles où B se réalise.",
+              "example": "Si on veut $P(\\text{Premier rouge} | \\text{Troisième bleu})$, on utilise les probabilités des chemins qui mènent à un troisième bleu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par étendre l'arbre à trois tirages sans remise. Au premier niveau, les branches sont Rouge ($0,6$) et Bleu ($0,4$). Au second niveau, les probabilités conditionnelles sont celles que nous avons déjà calculées : après un Rouge, $5/9$ et $4/9$ ; après un Bleu, $6/9$ et $3/9$. Au troisième niveau, il faut mettre à jour l'urne en fonction des deux premières couleurs. Par exemple, si les deux premiers tirages sont Rouge‑Rouge, il reste 4 rouges et 4 bleues, donc $P(R_3|R_1,R_2)=4/8=0,5$ et $P(B_3|R_1,R_2)=0,5$. Si la séquence est Rouge‑Bleu, l'urne contient 5 rouges et 3 bleues, donc $P(R_3|R_1,B_2)=5/8$, $P(B_3|R_1,B_2)=3/8$. Continue ainsi pour les quatre nœuds du second niveau. Tu obtiens huit feuilles, chacune avec une probabilité obtenue en multipliant trois nombres. Prends le temps de remplir ton arbre sur papier ; c'est un excellent exercice de concentration."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire les trois niveaux de branches",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine la racine, deux branches premier niveau, puis depuis chaque nœud deux branches second niveau, puis depuis chacun de ces quatre nœuds deux branches troisième niveau. Écris les probabilités conditionnelles à chaque branchement en tenant compte des boules déjà sorties."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la probabilité de chaque feuille",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque feuille, multiplie les trois probabilités successives. Note le résultat sur la feuille. Tu auras huit nombres dont la somme doit être 1."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Répondre à une question de probabilité conditionnelle inversée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons qu'on te demande $P(\\text{Premier rouge} | \\text{Troisième bleu})$. Identifie les feuilles où le troisième tirage est bleu (quatre feuilles). Additionne leurs probabilités pour obtenir $P(\\text{Troisième bleu})$. Parmi ces feuilles, repère celles où le premier tirage est rouge (deux feuilles). Additionne leurs probabilités pour obtenir $P(\\text{Premier rouge} \\cap \\text{Troisième bleu})$. Divise le second nombre par le premier. C'est l'application directe de la formule de Bayes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre à trois tirages sans remise (extrait)",
+              "branches": [
+                {
+                  "label": "Rouge (0,6)",
+                  "probability": "0.6",
+                  "children": [
+                    {
+                      "label": "Rouge (5/9)",
+                      "probability": "5/9",
+                      "children": [
+                        {
+                          "label": "Rouge (0,5)",
+                          "probability": "0.5"
+                        },
+                        {
+                          "label": "Bleu (0,5)",
+                          "probability": "0.5"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Bleu (4/9)",
+                      "probability": "4/9",
+                      "children": [
+                        {
+                          "label": "Rouge (5/8)",
+                          "probability": "5/8"
+                        },
+                        {
+                          "label": "Bleu (3/8)",
+                          "probability": "3/8"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Bleu (0,4)",
+                  "probability": "0.4",
+                  "children": [
+                    {
+                      "label": "Rouge (6/9)",
+                      "probability": "6/9",
+                      "children": [
+                        {
+                          "label": "Rouge (5/8)",
+                          "probability": "5/8"
+                        },
+                        {
+                          "label": "Bleu (3/8)",
+                          "probability": "3/8"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Bleu (3/9)",
+                      "probability": "3/9",
+                      "children": [
+                        {
+                          "label": "Rouge (6/8)",
+                          "probability": "6/8"
+                        },
+                        {
+                          "label": "Bleu (2/8)",
+                          "probability": "2/8"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant un arbre à trois niveaux sous les yeux. Le prochain cycle te demandera de calculer la probabilité qu'au moins une des trois boules soit rouge, ce qui t'oblige à additionner plusieurs feuilles. C'est un exercice classique qui montre la puissance de l'arbre pour éviter les doubles comptes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la probabilité d'un événement « au moins » à partir de l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'événement « au moins une boule rouge » est le complémentaire de « aucune boule rouge », c'est-à-dire « les trois boules sont bleues ». Sur l'arbre, la feuille correspondant à Bleu‑Bleu‑Bleu a une probabilité $0,4 \\times 3/9 \\times 2/8 = 0,033\\dots$. Donc $P(\\text{au moins une rouge}) = 1 - 0,033\\dots = 0,966\\dots$. Cette astuce du complémentaire est souvent plus rapide que d'additionner les sept autres feuilles. Note cependant que si la question porte sur « exactement une rouge » ou « exactement deux rouges », tu devras additionner les feuilles correspondantes. L'arbre te donne une vision claire des feuilles concernées."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\text{au moins une rouge}) = 1 - P(\\text{toutes bleues})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, nous allons voir comment la formule de Bayes s'applique naturellement sur l'arbre à trois niveaux. Supposons qu'on observe que la troisième boule est bleue et qu'on veuille connaître la probabilité que la première boule ait été rouge. C'est exactement l'exemple de l'étape 3 du cycle précédent. En utilisant les nombres de ton arbre, tu dois retrouver $P(R_1|B_3) = \\frac{P(B_3|R_1) \\times P(R_1)}{P(B_3)}$. Calcule $P(B_3|R_1)$ en additionnant les probabilités des feuilles issues du nœud Rouge au premier niveau et ayant un troisième bleu. Tu verras que le résultat coïncide avec la division faite directement sur les feuilles. Cette double vérification renforce ta compréhension du lien entre l'arbre et la formule algébrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer la formule de Bayes sur l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les chiffres : $P(R_1)=0,6$. Les feuilles avec premier rouge et troisième bleu sont Rouge‑Rouge‑Bleu et Rouge‑Bleu‑Bleu. Leur probabilité respective est $0,6 \\times 5/9 \\times 0,5 = 0,166\\dots$ et $0,6 \\times 4/9 \\times 3/8 = 0,1$. Leur somme est $0,266\\dots$, c'est $P(R_1 \\cap B_3)$. La probabilité totale $P(B_3)$ est la somme des quatre feuilles avec troisième bleu : on ajoute les deux feuilles précédentes plus Bleu‑Rouge‑Bleu ($0,4 \\times 6/9 \\times 3/8 = 0,1$) et Bleu‑Bleu‑Bleu ($0,4 \\times 3/9 \\times 2/8 = 0,033\\dots$), total $0,4$. Donc $P(R_1|B_3) = 0,266\\dots / 0,4 = 2/3 \\approx 0,666\\dots$. Remarque que ce résultat est identique à celui obtenu à deux niveaux pour $P(R_1|B_2)$, ce qui illustre une propriété de symétrie de l'échantillonnage sans remise. Tu as maintenant toutes les clés pour lire, calculer et inverser les conditionnements sur n'importe quel arbre de probabilités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as parcouru les trois piliers du travail avec les arbres de probabilités : construction rigoureuse, calcul systématique des probabilités des feuilles, et lecture fine des conditionnelles, y compris via la formule de Bayes. Tu es maintenant prêt à affronter des problèmes plus complexes, avec plus d'étapes ou des structures de dépendance différentes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un arbre de probabilités pour une expérience à plusieurs étapes, avec ou sans remise.",
+                "Je sais calculer la probabilité de chaque feuille en multipliant les probabilités conditionnelles le long du chemin.",
+                "Je sais obtenir la probabilité d'un événement composé en additionnant les probabilités des feuilles correspondantes.",
+                "Je sais lire une probabilité conditionnelle directement sur l'arbre et appliquer la formule de Bayes pour inverser un conditionnement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour l'urne 6 rouges / 4 bleues, trois tirages sans remise. Calcule la probabilité d'obtenir exactement deux boules rouges.",
+              "answer": "Les feuilles avec exactement deux rouges sont : Rouge‑Rouge‑Bleu ($0,6 \\times 5/9 \\times 0,5 = 0,166\\dots$), Rouge‑Bleu‑Rouge ($0,6 \\times 4/9 \\times 5/8 = 0,166\\dots$), Bleu‑Rouge‑Rouge ($0,4 \\times 6/9 \\times 5/8 = 0,166\\dots$). Somme = $0,5$ exactement.",
+              "hint": "Identifie les trois feuilles où le nombre de rouges est 2, additionne leurs probabilités.",
+              "explanation": "Chaque feuille correspond à une suite ordonnée. Les trois suites avec deux rouges ont la même probabilité grâce à la symétrie ; leur somme donne 0,5."
+            },
+            {
+              "question": "Dans le même arbre à trois tirages, quelle est la probabilité que la troisième boule soit rouge ?",
+              "answer": "Par symétrie, $P(\\text{troisième rouge}) = P(\\text{premier rouge}) = 0,6$. On peut aussi additionner les quatre feuilles avec troisième rouge : Rouge‑Rouge‑Rouge ($0,6 \\times 5/9 \\times 4/8 = 0,166\\dots$), Rouge‑Bleu‑Rouge ($0,166\\dots$), Bleu‑Rouge‑Rouge ($0,166\\dots$), Bleu‑Bleu‑Rouge ($0,4 \\times 3/9 \\times 6/8 = 0,1$). Somme = $0,6$.",
+              "hint": "Utilise la propriété d'échangeabilité des tirages sans remise, ou additionne les feuilles concernées.",
+              "explanation": "L'ordre des tirages n'affecte pas la probabilité marginale d'une couleur à une position donnée."
+            },
+            {
+              "question": "Calcule $P(\\text{Premier bleu} \\mid \\text{Troisième rouge})$ à l'aide de la formule de Bayes sur l'arbre à trois tirages.",
+              "answer": "$P(B_1) = 0,4$. $P(R_3|B_1)$ s'obtient en additionnant les feuilles issues de Bleu au premier niveau et ayant troisième rouge : Bleu‑Rouge‑Rouge ($0,4 \\times 6/9 \\times 5/8 = 0,166\\dots$) et Bleu‑Bleu‑Rouge ($0,4 \\times 3/9 \\times 6/8 = 0,1$). Somme = $0,266\\dots$. $P(R_3) = 0,6$. Donc $P(B_1|R_3) = (0,266\\dots) / 0,6 = 0,444\\dots = 4/9$.",
+              "hint": "Applique $P(B_1|R_3) = P(R_3|B_1) P(B_1) / P(R_3)$ en lisant les probabilités sur l'arbre.",
+              "explanation": "La formule de Bayes permet d'inverser le conditionnement ; l'arbre donne directement les termes nécessaires."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

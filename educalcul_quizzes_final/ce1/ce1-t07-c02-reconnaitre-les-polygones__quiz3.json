@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 127,
+  "_course_code": "ce1-t07-c02-reconnaitre-les-polygones",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Nommer triangle, quadrilatère",
+  "title": "Quiz : Nommer triangle et quadrilatère",
+  "questions": [
+    {
+      "text": "Combien de côtés a un triangle ?",
+      "options": [
+        "Deux",
+        "Trois",
+        "Quatre",
+        "Cinq"
+      ],
+      "correctAnswer": "Trois",
+      "explanation": "Un triangle est un polygone qui a exactement trois côtés et trois sommets. Deux côtés ne forment pas une figure fermée, quatre côtés forment un quadrilatère et cinq côtés un pentagone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on un polygone qui a quatre côtés ?",
+      "options": [
+        "Un triangle",
+        "Un quadrilatère",
+        "Un pentagone",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un quadrilatère",
+      "explanation": "Le préfixe quadri signifie quatre. Un quadrilatère est un polygone à quatre côtés et quatre sommets. Un triangle en a trois, un pentagone en a cinq et le cercle n'est pas un polygone car il n'a pas de côtés droits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure ci-dessous. Comment s'appelle ce polygone ?",
+      "options": [
+        "Un triangle",
+        "Un quadrilatère",
+        "Un carré",
+        "Un rectangle"
+      ],
+      "correctAnswer": "Un triangle",
+      "explanation": "La figure présentée a trois côtés et trois sommets, c'est la définition d'un triangle. Carré et rectangle sont des quadrilatères particuliers à quatre côtés.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle quelconque",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Regarde la figure tracée sur le quadrillage. Quel est le nom général de ce polygone ?",
+      "options": [
+        "Un triangle",
+        "Un quadrilatère",
+        "Un cercle",
+        "Un segment"
+      ],
+      "correctAnswer": "Un quadrilatère",
+      "explanation": "La figure sur le quadrillage a quatre côtés et quatre angles droits, c'est un rectangle. Le nom général pour toute figure à quatre côtés est quadrilatère.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 6,
+        "caption": "Rectangle sur quadrillage"
+      }
+    },
+    {
+      "text": "Parmi les descriptions suivantes, laquelle correspond à un triangle ?",
+      "options": [
+        "Une figure à quatre côtés",
+        "Une figure à trois côtés",
+        "Une figure ronde sans côté",
+        "Une figure à cinq côtés"
+      ],
+      "correctAnswer": "Une figure à trois côtés",
+      "explanation": "Un triangle se reconnaît à ses trois côtés et ses trois sommets. Une figure à quatre côtés est un quadrilatère, une figure ronde est un cercle et une figure à cinq côtés est un pentagone.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

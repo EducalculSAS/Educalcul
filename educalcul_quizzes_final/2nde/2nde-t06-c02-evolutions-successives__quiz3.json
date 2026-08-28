@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Taux réciproque simple si prévu",
+  "title": "Quiz : Taux réciproque simple",
+  "questions": [
+    {
+      "text": "Une quantité augmente de $20\\%$. Quel est le taux réciproque (en pourcentage) pour revenir à la valeur initiale ?",
+      "options": [
+        "$-20\\%$",
+        "$-16,67\\%$",
+        "$-25\\%$",
+        "$-15\\%$"
+      ],
+      "correctAnswer": "$-16,67\\%$",
+      "explanation": "Le taux réciproque $r^*$ d'un taux $r$ satisfait $(1+r)(1+r^*)=1$, donc $r^* = -r/(1+r)$. Pour $r=0,20$, $r^* = -0,20/1,20 = -1/6 \\approx -0,1667$, soit $-16,67\\%$. L'option $-20\\%$ correspond à l'erreur de croire que le taux inverse est l'opposé. $-25\\%$ et $-15\\%$ sont des valeurs approchées incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une quantité diminue de $40\\%$. Quel est le taux réciproque (en pourcentage) pour revenir à la valeur initiale ?",
+      "options": [
+        "$40\\%$",
+        "$50\\%$",
+        "$66,67\\%$",
+        "$60\\%$"
+      ],
+      "correctAnswer": "$66,67\\%$",
+      "explanation": "Pour une diminution, $r = -0,40$. Le taux réciproque est $r^* = -r/(1+r) = 0,40/0,60 = 2/3 \\approx 0,6667$, soit $66,67\\%$. L'option $40\\%$ est l'erreur symétrique. $50\\%$ et $60\\%$ sont des approximations fréquentes mais fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le taux réciproque d'une évolution de $r$ est donné par la formule $r^* = -r/(1+r)$. Si $r = 0,25$, quelle est la valeur de $r^*$ ?",
+      "options": [
+        "$-0,2$",
+        "$-0,25$",
+        "$-0,3$",
+        "$-0,333$"
+      ],
+      "correctAnswer": "$-0,2$",
+      "explanation": "En remplaçant $r=0,25$ dans la formule : $r^* = -0,25/(1+0,25) = -0,25/1,25 = -0,2$. L'option $-0,25$ correspond à l'opposé de $r$, $-0,3$ et $-0,333$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après une augmentation de $30\\%$, on applique le taux réciproque. Quel est le coefficient multiplicateur global ?",
+      "options": [
+        "$1$",
+        "$0,9$",
+        "$1,1$",
+        "$0,95$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Une augmentation de $30\\%$ correspond au coefficient $1,30$. Son taux réciproque est $r^* = -0,30/1,30 = -3/13$, ce qui donne un coefficient $1+r^* = 1 - 3/13 = 10/13$. Le produit global est $1,30 \\times (10/13) = 1$. Le coefficient multiplicateur global est donc $1$, ce qui signifie un retour à la valeur initiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite annuler une diminution de $15\\%$ par une seule augmentation. Quel doit être le pourcentage de cette augmentation ?",
+      "options": [
+        "$15\\%$",
+        "$17,65\\%$",
+        "$18,75\\%$",
+        "$20\\%$"
+      ],
+      "correctAnswer": "$17,65\\%$",
+      "explanation": "Une diminution de $15\\%$ donne un coefficient $0,85$. Pour revenir à $1$, il faut multiplier par $1/0,85 \\approx 1,17647$, soit une augmentation de $17,65\\%$. L'option $15\\%$ est l'erreur symétrique. $18,75\\%$ correspond à $3/16$ (erreur de calcul $0,15/0,8$). $20\\%$ est une approximation grossière.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

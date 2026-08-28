@@ -1,0 +1,625 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.452815+00:00",
+  "id": 628,
+  "code": "terminale-generale-t03-c02",
+  "title": "Lire des graphiques de données",
+  "description": "Cours structuré Educalcul : Lire des graphiques de données.",
+  "subject": "Statistiques et données",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Statistiques et données",
+    "titre_du_cours": "Lire des graphiques de données",
+    "objectif_global": "Lire des graphiques de données",
+    "mini_lecons_imposees": [
+      "Échelle.",
+      "Proportions.",
+      "Biais."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et données",
+      "lessons": [
+        {
+          "title": "Échelle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre l'échelle d'un graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu ouvres un graphique, la première chose à vérifier est l'échelle choisie sur chaque axe. L'axe des abscisses (horizontal) et l'axe des ordonnées (vertical) portent des graduations qui transforment des nombres bruts en positions visuelles. Si l'échelle est mal lue, toute la lecture qui suit devient fausse. Imagine que tu regardes la température d'une semaine : un axe qui va de $0$ à $40$ degrés par pas de $5$ donne une image très différente d'un axe qui va de $-10$ à $50$ par pas de $10$. Prends le temps de lire les valeurs extrêmes et l'intervalle entre deux graduations successives."
+            },
+            {
+              "type": "definition",
+              "term": "Échelle linéaire",
+              "definition": "Une échelle où la distance entre deux graduations successives est constante et représente la même variation de la grandeur mesurée.",
+              "example": "Sur un axe allant de $0$ à $100$ avec un pas de $10$, chaque centimètre correspond à $10$ unités."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemple d'échelle linéaire : températures moyennes mensuelles",
+              "bars": [
+                {
+                  "label": "Jan",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fév",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Mar",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "Avr",
+                  "value": 16,
+                  "tone": "green"
+                },
+                {
+                  "label": "Mai",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Juin",
+                  "value": 24,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer une échelle linéaire, voyons ce qui se passe quand les données couvrent plusieurs ordres de grandeur. Dans ce cas, une échelle logarithmique devient utile car elle compresse les grandes valeurs et étire les petites, permettant de voir des tendances invisibles sur une échelle linéaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'échelle logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une échelle logarithmique ne progresse pas par addition constante mais par multiplication. Chaque graduation correspond à une puissance de la base choisie (souvent $10$). Ainsi, les valeurs $1$, $10$, $100$, $1000$ sont équidistantes sur l'axe. Cela permet de représenter des phénomènes comme la croissance bactérienne, le son en décibels ou la magnitude des séismes. Attention : la distance entre $10$ et $20$ n'est pas la même qu'entre $100$ et $200$ ; elle reflète le rapport, pas la différence."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la base du logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les graduations majeures : si elles sont $1$, $10$, $100$, la base est $10$. Si elles sont $1$, $2$, $4$, $8$, la base est $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la valeur d'un point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère entre quelles deux puissances successives se situe le point. Interpole de façon proportionnelle au logarithme, c'est-à-dire en utilisant le rapport des valeurs, pas leur différence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Revenir à la valeur réelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le point est à mi-chemin entre $10$ et $100$ sur une échelle de base $10$, sa valeur est $\\sqrt{10 \\times 100} = 10^{1.5} \\approx 31,6$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "y = \\log_{10}(x)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir lire une échelle logarithmique est une compétence précieuse, mais il faut aussi savoir choisir la bonne échelle avant de tracer un graphique. Le choix dépend de la nature des données et du message que tu veux faire passer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'échelle adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose-toi trois questions : (1) Les valeurs couvrent-elles plusieurs ordres de grandeur ? Si oui, envisage le logarithme. (2) Y a-t-il des valeurs négatives ou nulles ? Le logarithme ne les accepte pas ; une échelle linéaire ou une transformation (ex. $x+1$) s'impose. (3) Quel est l'objectif ? Comparer des variations relatives ? Logarithme. Comparer des différences absolues ? Linéaire. Par exemple, pour afficher l'évolution du PIB de plusieurs pays sur $30$ ans, une échelle logarithmique met en évidence les taux de croissance comparables, tandis qu'une échelle linéaire masque les pays aux PIB faibles."
+            },
+            {
+              "type": "number_line",
+              "caption": "Plage de valeurs du PIB (en milliards $) : échelle linéaire vs logarithmique",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "Pays A"
+                },
+                {
+                  "value": 200,
+                  "label": "Pays B"
+                },
+                {
+                  "value": 800,
+                  "label": "Pays C"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, interpréter un graphique dont l'échelle change au milieu (échelle brisée ou double échelle) demande une vigilance accrue. Une rupture d'axe peut dramatiser une variation minime ou cacher un pic important. Apprends à repérer les petites marques de rupture et à lire les deux échelles séparément avant de tirer une conclusion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter un graphique à échelle variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un graphique montrant le nombre d'abonnés d'une plateforme : de $0$ à $10\\,000$ l'échelle est linéaire, puis une rupture passe à une échelle logarithmique pour aller jusqu'à $1\\,000\\,000$. La pente semble s'aplatir après la rupture, mais en réalité la croissance continue exponentiellement. Pour ne pas te laisser tromper, trace mentalement deux graphiques distincts : un avant la rupture, un après, et compare les taux de variation relatifs."
+            },
+            {
+              "type": "graph",
+              "expression": "10**x",
+              "xmin": 0,
+              "xmax": 4,
+              "caption": "Croissance exponentielle avec rupture d'échelle (linéaire puis log)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'axe ci-dessous, les graduations sont $0$, $10$, $20$, $30$, $40$. Quelle est la valeur représentée par un point placé à $2,5$ cm de l'origine si $1$ cm correspond à $5$ unités ?",
+              "answer": "$12,5$",
+              "hint": "Multiplie la distance en cm par la valeur d'un cm.",
+              "explanation": "Chaque centimètre vaut $5$ unités. $2,5 \\times 5 = 12,5$."
+            },
+            {
+              "question": "Un graphique utilise une échelle logarithmique de base $10$. Un point se situe exactement au milieu entre les graduations $100$ et $1000$. Quelle est sa valeur approximative ?",
+              "answer": "$316$",
+              "hint": "Le milieu sur une échelle log correspond à la moyenne géométrique des deux bornes.",
+              "explanation": "La moyenne géométrique de $100$ et $1000$ est $\\sqrt{100 \\times 1000} = \\sqrt{100000} = 10^{2,5} \\approx 316$."
+            },
+            {
+              "question": "Tu dois représenter le nombre d'utilisateurs d'une application qui passe de $500$ à $50\\,000$ en $6$ mois. Quelle échelle choisis-tu et pourquoi ?",
+              "answer": "Échelle logarithmique (base $10$) car les données couvrent deux ordres de grandeur.",
+              "hint": "Compare l'amplitude des valeurs : $500$ vs $50\\,000$.",
+              "explanation": "Le rapport est $100$ ($10^2$). Une échelle linéaire écraserait les premiers mois ; le logarithme étale la croissance de façon lisible."
+            },
+            {
+              "question": "Sur un graphique à double échelle, la partie basse (linéaire) va de $0$ à $100$ par pas de $10$. La partie haute (logarithmique) commence à $100$ et montre $100$, $1000$, $10\\,000$. Un point est placé à la graduation $1000$ de la partie haute. Quelle est sa valeur réelle ?",
+              "answer": "$1000$",
+              "hint": "Sur la partie logarithmique, les graduations indiquent directement la valeur.",
+              "explanation": "La graduation $1000$ correspond à la valeur $1000$ ; la rupture n'altère pas la lecture des graduations elles-mêmes."
+            }
+          ]
+        },
+        {
+          "title": "Proportions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les proportions dans un diagramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les proportions sont le cœur de nombreux graphiques statistiques : camemberts, barres empilées, histogrammes normalisés. Elles expriment la part d'un sous-ensemble par rapport à l'ensemble, souvent en pourcentages. La première règle est de vérifier que la somme des parts affichées atteint $100\\%$ (ou $1$ si on utilise des fractions). Si le total dépasse $100\\%$, il y a soit une erreur, soit des catégories qui se chevauchent. Prends l'habitude de lire la légende, d'additionner mentalement les pourcentages affichés et de te demander : \"Ces parts représentent-elles bien la population étudiée ?\""
+            },
+            {
+              "type": "definition",
+              "term": "Proportion",
+              "definition": "Rapport entre une partie et le tout, souvent exprimé en pourcentage ($\\%$) ou en nombre entre $0$ et $1$.",
+              "example": "Si $30$ élèves sur $200$ portent des lunettes, la proportion est $30/200 = 0,15 = 15\\%$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des langues parlées à la maison (enquête 2023)",
+              "slices": [
+                {
+                  "label": "Français",
+                  "value": 55,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Anglais",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "Espagnol",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Autres",
+                  "value": 15,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les proportions identifiées, il faut souvent les comparer entre plusieurs groupes. Par exemple, tu as deux camemberts : l'un pour les filles, l'autre pour les garçons, montrant la répartition des sports pratiqués. La comparaison visuelle est trompeuse si les camemberts n'ont pas la même taille ou si les parts sont ordonnées différemment. La méthode rigoureuse consiste à extraire les pourcentages numériques et à les mettre côte à côte dans un tableau."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des proportions entre groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une enquête sur le mode de transport pour aller au lycée. Pour les filles : $40\\%$ bus, $30\\%$ marche, $20\\%$ vélo, $10\\%$ voiture. Pour les garçons : $35\\%$ bus, $25\\%$ marche, $30\\%$ vélo, $10\\%$ voiture. À l'œil, les deux camemberts semblent proches, mais le vélo est $10$ points de pourcentage plus fréquent chez les garçons. Cette différence de $10\\%$ (en points) correspond à une augmentation relative de $50\\%$ par rapport aux filles ($20\\% \\to 30\\%$). Toujours distinguer variation en points de pourcentage et variation relative."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des parts de vélo (filles vs garçons)",
+              "bars": [
+                {
+                  "label": "Filles",
+                  "value": 20,
+                  "tone": "pink"
+                },
+                {
+                  "label": "Garçons",
+                  "value": 30,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les proportions peuvent être présentées de manière trompeuse par des choix graphiques : camembert 3D qui déforme les angles, barre tronquée qui exagère une petite différence, ou omission de la catégorie \"Autres\" pour faire croire que les parts affichées couvrent la totalité. Apprends à repérer ces pièges : vérifie l'axe des valeurs, la présence d'une échelle, et si la somme des parts affichées est bien $100\\%$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déceler les proportions biaisées par le graphisme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un exemple classique : un histogramme où l'axe des ordonnées ne commence pas à $0$ mais à $90\\%$. Une barre à $95\\%$ paraît alors deux fois plus haute qu'une barre à $92,5\\%$, alors que la différence réelle n'est que $2,5$ points. De même, un camembert en perspective 3D agrandit les parts situées à l'avant. La règle d'or : exige toujours un axe qui part de $0$ pour les graphiques en barres, et privilégie les camemberts plats avec légende claire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Différence en points} = p_1 - p_2 \\quad ; \\quad \\text{Variation relative} = \\frac{p_1-p_2}{p_2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour synthétiser, la lecture rigoureuse des proportions passe par trois étapes : (1) extraire les chiffres bruts ou les pourcentages affichés, (2) vérifier la cohérence du total, (3) comparer en utilisant des différences en points et des variations relatives, jamais seulement l'impression visuelle. Cette discipline t'évitera bien des conclusions hâtives."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode de lecture systématique"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les catégories et leurs pourcentages",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note chaque part avec son étiquette et sa valeur numérique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les pourcentages ; ils doivent faire $100\\%$ (ou $1$). Sinon, identifie la catégorie manquante ou l'erreur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer groups",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les écarts en points et les variations relatives pour chaque catégorie d'intérêt."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le camembert ci-dessus, quelle est la proportion (en %) de la part \"Autres\" ?",
+              "answer": "15%",
+              "hint": "Regarde la légende ou calcule $100 - (55+20+10)$.",
+              "explanation": "La somme des parts affichées est $55+20+10 = 85\\%$. Le reste est $100-85 = 15\\%$."
+            },
+            {
+              "question": "Pour les filles, la part du vélo est $20\\%$. Pour les garçons, elle est $30\\%$. Quelle est la variation relative de la part vélo chez les garçons par rapport aux filles ?",
+              "answer": "50%",
+              "hint": "Variation relative = (30-20)/20.",
+              "explanation": "$(30-20)/20 = 10/20 = 0,5 = 50\\%$."
+            },
+            {
+              "question": "Un histogramme montre le taux de réussite de deux lycées. L'axe des ordonnées commence à $80\\%$. Le lycée A a une barre à $92\\%$, le lycée B à $88\\%$. Quelle est la différence réelle en points de pourcentage ?",
+              "answer": "4 points",
+              "hint": "Ignore l'effet visuel, soustrais les valeurs réelles.",
+              "explanation": "$92 - 88 = 4$ points de pourcentage. L'axe tronqué ne change pas les valeurs."
+            },
+            {
+              "question": "Tu dois présenter la répartition des votes (A: 42%, B: 38%, C: 20%). Quel type de graphique choisis-tu pour éviter toute distorsion ?",
+              "answer": "Camembert plat avec légende ou barre empilée à échelle 0-100%.",
+              "hint": "Évite le 3D et les axes tronqués.",
+              "explanation": "Un camembert 2D avec pourcentages affichés ou une barre empilée dont la base est $0\\%$ et le sommet $100\\%$ garantit une lecture fidèle."
+            }
+          ]
+        },
+        {
+          "title": "Biais.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le biais de sélection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le biais de sélection survient quand l'échantillon observé n'est pas représentatif de la population cible. Imagine une enquête en ligne sur les habitudes de lecture diffusée uniquement sur un forum de passionnés de science-fiction. Les résultats montreront une sur-représentation de ce genre, alors que la population générale lit bien plus varié. Ce biais fausse toute proportion ou moyenne calculée à partir de l'échantillon. La première défense est de se demander : \"Comment les participants ont-ils été recrutés ?\""
+            },
+            {
+              "type": "definition",
+              "term": "Biais de sélection",
+              "definition": "Distorsion systématique due à un mode de recrutement qui favorise certains profils au détriment d'autres.",
+              "example": "Sondage téléphonique sur l'emploi qui n'appelle que les fixes : exclut les jeunes sans ligne fixe."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemple de biais : lecture de SF vs population générale",
+              "bars": [
+                {
+                  "label": "Forum SF",
+                  "value": 70,
+                  "tone": "red"
+                },
+                {
+                  "label": "Population",
+                  "value": 15,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre biais fréquent est le biais de mesure : l'instrument de collecte déforme la réalité. Un questionnaire mal formulé, une balance mal calibrée, ou un capteur qui sature aux valeurs extrêmes produisent des données systématiquement décalées. Par exemple, un thermomètre qui affiche toujours $0,5^\\circ C$ de plus que la température réelle introduit un biais constant. Contrairement au bruit aléatoire, ce biais ne disparaît pas en augmentant la taille de l'échantillon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Biais de mesure et d'instrument"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le détecter, compare les mesures d'un même objet avec un étalon de référence. Si la différence est constante, c'est un biais systématique ; si elle varie aléatoirement, c'est de l'imprécision. Dans les enquêtes, un biais de formulation (questions suggestives) agit comme un biais de mesure : \"Êtes-vous d'accord que la réforme est excellente ?\" pousse vers l'accord. La reformulation neutre \"Quel est votre avis sur la réforme ?\" réduit ce biais."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'instrument",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quel outil a produit la donnée ? Questionnaire, capteur, capteur humain, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tester sur un étalon connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure une valeur de référence et compare."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger ou signaler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si un biais constant est trouvé, applique une correction ou mentionne-le explicitement dans l'analyse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le biais de présentation, aussi appelé biais graphique, manipule la perception sans changer les données. Axes tronqués, échelles non linéaires masquées, choix de couleurs émotionnelles, omission de contexte : tout cela oriente le lecteur. Un graphique montrant l'évolution du chômage avec un axe vertical commençant à $8\\%$ fait paraître une baisse de $9\\%$ à $8,5\\%$ comme une chute spectaculaire. La vigilance impose de toujours vérifier l'origine des axes, l'unité, et de se demander si le graphique cherche à informer ou à persuader."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Biais de présentation graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : un article de presse affiche un camembert 3D où la part \"Pour\" est placée à l'avant, en couleur vive, tandis que la part \"Contre\" est à l'arrière, en gris. Visuellement, le \"Pour\" semble deux fois plus grand, alors que les pourcentages sont $52\\%$ et $48\\%$. En reprenant les chiffres bruts, tu rétablis la réalité. Toujours demander les données sources avant de conclure."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*x+1",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Exemple d'axe tronqué : zoom sur une faible variation"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, synthétisons les trois grands types de biais et la check-list de lecture critique que tu pourras utiliser à chaque nouveau graphique. Cette check-list est ton filet de sécurité : elle ne garantit pas l'absence d'erreur, mais elle réduit drastiquement le risque d'être manipulé par une visualisation malhonnête ou maladroite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Check-list de lecture critique d'un graphique de données"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Origine des données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle population ? Quel mode de sélection ? Y a-t-il un risque de biais de sélection ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Instrument de mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comment les valeurs ont-elles été obtenues ? Questionnaire, capteur, estimation ? Biais de mesure possible ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Échelle et axes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Axe commence-t-il à zéro ? Échelle linéaire ou logarithmique indiquée ? Ruptures d'axe signalées ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Représentation graphique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Type de graphique adapté ? 3D déformant ? Couleurs émotionnelles ? Légendes claires ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "5. Cohérence numérique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les pourcentages font-ils 100 % ? Les totaux correspondent-ils aux effectifs annoncés ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier l'échelle d'un graphique (linéaire, logarithmique, brisée).",
+                "Je sais extraire et comparer des proportions, en distinguant points de pourcentage et variation relative.",
+                "Je sais repérer un biais de sélection, de mesure ou de présentation dans un graphique.",
+                "J'applique la check-list de lecture critique avant de tirer une conclusion d'un graphique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une enquête sur la satisfaction des clients est envoyée uniquement aux clients ayant laissé un avis positif sur le site. Quel type de biais cela introduit-il ?",
+              "answer": "Biais de sélection (échantillon non représentatif).",
+              "hint": "Qui reçoit le questionnaire ?",
+              "explanation": "Seuls les clients satisfaits sont sollicités, les insatisfaits sont exclus, faussant le taux de satisfaction global."
+            },
+            {
+              "question": "Un capteur de température affiche systématiquement $0,3^\\circ C$ au-dessus de la valeur réelle. Comment qualifier ce défaut ?",
+              "answer": "Biais de mesure systématique.",
+              "hint": "Erreur constante vs aléa.",
+              "explanation": "L'erreur est constante (toujours +0,3), c'est un biais systématique, pas du bruit aléatoire."
+            },
+            {
+              "question": "Un graphique en barres montre l'évolution du prix du pétrole. L'axe vertical commence à $70$ $ au lieu de $0$. Une barre passe de $78$ à $80$. Quel risque de lecture ?",
+              "answer": "Exagération visuelle de la hausse (axe tronqué).",
+              "hint": "Compare la hauteur relative avec la variation réelle.",
+              "explanation": "La hausse réelle est de $2/78 \\approx 2,6\\%$, mais visuellement la barre semble doubler car la base est coupée."
+            },
+            {
+              "question": "Tu découvres un camembert 3D sans pourcentages affichés, avec une part rouge vive à l'avant. Quelle est ta première action ?",
+              "answer": "Demander les données numériques brutes et refaire un camembert plat.",
+              "hint": "Le 3D déforme la perception des angles.",
+              "explanation": "Sans chiffres, l'impression visuelle est peu fiable ; reconstruis le graphique en 2D avec les valeurs exactes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

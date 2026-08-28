@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Bilan - Triangle 4e",
+  "title": "Bilan - Triangle 4e",
+  "questions": [
+    {
+      "text": "Quelle est la somme des angles intérieurs d'un triangle ?",
+      "options": [
+        "$180^\\circ$",
+        "$360^\\circ$",
+        "$90^\\circ$",
+        "$270^\\circ$"
+      ],
+      "correctAnswer": "$180^\\circ$",
+      "explanation": "La somme des angles intérieurs de tout triangle est toujours $180^\\circ$. Les autres valeurs correspondent à la somme des angles d'un quadrilatère ($360^\\circ$), à un angle droit ($90^\\circ$) ou à trois angles droits ($270^\\circ$), ce qui n'est pas le cas pour un triangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle isocèle, quels angles sont égaux ?",
+      "options": [
+        "Les angles à la base sont égaux",
+        "L'angle au sommet et un angle à la base sont égaux",
+        "Les trois angles sont égaux",
+        "Aucun angle n'est égal"
+      ],
+      "correctAnswer": "Les angles à la base sont égaux",
+      "explanation": "Par définition, un triangle isocèle a deux côtés égaux ; les angles opposés à ces côtés, c'est-à-dire les angles à la base, sont donc égaux. L'angle au sommet est généralement différent, sauf dans le cas particulier du triangle équilatéral où les trois angles sont égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle dont les côtés de l'angle droit mesurent $3$ et $4$, quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "D'après le théorème de Pythagore, l'hypoténuse $c$ vérifie $c^2 = 3^2 + 4^2 = 9 + 16 = 25$, donc $c = \\sqrt{25} = 5$. Les autres valeurs ne satisfont pas cette égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les longueurs $5$, $7$ et $13$ peuvent-elles être les côtés d'un triangle ?",
+      "options": [
+        "Oui, ils forment un triangle",
+        "Non, car $5+7<13$",
+        "Non, car $5+13<7$",
+        "Non, car $7+13<5$"
+      ],
+      "correctAnswer": "Non, car $5+7<13$",
+      "explanation": "L'inégalité triangulaire impose que la somme de deux côtés soit strictement supérieure au troisième. Ici $5+7 = 12$ qui est inférieur à $13$, donc ces trois longueurs ne peuvent pas former un triangle. Les deux autres inégalités sont fausses car $5+13=18>7$ et $7+13=20>5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la mesure de chaque angle d'un triangle équilatéral ?",
+      "options": [
+        "$60^\\circ$",
+        "$90^\\circ$",
+        "$45^\\circ$",
+        "$120^\\circ$"
+      ],
+      "correctAnswer": "$60^\\circ$",
+      "explanation": "Un triangle équilatéral a trois angles égaux. Comme la somme des angles est $180^\\circ$, chaque angle vaut $180^\\circ / 3 = 60^\\circ$. Les autres valeurs correspondent à un angle droit, à la moitié d'un angle droit ou à un angle obtus, ce qui ne convient pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

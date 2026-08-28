@@ -1,0 +1,627 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.325177+00:00",
+  "id": 274,
+  "code": "cm1-t09-c06",
+  "title": "Bilan - Pensée informatique CM1",
+  "description": "Cours structuré Educalcul : Bilan - Pensée informatique CM1.",
+  "subject": "Pensée informatique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Bilan - Pensée informatique CM1",
+    "objectif_global": "Bilan - Pensée informatique CM1",
+    "mini_lecons_imposees": [
+      "Séquences, boucles, conditions.",
+      "Débogage.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Séquences, boucles, conditions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les séquences : l'ordre des instructions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu donnes une recette de cuisine à un ami : si tu lui dis \"mets le gâteau au four\" avant \"mélange la farine et les œufs\", le résultat sera catastrophique ! En programmation, c'est exactement pareil. Une $séquence$, c'est simplement une liste d'instructions que l'ordinateur exécute **une par une**, dans l'ordre où tu les as écrites, de la première à la dernière. Si tu changes l'ordre, le programme fait autre chose. C'est pour cela qu'on dit que l'ordinateur est « bête mais discipliné » : il suit tes ordres à la lettre, sans deviner ce que tu voulais vraiment dire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les instructions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu notes : $AVANCER$, $TOURNER\\_GAUCHE$, $AVANCER$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : L'ordinateur lit la 1re ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il exécute $AVANCER$. Le robot avance d'une case."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : L'ordinateur lit la 2e ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il exécute $TOURNER\\_GAUCHE$. Le robot pivote sur place."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : L'ordinateur lit la 3e ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il exécute $AVANCER$. Le robot avance encore d'une case, mais dans la nouvelle direction."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Si on inverse $TOURNER\\_GAUCHE$ et le premier $AVANCER$, le robot ne finit pas au même endroit. Maintenant que tu as bien visualisé l'importance de l'ordre, essayons de repérer la bonne suite d'instructions pour atteindre une cible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles : ne pas s'épuiser à répéter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Suppose que tu dois faire avancer ton robot de $10$ cases tout droit. Tu pourrais écrire $AVANCER$ dix fois de suite, mais c'est long à taper, long à lire, et si tu te trompes dans le compte, tout est faux. Heureusement, la $boucle$ existe pour ça ! Elle permet de dire : \"Répète cette instruction (ou ce bloc d'instructions) un certain nombre de fois\". C'est comme dire à un ami : \"Fais $10$ pas en avant\" au lieu de lui dire \"Fais un pas, fais un pas, fais un pas...\" dix fois de suite. Le mot-clé qu'on utilise souvent est $RÉPÉTER$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Sans boucle (fastidieux)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$AVANCER$, $AVANCER$, $AVANCER$, $AVANCER$, $AVANCER$... (10 lignes)"
+                    }
+                  ]
+                },
+                {
+                  "title": "Avec une boucle (efficace)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$RÉPÉTER\\ 10\\ FOIS$ [ $AVANCER$ ]"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ce que fait l'ordinateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il entre dans la boucle, fait $AVANCER$, revient au début, refait $AVANCER$, et ainsi de suite jusqu'à $10$ fois."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque bien les crochets $[\\ ]$ ou l'indentation : ils montrent ce qui est **à l'intérieur** de la boucle. Tout ce qui est dedans sera répété. Ce qui est dehors ne se joue qu'une fois. Essaie maintenant d'écrire une boucle pour dessiner un carré."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les conditions : le programme prend des décisions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, ton programme fonçait tête baissée. Mais que se passe-t-il s'il y a un mur devant le robot ? Il faut qu'il puisse **choisir** son action selon la situation. C'est le rôle de la $condition$ (souvent écrite $SI$ ... $ALORS$ ... $SINON$ ...). C'est comme toi devant une porte : $SI$ elle est ouverte, $ALORS$ tu rentres, $SINON$ tu frappes. L'ordinateur évalue une $question$ (vrai ou faux ?) et n'exécute qu'une seule des deux parties."
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Une structure qui permet d'exécuter des instructions seulement si une affirmation est vraie (ex: $SI\\ mur\\ devant$). On peut prévoir un cas contraire avec $SINON$.",
+              "example": "$SI\\ (obstacle)\\ ALORS\\ \\{Tourner\\_droite\\}\\ SINON\\ \\{Avancer\\}$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Le robot arrive devant un mur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il teste la condition : $Y\\-a\\-t\\-il\\ un\\ mur\\ ?$ -> $VRAI$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exécution du bloc ALORS",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il exécute $TOURNER\\_DROITE$. Il ignore le bloc $SINON$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Prochain tour, pas de mur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il teste : $Y\\-a\\-t\\-il\\ un\\ mur\\ ?$ -> $FAUX$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Exécution du bloc SINON",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il saute le bloc $ALORS$ et exécute $AVANCER$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est puissant : ton programme devient capable de s'adapter ! Mais attention, il faut que la question soit précise (un capteur, une variable). Maintenant, mélangeons boucles et conditions pour un vrai défi."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le grand mélange : une mission complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un vrai programme, c'est comme une chorégraphie : des séquences pour les pas de base, des boucles pour les refrains qui reviennent, et des conditions pour éviter les autres danseurs. Regarde cet algorithme qui fait avancer un robot dans un couloir sinueux jusqu'à la sortie : il avance tant que le chemin est libre, mais dès qu'il sent un mur, il tourne à droite pour suivre le couloir. C'est la combinaison des trois concepts qui rend cela possible."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Boucle principale (Tant que pas sortie)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$RÉPÉTER\\ JUSQU'À\\ (sortie\\ trouvée)$"
+                    }
+                  ]
+                },
+                {
+                  "title": "À l'intérieur : Test condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$SI\\ (mur\\ devant)\\ ALORS\\ \\{TOURNER\\_DROITE\\}\\ SINON\\ \\{AVANCER\\}$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Fin de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On revient au test $sortie\\ trouvée$. Si non, on recommence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les briques de base pour construire des programmes intelligents. Le dernier exercice de cette leçon te demande de lire un programme mélangeant les trois structures et de deviner le chemin final du robot."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un programme :\\n1. $AVANCER$\\n2. $TOURNER\\_GAUCHE$\\n3. $AVANCER$\\n4. $TOURNER\\_GAUCHE$\\n5. $AVANCER$\\nLe robot commence face au Nord. Où se trouve-t-il par rapport au départ (direction et distance) ?",
+              "answer": "Il est à 1 case à l'Ouest du départ (forme un 'C' incomplet).",
+              "hint": "Dessine le chemin sur une grille. Suis les instructions une par une en tournant ton doigt.",
+              "explanation": "On suit la séquence : Nord 1 case, Ouest 1 case, Sud 1 case. Le robot est au Sud-Ouest du départ, mais comme il a fait 1 Nord et 1 Sud, il est aligné horizontalement : 1 case à l'Ouest."
+            },
+            {
+              "question": "Écris le programme le plus court (avec une boucle) pour faire avancer le robot de $6$ cases tout droit.",
+              "answer": "$RÉPÉTER\\ 6\\ FOIS\\ [\\ AVANCER\\ ]$",
+              "hint": "Combien de fois l'action 'Avancer' doit-elle être jouée ? Utilise le mot-clé RÉPÉTER.",
+              "explanation": "Au lieu d'écrire 6 fois AVANCER, on utilise la boucle RÉPÉTER 6 FOIS [ AVANCER ]. C'est plus court, plus clair et on ne risque pas d'oublier une ligne."
+            },
+            {
+              "question": "Un robot utilise ce code :\\n$SI\\ (mur\\ à\\ droite)\\ ALORS\\ \\{TOURNER\\_GAUCHE\\}\\ SINON\\ \\{TOURNER\\_DROITE\\}$\\nS'il n'y a **pas** de mur à sa droite, que fait-il ?",
+              "answer": "Il exécute $TOURNER\\_DROITE$.",
+              "hint": "La condition est 'mur à droite'. Si c'est FAUX (pas de mur), on va dans le bloc SINON.",
+              "explanation": "La condition '$mur\\ à\\ droite$' est fausse. Le programme saute le bloc ALORS et exécute le bloc SINON : $TOURNER\\_DROITE$."
+            },
+            {
+              "question": "Analyse ce programme :\\n$RÉPÉTER\\ 4\\ FOIS\\ [\\ SI\\ (mur\\ devant)\\ ALORS\\ \\{TOURNER\\_GAUCHE\\}\\ SINON\\ \\{AVANCER\\}\\ ]$\\nLe robot est dans un couloir large de 2 cases, face au mur du fond. Que se passe-t-il au 4e tour de boucle ?",
+              "answer": "Au 4e tour, il n'y a plus de mur devant (sortie), il exécute $AVANCER$ et sort du couloir.",
+              "hint": "Simule les 3 premiers tours : il avance, arrive au mur, tourne, avance le long du mur... Au 4e tour, où est-il ?",
+              "explanation": "Tour 1: Avance. Tour 2: Mur devant -> Tourne gauche. Tour 3: Avance (le long du mur). Tour 4: Plus de mur devant (c'est la sortie) -> Avance et sort."
+            }
+          ]
+        },
+        {
+          "title": "Débogage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "C'est quoi, un bug ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as écrit ton programme, tu appuies sur « Exécuter »... et rien ne se passe comme prévu. Le robot fonce dans le mur, il tourne en rond, ou il s'arrête net au milieu de la piste. Pas de panique : c'est un **bug** ! Ce mot rigolo (qui veut dire « bestiole » en anglais) est entré dans l'histoire de l'informatique quand une vraie papillon de nuit s'est coincée dans un relais d'un énorme ordinateur des années 40, bloquant le calcul. Aujourd'hui, un bug, c'est simplement une **erreur dans le code** qui fait que le programme ne fait pas ce que **toi** tu voulais qu'il fasse. L'ordinateur, lui, a parfaitement obéi à tes instructions !"
+            },
+            {
+              "type": "definition",
+              "term": "Bug",
+              "definition": "Erreur de programmation qui provoque un comportement inattendu ou incorrect du programme.",
+              "example": "J'ai écrit $RÉPÉTER\\ 10\\ FOIS$ au lieu de $RÉPÉTER\\ 4\\ FOIS$ pour faire un carré : le robot fait 10 côtés au lieu de 4."
+            },
+            {
+              "type": "definition",
+              "term": "Débogage",
+              "definition": "L'art de trouver, comprendre et corriger les bugs pour que le programme fonctionne comme prévu.",
+              "example": "Je change le $10$ en $4$ dans la boucle. Le carré est parfait."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Les 3 grands types de bugs",
+              "paragraphs": [
+                "Le **bug de syntaxe** : tu as fait une faute de frappe ou oublié un symbole (ex: $RÉPETER$ sans $FOIS$). L'ordinateur refuse de démarrer et t'affiche un message d'erreur rouge.",
+                "Le **bug logique** : le code démarre, mais le résultat est faux (ex: tourner à gauche au lieu de droite). C'est le plus sournois car l'ordinateur ne dit rien !",
+                "Le **bug de condition** : le $SI$ / $SINON$ est mal écrit (ex: tester $mur\\ derrière$ au lieu de $mur\\ devant$). Le robot prend la mauvaise décision."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Repérer le type de bug, c'est déjà faire la moitié du travail de réparation. Avant de passer à la méthode de détective, entraîne-toi à classer ces petites erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du détective : l'exécution pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment trouver un bug logique qui ne fait pas planter le programme ? Tu dois devenir l'ordinateur. Prends une feuille et un crayon, et **joue le programme instruction par instruction**, comme si tu étais le robot. On appelle ça une **exécution manuelle** ou un **trace**. Note la valeur de tout ce qui change (la position, la direction, le compteur de boucle) à chaque ligne. C'est un peu lent, mais c'est la seule façon de voir *exactement* où le programme dévie de ton plan."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Prépare ton tableau de trace",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Des colonnes : $N°\\ ligne$, $Instruction$, $Position\\ (x,y)$, $Direction$, $Compteur\\ boucle$."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Joue la 1re instruction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le résultat dans la 1re ligne du tableau. Ne saute pas d'étape !"
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Continue jusqu'au bug",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au moment où la position ou la direction ne correspond plus à ton objectif, tu as trouvé la ligne coupable."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Corrige et re-teste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Modifie le code, puis refais une trace complète pour être sûr que tout roule."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode demande de la rigueur, mais elle marche à tous les coups. Même les ingénieurs de chez Google ou la NASA font des traces sur papier (ou sur tableau blanc) quand un algorithme complexe les bloque. À ton tour de jouer au détective sur un code qui tourne en rond."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger, tester, et... recommencer !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as trouvé la ligne fautive, tu l'as corrigée. C'est fini ? Pas tout à fait. Un bon programmeur sait qu'une correction peut en casser une autre (on appelle ça une **régression**). Il faut donc **retester le programme entier**, pas seulement la partie modifiée. Et surtout, il faut le tester dans des situations **difficiles** : le cas normal, mais aussi les « cas limites » (au tout début, au tout dernier tour de boucle, juste devant un mur, sur une case vide)."
+            },
+            {
+              "type": "definition",
+              "term": "Jeu de tests",
+              "definition": "Liste de situations précises (entrées) qu'on fait passer au programme pour vérifier qu'il donne les bons résultats (sorties) à chaque fois.",
+              "example": "Test 1: Robot au milieu. Test 2: Robot face au mur. Test 3: Robot sur la case d'arrivée."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de pro",
+              "paragraphs": [
+                "Quand tu corriges un bug, ajoute un commentaire dans ton code (une petite note pour toi) : $//\\ Corrigé\\ le\\ 12/10:\\ inversion\\ gauche/droite$. Cela t'évite de refaire la même erreur dans six mois !"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tester soigneusement, c'est le secret pour avoir confiance en son code. Essaie maintenant de compléter un jeu de tests pour un petit programme de déplacement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le débogage, c'est du sport (pour le cerveau)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu vas chercher le bug pendant $20$ minutes, et la solution, c'était juste un $<$ au lieu de $>$. C'est normal, ça arrive aux meilleurs ! Le débogage, c'est comme résoudre une énigme : ça demande de la patience, de l'observation, et ça fait travailler ton cerveau en mode « logique pure ». Chaque bug corrigé te rend plus fort pour le suivant. Ne te décourage pas si tu ne vois pas l'erreur tout de suite : relis ton code à voix haute, explique-le à ton caillou porte-bonheur (ou à un camarade), et la solution apparaîtra souvent comme par magie."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "La technique du canard en plastique",
+              "paragraphs": [
+                "Les vrais développeurs gardent parfois un canard en plastique sur leur bureau. Quand ils sont bloqués, ils expliquent leur code **ligne par ligne** au canard. Le fait de formuler les choses à voix haute, lentement, force le cerveau à repérer l'incohérence. Essaie la prochaine fois, ça marche !"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode solide : comprendre l'erreur, tracer le code, corriger, tester large. Le dernier exercice te met au défi de déboguer un programme complet qui comporte plusieurs erreurs mélangées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Classe ces bugs :\\nA) J'ai écrit $REPETER$ (sans accent) au lieu de $RÉPÉTER$.\\nB) Le robot doit faire un carré (4 côtés) mais j'ai mis $RÉPÉTER\\ 5\\ FOIS$.\\nC) J'ai écrit $SI\\ (mur\\ gauche)\\ ALORS\\ AVANCER$ au lieu de $SI\\ (mur\\ devant)$.",
+              "answer": "A: Syntaxique. B: Logique. C: Condition.",
+              "hint": "Syntaxique = l'ordinateur ne comprend pas l'ordre. Logique = l'ordre est compris mais le résultat est faux. Condition = mauvaise décision.",
+              "explanation": "A est une faute de frappe (syntaxique). B le code tourne mais fait 5 côtés au lieu de 4 (logique). C teste le mauvais capteur (condition)."
+            },
+            {
+              "question": "Voici un code buggé pour avancer de 3 cases :\\n$RÉPÉTER\\ 4\\ FOIS\\ [\\ AVANCER\\ ]$\\nFais la trace pour $N°\\ ligne=1$ à $4$ (compteur de boucle) et dis à quelle ligne le bug apparaît.",
+              "answer": "Le bug apparaît dès la fin de la 3e itération (ou au début de la 4e) : le robot a déjà fait ses 3 cases, la 4e est en trop.",
+              "hint": "Simule : Tour 1 -> 1 case. Tour 2 -> 2 cases. Tour 3 -> 3 cases (objectif atteint). Tour 4 -> 4 cases (bug).",
+              "explanation": "La boucle tourne 4 fois au lieu de 3. L'erreur est dans le nombre de répétitions ($4$ au lieu de $3$)."
+            },
+            {
+              "question": "Pour un programme qui fait : $SI\\ (case\\ noire)\\ ALORS\\ TOURNER\\_GAUCHE\\ SINON\\ AVANCER$, propose 3 cas de test indispensables.",
+              "answer": "1. Robot sur case noire. 2. Robot sur case blanche. 3. Robot sur case noire mais mur à gauche (vérifier qu'il ne tente pas l'impossible).",
+              "hint": "Il faut tester les deux branches du SI (VRAI et FAUX) et un cas limite (bord de terrain).",
+              "explanation": "Il faut couvrir : condition VRAI (case noire -> tourne), condition FAUSSE (case blanche -> avance), et un cas limite pour la robustesse."
+            },
+            {
+              "question": "Ce programme doit faire un triangle équilatéral (3 côtés, angle 120°). Trouve les 2 bugs :\\n$RÉPÉTER\\ 4\\ FOIS\\ [\\ AVANCER\\ ;\\ TOURNER\\_GAUCHE\\ 120\\ ]$",
+              "answer": "Bug 1: $RÉPÉTER\\ 4\\ FOIS$ -> devrait être $3$. Bug 2: $TOURNER\\_GAUCHE\\ 120$ -> pour un triangle, l'angle extérieur est $120°$, c'est correct SI le robot tourne sur place. Mais souvent l'instruction est $TOURNER\\ 120$. On suppose que l'erreur est le nombre de côtés (4 au lieu de 3).",
+              "hint": "Combien de côtés a un triangle ? Combien de fois la boucle doit-elle tourner ?",
+              "explanation": "Un triangle a 3 côtés. La boucle $RÉPÉTER\\ 4\\ FOIS$ fait tracer 4 côtés (un losange ou un carré selon l'angle). Il faut $RÉPÉTER\\ 3\\ FOIS$. L'angle de $120°$ est correct pour l'angle extérieur d'un triangle équilatéral."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mission 1 : Le robot 탐험가 (Explorateur)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce bilan, imagine un petit robot explorateur posé sur une planète inconnue. Il doit rejoindre sa base (la case verte) en traversant un champ de cailloux gris. Il a 3 capteurs : $mur\\ devant$, $mur\\ gauche$, $mur\\ droite$. Il ne peut pas voir loin, il doit réagir au fur et à mesure. Tu vas devoir écrire l'algorithme complet qui lui permet de slalomer entre les obstacles. C'est le moment de sortir ta boîte à outils : séquences pour les déplacements simples, boucles pour avancer longtemps, conditions pour contourner les cailloux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Stratégie : Suivre le mur de gauche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant qu'on n'est pas à la base : $SI\\ (pas\\ de\\ mur\\ à\\ gauche)\\ ALORS\\ \\{TOURNER\\_GAUCHE;\\ AVANCER\\}\\ SINON\\ SI\\ (pas\\ de\\ mur\\ devant)\\ ALORS\\ \\{AVANCER\\}\\ SINON\\ \\{TOURNER\\_DROITE\\}$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Traduction en blocs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Boucle $TANT\\ QUE\\ (pas\\ base)$ -> Condition $gauche\\ libre$ -> Séquence $Tourner\\ Gauche, Avancer$ -> Sinon Condition $devant\\ libre$ -> $Avancer$ -> Sinon $Tourner\\ Droite$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet algorithme « suit le mur de gauche » est un grand classique de la robotique : il garantit de trouver la sortie de n'importe quel labyrinthe sans boucles fermées. Essaie de le programmer mentalement pour le premier exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mission 2 : Chasse aux bugs dans le code mystère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un camarade t'a passé son code pour faire un losange (4 côtés égaux, angles 60° et 120°). Il te dit : \"Ça ne marche pas, mon robot fait n'importe quoi !\". Voici son code :\\n$RÉPÉTER\\ 4\\ FOIS\\ [\\ AVANCER\\ ;\\ TOURNER\\_GAUCHE\\ 60\\ ;\\ AVANCER\\ ;\\ TOURNER\\_GAUCHE\\ 120\\ ]$\\nMets ta casquette de détective. Fais la trace sur papier pour le premier tour de boucle seulement, et tu verras tout de suite où est le problème. Un losange, c'est 4 côtés, mais attention aux angles !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Analyse du 1er tour (Trace)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. $AVANCER$ (Côté 1). 2. $TOURNER\\ 60$. 3. $AVANCER$ (Côté 2). 4. $TOURNER\\ 120$. -> Le robot a déjà fait 2 côtés dans le 1er tour de boucle !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Conséquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La boucle $RÉPÉTER\\ 4\\ FOIS$ fait faire $4 \\times 2 = 8$ côtés au total. Ce n'est pas un losange."
+                    }
+                  ]
+                },
+                {
+                  "title": "Correction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il faut mettre **un seul** $AVANCER$ et **un seul** $TOURNER$ par tour de boucle. Angle alterné $60, 120, 60, 120$ -> Il faut une variable ou 2 bouches imbriquées ? Non, plus simple : $RÉPÉTER\\ 2\\ FOIS\\ [\\ AVANCER;\\ TOURNER\\ 60;\\ AVANCER;\\ TOURNER\\ 120\\ ]$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comme la trace révèle l'erreur instantanément ? C'est bien plus rapide que de deviner. Maintenant, à toi de corriger un programme qui doit dessiner un escalier de 3 marches."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mission 3 : Ton premier vrai projet"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de briller ! Tu vas concevoir **de A à Z** un mini-programme qui fait danser ton robot. Le cahier des charges est simple : le robot doit partir du centre, faire un tour complet sur lui-même ($360°$) par petits bonds, puis tracer un grand carré autour de lui, et enfin revenir au centre en ligne droite. Tu as le droit d'utiliser : $AVANCER$, $TOURNER\\_GAUCHE\\ (angle)$, $RÉPÉTER$, $SI$ (même si tu n'en as pas besoin ici), et des variables si tu te sens à l'aise. Décompose le problème en grosses étapes avant de coder."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Étape 1 : La pirouette (tour sur place). Boucle : $RÉPÉTER\\ 8\\ FOIS\\ [\\ TOURNER\\_GAUCHE\\ 45\\ ]$ (ou 4 fois 90).",
+                "Étape 2 : Le grand carré. Il faut s'écarter du centre -> $AVANCER\\ 3$. Puis boucle carré : $RÉPÉTER\\ 4\\ FOIS\\ [\\ AVANCER\\ 6;\\ TOURNER\\_GAUCHE\\ 90\\ ]$.",
+                "Étape 3 : Retour au centre. Se réorienter (demi-tour $180°$) et $AVANCER\\ 3$.",
+                "Étape 4 : Assembler le tout en une grande séquence : Pirouette -> Éloignement -> Carré -> Retour."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme c'est clair quand on structure ! Chaque étape est un sous-problème simple. Tu n'as plus qu'à traduire chaque ligne en code. Lance-toi pour l'exercice final."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une séquence d'instructions dans le bon ordre pour déplacer un sprite.",
+                "Je sais utiliser une boucle $RÉPÉTER$ pour éviter de réécrire les mêmes instructions.",
+                "Je sais utiliser un bloc $SI\\ ...\\ ALORS\\ ...\\ SINON\\ ...$ pour faire choisir le programme.",
+                "Je sais combiner séquences, boucles et conditions dans un même algorithme.",
+                "Je sais identifier un bug de syntaxe, un bug logique et un bug de condition.",
+                "Je sais faire une trace (exécution pas à pas) sur papier pour localiser une erreur.",
+                "Je sais corriger un bug et tester mon programme avec plusieurs cas (normaux et limites).",
+                "Je peux décomposer un problème simple en sous-tâches et écrire l'algorithme complet."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'algorithme (en français structuré) pour que le robot avance tout droit jusqu'à rencontrer un mur, puis tourne à droite, et recommence indéfiniment (patrouille).",
+              "answer": "$RÉPÉTER\\ INDÉFINIMENT\\ [\\ SI\\ (mur\\ devant)\\ ALORS\\ \\{TOURNER\\_DROITE\\}\\ SINON\\ \\{AVANCER\\}\\ ]$",
+              "hint": "Il faut une boucle infinie. À l'intérieur, un test : si mur -> tourner, sinon -> avancer.",
+              "explanation": "La boucle infinie assure la patrouille continue. La condition gère le rebord : on tourne seulement si bloqué, sinon on avance."
+            },
+            {
+              "question": "Ce code doit faire un escalier de 3 marches (monter 1, avancer 1, monter 1, avancer 1, monter 1, avancer 1). Trouve l'erreur :\\n$RÉPÉTER\\ 3\\ FOIS\\ [\\ TOURNER\\_GAUCHE\\ 90;\\ AVANCER;\\ TOURNER\\_DROITE\\ 90;\\ AVANCER\\ ]$",
+              "answer": "Les angles $TOURNER\\_GAUCHE\\ 90$ puis $TOURNER\\_DROITE\\ 90$ s'annulent. Le robot ne fait que avancer tout droit. Il faut tourner de 90° une seule fois par marche pour changer de direction (ex: $TOURNER\\_GAUCHE\\ 90; AVANCER; TOURNER\\_DROITE\\ 90$ ne fait pas monter). Correction : $RÉPÉTER\\ 3\\ FOIS\\ [\\ TOURNER\\_GAUCHE\\ 90;\\ AVANCER;\\ TOURNER\\_DROITE\\ 90;\\ AVANCER\\ ]$ ne fait pas monter. Pour monter : il faut $AVANCER$ (montée), $TOURNER\\_DROITE\\ 90$, $AVANCER$ (palier), $TOURNER\\_GAUCHE\\ 90$.",
+              "hint": "Simule la direction du robot après chaque instruction. $GAUCHE 90$ puis $DROITE 90$ = direction initiale. Il ne 'monte' jamais.",
+              "explanation": "La suite $GAUCHE 90, DROITE 90$ ramène le robot face à sa direction de départ. Il trace une ligne droite. Pour une marche : $AVANCER$ (haut), $DROITE 90$, $AVANCER$ (plat), $GAUCHE 90$ (prêt pour la suivante)."
+            },
+            {
+              "question": "Écris le programme complet pour la 'Mission 3' (Pirouette 8x45°, Carré de côté 6 à distance 3, Retour).",
+              "answer": "$RÉPÉTER\\ 8\\ FOIS\\ [\\ TOURNER\\_GAUCHE\\ 45\\ ]$ ; $AVANCER\\ 3$ ; $RÉPÉTER\\ 4\\ FOIS\\ [\\ AVANCER\\ 6;\\ TOURNER\\_GAUCHE\\ 90\\ ]$ ; $TOURNER\\_GAUCHE\\ 180$ ; $AVANCER\\ 3$",
+              "hint": "Suis la liste des 4 étapes de la leçon. N'oublie pas le demi-tour (180°) avant de revenir.",
+              "explanation": "1. Pirouette : 8x45=360°. 2. Aller au coin du carré : 3 cases. 3. Carré : 4 côtés de 6, angle 90°. 4. Demi-tour (180°) et retour 3 cases."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

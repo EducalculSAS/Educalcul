@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Algèbre",
+  "title": "Automatismes d'algèbre : simplification, équation, factorisation",
+  "blocks": [
+    {
+      "title": "Simplification d'une expression littérale",
+      "content": "Simplifie l'expression $3x + 5 - 2x + 7$ et écris le résultat sous la forme $ax + b$ : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "x + 12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes en $x$ : $3x - 2x = x$. On regroupe les constantes : $5 + 7 = 12$. L'expression simplifiée est donc $x + 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation du premier degré",
+      "content": "Résous l'équation $2(x - 3) = 4x + 6$. La solution est $x = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "-6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On développe : $2x - 6 = 4x + 6$. On transporte les $x$ à gauche et les nombres à droite : $2x - 4x = 6 + 6$, soit $-2x = 12$. En divisant par $-2$, on obtient $x = -6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation d'une différence de carrés",
+      "content": "Factorise l'expression $x^2 - 9$. La factorisation est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "(x - 3)(x + 3)|(x + 3)(x - 3)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On reconnaît une différence de carrés : $x^2 - 9 = x^2 - 3^2 = (x - 3)(x + 3)$. L'ordre des facteurs n'importe pas.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

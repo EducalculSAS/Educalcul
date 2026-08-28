@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 143,
+  "_course_code": "ce2-t01-c02-lire-et-ecrire-jusqu-a-2-000",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Lire et écrire jusqu'à 2 000",
+  "title": "Quiz : Lire et écrire les nombres jusqu'à 2 000",
+  "questions": [
+    {
+      "text": "Regarde la représentation en matériel de base dix. Quel nombre est représenté ?",
+      "options": [
+        "342",
+        "324",
+        "432",
+        "3042"
+      ],
+      "correctAnswer": "342",
+      "explanation": "On compte les centaines (3 gros carrés = 300), les dizaines (4 barres = 40) et les unités (2 petits cubes = 2). Le nombre est donc $300 + 40 + 2 = 342$. L'option 324 inverse les dizaines et les unités. L'option 432 inverse les centaines et les dizaines. L'option 3042 ajoute un mille qui n'existe pas.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 3,
+        "tens": 4,
+        "units": 2,
+        "caption": "Représentation en base dix"
+      }
+    },
+    {
+      "text": "Comment s'écrit en chiffres le nombre : mille deux cent cinq ?",
+      "options": [
+        "1 205",
+        "1 025",
+        "1 250",
+        "12 005"
+      ],
+      "correctAnswer": "1 205",
+      "explanation": "Mille s'écrit $1$ au rang des milliers. Deux cents s'écrit $2$ au rang des centaines. Cinq s'écrit $5$ au rang des unités. Il n'y a pas de dizaines, on met un $0$ au rang des dizaines. Cela donne $1 205$. L'option 1 025 oublie les deux cents. L'option 1 250 met cinq dizaines au lieu de cinq unités. L'option 12 005 écrit douze mille.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le tableau de numération ci-dessous. Quel est le chiffre des centaines pour ce nombre ?",
+      "options": [
+        "5",
+        "0",
+        "1",
+        "8"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Dans le tableau, la colonne des centaines contient le chiffre $5$. Le nombre représenté est $1 508$ (1 mille, 5 centaines, 0 dizaine, 8 unités). L'option 0 correspond au chiffre des dizaines. L'option 1 correspond au chiffre des milliers. L'option 8 correspond au chiffre des unités.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 1508,
+        "caption": "Tableau de numération pour 1 508"
+      }
+    },
+    {
+      "text": "Quel nombre entier se trouve exactement entre $1 349$ et $1 351$ ?",
+      "options": [
+        "1 350",
+        "1 340",
+        "1 360",
+        "1 450"
+      ],
+      "correctAnswer": "1 350",
+      "explanation": "Pour trouver le nombre entre deux nombres consécutifs pairs ou impairs, on cherche le milieu. $1 349$ et $1 351$ sont espacés de 2. Le nombre au milieu est $1 350$. On peut vérifier : $1 349 < 1 350 < 1 351$. Les autres options sont trop éloignées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris en chiffres le nombre composé de : 1 mille, 0 cent, 7 dizaines et 3 unités.",
+      "options": [
+        "1 073",
+        "1 703",
+        "1 730",
+        "1 037"
+      ],
+      "correctAnswer": "1 073",
+      "explanation": "On place chaque chiffre dans sa colonne : 1 aux milliers, 0 aux centaines (car 0 cent), 7 aux dizaines (7 dizaines = 70) et 3 aux unités. Cela forme $1 073$. L'option 1 703 met 7 aux centaines au lieu des dizaines. L'option 1 730 met 7 aux centaines et 3 aux dizaines. L'option 1 037 inverse les dizaines et les unités.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

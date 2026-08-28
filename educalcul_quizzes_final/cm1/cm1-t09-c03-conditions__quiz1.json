@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Si / alors",
+  "title": "Les conditions : Si / alors",
+  "questions": [
+    {
+      "text": "En informatique, à quoi sert une instruction Si / alors ?",
+      "options": [
+        "À répéter une action plusieurs fois",
+        "À faire un calcul très rapide",
+        "À exécuter une action seulement si une condition est vraie",
+        "À effacer tout le programme"
+      ],
+      "correctAnswer": "À exécuter une action seulement si une condition est vraie",
+      "explanation": "L'instruction Si / alors permet de créer un choix. Le programme vérifie si la condition est remplie. Si c'est le cas, il fait l'action. Sinon, il ne fait rien ou fait autre chose.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une instruction : Si le score est égal à $10$, alors gagner la partie. Le score actuel est de $8$. Que se passe t-il ?",
+      "options": [
+        "Le joueur gagne la partie",
+        "Le joueur ne gagne pas la partie",
+        "Le score devient $10$",
+        "Le programme s'arrête"
+      ],
+      "correctAnswer": "Le joueur ne gagne pas la partie",
+      "explanation": "La condition est que le score soit égal à $10$. Comme $8$ n'est pas égal à $10$, la condition est fausse, donc l'action de gagner la partie n'est pas exécutée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On écrit : Si la température est inférieure à $0$ degré, alors mettre un manteau. Quelle situation déclenche l'action de mettre un manteau ?",
+      "options": [
+        "La température est de $5$ degrés",
+        "La température est de $10$ degrés",
+        "La température est de $-3$ degrés",
+        "La température est de $0$ degré"
+      ],
+      "correctAnswer": "La température est de $-3$ degrés",
+      "explanation": "Une température inférieure à $0$ degré signifie qu'elle est négative. Parmi les choix, seul $-3$ est plus petit que $0$. À $0$ degré, la condition n'est pas strictement inférieure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'horloge. L'instruction est : Si il est $3$ heures et $30$ minutes, alors sonner la cloche. Que fait le programme ?",
+      "options": [
+        "Le programme ne fait rien",
+        "Le programme sonne la cloche",
+        "Le programme attend $30$ minutes",
+        "Le programme change l'heure"
+      ],
+      "correctAnswer": "Le programme sonne la cloche",
+      "explanation": "L'horloge indique exactement $3$ heures et $30$ minutes. La condition est donc vraie, ce qui déclenche l'action de sonner la cloche.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 30,
+        "caption": "Heure actuelle",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un robot suit cette règle : Si la case est bleue, alors avancer. Sinon, tourner à droite. Le robot arrive sur une case rouge. Que fait-il ?",
+      "options": [
+        "Il avance",
+        "Il s'arrête",
+        "Il tourne à droite",
+        "Il change la couleur de la case"
+      ],
+      "correctAnswer": "Il tourne à droite",
+      "explanation": "La condition est que la case soit bleue. La case est rouge, donc la condition est fausse. Le robot doit alors exécuter l'instruction après le Sinon, qui est de tourner à droite.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

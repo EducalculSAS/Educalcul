@@ -1,0 +1,65 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Organiser catégories et effectifs",
+  "title": "Organiser des données dans un tableau",
+  "blocks": [
+    {
+      "title": "Compter un effectif",
+      "content": "Voici les fruits préférés d'un groupe d'enfants : pomme, poire, pomme, banane, pomme, poire. Combien d'enfants ont choisi la pomme ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compte les occurrences du mot 'pomme' dans la liste : 1ère, 3ème, 5ème position. Il y a $3$ pommes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau",
+      "content": "On veut ranger ces résultats dans un tableau. Le tableau ci-dessous est commencé. Quel nombre écrire dans la case vide pour les bananes ?",
+      "correctAnswer": "1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans la liste, le mot 'banane' apparaît $1$ fois. L'effectif des bananes est donc $1$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "3"
+          ],
+          [
+            "Poire",
+            "2"
+          ],
+          [
+            "Banane",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lire le total",
+      "content": "En utilisant le tableau complété, calcule le nombre total d'enfants interrogés.",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne tous les effectifs : $3$ (pommes) + $2$ (poires) + $1$ (banane) = $6$ enfants au total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

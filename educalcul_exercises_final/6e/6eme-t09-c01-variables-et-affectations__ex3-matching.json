@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Tracer l'état",
+  "title": "Tracer l'état d'un algorithme",
+  "blocks": [
+    {
+      "title": "Algorithme avec deux variables",
+      "content": "Relie chaque expression à sa valeur correspondante après l'exécution de l'algorithme suivant :\\n$ a \\leftarrow 5 $\\n$ b \\leftarrow a + 3 $\\n$ a \\leftarrow a \\times 2 $",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Valeur finale de $a$",
+          "right": "$10$"
+        },
+        {
+          "left": "Valeur finale de $b$",
+          "right": "$8$"
+        },
+        {
+          "left": "Valeur de $a$ après la première affectation",
+          "right": "$5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Au début, $a$ vaut $5$. Ensuite $b$ reçoit $a+3 = 8$. Enfin $a$ est multiplié par $2$ : $5 \\times 2 = 10$. Les valeurs finales sont donc $a=10$ et $b=8$. La valeur intermédiaire de $a$ après la première ligne est $5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec soustraction et addition",
+      "content": "Relie chaque expression à sa valeur correspondante après l'exécution de l'algorithme suivant :\\n$ x \\leftarrow 10 $\\n$ y \\leftarrow 4 $\\n$ x \\leftarrow x - y $\\n$ y \\leftarrow x + y $",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Valeur finale de $x$",
+          "right": "$6$"
+        },
+        {
+          "left": "Valeur finale de $y$",
+          "right": "$10$"
+        },
+        {
+          "left": "Valeur de $x$ après la troisième ligne",
+          "right": "$6$"
+        }
+      ],
+      "items": [],
+      "explanation": "Initialement $x=10$, $y=4$. La troisième ligne fait $x = 10 - 4 = 6$. La quatrième ligne fait $y = 6 + 4 = 10$. Les valeurs finales sont $x=6$, $y=10$. La valeur de $x$ après la troisième ligne est aussi $6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec trois variables",
+      "content": "Relie chaque variable à sa valeur finale après l'exécution de l'algorithme suivant :\\n$ p \\leftarrow 7 $\\n$ q \\leftarrow 2 $\\n$ r \\leftarrow p \\times q $\\n$ p \\leftarrow r - q $",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Valeur finale de $p$",
+          "right": "$12$"
+        },
+        {
+          "left": "Valeur finale de $q$",
+          "right": "$2$"
+        },
+        {
+          "left": "Valeur finale de $r$",
+          "right": "$14$"
+        }
+      ],
+      "items": [],
+      "explanation": "Au départ $p=7$, $q=2$. On calcule $r = 7 \\times 2 = 14$. Ensuite $p$ devient $r - q = 14 - 2 = 12$. La variable $q$ ne change pas. Les valeurs finales sont $p=12$, $q=2$, $r=14$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

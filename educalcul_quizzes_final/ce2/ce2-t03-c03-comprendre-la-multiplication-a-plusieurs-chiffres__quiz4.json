@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 162,
+  "_course_code": "ce2-t03-c03-comprendre-la-multiplication-a-plusieurs-chiffres",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Application : Comprendre la multiplication à plusieurs chiffres",
+  "title": "Multiplication à plusieurs chiffres : Applications CE2",
+  "questions": [
+    {
+      "text": "Pour calculer $14 \\times 3$, Lucas décompose 14 en $10 + 4$. Quelle est la suite correcte de ses calculs ?",
+      "options": [
+        "10 × 3 = 30 et 4 × 3 = 12, puis 30 + 12 = 42",
+        "10 × 3 = 13 et 4 × 3 = 7, puis 13 + 7 = 20",
+        "10 × 3 = 30 et 4 × 3 = 7, puis 30 + 7 = 37",
+        "14 × 3 = 42 directement sans décomposition"
+      ],
+      "correctAnswer": "10 × 3 = 30 et 4 × 3 = 12, puis 30 + 12 = 42",
+      "explanation": "La décomposition $14 = 10 + 4$ permet d'utiliser la distributivité : $14 \\times 3 = (10 + 4) \\times 3 = (10 \\times 3) + (4 \\times 3) = 30 + 12 = 42$. Les autres options contiennent des erreurs de tables de multiplication ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la multiplication posée $23 \\times 4$, quelle opération fait-on en premier pour trouver le premier résultat partiel (celui qu'on écrit sous la ligne, aligné à droite) ?",
+      "options": [
+        "3 × 4",
+        "2 × 4",
+        "20 × 4",
+        "23 × 4"
+      ],
+      "correctAnswer": "3 × 4",
+      "explanation": "En multiplication posée, on commence toujours par multiplier le chiffre des unités du nombre du haut (ici 3) par le multiplicateur (ici 4). Le 2 représente les dizaines (20), il sera multiplié ensuite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une cagette contient 12 pommes. Combien y a-t-il de pommes au total dans 5 cagettes ?",
+      "options": [
+        "60 pommes",
+        "55 pommes",
+        "65 pommes",
+        "50 pommes"
+      ],
+      "correctAnswer": "60 pommes",
+      "explanation": "Il faut calculer $12 \\times 5$. On peut décomposer : $10 \\times 5 = 50$ et $2 \\times 5 = 10$. En ajoutant : $50 + 10 = 60$. L'option 50 correspond à $10 \\times 5$ seulement (oubli des 2 pommes par cagette).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Cagette 1",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Cagette 2",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Cagette 3",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Cagette 4",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Cagette 5",
+            "value": 12,
+            "tone": "blue"
+          }
+        ],
+        "caption": "5 cagettes de 12 pommes"
+      }
+    },
+    {
+      "text": "Parmi ces descriptions de la multiplication posée $24 \\times 3$, laquelle correspond à la méthode correcte avec la retenue ?",
+      "options": [
+        "4 × 3 = 12, j'écris 2 et je retiens 1 ; 2 × 3 = 6, 6 + 1 = 7, résultat 72",
+        "4 × 3 = 12, j'écris 2 et je retiens 1 ; 2 × 3 = 6, résultat 62",
+        "4 × 3 = 7 ; 2 × 3 = 6, résultat 67",
+        "2 × 3 = 6 ; 4 × 3 = 12, résultat 612"
+      ],
+      "correctAnswer": "4 × 3 = 12, j'écris 2 et je retiens 1 ; 2 × 3 = 6, 6 + 1 = 7, résultat 72",
+      "explanation": "On commence par les unités : $4 \\times 3 = 12$ (2 unités, 1 dizaine de retenue). Ensuite les dizaines : $2 \\times 3 = 6$ dizaines, auxquelles on ajoute la retenue (1 dizaine) pour obtenir 7 dizaines. Le résultat est 72. L'option 2 oublie la retenue, l'option 3 a une table fausse, l'option 4 inverse l'ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le produit exact de $102 \\times 4$ ?",
+      "options": [
+        "408",
+        "48",
+        "4008",
+        "480"
+      ],
+      "correctAnswer": "408",
+      "explanation": "On décompose 102 en $100 + 0 + 2$. $100 \\times 4 = 400$, $0 \\times 4 = 0$, $2 \\times 4 = 8$. Somme : $400 + 0 + 8 = 408$. L'option 48 oublie le 0 des dizaines (et la centaine), 4008 ajoute un 0 de trop, 480 correspond à $120 \\times 4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

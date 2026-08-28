@@ -1,0 +1,356 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.725973+00:00",
+  "id": 80,
+  "code": "ce1-t02-c02",
+  "title": "Lire une fraction unitaire",
+  "description": "Cours structuré Educalcul : Lire une fraction unitaire.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Lire une fraction unitaire",
+    "objectif_global": "Lire une fraction unitaire",
+    "mini_lecons_imposees": [
+      "Relier 1/n à une part parmi n.",
+      "Lire un demi, un tiers, un quart.",
+      "Représenter une fraction unitaire."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Relier 1/n à une part parmi n.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager en parts égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une tablette de chocolat que tu veux partager avec tes copains. Pour que personne ne soit jaloux, il faut couper la tablette en parts toutes de la même taille. C'est ce qu'on appelle un partage équitable. Si tu coupes en $2$ parts, chaque part est grande. Si tu coupes en $8$ parts, chaque part est plus petite. Le nombre de parts totales est très important : il se écrit en bas de la fraction."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le chiffre du bas dans une fraction. Il dit en combien de parts égales on a coupé le tout.",
+              "example": "Dans $\\frac{1}{4}$, le $4$ est le dénominateur : le tout est en $4$ parts."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Une barre partagée en $3$ parts égales : le dénominateur est $3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde la part qui est colorée. On n'en a pris qu'une seule parmi toutes celles qui existent. Le chiffre du haut, le numérateur, compte combien de parts on a prises. Ici, on a pris $1$ part sur $3$. C'est pour cela qu'on écrit un $1$ en haut. Une fraction qui a $1$ en haut s'appelle une fraction unitaire."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le chiffre du haut dans une fraction. Il dit combien de parts on a prises ou coloriées.",
+              "example": "Dans $\\frac{1}{5}$, le $1$ est le numérateur : on a pris $1$ part."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Un disque partagé en $4$ : une part sur $4$ est colorée, le numérateur est $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on écrit une fraction unitaire, on met toujours le $1$ en haut et le nombre de parts totales en bas. On lit : \"un sur\" suivi du nombre du bas. Par exemple, $\\frac{1}{6}$ se lit \"un sur six\". Cela veut dire : le tout est coupé en $6$ parts égales et je regarde $1$ seule de ces parts."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{1}{n} = 1 \\text{ part sur } n \\text{ parts}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant relier le dessin au chiffre du bas. Dans la prochaine leçon, on va apprendre les noms tout spéciaux qu'ont les fractions les plus courantes, comme le demi ou le quart."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde cette image : un rectangle divisé en $5$ parties égales. Quel est le dénominateur de la fraction unitaire qui représente une seule de ces parties ?",
+              "answer": "5",
+              "hint": "Compte le nombre total de parts dans le rectangle.",
+              "explanation": "Le rectangle est coupé en $5$ parts égales. Le dénominateur, c'est le nombre total de parts, donc $5$. La fraction est $\\frac{1}{5}$."
+            },
+            {
+              "question": "Un cercle est partagé en $8$ parts identiques. Une part est coloriée en bleu. Écris la fraction unitaire correspondante.",
+              "answer": "$\\frac{1}{8}$",
+              "hint": "Le numérateur est $1$ (une part coloriée), le dénominateur est le total des parts.",
+              "explanation": "Il y a $8$ parts en tout (dénominateur $8$) et $1$ part coloriée (numérateur $1$). On écrit $\\frac{1}{8}$."
+            },
+            {
+              "question": "Complète : La fraction $\\frac{1}{7}$ signifie qu'on a coupé le tout en $\\ldots$ parts égales et qu'on en a pris $\\ldots$.",
+              "answer": "7 ; 1",
+              "hint": "Le chiffre du bas donne le nombre de parts totales, celui du haut le nombre de parts prises.",
+              "explanation": "Le $7$ en bas (dénominateur) dit qu'il y a $7$ parts en tout. Le $1$ en haut (numérateur) dit qu'on en a pris une seule."
+            }
+          ]
+        },
+        {
+          "title": "Lire un demi, un tiers, un quart.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le demi, le tiers, le quart"
+            },
+            {
+              "type": "paragraph",
+              "content": "Certaines fractions unitaires ont un nom tout particulier qu'on utilise tout le temps sans même y penser. La plus célèbre, c'est quand on coupe en $2$ parts égales. Chacune de ces parts s'appelle un demi. Si tu partages une pomme en deux, tu as deux demis. En fraction, on l'écrit $\\frac{1}{2}$ : $1$ part sur $2$ au total."
+            },
+            {
+              "type": "definition",
+              "term": "Un demi",
+              "definition": "Une part sur deux parts égales. Écrit $\\frac{1}{2}$.",
+              "example": "Boire un demi verre d'eau, c'est boire $\\frac{1}{2}$ du verre."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Un demi : $\\frac{1}{2}$, une part sur deux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Continuons. Si tu coupes une baguette de pain en $3$ parts toutes pareilles, chaque morceau est un tiers. C'est un mot qu'on entend souvent : \"Attends, je prends un tiers du gâteau !\" En écriture fractionnaire, c'est $\\frac{1}{3}$ : le $3$ en bas pour les trois parts, le $1$ en haut pour la part prise."
+            },
+            {
+              "type": "definition",
+              "term": "Un tiers",
+              "definition": "Une part sur trois parts égales. Écrit $\\frac{1}{3}$.",
+              "example": "Partager un ruban en trois, c'en faire trois tiers."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Un tiers : $\\frac{1}{3}$, une part sur trois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier nom spécial pour aujourd'hui, c'est le quart. Imagine une pizza découpée en $4$ parts identiques. Chaque part est un quart de pizza. C'est aussi le mot qu'on utilise pour l'heure : \"Il est trois heures et quart\" veut dire $3$ heures $15$ minutes, soit un quart d'heure après $3$ heures. En fraction, c'est $\\frac{1}{4}$."
+            },
+            {
+              "type": "definition",
+              "term": "Un quart",
+              "definition": "Une part sur quatre parts égales. Écrit $\\frac{1}{4}$.",
+              "example": "Un quart d'heure = $15$ minutes = $\\frac{1}{4}$ d'heure."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Un quart : $\\frac{1}{4}$, une part sur quatre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons de ne plus les mélanger. Le demi, c'est $2$ parts en tout ($\\frac{1}{2}$). Le tiers, c'est $3$ parts en tout ($\\frac{1}{3}$). Le quart, c'est $4$ parts en tout ($\\frac{1}{4}$). Plus le nombre du bas est grand, plus la part est petite. Un tiers est plus grand qu'un quart, car on a coupé en moins de morceaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant les trois stars des fractions unitaires. La prochaine étape, ce sera de savoir les dessiner toi-même sur une feuille, sans modèle tout fait."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment s'appelle la fraction $\\frac{1}{2}$ en mots ?",
+              "answer": "Un demi",
+              "hint": "C'est quand on partage en deux parts égales.",
+              "explanation": "La fraction $\\frac{1}{2}$ se lit \"un demi\". C'est une part sur deux parts égales."
+            },
+            {
+              "question": "Écris en chiffres la fraction qu'on lit \"un tiers\".",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Le tiers, c'est une part sur trois.",
+              "explanation": "\"Un tiers\" veut dire $1$ part sur $3$ parts égales. On écrit donc $1$ en haut et $3$ en bas : $\\frac{1}{3}$."
+            },
+            {
+              "question": "Parmi ces fractions, laquelle représente la plus grande part : $\\frac{1}{2}$, $\\frac{1}{3}$ ou $\\frac{1}{4}$ ?",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Imagine une barre de chocolat partagée en $2$, en $3$ ou en $4$. Où est le plus gros morceau ?",
+              "explanation": "Moins il y a de parts au total (dénominateur petit), plus chaque part est grande. $\\frac{1}{2}$ (un demi) est plus grand que $\\frac{1}{3}$ (un tiers) qui est plus grand que $\\frac{1}{4}$ (un quart)."
+            },
+            {
+              "question": "Relie chaque mot à sa fraction : Un demi, Un tiers, Un quart.",
+              "answer": "Un demi $\\rightarrow \\frac{1}{2}$ ; Un tiers $\\rightarrow \\frac{1}{3}$ ; Un quart $\\rightarrow \\frac{1}{4}$",
+              "hint": "Regarde le chiffre du bas : $2$ pour demi, $3$ pour tiers, $4$ pour quart.",
+              "explanation": "Demi $\\leftrightarrow 2$ parts ($\\frac{1}{2}$), Tiers $\\leftrightarrow 3$ parts ($\\frac{1}{3}$), Quart $\\leftrightarrow 4$ parts ($\\frac{1}{4}$)."
+            }
+          ]
+        },
+        {
+          "title": "Représenter une fraction unitaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner une fraction unitaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "À ton tour de jouer ! Représenter une fraction, c'est faire un dessin qui montre le partage. Le plus simple, c'est d'utiliser une bande (un rectangle long). Pour montrer $\\frac{1}{5}$, je dois d'abord couper ma bande en $5$ parts égales. Ce n'est pas facile du premier coup, mais on peut plier la feuille ou tracer des traits au crayon à papier pour s'aider."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un grand rectangle (une bande) ou un cercle. La bande est plus facile pour les grands nombres comme $7$ ou $9$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser en parts égales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le dénominateur (le chiffre du bas). Pour $\\frac{1}{5}$, trace $4$ traits pour faire $5$ parts de la même largeur. Vérifie à l'œil ou en mesurant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Colorier une seule part",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur est $1$. Colorie une seule des parts, n'importe laquelle. C'est fini ! Ton dessin montre $\\frac{1}{5}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Représentation de $\\frac{1}{5}$ : une bande en $5$ parts, une part coloriée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un cercle, c'est un peu différent. Pour $\\frac{1}{4}$, on trace une croix au milieu (un trait vertical, un horizontal) et on a $4$ quarts parfaits. Pour $\\frac{1}{3}$, c'est plus délicat : il faut imaginer un symbole de la paix (un Y inversé) au centre pour faire trois parts égales. Entraîne-toi sur ton ardoise !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Un tiers dans un cercle : trois parts égales, une coloriée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne le dessin et tu dois deviner la fraction. Compte d'abord le nombre total de parts (le dénominateur), ensuite regarde combien sont coloriées (le numérateur, toujours $1$ pour nous). Si tu vois un rectangle en $6$ parts avec une part verte, c'est $\\frac{1}{6}$. C'est comme une devinette visuelle !"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 1,
+              "cols": 6,
+              "highlighted": 1,
+              "caption": "Une bande de $6$ cases : $1$ case sur $6$ est colorée, c'est $\\frac{1}{6}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant tous les outils : tu sais lire le nom, écrire les chiffres et faire le dessin. Les fractions unitaires n'ont plus de secret pour toi. Bravo pour ton travail sérieux et appliqué !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais relier le dessin d'une part sur $n$ à la fraction $\\frac{1}{n}$.",
+                "Je sais lire et écrire : un demi ($\\frac{1}{2}$), un tiers ($\\frac{1}{3}$), un quart ($\\frac{1}{4}$).",
+                "Je sais représenter $\\frac{1}{n}$ en dessinant une bande ou un cercle partagé en $n$ parts égales et en coloriant une part."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu veux représenter $\\frac{1}{4}$ sur une bande. En combien de parts égales dois-tu couper la bande ?",
+              "answer": "4",
+              "hint": "Regarde le chiffre du bas de la fraction.",
+              "explanation": "Le dénominateur est $4$. Il faut donc couper la bande en $4$ parts égales."
+            },
+            {
+              "question": "Tu as dessiné un cercle coupé en $3$ parts égales et tu as colori� une part. Quelle fraction as-tu représentée ?",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Total des parts = dénominateur. Parts coloriées = numérateur.",
+              "explanation": "Le cercle est en $3$ parts (dénominateur $3$). Une part est coloriée (numérateur $1$). C'est $\\frac{1}{3}$, un tiers."
+            },
+            {
+              "question": "Sur cette grille, une case sur six est grise. Écris la fraction correspondante.",
+              "answer": "$\\frac{1}{6}$",
+              "hint": "Compte les cases en tout, puis les cases grises.",
+              "explanation": "Il y a $6$ cases au total (dénominateur $6$) et $1$ case grise (numérateur $1$). La fraction est $\\frac{1}{6}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

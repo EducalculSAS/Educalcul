@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Graphique",
+  "title": "Graphiques de fonctions affines",
+  "blocks": [
+    {
+      "title": "Vocabulaire et définitions",
+      "content": "Le graphique d'une fonction affine $f(x) = ax + b$ dans un repère orthonormé est une {{1}}. Le nombre $a$ est appelé le {{2}} ; il correspond à la pente de la droite. Le nombre $b$ est l'{{3}} ; c'est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.",
+      "correctAnswer": "",
+      "blanks": [
+        "droite",
+        "coefficient directeur|taux d'accroissement",
+        "ordonnée à l'origine"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction affine s'écrit sous la forme $f(x) = ax + b$. Son ensemble des points $(x ; f(x))$ forme une droite. Le coefficient $a$ est le coefficient directeur (ou taux d'accroissement) : si $a > 0$, la droite monte ; si $a < 0$, elle descend ; si $a = 0$, elle est horizontale. Le coefficient $b$ est l'ordonnée à l'origine, c'est-à-dire la valeur de $f(0)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation réduite à partir d'informations graphiques",
+      "content": "Une droite $\\mathcal{D}$ a pour coefficient directeur $3$ et coupe l'axe des ordonnées au point de coordonnées $(0 ; -2)$. L'équation réduite de cette droite est $y = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3x - 2|3x-2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation réduite d'une droite est de la forme $y = ax + b$ où $a$ est le coefficient directeur et $b$ l'ordonnée à l'origine. Ici, le coefficient directeur $a = 3$. La droite coupe l'axe des ordonnées en $(0 ; -2)$, donc l'ordonnée à l'origine $b = -2$. L'équation est donc $y = 3x - 2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture graphique et intersections avec les axes",
+      "content": "On donne la fonction affine $f(x) = -0,5x + 4$. Son graphique coupe l'axe des ordonnées au point d'ordonnée {{1}} et l'axe des abscisses au point d'abscisse {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'intersection avec l'axe des ordonnées correspond à $x = 0$ : $f(0) = -0,5 \\times 0 + 4 = 4$. L'ordonnée est $4$.\\nL'intersection avec l'axe des abscisses correspond à $f(x) = 0$ : $-0,5x + 4 = 0 \\iff -0,5x = -4 \\iff x = \\frac{-4}{-0,5} = 8$. L'abscisse est $8$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "-0.5*x + 4",
+        "xmin": -1,
+        "xmax": 9,
+        "caption": "Graphique de la fonction f(x) = -0,5x + 4"
+      }
+    }
+  ]
+}

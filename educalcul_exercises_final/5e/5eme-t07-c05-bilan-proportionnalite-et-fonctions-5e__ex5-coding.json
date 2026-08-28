@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 414,
+  "_course_code": "5eme-t07-c05-bilan-proportionnalite-et-fonctions-5e",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Proportionnalité, pourcentages, dépendance",
+  "title": "Approfondissement : Proportionnalité, pourcentages, dépendance - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul de prix remisé",
+      "content": "Écrire un algorithme en pseudo-code qui demande le prix initial d'un article et le pourcentage de remise, puis calcule et affiche le prix après remise.",
+      "correctAnswer": "Début\\nLire prixInitial\\nLire pourcentageRemise\\nCalculer remise en multipliant prixInitial par pourcentageRemise puis en divisant par cent\\nCalculer prixRemise en soustrayant remise de prixInitial\\nAfficher prixRemise\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit les deux valeurs, calcule le montant de la remise en appliquant le pourcentage (multiplication par le pourcentage puis division par cent), soustrait ce montant au prix initial et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de proportionnalité",
+      "content": "Écrire un algorithme qui reçoit deux listes de nombres de même longueur et détermine si les grandeurs sont proportionnelles. L'algorithme affiche « Proportionnel » si le rapport entre les éléments correspondants est constant, sinon « Non proportionnel ».",
+      "correctAnswer": "Début\\nLire listeA\\nLire listeB\\nSi la longueur de listeA est différente de la longueur de listeB alors\\n    Afficher « Non proportionnel »\\n    Fin\\nSinon\\n    Calculer rapport en divisant le premier élément de listeA par le premier élément de listeB\\n    Pour chaque indice i de 1 jusqu'à la longueur de listeA faire\\n        Si la division de l'élément i de listeA par l'élément i de listeB est différente de rapport alors\\n            Afficher « Non proportionnel »\\n            Fin\\n        Fin si\\n    Fin pour\\n    Afficher « Proportionnel »\\nFin si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie d'abord que les listes ont même taille. On calcule le rapport du premier couple. Ensuite on parcourt tous les couples et on compare leur rapport au premier. Si un écart est trouvé, les grandeurs ne sont pas proportionnelles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'un pourcentage d'une quantité",
+      "content": "Écrire un algorithme en pseudo-code qui demande un total et un pourcentage, puis calcule et affiche la valeur correspondant à ce pourcentage du total.",
+      "correctAnswer": "Début\\nLire total\\nLire pourcentage\\nCalculer valeur en multipliant total par pourcentage puis en divisant par cent\\nAfficher valeur\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit le total et le pourcentage, calcule la partie en multipliant le total par le pourcentage puis en divisant par cent, et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

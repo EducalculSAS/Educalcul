@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Variables et affectations",
+  "title": "Variables et affectations - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Exercice 1 : Affectation et affichage",
+      "content": "Remettez les instructions dans l'ordre correct pour que l'algorithme fonctionne.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$a$ ← $5$",
+        "$b$ ← $3$",
+        "$c$ ← $a + b$",
+        "afficher $c$"
+      ],
+      "explanation": "L'algorithme commence par attribuer la valeur 5 à la variable $a$ et la valeur 3 à la variable $b$. Ensuite, on calcule la somme de $a$ et $b$ et on stocke le résultat dans $c$. Enfin, on affiche la valeur de $c$, qui est 8.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exercice 2 : Échange de deux variables",
+      "content": "Remettez les instructions dans l'ordre correct pour que l'algorithme échange les valeurs de $a$ et $b$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$a$ ← $10$",
+        "$b$ ← $20$",
+        "$temp$ ← $a$",
+        "$a$ ← $b$",
+        "$b$ ← $temp$"
+      ],
+      "explanation": "On commence par initialiser $a$ à 10 et $b$ à 20. Pour échanger leurs valeurs, on utilise une variable temporaire $temp$ : on y stocke la valeur de $a$, puis on affecte à $a$ la valeur de $b$, et enfin on affecte à $b$ la valeur sauvegardée dans $temp$. À la fin, $a$ vaut 20 et $b$ vaut 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exercice 3 : Calcul du périmètre d'un rectangle",
+      "content": "Remettez les instructions dans l'ordre correct pour que l'algorithme calcule et affiche le périmètre d'un rectangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$longueur$ ← $7$",
+        "$largeur$ ← $4$",
+        "$perimetre$ ← $2 \\times (longueur + largeur)$",
+        "afficher $perimetre$"
+      ],
+      "explanation": "L'algorithme affecte d'abord la longueur (7) et la largeur (4) à leurs variables respectives. Puis il calcule le périmètre avec la formule $2 \\times (longueur + largeur)$, ce qui donne $2 \\times (7 + 4) = 22$, et stocke le résultat dans $perimetre$. Enfin, il affiche la valeur 22.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

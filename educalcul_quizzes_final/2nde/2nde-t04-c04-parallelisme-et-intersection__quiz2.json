@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Résoudre système simple",
+  "title": "Quiz : Résolution de systèmes simples",
+  "questions": [
+    {
+      "text": "Résous le système suivant : $\\left\\{\\begin{array}{l} x + y = 7 \\\\ x - y = 3 \\end{array}\\right.$",
+      "options": [
+        "$(5;2)$",
+        "$(2;5)$",
+        "$(4;3)$",
+        "$(3;4)$"
+      ],
+      "correctAnswer": "$(5;2)$",
+      "explanation": "En ajoutant les deux équations membre à membre, $y$ disparaît : $(x+y) + (x-y) = 7+3$ soit $2x = 10$, d'où $x = 5$. En remplaçant dans la première équation : $5 + y = 7$, donc $y = 2$. La solution est le couple $(5;2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous le système : $\\left\\{\\begin{array}{l} y = 2x - 1 \\\\ 3x + y = 9 \\end{array}\\right.$",
+      "options": [
+        "$(2;3)$",
+        "$(3;2)$",
+        "$(1;1)$",
+        "$(2;5)$"
+      ],
+      "correctAnswer": "$(2;3)$",
+      "explanation": "La première équation exprime $y$ en fonction de $x$. On substitue $y$ dans la seconde : $3x + (2x - 1) = 9$, soit $5x - 1 = 9$, d'où $5x = 10$ et $x = 2$. On retrouve $y = 2 \\times 2 - 1 = 3$. La solution est $(2;3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine la solution du système : $\\left\\{\\begin{array}{l} 2x + 3y = 12 \\\\ 2x - y = 4 \\end{array}\\right.$",
+      "options": [
+        "$(3;2)$",
+        "$(2;3)$",
+        "$(4;1)$",
+        "$(1;4)$"
+      ],
+      "correctAnswer": "$(3;2)$",
+      "explanation": "On soustrait la deuxième équation de la première pour éliminer $x$ : $(2x+3y) - (2x-y) = 12-4$, soit $4y = 8$, d'où $y = 2$. En remplaçant dans la deuxième équation : $2x - 2 = 4$, donc $2x = 6$ et $x = 3$. La solution est $(3;2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous le système : $\\left\\{\\begin{array}{l} 2x + 3y = 13 \\\\ 4x - y = 5 \\end{array}\\right.$",
+      "options": [
+        "$(2;3)$",
+        "$(3;2)$",
+        "$(1;4)$",
+        "$(4;1)$"
+      ],
+      "correctAnswer": "$(2;3)$",
+      "explanation": "On multiplie la deuxième équation par $3$ pour aligner les coefficients de $y$ : $12x - 3y = 15$. En ajoutant à la première équation : $(2x+3y) + (12x-3y) = 13+15$, soit $14x = 28$, d'où $x = 2$. En remplaçant dans $4x - y = 5$ : $8 - y = 5$, donc $y = 3$. La solution est $(2;3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux droites ont pour équations $y = 2x + 1$ et $y = -x + 7$. Quelles sont les coordonnées de leur point d'intersection ?",
+      "options": [
+        "$(2;5)$",
+        "$(5;2)$",
+        "$(3;7)$",
+        "$(1;3)$"
+      ],
+      "correctAnswer": "$(2;5)$",
+      "explanation": "Au point d'intersection, les ordonnées sont égales : $2x + 1 = -x + 7$. On résout : $3x = 6$, donc $x = 2$. L'ordonnée commune est $y = 2 \\times 2 + 1 = 5$ (ou $y = -2 + 7 = 5$). Le point d'intersection est $(2;5)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

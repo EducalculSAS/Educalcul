@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Effet sur longueurs",
+  "title": "Homothétie : effet sur les longueurs",
+  "blocks": [
+    {
+      "title": "Propriétés fondamentales",
+      "content": "Relie chaque énoncé à la propriété correspondante sur l'effet d'une homothétie sur les longueurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Image d'un segment par une homothétie de rapport $k$",
+          "right": "Segment parallèle à l'origine, de longueur multipliée par $|k|$"
+        },
+        {
+          "left": "Rapport $k > 0$",
+          "right": "Origine et image sont du même côté du centre"
+        },
+        {
+          "left": "Rapport $k < 0$",
+          "right": "Origine et image sont de part et d'autre du centre"
+        },
+        {
+          "left": "Longueur de l'image par rapport à l'origine",
+          "right": "Longueur image $= |k| \\times$ longueur origine"
+        }
+      ],
+      "items": [],
+      "explanation": "Une homothétie de centre $O$ et de rapport $k$ transforme un segment $AB$ en un segment $A'B'$ parallèle à $(AB)$. La longueur de l'image est $A'B' = |k| \\times AB$. Le signe de $k$ détermine la position relative de $A'B'$ par rapport à $O$ : si $k>0$, $A'$ et $B'$ sont sur les demi-droites $[OA)$ et $[OB)$ ; si $k<0$, ils sont sur les demi-droites opposées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de longueurs d'images",
+      "content": "Relie chaque situation (segment origine et rapport $k$) à la longueur de son image.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$AB = 4$ cm, homothétie de rapport $k = 3$",
+          "right": "$A'B' = 12$ cm"
+        },
+        {
+          "left": "$CD = 10$ cm, homothétie de rapport $k = 0,5$",
+          "right": "$C'D' = 5$ cm"
+        },
+        {
+          "left": "$EF = 6$ cm, homothétie de rapport $k = -2$",
+          "right": "$E'F' = 12$ cm"
+        },
+        {
+          "left": "$GH = 7$ cm, homothétie de rapport $k = -0,2$",
+          "right": "$G'H' = 1,4$ cm"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique la formule $L_{\\text{image}} = |k| \\times L_{\\text{origine}}$. Pour $AB=4, k=3 : 4 \\times 3 = 12$. Pour $CD=10, k=0,5 : 10 \\times 0,5 = 5$. Pour $EF=6, k=-2 : 6 \\times |-2| = 12$. Pour $GH=7, k=-0,2 : 7 \\times 0,2 = 1,4$. Le signe de $k$ n'influence pas la longueur, seulement le sens.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche du rapport ou de l'origine",
+      "content": "Relie chaque problème inverse à la bonne valeur (rapport $k$ ou longueur origine).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Origine $5$ cm, Image $15$ cm $\\rightarrow$ valeurs possibles de $k$",
+          "right": "$k = 3$ ou $k = -3$"
+        },
+        {
+          "left": "Origine $8$ cm, Image $2$ cm $\\rightarrow$ valeurs possibles de $k$",
+          "right": "$k = 0,25$ ou $k = -0,25$"
+        },
+        {
+          "left": "Image $12$ cm, $k = -4$ $\\rightarrow$ longueur de l'origine",
+          "right": "$3$ cm"
+        },
+        {
+          "left": "Image $9$ cm, $k = 1,5$ $\\rightarrow$ longueur de l'origine",
+          "right": "$6$ cm"
+        }
+      ],
+      "items": [],
+      "explanation": "On utilise $|k| = \\frac{L_{\\text{image}}}{L_{\\text{origine}}}$. 1) $|k| = 15/5 = 3$, donc $k = \\pm 3$. 2) $|k| = 2/8 = 0,25$, donc $k = \\pm 0,25$. 3) $L_{\\text{origine}} = L_{\\text{image}} / |k| = 12 / 4 = 3$ cm. 4) $L_{\\text{origine}} = 9 / 1,5 = 6$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

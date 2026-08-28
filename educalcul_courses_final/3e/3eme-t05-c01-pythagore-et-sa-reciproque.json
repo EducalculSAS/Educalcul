@@ -1,0 +1,249 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.966085+00:00",
+  "id": 479,
+  "code": "3eme-t05-c01",
+  "title": "Pythagore et sa réciproque",
+  "description": "Cours structuré Educalcul : Pythagore et sa réciproque.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Pythagore et sa réciproque",
+    "objectif_global": "Pythagore et sa réciproque",
+    "mini_lecons_imposees": [
+      "Choisir sens.",
+      "Calculer.",
+      "Rédiger."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Choisir sens.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu aides un ami à installer une étagère dans sa chambre. Pour être sûr que l'étagère soit bien droite par rapport au mur, ton ami utilise une équerre, mais il l'a perdue. Il se rappelle alors d'une astuce de chantier : mesurer les côtés d'un triangle. S'il mesure $30$ cm sur un mur, $40$ cm sur l'autre, et que la diagonale fait exactement $50$ cm, il est certain que l'angle est droit. C'est exactement là que intervient la magie de Pythagore. Dans la vie, on rencontre souvent deux situations différentes : soit on sait déjà qu'une forme est parfaitement rectangle et on veut calculer une distance manquante, comme la longueur d'une échelle contre un mur. Soit on a toutes les mesures et on se demande si l'angle est vraiment droit, comme pour notre étagère. Savoir quel outil utiliser, le théorème ou sa réciproque, c'est comme choisir la bonne clé pour ouvrir une porte. Si tu te trompes de sens, tu tourneras dans le vide sans jamais trouver la solution. Apprenons ensemble à identifier instantanément quel chemin prendre pour ne plus jamais hésiter face à un énoncé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème de Pythagore est une propriété fondamentale de la géométrie qui ne s'applique qu'aux triangles rectangles. Il nous dit que dans un tel triangle, le carré de la longueur de l'hypoténuse (le côté le plus long, opposé à l'angle droit) est égal à la somme des carrés des longueurs des deux autres côtés. On l'utilise quand l'énoncé nous donne l'information cruciale : le triangle est rectangle. À l'inverse, la réciproque du théorème de Pythagore est un outil de vérification. Elle ne sert pas à calculer une longueur, mais à répondre à la question : ce triangle est-il rectangle ? Pour cela, on compare le carré du plus long côté avec la somme des carrés des deux autres. Si les deux résultats sont identiques, alors le triangle possède un angle droit. C'est un test de conformité. En résumé, le théorème part de l'angle droit pour trouver une longueur, tandis que la réciproque part des longueurs pour trouver l'angle droit. C'est une distinction majeure : l'un est un outil de calcul, l'autre est un outil de preuve."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Représentation visuelle : le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés ($3^2 + 4^2 = 5^2$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour choisir le bon sens, suis scrupuleusement ces étapes de réflexion. Première étape, analyse les données de l'exercice. Est-ce que l'énoncé mentionne explicitement que le triangle est rectangle ou est-ce qu'un angle droit est marqué sur la figure ? Si la réponse est oui, tu es dans le sens direct : utilise le théorème de Pythagore pour calculer la longueur manquante. Deuxième étape, si l'énoncé ne mentionne pas d'angle droit et te demande de prouver que le triangle est rectangle, ou s'il te donne les trois longueurs des côtés, tu es dans le sens inverse. Utilise alors la réciproque du théorème de Pythagore. Troisième étape, avant de lancer tes calculs pour la réciproque, identifie toujours le côté le plus long. C'est lui qui jouera le rôle potentiel d'hypoténuse. Quatrième étape, calcule séparément le carré de ce plus long côté d'une part, et la somme des carrés des deux autres côtés d'autre part. Compare enfin les deux résultats pour conclure."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un triangle $ABC$ rectangle en $A$. On sait que le côté $AB = 6$ cm et le côté $AC = 8$ cm. Nous cherchons la longueur du côté $[BC]$. Ici, l'énoncé nous dit clairement que le triangle est rectangle en $A$. Nous sommes donc dans le sens direct du théorème de Pythagore. Le côté $[BC]$ est l'hypoténuse car il est opposé à l'angle droit. D'après le théorème de Pythagore, on a l'égalité : $BC^2 = AB^2 + AC^2$. Remplaçons par les valeurs : $BC^2 = 6^2 + 8^2$, ce qui donne $BC^2 = 36 + 64$. On obtient $BC^2 = 100$. Pour trouver $BC$, on utilise la racine carrée : $BC = \\sqrt{100}$, donc $BC = 10$ cm. On a utilisé l'angle droit connu pour découvrir une distance. C'est l'application classique du théorème pour mesurer une distance sans avoir besoin de mesurer physiquement le segment."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On nous donne un triangle $DEF$ dont les côtés mesurent $DE = 5$ cm, $EF = 12$ cm et $DF = 13$ cm. On nous demande si ce triangle est rectangle. Ici, nous n'avons aucune information sur l'angle droit, mais nous avons les trois longueurs. Nous devons donc utiliser la réciproque du théorème de Pythagore. Le côté le plus long est $[DF]$ avec $13$ cm. Calculons d'abord le carré du plus long côté : $DF^2 = 13^2 = 169$. Maintenant, calculons la somme des carrés des deux autres côtés : $DE^2 + EF^2 = 5^2 + 12^2 = 25 + 144 = 169$. On constate que $DF^2 = DE^2 + EF^2$ car $169 = 169$. L'égalité est vérifiée. On peut donc conclure que le triangle $DEF$ est rectangle en $E$, car le côté $[DF]$ est l'hypoténuse. Nous avons utilisé les longueurs pour prouver l'existence d'un angle droit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est de vouloir utiliser le théorème de Pythagore alors que l'on ne sait pas si le triangle est rectangle. N'oublie jamais que le théorème est un privilège réservé aux triangles rectangles. Si tu l'utilises sans cette certitude, ton résultat sera faux car la propriété ne s'applique pas. Un autre piège classique concerne la réciproque : certains élèves additionnent les carrés de deux côtés au hasard. C'est une erreur grave. Tu dois impérativement identifier le côté le plus long et le placer seul d'un côté de l'égalité. Si tu places un petit côté seul, tu trouveras que l'égalité est fausse alors que le triangle pourrait être rectangle. Enfin, attention à la confusion entre le carré d'un nombre et le double du nombre. $6^2$ c'est $6 \\times 6 = 36$, et non $6 \\times 2 = 12$. Prends toujours un instant pour vérifier tes calculs de puissances avant de conclure, car une petite erreur de calcul peut te faire croire qu'un triangle n'est pas rectangle alors qu'il l'est."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle $GHI$ a pour côtés $GH = 7$ cm, $HI = 24$ cm et $GI = 25$ cm. Ce triangle est-il rectangle ? Justifie ta réponse.",
+              "answer": "Oui, il est rectangle.",
+              "hint": "Identifie le côté le plus long, calcule son carré, puis compare-le à la somme des carrés des deux autres.",
+              "explanation": "Le côté le plus long est $GI = 25$. On a $GI^2 = 25^2 = 625$. Pour les autres côtés, $GH^2 + HI^2 = 7^2 + 24^2 = 49 + 576 = 625$. Comme $625 = 625$, l'égalité de Pythagore est vérifiée, donc le triangle est rectangle en $H$."
+            },
+            {
+              "question": "Dans un triangle $JKL$ rectangle en $K$, on sait que $JK = 9$ cm et $KL = 12$ cm. Quelle est la longueur du segment $[JL]$ ?",
+              "answer": "$15$ cm",
+              "hint": "C'est un triangle rectangle, utilise le théorème de Pythagore. $JL$ est l'hypoténuse.",
+              "explanation": "D'après le théorème de Pythagore, $JL^2 = JK^2 + KL^2$. Soit $JL^2 = 9^2 + 12^2 = 81 + 144 = 225$. Donc $JL = \\sqrt{225} = 15$ cm."
+            },
+            {
+              "question": "Un triangle possède des côtés de $4$ cm, $6$ cm et $9$ cm. Est-il rectangle ?",
+              "answer": "Non, il n'est pas rectangle.",
+              "hint": "Vérifie si le carré du plus long côté est égal à la somme des carrés des deux autres.",
+              "explanation": "Côté long : $9^2 = 81$. Somme des autres : $4^2 + 6^2 = 16 + 36 = 52$. Comme $81 \\neq 52$, le triangle n'est pas rectangle."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu sais si tu dois utiliser le théorème ou sa réciproque, vient le moment où on passe aux choses sérieuses : les calculs. C'est un peu comme résoudre un puzzle. Tu as toutes les pièces sauf une, et Pythagore te donne la formule magique pour fabriquer la pièce manquante. Mais attention, calculer en géométrie n'est pas comme faire une simple addition. On travaille avec des carrés, ce qui signifie que les nombres grandissent très vite. Si tu as un côté de $10$ cm, son carré devient $100$. Si tu as $20$ cm, ça grimpe à $400$. C'est pour cela qu'il faut être très organisé dans ses écritures. On ne se contente pas de jeter des chiffres sur le papier, on construit un raisonnement. Imagine que tu es un détective : tu collectes les indices (les longueurs connues), tu appliques la loi (le théorème), et tu en déduis l'identité du coupable (la longueur manquante). Que tu cherches le grand côté ou l'un des petits, la logique reste la même, mais la manipulation change légèrement. Voyons comment ne plus jamais se tromper de bouton dans sa calculatrice."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer une longueur avec le théorème de Pythagore, il faut d'abord identifier ce que l'on cherche. Il y a deux scénarios possibles. Le premier scénario est la recherche de l'hypoténuse. C'est le cas le plus simple : on additionne les carrés des deux côtés de l'angle droit. L'hypoténuse étant le plus long segment, il est logique que son carré soit la somme des deux autres. Le deuxième scénario est la recherche d'un côté de l'angle droit. Ici, on connaît l'hypoténuse et un autre côté. Pour trouver le côté manquant, on ne peut pas additionner, car cela nous donnerait un résultat plus grand que l'hypoténuse, ce qui est impossible. On doit donc soustraire le carré du côté connu du carré de l'hypoténuse. Dans les deux cas, le résultat obtenu après l'opération est le carré de la longueur. L'étape finale, et c'est là que beaucoup d'élèves trébuchent, est l'extraction de la racine carrée. La racine carrée est l'opération inverse du carré : elle nous ramène de l'aire du carré à la longueur du segment."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "9",
+                "16"
+              ],
+              "result": "25",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la marche à suivre selon ton objectif. Si tu cherches l'hypoténuse (le côté opposé à l'angle droit) : Première étape, écris la formule $a^2 + b^2 = c^2$. Deuxième étape, remplace $a$ et $b$ par les longueurs connues et calcule leurs carrés. Troisième étape, additionne ces deux résultats pour obtenir $c^2$. Quatrième étape, utilise la touche racine carrée $\\sqrt{}$ de ta calculatrice pour trouver $c$. Si tu cherches un côté de l'angle droit : Première étape, écris la formule $c^2 - a^2 = b^2$, où $c$ est l'hypoténuse. Deuxième étape, calcule le carré de l'hypoténuse et le carré du côté connu. Troisième étape, soustrais le petit carré du grand carré pour obtenir $b^2$. Quatrième étape, effectue la racine carrée du résultat pour trouver la longueur $b$. N'oublie jamais de préciser l'unité (cm, m, km) à la fin de ton résultat pour que ton calcul ait un sens concret."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons l'hypoténuse d'un triangle $ABC$ rectangle en $A$ avec $AB = 3$ cm et $AC = 4$ cm. Nous cherchons $BC$. On commence par l'égalité : $BC^2 = AB^2 + AC^2$. On remplace par les chiffres : $BC^2 = 3^2 + 4^2$. On calcule les carrés : $BC^2 = 9 + 16$. On additionne : $BC^2 = 25$. Pour finir, on cherche la racine carrée de $25$. On sait que $5 \\times 5 = 25$, donc $BC = \\sqrt{25} = 5$ cm. Ici, le calcul est fluide car on tombe sur un nombre entier. C'est l'exemple type du triangle 3-4-5. Le résultat est cohérent car l'hypoténuse ($5$ cm) est bien le côté le plus long du triangle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons un côté d'un triangle $XYZ$ rectangle en $Y$. On sait que l'hypoténuse $XZ = 10$ cm et que le côté $XY = 6$ cm. Nous cherchons $YZ$. On utilise la soustraction car on cherche un petit côté. La formule est $YZ^2 = XZ^2 - XY^2$. On remplace : $YZ^2 = 10^2 - 6^2$. On calcule les carrés : $YZ^2 = 100 - 36$. On effectue la soustraction : $YZ^2 = 64$. Enfin, on prend la racine carrée : $YZ = \\sqrt{64} = 8$ cm. Note bien que si tu avais additionné $100$ et $36$, tu aurais trouvé $\\sqrt{136} \\approx 11,66$ cm, ce qui aurait été impossible puisque l'hypoténuse doit rester le côté le plus long. La soustraction est donc indispensable quand on recule vers l'angle droit."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fatale est l'oubli de la racine carrée. Beaucoup d'élèves s'arrêtent à $BC^2 = 25$ et écrivent $BC = 25$ cm. C'est une erreur monumentale, car cela signifierait que le côté mesure $25$ cm alors que les autres mesurent $3$ et $4$ cm. C'est physiquement impossible. Prends l'habitude de toujours écrire l'étape $\\sqrt{}$ explicitement. Un autre piège réside dans l'ordre de la soustraction. En mathématiques, l'ordre compte. Tu dois toujours faire (Grand Carré) moins (Petit Carré). Si tu fais $36 - 100$, ta calculatrice affichera une erreur car on ne peut pas calculer la racine carrée d'un nombre négatif. Enfin, attention aux arrondis. Si le résultat de ta racine n'est pas un nombre entier, comme $\\sqrt{20}$, ne t'arrête pas à un seul chiffre après la virgule. Donne généralement deux chiffres (environ $4,47$ cm) pour garantir la précision demandée dans les exercices de 3e."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle $ABC$ est rectangle en $A$. On a $AB = 5$ cm et $AC = 12$ cm. Calcule la longueur $BC$.",
+              "answer": "$13$ cm",
+              "hint": "L'hypoténuse est $BC$. Additionne les carrés de $5$ et $12$.",
+              "explanation": "$BC^2 = 5^2 + 12^2 = 25 + 144 = 169$. Donc $BC = \\sqrt{169} = 13$ cm."
+            },
+            {
+              "question": "L'hypoténuse d'un triangle rectangle mesure $17$ cm et l'un des côtés mesure $8$ cm. Quelle est la longueur de l'autre côté ?",
+              "answer": "$15$ cm",
+              "hint": "Cherche un côté de l'angle droit. Soustrais le carré du côté connu du carré de l'hypoténuse.",
+              "explanation": "Soit $x$ le côté manquant. $x^2 = 17^2 - 8^2 = 289 - 64 = 225$. Donc $x = \\sqrt{225} = 15$ cm."
+            },
+            {
+              "question": "Un triangle rectangle a un côté de $7$ cm et l'hypoténuse mesure $10$ cm. Calcule l'autre côté (arrondi au centième).",
+              "answer": "$7,14$ cm",
+              "hint": "Applique la formule de soustraction et utilise la racine carrée sur ta calculatrice.",
+              "explanation": "$x^2 = 10^2 - 7^2 = 100 - 49 = 51$. Donc $x = \\sqrt{51} \\approx 7,14$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as compris comment choisir le sens, et tu sais faire les calculs. Mais voici le secret des professeurs de mathématiques : un résultat juste sans rédaction est souvent considéré comme une réponse incomplète. Pourquoi ? Parce que les mathématiques ne sont pas seulement une question de chiffres, c'est l'art de démontrer. C'est comme si tu étais un avocat devant un juge. Si tu dis simplement : Le coupable est Monsieur X, le juge te demandera : Pourquoi ? Quelles preuves avez-vous ? Dans un exercice de géométrie, ta rédaction est ton dossier de preuves. Tu dois guider le lecteur, lui montrer exactement quelle règle tu appliques et comment tu passes d'une ligne à l'autre. Une rédaction soignée montre que tu maîtrises la logique et que tu ne devines pas le résultat. C'est ce qui transforme un simple calcul en une véritable preuve mathématique. C'est l'étape finale qui te permettra de gagner tous les points au brevet, car la rigueur est autant valorisée que la justesse du résultat. Apprenons à écrire comme des mathématiciens professionnels."
+            },
+            {
+              "type": "paragraph",
+              "content": "La rédaction en mathématiques repose sur une structure logique immuable. On ne commence jamais par un calcul brut. Chaque étape doit être justifiée par une phrase. D'abord, on pose le contexte : on identifie le triangle et on précise où se trouve l'angle droit. C'est l'autorisation légale d'utiliser Pythagore. Ensuite, on nomme l'outil utilisé : on écrit explicitly D'après le théorème de Pythagore ou D'après la réciproque du théorème de Pythagore. On utilise ensuite des formules littérales (avec des lettres) avant de passer aux valeurs numériques. Cela montre que l'on comprend la propriété générale avant de l'appliquer à un cas particulier. Enfin, on conclut avec une phrase claire qui donne la valeur finale avec son unité. Une distinction cruciale doit être faite entre le segment et sa longueur. On écrit le segment $[AB]$ quand on parle de l'objet géométrique, et on écrit $AB = 5$ cm quand on parle de sa mesure. Mélanger les deux est une erreur de notation qui peut être sanctionnée. Plus ta rédaction est structurée, moins tu as de chances de faire des erreurs d'inattention."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{S'il est rectangle} \\rightarrow \\text{Théorème} \\rightarrow \\text{Calcul de longueur}\\ \\text{S'il a 3 longueurs} \\rightarrow \\text{Réciproque} \\rightarrow \\text{Preuve d'angle droit}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une rédaction parfaite du thème direct (calcul de longueur), suis ces étapes. Étape 1 : Le constat. Écris : Dans le triangle $ABC$ rectangle en $A$. Étape 2 : L'annonce. Écris : D'après le théorème de Pythagore, on a :. Étape 3 : La formule. Écris l'égalité avec les lettres, par exemple $BC^2 = AB^2 + AC^2$. Étape 4 : L'application. Remplace les lettres par les nombres et détaille les carrés : $BC^2 = 6^2 + 8^2 = 36 + 64 = 100$. Étape 5 : La conclusion. Écris : Donc $BC = \\sqrt{100} = 10$ cm. Pour la réciproque (preuve d'angle droit), la structure change. Commence par identifier le côté le plus long. Écris : Dans le triangle $DEF$, le côté le plus long est $[DF]$. Calcule séparément $DF^2$ d'un côté, et $DE^2 + EF^2$ de l'autre. Termine par une phrase de comparaison : On constate que $DF^2 = DE^2 + EF^2$, donc d'après la réciproque du théorème de Pythagore, le triangle $DEF$ est rectangle en $E$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici comment rédiger le calcul de l'hypoténuse pour un triangle $MNO$ rectangle en $M$ avec $MN = 3$ cm et $MO = 4$ cm. On écrit : Dans le triangle $MNO$ rectangle en $M$, d'après le théorème de Pythagore, on a : $NO^2 = MN^2 + MO^2$. En remplaçant par les valeurs, on obtient : $NO^2 = 3^2 + 4^2 = 9 + 16 = 25$. On en déduit que $NO = \\sqrt{25} = 5$ cm. Cette rédaction est complète car elle contient le contexte (rectangle en $M$), la source (théorème de Pythagore), le développement et la conclusion avec l'unité. Le correcteur voit tout de suite ton raisonnement et ne peut pas te retirer de points."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici comment rédiger la preuve pour un triangle $PQR$ avec $PQ = 6$ cm, $QR = 8$ cm et $PR = 10$ cm. On écrit : Dans le triangle $PQR$, le côté le plus long est $[PR]$. D'une part, on a $PR^2 = 10^2 = 100$. D'autre part, on a $PQ^2 + QR^2 = 6^2 + 8^2 = 36 + 64 = 100$. On constate que $PR^2 = PQ^2 + QR^2$. Par conséquent, d'après la réciproque du théorème de Pythagore, le triangle $PQR$ est rectangle en $Q$. Note que j'ai bien séparé les deux calculs avant de les comparer. C'est cette clarté qui rend la preuve irréfutable. Si les résultats avaient été différents, j'aurais écrit : On constate que $PR^2 \\neq PQ^2 + QR^2$, donc le triangle n'est pas rectangle."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est l'omission du nom du théorème. Écrire directement $BC^2 = AB^2 + AC^2$ sans dire pourquoi c'est permis est une faute de logique. Le théorème est ta justification, ne l'oublie jamais. Un autre piège est la confusion entre le théorème et sa réciproque dans l'énoncé. Si tu écris D'après le théorème pour prouver qu'un triangle est rectangle, tu fais un contresens logique : le théorème part du principe que c'est rectangle, il ne peut pas servir à le prouver. Pour prouver, c'est uniquement la réciproque. Enfin, attention à la précision du vocabulaire. N'utilise pas le mot hypoténuse dans une rédaction de réciproque avant d'avoir prouvé que le triangle est rectangle. Tant que tu n'as pas prouvé l'angle droit, $[PR]$ n'est pas l'hypoténuse, c'est juste le côté le plus long. L'hypoténuse n'existe que dans un triangle rectangle avéré."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédige complètement le calcul de la longueur $AC$ dans un triangle $ABC$ rectangle en $B$ avec $AB = 9$ cm et $BC = 12$ cm.",
+              "answer": "Dans le triangle $ABC$ rectangle en $B$, d'après le théorème de Pythagore, on a $AC^2 = AB^2 + BC^2$. Donc $AC^2 = 9^2 + 12^2 = 81 + 144 = 225$. D'où $AC = \\sqrt{225} = 15$ cm.",
+              "hint": "N'oublie pas la phrase d'introduction et le nom du théorème.",
+              "explanation": "C'est la structure parfaite : Contexte $\\rightarrow$ Théorème $\\rightarrow$ Calcul $\\rightarrow$ Résultat final avec unité."
+            },
+            {
+              "question": "Rédige la preuve suivante : Un triangle $XYZ$ a pour côtés $XY = 3$ cm, $YZ = 4$ cm et $XZ = 5$ cm. Est-il rectangle ?",
+              "answer": "Dans le triangle $XYZ$, le côté le plus long est $[XZ]$.On a $XZ^2 = 5^2 = 25$ et $XY^2 + YZ^2 = 3^2 + 4^2 = 9 + 16 = 25$. Comme $XZ^2 = XY^2 + YZ^2$, d'après la réciproque du théorème de Pythagore, le triangle $XYZ$ est rectangle en $Y$.",
+              "hint": "Calcule les deux parties séparément avant de conclure.",
+              "explanation": "La rédaction respecte la méthode de la réciproque en comparant le carré du plus long côté à la somme des autres."
+            },
+            {
+              "question": "Corrige cette phrase : Le triangle est rectangle donc $AB^2 + BC^2 = 5^2$. Pourquoi est-ce insuffisant ?",
+              "answer": "Il manque le nom du théorème et la conclusion finale avec la longueur.",
+              "hint": "Pense à l'idée de l'avocat : il faut prouver chaque étape.",
+              "explanation": "La phrase saute l'étape fondamentale de citer le théorème de Pythagore et ne donne pas le résultat final pour le côté recherché."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

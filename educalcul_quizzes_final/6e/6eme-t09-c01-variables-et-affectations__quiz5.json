@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Quiz : Approfondissement - Lire (Variables et affectations)",
+  "questions": [
+    {
+      "text": "Que fait l'instruction $Lire\\;x$ dans un algorithme ?",
+      "options": [
+        "Affecte à la variable $x$ la valeur saisie par l'utilisateur",
+        "Affiche la valeur de $x$ à l'écran",
+        "Incrémente la variable $x$ de $1$",
+        "Déclare la variable $x$ sans lui donner de valeur"
+      ],
+      "correctAnswer": "Affecte à la variable $x$ la valeur saisie par l'utilisateur",
+      "explanation": "L'instruction $Lire$ permet de récupérer une entrée clavier et de l'affecter à la variable indiquée. Elle ne sert pas à afficher, incrémenter ou simplement déclarer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après les instructions $Lire\\;a$ puis $Lire\\;b$, si l'utilisateur entre $4$ puis $7$, quelles sont les valeurs de $a$ et $b$ ?",
+      "options": [
+        "$a = 4$ et $b = 7$",
+        "$a = 7$ et $b = 4$",
+        "$a = 4$ et $b = 4$",
+        "$a$ et $b$ restent indéfinis"
+      ],
+      "correctAnswer": "$a = 4$ et $b = 7$",
+      "explanation": "Chaque $Lire$ attend une saisie distincte. La première saisie ($4$) est stockée dans $a$, la seconde ($7$) dans $b$. L'ordre des instructions détermine l'ordre des affectations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'utilisateur tape $7$ lors de l'exécution de $Lire\\;x$, quel sera le type de la variable $x$ ?",
+      "options": [
+        "entier",
+        "réel",
+        "texte",
+        "indéfini"
+      ],
+      "correctAnswer": "entier",
+      "explanation": "La saisie $7$ est un nombre sans partie décimale, donc elle est interprétée comme un entier. Si l'utilisateur avait tapé $7.5$, le type aurait été réel.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute : $Lire\\;a$, $Lire\\;b$, $a \\leftarrow a + b$. Si les saisies sont $3$ et $5$, quelle est la valeur finale de $a$ ?",
+      "options": [
+        "3",
+        "5",
+        "8",
+        "15"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Après les deux $Lire$, $a = 3$ et $b = 5$. L'affectation $a \\leftarrow a + b$ calcule $3 + 5 = 8$ et stocke ce résultat dans $a$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction unique permet de lire deux nombres et de les affecter aux variables $x$ et $y$ ?",
+      "options": [
+        "Lire x, y",
+        "Lire x ; Lire y",
+        "Lire x puis y",
+        "Lire (x, y)"
+      ],
+      "correctAnswer": "Lire x, y",
+      "explanation": "Dans le pseudo-code utilisé au collège, $Lire\\;x,\\;y$ lit deux valeurs successives et les affecte respectivement à $x$ puis $y$ en une seule ligne. Les autres formes correspondent soit à deux instructions séparées, soit à une syntaxe incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

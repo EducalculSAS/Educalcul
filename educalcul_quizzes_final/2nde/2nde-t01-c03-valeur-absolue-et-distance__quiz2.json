@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Interpréter géométriquement",
+  "title": "Interprétation géométrique de la valeur absolue",
+  "questions": [
+    {
+      "text": "Que représente géométriquement l'expression $|x - 3|$ sur une droite graduée ?",
+      "options": [
+        "La distance entre le point d'abscisse $x$ et le point d'abscisse $3$.",
+        "La distance entre le point d'abscisse $x$ et le point d'abscisse $-3$.",
+        "L'abscisse du point situé à $3$ unités à gauche de $x$.",
+        "La somme des distances de $x$ à $0$ et de $0$ à $3$."
+      ],
+      "correctAnswer": "La distance entre le point d'abscisse $x$ et le point d'abscisse $3$.",
+      "explanation": "Par définition, pour deux nombres réels $a$ et $b$, la valeur absolue $|a - b|$ représente la distance entre les points d'abscisses $a$ et $b$ sur la droite graduée. Ici, $|x - 3|$ est donc la distance entre $x$ et $3$. L'option B correspondrait à $|x + 3|$. Les options C et D ne correspondent pas à la définition de la distance.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'inéquation $|x + 2| \\le 4$ signifie que la distance entre $x$ et $-2$ est inférieure ou égale à $4$. Quel est l'intervalle solution ?",
+      "options": [
+        "$[-6; 2]$",
+        "$[-2; 6]$",
+        "$]-\\infty; -6] \\cup [2; +\\infty[$",
+        "$[-4; 4]$"
+      ],
+      "correctAnswer": "$[-6; 2]$",
+      "explanation": "L'inéquation $|x + 2| \\le 4$ s'écrit $|x - (-2)| \\le 4$. Elle demande les points $x$ dont la distance au point $-2$ est au plus $4$. On part de $-2$ et on va $4$ unités à gauche (jusqu'à $-6$) et $4$ unités à droite (jusqu'à $2$). L'intervalle est donc $[-6; 2]$. L'option B correspondrait à une distance à $2$. L'option C est le complémentaire (distance strictement supérieure). L'option D correspond à $|x| \\le 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche les points $M$ d'abscisse $x$ sur une droite tels que $MA = 5$ où $A$ est le point d'abscisse $-1$. Quelle équation traduit cette condition ?",
+      "options": [
+        "$|x - 1| = 5$",
+        "$|x + 1| = 5$",
+        "$|x - 5| = -1$",
+        "$|x + 5| = 1$"
+      ],
+      "correctAnswer": "$|x + 1| = 5$",
+      "explanation": "La distance $MA$ entre le point $M(x)$ et le point $A(-1)$ s'écrit $|x - (-1)| = |x + 1|$. La condition $MA = 5$ donne donc l'équation $|x + 1| = 5$. L'option A correspondrait à un point $A$ d'abscisse $1$. Les options C et D sont mal formées (valeur absolue égale à un nombre négatif ou inversion des rôles).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'inéquation $|x - 4| < |x + 2|$ caractérise l'ensemble des points $M(x)$ qui sont :",
+      "options": [
+        "Plus proches de $4$ que de $-2$.",
+        "Plus proches de $-2$ que de $4$.",
+        "Situés entre $-2$ et $4$.",
+        "Situés en dehors de l'intervalle $[-2; 4]$."
+      ],
+      "correctAnswer": "Plus proches de $-2$ que de $4$.",
+      "explanation": "$|x - 4|$ est la distance du point $M(x)$ au point d'abscisse $4$. $|x + 2| = |x - (-2)|$ est la distance au point d'abscisse $-2$. L'inégalité $|x - 4| < |x + 2|$ signifie que la distance à $4$ est strictement plus petite que la distance à $-2$. Les points satisfaisant cette condition sont donc plus proches de $4$ que de $-2$. Attention : le milieu de $[-2; 4]$ est $1$. Les points plus proches de $4$ sont ceux d'abscisse $x > 1$. L'option A dit l'inverse. Les options C et D décrivent des positions relatives à l'intervalle mais pas la comparaison des distances aux extrémités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut décrire l'ensemble des points $M(x)$ dont la distance au point $A(2)$ est comprise entre $1$ et $3$ (bornes exclues). Quelle écriture mathématique correspond ?",
+      "options": [
+        "$1 < |x - 2| < 3$",
+        "$|x - 2| < 1$ ou $|x - 2| > 3$",
+        "$|x + 2| > 1$ et $|x + 2| < 3$",
+        "$1 < x - 2 < 3$"
+      ],
+      "correctAnswer": "$1 < |x - 2| < 3$",
+      "explanation": "La distance du point $M(x)$ au point $A(2)$ s'écrit $|x - 2|$. Le fait que cette distance soit comprise strictement entre $1$ et $3$ se traduit par la double inégalité $1 < |x - 2| < 3$. L'option B décrit les points dont la distance est *inférieure* à $1$ ou *supérieure* à $3$ (le complémentaire). L'option C utilise le point $-2$ au lieu de $2$. L'option D oublie la valeur absolue, ce qui ne décrit que les points à droite de $2$ (entre $3$ et $5$) et oublie ceux à gauche (entre $-1$ et $1$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

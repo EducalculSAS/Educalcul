@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 180,
+  "_course_code": "ce2-t05-c03-problemes-multiplicatifs",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Produit cartésien très concret",
+  "title": "Produit cartésien : combinaisons concrètes",
+  "blocks": [
+    {
+      "title": "Tenues de sport",
+      "content": "Pour le sport, Léa a $3$ t-shirts de couleurs différentes et $2$ shorts de couleurs différentes. Elle veut savoir combien de tenues différentes (un t-shirt et un short) elle peut composer. Elle peut associer chaque t-shirt avec chaque short. Le nombre total de tenues est le produit du nombre de t-shirts par le nombre de shorts : $3 \\times 2 = {{1}}$. Il y a donc {{2}} tenues possibles.",
+      "correctAnswer": "",
+      "blanks": [
+        "6",
+        "six"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le nombre total de couples (t-shirt, short). Comme chaque t-shirt peut aller avec chaque short, on multiplie le nombre de t-shirts ($3$) par le nombre de shorts ($2$). $3 \\times 2 = 6$. Il y a donc six tenues différentes.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 2,
+        "highlighted": 6,
+        "caption": "Grille des combinaisons : 3 t-shirts (lignes) x 2 shorts (colonnes) = 6 tenues"
+      }
+    },
+    {
+      "title": "Parfums de glace",
+      "content": "Un glacier propose $4$ parfums de glace : vanille, chocolat, fraise, pistache. Il propose aussi $3$ toppings : pépites de chocolat, caramel, noisettes. Chaque coupe contient un parfum et un topping. Pour trouver le nombre de coupes différentes possibles, on calcule le produit cartésien : $4 \\times 3 = {{1}}$. Le glacier peut donc préparer {{2}} coupes différentes.",
+      "correctAnswer": "",
+      "blanks": [
+        "12",
+        "douze"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque parfum peut être associé à chacun des $3$ toppings. On a donc $4$ groupes de $3$ coupes. Le calcul est $4 \\times 3 = 12$. Le glacier peut préparer douze coupes différentes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Paires de chaussettes",
+      "content": "Dans un tiroir, il y a des chaussettes de $3$ couleurs différentes : bleu, rouge, vert. Il y a aussi plusieurs motifs : pois, rayures, cœurs, étoiles. On sait qu'il est possible de former exactement $12$ paires différentes (une couleur et un motif). Pour trouver le nombre de motifs, on divise le nombre total de paires par le nombre de couleurs : $12 \\div 3 = {{1}}$. Il y a donc {{2}} motifs différents.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "quatre"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un problème de produit cartésien inverse. On connait le total ($12$ paires) et le nombre d'éléments du premier ensemble ($3$ couleurs). Pour trouver le nombre d'éléments du second ensemble (les motifs), on effectue la division $12 \\div 3 = 4$. Il y a donc quatre motifs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

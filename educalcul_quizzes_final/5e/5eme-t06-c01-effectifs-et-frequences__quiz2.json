@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 405,
+  "_course_code": "5eme-t06-c01-effectifs-et-frequences",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul fréquence",
+  "title": "Quiz : Calcul de frequences (5e)",
+  "questions": [
+    {
+      "text": "Dans une classe de $30$ eleves, $12$ ont les yeux marron. Quelle est la frequence des yeux marron ?",
+      "options": [
+        "$0,4$",
+        "$0,12$",
+        "$0,3$",
+        "$0,6$"
+      ],
+      "correctAnswer": "$0,4$",
+      "explanation": "La frequence se calcule en divisant l'effectif $12$ par le total $30$, ce qui donne $0,4$. Les autres options correspondent a des erreurs : $0,12$ serait l'effectif seul, $0,3$ et $0,6$ sont des approximations incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la meme classe, la frequence des yeux bleus est $0,25$. Quel est le pourcentage d'eleves aux yeux bleus ?",
+      "options": [
+        "$25$",
+        "$2,5$",
+        "$0,25$",
+        "$250$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "Pour passer d'une frequence a un pourcentage, on multiplie par $100$. Donc $0,25 \\times 100 = 25$. L'option $2,5$ correspond a une multiplication par $10$, $0,25$ est la frequence elle-meme, et $250$ serait une multiplication par $1000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sondage sur les fruits preferes donne les frequences suivantes : pomme $0,30$, banane $0,25$, orange $0,20$. Quelle est la frequence des autres fruits ?",
+      "options": [
+        "$0,25$",
+        "$0,15$",
+        "$0,35$",
+        "$0,45$"
+      ],
+      "correctAnswer": "$0,25$",
+      "explanation": "La somme de toutes les frequences doit etre $1$. La somme des frequences connues est $0,30 + 0,25 + 0,20 = 0,75$. La frequence restante est $1 - 0,75 = 0,25$. Les autres options sont des resultats de calculs erronees.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, la frequence des eleves qui font du velo est $0,4$ et celle qui vont a pied est $0,35$. Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "La frequence du velo est superieure a celle de la marche.",
+        "La frequence du velo est inferieure a celle de la marche.",
+        "Les deux frequences sont egales.",
+        "La somme des deux frequences est $1$."
+      ],
+      "correctAnswer": "La frequence du velo est superieure a celle de la marche.",
+      "explanation": "On compare $0,4$ et $0,35$. Comme $0,4 > 0,35$, la frequence du velo est superieure. La somme $0,4 + 0,35 = 0,75$, different de $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un eleve lance un de 100 fois et obtient le resultat 6 exactement 18 fois. Quelle est la frequence d'apparition du 6 ?",
+      "options": [
+        "$0,18$",
+        "$0,018$",
+        "$0,8$",
+        "$0,6$"
+      ],
+      "correctAnswer": "$0,18$",
+      "explanation": "La frequence est le nombre d'apparitions $18$ divise par le nombre total de lancers $100$, soit $18 / 100 = 0,18$. L'option $0,018$ correspond a une division par $1000$, $0,8$ et $0,6$ sont sans lien.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

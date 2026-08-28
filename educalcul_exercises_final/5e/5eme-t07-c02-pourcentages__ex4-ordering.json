@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 411,
+  "_course_code": "5eme-t07-c02-pourcentages",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Application : Pourcentages",
+  "title": "Applications des pourcentages : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Calculer un pourcentage d'un nombre",
+      "content": "Range les étapes dans l'ordre logique pour calculer $20\\%$ de $150$.",
+      "items": [
+        "Convertir le pourcentage en nombre décimal : $20\\% = 0,20$.",
+        "Multiplier le nombre total par ce décimal : $150 \\times 0,20$.",
+        "Effectuer la multiplication : $150 \\times 0,20 = 30$.",
+        "Conclure : $20\\%$ de $150$ est égal à $30$."
+      ],
+      "explanation": "Pour calculer un pourcentage d'une quantité, on transforme d'abord le pourcentage en nombre décimal (en divisant par 100). Ensuite, on multiplie la quantité totale par ce décimal. Ici, $20\\% = 20/100 = 0,20$. Le calcul $150 \\times 0,20$ donne $30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retrouver le nombre de départ",
+      "content": "Un pull est soldé à $20\\%$. Son prix soldé est de $40\\,€$. Range les étapes pour retrouver son prix initial.",
+      "items": [
+        "Déterminer le pourcentage restant : $100\\% - 20\\% = 80\\%$.",
+        "Exprimer ce pourcentage en décimal : $80\\% = 0,80$.",
+        "Diviser le prix soldé par ce décimal : $40 \\div 0,80$.",
+        "Calculer le résultat : $40 \\div 0,80 = 50$. Le prix initial est $50\\,€$."
+      ],
+      "explanation": "Une diminution de $20\\%$ signifie qu'on paie $80\\%$ du prix initial. Le prix soldé ($40\\,€$) correspond donc à $80\\%$ du prix initial. Pour retrouver le total (100%), on divise la partie connue par le décimal correspondant au pourcentage ($0,80$). Le calcul $40 / 0,80 = 50$ donne le prix initial.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évolution successive (augmentation puis diminution)",
+      "content": "Une population de $2\\,000$ habitants augmente de $5\\%$ puis diminue de $5\\%$. Range les étapes pour trouver la population finale.",
+      "items": [
+        "Calculer l'augmentation : $5\\%$ de $2\\,000 = 100$. Nouvelle population : $2\\,100$.",
+        "Calculer la diminution sur la nouvelle population : $5\\%$ de $2\\,100 = 105$.",
+        "Soustraire la diminution : $2\\,100 - 105 = 1\\,995$.",
+        "Conclure : La population finale est de $1\\,995$ habitants (elle n'est pas revenue à $2\\,000$)."
+      ],
+      "explanation": "Il faut appliquer les pourcentages successivement sur les nouvelles valeurs. D'abord, $5\\%$ de $2000$ font $100$, la population passe à $2100$. Ensuite, la diminution de $5\\%$ s'applique sur $2100$ (et non sur $2000$), ce qui donne $105$. La population finale est $2100 - 105 = 1995$. Le résultat n'est pas le nombre de départ car les bases de calcul sont différentes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

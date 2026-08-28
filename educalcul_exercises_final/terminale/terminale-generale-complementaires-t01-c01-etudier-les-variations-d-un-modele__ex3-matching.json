@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation des variations d'un modèle",
+  "blocks": [
+    {
+      "title": "Sens de variation",
+      "content": "Relie chaque condition sur la dérivée d'une fonction $f$ à l'interprétation correspondante pour le modèle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f'(x) > 0$ sur un intervalle",
+          "right": "Le modèle est croissant sur cet intervalle"
+        },
+        {
+          "left": "$f'(x) < 0$ sur un intervalle",
+          "right": "Le modèle est décroissant sur cet intervalle"
+        },
+        {
+          "left": "$f'(x) = 0$ en un point $a$",
+          "right": "Le modèle admet un extremum local ou un point d'inflexion en $a$"
+        }
+      ],
+      "explanation": "Le signe de la dérivée détermine le sens de variation d'une fonction : positive pour une croissance, négative pour une décroissance, et nulle pour un point stationnaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Taux de variation et concavité",
+      "content": "Associe chaque caractéristique de la dérivée seconde $f''$ à l'interprétation du comportement du modèle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f''(x) > 0$",
+          "right": "La fonction est convexe, le taux de croissance augmente"
+        },
+        {
+          "left": "$f''(x) < 0$",
+          "right": "La fonction est concave, le taux de croissance diminue"
+        },
+        {
+          "left": "Passage de $f''(x) > 0$ à $f''(x) < 0$",
+          "right": "Le modèle atteint un point d'inflexion"
+        }
+      ],
+      "explanation": "La dérivée seconde indique la courbure de la fonction : si $f'' > 0$, la courbe est 'tournée vers le haut' (convexe) ; si $f'' < 0$, elle est 'tournée vers le bas' (concave).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un modèle biologique",
+      "content": "Soit $P(t)$ la population d'une espèce au temps $t$. Relie chaque expression mathématique à son interprétation concrète.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P'(t)$",
+          "right": "La vitesse de croissance instantanée de la population"
+        },
+        {
+          "left": "$P'(t) = 0$",
+          "right": "La population a atteint un maximum ou un minimum"
+        },
+        {
+          "left": "$\\lim_{t \\to +\\infty} P(t) = L$",
+          "right": "La population se stabilise vers une capacité de charge $L$"
+        },
+        {
+          "left": "$P''(t) < 0$ alors que $P'(t) > 0$",
+          "right": "La population croît mais le rythme de croissance ralentit"
+        }
+      ],
+      "explanation": "Dans un modèle temporel, la dérivée première $P'(t)$ représente la vitesse d'évolution, l'annulation de cette dérivée marque un extremum, la limite à l'infini décrit l'asymptote horizontale et le signe de $P''(t)$ précise si l'évolution s'accélère ou ralentit.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés de la translation",
+  "questions": [
+    {
+      "text": "Quelle est l'image d'un segment par une translation ?",
+      "options": [
+        "Un point",
+        "Un segment de même longueur",
+        "Un segment de longueur double",
+        "Une droite"
+      ],
+      "correctAnswer": "Un segment de même longueur",
+      "explanation": "Une translation conserve les longueurs. L'image d'un segment est donc un segment de même longueur, parallèle au segment initial (ou confondu avec lui). Les autres propositions correspondent à des erreurs : ce n'est pas un point (sauf segment nul), la longueur ne double pas, et ce n'est pas une droite infinie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une translation qui transforme le point $A$ en $A'$. Quelle affirmation est vraie pour tout point $M$ et son image $M'$ ?",
+      "options": [
+        "Les segments $[AA']$ et $[MM']$ ont même milieu",
+        "Les segments $[AA']$ et $[MM']$ sont perpendiculaires",
+        "Les segments $[AA']$ et $[MM']$ ont même longueur et même direction",
+        "Les points $A$, $A'$, $M$, $M'$ sont alignés"
+      ],
+      "correctAnswer": "Les segments $[AA']$ et $[MM']$ ont même longueur et même direction",
+      "explanation": "Par définition, une translation est définie par un vecteur. Tous les points sont déplacés selon ce même vecteur : $\\overrightarrow{AA'} = \\overrightarrow{MM'}$. Cela implique même longueur, même direction et même sens. Les milieux sont différents (sauf cas particuliers), les segments sont parallèles (pas perpendiculaires), et les quatre points ne sont pas alignés en général.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La translation de vecteur $\\vec{u}$ transforme le triangle $ABC$ en triangle $A'B'C'$. Quelle propriété est fausse ?",
+      "options": [
+        "Les triangles $ABC$ et $A'B'C'$ ont même aire",
+        "Les droites $(AB)$ et $(A'B')$ sont parallèles",
+        "Les segments $[AA']$, $[BB']$, $[CC']$ ont même longueur",
+        "Les angles $\\widehat{BAC}$ et $\\widehat{B'A'C'}$ sont supplémentaires"
+      ],
+      "correctAnswer": "Les angles $\\widehat{BAC}$ et $\\widehat{B'A'C'}$ sont supplémentaires",
+      "explanation": "Une translation conserve les longueurs, les aires, les angles et le parallélisme. Les triangles sont isométriques (même aire, même angles). Les droites correspondantes sont parallèles. Les vecteurs $\\overrightarrow{AA'}$, $\\overrightarrow{BB'}$, $\\overrightarrow{CC'}$ sont égaux à $\\vec{u}$, donc même longueur. L'erreur est sur les angles : ils sont égaux, pas supplémentaires (somme $180^\\circ$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère, le point $M(2; -3)$ est l'image du point $N$ par la translation de vecteur $\\vec{v}(4; 1)$. Quelles sont les coordonnées de $N$ ?",
+      "options": [
+        "N(6; -2)",
+        "N(-2; -4)",
+        "N(-2; 4)",
+        "N(6; -4)"
+      ],
+      "correctAnswer": "N(-2; -4)",
+      "explanation": "Si $M$ est l'image de $N$ par la translation de vecteur $\\vec{v}(4; 1)$, alors $\\overrightarrow{NM} = \\vec{v}$. On a $x_M = x_N + 4$ et $y_M = y_N + 1$. Donc $x_N = 2 - 4 = -2$ et $y_N = -3 - 1 = -4$. Le point $N$ a pour coordonnées $(-2; -4)$. L'erreur fréquente est d'ajouter le vecteur au lieu de le soustraire (donnant $(6; -2)$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un parallélogramme $ABCD$. La translation qui transforme $A$ en $C$ transforme $B$ en quel point ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "D",
+      "explanation": "Dans un parallélogramme, les diagonales se coupent en leur milieu. Les vecteurs $\\overrightarrow{AC}$ et $\\overrightarrow{BD}$ n'ont pas le même sens. En revanche, $\\overrightarrow{AB} = \\overrightarrow{DC}$. La translation qui envoie $A$ sur $C$ a pour vecteur $\\overrightarrow{AC}$. Or $\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = -\\overrightarrow{AB} + \\overrightarrow{AD}$. La propriété vectorielle du parallélogramme donne $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$. Appliquons ce vecteur à $B$ : $\\overrightarrow{BB'} = \\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$. Mais $\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AD} + \\overrightarrow{AB} = \\overrightarrow{AD} + \\overrightarrow{DC} = \\overrightarrow{AC}$. On cherche $B'$ tel que $\\overrightarrow{BB'} = \\overrightarrow{AC}$. Or $\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = \\overrightarrow{AD} - \\overrightarrow{AB}$. Ce n'est pas $\\overrightarrow{AC}$. Utilisons la définition : $ABCD$ parallélogramme $\\Leftrightarrow \\overrightarrow{AB} = \\overrightarrow{DC}$. Le vecteur $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC}$. L'image de $B$ est $B'$ tel que $\\overrightarrow{BB'} = \\overrightarrow{AC}$. Or $\\overrightarrow{BC} = \\overrightarrow{AD}$. Donc $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$. Aussi $\\overrightarrow{BB'} = \\overrightarrow{AB} + \\overrightarrow{AD}$. En partant de $B$, ajouter $\\overrightarrow{AB}$ ramène en $A$, puis ajouter $\\overrightarrow{AD}$ mène en $D$. Ou plus simplement : $\\overrightarrow{BB'} = \\overrightarrow{AC} \\iff B' = B + \\overrightarrow{AC}$. Comme $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$, $B' = B + \\overrightarrow{AB} + \\overrightarrow{AD} = A + \\overrightarrow{AD} = D$. L'image de $B$ est bien $D$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

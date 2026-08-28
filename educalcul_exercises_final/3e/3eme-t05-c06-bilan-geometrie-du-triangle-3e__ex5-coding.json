@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Choisir Pythagore / Thalès / trigo",
+  "title": "Choix du théorème adapté : Pythagore, Thalès ou trigonométrie",
+  "blocks": [
+    {
+      "title": "Triangle rectangle - Pythagore",
+      "content": "On donne un triangle ABC rectangle en A avec AB = 3 cm et AC = 4 cm. Écrire un algorithme qui détermine si le théorème de Pythagore peut être utilisé pour calculer la longueur BC, puis qui calcule cette longueur.",
+      "correctAnswer": "Algorithme :\\n1. Vérifier que le triangle est rectangle (angle droit en A).\\n2. Si le triangle est rectangle, appliquer le théorème de Pythagore : $BC^2 = AB^2 + AC^2$.\\n3. Calculer $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.\\n4. Afficher la longueur BC = 5 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le triangle est rectangle en A, donc le théorème de Pythagore s'applique directement. On élève les longueurs des côtés de l'angle droit au carré, on fait la somme, puis on extrait la racine carrée pour obtenir l'hypoténuse BC = 5 cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Configuration de Thalès",
+      "content": "Dans la figure, les droites (MN) et (PQ) sont parallèles. Les points A, M, P sont alignés dans cet ordre, et les points A, N, Q sont alignés dans cet ordre. On sait que AM = 6 cm, MP = 4 cm, AN = 9 cm. Écrire un algorithme qui décide si le théorème de Thalès permet de calculer AQ, puis qui calcule cette longueur.",
+      "correctAnswer": "Algorithme :\\n1. Vérifier que les droites (MN) et (PQ) sont parallèles.\\n2. Vérifier que les points A, M, P sont alignés et A, N, Q sont alignés.\\n3. Si les conditions sont remplies, appliquer le théorème de Thalès : $\\frac{AM}{AP} = \\frac{AN}{AQ}$.\\n4. Calculer $AP = AM + MP = 6 + 4 = 10$ cm.\\n5. Résoudre pour AQ : $AQ = \\frac{AN \\times AP}{AM} = \\frac{9 \\times 10}{6} = 15$ cm.\\n6. Afficher AQ = 15 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les conditions de Thalès sont satisfaites : droites parallèles et points alignés. On calcule d'abord AP = AM + MP = 10 cm. Ensuite, par proportionnalité, AQ = (AN * AP) / AM = (9 * 10) / 6 = 15 cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Triangle rectangle - Trigonométrie",
+      "content": "Dans un triangle RST rectangle en S, on connaît l'angle $\\widehat{R} = 30^\\circ$ et le côté adjacent à cet angle RS = 8 cm. Écrire un algorithme qui choisit la bonne fonction trigonométrique (cosinus, sinus ou tangente) pour calculer la longueur de l'hypoténuse RT, puis qui effectue le calcul.",
+      "correctAnswer": "Algorithme :\\n1. Identifier l'angle connu ($30^\\circ$) et le côté adjacent (RS = 8 cm).\\n2. Choisir la fonction trigonométrique liant l'adjacent et l'hypoténuse : cosinus.\\n3. Écrire la relation : $\\cos(30^\\circ) = \\frac{RS}{RT}$.\\n4. Exprimer RT : $RT = \\frac{RS}{\\cos(30^\\circ)}$.\\n5. Calculer $\\cos(30^\\circ) = \\frac{\\sqrt{3}}{2} \\approx 0,866$.\\n6. Calculer $RT = \\frac{8}{0,866} \\approx 9,24$ cm (ou forme exacte $RT = \\frac{16}{\\sqrt{3}} = \\frac{16\\sqrt{3}}{3}$ cm).\\n7. Afficher la longueur RT.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme on connaît l'angle et le côté adjacent, le cosinus est la fonction appropriée. On isole l'hypoténuse RT = RS / cos(30°). En utilisant la valeur exacte $\\cos(30^\\circ) = \\sqrt{3}/2$, on obtient $RT = 8 / (\\sqrt{3}/2) = 16/\\sqrt{3} = 16\\sqrt{3}/3 \\approx 9,24$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

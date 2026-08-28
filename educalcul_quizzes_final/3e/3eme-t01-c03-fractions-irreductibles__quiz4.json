@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 457,
+  "_course_code": "3eme-t01-c03-fractions-irreductibles",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Fractions irréductibles",
+  "title": "Applications des fractions irréductibles",
+  "questions": [
+    {
+      "text": "Simplifie la fraction $48/60$ sous sa forme irréductible.",
+      "options": [
+        "$\\frac{4}{5}$",
+        "$\\frac{8}{10}$",
+        "$\\frac{12}{15}$",
+        "$\\frac{16}{20}$"
+      ],
+      "correctAnswer": "$\\frac{4}{5}$",
+      "explanation": "Le PGCD de 48 et 60 est 12. En divisant le numérateur et le dénominateur par 12 on obtient 4/5, qui est irréductible. Les autres options sont des fractions équivalentes mais non simplifiées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $143/169$ est-elle irréductible ? Si non, donne sa forme irréductible.",
+      "options": [
+        "Irréductible",
+        "$\\frac{11}{13}$",
+        "$\\frac{13}{11}$",
+        "$\\frac{143}{169}$"
+      ],
+      "correctAnswer": "$\\frac{11}{13}$",
+      "explanation": "169 = 13^2 et 143 = 11 × 13, donc le PGCD est 13. En simplifiant par 13 on obtient 11/13, qui est irréductible. La réponse « Irréductible » est fausse, 13/11 est l'inverse, et 143/169 n'est pas simplifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5/12 + 7/18$ et exprime le résultat sous forme irréductible.",
+      "options": [
+        "$\\frac{29}{36}$",
+        "$\\frac{29}{72}$",
+        "$\\frac{12}{30}$",
+        "$\\frac{5}{6}$"
+      ],
+      "correctAnswer": "$\\frac{29}{36}$",
+      "explanation": "Le PPCM de 12 et 18 est 36. 5/12 = 15/36 et 7/18 = 14/36. La somme est 29/36. 29 et 36 sont premiers entre eux, donc la fraction est déjà irréductible. Les autres options correspondent à des erreurs de dénominateur commun ou de simplification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une recette utilise $3/4$ litre de lait pour 6 personnes. Quelle quantité de lait par personne, sous forme irréductible ?",
+      "options": [
+        "$\\frac{1}{8}$",
+        "$\\frac{3}{24}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{1}{8}$",
+      "explanation": "Il faut diviser 3/4 par 6 : (3/4) × (1/6) = 3/24 = 1/8 après simplification par 3. 3/24 n'est pas irréductible, 1/6 et 3/4 ne correspondent pas à la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction algébrique $\\frac{12x^2y}{18xy^2}$ (avec $x \\neq 0$, $y \\neq 0$).",
+      "options": [
+        "$\\frac{2x}{3y}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{2x}{3}$",
+        "$\\frac{4x}{6y}$"
+      ],
+      "correctAnswer": "$\\frac{2x}{3y}$",
+      "explanation": "On simplifie les coefficients 12/18 = 2/3. On annule x^2/x = x et y/y^2 = 1/y. Le résultat est (2x)/(3y). L'option 2/3 oublie les variables, 2x/3 oublie y au dénominateur, et 4x/6y n'est pas simplifiée (coefficients 4/6 = 2/3 mais la fraction n'est pas irréductible).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

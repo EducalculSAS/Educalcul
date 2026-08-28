@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Si... alors",
+  "title": "Quiz : L'implication « Si... alors »",
+  "questions": [
+    {
+      "text": "Dans l'implication « Si un triangle est rectangle, alors le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés », quelle est la conclusion ?",
+      "options": [
+        "Un triangle est rectangle",
+        "Le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés",
+        "Le triangle a un angle droit",
+        "L'hypoténuse est le plus grand côté"
+      ],
+      "correctAnswer": "Le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés",
+      "explanation": "Dans une implication de la forme « Si P alors Q », P est l'hypothèse (la condition) et Q est la conclusion (la conséquence). Ici, l'hypothèse est « un triangle est rectangle » et la conclusion est l'égalité des carrés (théorème de Pythagore). Les autres options reprennent l'hypothèse ou des propriétés annexes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la proposition : « Si $x^2 = 9$, alors $x = 3$ ». Quelle affirmation est exacte ?",
+      "options": [
+        "La proposition est vraie pour tout réel $x$",
+        "La proposition est fausse car $x = -3$ est un contre-exemple",
+        "La proposition est fausse car l'hypothèse est fausse",
+        "La proposition est vraie car $3^2 = 9$"
+      ],
+      "correctAnswer": "La proposition est fausse car $x = -3$ est un contre-exemple",
+      "explanation": "Une implication « Si P alors Q » est fausse uniquement quand P est vrai et Q est faux. Pour $x = -3$, l'hypothèse $x^2 = 9$ est vraie, mais la conclusion $x = 3$ est fausse. C'est donc un contre-exemple qui invalide la proposition. Le fait que $3^2=9$ ne prouve pas la proposition pour toutes les valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des propositions suivantes admet $n = 6$ comme contre-exemple ?",
+      "options": [
+        "Si $n$ est pair, alors $n$ est multiple de 4",
+        "Si $n$ est multiple de 3, alors $n$ est pair",
+        "Si $n$ est multiple de 2, alors $n$ est multiple de 6",
+        "Si $n$ est multiple de 6, alors $n$ est pair"
+      ],
+      "correctAnswer": "Si $n$ est pair, alors $n$ est multiple de 4",
+      "explanation": "Un contre-exemple vérifie l'hypothèse mais pas la conclusion. Pour $n=6$ : l'hypothèse « $n$ est pair » est vraie, mais la conclusion « $n$ est multiple de 4 » est fausse (6 n'est pas divisible par 4). Pour les autres options, soit l'hypothèse est fausse (option C : 6 n'est pas multiple de 6 ? Si, 6 est multiple de 6, mais la conclusion est vraie), soit l'implication est vraie (options B et D).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'implication vraie : « Si un quadrilatère est un carré, alors c'est un rectangle. » Laquelle des propositions suivantes est logiquement équivalente à cette implication (sa contraposée) ?",
+      "options": [
+        "Si un quadrilatère est un rectangle, alors c'est un carré",
+        "Si un quadrilatère n'est pas un carré, alors ce n'est pas un rectangle",
+        "Si un quadrilatère n'est pas un rectangle, alors ce n'est pas un carré",
+        "Si un quadrilatère est un rectangle, alors ce n'est pas un carré"
+      ],
+      "correctAnswer": "Si un quadrilatère n'est pas un rectangle, alors ce n'est pas un carré",
+      "explanation": "La contraposée de « Si P alors Q » est « Si non Q alors non P ». Elle est logiquement équivalente à l'implication initiale. Ici P : « est un carré », Q : « est un rectangle ». Non Q : « n'est pas un rectangle », non P : « n'est pas un carré ». L'option A est la réciproque (non équivalente), l'option B est l'inverse (non équivalente).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut prouver par l'absurde que « Si le produit de deux entiers est impair, alors les deux entiers sont impairs. » Par quelle hypothèse commence-t-on le raisonnement ?",
+      "options": [
+        "Les deux entiers sont pairs",
+        "Au moins l'un des deux entiers est pair",
+        "Les deux entiers sont impairs",
+        "Le produit des deux entiers est pair"
+      ],
+      "correctAnswer": "Au moins l'un des deux entiers est pair",
+      "explanation": "La preuve par l'absurde d'une implication « Si P alors Q » suppose P vrai et Q faux (non Q) pour aboutir à une contradiction. Ici P : « le produit est impair », Q : « les deux entiers sont impairs ». La négation de Q (« il n'est pas vrai que les deux sont impairs ») signifie « au moins l'un des deux est pair ». On suppose donc : le produit est impair ET au moins l'un est pair.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

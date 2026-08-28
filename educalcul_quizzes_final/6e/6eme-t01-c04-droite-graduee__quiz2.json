@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Placement",
+  "title": "Placement sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, de $0$ à $10$ par pas de $1$, où doit-on placer le point $A$ d'abscisse $7$ ?",
+      "options": [
+        "Entre les graduations $6$ et $7$",
+        "Sur la graduation $7$",
+        "Entre les graduations $7$ et $8$",
+        "Sur la graduation $6$"
+      ],
+      "correctAnswer": "Sur la graduation $7$",
+      "explanation": "L'abscisse $7$ correspond exactement à la graduation portant le nombre $7$. Sur une droite graduée par pas de $1$, les nombres entiers se placent sur les traits principaux. Les options « Entre... » correspondent à une confusion avec les nombres décimaux, et « graduation $6$ » est une erreur de lecture d'un cran.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 10",
+        "min": 0,
+        "max": 10,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On considère une droite graduée de $0$ à $1$ par pas de $0,1$ (dixièmes). Où se place le point $B$ d'abscisse $0,6$ ?",
+      "options": [
+        "Sur la 4ème graduation après $0$",
+        "Sur la 6ème graduation après $0$",
+        "Entre la 5ème et la 6ème graduation",
+        "Sur la graduation $1$"
+      ],
+      "correctAnswer": "Sur la 6ème graduation après $0$",
+      "explanation": "Chaque graduation représente un dixième ($0,1$). Pour atteindre $0,6$, il faut compter six graduations après le zéro : $0,1$ ; $0,2$ ; $0,3$ ; $0,4$ ; $0,5$ ; $0,6$. La 6ème graduation est donc celle de $0,6$. L'option « 4ème » correspond à $0,4$, et « entre » serait pour un nombre à deux décimales comme $0,65$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 par dixièmes",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Regardez la figure. Quelle est l'abscisse du point $C$ placé sur la droite graduée ?",
+      "options": [
+        "3",
+        "3,5",
+        "4",
+        "3,2"
+      ],
+      "correctAnswer": "3,5",
+      "explanation": "La droite est graduée par pas de $0,5$ (demi). Le point $C$ se trouve exactement sur le trait situé à mi-chemin entre $3$ et $4$. Son abscisse est donc $3,5$. L'option $3$ correspond à la graduation précédente, $4$ à la suivante, et $3,2$ ne correspond à aucune graduation visible.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Lecture d'abscisse",
+        "min": 0,
+        "max": 5,
+        "points": [
+          {
+            "value": 3.5,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de $-5$ à $5$ par pas de $1$, où place-t-on le point $D$ d'abscisse $-3$ ?",
+      "options": [
+        "Sur la graduation $3$ à droite du zéro",
+        "Sur la graduation $3$ à gauche du zéro",
+        "Entre les graduations $-2$ et $-3$",
+        "Sur la graduation $-2$"
+      ],
+      "correctAnswer": "Sur la graduation $3$ à gauche du zéro",
+      "explanation": "Les nombres négatifs se placent à gauche du zéro. L'abscisse $-3$ correspond à la graduation numérotée $3$ du côté gauche. L'option « à droite » correspond à $+3$. L'option « entre » serait pour un nombre décimal comme $-2,5$. L'option « $-2$ » est une erreur de comptage d'un cran.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée entiers relatifs",
+        "min": -5,
+        "max": 5,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $1$ par pas de $0,1$ (dixièmes), on veut placer le point $E$ d'abscisse $0,47$. Entre quelles graduations se trouve-t-il et comment le situer ?",
+      "options": [
+        "Sur la graduation $0,4$",
+        "Sur la graduation $0,5$",
+        "Entre $0,4$ et $0,5$, plus près de $0,5$",
+        "Entre $0,4$ et $0,5$, plus près de $0,4$"
+      ],
+      "correctAnswer": "Entre $0,4$ et $0,5$, plus près de $0,5$",
+      "explanation": "La droite ne montre que les dixièmes ($0,4$ et $0,5$). Le nombre $0,47$ est compris entre ces deux valeurs. Comme $0,47 > 0,45$ (le milieu), il est plus proche de $0,5$ que de $0,4$. Il faut donc le placer dans l'intervalle, légèrement décalé vers la graduation $0,5$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Placement au centième près",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": []
+      }
+    }
+  ]
+}

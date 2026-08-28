@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Tableau",
+  "title": "Tableaux de proportionnalité : association",
+  "blocks": [
+    {
+      "title": "Compléter un tableau",
+      "content": "Dans un tableau de proportionnalité, on a $x = 2$ et $y = 6$. Relie chaque élément de la colonne de gauche à sa correspondance dans la colonne de droite.",
+      "pairs": [
+        {
+          "left": "Si $x = 5$",
+          "right": "alors $y = 15$"
+        },
+        {
+          "left": "Si $x = 8$",
+          "right": "alors $y = 24$"
+        },
+        {
+          "left": "Le coefficient de proportionnalité",
+          "right": "est $3$"
+        },
+        {
+          "left": "Pour passer de la ligne $x$ à la ligne $y$",
+          "right": "on multiplie par $3$"
+        }
+      ],
+      "explanation": "Le coefficient de proportionnalité $k$ s'obtient en divisant $y$ par $x$ : $k = 6 / 2 = 3$. Pour trouver $y$ quand $x = 5$, on calcule $5 \\times 3 = 15$. Pour $x = 8$, on calcule $8 \\times 3 = 24$. La relation est bien $y = 3 \\times x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître la proportionnalité",
+      "content": "Observe les trois tableaux ci-dessous. Relie chaque tableau à sa nature (proportionnel ou non) et, le cas échéant, à son coefficient.",
+      "pairs": [
+        {
+          "left": "Tableau A : $(1 ; 4)$, $(2 ; 8)$, $(3 ; 12)$",
+          "right": "Proportionnel, coefficient $4$"
+        },
+        {
+          "left": "Tableau B : $(1 ; 3)$, $(2 ; 5)$, $(3 ; 7)$",
+          "right": "Non proportionnel"
+        },
+        {
+          "left": "Tableau C : $(2 ; 10)$, $(4 ; 20)$, $(5 ; 25)$",
+          "right": "Proportionnel, coefficient $5$"
+        },
+        {
+          "left": "Dans un tableau proportionnel",
+          "right": "le rapport $\\frac{y}{x}$ est constant"
+        }
+      ],
+      "explanation": "Pour A : $4/1 = 4$, $8/2 = 4$, $12/3 = 4$, le rapport est constant ($k=4$). Pour B : $3/1 = 3$, $5/2 = 2,5$, $7/3 \\approx 2,33$, le rapport n'est pas constant. Pour C : $10/2 = 5$, $20/4 = 5$, $25/5 = 5$, le rapport est constant ($k=5$).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Problème : peinture et surface",
+      "content": "Un peintre utilise $3$ pots de peinture pour couvrir $12 \\text{ m}^2$. Relie chaque question à la bonne réponse.",
+      "pairs": [
+        {
+          "left": "Quantité de peinture pour $1 \\text{ m}^2$",
+          "right": "$0,25$ pot (ou $\\frac{1}{4}$ pot)"
+        },
+        {
+          "left": "Coefficient de proportionnalité (surface par pot)",
+          "right": "$4 \\text{ m}^2$ par pot"
+        },
+        {
+          "left": "Nombre de pots pour $20 \\text{ m}^2$",
+          "right": "$5$ pots"
+        },
+        {
+          "left": "Surface peinte avec $10$ pots",
+          "right": "$40 \\text{ m}^2$"
+        }
+      ],
+      "explanation": "Le coefficient surface/pot est $12 / 3 = 4 \\text{ m}^2$ par pot. Pour $1 \\text{ m}^2$, il faut $1 / 4 = 0,25$ pot. Pour $20 \\text{ m}^2$, il faut $20 / 4 = 5$ pots. Avec $10$ pots, on peint $10 \\times 4 = 40 \\text{ m}^2$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

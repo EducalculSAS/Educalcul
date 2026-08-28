@@ -1,0 +1,176 @@
+{
+  "_status": "done",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer représentations",
+  "title": "Comparer des représentations de données",
+  "questions": [
+    {
+      "text": "Voici un tableau présentant les fruits préférés des élèves de la classe. Combien d'élèves ont choisi la pomme ?",
+      "options": [
+        "5 élèves",
+        "8 élèves",
+        "12 élèves",
+        "15 élèves"
+      ],
+      "correctAnswer": "8 élèves",
+      "explanation": "Dans le tableau, la ligne « Pomme » indique la valeur $8$. La banane correspond à $5$, la fraise à $12$. La bonne réponse est donc 8 élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "8"
+          ],
+          [
+            "Banane",
+            "5"
+          ],
+          [
+            "Fraise",
+            "12"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous montre les animaux de compagnie des élèves. Quel est le nombre total d'animaux ?",
+      "options": [
+        "15 animaux",
+        "18 animaux",
+        "19 animaux",
+        "20 animaux"
+      ],
+      "correctAnswer": "18 animaux",
+      "explanation": "Il faut additionner les valeurs de chaque barre : $6$ chats + $9$ chiens + $3$ lapins = $18$ animaux au total. Les autres propositions correspondent à des additions partielles ou erronées.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux de compagnie",
+        "bars": [
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Chien",
+            "value": 9,
+            "tone": "red"
+          },
+          {
+            "label": "Lapin",
+            "value": 3,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme représente les sports préférés des filles de l'école. Quel est le sport le plus pratiqué ?",
+      "options": [
+        "Natation",
+        "Tennis",
+        "Danse",
+        "Football"
+      ],
+      "correctAnswer": "Danse",
+      "explanation": "La barre la plus haute correspond à la « Danse » avec une valeur de $10$. La natation est à $7$, le tennis à $4$. Le football n'apparaît pas sur le diagramme. La danse est donc le sport le plus pratiqué.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Sports préférés des filles",
+        "bars": [
+          {
+            "label": "Danse",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Natation",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Tennis",
+            "value": 4,
+            "tone": "yellow"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci-contre donne les couleurs préférées d'un groupe d'enfants. Parmi les descriptions suivantes, laquelle correspond exactement à ce tableau ?",
+      "options": [
+        "Une barre bleue à 10, une barre rouge à 6, une barre verte à 4.",
+        "Une barre bleue à 6, une barre rouge à 10, une barre verte à 4.",
+        "Une barre bleue à 10, une barre rouge à 4, une barre verte à 6.",
+        "Une barre bleue à 4, une barre rouge à 6, une barre verte à 10."
+      ],
+      "correctAnswer": "Une barre bleue à 10, une barre rouge à 6, une barre verte à 4.",
+      "explanation": "Le tableau indique : Bleu = $10$, Rouge = $6$, Vert = $4$. La première option est la seule à respecter ces trois valeurs dans le bon ordre. Les autres options inversent les hauteurs des barres.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Nombre de voix"
+        ],
+        "rows": [
+          [
+            "Bleu",
+            "10"
+          ],
+          [
+            "Rouge",
+            "6"
+          ],
+          [
+            "Vert",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme montre les livres lus en février. En janvier, Alice en a lu $2$, Bob $5$ et Chloé $4$. Qui a lu le même nombre de livres en janvier et en février ?",
+      "options": [
+        "Alice",
+        "Bob",
+        "Chloé",
+        "Personne"
+      ],
+      "correctAnswer": "Personne",
+      "explanation": "En février (diagramme) : Alice $5$, Bob $8$, Chloé $3$. En janvier (texte) : Alice $2$, Bob $5$, Chloé $4$. Aucun élève n'a le même total les deux mois. Alice ($2 \\neq 5$), Bob ($5 \\neq 8$), Chloé ($4 \\neq 3$).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus en février",
+        "bars": [
+          {
+            "label": "Alice",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Bob",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Chloé",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

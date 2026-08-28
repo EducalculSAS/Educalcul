@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter les résultats d'une simulation",
+  "blocks": [
+    {
+      "title": "Vocabulaire et définitions",
+      "content": "Relie chaque terme à sa définition ou sa propriété dans le contexte d'une simulation probabiliste.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence d'apparition",
+          "right": "Nombre de succès divisé par le nombre total d'essais"
+        },
+        {
+          "left": "Loi des grands nombres",
+          "right": "La fréquence se rapproche de la probabilité théorique quand le nombre d'essais augmente"
+        },
+        {
+          "left": "Algorithme de simulation",
+          "right": "Suite d'instructions qui reproduit une expérience aléatoire sur ordinateur"
+        },
+        {
+          "left": "Événement certain",
+          "right": "Probabilité égale à $1$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fréquence s'obtient en divisant le nombre de succès par le total des essais. La loi des grands nombres garantit la convergence de la fréquence vers la probabilité. Un algorithme de simulation utilise un générateur de nombres aléatoires pour imiter le hasard. Un événement certain a une probabilité de $1$ (ou $100\\%$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'un tableau de résultats",
+      "content": "On simule $600$ lancers d'un dé équilibré à $6$ faces. Le tableau donne les résultats. Relie chaque indicateur à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Nombre total d'essais",
+          "right": "$600$"
+        },
+        {
+          "left": "Probabilité théorique d'obtenir un $6$",
+          "right": "$\\frac{1}{6} \\approx 0,167$"
+        },
+        {
+          "left": "Fréquence observée du $6$ (si $102$ succès)",
+          "right": "$\\frac{102}{600} = 0,17$"
+        },
+        {
+          "left": "Écart entre fréquence et probabilité",
+          "right": "$|0,17 - 0,167| \\approx 0,003$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le nombre d'essais est donné : $N = 600$. Pour un dé équilibré, la probabilité de chaque face est $1/6$. Si on a obtenu $102$ fois le $6$, la fréquence est $102/600 = 0,17$. L'écart avec la probabilité théorique $1/6 \\approx 0,1667$ est d'environ $0,003$, ce qui est petit, conforme à la loi des grands nombres pour $600$ essais.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un algorithme de simulation (Python)",
+      "content": "On considère l'extrait de code Python ci-dessous pour simuler l'expérience : « On lance un dé à $6$ faces $N$ fois et on compte les $6$ ». Relie chaque instruction à son rôle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "from random import randint",
+          "right": "Importe la fonction générant un entier aléatoire"
+        },
+        {
+          "left": "lancer = randint(1, 6)",
+          "right": "Simule un lancer de dé (entier entre $1$ et $6$)"
+        },
+        {
+          "left": "if lancer == 6: succes += 1",
+          "right": "Incrémente le compteur si le résultat est un $6$"
+        },
+        {
+          "left": "print(succes / N)",
+          "right": "Affiche la fréquence de l'événement « obtenir un $6$ »"
+        }
+      ],
+      "items": [],
+      "explanation": "L'instruction `randint(1,6)` renvoie un entier au hasard entre $1$ et $6$ inclus, ce qui modélise un lancer de dé. La condition `lancer == 6` teste si le succès (obtenir un $6$) est réalisé ; si oui, on ajoute $1$ à la variable `succes`. À la fin de la boucle (non montrée mais implicite), `succes` contient le nombre total de $6$ obtenus. La division `succes / N` calcule donc la fréquence observée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

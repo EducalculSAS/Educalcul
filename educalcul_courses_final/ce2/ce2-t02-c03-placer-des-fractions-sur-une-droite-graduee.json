@@ -1,0 +1,436 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.962426+00:00",
+  "id": 154,
+  "code": "ce2-t02-c03",
+  "title": "Placer des fractions sur une droite graduée",
+  "description": "Cours structuré Educalcul : Placer des fractions sur une droite graduée.",
+  "subject": "Fractions et nombres décimaux en contexte",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Fractions et nombres décimaux en contexte",
+    "titre_du_cours": "Placer des fractions sur une droite graduée",
+    "objectif_global": "Placer des fractions sur une droite graduée",
+    "mini_lecons_imposees": [
+      "Partager l'unité.",
+      "Placer fractions unitaires.",
+      "Placer plusieurs fractions de même dénominateur."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions et nombres décimaux en contexte",
+      "lessons": [
+        {
+          "title": "Partager l'unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager l'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une barre de chocolat que tu veux partager équitablement avec un ami. Si tu la coupes en deux morceaux identiques, chaque morceau représente une moitié de la barre. Aujourd'hui, nous allons apprendre à décrire ce partage avec des fractions."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Partie 1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie 2",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Une barre partagée en deux parties égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque nous partageons une unité en parties égales, le nombre total de parties s'appelle le dénominateur. Si nous prenons une de ces parties, le nombre de parties prises est le numérateur. Par exemple, en coupant en trois, le dénominateur vaut 3 et prendre une partie donne le numérateur 1."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le nombre total de parties égales dans lesquelles l'unité est divisée.",
+              "example": "Dans 1/3, le dénominateur est 3."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le nombre de parties que l'on prend parmi les parties égales.",
+              "example": "Dans 1/3, le numérateur est 1."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'image ci-dessous : la barre est coupée en deux. Chaque moitié est écrite 1/2. Essaie de lire la fraction à voix haute."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons ce qui se passe quand nous partageons en trois parties égales. La barre sera divisée en trois tronçons de même longueur, et chaque tronçon correspond à un tiers de l'unité."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Un tiers : une partie sur trois"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fraction s'écrit avec le numérateur au-dessus d'une barre et le dénominateur en dessous. On lit « un tiers » pour 1/3. Essaie de dire la fraction que tu vois sur l'image."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'image, tu vois trois parties égales. La partie colorée montre 1/3. Entraîne-toi à pointer du doigt la partie correspondante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons encore avec quatre parties. Le dénominateur devient 4 et chaque partie est un quart de l'unité. Tu verras que plus le dénominateur est grand, plus chaque partie est petite."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Un quart : une partie sur quatre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la barre est partagée en quatre. La partie colorée représente 1/4. Compare avec les images précédentes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant partager une unité en parties égales et nommer chaque partie avec une fraction. Continue à t'entraîner pour devenir à l'aise avec les dénominateurs 2, 3 et 4."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu partages une barre en deux parties égales, quelle fraction représente une partie ?",
+              "answer": "\\frac{1}{2}",
+              "hint": "Le dénominateur est le nombre total de parties.",
+              "explanation": "La barre est divisée en 2 parties, donc le dénominateur vaut 2. Tu prends 1 partie, donc le numérateur vaut 1."
+            },
+            {
+              "question": "Écris la fraction qui correspond à une partie sur trois parties égales.",
+              "answer": "\\frac{1}{3}",
+              "hint": "Compte le nombre total de parties pour le dénominateur.",
+              "explanation": "Trois parties égales donnent le dénominateur 3. Une partie prise donne le numérateur 1."
+            },
+            {
+              "question": "Quelle fraction représente une partie sur quatre parties égales ?",
+              "answer": "\\frac{1}{4}",
+              "hint": "Le dénominateur est 4.",
+              "explanation": "Quatre parties égales → dénominateur 4. Une partie → numérateur 1."
+            }
+          ]
+        },
+        {
+          "title": "Placer fractions unitaires.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer fractions unitaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà couper une unité en parties égales. Pour placer une fraction sur une droite graduée, il suffit de repérer le point qui correspond à cette partie. Prenons l'exemple de la moitié, qui est la fraction la plus simple. Imagine une droite qui va de 0 à 1 : le point du milieu marque exactement 1/2."
+            },
+            {
+              "type": "number_line",
+              "caption": "La moitié sur la droite de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "D'abord, trace une droite de 0 à 1. Ensuite, partage le segment en autant de parties égales que le dénominateur. Enfin, compte le nombre de parties indiqué par le numérateur à partir de 0 pour poser ton point. Cette méthode marche pour toutes les fractions unitaires."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine une ligne horizontale et marque 0 à gauche et 1 à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser le segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le dénominateur. Pour 1/2, fais une marque au milieu. Pour 1/3, fais deux marques pour obtenir trois parties égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les parties",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de 0, avance d'autant de parties que le numérateur. Pour 1/2, avance d'une partie. Pour 1/3, avance d'une partie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment placer le tiers. Le dénominateur est 3, donc nous divisons le segment en trois parties égales. Le premier repère après zéro représente un tiers. Essaie de visualiser la distance entre 0 et ce repère : elle est plus petite que la moitié."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 1,
+              "unit": "unité",
+              "caption": "Mesurer un tiers sur une règle de 1 unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la règle, le trait à 1/3 se trouve à un tiers de la longueur totale. Tu peux vérifier en pliant une bande de papier en trois parties égales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le quart, le dénominateur vaut 4. Nous coupons le segment en quatre parties égales. Le premier repère après zéro est un quart. Observe que 1/4 est encore plus proche de 0 que 1/3."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des fractions unitaires",
+              "bars": [
+                {
+                  "label": "1/2",
+                  "value": 0.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1/3",
+                  "value": 0.33,
+                  "tone": "green"
+                },
+                {
+                  "label": "1/4",
+                  "value": 0.25,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique en barres montre bien l'ordre : 1/4 est le plus petit, puis 1/3, puis 1/2. Tu as maintenant trois repères sur ta droite. Essaie de les nommer sans regarder l'image."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place la fraction \\frac{1}{2} sur la droite graduée de 0 à 1.",
+              "answer": "Le point au milieu du segment.",
+              "hint": "Divise le segment en deux parties égales.",
+              "explanation": "Le dénominateur 2 indique deux parties. Le numérateur 1 indique la première marque après 0."
+            },
+            {
+              "question": "Où se trouve \\frac{1}{3} sur la même droite ?",
+              "answer": "Au premier tiers du segment.",
+              "hint": "Divise en trois parties égales.",
+              "explanation": "Le dénominateur 3 donne trois parties. Le numérateur 1 pointe la première."
+            },
+            {
+              "question": "Repère \\frac{1}{4} sur la droite.",
+              "answer": "Au premier quart du segment.",
+              "hint": "Quatre parties égales.",
+              "explanation": "Le dénominateur 4 crée quatre parties. Le numérateur 1 choisit la première."
+            }
+          ]
+        },
+        {
+          "title": "Placer plusieurs fractions de même dénominateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer plusieurs fractions de même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais placer une fraction unitaire, nous allons placer plusieurs fractions qui ont le même dénominateur. Cela permet de voir leur ordre sur la droite et de les comparer facilement. Prenons le dénominateur 4 comme exemple."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fraction",
+                "Position sur la droite"
+              ],
+              "rows": [
+                [
+                  "1/4",
+                  "Premier repère"
+                ],
+                [
+                  "2/4",
+                  "Deuxième repère (milieu)"
+                ],
+                [
+                  "3/4",
+                  "Troisième repère"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dénominateur commun nous donne le nombre de divisions entre 0 et 1. Par exemple, avec le dénominateur 4, nous faisons quatre marques égales. Chaque fraction se trouve alors sur l'une de ces marques selon son numérateur. Ainsi, 1/4 est au premier repère, 2/4 au deuxième, 3/4 au troisième."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toutes les fractions ont le même dénominateur, ici 4. Cela veut dire qu'on divise le segment 0-1 en 4 parties égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Marquer les repères",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place trois traits entre 0 et 1 pour obtenir quatre intervalles de même longueur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer chaque fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour 1/4, pose un point au premier trait. Pour 2/4, au deuxième trait. Pour 3/4, au troisième trait."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons les fractions 1/4, 2/4 et 3/4. La première marque correspond à un quart, la deuxième à deux quarts, la troisième à trois quarts. Remarque que 2/4 se trouve exactement au milieu entre 0 et 1, tout comme 1/2. C'est une égalité utile à retenir."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Représentation de 3/4",
+              "slices": [
+                {
+                  "label": "3/4",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1/4",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire montre que 3/4 occupe trois quarts du cercle, laissant seulement un quart vide. Compare cette image avec la position de 3/4 sur la droite : c'est le même repère."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de placer 3/4 et de comparer sa position avec 1/2. Tu verras que 3/4 est plus près de 1, donc plus grand que 1/2. Cette comparaison visuelle t'aidera à ordonner les fractions sans calcul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partager l'unité en parties égales.",
+                "Je sais lire et écrire une fraction.",
+                "Je sais placer une fraction unitaire sur une droite graduée.",
+                "Je sais placer plusieurs fractions de même dénominateur et les comparer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite de 0 à 1 divisée en 4 parties égales, place \\frac{1}{4}, \\frac{2}{4}, \\frac{3}{4}.",
+              "answer": "1/4 au premier repère, 2/4 au second, 3/4 au troisième.",
+              "hint": "Compte les marques à partir de 0.",
+              "explanation": "Le dénominateur 4 donne quatre marques. Le numérateur indique laquelle choisir."
+            },
+            {
+              "question": "Quelle fraction est équivalente à \\frac{2}{4} ?",
+              "answer": "\\frac{1}{2}",
+              "hint": "Regarde la position au milieu.",
+              "explanation": "2/4 se trouve au même point que 1/2, donc ils sont égaux."
+            },
+            {
+              "question": "Compare \\frac{3}{4} et \\frac{1}{2}. Laquelle est plus grande ?",
+              "answer": "\\frac{3}{4}",
+              "hint": "Regarde la position sur la droite.",
+              "explanation": "3/4 est plus près de 1 que 1/2, donc 3/4 > 1/2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

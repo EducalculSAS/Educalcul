@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Droites, segments et médiatrice",
+  "title": "Quiz : Droites, segments et médiatrice - Applications",
+  "questions": [
+    {
+      "text": "Quelle est la définition de la médiatrice d'un segment ?",
+      "options": [
+        "La droite qui passe par le milieu du segment et est parallèle au segment.",
+        "La droite qui passe par le milieu du segment et est perpendiculaire au segment.",
+        "La droite qui passe par les extrémités du segment.",
+        "Le segment qui relie les milieux de deux segments."
+      ],
+      "correctAnswer": "La droite qui passe par le milieu du segment et est perpendiculaire au segment.",
+      "explanation": "La médiatrice d'un segment est la droite qui passe par le milieu de ce segment et qui lui est perpendiculaire. Les autres propositions décrivent soit une droite parallèle, soit la droite support du segment, soit un segment reliant des milieux, ce qui ne correspond pas à la définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quels instruments sont nécessaires pour tracer la médiatrice d'un segment $AB$ ?",
+      "options": [
+        "Une règle seulement.",
+        "Un compas et une règle.",
+        "Un rapporteur seulement.",
+        "Une équerre seulement."
+      ],
+      "correctAnswer": "Un compas et une règle.",
+      "explanation": "La construction classique de la médiatrice utilise un compas pour tracer des arcs de même rayon depuis les deux extrémités, puis une règle pour joindre les intersections de ces arcs. Une règle seule ne permet pas de trouver le milieu, un rapporteur mesure des angles, et une équerre ne suffit pas sans compas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $M$ un point appartenant à la médiatrice du segment $AB$. Si $MA = 5$ cm, quelle est la longueur de $MB$ ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$2,5$ cm",
+        "$0$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "Par définition, tout point de la médiatrice est équidistant des extrémités du segment. Donc $MA = MB$. Si $MA = 5$ cm, alors $MB = 5$ cm. Les autres valeurs correspondent à des erreurs fréquentes : doubler, diviser par deux ou croire que la distance est nulle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace la médiatrice d'un segment $CD$ de longueur $8$ cm. Quelle est la distance du milieu de $CD$ à cette médiatrice ?",
+      "options": [
+        "$0$ cm",
+        "$4$ cm",
+        "$8$ cm",
+        "$2$ cm"
+      ],
+      "correctAnswer": "$0$ cm",
+      "explanation": "Le milieu d'un segment appartient à sa médiatrice, car la médiatrice passe par ce milieu. Par conséquent, la distance entre le milieu et la médiatrice est nulle. Les autres options confondent la longueur du segment, la moitié de cette longueur ou un quart.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, la médiatrice du côté $BC$ coupe $BC$ en $M$. Si $BM = 4,5$ cm, quelle est la longueur de $BC$ ?",
+      "options": [
+        "$4,5$ cm",
+        "$9$ cm",
+        "$2,25$ cm",
+        "$13,5$ cm"
+      ],
+      "correctAnswer": "$9$ cm",
+      "explanation": "La médiatrice d'un segment passe par son milieu. Donc $M$ est le milieu de $BC$, ce qui implique $BM = MC$. La longueur totale $BC = BM + MC = 2 \\times BM = 2 \\times 4,5 = 9$ cm. Les distracteurs correspondent à ne pas doubler, à diviser par deux ou à multiplier par trois.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

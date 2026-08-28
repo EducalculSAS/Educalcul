@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Terminaison intuitive",
+  "title": "Terminaison intuitive des boucles",
+  "blocks": [
+    {
+      "title": "Boucle simple avec compteur",
+      "content": "Relie chaque algorithme au nombre d'itérations qu'il effectue avant de s'arrêter.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialiser $i$ à $1$ ; Tant que $i <= 5$ faire $i = i + 1$",
+          "right": "5 itérations"
+        },
+        {
+          "left": "Initialiser $i$ à $0$ ; Tant que $i < 3$ faire $i = i + 1$",
+          "right": "3 itérations"
+        },
+        {
+          "left": "Initialiser $i$ à $10$ ; Tant que $i > 0$ faire $i = i - 1$",
+          "right": "10 itérations"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour le premier algorithme, $i$ commence à $1$ et augmente de $1$ tant que $i <= 5$ ; les valeurs prises sont $1,2,3,4,5$ soit $5$ itérations. Pour le second, $i$ commence à $0$ et augmente tant que $i < 3$ ; les valeurs sont $0,1,2$ soit $3$ itérations. Pour le troisième, $i$ commence à $10$ et diminue de $1$ tant que $i > 0$ ; les valeurs sont $10,9,...,1$ soit $10$ itérations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour avec intervalle",
+      "content": "Associe chaque instruction « Pour » au nombre de tours de boucle effectués.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pour $k$ de $1$ à $4$ faire ...",
+          "right": "4 itérations"
+        },
+        {
+          "left": "Pour $k$ de $0$ à $2$ faire ...",
+          "right": "3 itérations"
+        },
+        {
+          "left": "Pour $k$ de $5$ à $5$ faire ...",
+          "right": "1 itération"
+        }
+      ],
+      "items": [],
+      "explanation": "La boucle « Pour $k$ de $1$ à $4$ » exécute le corps pour $k = 1,2,3,4$ soit $4$ itérations. « Pour $k$ de $0$ à $2$ » donne $k = 0,1,2$ soit $3$ itérations. « Pour $k$ de $5$ à $5$ » ne donne qu'une seule valeur $k=5$ donc $1$ itération.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Terminaison d'une boucle conditionnelle",
+      "content": "Détermine si chaque boucle se termine ou ne se termine pas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Initialiser $x$ à $10$ ; Tant que $x > 0$ faire $x = x - 2$",
+          "right": "Se termine"
+        },
+        {
+          "left": "Initialiser $x$ à $1$ ; Tant que $x < 10$ faire $x = x + 1$",
+          "right": "Se termine"
+        },
+        {
+          "left": "Initialiser $x$ à $5$ ; Tant que $x != 0$ faire $x = x + 1$",
+          "right": "Ne se termine pas"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans le premier cas, $x$ diminue de $2$ à chaque tour : $10,8,6,4,2,0$ ; la condition $x > 0$ devient fausse, la boucle s'arrête. Dans le second, $x$ augmente de $1$ : $1,2,...,9$ ; quand $x$ devient $10$, la condition $x < 10$ est fausse, la boucle s'arrête. Dans le troisième, $x$ commence à $5$ et augmente indéfiniment ; la condition $x != 0$ reste toujours vraie, la boucle ne se termine jamais.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

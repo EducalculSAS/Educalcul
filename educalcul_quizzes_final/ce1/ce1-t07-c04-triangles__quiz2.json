@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Comparer des formes",
+  "title": "Comparer des formes - Les triangles",
+  "questions": [
+    {
+      "text": "Parmi ces figures, laquelle est un triangle ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un triangle",
+        "Un cercle"
+      ],
+      "correctAnswer": "Un triangle",
+      "explanation": "Un triangle est une figure géométrique qui possède exactement $3$ côtés et $3$ sommets. Le carré et le rectangle en ont $4$, le cercle n'en a aucun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de côtés et de sommets a un triangle ?",
+      "options": [
+        "$3$ côtés et $3$ sommets",
+        "$4$ côtés et $4$ sommets",
+        "$2$ côtés et $2$ sommets",
+        "$0$ côté et $0$ sommet"
+      ],
+      "correctAnswer": "$3$ côtés et $3$ sommets",
+      "explanation": "Par définition, tout triangle a $3$ côtés (segments de droite) et $3$ sommets (points de rencontre des côtés). C'est ce qui le différencie du quadrilatère ($4$) ou du cercle ($0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment reconnaître un triangle rectangle ?",
+      "options": [
+        "Il a trois côtés de même longueur",
+        "Il a un angle droit",
+        "Il a quatre côtés",
+        "Tous ses angles sont pointus"
+      ],
+      "correctAnswer": "Il a un angle droit",
+      "explanation": "Un triangle rectangle se caractérise par la présence d'un angle droit ($90$ degrés). On le vérifie avec un gabarit (équerre). Les autres options décrivent un triangle équilatéral, un quadrilatère ou un triangle acutangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde ce triangle. Quel est son angle droit ?",
+      "options": [
+        "L'angle en A",
+        "L'angle en B",
+        "L'angle en C",
+        "Il n'a pas d'angle droit"
+      ],
+      "correctAnswer": "L'angle en A",
+      "explanation": "Le petit carré dans l'angle au sommet A indique qu'il s'agit d'un angle droit. Le triangle est donc rectangle en A. Les angles en B et en C sont aigus (plus petits qu'un angle droit).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Quel ensemble ne contient que des triangles ?",
+      "options": [
+        "Un carré, un rectangle, un triangle",
+        "Trois triangles de tailles différentes",
+        "Un cercle, un triangle, un carré",
+        "Deux rectangles et un triangle"
+      ],
+      "correctAnswer": "Trois triangles de tailles différentes",
+      "explanation": "Pour ne contenir que des triangles, toutes les figures de l'ensemble doivent avoir $3$ côtés et $3$ sommets. La taille ou la forme (rectangle, équilatéral, quelconque) n'importe pas, seule la propriété 'triangle' compte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

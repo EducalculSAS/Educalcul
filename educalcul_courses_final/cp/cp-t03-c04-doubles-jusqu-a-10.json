@@ -1,0 +1,371 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.564030+00:00",
+  "id": 26,
+  "code": "cp-t03-c04",
+  "title": "Doubles jusqu'à 10",
+  "description": "Cours structuré Educalcul : Doubles jusqu'à 10.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Doubles jusqu'à 10",
+    "objectif_global": "Doubles jusqu'à 10",
+    "mini_lecons_imposees": [
+      "Construire un double avec deux groupes égaux.",
+      "Mémoriser les doubles usuels.",
+      "Utiliser un double proche pour calculer."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Construire un double avec deux groupes égaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux groupes identiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux mains. Sur chaque main, tu peux lever le même nombre de doigts. Si tu lève $3$ doigts sur la main gauche et $3$ doigts sur la main droite, tu as fait un double. Le double de $3$, c'est $3$ plus $3$, ça fait $6$ doigts en tout. C'est comme si tu avais deux petits tas de bonbons exactement pareils."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                3
+              ],
+              "right": [
+                6
+              ],
+              "caption": "3 et 3 font 6, les deux plateaux sont en équilibre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons voir comment construire un double avec un quadrillage coloré."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le double sur un quadrillage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce quadrillage : il y a deux lignes et trois colonnes. Chaque case est une unité. Si tu coloriés toutes les cases des deux lignes, tu as deux groupes de $3$ cases. En les comptant, tu trouves $6$ cases colorées. C'est une façon visuelle de voir le double de $3$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 6,
+              "caption": "Deux lignes de trois cases donnent six cases en tout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec d'autres nombres pour bien ancrer l'idée du double."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les premiers doubles jusqu'à 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici les doubles que tu vas rencontrer souvent : le double de $1$ est $2$, le double de $2$ est $4$, le double de $3$ est $6$, le double de $4$ est $8$, le double de $5$ est $10$. Repère comme chaque résultat est pair et comme ils grandissent de $2$ en $2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1+1=2 \\quad 2+2=4 \\quad 3+3=6 \\quad 4+4=8 \\quad 5+5=10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant construire un double avec deux groupes égaux. À la prochaine leçon, nous allons apprendre à les mémoriser pour les retrouver vite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu as deux groupes de $2$ cubes, combien as-tu de cubes en tout ?",
+              "answer": "4",
+              "hint": "Compte les cubes des deux groupes ensemble.",
+              "explanation": "Deux groupes de $2$ font $2+2=4$. C'est le double de $2$."
+            },
+            {
+              "question": "Sur le quadrillage, colorie deux lignes de $4$ cases. Combien de cases sont colorées ?",
+              "answer": "8",
+              "hint": "Compte les cases d'une ligne, puis double ce nombre.",
+              "explanation": "Deux lignes de $4$ cases font $4+4=8$. C'est le double de $4$."
+            },
+            {
+              "question": "Quel est le double de $5$ ?",
+              "answer": "10",
+              "hint": "Ajoute $5$ et $5$.",
+              "explanation": "Le double de $5$ est $5+5=10$."
+            }
+          ]
+        },
+        {
+          "title": "Mémoriser les doubles usuels.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des doubles connus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les doubles jusqu'à $5$. Pour les garder en tête, imagine une petite ritournelle : « Un et un, deux pieds nus ; deux et deux, quatre chaussettes ; trois et trois, six bonbons ; quatre et quatre, huit crayons ; cinq et cinq, dix doigts mains. » Chante-la tout bas quand tu révise."
+            },
+            {
+              "type": "display_math",
+              "latex": "1+1=2 \\quad 2+2=4 \\quad 3+3=6 \\quad 4+4=8 \\quad 5+5=10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'aider à les retenir, nous allons utiliser une petite méthode en trois temps."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode des trois temps"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends un nombre entre $1$ et $5$, par exemple $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute le même nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $4+4$ en comptant sur tes doigts ou en dessinant des traits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Répète le résultat à voix haute",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis « Le double de $4$ est $8$ » plusieurs fois pour l'ancrer."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, jouons à un jeu de rapidité pour tester ta mémoire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Jeu de rapidité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Je te donne un nombre, tu réponds son double le plus vite possible. Essaie avec $2$, puis $5$, puis $3$, puis $1$, puis $4$. Tu peux t'entraîner avec un chronomètre ou en comptant dans ta tête."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Double de 2 = 4",
+                "Double de 5 = 10",
+                "Double de 3 = 6",
+                "Double de 1 = 2",
+                "Double de 4 = 8"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu commences à bien connaître tes doubles. La prochaine leçon te montrera comment t'en servir pour calculer encore plus vite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète : le double de $3$ est $\\ldots$",
+              "answer": "6",
+              "hint": "Pense à $3+3$.",
+              "explanation": "Le double de $3$ est $3+3=6$."
+            },
+            {
+              "question": "Si je dis $4$, tu me donnes son double. Quelle est ta réponse ?",
+              "answer": "8",
+              "hint": "Ajoute $4$ et $4$.",
+              "explanation": "Le double de $4$ est $4+4=8$."
+            },
+            {
+              "question": "Parmi ces additions, laquelle est un double ? $2+3$, $4+4$, $1+5$",
+              "answer": "4+4",
+              "hint": "Un double ajoute deux fois le même nombre.",
+              "explanation": "$4+4$ ajoute deux fois $4$, c'est un double. Les autres ajoutent des nombres différents."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser un double proche pour calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le double proche, c'est quoi ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu dois ajouter deux nombres qui se suivent, comme $3$ et $4$. Tu ne connais pas encore $3+4$ par cœur, mais tu sais que $3+3=6$. Puisque $4$ c'est $3+1$, tu peux faire $3+3+1$. Ça donne $6+1=7$. C'est ce qu'on appelle utiliser un double proche."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le double le plus proche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $3+4$, le double proche est $3+3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute ou retire $1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, $4$ est $1$ de plus que $3$, donc on ajoute $1$ au résultat du double."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calcule le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$3+3=6$, puis $6+1=7$. Donc $3+4=7$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec d'autres couples de nombres qui se suivent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînons-nous avec les nombres qui se suivent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde : $2+3$, tu sais $2+2=4$, tu ajoutes $1$ pour faire $5$. Pour $4+5$, tu sais $4+4=8$, tu ajoutes $1$ pour faire $9$. Et pour $5+4$, c'est pareil : $4+4=8$, tu ajoutes $1$ pour faire $9$."
+            },
+            {
+              "type": "display_math",
+              "latex": "2+3=5 \\quad 4+5=9 \\quad 5+4=9"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Mélangeons maintenant doubles exacts et doubles proches pour bien vérifier que tu sais choisir la bonne stratégie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mélange doubles et doubles proches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une série : $2+2$, $3+4$, $5+5$, $1+2$, $4+4$. Pour chacune, demande-toi : est-ce un double exact ou un double proche ? Utilise ce que tu sais pour répondre vite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un double avec deux groupes égaux.",
+                "Je connais mes doubles jusqu'à 10 par cœur.",
+                "Je sais utiliser un double proche pour calculer une addition."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $3+4$ en utilisant le double proche.",
+              "answer": "7",
+              "hint": "Pense à $3+3=6$, puis ajoute $1$.",
+              "explanation": "$3+3=6$, et $4$ est $1$ de plus que $3$, donc $6+1=7$."
+            },
+            {
+              "question": "Quel calcul fais-tu pour trouver $4+5$ ?",
+              "answer": "4+4=8 puis 8+1=9",
+              "hint": "Utilise le double de $4$.",
+              "explanation": "Le double de $4$ est $8$. Comme $5$ est $4+1$, on ajoute $1$ à $8$ pour obtenir $9$."
+            },
+            {
+              "question": "Parmi ces additions, lesquelles sont des doubles exacts ? $2+2$, $3+4$, $5+5$, $1+2$",
+              "answer": "2+2 et 5+5",
+              "hint": "Un double exact ajoute deux fois le même nombre.",
+              "explanation": "$2+2$ et $5+5$ ajoutent deux fois le même nombre. $3+4$ et $1+2$ sont des doubles proches."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

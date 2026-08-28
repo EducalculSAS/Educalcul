@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 176,
+  "_course_code": "ce2-t04-c08-compensation",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Ajouter puis corriger",
+  "title": "Algorithme : Ajouter puis corriger",
+  "blocks": [
+    {
+      "title": "Écrire les étapes",
+      "content": "On veut calculer $28 + 19$ en utilisant la méthode « ajouter puis corriger ». Écris les étapes de l'algorithme dans l'ordre en utilisant les mots : ajouter, corriger, dizaine supérieure, résultat.",
+      "correctAnswer": "Étape 1 : Identifier la dizaine supérieure du nombre à ajouter (19 → 20).\\nÉtape 2 : Ajouter cette dizaine supérieure au nombre de départ ($28 + 20 = 48$).\\nÉtape 3 : Corriger en retirant ce qui a été ajouté en trop (retirer 1).\\nÉtape 4 : Écrire le résultat final ($48 - 1 = 47$).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode « ajouter puis corriger » consiste à arrondir le nombre à ajouter à la dizaine supérieure (20 pour 19), à faire l'addition arrondie ($28 + 20 = 48$), puis à corriger en enlevant la différence (1) pour obtenir le résultat exact ($48 - 1 = 47$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter l'algorithme",
+      "content": "Voici un algorithme pour calculer $35 + 29$. Complète les lignes vides pour que le programme donne le bon résultat.\\nDÉBUT\\n  nombre_départ ← 35\\n  nombre_ajouter ← 29\\n  dizaine_supérieure ← ...\\n  somme_arrondie ← nombre_départ + dizaine_supérieure\\n  correction ← dizaine_supérieure - nombre_ajouter\\n  résultat ← somme_arrondie - correction\\n  AFFICHER résultat\\nFIN",
+      "correctAnswer": "dizaine_supérieure ← 30",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour utiliser la compensation avec 29, on l'arrondit à la dizaine supérieure qui est 30. La variable 'dizaine_supérieure' prend donc la valeur 30. La somme arrondie est $35 + 30 = 65$. La correction est $30 - 29 = 1$. Le résultat final est $65 - 1 = 64$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général",
+      "content": "Écris un algorithme général qui permet de calculer 'nombre_départ + nombre_à_ajouter' lorsque 'nombre_à_ajouter' se termine par 9 (exemples : 9, 19, 29, 39...). Utilise les variables : nombre_départ, nombre_à_ajouter, dizaine_supérieure, somme_arrondie, correction, résultat.",
+      "correctAnswer": "DÉBUT\\n  LIRE nombre_départ, nombre_à_ajouter\\n  dizaine_supérieure ← nombre_à_ajouter + 1\\n  somme_arrondie ← nombre_départ + dizaine_supérieure\\n  correction ← dizaine_supérieure - nombre_à_ajouter\\n  résultat ← somme_arrondie - correction\\n  AFFICHER résultat\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quel que soit le nombre se terminant par 9, la dizaine supérieure s'obtient en ajoutant 1 (ex: $19+1=20$, $29+1=30$). L'algorithme calcule la somme avec cette dizaine, puis corrige en soustrayant la différence (qui vaut toujours 1). Cela fonctionne pour tous les nombres comme 9, 19, 29, etc.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

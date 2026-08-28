@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 284,
+  "_course_code": "cm2-t02-c03-comparer-des-fractions",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Dénominateurs liés simplement",
+  "title": "Algorithmes pour comparer des fractions",
+  "blocks": [
+    {
+      "title": "Cas des dénominateurs multiples",
+      "content": "Écris un raisonnement structuré pour comparer deux fractions dont les dénominateurs sont liés simplement, par exemple $\\frac{3}{4}$ et $\\frac{7}{8}$. Explique les étapes à suivre pour décider laquelle est la plus grande.",
+      "correctAnswer": "Étape $1$: Identifier le lien entre les dénominateurs. Ici, $8$ est le double de $4$ car $4 \\times 2 = 8$.\\nÉtape $2$: Transformer la fraction $\\frac{3}{4}$ pour qu'elle ait le même dénominateur que la deuxième en multipliant le numérateur et le dénominateur par $2$. On obtient $\\frac{3 \\times 2}{4 \\times 2} = \\frac{6}{8}$.\\nÉtape $3$: Comparer les numérateurs des deux fractions ayant le même dénominateur. Comme $6$ est inférieur à $7$, alors $\\frac{6}{8}$ est inférieur à $\\frac{7}{8}$.\\nConclusion : $\\frac{3}{4} < \\frac{7}{8}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer deux fractions, il faut qu'elles aient le même dénominateur. On utilise le lien entre $4$ et $8$ pour mettre $\\frac{3}{4}$ au même dénominateur que $\\frac{7}{8}$. On compare ensuite les numérateurs $6$ et $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pseudo-code de comparaison",
+      "content": "Imaginons un programme informatique qui compare deux fractions $\\frac{n1}{d1}$ et $\\frac{n2}{d2}$ où $d2$ est un multiple de $d1$. Écris les instructions du programme (en français) pour déterminer si la première fraction est plus petite, plus grande ou égale à la deuxième.",
+      "correctAnswer": "Instruction $1$: Calculer le multiplicateur $k$ tel que $d1 \\times k = d2$.\\nInstruction $2$: Calculer le nouveau numérateur $n1_{nouveau}$ en faisant $n1 \\times k$.\\nInstruction $3$: Comparer $n1_{nouveau}$ avec $n2$.\\nInstruction $4$: Si $n1_{nouveau}$ est inférieur à $n2$, alors la première fraction est plus petite.\\nInstruction $5$: Si $n1_{nouveau}$ est supérieur à $n2$, alors la première fraction est plus grande.\\nInstruction $6$: Si $n1_{nouveau}$ est égal à $n2$, alors les deux fractions sont égales.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit la méthode mathématique : on cherche le facteur d'échelle $k$ pour égaliser les dénominateurs, on ajuste le numérateur, puis on compare les valeurs entières obtenues.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Application et test",
+      "content": "Utilise le raisonnement structuré précédent pour comparer les fractions $\\frac{5}{6}$ et $\\frac{11}{12}$. Détaille chaque étape du calcul comme si tu étais l'algorithme.",
+      "correctAnswer": "Étape $1$ : Recherche du lien. $12 = 6 \\times 2$, donc le multiplicateur est $2$.\\nÉtape $2$ : Transformation. $\\frac{5 \\times 2}{6 \\times 2} = \\frac{10}{12}$.\\nÉtape $3$ : Comparaison. $10$ est inférieur à $11$.\\nRésultat : $\\frac{10}{12} < \\frac{11}{12}$, donc $\\frac{5}{6} < \\frac{11}{12}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la méthode : on multiplie $\\frac{5}{6}$ par $2$ en haut et en bas pour obtenir $\\frac{10}{12}$. En comparant $\\frac{10}{12}$ et $\\frac{11}{12}$, on constate que $\\frac{10}{12}$ est plus petite.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

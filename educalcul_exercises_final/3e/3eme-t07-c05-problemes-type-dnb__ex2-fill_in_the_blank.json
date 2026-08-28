@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Rédiger",
+  "title": "Rédiger des algorithmes - Compléter des textes à trous",
+  "blocks": [
+    {
+      "title": "Compléter un algorithme simple",
+      "content": "Voici un algorithme qui calcule la somme des entiers de 1 à $n$ :\\n{{1}}\\nSomme ← 0\\nPour i de 1 à $n$ faire\\n    Somme ← Somme + i\\nFin Pour\\n{{2}}\\nAfficher Somme",
+      "correctAnswer": "",
+      "blanks": [
+        "Début|début",
+        "Fin|fin"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme doit commencer par le mot-clé « Début » et se terminer par « Fin ». La structure « Pour … Fin Pour » encadre la boucle, et l'instruction « Afficher » se place après la boucle, avant la fin de l'algorithme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une structure conditionnelle",
+      "content": "Complétez l'algorithme suivant qui teste si un nombre $x$ est pair :\\nDébut\\nLire $x$\\n{{1}} $x % 2 = 0$ Alors\\n    Afficher \"Pair\"\\n{{2}}\\n    Afficher \"Impair\"\\nFin Si\\nFin",
+      "correctAnswer": "",
+      "blanks": [
+        "Si|si",
+        "Sinon|sinon"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La structure conditionnelle en pseudo-code utilise « Si … Alors » pour le cas vrai et « Sinon » pour le cas faux, terminée par « Fin Si ». Ici, la condition teste si le reste de la division de $x$ par 2 est nul (nombre pair).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une boucle avec accumulateur",
+      "content": "Écrivez les parties manquantes de l'algorithme qui calcule le factoriel de $n$ :\\nDébut\\nLire $n$\\nFactoriel ← 1\\n{{1}} i de 2 à $n$ faire\\n    Factoriel ← Factoriel * i\\n{{2}}\\nAfficher Factoriel\\nFin",
+      "correctAnswer": "",
+      "blanks": [
+        "Pour|pour",
+        "Fin Pour|fin pour"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer le factoriel, on utilise une boucle « Pour i de 2 à n faire » qui multiplie l'accumulateur « Factoriel » par chaque valeur de i. La boucle se termine par « Fin Pour » avant d'afficher le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

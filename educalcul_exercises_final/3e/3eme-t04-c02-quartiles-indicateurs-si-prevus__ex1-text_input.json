@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Lire",
+  "title": "Lecture des quartiles et diagramme en boîte",
+  "blocks": [
+    {
+      "title": "Lecture d'un diagramme en boîte",
+      "content": "Le diagramme en boîte ci-dessous représente une série statistique. Donne la valeur de la médiane et l'intervalle interquartile (IIQ).",
+      "correctAnswer": "Médiane = 22 ; IIQ = 10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiane correspond au trait central de la boîte, ici $22$. Le premier quartile $Q_1$ est le bord gauche de la boîte ($18$) et le troisième quartile $Q_3$ le bord droit ($28$). L'intervalle interquartile est $Q_3 - Q_1 = 28 - 18 = 10$.",
+      "points": 2,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Série statistique",
+        "min": 10,
+        "q1": 18,
+        "median": 22,
+        "q3": 28,
+        "max": 35
+      }
+    },
+    {
+      "title": "Calcul des quartiles sur une série",
+      "content": "On considère la série statistique ordonnée suivante (11 valeurs) : $12 ; 15 ; 15 ; 18 ; 20 ; 22 ; 25 ; 28 ; 30 ; 32 ; 35$. Détermine le premier quartile $Q_1$, la médiane $M$ et le troisième quartile $Q_3$.",
+      "correctAnswer": "Q1 = 15 ; Médiane = 22 ; Q3 = 28",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La série comporte $11$ valeurs. La médiane est la $6^{\\text{e}}$ valeur : $22$. Le premier quartile $Q_1$ est la médiane des $5$ premières valeurs ($12 ; 15 ; 15 ; 18 ; 20$), soit la $3^{\\text{e}}$ : $15$. Le troisième quartile $Q_3$ est la médiane des $5$ dernières valeurs ($25 ; 28 ; 30 ; 32 ; 35$), soit la $3^{\\text{e}}$ : $28$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation de l'intervalle interquartile",
+      "content": "Dans un diagramme en boîte, quelle proportion (en pourcentage) des observations se trouve à l'intérieur de la boîte, c'est-à-dire entre $Q_1$ et $Q_3$ ?",
+      "correctAnswer": "50%",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Par définition, le premier quartile $Q_1$ laisse $25\\%$ des observations en dessous de lui, et le troisième quartile $Q_3$ en laisse $25\\%$ au-dessus. Il reste donc $100\\% - 25\\% - 25\\% = 50\\%$ des observations entre $Q_1$ et $Q_3$. C'est l'intervalle interquartile.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

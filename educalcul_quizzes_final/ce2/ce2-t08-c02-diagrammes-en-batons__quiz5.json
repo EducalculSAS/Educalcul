@@ -1,0 +1,141 @@
+{
+  "_status": "done",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire une échelle",
+  "title": "Quiz : Lire une échelle sur un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Sur le diagramme ci-dessous, chaque graduation de l'axe vertical représente $1$ unité. Quelle est la valeur exacte de la barre \"Pommes\" ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "6",
+      "explanation": "L'axe vertical est gradué de $1$ en $1$ ($0, 1, 2, 3, 4, 5, 6...$). La barre \"Pommes\" s'arrête exactement sur la sixième graduation en partant du bas, ce qui correspond à la valeur $6$. Les distracteurs $4$ et $5$ correspondent aux barres inférieures ou à une lecture trop basse, et $7$ à une lecture trop haute.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme : Nombre de fruits (échelle 1 par 1)",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Poires",
+            "value": 4,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur ce diagramme, l'échelle de l'axe vertical va de $0$ à $30$ par pas de $5$ ($0, 5, 10, 15, 20, 25, 30$). La barre \"Livres\" s'arrête pile sur la graduation $20$. Quelle est sa valeur ?",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "10"
+      ],
+      "correctAnswer": "20",
+      "explanation": "Il faut repérer les grandes graduations numérotées : $0, 5, 10, 15, 20, 25, 30$. La barre \"Livres\" atteint exactement le trait où est écrit $20$. La réponse $15$ correspond à la graduation d'avant, $25$ à celle d'après, et $10$ est trop bas.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme : Fournitures scolaires (échelle 5 par 5)",
+        "bars": [
+          {
+            "label": "Livres",
+            "value": 20,
+            "tone": "blue"
+          },
+          {
+            "label": "Cahiers",
+            "value": 10,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "L'axe vertical de ce diagramme est gradué de $10$ en $10$ ($0, 10, 20, 30, 40$). La barre \"Billes\" monte jusqu'à mi-chemin entre la graduation $20$ et la graduation $30$. Quelle est sa valeur ?",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "15"
+      ],
+      "correctAnswer": "25",
+      "explanation": "L'intervalle entre $20$ et $30$ vaut $10$. Le milieu de cet intervalle correspond à la moitié de $10$, soit $5$. On ajoute donc $5$ à $20$, ce qui donne $25$. Répondre $20$ ou $30$ revient à lire la graduation la plus proche sans voir que la barre est entre les deux. $15$ est impossible car la barre est au-dessus de $20$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme : Jeux (échelle 10 par 10)",
+        "bars": [
+          {
+            "label": "Billes",
+            "value": 25,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme en bâtons est horizontal. L'échelle horizontale va de $0$ à $12$ par pas de $2$ ($0, 2, 4, 6, 8, 10, 12$). La barre \"Crayons\" se termine exactement au milieu entre la graduation $6$ et la graduation $8$. Quelle est sa valeur ?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Sur un diagramme horizontal, on lit sur l'axe du bas. Les graduations sont $0, 2, 4, 6, 8, 10, 12$. L'espace entre $6$ et $8$ vaut $2$. Le milieu de cet espace correspond à $1$ unité après $6$, donc $6 + 1 = 7$. $6$ et $8$ sont les graduations voisines, $5$ n'est pas sur l'échelle.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme horizontal : Trousse (échelle 2 par 2)",
+        "bars": [
+          {
+            "label": "Crayons",
+            "value": 7,
+            "tone": "navy"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Regarde les barres \"Équipe A\" et \"Équipe B\". L'échelle verticale est de $2$ en $2$ ($0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20$). L'Équipe A est à $12$ et l'Équipe B est à $18$. De combien de points l'Équipe B a-t-elle gagné de plus que l'Équipe A ?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Il faut lire la valeur des deux barres sur l'échelle par $2$ : Équipe A = $12$, Équipe B = $18$. La différence se calcule par une soustraction : $18 - 12 = 6$. L'erreur $4$ vient d'une mauvaise lecture d'une graduation (ex: $16$ au lieu de $18$), $8$ d'une addition au lieu d'une soustraction, et $10$ d'une confusion avec la valeur de l'Équipe A.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme : Match (échelle 2 par 2)",
+        "bars": [
+          {
+            "label": "Équipe A",
+            "value": 12,
+            "tone": "red"
+          },
+          {
+            "label": "Équipe B",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.012998+00:00",
+  "id": 496,
+  "code": "2nde-t01-c01",
+  "title": "Ensembles de nombres",
+  "description": "Cours structuré Educalcul : Ensembles de nombres.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Ensembles de nombres",
+    "objectif_global": "Ensembles de nombres",
+    "mini_lecons_imposees": [
+      "N, Z, Q, R.",
+      "Appartenance / inclusion.",
+      "Classer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "N, Z, Q, R.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es un explorateur des nombres. Au tout début de l'humanité, on avait juste besoin de compter des objets : $1$ pomme, $2$ moutons, $3$ pierres. C'était simple, on utilisait des nombres entiers positifs. Mais très vite, la vie est devenue plus complexe. Imagine un marchand qui te prête $5$ pièces d'or. Si tu n'en as pas, tu as une dette. Comment noter cela mathématiquement ? On a alors inventé les nombres négatifs. Plus tard, on a voulu partager un gâteau en $3$ parts égales : $1$ divisé par $3$ ne tombe pas juste. On a alors créé les fractions. Enfin, les mathématiciens ont découvert des nombres comme $\\pi$ ou $\\sqrt{2}$ qui ne peuvent s'écrire sous forme de fraction, peu importe l'effort fourni. Chaque fois qu'un nouveau besoin est apparu, on a créé un nouvel ensemble de nombres, comme des boîtes qui s'emboîtent les unes dans les autres. C'est ce voyage intellectuel que nous allons faire ensemble pour comprendre comment organiser tout l'univers numérique que tu utilises chaque jour sans même y penser."
+            },
+            {
+              "type": "paragraph",
+              "content": "En classe de seconde, on utilise des lettres spéciales avec une double barre pour nommer ces ensembles. D'abord, $\\mathbb{N}$ désigne les entiers naturels, ce sont les nombres positifs sans virgule comme $0$, $1$, $2$, $100$. Ensuite, $\\mathbb{Z}$ représente les entiers relatifs. On y trouve tous les nombres de $\\mathbb{N}$ auxquels on ajoute les entiers négatifs comme $-1$, $-42$ ou $-1000$. Puis vient $\\mathbb{D}$, l'ensemble des nombres décimaux. Un nombre est décimal si son écriture décimale s'arrête, c'est-à-dire s'il peut s'écrire sous la forme $\\frac{a}{10^n}$ avec un entier $a$ et un entier $n$. Par exemple, $0,75$ est décimal car $0,75 = \\frac{75}{100}$. On trouve ensuite $\\mathbb{Q}$, les rationnels. Ce sont tous les nombres pouvant s'écrire comme le quotient de deux entiers, $\\frac{p}{q}$. Tout nombre décimal est rationnel, mais l'inverse n'est pas vrai : $\\frac{1}{3}$ est rationnel car c'est une fraction, mais sa valeur $0,333...$ ne s'arrête jamais, donc ce n'est pas un décimal. Enfin, $\\mathbb{R}$, l'ensemble des nombres réels, englobe absolument tous les nombres précédents ainsi que les nombres irrationnels, comme $\\sqrt{3}$ ou $\\pi$, qui ne peuvent pas s'écrire sous forme de fraction."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{D} \\subset \\mathbb{Q} \\subset \\mathbb{R}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour déterminer à quel ensemble appartient un nombre, je te conseille de suivre un cheminement logique, du plus restrictif au plus large. \\n\\nÉtape $1$ : Regarde si le nombre est un entier positif. Si oui, il appartient à $\\mathbb{N}$. \\n\\nÉtape $2$ : S'il est un entier mais négatif, il appartient à $\\mathbb{Z}$ (mais pas à $\\mathbb{N}$). \\n\\nÉtape $3$ : S'il y a une virgule, regarde si elle s'arrête. Si le nombre de chiffres après la virgule est fini, c'est un nombre décimal, donc il appartient à $\\mathbb{D}$. \\n\\nÉtape $4$ : Si la virgule ne s'arrête jamais mais que le nombre peut s'écrire comme une fraction de deux entiers (ou s'il y a une période répétitive après la virgule), c'est un rationnel, $\\mathbb{Q}$. \\n\\nÉtape $5$ : Si le nombre ne peut absolument pas s'écrire comme une fraction (comme les racines de nombres qui ne sont pas des carrés parfaits ou le nombre $\\pi$), alors c'est un réel $\\mathbb{R}$ irrationnel. \\n\\nLe secret est de toujours chercher l'ensemble le plus petit possible pour être le plus précis possible dans ta réponse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre $-7$. Est-il naturel ? Non, car il est négatif. On l'élimine donc de $\\mathbb{N}$. Est-il entier ? Oui, c'est un nombre sans virgule. Il appartient donc à l'ensemble $\\mathbb{Z}$ des entiers relatifs. Puisque $\\mathbb{Z}$ est contenu dans $\\mathbb{D}$ (car $-7 = \\frac{-70}{10}$), $\\mathbb{Q}$ et $\\mathbb{R}$, il appartient aussi à tous les autres. Mais l'ensemble le plus précis est $\\mathbb{Z}$. \\n\\n prenons maintenant le nombre $4$. Il est entier et positif. Il appartient donc à $\\mathbb{N}$. C'est l'ensemble le plus restreint pour lui. On dira que $4$ est un entier naturel. C'est la base de tout notre système de comptage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons le nombre $\\frac{1}{4}$. On peut l'écrire sous forme de fraction de deux entiers, donc il appartient à $\\mathbb{Q}$. Mais peut-on être plus précis ? Calculons sa valeur : $1$ divisé par $4$ donne $0,25$. Le nombre de chiffres après la virgule est fini. C'est donc un nombre décimal, il appartient à $\\mathbb{D}$. \\n\\nComparons avec $\\frac{1}{3}$. Sa valeur est $0,333...$ à l'infini. On ne peut pas l'écrire avec un nombre fini de chiffres après la virgule. Il n'est donc pas dans $\\mathbb{D}$. Cependant, il s'écrit comme le quotient de $1$ et $3$. Il appartient donc bien à $\\mathbb{Q}$. \\n\\nEnfin, prenons $\\sqrt{2}$. On ne peut pas l'écrire sous forme de fraction $\\frac{p}{q}$. Il n'est donc ni naturel, ni entier, ni décimal, ni rationnel. Il appartient uniquement à $\\mathbb{R}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique est de croire que tout nombre avec une virgule est un nombre décimal. Attention ! Un nombre décimal doit avoir un nombre FINI de chiffres après la virgule. Par exemple, $0,333...$ n'est pas décimal, même s'il y a une virgule. \\n\\nUn autre piège concerne les racines carrées. Ne vois pas le symbole $\\sqrt{}$ et ne conclus pas immédiatement que c'est un nombre irrationnel. Par exemple, $\\sqrt{25}$ est égal à $5$. Or $5$ est un entier naturel ! Il appartient donc à $\\mathbb{N}$. Toujours simplifier l'expression avant de classer le nombre. \\n\\nEnfin, n'oublie pas que $\\mathbb{N}$ est inclus dans $\\mathbb{Z}$. Un nombre comme $10$ appartient à $\\mathbb{N}$, mais il appartient aussi à $\\mathbb{Z}, \\mathbb{D}, \\mathbb{Q}$ et $\\mathbb{R}$. On demande généralement l'ensemble le plus petit (le plus restrictif), mais il est juste de savoir qu'il appartient à tous les suivants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "À quel ensemble le plus restreint appartient le nombre $-12$ ?",
+              "answer": "\\mathbb{Z}",
+              "hint": "Est-il positif ? A-t-il une virgule ?",
+              "explanation": "$-12$ est un entier car il n'a pas de virgule, mais il est négatif, donc il n'appartient pas à $\\mathbb{N}$. Son ensemble le plus restreint est donc $\\mathbb{Z}$."
+            },
+            {
+              "question": "Le nombre $\\frac{7}{20}$ est-il un nombre décimal ? Justifie.",
+              "answer": "Oui",
+              "hint": "Calcule la division ou regarde si le dénominateur est une puissance de 2 et de 5.",
+              "explanation": "$\\frac{7}{20} = 0,35$. Le nombre de chiffres après la virgule est fini, c'est donc un nombre décimal ($\\mathbb{D}$)."
+            },
+            {
+              "question": "À quel ensemble appartient $\\sqrt{16}$ ?",
+              "answer": "\\mathbb{N}",
+              "hint": "Simplifie d'abord la racine carrée.",
+              "explanation": "$\\sqrt{16} = 4$. Comme $4$ est un entier positif, il appartient à $\\mathbb{N}$."
+            }
+          ]
+        },
+        {
+          "title": "Appartenance / inclusion.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous connaissons nos ensembles de nombres, nous devons apprendre à parler d'eux avec précision. En mathématiques, comme dans une langue, il y a des symboles pour éviter les ambiguïtés. Imagine que tu as une collection de figurines. Tu peux dire : 'Cette figurine appartient à ma collection'. Tu parles d'un objet unique et d'un groupe. Mais tu peux aussi dire : 'Ma collection de figurines fait partie de mes jouets'. Ici, tu compares deux groupes. En mathématiques, on ne peut pas utiliser le même mot pour ces deux situations. On a donc créé deux symboles distincts : l'un pour l'appartenance d'un élément et l'autre pour l'inclusion d'un ensemble. Si tu confonds les deux, c'est comme si tu disais que ton chat est un club de sport : ça n'a pas de sens ! Nous allons apprendre à utiliser $\\in$ et $\\subset$ pour décrire avec élégance et rigueur les relations entre les nombres et leurs familles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier symbole est $\\in$, qui signifie appartient à. On l'utilise exclusivement lorsqu'on lie un élément seul (un nombre) à un ensemble. Par exemple, on écrit $5 \\in \\mathbb{N}$ pour dire que le nombre $5$ est un élément de l'ensemble des entiers naturels. On peut aussi utiliser le symbole $\\notin$ pour dire qu'un nombre n'appartient pas à un ensemble, comme $-2 \\notin \\mathbb{N}$. \\n\\nLe second symbole est $\\subset$, qui signifie est inclus dans. On l'utilise uniquement pour comparer deux ensembles. Dire que $\\mathbb{N} \\subset \\mathbb{Z}$ signifie que TOUS les éléments de $\\mathbb{N}$ se trouvent aussi dans $\\mathbb{Z}$. C'est comme dire que la ville de Lyon est incluse dans la région Auvergne-Rhône-Alpes. On ne dira jamais qu'un nombre est inclus dans un ensemble, car un nombre n'est pas un groupe, c'est un point. De même, on ne dira jamais qu'un ensemble appartient à un autre ensemble (sauf dans des cas très avancés de mathématiques que tu ne verras pas en seconde). L'inclusion est une relation de contémant et de contenu entre deux familles de nombres."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Hiérarchie des ensembles de nombres",
+              "sets": [
+                {
+                  "label": "\\mathbb{N}",
+                  "color": "blue"
+                },
+                {
+                  "label": "\\mathbb{Z}",
+                  "color": "green"
+                },
+                {
+                  "label": "\\mathbb{D}",
+                  "color": "yellow"
+                },
+                {
+                  "label": "\\mathbb{Q}",
+                  "color": "red"
+                },
+                {
+                  "label": "\\mathbb{R}",
+                  "color": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne plus jamais te tromper entre $\\in$ et $\\subset$, je te propose une méthode de vérification simple en deux questions. \\n\\nQuestion $1$ : Qu'est-ce qui se trouve à gauche du symbole ? \\nSi c'est un nombre seul (ex: $0,5$ ou $\\sqrt{2}$), alors tu DOIS utiliser $\\in$ ou $\\notin$. C'est un élément. \\n\\nQuestion $2$ : Qu'est-ce qui se trouve à gauche du symbole ? \\nSi c'est un symbole d'ensemble avec une double barre (ex: $\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}$), alors tu DOIS utiliser $\\subset$ ou $\\not\u0002$. C'est un groupe. \\n\\nUne fois que tu as choisi le symbole, vérifie la vérité de l'affirmation. Par exemple, si tu as $\\mathbb{N} \\subset \\mathbb{Q}$, demande-toi : 'Est-ce que tous les entiers naturels sont aussi des rationnels ?'. La réponse est oui, car tout entier peut s'écrire comme une fraction (par exemple $3 = \\frac{3}{1}$). L'affirmation est donc vraie. Si tu as $2 \\in \\mathbb{Z}$, demande-toi : 'Est-ce que le nombre $2$ est un entier relatif ?'. Oui, donc c'est vrai."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons l'affirmation suivante : $\\pi \\mathbb{R}$. Ici, à gauche, nous avons $\\pi$. C'est un nombre seul, un élément. Le symbole correct est donc $\\in$. $\\pi$ est bien un nombre réel, donc on écrit $\\pi \\in \\mathbb{R}$. C'est une proposition vraie. \\n\\nMaintenant, regardons $\\mathbb{N} \\mathbb{Z}$. À gauche, on a $\\mathbb{N}$, qui est un ensemble. On doit donc utiliser le symbole d'inclusion $\\subset$. Comme tous les entiers naturels sont a priori des entiers relatifs, on écrit $\\mathbb{N} \\subset \\mathbb{Z}$. C'est également vrai. \\n\\nC'est très simple : un nombre $\\in$ Ensemble ; un Ensemble $\\subset$ Ensemble."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons des cas plus subtils. On nous propose l'écriture $\\mathbb{Z} \\in \\mathbb{Q}$. Analysons : à gauche, on a $\\mathbb{Z}$, un ensemble. Le symbole $\\in$ est donc strictement interdit ici. On devrait utiliser $\\subset$. Une fois le symbole corrigé, $\\mathbb{Z} \\subset \\mathbb{Q}$ est vrai car tout entier peut s'écrire sous forme de fraction. \\n\\nAutre cas : $-5 \\subset \\mathbb{Z}$. Ici, à gauche, on a $-5$, un nombre seul. Le symbole $\\subset$ est donc faux. On doit utiliser $\\in$. On écrira $-5 \\in \\mathbb{Z}$. \\n\\nEnfin, considérons $\\sqrt{2} \\in \\mathbb{Q}$. Le symbole est correct (nombre $\\in$ ensemble), mais l'affirmation est mathématiquement fausse car $\\sqrt{2}$ est irrationnel. On écrira donc $\\sqrt{2} \\notin \\mathbb{Q}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus commune est l'utilisation du symbole $\\in$ pour l'inclusion. Certains élèves écrivent $\\mathbb{N} \\in \\mathbb{Z}$ en pensant que $\\mathbb{N}$ fait partie de $\\mathbb{Z}$. C'est une erreur de langage : $\\mathbb{N}$ n'est pas un élément de $\\mathbb{Z}$, c'est un sous-ensemble. \\n\\nUn autre piège est de confondre la validité du symbole et la validité de la proposition. Par exemple, dans $\\mathbb{R} \\subset \\mathbb{N}$, le symbole est correct (ensemble $\\subset$ ensemble), mais l'affirmation est fausse car tous les réels ne sont pas des entiers naturels. \\n\\nEnfin, attention aux notations Dengan accolades. Si tu vois $\\{2\\} \\subset \\mathbb{N}$, c'est vrai ! Pourquoi ? Parce que les accolades transforment le nombre $2$ en un ensemble contenant l'élément $2$. On compare alors un ensemble avec un autre ensemble, d'où l'utilisation de $\\subset$. C'est un détail technique, mais important pour la rigueur du lycee."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel de ces symboles est correct pour compléter l'expression : $\\mathbb{Z} ... \\mathbb{R}$ ?",
+              "answer": "\\subset",
+              "hint": "Regarde si on a un nombre ou un ensemble à gauche.",
+              "explanation": "$\\mathbb{Z}$ et $\\mathbb{R}$ sont deux ensembles. Pour exprimer que l'un est contenu dans l'autre, on utilise le symbole d'inclusion $\\subset$."
+            },
+            {
+              "question": "L'affirmation $-3 \\subset \\mathbb{Z}$ est-elle vraie ou fausse ? Justifie.",
+              "answer": "Fausse",
+              "hint": "Est-ce que $-3$ est un ensemble ou un élément ?",
+              "explanation": "C'est faux car $-3$ est un élément (un nombre), pas un ensemble. On doit utiliser le symbole d'appartenance : $-3 \\in \\mathbb{Z}$."
+            },
+            {
+              "question": "Complète avec $\\in$ ou $\\notin$ : $\\frac{1}{3} ... \\mathbb{D}$",
+              "answer": "\\notin",
+              "hint": "Calcule la valeur décimale de $\\frac{1}{3}$.",
+              "explanation": "$\\frac{1}{3} \\approx 0,333...$ La partie décimale est infinie, donc ce nombre n'est pas décimal. On écrit $\\frac{1}{3} \\notin \\mathbb{D}$."
+            }
+          ]
+        },
+        {
+          "title": "Classer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu travailles dans une immense bibliothèque. Les livres sont rangés par catégories : d'abord par genre (Roman, Essai), puis par sous-genre (Policier, Historique), puis par auteur. Si on te demande où se trouve un livre, tu ne vas pas juste dire 'dans la bibliothèque'. Ce serait vrai, mais pas très utile ! Tu vas donner l'endroit le plus précis possible. En mathématiques, classer un nombre, c'est exactement la même chose. Dire que $\\sqrt{2}$ est un nombre réel, c'est comme dire que le livre est dans la bibliothèque. Dire que $\\frac{1}{4}$ est un nombre réel est vrai, mais dire qu'il est décimal est beaucoup plus précis. L'objectif de cette dernière leçon est d'apprendre à trouver l'étiquette la plus étroite, le placard le plus petit, pour chaque nombre que tu rencontreras. C'est l'aboutissement de tout notre cours sur les ensembles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Classer un nombre signifie identifier l'ensemble le plus restreint auquel il appartient. On appelle cela l'ensemble minimal. Pourquoi chercher le plus petit ? Parce qu'il nous donne l'information la plus riche sur la nature du nombre. \\n\\nPar exemple, si je te dis qu'un nombre est dans $\\mathbb{R}$, tu ne sais rien de plus que 'c'est un nombre'. Mais si je te dis qu'il est dans $\\mathbb{N}$, tu sais immédiatement qu'il est positif, qu'il n'a pas de virgule et qu'on peut l'utiliser pour compter des objets. \\n\\nL'ordre de restriction est le suivant : $\\mathbb{N} \\rightarrow \\mathbb{Z} \\rightarrow \\mathbb{D} \\rightarrow \\mathbb{Q} \\rightarrow \\mathbb{R}$. \\n\\nPour classer correctement, il ne faut jamais s'arrêter à l'apparence première du nombre. Un nombre peut être écrit sous forme de fraction mais être en réalité un entier. Par exemple, $\\frac{12}{3}$ ressemble à un rationnel, mais $\\frac{12}{3} = 4$, donc son ensemble minimal est $\\mathbb{N}$. C'est l'étape de simplification qui est cruciale pour ne pas faire d'erreur de classification."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la méthode de l'entonnoir pour classer n'importe quel nombre sans faire d'erreur. \\n\\nÉtape $1$ : Simplification. C'est l'étape la plus importante. Calcule la fraction, simplifie la racine carrée ou développe l'expression. \\n\\nÉtape $2$ : Le test de l'entier positif. Le résultat est-il un nombre entier sans virgule et positif ? Si oui, stop : c'est $\\mathbb{N}$. \\n\\nÉtape $3$ : Le test de l'entier relatif. Le résultat est-il un entier mais négatif ? Si oui, stop : c'est $\\mathbb{Z}$. \\n\\nÉtape $4$ : Le test du décimal. Le résultat a-t-il une virgule qui s'arrête ? Si oui, stop : c'est $\\mathbb{D}$. \\n\\nÉtape $5$ : Le test du rationnel. Le résultat peut-il s'écrire $\\frac{p}{q}$ (ou a-t-il une virgule infinie mais périodique) ? Si oui, stop : c'est $\\mathbb{Q}$. \\n\\nÉtape $6$ : Par défaut. Si aucun des tests précédents n'a fonctionné, le nombre est irrationnel, donc son ensemble minimal est $\\mathbb{R}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Classons le nombre $x = \\frac{21}{7}$. \\nL'apparence nous suggère $\\mathbb{Q}$ car c'est une fraction. Mais appliquons l'étape $1$ : $\\frac{21}{7} = 3$. \\nMaintenant, appliquons l'entonnoir : \\n- Est-ce un entier positif ? Oui, $3$ est un entier positif. \\nL'ensemble minimal est donc $\\mathbb{N}$. \\nC'est l'erreur classique : si tu avais répondu $\\mathbb{Q}$, tu n'aurais pas tort (car $3$ est bien un rationnel), mais tu n'aurais pas été assez précis. En mathématiques, on attend la réponse la plus restrictive."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Classons le nombre $y = -0,125$. \\nÉtape $1$ : Le nombre est déjà simplifié. \\nÉtape $2$ : Entier positif ? Non. \\nÉtape $3$ : Entier négatif ? Non, il y a une virgule. \\nÉtape $4$ : Décimal ? Oui, la virgule s'arrête après trois chiffres. \\nL'ensemble minimal est donc $\\mathbb{D}$. \\n\\nClassons maintenant $z = \\sqrt{3}$. \\nÉtape $1$ : $\\sqrt{3}$ ne peut pas être simplifié en un nombre sans racine. \\nÉtape $2, 3, 4, 5$ : Aucun test ne fonctionne car $\\sqrt{3}$ n'est pas un entier, ni un décimal, ni un rationnel (sa valeur $1,732...$ ne s'arrête jamais et ne se répète pas). \\nL'ensemble minimal est donc $\\mathbb{R}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est l'oubli de la simplification. Beaucoup d'élèves voient $\\frac{10}{5}$ et écrivent $\\mathbb{Q}$ car ils voient une barre de fraction. Souvenez-vous : la barre de fraction est une opération de division, pas une identité fixe. Simplifiez toujours avant de classer. \\n\\nAinsi, $\\sqrt{49}$ n'est pas un réel ($\\mathbb{R}$), c'est un entier naturel ($\\mathbb{N}$) car $\\sqrt{49} = 7$. \\n\\nUn autre point de vigilance concerne les nombres comme $0$. Le zéro est un cas particulier : il est à la fois positif et négatif. Il appartient donc à $\\mathbb{N}$ et $\\mathbb{Z}$. Comme $\\mathbb{N}$ est plus petit que $\\mathbb{Z}$, l'ensemble minimal de $0$ est $\\mathbb{N}$. \\n\\nEnfin, ne confondez pas $\\mathbb{D}$ et $\\mathbb{Q}$. Si vous voyez $\\frac{1}{3}$, ne dites pas $\\mathbb{D}$. Testez toujours si la division s'arrête. $1 \\div 3$ ne s'arrête jamais, donc c'est $\\mathbb{Q}$ et non $\\mathbb{D}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l'ensemble minimal du nombre $\\frac{-15}{3}$ ?",
+              "answer": "\\mathbb{Z}",
+              "hint": "Simplifie la fraction d'abord.",
+              "explanation": "$\\frac{-15}{3} = -5$. C'est un entier négatif, donc son ensemble minimal est $\\mathbb{Z}$."
+            },
+            {
+              "question": "Classe le nombre $0,75$ dans son ensemble le plus restreint.",
+              "answer": "\\mathbb{D}",
+              "hint": "La virgule s'arrête-t-elle ?",
+              "explanation": "$0,75$ a un nombre fini de chiffres après la virgule. C'est un nombre décimal, donc $\\mathbb{D}$."
+            },
+            {
+              "question": "L'ensemble minimal de $\\sqrt{2}$ est-il $\\mathbb{Q}$ ou $\\mathbb{R}$ ?",
+              "answer": "\\mathbb{R}",
+              "hint": "Peut-on écrire $\\sqrt{2}$ sous forme de fraction d'entiers ?",
+              "explanation": "$\\sqrt{2}$ est un nombre irrationnel, il ne peut pas s'écrire comme une fraction. Son ensemble minimal est donc $\\mathbb{R}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

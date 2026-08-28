@@ -1,0 +1,338 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.603378+00:00",
+  "id": 356,
+  "code": "6eme-t05-c05",
+  "title": "Bilan - Grandeurs 6e",
+  "description": "Cours structuré Educalcul : Bilan - Grandeurs 6e.",
+  "subject": "Grandeurs et mesures",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Bilan - Grandeurs 6e",
+    "objectif_global": "Bilan - Grandeurs 6e",
+    "mini_lecons_imposees": [
+      "Conversions, aires, volumes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Conversions, aires, volumes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les longueurs : le tableau de conversion, ton meilleur allié"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Tu as déjà croisé les conversions de longueurs en CM2, mais en $6^{\\text{e}}$, on attend de toi une aisance totale, sans hésitation. Imagine que tu dois mesurer la distance entre ton école et la piscine municipale : $2,5 \\text{ km}$. Si l'enseignant te demande cette distance en mètres, en décimètres ou en millimètres, tu dois pouvoir répondre du tac au tac. Le secret, c'est le tableau de conversion. C'est une grille à sept cases : $\\text{km}$, $\\text{hm}$, $\\text{dam}$, $\\text{m}$, $\\text{dm}$, $\\text{cm}$, $\\text{mm}$. La règle d'or est simple : on écrit le chiffre des unités exactement dans la case de l'unité demandée, puis on complète les cases suivantes avec les autres chiffres du nombre, et on met des zéros dans les cases vides jusqu'à l'unité visée. Pas de virgule qui se promène, pas de multiplication hasardeuse : le tableau fait le travail pour toi, à condition de le remplir avec soin."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "km",
+                "hm",
+                "dam",
+                "m",
+                "dm",
+                "cm",
+                "mm"
+              ],
+              "rows": [
+                [
+                  "",
+                  "",
+                  "",
+                  "2",
+                  "5",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "2",
+                  "5",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'exemple ci-dessus. Pour convertir $2,5 \\text{ km}$ en mètres, j'ai placé le $2$ dans la case $\\text{km}$ et le $5$ dans la case $\\text{hm}$ (car $2,5 \\text{ km} = 2 \\text{ km } 5 \\text{ hm}$). Ensuite, j'ai mis des zéros jusqu'à la case $\\text{m}$ : j'obtiens $2\\,500 \\text{ m}$. Si je veux des millimètres, je poursuis les zéros jusqu'à la case $\\text{mm}$ : $2\\,500\\,000 \\text{ mm}$. C'est mécanique, fiable, et ça évite l'erreur classique qui consiste à multiplier par $10$ au lieu de $1000$. Prends l'habitude de tracer ce petit tableau sur ton brouillon à chaque exercice, même si tu te sens à l'aise : c'est la garantie de ne pas perdre de zéros en route."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les longueurs n'ont plus de secret pour toi, changeons de dimension. Passer de la ligne à la surface change la donne : on ne parle plus de facteur $10$, mais de facteur $100$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les aires : pourquoi le facteur 100 change tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le piège numéro un en $6^{\\text{e}}$ : traiter une conversion d'aire comme une conversion de longueur. Si $1 \\text{ m} = 10 \\text{ dm}$, alors $1 \\text{ m}^2$ n'est pas égal à $10 \\text{ dm}^2$ ! Imagine un grand carré de $1 \\text{ m}$ de côté. Tu le découpes en petites bandes de $1 \\text{ dm}$ de large. Tu obtiens $10$ bandes. Mais chaque bande fait $1 \\text{ m}$ sur $1 \\text{ dm}$, ce n'est pas encore des $\\text{dm}^2$. Il faut recouper chaque bande en $10$ petits carrés de $1 \\text{ dm}$ de côté. Au total, tu as $10 \\times 10 = 100$ petits carrés. Donc $1 \\text{ m}^2 = 100 \\text{ dm}^2$. Le facteur est $100$ parce qu'on multiplie deux longueurs : la largeur et la hauteur. À chaque saut de case dans le tableau des aires, on multiplie ou on divise par $100$, pas par $10$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,m^2 = 100\\,dm^2 = 10\\,000\\,cm^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour convertir $3,25 \\text{ m}^2$ en $\\text{cm}^2$, tu as deux sauts à faire ($\\text{m} \\to \\text{dm} \\to \\text{cm}$), donc deux facteurs $100$, soit $\\times 10\\,000$. $3,25 \\times 10\\,000 = 32\\,500 \\text{ cm}^2$. Astuce visuelle : dans ton tableau de conversion des aires, saute une case sur deux par rapport au tableau des longueurs. Les cases utiles sont $\\text{km}^2$, $\\text{hm}^2$, $\\text{dam}^2$, $\\text{m}^2$, $\\text{dm}^2$, $\\text{cm}^2$, $\\text{mm}^2$. Écris ton nombre en alignant le chiffre des unités d'aire dans la bonne case, et ajoute deux zéros par case franchie. C'est la même logique que pour les longueurs, mais en version \"doublée\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir la surface. Montons encore d'un cran : le volume. Là, le facteur grimpe à $1000$, et l'image mentale du cube est ton meilleure guide."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les volumes : le cube et le facteur 1000"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le volume, on empile des couches. Reprenons notre mètre cube : un grand cube de $1 \\text{ m}$ de côté. Si on le tranche en tranches de $1 \\text{ dm}$ d'épaisseur, on fait $10$ tranches. Chaque tranche est un pavé droit de $1 \\text{ m} \\times 1 \\text{ m} \\times 1 \\text{ dm}$. Il faut maintenant découper chaque tranche en bâtonnets de $1 \\text{ dm}$ de côté : $10$ bâtonnets par tranche. Enfin, chaque bâtonnet se coupe en $10$ petits cubes de $1 \\text{ dm}^3$. Total : $10 \\times 10 \\times 10 = 1000$ petits cubes. Donc $1 \\text{ m}^3 = 1000 \\text{ dm}^3$. À chaque changement d'unité de volume, on multiplie ou divise par $1000$. C'est le facteur $10$ élevé à la puissance $3$ (longueur $\\times$ largeur $\\times$ hauteur)."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,m^3 = 1000\\,dm^3 = 1\\,000\\,000\\,cm^3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour convertir $0,004 \\text{ m}^3$ en $\\text{dm}^3$, un seul saut ($\\text{m}^3 \\to \\text{dm}^3$), donc $\\times 1000$. $0,004 \\times 1000 = 4 \\text{ dm}^3$. Pour passer en $\\text{cm}^3$, deux sauts, donc $\\times 1\\,000\\,000$. $0,004 \\times 1\\,000\\,000 = 4000 \\text{ cm}^3$. Le tableau de conversion des volumes a des cases espacées de trois zéros : $\\text{km}^3$, $\\text{hm}^3$, $\\text{dam}^3$, $\\text{m}^3$, $\\text{dm}^3$, $\\text{cm}^3$, $\\text{mm}^3$. La technique reste identique : place le chiffre des unités de volume, saute de trois cases en trois cases. Si tu as un volume en $\\text{cm}^3$ et qu'on te demande des $\\text{m}^3$, tu divises par $1\\,000\\,000$ (tu recules de deux cases de volume). Visualise toujours le petit cube de $1 \\text{ cm}^3$ dans le grand cube de $1 \\text{ m}^3$ : il en faut un million pour le remplir !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant convertir les unités de base. Mais les problèmes de la vraie vie mélangent souvent calcul d'aire ou de volume et conversion. Voyons comment garder le cap."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes mélangés : calculer puis convertir, ou l'inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un problème : \"Un bac à sable mesure $2 \\text{ m}$ de long, $1,5 \\text{ m}$ de large et $30 \\text{ cm}$ de profondeur. Quel volume de sable en $\\text{m}^3$ ?\" Deux stratégies s'offrent à toi. Stratégie A : Convertir toutes les mesures en mètres AVANT de calculer. $30 \\text{ cm} = 0,30 \\text{ m}$. Volume $= 2 \\times 1,5 \\times 0,30 = 0,9 \\text{ m}^3$. C'est souvent la plus simple car tu évites les gros chiffres. Stratégie B : Calculer en unités mélangées puis convertir le résultat. Volume $= 200 \\times 150 \\times 30 = 900\\,000 \\text{ cm}^3$. Puis convertir en $\\text{m}^3$ : $900\\,000 \\div 1\\,000\\,000 = 0,9 \\text{ m}^3$. Les deux marchent, mais la stratégie A limite les risques d'erreur sur les zéros. Choisis celle qui te met le plus en confiance, mais sois constant : ne mélange jamais $\\text{m}$ et $\\text{cm}$ dans une même multiplication sans conversion préalable !"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "2 m",
+                "1,5 m",
+                ""
+              ],
+              "rightAngleAt": 1,
+              "caption": "Base du bac à sable : rectangle de 2 m sur 1,5 m"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $4,05 \\text{ km}$ en mètres, puis en centimètres.",
+              "answer": "$4\\,050 \\text{ m}$ ; $405\\,000 \\text{ cm}$",
+              "hint": "Utilise le tableau de conversion des longueurs. Place le $4$ en $\\text{km}$, le $0$ en $\\text{hm}$, le $5$ en $\\text{dam}$, puis des zéros jusqu'à l'unité visée.",
+              "explanation": "Dans le tableau, $4,05 \\text{ km}$ s'écrit : $4$ (km), $0$ (hm), $5$ (dam). Pour avoir des mètres, on ajoute un zéro en $\\text{m}$ : $4\\,050 \\text{ m}$. Pour des centimètres, on ajoute encore deux zéros (dm, cm) : $405\\,000 \\text{ cm}$."
+            },
+            {
+              "question": "Une chambre mesure $12,5 \\text{ m}^2$. Exprime cette surface en $\\text{dm}^2$ et en $\\text{cm}^2$.",
+              "answer": "$1\\,250 \\text{ dm}^2$ ; $125\\,000 \\text{ cm}^2$",
+              "hint": "Rappelle-toi : pour les aires, on saute une case sur deux. Chaque saut = $\\times 100$.",
+              "explanation": "$\\text{m}^2 \\to \\text{dm}^2$ : un saut, $\\times 100$. $12,5 \\times 100 = 1\\,250 \\text{ dm}^2$. $\\text{m}^2 \\to \\text{cm}^2$ : deux sauts, $\\times 10\\,000$. $12,5 \\times 10\\,000 = 125\\,000 \\text{ cm}^2$."
+            },
+            {
+              "question": "Un carton de déménagement est un pavé droit de $40 \\text{ cm}$ de long, $30 \\text{ cm}$ de large et $30 \\text{ cm}$ de haut. Donne son volume en $\\text{dm}^3$ puis en $\\text{m}^3$.",
+              "answer": "$36 \\text{ dm}^3$ ; $0,036 \\text{ m}^3$",
+              "hint": "Calcule d'abord le volume en $\\text{cm}^3$ ($40 \\times 30 \\times 30$), puis convertis en $\\text{dm}^3$ (divise par $1000$), puis en $\\text{m}^3$ (divise encore par $1000$).",
+              "explanation": "Volume $= 40 \\times 30 \\times 30 = 36\\,000 \\text{ cm}^3$. $\\text{cm}^3 \\to \\text{dm}^3$ : un saut, $\\div 1000$. $36\\,000 \\div 1000 = 36 \\text{ dm}^3$. $\\text{dm}^3 \\to \\text{m}^3$ : un saut, $\\div 1000$. $36 \\div 1000 = 0,036 \\text{ m}^3$."
+            },
+            {
+              "question": "Une piscine rectangulaire mesure $10 \\text{ m}$ de long, $4 \\text{ m}$ de large. On la remplit jusqu'à $1,20 \\text{ m}$ de hauteur. Quel volume d'eau en $\\text{m}^3$ ? En litres (rappel : $1 \\text{ dm}^3 = 1 \\text{ L}$) ?",
+              "answer": "$48 \\text{ m}^3$ ; $48\\,000 \\text{ L}$",
+              "hint": "Volume $= \\text{longueur} \\times \\text{largeur} \\times \\text{hauteur}$. Toutes les mesures sont déjà en mètres. Pour les litres, convertis le volume en $\\text{dm}^3$ ($\\times 1000$).",
+              "explanation": "Volume $= 10 \\times 4 \\times 1,20 = 48 \\text{ m}^3$. Pour avoir des litres, on passe en $\\text{dm}^3$ : $48 \\text{ m}^3 = 48 \\times 1000 = 48\\,000 \\text{ dm}^3 = 48\\,000 \\text{ L}$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réviser la méthode du tableau sans se tromper"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon de bilan est ton dernier entraînement avant l'évaluation. L'objectif n'est pas d'apprendre de nouvelles formules, mais de verrouiller tes automatismes pour que le jour J, ton cerveau n'ait pas à \"réfléchir\" à la méthode, il l'applique. Reprenons le geste fondamental : tracer le tableau. Pour les longueurs, 7 cases. Pour les aires, 7 cases mais on n'en utilise que 4 sur 7 (les cases « carrées » : $\\text{km}^2$, $\\text{hm}^2$, $\\text{dam}^2$, $\\text{m}^2$, $\\text{dm}^2$, $\\text{cm}^2$, $\\text{mm}^2$). Pour les volumes, idem, 7 cases espacées de 3 zéros. Le réflexe à avoir : dès que tu lis \"Convertir...\", tu sors ton stylo, tu traces le bon tableau (longueur, aire ou volume), tu identifies la case de départ (l'unité du nombre de départ) et la case d'arrivée (l'unité demandée). Tu comptes les sauts. Un saut longueur = $\\times 10$ ou $\\div 10$. Un saut aire = $\\times 100$ ou $\\div 100$. Un saut volume = $\\times 1000$ ou $\\div 1000$. Ensuite, tu places le chiffre des unités, tu ajoutes les zéros, tu lis le résultat. C'est une chorégraphie, pas une réflexion."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "km",
+                "hm",
+                "dam",
+                "m",
+                "dm",
+                "cm",
+                "mm"
+              ],
+              "rows": [
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau vierge. C'est ta toile vierge. Avant de poser le moindre chiffre, dis-toi : \"Quelle est l'unité de mon nombre de départ ?\" Si c'est $5,2 \\text{ dam}$, le $5$ va en $\\text{dam}$, le $2$ en $\\text{m}$. Si on te demande des $\\text{cm}$, tu comptes les cases : $\\text{m} \\to \\text{dm}$ (1), $\\text{dm} \\to \\text{cm}$ (2). Deux sauts longueur = $\\times 100$. $52 \\times 100 = 5\\,200 \\text{ cm}$. L'erreur fréquente ? Oublier le zéro du $5,2$ (le chiffre des dixièmes de $\\text{dam}$ qui devient le chiffre des $\\text{m}$) et écrire $5$ en $\\text{dam}$ et rien en $\\text{m}$. Résultat : $500 \\text{ cm}$ au lieu de $5\\,200$. Sois méticuleux sur le placement de la virgule initiale dans le tableau : elle te dit exactement où va le chiffre des unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les conversions sont rodées. Attaquons-nous maintenant au mémo des formules d'aires. En $6^{\\text{e}}$, tu dois connaître par cœur quatre formules, et surtout savoir les reconnaître dans un énoncé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les formules d'aires : ton mémo personnel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a quatre figures stars au programme. Le **carré** : côté $c$, aire $A = c \\times c$ (ou $c^2$). Exemple : une tuile de $30 \\text{ cm}$ de côté, aire $= 900 \\text{ cm}^2$. Le **rectangle** : longueur $L$, largeur $l$, aire $A = L \\times l$. Exemple : un tapis de $2 \\text{ m}$ sur $1,5 \\text{ m}$, aire $= 3 \\text{ m}^2$. Le **triangle** : base $b$, hauteur $h$ (perpendiculaire à la base), aire $A = (b \\times h) / 2$. Exemple : un fanion de $40 \\text{ cm}$ de base et $60 \\text{ cm}$ de hauteur, aire $= 1200 \\text{ cm}^2$. Le **disque** : rayon $R$, aire $A = \\pi \\times R^2$. Exemple : une pizza de $16 \\text{ cm}$ de rayon ($32 \\text{ cm}$ de diamètre), aire $\\approx 3,14 \\times 256 \\approx 804 \\text{ cm}^2$. Attention : pour le disque, on te donne souvent le diamètre. Il faut diviser par $2$ pour avoir le rayon avant de calculer. C'est le piège classique ! Note ces quatre formules sur une fiche bristol avec un petit dessin à côté de chacune. La mémoire visuelle fait le reste."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{carré}}=c^2 \\quad A_{\\text{rectangle}}=L\\times l \\quad A_{\\text{triangle}}=\\frac{b\\times h}{2} \\quad A_{\\text{disque}}=\\pi R^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce de pro : quand tu lis un problème, surligne les mots-clés : \"carré\", \"rectangle\", \"triangle\", \"disque\", \"côté\", \"base\", \"hauteur\", \"rayon\", \"diamètre\". Ça t'oriente direct vers la bonne formule. Si la figure est composée (ex: un rectangle avec un triangle dessus), décompose-la, calcule les aires séparément, puis additionne. Ne cherche pas de formule magique pour la figure bizarre, elle n'existe pas. La tienne, c'est la somme des simples."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les aires sont en poche. Restent les volumes. Seulement deux formules officielles en $6^{\\text{e}}$, mais elles demandent de la rigueur dans les unités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les volumes : imaginer l'intérieur d'une boîte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le **pavé droit** (la boîte à chaussures) : trois dimensions, longueur $L$, largeur $l$, hauteur $h$. Volume $V = L \\times l \\times h$. L'ordre n'importe pas, mais les unités doivent être les **mêmes** pour les trois. Si $L=50 \\text{ cm}$, $l=30 \\text{ cm}$, $h=20 \\text{ cm}$, $V = 30\\,000 \\text{ cm}^3$. Si on te demande en $\\text{dm}^3$, tu convertis le résultat ($30 \\text{ dm}^3$) ou tu convertis les dimensions avant ($5 \\text{ dm} \\times 3 \\text{ dm} \\times 2 \\text{ dm} = 30 \\text{ dm}^3$). Le **cube** est un pavé droit particulier où $L=l=h=c$. Volume $V = c \\times c \\times c = c^3$. Un dé de $1,5 \\text{ cm}$ de côté : $V = 1,5^3 = 3,375 \\text{ cm}^3$. Le réflexe « même unité » est vital. Si un énoncé donne $2 \\text{ m}$, $50 \\text{ cm}$, $10 \\text{ cm}$, ne multiplie pas $2 \\times 50 \\times 10$ ! Convertis tout en $\\text{m}$ ($2 \\times 0,5 \\times 0,1 = 0,1 \\text{ m}^3$) ou tout en $\\text{cm}$ ($200 \\times 50 \\times 10 = 100\\,000 \\text{ cm}^3$). Le résultat numérique change, la valeur physique reste la même."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{pavé droit}}=L\\times l\\times h \\quad V_{\\text{cube}}=c^3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Petit rappel qui sauve des points : l'unité de volume du Système International, c'est le $\\text{m}^3$. Mais dans la vie courante (courses, piscine, réservoir), on utilise le litre ($\\text{L}$) et le $\\text{dm}^3$. Rappelle-toi l'égalité fondatrice : $1 \\text{ dm}^3 = 1 \\text{ L}$. Et comme $1 \\text{ m}^3 = 1000 \\text{ dm}^3$, alors $1 \\text{ m}^3 = 1000 \\text{ L}$. Si tu as un volume en $\\text{cm}^3$ (ex: une boîte de conserve de $400 \\text{ cm}^3$), en litres ça fait $400 \\div 1000 = 0,4 \\text{ L}$ (soit $40 \\text{ cL}$). Cette chaîne $\\text{cm}^3 \\to \\text{dm}^3 (=\\text{L}) \\to \\text{m}^3$ est un classique des contrôles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant tous les outils en main. La dernière ligne droite, c'est la checklist juste en dessous. Coche chaque item seulement si tu es sûr de toi à $100\\%$. Si un point te fait hésiter, reviens sur la leçon correspondante juste au-dessus. C'est ton moment à toi, sans stress, pour valider tes acquis."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais tracer le tableau de conversion des longueurs (7 cases) et convertir n'importe quelle longueur en déplaçant la virgule ou en ajoutant des zéros.",
+                "Je sais tracer le tableau de conversion des aires (facteur 100 par saut) et je ne confonds plus avec le facteur 10 des longueurs.",
+                "Je sais tracer le tableau de conversion des volumes (facteur 1000 par saut) et je visualise le cube pour m'en souvenir.",
+                "Je connais par cœur les 4 formules d'aires : carré ($c^2$), rectangle ($L\\times l$), triangle ($b\\times h/2$), disque ($\\pi R^2$), et je sais identifier la bonne selon l'énoncé.",
+                "Je connais les 2 formules de volumes : pavé droit ($L\\times l\\times h$) et cube ($c^3$), et je vérifie systématiquement que les 3 dimensions sont dans la même unité avant de multiplier.",
+                "Je sais convertir un volume en litres : $1 \\text{ dm}^3 = 1 \\text{ L}$, $1 \\text{ m}^3 = 1000 \\text{ L}$, et je gère le passage $\\text{cm}^3 \\to \\text{L}$ (diviser par 1000).",
+                "Dans un problème, je sais choisir la stratégie : soit convertir les mesures AVANT de calculer, soit calculer PUIS convertir le résultat, sans jamais mélanger les unités dans une multiplication."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau de conversion pour passer de $0,07 \\text{ hm}$ en $\\text{mm}$.",
+              "answer": "$7\\,000 \\text{ mm}$",
+              "hint": "Place $0$ en $\\text{hm}$, $7$ en $\\text{dam}$. Compte les sauts jusqu'à $\\text{mm}$ (4 sauts : $\\text{dam}\\to\\text{m}\\to\\text{dm}\\to\\text{cm}\\to\\text{mm}$). Multiplie par $10^4 = 10\\,000$.",
+              "explanation": "$0,07 \\text{ hm} = 7 \\text{ dam}$. Pour aller en $\\text{mm}$, il y a 4 sauts (dam, m, dm, cm, mm). $7 \\times 10\\,000 = 70\\,000$. Attends : $0,07 \\text{ hm}$ : $0$ en hm, $7$ en dam. En mm : $7\\,000 \\text{ mm}$ ? Non. $1 \\text{ hm} = 100 \\text{ m} = 100\\,000 \\text{ mm}$. $0,07 \\times 100\\,000 = 7\\,000$. Oui, $7\\,000 \\text{ mm}$."
+            },
+            {
+              "question": "Un terrain a la forme d'un rectangle de $15 \\text{ m}$ sur $8 \\text{ m}$, avec un triangle rectangle accolé sur la largeur ($8 \\text{ m}$ de base, $6 \\text{ m}$ de hauteur). Calcule l'aire totale du terrain en $\\text{m}^2$.",
+              "answer": "$144 \\text{ m}^2$",
+              "hint": "Calcule l'aire du rectangle ($L \\times l$), puis l'aire du triangle ($b \\times h / 2$), puis additionne les deux résultats.",
+              "explanation": "Rectangle : $15 \\times 8 = 120 \\text{ m}^2$. Triangle : $(8 \\times 6) / 2 = 24 \\text{ m}^2$. Total : $120 + 24 = 144 \\text{ m}^2$."
+            },
+            {
+              "question": "Un aquarium (pavé droit) mesure $80 \\text{ cm}$ de long, $40 \\text{ cm}$ de large, $50 \\text{ cm}$ de haut. On le remplit aux $3/4$ de sa hauteur. Quel volume d'eau en litres ?",
+              "answer": "$120 \\text{ L}$",
+              "hint": "Calcule la hauteur d'eau ($50 \\times 3/4$). Calcule le volume d'eau en $\\text{cm}^3$ ($L \\times l \\times h_{\\text{eau}}$). Convertis en $\\text{dm}^3$ (divise par 1000) pour obtenir les litres.",
+              "explanation": "Hauteur d'eau : $50 \\times 0,75 = 37,5 \\text{ cm}$. Volume eau : $80 \\times 40 \\times 37,5 = 120\\,000 \\text{ cm}^3$. $120\\,000 \\text{ cm}^3 = 120 \\text{ dm}^3 = 120 \\text{ L}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Échanger une dizaine contre 10 unités",
+  "title": "Quiz : Échanger une dizaine contre 10 unités",
+  "questions": [
+    {
+      "text": "Dans le nombre $53$, on veut soustraire $7$ aux unités. Comme il n'y a que $3$ unités, on doit faire un échange. Combien de dizaines reste-t-il après avoir échangé une dizaine contre $10$ unités ?",
+      "options": [
+        "4 dizaines",
+        "5 dizaines",
+        "3 dizaines",
+        "6 dizaines"
+      ],
+      "correctAnswer": "4 dizaines",
+      "explanation": "Le nombre $53$ est composé de $5$ dizaines et $3$ unités. Pour pouvoir soustraire $7$ unités, on casse une dizaine : on retire $1$ dizaine (il en reste $4$) et on ajoute $10$ unités aux $3$ unités existantes (ce qui fait $13$ unités). Il reste donc $4$ dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 5,
+        "units": 3,
+        "caption": "Représentation de 53 avant échange"
+      }
+    },
+    {
+      "text": "Regarde la soustraction posée $42 - 18$. Au niveau des unités, on ne peut pas faire $2 - 8$. On échange une dizaine du nombre $42$. Combien d'unités a-t-on maintenant en haut, au niveau des unités ?",
+      "options": [
+        "10 unités",
+        "12 unités",
+        "8 unités",
+        "2 unités"
+      ],
+      "correctAnswer": "12 unités",
+      "explanation": "Au départ, il y a $2$ unités. On emprunte $1$ dizaine (soit $10$ unités) à la dizaine du haut. On ajoute ces $10$ unités aux $2$ unités de départ : $10 + 2 = 12$ unités. On peut maintenant faire $12 - 8 = 4$.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "42",
+          "18"
+        ],
+        "result": "",
+        "carries": [
+          "1"
+        ],
+        "caption": "Soustraction 42 - 18 avec retenue aux unités"
+      }
+    },
+    {
+      "text": "Pour calculer $61 - 27$, on commence par les unités. Quelle écriture montre correctement l'échange d'une dizaine contre $10$ unités sur le nombre $61$ ?",
+      "options": [
+        "$5$ dizaines et $11$ unités",
+        "$6$ dizaines et $11$ unités",
+        "$5$ dizaines et $1$ unité",
+        "$7$ dizaines et $1$ unité"
+      ],
+      "correctAnswer": "$5$ dizaines et $11$ unités",
+      "explanation": "$61$ vaut $6$ dizaines et $1$ unité. On échange $1$ dizaine contre $10$ unités. Il reste $6 - 1 = 5$ dizaines. Les unités deviennent $1 + 10 = 11$ unités. La nouvelle décomposition est donc $5$ dizaines et $11$ unités.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 61,
+        "caption": "Tableau de valeur de position pour 61"
+      }
+    },
+    {
+      "text": "Dans la soustraction $80 - 34$, on doit échanger au niveau des unités. Après l'échange, que deviennent les dizaines et les unités du nombre $80$ ?",
+      "options": [
+        "$7$ dizaines et $10$ unités",
+        "$8$ dizaines et $10$ unités",
+        "$7$ dizaines et $0$ unité",
+        "$8$ dizaines et $0$ unité"
+      ],
+      "correctAnswer": "$7$ dizaines et $10$ unités",
+      "explanation": "$80$ s'écrit $8$ dizaines et $0$ unité. Comme on ne peut pas soustraire $4$ à $0$, on échange $1$ dizaine contre $10$ unités. Il reste $8 - 1 = 7$ dizaines. Les unités passent de $0$ à $0 + 10 = 10$ unités.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 8,
+        "units": 0,
+        "caption": "Représentation de 80 avant échange"
+      }
+    },
+    {
+      "text": "Léa veut calculer $73 - 46$. Elle écrit : \"Je fais $13 - 6 = 7$ aux unités.\" Quelle opération a-t-elle faite sur les dizaines du nombre $73$ avant de calculer les unités ?",
+      "options": [
+        "Elle a ajouté $1$ dizaine",
+        "Elle a enlevé $1$ dizaine",
+        "Elle a gardé $7$ dizaines",
+        "Elle a échangé $1$ unité"
+      ],
+      "correctAnswer": "Elle a enlevé $1$ dizaine",
+      "explanation": "Pour obtenir $13$ unités au lieu de $3$, Léa a dû prendre $1$ dizaine dans les $7$ dizaines du nombre $73$. Elle a donc enlevé $1$ dizaine (il lui reste $6$ dizaines) pour la transformer en $10$ unités qu'elle a ajoutées aux $3$ unités ($10 + 3 = 13$).",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "73",
+          "46"
+        ],
+        "result": "27",
+        "carries": [
+          "1"
+        ],
+        "caption": "Soustraction 73 - 46 terminée"
+      }
+    }
+  ]
+}

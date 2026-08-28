@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Chaîner",
+  "title": "Chaîner des arguments géométriques",
+  "blocks": [
+    {
+      "title": "Angles dans un triangle isocèle",
+      "content": "Soit un triangle $ABC$ isocèle en $A$ tel que $\\widehat{B} = 40^\\circ$.\\nComme le triangle est isocèle en $A$, les angles à la base $\\widehat{B}$ et $\\widehat{C}$ sont {{1}}. Donc $\\widehat{C} = {{2}}$.\\nLa somme des angles d'un triangle vaut $180^\\circ$, donc $\\widehat{A} = 180 - 40 - 40 = {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "égaux|egaux",
+        "40^\\circ|40°|40",
+        "100^\\circ|100°|100"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle isocèle en A, les angles à la base B et C sont égaux. Donc $\\widehat{C} = \\widehat{B} = 40^\\circ$. La somme des angles d'un triangle étant $180^\\circ$, on a $\\widehat{A} = 180^\\circ - \\widehat{B} - \\widehat{C} = 180^\\circ - 40^\\circ - 40^\\circ = 100^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Théorème de l'angle extérieur",
+      "content": "Dans le triangle $ABC$, le côté $[AC]$ est prolongé en $D$. On donne $\\widehat{BAC} = 50^\\circ$ et $\\widehat{ABC} = 60^\\circ$.\\nD'après le théorème de l'angle extérieur, l'angle $\\widehat{BCD}$ (extérieur en $C$) est égal à la somme des deux angles intérieurs non adjacents : $\\widehat{BAC} + \\widehat{ABC}$.\\nDonc $\\widehat{BCD} = {{1}}$.\\nPuisque $\\widehat{BCA}$ et $\\widehat{BCD}$ sont {{2}}, leur somme vaut $180^\\circ$.\\nOn en déduit $\\widehat{BCA} = {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "110^\\circ|110°|110",
+        "supplémentaires|supplementaires",
+        "70^\\circ|70°|70"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'angle extérieur $\\widehat{BCD}$ est égal à la somme des deux angles intérieurs opposés : $50^\\circ + 60^\\circ = 110^\\circ$. Les angles $\\widehat{BCA}$ et $\\widehat{BCD}$ sont supplémentaires (ils forment un angle plat), donc $\\widehat{BCA} = 180^\\circ - 110^\\circ = 70^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démonstration : médiatrice dans un triangle isocèle",
+      "content": "On considère un triangle $ABC$ isocèle en $A$. Soit $D$ le milieu de $[BC]$.\\nOn veut démontrer que la droite $(AD)$ est la médiatrice de $[BC]$, c'est-à-dire qu'elle est {{1}} à $[BC]$ et passe par son milieu.\\nDans les triangles $ADB$ et $ADC$ :\\n- $AB = AC$ car $ABC$ est {{2}}.\\n- $BD = CD$ car $D$ est le {{3}} de $[BC]$.\\n- $AD$ est {{4}}.\\nLes triangles $ADB$ et $ADC$ sont donc {{5}} (cas {{6}}).\\nPar conséquent, $\\widehat{ADB} = \\widehat{ADC}$. Comme ces deux angles sont supplémentaires, ils valent chacun {{7}}. Donc $(AD) \\perp (BC)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "perpendiculaire",
+        "isocèle|isocele",
+        "milieu",
+        "commun|commune",
+        "égaux|egaux|congus",
+        "SSS|côté-côté-côté",
+        "90^\\circ|90°|90"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans les triangles ADB et ADC : AB = AC (triangle isocèle), BD = CD (D milieu), AD côté commun. Les triangles sont égaux par le cas SSS (trois côtés). Donc angles ADB et ADC égaux. Comme ils sont supplémentaires (somme 180°), chacun vaut 90°, donc (AD) perpendiculaire à (BC). Comme D est le milieu, (AD) est la médiatrice de [BC].",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A, D milieu de BC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

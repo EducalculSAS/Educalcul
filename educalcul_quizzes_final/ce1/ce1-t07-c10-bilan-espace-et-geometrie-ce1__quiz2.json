@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 135,
+  "_course_code": "ce1-t07-c10-bilan-espace-et-geometrie-ce1",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Utiliser instruments",
+  "title": "Quiz - Utiliser les instruments de géométrie",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour tracer un segment de droite ?",
+      "options": [
+        "La règle",
+        "L'équerre",
+        "Le compas",
+        "Le rapporteur"
+      ],
+      "correctAnswer": "La règle",
+      "explanation": "La règle est l'instrument servant à tracer des segments et à mesurer des longueurs. L'équerre sert pour les angles droits, le compas pour les cercles et le rapporteur pour mesurer les angles (ce dernier n'est pas au programme de CE1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "À quoi sert principalement l'équerre en géométrie ?",
+      "options": [
+        "Mesurer des longueurs",
+        "Tracer des cercles",
+        "Vérifier ou tracer des angles droits",
+        "Compter des points"
+      ],
+      "correctAnswer": "Vérifier ou tracer des angles droits",
+      "explanation": "L'équerre est un triangle rectangle qui permet de vérifier si un angle est droit (comme le coin d'une feuille) ou de tracer des droites perpendiculaires. Elle ne mesure pas les longueurs (règle) et ne trace pas de cercles (compas).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure. Quelle est la longueur du segment tracé sur la règle ?",
+      "options": [
+        "5 cm",
+        "6 cm",
+        "7 cm",
+        "8 cm"
+      ],
+      "correctAnswer": "6 cm",
+      "explanation": "On lit la graduation au bout du segment. Le trait se termine exactement sur le chiffre 6, donc la longueur est de 6 cm. Il faut bien commencer la mesure au zéro de la règle.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 6,
+        "unit": "cm",
+        "caption": "Mesure d'un segment à la règle"
+      }
+    },
+    {
+      "text": "Pour tracer un cercle, quel instrument est indispensable ?",
+      "options": [
+        "La règle",
+        "L'équerre",
+        "Le compas",
+        "Un crayon seulement"
+      ],
+      "correctAnswer": "Le compas",
+      "explanation": "Le compas est le seul instrument qui permet de tracer un cercle parfait en gardant une distance constante (le rayon) entre la pointe (le centre) et le crayon. La règle trace des segments, l'équerre des angles droits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure, le compas a tracé un cercle. Comment s'appelle le point O où est plantée la pointe du compas ?",
+      "options": [
+        "Le rayon",
+        "Le diamètre",
+        "Le centre",
+        "La circonférence"
+      ],
+      "correctAnswer": "Le centre",
+      "explanation": "Le point où l'on plante la pointe sèche du compas est le centre du cercle. La distance du centre au trait du cercle est le rayon. Le diamètre traverse le centre et relie deux points du cercle. La circonférence est le contour du cercle.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Cercle tracé au compas de centre O"
+      }
+    }
+  ]
+}

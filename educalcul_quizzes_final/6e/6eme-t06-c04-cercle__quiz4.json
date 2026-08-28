@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Cercle",
+  "title": "Application du cercle - 6e",
+  "questions": [
+    {
+      "text": "Un cercle a pour centre $O$ et pour rayon $4$ cm. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "$2$ cm",
+        "$4$ cm",
+        "$8$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "Le diamètre est le double du rayon : $2 \\times 4 = 8$ cm. Les autres options correspondent à des erreurs : confondre rayon et diamètre ($4$ cm), diviser par deux ($2$ cm) ou multiplier par quatre ($16$ cm).",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et rayon 4 cm"
+      }
+    },
+    {
+      "text": "Un jardin circulaire a un rayon de $3$ m. En utilisant $\\pi \\approx 3,14$, quel est son périmètre ?",
+      "options": [
+        "$9,42$ m",
+        "$18,84$ m",
+        "$28,26$ m",
+        "$6,28$ m"
+      ],
+      "correctAnswer": "$18,84$ m",
+      "explanation": "Le périmètre d'un cercle vaut $2\\pi r = 2 \\times 3,14 \\times 3 = 18,84$ m. $9,42$ m correspond à $\\pi r$, $28,26$ m à $3\\pi r$ et $6,28$ m à $2\\pi$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une piste circulaire a un diamètre de $100$ m. Quelle distance parcourt un coureur en faisant un tour complet ?",
+      "options": [
+        "$100$ m",
+        "$200$ m",
+        "$314$ m",
+        "$157$ m"
+      ],
+      "correctAnswer": "$314$ m",
+      "explanation": "La distance d'un tour est le périmètre : $\\pi d = 3,14 \\times 100 = 314$ m. $100$ m est le diamètre, $200$ m le double du diamètre, $157$ m correspond à $\\pi r$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une roue de rayon $25$ cm effectue $10$ tours complets. Quelle distance a-t-elle parcourue ?",
+      "options": [
+        "$250$ cm",
+        "$500$ cm",
+        "$1570$ cm",
+        "$3140$ cm"
+      ],
+      "correctAnswer": "$1570$ cm",
+      "explanation": "Le périmètre de la roue est $2\\pi r = 2 \\times 3,14 \\times 25 = 157$ cm. Pour $10$ tours : $157 \\times 10 = 1570$ cm. $250$ cm est $10 \\times r$, $500$ cm est $10 \\times d$, $3140$ cm correspond à $20$ tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un étang circulaire a un périmètre de $62,8$ m. En prenant $\\pi \\approx 3,14$, quel est son rayon ?",
+      "options": [
+        "$5$ m",
+        "$10$ m",
+        "$15$ m",
+        "$20$ m"
+      ],
+      "correctAnswer": "$10$ m",
+      "explanation": "Le rayon se calcule par $r = \\frac{C}{2\\pi} = \\frac{62,8}{2 \\times 3,14} = \\frac{62,8}{6,28} = 10$ m. $5$ m serait le diamètre divisé par $4$, $15$ m et $20$ m sont trop grands.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Rédiger",
+  "title": "Rédiger une démonstration avec la réciproque du théorème de Pythagore",
+  "questions": [
+    {
+      "text": "Dans quel ordre doit-on présenter les étapes d'une démonstration utilisant la réciproque du théorème de Pythagore ?",
+      "options": [
+        "1. Conclure que le triangle est rectangle. 2. Calculer les carrés des longueurs. 3. Énoncer la réciproque. 4. Comparer les résultats.",
+        "1. Énoncer la réciproque du théorème. 2. Calculer le carré de la plus grande longueur et la somme des carrés des deux autres. 3. Comparer les deux résultats. 4. Conclure.",
+        "1. Comparer les longueurs. 2. Conclure que le triangle est rectangle. 3. Calculer les carrés. 4. Énoncer la propriété.",
+        "1. Calculer la somme des carrés des deux plus petits côtés. 2. Conclure. 3. Énoncer la réciproque. 4. Calculer le carré du plus grand côté."
+      ],
+      "correctAnswer": "1. Énoncer la réciproque du théorème. 2. Calculer le carré de la plus grande longueur et la somme des carrés des deux autres. 3. Comparer les deux résultats. 4. Conclure.",
+      "explanation": "Une démonstration rigoureuse suit toujours une structure logique : on rappelle d'abord la propriété utilisée (la réciproque), on effectue ensuite les calculs nécessaires (carré du plus grand côté et somme des carrés des deux autres), on compare les valeurs obtenues, et seulement si l'égalité est vérifiée, on conclut que le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$ tel que $AB = 5$ cm, $AC = 12$ cm et $BC = 13$ cm. Quelle est l'écriture correcte de l'hypothèse à vérifier pour appliquer la réciproque de Pythagore ?",
+      "options": [
+        "$AB^2 + AC^2 = BC^2$",
+        "$AB^2 + BC^2 = AC^2$",
+        "$AC^2 + BC^2 = AB^2$",
+        "$AB + AC = BC$"
+      ],
+      "correctAnswer": "$AB^2 + AC^2 = BC^2$",
+      "explanation": "La réciproque de Pythagore s'applique en comparant le carré de la plus grande longueur (ici $BC = 13$ cm) à la somme des carrés des deux autres longueurs ($AB = 5$ cm et $AC = 12$ cm). L'hypothèse à vérifier est donc $AB^2 + AC^2 = BC^2$. Les autres options mélangent les côtés ou utilisent une addition simple au lieu des carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'égalité $AB^2 + AC^2 = BC^2$ est vérifiée dans le triangle $ABC$ (avec $BC$ le plus grand côté), quelle conclusion correcte et complète doit-on écrire ?",
+      "options": [
+        "Le triangle $ABC$ est rectangle.",
+        "Le triangle $ABC$ est rectangle en $A$.",
+        "Le triangle $ABC$ est rectangle en $B$.",
+        "Le triangle $ABC$ est isocèle rectangle."
+      ],
+      "correctAnswer": "Le triangle $ABC$ est rectangle en $A$.",
+      "explanation": "La conclusion doit préciser l'emplacement de l'angle droit. Comme l'égalité met en jeu les côtés $AB$ et $AC$ (les côtés de l'angle $\\widehat{BAC}$) et l'hypoténuse $BC$, l'angle droit est celui opposé au plus grand côté $BC$, c'est-à-dire l'angle $\\widehat{BAC}$ dont le sommet est $A$. Dire simplement 'rectangle' est insuffisant au niveau 4e ; dire 'rectangle en $B$' ou 'isocèle rectangle' est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne le triangle $DEF$ ci-contre avec $DE = 8$ cm, $EF = 10$ cm et $DF = 6$ cm. Quelle rédaction est correcte pour montrer qu'il est rectangle ?",
+      "options": [
+        "On a $DE^2 + DF^2 = 8^2 + 6^2 = 64 + 36 = 100$. Et $EF^2 = 10^2 = 100$. Donc $DE^2 + DF^2 = EF^2$. D'après la réciproque de Pythagore, le triangle $DEF$ est rectangle en $D$.",
+        "On a $DE^2 + EF^2 = 8^2 + 10^2 = 164$. Et $DF^2 = 36$. Comme $164 \\neq 36$, le triangle n'est pas rectangle.",
+        "On a $DE + DF = 8 + 6 = 14$ et $EF = 10$. Comme $14 > 10$, le triangle est rectangle en $D$ d'après la réciproque de Pythagore.",
+        "On a $EF^2 = 100$ et $DE^2 + DF^2 = 100$. Donc $EF^2 = DE^2 + DF^2$. D'après la réciproque de Pythagore, le triangle $DEF$ est rectangle en $F$."
+      ],
+      "correctAnswer": "On a $DE^2 + DF^2 = 8^2 + 6^2 = 64 + 36 = 100$. Et $EF^2 = 10^2 = 100$. Donc $DE^2 + DF^2 = EF^2$. D'après la réciproque de Pythagore, le triangle $DEF$ est rectangle en $D$.",
+      "explanation": "Il faut identifier le plus grand côté : $EF = 10$ cm. On calcule la somme des carrés des deux autres : $8^2 + 6^2 = 100$. On calcule le carré du plus grand : $10^2 = 100$. L'égalité est vraie, donc le triangle est rectangle. L'angle droit est opposé à l'hypoténuse $EF$, donc c'est l'angle $\\widehat{EDF}$, soit le sommet $D$. L'option 4 se trompe de sommet (dit $F$), l'option 2 inverse les calculs, l'option 3 n'utilise pas les carrés.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "6",
+          "10",
+          "8"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Un élève écrit : 'Dans le triangle $GHI$, $GH = 7$ cm, $GI = 8$ cm, $HI = 10$ cm. $7^2 + 8^2 = 49 + 64 = 113$. $10^2 = 100$. $113 \\neq 100$. Donc le triangle $GHI$ est rectangle en $G$.' Quelle est l'erreur principale dans cette rédaction ?",
+      "options": [
+        "L'élève a mal calculé $7^2 + 8^2$.",
+        "L'élève a conclu que le triangle est rectangle alors que l'égalité n'est pas vérifiée.",
+        "L'élève a inversé les côtés $GI$ et $HI$.",
+        "L'élève a oublié d'écrire la phrase 'D'après la réciproque de Pythagore...'."
+      ],
+      "correctAnswer": "L'élève a conclu que le triangle est rectangle alors que l'égalité n'est pas vérifiée.",
+      "explanation": "Les calculs sont corrects : $7^2 + 8^2 = 113$ et $10^2 = 100$. Comme $113 \\neq 100$, l'égalité de Pythagore n'est pas vérifiée. La réciproque du théorème ne permet donc PAS de conclure que le triangle est rectangle ; au contraire, elle permet d'affirmer qu'il n'est PAS rectangle. L'erreur logique majeure est d'affirmer 'Donc le triangle est rectangle' malgré l'inégalité trouvée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

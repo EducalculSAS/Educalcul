@@ -1,0 +1,331 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.529302+00:00",
+  "id": 14,
+  "code": "cp-t01-c14",
+  "title": "Bilan - Les nombres jusqu'à 100",
+  "description": "Cours structuré Educalcul : Bilan - Les nombres jusqu'à 100.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Bilan - Les nombres jusqu'à 100",
+    "objectif_global": "Bilan - Les nombres jusqu'à 100",
+    "mini_lecons_imposees": [
+      "Réviser lecture, écriture et représentation.",
+      "Mélanger composition, comparaison et droite graduée.",
+      "Checklist des acquis sans nouvelle notion."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Réviser lecture, écriture et représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les nombres jusqu'à 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà compter jusqu'à 100. Maintenant, on va lire les nombres écrits en chiffres. Regarde le nombre $63$ : le chiffre $6$ est le chiffre des dizaines, le chiffre $3$ est le chiffre des unités. On lit « soixante-trois »."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "63 : 6 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la lecture, on apprend à écrire les nombres en lettres et en chiffres. C'est comme un code secret : chaque chiffre a sa place."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire les nombres en chiffres et en lettres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire un nombre, on note d'abord les dizaines puis les unités. Par exemple, quatre-vingt-douze s'écrit $92$ : $9$ dizaines et $2$ unités. Attention, les nombres de $70$ à $99$ ont des noms spéciaux en français."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Un groupe de dix unités. Par exemple, $10$ objets forment une dizaine.",
+              "example": "Dans $47$, il y a $4$ dizaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi montrer un nombre avec des objets regroupés par dix. C'est une représentation concrète qui aide à voir la valeur de chaque chiffre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter un nombre avec des dizaines et des unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la décomposition : $63 = 6 \\times 10 + 3$. Cela veut dire six groupes de dix et trois unités toutes seules. On peut le dessiner avec des barres de dix et des petits cubes."
+            },
+            {
+              "type": "display_math",
+              "latex": "63 = 6 \\times 10 + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel nombre est représenté par 6 dizaines et 3 unités ?",
+              "answer": "63",
+              "hint": "Compte les groupes de dix.",
+              "explanation": "6 dizaines font 60, plus 3 unités font 63."
+            },
+            {
+              "question": "Écris en chiffres le nombre quarante-six.",
+              "answer": "46",
+              "hint": "Quarante signifie 4 dizaines.",
+              "explanation": "4 dizaines = 40, 6 unités = 6, donc 46."
+            },
+            {
+              "question": "Complète la décomposition : 57 = __ × 10 + __",
+              "answer": "5 × 10 + 7",
+              "hint": "Combien de dizaines dans 57 ?",
+              "explanation": "57 contient 5 dizaines (50) et 7 unités."
+            }
+          ]
+        },
+        {
+          "title": "Mélanger composition, comparaison et droite graduée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer un nombre en dizaines et unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les dizaines et les unités. Pour décomposer un nombre, on cherche combien de groupes de dix il contient et combien il reste d'unités. Par exemple, $84$ contient $8$ dizaines et $4$ unités."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "84",
+                  "8",
+                  "4"
+                ],
+                [
+                  "29",
+                  "2",
+                  "9"
+                ],
+                [
+                  "50",
+                  "5",
+                  "0"
+                ]
+              ],
+              "caption": "Tableau de décomposition"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on apprend à comparer deux nombres pour savoir lequel est plus grand. On regarde d'abord les dizaines : celui qui a plus de dizaines est le plus grand. Si les dizaines sont égales, on compare les unités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $47$ et $53$. $47$ a $4$ dizaines, $53$ en a $5$. Donc $53$ est plus grand que $47$. On écrit $53 > 47$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                4,
+                7
+              ],
+              "right": [
+                5,
+                3
+              ],
+              "caption": "Comparer 47 et 53 : le plateau de droite penche car 53 est plus grand"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, on place les nombres sur une droite graduée. Cela permet de voir leur ordre et leur distance. La droite commence à $0$ et va jusqu'à $100$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer des nombres sur une droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour placer $36$, on compte les graduations de $10$ en $10$ jusqu'à $30$, puis on avance de $6$ petites graduations. Le point se situe entre $30$ et $40$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite graduée de 0 à 100 avec le nombre 36",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 36,
+                  "label": "36"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre 72 en dizaines et unités.",
+              "answer": "7 dizaines et 2 unités",
+              "hint": "Combien de groupes de dix dans 72 ?",
+              "explanation": "72 = 70 + 2, donc 7 dizaines et 2 unités."
+            },
+            {
+              "question": "Compare 61 et 68 avec le signe > ou <.",
+              "answer": "61 < 68",
+              "hint": "Regarde les dizaines, elles sont égales, compare les unités.",
+              "explanation": "Les deux ont 6 dizaines, mais 8 unités est plus grand que 1 unité."
+            },
+            {
+              "question": "Sur une droite de 0 à 100, entre quelles dizaines se trouve le nombre 84 ?",
+              "answer": "Entre 80 et 90",
+              "hint": "Les dizaines sont 80, 90...",
+              "explanation": "84 est plus grand que 80 et plus petit que 90."
+            }
+          ]
+        },
+        {
+          "title": "Checklist des acquis sans nouvelle notion.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : lire et écrire les nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les bases. Un nombre à deux chiffres se lit en donnant le nombre de dizaines puis les unités. Par exemple, $28$ se lit « vingt-huit ». À l'écrit, on note le chiffre des dizaines puis celui des unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, on revoit la décomposition. Chaque nombre peut être cassé en groupes de dix et en unités restantes. C'est utile pour calculer plus tard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : décomposer et comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décomposer $91$, on voit $9$ dizaines et $1$ unité. Pour comparer $91$ et $19$, on regarde les dizaines : $9$ dizaines contre $1$ dizaine, donc $91 > 19$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la droite graduée aide à situer les nombres. On peut y placer plusieurs nombres et voir leur ordre. C'est un outil visuel très pratique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : la droite graduée jusqu'à 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une ligne où $0$ est au départ et $100$ à l'arrivée. $45$ est près du milieu, $78$ est plus près de $80$. On peut aussi y faire des sauts de dix."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire les nombres jusqu'à 100 en chiffres et en lettres.",
+                "Je sais décomposer un nombre en dizaines et en unités.",
+                "Je sais comparer deux nombres avec les signes < et >.",
+                "Je sais placer et repérer un nombre sur une droite graduée de 0 à 100."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en lettres le nombre 53.",
+              "answer": "cinquante-trois",
+              "hint": "5 dizaines = cinquante.",
+              "explanation": "5 dizaines font cinquante, 3 unités font trois."
+            },
+            {
+              "question": "Décompose 46 en dizaines et unités.",
+              "answer": "4 dizaines et 6 unités",
+              "hint": "Combien de groupes de dix dans 46 ?",
+              "explanation": "46 = 40 + 6."
+            },
+            {
+              "question": "Place 27 sur une droite graduée de 0 à 100. Entre quelles dizaines se trouve-t-il ?",
+              "answer": "Entre 20 et 30",
+              "hint": "Regarde les dizaines voisines.",
+              "explanation": "27 est plus grand que 20 et plus petit que 30."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

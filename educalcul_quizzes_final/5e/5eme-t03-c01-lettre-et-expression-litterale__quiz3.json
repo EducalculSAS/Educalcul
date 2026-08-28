@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Modéliser une situation",
+  "title": "Modéliser une situation par une expression littérale",
+  "questions": [
+    {
+      "text": "Julie a $x$ billes. Marc a 5 billes de plus que Julie. Parmi les expressions suivantes, laquelle représente le nombre de billes de Marc ?",
+      "options": [
+        "x + 5",
+        "5x",
+        "x - 5",
+        "5 - x"
+      ],
+      "correctAnswer": "x + 5",
+      "explanation": "Marc a 5 billes **de plus** que Julie. Comme Julie a $x$ billes, on ajoute 5 à $x$, ce qui donne $x + 5$. L'option $5x$ correspondrait à 5 fois le nombre de billes de Julie. Les options $x - 5$ et $5 - x$ correspondent à une soustraction, ce qui contredit l'énoncé « de plus ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur $L$ (en cm) et une largeur de 4 cm. Quelle expression donne le périmètre $P$ de ce rectangle (en cm) ?",
+      "options": [
+        "2L + 8",
+        "L + 4",
+        "4L",
+        "2(L + 4)"
+      ],
+      "correctAnswer": "2(L + 4)",
+      "explanation": "Le périmètre d'un rectangle se calcule par $2 \\times (\\text{longueur} + \\text{largeur})$. Ici, la longueur est $L$ et la largeur est 4. L'expression littérale exacte est donc $2 \\times (L + 4)$, soit $2(L + 4)$. L'option $2L + 8$ est l'expression développée, correcte mathématiquement mais pas la modélisation directe de la formule du périmètre. $L+4$ est la demi-somme des côtés. $4L$ correspond à l'aire si la longueur était 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul achète 3 cahiers au même prix. Il paie avec un billet de 20 € et récupère 2 € de monnaie. Si $p$ désigne le prix d'un cahier en euros, quelle équation modélise cette situation ?",
+      "options": [
+        "3p = 20 - 2",
+        "3p = 20 + 2",
+        "p = 20 - 2",
+        "20 = 3p - 2"
+      ],
+      "correctAnswer": "3p = 20 - 2",
+      "explanation": "Le prix total des 3 cahiers est $3p$. Paul donne 20 € et récupère 2 €, donc il a dépensé $20 - 2 = 18$ €. L'équation qui relie le prix total des cahiers à la somme dépensée est $3p = 20 - 2$. L'option $3p = 20 + 2$ ajouterait la monnaie au lieu de la retrancher. L'option $p = 20 - 2$ oublie qu'il y a 3 cahiers. L'option $20 = 3p - 2$ soustrait la monnaie du prix des cahiers, ce qui est incohérent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le double d'un nombre $n$, augmenté de 7, est égal au triple de ce même nombre diminué de 4. Quelle équation traduit cette phrase ?",
+      "options": [
+        "2n + 7 = 3n - 4",
+        "2(n + 7) = 3(n - 4)",
+        "2n + 7 = 3(n - 4)",
+        "2(n + 7) = 3n - 4"
+      ],
+      "correctAnswer": "2n + 7 = 3n - 4",
+      "explanation": "On décompose la phrase en deux parties :\\n- « Le double d'un nombre $n$, augmenté de 7 » : le double de $n$ est $2n$, augmenté de 7 donne $2n + 7$.\\n- « Le triple de ce même nombre diminué de 4 » : le triple de $n$ est $3n$, diminué de 4 donne $3n - 4$.\\nL'égalité entre ces deux expressions s'écrit $2n + 7 = 3n - 4$. Les autres options placent mal les parenthèses : $2(n+7)$ signifie « le double de ($n$ augmentée de 7) » et $3(n-4)$ signifie « le triple de ($n$ diminuée de 4) », ce qui ne correspond pas à l'énoncé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un plombier facture un déplacement forfaitaire de 40 € plus 35 € par heure de travail. Si $h$ représente le nombre d'heures travaillées, quelle expression donne le montant total $M$ (en euros) de la facture ?",
+      "options": [
+        "M = 35h + 40",
+        "M = 40h + 35",
+        "M = 35(h + 40)",
+        "M = 75h"
+      ],
+      "correctAnswer": "M = 35h + 40",
+      "explanation": "Le montant total est la somme d'une partie fixe (le déplacement) et d'une partie proportionnelle aux heures (la main-d'œuvre).\\n- Partie fixe : 40 €.\\n- Partie variable : 35 € par heure $\\times h$ heures $= 35h$.\\nLe total est donc $M = 35h + 40$. L'option $40h + 35$ inverse les tarifs. L'option $35(h + 40)$ multiplie le tarif horaire par la somme des heures et du forfait, ce qui n'a pas de sens. L'option $75h$ additionne les deux tarifs et les multiplie par les heures, ce qui est incorrect car le forfait ne dépend pas du nombre d'heures.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

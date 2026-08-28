@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Coordonnées relatifs",
+  "title": "Approfondissement : Coordonnées relatifs - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme de translation d'un point",
+      "content": "Écrire un algorithme (en pseudo-code ou style Python) qui prend en entrée les coordonnées $x$ et $y$ d'un point $A$ ainsi que les composantes $dx$ et $dy$ d'un vecteur de translation $\\vec{v}$, et qui affiche les coordonnées du point $A'$ image de $A$ par cette translation.",
+      "correctAnswer": "Algorithme :\\n1. Lire x, y, dx, dy\\n2. x_prime = x + dx\\n3. y_prime = y + dy\\n4. Afficher x_prime, y_prime",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation d'un point par un vecteur $\\vec{v}(dx, dy)$ consiste à ajouter les composantes du vecteur aux coordonnées du point. L'algorithme lit les quatre nombres, calcule les nouvelles coordonnées par addition, puis les affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées après une suite de déplacements",
+      "content": "Le point $A$ a pour coordonnées $(-3 ; 2)$. On effectue les déplacements suivants : $4$ unités vers la droite, $5$ unités vers le bas, $2$ unités vers la gauche, $3$ unités vers le haut. Écrire un algorithme qui calcule les coordonnées après chaque déplacement et donne les coordonnées finales du point.",
+      "correctAnswer": "Algorithme :\\nx = -3\\ny = 2\\n# déplacement 1 : droite 4\\nx = x + 4\\ny = y + 0\\n# déplacement 2 : bas 5\\nx = x + 0\\ny = y - 5\\n# déplacement 3 : gauche 2\\nx = x - 2\\ny = y + 0\\n# déplacement 4 : haut 3\\nx = x + 0\\ny = y + 3\\nAfficher x, y\\nRésultat final : ( -1 ; 0 )",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque déplacement horizontal modifie l'abscisse : vers la droite on ajoute, vers la gauche on soustrait. Chaque déplacement vertical modifie l'ordonnée : vers le haut on ajoute, vers le bas on soustrait. En partant de $(-3;2)$, après les quatre déplacements on obtient $(-1;0)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination du quadrant d'un point",
+      "content": "Écrire une fonction (en style Python) nommée `quadrant(x, y)` qui renvoie une chaîne de caractères indiquant la position du point $M(x ; y)$ par rapport aux axes : \"Quadrant I\", \"Quadrant II\", \"Quadrant III\", \"Quadrant IV\", \"Sur l'axe des abscisses\", \"Sur l'axe des ordonnées\" ou \"Origine\".",
+      "correctAnswer": "def quadrant(x, y):\\n    if x == 0 and y == 0:\\n        return \"Origine\"\\n    elif x == 0:\\n        return \"Sur l'axe des ordonnées\"\\n    elif y == 0:\\n        return \"Sur l'axe des abscisses\"\\n    elif x > 0 and y > 0:\\n        return \"Quadrant I\"\\n    elif x < 0 and y > 0:\\n        return \"Quadrant II\"\\n    elif x < 0 and y < 0:\\n        return \"Quadrant III\"\\n    else:\\n        return \"Quadrant IV\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction teste d'abord les cas particuliers : origine (0,0), puis points sur les axes (x=0 ou y=0). Ensuite, elle vérifie les signes de x et y pour déterminer le quadrant : x>0,y>0 => I ; x<0,y>0 => II ; x<0,y<0 => III ; x>0,y<0 => IV.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

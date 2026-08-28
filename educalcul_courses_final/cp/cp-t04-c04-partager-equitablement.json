@@ -1,0 +1,319 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.591574+00:00",
+  "id": 36,
+  "code": "cp-t04-c04",
+  "title": "Partager équitablement",
+  "description": "Cours structuré Educalcul : Partager équitablement.",
+  "subject": "Premiers problèmes de multiplication et de partage",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Premiers problèmes de multiplication et de partage",
+    "titre_du_cours": "Partager équitablement",
+    "objectif_global": "Partager équitablement",
+    "mini_lecons_imposees": [
+      "Distribuer un à un.",
+      "Vérifier que les parts sont égales.",
+      "Dire combien chacun reçoit."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Premiers problèmes de multiplication et de partage",
+      "lessons": [
+        {
+          "title": "Distribuer un à un.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Donner un par un"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $10$ bonbons à partager avec ton ami Léo. Tu veux que ce soit juste pour tous les deux. La meilleure façon, c'est de faire comme quand tu donnes des cartes : un pour toi, un pour Léo, un pour toi, un pour Léo. On appelle ça distribuer un à un."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer les tas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose deux assiettes devant toi : une pour toi, une pour Léo."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distribuer le premier tour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends un bonbon, mets-le sur ton assiette. Prends un autre bonbon, mets-le sur l'assiette de Léo."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer jusqu'à la fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Recommence : un pour toi, un pour Léo, jusqu'à ce qu'il n'y ait plus de bonbons dans ta main."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec trois copains : Ana, Sam et toi. Tu as $12$ billes. Tu vas faire trois tas. Donne une bille à Ana, une à Sam, une à toi. Recommence. Tu verras que chaque tas grandit en même temps."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Trois parts égales de 4 billes",
+              "bars": [
+                {
+                  "label": "Ana",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sam",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Toi",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il reste des objets à la fin. Si tu as $10$ crayons pour $3$ amis, tu donnes $3$ tours complets : ça fait $9$ crayons distribués. Il en reste $1$ tout seul qui ne peut pas former un tour complet. Ce n'est pas grave, on le met de côté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $8$ autocollants à partager avec ton frère. Tu donnes un à un. Combien d'autocollants aura ton frère à la fin ?",
+              "answer": "$4$",
+              "hint": "Fais des tas imaginaires : un pour toi, un pour lui, et compte les tours.",
+              "explanation": "En donnant un à un, tu fais $4$ tours complets. Ton frère reçoit $1$ autocollant par tour, donc $4$ au total."
+            },
+            {
+              "question": "Tu partages $9$ billes entre $3$ copains (Léo, Mia, toi). Tu donnes un à un. Combien de billes reçoit Mia ?",
+              "answer": "$3$",
+              "hint": "Il y a $3$ enfants. Compte combien de tours tu peux faire avec $9$ billes.",
+              "explanation": "Tu fais $3$ tours complets ($3 \\times 3 = 9$). À chaque tour, Mia reçoit $1$ bille. Elle en a donc $3$."
+            },
+            {
+              "question": "Tu as $10$ cerises pour $3$ amis. Tu donnes un à un. Combien de cerises restent-elles non distribuées à la fin ?",
+              "answer": "$1$",
+              "hint": "Fais des groupes de $3$ cerises (un par ami) jusqu'à ne plus pouvoir faire un groupe complet.",
+              "explanation": "Tu fais $3$ groupes de $3$ ($9$ cerises). Il reste $1$ cerise qui ne suffit pas pour donner à tout le monde."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier que les parts sont égales.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter pour vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as distribué tes $12$ cartes entre toi et ton frère. Tu as fait vite, un par un. Mais es-tu sûr que vous avez le même nombre ? Pour en avoir le cœur net, il faut compter chaque tas. C'est comme vérifier que les deux côtés d'une balance sont au même niveau."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                6
+              ],
+              "right": [
+                6
+              ],
+              "caption": "Deux parts égales : 6 de chaque côté"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour compter plus vite, tu peux regrouper par deux. Touche deux cartes en même temps et dis : « deux, quatre, six ». C'est plus rapide que de compter un par un, surtout quand il y a beaucoup d'objets. Essaie sur ton tas de $6$ cartes : deux, quatre, six. C'est fini !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter par deux jusqu'à 6",
+              "min": 0,
+              "max": 6,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, parfois on se trompe en distribuant. Imagine que tu as donné $5$ billes à Paul et $7$ billes à Julie. La balance penche ! Ce n'est pas équitable. Il faut alors reprendre des billes chez celle qui en a trop pour les donner à l'autre jusqu'à ce que la balance soit droite."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5
+              ],
+              "right": [
+                7
+              ],
+              "caption": "Parts inégales : 5 d'un côté, 7 de l'autre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as partagé $10$ bonbons entre deux assiettes. Tu comptes la première : $5$. Tu comptes la seconde : $5$. La balance est-elle en équilibre ?",
+              "answer": "Oui",
+              "hint": "Regarde si les deux nombres trouvés sont identiques.",
+              "explanation": "Les deux assiettes contiennent $5$ bonbons. Les deux plateaux de la balance portent le même nombre, elle est en équilibre."
+            },
+            {
+              "question": "Tu as $8$ jetons. Tu comptes par deux : deux, quatre... Quel est le nombre suivant ?",
+              "answer": "Six",
+              "hint": "Ajoute $2$ au dernier nombre dit ($4$).",
+              "explanation": "En comptant par deux, la suite est $2, 4, 6, 8$. Après $4$ vient $6$."
+            },
+            {
+              "question": "Léa a $6$ billes, Tom en a $4$. Combien de billes Léa doit-elle donner à Tom pour qu'ils aient le même nombre ?",
+              "answer": "$1$",
+              "hint": "Cherche le nombre au milieu entre $4$ et $6$.",
+              "explanation": "Le total est $10$ billes. Pour partager équitablement, chacun doit en avoir $5$. Léa en a $6$, elle donne $1$ à Tom qui en a $4$. Tous deux ont $5$."
+            }
+          ]
+        },
+        {
+          "title": "Dire combien chacun reçoit.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Annoncer le résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as distribué, tu as vérifié, maintenant tu sais dire exactement ce que chacun reçoit. C'est la phrase finale, celle qui clôture le partage. On dit : « Chacun a $4$ bonbons » ou « Chaque enfant reçoit $3$ billes ». Cette phrase résume tout le travail fait avec les mains."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Enfant",
+                "Nombre reçu"
+              ],
+              "rows": [
+                [
+                  "Zoé",
+                  "$4$"
+                ],
+                [
+                  "Noé",
+                  "$4$"
+                ],
+                [
+                  "Toi",
+                  "$4$"
+                ]
+              ],
+              "caption": "Récapitulatif du partage de 12 bonbons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi écrire ce partage avec une addition. Puisque Zoé, Noé et toi avez chacun $4$ bonbons, on écrit : $4 + 4 + 4 = 12$. C'est l'histoire du partage racontée en chiffres. Les trois $4$ sont les trois parts égales, le $12$ est le total de départ."
+            },
+            {
+              "type": "display_math",
+              "latex": "4 + 4 + 4 = 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Retenons bien l'ordre : d'abord on distribue un à un, ensuite on compte pour vérifier que c'est égal, enfin on annonce le résultat à voix haute ou on l'écrit. Tu es maintenant capable de partager n'importe quel petit trésor entre tes amis sans dispute !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais distribuer des objets un par un pour faire des parts.",
+                "Je sais compter chaque part pour vérifier qu'elles sont égales.",
+                "Je sais dire combien chaque personne reçoit à la fin.",
+                "Je sais écrire le partage comme une addition de nombres égaux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as partagé $15$ cartes entre $3$ joueurs. Chacun a $5$ cartes. Écris l'addition qui raconte ce partage.",
+              "answer": "$5 + 5 + 5 = 15$",
+              "hint": "Il y a $3$ joueurs, donc $3$ fois le même nombre.",
+              "explanation": "Chaque joueur a $5$ cartes. On additionne les trois parts : $5 + 5 + 5$. Le total retrouve le nombre de départ : $15$."
+            },
+            {
+              "question": "Tu donnes $6$ crayons à ta sœur et $6$ crayons à ton frère. Tu dis : « Chacun a... » Comment finis-tu ta phrase ?",
+              "answer": "Chacun a $6$ crayons.",
+              "hint": "Regarde le nombre que tu as donné à chacun des deux.",
+              "explanation": "La sœur a $6$, le frère a $6$. Les parts sont égales. La phrase de conclusion donne ce nombre commun : $6$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

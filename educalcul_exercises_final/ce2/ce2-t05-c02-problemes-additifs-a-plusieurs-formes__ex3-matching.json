@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 179,
+  "_course_code": "ce2-t05-c02-problemes-additifs-a-plusieurs-formes",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Comparaison",
+  "title": "Problèmes additifs : La comparaison",
+  "blocks": [
+    {
+      "title": "Comparer deux quantités : trouver la différence",
+      "content": "Relie chaque problème à l'opération qui permet de trouver la différence.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Paul a $12$ billes. Luc a $8$ billes. Combien de billes Paul a-t-il de plus que Luc ?",
+          "right": "$12 - 8 = 4$"
+        },
+        {
+          "left": "Il y a $15$ livres sur l'étagère du haut et $9$ sur celle du bas. Combien de livres de plus sur l'étagère du haut ?",
+          "right": "$15 - 9 = 6$"
+        },
+        {
+          "left": "Une boîte contient $20$ crayons. Une autre en contient $13$. Quelle est la différence entre les deux boîtes ?",
+          "right": "$20 - 13 = 7$"
+        },
+        {
+          "left": "Le grand frère a $18$ ans. Le petit frère a $10$ ans. De combien d'années le grand frère est-il plus âgé ?",
+          "right": "$18 - 10 = 8$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans un problème de comparaison pour savoir \"combien de plus\", on soustrait la plus petite quantité de la plus grande. La différence correspond à l'écart entre les deux nombres.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paul : 12",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Luc : 8",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Différence ?",
+            "value": 4,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Modèle en barres : la partie dorée représente la différence (12 - 8 = 4)."
+      }
+    },
+    {
+      "title": "Trouver une quantité inconnue par comparaison",
+      "content": "Relie chaque problème à l'opération qui permet de trouver le nombre cherché.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Marie a $18$ autocollants. Elle en a $5$ de plus que Tom. Combien d'autocollants a Tom ?",
+          "right": "$18 - 5 = 13$"
+        },
+        {
+          "left": "Un arbre mesure $25$ mètres. Un arbuste mesure $17$ mètres de moins. Quelle est la hauteur de l'arbuste ?",
+          "right": "$25 - 17 = 8$"
+        },
+        {
+          "left": "Le sac bleu pèse $30$ kg. Il pèse $12$ kg de plus que le sac rouge. Combien pèse le sac rouge ?",
+          "right": "$30 - 12 = 18$"
+        },
+        {
+          "left": "Il y a $40$ élèves dans l'école. Il y a $12$ filles de plus que de garçons. Combien y a-t-il de garçons ?",
+          "right": "$40 - 12 = 28$ puis $28 / 2 = 14$"
+        }
+      ],
+      "items": [],
+      "explanation": "Quand on connaît la plus grande quantité et l'écart (\"x de plus\"), on soustrait l'écart à la grande quantité pour trouver la petite. Attention au dernier problème : la différence porte sur le total, il faut raisonner en deux étapes (soustraire l'écart au total, puis diviser par 2).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problèmes de comparaison à deux étapes",
+      "content": "Relie chaque problème au calcul complet qui donne le résultat final.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Julien a $45$ cartes. Il en a $15$ de plus que Léa. Combien de cartes ont-ils à eux deux ?",
+          "right": "$45 - 15 = 30$ et $45 + 30 = 75$"
+        },
+        {
+          "left": "Il y a $50$ pommes dans un panier. Il y a $12$ poires de moins que de pommes. Combien de fruits au total ?",
+          "right": "$50 - 12 = 38$ et $50 + 38 = 88$"
+        },
+        {
+          "left": "Un pull coûte $35$ euros. Un pantalon coûte $18$ euros de plus. Combien coûtent les deux vêtements ?",
+          "right": "$35 + 18 = 53$ et $35 + 53 = 88$"
+        },
+        {
+          "left": "La bibliothèque a $60$ romans. Elle a $20$ BD de moins que de romans. Combien y a-t-il de livres au total ?",
+          "right": "$60 - 20 = 40$ et $60 + 40 = 100$"
+        }
+      ],
+      "items": [],
+      "explanation": "Ces problèmes demandent deux calculs : 1) Trouver la deuxième quantité (addition si \"x de plus\", soustraction si \"x de moins\"). 2) Additionner les deux quantités pour obtenir le total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

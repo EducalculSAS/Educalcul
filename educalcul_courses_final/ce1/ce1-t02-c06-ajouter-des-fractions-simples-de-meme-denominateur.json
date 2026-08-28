@@ -1,0 +1,271 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.740063+00:00",
+  "id": 84,
+  "code": "ce1-t02-c06",
+  "title": "Ajouter des fractions simples de même dénominateur",
+  "description": "Cours structuré Educalcul : Ajouter des fractions simples de même dénominateur.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Ajouter des fractions simples de même dénominateur",
+    "objectif_global": "Ajouter des fractions simples de même dénominateur",
+    "mini_lecons_imposees": [
+      "Réunir des parts de même taille.",
+      "Conserver le dénominateur.",
+      "Vérifier par dessin."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Réunir des parts de même taille.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une barre de chocolat coupée en $4$ parts égales. Chaque part est un quart de la barre, on écrit $\\frac{1}{4}$. Toi, tu en as une part, et ton ami en a deux parts. Si vous mettez vos parts ensemble, combien de quarts avez-vous au total ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Une part sur quatre : $\\frac{1}{4}$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Deux parts sur quatre : $\\frac{2}{4}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les deux dessins. Les parts ont exactement la même taille : ce sont toutes des quarts. Quand on les réunit, on ne change pas la taille des parts, on compte simplement combien on en a maintenant. Ici, $1$ part plus $2$ parts, ça fait $3$ parts. Comme ce sont des quarts, le résultat est $\\frac{3}{4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un autre exemple : une pizza découpée en $5$ parts égales. Tu manges $2$ parts, ton frère mange $1$ part. Ensemble, vous avez mangé $2+1=3$ parts sur les $5$ parts de la pizza. La taille des parts n'a pas bougé : ce sont toujours des cinquièmes. On écrit $\\frac{2}{5}+\\frac{1}{5}=\\frac{3}{5}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "circle",
+              "caption": "Deux cinquièmes : $\\frac{2}{5}$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 5,
+              "shape": "circle",
+              "caption": "Un cinquième : $\\frac{1}{5}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Le chiffre du bas, le dénominateur, reste $5$ parce que la pizza est toujours coupée en $5$ parts de la même grandeur. On n'ajoute que les chiffres du haut, les numérateurs, qui disent combien de parts on prend."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais réunir des parts de même taille. Dans la prochaine leçon, on va bien regarder pourquoi le dénominateur ne bouge pas quand on additionne."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'addition : $\\frac{1}{3}+\\frac{1}{3}=\\frac{\\square}{3}$",
+              "answer": "2",
+              "hint": "Compte le nombre total de parts. Le dénominateur $3$ ne change pas.",
+              "explanation": "On a $1$ tiers et $1$ tiers, ça fait $2$ tiers. Le dénominateur reste $3$."
+            },
+            {
+              "question": "Calcule $\\frac{2}{6}+\\frac{3}{6}$.",
+              "answer": "$\\frac{5}{6}$",
+              "hint": "Additionne les numérateurs : $2+3$. Garde le dénominateur $6$.",
+              "explanation": "$2$ sixièmes plus $3$ sixièmes font $5$ sixièmes. Le dénominateur $6$ ne bouge pas."
+            }
+          ]
+        },
+        {
+          "title": "Conserver le dénominateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre barre de chocolat, mais cette fois elle est coupée en $3$ parts égales. Tu as $\\frac{2}{3}$ de la barre, et ton ami t'en donne encore $\\frac{1}{3}$. Si tu mets les deux morceaux bout à bout, tu retrouves la barre entière !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Deux tiers : $\\frac{2}{3}$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Un tiers : $\\frac{1}{3}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le dessin : les parts sont des tiers. Quand on les assemble, on a $2+1=3$ parts. Comme la barre était coupée en $3$ parts, $3$ tiers font exactement $1$ barre entière. On écrit $\\frac{2}{3}+\\frac{1}{3}=\\frac{3}{3}=1$. Le chiffre du bas, le dénominateur $3$, n'a pas changé : il indique toujours que le tout est divisé en $3$ parts égales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi le dénominateur ne bouge-t-il pas ? Parce qu'il donne la taille des parts. Si tu as des parts de même taille et que tu les ajoutes, la taille de chaque part ne change pas. C'est comme si tu mettais des briques identiques les unes à côté des autres : la brique reste de la même grandeur, tu en as juste plus."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "Trois huitièmes : $\\frac{3}{8}$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "Deux huitièmes : $\\frac{2}{8}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec des huitièmes. $\\frac{3}{8}+\\frac{2}{8}$ : on garde le dénominateur $8$, on additionne $3+2=5$. Le résultat est $\\frac{5}{8}$. Le $8$ du bas ne bouge pas, il nous dit qu'on travaille toujours avec des parts de la même grandeur, des huitièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la somme des numérateurs donne exactement le dénominateur, comme $\\frac{4}{9}+\\frac{5}{9}=\\frac{9}{9}=1$. Ça veut dire qu'on a recomposé le tout. Dans la prochaine leçon, on apprendra à vérifier nos résultats en faisant un petit dessin."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'addition $\\frac{3}{7}+\\frac{2}{7}$, quel est le dénominateur du résultat ?",
+              "answer": "7",
+              "hint": "Le dénominateur ne change jamais quand on additionne des fractions de même dénominateur.",
+              "explanation": "On ajoute des septièmes, le résultat est encore en septièmes. Le dénominateur reste $7$."
+            },
+            {
+              "question": "Calcule $\\frac{4}{10}+\\frac{3}{10}$.",
+              "answer": "$\\frac{7}{10}$",
+              "hint": "Garde le $10$ en bas. Additionne $4$ et $3$ en haut.",
+              "explanation": "$4$ dixièmes plus $3$ dixièmes font $7$ dixièmes. Le dénominateur $10$ est conservé."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par dessin.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant additionner des fractions de même dénominateur en gardant le dénominateur et en additionnant les numérateurs. Pour être bien sûr de ton résultat, tu peux faire un dessin de vérification. C'est très simple et ça aide à voir si on n'a pas fait d'erreur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $\\frac{2}{5}+\\frac{1}{5}$. Dessine un rectangle. Divise-le en $5$ parties égales en traçant $4$ traits verticaux. Colorie $2$ parties en bleu pour $\\frac{2}{5}$, puis $1$ partie en rouge pour $\\frac{1}{5}$. Compte le total de parties coloriées : il y en a $3$ sur $5$. Le résultat $\\frac{3}{5}$ est correct !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Deux cinquièmes coloriés"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Un cinquième colorié"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi utiliser un cercle, comme une tarte. Pour vérifier $\\frac{3}{8}+\\frac{2}{8}$, dessine un cercle et partage-le en $8$ parts égales (trace un trait au milieu, puis coupe chaque moitié en deux, et encore en deux). Colorie $3$ parts, puis $2$ parts d'une autre couleur. Tu vois $5$ parts coloriées sur $8$ : le résultat $\\frac{5}{8}$ est bon."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "Trois huitièmes"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 8,
+              "shape": "circle",
+              "caption": "Deux huitièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dessin te montre concrètement ce qui se passe : les parts ont la même taille, on les met bout à bout, et on compte. Si ton calcul donne un numérateur plus grand que le dénominateur, comme $\\frac{5}{6}+\\frac{3}{6}=\\frac{8}{6}$, le dessin te montre qu'on a plus d'un tout : $6$ sixièmes font $1$ entier, il reste $2$ sixièmes. C'est $1$ et $\\frac{2}{6}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant additionner des fractions simples de même dénominateur et vérifier ton travail par un dessin. Tu es prêt pour la fiche récapitulative."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner deux fractions qui ont le même dénominateur.",
+                "Je sais que le dénominateur ne change pas, j'additionne seulement les numérateurs.",
+                "Je sais vérifier mon résultat en dessinant un rectangle ou un cercle partagé en parts égales."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par un dessin : $\\frac{1}{4}+\\frac{2}{4}=\\frac{3}{4}$. Décris ce que tu dessines.",
+              "answer": "Un rectangle divisé en 4 parts égales. 1 part colorée, puis 2 parts coloriées. Total : 3 parts sur 4.",
+              "hint": "Divise ton rectangle en $4$ parts. Colore $1$ part, puis $2$ parts. Compte le total.",
+              "explanation": "Le dessin montre $3$ parts coloriées sur $4$, soit $\\frac{3}{4}$. Le calcul est juste."
+            },
+            {
+              "question": "Calcule et vérifie par un dessin : $\\frac{2}{6}+\\frac{3}{6}$.",
+              "answer": "$\\frac{5}{6}$",
+              "hint": "Additionne $2+3=5$, garde $6$. Dessine un cercle en $6$ parts, colore $2$ puis $3$ parts.",
+              "explanation": "$2$ sixièmes plus $3$ sixièmes font $5$ sixièmes. Le dessin montre $5$ parts coloriées sur $6$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

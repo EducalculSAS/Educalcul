@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 422,
+  "_course_code": "4eme-t01-c03-puissances-de-10",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Application : Puissances de 10",
+  "title": "Applications des puissances de 10",
+  "blocks": [
+    {
+      "title": "Ordre de grandeurs en notation scientifique",
+      "content": "Range les nombres suivants du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$5.1 \\times 10^3$",
+        "$2.4 \\times 10^4$",
+        "$3.2 \\times 10^4$",
+        "$7.8 \\times 10^5$"
+      ],
+      "explanation": "On compare d'abord les puissances de 10 : $10^3 < 10^4 < 10^5$. Pour les deux nombres avec $10^4$, on compare les coefficients : $2.4 < 3.2$. L'ordre croissant est donc $5.1 \\times 10^3$, $2.4 \\times 10^4$, $3.2 \\times 10^4$, $7.8 \\times 10^5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étapes de la conversion en notation scientifique",
+      "content": "Remets dans l'ordre les étapes pour écrire un nombre en notation scientifique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer la virgule du nombre",
+        "Déplacer la virgule pour obtenir un nombre entre 1 et 10",
+        "Compter le nombre de positions déplacées",
+        "Écrire le nombre sous la forme $a \\times 10^n$"
+      ],
+      "explanation": "La méthode standard : on localise la virgule, on la décale pour avoir un seul chiffre non nul avant la virgule (le coefficient $a$ entre 1 et 10), on compte les déplacements (ce qui donne l'exposant $n$, positif si déplacement vers la gauche, négatif vers la droite), enfin on écrit $a \\times 10^n$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet de la multiplication par des puissances de 10",
+      "content": "Range les résultats obtenus en multipliant $0,0045$ par $10^1$, $10^2$, $10^3$ et $10^4$ du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$0,045$",
+        "$0,45$",
+        "$4,5$",
+        "$45$"
+      ],
+      "explanation": "Multiplier par $10^1$ décale la virgule d'un cran vers la droite : $0,0045 \\rightarrow 0,045$. Par $10^2$ : $0,45$. Par $10^3$ : $4,5$. Par $10^4$ : $45$. L'ordre croissant est donc $0,045$, $0,45$, $4,5$, $45$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

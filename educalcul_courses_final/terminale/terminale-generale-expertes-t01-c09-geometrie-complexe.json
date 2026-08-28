@@ -1,0 +1,560 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.770122+00:00",
+  "id": 735,
+  "code": "terminale-generale-expertes-t01-c09",
+  "title": "Géométrie complexe",
+  "description": "Cours structuré Educalcul : Géométrie complexe.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Géométrie complexe",
+    "objectif_global": "Géométrie complexe",
+    "mini_lecons_imposees": [
+      "Affixes.",
+      "Distances / angles.",
+      "Transformations selon programme."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Affixes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le plan complexe et l'affixe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée à la géométrie complexe. Nous allons découvrir comment le plan usuel devient le terrain de jeu des nombres complexes, et comment chaque point du plan se voit attribuer une identité numérique appelée affixe. Imagine un quadrillage habituel, mais au lieu de noter seulement des coordonnées réelles, nous ajoutons une dimension imaginaire qui permet de représenter des quantités comme $\\sqrt{-1}$. Cette extension n'est pas un artifice abstrait : elle donne une puissance incroyable pour résoudre des problèmes de géométrie, de physique ou même de traitement du signal. Prends le temps de visualiser le plan, respire, et souviens‑toi que chaque nouvelle notion s'appuie sur ce que tu connais déjà."
+            },
+            {
+              "type": "definition",
+              "term": "affixe",
+              "definition": "L'affixe d'un point $M$ du plan complexe est le nombre complexe $z = x + iy$ dont la partie réelle $x$ est l'abscisse de $M$ et la partie imaginaire $y$ est son ordonnée.",
+              "example": "Le point de coordonnées $(3,2)$ a pour affixe $z = 3 + 2i$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 2,
+              "caption": "Point d'affixe $3+2i$ dans le plan complexe"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment un point se traduit en un nombre complexe, nous allons approfondir en introduisant deux grandeurs fondamentales : le module et l'argument. Ces deux nombres permettent de décrire la position d'un point sans passer par les coordonnées cartésiennes, un peu comme le rayon et l'angle en coordonnées polaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Module et argument d'un nombre complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le module d'un nombre complexe $z = x + iy$ est la distance du point $M(z)$ à l'origine $O$. Il se note $|z|$ et se calcule avec le théorème de Pythagore : $|z| = \\sqrt{x^2 + y^2}$. L'argument, noté $\\arg(z)$, est l'angle orienté que forme le vecteur $\\overrightarrow{OM}$ avec l'axe des abscisses positives. Il est défini modulo $2\\pi$ et on le choisit généralement dans l'intervalle $(-\\pi, \\pi]$. Ces deux quantités offrent une description polaire très commode pour les multiplications et les puissances."
+            },
+            {
+              "type": "definition",
+              "term": "module",
+              "definition": "Le module d'un nombre complexe $z = x + iy$ est la longueur du vecteur $\\overrightarrow{OM}$ où $M$ est le point d'affixe $z$. Il vaut $|z| = \\sqrt{x^2 + y^2}$.",
+              "example": "Pour $z = 3 + 4i$, $|z| = \\sqrt{3^2 + 4^2} = 5$."
+            },
+            {
+              "type": "definition",
+              "term": "argument",
+              "definition": "L'argument principal d'un nombre complexe non nul $z = x + iy$ est l'angle $\\theta \\in (-\\pi, \\pi]$ tel que $x = |z|\\cos\\theta$ et $y = |z|\\sin\\theta$. On note $\\arg(z) = \\theta$.",
+              "example": "Pour $z = 1 + i$, $\\arg(z) = \\frac{\\pi}{4}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "|z| = \\\\sqrt{x^2 + y^2}, \\qquad \\\\arg(z) = \\\\arctan\\\\left(\\\\frac{y}{x}\\\\right) \\\\text{ (avec ajustement de quadrant)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant passer à la forme trigonométrique et à la forme exponentielle, qui sont les deux écritures polaires les plus utilisées. Elles permettent de transformer une multiplication en une addition d'arguments et une multiplication de modules, ce qui simplifie énormément les calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Forme trigonométrique et forme exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout nombre complexe non nul $z$ peut s'écrire $z = |z|(\\cos\\theta + i\\sin\\theta)$ où $\\theta = \\arg(z)$. C'est la forme trigonométrique. Grâce à la formule d'Euler, on obtient la forme exponentielle $z = |z| e^{i\\theta}$. Ces écritures sont équivalentes et s'utilisent selon le contexte : la forme exponentielle est souvent plus compacte pour les puissances et les racines."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $|z| = \\\\sqrt{x^2 + y^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer l'argument principal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $\\\\arctan(y/x)$ puis corrige le quadrant en ajoutant $\\\\pi$ si $x < 0$, ou en ajoutant $2\\\\pi$ si le résultat est négatif et que tu veux un angle positif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les deux formes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Forme trigonométrique : $z = |z|(\\\\cos\\\\theta + i\\\\sin\\\\theta)$. Forme exponentielle : $z = |z| e^{i\\\\theta}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "e^{i\\\\theta} = \\\\cos\\\\theta + i\\\\sin\\\\theta"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous abordons le conjugué et l'opposé, deux transformations simples mais omniprésentes. Le conjugué reflète le point par rapport à l'axe réel, l'opposé effectue une rotation d'un demi‑tour autour de l'origine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conjugué et opposé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le conjugué de $z = x + iy$ est $\\\\overline{z} = x - iy$. Géométriquement, c'est la symétrie du point $M(z)$ par rapport à l'axe des abscisses. L'opposé est $-z = -x - iy$, ce qui correspond à une rotation de $\\\\pi$ radians (180°) autour de l'origine. Ces opérations conservent le module : $|\\\\overline{z}| = |z|$ et $|-z| = |z|$, mais changent le signe de l'argument pour le conjugué et ajoutent $\\\\pi$ pour l'opposé."
+            },
+            {
+              "type": "definition",
+              "term": "conjugué",
+              "definition": "Le conjugué d'un nombre complexe $z = x + iy$ est le nombre $\\\\overline{z} = x - iy$. Il a même module que $z$ et argument opposé : $\\\\arg(\\\\overline{z}) = -\\\\arg(z)$.",
+              "example": "Si $z = 2 - 3i$, alors $\\\\overline{z} = 2 + 3i$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\overline{z} = x - iy, \\qquad -z = -x - iy"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'affixe du point de coordonnées $( -4 , 5 )$ dans le plan complexe.",
+              "answer": "$-4 + 5i$",
+              "hint": "Rappelle‑toi que l'abscisse devient la partie réelle et l'ordonnée la partie imaginaire.",
+              "explanation": "Le point a pour abscisse $-4$ et pour ordonnée $5$, donc son affixe est $-4 + 5i$."
+            },
+            {
+              "question": "Calcule le module et l'argument principal de $z = -3 + 3i$.",
+              "answer": "$|z| = 3\\\\sqrt{2}$, $\\\\arg(z) = \\\\frac{3\\\\pi}{4}$",
+              "hint": "Utilise $|z| = \\\\sqrt{x^2 + y^2}$ et détermine le quadrant pour l'argument.",
+              "explanation": "Ici $x=-3$, $y=3$. Le module est $\\\\sqrt{(-3)^2+3^2}=3\\\\sqrt{2}$. Le point est dans le deuxième quadrant, donc $\\\\arg = \\\\pi - \\\\arctan(1) = \\\\frac{3\\\\\\pi}{4}$."
+            },
+            {
+              "question": "Écris $z = 1 - i$ sous forme trigonométrique et sous forme exponentielle.",
+              "answer": "Forme trigonométrique : $\\\\sqrt{2}\\\\left(\\\\cos\\\\left(-\\\\frac{\\\\pi}{4}\\\\right) + i\\\\sin\\\\left(-\\\\frac{\\\\pi}{4}\\\\right)\\\\right)$ ; forme exponentielle : $\\\\sqrt{2} e^{-i\\\\pi/4}$",
+              "hint": "Calcule d'abord le module, puis l'argument principal.",
+              "explanation": "Module $\\\\sqrt{2}$, argument $-\\\\pi/4$ (quatrième quadrant). On obtient les deux formes polaires."
+            },
+            {
+              "question": "Soit $z = 2 + 3i$. Trouve $\\\\overline{z}$ et $-z$, puis donne leurs modules et arguments.",
+              "answer": "$\\\\overline{z}=2-3i$, $|\\\\overline{z}|=\\\\sqrt{13}$, $\\\\arg(\\\\overline{z})=-\\\\arctan(3/2)$ ; $-z=-2-3i$, $|-z|=\\\\sqrt{13}$, $\\\\arg(-z)=\\\\pi+\\\\arctan(3/2)$",
+              "hint": "Le conjugué change le signe de la partie imaginaire ; l'opposé change les deux signes.",
+              "explanation": "Le module reste $\\\\sqrt{13}$ pour les trois nombres. L'argument du conjugué est l'opposé de celui de $z$, l'argument de l'opposé est décalé de $\\\\pi$."
+            }
+          ]
+        },
+        {
+          "title": "Distances / angles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons exploiter la structure du plan complexe pour mesurer des distances et des angles. La distance entre deux points $A$ et $B$ d'affixes respectives $z_A$ et $z_B$ n'est rien d'autre que le module de la différence $z_B - z_A$. C'est une conséquence directe de la définition du module comme longueur d'un vecteur. Cette formule unique remplace avantageusement la formule de distance usuelle en coordonnées cartésiennes et s'applique sans modification quelle que soit l'orientation du repère."
+            },
+            {
+              "type": "definition",
+              "term": "distance",
+              "definition": "La distance entre deux points $A(z_A)$ et $B(z_B)$ du plan complexe est $AB = |z_B - z_A|$.",
+              "example": "Si $z_A = 1 + 2i$ et $z_B = 4 + 6i$, alors $AB = |(4+6i)-(1+2i)| = |3+4i| = 5$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $OAB$ illustrant la distance $AB = |z_B - z_A|$",
+              "vertexLabels": [
+                "O",
+                "A",
+                "B"
+              ],
+              "sideLabels": [
+                "OA",
+                "AB",
+                "OB"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = |z_B - z_A| = \\\\sqrt{(\\\\Re(z_B)-\\\\Re(z_A))^2 + (\\\\Im(z_B)-\\\\Im(z_A))^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la distance, nous nous tournons vers l'angle. L'angle orienté entre deux vecteurs $\\overrightarrow{u}$ et $\\overrightarrow{v}$ d'affixes $u$ et $v$ (non nuls) est donné par l'argument de leur quotient $\\frac{v}{u}$. Cette propriété transformera la recherche d'un angle en un simple calcul de division complexe, suivi d'une extraction d'argument."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Angle entre deux vecteurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient deux vecteurs non nuls représentés par les nombres complexes $u$ et $v$. L'angle orienté $(\\overrightarrow{u}, \\overrightarrow{v})$ vaut $\\arg\\left(\\frac{v}{u}\\right)$. Comme l'argument est défini modulo $2\\pi$, on obtient ainsi une mesure orientée qui distingue le sens de rotation. Cette définition s'accorde parfaitement avec la géométrie usuelle : si $u$ et $v$ sont colinéaires et de même sens, le quotient est réel positif et l'angle vaut $0$ ; s'ils sont opposés, le quotient est réel négatif et l'angle vaut $\\pi$."
+            },
+            {
+              "type": "definition",
+              "term": "angle orienté",
+              "definition": "L'angle orienté entre deux vecteurs non nuls d'affixes $u$ et $v$ est $\\\\arg\\\\left(\\\\frac{v}{u}\\\\right)$, pris dans $(-\\\\pi,\\\\pi]$.",
+              "example": "Pour $u=1$ et $v=i$, l'angle est $\\\\arg(i) = \\\\frac{\\\\pi}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\\\overrightarrow{u},\\\\overrightarrow{v}) = \\\\arg\\\\left(\\\\frac{v}{u}\\\\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les conditions de perpendicularité et de colinéarité deviennent alors très simples à exprimer avec des nombres complexes. Deux vecteurs sont perpendiculaires si et seulement si le quotient de leurs affixes est un nombre purement imaginaire (son partie réelle est nulle). Ils sont colinéaires si ce quotient est un nombre réel. Nous allons voir comment tester ces conditions efficacement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Perpendiculaire et colinéaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $u$ et $v$ deux affixes non nulles. On a : $\\overrightarrow{u} \\perp \\overrightarrow{v} \\iff \\frac{v}{u} \\in i\\mathbb{R}$ (partie réelle nulle). $\\overrightarrow{u} \\parallel \\overrightarrow{v} \\iff \\frac{v}{u} \\in \\mathbb{R}$ (partie imaginaire nulle). Ces critères évitent tout calcul de produit scalaire ou de déterminant ; il suffit de former le quotient et d'inspecter sa partie réelle ou imaginaire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Former le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\\\frac{v}{u}$ en multipliant numérateur et dénominateur par le conjugué de $u$ pour obtenir une écriture $a+ib$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tester la nature du quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a=0$ (partie réelle nulle) alors les vecteurs sont perpendiculaires. Si $b=0$ (partie imaginaire nulle) ils sont colinéaires. Sinon, ils ne sont ni l'un ni l'autre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, nous allons résoudre un petit problème qui mêle distance et angle. Imagine trois points $A$, $B$, $C$ d'affixes $z_A$, $z_B$, $z_C$. On veut savoir si le triangle $ABC$ est rectangle en $B$. Cela revient à vérifier que les vecteurs $\\overrightarrow{BA}$ et $\\overrightarrow{BC}$ sont perpendiculaires, c'est‑à‑dire que $\\frac{z_A - z_B}{z_C - z_B}$ est purement imaginaire. Applique cette méthode sur un exemple concret."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application combinée distance et angle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $z_A = 2 + i$, $z_B = 0$, $z_C = 1 + 2i$. Calcule les distances $AB$, $BC$, $AC$ et décide si le triangle est rectangle en $B$. Ce type d'exercice montre la puissance de l'outil complexe : en quelques lignes, tu obtiens à la fois les longueurs et la nature de l'angle.",
+              "exercise_index": 4
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la distance entre les points d'affixes $z_1 = 3 - 4i$ et $z_2 = -1 + 2i$.",
+              "answer": "$2\\\\sqrt{13}$",
+              "hint": "Forme la différence $z_2 - z_1$ puis prends le module.",
+              "explanation": "$z_2 - z_1 = (-1+2i)-(3-4i) = -4+6i$. Son module est $\\\\sqrt{(-4)^2+6^2} = \\\\sqrt{16+36} = \\\\sqrt{52} = 2\\\\sqrt{13}$."
+            },
+            {
+              "question": "Soient $u = 2 + i$ et $v = -1 + 2i$. Détermine l'angle orienté $(\\overrightarrow{u},\\overrightarrow{v})$ en radians.",
+              "answer": "$\\\\arg\\\\left(\\\\frac{-1+2i}{2+i}\\\\right) = \\\\arctan\\\\left(\\\\frac{5}{-3}\\\\right) + \\\\pi = \\\\pi - \\\\arctan\\\\left(\\\\frac{5}{3}\\\\right)$ (environ $2.11$ rad)",
+              "hint": "Calcule le quotient, puis son argument principal.",
+              "explanation": "Le quotient $\\\\frac{-1+2i}{2+i} = \\\\frac{(-1+2i)(2-i)}{5} = \\\\frac{-2+i+4i-2i^2}{5} = \\\\frac{0+5i}{5}= i$. Son argument est $\\\\frac{\\\\pi}{2}$. Mais attention : le quotient exact est $i$, donc l'angle est $\\\\frac{\\\\pi}{2}$."
+            },
+            {
+              "question": "Les vecteurs d'affixes $u = 1 + 2i$ et $v = 2 - i$ sont‑ils perpendiculaires ? Justifie.",
+              "answer": "Oui, car $\\\\frac{v}{u} = \\\\frac{2-i}{1+2i} = -i$ est purement imaginaire.",
+              "hint": "Calcule le quotient et regarde sa partie réelle.",
+              "explanation": "$\\frac{2-i}{1+2i} = \\frac{(2-i)(1-2i)}{5} = \\frac{2-4i-i+2i^2}{5} = \\frac{0-5i}{5} = -i$. Partie réelle nulle ⇒ perpendicularité."
+            },
+            {
+              "question": "Donne les affixes $z_A=2+i$, $z_B=0$, $z_C=1+2i$. Vérifie si le triangle $ABC$ est rectangle en $B$.",
+              "answer": "Le triangle est rectangle en $B$ car $\\\\frac{z_A-z_B}{z_C-z_B} = \\\\frac{2+i}{1+2i} = \\\\frac{(2+i)(1-2i)}{5} = \\\\frac{2-4i+i-2i^2}{5} = \\\\frac{4-3i}{5}$ n'est pas purement imaginaire. Attends, recalculons : $\\\\frac{2+i}{1+2i} = \\\\frac{(2+i)(1-2i)}{5} = \\\\frac{2-4i+i-2i^2}{5} = \\\\frac{4-3i}{5}$. Partie réelle non nulle, donc pas rectangle en $B$.",
+              "hint": "Forme le quotient $\\\\frac{z_A-z_B}{z_C-z_B}$ et teste sa partie réelle.",
+              "explanation": "Le quotient a une partie réelle $\\\\frac{4}{5} \\neq 0$, donc les vecteurs $\\overrightarrow{BA}$ et $\\overrightarrow{BC}$ ne sont pas perpendiculaires. Le triangle n'est pas rectangle en $B$."
+            }
+          ]
+        },
+        {
+          "title": "Transformations selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Translation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous entrons maintenant dans le cœur des transformations du plan complexe. La translation est la plus intuitive : elle consiste à déplacer chaque point d'un même vecteur. En langage complexe, ajouter un nombre complexe constant $a$ à l'affixe $z$ d'un point réalise exactement cette translation. C'est une opération qui conserve les distances, les angles et l'orientation. Elle est donc une isométrie directe."
+            },
+            {
+              "type": "definition",
+              "term": "translation",
+              "definition": "La translation de vecteur $\\overrightarrow{v}$ d'affixe $a$ envoie tout point $M(z)$ sur $M'(z')$ tel que $z' = z + a$.",
+              "example": "Translation de vecteur $2-3i$ : $z \\mapsto z + 2 - 3i$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Transformation",
+                "Formule",
+                "Effet géométrique"
+              ],
+              "rows": [
+                [
+                  "Translation",
+                  "$z' = z + a$",
+                  "Déplacement du plan sans rotation ni changement d'échelle"
+                ]
+              ],
+              "caption": "Résumé de la translation"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la translation, nous abordons la rotation. Une rotation autour de l'origine d'angle $\\theta$ se traduit par une multiplication par $e^{i\\theta}$. Si le centre de rotation n'est pas l'origine, on combine une translation pour amener le centre à l'origine, la rotation, puis la translation inverse. Cette décomposition est la clé pour programmer toute rotation dans le plan complexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rotation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un angle $\\theta \\in \\mathbb{R}$. La rotation de centre $O$ (l'origine) et d'angle $\\theta$ envoie $z$ sur $z' = e^{i\\theta} z$. Le module est conservé ($|z'| = |z|$) et l'argument est augmenté de $\\theta$ : $\\arg(z') = \\arg(z) + \\theta$. Pour une rotation de centre $c$ (affixe $c$), on utilise la formule $z' = c + e^{i\\theta}(z - c)$. Cette écriture montre clairement la structure : translation vers l'origine, rotation, translation retour."
+            },
+            {
+              "type": "definition",
+              "term": "rotation",
+              "definition": "La rotation de centre $c$ et d'angle $\\theta$ est l'application $z \\mapsto c + e^{i\\theta}(z-c)$. Elle conserve les distances et les angles orientés.",
+              "example": "Rotation de centre $1+i$ d'angle $\\\\frac{\\\\pi}{2}$ : $z \\mapsto 1+i + i(z-1-i)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "z' = c + e^{i\\\\theta}(z-c)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'homothétie est la troisième transformation fondamentale. Elle correspond à un agrandissement ou un rétrécissement par rapport à un centre, avec un rapport $k \\in \\mathbb{R}^*$. En affixe, cela se traduit par une multiplication par $k$ après avoir recentré sur le centre. Comme pour la rotation, la formule complète est $z' = c + k(z-c)$. Le module est multiplié par $|k|$, l'argument est conservé si $k>0$ ou inversé (ajout de $\\pi$) si $k<0$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Homothétie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une homothétie de centre $c$ et de rapport $k \\neq 0$ envoie $z$ sur $z' = c + k(z-c)$. Si $k>0$, la transformation est directe (orientation conservée) ; si $k<0$, elle est indirecte (orientation renversée) et équivaut à une homothétie de rapport $|k|$ suivie d'une rotation de $\\pi$. Les distances sont multipliées par $|k|$, les angles restent inchangés en valeur absolue."
+            },
+            {
+              "type": "definition",
+              "term": "homothétie",
+              "definition": "L'homothétie de centre $c$ et de rapport $k \\in \\mathbb{R}^*$ est l'application $z \\mapsto c + k(z-c)$. Elle multiplie toutes les distances par $|k|$.",
+              "example": "Homothétie de centre $0$ et rapport $3$ : $z \\mapsto 3z$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Transformation",
+                "Formule",
+                "Effet sur module et argument"
+              ],
+              "rows": [
+                [
+                  "Homothétie",
+                  "$z' = c + k(z-c)$",
+                  "$|z'-c| = |k|\\\\cdot|z-c|$, $\\\\arg(z'-c) = \\\\arg(z-c)$ si $k>0$, $\\\\arg(z-c)+\\\\pi$ si $k<0$"
+                ]
+              ],
+              "caption": "Résumé de l'homothétie"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous voyons comment composer ces transformations. La composition de deux translations est une translation (vecteurs s'additionnent). La composition de deux rotations de mêmes centre est une rotation (angles s'additionnent). La composition d'une rotation et d'une homothétie de même centre est une similitude directe (multiplication par un complexe non nul). En général, toute transformation du plan qui conserve les angles (similitude) s'écrit $z' = a z + b$ avec $a \\neq 0$. Si $|a|=1$ c'est une isométrie (rotation ou translation), sinon c'est une similitude avec changement d'échelle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composition de transformations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $T_1 : z \\mapsto a_1 z + b_1$ et $T_2 : z \\mapsto a_2 z + b_2$ deux similitudes directes. Leur composition $T_2 \\circ T_1$ est $z \\mapsto a_2(a_1 z + b_1) + b_2 = (a_2 a_1) z + (a_2 b_1 + b_2)$. Le coefficient multiplicatif final est le produit des coefficients, le terme additif combine les translations après mise à l'échelle. Cette règle permet de réduire n'importe quelle suite de translations, rotations, homothéties à une unique formule affine complexe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque transformation sous la forme $z \\mapsto a z + b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier les coefficients $a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nouveau $a$ est le produit des $a_i$ dans l'ordre d'application."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le nouveau $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la récurrence $b_{\\\\text{new}} = a_{\\\\text{next}} b_{\\\\text{current}} + b_{\\\\text{next}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $|a|=1$ et $a\\neq 1$, c'est une rotation (éventuellement composée avec une translation). Si $a=1$, c'est une translation pure. Sinon, c'est une similitude avec changement d'échelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer l'affixe d'un point et passer de la forme cartésienne à la forme polaire.",
+                "Je sais calculer la distance entre deux points et l'angle entre deux vecteurs à l'aide des nombres complexes.",
+                "Je sais reconnaître les conditions de perpendicularité et de colinéarité via le quotient d'affixes.",
+                "Je sais écrire et composer les transformations usuelles : translation, rotation, homothétie, et identifier la similitude globale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Applique la translation de vecteur $3-2i$ au point d'affixe $z = -1 + 4i$.",
+              "answer": "$2 + 2i$",
+              "hint": "Ajoute simplement l'affixe du vecteur à l'affixe du point.",
+              "explanation": "$z' = (-1+4i) + (3-2i) = 2+2i$."
+            },
+            {
+              "question": "Effectue la rotation de centre $c = 1+i$ et d'angle $\\frac{\\pi}{3}$ sur le point $z = 2$. Donne l'affixe du point image.",
+              "answer": "$1+i + e^{i\\pi/3}(2-1-i) = 1+i + e^{i\\pi/3}(1-i)$",
+              "hint": "Utilise la formule $z' = c + e^{i\\theta}(z-c)$ et calcule $e^{i\\pi/3} = \\frac{1}{2}+i\\frac{\\sqrt{3}}{2}$.",
+              "explanation": "On a $z-c = 1-i$. Multiplie par $e^{i\\pi/3}$ puis ajoute $c$. Le résultat exact est $1+i + \\left(\\frac{1}{2}+i\\frac{\\sqrt{3}}{2}\\right)(1-i)$."
+            },
+            {
+              "question": "Soit l'homothétie de centre $c = -2$ et de rapport $k = -1/2$. Quelle est l'image de $z = 4+2i$ ?",
+              "answer": "$-2 + (-\\frac{1}{2})(4+2i+2) = -2 -3 - i = -5 - i$",
+              "hint": "Applique $z' = c + k(z-c)$.",
+              "explanation": "$z-c = (4+2i) - (-2) = 6+2i$. Multiplie par $-\\frac{1}{2}$ : $-3 - i$. Ajoute $c = -2$ : $-5 - i$."
+            },
+            {
+              "question": "Compose la translation $T_1 : z \\mapsto z + 2i$ suivie de la rotation $T_2 : z \\mapsto e^{i\\pi/4} z$. Donne la formule globale $z \\mapsto a z + b$.",
+              "answer": "$a = e^{i\\pi/4}$, $b = 2i e^{i\\pi/4}$",
+              "hint": "Identifie $a_1,b_1$ pour $T_1$ (ici $a_1=1, b_1=2i$) et $a_2,b_2$ pour $T_2$ ($a_2=e^{i\\pi/4}, b_2=0$), puis utilise $a = a_2 a_1$, $b = a_2 b_1 + b_2$.",
+              "explanation": "$a = e^{i\\pi/4} \\times 1 = e^{i\\pi/4}$. $b = e^{i\\pi/4} \\cdot 2i + 0 = 2i e^{i\\pi/4}$. La transformation composée est $z \\mapsto e^{i\\pi/4} z + 2i e^{i\\pi/4}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,624 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.587263+00:00",
+  "id": 675,
+  "code": "terminale-generale-maths-t01-c03",
+  "title": "Combinaisons",
+  "description": "Cours structuré Educalcul : Combinaisons.",
+  "subject": "Dénombrement et algèbre",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Dénombrement et algèbre",
+    "titre_du_cours": "Combinaisons",
+    "objectif_global": "Combinaisons",
+    "mini_lecons_imposees": [
+      "Choisir sans ordre.",
+      "Coefficient binomial.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Dénombrement et algèbre",
+      "lessons": [
+        {
+          "title": "Choisir sans ordre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition d'une combinaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première leçon nous allons découvrir ce que signifie choisir un sous‑ensemble d'éléments sans tenir compte de l'ordre dans lequel ils sont pris. Imagine que tu as devant toi une boîte contenant dix billes de couleurs différentes et que tu veux en sortir trois pour former un petit groupe. Si tu sors d'abord la bille rouge, puis la bleue, puis la verte, le groupe obtenu est exactement le même que si tu avais sorti la verte, puis la rouge, puis la bleue. Ce qui compte, c'est seulement la collection finale des trois billes, pas la séquence de tes gestes. En mathématiques, on appelle cela une combinaison. Le nombre de combinaisons possibles de $k$ éléments choisis parmi $n$ éléments distincts se note $\\binom{n}{k}$ et se lit « n choisir k ». Nous allons voir comment calculer ce nombre à partir du nombre de permutations, c'est‑à‑dire des arrangements où l'ordre importe, en divisant par le nombre de façons de permuter les $k$ éléments choisis entre eux. Cette idée simple est au cœur de nombreux problèmes de dénombrement, de probabilités et d'algèbre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les permutations de k éléments parmi n",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de façons d'ordonner $k$ éléments distincts pris dans un ensemble de $n$ éléments est le nombre d'arrangements $A_n^k = \\frac{n!}{(n-k)!}$. On choisit d'abord les $k$ positions, puis on les remplit dans un ordre précis."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par k! pour oublier l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque l'ordre ne doit pas être pris en compte, chaque groupe de $k$ éléments a été compté $k!$ fois (toutes les permutations internes). En divisant $A_n^k$ par $k!$, on obtient le nombre de combinaisons $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la formule est établie, nous pouvons observer une structure remarquable qui apparaît dès que l'on écrit les coefficients $\\binom{n}{k}$ pour $n$ croissant : le triangle de Pascal. Cette disposition triangulaire révèle des relations simples entre les coefficients successifs et permet de les calculer sans factorielle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle de Pascal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le triangle de Pascal se construit en plaçant un $1$ au sommet, puis chaque ligne suivante commence et se termine par $1$. Chaque nombre intérieur est la somme des deux nombres qui le surplombent directement. Ainsi la ligne $n$ (en commençant à $0$) contient exactement les coefficients $\\binom{n}{0}, \\binom{n}{1}, \\dots, \\binom{n}{n}$. Cette propriété visuelle est un outil puissant pour mémoriser les valeurs et pour démontrer des identités combinatoires."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "n\\k",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "1",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "1",
+                  "1",
+                  "1",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "2",
+                  "1",
+                  "2",
+                  "1",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "3",
+                  "1",
+                  "3",
+                  "3",
+                  "1",
+                  "",
+                  ""
+                ],
+                [
+                  "4",
+                  "1",
+                  "4",
+                  "6",
+                  "4",
+                  "1",
+                  ""
+                ],
+                [
+                  "5",
+                  "1",
+                  "5",
+                  "10",
+                  "10",
+                  "5",
+                  "1"
+                ]
+              ],
+              "caption": "Premières lignes du triangle de Pascal"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le triangle de Pascal met en évidence deux propriétés fondamentales qui seront utilisées tout au long du cours : la symétrie et la récurrence de Pascal. La symétrie exprime le fait que choisir $k$ éléments parmi $n$ revient à choisir les $n-k$ éléments qui restent. La récurrence montre comment chaque coefficient se déduit des deux coefficients de la ligne précédente."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales"
+            },
+            {
+              "type": "paragraph",
+              "content": "La symétrie s'écrit $\\binom{n}{k} = \\binom{n}{n-k}$ et se voit immédiatement sur le triangle : les coefficients sont symétriques par rapport au centre de chaque ligne. La récurrence de Pascal s'écrit $\\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k}$ pour $1 \\le k \\le n-1$. Elle se prouve aisément en séparant les combinaisons selon qu'elles contiennent un élément particulier ou non. Ces deux relations permettent de calculer rapidement n'importe quel coefficient sans factorielle et sont à la base de nombreuses démonstrations en algèbre et en probabilités."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{n}{k} = \\binom{n}{n-k} \\quad\\text{et}\\quad \\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, une combinaison correspond à un choix sans ordre, son nombre se calcule avec la formule du coefficient binomial, et le triangle de Pascal offre une représentation visuelle qui révèle la symétrie et la récurrence. Ces outils seront indispensables pour aborder le coefficient binomial dans la leçon suivante et pour résoudre des problèmes concrets par la suite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\binom{10}{3}$ en utilisant la formule du coefficient binomial.",
+              "answer": "120",
+              "hint": "Rappelle-toi que $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$ et simplifie les factorielles avant de multiplier.",
+              "explanation": "On a $\\binom{10}{3} = \\frac{10!}{3!\\,7!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
+            },
+            {
+              "question": "En utilisant le triangle de Pascal, donne la valeur de $\\binom{5}{2}$.",
+              "answer": "10",
+              "hint": "Regarde la ligne $n=5$ du triangle : les coefficients sont $1,5,10,10,5,1$.",
+              "explanation": "Le troisième coefficient (indice $k=2$) de la ligne $5$ est $10$, donc $\\binom{5}{2}=10$."
+            },
+            {
+              "question": "Montre que $\\binom{n}{k} = \\binom{n}{n-k}$ en partant de la définition factorielle.",
+              "answer": "Égalité vérifiée.",
+              "hint": "Écris les deux coefficients avec des factorielles et observe que les dénominateurs sont identiques après permutation de $k$ et $n-k$.",
+              "explanation": "$\\binom{n}{k} = \\frac{n!}{k!(n-k)!} = \\frac{n!}{(n-k)!\\,k!} = \\binom{n}{n-k}$."
+            }
+          ]
+        },
+        {
+          "title": "Coefficient binomial.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation et définition du coefficient binomial"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient binomial, noté $\\binom{n}{k}$, est le nombre de façons de choisir $k$ objets parmi $n$ objets distincts sans tenir compte de l'ordre. Il apparaît naturellement dans le développement du binôme $(a+b)^n$ et dans de nombreux problèmes de dénombrement. Pour $n$ et $k$ entiers naturels avec $0 \\le k \\le n$, la définition factorielle est $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$, avec la convention $0! = 1$. Cette notation compacte permet de manipuler des expressions combinatoires sans écrire de longs produits. Nous verrons comment calculer efficacement ces coefficients, soit par la formule factorielle, soit par la récurrence de Pascal, soit encore en utilisant le triangle de Pascal."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{n}{k} = \\frac{n!}{k!(n-k)!}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Simplifier les factorielles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque $n$ est grand, il est préférable d'annuler le plus grand factorielle commun entre le numérateur et le dénominateur. Par exemple pour $\\binom{100}{3}$, on écrit $\\frac{100 \\times 99 \\times 98 \\times 97!}{3! \\times 97!}$ et on supprime $97!$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer le produit restant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il ne reste plus qu'un petit produit d'entiers au numérateur divisé par $k!$. Cela évite les débordements numériques et rend le calcul à la main réaliste."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient binomial n'est pas seulement un outil de comptage ; il est le protagoniste du théorème du binôme, qui donne le développement de $(a+b)^n$ pour tout entier naturel $n$. Ce théorème relie l'algèbre au dénombrement et ouvre la voie à des applications en calcul différentiel, en probabilités et en analyse numérique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème du binôme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème du binôme affirme que pour tout entier naturel $n$, $(a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^{k}$. Chaque terme du développement correspond au choix de $k$ facteurs $b$ parmi les $n$ facteurs $(a+b)$, les $n-k$ facteurs restants fournissant $a$. Le coefficient $\\binom{n}{k}$ compte exactement le nombre de façons de faire ce choix. Cette identité se démontre par récurrence sur $n$ en utilisant la relation de Pascal $\\binom{n}{k} = \\binom{n-1}{k-1} + \\binom{n-1}{k}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^{k}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation pour n=0",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $n=0$, $(a+b)^0 = 1$ et la somme se réduit à $k=0$ : $\\binom{0}{0} a^0 b^0 = 1$. L'égalité tient."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Hérédité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose la formule vraie pour $n-1$. On écrit $(a+b)^n = (a+b)(a+b)^{n-1}$, on distribue, on décale les indices dans les deux sommes obtenues et on regroupe les coefficients de $a^{n-k}b^{k}$. La récurrence de Pascal fait apparaître $\\binom{n}{k}$, ce qui achève la démonstration."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les coefficients binomiaux gouvernent également la loi binomiale en probabilités. Si l'on répète $n$ fois une expérience indépendante à deux issues (succès avec probabilité $p$, échec avec probabilité $q=1-p$), la probabilité d'obtenir exactement $k$ succès est $\\binom{n}{k} p^{k} q^{n-k}$. Cette formule est une application directe du théorème du binôme en posant $a = q$ et $b = p$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec les probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un lancer de pièce équilibrée ($p=q=\\frac12$) répété $5$ fois. La probabilité d'obtenir exactement $3$ faces est $\\binom{5}{3} (\\frac12)^3 (\\frac12)^2 = 10 \\times \\frac{1}{32} = \\frac{10}{32} = \\frac{5}{16}$. Plus généralement, la distribution binomiale $B(n,p)$ décrit le nombre de succès dans $n$ essais de Bernoulli. Ses paramètres $n$ et $p$ déterminent l'espérance $np$ et la variance $np(1-p)$. Les coefficients binomiaux apparaissent donc comme les poids de cette distribution."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X=k) = \\binom{n}{k} p^{k} (1-p)^{n-k}"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Coefficients binomiaux pour n=5",
+              "bars": [
+                {
+                  "label": "k=0",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=2",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=3",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=4",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=5",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon a montré que le coefficient binomial est une notion centrale, à la fois combinatoire, algébrique et probabiliste. Sa définition factorielle, sa récurrence de Pascal et son rôle dans le théorème du binôme en font un outil polyvalent. La prochaine leçon mettra en pratique ces idées pour résoudre des problèmes concrets de sélection, de chemins sur une grille et de tirages sans remise."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\binom{12}{4}$ en simplifiant les factorielles.",
+              "answer": "495",
+              "hint": "Écris $\\frac{12 \\times 11 \\times 10 \\times 9}{4 \\times 3 \\times 2 \\times 1}$ après annulation de $8!$.",
+              "explanation": "$\\binom{12}{4} = \\frac{12!}{4!\\,8!} = \\frac{12 \\times 11 \\times 10 \\times 9}{24} = 495$."
+            },
+            {
+              "question": "Développe $(x+2)^4$ à l'aide du théorème du binôme.",
+              "answer": "x^4 + 8x^3 + 24x^2 + 32x + 16",
+              "hint": "Utilise $\\binom{4}{k} x^{4-k} 2^{k}$ pour $k=0\\dots4$.",
+              "explanation": "Les coefficients sont $1,4,6,4,1$. Les termes : $1\\cdot x^4$, $4\\cdot x^3\\cdot2=8x^3$, $6\\cdot x^2\\cdot4=24x^2$, $4\\cdot x\\cdot8=32x$, $1\\cdot16=16$."
+            },
+            {
+              "question": "Une pièce est lancée 6 fois. Quelle est la probabilité d'obtenir exactement 4 faces ?",
+              "answer": "15/64",
+              "hint": "Applique la loi binomiale avec $n=6$, $k=4$, $p=1/2$.",
+              "explanation": "$P = \\binom{6}{4} (1/2)^4 (1/2)^2 = 15 \\times 1/64 = 15/64$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes de sélection : comités et tirages"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreuses situations concrètes, il faut former un groupe à partir d'un ensemble plus grand sans se soucier de l'ordre des membres. Par exemple, un conseil d'administration doit choisir un comité de $4$ personnes parmi $12$ candidats. Le nombre de comités possibles est $\\binom{12}{4}$. Si l'on ajoute une contrainte, comme la présence obligatoire du président, on réduit le problème à choisir les $3$ autres membres parmi les $11$ restants, ce qui donne $\\binom{11}{3}$. Cette approche par décomposition en sous‑problèmes indépendants est la clé pour résoudre des exercices plus complexes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le nombre total de candidats et la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $n$ le nombre total de personnes disponibles et $k$ le nombre de places à pourvoir. Vérifie qu'aucune condition d'ordre n'est imposée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule des combinaisons",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\binom{n}{k}$ soit directement avec les factorielles simplifiées, soit en utilisant le triangle de Pascal si $n$ est petit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Traiter les contraintes supplémentaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si certaines personnes doivent obligatoirement faire partie du groupe, retire-les du pool et diminue $k$ en conséquence. Si certaines personnes sont incompatibles, soustrais les combinaisons interdites (principe d'inclusion‑exclusion)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre classique du dénombrement est le comptage des chemins sur une grille rectangulaire. Imagine un robot qui part du coin en bas à gauche d'un rectangle de $p$ cases de large et $q$ cases de haut, et qui ne peut avancer que vers la droite ou vers le haut. Chaque chemin correspond à une suite de $p$ déplacements « droite » et $q$ déplacements « haut », l'ordre de ces $p+q$ mouvements étant la seule liberté. Le nombre de chemins distincts est donc $\\binom{p+q}{p}$ (ou $\\binom{p+q}{q}$ par symétrie)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chemins sur une grille rectangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une grille de $3$ cases de large et $2$ cases de haut, le robot doit effectuer $5$ mouvements dont $3$ vers la droite. Le nombre de chemins est $\\binom{5}{3} = 10$. On peut visualiser cela en traçant la grille et en étiquetant chaque intersection par le nombre de façons d'y parvenir : ce nombre est la somme des deux nombres situés à gauche et en bas, ce qui reproduit exactement la récurrence de Pascal. Cette méthode de programmation dynamique est souvent utilisée en algorithmique pour compter les chemins dans des graphes acycliques."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Nombre de chemins} = \\binom{p+q}{p} = \\binom{p+q}{q}"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Largeur p",
+                "Hauteur q",
+                "Chemins"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "1",
+                  "3"
+                ],
+                [
+                  "2",
+                  "2",
+                  "6"
+                ],
+                [
+                  "3",
+                  "2",
+                  "10"
+                ],
+                [
+                  "3",
+                  "3",
+                  "20"
+                ]
+              ],
+              "caption": "Exemples de nombres de chemins sur petites grilles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons un exemple avancé : le tirage sans remise dans une urne, qui mène à la loi hypergéométrique. Supposons une urne contenant $N$ boules dont $K$ sont rouges et $N-K$ sont bleues. On tire $n$ boules sans remise. La probabilité d'obtenir exactement $k$ boules rouges est $\\frac{\\binom{K}{k} \\binom{N-K}{n-k}}{\\binom{N}{n}}$. Le numérateur compte les façons de choisir les $k$ rouges parmi les $K$ et les $n-k$ bleues parmi les $N-K$ ; le dénominateur compte tous les tirages possibles de $n$ boules parmi $N$. Cette formule généralise la loi binomiale (qui correspond au tirage avec remise)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple avancé : loterie et loi hypergéométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons une loterie où $49$ numéros sont disponibles et $6$ sont tirés. Un joueur coche $6$ numéros sur son bulletin. La probabilité d'avoir exactement $3$ bons numéros est $\\frac{\\binom{6}{3} \\binom{43}{3}}{\\binom{49}{6}}$. On calcule $\\binom{6}{3}=20$, $\\binom{43}{3}=12341$, $\\binom{49}{6}=13\\,983\\,816$, ce qui donne une probabilité d'environ $0,0176$. Ce type de calcul est à la base de l'analyse des jeux de hasard et de la conception de sondages statistiques."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les paramètres N, K, n",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $N=49$ (total des numéros), $K=6$ (numéros gagnants), $n=6$ (numéros cochés)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir k numéros gagnants parmi les K",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de façons est $\\binom{K}{k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir les n-k numéros perdants parmi les N-K",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre de façons est $\\binom{N-K}{n-k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser par le total des tirages possibles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total est $\\binom{N}{n}$. Le quotient donne la probabilité désirée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des probabilités pour k=0..6 dans la loterie 6/49",
+              "slices": [
+                {
+                  "label": "0 bons",
+                  "value": 0.436,
+                  "tone": "gray"
+                },
+                {
+                  "label": "1 bon",
+                  "value": 0.413,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2 bons",
+                  "value": 0.132,
+                  "tone": "green"
+                },
+                {
+                  "label": "3 bons",
+                  "value": 0.0176,
+                  "tone": "gold"
+                },
+                {
+                  "label": "4 bons",
+                  "value": 0.00097,
+                  "tone": "red"
+                },
+                {
+                  "label": "5 bons",
+                  "value": 1.8e-05,
+                  "tone": "navy"
+                },
+                {
+                  "label": "6 bons",
+                  "value": 7e-08,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons parcouru trois grandes familles d'applications : la formation de comités, le comptage de chemins sur une grille et les tirages sans remise modélisés par la loi hypergéométrique. Dans chaque cas, le coefficient binomial est l'outil central qui permet de transformer un problème de sélection en un calcul numérique précis. La maîtrise de ces techniques vous sera précieuse pour les épreuves du baccalauréat et pour la poursuite d'études en mathématiques, informatique ou sciences économiques."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une combinaison et écrire son coefficient binomial $\\binom{n}{k}$.",
+                "Je sais utiliser la récurrence de Pascal et la symétrie pour calculer des coefficients.",
+                "Je sais appliquer le théorème du binôme pour développer $(a+b)^n$.",
+                "Je sais modéliser une loi binomiale et calculer des probabilités avec $\\binom{n}{k}p^{k}(1-p)^{n-k}$.",
+                "Je sais résoudre des problèmes de sélection (comités, chemins, tirages sans remise) en identifiant les bons paramètres $n$ et $k$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un club de 15 membres doit élire un bureau de 5 personnes. Combien de bureaux différents sont possibles ?",
+              "answer": "3003",
+              "hint": "Utilise $\\binom{15}{5}$.",
+              "explanation": "$\\binom{15}{5} = \\frac{15!}{5!\\,10!} = 3003$."
+            },
+            {
+              "question": "Sur une grille de 4 cases de large et 3 cases de haut, combien de chemins le robot peut-il emprunter ?",
+              "answer": "35",
+              "hint": "Le nombre de chemins est $\\binom{4+3}{4}$.",
+              "explanation": "$\\binom{7}{4} = \\binom{7}{3} = 35$."
+            },
+            {
+              "question": "Une urne contient 8 boules rouges et 12 boules bleues. On tire 5 boules sans remise. Quelle est la probabilité d'obtenir exactement 2 boules rouges ?",
+              "answer": "\\frac{\\binom{8}{2}\\binom{12}{3}}{\\binom{20}{5}} \\approx 0,348",
+              "hint": "Applique la formule hypergéométrique avec $N=20$, $K=8$, $n=5$, $k=2$.",
+              "explanation": "$\\binom{8}{2}=28$, $\\binom{12}{3}=220$, $\\binom{20}{5}=15504$. Le quotient vaut $\\frac{28\\times220}{15504} = \\frac{6160}{15504} \\approx 0,348$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

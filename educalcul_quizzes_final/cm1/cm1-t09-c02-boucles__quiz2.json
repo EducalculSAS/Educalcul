@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 270,
+  "_course_code": "cm1-t09-c02-boucles",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Choisir nombre de répétitions",
+  "title": "Les Boucles: Choisir le Nombre de Répétitions",
+  "questions": [
+    {
+      "text": "Un robot doit avancer de $4$ cases. Quelle instruction de boucle doit on utiliser pour qu'il atteigne sa destination ?",
+      "options": [
+        "Répéter $3$ fois: Avancer",
+        "Répéter $4$ fois: Avancer",
+        "Répéter $5$ fois: Avancer",
+        "Répéter $2$ fois: Avancer"
+      ],
+      "correctAnswer": "Répéter $4$ fois: Avancer",
+      "explanation": "Pour parcourir une distance de $4$ cases, le robot doit répéter l'action d'avancer exactement $4$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut dessiner un carré. Pour cela, on répète $4$ fois l'instruction: Avancer puis Tourner à droite de $90$ degrés. Pourquoi a t on choisi le nombre $4$ ?",
+      "options": [
+        "Parce qu'un carré a $4$ sommets",
+        "Parce qu'un carré a $4$ côtés égaux",
+        "Parce que le robot tourne $4$ fois",
+        "Parce que $4$ est le premier chiffre"
+      ],
+      "correctAnswer": "Parce qu'un carré a $4$ côtés égaux",
+      "explanation": "Un carré possède $4$ côtés de même longueur. Pour tracer chaque côté, on répète l'action d'avancer et de tourner $4$ fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme contient la boucle suivante: Répéter $6$ fois: Sauter. Si le personnage a déjà sauté $2$ fois avant la boucle, combien de sauts fera t il au total ?",
+      "options": [
+        "$4$ sauts",
+        "$6$ sauts",
+        "$8$ sauts",
+        "$12$ sauts"
+      ],
+      "correctAnswer": "$8$ sauts",
+      "explanation": "Le personnage fait d'abord $2$ sauts, puis la boucle ajoute $6$ sauts supplémentaires. On calcule $2 + 6 = 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boucle demande de répéter $3$ fois l'action: Avancer de $5$ pas. Quelle distance totale le personnage aura t il parcourue ?",
+      "options": [
+        "$8$ pas",
+        "$15$ pas",
+        "$35$ pas",
+        "$20$ pas"
+      ],
+      "correctAnswer": "$15$ pas",
+      "explanation": "Le personnage avance de $5$ pas, et il le fait $3$ fois. Le calcul est $3 \\times 5 = 15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut que le robot dessine un triangle équilatéral. On sait que l'action est: Avancer puis Tourner. Quel nombre de répétitions doit on choisir ?",
+      "options": [
+        "$2$ fois",
+        "$3$ fois",
+        "$4$ fois",
+        "$6$ fois"
+      ],
+      "correctAnswer": "$3$ fois",
+      "explanation": "Un triangle possède $3$ côtés. Pour dessiner les trois segments du triangle, il faut répéter l'instruction $3$ fois.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

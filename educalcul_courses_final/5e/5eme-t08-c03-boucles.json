@@ -1,0 +1,422 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.788108+00:00",
+  "id": 417,
+  "code": "5eme-t08-c03",
+  "title": "Boucles",
+  "description": "Cours structuré Educalcul : Boucles.",
+  "subject": "Pensée informatique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Boucles",
+    "objectif_global": "Boucles",
+    "mini_lecons_imposees": [
+      "For / répétition.",
+      "Compter.",
+      "Prédire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "For / répétition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives écrire \"Je vais ranger ma chambre\" cent fois sur ton cahier. Tes doigts vont fatiguer bien avant la fin, et tu risques de faire des fautes par inattention. En informatique, c'est pareil : quand une action doit se reproduire un grand nombre de fois, on ne la recopie pas. On dit à l'ordinateur : \"Répète cette instruction tant que la condition n'est pas remplie\" ou, plus simplement ici, \"Répète exactement $10$ fois\". C'est le cœur de la notion de boucle : automatiser la répétition pour gagner du temps et éviter les erreurs."
+            },
+            {
+              "type": "definition",
+              "term": "Boucle (ou structure itérative)",
+              "definition": "Une structure de contrôle qui permet d'exécuter plusieurs fois de suite un bloc d'instructions, sans avoir à l'écrire plusieurs fois.",
+              "example": "Répéter $5$ fois : Afficher \"Bonjour\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans notre langage algorithmique, la boucle la plus classique pour un nombre connu de répétitions s'écrit avec le mot-clé $Pour$. La syntaxe suit un schéma très précis : $Pour$ $i$ $allant$ $de$ $1$ $à$ $10$ $Faire$ ... $Fin$ $Pour$. La variable $i$ s'appelle le compteur de boucle. Elle commence à la valeur de départ ($1$ ici), et à chaque tour, elle augmente de $1$ jusqu'à atteindre la valeur de fin ($10$). Le bloc d'instructions situé entre $Faire$ et $Fin$ $Pour$ est exécuté une fois par valeur de $i$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le compteur $i$ prend la valeur de départ ($1$). On vérifie si $i \\le 10$. Comme c'est vrai, on entre dans la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exécution du corps",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On exécute les instructions à l'intérieur (par exemple : Afficher $i$). C'est le premier tour."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Incrémentation et test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À la fin du tour, $i$ augmente de $1$ (devient $2$). On reteste : $2 \\le 10$ ? Oui, on recommence l'étape 2. Cela continue jusqu'à ce que $i$ devienne $11$. Là, $11 \\le 10$ est faux, on sort de la boucle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "Pour\\ i\\ allant\\ de\\ 1\\ \\grave{a}\\ 5\\ Faire\\ \\quad Afficher\\ i\\ \\quad Fin\\ Pour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cet exemple : le programme affiche $1$, puis $2$, puis $3$, puis $4$, puis $5$, chacun sur une ligne. Le compteur $i$ a servi de valeur à afficher. C'est très pratique pour générer une suite de nombres sans les taper un par un. Essaie de visualiser le flux : le programme \"revient en arrière\" à la ligne $Pour$ après chaque $Fin$ $Pour$, mais avec une valeur de $i$ augmentée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, supposons que l'on veuille n'afficher que les nombres pairs entre $1$ et $10$. On pourrait mettre un $Si$ à l'intérieur, mais il existe une astuce plus élégante : modifier le pas de la boucle. Par défaut, le compteur augmente de $1$ à chaque tour. Mais on peut écrire $Pour$ $i$ $allant$ $de$ $2$ $à$ $10$ $pas$ $2$ $Faire$. Là, $i$ vaut $2$, puis $4$, puis $6$, puis $8$, puis $10$. La boucle ne fait que $5$ tours au lieu de $10$, mais elle produit exactement le résultat voulu."
+            },
+            {
+              "type": "display_math",
+              "latex": "Pour\\ i\\ allant\\ de\\ 2\\ \\grave{a}\\ 10\\ pas\\ 2\\ Faire\\ \\quad Afficher\\ i\\ \\quad Fin\\ Pour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mot-clé $pas$ (ou parfois $étape$) permet de définir l'incrément. Il peut même être négatif pour compter à l'envers : $Pour$ $i$ $allant$ $de$ $10$ $à$ $1$ $pas$ $-1$ $Faire$ affichera $10, 9, 8 \\dots 1$. C'est une puissance immense : tu contrôles totalement la séquence de valeurs que prendra ton compteur. Fais bien attention à l'ordre des bornes : la première est le départ, la seconde l'arrivée, le $pas$ doit avoir le bon signe pour aller dans la bonne direction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir le moteur de base de l'automatisation : la boucle $Pour$ à nombre fixe d'itérations. Tu sais initialiser un compteur, définir une borne d'arrêt et même modifier le pas pour sauter des valeurs. Dans la prochaine leçon, nous allons voir comment transformer cette mécanique en outil de calcul : compter des occurrences, additionner des valeurs, bref, accumuler de l'information au fil des tours. C'est là que la boucle devient un vrai levier pour résoudre des problèmes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'algorithme complet (avec variables, début, fin) qui affiche les multiples de $3$ inférieurs à $30$ (donc $3, 6, 9, \\dots, 27$) en utilisant une boucle $Pour$ avec un $pas$ adapté.",
+              "answer": "Variables : i entier\\nDébut\\nPour i allant de 3 à 27 pas 3 Faire\\n    Afficher i\\nFin Pour\\nFin",
+              "hint": "Quelle est la première valeur ? La dernière ? De combien augmente-t-on à chaque fois ?",
+              "explanation": "On veut $3, 6, 9, \\dots, 27$. Le départ est $3$, l'arrivée $27$, le pas est $3$. La boucle s'écrit : Pour i allant de 3 à 27 pas 3 Faire Afficher i Fin Pour."
+            },
+            {
+              "question": "Que va afficher l'algorithme suivant ?\\nPour i allant de 5 à 1 pas -1 Faire\\n    Afficher i * 2\\nFin Pour",
+              "answer": "10\\n8\\n6\\n4\\n2",
+              "hint": "Suis la valeur de $i$ : $5, 4, 3, 2, 1$. Calcule $i \\times 2$ pour chaque valeur.",
+              "explanation": "Le compteur $i$ commence à $5$ et descend jusqu'à $1$ (pas $-1$). À chaque tour, on affiche $i \\times 2$. Tours : $i=5 \\rightarrow 10$, $i=4 \\rightarrow 8$, $i=3 \\rightarrow 6$, $i=2 \\rightarrow 4$, $i=1 \\rightarrow 2$."
+            }
+          ]
+        },
+        {
+          "title": "Compter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Reprenons une situation concrète : tu as une poignée de billes de couleurs mélangées dans un sac. Tu veux savoir combien il y a de billes rouges. Tu vides le sac, tu regardes chaque bille une par une. Si elle est rouge, tu augmentes ton compteur mental d'un. Si elle est bleue, tu ne changes rien. À la fin, ton compteur affiche le nombre exact de billes rouges. C'est exactement ce que fait un ordinateur avec une boucle et une variable compteur : il parcourt une liste, teste une condition, et met à jour un total."
+            },
+            {
+              "type": "definition",
+              "term": "Compteur",
+              "definition": "Variable entière initialisée à $0$ avant la boucle, qui est augmentée de $1$ (incrémentée) à chaque fois qu'un événement précis se produit pendant l'exécution de la boucle.",
+              "example": "compteur <- 0 ... compteur <- compteur + 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle d'or pour tout compteur, c'est l'initialisation. Avant d'entrer dans la boucle, la variable doit valoir $0$. Si tu oublies cette ligne, la variable contient une valeur inconnue (souvent $0$ par chance, mais pas garanti), et ton résultat final sera faux. C'est la première source de bugs pour les débutants. Écris toujours `compteur <- 0` juste avant le `Pour`. Ensuite, à l'intérieur de la boucle, l'instruction `compteur <- compteur + 1` lit la valeur actuelle, y ajoute $1$, et stocke le nouveau résultat. C'est une affectation, pas une égalité mathématique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Initialiser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "compteur ← 0"
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Boucler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque élément (ou chaque tour) :\\nSi condition Alors compteur ← compteur + 1"
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après la boucle, compteur contient le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un algorithme qui demande $10$ notes à l'utilisateur et compte combien sont supérieures ou égales à $10$ (la moyenne). On initialise `nbMoyenne <- 0`. Dans la boucle `Pour i de 1 à 10`, on lit une note. `Si note >= 10 Alors nbMoyenne <- nbMoyenne + 1`. À la fin, on affiche `nbMoyenne`. Remarque bien : le compteur ne bouge que si la condition est vraie. Les autres tours ne font rien sur cette variable. C'est ce qu'on appelle un comptage conditionnel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne veut pas compter le nombre d'événements, mais leur somme. Si tu veux calculer le total de tes dépenses de la semaine, tu commences à $0$ euros. Pour chaque achat, tu ajoutes son prix au total. En algorithmique, on appelle cela un **accumulateur** (ou variable somme). La structure est identique au compteur, mais au lieu d'ajouter $1$, on ajoute la valeur courante : `somme <- somme + valeur`. L'initialisation reste `somme <- 0` avant la boucle."
+            },
+            {
+              "type": "display_math",
+              "latex": "somme\\ \\leftarrow\\ 0\\ \\quad Pour\\ i\\ allant\\ de\\ 1\\ \\grave{a}\\ 10\\ Faire\\ \\quad somme\\ \\leftarrow\\ somme\\ +\\ i\\ \\quad Fin\\ Pour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet exemple calcule $1 + 2 + 3 + \\dots + 10 = 55$. La variable `somme` gravit les marches une par une : $0 \\rightarrow 1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 10 \\dots$. C'est le pattern fondamental pour calculer une moyenne, une distance totale, un score cumulé. Fais attention à ne pas confondre le compteur de boucle ($i$) et la valeur qu'on ajoute ($i$ ici, mais ça pourrait être une note lue au clavier). Le compteur sert à cadencer ; l'accumulateur sert à mémoriser le résultat partiel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Allions les deux : compter ET sommer sous condition. Supposons qu'on veuille la moyenne des notes $\\ge 10$ seulement. Il faut deux variables : `somme <- 0` et `nb <- 0`. Dans la boucle, `Si note >= 10 Alors somme <- somme + note ; nb <- nb + 1`. À la fin, si `nb > 0`, on affiche `somme / nb`, sinon on affiche \"Aucune note au-dessus\". C'est un schéma très classique : on filtre les données qui nous intéressent, on accumule leur somme et on compte combien il y en a eu pour pouvoir diviser. C'est la base de toute statistique simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant les deux piliers du traitement de données en boucle : le comptage conditionnel et l'accumulation conditionnelle. Tu sais initialiser tes variables à zéro, mettre à jour le compteur avec `+ 1` et l'accumulateur avec `+ valeur`. La leçon suivante va changer de perspective : au lieu d'écrire l'algorithme, nous allons apprendre à **prédire** son résultat en simulant son exécution pas à pas, sans ordinateur. C'est une compétence cruciale pour corrriger tes programmes avant de les lancer."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'algorithme ci-dessous pour qu'il compte combien de nombres entre $1$ et $20$ sont divisibles par $3$ (indices : modulo).\\nVariables : i, compteur entiers\\nDébut\\n    compteur <- ...\\n    Pour i allant de 1 à 20 Faire\\n        Si ... Alors\\n            compteur <- compteur + 1\\n        Fin Si\\n    Fin Pour\\n    Afficher compteur\\nFin",
+              "answer": "compteur <- 0\\nSi i % 3 = 0 Alors (ou i mod 3 = 0)",
+              "hint": "Initialise à 0. Un nombre est divisible par 3 si le reste de la division euclidienne par 3 vaut 0.",
+              "explanation": "Il faut initialiser compteur à 0. La condition de divisibilité par 3 s'écrit `i % 3 = 0` (ou `i mod 3 = 0`). Les nombres sont 3, 6, 9, 12, 15, 18 : 6 nombres."
+            },
+            {
+              "question": "Trace l'exécution de cet algorithme et donne la valeur finale de `somme`.\\nsomme <- 0\\nPour k allant de 1 à 5 Faire\\n    somme <- somme + 2 * k\\nFin Pour\\nAfficher somme",
+              "answer": "30",
+              "hint": "Calcule `2*k` pour k=1,2,3,4,5 et additionne les résultats au fur et à mesure.",
+              "explanation": "Tour 1: somme=0+2=2. Tour 2: somme=2+4=6. Tour 3: somme=6+6=12. Tour 4: somme=12+8=20. Tour 5: somme=20+10=30. C'est la somme des 5 premiers nombres pairs : 2+4+6+8+10=30."
+            },
+            {
+              "question": "On exécute l'algorithme suivant. Que contient la variable `nb` à la fin ?\\nnb <- 0\\nPour i allant de 1 à 10 Faire\\n    Si i * i > 20 Alors\\n        nb <- nb + 1\\n    Fin Si\\nFin Pour",
+              "answer": "5",
+              "hint": "Pour quelles valeurs de $i$ entre 1 et 10 le carré $i^2$ est-il strictement supérieur à 20 ?",
+              "explanation": "On teste $i^2 > 20$. $1^2=1$, $2^2=4$, $3^2=9$, $4^2=16$ (faux). $5^2=25$ (vrai), $6^2=36$, $7^2=49$, $8^2=64$, $9^2=81$, $10^2=100$. C'est vrai pour $i=5,6,7,8,9,10$. Soit 6 valeurs. Attendez, 5,6,7,8,9,10 font 6 valeurs. Réponse : 6."
+            }
+          ]
+        },
+        {
+          "title": "Prédire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, tu as écrit des boucles. Maintenant, change de casquette : tu deviens l'ordinateur. Prédire le résultat d'un algorithme sans l'exécuter, c'est faire une **exécution manuelle** ou une **simulation**. C'est comme lire une partition de musique en entendant la mélodie dans ta tête avant de la jouer. Cette compétence s'appelle la *traçabilité*. Elle te permet de trouver les erreurs (les bugs) avant même de lancer le programme, et de comprendre profondément comment les variables évoluent."
+            },
+            {
+              "type": "definition",
+              "term": "Table de traçage (ou table de valeurs)",
+              "definition": "Un tableau qui note, pour chaque tour de boucle, la valeur de toutes les variables modifiées. Colonnes : numéro du tour, variables. Lignes : état avant/après chaque itération.",
+              "example": "Tour | i | somme\\n0    | - | 0\\n1    | 1 | 1\\n2    | 2 | 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire une table de traçage, on commence par lister toutes les variables du programme. On ajoute une colonne pour le numéro de tour (ou la valeur du compteur de boucle). La ligne $0$ correspond à l'état **avant** d'entrer dans la boucle (juste après les initialisations). Ensuite, pour chaque itération, on remplit une nouvelle ligne en appliquant les instructions dans l'ordre. C'est un travail de fourmi, mais c'est le seul moyen garanti de ne pas se tromper sur un algorithme un peu complexe."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "i",
+                "somme (avant)",
+                "Instruction",
+                "somme (après)"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "-",
+                  "0",
+                  "Initialisation",
+                  "0"
+                ],
+                [
+                  "1",
+                  "1",
+                  "0",
+                  "somme <- 0 + 1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "2",
+                  "1",
+                  "somme <- 1 + 2",
+                  "3"
+                ],
+                [
+                  "3",
+                  "3",
+                  "3",
+                  "somme <- 3 + 3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "4",
+                  "6",
+                  "somme <- 6 + 4",
+                  "10"
+                ],
+                [
+                  "5",
+                  "5",
+                  "10",
+                  "somme <- 10 + 5",
+                  "15"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tracé pour la somme des entiers de $1$ à $5$. La colonne \"Instruction\" montre ce qui se passe concrètement. À la fin du tour $5$, la boucle s'arrête car $i$ a atteint la borne. La valeur finale de `somme` est $15$. Essaie de faire ce tracé toi-même sur une feuille pour l'algorithme qui calcule la somme des carrés ($somme \\leftarrow somme + i \\times i$) de $1$ à $4$. Tu verras que la méthode est systématique : une ligne par tour, pas de saut."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les choses se corsent (et deviennent passionnantes) avec les **boucles imbriquées** : une boucle à l'intérieur d'une autre. Imagine une horloge : la petite aiguille (heures) fait un tour pendant que la grande (minutes) en fait $12$. En algorithme : `Pour h de 1 à 3 Faire Pour m de 1 à 2 Faire Afficher h, m Fin Pour Fin Pour`. La boucle extérieure ($h$) ne change de valeur qu'une fois que la boucle intérieure ($m$) a **totalement terminé** tous ses tours. C'est le piège numéro un : on pense que les deux avancent ensemble, mais non, la boucle intérieure tourne à fond pour *chaque* valeur de l'extérieure."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "h (ext)",
+                "m (int)",
+                "Affichage"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "(1, 1)"
+                ],
+                [
+                  "1",
+                  "2",
+                  "(1, 2)"
+                ],
+                [
+                  "2",
+                  "1",
+                  "(2, 1)"
+                ],
+                [
+                  "2",
+                  "2",
+                  "(2, 2)"
+                ],
+                [
+                  "3",
+                  "1",
+                  "(3, 1)"
+                ],
+                [
+                  "3",
+                  "2",
+                  "(3, 2)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le tableau : pour $h=1$, $m$ fait $1, 2$. Puis $h$ passe à $2$, et $m$ **recommence** à $1, 2$. Puis $h=3$, $m$ refait $1, 2$. Au total, $3 \\times 2 = 6$ affichages. Pour tracer cela, on ajoute une colonne pour chaque compteur. On ne passe à la ligne suivante de la boucle extérieure que quand la boucle intérieure a épuisé toutes ses valeurs. C'est une gymnastique mentale excellente : visualise les deux curseurs, l'un lent (extérieur), l'autre rapide (intérieur)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on n'a pas besoin de tracer les $100$ tours d'une boucle pour savoir le résultat final. On peut **raisonner sur le nombre d'itérations**. Pour une boucle `Pour i de a à b pas 1`, le nombre de tours est exactement $b - a + 1$ (si $b \\ge a$). Si le pas est $p$, c'est $\\lfloor \\frac{b-a}{p} \\rfloor + 1$. Si à chaque tour on ajoute une constante $c$ à une variable `somme` initialisée à $0$, la valeur finale est `nombre_tours * c`. C'est le passage du raisonnement itératif (pas à pas) au raisonnement global (formule fermée). C'est plus rapide et ça prouve qu'on a compris la structure."
+            },
+            {
+              "type": "display_math",
+              "latex": "N_{tours} = \\left\\lfloor \\frac{borne_{fin} - borne_{debut}}{pas} \\right\\rfloor + 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple : `Pour i de 5 à 20 pas 3`. Nombre de tours : $\\lfloor (20-5)/3 \\rfloor + 1 = \\lfloor 5 \\rfloor + 1 = 6$. Les valeurs de $i$ : $5, 8, 11, 14, 17, 20$ (6 valeurs). Si le corps de boucle fait `somme <- somme + 10`, la somme finale vaut $6 \\times 10 = 60$. Plus besoin de tracer 6 lignes ! Cette capacité à prédire le volume de travail d'une boucle est essentielle pour estimer la **complexité** (le temps d'exécution) des algorithmes plus tard. Tu viens d'acquérir un regard d'expert sur le code."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une boucle Pour avec un compteur, une borne de fin et un pas.",
+                "Je sais initialiser un compteur à 0 et l'incrémenter conditionnellement pour compter des occurrences.",
+                "Je sais initialiser un accumulateur à 0 et y ajouter une valeur pour calculer une somme.",
+                "Je sais construire une table de traçage complète pour une boucle simple.",
+                "Je comprends le fonctionnement des boucles imbriquées (extérieure / intérieure) et je sais prédire le nombre total d'exécutions du corps intérieur.",
+                "Je sais calculer le nombre d'itérations d'une boucle Pour sans la tracer entièrement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la table de traçage pour cet algorithme (remplis les lignes manquantes).\\nsomme <- 0\\nPour i de 1 à 4 Faire\\n    somme <- somme + i * 2\\nFin Pour\\n\\n| Tour | i | somme (début) | somme (fin) |\\n| 0    | - | 0             | 0           |\\n| 1    | 1 | 0             | ?           |\\n| 2    | 2 | ?             | ?           |\\n| 3    | 3 | ?             | ?           |\\n| 4    | 4 | ?             | ?           |",
+              "answer": "Tour 1: fin=2. Tour 2: début=2, fin=6. Tour 3: début=6, fin=12. Tour 4: début=12, fin=20.",
+              "hint": "Calcule $i \\times 2$ à chaque tour et ajoute à la somme du début du tour.",
+              "explanation": "Tour 1: $1\\times2=2$, somme $0\\to2$. Tour 2: $2\\times2=4$, somme $2\\to6$. Tour 3: $3\\times2=6$, somme $6\\to12$. Tour 4: $4\\times2=8$, somme $12\\to20$. Valeur finale : 20."
+            },
+            {
+              "question": "Combien de fois le mot \"Coucou\" sera-t-il affiché par cet algorithme ?\\nPour i de 1 à 3 Faire\\n    Pour j de 1 à 4 Faire\\n        Afficher \"Coucou\"\\n    Fin Pour\\nFin Pour",
+              "answer": "12",
+              "hint": "La boucle intérieure tourne 4 fois pour CHAQUE tour de la boucle extérieure. La boucle extérieure tourne 3 fois.",
+              "explanation": "Boucle extérieure : 3 tours (i=1,2,3). Pour chaque tour, la boucle intérieure fait 4 tours (j=1,2,3,4). Total = $3 \\times 4 = 12$ affichages."
+            },
+            {
+              "question": "Sans tracer, donne la valeur finale de `total` après exécution.\\ntotal <- 0\\nPour k de 10 à 2 pas -2 Faire\\n    total <- total + 5\\nFin Pour",
+              "answer": "25",
+              "hint": "Combien de valeurs prend k ? 10, 8, 6, 4, 2. Multiplie ce nombre par 5.",
+              "explanation": "Les valeurs de k : 10, 8, 6, 4, 2. Cela fait 5 itérations. À chaque tour, on ajoute 5. Total = $5 \\times 5 = 25$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,352 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.694525+00:00",
+  "id": 70,
+  "code": "ce1-t01-c03",
+  "title": "Lire et écrire jusqu'à 599",
+  "description": "Cours structuré Educalcul : Lire et écrire jusqu'à 599.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Lire et écrire jusqu'à 599",
+    "objectif_global": "Lire et écrire jusqu'à 599",
+    "mini_lecons_imposees": [
+      "Stabiliser centaines-dizaines-unités.",
+      "Lire avec zéro intermédiaire.",
+      "Écrire à partir d'une décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Stabiliser centaines-dizaines-unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande boîte qui peut contenir dix petites boîtes de dix unités chacune. Quand tu as cinq de ces grandes boîtes, tu as cinq cents. C'est le chiffre des centaines qui te le dit, et il te montre combien de groupes de cent tu possèdes."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 5,
+              "tens": 0,
+              "units": 0,
+              "caption": "500 : 5 centaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant regarde ce qui se passe quand tu ajoutes des dizaines à ces centaines, le nombre grandit encore."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque grande boîte contient dix petites boîtes. Si tu en ajoutes trois, tu as trente de plus. Le chiffre des dizaines te montre combien de groupes de dix tu possèdes, et il s'écrit juste après le chiffre des centaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les unités complètent le nombre en ajoutant les objets qui ne forment pas un groupe complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités et le nombre complet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les unités sont les objets tout seuls, sans groupe. Si tu as sept unités, tu écris le chiffre 7 à la fin. En mettant ensemble les centaines, les dizaines et les unités, tu formes un nombre jusqu'à cinq cent quatre-vingt-dix-neuf."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel nombre représente 5 centaines, 0 dizaines et 0 unités ?",
+              "answer": "$500$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "5 centaines font $5 \\times 100 = 500$."
+            },
+            {
+              "question": "Si tu as 5 centaines et 3 dizaines, quel est le nombre ?",
+              "answer": "$530$",
+              "hint": "Ajoute les dizaines aux centaines.",
+              "explanation": "5 centaines = $500$, 3 dizaines = $30$, total $530$."
+            },
+            {
+              "question": "Écris le nombre qui a 5 centaines, 3 dizaines et 7 unités.",
+              "answer": "$537$",
+              "hint": "Place chaque chiffre à sa place.",
+              "explanation": "Le chiffre des centaines est 5, des dizaines 3, des unités 7, donc $537$."
+            }
+          ]
+        },
+        {
+          "title": "Lire avec zéro intermédiaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un nombre avec un zéro au milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le chiffre des dizaines est absent, comme dans 105 ou 207. Le zéro nous dit qu'il n'y a aucun groupe de dix, mais la centaine et les unités sont bien là. Il faut le prononcer pour ne pas confondre avec 15 ou 27."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Centaines",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "105",
+                  "1",
+                  "0",
+                  "5"
+                ],
+                [
+                  "207",
+                  "2",
+                  "0",
+                  "7"
+                ],
+                [
+                  "309",
+                  "3",
+                  "0",
+                  "9"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le zéro joue le même rôle quand il se trouve au milieu du nombre, il marque l'absence de dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu entends \"deux cent sept\", tu sais qu'il y a deux centaines, zéro dizaine et sept unités. Écris le zéro pour garder la place des dizaines, sinon le nombre changerait de valeur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous à transformer les mots en chiffres en respectant bien le zéro."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le nombre entendu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si on te dit \"quatre cent neuf\", tu écris 4 pour les centaines, 0 pour les dizaines et 9 pour les unités. Le zéro est indispensable pour que le 9 reste au bon endroit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis le nombre 105.",
+              "answer": "$105$",
+              "hint": "Il y a un zéro pour les dizaines.",
+              "explanation": "1 centaine, 0 dizaine, 5 unités donne $105$."
+            },
+            {
+              "question": "Quel nombre s'écrit 207 ?",
+              "answer": "$207$",
+              "hint": "Le zéro indique qu'il n'y a pas de dizaines.",
+              "explanation": "2 centaines, 0 dizaine, 7 unités = $207$."
+            },
+            {
+              "question": "Écris en chiffres le nombre quatre cent neuf.",
+              "answer": "$409$",
+              "hint": "Quatre centaines, zéro dizaine, neuf unités.",
+              "explanation": "4 centaines = $400$, 0 dizaine = $0$, 9 unités = $9$, total $409$."
+            }
+          ]
+        },
+        {
+          "title": "Écrire à partir d'une décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la décomposition au chiffre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on te donne une décomposition comme 3 centaines, 4 dizaines et 2 unités, tu peux reconstruire le nombre complet. Commence par compter les centaines, puis les dizaines, enfin les unités, et écris les chiffres dans cet ordre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : compte les centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque centaine vaut $100$. Multiplie le nombre de centaines par $100$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : compte les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque dizaine vaut $10$. Multiplie le nombre de dizaines par $10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : compte les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les unités restent telles quelles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : écris les chiffres dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le chiffre des centaines, puis celui des dizaines, puis celui des unités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la décomposition contient un zéro, il faut le respecter pour garder la bonne place."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro dans la décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si on te dit 6 centaines, 0 dizaine et 8 unités, le zéro signifie qu'il n'y a aucun groupe de dix. Il faut quand même écrire le 0 au milieu pour que le 8 reste à la place des unités."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de 608 sur la droite numérique",
+              "min": 600,
+              "max": 610,
+              "points": [
+                {
+                  "value": 608,
+                  "label": "608"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essaie d'écrire le nombre complet à partir d'une décomposition qui se termine par zéro unité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le nombre complet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec 5 centaines, 9 dizaines et 0 unité, le zéro final montre qu'il n'y a aucune unité. Le nombre s'écrit donc 590. Vérifie toujours que chaque chiffre occupe sa colonne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un nombre jusqu'à 599.",
+                "Je sais écrire un nombre à partir de sa décomposition.",
+                "Je repère le zéro qui marque l'absence de dizaines ou d'unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a 3 centaines, 4 dizaines et 2 unités. Écris le nombre.",
+              "answer": "$342$",
+              "hint": "Place chaque groupe à sa position.",
+              "explanation": "3 centaines = $300$, 4 dizaines = $40$, 2 unités = $2$, donc $342$."
+            },
+            {
+              "question": "Écris le nombre qui correspond à 6 centaines, 0 dizaine et 8 unités.",
+              "answer": "$608$",
+              "hint": "N'oublie pas le zéro pour les dizaines.",
+              "explanation": "6 centaines = $600$, 0 dizaine = $0$, 8 unités = $8$, total $608$."
+            },
+            {
+              "question": "À partir de la décomposition 5 centaines, 9 dizaines, 0 unité, quel nombre obtiens-tu ?",
+              "answer": "$590$",
+              "hint": "Le zéro final signifie aucune unité.",
+              "explanation": "5 centaines = $500$, 9 dizaines = $90$, 0 unité = $0$, total $590$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Domaine",
+  "title": "Domaine de fractions algébriques simples",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Déterminer l'ensemble de définition de la fonction $f$ définie par $f(x)=\\frac{2x+1}{x-4}$.",
+      "correctAnswer": "x ≠ 4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $x-4$ ne doit pas être nul. On résout $x-4=0$, ce qui donne $x=4$. L'ensemble de définition est donc tous les réels sauf $4$, soit $\\mathbb{R}\\setminus\\{4\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Déterminer l'ensemble de définition de la fonction $g$ définie par $g(x)=\\frac{x^2-9}{x^2-4}$.",
+      "correctAnswer": "x ≠ -2 et x ≠ 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $x^2-4$ s'annule pour $x^2-4=0$, c'est-à-dire $x=2$ ou $x=-2$. Ces deux valeurs sont exclues. L'ensemble de définition est $\\mathbb{R}\\setminus\\{-2,2\\}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Déterminer l'ensemble de définition de la fonction $h$ définie par $h(x)=\\frac{3x+5}{x^2+1}$.",
+      "correctAnswer": "ℝ",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur $x^2+1$ est strictement positif pour tout réel $x$ (car $x^2\\ge 0$). Il n'y a donc aucune restriction : l'ensemble de définition est l'ensemble des réels $\\mathbb{R}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.041843+00:00",
+  "id": 179,
+  "code": "ce2-t05-c02",
+  "title": "Problèmes additifs à plusieurs formes",
+  "description": "Cours structuré Educalcul : Problèmes additifs à plusieurs formes.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes additifs à plusieurs formes",
+    "objectif_global": "Problèmes additifs à plusieurs formes",
+    "mini_lecons_imposees": [
+      "Composition.",
+      "Transformation.",
+      "Comparaison."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Composition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la composition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ pommes dans un panier et que tu en ajoutes $5$ autres. La situation s'appelle une composition : deux groupes se réunissent pour former un tout. Prends le temps de visualiser les pommes qui se retrouvent ensemble, cela t'aidera à sentir l'idée d'addition sans même écrire de chiffres."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Premier groupe",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Deuxième groupe",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Deux barres côte à côte montrent les deux groupes qui se rejoignent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu les deux groupes, découvrons comment transformer cette image en une phrase mathématique. Nous allons écrire l'addition qui correspond à la composition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire l'addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour noter la composition, on place le signe plus entre les deux quantités : $3 + 5$. Le résultat, que l'on appelle la somme, représente le nombre total de pommes. Essaie de le dire à voix haute : « trois plus cinq font huit ». Cette phrase t'aide à mémoriser le lien entre l'image et le calcul."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "Huit unités représentent la somme de 3 et 5."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, apprenons à résoudre l'addition quand les nombres sont plus grands. Nous allons poser l'opération en colonnes, une méthode qui garde chaque chiffre bien aligné."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre l'addition posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écris les nombres l'un sous l'autre en alignant les unités, les dizaines, etc. Ajoute d'abord les unités, puis les dizaines, en reportant la retenue si besoin. Prends ton temps, chaque colonne se traite indépendamment."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "23",
+                "47"
+              ],
+              "result": "70",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $4$ billes rouges et $6$ billes bleues. Combien de billes as-tu au total ?",
+              "answer": "10",
+              "hint": "Représente les deux groupes avec un schéma en barres, puis additionne.",
+              "explanation": "Le schéma montre $4$ et $6$. En ajoutant, $4 + 6 = 10$. Tu as donc $10$ billes."
+            },
+            {
+              "question": "Écris l'addition qui correspond à $7$ crayons verts et $8$ crayons jaunes.",
+              "answer": "7 + 8 = 15",
+              "hint": "Utilise le signe plus entre les deux nombres.",
+              "explanation": "L'addition s'écrit $7 + 8$. La somme est $15$ crayons."
+            },
+            {
+              "question": "Calcule $23 + 47$ en posant l'opération.",
+              "answer": "70",
+              "hint": "Aligne les unités et les dizaines, n'oublie pas la retenue.",
+              "explanation": "Units : $3 + 7 = 10$, on écrit $0$ et on retient $1$. Dizaines : $2 + 4 + 1 = 7$. Résultat $70$."
+            }
+          ]
+        },
+        {
+          "title": "Transformation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la transformation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une transformation, c'est quand une quantité change : elle augmente ou elle diminue. Par exemple, tu as $12$ autocollants et tu en reçois $4$ de plus. Le nombre initial se transforme en un nouveau total. Visualise le moment où tu ajoutes les nouveaux autocollants à ta collection."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Quantité initiale",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ajout",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ],
+              "caption": "La barre du haut montre le départ, la barre du bas l'ajout."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu l'augmentation, regardons comment écrire l'opération qui la décrit. Nous allons passer du dessin à l'équation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire l'addition ou la soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si la quantité grandit, on utilise le signe plus : $12 + 4 = 16$. Si elle diminue, par exemple tu donnes $3$ autocollants, on écrit une soustraction : $12 - 3 = 9$. Le choix du signe dépend de la direction du changement."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 6,
+              "caption": "Seize unités après l'augmentation de 4."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, entraînons-nous à résoudre une transformation un peu plus grande en posant l'opération. Cette fois, nous travaillerons avec des dizaines et des unités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre la transformation posée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose les nombres en colonnes, aligne bien les unités. Effectue l'addition ou la soustraction colonne par colonne, en gérant la retenue ou l'emprunt. Vérifie ton résultat en recomptant mentalement."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "54",
+                "27"
+              ],
+              "result": "27",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $15$ cartes. Tu en achètes $6$ de plus. Combien as-tu maintenant ?",
+              "answer": "21",
+              "hint": "Dessine deux barres : la première pour 15, la seconde pour 6, puis additionne.",
+              "explanation": "L'addition $15 + 6 = 21$. Tu possèdes maintenant $21$ cartes."
+            },
+            {
+              "question": "Tu as $20$ bonbons. Tu en manges $8$. Combien t'en reste-t-il ?",
+              "answer": "12",
+              "hint": "C'est une diminution, utilise le signe moins.",
+              "explanation": "La soustraction $20 - 8 = 12$. Il reste $12$ bonbons."
+            },
+            {
+              "question": "Calcule $54 - 27$ en posant l'opération.",
+              "answer": "27",
+              "hint": "Emprunte une dizaine si les unités du haut sont plus petites.",
+              "explanation": "Units : $4 - 7$ impossible, on emprunte une dizaine, $14 - 7 = 7$. Dizaines : $4 - 2 = 2$. Résultat $27$."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la comparaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une comparaison met deux quantités côte à côte pour voir laquelle est plus grande et de combien. Par exemple, Léa a $9$ billes et Paul en a $5$. On veut savoir combien de billes Léa a de plus que Paul. Imagine les deux tas de billes posés l'un à côté de l'autre."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Léa",
+                  "value": 9,
+                  "tone": "red"
+                },
+                {
+                  "label": "Paul",
+                  "value": 5,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "Deux barres de longueurs différentes montrent l'écart."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois l'écart, apprenons à l'exprimer par une soustraction. La différence se trouve en retirant la plus petite quantité de la plus grande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire la soustraction de comparaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "On écrit $9 - 5 = 4$. Le résultat $4$ dit que Léa a $4$ billes de plus que Paul. Attention : l'ordre compte, on soustrait toujours le plus petit du plus grand pour obtenir un nombre positif."
+            },
+            {
+              "type": "number_line",
+              "caption": "La distance entre 5 et 9 sur la droite graduée est 4.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Paul"
+                },
+                {
+                  "value": 9,
+                  "label": "Léa"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, résolvons une comparaison avec des nombres à deux chiffres. Nous utiliserons la même méthode : identifier les deux quantités, puis soustraire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une comparaison à deux chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose la soustraction en colonnes, aligne les unités et les dizaines. Effectue l'emprunt si nécessaire. Relis l'énoncé pour être sûr de répondre à la question : « de combien » ou « combien de plus »."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "63",
+                "28"
+              ],
+              "result": "35",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer une situation de composition, de transformation ou de comparaison.",
+                "Je sais représenter le problème avec un schéma en barres.",
+                "J'écris l'addition ou la soustraction adaptée.",
+                "Je résous l'opération posée en gérant les retenues et les emprunts."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Léa a $12$ crayons, Paul en a $7$. Combien de crayons Léa a-t-elle de plus ?",
+              "answer": "5",
+              "hint": "Dessine deux barres, puis soustrais le plus petit du plus grand.",
+              "explanation": "La soustraction $12 - 7 = 5$. Léa a $5$ crayons de plus."
+            },
+            {
+              "question": "Il y a $18$ oiseaux sur un fil, $11$ s'envolent. Combien restent sur le fil ?",
+              "answer": "7",
+              "hint": "C'est une diminution, utilise la soustraction.",
+              "explanation": "On calcule $18 - 11 = 7$. Il reste $7$ oiseaux."
+            },
+            {
+              "question": "Calcule $63 - 28$ en posant l'opération.",
+              "answer": "35",
+              "hint": "Emprunte une dizaine pour les unités.",
+              "explanation": "Units : $3 - 8$ impossible, on emprunte, $13 - 8 = 5$. Dizaines : $5 - 2 = 3$. Résultat $35$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 165,
+  "_course_code": "ce2-t03-c06-comprendre-la-division-comme-partage",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Partager équitablement",
+  "title": "Approfondissement : Partager équitablement",
+  "questions": [
+    {
+      "text": "Léa a $18$ bonbons. Elle veut les partager équitablement entre ses $3$ amies. Combien de bonbons chaque amie recevra-t-elle ?",
+      "options": [
+        "5 bonbons",
+        "6 bonbons",
+        "7 bonbons",
+        "8 bonbons"
+      ],
+      "correctAnswer": "6 bonbons",
+      "explanation": "Pour partager $18$ bonbons en $3$ parts égales, on effectue la division $18 \\div 3$. On cherche le nombre qui, multiplié par $3$, donne $18$. Comme $3 \\times 6 = 18$, chaque amie reçoit $6$ bonbons. Les autres propositions correspondent à des erreurs de tables de multiplication : $3 \\times 5 = 15$, $3 \\times 7 = 21$, $3 \\times 8 = 24$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On partage $17$ billes équitablement entre $3$ enfants. Combien de billes chaque enfant reçoit-il et combien en reste-t-il ?",
+      "options": [
+        "5 billes chacun, 2 restantes",
+        "6 billes chacun, 1 restante",
+        "5 billes chacun, 1 restante",
+        "4 billes chacun, 5 restantes"
+      ],
+      "correctAnswer": "5 billes chacun, 2 restantes",
+      "explanation": "On cherche le multiple de $3$ le plus proche de $17$ sans le dépasser. $3 \\times 5 = 15$ et $3 \\times 6 = 18$ (trop grand). Chaque enfant reçoit donc $5$ billes. Le reste est la différence entre $17$ et $15$ : $17 - 15 = 2$ billes restantes. L'option '6 billes chacun' est impossible car il faudrait $18$ billes. L'option '5 billes chacun, 1 restante' fait une erreur de soustraction ($17-15=2$). L'option '4 billes chacun' ne partage pas au maximum.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet de crayons est partagé équitablement entre $4$ élèves. Chaque élève reçoit $6$ crayons. Combien y avait-il de crayons dans le paquet au départ ?",
+      "options": [
+        "20 crayons",
+        "24 crayons",
+        "28 crayons",
+        "10 crayons"
+      ],
+      "correctAnswer": "24 crayons",
+      "explanation": "C'est un problème inverse : on connaît le nombre de parts ($4$) et la taille de chaque part ($6$), on cherche le total. Il faut multiplier : $4 \\times 6 = 24$. Il y avait donc $24$ crayons. L'option $20$ correspond à $4 \\times 5$, l'option $28$ à $4 \\times 7$, et l'option $10$ à une addition ($4+6$) au lieu d'une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme ci-dessous représente un partage équitable de $36$ objets en $3$ parts. Combien y a-t-il d'objets dans chaque part ?",
+      "options": [
+        "11 objets",
+        "12 objets",
+        "13 objets",
+        "10 objets"
+      ],
+      "correctAnswer": "12 objets",
+      "explanation": "Le diagramme en barres (tape diagram) montre un total de $36$ divisé en $3$ rectangles de même taille. Pour trouver la valeur d'un rectangle, on divise le total par le nombre de parts : $36 \\div 3 = 12$. On peut vérifier par la multiplication : $12 \\times 3 = 36$. Les autres options ne donnent pas $36$ quand on les multiplie par $3$ ($11\\times3=33$, $13\\times3=39$, $10\\times3=30$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Part 1",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Part 2",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Part 3",
+            "value": 12,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Partage de 36 en 3 parts égales"
+      }
+    },
+    {
+      "text": "La maîtresse a $28$ cahiers. Elle veut former $4$ piles équitables pour les ranger. Combien de cahiers y aura-t-il dans chaque pile ?",
+      "options": [
+        "6 cahiers",
+        "7 cahiers",
+        "8 cahiers",
+        "5 cahiers"
+      ],
+      "correctAnswer": "7 cahiers",
+      "explanation": "Il s'agit de partager $28$ objets en $4$ groupes égaux. On calcule $28 \\div 4$. On peut décomposer $28$ en $20 + 8$. $20 \\div 4 = 5$ et $8 \\div 4 = 2$. $5 + 2 = 7$. Ou bien on cherche le multiple de $4$ qui fait $28$ : $4 \\times 7 = 28$. Il y aura donc $7$ cahiers par pile. L'option $6$ donne $24$, l'option $8$ donne $32$, l'option $5$ donne $20$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

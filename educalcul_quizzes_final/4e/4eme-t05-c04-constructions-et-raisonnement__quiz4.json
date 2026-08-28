@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Constructions et raisonnement",
+  "title": "Quiz : Constructions et raisonnement dans le triangle",
+  "questions": [
+    {
+      "text": "Pour construire un triangle dont les longueurs des côtés sont $5$ cm, $6$ cm et $7$ cm, quelle est la première étape recommandée pour assurer une construction sans ambiguïté ?",
+      "options": [
+        "Tracer un segment de longueur $5$ cm et nommer ses extrémités $A$ et $B$",
+        "Tracer un cercle de centre $A$ et de rayon $5$ cm",
+        "Tracer un cercle de centre $B$ et de rayon $6$ cm",
+        "Tracer un segment de longueur $7$ cm et nommer ses extrémités $A$ et $B$"
+      ],
+      "correctAnswer": "Tracer un segment de longueur $7$ cm et nommer ses extrémités $A$ et $B$",
+      "explanation": "La construction usuelle d'un triangle par ses trois côtés (SSS) commence par tracer le plus grand côté, ici $7$ cm, pour éviter que les arcs de cercle des deux autres côtés ne se coupent pas ou se coupent en deux points symétriques. Les autres options correspondent à des étapes ultérieures ou à des choix de côté plus courts qui peuvent poser problème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer la bissectrice de l'angle $BAC$ d'un triangle $ABC$, quelle suite d'opérations est correcte ?",
+      "options": [
+        "Placer la pointe du compas en $A$, tracer un arc coupant les deux côtés, puis sans changer l'écartement, placer la pointe sur chaque intersection et tracer deux arcs qui se coupent, enfin tracer la droite passant par $A$ et l'intersection des arcs",
+        "Tracer un cercle de centre $A$ passant par $B$ et $C$, puis tracer la droite $BC$",
+        "Tracer la médiane issue de $A$ en reliant $A$ au milieu de $BC$",
+        "Tracer la hauteur issue de $A$ en abaissant une perpendiculaire à $BC$"
+      ],
+      "correctAnswer": "Placer la pointe du compas en $A$, tracer un arc coupant les deux côtés, puis sans changer l'écartement, placer la pointe sur chaque intersection et tracer deux arcs qui se coupent, enfin tracer la droite passant par $A$ et l'intersection des arcs",
+      "explanation": "La construction de la bissectrice d'un angle se fait en traçant un arc centré au sommet qui coupe les deux côtés, puis en traçant deux arcs de même rayon depuis ces intersections ; leur intersection détermine un point sur la bissectrice. Les autres options décrivent la construction du cercle circonscrit, de la médiane ou de la hauteur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, on sait que $AB = AC$. Quelle propriété permet d'affirmer que les angles $ABC$ et $ACB$ sont égaux ?",
+      "options": [
+        "Théorème de Thalès",
+        "Théorème de Pythagore",
+        "Propriété du triangle isocèle : les angles à la base sont égaux",
+        "Propriété des angles alternes-internes"
+      ],
+      "correctAnswer": "Propriété du triangle isocèle : les angles à la base sont égaux",
+      "explanation": "Dans un triangle isocèle, les côtés égaux sont $AB$ et $AC$ ; les angles opposés à ces côtés, c'est-à-dire les angles $ABC$ et $ACB$, sont égaux. C'est la propriété fondamentale du triangle isocèle. Les autres théorèmes ne s'appliquent pas ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire la médiatrice d'un segment $[AB]$, quelle est la méthode correcte à la règle et au compas ?",
+      "options": [
+        "Tracer un cercle de centre $A$ de rayon $AB$, puis un cercle de centre $B$ de même rayon, relier les deux intersections des cercles",
+        "Tracer le milieu de $AB$ à la règle, puis tracer une perpendiculaire en ce point",
+        "Tracer un cercle de centre $A$ de rayon quelconque, puis un cercle de centre $B$ de même rayon, relier $A$ et $B$",
+        "Tracer la droite $AB$ et placer un angle droit à $A$"
+      ],
+      "correctAnswer": "Tracer un cercle de centre $A$ de rayon $AB$, puis un cercle de centre $B$ de même rayon, relier les deux intersections des cercles",
+      "explanation": "La médiatrice d'un segment se construit en traçant deux cercles de même rayon (supérieur à la moitié du segment) centrés aux extrémités ; les intersections de ces cercles déterminent la droite médiatrice. L'option B utilise la règle pour trouver le milieu, ce qui n'est pas une construction purement au compas. Les options C et D sont incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux triangles $ABC$ et $DEF$ tels que $AB = DE$, $AC = DF$ et les angles $BAC$ et $EDF$ sont égaux. Quel critère de congruence permet de conclure que les triangles sont congrus ?",
+      "options": [
+        "SSS (trois côtés)",
+        "SAS (deux côtés et l'angle compris)",
+        "ASA (deux angles et le côté compris)",
+        "AAS (deux angles et un côté non compris)"
+      ],
+      "correctAnswer": "SAS (deux côtés et l'angle compris)",
+      "explanation": "Les hypothèses donnent deux paires de côtés égaux ($AB=DE$ et $AC=DF$) et les angles $BAC$ et $EDF$ sont égaux. C'est exactement le cas du critère SAS (côté-angle-côté). Les autres critères ne correspondent pas aux éléments donnés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

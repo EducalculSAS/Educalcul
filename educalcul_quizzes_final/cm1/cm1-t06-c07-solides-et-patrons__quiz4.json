@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 254,
+  "_course_code": "cm1-t06-c07-solides-et-patrons",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Application : Solides et patrons",
+  "title": "Quiz : Solides et patrons - Applications",
+  "questions": [
+    {
+      "text": "Parmi les solides suivants, lequel possède exactement 6 faces, 12 arêtes et 8 sommets ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Un cube a 6 faces carrées, 12 arêtes de même longueur et 8 sommets. Le pavé droit a aussi 6 faces, 12 arêtes et 8 sommets, mais ses faces sont des rectangles (pas nécessairement des carrés). La pyramide à base carrée a 5 faces, 8 arêtes et 5 sommets. Le cylindre a 2 faces planes et 1 face courbe, 0 arête et 0 sommet au sens polygonal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut fabriquer un cube en carton. Lequel des patrons suivants ne permet PAS d'obtenir un cube ?",
+      "options": [
+        "Une croix de 6 carrés (4 en ligne, 1 de chaque côté du 2e)",
+        "Un T de 6 carrés (3 en ligne, 3 sous le du milieu)",
+        "Une ligne de 6 carrés collés les uns aux autres",
+        "Un escalier de 6 carrés (2, puis 2 décalés, puis 2)"
+      ],
+      "correctAnswer": "Une ligne de 6 carrés collés les uns aux autres",
+      "explanation": "Il existe 11 patrons différents du cube. La ligne de 6 carrés ne se referme pas sur elle-même : les deux carrés d'extrémité se superposeraient au lieu de se rejoindre pour former le volume. Les trois autres propositions correspondent à des patrons valides du cube (croix, T, escalier).",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Exemple de patron valide d'un cube (type croix)"
+      }
+    },
+    {
+      "text": "Observons ce patron constitué de 2 triangles équilatéraux et 3 rectangles. Quel solide peut-on obtenir en le pliant ?",
+      "options": [
+        "Un prisme triangulaire",
+        "Une pyramide triangulaire",
+        "Un pavé droit",
+        "Un cône"
+      ],
+      "correctAnswer": "Un prisme triangulaire",
+      "explanation": "Un prisme triangulaire possède 2 bases qui sont des triangles (ici équilatéraux) et 3 faces latérales qui sont des rectangles. La pyramide triangulaire (tétraèdre) a 4 faces triangulaires. Le pavé droit a 6 faces rectangulaires. Le cône a une base circulaire et une face courbe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit mesure $4$ cm de long, $3$ cm de large et $2$ cm de haut. Combien de faces, d'arêtes et de sommets possède-t-il ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "5 faces, 9 arêtes, 6 sommets",
+        "6 faces, 10 arêtes, 6 sommets",
+        "4 faces, 6 arêtes, 4 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Tout pavé droit (comme le cube) est un polyèdre convexe à 6 faces (parallélogrammes, ici rectangles), 12 arêtes (segments intersection de 2 faces) et 8 sommets (intersection de 3 arêtes). Les dimensions ($4$, $3$, $2$) ne changent pas ces nombres, elles ne donnent que les mesures des arêtes. La deuxième option correspond à une pyramide à base carrée, la quatrième à un tétraèdre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire une boîte (pavé droit) sans couvercle, on découpe un patron dans du carton. Si la boîte finie doit avoir $5$ faces, combien de faces le patron plat doit-il comporter ?",
+      "options": [
+        "5 faces",
+        "6 faces",
+        "4 faces",
+        "7 faces"
+      ],
+      "correctAnswer": "5 faces",
+      "explanation": "Le patron est le développement à plat de toutes les faces du solide. Comme la boîte n'a pas de couvercle, le solide final a 5 faces (1 fond + 4 côtés). Le patron doit donc contenir exactement ces 5 faces (souvent disposées en croix ou en T). S'il y avait 6 faces, la boîte aurait un couvercle. S'il y en a 4, il manquerait un côté.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

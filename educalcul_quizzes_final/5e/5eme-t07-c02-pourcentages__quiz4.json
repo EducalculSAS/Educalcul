@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 411,
+  "_course_code": "5eme-t07-c02-pourcentages",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Application : Pourcentages",
+  "title": "Quiz : Applications des pourcentages (5e)",
+  "questions": [
+    {
+      "text": "Un pull coûte $40$ €. Il est soldé à $25$ %. Quel est le montant de la remise en euros ?",
+      "options": [
+        "8 €",
+        "10 €",
+        "12 €",
+        "15 €"
+      ],
+      "correctAnswer": "10 €",
+      "explanation": "Pour calculer $25$ % de $40$, on multiplie $40$ par $0,25$ (ou on divise par $4$ car $25$ % = $1/4$). $40 \\times 0,25 = 10$. La remise est donc de $10$ €. L'option $8$ € correspondrait à $20$ %, $12$ € à $30$ % et $15$ € à $37,5$ %.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de $28$ élèves, $7$ sont absents. Quel pourcentage d'élèves est absent ?",
+      "options": [
+        "20 %",
+        "25 %",
+        "30 %",
+        "35 %"
+      ],
+      "correctAnswer": "25 %",
+      "explanation": "Le pourcentage se calcule en divisant la partie par le total puis en multipliant par $100$ : $(7 / 28) \\times 100$. La fraction $7/28$ se simplifie par $7$ en $1/4$. $1/4 = 0,25 = 25$ %. Les autres options correspondent à des approximations ou des erreurs de calcul (ex: $7/28 \\approx 0,3$ pour $30$ %).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une augmentation de $15$ % porte le prix d'un livre à $23$ €. Quel était le prix initial du livre ?",
+      "options": [
+        "18 €",
+        "19 €",
+        "20 €",
+        "21 €"
+      ],
+      "correctAnswer": "20 €",
+      "explanation": "Le prix final ($23$ €) correspond à $115$ % du prix initial (soit un coefficient multiplicateur de $1,15$). Pour retrouver le prix initial, on divise le prix final par $1,15$ : $23 / 1,15 = 20$. Le prix initial était $20$ €. Vérification : $20 \\times 1,15 = 23$. L'erreur fréquente est de calculer $15$ % de $23$ ($3,45$) et de soustraire, ce qui donne environ $19,55$ € (arrondi à $19$ ou $20$), méthode incorrecte car le pourcentage porte sur le prix initial, pas sur le prix final.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un jeu vidéo passe de $50$ € à $40$ €. Quel est le pourcentage de baisse ?",
+      "options": [
+        "10 %",
+        "15 %",
+        "20 %",
+        "25 %"
+      ],
+      "correctAnswer": "20 %",
+      "explanation": "La baisse en valeur est de $50 - 40 = 10$ €. Le pourcentage de baisse se calcule par rapport au prix initial : $(10 / 50) \\times 100 = 20$ %. L'option $10$ % correspond à la baisse en euros, pas en pourcentage. L'option $25$ % correspondrait à une baisse de $10$ € sur un prix initial de $40$ € (erreur de référence).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour préparer un gâteau, on utilise $300$ g de farine. La farine représente $60$ % de la masse totale des ingrédients secs. Quelle est la masse totale de ces ingrédients ?",
+      "options": [
+        "400 g",
+        "450 g",
+        "500 g",
+        "550 g"
+      ],
+      "correctAnswer": "500 g",
+      "explanation": "La masse de farine ($300$ g) correspond à $60$ % du total. Pour trouver le total (soit $100$ %), on divise la valeur connue par le pourcentage (sous forme décimale) : $300 / 0,60 = 500$. On peut aussi raisonner par proportionnalité : si $60$ % $\\rightarrow 300$ g, alors $10$ % $\\rightarrow 50$ g (division par $6$), donc $100$ % $\\rightarrow 500$ g (multiplication par $10$). La masse totale est $500$ g.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

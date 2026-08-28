@@ -1,0 +1,344 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.868624+00:00",
+  "id": 443,
+  "code": "4eme-t05-c04",
+  "title": "Constructions et raisonnement",
+  "description": "Cours structuré Educalcul : Constructions et raisonnement.",
+  "subject": "Géométrie du triangle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Géométrie du triangle",
+    "titre_du_cours": "Constructions et raisonnement",
+    "objectif_global": "Constructions et raisonnement",
+    "mini_lecons_imposees": [
+      "Choisir propriété.",
+      "Chaîner.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie du triangle",
+      "lessons": [
+        {
+          "title": "Choisir propriété.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Quand tu reçois un énoncé de construction, la première question à te poser n'est pas : « Par où je commence ? » mais : « Qu'est-ce que je sais déjà sur cette figure ? » C'est là tout le secret : une construction géométrique n'est jamais une suite de gestes au hasard, c'est l'application logique d'une propriété que tu connais. Imagine que tu dois construire un triangle isocèle en connaissant sa base et la longueur des côtés égaux. Si tu te précipites sur ta règle et ton compas sans réfléchir, tu risques de tracer n'importe quoi. Mais si tu te dis : « Tiens, un triangle isocèle a deux côtés de même longueur, donc le troisième sommet est à égale distance des deux extrémités de la base », tu viens de trouver la propriété clé : l'ensemble des points équidistants de deux points donnés, c'est la médiatrice du segment qui les relie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les données et la figure cible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de choisir une propriété, fais le tri dans l'énoncé. Surligne ou liste ce qui est donné : longueurs, angles, parallélismes, perpendicularités, milieux. Ensuite, demande-toi : quelle figure faut-il obtenir ? Un triangle ? Un parallélogramme ? Un cercle ? Chaque figure a ses propriétés caractéristiques. Pour un triangle rectangle, tu penseras tout de suite au théorème de Pythagore ou à la propriété de l'angle inscrit. Pour un losange, tu penseras aux diagonales perpendiculaires qui se coupent en leur milieu. Cette gymnastique mentale, c'est ce qui sépare l'élève qui réussit de celui qui tourne en rond."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 2,
+              "caption": "Triangle rectangle en C : l'hypoténuse est AB, le cercle de diamètre AB passe par C"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prenons un cas où plusieurs propriétés pourraient s'appliquer. On te demande de construire un triangle dont tu connais les trois longueurs : $AB = 6\\,\\text{cm}$, $BC = 5\\,\\text{cm}$, $AC = 4\\,\\text{cm}$. Ici, pas d'angle donné, pas de parallélisme. La propriété qui s'impose, c'est l'intersection de deux cercles : le sommet $C$ est à $5\\,\\text{cm}$ de $B$ et à $4\\,\\text{cm}$ de $A$. Tu traces donc le cercle de centre $B$ et de rayon $5\\,\\text{cm}$, puis le cercle de centre $A$ et de rayon $4\\,\\text{cm}$. Leurs intersections donnent les deux positions possibles de $C$. Remarque bien : tu as choisi la propriété « intersection de deux cercles » parce que les données étaient trois longueurs. Si on t'avait donné deux côtés et l'angle compris, tu aurais choisi la propriété « rotation » ou « report d'angle »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le piège des propriétés inutiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'énoncé contient plus d'informations que nécessaire. On te dit : « Construis un triangle $ABC$ tel que $AB = 7\\,\\text{cm}$, $AC = 5\\,\\text{cm}$ et $\\widehat{BAC} = 50^{\\circ}$. » Tu as deux côtés et l'angle compris. La propriété directe, c'est le report d'angle et le report de longueur. Mais l'énoncé ajoute peut-être : « La médiatrice de $[BC]$ passe par $A$ ». Cette info est une conséquence, pas une donnée de construction. Si tu essaies de l'utiliser pour construire, tu tournes en rond. Apprends à distinguer les données de construction (celles qui permettent de tracer) des propriétés de vérification (celles qui permettent de contrôler). C'est un peu comme en cuisine : la recette te dit quoi faire, pas comment vérifier que le gâteau est cuit."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = 7\\,\\text{cm},\\quad AC = 5\\,\\text{cm},\\quad \\widehat{BAC} = 50^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, garde en tête ce réflexe : face à un énoncé, ne te demande jamais « quoi tracer ? » mais toujours « quelle propriété relie ce qu'on me donne à ce qu'on me demande ? ». C'est ce changement de question qui fait passer de la construction au raisonnement. Dans la prochaine leçon, nous verrons comment enchaîner plusieurs propriétés quand une seule ne suffit pas, car les figures complexes se construisent souvent en plusieurs étapes logiques, chacune s'appuyant sur la précédente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut construire un triangle $ABC$ tel que $AB = 6\\,\\text{cm}$, $BC = 5\\,\\text{cm}$ et $AC = 4\\,\\text{cm}$. Quelle propriété géométrique permet de placer le point $C$ une fois le segment $[AB]$ tracé ?",
+              "answer": "L'intersection de deux cercles : le cercle de centre $B$ et de rayon $5\\,\\text{cm}$ et le cercle de centre $A$ et de rayon $4\\,\\text{cm}$.",
+              "hint": "Le point $C$ doit être à distance $5\\,\\text{cm}$ de $B$ et à distance $4\\,\\text{cm}$ de $A$. Quel est l'ensemble des points à une distance donnée d'un point ?",
+              "explanation": "La définition d'un cercle est l'ensemble des points équidistants de son centre. Le point $C$ appartient donc au cercle $\\mathcal{C}_1(B, 5)$ et au cercle $\\mathcal{C}_2(A, 4)$. Leur intersection donne les positions possibles de $C$ (deux points symétriques par rapport à $(AB)$)."
+            },
+            {
+              "question": "Dans l'énoncé : « Construis un triangle $DEF$ rectangle en $E$ tel que $DE = 8\\,\\text{cm}$ et $EF = 6\\,\\text{cm}$. », quelle propriété choisirais-tu pour placer le point $F$ après avoir tracé $[DE]$ ?",
+              "answer": "La propriété de l'angle droit : tracer la perpendiculaire à $(DE)$ passant par $E$, puis reporter la longueur $EF = 6\\,\\text{cm}$ sur cette perpendiculaire.",
+              "hint": "Tu as un angle droit en $E$. Comment tracer un angle droit avec la règle et l'équerre (ou le compas) ?",
+              "explanation": "L'angle $\\widehat{DEF}$ est droit, donc $(EF) \\perp (DE)$. On trace la droite perpendiculaire à $(DE)$ en $E$, puis on place $F$ sur cette droite à $6\\,\\text{cm}$ de $E$. La propriété utilisée est : « Par un point passe une et une seule perpendiculaire à une droite donnée. »"
+            },
+            {
+              "question": "On te donne : « Construis un losange $ABCD$ de centre $O$ tel que $AC = 10\\,\\text{cm}$ et $BD = 6\\,\\text{cm}$. » Quelle propriété des diagonales d'un losange utilises-tu pour commencer la construction ?",
+              "answer": "Les diagonales d'un losange sont perpendiculaires et se coupent en leur milieu. On trace d'abord les deux segments $[AC]$ et $[BD]$ qui se coupent en leur milieu $O$ et sont perpendiculaires.",
+              "hint": "Quelle est la particularité des diagonales dans un losange par rapport à un parallélogramme quelconque ?",
+              "explanation": "Dans un losange, les diagonales sont perpendiculaires et se coupent en leur milieu (le centre du losange). On trace donc $[AC] = 10\\,\\text{cm}$, son milieu $O$, puis la perpendiculaire à $(AC)$ en $O$, sur laquelle on place $B$ et $D$ tels que $OB = OD = 3\\,\\text{cm}$."
+            }
+          ]
+        },
+        {
+          "title": "Chaîner.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant choisir la bonne propriété pour démarrer une construction. Mais souvent, une seule propriété ne suffit pas : la figure demandée est plus complexe, ou les données ne permettent pas d'accéder directement au résultat. Il faut alors enchaîner plusieurs étapes, chacune s'appuyant sur la précédente, comme les maillons d'une chaîne. C'est ce qu'on appelle le raisonnement par étapes, ou encore l'analyse-synthèse. Pense à un triangle dont tu connais deux angles et un côté non compris entre eux : $\\widehat{A} = 40^{\\circ}$, $\\widehat{B} = 70^{\\circ}$, $AB = 6\\,\\text{cm}$. Tu ne peux pas placer $C$ directement. Mais tu sais que la somme des angles d'un triangle vaut $180^{\\circ}$, donc $\\widehat{C} = 70^{\\circ}$. Le triangle est isocèle en $C$ ! Cette déduction est une première étape de raisonnement. Ensuite, tu utilises la propriété de l'isocèle : $C$ est sur la médiatrice de $[AB]$. Et comme $\\widehat{A} = 40^{\\circ}$, tu reports cet angle en $A$... Chaque étape te rapproche du but."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'ordre des opérations n'est pas arbitraire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu enchaînes, l'ordre a son importance. Reprenons l'exemple du triangle isocèle précédent. Si tu commençais par tracer l'angle de $40^{\\circ}$ en $A$ sans avoir tracé $[AB]$, tu n'aurais pas de côté pour le reporter. Si tu commençais par la médiatrice de $[AB]$ sans avoir tracé $[AB]$, ce serait impossible. La chaîne logique impose un ordre : d'abord ce qui est donné directement (le segment $[AB]$), ensuite ce qui en découle immédiatement (la médiatrice), puis ce qui demande une donnée supplémentaire (l'angle en $A$). C'est comme pour monter un meuble : tu ne peux pas visser la porte avant d'avoir assemblé le cadre. En géométrie, le « cadre », ce sont les données brutes de l'énoncé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le segment donné",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $[AB] = 6\\,\\text{cm}$. C'est la seule donnée immédiatement traçable."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déduire l'angle manquant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\widehat{C} = 180^{\\circ} - 40^{\\circ} - 70^{\\circ} = 70^{\\circ}$. Le triangle est isocèle en $C$ ($CA = CB$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la propriété de l'isocèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le sommet $C$ est équidistant de $A$ et $B$, donc $C$ appartient à la médiatrice de $[AB]$. Trace cette médiatrice."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Placer le dernier sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Report l'angle $\\widehat{A} = 40^{\\circ}$ de part et d'autre de $(AB)$. La demi-droite issue de $A$ coupe la médiatrice en $C$. Le triangle est construit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'enchaînement demande de raisonner à rebours, ce qu'on appelle l'analyse. Tu te demandes : « Pour obtenir cette figure finale, quelle construction immédiate me donnerait le dernier élément ? Et pour faire cette construction, qu'il me faut-il avant ? » C'est comme dénouer un nœud en tirant sur le bon fil. Prenons la construction d'un parallélogramme dont tu connais les diagonales $[AC] = 8\\,\\text{cm}$ et $[BD] = 5\\,\\text{cm}$, et l'angle qu'elles forment : $60^{\\circ}$. Le dernier trait à tracer, ce sont les quatre côtés. Mais pour les tracer, il te faut les quatre sommets. Pour avoir les sommets, il te faut les extrémités des diagonales. Pour avoir les extrémités, il te faut les diagonales elles-mêmes. Donc l'ordre de construction (la synthèse) sera : 1) tracer les deux diagonales qui se coupent en leur milieu avec un angle de $60^{\\circ}$, 2) relier les quatre extrémités. L'analyse t'a permis de trouver cet ordre en partant de la fin."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "caption": "Construction par analyse-synthèse : on part du but (triangle ABC) pour remonter aux données"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a un piège fréquent dans les enchaînements : utiliser une propriété qui n'est pas encore justifiée à cette étape. Imagine que tu doives construire un triangle rectangle en $B$ avec $AB = 4\\,\\text{cm}$ et $AC = 6\\,\\text{cm}$. Tu traces $[AB]$, puis la perpendiculaire en $B$. Pour placer $C$, tu as besoin de l'intersection de cette perpendiculaire avec le cercle de centre $A$ et de rayon $6\\,\\text{cm}$. Mais attention : ce cercle coupe la perpendiculaire en deux points symétriques par rapport à $B$. Les deux triangles sont possibles, et ils sont congrus. Si l'énoncé ne précise pas de quel côté de $(AB)$ se trouve $C$, les deux solutions sont valides. Ne choisis pas l'une au détriment de l'autre sans raison. C'est ça, la rigueur de l'enchaînement : à chaque étape, tu sais exactement ce qui est déterminé et ce qui ne l'est pas encore."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = 4\\,\\text{cm},\\quad AC = 6\\,\\text{cm},\\quad \\widehat{B} = 90^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut construire un triangle $ABC$ tel que $AB = 7\\,\\text{cm}$, $\\widehat{A} = 50^{\\circ}$ et $\\widehat{B} = 60^{\\circ}$. Donne l'ordre exact des 3 étapes de construction.",
+              "answer": "1) Tracer le segment $[AB] = 7\\,\\text{cm}$. 2) Reporter l'angle $\\widehat{A} = 50^{\\circ}$ en $A$ de part et d'autre de $(AB)$. 3) Reporter l'angle $\\widehat{B} = 60^{\\circ}$ en $B$ du même côté que l'angle en $A$. L'intersection des deux demi-droites donne $C$.",
+              "hint": "Quelle est la seule donnée traçable immédiatement ? Ensuite, quelles sont les deux constructions qui placent le troisième sommet ?",
+              "explanation": "Le segment $[AB]$ est la seule donnée de base. Les deux angles permettent de tracer deux demi-droites qui se coupent en $C$. L'ordre est imposé : on ne peut reporter un angle en $A$ ou $B$ qu'après avoir tracé le segment $[AB]$."
+            },
+            {
+              "question": "Pour construire un parallélogramme $ABCD$ connaissant ses diagonales $[AC] = 8\\,\\text{cm}$, $[BD] = 6\\,\\text{cm}$ et l'angle qu'elles forment ($70^{\\circ}$), explique pourquoi on commence par tracer les diagonales.",
+              "answer": "Les diagonales d'un parallélogramme se coupent en leur milieu. En les traçant d'abord (avec leur milieu commun et l'angle donné), on obtient directement les quatre sommets $A$, $B$, $C$, $D$. Il ne reste plus qu'à les relier dans l'ordre.",
+              "hint": "Quelle propriété des diagonales d'un parallélogramme permet de placer les quatre sommets d'un coup ?",
+              "explanation": "Dans tout parallélogramme, les diagonales ont le même milieu. Si on trace deux segments $[AC]$ et $[BD]$ qui se coupent en leur milieu $O$ et forment l'angle donné, les quatre points $A$, $B$, $C$, $D$ sont exactement les sommets du parallélogramme cherché. C'est l'étape unique qui place tous les sommets."
+            },
+            {
+              "question": "On construit un triangle rectangle en $B$ avec $AB = 5\\,\\text{cm}$ et $AC = 8\\,\\text{cm}$. Après avoir tracé $[AB]$ et la perpendiculaire en $B$, on trace le cercle de centre $A$ et de rayon $8\\,\\text{cm}$. Combien de points d'intersection ce cercle a-t-il avec la perpendiculaire ? Que signifie géométriquement le second point ?",
+              "answer": "Deux points d'intersection. Le second point $C'$ est le symétrique de $C$ par rapport à la droite $(AB)$. Les triangles $ABC$ et $ABC'$ sont congrus (mêmes longueurs, même angle droit), ils sont les deux solutions possibles si l'énoncé ne précise pas le côté de $(AB)$.",
+              "hint": "Un cercle et une droite peuvent se couper en 0, 1 ou 2 points. Ici, la distance $AO$ (où $O$ est le pied de la perpendiculaire) est $5\\,\\text{cm}$, le rayon est $8\\,\\text{cm}$.",
+              "explanation": "Le cercle $\\mathcal{C}(A, 8)$ coupe la droite perpendiculaire à $(AB)$ en $B$ en deux points symétriques par rapport à $(AB)$, car $A$ appartient à l'axe de symétrie $(AB)$. Les deux triangles obtenus ont les mêmes mesures : ils sont congrus par le cas « angle droit - hypoténuse - côté adjacent » (ou RHS)."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as choisi la bonne propriété, tu as enchaîné les étapes dans le bon ordre, ton figure est tracée. Est-ce fini ? Pas tout à fait. En géométrie, comme en toute activité de précision, il y a une étape finale indispensable : la vérification. Ce n'est pas une perte de temps, c'est la marque du travail sérieux. Vérifier, ce n'est pas seulement mesurer avec la règle ou le rapporteur pour voir « si ça a l'air bon ». C'est retrouver, par le raisonnement, les propriétés qui doivent être satisfaites, et confirmer qu'elles le sont effectivement. C'est la différence entre « j'ai fait le dessin » et « j'ai construit la figure ». Pense à un architecte : il ne se contente pas de tracer les murs sur le plan, il vérifie que les angles sont droits, que les diagonales sont égales, que les charges portent bien sur les fondations. Toi, ton « plan », c'est ta construction, et tes « fondations », ce sont les propriétés géométriques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux niveaux de vérification : mesure et raisonnement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier niveau, c'est le contrôle instrumental. Tu sors ta règle graduée en $mm$, ton rapporteur, ton compas. Tu mesures les longueurs demandées, les angles donnés. Si l'énoncé disait $AB = 6\\,\\text{cm}$ et que tu mesures $6,2\\,\\text{cm}$, il y a un souci : soit ton tracé a glissé, soit ton report de longueur a été imprécis. Mais attention : l'instrument a ses limites. Une règle donne une valeur approchée, un rapporteur aussi. Si tu mesures $59,5^{\\circ}$ au lieu de $60^{\\circ}$, ce n'est pas forcément une erreur de construction, c'est l'imprécision de l'outil. C'est là qu'intervient le deuxième niveau, bien plus puissant : la vérification par raisonnement. Au lieu de mesurer, tu reprends les propriétés utilisées et tu vérifies qu'elles sont logiquement satisfaites. Par exemple, si tu as construit la médiatrice de $[AB]$, tu ne mesures pas les distances au sommet : tu vérifies que ton trait passe bien par le milieu de $[AB]$ (que tu as construit) et qu'il est perpendiculaire à $(AB)$ (grâce à l'intersection de deux arcs de même rayon). C'est une preuve, pas une mesure."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Vérification d'un triangle rectangle : on contrôle que le cercle de diamètre [BC] passe bien par A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a une vérification qui revient sans cesse dans les constructions de triangles : le théorème de Pythagore et sa réciproque. Si tu as construit un triangle rectangle en $B$ avec $AB = 3\\,\\text{cm}$ et $BC = 4\\,\\text{cm}$, tu sais que l'hypoténuse $AC$ doit mesurer $5\\,\\text{cm}$ car $3^2 + 4^2 = 5^2$. Au lieu de mesurer $AC$ à la règle (ce qui serait imprécis), tu peux vérifier par le calcul : $AC^2$ doit valoir $AB^2 + BC^2 = 9 + 16 = 25$, donc $AC = 5$. C'est une vérification par le raisonnement, exacte, qui ne dépend pas de la précision de ton compas. De même, si tu as construit un triangle quelconque par intersection de deux cercles, tu peux vérifier que les longueurs des côtés correspondent bien aux rayons choisis. C'est la beauté de la géométrie : la figure tracée et le calcul numérique disent la même chose."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Vérification par Pythagore : 3² + 4² = 5², les carrés sur les côtés s'emboîtent parfaitement"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand la vérification révèle une erreur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si la vérification échoue ? C'est une excellente nouvelle : tu as détecté une erreur avant de rendre ton travail. Mais encore faut-il savoir la corriger sans tout recommencer à l'aveugle. La méthode, c'est de remonter la chaîne d'enchaînement à l'envers, étape par étape, jusqu'à trouver le maillon défaillant. Reprenons l'exemple du parallélogramme à diagonales données. Tu as tracé les diagonales, relié les sommets, mais en vérifiant, tu constates que les côtés opposés ne sont pas parallèles. Ne gomme pas tout ! Vérifie d'abord : les diagonales se coupent-elles vraiment en leur milieu ? Mesure $AO$ et $OC$, $BO$ et $OD$. Si $AO \\neq OC$, c'est que le point $O$ n'est pas le milieu exact de $[AC]$. Corrige ce point, et tout le reste s'ajustera. Si les milieux sont bons, vérifie l'angle entre les diagonales : est-il bien de $70^{\\circ}$ ? C'est souvent là que se glisse l'erreur : un report d'angle approximatif. En localisant l'erreur précise, tu gagnes un temps fou et tu comprends où ta technique doit s'améliorer."
+            },
+            {
+              "type": "display_math",
+              "latex": "AO = OC\\quad\\text{et}\\quad BO = OD\\quad\\text{(milieux communs)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, retiens que choisir, chaîner, vérifier forment un cycle vertueux. Choisir la propriété, c'est comprendre l'énoncé. Chaîner, c'est organiser sa pensée en étapes logiques. Vérifier, c'est valider son travail par le raisonnement, pas seulement par l'œil. Ces trois compétences, ce sont exactement celles qu'on attend de toi au brevet et au lycée : ne pas seulement « faire » la géométrie, mais la « dire » et la « justifier ». Dans chaque exercice, chaque devoir, chaque épreuve, force-toi à écrire une petite phrase de justification à côté de chaque trait de construction. « Je trace la médiatrice car $C$ est équidistant de $A$ et $B$. » « Je vérifie que $O$ est le milieu de $[AC]$ car les diagonales d'un parallélogramme se coupent en leur milieu. » Ces phrases, c'est ton raisonnement mis par écrit. C'est ce qui transforme un dessin en une démonstration."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les données utiles d'un énoncé de construction et choisir la propriété géométrique adaptée.",
+                "Je sais ordonner les étapes d'une construction en respectant les dépendances logiques (données d'abord, puis conséquences).",
+                "Je sais expliquer mon raisonnement par des phrases de justification à chaque étape de la construction.",
+                "Je sais vérifier une construction par le raisonnement (propriétés, théorèmes) et non seulement par la mesure approximative.",
+                "Je sais localiser une erreur en remontant la chaîne de construction à l'envers pour corriger l'étape fautive."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as construit un triangle $ABC$ avec $AB = 5\\,\\text{cm}$, $AC = 4\\,\\text{cm}$, $BC = 6\\,\\text{cm}$. Pour vérifier sans mesurer $BC$ à la règle, quelle relation numérique peux-tu tester ?",
+              "answer": "On ne peut pas utiliser Pythagore car le triangle n'est pas rectangle. En revanche, on peut vérifier l'inégalité triangulaire : $AB + AC > BC$ (9 > 6), $AB + BC > AC$ (11 > 4), $AC + BC > AB$ (10 > 5). Si les trois inégalités sont vraies, le triangle existe.",
+              "hint": "Quelle condition nécessaire et suffisante trois longueurs doivent-elles satisfaire pour être les côtés d'un triangle ?",
+              "explanation": "L'inégalité triangulaire est la condition d'existence d'un triangle. Elle se vérifie par le calcul exact sur les longueurs données, sans aucune mesure sur la figure. C'est une vérification par raisonnement purement arithmétique."
+            },
+            {
+              "question": "Tu as construit la médiatrice d'un segment $[AB] = 8\\,\\text{cm}$ en traçant deux arcs de cercle de même rayon $> 4\\,\\text{cm}$ depuis $A$ et $B$. Comment vérifier par le raisonnement que ta droite est bien la médiatrice, sans mesurer les distances au point milieu ?",
+              "answer": "Par construction, les deux arcs ont le même rayon, donc leurs intersections $M$ et $N$ sont équidistantes de $A$ et de $B$. La droite $(MN)$ passe donc par le milieu de $[AB]$ et lui est perpendiculaire (propriété de l'axe de symétrie d'un segment).",
+              "hint": "Rappelle la définition de la médiatrice comme ensemble des points équidistants des extrémités du segment.",
+              "explanation": "La construction classique de la médiatrice utilise deux arcs de même rayon. Les points d'intersection de ces arcs sont par construction à même distance de $A$ et de $B$. La droite qui les relie est donc l'ensemble de tous les points équidistants de $A$ et $B$, c'est-à-dire la médiatrice. La vérification est dans la construction elle-même."
+            },
+            {
+              "question": "Après avoir construit un parallélogramme $ABCD$ par ses diagonales $[AC]=10\\,\\text{cm}$ et $[BD]=6\\,\\text{cm}$ formant un angle de $60^{\\circ}$, tu constates que $AB \\neq CD$ en mesurant à la règle. Quelle vérification par raisonnement dois-tu faire en premier pour localiser l'erreur ?",
+              "answer": "Vérifier que le point d'intersection $O$ des diagonales est bien le milieu de $[AC]$ (donc $AO = OC = 5\\,\\text{cm}$) et le milieu de $[BD]$ (donc $BO = OD = 3\\,\\text{cm}$). Si ce n'est pas le cas, l'erreur est dans le placement du milieu commun.",
+              "hint": "Quelle est la propriété fondamentale des diagonales d'un parallélogramme qui garantit que les sommets sont bien placés ?",
+              "explanation": "Dans un parallélogramme, les diagonales ont le même milieu. C'est la condition nécessaire et suffisante pour que le quadrilatère soit un parallélogramme. Si les milieux ne coïncident pas, la figure n'est pas un parallélogramme, donc les côtés opposés ne sont pas égaux. On vérifie donc d'abord cette propriété fondatrice."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

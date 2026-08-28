@@ -1,0 +1,183 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.905857+00:00",
+  "id": 457,
+  "code": "3eme-t01-c03",
+  "title": "Fractions irréductibles",
+  "description": "Cours structuré Educalcul : Fractions irréductibles.",
+  "subject": "Nombres, arithmétique, puissances et racines",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Nombres, arithmétique, puissances et racines",
+    "titre_du_cours": "Fractions irréductibles",
+    "objectif_global": "Fractions irréductibles",
+    "mini_lecons_imposees": [
+      "Simplifier.",
+      "Justifier.",
+      "Calculs."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Nombres, arithmétique, puissances et racines",
+      "lessons": [
+        {
+          "title": "Simplifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives partager un immense gâteau d'anniversaire avec tes amis. Si je te dis que tu as droit à $\\frac{12}{24}$ du gâteau, tu vas peut-être froncer les sourcils et essayer de calculer mentalement ce que cela représente. Mais si je te dis, avec un sourire, que tu as droit à $\\frac{1}{2}$ du gâteau, tu comprends instantanément que tu as la moitié du dessert. Pourtant, $\\frac{12}{24}$ et $\\frac{1}{2}$ représentent exactement la même quantité de sucre et de chocolat. C'est là tout l'intérêt des fractions irréductibles. Dans la vie, on préfère toujours la version la plus simple et la plus rapide à comprendre. En mathématiques, c'est pareil. Simplifier une fraction, c'est comme enlever le surplus d'informations pour ne garder que l'essentiel. Ce n'est pas juste une règle scolaire, c'est un outil pour rendre les nombres plus lisibles et les calculs futurs beaucoup moins fatigants. Nous allons apprendre ensemble comment transformer des fractions imposantes en petites fractions élégantes et minimalistes, sans jamais changer la valeur du nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction est dite irréductible lorsqu'on ne peut plus la simplifier. En d'autres termes, elle est irréductible quand le numérateur (le nombre du haut) et le dénominateur (le nombre du bas) n'ont plus aucun diviseur commun autre que $1$. On dit alors que ces deux nombres sont premiers entre eux. Pour simplifier une fraction, on utilise une règle fondamentale des fractions : si on divise le numérateur et le dénominateur par un même nombre non nul, la valeur de la fraction reste inchangée. Par exemple, si nous avons la fraction $\\frac{15}{20}$, nous remarquons que $15$ et $20$ sont tous les deux dans la table de multiplication de $5$. En divisant les deux par $5$, nous obtenons $\\frac{3}{4}$. Ici, $3$ et $4$ n'ont plus de diviseur commun. La fraction $\\frac{3}{4}$ est donc la forme irréductible de $\\frac{15}{20}$. Il est crucial de comprendre que simplifier ne signifie pas rendre le nombre plus petit en valeur, mais réduire l'écriture des nombres utilisés pour exprimer cette valeur. C'est une transformation visuelle qui simplifie la lecture mathématique."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "circle",
+              "caption": "\\frac{1}{2} est la forme irréductible de \\frac{12}{24} ou \\frac{50}{100}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rendre une fraction irréductible, tu peux suivre cette méthode rigoureuse en plusieurs étapes. D'abord, regarde ton numérateur et ton dénominateur. Demande-toi : Est-ce qu'ils sont tous les deux pairs ? Si oui, commence par diviser les deux par $2$. C'est souvent le moyen le plus rapide de débuter. Ensuite, vérifie s'ils sont divisibles par $3$ (en faisant la somme des chiffres) ou par $5$ (s'ils se terminent par $0$ ou $5$). Répète l'opération de division systématiquement. À chaque étape, tu obtiens une nouvelle fraction plus petite. Continue ce processus jusqu'à ce que tu arrives à un moment où il est impossible de trouver un nombre qui divise les deux en même temps. Une astuce efficace consiste à lister les diviseurs du plus petit des deux nombres pour tester rapidement. Si tu connais le PGCD (Plus Grand Commun Diviseur), tu peux simplifier la fraction en une seule étape en divisant directement par ce nombre. Cependant, la méthode des divisions successives est souvent moins stressante et permet d'éviter les erreurs de calcul en allant doucement, pas à pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fraction $\\frac{48}{60}$. Nous voulons la rendre irréductible. \\nÉtape $1$ : Je remarque que $48$ et $60$ sont tous les deux pair, donc je divise par $2$. \\n$48 \\div 2 = 24$ et $60 \\div 2 = 30$. J'obtiens $\\frac{24}{30}$. \\nÉtape $2$ : $24$ et $30$ sont encore pairs. Je divise à nouveau par $2$. \\n$24 \\div 2 = 12$ et $30 \\div 2 = 15$. J'obtiens $\\frac{12}{15}$. \\nÉtape $3$ : $12$ et $15$ ne sont plus pairs. Mais je sais qu'ils sont tous les deux dans la table de $3$. Je divise donc par $3$. \\n$12 \\div 3 = 4$ et $15 \\div 3 = 5$. J'obtiens $\\frac{4}{5}$. \\nÉtape $4$ : Je vérifie les diviseurs de $4$ ($1, 2, 4$) et ceux de $5$ ($1, 5$). Seul le nombre $1$ est commun. \\nLa fraction $\\frac{4}{5}$ est donc irréductible. On a ainsi simplifié $\\frac{48}{60}$ en passant par plusieurs étapes simples. C'est beaucoup plus facile que de chercher le plus grand diviseur dès le début."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons maintenant une fraction avec des nombres plus grands : $\\frac{126}{210}$. Ici, on peut tenter d'être plus rapide. \\nOn voit que les deux nombres se terminent par un chiffre pair, donc on divise par $2$. \\n$126 \\div 2 = 63$ et $210 \\div 2 = 105$. Nous avons désormais $\\frac{63}{105}$. \\nMaintenant, regardons $63$ et $105$. Si on additionne les chiffres de $63$ ($6+3=9$) et ceux de $105$ ($1+0+5=6$), on voit que les deux sommes sont divisibles par $3$. On peut donc diviser par $3$. \\n$63 \\div 3 = 21$ et $105 \\div 3 = 35$. Nous arrivons à $\\frac{21}{35}$. \\nÀ ce stade, on reconnaît tout de suite la table de multiplication de $7$. \\n$21 \\div 7 = 3$ et $35 \\div 7 = 5$. Nous obtenons $\\frac{3}{5}$. \\nComme $3$ et $5$ sont des nombres premiers, ils n'ont aucun diviseur commun autre que $1$. \\nLa fraction irréductible est donc $\\frac{3}{5}$. Ce cheminement montre que même avec des nombres impressionnants, on peut arriver à un résultat très simple en décomposant le problème."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est ce que j'appelle le arrêt prématuré. L'élève simplifie une fois, par exemple $\\frac{12}{24}$ devient $\\frac{6}{12}$, et s'arrête là en pensant avoir terminé. Mais $\\frac{6}{12}$ n'est pas irréductible car on peut encore diviser par $6$. Il faut toujours se demander : Peut-on encore simplifier ? jusqu'à ce que la réponse soit un non définitif. Un autre piège classique est l'erreur de division asymétrique. Certains élèves divisent le numérateur par $2$ mais oublient de diviser le dénominateur, ou utilisent deux diviseurs différents. Rappelle-toi bien que la fraction est comme une balance : tout ce que tu fais en haut, tu dois obligatoirement le faire en bas pour garder l'équilibre. Enfin, attention aux erreurs de calcul mental. Si tu as un doute sur une division, n'hésite pas à poser l'opération sur ton brouillon. Mieux vaut passer $30$ secondes de plus à vérifier que de traîner une erreur dans tout le reste de l'exercice. La rigueur est ta meilleure alliée ici."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $\\frac{36}{48}$ pour la rendre irréductible.",
+              "answer": "\\frac{3}{4}",
+              "hint": "Commence par diviser par $2$ ou $6$.",
+              "explanation": "On peut diviser $36$ et $48$ par $12$. $36 \\div 12 = 3$ et $48 \\div 12 = 4$. On obtient $\\frac{3}{4}$, qui est irréductible car $3$ et $4$ n'ont pas de diviseur commun autre que $1$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es un détective. Tu arrives sur une scène de crime, tu pointes quelqu'un du doigt et tu cries : C'est lui le coupable ! Le juge te regarde et te demande : Mais pourquoi ? Quelle est votre preuve ? Si tu réponds : Je le sens, c'est évident !, le juge ne t'écoutera jamais. En mathématiques, c'est exactement la même chose. Dire qu'une fraction est irréductible, c'est donner le résultat. Justifier pourquoi elle est irréductible, c'est apporter la preuve au juge. En 3e, on ne te demande plus seulement de trouver la bonne réponse, mais de démontrer que ta réponse est la seule possible. Justifier, c'est transformer une intuition en une certitude mathématique. C'est l'étape qui sépare celui qui devine de celui qui sait. Nous allons voir comment utiliser des outils comme le PGCD pour que ta démonstration soit inattaquable et que ton correcteur n'ait aucun doute sur la justesse de ton travail. C'est ici que tu passes du statut d'élève qui calcule à celui d'élève qui raisonne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour justifier qu'une fraction est irréductible, on s'appuie généralement sur la notion de PGCD, le Plus Grand Commun Diviseur. Le PGCD de deux nombres est le plus grand entier qui divise ces deux nombres sans laisser de reste. La propriété fondamentale est la suivante : si on divise le numérateur et le dénominateur d'une fraction par leur PGCD, la fraction obtenue est obligatoirement irréductible. Pourquoi ? Parce qu'en retirant le plus grand diviseur possible, on a épuisé toutes les possibilités de simplification. Par exemple, pour $\\frac{18}{24}$, les diviseurs de $18$ sont $1, 2, 3, 6, 9, 18$ et ceux de $24$ sont $1, 2, 3, 4, 6, 8, 12, 24$. Le plus grand nombre commun est $6$. Donc $PGCD(18, 24) = 6$. En divisant par $6$, on obtient $\\frac{3}{4}$. On peut maintenant affirmer avec certitude que $\\frac{3}{4}$ est irréductible car on a utilisé le diviseur maximal. Une autre façon de justifier est de montrer que le numérateur et le dénominateur sont premiers entre eux, c'est à dire que leur seul diviseur commun est $1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Fraction irréductible} \\iff PGCD(\\text{numérateur}, \\text{dénominateur}) = 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rédiger une justification parfaite, ne laisse aucune place au hasard. Suis ces étapes de rédaction. Première étape : Identifie les diviseurs communs. Écris clairement : On remarque que $numérateur$ et $dénominateur$ sont tous deux divisibles par $d$. Deuxième étape : Effectue le calcul de division et montre le résultat intermédiaire. Troisième étape : Répète l'opération jusqu'à l'irréductibilité. Quatrième étape : Pour conclure et prouver que c'est fini, utilise une phrase de clôture comme : Le numérateur $a$ et le dénominateur $b$ n'ont plus de diviseur commun autre que $1$, donc la fraction est irréductible. Si tu utilises le PGCD, ta rédaction doit être : Le $PGCD$ de $numérateur$ et $dénominateur$ est $X$. En divisant respectively le numérateur et le dénominateur par $X$, on obtient la fraction $\\frac{a}{b}$ qui est donc irréductible. Cette structure montre au correcteur que tu maîtrises non seulement le calcul, mais aussi la logique mathématique. Évite absolument les expressions vagues comme On simplifie et on trouve, car cela ne constitue pas une justification."
+            },
+            {
+              "type": "paragraph",
+              "content": "Justifions que $\\frac{42}{56}$ simplifiée donne $\\frac{3}{4}$. \\nOn commence par chercher les diviseurs de $42$ et $56$. On remarque que les deux nombres sont pairs, on peut donc diviser par $2$. \\n$\\frac{42 \\div 2}{56 \\div 2} = \\frac{21}{28}$. \\nEnsuite, on observe que $21$ et $28$ sont tous les deux dans la table de $7$. \\n$\\frac{21 \\div 7}{28 \\div 7} = \\frac{3}{4}$. \\nPour justifier l'irréductibilité finale, nous écrivons : Le nombre $3$ est un nombre premier et il ne divise pas $4$. Ainsi, le seul diviseur commun à $3$ et $4$ est $1$. \\nOn en conclut que la fraction $\\frac{3}{4}$ est irréductible. \\nIci, la justification est complète car on a montré chaque étape de la division et on a prouvé pourquoi on s'est arrêté à $\\frac{3}{4}$. Le correcteur voit exactement quel chemin nous avons pris pour arriver au résultat."
+            },
+            {
+              "type": "paragraph",
+              "content": "Justifions que la fraction $\\frac{105}{135}$ est égale à $\\frac{7}{9}$ en utilisant le PGCD. \\nCherchons d'abord le PGCD de $105$ et $135$. \\nLes diviseurs de $105$ sont : $1, 3, 5, 7, 15, 21, 35, 105$. \\nLes diviseurs de $135$ sont : $1, 3, 5, 9, 15, 27, 45, 135$. \\nLe plus grand diviseur commun est $15$. On a donc $PGCD(105, 135) = 15$. \\nOn effectue la division : \\n$105 \\div 15 = 7$ \\n$135 \\div 15 = 9$. \\nOn obtient la fraction $\\frac{7}{9}$. \\nComme nous avons divisé le numérateur et le dénominateur par leur plus grand commun diviseur, la fraction $\\frac{7}{9}$ est mathématiquement garantie d'être irréductible. \\nCette méthode est beaucoup plus rapide et élégante. Elle prouve en une seule étape que l'on a atteint la forme la plus simple possible, sans avoir besoin de faire plusieurs petites divisions successives."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est l'oubli de la conclusion. Beaucoup d'élèves font les calculs correctement mais s'arrêtent au résultat numérique. Pour un professeur, un calcul sans conclusion n'est pas une justification. N'oublie jamais d'écrire que les deux nombres sont maintenant premiers entre eux. Un autre piège est l'utilisation du mot evidenciaisemment. Dire On voit evidenciaisemment que c'est irréductible est une faute grave en rédaction mathématique, car ce qui est évident pour toi ne l'est peut-être pas pour le correcteur, et cela ne constitue pas une preuve. Enfin, méfie-toi des erreurs de PGCD. Si tu te trompes de PGCD et que tu divises par un nombre plus petit, ta fraction ne sera pas irréductible. Pour éviter cela, vérifie toujours ton résultat final : si tu peux encore diviser, c'est que ton PGCD était faux ou que tu as fait une erreur de division. Prends l'habitude de tester les petits nombres premiers ($2, 3, 5, 7$) sur ton résultat final pour être sûr à $100\\%$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Justifie par un raisonnement rigoureux que la fraction $\\frac{27}{81}$ simplifiée est $\\frac{1}{3}$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Utilise le PGCD ou des divisions successives et conclus sur le fait que 1 et 3 sont premiers entre eux.",
+              "explanation": "On divise $27$ et $81$ par $27$ car $PGCD(27, 81) = 27$. $27 \\div 27 = 1$ et $81 \\div 27 = 3$. La fraction $\\frac{1}{3}$ est irréductible car le seul diviseur commun à $1$ et $3$ est $1$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives partir en randonnée. Tu as deux choix : soit tu emportes tout ton mobilier de maison dans ton sac à dos, soit tu n'emportes que le strict nécessaire. Lequel de ces deux choix te permettra d'arriver au sommet de la montagne sans être épuisé ? En mathématiques, les fractions non simplifiées sont comme ce mobilier encombrant. Si tu dois additionner $\\frac{120}{180}$ et $\\frac{45}{75}$ sans simplifier, tu vas te retrouver avec des dénominateurs énormes, des multiplications fatigantes et un risque d'erreur multiplié par dix. Mais si tu as l'intelligence de simplifier chaque fraction d'abord, tu transformes ton problème en un petit calcul léger et rapide. Simplifier avant de calculer, c'est comme s'offrir un raccourci secret. C'est la différence entre passer une heure sur un exercice et le terminer en cinq minutes avec assurance. Dans cette leçon, nous allons voir comment intégrer la réduction des fractions dans tes calculs pour devenir beaucoup plus efficace et éviter les erreurs bêtes dues aux grands nombres."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'utilisation des fractions irréductibles dans les calculs repose sur une stratégie simple : réduire la complexité. Lors d'une addition ou d'une soustraction, on doit normalement mettre les fractions au même dénominateur. Si les fractions ne sont pas simplifiées, le dénominateur commun peut devenir gigantesque. En simplifiant d'abord, on travaille avec des nombres plus petits, ce qui rend la recherche du dénominateur commun beaucoup plus simple. Pour la multiplication, c'est encore plus puissant. On peut simplifier non seulement les fractions individuellement, mais aussi simplifier un numérateur d'une fraction avec le dénominateur d'une autre (simplification croisée). L'objectif est toujours le même : arriver à l'étape finale avec les nombres les plus petits possibles. Cependant, attention : on ne simplifie jamais un numérateur avec un dénominateur lors d'une addition. La simplification se fait soit sur chaque fraction séparément, soit sur le résultat final. Le secret des meilleurs élèves en maths est qu'ils ne calculent jamais avec des fractions brutes, ils les domptent d'abord en les rendant irréductibles."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} \\times \\frac{c}{d} = \\frac{a \\times c}{b \\times d} \\text{ (Simplifier avant de multiplier !)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la stratégie gagnante pour tout calcul impliquant des fractions. Première étape : L'audit. Regarde chaque fraction du calcul. Est-elle simplifiable ? Si oui, rends-la irréductible immédiatement. C'est l'étape la plus importante pour s'alléger. Deuxième étape : L'opération. Effectue ton addition, soustraction ou multiplication avec ces nouvelles fractions simplifiées. Le calcul sera beaucoup plus fluide. Troisième étape : La vérification finale. Une fois que tu as obtenu ton résultat, ne t'arrête pas là. Vérifie si le résultat final est irréductible. Il arrive souvent qu'en additionnant deux fractions irréductibles, on obtienne un résultat qui peut encore être simplifié. Par exemple, $\\frac{1}{6} + \\frac{1}{6} = \\frac{2}{6}$, qui doit être simplifiée en $\\frac{1}{3}$. En suivant cet ordre (Simplifier $\\rightarrow$ Calculer $\\rightarrow$ Simplifier), tu blindes ton exercice contre les erreurs. C'est une routine systématique qui garantit un résultat propre et professionnel."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons la somme suivante : $S = \\frac{45}{60} + \\frac{14}{21}$. \\nSi on ne simplifie pas, on devrait chercher un dénominateur commun entre $60$ et $21$, ce qui est long. \\nUtilisons la stratégie. \\nSimplifions $\\frac{45}{60}$ : on divise par $15$, on obtient $\\frac{3}{4}$. \\nSimplifions $\\frac{14}{21}$ : on divise par $7$, on obtient $\\frac{2}{3}$. \\nLe calcul devient : $S = \\frac{3}{4} + \\frac{2}{3}$. \\nLe dénominateur commun est $12$. \\n$S = \\frac{3 \\times 3}{4 \\times 3} + \\frac{2 \\times 4}{3 \\times 4} = \\frac{9}{12} + \\frac{8}{12} = \\frac{17}{12}$. \\nOn vérifie si $\\frac{17}{12}$ est irréductible. $17$ est un nombre premier et ne divise pas $12$. \\nLe résultat final est donc $\\frac{17}{12}$. \\nRegarde la différence : nous avons manipulé des nombres comme $3, 4, 2, 3$ au lieu de $45, 60, 14, 21$. C'est beaucoup moins stressant et beaucoup plus rapide."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons le produit suivant : $P = \\frac{15}{28} \\times \\frac{14}{45}$. \\nIci, on peut utiliser la simplification croisée avant même de multiplier. \\nRegardons le numérateur $15$ et le dénominateur $45$. On voit que $45 = 15 \\times 3$. On peut donc simplifier par $15$. \\nLe $15$ devient $1$ et le $45$ devient $3$. \\nRegardons maintenant le numérateur $14$ et le dénominateur $28$. On voit que $28 = 14 \\times 2$. On peut simplifier par $14$. \\nLe $14$ devient $1$ et le $28$ devient $2$. \\nLe calcul se transforme alors en : $P = \\frac{1}{2} \\times \\frac{1}{3}$. \\nC'est un calcul élémentaire : $P = \\frac{1 \\times 1}{2 \\times 3} = \\frac{1}{6}$. \\nSi nous avions multiplié sans simplifier, nous aurions eu $\\frac{210}{1260}$, et nous aurions passé un temps fou à simplifier ce monstre pour finalement trouver $\\frac{1}{6}$. La simplification croisée est un gain de temps phénoménal."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège absolu, celui qui coûte le plus de points, est la simplification interdite dans l'addition. Certains élèves voient $\\frac{3}{5} + \\frac{2}{3}$ et pensent simplifier le $3$ du numérateur avec le $3$ du dénominateur. C'est strictement interdit ! On ne peut simplifier croisément que lors d'une multiplication. Dans une addition, on ne simplifie que verticalement (numérateur avec dénominateur de la même fraction). Un autre piège est l'oubli du résultat final. L'élève simplifie au début, fait son calcul, et donne un résultat comme $\\frac{10}{20}$ sans le transformer en $\\frac{1}{2}$. En 3e, un résultat non simplifié est souvent considéré comme une réponse incomplète. Enfin, attention à la précipitation. À force de vouloir simplifier vite, on peut faire une erreur de division. Prends toujours une seconde pour vérifier que ton PGCD est correct. Une simplification fausse au début fausse tout le reste du calcul, contrairement à une erreur à la fin qui peut être corrigée plus facilement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $C = \\frac{12}{15} + \\frac{10}{25}$ et donne le résultat sous forme irréductible.",
+              "answer": "\\frac{13}{15}",
+              "hint": "Simplifie d'abord chaque fraction séparément avant de chercher le dénominateur commun.",
+              "explanation": "Simplification : $\\frac{12}{15} = \\frac{4}{5}$ (divisé par $3$) et $\\frac{10}{25} = \\frac{2}{5}$ (divisé par $5$). Le calcul devient $\\frac{4}{5} + \\frac{2}{5} = \\frac{6}{5}$. Mais attendons, vérifions les calculs. $\\frac{4}{5} + \\frac{2}{5} = \\frac{6}{5}$. Le résultat est $\\frac{6}{5}$, qui est irréductible."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

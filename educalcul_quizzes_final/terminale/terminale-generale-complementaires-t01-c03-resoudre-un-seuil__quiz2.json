@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter la résolution d'un seuil",
+  "questions": [
+    {
+      "text": "Une population de bactéries évolue selon la fonction $f(t) = 100 \\times e^{0,2t}$ où $t$ est le temps en heures. On cherche le moment où la population atteint le seuil de $500$ individus. Que signifie mathématiquement l'expression $f(t) = 500$ dans ce contexte ?",
+      "options": [
+        "On cherche la valeur de l'effectif initial",
+        "On cherche l'instant $t$ pour lequel la population est égale à $500$",
+        "On cherche la vitesse de croissance quand la population vaut $500$",
+        "On cherche la population après $500$ heures"
+      ],
+      "correctAnswer": "On cherche l'instant $t$ pour lequel la population est égale à $500$",
+      "explanation": "L'équation $f(t) = 500$ consiste à fixer la valeur de l'image (le seuil) pour déterminer l'antécédent $t$. Ici, l'antécédent représente le temps nécessaire pour atteindre l'effectif cible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le coût de production d'un objet est modélisé par $C(x) = 0,5x + 200$ avec $x$ le nombre d'objets. On résout $C(x) = 400$. Que représente la solution $x$ trouvée ?",
+      "options": [
+        "Le coût marginal pour produire un objet supplémentaire",
+        "Le profit réalisé pour $400$ objets",
+        "La quantité d'objets à produire pour que le coût soit de $400$ unités monétaires",
+        "Le coût fixe de production"
+      ],
+      "correctAnswer": "La quantité d'objets à produire pour que le coût soit de $400$ unités monétaires",
+      "explanation": "Résoudre $C(x) = 400$ revient à chercher pour quelle valeur de la variable $x$ (la quantité) la fonction $C$ atteint la valeur $400$ (le seuil de coût).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On étudie le refroidissement d'un liquide avec $T(t) = 20 + 60 e^{-0,1t}$. On souhaite savoir quand la température descend en dessous de $30$ degrés. Quelle inéquation traduit cette situation et comment interpréter son ensemble de solutions ?",
+      "options": [
+        "$T(t) = 30$, la solution est un instant précis",
+        "$T(t) < 30$, les solutions sont tous les instants où le liquide est assez froid",
+        "$T(t) > 30$, les solutions sont les instants où le liquide est encore trop chaud",
+        "$T'(t) = 30$, la solution est la vitesse de refroidissement"
+      ],
+      "correctAnswer": "$T(t) < 30$, les solutions sont tous les instants où le liquide est assez froid",
+      "explanation": "Le terme dessous de indique une inégalité stricte. L'ensemble des solutions représente l'intervalle de temps durant lequel le seuil de $30$ degrés est franchi et maintenu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $g(x) = \\ln(x + 1)$ représentant le niveau sonore d'une machine. On résout $g(x) = 80$ et on trouve $x \\approx 2,9 \\times 10^{34}$. Si l'on découvre que le seuil réel de danger est $g(x) = 90$, comment l'image de la solution va-t-elle évoluer ?",
+      "options": [
+        "La valeur de $x$ va diminuer car le seuil augmente",
+        "La valeur de $x$ va rester identique car la fonction est logarithmique",
+        "La valeur de $x$ va augmenter car $g$ est une fonction croissante",
+        "La valeur de $x$ va devenir négative"
+      ],
+      "correctAnswer": "La valeur de $x$ va augmenter car $g$ est une fonction croissante",
+      "explanation": "Puisque la fonction $g$ est croissante, pour atteindre un seuil plus élevé ($90$ au lieu de $80$), il faut nécessairement augmenter la valeur de la variable $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un investissement évolue selon $V(t) = 1000(1,05)^{t}$. On cherche $t$ tel que $V(t) = 2000$. Graphiquement, cela correspond à l'intersection de la courbe de $V$ et d'une droite horizontale d'équation $y = 2000$. Quelle est l'interprétation concrète de l'abscisse de ce point ?",
+      "options": [
+        "Le montant total des intérêts gagnés",
+        "Le taux de croissance annuel",
+        "La durée nécessaire pour doubler le capital initial",
+        "La valeur du capital après deux mille ans"
+      ],
+      "correctAnswer": "La durée nécessaire pour doubler le capital initial",
+      "explanation": "Le capital initial est de $1000$. Le seuil fixé est $2000$, soit le double. L'abscisse $t$ du point d'intersection représente donc le temps nécessaire pour atteindre ce doublement.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "1000*(1.05)^x",
+        "xmin": 0,
+        "xmax": 50,
+        "caption": "Évolution de la valeur V en fonction du temps t"
+      }
+    }
+  ]
+}

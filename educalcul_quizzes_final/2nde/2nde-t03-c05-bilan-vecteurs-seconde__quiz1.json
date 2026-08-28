@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Opérations et applications",
+  "title": "Quiz - Operations et applications (Vecteurs)",
+  "questions": [
+    {
+      "text": "Soient les vecteurs $u = (2, -3)$ et $v = (-1, 4)$. Calculez $u + v$.",
+      "options": [
+        "(1, 1)",
+        "(3, -7)",
+        "(1, -7)",
+        "(-1, 1)"
+      ],
+      "correctAnswer": "(1, 1)",
+      "explanation": "Pour additionner deux vecteurs, on additionne leurs coordonnees respectives : (2 + (-1), -3 + 4) = (1, 1). Les autres options correspondent a des erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $u = (-2, 5)$. Determinez le vecteur $3u$.",
+      "options": [
+        "(-6, 15)",
+        "(-6, 5)",
+        "(-2, 15)",
+        "(6, -15)"
+      ],
+      "correctAnswer": "(-6, 15)",
+      "explanation": "Multiplier un vecteur par un scalaire multiplie chaque coordonnee : 3 * (-2, 5) = (-6, 15). Les distracteurs proviennent d'une multiplication partielle ou d'un signe inverse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repere, les vecteurs $\\overrightarrow{AB} = (3, -2)$ et $\\overrightarrow{BC} = (-1, 5)$. Quel est le vecteur $\\overrightarrow{AC}$ ?",
+      "options": [
+        "(2, 3)",
+        "(4, -7)",
+        "(2, -7)",
+        "(4, 3)"
+      ],
+      "correctAnswer": "(2, 3)",
+      "explanation": "La relation de Chasles donne $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = (3 + (-1), -2 + 5) = (2, 3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A(2, -1)$ et $B(8, 5)$. Le point $M$ est le milieu de $[AB]$. Quel est le vecteur $\\overrightarrow{AM}$ ?",
+      "options": [
+        "(3, 3)",
+        "(6, 6)",
+        "(4, 2)",
+        "(2, 4)"
+      ],
+      "correctAnswer": "(3, 3)",
+      "explanation": "Le vecteur $\\overrightarrow{AB} = (8-2, 5-(-1)) = (6, 6)$. Le milieu $M$ satisfait $\\overrightarrow{AM} = \\frac{1}{2}\\overrightarrow{AB} = (3, 3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle valeur de $k$ rend les vecteurs $u = (2, k)$ et $v = (4, 6)$ colineaires ?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Deux vecteurs sont colineaires s'il existe un reel $\\lambda$ tel que $u = \\lambda v$. Ici $2 = 4\\lambda$ donc $\\lambda = 1/2$, et $k = \\lambda \\cdot 6 = 3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

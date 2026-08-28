@@ -1,0 +1,531 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.728872+00:00",
+  "id": 397,
+  "code": "5eme-t04-c03",
+  "title": "Parallélogrammes",
+  "description": "Cours structuré Educalcul : Parallélogrammes.",
+  "subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Géométrie plane : angles, triangles et parallélogrammes",
+    "titre_du_cours": "Parallélogrammes",
+    "objectif_global": "Parallélogrammes",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Reconnaître.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane : angles, triangles et parallélogrammes",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un parallélogramme ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un terrain de jeu délimité par quatre cordes tendues. Si les deux cordes du fond sont parallèles entre elles, et que les deux cordes des côtés le sont aussi, tu obtiens une figure bien particulière : un parallélogramme. En géométrie, on dit qu'un quadrilatère est un parallélogramme lorsque ses deux paires de côtés opposés sont parallèles deux à deux. C'est la définition de base, celle dont tout part. Prenons un exemple concret : dans un parallélogramme $ABCD$, le côté $AB$ est parallèle à $CD$, et le côté $BC$ est parallèle à $AD$. On le note souvent avec de petits traits sur les côtés : un trait sur $AB$ et $CD$, deux traits sur $BC$ et $AD$."
+            },
+            {
+              "type": "definition",
+              "term": "Parallélogramme",
+              "definition": "Un quadrilatère dont les deux paires de côtés opposés sont parallèles.",
+              "example": "Dans $ABCD$, $(AB) \\parallel (CD)$ et $(BC) \\parallel (AD)$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Parallélogramme $ABCD$ : côtés opposés parallèles",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c",
+                "d"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition est posée, regardons ce qui se passe pour les longueurs. Si tu construis un parallélogramme avec des pailles ou des bâtonnets, tu remarqueras quelque chose d'étonnant : les côtés opposés ont exactement la même longueur. Ce n'est pas un hasard, c'est une propriété qui se démontre. Dans $ABCD$, comme $(AB) \\parallel (CD)$ et $(BC) \\parallel (AD)$, les angles alternes-internes sont égaux, ce qui permet de montrer que les triangles $ABC$ et $CDA$ sont égaux. Du coup, $AB = CD$ et $BC = AD$. C'est une propriété très utile : dès que tu sais qu'une figure est un parallélogramme, tu connais déjà la longueur de deux côtés si tu connais les deux autres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer une diagonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la diagonale $[AC]$. Elle coupe le parallélogramme en deux triangles : $ABC$ et $CDA$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les angles égaux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme $(AB) \\parallel (CD)$, les angles alternes-internes $\\widehat{BAC}$ et $\\widehat{DCA}$ sont égaux. De même, $\\widehat{BCA} = \\widehat{DAC}$ car $(BC) \\parallel (AD)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure l'égalité des triangles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les triangles $ABC$ et $CDA$ ont un côté commun $[AC]$ et les deux angles adjacents égaux. Ils sont donc égaux (cas AAS). Donc $AB = CD$ et $BC = AD$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les côtés opposés ont même longueur, mais qu'en est-il des angles ? Tiens-toi bien : les angles opposés sont aussi égaux deux à deux ! Dans notre parallélogramme $ABCD$, l'angle en $A$ a la même mesure que l'angle en $C$, et l'angle en $B$ égale celui en $D$. Pourquoi ? Parce que les triangles $ABC$ et $CDA$ sont égaux, comme on vient de le voir. L'angle $\\widehat{A}$ du parallélogramme est composé de $\\widehat{BAC}$ et $\\widehat{DAC}$, tandis que l'angle $\\widehat{C}$ est composé de $\\widehat{BCA}$ et $\\widehat{DCA}$. Comme ces paires d'angles sont égales, les angles opposés le sont aussi. Une conséquence pratique : si tu connais un angle, tu connais son opposé, et comme la somme des angles d'un quadrilatère vaut $360^{\\circ}$, tu peux trouver les deux autres."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\widehat{A} = \\widehat{C} \\quad \\text{et} \\quad \\widehat{B} = \\widehat{D}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste une propriété fascinante : les diagonales. Trace les deux diagonales $[AC]$ et $[BD]$. Elles se croisent en un point $O$. Eh bien, ce point $O$ est le milieu des deux diagonales ! Autrement dit, $AO = OC$ et $BO = OD$. Les diagonales se coupent en leur milieu commun. C'est souvent la propriété la plus pratique pour reconnaître un parallélogramme sur un dessin, ou pour placer le quatrième sommet quand on en connaît trois. Pour le prouver, on utilise encore l'égalité des triangles, mais cette fois formés par l'intersection des diagonales. Les angles opposés par le sommet sont égaux, et on a déjà montré que les côtés opposés sont égaux, donc les triangles $AOB$ et $COD$ sont égaux, ce qui donne $AO = OC$ et $BO = OD$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Parallélogramme avec diagonales se coupant en leur milieu $O$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le parallélogramme $EFGH$, on sait que $EF = 7 \\, cm$ et $FG = 5 \\, cm$. Quelles sont les longueurs de $GH$ et $HE$ ?",
+              "answer": "$GH = 7 \\, cm$ et $HE = 5 \\, cm$",
+              "hint": "Rappelle-toi la propriété des côtés opposés dans un parallélogramme.",
+              "explanation": "Dans un parallélogramme, les côtés opposés ont même longueur. $GH$ est opposé à $EF$, donc $GH = EF = 7 \\, cm$. $HE$ est opposé à $FG$, donc $HE = FG = 5 \\, cm$."
+            },
+            {
+              "question": "Dans le parallélogramme $IJKL$, l'angle $\\widehat{I}$ mesure $110^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{K}$ ? Et celle de $\\widehat{J}$ ?",
+              "answer": "$\\widehat{K} = 110^{\\circ}$ et $\\widehat{J} = 70^{\\circ}$",
+              "hint": "Les angles opposés sont égaux. La somme des angles d'un quadrilatère vaut $360^{\\circ}$.",
+              "explanation": "Les angles opposés sont égaux : $\\widehat{K} = \\widehat{I} = 110^{\\circ}$. La somme des quatre angles vaut $360^{\\circ}$, donc $\\widehat{J} + \\widehat{L} = 360^{\\circ} - 2 \\times 110^{\\circ} = 140^{\\circ}$. Comme $\\widehat{J} = \\widehat{L}$, chacun vaut $70^{\\circ}$."
+            },
+            {
+              "question": "Les diagonales d'un parallélogramme $MNOP$ se coupent en $Q$. On donne $MQ = 4,5 \\, cm$ et $NQ = 3,2 \\, cm$. Quelles sont les longueurs des diagonales $[MP]$ et $[NO]$ ?",
+              "answer": "$MP = 9 \\, cm$ et $NO = 6,4 \\, cm$",
+              "hint": "Le point d'intersection des diagonales est leur milieu commun.",
+              "explanation": "Les diagonales se coupent en leur milieu. $Q$ est le milieu de $[MP]$, donc $MP = 2 \\times MQ = 2 \\times 4,5 = 9 \\, cm$. De même, $Q$ est le milieu de $[NO]$, donc $NO = 2 \\times NQ = 2 \\times 3,2 = 6,4 \\, cm$."
+            },
+            {
+              "question": "Vrai ou faux ? Dans un parallélogramme, les diagonales sont perpendiculaires. Justifie ta réponse.",
+              "answer": "Faux. Les diagonales se coupent en leur milieu mais ne sont pas nécessairement perpendiculaires (c'est vrai seulement pour le losange).",
+              "hint": "Pense à un rectangle : ses diagonales se coupent au milieu mais forment un angle aigu.",
+              "explanation": "La propriété générale est : les diagonales se coupent en leur milieu. Elles sont perpendiculaires seulement dans le cas particulier du losange (et du carré). Dans un parallélogramme quelconque, comme un rectangle non carré, les diagonales ne sont pas perpendiculaires."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment reconnaître un parallélogramme ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as devant toi un quadrilatère sur une feuille. Comment être sûr que c'est un parallélogramme sans mesurer tous les angles ? Heureusement, il existe plusieurs critères de reconnaissance, comme des clés qui ouvrent la même porte. Le premier critère, c'est la définition elle-même : si tu parviens à montrer que les deux paires de côtés opposés sont parallèles, c'est gagné. Sur un quadrillage, c'est facile à voir : compte les cases pour vérifier que les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont identiques, et que $\\overrightarrow{BC}$ et $\\overrightarrow{AD}$ le sont aussi. Mais souvent, on n'a pas de quadrillage sous la main. Il faut alors utiliser d'autres critères, basés sur les longueurs ou les angles, qu'on peut vérifier à la règle et au rapporteur."
+            },
+            {
+              "type": "definition",
+              "term": "Critère de reconnaissance",
+              "definition": "Une propriété qui, si elle est vérifiée, permet d'affirmer qu'une figure est un parallélogramme (réciproque d'une propriété).",
+              "example": "Si les côtés opposés sont égaux, alors c'est un parallélogramme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le critère le plus utilisé au collège, c'est celui des longueurs. Si tu mesures les quatre côtés d'un quadrilatère et que tu constates que les côtés opposés ont deux à deux la même longueur, alors tu peux affirmer sans risque que c'est un parallélogramme. C'est la réciproque de la propriété vue précédemment. Attention : il faut bien que ce soient les côtés *opposés* qui soient égaux, pas les côtés consécutifs ! Un cerf-volant a deux paires de côtés consécutifs égaux, mais ce n'est pas un parallélogramme. Pour l'appliquer, mesure $AB$ et $CD$, puis $BC$ et $AD$. Si $AB = CD$ et $BC = AD$, c'est un parallélogramme. Ce critère est pratique car la règle est souvent plus précise que l'équerre pour tracer des parallèles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesurer les quatre côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ta règle, mesure $AB$, $BC$, $CD$ et $DA$. Note les valeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les opposés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si $AB = CD$ et si $BC = AD$. Les deux égalités doivent être vraies."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux paires de côtés opposés sont égales, le quadrilatère est un parallélogramme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre possibilité : utiliser les angles. Si tu mesures les angles et que tu trouves que les angles opposés sont égaux deux à deux, alors c'est aussi un parallélogramme. C'est la réciproque de la propriété sur les angles. Concrètement, si $\\widehat{A} = \\widehat{C}$ et $\\widehat{B} = \\widehat{D}$, la figure est un parallélogramme. Ce critère est très utile quand tu as un rapporteur mais pas de règle graduée précise, ou quand la figure est grande. Attention cependant : mesurer des angles au degré près peut laisser une petite marge d'erreur. Si tu trouves $110^{\\circ}$ et $109^{\\circ}$, ce n'est pas assez pour conclure. Il faut des mesures fiables, ou mieux, combiner ce critère avec un autre pour être certain."
+            },
+            {
+              "type": "display_math",
+              "latex": "Si \\ \\widehat{A} = \\widehat{C} \\ \\text{et} \\ \\widehat{B} = \\widehat{D} \\ \\text{alors} \\ ABCD \\ \\text{est un parallélogramme}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un critère puissant, souvent le plus rapide quand on a les diagonales : le milieu commun. Si tu traces les deux diagonales et que tu constates qu'elles se coupent en leur milieu (c'est-à-dire que le point d'intersection est à égale distance des deux extrémités de chaque diagonale), alors c'est un parallélogramme. C'est la réciproque de la propriété des diagonales. Sur un dessin, tu peux vérifier en mesurant $AO$ et $OC$, puis $BO$ et $OD$. Si $AO = OC$ et $BO = OD$, c'est gagné. Ce critère est royal quand on travaille dans un repère ou avec des coordonnées : le milieu d'un segment se calcule facilement. C'est aussi celui qu'on utilise souvent en preuve pour montrer qu'un quadrilatère est un parallélogramme sans passer par les parallèles."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Quadrilatère dont les diagonales se coupent en leur milieu $O$ : c'est un parallélogramme",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résumer, tu as maintenant quatre clés en main pour reconnaître un parallélogramme : côtés opposés parallèles (définition), côtés opposés égaux, angles opposés égaux, diagonales même milieu. En classe, on utilise surtout les deux du milieu : côtés opposés égaux et diagonales même milieu. Pourquoi ? Parce qu'ils sont faciles à vérifier avec les instruments du cartable (règle, compas) et qu'ils ne demandent pas de tracer des parallèles, ce qui peut être source d'erreur. La prochaine fois que tu as un quadrilatère suspect sous les yeux, choisis le critère le plus commode selon ce que tu peux mesurer facilement. Et souviens-toi : un seul critère suffit, pas besoin de tous les vérifier !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a un quadrilatère $RSTU$ avec $RS = 6 \\, cm$, $ST = 4 \\, cm$, $TU = 6 \\, cm$, $UR = 4 \\, cm$. Peut-on affirmer que $RSTU$ est un parallélogramme ?",
+              "answer": "Oui, car les côtés opposés sont égaux deux à deux ($RS = TU$ et $ST = UR$).",
+              "hint": "Vérifie si les côtés opposés ont même longueur.",
+              "explanation": "On a $RS = TU = 6 \\, cm$ et $ST = UR = 4 \\, cm$. Les deux paires de côtés opposés sont égales, donc $RSTU$ est un parallélogramme (critère des côtés opposés égaux)."
+            },
+            {
+              "question": "Dans le quadrilatère $VWXY$, on mesure $\\widehat{V} = 75^{\\circ}$, $\\widehat{W} = 105^{\\circ}$, $\\widehat{X} = 75^{\\circ}$, $\\widehat{Y} = 105^{\\circ}$. Est-ce un parallélogramme ?",
+              "answer": "Oui, car les angles opposés sont égaux deux à deux ($\\widehat{V} = \\widehat{X}$ et $\\widehat{W} = \\widehat{Y}$).",
+              "hint": "Regarde si les angles opposés ont même mesure.",
+              "explanation": "Les angles opposés sont $\\widehat{V}$ et $\\widehat{X}$ (tous deux $75^{\\circ}$), et $\\widehat{W}$ et $\\widehat{Y}$ (tous deux $105^{\\circ}$). Les angles opposés sont égaux deux à deux, donc $VWXY$ est un parallélogramme (critère des angles opposés égaux)."
+            },
+            {
+              "question": "Les diagonales d'un quadrilatère $ABCD$ se coupent en $O$. On a $AO = 3,5 \\, cm$, $OC = 3,5 \\, cm$, $BO = 4,2 \\, cm$, $OD = 4,2 \\, cm$. Que peut-on conclure ?",
+              "answer": "$ABCD$ est un parallélogramme car ses diagonales ont même milieu.",
+              "hint": "Vérifie si le point d'intersection est le milieu des deux diagonales.",
+              "explanation": "On a $AO = OC = 3,5 \\, cm$ et $BO = OD = 4,2 \\, cm$. Le point $O$ est le milieu de $[AC]$ et de $[BD]$. Les diagonales ont même milieu, donc $ABCD$ est un parallélogramme (critère des diagonales)."
+            },
+            {
+              "question": "Un quadrilatère a $AB = 5 \\, cm$, $BC = 5 \\, cm$, $CD = 5 \\, cm$, $DA = 5 \\, cm$. Est-ce nécessairement un parallélogramme ?",
+              "answer": "Oui, c'est même un losange (cas particulier de parallélogramme).",
+              "hint": "Les côtés opposés sont-ils égaux ?",
+              "explanation": "Tous les côtés mesurent $5 \\, cm$. Donc $AB = CD$ et $BC = DA$. Les côtés opposés sont égaux deux à deux, donc c'est un parallélogramme. Comme les quatre côtés sont égaux, c'est plus précisément un losange."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un parallélogramme : les méthodes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire un parallélogramme, c'est comme assembler un meuble : il faut suivre les étapes dans l'ordre, avec les bons outils. Selon les données du problème (longueurs, angles, diagonales), tu auras plusieurs méthodes à ta disposition. La première, la plus classique, utilise la règle et l'équerre pour tracer des parallèles. Suppose qu'on te donne deux côtés consécutifs et l'angle entre eux, par exemple $AB = 6 \\, cm$, $BC = 4 \\, cm$ et $\\widehat{B} = 60^{\\circ}$. Tu commences par tracer le segment $[AB]$. Ensuite, à l'équerre, tu traces la droite parallèle à $(AB)$ passant par un point... mais attends, on ne connaît pas encore le point $C$ ! La méthode correcte : trace $[AB]$, puis à $B$, construis l'angle de $60^{\\circ}$ et sur son autre côté, repère $C$ tel que $BC = 4 \\, cm$. Là, tu as trois sommets. Pour le quatrième, trace la parallèle à $(AB)$ passant par $C$, et la parallèle à $(BC)$ passant par $A$. Leur intersection, c'est $D$ !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $[AB]$ de la longueur donnée (ici $6 \\, cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'angle et le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au point $B$, trace l'angle donné ($60^{\\circ}$) avec le rapporteur. Sur l'autre demi-droite, repère $C$ tel que $BC = 4 \\, cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer les parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la parallèle à $(AB)$ passant par $C$ (règle + équerre). Trace la parallèle à $(BC)$ passant par $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Trouver le quatrième sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intersection des deux parallèles est le point $D$. Relie $A$, $B$, $C$, $D$ : tu as ton parallélogramme !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on te donne les deux diagonales et leur angle ? Ou les longueurs des diagonales et l'angle qu'elles forment ? Là, la méthode des parallèles ne marche pas directement. Heureusement, il y a la méthode du compas, qui utilise la propriété des diagonales. Rappelle-toi : les diagonales se coupent en leur milieu. Donc si on te donne les diagonales $[AC]$ et $[BD]$ qui se coupent en $O$ avec $AO = OC$ et $BO = OD$, tu peux construire le parallélogramme ainsi : trace d'abord une diagonale, disons $[AC]$, et marque son milieu $O$. Puis trace la seconde diagonale $[BD]$ centrée en $O$ (donc $BO = OD$). Les quatre points $A$, $B$, $C$, $D$ sont les sommets du parallélogramme ! Il suffit de les relier dans l'ordre. Cette méthode est élégante car elle n'utilise que la règle et le compas, pas l'équerre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la première diagonale et son milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $[AC]$ de la longueur donnée. Construis son milieu $O$ (médiatrice au compas)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Placer la seconde diagonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'angle entre diagonales est donné, trace une droite passant par $O$ formant cet angle avec $(AC)$. Sinon, trace n'importe quelle droite par $O$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter les demi-longueurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur cette droite, de part et d'autre de $O$, repère $B$ et $D$ tels que $OB = OD = \\frac{1}{2} \\times \\text{longueur de la 2e diagonale}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Relier les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $A$, $B$, $C$, $D$ dans l'ordre. $ABCD$ est le parallélogramme cherché."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième situation fréquente : on te donne les longueurs des quatre côtés (deux paires égales) et une diagonale. Par exemple $AB = 7 \\, cm$, $BC = 5 \\, cm$, et la diagonale $AC = 8 \\, cm$. Ici, pas de parallèles à tracer, pas de diagonales à centrer. On utilise la construction de triangles ! Le parallélogramme est composé de deux triangles égaux $ABC$ et $CDA$ qui partagent la diagonale $[AC]$. Tu construis d'abord le triangle $ABC$ avec les trois longueurs connues ($AB$, $BC$, $AC$) : c'est la construction classique d'un triangle à trois côtés (règle + compas). Une fois le triangle $ABC$ tracé, il te reste à placer $D$. Comme $ABCD$ est un parallélogramme, $D$ est le symétrique de $B$ par rapport au milieu de $[AC]$. Ou plus simplement : trace le cercle centre $A$ de rayon $BC$ ($5 \\, cm$) et le cercle centre $C$ de rayon $AB$ ($7 \\, cm$). Leur intersection (celle du côté opposé à $B$ par rapport à $AC$) est $D$ !"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Construction par triangles : $ABC$ connu, $D$ intersection de deux cercles",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "8 cm",
+                "5 cm",
+                "7 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier cas : construire un parallélogramme quand on connaît un côté, une diagonale et l'angle qu'elles forment. Disons $AB = 6 \\, cm$, diagonale $AC = 9 \\, cm$, et $\\widehat{BAC} = 40^{\\circ}$. Trace $[AB]$. Au point $A$, construis l'angle de $40^{\\circ}$. Sur son autre côté, repère $C$ tel que $AC = 9 \\, cm$. Tu as maintenant le triangle $ABC$. Pour trouver $D$, utilise la propriété du milieu : le milieu $O$ de $[AC]$ est aussi le milieu de $[BD]$. Construis le milieu $O$ de $[AC]$. Puis trace le cercle centre $O$ passant par $B$. La droite $(BO)$ coupe ce cercle en $B$ et en un autre point : c'est $D$ ! (Car $O$ est le milieu de $[BD]$, donc $OB = OD$). Relie $A$, $B$, $C$, $D$. C'est fait. Cette méthode mélange angle, longueur et symétrie centrale : c'est souvent celle qu'on préfère quand les données mêlent angles et diagonales."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le côté et l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace $[AB] = 6 \\, cm$. En $A$, construis l'angle $40^{\\circ}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Placer la diagonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'autre côté de l'angle, repère $C$ tel que $AC = 9 \\, cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver le milieu et le symétrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Construit le milieu $O$ de $[AC]$. Trace le cercle centre $O$ rayon $OB$. La droite $(BO)$ coupe ce cercle en $D$ (différent de $B$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Terminer la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $A$, $B$, $C$, $D$. $ABCD$ est le parallélogramme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la définition d'un parallélogramme (côtés opposés parallèles).",
+                "Je connais les quatre propriétés : côtés opposés égaux, angles opposés égaux, diagonales même milieu.",
+                "Je sais utiliser au moins deux critères pour reconnaître un parallélogramme (côtés opposés égaux, diagonales même milieu, angles opposés égaux).",
+                "Je sais construire un parallélogramme avec la règle et l'équerre (données : deux côtés consécutifs et l'angle).",
+                "Je sais construire un parallélogramme avec le compas (données : les deux diagonales).",
+                "Je sais construire un parallélogramme par construction de triangles (données : trois côtés dont une diagonale).",
+                "Je sais construire un parallélogramme par symétrie centrale (données : un côté, une diagonale, l'angle entre eux)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut construire le parallélogramme $EFGH$ avec $EF = 7 \\, cm$, $FG = 5 \\, cm$ et $\\widehat{F} = 120^{\\circ}$. Quelle est la première étape ?",
+              "answer": "Tracer le segment $[EF] = 7 \\, cm$.",
+              "hint": "Commence toujours par tracer un côté dont tu connais la longueur.",
+              "explanation": "La construction par parallèles commence par tracer l'un des côtés consécutifs connus. Ici, $[EF] = 7 \\, cm$ est la base de départ."
+            },
+            {
+              "question": "Pour construire un parallélogramme dont les diagonales mesurent $10 \\, cm$ et $6 \\, cm$ et forment un angle de $80^{\\circ}$, par où commence-t-on ?",
+              "answer": "On trace la première diagonale (par exemple $10 \\, cm$) et on construit son milieu.",
+              "hint": "La propriété clé : les diagonales se coupent en leur milieu commun.",
+              "explanation": "La méthode des diagonales commence par tracer l'une des diagonales et trouver son milieu $O$. La seconde diagonale passera par $O$ avec ses demi-longueurs ($3 \\, cm$ de chaque côté) et formera l'angle donné avec la première."
+            },
+            {
+              "question": "On a $AB = 8 \\, cm$, $BC = 5 \\, cm$, diagonale $AC = 9 \\, cm$. Après avoir construit le triangle $ABC$, comment obtenir le point $D$ ?",
+              "answer": "Trace le cercle centre $A$ de rayon $5 \\, cm$ et le cercle centre $C$ de rayon $8 \\, cm$ ; leur intersection (côté opposé à $B$) est $D$.",
+              "hint": "Dans un parallélogramme, les côtés opposés sont égaux : $AD = BC$ et $CD = AB$.",
+              "explanation": "Une fois $ABC$ tracé, $D$ doit satisfaire $AD = BC = 5 \\, cm$ et $CD = AB = 8 \\, cm$. L'intersection des deux cercles donne les positions possibles pour $D$ ; on choisit celle qui fait un quadrilatère non croisé."
+            },
+            {
+              "question": "Données : $AB = 6 \\, cm$, diagonale $AC = 10 \\, cm$, $\\widehat{BAC} = 35^{\\circ}$. Après avoir tracé $A$, $B$, $C$, on construit le milieu $O$ de $[AC]$. Que fait-on ensuite pour trouver $D$ ?",
+              "answer": "On trace le cercle de centre $O$ passant par $B$ ; la droite $(BO)$ coupe ce cercle en $D$ (l'autre intersection).",
+              "hint": "$O$ est le milieu de $[BD]$ donc $OB = OD$.",
+              "explanation": "Comme $O$ est le milieu des deux diagonales, $O$ est le milieu de $[BD]$. Donc $D$ est le symétrique de $B$ par rapport à $O$. Le cercle centre $O$ rayon $OB$ contient $D$, et $D$ est sur la droite $(BO)$ de l'autre côté de $O$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

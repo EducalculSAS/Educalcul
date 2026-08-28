@@ -1,0 +1,340 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.581349+00:00",
+  "id": 348,
+  "code": "6eme-t04-c02",
+  "title": "Formules",
+  "description": "Cours structuré Educalcul : Formules.",
+  "subject": "Algèbre et problèmes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algèbre et problèmes",
+    "titre_du_cours": "Formules",
+    "objectif_global": "Formules",
+    "mini_lecons_imposees": [
+      "Lire une formule.",
+      "Remplacer une valeur.",
+      "Interpréter résultat."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algèbre et problèmes",
+      "lessons": [
+        {
+          "title": "Lire une formule.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux formules. Imagine que tu dois expliquer à un ami comment calculer le périmètre d'un rectangle sans lui montrer le dessin. Tu pourrais lui dire : « prends la longueur, ajoute la largeur, puis multiplie le tout par deux ». C'est exactement ce qu'une formule permet d'écrire de façon compacte et universelle. Aujourd'hui, nous allons apprendre à déchiffrer ces écritures mathématiques pour en comprendre le sens profond."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une formule ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une formule est une phrase mathématique qui exprime une relation entre plusieurs grandeurs. Elle utilise des lettres pour représenter des nombres que l'on ne connaît pas encore ou qui peuvent changer. Par exemple, la formule du périmètre d'un rectangle s'écrit $P = 2 \\times (L + l)$. Ici, $P$ désigne le périmètre, $L$ la longueur et $l$ la largeur. Les lettres sont appelées des variables car leur valeur peut varier d'un rectangle à l'autre. Le chiffre $2$ est une constante : il ne change jamais dans cette formule."
+            },
+            {
+              "type": "display_math",
+              "latex": "P = 2 \\times (L + l)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe les symboles : le signe $=$ signifie « est égal à ». La parenthèse oblige à faire l'addition $L + l$ avant la multiplication par $2$. C'est la règle de priorité des opérations : ce qui est entre parenthèses se calcule en premier. Essaie de lire la formule à voix haute : « $P$ égal deux fois la somme de $L$ et de $l$ »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais identifier les éléments d'une formule, regardons comment la lire complètement pour en extraire le mode de calcul. Prenons la formule de l'aire d'un cercle : $A = \\pi \\times r^2$. Le symbole $\\pi$ (pi) est une constante particulière, environ $3,14$. La lettre $r$ représente le rayon. L'exposant $2$ signifie que l'on multiplie le rayon par lui-même : $r^2 = r \\times r$. Pour lire cette formule, on dit : « L'aire $A$ est égale à $\\pi$ fois le carré du rayon $r$ ». Remarque l'ordre : on commence par le résultat ($A$), puis on décrit le calcul à effectuer."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\pi \\times r^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous sur une autre formule classique : le volume d'un pavé droit $V = L \\times l \\times h$. Ici, pas de parenthèses, seulement des multiplications. L'ordre n'a pas d'importance grâce à la commutativité de la multiplication. On lit : « Le volume $V$ est égal à la longueur fois la largeur fois la hauteur ». Chaque lettre correspond à une mesure en mètres, centimètres, etc. Le résultat sera en unités cubiques ($m^3$, $cm^3$...)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une formule combine plusieurs opérations. Regarde la formule pour convertir une température de degrés Celsius en degrés Fahrenheit : $F = \\frac{9}{5} \\times C + 32$. Ici, $C$ est la température en Celsius, $F$ en Fahrenheit. La fraction $\\frac{9}{5}$ signifie « neuf cinquièmes » ou $1,8$. La lecture complète : « $F$ égal neuf cinquièmes de $C$ plus trente-deux ». Attention à l'ordre : on commence par multiplier $C$ par $\\frac{9}{5}$, puis on ajoute $32$. Les parenthèses ne sont pas écrites mais la priorité de la multiplication sur l'addition s'applique."
+            },
+            {
+              "type": "display_math",
+              "latex": "F = \\frac{9}{5} \\times C + 32"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, retenons qu'une formule se lit comme une recette de cuisine : elle donne les ingrédients (les variables et constantes) et les étapes dans l'ordre (grâce aux parenthèses et aux règles de priorité). Savoir la lire à voix haute avec des mots précis est la première clé pour l'utiliser correctement. Dans la prochaine leçon, nous verrons comment remplacer les lettres par des nombres concrets pour obtenir un résultat numérique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la formule $P = 2 \\times (L + l)$, que représente la lettre $L$ ?",
+              "answer": "La longueur du rectangle.",
+              "hint": "Regarde la définition donnée au début de la leçon.",
+              "explanation": "La lettre $L$ est la variable qui désigne la longueur. La lettre $l$ (petit L) désigne la largeur, et $P$ le périmètre."
+            },
+            {
+              "question": "Comment lit-on correctement la formule $A = \\pi \\times r^2$ ?",
+              "answer": "L'aire $A$ est égale à $\\pi$ fois le carré du rayon $r$.",
+              "hint": "Pense à l'exposant $2$ : c'est un carré, donc $r \\times r$.",
+              "explanation": "On nomme d'abord la grandeur cherchée ($A$), puis on décrit le calcul : $\\pi$ multiplié par $r$ au carré."
+            },
+            {
+              "question": "Dans $F = \\frac{9}{5} \\times C + 32$, quelle opération effectue-t-on en premier ?",
+              "answer": "La multiplication $\\frac{9}{5} \\times C$.",
+              "hint": "Rappelle-toi la règle de priorité : la multiplication avant l'addition.",
+              "explanation": "Même sans parenthèses, la multiplication est prioritaire sur l'addition. On calcule donc d'abord le produit, puis on ajoute $32$."
+            }
+          ]
+        },
+        {
+          "title": "Remplacer une valeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant lire une formule. L'étape suivante, c'est de la faire « travailler » en remplaçant les lettres par des valeurs numériques. C'est ce qu'on appelle l'évaluation d'une formule. Imagine que tu as la formule du périmètre $P = 2 \\times (L + l)$ et que tu mesures un rectangle : longueur $L = 8\\,cm$, largeur $l = 5\\,cm$. Comment obtenir le périmètre ? C'est ce que nous allons voir pas à pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La substitution pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle d'or : on réécrit la formule en remplaçant chaque lettre par sa valeur numérique, en gardant exactement la même structure (parenthèses, signes d'opération). Pour notre rectangle, on écrit : $P = 2 \\times (8 + 5)$. On ne change rien d'autre. Ensuite, on calcule en respectant l'ordre des opérations : d'abord la parenthèse $8 + 5 = 13$, puis la multiplication $2 \\times 13 = 26$. Le périmètre est donc $26\\,cm$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Recopier la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la formule originale : $P = 2 \\times (L + l)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer les lettres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Substitue $L$ par $8$ et $l$ par $5$ : $P = 2 \\times (8 + 5)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parenthèse d'abord : $8+5=13$. Puis multiplication : $2 \\times 13 = 26$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure avec l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est $26\\,cm$. N'oublie jamais l'unité de mesure !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les valeurs ne sont pas toujours des nombres entiers. Prenons la formule de l'aire d'un cercle $A = \\pi \\times r^2$. Si le rayon mesure $r = 3\\,cm$, on remplace : $A = \\pi \\times 3^2$. L'exposant s'applique au nombre $3$ : $3^2 = 3 \\times 3 = 9$. On obtient $A = \\pi \\times 9$. Si on utilise $\\pi \\approx 3,14$, le calcul donne $A \\approx 28,26\\,cm^2$. Si le rayon est un nombre décimal, par exemple $r = 2,5\\,cm$, on écrit $A = \\pi \\times (2,5)^2 = \\pi \\times 6,25 \\approx 19,625\\,cm^2$. Les parenthèses autour de $2,5$ sont importantes pour bien montrer que l'on élève au carré le nombre tout entier."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\pi \\times r^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une formule contient plusieurs variables. Pour le volume d'un pavé droit $V = L \\times l \\times h$, il faut connaître les trois dimensions. Supposons une boîte avec $L = 12\\,cm$, $l = 4\\,cm$, $h = 3\\,cm$. On substitue : $V = 12 \\times 4 \\times 3$. Comme ce ne sont que des multiplications, on peut grouper comme on veut : $(12 \\times 4) \\times 3 = 48 \\times 3 = 144$. Le volume est $144\\,cm^3$. Attention : si les unités sont différentes (par exemple $L = 1\\,m$, $l = 50\\,cm$), il faut d'abord convertir toutes les mesures dans la même unité avant de substituer, sinon le résultat sera faux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il arrive qu'une formule demande un calcul intermédiaire avant la substitution finale. Par exemple, pour convertir $20^\\circ C$ en Fahrenheit avec $F = \\frac{9}{5} \\times C + 32$, on remplace $C$ par $20$ : $F = \\frac{9}{5} \\times 20 + 32$. On commence par $\\frac{9}{5} \\times 20 = 9 \\times 4 = 36$ (car $20 \\div 5 = 4$). Puis $36 + 32 = 68$. Donc $20^\\circ C = 68^\\circ F$. Vérifie que le résultat te semble plausible : l'eau bout à $100^\\circ C$ ($212^\\circ F$) et gèle à $0^\\circ C$ ($32^\\circ F$), donc $20^\\circ C$ est une température douce, $68^\\circ F$ aussi. Dans la prochaine leçon, nous apprendrons à donner du sens au nombre obtenu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Avec la formule $P = 2 \\times (L + l)$, calcule $P$ si $L = 7$ et $l = 4$.",
+              "answer": "22",
+              "hint": "Remplace les lettres, calcule la parenthèse, puis multiplie par 2.",
+              "explanation": "$P = 2 \\times (7 + 4) = 2 \\times 11 = 22$."
+            },
+            {
+              "question": "Calcule l'aire d'un cercle de rayon $r = 4\\,cm$ avec $\\pi \\approx 3,14$.",
+              "answer": "50,24 cm²",
+              "hint": "Formule $A = \\pi \\times r^2$. Remplace $r$ par $4$, calcule $4^2$, puis multiplie par $3,14$.",
+              "explanation": "$A = 3,14 \\times 4^2 = 3,14 \\times 16 = 50,24\\,cm^2$."
+            },
+            {
+              "question": "Un pavé droit a $L = 10\\,cm$, $l = 5\\,cm$, $h = 2\\,cm$. Son volume ?",
+              "answer": "100 cm³",
+              "hint": "Formule $V = L \\times l \\times h$. Multiplie les trois nombres.",
+              "explanation": "$V = 10 \\times 5 \\times 2 = 100\\,cm^3$."
+            },
+            {
+              "question": "Convertis $0^\\circ C$ en degrés Fahrenheit avec $F = \\frac{9}{5} \\times C + 32$.",
+              "answer": "32 °F",
+              "hint": "Remplace $C$ par $0$. Le produit $\\frac{9}{5} \\times 0$ vaut $0$.",
+              "explanation": "$F = \\frac{9}{5} \\times 0 + 32 = 0 + 32 = 32^\\circ F$. C'est la température de solidification de l'eau."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter résultat.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as calculé un nombre à partir d'une formule. Bravo ! Mais ce nombre tout seul ne veut pas dire grand-chose s'il n'est pas accompagné de son unité et replacé dans son contexte. Cette leçon t'apprendra à transformer un résultat brut en une réponse complète et sensée. C'est l'art d'interpréter : dire ce que le nombre représente vraiment dans la situation concrète."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'unité, compagne indispensable du nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as trouvé $P = 26$ pour le périmètre d'un rectangle, ce $26$ est nu. Il faut écrire $26\\,cm$ (ou $26\\,m$, $26\\,km$ selon l'unité utilisée pour les mesures initiales). L'unité vient des données du problème : si $L$ et $l$ sont en centimètres, le périmètre est en centimètres. Pour une aire, l'unité est au carré ($cm^2$, $m^2$...). Pour un volume, au cube ($cm^3$, $m^3$...). C'est une règle simple : on ne laisse jamais un nombre sans son unité dans une réponse finale."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Grandeurs",
+                "Unité typique",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Longueur, périmètre",
+                  "cm, m, km",
+                  "26 cm"
+                ],
+                [
+                  "Aire",
+                  "cm², m², km²",
+                  "50,24 cm²"
+                ],
+                [
+                  "Volume",
+                  "cm³, m³",
+                  "144 cm³"
+                ],
+                [
+                  "Température",
+                  "°C, °F",
+                  "68 °F"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de l'unité, il faut formuler une phrase de réponse qui reprend la question. Si le problème demande : « Quel est le périmètre de ce rectangle ? », tu réponds : « Le périmètre de ce rectangle est de $26\\,cm$ ». Cette phrase montre que tu as compris ce que tu as calculé. Elle permet aussi de vérifier la cohérence : si tu as trouvé un périmètre négatif ou démesuré par rapport aux dimensions, tu as probablement fait une erreur de calcul ou de substitution."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le résultat numérique doit être arrondi ou adapté au contexte. Imaginons qu'il faut acheter de la peinture pour un mur d'une aire de $12,3\\,m^2$. Un pot couvre $5\\,m^2$. Le calcul $12,3 \\div 5 = 2,46$ pots. On ne peut pas acheter $2,46$ pots : il faut arrondir à l'entier supérieur, soit $3$ pots. L'interprétation ici n'est pas « $2,46$ pots » mais « Il faut prévoir $3$ pots de peinture ». De même, si tu calcules un nombre d'élèves ou de voitures, le résultat doit être un entier. Le sens du problème dicte la forme finale du nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, interpréter c'est aussi vérifier la plausibilité. Si tu calcules la hauteur d'un élève et que tu trouves $250\\,m$, il y a une erreur (unité oubliée, virgule mal placée). Si tu trouves $1,75\\,m$ pour un élève de 6e, c'est plausible. Utilise ton bon sens et tes repères : la largeur d'une feuille A4 est environ $21\\,cm$, la hauteur d'une porte $2\\,m$, un stylo pèse quelques grammes. Comparer ton résultat à des ordres de grandeur connus est un excellent filet de sécurité. Maintenant, tu as toutes les clés : lire, substituer, interpréter. À toi de jouer !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une formule à voix haute en nommant les variables et les opérations dans l'ordre.",
+                "Je sais remplacer les lettres par des valeurs numériques en gardant la structure de la formule.",
+                "Je sais calculer le résultat en respectant les priorités d'opérations.",
+                "Je sais écrire la réponse finale avec l'unité adaptée (longueur, aire, volume, température...).",
+                "Je sais formuler une phrase de réponse complète qui reprend la question.",
+                "Je sais adapter le nombre trouvé au contexte (arrondi, entier, plausibilité)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as calculé l'aire d'un rectangle : $A = 35$. Les longueurs étaient en mètres. Quelle est la réponse complète ?",
+              "answer": "L'aire du rectangle est de 35 m².",
+              "hint": "Pense à l'unité au carré pour une aire.",
+              "explanation": "L'unité de l'aire est le mètre carré (m²) car les côtés sont en mètres. La phrase de réponse doit mentionner l'aire et l'unité."
+            },
+            {
+              "question": "Un problème demande : « Combien de pots de peinture faut-il ? » Tu as trouvé 4,2 pots. Quelle est ta réponse finale ?",
+              "answer": "Il faut 5 pots de peinture.",
+              "hint": "On ne peut pas acheter une fraction de pot, on arrondit à l'entier supérieur.",
+              "explanation": "Le contexte impose un nombre entier de pots. 4 pots ne suffiraient pas, donc il faut 5 pots."
+            },
+            {
+              "question": "Tu trouves la hauteur d'une porte : $h = 0,002\\,km$. Est-ce plausible ?",
+              "answer": "Non, c'est 2 mètres, donc 0,002 km est correct mais l'unité m est plus adaptée.",
+              "hint": "Convertis en mètres : $0,002\\,km = 2\\,m$. Une porte fait environ 2 m de haut.",
+              "explanation": "0,002 km = 2 m, ce qui est plausible pour une porte. Mais on exprime généralement la hauteur d'une porte en mètres, pas en kilomètres."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Approfondissement : Reconnaître des triangles semblables - Algorithmes",
+  "blocks": [
+    {
+      "title": "Reconnaître par les longueurs",
+      "content": "On donne deux triangles $ABC$ et $DEF$ dont les longueurs des côtés sont connues. Écrire un algorithme (en pseudo‑code ou en Python) qui détermine si ces deux triangles sont semblables. L'algorithme doit comparer les rapports des côtés correspondants après les avoir triés par ordre croissant.",
+      "correctAnswer": "Algorithme :\\n1. Lire les trois longueurs du triangle $ABC$ dans une liste L1.\\n2. Lire les trois longueurs du triangle $DEF$ dans une liste L2.\\n3. Trier L1 et L2 par ordre croissant.\\n4. Calculer le rapport r = L1[0] / L2[0].\\n5. Vérifier que L1[1] / L2[1] == r et L1[2] / L2[2] == r (avec une tolérance pour les flottants).\\n6. Si les trois rapports sont égaux, afficher \"Semblables\", sinon afficher \"Non semblables\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On trie les côtés pour mettre en correspondance les côtés homologues (le plus petit avec le plus petit, etc.). Si les triangles sont semblables, les rapports des côtés homologues sont égaux. La comparaison avec une tolérance évite les erreurs d'arrondi.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître par les coordonnées",
+      "content": "Les sommets de deux triangles sont donnés par leurs coordonnées dans le plan : $A(x_A,y_A)$, $B(x_B,y_B)$, $C(x_C,y_C)$ et $D(x_D,y_D)$, $E(x_E,y_E)$, $F(x_F,y_F)$. Écrire une fonction Python qui calcule les longueurs des côtés, les trie, puis vérifie l'égalité des rapports pour décider si les triangles sont semblables.",
+      "correctAnswer": "def sont_semblables(A, B, C, D, E, F):\\n    import math\\n    def distance(P, Q):\\n        return math.hypot(P[0]-Q[0], P[1]-Q[1])\\n    cotes1 = sorted([distance(A,B), distance(B,C), distance(C,A)])\\n    cotes2 = sorted([distance(D,E), distance(E,F), distance(F,D)])\\n    r = cotes1[0] / cotes2[0]\\n    eps = 1e-9\\n    return abs(cotes1[1]/cotes2[1] - r) < eps and abs(cotes1[2]/cotes2[2] - r) < eps",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction calcule les six distances entre sommets consécutifs pour obtenir les trois côtés de chaque triangle. Après tri, le rapport du plus petit côté donne le coefficient de similitude. On vérifie que les deux autres rapports sont égaux à ce coefficient dans une tolérance eps.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître par les angles",
+      "content": "On connaît les mesures des trois angles de deux triangles. Écrire un algorithme qui détermine si les triangles sont semblables en utilisant le critère AAA. L'algorithme doit vérifier que les trois angles du premier triangle sont respectivement égaux aux trois angles du second (après tri).",
+      "correctAnswer": "Algorithme :\\n1. Lire les trois angles du premier triangle dans une liste A1.\\n2. Lire les trois angles du second triangle dans une liste A2.\\n3. Trier A1 et A2 par ordre croissant.\\n4. Pour i de 0 à 2, si A1[i] != A2[i] alors afficher \"Non semblables\" et arrêter.\\n5. Si toutes les paires sont égales, afficher \"Semblables\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux triangles sont semblables s'ils ont les mêmes angles (critère AAA). Trier les angles permet de mettre en correspondance les angles homologues sans connaître l'ordre initial. L'égalité exacte est attendue car les angles sont donnés en degrés exacts.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

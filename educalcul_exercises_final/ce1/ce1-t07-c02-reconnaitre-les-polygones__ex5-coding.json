@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 127,
+  "_course_code": "ce1-t07-c02-reconnaitre-les-polygones",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Figure fermée avec côtés droits",
+  "title": "Reconnaître les polygones : algorithme de vérification",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de reconnaissance",
+      "content": "Écris un algorithme simple, en langage naturel, qui permet de vérifier si une figure est un polygone (figure fermée avec côtés droits).",
+      "correctAnswer": "Début\\nÉtape un : Observer la figure.\\nÉtape deux : Vérifier si la figure est fermée (les côtés se touchent pour former un contour sans ouverture).\\nÉtape trois : Vérifier si tous les côtés sont des segments droits.\\nÉtape quatre : Si les deux vérifications sont vraies, alors la figure est un polygone.\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un polygone est défini comme une figure plane fermée dont les côtés sont des segments de droite. L'algorithme doit donc tester ces deux propriétés : la fermeture du contour et la nature droite de chaque côté. Si les deux conditions sont satisfaites, la figure est un polygone.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme",
+      "content": "Complète l'algorithme suivant en ajoutant l'instruction qui vérifie que les côtés sont droits :\\nDEBUT\\nÉtape un : Regarder la figure.\\nÉtape deux : Vérifier que la figure est fermée.\\nÉtape trois : _______________________________\\nÉtape quatre : Si les deux conditions sont vraies ALORS afficher 'C'est un polygone' SINON afficher 'Ce n'est pas un polygone'.\\nFIN",
+      "correctAnswer": "Étape trois : Vérifier que tous les côtés sont des segments droits.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme doit tester deux conditions : la fermeture de la figure et le fait que chaque côté soit un segment droit. La ligne trois correspond à la deuxième condition. On écrit donc : Vérifier que tous les côtés sont des segments droits.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme",
+      "content": "Applique l'algorithme à la figure décrite : 'Une figure formée de six segments droits qui se rejoignent pour former un contour fermé'. Écris le résultat de l'algorithme (polygone ou non) et justifie en une phrase.",
+      "correctAnswer": "C'est un polygone car la figure est fermée et tous ses côtés sont des segments droits.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La description indique que la figure est formée de segments droits (donc côtés droits) et qu'ils se rejoignent pour former un contour fermé (donc figure fermée). Les deux conditions de l'algorithme sont remplies, donc la figure est un polygone.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

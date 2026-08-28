@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 87,
+  "_course_code": "ce1-t02-c09-bilan-fractions-ce1",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Lire et représenter",
+  "title": "Quiz - Lire et représenter les fractions simples",
+  "questions": [
+    {
+      "text": "Quelle fraction représente la partie colorée de ce disque ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Le disque est divisé en 2 parties égales (le dénominateur est 2). Une seule partie est colorée (le numérateur est 1). La fraction est donc un demi, soit $\\frac{1}{2}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Disque divisé en deux, une moitié colorée"
+      }
+    },
+    {
+      "text": "Comment écrit-on la fraction « un quart » en chiffres ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{4}{1}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "« Un quart » signifie une partie sur quatre parts égales. Le numérateur (au-dessus) est 1 (une part prise) et le dénominateur (en-dessous) est 4 (le total des parts). On écrit donc $\\frac{1}{4}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction est représentée sur cette bande ?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "La bande est divisée en 4 parties égales (dénominateur 4). Trois parties sont colorées (numérateur 3). La fraction représentée est donc trois quarts, $\\frac{3}{4}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Bande divisée en quatre, trois parties colorées"
+      }
+    },
+    {
+      "text": "Sur cette figure, les deux bandes colorées représentent la même fraction. Laquelle ?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "La première bande montre une moitié colorée sur deux ($\\frac{1}{2}$). La deuxième bande montre deux quarts colorés sur quatre ($\\frac{2}{4}$). Ces deux fractions sont équivalentes : elles représentent toutes les deux un demi.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Deux bandes : une divisée en 2 (1/2 coloré), l'autre en 4 (2/4 coloré)"
+      }
+    },
+    {
+      "text": "Dans la fraction $\\frac{2}{5}$, que représente le chiffre $5$ (le dénominateur) ?",
+      "options": [
+        "Le nombre de parts prises",
+        "Le nombre de parts en tout",
+        "Le résultat de la division",
+        "Le nombre de parts restantes"
+      ],
+      "correctAnswer": "Le nombre de parts en tout",
+      "explanation": "Dans une fraction, le dénominateur (le chiffre du bas) indique en combien de parts égales le tout a été divisé. Ici, 5 signifie que l'unité est partagée en 5 parts au total. Le numérateur (2) indique le nombre de parts prises.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

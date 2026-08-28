@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Réciproque intuitive",
+  "title": "Réciproque d'une implication : identification et valeur de vérité",
+  "blocks": [
+    {
+      "title": "Écriture de la réciproque",
+      "content": "Soit l'implication : \"Si un triangle est équilatéral, alors il a trois côtés de même longueur\". La réciproque de cette implication s'écrit : \"Si un triangle a {{1}}, alors il est {{2}}.\"",
+      "correctAnswer": "",
+      "blanks": [
+        "trois côtés de même longueur",
+        "équilatéral"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La réciproque de l'implication \"Si P alors Q\" est \"Si Q alors P\". Ici, P est \"le triangle est équilatéral\" et Q est \"il a trois côtés de même longueur\". On inverse donc l'hypothèse et la conclusion.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Valeur de vérité d'une implication et de sa réciproque",
+      "content": "Considérons la proposition : \"Si $x = 3$, alors $x^2 = 9$\". Cette implication est {{1}}. Sa réciproque \"Si $x^2 = 9$, alors $x = 3$\" est {{2}} car $x$ peut aussi valoir $-3$.",
+      "correctAnswer": "",
+      "blanks": [
+        "vraie",
+        "fausse"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'implication directe est vraie car $3^2 = 9$. La réciproque est fausse car l'équation $x^2 = 9$ admet deux solutions : $3$ et $-3$. L'hypothèse $x^2=9$ ne permet pas de conclure que $x=3$ nécessairement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Contre-exemple pour la réciproque",
+      "content": "On dit que \"Si un nombre entier se termine par 0, alors il est divisible par 5\". Cette implication est {{1}}. Sa réciproque est : \"Si un nombre entier est divisible par 5, alors il se termine par {{2}}\". Cette réciproque est {{3}} ; un contre-exemple est le nombre 15.",
+      "correctAnswer": "",
+      "blanks": [
+        "vraie",
+        "0",
+        "fausse"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'implication directe est vraie : un multiple de 10 est toujours un multiple de 5. La réciproque affirme que tout multiple de 5 se termine par 0, ce qui est faux car les multiples de 5 se terminent par 0 ou 5. Le nombre 15 est divisible par 5 mais ne se termine pas par 0, c'est donc un contre-exemple.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Parité et raisonnements simples",
+  "title": "Parité et démonstrations : mise en ordre",
+  "blocks": [
+    {
+      "title": "Somme de deux entiers impairs",
+      "content": "Rangez les étapes dans l'ordre logique pour démontrer que la somme de deux entiers impairs est un entier pair.",
+      "items": [
+        "Soient $a$ et $b$ deux entiers impairs.",
+        "Il existe deux entiers $k$ et $k'$ tels que $a = 2k+1$ et $b = 2k'+1$.",
+        "Alors $a+b = (2k+1) + (2k'+1) = 2k + 2k' + 2$.",
+        "En factorisant par 2, on obtient $a+b = 2(k + k' + 1)$.",
+        "Comme $k+k'+1$ est un entier, $a+b$ est un multiple de 2, donc pair."
+      ],
+      "explanation": "La démonstration commence par la définition des entiers impairs (multiple de 2 plus 1). On exprime la somme, on factorise par 2 pour faire apparaître un multiple de 2, ce qui prouve que le résultat est pair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Raisonnement par l'absurde : carré pair",
+      "content": "Rangez les étapes pour démontrer par l'absurde : « Si le carré d'un entier $n$ est pair, alors $n $ est pair ».",
+      "items": [
+        "Supposons que $n^2$ soit pair et que $n$ soit impair.",
+        "Puisque $n$ est impair, il existe un entier $k$ tel que $n = 2k+1$.",
+        "On calcule $n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$.",
+        "Ainsi $n^2$ s'écrit sous la forme $2 \\times \\text{entier} + 1$, donc $n^2$ est impair.",
+        "Cela contredit l'hypothèse que $n^2$ est pair. Par conséquent, $n$ est forcément pair."
+      ],
+      "explanation": "Le raisonnement par l'absurde suppose la conclusion fausse ($n$ impair) tout en gardant l'hypothèse vraie ($n^2$ pair). Le calcul montre que $n^2$ devient alors impair, ce qui est une contradiction. L'hypothèse de départ sur $n$ est donc fausse : $n$ est pair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit de deux entiers consécutifs",
+      "content": "Rangez les étapes pour démontrer que le produit de deux entiers consécutifs est toujours pair.",
+      "items": [
+        "Soit $n$ un entier. Les deux entiers consécutifs sont $n$ et $n+1$.",
+        "Parmi deux entiers consécutifs, l'un est pair et l'autre est impair.",
+        "Cas 1 : $n$ est pair. Il existe $k$ tel que $n=2k$. Le produit $n(n+1)=2k(n+1)$ est pair.",
+        "Cas 2 : $n$ est impair. Alors $n+1$ est pair. Il existe $k$ tel que $n+1=2k$. Le produit $n(n+1)=n(2k)=2(nk)$ est pair.",
+        "Dans les deux cas, le produit $n(n+1)$ est un multiple de 2, donc il est pair."
+      ],
+      "explanation": "On utilise une disjonction de cas basée sur la parité de $n$. Quel que soit le cas ($n$ pair ou $n$ impair), le produit contient un facteur 2, ce qui le rend pair. C'est une preuve par épuisement des cas possibles.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

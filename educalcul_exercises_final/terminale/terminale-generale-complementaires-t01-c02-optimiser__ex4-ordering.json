@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Application : Optimiser",
+  "title": "Optimisation de fonctions",
+  "blocks": [
+    {
+      "title": "Étapes de l'optimisation",
+      "content": "Ordonnez les étapes méthodologiques pour trouver le maximum ou le minimum d'une fonction $f$ sur un intervalle fermé $[a, b]$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la dérivée $f'(x)$",
+        "Rechercher les valeurs où $f'(x) = 0$",
+        "Dresser le tableau de variations de $f$",
+        "Comparer les valeurs aux bornes $f(a)$ et $f(b)$ et aux extremums locaux"
+      ],
+      "explanation": "Pour optimiser une fonction sur un intervalle fermé, on commence par dériver, on cherche les points critiques, on analyse les variations et on termine par la comparaison des valeurs pour identifier l'optimum global.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation d'une aire",
+      "content": "Un agriculteur dispose de $40$ mètres de clôture pour créer un enclos rectangulaire contre un mur droit. Il ne clôture donc que trois côtés. On note $x$ la largeur perpendiculaire au mur. Ordonnez les étapes du raisonnement pour maximiser l'aire $A(x)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Exprimer la longueur du côté parallèle au mur par $40 - 2x$",
+        "Définir la fonction aire $A(x) = x(40 - 2x)$",
+        "Calculer la dérivée $A'(x) = 40 - 4x$",
+        "Déduire que l'aire est maximale pour $x = 10$ mètres"
+      ],
+      "explanation": "L'aire est $A(x) = -2x^2 + 40x$. La dérivée est $A'(x) = -4x + 40$. On résout $-4x + 40 = 0$, ce qui donne $x = 10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation d'un coût",
+      "content": "Une entreprise souhaite minimiser le coût de production $C(x) = 2x^2 - 120x + 5000$. Ordonnez les étapes pour trouver le niveau de production $x$ optimal.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la dérivée $C'(x) = 4x - 120$",
+        "Résoudre l'équation $4x - 120 = 0$ pour trouver $x = 30$",
+        "Vérifier que $C'(x)$ change de signe de négatif à positif en $x = 30$",
+        "Conclure que le coût minimum est atteint pour $x = 30$ unités"
+      ],
+      "explanation": "La fonction $C$ est une parabole tournée vers le haut. Le minimum est atteint là où la dérivée s'annule : $4x = 120$, donc $x = 30$. Le changement de signe de $C'(x)$ confirme qu'il s'agit d'un minimum.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Modéliser",
+  "title": "Quiz : Modélisation de problèmes algébriques (3e)",
+  "questions": [
+    {
+      "text": "Un nombre augmenté de 5 donne le double de ce nombre. Quelle équation modélise cette situation ?",
+      "options": [
+        "$x+5=2x$",
+        "$x+5=2$",
+        "$5x=2x$",
+        "$x=2x+5$"
+      ],
+      "correctAnswer": "$x+5=2x$",
+      "explanation": "On note $x$ le nombre inconnu. Augmenté de 5 donne $x+5$. Le double du nombre est $2x$. L'égalité donne $x+5=2x$. Les autres options ne traduisent pas correctement la phrase.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La somme de deux nombres est 30. Le premier est 4 de plus que le second. Quel système d'équations modélise ce problème ?",
+      "options": [
+        "$x+y=30$ et $x=y+4$",
+        "$x+y=30$ et $y=x+4$",
+        "$x-y=30$ et $x=y+4$",
+        "$x+y=30$ et $x=4y$"
+      ],
+      "correctAnswer": "$x+y=30$ et $x=y+4$",
+      "explanation": "On note $x$ le premier nombre et $y$ le second. La somme donne $x+y=30$. Le premier est 4 de plus que le second : $x=y+4$. Les autres systèmes inversent la relation ou utilisent une différence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur qui est 3 cm de plus que sa largeur. Son périmètre est 34 cm. Quelle équation en $x$ (largeur) permet de trouver les dimensions ?",
+      "options": [
+        "$2x+2(x+3)=34$",
+        "$x+(x+3)=34$",
+        "$2x+(x+3)=34$",
+        "$2x+2x+3=34$"
+      ],
+      "correctAnswer": "$2x+2(x+3)=34$",
+      "explanation": "La largeur est $x$, la longueur $x+3$. Le périmètre d'un rectangle est 2 fois la largeur plus 2 fois la longueur, donc $2x+2(x+3)=34$. Les autres équations oublient un facteur 2 ou ajoutent mal le 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un article est soldé de 20 %. Après la réduction, il coûte 48 €. Quel était son prix initial ?",
+      "options": [
+        "$0,8p=48$",
+        "$p-0,2=48$",
+        "$p+0,2p=48$",
+        "$p=48/0,2$"
+      ],
+      "correctAnswer": "$0,8p=48$",
+      "explanation": "Une réduction de 20 % signifie qu'on paie 80 % du prix initial, soit $0,8p$. Après réduction le prix est 48 €, donc $0,8p=48$. Les autres options confondent soustraction, addition ou division incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On mélange $x$ litres d'une solution à 10 % d'alcool avec 5 litres d'une solution à 30 % pour obtenir une solution à 20 %. Quelle équation traduit cette situation ?",
+      "options": [
+        "$0,1x+0,3\\times5=0,2(x+5)$",
+        "$0,1x+0,3\\times5=0,2x$",
+        "$0,1x+0,3\\times5=0,2\\times5$",
+        "$0,1x+0,3\\times5=0,2(x-5)$"
+      ],
+      "correctAnswer": "$0,1x+0,3\\times5=0,2(x+5)$",
+      "explanation": "La quantité d'alcool pur est $0,1x$ pour la première solution et $0,3\\times5$ pour la seconde. Le volume total est $x+5$ litres, avec une concentration de 20 %, donc $0,2(x+5)$ d'alcool. L'égalité des quantités d'alcool donne $0,1x+0,3\\times5=0,2(x+5)$. Les autres options oublient le volume total ou utilisent un volume incorrect.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

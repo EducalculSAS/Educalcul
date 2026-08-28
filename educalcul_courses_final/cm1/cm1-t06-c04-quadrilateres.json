@@ -1,0 +1,592 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.255767+00:00",
+  "id": 251,
+  "code": "cm1-t06-c04",
+  "title": "Quadrilatères",
+  "description": "Cours structuré Educalcul : Quadrilatères.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Quadrilatères",
+    "objectif_global": "Quadrilatères",
+    "mini_lecons_imposees": [
+      "Carré, rectangle, losange.",
+      "Comparer propriétés.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Carré, rectangle, losange.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un quadrilatère ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des figures à quatre côtés ! Un $quadrilatère$, c'est simplement une figure fermée qui a exactement $4$ côtés et $4$ sommets. Regarde autour de toi : une feuille de papier, une fenêtre, un timbre-poste... ce sont tous des quadrilatères. Aujourd'hui, nous allons faire connaissance avec trois membres très célèbres de cette grande famille : le carré, le rectangle et le losange."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Une figure géométrique plane, fermée, qui possède exactement $4$ côtés et $4$ sommets.",
+              "example": "Un carré est un quadrilatère, un triangle n'en est pas un."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le carré : le champion de la régularité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une figure parfaite, où tout est égal. Le $carré$ a $4$ côtés de la même longueur et $4$ angles droits. C'est le plus exigeant des quadrilatères : il ne tolère aucune différence ! Si tu mesures ses côtés avec ta règle, tu trouveras toujours la même mesure. Et si tu poses ton équerre dans chaque coin, elle s'ajuste parfaitement à chaque fois."
+            },
+            {
+              "type": "definition",
+              "term": "Carré",
+              "definition": "Un quadrilatère qui a $4$ côtés de même longueur et $4$ angles droits.",
+              "example": "Un timbre carré de $3\\,cm$ de côté."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un carré ABCD : 4 côtés égaux, 4 angles droits",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "c",
+                "c",
+                "c",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tournons-nous vers un cousin du carré, un peu moins strict mais tout aussi important : le rectangle. Lui aussi adore les angles droits, mais il accepte que les côtés aient deux longueurs différentes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rectangle : des angles droits et des côtés deux à deux égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le $rectangle$ a lui aussi $4$ angles droits, c'est sa signature. Par contre, ses côtés ne sont pas tous égaux : les côtés opposés ont la même longueur. On dit qu'ils sont « deux à deux égaux ». Tu as donc deux longueurs et deux largeurs. C'est la forme de ton cahier, de la porte de ta chambre ou de l'écran sur lequel tu lis ces lignes !"
+            },
+            {
+              "type": "definition",
+              "term": "Rectangle",
+              "definition": "Un quadrilatère qui a $4$ angles droits et dont les côtés opposés ont la même longueur.",
+              "example": "Une feuille A4 : $21\\,cm$ sur $29,7\\,cm$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un rectangle EFGH : angles droits, côtés opposés égaux",
+              "vertexLabels": [
+                "E",
+                "F",
+                "G",
+                "H"
+              ],
+              "sideLabels": [
+                "L",
+                "l",
+                "L",
+                "l"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il nous reste un dernier invité surprise : le losange. Lui, il ne veut pas d'angles droits (sauf cas particulier), mais il exige que ses quatre côtés soient identiques. C'est un carré qu'on aurait un peu « poussé » sur le côté."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le losange : quatre côtés égaux, pas d'angle droit obligatoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le $losange$ partage avec le carré la propriété d'avoir $4$ côtés de même longueur. C'est un quadrilatère équilatère. Mais attention : ses angles ne sont pas forcément droits. Deux angles sont aigus (plus petits que l'angle droit) et deux sont obtus (plus grands que l'angle droit). Pense à un cerf-volant classique ou à un carreau de jeu de cartes : c'est un losange !"
+            },
+            {
+              "type": "definition",
+              "term": "Losange",
+              "definition": "Un quadrilatère qui a $4$ côtés de même longueur. Ses angles ne sont pas nécessairement droits.",
+              "example": "Un carreau de jeu de cartes, un cerf-volant symétrique."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un losange IJKL : 4 côtés égaux, angles non droits",
+              "vertexLabels": [
+                "I",
+                "J",
+                "K",
+                "L"
+              ],
+              "sideLabels": [
+                "c",
+                "c",
+                "c",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître les trois stars des quadrilatères. Le carré est le plus exigeant (côtés égaux ET angles droits), le rectangle mise tout sur les angles droits, et le losange mise tout sur les côtés égaux. Dans la prochaine leçon, nous allons jouer au jeu des différences et des ressemblances pour bien les ranger dans leurs cases."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures, laquelle est un carré ? Figure A : 4 côtés de 5 cm, 4 angles droits. Figure B : 4 côtés de 5 cm, angles non droits. Figure C : 2 côtés de 5 cm, 2 côtés de 3 cm, 4 angles droits.",
+              "answer": "Figure A",
+              "hint": "Rappelle-toi : le carré a 4 côtés égaux ET 4 angles droits.",
+              "explanation": "La figure A remplit les deux conditions. La figure B est un losange (pas d'angle droit). La figure C est un rectangle (côtés pas tous égaux)."
+            },
+            {
+              "question": "Vrai ou faux ? Un rectangle a toujours quatre côtés de même longueur.",
+              "answer": "Faux",
+              "hint": "Regarde la définition du rectangle : les côtés opposés sont égaux, pas forcément tous les quatre.",
+              "explanation": "Un rectangle a deux longueurs et deux largeurs. Seuls les côtés opposés sont égaux deux à deux. Si les quatre sont égaux, c'est un carré."
+            },
+            {
+              "question": "Complète : Un losange a $4$ côtés ______. Ses angles ______ droits.",
+              "answer": "de même longueur ; ne sont pas nécessairement",
+              "hint": "C'est la grande différence avec le carré : les côtés sont égaux, mais les angles peuvent être « penchés ».",
+              "explanation": "La définition du losange ne parle que des côtés (4 égaux). Pour les angles, on ne sait rien : ils peuvent être droits (c'est alors un carré) ou non (losange « penché »)."
+            },
+            {
+              "question": "Je suis un quadrilatère. J'ai 4 angles droits. Mes côtés ne sont pas tous égaux. Qui suis-je ?",
+              "answer": "Un rectangle (qui n'est pas un carré)",
+              "hint": "Quel quadrilatère a 4 angles droits mais accepte des côtés de longueurs différentes ?",
+              "explanation": "Le rectangle a 4 angles droits. Comme les côtés ne sont pas tous égaux, ce n'est pas un carré. C'est donc un rectangle « simple »."
+            }
+          ]
+        },
+        {
+          "title": "Comparer propriétés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une grande famille : les inclusions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien retenu les définitions ? Parfait ! Maintenant, imagine que ces figures font partie d'une même famille, un peu comme des poupées gigognes. Le carré est très fort : il remplit les conditions du rectangle (4 angles droits) ET celles du losange (4 côtés égaux). Du coup, le carré EST un rectangle ET un losange à la fois. Mais l'inverse n'est pas vrai : un rectangle n'est pas forcément un carré, et un losange n'est pas forcément un carré."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser ces liens de parenté, les mathématiciens utilisent un diagramme appelé « diagramme de Venn ». Regarde bien : le grand cercle des rectangles et le grand cercle des losanges se chevauchent. Au milieu, dans la zone commune, il n'y a que les carrés ! C'est là qu'habitent les figures qui sont à la fois rectangles ET losanges."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Les carrés sont à l'intersection des rectangles et des losanges",
+              "sets": [
+                {
+                  "label": "Rectangles",
+                  "items": [
+                    "Rectangle non carré"
+                  ]
+                },
+                {
+                  "label": "Losanges",
+                  "items": [
+                    "Losange non carré"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois les liens de famille, regardons de plus près les côtés. Il y a un mot magique en géométrie : « parallèles ». Deux droites sont parallèles si elles ne se croisent jamais, même si on les prolonge très loin. C'est comme deux rails de train qui restent toujours à la même distance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Côtés parallèles : le secret des parallélogrammes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un $rectangle$, les côtés opposés sont parallèles. Dans un $losange$, les côtés opposés sont aussi parallèles. Et dans un $carré$, bien sûr, c'est aussi vrai. Ces trois figures font partie d'un club encore plus grand : les $parallélogrammes$. Un parallélogramme, c'est simplement un quadrilatère dont les côtés opposés sont parallèles deux à deux. Notre trio (carré, rectangle, losange) sont des parallélogrammes « de luxe » avec des propriétés en plus (angles droits ou côtés égaux)."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB \\parallel CD \\quad \\text{et} \\quad AD \\parallel BC"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les côtés, intéressons-nous aux angles. C'est souvent là qu'on les distingue le plus facilement. Sors ton équerre mentalement : un angle droit, c'est l'angle de ton cahier, bien net, qui mesure $90^{\\circ}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles : droits, aigus ou obtus ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le $rectangle$ et le $carré$ sont les champions de l'angle droit : ils en ont $4$ chacun. C'est leur point commun majeur. Le $losange$, lui, est différent : il a généralement deux angles $aigus$ (plus « fermés » que l'angle droit, moins de $90^{\\circ}$) et deux angles $obtus$ (plus « ouverts », plus de $90^{\\circ}$). Si par hasard un losange a 4 angles droits, alors... c'est un carré ! Tu vois comme tout se tient ?"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Losange : angles aigus (A, C) et obtus (B, D)",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "c",
+                "c",
+                "c",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon de comparaison, parlons symétrie. Plie une feuille en deux : si les deux moitiés se superposent parfaitement, la figure a un axe de symétrie. Le $carré$ est le roi de la symétrie avec $4$ axes (les deux diagonales et les deux médiatrices). Le $rectangle$ en a $2$ (les médiatrices des côtés). Le $losange$ en a aussi $2$ (ses diagonales). C'est une façon très visuelle de les différencier sans même sortir la règle !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vrai ou faux ? Tout carré est un rectangle.",
+              "answer": "Vrai",
+              "hint": "Le carré a 4 angles droits, comme le rectangle. Il a juste une exigence en plus (côtés égaux).",
+              "explanation": "La définition du rectangle est : 4 angles droits + côtés opposés égaux. Le carré remplit ces deux conditions (ses côtés opposés sont égaux car tous ses côtés sont égaux). Donc tout carré est un rectangle."
+            },
+            {
+              "question": "Dans un parallélogramme, les côtés opposés sont...",
+              "answer": "parallèles deux à deux",
+              "hint": "C'est la définition même du mot parallélogramme : parallèles + gramme (trait).",
+              "explanation": "Un parallélogramme est un quadrilatère dont les côtés opposés sont parallèles. Le carré, le rectangle et le losange sont des parallélogrammes particuliers."
+            },
+            {
+              "question": "Un losange qui n'est pas un carré a :",
+              "answer": "2 angles aigus et 2 angles obtus",
+              "hint": "Si les 4 angles étaient droits, ce serait un carré. Comme ce n'est pas le cas, les angles sont « penchés ».",
+              "explanation": "Dans un losange non carré, les angles opposés sont égaux. La somme des 4 angles fait 360°. Comme il n'y a pas d'angle droit, il y a forcément deux angles plus petits (aigus) et deux plus grands (obtus)."
+            },
+            {
+              "question": "Combien d'axes de symétrie a un rectangle (qui n'est pas un carré) ?",
+              "answer": "2",
+              "hint": "Plie le rectangle dans le sens de la longueur, puis dans le sens de la largeur. Les diagonales ne marchent pas pour un rectangle simple.",
+              "explanation": "Le rectangle a deux axes de symétrie : les médiatrices de ses côtés (les droites qui coupent les côtés opposés au milieu et sont perpendiculaires). Les diagonales ne sont pas des axes de symétrie pour un rectangle non carré."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La trousse du géomètre : règle, équerre, compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer nos premières figures parfaites, vérifions que tu as les bons outils. Tu connais déjà la $règle$ graduée pour mesurer et tracer des segments. Le $compas$ te servira pour reporter des longueurs sans les mesurer en chiffres. Mais la star d'aujourd'hui, c'est l'$équerre$ ! C'est un triangle rectangle (souvent en plastique transparent) qui te permet de tracer des angles droits parfaits et des droites perpendiculaires. Sans elle, impossible de garantir un angle de $90^{\\circ}$."
+            },
+            {
+              "type": "definition",
+              "term": "Équerre",
+              "definition": "Un instrument de géométrie en forme de triangle rectangle, utilisé pour tracer des droites perpendiculaires (angles droits) et des droites parallèles.",
+              "example": "Pour tracer un rectangle, l'équerre est indispensable pour faire les coins droits."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer une droite et un point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une droite $(d)$ avec ta règle. Repère un point $A$ sur cette droite. Ce sera le sommet de ton angle droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Placer l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose l'équerre sur la droite $(d)$ en faisant coïncider le bord毕业 (le côté de l'angle droit) avec la droite. Glisse-la jusqu'à ce que le sommet de l'angle droit de l'équerre soit exactement sur le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tiens fermement l'équerre et la règle. Trace le long de l'autre côté de l'angle droit (le côté vertical). Tu obtiens une droite perpendiculaire à $(d)$ passant par $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un rectangle : la méthode du rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire un rectangle, c'est comme bâtir une maison : on commence par les fondations. On a besoin de deux mesures : la $longueur$ (L) et la $largeur$ (l). La méthode la plus sûre utilise l'équerre pour dresser les murs bien droits. Suis bien les étapes dans l'ordre, ne saute aucune ligne !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Le premier côté (longueur)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment $[AB]$ de la longueur demandée (ex: $6\\,cm$). C'est la base de ton rectangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les deux angles droits à la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'aide de l'équerre, trace les deux droites perpendiculaires à $(AB)$ qui passent par $A$ et par $B$. Ce sont les « murs » verticaux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la largeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la perpendiculaire passant par $A$, repère le point $D$ tel que $AD = l$ (ex: $4\\,cm$). Fais de même sur l'autre perpendiculaire : repère $C$ tel que $BC = l$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $C$ et $D$ avec la règle. Vérifie que $CD$ est parallèle à $AB$ et mesure $6\\,cm$. Ton rectangle $ABCD$ est fini !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un carré : la méthode du côté unique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le carré est encore plus simple à construire car il n'y a qu'une seule mesure à retenir : la longueur du $côté$ ($c$). Comme tous les côtés sont égaux, tu vas reporter cette même longueur quatre fois. C'est l'exercice idéal pour t'entraîner à manipuler l'équerre avec précision."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment $[AB]$ de la longueur du côté (ex: $5\\,cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dresser les perpendiculaires aux extrémités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec l'équerre, trace les droites perpendiculaires à $(AB)$ en $A$ et en $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la même longueur sur les deux perpendiculares",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la perpendiculaire en $A$, place $D$ tel que $AD = 5\\,cm$. Sur la perpendiculaire en $B$, place $C$ tel que $BC = 5\\,cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Relier les sommets hauts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $[CD]$. Il doit mesurer $5\\,cm$ et être parallèle à $[AB]$. Tu as ton carré $ABCD$ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un losange : la méthode des diagonales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le losange est le plus délicat car on ne connaît pas l'angle à l'avance. La méthode la plus élégante utilise une propriété magique : les diagonales d'un losange sont $perpendiculaires$ et se coupent au $milieu$. Si on te donne les longueurs des deux diagonales (ou un côté et une diagonale), tu peux le construire sans équerre, juste avec règle et compas ! C'est la technique des « grands »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la première diagonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment $[AC]$ de la longueur de la grande diagonale (ex: $8\\,cm$). Marque son milieu $O$ (à $4\\,cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la médiatrice (deuxième diagonale)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec l'équerre (ou le compas), trace la droite perpendiculaire à $[AC]$ passant par $O$. C'est la ligne de la deuxième diagonale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la demi-petite diagonale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la petite diagonale mesure $6\\,cm$, sa demi-longueur est $3\\,cm$. Sur la perpendiculaire, de part et d'autre de $O$, repère $B$ et $D$ tels que $OB = OD = 3\\,cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Relier les 4 sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $A$ à $B$, $B$ à $C$, $C$ à $D$, $D$ à $A$. Tu obtiens un losange parfait dont les diagonales se coupent perpendiculairement au milieu !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un carré, un rectangle et un losange à leurs propriétés.",
+                "Je sais dire qu'un carré est un rectangle particulier et un losange particulier.",
+                "Je sais utiliser l'équerre pour tracer une droite perpendiculaire.",
+                "Je sais construire un rectangle en connaissant sa longueur et sa largeur.",
+                "Je sais construire un carré en connaissant son côté.",
+                "Je sais construire un losange en connaissant ses deux diagonales."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l'outil indispensable pour tracer un angle droit avec certitude ?",
+              "answer": "L'équerre",
+              "hint": "La règle mesure, le compas reporte des longueurs, mais seul l'équerre garantit l'angle de 90°.",
+              "explanation": "L'équerre est un triangle rectangle physique. En la posant correctement, elle force le tracé à faire exactement 90°."
+            },
+            {
+              "question": "Pour construire un rectangle de 7 cm sur 4 cm, quelle est la première chose à tracer ?",
+              "answer": "Un segment de 7 cm (la longueur)",
+              "hint": "On commence toujours par tracer un côté connu, généralement le plus long ou la base.",
+              "explanation": "La construction standard commence par tracer la longueur (ou la largeur). Ensuite on dresse les perpendiculaires aux extrémités."
+            },
+            {
+              "question": "Lors de la construction d'un carré de côté 6 cm, après avoir tracé le premier côté et les deux perpendiculaires, que fais-tu ?",
+              "answer": "Je reporte 6 cm sur chaque perpendiculaire à partir de la base.",
+              "hint": "Tous les côtés du carré font 6 cm. Les côtés verticaux doivent donc mesurer 6 cm aussi.",
+              "explanation": "Sur la perpendiculaire en A, on place D tel que AD = 6 cm. Sur la perpendiculaire en B, on place C tel que BC = 6 cm. Comme les quatre côtés sont égaux, on utilise la même mesure."
+            },
+            {
+              "question": "Pour construire un losange dont les diagonales mesurent 10 cm et 6 cm, où se croisent les diagonales ?",
+              "answer": "Au milieu de chacune d'elles (à 5 cm et 3 cm du centre)",
+              "hint": "Dans un losange, les diagonales sont perpendiculaires et se coupent à leur milieu. C'est la clé de la construction.",
+              "explanation": "On trace la grande diagonale (10 cm), on marque son milieu O. On trace la perpendiculaire en O. On y reporte 3 cm de chaque côté (la moitié de 6 cm) pour trouver les deux autres sommets."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

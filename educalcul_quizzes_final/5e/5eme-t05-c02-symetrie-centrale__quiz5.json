@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Construction",
+  "title": "Construction de la symétrie centrale - Approfondissement",
+  "questions": [
+    {
+      "text": "Quelle est la première étape pour construire le symétrique $A'$ du point $A$ par rapport au centre $O$ à la règle et au compas ?",
+      "options": [
+        "Tracer le cercle de centre $O$ passant par $A$.",
+        "Tracer la droite $(OA)$.",
+        "Tracer le cercle de centre $A$ passant par $O$.",
+        "Tracer la perpendiculaire à $(OA)$ passant par $O$."
+      ],
+      "correctAnswer": "Tracer le cercle de centre $O$ passant par $A$.",
+      "explanation": "La construction du symétrique d'un point par rapport à un centre commence par tracer le cercle de centre $O$ et de rayon $OA$. L'intersection de ce cercle avec la droite $(OA)$ du côté opposé à $A$ donne le point $A'$. Les autres options correspondent à des étapes ultérieures ou à des constructions erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique du segment $AB$ par rapport au centre $O$, quelle procédure faut-il suivre ?",
+      "options": [
+        "Construire les symétriques $A'$ et $B'$ des points $A$ et $B$, puis tracer le segment $A'B'$.",
+        "Tracer le cercle de centre $O$ passant par $A$ et $B$, puis relier les intersections.",
+        "Tracer la droite $(AB)$ et construire son symétrique par rapport à $O$.",
+        "Mesurer la longueur $AB$ et reporter cette longueur de l'autre côté de $O$."
+      ],
+      "correctAnswer": "Construire les symétriques $A'$ et $B'$ des points $A$ et $B$, puis tracer le segment $A'B'$.",
+      "explanation": "Le symétrique d'un segment est le segment joignant les symétriques de ses extrémités. Il faut donc construire $A'$ et $B'$ (chacun par la méthode du cercle centré en $O$) puis relier $A'$ et $B'$. Les autres propositions ne produisent pas le segment symétrique correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si une figure plane est symétrique par rapport à un point $O$, quelle propriété est toujours vraie ?",
+      "options": [
+        "Chaque point de la figure a son symétrique appartenant à la figure.",
+        "La figure est nécessairement un cercle.",
+        "Les droites passant par $O$ sont des axes de symétrie axiale.",
+        "La figure ne peut pas contenir de segments."
+      ],
+      "correctAnswer": "Chaque point de la figure a son symétrique appartenant à la figure.",
+      "explanation": "La définition de la symétrie centrale (ou symétrie par rapport à un point) impose que l'image de tout point de la figure par la symétrie de centre $O$ appartienne encore à la figure. Un cercle est un cas particulier, mais pas une condition nécessaire. Les droites passant par $O$ ne sont pas des axes de symétrie axiale, et une figure symétrique centrale peut contenir des segments.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment construire le symétrique d'une droite $d$ qui ne passe pas par le centre $O$ ?",
+      "options": [
+        "Choisir deux points distincts sur $d$, construire leurs symétriques par rapport à $O$, puis tracer la droite passant par ces deux symétriques.",
+        "Tracer la perpendiculaire à $d$ passant par $O$ et la prolonger de la même longueur.",
+        "Tracer le cercle de centre $O$ coupant $d$ en deux points et relier ces points.",
+        "Tracer la parallèle à $d$ passant par $O$."
+      ],
+      "correctAnswer": "Choisir deux points distincts sur $d$, construire leurs symétriques par rapport à $O$, puis tracer la droite passant par ces deux symétriques.",
+      "explanation": "Une droite est déterminée par deux points. En symétrisant deux points quelconques de $d$ par rapport à $O$, on obtient deux points de la droite symétrique $d'$. La droite passant par ces deux points est exactement $d'$. Les autres méthodes ne donnent pas la droite symétrique (la perpendiculaire ne conserve pas la direction, le cercle ne donne pas une droite, la parallèle ne passe pas par les points symétriques).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la construction du triangle $A'B'C'$ symétrique du triangle $ABC$ par rapport au centre $O$, quelle affirmation est correcte ?",
+      "options": [
+        "Les segments $AA'$, $BB'$, $CC'$ ont tous $O$ pour milieu.",
+        "Les triangles $ABC$ et $A'B'C'$ sont nécessairement égaux en aire mais pas nécessairement isométriques.",
+        "Il suffit de construire le symétrique d'un seul sommet pour obtenir tout le triangle.",
+        "Les droites $(AB)$ et $(A'B')$ sont parallèles."
+      ],
+      "correctAnswer": "Les segments $AA'$, $BB'$, $CC'$ ont tous $O$ pour milieu.",
+      "explanation": "Par définition de la symétrie centrale, le centre $O$ est le milieu de chaque segment joignant un point à son image. Donc $O$ est le milieu de $AA'$, de $BB'$ et de $CC'$. Les deux triangles sont isométriques (donc même aire), mais l'égalité d'aire seule ne caractérise pas la symétrie centrale. Un seul sommet ne suffit pas pour déterminer les deux autres, et les droites $(AB)$ et $(A'B')$ ne sont pas parallèles en général (elles sont symétriques par rapport à $O$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

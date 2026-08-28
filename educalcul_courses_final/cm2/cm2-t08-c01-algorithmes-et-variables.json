@@ -1,0 +1,375 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.515463+00:00",
+  "id": 325,
+  "code": "cm2-t08-c01",
+  "title": "Algorithmes et variables",
+  "description": "Cours structuré Educalcul : Algorithmes et variables.",
+  "subject": "Pensée informatique",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Algorithmes et variables",
+    "objectif_global": "Algorithmes et variables",
+    "mini_lecons_imposees": [
+      "Affecter.",
+      "Modifier.",
+      "Suivre un programme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Affecter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une variable ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une petite boîte en carton. Sur le couvercle, tu écris un nom, par exemple $score$. À l'intérieur, tu peux glisser un nombre, comme $0$ au début d'un jeu. Cette boîte, c'est ce qu'on appelle une variable : un endroit nommé qui peut contenir une valeur et la garder le temps qu'on en a besoin."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Un espace de mémoire identifié par un nom (comme $score$) qui stocke une valeur numérique ou textuelle.",
+              "example": "Dans un jeu, la variable $score$ commence à $0$ et augmente à chaque bonne réponse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour voir comment une variable mémorise un nombre, regardons le tableau de numération ci‑dessous. Il montre la valeur $123$ décomposée en centaines, dizaines et unités, exactement comme la variable $score$ pourrait le faire si le joueur a déjà marqué cent vingt‑trois points."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 123,
+              "caption": "Décomposition de 123 : 1 centaine, 2 dizaines, 3 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Donner une valeur à une variable, c'est l'action qu'on appelle affecter. On écrit souvent une flèche qui part de la valeur vers le nom de la variable, par exemple $score \\leftarrow 0$. Cela se lit : « la variable $score$ reçoit la valeur $0$ »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le nom",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On décide comment on appellera la boîte, par exemple $score$, $vie$, ou $temps$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la flèche d'affectation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On utilise le symbole $\\leftarrow$ pour dire « prend la valeur »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Indiquer la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit le nombre ou le calcul à droite de la flèche, comme $0$ ou $5+2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais créer une variable et lui donner une première valeur, voyons comment on note cette opération dans un petit programme. On écrit simplement le nom, la flèche, puis la valeur, chaque instruction sur une ligne."
+            },
+            {
+              "type": "definition",
+              "term": "affectation",
+              "definition": "L'instruction qui assigne une valeur à une variable, notée avec $\\leftarrow$.",
+              "example": "$score \\leftarrow 10$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, pour démarrer une partie, on peut écrire trois lignes : $score \\leftarrow 0$, $vie \\leftarrow 3$, $niveau \\leftarrow 1$. Chacune prépare une boîte différente avant que le jeu ne commence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, une variable n'est pas figée : on peut lui donner une nouvelle valeur plus tard dans le programme. C'est ce qu'on verra dans la prochaine leçon, mais tu peux déjà t'entraîner à écrire plusieurs affectations les unes après les autres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'instruction qui affecte la valeur $7$ à la variable $points$.",
+              "answer": "$points \\leftarrow 7$",
+              "hint": "Utilise la flèche $\\leftarrow$ entre le nom et le nombre.",
+              "explanation": "L'affectation place la valeur $7$ dans la boîte nommée $points$."
+            },
+            {
+              "question": "Parmi ces lignes, laquelle est une affectation correcte pour donner $5$ à $tour$ ?\\n1) $tour = 5$\\n2) $tour \\leftarrow 5$\\n3) $5 \\leftarrow tour$",
+              "answer": "2",
+              "hint": "La flèche pointe vers le nom de la variable.",
+              "explanation": "Seule la forme $tour \\leftarrow 5$ respecte la convention : la variable à gauche, la valeur à droite."
+            },
+            {
+              "question": "Si on écrit $a \\leftarrow 3$ puis $a \\leftarrow 8$, quelle valeur contient $a$ à la fin ?",
+              "answer": "$8$",
+              "hint": "La deuxième affectation remplace la première.",
+              "explanation": "Chaque nouvelle affectation écrase l'ancienne valeur stockée dans la variable."
+            }
+          ]
+        },
+        {
+          "title": "Modifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modifier la valeur d'une variable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as vu comment créer une variable et lui donner une valeur de départ. Maintenant, découvrons comment changer cette valeur au fil du programme. C'est comme remplacer le contenu d'une boîte sans changer son étiquette."
+            },
+            {
+              "type": "definition",
+              "term": "modification",
+              "definition": "Donner une nouvelle valeur à une variable qui en avait déjà une, en utilisant à nouveau l'affectation.",
+              "example": "$score \\leftarrow score + 10$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que la variable $score$ vaille $20$. Si le joueur gagne un bonus, on peut écrire $score \\leftarrow score + 10$. Le programme lit d'abord la valeur actuelle ($20$), ajoute $10$, puis range le résultat ($30$) dans la même boîte $score$."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Ancien score",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Bonus",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Nouveau score",
+                  "value": 30,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Visualisation du changement de valeur : l'ancien score plus le bonus donne le nouveau score"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire la valeur actuelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le programme regarde ce que contient la variable avant de calculer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Effectuer le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, on additionne $20$ et $10$ pour obtenir $30$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Stocker le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La flèche $\\leftarrow$ place $30$ dans $score$, remplaçant l'ancien contenu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi diminuer une valeur, par exemple quand le joueur perd une vie. Si $vie$ vaut $3$, l'instruction $vie \\leftarrow vie - 1$ la fait passer à $2$. C'est la même mécanique, seul le calcul change."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut doubler une valeur, comme quand un score est multiplié par deux à la fin d'un niveau. On écrit alors $score \\leftarrow score \\times 2$. Le symbole $\\times$ signifie « multiplié par ». Essaie d'imaginer la boîte $score$ qui passe de $15$ à $30$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si $points$ vaut $12$, quelle instruction ajoute $5$ et met le résultat dans $points$ ?",
+              "answer": "$points \\leftarrow points + 5$",
+              "hint": "Réutilise le nom de la variable des deux côtés de la flèche.",
+              "explanation": "Le programme lit $12$, calcule $12+5=17$, puis stocke $17$ dans $points$."
+            },
+            {
+              "question": "Partant de $vie = 4$, quelle instruction fait passer $vie$ à $3$ ?",
+              "answer": "$vie \\leftarrow vie - 1$",
+              "hint": "On soustrait $1$ à la valeur actuelle.",
+              "explanation": "La soustraction réduit la valeur stockée de un."
+            },
+            {
+              "question": "Si $score$ vaut $9$, que contient $score$ après $score \\leftarrow score \\times 2$ ?",
+              "answer": "$18$",
+              "hint": "Multiplie la valeur actuelle par deux.",
+              "explanation": "Le calcul $9 \\times 2$ donne $18$, qui devient la nouvelle valeur de $score$."
+            }
+          ]
+        },
+        {
+          "title": "Suivre un programme.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Suivre un programme pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un programme, c'est une suite d'instructions que l'ordinateur exécute l'une après l'autre. Pour bien comprendre ce qui se passe, on peut jouer le rôle de l'ordinateur et suivre chaque ligne en notant la valeur des variables dans un petit tableau de suivi."
+            },
+            {
+              "type": "definition",
+              "term": "programme",
+              "definition": "Une liste ordonnée d'instructions (affectations, calculs, affichages) que l'ordinateur exécute séquentiellement.",
+              "example": "$a \\leftarrow 5$\\n$b \\leftarrow a + 2$\\n$a \\leftarrow a \\times 2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons cet exemple simple :\\n1. $a \\leftarrow 5$\\n2. $b \\leftarrow a + 2$\\n3. $a \\leftarrow a \\times 2$\\nAu début, aucune variable n'a de valeur. Après la ligne 1, $a$ devient $5$. La ligne 2 lit $a$ ($5$), ajoute $2$, et met $7$ dans $b$. La ligne 3 relit $a$ (toujours $5$), le double, et range $10$ dans $a$. À la fin, $a = 10$ et $b = 7$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Première affectation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $a = 5$ dans le tableau de suivi."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcul de $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On lit $a$ ($5$), on calcule $5+2=7$, on note $b = 7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Modification de $a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On relit $a$ ($5$), on calcule $5 \\times 2 = 10$, on met à jour $a = 10$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un programme utilise plusieurs variables qui changent en même temps. Prenons ce petit algorithme :\\n1. $x \\leftarrow 3$\\n2. $y \\leftarrow 4$\\n3. $x \\leftarrow x + y$\\n4. $y \\leftarrow x - y$\\nSuivons-le ensemble. Après la ligne 1, $x=3$. Ligne 2 : $y=4$. Ligne 3 : on lit $x=3$ et $y=4$, on calcule $3+4=7$, donc $x=7$. Ligne 4 : on lit le nouveau $x=7$ et $y=4$, on calcule $7-4=3$, donc $y=3$. Résultat final : $x=7$, $y=3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'aider à ne pas te perdre, trace toujours un tableau avec les noms des variables en colonnes et une ligne par instruction. C'est une habitude qui devient très utile quand les programmes grandissent. Essaie de le faire sur l'exercice suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais créer une variable et lui donner une valeur de départ.",
+                "Je sais modifier la valeur d'une variable en utilisant son ancienne valeur.",
+                "Je sais suivre un programme ligne par ligne en notant les valeurs des variables.",
+                "Je comprends que l'ordre des instructions change le résultat final."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le programme :\\n1. $p \\leftarrow 6$\\n2. $q \\leftarrow p - 2$\\n3. $p \\leftarrow p + q$\\nQuelles sont les valeurs finales de $p$ et $q$ ?",
+              "answer": "$p = 10$, $q = 4$",
+              "hint": "Suis chaque ligne dans l'ordre et note les valeurs.",
+              "explanation": "Ligne 1 : $p=6$. Ligne 2 : $q = 6-2 = 4$. Ligne 3 : $p = 6+4 = 10$."
+            },
+            {
+              "question": "Écris les valeurs de $m$ et $n$ après ce programme :\\n1. $m \\leftarrow 2$\\n2. $n \\leftarrow 5$\\n3. $m \\leftarrow m \\times n$\\n4. $n \\leftarrow m - n$",
+              "answer": "$m = 10$, $n = 5$",
+              "hint": "Attention : la ligne 3 change $m$ avant la ligne 4.",
+              "explanation": "Ligne 1 : $m=2$. Ligne 2 : $n=5$. Ligne 3 : $m = 2 \\times 5 = 10$. Ligne 4 : $n = 10 - 5 = 5$."
+            },
+            {
+              "question": "Quel programme parmi les suivants donne $a = 12$ et $b = 6$ à la fin ?\\nA) $a \\leftarrow 6$ ; $b \\leftarrow a$ ; $a \\leftarrow a + b$\\nB) $a \\leftarrow 6$ ; $b \\leftarrow 3$ ; $a \\leftarrow a \\times 2$ ; $b \\leftarrow b \\times 2$\\nC) $a \\leftarrow 3$ ; $b \\leftarrow 9$ ; $a \\leftarrow a + b$ ; $b \\leftarrow a - b$",
+              "answer": "A",
+              "hint": "Teste chaque programme étape par étape.",
+              "explanation": "Programme A : après $a=6$, $b=6$, puis $a=6+6=12$ → $a=12$, $b=6$. Les autres ne donnent pas ce couple."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 431,
+  "_course_code": "4eme-t03-c02-vitesse-et-grandeurs-composees",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Formule",
+  "title": "Vitesse et grandeurs composées : formules et algorithmes",
+  "blocks": [
+    {
+      "title": "Formule de la vitesse",
+      "content": "Écrire la formule mathématique qui permet de calculer la vitesse $v$ en connaissant la distance $d$ et le temps $t$.",
+      "correctAnswer": "La formule est $v = \\frac{d}{t}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La vitesse est définie comme le quotient de la distance parcourue par le temps mis pour la parcourir. On obtient donc $v = d / t$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour calculer la distance",
+      "content": "Écrire un algorithme (en langage naturel ou avec une syntaxe type Python) qui, étant donné la vitesse $v$ et le temps $t$, calcule et affiche la distance $d$ parcourue.",
+      "correctAnswer": "Algorithme :\\n1. Lire v\\n2. Lire t\\n3. Calculer d = v * t\\n4. Afficher d",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la formule $v = d / t$, on en déduit $d = v \\times t$. L'algorithme lit les deux valeurs, effectue la multiplication et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vitesse moyenne sur deux tronçons",
+      "content": "Un véhicule effectue un trajet en deux parties. Sur la première partie, il parcourt $d_1$ kilomètres en $t_1$ heures. Sur la seconde, il parcourt $d_2$ kilomètres en $t_2$ heures. Écrire un algorithme qui calcule la vitesse moyenne sur l'ensemble du trajet.",
+      "correctAnswer": "Algorithme :\\n1. Lire d1, t1, d2, t2\\n2. Calculer distance_totale = d1 + d2\\n3. Calculer temps_total = t1 + t2\\n4. Calculer vitesse_moyenne = distance_totale / temps_total\\n5. Afficher vitesse_moyenne",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La vitesse moyenne sur un trajet complet est la distance totale divisée par le temps total. On additionne les distances et les temps des deux tronçons, puis on effectue la division.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.330674+00:00",
+  "id": 276,
+  "code": "cm2-t01-c02",
+  "title": "Valeur de position dans les entiers",
+  "description": "Cours structuré Educalcul : Valeur de position dans les entiers.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Valeur de position dans les entiers",
+    "objectif_global": "Valeur de position dans les entiers",
+    "mini_lecons_imposees": [
+      "Décomposer.",
+      "Multiplier / diviser par 10, 100, 1000 au sens numération.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Décomposer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La valeur de position : chaque chiffre a son importance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as devant toi une grande étagère avec des cases numérotées. Chaque case ne peut accueillir qu'un seul chiffre, de 0 à 9. La case la plus à droite est celle des unités, puis viennent les dizaines, les centaines, les milliers, et ainsi de suite. Plus un chiffre est placé à gauche, plus sa valeur est grande. C'est ce qu'on appelle la valeur de position : la place du chiffre dans le nombre détermine combien il vaut vraiment. Par exemple, dans $54\\,321$, le chiffre $5$ ne vaut pas $5$, il vaut $50\\,000$ parce qu'il est dans la case des dizaines de milliers."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 54321,
+              "caption": "Le nombre 54 321 dans le tableau de numération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau de numération. Chaque colonne porte un nom : unités, dizaines, centaines, milliers, dizaines de milliers, centaines de milliers, millions... Le chiffre $5$ est dans la colonne des dizaines de milliers, le $4$ dans les milliers, le $3$ dans les centaines, le $2$ dans les dizaines et le $1$ dans les unités. C'est comme une adresse précise pour chaque chiffre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire la place de chaque chiffre, on va apprendre à décomposer un nombre. Décomposer, c'est écrire le nombre comme une addition où chaque terme montre la valeur réelle d'un chiffre. On appelle ça une décomposition additive. Par exemple, $234 = 200 + 30 + 4$. Le $2$ des centaines devient $200$, le $3$ des dizaines devient $30$, le $4$ des unités reste $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Décomposition additive",
+              "definition": "Écrire un nombre comme une somme où chaque terme correspond à la valeur d'un chiffre selon sa position.",
+              "example": "Pour $234$ : $200 + 30 + 4$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 4,
+              "caption": "234 : 2 centaines, 3 dizaines, 4 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les blocs de base dix, on voit bien les centaines (les gros cubes), les dizaines (les barres) et les unités (les petits cubes). Pour décomposer, on compte combien il y a de chaque bloc et on écrit la valeur correspondante. Essaie de faire de même avec $5\\,072$ : il y a $5$ milliers, $0$ centaines, $7$ dizaines et $2$ unités. La décomposition donne $5\\,000 + 0 + 70 + 2$, mais on n'écrit pas le $0$, on écrit simplement $5\\,000 + 70 + 2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les nombres peuvent être très grands, jusqu'aux milliards. La méthode reste la même : on repère la position de chaque chiffre non nul et on écrit sa valeur. Pour ne pas se tromper, on peut suivre une méthode en plusieurs étapes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le nombre dans un tableau de numération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place chaque chiffre dans la bonne colonne en partant de la droite (unités)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer chaque chiffre non nul et sa colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les colonnes où le chiffre n'est pas zéro."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la valeur de chaque chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chiffre suivi du bon nombre de zéros selon sa colonne (ex: $4$ dans les milliers $\\rightarrow 4\\,000$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Relier ces valeurs par des signes +",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient la décomposition additive."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à $408\\,050$. Dans le tableau, on a $4$ centaines de milliers, $0$ dizaines de milliers, $8$ milliers, $0$ centaines, $5$ dizaines, $0$ unités. Les chiffres non nuls sont $4$, $8$, $5$. Leurs valeurs : $400\\,000$, $8\\,000$, $50$. La décomposition est $400\\,000 + 8\\,000 + 50$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant décomposer n'importe quel entier, petit ou grand. Cette compétence te servira pour comparer, arrondir et calculer plus tard."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $3\\,702$ en une somme de valeurs de position.",
+              "answer": "$3\\,000 + 700 + 2$",
+              "hint": "Utilise le tableau de numération pour repérer les centaines, dizaines, unités.",
+              "explanation": "Le $3$ est dans les milliers ($3\\,000$), le $7$ dans les centaines ($700$), le $0$ dans les dizaines (on ne l'écrit pas), le $2$ dans les unités ($2$)."
+            },
+            {
+              "question": "Voici des blocs : $4$ centaines, $0$ dizaines, $6$ unités. Écris le nombre et sa décomposition additive.",
+              "answer": "Nombre : $406$. Décomposition : $400 + 6$",
+              "hint": "Compte les centaines et les unités, il n'y a pas de dizaines.",
+              "explanation": "$4$ centaines font $400$, $6$ unités font $6$. Le $0$ dizaine ne s'écrit pas dans la décomposition."
+            },
+            {
+              "question": "Décompose $2\\,500\\,040$.",
+              "answer": "$2\\,000\\,000 + 500\\,000 + 40$",
+              "hint": "Repère les millions, centaines de milliers, dizaines, etc.",
+              "explanation": "$2$ millions, $5$ centaines de milliers, $4$ dizaines. Les zéros ne s'écrivent pas."
+            }
+          ]
+        },
+        {
+          "title": "Multiplier / diviser par 10, 100, 1000 au sens numération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplier par 10, 100, 1000 : les chiffres glissent vers la gauche"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on multiplie un nombre entier par $10$, par $100$ ou par $1\\,000$, on n'a pas besoin de faire une multiplication posée. Il suffit de comprendre ce qui se passe dans le tableau de numération. Multiplier par $10$, c'est déplacer chaque chiffre d'une case vers la gauche. Les unités deviennent des dizaines, les dizaines deviennent des centaines, etc. Et on met un $0$ dans la case des unités qui s'est libérée."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Colonne",
+                "Avant (234)",
+                "Après ×10 (2340)"
+              ],
+              "rows": [
+                [
+                  "Unités",
+                  "4",
+                  "0"
+                ],
+                [
+                  "Dizaines",
+                  "3",
+                  "4"
+                ],
+                [
+                  "Centaines",
+                  "2",
+                  "3"
+                ],
+                [
+                  "Milliers",
+                  "0",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : le $4$ des unités est allé dans les dizaines, le $3$ des dizaines dans les centaines, le $2$ des centaines dans les milliers. Une case unités vide apparaît, on y met $0$. Donc $234 \\times 10 = 2\\,340$. Pour multiplier par $100$, on décale de deux cases vers la gauche (on ajoute deux zéros). Pour $1\\,000$, trois cases (trois zéros)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Diviser par 10, 100, 1000 : les chiffres glissent vers la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "La division par $10$, $100$ ou $1\\,000$ fait l'effet inverse : les chiffres se déplacent vers la droite. Les unités deviennent des dixièmes ? Attention, ici on reste dans les entiers : on ne divise que des nombres qui se terminent par assez de zéros pour que le résultat soit encore un entier. Par exemple, $4\\,500 \\div 100 = 45$. Les deux zéros de droite disparaissent, les chiffres $4$ et $5$ glissent de deux cases vers la droite."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 4500,
+              "caption": "4500 avant division par 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après division par $100$, le $4$ qui était dans les milliers va dans les dizaines, le $5$ qui était dans les centaines va dans les unités. Les deux zéros des dizaines et unités sont partis. Le résultat est $45$. Si le nombre ne se termine pas par assez de zéros, la division donne un nombre décimal, mais ce sera pour plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mémo : la règle des zéros"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier un entier par $10$, $100$ ou $1\\,000$, on ajoute autant de zéros à droite qu'il y en a dans le multiplicateur ($10$ a un zéro, $100$ en a deux, $1\\,000$ en a trois). Pour diviser, on retire autant de zéros à droite qu'il y en a dans le diviseur, à condition que le nombre en ait au moins autant. C'est une astuce pratique, mais n'oublie pas que derrière cette astuce, ce sont les chiffres qui changent de place dans le tableau de numération."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compte le nombre de zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $10$, $100$ ou $1\\,000$, compte les zéros (1, 2 ou 3)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplication → ajoute des zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute ce nombre de zéros à droite du nombre de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Division → retire des zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le nombre se termine par au moins ce nombre de zéros, retire-les."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifie au tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as un doute, replace les chiffres dans le tableau de numération."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour multiplier et diviser par $10$, $100$, $1\\,000$ rapidement et sans erreur. Essaie de deviner le résultat de $305 \\times 100$ avant de calculer : les chiffres $3$, $0$, $5$ vont glisser de deux cases..."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $56 \\times 100$.",
+              "answer": "$5\\,600$",
+              "hint": "Ajoute deux zéros à droite de $56$.",
+              "explanation": "Multiplier par $100$ décale les chiffres de deux cases vers la gauche : $56$ devient $5\\,600$."
+            },
+            {
+              "question": "Calcule $7\\,200 \\div 10$.",
+              "answer": "$720$",
+              "hint": "Retire un zéro à droite.",
+              "explanation": "Diviser par $10$ décale les chiffres d'une case vers la droite : $7\\,200$ devient $720$."
+            },
+            {
+              "question": "Complète : $4\\,000 \\times 10 = \\ldots$ et $4\\,000 \\div 100 = \\ldots$",
+              "answer": "$40\\,000$ et $40$",
+              "hint": "Pour la multiplication, ajoute un zéro. Pour la division, retire deux zéros.",
+              "explanation": "$4\\,000 \\times 10 = 40\\,000$ (un zéro de plus). $4\\,000 \\div 100 = 40$ (deux zéros en moins)."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres : d'abord le nombre de chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir lequel de deux nombres est le plus grand, la première chose à regarder, c'est le nombre de chiffres. Un nombre qui a plus de chiffres est toujours plus grand qu'un nombre qui en a moins. C'est logique : un nombre à $5$ chiffres vaut au moins $10\\,000$, tandis qu'un nombre à $4$ chiffres vaut au maximum $9\\,999$. Donc $45\\,321 > 9\\,876$ sans même regarder les chiffres en détail."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 50000,
+              "points": [
+                {
+                  "value": 9876,
+                  "label": "9 876"
+                },
+                {
+                  "value": 45321,
+                  "label": "45 321"
+                }
+              ],
+              "caption": "Sur la droite graduée, 45 321 est bien à droite de 9 876"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite graduée, tu vois que $45\\,321$ est placé plus à droite que $9\\,876$. Plus on va vers la droite, plus les nombres sont grands. C'est une façon visuelle de comparer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même nombre de chiffres : on compare chiffre par chiffre de gauche à droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux nombres ont le même nombre de chiffres, on ne peut pas trancher tout de suite. Il faut les aligner dans un tableau de numération et comparer les chiffres en partant de la gauche (la plus grande valeur de position). Le premier chiffre qui diffère décide du plus grand nombre. Par exemple, compare $54\\,321$ et $54\\,312$. Ils ont tous les deux $5$ chiffres. Regardons les dizaines de milliers : $5$ et $5$, égal. Les milliers : $4$ et $4$, égal. Les centaines : $3$ et $3$, égal. Les dizaines : $2$ et $1$, ah ! $2 > 1$, donc $54\\,321 > 54\\,312$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Dizaines de milliers",
+                "Milliers",
+                "Centaines",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "54 321",
+                  "5",
+                  "4",
+                  "3",
+                  "2",
+                  "1"
+                ],
+                [
+                  "54 312",
+                  "5",
+                  "4",
+                  "3",
+                  "1",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau montre clairement où se trouve la différence. C'est une méthode sûre pour ne pas se tromper, même avec de très grands nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner une liste de nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on doit ranger plusieurs nombres dans l'ordre croissant (du plus petit au plus grand) ou décroissant. La méthode : d'abord, groupe les nombres selon leur nombre de chiffres. Ceux qui ont le moins de chiffres sont les plus petits. Ensuite, dans chaque groupe de même longueur, compare chiffre par chiffre comme avant. Écris-les au fur et à mesure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compte les chiffres de chaque nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le nombre de chiffres pour chaque nombre de la liste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Classe les groupes par nombre de chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les nombres à 3 chiffres viennent avant ceux à 4 chiffres, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Aligne dans un tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque groupe de même longueur, place-les dans un tableau de numération."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Compare de gauche à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ordonne-les dans le groupe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Écris la liste finale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe tous les nombres dans l'ordre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en somme de valeurs de position.",
+                "Je sais multiplier et diviser un entier par 10, 100, 1000 en déplaçant les chiffres.",
+                "Je sais comparer deux entiers en regardant le nombre de chiffres puis les chiffres de gauche à droite.",
+                "Je sais ordonner une liste d'entiers."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $8\\,742$ et $912$ en utilisant $<$ ou $>$.",
+              "answer": "$8\\,742 > 912$",
+              "hint": "Combien de chiffres a chaque nombre ?",
+              "explanation": "$8\\,742$ a $4$ chiffres, $912$ en a $3$. Un nombre à $4$ chiffres est toujours plus grand qu'un nombre à $3$ chiffres."
+            },
+            {
+              "question": "Compare $305\\,400$ et $305\\,040$.",
+              "answer": "$305\\,400 > 305\\,040$",
+              "hint": "Aligne-les dans un tableau et compare les centaines.",
+              "explanation": "Jusqu'aux milliers, c'est identique. Aux centaines : $4$ contre $0$, donc le premier est plus grand."
+            },
+            {
+              "question": "Range ces nombres dans l'ordre croissant : $12\\,000$ ; $1\\,200$ ; $120$ ; $1\\,020$ ; $12\\,001$.",
+              "answer": "$120 < 1\\,020 < 1\\,200 < 12\\,000 < 12\\,001$",
+              "hint": "Groupe par nombre de chiffres : 3 chiffres, 4 chiffres, 5 chiffres.",
+              "explanation": "$120$ (3 chiffres) < $1\\,020$ et $1\\,200$ (4 chiffres) : compare $1\\,020$ et $1\\,200$ -> $1\\,020 < 1\\,200$. Puis $12\\,000$ et $12\\,001$ (5 chiffres) : $12\\,000 < 12\\,001$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

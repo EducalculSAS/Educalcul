@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 434,
+  "_course_code": "4eme-t03-c05-bilan-proportionnalite-et-fonctions-4e",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Pourcentages, vitesse, dépendance",
+  "title": "Algorithmes : pourcentages et vitesse",
+  "blocks": [
+    {
+      "title": "Calcul de pourcentage simple",
+      "content": "Écrire un algorithme qui demande à l'utilisateur un prix initial et un taux de pourcentage d'augmentation, puis qui affiche le nouveau prix après augmentation.",
+      "correctAnswer": "Algorithme :\\n1. Demander prixInitial\\n2. Demander tauxPourcentage\\n3. augmentation ← prixInitial × tauxPourcentage / 100\\n4. nouveauPrix ← prixInitial + augmentation\\n5. Afficher nouveauPrix",
+      "explanation": "L'algorithme suit les étapes du calcul d'une augmentation par pourcentage. On calcule d'abord le montant de l'augmentation en multipliant le prix initial par le taux divisé par 100. On ajoute ensuite cette augmentation au prix initial pour obtenir le nouveau prix. Les variables stockent les valeurs intermédiaires.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vitesse, distance et durée",
+      "content": "Écrire un algorithme qui demande une distance en kilomètres et une durée en heures, puis qui calcule et affiche la vitesse moyenne en km/h. Préciser la formule utilisée.",
+      "correctAnswer": "Algorithme :\\n1. Demander distance (en km)\\n2. Demander duree (en h)\\n3. Si duree = 0 alors\\n      Afficher \"Erreur : durée nulle\"\\n   Sinon\\n      vitesse ← distance / duree\\n      Afficher vitesse\\n   Fin Si\\n\\nFormule : $v = \\frac{d}{t}$",
+      "explanation": "La vitesse moyenne est le quotient de la distance parcourue par le temps mis. L'algorithme doit vérifier que la durée n'est pas nulle pour éviter une division par zéro. La formule mathématique est $v = d / t$ où $v$ est la vitesse, $d$ la distance et $t$ la durée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pourcentages successifs et vitesse",
+      "content": "Un cycliste parcourt une distance de 60 km à une vitesse initiale de 20 km/h. Il augmente sa vitesse de 25 % pour la deuxième moitié du parcours. Écrire un algorithme qui calcule et affiche le temps total du trajet en heures.",
+      "correctAnswer": "Algorithme :\\n1. distanceTotale ← 60\\n2. vitesseInitiale ← 20\\n3. tauxAugmentation ← 25\\n4. demiDistance ← distanceTotale / 2\\n5. temps1 ← demiDistance / vitesseInitiale\\n6. vitesse2 ← vitesseInitiale × (1 + tauxAugmentation / 100)\\n7. temps2 ← demiDistance / vitesse2\\n8. tempsTotal ← temps1 + temps2\\n9. Afficher tempsTotal",
+      "explanation": "Le parcours est divisé en deux parties égales (30 km chacune). Pour la première partie, le temps est $30 / 20 = 1,5$ h. La vitesse augmente de 25 %, soit un coefficient multiplicateur de $1,25$. La nouvelle vitesse est $20 \\times 1,25 = 25$ km/h. Le temps de la deuxième partie est $30 / 25 = 1,2$ h. Le temps total est $1,5 + 1,2 = 2,7$ h. L'algorithme structure ces calculs avec des variables claires.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Aligner valeurs de position",
+  "title": "Aligner les valeurs de position pour comparer des décimaux",
+  "questions": [
+    {
+      "text": "Sur le tableau de position ci-dessous, le nombre $4,3$ est écrit. Pour le comparer correctement au nombre $4,05$, que doit-on faire ?",
+      "options": [
+        "Rien, les nombres sont déjà alignés",
+        "Ajouter un zéro aux centièmes de $4,3$ pour obtenir $4,30$",
+        "Ajouter un zéro aux dixièmes de $4,05$ pour obtenir $4,005$",
+        "Déplacer la virgule de $4,3$ vers la droite"
+      ],
+      "correctAnswer": "Ajouter un zéro aux centièmes de $4,3$ pour obtenir $4,30$",
+      "explanation": "Pour comparer deux nombres décimaux, il faut aligner les chiffres selon leur valeur de position (unités sous unités, dixièmes sous dixièmes, centièmes sous centièmes). Le nombre $4,3$ a 3 dixièmes et 0 centième. Pour l'aligner avec $4,05$ (qui a 0 dixième et 5 centièmes), on écrit un zéro au rang des centièmes : $4,30$. Ainsi, on compare $4,30$ et $4,05$ chiffre par chiffre. L'option A est fausse car les colonnes ne correspondent pas (3 dixièmes face à 0 dixième). L'option C crée un nombre différent ($4,005$). L'option D change la valeur du nombre.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 4.3,
+        "caption": "Tableau de position pour le nombre 4,3"
+      }
+    },
+    {
+      "text": "Pour aligner correctement les deux nombres $0,6$ et $0,58$ avant de les comparer, quelle écriture faut-il choisir ?",
+      "options": [
+        "$0,6$ et $0,58$",
+        "$0,60$ et $0,58$",
+        "$0,06$ et $0,58$",
+        "$0,6$ et $0,058$"
+      ],
+      "correctAnswer": "$0,60$ et $0,58$",
+      "explanation": "Le nombre $0,6$ représente 6 dixièmes et 0 centième. Le nombre $0,58$ représente 5 dixièmes et 8 centièmes. Pour les aligner, il faut que les deux nombres aient le même nombre de chiffres après la virgule. On ajoute un zéro au rang des centièmes pour $0,6$, ce qui donne $0,60$. Cela ne change pas sa valeur. On peut alors comparer : 6 dixièmes contre 5 dixièmes. L'option A laisse les colonnes décalées. L'option C divise $0,6$ par 10. L'option D divise $0,58$ par 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir aligné les nombres $3,4$ et $3,28$, quelle comparaison est exacte ?",
+      "options": [
+        "$3,4 < 3,28$",
+        "$3,4 = 3,28$",
+        "$3,4 > 3,28$",
+        "On ne peut pas les comparer car ils n'ont pas le même nombre de décimales"
+      ],
+      "correctAnswer": "$3,4 > 3,28$",
+      "explanation": "On aligne d'abord les nombres : $3,4$ devient $3,40$ (4 dixièmes, 0 centième) et $3,28$ reste $3,28$ (2 dixièmes, 8 centièmes). On compare les parties entières : 3 = 3. On compare les dixièmes : 4 > 2. Donc $3,40 > 3,28$, c'est-à-dire $3,4 > 3,28$. L'erreur fréquente (option A) consiste à comparer 4 et 28 comme des nombres entiers sans respecter la valeur de position. L'option D est fausse car on peut toujours comparer en ajoutant des zéros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les trois nombres suivants dans l'ordre croissant : $2,5$ ; $2,05$ ; $2,55$.",
+      "options": [
+        "$2,5 < 2,05 < 2,55$",
+        "$2,05 < 2,5 < 2,55$",
+        "$2,05 < 2,55 < 2,5$",
+        "$2,55 < 2,5 < 2,05$"
+      ],
+      "correctAnswer": "$2,05 < 2,5 < 2,55$",
+      "explanation": "On aligne tous les nombres au centième : $2,50$ ; $2,05$ ; $2,55$. Parties entières : toutes 2. Dixièmes : 0 (pour $2,05$), 5 (pour $2,50$), 5 (pour $2,55$). Le plus petit est $2,05$. Entre $2,50$ et $2,55$, on regarde les centièmes : 0 < 5. L'ordre est donc $2,05 < 2,50 < 2,55$, soit $2,05 < 2,5 < 2,55$. L'option A confond l'ordre en ne pas alignant (5 > 05 lu comme 5 > 5). L'option C place $2,55$ avant $2,5$. L'option D est l'ordre décroissant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre décimal peut-on écrire entre $0,7$ et $0,72$ ?",
+      "options": [
+        "$0,69$",
+        "$0,71$",
+        "$0,73$",
+        "$0,8$"
+      ],
+      "correctAnswer": "$0,71$",
+      "explanation": "On aligne les bornes au centième : $0,70$ et $0,72$. On cherche un nombre strictement compris entre 70 centièmes et 72 centièmes. $0,71$ vaut 71 centièmes, il est bien entre les deux. $0,69$ (69 centièmes) est plus petit que $0,70$. $0,73$ (73 centièmes) est plus grand que $0,72$. $0,8$ (80 centièmes) est beaucoup plus grand. L'alignement permet de visualiser l'intervalle [$0,70$ ; $0,72$].",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

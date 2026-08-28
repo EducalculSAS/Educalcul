@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Bilan - Triangle 4e",
+  "title": "Bilan - Triangle 4e : Applications",
+  "questions": [
+    {
+      "text": "Dans tout triangle, la somme des mesures des trois angles intérieurs vaut :",
+      "options": [
+        "$180^\\circ$",
+        "$90^\\circ$",
+        "$360^\\circ$",
+        "$270^\\circ$"
+      ],
+      "correctAnswer": "$180^\\circ$",
+      "explanation": "La somme des angles d'un triangle dans le plan euclidien est toujours $180^\\circ$. Les autres valeurs correspondent à des erreurs fréquentes : $90^\\circ$ est l'angle droit, $360^\\circ$ est la somme des angles d'un quadrilatère, $270^\\circ$ n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour angles $50^\\circ$, $60^\\circ$ et $70^\\circ$. Quel est son type ?",
+      "options": [
+        "Triangle rectangle",
+        "Triangle isocèle",
+        "Triangle équilatéral",
+        "Triangle quelconque"
+      ],
+      "correctAnswer": "Triangle quelconque",
+      "explanation": "Les trois angles sont distincts, aucun n'est égal à $90^\\circ$, donc le triangle n'est ni rectangle, ni isocèle (deux angles égaux), ni équilatéral (trois angles de $60^\\circ$). C'est un triangle quelconque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle ABC, l'angle droit est en A. Les côtés AB et AC mesurent respectivement $3$ cm et $4$ cm. Quelle est la longueur de l'hypoténuse BC ?",
+      "options": [
+        "$5$ cm",
+        "$7$ cm",
+        "$12$ cm",
+        "$25$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "D'après le théorème de Pythagore, dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés : $BC^2 = AB^2 + AC^2 = 3^2 + 4^2 = 9 + 16 = 25$. Donc $BC = \\sqrt{25} = 5$ cm. Les distracteurs correspondent à l'addition des longueurs ($7$), au produit ($12$) ou au carré de l'hypoténuse ($25$).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle ABC, angle droit en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "c",
+          "a",
+          "b"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Peut-on construire un triangle avec des longueurs de côtés $5$ cm, $7$ cm et $13$ cm ?",
+      "options": [
+        "Oui, car $5+7>13$",
+        "Non, car $5+7<13$",
+        "Oui, car $5+13>7$",
+        "Non, car $7+13<5$"
+      ],
+      "correctAnswer": "Non, car $5+7<13$",
+      "explanation": "L'inégalité triangulaire exige que la somme de deux côtés quelconques soit strictement supérieure au troisième côté. Ici, les deux plus petits côtés sont $5$ et $7$ ; leur somme $5+7=12$ est inférieure à $13$. La construction est donc impossible. Les autres réponses mélangent les inégalités ou inversent le sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle isocèle ABC avec sommet A, les angles à la base B et C mesurent chacun $40^\\circ$. Quelle est la mesure de l'angle au sommet A ?",
+      "options": [
+        "$100^\\circ$",
+        "$80^\\circ$",
+        "$60^\\circ$",
+        "$40^\\circ$"
+      ],
+      "correctAnswer": "$100^\\circ$",
+      "explanation": "La somme des angles d'un triangle vaut $180^\\circ$. Dans un triangle isocèle, les angles à la base sont égaux. Donc l'angle au sommet A = $180^\\circ - 40^\\circ - 40^\\circ = 100^\\circ$. Les distracteurs correspondent à des erreurs de calcul ($80^\\circ$ si on soustrait une seule fois $40^\\circ$, $60^\\circ$ si on croit à un triangle équilatéral, $40^\\circ$ si on confond avec les angles à la base).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

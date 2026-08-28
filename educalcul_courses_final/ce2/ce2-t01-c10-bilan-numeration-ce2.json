@@ -1,0 +1,445 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.952131+00:00",
+  "id": 151,
+  "code": "ce2-t01-c10",
+  "title": "Bilan - Numération CE2",
+  "description": "Cours structuré Educalcul : Bilan - Numération CE2.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Bilan - Numération CE2",
+    "objectif_global": "Bilan - Numération CE2",
+    "mini_lecons_imposees": [
+      "Lecture, écriture, position.",
+      "Comparaison, encadrement, droite.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lecture, écriture, position.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et écrire un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur la numération. Aujourd’hui, tu vas revoir comment lire et écrire les nombres jusqu’à $9999$. Prenons l’exemple du nombre $432$ : on lit « quatre cent trente‑deux ». Chaque chiffre a une place bien précise, et c’est cette place qui donne sa valeur."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 4,
+              "tens": 3,
+              "units": 2,
+              "caption": "432 : 4 centaines, 3 dizaines, 2 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la représentation avec des blocs de base dix : quatre plaques de cent, trois barres de dix et deux cubes d’unité. Cela montre bien que le premier chiffre compte les centaines, le second les dizaines et le dernier les unités."
+            },
+            {
+              "type": "definition",
+              "term": "chiffre",
+              "definition": "Un symbole qui permet d’écrire les nombres (0, 1, 2, 3, 4, 5, 6, 7, 8, 9).",
+              "example": "Dans $432$, les chiffres sont $4$, $3$ et $2$."
+            },
+            {
+              "type": "definition",
+              "term": "nombre",
+              "definition": "Une quantité que l’on peut écrire avec un ou plusieurs chiffres.",
+              "example": "$432$ est un nombre à trois chiffres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer les classes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les milliers, les centaines, les dizaines et les unités en partant de la gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : écrire chaque chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le chiffre correspondant à chaque classe. Si une classe est vide, écris $0$ pour garder la place."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : relire le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le nombre en regroupant les classes : milliers, centaines, dizaines, unités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de t’exercer, rappelle‑toi que le zéro n’est pas un chiffre vide : il indique qu’il n’y a rien dans cette classe. Par exemple, dans $1020$, le zéro des centaines montre qu’il n’y a pas de centaine."
+            },
+            {
+              "type": "number_line",
+              "min": 400,
+              "max": 500,
+              "points": [
+                {
+                  "value": 432,
+                  "label": "432"
+                }
+              ],
+              "intervals": [],
+              "caption": "Position de 432 entre 400 et 500"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, place le nombre $432$ sur la droite numérique que tu vois ci‑dessus. Observe où il se trouve par rapport à $400$ et $500$."
+            },
+            {
+              "type": "display_math",
+              "latex": "1234 = 1\\times1000 + 2\\times100 + 3\\times10 + 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, repère le point $1234$ entre $1000$ et $2000$. Cela t’aide à visualiser la grandeur du nombre et à le situer par rapport aux autres. Tu es maintenant prêt à comparer et à encadrer des nombres dans la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment lire, écrire et positionner un nombre. Essaie à présent de décomposer $1234$ en milliers, centaines, dizaines et unités."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres le nombre « six cent quarante‑huit ».",
+              "answer": "$648$",
+              "hint": "Pense aux centaines, dizaines, unités.",
+              "explanation": "Six cents = 6 centaines, quarante = 4 dizaines, huit = 8 unités."
+            },
+            {
+              "question": "Sur la droite graduée, place le nombre $432$. Entre quels deux multiples de cent se trouve‑t‑il ?",
+              "answer": "Entre $400$ et $500$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines est 4, donc le nombre est entre 400 et 500."
+            },
+            {
+              "question": "Écris le nombre $1234$ en décomposant ses classes : milliers, centaines, dizaines, unités.",
+              "answer": "$1$ millier, $2$ centaines, $3$ dizaines, $4$ unités",
+              "hint": "Commence par le chiffre le plus à gauche.",
+              "explanation": "Le premier chiffre est le millier, puis les centaines, les dizaines et les unités."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison, encadrement, droite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas apprendre à comparer deux nombres pour savoir lequel est le plus grand. Imagine deux tours de cubes : l’une mesure $567$ cubes, l’autre $589$ cubes. En regardant les centaines, elles sont égales. Regarde ensuite les dizaines : $6$ contre $8$. La tour avec $8$ dizaines est plus haute."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "567",
+                  "value": 567,
+                  "tone": "blue"
+                },
+                {
+                  "label": "589",
+                  "value": 589,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparaison visuelle de 567 et 589"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le schéma en barres ci‑dessous montre les deux quantités côte à côte. La barre du haut représente $567$, celle du bas $589$. La différence se voit tout de suite au niveau des dizaines. C’est la méthode : comparer d’abord les centaines, puis les dizaines, enfin les unités."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : comparer les centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les centaines sont différentes, le nombre avec le plus grand chiffre des centaines est le plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : comparer les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les centaines sont égales, regarde les dizaines. Le plus grand chiffre des dizaines décide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les centaines et les dizaines sont égales, compare les unités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends le temps de regarder chaque classe de chiffres. Les centaines sont identiques, les dizaines sont $3$ contre $2$, donc $732$ l’emporte. Note ton raisonnement sur ton cahier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "L’encadrement consiste à trouver deux nombres ronds qui entourent un nombre donné. Pour $450$, les centaines les plus proches sont $400$ et $500$. Sur la droite graduée, tu vois $450$ exactement au milieu."
+            },
+            {
+              "type": "number_line",
+              "min": 300,
+              "max": 500,
+              "points": [
+                {
+                  "value": 378,
+                  "label": "378"
+                }
+              ],
+              "intervals": [],
+              "caption": "Position de 378 entre 300 et 400"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Place maintenant le nombre $378$ entre $300$ et $400$ sur la droite. Vérifie qu’il est plus proche de $400$ que de $300$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner plusieurs nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ordonner plusieurs nombres, on les place tous sur la même droite. Le diagramme en barres ci‑dessous montre $215$, $342$, $198$ et $401$ classés du plus petit au plus grand. Observe l’ordre visuel."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Ordre croissant de quatre nombres",
+              "bars": [
+                {
+                  "label": "198",
+                  "value": 198,
+                  "tone": "blue"
+                },
+                {
+                  "label": "215",
+                  "value": 215,
+                  "tone": "green"
+                },
+                {
+                  "label": "342",
+                  "value": 342,
+                  "tone": "gold"
+                },
+                {
+                  "label": "401",
+                  "value": 401,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Trie la liste $560$, $506$, $650$, $605$ en les positionnant sur une droite imaginaire. Écris l’ordre final dans ton cahier."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel est le plus grand : $732$ ou $729$ ?",
+              "answer": "$732$",
+              "hint": "Compare les dizaines après les centaines.",
+              "explanation": "Les centaines sont égales (7). Les dizaines : 3 > 2, donc 732 > 729."
+            },
+            {
+              "question": "Encadre le nombre $378$ entre deux centaines consécutives.",
+              "answer": "Entre $300$ et $400$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines est 3, donc le nombre est entre 300 et 400."
+            },
+            {
+              "question": "Trie ces nombres du plus petit au plus grand : $560$, $506$, $650$, $605$.",
+              "answer": "$506$, $560$, $605$, $650$",
+              "hint": "Compare d’abord les centaines, puis les dizaines.",
+              "explanation": "506 et 560 ont 5 centaines ; 506 a 0 dizaine, 560 a 6 dizaines. 605 et 650 ont 6 centaines ; 605 a 0 dizaine, 650 a 5 dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan et entraînement"
+            },
+            {
+              "type": "paragraph",
+              "content": "C’est la dernière étape de ce bilan. Tu vas réviser la lecture, l’écriture et la position avec un nouveau nombre : $3087$. Lis‑le à voix haute : « trois mille quatre‑vingt‑sept ». Remarque le zéro des centaines : il maintient la place des dizaines."
+            },
+            {
+              "type": "display_math",
+              "latex": "3087 = 3\\times1000 + 0\\times100 + 8\\times10 + 7"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite numérique, repère $3087$ entre $3000$ et $4000$. Cela te montre que ce nombre est plus proche de $3000$ que de $4000$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la comparaison avec $2450$ et $2405$. Les milliers et les centaines sont égaux. Regarde les dizaines : $5$ contre $0$. Donc $2450$ est plus grand. Le schéma en barres ci‑dessous illustre cette différence."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "2450",
+                  "value": 2450,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2405",
+                  "value": 2405,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparaison de 2450 et 2405"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, encadre $372$ entre deux centaines. Les bornes sont $300$ et $400$. Sur la droite, $372$ se situe après $350$, donc plus près de $400$."
+            },
+            {
+              "type": "number_line",
+              "min": 300,
+              "max": 400,
+              "points": [
+                {
+                  "value": 372,
+                  "label": "372"
+                }
+              ],
+              "intervals": [],
+              "caption": "Encadrement de 372"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant tous les outils pour lire, écrire, comparer et encadrer les nombres jusqu’à $9999$. La liste de contrôle ci‑dessous te permettra de vérifier chaque compétence."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un nombre jusqu’à 9999.",
+                "J’écris correctement un nombre en chiffres.",
+                "Je place un nombre sur une droite graduée.",
+                "Je compare deux nombres en regardant les classes.",
+                "J’encadre un nombre entre deux centaines.",
+                "Je trie une liste de nombres du plus petit au plus grand."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis le nombre $3087$ en lettres.",
+              "answer": "trois mille quatre‑vingt‑sept",
+              "hint": "N’oublie pas le zéro des centaines.",
+              "explanation": "3 milliers, 0 centaines, 8 dizaines, 7 unités."
+            },
+            {
+              "question": "Compare $2450$ et $2405$. Lequel est le plus grand ?",
+              "answer": "$2450$",
+              "hint": "Regarde les dizaines.",
+              "explanation": "Milliers et centaines égaux. Dizaines : 5 > 0."
+            },
+            {
+              "question": "Encadre $372$ entre deux centaines.",
+              "answer": "Entre $300$ et $400$",
+              "hint": "Identifie le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines est 3."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

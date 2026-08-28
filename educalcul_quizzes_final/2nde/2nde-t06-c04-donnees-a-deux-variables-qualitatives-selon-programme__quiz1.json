@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Tableau croisé",
+  "title": "Quiz : Tableau croisé - Seconde",
+  "questions": [
+    {
+      "text": "Dans un tableau croisé à deux variables qualitatives, que représente la case située à l'intersection d'une ligne et d'une colonne ?",
+      "options": [
+        "L'effectif total de l'échantillon",
+        "L'effectif partiel correspondant aux deux modalités",
+        "La fréquence marginale de la ligne",
+        "La fréquence conditionnelle de la colonne"
+      ],
+      "correctAnswer": "L'effectif partiel correspondant aux deux modalités",
+      "explanation": "La case à l'intersection d'une ligne et d'une colonne donne l'effectif partiel qui correspond aux deux modalités choisies, c'est-à-dire le nombre d'individus possédant les deux caractéristiques simultanément.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe le tableau croisé suivant pour les variables Sexe (F, H) et Couleur préférée (Bleu, Rouge). Les effectifs partiels sont : F-Bleu $12$, F-Rouge $8$, H-Bleu $10$, H-Rouge $5$. Quel est l'effectif total de l'échantillon ?",
+      "options": [
+        "$35$",
+        "$30$",
+        "$25$",
+        "$20$"
+      ],
+      "correctAnswer": "$35$",
+      "explanation": "L'effectif total s'obtient en additionnant tous les effectifs partiels : $12+8+10+5 = 35$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Avec le même tableau, quelle est la fréquence conditionnelle de 'Bleu' sachant 'F' ?",
+      "options": [
+        "$0,6$",
+        "$0,4$",
+        "$0,5$",
+        "$0,3$"
+      ],
+      "correctAnswer": "$0,6$",
+      "explanation": "La fréquence conditionnelle de 'Bleu' sachant 'F' est le quotient de l'effectif partiel F-Bleu ($12$) sur l'effectif marginal de la ligne F ($12+8=20$), soit $12/20 = 0,6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on ajoute les totaux marginaux au tableau, quelle valeur se trouve dans la case 'Total' de la ligne 'H' ?",
+      "options": [
+        "$15$",
+        "$20$",
+        "$12$",
+        "$10$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "Le total de la ligne H est la somme des effectifs partiels de cette ligne : $10+5 = 15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire un tableau croisé pour les variables 'Niveau d'études' (Secondaire, Supérieur) et 'Pratique sportive' (Oui, Non). On interroge $50$ personnes et on obtient : Secondaire-Oui $18$, Secondaire-Non $12$, Supérieur-Oui $14$, Supérieur-Non $6$. Quelle est la fréquence marginale de 'Oui' ?",
+      "options": [
+        "$0,64$",
+        "$0,56$",
+        "$0,48$",
+        "$0,72$"
+      ],
+      "correctAnswer": "$0,64$",
+      "explanation": "La fréquence marginale de 'Oui' est le total des effectifs partiels pour 'Oui' ($18+14=32$) divisé par l'effectif total ($50$), ce qui donne $32/50 = 0,64$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

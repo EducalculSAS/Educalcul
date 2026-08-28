@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 230,
+  "_course_code": "cm1-t03-c05-multiples-et-diviseurs-simples",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Reconnaître multiples",
+  "title": "Écrire des algorithmes pour reconnaître les multiples",
+  "blocks": [
+    {
+      "title": "Afficher les multiples d'un nombre",
+      "content": "Écris un algorithme en pseudo-code qui affiche tous les multiples de $4$ strictement inférieurs à $30$. Utilise les mots-clés : Debut, Fin, Pour, Afficher, FinPour.",
+      "correctAnswer": "Debut\\nPour i allant de 1 à 7\\n    Afficher 4 * i\\nFinPour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les multiples de $4$ inférieurs à $30$ sont $4, 8, 12, 16, 20, 24, 28$. Ils correspondent à $4 \\times 1$ jusqu'à $4 \\times 7$. La boucle \"Pour i allant de 1 à 7\" permet de générer ces sept valeurs. L'instruction \"Afficher 4 * i\" calcule et montre chaque multiple.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester si un nombre est multiple de 5",
+      "content": "Complète l'algorithme ci-dessous pour qu'il affiche \"Multiple de 5\" si le nombre entier $N$ saisi est un multiple de $5$, et \"Non multiple de 5\" sinon. Indice : on utilise le reste de la division euclidienne (modulo).\\n\\nDebut\\nLire N\\nSi ... Alors\\n    Afficher \"Multiple de 5\"\\nSinon\\n    Afficher \"Non multiple de 5\"\\nFinSi\\nFin",
+      "correctAnswer": "Si N % 5 = 0 Alors (ou : Si Reste(N, 5) = 0 Alors)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre est multiple de $5$ si et seulement si le reste de sa division par $5$ est nul. En pseudo-code, on note souvent cela \"N % 5 = 0\" ou \"Reste(N, 5) = 0\". Si cette condition est vraie, le nombre est un multiple de $5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser un algorithme de recherche",
+      "content": "Que fait l'algorithme suivant ? Explique son résultat final.\\n\\nDebut\\nPour k allant de 4 à 8\\n    m <- 6 * k\\n    Si m > 20 Et m < 50 Alors\\n        Afficher m\\n    FinSi\\nFinPour\\nFin",
+      "correctAnswer": "Il affiche les multiples de 6 compris strictement entre 20 et 50, soit : 24, 30, 36, 42, 48.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle fait varier $k$ de $4$ à $8$. La variable $m$ prend les valeurs $6 \\times 4 = 24$, $6 \\times 5 = 30$, $6 \\times 6 = 36$, $6 \\times 7 = 42$, $6 \\times 8 = 48$. La condition \"m > 20 Et m < 50\" est vraie pour toutes ces valeurs (elles sont toutes entre 20 et 50). L'algorithme affiche donc la liste des multiples de $6$ dans cet intervalle : $24, 30, 36, 42, 48$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

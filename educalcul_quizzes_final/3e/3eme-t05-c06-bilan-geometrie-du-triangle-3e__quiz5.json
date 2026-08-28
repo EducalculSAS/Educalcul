@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Choisir Pythagore / Thalès / trigo",
+  "title": "Choisir entre Pythagore, Thalès et Trigonométrie",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle $ABC$ rectangle en $A$, on sait que $AB = 6$ cm et $AC = 8$ cm. Quel théorème permet de calculer la longueur de $BC$ ?",
+      "options": [
+        "Théorème de Pythagore",
+        "Théorème de Thalès",
+        "Relations trigonométriques",
+        "Aire du triangle"
+      ],
+      "correctAnswer": "Théorème de Pythagore",
+      "explanation": "Le triangle est rectangle en $A$ et on connaît les deux côtés de l'angle droit ($AB$ et $AC$). Le théorème de Pythagore relie ces deux côtés à l'hypoténuse $BC$ par $BC^2 = AB^2 + AC^2$. Thalès s'applique à des droites parallèles, la trigonométrie nécessite un angle et un côté, et l'aire ne donne pas directement la longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites $(DE)$ et $(BC)$ sont parallèles. Dans le triangle $ABC$, les points $D$ et $E$ appartiennent respectivement à $[AB]$ et $[AC]$. On connaît $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm. Quel théorème permet de trouver $EC$ ?",
+      "options": [
+        "Théorème de Thalès",
+        "Théorème de Pythagore",
+        "Relations trigonométriques",
+        "Propriété des angles alternes-internes"
+      ],
+      "correctAnswer": "Théorème de Thalès",
+      "explanation": "La configuration présente deux droites parallèles coupant les côtés d'un triangle, ce qui est exactement la situation du théorème de Thalès : $\\frac{AD}{DB} = \\frac{AE}{EC}$. Pythagore ne s'applique pas car il n'y a pas de triangle rectangle identifié, la trigonométrie n'est pas nécessaire, et la propriété des angles alternes-internes ne donne pas de relation de longueurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle $XYZ$ rectangle en $Y$, on connaît l'angle $X = 30°$ et le côté adjacent $XY = 10$ cm. Quelle relation trigonométrique permet de calculer le côté opposé $YZ$ ?",
+      "options": [
+        "Tangente de l'angle",
+        "Cosinus de l'angle",
+        "Sinus de l'angle",
+        "Théorème de Pythagore"
+      ],
+      "correctAnswer": "Tangente de l'angle",
+      "explanation": "Dans un triangle rectangle, la tangente d'un angle aigu est le rapport du côté opposé sur le côté adjacent : $\\tan X = \\frac{YZ}{XY}$. On connaît $XY$ et l'angle $X$, donc $YZ = XY \\times \\tan 30°$. Le cosinus relie l'adjacent à l'hypoténuse, le sinus relie l'opposé à l'hypoténuse, et Pythagore demanderait de connaître l'hypoténuse ou les deux côtés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle $PQR$ rectangle en $Q$, l'hypoténuse $PR = 13$ cm et l'angle $P = 60°$. Quelle relation trigonométrique permet de déterminer le côté $PQ$ adjacent à l'angle ?",
+      "options": [
+        "Cosinus de l'angle",
+        "Sinus de l'angle",
+        "Tangente de l'angle",
+        "Théorème de Thalès"
+      ],
+      "correctAnswer": "Cosinus de l'angle",
+      "explanation": "Le cosinus d'un angle aigu dans un triangle rectangle est le rapport du côté adjacent sur l'hypoténuse : $\\cos P = \\frac{PQ}{PR}$. On connaît $PR$ et $P$, donc $PQ = PR \\times \\cos 60°$. Le sinus utiliserait le côté opposé, la tangente le rapport opposé/adjacent, et Thalès ne concerne pas les triangles rectangles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un quadrilatère $ABCD$ tel que $AB ∥ CD$ et $AD ⟂ AB$. On connaît $AB = 12$ cm, $AD = 5$ cm et $CD = 8$ cm. Pour calculer la longueur de $BC$, quel raisonnement faut-il suivre en premier ?",
+      "options": [
+        "Appliquer le théorème de Pythagore dans le triangle rectangle $ABD$ pour trouver $BD$, puis utiliser Thalès dans le triangle $BCD$",
+        "Utiliser directement le théorème de Thalès dans le trapèze",
+        "Employer les relations trigonométriques dans le triangle $ABD$",
+        "Calculer l'aire du quadrilatère"
+      ],
+      "correctAnswer": "Appliquer le théorème de Pythagore dans le triangle rectangle $ABD$ pour trouver $BD$, puis utiliser Thalès dans le triangle $BCD$",
+      "explanation": "Le quadrilatère est un trapèze rectangle en $A$ et $D$. Le triangle $ABD$ est rectangle en $A$, on peut donc calculer sa diagonale $BD$ avec Pythagore : $BD^2 = AB^2 + AD^2$. Une fois $BD$ connue, le triangle $BCD$ a une base $CD$ parallèle à $AB$, ce qui permet d'appliquer Thalès (ou la similarité) pour trouver $BC$. Les autres options ne donnent pas la première étape correcte : Thalès seul ne s'applique pas directement, la trigonométrie n'est pas nécessaire, et l'aire ne fournit pas $BC$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

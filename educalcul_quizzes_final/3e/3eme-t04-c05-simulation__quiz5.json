@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Programme",
+  "title": "Approfondissement : Programmer une simulation",
+  "questions": [
+    {
+      "text": "On veut simuler le lancer d'un dé à six faces équilibré et compter le nombre de fois où on obtient un 6 sur $N$ lancers. Quelle structure algorithmique est la plus adaptée pour répéter l'expérience $N$ fois ?",
+      "options": [
+        "Une instruction conditionnelle SI ... ALORS ... SINON ... FIN SI",
+        "Une boucle POUR i DE 1 À N FAIRE ... FIN POUR",
+        "Une boucle TANT QUE ... FAIRE ... FIN TANT QUE avec une condition d'arrêt sur le nombre de 6 obtenus",
+        "Une fonction qui renvoie un entier aléatoire entre 1 et 6"
+      ],
+      "correctAnswer": "Une boucle POUR i DE 1 À N FAIRE ... FIN POUR",
+      "explanation": "Pour répéter un nombre fixé $N$ de fois la même expérience, la structure de contrôle standard est la boucle « POUR » (ou « FOR » en Python). L'instruction conditionnelle (option A) ne fait qu'un test unique. La boucle « TANT QUE » (option C) est utilisée quand le nombre de répétitions n'est pas connu à l'avance. L'option D décrit la génération d'un seul résultat, pas la répétition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En Python, on a importé le module `random`. Quelle instruction permet de simuler un lancer de dé équilibré à six faces (résultat entier entre 1 et 6 inclus) ?",
+      "options": [
+        "random.random() * 6",
+        "random.randint(1, 6)",
+        "random.uniform(1, 6)",
+        "random.choice([1, 2, 3, 4, 5])"
+      ],
+      "correctAnswer": "random.randint(1, 6)",
+      "explanation": "La fonction `randint(a, b)` du module `random` renvoie un entier aléatoire $n$ tel que $a \\le n \\le b$ (bornes incluses). `random.random()` renvoie un flottant dans $[0, 1[$. `random.uniform(a, b)` renvoie un flottant. L'option D oublie la face 6 dans la liste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On programme une simulation de l'expérience suivante : on lance deux dés équilibrés à six faces et on regarde si la somme des résultats est égale à 7. On répète l'expérience $10\\,000$ fois. La fréquence observée de l'événement « somme = 7 » est stockée dans la variable `freq`. Quelle valeur `freq` approche-t-elle lorsque le nombre de simulations augmente beaucoup (loi des grands nombres) ?",
+      "options": [
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{1}{36}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{1}{6}$",
+      "explanation": "Il y a $6 \\times 6 = 36$ couples équiprobables. Les couples donnant une somme de 7 sont : (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) soit 6 cas favorables. La probabilité théorique est donc $\\frac{6}{36} = \\frac{1}{6}$. La loi des grands nombres assure que la fréquence observée converge vers cette probabilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer l'aire d'un quart de disque de rayon $1$ (aire théorique $\\frac{\\pi}{4}$) par la méthode de Monte Carlo. On tire au hasard un point $M(x,y)$ dans le carré $[0,1] \\times [0,1]$. Quelle condition tester dans le programme pour savoir si le point appartient au quart de disque ?",
+      "options": [
+        "x + y <= 1",
+        "x * y <= 1",
+        "x**2 + y**2 <= 1",
+        "x**2 - y**2 <= 1"
+      ],
+      "correctAnswer": "x**2 + y**2 <= 1",
+      "explanation": "Le quart de disque est la partie du disque de centre $(0,0)$ et de rayon $1$ située dans le premier quadrant. L'équation du cercle est $x^2 + y^2 = 1$. L'intérieur du disque (le quart de disque) correspond aux points vérifiant $x^2 + y^2 \\le 1$. En Python, l'exposant 2 s'écrit `**2`. L'option A correspond au triangle rectangle isocèle (aire 0,5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un extrait de programme Python simulant une expérience de Bernoulli de paramètre $p = 0.3$ (succès si `random.random() < 0.3`).\\n```python\\nimport random\\nnb_succes = 0\\nN = 1000\\nfor i in range(N):\\n    if random.random() < 0.3:\\n        nb_succes = nb_succes + 1\\nprint(nb_succes / N)\\n```\\nOn veut modifier ce programme pour simuler l'expérience : « On lance un dé truqué. La probabilité d'obtenir un 6 est $0.3$. On compte le nombre de 6 sur $N$ lancers. » Quelle modification faut-il apporter à la condition du `if` ?",
+      "options": [
+        "Remplacer `random.random() < 0.3` par `random.randint(1, 6) == 6`",
+        "Remplacer `random.random() < 0.3` par `random.random() < 1/6`",
+        "Garder la condition `random.random() < 0.3` inchangée",
+        "Remplacer `random.random() < 0.3` par `random.choice([1,2,3,4,5,6]) == 6`"
+      ],
+      "correctAnswer": "Garder la condition `random.random() < 0.3` inchangée",
+      "explanation": "Le programme initial simule déjà une variable de Bernoulli de paramètre $0.3$ : la condition `random.random() < 0.3` est vraie avec une probabilité exactement égale à $0.3$. Lancer un dé truqué où $P(6) = 0.3$ revient exactement à réaliser une expérience de Bernoulli de paramètre $0.3$ (succès = « obtenir un 6 »). Les options A et D simulent un dé équilibré ($p=1/6$). L'option B change le paramètre à $1/6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

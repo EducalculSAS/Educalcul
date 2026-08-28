@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Graphique",
+  "title": "Quiz : Lecture et interprétation de graphiques (4e)",
+  "questions": [
+    {
+      "text": "Le graphique ci-dessous représente la fonction $f$ définie par $f(x) = 2x + 3$. Cette fonction est-elle une fonction proportionnelle ?",
+      "options": [
+        "Oui, car le graphique est une droite.",
+        "Non, car la droite ne passe pas par l'origine du repère.",
+        "Oui, car le coefficient directeur est positif.",
+        "Non, car l'ordonnée à l'origine est égale à 2."
+      ],
+      "correctAnswer": "Non, car la droite ne passe pas par l'origine du repère.",
+      "explanation": "Une fonction est proportionnelle si et seulement si son graphique est une droite passant par l'origine du repère (0 ; 0). Ici, l'équation est $f(x) = 2x + 3$, l'ordonnée à l'origine est 3 (le point (0 ; 3) appartient à la droite), donc la droite ne passe pas par l'origine. C'est une fonction affine, non proportionnelle.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+3",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = 2x + 3"
+      }
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction proportionnelle. Quelle est l'image de 4 par cette fonction ?",
+      "options": [
+        "2",
+        "8",
+        "0,5",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Le graphique représente la fonction $f(x) = 0,5x$. Pour trouver l'image de 4, on cherche l'ordonnée du point de la droite d'abscisse 4. On lit $f(4) = 0,5 \\times 4 = 2$. On peut aussi repérer le point de coordonnées (4 ; 2) sur le graphique.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "0.5*x",
+        "xmin": 0,
+        "xmax": 10,
+        "caption": "Graphique de la fonction f(x) = 0,5x"
+      }
+    },
+    {
+      "text": "Le graphique ci-dessous est une droite passant par l'origine et par le point A de coordonnées (2 ; 6). Quel est le coefficient de proportionnalité (coefficient directeur) de cette fonction ?",
+      "options": [
+        "3",
+        "1/3",
+        "2",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Pour une fonction proportionnelle $f(x) = ax$, le coefficient $a$ est le quotient de l'ordonnée par l'abscisse pour tout point non nul de la droite. Avec le point A(2 ; 6), on calcule $a = \\frac{6}{2} = 3$. La fonction est donc $f(x) = 3x$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = 3x passant par A(2;6)"
+      }
+    },
+    {
+      "text": "Un artisan facture un déplacement fixe de 30 euros plus 25 euros par heure de travail. Soit $x$ le nombre d'heures et $y$ le prix total en euros. Quelle phrase décrit correctement le graphique de la fonction $y = 25x + 30$ ?",
+      "options": [
+        "C'est une droite passant par l'origine, de coefficient directeur 25.",
+        "C'est une droite ne passant pas par l'origine, d'ordonnée à l'origine 30 et de coefficient directeur 25.",
+        "C'est une droite passant par l'origine, de coefficient directeur 30.",
+        "C'est une courbe (parabole) qui coupe l'axe des ordonnées en 30."
+      ],
+      "correctAnswer": "C'est une droite ne passant pas par l'origine, d'ordonnée à l'origine 30 et de coefficient directeur 25.",
+      "explanation": "L'équation $y = 25x + 30$ est de la forme $y = ax + b$ avec $a = 25$ et $b = 30$. C'est donc une fonction affine. Son graphique est une droite de coefficient directeur 25 (pente) et d'ordonnée à l'origine 30 (point (0 ; 30)). Comme $b \\neq 0$, la droite ne passe pas par l'origine. Ce n'est pas une fonction proportionnelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente la fonction $g$ définie par $g(x) = -2x + 10$. Pour quelle valeur de $x$ l'image est-elle égale à 4 ?",
+      "options": [
+        "x = 3",
+        "x = -3",
+        "x = 7",
+        "x = 2"
+      ],
+      "correctAnswer": "x = 3",
+      "explanation": "On cherche $x$ tel que $g(x) = 4$. Graphiquement, on repère le point sur la droite d'ordonnée 4 et on lit son abscisse : c'est 3. Par le calcul : $-2x + 10 = 4 \\Leftrightarrow -2x = -6 \\Leftrightarrow x = 3$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-2*x+10",
+        "xmin": 0,
+        "xmax": 6,
+        "caption": "Graphique de la fonction g(x) = -2x + 10"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Choisir variable",
+  "title": "Choisir la variable pour modéliser avec une fonction",
+  "blocks": [
+    {
+      "title": "Distance parcourue à vitesse constante",
+      "content": "Un cycliste roule à une vitesse constante de 15 km/h. On veut modéliser la distance parcourue en fonction du temps. Choisis la variable indépendante, écris la fonction correspondante et propose un algorithme (en langage naturel ou pseudo‑code) qui calcule la distance pour un temps donné.",
+      "correctAnswer": "Variable indépendante : le temps t (en heures). Fonction : d(t) = 15 * t. Algorithme : lire t ; calculer d = 15 * t ; afficher d.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distance dépend du temps écoulé, donc le temps est la variable indépendante. Comme la vitesse est constante, la distance est proportionnelle au temps : d = v * t avec v = 15. L'algorithme lit la valeur du temps, effectue la multiplication et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coût d'un forfait téléphonique",
+      "content": "Un forfait téléphonique coûte 10 € par mois plus 0,05 € par minute de communication. On souhaite modéliser le coût mensuel en fonction du nombre de minutes utilisées. Choisis la variable indépendante, écris la fonction et donne un algorithme qui calcule le coût pour un nombre de minutes donné.",
+      "correctAnswer": "Variable indépendante : le nombre de minutes m. Fonction : C(m) = 10 + 0,05 * m. Algorithme : lire m ; calculer C = 10 + 0,05 * m ; afficher C.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coût total dépend du nombre de minutes consommées, qui est donc la variable indépendante. Le forfait comporte une partie fixe (10 €) et une partie proportionnelle (0,05 € par minute). La fonction affine C(m) = 10 + 0,05 m traduit cette relation. L'algorithme lit m, applique la formule et affiche le coût.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Aire d'un rectangle à périmètre fixe",
+      "content": "Un rectangle a un périmètre fixe de 40 cm. On veut exprimer son aire en fonction de la longueur d'un côté. Choisis la variable indépendante, écris la fonction aire en fonction de cette variable, puis propose un algorithme qui détermine la longueur donnant l'aire maximale (on peut tester des valeurs entières de 1 à 19).",
+      "correctAnswer": "Variable indépendante : la longueur x (en cm). L'autre côté vaut 20 - x. Aire : A(x) = x * (20 - x) = -x^2 + 20x. Algorithme : maxAire = 0 ; meilleureLongueur = 0 ; pour x de 1 à 19 faire : aire = x * (20 - x) ; si aire > maxAire alors maxAire = aire ; meilleureLongueur = x ; fin si ; fin pour ; afficher meilleureLongueur, maxAire.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre 40 cm impose que la somme des deux côtés adjacents soit 20 cm. Si on choisit x comme longueur d'un côté, l'autre côté vaut 20 - x. L'aire est le produit x(20 - x), fonction quadratique concave. Pour trouver le maximum sur les entiers de 1 à 19, on teste chaque valeur et on garde la plus grande aire. Le maximum est atteint pour x = 10 cm, aire = 100 cm².",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

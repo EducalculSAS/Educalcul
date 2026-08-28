@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Colinéarité selon programme",
+  "title": "Quiz : Applications de la colinéarité (Seconde)",
+  "questions": [
+    {
+      "text": "Quelle condition caractérise la colinéarité de deux vecteurs non nuls dans le plan ?",
+      "options": [
+        "Leur produit scalaire est nul",
+        "Leur déterminant est nul",
+        "Ils ont la même norme",
+        "Ils sont orthogonaux"
+      ],
+      "correctAnswer": "Leur déterminant est nul",
+      "explanation": "Deux vecteurs non nuls sont colinéaires si et seulement s'ils sont linéairement dépendants, ce qui se traduit par un déterminant nul (ou un produit vectoriel nul en dimension 2). Le produit scalaire nul correspond à l'orthogonalité, la même norme n'implique pas la colinéarité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $u = (2,3)$ et $v = (4,6)$. Ces vecteurs sont-ils colinéaires ?",
+      "options": [
+        "Oui, car $v = 2u$",
+        "Non, car leurs composantes ne sont pas égales",
+        "Oui, car ils ont la même direction",
+        "Non, car leur déterminant est non nul"
+      ],
+      "correctAnswer": "Oui, car $v = 2u$",
+      "explanation": "Le vecteur v est exactement le double de u : v = 2u. Donc ils sont proportionnels, leur déterminant est nul et ils sont colinéaires. L'option C est vague : avoir la même direction est une conséquence, mais la justification précise est l'égalité v = 2u.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer $k$ pour que les vecteurs $a = (k,5)$ et $b = (3,15)$ soient colinéaires.",
+      "options": [
+        "$k=1$",
+        "$k=3$",
+        "$k=5$",
+        "$k=9$"
+      ],
+      "correctAnswer": "$k=1$",
+      "explanation": "Pour la colinéarité, les coordonnées doivent être proportionnelles : k/3 = 5/15 = 1/3, d'où k = 1. Les autres valeurs ne satisfont pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, les points $D$ sur $[AB]$ et $E$ sur $[AC]$ vérifient $\\frac{AD}{DB} = \\frac{AE}{EC}$. Quelle conclusion en tire-t-on ?",
+      "options": [
+        "(DE) est parallèle à (BC)",
+        "(DE) est perpendiculaire à (BC)",
+        "AD = AE",
+        "AB = AC"
+      ],
+      "correctAnswer": "(DE) est parallèle à (BC)",
+      "explanation": "C'est le théorème de Thalès : si une droite coupe deux côtés d'un triangle en des points divisant ces côtés dans le même rapport, alors cette droite est parallèle au troisième côté. Les autres affirmations ne découlent pas de cette hypothèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $A(1,2)$, $B(3,6)$, $C(5,10)$ sont-ils alignés ?",
+      "options": [
+        "Oui, car les vecteurs AB et AC sont proportionnels",
+        "Non, car les abscisses ne sont pas équidistantes",
+        "Oui, car ils appartiennent à la droite y=3x",
+        "Non, car le déterminant des vecteurs AB et AC est non nul"
+      ],
+      "correctAnswer": "Oui, car les vecteurs AB et AC sont proportionnels",
+      "explanation": "Les vecteurs AB = (2,4) et AC = (4,8) satisfont AC = 2 AB, ils sont donc proportionnels, ce qui prouve l'alignement. La droite passant par ces points a pour équation y = 2x, pas y = 3x. Le déterminant est nul, pas non nul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

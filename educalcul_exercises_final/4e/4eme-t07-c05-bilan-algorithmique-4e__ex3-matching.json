@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Bilan - Algorithmique 4e",
+  "title": "Bilan Algorithmique 4e - Associations",
+  "blocks": [
+    {
+      "title": "Mots-clés et rôles",
+      "content": "Relie chaque mot-clé algorithmique à son rôle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Variable",
+          "right": "Stocke une valeur qui peut changer"
+        },
+        {
+          "left": "Boucle",
+          "right": "Répète un bloc d'instructions"
+        },
+        {
+          "left": "Condition",
+          "right": "Exécute un bloc si une condition est vraie"
+        },
+        {
+          "left": "Afficher",
+          "right": "Montre un résultat à l'écran"
+        }
+      ],
+      "items": [],
+      "explanation": "Une variable permet de stocker une valeur modifiable. Une boucle répète des instructions. Une condition teste une expression pour décider quelle instruction exécuter. L'instruction Afficher permet de communiquer un résultat à l'utilisateur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programmes et sorties",
+      "content": "Relie chaque extrait de pseudocode à la sortie qu'il produit.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "x ← $5$\\nx ← x + $3$\\nAfficher x",
+          "right": "$8$"
+        },
+        {
+          "left": "i ← $1$\\nTant que i ≤ $3$ faire\\n  Afficher i\\ni ← i + $1$\\nFin tant que",
+          "right": "$1$ $2$ $3$"
+        },
+        {
+          "left": "a ← $10$\\nSi a > $5$ alors\\n  Afficher \"Grand\"\\nSinon\\n  Afficher \"Petit\"\\nFin si",
+          "right": "Grand"
+        },
+        {
+          "left": "somme ← $0$\\nPour k de $1$ à $4$ faire\\n  somme ← somme + k\\nFin pour\\nAfficher somme",
+          "right": "$10$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le premier programme affecte 5 à x, ajoute 3 puis affiche 8. Le second utilise une boucle tant que pour afficher 1, 2, 3. Le troisième teste si a > 5 (10 > 5) et affiche Grand. Le dernier calcule la somme des entiers de 1 à 4 (1+2+3+4=10) et l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symboles de flowchart",
+      "content": "Relie chaque symbole de flowchart à sa signification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Ovale",
+          "right": "Début ou fin de l'algorithme"
+        },
+        {
+          "left": "Rectangle",
+          "right": "Instruction ou action"
+        },
+        {
+          "left": "Losange",
+          "right": "Test ou condition"
+        },
+        {
+          "left": "Parallélogramme",
+          "right": "Entrée ou sortie de données"
+        }
+      ],
+      "items": [],
+      "explanation": "En algorithmique, l'ovale marque le début ou la fin, le rectangle représente une action, le losange un test conditionnel, et le parallélogramme une entrée/sortie.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

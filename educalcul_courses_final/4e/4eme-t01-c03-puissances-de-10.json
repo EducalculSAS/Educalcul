@@ -1,0 +1,488 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.802533+00:00",
+  "id": 422,
+  "code": "4eme-t01-c03",
+  "title": "Puissances de 10",
+  "description": "Cours structuré Educalcul : Puissances de 10.",
+  "subject": "Nombres relatifs, fractions et puissances",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Nombres relatifs, fractions et puissances",
+    "titre_du_cours": "Puissances de 10",
+    "objectif_global": "Puissances de 10",
+    "mini_lecons_imposees": [
+      "Exposants entiers.",
+      "Calculs.",
+      "Ordres de grandeur."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, fractions et puissances",
+      "lessons": [
+        {
+          "title": "Exposants entiers.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exposants entiers : les puissances de 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois écrire le nombre mille sans écrire tous les zéros. En mathématiques, on utilise une notation compacte : $10^{3}$. Le petit chiffre en haut, l'exposant, te dit combien de fois le nombre 10 est multiplié par lui-même. Ici, $10^{3}=10\\times10\\times10=1000$. C'est une idée simple mais puissante : chaque fois que l'exposant augmente de 1, le résultat est dix fois plus grand. Cette régularité va nous servir tout au long du chapitre."
+            },
+            {
+              "type": "definition",
+              "term": "exposant",
+              "definition": "L'exposant est le petit nombre écrit en haut à droite d'une base. Il indique combien de fois la base est utilisée comme facteur dans une multiplication.",
+              "example": "Dans $10^{4}$, l'exposant est $4$ et la base est $10$."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 1,
+              "exponent": 3,
+              "caption": "Représentation de $10^{3}=1000$ en notation scientifique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exposants positifs suivent une règle claire : $10^{1}=10$, $10^{2}=100$, $10^{3}=1000$, et ainsi de suite. Chaque nouvelle puissance ajoute un zéro à la fin du nombre écrit en base dix. C'est pourquoi on dit que les puissances de 10 sont les \"briques\" de notre système de numération. Essaie d'écrire $10^{5}$ et compte les zéros : tu devrais en trouver cinq."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, que se passe-t-il si l'exposant vaut zéro ? On pourrait penser que $10^{0}$ n'a pas de sens, mais les mathématiciens ont convenu d'une convention très utile : toute puissance non nulle élevée à l'exposant zéro vaut 1. Ainsi $10^{0}=1$. Cette règle permet de garder la cohérence des calculs, par exemple quand on divise $10^{3}$ par $10^{3}$ : on soustrait les exposants et on obtient $10^{0}=1$."
+            },
+            {
+              "type": "definition",
+              "term": "puissance de 10",
+              "definition": "Une puissance de 10 est un nombre de la forme $10^{n}$ où $n$ est un entier relatif. Elle vaut 1 suivi de $n$ zéros si $n>0$, vaut 1 si $n=0$, et vaut un nombre décimal avec $ |n| $ zéros après la virgule si $n<0$.",
+              "example": "$10^{2}=100$, $10^{0}=1$, $10^{-2}=0,01$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Puissances de 10 de $10^{-2}$ à $10^{3}$",
+              "min": -2,
+              "max": 3,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "$10^{-2}$"
+                },
+                {
+                  "value": -1,
+                  "label": "$10^{-1}$"
+                },
+                {
+                  "value": 0,
+                  "label": "$10^{0}$"
+                },
+                {
+                  "value": 1,
+                  "label": "$10^{1}$"
+                },
+                {
+                  "value": 2,
+                  "label": "$10^{2}$"
+                },
+                {
+                  "value": 3,
+                  "label": "$10^{3}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exposants négatifs prolongent la même logique vers les nombres inférieurs à 1. Par définition, $10^{-1}=\\frac{1}{10}=0,1$, $10^{-2}=\\frac{1}{100}=0,01$, etc. Chaque fois que l'exposant diminue de 1, on divise le résultat par 10, ce qui décale la virgule d'un cran vers la gauche. C'est exactement l'inverse de ce qui se passe pour les exposants positifs."
+            },
+            {
+              "type": "display_math",
+              "latex": "10^{-n}=\\frac{1}{10^{n}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer cette idée, imagine que tu as 1 mètre de ruban. Si tu le coupes en 10 morceaux égaux, chaque morceau mesure $10^{-1}$ mètre, soit 0,1 mètre. Si tu coupes à nouveau chaque morceau en 10, tu obtiens des morceaux de $10^{-2}$ mètre, soit 0,01 mètre. Cette image concrète montre que les puissances négatives de 10 sont simplement des fractions dont le dénominateur est une puissance de 10."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, retenons trois points essentiels : (1) un exposant positif ajoute des zéros, (2) l'exposant zéro donne toujours 1, (3) un exposant négatif crée un nombre décimal en déplaçant la virgule vers la gauche. Ces trois règles suffisent pour écrire n'importe quelle puissance de 10 et pour passer de l'écriture scientifique à l'écriture décimale habituelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris $10^{4}$ en notation décimale et compte le nombre de zéros.",
+              "answer": "10000 (quatre zéros)",
+              "hint": "Rappelle-toi que chaque unité d'exposant ajoute un zéro.",
+              "explanation": "Puisque $10^{4}=10\\times10\\times10\\times10$, on obtient 1 suivi de 4 zéros, soit 10000."
+            },
+            {
+              "question": "Quelle est la valeur de $10^{0}$ ? Justifie ta réponse en utilisant la règle de division des puissances.",
+              "answer": "$10^{0}=1$",
+              "hint": "Divise $10^{3}$ par $10^{3}$ et regarde l'exposant résultant.",
+              "explanation": "$\\frac{10^{3}}{10^{3}}=10^{3-3}=10^{0}$. Comme le numérateur et le dénominateur sont égaux, le quotient vaut 1, donc $10^{0}=1$."
+            },
+            {
+              "question": "Écris $10^{-3}$ sous forme décimale.",
+              "answer": "0,001",
+              "hint": "Un exposant négatif signifie division par 10 autant de fois que la valeur absolue de l'exposant.",
+              "explanation": "$10^{-3}=\\frac{1}{10^{3}}=\\frac{1}{1000}=0,001$. La virgule se décale de trois rangs vers la gauche."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs avec les puissances de 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises l'écriture des puissances de 10, voyons comment les combiner entre elles. Les règles de calcul sont les mêmes que pour n'importe quelle base, mais comme la base est toujours 10, elles deviennent très faciles à retenir. Nous allons examiner trois opérations fondamentales : le produit, le quotient et la puissance d'une puissance."
+            },
+            {
+              "type": "definition",
+              "term": "produit de puissances de 10",
+              "definition": "Lorsque l'on multiplie deux puissances de même base, on conserve la base et on additionne les exposants : $10^{a}\\times10^{b}=10^{a+b}$.",
+              "example": "$10^{2}\\times10^{3}=10^{5}=100000$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux exposants $a$ et $b$ dans les puissances $10^{a}$ et $10^{b}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a+b$. C'est le nouvel exposant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit vaut $10^{a+b}$. Si besoin, écris-le en notation décimale en ajoutant $a+b$ zéros après le 1."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "10^{a}\\times10^{b}=10^{a+b}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la division. La règle est symétrique : on soustrait l'exposant du diviseur à celui du dividende. Cela vient du fait que diviser par $10^{b}$, c'est multiplier par $10^{-b}$. La formule devient $10^{a}\\div10^{b}=10^{a-b}$. Attention : cette règle ne s'applique que si la base est identique, ce qui est toujours le cas ici."
+            },
+            {
+              "type": "definition",
+              "term": "quotient de puissances de 10",
+              "definition": "Lorsque l'on divise deux puissances de même base, on conserve la base et on soustrait l'exposant du diviseur à celui du dividende : $\\frac{10^{a}}{10^{b}}=10^{a-b}$.",
+              "example": "$\\frac{10^{5}}{10^{2}}=10^{3}=1000$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note l'exposant du numérateur $a$ et celui du dénominateur $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a-b$. Le résultat peut être positif, nul ou négatif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la puissance résultante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le quotient est $10^{a-b}$. Si l'exposant est négatif, rappelle-toi que cela donne un nombre décimal."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{10^{a}}{10^{b}}=10^{a-b}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, regardons ce qui se passe quand on élève une puissance de 10 à un autre exposant. Par exemple $(10^{2})^{3}$. On multiplie les exposants : $(10^{a})^{b}=10^{a\\times b}$. Cette règle vaut pour toute base, mais avec 10 elle permet de calculer très vite des nombres énormes ou minuscules."
+            },
+            {
+              "type": "definition",
+              "term": "puissance d'une puissance",
+              "definition": "Élever une puissance à un exposant revient à multiplier les deux exposants : $(10^{a})^{b}=10^{a\\times b}$.",
+              "example": "$(10^{2})^{3}=10^{6}=1\\,000\\,000$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les deux exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $(10^{a})^{b}$, le premier exposant est $a$, le second est $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a\\times b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est $10^{a\\times b}$. Convertis en décimal si nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(10^{a})^{b}=10^{a\\times b}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $10^{4}\\times10^{2}$ et donne le résultat en notation décimale.",
+              "answer": "$10^{6}=1\\,000\\,000$",
+              "hint": "Additionne les exposants 4 et 2.",
+              "explanation": "Avec la règle du produit, $10^{4}\\times10^{2}=10^{4+2}=10^{6}$. Cela fait 1 suivi de 6 zéros, soit 1 000 000."
+            },
+            {
+              "question": "Effectue la division $\\frac{10^{7}}{10^{3}}$ et écris le résultat sous forme décimale.",
+              "answer": "$10^{4}=10\\,000$",
+              "hint": "Soustrait l'exposant du dénominateur à celui du numérateur.",
+              "explanation": "$\\frac{10^{7}}{10^{3}}=10^{7-3}=10^{4}=10\\,000$."
+            },
+            {
+              "question": "Simplifie $(10^{3})^{2}$.",
+              "answer": "$10^{6}=1\\,000\\,000$",
+              "hint": "Multiplie les exposants 3 et 2.",
+              "explanation": "La règle de la puissance d'une puissance donne $(10^{3})^{2}=10^{3\\times2}=10^{6}=1\\,000\\,000$."
+            }
+          ]
+        },
+        {
+          "title": "Ordres de grandeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordres de grandeur et notation scientifique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie courante, on rencontre des nombres très grands (la distance Terre-Soleil) ou très petits (la taille d'un atome). Les écrire en entier serait fastidieux et source d'erreurs. La notation scientifique, qui utilise les puissances de 10, permet de les représenter de façon compacte et de comparer aisément leurs ordres de grandeur."
+            },
+            {
+              "type": "definition",
+              "term": "ordre de grandeur",
+              "definition": "L'ordre de grandeur d'un nombre positif est la puissance de 10 la plus proche de ce nombre. On l'obtient en écrivant le nombre sous la forme $a\\times10^{n}$ avec $1\\le a<10$ ; l'entier $n$ est l'ordre de grandeur.",
+              "example": "Le nombre 4500 s'écrit $4,5\\times10^{3}$, son ordre de grandeur est $3$."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 4.5,
+              "exponent": 3,
+              "caption": "Écriture de 4500 en notation scientifique : $4,5\\times10^{3}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver l'ordre de grandeur d'un nombre, il suffit de compter combien de fois il faut déplacer la virgule pour obtenir un chiffre entre 1 et 10. Si tu déplaces la virgule vers la gauche, l'exposant est positif ; vers la droite, il est négatif. Par exemple, 0,0062 devient $6,2\\times10^{-3}$, son ordre de grandeur est $-3$. Cette méthode marche pour n'importe quel nombre, grand ou petit."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Localise la virgule du nombre donné (à la fin si le nombre est entier)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déplacer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser la virgule jusqu'à ce qu'il ne reste qu'un seul chiffre non nul à sa gauche. Compte le nombre de déplacements $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer l'exposant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as déplacé vers la gauche, l'exposant est $+k$. Si tu as déplacé vers la droite, l'exposant est $-k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre s'écrit $a\\times10^{n}$ où $a$ est le nouveau nombre avec la virgule bien placée et $n$ l'exposant trouvé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer les ordres de grandeur permet de voir rapidement si un nombre est beaucoup plus grand qu'un autre. Par exemple, la masse de la Terre est d'environ $6\\times10^{24}\\,kg$ tandis qu'une pomme pèse environ $1\\times10^{-1}\\,kg$. La différence d'exposants est de 25, ce qui signifie que la Terre est $10^{25}$ fois plus massive qu'une pomme. C'est une comparaison immédiate grâce aux puissances de 10."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison d'ordres de grandeur (exposants)",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": -1,
+                  "tone": "red"
+                },
+                {
+                  "label": "Voiture",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Terre",
+                  "value": 24,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre visuellement l'écart énorme entre les ordres de grandeur. Chaque barre représente l'exposant $n$ de la notation scientifique. Plus la barre est haute, plus le nombre est grand. Cette représentation aide à saisir intuitivement des écarts qui seraient invisibles sur une échelle linéaire classique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelons la forme canonique de la notation scientifique : un nombre $x>0$ s'écrit $x=a\\times10^{n}$ avec $1\\le a<10$ et $n\\in\\mathbb{Z}$. Cette écriture est unique. Elle est utilisée en sciences, en ingénierie et même dans les calculatrices (souvent affichée comme $aE n$). Savoir passer de l'écriture décimale à cette forme et inversement est une compétence clé pour la suite de tes études."
+            },
+            {
+              "type": "display_math",
+              "latex": "x=a\\times10^{n}\\quad\\text{avec}\\;1\\le a<10,\\;n\\in\\mathbb{Z}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une puissance de 10 avec un exposant positif, nul ou négatif.",
+                "Je sais multiplier, diviser et élever à une puissance des puissances de 10 en utilisant les règles sur les exposants.",
+                "Je sais convertir un nombre en notation scientifique et en lire l'ordre de grandeur.",
+                "Je peux comparer deux nombres en comparant leurs ordres de grandeur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris le nombre 0,000 42 en notation scientifique et donne son ordre de grandeur.",
+              "answer": "$4,2\\times10^{-4}$, ordre de grandeur $-4$",
+              "hint": "Déplace la virgule vers la droite jusqu'à obtenir un chiffre entre 1 et 10.",
+              "explanation": "Il faut déplacer la virgule de 4 rangs vers la droite pour obtenir 4,2. L'exposant est donc $-4$. L'ordre de grandeur est $-4$."
+            },
+            {
+              "question": "La distance Terre-Lune est d'environ $3,8\\times10^{5}\\,km$. La distance Terre-Soleil est d'environ $1,5\\times10^{8}\\,km$. De combien d'ordres de grandeur la seconde est-elle plus grande que la première ?",
+              "answer": "3 ordres de grandeur",
+              "hint": "Soustrait les exposants des deux notations scientifiques.",
+              "explanation": "Les exposants sont 5 et 8. La différence $8-5=3$ indique que la distance Terre-Soleil est $10^{3}=1000$ fois plus grande, soit 3 ordres de grandeur."
+            },
+            {
+              "question": "Convertis $7,5\\times10^{2}$ en écriture décimale habituelle.",
+              "answer": "750",
+              "hint": "Un exposant positif 2 signifie décaler la virgule de deux rangs vers la droite.",
+              "explanation": "$7,5\\times10^{2}=7,5\\times100=750$. On ajoute deux zéros après le 5."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

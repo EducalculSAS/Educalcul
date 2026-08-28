@@ -1,0 +1,437 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.892756+00:00",
+  "id": 452,
+  "code": "4eme-t07-c03",
+  "title": "Boucles",
+  "description": "Cours structuré Educalcul : Boucles.",
+  "subject": "Algorithmique et programmation",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Algorithmique et programmation",
+    "titre_du_cours": "Boucles",
+    "objectif_global": "Boucles",
+    "mini_lecons_imposees": [
+      "For / while simple.",
+      "Compter.",
+      "Terminaison intuitive."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et programmation",
+      "lessons": [
+        {
+          "title": "For / while simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une boucle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois répéter plusieurs fois la même action, comme dire 'bonjour' à chaque ami qui arrive. En programmation, on ne réécrit pas l'instruction à chaque fois ; on utilise une boucle. Une boucle est une structure qui permet d'exécuter un bloc d'instructions plusieurs fois sans le recopier. Cela rend le programme plus court, plus lisible et plus facile à modifier."
+            },
+            {
+              "type": "definition",
+              "term": "boucle",
+              "definition": "Structure de contrôle qui répète un ensemble d'instructions tant qu'une condition est vérifiée ou pour un nombre précis d'itérations.",
+              "example": "for i de 1 à 5 faire afficher(i)"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La boucle for simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "La boucle for est utilisée quand on connaît à l'avance le nombre de répétitions. On définit une variable de contrôle, généralement appelée $i$, qui prend successivement les valeurs d'un intervalle. Par exemple, pour afficher les entiers de 1 à 5, on écrit : pour $i$ allant de $1$ à $5$ faire afficher($i$). La variable $i$ change automatiquement à chaque tour."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Choisir la variable de contrôle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On donne un nom court, souvent $i$, $j$ ou $k$, qui servira de compteur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Définir l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On indique la valeur de départ et la valeur de fin, inclusives. Par exemple $1$ à $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Écrire le bloc d'instructions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On place entre 'faire' et 'fin pour' les instructions à répéter, en utilisant la variable $i$ si nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons écrire une boucle for, voyons comment la boucle while fonctionne quand le nombre de tours n'est pas connu à l'avance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La boucle while simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "La boucle while répète un bloc tant qu'une condition reste vraie. On doit initialiser nous-mêmes la variable de contrôle avant la boucle et la modifier à l'intérieur du bloc, sinon la boucle risque de ne jamais s'arrêter. Par exemple, pour afficher les nombres de 1 à 5 avec while : $i ← 1$ ; tant que $i \\le 5$ faire afficher($i$) ; $i ← i+1$ ; fin tant que."
+            },
+            {
+              "type": "definition",
+              "term": "condition d'arrêt",
+              "definition": "Expression booléenne testée avant chaque itération ; tant qu'elle est vraie, la boucle continue.",
+              "example": "$i \\le 5$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Initialiser le compteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant la boucle, on donne une valeur de départ à la variable, par exemple $i ← 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On place après 'tant que' une condition qui devient fausse quand on doit sortir, ici $i \\le 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Modifier le compteur dans le corps",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'intérieur du bloc, on incrémente $i$ (ou on le change) pour que la condition finisse par être fausse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons comparer les deux formes sur un même exemple concret afin de bien voir leurs différences et leurs points communs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple concret : afficher les nombres de 1 à 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec une boucle for, le code est compact : pour $i$ de $1$ à $5$ faire afficher($i$) fin pour. Avec while, il faut trois lignes : $i ← 1$ ; tant que $i \\le 5$ faire afficher($i$) ; $i ← i+1$ fin tant que. Les deux produisent le même résultat, mais le for cache la gestion du compteur alors que while la rend explicite. Choisis la forme qui te paraît la plus claire selon la situation."
+            },
+            {
+              "type": "display_math",
+              "latex": "i = 1, 2, 3, 4, 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une boucle for qui affiche les entiers de 10 à 15.",
+              "answer": "pour i de 10 à 15 faire afficher(i) fin pour",
+              "hint": "Rappelle-toi la syntaxe : pour variable de début à fin faire ... fin pour.",
+              "explanation": "La variable i prend successivement les valeurs 10, 11, 12, 13, 14, 15 et chaque valeur est affichée."
+            },
+            {
+              "question": "Transforme la boucle for suivante en boucle while : pour i de 1 à 3 faire afficher(i*2) fin pour.",
+              "answer": "i ← 1 ; tant que i ≤ 3 faire afficher(i*2) ; i ← i+1 fin tant que",
+              "hint": "Initialise i avant la boucle, teste i ≤ 3, et incrémente i à la fin du corps.",
+              "explanation": "La boucle while reproduit exactement les trois itérations de la boucle for en gérant le compteur manuellement."
+            },
+            {
+              "question": "Quel sera l'affichage de ce programme ?\\ni ← 2\\ntant que i < 6 faire\\nafficher(i)\\ni ← i + 2\\nfin tant que",
+              "answer": "2 4",
+              "hint": "Suis la valeur de i à chaque tour : 2, puis 4, puis 6 qui arrête la boucle.",
+              "explanation": "La condition i < 6 est vraie pour i = 2 et i = 4. Quand i devient 6, la condition devient fausse et la boucle s'arrête."
+            }
+          ]
+        },
+        {
+          "title": "Compter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser un compteur dans une boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on a besoin de savoir combien de fois une action s'est produite. On introduit alors une variable compteur, initialisée à zéro avant la boucle, et on l'incrémente à chaque itération. Par exemple, pour compter combien de nombres pairs se trouvent entre 1 et 10, on met $compteur ← 0$, puis dans la boucle on teste si le nombre est pair et on fait $compteur ← compteur + 1$ quand c'est le cas."
+            },
+            {
+              "type": "definition",
+              "term": "compteur",
+              "definition": "Variable entière qui s'incrémente de 1 à chaque occurrence d'un événement que l'on souhaite quantifier.",
+              "example": "$compteur ← compteur + 1$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Initialiser le compteur à zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avant d'entrer dans la boucle, on écrit $compteur ← 0$ pour partir d'un état propre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Tester la condition à compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'intérieur de la boucle, on évalue la propriété recherchée (par exemple $nombre \\% 2 = 0$ pour la parité)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Incrémenter si la condition est vraie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le test réussit, on exécute $compteur ← compteur + 1$ ; sinon on ne fait rien."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment compter à l'intérieur d'une boucle, nous allons appliquer cette idée à une liste de valeurs donnée, ce qui est très fréquent en algorithmique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les éléments d'une liste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une liste de notes : $[12, 7, 15, 9, 10]$. Pour savoir combien de notes sont supérieures ou égales à 10, on parcourt la liste avec une boucle for each (ou un indice) et on utilise un compteur. À chaque note, on vérifie $note \\ge 10$ ; si c'est vrai, on incrémente le compteur. À la fin, le compteur vaut 3."
+            },
+            {
+              "type": "display_math",
+              "latex": "liste = [12, 7, 15, 9, 10]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, nous allons écrire un petit programme complet qui compte le nombre de valeurs paires dans les dix premiers entiers naturels, en réutilisant les deux idées précédentes : une boucle pour générer les nombres et un compteur pour les quantifier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple complet : compter les nombres pairs de 1 à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Algorithme : $compteur ← 0$ ; pour $i$ de $1$ à $10$ faire si $i \\% 2 = 0$ alors $compteur ← compteur + 1$ fin si fin pour ; afficher($compteur$). Le programme affiche 5 car il y a cinq nombres pairs (2, 4, 6, 8, 10). Remarque que le compteur est mis à jour seulement quand la condition de parité est satisfaite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris un algorithme qui compte combien de multiples de 3 se trouvent entre 1 et 20.",
+              "answer": "compteur ← 0 ; pour i de 1 à 20 faire si i % 3 = 0 alors compteur ← compteur + 1 fin si fin pour ; afficher(compteur)",
+              "hint": "Utilise le modulo % pour tester la divisibilité par 3.",
+              "explanation": "Les multiples de 3 dans cet intervalle sont 3, 6, 9, 12, 15, 18 : six valeurs, donc le compteur final vaut 6."
+            },
+            {
+              "question": "Donne la valeur finale du compteur après l'exécution de ce code :\\ncompteur ← 0\\npour x dans [4, 11, 6, 13, 8] faire\\nsi x > 10 alors compteur ← compteur + 1 fin si\\nfin pour",
+              "answer": "2",
+              "hint": "Vérifie chaque élément : 4 (non), 11 (oui), 6 (non), 13 (oui), 8 (non).",
+              "explanation": "Seuls 11 et 13 sont strictement supérieurs à 10, donc le compteur s'incrémente deux fois."
+            },
+            {
+              "question": "Complète le programme suivant pour qu'il affiche le nombre de valeurs négatives dans la liste [-3, 5, -1, 0, -7] :\\ncompteur ← 0\\npour val dans liste faire\\n... \\nfin pour\\nafficher(compteur)",
+              "answer": "si val < 0 alors compteur ← compteur + 1 fin si",
+              "hint": "La condition à tester est val < 0.",
+              "explanation": "Les valeurs négatives sont -3, -1, -7 : trois occurrences, le compteur final vaut 3."
+            }
+          ]
+        },
+        {
+          "title": "Terminaison intuitive.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la terminaison d'une boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une boucle doit toujours pouvoir s'arrêter. Si la condition de sortie ne devient jamais fausse, le programme tourne indéfiniment : c'est une boucle infinie. Pour éviter cela, on vérifie deux points : la variable de contrôle change bien à chaque tour, et la condition de fin est atteignable. Par exemple, dans $i ← 1$ ; tant que $i \\le 5$ faire $i ← i+1$ fin tant que, $i$ augmente et finira par valoir 6, rendant $i \\le 5$ faux."
+            },
+            {
+              "type": "definition",
+              "term": "boucle infinie",
+              "definition": "Boucle dont la condition de continuation reste éternellement vraie, empêchant le programme de progresser.",
+              "example": "tant que vrai faire … fin tant que"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier la variable de contrôle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la variable qui est testée dans la condition (souvent un compteur ou un indice)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Vérifier sa modification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi qu'au moins une instruction dans le corps change cette variable dans le sens de la sortie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Confirmer l'atteignabilité de la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que la valeur finale rend la condition fausse (par exemple, que le compteur peut dépasser la borne)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons repérer les risques de non‑terminaison, nous allons concevoir une boucle qui s'arrête après un nombre précis d'itérations, même si la condition de départ est un peu plus complexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Boucle à nombre d'itérations connu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut répéter une action exactement $N$ fois sans utiliser un intervalle numérique. On peut initialiser un compteur $c ← 0$ et écrire : tant que $c < N$ faire … ; $c ← c+1$ fin tant que. Cette structure garantit la terminaison car $c$ augmente de 1 à chaque tour et finira par atteindre $N$. C'est une alternative utile quand le langage ne propose pas de boucle for directe."
+            },
+            {
+              "type": "display_math",
+              "latex": "c = 0, 1, 2, \\dots, N-1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous allons examiner un cas où la condition d'arrêt dépend d'une valeur calculée au fil de la boucle, comme la somme accumulée. Cela montre comment la terminaison peut être intuitive sans compter explicitement les tours."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple : arrêter quand la somme dépasse 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "On veut ajouter des entiers successifs jusqu'à ce que la somme dépasse 100. Algorithme : $somme ← 0$ ; $k ← 1$ ; tant que $somme \\le 100$ faire $somme ← somme + k$ ; $k ← k+1$ fin tant que ; afficher($k-1$, $somme$). La boucle s'arrête dès que $somme$ devient 105 (après avoir ajouté 14). On a donc ajouté les nombres de 1 à 14. La terminaison est intuitive car la somme croît à chaque tour et finira par dépasser toute borne fixe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une boucle for simple pour répéter un nombre connu de fois.",
+                "Je sais écrire une boucle while simple avec initialisation, condition et incrémentation.",
+                "Je sais utiliser un compteur pour quantifier des événements dans une boucle.",
+                "Je sais vérifier qu'une boucle termine en contrôlant la modification de sa variable de contrôle.",
+                "Je sais concevoir une boucle qui s'arrête quand une valeur accumulée dépasse un seuil."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Indique si la boucle suivante termine ou non :\\ni ← 5\\ntant que i > 0 faire\\nafficher(i)\\ni ← i - 1\\nfin tant que",
+              "answer": "Termine",
+              "hint": "Observe que i diminue de 1 à chaque tour et finira par valoir 0.",
+              "explanation": "La variable i commence à 5 et est décrémentée ; quand i devient 0, la condition i > 0 devient fausse, la boucle s'arrête après 5 itérations."
+            },
+            {
+              "question": "Écris une boucle while qui affiche les 7 premières puissances de 2 (2¹, 2², …, 2⁷).",
+              "answer": "k ← 1 ; puissance ← 2 ; tant que k ≤ 7 faire afficher(puissance) ; puissance ← puissance * 2 ; k ← k + 1 fin tant que",
+              "hint": "Utilise un compteur k pour limiter à 7 tours et une variable puissance que tu multiplies par 2 chaque fois.",
+              "explanation": "Au premier tour puissance = 2, puis 4, 8, 16, 32, 64, 128 ; le compteur k assure exactement 7 itérations."
+            },
+            {
+              "question": "Quel sera l'affichage final de ce programme ?\\nsomme ← 0\\nn ← 1\\ntant que somme ≤ 30 faire\\nsomme ← somme + n\\nn ← n + 1\\nfin tant que\\nafficher(n-1, somme)",
+              "answer": "8 36",
+              "hint": "Calcule la somme progressive : 1, 3, 6, 10, 15, 21, 28, 36. La boucle s'arrête quand somme devient 36 (>30).",
+              "explanation": "On a ajouté les entiers de 1 à 8 ; n a été incrémenté jusqu'à 9, donc n-1 = 8 et la somme finale est 36."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

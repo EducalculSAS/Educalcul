@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Construire",
+  "title": "Quiz : Construction en symétrie axiale (6e)",
+  "questions": [
+    {
+      "text": "Quels sont les deux instruments indispensables pour effectuer une construction géométrique du symétrique d'un point par rapport à une droite, selon la méthode classique au programme de 6e ?",
+      "options": [
+        "La règle et l'équerre",
+        "Le compas et l'équerre",
+        "La règle et le compas",
+        "Le rapporteur et la règle"
+      ],
+      "correctAnswer": "La règle et le compas",
+      "explanation": "En 6e, les constructions géométriques (comme la symétrie axiale, la médiatrice, la perpendiculaire) se font exclusivement à la règle (non graduée pour tracer les droites) et au compas (pour reporter des longueurs et tracer des cercles/arcs). L'équerre et le rapporteur sont des instruments de mesure ou de traçage rapide, mais pas des outils de 'construction' au sens géométrique strict.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un point $M$ et une droite $(d)$. On veut construire $M'$, le symétrique de $M$ par rapport à $(d)$. Quelle est la propriété géométrique fondamentale qui lie la droite $(d)$ au segment $[MM']$ ?",
+      "options": [
+        "La droite $(d)$ est parallèle au segment $[MM']$",
+        "La droite $(d)$ passe par le point $M$",
+        "La droite $(d)$ est la médiatrice du segment $[MM']$",
+        "La droite $(d)$ coupe le segment $[MM']$ en deux segments de longueurs différentes"
+      ],
+      "correctAnswer": "La droite $(d)$ est la médiatrice du segment $[MM']$",
+      "explanation": "Par définition de la symétrie axiale, l'axe de symétrie $(d)$ est la médiatrice du segment joignant un point à son image. Cela implique deux choses : $(d)$ est perpendiculaire à $(MM')$ et $(d)$ coupe $[MM']$ en son milieu. Les autres propositions sont fausses : $(d)$ n'est pas parallèle à $[MM']$ (elle est perpendiculaire), elle ne passe pas par $M$ (sauf si $M$ est sur $(d)$), et elle coupe le segment en deux parties égales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les étapes de la construction du point $M'$, symétrique de $M$ par rapport à la droite $(d)$, à la règle et au compas. Dans quel ordre faut-il les effectuer ?\\n1. Tracer les arcs de cercle de centres $A$ et $B$ (de l'autre côté de $(d)$) qui se coupent en $M'$.\\n2. Tracer un arc de cercle centré en $M$ qui coupe $(d)$ en deux points $A$ et $B$.\\n3. Tracer le segment $[MM']$ pour vérifier que $(d)$ le coupe au milieu.\\n4. Prendre une ouverture de compas supérieure à la distance de $M$ à $(d)$.",
+      "options": [
+        "2 - 4 - 1 - 3",
+        "4 - 2 - 1 - 3",
+        "2 - 1 - 4 - 3",
+        "1 - 2 - 4 - 3"
+      ],
+      "correctAnswer": "4 - 2 - 1 - 3",
+      "explanation": "L'ordre logique est :\\n1. On règle d'abord l'ouverture du compas (étape 4) : elle doit être assez grande pour que le cercle centré en $M$ coupe la droite $(d)$ en deux points distincts $A$ et $B$.\\n2. On trace cet arc de cercle (étape 2) pour obtenir $A$ et $B$.\\n3. Sans changer l'écartement (ou en l'augmentant légèrement), on trace les arcs de centres $A$ et $B$ de l'autre côté de $(d)$ pour trouver $M'$ (étape 1).\\n4. Enfin, on trace le segment $[MM']$ pour vérifier la construction (étape 3). L'option '4 - 2 - 1 - 3' est la seule à respecter cet ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique d'un segment $[AB]$ par rapport à une droite $(d)$ qui ne le coupe pas, quelle est la méthode correcte ?",
+      "options": [
+        "On construit les symétriques $A'$ et $B'$ des points $A$ et $B$, puis on trace le segment $[A'B']$.",
+        "On mesure la longueur $AB$ à la règle, puis on reporte cette longueur de l'autre côté de $(d)$.",
+        "On prolonge le segment $[AB]$ jusqu'à ce qu'il coupe $(d)$, puis on construit le symétrique du point d'intersection.",
+        "On trace la médiatrice de $[AB]$ et on prend son intersection avec $(d)$."
+      ],
+      "correctAnswer": "On construit les symétriques $A'$ et $B'$ des points $A$ et $B$, puis on trace le segment $[A'B']$.",
+      "explanation": "La symétrie axiale conserve les alignements et les longueurs. L'image d'un segment est le segment dont les extrémités sont les images des extrémités initiales. Il faut donc construire $A'$ (symétrique de $A$) et $B'$ (symétrique de $B$) avec la méthode standard (règle et compas), puis relier $A'$ et $B'$. Mesurer à la règle graduée n'est pas une construction géométrique. Prolonger $[AB]$ ne fonctionne que si le segment coupe l'axe, ce qui est exclu ici. La médiatrice de $[AB]$ n'a pas de lien direct avec l'axe $(d)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a construit le point $N'$, symétrique du point $N$ par rapport à la droite $(d)$. Parmi les affirmations suivantes, laquelle est **fausse** ?",
+      "options": [
+        "La droite $(d)$ est la médiatrice du segment $[NN']$.",
+        "Les points $N$ et $N'$ sont à égale distance de la droite $(d)$.",
+        "Le segment $[NN']$ est perpendiculaire à la droite $(d)$.",
+        "Le point $N'$ appartient obligatoirement à la droite $(d)$."
+      ],
+      "correctAnswer": "Le point $N'$ appartient obligatoirement à la droite $(d)$.",
+      "explanation": "Analysons chaque proposition :\\n- Vrai : Par définition, l'axe de symétrie est la médiatrice de $[NN']$.\\n- Vrai : Comme $(d)$ est la médiatrice, $N$ et $N'$ sont symétriques, donc équidistants de $(d)$.\\n- Vrai : La médiatrice est perpendiculaire au segment, donc $(d) \\perp (NN')$.\\n- **Faux** : Le point $N'$ appartient à la droite $(d)$ **uniquement si** le point de départ $N$ est déjà sur $(d)$ (dans ce cas $N' = N$). Dans le cas général où $N$ n'est pas sur $(d)$, son image $N'$ est de l'autre côté de la droite et n'y appartient pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

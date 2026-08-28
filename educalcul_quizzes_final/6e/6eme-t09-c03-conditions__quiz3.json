@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Prédire",
+  "title": "Quiz Algorithmique : Prédire le résultat d'une condition",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nx prend la valeur 10\\nSI x > 5 ALORS\\n    x prend la valeur x + 3\\nSINON\\n    x prend la valeur x - 2\\nFIN SI\\nAfficher x\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "13",
+        "8",
+        "10",
+        "7"
+      ],
+      "correctAnswer": "13",
+      "explanation": "La variable x vaut initialement 10. La condition $x > 5$ est vraie car $10 > 5$. On exécute donc l'instruction du ALORS : $x$ prend la valeur $10 + 3 = 13$. La partie SINON est ignorée. L'affichage final donne 13. Le distracteur 8 correspondrait à l'exécution du SINON ($10 - 2$), 10 à l'absence de modification, et 7 est une valeur erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nnombre prend la valeur 4\\nSI nombre * 2 = 10 ALORS\\n    nombre prend la valeur 20\\nSINON\\n    nombre prend la valeur 0\\nFIN SI\\nAfficher nombre\\nQuelle valeur est affichée ?",
+      "options": [
+        "0",
+        "20",
+        "4",
+        "10"
+      ],
+      "correctAnswer": "0",
+      "explanation": "La variable nombre vaut 4. On teste la condition $nombre \\times 2 = 10$, soit $4 \\times 2 = 8$. Comme $8 \\neq 10$, la condition est fausse. On exécute donc la branche SINON : nombre prend la valeur 0. L'affichage final est 0. Le distracteur 20 correspond à l'exécution du ALORS (si la condition était vraie), 4 est la valeur initiale non modifiée, et 10 est la valeur cible de la condition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\na prend la valeur 7\\nb prend la valeur 3\\nSI a > b ALORS\\n    a prend la valeur a - b\\nSINON\\n    b prend la valeur b - a\\nFIN SI\\nAfficher a\\nQuelle valeur est affichée ?",
+      "options": [
+        "4",
+        "10",
+        "7",
+        "3"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Initialement $a = 7$ et $b = 3$. La condition $a > b$ ($7 > 3$) est vraie. On exécute l'instruction du ALORS : $a$ prend la valeur $a - b = 7 - 3 = 4$. La variable $b$ ne change pas. L'instruction Afficher a donne donc 4. Le distracteur 10 correspond à une addition ($a+b$), 7 est la valeur initiale de $a$ (oubli de la modification), et 3 est la valeur initiale de $b$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nscore prend la valeur 15\\nSI score >= 10 ALORS\\n    SI score <= 20 ALORS\\n        score prend la valeur score + 5\\n    FIN SI\\nSINON\\n    score prend la valeur 0\\nFIN SI\\nAfficher score\\nQuelle valeur est affichée ?",
+      "options": [
+        "20",
+        "15",
+        "0",
+        "10"
+      ],
+      "correctAnswer": "20",
+      "explanation": "score vaut 15. La première condition $score \\ge 10$ ($15 \\ge 10$) est vraie, on entre dans le ALORS. On rencontre une seconde condition imbriquée : $score \\le 20$ ($15 \\le 20$), qui est aussi vraie. On exécute $score = 15 + 5 = 20$. Les FIN SI referment les blocs. L'affichage final est 20. Le distracteur 15 correspond à l'oubli de l'addition, 0 à l'exécution du SINON externe (condition fausse), et 10 est une valeur intermédiaire sans lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx prend la valeur 5\\nSI x * 2 > 8 ALORS\\n    x prend la valeur x + 10\\nFIN SI\\nSI x < 20 ALORS\\n    x prend la valeur x * 2\\nFIN SI\\nAfficher x\\nQuelle valeur est affichée ?",
+      "options": [
+        "30",
+        "20",
+        "15",
+        "10"
+      ],
+      "correctAnswer": "30",
+      "explanation": "On suit l'exécution pas à pas. Début : $x = 5$. Premier SI : condition $x \\times 2 > 8$ soit $10 > 8$, vraie. On fait $x = 5 + 10 = 15$. Premier FIN SI. Deuxième SI : condition $x < 20$ soit $15 < 20$, vraie. On fait $x = 15 \\times 2 = 30$. Deuxième FIN SI. Affichage final : 30. Le distracteur 15 correspond au résultat après le premier SI seulement (oubli du second). 10 correspond à $5 \\times 2$ (oubli du premier SI, exécution du second sur la valeur initiale). 20 est une valeur erronée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

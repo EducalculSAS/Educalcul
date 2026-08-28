@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Séquences, boucles, conditions",
+  "title": "Séquences, boucles et conditions",
+  "blocks": [
+    {
+      "title": "La suite logique",
+      "content": "Un robot suit cette séquence de mouvements : Avancer, Tourner à droite, Avancer, Tourner à droite. S'il répète cette séquence $3$ fois, combien de fois aura-t-il effectué l'action Avancer au total ?",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans une séquence, l'action Avancer apparaît $2$ fois. Si on répète cette séquence $3$ fois, on calcule $2 \\times 3 = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "La boucle de dessin",
+      "content": "Pour dessiner un carré, un programme utilise une boucle : Répéter $4$ fois (Avancer de $5$ cm, Tourner à droite de $90$ degrés). Quelle est la longueur totale du trajet parcouru par le robot en centimètres ?",
+      "correctAnswer": "20",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le robot avance de $5$ cm à chaque répétition. Comme la boucle est répétée $4$ fois, le calcul est $4 \\times 5 = 20$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "La condition de marche",
+      "content": "Un robot suit cette règle : SI la case est rouge, ALORS il s'arrête, SINON il avance d'une case. Le robot arrive devant une case bleue. Quelle action va-t-il effectuer ?",
+      "correctAnswer": "avance d'une case",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition est que la case soit rouge pour s'arrêter. Puisque la case est bleue, la condition est fausse, donc le robot exécute l'action après le SINON, qui est d'avancer d'une case.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

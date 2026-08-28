@@ -1,0 +1,419 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.720193+00:00",
+  "id": 717,
+  "code": "terminale-generale-maths-t07-c03",
+  "title": "Sommes de variables aléatoires selon programme",
+  "description": "Cours structuré Educalcul : Sommes de variables aléatoires selon programme.",
+  "subject": "Probabilités",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Probabilités",
+    "titre_du_cours": "Sommes de variables aléatoires selon programme",
+    "objectif_global": "Sommes de variables aléatoires selon programme",
+    "mini_lecons_imposees": [
+      "Espérance.",
+      "Variance.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités",
+      "lessons": [
+        {
+          "title": "Espérance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance d'une variable aléatoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons découvrir l'espérance, une grandeur centrale en probabilités qui permet de résumer une variable aléatoire par un seul nombre représentatif. Imagine que tu lances un dé équilibré à six faces : chaque face a la même chance d'apparaître, et tu aimerais savoir quelle valeur tu obtiendras en moyenne si tu recommences l'expérience un très grand nombre de fois. C'est exactement ce que l'espérance te donne : la moyenne théorique que tu observerais sur le long terme. Pour la définir précisément, on considère une variable aléatoire $X$ qui prend des valeurs $x_1, x_2, \\dots, x_n$ avec des probabilités respectives $p_1, p_2, \\dots, p_n$. L'espérance de $X$, notée $E[X]$, est la somme pondérée de ces valeurs par leurs probabilités. Cette notion ne dépend pas de l'indépendance entre variables, ce qui la rend très puissante pour étudier des sommes complexes. Dans la suite, nous verrons comment calculer cette espérance, comment elle se comporte quand on additionne plusieurs variables, et nous illustrerons chaque étape avec des exemples concrets comme le lancer de dés ou le tirage de cartes."
+            },
+            {
+              "type": "definition",
+              "term": "Espérance",
+              "definition": "L'espérance d'une variable aléatoire $X$ à valeurs réelles est la moyenne pondérée de ses valeurs possibles par leurs probabilités. Pour une variable discrète, $E[X] = \\sum_{i} x_i \\, p_i$. Pour une variable continue de densité $f$, $E[X] = \\int_{-\\infty}^{\\infty} x \\, f(x) \\, dx$.",
+              "example": "Pour un dé à six faces, $E[X] = \\frac{1}{6}(1+2+3+4+5+6) = 3,5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "E[X] = \\\\sum_{i=1}^{n} x_i \\\\, p_i"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique d'un dé équilibré à six faces. Les valeurs possibles sont $1,2,3,4,5,6$ et chacune a une probabilité de $\\frac{1}{6}$. En appliquant la formule, on obtient $E[X] = \\frac{1}{6}(1+2+3+4+5+6) = \\frac{21}{6} = 3,5$. Ce résultat signifie que si tu lances le dé un très grand nombre de fois et que tu calcules la moyenne des résultats obtenus, cette moyenne se rapprochera de $3,5$. Note que $3,5$ n'est pas une face du dé : l'espérance est une valeur moyenne, pas nécessairement une valeur atteignable en un seul essai. Cette distinction est importante pour bien comprendre le sens de l'espérance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les valeurs et leurs probabilités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour toute variable aléatoire discrète, liste les couples $(x_i, p_i)$. Vérifie que la somme des $p_i$ vaut $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier chaque valeur par sa probabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les produits $x_i p_i$ pour chaque $i$. Cette opération pondère chaque issue selon sa chance de se produire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner tous les produits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme $\\sum_i x_i p_i$ donne l'espérance $E[X]$. Si la variable est continue, remplace la somme par une intégrale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons calculer l'espérance d'une variable simple, voyons comment elle se comporte lorsque l'on additionne deux variables aléatoires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Linéarité de l'espérance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une propriété fondamentale de l'espérance est sa linéarité : pour toutes variables aléatoires $X$ et $Y$ définies sur le même espace probabilisé, on a toujours $E[X+Y] = E[X] + E[Y]$. Cette égalité ne nécessite aucune hypothèse d'indépendance, elle découle directement de la définition de l'espérance comme somme pondérée. Concrètement, si tu lances deux dés, l'espérance de la somme des deux faces vaut la somme des espérances de chaque dé. C'est un outil très commode car il évite de devoir construire la loi de la somme pour en déduire sa moyenne."
+            },
+            {
+              "type": "display_math",
+              "latex": "E[X+Y] = E[X] + E[Y]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cela avec deux dés indépendants. Chaque dé a une espérance de $3,5$. Selon la linéarité, l'espérance de la somme des deux dés est $3,5 + 3,5 = 7$. On peut vérifier ce résultat en construisant la table des sommes possibles : les valeurs vont de $2$ à $12$ avec des probabilités variables, mais la moyenne pondérée de cette distribution est bien $7$. Cette vérification renforce l'intuition que l'espérance capture le centre de gravité d'une distribution, peu importe sa forme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La linéarité s'étend naturellement à toute somme finie de variables aléatoires, ce qui nous permet de traiter des sommes de nombreux termes sans difficulté supplémentaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Somme de plusieurs variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $X_1, X_2, \\dots, X_n$ des variables aléatoires quelconques. Par récurrence sur la propriété de linéarité, on obtient $E[\\sum_{k=1}^{n} X_k] = \\sum_{k=1}^{n} E[X_k]$. Cette formule reste vraie même si les variables sont dépendantes entre elles. C'est un atout majeur : pour connaître l'espérance d'une somme, il suffit de connaître l'espérance de chaque terme. Par exemple, si tu lances $n$ dés équilibrés, l'espérance de la somme totale est $n \\times 3,5 = 3,5 n$. Cette règle s'applique aussi aux variables continues, aux variables mixtes, et constitue la base de nombreux résultats en statistiques comme le théorème de la limite centrale."
+            },
+            {
+              "type": "display_math",
+              "latex": "E\\\\left[\\\\sum_{k=1}^{n} X_k\\\\right] = \\\\sum_{k=1}^{n} E[X_k]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une expérience où tu lances $10$ dés et tu additionnes les résultats. Au lieu de simuler toutes les combinaisons possibles ($6^{10}$ cas), tu utilises la formule : l'espérance de la somme est $10 \\times 3,5 = 35$. Cette simplicité est la raison pour laquelle l'espérance est souvent la première caractéristique que l'on calcule quand on étudie une somme de variables aléatoires. Dans la leçon suivante, nous verrons que la variance, elle, demande une attention particulière à l'indépendance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'espérance d'un dé équilibré à six faces.",
+              "answer": "3,5",
+              "hint": "Utilise la formule $E[X] = \\\\sum x_i p_i$ avec $p_i = 1/6$.",
+              "explanation": "Les faces sont $1,2,3,4,5,6$ chacune avec probabilité $1/6$. La somme pondérée donne $(1+2+3+4+5+6)/6 = 21/6 = 3,5$."
+            },
+            {
+              "question": "Si tu lances deux dés indépendants, quelle est l'espérance de la somme ?",
+              "answer": "7",
+              "hint": "L'espérance de la somme est la somme des espérances.",
+              "explanation": "Chaque dé a une espérance de $3,5$. Par linéarité, $E[X+Y] = E[X] + E[Y] = 3,5 + 3,5 = 7$."
+            },
+            {
+              "question": "Quelle est l'espérance de la somme de $n$ dés équilibrés ?",
+              "answer": "$3,5 n$",
+              "hint": "Utilise la linéarité pour $n$ variables.",
+              "explanation": "Chaque dé contribue $3,5$ à l'espérance totale, donc $E[\\\\sum_{k=1}^{n} X_k] = n \\\\times 3,5 = 3,5 n$."
+            }
+          ]
+        },
+        {
+          "title": "Variance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variance d'une variable aléatoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé l'espérance, nous nous tournons vers la variance, qui mesure la dispersion des valeurs autour de cette moyenne. Intuitivement, si tu lances un dé, les résultats sont assez dispersés autour de $3,5$ ; la variance quantifie cette dispersion. Pour une variable aléatoire $X$ d'espérance $\\mu = E[X]$, la variance est définie par $Var(X) = E[(X-\\mu)^2]$. Elle est toujours positive ou nulle, et elle est nulle seulement si $X$ est presque sûrement constante. Une variance grande indique que les valeurs s'écartent beaucoup de la moyenne, tandis qu'une variance petite signifie qu'elles sont concentrées près de la moyenne."
+            },
+            {
+              "type": "definition",
+              "term": "Variance",
+              "definition": "La variance d'une variable aléatoire $X$ est l'espérance du carré de l'écart à la moyenne : $Var(X) = E[(X - E[X])^2]$. Elle s'écrit aussi $Var(X) = E[X^2] - (E[X])^2$, ce qui est souvent plus commode pour le calcul.",
+              "example": "Pour un dé à six faces, $E[X]=3,5$, $E[X^2] = \\frac{1}{6}(1^2+2^2+3^2+4^2+5^2+6^2) = \\frac{91}{6}$, donc $Var(X) = \\frac{91}{6} - (3,5)^2 = \\frac{35}{12} \\approx 2,917$."
+            },
+            {
+              "type": "display_math",
+              "latex": "Var(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons la variance d'un dé équilibré pour illustrer la méthode. Nous avons déjà $E[X]=3,5$. Il nous faut $E[X^2]$. Les carrés des faces sont $1,4,9,16,25,36$ ; leur moyenne est $(1+4+9+16+25+36)/6 = 91/6 \\approx 15,1667$. En appliquant la formule $Var(X)=E[X^2]-(E[X])^2$, on obtient $91/6 - (7/2)^2 = 91/6 - 49/4 = (182-147)/12 = 35/12 \\approx 2,917$. Ce nombre signifie qu'en moyenne, le carré de l'écart au centre vaut environ $2,9$. C'est une mesure utile pour comparer la variabilité de différentes expériences."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer l'espérance $E[X]$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la définition de l'espérance pour obtenir la moyenne $\\mu$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $E[X^2]$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Élève chaque valeur possible au carré, pondère par sa probabilité, et somme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer $Var(X)=E[X^2]-\\mu^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrait le carré de la moyenne à la moyenne des carrés pour obtenir la variance."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant examiner comment la variance se comporte pour une somme de variables, ce qui demande de prendre en compte leur éventuelle dépendance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variance d'une somme de variables indépendantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Contrairement à l'espérance, la variance d'une somme n'est pas toujours la somme des variances. La formule générale est $Var(X+Y) = Var(X) + Var(Y) + 2\\,Cov(X,Y)$, où $Cov(X,Y)=E[(X-E[X])(Y-E[Y])]$ est la covariance. Si $X$ et $Y$ sont indépendantes, leur covariance est nulle, et l'on retrouve la propriété additive : $Var(X+Y) = Var(X) + Var(Y)$. Cette condition d'indépendance est cruciale : si les variables sont corrélées, la variance de la somme peut être plus grande (corrélation positive) ou plus petite (corrélation négative) que la somme des variances."
+            },
+            {
+              "type": "display_math",
+              "latex": "Var(X+Y) = Var(X) + Var(Y) + 2\\\\,Cov(X,Y)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de deux dés indépendants. Chaque dé a une variance de $35/12$. Comme ils sont indépendants, la variance de la somme est $35/12 + 35/12 = 35/6 \\approx 5,833$. On peut vérifier ce résultat en construisant la distribution de la somme (valeurs de $2$ à $12$) et en calculant directement sa variance ; on retrouve bien $35/6$. Cette additivité simplifie considérablement l'étude de sommes de nombreuses variables indépendantes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété s'étend à toute somme finie de variables deux à deux indépendantes, ce qui nous donne une règle simple pour la variance d'un échantillon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variance d'une somme de $n$ variables i.i.d."
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $X_1, X_2, \\dots, X_n$ des variables aléatoires indépendantes et identiquement distribuées (i.i.d.) de variance $\\sigma^2$. Par récurrence sur la formule additive, la variance de leur somme $S_n = \\sum_{k=1}^{n} X_k$ est $Var(S_n) = n \\sigma^2$. Cette relation montre que la dispersion de la somme croît linéairement avec le nombre de termes, alors que l'espérance croît aussi linéairement. En divisant par $n$, on obtient la variance de la moyenne empirique $\\bar{X}_n = S_n/n$ qui vaut $\\sigma^2/n$ : la moyenne devient de plus en plus précise quand $n$ augmente, ce qui est l'essence de la loi des grands nombres."
+            },
+            {
+              "type": "display_math",
+              "latex": "Var\\\\left(\\\\sum_{k=1}^{n} X_k\\\\right) = n \\\\sigma^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à $n$ dés équilibrés. La variance d'un dé est $35/12$, donc la variance de la somme de $n$ dés est $n \\times 35/12$. Par exemple, pour $n=10$, la variance vaut $350/12 \\approx 29,17$. Cette croissance linéaire contraste avec l'écart-type, qui croît comme $\\sqrt{n}$, et explique pourquoi la moyenne de nombreux tirages est très stable autour de sa valeur théorique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la variance d'un dé équilibré à six faces.",
+              "answer": "$35/12 \\approx 2,9167$",
+              "hint": "Utilise $Var(X)=E[X^2]-(E[X])^2$ avec $E[X]=3,5$.",
+              "explanation": "$E[X^2] = (1^2+2^2+3^2+4^2+5^2+6^2)/6 = 91/6$. $Var = 91/6 - (7/2)^2 = 35/12$."
+            },
+            {
+              "question": "Quelle est la variance de la somme de deux dés indépendants ?",
+              "answer": "$35/6 \\approx 5,8333$",
+              "hint": "Var(X+Y)=Var(X)+Var(Y) pour variables indépendantes.",
+              "explanation": "Chaque dé a variance $35/12$. Somme des variances = $35/12+35/12=35/6$."
+            },
+            {
+              "question": "Donne la variance de la somme de $n$ dés équilibrés indépendants.",
+              "answer": "$n \\times 35/12$",
+              "hint": "Var(S_n)=n Var(X) pour variables i.i.d.",
+              "explanation": "Les dés sont i.i.d. de variance $35/12$, donc la variance de la somme est $n \\times 35/12$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application : loi binomiale comme somme de variables de Bernoulli"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une application majeure des résultats précédents est la loi binomiale. Une variable de Bernoulli $B$ prend la valeur $1$ avec probabilité $p$ (succès) et $0$ avec probabilité $1-p$ (échec). Son espérance est $p$ et sa variance $p(1-p)$. Si l'on répète indépendamment $n$ fois cette expérience, le nombre total de succès $X = \\sum_{k=1}^{n} B_k$ suit une loi binomiale de paramètres $n$ et $p$. Grâce à la linéarité de l'espérance et à l'additivité de la variance pour variables indépendantes, on obtient immédiatement $E[X] = np$ et $Var(X) = np(1-p)$. Ces formules sont au cœur de nombreux problèmes de comptage et de tests statistiques."
+            },
+            {
+              "type": "definition",
+              "term": "Variable de Bernoulli",
+              "definition": "Une variable aléatoire $B$ qui vaut $1$ avec probabilité $p$ et $0$ avec probabilité $1-p$. Son espérance est $E[B]=p$ et sa variance $Var(B)=p(1-p)$.",
+              "example": "Lancer une pièce de monnaie : $p=0,5$ pour face."
+            },
+            {
+              "type": "display_math",
+              "latex": "E[X] = n p, \\\\quad Var(X) = n p (1-p)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu fais $10$ lancers d'une pièce légèrement truquée qui tombe sur face avec une probabilité $p=0,3$. Le nombre de faces obtenues suit une loi binomiale $B(10,0,3)$. Son espérance est $10 \\times 0,3 = 3$ faces en moyenne, et sa variance est $10 \\times 0,3 \\times 0,7 = 2,1$. Ces valeurs te permettent de prévoir la dispersion des résultats sans avoir à lister les $2^{10}$ issues possibles. C'est la puissance des formules d'espérance et de variance pour les sommes de variables indépendantes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une application statistique fondamentale : la moyenne d'un échantillon aléatoire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application : moyenne d'un échantillon et loi des grands nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un échantillon $X_1, \\dots, X_n$ de variables indépendantes et de même loi, d'espérance $\\mu$ et de variance $\\sigma^2$. La moyenne empirique est $\\bar{X}_n = \\frac{1}{n}\\sum_{k=1}^{n} X_k$. D'après la linéarité, $E[\\bar{X}_n] = \\mu$ : la moyenne est un estimateur sans biais de l'espérance de la population. Sa variance est $Var(\\bar{X}_n) = \\frac{\\sigma^2}{n}$, ce qui montre que la précision de l'estimation s'améliore quand la taille de l'échantillon augmente. Ce résultat est la base quantitative de la loi des grands nombres : $\\bar{X}_n$ converge en probabilité vers $\\mu$ quand $n \\to \\infty$."
+            },
+            {
+              "type": "display_math",
+              "latex": "E[\\\\bar{X}_n] = \\\\mu, \\\\quad Var(\\\\bar{X}_n) = \\\\frac{\\\\sigma^2}{n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple numérique. Une population a une espérance $\\mu = 50$ et une variance $\\sigma^2 = 100$. Tu tires un échantillon de taille $n = 25$. La moyenne de cet échantillon a pour espérance $50$ et pour variance $100/25 = 4$, donc un écart-type de $2$. Cela signifie que dans la grande majorité des échantillons de taille $25$, la moyenne observée se situera dans un intervalle de quelques unités autour de $50$. C'est cette propriété qui justifie l'utilisation des intervalles de confiance en statistique inférentielle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, examinons le cas particulier mais très important de la somme de variables normales indépendantes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application : somme de variables normales indépendantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $X \\sim \\mathcal{N}(\\mu_X, \\sigma_X^2)$ et $Y \\sim \\mathcal{N}(\\mu_Y, \\sigma_Y^2)$ sont indépendantes, alors leur somme $X+Y$ suit également une loi normale, de paramètres $\\mu_X + \\mu_Y$ et $\\sigma_X^2 + \\sigma_Y^2$. Cette stabilité par addition est une caractéristique distinctive de la loi normale et explique pourquoi elle apparaît si souvent comme limite de sommes de variables aléatoires (théorème de la limite centrale). Concrètement, il suffit d'additionner les moyennes et les variances pour obtenir la loi de la somme, sans avoir à calculer de convolution intégrale."
+            },
+            {
+              "type": "display_math",
+              "latex": "X+Y \\\\sim \\\\mathcal{N}(\\\\mu_X+\\\\mu_Y,\\\\, \\\\sigma_X^2+\\\\sigma_Y^2)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $X \\sim \\mathcal{N}(2,4)$ et $Y \\sim \\mathcal{N}(3,9)$ indépendantes. La somme $X+Y$ suit une loi normale de moyenne $2+3=5$ et de variance $4+9=13$, soit $X+Y \\sim \\mathcal{N}(5,13)$. Cette règle s'étend à toute somme finie de normales indépendantes : la moyenne de la somme est la somme des moyennes, la variance de la somme est la somme des variances. C'est un outil précieux en modélisation, par exemple pour additionner des erreurs de mesure indépendantes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer l'espérance d'une variable aléatoire discrète ou continue.",
+                "J'applique la linéarité de l'espérance pour une somme de variables.",
+                "Je calcule la variance et j'utilise l'additivité pour des variables indépendantes.",
+                "Je reconnais une loi binomiale comme somme de Bernoulli et j'en déduis espérance et variance.",
+                "Je détermine l'espérance et la variance de la moyenne d'un échantillon et j'interprète la loi des grands nombres.",
+                "J'identifie la loi normale comme stable par addition de variables indépendantes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X$ une variable binomiale de paramètres $n=10$, $p=0,3$. Calcule $E[X]$ et $Var(X)$.",
+              "answer": "$E[X]=3$, $Var(X)=2,1$",
+              "hint": "Utilise $E[X]=np$ et $Var(X)=np(1-p)$.",
+              "explanation": "Avec $n=10$, $p=0,3$ : $E[X]=10\\times0,3=3$ ; $Var=10\\times0,3\\times0,7=2,1$."
+            },
+            {
+              "question": "Pour un échantillon de taille $n=25$ tiré d'une population d'espérance $\\mu=50$ et variance $\\sigma^2=100$, donne l'espérance et la variance de la moyenne échantillonnale.",
+              "answer": "$E[\\bar X]=50$, $Var(\\bar X)=4$",
+              "hint": "Moyenne = somme/n, variance = $\\sigma^2/n$.",
+              "explanation": "$E[\\bar X]=\\mu=50$. $Var(\\bar X)=\\sigma^2/n=100/25=4$."
+            },
+            {
+              "question": "Si $X\\sim \\mathcal{N}(2,4)$ et $Y\\sim \\mathcal{N}(3,9)$ sont indépendantes, quelle est la loi de $X+Y$ ?",
+              "answer": "$X+Y \\sim \\mathcal{N}(5,13)$",
+              "hint": "Somme de normales indépendantes : moyennes s'additionnent, variances s'additionnent.",
+              "explanation": "Moyenne $2+3=5$, variance $4+9=13$, donc loi normale $\\mathcal{N}(5,13)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

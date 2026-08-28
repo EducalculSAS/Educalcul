@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Tracer",
+  "title": "Tracer une droite : coefficient directeur et équation réduite",
+  "blocks": [
+    {
+      "title": "Équation réduite et caractéristiques",
+      "content": "Relie chaque équation réduite de droite à son coefficient directeur et son ordonnée à l'origine.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$y = 2x + 3$",
+          "right": "Coefficient directeur $2$ ; ordonnée à l'origine $3$"
+        },
+        {
+          "left": "$y = -x + 1$",
+          "right": "Coefficient directeur $-1$ ; ordonnée à l'origine $1$"
+        },
+        {
+          "left": "$y = \\frac{1}{2}x - 2$",
+          "right": "Coefficient directeur $\\frac{1}{2}$ ; ordonnée à l'origine $-2$"
+        },
+        {
+          "left": "$y = -3x$",
+          "right": "Coefficient directeur $-3$ ; ordonnée à l'origine $0$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans une équation réduite de la forme $y = ax + b$, le nombre $a$ est le coefficient directeur et $b$ est l'ordonnée à l'origine (le point de coupe avec l'axe des ordonnées, d'abscisse $0$). Pour $y = -x + 1$, le coefficient directeur est $-1$. Pour $y = -3x$, il n'y a pas de terme constant, donc $b = 0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation à partir d'un point et du coefficient directeur",
+      "content": "Relie chaque description de droite (point passé et coefficient directeur) à son équation réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Droite passant par $A(0;2)$ de coefficient directeur $3$",
+          "right": "$y = 3x + 2$"
+        },
+        {
+          "left": "Droite passant par $B(0;-1)$ de coefficient directeur $-\\frac{1}{2}$",
+          "right": "$y = -\\frac{1}{2}x - 1$"
+        },
+        {
+          "left": "Droite passant par $C(0;0)$ de coefficient directeur $4$",
+          "right": "$y = 4x$"
+        },
+        {
+          "left": "Droite passant par $D(0;5)$ de coefficient directeur $-2$",
+          "right": "$y = -2x + 5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Comme tous les points donnés ont pour abscisse $0$, ils sont sur l'axe des ordonnées. Leur ordonnée est donc directement l'ordonnée à l'origine $b$ de l'équation réduite $y = ax + b$. Il suffit ensuite d'écrire le coefficient directeur $a$ donné.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture graphique du coefficient directeur",
+      "content": "Relie chaque description graphique (variation de $y$ pour une variation de $x = 1$) à l'équation réduite correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Droite montante : quand $x$ augmente de $1$, $y$ augmente de $2$",
+          "right": "$y = 2x - 1$"
+        },
+        {
+          "left": "Droite descendante : quand $x$ augmente de $1$, $y$ diminue de $3$",
+          "right": "$y = -3x + 4$"
+        },
+        {
+          "left": "Droite horizontale",
+          "right": "$y = 5$"
+        },
+        {
+          "left": "Droite montante : quand $x$ augmente de $2$, $y$ augmente de $1$",
+          "right": "$y = \\frac{1}{2}x + 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ correspond à la variation de $y$ quand $x$ augmente de $1$. Si $y$ augmente de $2$, $a = 2$. Si $y$ diminue de $3$, $a = -3$. Une droite horizontale a un coefficient directeur nul ($a=0$), son équation est $y = b$. Si $y$ augmente de $1$ quand $x$ augmente de $2$, alors $a = \\frac{1}{2}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

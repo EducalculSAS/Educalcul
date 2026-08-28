@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 413,
+  "_course_code": "5eme-t07-c04-dependance-entre-deux-quantites",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Application : Dépendance entre deux quantités",
+  "title": "Quiz : Dépendance entre deux quantités (Applications)",
+  "questions": [
+    {
+      "text": "Dans le tableau ci-dessous, les quantités $x$ et $y$ sont-elles proportionnelles ?\\n$x$ : 2 ; 4 ; 6 ; 8\\n$y$ : 5 ; 10 ; 15 ; 20",
+      "options": [
+        "Oui, elles sont proportionnelles",
+        "Non, elles ne le sont pas car le rapport n'est pas constant",
+        "Non, car $y$ ne commence pas à zéro",
+        "Oui, mais seulement pour les deux premières valeurs"
+      ],
+      "correctAnswer": "Oui, elles sont proportionnelles",
+      "explanation": "Le rapport $y/x$ vaut $5/2 = 2,5$, $10/4 = 2,5$, $15/6 = 2,5$, $20/8 = 2,5$. Comme le rapport est constant, les deux quantités sont proportionnelles avec un coefficient de proportionnalité $k = 2,5$. Les autres affirmations sont fausses : le rapport est constant, l'origine n'est pas une condition pour la proportionnalité dans un tableau, et la relation vaut pour toutes les valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $x$ et $y$ sont proportionnels avec un coefficient de proportionnalité $k = 3$, quelle est la valeur de $y$ lorsque $x = 7$ ?",
+      "options": [
+        "21",
+        "10",
+        "24",
+        "18"
+      ],
+      "correctAnswer": "21",
+      "explanation": "Dans une relation proportionnelle, $y = k \\times x$. Ici $k = 3$ et $x = 7$, donc $y = 3 \\times 7 = 21$. Les autres nombres correspondent à des erreurs de calcul (par exemple $3 \\times 6 = 18$ ou $7 + 3 = 10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que les points $(2,6)$ et $(5,15)$ appartiennent à une droite passant par l'origine. Quel est le coefficient de proportionnalité ?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le coefficient de proportionnalité est le taux de variation (la pente) de la droite. On peut le calculer avec l'un des points : $k = y/x = 6/2 = 3$ ou $15/5 = 3$. On peut aussi utiliser la formule de la pente $(15-6)/(5-2) = 9/3 = 3$. Les autres valeurs ne correspondent pas à ce calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un kilogramme de pommes coûte $2,50$ euros. Combien coûteront $4,5$ kilogrammes ?",
+      "options": [
+        "11,25 euros",
+        "10 euros",
+        "12,50 euros",
+        "9,75 euros"
+      ],
+      "correctAnswer": "11,25 euros",
+      "explanation": "Le prix est proportionnel à la masse : $prix = 2,50 \\times masse$. Pour $4,5$ kg, $prix = 2,50 \\times 4,5 = 11,25$ euros. Les autres options proviennent d'erreurs de multiplication (par exemple $2,5 \\times 4 = 10$ ou $2,5 \\times 5 = 12,5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des situations suivantes ne correspond pas à une relation proportionnelle ?",
+      "options": [
+        "La distance parcourue en fonction du temps à vitesse constante",
+        "Le prix total en fonction du nombre d'articles identiques",
+        "La surface d'un carré en fonction de la longueur de son côté",
+        "La quantité d'essence consommée en fonction de la distance parcourue à consommation constante"
+      ],
+      "correctAnswer": "La surface d'un carré en fonction de la longueur de son côté",
+      "explanation": "Dans les trois premiers cas, la grandeur varie de manière proportionnelle : distance = vitesse × temps, prix = prix unitaire × nombre, essence = consommation × distance. La surface d'un carré vaut $c^2$ (côté au carré), ce qui n'est pas une relation de proportionnalité (le rapport surface/côté n'est pas constant).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

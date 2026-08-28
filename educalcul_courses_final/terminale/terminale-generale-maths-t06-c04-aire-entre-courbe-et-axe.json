@@ -1,0 +1,421 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.700236+00:00",
+  "id": 710,
+  "code": "terminale-generale-maths-t06-c04",
+  "title": "Aire entre courbe et axe",
+  "description": "Cours structuré Educalcul : Aire entre courbe et axe.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Aire entre courbe et axe",
+    "objectif_global": "Aire entre courbe et axe",
+    "mini_lecons_imposees": [
+      "Signe.",
+      "Intégrale.",
+      "Unités."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Signe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signe de l'aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir ce que signifie le signe d'une aire située entre une courbe et l'axe des abscisses. Imagine que tu traces le graphique d'une fonction sur une feuille de papier millimétré. La partie du graphique qui se trouve au-dessus de l'axe horizontal correspond à une aire que l'on considère comme positive, tandis que la partie qui se trouve en dessous correspond à une aire que l'on considère comme négative. Cette convention de signe permet de donner un sens algébrique à la notion d'aire, ce qui sera essentiel lorsque nous calculerons des intégrales définies. Prends le temps de visualiser mentalement une courbe qui coupe l'axe en plusieurs points ; chaque portion délimitée par deux zéros successifs aura son propre signe."
+            },
+            {
+              "type": "definition",
+              "term": "Aire signée",
+              "definition": "L'aire signée entre une courbe et l'axe des abscisses est la somme algébrique des aires des parties situées au-dessus (positive) et en-dessous (négative) de l'axe.",
+              "example": "Pour $f(x)=x^2-1$ sur $[-2,2]$, l'aire signée est négative car la partie sous l'axe est plus grande."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-1",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Courbe de $f(x)=x^2-1$ coupant l'axe des abscisses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as observé une courbe qui traverse l'axe des abscisses, nous allons passer à un premier exercice qui te demande d'identifier le signe de l'aire sur chaque sous-intervalle délimité par les zéros de la fonction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, nous allons apprendre à découper l'intégrale en plusieurs parties afin de respecter le signe de chaque portion. Cette technique consiste à repérer tous les zéros de la fonction sur l'intervalle d'intégration, puis à écrire l'intégrale comme une somme d'intégrales sur des sous-intervalles où la fonction ne change pas de signe. En procédant ainsi, l'aire signée devient une somme algébrique d'aires positives et négatives, ce qui simplifie grandement le calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les zéros de la fonction sur l'intervalle.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie tous les points où la fonction coupe l'axe des abscisses ; ce sont les zéros qui délimitent les zones de signe constant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Découper l'intégrale en intégrales sur chaque sous-intervalle.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'intégrale définie comme la somme d'intégrales sur les intervalles entre deux zéros successifs, sans changer l'ordre des bornes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer chaque intégrale séparément et sommer les résultats en respectant les signes.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue chaque intégrale à l'aide d'une primitive, puis additionne les valeurs obtenues ; les portions sous l'axe apportent une contribution négative."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Mets maintenant cette méthode en pratique avec un deuxième exercice qui te demande de calculer l'aire signée d'une fonction donnée en utilisant le découpage aux zéros."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une propriété très utile lorsque la fonction est impaire et que l'intervalle d'intégration est symétrique par rapport à l'origine. Dans ce cas, les aires positives et négatives se compensent exactement et l'intégrale définie vaut zéro. Cette observation permet souvent d'éviter des calculs longs et fastidieux. Regardons ensemble un exemple concret avec la fonction $f(x)=x^3$ sur l'intervalle $[-2,2]$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Courbe de $f(x)=x^3$, fonction impaire sur $[-2,2]$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de vérifier cette propriété par toi-même à l'aide d'un troisième exercice qui te propose une fonction impaire sur un intervalle symétrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comprendre comment le signe influence le calcul d'une aire entre une courbe et l'axe. Dans la prochaine leçon, nous verrons comment définir rigoureusement l'intégrale comme limite de sommes de Riemann et comment elle relie l'aire signée à la notion de primitive."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine le signe de l'aire entre la courbe $f(x)=x^2-1$ et l'axe des abscisses sur les intervalles $[-2,-1]$, $[-1,1]$ et $[1,2]$.",
+              "answer": "Sur $[-2,-1]$ la fonction est positive, aire positive. Sur $[-1,1]$ la fonction est négative, aire négative. Sur $[1,2]$ la fonction est positive, aire positive.",
+              "hint": "Regarde où la courbe se situe par rapport à l'axe.",
+              "explanation": "La fonction $x^2-1$ est négative entre ses zéros $-1$ et $1$, positive ailleurs."
+            },
+            {
+              "question": "Calcule l'aire signée de $f(x)=x^2-1$ sur $[-2,2]$ en découpant aux zéros.",
+              "answer": "$\\int_{-2}^{-1}(x^2-1)\\,dx + \\int_{-1}^{1}(x^2-1)\\,dx + \\int_{1}^{2}(x^2-1)\\,dx = \\frac{4}{3} - \\frac{4}{3} + \\frac{4}{3} = \\frac{4}{3}$.",
+              "hint": "Utilise la primitive $F(x)=\\frac{x^3}{3}-x$ et évalue sur chaque sous-intervalle.",
+              "explanation": "Chaque morceau donne $4/3$, $-4/3$, $4/3$ ; la somme vaut $4/3$."
+            },
+            {
+              "question": "Vérifie que l'intégrale de $f(x)=x^3$ sur $[-2,2]$ est nulle.",
+              "answer": "L'intégrale vaut $0$ car $x^3$ est impaire et l'intervalle est symétrique.",
+              "hint": "Utilise la propriété des fonctions impaires : $\\int_{-a}^{a} f(x)\\,dx = 0$.",
+              "explanation": "Pour une fonction impaire, les contributions positives et negatives s'annulent exactement."
+            }
+          ]
+        },
+        {
+          "title": "Intégrale.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition de l'intégrale définie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons construire l'intégrale définie comme la limite des sommes de Riemann. Imagine que tu veux mesurer l'aire sous la courbe $f(x)=x^2$ entre $0$ et $1$. Tu peux recouvrir cette zone par des rectangles de plus en plus fins : plus le nombre de rectangles augmente, plus la somme de leurs aires se rapproche de la valeur exacte de l'aire. C'est précisément ce processus de raffinement qui mène à la définition formelle : on partitionne l'intervalle, on choisit un point dans chaque sous-intervalle, on forme la somme des aires des rectangles de hauteur $f(x_i^*)$ et de largeur $\\Delta x_i$, puis on fait tendre le pas de la partition vers zéro. Si cette limite existe et ne dépend pas du choix des points, on dit que la fonction est intégrable au sens de Riemann et on note cette limite $\\int_a^b f(x)\\,dx$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 8,
+              "caption": "Approximation de l'intégrale de $x^2$ par des rectangles de Riemann"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de manipuler le curseur pour voir comment la somme de Riemann converge vers la valeur exacte, puis réponds à l'exercice suivant qui te demande d'estimer l'intégrale pour un nombre donné de rectangles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la définition acquise, le théorème fondamental du calcul nous offre un raccourci puissant : au lieu de recalculer des limites de sommes, il suffit de trouver une primitive de la fonction. Si $F$ est une primitive de $f$ sur $[a,b]$, alors $\\int_a^b f(x)\\,dx = F(b)-F(a)$. Cette égalité transforme le problème géométrique en un problème purement algébrique. Nous allons détailler la démarche pas à pas pour t'assurer que tu maîtrises chaque étape, de la recherche de la primitive à l'évaluation aux bornes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver une primitive $F$ de $f$.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les règles de dérivation inversées : par exemple, une primitive de $x^n$ est $\\frac{x^{n+1}}{n+1}$ pour $n\\neq -1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Évaluer $F$ aux bornes $b$ et $a$.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $F(b)$ et $F(a)$ séparément, puis forme la différence $F(b)-F(a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le résultat par dérivation si nécessaire.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Derive $F$ pour t'assurer qu'on retrouve bien $f$ ; c'est une bonne habitude pour éviter les erreurs de signe ou de coefficient."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Applique maintenant cette méthode à un deuxième exercice qui te propose une fonction polynôme simple et te demande de calculer son intégrale définie sur un intervalle donné."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intégrale définie possède plusieurs propriétés algébriques qui simplifient les calculs. La linéarité permet de factoriser les constantes et de séparer les sommes : $\\int_a^b (\\alpha f(x)+\\beta g(x))\\,dx = \\alpha\\int_a^b f(x)\\,dx + \\beta\\int_a^b g(x)\\,dx$. L'additivité sur les intervalles adjacents s'écrit $\\int_a^b f(x)\\,dx + \\int_b^c f(x)\\,dx = \\int_a^c f(x)\\,dx$. Enfin, le changement de variable $x = \\varphi(t)$ transforme l'intégrale en $\\int_{\\varphi^{-1}(a)}^{\\varphi^{-1}(b)} f(\\varphi(t))\\varphi'(t)\\,dt$. Ces outils sont indispensables pour résoudre des intégrales plus complexes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b (\\alpha f(x)+\\beta g(x))\\,dx = \\alpha\\int_a^b f(x)\\,dx + \\beta\\int_a^b g(x)\\,dx"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, un troisième exercice te permettra de mettre en œuvre la linéarité et l'additivité sur une intégrale composée de plusieurs termes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision complète de la définition de l'intégrale, de son calcul via les primitives et de ses propriétés fondamentales. La prochaine leçon abordera les unités d'aire et l'interprétation physique des intégrales, ce qui te permettra de donner du sens concret aux nombres que tu obtiens."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "En utilisant le curseur de Riemann avec $8$ rectangles, donne une approximation de $\\int_0^1 x^2\\,dx$.",
+              "answer": "Environ $0.33$ (la valeur exacte est $1/3 \\approx 0.333...$).",
+              "hint": "Observe la somme affichée quand le nombre de rectangles est $8$.",
+              "explanation": "La somme de Riemann converge vers $1/3$ quand le nombre de rectangles tend vers l'infini."
+            },
+            {
+              "question": "Calcule $\\int_1^3 (2x^2 - 3x + 4)\\,dx$ en trouvant une primitive.",
+              "answer": "$\\left[\\frac{2}{3}x^3 - \\frac{3}{2}x^2 + 4x\\right]_1^3 = \\left(\\frac{2}{3}\\cdot27 - \\frac{3}{2}\\cdot9 + 12\\right) - \\left(\\frac{2}{3} - \\frac{3}{2} + 4\\right) = \\frac{56}{3}$.",
+              "hint": "Trouve la primitive terme à terme, puis évalue aux bornes $3$ et $1$.",
+              "explanation": "La primitive de $2x^2$ est $\\frac{2}{3}x^3$, celle de $-3x$ est $-\\frac{3}{2}x^2$, celle de $4$ est $4x$."
+            },
+            {
+              "question": "Utilise la linéarité pour calculer $\\int_0^2 (3x^2 + 5\\sin x)\\,dx$ sachant que $\\int_0^2 x^2\\,dx = \\frac{8}{3}$ et $\\int_0^2 \\sin x\\,dx = 1-\\cos 2$.",
+              "answer": "$3\\cdot\\frac{8}{3} + 5(1-\\cos 2) = 8 + 5 - 5\\cos 2 = 13 - 5\\cos 2$.",
+              "hint": "Factorise les constantes $3$ et $5$ hors des intégrales.",
+              "explanation": "La linéarité donne $\\int (3x^2+5\\sin x) = 3\\int x^2 + 5\\int \\sin x$."
+            }
+          ]
+        },
+        {
+          "title": "Unités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unités d'aire et interprétation physique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque nous calculons une intégrale définie, le nombre obtenu porte une unité qui dépend des grandeurs mises en jeu. Si l'axe des abscisses représente une longueur en mètres ($m$) et l'axe des ordonnées une autre longueur en mètres, l'aire sous la courbe s'exprime en mètres carrés ($m^2$). Mais en physique, l'axe horizontal peut être le temps en secondes ($s$) et l'axe vertical une vitesse en mètres par seconde ($m/s$) ; l'intégrale donne alors une distance en mètres ($m$). Comprendre comment les unités se combinent est indispensable pour vérifier la cohérence d'un résultat et pour donner un sens concret à l'aire calculée."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Équivalence en $m^2$"
+              ],
+              "rows": [
+                [
+                  "Mètre carré",
+                  "$m^2$",
+                  "1"
+                ],
+                [
+                  "Centimètre carré",
+                  "$cm^2$",
+                  "$10^{-4}$"
+                ],
+                [
+                  "Kilomètre carré",
+                  "$km^2$",
+                  "$10^{6}$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci-dessus qui récapitule les principales unités d'aire et leur conversion en mètres carrés. Le premier exercice te demandera de convertir une aire donnée en différentes unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un exemple classique : le graphique de la vitesse en fonction du temps. Si un véhicule roule avec une vitesse $v(t)=t$ (en $m/s$) pendant $5$ secondes, l'aire sous la courbe entre $t=0$ et $t=5$ représente la distance parcourue. L'unité de l'abscisse est la seconde ($s$), celle de l'ordonnée est le mètre par seconde ($m/s$) ; leur produit donne le mètre ($m$), ce qui correspond bien à une distance. Nous allons visualiser ce graphique pour renforcer l'intuition."
+            },
+            {
+              "type": "graph",
+              "expression": "t",
+              "xMin": 0,
+              "xMax": 5,
+              "caption": "Graphique de la vitesse $v(t)=t$ en fonction du temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calcule maintenant la distance parcourue en évaluant l'intégrale de $v(t)=t$ sur $[0,5]$ et vérifie que l'unité du résultat est bien le mètre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la vérification dimensionnelle (ou analyse des unités) est une méthode systématique pour s'assurer qu'une formule ou un calcul est plausible. Il suffit de remplacer chaque grandeur par son unité, d'effectuer les opérations algébriques sur ces unités, et de comparer le résultat à l'unité attendue. Si les unités ne concordent pas, il y a une erreur quelque part. Nous allons voir une procédure pas à pas pour appliquer ce contrôle à n'importe quelle intégrale rencontrée en physique ou en économie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'unité de la variable d'intégration (abscisse).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, si la variable est le temps, son unité est $s$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'unité de la fonction intégrande (ordonnée).",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la fonction représente une vitesse, son unité est $m/s$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier les unités pour obtenir l'unité de l'intégrale.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'unité de $\\int f(x)\\,dx$ est l'unité de $f$ fois l'unité de $x$ ; ici $m/s \\times s = m$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer avec l'unité attendue pour la grandeur physique.",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si on attend une distance, l'unité $m$ est correcte ; sinon, revoir le modèle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, un dernier exercice te proposera une situation physique inédite où tu devras calculer l'intégrale et vérifier la cohérence des unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'aire signée et en déterminer le signe.",
+                "Je sais calculer une intégrale définie en utilisant les primitives.",
+                "Je sais vérifier la cohérence des unités dans une intégrale appliquée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis une aire de $2500\\,cm^2$ en $m^2$ et en $km^2$.",
+              "answer": "$2500\\,cm^2 = 0.25\\,m^2 = 2.5\\times10^{-7}\\,km^2$.",
+              "hint": "Utilise les équivalences $1\\,m^2 = 10^4\\,cm^2$ et $1\\,km^2 = 10^6\\,m^2$.",
+              "explanation": "Divise par $10^4$ pour passer en $m^2$, puis divise par $10^6$ pour passer en $km^2$."
+            },
+            {
+              "question": "Calcule la distance parcourue par un mobile dont la vitesse est $v(t)=t$ (en $m/s$) entre $t=0$ et $t=5\\,s$.",
+              "answer": "$\\int_0^5 t\\,dt = \\frac{5^2}{2} = 12.5\\,m$.",
+              "hint": "La primitive de $t$ est $\\frac{t^2}{2}$ ; évalue entre $0$ et $5$.",
+              "explanation": "L'unité de l'intégrale est $m/s \\times s = m$, donc le résultat est une distance en mètres."
+            },
+            {
+              "question": "Un réservoir se remplit avec un débit $Q(t)=3t^2$ (en $L/min$) pendant $4$ minutes. Quelle est la quantité d'eau versée ? Vérifie l'unité.",
+              "answer": "$\\int_0^4 3t^2\\,dt = [t^3]_0^4 = 64\\,L$. L'unité est $L/min \\times min = L$.",
+              "hint": "Primitive de $3t^2$ est $t^3$ ; évalue de $0$ à $4$.",
+              "explanation": "Le débit en litres par minute multiplié par le temps en minutes donne des litres."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

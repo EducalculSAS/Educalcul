@@ -1,0 +1,451 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.789965+00:00",
+  "id": 101,
+  "code": "ce1-t04-c04",
+  "title": "Tables de multiplication par 2",
+  "description": "Cours structuré Educalcul : Tables de multiplication par 2.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Tables de multiplication par 2",
+    "objectif_global": "Tables de multiplication par 2",
+    "mini_lecons_imposees": [
+      "Compter de 2 en 2.",
+      "Relier doubles et ×2.",
+      "Résoudre de petites situations."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Compter de 2 en 2.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter par paires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une rangée de chaussettes : chaque paire en contient deux. Si tu les poses l’une après l’autre, tu dis $2$, $4$, $6$, $8$, $10$. C’est compter de deux en deux, un rythme très facile à retenir."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t’aider, utilise tes doigts : lève deux doigts, puis deux de plus, et compte à voix haute. Tu verras que le motif ne change jamais."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter de 2 en 2 jusqu’à 12",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de remonter le fil ensemble : depuis $10$ jusqu’à $0$ en enlevant deux à chaque fois, comme si tu retirais des paires de chaussettes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Revenir en arrière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu recules, tu dis $10$, $8$, $6$, $4$, $2$, $0$. Le même pas de deux, mais dans l’autre sens. Tes doigts peuvent encore te guider."
+            },
+            {
+              "type": "grid_painter",
+              "caption": "Deux rangées de cinq cases montrent $2\\times5=10$",
+              "rows": 2,
+              "cols": 5,
+              "highlighted": 10
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment écrire ce saut de deux avec le signe $\\times$, le petit symbole qui remplace « fois »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire la multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le symbole $\\times$ signifie « fois ». Deux fois trois, ça fait six. On écrit $2\\times3=6$. Le premier nombre donne le nombre de groupes, le second le nombre dans chaque groupe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d’écrire toi-même $2\\times4$ et compte les unités pour vérifier."
+            },
+            {
+              "type": "base_ten_blocks",
+              "caption": "Six unités représentent le résultat $6$",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 6
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la suite après $0$, $2$, $4$, $6$ ?",
+              "answer": "$8$, $10$, $12$",
+              "hint": "Ajoute $2$ à chaque nombre.",
+              "explanation": "En comptant de $2$ en $2$, après $6$ vient $8$, puis $10$, puis $12$."
+            },
+            {
+              "question": "Tu as $10$ bonbons et tu donnes $2$ bonbons à chaque ami. Combien d’amis peux-tu servir ?",
+              "answer": "$5$ amis",
+              "hint": "Compte à l’envers : $10$, $8$, $6$, $4$, $2$, $0$.",
+              "explanation": "Chaque ami reçoit $2$ bonbons, donc $10 \\div 2 = 5$."
+            },
+            {
+              "question": "Écris la multiplication qui correspond à $2$ groupes de $4$ objets.",
+              "answer": "$2 \\times 4 = 8$",
+              "hint": "Le premier nombre est le nombre de groupes.",
+              "explanation": "Deux groupes de quatre font huit, on écrit $2 \\times 4 = 8$."
+            }
+          ]
+        },
+        {
+          "title": "Relier doubles et ×2.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le double d’un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pense à deux pommes identiques. Si tu les mets ensemble, tu as le double d’une pomme : deux pommes. Le double, c’est simplement ajouter le même nombre une seconde fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le double de $3$, tu fais $3+3$ et tu obtiens $6$. Essaie avec $5$ : $5+5=10$. Le motif est toujours le même, tu adds le nombre à lui-même."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Le double de 4 est 8",
+              "bars": [
+                {
+                  "label": "Nombre",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Double",
+                  "value": 8,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment le double s’écrit avec le signe $\\times$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe $\\times$2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe $\\times2$ veut dire « deux fois ». Deux fois $4$, c’est le double de $4$, donc $8$. On écrit $2\\times4=8$ ou $4\\times2=8$, les deux donnent le même résultat."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu connais le double de $6$ ($12$), tu sais aussitôt que $2\\times6=12$. C’est une astuce très utile pour calculer vite."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "n",
+                "2×n"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "4"
+                ],
+                [
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "8"
+                ],
+                [
+                  "5",
+                  "10"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, utilisons cette idée pour résoudre une multiplication un peu plus grande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le double pour calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $2\\times7$, pense au double de $7$. Comme $7+7=14$, tu as $2\\times7=14$. Le double te donne la réponse sans poser l’opération."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $2\\times9$ : $9+9=18$. À chaque fois, le double du second nombre donne le produit."
+            },
+            {
+              "type": "display_math",
+              "latex": "2\\\\times n = n + n",
+              "caption": "Le double s’écrit $2\\times n = n+n$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le double de $5$ ?",
+              "answer": "$10$",
+              "hint": "Ajoute $5$ à lui-même.",
+              "explanation": "Le double de $5$ est $5+5=10$."
+            },
+            {
+              "question": "Complète : $2\\times3 = \\_\\_$",
+              "answer": "$6$",
+              "hint": "Le double de $3$.",
+              "explanation": "Deux fois $3$ font $6$, donc $2\\times3=6$."
+            },
+            {
+              "question": "Calcule $2\\times8$ en utilisant le double.",
+              "answer": "$16$",
+              "hint": "Quel est le double de $8$ ?",
+              "explanation": "Le double de $8$ est $8+8=16$, donc $2\\times8=16$."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre de petites situations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un petit problème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as 3 boîtes de crayons, chaque boîte contient 2 crayons. Combien de crayons au total ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Repère le nombre de groupes (3) et le nombre dans chaque groupe (2). C’est une multiplication $3\\times2$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Trois groupes de 2 représentés par les côtés du triangle",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "2",
+                "2",
+                "2"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons un autre petit récit où il faut choisir l’opération."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l’opération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Léa a 8 bonbons. Elle veut les partager équitablement entre 2 amis. Combien chaque ami reçoit-il ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "On cherche combien de groupes de 2 dans 8, c’est $8\\div2=4$ ou $2\\times4=8$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "8 bonbons partagés en 4 parts de 2",
+              "slices": [
+                {
+                  "label": "Ami 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ami 2",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Ami 3",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Ami 4",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, vérifions ta réponse avec un calcul écrit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier ta réponse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir trouvé le résultat, tu peux le contrôler en recomptant ou en utilisant la multiplication inverse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as trouvé $4$ groupes de $2$, refais $2\\times4$ et tu dois retomber sur $8$."
+            },
+            {
+              "type": "pattern_maker",
+              "caption": "Suite logique : cercle, cercle, carré, carré, ...",
+              "sequence": [
+                "cercle",
+                "cercle",
+                "carré",
+                "carré"
+              ],
+              "options": [
+                "cercle",
+                "carré"
+              ],
+              "answer": "cercle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais compter de 2 en 2.",
+                "Je sais relier le double à $\\times$2.",
+                "Je sais résoudre un petit problème avec la table de 2."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a 3 boîtes de 2 crayons. Combien de crayons au total ?",
+              "answer": "$6$ crayons",
+              "hint": "Ajoute $2$ trois fois.",
+              "explanation": "$2+2+2=6$, soit $3\\times2=6$."
+            },
+            {
+              "question": "Léa partage 8 bonbons entre 2 amis. Combien chaque ami reçoit-il ?",
+              "answer": "$4$ bonbons",
+              "hint": "Combien de groupes de 2 dans 8 ?",
+              "explanation": "8 divisé par 2 donne 4, donc chaque ami a 4 bonbons."
+            },
+            {
+              "question": "Vérifie : si $2\\times5=10$, quel est le résultat de $10\\div2$ ?",
+              "answer": "$5$",
+              "hint": "Utilise la multiplication inverse.",
+              "explanation": "Puisque $2\\times5=10$, diviser $10$ par $2$ redonne $5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

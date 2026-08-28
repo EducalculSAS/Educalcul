@@ -1,0 +1,465 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.036446+00:00",
+  "id": 177,
+  "code": "ce2-t04-c09",
+  "title": "Bilan - Calcul mental CE2",
+  "description": "Cours structuré Educalcul : Bilan - Calcul mental CE2.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Bilan - Calcul mental CE2",
+    "objectif_global": "Bilan - Calcul mental CE2",
+    "mini_lecons_imposees": [
+      "Fluence.",
+      "Choix de stratégie.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Fluence.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fluence, c'est quoi ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues au tennis de table : pour renvoyer la balle vite, tu ne réfléchis pas à chaque mouvement, ton corps le fait tout seul. En calcul mental, la fluence, c'est pareil : tu donnes le résultat d'une addition ou d'une multiplication sans compter sur tes doigts, parce que tu as tellement pratiqué que la réponse vient toute seule. Par exemple, quand tu vois $7+5$, tu sais tout de suite que c'est $12$, sans avoir besoin de décomposer. C'est ça, la fluence : la rapidité et la justesse qui viennent de l'entraînement."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 7,
+              "caption": "37 : 3 dizaines et 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as visualisé comment un nombre se décompose, voyons comment utiliser ces décompositions pour calculer encore plus vite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraîner sa rapidité avec des décompositions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand l'addition n'est pas encore un automatisme, tu peux la transformer en une addition plus facile. Prends $28+37$ : au lieu de tout additionner d'un coup, décompose $28$ en $20+8$ et $37$ en $30+7$. Additionne les dizaines : $20+30=50$, puis les unités : $8+7=15$. Regroupe : $50+15=65$. Cette méthode, tu l'appliques en un éclair quand tu t'entraînes. Regarde l'addition posée ci-dessous, elle montre la même idée écritement."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "37"
+              ],
+              "result": "65",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à être à l'aise avec les décompositions ? Super ! Passons à un petit défi chronométré pour voir où tu en es."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un petit jeu pour tester ta vitesse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Règle du jeu : en une minute, écris le plus de résultats possibles pour des additions ou multiplications simples. Par exemple, donne les résultats de $6+4$, $9\\times3$, $15-7$, $5\\times5$... Tu peux t'aider d'une droite graduée pour visualiser les sauts de $2$ en $2$ ou de $5$ en $5$. L'important n'est pas d'être parfait tout de suite, mais de voir ta progression d'une semaine sur l'autre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comptage par sauts de 5",
+              "min": 0,
+              "max": 50,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 35,
+                  "label": "35"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la décomposition : $46 = \\square$ dizaines + $\\square$ unités.",
+              "answer": "4 dizaines et 6 unités (soit $40+6$)",
+              "hint": "Regarde les blocs de base 10 : combien y a-t-il de barres de dix ?",
+              "explanation": "Le chiffre des dizaines est 4, celui des unités est 6, donc $46 = 40 + 6$."
+            },
+            {
+              "question": "Calcule mentalement $34+25$ en décomposant.",
+              "answer": "59",
+              "hint": "Sépare les dizaines et les unités : $30+20=50$, $4+5=9$.",
+              "explanation": "$34+25 = (30+20)+(4+5) = 50+9 = 59$."
+            },
+            {
+              "question": "En 30 secondes, combien de ces calculs peux-tu résoudre ? $8+2$, $7\\times2$, $12-4$, $6\\times5$, $9+3$.",
+              "answer": "10, 14, 8, 30, 12",
+              "hint": "Utilise les tables que tu connais par cœur.",
+              "explanation": "Ce sont des automatismes : $8+2=10$, $7\\times2=14$, $12-4=8$, $6\\times5=30$, $9+3=12$."
+            }
+          ]
+        },
+        {
+          "title": "Choix de stratégie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment choisir la meilleure stratégie ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Devant un calcul comme $25+37$, tu as plusieurs chemins possibles. Tu peux additionner directement si tu connais la réponse, ou décomposer comme on a vu, ou encore arrondir $25$ à $30$ et compenser : $30+37=67$, puis $-5 = 62$. Choisir la meilleure stratégie, c'est repérer celle qui te demande le moins d'effort pour être juste. Parfois, transformer une soustraction en addition est plus simple : $50-37$ devient $37+\\square=50$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paul",
+                  "value": 25,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Léa",
+                  "value": 37,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Paul a 25 billes, Léa en a 37. Combien en ont-ils à deux ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés des opérations sont tes meilleures alliées pour simplifier sans te tromper. Voyons comment les utiliser."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les propriétés pour simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà que l'ordre ne change pas la somme : $a+b=b+a$ (commutativité). Pour $18+27+12$, regroupe $18+12=30$, puis $30+27=57$, c'est plus facile que dans l'ordre. C'est l'associativité : $(a+b)+c=a+(b+c)$. Et pour multiplier, la distributivité te permet de faire $14\\times5 = (10\\times5)+(4\\times5)=50+20=70$. Ces propriétés, tu les utilises souvent sans le savoir ; les nommer t'aide à les choisir exprès."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'étapes selon la stratégie",
+              "bars": [
+                {
+                  "label": "Sans propriété",
+                  "value": 5,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Avec associativité",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Avec distributivité",
+                  "value": 2,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, comment décider si tu fais le calcul dans ta tête, sur papier ou avec une calculatrice ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul mental, posé ou avec aide ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $8\\times7$, si tu as l'automatisme, tu réponds $56$ mentalement. Pour $47\\times32$, c'est trop gros : tu poses l'opération. Pour vérifier un gros calcul ou quand tu n'es pas sûr, tu peux utiliser une calculatrice, mais seulement après avoir estimé le résultat. Une bonne habitude : estime d'abord ($50\\times30=1500$), puis calcule précisément."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Les trois types de calcul",
+              "paragraphs": [
+                "Calcul mental : tu fais tout dans ta tête, grâce aux automatismes.",
+                "Calcul posé : tu écris l'opération en colonnes pour les gros nombres.",
+                "Calcul instrumenté : tu utilises une calculatrice pour vérifier ou pour des calculs très complexes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour calculer $42+18+8$, quelle propriété utilises-tu pour regrouper $42+8$ ?",
+              "answer": "L'associativité de l'addition.",
+              "hint": "Regarde quels nombres font une dizaine ensemble.",
+              "explanation": "$42+8=50$, puis $50+18=68$. C'est plus simple que $42+18=60$ puis $+8$."
+            },
+            {
+              "question": "Simplifie $16\\times5$ en utilisant la distributivité.",
+              "answer": "80",
+              "hint": "Décompose $16$ en $10+6$.",
+              "explanation": "$16\\times5 = (10\\times5)+(6\\times5) = 50+30 = 80$."
+            },
+            {
+              "question": "Pour chaque calcul, choisis : mental (M), posé (P) ou instrumenté (I). $9\\times6$, $124\\times3$, $500\\times20$.",
+              "answer": "M, P, M",
+              "hint": "Estime la difficulté : connais-tu la table ? Y a-t-il beaucoup de chiffres ?",
+              "explanation": "$9\\times6=54$ (table connue), $124\\times3$ demande une pose, $500\\times20=10000$ (mental par multiplication par 100 et 2)."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fais le point sur tes automatismes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à la suite, vérifie que tu as bien en tête tes tables d'addition jusqu'à $10+10$, tes tables de multiplication jusqu'à $10\\times10$, et les compléments à $10$ et à $100$. Par exemple, $6+\\square=10$ donne $4$, $45+\\square=100$ donne $55$. Si certains te font encore hésiter, note-les sur un petit carnet et révise-les deux minutes par jour. C'est le secret pour qu'ils deviennent des réflexes."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Mes automatismes : ce que je maîtrise (en %)",
+              "slices": [
+                {
+                  "label": "Tables addition",
+                  "value": 70,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Tables multiplication",
+                  "value": 60,
+                  "tone": "green"
+                },
+                {
+                  "label": "Compléments à 10",
+                  "value": 80,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Compléments à 100",
+                  "value": 50,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les automatismes servent à résoudre des problèmes sans t'arrêter sur les calculs. Regardons comment t'organiser."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des problèmes en toute confiance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à un problème, suis ces étapes : 1) Lis et comprends la question. 2) Repère les nombres utiles et l'opération. 3) Choisis ta stratégie (mentale, posée, instrumentée). 4) Calcule et vérifie avec un ordre de grandeur. 5) Écris la réponse en phrase. Essaie sur ce problème : 'Un paquet de 24 feutres, 6 paquets, combien de feutres au total ?' Tu vois vite qu'il faut multiplier $24\\times6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire et comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la question et les données."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, c'est une multiplication (répétition)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Stratégie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mental avec décomposition : $20\\times6 + 4\\times6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer et vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$120+24=144$. Ordre de grandeur : $25\\times6=150$, proche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il y a 144 feutres au total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils bien remplie. Il ne reste plus qu'à te fixer des objectifs pour continuer à progresser."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fixe-toi des objectifs pour la suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis un objectif précis et mesurable pour la prochaine semaine. Par exemple : 'Je veux connaître par cœur la table de 7' ou 'Je veux réussir 10 additions à deux chiffres en moins de 2 minutes'. Écris ton objectif, affiche-le, et chaque soir coche si tu t'es entraîné. La régularité bat l'intensité : 5 minutes par jour valent mieux qu'une heure le dimanche."
+            },
+            {
+              "type": "definition",
+              "term": "Objectif d'apprentissage",
+              "definition": "Une cible claire, précise et datée que tu te donnes pour progresser (ex : « Je maîtrise la table de 8 d'ici vendredi »).",
+              "example": "Mon objectif : faire 5 calculs mentaux chaque matin avant l'école."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je connais mes tables d'addition et de multiplication jusqu'à 10.",
+                "Je sais décomposer les nombres pour calculer plus vite.",
+                "Je choisis la bonne stratégie selon le calcul.",
+                "Je vérifie mes résultats par estimation.",
+                "Je m'entraîne un peu chaque jour pour gagner en fluence."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète les compléments : $27+\\square=100$, $8+\\square=10$, $63+\\square=100$.",
+              "answer": "73, 2, 37",
+              "hint": "Pour le complément à 100, compte les dizaines jusqu'à 90 puis les unités jusqu'à 10.",
+              "explanation": "$27+73=100$, $8+2=10$, $63+37=100$."
+            },
+            {
+              "question": "Résous ce problème en suivant les étapes : 'Une classe a 28 élèves. Chaque élève a 4 crayons. Combien de crayons au total ?'",
+              "answer": "112 crayons",
+              "hint": "Multiplication : $28\\times4$. Décompose $28$ en $20+8$.",
+              "explanation": "$28\\times4 = (20\\times4)+(8\\times4) = 80+32 = 112$."
+            },
+            {
+              "question": "Écris un objectif personnel pour la semaine prochaine en calcul mental.",
+              "answer": "Exemple : 'Je révise la table de 8 tous les soirs 5 minutes.'",
+              "hint": "Choisis quelque chose de précis, mesurable et réalisable.",
+              "explanation": "Un bon objectif est concret : 'Je ferai 10 calculs mentalement chaque jour' plutôt que 'Je veux être meilleur'."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

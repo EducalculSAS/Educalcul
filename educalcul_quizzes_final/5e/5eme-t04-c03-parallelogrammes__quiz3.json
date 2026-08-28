@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 397,
+  "_course_code": "5eme-t04-c03-parallelogrammes",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Construire",
+  "title": "Construction des parallélogrammes - Quiz 5e",
+  "questions": [
+    {
+      "text": "Quel instrument permet de reporter une longueur sur une droite lors d'une construction géométrique ?",
+      "options": [
+        "La règle graduée",
+        "Le compas",
+        "Le rapporteur",
+        "L'équerre"
+      ],
+      "correctAnswer": "Le compas",
+      "explanation": "Le compas est l'outil qui permet de prélever une longueur et de la reporter ailleurs sans la mesurer. La règle graduée sert à tracer des segments mais pas à reporter une longueur exacte. Le rapporteur mesure les angles. L'équerre trace des perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la construction d'un parallélogramme $ABCD$ connaissant les côtés $AB$ et $BC$ et l'angle $\\widehat{ABC}$, quelle est la première étape après avoir tracé le segment $AB$ ?",
+      "options": [
+        "Construire l'angle $\\widehat{ABC}$ à l'aide du compas et de la règle",
+        "Tracer le cercle de centre $B$ et de rayon $BC$",
+        "Tracer la parallèle à $AB$ passant par $C$",
+        "Mesurer l'angle $\\widehat{ABC}$ avec le rapporteur"
+      ],
+      "correctAnswer": "Construire l'angle $\\widehat{ABC}$ à l'aide du compas et de la règle",
+      "explanation": "Après avoir tracé $AB$, on doit construire l'angle donné en $B$ pour obtenir la demi-droite porteuse de $BC$. Ce n'est qu'ensuite qu'on reporte la longueur $BC$ sur cette demi-droite à l'aide du compas. Tracer la parallèle ou mesurer l'angle au rapporteur ne correspond pas à une construction à la règle et au compas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle propriété du parallélogramme est utilisée pour terminer la construction après avoir obtenu les points $A$, $B$, $C$ ?",
+      "options": [
+        "Les diagonales se coupent en leur milieu",
+        "Les côtés opposés sont parallèles et de même longueur",
+        "Les angles adjacents sont supplémentaires",
+        "Les diagonales sont perpendiculaires"
+      ],
+      "correctAnswer": "Les côtés opposés sont parallèles et de même longueur",
+      "explanation": "Une fois les trois sommets $A$, $B$, $C$ connus, on construit le quatrième sommet $D$ en traçant la parallèle à $AB$ passant par $C$ et la parallèle à $BC$ passant par $A$. Leur intersection donne $D$. Cette méthode repose sur la propriété : dans un parallélogramme, les côtés opposés sont parallèles et égaux. Les autres propriétés ne permettent pas directement de placer $D$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, quelle étape de la construction du parallélogramme $ABCD$ est représentée ?",
+      "options": [
+        "Le tracé du segment $AB$",
+        "Le report de la longueur $BC$ sur la demi-droite issue de $B$",
+        "La construction de la parallèle à $AB$ par $C$",
+        "La mesure de l'angle $\\widehat{ABC}$"
+      ],
+      "correctAnswer": "Le report de la longueur $BC$ sur la demi-droite issue de $B$",
+      "explanation": "La figure montre un compas centré en $B$ traçant un arc de rayon $BC$ qui coupe la demi-droite formant l'angle $\\widehat{ABC}$. C'est exactement l'opération de reporter la longueur $BC$ sur cette demi-droite pour placer le point $C$. Les autres étapes correspondent à des moments différents de la construction.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "B",
+        "caption": "Compas centré en B traçant un arc de rayon BC"
+      }
+    },
+    {
+      "text": "Laquelle des constructions suivantes permet d'obtenir un parallélogramme ?",
+      "options": [
+        "Tracer deux segments qui se coupent en leur milieu et relier leurs extrémités",
+        "Tracer un cercle et inscrire un quadrilatère quelconque",
+        "Tracer trois points non alignés et compléter au hasard",
+        "Tracer un angle droit et reporter la même longueur sur ses côtés"
+      ],
+      "correctAnswer": "Tracer deux segments qui se coupent en leur milieu et relier leurs extrémités",
+      "explanation": "Si deux segments se coupent en leur milieu, les quatre extrémités forment un quadrilatère dont les diagonales se bisectent. C'est une condition nécessaire et suffisante pour que le quadrilatère soit un parallélogramme. Les autres propositions ne garantissent pas cette propriété : un quadrilatère inscrit dans un cercle n'est pas nécessairement un parallélogramme, trois points ne définissent pas un quadrilatère unique, et un angle droit avec longueurs égales donne un rectangle seulement si les angles adjacents sont droits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

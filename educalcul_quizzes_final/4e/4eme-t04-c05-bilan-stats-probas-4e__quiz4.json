@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Bilan - Stats-probas 4e",
+  "title": "Bilan Statistiques et Probabilités 4e",
+  "questions": [
+    {
+      "text": "On considère la série statistique suivante : $12 ; 15 ; 14 ; 18 ; 16 ; 15 ; 13$. Quelle est la valeur approximative de la moyenne et la valeur exacte de la médiane ?",
+      "options": [
+        "Moyenne ≈ 14,7 et Médiane = 15",
+        "Moyenne ≈ 14,5 et Médiane = 14",
+        "Moyenne ≈ 14,7 et Médiane = 14",
+        "Moyenne = 15 et Médiane = 15"
+      ],
+      "correctAnswer": "Moyenne ≈ 14,7 et Médiane = 15",
+      "explanation": "La somme des valeurs est $12+15+14+18+16+15+13 = 103$. Il y a 7 valeurs, donc la moyenne est $103 / 7 \\approx 14,714$, soit environ $14,7$. Pour la médiane, on ordonne la série : $12 ; 13 ; 14 ; 15 ; 15 ; 16 ; 18$. Comme l'effectif total est impair (7), la médiane est la 4e valeur, soit $15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente les notes sur 20 obtenues par une classe de 20 élèves. Quelle est la fréquence en pourcentage de la note 14 ?",
+      "options": [
+        "40 %",
+        "30 %",
+        "25 %",
+        "8 %"
+      ],
+      "correctAnswer": "40 %",
+      "explanation": "Sur le diagramme, la barre correspondant à la note 14 monte jusqu'à 8 (effectif). L'effectif total est 20 élèves. La fréquence est $8 / 20 = 0,4$, soit $40 \\%$. Les autres options correspondent à des erreurs de lecture (effectif 6 pour 30 %, effectif 5 pour 25 %) ou à la confusion effectif/fréquence (8 %).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Répartition des notes sur 20",
+        "bars": [
+          {
+            "label": "10",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "12",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "14",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "16",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "18",
+            "value": 2,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une urne contient 3 boules rouges, 5 boules bleues et 2 boules vertes. On prélève une boule au hasard. Quelle est la probabilité de ne pas obtenir une boule bleue ?",
+      "options": [
+        "1/2",
+        "3/10",
+        "1/5",
+        "5/10"
+      ],
+      "correctAnswer": "1/2",
+      "explanation": "Il y a $3+5+2 = 10$ boules au total. L'événement \"ne pas obtenir une boule bleue\" correspond aux boules rouges ou vertes, soit $3+2 = 5$ boules favorables. La probabilité est donc $5/10 = 1/2$. L'option $5/10$ est la fraction non simplifiée, mais $1/2$ est la forme attendue. $3/10$ est la probabilité d'avoir une rouge, $1/5$ celle d'avoir une verte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La boîte à moustaches ci-contre résume les résultats d'un test. Laquelle des affirmations suivantes est exacte ?",
+      "options": [
+        "L'étendue de la série est 25",
+        "L'intervalle interquartile est 15",
+        "50 % des élèves ont une note entre 10 et 20",
+        "La médiane est 15"
+      ],
+      "correctAnswer": "L'étendue de la série est 25",
+      "explanation": "Sur la boîte à moustaches : minimum = 10, maximum = 35. L'étendue est $35 - 10 = 25$. Le premier quartile $Q_1 = 15$, le troisième quartile $Q_3 = 25$, donc l'intervalle interquartile est $25 - 15 = 10$ (pas 15). 50 % des valeurs sont entre $Q_1$ et $Q_3$, soit entre 15 et 25 (pas 10 et 20). La médiane (trait central) est à 20.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Résultats au test",
+        "min": 10,
+        "q1": 15,
+        "median": 20,
+        "q3": 25,
+        "max": 35
+      }
+    },
+    {
+      "text": "Voici le tableau des effectifs des notes d'un contrôle :\\nNote : 8 | 10 | 12 | 14\\nEffectif : 2 | 5 | 3 | 4\\nQuelle est la fréquence de l'événement \"Note supérieure ou égale à 12\" ?",
+      "options": [
+        "0,5",
+        "0,35",
+        "0,7",
+        "2/7"
+      ],
+      "correctAnswer": "0,5",
+      "explanation": "L'effectif total est $2+5+3+4 = 14$. L'effectif des notes $\\ge 12$ est $3+4 = 7$. La fréquence est $7 / 14 = 0,5$. L'option $0,35$ correspond à $5/14$ (fréquence de la note 10 seule), $0,7$ à $10/14$ (notes $\\ge 10$) et $2/7$ à $4/14$ (note 14 seule).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

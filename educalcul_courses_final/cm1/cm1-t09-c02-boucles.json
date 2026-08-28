@@ -1,0 +1,435 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.313977+00:00",
+  "id": 270,
+  "code": "cm1-t09-c02",
+  "title": "Boucles",
+  "description": "Cours structuré Educalcul : Boucles.",
+  "subject": "Pensée informatique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Boucles",
+    "objectif_global": "Boucles",
+    "mini_lecons_imposees": [
+      "Répéter une action.",
+      "Choisir nombre de répétitions.",
+      "Simplifier programme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Répéter une action.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une boucle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois marcher dix pas vers l'avant. Au lieu d'écrire dix fois « avance un pas », tu peux dire à l'ordinateur : « répète dix fois : avance un pas ». C'est exactement ce qu'une boucle permet de faire : exécuter une même action plusieurs fois sans la réécrire à chaque fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie de tous les jours, tu utilises déjà des boucles sans le savoir. Quand tu chantes le refrain d'une chanson, tu répètes les mêmes paroles. Quand tu fais la vaisselle, tu laves, rince, égouttes chaque assiette de la même manière. L'ordinateur a besoin qu'on lui donne cette instruction de répétition de façon très précise."
+            },
+            {
+              "type": "definition",
+              "term": "boucle",
+              "definition": "Une boucle est une structure qui dit à l'ordinateur de refaire un bloc d'instructions un certain nombre de fois ou tant qu'une condition n'est pas remplie.",
+              "example": "Par exemple, « répète 4 fois : avance, tourne à droite » dessine un carré."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'action à répéter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie l'instruction ou le groupe d'instructions que tu veux jouer plusieurs fois, par exemple « avance » puis « tourne à droite »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le nombre de répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide combien de fois l'action doit être refaite. Ce nombre peut être écrit directement (4, 10, 100) ou provenir d'une variable."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le mot‑clé « répète »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le mot « répète » suivi du nombre, puis ouvre un bloc qui contient les instructions à répéter. À la fin, ferme le bloc."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment cette boucle s'écrit concrètement dans un programme visuel. Le tableau ci‑dessous compare une version sans boucle et une version avec boucle pour dessiner un carré."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sans boucle",
+                "Avec boucle"
+              ],
+              "rows": [
+                [
+                  "avance\\ntourne à droite\\navance\\ntourne à droite\\navance\\ntourne à droite\\navance\\ntourne à droite",
+                  "répète 4 fois :\\n  avance\\n  tourne à droite"
+                ]
+              ],
+              "caption": "Exemple de boucle pour dessiner un carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : à gauche, tu écris quatre fois les mêmes deux instructions. À droite, tu écris une seule fois le mot « répète 4 fois » et tu places les deux instructions à l'intérieur. Le programme devient plus court et plus facile à lire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu veux savoir combien de fois la boucle s'est déjà exécutée. On utilise alors un compteur, une variable qui augmente de un à chaque tour. Ainsi, tu peux afficher le numéro du tour ou arrêter la boucle plus tôt si besoin."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Le mot « répète » peut s'écrire « repeat » en anglais, mais l'idée reste la même."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous verrons comment choisir le nombre de répétitions sans l'écrire en dur dans le programme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en pseudocode une boucle qui fait avancer un personnage de 3 cases.",
+              "answer": "Répète 3 fois : avance",
+              "hint": "Utilise le mot « répète » suivi du nombre.",
+              "explanation": "La boucle répète l'instruction « avance » trois fois."
+            },
+            {
+              "question": "Quel sera le dessin obtenu avec « Répète 4 fois : avance, tourne à droite » ?",
+              "answer": "Un carré.",
+              "hint": "Chaque tour ajoute un côté et un angle droit.",
+              "explanation": "Quatre côtés et quatre angles droits forment un carré."
+            },
+            {
+              "question": "Si tu ajoutes un compteur qui commence à 0 et augmente de 1 à chaque tour, quelle valeur aura-t-il après 5 tours ?",
+              "answer": "5",
+              "hint": "Le compteur augmente à chaque itération.",
+              "explanation": "Après 5 itérations, le compteur vaut 5."
+            }
+          ]
+        },
+        {
+          "title": "Choisir nombre de répétitions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir le nombre de répétitions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons écrit le nombre de tours directement dans le code, comme « répète 4 fois ». Mais souvent, on ne connaît ce nombre qu'au moment où le programme tourne. Par exemple, tu veux dessiner un polygone dont le nombre de côtés est choisi par l'utilisateur. Il faut alors rendre le nombre de répétitions variable."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu joues à un jeu où le joueur tape un chiffre entre 3 et 10. Ce chiffre devient le nombre de côtés de la figure. Le programme doit lire ce chiffre, le stocker dans une variable (appelons-la $n$), puis lancer « répète $n$ fois ». Ainsi, le même programme peut dessiner un triangle, un carré, un pentagone, etc., sans être réécrit."
+            },
+            {
+              "type": "definition",
+              "term": "variable de boucle",
+              "definition": "Une variable qui contient le nombre de répétitions que la boucle va effectuer. Sa valeur peut être fixée au début ou demandée à l'utilisateur pendant l'exécution.",
+              "example": "Demande $n$ ; répète $n$ fois : avance, tourne à droite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Demander la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise un bloc « demander » (ou « input ») pour afficher une question à l'écran et récupérer la réponse de l'utilisateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Stocker la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Enregistre la réponse dans une variable, par exemple $n$. Vérifie si besoin que $n$ est un nombre entier positif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lancer la boucle avec la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris « répète $n$ fois » suivi du bloc d'instructions à répéter. Le programme remplacera $n$ par la valeur entrée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple complet. Le programme affiche « Combien de côtés ? », l'utilisateur tape 6, la variable $n$ vaut 6, puis la boucle « répète $n$ fois : avance, tourne de 60 degrés » dessine un hexagone. Si l'utilisateur tape 5, le même code dessine un pentagone."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Entrée utilisateur",
+                "Figure dessinée"
+              ],
+              "rows": [
+                [
+                  "3",
+                  "Triangle"
+                ],
+                [
+                  "4",
+                  "Carré"
+                ],
+                [
+                  "6",
+                  "Hexagone"
+                ]
+              ],
+              "caption": "Exemples de figures selon la valeur de $n$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau montre que le même programme produit des figures différentes selon la valeur fournie. C'est la force des boucles à nombre variable : un seul code, plusieurs résultats possibles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi qu'on veuille limiter le nombre maximal de tours pour éviter une boucle infinie. On peut ajouter une condition : « tant que $compteur < n$ et $compteur < 20$ ». Ainsi, même si l'utilisateur entre un nombre énorme, le programme s'arrête après 20 tours pour rester raisonnable."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Toujours prévoir une limite de sécurité quand le nombre de répétitions vient de l'extérieur."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon suivante, nous apprendrons à utiliser les boucles pour simplifier un programme qui contient beaucoup de répétitions identiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment écrire une boucle qui répète un nombre de fois donné par l'utilisateur ?",
+              "answer": "Demande n, puis Répète n fois : …",
+              "hint": "Utilise un bloc « demander » pour obtenir n.",
+              "explanation": "Le programme lit la valeur entrée et l'utilise comme nombre de répétitions."
+            },
+            {
+              "question": "Si l'utilisateur entre 6, combien de fois l'instruction « avance » sera-t-elle exécutée dans « Répète n fois : avance » ?",
+              "answer": "6 fois.",
+              "hint": "Remplace n par la valeur entrée.",
+              "explanation": "La variable n vaut 6, donc la boucle s'exécute 6 fois."
+            },
+            {
+              "question": "Quelle est la différence entre une boucle à nombre fixe et une boucle à nombre variable ?",
+              "answer": "La boucle fixe a un nombre écrit dans le code, la boucle variable utilise une valeur qui peut changer.",
+              "hint": "Pense à ce qui change si tu modifies le code.",
+              "explanation": "Fixe = constant, variable = paramètre."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier programme.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier un programme avec les boucles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu écris un programme, tu te rends souvent compte que tu copies‑colles les mêmes lignes encore et encore. Par exemple, pour dessiner une maison, tu écris « avance, tourne, avance, tourne, avance, tourne, avance, tourne » pour le carré de base, puis tu recommences pour le toit. Cette répétition rend le code long, difficile à lire et pénible à modifier."
+            },
+            {
+              "type": "paragraph",
+              "content": "La solution est de repérer le motif qui se répète et de le placer à l'intérieur d'une boucle. Ainsi, tu n'écris le motif qu'une seule fois et tu indiques combien de fois il doit être joué. Le programme devient plus court, plus clair et beaucoup plus facile à corriger si tu veux changer un détail."
+            },
+            {
+              "type": "definition",
+              "term": "factoriser",
+              "definition": "Remplacer plusieurs occurrences d'un même bloc d'instructions par une seule boucle qui exécute ce bloc le nombre de fois nécessaire.",
+              "example": "Quatre fois « avance, tourne » devient « répète 4 fois : avance, tourne »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le motif répétitif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis ton programme et souligne les séquences d'instructions qui reviennent identiques plusieurs fois de suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de fois ce motif apparaît. Ce nombre sera le paramètre de ta boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer par une boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris « répète X fois » (X = nombre compté) et place le motif à l'intérieur. Supprime les copies originales."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple concret. Le programme initial pour une étoile à 5 branches écrit dix lignes : « avance, tourne de 144 degrés » répété cinq fois. En factorisant, on obtient « répète 5 fois : avance, tourne de 144 degrés ». Le code passe de 10 lignes à 2 lignes, et si tu veux changer l'angle, tu le modifies à un seul endroit."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Avant factorisation",
+                "Après factorisation"
+              ],
+              "rows": [
+                [
+                  "avance\\ntourne 144\\navance\\ntourne 144\\navance\\ntourne 144\\navance\\ntourne 144\\navance\\ntourne 144",
+                  "répète 5 fois :\\n  avance\\n  tourne 144"
+                ]
+              ],
+              "caption": "Simplification d'un programme qui dessine une étoile"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau montre clairement le gain de place et de lisibilité. De plus, si tu décides de dessiner une étoile à 7 branches, tu changes seulement le 5 en 7 sans toucher au reste du code."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un programme contient plusieurs boucles imbriquées : une boucle externe qui gère les étages d'un immeuble, et une boucle interne qui dessine les fenêtres de chaque étage. Bien organiser ces boucles permet de construire des figures complexes tout en gardant le code structuré et compréhensible."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Bonnes pratiques",
+              "paragraphs": [
+                "Donne des noms clairs à tes variables de boucle (ex. $etage$, $fenetre$).",
+                "Indente le code à l'intérieur de chaque boucle pour voir la structure d'un coup d'œil."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour écrire des programmes plus courts, plus lisibles et plus faciles à modifier grâce aux boucles. Continue à t'entraîner en repérant les répétitions dans tes propres projets."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une action qui se répète dans un programme.",
+                "Je sais écrire une boucle avec un nombre fixe de répétitions.",
+                "Je sais utiliser une variable pour choisir le nombre de tours.",
+                "Je sais factoriser un code répétitif en une boucle.",
+                "Je connais les bonnes pratiques pour garder mes boucles lisibles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réécris le programme suivant sans répétition : avance, tourne, avance, tourne, avance, tourne, avance, tourne.",
+              "answer": "Répète 4 fois : avance, tourne",
+              "hint": "Regarde le motif qui se répète.",
+              "explanation": "Le motif « avance, tourne » apparaît quatre fois."
+            },
+            {
+              "question": "Dans un programme qui dessine une étoile à 5 branches, quelle boucle utilises-tu ?",
+              "answer": "Répète 5 fois : avance, tourne de 144 degrés",
+              "hint": "Une étoile à 5 branches a 5 pointes.",
+              "explanation": "Chaque branche correspond à une itération."
+            },
+            {
+              "question": "Pourquoi est-il utile de factoriser du code avec des boucles ?",
+              "answer": "Cela rend le programme plus court, plus lisible et plus facile à modifier.",
+              "hint": "Pense à la maintenance du code.",
+              "explanation": "Si tu changes l'action, tu n'as qu'un seul endroit à modifier."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 114,
+  "_course_code": "ce1-t05-c07-problemes-de-groupement",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Taille des groupes connue",
+  "title": "Problèmes de groupement : taille des groupes connue",
+  "questions": [
+    {
+      "text": "Il y a $12$ pommes. On veut faire des sacs de $3$ pommes. Combien de sacs peut-on faire ?",
+      "options": [
+        "3 sacs",
+        "4 sacs",
+        "5 sacs",
+        "9 sacs"
+      ],
+      "correctAnswer": "4 sacs",
+      "explanation": "Pour trouver le nombre de sacs, on doit diviser le nombre total de pommes par le nombre de pommes par sac. On calcule $12$ divisé par $3$ ce qui donne $4$. On peut aussi chercher combien de fois $3$ rentre dans $12$ : $3 + 3 + 3 + 3 = 12$, donc $4$ fois. L'option $9$ sacs correspond à une soustraction ($12 - 3$), l'option $3$ sacs à une confusion avec la table de $4$, et $5$ sacs est une approximation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un instituteur a $20$ crayons. Il les range dans des boîtes de $4$ crayons. Combien de boîtes lui faut-il ?",
+      "options": [
+        "4 boîtes",
+        "5 boîtes",
+        "6 boîtes",
+        "16 boîtes"
+      ],
+      "correctAnswer": "5 boîtes",
+      "explanation": "Il faut partager les $20$ crayons en groupes de $4$. On effectue la division $20 / 4 = 5$. On vérifie : $4 + 4 + 4 + 4 + 4 = 20$, ce qui fait bien $5$ groupes. L'option $16$ boîtes vient de la soustraction $20 - 4$, l'option $4$ boîtes d'une confusion avec $4 \\times 4 = 16$, et $6$ boîtes ne correspond à aucun calcul exact.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour un jeu, $18$ élèves forment des groupes de $3$. Combien y a-t-il de groupes ?",
+      "options": [
+        "5 groupes",
+        "6 groupes",
+        "7 groupes",
+        "15 groupes"
+      ],
+      "correctAnswer": "6 groupes",
+      "explanation": "On cherche le nombre de groupes de $3$ dans $18$. La division $18 / 3$ donne $6$. On peut ajouter $3$ six fois : $3+3+3+3+3+3=18$. L'option $15$ groupes correspond à $18 - 3$, l'option $5$ groupes à $3 \\times 5 = 15$ (reste $3$), et $7$ groupes dépasserait le total ($21$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a fabriqué $24$ croissants. Il les met par $4$ dans chaque boîte. Combien de boîtes remplit-il ?",
+      "options": [
+        "5 boîtes",
+        "6 boîtes",
+        "7 boîtes",
+        "20 boîtes"
+      ],
+      "correctAnswer": "6 boîtes",
+      "explanation": "Le nombre total de croissants est $24$, la taille du groupe est $4$. On calcule $24 / 4 = 6$. Vérification : $4 \\times 6 = 24$. L'option $20$ boîtes est le résultat de $24 - 4$, l'option $5$ boîtes donne $4 \\times 5 = 20$ (il en resterait $4$), et $7$ boîtes nécessiterait $28$ croissants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $35$ images. Elle veut les ranger par $5$ sur chaque page de son album. Combien de pages va-t-elle utiliser ?",
+      "options": [
+        "5 pages",
+        "6 pages",
+        "7 pages",
+        "30 pages"
+      ],
+      "correctAnswer": "7 pages",
+      "explanation": "On divise le total $35$ par la taille du groupe $5$. $35 / 5 = 7$. On peut compter de $5$ en $5$ : $5, 10, 15, 20, 25, 30, 35$ (sept nombres). L'option $30$ pages vient de $35 - 5$, l'option $5$ pages de $5 \\times 5 = 25$, et $6$ pages de $5 \\times 6 = 30$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 446,
+  "_course_code": "4eme-t06-c02-agrandissement-et-reduction",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Rapport",
+  "title": "Algorithmes sur le rapport d'agrandissement",
+  "blocks": [
+    {
+      "title": "Calcul du rapport",
+      "content": "Écrire un algorithme qui, étant donné la longueur d'un segment original $L$ et la longueur de son image $L'$ après une homothétie, calcule et affiche le rapport d'agrandissement $k$.",
+      "correctAnswer": "Algorithme :\\n1. Lire L\\n2. Lire L'\\n3. Calculer k = L' / L\\n4. Afficher k",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rapport d'agrandissement $k$ est le quotient de la longueur de l'image par la longueur originale : $k = L' / L$. Si $k > 1$, c'est un agrandissement ; si $0 < k < 1$, c'est une réduction ; si $k = 1$, les longueurs sont conservées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'image",
+      "content": "Écrire un algorithme qui, connaissant le rapport d'agrandissement $k$ et la longueur originale $L$, calcule la longueur de l'image $L'$.",
+      "correctAnswer": "Algorithme :\\n1. Lire k\\n2. Lire L\\n3. Calculer L' = k * L\\n4. Afficher L'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La longueur de l'image s'obtient en multipliant la longueur originale par le rapport d'agrandissement : $L' = k * L$. Cette formule vaut pour tout $k > 0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nature de la transformation",
+      "content": "Écrire un algorithme qui détermine si une transformation est un agrandissement, une réduction ou une conservation des longueurs, à partir du rapport $k$.",
+      "correctAnswer": "Algorithme :\\n1. Lire k\\n2. Si k > 1 alors afficher \"agrandissement\"\\n3. Sinon si k = 1 alors afficher \"conservation\"\\n4. Sinon afficher \"réduction\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur du rapport $k$ caractérise la transformation : $k > 1$ correspond à un agrandissement, $k = 1$ à une conservation des longueurs (isométrie), et $0 < k < 1$ à une réduction.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

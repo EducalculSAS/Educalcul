@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Domaine",
+  "title": "Quiz : Domaine de définition d'une fonction",
+  "questions": [
+    {
+      "text": "Quel est le domaine de définition de toute fonction polynôme ?",
+      "options": [
+        "L'ensemble des réels $\\mathbb{R}$",
+        "L'ensemble des réels positifs $\\mathbb{R}_+$",
+        "L'ensemble des réels négatifs $\\mathbb{R}_-$",
+        "L'ensemble réduit à $\\{0\\}$"
+      ],
+      "correctAnswer": "L'ensemble des réels $\\mathbb{R}$",
+      "explanation": "Une fonction polynôme est de la forme $f(x) = a_n x^n + \\dots + a_1 x + a_0$. Elle ne comporte ni division par une expression contenant $x$, ni racine carrée d'une expression contenant $x$. Par conséquent, elle est définie pour tout nombre réel. Son domaine est toujours $\\mathbb{R}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction $f$ définie par $f(x) = \\frac{2x+1}{x-3}$. Quel est son domaine de définition ?",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{3\\}$",
+        "$\\mathbb{R}$",
+        "$\\mathbb{R} \\setminus \\{-\\frac{1}{2}\\}$",
+        "$]-\\infty, 3[ \\cup ]3, +\\infty[$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{3\\}$",
+      "explanation": "Pour une fonction rationnelle (quotient de deux polynômes), le domaine est l'ensemble des réels pour lesquels le dénominateur est non nul. Ici, le dénominateur est $x-3$. Il s'annule pour $x=3$. Le domaine est donc $\\mathbb{R}$ privé de la valeur 3, noté $\\mathbb{R} \\setminus \\{3\\}$. L'option $]-\\infty, 3[ \\cup ]3, +\\infty[$ est une notation d'intervalle équivalente, mais la réponse attendue ici est la notation ensembliste standard pour ce niveau.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $g$ définie par $g(x) = \\sqrt{5 - 2x}$. Déterminer son domaine de définition.",
+      "options": [
+        "$]-\\infty, \\frac{5}{2}]$",
+        "$[\\frac{5}{2}, +\\infty[$",
+        "$]-\\infty, \\frac{5}{2}[$",
+        "$\\mathbb{R}$"
+      ],
+      "correctAnswer": "$]-\\infty, \\frac{5}{2}]$",
+      "explanation": "Pour une fonction racine carrée $\\sqrt{u(x)}$, l'expression sous le radical (le radicande) doit être positive ou nulle : $u(x) \\ge 0$. Ici, on résout $5 - 2x \\ge 0 \\iff -2x \\ge -5 \\iff x \\le \\frac{5}{2}$ (attention au changement de sens de l'inégalité en divisant par un nombre négatif). Le domaine est donc l'intervalle $]-\\infty, \\frac{5}{2}]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente une fonction $h$. En lisant le graphique, quel est le domaine de définition de $h$ ?",
+      "options": [
+        "$[0, +\\infty[$",
+        "$\\mathbb{R}$",
+        "$\\mathbb{R}_+$",
+        "$]0, +\\infty[$"
+      ],
+      "correctAnswer": "$[0, +\\infty[$",
+      "explanation": "Le domaine de définition se lit sur l'axe des abscisses (axe horizontal). Le graphique présenté est celui de la fonction racine carrée $x \\mapsto \\sqrt{x}$. Il commence à l'abscisse 0 (point inclus, trait plein) et se prolonge indéfiniment vers la droite. Il n'y a pas de portion de graphique pour les abscisses négatives. Le domaine est donc l'intervalle $[0, +\\infty[$. L'option $\\mathbb{R}_+$ est ambiguë car elle peut désigner $]0, +\\infty[$ selon les conventions, alors que $[0, +\\infty[$ est précis.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "sqrt(x)",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Graphique de la fonction racine carrée"
+      }
+    },
+    {
+      "text": "Quelle est l'écriture en notation d'intervalles du domaine de définition de la fonction $k(x) = \\frac{x-1}{x^2 - 4}$ ?",
+      "options": [
+        "$]-\\infty, -2[ \\cup ]-2, 2[ \\cup ]2, +\\infty[$",
+        "$]-\\infty, -2[ \\cup ]2, +\\infty[$",
+        "$]-2, 2[$",
+        "$\\mathbb{R}$"
+      ],
+      "correctAnswer": "$]-\\infty, -2[ \\cup ]-2, 2[ \\cup ]2, +\\infty[$",
+      "explanation": "Le dénominateur est $x^2 - 4 = (x-2)(x+2)$. Il s'annule pour $x=2$ et $x=-2$. Ces deux valeurs sont interdites. Le domaine est $\\mathbb{R} \\setminus \\{-2, 2\\}$. En notation d'intervalles, cela s'écrit comme la réunion de trois intervalles ouverts : de moins l'infini à -2 (exclu), de -2 (exclu) à 2 (exclu), et de 2 (exclu) à plus l'infini. L'option $]-\\infty, -2[ \\cup ]2, +\\infty[$ oublie l'intervalle $]-2, 2[$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

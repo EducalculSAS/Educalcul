@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Représenter",
+  "title": "Vecteurs : Représentation et translation",
+  "blocks": [
+    {
+      "title": "Repérer les composantes d'un vecteur",
+      "content": "Le vecteur $\\vec{v}$ a pour composantes $x = 4$ et $y = -1$. Pour le représenter, on trace une flèche partant de l'origine $O(0;0)$ et aboutissant au point de coordonnées $({{1}} ; {{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "-1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les composantes d'un vecteur donnent directement les coordonnées de son extrémité lorsque son origine est à l'origine du repère. Ici $x=4$ et $y=-1$, donc le point d'arrivée est $(4;-1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer les composantes d'un vecteur à partir de deux points",
+      "content": "Soient les points $A(2;3)$ et $B(5;7)$. Le vecteur $\\overrightarrow{AB}$ a pour composantes $({{1}} ; {{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les composantes du vecteur $\\overrightarrow{AB}$ s'obtiennent en soustrayant les coordonnées de $A$ à celles de $B$ : $x_B - x_A = 5-2 = 3$, $y_B - y_A = 7-3 = 4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Image d'un point par une translation",
+      "content": "La translation de vecteur $\\vec{t}( -2 ; 5 )$ envoie le point $M(3; -1)$ sur le point $M'$ de coordonnées $({{1}} ; {{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir l'image d'un point par une translation, on ajoute les composantes du vecteur aux coordonnées du point : $x_{M'} = 3 + (-2) = 1$, $y_{M'} = -1 + 5 = 4$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

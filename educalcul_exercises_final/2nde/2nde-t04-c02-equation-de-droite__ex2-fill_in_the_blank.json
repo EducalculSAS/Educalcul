@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Déterminer",
+  "title": "Équation de droite - Déterminer",
+  "blocks": [
+    {
+      "title": "Équation à partir de deux points",
+      "content": "La droite passant par les points $A(1,2)$ et $B(3,6)$ a pour équation réduite $y = {{1}} x + {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "0"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur est $a = (6-2)/(3-1) = 4/2 = 2$. En utilisant le point $A(1,2)$ : $2 = 2 * 1 + b$ donc $b = 0$. L'équation réduite est donc $y = 2x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation avec coefficient directeur et un point",
+      "content": "La droite de coefficient directeur $-3$ passant par le point $(2,5)$ a pour équation réduite $y = -3x + {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "11"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur est donné $a = -3$. L'équation réduite est $y = -3x + b$. Le point $(2,5)$ appartient à la droite : $5 = -3 * 2 + b$ donc $5 = -6 + b$ donc $b = 11$. L'équation est $y = -3x + 11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation à partir des intercepts",
+      "content": "La droite qui coupe l'axe des abscisses en $4$ et l'axe des ordonnées en $-2$ a pour équation réduite $y = {{1}} x + {{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "0,5|1/2",
+        "-2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les intercepts donnent deux points : $(4,0)$ et $(0,-2)$. Le coefficient directeur est $a = (-2-0)/(0-4) = -2/-4 = 1/2 = 0,5$. L'ordonnée à l'origine est $b = -2$. L'équation réduite est $y = 0,5x - 2$ (ou $y = 1/2 x - 2$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

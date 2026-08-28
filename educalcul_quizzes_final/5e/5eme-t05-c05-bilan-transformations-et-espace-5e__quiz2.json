@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 404,
+  "_course_code": "5eme-t05-c05-bilan-transformations-et-espace-5e",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Checklist",
+  "title": "Bilan - Transformations et espace : Checklist",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé, le point A a pour coordonnées $A(-3; 2)$. Dans quel quadrant se trouve le point A ?",
+      "options": [
+        "Premier quadrant",
+        "Deuxième quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Deuxième quadrant",
+      "explanation": "L'abscisse du point A est négative ($-3$) et son ordonnée est positive ($2$). Dans le repère, le deuxième quadrant correspond aux points d'abscisse négative et d'ordonnée positive. Le premier quadrant a les deux coordonnées positives, le troisième les deux négatives, et le quatrième a l'abscisse positive et l'ordonnée négative.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une symétrie axiale d'axe $d$. Si $A'$ est l'image du point $A$, laquelle des propriétés suivantes est toujours vraie ?",
+      "options": [
+        "Le segment $[AA']$ est parallèle à l'axe $d$",
+        "La droite $(AA')$ est perpendiculaire à l'axe $d$",
+        "Le point $A$ appartient à l'axe $d$",
+        "La distance $AA'$ est nulle"
+      ],
+      "correctAnswer": "La droite $(AA')$ est perpendiculaire à l'axe $d$",
+      "explanation": "Par définition de la symétrie axiale, l'axe $d$ est la médiatrice du segment $[AA']$. Cela implique que la droite $(AA')$ est perpendiculaire à $d$ et que le milieu de $[AA']$ appartient à $d$. Le segment $[AA']$ n'est pas parallèle à $d$ (il est perpendiculaire), $A$ n'appartient pas nécessairement à $d$ (seulement s'il est invariant), et la distance $AA'$ n'est nulle que si $A$ est sur l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une translation transforme le triangle $ABC$ en triangle $A'B'C'$. Quelle affirmation est correcte ?",
+      "options": [
+        "Les triangles $ABC$ et $A'B'C'$ ont des aires différentes",
+        "Les droites $(AB)$ et $(A'B')$ sont perpendiculaires",
+        "Les segments $[AA']$, $[BB']$ et $[CC']$ ont la même longueur et la même direction",
+        "Le triangle $A'B'C'$ est plus grand que le triangle $ABC$"
+      ],
+      "correctAnswer": "Les segments $[AA']$, $[BB']$ et $[CC']$ ont la même longueur et la même direction",
+      "explanation": "Une translation est définie par un vecteur. Tous les points du plan sont déplacés selon ce même vecteur. Ainsi, les vecteurs $\\overrightarrow{AA'}$, $\\overrightarrow{BB'}$ et $\\overrightarrow{CC'}$ sont égaux au vecteur de la translation : ils ont même longueur, même direction et même sens. La translation conserve les longueurs, les angles, les aires et le parallélisme : les triangles sont superposables (isométriques), donc même aire, et $(AB)$ est parallèle à $(A'B')$, pas perpendiculaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une rotation de centre $O$ et d'angle $90^\\circ$ dans le sens direct (trigonométrique). $A'$ est l'image de $A$. Quelle propriété caractérise cette rotation ?",
+      "options": [
+        "Les points $O$, $A$ et $A'$ sont alignés",
+        "Les longueurs $OA$ et $OA'$ sont égales et l'angle $\\widehat{AOA'}$ mesure $90^\\circ$ dans le sens direct",
+        "Le point $A'$ est le symétrique de $A$ par rapport au point $O$",
+        "La longueur $OA'$ est le double de la longueur $OA$"
+      ],
+      "correctAnswer": "Les longueurs $OA$ et $OA'$ sont égales et l'angle $\\widehat{AOA'}$ mesure $90^\\circ$ dans le sens direct",
+      "explanation": "La rotation de centre $O$ et d'angle $\\alpha$ conserve les distances au centre ($OA = OA'$) et l'angle orienté $\\widehat{AOA'}$ est égal à l'angle de la rotation ($90^\\circ$ ici) dans le sens indiqué (direct). Si les points étaient alignés, l'angle serait $180^\\circ$ (symétrie centrale). La symétrie par rapport à $O$ correspond à une rotation de $180^\\circ$. Les longueurs ne sont pas modifiées (pas d'homothétie).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne le patron ci-dessous. Quel solide peut-on obtenir en le pliant ?",
+      "options": [
+        "Un cylindre",
+        "Un cône",
+        "Un cube",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Le patron présenté est constitué de six carrés identiques agencés en croix (ou en T, ou en échelle selon le patron valide affiché). C'est un patron classique du cube. Un cylindre nécessite un rectangle et deux disques. Un cône nécessite un secteur de disque et un disque. Une pyramide à base carrée nécessite un carré et quatre triangles isocèles.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    }
+  ]
+}

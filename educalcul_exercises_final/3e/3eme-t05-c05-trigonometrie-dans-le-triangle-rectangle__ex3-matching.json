@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Calcul angle",
+  "title": "Trigonométrie : Calcul d'un angle",
+  "blocks": [
+    {
+      "title": "Choisir la bonne formule",
+      "content": "Relie chaque situation dans un triangle rectangle à la formule trigonométrique qui permet de calculer l'angle indiqué.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Triangle $ABC$ rectangle en $A$, angle $\\widehat{B}$, côté adjacent $AB=4$, hypoténuse $BC=5$",
+          "right": "$\\cos(\\widehat{B}) = \\frac{4}{5}$"
+        },
+        {
+          "left": "Triangle $DEF$ rectangle en $D$, angle $\\widehat{D}$, côté opposé $EF=3$, hypoténuse $DE=5$",
+          "right": "$\\sin(\\widehat{D}) = \\frac{3}{5}$"
+        },
+        {
+          "left": "Triangle $GHI$ rectangle en $H$, angle $\\widehat{G}$, côté opposé $HI=3$, côté adjacent $GH=4$",
+          "right": "$\\tan(\\widehat{G}) = \\frac{3}{4}$"
+        },
+        {
+          "left": "Triangle $JKL$ rectangle en $K$, angle $\\widehat{J}$, côté adjacent $JK=12$, hypoténuse $JL=13$",
+          "right": "$\\cos(\\widehat{J}) = \\frac{12}{13}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour choisir la bonne formule, on repère les côtés connus par rapport à l'angle cherché :\\n- Si on connaît le côté adjacent et l'hypotenuse, on utilise le cosinus.\\n- Si on connaît le côté opposé et l'hypotenuse, on utilise le sinus.\\n- Si on connaît le côté opposé et le côté adjacent, on utilise la tangente.\\nIci : 1) Adjacent/Hypotenuse -> Cosinus. 2) Opposé/Hypotenuse -> Sinus. 3) Opposé/Adjacent -> Tangente. 4) Adjacent/Hypotenuse -> Cosinus.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer l'angle à partir du rapport",
+      "content": "Relie chaque égalité trigonométrique à la valeur approchée de l'angle $x$ (arrondi au degré près).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\sin(x) = 0,5$",
+          "right": "$30^\\circ$"
+        },
+        {
+          "left": "$\\cos(x) = 0,5$",
+          "right": "$60^\\circ$"
+        },
+        {
+          "left": "$\\tan(x) = 1$",
+          "right": "$45^\\circ$"
+        },
+        {
+          "left": "$\\tan(x) = \\frac{3}{4}$",
+          "right": "$37^\\circ$"
+        }
+      ],
+      "items": [],
+      "explanation": "On utilise la touche inverse de la calculatrice (souvent $\\sin^{-1}$, $\\cos^{-1}$, $\\tan^{-1}$ ou $\\arcsin$, $\\arccos$, $\\arctan$) en mode degrés (DEG).\\n- $\\sin(x)=0,5 \\Rightarrow x = \\arcsin(0,5) = 30^\\circ$.\\n- $\\cos(x)=0,5 \\Rightarrow x = \\arccos(0,5) = 60^\\circ$.\\n- $\\tan(x)=1 \\Rightarrow x = \\arctan(1) = 45^\\circ$.\\n- $\\tan(x)=0,75 \\Rightarrow x \\approx 36,87^\\circ$, arrondi à $37^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problèmes : calcul d'angle dans un triangle",
+      "content": "Relie chaque description de triangle rectangle à la valeur de l'angle demandé (arrondi au degré près).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Triangle $ABC$ rectangle en $A$, $AB=3$, $AC=4$. Calculer $\\widehat{B}$.",
+          "right": "$53^\\circ$"
+        },
+        {
+          "left": "Triangle $DEF$ rectangle en $D$, $DE=5$, $EF=13$. Calculer $\\widehat{F}$.",
+          "right": "$23^\\circ$"
+        },
+        {
+          "left": "Triangle $GHI$ rectangle en $H$, $GH=8$, $GI=17$. Calculer $\\widehat{I}$.",
+          "right": "$62^\\circ$"
+        },
+        {
+          "left": "Triangle $JKL$ rectangle en $K$, $JK=KL=5$. Calculer $\\widehat{J}$.",
+          "right": "$45^\\circ$"
+        }
+      ],
+      "items": [],
+      "explanation": "On identifie les côtés par rapport à l'angle, on écrit le bon rapport et on utilise la fonction inverse.\\n1) Angle $\\widehat{B}$ : opposé $AC=4$, adjacent $AB=3$. $\\tan(\\widehat{B}) = 4/3 \\Rightarrow \\widehat{B} \\approx 53,13^\\circ \\approx 53^\\circ$.\\n2) Angle $\\widehat{F}$ : rectangle en $D$, hypoténuse $EF=13$, opposé $DE=5$. $\\sin(\\widehat{F}) = 5/13 \\Rightarrow \\widehat{F} \\approx 22,62^\\circ \\approx 23^\\circ$.\\n3) Angle $\\widehat{I}$ : rectangle en $H$, hypoténuse $GI=17$, adjacent $GH=8$. $\\cos(\\widehat{I}) = 8/17 \\Rightarrow \\widehat{I} \\approx 61,93^\\circ \\approx 62^\\circ$.\\n4) Triangle rectangle isocèle ($JK=KL$), les angles aigus valent $45^\\circ$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

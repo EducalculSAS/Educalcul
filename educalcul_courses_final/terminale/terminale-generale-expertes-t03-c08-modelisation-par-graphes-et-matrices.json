@@ -1,0 +1,603 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.825237+00:00",
+  "id": 754,
+  "code": "terminale-generale-expertes-t03-c08",
+  "title": "Modélisation par graphes et matrices",
+  "description": "Cours structuré Educalcul : Modélisation par graphes et matrices.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Modélisation par graphes et matrices",
+    "objectif_global": "Modélisation par graphes et matrices",
+    "mini_lecons_imposees": [
+      "Choisir modèle.",
+      "Calculer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Choisir modèle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir le bon modèle : graphe ou matrice ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois organiser un tournoi d'échecs entre huit joueurs. Chaque partie oppose deux participants et tu veux savoir rapidement quels adversaires se sont déjà rencontrés. La situation met en jeu des objets (les joueurs) et des liens (les parties jouées). C'est exactement le genre de problème qui se modélise naturellement par un graphe : les sommets représentent les joueurs et les arêtes les rencontres. Avant de te lancer dans des calculs, prends le temps de visualiser la structure ; un dessin rapide sur une feuille te permet souvent de repérer des cycles, des composantes connexes ou des sommets isolés, informations qui guideront le choix de l'outil mathématique le plus adapté."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe",
+              "definition": "Un graphe $G$ est un couple $(V,E)$ où $V$ est un ensemble fini de sommets (ou nœuds) et $E$ un ensemble d'arêtes, chaque arête reliant deux sommets (éventuellement le même).",
+              "example": "Le tournoi d'échecs : $V=\\{J_1,\\dots,J_8\\}$, $E=\\{\\{J_1,J_3\\},\\{J_2,J_5\\},\\dots\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un graphe non orienté, l'arête $\\{u,v\\}$ ne porte pas de direction : la rencontre entre $J_1$ et $J_3$ est la même que celle entre $J_3$ et $J_1$. Si tu dois suivre le sens d'une interaction (par exemple qui a battu qui), tu passeras à un graphe orienté où chaque arête devient un arc ordonné $(u,v)$. Cette distinction est cruciale car elle change la forme de la matrice qui va coder le graphe."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\\\begin{pmatrix}0 & 1 & 0 \\\\\\\\ 1 & 0 & 1 \\\\\\\\ 0 & 1 & 0\\\\end{pmatrix}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La matrice ci‑dessus est la matrice d'adjacence d'un graphe à trois sommets : l'entrée $a_{ij}$ vaut $1$ s'il existe une arête entre $i$ et $j$, $0$ sinon. Remarque que la matrice est symétrique, ce qui traduit le caractère non orienté du graphe. Lorsque le graphe est dense (beaucoup d'arêtes), la matrice devient un outil compact pour stocker l'information et pour effectuer des calculs algébriques comme la multiplication de matrices."
+            },
+            {
+              "type": "definition",
+              "term": "Matrice d'adjacence",
+              "definition": "Pour un graphe $G=(V,E)$ à $n$ sommets, sa matrice d'adjacence $A$ est la matrice carrée $n\\times n$ définie par $a_{ij}=1$ si $\\{i,j\\}\\in E$ (ou $(i,j)\\in E$ pour un graphe orienté) et $a_{ij}=0$ sinon.",
+              "example": "Le graphe du tournoi à trois joueurs ci‑dessus."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "J1",
+                "J2",
+                "J3"
+              ],
+              "rows": [
+                [
+                  "J1",
+                  "0",
+                  "1",
+                  "0"
+                ],
+                [
+                  "J2",
+                  "1",
+                  "0",
+                  "1"
+                ],
+                [
+                  "J3",
+                  "0",
+                  "1",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau montre la même information que la matrice affichée plus haut, mais sous une forme lisible pour un humain. Si tu dois seulement consulter la liste des voisins d'un sommet, le graphe dessiné ou le tableau sont plus immédiats. En revanche, pour compter le nombre de chemins de longueur $k$ entre deux sommets, la puissance $A^k$ de la matrice d'adjacence donne la réponse en un seul calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les objets et les liens",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste les entités (joueurs, villes, serveurs) et les relations (rencontres, routes, connexions)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la représentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as besoin de visualiser la structure globale, dessine le graphe. Si tu prévois des calculs répétés (produits de matrices, valeurs propres), construis la matrice d'adjacence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi que la matrice respecte les propriétés du graphe (symétrie pour non orienté, zéros sur la diagonale si pas de boucles)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons transformer une situation en graphe ou en matrice, penchons‑nous sur les graphes dont les arêtes portent une information quantitative, comme une distance, un coût ou une capacité. Ce passage aux graphes pondérés enrichit la modélisation et modifie la forme de la matrice associée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser des relations pondérées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu gères un réseau de livraison entre quatre entrepôts. Chaque route a une longueur en kilomètres. Les sommets sont les entrepôts, les arêtes sont les routes, et chaque arête porte un poids : la distance. Dans ce cas, la matrice d'adjacence classique ne suffit plus, car elle ne distingue pas une route de $10\\,km$ d'une route de $100\\,km$. On utilise alors une matrice de poids où l'entrée $w_{ij}$ contient la longueur de la route (ou une valeur spéciale $\\infty$ si aucune route n'existe)."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe pondéré",
+              "definition": "Un graphe pondéré est un triplet $(V,E,w)$ où $(V,E)$ est un graphe et $w:E\\to\\mathbb{R}_+$ associe un poids (coût, distance, capacité) à chaque arête.",
+              "example": "Réseau routier : $w(\\{A,B\\})=12\\,km$."
+            },
+            {
+              "type": "display_math",
+              "latex": "W = \\\\begin{pmatrix}0 & 12 & \\\\infty & 7 \\\\\\\\ 12 & 0 & 5 & \\\\infty \\\\\\\\ \\\\infty & 5 & 0 & 9 \\\\\\\\ 7 & \\\\infty & 9 & 0\\\\end{pmatrix}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La matrice $W$ ci‑dessus code les distances entre les quatre entrepôts. Les zéros sur la diagonale indiquent qu'un entrepôt n'est pas relié à lui‑même, et le symbole $\\infty$ (ou un très grand nombre en pratique) signale l'absence de route directe. Cette représentation matrixielle est idéale pour appliquer l'algorithme de Floyd‑Warshall qui calcule les plus courts chemins entre tous les couples de sommets en $O(n^3)$ opérations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment introduire des poids. Une autre dimension importante est l'orientation des liens. Dans un réseau de citation d'articles scientifiques, un article $A$ cite $B$ mais l'inverse n'est pas vrai. Le graphe devient orienté, et la matrice d'adjacence perd sa symétrie. Voyons comment cela se traduit concrètement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Graphes orientés et non orientés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un graphe orienté, chaque relation est un arc $(u,v)$ avec un sens. La matrice d'adjacence $A$ n'est plus nécessairement symétrique : $a_{uv}=1$ ne garantit pas $a_{vu}=1$. Prenons l'exemple d'un petit réseau de trois pages web où la page 1 pointe vers la page 2, la page 2 pointe vers la page 3, et la page 3 pointe vers la page 1. La matrice d'adjacence correspondante est une matrice de permutation cyclique."
+            },
+            {
+              "type": "definition",
+              "term": "Graphe orienté",
+              "definition": "Un graphe orienté (ou digraphe) est un couple $(V,A)$ où $V$ est l'ensemble des sommets et $A\\subseteq V\\times V$ l'ensemble des arcs ordonnés.",
+              "example": "Citations : $(A,B)\\in A$ signifie que $A$ cite $B$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "P1",
+                "P2",
+                "P3"
+              ],
+              "rows": [
+                [
+                  "P1",
+                  "0",
+                  "1",
+                  "0"
+                ],
+                [
+                  "P2",
+                  "0",
+                  "0",
+                  "1"
+                ],
+                [
+                  "P3",
+                  "1",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe que la matrice n'est pas symétrique : la ligne 1 colonne 2 vaut $1$ alors que la ligne 2 colonne 1 vaut $0$. Cette asymétrie encode précisément la direction des liens. Pour analyser la popularité d'une page (combien de pages pointent vers elle), on somme les colonnes de la matrice ; pour connaître le nombre de liens sortants, on somme les lignes. Ces opérations matricielles simples remplacent des parcours fastidieux sur le dessin du graphe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "À ce stade, tu disposes de trois leviers pour choisir ton modèle : la nature des objets (sommets), le type de liens (non orienté, orienté, pondéré) et l'objectif final (visualisation, calcul de chemins, analyse spectrale). Résumons les critères dans un aide‑mémoire pratique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Critères de choix du modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "1. Si le problème demande une vue d'ensemble qualitative (communautés, cycles, connectivité), le dessin du graphe ou une liste d'adjacence est souvent suffisant. 2. Si tu dois effectuer des calculs répétitifs (nombre de chemins de longueur $k$, centralité spectrale, plus courts chemins), la matrice (d'adjacence, de poids, de Laplacien) devient l'outil de prédilection. 3. Pour les graphes très grands et creux (peu d'arêtes par rapport au nombre de sommets), une représentation par listes d'adjacence ou par dictionnaires creuses économise la mémoire, tandis que la matrice dense serait gaspilleuse. 4. Enfin, la présence de poids ou d'orientation dicte le type de matrice : matrice de poids $W$ pour les distances, matrice d'adjacence asymétrique $A$ pour les arcs."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Commence toujours par un croquis rapide ; il révèle souvent la structure (arbre, bipartite, cyclique) qui oriente le choix de la matrice."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la matrice d'adjacence du graphe non orienté à 4 sommets dont les arêtes sont $\\{1,2\\},\\{2,3\\},\\{3,4\\},\\{4,1\\}$.",
+              "answer": "$\\begin{pmatrix}0&1&0&1\\\\1&0&1&0\\\\0&1&0&1\\\\1&0&1&0\\end{pmatrix}$",
+              "hint": "Rappelle‑toi que $a_{ij}=1$ s'il y a une arête entre $i$ et $j$, et que la matrice est symétrique.",
+              "explanation": "Le graphe est un cycle $C_4$. Chaque sommet a deux voisins, donc chaque ligne et chaque colonne contient exactement deux $1$. La symétrie reflète le caractère non orienté."
+            },
+            {
+              "question": "Écris la matrice de poids $W$ pour un graphe pondéré à 3 sommets avec distances $d_{12}=5$, $d_{23}=8$, $d_{13}=20$ (aucune autre route). Utilise $\\infty$ pour l'absence de route.",
+              "answer": "$\\begin{pmatrix}0&5&20\\\\5&0&8\\\\20&8&0\\end{pmatrix}$",
+              "hint": "Place les distances données aux positions symétriques $(i,j)$ et $(j,i)$ ; la diagonale reste $0$.",
+              "explanation": "Comme le graphe est non orienté, la matrice de poids est symétrique. Les entrées non renseignées seraient $\\infty$, mais ici le graphe est complet donc toutes les paires ont une distance finie."
+            },
+            {
+              "question": "Pour le digraphe à 3 sommets avec arcs $(1,2)$, $(2,3)$, $(3,1)$, calcule la somme de la colonne 2 de sa matrice d'adjacence. Que représente ce nombre ?",
+              "answer": "La somme vaut $1$. Elle représente le nombre d'arcs entrants vers le sommet 2 (son indegré).",
+              "hint": "La colonne $j$ de la matrice d'adjacence compte les arcs qui pointent vers $j$.",
+              "explanation": "La matrice d'adjacence a un $1$ en position $(1,2)$ seulement pour la colonne 2. Donc l'indegré du sommet 2 est $1$."
+            },
+            {
+              "question": "Tu dois modéliser un réseau social où chaque utilisateur peut suivre d'autres utilisateurs (relation orientée) et chaque lien a un score d'affinité (poids). Quel type de matrice choisis‑tu et pourquoi ?",
+              "answer": "Une matrice de poids non symétrique $W$ où $w_{ij}$ est le score d'affinité de $i$ vers $j$ (ou $\\infty$ si $i$ ne suit pas $j$).",
+              "hint": "Combine les deux aspects : orientation $\\Rightarrow$ matrice non symétrique ; poids $\\Rightarrow$ entrées numériques au lieu de $0/1$.",
+              "explanation": "La relation « suivre » est orientée, donc $w_{ij}\\neq w_{ji}$ en général. Le score d'affinité remplace la simple présence d'arc. Cette matrice permet ensuite des calculs de centralité pondérée ou de recommandation."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer les puissances de la matrice d'adjacence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le modèle est choisi, passons au cœur du calcul. La matrice d'adjacence $A$ d'un graphe à $n$ sommets encode en une seule multiplication matricielle une quantité énorme d'information combinatoire. Rappelle‑toi que le produit $A^2 = A \\times A$ a pour entrée $(i,j)$ la somme $\\sum_{k=1}^n a_{ik}a_{kj}$. Comme chaque $a_{ik}$ vaut $1$ exactement quand il y a une arête $i\\!-\\!k$, ce somme compte le nombre de chemins de longueur $2$ qui vont de $i$ à $j$ en passant par un sommet intermédiaire $k$. C'est le point de départ de toute une famille de résultats : $A^k$ donne le nombre de chemins de longueur $k$ entre chaque paire de sommets."
+            },
+            {
+              "type": "definition",
+              "term": "Chemin de longueur $k$",
+              "definition": "Une suite de sommets $(v_0,v_1,\\dots,v_k)$ telle que pour tout $t$, $\\{v_{t-1},v_t\\}$ (ou $(v_{t-1},v_t)$ pour un graphe orienté) est une arête (ou un arc) du graphe.",
+              "example": "Dans un triangle, il y a deux chemins de longueur $2$ entre deux sommets distincts."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\\\end{pmatrix}, \\quad A^2 = \\\\begin{pmatrix}2&1&1\\\\1&2&1\\\\1&1&2\\\\end{pmatrix}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la matrice $A$ du graphe complet $K_3$ (triangle). Sa carré $A^2$ a $2$ sur la diagonale car chaque sommet a deux chemins de longueur $2$ qui reviennent à lui‑même (aller chez un voisin et revenir). Les entrées hors diagonale valent $1$ car il existe exactement un chemin de longueur $2$ entre deux sommets distincts (passer par le troisième sommet). Cette propriété se généralise : la trace de $A^k$ (somme des éléments diagonaux) égale le nombre total de cycles fermés de longueur $k$ dans le graphe, chaque cycle étant compté $2k$ fois (choix du point de départ et du sens)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les dimensions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi que $A$ est carrée $n\\times n$ ; seules les matrices carrées peuvent être élevées à une puissance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier itérativement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $A^2 = A\\cdot A$, puis $A^3 = A^2\\cdot A$, etc., en utilisant la règle habituelle du produit matriciel. Pour de grandes puissances, utilise l'exponentiation rapide (carré successif) pour réduire le nombre de multiplications à $O(\\log k)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter les entrées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'entrée $(i,j)$ de $A^k$ est le nombre de chemins de longueur exactement $k$ de $i$ vers $j$. Si tu travailles sur un graphe orienté, les chemins respectent le sens des arcs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit booléen offre une alternative quand on ne s'intéresse qu'à l'existence d'un chemin, pas à leur nombre. En remplaçant l'addition par le OU logique ($\\lor$) et la multiplication par le ET logique ($\\land$), on obtient la matrice de reachability (accessibilité). Cette opération, notée $A^{\\otimes k}$, indique par un $1$ en position $(i,j)$ qu'il existe au moins un chemin de longueur $k$ entre $i$ et $j$. C'est l'outil de base pour calculer la fermeture transitive d'un graphe."
+            },
+            {
+              "type": "definition",
+              "term": "Produit booléen de matrices",
+              "definition": "Pour deux matrices booléennes $B,C$ de tailles compatibles, leur produit booléen $B\\otimes C$ est défini par $(B\\otimes C)_{ij} = \\bigvee_{k} (B_{ik} \\land C_{kj})$, où $\\lor$ est le OU et $\\land$ le ET.",
+              "example": "Si $B_{i1}=1$ et $C_{1j}=1$, alors $(B\\otimes C)_{ij}=1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A = \\\\begin{pmatrix}0&1&0\\\\0&0&1\\\\0&0&0\\\\end{pmatrix}, \\quad A^{\\\\otimes 2} = \\\\begin{pmatrix}0&0&1\\\\0&0&0\\\\0&0&0\\\\end{pmatrix}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cet exemple, $A$ représente une chaîne orientée $1\\to2\\to3$. Le produit booléen $A^{\\otimes 2}$ montre qu'il existe un chemin de longueur $2$ de $1$ vers $3$ (entrée $1$ en $(1,3)$), tandis qu'aucun chemin de longueur $2$ ne part de $2$ ou $3$. En itérant cette opération jusqu'à $n-1$ et en prenant l'union (OU) de toutes les puissances, on obtient la matrice de fermeture transitive $T = A \\lor A^{\\otimes 2} \\lor \\dots \\lor A^{\\otimes (n-1)}$, qui indique pour chaque paire $(i,j)$ s'il existe un chemin quelconque de $i$ vers $j$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les graphes de grande taille, calculer les puissances successives de $A$ peut devenir coûteux. Une technique puissante consiste à diagonaliser $A$ (ou à la mettre sous forme de Jordan) lorsque $A$ est diagonalisable : $A = PDP^{-1}$ avec $D$ diagonale. Alors $A^k = PD^kP^{-1}$, et les puissances de $D$ se calculent instantanément en élevant chaque valeur propre à la puissance $k$. Cette approche spectrale lie l'algèbre linéaire à la combinatoire du graphe."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur propre et vecteur propre",
+              "definition": "Un scalaire $\\lambda$ et un vecteur non nul $v$ tels que $Av = \\lambda v$. L'ensemble des valeurs propres forme le spectre de $A$.",
+              "example": "Pour $A = \\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$, les valeurs propres sont $1$ et $-1$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import numpy as np\\n\\ndef mat_pow_diag(A, k):\\n    \"\"\"Calcule A^k via diagonalisation (si possible).\"\"\"\\n    vals, vecs = np.linalg.eig(A)\\n    Dk = np.diag(vals ** k)\\n    return vecs @ Dk @ np.linalg.inv(vecs)\\n\\n# Exemple sur le triangle K3\\nA = np.array([[0,1,1],[1,0,1],[1,1,0]])\\nprint(mat_pow_diag(A, 3))",
+              "caption": "Exponentiation rapide par diagonalisation (Python/NumPy)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le code illustre la méthode : on calcule les valeurs propres et les vecteurs propres, on élève les valeurs propres à la puissance désirée, puis on recompose. Attention : la diagonalisation n'est pas toujours possible (matrices non diagonalisables), mais pour les matrices d'adjacence de graphes non orientés, la matrice est symétrique donc toujours diagonalisable dans $\\mathbb{R}$ (théorème spectral). Cela garantit une base orthonormée de vecteurs propres et des valeurs propres réelles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons le calcul des plus courts chemins dans un graphe pondéré. L'algorithme de Floyd‑Warshall utilise la matrice de poids $W$ et la met à jour par la règle $d_{ij}^{(k)} = \\min(d_{ij}^{(k-1)}, d_{ik}^{(k-1)} + d_{kj}^{(k-1)})$ pour $k=1\\dots n$. Cette programmation dynamique s'exprime naturellement sous forme matricielle avec l'opération « min‑plus » (aussi appelée algèbre tropicale). Bien que ce ne soit pas un produit matriciel classique, la structure algorithmique est très proche : on itère une mise à jour de matrice $n$ fois."
+            },
+            {
+              "type": "definition",
+              "term": "Algèbre tropicale (min‑plus)",
+              "definition": "Structure où l'addition est $\\min$ et la multiplication est $+$. Le produit tropical de deux matrices $X,Y$ est $(X\\otimes_{\\text{trop}} Y)_{ij} = \\min_k (X_{ik}+Y_{kj})$.",
+              "example": "Floyd‑Warshall effectue $n$ produits tropicaux successifs de $W$ avec elle‑même."
+            },
+            {
+              "type": "display_math",
+              "latex": "W = \\\\begin{pmatrix}0&3&\\\\infty\\\\2&0&5\\\\\\\\infty&1&0\\\\end{pmatrix}, \\quad W^{\\\\otimes_{\\text{trop}}2} = \\\\begin{pmatrix}0&3&8\\\\2&0&5\\\\3&1&0\\\\end{pmatrix}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit tropical $W^{\\otimes_{\\text{trop}}2}$ donne les plus courts chemins utilisant au maximum deux arcs. En itérant jusqu'à $n$, on converge vers la matrice des distances minimales. Cette vision unifiée montre que beaucoup d'algorithmes sur graphes sont simplement des calculs de puissances dans des algèbres adaptées (booléenne pour l'accessibilité, classique pour le comptage, tropicale pour les plus courts chemins)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $A$ la matrice d'adjacence du graphe chemin $P_4$ (sommets $1-2-3-4$). Calcule $A^3$ et donne l'entrée $(1,4)$.",
+              "answer": "L'entrée $(1,4)$ de $A^3$ vaut $1$.",
+              "hint": "Un chemin de longueur $3$ de $1$ à $4$ doit passer par $2$ puis $3$. Il n'y a qu'un seul tel chemin.",
+              "explanation": "La matrice $A$ a des $1$ sur la super‑ et sous‑diagonale. $A^3$ compte les chemins de longueur $3$ ; le seul chemin $1\\to2\\to3\\to4$ donne un $1$ en $(1,4)$."
+            },
+            {
+              "question": "Pour la matrice d'adjacence $A = \\begin{pmatrix}0&1&0\\\\0&0&1\\\\1&0&0\\end{pmatrix}$ (cycle orienté $C_3$), calcule le produit booléen $A^{\\otimes 2}$ et dis s'il existe un chemin de longueur $2$ de $1$ vers $3$.",
+              "answer": "$A^{\\otimes 2} = \\begin{pmatrix}0&0&1\\\\1&0&0\\\\0&1&0\\end{pmatrix}$ ; oui, il existe un chemin de longueur $2$ de $1$ vers $3$.",
+              "hint": "Applique la définition du produit booléen : $(A^{\\otimes 2})_{ij} = \\bigvee_k (A_{ik}\\land A_{kj})$.",
+              "explanation": "Le seul $k$ tel que $A_{1k}=A_{k3}=1$ est $k=2$, donc $(1,3)$ devient $1$."
+            },
+            {
+              "question": "La matrice d'adjacence $A$ d'un graphe non orienté est symétrique. Explique pourquoi elle est toujours diagonalisable dans $\\mathbb{R}$ et comment cela simplifie le calcul de $A^k$ pour de grands $k$.",
+              "answer": "Une matrice symétrique réelle est orthonormalement diagonalisable (théorème spectral) : $A=Q\\Lambda Q^T$ avec $Q$ orthogonale et $\\Lambda$ diagonale. Alors $A^k = Q\\Lambda^k Q^T$, ce qui réduit le calcul à l'élévation des valeurs propres.",
+              "hint": "Rappelle le théorème spectral pour les matrices symétriques réelles.",
+              "explanation": "La diagonalisation orthogonale évite l'inversion de matrice (on utilise la transposée) et assure des valeurs propres réelles, ce qui rend $A^k$ stable numériquement."
+            },
+            {
+              "question": "Donne la matrice des plus courts chemins pour le graphe pondéré à 3 sommets avec poids $w_{12}=4$, $w_{23}=2$, $w_{13}=10$ (autres arcs absents). Utilise l'algèbre min‑plus.",
+              "answer": "$\\begin{pmatrix}0&4&6\\\\4&0&2\\\\6&2&0\\end{pmatrix}$",
+              "hint": "Calcule $W$, puis $W^{\\otimes_{\\text{trop}}2}$ et prends le minimum élément par élément avec $W$.",
+              "explanation": "Le chemin $1\\to2\\to3$ a coût $4+2=6$, meilleur que l'arc direct $10$. La matrice finale symétrise les distances car le graphe est non orienté."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter le spectre de la matrice d'adjacence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les valeurs propres d'une matrice d'adjacence ne sont pas de simples artefacts algébriques ; elles portent une information structurelle forte sur le graphe. La plus grande valeur propre $\\lambda_1$ (le rayon spectral) est liée à la densité du graphe : pour un graphe $d$-régulier, $\\lambda_1 = d$. De plus, l'écart spectral $\\lambda_1 - \\lambda_2$ contrôle la vitesse de mélange d'une marche aléatoire sur le graphe. Un grand écart signifie que la marche oublie rapidement sa position initiale, ce qui est souhaitable pour des algorithmes d'échantillonnage ou de recherche."
+            },
+            {
+              "type": "definition",
+              "term": "Rayon spectral",
+              "definition": "La plus grande valeur propre en module d'une matrice carrée. Pour une matrice d'adjacence non négative, c'est une valeur propre réelle positive (théorème de Perron‑Frobenius).",
+              "example": "Graphe complet $K_n$ : $\\lambda_1 = n-1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A(K_4) = \\\\begin{pmatrix}0&1&1&1\\\\1&0&1&1\\\\1&1&0&1\\\\1&1&1&0\\\\end{pmatrix}, \\quad \\lambda_1 = 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans $K_4$, chaque sommet a degré $3$, donc la matrice d'adjacence a pour valeur propre principale $3$ avec vecteur propre constant $(1,1,1,1)^T$. Les autres valeurs propres sont $-1$ (multiplicité $3$). L'écart spectral est $3-(-1)=4$, ce qui indique une expansion optimale : le graphe est un expander parfait. À l'opposé, un graphe en ligne (chemin) a un rayon spectral proche de $2\\cos(\\pi/(n+1))$, beaucoup plus petit, et un écart spectral qui tend vers $0$ quand $n$ grandit, reflétant une mauvaise connectivité globale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au‑delà du rayon spectral, le vecteur propre associé à $\\lambda_1$ (le vecteur de Perron) fournit une mesure naturelle de centralité : la centralité de vecteur propre. L'idée est intuitive : un sommet est important s'il est connecté à d'autres sommets importants. Mathématiquement, si $x$ est le vecteur propre principal normalisé (somme des composantes $=1$), alors $x_i$ est proportionnelle à la somme des centralités des voisins de $i$. Cette définition récursive se résout par le calcul du vecteur propre dominant."
+            },
+            {
+              "type": "definition",
+              "term": "Centralité de vecteur propre",
+              "definition": "Pour une matrice d'adjacence $A$ (ou une matrice de poids non négative), le vecteur propre $x\\ge 0$ associé à $\\lambda_1$ normalisé par $\\sum_i x_i = 1$. La composante $x_i$ mesure l'importance du sommet $i$.",
+              "example": "Dans un réseau de citations, les articles très cités par d'autres articles très cités obtiennent un score élevé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire la matrice",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis $A$ (binaire) ou $W$ (pondérée) selon que tu veux compter les liens ou tenir compte de leur intensité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le vecteur propre dominant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la méthode de la puissance (itérations $x^{(t+1)} = \\frac{A x^{(t)}}{\\|A x^{(t)}\\|_1}$) qui converge vers le vecteur de Perron pour une matrice irréductible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter les scores",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les sommets aux scores les plus élevés sont les plus influents. Attention : dans un graphe orienté, la centralité de vecteur propre correspond à l'indegré pondéré (popularité), tandis que le vecteur propre de $A^T$ donne l'out‑centralité (activité)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre lecture spectrale concerne la matrice de Laplacien $L = D - A$, où $D$ est la matrice diagonale des degrés. La seconde plus petite valeur propre de $L$, notée $\\lambda_2(L)$ (la valeur propre de Fiedler), est un indicateur classique de la connectivité algébrique du graphe. Si $\\lambda_2(L)=0$, le graphe est déconnecté ; plus $\\lambda_2(L)$ est grand, plus le graphe est difficile à couper en deux parties de taille comparable. Le vecteur propre associé (vecteur de Fiedler) fournit une partition spectrale utilisée en clustering et en partitionnement de graphes."
+            },
+            {
+              "type": "definition",
+              "term": "Matrice de Laplacien",
+              "definition": "Pour un graphe non orienté, $L = D - A$ avec $D_{ii} = \\deg(i)$ et $D_{ij}=0$ pour $i\\neq j$. $L$ est symétrique, semi‑définie positive, et sa plus petite valeur propre est $0$ avec vecteur propre constant.",
+              "example": "Chemin $P_3$ : $L = \\begin{pmatrix}1&-1&0\\\\-1&2&-1\\\\0&-1&1\\end{pmatrix}$, $\\lambda_2(L)=1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "L = \\\\begin{pmatrix}2&-1&-1\\\\-1&2&-1\\\\-1&-1&2\\\\end{pmatrix}, \\quad \\lambda_2(L)=3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici $L$ est le Laplacien du graphe complet $K_3$. Toutes les valeurs propres non nulles valent $3$, ce qui reflète une connectivité maximale : pour séparer $K_3$, il faut couper au moins deux arêtes. En pratique, on calcule le vecteur de Fiedler, on trie les sommets selon la valeur de leur composante, et on teste les coupes successives pour maximiser la modularité. Cette méthode heuristique est la base de nombreux algorithmes de détection de communautés (Spectral Clustering)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons que tout modèle a ses limites. La matrice d'adjacence oublie la géométrie (les positions spatiales), les dynamiques temporelles (apparition/disparition d'arêtes) et les attributs riches sur les sommets (texte, images). De plus, les calculs spectraux supposent souvent une matrice symétrique ou diagonalisable, ce qui n'est pas garanti pour des graphes orientés ou pondérés de façon asymétrique. Avant de conclure, il est indispensable de valider le modèle : comparer les prédictions (centralités, distances, communautés) avec des données de terrain, tester la robustesse par suppression aléatoire d'arêtes, et, si nécessaire, enrichir la représentation (hypergraphes, graphes temporels, graphes à attributs)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valider et enrichir le modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une bonne pratique consiste à construire plusieurs modèles (binaire, pondéré, orienté) pour le même jeu de données et à comparer leurs sorties sur des tâches cibles (prédiction de liens, classification de nœuds). Si le modèle pondéré améliore significativement la précision, le poids apporte une information pertinente. Sinon, la version binaire plus parcimonieuse est préférable (rasoir d'Ockham). Enfin, documente toujours les hypothèses (indépendance des arêtes, stationnarité) pour que d'autres puissent reproduire ou critiquer ton analyse."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne confonds pas la matrice d'adjacence binaire et la matrice de poids ; leurs spectres racontent des histoires différentes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais transformer une situation concrète en graphe (sommets, arêtes, orientation, poids).",
+                "Je sais construire la matrice d'adjacence, la matrice de poids et la matrice de Laplacien associées.",
+                "Je sais calculer $A^k$ pour compter les chemins de longueur $k$ et $A^{\\otimes k}$ pour l'accessibilité.",
+                "Je sais utiliser la diagonalisation pour obtenir $A^k$ rapidement quand $A$ est symétrique.",
+                "Je sais interpréter le rayon spectral, le vecteur de Perron (centralité) et la valeur propre de Fiedler (connectivité algébrique).",
+                "Je sais appliquer l'algèbre min‑plus (Floyd‑Warshall) pour les plus courts chemins.",
+                "Je sais évaluer la pertinence d'un modèle en le confrontant à des données réelles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le graphe complet $K_5$ a pour matrice d'adjacence $A = J_5 - I_5$ (où $J$ est la matrice plein de $1$). Quelles sont les valeurs propres de $A$ et leur multiplicité ?",
+              "answer": "Valeur propre $4$ (multiplicité $1$) et valeur propre $-1$ (multiplicité $4$).",
+              "hint": "Les valeurs propres de $J_5$ sont $5$ (mult. $1$) et $0$ (mult. $4$) ; soustrais $I_5$.",
+              "explanation": "Puisque $A = J - I$, le spectre se décale de $-1$. Le vecteur propre constant donne $5-1=4$, les vecteurs orthogonaux au constant donnent $0-1=-1$."
+            },
+            {
+              "question": "Pour le graphe orienté à 3 sommets avec matrice d'adjacence $A = \\begin{pmatrix}0&1&0\\\\0&0&1\\\\1&0&0\\end{pmatrix}$, calcule le vecteur propre principal (associé à la valeur propre de module maximal) et donne la centralité de vecteur propre de chaque sommet.",
+              "answer": "Les valeurs propres sont les racines cubiques de l'unité : $1, e^{2i\\pi/3}, e^{4i\\pi/3}$. La valeur propre dominante en module est $1$ avec vecteur propre $(1,1,1)^T$. Centralités égales : $1/3$ chaque sommet.",
+              "hint": "Calcule le polynôme caractéristique $\\det(A-\\lambda I)=-\\lambda^3+1$.",
+              "explanation": "Le cycle orienté $C_3$ est régulier de degré sortant $1$ ; la matrice est doublement stochastique, donc le vecteur constant est propre pour $\\lambda=1$."
+            },
+            {
+              "question": "Soit le Laplacien $L$ du graphe chemin $P_4$. Donne $\\lambda_2(L)$ (valeur propre de Fiedler) et explique ce qu'elle indique sur la facilité de couper le graphe en deux parties de taille égale.",
+              "answer": "$\\lambda_2(L) = 2 - 2\\cos(\\pi/4) = 2 - \\sqrt{2} \\approx 0.586$. Cette valeur faible montre que le chemin est facile à couper (il suffit de retirer une arête centrale).",
+              "hint": "Les valeurs propres du Laplacien d'un chemin $P_n$ sont $2-2\\cos(\\pi k / n)$ pour $k=0,\\dots,n-1$.",
+              "explanation": "Pour $n=4$, $k=1$ donne $\\lambda_2 = 2-2\\cos(\\pi/4)$. Un $\\lambda_2$ proche de $0$ signale un goulot d'étranglement."
+            },
+            {
+              "question": "Tu as deux modèles pour un même réseau de co‑authorship : (1) graphe binaire non orienté, (2) graphe pondéré où le poids est le nombre d'articles communs. Comment décider quel modèle utiliser pour prédire de futures collaborations ?",
+              "answer": "Entraîne un classifieur (ex. régression logistique) sur des caractéristiques issues de chaque modèle (centralités, similarités) et compare l'AUC sur un ensemble de test temporel. Choisis le modèle offrant la meilleure performance prédictive, sinon le plus simple.",
+              "hint": "Utilise une validation temporelle : entraînement sur années $<2020$, test sur $2020$‑$2022$.",
+              "explanation": "La comparaison empirique sur une tâche concrète (prédiction de liens) tranche entre la parcimonie du modèle binaire et la richesse du modèle pondéré."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

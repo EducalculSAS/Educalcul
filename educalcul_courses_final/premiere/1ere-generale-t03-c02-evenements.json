@@ -1,0 +1,540 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.204920+00:00",
+  "id": 552,
+  "code": "1ere-generale-t03-c02",
+  "title": "Événements",
+  "description": "Cours structuré Educalcul : Événements.",
+  "subject": "Phénomènes aléatoires",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Phénomènes aléatoires",
+    "titre_du_cours": "Événements",
+    "objectif_global": "Événements",
+    "mini_lecons_imposees": [
+      "Univers.",
+      "Réunion / intersection simples.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Phénomènes aléatoires",
+      "lessons": [
+        {
+          "title": "Univers.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'univers d'une expérience aléatoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre consacré aux phénomènes aléatoires. Vous allez découvrir comment les mathématiques modélisent le hasard, ce qui peut sembler contradictoire au premier abord : comment ranger le désordre dans des cases bien définies ? C'est pourtant tout l'enjeu de la probabilité. Pour commencer, imaginons une situation très concrète : vous lancez un dé à six faces numérotées de $1$ à $6$. Avant même de le lancer, vous savez que le résultat sera l'un de ces six nombres, mais vous ne savez pas lequel. C'est exactement ce qu'on appelle une expérience aléatoire : une opération dont le résultat ne peut pas être prédit avec certitude, mais dont on connaît l'ensemble de tous les résultats possibles."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience aléatoire",
+              "definition": "Une expérience aléatoire est une manipulation ou un processus dont le résultat ne peut pas être déterminé à l'avance, mais dont l'ensemble des issues possibles est connu.",
+              "example": "Lancer une pièce de monnaie, tirer une carte dans un jeu de 32 cartes, mesurer la température à midi demain."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet ensemble de tous les résultats possibles porte un nom fondamental : l'univers, souvent noté par la lettre grecque $\\Omega$ (oméga). Dans l'exemple du dé, l'univers est $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Remarquez que $\\Omega$ est un ensemble au sens mathématique : il contient des éléments (les issues) et on peut le décrire soit en extension (en listant tous ses éléments), soit en compréhension (en donnant une propriété caractéristique). Pour une expérience comme \"mesurer la hauteur d'un élève choisi au hasard dans la classe\", l'univers est l'intervalle des hauteurs possibles, par exemple $[1,50 ; 2,00]$ en mètres. C'est un univers continu, contrairement au dé qui donne un univers discret (fini)."
+            },
+            {
+              "type": "definition",
+              "term": "Univers (espace des possibles)",
+              "definition": "L'univers, noté $\\Omega$, est l'ensemble de tous les résultats possibles d'une expérience aléatoire. Il peut être fini, infini dénombrable ou continu.",
+              "example": "Pour un lancer de dé : $\\Omega = \\{1,2,3,4,5,6\\}$. Pour la hauteur d'un élève : $\\Omega = [1,50 ; 2,00]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois l'univers défini, on s'intéresse à des parties de cet univers, c'est-à-dire à des sous-ensembles de $\\Omega$. Ces sous-ensembles sont ce qu'on appelle des événements. Par exemple, \"obtenir un nombre pair\" au dé correspond au sous-ensemble $A = \\{2, 4, 6\\}$. \"Obtenir un nombre strictement supérieur à $4$\" correspond à $B = \\{5, 6\\}$. Tout sous-ensemble de $\\Omega$ est un événement, y compris l'ensemble vide $\\varnothing$ (aucun résultat) et $\\Omega$ lui-même (tous les résultats)."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Univers $\\Omega$ et événements $A$ (pair) et $B$ ($>4$) pour un lancer de dé",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$A$",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$B$",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme de Venn ci-dessus vous aide à visualiser la relation entre l'univers et les événements. L'univers est le grand rectangle, et les événements sont des zones à l'intérieur. Notez que $A$ et $B$ se chevauchent sur le $6$ : cet élément appartient aux deux événements. C'est une idée clé que nous allons exploiter dans la leçon suivante. Pour l'instant, retenez qu'un événement est simplement une partie de l'univers, et qu'on peut le décrire par une phrase du langage courant (\"le dé montre un nombre pair\") ou par une notation ensembliste ($A = \\{2,4,6\\}$)."
+            },
+            {
+              "type": "definition",
+              "term": "Événement",
+              "definition": "Un événement est une partie de l'univers $\\Omega$, c'est-à-dire un sous-ensemble de $\\Omega$. Il se réalise si le résultat de l'expérience appartient à ce sous-ensemble.",
+              "example": "Au lancer d'un dé, l'événement \"obtenir un multiple de $3$\" est $E = \\{3, 6\\}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'expérience aléatoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décrivez clairement l'action ou l'observation dont l'issue est incertaine. Par exemple : \"Tirer une carte au hasard dans un jeu de 32 cartes.\""
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister toutes les issues possibles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Construisez l'ensemble $\\Omega$ en veillant à ne rien oublier et à ne pas doubler les issues. Pour le jeu de 32 cartes, $\\Omega$ contient 32 éléments distincts (chaque carte)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Définir les événements d'intérêt",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la question posée, sélectionnez les sous-ensembles pertinents. Si on demande \"la carte est un roi\", l'événement est l'ensemble des 4 rois."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez construire un univers et repérer des événements, penchons-nous sur deux événements particuliers qui reviennent sans cesse : l'événement impossible et l'événement certain. L'événement impossible, noté $\\varnothing$, est l'ensemble vide : il ne contient aucune issue. Il correspond à une proposition qui ne peut jamais se réaliser, comme \"obtenir un $7$ avec un dé à six faces\". À l'opposé, l'événement certain est l'univers $\\Omega$ lui-même : il contient toutes les issues, donc il se réalise à coup sûr. Quelle que soit l'expérience, $\\varnothing$ et $\\Omega$ sont toujours des événements."
+            },
+            {
+              "type": "definition",
+              "term": "Événement impossible",
+              "definition": "L'événement impossible est l'ensemble vide $\\varnothing$. Il ne se réalise jamais.",
+              "example": "Tirer une carte \"15 de cœur\" dans un jeu de 32 cartes."
+            },
+            {
+              "type": "definition",
+              "term": "Événement certain",
+              "definition": "L'événement certain est l'univers $\\Omega$ tout entier. Il se réalise à chaque expérience.",
+              "example": "Obtenir un nombre entre $1$ et $6$ en lançant un dé standard."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces deux extrêmes sont utiliques pour raisonner par l'absurde ou pour simplifier des calculs. Par exemple, si vous devez étudier l'événement \"le dé ne montre pas un $6$\", vous pouvez le voir comme le complémentaire de l'événement \"le dé montre un $6$\". Ce complémentaire, noté $\\overline{A}$ ou $A^c$, est l'ensemble des issues de $\\\\Omega$ qui ne sont pas dans $A$. C'est un outil puissant que nous allons utiliser dès la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, attardons-nous sur la notion d'événement contraire (ou complémentaire). Si $A$ est un événement, son contraire $\\overline{A}$ est l'ensemble des issues de $\\Omega$ qui ne sont pas dans $A$. Autrement dit, $\\overline{A} = \\Omega \\setminus A$. Les événements $A$ et $\\overline{A}$ forment une partition de $\\Omega$ : ils sont disjoints (ils n'ont aucun élément en commun) et leur réunion est $\\Omega$. Cela signifie qu'à chaque expérience, exactement l'un des deux se réalise : soit $A$, soit $\\overline{A}$. C'est une propriété fondamentale qui nous servira pour calculer des probabilités plus tard."
+            },
+            {
+              "type": "definition",
+              "term": "Événement contraire (complémentaire)",
+              "definition": "Pour un événement $A \\subseteq \\Omega$, son événement contraire, noté $\\overline{A}$ ou $A^c$, est l'ensemble des éléments de $\\Omega$ qui n'appartiennent pas à $A$ : $\\overline{A} = \\Omega \\setminus A$.",
+              "example": "Au lancer d'un dé, si $A = \\{2,4,6\\}$ (pair), alors $\\overline{A} = \\{1,3,5\\}$ (impair)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les bases pour manipuler des univers et des événements. Dans la prochaine leçon, nous verrons comment combiner des événements grâce aux opérations de réunion et d'intersection, ce qui permettra de décrire des situations plus complexes comme \"le dé est pair OU supérieur à $4$\". Mais avant de passer à la suite, consolidons vos acquis avec un dernier exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à six faces numérotées de $1$ à $6$. On note $\\Omega$ l'univers. Définissez par extension les événements suivants : $A$ : \"le résultat est un multiple de $3$\", $B$ : \"le résultat est un nombre premier\".",
+              "answer": "$A = \\{3, 6\\}$, $B = \\{2, 3, 5\\}$",
+              "hint": "Rappelez-vous que les nombres premiers inférieurs ou égaux à $6$ sont $2, 3, 5$. Le $1$ n'est pas premier.",
+              "explanation": "L'univers est $\\Omega = \\{1,2,3,4,5,6\\}$. Les multiples de $3$ dans $\\Omega$ sont $3$ et $6$. Les nombres premiers dans $\\Omega$ sont $2, 3, 5$. On écrit chaque événement en listant ses éléments entre accolades."
+            },
+            {
+              "question": "On considère l'expérience : \"On choisit au hasard un entier entre $1$ et $10$.\" L'univers est $\\Omega = \\{1,2,\\dots,10\\}$. Soit l'événement $C = \\{2,4,6,8,10\\}$. Écrivez en mots l'événement contraire $\\overline{C}$ et donnez son extension.",
+              "answer": "$\\overline{C}$ : \"le nombre choisi est impair\". En extension : $\\overline{C} = \\{1,3,5,7,9\\}$.",
+              "hint": "Le contraire de $C$ contient tous les éléments de $\\Omega$ qui ne sont pas dans $C$.",
+              "explanation": "Puisque $C$ est l'ensemble des nombres pairs de $1$ à $10$, son complémentaire dans $\\Omega$ est l'ensemble des nombres impairs de $1$ à $10$. On vérifie que $C \\cup \\overline{C} = \\Omega$ et $C \\cap \\overline{C} = \\varnothing$."
+            },
+            {
+              "question": "Une urne contient $5$ boules rouges, $3$ boules vertes et $2$ boules bleues. On tire une boule au hasard. Donnez l'univers $\\Omega$ (en décrivant les boules, par exemple $R_1, R_2, \\dots$) et définissez l'événement $V$ : \"la boule est verte\" et son contraire $\\overline{V}$.",
+              "answer": "$\\Omega = \\{R_1,R_2,R_3,R_4,R_5, V_1,V_2,V_3, B_1,B_2\\}$. $V = \\{V_1,V_2,V_3\\}$. $\\overline{V} = \\{R_1,R_2,R_3,R_4,R_5, B_1,B_2\\}$.",
+              "hint": "Il y a $10$ boules au total. Identifiez-les distinctement. L'événement contraire de \"verte\" est \"non verte\", c'est-à-dire rouge ou bleue.",
+              "explanation": "On étiquette chaque boule pour avoir des éléments distincts dans $\\Omega$. L'événement $V$ regroupe les trois boules vertes. Son contraire contient les $7$ autres boules (rouges et bleues)."
+            }
+          ]
+        },
+        {
+          "title": "Réunion / intersection simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réunion et intersection d'événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons appris à décrire des événements isolés. Mais la plupart des questions probabilistes portent sur des combinaisons : \"le dé est pair OU supérieur à $4$\", \"la carte est un roi ET un cœur\". Pour répondre à ces questions, nous avons besoin de deux opérations ensemblistes fondamentales : la réunion (le \"OU\") et l'intersection (le \"ET\"). Ces opérations transforment des événements en nouveaux événements, toujours contenus dans le même univers $\\Omega$."
+            },
+            {
+              "type": "definition",
+              "term": "Réunion de deux événements",
+              "definition": "La réunion de deux événements $A$ et $B$, notée $A \\cup B$, est l'événement qui se réalise si $A$ se réalise OU si $B$ se réalise (ou les deux). En ensembliste : $A \\cup B = \\{ x \\in \\Omega \\mid x \\in A \\text{ ou } x \\in B \\}$.",
+              "example": "Au dé, $A=\\{2,4,6\\}$ (pair), $B=\\{5,6\\}$ ($>4$). $A \\cup B = \\{2,4,5,6\\}$."
+            },
+            {
+              "type": "definition",
+              "term": "Intersection de deux événements",
+              "definition": "L'intersection de deux événements $A$ et $B$, notée $A \\cap B$, est l'événement qui se réalise si $A$ se réalise ET $B$ se réalise simultanément. En ensembliste : $A \\cap B = \\{ x \\in \\Omega \\mid x \\in A \\text{ et } x \\in B \\}$.",
+              "example": "Avec les mêmes $A$ et $B$, $A \\cap B = \\{6\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez la nuance importante : en langage courant, \"ou\" peut être exclusif (l'un ou l'autre mais pas les deux) ou inclusif (l'un ou l'autre ou les deux). En mathématiques, le symbole $\\cup$ correspond toujours au \"ou\" inclusif : $A \\cup B$ contient les éléments qui sont dans $A$, dans $B$, ou dans les deux. Si vous voulez exclure le cas commun, vous devrez utiliser une construction plus précise (difference symétrique), mais ce n'est pas au programme de cette année. Pour l'intersection, pas d'ambiguïté : $A \\cap B$ ne garde que ce qui est commun aux deux."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Réunion et intersection des événements $A$ (pair) et $B$ ($>4$) au lancer de dé",
+              "sets": [
+                {
+                  "label": "$\\Omega$",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$A$",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "$B$",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme de Venn ci-dessus illustre parfaitement la réunion et l'intersection. La zone grisée qui couvre les deux cercles représente $A \\cup B$ : on y trouve $2,4$ (seulement dans $A$), $5$ (seulement dans $B$) et $6$ (dans les deux). La zone de chevauchement des deux cercles représente $A \\cap B$ : seul le $6$ s'y trouve. Cette visualisation est un outil de raisonnement puissant : quand vous devez déterminer une réunion ou une intersection, imaginez les cercles et leurs zones."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les événements de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez explicitement les ensembles $A$ et $B$ en extension (liste des éléments) ou en compréhension (propriété)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire la réunion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemblez tous les éléments qui appartiennent à $A$ ou à $B$ (sans doublons). C'est $A \\cup B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sélectionnez uniquement les éléments qui appartiennent à $A$ ET à $B$. C'est $A \\cap B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier les cas particuliers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $A \\cap B = \\varnothing$, les événements sont dits incompatibles (ou mutuellement exclusifs). Si $A \\cup B = \\Omega$, ils sont dits exhaustifs (ou couvrants)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous maîtrisez la construction de réunion et d'intersection, découvrons quelques propriétés algébriques qui simplifient grandement les raisonnements. Ces propriétés sont exactement les mêmes que pour les ensembles usuels, mais il est bon de les avoir en tête dans le contexte probabiliste. La commutativité : $A \\cup B = B \\cup A$ et $A \\cap B = B \\cap A$. L'ordre n'importe pas. L'associativité : $(A \\cup B) \\cup C = A \\cup (B \\cup C)$ et de même pour $\\cap$. On peut donc écrire $A \\cup B \\cup C$ sans parenthèses. La distributivité : $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$ et $A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)$. Ces lois permettent de transformer des expressions complexes en formes plus simples."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\cup B = B \\cup A \\quad ; \\quad A \\cap B = B \\cap A"
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux autres propriétés cruciales impliquent l'univers $\\Omega$ et l'ensemble vide $\\varnothing$ : $A \\cup \\varnothing = A$, $A \\cap \\varnothing = \\varnothing$, $A \\cup \\Omega = \\Omega$, $A \\cap \\Omega = A$. Elles traduisent des évidences : \"$A$ ou impossible\" revient à $A$ ; \"$A$ et impossible\" est impossible ; \"$A$ ou certain\" est certain ; \"$A$ et certain\" revient à $A$. Enfin, les lois de De Morgan lient réunion, intersection et complémentaire : $\\overline{A \\cup B} = \\overline{A} \\cap \\overline{B}$ et $\\overline{A \\cap B} = \\overline{A} \\cup \\overline{B}$. Elles disent que le contraire d'une réunion est l'intersection des contraires, et vice-versa. C'est un outil de simplification redoutable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer ces propriétés, travaillons sur un exemple concret un peu plus riche. Imaginez une expérience où l'on tire une carte dans un jeu de 32 cartes (valeurs : 7, 8, 9, 10, V, D, R, A ; couleurs : $\\spadesuit, \\heartsuit, \\diamondsuit, \\clubsuit$). Définissons $R$ : \"la carte est une figure (V, D, R)\", $C$ : \"la carte est un cœur\", $P$ : \"la carte est une paire (valeur paire : 8, 10, D)\". Nous allons déterminer $R \\cup C$, $R \\cap C$, $\\overline{R} \\cap P$, etc. Cet exercice montre comment combiner plusieurs événements et utiliser les lois de De Morgan pour trouver des contraires de combinaisons."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les clés pour manipuler des événements complexes. La prochaine leçon portera sur le calcul des probabilités de ces événements, en utilisant les formules qui lient probabilité de la réunion, de l'intersection et des événements contraires. Mais avant de passer aux probabilités, assurez-vous d'être à l'aise avec la construction de réunion et d'intersection, et avec l'utilisation des lois de De Morgan. Le dernier exercice de cette leçon vous propose un cas un peu plus subtil avec trois événements."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance deux dés à six faces (un rouge, un bleu). L'univers $\\Omega$ contient les $36$ couples ordonnés $(r,b)$. Soient $A$ : \"la somme des deux dés est $7$\" et $B$ : \"le dé rouge montre un $4$\". Donnez l'extension de $A$, de $B$, de $A \\cup B$ et de $A \\cap B$.",
+              "answer": "$A = \\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\}$. $B = \\{(4,1),(4,2),(4,3),(4,4),(4,5),(4,6)\\}$. $A \\cup B = A \\cup B$ (11 éléments distincts). $A \\cap B = \\{(4,3)\\}$.",
+              "hint": "Listez tous les couples donnant somme $7$. Pour $B$, fixez le premier coordinate à $4$. L'intersection est le couple commun aux deux listes.",
+              "explanation": "Il y a $6$ couples pour la somme $7$. $B$ contient les $6$ couples avec rouge $=4$. Le seul couple commun est $(4,3)$ car $4+3=7$. La réunion a $6+6-1=11$ éléments."
+            },
+            {
+              "question": "Soient $A, B, C$ trois événements d'un même univers $\\Omega$. En utilisant les lois de De Morgan, écrivez $\\overline{A \\cup B \\cup C}$ sous la forme d'une intersection de contraires. Faites de même pour $\\overline{A \\cap B \\cap C}$.",
+              "answer": "$\\overline{A \\cup B \\cup C} = \\overline{A} \\cap \\overline{B} \\cap \\overline{C}$. $\\overline{A \\cap B \\cap C} = \\overline{A} \\cup \\overline{B} \\cup \\overline{C}$.",
+              "hint": "Appliquez la loi de De Morgan deux fois : $\\overline{X \\cup Y} = \\overline{X} \\cap \\overline{Y}$. Traitez $(A \\cup B)$ comme un seul événement.",
+              "explanation": "Par associativité, $A \\cup B \\cup C = (A \\cup B) \\cup C$. Son contraire est $\\overline{A \\cup B} \\cap \\overline{C} = (\\overline{A} \\cap \\overline{B}) \\cap \\overline{C} = \\overline{A} \\cap \\overline{B} \\cap \\overline{C}$. De même pour l'intersection."
+            },
+            {
+              "question": "Dans un jeu de 32 cartes, on définit $R$ : \"figure (V,D,R)\", $C$ : \"cœur\", $P$ : \"paire (8,10,D)\". Déterminez $R \\cap C$ et $\\overline{R} \\cap P$.",
+              "answer": "$R \\cap C = \\{V\\heartsuit, D\\heartsuit, R\\heartsuit\\}$ (3 cartes). $\\overline{R} \\cap P = \\{8\\heartsuit, 8\\diamondsuit, 8\\spadesuit, 8\\clubsuit, 10\\heartsuit, 10\\diamondsuit, 10\\spadesuit, 10\\clubsuit\\}$ (8 cartes).",
+              "hint": "Les figures sont V, D, R. Les paires sont 8, 10, D. $\\overline{R}$ sont les non-figures : 7,8,9,10,A. Intersectez avec les paires.",
+              "explanation": "$R \\cap C$ : figures de cœur = valet, dame, roi de cœur. $\\overline{R}$ : cartes qui ne sont pas des figures. Parmi elles, les paires sont les 8 et les 10 (4 couleurs chacune) = 8 cartes."
+            },
+            {
+              "question": "On considère trois événements $A, B, C$ tels que $A \\cap B = \\varnothing$, $B \\cap C = \\varnothing$, mais $A \\cap C \\neq \\varnothing$. Est-il possible que $A \\cup B \\cup C = \\Omega$ ? Justifiez par un exemple concret (univers fini).",
+              "answer": "Oui, c'est possible. Exemple : $\\Omega = \\{1,2,3\\}$, $A = \\{1,2\\}$, $B = \\{3\\}$, $C = \\{2\\}$. Alors $A \\cap B = \\varnothing$, $B \\cap C = \\varnothing$, $A \\cap C = \\{2\\} \\neq \\varnothing$, et $A \\cup B \\cup C = \\Omega$.",
+              "hint": "Cherchez un univers à 3 éléments. $B$ doit être disjoint de $A$ et de $C$, mais $A$ et $C$ ont un élément commun. La réunion des trois doit couvrir tout l'univers.",
+              "explanation": "Avec $\\Omega=\\{1,2,3\\}$, on peut prendre $B=\\{3\\}$ (disjoint des autres). $A$ et $C$ partagent $2$, et $A$ contient $1$, $C$ ne contient que $2$. La réunion donne $\\{1,2,3\\}=\\Omega$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul des probabilités d'événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du sujet : comment attribuer un nombre, une probabilité, à un événement ? Ce nombre, compris entre $0$ et $1$, quantifie la chance que l'événement se réalise. Dans ce cours, nous nous plaçons dans le cadre des univers finis et équiprobables (toutes les issues ont la même chance), ce qui permet de calculer les probabilités par un simple comptage : $P(A) = \\frac{\\text{nombre d'issues favorables à } A}{\\text{nombre total d'issues dans } \\Omega}$. C'est la définition classique de Laplace. Nous verrons ensuite comment combiner les probabilités d'événements complexes grâce aux formules de réunion, d'intersection et de complémentaire."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité (cas équiprobable fini)",
+              "definition": "Si $\\Omega$ est fini et que toutes les issues sont équiprobables, la probabilité d'un événement $A$ est $P(A) = \\frac{|A|}{|\\Omega|} = \\frac{\\text{card}(A)}{\\text{card}(\\Omega)}$, où $\\text{card}(E)$ désigne le cardinal (nombre d'éléments) de l'ensemble $E$.",
+              "example": "Au lancer d'un dé équilibré, $\\Omega = \\{1,\\dots,6\\}$, $P(\\\\{2,4,6\\}) = \\frac{3}{6} = \\frac{1}{2}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette définition est intuitive : sur $6$ issues également probables, $3$ sont favorables à l'événement \"pair\", donc la chance est $3$ sur $6$, soit $1/2$. Mais attention : cette formule ne s'applique que si l'équiprobabilité est justifiée (dé non pipé, carte bien mélangée, etc.). Dans la vie réelle, il faut souvent estimer les probabilités par des fréquences observées, mais ce chapitre se concentre sur le modèle mathématique idéal. Gardez à l'esprit que $P(\\varnothing)=0$ et $P(\\Omega)=1$, et que pour tout événement $A$, $0 \\le P(A) \\le 1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A) = \\frac{|A|}{|\\Omega|} \\quad (\\text{si } \\Omega \\text{ fini et équiprobable})"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assurez-vous que l'expérience est symétrique (dé parfait, jeu de cartes bien mélangé, urne avec boules indiscernables au toucher). Si ce n'est pas le cas, la formule de comptage ne s'applique pas directement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter le cardinal de l'univers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez $N = |\\Omega|$, le nombre total d'issues possibles distinctes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter le cardinal de l'événement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez $n_A = |A|$, le nombre d'issues favorables à l'événement étudié."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer la probabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez $P(A) = \\frac{n_A}{N}$. Simplifiez la fraction si possible, ou donnez une approximation décimale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons calculer la probabilité d'un événement simple, voyons comment calculer la probabilité d'une réunion $A \\cup B$. La formule fondamentale est $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Pourquoi soustrait-on $P(A \\cap B)$ ? Parce que si on additionne simplement $P(A)$ et $P(B)$, les issues communes à $A$ et $B$ (l'intersection) sont comptées deux fois. Il faut les retirer une fois pour ne les compter qu'une seule fois. Si $A$ et $B$ sont incompatibles ($A \\cap B = \\varnothing$), alors $P(A \\cap B)=0$ et la formule se simplifie en $P(A \\cup B) = P(A) + P(B)$. C'est la formule des probabilités totales pour deux événements incompatibles."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec notre dé : $A=\\{2,4,6\\}$ (pair), $B=\\{5,6\\}$ ($>4$). $P(A)=3/6=1/2$, $P(B)=2/6=1/3$, $A \\cap B = \\{6\\}$ donc $P(A \\cap B)=1/6$. Alors $P(A \\cup B) = 1/2 + 1/3 - 1/6 = 3/6 + 2/6 - 1/6 = 4/6 = 2/3$. Vérifions par comptage direct : $A \\cup B = \\{2,4,5,6\\}$ a $4$ éléments, donc $4/6=2/3$. Cela marche !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre formule extrêmement utile concerne l'événement contraire. Puisque $A$ et $\\overline{A}$ forment une partition de $\\Omega$ (ils sont incompatibles et leur réunion est $\\Omega$), on a $P(A) + P(\\overline{A}) = P(\\Omega) = 1$. Donc $P(\\overline{A}) = 1 - P(A)$. Cela permet de calculer la probabilité d'un événement compliqué en calculant celle de son contraire, souvent plus simple. Par exemple, la probabilité d'avoir au moins un $6$ en lançant deux dés est plus facile à trouver via le contraire : \"aucun $6$ sur les deux dés\". C'est une astuce de calcul qu'il faut avoir en tête."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\overline{A}) = 1 - P(A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, abordons le cas de trois événements. La formule de réunion pour trois événements est une extension naturelle : $P(A \\cup B \\cup C) = P(A)+P(B)+P(C) - P(A \\cap B) - P(A \\cap C) - P(B \\cap C) + P(A \\cap B \\cap C)$. On ajoute les simples, on soustrait les intersections deux à deux (comptées deux fois), on ajoute l'intersection triple (comptée trois fois dans les simples, soustraite trois fois dans les doubles, donc il faut la rajouter une fois). C'est le principe d'inclusion-exclusion. Il se généralise à $n$ événements, mais pour cette année, la maîtrise pour deux et trois événements suffit amplement."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cup B \\cup C) = P(A)+P(B)+P(C) - P(A \\cap B) - P(A \\cap C) - P(B \\cap C) + P(A \\cap B \\cap C)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant d'une boîte à outils complète pour calculer des probabilités d'événements construits par réunion, intersection et complémentaire. La clé est de bien identifier les événements de base, de compter leurs cardinaux (ou d'utiliser des probabilités déjà connues), et d'appliquer les bonnes formules en vérifiant les conditions d'application (incompatibilité, exhaustivité, etc.). Le dernier exercice vous propose de mettre tout cela en œuvre sur un problème un peu plus ouvert."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'univers $\\Omega$ d'une expérience aléatoire et lister ses éléments.",
+                "Je sais identifier un événement comme un sous-ensemble de $\\Omega$ et écrire son contraire $\\overline{A}$.",
+                "Je sais construire la réunion $A \\cup B$ et l'intersection $A \\cap B$ de deux événements, et les représenter sur un diagramme de Venn.",
+                "Je connais les propriétés de commutativité, associativité, distributivité et les lois de De Morgan pour les événements.",
+                "Je sais calculer une probabilité dans le cas équiprobable fini : $P(A) = |A|/|\\Omega|$.",
+                "J'applique la formule $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ et la formule du contraire $P(\\overline{A}) = 1 - P(A)$.",
+                "Je sais utiliser le principe d'inclusion-exclusion pour trois événements."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On tire une carte au hasard dans un jeu de 32 cartes. Calculez la probabilité de l'événement $R$ : \"la carte est une figure (V, D, R)\" et celle de son contraire $\\overline{R}$.",
+              "answer": "$P(R) = \\frac{12}{32} = \\frac{3}{8}$. $P(\\overline{R}) = 1 - \\frac{3}{8} = \\frac{5}{8}$.",
+              "hint": "Il y a 3 figures par couleur (V, D, R) et 4 couleurs. Total cartes = 32.",
+              "explanation": "Nombre de figures = $3 \\times 4 = 12$. $P(R) = 12/32 = 3/8$. Le contraire est \"non-figure\", sa probabilité est $1 - 3/8 = 5/8$. On peut vérifier : non-figures = 7,8,9,10,A (5 valeurs) $\\times$ 4 couleurs = 20 cartes, $20/32 = 5/8$."
+            },
+            {
+              "question": "On lance deux dés équilibrés (rouge et bleu). Soit $A$ : \"somme = 7\", $B$ : \"dé rouge = 4\". Calculez $P(A)$, $P(B)$, $P(A \\cap B)$ et $P(A \\cup B)$.",
+              "answer": "$P(A) = \\frac{6}{36} = \\frac{1}{6}$. $P(B) = \\frac{6}{36} = \\frac{1}{6}$. $P(A \\cap B) = \\frac{1}{36}$. $P(A \\cup B) = \\frac{1}{6} + \\frac{1}{6} - \\frac{1}{36} = \\frac{11}{36}$.",
+              "hint": "L'univers a 36 couples. $A$ a 6 couples. $B$ a 6 couples. L'intersection est le couple (4,3). Appliquez la formule.",
+              "explanation": "$|\\Omega|=36$. $|A|=6$ (couples sommant à 7). $|B|=6$ (rouge=4). $|A \\cap B|=1$ (seulement (4,3)). Donc $P(A)=6/36=1/6$, $P(B)=1/6$, $P(A \\cap B)=1/36$. $P(A \\cup B)=1/6+1/6-1/36=11/36$."
+            },
+            {
+              "question": "Une urne contient 5 boules rouges, 3 vertes, 2 bleues. On tire deux boules simultanément (sans remise). Calculez la probabilité d'obtenir au moins une boule rouge. (Indication : utilisez le contraire).",
+              "answer": "$P(\\text{au moins une rouge}) = 1 - P(\\text{aucune rouge}) = 1 - \\frac{\\binom{5}{0}\\binom{5}{2}}{\\binom{10}{2}} = 1 - \\frac{10}{45} = \\frac{35}{45} = \\frac{7}{9}$.",
+              "hint": "Le contraire de \"au moins une rouge\" est \"aucune rouge\" (donc les deux boules sont vertes ou bleues). Il y a 5 boules non rouges. Nombre de façons de choisir 2 boules parmi 10 : $\\binom{10}{2}=45$. Nombre de façons de choisir 2 boules parmi les 5 non rouges : $\\binom{5}{2}=10$.",
+              "explanation": "On utilise le contraire car c'est plus simple : calculer la probabilité de tirer 0 rouge. Il y a 5 boules non rouges (3 vertes + 2 bleues). Tirages sans remise : $\\Omega$ = tous les couples de boules distinctes, $45$ équiprobables. Tirages favorables au contraire : couples de 2 boules non rouges, $10$ cas. $P(\\text{0 rouge}) = 10/45 = 2/9$. Donc $P(\\ge 1 \\text{ rouge}) = 1 - 2/9 = 7/9$."
+            },
+            {
+              "question": "Dans une classe de 30 élèves, 18 font du sport, 15 font de la musique, et 10 font les deux. On choisit un élève au hasard. Calculez la probabilité qu'il fasse du sport OU de la musique (ou les deux). Calculez aussi la probabilité qu'il ne fasse ni sport ni musique.",
+              "answer": "$P(S \\cup M) = \\frac{18+15-10}{30} = \\frac{23}{30}$. $P(\\text{ni sport ni musique}) = 1 - \\frac{23}{30} = \\frac{7}{30}$.",
+              "hint": "Utilisez la formule de réunion pour $P(S \\cup M)$. Le contraire de \"sport ou musique\" est \"ni sport ni musique\".",
+              "explanation": "$|S|=18$, $|M|=15$, $|S \\cap M|=10$. $|S \\cup M| = 18+15-10 = 23$. $P(S \\cup M) = 23/30$. Le contraire a pour cardinal $30-23=7$, donc probabilité $7/30$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

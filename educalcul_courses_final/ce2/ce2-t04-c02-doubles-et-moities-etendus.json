@@ -1,0 +1,352 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.018624+00:00",
+  "id": 170,
+  "code": "ce2-t04-c02",
+  "title": "Doubles et moitiés étendus",
+  "description": "Cours structuré Educalcul : Doubles et moitiés étendus.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Doubles et moitiés étendus",
+    "objectif_global": "Doubles et moitiés étendus",
+    "mini_lecons_imposees": [
+      "Doubles de nombres usuels.",
+      "Moitiés de nombres pairs.",
+      "Utiliser décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Doubles de nombres usuels.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Doubles de nombres usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on parle de double, on veut dire qu'on prend un nombre et qu'on l'ajoute à lui‑même. Par exemple, le double de $3$ c'est $3 + 3$, donc $6$. C'est comme si tu avais deux fois la même quantité."
+            },
+            {
+              "type": "definition",
+              "term": "double",
+              "definition": "Le double d'un nombre est le résultat de l'addition de ce nombre avec lui‑même.",
+              "example": "Le double de $5$ est $10$ car $5 + 5 = 10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les tout petits nombres que tu connais bien. Le double de $1$ fait $2$, le double de $2$ fait $4$, le double de $3$ fait $6$, le double de $4$ fait $8$ et le double de $5$ fait $10$. Tu vois, ça monte de $2$ en $2$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 4,
+              "caption": "4 unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 8,
+              "caption": "8 unités, le double de 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons les nombres de $6$ à $10$. Le double de $6$ est $12$, celui de $7$ est $14$, de $8$ est $16$, de $9$ est $18$ et de $10$ est $20$. Tu peux t'aider en pensant aux dizaines : $10$ donne $20$, donc $9$ donne $18$ car il manque $2$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 4,
+              "caption": "14 : 1 dizaine et 4 unités, double de 7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les dizaines sont faciles à doubler : $10$ devient $20$, $20$ devient $40$, $30$ devient $60$. C'est comme si tu ajoutais un zéro et que tu multipliais le chiffre des dizaines par $2$. Essaie avec $40$ : le double fait $80$."
+            },
+            {
+              "type": "display_math",
+              "latex": "2 \\times 10 = 20,\\; 2 \\times 20 = 40,\\; 2 \\times 30 = 60"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le double de $4$ ?",
+              "answer": "$8$",
+              "hint": "Ajoute $4$ à $4$.",
+              "explanation": "Le double de $4$ c'est $4 + 4 = 8$."
+            },
+            {
+              "question": "Trouve le double de $7$.",
+              "answer": "$14$",
+              "hint": "Pense à $7 + 7$ ou à $10 + 4$.",
+              "explanation": "$7 + 7 = 14$, donc le double de $7$ est $14$."
+            },
+            {
+              "question": "Double le nombre $30$.",
+              "answer": "$60$",
+              "hint": "Multiplie le chiffre des dizaines par $2$.",
+              "explanation": "$2 \\times 30 = 60$, car $3 \\times 2 = 6$ dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Moitiés de nombres pairs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Moitiés de nombres pairs"
+            },
+            {
+              "type": "paragraph",
+              "content": "La moitié, c'est quand on partage un nombre en deux parts égales. Si tu as $8$ bonbons et que tu les donnes à deux amis, chacun reçoit $4$ bonbons. $4$ est la moitié de $8$."
+            },
+            {
+              "type": "definition",
+              "term": "moitié",
+              "definition": "La moitié d'un nombre pair est le nombre qui, ajouté à lui‑même, redonne le nombre de départ.",
+              "example": "La moitié de $10$ est $5$ car $5 + 5 = 10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons les nombres pairs jusqu'à $20$. La moitié de $2$ est $1$, de $4$ est $2$, de $6$ est $3$, de $8$ est $4$, de $10$ est $5$, de $12$ est $6$, de $14$ est $7$, de $16$ est $8$, de $18$ est $9$ et de $20$ est $10$. Tu vois la régularité : la moitié augmente de $1$ à chaque fois."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "1/2 de 8 = 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les dizaines paires suivent la même idée. La moitié de $20$ est $10$, de $40$ est $20$, de $60$ est $30$, de $80$ est $40$. Il suffit de diviser le chiffre des dizaines par $2$ et de garder le zéro."
+            },
+            {
+              "type": "display_math",
+              "latex": "20 \\div 2 = 10,\\; 40 \\div 2 = 20,\\; 60 \\div 2 = 30"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi retrouver la moitié en utilisant le double que tu connais déjà. Si tu sais que le double de $7$ est $14$, alors la moitié de $14$ est $7$. C'est le même lien, mais à l'envers."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Moitié",
+                  "value": 7,
+                  "tone": "green"
+                },
+                {
+                  "label": "Moitié",
+                  "value": 7,
+                  "tone": "green"
+                }
+              ],
+              "caption": "14 partagé en deux parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la moitié de $12$ ?",
+              "answer": "$6$",
+              "hint": "Quel nombre ajouté à lui‑même donne $12$ ?",
+              "explanation": "$6 + 6 = 12$, donc la moitié de $12$ est $6$."
+            },
+            {
+              "question": "Trouve la moitié de $50$.",
+              "answer": "$25$",
+              "hint": "Divise le chiffre des dizaines par $2$.",
+              "explanation": "$50 \\div 2 = 25$, car $5 \\div 2 = 2$ dizaines et $10$ unités, soit $25$."
+            },
+            {
+              "question": "Si le double de $9$ est $18$, quelle est la moitié de $18$ ?",
+              "answer": "$9$",
+              "hint": "Utilise le lien double‑moitié.",
+              "explanation": "Le double de $9$ fait $18$, donc la moitié de $18$ revient à $9$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le nombre est grand et on ne connaît pas son double ou sa moitié par cœur. On peut le décomposer en parties plus simples, calculer chaque partie, puis rassembler les résultats."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $23$. On le sépare en $20$ et $3$. Le double de $20$ est $40$, le double de $3$ est $6$. En ajoutant $40 + 6$, on obtient $46$. Donc le double de $23$ est $46$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "23 : 2 dizaines et 3 unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 6,
+              "caption": "46 : 4 dizaines et 6 unités, double de 23"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la moitié, on fait la même chose. Avec $46$, on décompose en $40$ et $6$. La moitié de $40$ est $20$, la moitié de $6$ est $3$. En réunissant $20 + 3$, on trouve $23$. C'est l'inverse de l'exemple précédent."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "40",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Décomposition de 46 pour trouver la moitié"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sépare le nombre en dizaines et unités (ou en centaines, dizaines, unités)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le double (ou la moitié) de chaque partie séparément."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Rassembler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les résultats pour obtenir la réponse finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec un nombre à trois chiffres, comme $124$. Décompose en $100$, $20$ et $4$. Le double de $100$ est $200$, de $20$ est $40$, de $4$ est $8$. En ajoutant $200 + 40 + 8$, tu obtiens $248$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver le double d'un nombre en le décomposant.",
+                "Je sais trouver la moitié d'un nombre pair en le décomposant.",
+                "Je reconnais le lien entre double et moitié.",
+                "J'utilise la méthode en trois étapes pour les grands nombres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le double de $34$ en décomposant.",
+              "answer": "$68$",
+              "hint": "Sépare $30$ et $4$, double chaque partie.",
+              "explanation": "Double de $30$ = $60$, double de $4$ = $8$, $60 + 8 = 68$."
+            },
+            {
+              "question": "Trouve la moitié de $56$ en décomposant.",
+              "answer": "$28$",
+              "hint": "Sépare $50$ et $6$, halve chaque partie.",
+              "explanation": "Moitié de $50$ = $25$, moitié de $6$ = $3$, $25 + 3 = 28$."
+            },
+            {
+              "question": "Double le nombre $124$ en utilisant la décomposition.",
+              "answer": "$248$",
+              "hint": "Décompose en $100$, $20$, $4$.",
+              "explanation": "Double de $100$ = $200$, de $20$ = $40$, de $4$ = $8$. Somme = $248$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Comparer des données dans des tableaux et graphiques",
+  "blocks": [
+    {
+      "title": "Lecture d'un tableau",
+      "content": "Dans le tableau des fruits préférés, $12$ élèves aiment les pommes et $8$ élèves aiment les bananes. Il y a {{1}} élèves qui préfèrent les pommes que les bananes.",
+      "correctAnswer": "4",
+      "blanks": [
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer les deux quantités, on effectue une soustraction : $12 - 8 = 4$. Il y a donc $4$ élèves de plus pour les pommes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un diagramme en barres",
+      "content": "Le diagramme montre le nombre de livres lus en un mois. Julie a lu $6$ livres et Marc a lu $10$ livres. Marc a lu {{1}} livres que Julie. Le nombre de livres de Marc est {{2}} que celui de Julie.",
+      "correctAnswer": "4|plus",
+      "blanks": [
+        "4",
+        "plus"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare $10$ et $6$. On calcule la différence : $10 - 6 = 4$. Comme $10$ est supérieur à $6$, Marc a lu plus de livres.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus en un mois",
+        "bars": [
+          {
+            "label": "Julie",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Marc",
+            "value": 10,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Comparaison globale",
+      "content": "Le graphique indique que le groupe A a marqué $15$ points, le groupe B a marqué $22$ points et le groupe C a marqué $18$ points. Le groupe qui a le score le {{1}} est le groupe {{2}}, tandis que le groupe qui a le score le plus faible est le groupe {{3}}.",
+      "correctAnswer": "plus élevé|B|A",
+      "blanks": [
+        "plus élevé",
+        "B",
+        "A"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les trois nombres : $15$, $22$ et $18$. Le nombre le plus grand est $22$, correspondant au groupe B. Le nombre le plus petit est $15$, correspondant au groupe A.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Scores des groupes",
+        "bars": [
+          {
+            "label": "Groupe A",
+            "value": 15,
+            "tone": "red"
+          },
+          {
+            "label": "Groupe B",
+            "value": 22,
+            "tone": "gold"
+          },
+          {
+            "label": "Groupe C",
+            "value": 18,
+            "tone": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

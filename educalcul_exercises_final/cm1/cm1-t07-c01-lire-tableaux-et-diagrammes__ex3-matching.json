@@ -1,0 +1,171 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Répondre",
+  "title": "Lire des tableaux et des diagrammes",
+  "blocks": [
+    {
+      "title": "Lecture d'un tableau",
+      "content": "Relie chaque animal au nombre d'élèves qui l'ont choisi.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Chien",
+          "right": "$8$"
+        },
+        {
+          "left": "Chat",
+          "right": "$12$"
+        },
+        {
+          "left": "Lapin",
+          "right": "$5$"
+        },
+        {
+          "left": "Hamster",
+          "right": "$3$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans le tableau, chaque ligne associe un animal à un effectif. Il suffit de lire la valeur en face de chaque animal : le chien correspond à $8$, le chat à $12$, le lapin à $5$ et le hamster à $3$.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "8"
+          ],
+          [
+            "Chat",
+            "12"
+          ],
+          [
+            "Lapin",
+            "5"
+          ],
+          [
+            "Hamster",
+            "3"
+          ]
+        ],
+        "caption": "Animaux préférés des élèves de CM1"
+      }
+    },
+    {
+      "title": "Lecture d'un diagramme en barres",
+      "content": "Relie chaque animal à la hauteur de sa barre sur le diagramme.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Chien",
+          "right": "$8$"
+        },
+        {
+          "left": "Chat",
+          "right": "$12$"
+        },
+        {
+          "left": "Lapin",
+          "right": "$5$"
+        },
+        {
+          "left": "Hamster",
+          "right": "$3$"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur le diagramme en barres, la hauteur de chaque barre indique l'effectif. La barre du chat monte jusqu'à $12$, celle du chien jusqu'à $8$, celle du lapin jusqu'à $5$ et celle du hamster jusqu'à $3$.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CM1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 12,
+            "tone": "gold"
+          },
+          {
+            "label": "Lapin",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Hamster",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Interpréter un diagramme circulaire",
+      "content": "Relie chaque question à la bonne réponse d'après le diagramme.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'animal le plus choisi",
+          "right": "Chat"
+        },
+        {
+          "left": "L'animal le moins choisi",
+          "right": "Hamster"
+        },
+        {
+          "left": "Nombre total d'élèves interrogés",
+          "right": "$28$"
+        },
+        {
+          "left": "Différence entre le chat et le chien",
+          "right": "$4$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le chat a la plus grande part ($12$), c'est le plus choisi. Le hamster a la plus petite part ($3$), c'est le moins choisi. Le total est la somme de tous les effectifs : $8 + 12 + 5 + 3 = 28$. La différence entre le chat ($12$) et le chien ($8$) est $12 - 8 = 4$.",
+      "points": 2,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Animaux préférés des élèves de CM1",
+        "slices": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 12,
+            "tone": "gold"
+          },
+          {
+            "label": "Lapin",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Hamster",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Problèmes type DNB",
+  "title": "Ordre des étapes d'algorithmes type DNB",
+  "blocks": [
+    {
+      "title": "Moyenne de trois nombres",
+      "content": "Rangez les étapes suivantes dans l'ordre chronologique pour écrire un algorithme qui calcule la moyenne de trois nombres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire les trois nombres $a$, $b$, $c$",
+        "Calculer la somme $s = a + b + c$",
+        "Calculer la moyenne $m = s / 3$",
+        "Afficher la moyenne $m$"
+      ],
+      "explanation": "L'algorithme commence par la lecture des trois nombres, puis effectue la somme, divise par 3 pour obtenir la moyenne, et enfin affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de deux nombres",
+      "content": "Rangez les étapes suivantes dans l'ordre chronologique pour écrire un algorithme qui détermine le plus grand de deux nombres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire le premier nombre $a$",
+        "Lire le second nombre $b$",
+        "Si $a > b$ alors $max = a$ sinon $max = b$",
+        "Afficher $max$"
+      ],
+      "explanation": "On lit d'abord les deux nombres, puis on les compare avec une structure conditionnelle pour stocker le maximum, enfin on affiche ce maximum.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation du premier degré",
+      "content": "Rangez les étapes suivantes dans l'ordre chronologique pour écrire un algorithme qui résout l'équation $ax + b = 0$ avec $a \\neq 0$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire le coefficient $a$",
+        "Lire le coefficient $b$",
+        "Vérifier que $a \\neq 0$",
+        "Calculer la solution $x = -b / a$",
+        "Afficher la solution $x$"
+      ],
+      "explanation": "L'algorithme lit les coefficients, vérifie que $a$ n'est pas nul pour éviter une division par zéro, calcule $x = -b/a$, puis affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

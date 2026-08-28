@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 369,
+  "_course_code": "6eme-t08-c02-moyenne-et-indicateurs-simples",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Comparer",
+  "title": "Comparer des séries statistiques : moyenne, médiane, étendue",
+  "questions": [
+    {
+      "text": "Deux classes de 6e passent le même contrôle de mathématiques sur 20 points. La classe A a une moyenne de $12,5$ et la classe B une moyenne de $11,8$. Quelle affirmation est correcte ?",
+      "options": [
+        "La classe A a obtenu de meilleurs résultats en moyenne que la classe B.",
+        "La classe B a obtenu de meilleurs résultats en moyenne que la classe A.",
+        "Les deux classes ont obtenu exactement les mêmes résultats.",
+        "On ne peut pas comparer car les moyennes sont trop proches."
+      ],
+      "correctAnswer": "La classe A a obtenu de meilleurs résultats en moyenne que la classe B.",
+      "explanation": "La moyenne est un indicateur de position qui résume le niveau global d'une série. Une moyenne plus élevée signifie un niveau global plus élevé. Ici $12,5 > 11,8$, donc la classe A a une meilleure performance moyenne.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare les hauteurs (en cm) de deux groupes d'élèves. Groupe 1 : médiane $155$, étendue $20$. Groupe 2 : médiane $155$, étendue $35$. Que peut-on affirmer avec certitude ?",
+      "options": [
+        "Les deux groupes ont la même dispersion des tailles.",
+        "Le groupe 2 est plus homogène que le groupe 1.",
+        "Le groupe 1 est plus homogène que le groupe 2.",
+        "La plus grande taille est identique dans les deux groupes."
+      ],
+      "correctAnswer": "Le groupe 1 est plus homogène que le groupe 2.",
+      "explanation": "La médiane identique ($155$ cm) indique que la valeur centrale est la même. L'étendue mesure la dispersion (différence entre max et min). Une étendue plus petite ($20 < 35$) signifie que les valeurs sont moins écartées, donc le groupe 1 est plus homogène.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un prof compare les notes de deux devoirs. Devoir 1 : moyenne $10$, médiane $12$. Devoir 2 : moyenne $11$, médiane $10$. Quel devoir a des résultats globalement plus élevés selon la moyenne ?",
+      "options": [
+        "Le Devoir 1 car sa médiane est plus grande.",
+        "Le Devoir 2 car sa moyenne est plus grande.",
+        "Les deux devoirs sont équivalents.",
+        "Le Devoir 1 car sa moyenne est plus petite."
+      ],
+      "correctAnswer": "Le Devoir 2 car sa moyenne est plus grande.",
+      "explanation": "La question demande de comparer 'globalement' selon la moyenne. La moyenne du Devoir 2 est $11$, celle du Devoir 1 est $10$. $11 > 10$, donc le Devoir 2 a une moyenne plus élevée. La médiane donne une information différente (valeur centrale) mais ne contredit pas la comparaison des moyennes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux séries de 5 notes ont la même moyenne $12$. Série X : $10, 11, 12, 13, 14$. Série Y : $2, 8, 12, 16, 20$. Quel indicateur permet de dire que la série X est plus homogène ?",
+      "options": [
+        "La moyenne car elle est identique.",
+        "La médiane car elle est identique.",
+        "L'étendue car elle est plus petite pour X.",
+        "Le nombre de valeurs car il est identique."
+      ],
+      "correctAnswer": "L'étendue car elle est plus petite pour X.",
+      "explanation": "L'homogénéité se mesure par la dispersion. Étendue X = $14 - 10 = 4$. Étendue Y = $20 - 2 = 18$. L'étendue de X ($4$) est bien plus petite que celle de Y ($18$), ce qui prouve que les notes de X sont moins dispersées, donc plus homogènes. La moyenne et la médiane sont identiques ($12$) et ne permettent pas de différencier la dispersion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour choisir le meilleur coureur sur 100 m entre Léa et Tom, on regarde leurs 5 derniers chronos (en secondes). Léa : moyenne $12,4$, étendue $0,8$. Tom : moyenne $12,2$, étendue $1,5$. Qui choisir pour une course où la régularité est primordiale ?",
+      "options": [
+        "Tom car sa moyenne est plus basse (plus rapide).",
+        "Léa car sa moyenne est plus haute.",
+        "Léa car son étendue est plus petite (plus régulière).",
+        "Tom car son étendue est plus grande."
+      ],
+      "correctAnswer": "Léa car son étendue est plus petite (plus régulière).",
+      "explanation": "La question précise que la 'régularité est primordiale'. La régularité se mesure par la dispersion : une étendue faible signifie des performances stables. Léa a une étendue de $0,8$ s contre $1,5$ s pour Tom. Léa est donc plus régulière. Tom est plus rapide en moyenne ($12,2 < 12,4$) mais moins constant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

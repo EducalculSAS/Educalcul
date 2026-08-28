@@ -1,0 +1,148 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Algorithmes de lecture de tableaux et diagrammes",
+  "blocks": [
+    {
+      "title": "Calcul du total",
+      "content": "Le tableau ci-dessous donne le nombre de livres lus par cinq élèves. Écrire un algorithme (en langage naturel ou pseudo‑code) qui permet de calculer le nombre total de livres lus par l'ensemble des élèves.",
+      "correctAnswer": "Initialiser le total à zéro. Pour chaque ligne du tableau, lire le nombre de livres lus et l'ajouter au total. Après avoir traité toutes les lignes, afficher la valeur du total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par mettre le total à zéro. Ensuite, on parcourt chaque élève : on récupère la valeur dans la colonne « Livres lus » et on l'ajoute au total. Une fois tous les élèves traités, le total contient la somme de tous les livres lus. On affiche alors ce résultat.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Livres lus"
+        ],
+        "rows": [
+          [
+            "Alice",
+            "3"
+          ],
+          [
+            "Bob",
+            "5"
+          ],
+          [
+            "Chloé",
+            "2"
+          ],
+          [
+            "David",
+            "4"
+          ],
+          [
+            "Emma",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Recherche du maximum",
+      "content": "Le diagramme en barres ci-dessous représente les notes obtenues par six élèves à un contrôle. Écrire un algorithme qui détermine la note maximale.",
+      "correctAnswer": "Initialiser le maximum avec la première note du diagramme. Pour chaque note suivante, si la note est plus grande que le maximum actuel, remplacer le maximum par cette note. Après avoir examiné toutes les notes, afficher le maximum.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par prendre la première note comme maximum provisoire. Ensuite, on compare chaque note suivante au maximum actuel : si elle est plus grande, elle devient le nouveau maximum. À la fin du parcours, le maximum retenu est la note la plus élevée de l'ensemble.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Notes des élèves",
+        "bars": [
+          {
+            "label": "Alice",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Bob",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Chloé",
+            "value": 9,
+            "tone": "blue"
+          },
+          {
+            "label": "David",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Emma",
+            "value": 11,
+            "tone": "blue"
+          },
+          {
+            "label": "François",
+            "value": 13,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Le tableau suivant indique l'âge de huit élèves. Écrire un algorithme qui calcule l'âge moyen de ce groupe.",
+      "correctAnswer": "Initialiser la somme à zéro et le compteur à zéro. Pour chaque ligne du tableau, lire l'âge, l'ajouter à la somme et augmenter le compteur de un. Après le parcours, diviser la somme par le compteur pour obtenir la moyenne. Afficher la moyenne.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne tous les âges tout en comptant le nombre d'élèves. La somme divisée par le nombre d'élèves donne l'âge moyen. L'algorithme parcourt le tableau une seule fois, met à jour la somme et le compteur, puis effectue la division finale.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Âge"
+        ],
+        "rows": [
+          [
+            "Alice",
+            "11"
+          ],
+          [
+            "Bob",
+            "12"
+          ],
+          [
+            "Chloé",
+            "11"
+          ],
+          [
+            "David",
+            "12"
+          ],
+          [
+            "Emma",
+            "11"
+          ],
+          [
+            "François",
+            "12"
+          ],
+          [
+            "Gabriel",
+            "11"
+          ],
+          [
+            "Hélène",
+            "12"
+          ]
+        ]
+      }
+    }
+  ]
+}

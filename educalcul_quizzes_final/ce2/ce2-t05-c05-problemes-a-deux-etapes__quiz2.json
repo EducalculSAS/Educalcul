@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 182,
+  "_course_code": "ce2-t05-c05-problemes-a-deux-etapes",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Calculer résultat intermédiaire",
+  "title": "Problèmes à deux étapes : résultat intermédiaire",
+  "questions": [
+    {
+      "text": "Il y a $15$ billes dans une boîte. On ajoute $7$ billes, puis on en retire $6$. Combien de billes restent dans la boîte ?",
+      "options": [
+        "$16$ billes",
+        "$22$ billes",
+        "$8$ billes",
+        "$28$ billes"
+      ],
+      "correctAnswer": "$16$ billes",
+      "explanation": "On calcule d'abord le résultat intermédiaire : $15 + 7 = 22$ billes. Ensuite on soustrait les $6$ billes retirées : $22 - 6 = 16$ billes. L'option $22$ billes correspond à l'oubli de la soustraction, $8$ billes à une soustraction avant l'addition, et $28$ billes à une addition des deux nombres sans tenir compte de l'ordre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une classe a $4$ tables. Sur chaque table il y a $5$ livres. On ajoute $3$ livres sur la table du fond. Combien de livres y a-t-il au total ?",
+      "options": [
+        "$23$ livres",
+        "$20$ livres",
+        "$12$ livres",
+        "$35$ livres"
+      ],
+      "correctAnswer": "$23$ livres",
+      "explanation": "Le résultat intermédiaire est le nombre de livres au départ : $4 \\times 5 = 20$ livres. On ajoute ensuite les $3$ livres supplémentaires : $20 + 3 = 23$ livres. L'option $20$ livres oublie l'ajout, $12$ livres correspond à $4 + 5 + 3$, et $35$ livres à une multiplication erronée $5 \\times 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $30$ bonbons. On en donne $10$ à un ami, puis on partage le reste entre $4$ enfants. Combien de bonbons chaque enfant reçoit-il ?",
+      "options": [
+        "$5$ bonbons",
+        "$20$ bonbons",
+        "$8$ bonbons",
+        "$10$ bonbons"
+      ],
+      "correctAnswer": "$5$ bonbons",
+      "explanation": "On calcule d'abord le reste après le don : $30 - 10 = 20$ bonbons. Puis on divise ce reste par $4$ : $20 / 4 = 5$ bonbons par enfant. L'option $20$ bonbons oublie la division, $8$ bonbons correspond à $30 / 4$ arrondi, et $10$ bonbons au nombre donné à l'ami.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $6$ paquets de crayons. Chaque paquet contient $8$ crayons. On achète $2$ paquets de plus. Combien de crayons a-t-on au total ?",
+      "options": [
+        "$64$ crayons",
+        "$48$ crayons",
+        "$56$ crayons",
+        "$72$ crayons"
+      ],
+      "correctAnswer": "$64$ crayons",
+      "explanation": "On peut calculer le total de paquets : $6 + 2 = 8$ paquets, puis multiplier par $8$ : $8 \\times 8 = 64$ crayons. Sinon, résultat intermédiaire : $6 \\times 8 = 48$ crayons, plus $2 \\times 8 = 16$ crayons, total $48 + 16 = 64$. L'option $48$ crayons oublie les nouveaux paquets, $56$ crayons correspond à $7 \\times 8$, et $72$ crayons à $9 \\times 8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marie a $20$ euros. Elle achète un livre à $7$ euros et un cahier à $4$ euros. Combien d'euros lui reste-t-il ?",
+      "options": [
+        "$9$ euros",
+        "$13$ euros",
+        "$16$ euros",
+        "$11$ euros"
+      ],
+      "correctAnswer": "$9$ euros",
+      "explanation": "On additionne d'abord les dépenses : $7 + 4 = 11$ euros. Ensuite on soustrait ce total de la somme initiale : $20 - 11 = 9$ euros. L'option $13$ euros correspond à $20 - 7$ seulement, $16$ euros à $20 - 4$ seulement, et $11$ euros au total des dépenses sans soustraction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

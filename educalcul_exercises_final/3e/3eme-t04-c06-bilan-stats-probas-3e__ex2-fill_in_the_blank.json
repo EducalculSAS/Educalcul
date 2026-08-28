@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Statistiques et Probabilités - Notions clés",
+  "blocks": [
+    {
+      "title": "Vocabulaire statistique",
+      "content": "Dans une étude statistique, l'ensemble des individus observés constitue la {{1}}. La caractéristique étudiée sur chaque individu est le {{2}}. La somme de tous les effectifs est l'{{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "population",
+        "caractère",
+        "effectif total"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La population est l'ensemble des individus (personnes, objets, animaux...) étudiés. Le caractère est la propriété observée (âge, taille, couleur...). L'effectif total est la somme des effectifs de chaque valeur du caractère, noté souvent $N$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Indicateurs de position et de dispersion",
+      "content": "Pour une série statistique, la {{1}} est le quotient de la somme des valeurs par l'effectif total. La {{2}} est la valeur qui partage la série ordonnée en deux parts égales. L'{{3}} mesure la dispersion totale : c'est la différence entre le maximum et le minimum.",
+      "correctAnswer": "",
+      "blanks": [
+        "moyenne|moyenne arithmétique",
+        "médiane",
+        "étendue"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne (centre de gravité) se calcule $\\frac{\\sum x_i n_i}{N}$. La médiane sépare la population en deux groupes d'effectifs égaux. L'étendue = max - min, indicateur de dispersion global.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Notions de probabilité",
+      "content": "Lors d'une expérience aléatoire, l'ensemble des issues possibles s'appelle l'{{1}}. Si les issues sont équiprobables, la probabilité d'un événement A vaut $\\frac{\\text{nombre de cas favorables}}{{\\text{{2}}}}$. La somme des probabilités de toutes les issues élémentaires vaut {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "univers|espace des possibles",
+        "nombre de cas possibles|total des cas possibles",
+        "1|un"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'univers (ou espace des possibles) est noté $\\Omega$. Dans le cas équiprobable, $p(A) = \\frac{\\text{card}(A)}{\\text{card}(\\Omega)}$. La somme des probabilités des issues élémentaires (issues de l'univers) est toujours égale à 1.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

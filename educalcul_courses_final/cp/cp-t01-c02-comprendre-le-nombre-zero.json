@@ -1,0 +1,319 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.478335+00:00",
+  "id": 2,
+  "code": "cp-t01-c02",
+  "title": "Comprendre le nombre zéro",
+  "description": "Cours structuré Educalcul : Comprendre le nombre zéro.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Comprendre le nombre zéro",
+    "objectif_global": "Comprendre le nombre zéro",
+    "mini_lecons_imposees": [
+      "Associer zéro à l'absence d'objet.",
+      "Distinguer zéro d'une petite quantité.",
+      "Utiliser 0 dans une situation concrète."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Associer zéro à l'absence d'objet.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro, c'est rien du tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande boîte en carton posée sur la table. Elle est complètement vide, il n'y a aucun jouet, aucun crayon, rien du tout. Ce vide absolu, on l'appelle zéro. C'est le mot magique pour dire qu'il n'y a rien."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 0,
+              "caption": "0 : zéro unité, zéro dizaine, zéro centaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, observons comment le zéro se voit quand on le met à côté d'un tout petit nombre comme un."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends deux petites assiettes rondes. La première reste vide, la seconde reçoit une seule cerise bien rouge. L'assiette vide montre le zéro, l'autre montre un. Tu peux toucher la cerise et sentir la différence."
+            },
+            {
+              "type": "number_line",
+              "caption": "Zéro et un sur la droite numérique",
+              "min": -1,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien finir cette partie, essayons d'écrire le zéro sur une feuille blanche et de le dire tout fort ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace un petit cercle qui commence en haut, descend tout droit le long du papier et revient exactement au point de départ. Ce rond bien fermé, c'est le chiffre zéro. Répète le geste trois fois de suite pour bien le mémoriser."
+            },
+            {
+              "type": "definition",
+              "term": "zéro",
+              "definition": "Le zéro est le nombre qui représente l'absence totale d'objets.",
+              "example": "Dans une boîte vide, il y a $0$ jouet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'objets y a-t-il dans une boîte vide ?",
+              "answer": "$0$",
+              "hint": "Regarde la boîte, il n'y a rien.",
+              "explanation": "Une boîte vide ne contient aucun objet, donc la quantité est zéro."
+            },
+            {
+              "question": "Si une assiette est vide et l'autre a une cerise, quelle assiette montre le zéro ?",
+              "answer": "L'assiette vide",
+              "hint": "Compare les deux assiettes.",
+              "explanation": "L'assiette sans cerise représente l'absence, c'est le zéro."
+            },
+            {
+              "question": "Écris le chiffre zéro sur ton cahier.",
+              "answer": "Un rond fermé",
+              "hint": "Commence en haut, fais un tour complet.",
+              "explanation": "Le zéro s'écrit comme un cercle qui revient au point de départ."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer zéro d'une petite quantité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Zéro ou un petit peu ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose deux boîtes devant toi. La première est vide, la deuxième contient une seule bille brillante. La boîte vide représente le zéro, la boîte avec une bille représente un. Regarde bien, le vide n'est pas un petit peu, c'est rien du tout."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                0
+              ],
+              "right": [
+                1
+              ],
+              "caption": "Boîte vide (0) vs boîte avec 1 bille"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, comparons le zéro avec un nombre un peu plus grand, comme deux, pour bien voir la différence."
+            },
+            {
+              "type": "paragraph",
+              "content": "Garde la boîte vide et ajoute une deuxième boîte qui contient deux billes, une bleue et une rouge. La boîte vide montre toujours zéro, la boîte avec deux billes montre deux. Tu vois que zéro ne devient jamais un ou deux, il reste le vide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, entraînons-nous à dire zéro, un et deux en les écrivant chacun à tour de rôle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Écris le chiffre zéro en formant un rond, puis écris le chiffre un comme une petite barre verticale, et enfin le chiffre deux avec une courbe qui monte et descend. Lis-les à voix haute : zéro, un, deux. Répète trois fois pour bien les distinguer."
+            },
+            {
+              "type": "definition",
+              "term": "quantité",
+              "definition": "Une quantité, c'est le nombre d'objets qu'il y a dans un groupe.",
+              "example": "Il y a $2$ pommes, la quantité est $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La première boîte est vide, la deuxième a une bille. Quel nombre correspond à la boîte vide ?",
+              "answer": "$0$",
+              "hint": "Le vide, c'est zéro.",
+              "explanation": "La boîte sans bille ne contient rien, donc zéro."
+            },
+            {
+              "question": "La boîte vide et la boîte avec deux billes. Quel nombre pour la boîte vide ?",
+              "answer": "$0$",
+              "hint": "Même avec plus de billes à côté, le vide reste zéro.",
+              "explanation": "Le zéro ne change pas, il signifie aucune bille."
+            },
+            {
+              "question": "Écris dans l'ordre : zéro, un, deux.",
+              "answer": "$0$, $1$, $2$",
+              "hint": "Commence par le rond, puis la barre, puis la courbe.",
+              "explanation": "Chaque chiffre a sa forme : zéro rond, un trait, deux courbe."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser 0 dans une situation concrète.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le zéro dans la vie de tous les jours"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as trois pommes dans un panier. Tu donnes les trois pommes à tes amis. Le panier est maintenant vide. Pour dire qu'il n'y a plus de pommes, on écrit $0$. C'est le zéro qui raconte l'absence."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "0",
+                "3"
+              ],
+              "result": "3",
+              "carries": [],
+              "caption": "0 + 3 = 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment le zéro apparaît quand on additionne rien à un nombre, pour bien comprendre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as trois crayons et que tu n'en ajoutes aucun, tu as toujours trois crayons. L'addition $0 + 3$ donne $3$. Le zéro ne change pas le total, il est comme un invité silencieux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, regardons ce qui se passe quand on retire exactement ce qu'on possède, pour voir le zéro apparaître."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as trois billes dans la main. Tu donnes les trois billes à ton frère. Il ne te reste plus rien. La soustraction $3 - 3$ donne $0$. Le zéro marque la fin du jeu."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Avant et après le don",
+              "bars": [
+                {
+                  "label": "Avant",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Après",
+                  "value": 0,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, jouons à un petit jeu de score où le zéro veut dire aucun point."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une tirelire vide. Il n'y a aucune pièce dedans, pas même un centime. On peut dire que le total est $0$ centime. C'est le zéro qui nous aide à compter quand il n'y a rien."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [],
+              "target": 0,
+              "caption": "Tirelire vide, total 0 centime"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais associer zéro à l'absence d'objet.",
+                "Je sais distinguer zéro d'une petite quantité.",
+                "Je sais utiliser 0 dans une situation concrète."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as trois pommes, tu donnes les trois. Combien en reste-t-il ?",
+              "answer": "$0$",
+              "hint": "Tout a été donné.",
+              "explanation": "3 moins 3 fait 0, le panier est vide."
+            },
+            {
+              "question": "Quel est le résultat de $0 + 3$ ?",
+              "answer": "$3$",
+              "hint": "Ajouter rien ne change rien.",
+              "explanation": "Le zéro n'ajoute rien, le total reste 3."
+            },
+            {
+              "question": "Dans une tirelire vide, quel est le total en centimes ?",
+              "answer": "$0$",
+              "hint": "Aucune pièce n'est dedans.",
+              "explanation": "Sans pièce, la somme est zéro centime."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

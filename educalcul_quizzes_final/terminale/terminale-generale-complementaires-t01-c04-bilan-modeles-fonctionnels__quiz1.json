@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 640,
+  "_course_code": "terminale-generale-complementaires-t01-c04-bilan-modeles-fonctionnels",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Choix d'outil",
+  "title": "Choix du modèle fonctionnel",
+  "questions": [
+    {
+      "text": "Une population de bactéries augmente de $12 \\%$ toutes les heures. Quel type de modèle fonctionnel est le plus approprié pour modéliser l'évolution de l'effectif $N(t)$ en fonction du temps $t$ ?",
+      "options": [
+        "Un modèle linéaire",
+        "Un modèle exponentiel",
+        "Un modèle logarithmique",
+        "Un modèle rationnel"
+      ],
+      "correctAnswer": "Un modèle exponentiel",
+      "explanation": "Une augmentation proportionnelle à la valeur actuelle (taux de croissance constant de $12 \\%$) caractérise une progression géométrique ou exponentielle de la forme $N(t) = N_0 \\times (1,12)^t$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un abonnement téléphonique comprend un forfait fixe de $10$ euros par mois plus $0,05$ euro par minute d'appel. Quelle fonction modélise le coût mensuel $C(x)$ en fonction du nombre de minutes $x$ ?",
+      "options": [
+        "Une fonction de type $f(x) = a \\times e^{bx}$",
+        "Une fonction de type $f(x) = a + bx$",
+        "Une fonction de type $f(x) = a \\times x^b$",
+        "Une fonction de type $f(x) = \\frac{a}{x}$"
+      ],
+      "correctAnswer": "Une fonction de type $f(x) = a + bx$",
+      "explanation": " Le coût varie de manière constante par minute ajoutée, ce qui correspond à une croissance linéaire. Ici, $a = 10$ et $b = 0,05$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe qu'une quantité $Q(t)$ diminue de telle sorte que sa vitesse de diminution est proportionnelle à la quantité restante. Quel outil mathématique doit on utiliser pour exprimer $Q(t)$ ?",
+      "options": [
+        "Une suite arithmétique",
+        "Une fonction affine",
+        "Une fonction exponentielle décroissante",
+        "Une fonction racine carrée"
+      ],
+      "correctAnswer": "Une fonction exponentielle décroissante",
+      "explanation": "Lorsque la variation d'une grandeur est proportionnelle à la grandeur elle-même, on utilise un modèle exponentiel. Comme la quantité diminue, le coefficient est négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un chercheur remarque que le temps de réaction d'un sujet diminue rapidement au début de l'expérience, puis se stabilise très lentement vers une valeur minimale. Quel modèle est le plus cohérent pour décrire ce phénomène ?",
+      "options": [
+        "Un modèle linéaire",
+        "Un modèle exponentiel",
+        "Un modèle quadratique",
+        "Un modèle de type $f(x) = a \\times e^{-bx} + c$"
+      ],
+      "correctAnswer": "Un modèle de type $f(x) = a \\times e^{-bx} + c$",
+      "explanation": "La présence d'une asymptote horizontale (la valeur minimale) nécessite l'ajout d'une constante $c$ à un modèle exponentiel décroissant pour traduire la stabilisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite modéliser la concentration d'un médicament dans le sang. On sait que la concentration chute selon un pourcentage constant par heure. Quelle expression est la plus adaptée ?",
+      "options": [
+        "$C(t) = C_0 - kt$",
+        "$C(t) = C_0 \\times e^{-kt}$",
+        "$C(t) = C_0 \\times t^k$",
+        "$C(t) = C_0 + \\ln(kt)$"
+      ],
+      "correctAnswer": "$C(t) = C_0 \\times e^{-kt}$",
+      "explanation": "Un pourcentage constant de diminution correspond à une décroissance exponentielle. Le terme $e^{-kt}$ traduit cette chute proportionnelle à la concentration restante.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

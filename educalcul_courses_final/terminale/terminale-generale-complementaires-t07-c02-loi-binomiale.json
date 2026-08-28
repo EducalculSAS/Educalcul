@@ -1,0 +1,500 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.551045+00:00",
+  "id": 662,
+  "code": "terminale-generale-complementaires-t07-c02",
+  "title": "Loi binomiale",
+  "description": "Cours structuré Educalcul : Loi binomiale.",
+  "subject": "Expériences indépendantes et échantillonnage",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Expériences indépendantes et échantillonnage",
+    "titre_du_cours": "Loi binomiale",
+    "objectif_global": "Loi binomiale",
+    "mini_lecons_imposees": [
+      "Paramètres.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Expériences indépendantes et échantillonnage",
+      "lessons": [
+        {
+          "title": "Paramètres.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Paramètres de la loi binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreuses situations concrètes, on répète une même expérience un nombre fixé de fois et on s'intéresse au nombre de fois où un résultat particulier, que l'on appelle « succès », se produit. Prenons l'exemple d'un contrôle qualité dans une usine : on prélève $20$ pièces sur une chaîne de production et on vérifie si chaque pièce est conforme. Chaque vérification est une épreuve indépendante, le résultat est soit « conforme » (succès) soit « non conforme » (échec), et la probabilité qu'une pièce soit conforme ne change pas d'une pièce à l'autre. Ce cadre est exactement celui d'une expérience de Bernoulli répétée un nombre déterminé de fois, et la variable aléatoire qui compte le nombre de succès suit une loi binomiale. Comprendre les paramètres de cette loi, c'est savoir lire le problème pour en extraire le nombre d'essais et la probabilité de succès à chaque essai."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience de Bernoulli",
+              "definition": "Une expérience aléatoire qui ne comporte que deux issues possibles, traditionnellement appelées « succès » et « échec », avec une probabilité de succès notée $p$ (et donc une probabilité d'échec $1-p$).",
+              "example": "Lancer une pièce de monnaie équilibrée : succès = « face » avec $p=0,5$."
+            },
+            {
+              "type": "definition",
+              "term": "Loi binomiale",
+              "definition": "La loi de probabilité du nombre de succès $X$ obtenus lors de $n$ expériences de Bernoulli indépendantes et identiquement distribuées, chacune ayant une probabilité de succès $p$. On note $X \\sim \\mathcal{B}(n,p)$.",
+              "example": "Nombre de « 6 » obtenus en lançant $10$ fois un dé équilibré : $X \\sim \\mathcal{B}(10,\\frac{1}{6})$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux paramètres qui caractérisent complètement une loi binomiale sont donc $n$, le nombre total d'essais, et $p$, la probabilité de succès à chaque essai. Le paramètre $n$ est un entier naturel non nul ; il traduit la taille de l'échantillon ou le nombre de répétitions prévues. Le paramètre $p$ est un nombre réel compris entre $0$ et $1$ ; il exprime la chance de succès pour une épreuve unique. Une fois ces deux nombres identifiés, la distribution de probabilité de $X$ est entièrement déterminée."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X = k) = \\binom{n}{k} p^{k} (1-p)^{n-k} \\quad \\text{pour } k = 0,1,\\dots,n"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier l'indépendance et l'identicité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque essai doit être réalisé dans les mêmes conditions et le résultat d'un essai ne doit pas influencer les suivants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les essais",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre total d'essais programmés donne la valeur de $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier la probabilité de succès",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après l'énoncé ou les données techniques, relever la probabilité $p$ qu'un essai se termine par un succès."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire la loi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Noter $X \\sim \\mathcal{B}(n,p)$ et utiliser la formule de probabilité pour tout calcul ultérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilité pour deux essais indépendants avec $p=0,3$",
+              "branches": [
+                {
+                  "label": "Essai 1",
+                  "prob": "0.3",
+                  "children": [
+                    {
+                      "label": "Essai 2",
+                      "prob": "0.3",
+                      "children": []
+                    },
+                    {
+                      "label": "Essai 2",
+                      "prob": "0.7",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "label": "Essai 1",
+                  "prob": "0.7",
+                  "children": [
+                    {
+                      "label": "Essai 2",
+                      "prob": "0.3",
+                      "children": []
+                    },
+                    {
+                      "label": "Essai 2",
+                      "prob": "0.7",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons repérer $n$ et $p$, passons au calcul concret d'une probabilité. Imaginons un test de dépistage médical effectué sur $5$ patients indépendants, la probabilité qu'un patient soit positif étant $0,3$. Nous voulons la probabilité d'obtenir exactement $2$ résultats positifs. On identifie $n=5$, $p=0,3$ et $k=2$, puis on applique la formule."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons le coefficient binomial $\\binom{5}{2} = \\frac{5!}{2!\\,3!} = 10$. Ensuite $p^{2} = 0,3^{2} = 0,09$ et $(1-p)^{3} = 0,7^{3} = 0,343$. Le produit $10 \\times 0,09 \\times 0,343 = 0,3087$. Ainsi $P(X=2) \\approx 0,309$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X=2) = \\binom{5}{2} (0,3)^{2} (0,7)^{3} = 10 \\times 0,09 \\times 0,343 = 0,3087"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà du calcul ponctuel, les paramètres $n$ et $p$ portent une information précieuse sur la forme de la distribution. L'espérance mathématique $E(X)=np$ indique le nombre moyen de succès attendus si l'on répétait l'expérience un grand nombre de fois. La variance $Var(X)=np(1-p)$ mesure la dispersion autour de cette moyenne. Pour notre exemple médical, $E(X)=5 \\times 0,3 = 1,5$ et $Var(X)=5 \\times 0,3 \\times 0,7 = 1,05$. Ces valeurs aident à anticiper la variabilité des résultats d'un lot de $5$ tests."
+            },
+            {
+              "type": "display_math",
+              "latex": "E(X) = n p = 5 \\times 0,3 = 1,5 \\qquad Var(X) = n p (1-p) = 5 \\times 0,3 \\times 0,7 = 1,05"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance $8$ fois un dé équilibré. On note $X$ le nombre de fois où le dé montre un $6$. Identifier les paramètres $n$ et $p$ de la loi binomiale suivie par $X$.",
+              "answer": "$n=8$, $p=\\frac{1}{6}$",
+              "hint": "Chaque lancer est indépendant et la probabilité d'obtenir un $6$ ne change pas.",
+              "explanation": "Il y a $8$ essais indépendants, donc $n=8$. La probabilité de succès (obtenir un $6$) est $1/6$, donc $p=1/6$. La variable $X$ suit $\\mathcal{B}(8,1/6)$."
+            },
+            {
+              "question": "Dans l'exemple du dépistage médical ($n=5$, $p=0,3$), calculer $P(X=0)$, c'est‑à‑dire la probabilité qu'aucun patient ne soit positif.",
+              "answer": "$0,16807$",
+              "hint": "Utilisez la formule avec $k=0$ : $\\binom{5}{0}p^{0}(1-p)^{5}$.",
+              "explanation": "$\\binom{5}{0}=1$, $p^{0}=1$, $(1-p)^{5}=0,7^{5}=0,16807$. Donc $P(X=0)=0,16807$."
+            },
+            {
+              "question": "Pour la même expérience ($n=5$, $p=0,3$), donner l'espérance et la variance de $X$.",
+              "answer": "$E(X)=1,5$, $Var(X)=1,05$",
+              "hint": "Appliquez les formules $E(X)=np$ et $Var(X)=np(1-p)$.",
+              "explanation": "$E(X)=5\\times0,3=1,5$. $Var(X)=5\\times0,3\\times0,7=1,05$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul des probabilités binomiales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les paramètres $n$ et $p$ identifiés, l'étape suivante consiste à calculer des probabilités précises : soit la probabilité d'obtenir exactement $k$ succès, soit une probabilité cumulative comme $P(X \\le k)$ ou $P(X \\ge k)$. Dans un contexte d'examen ou de contrôle qualité, on a souvent besoin de savoir si un résultat observé est « habituel » ou « surprenant » au regard du modèle binomiale. Les calculs peuvent être effectués à la main pour de petits $n$, mais dès que $n$ dépasse une dizaine, l'utilisation d'une calculatrice, d'un tableur ou de tables de la loi binomiale devient indispensable. Nous allons passer en revue les différentes méthodes, en insistant sur la vérification des conditions d'utilisation de chaque outil."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité cumulative",
+              "definition": "Pour une variable aléatoire discrète $X$, la probabilité cumulative $P(X \\le k)$ est la somme des probabilités $P(X = 0) + P(X = 1) + \\dots + P(X = k)$. De même $P(X \\ge k) = 1 - P(X \\le k-1)$.",
+              "example": "Pour $X \\sim \\mathcal{B}(10,0,4)$, $P(X \\le 3) = \\sum_{i=0}^{3} \\binom{10}{i} 0,4^{i} 0,6^{10-i}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'outil",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $n \\le 10$, le calcul manuel avec la formule est réaliste. Pour $n$ plus grand, utilisez la fonction « binomiale » de la calculatrice (souvent notée `binompdf` pour une valeur exacte et `binomcdf` pour une cumulative) ou un tableur (`LOI.BINOMIALE.N` ou `LOI.BINOMIALE` selon les versions)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Entrer les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Renseignez $n$, $p$ et la valeur $k$ (ou l'intervalle) demandée. Vérifiez que la calculatrice est en mode « probabilités » et non en mode « statistiques »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La calculatrice affiche une valeur numérique. Arrondissez selon les consignes (souvent à $10^{-4}$ ou $10^{-3}$). Notez la probabilité exacte si l'exercice l'exige."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Replacez le nombre obtenu dans le contexte : une probabilité très faible ($<0,05$ par exemple) signale un événement rare sous l'hypothèse binomiale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distribution de $X \\sim \\mathcal{B}(10,0,4)$ : probabilités $P(X=k)$ pour $k=0\\dots10$",
+              "bars": [
+                {
+                  "label": "0",
+                  "value": 0.006,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1",
+                  "value": 0.04,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 0.121,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 0.215,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 0.251,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 0.201,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 0.111,
+                  "tone": "blue"
+                },
+                {
+                  "label": "7",
+                  "value": 0.042,
+                  "tone": "blue"
+                },
+                {
+                  "label": "8",
+                  "value": 0.011,
+                  "tone": "blue"
+                },
+                {
+                  "label": "9",
+                  "value": 0.0016,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 0.0001,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons l'utilisation de la calculatrice avec un exemple typique de contrôle qualité. Une usine produit des ampoules dont $2\\%$ sont défectueuses. On prélève un lot de $50$ ampoules. Quelle est la probabilité qu'il y ait au plus $2$ ampoules défectueuses dans le lot ? On a $n=50$, $p=0,02$ et on cherche $P(X \\le 2)$. Sur la calculatrice, on utilise la fonction cumulative `binomcdf(50,0,02,2)`. Le résultat affiché est $0,9856$ (arrondi à $10^{-4}$). Cela signifie que dans $98,56\\%$ des lots de $50$ ampoules, on observe $0$, $1$ ou $2$ défauts."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X \\le 2) = \\sum_{k=0}^{2} \\binom{50}{k} (0,02)^{k} (0,98)^{50-k} \\approx 0,9856"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque $n$ est grand et $p$ pas trop proche de $0$ ou $1$, la loi binomiale peut être approchée par une loi normale de paramètres $\\mu = np$ et $\\sigma^{2} = np(1-p)$. Cette approximation, justifiée par le théorème central limite, simplifie le calcul de probabilités cumulatives étendues. Il faut toutefois appliquer une correction de continuité : pour $P(X \\le k)$, on calcule $P(Y \\le k+0,5)$ où $Y \\sim \\mathcal{N}(np, np(1-p))$. Vérifiez toujours les conditions $np \\ge 5$ et $n(1-p) \\ge 5$ avant d'utiliser cette méthode."
+            },
+            {
+              "type": "display_math",
+              "latex": "X \\sim \\mathcal{B}(n,p) \\quad \\xrightarrow[n\\to\\infty]{} \\quad Y \\sim \\mathcal{N}(np,\\, np(1-p)) \\quad \\text{avec correction de continuité}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X \\sim \\mathcal{B}(12,0,35)$. Calculer $P(X = 4)$ à l'aide de la formule (arrondir à $10^{-4}$).",
+              "answer": "$0,2311$",
+              "hint": "Utilisez $\\binom{12}{4} 0,35^{4} 0,65^{8}$.",
+              "explanation": "$\\binom{12}{4}=495$, $0,35^{4}=0,0150$, $0,65^{8}=0,0319$. Le produit $495 \\times 0,0150 \\times 0,0319 \\approx 0,2311$."
+            },
+            {
+              "question": "Pour $X \\sim \\mathcal{B}(50,0,02)$, donner $P(X \\ge 3)$ en utilisant la probabilité cumulative trouvée précédemment.",
+              "answer": "$0,0144$",
+              "hint": "$P(X \\ge 3) = 1 - P(X \\le 2)$.",
+              "explanation": "On a $P(X \\le 2) \\approx 0,9856$, donc $P(X \\ge 3) = 1 - 0,9856 = 0,0144$."
+            },
+            {
+              "question": "Vérifier si l'approximation normale est licite pour $X \\sim \\mathcal{B}(40,0,15)$. Si oui, donner les paramètres de la loi normale approchée.",
+              "answer": "Oui, $\\mu = 6$, $\\sigma^{2} = 5,1$",
+              "hint": "Testez $np$ et $n(1-p)$.",
+              "explanation": "$np = 40 \\times 0,15 = 6 \\ge 5$ et $n(1-p) = 40 \\times 0,85 = 34 \\ge 5$. L'approximation est valide. La loi normale approchée a $\\mu = 6$ et $\\sigma^{2} = 40 \\times 0,15 \\times 0,85 = 5,1$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les résultats d'une loi binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculer une probabilité n'a de sens que si l'on sait la relier à la question posée. En Terminale mathématiques complémentaires, on attend de l'élève qu'il sache formuler une conclusion claire : la valeur numérique obtenue est-elle compatible avec l'hypothèse initiale ? Par exemple, si un laboratoire affirme que son nouveau médicament guérit $80\\%$ des patients, et qu'un essai sur $30$ patients ne montre que $18$ guérisons, la probabilité d'observer $18$ guérisons ou moins sous l'hypothèse $p=0,8$ est $P(X \\le 18)$ avec $X \\sim \\mathcal{B}(30,0,8)$. Si cette probabilité est très faible (inférieure à un seuil de risque, souvent $5\\%$), on remet en cause l'affirmation du laboratoire. Cette démarche est le cœur du test d'hypothèse sur une proportion."
+            },
+            {
+              "type": "definition",
+              "term": "Test d'hypothèse sur une proportion",
+              "definition": "Procédé statistique qui consiste à comparer une proportion observée à une proportion théorique $p_0$ en utilisant la loi binomiale (ou son approximation normale) pour décider si l'écart observé est statistiquement significatif.",
+              "example": "Tester $H_0 : p = 0,8$ contre $H_1 : p < 0,8$ avec $n=30$ et $x=18$ succès observés."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Formuler les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire l'hypothèse nulle $H_0$ (valeur de référence pour $p$) et l'hypothèse alternative $H_1$ (direction du test : bilatéral, unilatéral à gauche ou à droite)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le seuil de risque $\\alpha$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Généralement $\\alpha = 0,05$ (5\\%). Ce seuil détermine la zone de rejet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la $p$-value",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sous $H_0$, calculer la probabilité d'obtenir un résultat au moins aussi extrême que l'observé. Pour un test unilatéral à gauche, $p\\text{-value} = P(X \\le x_{\\text{obs}})$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Prendre la décision",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $p\\text{-value} \\le \\alpha$, on rejette $H_0$ ; sinon on ne la rejette pas. Formuler la conclusion dans le langage du problème."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "binom_pmf(30,0.8)",
+              "xmin": 0,
+              "xmax": 30,
+              "caption": "Distribution binomiale $\\mathcal{B}(30,0,8)$ : zone de rejet à gauche pour $x \\le 18$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la procédure sur l'exemple du médicament. On a $n=30$, $p_0=0,8$, $x_{\\text{obs}}=18$. La $p$-value est $P(X \\le 18)$ avec $X \\sim \\mathcal{B}(30,0,8)$. À l'aide de la calculatrice (`binomcdf(30,0,8,18)`), on obtient $0,0432$. Comme $0,0432 < 0,05$, on rejette $H_0$ au seuil de $5\\%$. Conclusion : les données fournissent une preuve statistique que le taux de guérison est inférieur à $80\\%$."
+            },
+            {
+              "type": "display_math",
+              "latex": "p\\text{-value} = P_{\\mathcal{B}(30,0,8)}(X \\le 18) \\approx 0,0432 < 0,05 \\Rightarrow \\text{rejet de } H_0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est aussi fréquent de devoir construire un intervalle de confiance pour la proportion $p$ à partir d'un échantillon. La méthode de Wald (basée sur l'approximation normale) donne l'intervalle $\\left[ \\hat{p} - z_{\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} ; \\hat{p} + z_{\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\right]$ où $\\hat{p} = x/n$ est la proportion observée et $z_{\\alpha/2}$ le quantile de la loi normale centrée réduite (pour $\\alpha=0,05$, $z_{0,025} \\approx 1,96$). Cet intervalle fournit une plage de valeurs plausibles pour $p$ avec un niveau de confiance de $95\\%$. Attention : cette approximation nécessite $n\\hat{p} \\ge 5$ et $n(1-\\hat{p}) \\ge 5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "IC_{95\\%} = \\left[ \\hat{p} - 1,96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\ ; \\ \\hat{p} + 1,96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\right]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les paramètres $n$ et $p$ d'une expérience binomiale.",
+                "Je sais calculer une probabilité exacte $P(X=k)$ et une probabilité cumulative $P(X\\le k)$.",
+                "Je sais utiliser la calculatrice (fonctions `binompdf` et `binomcdf`) pour obtenir ces probabilités.",
+                "Je connais les conditions d'utilisation de l'approximation normale ($np\\ge5$, $n(1-p)\\ge5$) et la correction de continuité.",
+                "Je sais formuler un test d'hypothèse sur une proportion : hypothèses, seuil, $p$-value, décision.",
+                "Je sais construire et interpréter un intervalle de confiance pour une proportion (méthode de Wald)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une enquête indique que $55\\%$ des habitants d'une ville soutiennent un projet. On interroge $40$ personnes choisies au hasard. Tester l'hypothèse $H_0 : p = 0,55$ contre $H_1 : p \\neq 0,55$ si on observe $18$ personnes favorables. Donner la $p$-value (bilatérale) et conclure au seuil $5\\%$.",
+              "answer": "$p\\text{-value} \\approx 0,158$, on ne rejette pas $H_0$.",
+              "hint": "Calculez $P(X \\le 18)$ sous $\\mathcal{B}(40,0,55)$ et doublez-la pour le test bilatéral.",
+              "explanation": "Sous $H_0$, $X \\sim \\mathcal{B}(40,0,55)$. $P(X \\le 18) \\approx 0,079$. Test bilatéral : $p\\text{-value}=2\\times0,079=0,158 > 0,05$. On ne rejette pas $H_0$."
+            },
+            {
+              "question": "Dans un échantillon de $100$ élèves, $62$ ont réussi un examen. Construire l'intervalle de confiance à $95\\%$ pour la proportion de réussite dans la population (méthode de Wald).",
+              "answer": "$[0,522 ; 0,718]$",
+              "hint": "$\\hat{p}=0,62$, $n=100$, $z=1,96$. Calculez la marge d'erreur.",
+              "explanation": "$\\hat{p}=0,62$. Marge $=1,96\\sqrt{0,62\\times0,38/100}\\approx0,098$. Intervalle $[0,62-0,098 ; 0,62+0,098] = [0,522 ; 0,718]$."
+            },
+            {
+              "question": "Expliquer pourquoi la correction de continuité est nécessaire quand on approxime une loi binomiale par une loi normale pour calculer $P(X \\le k)$.",
+              "answer": "Parce que la binomiale est discrète et la normale continue ; ajouter $0,5$ aligne les aires sous les courbes.",
+              "hint": "Pensez à la différence entre $P(X \\le k)$ et $P(Y \\le k)$ pour $Y$ continue.",
+              "explanation": "La variable binomiale ne prend que des valeurs entières. $P(X \\le k)$ correspond à la somme des barres jusqu'à $k$. Pour la loi continue, $P(Y \\le k)$ ne couvre que la moitié de la barre centrée sur $k$. Ajouter $0,5$ (c'est-à-dire calculer $P(Y \\le k+0,5)$) restitue la surface totale des barres jusqu'à $k$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

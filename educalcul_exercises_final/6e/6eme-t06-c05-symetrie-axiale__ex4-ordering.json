@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Symétrie axiale",
+  "title": "Applications de la symétrie axiale - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Construction du symétrique d'un point",
+      "content": "Range les étapes dans l'ordre pour construire le point $A'$, symétrique du point $A$ par rapport à la droite $d$, à la règle et au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer la perpendiculaire à $d$ passant par $A$ et noter $H$ son intersection avec $d$.",
+        "Avec le compas, reporter la distance $AH$ de l'autre côté de $d$ pour obtenir $A'$ tel que $AH = HA'$.",
+        "Vérifier que $d$ est la médiatrice du segment $AA'$.",
+        "Le point $A'$ est le symétrique de $A$ par rapport à $d$."
+      ],
+      "explanation": "La construction commence par tracer la perpendiculaire issue de $A$ à la droite $d$ pour trouver le pied $H$. Ensuite, on reporte la longueur $AH$ de l'autre côté de $d$ à l'aide du compas pour placer $A'$ de sorte que $AH = HA'$. On vérifie alors que $d$ est bien la médiatrice de $AA'$ (perpendiculaire et passant par le milieu). Finalement, on conclut que $A'$ est l'image de $A$ par la symétrie axiale de centre $d$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés de la symétrie axiale",
+      "content": "Classe les affirmations suivantes dans l'ordre logique pour décrire les propriétés fondamentales de la symétrie axiale.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "L'axe de symétrie est la médiatrice du segment joignant un point et son image.",
+        "Les distances des points à l'axe sont conservées.",
+        "L'image d'une droite non perpendiculaire à l'axe est une droite symétrique.",
+        "Les angles sont conservés mais leur orientation est inversée."
+      ],
+      "explanation": "La première propriété définit l'axe comme médiatrice du segment reliant un point à son image. De cette définition découlent la conservation des distances à l'axe et la transformation des droites en droites symétriques. Enfin, la symétrie axiale est une isométrie qui conserve les mesures d'angles mais inverse leur orientation (sens horaire devient trigonométrique).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démonstration qu'un quadrilatère est symétrique",
+      "content": "Ordonne les étapes pour prouver que le quadrilatère $ABCD$ est symétrique par rapport à la droite $d$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier la droite $d$ comme axe de symétrie potentiel.",
+        "Montrer que chaque sommet a son image par symétrie par rapport à $d$ (par exemple $A$ et $A'$, $B$ et $B'$).",
+        "Vérifier que $d$ est la médiatrice de chaque segment joignant un sommet à son image.",
+        "Conclure que le quadrilatère $ABCD$ est symétrique par rapport à $d$."
+      ],
+      "explanation": "On commence par repérer la droite $d$ qui pourrait être l'axe. Ensuite, on construit ou on identifie les images de chaque sommet par la symétrie axiale. La vérification que $d$ est la médiatrice de chaque paire sommet-image garantit que la symétrie envoie bien le quadrilatère sur lui-même. On termine par la conclusion que la figure entière est invariante par cette symétrie.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

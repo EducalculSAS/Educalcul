@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 198,
+  "_course_code": "ce2-t07-c03-triangles-particuliers-accessibles",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Triangle rectangle",
+  "title": "Quiz sur le triangle rectangle",
+  "questions": [
+    {
+      "text": "Dans le triangle ci-dessous, quel angle est l'angle droit ?",
+      "options": [
+        "L'angle en A",
+        "L'angle en B",
+        "L'angle en C",
+        "Aucun angle n'est droit"
+      ],
+      "correctAnswer": "L'angle en A",
+      "explanation": "Le petit carré marqué au sommet A indique un angle de $90^\\circ$, c'est donc l'angle droit. Les autres angles ne portent pas ce symbole.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle avec l'angle droit en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Quel nom donne-t-on au côté le plus long d'un triangle rectangle ?",
+      "options": [
+        "Le côté opposé à l'angle droit",
+        "Le côté adjacent à l'angle droit",
+        "Le côté le plus court",
+        "Le côté le plus long"
+      ],
+      "correctAnswer": "Le côté opposé à l'angle droit",
+      "explanation": "Dans un triangle rectangle, l'hypoténuse est le côté qui fait face à l'angle droit ; c'est toujours le côté le plus long.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle avec l'angle droit en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Regarde le triangle suivant. Quel angle mesure $90^\\circ$ ?",
+      "options": [
+        "Angle A",
+        "Angle B",
+        "Angle C",
+        "Angle D"
+      ],
+      "correctAnswer": "Angle B",
+      "explanation": "Le carré tracé au sommet B signale un angle droit de $90^\\circ$. Les sommets A et C n'ont pas ce symbole, et un triangle n'a que trois angles.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle avec l'angle droit en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Quelle est la somme des deux angles aigus d'un triangle rectangle ?",
+      "options": [
+        "$90^\\circ$",
+        "$180^\\circ$",
+        "$45^\\circ$",
+        "$60^\\circ$"
+      ],
+      "correctAnswer": "$90^\\circ$",
+      "explanation": "La somme des trois angles d'un triangle vaut $180^\\circ$. Comme l'angle droit vaut $90^\\circ$, les deux angles restants (aigus) totalisent $180^\\circ - 90^\\circ = 90^\\circ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel instrument utilise-t-on pour vérifier qu'un angle est droit ?",
+      "options": [
+        "Une règle",
+        "Une équerre",
+        "Un compas",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une équerre",
+      "explanation": "L'équerre est un outil dont l'angle intérieur est exactement $90^\\circ$ ; on la pose sur l'angle à tester pour voir s'il coïncide. La règle mesure des longueurs, le compas trace des cercles, le rapporteur mesure des angles mais ne garantit pas l'angle droit.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

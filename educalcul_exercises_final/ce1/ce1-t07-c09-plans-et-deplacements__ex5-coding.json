@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 134,
+  "_course_code": "ce1-t07-c09-plans-et-deplacements",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Lire une légende",
+  "title": "Lire une légende et programmer un déplacement",
+  "blocks": [
+    {
+      "title": "Identifier un symbole",
+      "content": "Voici la légende d'un plan : $\\triangle$ représente un arbre, $\\square$ représente une maison, $\\bigcirc$ représente un puits. Que représente le symbole $\\triangle$ sur ce plan ?",
+      "correctAnswer": "Le symbole $\\triangle$ représente un arbre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la légende donnée, on associe chaque symbole à sa signification. Le triangle $\\triangle$ est associé au mot « arbre ». Il suffit de lire la correspondance dans le tableau de la légende.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suivre un code de déplacement",
+      "content": "Sur un quadrillage de trois lignes sur trois colonnes, le robot est placé sur la case en bas à gauche (colonne $1$, ligne $1$) et regarde vers le haut. La légende des commandes est : $\\uparrow$ = Avancer d'une case, $\\rightarrow$ = Tourner à droite (sans avancer). Le programme est : $\\uparrow$, $\\rightarrow$, $\\uparrow$. Décris le déplacement étape par étape et donne la case d'arrivée (colonne, ligne).",
+      "correctAnswer": "Étape 1 : Avancer d'une case (on passe en colonne $1$, ligne $2$). Étape 2 : Tourner à droite (on regarde vers la droite). Étape 3 : Avancer d'une case (on passe en colonne $2$, ligne $2$). On arrive en case (colonne $2$, ligne $2$).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part de la case (1,1) face au nord (vers le haut). Première commande $\\uparrow$ : on avance vers la case du dessus (1,2). Deuxième commande $\\rightarrow$ : on pivote sur place vers la droite (est). Troisième commande $\\uparrow$ : on avance vers la case de droite (2,2).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un algorithme pour un parcours",
+      "content": "Même quadrillage (trois lignes, trois colonnes). Départ case (colonne $1$, ligne $1$), regard vers le haut. But : aller à la case (colonne $3$, ligne $2$). Légende : $\\uparrow$ = Avancer, $\\rightarrow$ = Tourner à droite. Écris la suite de symboles (le code) pour y aller par le chemin le plus court sans sortir du quadrillage.",
+      "correctAnswer": "$\\uparrow$, $\\rightarrow$, $\\uparrow$, $\\uparrow$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "De (1,1) à (3,2) : il faut monter d'une case pour aller en ligne 2, puis aller à droite de deux cases pour aller en colonne 3. Code : $\\uparrow$ (vers 1,2), $\\rightarrow$ (tourne vers l'est), $\\uparrow$ (vers 2,2), $\\uparrow$ (vers 3,2). C'est le plus court (quatre instructions).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

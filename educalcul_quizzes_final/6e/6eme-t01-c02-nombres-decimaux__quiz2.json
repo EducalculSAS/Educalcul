@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer les nombres décimaux (6e)",
+  "questions": [
+    {
+      "text": "Compare les deux nombres décimaux : $3.5$ et $3.48$.",
+      "options": [
+        "$3.5 < 3.48$",
+        "$3.5 > 3.48$",
+        "$3.5 = 3.48$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$3.5 > 3.48$",
+      "explanation": "Pour comparer, on aligne la virgule et on ajoute un zéro pour avoir le même nombre de chiffres après la virgule : $3.50$ et $3.48$. On compare la partie entière (égale à 3), puis les dixièmes : 5 dixièmes est plus grand que 4 dixièmes. Donc $3.50 > 3.48$, c'est-à-dire $3.5 > 3.48$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est le plus grand ?",
+      "options": [
+        "$0.6$",
+        "$0.58$",
+        "$0.605$",
+        "$0.5$"
+      ],
+      "correctAnswer": "$0.605$",
+      "explanation": "On met tous les nombres au même nombre de décimales (trois) : $0.600$, $0.580$, $0.605$, $0.500$. On compare les dixièmes : $0.605$ et $0.600$ ont 6 dixièmes, les autres en ont moins. Entre $0.605$ et $0.600$, on regarde les centièmes (0 pour les deux) puis les millièmes : 5 millièmes > 0 millièmes. Donc $0.605$ est le plus grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range ces nombres dans l'ordre croissant (du plus petit au plus grand) : $2.4$, $2.08$, $2.35$, $2.41$.",
+      "options": [
+        "$2.08 < 2.35 < 2.4 < 2.41$",
+        "$2.08 < 2.35 < 2.41 < 2.4$",
+        "$2.4 < 2.41 < 2.35 < 2.08$",
+        "$2.35 < 2.08 < 2.4 < 2.41$"
+      ],
+      "correctAnswer": "$2.08 < 2.35 < 2.4 < 2.41$",
+      "explanation": "On aligne les virgules : $2.40$, $2.08$, $2.35$, $2.41$. Partie entière identique (2). On compare les dixièmes : 0 (pour 2.08) < 3 (pour 2.35) < 4 (pour 2.40 et 2.41). Pour départager $2.40$ et $2.41$, on regarde les centièmes : 0 < 1. L'ordre est donc $2.08 < 2.35 < 2.40 < 2.41$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Repérage des nombres sur une droite graduée",
+        "min": 2,
+        "max": 2.5,
+        "points": [
+          {
+            "value": 2.08,
+            "label": "A"
+          },
+          {
+            "value": 2.35,
+            "label": "B"
+          },
+          {
+            "value": 2.4,
+            "label": "C"
+          },
+          {
+            "value": 2.41,
+            "label": "D"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Complète la comparaison en choisissant le bon signe : $7.06 \\dots 7.6$.",
+      "options": [
+        "$<$",
+        "$>$",
+        "$=$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$<$",
+      "explanation": "On ajoute un zéro à $7.6$ pour obtenir $7.60$. On compare : parties entières égales (7). Dixièmes : 0 (pour 7.06) est plus petit que 6 (pour 7.60). Donc $7.06 < 7.60$, soit $7.06 < 7.6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces nombres est un nombre décimal compris strictement entre $4.2$ et $4.3$ ?",
+      "options": [
+        "$4.19$",
+        "$4.25$",
+        "$4.31$",
+        "$4.2$"
+      ],
+      "correctAnswer": "$4.25$",
+      "explanation": "On cherche un nombre $x$ tel que $4.2 < x < 4.3$. $4.19$ est plus petit que $4.2$. $4.31$ est plus grand que $4.3$. $4.2$ est la borne inférieure, pas strictement entre. $4.25$ s'écrit $4.25$, il a 2 dixièmes et 5 centièmes, il est bien plus grand que $4.20$ et plus petit que $4.30$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Intervalle entre 4,2 et 4,3",
+        "min": 4,
+        "max": 5,
+        "points": [
+          {
+            "value": 4.2,
+            "label": "4,2"
+          },
+          {
+            "value": 4.3,
+            "label": "4,3"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

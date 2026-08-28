@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Répéter expérience",
+  "title": "Quiz : Répéter une expérience et fréquence expérimentale",
+  "questions": [
+    {
+      "text": "Qu'est-ce qui se passe à la fréquence expérimentale lorsqu'on répète un grand nombre de fois la même expérience aléatoire ?",
+      "options": [
+        "Elle devient exactement égale à la probabilité théorique dès la première répétition.",
+        "Elle fluctue au hasard sans jamais se stabiliser.",
+        "Elle tend à se rapprocher de la probabilité théorique.",
+        "Elle augmente indéfiniment."
+      ],
+      "correctAnswer": "Elle tend à se rapprocher de la probabilité théorique.",
+      "explanation": "Lorsqu'on répète une expérience aléatoire de nombreuses fois, la loi des grands nombres assure que la fréquence expérimentale se stabilise autour de la probabilité théorique. Les autres affirmations sont fausses : la fréquence n'est pas exacte dès le premier essai, elle ne fluctue pas indéfiniment sans se stabiliser, et elle ne peut pas augmenter sans limite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces 10 fois et on obtient le résultat 6 trois fois. Quelle est la fréquence expérimentale d'obtenir un 6 ?",
+      "options": [
+        "$3/10 = 0,3$",
+        "$3/6 = 0,5$",
+        "$10/3 ≈ 3,33$",
+        "$6/10 = 0,6$"
+      ],
+      "correctAnswer": "$3/10 = 0,3$",
+      "explanation": "La fréquence expérimentale se calcule en divisant le nombre de succès (3 fois le 6) par le nombre total d'essais (10 lancers), ce qui donne $3/10 = 0,3$. Les autres options correspondent à des calculs erronés : diviser par le nombre de faces, inverser le quotient ou utiliser le nombre de faces comme numérateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce de monnaie 20 fois et on obtient 12 faces. Quelle est la fréquence expérimentale de face ?",
+      "options": [
+        "$12/20 = 0,6$",
+        "$8/20 = 0,4$",
+        "$20/12 ≈ 1,67$",
+        "$1/2 = 0,5$"
+      ],
+      "correctAnswer": "$12/20 = 0,6$",
+      "explanation": "La fréquence expérimentale de face est le nombre de faces obtenues (12) divisé par le nombre total de lancers (20), soit $12/20 = 0,6$. L'option B donne la fréquence de pile, l'option C inverse le quotient, et l'option D donne la probabilité théorique, pas la fréquence observée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on continue à lancer la pièce de monnaie encore 80 fois de plus (total 100 lancers), que peut-on dire de la fréquence expérimentale de face ?",
+      "options": [
+        "Elle restera exactement 0,6.",
+        "Elle deviendra exactement 0,5.",
+        "Elle aura tendance à se rapprocher de 0,5.",
+        "Elle augmentera au-delà de 1."
+      ],
+      "correctAnswer": "Elle aura tendance à se rapprocher de 0,5.",
+      "explanation": "En augmentant le nombre d'essais, la fréquence expérimentale converge vers la probabilité théorique (0,5 pour une pièce équilibrée). Elle ne reste pas figée à 0,6, ne devient pas exactement 0,5 après un nombre fini d'essais, et ne peut pas dépasser 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un sac il y a 3 boules rouges et 2 boules bleues. On tire une boule, on note sa couleur, on la remet, et on recommence 50 fois. On obtient 30 boules rouges. Quelle est la fréquence expérimentale de rouge et comment se compare-t-elle à la probabilité théorique ?",
+      "options": [
+        "Fréquence $30/50 = 0,6$, probabilité théorique $3/5 = 0,6$, elles sont égales.",
+        "Fréquence $30/50 = 0,6$, probabilité théorique $2/5 = 0,4$, fréquence supérieure.",
+        "Fréquence $20/50 = 0,4$, probabilité théorique $3/5 = 0,6$, fréquence inférieure.",
+        "Fréquence $30/50 = 0,6$, probabilité théorique $1/2 = 0,5$, fréquence supérieure."
+      ],
+      "correctAnswer": "Fréquence $30/50 = 0,6$, probabilité théorique $3/5 = 0,6$, elles sont égales.",
+      "explanation": "La fréquence expérimentale est $30/50 = 0,6$. La probabilité théorique de tirer une boule rouge (avec remise) est $3/5 = 0,6$. Dans cet exemple, la fréquence observée coïncide exactement avec la probabilité théorique, ce qui peut arriver mais n'est pas garanti pour un petit nombre d'essais.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

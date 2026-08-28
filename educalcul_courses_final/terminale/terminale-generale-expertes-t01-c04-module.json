@@ -1,0 +1,368 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.757168+00:00",
+  "id": 730,
+  "code": "terminale-generale-expertes-t01-c04",
+  "title": "Module",
+  "description": "Cours structuré Educalcul : Module.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Module",
+    "objectif_global": "Module",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Distance.",
+      "Propriétés."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le module d'un nombre complexe : définition et intuition géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au module. Tu connais déjà la forme algébrique d'un nombre complexe $z = a + ib$ avec $a$ et $b$ réels. Sur le plan complexe, ce nombre correspond au point $M$ d'affixe $z$, dont les coordonnées cartésiennes sont $(a,b)$. Le module de $z$, que l'on note $|z|$, n'est rien d'autre que la distance entre l'origine $O$ et le point $M$. C'est une grandeur toujours positive ou nulle, qui mesure l'éloignement du point par rapport au centre du repère. Cette idée simple va devenir un outil puissant pour comparer des nombres complexes, résoudre des équations et établir des inégalités."
+            },
+            {
+              "type": "definition",
+              "term": "Module",
+              "definition": "Pour un nombre complexe $z = a + ib$, son module est le nombre réel positif ou nul défini par $|z| = \\sqrt{a^2 + b^2}$. C'est la distance $OM$ dans le plan complexe muni de sa métrique euclidienne usuelle.",
+              "example": "Si $z = 3 + 4i$, alors $|z| = \\sqrt{3^2 + 4^2} = 5$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 4,
+              "caption": "Représentation du nombre complexe $3+4i$ : son module est la longueur $OM = 5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons sur la figure ci-dessus que le segment $OM$ forme l'hypoténuse d'un triangle rectangle dont les côtés mesurent $|a|$ et $|b|$. Le théorème de Pythagore donne immédiatement la formule du module. Cette interprétation géométrique est fondamentale : elle permet de visualiser le module comme une longueur, ce qui rend intuitives de nombreuses propriétés que nous verrons plus tard. Note aussi que le module d'un nombre réel $x$ (c'est-à-dire $b=0$) se réduit à sa valeur absolue usuelle $|x|$, et que le module d'un imaginaire pur $iy$ vaut $|y|$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les parties réelle et imaginaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nombre complexe sous la forme $z = a + ib$ et repère $a = \\Re(z)$ et $b = \\Im(z)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a^2 + b^2$, puis extrais la racine carrée : $|z| = \\sqrt{a^2 + b^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le radicande est un carré parfait, le module est un entier ; sinon on laisse la forme radicale ou on donne une approximation décimale selon le contexte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition est posée, allons un peu plus loin. Le module ne dépend que des carrés des coordonnées, ce qui implique une première propriété symétrique : le module d'un nombre complexe et celui de son conjugué sont égaux. En effet, si $\\overline{z} = a - ib$, alors $|\\overline{z}| = \\sqrt{a^2 + (-b)^2} = \\sqrt{a^2 + b^2} = |z|$. Géométriquement, le conjugué est le symétrique de $z$ par rapport à l'axe des abscisses ; la distance à l'origine ne change pas. Cette invariance par conjugaison sera très utile pour simplifier des expressions ou résoudre des équations."
+            },
+            {
+              "type": "display_math",
+              "latex": "|\\overline{z}| = |z|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $z = -2 + i\\sqrt{3}$. Son conjugué est $\\overline{z} = -2 - i\\sqrt{3}$. Calculons les modules : $|z| = \\sqrt{(-2)^2 + (\\sqrt{3})^2} = \\sqrt{4+3} = \\sqrt{7}$, et de même $|\\overline{z}| = \\sqrt{7}$. On voit que le signe de la partie imaginaire n'a aucune incidence sur la distance à l'origine. Cette propriété s'étend aussi aux opposés : $|-z| = |z|$, car multiplier par $-1$ correspond à une rotation de $180^\\circ$ autour de l'origine, qui conserve les distances."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, observons une inégalité fondamentale qui relie le module aux parties réelle et imaginaire. Pour tout nombre complexe $z = a+ib$, on a toujours $|a| \\le |z|$ et $|b| \\le |z|$. En effet, $a^2 \\le a^2+b^2$ donc $\\sqrt{a^2} \\le \\sqrt{a^2+b^2}$, c'est-à-dire $|a| \\le |z|$. De même pour $b$. Cela signifie que le module domine toujours chaque coordonnée en valeur absolue. Cette observation, bien que simple, est souvent la clé pour majorer ou minorer un module sans calculer explicitement la racine carrée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le module des nombres complexes suivants : $z_1 = 5 - 12i$, $z_2 = -\\sqrt{2} + i\\sqrt{2}$, $z_3 = 0 + 7i$.",
+              "answer": "$|z_1| = 13$, $|z_2| = 2$, $|z_3| = 7$",
+              "hint": "Applique la formule $|z| = \\sqrt{a^2+b^2}$ pour chaque nombre. Pour $z_2$, note que $(-\\sqrt{2})^2 + (\\sqrt{2})^2 = 2+2=4$.",
+              "explanation": "Pour $z_1$ : $5^2+(-12)^2 = 25+144=169$, racine $13$. Pour $z_2$ : $(-\\sqrt{2})^2+(\\sqrt{2})^2 = 2+2=4$, racine $2$. Pour $z_3$ : $0^2+7^2=49$, racine $7$."
+            },
+            {
+              "question": "Soit $z = 1 + i\\sqrt{3}$. Vérifie que $|z| = |\\overline{z}| = |-z|$ en calculant chaque module.",
+              "answer": "Tous valent $2$.",
+              "hint": "Calcule $|z|$ d'abord, puis utilise les propriétés de symétrie.",
+              "explanation": "$|z| = \\sqrt{1^2+(\\sqrt{3})^2} = \\sqrt{1+3}=2$. Le conjugué $\\overline{z}=1-i\\sqrt{3}$ donne le même calcul. L'opposé $-z=-1-i\\sqrt{3}$ a aussi module $\\sqrt{(-1)^2+(-\\sqrt{3})^2}=2$."
+            },
+            {
+              "question": "Donne une majoration simple de $|3-4i|$ sans calculer la racine carrée, en utilisant l'inégalité $|a| \\le |z|$ et $|b| \\le |z|$.",
+              "answer": "$|3-4i| \\ge 4$ (et aussi $\\ge 3$).",
+              "hint": "Identifie $a$ et $b$, puis applique l'inégalité.",
+              "explanation": "Ici $a=3$, $b=-4$. L'inégalité donne $|z| \\ge |3| = 3$ et $|z| \\ge |{-4}| = 4$. La majoration la plus forte est $|z| \\ge 4$. En fait $|z|=5$, ce qui vérifie l'inégalité."
+            }
+          ]
+        },
+        {
+          "title": "Distance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux nombres complexes : définition et propriétés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons vu que le module $|z|$ mesure la distance du point $M$ (affixe $z$) à l'origine $O$. Naturellement, on peut étendre cette idée pour mesurer la distance entre deux points quelconques $M$ et $N$ d'affixes respectives $z$ et $z'$. La distance $MN$ est simplement le module de la différence $z - z'$ (ou $z' - z$, le module étant invariant par changement de signe). Cette définition unifie la géométrie du plan complexe avec l'algèbre des nombres complexes : la distance devient une norme sur l'espace vectoriel $\\mathbb{C}$."
+            },
+            {
+              "type": "definition",
+              "term": "Distance",
+              "definition": "La distance entre deux nombres complexes $z$ et $z'$ est le nombre réel positif ou nul $d(z,z') = |z - z'|$.",
+              "example": "Si $z = 1+2i$ et $z' = 4+6i$, alors $z-z' = -3-4i$ et $d(z,z') = |{-3-4i}| = 5$."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": -3,
+              "im": -4,
+              "caption": "Le vecteur $z-z'$ correspond au segment $MN$ ; sa longueur est la distance cherchée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons la figure : le vecteur $\\overrightarrow{MN}$ a pour affixe $z' - z$ (ou $z - z'$ selon l'orientation). Son module est exactement la longueur $MN$. Comme le module ne dépend que des carrés des composantes, l'ordre de la soustraction n'a pas d'importance : $|z-z'| = |z'-z|$. C'est la propriété de symétrie de la distance. De plus, la distance est nulle si et seulement si les deux points coïncident, c'est-à-dire $z = z'$. Ces deux propriétés sont les premières axioms d'une distance."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donnés $z = a+ib$ et $z' = a'+ib'$, forme la différence $z - z' = (a-a') + i(b-b')$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule du module",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $|z-z'| = \\sqrt{(a-a')^2 + (b-b')^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter géométriquement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce nombre est la longueur du segment joignant les points $M(a,b)$ et $N(a',b')$ dans le plan cartésien."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de la définition, la distance dans le plan complexe satisfait une inégalité célèbre : l'inégalité triangulaire. Pour tous nombres complexes $z_1, z_2, z_3$, on a $d(z_1,z_3) \\le d(z_1,z_2) + d(z_2,z_3)$. En termes de modules, cela s'écrit $|z_1 - z_3| \\le |z_1 - z_2| + |z_2 - z_3|$. Géométriquement, cela exprime que dans tout triangle, la longueur d'un côté est au plus la somme des longueurs des deux autres côtés. Cette inégalité est un pilier de l'analyse complexe et sert à majorer des modules de sommes ou de différences."
+            },
+            {
+              "type": "display_math",
+              "latex": "|z_1 - z_3| \\le |z_1 - z_2| + |z_2 - z_3|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple numérique pour bien ancrer l'idée. Soient $z_1 = 0$, $z_2 = 3+4i$, $z_3 = 6+8i$. Alors $|z_1-z_2| = 5$, $|z_2-z_3| = 5$, et $|z_1-z_3| = 10$. L'inégalité donne $10 \\le 5+5$, qui est une égalité ici car les trois points sont alignés dans le même sens. Si on change $z_3$ en $6-8i$, alors $|z_1-z_3| = 10$, mais $|z_2-z_3| = |{-3+12i}| = \\sqrt{9+144} = \\sqrt{153} \\approx 12.37$, et l'inégalité $10 \\le 5+12.37$ est stricte. Cela illustre que l'égalité dans l'inégalité triangulaire caractérise l'alignement des points avec le même ordre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe aussi une inégalité triangulaire « inversée » ou inégalité de réciprocité : pour tous $z_1, z_2$, on a $||z_1| - |z_2|| \\le |z_1 - z_2|$. Elle dit que la différence des modules est minorée par la distance entre les points. Cette inégalité est très utile pour minorer un module sans le calculer exactement. Par exemple, si $|z| = 5$ et $|z'| = 2$, alors la distance entre $z$ et $z'$ est au moins $|5-2| = 3$. On en déduit que deux nombres complexes de modules très différents ne peuvent pas être trop proches l'un de l'autre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la distance entre les points d'affixes $z_1 = 2 - i$ et $z_2 = -1 + 3i$.",
+              "answer": "$5$",
+              "hint": "Calcule $z_1 - z_2$ puis son module.",
+              "explanation": "$z_1 - z_2 = (2-(-1)) + i(-1-3) = 3 - 4i$. Son module est $\\sqrt{3^2+(-4)^2} = 5$."
+            },
+            {
+              "question": "Vérifie l'inégalité triangulaire pour $z_1 = 1+i$, $z_2 = 4+2i$, $z_3 = 2+5i$.",
+              "answer": "$|z_1-z_3| = \\sqrt{17} \\approx 4.12$, $|z_1-z_2| = \\sqrt{10} \\approx 3.16$, $|z_2-z_3| = \\sqrt{13} \\approx 3.61$. L'inégalité $4.12 \\le 3.16+3.61$ est vérifiée.",
+              "hint": "Calcule les trois distances deux à deux.",
+              "explanation": "$z_1-z_3 = -1-4i$, module $\\sqrt{1+16}=\\sqrt{17}$. $z_1-z_2 = -3-i$, module $\\sqrt{9+1}=\\sqrt{10}$. $z_2-z_3 = 2-3i$, module $\\sqrt{4+9}=\\sqrt{13}$. Somme $\\approx 6.77 \\ge 4.12$."
+            },
+            {
+              "question": "Soient $z$ et $z'$ tels que $|z|=7$ et $|z'|=3$. Quelle est la plus petite valeur possible de $|z-z'|$ ? Justifie.",
+              "answer": "$4$",
+              "hint": "Utilise l'inégalité $||z|-|z'|| \\le |z-z'|$.",
+              "explanation": "L'inégalité inversée donne $|z-z'| \\ge |7-3| = 4$. Cette borne est atteinte quand $z$ et $z'$ ont le même argument (même direction) et que $z'$ est sur le segment $[0,z]$."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés algébriques du module : produit, quotient, puissances et inégalités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur de la puissance du module : ses propriétés algébriques. Contrairement à la partie réelle ou imaginaire, le module se comporte de manière multiplicative. Cela signifie que le module d'un produit est le produit des modules, et le module d'un quotient est le quotient des modules. Ces propriétés transforment des calculs potentiellement lourds en manipulations simples sur des nombres réels positifs. Elles sont la clé pour résoudre des équations comme $|z^2| = 9$ ou pour majorer des expressions rationnelles en variable complexe."
+            },
+            {
+              "type": "definition",
+              "term": "Propriété multiplicative du module",
+              "definition": "Pour tous nombres complexes $z$ et $w$, on a $|z w| = |z| \\, |w|$. Par récurrence, $|z^n| = |z|^n$ pour tout entier naturel $n$.",
+              "example": "Si $|z|=2$ et $|w|=3$, alors $|zw|=6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les nombres sous forme trigonométrique (optionnel)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $z = r_1(\\cos\\theta_1 + i\\sin\\theta_1)$ et $w = r_2(\\cos\\theta_2 + i\\sin\\theta_2)$, alors $zw = r_1 r_2 (\\cos(\\theta_1+\\theta_2) + i\\sin(\\theta_1+\\theta_2))$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les modules",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le module de $z$ est $r_1$, celui de $w$ est $r_2$, et celui du produit est $r_1 r_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ainsi $|zw| = |z|\\,|w|$. La même méthode avec la division donne $|z/w| = |z|/|w|$ pour $w \\neq 0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La propriété multiplicative s'étend naturellement aux puissances entières, positives ou négatives. Pour $n \\in \\mathbb{Z}$ et $z \\neq 0$, on a $|z^n| = |z|^n$. Cela permet de résoudre facilement des équations du type $|z^3| = 8$ : on en déduit $|z|^3 = 8$, donc $|z| = 2$. L'ensemble des solutions est alors le cercle de centre $O$ et de rayon $2$. De même, pour une fraction rationnelle $P(z)/Q(z)$, le module se factorise : $\\left|\\frac{P(z)}{Q(z)}\\right| = \\frac{|P(z)|}{|Q(z)|}$, à condition que $Q(z) \\neq 0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "|z^n| = |z|^n \\quad (n \\in \\mathbb{Z},\\, z \\neq 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre outil indispensable est l'inégalité triangulaire sous sa forme algébrique : pour tous $z,w \\in \\mathbb{C}$, $|z+w| \\le |z| + |w|$. On en déduit immédiatement $|z-w| \\ge ||z| - |w||$. Ces inégalités permettent de majorer ou minorer un module sans connaître l'argument des nombres. Par exemple, si $|z| \\le 3$ et $|w| \\le 2$, alors $|z+w| \\le 5$ et $|z-w| \\ge 1$. C'est une technique de base en analyse pour encadrer des expressions complexes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons une identité remarquable qui relie le module au conjugué : $z \\overline{z} = |z|^2$. Cette égalité est la porte d'entrée vers la division des nombres complexes (en multipliant numérateur et dénominateur par le conjugué du dénominateur) et vers l'écriture trigonométrique. Elle montre aussi que le module est la racine carrée d'un produit réel positif. Toutes ces propriétés font du module une norme sur $\\mathbb{C}$, c'est-à-dire une application $\\mathbb{C} \\to \\mathbb{R}_+$ satisfaisant la positivité, l'homogénéité ($|\\lambda z| = |\\lambda|\\,|z|$ pour $\\lambda \\in \\mathbb{R}$) et l'inégalité triangulaire. C'est cette structure de space vectoriel normé qui rend le plan complexe si commode pour l'analyse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le module d'un nombre complexe et l'interpréter comme une distance.",
+                "Je sais calculer la distance entre deux points du plan complexe.",
+                "Je connais et sais appliquer la propriété multiplicative $|zw| = |z||w|$ et ses conséquences sur les puissances.",
+                "Je sais utiliser l'inégalité triangulaire $|z+w| \\le |z|+|w|$ et sa forme inversée $||z|-|w|| \\le |z-w|$ pour majorer ou minorer un module.",
+                "Je sais exploiter l'identité $z\\overline{z} = |z|^2$ pour simplifier des expressions ou résoudre des équations."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $z$ et $w$ deux nombres complexes tels que $|z|=2$ et $|w|=5$. Calcule $|z^2 w^3|$ et $\\left|\\frac{z^3}{w^2}\\right|$.",
+              "answer": "$|z^2 w^3| = 2^2 \\times 5^3 = 4 \\times 125 = 500$ ; $\\left|\\frac{z^3}{w^2}\\right| = \\frac{2^3}{5^2} = \\frac{8}{25}$.",
+              "hint": "Utilise $|z^n| = |z|^n$ et la multiplicativité.",
+              "explanation": "Par multiplicativité, $|z^2 w^3| = |z|^2 |w|^3 = 4 \\times 125 = 500$. Pour le quotient, $|z^3/w^2| = |z|^3/|w|^2 = 8/25$."
+            },
+            {
+              "question": "On suppose $|z| \\le 3$ et $|w| \\le 4$. Donne une majoration de $|2z - 3w|$ et une minoration de $|z + w|$.",
+              "answer": "Majoration : $|2z-3w| \\le 2|z|+3|w| \\le 6+12=18$. Minoration : $|z+w| \\ge ||z|-|w||$ mais on ne peut pas donner de borne positive non triviale car $|z|$ et $|w|$ peuvent être proches ; la meilleure minoration générale est $0$.",
+              "hint": "Utilise l'inégalité triangulaire et l'homogénéité $|\\lambda z| = |\\lambda|\\,|z|$.",
+              "explanation": "$|2z-3w| \\le |2z|+|-3w| = 2|z|+3|w| \\le 2\\times3+3\\times4=18$. Pour la minoration, $|z+w| \\ge ||z|-|w||$ ; comme $|z|$ et $|w|$ peuvent être égaux, la borne inférieure est $0$."
+            },
+            {
+              "question": "Résous l'équation $|z^2 - 1| = 0$ dans $\\mathbb{C}$.",
+              "answer": "$z = 1$ ou $z = -1$.",
+              "hint": "Un module est nul si et seulement si le nombre complexe est nul.",
+              "explanation": "$|z^2-1|=0 \\iff z^2-1=0 \\iff z^2=1 \\iff z=1$ ou $z=-1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

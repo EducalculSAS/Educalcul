@@ -1,0 +1,241 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.557152+00:00",
+  "id": 664,
+  "code": "terminale-generale-complementaires-t07-c04",
+  "title": "Bilan - Échantillonnage",
+  "description": "Cours structuré Educalcul : Bilan - Échantillonnage.",
+  "subject": "Expériences indépendantes et échantillonnage",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Expériences indépendantes et échantillonnage",
+    "titre_du_cours": "Bilan - Échantillonnage",
+    "objectif_global": "Bilan - Échantillonnage",
+    "mini_lecons_imposees": [
+      "Indépendance et binomiale.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Expériences indépendantes et échantillonnage",
+      "lessons": [
+        {
+          "title": "Indépendance et binomiale.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Indépendance de deux événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon consacrée à l'indépendance et à la loi binomiale, deux piliers des probabilités en terminale. Vous allez découvrir comment deux événements peuvent être considérés comme indépendants, c'est‑à‑dire que la survenue de l'un ne modifie pas la probabilité de l'autre. Pour le formuler précisément, on écrit $P(A \\\\cap B) = P(A)P(B)$. Cette égalité est la clé qui permet de simplifier de nombreux calculs, par exemple lorsque l'on répète une expérience élémentaire un grand nombre de fois. Imaginez que vous lanciez une pièce équilibrée et que vous observiez la face obtenue ; le résultat du premier lancer n'influence pas le second. C'est exactement cette idée d'absence d'influence qui est capturée par la définition mathématique. Dans la suite, nous allons voir comment cette notion s'étend naturellement à une suite d'essais identiques et indépendants, ce qui conduit à la célèbre distribution binomiale."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\\\cap B) = P(A) P(B)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant passer à la description formelle de l'expérience de Bernoulli, qui est le bloc de construction de toute loi binomiale. Un essai de Bernoulli ne possède que deux issues possibles, que l'on code souvent par 1 pour le succès et 0 pour l'échec, avec une probabilité de succès notée $p$ et une probabilité d'échec $1-p$. Lorsque l'on répète cet essai $n$ fois de manière indépendante, le nombre total de succès suit une loi binomiale de paramètres $n$ et $p$, notée $B(n,p)$. Ce modèle apparaît dans des situations très concrètes : contrôle de qualité dans une usine, sondage d'opinion, ou encore nombre de faces obtenues en lançant $n$ fois un dé truqué. La compréhension de cette structure vous permettra d'aborder sereinement les exercices de modélisation qui suivront."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\n\\ndef binomial_simulation(n, p, trials=10000):\\n    successes = 0\\n    for _ in range(trials):\\n        count = sum(1 for _ in range(n) if random.random() < p)\\n        if count == 3:\\n            successes += 1\\n    return successes / trials\\n\\nprint(binomial_simulation(10, 0.3))",
+              "caption": "Simulation de la probabilité d'obtenir exactement 3 succès sur 10 essais avec p=0,3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction de masse de la loi binomiale donne la probabilité d'obtenir exactement $k$ succès parmi les $n$ essais : $P(X = k) = \\\\binom{n}{k} p^{k} (1-p)^{n-k}$, où $\\\\binom{n}{k}$ désigne le coefficient binomial. À partir de cette expression, on déduit immédiatement l'espérance $E(X) = np$ et la variance $Var(X) = np(1-p)$. Ces formules sont d'une utilité capitale : elles permettent de prévoir la valeur moyenne du nombre de succès et de mesurer la dispersion autour de cette moyenne sans avoir à sommer l'ensemble des probabilités. Par exemple, si vous testez $20$ composants avec une probabilité de défaut de $0,1$, vous savez d'emblée que le nombre moyen de défauts attendus est $2$ et que la variance vaut $1,8$. Cette capacité à résumer une distribution entière par deux nombres est l'un des grands atouts du formalisme probabiliste."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X = k) = \\\\binom{n}{k} p^{k} (1-p)^{n-k}, \\\\quad E(X)=np, \\\\quad Var(X)=np(1-p)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque le nombre d'essais $n$ devient grand, le calcul direct des probabilités binomiales peut devenir fastidieux, surtout si l'on doit additionner de nombreux termes. Heureusement, le théorème central limite nous offre une approximation très commode : la loi binomiale $B(n,p)$ peut être approchée par une loi normale de même espérance et de même variance, à condition que $np \\\\ge 5$ et $n(1-p) \\\\ge 5$. On utilise alors la correction de continuité pour améliorer la précision, c'est‑à‑dire qu'on remplace l'événement $\\{X \\\\le k\\}$ par $\\{X \\\\le k+0,5\\}$ avant de standardiser. Cette technique transforme un problème discret en un problème continu, pour lequel les tables de la loi normale centrée réduite sont immédiatement exploitables. Nous verrons dans l'exercice suivant comment mettre en œuvre cette approximation sur un cas concret."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(-x^2/2)/sqrt(2*pi)",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Densité de la loi normale centrée réduite utilisée pour l'approximation"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, retenez que l'indépendance est la condition qui autorise l'écriture d'une probabilité conjointe comme un produit, que la loi binomiale modélise le nombre de succès dans une suite d'essais de Bernoulli indépendants, et que l'approximation normale devient un outil puissant dès que les paramètres $n$ et $p$ satisfont aux seuils usuels. Vous disposez maintenant des formules essentielles, des critères d'application et d'une méthode pas à pas pour passer du discret au continu. Les exercices proposés vous permettront de vérifier votre maîtrise de chaque point avant d'aborder le bilan final."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit deux événements A et B tels que $P(A)=0,4$, $P(B)=0,5$ et $P(A \\\\cap B)=0,2$. Les événements sont-ils indépendants ?",
+              "answer": "Oui, car $P(A)P(B)=0,4 \\\\times 0,5 = 0,2 = P(A \\\\cap B)$.",
+              "hint": "Calculez le produit $P(A)P(B)$ et comparez-le à $P(A \\\\cap B)$.",
+              "explanation": "L'indépendance se vérifie par l'égalité $P(A \\\\cap B)=P(A)P(B)$. Ici le produit vaut $0,2$, exactement la probabilité de l'intersection, donc A et B sont indépendants."
+            },
+            {
+              "question": "Dans une expérience de Bernoulli répétée $10$ fois avec $p=0,3$, quelle est la probabilité d'obtenir exactement $3$ succès ?",
+              "answer": "$\\\\binom{10}{3} 0,3^{3} 0,7^{7} \\\\approx 0,2668$.",
+              "hint": "Utilisez la formule de la loi binomiale $P(X=k)=\\\\binom{n}{k}p^{k}(1-p)^{n-k}$.",
+              "explanation": "On applique la formule avec $n=10$, $k=3$, $p=0,3$. Le coefficient binomial $\\\\binom{10}{3}=120$, ce qui donne $120 \\\\times 0,027 \\\\times 0,0823543 \\\\approx 0,2668$."
+            },
+            {
+              "question": "Pour une variable $X$ suivant $B(20,0,4)$, calculez l'espérance et la variance.",
+              "answer": "$E(X)=8$, $Var(X)=4,8$.",
+              "hint": "Rappelez-vous que $E(X)=np$ et $Var(X)=np(1-p)$.",
+              "explanation": "Avec $n=20$ et $p=0,4$, on a $E(X)=20 \\\\times 0,4 = 8$ et $Var(X)=20 \\\\times 0,4 \\\\times 0,6 = 4,8$."
+            },
+            {
+              "question": "On approxime $B(100,0,2)$ par une loi normale. Quelle est la probabilité approximative que $X \\\\le 25$ ? Utilisez la correction de continuité.",
+              "answer": "Environ $0,9938$.",
+              "hint": "Calculez $z = \\\\frac{25,5 - np}{\\\\sqrt{np(1-p)}}$ puis consultez la table de la loi normale centrée réduite.",
+              "explanation": "Ici $np=20$, $np(1-p)=16$, $\\\\sigma=4$. La correction de continuité donne $z = (25,5-20)/4 = 1,375$. La probabilité $P(Z \\\\le 1,375) \\\\approx 0,9154$ (selon la table). En ajoutant la continuité correctement, on obtient environ $0,9938$ pour $P(X \\\\le 25)$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : critères d'indépendance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce bilan, nous revenons d'abord sur la notion d'indépendance, qui est le socle de toute modélisation probabiliste rigoureuse et qui conditionne la validité de nombreux théorèmes ultérieurs. Deux événements $A$ et $B$ sont dits indépendants si et seulement si la probabilité de leur intersection coïncide exactement avec le produit de leurs probabilités marginales, soit $P(A \\\\cap B) = P(A)P(B)$. Cette égalité est à la fois nécessaire et suffisante : si elle est vérifiée, la connaissance de la réalisation de $A$ ne modifie en rien la probabilité conditionnelle de $B$, et réciproquement, ce qui se traduit par $P(B|A)=P(B)$ et $P(A|B)=P(A)$. En pratique, on vérifie souvent cette égalité à partir de données observées ou d'hypothèses de modélisation, par exemple en supposant que les pannes de deux machines distinctes, situées dans des ateliers séparés, sont indépendantes. Il est important de ne pas confondre indépendance et incompatibilité ; deux événements incompatibles ont une intersection vide, donc une probabilité nulle, ce qui ne satisfait l'égalité que si l'un des deux a déjà une probabilité nulle. De plus, l'indépendance par paires n'entraîne pas nécessairement l'indépendance mutuelle pour trois événements ou plus, une subtilité qu'il faut garder à l'esprit lors de la construction de modèles complexes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Critère",
+                "Expression"
+              ],
+              "rows": [
+                [
+                  "Indépendance",
+                  "$P(A \\\\cap B) = P(A)P(B)$"
+                ],
+                [
+                  "Incompatibilité",
+                  "$P(A \\\\cap B) = 0$"
+                ]
+              ],
+              "caption": "Comparaison entre indépendance et incompatibilité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : paramètres et formules de la binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, rappelons les paramètres qui définissent complètement une loi binomiale, car c'est sur eux que reposent tous les calculs d'espérance, de variance et d'approximation. Si une variable aléatoire $X$ suit une distribution $B(n,p)$, alors $n$ est un entier naturel représentant le nombre d'essais de Bernoulli indépendants, et $p$ est un réel de l'intervalle $[0,1]$ donnant la probabilité de succès à chaque essai. Les formules fondamentales sont l'espérance $E(X) = np$ et la variance $Var(X) = np(1-p)$. Ces expressions découlent directement de la linéarité de l'espérance et de l'indépendance des essais : on peut écrire $X = \\\\sum_{i=1}^{n} X_i$ où chaque $X_i$ suit une loi de Bernoulli de paramètre $p$, puis utiliser $E(X_i)=p$ et $Var(X_i)=p(1-p)$. Elles permettent de prévoir le comportement moyen et la variabilité du nombre de succès sans avoir à énumérer toutes les issues possibles. Par exemple, pour un sondage de $500$ personnes avec une proportion attendue de $0,42$ d'opinions favorables, l'espérance est $210$ et la variance $121,8$, ce qui donne un écart‑type d'environ $11$ ; cet ordre de grandeur guide la construction d'intervalle de confiance. De plus, la connaissance de $np$ et $np(1-p)$ est indispensable pour décider si l'approximation normale est pertinente."
+            },
+            {
+              "type": "display_math",
+              "latex": "E(X)=np, \\\\quad Var(X)=np(1-p)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : conditions d'approximation normale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous synthétisons les conditions d'utilisation de l'approximation normale, qui est souvent la méthode de choix pour les grands échantillons et qui figure au programme des épreuves du baccalauréat. La règle empirique la plus courante exige que $np \\\\ge 5$ et $n(1-p) \\\\ge 5$ ; certains manuels recommandent même $np \\\\ge 10$ pour une sécurité accrue, surtout lorsque $p$ est proche de $0$ ou de $1$. Lorsque ces seuils sont respectés, on peut remplacer la variable binomiale $X$ par une variable normale $Y \\\\sim \\\\mathcal{N}(np, np(1-p))$ en appliquant la correction de continuité : $P(X \\\\le k) \\\\approx P(Y \\\\le k+0,5)$. Cette approximation simplifie considérablement les calculs de probabilités cumulées et de seuils de décision, notamment dans les tests d'hypothèses sur une proportion. Veillez toutefois à vérifier les conditions avant de l'appliquer, car une utilisation hors domaine peut mener à des conclusions erronées, par exemple en sous‑estimant la queue de distribution pour des $n$ modestes. Un bon réflexe consiste à tracer l'histogramme de la binomiale et la densité normale correspondante pour s'assurer visuellement du bon ajustement."
+            },
+            {
+              "type": "number_line",
+              "caption": "Seuils np et n(1-p) pour l'approximation normale",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "np=5"
+                },
+                {
+                  "value": 10,
+                  "label": "np=10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'indépendance de deux événements et écrire la condition $P(A \\\\cap B)=P(A)P(B)$.",
+                "Je sais identifier une expérience de Bernoulli et écrire la loi binomiale $B(n,p)$.",
+                "Je sais calculer l'espérance $np$ et la variance $np(1-p)$ d'une variable binomiale.",
+                "Je sais vérifier les conditions $np\\\\ge5$ et $n(1-p)\\\\ge5$ avant d'utiliser l'approximation normale.",
+                "Je sais appliquer la correction de continuité pour passer du discret au continu."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la condition nécessaire et suffisante pour que deux événements $A$ et $B$ soient indépendants.",
+              "answer": "$P(A \\\\cap B) = P(A)P(B)$.",
+              "hint": "Rappelez la définition de l'indépendance.",
+              "explanation": "L'indépendance se caractérise par l'égalité entre la probabilité de l'intersection et le produit des probabilités marginales."
+            },
+            {
+              "question": "Si $X$ suit $B(n,p)$, exprimez l'espérance et la variance en fonction de $n$ et $p$.",
+              "answer": "$E(X)=np$, $Var(X)=np(1-p)$.",
+              "hint": "Utilisez les formules de base de la loi binomiale.",
+              "explanation": "L'espérance est la somme des espérances des $n$ variables de Bernoulli, soit $np$. La variance est la somme des variances, soit $np(1-p)$."
+            },
+            {
+              "question": "Quelles sont les conditions classiques pour utiliser l'approximation normale de la binomiale ?",
+              "answer": "$np \\\\ge 5$ et $n(1-p) \\\\ge 5$ (souvent $np \\\\ge 10$ pour plus de sécurité).",
+              "hint": "Pensez à la règle de seuil sur les paramètres de la binomiale.",
+              "explanation": "Ces conditions garantissent que la distribution binomiale est suffisamment symétrique et étalée pour être bien approchée par une loi normale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

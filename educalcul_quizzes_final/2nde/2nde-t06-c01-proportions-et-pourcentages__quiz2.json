@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 527,
+  "_course_code": "2nde-t06-c01-proportions-et-pourcentages",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Taux",
+  "title": "Quiz : Les taux (Seconde)",
+  "questions": [
+    {
+      "text": "Dans une classe de $30$ élèves, $12$ sont des filles. Quel est le taux de filles dans la classe ?",
+      "options": [
+        "0,4",
+        "0,6",
+        "2,5",
+        "40"
+      ],
+      "correctAnswer": "0,4",
+      "explanation": "Le taux est le quotient de la partie considérée sur le total. Ici, le taux de filles est $12 / 30 = 0,4$. L'option $0,6$ correspond au taux de garçons ($18/30$). L'option $2,5$ est l'inverse ($30/12$). L'option $40$ est le pourcentage ($40\\%$) mais sans la division par $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet de $5$ kg de pommes coûte $12,50$ €. Quel est le prix au kilogramme (taux unitaire) ?",
+      "options": [
+        "2,50 €/kg",
+        "0,40 €/kg",
+        "62,50 €/kg",
+        "2,50 kg/€"
+      ],
+      "correctAnswer": "2,50 €/kg",
+      "explanation": "Le taux unitaire (prix au kg) s'obtient en divisant le prix total par la masse : $12,50 / 5 = 2,50$ €/kg. L'option $0,40$ €/kg correspond à l'erreur inverse (masse/prix). L'option $62,50$ €/kg est le produit au lieu du quotient. L'option $2,50$ kg/€ a des unités inversées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors d'un sondage, $18$ personnes sur $60$ déclarent préférer le thé au café. Quel est le pourcentage correspondant ?",
+      "options": [
+        "30 %",
+        "0,3 %",
+        "33,3 %",
+        "3 %"
+      ],
+      "correctAnswer": "30 %",
+      "explanation": "Le taux est $18 / 60 = 0,3$. Pour obtenir le pourcentage, on multiplie le taux par $100$ : $0,3 \\times 100 = 30\\%$. L'option $0,3\\%$ oublie la multiplication par $100$. L'option $33,3\\%$ correspond à une approximation de $1/3$ ($20/60$). L'option $3\\%$ divise par $10$ au lieu de multiplier par $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux marques de lessive :\\nMarque A : $3$ L pour $9,60$ €.\\nMarque B : $2,5$ L pour $7,75$ €.\\nLaquelle est la moins chère au litre ?",
+      "options": [
+        "Marque A",
+        "Marque B",
+        "Elles ont le même prix au litre",
+        "Impossible à déterminer"
+      ],
+      "correctAnswer": "Marque B",
+      "explanation": "Calculons le prix au litre pour chaque marque.\\nMarque A : $9,60 / 3 = 3,20$ €/L.\\nMarque B : $7,75 / 2,5 = 3,10$ €/L.\\nComme $3,10 < 3,20$, la marque B est moins chère au litre.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Marque",
+          "Volume (L)",
+          "Prix (€)"
+        ],
+        "rows": [
+          [
+            "A",
+            "3",
+            "9,60"
+          ],
+          [
+            "B",
+            "2,5",
+            "7,75"
+          ]
+        ],
+        "caption": "Comparaison de deux lessives"
+      }
+    },
+    {
+      "text": "Dans un lycée, le taux de réussite au baccalauréat est de $85\\%$. Si $255$ élèves ont obtenu le baccalauréat, combien d'élèves étaient présentés ?",
+      "options": [
+        "300",
+        "216,75",
+        "3000",
+        "217"
+      ],
+      "correctAnswer": "300",
+      "explanation": "Le taux de réussite est $85\\% = 0,85$. Le nombre d'admis ($255$) est la partie. Le total (présentés) s'obtient en divisant la partie par le taux : $255 / 0,85 = 300$. L'option $216,75$ correspond à $255 \\times 0,85$ (erreur : multiplication au lieu de division). L'option $3000$ correspond à $255 / 0,085$ (erreur sur le taux). L'option $217$ est un arrondi de $216,75$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

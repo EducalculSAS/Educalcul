@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Construire",
+  "title": "Quiz : Construire une symétrie axiale (CM1)",
+  "questions": [
+    {
+      "text": "Quelle est la première étape pour construire le symétrique d'un point $A$ par rapport à une droite $(d)$ ?",
+      "options": [
+        "Tracer une droite parallèle à $(d)$ passant par $A$",
+        "Tracer une droite perpendiculaire à $(d)$ passant par $A$",
+        "Mesurer la distance entre $A$ et $(d)$ avec une règle",
+        "Placer le compas sur $A$ et tracer un arc de cercle"
+      ],
+      "correctAnswer": "Tracer une droite perpendiculaire à $(d)$ passant par $A$",
+      "explanation": "La symétrie axiale conserve les distances par rapport à l'axe. Il faut d'abord tracer la perpendiculaire à l'axe $(d)$ passant par $A$ pour trouver le pied $H$ de cette perpendiculaire. Les autres options correspondent à des constructions différentes (parallèle, mesure directe sans perpendiculaire, utilisation du compas qui n'est pas l'outil principal au CM1 pour cette construction).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment positionner l'équerre et la règle pour tracer la perpendiculaire à $(d)$ passant par $A$ ?",
+      "options": [
+        "On aligne le bord gradué de la règle sur $(d)$ et le bord de l'équerre sur $A$",
+        "On aligne un côté de l'angle droit de l'équerre sur $(d)$ et l'autre côté passe par $A$",
+        "On place l'équerre n'importe comment tant qu'elle touche $A$",
+        "On aligne l'hypoténuse de l'équerre sur $(d)$"
+      ],
+      "correctAnswer": "On aligne un côté de l'angle droit de l'équerre sur $(d)$ et l'autre côté passe par $A$",
+      "explanation": "La méthode standard au CM1 consiste à poser la règle sur la droite $(d)$, puis à plaquer l'équerre contre la règle en alignant un côté de son angle droit sur $(d)$. Le deuxième côté de l'angle droit trace alors la perpendiculaire. Il faut glisser l'équerre le long de la règle jusqu'à ce que ce deuxième côté passe par le point $A$. L'option A confond le rôle de la règle et de l'équerre. L'option D utilise l'hypoténuse qui n'est pas l'angle droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La perpendiculaire à $(d)$ passant par $A$ coupe $(d)$ en $H$. Comment placer le point $A'$ image de $A$ par symétrie axiale ?",
+      "options": [
+        "De l'autre côté de $(d)$ sur la perpendiculaire, de sorte que $AH = A'H$",
+        "Du même côté de $(d)$ que $A$, sur la perpendiculaire, à la même distance",
+        "N'importe où sur la droite $(d)$",
+        "Sur la droite $(d)$ de sorte que $AH = A'H$"
+      ],
+      "correctAnswer": "De l'autre côté de $(d)$ sur la perpendiculaire, de sorte que $AH = A'H$",
+      "explanation": "Par définition de la symétrie axiale, l'axe $(d)$ est la médiatrice du segment $[AA']$. Les points $A$ et $A'$ sont donc de part et d'autre de $(d)$ (côtés opposés), alignés avec $H$ sur la perpendiculaire, et à distance égale de $H$ ($AH = A'H$). L'option B place $A'$ du même côté (ce qui ferait de $(d)$ une parallèle, pas un axe de symétrie). Les options C et D placent $A'$ sur l'axe lui-même, ce qui est faux sauf si $A$ est sur $(d)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique d'un segment $[AB]$ par rapport à une droite $(d)$, quelle méthode faut-il suivre ?",
+      "options": [
+        "On construit les symétriques $A'$ et $B'$ des points $A$ et $B$, puis on trace le segment $[A'B']$",
+        "On trace le symétrique de la droite $(AB)$ seulement",
+        "On mesure la longueur $AB$ et on la reporte n'importe où de l'autre côté de $(d)$",
+        "On construit le symétrique du milieu de $[AB]$ seulement"
+      ],
+      "correctAnswer": "On construit les symétriques $A'$ et $B'$ des points $A$ et $B$, puis on trace le segment $[A'B']$",
+      "explanation": "La symétrie axiale transforme un segment en un segment de même longueur. L'image du segment $[AB]$ est le segment $[A'B']$ où $A'$ et $B'$ sont les symétriques respectifs de $A$ et $B$. Il faut donc construire les deux points images (méthode de la question précédente pour chacun) puis les relier. L'option B ne donne qu'une droite infinie. L'option C ignore la position angulaire (perpendiculaire à l'axe). L'option D ne donne qu'un point (le milieu), insuffisant pour définir le segment image.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa construit le symétrique $A'$ de $A$ par rapport à $(d)$. Elle trace correctement la perpendiculaire, trouve $H$, mesure $AH$, mais place $A'$ du même côté de $(d)$ que $A$. Quelle est son erreur ?",
+      "options": [
+        "Elle n'a pas utilisé l'équerre correctement",
+        "Elle a mesuré la distance $AH$ mais a placé $A'$ du mauvais côté de $(d)$",
+        "Elle a confondu perpendiculaire et médiatrice",
+        "Elle a mal gradué sa règle"
+      ],
+      "correctAnswer": "Elle a mesuré la distance $AH$ mais a placé $A'$ du mauvais côté de $(d)$",
+      "explanation": "Léa a réussi les étapes techniques (perpendiculaire, mesure de la distance $AH$). Son unique erreur est le placement final : en symétrie axiale, l'image $A'$ doit se situer de l'autre côté de l'axe $(d)$ par rapport à $A$. La placer du même côté ne respecte pas la définition de la symétrie (l'axe n'est plus la médiatrice de $[AA']$). Les autres options décrivent des erreurs qui auraient empêché les étapes précédentes d'être correctes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

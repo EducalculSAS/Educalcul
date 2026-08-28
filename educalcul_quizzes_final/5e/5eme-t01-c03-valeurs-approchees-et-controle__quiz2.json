@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Ordre de grandeur",
+  "title": "Quiz - Ordre de grandeur (5e)",
+  "questions": [
+    {
+      "text": "Quel est l'ordre de grandeur de $4500$ ?",
+      "options": [
+        "$10^2$",
+        "$10^3$",
+        "$10^4$",
+        "$10^5$"
+      ],
+      "correctAnswer": "$10^3$",
+      "explanation": "Le nombre $4500$ se situe entre $1000$ ($10^3$) et $10000$ ($10^4$), donc son ordre de grandeur est $10^3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On multiplie $3,2 × 10^4$ par $5 × 10^2$. Quel est l'ordre de grandeur du produit ?",
+      "options": [
+        "$10^6$",
+        "$10^7$",
+        "$10^8$",
+        "$10^9$"
+      ],
+      "correctAnswer": "$10^7$",
+      "explanation": "Le produit des mantisses est $3,2 × 5 = 16$, soit $1,6 × 10^1$. En ajoutant les exposants $4+2=6$, on obtient $1,6 × 10^{7}$, donc l'ordre de grandeur est $10^7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On divise $9 × 10^8$ par $3 × 10^3$. Quel est l'ordre de grandeur du quotient ?",
+      "options": [
+        "$10^4$",
+        "$10^5$",
+        "$10^6$",
+        "$10^7$"
+      ],
+      "correctAnswer": "$10^5$",
+      "explanation": "Le quotient des mantisses est $9/3 = 3$. L'exposant devient $8-3 = 5$, donc le résultat est $3 × 10^5$, d'ordre de grandeur $10^5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel a un ordre de grandeur différent des trois autres ?",
+      "options": [
+        "$2300$",
+        "$7800$",
+        "$9100$",
+        "$12000$"
+      ],
+      "correctAnswer": "$12000$",
+      "explanation": "$2300$, $7800$ et $9100$ sont compris entre $1000$ et $10000$ (ordre $10^3$), alors que $12000$ est entre $10000$ et $100000$ (ordre $10^4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La distance entre Paris et Lyon est d'environ $460$ km. Quel est l'ordre de grandeur de cette distance exprimée en mètres ?",
+      "options": [
+        "$10^4$",
+        "$10^5$",
+        "$10^6$",
+        "$10^7$"
+      ],
+      "correctAnswer": "$10^5$",
+      "explanation": "$460$ km correspondent à $460000$ m, soit $4,6 × 10^5$ m. L'ordre de grandeur est donc $10^5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

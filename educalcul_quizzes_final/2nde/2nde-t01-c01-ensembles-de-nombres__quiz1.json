@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "N, Z, Q, R",
+  "title": "Quiz : Ensembles de nombres N, Z, Q, R",
+  "questions": [
+    {
+      "text": "À quel ensemble appartient le nombre $-5/2$ ?",
+      "options": [
+        "N",
+        "Z",
+        "Q",
+        "R"
+      ],
+      "correctAnswer": "Q",
+      "explanation": "Le nombre $-5/2$ est un quotient de deux entiers relatifs avec un dénominateur non nul, donc c'est un nombre rationnel. Il n'est pas entier car sa valeur absolue n'est pas un entier naturel, ni naturel, ni réel seulement (il est réel mais l'ensemble le plus précis est Q).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est vraie pour $\\sqrt{2}$ ?",
+      "options": [
+        "$\\sqrt{2} \\in \\mathbb{Q}$",
+        "$\\sqrt{2} \\notin \\mathbb{Q}$",
+        "$\\sqrt{2} \\in \\mathbb{Z}$",
+        "$\\sqrt{2} \\in \\mathbb{N}$"
+      ],
+      "correctAnswer": "$\\sqrt{2} \\notin \\mathbb{Q}$",
+      "explanation": "$\\sqrt{2}$ est un nombre irrationnel : il ne peut pas s'écrire sous la forme d'une fraction de deux entiers. Par conséquent, il n'appartient pas à $\\mathbb{Q}$, ni à $\\mathbb{Z}$, ni à $\\mathbb{N}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la chaîne d'inclusions correcte entre les ensembles de nombres ?",
+      "options": [
+        "$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$",
+        "$\\mathbb{Z} \\subset \\mathbb{N} \\subset \\mathbb{Q} \\subset \\mathbb{R}$",
+        "$\\mathbb{Q} \\subset \\mathbb{Z} \\subset \\mathbb{N} \\subset \\mathbb{R}$",
+        "$\\mathbb{R} \\subset \\mathbb{Q} \\subset \\mathbb{Z} \\subset \\mathbb{N}$"
+      ],
+      "correctAnswer": "$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$",
+      "explanation": "Les naturels sont inclus dans les entiers relatifs, qui sont inclus dans les rationnels, eux-mêmes inclus dans les réels. Les trois autres propositions inversent l'ordre ou placent des ensembles plus grands dans des plus petits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite numérique ci-dessous, quel point correspond à un nombre irrationnel ?",
+      "options": [
+        "A ($-3$)",
+        "B ($0$)",
+        "C ($2,5$)",
+        "D ($\\sqrt{5}$)"
+      ],
+      "correctAnswer": "D ($\\sqrt{5}$)",
+      "explanation": "Les points A, B et C représentent respectivement $-3$, $0$ et $2,5$, qui sont tous des nombres rationnels (entiers ou décimaux finis). Le point D représente $\\sqrt{5}$, qui ne peut pas s'écrire comme une fraction d'entiers, donc c'est un nombre irrationnel.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite numérique avec points A, B, C, D",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          },
+          {
+            "value": 0,
+            "label": "B"
+          },
+          {
+            "value": 2.5,
+            "label": "C"
+          },
+          {
+            "value": 2.2360679,
+            "label": "D"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "L'ensemble des réels $x$ tels que $x^2 < 4$ est :",
+      "options": [
+        "$(-2 ; 2)$",
+        "$[-2 ; 2]$",
+        "$(-\\infty ; -2) \\cup (2 ; +\\infty)$",
+        "$\\mathbb{R}$"
+      ],
+      "correctAnswer": "$(-2 ; 2)$",
+      "explanation": "L'inéquation $x^2 < 4$ équivaut à $-2 < x < 2$. Les bornes $-2$ et $2$ ne sont pas comprises car l'inégalité est stricte. Donc l'ensemble solution est l'intervalle ouvert $(-2 ; 2)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

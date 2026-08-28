@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Coordonnées",
+  "title": "Quiz : Coordonnées cartésiennes (6e)",
+  "questions": [
+    {
+      "text": "Le point A se trouve à $2$ unités à droite de l'origine et $3$ unités vers le haut. Quelles sont ses coordonnées ?",
+      "options": [
+        "$(2,3)$",
+        "$(3,2)$",
+        "$(-2,3)$",
+        "$(2,-3)$"
+      ],
+      "correctAnswer": "$(2,3)$",
+      "explanation": "L'abscisse correspond au déplacement horizontal (vers la droite = positif) et l'ordonnée au déplacement vertical (vers le haut = positif). Donc les coordonnées sont $(2,3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point B a pour coordonnées $(-4,5)$. Dans quel quadrant se trouve-t-il ?",
+      "options": [
+        "Premier quadrant",
+        "Deuxième quadrant",
+        "Troisième quadrant",
+        "Quatrième quadrant"
+      ],
+      "correctAnswer": "Deuxième quadrant",
+      "explanation": "L'abscisse $-4$ est négative et l'ordonnée $5$ est positive, ce qui place le point dans le deuxième quadrant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les points $C(2,4)$ et $D(6,8)$. Quelles sont les coordonnées du milieu du segment $[CD]$ ?",
+      "options": [
+        "$(4,6)$",
+        "$(3,5)$",
+        "$(5,7)$",
+        "$(2,8)$"
+      ],
+      "correctAnswer": "$(4,6)$",
+      "explanation": "Le milieu a pour abscisse $(2+6)/2 = 4$ et pour ordonnée $(4+8)/2 = 6$, donc les coordonnées sont $(4,6)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $E(3,-2)$ est translaté par le vecteur $(-1,4)$. Quelles sont les coordonnées de son image $E'$ ?",
+      "options": [
+        "$(2,2)$",
+        "$(4,-6)$",
+        "$(2,-6)$",
+        "$(4,2)$"
+      ],
+      "correctAnswer": "$(2,2)$",
+      "explanation": "On ajoute les composantes du vecteur aux coordonnées du point : $3+(-1)=2$ et $-2+4=2$, donc l'image est $(2,2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme part du point $(0,0)$ et répète $3$ fois : avancer de $2$ unités vers la droite, puis de $1$ unité vers le haut. Quelles sont les coordonnées finales ?",
+      "options": [
+        "$(6,3)$",
+        "$(3,6)$",
+        "$(5,3)$",
+        "$(6,2)$"
+      ],
+      "correctAnswer": "$(6,3)$",
+      "explanation": "Chaque répétition ajoute $2$ à l'abscisse et $1$ à l'ordonnée. Après $3$ répétitions, l'abscisse vaut $0+3×2=6$ et l'ordonnée $0+3×1=3$, donc les coordonnées finales sont $(6,3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

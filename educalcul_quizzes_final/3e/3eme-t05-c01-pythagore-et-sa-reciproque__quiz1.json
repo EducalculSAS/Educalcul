@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Choisir sens",
+  "title": "Quiz : Choisir entre Pythagore et sa réciproque",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, quel énoncé correspond au théorème de Pythagore (sens direct) ?",
+      "options": [
+        "Si le triangle est rectangle, alors le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.",
+        "Si le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors le triangle est rectangle.",
+        "Dans tout triangle, la somme des carrés de deux côtés est égale au carré du troisième côté.",
+        "Si un triangle est rectangle, alors les deux côtés de l'angle droit sont égaux."
+      ],
+      "correctAnswer": "Si le triangle est rectangle, alors le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.",
+      "explanation": "Le sens direct du théorème de Pythagore part de l'hypothèse « triangle rectangle » pour conclure sur la relation entre les côtés : l'hypoténuse au carré égale la somme des carrés des côtés de l'angle droit. La deuxième option est l'énoncé de la réciproque. La troisième est fausse (ne vaut que pour les triangles rectangles). La quatrième confond triangle rectangle et triangle rectangle isocèle.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 3,
+        "b": 4,
+        "c": 5,
+        "caption": "Illustration du théorème de Pythagore avec un triangle 3-4-5"
+      }
+    },
+    {
+      "text": "On connaît les longueurs des trois côtés d'un triangle : 8 cm, 15 cm et 17 cm. Quel théorème faut-il utiliser pour démontrer que ce triangle est rectangle ?",
+      "options": [
+        "Le théorème de Pythagore (sens direct).",
+        "La réciproque du théorème de Pythagore.",
+        "Le théorème de Thalès.",
+        "La propriété de la médiane dans un triangle rectangle."
+      ],
+      "correctAnswer": "La réciproque du théorème de Pythagore.",
+      "explanation": "Comme on connaît les trois côtés et qu'on veut prouver l'existence d'un angle droit, on utilise la réciproque : on vérifie si $8^2 + 15^2 = 17^2$ (soit $64 + 225 = 289$). Comme l'égalité est vraie, le triangle est rectangle. Le sens direct sert à calculer un côté manquant quand on sait déjà que le triangle est rectangle. Thalès ne s'applique pas ici (pas de parallélisme). La médiane n'est pas un critère de rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, on sait que AB = 9 cm, AC = 12 cm et BC = 15 cm. Quelle démarche suivre pour savoir si l'angle A est un angle droit ?",
+      "options": [
+        "Vérifier si $9^2 + 12^2 = 15^2$ en utilisant la réciproque de Pythagore.",
+        "Calculer $9^2 + 12^2$ pour trouver $BC^2$ en utilisant le sens direct de Pythagore.",
+        "Utiliser le théorème de Thalès car les côtés sont proportionnels.",
+        "Dire que c'est impossible car on ne connaît pas les angles."
+      ],
+      "correctAnswer": "Vérifier si $9^2 + 12^2 = 15^2$ en utilisant la réciproque de Pythagore.",
+      "explanation": "On connaît les trois côtés et on cherche à prouver que l'angle A est droit. L'hypoténuse potentielle est le plus grand côté, BC = 15 cm. Il faut donc vérifier l'égalité $AB^2 + AC^2 = BC^2$, c'est-à-dire $9^2 + 12^2 = 15^2$ ($81 + 144 = 225$). C'est l'application de la réciproque. Le sens direct (option B) aurait pour but de calculer BC si on savait déjà que l'angle A était droit. Thalès ne concerne pas les longueurs dans un seul triangle sans parallélisme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle DEF rectangle en D, on a DE = 7 cm et DF = 24 cm. Quelle écriture permet de calculer la longueur EF ?",
+      "options": [
+        "On vérifie si $7^2 + 24^2 = EF^2$ (réciproque).",
+        "On écrit $EF^2 = 7^2 + 24^2$ (sens direct).",
+        "On écrit $7^2 = EF^2 + 24^2$ (sens direct).",
+        "On ne peut pas calculer EF sans connaître un angle aigu."
+      ],
+      "correctAnswer": "On écrit $EF^2 = 7^2 + 24^2$ (sens direct).",
+      "explanation": "Le triangle est rectangle en D, donc l'hypoténuse est EF (côté opposé à l'angle droit). Les côtés de l'angle droit sont DE = 7 et DF = 24. Le sens direct de Pythagore s'applique : hypoténuse² = côté1² + côté2², soit $EF^2 = 7^2 + 24^2$. L'option A utilise le vocabulaire de la vérification (réciproque) alors qu'on calcule. L'option C place mal l'hypoténuse (7 n'est pas l'hypoténuse). L'option D est fausse car Pythagore permet ce calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour côtés 10 cm, 24 cm et 26 cm. On veut affirmer qu'il est rectangle. Quelle affirmation est correcte ?",
+      "options": [
+        "Comme $10^2 + 24^2 = 26^2$, le triangle est rectangle d'après la réciproque de Pythagore.",
+        "Comme $10^2 + 26^2 = 24^2$, le triangle est rectangle d'après la réciproque de Pythagore.",
+        "Comme $10 + 24 = 26$, le triangle est rectangle d'après Pythagore.",
+        "On ne peut pas conclure car Pythagore ne s'applique qu'aux triangles rectangles déjà connus."
+      ],
+      "correctAnswer": "Comme $10^2 + 24^2 = 26^2$, le triangle est rectangle d'après la réciproque de Pythagore.",
+      "explanation": "Pour utiliser la réciproque, il faut identifier l'hypoténuse potentielle : le plus grand côté, soit 26 cm. On vérifie alors si la somme des carrés des deux autres côtés (10 et 24) égale le carré du plus grand côté : $10^2 + 24^2 = 100 + 576 = 676$ et $26^2 = 676$. L'égalité est vraie, donc le triangle est rectangle (angle opposé au côté 26). L'option B inverse les rôles (26 ne peut pas être un côté de l'angle droit car c'est le plus grand). L'option C confonde addition des longueurs et carrés. L'option D confond sens direct et réciproque.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

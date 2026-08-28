@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Variables, conditions, boucles",
+  "title": "Exercice - Variables, conditions, boucles (5e)",
+  "blocks": [
+    {
+      "title": "Question 1 : Affectation et calcul simple",
+      "content": "Dans un algorithme, on affecte la valeur 7 à la variable $a$, puis on ajoute 5 à $a$. Quelle est la valeur finale de $a$ ?",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence avec $a = 7$. L'instruction « ajoute 5 à $a$ » signifie $a \\leftarrow a + 5$, donc $a = 7 + 5 = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Structure conditionnelle",
+      "content": "On a une variable $x$ initialisée à 10. Si $x > 12$ alors on affecte 3 à $y$ sinon on affecte 7 à $y$. Quelle est la valeur de $y$ après l'exécution ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition $x > 12$ est fausse car $x = 10$. On exécute donc la branche « sinon » qui affecte 7 à $y$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Boucle « pour »",
+      "content": "On initialise une variable $somme$ à 0. Pour $i$ allant de 1 à 4, on ajoute $i$ à $somme$. Quelle est la valeur de $somme$ après la boucle ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle ajoute successivement 1, 2, 3 et 4 à $somme$ : $0 + 1 + 2 + 3 + 4 = 10$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

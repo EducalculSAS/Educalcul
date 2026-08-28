@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Choisir méthode",
+  "title": "Quiz : Choisir la méthode (Algorithmique et Problèmes DNB)",
+  "questions": [
+    {
+      "text": "On veut écrire un algorithme qui calcule la somme des entiers de $1$ à $n$ (où $n$ est un entier naturel non nul donné). Quelle structure de boucle est la plus adaptée et la plus directe ?",
+      "options": [
+        "Une boucle 'Pour' de $1$ à $n$",
+        "Une boucle 'Tant que' avec une condition sur la somme",
+        "Une instruction 'Si' unique",
+        "Une boucle 'Tant que' sans condition d'arrêt"
+      ],
+      "correctAnswer": "Une boucle 'Pour' de $1$ à $n$",
+      "explanation": "La boucle 'Pour' (ou 'Pour i allant de 1 à n') est conçue pour répéter un nombre connu de fois une instruction. Ici, on connaît exactement le nombre d'itérations ($n$ fois). La boucle 'Tant que' est préférable quand le nombre de tours n'est pas connu à l'avance. Une instruction 'Si' ne fait pas de répétition. Une boucle 'Tant que' sans condition d'arrêt crée une boucle infinie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur supérieure de $3$ cm à sa largeur. Son périmètre est de $30$ cm. On note $x$ la largeur en cm. Quelle équation permet de trouver $x$ ?",
+      "options": [
+        "$2 \\times (x + 3) = 30$",
+        "$2 \\times x + 3 = 30$",
+        "$2 \\times (x + x + 3) = 30$",
+        "$x \\times (x + 3) = 30$"
+      ],
+      "correctAnswer": "$2 \\times (x + x + 3) = 30$",
+      "explanation": "Le périmètre d'un rectangle vaut $2 \\times (longueur + largeur)$. La largeur est $x$, la longueur est $x + 3$. La somme longueur + largeur est donc $x + (x + 3) = x + x + 3$. L'équation correcte est $2 \\times (x + x + 3) = 30$. L'option A oublie d'ajouter la largeur $x$ dans la parenthèse. L'option B ne met pas la somme entre parenthèses avant de multiplier par $2$. L'option D calcule l'aire, pas le périmètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un algorithme, on veut tester si un nombre entier $n$ est divisible par $3$ ET par $5$. Quelle condition exacte faut-il écrire dans le bloc 'Si' ?",
+      "options": [
+        "n % 3 == 0 ou n % 5 == 0",
+        "n % 3 == 0 et n % 5 == 0",
+        "n % 15 == 1",
+        "n / 3 == 0 et n / 5 == 0"
+      ],
+      "correctAnswer": "n % 3 == 0 et n % 5 == 0",
+      "explanation": "L'opérateur modulo '%' donne le reste de la division entière. 'Divisible par 3' signifie que le reste de la division par 3 est 0, soit 'n % 3 == 0'. Le connectif logique 'ET' se traduit par 'et' (ou '&&' selon les langages). L'option A utilise 'ou', ce qui est vrai si l'un des deux seulement est vrai. L'option C teste si le reste de la division par 15 vaut 1, ce qui est faux (il faudrait 0). L'option D utilise la division '/' qui donne un quotient, pas un reste ; 'n / 3 == 0' n'est vrai que si $n < 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On possède une série statistique de $20$ valeurs. On souhaite déterminer la médiane de cette série. Quelle est la méthode correcte ?",
+      "options": [
+        "Additionner toutes les valeurs et diviser par $20$",
+        "Ordonner la série et prendre la valeur du $10$ème rang",
+        "Ordonner la série et calculer la moyenne des valeurs des $10$ème et $11$ème rangs",
+        "Chercher la valeur qui apparaît le plus souvent"
+      ],
+      "correctAnswer": "Ordonner la série et calculer la moyenne des valeurs des $10$ème et $11$ème rangs",
+      "explanation": "La médiane est la valeur qui partage la série ordonnée en deux parties égales. Pour un effectif total pair ($N = 20$), la médiane est la moyenne des deux valeurs centrales, situées aux rangs $N/2 = 10$ et $N/2 + 1 = 11$. L'option A calcule la moyenne, pas la médiane. L'option B ne prend qu'une seule valeur centrale, ce qui est la méthode pour un effectif impair. L'option D définit le mode.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Problème : 'Un vendeur touche un fixe de $1200$ € par mois plus $5\\%$ de ses ventes. À partir de quel montant de ventes son salaire dépasse-t-il $2000$ € ?' Quelle démarche est la plus efficace pour programmer la résolution ?",
+      "options": [
+        "Tester tous les montants de $0$ à $10000$ par pas de $1$ avec une boucle 'Pour'",
+        "Écrire l'inéquation $1200 + 0,05 \\times v > 2000$ et la résoudre pour $v$",
+        "Utiliser une boucle 'Tant que' en augmentant les ventes de $100$ en $100$ jusqu'à dépasser $2000$",
+        "Calculer $2000 - 1200$ puis multiplier par $5$"
+      ],
+      "correctAnswer": "Écrire l'inéquation $1200 + 0,05 \\times v > 2000$ et la résoudre pour $v$",
+      "explanation": "La modélisation algébrique est la méthode exacte, rapide et standard au niveau 3e. On pose $v$ le montant des ventes. Le salaire est $1200 + 0,05v$. On résout $1200 + 0,05v > 2000 \\iff 0,05v > 800 \\iff v > 16000$. Les options A et C sont des méthodes par essais (force brute ou pas de $100$) qui donnent une approximation ou sont lentes. L'option D fait une erreur de calcul : après avoir trouvé $800$, il faut diviser par $0,05$ (ou multiplier par $20$), pas multiplier par $5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Arrondir un nombre décimal",
+  "title": "Arrondir un nombre décimal",
+  "questions": [
+    {
+      "text": "Quel est l'arrondi à l'unité du nombre $12,3$ ?",
+      "options": [
+        "$12$",
+        "$13$",
+        "$12,0$",
+        "$10$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Pour arrondir à l'unité, on regarde le chiffre des dixièmes. Ici, le chiffre des dixièmes est $3$, ce qui est inférieur à $5$. On conserve donc l'unité telle quelle et on supprime la partie décimale. Le résultat est $12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi à l'unité du nombre $7,8$ ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$7,0$",
+        "$9$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On regarde le chiffre des dixièmes, qui est $8$. Comme $8$ est supérieur ou égal à $5$, on ajoute une unité au chiffre des unités. Le nombre $7$ devient $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis le nombre $4,26$ au dixième près.",
+      "options": [
+        "$4,2$",
+        "$4,3$",
+        "$4,26$",
+        "$4,0$"
+      ],
+      "correctAnswer": "$4,3$",
+      "explanation": "Pour arrondir au dixième, on regarde le chiffre des centièmes. Ici, le chiffre des centièmes est $6$. Comme $6$ est supérieur ou égal à $5$, on augmente le chiffre des dixièmes de $1$. Le $2$ devient $3$, ce qui donne $4,3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi au dixième du nombre $15,43$ ?",
+      "options": [
+        "$15,4$",
+        "$15,5$",
+        "$15,0$",
+        "$16,0$"
+      ],
+      "correctAnswer": "$15,4$",
+      "explanation": "On regarde le chiffre des centièmes, qui est $3$. Comme $3$ est inférieur à $5$, on conserve le chiffre des dixièmes sans le modifier. L'arrondi est donc $15,4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban mesure $2,75$ mètres. Quelle est la longueur de ce ruban arrondie au dixième près ?",
+      "options": [
+        "$2,7$ mètres",
+        "$3,0$ mètres",
+        "$2,8$ mètres",
+        "$2,75$ mètres"
+      ],
+      "correctAnswer": "$2,8$ mètres",
+      "explanation": "Le nombre à arrondir est $2,75$. Le chiffre des centièmes est $5$. Selon la règle, quand le chiffre suivant est égal ou supérieur à $5$, on arrondit au chiffre supérieur. Le $7$ des dixièmes devient $8$. La longueur arrondie est $2,8$ mètres.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

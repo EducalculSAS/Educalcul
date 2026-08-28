@@ -1,0 +1,570 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.473586+00:00",
+  "id": 635,
+  "code": "terminale-generale-t04-c04",
+  "title": "Risque et décision",
+  "description": "Cours structuré Educalcul : Risque et décision.",
+  "subject": "Probabilités et modélisation",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Probabilités et modélisation",
+    "titre_du_cours": "Risque et décision",
+    "objectif_global": "Risque et décision",
+    "mini_lecons_imposees": [
+      "Comparer probabilités.",
+      "Communiquer.",
+      "Éviter biais."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités et modélisation",
+      "lessons": [
+        {
+          "title": "Comparer probabilités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi comparer des probabilités ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois choisir entre deux assurances pour ton téléphone. La première couvre le vol avec une probabilité de $0,02$ et la seconde couvre la casse avec une probabilité de $0,05$. Laquelle est la plus utile ? Comparer des probabilités, c'est exactement cela : mettre en balance des chances pour prendre une décision éclairée. En terminale, tu as déjà rencontré la notion de probabilité d'un événement, mais ici nous allons plus loin : nous allons apprendre à les ordonner, à mesurer leur écart et à comprendre ce que cela implique pour un choix réel. Rappelle-toi qu'une probabilité est un nombre entre $0$ et $1$ qui quantifie la certitude qu'un événement se produise. Plus le nombre est proche de $1$, plus l'événement est probable. Mais attention : comparer $0,02$ et $0,05$ ne se résume pas à dire que $0,05 > 0,02$. Il faut aussi tenir compte des enjeux : le vol et la casse n'ont pas le même coût financier ni le même impact sur ton quotidien. C'est toute la subtilité de la décision sous incertitude."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre de probabilités pour deux événements indépendants : vol (V) et casse (C).",
+              "branches": [
+                {
+                  "label": "V",
+                  "probability": "0.02",
+                  "children": [
+                    {
+                      "label": "C",
+                      "probability": "0.05"
+                    },
+                    {
+                      "label": "non C",
+                      "probability": "0.95"
+                    }
+                  ]
+                },
+                {
+                  "label": "non V",
+                  "probability": "0.98",
+                  "children": [
+                    {
+                      "label": "C",
+                      "probability": "0.05"
+                    },
+                    {
+                      "label": "non C",
+                      "probability": "0.95"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir qu'un arbre de probabilités permet de visualiser toutes les issues possibles et leurs probabilités. Mais souvent, nous devons comparer non pas des événements bruts, mais des gains ou des pertes associés à ces événements. C'est là qu'intervient l'espérance mathématique : elle donne une valeur moyenne pondérée par les probabilités. Si tu gagnes $100$ euros avec une probabilité de $0,4$ et que tu perds $50$ euros avec une probabilité de $0,6$, l'espérance de ton gain est $100 \\times 0,4 + (-50) \\times 0,6 = 10$ euros. Cela ne veut pas dire que tu gagneras exactement $10$ euros à chaque fois, mais que sur un grand nombre de répétitions, ton gain moyen tendra vers $10$ euros. Comparer deux jeux revient alors à comparer leurs espérances. Cependant, l'espérance ne raconte pas toute l'histoire : elle ignore la dispersion des résultats et l'attitude face au risque. Nous y reviendrons."
+            },
+            {
+              "type": "display_math",
+              "latex": "E(X) = \\sum_{i} x_i \\, p_i"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les issues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie tous les résultats possibles de l'expérience aléatoire et note le gain (ou la perte) associé à chacun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Associer les probabilités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque issue, détermine sa probabilité. Vérifie que la somme des probabilités vaut $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'espérance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie chaque gain par sa probabilité et fais la somme de ces produits. C'est l'espérance mathématique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer et décider",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les espérances des différentes options. Si l'une est nettement supérieure, elle est rationnellement préférable au sens de l'espérance. Mais garde en tête que d'autres critères (variance, utilité) peuvent modifier le choix."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la probabilité d'un événement dépend de la réalisation d'un autre événement. C'est le domaine des probabilités conditionnelles. Supposons qu'un test médical détecte une maladie avec une probabilité de $0,95$ si la personne est malade (sensibilité) et donne un faux positif avec une probabilité de $0,02$ si la personne est saine (spécificité $0,98$). Si le test est positif, quelle est la probabilité d'être réellement malade ? La réponse dépend de la prévalence de la maladie dans la population. Si la maladie est rare (prévalence $0,001$), un test positif ne signifie pas une certitude. C'est le fameux paradoxe du faux positif. Pour comparer la probabilité d'être malade avant et après le test, nous utilisons la formule de Bayes. Cette mise à jour de nos croyances à la lumière d'une nouvelle information est au cœur de la décision rationnelle."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour le test médical : M = malade, T = test positif.",
+              "branches": [
+                {
+                  "label": "M",
+                  "probability": "0.001",
+                  "children": [
+                    {
+                      "label": "T",
+                      "probability": "0.95"
+                    },
+                    {
+                      "label": "non T",
+                      "probability": "0.05"
+                    }
+                  ]
+                },
+                {
+                  "label": "non M",
+                  "probability": "0.999",
+                  "children": [
+                    {
+                      "label": "T",
+                      "probability": "0.02"
+                    },
+                    {
+                      "label": "non T",
+                      "probability": "0.98"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, comparons deux options qui ont la même espérance mais des risques différents. Option A : gagner $100$ euros avec certitude. Option B : gagner $200$ euros avec une probabilité de $0,5$ et $0$ euro sinon. Les deux ont une espérance de $100$ euros. Laquelle choisis-tu ? La plupart des gens préfèrent la certitude : c'est l'aversion au risque. En économie, on modélise cela par une fonction d'utilité concave, par exemple $u(x) = \\sqrt{x}$. L'utilité espérée de l'option A est $\\sqrt{100}=10$, celle de l'option B est $0,5 \\times \\sqrt{200} \\approx 7,07$. L'option A a une utilité espérée plus grande, ce qui explique le choix. Cette idée fondamentale, due à Bernoulli, montre que comparer des probabilités ne se réduit pas à comparer des espérances monétaires : il faut comparer des espérances d'utilité. C'est un pont vers la théorie moderne de la décision."
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(x)",
+              "xmin": 0,
+              "xmax": 250,
+              "caption": "Fonction d'utilité concave $u(x)=\\sqrt{x}$ illustrant l'aversion au risque."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux événements A et B ont des probabilités $P(A)=0,3$ et $P(B)=0,45$. Lequel est le plus probable ? Quelle est la différence de probabilité ?",
+              "answer": "B est plus probable que A. La différence est $0,15$.",
+              "hint": "Compare directement les deux nombres décimaux.",
+              "explanation": "Puisque $0,45 > 0,3$, l'événement B a plus de chances de se réaliser. L'écart entre les deux probabilités est $0,45 - 0,3 = 0,15$."
+            },
+            {
+              "question": "Un jeu propose de gagner $50\\,\\text{\\euro}$ avec une probabilité de $0,6$ et de perdre $30\\,\\text{\\euro}$ avec une probabilité de $0,4$. Calcule l'espérance de gain. Ce jeu est-il favorable ?",
+              "answer": "L'espérance est $18\\,\\text{\\euro}$. Le jeu est favorable car l'espérance est positive.",
+              "hint": "Utilise la formule $E = \\sum x_i p_i$.",
+              "explanation": "$E = 50 \\times 0,6 + (-30) \\times 0,4 = 30 - 12 = 18$. Comme $E > 0$, en moyenne on gagne de l'argent en jouant ce jeu."
+            },
+            {
+              "question": "Dans la population, $1\\,\\%$ des personnes ont une maladie. Un test est positif chez $95\\,\\%$ des malades et chez $5\\,\\%$ des personnes saines. Si ton test est positif, quelle est la probabilité approximative d'être malade ?",
+              "answer": "Environ $16\\,\\%$.",
+              "hint": "Utilise l'arbre de probabilités ou la formule de Bayes : $P(M|T) = \\frac{P(T|M)P(M)}{P(T|M)P(M)+P(T|\\neg M)P(\\neg M)}$.",
+              "explanation": "$P(M|T) = \\frac{0,95 \\times 0,01}{0,95 \\times 0,01 + 0,05 \\times 0,99} = \\frac{0,0095}{0,0095+0,0495} = \\frac{0,0095}{0,059} \\approx 0,161$. Malgré un test positif, la probabilité d'être malade reste faible car la maladie est rare."
+            },
+            {
+              "question": "Tu as le choix entre : Option 1 : recevoir $100\\,\\text{\\euro}$ sûr. Option 2 : une loterie qui donne $200\\,\\text{\\euro}$ avec probabilité $0,5$ et $0\\,\\text{\\euro}$ sinon. Les deux ont la même espérance monétaire. Si ton utilité est $u(x)=\\sqrt{x}$, quelle option maximise l'utilité espérée ?",
+              "answer": "L'option 1 (gain sûr) maximise l'utilité espérée.",
+              "hint": "Calcule $u(100)$ et $0,5 \\times u(200) + 0,5 \\times u(0)$.",
+              "explanation": "$u(100)=10$. Utilité espérée de la loterie : $0,5 \\times \\sqrt{200} + 0,5 \\times 0 \\approx 7,07$. Comme $10 > 7,07$, l'option sure est préférée par un individu aversau risque."
+            }
+          ]
+        },
+        {
+          "title": "Communiquer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le langage des chiffres : pièges et clarté"
+            },
+            {
+              "type": "paragraph",
+              "content": "Communiquer sur le risque, c'est bien plus que donner un nombre. Imagine un journal titrant : \"Ce nouveau médicament réduit le risque de crise cardiaque de $50\\,\\%$ !\" Cela paraît impressionnant. Mais si le risque initial était de $2\\,\\%$ et qu'il passe à $1\\,\\%$, la réduction absolue n'est que de $1\\,\\%$ de point. La présentation en risque relatif ($50\\,\\%$ de réduction) gonfle l'effet perçu. En terminale, tu dois être capable de décrypter ces présentations et de les reformuler honnêtement. La distinction entre risque relatif et risque absolu est cruciale : le risque relatif compare les probabilités (ratio), le risque absolu donne la différence. Une bonne communication présente les deux, et idéalement le nombre de personnes nécessaires à traiter (NNT) pour éviter un événement indésirable. Ici, le NNT serait $100$ : il faut traiter $100$ personnes pour éviter une crise. Cela change la perspective, n'est-ce pas ?"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Risque relatif} = \\frac{p_{\\text{traitement}}}{p_{\\text{contrôle}}}, \\quad \\text{Réduction absolue} = p_{\\text{contrôle}} - p_{\\text{traitement}}"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison du risque absolu et relatif pour un traitement fictif.",
+              "bars": [
+                {
+                  "label": "Groupe contrôle",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Groupe traitement",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des pourcentages, le format de présentation influence la compréhension. Les fréquences naturelles (\"$1$ personne sur $100$\") sont souvent mieux comprises que les probabilités (\"$0,01$\" ou \"$1\\,\\%$\"). Les travaux de Gigerenzer montrent que les médecins eux-mêmes raisonnent mieux avec des fréquences. De plus, les représentations visuelles comme les diagrammes en barres, les camemberts ou les grilles de $100$ cases (icon arrays) aident à saisir la proportion. Mais attention : un camembert peut masquer la petitesse d'un risque si la part est trop fine. Un diagramme en barres avec une échelle adaptée est souvent plus lisible. Choisis le graphique en fonction du message : comparer des parties d'un tout (camembert) ou comparer des grandeurs entre groupes (barres). Et n'oublie jamais d'indiquer la base : \"sur $1000$ patients\"."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des issues pour $1000$ patients : $10$ événements indésirables (rouge), $990$ sans événement (vert).",
+              "slices": [
+                {
+                  "label": "Événement",
+                  "value": 10,
+                  "tone": "red"
+                },
+                {
+                  "label": "Sans événement",
+                  "value": 990,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Communiquer une incertitude, c'est aussi exprimer la précision de nos estimations. Une probabilité estimée à $0,3$ à partir de $10$ observations n'a pas la même fiabilité qu'une probabilité estimée à $0,3$ à partir de $10\\,000$ observations. En statistiques, on utilise des intervalles de confiance pour quantifier cette incertitude. Dire \"la probabilité est entre $0,25$ et $0,35$ avec $95\\,\\%$ de confiance\" est bien plus informatif qu'un simple chiffre. De même, quand tu présentes un résultat de simulation ou un modèle prédictif, indique la marge d'erreur. Cela permet à ton interlocuteur d'évaluer la solidité de ta conclusion. Une communication responsable inclut toujours les limites de la méthode : taille de l'échantillon, hypothèses, biais possibles. C'est la marque d'une pensée critique et scientifique."
+            },
+            {
+              "type": "display_math",
+              "latex": "IC_{95\\%} = \\left[ \\hat{p} - 1,96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} ; \\hat{p} + 1,96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\right]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rédiger une conclusion pour une prise de décision demande de structurer l'information : (1) Rappeler la question de décision. (2) Présenter les probabilités clés avec leurs incertitudes. (3) Comparer les options selon les critères pertinents (espérance, risque, utilité). (4) Formuler une recommandation claire, conditionnée aux préférences du décideur. Par exemple : \"Au vu des données, l'option B a une espérance de gain supérieure mais une variance plus élevée. Si tu es prêt à accepter un risque de perte de $20\\,\\text{\\euro}$ pour viser un gain moyen plus élevé, choisis B. Sinon, l'option A est plus prudente.\" Cette formulation respecte l'autonomie du décideur tout en apportant un éclairage rationnel. C'est l'essence de la communication en aide à la décision : éclairer sans imposer."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Contextualiser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quel est le choix à faire ? Quels sont les enjeux ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chiffrer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne les probabilités, les gains/pertes, les intervalles de confiance."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise l'espérance, l'utilité, la valeur à risque, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Recommander",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Propose une option en expliquant le compromis risque/rendement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un article affirme : \"Le traitement réduit le risque de récidive de $40\\,\\%$\". Le risque de récidive sans traitement est de $5\\,\\%$. Calcule le risque absolu avec traitement et la réduction absolue en points de pourcentage.",
+              "answer": "Risque avec traitement : $3\\,\\%$. Réduction absolue : $2$ points de pourcentage.",
+              "hint": "Réduction relative de $40\\,\\%$ signifie que le risque est multiplié par $0,6$.",
+              "explanation": "Risque relatif = $0,6$. Risque absolu avec traitement = $5\\,\\% \\times 0,6 = 3\\,\\%$. Réduction absolue = $5\\,\\% - 3\\,\\% = 2$ points de pourcentage."
+            },
+            {
+              "question": "Tu dois présenter le risque d'un effet secondaire qui touche $3$ patients sur $1000$. Choisis la représentation la plus parlante parmi : (a) $0,3\\,\\%$, (b) $3$ sur $1000$, (c) un diagramme en barres avec une barre de hauteur $3$ sur $1000$. Justifie ton choix.",
+              "answer": "La représentation (b) ou (c) est préférable car les fréquences naturelles sont plus intuitives que les pourcentages pour de petits risques.",
+              "hint": "Pense à la charge cognitive pour le lecteur.",
+              "explanation": "Les fréquences naturelles (\"3 sur 1000\") permettent de visualiser concrètement le nombre de personnes concernées. Un diagramme en barres (c) ajoute une dimension visuelle qui facilite la comparaison avec d'autres risques."
+            },
+            {
+              "question": "Une enquête sur $400$ personnes donne une proportion de $0,55$ en faveur d'une mesure. Calcule l'intervalle de confiance à $95\\,\\%$ pour la proportion dans la population.",
+              "answer": "Intervalle approximatif : $[0,50 ; 0,60]$.",
+              "hint": "Utilise la formule de l'intervalle de confiance pour une proportion avec $n=400$, $\\hat{p}=0,55$.",
+              "explanation": "Marge d'erreur = $1,96 \\times \\sqrt{\\frac{0,55 \\times 0,45}{400}} \\approx 1,96 \\times 0,0249 \\approx 0,0488$. Intervalle : $[0,55-0,049 ; 0,55+0,049] \\approx [0,501 ; 0,599]$."
+            },
+            {
+              "question": "Rédige une courte recommandation pour un choix entre deux investissements : Investissement X : gain sûr de $200\\,\\text{\\euro}$. Investissement Y : $50\\,\\%$ de gagner $500\\,\\text{\\euro}$, $50\\,\\%$ de perdre $100\\,\\text{\\euro}$. Inclus l'espérance et une phrase sur le profil de risque.",
+              "answer": "L'investissement Y a une espérance de $200\\,\\text{\\euro}$ (identique à X) mais comporte un risque de perte. Si tu acceptes la possibilité de perdre $100\\,\\text{\\euro}$ pour une chance de gagner $500\\,\\text{\\euro}$, choisis Y. Sinon, privilégie la sécurité de X.",
+              "hint": "Calcule l'espérance de Y : $0,5 \\times 500 + 0,5 \\times (-100) = 200$.",
+              "explanation": "Les deux ont même espérance. La différence réside dans la dispersion : Y offre une variabilité plus grande. La recommandation doit refléter l'attitude face au risque du décideur."
+            }
+          ]
+        },
+        {
+          "title": "Éviter biais.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand notre intuition nous joue des tours"
+            },
+            {
+              "type": "paragraph",
+              "content": "Notre cerveau adore les raccourcis. Face à l'incertitude, il utilise des heuristiques – des règles pratiques rapides – qui fonctionnent souvent mais nous mènent parfois à des erreurs systématiques : les biais cognitifs. Le premier grand biais est la négligence du taux de base (base rate neglect). Reprenons l'exemple du test médical : même avec un test performant, si la maladie est très rare, un résultat positif ne signifie pas une forte probabilité d'être malade. Pourtant, beaucoup de gens (y compris des médecins) ignorent la rareté de la maladie (le taux de base) et se focalisent sur la performance du test. C'est comme si le cerveau disait : \"Le test est fiable à $95\\,\\%$, donc je suis malade à $95\\,\\%$\". Pour contrer ce biais, il faut s'entraîner à toujours demander : \"Quelle est la probabilité a priori ?\" avant d'intégrer la nouvelle information. C'est exactement ce que fait le théorème de Bayes : il combine le taux de base et la puissance du test pour donner la probabilité a posteriori."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre illustrant la négligence du taux de base : maladie rare (0,1%), test sensible (95%), spécificité (95%).",
+              "branches": [
+                {
+                  "label": "Malade",
+                  "probability": "0.001",
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": "0.95"
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": "0.05"
+                    }
+                  ]
+                },
+                {
+                  "label": "Sain",
+                  "probability": "0.999",
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": "0.05"
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": "0.95"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre biais célèbre est le biais de conjonction, illustré par le problème de Linda. Linda a $31$ ans, célibataire, outspoken, très brillante, a étudié la philosophie, s'est souciée de discrimination et de justice sociale. Laquelle est plus probable : (1) Linda est caissière de banque, ou (2) Linda est caissière de banque ET militante féministe ? La majorité répond (2), or la probabilité d'une conjonction (A et B) est toujours inférieure ou égale à la probabilité de chacun de ses éléments : $P(A \\cap B) \\le P(A)$. La description de Linda rend l'option (2) plus *représentative* de son profil, mais cela ne la rend pas plus *probable*. Ce biais montre que nous confondons souvent plausibilité narrative et probabilité mathématique. Pour l'éviter, rappelle-toi la règle : ajouter un détail ne peut qu'augmenter la spécificité, donc diminuer la probabilité."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn : l'intersection (caissière ET féministe) est incluse dans l'ensemble des caissières.",
+              "sets": [
+                {
+                  "label": "Caissières",
+                  "elements": []
+                },
+                {
+                  "label": "Féministes",
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'heuristique de disponibilité nous fait juger la probabilité d'un événement par la facilité avec laquelle des exemples nous viennent à l'esprit. Après avoir vu un reportage sur un accident d'avion, on surestime le risque de voler, alors que la voiture est bien plus dangereuse. Les médias amplifient ce biais en couvrant disproportionnellement les événements rares mais spectaculaires. Pour s'en prémunir, il faut chercher des données objectives (statistiques officielles) plutôt que de se fier à sa mémoire. De même, le biais de confirmation nous pousse à ne retenir que les informations qui confortent nos croyances initiales. Si tu penses qu'un traitement fonctionne, tu noteras les guérisons et oublieras les échecs. La méthode scientifique, avec ses essais randomisés en double aveugle, est conçue précisément pour contourner ce biais. En décision personnelle, force-toi à chercher activement des arguments contraires à ton hypothèse favorite."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de décès annuels en France (données approximatives) : accidents de la route vs accidents aériens.",
+              "bars": [
+                {
+                  "label": "Route",
+                  "value": 3000,
+                  "tone": "red"
+                },
+                {
+                  "label": "Aérien",
+                  "value": 20,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment alors prendre de meilleures décisions ? Une approche structurée aide à réduire l'impact des biais. Première étape : formuler le problème en termes probabilistes explicites (quels sont les événements, quelles sont les probabilités de base ?). Deuxième étape : collecter des données fiables, pas des anecdotes. Troisième étape : calculer les probabilités mises à jour (Bayes) et les espérances d'utilité. Quatrième étape : faire une \"pré-mortem\" : imagine que ta décision a entraîné un mauvais résultat, et demande-toi pourquoi. Cela active un mode de pensée critique qui contrecarre l'excès de confiance. Enfin, sollicite l'avis de personnes ayant des perspectives différentes. La diversité des points de vue est le meilleur antidote aux biais individuels. Ces habitudes, pratiquées régulièrement, transforment l'intuition en expertise calibrée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Clarifier la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quel événement ? Quelles hypothèses alternatives ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Taux de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle est la probabilité a priori sans information spécifique ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Preuves",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle nouvelle information ? Quelle est sa fiabilité (sensibilité, spécificité) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Mise à jour bayésienne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la probabilité a posteriori avec le théorème de Bayes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Décision",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les utilités espérées des options. Fais une pré-mortem."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux probabilités et calculer leur différence ou leur ratio.",
+                "Je sais calculer une espérance mathématique et l'interpréter pour une décision.",
+                "Je connais la distinction entre risque relatif et risque absolu et je sais les communiquer.",
+                "Je sais présenter une incertitude avec un intervalle de confiance.",
+                "Je reconnais le biais de négligence du taux de base et j'applique le théorème de Bayes.",
+                "Je sais expliquer pourquoi la conjonction de deux événements est moins probable que chacun seul.",
+                "Je me méfie de l'heuristique de disponibilité et je cherche des données objectives.",
+                "J'utilise une démarche structurée (taux de base, preuves, mise à jour, décision) pour décider sous incertitude."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une maladie touche $0,5\\,\\%$ de la population. Un test a une sensibilité de $98\\,\\%$ et une spécificité de $97\\,\\%$. Si ton test est positif, quelle est la probabilité (approchée) que tu sois malade ?",
+              "answer": "Environ $14\\,\\%$.",
+              "hint": "Calcule $P(M|T) = \\frac{0,98 \\times 0,005}{0,98 \\times 0,005 + 0,03 \\times 0,995}$.",
+              "explanation": "Numérateur = $0,0049$. Dénominateur = $0,0049 + 0,02985 = 0,03475$. Ratio $\\approx 0,141$. Le taux de base très faible ($0,5\\,\\%$) fait que les faux positifs l'emportent sur les vrais positifs."
+            },
+            {
+              "question": "Pierre est grand, musclé, et porte un tatouage. Laquelle de ces propositions est la plus probable ? (A) Pierre est bibliothécaire. (B) Pierre est bibliothécaire ET motard. Justifie ta réponse.",
+              "answer": "(A) est plus probable que (B).",
+              "hint": "Rappelle la relation entre une conjonction et ses éléments.",
+              "explanation": "L'ensemble des bibliothécaires motards est inclus dans l'ensemble des bibliothécaires. Donc $P(\\text{biblio} \\cap \\text{motard}) \\le P(\\text{biblio})$. La description stéréotypée rend (B) plus représentative, mais pas plus probable."
+            },
+            {
+              "question": "Après avoir vu trois reportages sur des attaques de requins cet été, tu refuses de nager dans la mer. Quel biais est à l'œuvre ? Comment le contrer ?",
+              "answer": "Heuristique de disponibilité. La contrer en consultant les statistiques réelles : les attaques de requins sont extrêmement rares (quelques cas par an dans le monde).",
+              "hint": "Pense à la facilité de rappel d'exemples médiatisés.",
+              "explanation": "Les images récentes et émotionnelles sont plus disponibles en mémoire, ce qui gonfle la probabilité subjective. Les données objectives (fréquence réelle) corrigent cette distorsion."
+            },
+            {
+              "question": "Tu dois décider d'investir dans une start-up. Tu as lu trois articles élogieux et un article critique. Tu décides d'investir parce que \"tout le monde en dit du bien\". Quel biais risques-tu de commettre ? Propose une méthode pour décider plus rationnellement.",
+              "answer": "Biais de confirmation (tu ignores l'article critique) et effet de consensus illusoire. Méthode : liste les arguments pour et contre, chiffre les probabilités de succès/échec, calcule l'espérance d'utilité, fais une pré-mortem.",
+              "hint": "Revois les étapes de la démarche structurée anti-biais.",
+              "explanation": "La démarche en 5 étapes (clarifier, taux de base, preuves, Bayes, décision) force à considérer les informations contraires et à quantifier l'incertitude, réduisant l'emprise des biais."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

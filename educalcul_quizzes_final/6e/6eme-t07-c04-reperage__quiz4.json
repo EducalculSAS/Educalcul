@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 366,
+  "_course_code": "6eme-t07-c04-reperage",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Application : Repérage",
+  "title": "Quiz : Applications du repérage (6e)",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est l'abscisse du point A ?",
+      "options": [
+        "2",
+        "2,5",
+        "3",
+        "2,05"
+      ],
+      "correctAnswer": "2,5",
+      "explanation": "La droite graduée va de 0 à 5. Les grands traits représentent les nombres entiers (1, 2, 3...). Le point A se situe exactement à mi-chemin entre 2 et 3, ce qui correspond au nombre décimal 2,5. L'option 2,05 correspondrait à une position très proche de 2, ce qui n'est pas le cas ici.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 5",
+        "min": 0,
+        "max": 5,
+        "points": [
+          {
+            "value": 2.5,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est l'abscisse du point B ?",
+      "options": [
+        "-3",
+        "3",
+        "-2,5",
+        "-3,5"
+      ],
+      "correctAnswer": "-3",
+      "explanation": "La droite graduée va de -5 à 5. Le point B est placé sur le grand trait correspondant au nombre entier -3, à gauche de l'origine (0). L'option 3 est symétrique par rapport à l'origine. Les options -2,5 et -3,5 correspondent aux graduations intermédiaires (demi-unités), ce qui n'est pas la position du point B.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -5 à 5",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -3,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur un quadrillage, le point A a pour coordonnées $(2 ; 4)$. On se déplace de 3 cases vers la droite, puis de 2 cases vers le bas. Quelles sont les coordonnées du point d'arrivée ?",
+      "options": [
+        "(5 ; 6)",
+        "(5 ; 2)",
+        "(-1 ; 2)",
+        "(2 ; 2)"
+      ],
+      "correctAnswer": "(5 ; 2)",
+      "explanation": "Le déplacement vers la droite augmente l'abscisse (premier nombre) : $2 + 3 = 5$. Le déplacement vers le bas diminue l'ordonnée (deuxième nombre) : $4 - 2 = 2$. Les nouvelles coordonnées sont donc $(5 ; 2)$. L'option (5 ; 6) correspond à un déplacement vers le haut. L'option (-1 ; 2) correspond à un déplacement vers la gauche. L'option (2 ; 2) correspond à aucun déplacement horizontal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthogonal, le point M a pour coordonnées $(-2 ; 3)$. Lequel de ces points est le symétrique de M par rapport à l'axe des ordonnées (axe vertical) ?",
+      "options": [
+        "(2 ; 3)",
+        "(-2 ; -3)",
+        "(2 ; -3)",
+        "(-3 ; 2)"
+      ],
+      "correctAnswer": "(2 ; 3)",
+      "explanation": "La symétrie par rapport à l'axe des ordonnées (axe y) change le signe de l'abscisse (coordonnée horizontale) et conserve l'ordonnée. L'abscisse -2 devient 2, l'ordonnée reste 3. Le point image est donc $(2 ; 3)$. L'option (-2 ; -3) est le symétrique par rapport à l'axe des abscisses. L'option (2 ; -3) est le symétrique par rapport à l'origine. L'option (-3 ; 2) inverse les coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée, les points A et B ont pour abscisses respectives $-4$ et $5$. Quelle est la distance AB ?",
+      "options": [
+        "1",
+        "9",
+        "-9",
+        "-1"
+      ],
+      "correctAnswer": "9",
+      "explanation": "La distance entre deux points sur une droite graduée est la valeur absolue de la différence de leurs abscisses. On calcule $|5 - (-4)| = |5 + 4| = 9$ ou $|-4 - 5| = |-9| = 9$. La distance est toujours un nombre positif. L'option 1 correspond à la différence $5 - 4$ (oubli du signe moins). Les options -9 et -1 sont négatives, ce qui est impossible pour une distance.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

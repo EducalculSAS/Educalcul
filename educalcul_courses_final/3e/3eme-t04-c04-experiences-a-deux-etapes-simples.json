@@ -1,0 +1,216 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.958457+00:00",
+  "id": 476,
+  "code": "3eme-t04-c04",
+  "title": "Expériences à deux étapes simples",
+  "description": "Cours structuré Educalcul : Expériences à deux étapes simples.",
+  "subject": "Statistiques et probabilités",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Expériences à deux étapes simples",
+    "objectif_global": "Expériences à deux étapes simples",
+    "mini_lecons_imposees": [
+      "Arbre / tableau si prévu.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Arbre / tableau si prévu.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives préparer ton sac pour le collège demain. Tu as $2$ t-shirts différents, un bleu et un rouge, et $2$ pantalons, un noir et un gris. Si tu choisis tes vêtements au hasard, combien de combinaisons différentes peux-tu créer ? C'est exactement cela, une expérience à deux étapes. La première étape est le choix du t-shirt, et la deuxième est le choix du pantalon. Dans la vie, on rencontre souvent ces situations : lancer deux dés pour un jeu de société, tirer deux cartes d'un jeu, ou même décider d'un menu avec une entrée et un plat. Quand on a seulement une étape, c'est simple, mais dès qu'on en ajoute une deuxième, le nombre de possibilités augmente rapidement. Pour ne pas s'emmêler les pinceaux et être certain de ne rien oublier, les mathématiciens utilisent des outils visuels géniaux : l'arbre de probabilités et le tableau à double entrée. Ces outils transforment un problème qui semble complexe en une liste claire et organisée de tous les résultats possibles, ce qu'on appelle l'univers des possibles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une expérience à deux étapes est un processus où l'on effectue deux actions successives. L'ensemble de tous les résultats possibles est appelé l'univers, noté $\\Omega$. Pour représenter cet univers, on utilise principalement deux méthodes. L'arbre de probabilités est idéal quand les étapes se suivent chronologiquement. On part d'un point unique, et chaque branche représente un résultat possible de la première étape. De chaque extrémité de ces branches, on repart avec de nouvelles branches pour la deuxième étape. Le chemin parcouru de la racine jusqu'à la dernière branche donne un résultat complet. Par exemple, si on lance une pièce deux fois, un chemin pourrait être (Pile, Face). Le tableau à double entrée, lui, est très efficace quand on a deux catégories indépendantes. On place les résultats de la première étape en ligne et ceux de la deuxième en colonne. Chaque case du tableau représente alors une combinaison unique. Ces outils sont indispensables car ils permettent de vérifier visuellement que l'on a bien compté tous les cas, évitant ainsi les erreurs de mémoire ou d'oubli lors du calcul des probabilités."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des possibles pour deux lancers de pièce",
+              "branches": [
+                {
+                  "label": "P",
+                  "children": [
+                    {
+                      "label": "P"
+                    },
+                    {
+                      "label": "F"
+                    }
+                  ]
+                },
+                {
+                  "label": "F",
+                  "children": [
+                    {
+                      "label": "P"
+                    },
+                    {
+                      "label": "F"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un arbre de probabilités sans faire d'erreur, suis scrupuleusement ces étapes. Premièrement, dessine un point de départ, la racine. À partir de ce point, trace autant de branches qu'il y a de résultats possibles pour la première expérience. Écris le nom du résultat au bout de chaque branche. Deuxièmement, pour chaque résultat obtenu à la première étape, recommence l'opération : trace des branches partant de l'extrémité pour représenter tous les résultats possibles de la seconde étape. Attention, si la deuxième étape dépend de la première (comme un tirage sans remise), les branches peuvent différer selon le chemin choisi. Troisièmement, liste tous les chemins possibles en partant de la racine et en arrivant aux feuilles finales. Chaque chemin complet correspond à un événement élémentaire de l'expérience. Pour le tableau, trace un cadre avec une ligne d'en-tête pour la première étape et une colonne de gauche pour la seconde. Remplis ensuite chaque cellule en croisant les deux informations. Vérifie toujours que le nombre total de cases ou de feuilles correspond au produit du nombre de choix de chaque étape."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'expérience suivante : on lance deux fois de suite une pièce de monnaie équilibrée. Nous voulons lister tous les résultats possibles. Étape $1$ : Le premier lancer. Il y a $2$ possibilités : Pile ($P$) ou Face ($F$). On trace donc deux branches depuis la racine. Étape $2$ : Le second lancer. Que le premier soit tombé sur $P$ ou $F$, le second lancer a toujours $2$ possibilités ($P$ ou $F$). On trace donc deux branches à partir de chaque branche précédente. En suivant les chemins, on trouve : le chemin $P$ puis $P$ donne $(P, P)$, le chemin $P$ puis $F$ donne $(P, F)$, le chemin $F$ puis $P$ donne $(F, P)$, et enfin le chemin $F$ puis $F$ donne $(F, F)$. L'univers $\\Omega$ contient donc $4$ issues possibles : $\\Omega = \\{(P, P), (P, F), (F, P), (F, F)\\}$. On remarque que $(P, F)$ et $(F, P)$ sont deux résultats différents car l'ordre des lancers compte. Si on utilise un arbre, on voit tout de suite que nous avons $2 \\times 2 = 4$ branches finales, ce qui confirme que nous n'avons rien oublié."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant que nous ayons une urne contenant $3$ boules de couleurs différentes : une rouge ($R$), une bleue ($B$) et une verte ($V$). On tire une boule, on note sa couleur, on la remet dans l'urne, puis on tire une deuxième boule. Ici, un tableau à double entrée est très pratique. On crée un tableau de $3$ lignes et $3$ colonnes. En haut, on écrit les résultats du premier tirage : $R, B, V$. À gauche, on écrit les résultats du second tirage : $R, B, V$. On remplit les cases en croisant les lettres. La première case sera $(R, R)$, la deuxième $(R, B)$, la troisième $(R, V)$, et ainsi de suite. On obtient un total de $3 \\times 3 = 9$ cases. L'univers est $\\Omega = \\{(R, R), (R, B), (R, V), (B, R), (B, B), (B, V), (V, R), (V, B), (V, V)\\}$. L'avantage du tableau ici est la vision globale et symétrique des résultats. On voit immédiatement que les cas où les deux boules sont de la même couleur sont les cases de la diagonale principale : $(R, R), (B, B)$ et $(V, V)$. C'est une méthode très efficace pour ne pas oublier de combinaisons."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est d'oublier que l'ordre des résultats est important. Par exemple, dans le lancer de deux pièces, beaucoup d'élèves pensent qu'il n'y a que $3$ résultats : deux fois pile, deux fois face, ou une fois chaque. Mais en réalité, obtenir Pile puis Face est différent d'obtenir Face puis Pile. L'arbre de probabilités permet justement d'éviter ce piège car il force à suivre un chemin temporel. Un autre piège classique concerne la notion de remise. 'Avec remise' signifie que les choix de la deuxième étape sont identiques à ceux de la première. 'Sans remise' signifie que l'objet choisi au premier tour n'est plus disponible. Si tu oublies ce détail, tu traceras trop de branches au second tour. Par exemple, si tu tires deux cartes sans remise, tu ne peux pas tirer la même carte deux fois. Enfin, attention à ne pas confondre le nombre de branches et la probabilité. L'arbre sert d'abord à lister les issues, le calcul des chances vient dans un second temps. Vérifie toujours que ton nombre total d'issues est égal au produit des possibilités de chaque étape."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à $6$ faces et on tire une pièce de monnaie. Combien y a-t-il de résultats possibles au total ? Liste-les sous forme de couples (nombre, face).",
+              "answer": "Il y a $12$ résultats possibles. $\\Omega = \\{(1, P), (1, F), (2, P), (2, F), (3, P), (3, F), (4, P), (4, F), (5, P), (5, F), (6, P), (6, F)\\}$.",
+              "hint": "Utilise la règle de multiplication : multiplie le nombre de faces du dé par le nombre de faces de la pièce.",
+              "explanation": "L'étape $1$ (le dé) a $6$ issues et l'étape $2$ (la pièce) a $2$ issues. Le nombre total de combinaisons est donc $6 \\times 2 = 12$. Chaque chiffre du dé doit être associé aux deux faces de la pièce."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Une fois que nous avons notre arbre ou notre tableau, nous avons une carte complète de tout ce qui peut arriver. Mais maintenant, la vraie question arrive : quelle est la chance que tel résultat précis se produise ? On ne peut pas se contenter de dire 'c'est probable' ou 'c'est rare', car en mathématiques, on aime la précision. On veut transformer ce sentiment de chance en un nombre exact. C'est là qu'interviennent les probabilités. Imagine que tu joues à un jeu où tu gagnes si tu tires deux boules rouges. Si tu as $10$ résultats possibles et que seulement $2$ d'entre eux te font gagner, tu sens intuitivement que tu as moins de chances de gagner que de perdre. Le calcul des probabilités nous permet de mettre un chiffre sur cette intuition. Ce nombre, compris entre $0$ et $1$, nous indique avec précision si un événement est impossible, certain, ou quelque part entre les deux. C'est l'outil fondamental utilisé par les assureurs, les météorologues et même les créateurs de jeux vidéo pour équilibrer les chances de victoire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une expérience où tous les résultats possibles ont la même chance d'apparaître, on dit qu'il y a équipementsrobabilité. C'est le cas pour un dé non truqué ou une pièce équilibrée. Dans ce contexte, la probabilité d'un événement $E$, notée $P(E)$, se calcule avec une formule très simple : c'est le rapport entre le nombre de cas favorables (les résultats qui correspondent à ce que l'on cherche) et le nombre total de cas possibles (la taille de l'univers $\\Omega$). Mathématiquement, on écrit : $P(E) = \\frac{\\text{nombre d'issues favorables}}{\\text{nombre total d'issues}}$. Le résultat est toujours un nombre compris entre $0$ (événement impossible) et $1$ (événement certain). Par exemple, si on a $4$ issues possibles et que $2$ sont favorables, la probabilité est de $\\frac{2}{4}$, ce qui se simplifie en $\\frac{1}{2}$ ou $0,5$, soit $50 \\%$. Il est crucial de bien identifier l'univers total avant de compter les cas favorables, car une erreur sur le dénominateur fausse tout le résultat. C'est l'étape la plus délicate et la plus importante du processus."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(E) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la probabilité d'un événement dans une expérience à deux étapes, suis cette méthode rigoureuse. Premièrement, détermine le nombre total d'issues possibles. Utilise ton arbre ou ton tableau pour compter toutes les feuilles finales ou toutes les cases. Ce nombre sera ton dénominateur. Deuxièmement, identifie précisément l'événement que tu recherches. Relis l'énoncé avec attention : cherche-t-il 'au moins un', 'exactement deux', ou 'deux résultats différents' ? Troisièmement, parcours ton arbre ou ton tableau et entoure ou coche tous les résultats qui correspondent à cet événement. Compte-les : c'est ton nombre de cas favorables, qui sera ton numérateur. Quatrièmement, écris la probabilité sous forme de fraction : $\\frac{\\text{cas favorables}}{\\text{cas totaux}}$. Enfin, simplifie la fraction si possible et convertis-la en nombre décimal ou en pourcentage pour mieux interpréter le résultat. Par exemple, $\\frac{3}{10}$ devient $0,3$ ou $30 \\%$. Cette approche systématique permet de ne rien oublier et de justifier chaque étape du calcul devant un correcteur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des deux lancers de pièce. L'univers est $\\Omega = \\{(P, P), (P, F), (F, P), (F, F)\\}$, donc le nombre total d'issues est $4$. Nous voulons calculer la probabilité de l'événement $E$ : 'obtenir deux faces identiques'. Analysons les issues : $(P, P)$ est identique, $(P, F)$ ne l'est pas, $(F, P)$ ne l'est pas, et $(F, F)$ est identique. Nous avons donc $2$ cas favorables sur $4$ possibles. Le calcul est : $P(E) = \\frac{2}{4}$. En simplifiant la fraction, on obtient $P(E) = \\frac{1}{2}$. On peut aussi écrire $P(E) = 0,5$ ou $P(E) = 50 \\%$. Cela signifie que dans la moitié des cas, on obtiendra deux faces identiques. C'est un résultat logique car il y a autant de chances d'avoir des faces identiques que des faces différentes. L'utilisation de l'arbre nous a permis de voir clairement que $(P, F)$ et $(F, P)$ étaient des cas distincts et non favorables, évitant ainsi de compter seulement $3$ issues totales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une urne avec $2$ boules rouges et $1$ boule bleue. On tire une boule, on la retire (sans remise), puis on tire une deuxième boule. Listons l'univers $\\Omega$ : si on note les boules $R_1, R_2$ et $B$, on a les couples $(R_1, R_2), (R_1, B), (R_2, R_1), (R_2, B), (B, R_1), (B, R_2)$. Le nombre total d'issues est $6$. Nous cherchons la probabilité de l'événement $F$ : 'tirer deux boules de la même couleur'. Les seules issues favorables sont $(R_1, R_2)$ et $(R_2, R_1)$, car il n'y a qu'une seule boule bleue, on ne peut pas en tirer deux. Nous avons donc $2$ cas favorables sur $6$. Le calcul est $P(F) = \\frac{2}{6}$, ce qui se simplifie en $P(F) = \\frac{1}{3}$. En valeur décimale, cela donne environ $0,33$, soit $33 \\%$. Ici, l'absence de remise a réduit le nombre de possibilités totales (on passe de $9$ à $6$ si on avait remis la boule) et a rendu impossible le tirage de deux boules bleues. C'est pourquoi il est vital de bien définir l'univers avant tout calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus fréquent est de mal compter les cas favorables à cause d'une lecture superficielle de l'énoncé. Par exemple, 'obtenir au moins une face' ne signifie pas 'obtenir exactement une face'. Dans le cas des pièces, 'au moins une face' inclut $(P, F), (F, P)$ et $(F, F)$, soit $3$ cas, et non $2$. Un autre piège est l'oubli de la simplification des fractions. En 3e, présenter un résultat comme $\\frac{4}{12}$ au lieu de $\\frac{1}{3}$ peut être considéré comme incomplet. Il y a aussi l'erreur du dénominateur : certains élèves divisent par le nombre de résultats de la première étape au lieu du nombre total de résultats de l'expérience complète. Enfin, méfie-toi des probabilités qui dépassent $1$ ou qui sont négatives. Si tu trouves $P(E) = 1,2$ ou $P(E) = -0,1$, c'est que ton calcul est faux, car une probabilité est obligatoirement comprise entre $0$ et $1$. Prends l'habitude de vérifier la cohérence de ton résultat final par rapport à la situation concrète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance deux dés à $6$ faces. Quelle est la probabilité d'obtenir une somme égale à $12$ ?",
+              "answer": "La probabilité est $\\frac{1}{36}$.",
+              "hint": "L'univers total pour deux dés est de $6 \\times 6 = 36$ issues. Combien de couples de nombres donnent une somme de $12$ ?",
+              "explanation": "Le seul cas favorable est le couple $(6, 6)$, car c'est la seule façon d'atteindre $12$. Le nombre total d'issues est $36$. Donc $P = \\frac{1}{36}$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant calculé des probabilités, comme $\\frac{1}{2}$ pour un lancer de pièce. Mais attention, cela ne veut pas dire que si tu lances la pièce $2$ fois, tu obtiendras obligatoirement $1$ Pile et $1$ Face. Tu pourrais très bien obtenir deux fois Pile ! Alors, à quoi servent ces chiffres si on ne peut pas prédire exactement le futur ? C'est là que commence l'interprétation. La probabilité n'est pas une promesse pour un seul essai, c'est une tendance sur le long terme. C'est comme les prévisions météo : si on dit qu'il y a $80 \\%$ de chances de pluie, cela ne signifie pas qu'il va pleuvoir pendant $80 \\%$ de la journée, mais que dans des situations similaires, il a plu $8$ fois sur $10$. Comprendre l'interprétation, c'est comprendre la différence entre la théorie (ce qui devrait arriver) et la pratique (ce qui arrive réellement). C'est l'étape finale pour devenir un expert en probabilités : savoir quoi faire de ces nombres pour prendre des décisions intelligentes dans la vie réelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il faut distinguer la probabilité théorique de la fréquence observée. La probabilité théorique est le calcul pur basé sur l'univers $\\Omega$ (par exemple, $\\frac{1}{6}$ pour le chiffre $6$ d'un dé). La fréquence observée est le résultat d'une expérience réelle : si tu lances le dé $10$ fois et que tu obtiens le chiffre $6$ trois fois, ta fréquence est de $\\frac{3}{10} = 0,3$. On remarque que $0,3$ est très différent de $\\frac{1}{6} \\approx 0,16$. Pourquoi ? Parce que sur un petit nombre d'essais, le hasard domine. Cependant, il existe un concept fondamental appelé la Loi des Grands Nombres. Elle nous dit que plus on répète l'expérience un grand nombre de fois ( $1000$ fois, $10$ $000$ fois), plus la fréquence observée va se rapprocher de la probabilité théorique. Ainsi, si tu lances ton dé un million de fois, tu verras que la proportion de $6$ sera extrêmement proche de $16,67 \\%$. L'interprétation consiste donc à utiliser la probabilité comme une estimation moyenne pour un grand volume de répétitions, et non comme une certitude absolue pour un événement isolé."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence observée vs Probabilité théorique (100 lancers)",
+              "bars": [
+                {
+                  "label": "Théorique",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Observée",
+                  "value": 47,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour interpréter une probabilité et faire des prédictions sur un grand nombre d'essais, suis cette méthode. Premièrement, calcule la probabilité théorique $P(E)$ de l'événement. Par exemple, $P(E) = 0,25$ pour tirer un as dans un jeu de cartes simplifié. Deuxièmement, détermine le nombre total d'essais $N$ que tu prévois de réaliser. Disons que tu vas tirer une carte $200$ fois avec remise. Troisièmement, multiplie le nombre d'essais par la probabilité : $\\text{Nombre attendu} = N \\times P(E)$. Dans notre exemple, $200 \\times 0,25 = 50$. Tu peux donc estimer que tu obtiendras l'as environ $50$ fois. Quatrièmement, rédige ton interprétation avec prudence. N'utilise jamais le mot 'exactement', mais préfère des expressions comme 'environ', 'on s'attend à', ou 'il est probable que'. Rappelle-toi que c'est une estimation. Enfin, compare ce résultat avec un résultat réel si tu en as un. Si la différence est énorme sur un grand échantillon, demande-toi si l'expérience était vraiment équitable (dé truqué, etc.)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu lances une pièce de monnaie $100$ fois. Nous savons que la probabilité d'obtenir Face est $P(F) = 0,5$. Pour prédire le résultat, on fait le calcul : $100 \\times 0,5 = 50$. On peut donc dire qu'on s'attend à obtenir Face environ $50$ fois. Si, après l'expérience, tu obtiens $48$ fois Face, c'est tout à fait normal : la fréquence observée $\\frac{48}{100} = 0,48$ est très proche de la probabilité théorique $0,5$. Par contre, si tu n'obtiens Face que $10$ fois, la fréquence $\\frac{10}{100} = 0,1$ est très éloignée de $0,5$. Dans ce second cas, l'interprétation mathématique serait de suspecter que la pièce n'est pas équilibrée ou que le lancer n'est pas aléatoire. On voit ici que la probabilité sert de point de référence pour juger si un résultat réel est 'normal' ou 'anormal'. C'est ainsi que les scientifiques valident leurs expériences en laboratoire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons un jeu de fête foraine : on tire deux boules sans remise dans une urne contenant $5$ boules dont $2$ sont dorées. On gagne un prix si on tire deux boules dorées. L'univers a $5 \\times 4 = 20$ issues. Il n'y a que $2 \\times 1 = 2$ issues favorables. La probabilité de gagner est $P = \\frac{2}{20} = 0,1$, soit $10 \\%$. Si $1000$ personnes jouent à ce jeu, on peut prédire que environ $1000 \\times 0,1 = 100$ personnes gagneront. L'organisateur du jeu sait donc qu'il distribuera environ $100$ prix. Si le prix coûte $5$ euros à l'organisateur, cela lui coûte $500$ euros. S'il fait payer l'entrée $2$ euros par personne, il gagne $2000$ euros. En soustrayant les prix, il lui reste $1500$ euros de profit. Cette interprétation montre que les probabilités permettent de calculer la rentabilité d'un jeu. Le joueur, lui, voit que $10 \\%$ est une chance faible, alors que l'organisateur voit un profit garanti sur le long terme grâce à la loi des grands nombres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus dangereux est appelé 'la fallacy du joueur'. C'est l'idée que si on a obtenu Pile $5$ fois de suite, la prochaine fois, on a 'plus de chances' d'obtenir Face pour 'équilibrer'. C'est totalement faux ! Chaque lancer est indépendant. La probabilité reste $0,5$ à chaque fois, peu importe le passé. La loi des grands nombres ne 'corrige' pas les résultats passés, elle les 'noie' simplement dans une masse de nouveaux résultats. Un autre piège est de confondre probabilité et certitude. Dire qu'un événement a $99 \\%$ de probabilité ne signifie pas qu'il va arriver, cela signifie qu'il y a encore $1 \\%$ de chance qu'il ne se produise pas. Enfin, attention à l'échantillon trop petit. Faire une conclusion générale sur un lancer de pièce fait $3$ fois est une erreur d'interprétation majeure. Pour qu'une fréquence soit représentative de la probabilité, il faut un nombre d'essais suffisamment grand, généralement au-delà de $30$ ou $50$ pour commencer à voir une tendance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On sait que la probabilité de gagner à un jeu est $0,05$. Si $2000$ personnes jouent, combien de gagnants peut-on espérer ?",
+              "answer": "On peut espérer environ $100$ gagnants.",
+              "hint": "Multiplie le nombre total de joueurs par la probabilité de gagner.",
+              "explanation": "Calcul : $2000 \\times 0,05 = 100$. On s'attend donc à ce qu'environ $100$ personnes gagnent."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

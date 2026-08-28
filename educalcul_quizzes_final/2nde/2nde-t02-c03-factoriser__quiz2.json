@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Identités",
+  "title": "Quiz : Identités remarquables",
+  "questions": [
+    {
+      "text": "Développer et réduire l'expression $(x + 3)^2$.",
+      "options": [
+        "$x^2 + 9$",
+        "$x^2 + 6x + 9$",
+        "$x^2 + 3x + 9$",
+        "$x^2 + 6x + 6$"
+      ],
+      "correctAnswer": "$x^2 + 6x + 9$",
+      "explanation": "On utilise l'identité remarquable $(a + b)^2 = a^2 + 2ab + b^2$ avec $a = x$ et $b = 3$. Le terme du milieu est $2 \\times x \\times 3 = 6x$ et le dernier terme est $3^2 = 9$. L'option $x^2 + 9$ oublie le terme du milieu $2ab$. L'option $x^2 + 3x + 9$ prend $ab$ au lieu de $2ab$. L'option $x^2 + 6x + 6$ calcule mal $3^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire l'expression $(2x - 5)^2$.",
+      "options": [
+        "$4x^2 - 25$",
+        "$4x^2 - 20x + 25$",
+        "$4x^2 - 10x + 25$",
+        "$4x^2 + 20x + 25$"
+      ],
+      "correctAnswer": "$4x^2 - 20x + 25$",
+      "explanation": "On utilise l'identité $(a - b)^2 = a^2 - 2ab + b^2$ avec $a = 2x$ et $b = 5$. On a $a^2 = (2x)^2 = 4x^2$, $2ab = 2 \\times 2x \\times 5 = 20x$ (avec le signe moins car c'est $a - b$) et $b^2 = 25$. L'option $4x^2 - 25$ correspond à $(a-b)(a+b)$ et oublie le terme du milieu. L'option $4x^2 - 10x + 25$ oublie le facteur $2$ dans $2ab$. L'option $4x^2 + 20x + 25$ correspond à $(2x + 5)^2$, le signe du terme du milieu est erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer l'expression $(3y + 4)(3y - 4)$.",
+      "options": [
+        "$9y^2 - 16$",
+        "$9y^2 - 24y - 16$",
+        "$9y^2 + 16$",
+        "$9y^2 - 24y + 16$"
+      ],
+      "correctAnswer": "$9y^2 - 16$",
+      "explanation": "On reconnaît le produit de la somme par la différence : $(a + b)(a - b) = a^2 - b^2$. Ici $a = 3y$ et $b = 4$. On a $a^2 = (3y)^2 = 9y^2$ et $b^2 = 16$. Il n'y a pas de terme du milieu. Les options contenant un terme en $y$ ($-24y$ ou $+24y$) correspondent à un développement de $(3y \\pm 4)^2$. L'option $9y^2 + 16$ aurait un signe plus au lieu du moins.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $x^2 + 10x + 25$.",
+      "options": [
+        "$(x + 5)^2$",
+        "$(x - 5)^2$",
+        "$(x + 5)(x - 5)$",
+        "$(x + 10)(x + 2,5)$"
+      ],
+      "correctAnswer": "$(x + 5)^2$",
+      "explanation": "On cherche à écrire le trinôme sous la forme $a^2 + 2ab + b^2 = (a+b)^2$. Le premier terme $x^2$ est le carré de $x$. Le dernier terme $25$ est le carré de $5$. Le terme du milieu est $10x = 2 \\times x \\times 5$. C'est bien $2ab$ avec $a=x$ et $b=5$. La factorisation est donc $(x + 5)^2$. L'option $(x - 5)^2$ donnerait $-10x$. L'option $(x+5)(x-5)$ donnerait $x^2 - 25$. La dernière option n'est pas une factorisation canonique avec des coefficients entiers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $4x^2 - 9$.",
+      "options": [
+        "$(2x - 3)^2$",
+        "$(2x + 3)(2x - 3)$",
+        "$(2x - 3)(2x - 3)$",
+        "$(4x - 3)(x + 3)$"
+      ],
+      "correctAnswer": "$(2x + 3)(2x - 3)$",
+      "explanation": "L'expression est une différence de deux carrés : $a^2 - b^2 = (a+b)(a-b)$. Ici $4x^2 = (2x)^2$ donc $a = 2x$, et $9 = 3^2$ donc $b = 3$. La factorisation est $(2x + 3)(2x - 3)$. L'option $(2x - 3)^2$ correspond au carré d'une différence, ce qui donnerait un terme du milieu $-12x$. L'option $(2x-3)(2x-3)$ est identique à la précédente. La dernière option, une fois développée, donne $4x^2 + 9x - 9$, ce qui ne correspond pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Interpréter",
+  "title": "Repérage dans l'espace : Interpréter les coordonnées",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé de l'espace $(O; \\vec{i}, \\vec{j}, \\vec{k})$, comment nomme-t-on la troisième coordonnée d'un point, celle qui se lit sur l'axe porté par le vecteur $\\vec{k}$ ?",
+      "options": [
+        "L'abscisse",
+        "L'ordonnée",
+        "La cote (ou hauteur)",
+        "La distance à l'origine"
+      ],
+      "correctAnswer": "La cote (ou hauteur)",
+      "explanation": "Dans un repère de l'espace, la première coordonnée est l'abscisse (axe $\\vec{i}$), la deuxième est l'ordonnée (axe $\\vec{j}$) et la troisième est la cote ou hauteur (axe $\\vec{k}$). La distance à l'origine est une grandeur calculée, pas une coordonnée directe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne le point $A(4 ; -2 ; 5)$ dans un repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$. Parmi les affirmations suivantes, laquelle est **fausse** ?",
+      "options": [
+        "L'abscisse de $A$ est $4$.",
+        "L'ordonnée de $A$ est $-2$.",
+        "La cote de $A$ est $5$.",
+        "Le point $A$ appartient au plan $(xOy)$."
+      ],
+      "correctAnswer": "Le point $A$ appartient au plan $(xOy)$.",
+      "explanation": "Le plan $(xOy)$ est l'ensemble des points de cote nulle (coordonnée $z = 0$). Or le point $A$ a pour cote $5$, il ne se trouve donc pas dans ce plan. Les trois autres affirmations correspondent exactement à la définition des coordonnées de $A$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$, un point $B$ a pour coordonnées $(0 ; 3 ; 0)$. Sur quel élément du repère se trouve nécessairement le point $B$ ?",
+      "options": [
+        "Sur l'axe des abscisses $(Ox)$.",
+        "Sur l'axe des ordonnées $(Oy)$.",
+        "Sur l'axe des cotes $(Oz)$.",
+        "À l'origine $O$."
+      ],
+      "correctAnswer": "Sur l'axe des ordonnées $(Oy)$.",
+      "explanation": "Un point se trouve sur l'axe des ordonnées $(Oy)$ si et seulement si son abscisse ($x$) et sa cote ($z$) sont nulles. Ici $x=0$ et $z=0$, tandis que $y=3$. Le point est donc bien sur $(Oy)$, à une distance $3$ de l'origine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère un cube $ABCDEFGH$ de côté $4$ cm. On le place dans un repère $(A; \\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE})$ où $A$ est l'origine. Les points $B$, $D$, $E$ ont pour coordonnées respectives $B(4;0;0)$, $D(0;4;0)$, $E(0;0;4)$. Quelles sont les coordonnées du sommet $G$, opposé à $A$ ?",
+      "options": [
+        "$(4 ; 4 ; 0)$",
+        "$(0 ; 4 ; 4)$",
+        "$(4 ; 0 ; 4)$",
+        "$(4 ; 4 ; 4)$"
+      ],
+      "correctAnswer": "$(4 ; 4 ; 4)$",
+      "explanation": "Le sommet $G$ est l'opposé de $A$ dans le cube. Pour aller de $A$ à $G$, il faut parcourir toute la longueur selon $\\overrightarrow{AB}$ (abscisse $4$), toute la largeur selon $\\overrightarrow{AD}$ (ordonnée $4$) et toute la hauteur selon $\\overrightarrow{AE}$ (cote $4$). Ses coordonnées sont donc $(4 ; 4 ; 4)$. Les autres options correspondent aux sommets $C$, $H$ et $F$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $M$ a pour coordonnées $(2 ; -1 ; 3)$ dans un repère orthonormé $(O; \\vec{i}, \\vec{j}, \\vec{k})$. Quelles sont les coordonnées du point $M'$, symétrique de $M$ par rapport au plan $(xOy)$ ?",
+      "options": [
+        "$(-2 ; 1 ; 3)$",
+        "$(2 ; -1 ; -3)$",
+        "$(-2 ; -1 ; -3)$",
+        "$(2 ; 1 ; 3)$"
+      ],
+      "correctAnswer": "$(2 ; -1 ; -3)$",
+      "explanation": "Une symétrie par rapport au plan $(xOy)$ conserve l'abscisse et l'ordonnée (le point reste dans le même plan vertical) mais change le signe de la cote (hauteur). La cote de $M$ est $3$, celle de $M'$ est donc $-3$. Les coordonnées de $M'$ sont $(2 ; -1 ; -3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

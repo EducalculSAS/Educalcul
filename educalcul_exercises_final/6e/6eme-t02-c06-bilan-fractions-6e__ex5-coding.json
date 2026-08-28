@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 341,
+  "_course_code": "6eme-t02-c06-bilan-fractions-6e",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Sens, comparaison, calculs prévus",
+  "title": "Algorithmes sur les fractions",
+  "blocks": [
+    {
+      "title": "Comparaison de deux fractions",
+      "content": "Écrire un algorithme qui compare les fractions $a/b$ et $c/d$ (avec $b>0$, $d>0$) en utilisant la multiplication croisée. L'algorithme doit afficher \"première plus grande\", \"seconde plus grande\" ou \"égales\".",
+      "correctAnswer": "Algorithme :\\nEntrées : a, b, c, d (entiers, b>0, d>0)\\nCalculer gauche = a * d\\nCalculer droite = c * b\\nSi gauche > droite alors afficher 'première plus grande'\\nSinon si gauche < droite alors afficher 'seconde plus grande'\\nSinon afficher 'égales'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare a/b et c/d en croisant les produits : a*d et c*b. Si a*d > c*b alors a/b > c/d, si a*d < c*b alors a/b < c/d, sinon elles sont égales. L'algorithme met en œuvre cette propriété.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de deux fractions",
+      "content": "Écrire un algorithme qui calcule la somme des fractions $a/b$ et $c/d$, puis simplifie le résultat en divisant le numérateur et le dénominateur par leur PGCD. L'algorithme doit afficher la fraction simplifiée sous la forme $p/q$.",
+      "correctAnswer": "Algorithme :\\nEntrées : a, b, c, d (entiers, b>0, d>0)\\nnum = a*d + c*b\\nden = b*d\\n// Calcul du PGCD de num et den\\nx = num\\ny = den\\nTant que y ≠ 0 faire\\n    r = x mod y\\n    x = y\\n    y = r\\nFin tant que\\ng = x\\np = num / g\\nq = den / g\\nAfficher p, '/', q",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux fractions se fait au même dénominateur : (a*d + c*b)/(b*d). On simplifie ensuite en divisant numérateur et dénominateur par leur PGCD, calculé par l'algorithme d'Euclide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fraction entre deux fractions",
+      "content": "Écrire un algorithme qui, étant donnés deux fractions $a/b$ et $c/d$ avec $a/b < c/d$, trouve une fraction $e/f$ strictement comprise entre elles. Une méthode possible est de calculer la médiane $(a/b + c/d)/2$ et de la simplifier. L'algorithme doit afficher $e/f$.",
+      "correctAnswer": "Algorithme :\\nEntrées : a, b, c, d (entiers, b>0, d>0, a/b < c/d)\\nnum = a*d + c*b\\nden = 2*b*d\\n// Simplification\\nx = num\\ny = den\\nTant que y ≠ 0 faire\\n    r = x mod y\\n    x = y\\n    y = r\\nFin tant que\\ng = x\\ne = num / g\\nf = den / g\\nAfficher e, '/', f",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiane de deux fractions est (a/b + c/d)/2 = (a*d + c*b)/(2*b*d). Cette fraction est strictement entre les deux fractions initiales. On la simplifie en divisant par le PGCD obtenu par l'algorithme d'Euclide.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

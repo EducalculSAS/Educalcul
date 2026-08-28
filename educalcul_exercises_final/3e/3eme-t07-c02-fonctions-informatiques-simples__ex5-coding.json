@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Approfondissement : Définir des fonctions",
+  "blocks": [
+    {
+      "title": "Définition d'une fonction simple",
+      "content": "Écrire un algorithme sous forme de fonction nommée `perimetre_carre` qui prend en paramètre la longueur $c$ d'un côté d'un carré et qui renvoie son périmètre.",
+      "correctAnswer": "Fonction perimetre_carre(c)\\n    Retourner 4 * c\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un carré de côté $c$ se calcule en multipliant la longueur du côté par $4$. La fonction reçoit la valeur $c$, effectue le calcul $4 \\times c$ et utilise l'instruction `Retourner` pour envoyer le résultat au programme principal.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction avec deux paramètres et structure conditionnelle",
+      "content": "Écrire une fonction nommée `gain_ou_perte` qui prend deux paramètres : le prix d'achat $p_a$ et le prix de vente $p_v$. La fonction renvoie le bénéfice (valeur positive) si $p_v > p_a$, la perte (valeur positive) si $p_v < p_a$ et $0$ s'ils sont égaux.",
+      "correctAnswer": "Fonction gain_ou_perte(p_a, p_v)\\n    Si p_v > p_a Alors\\n        Retourner p_v - p_a\\n    Sinon Si p_v < p_a Alors\\n        Retourner p_a - p_v\\n    Sinon\\n        Retourner 0\\n    Fin Si\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les deux prix avec une structure `Si ... Sinon Si ... Sinon`. Si $p_v > p_a$, le gain est la différence $p_v - p_a$. Si $p_v < p_a$, la perte (valeur positive) est $p_a - p_v$. Sinon, les prix sont égaux, le résultat est $0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction avec boucle bornée",
+      "content": "Écrire une fonction `somme_entiers` qui prend en paramètre un entier naturel $n$ et qui renvoie la somme des entiers de $1$ à $n$ (par convention, si $n = 0$, la somme vaut $0$).",
+      "correctAnswer": "Fonction somme_entiers(n)\\n    somme <- 0\\n    Pour i de 1 à n faire\\n        somme <- somme + i\\n    Fin Pour\\n    Retourner somme\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable `somme` à $0$. La boucle `Pour i de 1 à n` fait varier $i$ de $1$ jusqu'à $n$. À chaque itération, on ajoute la valeur de $i$ à `somme`. Si $n = 0$, la boucle n'est pas exécutée et la fonction renvoie directement $0$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

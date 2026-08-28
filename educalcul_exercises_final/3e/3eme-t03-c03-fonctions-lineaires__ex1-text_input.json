@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 469,
+  "_course_code": "3eme-t03-c03-fonctions-lineaires",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Coefficient",
+  "title": "Coefficient directeur de fonctions linéaires",
+  "blocks": [
+    {
+      "title": "Équation",
+      "content": "La fonction linéaire $f(x) = 3x - 5$ a pour coefficient directeur :",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur est le nombre qui multiplie $x$ dans l'expression de la fonction linéaire, ici $3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Deux points",
+      "content": "Les points $A(2,7)$ et $B(5,16)$ appartiennent à une même droite. Calcule le coefficient directeur de cette droite :",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur $a = (y_B - y_A) / (x_B - x_A) = (16-7)/(5-2) = 9/3 = 3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Graphique",
+      "content": "Le graphique ci-dessous représente une droite passant par les points $(0,2)$ et $(4,10)$. Détermine son coefficient directeur :",
+      "correctAnswer": "2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur est le quotient de la variation de $y$ sur la variation de $x$ : $(10-2)/(4-0) = 8/4 = 2$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2x+2",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Droite passant par (0,2) et (4,10)"
+      }
+    }
+  ]
+}

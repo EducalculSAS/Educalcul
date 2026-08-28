@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Pythagore et raisonnement",
+  "title": "Approfondissement : Pythagore et raisonnement",
+  "questions": [
+    {
+      "text": "Parmi les triangles suivants, lequel est rectangle ?",
+      "options": [
+        "Triangle de côtés $3$, $4$, $6$",
+        "Triangle de côtés $5$, $12$, $13$",
+        "Triangle de côtés $7$, $8$, $10$",
+        "Triangle de côtés $9$, $10$, $15$"
+      ],
+      "correctAnswer": "Triangle de côtés $5$, $12$, $13$",
+      "explanation": "On utilise la réciproque du théorème de Pythagore : si le carré du plus grand côté est égal à la somme des carrés des deux autres, le triangle est rectangle. Pour $5,12,13$ : $5^2+12^2=25+144=169=13^2$. Les autres triplets ne vérifient pas cette égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ cm et $8$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$10$ cm",
+        "$14$ cm",
+        "$12$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "D'après le théorème de Pythagore, l'hypoténuse $c$ vérifie $c^2 = 6^2+8^2 = 36+64 = 100$, donc $c = \\sqrt{100} = 10$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $9$, $12$, $16$. Ce triangle est :",
+      "options": [
+        "Rectangle",
+        "Acutangle",
+        "Obtusangle",
+        "Équilateral"
+      ],
+      "correctAnswer": "Obtusangle",
+      "explanation": "On compare $9^2+12^2 = 81+144 = 225$ avec $16^2 = 256$. Comme $225 < 256$, le triangle est obtusangle (l'angle opposé au plus grand côté est obtus).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle ABC, angle droit en A. La hauteur issue de A coupe l'hypoténuse BC en H. Si AB = $6$ cm et AC = $8$ cm, quelle est la longueur de AH ?",
+      "options": [
+        "$4,8$ cm",
+        "$5$ cm",
+        "$4$ cm",
+        "$3,6$ cm"
+      ],
+      "correctAnswer": "$4,8$ cm",
+      "explanation": "L'aire du triangle est $\\frac{1}{2}\\times6\\times8 = 24$ cm$^2$. L'hypoténuse BC vaut $10$ cm (Pythagore). L'aire s'exprime aussi $\\frac{1}{2}\\times BC \\times AH$, donc $24 = \\frac{1}{2}\\times10\\times AH$, d'où $AH = 4,8$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5$ m est appuyée contre un mur. Le pied de l'échelle est à $3$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$4$ m",
+        "$3$ m",
+        "$5$ m",
+        "$2$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($5$ m), la distance au mur est un côté ($3$ m). La hauteur $h$ vérifie $h^2 = 5^2-3^2 = 25-9 = 16$, donc $h = 4$ m.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Estimer",
+  "title": "Estimation sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Estimation simple",
+      "content": "Relie chaque nombre décimal à l'entier le plus proche sur la droite graduée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$4,2$",
+          "right": "$4$"
+        },
+        {
+          "left": "$7,8$",
+          "right": "$8$"
+        },
+        {
+          "left": "$12,1$",
+          "right": "$12$"
+        },
+        {
+          "left": "$15,9$",
+          "right": "$16$"
+        }
+      ],
+      "explanation": "Pour estimer l'entier le plus proche, on regarde la première décimale. Si elle est inférieure à $5$, on garde l'entier actuel. Si elle est égale ou supérieure à $5$, on passe à l'entier suivant. Ainsi, $4,2$ est plus proche de $4$ que de $5$, et $7,8$ est plus proche de $8$ que de $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Positionnement intermédiaire",
+      "content": "Relie chaque point estimé à sa position approximative sur une droite dont les graduations sont les unités.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Entre $2$ et $3$, très proche de $2$",
+          "right": "$2,1$"
+        },
+        {
+          "left": "Entre $5$ et $6$, presque au milieu",
+          "right": "$5,5$"
+        },
+        {
+          "left": "Entre $8$ et $9$, très proche de $9$",
+          "right": "$8,9$"
+        },
+        {
+          "left": "Entre $10$ et $11$, un peu après $10$",
+          "right": "$10,3$"
+        }
+      ],
+      "explanation": "L'estimation consiste à placer le nombre selon sa valeur décimale : $2,1$ est juste après $2$, $5,5$ est exactement au milieu entre $5$ et $6$, $8,9$ est juste avant $9$ et $10,3$ se trouve au premier tiers entre $10$ et $11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation avec graduations fines",
+      "content": "Sur une droite graduée où chaque graduation représente $0,1$, relie l'estimation à la valeur correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Trois petites graduations après $3$",
+          "right": "$3,3$"
+        },
+        {
+          "left": "Sept petites graduations après $6$",
+          "right": "$6,7$"
+        },
+        {
+          "left": "Une petite graduation avant $4$",
+          "right": "$3,9$"
+        },
+        {
+          "left": "Cinq petites graduations après $0$",
+          "right": "$0,5$"
+        }
+      ],
+      "explanation": "Lorsque l'intervalle entre deux entiers est divisé en dix parties égales, chaque trait représente $0,1$. Ainsi, trois traits après $3$ correspondent à $3 + 0,3 = 3,3$. Un trait avant $4$ correspond à $4 - 0,1 = 3,9$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

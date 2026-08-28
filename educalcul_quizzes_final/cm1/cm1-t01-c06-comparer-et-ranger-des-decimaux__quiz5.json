@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Aligner valeurs de position",
+  "title": "Quiz : Aligner les valeurs de position pour comparer",
+  "questions": [
+    {
+      "text": "On veut comparer les nombres $4,5$ et $4,08$. Quelle affirmation est vraie ?",
+      "options": [
+        "$4,5 < 4,08$",
+        "$4,5 > 4,08$",
+        "$4,5 = 4,08$",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$4,5 > 4,08$",
+      "explanation": "Pour comparer, on aligne les virgules et on complète avec des zéros pour avoir le même nombre de décimales : $4,5$ devient $4,50$. On compare ensuite chiffre par chiffre : aux unités $4 = 4$, aux dixièmes $5 > 0$, donc $4,50 > 4,08$. L'erreur fréquente est de croire que $5 < 8$ ou $5 < 08$ sans aligner les positions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de position, comment doit-on écrire le nombre $3,7$ pour le comparer correctement à $3,06$ ?",
+      "options": [
+        "3 au unité, 7 aux dixièmes, 0 aux centièmes",
+        "3 au unité, 7 aux centièmes",
+        "3 aux dizaines, 7 aux unités",
+        "3 au unité, 7 aux dixièmes, rien aux centièmes"
+      ],
+      "correctAnswer": "3 au unité, 7 aux dixièmes, 0 aux centièmes",
+      "explanation": "Pour aligner les valeurs de position, $3,7$ s'écrit $3,70$. On place donc 3 dans la colonne des unités, 7 dans la colonne des dixièmes et 0 dans la colonne des centièmes. Laisser la case des centièmes vide (option D) ou décaler le 7 aux centièmes (option B) sont des erreurs d'alignement.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.7,
+        "caption": "Tableau de position pour 3,7"
+      }
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est le plus grand ?",
+      "options": [
+        "$0,6$",
+        "$0,58$",
+        "$0,605$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,605$",
+      "explanation": "On met tous les nombres à trois décimales : $0,600 ; 0,580 ; 0,605 ; 0,500$. On compare aux dixièmes : $6 > 5$, donc $0,600$ et $0,605$ sont plus grands que les autres. Entre $0,600$ et $0,605$, aux centièmes $0 = 0$, aux millièmes $0 < 5$, donc $0,605$ est le plus grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range ces nombres dans l'ordre croissant : $2,4 ; 2,08 ; 2,35 ; 2,41$.",
+      "options": [
+        "$2,08 ; 2,35 ; 2,4 ; 2,41$",
+        "$2,08 ; 2,4 ; 2,35 ; 2,41$",
+        "$2,41 ; 2,4 ; 2,35 ; 2,08$",
+        "$2,35 ; 2,08 ; 2,4 ; 2,41$"
+      ],
+      "correctAnswer": "$2,08 ; 2,35 ; 2,4 ; 2,41$",
+      "explanation": "On aligne aux centièmes : $2,40 ; 2,08 ; 2,35 ; 2,41$. Aux unités, tous ont 2. Aux dixièmes : $0 < 3 < 4$. $2,08$ est le plus petit. Pour $2,35 ; 2,40 ; 2,41$, aux dixièmes $3 < 4$, donc $2,35$ suit. Entre $2,40$ et $2,41$, aux centièmes $0 < 1$. L'ordre est donc $2,08 < 2,35 < 2,40 < 2,41$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre décimal se trouve entre $5,2$ et $5,3$ ?",
+      "options": [
+        "$5,19$",
+        "$5,25$",
+        "$5,31$",
+        "$5,2$"
+      ],
+      "correctAnswer": "$5,25$",
+      "explanation": "On écrit $5,2$ comme $5,20$ et $5,3$ comme $5,30$. Un nombre entre les deux doit avoir 5 unités, 2 dixièmes (pour être $> 5,20$) et des centièmes strictement supérieures à 0 (pour être $> 5,2$) et inférieures à 10 (pour rester $< 5,30$). $5,25$ convient ($5,20 < 5,25 < 5,30$). $5,19 < 5,2$, $5,31 > 5,3$, $5,2$ est la borne inférieure.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

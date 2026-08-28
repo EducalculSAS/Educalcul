@@ -1,0 +1,576 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.873905+00:00",
+  "id": 445,
+  "code": "4eme-t06-c01",
+  "title": "Translation et rotation",
+  "description": "Cours structuré Educalcul : Translation et rotation.",
+  "subject": "Transformations, espace, grandeurs et mesures",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Transformations, espace, grandeurs et mesures",
+    "titre_du_cours": "Translation et rotation",
+    "objectif_global": "Translation et rotation",
+    "mini_lecons_imposees": [
+      "Construire image.",
+      "Propriétés.",
+      "Composer cas simples."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace, grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Construire image.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'image par une translation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu déplaces une feuille de papier sur la table sans la tourner : chaque point de la feuille suit le même chemin, la même distance et la même direction. C'est exactement ce que fait une translation en géométrie : elle glisse toute la figure le long d'un vecteur, qui est une flèche qui indique à la fois la direction, le sens et la longueur du déplacement. Le vecteur de translation est souvent noté $\\vec{u}$ et il relie un point à son image. Par exemple, si le vecteur mesure $5\\,cm$ vers la droite, chaque point de la figure se retrouvera $5\\,cm$ plus loin sur la droite."
+            },
+            {
+              "type": "definition",
+              "term": "vecteur de translation",
+              "definition": "Flèche qui donne la direction, le sens et la longueur du déplacement de tous les points d'une figure lors d'une translation.",
+              "example": "Le vecteur $\\vec{u}$ qui va de $A$ vers $A'$ est le vecteur de translation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le vecteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la flèche qui représente le vecteur de translation. Si tu as les points $A$ et $A'$, trace le segment $\\overline{AA'}$ et ajoute une pointe de flèche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transporter chaque sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque sommet de la figure, trace une flèche parallèle au vecteur, de même longueur et de même sens, en partant du sommet. L'extrémité de cette flèche est l'image du sommet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relier les images",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois tous les sommets images obtenus, relie-les dans le même ordre que la figure d'origine. Tu obtiens l'image de la figure par la translation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle $ABC$ et son image $A'B'C'$ après translation par le vecteur $\\vec{u}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'image par une rotation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une rotation, c'est comme faire tourner une assiette sur une table : il y a un point fixe, le centre de rotation, autour duquel tout le reste pivote d'un certain angle. Le centre ne bouge pas, les autres points décrivent des arcs de cercle. L'angle de rotation, noté $\\alpha$, peut être positif (dans le sens inverse des aiguilles d'une montre) ou négatif (dans le sens des aiguilles d'une montre). La distance du centre à chaque point ne change pas, donc les longueurs sont conservées."
+            },
+            {
+              "type": "definition",
+              "term": "centre de rotation",
+              "definition": "Point fixe autour duquel s'effectue la rotation ; il ne change pas de position.",
+              "example": "Le point $O$ est le centre de rotation de la figure."
+            },
+            {
+              "type": "definition",
+              "term": "angle de rotation",
+              "definition": "Mesure de la rotation, exprimée en degrés ou en radians ; elle indique de combien la figure tourne autour du centre.",
+              "example": "Un angle de $90^{\\circ}$ fait faire un quart de tour à la figure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Marquer le centre et l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le centre $O$ et l'angle $\\alpha$ (par exemple $60^{\\circ}$). Trace un rayon $OA$ pour un sommet $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'image du sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'aide d'un rapporteur, trace un second rayon $OA'$ qui forme l'angle $\\alpha$ avec $OA$, dans le sens indiqué. Reporte la longueur $OA$ sur ce nouveau rayon : le point $A'$ est l'image de $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Répéter pour tous les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la même construction pour chaque sommet de la figure, puis relie les images dans l'ordre. La figure obtenue est l'image par la rotation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle $ABC$ et son image $A'B'C'$ après rotation de centre $O$ et d'angle $60^{\\circ}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'image d'un polygone quelconque"
+            },
+            {
+              "type": "paragraph",
+              "content": "Que la figure soit un triangle, un quadrilatère ou un polygone à nombreux côtés, la méthode reste identique : on applique la transformation à chaque sommet, puis on relie les images dans le même ordre. Pour une translation, il suffit de glisser chaque sommet le long du même vecteur. Pour une rotation, chaque sommet tourne autour du centre avec le même angle. Cette régularité garantit que la forme globale ne se déforme pas ; seule sa position ou son orientation change."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la transformation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie si tu dois faire une translation (vecteur donné) ou une rotation (centre et angle donnés)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Traiter chaque sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la construction vue précédemment à chaque sommet du polygone, un par un, en prenant soin de garder le même ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Fermer le polygone image",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie le dernier sommet image au premier pour fermer la figure. Vérifie que les côtés correspondants sont parallèles (translation) ou forment le même angle (rotation)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "A'(x_A+u_x,\\;y_A+u_y)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire l'image d'une figure par translation ou par rotation. Dans la prochaine leçon, nous verrons quelles propriétés ces transformations conservent et comment les utiliser pour raisonner sans tout redessiner."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit le triangle $ABC$ avec $A(1,2)$, $B(4,2)$, $C(2,5)$. Le vecteur de translation est $\\vec{u}(3,-1)$. Donne les coordonnées des images $A'$, $B'$, $C'$.",
+              "answer": "$A'(4,1)$, $B'(7,1)$, $C'(5,4)$",
+              "hint": "Ajoute les composantes du vecteur aux coordonnées de chaque sommet.",
+              "explanation": "Une translation ajoute le même vecteur à tous les points. Pour $A$, $x' = 1+3 = 4$, $y' = 2+(-1)=1$, etc."
+            },
+            {
+              "question": "Le point $P(2,3)$ est tourné de $90^{\\circ}$ autour de l'origine $O(0,0)$ dans le sens positif. Quelles sont les coordonnées de $P'$ ?",
+              "answer": "$P'(-3,2)$",
+              "hint": "Une rotation de $90^{\\circ}$ autour de l'origine envoie $(x,y)$ sur $(-y,x)$.",
+              "explanation": "En appliquant la règle, $x' = -3$, $y' = 2$."
+            },
+            {
+              "question": "Un quadrilatère a pour sommets $D(0,0)$, $E(4,0)$, $F(4,3)$, $G(0,3)$. Effectue d'abord une translation de vecteur $\\vec{v}(-2,2)$, puis une rotation de $180^{\\circ}$ autour de l'origine. Donne les coordonnées finales des sommets.",
+              "answer": "$D''(2,-2)$, $E''(-2,-2)$, $F''(-2,-5)$, $G''(2,-5)$",
+              "hint": "Applique la translation puis la rotation : la rotation de $180^{\\circ}$ change $(x,y)$ en $(-x,-y)$.",
+              "explanation": "Après translation, $D'(-2,2)$, $E'(2,2)$, $F'(2,5)$, $G'(-2,5)$. Rotation de $180^{\\circ}$ donne les opposés."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés de la translation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une translation est une isométrie : elle conserve toutes les distances et tous les angles. Concrètement, si tu mesures un segment $AB$ avant et après la translation, tu obtiens exactement la même longueur. De même, l'angle formé par deux droites ne change pas. Autre conséquence importante : une droite est transformée en une droite parallèle à elle-même. Si deux droites étaient parallèles avant la translation, elles le restent après. C'est pour cela qu'on dit que la translation préserve le parallélisme."
+            },
+            {
+              "type": "definition",
+              "term": "isométrie",
+              "definition": "Transformation qui conserve les distances entre tous les couples de points ; les longueurs, les angles et les aires restent inchangés.",
+              "example": "La translation et la rotation sont des isométries du plan."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(A,B) = d(A',B') \\quad \\text{et} \\quad \\widehat{(AB,AC)} = \\widehat{(A'B',A'C')}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés de la rotation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La rotation est aussi une isométrie. Elle garde les longueurs et les angles intacts. Le centre de rotation est le seul point qui ne bouge pas ; tous les autres points décrivent des arcs de cercle centrés en ce point. L'orientation de la figure est conservée : si tu parcours les sommets dans le sens direct avant la rotation, tu les parcours encore dans le sens direct après. En revanche, une rotation change la direction des droites : une droite passant par le centre reste sur place, les autres droites pivotent autour du centre."
+            },
+            {
+              "type": "definition",
+              "term": "rotation directe",
+              "definition": "Rotation qui conserve l'orientation du plan (sens inverse des aiguilles d'une montre pour un angle positif).",
+              "example": "Une rotation de $+90^{\\circ}$ est directe."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\widehat{MOM'} = \\alpha \\quad \\text{pour tout point } M \\neq O"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effet sur les droites et les parallèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec une translation, toute droite $d$ devient une droite $d'$ parallèle à $d$. Si deux droites étaient parallèles, leurs images le sont encore. Avec une rotation, une droite qui ne passe pas par le centre devient une droite qui forme avec l'originale l'angle de la rotation. Deux droites parallèles restent parallèles après une rotation seulement si l'angle est un multiple de $180^{\\circ}$ ; sinon, elles se coupent au centre de rotation. Ces faits permettent de retrouver l'image d'une droite sans tracer tous ses points."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour trouver l'image d'une droite par une translation, il suffit de translater deux points de cette droite et de tracer la droite qui les relie."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir deux points sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends deux points distincts $P$ et $Q$ sur la droite $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transformer les deux points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la translation ou la rotation à $P$ et $Q$ pour obtenir $P'$ et $Q'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer l'image",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La droite $d'$ est la droite passant par $P'$ et $Q'$. Elle est automatiquement l'image de $d$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les propriétés sont claires, nous allons voir comment combiner plusieurs transformations simples pour obtenir des résultats surprenants."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une translation de vecteur $\\vec{u}$, les segments $AB$ et $A'B'$ sont-ils toujours parallèles ? Justifie.",
+              "answer": "Oui, ils sont parallèles et de même longueur.",
+              "hint": "La translation conserve les directions.",
+              "explanation": "La translation déplace chaque point du même vecteur, donc la droite $AB$ glisse parallèlement à elle-même."
+            },
+            {
+              "question": "Une rotation de centre $O$ et d'angle $120^{\\circ}$ transforme le segment $MN$ en $M'N'$. Quelle est la mesure de l'angle $\\widehat{MOM'}$ ?",
+              "answer": "$120^{\\circ}$",
+              "hint": "L'angle de rotation est l'angle entre un rayon initial et son image.",
+              "explanation": "Par définition, tout point tourne de l'angle donné autour du centre."
+            },
+            {
+              "question": "La droite $d$ d'équation $y=2x+1$ subit une rotation de $90^{\\circ}$ autour de l'origine. Quelle est l'équation de l'image $d'$ ?",
+              "answer": "$d' : y = -\\frac{1}{2}x$ (ou forme équivalente)",
+              "hint": "La rotation de $90^{\\circ}$ échange les axes et change les signes.",
+              "explanation": "La pente $2$ devient $-1/2$ après rotation de $90^{\\circ}$ ; l'ordonnée à l'origine devient $0$ car l'origine est centre."
+            }
+          ]
+        },
+        {
+          "title": "Composer cas simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composer deux translations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on effectue deux translations l'une après l'autre, le résultat est encore une translation. Le vecteur de cette translation composée est simplement la somme des deux vecteurs initiaux. Imagine que tu marches $3$ pas vers l'est, puis $4$ pas vers le nord : ton déplacement total est le même que si tu avais marché directement selon le vecteur somme. Cette propriété rend le calcul très commode : plus besoin de redessiner la figure à chaque étape."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les deux vecteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les composantes du premier vecteur $\\vec{u}(u_x,u_y)$ et du second $\\vec{v}(v_x,v_y)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les composantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur résultant $\\vec{w}$ a pour composantes $(u_x+v_x,\\; u_y+v_y)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la translation unique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transporte chaque point de la figure avec le vecteur $\\vec{w}$ ; tu obtiens directement l'image finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{w} = \\vec{u} + \\vec{v}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composer deux rotations de même centre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si l'on enchaîne deux rotations ayant le même centre $O$, l'effet global est une seule rotation de centre $O$ dont l'angle est la somme des deux angles. C'est comme tourner une clé dans une serrure : un demi-tour puis un quart de tour équivaut à trois quarts de tour. Attention toutefois au sens : les angles positifs s'additionnent, les angles négatifs se soustraient. Cette règle ne vaut que si le centre est identique ; sinon, la composition peut devenir une translation ou une rotation autour d'un autre point."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le centre commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que les deux rotations partagent exactement le même centre $O$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $\\alpha_1$ et $\\alpha_2$ les angles (signés). L'angle total est $\\alpha = \\alpha_1 + \\alpha_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectuer la rotation unique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tourne la figure d'un seul coup d'angle $\\alpha$ autour de $O$ ; le résultat est identique aux deux rotations successives."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "R_{O,\\alpha_2} \\circ R_{O,\\alpha_1} = R_{O,\\alpha_1+\\alpha_2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composer une translation et une rotation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La composition d'une translation suivie d'une rotation (ou l'inverse) donne généralement une rotation autour d'un centre différent de l'original. Pour trouver ce nouveau centre, on peut utiliser la méthode du point image du centre de rotation par la translation inverse. Concrètement, si tu traslates d'abord puis tu tournes, le centre de la rotation équivalente est l'image du centre de la rotation par la translation de vecteur opposé. C'est un outil puissant pour simplifier des enchaînements complexes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine si la translation précède la rotation ($T_{\\vec{t}} \\circ R_{O,\\alpha}$) ou si la rotation précède la translation ($R_{O,\\alpha} \\circ T_{\\vec{t}}$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le nouveau centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la translation est avant la rotation, le nouveau centre $C$ est l'image de $O$ par la translation de vecteur $-\\vec{t}$ (c'est-à-dire $C = O - \\vec{t}$). Si la rotation est avant, $C$ est l'image de $O$ par la rotation de $-\\alpha$ suivie de la translation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la rotation unique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois $C$ trouvé, la composition entière est une rotation de centre $C$ et d'angle $\\alpha$ (le même angle que la rotation initiale)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Illustration de la composition translation + rotation : le triangle $ABC$ est d'abord translaté puis tourné, équivalent à une rotation autour de $C$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire l'image d'une figure par une translation.",
+                "Je sais construire l'image d'une figure par une rotation.",
+                "Je connais les propriétés de conservation des longueurs et des angles pour ces transformations.",
+                "Je sais composer deux translations en ajoutant leurs vecteurs.",
+                "Je sais composer deux rotations de même centre en additionnant leurs angles.",
+                "Je sais déterminer le centre de la rotation équivalente à une translation suivie d'une rotation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux translations successives ont pour vecteurs $\\vec{u}(2,3)$ et $\\vec{v}(-4,1)$. Quel est le vecteur de la translation équivalente ?",
+              "answer": "$\\vec{w}(-2,4)$",
+              "hint": "Additionne les composantes des deux vecteurs.",
+              "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des vecteurs."
+            },
+            {
+              "question": "Une rotation de centre $O$ et d'angle $50^{\\circ}$ est suivie d'une rotation de même centre et d'angle $70^{\\circ}$. Quelle est la rotation résultante ?",
+              "answer": "Rotation de centre $O$ et d'angle $120^{\\circ}$.",
+              "hint": "Les angles s'additionnent lorsque le centre est commun.",
+              "explanation": "La composition de deux rotations de même centre est une rotation de même centre dont l'angle est la somme des angles."
+            },
+            {
+              "question": "On applique d'abord une translation de vecteur $\\vec{t}(3,0)$ puis une rotation de $90^{\\circ}$ autour de l'origine. Quel est le centre de la rotation équivalente ?",
+              "answer": "Le centre est le point $C(0,3)$.",
+              "hint": "Le centre de la rotation composée est l'image du centre de la rotation initiale par la translation inverse.",
+              "explanation": "La translation déplace l'origine en $(3,0)$. La rotation de $90^{\\circ}$ autour de l'origine devient une rotation de $90^{\\circ}$ autour du point image de l'origine par la translation inverse, soit $(0,3)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

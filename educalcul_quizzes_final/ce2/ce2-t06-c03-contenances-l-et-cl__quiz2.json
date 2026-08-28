@@ -1,0 +1,131 @@
+{
+  "_status": "done",
+  "_course_id": 189,
+  "_course_code": "ce2-t06-c03-contenances-l-et-cl",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Lire une graduation simple",
+  "title": "Lire une graduation simple (L et cL)",
+  "questions": [
+    {
+      "text": "Sur le gradué ci-dessous, les graduations principales indiquent des dizaines de centilitres (10, 20, 30...). Le niveau du liquide se situe exactement sur la graduation $40$. Quelle est la contenance du liquide ?",
+      "options": [
+        "$40$ cL",
+        "$4$ cL",
+        "$0,4$ L",
+        "$400$ cL"
+      ],
+      "correctAnswer": "$40$ cL",
+      "explanation": "La graduation sur laquelle se trouve le liquide porte le nombre $40$. Comme l'échelle est graduée en centilitres (cL), la contenance est de $40$ cL. L'option $0,4$ L est une équivalence vraie ($40$ cL = $0,4$ L) mais la lecture directe de l'échelle donne $40$ cL. Les options $4$ cL et $400$ cL correspondent à des erreurs de lecture du chiffre des dizaines ou de l'unité.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 40,
+            "label": "Niveau du liquide"
+          }
+        ],
+        "caption": "Graduations tous les 10 cL"
+      }
+    },
+    {
+      "text": "Ce gradué est gradué en litres. Les traits principaux marquent $0$, $0,1$, $0,2$... jusqu'à $1$ L. Le liquide monte jusqu'au trait $0,6$. Combien y a-t-il de centilitres ?",
+      "options": [
+        "$60$ cL",
+        "$6$ cL",
+        "$600$ cL",
+        "$0,6$ cL"
+      ],
+      "correctAnswer": "$60$ cL",
+      "explanation": "La graduation lue est $0,6$ L. Pour convertir en centilitres, on utilise la relation $1$ L = $100$ cL. Donc $0,6$ L = $0,6 \\times 100$ cL = $60$ cL. L'option $6$ cL correspondrait à $0,06$ L. L'option $600$ cL correspondrait à $6$ L. L'option $0,6$ cL confond l'unité affichée (L) et l'unité demandée (cL).",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.6,
+            "label": "Niveau du liquide"
+          }
+        ],
+        "caption": "Graduations tous les 0,1 L"
+      }
+    },
+    {
+      "text": "Sur ce gradué gradué de 10 en 10 cL (0, 10, 20, 30, 40...), le niveau du liquide se trouve exactement à mi-hauteur entre les graduations $30$ et $40$. Quelle est la contenance ?",
+      "options": [
+        "$35$ cL",
+        "$30$ cL",
+        "$40$ cL",
+        "$3,5$ cL"
+      ],
+      "correctAnswer": "$35$ cL",
+      "explanation": "Les graduations principales valent $30$ cL et $40$ cL. Le milieu entre ces deux valeurs est $35$ cL ($30 + 5 = 35$ ou $(30+40)/2 = 35$). L'option $30$ cL correspond à la graduation du bas, $40$ cL à celle du haut. L'option $3,5$ cL est une erreur de virgule (confusion avec des litres).",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 35,
+            "label": "Niveau du liquide"
+          }
+        ],
+        "caption": "Graduations tous les 10 cL"
+      }
+    },
+    {
+      "text": "Le gradué ci-dessous va jusqu'à $2$ L. Les grosses graduations marquent $0$, $0,5$, $1$, $1,5$, $2$ litres. Le liquide est au niveau de la graduation $1,5$. Quelle est la contenance en centilitres ?",
+      "options": [
+        "$150$ cL",
+        "$15$ cL",
+        "$1,5$ cL",
+        "$1500$ cL"
+      ],
+      "correctAnswer": "$150$ cL",
+      "explanation": "La graduation lue est $1,5$ L. On sait que $1$ L = $100$ cL. Donc $1$ L = $100$ cL et $0,5$ L = $50$ cL. En additionnant : $100 + 50 = 150$ cL. L'option $15$ cL correspond à $0,15$ L. L'option $1,5$ cL garde le chiffre mais met la mauvaise unité. L'option $1500$ cL correspond à $15$ L.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.5,
+            "label": "Niveau du liquide"
+          }
+        ],
+        "caption": "Graduations tous les 0,5 L"
+      }
+    },
+    {
+      "text": "Ce gradué a des graduations principales tous les $25$ cL ($0$, $25$, $50$, $75$, $100$). Le liquide est exactement sur la graduation $75$. On peut écrire cette contenance en litres et centilitres :",
+      "options": [
+        "$0,75$ L",
+        "$7,5$ L",
+        "$75$ L",
+        "$0,075$ L"
+      ],
+      "correctAnswer": "$0,75$ L",
+      "explanation": "La lecture donne $75$ cL. Pour exprimer en litres, on divise par $100$ (car $100$ cL = $1$ L). $75 \\div 100 = 0,75$. Donc $75$ cL = $0,75$ L. L'option $7,5$ L correspondrait à $750$ cL. L'option $75$ L correspondrait à $7500$ cL. L'option $0,075$ L correspondrait à $7,5$ cL.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 75,
+            "label": "Niveau du liquide"
+          }
+        ],
+        "caption": "Graduations tous les 25 cL"
+      }
+    }
+  ]
+}

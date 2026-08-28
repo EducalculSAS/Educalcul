@@ -1,0 +1,297 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.637204+00:00",
+  "id": 367,
+  "code": "6eme-t07-c05",
+  "title": "Bilan - Espace 6e",
+  "description": "Cours structuré Educalcul : Bilan - Espace 6e.",
+  "subject": "Espace",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Espace",
+    "titre_du_cours": "Bilan - Espace 6e",
+    "objectif_global": "Bilan - Espace 6e",
+    "mini_lecons_imposees": [
+      "Solides et repérage.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace",
+      "lessons": [
+        {
+          "title": "Solides et repérage.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les grands solides de l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur l'espace ! Tu as déjà croisé plusieurs solides cette année : le cube, le pavé droit, le cylindre, le cône, la pyramide et la sphère. Aujourd'hui, on prend le temps de les revoir calmement, comme si on ouvrait une boîte à trésors géométriques. Chaque solide a sa personnalité : certains n'ont que des faces planes, d'autres ont des faces courbes, et certains mélangent les deux. Prends une grande inspiration, on y va étape par étape."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les solides à faces planes seulement. Le $cube$ a $6$ faces carrées toutes identiques, $12$ arêtes de même longueur et $8$ sommets. Le $pavé\\ droit$ (ou parallélépipède rectangle) a $6$ faces rectangulaires, deux à deux égales, $12$ arêtes groupées par $3$ longueurs égales et $8$ sommets. La $pyramide$ a une base polygonale (triangle, carré, rectangle…) et des faces triangulaires qui se rejoignent en un sommet unique appelé $apex$. Observe bien : le nombre de faces triangulaires égale le nombre de côtés de la base."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Pyramide à base carrée : 5 faces, 8 arêtes, 5 sommets",
+              "vertexLabels": [
+                "S",
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "SA",
+                "SB",
+                "SC",
+                "SD",
+                "AB",
+                "BC",
+                "CD",
+                "DA"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tournons-nous vers les solides qui possèdent au moins une face courbe. Le $cylindre$ a deux bases circulaires planes et parallèles, reliées par une surface courbe. Le $cône$ a une base circulaire et une surface courbe qui se termine en un sommet unique. La $sphère$, elle, est entièrement courbe : tous les points de sa surface sont à la même distance de son centre, cette distance s'appelle le $rayon$. Imagine une balle de ping-pong : c'est une sphère parfaite."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{cylindre}} = \\pi r^2 h \\quad ; \\quad V_{\\text{c\\^one}} = \\frac{1}{3} \\pi r^2 h \\quad ; \\quad V_{\\text{sph\\`ere}} = \\frac{4}{3} \\pi r^3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces formules de volume ne sont pas à apprendre par cœur aujourd'hui, mais sache qu'elles existent et qu'elles relient les dimensions du solide (rayon $r$, hauteur $h$) à l'espace qu'il occupe. Pour le cube et le pavé droit, c'est plus simple : le volume est le produit des trois dimensions (longueur $\\times$ largeur $\\times$ hauteur). Essaie de visualiser : si tu remplis une boîte de petits cubes de $1\\,cm^3$, le nombre de cubes que tu as mis, c'est exactement le volume en $cm^3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux patrons. Un $patron$ est une figure plane qu'on plie pour obtenir le solide. C'est comme le carton plat d'une boîte de céréales avant qu'on la monte. Pour un cube, il existe $11$ patrons différents ! Tous sont formés de $6$ carrés collés par des côtés. Pour un pavé droit, les patrons sont faits de $3$ paires de rectangles. Pour une pyramide, le patron montre la base au centre et les triangles tout autour. Savoir reconnaître un patron valide, c't une compétence clé pour passer du 2D au 3D."
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Un des 11 patrons du cube : clique pour le plier mentalement"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons le repérage dans l'espace. Sur une feuille, tu sais repérer un point avec deux coordonnées $(x; y)$ dans un repère orthonormé. Dans l'espace, il faut trois nombres : on ajoute une troisième axe, souvent noté $z$, perpendiculaire aux deux premiers. Un point $A$ se note donc $A(x_A; y_A; z_A)$. Imagine que tu es dans ta chambre : $x$ c'est la distance au mur de gauche, $y$ la distance au mur du fond, $z$ la hauteur par rapport au sol. C'est exactement ça, le repérage dans l'espace !"
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "O",
+              "caption": "Dans le plan, le compas trace des cercles ; dans l'espace, on imagine une sphère de centre O et de rayon donné"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces solides, lesquels ont uniquement des faces planes ? Cube, cylindre, pavé droit, cône, pyramide, sphère.",
+              "answer": "Cube, pavé droit, pyramide",
+              "hint": "Élimine ceux qui ont une surface courbe (cylindre, cône, sphère).",
+              "explanation": "Le cube, le pavé droit et la pyramide sont des polyèdres : toutes leurs faces sont des polygons plans. Le cylindre, le cône et la sphère possèdent au moins une face courbe."
+            },
+            {
+              "question": "Un pavé droit mesure $12\\,cm$ de long, $5\\,cm$ de large et $8\\,cm$ de haut. Quel est son volume en $cm^3$ ?",
+              "answer": "$480\\,cm^3$",
+              "hint": "Volume = longueur $\\times$ largeur $\\times$ hauteur.",
+              "explanation": "On multiplie les trois dimensions : $12 \\times 5 \\times 8 = 60 \\times 8 = 480$. Le volume est donc $480\\,cm^3$."
+            },
+            {
+              "question": "Voici un patron composé de 6 carrés identiques. Est-ce obligatoirement un patron de cube ? Justifie.",
+              "answer": "Non, il faut vérifier que les 6 carrés sont liés par des côtés entiers et que le pliage forme bien un cube fermé sans chevauchement. Il existe des arrangements de 6 carrés qui ne se plient pas en cube.",
+              "hint": "Tous les ensembles de 6 carrés ne sont pas des patrons de cube. Il y en a exactement 11 qui fonctionnent.",
+              "explanation": "Seuls 11 arrangements distincts de 6 carrés permettent de former un cube. Si les carrés sont mal connectés (par un seul sommet par exemple) ou s'ils se chevauchent en se pliant, ce n'est pas un patron valide."
+            },
+            {
+              "question": "Dans un repère de l'espace, le point $M$ a pour coordonnées $(3; -2; 5)$. Que signifie la coordonnée $5$ ?",
+              "answer": "C'est la distance (ou la cote) du point $M$ par rapport au plan horizontal $(xOy)$, c'est-à-dire sa hauteur (ou profondeur) selon l'axe $z$.",
+              "hint": "Rappelle-toi : $x$ pour gauche/droite, $y$ pour avant/arrière, $z$ pour haut/bas.",
+              "explanation": "Dans un repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$, la troisième coordonnée $z_M = 5$ indique la position du point le long de l'axe vertical $\\vec{k}$. Si $z>0$, le point est \"au-dessus\" du plan $(xOy)$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Revue des propriétés et vocabulaire clé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon est ton carnet de bord pour vérifier que tout est bien rangé dans ta tête. On ne découvre rien de nouveau ici : on consolide, on relie les idées entre elles, et on s'assure que le vocabulaire précis est en place. En 6e, les mots ont un sens exact : une $arête$ n'est pas un $côté$, une $face$ n'est pas une $surface$, et un $sommet$ n'est pas un $point$ quelconque. Prends le temps de lire chaque point, ferme les yeux et visualise le solide correspondant."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Segment de droite intersection de deux faces planes d'un polyèdre. Pour le cylindre et le cône, on parle plutôt de courbe de rencontre entre une face plane et une face courbe.",
+              "example": "Un cube a 12 arêtes."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Point d'intersection d'au moins trois arêtes (polyèdre) ou point unique du cône (apex) ou centre de la sphère (mais la sphère n'a pas de sommet au sens polyédrique).",
+              "example": "Une pyramide à base carrée a 5 sommets."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "Partie plane (polygone) ou courbe qui délimite le solide. Une face plane est un polygone ; une face courbe est une surface (ex: surface latérale du cylindre).",
+              "example": "Un pavé droit a 6 faces rectangulaires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant les relations entre solides. Un cube est un cas particulier de pavé droit : c'est un pavé droit dont les trois dimensions sont égales. Une pyramide à base carrée dont les faces latérales sont des triangles isocèles égaux s'appelle une $pyramide\\ régulière$ ; si en plus la hauteur passe par le centre de la base, c'est une $pyramide\\ droite$. Le cône droit est l'analogue du cylindre mais qui se termine en pointe. Ces qualificatifs ($droit$, $régulier$) ne sont pas des détails : ils disent que la hauteur est bien perpendiculaire à la base, ce qui simplifie les calculs de volume et de section."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Pyramide droite à base carrée : la hauteur SO est perpendiculaire au plan (ABCD) en son centre O",
+              "vertexLabels": [
+                "S",
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "SA",
+                "SB",
+                "SC",
+                "SD",
+                "AB",
+                "BC",
+                "CD",
+                "DA"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Poursuivons avec les sections planes. Quand un plan coupe un solide, la figure obtenue s'appelle une $section$. C'est comme quand tu coupes une carotte en rondelles : chaque tranche est une section. Dans un pavé droit, une section parallèle à une face donne un rectangle identique à cette face. Dans un cylindre, une section parallèle aux bases donne un cercle de même rayon. Dans une pyramide, une section parallèle à la base donne un polygone homothétique à la base (même forme, taille réduite). Ces sections sont précieuses pour comprendre la structure interne du solide."
+            },
+            {
+              "type": "display_math",
+              "latex": "Section\\ parallelle\\ à\\ la\\ base\\ d'une\\ pyramide \\sim base\\ (homothétie\\ de\\ rapport\\ k = \\frac{h'}{h})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublie pas les conversions d'unités de volume, car l'espace se mesure aussi en $m^3$, $dm^3$, $cm^3$, $mm^3$. Le piège classique : $1\\,m^3$ n'est pas $100\\,dm^3$ mais $1000\\,dm^3$ ! Pourquoi ? Parce que $1\\,m = 10\\,dm$, donc $1\\,m^3 = 10\\,dm \\times 10\\,dm \\times 10\\,dm = 1000\\,dm^3$. De même, $1\\,dm^3 = 1000\\,cm^3$ et $1\\,cm^3 = 1000\\,mm^3$. Pour passer d'une unité à la suivante, on multiplie ou divise par $1000$, pas par $10$ ni par $100$. Garde ce facteur $1000$ en tête, c'est la clé pour ne pas te tromper."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Équivalence"
+              ],
+              "rows": [
+                [
+                  "$1\\,m^3$",
+                  "$1000\\,dm^3$"
+                ],
+                [
+                  "$1\\,dm^3$",
+                  "$1000\\,cm^3 = 1\\,L$"
+                ],
+                [
+                  "$1\\,cm^3$",
+                  "$1000\\,mm^3 = 1\\,mL$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer et décrire les 6 solides usuels (cube, pavé droit, pyramide, cylindre, cône, sphère) : faces, arêtes, sommets.",
+                "Je reconnais un patron valide de cube ou de pavé droit et j'en imagine le pliage.",
+                "Je calcule le volume d'un pavé droit ($V = L \\times l \\times h$) et d'un cube ($V = c^3$) avec les bonnes unités.",
+                "Je repère un point dans l'espace avec trois coordonnées $(x; y; z)$ dans un repère orthonormé.",
+                "Je distingue les solides droits (hauteur perpendiculaire à la base) des solides obliques.",
+                "Je décris la section d'un solide par un plan parallèle à sa base (carré, rectangle, cercle, polygone homothétique).",
+                "Je convertis les unités de volume en multipliant/divisant par 1000 à chaque marche ($m^3 \\leftrightarrow dm^3 \\leftrightarrow cm^3 \\leftrightarrow mm^3$)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète : Une pyramide à base hexagonale a ___ faces, ___ arêtes et ___ sommets.",
+              "answer": "7 faces, 12 arêtes, 7 sommets",
+              "hint": "Base = 1 face + 6 faces latérales triangulaires. Arêtes : 6 de la base + 6 montantes. Sommets : 6 de la base + 1 apex.",
+              "explanation": "Une pyramide à base polygonale à $n$ côtés a $n+1$ faces (1 base + $n$ triangles), $2n$ arêtes ($n$ base + $n$ latérales) et $n+1$ sommets ($n$ base + 1 apex). Ici $n=6$."
+            },
+            {
+              "question": "Vrai ou faux ? « Un cône droit est un cône dont l'apex est projeté orthogonale au centre de la base. » Justifie.",
+              "answer": "Vrai. C'est la définition d'un cône de révolution (cône droit) : la hauteur passe par le centre du disque de base.",
+              "hint": "Le mot « droit » en géométrie solide signifie que la hauteur est perpendiculaire à la base et passe par son centre (pour les solides de révolution).",
+              "explanation": "Un cône droit (ou cône de révolution) a son sommet aligné verticalement avec le centre de sa base circulaire. La droite (sommet, centre) est la hauteur et elle est perpendiculaire au plan de la base."
+            },
+            {
+              "question": "Un plan coupe un cylindre de rayon $5\\,cm$ parallèlement à ses bases à $3\\,cm$ de l'une d'elles. Quelle est la forme et les dimensions de la section ?",
+              "answer": "C'est un cercle de rayon $5\\,cm$ (même rayon que les bases).",
+              "hint": "Toute section d'un cylindre par un plan parallèle aux bases est un cercle isométrique aux bases.",
+              "explanation": "Le cylindre est une surface générée par des droites parallèles à l'axe passant par un cercle directeur. Un plan parallèle aux bases coupe toutes ces génératrices à la même distance du centre, formant un cercle de rayon identique."
+            },
+            {
+              "question": "Convertis $2,5\\,dm^3$ en $cm^3$.",
+              "answer": "$2500\\,cm^3$",
+              "hint": "Pour passer de $dm^3$ à $cm^3$, on multiplie par $1000$ (trois zéros).",
+              "explanation": "$1\\,dm^3 = 1000\\,cm^3$, donc $2,5\\,dm^3 = 2,5 \\times 1000 = 2500\\,cm^3$. Attention : on ne multiplie pas par $100$ ni par $10$, mais bien par $1000$ car le volume a trois dimensions."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

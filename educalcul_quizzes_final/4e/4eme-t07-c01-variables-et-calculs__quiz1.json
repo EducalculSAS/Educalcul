@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Affectations",
+  "title": "Quiz : Les affectations en algorithmique",
+  "questions": [
+    {
+      "text": "Après l'exécution de l'instruction d'affectation $a \\leftarrow 12$, quelle est la valeur stockée dans la variable $a$ ?",
+      "options": [
+        "$0$",
+        "$12$",
+        "$\\text{\"12\"}$",
+        "Aucune (variable non définie)"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'instruction d'affectation $a \\leftarrow 12$ signifie que l'on place la valeur numérique $12$ dans la variable $a$. La variable contient désormais le nombre $12$, pas la chaîne de caractères \"12\" ni une valeur par défaut comme $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute les deux instructions suivantes dans l'ordre :\\n$x \\leftarrow 5$\\n$x \\leftarrow x + 3$\\nQuelle est la valeur finale de $x$ ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$3$",
+        "$15$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La première instruction affecte $5$ à $x$. La deuxième instruction calcule la valeur de l'expression $x + 3$ en utilisant la valeur actuelle de $x$ (qui est $5$), soit $5 + 3 = 8$, puis affecte ce résultat $8$ à $x$, écrasant l'ancienne valeur. $x$ vaut donc $8$ à la fin.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit les instructions :\\n$a \\leftarrow 10$\\n$b \\leftarrow 4$\\n$a \\leftarrow b$\\n$b \\leftarrow a$\\nQuelles sont les valeurs de $a$ et $b$ à la fin ?",
+      "options": [
+        "$a=10, b=4$",
+        "$a=4, b=10$",
+        "$a=4, b=4$",
+        "$a=10, b=10$"
+      ],
+      "correctAnswer": "$a=4, b=4$",
+      "explanation": "Au début $a=10, b=4$. L'instruction $a \\leftarrow b$ copie la valeur de $b$ ($4$) dans $a$ : $a$ devient $4$. L'instruction $b \\leftarrow a$ copie alors la nouvelle valeur de $a$ ($4$) dans $b$ : $b$ devient $4$. Les deux variables valent $4$. Pour échanger les valeurs, il faut une variable temporaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour échanger correctement les valeurs de deux variables $a$ et $b$ (par exemple $a=7$ et $b=2$), quelle série d'instructions faut-il utiliser ?",
+      "options": [
+        "$a \\leftarrow b$ puis $b \\leftarrow a$",
+        "$temp \\leftarrow a$ puis $a \\leftarrow b$ puis $b \\leftarrow temp$",
+        "$a \\leftarrow b$ puis $b \\leftarrow a$ puis $a \\leftarrow b$",
+        "$a \\leftarrow a + b$ puis $b \\leftarrow a - b$ puis $a \\leftarrow a - b$"
+      ],
+      "correctAnswer": "$temp \\leftarrow a$ puis $a \\leftarrow b$ puis $b \\leftarrow temp$",
+      "explanation": "C'est l'algorithme standard d'échange utilisant une variable temporaire (souvent appelée $temp$). On sauvegarde $a$ dans $temp$, on copie $b$ dans $a$, puis on restaure l'ancienne valeur de $a$ (stockée dans $temp$) dans $b$. La première option écrase $a$ avant de l'avoir sauvegardé. La dernière option (sans variable temporaire) fonctionne pour des nombres mais n'est pas la méthode standard enseignée en 4e pour l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\n$p \\leftarrow 6$\\n$q \\leftarrow 2 \\times p - 1$\\n$p \\leftarrow 10$\\nQuelle est la valeur de $q$ à la fin ?",
+      "options": [
+        "$11$",
+        "$19$",
+        "$10$",
+        "$6$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "L'instruction $q \\leftarrow 2 \\times p - 1$ est exécutée lorsque $p$ vaut $6$. L'expression $2 \\times 6 - 1 = 11$ est calculée une seule fois et le résultat $11$ est stocké dans $q$. Le changement ultérieur de $p$ (qui devient $10$) ne modifie pas la valeur déjà calculée et stockée dans $q$. $q$ reste donc égal à $11$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

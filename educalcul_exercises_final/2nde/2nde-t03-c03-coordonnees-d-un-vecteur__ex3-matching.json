@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 512,
+  "_course_code": "2nde-t03-c03-coordonnees-d-un-vecteur",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Utiliser",
+  "title": "Utiliser les coordonnées des vecteurs",
+  "blocks": [
+    {
+      "title": "Coordonnées d'un vecteur à partir de deux points",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\vec{AB}$ avec $A(1,2)$ et $B(4,6)$",
+          "right": "$(3,4)$"
+        },
+        {
+          "left": "$\\vec{CD}$ avec $C(-2,5)$ et $D(1,1)$",
+          "right": "$(3,-4)$"
+        },
+        {
+          "left": "$\\vec{EF}$ avec $E(0,0)$ et $F(-3,-2)$",
+          "right": "$(-3,-2)$"
+        },
+        {
+          "left": "$\\vec{GH}$ avec $G(2,-1)$ et $H(2,3)$",
+          "right": "$(0,4)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour obtenir les coordonnées du vecteur $\\vec{AB}$ à partir des points $A(x_A,y_A)$ et $B(x_B,y_B)$, on calcule $(x_B-x_A, y_B-y_A)$. Pour le premier couple : $A(1,2)$, $B(4,6)$ donne $(4-1, 6-2) = (3,4)$. De même pour les autres : $C(-2,5)$, $D(1,1)$ donne $(1-(-2), 1-5) = (3,-4)$ ; $E(0,0)$, $F(-3,-2)$ donne $(-3-0, -2-0) = (-3,-2)$ ; $G(2,-1)$, $H(2,3)$ donne $(2-2, 3-(-1)) = (0,4)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Opérations sur les vecteurs",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\vec{u}+\\vec{v}$ avec $\\vec{u}=(2,-1)$ et $\\vec{v}=(-3,4)$",
+          "right": "$(-1,3)$"
+        },
+        {
+          "left": "$\\vec{u}-\\vec{v}$ avec $\\vec{u}=(2,-1)$ et $\\vec{v}=(-3,4)$",
+          "right": "$(5,-5)$"
+        },
+        {
+          "left": "$2\\vec{u}$ avec $\\vec{u}=(2,-1)$",
+          "right": "$(4,-2)$"
+        },
+        {
+          "left": "$-\\vec{v}$ avec $\\vec{v}=(-3,4)$",
+          "right": "$(3,-4)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Avec $\\vec{u}=(2,-1)$ et $\\vec{v}=(-3,4)$ : $\\vec{u}+\\vec{v} = (2+(-3), -1+4) = (-1,3)$ ; $\\vec{u}-\\vec{v} = (2-(-3), -1-4) = (5,-5)$ ; $2\\vec{u} = (2\\times2, 2\\times(-1)) = (4,-2)$ ; $-\\vec{v} = (-(-3), -4) = (3,-4)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer un point à partir d'un vecteur",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Coordonnées de $B$ sachant $A(1,2)$ et $\\vec{AB}=(3,4)$",
+          "right": "$(4,6)$"
+        },
+        {
+          "left": "Coordonnées de $D$ sachant $C(-2,5)$ et $\\vec{CD}=(-1,-3)$",
+          "right": "$(-3,2)$"
+        },
+        {
+          "left": "Coordonnées de $F$ sachant $E(0,0)$ et $\\vec{EF}=(5,-2)$",
+          "right": "$(5,-2)$"
+        },
+        {
+          "left": "Coordonnées de $H$ sachant $G(2,-1)$ et $\\vec{GH}=(0,5)$",
+          "right": "$(2,4)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver le point d'arrivée $B$ connaissant le point de départ $A$ et le vecteur $\\vec{AB}$, on utilise $B = A + \\vec{AB}$. Exemple : $A(1,2)$, $\\vec{AB}=(3,4)$ donne $B(1+3, 2+4) = (4,6)$. Même méthode pour les autres : $C(-2,5)+(-1,-3)=(-3,2)$ ; $E(0,0)+(5,-2)=(5,-2)$ ; $G(2,-1)+(0,5)=(2,4)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

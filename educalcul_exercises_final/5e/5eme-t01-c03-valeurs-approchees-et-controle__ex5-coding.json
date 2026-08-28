@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Arrondir",
+  "title": "Algorithmes d'arrondi",
+  "blocks": [
+    {
+      "title": "Arrondi à l'entier le plus proche",
+      "content": "Écrire un algorithme (en pseudo-code ou style Python) qui demande à l'utilisateur de saisir un nombre décimal $x$, puis qui affiche l'arrondi de $x$ à l'entier le plus proche.",
+      "correctAnswer": "Algorithme ArrondiEntier\\nVariables : x en réel\\nDébut\\n  Afficher \"Entrez un nombre : \"\\n  Lire x\\n  Si x - Ent(x) >= 0,5 Alors\\n    Afficher Ent(x) + 1\\n  Sinon\\n    Afficher Ent(x)\\n  Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la fonction partie entière Ent(x). Si la partie décimale (x - Ent(x)) est supérieure ou égale à 0,5, on arrondit à l'entier supérieur (Ent(x) + 1), sinon on conserve l'entier inférieur Ent(x). En Python, on écrirait simplement : x = float(input()); print(round(x)) mais la fonction round de Python utilise l'arrondi au pair, la méthode ci-dessus est l'arrondi standard enseigné au collège.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi à un nombre de décimales donné",
+      "content": "Écrire un algorithme qui demande un nombre décimal $x$ et un entier $n$ (valant 0, 1 ou 2) représentant le nombre de décimales souhaitées, puis qui affiche l'arrondi de $x$ à $10^{-n}$ près.",
+      "correctAnswer": "Algorithme ArrondiDecimales\\nVariables : x en réel, n, facteur en entier\\nDébut\\n  Afficher \"Nombre : \"\\n  Lire x\\n  Afficher \"Nombre de décimales (0, 1 ou 2) : \"\\n  Lire n\\n  facteur <- 10 ^ n\\n  arrondi <- Ent(x * facteur + 0,5) / facteur\\n  Afficher arrondi\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour arrondir à $10^{-n}$ près, on multiplie le nombre par $10^n$ (facteur) pour décaler la virgule, on applique la règle de l'arrondi à l'entier (ajout de 0,5 puis partie entière), puis on divise par le même facteur pour replacer la virgule. Par exemple pour $n=1$ (dixièmes), facteur = 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi d'une série de nombres au dixième",
+      "content": "Écrire un algorithme qui demande de saisir 5 nombres décimaux les uns après les autres, et qui affiche pour chacun son arrondi au dixième près (une décimale).",
+      "correctAnswer": "Algorithme ArrondiSerie\\nVariables : x en réel, i en entier\\nDébut\\n  Pour i de 1 à 5 faire\\n    Afficher \"Nombre \", i, \" : \"\\n    Lire x\\n    arrondi <- Ent(x * 10 + 0,5) / 10\\n    Afficher arrondi\\n  Fin Pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle \"Pour\" pour répéter 5 fois la saisie et le traitement. Pour arrondir au dixième près, le facteur est 10. On calcule Ent(x * 10 + 0,5) / 10 pour chaque nombre saisi. Cela permet de traiter une liste de valeurs sans réécrire le code.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

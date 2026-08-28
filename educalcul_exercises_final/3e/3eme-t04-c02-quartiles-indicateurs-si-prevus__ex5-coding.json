@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Algorithmes sur les quartiles et détection des valeurs aberrantes",
+  "blocks": [
+    {
+      "title": "Calcul des quartiles Q1 et Q3",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui, étant donné une liste L de n nombres déjà triés dans l'ordre croissant, renvoie le premier quartile $Q_1$ et le troisième quartile $Q_3$. On rappelle que pour un effectif n, la position du premier quartile est $p_1 = \\frac{n+1}{4}$ et celle du troisième quartile est $p_3 = 3\\frac{n+1}{4}$. Si la position n'est pas entière, on fait une interpolation linéaire entre les deux valeurs encadrantes.",
+      "correctAnswer": "Algorithme :\\n1. Lire n et la liste triée L (indices 1 à n).\\n2. Calculer p1 = (n+1)/4 et p3 = 3*(n+1)/4.\\n3. Fonction valeur(p):\\n   Si p est entier alors retourner L[p]\\n   Sinon k = partie entière de p, d = p - k\\n        retourner L[k] + d*(L[k+1] - L[k])\\n4. Q1 = valeur(p1), Q3 = valeur(p3).\\n5. Afficher Q1, Q3.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine les positions p1 et p3 grâce aux formules données. Comme la liste est triée, la valeur du quartile correspond à l'élément à cette position ; si la position est décimale, on interpole linéairement entre les deux éléments voisins. La fonction valeur(g) gère les deux cas. Enfin on affiche les deux quartiles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'écart interquartile (EIQ)",
+      "content": "Écrire un algorithme qui, à partir des quartiles $Q_1$ et $Q_3$ obtenus précédemment, calcule l'écart interquartile $EIQ = Q_3 - Q_1$ et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Lire Q1 et Q3.\\n2. EIQ = Q3 - Q1.\\n3. Afficher EIQ.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'écart interquartile est simplement la différence entre le troisième et le premier quartile. L'algorithme effectue cette soustraction et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détection des valeurs aberrantes (outliers)",
+      "content": "Écrire un algorithme qui, en utilisant $Q_1$, $Q_3$ et l'$EIQ$, identifie les valeurs aberrantes d'une série statistique selon la règle des $1,5 \\times EIQ$. L'algorithme doit afficher la liste des valeurs considérées comme aberrantes (celles strictement inférieures à $Q_1 - 1,5 \\times EIQ$ ou strictement supérieures à $Q_3 + 1,5 \\times EIQ$).",
+      "correctAnswer": "Algorithme :\\n1. Lire la liste originale L (non nécessairement triée), Q1, Q3, EIQ.\\n2. lower = Q1 - 1,5 * EIQ\\n3. upper = Q3 + 1,5 * EIQ\\n4. outliers = liste vide\\n5. Pour chaque x dans L :\\n     Si x < lower ou x > upper alors ajouter x à outliers\\n6. Afficher outliers.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule les bornes inférieure et supérieure à partir des quartiles et de l'EIQ multiplié par 1,5. On parcourt ensuite toutes les valeurs de la série ; celles qui se trouvent en dehors de l'intervalle [lower, upper] sont stockées dans une liste outliers qui est affichée à la fin.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

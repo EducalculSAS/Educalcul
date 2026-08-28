@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 420,
+  "_course_code": "4eme-t01-c01-multiplier-et-diviser-des-relatifs",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Règle des signes",
+  "title": "Algorithmes et règle des signes",
+  "blocks": [
+    {
+      "title": "Produit de deux relatifs",
+      "content": "Écrire un algorithme (en langage naturel ou en Python) qui détermine le signe du produit de deux nombres relatifs $a$ et $b$.",
+      "correctAnswer": "Algorithme :\\n1. Si $a = 0$ ou $b = 0$ alors retourner 'nul'.\\n2. Sinon si ($a > 0$ et $b > 0$) ou ($a < 0$ et $b < 0$) alors retourner 'positif'.\\n3. Sinon retourner 'négatif'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle des signes pour le produit stipule que le produit de deux nombres de même signe est positif, de signes contraires est négatif, et si l'un des deux est nul le produit est nul. L'algorithme teste d'abord la présence d'un zéro, puis compare les signes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quotient de deux relatifs",
+      "content": "Écrire un algorithme qui détermine le signe du quotient de deux nombres relatifs non nuls $a$ et $b$.",
+      "correctAnswer": "Algorithme :\\n1. Si $a = 0$ alors retourner 'nul'.\\n2. Sinon si ($a > 0$ et $b > 0$) ou ($a < 0$ et $b < 0$) alors retourner 'positif'.\\n3. Sinon retourner 'négatif'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle des signes pour la division est identique à celle de la multiplication : le quotient de deux nombres de même signe est positif, de signes contraires est négatif. On suppose $b$ différent de $0$ ; si $a = 0$ le quotient est nul.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit d'une liste de relatifs",
+      "content": "Écrire un algorithme qui, étant donnée une liste de nombres relatifs, renvoie le signe du produit de tous les éléments de la liste.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser compteur_negatifs = 0.\\n2. Pour chaque nombre $x$ dans la liste :\\n   - Si $x = 0$ alors retourner 'nul'.\\n   - Si $x < 0$ alors incrémenter compteur_negatifs.\\n3. Après la boucle, si compteur_negatifs est pair alors retourner 'positif' sinon retourner 'négatif'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le signe du produit de plusieurs nombres dépend du nombre de facteurs négatifs : s'il y a au moins un zéro le produit est nul ; sinon le produit est positif si le nombre de facteurs négatifs est pair, négatif s'il est impair. L'algorithme parcourt la liste une seule fois.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

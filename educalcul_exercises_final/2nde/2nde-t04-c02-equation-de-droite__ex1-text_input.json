@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître l'équation d'une droite",
+  "blocks": [
+    {
+      "title": "Équation réduite et coefficients",
+      "content": "Quelle est l'équation réduite de la droite de coefficient directeur $3$ et passant par le point d'abscisse $0$ et d'ordonnée $-2$ ?",
+      "correctAnswer": "y = 3x - 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation réduite d'une droite est de la forme $y = ax + b$, où $a$ est le coefficient directeur et $b$ l'ordonnée à l'origine (ordonnée du point d'abscisse 0). Ici $a = 3$ et le point $(0; -2)$ donne $b = -2$. L'équation est donc $y = 3x - 2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation à partir de deux points",
+      "content": "On donne les points $A(1; 2)$ et $B(3; 8)$. Déterminer l'équation réduite de la droite $(AB)$.",
+      "correctAnswer": "y = 3x - 1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ vaut $\\frac{y_B - y_A}{x_B - x_A} = \\frac{8 - 2}{3 - 1} = \\frac{6}{2} = 3$. La droite a pour équation $y = 3x + b$. On utilise le point $A(1; 2)$ : $2 = 3 \\times 1 + b \\Rightarrow b = -1$. L'équation réduite est $y = 3x - 1$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x - 1",
+        "xmin": -1,
+        "xmax": 5,
+        "caption": "Droite (AB) passant par A(1;2) et B(3;8)"
+      }
+    },
+    {
+      "title": "Appartenance d'un point à une droite",
+      "content": "La droite $(d)$ a pour équation $y = -2x + 5$. Le point $M(2; 1)$ appartient-il à la droite $(d)$ ? Répondre par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On remplace $x$ par $2$ dans l'équation : $y = -2 \\times 2 + 5 = -4 + 5 = 1$. L'ordonnée calculée est $1$, ce qui correspond à l'ordonnée du point $M$. Le point $M$ vérifie l'équation, il appartient donc à la droite $(d)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.373736+00:00",
+  "id": 601,
+  "code": "1ere-generale-maths-t05-c07",
+  "title": "Cercle trigonométrique",
+  "description": "Cours structuré Educalcul : Cercle trigonométrique.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Cercle trigonométrique",
+    "objectif_global": "Cercle trigonométrique",
+    "mini_lecons_imposees": [
+      "Radians.",
+      "Cos / sin.",
+      "Angles remarquables."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Radians.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi changer d'unité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Depuis l'école primaire, tu mesures les angles en degrés : un angle droit vaut $90^{\\circ}$, un angle plat $180^{\\circ}$, un tour complet $360^{\\circ}$. C'est pratique pour la vie courante, mais en mathématiques supérieures, les degrés deviennent gênants. Pourquoi ? Parce que les formules de calcul (dérivées, intégrales, séries) deviennent beaucoup plus simples si l'on utilise une unité naturelle liée au cercle lui-même. Imagine que tu enrouilles un fil le long d'un cercle de rayon $1$ : la longueur de fil nécessaire pour faire un tour complet est $2\\pi$. Cette longueur, $2\\pi$, devient alors la mesure naturelle de l'angle tour. C'est l'idée du radian : on mesure un angle par la longueur de l'arc qu'il intercepte sur un cercle de rayon $1$. Ainsi, un angle de $180^{\\circ}$ correspond à un demi-tour, donc à une longueur d'arc de $\\pi$ sur le cercle unité. On écrit : $180^{\\circ} = \\pi \\, \\text{rad}$. Remarque que l'on n'écrit pas toujours l'unité \"rad\" : en mathématiques, un nombre sans unité est implicitement en radians."
+            },
+            {
+              "type": "number_line",
+              "caption": "Correspondance entre degrés et radians sur une demi-droite graduée",
+              "min": 0,
+              "max": 3.5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1.57,
+                  "label": "\\frac{\\pi}{2}"
+                },
+                {
+                  "value": 3.14,
+                  "label": "\\pi"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition précise du radian"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons calmement. Soit un cercle de centre $O$ et de rayon $r$. Prends deux rayons $[OA)$ et $[OB)$ qui forment un angle $\\alpha$. Cet angle coupe sur le cercle un arc $\\widehat{AB}$. Si la longueur de cet arc est exactement égale au rayon $r$, alors par définition l'angle $\\alpha$ mesure $1$ radian. En formule : $\\alpha = 1 \\, \\text{rad} \\iff \\text{longueur}(\\widehat{AB}) = r$. Comme la circonférence totale vaut $2\\pi r$, un tour complet ($360^{\\circ}$) correspond à une longueur d'arc de $2\\pi r$, donc à un angle de $2\\pi$ radians. C'est pour cela que l'on a l'égalité fondamentale : $360^{\\circ} = 2\\pi \\, \\text{rad}$, d'où $180^{\\circ} = \\pi \\, \\text{rad}$. Cette relation est la clé de voûte pour passer de l'un à l'autre."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,\\text{rad} = \\frac{180}{\\pi}^{\\circ} \\approx 57,3^{\\circ}"
+            },
+            {
+              "type": "definition",
+              "term": "Radian",
+              "definition": "Unité de mesure d'angle telle que l'angle au centre interceptant un arc de longueur égale au rayon vaut 1 radian. Sur le cercle unité (rayon 1), la mesure en radians d'un angle est numériquement égale à la longueur de l'arc intercepté.",
+              "example": "Un angle de $\\frac{\\pi}{3}$ rad intercepte un arc de longueur $\\frac{\\pi}{3}$ sur le cercle de rayon 1."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode de conversion degrés ↔ radians"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour convertir, on utilise le facteur de proportionnalité $\\frac{\\pi}{180}$ ou son inverse. Au lieu de mémoriser des formules, raisonne avec l'égalité $180^{\\circ} = \\pi \\, \\text{rad}$. Si tu as un angle en degrés $x^{\\circ}$, tu cherches sa mesure $y$ en radians telle que $\\frac{x}{180} = \\frac{y}{\\pi}$. Donc $y = \\frac{\\pi x}{180}$. Inversement, si tu as $y$ radians, $x = \\frac{180 y}{\\pi}$. Voici une méthode pas à pas pour ne jamais te tromper."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'unité de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'angle est-il donné en degrés (symbole $^{\\circ}$) ou en radians (souvent sans symbole, parfois avec \"rad\") ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le bon facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De degrés vers radians : multiplier par $\\frac{\\pi}{180}$. De radians vers degrés : multiplier par $\\frac{180}{\\pi}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réduis la fraction obtenue. Par exemple, $90^{\\circ} \\times \\frac{\\pi}{180} = \\frac{\\pi}{2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Longueur d'arc et aire de secteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu manies les radians, tu peux calculer facilement une longueur d'arc ou l'aire d'un secteur circulaire. Sur un cercle de rayon $r$, un angle de $\\theta$ radians (avec $\\theta$ en radians !) intercepte un arc de longueur $L = r \\theta$. C'est une formule qui ne marche **que** si $\\theta$ est en radians. Si tu as des degrés, convertis d'abord ! De même, l'aire du secteur correspondant est $A = \\frac{1}{2} r^2 \\theta$. Ces formules sont très utilisées en physique (mouvement circulaire) et en géométrie. Retiens bien : le radian est une mesure sans dimension (c'est un rapport de deux longueurs), c'est pour cela que $r\\theta$ donne une longueur et $\\frac{1}{2}r^2\\theta$ une aire."
+            },
+            {
+              "type": "display_math",
+              "latex": "L = r\\theta \\quad (\\theta \\text{ en radians}) \\qquad A = \\frac{1}{2}r^2\\theta"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $60^{\\circ}$ en radians. Donne la valeur exacte sous forme de fraction de $\\pi$.",
+              "answer": "\\frac{\\pi}{3}",
+              "hint": "Utilise la relation $180^{\\circ} = \\pi \\, \\text{rad}$ et simplifie la fraction.",
+              "explanation": "On multiplie $60$ par $\\frac{\\pi}{180}$ : $60 \\times \\frac{\\pi}{180} = \\frac{60\\pi}{180} = \\frac{\\pi}{3}$."
+            },
+            {
+              "question": "Un angle mesure $\\frac{5\\pi}{6}$ radians. Donne sa mesure en degrés.",
+              "answer": "150^{\\circ}",
+              "hint": "Multiplie par $\\frac{180}{\\pi}$ et simplifie.",
+              "explanation": "$\\frac{5\\pi}{6} \\times \\frac{180}{\\pi} = \\frac{5 \\times 180}{6} = 5 \\times 30 = 150^{\\circ}$."
+            },
+            {
+              "question": "Sur un cercle de rayon $4\\,cm$, quel est l'angle en radians qui intercepte un arc de longueur $6\\,cm$ ?",
+              "answer": "1.5",
+              "hint": "Utilise la formule $L = r\\theta$ et isole $\\theta$.",
+              "explanation": "On a $L = r\\theta$, donc $\\theta = \\frac{L}{r} = \\frac{6}{4} = 1.5$ radians."
+            },
+            {
+              "question": "Calcule l'aire d'un secteur d'angle $\\frac{\\pi}{4}$ rad dans un cercle de rayon $10\\,cm$. Donne la valeur exacte.",
+              "answer": "12.5\\pi \\, cm^2",
+              "hint": "Applique la formule $A = \\frac{1}{2}r^2\\theta$.",
+              "explanation": "$A = \\frac{1}{2} \\times 10^2 \\times \\frac{\\pi}{4} = \\frac{1}{2} \\times 100 \\times \\frac{\\pi}{4} = 50 \\times \\frac{\\pi}{4} = 12.5\\pi \\, cm^2$."
+            }
+          ]
+        },
+        {
+          "title": "Cos / sin.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cercle unité et les coordonnées d'un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le cœur de la trigonométrie moderne ! Oublie un instant les triangles rectangles. Imagine un cercle de centre $O(0,0)$ et de rayon $1$ dans un repère orthonormé : c'est le **cercle unité** (ou cercle trigonométrique). Prends un angle $\\theta$ (orienté positivement dans le sens inverse des aiguilles d'une montre) dont le sommet est $O$ et dont le premier côté est la demi-droite $[Ox)$ (l'axe des abscisses positives). Le second côté coupe le cercle en un point $M$. Les coordonnées de ce point $M$ sont, par définition, $(\\cos\\theta,\\; \\sin\\theta)$. C'est-à-dire que l'abscisse de $M$ est le cosinus de l'angle, et son ordonnée est le sinus. Cette définition est puissante car elle fonctionne pour **tout** angle réel, positif ou négatif, grand ou petit, sans aucune restriction. Le cosinus et le sinus deviennent ainsi des fonctions définies sur $\\mathbb{R}$, à valeurs dans $[-1,1]$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Angle $\\theta$ et point $M(\\cos\\theta,\\sin\\theta)$ sur le cercle unité",
+              "min": -3.14,
+              "max": 3.14,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1.57,
+                  "label": "\\frac{\\pi}{2}"
+                },
+                {
+                  "value": -1.57,
+                  "label": "-\\frac{\\pi}{2}"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "definition",
+              "term": "Cercle trigonométrique (cercle unité)",
+              "definition": "Cercle de centre $O(0,0)$ et de rayon $1$ dans un repère orthonormé. Pour tout angle $\\theta$, le point $M$ intersection du second côté de l'angle avec le cercle a pour coordonnées $(\\cos\\theta,\\sin\\theta)$.",
+              "example": "Pour $\\theta = \\frac{\\pi}{2}$, le point $M$ est $(0,1)$, donc $\\cos\\frac{\\pi}{2}=0$ et $\\sin\\frac{\\pi}{2}=1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valeurs limites et intervalle de variation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque le point $M$ se trouve sur le cercle de rayon $1$, ses coordonnées satisfont $x^2 + y^2 = 1$. Donc pour tout angle $\\theta$, on a $\\cos^2\\theta + \\sin^2\\theta = 1$. C'est l'identité fondamentale, souvent appelée **relation de Pythagore** dans le cercle unité. Elle entraîne immédiatement que $-1 \\le \\cos\\theta \\le 1$ et $-1 \\le \\sin\\theta \\le 1$. Les valeurs extrêmes $\\pm 1$ sont atteintes quand le point $M$ est sur les axes : $\\cos\\theta = 1$ pour $\\theta = 0$ (mod $2\\pi$), $\\cos\\theta = -1$ pour $\\theta = \\pi$ (mod $2\\pi$), $\\sin\\theta = 1$ pour $\\theta = \\frac{\\pi}{2}$ (mod $2\\pi$), $\\sin\\theta = -1$ pour $\\theta = \\frac{3\\pi}{2}$ (mod $2\\pi$). Retiens bien ces valeurs, elles reviennent sans cesse."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\cos^2\\theta + \\sin^2\\theta = 1 \\quad \\text{pour tout } \\theta \\in \\mathbb{R}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Symétries et périodicité : les formules usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cercle unité révèle des symétries géométriques qui se traduisent en formules algébriques. Si tu changes $\\theta$ en $-\\theta$, le point $M$ se refléchit par rapport à l'axe des abscisses : son abscisse (cosinus) ne change pas, son ordonnée (sinus) change de signe. D'où $\\cos(-\\theta) = \\cos\\theta$ (fonction paire) et $\\sin(-\\theta) = -\\sin\\theta$ (fonction impaire). Si tu adds $\\pi$ à l'angle, le point $M$ devient son opposé : les deux coordonnées changent de signe. Donc $\\cos(\\theta+\\pi) = -\\cos\\theta$ et $\\sin(\\theta+\\pi) = -\\sin\\theta$. Enfin, un tour complet ($2\\pi$) ramène au même point : $\\cos(\\theta+2\\pi) = \\cos\\theta$ et $\\sin(\\theta+2\\pi) = \\sin\\theta$. C'est la **périodicité** de période $2\\pi$. Ces formules permettent de ramener n'importe quel angle à un angle entre $0$ et $2\\pi$ (ou entre $-\\pi$ et $\\pi$) pour en connaître le cosinus et le sinus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le quadrant ou la symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'angle donné est-il négatif ? Supérieur à $2\\pi$ ? Proche de $\\pi$ ou $\\frac{\\pi}{2}$ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $\\cos(-\\theta)=\\cos\\theta$, $\\sin(-\\theta)=-\\sin\\theta$, ou la périodicité $2\\pi$, ou les formules d'addition de $\\pi$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure avec un angle connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ramène l'angle à une valeur entre $0$ et $\\frac{\\pi}{2}$ si possible, dont tu connais le cosinus et le sinus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec le triangle rectangle (rappel)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $\\theta$ est un angle aigu ($0 < \\theta < \\frac{\\pi}{2}$), on peut tracer la perpendiculaire du point $M$ à l'axe des abscisses. On obtient un triangle rectangle d'hypoténuse $1$ (le rayon), de côté adjacent à l'angle $\\theta$ de longueur $\\cos\\theta$, et de côté opposé de longueur $\\sin\\theta$. Cela retrouve les définitions classiques : $\\cos\\theta = \\frac{\\text{adjacent}}{\\text{hypoténuse}}$, $\\sin\\theta = \\frac{\\text{opposé}}{\\text{hypoténuse}}$. Mais attention : la définition par le cercle unité est **plus générale** car elle marche pour tout angle réel, pas seulement les aigus. C'est pour cela qu'en Première spécialité, on privilégie toujours le cercle unité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les coordonnées du point $M$ sur le cercle unité associé à l'angle $\\theta = \\pi$.",
+              "answer": "(-1, 0)",
+              "hint": "L'angle $\\pi$ correspond à un demi-tour : le point est sur l'axe des abscisses négatives.",
+              "explanation": "Pour $\\theta = \\pi$, le second côté de l'angle est la demi-droite $[Ox')$ (axe des abscisses négatives). Il coupe le cercle unité en $(-1,0)$. Donc $\\cos\\pi = -1$, $\\sin\\pi = 0$."
+            },
+            {
+              "question": "Simplifie $\\cos\\left(-\\frac{3\\pi}{4}\\right)$ et $\\sin\\left(-\\frac{3\\pi}{4}\\right)$ en utilisant les parités.",
+              "answer": "\\cos\\left(-\\frac{3\\pi}{4}\\right) = \\cos\\frac{3\\pi}{4} = -\\frac{\\sqrt{2}}{2}, \\quad \\sin\\left(-\\frac{3\\pi}{4}\\right) = -\\sin\\frac{3\\pi}{4} = -\\frac{\\sqrt{2}}{2}",
+              "hint": "Rappelle-toi : cosinus est pair, sinus est impair. Puis utilise les valeurs remarquables de $\\frac{3\\pi}{4}$.",
+              "explanation": "Par parité : $\\cos(-x)=\\cos x$, $\\sin(-x)=-\\sin x$. Or $\\frac{3\\pi}{4} = \\pi - \\frac{\\pi}{4}$, donc $\\cos\\frac{3\\pi}{4} = -\\cos\\frac{\\pi}{4} = -\\frac{\\sqrt{2}}{2}$ et $\\sin\\frac{3\\pi}{4} = \\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$. Donc $\\cos(-\\frac{3\\pi}{4}) = -\\frac{\\sqrt{2}}{2}$, $\\sin(-\\frac{3\\pi}{4}) = -\\frac{\\sqrt{2}}{2}$."
+            },
+            {
+              "question": "Calcule $\\cos\\left(\\frac{13\\pi}{6}\\right)$ et $\\sin\\left(\\frac{13\\pi}{6}\\right)$.",
+              "answer": "\\cos\\left(\\frac{13\\pi}{6}\\right) = \\frac{\\sqrt{3}}{2}, \\quad \\sin\\left(\\frac{13\\pi}{6}\\right) = \\frac{1}{2}",
+              "hint": "Soustrait $2\\pi$ (périodicité) pour retrouver un angle entre $0$ et $2\\pi$.",
+              "explanation": "$\\frac{13\\pi}{6} = 2\\pi + \\frac{\\pi}{6}$. Par périodicité de $2\\pi$, $\\cos\\left(\\frac{13\\pi}{6}\\right) = \\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$ et $\\sin\\left(\\frac{13\\pi}{6}\\right) = \\sin\\frac{\\pi}{6} = \\frac{1}{2}$."
+            },
+            {
+              "question": "Dans un triangle rectangle d'hypoténuse $5$, l'angle aigu adjacent au côté de longueur $3$ a pour cosinus $\\frac{3}{5}$. Vérifie que le sinus de cet angle vaut $\\frac{4}{5}$ en utilisant la relation $\\cos^2+\\sin^2=1$.",
+              "answer": "\\sin\\theta = \\frac{4}{5}",
+              "hint": "Utilise $\\sin^2\\theta = 1 - \\cos^2\\theta$ et choisis le signe positif car l'angle est aigu.",
+              "explanation": "$\\cos\\theta = \\frac{3}{5}$, donc $\\cos^2\\theta = \\frac{9}{25}$. Alors $\\sin^2\\theta = 1 - \\frac{9}{25} = \\frac{16}{25}$. Comme $\\theta$ est aigu, $\\sin\\theta > 0$, donc $\\sin\\theta = \\sqrt{\\frac{16}{25}} = \\frac{4}{5}$."
+            }
+          ]
+        },
+        {
+          "title": "Angles remarquables.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles multiples de $\\frac{\\pi}{2}$ : repères sur les axes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les angles les plus simples : ceux dont le second côté tombe exactement sur un axe du repère. Ce sont les multiples de $\\frac{\\pi}{2}$ : $0$, $\\frac{\\pi}{2}$, $\\pi$, $\\frac{3\\pi}{2}$, $2\\pi$, et leurs opposés. Sur le cercle unité, le point $M$ est alors $(1,0)$, $(0,1)$, $(-1,0)$, $(0,-1)$ respectivement. Les valeurs de cosinus et sinus s'en déduisent immédiatement : $\\cos 0 = 1$, $\\sin 0 = 0$ ; $\\cos\\frac{\\pi}{2} = 0$, $\\sin\\frac{\\pi}{2} = 1$ ; $\\cos\\pi = -1$, $\\sin\\pi = 0$ ; $\\cos\\frac{3\\pi}{2} = 0$, $\\sin\\frac{3\\pi}{2} = -1$. Ces quatre points sont les \"piliers\" du cercle. Si tu ajoutes ou retranches $2\\pi$, tu retrouves les mêmes valeurs grâce à la périodicité. Prends l'habitude de visualiser ces positions : c'est la base pour retrouver tous les autres angles remarquables."
+            },
+            {
+              "type": "number_line",
+              "caption": "Angles multiples de $\\frac{\\pi}{2}$ sur le cercle unité",
+              "min": 0,
+              "max": 6.28,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1.57,
+                  "label": "\\frac{\\pi}{2}"
+                },
+                {
+                  "value": 3.14,
+                  "label": "\\pi"
+                },
+                {
+                  "value": 4.71,
+                  "label": "\\frac{3\\pi}{2}"
+                },
+                {
+                  "value": 6.28,
+                  "label": "2\\pi"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les angles $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{3}$ : construction géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, les trois angles aigus \"stars\" : $30^{\\circ}$ ($\\frac{\\pi}{6}$), $45^{\\circ}$ ($\\frac{\\pi}{4}$), $60^{\\circ}$ ($\\frac{\\pi}{3}$). Comment retenir leurs cosinus et sinus sans les apprendre par cœur ? On les construit. Pour $\\frac{\\pi}{4}$ (angle de $45^{\\circ}$), trace le triangle rectangle isocèle d'hypoténuse $1$ : les deux côtés mesurent $\\frac{\\sqrt{2}}{2}$. Donc $\\cos\\frac{\\pi}{4} = \\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$. Pour $\\frac{\\pi}{6}$ et $\\frac{\\pi}{3}$, pars d'un triangle équilatéral de côté $1$. En traçant une hauteur, tu coupes l'angle de $60^{\\circ}$ en deux angles de $30^{\\circ}$ et tu obtiens un triangle rectangle d'hypoténuse $1$, de petit côté $\\frac{1}{2}$ (devant $30^{\\circ}$) et de grand côté $\\frac{\\sqrt{3}}{2}$ (devant $60^{\\circ}$). D'où $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$, $\\sin\\frac{\\pi}{6} = \\frac{1}{2}$ ; $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$, $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$. Remarque la symétrie : le cosinus de l'un est le sinus de l'autre, car $\\frac{\\pi}{6} + \\frac{\\pi}{3} = \\frac{\\pi}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2},\\; \\sin\\frac{\\pi}{6}=\\frac{1}{2} \\quad \\cos\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2},\\; \\sin\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2} \\quad \\cos\\frac{\\pi}{3}=\\frac{1}{2},\\; \\sin\\frac{\\pi}{3}=\\frac{\\sqrt{3}}{2}"
+            },
+            {
+              "type": "definition",
+              "term": "Angles remarquables",
+              "definition": "Angles dont le cosinus et le sinus s'expriment simplement avec des racines carrées et des fractions. Les principaux sont les multiples de $\\frac{\\pi}{6}$ et $\\frac{\\pi}{4}$ (et $\\frac{\\pi}{2}$).",
+              "example": "$\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{3}$, $\\frac{2\\pi}{3}$, $\\frac{3\\pi}{4}$, $\\frac{5\\pi}{6}$, etc."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Étendre aux autres quadrants par symétrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant les valeurs pour les angles aigus du premier quadrant ($0$ à $\\frac{\\pi}{2}$). Pour obtenir les valeurs des angles du deuxième quadrant ($\\frac{\\pi}{2}$ à $\\pi$), utilise la symétrie par rapport à l'axe des ordonnées : l'angle supplémentaire $\\pi - \\alpha$ a même sinus que $\\alpha$, et cosinus opposé. Par exemple, $\\frac{2\\pi}{3} = \\pi - \\frac{\\pi}{3}$, donc $\\cos\\frac{2\\pi}{3} = -\\cos\\frac{\\pi}{3} = -\\frac{1}{2}$, $\\sin\\frac{2\\pi}{3} = \\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$. Pour le troisième quadrant ($\\pi$ à $\\frac{3\\pi}{2}$), utilise $\\pi + \\alpha$ : les deux changent de signe. Pour le quatrième quadrant ($\\frac{3\\pi}{2}$ à $2\\pi$), utilise $2\\pi - \\alpha$ ou $-\\alpha$ : cosinus conservé, sinus opposé. Cette méthode te permet de reconstituer **toutes** les valeurs remarquables sans rien mémoriser de plus que les trois angles aigus de base."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'angle de référence aigu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un angle $\\theta$ donné, trouve l'angle aigu $\\alpha \\in \\{0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}\\}$ tel que $\\theta$ soit symétrique de $\\alpha$ par rapport à un axe ou à l'origine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déterminer les signes du cosinus et du sinus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde dans quel quadrant se termine l'angle $\\theta$ : Q1 (+,+), Q2 (-,+), Q3 (-,-), Q4 (+,-)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les valeurs exactes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les signes aux valeurs de $\\cos\\alpha$ et $\\sin\\alpha$ connues."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tableau récapitulatif et astuces de mémorisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un tableau qui rassemble les valeurs pour les angles principaux entre $0$ et $2\\pi$. Ne cherches pas à l'apprendre par cœur : construis-le mentalement avec les méthodes vues. Une astuce pour les angles en $\\frac{\\pi}{6}$ et $\\frac{\\pi}{3}$ : les valeurs de cosinus et sinus sont toujours $\\frac{1}{2}$ ou $\\frac{\\sqrt{3}}{2}$, il suffit de savoir laquelle est laquelle selon l'angle. Pour $\\frac{\\pi}{4}$, les deux sont $\\frac{\\sqrt{2}}{2}$. Une autre astuce : sur le cercle unité, le cosinus est l'abscisse, le sinus l'ordonnée. Visualise le point $M$ et tu sauras instantanément les signes. Entraîne-toi à remplir ce tableau de mémoire plusieurs fois, c'est le meilleur exercice pour gagner en rapidité."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{array}{c|c|c} \\theta & \\cos\\theta & \\sin\\theta \\\\ \\hline 0 & 1 & 0 \\\\ \\frac{\\pi}{6} & \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ \\frac{\\pi}{4} & \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\\\ \\frac{\\pi}{3} & \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\\\ \\frac{\\pi}{2} & 0 & 1 \\\\ \\pi & -1 & 0 \\\\ \\frac{3\\pi}{2} & 0 & -1 \\\\ 2\\pi & 1 & 0 \\end{array}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le radian et convertir degrés ↔ radians.",
+                "Je connais la formule de longueur d'arc $L=r\\theta$ et d'aire de secteur $A=\\frac12 r^2\\theta$ (avec $\\theta$ en radians).",
+                "Je sais placer un angle sur le cercle unité et en lire le cosinus (abscisse) et le sinus (ordonnée).",
+                "Je maîtrise les formules de parité : $\\cos(-x)=\\cos x$, $\\sin(-x)=-\\sin x$ et la périodicité $2\\pi$.",
+                "Je connais par cœur les valeurs exactes de $\\cos$ et $\\sin$ pour $0$, $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{3}$, $\\frac{\\pi}{2}$ et leurs symétriques.",
+                "Je sais utiliser les symétries du cercle ($\\pi-x$, $\\pi+x$, $2\\pi-x$) pour retrouver les valeurs de tout angle remarquable."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les valeurs exactes de $\\cos\\frac{5\\pi}{6}$ et $\\sin\\frac{5\\pi}{6}$.",
+              "answer": "\\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}, \\quad \\sin\\frac{5\\pi}{6} = \\frac{1}{2}",
+              "hint": "$\\frac{5\\pi}{6} = \\pi - \\frac{\\pi}{6}$. Utilise la symétrie par rapport à l'axe des ordonnées.",
+              "explanation": "L'angle $\\frac{5\\pi}{6}$ est au deuxième quadrant. Son angle de référence est $\\frac{\\pi}{6}$. Au Q2, cosinus négatif, sinus positif. Donc $\\cos = -\\cos\\frac{\\pi}{6} = -\\frac{\\sqrt{3}}{2}$, $\\sin = \\sin\\frac{\\pi}{6} = \\frac{1}{2}$."
+            },
+            {
+              "question": "Calcule $\\cos\\left(-\\frac{\\pi}{3}\\right)$ et $\\sin\\left(-\\frac{\\pi}{3}\\right)$.",
+              "answer": "\\cos\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2}, \\quad \\sin\\left(-\\frac{\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2}",
+              "hint": "Utilise la parité : cosinus pair, sinus impair.",
+              "explanation": "$\\cos(-x)=\\cos x$, donc $\\cos(-\\frac{\\pi}{3})=\\cos\\frac{\\pi}{3}=\\frac{1}{2}$. $\\sin(-x)=-\\sin x$, donc $\\sin(-\\frac{\\pi}{3})=-\\sin\\frac{\\pi}{3}=-\\frac{\\sqrt{3}}{2}$."
+            },
+            {
+              "question": "Détermine $\\cos\\frac{7\\pi}{4}$ et $\\sin\\frac{7\\pi}{4}$.",
+              "answer": "\\cos\\frac{7\\pi}{4} = \\frac{\\sqrt{2}}{2}, \\quad \\sin\\frac{7\\pi}{4} = -\\frac{\\sqrt{2}}{2}",
+              "hint": "$\\frac{7\\pi}{4} = 2\\pi - \\frac{\\pi}{4}$. C'est un angle du quatrième quadrant.",
+              "explanation": "L'angle de référence est $\\frac{\\pi}{4}$. Au Q4, cosinus positif, sinus négatif. Les valeurs pour $\\frac{\\pi}{4}$ sont $\\frac{\\sqrt{2}}{2}$ pour les deux. Donc $\\cos\\frac{7\\pi}{4}=\\frac{\\sqrt{2}}{2}$, $\\sin\\frac{7\\pi}{4}=-\\frac{\\sqrt{2}}{2}$."
+            },
+            {
+              "question": "Un angle $\\theta$ est tel que $\\cos\\theta = -\\frac{\\sqrt{3}}{2}$ et $\\sin\\theta = -\\frac{1}{2}$. Donne une valeur possible de $\\theta$ dans $]-\\pi,\\pi]$.",
+              "answer": "-\\frac{5\\pi}{6}",
+              "hint": "Les deux sont négatifs : l'angle est au troisième quadrant. L'angle de référence a cosinus $\\frac{\\sqrt{3}}{2}$ et sinus $\\frac{1}{2}$.",
+              "explanation": "L'angle de référence est $\\frac{\\pi}{6}$. Au Q3, l'angle est $\\pi+\\frac{\\pi}{6}=\\frac{7\\pi}{6}$. Mais $\\frac{7\\pi}{6} > \\pi$, donc on prend sa valeur équivalente dans $]-\\pi,\\pi]$ en soustrayant $2\\pi$ : $\\frac{7\\pi}{6} - 2\\pi = -\\frac{5\\pi}{6}$. Vérification : $\\cos(-\\frac{5\\pi}{6}) = \\cos\\frac{5\\pi}{6} = -\\frac{\\sqrt{3}}{2}$, $\\sin(-\\frac{5\\pi}{6}) = -\\sin\\frac{5\\pi}{6} = -\\frac{1}{2}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,407 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.350356+00:00",
+  "id": 281,
+  "code": "cm2-t01-c07",
+  "title": "Bilan - Nombres CM2",
+  "description": "Cours structuré Educalcul : Bilan - Nombres CM2.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Bilan - Nombres CM2",
+    "objectif_global": "Bilan - Nombres CM2",
+    "mini_lecons_imposees": [
+      "Entiers et décimaux.",
+      "Comparaison / arrondi.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Entiers et décimaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres entiers jusqu'à 999 999"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les nombres entiers que tu utilises pour compter des objets, des pages ou des minutes. En CM2, on pousse l'exploration jusqu'à 999 999, ce qui veut dire qu'on peut écrire des nombres à six chiffres. Chaque chiffre a une place bien précise : les unités, les dizaines, les centaines, les milliers, les dizaines de milliers et les centaines de milliers. Pour lire un grand nombre, on le groupe par trois en partant de la droite, on dit le nom de chaque groupe et on ajoute le mot mille ou million si besoin. Par exemple, 237 452 se lit deux cent trente‑sept mille quatre cent cinquante‑deux. Cette manière de faire t'aide à ne jamais te perdre, même quand le nombre devient impressionnant. Pour décomposer 237 452, tu écris 2 centaines de milliers, 3 dizaines de milliers, 7 milliers, 4 centaines, 5 dizaines et 2 unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 7,
+              "caption": "237 : 2 centaines, 3 dizaines, 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les entiers n'ont plus de secret pour toi, regardons ce qui se passe après la virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres décimaux : dixièmes et centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la virgule, chaque nouveau chiffre ouvre une nouvelle place : le premier à droite est le chiffre des dixièmes, le second celui des centièmes, le troisième celui des millièmes et ainsi de suite. Un nombre comme 12,34 se lit douze virgule trois quatre, ce qui signifie douze unités, trois dixièmes et quatre centièmes. Pour t'aider à visualiser, imagine une barre de chocolat partagée en dix parts égales : une part représente un dixième, et si tu coupes chaque part en dix, tu obtiens des centièmes. Ainsi, 0,3 correspond à trois parts sur dix, et 0,25 à vingt‑cinq parts sur cent. Cette image concrète rend la valeur de chaque chiffre beaucoup plus claire. Tu peux aussi utiliser un tableau de numération pour placer chaque chiffre au bon endroit, ce qui évite les erreurs de lecture."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "3 dixièmes = 0,3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment transformer un entier en nombre décimal sans changer sa valeur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de l'entier au décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer d'un entier à un décimal, il suffit d'ajouter une virgule suivie d'un zéro : 45 devient 45,0 et 308 devient 308,0. Inversement, si un nombre décimal se termine par un ou plusieurs zéros après la virgule, tu peux les retirer sans modifier la quantité : 12,50 redevient 12,5 et 7,00 redevient 7. Cette règle est très utile quand tu dois comparer un entier et un décimal, car tu mets les deux nombres sur le même pied d'égalité en alignant la virgule. Essaie d'écrire 600 sous forme décimale et de simplifier 0,400 pour t'entraîner. Par exemple, 1 200 s'écrit 1200,0 et 0,600 se simplifie en 0,6."
+            },
+            {
+              "type": "display_math",
+              "latex": "45 = 45,0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $237452$ en centaines de milliers, dizaines de milliers, milliers, centaines, dizaines et unités.",
+              "answer": "$2$ centaines de milliers, $3$ dizaines de milliers, $7$ milliers, $4$ centaines, $5$ dizaines, $2$ unités",
+              "hint": "Regarde chaque groupe de trois chiffres en partant de la droite.",
+              "explanation": "En groupant 237 452 par trois, on obtient 237 (milliers) et 452 (unités). 237 se décompose en 2 centaines de milliers, 3 dizaines de milliers, 7 milliers. 452 donne 4 centaines, 5 dizaines, 2 unités."
+            },
+            {
+              "question": "Écris en notation décimale les fractions $\\frac{3}{10}$ et $\\frac{25}{100}$.",
+              "answer": "$0,3$ et $0,25$",
+              "hint": "Le numérateur devient le chiffre après la virgule selon la place du dénominateur.",
+              "explanation": "Pour 3/10, le dénominateur 10 indique les dixièmes, donc 0,3. Pour 25/100, le dénominateur 100 indique les centièmes, donc 0,25."
+            },
+            {
+              "question": "Transforme $600$ en nombre décimal et simplifie $0,400$.",
+              "answer": "$600,0$ et $0,4$",
+              "hint": "Ajoute une virgule et un zéro pour l'entier ; retire les zéros inutiles après la virgule pour le décimal.",
+              "explanation": "600 devient 600,0. 0,400 a trois zéros après la virgule, on enlève les deux derniers pour obtenir 0,4."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison / arrondi.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir lequel de deux nombres décimaux est le plus grand, on commence par aligner les virgules. Ensuite, on compare les parties entières : si elles diffèrent, le plus grand entier l'emporte. Si les parties entières sont égales, on regarde le chiffre des dixièmes, puis celui des centièmes, puis des millièmes, jusqu'à trouver une différence. Prenons 12,345 et 12,354 : les entiers sont identiques, les dixièmes sont tous les deux 3, aux centièmes on a 4 contre 5, donc le second nombre est plus grand. Cette méthode pas à pas évite de se tromper même quand les nombres comportent beaucoup de chiffres après la virgule."
+            },
+            {
+              "type": "number_line",
+              "min": 12.3,
+              "max": 12.4,
+              "points": [
+                {
+                  "value": 12.345,
+                  "label": "A"
+                },
+                {
+                  "value": 12.354,
+                  "label": "B"
+                }
+              ],
+              "caption": "Position de 12,345 et 12,354"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comparer deux nombres, voyons comment en ranger plusieurs du plus petit au plus grand."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner une série de nombres décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "La technique est la même : on aligne les virgules et on ajoute des zéros à droite pour que tous les nombres aient le même nombre de décimales. Ainsi, 0,7 devient 0,700, 0,68 devient 0,680, 0,705 reste 0,705 et 0,6 devient 0,600. On compare alors comme des entiers : 600 < 680 < 700 < 705. L'ordre croissant est donc 0,6 ; 0,68 ; 0,7 ; 0,705. Cette astuce des zéros cachés rend le classement très simple."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Valeurs alignées pour le classement",
+              "bars": [
+                {
+                  "label": "0,6",
+                  "value": 600,
+                  "tone": "blue"
+                },
+                {
+                  "label": "0,68",
+                  "value": 680,
+                  "tone": "green"
+                },
+                {
+                  "label": "0,7",
+                  "value": 700,
+                  "tone": "gold"
+                },
+                {
+                  "label": "0,705",
+                  "value": 705,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dernier outil de ce bilan est l'arrondi, qui permet de remplacer un nombre par une valeur plus simple tout en restant proche."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à l'unité, au dixième et au centième"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour arrondir, on regarde le chiffre situé juste à droite de la place visée. Si ce chiffre est 5, 6, 7, 8 ou 9, on augmente le chiffre de la place visée d'une unité ; sinon on le laisse tel quel. Ensuite, on supprime tous les chiffres à droite. Par exemple, pour 14,678 : à l'unité, le chiffre des dixièmes est 6 ≥ 5 → 15 ; au dixième, le chiffre des centièmes est 7 ≥ 5 → 14,7 ; au centième, le chiffre des millièmes est 8 ≥ 5 → 14,68. Cette règle unique fonctionne pour toutes les précisions demandées."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer la place visée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie si tu arrondis à l'unité, au dixième ou au centième."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regarder le chiffre suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le chiffre immédiatement à droite de cette place."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : décider",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce chiffre est 5 ou plus, augmente le chiffre visé ; sinon laisse-le."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : couper",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supprime tous les chiffres à droite de la place arrondie."
+                    }
+                  ]
+                }
+              ],
+              "caption": "Méthode d'arrondi pas à pas"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "display_math",
+              "latex": "14,678 \\approx 15 \\;(\\text{unité}),\\; 14,7 \\;(\\text{dixième}),\\; 14,68 \\;(\\text{centième})",
+              "caption": "Exemples d'arrondis de 14,678"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $12,345$ et $12,354$ en utilisant $<$, $>$ ou $=$.",
+              "answer": "$12,345 < 12,354$",
+              "hint": "Aligne les virgules et compare chiffre par chiffre à partir de la gauche.",
+              "explanation": "Les parties entières sont égales. Aux dixièmes : 3 = 3. Aux centièmes : 4 < 5, donc le premier nombre est plus petit."
+            },
+            {
+              "question": "Range les nombres $0,7$, $0,68$, $0,705$, $0,6$ du plus petit au plus grand.",
+              "answer": "$0,6 < 0,68 < 0,7 < 0,705$",
+              "hint": "Ajoute des zéros pour avoir le même nombre de chiffres après la virgule.",
+              "explanation": "Écris 0,600 ; 0,680 ; 0,700 ; 0,705. Puis compare comme des entiers : 600 < 680 < 700 < 705."
+            },
+            {
+              "question": "Arrondis $14,678$ à l'unité, au dixième et au centième.",
+              "answer": "Unité : $15$ ; Dixième : $14,7$ ; Centième : $14,68$",
+              "hint": "Regarde le chiffre juste à droite de la place visée : s'il est 5 ou plus, augmente le chiffre visé.",
+              "explanation": "Pour l'unité, le chiffre des dixièmes est 6 ≥ 5 → 15. Pour le dixième, le chiffre des centièmes est 7 ≥ 5 → 14,7. Pour le centième, le chiffre des millièmes est 8 ≥ 5 → 14,68."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : lire et décomposer un grand entier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons un nouvel exemple pour bien ancrer la méthode. Prends le nombre 508 319. Groupe les chiffres par trois en partant de la droite : 508 et 319. Le groupe de gauche correspond aux milliers : 5 centaines de milliers, 0 dizaine de milliers, 8 milliers. Le groupe de droite donne les unités : 3 centaines, 1 dizaine, 9 unités. Écris la décomposition complète à voix haute pour vérifier que tu n'as rien oublié."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 508319,
+              "caption": "Tableau de numération pour 508 319"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux nombres décimaux avec un autre exemple frais."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : écrire un décimal à partir d'une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives convertir les fractions 7/10 et 45/100 en notation décimale. Le dénominateur 10 indique les dixièmes, donc 7/10 s'écrit 0,7. Le dénominateur 100 indique les centièmes, donc 45/100 s'écrit 0,45. Pour t'en convaincre, trace mentalement une barre partagée en dix parts pour la première, et en cent parts pour la seconde."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 7,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 45,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Comparaison visuelle de 7/10 et 45/100"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un rappel de la comparaison et de l'arrondi sur un nombre inédit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : comparer et arrondir un décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère le nombre 23,449. Pour le comparer à 23,45, aligne les virgules : 23,449 devient 23,449 et 23,45 devient 23,450. Aux millièmes, 9 > 0, donc 23,449 < 23,45. Pour l'arrondi, applique la règle vue précédemment : à l'unité, le chiffre des dixièmes est 4 < 5 → 23 ; au dixième, le chiffre des centièmes est 4 < 5 → 23,4 ; au centième, le chiffre des millièmes est 9 ≥ 5 → 23,45. Tu vois que la même méthode donne des résultats cohérents."
+            },
+            {
+              "type": "number_line",
+              "min": 23.4,
+              "max": 23.5,
+              "points": [
+                {
+                  "value": 23.449,
+                  "label": "A"
+                },
+                {
+                  "value": 23.45,
+                  "label": "B"
+                }
+              ],
+              "caption": "Position de 23,449 et 23,45"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire un nombre entier jusqu'à 999 999.",
+                "Je sais décomposer un entier en centaines de milliers, dizaines de milliers, milliers, centaines, dizaines, unités.",
+                "Je sais lire, écrire et décomposer un nombre décimal jusqu'aux centièmes.",
+                "Je sais comparer deux nombres décimaux en alignant la virgule.",
+                "Je sais ordonner une liste de nombres décimaux.",
+                "Je sais arrondir un nombre décimal à l'unité, au dixième et au centième."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose $508319$ en centaines de milliers, dizaines de milliers, milliers, centaines, dizaines, unités.",
+              "answer": "$5$ centaines de milliers, $0$ dizaines de milliers, $8$ milliers, $3$ centaines, $1$ dizaine, $9$ unités",
+              "hint": "Groupe par trois en partant de la droite.",
+              "explanation": "508 319 → 508 (milliers) et 319 (unités). 508 = 5 centaines de milliers, 0 dizaines de milliers, 8 milliers. 319 = 3 centaines, 1 dizaine, 9 unités."
+            },
+            {
+              "question": "Écris en décimal $\\frac{7}{10}$ et $\\frac{45}{100}$.",
+              "answer": "$0,7$ et $0,45$",
+              "hint": "Dénominateur 10 → dixièmes, 100 → centièmes.",
+              "explanation": "7/10 = 0,7. 45/100 = 0,45."
+            },
+            {
+              "question": "Arrondis $23,449$ à l'unité, au dixième et au centième.",
+              "answer": "Unité : $23$ ; Dixième : $23,4$ ; Centième : $23,45$",
+              "hint": "Observe le chiffre suivant la place visée.",
+              "explanation": "Unité : dixièmes = 4 < 5 → 23. Dixième : centièmes = 4 < 5 → 23,4. Centième : millièmes = 9 ≥ 5 → 23,45."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

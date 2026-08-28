@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Moyenne, médiane, étendue",
+  "title": "Questionnaire : Moyenne, médiane, étendue - Applications",
+  "questions": [
+    {
+      "text": "Soit la série statistique $3$, $7$, $7$, $10$, $13$. Quelle est la moyenne, la médiane et l'étendue de cette série ?",
+      "options": [
+        "Moyenne $8$, médiane $7$, étendue $10$",
+        "Moyenne $9$, médiane $7$, étendue $10$",
+        "Moyenne $8$, médiane $8$, étendue $9$",
+        "Moyenne $7$, médiane $7$, étendue $11$"
+      ],
+      "correctAnswer": "Moyenne $8$, médiane $7$, étendue $10$",
+      "explanation": "La somme des valeurs est $3+7+7+10+13=40$, il y a $5$ valeurs donc la moyenne est $40/5=8$. La série ordonnée est déjà $3,7,7,10,13$, la valeur centrale (3e) est $7$, c'est la médiane. L'étendue est la différence entre la plus grande ($13$) et la plus petite ($3$) soit $10$. Les autres options présentent des erreurs de calcul de la moyenne, de la médiane ou de l'étendue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une série de $6$ notes a pour moyenne $12$. Cinq de ces notes sont $10$, $11$, $13$, $14$, $12$. Quelle est la sixième note ?",
+      "options": [
+        "$12$",
+        "$11$",
+        "$13$",
+        "$10$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La somme totale doit être $12 × 6 = 72$. La somme des cinq notes connues est $10+11+13+14+12 = 60$. La note manquante est $72-60 = 12$. Les autres valeurs ne donnent pas la moyenne requise.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de $25$ élèves, la note médiane est $14$. Laquelle des affirmations suivantes est nécessairement vraie ?",
+      "options": [
+        "Au moins $13$ élèves ont une note supérieure ou égale à $14$.",
+        "Exactement $12$ élèves ont une note inférieure à $14$.",
+        "La moitié des élèves ont une note inférieure à $14$ et l'autre moitié une note supérieure à $14$.",
+        "La note la plus fréquente est $14$."
+      ],
+      "correctAnswer": "Au moins $13$ élèves ont une note supérieure ou égale à $14$.",
+      "explanation": "Avec $25$ valeurs, la médiane est la $13$ème valeur après tri. Elle vaut $14$, donc il y a au moins $13$ valeurs supérieures ou égales à $14$ (la médiane et les $12$ suivantes) et au moins $13$ valeurs inférieures ou égales à $14$. L'option A exprime cette propriété. L'option B n'est pas assurée car il peut y avoir des notes égales à $14$. L'option C serait vraie seulement pour un effectif pair. L'option D confond médiane et mode.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère deux séries : Série A : $5$, $6$, $7$, $8$, $9$ et Série B : $2$, $7$, $7$, $7$, $12$. Laquelle des affirmations est correcte ?",
+      "options": [
+        "Les deux séries ont la même moyenne mais des étendues différentes.",
+        "Les deux séries ont la même médiane et la même étendue.",
+        "La série A a une moyenne plus grande que la série B.",
+        "La série B a une médiane plus petite que la série A."
+      ],
+      "correctAnswer": "Les deux séries ont la même moyenne mais des étendues différentes.",
+      "explanation": "La série A a pour somme $5+6+7+8+9=35$, moyenne $35/5=7$, étendue $9-5=4$. La série B a pour somme $2+7+7+7+12=35$, moyenne $35/5=7$, étendue $12-2=10$. Les moyennes sont égales, les étendues diffèrent. Les médianes sont $7$ pour les deux, mais l'option B dit même étendue ce qui est faux. L'option C et D sont fausses car les moyennes sont égales et les médianes égales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la série $4$, $5$, $5$, $6$, $7$. On ajoute la valeur $20$. Comment évoluent la moyenne, la médiane et l'étendue ?",
+      "options": [
+        "La moyenne augmente fortement, la médiane augmente légèrement, l'étendue augmente fortement.",
+        "La moyenne diminue, la médiane reste inchangée, l'étendue diminue.",
+        "La moyenne augmente légèrement, la médiane augmente fortement, l'étendue reste inchangée.",
+        "La moyenne, la médiane et l'étendue restent inchangées."
+      ],
+      "correctAnswer": "La moyenne augmente fortement, la médiane augmente légèrement, l'étendue augmente fortement.",
+      "explanation": "Série initiale : somme $4+5+5+6+7=27$, moyenne $27/5=5,4$, médiane $5$, étendue $7-4=3$. Après ajout de $20$ : somme $47$, effectif $6$, moyenne $47/6$ (forte hausse), médiane $(5+6)/2=5,5$ (légère hausse), étendue $20-4=16$ (forte hausse). Seule l'option A décrit correctement ces variations.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

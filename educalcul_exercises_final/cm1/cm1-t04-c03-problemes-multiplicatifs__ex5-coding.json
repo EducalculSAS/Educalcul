@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 236,
+  "_course_code": "cm1-t04-c03-problemes-multiplicatifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Produit",
+  "title": "Algorithmes et produit",
+  "blocks": [
+    {
+      "title": "Produit par additions successives",
+      "content": "On veut écrire un algorithme qui calcule le produit de deux nombres entiers $a$ et $b$ en utilisant uniquement des additions successives. L'algorithme doit afficher le résultat final. Écris les instructions manquantes pour compléter cet algorithme.\\n\\nAlgorithme ProduitAdditions\\nVariables : a, b, resultat, compteur : entiers\\nDébut\\n    Afficher \"Entrez a : \"\\n    Saisir a\\n    Afficher \"Entrez b : \"\\n    Saisir b\\n    resultat ← 0\\n    compteur ← 0\\n    ...\\n    Afficher \"Le produit est : \", resultat\\nFin",
+      "correctAnswer": "Tant que compteur < b faire\\n    resultat ← resultat + a\\n    compteur ← compteur + 1\\nFin Tant que",
+      "explanation": "Pour calculer $a \\times b$ par additions successives, on ajoute $a$ à la variable 'resultat' exactement $b$ fois. On initialise 'resultat' à 0 et 'compteur' à 0. La boucle 'Tant que compteur < b' permet de répéter l'addition $b$ fois. À chaque tour, on ajoute $a$ au résultat et on incrémente le compteur de 1. Quand le compteur atteint $b$, la boucle s'arrête et le résultat contient le produit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec boucle Pour",
+      "content": "Voici un algorithme utilisant une boucle « Pour » pour calculer le produit $a \\times b$. Certaines lignes sont mélangées. Remets-les dans le bon ordre en écrivant les numéros des lignes dans l'ordre d'exécution (sépare les numéros par une virgule).\\n\\n1. Afficher \"Le produit est : \", p\\n2. p ← p + a\\n3. Fin Pour\\n4. Pour i de 1 à b faire\\n5. p ← 0\\n6. Saisir a, b\\n7. Début\\n8. Fin\\n9. Saisir a\\n10. Saisir b\\n11. Afficher \"Entrez a et b : \"\\n\\n(Note : on suppose les déclarations de variables déjà faites).",
+      "correctAnswer": "7, 11, 6, 5, 4, 2, 3, 1, 8",
+      "explanation": "L'ordre logique d'un algorithme est : Début (7), Interaction utilisateur (11 puis 6 ou 9 puis 10), Initialisation de l'accumulateur p à 0 (5), Boucle Pour de 1 à b (4), Instruction de la boucle : addition (2), Fin de boucle (3), Affichage résultat (1), Fin de l'algorithme (8). La boucle « Pour i de 1 à b » exécute l'instruction p ← p + a exactement b fois, ce qui calcule bien $a \\times b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'erreur dans un algorithme",
+      "content": "Un élève a écrit l'algorithme suivant pour calculer le produit de $a$ par $b$. Il y a une erreur qui empêche d'obtenir le bon résultat. Identifie l'erreur et propose la correction exacte de la ligne concernée.\\n\\nAlgorithme ProduitErreur\\nVariables : a, b, p, i : entiers\\nDébut\\n    Afficher \"Entrez a : \"\\n    Saisir a\\n    Afficher \"Entrez b : \"\\n    Saisir b\\n    p ← 0\\n    Pour i de 0 à b faire\\n        p ← p + a\\n    Fin Pour\\n    Afficher \"Produit : \", p\\nFin",
+      "correctAnswer": "L'erreur est à la ligne 'Pour i de 0 à b faire'. Il faut écrire 'Pour i de 1 à b faire'.",
+      "explanation": "La boucle « Pour i de 0 à b » effectue $b + 1$ tours (pour i = 0, 1, 2, ..., b). Or pour calculer $a \\times b$, il faut ajouter $a$ exactement $b$ fois. En partant de 1 jusqu'à $b$ (« Pour i de 1 à b »), la boucle effectue exactement $b$ tours. Avec l'erreur, le programme calcule $a \\times (b + 1)$ au lieu de $a \\times b$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

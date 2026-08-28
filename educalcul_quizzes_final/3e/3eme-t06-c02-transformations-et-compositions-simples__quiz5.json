@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Image",
+  "title": "Quiz : Approfondissement sur les images par transformations",
+  "questions": [
+    {
+      "text": "Soit une translation de vecteur $\\vec{v}(2;1)$. Quelle est l'image $A'$ du point $A(1;2)$ ?",
+      "options": [
+        "$A'(3;3)$",
+        "$A'(2;3)$",
+        "$A'(3;2)$",
+        "$A'(-1;1)$"
+      ],
+      "correctAnswer": "$A'(3;3)$",
+      "explanation": "Par définition de la translation, le vecteur $\\vec{AA'}$ est égal au vecteur $\\vec{v}$. On ajoute les coordonnées du vecteur aux coordonnées du point de départ : $x_{A'} = 1 + 2 = 3$ et $y_{A'} = 2 + 1 = 3$. Donc $A'(3;3)$. Les autres options correspondent à des erreurs de signe ou d'addition de coordonnées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un segment $[AB]$ de longueur $6$ cm a pour image $[A'B']$ par une symétrie axiale d'axe $(d)$. Quelle est la longueur du segment $[A'B']$ ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$12$ cm",
+        "On ne peut pas le savoir sans connaître la position de l'axe"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "La symétrie axiale est une isométrie : elle conserve les longueurs, les angles et les aires. L'image d'un segment est un segment de même longueur. La distance $A'B'$ est donc égale à $AB = 6$ cm, quelle que soit la position de l'axe $(d)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triangle $ABC$ est transformé en triangle $A'B'C'$ par une rotation de centre $O$ et d'angle $90^\\circ$ dans le sens direct (trigonométrique). Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "Les triangles $ABC$ et $A'B'C'$ sont isométriques",
+        "Les segments $[OA]$ et $[OA']$ ont même longueur",
+        "L'angle $(\\vec{OA}, \\vec{OA'})$ mesure $90^\\circ$",
+        "L'orientation du triangle $A'B'C'$ est opposée à celle du triangle $ABC$"
+      ],
+      "correctAnswer": "L'orientation du triangle $A'B'C'$ est opposée à celle du triangle $ABC$",
+      "explanation": "Une rotation est une isométrie directe : elle conserve les longueurs (donc triangles isométriques), les distances au centre ($OA = OA'$) et l'angle orienté $(\\vec{OA}, \\vec{OA'})$ vaut bien l'angle de rotation ($90^\\circ$). En revanche, elle conserve l'orientation (le sens de parcours des sommets). L'orientation n'est inversée que par les isométries indirectes (symétrie axiale, symétrie centrale).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compose deux symétries axiales d'axes parallèles $(d_1)$ et $(d_2)$ distants de $3$ cm. Quelle est la transformation obtenue ?",
+      "options": [
+        "Une rotation d'angle $60^\\circ$",
+        "Une translation de vecteur de norme $3$ cm",
+        "Une translation de vecteur de norme $6$ cm",
+        "Une symétrie axiale"
+      ],
+      "correctAnswer": "Une translation de vecteur de norme $6$ cm",
+      "explanation": "La composition de deux symétries axiales d'axes parallèles est une translation. Le vecteur de cette translation est perpendiculaire aux deux axes, orienté du premier axe vers le second, et sa norme vaut le double de la distance entre les axes. Ici, $2 \\times 3 = 6$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une homothétie de centre $O$ et de rapport $k = -2$. Si $A$ est un point distinct de $O$, quelle est la relation entre les vecteurs $\\vec{OA}$ et $\\vec{OA'}$ où $A'$ est l'image de $A$ ?",
+      "options": [
+        "$\\vec{OA'} = 2 \\vec{OA}$",
+        "$\\vec{OA'} = -2 \\vec{OA}$",
+        "$\\vec{OA'} = \\frac{1}{2} \\vec{OA}$",
+        "$\\vec{OA'} = -\\frac{1}{2} \\vec{OA}$"
+      ],
+      "correctAnswer": "$\\vec{OA'} = -2 \\vec{OA}$",
+      "explanation": "Par définition de l'homothétie de centre $O$ et de rapport $k$, pour tout point $A$, son image $A'$ vérifie $\\vec{OA'} = k \\vec{OA}$. Ici $k = -2$, donc $\\vec{OA'} = -2 \\vec{OA}$. Le signe moins indique que $A'$ est sur la droite $(OA)$ mais de l'autre côté de $O$ par rapport à $A$ (alignement $A$, $O$, $A'$ dans cet ordre). La norme est multipliée par $2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

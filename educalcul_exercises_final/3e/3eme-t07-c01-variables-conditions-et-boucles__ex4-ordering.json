@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Variables, conditions et boucles",
+  "title": "Mise en ordre : variables, conditions et boucles",
+  "blocks": [
+    {
+      "title": "Somme des entiers de 1 à 5",
+      "content": "Rangez les instructions ci-dessous dans l'ordre d'exécution de l'algorithme qui calcule la somme des entiers de 1 à 5.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$sum \\leftarrow 0$",
+        "Pour $i$ de $1$ à $5$ faire",
+        "    $sum \\leftarrow sum + i$",
+        "Fin pour",
+        "Afficher $sum$"
+      ],
+      "explanation": "L'algorithme initialise la variable sum à 0, puis exécute une boucle pour i variant de 1 à 5, ajoutant i à sum à chaque itération. Après la boucle, il affiche la valeur finale de sum.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du factoriel de n",
+      "content": "Rangez les instructions ci-dessous dans l'ordre d'exécution de l'algorithme qui calcule le factoriel d'un entier n (n ≥ 1).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$fact \\leftarrow 1$",
+        "Pour $i$ de $1$ à $n$ faire",
+        "    $fact \\leftarrow fact \\times i$",
+        "Fin pour",
+        "Afficher $fact$"
+      ],
+      "explanation": "L'algorithme initialise fact à 1, puis multiplie fact par chaque entier i de 1 à n dans une boucle. À la fin, fact contient n! et est affiché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compteur décroissant de 5 à 1",
+      "content": "Rangez les instructions ci-dessous dans l'ordre d'exécution de l'algorithme qui affiche les entiers de 5 à 1 dans l'ordre décroissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$i \\leftarrow 5$",
+        "Tant que $i > 0$ faire",
+        "    Afficher $i$",
+        "    $i \\leftarrow i - 1$",
+        "Fin tant que"
+      ],
+      "explanation": "L'algorithme initialise i à 5, puis tant que i est strictement positif, il affiche i et décrémente i de 1. La boucle s'arrête quand i devient 0.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

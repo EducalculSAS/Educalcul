@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître un triangle",
+  "title": "Quiz : Reconnaître un triangle",
+  "questions": [
+    {
+      "text": "Quelle phrase décrit correctement un triangle ?",
+      "options": [
+        "Une figure fermée avec $4$ côtés et $4$ sommets.",
+        "Une figure fermée avec $3$ côtés et $3$ sommets.",
+        "Une figure ouverte avec $3$ côtés.",
+        "Une figure avec $3$ côtés courbes."
+      ],
+      "correctAnswer": "Une figure fermée avec $3$ côtés et $3$ sommets.",
+      "explanation": "Un triangle est un polygone, c'est-à-dire une figure fermée, qui possède exactement $3$ côtés (des segments de droite) et $3$ sommets. Les autres propositions décrivent un quadrilatère ($4$ côtés), une figure non fermée ou une figure à côtés courbes qui n'est pas un polygone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde ces descriptions. Laquelle correspond à un triangle ?",
+      "options": [
+        "Une figure avec $3$ côtés, mais un côté est courbe.",
+        "Une figure avec $3$ côtés droits, mais elle n'est pas fermée.",
+        "Une figure fermée avec $3$ côtés droits.",
+        "Une figure fermée avec $3$ côtés et $4$ sommets."
+      ],
+      "correctAnswer": "Une figure fermée avec $3$ côtés droits.",
+      "explanation": "Pour être un triangle, la figure doit réunir trois conditions : être fermée, avoir exactement $3$ côtés et ces côtés doivent être des segments de droite (droits). Une figure avec un côté courbe n'est pas un polygone. Une figure non fermée n'est pas un polygone. Il est impossible d'avoir $3$ côtés et $4$ sommets dans une figure fermée simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces figures, laquelle n'est PAS un triangle ?",
+      "options": [
+        "Un triangle pointe en haut.",
+        "Un triangle pointe en bas.",
+        "Un triangle pointe à gauche.",
+        "Un carré posé sur un coin."
+      ],
+      "correctAnswer": "Un carré posé sur un coin.",
+      "explanation": "L'orientation ne change pas la nature de la figure : un triangle pointe en haut, en bas, à gauche ou à droite reste un triangle (figure fermée, $3$ côtés, $3$ sommets). Un carré posé sur un coin (losange) a $4$ côtés et $4$ sommets, ce n'est donc pas un triangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur le triangle ci-dessous, combien y a-t-il de sommets ?",
+      "options": [
+        "Il y a $2$ sommets.",
+        "Il y a $3$ sommets.",
+        "Il y a $4$ sommets.",
+        "Il n'y a pas de sommet."
+      ],
+      "correctAnswer": "Il y a $3$ sommets.",
+      "explanation": "Un sommet est le point de rencontre de deux côtés. Le triangle possède $3$ côtés, donc $3$ points de rencontre : les sommets A, B et C. On les repère souvent en mettant un point sur chaque angle du triangle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Léa a dessiné $3$ figures fermées. La première a $3$ côtés, la deuxième a $4$ côtés, la troisième a $5$ côtés. Combien de triangles a-t-elle dessinés ?",
+      "options": [
+        "Elle a dessiné $0$ triangle.",
+        "Elle a dessiné $1$ triangle.",
+        "Elle a dessiné $2$ triangles.",
+        "Elle a dessiné $3$ triangles."
+      ],
+      "correctAnswer": "Elle a dessiné $1$ triangle.",
+      "explanation": "Seule la figure qui a exactement $3$ côtés est un triangle. La figure à $4$ côtés est un quadrilatère (carré, rectangle, losange...). La figure à $5$ côtés est un pentagone. Il y a donc un seul triangle parmi les trois figures.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

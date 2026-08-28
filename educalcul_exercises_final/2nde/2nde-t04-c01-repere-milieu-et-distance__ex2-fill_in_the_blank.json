@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 515,
+  "_course_code": "2nde-t04-c01-repere-milieu-et-distance",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Milieu",
+  "title": "Calcul des coordonnées du milieu",
+  "blocks": [
+    {
+      "title": "Formule du milieu",
+      "content": "Dans un repère orthonormé, les coordonnées du milieu $I$ d'un segment $[AB]$ avec $A(x_A;y_A)$ et $B(x_B;y_B)$ sont $I\\left({{1}};{{2}}\\right)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "\\frac{x_A+x_B}{2}|(x_A+x_B)/2",
+        "\\frac{y_A+y_B}{2}|(y_A+y_B)/2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La coordonnée x du milieu est la moyenne des abscisses des extrémités : $\\frac{x_A+x_B}{2}$. La coordonnée y du milieu est la moyenne des ordonnées des extrémités : $\\frac{y_A+y_B}{2}$. C'est la définition même du milieu dans un repère cartésien.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique : recherche du milieu",
+      "content": "Soient $A(2;-3)$ et $B(8;5)$ deux points dans un repère orthonormé. Les coordonnées du milieu $I$ du segment $[AB]$ sont $I({{1}};{{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la formule du milieu : $x_I = \\frac{x_A+x_B}{2} = \\frac{2+8}{2} = \\frac{10}{2} = 5$ et $y_I = \\frac{y_A+y_B}{2} = \\frac{-3+5}{2} = \\frac{2}{2} = 1$. Le milieu est donc $I(5;1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème inverse : recherche d'un extrémité",
+      "content": "Soit $I(4;-2)$ le milieu du segment $[AB]$. Sachant que le point $A$ a pour coordonnées $(1;3)$, les coordonnées du point $B$ sont $B({{1}};{{2}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "7",
+        "-7"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la relation $x_I = \\frac{x_A+x_B}{2}$ et $y_I = \\frac{y_A+y_B}{2}$. On en déduit $x_B = 2x_I - x_A = 2\\times4 - 1 = 8 - 1 = 7$ et $y_B = 2y_I - y_A = 2\\times(-2) - 3 = -4 - 3 = -7$. Le point $B$ a pour coordonnées $(7;-7)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

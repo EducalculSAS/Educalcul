@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Répéter",
+  "title": "Exercices sur la boucle Répéter",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "On initialise la variable $x$ à $0$. On exécute l'instruction : Répéter 5 fois : $x \\leftarrow x + 2$. Quelle est la valeur finale de $x$ ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle s'exécute 5 fois. À chaque tour, $x$ augmente de $2$. Au départ $x = 0$. Après 5 tours, $x = 0 + 5 \\times 2 = 10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "On initialise $s$ à $0$. Répéter 4 fois : $s \\leftarrow s + 3$. Ensuite, on affiche $s$. Quelle valeur est affichée ?",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle s'exécute 4 fois. À chaque itération, $3$ est ajouté à $s$. Donc $s = 0 + 4 \\times 3 = 12$ à la fin.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "On a le script suivant :\\nDébut\\n$n \\leftarrow 1$\\nRépéter 6 fois : $n \\leftarrow n \\times 2$\\nFin\\nQuelle est la valeur de $n$ à la fin ?",
+      "correctAnswer": "64",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au départ $n = 1$. Chaque tour multiplie $n$ par $2$. Après 6 tours, $n = 1 \\times 2^6 = 64$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Programme",
+  "title": "Approfondissement : Algorithmique et Simulation",
+  "blocks": [
+    {
+      "title": "Simulation d'une expérience aléatoire simple",
+      "content": "On veut simuler l'expérience suivante : on lance un dé à six faces équilibrées $100$ fois et on compte le nombre de fois où on obtient un $6$. Écrire un algorithme en langage naturel ou en pseudo-code (style Python) qui effectue cette simulation et affiche le nombre de $6$ obtenus. On utilisera une variable $compteur$ initialisée à $0$ et une boucle répétée $100$ fois.",
+      "correctAnswer": "Algorithme :\\ncompteur ← 0\\nPour i de 1 à 100 faire\\n    lance ← entier_aleatoire(1, 6)\\n    Si lance = 6 alors\\n        compteur ← compteur + 1\\n    Fin Si\\nFin Pour\\nAfficher compteur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise un compteur à zéro. La boucle 'Pour i de 1 à 100' répète l'expérience 100 fois. À chaque itération, on tire un entier aléatoire entre 1 et 6 (simulant le dé). Si ce résultat vaut 6, on incrémente le compteur. À la fin, on affiche la valeur du compteur qui correspond au nombre de 6 obtenus.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un programme de simulation",
+      "content": "On considère le programme Python ci-dessous qui simule le lancer de deux dés et compte le nombre de fois où la somme des résultats est strictement supérieure à $9$ sur $N$ essais.\\n\\nN = 1000\\ncompteur = 0\\nPour i dans range(N):\\n    d1 = randint(1, 6)\\n    d2 = randint(1, 6)\\n    ...  \\n    Si somme > 9:\\n        compteur = compteur + 1\\nAfficher(compteur / N)\\n\\nCompléter la ligne pointillée pour que le programme fonctionne correctement.",
+      "correctAnswer": "somme = d1 + d2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les variables d1 et d2 contiennent les résultats des deux dés (entiers entre 1 et 6). Pour tester si la somme est supérieure à 9, il faut d'abord calculer cette somme en additionnant d1 et d2, puis stocker le résultat dans une variable (ici nommée 'somme') avant le test conditionnel 'Si somme > 9'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un programme complet pour estimer une probabilité",
+      "content": "Un jeu consiste à lancer une pièce de monnaie équilibrée trois fois de suite. On gagne si on obtient au moins deux faces 'Pile'. Écrire un programme complet en pseudo-code (style Python) qui simule $10\\,000$ parties de ce jeu et affiche la fréquence de gain (nombre de parties gagnées divisé par le nombre total de parties). On supposera que la fonction aleatoire() renvoie $0$ pour 'Face' et $1$ pour 'Pile'.",
+      "correctAnswer": "N = 10000\\ngagnes = 0\\nPour i de 1 à N faire\\n    nb_pile = 0\\n    Pour j de 1 à 3 faire\\n        resultat = aleatoire()\\n        nb_pile = nb_pile + resultat\\n    Fin Pour\\n    Si nb_pile >= 2 alors\\n        gagnes = gagnes + 1\\n    Fin Si\\nFin Pour\\nfrequence = gagnes / N\\nAfficher frequence",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme utilise deux boucles imbriquées : la boucle externe répète l'expérience N fois (10 000 parties), la boucle interne simule les 3 lancers d'une partie. La variable nb_pile compte le nombre de Pile (1) sur les 3 lancers. Si ce nombre est au moins 2, la partie est gagnée et on incrémente gagnes. À la fin, on calcule la fréquence gagnes/N et on l'affiche. Cette fréquence approche la probabilité théorique (1/2).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Comparer ordres de grandeur",
+  "title": "Quiz : Comparer les ordres de grandeur",
+  "questions": [
+    {
+      "text": "Lequel des deux nombres suivants est le plus grand ?",
+      "options": [
+        "$2.5 \\times 10^6$",
+        "$9.8 \\times 10^5$",
+        "Elles sont égales",
+        "Impossible à comparer"
+      ],
+      "correctAnswer": "$2.5 \\times 10^6$",
+      "explanation": "On compare d'abord les puissances de dix : $10^6$ est plus grand que $10^5$. Même si le coefficient $9,8$ est plus grand que $2,5$, l'ordre de grandeur $10^6$ l'emporte. Donc $2,5 \\times 10^6 > 9,8 \\times 10^5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les trois nombres suivants, lequel est le plus petit ?",
+      "options": [
+        "$1.2 \\times 10^3$",
+        "$3.4 \\times 10^2$",
+        "$5.6 \\times 10^4$",
+        "Aucun"
+      ],
+      "correctAnswer": "$3.4 \\times 10^2$",
+      "explanation": "Les ordres de grandeur sont $10^3$, $10^2$ et $10^4$. Le plus petit exposant est $2$, donc $3,4 \\times 10^2$ est le plus petit nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces deux nombres est le plus grand ?",
+      "options": [
+        "$7.5 \\times 10^{-2}$",
+        "$6.1 \\times 10^{-3}$",
+        "Elles sont égales",
+        "Impossible"
+      ],
+      "correctAnswer": "$7.5 \\times 10^{-2}$",
+      "explanation": "Les exposants sont $-2$ et $-3$. Comme $-2 > -3$, $10^{-2}$ est dix fois plus grand que $10^{-3}$. Le coefficient $7,5$ renforce encore cette différence. Donc $7,5 \\times 10^{-2} > 6,1 \\times 10^{-3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a = 4.2 \\times 10^8$ et $b = 3.9 \\times 10^9$, de combien d'ordres de grandeur $b$ est-il plus grand que $a$ ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "correctAnswer": "1",
+      "explanation": "L'exposant de $b$ est $9$, celui de $a$ est $8$. La différence d'exposants est $9-8 = 1$, ce qui correspond à un facteur $10$ (un ordre de grandeur).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation est vraie pour les nombres $9.9 \\times 10^5$ et $1.0 \\times 10^6$ ?",
+      "options": [
+        "$9.9 \\times 10^5 > 1.0 \\times 10^6$",
+        "$9.9 \\times 10^5 < 1.0 \\times 10^6$",
+        "$9.9 \\times 10^5 = 1.0 \\times 10^6$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$9.9 \\times 10^5 < 1.0 \\times 10^6$",
+      "explanation": "Les deux nombres ont des exposants $5$ et $6$. Puisque $10^6$ est dix fois $10^5$, $1,0 \\times 10^6 = 10 \\times 10^5 = 10 \\times 10^5$. Or $9,9 \\times 10^5$ est légèrement inférieur à $10 \\times 10^5$. Donc $9,9 \\times 10^5 < 1,0 \\times 10^6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

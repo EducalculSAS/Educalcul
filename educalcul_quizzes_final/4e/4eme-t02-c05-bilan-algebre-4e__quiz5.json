@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 429,
+  "_course_code": "4eme-t02-c05-bilan-algebre-4e",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Développer, factoriser, résoudre",
+  "title": "Quiz - Approfondissement : Développer, factoriser, résoudre",
+  "questions": [
+    {
+      "text": "Développez l'expression $(2x+3)(x-4)$.",
+      "options": [
+        "$2x^2 -5x -12$",
+        "$2x^2 -5x +12$",
+        "$2x^2 +5x -12$",
+        "$2x^2 -11x -12$"
+      ],
+      "correctAnswer": "$2x^2 -5x -12$",
+      "explanation": "En développant : $(2x)(x)=2x^2$, $(2x)(-4)=-8x$, $(3)(x)=3x$, $(3)(-4)=-12$. En regroupant les termes en $x$ : $-8x+3x=-5x$. On obtient $2x^2-5x-12$. Les autres propositions correspondent à des erreurs de signes ou de coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $6x^2+11x-10$.",
+      "options": [
+        "$(3x-2)(2x+5)$",
+        "$(2x-5)(3x+2)$",
+        "$(6x-5)(x+2)$",
+        "$(3x+5)(2x-2)$"
+      ],
+      "correctAnswer": "$(3x-2)(2x+5)$",
+      "explanation": "On cherche deux nombres dont le produit est $6 \\times (-10) = -60$ et la somme $11$ : $15$ et $-4$. On réécrit $6x^2+15x-4x-10$, on factorise par groupe : $3x(2x+5)-2(2x+5) = (3x-2)(2x+5)$. Les autres choix donnent des développements différents.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $3(2x-5)=4x+7$.",
+      "options": [
+        "$x=11$",
+        "$x=4$",
+        "$x=-11$",
+        "$x=1$"
+      ],
+      "correctAnswer": "$x=11$",
+      "explanation": "Développer : $6x-15 = 4x+7$. Soustraire $4x$ des deux côtés : $2x-15=7$. Ajouter $15$ : $2x=22$. Diviser par $2$ : $x=11$. Les autres valeurs ne satisfont pas l'équation originale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $5(x+2)-3(2x-1)=4$.",
+      "options": [
+        "$x=9$",
+        "$x=-9$",
+        "$x=5$",
+        "$x=1$"
+      ],
+      "correctAnswer": "$x=9$",
+      "explanation": "Développer : $5x+10-6x+3=4$. Regrouper : $-x+13=4$. Soustraire $13$ : $-x=-9$. Multiplier par $-1$ : $x=9$. Les autres options correspondent à des erreurs de signe ou de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelles sont les solutions de l'équation $x^2-9=0$ ?",
+      "options": [
+        "$x=3$ ou $x=-3$",
+        "$x=9$ ou $x=-9$",
+        "$x=3$ seulement",
+        "$x=-3$ seulement"
+      ],
+      "correctAnswer": "$x=3$ ou $x=-3$",
+      "explanation": "Factoriser $x^2-9 = (x-3)(x+3)=0$. Un produit est nul si l'un des facteurs est nul, donc $x-3=0$ ou $x+3=0$, ce qui donne $x=3$ ou $x=-3$. Les autres propositions ne sont pas les racines de cette équation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

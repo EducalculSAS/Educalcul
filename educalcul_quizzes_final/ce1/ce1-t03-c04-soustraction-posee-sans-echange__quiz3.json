@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 91,
+  "_course_code": "ce1-t03-c04-soustraction-posee-sans-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Contrôler avec addition simple",
+  "title": "Quiz : Vérifier une soustraction par l'addition",
+  "questions": [
+    {
+      "text": "Pour vérifier le résultat d'une soustraction, quelle opération doit-on effectuer ?",
+      "options": [
+        "Une addition",
+        "Une soustraction",
+        "Une multiplication",
+        "Une division"
+      ],
+      "correctAnswer": "Une addition",
+      "explanation": "La soustraction et l'addition sont des opérations inverses. Pour contrôler $A - B = C$, on additionne le résultat $C$ au nombre retranché $B$ : on doit retrouver le nombre de départ $A$ ($C + B = A$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a calculé $48 - 25 = 23$. Quelle addition permet de vérifier ce résultat ?",
+      "options": [
+        "$23 + 25 = 48$",
+        "$23 - 25 = 48$",
+        "$48 + 23 = 25$",
+        "$25 - 23 = 48$"
+      ],
+      "correctAnswer": "$23 + 25 = 48$",
+      "explanation": "Le résultat de la soustraction est $23$, le nombre retranché est $25$. En les additionnant ($23 + 25$), on doit retrouver le nombre de départ $48$. Les autres propositions mélangent les nombres ou utilisent le mauvais signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a posé $56 - 32$ et a trouvé $23$. Il vérifie en calculant $23 + 32$. Quel résultat obtient-il ?",
+      "options": [
+        "55",
+        "56",
+        "54",
+        "57"
+      ],
+      "correctAnswer": "55",
+      "explanation": "L'addition de vérification est $23 + 32$. $20 + 30 = 50$ et $3 + 2 = 5$, donc $50 + 5 = 55$. Comme on ne retrouve pas le nombre de départ ($56$), le résultat $23$ de la soustraction est faux (le bon résultat est $24$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la soustraction pour qu'elle soit exacte : $... - 24 = 31$. Quelle addition aide à trouver le nombre manquant ?",
+      "options": [
+        "$31 + 24 = 55$",
+        "$31 - 24 = 7$",
+        "$24 + 31 = 54$",
+        "$31 + 24 = 54$"
+      ],
+      "correctAnswer": "$31 + 24 = 55$",
+      "explanation": "Pour trouver le nombre de départ (le tout), on additionne la partie restante ($31$) et la partie enlevée ($24$). $31 + 24 = 55$. La soustraction complète est donc $55 - 24 = 31$. L'option $31 + 24 = 54$ est une erreur de calcul (retenue oubliée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Luc a $67$ billes. Il en donne $34$ à son frère. Il lui reste $33$ billes. Quelle addition vérifie ce partage ?",
+      "options": [
+        "$33 + 34 = 67$",
+        "$33 + 67 = 34$",
+        "$67 + 34 = 33$",
+        "$34 - 33 = 67$"
+      ],
+      "correctAnswer": "$33 + 34 = 67$",
+      "explanation": "Luc avait $67$ billes (le tout). Il en a donné $34$ (une partie) et en a gardé $33$ (l'autre partie). Pour vérifier, on additionne les deux parties : ce qu'il a gardé ($33$) plus ce qu'il a donné ($34$) doit faire le total de départ ($67$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

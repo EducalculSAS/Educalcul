@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Séquences, boucles, conditions",
+  "title": "Algorithmes: boucles et conditions",
+  "blocks": [
+    {
+      "title": "L'avancement du robot",
+      "content": "Un robot doit avancer de $12$ cases. Au lieu d'écrire douze fois l'instruction Avancer, on utilise une boucle. Écris l'instruction en utilisant le mot Répéter et le nombre de fois nécessaire.",
+      "correctAnswer": "Répéter $12$ fois\\nAvancer",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour éviter de répéter la même instruction $12$ fois, on utilise une boucle. On indique le nombre de répétitions, soit $12$, puis l'action à effectuer, qui est Avancer.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le robot et l'obstacle",
+      "content": "Un robot avance. S'il rencontre un obstacle, il doit tourner à droite pour le contourner. Sinon, il continue d'avancer. Écris cet algorithme en utilisant les mots Si, Alors et Sinon.",
+      "correctAnswer": "Si obstacle\\nAlors tourner à droite\\nSinon avancer",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est une structure conditionnelle. Le robot vérifie d'abord la condition obstacle. Si elle est vraie, il exécute l'action tourner à droite. Si elle est fausse (sinon), il exécute l'action avancer.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le dessin du carré",
+      "content": "Pour dessiner un carré, un robot doit avancer de $5$ cm puis tourner à droite de $90$ degrés. Il doit faire cela quatre fois. Écris l'algorithme complet en combinant une boucle et les instructions de mouvement.",
+      "correctAnswer": "Répéter $4$ fois\\nAvancer de $5$ cm\\nTourner à droite de $90$ degrés",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré possède quatre côtés égaux et quatre angles droits. On utilise donc une boucle Répéter $4$ fois. À l'intérieur de cette boucle, on place la séquence d'actions: avancer de $5$ cm et tourner de $90$ degrés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

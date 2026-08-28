@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 278,
+  "_course_code": "cm2-t01-c04-comparer-et-ranger-des-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Intercaler",
+  "title": "Quiz : Intercaler des nombres décimaux",
+  "questions": [
+    {
+      "text": "Quel nombre décimal peut-on intercaler entre $3{,}4$ et $3{,}5$ ?",
+      "options": [
+        "$3{,}3$",
+        "$3{,}45$",
+        "$3{,}55$",
+        "$3{,}6$"
+      ],
+      "correctAnswer": "$3{,}45$",
+      "explanation": "Pour intercaler un nombre entre $3{,}4$ et $3{,}5$, il faut un nombre plus grand que $3{,}4$ et plus petit que $3{,}5$. $3{,}45$ (soit $3{,}45$) est bien compris entre les deux. $3{,}3$ et $3{,}6$ sont en dehors de l'intervalle. $3{,}55$ est plus grand que $3{,}5$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 3,4 à 3,5",
+        "min": 3.4,
+        "max": 3.5,
+        "points": [
+          {
+            "value": 3.4,
+            "label": "3,4"
+          },
+          {
+            "value": 3.5,
+            "label": "3,5"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Lequel de ces nombres se place entre $7{,}25$ et $7{,}26$ ?",
+      "options": [
+        "$7{,}24$",
+        "$7{,}255$",
+        "$7{,}27$",
+        "$7{,}3$"
+      ],
+      "correctAnswer": "$7{,}255$",
+      "explanation": "On cherche un nombre strictement supérieur à $7{,}25$ et strictement inférieur à $7{,}26$. $7{,}255$ (soit 7 unités, 2 dixièmes, 5 centièmes et 5 millièmes) convient parfaitement. $7{,}24$ est trop petit. $7{,}27$ et $7{,}3$ sont trop grands.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut intercaler un nombre à deux chiffres après la virgule entre $5{,}6$ et $5{,}7$. Quelle est la bonne réponse ?",
+      "options": [
+        "$5{,}55$",
+        "$5{,}65$",
+        "$5{,}75$",
+        "$5{,}8$"
+      ],
+      "correctAnswer": "$5{,}65$",
+      "explanation": "Les nombres $5{,}6$ et $5{,}7$ s'écrivent $5{,}60$ et $5{,}70$ pour avoir deux décimales. Un nombre à deux décimales entre eux doit avoir 6 dixièmes et des centièmes entre 0 et 9 (exclus). $5{,}65$ convient. $5{,}55 < 5{,}6$. $5{,}75 > 5{,}7$. $5{,}8 > 5{,}7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compléter l'inégalité : $12{,}08 < \\dots < 12{,}1$",
+      "options": [
+        "$12{,}07$",
+        "$12{,}09$",
+        "$12{,}11$",
+        "$12{,}1$"
+      ],
+      "correctAnswer": "$12{,}09$",
+      "explanation": "$12{,}1$ vaut $12{,}10$. On cherche un nombre entre $12{,}08$ et $12{,}10$. $12{,}09$ est le seul à avoir 12 unités, 0 dixièmes et 9 centièmes, ce qui le place entre les deux bornes. $12{,}07$ est trop petit. $12{,}11$ et $12{,}1$ (égal à la borne supérieure) sont trop grands ou égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est compris entre $0{,}3$ et $0{,}31$ ?",
+      "options": [
+        "$0{,}29$",
+        "$0{,}305$",
+        "$0{,}315$",
+        "$0{,}4$"
+      ],
+      "correctAnswer": "$0{,}305$",
+      "explanation": "$0{,}3 = 0{,}300$ et $0{,}31 = 0{,}310$. Le nombre cherché doit avoir 3 dixièmes, 0 centièmes et des millièmes entre 0 et 10. $0{,}305$ (3 dixièmes, 0 centièmes, 5 millièmes) convient. $0{,}29 < 0{,}3$. $0{,}315 > 0{,}31$. $0{,}4 > 0{,}31$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 226,
+  "_course_code": "cm1-t03-c01-addition-et-soustraction-d-entiers",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Mental / posé",
+  "title": "Algorithmes de calcul : addition et soustraction",
+  "blocks": [
+    {
+      "title": "Stratégie de calcul mental",
+      "content": "Pour calculer $47 + 36$ de tête, Léa utilise la méthode du « passage par la dizaine ». Écris l'algorithme (la suite d'étapes) qu'elle doit suivre en complétant les pointillés.\\n\\nÉtape 1 : Je décompose $36$ en $30$ et $6$.\\nÉtape 2 : J'ajoute les dizaines à $47$ : $47 + 30 = \\dots$\\nÉtape 3 : J'ajoute les unités au résultat : $\\dots + 6 = \\dots$\\nÉtape 4 : Le résultat final est $\\dots$",
+      "correctAnswer": "Étape 1 : Je décompose 36 en 30 et 6.\\nÉtape 2 : J'ajoute les dizaines à 47 : 47 + 30 = 77.\\nÉtape 3 : J'ajoute les unités au résultat : 77 + 6 = 83.\\nÉtape 4 : Le résultat final est 83.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode du passage par la dizaine consiste à ajouter d'abord les dizaines puis les unités. $47 + 30 = 77$. Ensuite $77 + 6$ : on peut décomposer $6$ en $3 + 3$ pour faire $77 + 3 = 80$ puis $80 + 3 = 83$. Le résultat est bien $83$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de la soustraction posée",
+      "content": "On veut programmer un robot pour qu'il fasse la soustraction posée $84 - 27$. Écris les instructions précises (l'algorithme) que le robot doit exécuter étape par étape, en gérant la retenue s'il le faut.\\n\\nUtilise les mots-clés : ÉCRIRE, SOUSTRAIRE, EMPRUNTER, RÉSULTAT.",
+      "correctAnswer": "1. ÉCRIRE 84 au-dessus de 27 en alignant les unités et les dizaines.\\n2. SOUSTRAIRE les unités : 4 - 7. Comme 4 < 7, je ne peux pas.\\n3. EMPRUNTER 1 dizaine à la dizaine du haut : 8 devient 7, et 4 unités deviennent 14 unités.\\n4. SOUSTRAIRE les unités : 14 - 7 = 7. ÉCRIRE 7 aux unités du RÉSULTAT.\\n5. SOUSTRAIRE les dizaines : 7 - 2 = 5. ÉCRIRE 5 aux dizaines du RÉSULTAT.\\n6. Le RÉSULTAT final est 57.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme de la soustraction posée avec retenue (emprunt) suit un ordre strict : alignement, test sur les unités, emprunt si nécessaire (transformation 1 dizaine = 10 unités), calcul des unités, calcul des dizaines, lecture du résultat. Ici $84 - 27 = 57$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Calcul à trous et raisonnement",
+      "content": "Voici une addition posée avec des trous :\\n$$\\n\\begin{array}{c@{}c@{}c}\\n  & 5 & \\square \\\\\\n+ & \\square & 8 \\\\\\n\\hline\\n  & 8 & 2\\n\\end{array}\\n$$\\nÉcris un raisonnement structuré (comme un petit programme) pour trouver les deux chiffres manquants. Détaille les tests que tu effectues.",
+      "correctAnswer": "ALGORITHME DE RECHERCHE :\\n1. Regarder la colonne des unités : $\\square + 8$ donne un nombre se terminant par $2$.\\n2. TEST : Quel chiffre $x$ tel que $x + 8 = 12$ (car $x+8=2$ impossible, $x$ serait négatif) ?\\n3. $x = 4$ car $4 + 8 = 12$. J'écris $4$ en haut à droite. Il y a une retenue de $1$ dizaine.\\n4. Regarder la colonne des dizaines : $5 + \\square + 1 (retenue) = 8$.\\n5. TEST : $5 + 1 = 6$. Il manque $2$ pour faire $8$. Donc $\\square = 2$.\\n6. VÉRIFICATION : $54 + 28 = 82$. C'est correct.\\nRÉSULTAT : Les chiffres manquants sont $4$ (unités du haut) et $2$ (dizaines du bas).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout en partant des unités. Pour faire $2$ aux unités avec $+8$, il faut $4$ ($4+8=12$), cela génère une retenue de $1$. Aux dizaines, on a $5 + \\text{trou} + 1 = 8$, donc $5+1=6$, le trou vaut $2$. L'addition complète est $54 + 28 = 82$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

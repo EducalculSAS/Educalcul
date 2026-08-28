@@ -1,0 +1,491 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.628070+00:00",
+  "id": 364,
+  "code": "6eme-t07-c02",
+  "title": "Patrons",
+  "description": "Cours structuré Educalcul : Patrons.",
+  "subject": "Espace",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Espace",
+    "titre_du_cours": "Patrons",
+    "objectif_global": "Patrons",
+    "mini_lecons_imposees": [
+      "Associer.",
+      "Construire.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace",
+      "lessons": [
+        {
+          "title": "Associer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un patron ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu possèdes une boîte en carton bien plate. Si tu la déplies complètement, tu obtiens une figure plane composée de plusieurs polygones collés les uns aux autres. Cette figure plane, c'est ce qu'on appelle un patron. Le patron montre toutes les faces d'un solide, mais à plat, comme une carte au trésor qui révèle chaque face du polyèdre. Pour bien comprendre, il faut d'abord nommer les éléments qui composent un solide : les faces sont les surfaces planes, les arêtes sont les segments où deux faces se rencontrent, et les sommets sont les points où plusieurs arêtes se croisent. Quand tu regardes un cube, tu comptes six faces carrées, douze arêtes de même longueur et huit sommets. Chaque face du cube deviendra un carré dans le patron, et la façon dont ces carrés sont arrangés entre eux détermine si le patron peut se replier pour reformer le cube."
+            },
+            {
+              "type": "definition",
+              "term": "patron",
+              "definition": "Figure plane obtenue en découpant un polyèdre le long de certaines arêtes et en l'aplatissant. Elle montre toutes les faces du solide disposées les unes à côté des autres.",
+              "example": "Le patron d'un cube est formé de six carrés identiques."
+            },
+            {
+              "type": "definition",
+              "term": "polyèdre",
+              "definition": "Solide dont toutes les faces sont des polygones. Les arêtes sont des segments de droite et les sommets des points.",
+              "example": "Le cube, le pavé droit, la pyramide à base carrée sont des polyèdres."
+            },
+            {
+              "type": "definition",
+              "term": "face",
+              "definition": "Chacune des surfaces planes qui limitent un polyèdre.",
+              "example": "Un cube a six faces carrées."
+            },
+            {
+              "type": "definition",
+              "term": "arête",
+              "definition": "Segment de droite commun à deux faces d'un polyèdre.",
+              "example": "Un cube possède douze arêtes de même longueur."
+            },
+            {
+              "type": "definition",
+              "term": "sommet",
+              "definition": "Point où se rencontrent au moins trois arêtes d'un polyèdre.",
+              "example": "Un cube a huit sommets."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment associer un patron à un solide ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour associer un patron à son solide, on observe d'abord le nombre de faces dessinées sur le patron. Si le patron présente six carrés, on pense immédiatement au cube ou au pavé droit dont les faces sont des rectangles. Ensuite, on vérifie la disposition des faces : deux faces qui partagent une arête dans le solide doivent être bord à bord dans le patron. On compte aussi les arêtes qui seront collées ensemble lors du pliage ; chaque arête du solide apparaît exactement une fois comme trait de pli dans le patron. Enfin, on s'assure que les sommets du patron se rejoignent correctement : lorsque l'on replie, les angles autour d'un même sommet doivent former un angle solide inférieur à $360\\,\\degree$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les faces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le patron et note combien de polygones le composent. Ce nombre doit correspondre au nombre de faces du solide cherché."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les formes des faces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reconnais la nature de chaque polygone (carré, rectangle, triangle, etc.). Cela oriente vers le type de polyèdre (cube, pavé droit, pyramide...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les collages d'arêtes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Imagine le pliage : chaque trait intérieur du patron devient une arête du solide. Deux faces adjacentes dans le patron doivent pouvoir se rabattre l'une sur l'autre sans se chevaucher."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Contrôler les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque plusieurs faces se rejoignent en un point du patron, la somme de leurs angles doit être strictement inférieure à $360\\,\\degree$ pour former un sommet solide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple avec le cube"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le cube, le polyèdre le plus familier. Son patron le plus connu est une croix formée de six carrés : un carré central, quatre carrés attachés à chacun de ses côtés, et un sixième carré collé à l'un des quatre carrés latéraux. Si tu découpes ce patron dans du papier et que tu plies le long des traits, les quatre carrés latéraux se relèvent pour former les faces verticales, le carré central devient la base et le dernier carré ferme le dessus. Tous les carrés ont la même dimension, par exemple $5\\,cm$ de côté, ce qui garantit que les arêtes coïncident parfaitement. D'autres patrons de cube existent, comme une ligne de quatre carrés avec un carré de chaque côté du deuxième carré ; l'essentiel est que les six carrés soient connectés sans chevauchement et que chaque arête du cube soit représentée une seule fois comme trait de pli."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Nombre de faces",
+                "Forme des faces",
+                "Exemple de patron"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6",
+                  "Carrés",
+                  "Croix de 6 carrés"
+                ],
+                [
+                  "Pavé droit",
+                  "6",
+                  "Rectangles (3 paires égales)",
+                  "Rectangle central + 4 rectangles latéraux + 1 rectangle opposé"
+                ],
+                [
+                  "Pyramide à base carrée",
+                  "5",
+                  "1 carré + 4 triangles",
+                  "Carré central + 4 triangles autour"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les clés pour reconnaître le patron d'un cube, d'un pavé droit ou d'une pyramide. Dans la prochaine leçon, nous apprendrons à construire nous‑mêmes le patron d'un solide donné, en choisissant quelles arêtes couper pour obtenir une figure plane bien organisée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les figures suivantes, laquelle est un patron possible d'un cube ? (Choisis la lettre correspondante.)",
+              "answer": "B",
+              "hint": "Compte les carrés et vérifie qu'ils sont tous connectés bord à bord sans chevauchement.",
+              "explanation": "Le patron d'un cube doit comporter exactement six carrés identiques reliés par leurs côtés. La figure B présente six carrés disposés en croix, ce qui permet de replier chaque face pour former le cube. Les autres figures ont soit trop peu de carrés, soit une disposition qui empêcherait le pliage."
+            },
+            {
+              "question": "Un patron présente cinq carrés et un rectangle. Peut‑il correspondre à un cube ? Justifie ta réponse.",
+              "answer": "Non",
+              "hint": "Rappelle‑toi le nombre et la forme des faces d'un cube.",
+              "explanation": "Un cube possède six faces, toutes carrées et de même dimension. Un patron contenant un rectangle ne peut pas se replier en cube car les faces ne seraient pas congruentes. De plus, le nombre de faces ne correspond pas : cinq carrés + un rectangle font six faces, mais les formes diffèrent."
+            },
+            {
+              "question": "Dessine sur une feuille un patron de pavé droit dont les dimensions sont $4\\,cm \\times 3\\,cm \\times 2\\,cm$. Indique les longueurs sur ton dessin.",
+              "answer": "Patron composé de trois paires de rectangles : deux rectangles $4\\,cm \\times 3\\,cm$, deux rectangles $4\\,cm \\times 2\\,cm$, deux rectangles $3\\,cm \\times 2\\,cm$, agencés sans chevauchement.",
+              "hint": "Commence par placer le rectangle $4\\,cm \\times 3\\,cm$ au centre, puis colle les quatre rectangles latéraux autour, et termine par le rectangle opposé.",
+              "explanation": "Le pavé droit a six faces rectangulaires regroupées en trois paires égales. En disposant un rectangle central et en attachant les quatre rectangles latéraux à ses quatre côtés, puis en ajoutant le sixième rectangle de l'autre côté du central, on obtient un patron valide. Les dimensions notées sur chaque rectangle permettent de vérifier que les arêtes coïncident lors du pliage."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un patron : la méthode du dépliage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire un patron, c'est comme préparer le plan d'une maison en carton avant de la monter. On part du solide en trois dimensions et on décide quelles arêtes couper pour pouvoir l'aplatir sans déchirer les faces. La règle d'or est de couper suffisamment d'arêtes pour que le solide devienne une surface continue, mais pas trop pour ne pas le faire tomber en morceaux. Pour un pavé droit, on peut couper les quatre arêtes verticales d'un même sommet et les trois arêtes du sommet opposé ; le résultat est une bande de six rectangles qui se déplie comme un ruban. Pour une pyramide, on coupe les arêtes qui relient le sommet à la base, ce qui libère les triangles latéraux autour du polygone de base. À chaque fois, on veille à ce que chaque face reste attachée à au moins une autre face par un côté commun, ce qui garantit que le patron reste en un seul tenant."
+            },
+            {
+              "type": "definition",
+              "term": "développement",
+              "definition": "Synonyme de patron : figure plane obtenue en coupant un polyèdre le long d'arêtes choisies et en l'aplatissant.",
+              "example": "Le développement d'un cylindre (sans les bases) est un rectangle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une face de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le solide sur la table et décide quelle face restera fixe. Cette face deviendra le centre de ton patron."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Couper les arêtes autour de la face de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace mentalement les coupes le long des arêtes qui séparent la face de départ de ses voisines. Cela libère les faces adjacentes tout en les gardant attachées à la face centrale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer le découpage face par face",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répète l'opération pour chaque nouvelle face libérée, en coupant les arêtes qui la relient aux faces non encore détachées, jusqu'à ce que toutes les faces forment une seule nappe plane."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la continuité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi qu'aucune face n'est isolée : chaque polygone doit partager au moins un côté complet avec un autre polygone du patron."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple : patron d'un prisme droit à base triangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère un prisme droit dont les bases sont des triangles équilatéraux de côté $6\\,cm$ et dont la hauteur (distance entre les bases) vaut $10\\,cm$. Les faces latérales sont trois rectangles de dimensions $6\\,cm \\times 10\\,cm$. Pour construire son patron, on commence par dessiner l'un des triangles de base. On attache ensuite les trois rectangles le long des trois côtés du triangle, comme les panneaux d'une tente. Enfin, on place le second triangle de base contre l'un des rectangles latéraux, du côté opposé au premier triangle. Le patron obtenu ressemble à une bande de trois rectangles encadrée par deux triangles aux extrémités. Tous les côtés communs ont la même longueur ($6\\,cm$ pour les côtés des triangles et la largeur des rectangles, $10\\,cm$ pour la hauteur des rectangles), ce qui assure un pliage parfait."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Dimensions des faces",
+                "Disposition typique du patron"
+              ],
+              "rows": [
+                [
+                  "Prisme triangulaire droit",
+                  "2 triangles + 3 rectangles",
+                  "Triangles équilatéraux $6\\,cm$ ; rectangles $6\\,cm \\times 10\\,cm$",
+                  "Triangle – rectangle – rectangle – rectangle – triangle"
+                ],
+                [
+                  "Pavé droit $4\\,cm \\times 3\\,cm \\times 2\\,cm$",
+                  "6 rectangles (3 paires)",
+                  "$4\\,cm \\times 3\\,cm$, $4\\,cm \\times 2\\,cm$, $3\\,cm \\times 2\\,cm$",
+                  "Rectangle central $4\\,cm \\times 3\\,cm$ + 4 latéraux + 1 opposé"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particulier : le cylindre et le cône"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bien que le cylindre et le cône ne soient pas des polyèdres (ils ont des surfaces courbes), on peut quand même tracer leur développement. Pour un cylindre de rayon $r$ et de hauteur $h$, le développement de sa surface latérale est un rectangle de largeur $2\\pi r$ (le périmètre de la base) et de hauteur $h$. Les deux bases circulaires restent des disques séparés. Pour un cône de rayon $r$ et de génératrice $g$, le développement latéral est un secteur de cercle de rayon $g$ et d'angle $\\frac{2\\pi r}{g}\\times 360\\,\\degree$. La base reste un disque. Ces développements sont très utiles pour calculer l'aire latérale ou pour fabriquer des objets en carton comme des gobelets ou des chapeaux pointus."
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{lat, cylindre}} = 2\\pi r h"
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{lat, cône}} = \\pi r g"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comment choisir les arêtes à couper pour obtenir un patron en un seul morceau, que ce soit pour un prisme, un pavé droit ou même un cylindre. La leçon suivante t'apprendra à vérifier qu'un patron donné peut vraiment se replier en un solide sans déchirure ni chevauchement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace le patron d'un prisme droit à base carrée de côté $5\\,cm$ et de hauteur $8\\,cm$. Indique toutes les dimensions.",
+              "answer": "Patron : un carré central $5\\,cm \\times 5\\,cm$, quatre rectangles $5\\,cm \\times 8\\,cm$ attachés à chaque côté du carré, et un second carré $5\\,cm \\times 5\\,cm$ collé à l'un des rectangles.",
+              "hint": "Commence par la base carrée, ajoute les faces latérales, puis la seconde base.",
+              "explanation": "Le prisme à base carrée a deux bases carrées identiques et quatre faces latérales rectangulaires de même taille. En plaçant une base au centre et en fixant les quatre rectangles autour, on obtient une bande continue. La seconde base se colle sur le rectangle opposé au premier, ce qui donne un patron valide."
+            },
+            {
+              "question": "Un élève dessine un patron pour un pavé droit $6\\,cm \\times 4\\,cm \\times 3\\,cm$ mais il oublie l'une des faces $6\\,cm \\times 4\\,cm$. Le patron peut‑il encore former le pavé droit ?",
+              "answer": "Non",
+              "hint": "Combien de faces a un pavé droit ? Chaque face doit apparaître une fois dans le patron.",
+              "explanation": "Un pavé droit possède six faces. Si l'une des deux faces $6\\,cm \\times 4\\,cm$ manque, le patron ne comporte que cinq faces. Au pliage, il manquera une face pour fermer le solide, donc le patron est incomplet."
+            },
+            {
+              "question": "Calcule la largeur du rectangle qui forme le développement latéral d'un cylindre de rayon $3\\,cm$ et de hauteur $7\\,cm$.",
+              "answer": "$2\\pi \\times 3 \\approx 18,85\\,cm$",
+              "hint": "La largeur correspond au périmètre de la base circulaire.",
+              "explanation": "Le développement latéral d'un cylindre est un rectangle dont la hauteur est la hauteur du cylindre ($7\\,cm$) et dont la largeur est le périmètre de la base, soit $2\\pi r = 2\\pi \\times 3 \\approx 18,85\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier qu'un patron est correct"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois un patron dessiné ou découpé, il faut s'assurer qu'il pourra vraiment se replier en le solide attendu. La vérification se fait en trois temps : d'abord on compte les faces et on compare leurs formes à celles du solide ; ensuite on simulate mentalement le pliage pour voir si les arêtes coïncident sans conflit ; enfin on contrôle les sommets pour être certain que les angles autour de chaque sommet futur forment un angle solide valide. Si l'une de ces étapes révèle un problème (face en trop, face manquante, arêtes qui ne s'alignent pas, ou somme d'angles égale ou supérieure à $360\\,\\degree$), le patron est invalide. Cette démarche rigoureuse évite les mauvaises surprises au moment du montage en carton."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Inventaire des faces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste chaque polygone du patron, note sa forme (triangle, carré, rectangle...) et ses dimensions. Compare cette liste à la liste théorique des faces du solide visé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simulation du pliage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Imagine que tu plies le long de chaque trait intérieur. Deux faces qui partagent un trait doivent pouvoir se rabattre l'une sur l'autre sans se chevaucher. Vérifie que chaque arête du solide apparaît exactement une fois comme trait de pli."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Contrôle des sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les points où plusieurs faces se rejoignent dans le patron. Calcule la somme des angles de ces faces autour du point. Cette somme doit être strictement inférieure à $360\\,\\degree$ pour former un sommet en volume."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple de patron invalide : le cube à sept carrés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'un élève propose un patron composé de sept carrés identiques disposés en forme de T allongé. Au premier regard, on compte sept faces alors qu'un cube n'en a que six. L'inventaire des faces (étape 1) signale immédiatement une face en trop. Même si on tente de plier (étape 2), un carré restera sans partenaire pour se coller, ce qui créera un trou ou un chevauchement. De plus, au niveau du sommet central où quatre carrés se touchent, la somme des angles est $4 \\times 90\\,\\degree = 360\\,\\degree$, ce qui violerait la condition de l'étape 3. Ce patron ne peut donc pas former un cube."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Critère",
+                "Patron valide",
+                "Patron invalide (exemple)"
+              ],
+              "rows": [
+                [
+                  "Nombre de faces",
+                  "Exactement celui du solide",
+                  "Supérieur ou inférieur"
+                ],
+                [
+                  "Formes des faces",
+                  "Correspondent aux faces du solide",
+                  "Présence d'une forme étrangère"
+                ],
+                [
+                  "Collages d'arêtes",
+                  "Chaque arête du solide = un trait de pli unique",
+                  "Arête manquante ou double"
+                ],
+                [
+                  "Somme d'angles aux sommets",
+                  "Strictement $< 360\\,\\degree$",
+                  "$\\ge 360\\,\\degree$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application à une pyramide à base pentagonale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une pyramide à base pentagonale possède une base pentagone et cinq faces latérales triangulaires. Un patron correct montrera le pentagone central entouré de cinq triangles, chaque triangle partageant un côté complet avec le pentagone. Vérifie d'abord qu'il y a bien six faces au total (étape 1). Ensuite, assure‑toi que chaque triangle est attaché au pentagone par un côté de même longueur (étape 2). Enfin, regarde le sommet du pentagone où deux triangles se rencontrent : l'angle du pentagone (par exemple $108\\,\\degree$ pour un pentagone régulier) plus les deux angles à la base des triangles adjacents doit rester $< 360\\,\\degree$. Comme les triangles sont isocèles avec un angle au sommet variable, on peut toujours choisir des dimensions qui respectent cette condition. Si un triangle était collé sur un côté du pentagone mais renversé (côté du triangle ne correspondant pas au côté du pentagone), le pliage serait impossible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu maîtrises maintenant l'association, la construction et la vérification des patrons. Ces compétences te permettront de passer du dessin à la manipulation concrète, que ce soit pour fabriquer une boîte, un dé ou un modèle de cristal en géométrie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir les termes patron, polyèdre, face, arête, sommet.",
+                "Je sais associer un patron à son solide en comptant les faces et en vérifiant les collages.",
+                "Je sais construire le patron d'un prisme, d'un pavé droit ou d'une pyramide en choisissant les bonnes arêtes à couper.",
+                "Je sais vérifier la validité d'un patron grâce aux trois critères : inventaire des faces, simulation du pliage, contrôle des sommets."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un patron présente six carrés de côté $4\\,cm$ disposés en ligne droite. Peut‑il former un cube ?",
+              "answer": "Non",
+              "hint": "Visualise le pliage : les carrés aux extrémités ne pourront pas se refermer.",
+              "explanation": "Dans une ligne de six carrés, les deux carrés aux extrémités n'ont qu'un seul voisin. Au pliage, ils ne peuvent pas se rejoindre pour former les faces opposées du cube ; il manquera des collages d'arêtes. De plus, la somme des angles autour du sommet central atteindrait $360\\,\\degree$, ce qui est impossible pour un sommet de cube."
+            },
+            {
+              "question": "Voici un patron composé d'un pentagone régulier (côté $5\\,cm$) et de cinq triangles isocèles de base $5\\,cm$ et de hauteur $6\\,cm$. Ce patron est‑il valide pour une pyramide à base pentagonale ? Justifie.",
+              "answer": "Oui, si les triangles sont placés correctement autour du pentagone.",
+              "hint": "Vérifie les trois critères de validation.",
+              "explanation": "Le patron comporte six faces (1 pentagone + 5 triangles) ce qui correspond à la pyramide. Chaque triangle partage sa base avec un côté du pentagone, donc les arêtes coïncident. Au sommet du pentagone, l'angle intérieur du pentagone régulier est $108\\,\\degree$ ; les deux angles à la base des triangles adjacents sont égaux et leur somme avec $108\\,\\degree$ reste inférieure à $360\\,\\degree$ (par exemple $2 \\times 50\\,\\degree + 108\\,\\degree = 208\\,\\degree$). Tous les critères sont satisfaits."
+            },
+            {
+              "question": "Un élève dessine un patron pour un pavé droit $8\\,cm \\times 5\\,cm \\times 3\\,cm$ mais il place les deux faces $8\\,cm \\times 5\\,cm$ l'une à côté de l'autre sans rectangle intermédiaire. Le patron est‑il correct ?",
+              "answer": "Non",
+              "hint": "Pense à la continuité du patron : chaque face doit être reliée aux autres par des côtés complets.",
+              "explanation": "Les deux faces $8\\,cm \\times 5\\,cm$ sont opposées dans le pavé droit. Dans un patron valide, elles ne peuvent pas partager un côté commun ; elles doivent être séparées par les quatre faces latérales. Les placer côte à côte créerait un pli impossible car elles devraient se superposer au lieu de se coller bord à bord. Le patron ne respecte pas la règle des collages d'arêtes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

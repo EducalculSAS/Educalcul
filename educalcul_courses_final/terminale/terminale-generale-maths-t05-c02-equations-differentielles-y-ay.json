@@ -1,0 +1,484 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.681392+00:00",
+  "id": 703,
+  "code": "terminale-generale-maths-t05-c02",
+  "title": "Équations différentielles y'=ay",
+  "description": "Cours structuré Educalcul : Équations différentielles y'=ay.",
+  "subject": "Primitives, intégrales et équations différentielles",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Primitives, intégrales et équations différentielles",
+    "titre_du_cours": "Équations différentielles y'=ay",
+    "objectif_global": "Équations différentielles y'=ay",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Solution générale.",
+      "Condition initiale."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Primitives, intégrales et équations différentielles",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une équation différentielle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau chapitre ! Nous allons explorer ensemble une famille d'équations qui modélise une multitude de phénomènes naturels : la croissance d'une population, la décroissance radioactive, le refroidissement d'un objet, ou encore l'évolution d'un capital placé à intérêt composé. Ce qui unit tous ces exemples, c'est l'idée que la vitesse de variation d'une quantité est proportionnelle à la quantité elle-même. En langage mathématique, cela s'écrit sous la forme d'une équation qui relie une fonction inconnue à sa dérivée. C'est ce qu'on appelle une équation différentielle."
+            },
+            {
+              "type": "definition",
+              "term": "Équation différentielle",
+              "definition": "Une équation différentielle est une équation dont l'inconnue est une fonction (souvent notée $y$) et qui fait intervenir cette fonction ainsi que ses dérivées. L'ordre de l'équation est l'ordre de la dérivée la plus élevée qui apparaît.",
+              "example": "L'équation $y' = 2y$ est une équation différentielle du premier ordre : l'inconnue est la fonction $y$, et on y trouve sa dérivée première $y'$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce cours, nous nous concentrerons sur un type très particulier d'équations différentielles du premier ordre, celles qui s'écrivent $y' = a y$, où $a$ est un nombre réel constant (un paramètre). Remarquez que la variable indépendante (souvent $x$ ou $t$) n'apparaît pas explicitement dans l'équation : on dit que l'équation est autonome. Votre première mission, dans cette leçon, sera d'apprendre à repérer cette forme canonique, même quand elle se cache derrière une écriture un peu différente."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme canonique $y' = a y$"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équation $y' = a y$ est la plus simple des équations différentielles linéaires d'ordre un à coefficients constants. Le coefficient $a$ est la clé de tout : il détermine si la fonction inconnue croît exponentiellement ($a > 0$), décroît exponentiellement ($a < 0$), ou reste constante ($a = 0$). Pour reconnaître cette forme, il faut identifier trois éléments : la fonction inconnue $y$, sa dérivée $y'$, et le nombre $a$ qui les relie par une simple multiplication. Il n'y a pas de terme ajouté, pas de fonction de $x$ qui s'ajoute à droite : juste $a$ fois $y$."
+            },
+            {
+              "type": "display_math",
+              "latex": "y' = a \\, y \\quad \\text{avec } a \\in \\mathbb{R}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le temps de regarder quelques exemples concrets pour bien fixer les idées. Si on vous donne $y' = 3y$, alors $a = 3$. Si on vous donne $y' = -0.5 y$, alors $a = -0.5$. Si on vous donne $y' = 0$, c'est le cas particulier $a = 0$ : la dérivée est nulle, donc la fonction est constante. Mais attention, l'équation peut être déguisée ! Par exemple, $2y' = 6y$ n'est pas écrit exactement sous la forme $y' = a y$, mais il suffit de diviser par $2$ pour retrouver $y' = 3y$. De même, $y' - 4y = 0$ se réécrit $y' = 4y$. Votre réflexe doit être : \"Est-ce que je peux mettre l'équation sous la forme dérivée = constant × fonction ?\""
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Équation donnée",
+                "Manipulation",
+                "Forme $y' = a y$",
+                "Valeur de $a$"
+              ],
+              "rows": [
+                [
+                  "$y' = -2y$",
+                  "Déjà sous forme canonique",
+                  "$y' = -2y$",
+                  "$-2$"
+                ],
+                [
+                  "$3y' = 9y$",
+                  "Diviser par $3$",
+                  "$y' = 3y$",
+                  "$3$"
+                ],
+                [
+                  "$y' + 5y = 0$",
+                  "Soustraire $5y$",
+                  "$y' = -5y$",
+                  "$-5$"
+                ],
+                [
+                  "$y' = x y$",
+                  "Impossible (coefficient dépend de $x$)",
+                  "Pas de la forme",
+                  "—"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez identifier la structure, poussons un peu plus loin : comment être sûr qu'une équation donnée *n'est pas* de la forme $y' = a y$ ? Il suffit de trouver un contre-exemple ou de montrer que le coefficient devant $y$ n'est pas un nombre constant. Par exemple, $y' = x y$ fait intervenir $x$ : le coefficient n'est pas un nombre, c'est une variable. De même, $y' = y^2$ n'est pas linéaire (le $y$ est au carré), et $y' = y + 1$ a un terme constant $+1$ qui empêche l'écriture $y' = a y$. Dans ce dernier cas, on est en présence d'une équation différentielle linéaire non homogène, que nous traiterons plus tard. Pour l'instant, retenez bien le critère discriminant : le second membre doit être un nombre $a$ multiplié par $y$, et *rien d'autre*."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de reconnaissance",
+              "paragraphs": [
+                "Posez-vous toujours la question : \"Le second membre est-il proportionnel à $y$ avec un coefficient constant ?\" Si oui, c'est gagné. Si le coefficient dépend de $x$, ou s'il y a un terme additif, ce n'est pas notre forme."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent que l'équation différentielle soit présentée dans un énoncé de problème concret, sans être écrite explicitement. Par exemple : \"La vitesse de variation d'une population est proportionnelle à la taille de cette population.\" Il faut alors traduire cette phrase en langage mathématique. \"Vitesse de variation\" signifie dérivée par rapport au temps : $y'$ (ou $\\frac{dy}{dt}$). \"Est proportionnelle à\" signifie « égal à une constante fois » : $= a \\times$. \"La taille de la population\" est la fonction inconnue $y$. On obtient donc directement $y' = a y$. C'est cette modélisation qui donne toute sa puissance à cette équation simple : elle décrit une loi naturelle fondamentale."
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation exponentielle",
+              "definition": "Lorsque la dérivée d'une fonction est proportionnelle à la fonction elle-même, on dit que le phénomène suit une loi exponentielle. La constante de proportionnalité $a$ est le taux de croissance (si $a>0$) ou de décroissance (si $a<0$).",
+              "example": "Pour une population de bactéries qui double toutes les heures, le taux de croissance horaire est $a = \\ln 2 \\approx 0,693$. L'équation différentielle est $y' = (\\ln 2) y$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à la leçon suivante où nous apprendrons à *résoudre* ces équations, assurez-vous d'être parfaitement à l'aise avec l'identification du coefficient $a$. C'est la fondation sur laquelle tout le reste reposera. Dans l'exercice suivant, vous aurez à classifier plusieurs équations et à extraire le paramètre $a$ quand c'est possible. Prenez le temps de bien réécrire chaque équation sous forme canonique avant de conclure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les équations suivantes, lesquelles sont de la forme $y' = a y$ avec $a$ constant ? Pour celles qui le sont, donnez la valeur de $a$. 1) $y' = 7y$ ; 2) $y' = y + 3$ ; 3) $2y' = -4y$ ; 4) $y' = x^2 y$ ; 5) $y' - 5y = 0$.",
+              "answer": "1) Oui, $a=7$. 2) Non (terme constant $+3$). 3) Oui, diviser par $2$ : $y' = -2y$, $a=-2$. 4) Non (coefficient $x^2$ non constant). 5) Oui, $y' = 5y$, $a=5$.",
+              "hint": "Réécrivez chaque équation pour faire apparaître $y'$ seul à gauche. Vérifiez que le second membre est un nombre (sans $x$) multiplié par $y$.",
+              "explanation": "Il faut isoler $y'$ et regarder si le coefficient de $y$ est une constante. Pour 3), on divise par 2. Pour 5), on ajoute $5y$ des deux côtés. Les équations 2) et 4) ne rentrent pas dans le cadre car le coefficient de $y$ n'est pas une constante (terme additif ou dépendance en $x$)."
+            },
+            {
+              "question": "Détermine le réel $a$ pour que l'équation $y' = a y$ modélise la situation suivante : \"La masse $m(t)$ d'un élément radioactif décroît à une vitesse proportionnelle à sa masse, avec un coefficient de proportionnalité égal à $-0,00012$ par an.\"",
+              "answer": "$a = -0,00012$",
+              "hint": "Identifiez la dérivée (vitesse de variation) et la proportionnalité. Le coefficient est donné directement dans l'énoncé.",
+              "explanation": "La vitesse de variation de la masse est $m'(t)$. Elle est proportionnelle à la masse $m(t)$ avec un coefficient $-0,00012$. L'équation est donc $m' = -0,00012 \\, m$. On a bien la forme $y' = a y$ avec $a = -0,00012$. Le signe négatif traduit la décroissance."
+            },
+            {
+              "question": "Un capital $C(t)$ placé à un taux d'intérêt composé continu $r$ suit la loi : la variation instantanée du capital est proportionnelle au capital lui-même. Écrire l'équation différentielle satisfaite par $C$ et donner la valeur de $a$ en fonction de $r$.",
+              "answer": "L'équation est $C' = r C$, donc $a = r$.",
+              "hint": "Variation instantanée = dérivée. Proportionnelle au capital = $r \\times C$.",
+              "explanation": "Le taux $r$ est le coefficient de proportionnalité. Si $r = 0,03$ (3%), l'équation est $C' = 0,03 C$. C'est un exemple classique de croissance exponentielle ($a>0$)."
+            },
+            {
+              "question": "Vrai ou faux ? Justifiez. a) L'équation $y' = 0$ est de la forme $y' = a y$. b) L'équation $y' = y^2$ est de la forme $y' = a y$. c) Si $y$ est solution de $y' = a y$, alors la fonction $z = 2y$ est solution de $z' = a z$.",
+              "answer": "a) Vrai, avec $a=0$. b) Faux, le second membre est $y^2$, pas une constante fois $y$. c) Vrai, car $z' = 2y' = 2(a y) = a(2y) = a z$.",
+              "hint": "Pour a), $0 = 0 \\times y$. Pour b), comparez $y^2$ et $a y$. Pour c), dérivez $z$ et utilisez l'équation pour $y$.",
+              "explanation": "a) $y'=0$ s'écrit $y'=0\\cdot y$, donc $a=0$. b) $y^2$ n'est pas proportionnel à $y$ (sauf si $y$ est constante, mais ce n'est pas la forme générale). c) La propriété de linéarité : tout multiple d'une solution est encore solution pour une équation homogène."
+            }
+          ]
+        },
+        {
+          "title": "Solution générale.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment résoudre $y' = a y$ ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Vous savez maintenant reconnaître l'équation $y' = a y$ sous toutes ses coutures. Passons à l'étape passionnante : trouver toutes ses solutions. Vous avez déjà l'intuition que la fonction exponentielle joue un rôle central, car sa dérivée est proportionnelle à elle-même. Rappelons-nous : si $y(x) = e^{ax}$, alors $y'(x) = a e^{ax} = a y(x)$. C'est une solution ! Mais est-ce la seule ? Certainement pas, car si on multiplie cette fonction par n'importe quelle constante $C$, la propriété de dérivation linéaire garantit que $(C e^{ax})' = C a e^{ax} = a (C e^{ax})$. Donc $C e^{ax}$ est aussi solution pour tout réel $C$. Nous allons démontrer que ce sont *toutes* les solutions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler la dérivée relative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On suppose d'abord que $y(x) \\neq 0$ sur l'intervalle considéré. On peut diviser par $y$ : $\\frac{y'}{y} = a$. Le second membre est une constante, le premier membre est la dérivée de $\\ln|y|$ (dérivée composée)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Intégrer par rapport à $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On intègre les deux membres : $\\int \\frac{y'}{y} \\, dx = \\int a \\, dx$. Ce qui donne $\\ln|y| = a x + C_1$, où $C_1$ est une constante d'intégration."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lever le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On applique l'exponentielle : $|y| = e^{a x + C_1} = e^{C_1} e^{a x}$. Comme $e^{C_1} > 0$, on pose $C = \\pm e^{C_1}$ (qui peut être n'importe quel réel non nul). On obtient $y = C e^{a x}$ avec $C \\neq 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Récupérer le cas $y=0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction nulle $y(x) = 0$ est évidemment solution ($0' = a \\cdot 0$). Elle correspond à $C = 0$. En autorisant $C$ à prendre la valeur $0$, la formule $y = C e^{a x}$ donne *toutes* les solutions, définies sur $\\mathbb{R}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "y(x) = C \\, e^{a x} \\quad (C \\in \\mathbb{R})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voilà le résultat fondamental : l'ensemble des solutions de $y' = a y$ sur $\\mathbb{R}$ est exactement la famille des fonctions $x \\mapsto C e^{a x}$, où $C$ est un paramètre réel quelconque. Cette famille est appelée la *solution générale* de l'équation différentielle. Le paramètre $C$ représente la valeur initiale de la fonction en $x=0$, puisque $y(0) = C e^{0} = C$. C'est une information cruciale que nous exploiterons dans la prochaine leçon."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Cas particulier $a=0$",
+              "paragraphs": [
+                "Si $a=0$, l'équation est $y' = 0$. Les solutions sont les fonctions constantes $y(x) = C$. La formule $C e^{0 \\cdot x} = C$ retrouve bien ce résultat. L'exponentielle de base $e$ n'est pas obligatoire, on pourrait écrire $y = C \\exp(a x)$ pour alléger les notations quand $a x$ est une expression complexe."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode de résolution par séparation des variables (ou par reconnaissance de la dérivée du logarithme) est claire, regardons comment on peut vérifier qu'une fonction candidate est bien solution sans avoir à résoudre l'équation. C'est une compétence essentielle : on vous donne une fonction, vous la dérivez, vous multipliez par $a$, et vous vérifiez l'égalité. C'est souvent plus rapide que de résoudre, et cela permet de valider une solution trouvée par une autre méthode (par exemple, en devinant la forme)."
+            },
+            {
+              "type": "definition",
+              "term": "Solution générale",
+              "definition": "L'expression $y = C e^{a x}$ (avec $C \\in \\mathbb{R}$) est appelée solution générale de l'équation différentielle $y' = a y$. Elle décrit l'ensemble de toutes les solutions définies sur $\\mathbb{R}$. Chaque valeur de $C$ donne une solution particulière (une courbe dans le plan).",
+              "example": "Pour $y' = -2y$, la solution générale est $y = C e^{-2x}$. La courbe pour $C=1$ est $y=e^{-2x}$, pour $C=-3$ c'est $y=-3e^{-2x}$, etc."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est aussi très instructif de visualiser graphiquement cette famille de solutions. Pour $a > 0$, toutes les courbes sont des exponentielles croissantes (si $C>0$) ou décroissantes (si $C<0$), qui passent par $(0, C)$. Pour $a < 0$, ce sont des exponentielles décroissantes (si $C>0$) ou croissantes (si $C<0$), toutes asymptotiques à l'axe des abscisses. La courbe $y=0$ (l'axe des abscisses) est une solution particulière qui sert de séparatrice : les solutions ne la croisent jamais (théorème d'unicité). Cette image géométrique aide à comprendre le comportement à long terme : explosion exponentielle pour $a>0$, extinction pour $a<0$."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(-0.5*x)",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Exemple de courbes $y = C e^{-0.5x}$ pour $C = -2, -1, -0.5, 0, 0.5, 1, 2$. Remarquez la symétrie par rapport à l'axe des abscisses et l'asymptote horizontale $y=0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de clore cette leçon, notons une propriété algébrique importante : l'ensemble des solutions forme un *espace vectoriel* de dimension 1. Cela signifie que la somme de deux solutions est une solution, et le multiple d'une solution par un scalaire est une solution. Cette structure linéaire est au cœur de la théorie des équations différentielles linéaires et explique pourquoi la solution générale s'écrit comme un paramètre unique $C$ multiplié par une solution de base $e^{a x}$. Nous verrons plus tard que pour les équations d'ordre supérieur, la dimension de cet espace vectoriel est égale à l'ordre de l'équation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez la solution générale de chacune des équations différentielles suivantes : a) $y' = 4y$ ; b) $y' = -\\frac{1}{3}y$ ; c) $y' = 0$ ; d) $2y' = 6y$.",
+              "answer": "a) $y = C e^{4x}$ ; b) $y = C e^{-x/3}$ ; c) $y = C$ (fonction constante) ; d) $y' = 3y$ donc $y = C e^{3x}$.",
+              "hint": "Identifiez $a$ dans chaque cas (n'oubliez pas de mettre sous forme canonique pour d)) et appliquez la formule $y = C e^{a x}$.",
+              "explanation": "Pour a) $a=4$. Pour b) $a=-1/3$. Pour c) $a=0$, l'exponentielle vaut 1, solution constante. Pour d), divisez par 2 pour obtenir $y'=3y$, donc $a=3$."
+            },
+            {
+              "question": "Vérifiez que la fonction $y(x) = 5 e^{-2x}$ est solution de l'équation $y' = -2y$. Quelle est la valeur du paramètre $C$ dans la solution générale ?",
+              "answer": "Oui, c'est solution. $C = 5$.",
+              "hint": "Dérivez $y(x)$ : $y'(x) = 5 \\cdot (-2) e^{-2x} = -10 e^{-2x}$. Calculez $-2y(x) = -2 \\cdot 5 e^{-2x} = -10 e^{-2x}$. Égalité vérifiée. $C = y(0) = 5$.",
+              "explanation": "La vérification directe est souvent plus simple que la résolution. Ici, la dérivée donne bien $-2$ fois la fonction. Le paramètre $C$ est la valeur de la fonction en $0$."
+            },
+            {
+              "question": "On considère l'équation $y' = 2y$. 1) Tracez (schématiquement) les courbes des solutions pour $C = -2, -1, 0, 1, 2$. 2) Que pouvez-vous dire de l'intersection de deux courbes distinctes de cette famille ?",
+              "answer": "1) Courbes exponentielles croissantes pour $C>0$, décroissantes pour $C<0$, axe des abscisses pour $C=0$. Toutes passent par $(0,C)$. 2) Deux courbes distinctes ne s'intersectent jamais (unicité de la solution pour une condition initiale).",
+              "hint": "Utilisez $y(0)=C$. Pour l'intersection, rappelez-vous que par un point donné ne passe qu'une seule solution (théorème de Cauchy-Lipschitz).",
+              "explanation": "Les solutions sont $y=Ce^{2x}$. En $x=0$, $y=C$. Si deux courbes se croisaient en un point $(x_0, y_0)$, il y aurait deux solutions passant par ce point, ce qui contredit l'unicité. Donc pas d'intersection."
+            },
+            {
+              "question": "Soit $y_1$ et $y_2$ deux solutions de $y' = a y$. Montrez que $y_1 + y_2$ et $k y_1$ (pour $k \\in \\mathbb{R}$) sont aussi solutions. Concluez sur la structure de l'ensemble des solutions.",
+              "answer": "Soit $y_1, y_2$ solutions : $y_1' = a y_1$, $y_2' = a y_2$. Alors $(y_1+y_2)' = y_1'+y_2' = a y_1 + a y_2 = a(y_1+y_2)$, donc $y_1+y_2$ solution. De même $(k y_1)' = k y_1' = k(a y_1) = a(k y_1)$, donc $k y_1$ solution. L'ensemble des solutions est un espace vectoriel de dimension 1 (engendré par $e^{ax}$).",
+              "hint": "Utilisez la linéarité de la dérivation : $(u+v)' = u'+v'$ et $(ku)' = k u'$.",
+              "explanation": "C'est la propriété fondamentale de linéarité des équations différentielles homogènes. L'espace des solutions est un $\\mathbb{R}$-espace vectoriel de dimension 1, une base étant $\\{e^{ax}\\}$."
+            }
+          ]
+        },
+        {
+          "title": "Condition initiale.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le problème de Cauchy : une condition pour une solution unique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons trouvé la solution générale $y = C e^{a x}$, qui contient une infinité de solutions (une pour chaque réel $C$). Dans la réalité, lorsqu'on modélise un phénomène, on connaît souvent une information supplémentaire : la valeur de la quantité étudiée à un instant précis. Par exemple, on sait qu'au temps $t=0$, la population est de $1000$ individus, ou que la masse radioactive initiale est de $50$ grammes. Cette information s'appelle une *condition initiale*. Elle permet de sélectionner, parmi toutes les solutions possibles, *la seule* qui correspond à la situation physique. C'est ce qu'on appelle résoudre un problème de Cauchy."
+            },
+            {
+              "type": "definition",
+              "term": "Problème de Cauchy (ou problème à condition initiale)",
+              "definition": "Pour l'équation différentielle $y' = a y$, un problème de Cauchy consiste à trouver une solution $y$ qui satisfait une condition initiale $y(x_0) = y_0$, où $x_0$ est un réel donné (souvent $0$) et $y_0$ un réel donné. Le couple $(x_0, y_0)$ est le point initial.",
+              "example": "Trouver $y$ telle que $y' = 2y$ et $y(0) = 3$. Ici $x_0=0$, $y_0=3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est d'une simplicité déconcertante grâce à la forme explicite de la solution générale. On écrit $y(x) = C e^{a x}$, on utilise la condition $y(x_0) = y_0$ pour déterminer $C$, et on obtient la solution unique. Faisons-le pas à pas sur un exemple concret pour bien ancrer le mécanisme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la solution générale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $y' = a y$, on a $y(x) = C e^{a x}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la condition initiale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On impose $y(x_0) = y_0$, c'est-à-dire $C e^{a x_0} = y_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer la constante $C$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On en déduit $C = y_0 e^{-a x_0}$ (si $x_0=0$, c'est simplement $C = y_0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire la solution particulière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On remplace $C$ dans la solution générale : $y(x) = y_0 e^{-a x_0} e^{a x} = y_0 e^{a (x - x_0)}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "y(x) = y_0 \\, e^{a (x - x_0)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarquez la forme finale élégante : $y(x) = y_0 e^{a(x-x_0)}$. Elle montre directement que la solution vaut $y_0$ en $x_0$, et que son évolution est une exponentielle de taux $a$ décalée horizontalement pour passer par $(x_0, y_0)$. C'est la formule qu'il faut retenir par cœur pour les problèmes de Cauchy sur cette équation. Elle évite de recalculer $C$ à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cette puissance avec un exemple venu de la physique : la loi de décroissance radioactive. On sait que le nombre de noyaux $N(t)$ d'un échantillon radioactif obéit à $N' = -\\lambda N$, où $\\lambda > 0$ est la constante de décroissance (liée à la demi-vie par $\\lambda = \\ln 2 / T_{1/2}$). Si au temps $t=0$ on a $N_0$ noyaux, la condition initiale est $N(0) = N_0$. L'application directe de la formule donne $N(t) = N_0 e^{-\\lambda t}$. C'est la célèbre loi d'exponentielle décroissante. Notez que la condition initiale est prise en $t=0$ ici, ce qui simplifie le calcul : $C = N_0$ directement."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Demi-vie et temps caractéristique",
+              "paragraphs": [
+                "Pour $a<0$, on définit le temps caractéristique $\\tau = -1/a$ (ou demi-vie $T_{1/2} = \\ln 2 / |a|$). La solution s'écrit $y(t) = y_0 e^{-t/\\tau}$. Au bout d'un temps $\\tau$, la valeur a été divisée par $e \\approx 2,718$. Au bout d'une demi-vie, elle est divisée par $2$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention cependant : la condition initiale n'est pas toujours donnée en $x=0$ ! Parfois, on sait que $y(2) = 5$ ou $y(-1) = 10$. La méthode reste exactement la même, il faut juste être vigilant sur le calcul de $C = y_0 e^{-a x_0}$. Une erreur classique est d'oublier le signe moins dans l'exposant quand on isole $C$, ou de confondre $x_0$ et $y_0$. Prenons le temps de faire un exemple complet avec $x_0 \\neq 0$ pour bien fixer la procédure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Exemple : $y' = -3y$ avec $y(2) = 4$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1) Solution générale : $y(x) = C e^{-3x}$. 2) Condition : $y(2) = C e^{-6} = 4$. 3) $C = 4 e^{6}$. 4) Solution : $y(x) = 4 e^{6} e^{-3x} = 4 e^{-3(x-2)}$. Vérification : $y(2) = 4 e^{0} = 4$ et $y'(x) = -12 e^{-3(x-2)} = -3 y(x)$. C'est bon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est aussi possible que l'énoncé donne la condition initiale sous une forme indirecte. Par exemple : \"La courbe représentative de la solution passe par le point d'abscisse $1$ et d'ordonnée $-2$.\" Cela signifie simplement $y(1) = -2$. Ou encore : \"La solution prend la valeur $5$ pour $x = -3$.\" C'est $y(-3) = 5$. La traduction du français vers les mathématiques est une compétence clé : ne vous laissez pas impressionner par la formulation, identifiez toujours le couple $(x_0, y_0)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, sachez que le théorème de Cauchy-Lipschitz (ou théorème d'existence et d'unicité) garantit que pour l'équation $y' = a y$, qui est linéaire à coefficients constants, il existe *exactement une* solution passant par un point donné $(x_0, y_0)$, et elle est définie sur tout $\\mathbb{R}$. C'est une propriété rassurante : notre méthode donne bien *la* solution, pas *une* solution parmi d'autres. Il n'y a pas de risque de rater une solution bizarre ou de trouver plusieurs réponses différentes. Cette unicité est ce qui permet de modéliser le monde réel de façon déterministe : l'état présent détermine l'avenir de manière unique."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une équation différentielle de la forme $y' = a y$ et en extraire le coefficient $a$.",
+                "Je sais écrire la solution générale de $y' = a y$ sous la forme $y = C e^{a x}$.",
+                "Je sais résoudre un problème de Cauchy : à partir d'une condition initiale $y(x_0) = y_0$, je détermine $C$ et j'écris la solution particulière $y(x) = y_0 e^{a(x-x_0)}$.",
+                "Je sais vérifier qu'une fonction est solution d'une équation différentielle donnée.",
+                "Je comprends le lien entre le signe de $a$ et le comportement de la solution (croissance ou décroissance exponentielle).",
+                "Je sais modéliser une situation concrète (population, radioactivité, capital) par une équation $y' = a y$ et en donner la solution avec la condition initiale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résolvez le problème de Cauchy : $y' = 5y$ avec $y(0) = -2$.",
+              "answer": "$y(x) = -2 e^{5x}$.",
+              "hint": "Solution générale $y = C e^{5x}$. Condition $y(0) = C = -2$.",
+              "explanation": "Ici $x_0=0$, donc $C = y_0 = -2$. La solution est $y = -2 e^{5x}$. C'est une exponentielle croissante (car $a=5>0$) mais négative (car $C<0$)."
+            },
+            {
+              "question": "Un capital de $10\\,000$ euros est placé à un taux d'intérêt composé continu de $2\\%$ par an. Soit $C(t)$ le capital après $t$ années. 1) Écrire l'équation différentielle et la condition initiale. 2) Donner l'expression de $C(t)$. 3) Calculer le capital après $10$ ans (arrondi à l'euro).",
+              "answer": "1) $C' = 0,02 C$, $C(0) = 10000$. 2) $C(t) = 10000 e^{0,02 t}$. 3) $C(10) = 10000 e^{0,2} \\approx 12214$ euros.",
+              "hint": "Taux $2\\% = 0,02$. Condition initiale en $t=0$. Utilisez $e^{0,2} \\approx 1,2214$.",
+              "explanation": "Modélisation classique : $a = 0,02$. Solution $C(t) = C_0 e^{0,02 t}$. Calcul numérique : $10000 \\times 1,221402758... = 12214$ euros."
+            },
+            {
+              "question": "Trouvez la solution de $y' = -2y$ qui passe par le point $(3, 5)$.",
+              "answer": "$y(x) = 5 e^{-2(x-3)}$.",
+              "hint": "Utilisez la formule $y(x) = y_0 e^{a(x-x_0)}$ avec $x_0=3$, $y_0=5$, $a=-2$.",
+              "explanation": "La condition initiale est $y(3)=5$. La formule directe donne $y(x) = 5 e^{-2(x-3)}$. Vérifiez : $y(3)=5 e^0=5$, $y'(x) = -10 e^{-2(x-3)} = -2 y(x)$."
+            },
+            {
+              "question": "La population de bactéries dans une boîte de Pétri suit la loi $P' = 0,8 P$ (temps en heures). On sait qu'après $2$ heures, la population est de $5000$ bactéries. 1) Quelle était la population initiale (à $t=0$) ? 2) Quelle sera la population après $5$ heures ?",
+              "answer": "1) $P(0) = 5000 e^{-1,6} \\approx 1009$ bactéries. 2) $P(5) = 5000 e^{0,8 \\times 3} = 5000 e^{2,4} \\approx 55115$ bactéries.",
+              "hint": "Utilisez la solution $P(t) = P(2) e^{0,8(t-2)}$ avec $P(2)=5000$. Pour $t=0$ et $t=5$.",
+              "explanation": "La condition initiale est donnée en $t=2$ : $P(2)=5000$. La solution est $P(t) = 5000 e^{0,8(t-2)}$. Pour $t=0$ : $P(0)=5000 e^{-1,6}$. Pour $t=5$ : $P(5)=5000 e^{2,4}$. Calculs numériques : $e^{-1,6}\\approx0,2019$, $e^{2,4}\\approx11,023$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

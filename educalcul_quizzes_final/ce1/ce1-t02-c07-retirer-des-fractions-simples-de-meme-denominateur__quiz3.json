@@ -1,0 +1,107 @@
+{
+  "_status": "done",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Vérifier par représentation",
+  "title": "Exercices : Soustraction de fractions - Vérifier par représentation",
+  "questions": [
+    {
+      "text": "On retire $1/4$ de $3/4$. La figure ci-dessous montre ce qui reste. Quelle est cette fraction ?",
+      "options": [
+        "$2/4$",
+        "$1/4$",
+        "$3/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "Au départ, la barre est divisée en 4 parties égales, 3 sont coloriées ($3/4$). On en retire 1 partie ($1/4$). Il reste donc 2 parties coloriées sur 4, soit la fraction $2/4$. Les autres propositions correspondent au nombre de parties retirées ($1/4$), à la fraction de départ ($3/4$) ou au tout ($4/4$).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Représentation du résultat : 2/4"
+      }
+    },
+    {
+      "text": "Voici un disque divisé en 3 parties égales, dont 2 sont coloriées ($2/3$). On retire $1/3$. Quelle est la fraction restante ?",
+      "options": [
+        "$1/3$",
+        "$2/3$",
+        "$3/3$",
+        "$0$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "La figure de départ montre $2/3$ (2 parties sur 3 coloriées). Retirer $1/3$ signifie enlever une partie colorée. Il ne reste plus qu'une seule partie colorée sur les 3, c'est-à-dire $1/3$. L'erreur fréquente serait de croire qu'il reste $2/3$ (ne pas retirer) ou $3/3$ (ajouter au lieu de retirer).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Au départ : 2/3"
+      }
+    },
+    {
+      "text": "Regarde les deux bandelettes. La du haut représente $3/4$, celle du bas $1/4$ que l'on retire. Quelle soustraction permet de trouver le reste ?",
+      "options": [
+        "$3/4 - 1/4 = 2/4$",
+        "$3/4 - 2/4 = 1/4$",
+        "$4/4 - 1/4 = 3/4$",
+        "$3/4 - 3/4 = 0$"
+      ],
+      "correctAnswer": "$3/4 - 1/4 = 2/4$",
+      "explanation": "La bande du haut montre 3 parties sur 4 ($3/4$). La bande du bas montre 1 partie sur 4 ($1/4$) qui est retirée. En enlevant 1 partie des 3, il reste 2 parties sur 4. L'opération correcte est donc $3/4 - 1/4 = 2/4$. Les autres opérations ne correspondent pas aux quantités représentées (mauvais numérateur retiré, ou mauvais total de départ).",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Modèle : 3/4 (haut) et 1/4 retiré (bas)"
+      }
+    },
+    {
+      "text": "Au départ, il y avait $3/4$ d'une barre de chocolat. Voici ce qui reste après en avoir mangé un morceau. Combien a-t-on mangé ?",
+      "options": [
+        "$2/4$",
+        "$1/4$",
+        "$3/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "La figure montre le résultat : $1/4$ (1 partie colorée sur 4). On sait que le départ était $3/4$. Pour trouver la partie mangée (retirée), on fait $3/4 - 1/4 = 2/4$. On a donc mangé $2/4$ de la barre. L'erreur serait de lire directement la figure ($1/4$) au lieu de calculer la différence.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Ce qui reste : 1/4"
+      }
+    },
+    {
+      "text": "Lucas a une bande de papier divisée en 4 parties égales. Il en donne 1 partie à son ami. Quelle fraction de la bande lui reste-t-il ?",
+      "options": [
+        "$3/4$",
+        "$1/4$",
+        "$2/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "La bande entière vaut $4/4$ (ou 1). Lucas donne 1 partie sur 4, soit $1/4$. Il lui reste donc $4/4 - 1/4 = 3/4$. On peut le visualiser : 4 parties au total, 1 partie donnée, il reste 3 parties. La réponse $1/4$ correspond à ce qu'il a donné, $2/4$ serait s'il en donnait 2, et $4/4$ s'il n'en donne aucune.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

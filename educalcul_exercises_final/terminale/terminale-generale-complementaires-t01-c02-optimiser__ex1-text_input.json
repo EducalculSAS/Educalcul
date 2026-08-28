@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Construire fonction",
+  "title": "Modélisation et optimisation d'aires",
+  "blocks": [
+    {
+      "title": "Expression de l'aire",
+      "content": "Un artisan souhaite fabriquer un enclos rectangulaire contre un mur droit. Il dispose de $20$ mètres de grillage pour les trois autres côtés. Soit $x$ la longueur des deux côtés perpendiculaires au mur. Exprimer l'aire $A(x)$ de l'enclos en fonction de $x$.",
+      "correctAnswer": "A(x) = -x^2 + 20x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre utilisé est composé de deux largeurs $x$ et d'une longueur $L$, soit $2x + L = 20$, donc $L = 20 - 2x$. L'aire est le produit de la longueur par la largeur : $A(x) = x(20 - 2x) = 20x - 2x^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intervalle de définition",
+      "content": "Pour que l'enclos ait un sens physiquement, quelles sont les valeurs possibles pour la variable $x$ ? Donner le résultat sous forme d'intervalle.",
+      "correctAnswer": "]0, 10[",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La largeur $x$ doit être strictement positive, donc $x > 0$. De plus, la longueur $L = 20 - 2x$ doit être strictement positive, donc $20 > 2x$, ce qui donne $x < 10$. L'intervalle est donc $]0, 10[$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche du maximum",
+      "content": "Déterminer la valeur de $x$ qui permet d'obtenir l'aire maximale de l'enclos.",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction $A(x) = -2x^2 + 20x$ est un trinôme du second degré avec un coefficient $a = -2 < 0$, elle admet donc un maximum. L'abscisse du sommet est donnée par la formule $x = -b / (2a)$, soit $x = -20 / (2 \\times -2) = -20 / -4 = 5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

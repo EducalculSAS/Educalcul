@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "If",
+  "title": "Quiz : Instruction conditionnelle Si (If)",
+  "questions": [
+    {
+      "text": "On considère l'algorithme suivant :\\nVariables a, b en Entier\\na <- 5\\nb <- 12\\nSi a > b Alors\\na <- a + b\\nSinon\\nb <- b - a\\nFin Si\\nAfficher a, b\\nQuelles valeurs sont affichées à la fin de l'exécution ?",
+      "options": [
+        "a = 5 et b = 7",
+        "a = 17 et b = 12",
+        "a = 5 et b = 17",
+        "a = 12 et b = 5"
+      ],
+      "correctAnswer": "a = 5 et b = 7",
+      "explanation": "La condition teste si $a > b$. Ici $a=5$ et $b=12$, donc $5 > 12$ est faux. On exécute le bloc Sinon : $b \\leftarrow b - a = 12 - 5 = 7$. La variable $a$ n'est pas modifiée. L'affichage final donne $a=5$ et $b=7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la syntaxe correcte pour une structure conditionnelle simple (sans Sinon) en pseudo-code algorithmique standard (style français) ?",
+      "options": [
+        "Si (x > 0) { x <- x + 1 }",
+        "Si x > 0 Alors x <- x + 1 Fin Si",
+        "If x > 0 Then x = x + 1 End If",
+        "TantQue x > 0 Faire x <- x + 1 Fin TantQue"
+      ],
+      "correctAnswer": "Si x > 0 Alors x <- x + 1 Fin Si",
+      "explanation": "En pseudo-code français standard, la structure conditionnelle utilise les mots-clés 'Si', 'Alors', 'Fin Si'. Les accolades {} et les mots-clés anglais 'If/Then/End If' appartiennent à des langages de programmation spécifiques (C, Python, VB). 'TantQue' correspond à une boucle, pas à un test conditionnel.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec l'entrée $x = -3$ :\\nVariables x en Entier\\nLire x\\nSi x < 0 Alors\\nx <- -x\\nFin Si\\nAfficher x\\nQuelle valeur est affichée ?",
+      "options": [
+        "-3",
+        "0",
+        "3",
+        "Erreur d'exécution"
+      ],
+      "correctAnswer": "3",
+      "explanation": "La condition $x < 0$ est vraie car $x = -3$. On exécute l'instruction $x \\leftarrow -x$, ce qui calcule l'opposé : $-(-3) = 3$. La variable $x$ vaut donc $3$ à l'affichage. Cette structure correspond à la valeur absolue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant :\\nVariables a, b en Entier\\na <- 10\\nb <- 4\\nSi a > 5 Alors\\nSi b > 5 Alors\\na <- a + 1\\nSinon\\nb <- b + 1\\nFin Si\\nFin Si\\nAfficher a, b\\nQuelles sont les valeurs finales de a et b ?",
+      "options": [
+        "a = 11 et b = 4",
+        "a = 10 et b = 5",
+        "a = 11 et b = 5",
+        "a = 10 et b = 4"
+      ],
+      "correctAnswer": "a = 10 et b = 5",
+      "explanation": "Le premier test $a > 5$ est vrai ($10 > 5$), on entre dans le bloc. Le second test $b > 5$ est faux ($4 > 5$ faux), on exécute le 'Sinon' imbriqué : $b \\leftarrow b + 1 = 5$. L'instruction $a \\leftarrow a + 1$ n'est pas exécutée. Résultat : $a=10, b=5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel fragment d'algorithme permet d'échanger les valeurs de deux variables x et y si x est strictement plus grand que y (tri d'un couple) ?",
+      "options": [
+        "Si x > y Alors\\ntemp <- x\\nx <- y\\ny <- temp\\nFin Si",
+        "Si x > y Alors\\nx <- y\\ny <- x\\nFin Si",
+        "Si x < y Alors\\ntemp <- x\\nx <- y\\ny <- temp\\nFin Si",
+        "Si x > y Alors\\ny <- x\\nx <- y\\nFin Si"
+      ],
+      "correctAnswer": "Si x > y Alors\\ntemp <- x\\nx <- y\\ny <- temp\\nFin Si",
+      "explanation": "Pour échanger deux variables, il faut une variable temporaire (temp) pour ne pas perdre la valeur initiale. L'option 2 et 4 écrasent x ou y avant d'avoir sauvegardé l'autre valeur (les deux variables finissent avec la même valeur). L'option 3 teste la condition inverse ($x < y$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

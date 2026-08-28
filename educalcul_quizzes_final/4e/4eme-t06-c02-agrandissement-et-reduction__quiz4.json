@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 446,
+  "_course_code": "4eme-t06-c02-agrandissement-et-reduction",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Application : Agrandissement et réduction",
+  "title": "Quiz : Applications de l'agrandissement et de la réduction",
+  "questions": [
+    {
+      "text": "Un triangle $ABC$ est transformé par un agrandissement de centre $O$ et de rapport $k = 2$. Si la longueur $AB$ vaut $3$ cm, quelle est la longueur de l'image $A'B'$ ?",
+      "options": [
+        "6 cm",
+        "1,5 cm",
+        "5 cm",
+        "3 cm"
+      ],
+      "correctAnswer": "6 cm",
+      "explanation": "Dans un agrandissement de rapport $k=2$, toutes les longueurs sont multipliées par $2$. La longueur $A'B'$ est donc $2 \\times AB = 2 \\times 3 = 6$ cm. L'option 1,5 cm correspondrait à une réduction de rapport $0,5$, 5 cm à une addition et 3 cm à une conservation de la longueur (rapport $1$).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec AB = 3 cm",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "3 cm",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Une figure $F'$ est l'image d'une figure $F$ par une réduction de rapport $k = \\frac{1}{3}$. Si une longueur de $F'$ mesure $4$ cm, quelle est la longueur correspondante dans la figure initiale $F$ ?",
+      "options": [
+        "12 cm",
+        "1,33 cm",
+        "7 cm",
+        "4 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "Pour retrouver la longueur initiale, il faut diviser la longueur de l'image par le rapport $k$, ou multiplier par l'inverse de $k$. Ici $k = \\frac{1}{3}$, l'inverse est $3$. La longueur initiale est $4 \\times 3 = 12$ cm. L'option 1,33 cm correspond à $4 \\times \\frac{1}{3}$ (erreur : on a multiplié au lieu de diviser), 7 cm à une addition et 4 cm à une confusion avec $k=1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une carte au $\\frac{1}{10\\,000}$ème, la distance entre deux villages mesure $5$ cm. Quelle est la distance réelle entre ces deux villages ?",
+      "options": [
+        "500 m",
+        "50 m",
+        "5 km",
+        "50 km"
+      ],
+      "correctAnswer": "500 m",
+      "explanation": "L'échelle $\\frac{1}{10\\,000}$ signifie que $1$ cm sur la carte représente $10\\,000$ cm en réalité. La distance réelle est $5 \\times 10\\,000 = 50\\,000$ cm. En mètres : $50\\,000 \\div 100 = 500$ m. L'option 50 m correspond à une division par $100$ oubliée ($50\\,000$ cm = $500$ m, pas $50$ m), 5 km à une conversion en km erronée ($50\\,000$ cm = $0,5$ km), 50 km est disproportionné.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "caption": "Distance mesurée sur la carte : 5 cm",
+        "segmentLength": 5,
+        "unit": "cm"
+      }
+    },
+    {
+      "text": "Un carré de côté $4$ cm est agrandi par une homothétie de rapport $k = 3$. Quelle est l'aire du carré image ?",
+      "options": [
+        "144 cm²",
+        "48 cm²",
+        "36 cm²",
+        "12 cm²"
+      ],
+      "correctAnswer": "144 cm²",
+      "explanation": "L'agrandissement de rapport $k=3$ multiplie les longueurs par $3$. Le côté du carré image est $4 \\times 3 = 12$ cm. Son aire est $12 \\times 12 = 144$ cm². On peut aussi calculer l'aire initiale ($16$ cm²) et la multiplier par $k^2 = 9$ : $16 \\times 9 = 144$ cm². L'option 48 cm² correspond à $16 \\times 3$ (erreur : on a multiplié l'aire par $k$ au lieu de $k^2$), 36 cm² à $6^2$ (côté $6$ cm, erreur sur $k$), 12 cm² à une confusion avec le périmètre ou le côté.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "caption": "Carré initial de côté 4 cm (aire 16 cm²)",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 16
+      }
+    },
+    {
+      "text": "Un segment $[AB]$ de longueur $8$ cm a pour image $[A'B']$ de longueur $12$ cm par une homothétie. Quel est le rapport $k$ de cette homothétie ?",
+      "options": [
+        "1,5",
+        "0,67",
+        "4",
+        "20"
+      ],
+      "correctAnswer": "1,5",
+      "explanation": "Le rapport $k$ d'une homothétie est le quotient de la longueur de l'image par la longueur de l'antécédent : $k = \\frac{A'B'}{AB} = \\frac{12}{8} = \\frac{3}{2} = 1,5$. Comme $k > 1$, c'est un agrandissement. L'option 0,67 est l'inverse ($\\frac{8}{12}$), 4 est la différence ($12-8$), 20 est la somme ($12+8$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

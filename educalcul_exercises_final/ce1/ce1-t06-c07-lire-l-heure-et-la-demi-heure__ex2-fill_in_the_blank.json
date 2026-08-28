@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 123,
+  "_course_code": "ce1-t06-c07-lire-l-heure-et-la-demi-heure",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Associer heure et demi-heure",
+  "title": "Associer heure et demi-heure",
+  "blocks": [
+    {
+      "title": "Heure exacte",
+      "content": "Regarde l'horloge. Il est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2 heures|deux heures"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'horloge indique que la petite aiguille est sur le $2$ et la grande aiguille sur le $12$. Cela correspond à $2$ heures pile. On peut écrire « $2$ heures » ou « deux heures ».",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 2,
+        "minutes": 0,
+        "caption": "Horloge indiquant 2 heures",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Demi-heure",
+      "content": "Regarde l'horloge. Il est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "5 heures 30|cinq heures trente"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La petite aiguille est entre le $5$ et le $6$, la grande aiguille sur le $6$. Cela signifie $5$ heures $30$ minutes, soit « $5$ heures $30$ » ou « cinq heures trente ».",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 5,
+        "minutes": 30,
+        "caption": "Horloge indiquant 5 heures 30",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Heure et minutes",
+      "content": "Regarde l'horloge. Il est {{1}} heures {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "8|huit",
+        "30|trente"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La petite aiguille est sur le $8$ et la grande aiguille sur le $6$ (ce qui correspond à $30$ minutes). On lit donc « $8$ heures $30$ » ou « huit heures trente ». Les deux réponses sont acceptées.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 8,
+        "minutes": 30,
+        "caption": "Horloge indiquant 8 heures 30",
+        "interactive": false
+      }
+    }
+  ]
+}

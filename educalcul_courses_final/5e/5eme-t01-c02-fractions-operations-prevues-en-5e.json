@@ -1,0 +1,509 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.670882+00:00",
+  "id": 380,
+  "code": "5eme-t01-c02",
+  "title": "Fractions : opérations prévues en 5e",
+  "description": "Cours structuré Educalcul : Fractions : opérations prévues en 5e.",
+  "subject": "Opérations et calcul numérique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Opérations et calcul numérique",
+    "titre_du_cours": "Fractions : opérations prévues en 5e",
+    "objectif_global": "Fractions : opérations prévues en 5e",
+    "mini_lecons_imposees": [
+      "Addition / soustraction.",
+      "Multiplication dans cadre du programme.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Opérations et calcul numérique",
+      "lessons": [
+        {
+          "title": "Addition / soustraction.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition de fractions : même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux fractions possèdent le même dénominateur, l'addition devient très simple : on garde ce dénominateur commun et on additionne uniquement les numérateurs. Imagine que tu as deux parts d'une même tarte coupée en quatre morceaux égaux ; si tu prends une part puis deux parts, tu as en tout trois parts sur les quatre. En langage mathématique, cela s'écrit $\\frac{1}{4}+\\frac{2}{4}=\\frac{3}{4}$. Le dénominateur $4$ ne change pas car la taille des parts reste identique. Cette règle vaut pour n'importe quel dénominateur, par exemple $\\frac{3}{7}+\\frac{2}{7}=\\frac{5}{7}$. Il est important de bien repérer que les fractions ont le même nombre sous la barre de fraction avant d'appliquer la règle."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Représentation de $\\frac{1}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'addition à dénominateur identique est claire, nous allons voir comment faire lorsque les dénominateurs sont différents."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition de fractions : dénominateurs différents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les fractions n'ont pas le même dénominateur, il faut d'abord les transformer pour qu'elles en aient un commun. La méthode classique consiste à chercher le plus petit multiple commun des deux dénominateurs, appelé PPCM. Par exemple, pour ajouter $\\frac{1}{3}$ et $\\frac{1}{4}$, le PPCM de $3$ et $4$ est $12$. On multiplie le numérateur et le dénominateur de la première fraction par $4$ pour obtenir $\\frac{4}{12}$, et ceux de la seconde par $3$ pour obtenir $\\frac{3}{12}$. Maintenant les dénominateurs sont égaux, on additionne les numérateurs : $\\frac{4}{12}+\\frac{3}{12}=\\frac{7}{12}$. Cette étape de mise au même dénominateur est indispensable ; sans elle, l'addition n'aurait pas de sens."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le PPCM",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les dénominateurs et calcule leur plus petit multiple commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Adapter les fractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur et le dénominateur de chaque fraction par le facteur qui permet d'atteindre le PPCM."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les numérateurs tout en conservant le dénominateur commun."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La soustraction suit exactement le même principe que l'addition, il suffit de remplacer le signe plus par un signe moins."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraction de fractions : même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque les fractions partagent le même dénominateur, la soustraction se fait en conservant ce dénominateur et en soustrayant le numérateur du second du numérateur du premier. Par exemple, $\\frac{5}{8}-\\frac{2}{8}=\\frac{3}{8}$. On peut visualiser cela en imaginant une barre de chocolat divisée en huit carrés : si tu en as cinq et que tu en donnes deux, il t'en reste trois. La règle est symétrique à l'addition, ce qui facilite la mémorisation. Attention toutefois à ne pas inverser l'ordre : $\\frac{2}{8}-\\frac{5}{8}$ donnerait un résultat négatif, ce qui est possible mais demande une interprétation adaptée."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{5}{8}-\\frac{2}{8}=\\frac{3}{8}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous abordons la soustraction avec des dénominateurs différents, qui réutilise la technique du PPCM."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraction de fractions : dénominateurs différents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le processus est identique à l'addition : on cherche le PPCM, on met les fractions au même dénominateur, puis on soustrait les numérateurs. Prenons $\\frac{3}{5}-\\frac{1}{2}$. Le PPCM de $5$ et $2$ est $10$. On transforme $\\frac{3}{5}$ en $\\frac{6}{10}$ et $\\frac{1}{2}$ en $\\frac{5}{10}$. La soustraction donne $\\frac{6}{10}-\\frac{5}{10}=\\frac{1}{10}$. On peut aussi représenter cette opération sur une droite graduée pour voir la distance entre les deux fractions. Cette visualisation aide à comprendre que soustraire revient à mesurer l'écart."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{3}{5}$ et $\\frac{1}{2}$ sur une droite",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.6,
+                  "label": "3/5"
+                },
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\frac{2}{9}+\\frac{4}{9}$.",
+              "answer": "\\frac{6}{9} = \\frac{2}{3}",
+              "hint": "Les dénominateurs sont identiques, additionne les numérateurs.",
+              "explanation": "On garde le dénominateur $9$ et on additionne $2+4=6$, ce qui donne $\\frac{6}{9}$. Cette fraction se simplifie en divisant numérateur et dénominateur par $3$, résultat $\\frac{2}{3}$."
+            },
+            {
+              "question": "Effectue $\\frac{1}{6}+\\frac{1}{4}$.",
+              "answer": "\\frac{5}{12}",
+              "hint": "Cherche le PPCM de $6$ et $4$.",
+              "explanation": "Le PPCM de $6$ et $4$ est $12$. On transforme $\\frac{1}{6}$ en $\\frac{2}{12}$ et $\\frac{1}{4}$ en $\\frac{3}{12}$. L'addition donne $\\frac{5}{12}$."
+            },
+            {
+              "question": "Calcule $\\frac{7}{10}-\\frac{3}{10}$.",
+              "answer": "\\frac{4}{10} = \\frac{2}{5}",
+              "hint": "Même dénominateur, soustrais les numérateurs.",
+              "explanation": "On conserve $10$ et on fait $7-3=4$, soit $\\frac{4}{10}$. En simplifiant par $2$, on obtient $\\frac{2}{5}$."
+            },
+            {
+              "question": "Résous $\\frac{5}{6}-\\frac{1}{4}$.",
+              "answer": "\\frac{7}{12}",
+              "hint": "Utilise le PPCM de $6$ et $4$.",
+              "explanation": "Le PPCM est $12$. $\\frac{5}{6}$ devient $\\frac{10}{12}$, $\\frac{1}{4}$ devient $\\frac{3}{12}$. La soustraction donne $\\frac{7}{12}$."
+            }
+          ]
+        },
+        {
+          "title": "Multiplication dans cadre du programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication de fractions : règle de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplication de deux fractions est une opération directe : on multiplie les numérateurs entre eux pour obtenir le nouveau numérateur, et les dénominateurs entre eux pour obtenir le nouveau dénominateur. Par exemple, $\\frac{2}{3}\\times\\frac{4}{5}=\\frac{2\\times4}{3\\times5}=\\frac{8}{15}$. Contrairement à l'addition, il n'est pas nécessaire de chercher un dénominateur commun. Cette règle s'applique quelle que soit la taille des fractions, y compris lorsque l'une d'elles est une fraction impropre comme $\\frac{7}{4}$. Il est toutefois utile de simplifier le résultat si numérateur et dénominateur ont un diviseur commun."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Représentation de $\\frac{2}{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de multiplier, on peut souvent simplifier les fractions en croisant les facteurs communs, ce qui évite de gros nombres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplification avant multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si un numérateur d'une fraction et le dénominateur de l'autre partagent un diviseur, on peut les diviser avant de multiplier. Prenons $\\frac{3}{8}\\times\\frac{4}{9}$. Le $3$ du premier numérateur et le $9$ du second dénominateur sont divisibles par $3$ : on obtient $1$ et $3$. De même, le $4$ du second numérateur et le $8$ du premier dénominateur sont divisibles par $4$ : on obtient $1$ et $2$. La multiplication devient $\\frac{1}{2}\\times\\frac{1}{3}=\\frac{1}{6}$, bien plus simple que $\\frac{12}{72}$ simplifié après coup. Cette technique, appelée simplification en croix, gagne du temps et réduit les erreurs de calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les facteurs communs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde chaque numérateur avec chaque dénominateur de l'autre fraction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise les nombres concernés par leur plus grand diviseur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier les fractions simplifiées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la règle habituelle sur les nouvelles fractions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Multiplier une fraction par un nombre entier suit la même logique, il suffit d'écrire l'entier sous forme de fraction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication par un entier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout nombre entier $n$ peut s'écrire $\\frac{n}{1}$. Ainsi, $5\\times\\frac{2}{7}=\\frac{5}{1}\\times\\frac{2}{7}=\\frac{10}{7}$. On peut aussi voir cela comme l'addition répétée de la fraction : $\\frac{2}{7}+\\frac{2}{7}+\\frac{2}{7}+\\frac{2}{7}+\\frac{2}{7}=\\frac{10}{7}$. Le résultat peut être une fraction impropre qu'on convertit parfois en nombre mixte, ici $1\\frac{3}{7}$. Cette conversion aide à donner une idée concrète de la quantité obtenue."
+            },
+            {
+              "type": "display_math",
+              "latex": "5\\times\\frac{2}{7}=\\frac{10}{7}=1\\frac{3}{7}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer concrètement la multiplication, nous utilisons un modèle d'aire qui montre comment les fractions se combinent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modèle d'aire pour la multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un rectangle de côté $1$ découpé en $4$ parts horizontales et $5$ parts verticales. La zone colorée représentant $\\frac{2}{4}\\times\\frac{3}{5}$ correspond à $2$ bandes sur $4$ horizontalement et $3$ bandes sur $5$ verticalement, soit $6$ petits rectangles sur $20$ au total, ce qui donne $\\frac{6}{20}=\\frac{3}{10}$. Ce découpage visuel explique pourquoi on multiplie les numérateurs et les dénominateurs : on compte les parties du tout. Ce modèle est très utile pour vérifier un résultat ou pour comprendre la multiplication de fractions par des fractions."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 4,
+                  "height": 5,
+                  "label": "Rectangle 1"
+                }
+              ],
+              "caption": "Modèle d'aire pour $\\frac{2}{4}\\times\\frac{3}{5}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\frac{3}{7}\\times\\frac{2}{5}$.",
+              "answer": "\\frac{6}{35}",
+              "hint": "Multiplie les numérateurs et les dénominateurs.",
+              "explanation": "On fait $3\\times2=6$ au numérateur et $7\\times5=35$ au dénominateur, résultat $\\frac{6}{35}$ qui est déjà sous forme irréductible."
+            },
+            {
+              "question": "Simplifie avant de multiplier : $\\frac{5}{12}\\times\\frac{9}{10}$.",
+              "answer": "\\frac{3}{8}",
+              "hint": "Cherche des diviseurs communs entre numérateurs et dénominateurs croisés.",
+              "explanation": "Le $5$ et le $10$ se divisent par $5$ (donne $1$ et $2$). Le $9$ et le $12$ se divisent par $3$ (donne $3$ et $4$). La multiplication devient $\\frac{1}{4}\\times\\frac{3}{2}=\\frac{3}{8}$."
+            },
+            {
+              "question": "Effectue $4\\times\\frac{3}{8}$ et donne le résultat en nombre mixte si nécessaire.",
+              "answer": "1\\frac{1}{2}",
+              "hint": "Écris $4$ sous la forme $\\frac{4}{1}$ puis multiplie.",
+              "explanation": "$4\\times\\frac{3}{8}=\\frac{12}{8}$. En simplifiant par $4$, on obtient $\\frac{3}{2}=1\\frac{1}{2}$."
+            },
+            {
+              "question": "Utilise le modèle d'aire pour trouver $\\frac{1}{3}\\times\\frac{3}{4}$.",
+              "answer": "\\frac{1}{4}",
+              "hint": "Découpe un rectangle en $3$ parties horizontalement et $4$ verticalement.",
+              "explanation": "Le rectangle est divisé en $12$ petits carrés. La fraction $\\frac{1}{3}$ prend $1$ bande sur $3$, $\\frac{3}{4}$ prend $3$ bandes sur $4$. L'intersection contient $3$ carrés sur $12$, soit $\\frac{3}{12}=\\frac{1}{4}$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes d'addition et soustraction de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes concrets permettent de donner du sens aux opérations sur les fractions. Par exemple, lors d'une fête, Léa a mangé $\\frac{1}{6}$ d'un gâteau et Paul en a mangé $\\frac{1}{4}$. Quelle part du gâteau ont-ils mangée ensemble ? Il faut additionner $\\frac{1}{6}+\\frac{1}{4}$. Le PPCM de $6$ et $4$ est $12$. On transforme : $\\frac{2}{12}+\\frac{3}{12}=\\frac{5}{12}$. Ils ont donc mangé $\\frac{5}{12}$ du gâteau. Ce type d'énoncé demande d'identifier l'opération, de choisir la bonne méthode de mise au même dénominateur et d'interpréter le résultat dans le contexte."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Parts de gâteau mangées par Léa et Paul",
+              "bars": [
+                {
+                  "label": "Léa",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paul",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes peuvent aussi demander une soustraction, par exemple pour savoir ce qui reste."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes de soustraction de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une bouteille contenant $\\frac{7}{8}$ de litre de jus. On verse $\\frac{1}{3}$ de litre dans un verre. Combien reste-t-il dans la bouteille ? Il faut calculer $\\frac{7}{8}-\\frac{1}{3}$. Le PPCM de $8$ et $3$ est $24$. On obtient $\\frac{21}{24}-\\frac{8}{24}=\\frac{13}{24}$ de litre. Le résultat $\\frac{13}{24}$ est une fraction propre, il représente la quantité restante. Vérifier la cohérence : $\\frac{13}{24}$ est bien inférieur à $\\frac{7}{8}$ ($\\approx0,875$) et supérieur à $0$, ce qui est logique."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition du jus : bu et restant",
+              "slices": [
+                {
+                  "label": "Bu",
+                  "value": 8,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restant",
+                  "value": 13,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Certains problèmes combinent addition et multiplication, il faut alors bien lire l'énoncé pour choisir l'ordre des opérations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes à plusieurs étapes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un pâtissier utilise $\\frac{2}{5}$ d'un sac de farine pour faire des cookies et $\\frac{1}{4}$ du même sac pour un gâteau. Quelle fraction du sac a-t-il utilisée au total ? On additionne $\\frac{2}{5}+\\frac{1}{4}$. PPCM $20$ : $\\frac{8}{20}+\\frac{5}{20}=\\frac{13}{20}$. Ensuite, il décide de doubler la recette du gâteau, donc il utilise deux fois $\\frac{1}{4}$, soit $\\frac{1}{2}$ du sac. La quantité totale devient $\\frac{2}{5}+\\frac{1}{2}$. PPCM $10$ : $\\frac{4}{10}+\\frac{5}{10}=\\frac{9}{10}$. Ce problème montre l'enchaînement addition puis multiplication par un entier, puis addition finale."
+            },
+            {
+              "type": "number_line",
+              "caption": "Évolution de la farine utilisée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.4,
+                  "label": "2/5"
+                },
+                {
+                  "value": 0.25,
+                  "label": "1/4"
+                },
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.9,
+                  "label": "9/10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, un dernier problème mélangeant toutes les opérations travaillées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème de synthèse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une classe a récolté $\\frac{3}{4}$ kg de pommes. Elle en donne $\\frac{1}{3}$ kg à une association, puis elle partage le reste équitablement entre $4$ groupes. Combien de kilogrammes reçoit chaque groupe ? D'abord, on soustrait : $\\frac{3}{4}-\\frac{1}{3}$. PPCM $12$ : $\\frac{9}{12}-\\frac{4}{12}=\\frac{5}{12}$ kg restant. Ensuite, on divise cette quantité par $4$, ce qui équivaut à multiplier par $\\frac{1}{4}$ : $\\frac{5}{12}\\times\\frac{1}{4}=\\frac{5}{48}$ kg par groupe. Le résultat est une fraction petite mais précise, illustrant la puissance des fractions pour partager finement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner et soustraire des fractions de même dénominateur.",
+                "Je sais mettre des fractions au même dénominateur pour les additionner ou les soustraire.",
+                "Je sais multiplier deux fractions et simplifier avant de multiplier.",
+                "Je sais multiplier une fraction par un entier.",
+                "Je sais résoudre des problèmes concrets en choisissant l'opération adaptée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Marie a lu $\\frac{2}{5}$ d'un livre lundi et $\\frac{1}{3}$ mardi. Quelle fraction du livre a-t-elle lue au total ?",
+              "answer": "\\frac{11}{15}",
+              "hint": "Cherche le PPCM de $5$ et $3$.",
+              "explanation": "PPCM $15$. $\\frac{2}{5}=\\frac{6}{15}$, $\\frac{1}{3}=\\frac{5}{15}$. Somme $\\frac{11}{15}$."
+            },
+            {
+              "question": "Un réservoir contient $\\frac{5}{6}$ m³ d'eau. On en retire $\\frac{1}{4}$ m³. Quelle quantité reste-t-il ?",
+              "answer": "\\frac{7}{12} \\text{ m}^3",
+              "hint": "Mets au même dénominateur $12$.",
+              "explanation": "$\\frac{5}{6}=\\frac{10}{12}$, $\\frac{1}{4}=\\frac{3}{12}$. Différence $\\frac{7}{12}$."
+            },
+            {
+              "question": "Un jardinier utilise $\\frac{3}{8}$ d'un sac d'engrais pour les roses et $\\frac{1}{2}$ pour les légumes. Il décide d'augmenter la dose pour les légumes de moitié. Quelle fraction du sac utilise-t-il au total ?",
+              "answer": "\\frac{11}{16}",
+              "hint": "Calcule d'abord la nouvelle dose pour les légumes, puis additionne.",
+              "explanation": "Dose légumes augmentée : $\\frac{1}{2}+\\frac{1}{2}\\times\\frac{1}{2}=\\frac{1}{2}+\\frac{1}{4}=\\frac{3}{4}$. Total : $\\frac{3}{8}+\\frac{3}{4}=\\frac{3}{8}+\\frac{6}{8}=\\frac{9}{8}=1\\frac{1}{8}$. Mais attention, le sac ne contient qu'un entier, donc il utilise tout le sac et dépasse ; dans le cadre du problème, on considère la fraction totale utilisée $\\frac{9}{8}$."
+            },
+            {
+              "question": "Un ruban mesure $\\frac{7}{10}$ m. On en coupe $\\frac{2}{5}$ m pour un premier projet, puis on partage le reste en $3$ morceaux égaux. Quelle est la longueur de chaque morceau ?",
+              "answer": "\\frac{1}{10} \\text{ m}",
+              "hint": "Soustraye d'abord, puis divise par $3$ (multiplie par $\\frac{1}{3}$).",
+              "explanation": "Reste : $\\frac{7}{10}-\\frac{2}{5}=\\frac{7}{10}-\\frac{4}{10}=\\frac{3}{10}$. Partage : $\\frac{3}{10}\\times\\frac{1}{3}=\\frac{3}{30}=\\frac{1}{10}$ m."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

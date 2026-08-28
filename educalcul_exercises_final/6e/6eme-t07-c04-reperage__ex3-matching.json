@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 366,
+  "_course_code": "6eme-t07-c04-reperage",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Lire déplacement",
+  "title": "Lire un déplacement sur un quadrillage",
+  "blocks": [
+    {
+      "title": "Déplacements simples",
+      "content": "Relie chaque situation de départ et d'arrivée au déplacement correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Départ $A(1;1)$ → Arrivée $B(4;1)$",
+          "right": "Déplacement de 3 cases vers l'est"
+        },
+        {
+          "left": "Départ $C(5;5)$ → Arrivée $D(5;2)$",
+          "right": "Déplacement de 3 cases vers le sud"
+        },
+        {
+          "left": "Départ $E(2;3)$ → Arrivée $F(2;6)$",
+          "right": "Déplacement de 3 cases vers le nord"
+        },
+        {
+          "left": "Départ $G(4;4)$ → Arrivée $H(1;4)$",
+          "right": "Déplacement de 3 cases vers l'ouest"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur un quadrillage, l'abscisse (premier nombre) augmente vers l'est et diminue vers l'ouest. L'ordonnée (deuxième nombre) augmente vers le nord et diminue vers le sud. Pour $A(1;1)$ à $B(4;1)$, l'abscisse passe de 1 à 4 (+3) et l'ordonnée ne change pas : c'est un déplacement de 3 cases vers l'est. Pour $C(5;5)$ à $D(5;2)$, l'ordonnée passe de 5 à 2 (-3) : c'est un déplacement de 3 cases vers le sud. Pour $E(2;3)$ à $F(2;6)$, l'ordonnée passe de 3 à 6 (+3) : c'est un déplacement de 3 cases vers le nord. Pour $G(4;4)$ à $H(1;4)$, l'abscisse passe de 4 à 1 (-3) : c'est un déplacement de 3 cases vers l'ouest.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Variations de coordonnées",
+      "content": "Relie chaque description de déplacement à sa variation de coordonnées $(\\Delta x ; \\Delta y)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "4 cases vers l'est",
+          "right": "$(4;0)$"
+        },
+        {
+          "left": "2 cases vers l'ouest",
+          "right": "$(-2;0)$"
+        },
+        {
+          "left": "5 cases vers le nord",
+          "right": "$(0;5)$"
+        },
+        {
+          "left": "3 cases vers le sud",
+          "right": "$(0;-3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "La variation de coordonnées $(\\Delta x ; \\Delta y)$ indique le changement d'abscisse et d'ordonnée. Vers l'est, l'abscisse augmente : $\\Delta x$ est positif, $\\Delta y = 0$. Vers l'ouest, l'abscisse diminue : $\\Delta x$ est négatif, $\\Delta y = 0$. Vers le nord, l'ordonnée augmente : $\\Delta x = 0$, $\\Delta y$ est positif. Vers le sud, l'ordonnée diminue : $\\Delta x = 0$, $\\Delta y$ est négatif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déplacements composés",
+      "content": "Relie chaque suite de déplacements à la variation de coordonnées finale $(\\Delta x ; \\Delta y)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "2 cases est, puis 3 cases nord",
+          "right": "$(2;3)$"
+        },
+        {
+          "left": "4 cases ouest, puis 1 case sud",
+          "right": "$(-4;-1)$"
+        },
+        {
+          "left": "1 case est, puis 4 cases sud",
+          "right": "$(1;-4)$"
+        },
+        {
+          "left": "3 cases nord, puis 2 cases ouest",
+          "right": "$(-2;3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On additionne les variations de chaque étape. Est : $\\Delta x$ positif. Ouest : $\\Delta x$ négatif. Nord : $\\Delta y$ positif. Sud : $\\Delta y$ négatif. Pour « 2 est, 3 nord » : $\\Delta x = +2$, $\\Delta y = +3$ soit $(2;3)$. Pour « 4 ouest, 1 sud » : $\\Delta x = -4$, $\\Delta y = -1$ soit $(-4;-1)$. Pour « 1 est, 4 sud » : $\\Delta x = +1$, $\\Delta y = -4$ soit $(1;-4)$. Pour « 3 nord, 2 ouest » : $\\Delta x = -2$, $\\Delta y = +3$ soit $(-2;3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

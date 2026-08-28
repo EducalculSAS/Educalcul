@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Variables, boucles, conditions",
+  "title": "Algorithmique : Variables, boucles et conditions",
+  "blocks": [
+    {
+      "title": "Variable et affectation",
+      "content": "On exécute l'algorithme suivant :\\nDébut\\n  nombre ← 12\\n  nombre ← nombre + 8\\n  nombre ← nombre × 2\\nFin\\nQuelle est la valeur finale de la variable nombre ?",
+      "correctAnswer": "40",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On suit les instructions pas à pas :\\n1. nombre prend la valeur 12.\\n2. nombre devient 12 + 8 = 20.\\n3. nombre devient 20 × 2 = 40.\\nLa valeur finale est 40.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle simple",
+      "content": "On exécute cet algorithme avec une boucle :\\nDébut\\n  compteur ← 0\\n  total ← 0\\n  Répéter 5 fois\\n    compteur ← compteur + 1\\n    total ← total + compteur\\n  Fin Répéter\\nFin\\nQuelle est la valeur de total à la fin ?",
+      "correctAnswer": "15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle s'exécute 5 fois. On calcule total à chaque tour :\\nTour 1 : compteur=1, total=0+1=1\\nTour 2 : compteur=2, total=1+2=3\\nTour 3 : compteur=3, total=3+3=6\\nTour 4 : compteur=4, total=6+4=10\\nTour 5 : compteur=5, total=10+5=15\\nLa valeur finale de total est 15 (somme des 5 premiers entiers).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition dans une boucle",
+      "content": "On exécute l'algorithme suivant :\\nDébut\\n  score ← 0\\n  Pour k allant de 1 à 10\\n    Si k > 6 Alors\\n      score ← score + k\\n    Fin Si\\n  Fin Pour\\nFin\\nQuelle est la valeur finale de score ?",
+      "correctAnswer": "34",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle parcourt k de 1 à 10. La condition 'k > 6' est vraie pour k = 7, 8, 9, 10.\\nOn additionne ces valeurs : 7 + 8 + 9 + 10 = 34.\\nLa valeur finale de score est 34.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

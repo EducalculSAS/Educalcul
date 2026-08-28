@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Application : Programmes de calcul",
+  "title": "Quiz : Applications des programmes de calcul",
+  "questions": [
+    {
+      "text": "On exécute le programme suivant avec le nombre de départ $5$ :\\nChoisis un nombre.\\nAjoute $4$.\\nMultiplie par $3$.\\nSoustrait $6$.\\nDivise par $3$.\\nQuel est le résultat final ?",
+      "options": [
+        "Le résultat est $7$.",
+        "Le résultat est $5$.",
+        "Le résultat est $9$.",
+        "Le résultat est $11$."
+      ],
+      "correctAnswer": "Le résultat est $7$.",
+      "explanation": "On suit les étapes dans l'ordre : $5 + 4 = 9$ ; $9 \\times 3 = 27$ ; $27 - 6 = 21$ ; $21 \\div 3 = 7$. L'erreur courante est de faire les opérations dans le désordre ou d'oublier une étape.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme de calcul :\\nChoisis un nombre.\\nMultiplie par $5$.\\nAjoute $10$.\\nLe résultat final obtenu est $60$.\\nQuel était le nombre de départ ?",
+      "options": [
+        "Le nombre de départ est $10$.",
+        "Le nombre de départ est $14$.",
+        "Le nombre de départ est $50$.",
+        "Le nombre de départ est $8$."
+      ],
+      "correctAnswer": "Le nombre de départ est $10$.",
+      "explanation": "Il faut remonter le programme en faisant les opérations inverses dans l'ordre inverse : on part de $60$, on retranche $10$ (inverse d'ajouter) ce qui donne $50$, puis on divise par $5$ (inverse de multiplier) ce qui donne $10$. L'erreur $14$ vient de $(60+10)\\div5$, l'erreur $50$ d'oublier la division, l'erreur $8$ d'un mauvais calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La phrase suivante décrit un programme : \"Je choisis un nombre, je le multiplie par $4$, j'ajoute $12$, je divise par $2$\".\\nLequel des programmes ci-dessous correspond exactement à cette description ?",
+      "options": [
+        "Choisis un nombre. Multiplie par $4$. Ajoute $12$. Divise par $2$.",
+        "Choisis un nombre. Ajoute $12$. Multiplie par $4$. Divise par $2$.",
+        "Choisis un nombre. Multiplie par $4$. Divise par $2$. Ajoute $12$.",
+        "Choisis un nombre. Divise par $2$. Multiplie par $4$. Ajoute $12$."
+      ],
+      "correctAnswer": "Choisis un nombre. Multiplie par $4$. Ajoute $12$. Divise par $2$.",
+      "explanation": "L'ordre des opérations est crucial. La phrase dicte la suite exacte : d'abord la multiplication par $4$, ensuite l'addition de $12$, enfin la division par $2$. Les autres propositions changent l'ordre, ce qui change le résultat final.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique ce programme au nombre de départ $8$ :\\nChoisis un nombre.\\nMultiplie par $3$.\\nAjoute $6$.\\nDivise par $3$.\\nSoustrait $2$.\\nQuel est le résultat final ?",
+      "options": [
+        "Le résultat est $8$.",
+        "Le résultat est $6$.",
+        "Le résultat est $10$.",
+        "Le résultat est $4$."
+      ],
+      "correctAnswer": "Le résultat est $8$.",
+      "explanation": "Calculons étape par étape : $8 \\times 3 = 24$ ; $24 + 6 = 30$ ; $30 \\div 3 = 10$ ; $10 - 2 = 8$. On retrouve le nombre de départ. Ce programme est un « tour de magie » qui ramène toujours au nombre initial. Les distracteurs correspondent à des arrêts au milieu du programme ($10$) ou des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a choisi un nombre. Il l'a multiplié par $5$, puis il a retranché $15$. Il obtient $40$.\\nQuel programme doit-il exécuter pour retrouver son nombre de départ ?",
+      "options": [
+        "Je choisis $40$, j'ajoute $15$, je divise par $5$.",
+        "Je choisis $40$, je divise par $5$, j'ajoute $15$.",
+        "Je choisis $40$, je retranche $15$, je divise par $5$.",
+        "Je choisis $40$, je multiplie par $5$, j'ajoute $15$."
+      ],
+      "correctAnswer": "Je choisis $40$, j'ajoute $15$, je divise par $5$.",
+      "explanation": "Pour retrouver le départ, on inverse les opérations dans l'ordre inverse. La dernière opération était « retrancher $15$ », son inverse est « ajouter $15$ ». La première était « multiplier par $5$ », son inverse est « diviser par $5$ ». On fait donc : $40 + 15 = 55$, puis $55 \\div 5 = 11$. Le nombre de départ était $11$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

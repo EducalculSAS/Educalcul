@@ -1,0 +1,336 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.751543+00:00",
+  "id": 404,
+  "code": "5eme-t05-c05",
+  "title": "Bilan - Transformations et espace 5e",
+  "description": "Cours structuré Educalcul : Bilan - Transformations et espace 5e.",
+  "subject": "Repérage, transformations et géométrie dans l'espace",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Repérage, transformations et géométrie dans l'espace",
+    "titre_du_cours": "Bilan - Transformations et espace 5e",
+    "objectif_global": "Bilan - Transformations et espace 5e",
+    "mini_lecons_imposees": [
+      "Repérage, transformations, solides.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Repérage, transformations et géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Repérage, transformations, solides.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan où nous allons revisiter ensemble les idées principales du repérage, des transformations et des solides. Tu as déjà rencontré ces notions au fil des chapitres, et ce cours est là pour t'aider à les remettre en ordre, sans pression, en prenant le temps de bien poser chaque idée. Nous allons avancer pas à pas, avec des exemples concrets qui te parleront, et tu verras que tout devient plus clair quand on le regarde sous un angle familier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérage dans le plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le repérage dans le plan. Imagine une grande feuille quadrillée où deux droites perpendiculaires se croisent au point zéro : l'axe horizontal s'appelle l'axe des abscisses, l'axe vertical l'axe des ordonnées. Chaque point se décrit par un couple de nombres, le premier pour la position à gauche ou à droite, le second pour la position en haut ou en bas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, le point $A(3; -2)$ se trouve trois graduations à droite de l'origine et deux graduations en dessous. Prends le temps de visualiser ce déplacement sur ton papier, cela ancre la notion durablement. Essaie aussi de placer le point $B(-4; 5)$ pour sentir la différence entre abscisse négative et ordonnée positive."
+            },
+            {
+              "type": "definition",
+              "term": "abscisse",
+              "definition": "Coordonnée horizontale d'un point, mesurée sur l'axe des abscisses.",
+              "example": "Pour le point $A(3; -2)$, l'abscisse est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "ordonnée",
+              "definition": "Coordonnée verticale d'un point, mesurée sur l'axe des ordonnées.",
+              "example": "Pour le point $A(3; -2)$, l'ordonnée est $-2$."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "B"
+                }
+              ],
+              "caption": "Axe des ordonnées avec deux points repérés"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment lire des coordonnées sur un axe vertical, nous allons passer à un petit exercice pour vérifier que tu es à l'aise avec les signes et les valeurs. Prends ton temps, il n'y a pas de piège."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les transformations du plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux transformations du plan. Une translation glisse chaque point d'une figure d'un même vecteur, sans tourner ni déformer la figure. C'est comme si tu poussais un dessin sur une table : tout bouge ensemble, les distances et les angles restent inchangés."
+            },
+            {
+              "type": "paragraph",
+              "content": "La symétrie axiale, elle, retourne la figure par rapport à une droite, comme un miroir. Le point et son image sont à égale distance de l'axe de symétrie. Ces deux transformations sont très utiles pour construire des figures ou résoudre des problèmes de géométrie."
+            },
+            {
+              "type": "definition",
+              "term": "translation",
+              "definition": "Déplacement de toutes les figures d'un même vecteur, sans rotation ni changement de taille.",
+              "example": "Le triangle $ABC$ devient $A'B'C'$ après translation par $\\vec{v}(2; -3)$."
+            },
+            {
+              "type": "definition",
+              "term": "symétrie axiale",
+              "definition": "Transformation qui retourne une figure par rapport à une droite, comme dans un miroir.",
+              "example": "Le point $P$ et son image $P'$ sont à égale distance de l'axe."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\vec{v}(x;y) = (x+2; y-3)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir manipulé la translation et la symétrie, nous allons maintenant nous intéresser aux solides de l'espace. Tu verras que les idées de repérage et de transformation reviennent naturellement quand on étudie les faces, les arêtes et les sommets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les solides usuels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un pavé droit est un solide dont les six faces sont des rectangles. Il possède douze arêtes et huit sommets. Si toutes les faces sont des carrés, on obtient un cube, un cas particulier de pavé droit. La pyramide, quant à elle, a une base polygonale et des faces triangulaires qui se rejoignent en un sommet."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer le volume d'un pavé droit, on multiplie ses trois dimensions : longueur, largeur et hauteur. Par exemple, un pavé de $5\\\\,cm$ sur $3\\\\,cm$ sur $2\\\\,cm$ a un volume de $30\\\\,cm^3$. Essaie de visualiser les trois couches de cubes unitaires qui le remplissent."
+            },
+            {
+              "type": "definition",
+              "term": "pavé droit",
+              "definition": "Solide dont les six faces sont des rectangles, les angles sont tous droits.",
+              "example": "Une boîte de chaussures est un pavé droit."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 5,
+                  "height": 3,
+                  "label": "Face 1"
+                },
+                {
+                  "width": 5,
+                  "height": 2,
+                  "label": "Face 2"
+                },
+                {
+                  "width": 3,
+                  "height": 2,
+                  "label": "Face 3"
+                }
+              ],
+              "caption": "Décomposition des faces d'un pavé droit 5x3x2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations, tu viens de revoir les trois piliers de ce chapitre : le repérage, les transformations et les solides. Continue à t'entraîner avec les exercices proposés, et n'hésite pas à revenir sur les parties qui te semblent encore floues. La régularité est la clé pour ancrer durablement ces connaissances."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelles sont les coordonnées du point B situé 4 graduations à gauche de l'origine et 5 graduations au-dessus ?",
+              "answer": "(-4; 5)",
+              "hint": "Repère l'origine, compte les graduations vers la gauche pour l'abscisse et vers le haut pour l'ordonnée.",
+              "explanation": "L'abscisse est négative car on va à gauche, l'ordonnée positive car on monte."
+            },
+            {
+              "question": "Le triangle ABC est translaté par le vecteur $\\vec{v}(2; -3)$. Si A a pour coordonnées $(1; 4)$, quelles sont les coordonnées de A' ?",
+              "answer": "(3; 1)",
+              "hint": "Ajoute les composantes du vecteur aux coordonnées du point.",
+              "explanation": "La translation ajoute le vecteur à chaque point : $x' = x + 2$, $y' = y - 3$."
+            },
+            {
+              "question": "Un pavé droit a des dimensions $5\\,cm$, $3\\,cm$ et $2\\,cm$. Quelle est son volume ?",
+              "answer": "$30\\,cm^3$",
+              "hint": "Le volume d'un pavé droit est le produit de ses trois dimensions.",
+              "explanation": "On multiplie $5 \\times 3 \\times 2 = 30$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière étape de notre bilan : une révision active sous forme de checklist. L'objectif n'est pas de tout réciter par cœur, mais de vérifier que chaque notion est bien comprise et que tu sais l'appliquer. Nous allons passer en revue le repérage, les transformations et les solides avec de nouveaux exemples, puis tu pourras cocher les compétences acquises."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur le repérage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le repérage avec une situation concrète : imagine une carte au trésor où l'origine est le pied du grand chêne. L'abscisse compte les pas vers l'est (positif) ou l'ouest (négatif), l'ordonnée les pas vers le nord (positif) ou le sud (négatif). Le trésor se trouve au point $T(-3; 4)$, soit trois pas à l'ouest et quatre pas au nord."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de placer mentalement ce point sur un quadrillage. Note que l'abscisse négative signifie un déplacement vers la gauche sur l'axe horizontal, tandis que l'ordonnée positive correspond à un déplacement vers le haut sur l'axe vertical. Cette image te servira pour l'exercice suivant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses avec points",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "C"
+                },
+                {
+                  "value": 4,
+                  "label": "D"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le repérage est rafraîchi, tournons-nous vers les transformations. Nous allons examiner une rotation d'un quart de tour, une transformation qui fait pivoter la figure autour d'un point fixe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les transformations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une rotation de 90 degrés dans le sens direct autour de l'origine envoie un point $(x; y)$ sur $(-y; x)$. C'est comme si tu tournais une feuille de papier d'un quart de tour : ce qui était à droite monte, ce qui était en haut part à gauche."
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette règle au triangle $MNP$ avec $M(2; 1)$. Après rotation, $M'$ aura pour coordonnées $(-1; 2)$. Visualise le triangle qui pivote, les longueurs des côtés ne changent pas, seule l'orientation change."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle original et son image après rotation de 90°",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la rotation, intéressons-nous aux solides. Nous allons calculer le volume d'une pyramide à base carrée, une figure que l'on retrouve souvent en architecture."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une pyramide à base carrée a une base qui est un carré de côté $c$ et une hauteur $h$ mesurée perpendiculairement à la base. Son volume se calcule avec la formule $V = \\\\frac{1}{3} \\\\times c^2 \\\\times h$. Le facteur un tiers vient du fait que la pyramide occupe un tiers du pavé droit qui l'engloberait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $c = 4\\\\,cm$ et $h = 6\\\\,cm$. L'aire de la base vaut $16\\\\,cm^2$, le volume vaut $\\\\frac{1}{3} \\\\times 16 \\\\times 6 = 32\\\\,cm^3$. Essaie de refaire le calcul de ton côté pour t'assurer que la formule te parle."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\\\frac{1}{3} \\\\times \\\\text{aire base} \\\\times h"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant revisité les trois grands thèmes. Avant de terminer, prends un moment pour lire la checklist ci-dessous et cocher ce que tu maîtrises déjà. Ce qui n'est pas coché sera ton programme de révision pour les prochains jours."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un point dans le plan à l'aide de ses coordonnées.",
+                "Je sais décrire une translation par un vecteur.",
+                "Je sais reconnaître une symétrie axiale.",
+                "Je sais calculer le volume d'un pavé droit.",
+                "Je sais identifier les faces, arêtes et sommets d'une pyramide."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une carte, le trésor est au point $T(-3; 4)$. Quelles sont ses coordonnées ?",
+              "answer": "(-3; 4)",
+              "hint": "L'abscisse est negative, l'ordonnée positive.",
+              "explanation": "On lit l'abscisse sur l'axe horizontal, l'ordonnée sur l'axe vertical."
+            },
+            {
+              "question": "Le triangle $MNP$ est tourné d'un quart de tour autour de l'origine. Si $M(2; 1)$, quelles sont les coordonnées de $M'$ ?",
+              "answer": "(-1; 2)",
+              "hint": "Une rotation de 90° dans le sens direct envoie $(x;y)$ sur $(-y;x)$.",
+              "explanation": "On applique la règle de rotation : $x' = -y$, $y' = x$."
+            },
+            {
+              "question": "Une pyramide à base carrée de côté $4\\,cm$ a une hauteur de $6\\,cm$. Calcule son volume.",
+              "answer": "$32\\,cm^3$",
+              "hint": "Aire de la base = côté × côté.",
+              "explanation": "Aire base = $4 \\times 4 = 16$, volume = $\\\\frac{1}{3} \\\\times 16 \\\\times 6 = 32$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

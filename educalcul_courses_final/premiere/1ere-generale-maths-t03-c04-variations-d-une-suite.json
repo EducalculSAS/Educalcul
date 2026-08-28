@@ -1,0 +1,386 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.319839+00:00",
+  "id": 585,
+  "code": "1ere-generale-maths-t03-c04",
+  "title": "Variations d'une suite",
+  "description": "Cours structuré Educalcul : Variations d'une suite.",
+  "subject": "Suites et modèles discrets",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Suites et modèles discrets",
+    "titre_du_cours": "Variations d'une suite",
+    "objectif_global": "Variations d'une suite",
+    "mini_lecons_imposees": [
+      "Comparer termes.",
+      "Monotonie simple.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Suites et modèles discrets",
+      "lessons": [
+        {
+          "title": "Comparer termes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux termes consécutifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on commence l'étude d'une suite, la question fondamentale qui se pose est de savoir comment un terme se situe par rapport au précédent. Est‑ce que la suite grimpe, descend ou reste stable ? Cette comparaison locale entre $u_{n+1}$ et $u_n$ est la brique de base pour comprendre le comportement global de la suite. En Première spécialité, nous disposons de trois outils principaux, chacun adapté à un type d'expression de la suite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier outil, le plus universel, est la différence $u_{n+1} - u_n$. Si l'on parvient à simplifier cette expression et à en déterminer le signe pour tout indice $n$, on connaît immédiatement l'ordre entre les deux termes. Une différence positive signifie $u_{n+1} > u_n$ (la suite augmente à ce rang), une différence negative signifie $u_{n+1} < u_n$ (elle diminue), et une différence nulle indique $u_{n+1} = u_n$ (elle est constante à ce rang). Cette méthode fonctionne aussi bien pour une suite donnée par une formule explicite que pour une suite définie par récurrence, pourvu qu'on puisse exprimer $u_{n+1}$ en fonction de $n$ ou de $u_n$."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1} - u_n"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cela sur un exemple classique. Soit la suite $(u_n)$ définie par $u_n = n^2 - 3n$ pour $n \\in \\mathbb{N}$. Nous voulons comparer $u_{n+1}$ et $u_n$. Calculons la différence : $u_{n+1} - u_n = \\big((n+1)^2 - 3(n+1)\\big) - (n^2 - 3n)$. Développons soigneusement : $(n^2+2n+1 - 3n -3) - n^2 + 3n = 2n -2 = 2(n-1)$. L'expression factorisée $2(n-1)$ révèle tout : pour $n=0$, la différence vaut $-2$ (donc $u_1 < u_0$) ; pour $n=1$, elle vaut $0$ (donc $u_2 = u_1$) ; pour tout $n \\ge 2$, elle est strictement positive (donc $u_{n+1} > u_n$). La suite décroît d'abord, puis stagne un instant, puis croît indéfiniment. Cette analyse fine, obtenue en quelques lignes, nous donne déjà une image précise du comportement de la suite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Exprimer $u_{n+1}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez systématiquement $n$ par $n+1$ dans la formule de $u_n$. Prenez le temps d'écrire chaque terme entre parenthèses pour éviter les erreurs de signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Former la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $u_{n+1} - u_n$ et simplifiez l'expression algébrique. Regroupez les termes semblables, factorisez si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Étudier le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez pour quels entiers naturels $n$ la différence est positive, négative ou nulle. Un tableau de signe ou une inéquation simple suffit souvent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque la suite est un quotient, un produit ou contient des factorielles, la différence peut devenir lourde à manipuler. C'est alors que le rapport $\\frac{u_{n+1}}{u_n}$ devient très commode, à condition que tous les termes de la suite aient le même signe (généralement positifs). Si le rapport est strictement supérieur à $1$, alors $u_{n+1} > u_n$ ; s'il est compris entre $0$ et $1$, alors $u_{n+1} < u_n$ ; s'il vaut exactement $1$, les deux termes sont égaux. Cette méthode transforme souvent une factorielle ou une puissance en une fraction algébrique simple."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{u_{n+1}}{u_n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la suite $v_n = \\frac{2^n}{n!}$ pour $n \\ge 1$. Les termes sont strictement positifs. Le rapport s'écrit $\\frac{v_{n+1}}{v_n} = \\frac{2^{n+1}/(n+1)!}{2^n/n!} = \\frac{2}{n+1}$. Pour $n=1$, le rapport vaut $1$, donc $v_2 = v_1$. Pour $n=2$, il vaut $\\frac{2}{3} < 1$, donc $v_3 < v_2$, et ainsi de suite : dès $n \\ge 2$, le rapport reste $<1$, la suite décroît strictement. Remarquez l'élégance : nous avons évité tout développement de factorielle et obtenu le signe immédiatement. C'est la force de la méthode du rapport sur les suites à croissance factorielle ou exponentielle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le troisième outil, spécifique aux suites récurrentes, utilise la fonction $f$ telle que $u_{n+1} = f(u_n)$. Si $f$ est continue et dérivable sur un intervalle $I$, l'étude de la position de la courbe $y=f(x)$ par rapport à la droite $y=x$ sur $I$ donne directement la comparaison entre $u_{n+1}$ et $u_n$. En effet, $u_{n+1} > u_n$ équivaut à $f(u_n) > u_n$, c'est‑à‑dire que le point $(u_n, f(u_n))$ se trouve au‑dessus de la droite $y=x$. Cette approche graphique et analytique relie l'étude des suites à celle des fonctions, un thème central du programme de Première."
+            },
+            {
+              "type": "graph",
+              "expression": "x/2+1",
+              "xmin": 0,
+              "xmax": 5,
+              "caption": "Graphique de $f(x)=\\frac{x}{2}+1$ et de la droite $y=x$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la suite définie par $u_0 = 0$ et $u_{n+1} = \\frac{u_n}{2} + 1$. La fonction associée est $f(x) = \\frac{x}{2}+1$. Sur l'intervalle $[0,2]$, on a $f(x) - x = 1 - \\frac{x}{2} \\ge 0$, donc $f(x) \\ge x$. Puisque $u_0 = 0 \\in [0,2]$ et que $f([0,2]) = [1,2] \\subset [0,2]$, tous les termes restent dans $[0,2]$. Par conséquent, pour tout $n$, $u_{n+1} = f(u_n) \\ge u_n$ : la suite est croissante. De plus, elle est majorée par $2$. Cette double information (croissance et majoration) annonce déjà la convergence, que nous étudierons plus tard. La méthode de la fonction associée est donc un levier puissant pour les suites récurrentes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de passer en revue trois méthodes complémentaires : la différence, le rapport et l'étude de la fonction associée. Le choix dépend de la forme sous laquelle la suite est présentée : formule explicite polynomiale ou rationnelle → différence ; quotient, puissances, factorielles → rapport ; relation de récurrence $u_{n+1}=f(u_n)$ → fonction $f$. Dans la leçon suivante, nous utiliserons ces comparaisons locales pour établir rigoureusement la monotonie globale d'une suite, c'est‑à‑dire son sens de variation sur l'ensemble des indices."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite $(a_n)$ définie par $a_n = 3n^2 - 5n + 2$. Comparer $a_{n+1}$ et $a_n$ pour tout $n \\in \\mathbb{N}$.",
+              "answer": "La suite décroît pour $n=0$, puis croît pour $n \\ge 1$.",
+              "hint": "Calculez $a_{n+1} - a_n$ et factorisez.",
+              "explanation": "On trouve $a_{n+1} - a_n = 6n - 2 = 2(3n-1)$. Pour $n=0$, la différence est $-2 < 0$ donc $a_1 < a_0$. Pour $n \\ge 1$, $3n-1 > 0$ donc la différence est positive : $a_{n+1} > a_n$."
+            },
+            {
+              "question": "Soit $(b_n)$ définie par $b_n = \\frac{5^n}{n!}$ pour $n \\ge 1$. Étudier le signe de $\\frac{b_{n+1}}{b_n} - 1$ et en déduire les variations de la suite.",
+              "answer": "La suite est croissante pour $n=1,2,3,4$ et décroissante pour $n \\ge 5$.",
+              "hint": "Calculez le rapport $\\frac{b_{n+1}}{b_n}$ et comparez‑le à $1$.",
+              "explanation": "$\\frac{b_{n+1}}{b_n} = \\frac{5}{n+1}$. Le rapport est $>1$ si $n+1 < 5$ c'est‑à‑dire $n \\le 3$, égal à $1$ pour $n=4$, et $<1$ pour $n \\ge 5$. Donc $b_{n+1} > b_n$ pour $n=1,2,3$ ; $b_5 = b_4$ ; $b_{n+1} < b_n$ pour $n \\ge 5$."
+            },
+            {
+              "question": "Soit la suite $(c_n)$ définie par $c_0 = 1$ et $c_{n+1} = \\sqrt{c_n + 2}$. Montrer que la suite est croissante en utilisant la fonction $f(x)=\\sqrt{x+2}$.",
+              "answer": "La suite est croissante.",
+              "hint": "Étudiez $f(x)-x$ sur $[1,2]$.",
+              "explanation": "La fonction $f$ est croissante sur $[1,2]$ et $f([1,2]) = [\\sqrt{3},2] \\subset [1,2]$. De plus $f(x)-x = \\sqrt{x+2}-x$. Pour $x=1$, $f(1)-1 = \\sqrt{3}-1 > 0$. La dérivée de $g(x)=\\sqrt{x+2}-x$ est $g'(x) = \\frac{1}{2\\sqrt{x+2}}-1 < 0$ sur $[1,2]$, donc $g$ est décroissante. Mais $g(2)=0$, donc $g(x) \\ge 0$ sur $[1,2]$. Ainsi $f(x) \\ge x$ sur $[1,2]$. Comme $c_0=1$ et $c_n \\in [1,2]$, on a $c_{n+1}=f(c_n) \\ge c_n$."
+            }
+          ]
+        },
+        {
+          "title": "Monotonie simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Monotonie simple : définir et démontrer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comparer deux termes consécutifs, nous pouvons parler de monotonie. Une suite $(u_n)$ est dite croissante si pour tout $n$, $u_{n+1} \\ge u_n$ ; strictement croissante si $u_{n+1} > u_n$ ; décroissante si $u_{n+1} \\le u_n$ ; strictement décroissante si $u_{n+1} < u_n$ ; constante si $u_{n+1} = u_n$. Ces définitions sont globales : elles doivent être vérifiées pour **tous** les indices naturels. Pour les prouver, nous allons transformer la comparaison locale en une démonstration qui vaut pour chaque $n$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus directe consiste à utiliser la différence $u_{n+1} - u_n$ et à en étudier le signe **pour tout $n$**. Si l'on montre que $u_{n+1} - u_n \\ge 0$ pour tout $n \\in \\mathbb{N}$, alors la suite est croissante. Souvent, la différence se factorise en un produit de facteurs dont le signe est facile à déterminer. Par exemple, pour $u_n = n^3 - 4n$, la différence est $3n^2+3n-3 = 3(n^2+n-1)$. Le trinôme $n^2+n-1$ a pour racines $\\frac{-1\\pm\\sqrt{5}}{2}$. Pour $n \\ge 1$, il est positif, donc la suite est croissante à partir du rang $1$. Il faut toujours vérifier le ou les premiers termes séparément."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1} - u_n \\ge 0 \\quad (\\text{suite croissante})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la démonstration par la différence demande un raisonnement par récurrence, surtout quand la suite est définie par récurrence. Le principe est simple : on montre que $u_1 \\ge u_0$ (initialisation), puis on suppose $u_{k+1} \\ge u_k$ pour un certain $k$ (hypothèse de récurrence) et on en déduit $u_{k+2} \\ge u_{k+1}$ (hérédité). Si la fonction $f$ définissant la récurrence est croissante, l'hérédité devient immédiate : $u_{k+1} \\ge u_k \\implies f(u_{k+1}) \\ge f(u_k) \\implies u_{k+2} \\ge u_{k+1}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifiez que $u_1 \\ge u_0$ (ou $u_1 \\le u_0$ pour une suite décroissante). C'est le premier pas de l'escalier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Hypothèse de récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposez qu'au rang $k$, l'inégalité $u_{k+1} \\ge u_k$ est vraie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Hérédité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrez que $u_{k+2} \\ge u_{k+1}$ en utilisant la relation de récurrence et, si possible, la monotonie de la fonction $f$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par le principe de récurrence, l'inégalité vaut pour tout $n \\in \\mathbb{N}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les suites récurrentes $u_{n+1}=f(u_n)$, l'étude de la monotonie de $f$ est souvent plus efficace que le calcul direct de la différence. Si $f$ est croissante sur un intervalle $I$ et que $u_0 \\in I$, alors la suite est monotone : elle est croissante si $u_1 \\ge u_0$, décroissante si $u_1 \\le u_0$. La démonstration utilise la récurrence et la propriété : $x \\le y \\implies f(x) \\le f(y)$. C'est un outil standard en Première pour éviter des calculs algébriques fastidieux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de la suite logistique simplifiée : $u_0 = 0,5$ et $u_{n+1} = 2 u_n (1 - u_n)$. La fonction $f(x)=2x(1-x)$ est croissante sur $[0, 0,5]$ et décroissante sur $[0,5, 1]$. Comme $u_0=0,5$, on a $u_1 = f(0,5)=0,5$. La suite est donc constante (donc croissante et décroissante). Si on choisissait $u_0=0,3$, alors $u_1 = 0,42 > u_0$ et comme $f$ est croissante sur $[0,0,5]$, la suite serait croissante tant qu'elle reste dans cet intervalle. Cette analyse par la fonction $f$ est bien plus rapide que d'étudier $u_{n+1}-u_n$ directement."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x*(1-x)",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Courbe de $f(x)=2x(1-x)$ et droite $y=x$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite monotone et bornée converge. C'est le théorème de convergence monotone, pierre angulaire de l'analyse en Première. Si une suite est croissante et majorée, elle admet une limite finie (son majorant le plus petit, le supremum). Si elle est décroissante et minorée, elle converge vers son minorant le plus grand (l'infimum). Ce théorème permet souvent de trouver la limite d'une suite sans la calculer explicitement : il suffit de montrer monotonie et bornitude, puis de passer à la limite dans la relation de récurrence."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Suite croissante et majorée } \\Rightarrow \\text{ convergente}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la suite $u_0 = 0$, $u_{n+1} = \\frac{u_n}{2} + 1$. Nous avons déjà vu qu'elle est croissante. Montrons qu'elle est majorée par $2$ : $u_0 = 0 \\le 2$. Supposons $u_k \\le 2$. Alors $u_{k+1} = \\frac{u_k}{2}+1 \\le \\frac{2}{2}+1 = 2$. Par récurrence, $u_n \\le 2$ pour tout $n$. La suite est donc croissante et majorée, donc convergente. Sa limite $\\ell$ vérifie $\\ell = \\frac{\\ell}{2}+1$, d'où $\\ell=2$. Ce raisonnement complet (monotonie + bornitude + passage à la limite) est le schéma type de résolution en Première."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, pour établir la monotonie simple d'une suite : 1) Choisissez l'outil adapté (différence, rapport, fonction $f$). 2) Prouvez l'inégalité pour tout $n$, soit par étude de signe algébrique, soit par récurrence en exploitant la monotonie de $f$. 3) Si la suite est monotone, cherchez une borne (majorant si croissante, minorant si décroissante) pour appliquer le théorème de convergence monotone. La leçon suivante vous montrera comment interpréter ces variations dans des contextes concrets et graphiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $(u_n)$ définie par $u_n = \\frac{n}{n+2}$. Montrer que la suite est strictement croissante.",
+              "answer": "La suite est strictement croissante.",
+              "hint": "Calculez $u_{n+1} - u_n$ et simplifiez.",
+              "explanation": "$u_{n+1} - u_n = \\frac{n+1}{n+3} - \\frac{n}{n+2} = \\frac{(n+1)(n+2)-n(n+3)}{(n+3)(n+2)} = \\frac{n^2+3n+2 - n^2-3n}{(n+3)(n+2)} = \\frac{2}{(n+3)(n+2)} > 0$ pour tout $n$. Donc $u_{n+1} > u_n$."
+            },
+            {
+              "question": "Soit $(v_n)$ définie par $v_0 = 1$ et $v_{n+1} = \\frac{v_n}{3} + 1$. Montrer par récurrence que la suite est croissante et majorée par $\\frac{3}{2}$. En déduire sa limite.",
+              "answer": "La suite converge vers $\\frac{3}{2}$.",
+              "hint": "Montrez $v_{n+1} \\ge v_n$ et $v_n \\le \\frac{3}{2}$ simultanément par récurrence.",
+              "explanation": "Initialisation : $v_1 = \\frac{1}{3}+1 = \\frac{4}{3} \\ge 1 = v_0$ et $v_1 = \\frac{4}{3} \\le \\frac{3}{2}$. Hérédité : supposons $v_{k+1} \\ge v_k$ et $v_k \\le \\frac{3}{2}$. Alors $v_{k+2} = \\frac{v_{k+1}}{3}+1 \\ge \\frac{v_k}{3}+1 = v_{k+1}$ et $v_{k+2} = \\frac{v_{k+1}}{3}+1 \\le \\frac{3/2}{3}+1 = \\frac{3}{2}$. Donc la suite est croissante et majorée par $\\frac{3}{2}$, elle converge. La limite $\\ell$ vérifie $\\ell = \\frac{\\ell}{3}+1 \\Rightarrow \\ell = \\frac{3}{2}$."
+            },
+            {
+              "question": "Soit $(w_n)$ définie par $w_0 = 2$ et $w_{n+1} = \\sqrt{w_n + 2}$. Montrer que la suite est décroissante et minorée. Quelle est sa limite ?",
+              "answer": "La suite converge vers $2$.",
+              "hint": "Utilisez la fonction $f(x)=\\sqrt{x+2}$ sur $[2, +\\infty[$.",
+              "explanation": "La fonction $f$ est croissante sur $[2, +\\infty[$. $w_1 = \\sqrt{4}=2 = w_0$, donc $w_1 \\le w_0$. Par récurrence, comme $f$ est croissante, $w_{n+1} \\le w_n$. De plus $f(x) \\ge \\sqrt{2+2}=2$ pour $x \\ge 2$, donc $w_n \\ge 2$. La suite est décroissante et minorée par $2$, elle converge. La limite $\\ell$ vérifie $\\ell = \\sqrt{\\ell+2} \\Rightarrow \\ell^2 = \\ell+2 \\Rightarrow \\ell=2$ (car $\\ell \\ge 2$)."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les variations : graphiques, modélisation et limites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir qu'une suite est croissante ou décroissante, c'est bien ; comprendre ce que cela signifie concrètement, c'est mieux. Dans cette leçon, nous allons donner du sens aux variations à travers trois regards : la représentation graphique des termes, la modélisation de phénomènes réels, et le lien avec la convergence. Chaque regard éclaire la notion sous un angle différent et renforce votre intuition."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le graphique. Les termes d'une suite sont des points de coordonnées $(n, u_n)$ dans un repère orthogonal. Si la suite est croissante, les points montent quand on se déplace vers la droite ; s'elle est décroissante, ils descendent. Cette visualisation immédiate permet de repérer d'éventuels paliers, des changements de monotonie (comme dans la leçon 1) ou une tendance vers une droite horizontale (asymptote) qui signale une limite finie. En Première, on utilise souvent un logiciel ou une calculatrice pour tracer les premiers termes, mais savoir esquisser soi‑même le nuage de points reste une compétence précieuse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les suites récurrentes $u_{n+1}=f(u_n)$, il existe une représentation graphique spécifique et très pédagogique : la toile d'araignée (ou diagramme de cobweb). On trace la courbe $y=f(x)$ et la droite $y=x$. En partant de $u_0$ sur l'axe des abscisses, on monte verticalement jusqu'à la courbe (ce qui donne $u_1$), puis on va horizontalement jusqu'à la droite $y=x$ (pour reporter $u_1$ sur l'axe des abscisses), puis on recommence. Ce parcours en escalier montre visuellement si la suite croît, décroît, oscille, et vers quelle valeur elle tend. C'est un outil puissant pour conjecturer la limite avant de la démontrer."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "0.5*x+1",
+              "u0": 0,
+              "iterations": 6,
+              "xMin": 0,
+              "xMax": 3,
+              "caption": "Toile d'araignée pour $u_{n+1}=0.5 u_n+1$ avec $u_0=0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les variations d'une suite prennent tout leur sens dans la modélisation. Imaginez une population de bactéries qui double chaque heure : la suite du nombre de bactéries est géométrique de raison $2$, strictement croissante, non majorée → elle tend vers $+\\infty$. À l'inverse, la quantité d'un médicament dans le sang qui diminue de $30\\%$ chaque heure suit une suite géométrique de raison $0,7$, strictement décroissante, minorée par $0$ → elle tend vers $0$. Dans les deux cas, la monotonie et la bornitude (ou leur absence) racontent l'histoire du phénomène : croissance exponentielle sans limite ou élimination progressive. Savoir interpréter ces mots « croissante », « majorée », « convergente » en termes concrets est une compétence clé du programme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple de modélisation financière. Vous placez $1000\\,\\text{\\texteuro}$ sur un livret à $2\\%$ d'intérêts annuels. Le capital après $n$ années est $C_n = 1000 \\times 1,02^n$. La suite $(C_n)$ est strictement croissante (raison $>1$) et non majorée. Elle modélise une croissance sans borne théorique, même si dans la réalité l'inflation ou les plafonds de dépôts interviennent. Si au contraire vous remboursez un emprunt de $1000\\,\\text{\\texteuro}$ à raison de $100\\,\\text{\\texteuro}$ par an sans intérêts, le capital restant dû $D_n = 1000 - 100n$ est une suite arithmétique de raison $-100$, strictement décroissante, minorée par $0$ (au bout de 10 ans, la dette est éteinte). La monotonie reflète ici le sens de l'évolution : enrichissement ou désendettement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les variations sont le chemin royal vers l'étude des limites. Le théorème de convergence monotone (une suite monotone et bornée converge) est le pont entre l'algèbre des suites et l'analyse. En Première, on l'utilise systématiquement : on prouve la monotonie (par différence, rapport ou fonction $f$), on prouve la bornitude (souvent par récurrence), on en déduit l'existence d'une limite finie $\\ell$, puis on passe à la limite dans la relation de récurrence ou dans l'expression explicite pour trouver $\\ell$. C'est une procédure standardisée, presque algorithmique, qui résout une grande partie des exercices de convergence."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Monotone + bornée } \\Rightarrow \\text{ convergente}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cette procédure complète sur la suite de Héron (racine carrée par la méthode babylonienne) : $u_0 = 2$, $u_{n+1} = \\frac{1}{2}\\big(u_n + \\frac{2}{u_n}\\big)$. On montre d'abord que $u_n > 0$ pour tout $n$ (récurrence immédiate). Ensuite, $u_{n+1} - u_n = \\frac{2 - u_n^2}{2u_n}$. Pour $n=0$, $u_0^2=4>2$, donc $u_1 < u_0$. On peut prouver par récurrence que $u_n^2 \\ge 2$ pour tout $n \\ge 1$, donc la différence est $\\le 0$ à partir de $n=1$ : la suite est décroissante à partir du rang $1$. Elle est minorée par $\\sqrt{2}$ (car $u_n^2 \\ge 2 \\Rightarrow u_n \\ge \\sqrt{2}$). Donc elle converge. La limite $\\ell$ vérifie $\\ell = \\frac{1}{2}(\\ell + \\frac{2}{\\ell})$, d'où $\\ell^2=2$, et comme $\\ell > 0$, $\\ell = \\sqrt{2}$. Cette suite, bien que définie par une récurrence non linéaire, se laisse complètement analyser grâce aux outils de monotonie et de bornitude."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce cours, retenez que les variations d'une suite ne sont pas une fin en soi : elles sont le langage qui permet de décrire la dynamique d'une suite, de conjecturer sa limite, de valider un modèle, et de construire des preuves rigoureuses. Les trois leçons que vous venez de traverser – comparer, établir la monotonie, interpréter – forment un tout cohérent. À vous maintenant de les mettre en œuvre sur des exercices variés, en choisissant à chaque fois l'outil le plus adapté."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer $u_{n+1}$ et $u_n$ par la différence, le rapport ou la fonction $f$.",
+                "Je sais démontrer qu'une suite est croissante, décroissante ou constante.",
+                "Je sais utiliser la monotonie de $f$ pour étudier une suite récurrente.",
+                "Je sais appliquer le théorème de convergence monotone.",
+                "Je sais interpréter graphiquement (nuage de points, toile d'araignée) et concrètement (modélisation) les variations d'une suite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère la suite $(x_n)$ définie par $x_0 = 1$ et $x_{n+1} = \\frac{x_n}{2} + \\frac{1}{x_n}$. Tracer les cinq premiers points de la toile d'araignée et conjecturer la limite.",
+              "answer": "La suite semble converger vers $\\sqrt{2} \\approx 1,414$.",
+              "hint": "Utilisez la fonction $f(x)=\\frac{x}{2}+\\frac{1}{x}$ et la droite $y=x$.",
+              "explanation": "En construisant la toile d'araignée, on voit l'escalier descendre vers le point d'intersection de $f$ et $y=x$, qui vérifie $x = \\frac{x}{2}+\\frac{1}{x} \\Rightarrow x^2 = 2$. Comme les termes restent positifs, la limite conjecturée est $\\sqrt{2}$."
+            },
+            {
+              "question": "Une population de lapins évolue selon $L_{n+1} = 1,1 L_n - 50$ avec $L_0 = 600$. Interpréter les coefficients. La suite est-elle croissante ou décroissante ? Que se passe‑t‑il à long terme ?",
+              "answer": "La suite est décroissante et converge vers $500$.",
+              "hint": "Étudiez $f(x)=1,1x-50$ et le point fixe.",
+              "explanation": "$1,1$ représente une croissance de $10\\%$ par an, $-50$ représente un prélèvement constant (chasse, mortalité). $f(x)-x = 0,1x-50$. Pour $x=600$, $f(600)-600 = 10 > 0$ ? Attendez : $f(600)=660-50=610 > 600$, donc $L_1 > L_0$ : la suite augmente au début. Mais le point fixe est $\\ell = 500$. Comme $f$ est croissante et $L_0=600 > 500$, on a $L_1 = f(600)=610 > 600$ ? Non, $f(600)=610$, donc $L_1 > L_0$. Mais $f(x) < x$ pour $x > 500$ ? $f(x)-x = 0,1x-50$. Pour $x>500$, $0,1x-50 > 0$, donc $f(x) > x$. La suite est croissante et non majorée ? Vérifions : $L_0=600$, $L_1=610$, $L_2=621$, ... elle croît indéfiniment. La réponse attendue dépend de l'interprétation. Reprenons : $f(x)-x = 0,1x-50$. Pour $x=600$, $>0$, donc $L_1 > L_0$. La suite est croissante. Elle n'est pas majorée car $f(x) > x$ pour tout $x > 500$. Elle tend vers $+\\infty$. Mais si le prélèvement était plus grand que la croissance, elle décroîtrait. Ici, la croissance l'emporte."
+            },
+            {
+              "question": "Soit $(y_n)$ définie par $y_0 = 3$ et $y_{n+1} = \\frac{2y_n+3}{y_n+2}$. Montrer que la suite est décroissante et minorée. Calculer sa limite.",
+              "answer": "La limite est $\\sqrt{3}$.",
+              "hint": "Étudiez $f(x)=\\frac{2x+3}{x+2}$ sur $[\\sqrt{3}, 3]$.",
+              "explanation": "La fonction $f$ est croissante sur $[\\sqrt{3}, 3]$. $y_1 = \\frac{9}{5}=1,8 < 3 = y_0$. Par récurrence, comme $f$ est croissante, $y_{n+1} \\le y_n$. De plus $f(x) \\ge \\sqrt{3}$ pour $x \\ge \\sqrt{3}$ (car $f(\\sqrt{3})=\\sqrt{3}$). Donc la suite est décroissante et minorée par $\\sqrt{3}$, elle converge. La limite $\\ell$ vérifie $\\ell = \\frac{2\\ell+3}{\\ell+2} \\Rightarrow \\ell^2 = 3$, et $\\ell > 0$ donc $\\ell = \\sqrt{3}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

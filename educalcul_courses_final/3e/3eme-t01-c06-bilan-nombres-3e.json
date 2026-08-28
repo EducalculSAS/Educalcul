@@ -1,0 +1,180 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.914362+00:00",
+  "id": 460,
+  "code": "3eme-t01-c06",
+  "title": "Bilan - Nombres 3e",
+  "description": "Cours structuré Educalcul : Bilan - Nombres 3e.",
+  "subject": "Nombres, arithmétique, puissances et racines",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Nombres, arithmétique, puissances et racines",
+    "titre_du_cours": "Bilan - Nombres 3e",
+    "objectif_global": "Bilan - Nombres 3e",
+    "mini_lecons_imposees": [
+      "Arithmétique et puissances.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Nombres, arithmétique, puissances et racines",
+      "lessons": [
+        {
+          "title": "Arithmétique et puissances.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es un organisateur d'événements et que tu dois créer des lots cadeaux identiques. Tu as $120$ chocolats et $84$ sucettes. Tu veux utiliser tout ton stock, sans qu'il ne reste rien, et chaque lot doit contenir exactement le même nombre de chocolats et le même nombre de sucettes. Comment savoir quel est le nombre maximum de lots que tu peux créer ? C'est ici qu'intervient l'arithmétique, et plus précisément la notion de Plus Grand Commun Diviseur, le $PGCD$. Parallèlement, imagine que tu étudies l'univers : les distances entre les galaxies sont si immenses qu'on ne peut pas écrire tous les zéros sans remplir des pages entières. Pour simplifier tout cela, on utilise les puissances, qui sont comme des raccourcis mathématiques. Que ce soit pour organiser des objets ou mesurer l'infiniment grand, ces outils de $3e$ te permettent de manipuler des nombres avec une précision chirurgicale, transformant des calculs qui semblent gigantesques en opérations simples et élégantes. C'est un véritable super-pouvoir de simplification que nous allons explorer ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arithmétique en $3e$ repose sur la compréhension des diviseurs. Un nombre entier est dit premier s'il n'admet que deux diviseurs : $1$ et lui-même. Le $PGCD$ de deux nombres est le plus grand entier qui divise simultanément ces deux nombres. Si le $PGCD$ de deux nombres est égal à $1$, on dit qu'ils sont premiers entre eux, ce qui signifie qu'ils n'ont aucun diviseur commun à part $1$. Concernant les puissances, une puissance $a^n$ représente le produit du nombre $a$ multiplié par lui-même $n$ fois. Il est crucial de maîtriser les puissances de $10$, car elles sont la base de la notation scientifique. Par exemple, $10^3$ vaut $1000$ et $10^{-2}$ vaut $0,01$. La notation scientifique consiste à écrire un nombre sous la forme $a \\times 10^n$, où $1 \\le a < 10$. Cela permet de lire instantanément l'ordre de grandeur d'une valeur. Enfin, les règles de calcul sont strictes : lors d'une multiplication de deux puissances de même base, on additionne les exposants. Pour une division, on les soustrait. Ces règles permettent de réduire des expressions algébriques complexes en une seule puissance simplifiée."
+            },
+            {
+              "type": "display_math",
+              "latex": "PGCD(a,b) = PGCD(b, r)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le $PGCD$ de deux nombres, la méthode la plus efficace est l'algorithme d'Euclide, qui repose sur des divisions successives. \\n\\nEtape 1 : On effectue la division euclidienne du plus grand nombre par le plus petit. \\nEtape 2 : On regarde le reste de cette division. Si le reste est égal à $0$, alors le diviseur est le $PGCD$. \\nEtape 3 : Si le reste n'est pas nul, on recommence l'opération, mais cette fois on divise le diviseur précédent par le reste obtenu. \\nEtape 4 : On répète ce processus jusqu'à obtenir un reste nul. Le dernier reste non nul est le $PGCD$ recherché.\\n\\nPour manipuler les puissances, suivez ces étapes de simplification :\\nEtape 1 : Identifiez si les bases sont identiques. Si ce n'est pas le cas, vous ne pouvez pas additionner les exposants.\\nEtape 2 : Pour un produit $a^n \\times a^m$, calculez la somme $n+m$ pour obtenir $a^{n+m}$.\\nEtape 3 : Pour un quotient $\\frac{a^n}{a^m}$, calculez la différence $n-m$ pour obtenir $a^{n-m}$.\\nEtape 4 : Pour une puissance de puissance $(a^n)^m$, multipliez les exposants pour obtenir $a^{n \\times m}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cherchons le $PGCD$ de $252$ et $108$. Nous allons appliquer l'algorithme d'Euclide pas à pas pour ne pas nous tromper.\\n\\nPremièrement, on divise $252$ par $108$. On trouve $252 = 108 \\times 2 + 36$. Le reste est $36$, il n'est pas nul, donc on continue.\\n\\nDeuxièmement, on prend le diviseur précédent, $108$, et on le divise par le reste, $36$. On effectue le calcul : $108 = 36 \\times 3 + 0$. Ici, le reste est enfin égal à $0$ !\\n\\nLe dernier reste non nul que nous avons rencontré est $36$. Par conséquent, le $PGCD(252, 108) = 36$. Cela signifie que si nous avions $252$ billes rouges et $108$ billes bleues, nous pourrions faire au maximum $36$ sachets identiques, chacun contenant $7$ billes rouges ($252 \\div 36 = 7$) et $3$ billes bleues ($108 \\div 36 = 3$). Cette méthode est beaucoup plus rapide que de lister tous les diviseurs de chaque nombre, surtout quand les nombres deviennent très grands."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions l'expression suivante : $A = \\frac{5^7 \\times 5^{-3}}{(5^2)^2}$. \\n\\nD'abord, occupons-nous du numérateur. Nous avons un produit de deux puissances de base $5$. On applique la règle de l'addition des exposants : $5^7 \\times 5^{-3} = 5^{7 + (-3)} = 5^{7-3} = 5^4$. \\n\\nEnsuite, regardons le dénominateur $(5^2)^2$. C'est une puissance de puissance. On multiplie donc les exposants : $2 \\times 2 = 4$, ce qui nous donne $5^4$.\\n\\nL'expression devient alors $A = \\frac{5^4}{5^4}$. \\n\\nEnfin, nous appliquons la règle du quotient. On soustrait l'exposant du bas de celui du haut : $5^{4-4} = 5^0$. \\n\\nOr, une règle fondamentale ancre que tout nombre non nul élevé à la puissance $0$ est égal à $1$. Donc, $A = 1$. Cet exemple montre que même avec des puissances négatives ou des parenthèses, en suivant les règles dans l'ordre, on arrive à un résultat très simple. C'est la puissance de la méthode algébrique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique concerne la confusion entre l'addition et la multiplication des exposants. Beaucoup d'élèves écrivent $a^2 \\times a^3 = a^6$, alors que la règle est l'addition : $a^{2+3} = a^5$. Souvenez-vous que la multiplication des exposants est réservée au cas des parenthèses, comme dans $(a^2)^3$. \\n\\nUn autre piège redoutable est la gestion du signe moins. Attention : $(-3)^2$ est différent de $-3^2$. Dans le premier cas, le carré porte sur tout le nombre, donc $(-3) \\times (-3) = 9$. Dans le second, le carré ne porte que sur le $3$, et le signe moins reste devant : $-(3 \\times 3) = -9$. \\n\\nEnfin, pour le $PGCD$, l'erreur courante est de s'arrêter au premier quotient au lieu de chercher le dernier reste non nul. Rappelez-vous que le $PGCD$ n'est pas le résultat de la division, mais le diviseur qui a permis d'arriver à un reste de $0$. Prenez toujours le temps de bien noter vos égalités de type $a = b \\times q + r$ pour ne pas mélanger vos chiffres lors des étapes successives."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le $PGCD$ de $150$ et $45$ en utilisant l'algorithme d'Euclide.",
+              "answer": "15",
+              "hint": "Fais la division de $150$ par $45$, puis utilise le reste pour la division suivante.",
+              "explanation": "$150 = 45 \\times 3 + 15$ puis $45 = 15 \\times 3 + 0$. Le dernier reste non nul est $15$, donc le $PGCD$ est $15$."
+            },
+            {
+              "question": "Simplifie l'expression $B = \\frac{10^5 \\times 10^{-2}}{10^4}$.",
+              "answer": "10^{-1} ou 0,1",
+              "hint": "Additionne d'abord les exposants du haut, puis soustrais l'exposant du bas.",
+              "explanation": "Au numérateur : $10^{5 + (-2)} = 10^3$. Puis on divise : $10^{3-4} = 10^{-1}$."
+            },
+            {
+              "question": "Est-ce que les nombres $14$ et $15$ sont premiers entre eux ? Justifie.",
+              "answer": "Oui",
+              "hint": "Calcule leur $PGCD$. S'il vaut $1$, ils sont premiers entre eux.",
+              "explanation": "Les diviseurs de $14$ sont $1, 2, 7, 14$. Les diviseurs de $15$ sont $1, 3, 5, 15$. Le seul diviseur commun est $1$. Le $PGCD$ est donc $1$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous voici arrivés au bout de ce voyage à travers les nombres de $3e$. C'est le moment où tout doit s'assembler comme les pièces d'un puzzle. Tu as vu comment dompter les puissances, comment simplifier des fractions complexes et comment trouver le $PGCD$ pour organiser des objets avec précision. Mais comment savoir si tu es vraiment prêt pour l'examen ou pour passer au niveau supérieur ? Le secret ne réside pas dans la lecture répétée du cours, mais dans l'auto-évaluation honnête. C'est pour cela que nous terminons par une checklist. Vois-la comme ton tableau de bord personnel. Chaque case cochée est une victoire, une compétence acquise que tu peux mobiliser avec confiance. Ne panique pas si certaines cases restent vides pour l'instant ; c'est précisément grâce à cela que tu sais où porter tes efforts. Transformons ensemble tes doutes en certitudes en vérifiant point par point tes acquis, car la maîtrise vient de la répétition et de la conscience de ses propres forces."
+            },
+            {
+              "type": "paragraph",
+              "content": "La checklist n'est pas un simple exercice, c'est un outil de métacognition. La métacognition, c'est tout simplement réfléchir à la façon dont on apprend. En $3e$, le programme des nombres demande une rigueur absolue. Dire je sais faire le $PGCD$ ne suffit pas. Il faut être capable de dire : je sais utiliser l'algorithme d'Euclide sans faire d'erreur de calcul, je sais expliquer pourquoi deux nombres sont premiers entre eux, et je sais transformer une puissance négative en fraction. Cette leçon de bilan consiste à passer en revue chaque notion clé : l'arithmétique (divisibilité, PGCD, nombres premiers) et les puissances (règles de calcul, notation scientifique). L'objectif est de transformer un savoir passif, celui où tu comprends quand le professeur explique, en un savoir actif, celui où tu es capable de résoudre un problème seul, face à une feuille blanche, sans aucune aide extérieure. C'est cette transition qui garantit la réussite au brevet."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier un nombre premier.",
+                "Je sais calculer le PGCD avec l'algorithme d'Euclide.",
+                "Je sais simplifier des fractions en utilisant le PGCD.",
+                "Je sais utiliser les règles des puissances (produit, quotient, puissance de puissance).",
+                "Je sais écrire un nombre en notation scientifique.",
+                "Je sais manipuler les puissances de 10 avec des exposants négatifs."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour utiliser cette checklist efficacement, je te conseille de suivre cette méthode rigoureuse :\\n\\nEtape 1 : Lis l'item de la checklist. Par exemple, Je sais calculer un $PGCD$. \\nEtape 2 : Ne coche pas tout de suite. Prends un exercice blanc d'un ancien devoir ou d'un manuel que tu n'as jamais fait. \\nEtape 3 : Essaie de le résoudre entièrement sans regarder le corrigé. \\nEtape 4 : Compare ton résultat et ton raisonnement avec la correction. \\nEtape 5 : Si le résultat est juste ET que la méthode est correcte, coche la case en vert. Si tu as hesite ou fait une erreur de calcul, coche la case en orange. Si tu n'as pas su démarrer l'exercice, laisse la case vide. \\nEtape 6 : Priorise tes révisions sur les cases vides, puis les oranges. Une fois qu'une case est verte, tu peux passer à la suite avec la satisfaction d'avoir réellement maîtrisé la notion. C'est ainsi que tu optimises ton temps de travail sans t'épuiser."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'item Je sais utiliser la notation scientifique. Pour me tester, je choisis le nombre $0,000456$. \\n\\nJe commence par déplacer la virgule pour n'avoir qu'un seul chiffre non nul avant elle. Je la place entre le $4$ et le $5$, ce qui me donne $4,56$. \\n\\nEnsuite, je compte de combien de rangs j'ai déplacé la virgule vers la droite. Je suis parti de $0,000456$ pour arriver à $4,56$. J'ai déplacé la virgule de $4$ rangs vers la droite. \\n\\nComme le nombre de départ était très petit (inférieur à $1$), je sais que l'exposant de $10$ doit être négatif. Mon résultat est donc $4,56 \\times 10^{-4}$. \\n\\nJe vérifie dans mon livre : le résultat est correct. Je peux maintenant cocher l'item avec confiance car j'ai appliqué la méthode et obtenu le bon résultat. C'est cette preuve concrète qui valide ma compétence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons l'item Je sais simplifier un produit de puissances. Je prends l'expression $C = a^3 \\times a^{-5} \\times a^4$. \\n\\nJ'applique la règle de l'addition des exposants pour tous les termes de même base : $3 + (-5) + 4$. \\n\\nJe calcule : $3 - 5 = -2$, puis $-2 + 4 = 2$. Le résultat final est donc $a^2$. \\n\\nSi j'avais simplement ajouté les chiffres sans tenir compte des signes, j'aurais peut-être trouvé $a^{12}$, ce qui serait une erreur grave. Mais ici, j'ai bien géré le signe négatif. Le résultat est juste. Je coche l'item Je sais simplifier un produit de puissances. Ce petit exercice me prouve que je ne tombe pas dans le piège du signe, ce qui est essentiel pour réussir les exercices de simplification en algèbre. Je me sens maintenant beaucoup plus serein sur cette partie du programme."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus commune lors d'un bilan est l'illusion de compétence. Cela arrive quand on lit un corrigé et qu'on se dit Oh oui, c'est évident, j'aurais fait ça ! Mais lire une solution n'est pas la même chose que produire la solution. C'est le piège du savoir passif. Pour l'éviter, impose-toi l'interdiction formelle de regarder la réponse avant d'avoir écrit ta dernière ligne de calcul. \\n\\nUn autre risque est de négliger les petites règles, comme le fait que $a^0 = 1$. On peut tout savoir sur le $PGCD$ mais perdre des points bêtement sur une puissance zéro. \\n\\nEnfin, méfie-toi de la précipitation. En arithmétique, une seule erreur de soustraction dans l'algorithme d'Euclide fausse tout le résultat final. Prends l'habitude de refaire ta division rapidement pour vérifier ton reste. La rigueur est ton alliée : mieux vaut passer une minute de plus à vérifier qu'une minute à pleurer sur une erreur d'inattention."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": " aide-moi : si je sais que $PGCD(48, 18) = 6$, est-ce que la fraction $\\frac{18}{48}$ est simplifiée au maximum ? Si non, quelle est la fraction simplifiée ?",
+              "answer": "Non, $\\frac{3}{8}$",
+              "hint": "Divise le numérateur et le dénominateur par leur $PGCD$.",
+              "explanation": "La fraction n'est pas simplifiée car le $PGCD$ est $6$, pas $1$. En divisant $18 \\div 6 = 3$ et $48 \\div 6 = 8$, on obtient $\\frac{3}{8}$."
+            },
+            {
+              "question": "T'as-tu bien compris la règle $a^n \\times a^m = a^{n+m}$ ? Simplifie $2^3 \\times 2^4$.",
+              "answer": "2^7 ou 128",
+              "hint": "Additionne les exposants $3$ et $4$.",
+              "explanation": "$2^{3+4} = 2^7$. Si on calcule, $2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 128$."
+            },
+            {
+              "question": "Transforme $0,0052$ en notation scientifique.",
+              "answer": "5,2 \\times 10^{-3}",
+              "hint": "Déplace la virgule pour avoir un chiffre entre $1$ et $9$, puis compte les rangs.",
+              "explanation": "On déplace la virgule de $3$ rangs vers la droite pour obtenir $5,2$. On a donc $5,2 \\times 10^{-3}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Figures invariantes",
+  "title": "Figures invariantes par symétrie centrale",
+  "questions": [
+    {
+      "text": "Qu'est-ce qu'une figure invariante par une symétrie centrale de centre $O$ ?",
+      "options": [
+        "Une figure dont l'image est superposable à la figure initiale",
+        "Une figure dont tous les points sont fixes",
+        "Une figure qui ne change pas de place dans le plan",
+        "Une figure symétrique par rapport à une droite passant par $O$"
+      ],
+      "correctAnswer": "Une figure dont l'image est superposable à la figure initiale",
+      "explanation": "Une figure est invariante par une transformation si son image par cette transformation coïncide exactement avec la figure de départ (elle est superposable). En symétrie centrale, le seul point fixe est le centre $O$. Les autres points changent de place mais l'ensemble de la figure reste globalement le même. La symétrie par rapport à une droite est une symétrie axiale, pas centrale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les figures suivantes, laquelle admet un centre de symétrie (est donc invariante par symétrie centrale) ?",
+      "options": [
+        "Triangle équilatéral",
+        "Carré",
+        "Triangle isocèle non équilatéral",
+        "Trapèze rectangle"
+      ],
+      "correctAnswer": "Carré",
+      "explanation": "Un carré possède un centre de symétrie : le point d'intersection de ses diagonales. Par symétrie centrale par rapport à ce centre, chaque sommet va sur le sommet opposé, chaque côté va sur le côté parallèle opposé. Le triangle équilatéral et le triangle isocèle n'ont pas de centre de symétrie (ils ont des axes de symétrie). Un trapèze rectangle n'a généralement aucun centre de symétrie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un segment $[AB]$ invariant par symétrie centrale de centre $O$. Où se situe le point $O$ par rapport au segment $[AB]$ ?",
+      "options": [
+        "O est une extrémité du segment",
+        "O est le milieu de [AB]",
+        "O n'appartient pas à la droite (AB)",
+        "O est à l'extérieur du segment [AB]"
+      ],
+      "correctAnswer": "O est le milieu de [AB]",
+      "explanation": "Si le segment $[AB]$ est globalement invariant, son image est le segment $[A'B']$ qui doit coïncider avec $[AB]$. Les extrémités $A$ et $B$ sont échangées ($A' = B$ et $B' = A$). Le centre de symétrie $O$ est par définition le milieu du segment $[AA']$, c'est-à-dire le milieu de $[AB]$. Il appartient donc au segment et le coupe en deux parties égales.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Segment [AB] de milieu O",
+        "min": -3,
+        "max": 3,
+        "points": [
+          {
+            "value": -2,
+            "label": "A"
+          },
+          {
+            "value": 0,
+            "label": "O"
+          },
+          {
+            "value": 2,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Une droite $(D)$ passe par le centre $O$ d'une symétrie centrale. Quelle est l'image de $(D)$ par cette symétrie ?",
+      "options": [
+        "Une droite parallèle à $(D)$",
+        "La droite $(D)$ elle-même",
+        "Une droite perpendiculaire à $(D)$",
+        "Une demi-droite d'origine $O$"
+      ],
+      "correctAnswer": "La droite $(D)$ elle-même",
+      "explanation": "Une droite passant par le centre de symétrie $O$ est globalement invariante. En effet, pour tout point $M$ sur $(D)$, son symétrique $M'$ par rapport à $O$ est aligné avec $M$ et $O$, donc $M'$ appartient aussi à la droite $(OM) = (D)$. La droite est donc invariante (bien que les points soient échangés deux à deux de part et d'autre de $O$). Elle n'est pas parallèle (sauf si confondue), ni perpendiculaire, ni une demi-droite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère deux points $A$ et $B$ distincts, symétriques l'un de l'autre par rapport à un point $O$. L'ensemble $\\{A, B\\}$ formé de ces deux points est-il invariant par la symétrie centrale de centre $O$ ?",
+      "options": [
+        "Non, car $A$ et $B$ échangent leurs places",
+        "Oui, car l'ensemble des deux points ne change pas",
+        "Non, car la figure change de forme",
+        "Oui, mais seulement si $A$, $O$, $B$ sont alignés"
+      ],
+      "correctAnswer": "Oui, car l'ensemble des deux points ne change pas",
+      "explanation": "L'invariance d'une figure concerne l'ensemble des points qui la composent, pas la position individuelle de chaque point. Ici, l'image de $A$ est $B$ et l'image de $B$ est $A$. L'ensemble image est donc $\\{B, A\\}$, qui est exactement le même ensemble que $\\{A, B\\}$ (l'ordre n'importe pas dans un ensemble). La figure (l'ensemble des deux points) est donc bien invariante globalement. Les points $A$, $O$, $B$ sont toujours alignés par définition de la symétrie centrale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 430,
+  "_course_code": "4eme-t03-c01-pourcentages-et-evolutions",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Coefficient multiplicateur simple",
+  "title": "Coefficient multiplicateur simple",
+  "blocks": [
+    {
+      "title": "Calcul du coefficient",
+      "content": "Complète les affirmations suivantes :\\n\\nPour une augmentation de $20\\%$, le coefficient multiplicateur est {{1}}.\\nPour une diminution de $30\\%$, le coefficient multiplicateur est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1,2",
+        "0,7"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer d'une valeur initiale à une valeur finale après une évolution en pourcentage, on utilise un coefficient multiplicateur.\\n- En cas d'augmentation de $t\\%$, le coefficient est $1 + \\frac{t}{100}$. Pour $20\\%$ : $1 + 0,2 = 1,2$.\\n- En cas de diminution de $t\\%$, le coefficient est $1 - \\frac{t}{100}$. Pour $30\\%$ : $1 - 0,3 = 0,7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application à un prix",
+      "content": "Un vélo coûte $200\\,\\text{€}$. Son prix augmente de $12\\%$.\\nLe coefficient multiplicateur correspondant à cette augmentation est {{1}}.\\nLe nouveau prix du vélo est {{2}}\\,\\text{€}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1,12",
+        "224"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une augmentation de $12\\%$ correspond à un coefficient multiplicateur de $1 + \\frac{12}{100} = 1,12$.\\nPour trouver le nouveau prix, on multiplie le prix initial par ce coefficient : $200 \\times 1,12 = 224$.\\nLe nouveau prix est donc $224\\,\\text{€}$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Interprétation d'un coefficient",
+      "content": "On multiplie un nombre par $0,78$.\\nCette multiplication correspond à une {{1}} de {{2}}\\,\\%.",
+      "correctAnswer": "",
+      "blanks": [
+        "diminution|baisse",
+        "22"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un coefficient multiplicateur strictement compris entre $0$ et $1$ correspond toujours à une diminution (ou une baisse).\\nSi le coefficient est $k = 0,78$, le taux de diminution $t$ en pourcentage satisfait $k = 1 - \\frac{t}{100}$.\\nOn a $0,78 = 1 - \\frac{t}{100}$, donc $\\frac{t}{100} = 1 - 0,78 = 0,22$, soit $t = 22$.\\nC'est donc une diminution de $22\\%$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 278,
+  "_course_code": "cm2-t01-c04-comparer-et-ranger-des-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Valeur positionnelle",
+  "title": "Valeur positionnelle des nombres décimaux",
+  "questions": [
+    {
+      "text": "Dans le nombre $45,678$, quel est le chiffre des centièmes ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$5$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Dans un nombre décimal, le premier chiffre après la virgule est celui des dixièmes, le deuxième est celui des centièmes et le troisième est celui des millièmes. Ici, le chiffre $7$ occupe la deuxième position après la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur du chiffre $3$ dans le nombre $12,35$ ?",
+      "options": [
+        "$3$ unités",
+        "$3$ dixièmes",
+        "$3$ centièmes",
+        "$30$ dixièmes"
+      ],
+      "correctAnswer": "$3$ dixièmes",
+      "explanation": "Le chiffre $3$ est situé juste après la virgule, il représente donc $3$ dixièmes, ce qui s'écrit $0,3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre peut s'écrire sous la forme : $2$ unités, $4$ centièmes et $5$ millièmes ?",
+      "options": [
+        "$2,45$",
+        "$2,045$",
+        "$2,405$",
+        "$24,05$"
+      ],
+      "correctAnswer": "$2,045$",
+      "explanation": "Il y a $2$ unités. Il n'y a pas de dixièmes, on place donc un $0$. Il y a $4$ centièmes et $5$ millièmes. Le nombre est donc $2,045$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on ajoute $0,01$ au nombre $7,89$, quel chiffre change de position ?",
+      "options": [
+        "Le chiffre des unités",
+        "Le chiffre des dixièmes",
+        "Le chiffre des centièmes",
+        "Le chiffre des millièmes"
+      ],
+      "correctAnswer": "Le chiffre des centièmes",
+      "explanation": "Ajouter $0,01$ revient à ajouter un centième. Le nombre $7,89$ devient $7,90$. On remarque que le chiffre des centièmes passe de $9$ à $0$ et que le chiffre des dixièmes augmente également car $10$ centièmes forment un dixième, mais l'action directe porte sur le rang des centièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le tableau de numération. Quel nombre est représenté ?",
+      "options": [
+        "$504,2$",
+        "$540,2$",
+        "$504,02$",
+        "$54,02$"
+      ],
+      "correctAnswer": "$504,2$",
+      "explanation": "Le tableau montre $5$ centaines, $0$ dizaine, $4$ unités et $2$ dixièmes. Cela correspond au nombre $504,2$.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 504.2,
+        "caption": "Tableau de valeur positionnelle"
+      }
+    }
+  ]
+}

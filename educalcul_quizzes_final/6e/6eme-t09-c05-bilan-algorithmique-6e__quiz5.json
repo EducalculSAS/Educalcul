@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Variables, boucles, conditions",
+  "title": "Quiz Algorithmique 6e : Variables, boucles, conditions",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$ a \\leftarrow 5 $\\n$ b \\leftarrow 3 $\\n$ a \\leftarrow a + b $\\n$ b \\leftarrow a - b $\\nAfficher $ a, b $\\nQuelles sont les valeurs affichées ?",
+      "options": [
+        "a = 8, b = 5",
+        "a = 8, b = 3",
+        "a = 5, b = 8",
+        "a = 5, b = 3"
+      ],
+      "correctAnswer": "a = 8, b = 5",
+      "explanation": "Au départ $ a = 5 $ et $ b = 3 $. L'instruction $ a \\leftarrow a + b $ donne $ a = 5 + 3 = 8 $. Ensuite $ b \\leftarrow a - b $ utilise la nouvelle valeur de $ a $ : $ b = 8 - 3 = 5 $. L'affichage final est donc $ a = 8, b = 5 $. L'option B oublie la mise à jour de $ b $, l'option C inverse les valeurs, l'option D conserve les valeurs initiales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme ci-dessous :\\n$ x \\leftarrow 0 $\\nRepeter 4 fois\\n  $ x \\leftarrow x + 2 $\\nFinRepeter\\nAfficher $ x $\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "8",
+        "6",
+        "10",
+        "2"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La boucle s'exécute exactement 4 fois. La variable $ x $ commence à 0 et on ajoute 2 à chaque tour : $ 0 + 2 + 2 + 2 + 2 = 8 $. L'option 6 correspond à 3 tours, l'option 10 à 5 tours, l'option 2 à un seul tour.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que affiche l'algorithme suivant ?\\n$ n \\leftarrow 10 $\\nSi $ n > 5 $ Alors\\n  $ n \\leftarrow n - 3 $\\nSinon\\n  $ n \\leftarrow n + 3 $\\nFinSi\\nAfficher $ n $",
+      "options": [
+        "7",
+        "13",
+        "10",
+        "3"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La condition $ n > 5 $ est vraie car $ n $ vaut 10. On exécute donc la branche Alors : $ n \\leftarrow 10 - 3 = 7 $. La branche Sinon est ignorée. L'option 13 correspondrait à l'exécution de la branche Sinon, l'option 10 à l'absence de modification, l'option 3 à une soustraction de 7 au lieu de 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme avec une boucle TantQue :\\n$ compteur \\leftarrow 0 $\\n$ somme \\leftarrow 0 $\\nTantQue $ compteur < 5 $ Faire\\n  $ somme \\leftarrow somme + compteur $\\n  $ compteur \\leftarrow compteur + 1 $\\nFinTantQue\\nAfficher $ somme $\\nQuel est le résultat affiché ?",
+      "options": [
+        "10",
+        "15",
+        "6",
+        "5"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La boucle tourne pour $ compteur = 0, 1, 2, 3, 4 $ (arrêt quand $ compteur $ devient 5). La somme accumulée est $ 0 + 1 + 2 + 3 + 4 = 10 $. L'option 15 serait la somme jusqu'à 5 inclus, l'option 6 jusqu'à 3, l'option 5 est la valeur finale du compteur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace l'exécution de l'algorithme suivant :\\n$ x \\leftarrow 1 $\\n$ y \\leftarrow 0 $\\nRepeter 3 fois\\n  $ y \\leftarrow y + x $\\n  $ x \\leftarrow x \\times 2 $\\nFinRepeter\\nAfficher $ x, y $\\nQuelles sont les valeurs finales de $ x $ et $ y $ ?",
+      "options": [
+        "x = 8, y = 7",
+        "x = 8, y = 6",
+        "x = 6, y = 8",
+        "x = 4, y = 7"
+      ],
+      "correctAnswer": "x = 8, y = 7",
+      "explanation": "Tour 1 : $ y = 0 + 1 = 1 $, $ x = 1 \\times 2 = 2 $. Tour 2 : $ y = 1 + 2 = 3 $, $ x = 2 \\times 2 = 4 $. Tour 3 : $ y = 3 + 4 = 7 $, $ x = 4 \\times 2 = 8 $. Final : $ x = 8, y = 7 $. L'option B oublie l'addition du dernier $ x $, l'option C inverse les variables, l'option D s'arrête après 2 tours.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

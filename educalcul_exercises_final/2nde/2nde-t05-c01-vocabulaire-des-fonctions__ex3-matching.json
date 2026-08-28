@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 520,
+  "_course_code": "2nde-t05-c01-vocabulaire-des-fonctions",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Notation",
+  "title": "Notation des fonctions : association",
+  "blocks": [
+    {
+      "title": "Notation de base",
+      "content": "Relie chaque notation à sa signification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)$",
+          "right": "image de $x$ par la fonction $f$"
+        },
+        {
+          "left": "$x \\mapsto f(x)$",
+          "right": "règle d'association de la fonction $f$"
+        },
+        {
+          "left": "$D_f$",
+          "right": "ensemble de définition de $f$"
+        },
+        {
+          "left": "$f(A)$",
+          "right": "image de l'ensemble $A$ par $f$"
+        }
+      ],
+      "items": [],
+      "explanation": "La notation $f(x)$ désigne l'image de $x$ par $f$. La flèche $\\mapsto$ exprime la règle qui associe à chaque $x$ son image $f(x)$. $D_f$ est l'ensemble des valeurs admises pour $x$ (domaine de définition). $f(A)$ est l'ensemble des images de tous les éléments de $A$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Notation des intervalles",
+      "content": "Relie chaque notation d'intervalle à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$[a,b]$",
+          "right": "intervalle fermé de $a$ à $b$"
+        },
+        {
+          "left": "$(a,b)$",
+          "right": "intervalle ouvert de $a$ à $b$"
+        },
+        {
+          "left": "$[a,b[$",
+          "right": "intervalle semi-ouvert fermé à gauche, ouvert à droite"
+        },
+        {
+          "left": "$]a,b]$",
+          "right": "intervalle semi-ouvert ouvert à gauche, fermé à droite"
+        }
+      ],
+      "items": [],
+      "explanation": "Les crochets indiquent que la borne est incluse, les parenthèses qu'elle est exclue. $[a,b[$ inclut $a$ mais pas $b$ ; $]a,b]$ inclut $b$ mais pas $a$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Notation de variation",
+      "content": "Relie chaque terme de variation à sa définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f$ croissante sur $I$",
+          "right": "pour tout $x<y$ dans $I$, $f(x) \\le f(y)$"
+        },
+        {
+          "left": "$f$ décroissante sur $I$",
+          "right": "pour tout $x<y$ dans $I$, $f(x) \\ge f(y)$"
+        },
+        {
+          "left": "$f$ constante sur $I$",
+          "right": "pour tout $x$ dans $I$, $f(x)$ a la même valeur"
+        },
+        {
+          "left": "$f$ strictement croissante sur $I$",
+          "right": "pour tout $x<y$ dans $I$, $f(x) < f(y)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Une fonction est croissante si l'ordre des images respecte l'ordre des antécédents (inégalité large). Elle est strictement croissante si l'inégalité est stricte. Les définitions pour décroissante et constante sont analogues.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

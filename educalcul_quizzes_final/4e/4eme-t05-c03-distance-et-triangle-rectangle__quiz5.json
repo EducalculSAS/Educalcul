@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Problèmes",
+  "title": "Approfondissement : Problemes - Distance et triangle rectangle",
+  "questions": [
+    {
+      "text": "Une echelle de $5$ m de long est posee contre un mur vertical. Le pied de l'echelle est a $3$ m du mur. A quelle hauteur du sol se trouve le haut de l'echelle ?",
+      "options": [
+        "$4$ m",
+        "$2$ m",
+        "$\\sqrt{34}$ m",
+        "$8$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "L'echelle, le mur et le sol forment un triangle rectangle. L'echelle est l'hypotenuse ($5$ m), la distance au mur est un cote ($3$ m). On applique le theoreme de Pythagore : $h^2 = 5^2 - 3^2 = 25 - 9 = 16$, donc $h = 4$ m. L'option $2$ m correspond a une soustraction simple ($5-3$), $\\sqrt{34}$ m a une addition des carres ($5^2+3^2$), et $8$ m a une addition simple ($5+3$).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "L'echelle, le mur et le sol forment un triangle rectangle",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "?",
+          "3",
+          "5"
+        ],
+        "rightAngleAt": 2
+      }
+    },
+    {
+      "text": "Un terrain rectangulaire mesure $60$ m de long et $45$ m de large. Quelle est la longueur de la diagonale de ce terrain ?",
+      "options": [
+        "$75$ m",
+        "$105$ m",
+        "$15$ m",
+        "$5625$ m"
+      ],
+      "correctAnswer": "$75$ m",
+      "explanation": "La diagonale coupe le rectangle en deux triangles rectangles. Les cotes sont $60$ m et $45$ m. D'apres Pythagore : $d^2 = 60^2 + 45^2 = 3600 + 2025 = 5625$. Donc $d = \\sqrt{5625} = 75$ m. L'option $105$ m est la somme des cotes, $15$ m leur difference, et $5625$ m le carre de la diagonale sans avoir extrait la racine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de cotes $7$ cm, $24$ cm et $25$ cm. Peut-on affirmer que c'est un triangle rectangle ?",
+      "options": [
+        "Oui, car $7^2 + 24^2 = 25^2$",
+        "Non, car $7 + 24 \\neq 25$",
+        "Oui, car $7^2 + 25^2 = 24^2$",
+        "On ne peut pas savoir sans connaitre les angles"
+      ],
+      "correctAnswer": "Oui, car $7^2 + 24^2 = 25^2$",
+      "explanation": "On utilise la reciproque du theoreme de Pythagore. Le plus grand cote est $25$ cm. On verifie : $7^2 + 24^2 = 49 + 576 = 625$ et $25^2 = 625$. L'egalite est verifiee, le triangle est donc rectangle. L'option 'Non...' confond longueur et somme des longueurs. La troisieme option inverse l'hypotenuse et un cote.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repere orthonorme, on donne les points $A(1;2)$ et $B(4;6)$. Quelle est la distance $AB$ ?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$\\sqrt{7}$",
+        "$25$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La distance $AB$ se calcule avec la formule $AB = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}$. Ici $x_B-x_A = 3$ et $y_B-y_A = 4$. Donc $AB = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$. L'option $7$ est la distance 'ville' (somme des ecarts), $\\sqrt{7}$ oublie les carres, et $25$ est le carre de la distance.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle rectangle a un cote de $9$ cm et une hypoténuse de $15$ cm. Quelle est l'aire de ce triangle ?",
+      "options": [
+        "$54$ cm$^2$",
+        "$108$ cm$^2$",
+        "$27$ cm$^2$",
+        "$72$ cm$^2$"
+      ],
+      "correctAnswer": "$54$ cm$^2$",
+      "explanation": "On cherche d'abord le deuxieme cote $b$ par Pythagore : $b^2 = 15^2 - 9^2 = 225 - 81 = 144$, donc $b = 12$ cm. L'aire d'un triangle rectangle est le demi-produit des cotes de l'angle droit : $\\frac{9 \\times 12}{2} = 54$ cm$^2$. L'option $108$ oublie la division par $2$, $27$ correspond a une erreur de calcul du cote manquant ($\\sqrt{15-9}$?), et $72$ n'est pas justifie par une erreur classique simple.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle de cotes 9, 12 et 15 cm",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "15",
+          "12",
+          "9"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

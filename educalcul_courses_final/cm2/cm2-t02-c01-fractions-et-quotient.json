@@ -1,0 +1,411 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.353052+00:00",
+  "id": 282,
+  "code": "cm2-t02-c01",
+  "title": "Fractions et quotient",
+  "description": "Cours structuré Educalcul : Fractions et quotient.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions et quotient",
+    "objectif_global": "Fractions et quotient",
+    "mini_lecons_imposees": [
+      "Interpréter partage.",
+      "Placer sur droite.",
+      "Comparer à 1."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Interpréter partage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager pour comprendre la fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte de 12 bonbons et que tu veux les partager équitablement entre 4 copains. Chaque copain reçoit le même nombre de bonbons, et il ne reste rien dans la boîte. Ce geste de partage est exactement ce que représente une fraction : le nombre de bonbons que reçoit un copain (le numérateur) sur le nombre total de bonbons (le dénominateur)."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre qui se trouve au‑dessus de la barre de fraction. Il indique combien de parts on prend.",
+              "example": "Dans $3/4$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre qui se trouve au‑dessous de la barre de fraction. Il indique en combien de parts égales le tout est divisé.",
+              "example": "Dans $3/4$, le dénominateur est $4$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Une barre partagée en 2 (1/2) et une barre partagée en 4 (1/4)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les réglettes de fractions : la barre du haut est coupée en deux parts égales, celle du bas en quatre. Si tu couleurs une part sur la première barre, tu as $1/2$ ; si tu couleurs une part sur la seconde, tu as $1/4$. Les deux barres montrent que plus le dénominateur est grand, plus chaque part est petite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte tous les objets à partager, par exemple 12 bonbons."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Décider le nombre de groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis en combien de parts égales tu veux diviser le total, ici 4 groupes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la part d'un groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le total par le nombre de groupes : $12 / 4 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire la fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur est la part d'un groupe (3), le dénominateur le nombre de groupes (4), donc $3/4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons un autre partage pour bien ancrer la procédure."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu aies 15 autocollants et que tu veuilles les donner à 5 amis de façon égale. Chaque ami reçoit 3 autocollants. La fraction qui décrit ce partage est $3/5$ car le numérateur 3 correspond aux autocollants d'un ami et le dénominateur 5 au nombre d'amis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce partage est aussi une division : $15 / 5 = 3$. La fraction $3/5$ est le quotient de cette division, c'est‑à‑dire le résultat exact sans reste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as 20 billes et que tu les partages entre 4 enfants, chaque enfant reçoit 5 billes. La fraction associée est $5/4$ ? Non, ici le numérateur est 5 et le dénominateur 4, donc $5/4$ signifie que chaque enfant reçoit plus d'une part entière. C'est une fraction supérieure à 1."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 18 crayons à partager entre 6 camarades. Quelle fraction représente la part d'un camarade ?",
+              "answer": "3/6 (ou 1/2 après simplification)",
+              "hint": "Divise le total par le nombre de camarades.",
+              "explanation": "18 ÷ 6 = 3, donc chaque camarade reçoit 3 crayons sur 18, ce qui donne la fraction 3/6, simplifiable en 1/2."
+            },
+            {
+              "question": "20 bonbons sont partagés équitablement entre 5 enfants. Écris la fraction qui décrit la part d'un enfant.",
+              "answer": "4/5",
+              "hint": "Combien de bonbons reçoit chaque enfant ?",
+              "explanation": "20 ÷ 5 = 4, chaque enfant a 4 bonbons sur 20, soit la fraction 4/5."
+            },
+            {
+              "question": "12 billes sont partagées entre 3 amis. Écris la fraction et dis si elle est supérieure à 1.",
+              "answer": "4/3, supérieure à 1",
+              "hint": "Calcule le quotient de la division.",
+              "explanation": "12 ÷ 3 = 4, chaque ami reçoit 4 billes. La fraction est 4/3 car le numérateur (4) est plus grand que le dénominateur (3), donc la fraction est supérieure à 1."
+            }
+          ]
+        },
+        {
+          "title": "Placer sur droite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La droite graduée, un chemin pour les fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un ruban de 1 mètre que tu coupes en 4 morceaux égaux. Chaque morceau mesure $1/4$ de mètre. Si tu poses ce ruban sur une droite graduée qui va de 0 à 1, le premier repère après 0 correspond à $1/4$, le deuxième à $2/4$ (c'est‑à‑dire $1/2$), le troisième à $3/4$ et le dernier à $1$. La droite graduée te permet de voir où se trouve chaque fraction."
+            },
+            {
+              "type": "definition",
+              "term": "Droite graduée",
+              "definition": "Une ligne horizontale (ou verticale) sur laquelle on marque des nombres à intervalles réguliers. Elle sert à repérer la position d'un nombre, y compris les fractions.",
+              "example": "Sur une droite de 0 à 1, le point $3/4$ se trouve aux trois quarts du trajet."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérage de 1/2 et 3/2 sur une droite de 0 à 2.",
+              "min": 0,
+              "max": 2,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 1.5,
+                  "label": "3/2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour placer une fraction sur la droite, il faut d'abord diviser l'intervalle entre deux nombres entiers en autant de parts égales que le dénominateur. Ensuite, on compte le numérateur de parts à partir de l'origine."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde entre quels deux entiers se situe la fraction. Pour $3/4$, c'est entre 0 et 1."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace 4 segments égaux entre 0 et 1 car le dénominateur est 4."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avance de 3 segments (le numérateur) depuis 0. Le point atteint correspond à $3/4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant une fraction qui se trouve entre 0 et 1, mais avec un dénominateur différent."
+            },
+            {
+              "type": "paragraph",
+              "content": "Place $2/3$ sur une droite qui va de 0 à 1. Tu dois diviser l'intervalle en 3 parts égales et avancer de 2 parts. Le point obtenu est plus proche de 1 que de 0, car $2/3$ est grand."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions peuvent aussi être plus grandes que 1. Pour $5/4$, l'intervalle entre 1 et 2 est divisé en 4 parts ; on avance d'une part au‑delà de 1. Ainsi $5/4$ se situe un quart après 1."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place $3/4$ sur une droite graduée de 0 à 1.",
+              "answer": "À trois quarts du segment, c'est‑à‑dire après trois parts sur quatre.",
+              "hint": "Divise le segment en 4 parts égales et compte 3 parts.",
+              "explanation": "Le dénominateur 4 indique 4 parts égales entre 0 et 1. Le numérateur 3 dit d'avancer de 3 parts, donc le point se trouve à $3/4$."
+            },
+            {
+              "question": "Place $5/4$ sur une droite graduée de 0 à 2.",
+              "answer": "Un quart après 1, soit à 1,25.",
+              "hint": "5/4 = 1 + 1/4, donc commence à 1 et avance d'un quart.",
+              "explanation": "La fraction $5/4$ est supérieure à 1. On repère 1 sur la droite, puis on divise l'intervalle 1‑2 en 4 parts et on avance d'une part."
+            },
+            {
+              "question": "Sur la même droite de 0 à 2, place $2/3$ et $4/3$.",
+              "answer": "$2/3$ entre 0 et 1 ; $4/3$ entre 1 et 2, à un tiers après 1.",
+              "hint": "Repère les dénominateurs 3 pour diviser les intervalles concernés.",
+              "explanation": "Pour $2/3$, divise 0‑1 en 3 parts et avance de 2. Pour $4/3$, note que $4/3 = 1 + 1/3$ ; place 1, puis divise 1‑2 en 3 parts et avance d'une part."
+            }
+          ]
+        },
+        {
+          "title": "Comparer à 1.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer une fraction à 1, plus grand, plus petit ou égal ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pizza coupée en 8 parts égales. Si tu manges 5 parts, tu as mangé $5/8$ de la pizza. Comme 5 est plus petit que 8, tu n'as pas mangé la pizza entière : $5/8$ est inférieur à 1. Si tu manges 8 parts, tu as tout mangé : $8/8 = 1$. Si tu manges 9 parts (une pizza et une part de plus), tu as $9/8$, ce qui est supérieur à 1."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de trois fractions par rapport à 1.",
+              "bars": [
+                {
+                  "label": "5/8",
+                  "value": 0.625,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1",
+                  "value": 1,
+                  "tone": "gray"
+                },
+                {
+                  "label": "9/8",
+                  "value": 1.125,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle est simple : compare le numérateur au dénominateur. Si le numérateur est plus petit, la fraction est < 1. S'ils sont égaux, la fraction = 1. Si le numérateur est plus grand, la fraction > 1."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le numérateur et le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les deux nombres de la fraction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Numérateur < dénominateur → fraction < 1. Numérateur = dénominateur → fraction = 1. Numérateur > dénominateur → fraction > 1."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le signe <, = ou > entre la fraction et 1."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant une fraction dont le numérateur et le dénominateur sont identiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $4/4$ ou $7/7$. Dans les deux cas, le numérateur égale le dénominateur, donc chaque fraction vaut exactement 1. C'est comme dire que tu as pris toutes les parts d'un gâteau découpé en 4 ou en 7 morceaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, classons plusieurs fractions par rapport à 1. Imagine les fractions $5/6$, $4/4$, $9/8$. La première a un numérateur plus petit que son dénominateur, elle est < 1. La deuxième a numérateur = dénominateur, elle = 1. La troisième a numérateur plus grand, elle > 1. L'ordre croissant est donc $5/6 < 1 < 9/8$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais interpréter un partage comme une fraction.",
+                "Je sais placer une fraction sur une droite graduée.",
+                "Je sais comparer une fraction à 1."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $7/5$ à 1.",
+              "answer": "Supérieur à 1",
+              "hint": "Regarde si le numérateur est plus grand que le dénominateur.",
+              "explanation": "Le numérateur 7 est plus grand que le dénominateur 5, donc $7/5 > 1$."
+            },
+            {
+              "question": "Compare $3/8$ à 1.",
+              "answer": "Inférieur à 1",
+              "hint": "Compare le numérateur et le dénominateur.",
+              "explanation": "Le numérateur 3 est plus petit que le dénominateur 8, donc $3/8 < 1$."
+            },
+            {
+              "question": "Classe ces fractions par rapport à 1 : $4/4$, $5/6$, $9/8$.",
+              "answer": "$5/6 < 1$, $4/4 = 1$, $9/8 > 1$",
+              "hint": "Utilise la règle du numérateur face au dénominateur pour chaque fraction.",
+              "explanation": "$5/6$ a 5 < 6 → < 1. $4/4$ a 4 = 4 → = 1. $9/8$ a 9 > 8 → > 1. L'ordre croissant est $5/6 < 1 < 9/8$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

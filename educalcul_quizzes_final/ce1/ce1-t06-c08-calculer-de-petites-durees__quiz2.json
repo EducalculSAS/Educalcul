@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 124,
+  "_course_code": "ce1-t06-c08-calculer-de-petites-durees",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Compter des intervalles simples",
+  "title": "Compter des intervalles de temps simples",
+  "questions": [
+    {
+      "text": "Regarde l'horloge. Il est $9$ h. Combien d'heures faut-il attendre pour qu'il soit $12$ h ?",
+      "options": [
+        "2 heures",
+        "3 heures",
+        "4 heures",
+        "5 heures"
+      ],
+      "correctAnswer": "3 heures",
+      "explanation": "On compte les heures qui séparent $9$ h de $12$ h : $10$ h (1 heure), $11$ h (2 heures), $12$ h (3 heures). Il y a donc 3 heures d'intervalle.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 9,
+        "minutes": 0,
+        "caption": "Heure de début : 9 h",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Un dessin animé commence à $14$ h et se termine à $15$ h $30$. Combien de temps dure-t-il ?",
+      "options": [
+        "1 heure",
+        "1 heure 30",
+        "2 heures",
+        "30 minutes"
+      ],
+      "correctAnswer": "1 heure 30",
+      "explanation": "De $14$ h à $15$ h, il s'écoule 1 heure. De $15$ h à $15$ h $30$, il s'écoule 30 minutes. Au total, la durée est de 1 heure 30.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas commence une partie de jeu à $16$ h $30$. Il joue pendant $1$ heure. À quelle heure finit-il sa partie ?",
+      "options": [
+        "17 h",
+        "17 h 30",
+        "18 h",
+        "16 h 45"
+      ],
+      "correctAnswer": "17 h 30",
+      "explanation": "On ajoute $1$ heure à l'heure de début $16$ h $30$. $16$ h $30 + 1$ heure = $17$ h $30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la frise chronologique ci-dessous, le point A marque le début de la récréation à $8$ h et le point B marque la fin à $11$ h. Combien d'heures dure la récréation ?",
+      "options": [
+        "2 heures",
+        "3 heures",
+        "4 heures",
+        "5 heures"
+      ],
+      "correctAnswer": "3 heures",
+      "explanation": "On compte les intervalles d'une heure entre $8$ h et $11$ h : $8$ h $\\rightarrow$ $9$ h (1), $9$ h $\\rightarrow$ $10$ h (2), $10$ h $\\rightarrow$ $11$ h (3). La durée est de 3 heures.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Frise de 8 h à 11 h",
+        "min": 8,
+        "max": 11,
+        "points": [
+          {
+            "value": 8,
+            "label": "A"
+          },
+          {
+            "value": 11,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Combien y a-t-il d'intervalles de $30$ minutes dans une durée de $2$ heures ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Une heure contient 2 intervalles de $30$ minutes. Dans $2$ heures, il y a donc $2 \\times 2 = 4$ intervalles de $30$ minutes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

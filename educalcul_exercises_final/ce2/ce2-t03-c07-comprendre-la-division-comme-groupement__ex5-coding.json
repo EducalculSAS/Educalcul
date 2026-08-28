@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 166,
+  "_course_code": "ce2-t03-c07-comprendre-la-division-comme-groupement",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Former des groupes",
+  "title": "Écrire un algorithme pour former des groupes",
+  "blocks": [
+    {
+      "title": "Partage de billes",
+      "content": "Tu as $15$ billes. Tu veux faire des paquets de $3$ billes chacun. Écris les étapes de ton raisonnement (ton algorithme) pour trouver combien de paquets tu pourras faire. Numérote les étapes.",
+      "correctAnswer": "Étape 1 : Je prends le nombre total de billes : $15$.\\nÉtape 2 : Je forme un premier paquet de $3$ billes. Il me reste $12$ billes.\\nÉtape 3 : Je forme un deuxième paquet de $3$ billes. Il me reste $9$ billes.\\nÉtape 4 : Je continue ainsi jusqu'à ne plus avoir de billes.\\nÉtape 5 : Je compte le nombre de paquets formés : $5$ paquets.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part du total ($15$). On retire successivement des groupes de $3$ (soustractions répétées : $15-3=12$, $12-3=9$, $9-3=6$, $6-3=3$, $3-3=0$). On a effectué $5$ retraits, donc $5$ groupes. L'algorithme décrit cette procédure pas à pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boîtes de crayons",
+      "content": "Une maîtresse a $24$ crayons. Elle veut les ranger dans des boîtes de $6$ crayons. Écris un algorithme clair, sous forme d'instructions successives, pour déterminer le nombre de boîtes nécessaires.",
+      "correctAnswer": "Instruction 1 : Noter le nombre total de crayons : $24$.\\nInstruction 2 : Noter la capacité d'une boîte : $6$ crayons.\\nInstruction 3 : Initialiser le compteur de boîtes à $0$.\\nInstruction 4 : Tant qu'il reste des crayons non rangés :\\n  - Remplir une boîte de $6$ crayons.\\n  - Ajouter $1$ au compteur de boîtes.\\n  - Retirer $6$ crayons du total restant.\\nInstruction 5 : Afficher la valeur du compteur : $4$ boîtes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme utilise une structure 'Tant que' (boucle) adaptée au niveau CE2 sous forme textuelle. On commence avec $24$ crayons. À chaque tour de boucle, on forme un groupe de $6$, on incrémente le nombre de boîtes (1, 2, 3, 4) et on diminue le stock ($18, 12, 6, 0$). Quand le stock atteint $0$, la boucle s'arrête. Le compteur vaut $4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général du groupement",
+      "content": "On veut écrire un algorithme général qui permet de calculer le nombre de groupes pour n'importe quelle division de type groupement. Complète les lignes manquantes (représentées par des pointillés) pour que l'algorithme soit correct.\\n\\nDébut\\n  NombreTotal ← ...\\n  TailleGroupe ← ...\\n  NombreGroupes ← 0\\n  Reste ← NombreTotal\\n  Tant que Reste > 0 faire\\n    Reste ← Reste - ...\\n    NombreGroupes ← NombreGroupes + 1\\n  Fin Tant que\\n  Afficher NombreGroupes\\nFin",
+      "correctAnswer": "Début\\n  NombreTotal ← Dividende (ex: 20)\\n  TailleGroupe ← Diviseur (ex: 4)\\n  NombreGroupes ← 0\\n  Reste ← NombreTotal\\n  Tant que Reste > 0 faire\\n    Reste ← Reste - TailleGroupe\\n    NombreGroupes ← NombreGroupes + 1\\n  Fin Tant que\\n  Afficher NombreGroupes\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un algorithme de groupement, 'NombreTotal' est le dividende (le nombre à partager) et 'TailleGroupe' est le diviseur (la taille de chaque groupe). La variable 'Reste' suit ce qui n'est pas encore groupé. Dans la boucle, on soustrait la 'TailleGroupe' au 'Reste' à chaque formation de groupe, et on incrémente 'NombreGroupes'. La boucle s'arrête quand 'Reste' devient $0$ (division exacte).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

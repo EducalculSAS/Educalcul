@@ -1,0 +1,286 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.027459+00:00",
+  "id": 501,
+  "code": "2nde-t01-c06",
+  "title": "Encadrements et approximations",
+  "description": "Cours structuré Educalcul : Encadrements et approximations.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Encadrements et approximations",
+    "objectif_global": "Encadrements et approximations",
+    "mini_lecons_imposees": [
+      "Arrondis.",
+      "Erreur / précision.",
+      "Calculatrice."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Arrondis.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu consultes le solde de ton compte bancaire ou que tu calcules le prix moyen d'un article lors d'une promotion. Très souvent, tu tombes sur des nombres avec une suite interminable de chiffres après la virgule, comme $15,482937$ euros. Dans la vie réelle, personne ne manipule des millièmes de centimes. C'est là qu'intervient la notion d'arrondi. Arrondir, c'est un peu comme décider quel voisin est le plus proche de chez nous sur une rue numérique. On cherche à remplacer un nombre précis mais encombrant par un nombre plus simple, plus facile à lire et à manipuler, tout en restant le plus fidèle possible à la valeur d'origine. C'est un équilibre entre la simplicité et la précision. Que ce soit pour arrondir une note, un prix ou une mesure scientifique, savoir comment faire permet d'éviter des erreurs de communication. On ne dira pas qu'un objet mesure $12,00001$ $cm$ si on utilise une règle classique, on dira qu'il mesure environ $12$ $cm$. C'est ce passage du monde mathématique parfait au monde concret que nous allons explorer ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arrondi d'un nombre réel consiste à trouver le nombre le plus proche possédant un certain nombre de chiffres après la virgule (ou un certain rang). On parle d'arrondi à l'unité quand on veut un nombre entier, au dixième quand on veut $1$ chiffre après la virgule, ou au centième pour $2$ chiffres. La règle d'or est la suivante : on observe le premier chiffre que l'on souhaite supprimer. Si ce chiffre est $0$, $1$, $2$, $3$ ou $4$, on conserve le chiffre précédent tel quel; c'est ce qu'on appelle un arrondi par défaut. En revanche, si ce chiffre est $5$, $6$, $7$, $8$ ou $9$, on ajoute $1$ au chiffre précédent; c'est un arrondi par excès. Par exemple, pour arrondir $3,14159$ au centième, on regarde le troisième chiffre après la virgule, qui est $1$. Comme $1$ est inférieur à $5$, on garde $3,14$. Si on avait dû arrondir $3,1459$, le troisième chiffre étant $5$, on aurait augmenté le $4$ pour obtenir $3,15$. Cette méthode assure que l'écart entre le nombre réel et son arrondi est le plus petit possible."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arrondi de $7,3826$ au centième : on voit que le point est plus proche de $7,38$ que de $7,39$.",
+              "min": 7.37,
+              "max": 7.4,
+              "points": [
+                {
+                  "value": 7.3826,
+                  "label": "x"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réussir un arrondi sans se tromper, je te conseille de suivre systématiquement ces trois étapes. D'abord, identifie le rang de l'arrondi demandé. Si on te demande le centième, place ton doigt ou ton crayon juste après le deuxième chiffre après la virgule. C'est ta frontière. Ensuite, regarde attentivement le chiffre qui se trouve immédiatement à droite de cette frontière, celui que tu t'apprêtes à supprimer. C'est lui qui détient le secret de l'opération. Enfin, applique la règle de décision. Si ce chiffre est strictement inférieur à $5$, tu effaces tout ce qui suit la frontière sans rien changer au reste du nombre. Si ce chiffre est égal ou supérieur à $5$, tu ajoutes $1$ au chiffre situé juste à gauche de la frontière, puis tu effaces tout ce qui suit. Attention, si le chiffre à augmenter est un $9$, il devient $0$ et tu reportes l'unité au rang supérieur, un peu comme une retenue dans une addition. En suivant cet ordre, tu ne manqueras jamais aucune nuance, même sur des nombres très longs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre $x = 7,3826$ et cherchons son arrondi au centième. Le centième correspond au deuxième chiffre après la virgule, qui est ici le $8$. Nous traçons donc une frontière imaginaire juste après ce $8$. Maintenant, nous regardons le chiffre suivant, le millième, qui est $2$. En appliquant notre règle, nous voyons que $2$ est inférieur à $5$. Par conséquent, nous effectuons un arrondi par défaut. Nous conservons le $8$ tel quel et nous supprimons tout ce qui vient après. Le résultat final est donc $7,38$. On peut constater que $7,3826$ est effectivement plus proche de $7,38$ que de $7,39$. Dans ce cas, l'arrondi ne modifie pas la valeur du chiffre des centièmes car le nombre était très proche de la borne inférieure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons maintenant le nombre $y = 12,9971$ et arrondissons-le à l'unité. Le rang de l'unité est le chiffre juste avant la virgule, ici le $2$. Notre frontière se place donc immédiatement après le $2$. Nous regardons le premier chiffre après la virgule, le dixième, qui est $9$. Puisque $9$ est supérieur ou égal à $5$, nous devons arrondir par excès. Nous ajoutons donc $1$ au chiffre des unités. Ici, $2 + 1$ donne $3$. On supprime tout le reste. Le résultat est $13$. Mais imaginons un cas plus complexe comme $12,9971$ arrondi au centième. Le centième est $9$. Le chiffre suivant est $7$. Comme $7$ est supérieur à $5$, on ajoute $1$ au centième. Mais $9 + 1 = 10$. On pose $0$ et on reporte $1$ au dixième. Le dixième est aussi un $9$, donc $9 + 1 = 10$. On pose $0$ et on reporte $1$ à l'unité. Le $2$ devient alors $3$. On obtient $13,00$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est de confondre l'arrondi avec la troncature. Tronquer, c'est couper brutalement le nombre sans regarder ce qui suit. Par exemple, si tu tronques $4,58$ à l'unité, tu obtiens $4$. Mais si tu arrondis $4,58$ à l'unité, tu obtiens $5$ car $5$ est supérieur ou égal à $5$. La troncature est toujours un arrondi par défaut, alors que l'arrondi choisit le chemin le plus court. Un autre piège courant survient avec le chiffre $5$. Certains élèves hésitent et pensent qu'on ne change rien. Rappelle-toi bien : le $5$ déclenche systématiquement l'augmentation du chiffre précédent. Enfin, fais attention aux nombres comme $0,0098$ arrondis au centième. Le chiffre des centièmes est $0$, le suivant est $9$. On ajoute $1$ au $0$, ce qui donne $0,01$. Ne laisse pas le zéro t'induire en erreur, la règle s'applique de la même manière quel que soit le chiffre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis le nombre $14,736$ au centième.",
+              "answer": "14,74",
+              "hint": "Regarde le troisième chiffre après la virgule : est-il supérieur ou égal à $5$ ?",
+              "explanation": "Le troisième chiffre après la virgule est $6$. Comme $6 \\geq 5$, on ajoute $1$ au chiffre des centièmes ($3$). On obtient donc $14,74$."
+            },
+            {
+              "question": "Quel est l'arrondi à l'unité du nombre $8,49$ ?",
+              "answer": "8",
+              "hint": "Observe le chiffre des dixièmes.",
+              "explanation": "Le chiffre des dixièmes est $4$. Comme $4 < 5$, on arrondit par défaut. On garde le chiffre des unités tel quel, soit $8$."
+            },
+            {
+              "question": "Arrondis $0,998$ au centième.",
+              "answer": "1",
+              "hint": "Attention à la propagation de l'arrondi si le chiffre est un $9$.",
+              "explanation": "Le troisième chiffre est $8$, donc on ajoute $1$ au centième. $9+1=10$, on pose $0$ et on retient $1$. Le dixième est $9$, $9+1=10$, on pose $0$ et on retient $1$. L'unité devient $0+1=1$. Le résultat est $1,00$ ou simplement $1$."
+            }
+          ]
+        },
+        {
+          "title": "Erreur / précision.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà remarqué que lorsque tu pèses des aliments sur une balance de cuisine, le chiffre peut légèrement varier d'un essai à l'autre ? Ou peut-être que lorsque tu mesures la température avec un thermomètre, tu ne peux pas être certain à $100$ % que le résultat est exactement $22,000000$ degrés. En sciences, et surtout en mathématiques de seconde, on admet une vérité fondamentale : aucune mesure physique n'est parfaitement exacte. Il existe toujours un petit écart entre la valeur réelle d'un objet et la valeur que nous mesurons. Cet écart, c'est ce qu'on appelle l'erreur. Mais attention, en maths, le mot erreur n'est pas une insulte ou une faute d'étourderie. C'est une donnée technique. Comprendre comment quantifier cette erreur permet aux ingénieurs de construire des ponts qui ne s'effondrent pas ou aux pharmaciens de doser des médicaments avec une précision vitale. Savoir si une erreur de $1$ $cm$ est grave ou négligeable dépend entièrement de ce que l'on mesure : c'est tout l'enjeu de la précision."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour mesurer l'imprécision d'une valeur, on utilise deux concepts clés. D'abord, l'erreur absolue. C'est la différence entre la valeur exacte $V$ et la valeur approchée $A$. On l'écrit généralement sous la forme $|V - A|$ pour s'assurer que le résultat soit toujours positif. Par exemple, si un objet mesure exactement $10$ $cm$ et qu'on l'estime à $9,8$ $cm$, l'erreur absolue est de $0,2$ $cm$. Cependant, l'erreur absolue ne suffit pas à juger la qualité d'une mesure. Une erreur de $1$ $cm$ est minuscule si on mesure la distance entre Paris et Lyon, mais elle est énorme si on fabrique une vis de précision. C'est pourquoi on utilise l'erreur relative. Elle se calcule en divisant l'erreur absolue par la valeur exacte : $\\frac{|V - A|}{|V|}$. On l'exprime souvent en pourcentage en multipliant le résultat par $100$. L'erreur relative nous donne une idée de la proportion de l'erreur par rapport à la taille de l'objet, ce qui permet de comparer la précision de deux mesures différentes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Erreur Absolue} = |V - A| \\ \\text{Erreur Relative} = \\frac{|V - A|}{|V|} \\times 100 \\%"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour analyser la précision d'une approximation, je te suggère de suivre ce cheminement logique. Première étape, calcule l'erreur absolue. Pour cela, soustrais la valeur approchée de la valeur exacte. Si tu obtiens un nombre négatif, ignore le signe moins car on s'intéresse uniquement à la distance entre les deux valeurs. Note bien l'unité de mesure, car l'erreur absolue a la même unité que la valeur d'origine. Deuxième étape, calcule l'erreur relative. Prends le résultat de l'erreur absolue et divise-le par la valeur exacte. À ce stade, tu obtiens un nombre sans unité (un coefficient). Troisième étape, transforme ce coefficient en pourcentage pour rendre le résultat plus parlant. Multiplie simplement ton erreur relative par $100$ et ajoute le symbole $\\%$. Ce pourcentage représente le taux d'erreur. Plus ce pourcentage est proche de $0$ $\\%$, plus ton approximation est précise. C'est l'indicateur final qui te permet de dire si ton résultat est acceptable ou non."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'un artisan mesure une planche de bois qui mesure exactement $200$ $cm$. À cause de l'épaisseur du trait de son crayon, il note $201$ $cm$. Calculons d'abord l'erreur absolue. On fait la différence : $|200 - 201| = |-1| = 1$ $cm$. L'erreur absolue est donc de $1$ $cm$. Maintenant, voyons si cette erreur est significative en calculant l'erreur relative. On divise l'erreur absolue par la valeur exacte : $\\frac{1}{200} = 0,005$. Pour obtenir le pourcentage, on multiplie par $100$ : $0,005 \\times 100 = 0,5$ $\\%$. On peut conclure que l'erreur est très faible, représentant seulement un demi-pourcent de la longueur totale. Pour la plupart des travaux de menuiserie, une précision de $0,5$ $\\%$ est tout à fait acceptable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons maintenant deux situations. Cas A : on mesure un petit composant électronique de $2$ $mm$ et on trouve $2,1$ $mm$. Cas B : on mesure un terrain de $100$ $m$ et on trouve $100,1$ $m$. Dans les deux cas, l'erreur absolue est la même : $|2 - 2,1| = 0,1$ $mm$ et $|100 - 100,1| = 0,1$ $m$ (en convertissant, c'est une erreur de $10$ $cm$ pour le terrain). Attendons, rectifions : $|100 - 100,1| = 0,1$ $m$. L'erreur absolue du terrain est $0,1$ $m$, celle du composant est $0,1$ $mm$. Si on avait les deux erreurs absolues égales à $0,1$ unité, l'erreur relative serait radicalement différente. Pour le composant : $\\frac{0,1}{2} = 0,05$ soit $5$ $\\%$. Pour le terrain : $\\frac{0,1}{100} = 0,001$ soit $0,1$ $\\%$. On voit clairement que l'erreur de $0,1$ est beaucoup plus grave sur le petit objet que sur le grand terrain, car elle représente une part bien plus importante de la valeur totale."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'un des pièges les plus fréquents est l'oubli de la valeur absolue. Certains élèves font $A - V$ et se retrouvent avec un résultat négatif, puis s'étonnent que l'erreur relative soit négative. Rappelle-toi qu'une distance ou un écart est toujours positif. Un autre point de vigilance concerne les unités. Il est impératif que la valeur exacte et la valeur approchée soient dans la même unité avant de faire la soustraction. Si tu soustrais $10$ $cm$ à $1,1$ $m$, tu obtiendras un résultat absurde. Convertis tout en $cm$ ou tout en $m$ d'abord. Enfin, attention à ne pas confondre erreur absolue et erreur relative. L'absolue répond à la question : De combien je me suis trompé ? L'relative répond à la question : Est-ce que c'est grave par rapport à la taille de l'objet ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une pièce métallique mesure exactement $15,00$ $mm$. Un instrument de mesure affiche $14,92$ $mm$. Quelle est l'erreur absolue ?",
+              "answer": "0,08 mm",
+              "hint": "Soustrait la valeur approchée de la valeur exacte.",
+              "explanation": "L'erreur absolue est $|15,00 - 14,92| = 0,08$ $mm$."
+            },
+            {
+              "question": "Pour la pièce précédente, calcule l'erreur relative en pourcentage.",
+              "answer": "0,53 %",
+              "hint": "Divise l'erreur absolue par la valeur exacte, puis multiplie par $100$.",
+              "explanation": "L'erreur relative est $\\frac{0,08}{15} \\approx 0,00533$. En pourcentage, cela donne $0,00533 \\times 100 \\approx 0,53$ $\\%$."
+            },
+            {
+              "question": "On estime la population d'une ville à $120$ $000$ habitants alors qu'elle est de $121$ $000$. L'erreur relative est-elle plus grande que $1$ $\\%$ ?",
+              "answer": "Non",
+              "hint": "Calcule l'erreur absolue d'abord, puis l'erreur relative.",
+              "explanation": "Erreur absolue = $|121000 - 120000| = 1000$. Erreur relative = $\\frac{1000}{121000} \\approx 0,00826$. En pourcentage, cela fait environ $0,83$ $\\%$, ce qui est inférieur à $1$ $\\%$."
+            }
+          ]
+        },
+        {
+          "title": "Calculatrice.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "La calculatrice semble être un outil magique : on tape des chiffres, on appuie sur égal, et le résultat tombe, instantanément et avec une précision chirurgicale. Pourtant, même la machine la plus sophistiquée a ses limites. Une calculatrice ne peut pas stocker un nombre avec une infinité de chiffres après la virgule. Quand elle calcule $\\frac{1}{3}$ ou $\\sqrt{2}$, elle s'arrête forcément à un moment donné, même si c'est après $12$ ou $15$ chiffres. Elle effectue donc, sans que tu le voies, des arrondis internes. Cela peut paraître insignifiant, mais dans un calcul long avec plusieurs étapes, ces petites approximations peuvent s'accumuler et fausser ton résultat final. C'est ce qu'on appelle la propagation des erreurs. Apprendre à utiliser sa calculatrice intelligemment, ce n'est pas seulement savoir où sont les touches, c'est comprendre comment la machine traite les nombres pour ne pas devenir l'esclave de ses arrondis invisibles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le processeur d'une calculatrice traite les nombres selon un format numérique limité. Lorsqu'elle affiche un résultat comme $0,3333333333$, elle tronque ou arrondit la valeur réelle de $\\frac{1}{3}$. Le danger principal survient lors de calculs en chaîne. Si tu calcules une valeur, que tu l'arrondis pour l'écrire sur ton brouillon, puis que tu utilises cet arrondi pour l'étape suivante, tu introduis une erreur humaine. Si tu laisses la calculatrice faire, elle utilise sa propre précision interne, qui est bien plus élevée, mais toujours finie. Il est crucial de distinguer la valeur exacte (souvent sous forme de fraction ou de racine carrée) de la valeur approchée. En seconde, on attend de toi que tu manipules les valeurs exactes le plus longtemps possible. Par exemple, au lieu de remplacer $\\sqrt{3}$ par $1,73$ dès le début d'un exercice, garde le symbole $\\sqrt{3}$ dans toutes tes étapes de calcul et n'effectue l'arrondi final qu'à la toute fin. Cela garantit que l'erreur relative de ton résultat est la plus faible possible."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire l'expression avec fractions et racines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Simplifier l'expression algébriquement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Saisir l'expression finale dans la calculatrice."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Arrondir le résultat final une seule fois."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour optimiser la précision de tes résultats avec une calculatrice, je te propose une méthode de travail rigoureuse. Étape 1 : Priorité aux fractions et symboles. Dès que tu rencontres un nombre comme $\\frac{1}{7}$ ou $\\sqrt{5}$, ne convertis pas tout de suite en nombre décimal. Écris-le tel quel dans ton expression. Étape 2 : Utilise la mémoire de la machine. La plupart des calculatrices permettent de stocker des résultats dans des variables (comme $A, B, C$) ou utilisent une mémoire tampon. Utilise la touche ANS (Answer) pour reprendre le résultat exact du calcul précédent sans avoir à le retaper manuellement. Étape 3 : Calcul global. Saisis l'expression mathématique complète en une seule fois si possible, en utilisant des parenthèses. Cela permet à la calculatrice d'optimiser les calculs internes. Étape 4 : Arrondi final unique. Une fois que tu as obtenu le résultat final sur l'écran, applique la règle de l'arrondi (vue en leçon 1) selon la précision demandée dans l'énoncé. Ne jamais arrondir entre deux étapes de calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons deux méthodes pour calculer $L = \\frac{10}{3} \\times 5$. Méthode A (Arrondie trop tôt) : On calcule $\\frac{10}{3} \\approx 3,33$. Ensuite, on multiplie par $5$ : $3,33 \\times 5 = 16,65$. Méthode B (Calcul exact) : On multiplie d'abord les numérateurs : $\\frac{10 \\times 5}{3} = \\frac{50}{3}$. On effectue la division finale : $50 \\div 3 = 16,6666...$ Si on arrondit au centième, on obtient $16,67$. On remarque une différence de $0,02$ entre les deux méthodes. Cela peut sembler minime, mais imagine si tu avais $10$ étapes de calcul comme celle-ci ; l'écart deviendrait significatif. La méthode B est la seule valable en mathématiques car elle minimise la propagation de l'erreur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple avec des racines carrées : calcule $S = (\\sqrt{2} + 1)^2$. Méthode naïve : on arrondit $\\sqrt{2} \\approx 1,41$. On calcule $(1,41 + 1)^2 = (2,41)^2 = 5,8081$. Méthode rigoureuse : on développe l'identité remarquable $(a+b)^2 = a^2 + 2ab + b^2$. On a $(\\sqrt{2})^2 + 2 \\times \\sqrt{2} \\times 1 + 1^2 = 2 + 2\\sqrt{2} + 1 = 3 + 2\\sqrt{2}$. Maintenant, on utilise la calculatrice pour la valeur finale : $3 + 2 \\times 1,4142... \\approx 3 + 2,8284... = 5,8284...$ Si on arrondit au centième, on obtient $5,83$. L'écart entre $5,81$ et $5,83$ est flagrant. En développant l'expression avant d'utiliser la calculatrice, on a éliminé une grande partie de l'imprécision."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus insidieux est la confiance aveugle dans l'affichage. Parfois, la calculatrice affiche un nombre qui semble être un arrondi, mais elle garde en mémoire quelques chiffres supplémentaires. Si tu recopies ce nombre arrondi et que tu le réinjectes dans un nouveau calcul, tu crées une erreur. Un autre point critique est l'utilisation des touches de fonctions. Par exemple, utiliser la touche $\\pi$ est bien plus précis que de taper $3,14$ ou $3,1416$. Le symbole $\\pi$ représente une valeur avec une précision maximale gérée par le système. Enfin, attention aux divisions par des nombres très petits. Diviser par $0,0001$ multiplie l'erreur existante par $10$ $000$. C'est dans ces situations que la gestion des valeurs exactes est absolument primordiale pour ne pas obtenir un résultat totalement erroné."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $B = \\frac{1}{3} + \\frac{1}{6}$ en utilisant la méthode exacte, puis donne l'arrondi au centième.",
+              "answer": "0,5",
+              "hint": "Ne convertis pas en décimal avant d'avoir additionné les fractions.",
+              "explanation": "$\\frac{1}{3} + \\frac{1}{6} = \\frac{2}{6} + \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2} = 0,5$. L'arrondi au centième est $0,50$."
+            },
+            {
+              "question": "Si tu calcules $\\sqrt{3} \\times \\sqrt{3}$ en arrondissant $\\sqrt{3}$ à $1,73$, quel résultat obtiens-tu ? Quel est le résultat exact ?",
+              "answer": "2,9929 et 3",
+              "hint": "Fais le calcul avec $1,73$, puis réfléchis à la définition de la racine carrée.",
+              "explanation": "$1,73 \\times 1,73 = 2,9929$. Le résultat exact est $(\\sqrt{3})^2 = 3$. L'erreur est due à l'arrondi prématuré."
+            },
+            {
+              "question": "Pourquoi est-il préférable d'utiliser la touche $\\pi$ plutôt que $3,14$ dans un calcul de circonférence ?",
+              "answer": "Pour limiter l'erreur relative",
+              "hint": "Pense à la quantité de chiffres après la virgule.",
+              "explanation": "La touche $\\pi$ utilise environ $12$ à $15$ décimales, alors que $3,14$ n'en utilise que deux. Cela réduit considérablement l'erreur absolue et donc l'erreur relative du résultat final."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

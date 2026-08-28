@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Rapport",
+  "title": "Approfondissement sur le rapport d'une homothétie - Algorithmes",
+  "blocks": [
+    {
+      "title": "Image d'un point par une homothétie",
+      "content": "Écrire un algorithme (en pseudo‑code ou style Python) qui, donnés le centre $O(x_O,y_O)$, le rapport $k$ et un point $A(x_A,y_A)$, affiche les coordonnées de l'image $A'$ de $A$ par l'homothétie de centre $O$ et de rapport $k$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xO, yO, k, xA, yA\\n2. xAp = xO + k * (xA - xO)\\n3. yAp = yO + k * (yA - yO)\\n4. Afficher xAp, yAp",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'image $A'$ satisfait $\\overrightarrow{OA'} = k \\overrightarrow{OA}$. En coordonnées cela donne $x_{A'} = x_O + k(x_A - x_O)$ et $y_{A'} = y_O + k(y_A - y_O)$. L'algorithme applique directement ces formules.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux homothéties de même centre",
+      "content": "Écrire un algorithme qui, donnés deux rapports $k_1$ et $k_2$ d'homothéties de même centre $O$, calcule le rapport de l'homothétie composée (la seconde après la première).",
+      "correctAnswer": "Algorithme :\\n1. Lire k1, k2\\n2. k = k1 * k2\\n3. Afficher k",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La composition de deux homothéties de même centre est une homothétie de même centre dont le rapport est le produit des deux rapports : $k = k_1 \\times k_2$. L'algorithme réalise cette multiplication.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme pour l'image d'un triangle",
+      "content": "Écrire un programme (style Python) qui, à partir des coordonnées des trois sommets d'un triangle $A,B,C$, du centre $O$ et du rapport $k$, calcule et affiche les coordonnées des sommets $A',B',C'$ de l'image du triangle par l'homothétie de centre $O$ et de rapport $k$.",
+      "correctAnswer": "def homothety_point(O, k, P):\\n    xO, yO = O\\n    xP, yP = P\\n    return (xO + k * (xP - xO), yO + k * (yP - yO))\\n\\n# Lecture des données\\nxO, yO = map(float, input('Centre O (x y) : ').split())\\nk = float(input('Rapport k : '))\\nA = tuple(map(float, input('Sommet A (x y) : ').split()))\\nB = tuple(map(float, input('Sommet B (x y) : ').split()))\\nC = tuple(map(float, input('Sommet C (x y) : ').split()))\\n\\nA_img = homothety_point((xO, yO), k, A)\\nB_img = homothety_point((xO, yO), k, B)\\nC_img = homothety_point((xO, yO), k, C)\\n\\nprint('A\\' :', A_img)\\nprint('B\\' :', B_img)\\nprint('C\\' :', C_img)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme définit une fonction appliquant la formule $x' = x_O + k(x - x_O)$, $y' = y_O + k(y - y_O)$ à un point. Il lit les coordonnées du centre, du rapport et des trois sommets, puis calcule l'image de chaque sommet et affiche les résultats.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

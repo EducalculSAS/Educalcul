@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Lire",
+  "title": "Quiz : Repérage dans l'espace - Lire les coordonnées",
+  "questions": [
+    {
+      "text": "Dans un repère orthonormé de l'espace $(O; \\vec{i}, \\vec{j}, \\vec{k})$, que représente la première coordonnée $x$ d'un point $M(x; y; z)$ ?",
+      "options": [
+        "La distance du point $M$ au plan $(yOz)$",
+        "La distance du point $M$ au plan $(xOz)$",
+        "La distance du point $M$ au plan $(xOy)$",
+        "La distance du point $M$ à l'origine $O$"
+      ],
+      "correctAnswer": "La distance du point $M$ au plan $(yOz)$",
+      "explanation": "Dans un repère de l'espace, l'abscisse $x$ correspond à la distance algébrique du point au plan $(yOz)$ (plan des ordonnées et des cotes). La deuxième coordonnée $y$ est la distance au plan $(xOz)$ et la troisième $z$ est la distance au plan $(xOy)$. La distance à l'origine est la norme du vecteur $\\overrightarrow{OM}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère un cube $ABCDEFGH$ de côté $4$ cm. On munit l'espace du repère $(A; \\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE})$. Quelles sont les coordonnées du sommet $G$ ?",
+      "options": [
+        "$(4; 4; 4)$",
+        "$(4; 0; 4)$",
+        "$(0; 4; 4)$",
+        "$(4; 4; 0)$"
+      ],
+      "correctAnswer": "$(4; 4; 4)$",
+      "explanation": "Le sommet $G$ est opposé à $A$ dans le cube. Pour aller de $A$ à $G$, il faut avancer de $4$ cm selon $\\overrightarrow{AB}$ (abscisse $x=4$), de $4$ cm selon $\\overrightarrow{AD}$ (ordonnée $y=4$) et de $4$ cm selon $\\overrightarrow{AE}$ (cote $z=4$). Les autres options correspondent aux sommets $C$ $(4;4;0)$, $F$ $(4;0;4)$ ou $H$ $(0;4;4)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un point $P$ a pour coordonnées $(-2; 0; 5)$ dans le repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$. Quelle affirmation est exacte ?",
+      "options": [
+        "Le point $P$ appartient au plan $(xOz)$",
+        "Le point $P$ appartient au plan $(xOy)$",
+        "Le point $P$ appartient à l'axe des abscisses",
+        "Le point $P$ appartient au plan $(yOz)$"
+      ],
+      "correctAnswer": "Le point $P$ appartient au plan $(xOz)$",
+      "explanation": "Un point appartient au plan $(xOz)$ si et seulement si son ordonnée $y$ est nulle. Ici $y=0$, donc $P \\in (xOz)$. Il n'appartient pas à $(xOy)$ car $z \\neq 0$, pas à $(yOz)$ car $x \\neq 0$, et pas à l'axe des abscisses car $z \\neq 0$ (il faudrait $y=0$ et $z=0$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$, on donne les points $A(3; -1; 2)$ et $B(3; -1; -4)$. Que peut-on affirmer de la droite $(AB)$ ?",
+      "options": [
+        "Elle est parallèle à l'axe des cotes $(Oz)$",
+        "Elle est contenue dans le plan $(xOy)$",
+        "Elle est parallèle au plan $(xOy)$",
+        "Elle est perpendiculaire au plan $(yOz)$"
+      ],
+      "correctAnswer": "Elle est parallèle à l'axe des cotes $(Oz)$",
+      "explanation": "Les points $A$ et $B$ ont les mêmes abscisse $x=3$ et ordonnée $y=-1$. Seule la cote $z$ change. Le vecteur $\\overrightarrow{AB}$ a pour coordonnées $(0; 0; -6)$, il est colinéaire à $\\vec{k}$. La droite $(AB)$ est donc parallèle à l'axe $(Oz)$. Elle n'est pas dans $(xOy)$ car $z \\neq 0$. Elle n'est pas parallèle à $(xOy)$ (elle le coupe). Elle n'est pas perpendiculaire à $(yOz)$ (elle y est parallèle).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $M$ a pour coordonnées $(x; 3; -2)$. On sait que $M$ appartient au plan $(P)$ d'équation $2x - y + z = 0$. Quelle est la valeur de $x$ ?",
+      "options": [
+        "$2,5$",
+        "$1,5$",
+        "$0,5$",
+        "$-0,5$"
+      ],
+      "correctAnswer": "$2,5$",
+      "explanation": "On remplace les coordonnées de $M$ dans l'équation du plan : $2x - 3 + (-2) = 0 \\iff 2x - 5 = 0 \\iff 2x = 5 \\iff x = 2,5$. Les autres valeurs ne satisfont pas l'équation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

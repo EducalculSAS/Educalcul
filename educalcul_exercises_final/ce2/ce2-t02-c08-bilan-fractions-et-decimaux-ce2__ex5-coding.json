@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 159,
+  "_course_code": "ce2-t02-c08-bilan-fractions-et-decimaux-ce2",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Lire, représenter, comparer",
+  "title": "Approfondissement : Lire, représenter, comparer - Algorithmes",
+  "blocks": [
+    {
+      "title": "Comparer un décimal à 0,5",
+      "content": "Écris un algorithme (en langage naturel ou pseudo-code) qui lit un nombre décimal entre 0 et 1, puis affiche \"Supérieur\" si le nombre est strictement supérieur à $0,5$, \"Égal\" s'il est égal à $0,5$, sinon \"Inférieur\".",
+      "correctAnswer": "Algorithme :\\n1. Lire nombre\\n2. Si nombre > 0,5 alors afficher \"Supérieur\"\\n3. Sinon si nombre = 0,5 alors afficher \"Égal\"\\n4. Sinon afficher \"Inférieur\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire la valeur saisie. Il teste d'abord si elle est strictement supérieure à 0,5, puis s'elle est égale, sinon elle est nécessairement inférieure. Les trois cas couvrent toutes les possibilités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux fractions",
+      "content": "Écris un algorithme qui prend deux fractions de la forme $a/b$ et $c/d$ (avec $b$ et $d$ non nuls) et affiche laquelle est la plus grande, ou \"Égales\" si elles sont égales.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d\\n2. Calculer gauche = a * d\\n3. Calculer droite = c * b\\n4. Si gauche > droite alors afficher \"Première fraction plus grande\"\\n5. Sinon si gauche < droite alors afficher \"Deuxième fraction plus grande\"\\n6. Sinon afficher \"Égales\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les fractions en les mettant au même dénominateur grâce au produit en croix. Le produit a*d correspond au numérateur de la première fraction mise au dénominateur commun b*d, de même pour c*b. La comparaison de ces produits donne l'ordre des fractions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Convertir une fraction en décimal",
+      "content": "Écris un algorithme qui convertit une fraction $a/b$ (avec $b$ non nul) en sa représentation décimale en effectuant la division, et affiche le résultat arrondi à deux chiffres après la virgule.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b\\n2. Calculer résultat = a / b\\n3. Arrondir résultat à deux chiffres après la virgule (regarder le troisième chiffre : s'il est >= 5, augmenter le second chiffre de 1)\\n4. Afficher résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division donne le nombre décimal exact ou une approximation. L'arrondi à deux décimales se fait en observant le troisième chiffre après la virgule : s'il est 5 ou plus, on augmente le second chiffre de 1, sinon on le laisse inchangé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

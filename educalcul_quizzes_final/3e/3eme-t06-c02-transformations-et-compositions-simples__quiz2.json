@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés des transformations",
+  "questions": [
+    {
+      "text": "Quelle transformation conserve les distances, les angles, mais change l'orientation d'une figure ?",
+      "options": [
+        "La translation",
+        "La symétrie axiale",
+        "La rotation",
+        "L'homothétie"
+      ],
+      "correctAnswer": "La symétrie axiale",
+      "explanation": "La symétrie axiale est une isométrie (conserve les longueurs et les mesures d'angles) mais elle inverse l'orientation (le sens de parcours d'un triangle change). La translation et la rotation conservent l'orientation. L'homothétie ne conserve pas les longueurs (sauf si le rapport est 1 ou -1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une symétrie centrale de centre $O$. Quelle rotation est équivalente à cette symétrie centrale ?",
+      "options": [
+        "Rotation de centre $O$ et d'angle $90^{\\circ}$",
+        "Rotation de centre $O$ et d'angle $180^{\\circ}$",
+        "Rotation de centre $O$ et d'angle $270^{\\circ}$",
+        "Rotation de centre $O$ et d'angle $360^{\\circ}$"
+      ],
+      "correctAnswer": "Rotation de centre $O$ et d'angle $180^{\\circ}$",
+      "explanation": "La symétrie centrale de centre $O$ envoie tout point $M$ sur le point $M'$ tel que $O$ est le milieu de $[MM']$. Cela correspond exactement à une rotation de centre $O$ et d'angle $180^{\\circ}$ (ou $-180^{\\circ}$). Une rotation de $360^{\\circ}$ est l'identité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compose deux symétries axiales d'axes parallèles $(d_1)$ et $(d_2)$, distants de $3\\,cm$. Quelle est la transformation obtenue ?",
+      "options": [
+        "Une translation de vecteur de longueur $3\\,cm$",
+        "Une translation de vecteur de longueur $6\\,cm$",
+        "Une rotation d'angle $180^{\\circ}$",
+        "Une symétrie axiale"
+      ],
+      "correctAnswer": "Une translation de vecteur de longueur $6\\,cm$",
+      "explanation": "La composition de deux symétries axiales d'axes parallèles est une translation. Le vecteur de cette translation est perpendiculaire aux deux axes, orienté du premier axe vers le second, et sa longueur vaut le double de la distance entre les axes. Ici $2 \\times 3\\,cm = 6\\,cm$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $s_1$ la symétrie axiale d'axe $(d_1)$ et $s_2$ la symétrie axiale d'axe $(d_2)$. Les droites $(d_1)$ et $(d_2)$ se coupent en $O$ en formant un angle de $30^{\\circ}$. La transformation $s_2 \\circ s_1$ est :",
+      "options": [
+        "Une rotation de centre $O$ et d'angle $30^{\\circ}$",
+        "Une rotation de centre $O$ et d'angle $60^{\\circ}$",
+        "Une translation de vecteur $\\overrightarrow{OO}$",
+        "Une symétrie axiale d'axe la bissectrice de l'angle"
+      ],
+      "correctAnswer": "Une rotation de centre $O$ et d'angle $60^{\\circ}$",
+      "explanation": "La composition de deux symétries axiales d'axes sécants est une rotation. Le centre de rotation est le point d'intersection $O$ des axes. L'angle de rotation vaut le double de l'angle orienté du premier axe vers le second. Ici $2 \\times 30^{\\circ} = 60^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle affirmation est fausse concernant l'homothétie de centre $O$ et de rapport $k = -2$ ?",
+      "options": [
+        "Elle conserve les angles (mesures algébriques).",
+        "Elle transforme un segment en un segment parallèle de longueur double.",
+        "Elle conserve l'orientation de la figure.",
+        "Le centre $O$ est son unique point fixe."
+      ],
+      "correctAnswer": "Elle conserve l'orientation de la figure.",
+      "explanation": "Une homothétie de rapport négatif ($k=-2$) est la composition d'une homothétie de rapport positif ($2$) et d'une symétrie centrale (ou rotation de $180^{\\circ}$). Elle inverse donc l'orientation de la figure. Les autres affirmations sont vraies : les angles sont conservés (mesure algébrique), les longueurs sont multipliées par $|k|=2$ (segments parallèles), et seul le centre $O$ est invariant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

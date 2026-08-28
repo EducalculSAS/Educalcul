@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 122,
+  "_course_code": "ce1-t06-c06-rendre-une-monnaie-simple",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Calculer l'écart",
+  "title": "Algorithmes pour calculer l'écart et rendre la monnaie",
+  "blocks": [
+    {
+      "title": "Algorithme simple : rendu de monnaie en centimes",
+      "content": "Un article coûte $42$ centimes. Le client paie avec une pièce de $1$ euro ($100$ centimes). Écris un algorithme étape par étape pour calculer la monnaie à rendre (l'écart). Utilise les mots : Début, Fin, Prix, Paiement, Écart, Afficher.",
+      "correctAnswer": "Début\\nPrix ← 42\\nPaiement ← 100\\nÉcart ← Paiement - Prix\\nAfficher Écart\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme définit le prix (42) et le paiement (100). Il calcule la différence (l'écart) en soustrayant le prix au paiement : 100 - 42 = 58. Il affiche le résultat : 58 centimes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme : calcul de l'écart en euros",
+      "content": "Un jouet coûte $7$ euros. Le client donne un billet de $20$ euros. Écris un algorithme sous forme de lignes de code simples (style Python) pour calculer et afficher la monnaie à rendre. Utilise les variables prix, paiement, monnaie.",
+      "correctAnswer": "prix = 7\\npaiement = 20\\nmonnaie = paiement - prix\\nprint(monnaie)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On affecte la valeur 7 à la variable prix et 20 à paiement. La soustraction paiement - prix donne 13. La commande print affiche le résultat 13, qui correspond à la monnaie en euros.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet : achat de deux articles",
+      "content": "Tu achètes un cahier à $3$ euros et un stylo à $2$ euros. Tu paies avec un billet de $10$ euros. Écris un algorithme structuré qui : 1) calcule le total des achats, 2) calcule l'écart (la monnaie), 3) affiche la monnaie. Utilise les variables cahier, stylo, total, paiement, monnaie.",
+      "correctAnswer": "cahier = 3\\nstylo = 2\\ntotal = cahier + stylo\\npaiement = 10\\nmonnaie = paiement - total\\nafficher monnaie",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme additionne d'abord le prix du cahier (3) et du stylo (2) pour obtenir le total (5). Ensuite, il soustrait ce total du paiement (10) pour trouver la monnaie (5). L'instruction finale affiche 5 euros.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

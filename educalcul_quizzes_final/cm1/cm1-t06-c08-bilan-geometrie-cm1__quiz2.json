@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 255,
+  "_course_code": "cm1-t06-c08-bilan-geometrie-cm1",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Solides",
+  "title": "Quiz Géométrie CM1 : Les solides",
+  "questions": [
+    {
+      "text": "Combien de faces, d'arêtes et de sommets a un cube ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "6 faces, 8 arêtes, 12 sommets",
+        "8 faces, 12 arêtes, 6 sommets",
+        "12 faces, 6 arêtes, 8 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Un cube est un pavé droit dont les six faces sont des carrés. Il possède $6$ faces, $12$ arêtes (segments où deux faces se rencontrent) et $8$ sommets (points où trois arêtes se rejoignent). Les autres options inversent les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel solide a exactement 5 faces, dont 1 base carrée et 4 faces latérales triangulaires ?",
+      "options": [
+        "Un prisme à base carrée",
+        "Une pyramide à base carrée",
+        "Un pavé droit",
+        "Un tétraèdre"
+      ],
+      "correctAnswer": "Une pyramide à base carrée",
+      "explanation": "Une pyramide à base carrée a une base qui est un carré et $4$ faces latérales qui sont des triangles se rejoignant au sommet, soit $5$ faces au total. Un prisme à base carrée a $6$ faces (deux bases carrées et $4$ faces latérales rectangles). Un tétraèdre a $4$ faces triangulaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les patrons ci-dessous, lequel permet de construire un cube ?",
+      "options": [
+        "Le patron en forme de croix à 4 carrés alignés avec un carré de chaque côté du deuxième",
+        "Le patron composé de 5 carrés alignés",
+        "Le patron en forme de T avec 6 carrés",
+        "Le patron avec 4 carrés formant un grand carré"
+      ],
+      "correctAnswer": "Le patron en forme de croix à 4 carrés alignés avec un carré de chaque côté du deuxième",
+      "explanation": "Il existe 11 patrons différents du cube. La description correspond au patron classique en croix (une rangée de 4 carrés, un carré au-dessus du deuxième et un au-dessous). Cinq carrés alignés ne se referment pas. Un T à 6 carrés peut être un patron mais la description de la croix est la plus standard. Quatre carrés ne forment qu'une face plate, pas un volume.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube (exemple de croix)"
+      }
+    },
+    {
+      "text": "Combien d'arêtes a une pyramide à base pentagonale ?",
+      "options": [
+        "5 arêtes",
+        "8 arêtes",
+        "10 arêtes",
+        "15 arêtes"
+      ],
+      "correctAnswer": "10 arêtes",
+      "explanation": "Une pyramide à base pentagonale a une base à $5$ côtés (donc $5$ arêtes de base) et $5$ arêtes latérales reliant chaque sommet de la base au sommet de la pyramide. Total : $5 + 5 = 10$ arêtes. La formule générale pour une pyramide à base à $n$ côtés est $2n$ arêtes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces solides n'est pas un polyèdre ?",
+      "options": [
+        "Un cône",
+        "Un prisme triangulaire",
+        "Un cube",
+        "Une pyramide à base hexagonale"
+      ],
+      "correctAnswer": "Un cône",
+      "explanation": "Un polyèdre est un solide limité uniquement par des faces planes (polygones). Le prisme, le cube et la pyramide n'ont que des faces planes. Le cône a une base plane (disque) mais une surface latérale courbe, ce qui n'est pas une face plane. C'est un solide de révolution, pas un polyèdre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

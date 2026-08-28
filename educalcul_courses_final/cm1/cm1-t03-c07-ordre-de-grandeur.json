@@ -1,0 +1,626 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.200213+00:00",
+  "id": 232,
+  "code": "cm1-t03-c07",
+  "title": "Ordre de grandeur",
+  "description": "Cours structuré Educalcul : Ordre de grandeur.",
+  "subject": "Calcul mental et quatre opérations",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Calcul mental et quatre opérations",
+    "titre_du_cours": "Ordre de grandeur",
+    "objectif_global": "Ordre de grandeur",
+    "mini_lecons_imposees": [
+      "Arrondir pour estimer.",
+      "Détecter résultat impossible.",
+      "Contrôler calculatrice / posé."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et quatre opérations",
+      "lessons": [
+        {
+          "title": "Arrondir pour estimer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir pour estimer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu dois donner une idée rapide d'un résultat, tu n'as pas besoin du chiffre exact. Arrondir chaque nombre au dix, au cent ou au mille le plus proche te donne un ordre de grandeur très utile. C'est comme quand tu regardes le prix d'un jouet à $29,90$ euros et que tu dis « environ $30$ euros » pour savoir si tu as assez d'argent."
+            },
+            {
+              "type": "definition",
+              "term": "arrondi",
+              "definition": "Remplacer un nombre par une valeur plus simple, généralement un multiple de $10$, $100$ ou $1000$, qui se trouve le plus près du nombre d'origine.",
+              "example": "$347$ arrondi au dix le plus proche donne $350$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons le nombre $347$ dans un tableau de numération. Les centaines, les dizaines et les unités apparaissent clairement, ce qui aide à voir quel multiple de $10$ est le plus proche."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 347,
+              "caption": "Décomposition de $347$ en centaines, dizaines, unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer le chiffre des dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $347$, le chiffre des dizaines est $4$. Il représente $40$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regarder le chiffre des unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le chiffre des unités est $7$. Comme $7 \\ge 5$, on augmente le chiffre des dizaines de $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire l'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le $4$ devient $5$, les unités passent à $0$. L'arrondi au dix est $350$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, arrondissons le même nombre au cent le plus proche. On regarde cette fois le chiffre des dizaines pour décider si le chiffre des centaines change."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 7,
+              "caption": "Représentation de $347$ avec des blocs de base dix"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : chiffre des centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le chiffre des centaines est $3$ ($300$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : chiffre des dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le chiffre des dizaines est $4$. Comme $4 < 5$, le chiffre des centaines ne bouge pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'arrondi au cent est $300$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, arrondissons un nombre à quatre chiffres au millier. Prenons $2\\,543$ et voyons sur une droite graduée où il se situe par rapport à $2\\,000$ et $3\\,000$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $2\\,543$ entre $2\\,000$ et $3\\,000$",
+              "min": 2000,
+              "max": 3000,
+              "points": [
+                {
+                  "value": 2543,
+                  "label": "2 543"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer les milliers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le chiffre des milliers est $2$ ($2\\,000$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regarder les centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le chiffre des centaines est $5$. Comme $5 \\ge 5$, on ajoute $1$ aux milliers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire l'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'arrondi au millier est $3\\,000$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir trois façons d'arrondir : au dix, au cent et au mille. À chaque fois, tu regardes le chiffre juste à droite de celui que tu veux fixer. Si ce chiffre est $5$ ou plus, tu augmentes ; sinon, tu laisses tel quel. Essaie maintenant les exercices pour t'entraîner."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis $462$ au dix le plus proche.",
+              "answer": "$460$",
+              "hint": "Regarde le chiffre des unités.",
+              "explanation": "Le chiffre des unités est $2$ ($<5$), donc le chiffre des dizaines ($6$) ne change pas. L'arrondi est $460$."
+            },
+            {
+              "question": "Arrondis $1\\,278$ au cent le plus proche.",
+              "answer": "$1\\,300$",
+              "hint": "Regarde le chiffre des dizaines.",
+              "explanation": "Le chiffre des dizaines est $7$ ($\\ge5$), donc le chiffre des centaines ($2$) augmente de $1$ et devient $3$. L'arrondi est $1\\,300$."
+            },
+            {
+              "question": "Arrondis $5\\,642$ au millier le plus proche.",
+              "answer": "$6\\,000$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines est $6$ ($\\ge5$), donc le chiffre des milliers ($5$) augmente de $1$ et devient $6$. L'arrondi est $6\\,000$."
+            }
+          ]
+        },
+        {
+          "title": "Détecter résultat impossible.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Détecter un résultat impossible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une calculatrice ou un calcul posé donne un chiffre qui ne peut pas être vrai. En utilisant l'ordre de grandeur, tu peux repérer l'erreur tout de suite, comme un détective qui remarque une empreinte bizarre."
+            },
+            {
+              "type": "definition",
+              "term": "ordre de grandeur",
+              "definition": "Valeur approchée d'un nombre, obtenue en l'arrondissant à une puissance de dix ($10$, $100$, $1000$, …). Elle permet de comparer rapidement des grandeurs.",
+              "example": "L'ordre de grandeur de $487$ au cent est $500$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine l'addition $487 + 523$. Si tu arrondis chaque nombre au cent, tu obtiens $500 + 500 = 1\\,000$. Si la calculatrice affiche $1\\,500$, tu sais immédiatement qu'il y a un problème."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Estimation ($1\\,000$) vs résultat affiché ($1\\,500$)",
+              "bars": [
+                {
+                  "label": "Estimation",
+                  "value": 1000,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Affiché",
+                  "value": 1500,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir chaque terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Arrondis $487$ et $523$ au cent le plus proche : $500$ et $500$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : additionner les arrondis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$500 + 500 = 1\\,000$. C'est ton ordre de grandeur attendu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le résultat exact s'éloigne beaucoup de $1\\,000$ (par exemple $1\\,500$), il y a une erreur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant une multiplication. Pour $23 \\times 47$, arrondis chaque facteur au dix : $20 \\times 50 = 1\\,000$. Si on te donne $2\\,500$, c'est impossible."
+            },
+            {
+              "type": "number_line",
+              "caption": "Produit estimé $1\\,000$ et produit réel $1\\,081$",
+              "min": 0,
+              "max": 2000,
+              "points": [
+                {
+                  "value": 1000,
+                  "label": "Estimation"
+                },
+                {
+                  "value": 1081,
+                  "label": "Exact"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir les facteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$23$ devient $20$, $47$ devient $50$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : multiplier les arrondis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$20 \\times 50 = 1\\,000$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : juger la plausibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tout résultat très loin de $1\\,000$ (par exemple $2\\,500$) signale une erreur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, regardons une division. Pour $845 \\div 5$, arrondis le dividende au cent : $800 \\div 5 = 160$. Si la calculatrice donne $300$, c'est impossible."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir le dividende",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$845$ arrondi au cent donne $800$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : diviser l'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$800 \\div 5 = 160$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un quotient affiché de $300$ est bien trop grand, donc il y a une erreur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour repérer un résultat impossible : estimer une addition, une multiplication et une division. En arrondissant intelligemment, tu gagnes du temps et tu évites les pièges. Continue avec les exercices pour t'exercer."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $312 + 298$, l'estimation au cent donne $600$. La calculatrice affiche $610$. Est-ce plausible ?",
+              "answer": "Oui",
+              "hint": "Compare $610$ à $600$.",
+              "explanation": "L'estimation est $600$. Le résultat exact $610$ est très proche, donc c'est plausible."
+            },
+            {
+              "question": "Pour $34 \\times 27$, l'estimation au dix donne $30 \\times 30 = 900$. La calculatrice affiche $1\\,500$. Est-ce plausible ?",
+              "answer": "Non",
+              "hint": "Regarde la différence entre $900$ et $1\\,500$.",
+              "explanation": "L'estimation $900$ est loin de $1\\,500$, ce qui signale une erreur."
+            },
+            {
+              "question": "Pour $960 \\div 8$, l'estimation au cent donne $1\\,000 \\div 10 = 100$. La calculatrice affiche $120$. Est-ce plausible ?",
+              "answer": "Oui",
+              "hint": "Estime le quotient avec des nombres ronds.",
+              "explanation": "L'estimation $100$ est proche de $120$, donc le résultat est plausible."
+            }
+          ]
+        },
+        {
+          "title": "Contrôler calculatrice / posé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contrôler la calculatrice ou le calcul posé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même avec une calculatrice, une frappe erronée peut donner un résultat faux. En utilisant l'arrondi, tu peux vérifier rapidement si le calcul posé ou la calculatrice semble correct, comme un contrôle de qualité dans une usine."
+            },
+            {
+              "type": "definition",
+              "term": "vérification",
+              "definition": "Action de contrôler un résultat en utilisant une méthode plus simple (souvent l'arrondi) pour s'assurer qu'il n'y a pas d'erreur grosse.",
+              "example": "Vérifier $276 + 389$ en estimant $300 + 400 = 700$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'addition posée $276 + 389$. Arrondis chaque nombre au cent : $300 + 400 = 700$. Si le calcul posé donne $665$, tu vois tout de suite que quelque chose ne va pas."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "276",
+                "389"
+              ],
+              "result": "665",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$276 \\rightarrow 300$, $389 \\rightarrow 400$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : additionner les arrondis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$300 + 400 = 700$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat posé $665$ est éloigné de $700$, donc il y a probablement une erreur de retenue."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant une soustraction posée : $845 - 372$. Arrondis au cent : $800 - 400 = 400$. Si le calcul donne $473$, c'est suspect."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "845",
+                "372"
+              ],
+              "result": "473",
+              "carries": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$845 \\rightarrow 800$, $372 \\rightarrow 400$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : soustraire les arrondis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$800 - 400 = 400$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : juger",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat $473$ est assez proche de $400$, donc il peut être correct. Mais si on avait $600$, ce serait impossible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une multiplication posée comme $23 \\times 47$, arrondis au dix : $20 \\times 50 = 1\\,000$. Si le calcul posé affiche $1\\,081$, c'est tout à fait plausible."
+            },
+            {
+              "type": "column_operation",
+              "operator": "x",
+              "operands": [
+                "23",
+                "47"
+              ],
+              "result": "1081",
+              "carries": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir les facteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$23 \\rightarrow 20$, $47 \\rightarrow 50$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : multiplier les arrondis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$20 \\times 50 = 1\\,000$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit exact $1\\,081$ est très près de $1\\,000$, donc le calcul posé est probablement bon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais arrondir un nombre au dix, au cent et au mille.",
+                "Je sais utiliser l'arrondi pour estimer un résultat.",
+                "Je sais repérer un résultat impossible grâce à l'ordre de grandeur.",
+                "Je sais vérifier une addition, une soustraction et une multiplication posée ou sur calculatrice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie l'addition $412 + 287 = 699$ en arrondissant au cent.",
+              "answer": "L'estimation donne $400 + 300 = 700$. $699$ est plausible.",
+              "hint": "Arrondis chaque terme au cent puis additionne.",
+              "explanation": "$412 \\rightarrow 400$, $287 \\rightarrow 300$. $400+300=700$. Le résultat $699$ est très proche."
+            },
+            {
+              "question": "Vérifie la soustraction $730 - 485 = 245$ en arrondissant au cent.",
+              "answer": "L'estimation donne $700 - 500 = 200$. $245$ est plausible.",
+              "hint": "Arrondis le minuend et le soustrayant au cent.",
+              "explanation": "$730 \\rightarrow 700$, $485 \\rightarrow 500$. $700-500=200$. $245$ reste dans une fourchette raisonnable."
+            },
+            {
+              "question": "Vérifie la multiplication $36 \\times 42 = 1\\,512$ en arrondissant au dix.",
+              "answer": "L'estimation donne $40 \\times 40 = 1\\,600$. $1\\,512$ est plausible.",
+              "hint": "Arrondis chaque facteur au dix puis multiplie.",
+              "explanation": "$36 \\rightarrow 40$, $42 \\rightarrow 40$. $40 \\times 40 = 1\\,600$. Le produit exact $1\\,512$ est proche."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

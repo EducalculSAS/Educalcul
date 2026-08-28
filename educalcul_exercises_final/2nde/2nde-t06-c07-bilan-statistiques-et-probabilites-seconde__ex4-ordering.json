@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Bilan - Statistiques et probabilités Seconde",
+  "title": "Bilan : Mise en ordre - Statistiques et probabilités",
+  "blocks": [
+    {
+      "title": "Calcul de l'écart type",
+      "content": "Remettez dans l'ordre chronologique les étapes du calcul de l'écart type $\\sigma$ pour une série statistique de valeurs $x_i$ d'effectif total $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la moyenne $\\bar{x}$ de la série statistique.",
+        "Pour chaque valeur, calculer le carré de l'écart à la moyenne $(x_i - \\bar{x})^2$.",
+        "Faire la somme de ces carrés d'écarts et la diviser par l'effectif total $n$ pour obtenir la variance $V$.",
+        "Extraire la racine carrée de la variance pour obtenir l'écart type $\\sigma = \\sqrt{V}$."
+      ],
+      "explanation": "L'écart type est la racine carrée de la variance. La procédure standard est : 1) Calculer la moyenne $\\bar{x} = \\frac{\\sum x_i}{n}$. 2) Calculer les carrés des écarts à la moyenne pour chaque valeur. 3) Calculer la variance $V = \\frac{\\sum (x_i - \\bar{x})^2}{n}$ (moyenne des carrés des écarts). 4) Prendre la racine carrée : $\\sigma = \\sqrt{V}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une boîte à moustaches",
+      "content": "Classez les étapes nécessaires pour construire une boîte à moustaches (box plot) à partir d'une liste de données brutes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ranger les données par ordre croissant.",
+        "Déterminer le minimum, le maximum et la médiane (deuxième quartile $Q_2$).",
+        "Déterminer le premier quartile $Q_1$ (médiane de la moitié inférieure) et le troisième quartile $Q_3$ (médiane de la moitié supérieure).",
+        "Tracer un repère gradué adapté à l'étendue des valeurs.",
+        "Dessiner le rectangle entre $Q_1$ et $Q_3$ avec un trait à la médiane, et les moustaches jusqu'au minimum et au maximum."
+      ],
+      "explanation": "La construction suit l'ordre logique du traitement des données : tri (1), calcul des indicateurs de position : min, max, médiane $Q_2$ (2), puis quartiles $Q_1$ et $Q_3$ (3). Vient ensuite la représentation graphique : choix de l'échelle (4) et tracé de la boîte (rectangle $[Q_1; Q_3]$ avec médiane) et des moustaches (segments $[\\text{min}; Q_1]$ et $[Q_3; \\text{max}]$) (5).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité conditionnelle et arbre pondéré",
+      "content": "On veut calculer la probabilité qu'une personne soit malade sachant que son test de dépistage est positif ($P(M | T_+)$). Ordonnez les étapes de la résolution par un arbre pondéré.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Construire l'arbre pondéré en commençant par l'événement \"Malade / Non malade\" puis \"Test positif / Test négatif\".",
+        "Indiquer sur les branches les probabilités connues : $P(M)$, $P(T_+ | M)$, $P(T_+ | \\bar{M})$.",
+        "Calculer les probabilités de chaque issue (feuilles) en multipliant les probabilités le long des branches.",
+        "Calculer la probabilité totale d'avoir un test positif $P(T_+)$ en sommant les probabilités des issues correspondantes.",
+        "Appliquer la formule des probabilités conditionnelles $P(M | T_+) = \\frac{P(M \\cap T_+)}{P(T_+)}$."
+      ],
+      "explanation": "La méthode standard pour $P(M | T_+)$ via un arbre est : 1) Structurer l'arbre (cause -> conséquence). 2) Renseigner les probabilités initiales et conditionnelles données. 3) Calculer les probabilités d'intersection aux feuilles (produit sur le chemin). 4) Calculer $P(T_+)$ (somme des feuilles où test est +, loi des probabilités totales). 5) Calculer le quotient $P(M \\cap T_+) / P(T_+)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Égalité",
+  "title": "Quiz : Égalité de vecteurs (Seconde)",
+  "questions": [
+    {
+      "text": "Quelle condition est nécessaire et suffisante pour que deux vecteurs $\\vec{u}$ et $\\vec{v}$ soient égaux ?",
+      "options": [
+        "Ils ont la même direction et le même sens.",
+        "Ils ont la même norme et la même direction.",
+        "Ils ont la même norme, la même direction et le même sens.",
+        "Ils ont le même point d'origine."
+      ],
+      "correctAnswer": "Ils ont la même norme, la même direction et le même sens.",
+      "explanation": "Deux vecteurs sont égaux s'ils ont les trois caractéristiques identiques : la norme (longueur), la direction (droite support) et le sens. Avoir la même direction et le même sens sans la même norme donne des vecteurs colinéaires de même sens mais pas égaux. Avoir la même norme et la même direction sans le sens donne des vecteurs opposés. Le point d'origine ne définit pas le vecteur (un vecteur est une classe d'équivalence de bipoints équipollents).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un parallélogramme $ABCD$. Parmi les égalités vectorielles suivantes, laquelle est fausse ?",
+      "options": [
+        "$\\vec{AB} = \\vec{DC}$",
+        "$\\vec{AD} = \\vec{BC}$",
+        "$\\vec{AC} = \\vec{DB}$",
+        "$\\vec{BA} = \\vec{CD}$"
+      ],
+      "correctAnswer": "$\\vec{AC} = \\vec{DB}$",
+      "explanation": "Dans un parallélogramme, les côtés opposés sont parallèles, de même longueur et de même sens. Donc $\\vec{AB} = \\vec{DC}$ et $\\vec{AD} = \\vec{BC}$ (donc aussi $\\vec{BA} = \\vec{CD}$). Les diagonales $\\vec{AC}$ et $\\vec{DB}$ ont le même milieu mais des sens opposés : $\\vec{AC} = -\\vec{DB}$ (ou $\\vec{AC} = \\vec{BD}$). L'égalité $\\vec{AC} = \\vec{DB}$ est donc fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $A(1;2)$, $B(4;6)$, $C(3;1)$ et $D(6;5)$ sont donnés dans un repère orthonormé. Les vecteurs $\\vec{AB}$ et $\\vec{CD}$ sont-ils égaux ?",
+      "options": [
+        "Oui, car ils ont les mêmes coordonnées $(3;4)$.",
+        "Non, car $\\vec{AB}(3;4)$ et $\\vec{CD}(3;-4)$.",
+        "Non, car $\\vec{AB}(3;4)$ et $\\vec{CD}(-3;4)$.",
+        "Oui, car les points $A$, $B$, $C$, $D$ forment un parallélogramme."
+      ],
+      "correctAnswer": "Oui, car ils ont les mêmes coordonnées $(3;4)$.",
+      "explanation": "On calcule les coordonnées : $\\vec{AB} \\begin{pmatrix} 4-1 \\\\ 6-2 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$ et $\\vec{CD} \\begin{pmatrix} 6-3 \\\\ 5-1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$. Comme ils ont les mêmes coordonnées, ils ont même norme, même direction, même sens : ils sont égaux. L'option D est une conséquence vraie (ABCD est un parallélogramme) mais ce n'est pas la justification directe de l'égalité vectorielle demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$. On sait que $\\vec{u} = \\vec{v}$. Quelle affirmation est exacte ?",
+      "options": [
+        "$x = 2$ et $y$ peut être n'importe quel réel.",
+        "$x = -2$ et $y = 1$.",
+        "$x = 2$ et $y = -1$.",
+        "$x^2 + y^2 = 5$."
+      ],
+      "correctAnswer": "$x = 2$ et $y = -1$.",
+      "explanation": "L'égalité de deux vecteurs dans un repère orthonormé se traduit par l'égalité coordonnée à coordonnée. $\\vec{u} = \\vec{v} \\Leftrightarrow \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\Leftrightarrow x=2 \\text{ et } y=-1$. L'option D correspond à l'égalité des normes ($\\|\\vec{u}\\| = \\|\\vec{v}\\|$), ce qui est une condition nécessaire mais non suffisante pour l'égalité des vecteurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère, on a $\\vec{u} = \\vec{AB}$ et $\\vec{v} = \\vec{CD}$. On sait que $\\vec{u} = \\vec{v}$. Laquelle des propositions suivantes est toujours vraie ?",
+      "options": [
+        "Les droites $(AB)$ et $(CD)$ sont confondues.",
+        "Le quadrilatère $ABDC$ est un parallélogramme.",
+        "Les segments $[AB]$ et $[CD]$ ont même longueur et même direction.",
+        "Les points $A$, $B$, $C$, $D$ sont alignés."
+      ],
+      "correctAnswer": "Les segments $[AB]$ et $[CD]$ ont même longueur et même direction.",
+      "explanation": "L'égalité $\\vec{AB} = \\vec{CD}$ implique que les vecteurs ont même norme (donc $AB = CD$, même longueur), même direction (les droites $(AB)$ et $(CD)$ sont parallèles) et même sens. L'option C résume exactement la conséquence géométrique sur les segments (longueur et direction). L'option A est fausse : les droites sont parallèles mais pas nécessairement confondues (les points peuvent ne pas être alignés). L'option B est fausse : $ABDC$ est un parallélogramme seulement si l'ordre des sommets est respecté ; ici $\\vec{AB} = \\vec{CD}$ fait de $ACBD$ (ou $ABDC$ selon l'ordre) un parallélogramme, mais l'écriture $ABDC$ suggère l'ordre $A-B-D-C$ qui n'est pas garanti. L'option D est fausse (contre-exemple : parallélogramme non dégénéré).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

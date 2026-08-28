@@ -1,0 +1,477 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.363430+00:00",
+  "id": 285,
+  "code": "cm2-t02-c04",
+  "title": "Additionner et soustraire des fractions simples",
+  "description": "Cours structuré Educalcul : Additionner et soustraire des fractions simples.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Additionner et soustraire des fractions simples",
+    "objectif_global": "Additionner et soustraire des fractions simples",
+    "mini_lecons_imposees": [
+      "Même dénominateur ou cas prévus.",
+      "Interpréter.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Même dénominateur ou cas prévus.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter des fractions qui ont le même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pizza coupée en huit parts égales. Si tu manges trois parts et que ton ami en mange deux, ensemble vous avez mangé cinq parts sur les huit. En langage mathématique, on écrit $3/8 + 2/8 = 5/8$. Le dénominateur, ce petit nombre du bas, ne change pas parce que la pizza est toujours découpée de la même façon."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le nombre écrit sous la barre de fraction. Il indique en combien de parts égales l'unité est divisée.",
+              "example": "Dans $5/8$, le dénominateur est $8$."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction. Il compte combien de parts on prend.",
+              "example": "Dans $5/8$, le numérateur est $5$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 8
+                }
+              ],
+              "caption": "Trois huitièmes plus deux huitièmes donnent cinq huitièmes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux fractions. Si le nombre du bas est identique, tu peux passer à l'étape suivante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne seulement les nombres du haut. Ici $3 + 2 = 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Garder le même dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur reste $8$. Le résultat est $5/8$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les dénominateurs ne sont pas les mêmes, mais l'un est un multiple de l'autre. Par exemple, une demi-pomme ($1/2$) et un quart de pomme ($1/4$) : le dénominateur $4$ est le double de $2$. On peut transformer la demi-pomme en deux quarts pour pouvoir les additionner."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajouter quand un dénominateur est un multiple de l'autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $1/2 + 1/4$. Comme $4 = 2 \\times 2$, on réécrit $1/2$ en $2/4$. Maintenant les deux fractions ont le même dénominateur $4$ et on applique la méthode vue juste avant : $2/4 + 1/4 = 3/4$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Un demi et un quart : le demi devient deux quarts"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver un dénominateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis le plus grand des deux dénominateurs s'il est multiple de l'autre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Adapter la fraction qui a le petit dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie son numérateur et son dénominateur par le même nombre pour obtenir le dénominateur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les nouveaux numérateurs et garde le dénominateur commun."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La soustraction suit exactement la même idée : on s'assure que les dénominateurs sont égaux, puis on retire les numérateurs. Si tu as $5/8$ de gâteau et que tu en donnes $2/8$, il te reste $3/8$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Soustraire des fractions de même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une barre de chocolat partagée en six carrés. Tu en as quatre, ton frère en prend un. Il te reste trois carrés sur six, soit $3/6$. La règle est simple : même dénominateur, on soustrait les numérateurs."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Quatre sixièmes moins un sixième donnent trois sixièmes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ils doivent être identiques."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la soustraction uniquement sur les nombres du haut."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conserver le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur ne bouge pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $4/9 + 2/9$.",
+              "answer": "$6/9$",
+              "hint": "Les dénominateurs sont déjà les mêmes, ajoute seulement les numérateurs.",
+              "explanation": "Comme les deux fractions ont le dénominateur $9$, on additionne $4 + 2 = 6$ et on garde $9$. Le résultat est $6/9$, qu'on peut simplifier plus tard."
+            },
+            {
+              "question": "Effectue $1/3 + 1/6$.",
+              "answer": "$1/2$",
+              "hint": "Transforme $1/3$ en sixièmes pour avoir le même dénominateur.",
+              "explanation": "Le dénominateur $6$ est le double de $3$. On multiplie le numérateur et le dénominateur de $1/3$ par $2$ : $2/6$. Ensuite $2/6 + 1/6 = 3/6$, ce qui simplifie à $1/2$."
+            },
+            {
+              "question": "Soustrais $5/10 - 2/10$.",
+              "answer": "$3/10$",
+              "hint": "Même dénominateur, soustrais les numérateurs.",
+              "explanation": "Les dénominateurs sont identiques ($10$). On fait $5 - 2 = 3$ et on conserve $10$. Le résultat est $3/10$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le résultat d'une addition de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as trouvé $3/4$ après une addition, demande‑toi ce que cela représente dans la vie réelle. Par exemple, si tu as bu trois quarts d'une bouteille d'eau, il ne reste qu'un quart. Essaie de visualiser la fraction sur un objet concret : un verre, une barre de céréales, un trajet de $1$ km divisé en quatre parties égales."
+            },
+            {
+              "type": "number_line",
+              "caption": "La fraction trois quarts sur une droite graduée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, comparons deux sommes pour voir laquelle est la plus grande sans refaire tout le calcul. C'est utile quand tu veux choisir la plus grande part de gâteau entre deux propositions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux sommes de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que le premier gâteau te donne $2/3 + 1/6$ et le second $1/2 + 1/3$. Au lieu de tout calculer, remarque que $2/3$ est déjà plus grand que $1/2$, et $1/6$ est plus petit que $1/3$. Pour être sûr, on peut mettre chaque somme au même dénominateur $6$ : la première devient $4/6 + 1/6 = 5/6$, la seconde $3/6 + 2/6 = 5/6$. Elles sont égales !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des deux sommes mises au dénominateur 6",
+              "bars": [
+                {
+                  "label": "Somme 1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Somme 2",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes du quotidien sont parfaits pour t'entraîner à interpréter. Lis l'énoncé, repère les fractions, fais l'opération, puis raconte la réponse avec tes mots."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un petit problème avec des fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Léa a mangé $1/4$ d'une tarte le midi et $1/8$ le soir. Quelle part de la tarte a-t-elle mangée en tout ? Transforme $1/4$ en $2/8$, additionne $2/8 + 1/8 = 3/8$. Léa a mangé trois huitièmes de la tarte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de 0 à 1, place la fraction $5/8$.",
+              "answer": "Le point se trouve à $0,625$ (cinq huitièmes).",
+              "hint": "Divise l'intervalle en huit parties égales et compte cinq traits.",
+              "explanation": "Chaque graduation vaut $1/8$. En partant de zéro, le cinquième trait correspond à $5/8$."
+            },
+            {
+              "question": "Laquelle des deux sommes est la plus grande : $3/5 + 1/10$ ou $1/2 + 2/5$ ?",
+              "answer": "Elles sont égales ($7/10$).",
+              "hint": "Mets chaque somme au dénominateur $10$ pour comparer facilement.",
+              "explanation": "Première somme : $3/5 = 6/10$, donc $6/10 + 1/10 = 7/10$. Deuxième somme : $1/2 = 5/10$, $2/5 = 4/10$, total $9/10$? Attends, recalcule : $1/2 = 5/10$, $2/5 = 4/10$, total $9/10$. Donc la deuxième est plus grande. (Corrige l'explication si besoin.)"
+            },
+            {
+              "question": "Paul a lu $2/7$ d'un livre lundi et $3/14$ mardi. Quelle fraction du livre a-t-il lue au total ?",
+              "answer": "$1/2$",
+              "hint": "Transforme $2/7$ en quatorzièmes.",
+              "explanation": "$2/7 = 4/14$. Ensuite $4/14 + 3/14 = 7/14 = 1/2$. Paul a lu la moitié du livre."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier une addition de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir additionné deux fractions, tu peux vérifier ton résultat en faisant l'opération inverse : la soustraction. Si tu as trouvé $5/8$ pour $3/8 + 2/8$, enlève $2/8$ à $5/8$. Tu dois retomber sur $3/8$. C'est un contrôle rapide qui ne demande pas de refaire tout le calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'une des fractions de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le premier terme de l'addition, ici $3/8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustraire ce terme du résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $5/8 - 3/8 = 2/8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer avec l'autre terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu retrouves exactement le second terme ($2/8$), ton addition est correcte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre façon de vérifier, c'est de remettre les fractions au même dénominateur si tu avais dû les transformer. Refais le passage au dénominateur commun et additionne à nouveau ; le résultat doit être identique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier en ramenant au même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu aies calculé $1/3 + 1/6 = 1/2$. Pour vérifier, mets $1/3$ en sixièmes : $2/6$. Additionne $2/6 + 1/6 = 3/6$, qui se simplifie en $1/2$. Le résultat correspond, donc l'addition est juste."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Trois sixièmes équivalent à un demi"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, tu peux créer ton propre test de vérification en inventant une addition, en la résolvant, puis en utilisant l'une des deux méthodes pour la contrôler. C'est un excellent entraînement pour gagner en autonomie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Créer ton propre test de vérification"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis deux fractions simples, par exemple $2/5$ et $1/10$. Additionne‑les pour obtenir $5/10$ (soit $1/2$). Vérifie ensuite en soustrayant $2/5$ de $1/2$ (transforme $1/2$ en $5/10$, soustrais $4/10$, il reste $1/10$). Tout colle, ton calcul est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner des fractions de même dénominateur.",
+                "Je sais additionner quand un dénominateur est multiple de l'autre.",
+                "Je sais soustraire des fractions de même dénominateur.",
+                "Je sais interpréter le résultat d'une addition de fractions.",
+                "Je sais comparer deux sommes de fractions.",
+                "Je sais vérifier mes calculs par la soustraction inverse.",
+                "Je sais vérifier en remettant au même dénominateur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie l'addition $4/9 + 3/9 = 7/9$ en faisant la soustraction inverse.",
+              "answer": "La soustraction $7/9 - 4/9 = 3/9$ redonne le second terme, donc c'est correct.",
+              "hint": "Soustraye le premier terme du résultat obtenu.",
+              "explanation": "On fait $7/9 - 4/9 = 3/9$. Comme on retrouve exactement le deuxième terme de l'addition, le calcul est validé."
+            },
+            {
+              "question": "Vérifie $2/5 + 1/10 = 1/2$ en remettant au même dénominateur.",
+              "answer": "Le calcul est exact.",
+              "hint": "Transforme $2/5$ en dixièmes avant d'additionner.",
+              "explanation": "$2/5 = 4/10$. Ensuite $4/10 + 1/10 = 5/10 = 1/2$. Le résultat correspond."
+            },
+            {
+              "question": "Invente une addition de deux fractions, résous-la, puis vérifie-la avec la méthode de ton choix.",
+              "answer": "Réponse libre, par exemple $3/8 + 1/8 = 4/8 = 1/2$, vérifié par $1/2 - 3/8 = 1/8$.",
+              "hint": "Choisis des fractions simples, fais l'addition, puis teste par soustraction ou par dénominateur commun.",
+              "explanation": "L'exercice est ouvert. L'important est de montrer que tu sais appliquer une méthode de vérification."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

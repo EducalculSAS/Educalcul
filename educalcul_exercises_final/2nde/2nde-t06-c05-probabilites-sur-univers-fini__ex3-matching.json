@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Calcul de probabilités sur un univers fini",
+  "blocks": [
+    {
+      "title": "Probabilités élémentaires",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(R)$",
+          "right": "$1/2$"
+        },
+        {
+          "left": "$P(B)$",
+          "right": "$3/10$"
+        },
+        {
+          "left": "$P(V)$",
+          "right": "$1/5$"
+        },
+        {
+          "left": "$P(R \\cup B)$",
+          "right": "$4/5$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'urne contient 5 boules rouges, 3 bleues et 2 vertes, soit 10 boules au total. La probabilité de tirer une boule rouge est $5/10 = 1/2$. Celle de tirer une boule bleue est $3/10$. Celle de tirer une boule verte est $2/10 = 1/5$. L'événement 'rouge ou bleu' regroupe 5+3=8 boules, donc sa probabilité est $8/10 = 4/5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilités composées",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(A)$",
+          "right": "$2/5$"
+        },
+        {
+          "left": "$P(B)$",
+          "right": "$1/2$"
+        },
+        {
+          "left": "$P(A \\cap B)$",
+          "right": "$1/5$"
+        },
+        {
+          "left": "$P(A \\cup B)$",
+          "right": "$7/10$"
+        },
+        {
+          "left": "$P(A \\mid B)$",
+          "right": "$2/5$"
+        }
+      ],
+      "items": [],
+      "explanation": "On considère deux événements A et B tels que $P(A)=2/5$, $P(B)=1/2$ et $P(A \\cap B)=1/5$. Alors $P(A \\cup B)=P(A)+P(B)-P(A \\cap B)=2/5+1/2-1/5=4/10+5/10-2/10=7/10$. La probabilité conditionnelle $P(A \\mid B)=P(A \\cap B)/P(B)=(1/5)/(1/2)=2/5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Indépendance et probabilités conditionnelles",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(A)$",
+          "right": "$3/10$"
+        },
+        {
+          "left": "$P(B)$",
+          "right": "$3/5$"
+        },
+        {
+          "left": "$P(A \\cap B)$",
+          "right": "$9/50$"
+        },
+        {
+          "left": "$P(A \\mid B)$",
+          "right": "$3/10$"
+        },
+        {
+          "left": "$P(B \\mid A)$",
+          "right": "$3/5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les événements A et B sont indépendants avec $P(A)=3/10$ et $P(B)=3/5$. Pour des événements indépendants, $P(A \\cap B)=P(A) \\times P(B) = (3/10) \\times (3/5) = 9/50$. La probabilité conditionnelle $P(A \\mid B)=P(A \\cap B)/P(B) = (9/50)/(3/5) = (9/50) \\times (5/3) = 3/10 = P(A)$. De même $P(B \\mid A)=P(B)=3/5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

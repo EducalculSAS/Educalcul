@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Choisir barres ou dessin",
+  "title": "Quiz : Choisir entre barres et dessins pour modéliser",
+  "questions": [
+    {
+      "text": "Pour résoudre ce problème, quelle modélisation est la plus adaptée ?\\n\"Il y a $15$ billes rouges et $8$ billes bleues dans un sac. Combien y a-t-il de billes en tout ?\"",
+      "options": [
+        "Un dessin où l'on regroupe les billes par couleur",
+        "Un schéma en barres avec deux parties qui forment un tout",
+        "Une droite numérique graduée de $0$ à $20$",
+        "Un tableau à deux colonnes pour compter"
+      ],
+      "correctAnswer": "Un schéma en barres avec deux parties qui forment un tout",
+      "explanation": "Ce problème est une addition de mise ensemble (partie + partie = tout). Le schéma en barres (modèle partie-partie-tout) montre parfaitement les deux quantités connues ($15$ et $8$) qui se rejoignent pour former le total cherché. Le dessin est trop long à faire, la droite numérique sert pour les sauts, et le tableau pour organiser des données.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel outil visuel choisir pour ce problème de comparaison ?\\n\"Paul a $20$ cartes. Il en a $6$ de plus que Léa. Combien de cartes a Léa ?\"",
+      "options": [
+        "Un dessin de $20$ cartes barrées par groupes de $6$",
+        "Un schéma en barres superposées pour voir l'écart",
+        "Une balance avec des masses de $20$ et $6$",
+        "Un diagramme en secteurs (camembert)"
+      ],
+      "correctAnswer": "Un schéma en barres superposées pour voir l'écart",
+      "explanation": "C'est un problème de comparaison (différence). Le schéma en barres superposées (ou côte à côte) permet de visualiser la grande quantité ($20$), la petite quantité (inconnue) et l'écart ($6$) qui les sépare. Le dessin ne montre pas bien l'écart, la balance compare des masses, et le camembert montre des parts d'un tout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quelle situation le dessin (regroupement ou partage) est-il préférable au schéma en barres ?",
+      "options": [
+        "Trouver le total de $12$ et $18$",
+        "Comparer $25$ et $30$",
+        "Partager $18$ bonbons équitablement entre $3$ amis",
+        "Chercher le complément à $100$ de $45$"
+      ],
+      "correctAnswer": "Partager $18$ bonbons équitablement entre $3$ amis",
+      "explanation": "Au CE2, la division (partage) se comprend d'abord concrètement en dessinant des groupes (cercles) et en y répartissant des traits ou des points (les bonbons). Les trois premières situations relèvent de l'addition ou soustraction (somme, différence, complément) où le schéma en barres est l'outil standard de modélisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde ce schéma en barres. Quel problème correspond-il ?",
+      "options": [
+        "J'ai $5$ billes, j'en gagne $12$. Combien en ai-je maintenant ?",
+        "J'ai $12$ billes, j'en donne $5$. Combien m'en reste-t-il ?",
+        "J'ai $5$ billes rouges et $12$ billes bleues. Combien au total ?",
+        "Je partage $12$ billes en $5$ groupes égaux."
+      ],
+      "correctAnswer": "J'ai $12$ billes, j'en donne $5$. Combien m'en reste-t-il ?",
+      "explanation": "Le schéma montre une barre totale de valeur $12$ (le tout), divisée en deux parties : une connue de $5$ (la partie donnée) et une inconnue (le reste). Cela modélise une soustraction de retrait (j'ai un tout, j'enlève une partie). Les autres options correspondent à une addition (somme plus grande que $12$) ou une division.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Donné",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Restant",
+            "value": 7,
+            "tone": "green"
+          }
+        ],
+        "caption": "Schéma en barres : tout = 12, partie = 5, partie = ?"
+      }
+    },
+    {
+      "text": "Pour ce problème, quelle représentation choisir ?\\n\"Dans la classe, il y a $25$ élèves. $11$ sont des garçons. Combien y a-t-il de filles ?\"",
+      "options": [
+        "Dessiner $25$ bonhommes et entourer les garçons",
+        "Faire un schéma en barres : tout = $25$, partie = $11$, partie = ?",
+        "Tracer une droite numérique et faire un saut de $11$ depuis $25$",
+        "Construire un tableau à double entrée garçons/filles"
+      ],
+      "correctAnswer": "Faire un schéma en barres : tout = $25$, partie = $11$, partie = ?",
+      "explanation": "C'est un classique problème partie-partie-tout (soustraction de complément). Le schéma en barres synthétise l'information : le total ($25$) se décompose en deux parties disjointes ($11$ garçons et le nombre de filles cherché). Dessiner $25$ bonhommes est fastidieux et source d'erreurs, la droite numérique est moins directe pour une relation statique, le tableau sert à classer des données variées.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

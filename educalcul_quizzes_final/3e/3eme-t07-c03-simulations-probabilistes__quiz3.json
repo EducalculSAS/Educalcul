@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter les résultats d'une simulation probabiliste",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces équilibré $100$ fois. On obtient le résultat $6$ exactement $22$ fois. Quelle est la fréquence d'apparition du $6$ observée lors de cette simulation ?",
+      "options": [
+        "0,16",
+        "0,22",
+        "0,17",
+        "0,20"
+      ],
+      "correctAnswer": "0,22",
+      "explanation": "La fréquence observée se calcule en divisant le nombre d'occurrences de l'événement par le nombre total d'essais. Ici, le $6$ est sorti $22$ fois sur $100$ lancers. La fréquence est donc $22 / 100 = 0,22$. L'option $0,16$ correspond approximativement à la probabilité théorique $1/6$, mais la question porte sur la fréquence *observée*.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une simulation de $500$ tirages d'une pièce de monnaie équilibrée donne $260$ faces. On compare la fréquence observée à la probabilité théorique. Quelle affirmation est correcte ?",
+      "options": [
+        "La fréquence observée est exactement égale à la probabilité théorique.",
+        "La fréquence observée ($0,52$) est proche de la probabilité théorique ($0,5$), ce qui est normal pour un grand nombre d'essais.",
+        "La simulation est fausse car on doit obtenir exactement $250$ faces.",
+        "La probabilité théorique change en fonction des résultats de la simulation."
+      ],
+      "correctAnswer": "La fréquence observée ($0,52$) est proche de la probabilité théorique ($0,5$), ce qui est normal pour un grand nombre d'essais.",
+      "explanation": "La loi des grands nombres stipule que la fréquence observée tend vers la probabilité théorique quand le nombre d'essais augmente, sans pour autant être exactement égale. Ici $260/500 = 0,52$, proche de $0,5$. L'écart de $10$ faces sur $500$ est tout à fait plausible (fluctuation d'échantillonnage). La probabilité théorique est une propriété de l'objet (pièce équilibrée), elle ne change pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme simule $N$ fois une expérience à deux issues : Succès (probabilité $0,3$) et Échec (probabilité $0,7$). Le programme affiche le nombre de succès. Pour quelle valeur de $N$ la fréquence observée de succès sera-t-elle *le plus souvent* la plus proche de $0,3$ ?",
+      "options": [
+        "$N = 10$",
+        "$N = 50$",
+        "$N = 200$",
+        "$N = 1000$"
+      ],
+      "correctAnswer": "$N = 1000$",
+      "explanation": "Plus le nombre d'essais $N$ est grand, plus la fréquence observée se stabilise autour de la probabilité théorique (loi des grands nombres). Avec $N=10$, le hasard fait varier la fréquence fortement (ex: $3$ ou $4$ succès donnent $0,3$ ou $0,4$). Avec $N=1000$, l'écart relatif est beaucoup plus faible. C'est donc pour $N=1000$ que la fréquence est statistiquement la plus proche de $0,3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On utilise un tableur pour simuler $1000$ fois le lancer de deux dés équilibrés et on enregistre la somme. La fréquence observée de l'événement \"Somme = 7\" est $0,158$. La probabilité théorique est $1/6 \\approx 0,1667$. Comment interpréter correctement la différence ?",
+      "options": [
+        "Le tableur est mal programmé, la fréquence devrait être exactement $0,1667$.",
+        "La probabilité théorique de faire $7$ n'est pas $1/6$.",
+        "C'est une fluctuation d'échantillonnage normale ; en refaisant la simulation, on obtiendrait une autre fréquence proche de $0,1667$.",
+        "Il faut augmenter le nombre de lignes à $10\\,000$ pour que la fréquence devienne exactement égale à la probabilité."
+      ],
+      "correctAnswer": "C'est une fluctuation d'échantillonnage normale ; en refaisant la simulation, on obtiendrait une autre fréquence proche de $0,1667$.",
+      "explanation": "Même avec $1000$ essais, la fréquence observée n'est jamais exactement égale à la probabilité théorique. L'écart $|0,158 - 0,1667| \\approx 0,009$ est typique pour $N=1000$ (erreur standard $\\approx \\sqrt{p(1-p)/N} \\approx 0,011$). Relancer la simulation donnerait un autre résultat (ex: $0,172$). La fréquence converge vers la probabilité mais n'en devient jamais l'égale exacte, quel que soit $N$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève programme une simulation pour estimer la probabilité de gagner à un jeu. Il lance la simulation trois fois avec $N=2000$ et obtient les fréquences de gain : $0,248$, $0,256$ et $0,242$. Quelle est la meilleure estimation de la probabilité de gagner et comment la justifier ?",
+      "options": [
+        "La probabilité est exactement $0,25$ car c'est la moyenne des trois résultats.",
+        "La probabilité est comprise entre $0,24$ et $0,26$ ; la moyenne $0,249$ est une bonne estimation car les résultats sont groupés.",
+        "La probabilité est $0,256$ car c'est la valeur la plus haute obtenue.",
+        "On ne peut rien dire car les trois fréquences sont différentes."
+      ],
+      "correctAnswer": "La probabilité est comprise entre $0,24$ et $0,26$ ; la moyenne $0,249$ est une bonne estimation car les résultats sont groupés.",
+      "explanation": "La répétition de la simulation (réplicats) permet d'évaluer la variabilité. Les trois fréquences ($0,248$, $0,256$, $0,242$) sont très proches les unes des autres (dispersion faible), ce qui indique une estimation stable. Leur moyenne $(0,248+0,256+0,242)/3 = 0,2487 \\approx 0,249$ est un meilleur estimateur qu'une seule exécution. On peut raisonnablement conclure que la probabilité théorique se situe autour de $0,25$ (intervalle de fluctuation).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

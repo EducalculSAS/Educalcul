@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Intercaler",
+  "title": "Intercaler des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Intercaler au dixième",
+      "content": "Relie chaque intervalle à un nombre décimal qui se trouve strictement entre les deux bornes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3,2$ et $3,3$",
+          "right": "$3,25$"
+        },
+        {
+          "left": "$7,8$ et $7,9$",
+          "right": "$7,84$"
+        },
+        {
+          "left": "$1,4$ et $1,5$",
+          "right": "$1,49$"
+        },
+        {
+          "left": "$0,6$ et $0,7$",
+          "right": "$0,61$"
+        },
+        {
+          "left": "$5,0$ et $5,1$",
+          "right": "$5,05$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour intercaler un nombre entre deux nombres décimaux qui diffèrent au dixième près, il suffit d'ajouter un chiffre des centièmes non nul au plus petit des deux. Par exemple, entre $3,2$ et $3,3$, on peut écrire $3,25$, $3,21$, $3,29$, etc. Tous les nombres proposés à droite vérifient l'inégalité : borne inférieure $<$ nombre $<$ borne supérieure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intercaler au centième",
+      "content": "Relie chaque intervalle à un nombre décimal qui se trouve strictement entre les deux bornes.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$2,45$ et $2,46$",
+          "right": "$2,455$"
+        },
+        {
+          "left": "$0,12$ et $0,13$",
+          "right": "$0,124$"
+        },
+        {
+          "left": "$8,99$ et $9,00$",
+          "right": "$8,995$"
+        },
+        {
+          "left": "$10,01$ et $10,02$",
+          "right": "$10,015$"
+        },
+        {
+          "left": "$4,56$ et $4,57$",
+          "right": "$4,567$"
+        }
+      ],
+      "items": [],
+      "explanation": "Ici, les bornes diffèrent au centième près. Pour trouver un nombre entre eux, on regarde le chiffre des millièmes. Par exemple, $2,45 = 2,450$ et $2,46 = 2,460$. Tout nombre dont la partie millièmes est comprise entre 1 et 9 convient, comme $2,455$. Pour $8,99$ et $9,00$, on écrit $8,990$ et $9,000$ ; $8,995$ est bien entre les deux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Encadrer au millième",
+      "content": "Relie chaque nombre décimal à son encadrement par deux nombres consécutifs au millième près.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$5,6789$",
+          "right": "$5,678$ et $5,679$"
+        },
+        {
+          "left": "$0,1234$",
+          "right": "$0,123$ et $0,124$"
+        },
+        {
+          "left": "$9,9995$",
+          "right": "$9,999$ et $10,000$"
+        },
+        {
+          "left": "$1,0001$",
+          "right": "$1,000$ et $1,001$"
+        },
+        {
+          "left": "$7,4567$",
+          "right": "$7,456$ et $7,457$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour encadrer un nombre au millième près, on conserve ses trois premiers chiffres après la virgule pour la borne inférieure, et on ajoute $0,001$ pour la borne supérieure. Par exemple, $5,6789$ a pour millième $5,678$ ; le millième suivant est $5,679$. On a bien $5,678 < 5,6789 < 5,679$. De même, $9,9995$ est encadré par $9,999$ et $10,000$ (puisque $9,999 + 0,001 = 10,000$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

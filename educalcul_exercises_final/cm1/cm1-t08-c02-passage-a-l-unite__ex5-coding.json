@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 264,
+  "_course_code": "cm1-t08-c02-passage-a-l-unite",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Approfondissement : Trouver valeur pour 1",
+  "title": "L'algorithme du passage à l'unité",
+  "blocks": [
+    {
+      "title": "Le raisonnement de base",
+      "content": "On sait que $4$ cahiers identiques coûtent $12$ euros. Pour trouver le prix d'un seul cahier, on peut créer un petit programme. Écris les étapes de calcul sous forme de liste pour trouver la valeur pour $1$.",
+      "correctAnswer": "Etape $1$: Identifier le prix total, soit $12$ euros. \\nEtape $2$: Identifier la quantité, soit $4$ cahiers. \\nEtape $3$: Diviser le prix total par la quantité, soit $12 \\div 4 = 3$. \\nLe prix pour un cahier est de $3$ euros.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer d'une quantité connue à l'unité, on utilise la division. On divise la valeur totale par le nombre d'éléments : $12$ divisé par $4$ donne bien $3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Création d'une formule",
+      "content": "Imaginons que tu veuilles créer une formule magique pour ton ordinateur. Tu appelles le prix total : PrixTotal et le nombre d'objets : NombreObjets. Quelle formule l'ordinateur doit il utiliser pour calculer la ValeurUnitaire ?",
+      "correctAnswer": "ValeurUnitaire = PrixTotal \\div NombreObjets",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La formule mathématique pour trouver la valeur d'une seule unité dans une situation de proportionnalité est la division de la valeur globale par le nombre d'unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complexe",
+      "content": "Un robot doit calculer le prix d'un seul stylo. Il sait que $6$ stylos coûtent $18$ euros. Il doit ensuite calculer le prix de $10$ stylos. Écris l'algorithme complet en deux étapes : d'abord trouver la valeur pour $1$, puis trouver la valeur pour $10$.",
+      "correctAnswer": "Etape $1$: Calcul de l'unité. $18 \\div 6 = 3$. Un stylo coûte $3$ euros. \\nEtape $2$: Calcul pour $10$ stylos. $3 \\times 10 = 30$. Dix stylos coûtent $30$ euros.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un problème à deux étapes. On passe d'abord par l'unité en divisant $18$ par $6$ pour obtenir $3$ euros. Ensuite, on multiplie cette valeur unitaire par la nouvelle quantité : $3 \\times 10 = 30$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

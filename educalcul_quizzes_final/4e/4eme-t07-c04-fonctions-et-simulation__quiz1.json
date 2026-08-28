@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Définir fonction",
+  "title": "Quiz : Définir une fonction en Python",
+  "questions": [
+    {
+      "text": "Quel mot-clé utilise-t-on en Python pour commencer la définition d'une fonction ?",
+      "options": [
+        "function ma_fonction():",
+        "def ma_fonction():",
+        "define ma_fonction():",
+        "func ma_fonction():"
+      ],
+      "correctAnswer": "def ma_fonction():",
+      "explanation": "En Python, le mot-clé réservé pour définir une fonction est `def` (abréviation de define), suivi du nom de la fonction et de parenthèses pour les éventuels paramètres, le tout terminé par deux-points. Les autres options correspondent à des syntaxes d'autres langages (JavaScript, etc.) ou n'existent pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la définition `def aire_rectangle(longueur, largeur):`, que représentent `longueur` et `largeur` ?",
+      "options": [
+        "Les arguments fournis lors de l'appel.",
+        "Les variables globales du programme.",
+        "Les paramètres de la fonction.",
+        "Les valeurs de retour de la fonction."
+      ],
+      "correctAnswer": "Les paramètres de la fonction.",
+      "explanation": "Les noms présents entre parenthèses dans l'en-tête de définition (`def ...`) sont les **paramètres** (ou paramètres formels). Ils agissent comme des variables locales à l'intérieur de la fonction. Les **arguments** (ou paramètres effectifs) sont les valeurs réelles fournies lors de l'appel (ex: `aire_rectangle(5, 3)`).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le rôle de l'instruction `return` dans une fonction ?",
+      "options": [
+        "Afficher le résultat à l'écran pour l'utilisateur.",
+        "Arrêter immédiatement l'exécution du programme principal.",
+        "Renvoyer une valeur au programme qui a appelé la fonction.",
+        "Définir les paramètres d'entrée de la fonction."
+      ],
+      "correctAnswer": "Renvoyer une valeur au programme qui a appelé la fonction.",
+      "explanation": "L'instruction `return` termine l'exécution de la fonction et **renvoie** une valeur (le résultat) à l'endroit où la fonction a été appelée. Cela permet de stocker ce résultat dans une variable (ex: `a = aire_rectangle(5, 3)`). `print` sert à afficher, pas à transmettre une valeur pour un calcul ultérieur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si une fonction se termine sans rencontrer d'instruction `return`, quelle valeur renvoie-t-elle par défaut ?",
+      "options": [
+        "0",
+        "None",
+        "False",
+        "Une erreur est générée."
+      ],
+      "correctAnswer": "None",
+      "explanation": "En Python, une fonction qui ne contient pas de `return` explicite, ou dont le `return` est nu (`return` seul), renvoie automatiquement l'objet spécial `None` (qui représente l'absence de valeur). Ce n'est ni $0$, ni `False`, ni une erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a défini la fonction suivante :\\n`def double(n):\\n    return n * 2`\\nQuelle instruction permet d'afficher le double de $5$ ?",
+      "options": [
+        "double(5)",
+        "print(double)",
+        "print(double(5))",
+        "return double(5)"
+      ],
+      "correctAnswer": "print(double(5))",
+      "explanation": "La fonction `double` **renvoie** une valeur (grâce à `return`), elle ne l'affiche pas. Pour voir le résultat à l'écran, il faut utiliser `print()` sur l'appel de la fonction : `print(double(5))`. L'option `double(5)` calcule le résultat mais ne l'affiche pas. `print(double)` afficherait la description de la fonction, pas son résultat. `return` ne s'utilise qu'à l'intérieur d'une définition de fonction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

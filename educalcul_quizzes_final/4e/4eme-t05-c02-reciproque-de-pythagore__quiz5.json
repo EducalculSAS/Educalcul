@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Comparer carrés",
+  "title": "Réciproque de Pythagore : Comparer les carrés",
+  "questions": [
+    {
+      "text": "Dans un triangle $ABC$, on a $AB = 3$, $AC = 4$ et $BC = 6$. En comparant les carrés des longueurs, quelle est la nature de ce triangle ?",
+      "options": [
+        "Rectangle en $A$",
+        "Acutangle",
+        "Obtusangle en $A$",
+        "Impossible à déterminer"
+      ],
+      "correctAnswer": "Obtusangle en $A$",
+      "explanation": "Le plus grand côté est $BC = 6$, l'angle opposé est $\\widehat{A}$. On compare $BC^2 = 36$ et $AB^2 + AC^2 = 9 + 16 = 25$. Comme $36 > 25$, l'angle $\\widehat{A}$ est obtus (réciproque de Pythagore : si le carré du plus grand côté est strictement supérieur à la somme des carrés des deux autres, le triangle est obtusangle).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $5$, $12$ et $13$. Quelle comparaison entre les carrés permet d'affirmer qu'il est rectangle ?",
+      "options": [
+        "$13^2 < 5^2 + 12^2$",
+        "$13^2 = 5^2 + 12^2$",
+        "$13^2 > 5^2 + 12^2$",
+        "$5^2 = 12^2 + 13^2$"
+      ],
+      "correctAnswer": "$13^2 = 5^2 + 12^2$",
+      "explanation": "Le plus grand côté est $13$. Pour qu'un triangle soit rectangle, le carré de l'hypoténuse (le plus grand côté) doit être égal à la somme des carrés des deux autres côtés (réciproque du théorème de Pythagore). On calcule $13^2 = 169$ et $5^2 + 12^2 = 25 + 144 = 169$. L'égalité est vérifiée, le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère un triangle de côtés $8$, $11$ et $13$. Après avoir calculé les carrés, on trouve $13^2 = 169$ et $8^2 + 11^2 = 185$. Quelle est la nature de ce triangle ?",
+      "options": [
+        "Rectangle",
+        "Acutangle",
+        "Obtusangle",
+        "Plat"
+      ],
+      "correctAnswer": "Acutangle",
+      "explanation": "Le plus grand côté est $13$. On compare $13^2 = 169$ à la somme des carrés des deux autres côtés $8^2 + 11^2 = 64 + 121 = 185$. Comme $169 < 185$, le carré du plus grand côté est strictement inférieur à la somme des carrés des deux autres. D'après la réciproque de Pythagore, le triangle est acutangle (tous ses angles sont aigus).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour côtés $\\sqrt{10}$, $\\sqrt{15}$ et $5$. En comparant les carrés de ces longueurs, on obtient :",
+      "options": [
+        "$5^2 < (\\sqrt{10})^2 + (\\sqrt{15})^2$",
+        "$5^2 = (\\sqrt{10})^2 + (\\sqrt{15})^2$",
+        "$5^2 > (\\sqrt{10})^2 + (\\sqrt{15})^2$",
+        "Les carrés ne sont pas comparables"
+      ],
+      "correctAnswer": "$5^2 = (\\sqrt{10})^2 + (\\sqrt{15})^2$",
+      "explanation": "On calcule les carrés : $(\\sqrt{10})^2 = 10$, $(\\sqrt{15})^2 = 15$ et $5^2 = 25$. La somme des carrés des deux plus petits côtés est $10 + 15 = 25$. Elle est égale au carré du plus grand côté ($25$). L'égalité $5^2 = (\\sqrt{10})^2 + (\\sqrt{15})^2$ montre que le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle avec deux côtés de longueurs $7$ et $10$. Si $x$ est la longueur du troisième côté et que $x$ est le plus grand des trois côtés, quelle inégalité doit vérifier $x$ pour que le triangle soit acutangle ?",
+      "options": [
+        "$x^2 < 149$",
+        "$x^2 > 149$",
+        "$x^2 = 149$",
+        "$x < 149$"
+      ],
+      "correctAnswer": "$x^2 < 149$",
+      "explanation": "Pour qu'un triangle soit acutangle avec $x$ comme plus grand côté, il faut que le carré du plus grand côté soit strictement inférieur à la somme des carrés des deux autres côtés : $x^2 < 7^2 + 10^2$. On calcule $7^2 + 10^2 = 49 + 100 = 149$. L'inégalité recherchée est donc $x^2 < 149$. L'option $x < 149$ est incorrecte car on compare $x^2$ à $149$, pas $x$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

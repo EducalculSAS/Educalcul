@@ -1,0 +1,397 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.751058+00:00",
+  "id": 87,
+  "code": "ce1-t02-c09",
+  "title": "Bilan - Fractions CE1",
+  "description": "Cours structuré Educalcul : Bilan - Fractions CE1.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Bilan - Fractions CE1",
+    "objectif_global": "Bilan - Fractions CE1",
+    "mini_lecons_imposees": [
+      "Lire et représenter.",
+      "Comparer et calculer dans les cas étudiés.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Lire et représenter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et représenter les fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu partages une barre de chocolat en $2$ parts égales. Chaque part est une moitié. En mathématiques, on écrit cela $\\frac{1}{2}$ : le $1$ du haut montre combien de parts tu prends, le $2$ du bas en combien de parts le tout a été coupé."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Une moitié : $\\frac{1}{2}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prenons un ruban de papier et plions-le en $3$ parties égales. Chaque partie est un tiers. Si tu colories une seule partie, tu as $\\frac{1}{3}$ du ruban. Le chiffre du bas, $3$, nous dit que le tout est divisé en $3$ parts identiques."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Un tiers : $\\frac{1}{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une pizza coupée en $4$ parts égales. Une part est un quart, on écrit $\\frac{1}{4}$. Plus le nombre du bas est grand, plus chaque part est petite : un quart est plus petit qu'un tiers, qui est plus petit qu'une moitié."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Un quart : $\\frac{1}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire une fraction, on place le nombre de parts prises au-dessus d'une barre, et le nombre total de parts en dessous. Le mot savant pour le chiffre du haut est numérateur, celui du bas est dénominateur. Retiens : le dénominateur compte les parts du tout."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le chiffre écrit au-dessus de la barre de fraction. Il indique combien de parts sont prises ou considérées.",
+              "example": "Dans $\\frac{3}{4}$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le chiffre écrit au-dessous de la barre de fraction. Il indique en combien de parts égales le tout a été divisé.",
+              "example": "Dans $\\frac{3}{4}$, le dénominateur est $4$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 4,
+              "highlighted": 2,
+              "caption": "Représente $\\frac{2}{8}$ ou $\\frac{1}{4}$ en coloriant $2$ cases sur $8$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire $\\frac{1}{2}$, $\\frac{1}{3}$ et $\\frac{1}{4}$, et les montrer sur une figure. Dans la prochaine leçon, nous allons apprendre à les comparer et à faire de petits calculs avec elles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le dessin, colorie une moitié de la figure.",
+              "answer": "La moitié de la figure est colorié.",
+              "hint": "Divise la figure en $2$ parts égales dans ta tête, puis colorie une seule part.",
+              "explanation": "Une moitié correspond à $\\frac{1}{2}$ : le tout est en $2$ parts, tu en prends $1$."
+            },
+            {
+              "question": "Écris la fraction qui correspond à une partie sur trois parts égales.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Le chiffre du bas est le nombre total de parts, le chiffre du haut est le nombre de parts prises.",
+              "explanation": "Un tiers s'écrit $\\frac{1}{3}$ : $1$ part prise sur $3$ parts au total."
+            },
+            {
+              "question": "Parmi $\\frac{1}{2}$, $\\frac{1}{3}$ et $\\frac{1}{4}$, quelle est la plus grande part ?",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Imagine une barre de chocolat partagée entre $2$, $3$ ou $4$ enfants. Qui a la plus grosse part ?",
+              "explanation": "Plus le dénominateur est petit, plus chaque part est grande. $\\frac{1}{2} > \\frac{1}{3} > \\frac{1}{4}$."
+            },
+            {
+              "question": "Dans la fraction $\\frac{3}{4}$, quel est le numérateur et quel est le dénominateur ?",
+              "answer": "Numérateur : $3$, Dénominateur : $4$",
+              "hint": "Le numérateur est en haut, le dénominateur en bas.",
+              "explanation": "Le $3$ du haut compte les parts prises, le $4$ du bas compte les parts du tout."
+            }
+          ]
+        },
+        {
+          "title": "Comparer et calculer dans les cas étudiés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer et calculer avec les fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons nos parts de gâteau. Si tu as $\\frac{1}{4}$ d'un gâteau et ton ami a $\\frac{2}{4}$ du même gâteau, qui en a le plus ? Facile : $\\frac{2}{4}$ est plus grand que $\\frac{1}{4}$ car on compare les numérateurs quand le dénominateur est le même."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Comparer $\\frac{1}{4}$ et $\\frac{2}{4}$ : la bande du haut est plus longue"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, compare $\\frac{1}{2}$ et $\\frac{1}{3}$. Rappelle-toi : quand le numérateur est $1$, plus le dénominateur est grand, plus la part est petite. Donc $\\frac{1}{2}$ est plus grand que $\\frac{1}{3}$. On peut le voir sur une droite graduée : $\\frac{1}{2}$ est plus loin de $0$ que $\\frac{1}{3}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{1}{3}$ et $\\frac{1}{2}$ entre $0$ et $1$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.333,
+                  "label": "$\\frac{1}{3}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons d'ajouter des fractions qui ont le même dénominateur. Si tu manges $\\frac{1}{4}$ d'une tarte le midi et $\\frac{1}{4}$ le soir, tu as mangé $\\frac{1}{4} + \\frac{1}{4} = \\frac{2}{4}$ de la tarte. On garde le même dénominateur ($4$) et on additionne les numérateurs ($1+1=2$)."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "$\\frac{1}{4} + \\frac{1}{4} = \\frac{2}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le résultat peut se simplifier. $\\frac{2}{4}$ fait exactement la même quantité que $\\frac{1}{2}$ : deux quarts, c'est une moitié. On dit que $\\frac{2}{4}$ et $\\frac{1}{2}$ sont égaux. C'est comme avoir deux pièces de $50$ centimes ou une pièce de $1$ euro : la valeur est la même."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                }
+              ],
+              "caption": "$\\frac{2}{4}$ et $\\frac{1}{2}$ ont la même longueur"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer des fractions de même dénominateur, ordonner $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$, et additionner des quarts. La dernière leçon fera le point sur tout ce que tu as appris."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{3}{4}$ et $\\frac{1}{4}$ en utilisant $<$ ou $>$.",
+              "answer": "$\\frac{3}{4} > \\frac{1}{4}$",
+              "hint": "Même dénominateur : compare les numérateurs $3$ et $1$.",
+              "explanation": "Les deux fractions sont en quarts. $3$ quarts, c'est plus que $1$ quart."
+            },
+            {
+              "question": "Range dans l'ordre croissant : $\\frac{1}{2}$, $\\frac{1}{4}$, $\\frac{1}{3}$.",
+              "answer": "$\\frac{1}{4} < \\frac{1}{3} < \\frac{1}{2}$",
+              "hint": "Numérateur $1$ : plus le dénominateur est grand, plus la part est petite.",
+              "explanation": "Un quart ($\\frac{1}{4}$) est le plus petit, puis le tiers ($\\frac{1}{3}$), la moitié ($\\frac{1}{2}$) est le plus grand."
+            },
+            {
+              "question": "Calcule $\\frac{1}{3} + \\frac{1}{3}$.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Même dénominateur : garde $3$, ajoute les numérateurs $1+1$.",
+              "explanation": "Un tiers plus un tiers font deux tiers : $\\frac{1}{3} + \\frac{1}{3} = \\frac{2}{3}$."
+            },
+            {
+              "question": "Paul a mangé $\\frac{2}{4}$ d'une pomme, Léa a mangé $\\frac{1}{2}$ de la même pomme. Qui a mangé le plus ?",
+              "answer": "Ils ont mangé la même quantité.",
+              "hint": "Deux quarts, c'est la même chose qu'une moitié.",
+              "explanation": "$\\frac{2}{4} = \\frac{1}{2}$. Les deux fractions représentent la même partie de la pomme."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : je sais lire, représenter, comparer et calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur l'essentiel. Une fraction s'écrit avec deux chiffres séparés par une barre. Le chiffre du bas, le dénominateur, dit en combien de parts le tout est coupé. Le chiffre du haut, le numérateur, dit combien de parts on regarde. $\\frac{3}{4}$ veut dire : $3$ parts sur $4$ parts égales."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Trois quarts : $\\frac{3}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux fractions, deux cas faciles. Si elles ont le même dénominateur, la plus grande est celle qui a le plus grand numérateur : $\\frac{3}{5} > \\frac{2}{5}$. Si elles ont le même numérateur $1$, la plus grande a le plus petit dénominateur : $\\frac{1}{3} > \\frac{1}{5}$. Dessine des barres si tu doutes, tes yeux te guideront."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 5
+                }
+              ],
+              "caption": "Un tiers est plus long qu'un cinquième"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour additionner des fractions de même dénominateur, on garde le dénominateur et on additionne les numérateurs. Exemple : $\\frac{2}{6} + \\frac{3}{6} = \\frac{5}{6}$. Attention : on n'additionne jamais les dénominateurs ! C'est comme ajouter $2$ pommes et $3$ pommes : ça fait $5$ pommes, pas $5$ poires."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 6,
+              "shape": "circle",
+              "caption": "$\\frac{2}{6} + \\frac{3}{6} = \\frac{5}{6}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rappelle-toi que plusieurs fractions peuvent désigner la même quantité. $\\frac{2}{4}$, $\\frac{3}{6}$, $\\frac{4}{8}$ sont tous égaux à $\\frac{1}{2}$. C'est le jeu des équivalences : on multiplie ou divise numérateur et dénominateur par le même nombre. Tu as maintenant toutes les clés pour manipuler les fractions simples avec aisance."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "carre",
+                "cercle",
+                "carre"
+              ],
+              "options": [
+                "cercle",
+                "triangle"
+              ],
+              "answer": "cercle",
+              "caption": "Entraîne ton œil : quelle forme vient ensuite ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire une fraction comme $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$, $\\frac{3}{4}$.",
+                "Je sais représenter une fraction en coloriant une figure (disque, bande, rectangle).",
+                "Je sais nommer le numérateur (en haut) et le dénominateur (en bas).",
+                "Je sais comparer deux fractions de même dénominateur en regardant les numérateurs.",
+                "Je sais ordonner $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$ du plus petit au plus grand.",
+                "Je sais additionner deux fractions de même dénominateur (ex: $\\frac{1}{4}+\\frac{1}{4}=\\frac{2}{4}$).",
+                "Je sais que $\\frac{2}{4}$ et $\\frac{1}{2}$ représentent la même quantité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la fraction qui correspond à $3$ parts prises sur $4$ parts égales.",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Le nombre de parts prises en haut, le total des parts en bas.",
+              "explanation": "Trois quarts s'écrit $\\frac{3}{4}$ : numérateur $3$, dénominateur $4$."
+            },
+            {
+              "question": "Compare $\\frac{1}{5}$ et $\\frac{1}{3}$.",
+              "answer": "$\\frac{1}{5} < \\frac{1}{3}$",
+              "hint": "Numérateur $1$ : plus le dénominateur est grand, plus la part est petite.",
+              "explanation": "Un cinquième est plus petit qu'un tiers car on partage en plus de parts."
+            },
+            {
+              "question": "Calcule $\\frac{2}{8} + \\frac{3}{8}$.",
+              "answer": "$\\frac{5}{8}$",
+              "hint": "Garde le dénominateur $8$, ajoute $2+3$.",
+              "explanation": "Deux huitièmes plus trois huitièmes font cinq huitièmes : $\\frac{2}{8}+\\frac{3}{8}=\\frac{5}{8}$."
+            },
+            {
+              "question": "Parmi ces fractions, laquelle est égale à $\\frac{1}{2}$ ? $\\frac{2}{3}$, $\\frac{3}{6}$, $\\frac{4}{5}$",
+              "answer": "$\\frac{3}{6}$",
+              "hint": "Cherche celle où le numérateur est la moitié du dénominateur.",
+              "explanation": "$\\frac{3}{6} = \\frac{1}{2}$ car $3$ est la moitié de $6$, comme $1$ est la moitié de $2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Pair / impair",
+  "title": "Approfondissement : Pair / impair",
+  "questions": [
+    {
+      "text": "Soit $k$ un entier. Quelle est la parité de l'expression $2k+1$ ?",
+      "options": [
+        "pair",
+        "impair",
+        "pair ou impair selon $k$",
+        "indéterminé"
+      ],
+      "correctAnswer": "impair",
+      "explanation": "L'expression $2k$ est toujours paire car c'est un multiple de $2$. En ajoutant $1$, on obtient un nombre impair, quel que soit l'entier $k$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a$ et $b$ sont deux entiers impairs, quelle est la parité de la somme $a+b$ ?",
+      "options": [
+        "pair",
+        "impair",
+        "dépend de $a$ et $b$",
+        "indéterminé"
+      ],
+      "correctAnswer": "pair",
+      "explanation": "La somme de deux nombres impairs s'écrit $(2m+1)+(2n+1)=2(m+n+1)$, qui est un multiple de $2$, donc paire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a$ un entier pair et $b$ un entier impair. Quelle est la parité du produit $a × b$ ?",
+      "options": [
+        "pair",
+        "impair",
+        "dépend des valeurs de $a$ et $b$",
+        "indéterminé"
+      ],
+      "correctAnswer": "pair",
+      "explanation": "Un nombre pair s'écrit $2k$. Le produit $2k × b = 2(kb)$ est un multiple de $2$, donc pair, quelle que soit la parité de $b$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tout entier $n$, quelle est la parité de $n^2 - n$ ?",
+      "options": [
+        "toujours pair",
+        "toujours impair",
+        "pair si $n$ pair, impair si $n$ impair",
+        "indéterminé"
+      ],
+      "correctAnswer": "toujours pair",
+      "explanation": "On a $n^2-n = n(n-1)$. Parmi deux entiers consécutifs $n$ et $n-1$, l'un est pair, donc leur produit est pair. Ainsi $n^2-n$ est toujours pair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'équation $x^2 + y^2 = 3$ admet-elle des solutions entières ?",
+      "options": [
+        "Non, aucune solution entière",
+        "Oui, $(1,1)$ est solution",
+        "Oui, $(0, √3)$ est solution",
+        "Cela dépend de la parité de $x$"
+      ],
+      "correctAnswer": "Non, aucune solution entière",
+      "explanation": "Les carrés modulo $4$ ne peuvent être que $0$ ou $1$. La somme de deux carrés ne peut donc pas être congruente à $3$ modulo $4$. Comme $3$ est congru à $3$ modulo $4$, l'équation n'a pas de solution entière.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

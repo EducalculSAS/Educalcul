@@ -1,0 +1,605 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.395095+00:00",
+  "id": 288,
+  "code": "cm2-t02-c07",
+  "title": "Bilan - Fractions CM2",
+  "description": "Cours structuré Educalcul : Bilan - Fractions CM2.",
+  "subject": "Fractions",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Fractions",
+    "titre_du_cours": "Bilan - Fractions CM2",
+    "objectif_global": "Bilan - Fractions CM2",
+    "mini_lecons_imposees": [
+      "Représenter, comparer, calculer.",
+      "Applications.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Représenter, comparer, calculer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter une fraction de plusieurs façons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur les fractions ! Tu as déjà travaillé beaucoup avec elles cette année, et aujourd'hui nous allons faire le point ensemble pour que tout soit bien clair dans ta tête. Imagine que tu partages une tablette de chocolat de $8$ carrés avec trois copains. Si tu en prends $3$ carrés pour toi, tu as mangé $\\frac{3}{8}$ de la tablette. Ce petit nombre écrit avec une barre, on l'appelle une fraction, et elle raconte une histoire de partage."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction. Il indique combien de parts on prend ou on considère.",
+              "example": "Dans $\\frac{3}{8}$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre écrit en dessous de la barre de fraction. Il indique en combien de parts égales le tout a été divisé.",
+              "example": "Dans $\\frac{3}{8}$, le dénominateur est $8$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 3,
+                  "denominator": 8
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                }
+              ],
+              "caption": "Comparer $\\frac{3}{8}$ et $\\frac{1}{2}$ avec des réglettes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction peut se montrer de trois manières différentes, et c'est très utile de savoir passer de l'une à l'autre. La première, c'est le partage d'un objet : un disque, un rectangle, une bande de papier. La deuxième, c'est une division : $\\frac{3}{8}$ veut dire $3$ divisé par $8$. La troisième, c'est un point sur une droite graduée. Si tu traces une droite de $0$ à $1$ et que tu la coupes en $8$ tronçons égaux, le point $\\frac{3}{8}$ se trouve au troisième trait après $0$. Essaie de le visualiser : c'est un peu avant la moitié, puisque la moitié c'est $\\frac{4}{8}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "La fraction $\\frac{3}{8}$ sur une droite graduée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.375,
+                  "label": "$\\frac{3}{8}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais représenter une fraction, voyons comment en comparer deux. C'est une question qu'on se pose tout le temps : quelle part est la plus grande ? Si les deux fractions ont le même dénominateur, c'est facile : celle qui a le plus grand numérateur gagne. Par exemple, $\\frac{5}{12}$ est plus grand que $\\frac{3}{12}$, car on a divisé en $12$ parts égales dans les deux cas, et $5$ parts, c'est plus que $3$ parts. C'est comme comparer $5$ parts de pizza et $3$ parts de la même pizza coupée de la même façon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les dénominateurs sont différents, on a deux astuces. La première : on ramène les deux fractions au même dénominateur. Pour comparer $\\frac{2}{3}$ et $\\frac{3}{5}$, on cherche un multiple commun de $3$ et $5$, par exemple $15$. On obtient $\\frac{10}{15}$ et $\\frac{9}{15}$. Comme $10 > 9$, on a $\\frac{2}{3} > \\frac{3}{5}$. La deuxième astuce, plus rapide parfois : on compare chaque fraction à une fraction repère comme $\\frac{1}{2}$. $\\frac{2}{3}$ est plus grand que $\\frac{1}{2}$ (car $2 \\times 2 = 4 > 3$), alors que $\\frac{3}{5}$ est plus grand que $\\frac{1}{2}$ aussi (car $3 \\times 2 = 6 > 5$), mais moins que $\\frac{2}{3}$. Entraîne-toi à choisir la méthode la plus commode selon les nombres."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 5
+                }
+              ],
+              "caption": "Comparer $\\frac{2}{3}$ et $\\frac{3}{5}$ visuellement"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux calculs. Additionner ou soustraire deux fractions qui ont le même dénominateur, c'est comme ajouter ou enlever des parts d'un même gâteau : le dénominateur ne bouge pas, on ne fait qu'additionner ou soustraire les numérateurs. Par exemple, $\\frac{2}{7} + \\frac{3}{7} = \\frac{5}{7}$. Si les dénominateurs sont différents, il faut d'abord les mettre au même dénominateur, comme pour comparer. Pour $\\frac{1}{4} + \\frac{1}{6}$, le plus petit commun multiple de $4$ et $6$ est $12$. On écrit $\\frac{3}{12} + \\frac{2}{12} = \\frac{5}{12}$. Prends le temps de bien poser l'opération, c'est la clé pour ne pas te tromper."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer avec les fractions"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarder les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "S'ils sont identiques, on passe à l'étape 3. S'ils sont différents, on va à l'étape 2."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver un dénominateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un multiple commun des deux dénominateurs (le plus petit si possible). Transforme chaque fraction en une fraction équivalente qui a ce dénominateur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne ou soustrais les numérateurs. Le dénominateur commun ne change pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le numérateur et le dénominateur du résultat ont un diviseur commun, divise les deux par ce nombre pour obtenir la fraction irréductible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "Résultat de $\\frac{1}{4} + \\frac{1}{6} = \\frac{5}{12}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, parlons des fractions qui valent plus de $1$. Quand le numérateur est plus grand que le dénominateur, on a une fraction impropre, comme $\\frac{11}{4}$. On peut l'écrire autrement : un nombre mixte. Pour $\\frac{11}{4}$, on se demande : combien de fois $4$ rentre-t-il dans $11$ ? $2$ fois, car $2 \\times 4 = 8$, et il reste $3$. Donc $\\frac{11}{4} = 2 \\frac{3}{4}$. C'est très pratique pour se représenter la quantité : deux unités entières et trois quarts d'une autre. L'opération inverse marche aussi : $3 \\frac{2}{5} = \\frac{3 \\times 5 + 2}{5} = \\frac{17}{5}$. Tu verras, avec un peu d'entraînement, ça devient un réflexe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fractions supérieures à 1 : nombres mixtes et fractions impropres"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 11,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 4
+                }
+              ],
+              "caption": "$\\frac{11}{4}$ c'est $2$ entiers et $\\frac{3}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $1$ divisée en $10$ parties égales, place un point au niveau de $\\frac{3}{5}$. Explique comment tu as trouvé l'endroit.",
+              "answer": "Le point se place sur la $6^{\\text{ème}}$ graduation après $0$, car $\\frac{3}{5} = \\frac{6}{10}$. On divise chaque cinquième en deux pour obtenir des dixièmes.",
+              "hint": "Transforme $\\frac{3}{5}$ en fraction avec dénominateur $10$.",
+              "explanation": "Pour placer $\\frac{3}{5}$ sur une droite divisée en $10$, on cherche une fraction égale avec dénominateur $10$. On multiplie le numérateur et le dénominateur par $2$ : $\\frac{3 \\times 2}{5 \\times 2} = \\frac{6}{10}$. Le point est donc à la $6^{\\text{ème}}$ graduation."
+            },
+            {
+              "question": "Compare les fractions $\\frac{4}{9}$ et $\\frac{5}{12}$ en les ramenant au même dénominateur. Écris le signe $<$ ou $>$ entre elles.",
+              "answer": "$\\frac{4}{9} > \\frac{5}{12}$",
+              "hint": "Le plus petit commun multiple de $9$ et $12$ est $36$.",
+              "explanation": "On met les deux fractions au dénominateur $36$ : $\\frac{4}{9} = \\frac{4 \\times 4}{9 \\times 4} = \\frac{16}{36}$ et $\\frac{5}{12} = \\frac{5 \\times 3}{12 \\times 3} = \\frac{15}{36}$. Comme $16 > 15$, on a $\\frac{16}{36} > \\frac{15}{36}$, donc $\\frac{4}{9} > \\frac{5}{12}$."
+            },
+            {
+              "question": "Calcule $\\frac{2}{5} + \\frac{1}{3}$. Donne le résultat sous forme de fraction irréductible.",
+              "answer": "$\\frac{11}{15}$",
+              "hint": "Le dénominateur commun de $5$ et $3$ est $15$.",
+              "explanation": "On met au même dénominateur $15$ : $\\frac{2}{5} = \\frac{6}{15}$ et $\\frac{1}{3} = \\frac{5}{15}$. On additionne les numérateurs : $6 + 5 = 11$. Le résultat est $\\frac{11}{15}$, qui est déjà irréductible car $11$ et $15$ n'ont pas de diviseur commun."
+            },
+            {
+              "question": "Écris la fraction impropre $\\frac{23}{6}$ sous forme de nombre mixte, puis fais l'inverse : écris $4 \\frac{5}{8}$ sous forme de fraction impropre.",
+              "answer": "$\\frac{23}{6} = 3 \\frac{5}{6}$ et $4 \\frac{5}{8} = \\frac{37}{8}$",
+              "hint": "Pour $\\frac{23}{6}$, cherche combien de fois $6$ rentre dans $23$. Pour $4 \\frac{5}{8}$, multiplie $4$ par $8$ et ajoute $5$.",
+              "explanation": "$23 = 3 \\times 6 + 5$, donc $\\frac{23}{6} = 3 \\frac{5}{6}$. Pour $4 \\frac{5}{8}$, on calcule $4 \\times 8 + 5 = 32 + 5 = 37$, donc la fraction impropre est $\\frac{37}{8}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les fractions dans les mesures de longueurs, capacités et masses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions ne vivent pas seulement dans ton cahier de maths, elles sont partout dans la vie de tous les jours ! Quand tu mesures quelque chose, tu tombes souvent sur des quantités qui ne sont pas des nombres entiers. Par exemple, une bouteille de jus de fruit contient $1 \\frac{1}{2}$ litre, soit $1,5$ litre. Un ruban mesure $2 \\frac{3}{4}$ mètre. Un sachet de farine pèse $\\frac{3}{4}$ de kilogramme, c'est-à-dire $750$ grammes. Dans toutes ces situations, la fraction te permet d'être précis sans avoir à inventer de nouvelles unités. C'est la force du système métrique : les unités sont divisées en $10$, $100$, $1000$, et les fractions s'écrivent aussi facilement en décimaux."
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Litre",
+                  "value": 1000,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Centilitre",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "Millilitre",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Relations entre unités de capacité : $1 \\, L = 100 \\, cL = 1000 \\, mL$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : $1$ litre vaut $100$ centilitres ou $1000$ millilitres. Si tu as $\\frac{3}{4}$ de litre, tu peux le transformer en centilitres : $\\frac{3}{4} \\times 100 = 75$ centilitres. Ou en millilitres : $\\frac{3}{4} \\times 1000 = 750$ millilitres. C'est exactement la même quantité, juste exprimée dans une unité différente. Pour les longueurs, $1$ mètre = $100$ centimètres = $1000$ millimètres. $\\frac{3}{4}$ de mètre, c'est $75$ cm ou $750$ mm. Pour les masses, $1$ kilogramme = $1000$ grammes. $\\frac{3}{4}$ de kg = $750$ g. Essaie de mémoriser ces équivalences, elles te serviront tout le temps, en cuisine, en bricolage, en sport."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Fraction",
+                "Équivalence décimale",
+                "Dans l'unité inférieure"
+              ],
+              "rows": [
+                [
+                  "Longueur",
+                  "$\\frac{3}{4}$ m",
+                  "$0,75$ m",
+                  "$75$ cm"
+                ],
+                [
+                  "Capacité",
+                  "$\\frac{1}{2}$ L",
+                  "$0,5$ L",
+                  "$50$ cL"
+                ],
+                [
+                  "Masse",
+                  "$\\frac{1}{4}$ kg",
+                  "$0,25$ kg",
+                  "$250$ g"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions sont aussi les reines du partage. Imagine : tu as fait un gâteau rectangulaire et tu dois le partager équitablement entre $6$ enfants. Chaque enfant reçoit $\\frac{1}{6}$ du gâteau. Si $2$ enfants ne veulent pas de part, les $4$ autres se partagent le gâteau : chacun aura $\\frac{1}{4}$ du gâteau, ce qui est plus grand que $\\frac{1}{6}$. C'est logique : moins il y a de personnes, plus la part est grande. Ce lien entre division et fraction est fondamental : $\\frac{1}{6}$ veut dire $1 \\div 6$, et $\\frac{1}{4}$ veut dire $1 \\div 4$. En CM2, tu dois être à l'aise pour passer de l'histoire (\"on partage...\") à l'écriture mathématique ($\\frac{1}{6}$) et inversement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager équitablement : la fraction comme division"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Enfant 1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Enfant 2",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Enfant 3",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Enfant 4",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "Enfant 5",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Enfant 6",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Un gâteau partagé en $6$ parts égales : chaque part vaut $\\frac{1}{6}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le partage ne tombe pas juste. Tu as $5$ barres de chocolat à partager entre $3$ copains. Chaque copain reçoit $1$ barre entière, et il reste $2$ barres. On coupe ces $2$ barres en $3$ parts égales : chaque copain reçoit encore $\\frac{2}{3}$ de barre. Au total, chacun a $1 \\frac{2}{3}$ barre. Écris en fraction impropre : $1 \\frac{2}{3} = \\frac{5}{3}$. Remarque : le numérateur $5$, c'est le nombre de barres de départ, et le dénominateur $3$, c'est le nombre de copains. La fraction $\\frac{5}{3}$ raconte exactement l'histoire : $5$ objets partagés en $3$ parts égales. C'est une manière très puissante de résumer une situation de partage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre terrain de jeu passionnant pour les fractions, c'est la cuisine et les recettes. Quand tu doubles une recette, tu multiplies toutes les quantités par $2$. Quand tu la réduis pour $2$ personnes au lieu de $6$, tu divises par $3$, c'est-à-dire que tu multiplies par $\\frac{1}{3}$. C'est de la proportionnalité, et les fractions en sont le cœur. Prenons une recette de crêpes pour $4$ personnes : $250$ g de farine, $3$ œufs, $50$ cl de lait. Pour $6$ personnes, il faut multiplier par $\\frac{6}{4} = \\frac{3}{2}$. Farine : $250 \\times \\frac{3}{2} = \\frac{750}{2} = 375$ g. Lait : $50 \\times \\frac{3}{2} = \\frac{150}{2} = 75$ cl. Œufs : $3 \\times \\frac{3}{2} = \\frac{9}{2} = 4,5$ œufs. En pratique, on met $4$ ou $5$ œufs selon la taille, mais le calcul fractionnaire te donne la quantité exacte idéale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Adapter une recette : la proportionnalité en action"
+            },
+            {
+              "type": "ratio_mixer",
+              "ratios": [
+                {
+                  "label": "Farine (g)",
+                  "value": 250,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Lait (cl)",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Œufs",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Recette de base pour $4$ personnes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce qui est génial, c'est que la fraction $\\frac{3}{2}$ (ou $1,5$) s'applique à tous les ingrédients de la même façon. C'est ça, la proportionnalité : les quantités évoluent dans le même rapport. Si tu veux faire la recette pour $10$ personnes, le coefficient est $\\frac{10}{4} = \\frac{5}{2} = 2,5$. Farine : $250 \\times 2,5 = 625$ g. Lait : $50 \\times 2,5 = 125$ cl. Tu vois que les fractions permettent de passer d'une quantité à une autre sans recalculer toute la logique à chaque fois. Une fois qu'on a trouvé le coefficient multiplicateur (la fraction qui relie les deux situations), on l'applique à tout. C'est un gain de temps énorme et ça évite les erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, attaquons-nous à un problème un peu plus complet qui mélange plusieurs idées. \"Léa a un ruban de $3$ mètres. Elle en coupe $\\frac{2}{5}$ pour faire un nœud, puis elle coupe $\\frac{1}{3}$ de ce qui reste pour attacher un paquet. Quelle longueur de ruban lui reste-t-il ?\" Pose-toi les bonnes questions : 1) Combien mesure le premier morceau coupé ? $\\frac{2}{5}$ de $3$ m = $3 \\times \\frac{2}{5} = \\frac{6}{5} = 1,2$ m. 2) Combien reste-t-il après la première coupe ? $3 - 1,2 = 1,8$ m (ou $3 - \\frac{6}{5} = \\frac{15}{5} - \\frac{6}{5} = \\frac{9}{5}$ m). 3) Combien mesure le deuxième morceau ? $\\frac{1}{3}$ de $\\frac{9}{5}$ = $\\frac{9}{5} \\times \\frac{1}{3} = \\frac{9}{15} = \\frac{3}{5}$ m. 4) Reste final : $\\frac{9}{5} - \\frac{3}{5} = \\frac{6}{5} = 1,2$ m. Léa a encore $1,2$ mètre de ruban. Prends le temps de relire le problème plusieurs fois, de faire un schéma si ça t'aide, et de vérifier que ta réponse a du sens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème en plusieurs étapes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les données et la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Longueur totale : $3$ m. Première coupe : $\\frac{2}{5}$ du total. Deuxième coupe : $\\frac{1}{3}$ du reste. Question : longueur finale restante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la première coupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$3 \\times \\frac{2}{5} = \\frac{6}{5}$ m = $1,2$ m."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le reste après première coupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$3 - \\frac{6}{5} = \\frac{15}{5} - \\frac{6}{5} = \\frac{9}{5}$ m = $1,8$ m."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer la deuxième coupe et le reste final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\frac{1}{3} \\times \\frac{9}{5} = \\frac{9}{15} = \\frac{3}{5}$ m coupé. Reste : $\\frac{9}{5} - \\frac{3}{5} = \\frac{6}{5}$ m = $1,2$ m."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une bouteille contient $\\frac{3}{4}$ de litre de jus. Exprime cette quantité en centilitres, puis en millilitres.",
+              "answer": "$75$ cL et $750$ mL",
+              "hint": "$1$ L = $100$ cL = $1000$ mL. Multiplie $\\frac{3}{4}$ par $100$ puis par $1000$.",
+              "explanation": "$\\frac{3}{4}$ L = $\\frac{3}{4} \\times 100$ cL = $75$ cL. $\\frac{3}{4}$ L = $\\frac{3}{4} \\times 1000$ mL = $750$ mL. On peut aussi passer par les centilitres : $75$ cL = $75 \\times 10$ mL = $750$ mL."
+            },
+            {
+              "question": "On partage $7$ barres de chocolat équitablement entre $4$ enfants. Quelle fraction de barre reçoit chaque enfant ? Écris le résultat en fraction impropre et en nombre mixte.",
+              "answer": "Fraction impropre : $\\frac{7}{4}$. Nombre mixte : $1 \\frac{3}{4}$.",
+              "hint": "Le numérateur est le nombre de barres, le dénominateur le nombre d'enfants. Pour le nombre mixte, divise $7$ par $4$.",
+              "explanation": "Chaque enfant reçoit $\\frac{7}{4}$ de barre (7 barres divisées en 4 parts). $7 = 1 \\times 4 + 3$, donc $\\frac{7}{4} = 1 \\frac{3}{4}$. Chaque enfant a 1 barre entière et 3 quarts de barre."
+            },
+            {
+              "question": "Une recette de gâteau pour $8$ personnes demande $200$ g de sucre. Combien de sucre faut-il pour $12$ personnes ? Donne le coefficient multiplicateur sous forme de fraction simplifiée, puis le résultat en grammes.",
+              "answer": "Coefficient : $\\frac{3}{2}$. Sucre : $300$ g.",
+              "hint": "Le coefficient est $\\frac{12}{8}$. Simplifie cette fraction. Multiplie $200$ par le coefficient.",
+              "explanation": "Coefficient = $\\frac{12}{8} = \\frac{3}{2}$ (on divise numérateur et dénominateur par $4$). Sucre = $200 \\times \\frac{3}{2} = \\frac{600}{2} = 300$ g."
+            },
+            {
+              "question": "Paul a une corde de $5$ m. Il en utilise $\\frac{3}{10}$ pour faire un bracelet, puis $\\frac{1}{2}$ du reste pour attacher un sac. Quelle longueur de corde lui reste-t-il ?",
+              "answer": "$1,75$ m (ou $\\frac{7}{4}$ m ou $1 \\frac{3}{4}$ m)",
+              "hint": "Calcule d'abord la longueur utilisée pour le bracelet ($5 \\times \\frac{3}{10}$), puis le reste, puis la moitié de ce reste.",
+              "explanation": "1) Bracelet : $5 \\times \\frac{3}{10} = \\frac{15}{10} = 1,5$ m. 2) Reste : $5 - 1,5 = 3,5$ m. 3) Sac : $\\frac{1}{2} \\times 3,5 = 1,75$ m. 4) Reste final : $3,5 - 1,75 = 1,75$ m. En fractions : $5 - \\frac{3}{2} = \\frac{7}{2}$ ; $\\frac{1}{2} \\times \\frac{7}{2} = \\frac{7}{4}$ ; $\\frac{7}{2} - \\frac{7}{4} = \\frac{14}{4} - \\frac{7}{4} = \\frac{7}{4} = 1,75$ m."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des idées forces avec de nouveaux exemples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière leçon de ce bilan ! L'objectif n'est pas d'apprendre de nouvelles choses, mais de consolider tout ce que tu as construit depuis le début de l'année. Pense à une fraction comme $\\frac{5}{6}$. Elle peut être : une part de gâteau (5 parts sur 6), une division ($5 \\div 6$), un point sur la droite graduée (entre $\\frac{2}{3}$ et $1$), une fraction décimale ($\\frac{5}{6} \\approx 0,833...$), ou un opérateur (prendre $\\frac{5}{6}$ d'une longueur). Ces cinq regards sur le même objet sont comme cinq fenêtres sur une même pièce : chacune te montre quelque chose d'utile. Quand tu bloques sur un exercice, demande-toi : \"Par quelle fenêtre est-ce le plus simple de regarder cette fraction aujourd'hui ?\""
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Les 5 visages d'une fraction",
+              "paragraphs": [
+                "1. Partage : 5 parts sur 6 égales",
+                "2. Division : $5 \\div 6$",
+                "3. Nombre : un point sur la droite",
+                "4. Décimal : $0,833...$",
+                "5. Opérateur : $\\times \\frac{5}{6}$"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la comparaison avec un exemple frais. Pour comparer $\\frac{7}{10}$ et $\\frac{5}{7}$, tu as le choix. Méthode 1 : même dénominateur. $10$ et $7$ n'ont pas de petit multiple commun évident, mais $70$ marche : $\\frac{49}{70}$ et $\\frac{50}{70}$. Donc $\\frac{5}{7}$ est un tout petit peu plus grand. Méthode 2 : comparaison à $\\frac{1}{2}$. $\\frac{7}{10} > \\frac{1}{2}$ (car $7 > 5$), et $\\frac{5}{7} > \\frac{1}{2}$ (car $5 > 3,5$). Les deux sont au-dessus de $\\frac{1}{2}$, mais $\\frac{5}{7}$ est plus près de $1$ que $\\frac{7}{10}$ car son numérateur est plus proche de son dénominateur. Méthode 3 : conversion en décimal. $\\frac{7}{10} = 0,7$ exactement. $\\frac{5}{7} \\approx 0,714$. Même conclusion. À toi de choisir ton arme préférée selon les nombres !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 7,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 5,
+                  "denominator": 7
+                }
+              ],
+              "caption": "Comparer $\\frac{7}{10}$ et $\\frac{5}{7}$ : très serré !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, parlons des pièges classiques où tombent même les bons élèves. Piège n°1 : additionner les numérateurs ET les dénominateurs. $\\frac{1}{3} + \\frac{1}{5} \\neq \\frac{2}{8}$ ! Jamais. Le dénominateur, c'est la taille des parts, elle ne change pas quand on additionne. Piège n°2 : croire que $\\frac{4}{6}$ et $\\frac{2}{3}$ sont différents. Ils sont égaux ! $\\frac{4}{6}$ se simplifie par $2$. Toujours simplifier à la fin, c'est une hygiène de vie mathématique. Piège n°3 : transformer $1 \\frac{3}{4}$ en $\\frac{4}{4} + \\frac{3}{4} = \\frac{7}{4}$ mais écrire $\\frac{43}{4}$ ou $\\frac{13}{4}$ par inattention. Relis-toi : la partie entière se multiplie par le dénominateur, elle ne se colle pas devant le numérateur. Piège n°4 : oublier de mettre au même dénominateur avant de comparer ou calculer. Prends deux secondes pour vérifier : \"Est-ce que mes dénominateurs sont pareils ?\" Si non, action immédiate !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter absolument"
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Les 4 erreurs les plus fréquentes",
+              "paragraphs": [
+                "1. Additionner numérateurs ET dénominateurs : $\\frac{1}{3}+\\frac{1}{5}=\\frac{2}{8}$ ❌",
+                "2. Ne pas simplifier : laisser $\\frac{4}{6}$ au lieu de $\\frac{2}{3}$",
+                "3. Mal convertir le nombre mixte : $1 \\frac{3}{4} = \\frac{13}{4}$ ❌ (c'est $\\frac{7}{4}$)",
+                "4. Comparer/calculer sans même dénominateur"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir en beauté, voici trois stratégies de champion pour aborder sereinement n'importe quel exercice sur les fractions. Stratégie 1 : Dessine ! Un petit rectangle découpé, une droite graduée, un schéma en barres (comme les réglettes de Singapour) transforment souvent une abstraction floue en une évidence visuelle. Stratégie 2 : Parle à voix basse. Dis la fraction en mots : \"$\\frac{3}{8}$, c'est trois parts sur huit\". Entendre la phrase aide le cerveau à structurer le sens. Stratégie 3 : Vérifie la cohérence. Ton résultat est-il plus grand que $1$ ? Plus petit que $\\frac{1}{2}$ ? Est-ce logique par rapport à l'énoncé ? Si tu trouves $\\frac{11}{5}$ pour une part de gâteau partagé entre $3$ personnes, il y a un souci : chaque part devrait être autour de $\\frac{1}{3}$. Cette vérification de bon sens repère 90 % des erreurs de calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trois stratégies pour réussir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main pour être au top sur les fractions. Rappelle-toi : une fraction, c'est avant tout une histoire de partage ou de mesure. Les outils (même dénominateur, simplification, conversion nombre mixte/fraction impropre, passage au décimal) sont là pour t'aider à raconter cette histoire avec précision. Ne les vois pas comme des règles à apprendre par cœur, mais comme des leviers pour résoudre des problèmes concrets. La prochaine fois que tu couperas une pizza, que tu mesureras un ruban, que tu adapteras une recette, tu feras des fractions sans même t'en rendre compte. C'est ça, la vraie maîtrise : quand les maths deviennent un langage naturel pour décrire le monde."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais représenter une fraction par un dessin, sur une droite graduée, et comme une division.",
+                "Je sais identifier le numérateur et le dénominateur et expliquer leur rôle.",
+                "Je sais comparer deux fractions (même dénominateur, mise au même dénominateur, comparaison à 1/2).",
+                "Je sais additionner et soustraire deux fractions (même dénominateur et dénominateurs différents).",
+                "Je sais convertir une fraction impropre en nombre mixte et inversement.",
+                "Je sais simplifier une fraction pour la rendre irréductible.",
+                "J'utilise les fractions pour résoudre des problèmes de mesure (longueur, capacité, masse).",
+                "J'utilise les fractions pour résoudre des problèmes de partage et de proportionnalité (recettes).",
+                "Je vérifie toujours que mon résultat a du sens (ordre de grandeur, cohérence).",
+                "Je repère et j'évite les pièges classiques (additionner les dénominateurs, oublier de simplifier, mal convertir)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{7}{10}$ et $\\frac{5}{7}$ en utilisant deux méthodes différentes. Laquelle trouves-tu la plus rapide ici ?",
+              "answer": "$\\frac{7}{10} < \\frac{5}{7}$. Méthode 1 : même dénominateur 70 → $\\frac{49}{70} < \\frac{50}{70}$. Méthode 2 : décimaux → $0,7 < 0,714...$. La méthode décimale est plus rapide car $\\frac{7}{10}=0,7$ directement.",
+              "hint": "Pour $\\frac{7}{10}$, le décimal est immédiat. Pour $\\frac{5}{7}$, divise $5$ par $7$ ou mets au dénominateur $70$.",
+              "explanation": "$\\frac{7}{10} = 0,7$ exactement. $\\frac{5}{7} \\approx 0,714$. Donc $\\frac{5}{7} > \\frac{7}{10}$. En dénominateur commun 70 : $\\frac{7}{10} = \\frac{49}{70}$, $\\frac{5}{7} = \\frac{50}{70}$. Même résultat. La méthode décimale est plus rapide ici car l'une des fractions est déjà décimale."
+            },
+            {
+              "question": "Parmi ces égalités, lesquelles sont vraies ? Corrige les fausses. A) $\\frac{2}{5} + \\frac{1}{5} = \\frac{3}{10}$  B) $\\frac{9}{12} = \\frac{3}{4}$  C) $2 \\frac{1}{3} = \\frac{7}{3}$  D) $\\frac{3}{4}$ de $20$ = $12$",
+              "answer": "A) Faux : $\\frac{2}{5} + \\frac{1}{5} = \\frac{3}{5}$. B) Vrai. C) Vrai. D) Vrai.",
+              "hint": "Vérifie chaque calcul : addition même dénominateur, simplification, conversion nombre mixte, fraction d'un nombre.",
+              "explanation": "A) Même dénominateur : on additionne seulement les numérateurs : $2+1=3$, dénominateur $5$ → $\\frac{3}{5}$ (piège n°1). B) $\\frac{9}{12}$ se simplifie par $3$ : $\\frac{3}{4}$. C) $2 \\times 3 + 1 = 7$ → $\\frac{7}{3}$. D) $\\frac{3}{4} \\times 20 = \\frac{60}{4} = 15$... Attends, $\\frac{3}{4} \\times 20 = 15$, pas $12$ ! Donc D est faux. $\\frac{3}{4}$ de $20$ = $15$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 79,
+  "_course_code": "ce1-t02-c01-partager-une-unite-en-parts-egales",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Reconnaître un partage équitable",
+  "title": "Algorithmes pour reconnaître un partage équitable",
+  "blocks": [
+    {
+      "title": "Vérifier un partage en deux parts",
+      "content": "Écris un algorithme (une liste d'instructions numérotées) pour vérifier si une figure (carré, rectangle, cercle) est partagée en $2$ parts égales. Utilise les mots : observer, mesurer, comparer, conclure.",
+      "correctAnswer": "1. Observer la figure et le trait de partage.\\n2. Mesurer ou superposer les deux parties obtenues.\\n3. Comparer la taille (aire) des deux parties.\\n4. Si les deux parties ont la même taille, alors le partage est équitable (ce sont deux demis). Sinon, il ne l'est pas.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour reconnaître un partage équitable en deux parts (demi), il faut s'assurer que les deux parties ont exactement la même superficie. L'algorithme décrit les étapes logiques : observation, vérification par mesure ou superposition, comparaison et conclusion.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partager une collection équitablement",
+      "content": "Tu as $12$ bonbons à partager équitablement entre $3$ enfants. Écris l'algorithme de distribution (étape par étape) pour que chaque enfant reçoive le même nombre de bonbons.",
+      "correctAnswer": "1. Compter le nombre total de bonbons ($12$).\\n2. Compter le nombre d'enfants ($3$).\\n3. Donner un bonbon au premier enfant, un au deuxième, un au troisième (premier tour).\\n4. Répéter l'étape 3 jusqu'à ce qu'il ne reste plus de bonbons.\\n5. Vérifier que chaque enfant a le même nombre de bonbons ($4$ chacun).\\n6. Conclure : chaque enfant reçoit un tiers des bonbons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le partage équitable d'une collection se fait par distribution itérative (un pour chacun, tour par tour). L'algorithme doit prévoir la boucle de distribution et la vérification finale de l'égalité des parts. Ici, $12$ divisé par $3$ donne $4$ bonbons par enfant, soit un tiers.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détecter l'erreur dans le partage",
+      "content": "Léa a écrit cet algorithme pour partager une bande de papier en $4$ parts égales (quarts) :\\n1. Plier la bande en deux.\\n2. Plier la bande en deux encore une fois.\\n3. Déplier et couper sur les plis.\\n4. Les $4$ parts sont égales.\\nMais elle obtient $3$ parts de tailles différentes. Où est l'erreur dans l'algorithme ? Propose la correction.",
+      "correctAnswer": "L'erreur est à l'étape 2 : il faut plier **chaque moitié** en deux (plier les deux épaisseurs ensemble), et non plier la bande entière en deux une seconde fois sans préciser l'alignement des bords. \\nAlgorithme corrigé :\\n1. Plier la bande en deux en superposant parfaitement les deux extrémités.\\n2. Plier à nouveau la bande pliée en deux (les quatre épaisseurs) en superposant les bords.\\n3. Déplier et marquer les plis.\\n4. Couper sur les plis : on obtient $4$ parts égales (quarts).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir des quarts par pliage, le deuxième pli doit se faire sur la bande déjà pliée en deux (donc sur 4 épaisseurs), en prenant soin d'aligner les bords. Si on replie la bande dépliée n'importe comment, les parts ne sont pas égales. L'algorithme doit garantir la précision du pliage.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

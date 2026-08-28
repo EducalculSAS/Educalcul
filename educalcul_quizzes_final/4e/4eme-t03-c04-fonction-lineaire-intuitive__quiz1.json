@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Proportionnalité",
+  "title": "Quiz : Proportionnalité (4e)",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous représente-t-il une situation de proportionnalité ?\\n\\n$x$ | 2 | 5 | 8\\n$y$ | 6 | 15 | 24",
+      "options": [
+        "Oui, car le coefficient de proportionnalité est $3$.",
+        "Non, car les valeurs de $x$ ne sont pas égales.",
+        "Oui, car les valeurs augmentent toutes les deux.",
+        "Non, car le coefficient n'est pas constant."
+      ],
+      "correctAnswer": "Oui, car le coefficient de proportionnalité est $3$.",
+      "explanation": "On calcule le rapport $y/x$ pour chaque colonne : $6/2 = 3$, $15/5 = 3$, $24/8 = 3$. Le coefficient est constant et vaut $3$, donc c'est bien une proportionnalité. L'option B est sans rapport avec la définition. L'option C confond augmentation et proportionnalité. L'option D est fausse car le coefficient est constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de proportionnalité, on a $x = 7$ et $y = 35$. Quel est le coefficient de proportionnalité ?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$28$",
+        "$42$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Le coefficient de proportionnalité $k$ s'obtient en divisant $y$ par $x$ : $k = y/x = 35/7 = 5$. L'option B confond avec la valeur de $x$. L'option C correspond à la différence $y-x$. L'option D correspond à la somme $y+x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète le tableau de proportionnalité suivant :\\n\\n$x$ | 4 | ... | 12\\n$y$ | 10 | 25 | ...",
+      "options": [
+        "$x = 10$ et $y = 30$",
+        "$x = 10$ et $y = 35$",
+        "$x = 8$ et $y = 30$",
+        "$x = 8$ et $y = 35$"
+      ],
+      "correctAnswer": "$x = 10$ et $y = 30$",
+      "explanation": "Le coefficient est $k = 10/4 = 2,5$. Pour $y = 25$, on a $x = 25 / 2,5 = 10$. Pour $x = 12$, on a $y = 12 \\times 2,5 = 30$. L'option B donne un $y$ incorrect pour $x=12$. Les options C et D donnent un $x$ incorrect pour $y=25$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt $180$ km en $3$ heures. À la même vitesse, quelle distance parcourt-elle en $5$ heures ?",
+      "options": [
+        "$300$ km",
+        "$360$ km",
+        "$270$ km",
+        "$540$ km"
+      ],
+      "correctAnswer": "$300$ km",
+      "explanation": "La vitesse est constante : $180 / 3 = 60$ km/h. En $5$ heures, la distance est $60 \\times 5 = 300$ km. On peut aussi faire un produit en croix : $(180 \\times 5) / 3 = 300$. L'option B correspond à $180 \\times 2$. L'option C à $180 \\times 1,5$. L'option D à $180 \\times 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'entrée d'un parc d'attractions est de $20$ € par personne. Un groupe de $4$ personnes bénéficie d'une réduction de $10$ € sur le total. Le prix total à payer est-il proportionnel au nombre de personnes ?",
+      "options": [
+        "Non, car il y a une réduction fixe qui casse la proportionnalité.",
+        "Oui, car le prix par personne reste constant.",
+        "Non, car le nombre de personnes change.",
+        "Oui, car on peut calculer un coefficient."
+      ],
+      "correctAnswer": "Non, car il y a une réduction fixe qui casse la proportionnalité.",
+      "explanation": "Le prix total est $P(n) = 20n - 10$. Ce n'est pas une fonction linéaire de la forme $k \\times n$ (il y a un terme constant $-10$). Le rapport $P/n$ n'est pas constant : pour $n=4$, $P=70$, rapport $17,5$ ; pour $n=5$, $P=90$, rapport $18$. L'option B ignore la réduction globale. L'option C n'est pas un argument valide. L'option D est fausse : on peut calculer un rapport mais il n'est pas constant.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

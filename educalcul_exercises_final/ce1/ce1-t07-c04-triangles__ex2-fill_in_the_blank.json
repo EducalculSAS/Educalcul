@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Comparer des formes",
+  "title": "Comparer et nommer les triangles",
+  "blocks": [
+    {
+      "title": "Les caractéristiques du triangle",
+      "content": "Un triangle est un polygone fermé qui a {{1}} côtés et {{2}} sommets.",
+      "blanks": [
+        "trois",
+        "trois"
+      ],
+      "explanation": "Par définition, tout triangle possède exactement trois côtés (segments de droite) et trois sommets (points de rencontre des côtés). C'est la propriété fondamentale qui permet de le reconnaître parmi d'autres polygones comme le carré (4 côtés) ou le pentagone (5 côtés).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître le triangle rectangle",
+      "content": "Sur la figure, le triangle ABC a un angle droit en A. Ce triangle s'appelle un triangle {{1}}. L'angle droit est matérialisé par un petit {{2}} à l'intérieur de l'angle.",
+      "blanks": [
+        "rectangle",
+        "carré"
+      ],
+      "explanation": "Un triangle rectangle est un triangle qui possède un angle droit (angle de 90 degrés). À l'école, on repère cet angle droit grâce à un petit carré tracé dans l'angle. Ici, le triangle ABC est un triangle rectangle en A.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Classer les triangles selon leurs côtés",
+      "content": "Un triangle qui a deux côtés de la même longueur est un triangle {{1}}. Un triangle qui a ses trois côtés de la même longueur est un triangle {{2}}.",
+      "blanks": [
+        "isocèle",
+        "équilatéral"
+      ],
+      "explanation": "On classe les triangles d'après la longueur de leurs côtés : le triangle isocèle a deux côtés de même longueur (et le troisième différent) ; le triangle équilatéral a ses trois côtés de même longueur (c'est un cas particulier de triangle isocèle). Le triangle rectangle vu précédemment peut aussi être isocèle s'il a deux côtés égaux.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

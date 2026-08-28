@@ -1,0 +1,66 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 80,
+  "_course_code": "ce1-t02-c02-lire-une-fraction-unitaire",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Relier 1/n à une part parmi n",
+  "title": "Relier la fraction unitaire au partage",
+  "blocks": [
+    {
+      "title": "Partager une barre de chocolat",
+      "content": "Une barre de chocolat est divisée en $5$ parts égales. Tu manges une seule part. Quelle fraction de la barre as-tu mangée ?",
+      "correctAnswer": "1/5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre total de parts égales est le dénominateur ($5$). Comme tu as mangé une seule part, le numérateur est $1$. La fraction est donc $1/5$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 5
+          }
+        ],
+        "caption": "Barre divisée en 5 parts égales, 1 part surlignée"
+      }
+    },
+    {
+      "title": "Partager un gâteau",
+      "content": "On partage un gâteau rond en $8$ parts égales. Lucas prend une part. Écris la fraction du gâteau que Lucas a prise.",
+      "correctAnswer": "1/8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le gâteau est coupé en $8$ parts égales, donc le dénominateur est $8$. Lucas en prend $1$, donc le numérateur est $1$. La fraction correspondante est $1/8$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 8,
+        "shape": "circle",
+        "caption": "Gâteau divisé en 8 parts, 1 part prise"
+      }
+    },
+    {
+      "title": "Identifier la fraction colorée",
+      "content": "Un rectangle est divisé en $6$ bandes égales. Une seule bande est colorée en bleu. Complète : La partie bleue représente la fraction ___.",
+      "correctAnswer": "1/6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rectangle est découpé en $6$ parties égales (dénominateur $6$). Une seule partie est colorée (numérateur $1$). La fraction unitaire représentée est $1/6$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 6,
+        "shape": "bar",
+        "caption": "Rectangle divisé en 6 bandes, 1 bande colorée"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 232,
+  "_course_code": "cm1-t03-c07-ordre-de-grandeur",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Arrondir pour estimer",
+  "title": "Algorithmes d'estimation par arrondi",
+  "blocks": [
+    {
+      "title": "Estimer une somme à la dizaine",
+      "content": "Écrire un algorithme qui prend deux nombres entiers $a$ et $b$, les arrondit chacun à la dizaine la plus proche, puis affiche la somme de ces arrondis comme estimation de $a + b$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$ et $b$.\\n2. Calculer $a_arrondi = arrondir_a_la_dizaine(a)$.\\n3. Calculer $b_arrondi = arrondir_a_la_dizaine(b)$.\\n4. Calculer $estimation = a_arrondi + b_arrondi$.\\n5. Afficher $estimation$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On arrondit chaque nombre à la dizaine la plus proche pour simplifier le calcul mental. La somme des arrondis donne une estimation rapide de la somme exacte.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimer un produit à la centaine",
+      "content": "Écrire un algorithme qui prend deux nombres entiers $x$ et $y$, les arrondit chacun à la centaine la plus proche, puis affiche le produit de ces arrondis comme estimation de $x \\times y$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x$ et $y$.\\n2. Calculer $x_arrondi = arrondir_a_la_centaine(x)$.\\n3. Calculer $y_arrondi = arrondir_a_la_centaine(y)$.\\n4. Calculer $estimation = x_arrondi \\times y_arrondi$.\\n5. Afficher $estimation$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Arrondir à la centaine réduit le nombre de chiffres et permet un calcul mental approximatif du produit. Le produit des arrondis est une estimation de l'ordre de grandeur du produit exact.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimer la somme d'une liste",
+      "content": "Écrire un algorithme qui reçoit une liste de nombres entiers, arrondit chaque nombre au multiple de dix le plus proche, additionne tous les arrondis et affiche le total comme estimation de la somme de la liste.",
+      "correctAnswer": "Algorithme :\\n1. Lire la liste $L$.\\n2. Initialiser $total = 0$.\\n3. Pour chaque nombre $n$ dans $L$ faire :\\n   a. $n_arrondi = arrondir_a_la_dizaine(n)$.\\n   b. $total = total + n_arrondi$.\\n4. Afficher $total$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En arrondissant chaque terme à la dizaine, on simplifie chaque addition. La somme des arrondis donne une estimation globale de la somme exacte de la liste.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

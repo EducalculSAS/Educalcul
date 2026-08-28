@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Arbre / tableau si prévu",
+  "title": "Approfondissement : Arbre / tableau pour expériences à deux étapes",
+  "questions": [
+    {
+      "text": "On tire une boule dans une urne contenant 3 boules rouges et 2 boules bleues, puis on lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir une boule rouge suivie d'un nombre pair ?",
+      "options": [
+        "$\\frac{3}{10}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{3}{10}$",
+      "explanation": "La probabilité de tirer une boule rouge est $3/5$. La probabilité d'obtenir un nombre pair au dé est $3/6 = 1/2$. Les deux étapes sont indépendantes, donc on multiplie : $3/5 \\times 1/2 = 3/10$. Les autres options correspondent à des erreurs comme ne pas multiplier, inverser les probabilités ou confondre avec la probabilité d'un seul événement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On choisit au hasard une boîte : la boîte A avec une probabilité de $0,4$ et la boîte B avec une probabilité de $0,6$. Dans la boîte A il y a 4 boules rouges et 1 boule verte. Dans la boîte B il y a 2 boules rouges et 3 boules vertes. On tire ensuite une boule dans la boîte choisie. Quelle est la probabilité d'obtenir une boule rouge ?",
+      "options": [
+        "$\\frac{14}{25}$",
+        "$\\frac{12}{25}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{7}{10}$"
+      ],
+      "correctAnswer": "$\\frac{14}{25}$",
+      "explanation": "On utilise la loi des probabilités totales. $P(\\text{rouge}) = P(A) \\times P(\\text{rouge}|A) + P(B) \\times P(\\text{rouge}|B) = 0,4 \\times 4/5 + 0,6 \\times 2/5 = 0,32 + 0,24 = 0,56 = 14/25$. Les distracteurs proviennent d'oublier l'une des boîtes, de mal calculer les fractions conditionnelles ou d'additionner les probabilités brutes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 30 élèves, 18 aiment les mathématiques, 12 aiment le sport et 7 aiment les deux. On choisit un élève au hasard parmi ceux qui aiment le sport. Quelle est la probabilité qu'il aime aussi les mathématiques ?",
+      "options": [
+        "$\\frac{7}{12}$",
+        "$\\frac{7}{18}$",
+        "$\\frac{12}{30}$",
+        "$\\frac{18}{30}$"
+      ],
+      "correctAnswer": "$\\frac{7}{12}$",
+      "explanation": "Il s'agit d'une probabilité conditionnelle : $P(\\text{maths}|\\text{sport}) = \\frac{P(\\text{maths et sport})}{P(\\text{sport})} = \\frac{7}{12}$. Les autres options correspondent à confondre le numérateur ou le dénominateur, ou à utiliser les effectifs totaux au lieu des effectifs conditionnels.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux fois une pièce de monnaie équilibrée. On note l'événement A : « le premier lancer donne face » et l'événement B : « il y a au moins une face ». Quelle est la probabilité de A sachant B ?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "L'univers des résultats possibles est {FF, FP, PF, PP}. L'événement B (au moins une face) contient {FF, FP, PF} soit 3 résultats. L'événement A (premier lancer face) contient {FF, FP}. L'intersection A∩B = {FF, FP} soit 2 résultats. Donc $P(A|B) = 2/3$. Les distracteurs proviennent de confondre $P(A)$, $P(B)$ ou de mal compter les cas favorables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une expérience à deux étapes indépendantes a une probabilité de succès de $0,3$ à la première étape et de $0,6$ à la deuxième étape. Quelle est la probabilité d'obtenir au moins un succès ?",
+      "options": [
+        "$\\frac{18}{25}$",
+        "$\\frac{9}{25}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{7}{10}$"
+      ],
+      "correctAnswer": "$\\frac{18}{25}$",
+      "explanation": "La probabilité d'aucun succès est $(1-0,3) \\times (1-0,6) = 0,7 \\times 0,4 = 0,28$. Donc la probabilité d'au moins un succès est $1 - 0,28 = 0,72 = 18/25$. Les autres options correspondent à additionner les probabilités, à multiplier les succès, ou à calculer seulement l'échec de la première étape.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

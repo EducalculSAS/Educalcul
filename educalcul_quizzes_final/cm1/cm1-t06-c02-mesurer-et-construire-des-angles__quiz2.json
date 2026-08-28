@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 249,
+  "_course_code": "cm1-t06-c02-mesurer-et-construire-des-angles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Utiliser rapporteur si prévu",
+  "title": "Utiliser le rapporteur : mesure et construction d'angles",
+  "questions": [
+    {
+      "text": "Pour mesurer un angle avec un rapporteur, où doit-on placer le centre du rapporteur (le petit trou ou la marque au milieu de la base) ?",
+      "options": [
+        "Sur l'un des côtés de l'angle",
+        "Au sommet de l'angle",
+        "Au milieu du segment qui relie les deux côtés",
+        "N'importe où sur la feuille"
+      ],
+      "correctAnswer": "Au sommet de l'angle",
+      "explanation": "Le centre du rapporteur doit être placé exactement sur le sommet de l'angle pour que la mesure soit correcte. Les deux graduations (zéro) doivent s'aligner sur les deux demi-droites qui forment les côtés de l'angle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le rapporteur ci-dessous. Quelle est la mesure de l'angle représenté ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$50^{\\circ}$",
+        "$130^{\\circ}$",
+        "$150^{\\circ}$"
+      ],
+      "correctAnswer": "$50^{\\circ}$",
+      "explanation": "Sur la figure, un côté de l'angle est aligné sur le zéro de l'échelle intérieure (ou extérieure selon l'orientation). L'autre côté coupe la graduation à $50^{\\circ}$. L'angle est aigu car il est plus petit qu'un angle droit ($90^{\\circ}$). Les valeurs $130^{\\circ}$ et $150^{\\circ}$ correspondent à l'échelle opposée (angle obtus supplémentaire), et $30^{\\circ}$ est une erreur de lecture.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 50,
+        "caption": "Rapporteur montrant un angle de 50 degrés"
+      }
+    },
+    {
+      "text": "Un élève veut mesurer un angle obtus. Il place le rapporteur correctement sur le sommet. Un côté de l'angle passe par le zéro de l'échelle intérieure. L'autre côté passe par la graduation $120^{\\circ}$ sur l'échelle intérieure. Quelle est la mesure de cet angle ?",
+      "options": [
+        "$60^{\\circ}$",
+        "$120^{\\circ}$",
+        "$180^{\\circ}$",
+        "$240^{\\circ}$"
+      ],
+      "correctAnswer": "$120^{\\circ}$",
+      "explanation": "Puisque le premier côté est sur le zéro de l'échelle intérieure, on lit directement la valeur sur cette même échelle intérieure là où passe le second côté. La graduation indique $120^{\\circ}$. C'est un angle obtus (compris entre $90^{\\circ}$ et $180^{\\circ}$). $60^{\\circ}$ serait la lecture sur l'échelle extérieure (erreur de choix d'échelle), $180^{\\circ}$ est un angle plat, et $240^{\\circ}$ n'est pas possible avec un rapporteur demi-cercle standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les mesures suivantes, laquelle correspond à un angle droit ?",
+      "options": [
+        "$45^{\\circ}$",
+        "$90^{\\circ}$",
+        "$120^{\\circ}$",
+        "$180^{\\circ}$"
+      ],
+      "correctAnswer": "$90^{\\circ}$",
+      "explanation": "Par définition, un angle droit mesure exactement $90^{\\circ}$. C'est l'angle formé par deux droites perpendiculaires. $45^{\\circ}$ est un angle aigu (la moitié d'un angle droit), $120^{\\circ}$ est un angle obtus, et $180^{\\circ}$ est un angle plat (demi-droite).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer un angle de $60^{\\circ}$ à partir d'une demi-droite [OA), quelle est la première étape après avoir placé le rapporteur ?",
+      "options": [
+        "Tracer la seconde demi-droite directement",
+        "Faire un point de repère sur la graduation $60^{\\circ}$",
+        "Effacer la demi-droite [OA)",
+        "Tourner le rapporteur de $90^{\\circ}$"
+      ],
+      "correctAnswer": "Faire un point de repère sur la graduation $60^{\\circ}$",
+      "explanation": "La procédure standard de construction est : 1) Placer le centre du rapporteur sur le sommet O et la base sur la demi-droite [OA) (zéro aligné). 2) Repérer la graduation $60^{\\circ}$ sur l'échelle appropriée et faire un petit point (souvent nommé B). 3) Retirer le rapporteur et tracer la demi-droite [OB) à la règle. Tracer directement sans repère est imprécis, effacer la demi-droite initiale détruit l'angle, et tourner le rapporteur perd le repérage.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

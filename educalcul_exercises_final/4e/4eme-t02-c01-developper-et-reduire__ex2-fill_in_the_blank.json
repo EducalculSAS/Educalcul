@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 425,
+  "_course_code": "4eme-t02-c01-developper-et-reduire",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Double distributivité si prévue",
+  "title": "Double distributivité : développer un produit de deux sommes",
+  "blocks": [
+    {
+      "title": "Produit de deux binômes simples",
+      "content": "Développe l'expression $E = (x + 2)(x + 3)$ en complétant les trous :\\n$E = x^2 + {{1}}x + {{2}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la double distributivité : $(x + 2)(x + 3) = x \\times x + x \\times 3 + 2 \\times x + 2 \\times 3 = x^2 + 3x + 2x + 6$. On réduit les termes semblables $3x + 2x = 5x$. On obtient $x^2 + 5x + 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit avec coefficients et soustraction",
+      "content": "Développe et réduis l'expression $F = (2x - 3)(x + 4)$ :\\n$F = {{1}}x^2 + {{2}}x + {{3}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "5",
+        "-12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la double distributivité : $(2x - 3)(x + 4) = 2x \\times x + 2x \\times 4 - 3 \\times x - 3 \\times 4 = 2x^2 + 8x - 3x - 12$. On réduit $8x - 3x = 5x$. Le résultat est $2x^2 + 5x - 12$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Produit de deux binômes à coefficients entiers",
+      "content": "Développe et réduis l'expression $G = (3x - 2)(2x - 5)$ :\\n$G = {{1}}x^2 + {{2}}x + {{3}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "6",
+        "-19",
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la double distributivité : $(3x - 2)(2x - 5) = 3x \\times 2x + 3x \\times (-5) - 2 \\times 2x - 2 \\times (-5) = 6x^2 - 15x - 4x + 10$. On réduit les termes en $x$ : $-15x - 4x = -19x$. L'expression réduite est $6x^2 - 19x + 10$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 114,
+  "_course_code": "ce1-t05-c07-problemes-de-groupement",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Taille des groupes connue",
+  "title": "Algorithmes pour problèmes de groupement (taille des groupes connue)",
+  "blocks": [
+    {
+      "title": "Nombre de groupes",
+      "content": "On a $24$ bonbons. On veut les ranger par paquets de $4$ bonbons. Écris un algorithme (en langage naturel ou pseudo‑code) qui permet de trouver le nombre de paquets.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total (ici $24$).\\n2. Lire la taille du groupe (ici $4$).\\n3. Calculer le nombre de groupes = total ÷ taille du groupe.\\n4. Afficher le résultat.\\nPour cet exemple : $24 ÷ 4 = 6$ paquets.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise le nombre total d'objets par la taille de chaque groupe connu. La division donne le nombre de groupes complets. Ici $24 ÷ 4 = 6$, donc on obtient $6$ paquets.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre total d'objets",
+      "content": "Il y a $7$ boîtes. Chaque boîte contient $5$ crayons. Écris un algorithme qui permet de calculer le nombre total de crayons.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre de groupes (ici $7$).\\n2. Lire la taille du groupe (ici $5$).\\n3. Calculer le total = nombre de groupes × taille du groupe.\\n4. Afficher le total.\\nPour cet exemple : $7 × 5 = 35$ crayons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quand on connaît le nombre de groupes et la taille de chaque groupe, on multiplie pour obtenir le total. $7 × 5 = 35$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reste après groupement",
+      "content": "On a $31$ billes. On les met dans des sacs de $6$ billes. Écris un algorithme qui donne le nombre de sacs pleins et le nombre de billes qui restent.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total (ici $31$).\\n2. Lire la taille du groupe (ici $6$).\\n3. Calculer le nombre de sacs pleins = total ÷ taille du groupe (division entière).\\n4. Calculer le reste = total modulo taille du groupe.\\n5. Afficher le nombre de sacs et le reste.\\nPour cet exemple : $31 ÷ 6 = 5$ sacs pleins, reste $1$ bille.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division entière donne le nombre de groupes complets. Le modulo (reste de la division) donne le nombre d'objets qui ne forment pas un groupe complet. $31 = 6 × 5 + 1$, donc $5$ sacs et $1$ bille restante.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

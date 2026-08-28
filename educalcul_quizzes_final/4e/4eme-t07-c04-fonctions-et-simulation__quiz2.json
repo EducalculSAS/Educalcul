@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Appeler",
+  "title": "Quiz : Appeler une fonction en algorithmique",
+  "questions": [
+    {
+      "text": "On a défini la fonction suivante :\\n$def\\;bonjour():\\n\\quad print(\\\"Bonjour !\\\")$\\nQuelle instruction permet d'exécuter (d'appeler) cette fonction ?",
+      "options": [
+        "$def\\;bonjour():$",
+        "$bonjour$",
+        "$bonjour()$",
+        "$appel\\;bonjour()$"
+      ],
+      "correctAnswer": "$bonjour()$",
+      "explanation": "Pour appeler une fonction en Python, on écrit son nom suivi de parenthèses. L'option $def\\;bonjour():$ correspond à la définition, pas à l'appel. L'option $bonjour$ (sans parenthèses) désigne l'objet fonction mais ne l'exécute pas. L'option $appel\\;bonjour()$ n'est pas une syntaxe valide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a défini la fonction :\\n$def\\;carre(n):\\n\\quad return\\;n\\;*\\;n$\\nQue renvoie l'expression $carre(5)$ ?",
+      "options": [
+        "Elle affiche $25$ dans la console",
+        "Elle renvoie la valeur $25$",
+        "Elle renvoie la valeur $5$",
+        "Elle ne fait rien car il manque le mot-clé $print$"
+      ],
+      "correctAnswer": "Elle renvoie la valeur $25$",
+      "explanation": "La fonction $carre$ utilise $return$, elle renvoie donc une valeur (ici $5 * 5 = 25$). Elle n'affiche rien automatiquement (pas de $print$). Pour voir le résultat, il faudrait écrire $print(carre(5))$ ou stocker le résultat dans une variable. L'option 'Elle affiche 25' confond $return$ et $print$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez le code suivant :\\n$def\\;dire\\_bonjour(prenom):\\n\\quad print(\\\"Bonjour\\;\\\"\\;+\\;prenom)$\\n$dire\\_bonjour(\\\"Alice\\\")$",
+      "options": [
+        "Le programme affiche : Bonjour prenom",
+        "Le programme affiche : Bonjour Alice",
+        "Le programme affiche : Bonjour \"Alice\"",
+        "Le programme produit une erreur car la variable $prenom$ n'est pas définie"
+      ],
+      "correctAnswer": "Le programme affiche : Bonjour Alice",
+      "explanation": "Lors de l'appel $dire\\_bonjour(\\\"Alice\\\")$, la chaîne de caractères $\\\"Alice\\\"$ est passée en argument. À l'intérieur de la fonction, le paramètre $prenom$ prend la valeur $\\\"Alice\\\"$. L'instruction $print$ concatène $\\\"Bonjour \\\"$ et la valeur de $prenom$, affichant donc 'Bonjour Alice'. Les guillemets ne font pas partie de la valeur affichée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit :\\n$def\\;somme(a,\\;b):\\n\\quad return\\;a\\;+\\;b$\\n$res\\;=\\;somme(3,\\;4)$\\n$print(res)$\\nQue se passe-t-il à la ligne $res = somme(3, 4)$ ?",
+      "options": [
+        "La variable $res$ prend la valeur $7$",
+        "La variable $res$ prend la valeur $\\\"3 + 4\\\"$",
+        "La fonction s'exécute mais $res$ reste vide car il n'y a pas de $print$ dans la fonction",
+        "Le programme affiche $7$ puis $res$ vaut $None$"
+      ],
+      "correctAnswer": "La variable $res$ prend la valeur $7$",
+      "explanation": "La fonction $somme$ calcule $3+4$ et renvoie $7$ grâce à $return$. Cette valeur renvoyée est affectée à la variable $res$ par l'opérateur $=$. La fonction ne fait pas d'affichage ($print$), elle renvoie juste la valeur. L'affichage $7$ n'aura lieu qu'à la ligne suivante avec $print(res)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a les deux fonctions :\\n$def\\;double(x):\\n\\quad return\\;2\\;*\\;x$\\n$def\\;triple(x):\\n\\quad return\\;3\\;*\\;x$\\nQue vaut l'expression $double(triple(2))$ ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$7$",
+        "$Erreur$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "On évalue de l'intérieur vers l'extérieur. D'abord $triple(2)$ renvoie $3 \\times 2 = 6$. Ensuite, on appelle $double(6)$ qui renvoie $2 \\times 6 = 12$. L'option $10$ correspondrait à $double(2) + triple(2)$. L'option $7$ correspondrait à $double(2) + 3$. Il n'y a pas d'erreur, l'imbrication d'appels est autorisée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

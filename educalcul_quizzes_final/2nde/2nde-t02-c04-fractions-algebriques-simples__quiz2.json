@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Simplifier",
+  "title": "Quiz : Simplification de fractions algébriques",
+  "questions": [
+    {
+      "text": "Simplifie la fraction numérique $\\frac{12}{18}$ sous forme irréductible.",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{6}{9}$",
+        "$\\frac{4}{6}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Pour simplifier $\\frac{12}{18}$, on cherche le PGCD de 12 et 18, qui est 6. On divise le numérateur et le dénominateur par 6 : $\\frac{12 \\div 6}{18 \\div 6} = \\frac{2}{3}$. Les options $\\frac{6}{9}$ et $\\frac{4}{6}$ sont des simplifications partielles (par 2 et par 3 respectivement) mais pas irréductibles. L'option $\\frac{3}{2}$ est l'inverse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction algébrique $\\frac{6x^2}{9x}$ pour $x \\neq 0$.",
+      "options": [
+        "$\\frac{2x}{3}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{3x}{2}$",
+        "$\\frac{2x^2}{3}$"
+      ],
+      "correctAnswer": "$\\frac{2x}{3}$",
+      "explanation": "On simplifie les coefficients par 3 : $\\frac{6}{9} = \\frac{2}{3}$. Pour la partie littérale, on utilise la règle des puissances : $\\frac{x^2}{x} = x^{2-1} = x$. Le résultat est donc $\\frac{2x}{3}$. L'option $\\frac{2}{3}$ correspond à l'erreur de supprimer totalement le $x$. L'option $\\frac{2x^2}{3}$ correspond à l'oubli de simplification sur les puissances de $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $\\frac{x^2 - 9}{x + 3}$ en précisant la condition sur $x$.",
+      "options": [
+        "$x - 3$ pour $x \\neq -3$",
+        "$x + 3$ pour $x \\neq -3$",
+        "$x - 3$ pour $x \\neq 3$",
+        "$\\frac{x - 3}{x + 3}$"
+      ],
+      "correctAnswer": "$x - 3$ pour $x \\neq -3$",
+      "explanation": "Le numérateur est une différence de deux carrés : $x^2 - 9 = (x - 3)(x + 3)$. La fraction devient $\\frac{(x - 3)(x + 3)}{x + 3}$. On peut simplifier par $(x + 3)$ à condition que ce facteur soit non nul, donc $x \\neq -3$. Le résultat simplifié est $x - 3$. L'option $x + 3$ confond les facteurs. La condition $x \\neq 3$ est fausse car le dénominateur s'annule pour $x = -3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $\\frac{x^2 + 5x + 6}{x + 2}$.",
+      "options": [
+        "$x + 3$ pour $x \\neq -2$",
+        "$x + 2$ pour $x \\neq -2$",
+        "$x + 6$",
+        "$\\frac{x + 3}{x + 2}$"
+      ],
+      "correctAnswer": "$x + 3$ pour $x \\neq -2$",
+      "explanation": "On factorise le trinôme du numérateur : $x^2 + 5x + 6 = (x + 2)(x + 3)$. La fraction s'écrit $\\frac{(x + 2)(x + 3)}{x + 2}$. On simplifie par $(x + 2)$ à condition que $x + 2 \\neq 0$, c'est-à-dire $x \\neq -2$. Le résultat est $x + 3$. L'option $x + 2$ correspond à une factorisation incorrecte. L'option sans condition oublie l'interdiction de l'annulation du dénominateur initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $\\frac{2x^2 - 8}{x^2 - 4x + 4}$.",
+      "options": [
+        "$\\frac{2(x + 2)}{x - 2}$ pour $x \\neq 2$",
+        "$\\frac{2(x - 2)}{x + 2}$ pour $x \\neq -2$",
+        "$\\frac{2}{x - 2}$ pour $x \\neq 2$",
+        "$\\frac{x + 2}{x - 2}$ pour $x \\neq 2$"
+      ],
+      "correctAnswer": "$\\frac{2(x + 2)}{x - 2}$ pour $x \\neq 2$",
+      "explanation": "Numérateur : $2x^2 - 8 = 2(x^2 - 4) = 2(x - 2)(x + 2)$ (différence de carrés). Dénominateur : $x^2 - 4x + 4 = (x - 2)^2$ (identité remarquable). La fraction devient $\\frac{2(x - 2)(x + 2)}{(x - 2)^2}$. On simplifie par un facteur $(x - 2)$ (condition $x \\neq 2$). Il reste $\\frac{2(x + 2)}{x - 2}$. L'option $\\frac{2}{x-2}$ correspond à une simplification excessive (suppression de $x+2$). L'option $\\frac{x+2}{x-2}$ oublie le coefficient 2.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

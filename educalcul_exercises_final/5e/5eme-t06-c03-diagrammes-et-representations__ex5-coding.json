@@ -1,0 +1,138 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Algorithmes pour lire des diagrammes statistiques",
+  "blocks": [
+    {
+      "title": "Recherche du mode dans un diagramme en bâtons",
+      "content": "On considère le diagramme en bâtons ci-dessous représentant les notes obtenues par un groupe d'élèves. Écrire un algorithme en langage naturel ou en syntaxe Python qui parcourt la liste des effectifs et affiche la note la plus fréquente (le mode). La liste des effectifs est donnée sous la forme $notes = [2, 5, 8, 12, 7, 3, 1]$ correspondant aux notes de $0$ à $6$.",
+      "correctAnswer": "Algorithme :\\nmax_effectif <- 0\\nmode <- 0\\nPour i de 0 à 6 :\\n    Si notes[i] > max_effectif Alors\\n        max_effectif <- notes[i]\\n        mode <- i\\n    Fin Si\\nFin Pour\\nAfficher mode\\n\\nEn Python :\\nnotes = [2, 5, 8, 12, 7, 3, 1]\\nmax_eff = 0\\nmode = 0\\nfor i in range(7):\\n    if notes[i] > max_eff:\\n        max_eff = notes[i]\\n        mode = i\\nprint(mode)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable pour stocker le plus grand effectif trouvé (max_effectif = 0) et la note correspondante (mode = 0). On parcourt la liste à l'aide d'une boucle sur les indices (de 0 à 6). À chaque étape, on compare l'effectif courant notes[i] au maximum enregistré. S'il est plus grand, on met à jour le maximum et on retient l'indice i qui représente la note. À la fin de la boucle, la variable mode contient la note la plus fréquente. Ici, l'effectif maximum est 12 à l'indice 3, donc la note modale est 3.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Répartition des notes sur 20 élèves",
+        "bars": [
+          {
+            "label": "0",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "1",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "2",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "3",
+            "value": 12,
+            "tone": "gold"
+          },
+          {
+            "label": "4",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "6",
+            "value": 1,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calcul de pourcentage sur un diagramme circulaire",
+      "content": "Le diagramme circulaire ci-dessous montre la répartition des couleurs préférées d'une classe. Les données sont stockées dans un dictionnaire $couleurs = {\"Bleu\": 12, \"Rouge\": 8, \"Vert\": 5, \"Jaune\": 3}$. Écrire un algorithme qui calcule le total des élèves, puis le pourcentage d'élèves ayant choisi \"Bleu\", et affiche ce pourcentage arrondi à l'entier le plus proche.",
+      "correctAnswer": "Algorithme :\\ntotal <- 0\\nPour chaque effectif dans couleurs.valeurs() :\\n    total <- total + effectif\\nFin Pour\\npourcent <- (couleurs[\"Bleu\"] / total) * 100\\nAfficher arrondi(pourcent)\\n\\nEn Python :\\ncouleurs = {\"Bleu\": 12, \"Rouge\": 8, \"Vert\": 5, \"Jaune\": 3}\\ntotal = sum(couleurs.values())\\npourcent = (couleurs[\"Bleu\"] / total) * 100\\nprint(round(pourcent))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par calculer l'effectif total en additionnant toutes les valeurs du dictionnaire (12 + 8 + 5 + 3 = 28 élèves). On calcule ensuite la proportion de l'effectif \"Bleu\" par rapport au total : (12 / 28) * 100 ≈ 42,857 %. La fonction d'arrondi à l'entier le plus proche donne 43 %. L'algorithme affiche donc 43.",
+      "points": 3,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées de la classe (28 élèves)",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 3,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Détermination de la classe modale dans un tableau groupé",
+      "content": "Voici un tableau de répartition des hauteurs d'élèves (en cm) par classes d'amplitude $5$. Les données sont dans une liste de tuples $classes = [(\"[140;145[\", 4), (\"[145;150[\", 11), (\"[150;155[\", 15), (\"[155;160[\", 9), (\"[160;165[\", 6)]]$. Écrire un algorithme qui détermine et affiche l'intervalle de la classe modale (celle qui a le plus grand effectif).",
+      "correctAnswer": "Algorithme :\\nmax_eff <- 0\\nclasse_modale <- \"\"\\nPour intervalle, eff dans classes :\\n    Si eff > max_eff Alors\\n        max_eff <- eff\\n        classe_modale <- intervalle\\n    Fin Si\\nFin Pour\\nAfficher classe_modale\\n\\nEn Python :\\nclasses = [(\"[140;145[\", 4), (\"[145;150[\", 11), (\"[150;155[\", 15), (\"[155;160[\", 9), (\"[160;165[\", 6)]\\nmax_eff = 0\\nclasse_modale = \"\"\\nfor intervalle, eff in classes:\\n    if eff > max_eff:\\n        max_eff = eff\\n        classe_modale = intervalle\\nprint(classe_modale)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt la liste de tuples à l'aide d'une boucle qui décompose chaque tuple en son intervalle (chaîne de caractères) et son effectif (entier). On maintient une variable max_eff initialisée à 0 et une variable classe_modale. Si l'effectif lu est strictement supérieur au maximum courant, on met à jour max_eff et on mémorise l'intervalle correspondant dans classe_modale. À la fin, on affiche l'intervalle stocké. Ici, l'effectif maximum est 15 pour l'intervalle \"[150;155[\", qui est donc la classe modale.",
+      "points": 3,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Classes (cm)",
+          "Effectifs"
+        ],
+        "rows": [
+          [
+            "[140;145[",
+            "4"
+          ],
+          [
+            "[145;150[",
+            "11"
+          ],
+          [
+            "[150;155[",
+            "15"
+          ],
+          [
+            "[155;160[",
+            "9"
+          ],
+          [
+            "[160;165[",
+            "6"
+          ]
+        ]
+      }
+    }
+  ]
+}

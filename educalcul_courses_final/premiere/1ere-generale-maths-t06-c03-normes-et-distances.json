@@ -1,0 +1,390 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.387628+00:00",
+  "id": 606,
+  "code": "1ere-generale-maths-t06-c03",
+  "title": "Normes et distances",
+  "description": "Cours structuré Educalcul : Normes et distances.",
+  "subject": "Géométrie : produit scalaire et repérage",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Géométrie : produit scalaire et repérage",
+    "titre_du_cours": "Normes et distances",
+    "objectif_global": "Normes et distances",
+    "mini_lecons_imposees": [
+      "Formules.",
+      "Calculs.",
+      "Géométrie repérée."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie : produit scalaire et repérage",
+      "lessons": [
+        {
+          "title": "Formules.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repères et coordonnées : le cadre de travail"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux normes et aux distances. Avant d'écrire la moindre formule, posons le décor. En géométrie repérée, tout part d'un repère orthonormé : deux droites perpendiculaires, graduées de la même unité, qui se coupent en un point origine $O$. Dans le plan, un point $M$ se repère par un couple $(x_M ; y_M)$ ; dans l'espace, on ajoute une troisième coordonnée $z_M$. Un vecteur $\\vec{u}$ se décrit de la même façon par ses composantes $(x ; y)$ ou $(x ; y ; z)$. C'est ce cadre cartésien qui va nous permettre de transformer des questions géométriques en calculs algébriques précis. Prends le temps de visualiser ce repère : l'axe des abscisses horizontal, l'axe des ordonnées vertical, et si besoin l'axe des cotes qui sort de la feuille vers toi. Cette image mentale sera ton fil conducteur tout au long du chapitre."
+            },
+            {
+              "type": "display_math",
+              "latex": "M(x_M ; y_M) \\quad \\vec{u}(x ; y)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelle-toi qu'un vecteur ne se soucie pas de son point de départ : $\\vec{AB}$ a pour composantes $(x_B - x_A ; y_B - y_A)$. Cette différence de coordonnées est la clé qui ouvrira toutes les formules à venir. Si tu as un doute, refais l'exercice mental suivant : place $A(2;1)$ et $B(5;4)$, puis trace la flèche $\\vec{AB}$. Tu avances de $3$ vers la droite et de $3$ vers le haut, donc $\\vec{AB}(3;3)$. C'est exactement $x_B-x_A$ et $y_B-y_A$. Ancre ce réflexe : composantes = coordonnées d'arrivée moins coordonnées de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Norme d'un vecteur dans le plan : le théorème de Pythagore en action"
+            },
+            {
+              "type": "paragraph",
+              "content": "La norme d'un vecteur, notée $\\|\\vec{u}\\|$, représente sa longueur. Dans un repère orthonormé, le vecteur $\\vec{u}(x;y)$ forme avec les axes un triangle rectangle dont les côtés de l'angle droit mesurent $|x|$ et $|y|$. L'hypoténuse de ce triangle est précisément le vecteur lui-même. Le théorème de Pythagore s'applique donc directement : le carré de la norme vaut la somme des carrés des composantes. C'est une formule fondatrice, à connaître par cœur, mais surtout à comprendre géométriquement. Ne la retiens pas comme une incantation magique ; vois le triangle rectangle se former sous tes yeux chaque fois que tu écris $\\|\\vec{u}\\|$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|\\vec{u}(x;y)\\| = \\sqrt{x^2 + y^2}"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle associé au vecteur $\\vec{u}(x;y)$ : les côtés de l'angle droit ont pour longueurs $|x|$ et $|y|$, l'hypoténuse est la norme.",
+              "vertexLabels": [
+                "O",
+                "A",
+                "M"
+              ],
+              "sideLabels": [
+                "|y|",
+                "\\|\\vec{u}\\|",
+                "|x|"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges classiques : la racine carrée porte sur la somme $x^2+y^2$, pas sur chaque terme séparément. $\\sqrt{x^2+y^2}$ n'est pas égal à $|x|+|y|$ (sauf si l'un des deux est nul). De plus, la norme est toujours positive ou nulle, et elle est nulle seulement pour le vecteur nul $\\vec{0}(0;0)$. Ces propriétés découlent immédiatement de la définition. Prends l'habitude de vérifier le signe de ton résultat : une longueur ne peut pas être négative."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux points : la norme du vecteur qui les relie"
+            },
+            {
+              "type": "paragraph",
+              "content": "La distance entre deux points $A$ et $B$, notée $AB$, est par définition la longueur du segment $[AB]$. Or ce segment est supporté par le vecteur $\\vec{AB}$. Donc $AB = \\|\\vec{AB}\\|$. En coordonnées, $\\vec{AB}(x_B-x_A ; y_B-y_A)$. En appliquant la formule de la norme, on obtient la distance. C'est une conséquence directe, pas une nouvelle formule à mémoriser par cœur : chaque fois que tu as besoin d'une distance, écris le vecteur correspondant et prends sa norme. Cette démarche unique évite les confusions et t'oblige à passer par le vecteur, ce qui est plus rigoureux."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = \\|\\vec{AB}\\| = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple concret : $A(1;-2)$ et $B(4;2)$. Le vecteur $\\vec{AB}$ a pour composantes $(3;4)$. Sa norme est $\\sqrt{3^2+4^2}=5$. Donc $AB=5$. Remarque le triplet pythagoricien $(3,4,5)$ : il apparaît souvent dans les exercices pour donner des résultats entiers. Mais ne t'attends pas à cette chance à chaque fois ! La plupart du temps, le résultat restera sous forme de radicaux, comme $\\sqrt{13}$ ou $\\sqrt{29}$. C'est parfaitement normal et même souhaitable : la forme exacte conserve toute la précision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Extension à l'espace : une dimension de plus, le même principe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'espace muni d'un repère orthonormé $(O;\\vec{i},\\vec{j},\\vec{k})$, un vecteur $\\vec{u}$ a trois composantes $(x;y;z)$. La norme s'obtient en appliquant deux fois le théorème de Pythagore : d'abord dans le plan horizontal pour la projection, puis dans le plan vertical. Le résultat est une généralisation naturelle : on ajoute le carré de la troisième composante sous la racine. La distance entre deux points $A(x_A;y_A;z_A)$ et $B(x_B;y_B;z_B)$ suit le même schéma : c'est la norme du vecteur $\\vec{AB}(x_B-x_A ; y_B-y_A ; z_B-z_A)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|\\vec{u}(x;y;z)\\| = \\sqrt{x^2 + y^2 + z^2} \\quad ; \\quad AB = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2 + (z_B-z_A)^2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Visualise un parallélépipède rectangle dont les arêtes sont $|x|$, $|y|$, $|z|$ : la norme est la grande diagonale de ce solide. Cette image en 3D aide à ne pas oublier le terme $z^2$. Vérifie que si $z=0$, on retombe sur la formule du plan. C'est un bon test de cohérence. Pour t'entraîner, calcule la norme de $\\vec{u}(2;3;6)$ : $\\sqrt{4+9+36}=\\sqrt{49}=7$. Un autre triplet « propre » ! Mais encore une fois, ne compte pas sur ces coïncidences. L'essentiel est de maîtriser la mécanique : différences de coordonnées, carrés, somme, racine carrée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un repère orthonormé du plan, on donne les points $A(3;-1)$ et $B(-2;4)$. Déterminer les composantes du vecteur $\\vec{AB}$.",
+              "answer": "$\\vec{AB}(-5;5)$",
+              "hint": "Soustrais les coordonnées de $A$ aux coordonnées de $B$ : $x_B-x_A$ et $y_B-y_A$.",
+              "explanation": "$x_B-x_A = -2-3 = -5$ ; $y_B-y_A = 4-(-1) = 5$. Donc $\\vec{AB}(-5;5)$."
+            },
+            {
+              "question": "Calculer la norme du vecteur $\\vec{u}(-3;4)$.",
+              "answer": "$5$",
+              "hint": "Applique la formule $\\sqrt{x^2+y^2}$. Attention au signe de $x$ : le carré l'élimine.",
+              "explanation": "$\\|\\vec{u}\\| = \\sqrt{(-3)^2+4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$."
+            },
+            {
+              "question": "Soient $C(0;0)$ et $D(5;12)$. Calculer la distance $CD$.",
+              "answer": "$13$",
+              "hint": "La distance $CD$ est la norme du vecteur $\\vec{CD}$. Calcule d'abord ses composantes.",
+              "explanation": "$\\vec{CD}(5;12)$, donc $CD = \\sqrt{5^2+12^2} = \\sqrt{25+144} = \\sqrt{169} = 13$."
+            },
+            {
+              "question": "Dans l'espace, on donne $E(1;2;3)$ et $F(4;6;11)$. Calculer $EF$.",
+              "answer": "$\\sqrt{77}$",
+              "hint": "Utilise la formule à trois composantes : $\\sqrt{(x_F-x_E)^2+(y_F-y_E)^2+(z_F-z_E)^2}$.",
+              "explanation": "$\\vec{EF}(3;4;8)$. $EF = \\sqrt{3^2+4^2+8^2} = \\sqrt{9+16+64} = \\sqrt{77}$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs numériques : entraînement systématique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les formules sont posées, il est temps de les faire vivre à travers des calculs concrets. La maîtrise technique vient de la répétition variée : des nombres entiers, des décimaux, des radicaux, et aussi des expressions littérales simples. Ne te contente pas d'appliquer la formule machinalement. À chaque calcul, dis-toi : « Je construis un vecteur, je prends sa norme. » Cette phrase intérieure ancre le sens géométrique derrière les symboles. Commençons par des exemples où les coordonnées sont des entiers, pour vérifier la mécanique sans difficulté arithmétique parasite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple 1 : $\\vec{v}(-2; -5; 6)$ dans l'espace. $\\|\\vec{v}\\| = \\sqrt{(-2)^2+(-5)^2+6^2} = \\sqrt{4+25+36} = \\sqrt{65}$. Le résultat $\\sqrt{65}$ ne se simplifie pas ($65=5\\times13$). On laisse la forme exacte. Exemple 2 : distance entre $P(1.5; -2.5)$ et $Q(-0.5; 3.5)$ dans le plan. $\\vec{PQ}(-2; 6)$. $PQ = \\sqrt{(-2)^2+6^2} = \\sqrt{4+36} = \\sqrt{40} = 2\\sqrt{10}$. Ici, la simplification du radicande est possible : $40 = 4 \\times 10$, donc $\\sqrt{40} = 2\\sqrt{10}$. C'est la forme exacte attendue. Entraîne-toi à repérer les carrés parfaits facteurs du radicande (4, 9, 16, 25, 36...)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales de la norme"
+            },
+            {
+              "type": "paragraph",
+              "content": "La norme possède des propriétés algébriques essentielles qui découlent de sa définition géométrique. La première est la positivité : $\\|\\vec{u}\\| \\ge 0$, avec égalité si et seulement si $\\vec{u} = \\vec{0}$. Cela traduit le fait qu'une longueur est positive, et seul le vecteur nul a une longueur nulle. La seconde est l'homogénéité : pour tout réel $k$, $\\|k\\vec{u}\\| = |k| \\cdot \\|\\vec{u}\\|$. Multiplier un vecteur par $k$ dilate sa longueur par $|k|$. Le troisième pilier est l'inégalité triangulaire : pour tous vecteurs $\\vec{u}$ et $\\vec{v}$, $\\|\\vec{u}+\\vec{v}\\| \\le \\|\\vec{u}\\| + \\|\\vec{v}\\|$. Géométriquement, dans un triangle, un côté est toujours plus court que la somme des deux autres. Ces propriétés ne sont pas de simples curiosités ; elles servent à encadrer des expressions, à prouver des inégalités, à résoudre des problèmes d'optimisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\|\\vec{u}\\| \\ge 0 \\quad ; \\quad \\|k\\vec{u}\\| = |k|\\|\\vec{u}\\| \\quad ; \\quad \\|\\vec{u}+\\vec{v}\\| \\le \\|\\vec{u}\\|+\\|\\vec{v}\\|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons l'homogénéité : si $\\vec{u}(3;4)$ a pour norme $5$, alors $\\|2\\vec{u}\\| = 2 \\times 5 = 10$, et $\\|-3\\vec{u}\\| = 3 \\times 5 = 15$. Le signe de $k$ n'influence pas la longueur, seul sa valeur absolue compte. Pour l'inégalité triangulaire, prends $\\vec{u}(3;0)$ et $\\vec{v}(0;4)$. $\\|\\vec{u}\\|=3$, $\\|\\vec{v}\\|=4$, $\\vec{u}+\\vec{v}(3;4)$ a pour norme $5$. On a bien $5 \\le 3+4$. L'égalité a lieu quand les vecteurs ont même direction et même sens (ils sont « alignés dans le même sens »). Si ils sont opposés, la norme de la somme est la différence des normes. Ces cas limites sont importants à reconnaître."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Norme d'une somme et d'une différence : lien avec le produit scalaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous n'avons pas encore introduit le produit scalaire dans ce cours, mais il est bon de savoir que la norme et le produit scalaire sont intimement liés. L'identité $\\|\\vec{u}+\\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2 + 2\\vec{u}\\cdot\\vec{v}$ (et sa version pour la différence) montre que le calcul de la norme d'une somme fait apparaître le produit scalaire. Pour l'instant, nous restons au niveau des coordonnées : si $\\vec{u}(x_1;y_1)$ et $\\vec{v}(x_2;y_2)$, alors $\\vec{u}+\\vec{v}(x_1+x_2; y_1+y_2)$ et sa norme se calcule directement avec la formule habituelle. C'est une méthode universelle qui ne nécessite pas le produit scalaire. Cependant, connaître la relation avec le produit scalaire prépare le terrain pour la suite du programme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple purement coordonnées : $\\vec{u}(1;2)$, $\\vec{v}(-2;3)$. $\\vec{u}+\\vec{v}(-1;5)$. $\\|\\vec{u}+\\vec{v}\\| = \\sqrt{(-1)^2+5^2} = \\sqrt{26}$. Séparément, $\\|\\vec{u}\\|=\\sqrt{5}$, $\\|\\vec{v}\\|=\\sqrt{13}$. La somme des normes est $\\sqrt{5}+\\sqrt{13} \\approx 2,24+3,61=5,85$, tandis que $\\sqrt{26}\\approx5,10$. L'inégalité triangulaire est vérifiée : $5,10 \\le 5,85$. Essaie de faire le même travail pour $\\vec{u}-\\vec{v}$ : tu trouveras $\\sqrt{10} \\approx 3,16$. Note que $\\|\\vec{u}-\\vec{v}\\|$ est la distance entre les extrémités des vecteurs quand ils ont même origine. C'est une interprétation géométrique précieuse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : milieu, symétrique, problèmes de distance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les formules de distance permettent de résoudre des problèmes classiques : déterminer le milieu d'un segment, trouver le symétrique d'un point par rapport à un autre, ou encore caractériser des ensembles de points vérifiant une condition de distance. Le milieu $I$ de $[AB]$ a pour coordonnées la moyenne des coordonnées de $A$ et $B$ : $I\\left(\\frac{x_A+x_B}{2}; \\frac{y_A+y_B}{2}\\right)$. C'est une conséquence directe de $\\vec{AI} = \\frac{1}{2}\\vec{AB}$. Le symétrique $A'$ de $A$ par rapport à $B$ vérifie $\\vec{BA'} = \\vec{AB}$, donc $A'(2x_B-x_A ; 2y_B-y_A)$. Ces formules de coordonnées sont à connaître pour gagner du temps, mais tu peux toujours les retrouver par le raisonnement vectoriel."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : $A(2;-3)$, $B(8;5)$. Milieu $I(5;1)$. Symétrique de $A$ par rapport à $B$ : $A'(14;13)$. Vérifie que $B$ est bien le milieu de $[AA']$. Un problème typique : trouver les points $M(x;y)$ tels que $MA = 2 MB$ avec $A(0;0)$ et $B(4;0)$. Cela donne $\\sqrt{x^2+y^2} = 2\\sqrt{(x-4)^2+y^2}$. En élevant au carré : $x^2+y^2 = 4[(x-4)^2+y^2]$. Après développement et simplification, on obtient l'équation d'un cercle. Ce type de problème montre la puissance du passage par les coordonnées : une condition géométrique devient une équation algébrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer la norme du vecteur $\\vec{w}(0.6; -0.8)$.",
+              "answer": "$1$",
+              "hint": "Calcule $0.6^2+0.8^2$. Reconnais-tu un triplet pythagoricien divisé par 10 ?",
+              "explanation": "$\\|\\vec{w}\\| = \\sqrt{0.36+0.64} = \\sqrt{1} = 1$. C'est le vecteur unitaire de direction $(3;-4)$ divisé par 5."
+            },
+            {
+              "question": "Soit $\\vec{u}(2;-1)$ et $k=-3$. Calculer $\\|k\\vec{u}\\|$ de deux façons : directement et par la propriété d'homogénéité.",
+              "answer": "$3\\sqrt{5}$",
+              "hint": "Directement : $k\\vec{u}(-6;3)$. Par la propriété : $|k|\\times\\|\\vec{u}\\|$.",
+              "explanation": "Direct : $\\sqrt{(-6)^2+3^2} = \\sqrt{36+9} = \\sqrt{45} = 3\\sqrt{5}$. Propriété : $\\|\\vec{u}\\|=\\sqrt{5}$, $|k|=3$, produit $3\\sqrt{5}$."
+            },
+            {
+              "question": "Donner les coordonnées du milieu $I$ du segment $[AB]$ avec $A(-1;4)$ et $B(5;-2)$.",
+              "answer": "$I(2;1)$",
+              "hint": "Moyenne des abscisses, moyenne des ordonnées.",
+              "explanation": "$x_I = \\frac{-1+5}{2}=2$, $y_I = \\frac{4+(-2)}{2}=1$."
+            },
+            {
+              "question": "Le point $C$ est le symétrique de $D(3;1)$ par rapport à $E(-2;4)$. Déterminer les coordonnées de $C$.",
+              "answer": "$C(-7;7)$",
+              "hint": "Utilise la relation $\\vec{EC} = \\vec{DE}$ ou la formule $C(2x_E-x_D ; 2y_E-y_D)$.",
+              "explanation": "$x_C = 2(-2)-3 = -7$, $y_C = 2(4)-1 = 7$. Vérification : $E$ est milieu de $[CD]$ : $\\frac{3+(-7)}{2}=-2$, $\\frac{1+7}{2}=4$."
+            }
+          ]
+        },
+        {
+          "title": "Géométrie repérée.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation d'un cercle : la distance constante à un centre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur de la géométrie repérée : transformer une définition géométrique en équation cartésienne. Un cercle est l'ensemble des points $M$ du plan situés à une distance fixe $R$ (le rayon) d'un point fixe $\\Omega$ (le centre). En coordonnées, $\\Omega(a;b)$ et $M(x;y)$. La condition $M \\in \\mathcal{C}(\\Omega,R)$ s'écrit $\\Omega M = R$. En utilisant la formule de distance, on obtient l'équation du cercle. C'est le passage du langage de la figure au langage de l'algèbre, une gymnastique fondamentale en mathématiques supérieures."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x-a)^2 + (y-b)^2 = R^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : l'équation porte sur les carrés des distances, pas sur les distances elles-mêmes. Cela évite la racine carrée et donne une équation polynomiale de degré 2. Si on te donne l'équation développée $x^2+y^2+ax+by+c=0$, il faut savoir retrouver le centre et le rayon en complétant les carrés (ou en identifiant avec la forme canonique). Le centre est $\\left(-\\frac{a}{2};-\\frac{b}{2}\\right)$ et le rayon $R = \\frac{1}{2}\\sqrt{a^2+b^2-4c}$, à condition que $a^2+b^2-4c > 0$. Si cette expression est nulle, le « cercle » se réduit à un point ; si elle est négative, l'ensemble est vide. C'est un point de vigilance crucial : toute équation de degré 2 sans terme $xy$ et avec même coefficient pour $x^2$ et $y^2$ ne représente pas nécessairement un cercle réel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation d'une sphère : la même idée en trois dimensions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'espace, une sphère de centre $\\Omega(a;b;c)$ et de rayon $R$ est l'ensemble des points $M(x;y;z)$ tels que $\\Omega M = R$. La formule de distance dans l'espace donne immédiatement l'équation cartésienne. C'est la transcription exacte de la formule du plan, avec un terme $(z-c)^2$ en plus. La forme développée est $x^2+y^2+z^2+ax+by+cz+d=0$, avec les mêmes règles pour retrouver centre et rayon : centre $\\left(-\\frac{a}{2};-\\frac{b}{2};-\\frac{c}{2}\\right)$, rayon $R = \\frac{1}{2}\\sqrt{a^2+b^2+c^2-4d}$ (sous réserve de positivité). Cette analogie parfaite entre plan et espace est l'une des beautés du repérage cartésien : la dimension n'ajoute qu'une coordonnée, la structure algébrique reste identique."
+            },
+            {
+              "type": "display_math",
+              "latex": "(x-a)^2 + (y-b)^2 + (z-c)^2 = R^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : sphère de centre $\\Omega(1;-2;3)$ et de rayon $4$. Équation : $(x-1)^2+(y+2)^2+(z-3)^2=16$. Forme développée : $x^2-2x+1 + y^2+4y+4 + z^2-6z+9 = 16$, soit $x^2+y^2+z^2 -2x+4y-6z -2 = 0$. Réciproquement, si on te donne $x^2+y^2+z^2+4x-6y+2z-3=0$, le centre est $(-2;3;-1)$ et $R^2 = 4+9+1+3 = 17$, donc $R=\\sqrt{17}$. Vérifie toujours le signe de l'expression sous la racine : ici $17>0$, c'est une sphère réelle. Entraîne-toi à passer de l'une à l'autre forme fluidement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La médiatrice : lieu des points équidistants à deux points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre lieu géométrique classique est la médiatrice d'un segment $[AB]$. Par définition, c'est l'ensemble des points $M$ du plan tels que $MA = MB$. En coordonnées, cela donne $\\sqrt{(x-x_A)^2+(y-y_A)^2} = \\sqrt{(x-x_B)^2+(y-y_B)^2}$. En élevant au carré (les deux côtés sont positifs, l'opération est équivalente), les carrés $x^2$ et $y^2$ s'annulent. Il reste une équation du premier degré : c'est une droite. Cette droite est perpendiculaire à $(AB)$ et passe par le milieu de $[AB]$. C'est une démonstration algébrique d'une propriété géométrique connue. La méthode est systématique : écrire l'égalité des distances, élever au carré, simplifier. Elle fonctionne pour tout lieu défini par une égalité de distances (ou un rapport de distances constant)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $A(-1;2)$ et $B(5;4)$. $MA^2 = (x+1)^2+(y-2)^2 = x^2+2x+1+y^2-4y+4$. $MB^2 = (x-5)^2+(y-4)^2 = x^2-10x+25+y^2-8y+16$. L'égalité $MA^2=MB^2$ donne $2x+1-4y+4 = -10x+25-8y+16$, soit $12x+4y-36=0$, c'est-à-dire $3x+y-9=0$. C'est l'équation de la médiatrice. Vérifie : le milieu $I(2;3)$ satisfait $3\\times2+3-9=0$. Le vecteur directeur de $(AB)$ est $(6;2)$, un vecteur normal à la médiatrice est $(3;1)$ (coefficients de $x$ et $y$). Leur produit scalaire $6\\times3+2\\times1=20 \\neq 0$... Attends, la médiatrice est perpendiculaire à $(AB)$, donc son vecteur directeur doit être orthogonal à $\\vec{AB}$. Un vecteur directeur de la médiatrice est $(1;-3)$ (car $3\\times1+1\\times(-3)=0$). L'équation $3x+y-9=0$ a pour vecteur normal $(3;1)$, donc pour vecteur directeur $(1;-3)$. C'est bien orthogonal à $(6;2)$. Tout est cohérent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersections et problèmes de position relative"
+            },
+            {
+              "type": "paragraph",
+              "content": "La géométrie repérée permet de résoudre les questions de position relative (deux cercles, cercle et droite, sphère et plan) par des systèmes d'équations. Deux cercles s'intersectent en 0, 1 ou 2 points selon la distance entre leurs centres par rapport à la somme et à la différence de leurs rayons. Au lieu de raisonner uniquement avec des inégalités géométriques, on peut résoudre le système des deux équations. La soustraction membre à membre des deux équations élimine les termes $x^2$ et $y^2$ et donne une équation linéaire : c'est l'équation de la droite passant par les points d'intersection (la « droite des points communs » ou axe radical). On résout alors le système de cette droite avec l'un des cercles. C'est une méthode algorithmique puissante, qui remplace avantageusement la discussion de cas géométrique quand les coordonnées sont données."
+            },
+            {
+              "type": "paragraph",
+              "content": "Même principe pour l'intersection d'une sphère et d'un plan : on substitue l'équation du plan (exprimant $z$ en fonction de $x,y$ ou paramétrant) dans l'équation de la sphère. On obtient une équation du second degré en deux variables, qui représente la projection du cercle d'intersection. Si le discriminant est négatif, pas d'intersection ; nul, le plan est tangent ; positif, intersection selon un cercle. Ces techniques de résolution de systèmes sont le pain quotidien de l'analytique. Elles transforment des problèmes de position en calculs algébriques précis, où l'erreur géométrique d'appréciation visuelle n'a plus sa place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire la formule de la norme d'un vecteur dans le plan et dans l'espace.",
+                "Je sais calculer la distance entre deux points à partir de leurs coordonnées.",
+                "Je connais les propriétés fondamentales : positivité, homogénéité, inégalité triangulaire.",
+                "Je sais déterminer l'équation d'un cercle (plan) ou d'une sphère (espace) connaissant centre et rayon.",
+                "Je sais retrouver centre et rayon à partir de l'équation développée (compléter les carrés).",
+                "Je sais établir l'équation de la médiatrice d'un segment par égalité des distances au carré.",
+                "Je sais résoudre un système cercle/droite ou cercle/cercle pour trouver les intersections."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donner l'équation du cercle de centre $\\Omega(2;-3)$ et de rayon $R=5$.",
+              "answer": "$(x-2)^2 + (y+3)^2 = 25$",
+              "hint": "Utilise la forme canonique $(x-a)^2+(y-b)^2=R^2$ avec $a=2$, $b=-3$, $R=5$.",
+              "explanation": "On remplace $a$, $b$, $R$ : $(x-2)^2+(y-(-3))^2=5^2$, soit $(x-2)^2+(y+3)^2=25$."
+            },
+            {
+              "question": "L'équation $x^2+y^2-4x+6y-12=0$ représente-t-elle un cercle ? Si oui, donner son centre et son rayon.",
+              "answer": "Oui, centre $I(2;-3)$, rayon $R=5$",
+              "hint": "Complète les carrés pour $x$ et $y$ : $(x^2-4x)+(y^2+6y)=12$.",
+              "explanation": "$(x-2)^2-4 + (y+3)^2-9 = 12 \\Rightarrow (x-2)^2+(y+3)^2 = 25$. Centre $(2;-3)$, rayon $5$."
+            },
+            {
+              "question": "Déterminer l'équation de la médiatrice du segment $[AB]$ avec $A(0;0)$ et $B(6;2)$.",
+              "answer": "$3x+y-10=0$",
+              "hint": "Écris $MA^2 = MB^2$, développe, simplifie.",
+              "explanation": "$MA^2=x^2+y^2$, $MB^2=(x-6)^2+(y-2)^2=x^2-12x+36+y^2-4y+4$. Égalité : $0 = -12x+36-4y+4 \\Rightarrow 12x+4y-40=0 \\Rightarrow 3x+y-10=0$."
+            },
+            {
+              "question": "Les cercles $\\mathcal{C}_1 : x^2+y^2=25$ et $\\mathcal{C}_2 : (x-4)^2+(y-3)^2=16$ se coupent-ils ? Combien de points d'intersection ?",
+              "answer": "Oui, deux points d'intersection.",
+              "hint": "Calcule la distance entre les centres et compare à la somme et à la différence des rayons.",
+              "explanation": "Centre $O_1(0;0)$, $R_1=5$. Centre $O_2(4;3)$, $R_2=4$. $O_1O_2 = \\sqrt{4^2+3^2}=5$. Somme des rayons $=9$, différence $=1$. Comme $1 < 5 < 9$, les cercles se coupent en deux points."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

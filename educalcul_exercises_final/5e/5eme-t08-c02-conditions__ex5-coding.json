@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : If / else",
+  "title": "Conditions - Approfondissement If / else",
+  "blocks": [
+    {
+      "title": "Test de signe",
+      "content": "Écrire un algorithme qui demande un nombre à l'utilisateur, puis affiche \"positif\" si le nombre est strictement supérieur à $0$, sinon affiche \"négatif ou nul\".",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez un nombre : \"\\n2. Lire nombre\\n3. Si nombre > 0 alors\\n       Afficher \"positif\"\\n   Sinon\\n       Afficher \"négatif ou nul\"\\n   Fin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une structure conditionnelle simple if/else. La condition nombre > 0 teste si le nombre est positif. Si c'est vrai, on affiche \"positif\", sinon on exécute le bloc else qui affiche \"négatif ou nul\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de deux nombres",
+      "content": "Écrire un algorithme qui demande deux nombres $a$ et $b$, puis affiche le plus grand des deux.",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez a : \"\\n2. Lire a\\n3. Afficher \"Entrez b : \"\\n4. Lire b\\n5. Si a > b alors\\n       Afficher \"Le maximum est \", a\\n   Sinon\\n       Afficher \"Le maximum est \", b\\n   Fin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare a et b avec l'opérateur >. Si a est plus grand que b, on affiche a, sinon on affiche b. Le bloc else couvre le cas où a <= b, donc b est le maximum (ou les deux sont égaux).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Parité et multiple de 4",
+      "content": "Écrire un algorithme qui demande un entier $n$, puis :\\n- Si $n$ est pair et multiple de $4$, afficher \"multiple de 4\".\\n- Si $n$ est pair mais n'est pas multiple de $4$, afficher \"pair non multiple de 4\".\\n- Sinon, afficher \"impair\".",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez un entier : \"\\n2. Lire n\\n3. Si n mod 2 = 0 alors\\n       Si n mod 4 = 0 alors\\n            Afficher \"multiple de 4\"\\n       Sinon\\n            Afficher \"pair non multiple de 4\"\\n       Fin Si\\n   Sinon\\n       Afficher \"impair\"\\n   Fin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste d'abord la parité avec n mod 2 = 0. Si c'est vrai, on entre dans un second if/else pour tester la divisibilité par 4 (n mod 4 = 0). Selon le résultat, on affiche le message correspondant. Si n n'est pas pair, le else externe affiche \"impair\".",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

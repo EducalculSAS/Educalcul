@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester",
+  "title": "Quiz : Tester des conditions (Algorithmique)",
+  "questions": [
+    {
+      "text": "Soient les variables $a = 7$ et $b = 12$. Quelle est la valeur de vérité de la condition : ($a > 5$) ET ($b < 10$) ?",
+      "options": [
+        "VRAI",
+        "FAUX",
+        "Erreur de syntaxe",
+        "Indéterminé"
+      ],
+      "correctAnswer": "FAUX",
+      "explanation": "On évalue chaque partie : $a > 5$ est vrai car $7 > 5$. $b < 10$ est faux car $12$ n'est pas strictement inférieur à $10$. L'opérateur ET exige que les deux parties soient vraies pour que le tout soit vrai. Vrai ET Faux donne Faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$a \\leftarrow 15$\\n$b \\leftarrow 8$\\nSI $a > 10$ ALORS\\n    $b \\leftarrow b + 5$\\nSINON\\n    $b \\leftarrow b - 2$\\nFIN SI\\nAfficher $b$\\nQuelle valeur est affichée ?",
+      "options": [
+        "13",
+        "6",
+        "8",
+        "23"
+      ],
+      "correctAnswer": "13",
+      "explanation": "La condition $a > 10$ est vraie car $15 > 10$. On exécute donc l'instruction du ALORS : $b$ prend la valeur $8 + 5 = 13$. La partie SINON est ignorée. La valeur affichée est $13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $x = 3$ et $y = 10$. On teste la condition : NON ($x > 5$) OU ($y = 10$). Quel est le résultat ?",
+      "options": [
+        "VRAI",
+        "FAUX",
+        "Erreur",
+        "Ni VRAI ni FAUX"
+      ],
+      "correctAnswer": "VRAI",
+      "explanation": "On calcule $x > 5$ : $3 > 5$ est FAUX. NON (FAUX) devient VRAI. On calcule $y = 10$ : $10 = 10$ est VRAI. L'opérateur OU donne VRAI dès qu'au moins une partie est VRAI. VRAI OU VRAI = VRAI.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle condition permet de tester si un nombre entier $n$ est strictement compris entre $10$ et $20$ (c'est-à-dire $10 < n < 20$) ?",
+      "options": [
+        "$n > 10$ ET $n < 20$",
+        "$n \\ge 10$ ET $n \\le 20$",
+        "$n > 10$ OU $n < 20$",
+        "$n < 10$ ET $n > 20$"
+      ],
+      "correctAnswer": "$n > 10$ ET $n < 20$",
+      "explanation": "Pour être strictement entre $10$ et $20$, $n$ doit être à la fois plus grand que $10$ ET plus petit que $20$. L'option 2 inclut les bornes ($10$ et $20$). L'option 3 avec OU est vraie pour presque tous les nombres. L'option 4 est impossible (un nombre ne peut pas être à la fois $<10$ et $>20$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme :\\n$x \\leftarrow 4$\\n$y \\leftarrow 7$\\nSI $x > y$ ALORS\\n    $x \\leftarrow x + y$\\nSINON\\n    $y \\leftarrow y - x$\\nFIN SI\\nAfficher $x$, $y$\\nQuel couple de valeurs est affiché ?",
+      "options": [
+        "4 et 3",
+        "11 et 7",
+        "4 et 7",
+        "11 et 3"
+      ],
+      "correctAnswer": "4 et 3",
+      "explanation": "On teste $x > y$ soit $4 > 7$, c'est FAUX. On exécute le bloc SINON : $y \\leftarrow 7 - 4 = 3$. La variable $x$ ne change pas (reste $4$). Le bloc ALORS ($x \\leftarrow x + y$) n'est pas exécuté. L'affichage donne $4$ et $3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

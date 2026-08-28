@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 278,
+  "_course_code": "cm2-t01-c04-comparer-et-ranger-des-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Comparer et ranger des décimaux",
+  "title": "Comparer et ranger des décimaux",
+  "questions": [
+    {
+      "text": "Lequel de ces nombres est le plus petit ?",
+      "options": [
+        "$4,2$",
+        "$4,18$",
+        "$4,09$",
+        "$4,1$"
+      ],
+      "correctAnswer": "$4,09$",
+      "explanation": "Pour comparer des nombres décimaux, on regarde d'abord la partie entière. Ici, tous les nombres ont $4$ comme partie entière. On regarde ensuite les dixièmes : $0$ est plus petit que $1$ ou $2$. Donc $4,09$ est le plus petit nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel symbole permet de compléter correctement l'expression suivante : $12,5$ ... $12,48$ ?",
+      "options": [
+        "$<$",
+        "$>$",
+        "$=$",
+        "aucun de ces symboles"
+      ],
+      "correctAnswer": "$>$",
+      "explanation": "On compare les parties entières : elles sont identiques ($12$). On compare ensuite les dixièmes : $5$ est supérieur à $4$. Le nombre $12,5$ est donc plus grand que $12,48$, même si $12,48$ a plus de chiffres après la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici quatre nombres : $7,3$ ; $7,03$ ; $7,33$ ; $7,29$. Quel est le rangement correct dans l'ordre croissant ?",
+      "options": [
+        "$7,03 < 7,29 < 7,3 < 7,33$",
+        "$7,03 < 7,3 < 7,29 < 7,33$",
+        "$7,33 < 7,3 < 7,29 < 7,03$",
+        "$7,03 < 7,29 < 7,33 < 7,3$"
+      ],
+      "correctAnswer": "$7,03 < 7,29 < 7,3 < 7,33$",
+      "explanation": "L'ordre croissant signifie du plus petit au plus grand. On compare les dixièmes : $0$ (pour $7,03$), puis $2$ (pour $7,29$), puis $3$. Entre $7,3$ (soit $7,30$) et $7,33$, c'est $7,30$ le plus petit. L'ordre est donc $7,03 < 7,29 < 7,3 < 7,33$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces nombres se situe précisément entre $5,6$ et $5,7$ ?",
+      "options": [
+        "$5,06$",
+        "$5,65$",
+        "$5,72$",
+        "$5,59$"
+      ],
+      "correctAnswer": "$5,65$",
+      "explanation": "Le nombre $5,6$ peut s'écrire $5,60$ et $5,7$ peut s'écrire $5,70$. Le nombre $5,65$ est compris entre $5,60$ et $5,70$. Les autres options sont soit trop petites ($5,06$ et $5,59$), soit trop grandes ($5,72$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quatre élèves ont mesuré la longueur d'un ruban : $1,45$ mètre, $1,5$ mètre, $1,405$ mètre et $1,44$ mètre. Qui a trouvé la mesure la plus longue ?",
+      "options": [
+        "L'élève avec $1,45$ mètre",
+        "L'élève avec $1,5$ mètre",
+        "L'élève avec $1,405$ mètre",
+        "L'élève avec $1,44$ mètre"
+      ],
+      "correctAnswer": "L'élève avec $1,5$ mètre",
+      "explanation": "Pour comparer, on peut ajouter des zéros pour avoir le même nombre de chiffres après la virgule : $1,450$ ; $1,500$ ; $1,405$ ; $1,440$. Le nombre $1,500$ est le plus grand car il possède $5$ dixièmes, alors que les autres en ont $4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.405766+00:00",
+  "id": 612,
+  "code": "1ere-generale-maths-t07-c03",
+  "title": "Arbres pondérés",
+  "description": "Cours structuré Educalcul : Arbres pondérés.",
+  "subject": "Probabilités et statistiques",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Probabilités et statistiques",
+    "titre_du_cours": "Arbres pondérés",
+    "objectif_global": "Arbres pondérés",
+    "mini_lecons_imposees": [
+      "Construire.",
+      "Calculer chemin.",
+      "Probabilité totale simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités et statistiques",
+      "lessons": [
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un arbre pondéré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée aux arbres pondérés. Imagine un organigramme qui représente toutes les issues possibles d'une expérience aléatoire à plusieurs étapes : chaque embranchement correspond à un choix ou à un résultat, et chaque branche porte un nombre qui traduit la chance que cet événement se produise. Ce nombre, que nous appelons poids, est toujours compris entre $0$ et $1$. L'ensemble des branches qui partent d'un même nœud forme une distribution de probabilité, ce qui signifie que la somme de leurs poids vaut exactement $1$. Pour bien démarrer, prends le temps de visualiser un petit arbre : une racine unique, quelques nœuds intermédiaires et plusieurs feuilles qui marquent la fin des parcours. Nous allons apprendre à le dessiner, à lui donner ses poids et à vérifier que tout est cohérent."
+            },
+            {
+              "type": "definition",
+              "term": "arbre pondéré",
+              "definition": "Un arbre pondéré est un graphe acyclique et connexe dont chaque arête est munie d'un poids réel positif. Les poids des arêtes issues d'un même sommet s'additionnent pour donner $1$.",
+              "example": "Un arbre à trois feuilles où la racine a deux fils avec des poids $0,4$ et $0,6$, puis chaque fils se divise à nouveau."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le vocabulaire de base est essentiel pour ne pas te perdre ensuite. La racine est le point de départ unique de l'arbre, c'est le nœud qui n'a pas de parent. Les feuilles sont les nœuds terminaux, ceux qui n'ont pas d'enfants ; elles représentent les issues finales de l'expérience. Chaque arête relie un parent à un enfant et porte un poids qui est la probabilité conditionnelle de passer du parent à cet enfant, sachant que l'on est déjà arrivé au parent. Quand tu construis ton arbre, commence par placer la racine, puis ajoute les premiers embranchements en respectant les probabilités données par l'énoncé. Ensuite, pour chaque nœud créé, répète l'opération jusqu'à atteindre toutes les feuilles."
+            },
+            {
+              "type": "definition",
+              "term": "racine",
+              "definition": "Nœud initial de l'arbre, sans parent, qui représente l'état avant toute expérience.",
+              "example": "Dans un arbre modélisant deux lancers de dé, la racine correspond à l'instant avant le premier lancer."
+            },
+            {
+              "type": "definition",
+              "term": "feuille",
+              "definition": "Nœud terminal de l'arbre, sans enfant, qui correspond à une issue complète de l'expérience.",
+              "example": "Après deux lancers, une feuille peut être « 6 puis 3 »."
+            },
+            {
+              "type": "definition",
+              "term": "poids",
+              "definition": "Valeur numérique attachée à une arête, comprise entre $0$ et $1$, qui donne la probabilité de suivre cette arête conditionnellement au nœud de départ.",
+              "example": "Si la probabilité d'obtenir un nombre pair au premier lancer est $0,5$, le poids de l'arête « pair » vaut $0,5$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la racine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'événement initial de l'énoncé. Dessine un point et nomme-le « racine ». C'est le point de départ de tous les chemins."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les premiers embranchements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque issue possible de la première étape, trace une arête depuis la racine vers un nouveau nœud. Écris le poids correspondant sur l'arête. Vérifie que la somme de ces poids vaut $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer jusqu'aux feuilles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque nœud créé, s'il reste des étapes à modéliser, répète l'étape 2 en utilisant les probabilités conditionnelles appropriées. Lorsque plus aucune étape ne suit, le nœud devient une feuille."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Contrôler la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À chaque nœud, additionne les poids des arêtes sortantes. Le total doit être $1$. Si ce n'est pas le cas, reprends les données de l'énoncé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Exemple d'arbre pondéré à deux niveaux",
+              "branches": [
+                {
+                  "label": "A",
+                  "probability": 0.4,
+                  "children": [
+                    {
+                      "label": "A1",
+                      "probability": 0.7
+                    },
+                    {
+                      "label": "A2",
+                      "probability": 0.3
+                    }
+                  ]
+                },
+                {
+                  "label": "B",
+                  "probability": 0.6,
+                  "children": [
+                    {
+                      "label": "B1",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "B2",
+                      "probability": 0.5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais poser la structure, concentrons-nous sur l'attribution correcte des poids. Souvent, l'énoncé donne des probabilités conditionnelles : par exemple, « si le premier essai est un succès, la probabilité de succès au second essai est de $0,8$ ». Ce $0,8$ devient le poids de l'arête qui part du nœud « succès » vers le nœud « succès suivant ». Il est crucial de bien distinguer probabilité conditionnelle et probabilité totale. La probabilité totale d'atteindre une feuille se calcule plus tard, mais pour l'instant, assure-toi que chaque ensemble d'arêtes sortantes d'un même nœud forme une distribution de probabilité."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{i} w_i = 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons voir comment vérifier que l'arbre est bien construit avant de passer aux calculs. Une erreur fréquente est d'oublier une branche ou d'attribuer un poids qui ne correspond pas à l'énoncé. Relis toujours l'énoncé en te demandant : « À cet instant, quelles sont toutes les issues possibles ? » et « Quelle est la probabilité de chacune, sachant ce qui s'est déjà passé ? ». Si tu respectes ces deux questions à chaque nœud, ton arbre sera correct. Essaie maintenant de construire ton propre arbre pour l'exercice suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Construis l'arbre pondéré modélisant le tirage successif de deux boules dans une urne contenant $3$ boules rouges et $2$ boules bleues, sans remise. Indique les poids sur chaque arête.",
+              "answer": "Racine → Rouge ($3/5$) → Rouge ($2/4$) et Bleu ($2/4$) ; Racine → Bleu ($2/5$) → Rouge ($3/4$) et Bleu ($1/4$).",
+              "hint": "Calcule les probabilités conditionnelles à chaque étape en tenant compte du fait qu'une boule a été retirée.",
+              "explanation": "Au premier tirage, la probabilité de rouge est $3/5$ et de bleu $2/5$. Après un rouge, il reste $2$ rouges et $2$ bleues, donc $2/4$ pour chaque couleur. Après un bleu, il reste $3$ rouges et $1$ bleue, donc $3/4$ et $1/4$. Vérifie que la somme des poids à chaque nœud vaut $1$."
+            },
+            {
+              "question": "Un arbre a une racine avec trois fils de poids $0,2$, $0,5$ et $0,3$. Le premier fils a deux enfants de poids $0,6$ et $0,4$. Les deux autres fils sont des feuilles. Écris la somme des poids au niveau de la racine et au niveau du premier fils.",
+              "answer": "Racine : $0,2+0,5+0,3 = 1$ ; Premier fils : $0,6+0,4 = 1$.",
+              "hint": "Additionne simplement les poids des arêtes qui partent du même nœud.",
+              "explanation": "Par définition d'un arbre pondéré, les poids des arêtes issues d'un même nœud forment une distribution de probabilité, donc leur somme est $1$. C'est vrai pour la racine comme pour le premier fils."
+            },
+            {
+              "question": "Vérifie si l'arbre suivant est cohérent : racine → A ($0,4$) → A1 ($0,7$), A2 ($0,2$) ; racine → B ($0,6$) → B1 ($0,5$), B2 ($0,5$).",
+              "answer": "Non, car au nœud A la somme des poids est $0,7+0,2 = 0,9 \\neq 1$.",
+              "hint": "Contrôle la somme des poids pour chaque nœud qui a des enfants.",
+              "explanation": "Le nœud A a deux enfants avec des poids $0,7$ et $0,2$, leur somme est $0,9$, ce qui viole la règle. Il faut corriger les poids pour qu'ils totalisent $1$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer chemin.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la probabilité d'un chemin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons apprendre à déterminer la probabilité d'un chemin complet dans un arbre pondéré. Un chemin est une suite d'arêtes qui relie la racine à une feuille. La règle fondamentale est simple : la probabilité d'un chemin est le produit des poids de toutes les arêtes qui le composent. Cela découle directement de la définition des probabilités conditionnelles : la probabilité d'atteindre un enfant sachant qu'on est au parent, multipliée par la probabilité d'être au parent, donne la probabilité d'être à l'enfant. En répétant ce raisonnement le long du chemin, on obtient le produit de tous les poids. Prenons le temps de bien comprendre pourquoi cette multiplication est légitime et comment l'appliquer sans erreur."
+            },
+            {
+              "type": "definition",
+              "term": "chemin",
+              "definition": "Suite ordonnée d'arêtes reliant la racine à une feuille dans un arbre pondéré.",
+              "example": "Racine → Rouge → Bleu est un chemin de longueur $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la probabilité d'un chemin, suis ces étapes : identifie la feuille qui t'intéresse, remonte vers la racine en notant chaque poids rencontré, puis multiplie-les tous. Si le chemin comporte $k$ arêtes avec des poids $w_1, w_2, \\dots, w_k$, la probabilité du chemin est $P = w_1 \\times w_2 \\times \\dots \\times w_k$. Note que l'ordre de multiplication n'importe pas grâce à la commutativité, mais il est plus clair de suivre l'ordre chronologique de la racine vers la feuille. Vérifie toujours que chaque poids est bien compris entre $0$ et $1$ ; le produit le sera aussi."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la feuille cible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la feuille qui correspond à l'événement dont tu veux la probabilité. Par exemple, « deux rouges » ou « premier bleu puis rouge »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les poids le long du chemin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En partant de la racine, suis les arêtes jusqu'à la feuille choisie. Écris chaque poids dans l'ordre. Si le chemin a trois arêtes, tu auras trois nombres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier les poids",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue le produit de tous les poids notés. Utilise une calculatrice si nécessaire, mais garde les fractions pour plus de précision."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre obtenu est la probabilité que l'expérience suive exactement ce chemin. Il est toujours compris entre $0$ et $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pondéré pour l'exemple du tirage de deux boules",
+              "branches": [
+                {
+                  "label": "Rouge",
+                  "probability": 0.6,
+                  "children": [
+                    {
+                      "label": "Rouge",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "Bleu",
+                      "probability": 0.5
+                    }
+                  ]
+                },
+                {
+                  "label": "Bleu",
+                  "probability": 0.4,
+                  "children": [
+                    {
+                      "label": "Rouge",
+                      "probability": 0.75
+                    },
+                    {
+                      "label": "Bleu",
+                      "probability": 0.25
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la méthode sur un exemple concret, entraîçons-nous avec une situation légèrement différente. Imagine un arbre à trois niveaux modélisant trois lancers d'une pièce de monnaie truquée : la probabilité de « face » est $0,6$ à chaque lancer, indépendamment des autres. L'arbre aura une racine, puis deux branches « face » ($0,6$) et « pile » ($0,4$), chacune se divisant à nouveau de la même manière, et ainsi de suite. Pour obtenir la probabilité de la séquence « face, pile, face », tu multiplieras $0,6 \\times 0,4 \\times 0,6$. Remarque que l'indépendance se traduit par le fait que les poids sont identiques à chaque niveau. Essaie de calculer la probabilité de « pile, pile, pile » pour t'exercer."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\text{chemin}) = \\prod_{i=1}^{k} w_i"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, abordons un piège courant : confondre la probabilité d'un chemin avec la probabilité d'un événement qui peut être réalisé par plusieurs chemins. Par exemple, l'événement « au moins une face en trois lancers » correspond à plusieurs feuilles. Sa probabilité ne se calcule pas en multipliant les poids d'un seul chemin, mais en additionnant les probabilités de tous les chemins favorables. Nous verrons cela dans la prochaine leçon avec la loi des probabilités totales. D'ici là, assure-toi de maîtriser parfaitement le produit le long d'un unique chemin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'arbre du tirage de deux boules sans remise (3 rouges, 2 bleues), calcule la probabilité du chemin « Rouge puis Bleu ».",
+              "answer": "$\\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = 0,3$.",
+              "hint": "Multiplie le poids de la première arête (Rouge) par le poids de la seconde arête (Bleu après Rouge).",
+              "explanation": "Première arête : $3/5$. Après avoir retiré un rouge, il reste $2$ rouges et $2$ bleues, donc probabilité de bleu = $2/4$. Le produit donne $6/20 = 0,3$."
+            },
+            {
+              "question": "Une pièce truquée donne « face » avec probabilité $0,6$. On la lance trois fois. Quelle est la probabilité d'obtenir la séquence « face, pile, face » ?",
+              "answer": "$0,6 \\times 0,4 \\times 0,6 = 0,144$.",
+              "hint": "Les lancers sont indépendants, les poids se répètent à chaque niveau.",
+              "explanation": "Chaque lancer a les mêmes poids : face $0,6$, pile $0,4$. Le chemin « face, pile, face » correspond au produit $0,6 \\times 0,4 \\times 0,6 = 0,144$."
+            },
+            {
+              "question": "Dans un arbre à deux niveaux, la racine a deux fils de poids $0,3$ et $0,7$. Le premier fils a deux enfants de poids $0,2$ et $0,8$. Le second fils est une feuille. Calcule la probabilité du chemin menant à l'enfant de poids $0,8$ du premier fils.",
+              "answer": "$0,3 \\times 0,8 = 0,24$.",
+              "hint": "Identifie les deux arêtes du chemin : racine → premier fils (0,3) puis premier fils → enfant (0,8).",
+              "explanation": "Le chemin comprend deux arêtes. Leur produit est $0,3 \\times 0,8 = 0,24$. Le second fils n'intervient pas dans ce chemin."
+            }
+          ]
+        },
+        {
+          "title": "Probabilité totale simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité totale simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours sur les arbres pondérés. Ici, nous allons utiliser la structure de l'arbre pour calculer la probabilité d'un événement qui peut se réaliser par plusieurs chemins différents. C'est exactement la loi des probabilités totales appliquée à un arbre : la probabilité d'un événement est la somme des probabilités de tous les chemins qui mènent à cet événement. Comme les chemins sont mutuellement exclusifs (on ne peut pas suivre deux chemins différents en même temps), on a le droit d'additionner leurs probabilités. Cette idée est puissante car elle permet de traiter des questions complexes comme « quelle est la probabilité d'avoir au moins un succès ?» en décomposant l'événement en issues élémentaires représentées par les feuilles."
+            },
+            {
+              "type": "definition",
+              "term": "loi des probabilités totales (arbre)",
+              "definition": "Si un événement $E$ correspond à un ensemble de feuilles $\\{f_1, f_2, \\dots, f_m\\}$ d'un arbre pondéré, alors $P(E) = \\sum_{j=1}^{m} P(\\text{chemin vers } f_j)$.",
+              "example": "Pour « au moins une face en deux lancers », on additionne les probabilités des feuilles « face-face », « face-pile » et « pile-face »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour appliquer cette loi, procède comme suit : identifie toutes les feuilles qui satisfont l'événement étudié. Pour chacune de ces feuilles, calcule la probabilité du chemin qui y mène (produit des poids, comme vu dans la leçon précédente). Ensuite, additionne tous ces produits. Le résultat est la probabilité totale de l'événement. Vérifie toujours que la somme des probabilités de toutes les feuilles de l'arbre vaut $1$ ; c'est un bon test de cohérence global."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les feuilles favorables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis l'énoncé de l'événement (par exemple « exactement un bleu »). Parcours l'arbre et coche chaque feuille qui correspond."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer chaque chemin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque feuille cochée, multiplie les poids le long de son chemin unique depuis la racine. Note chaque probabilité de chemin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la somme de toutes les probabilités de chemins obtenues à l'étape précédente. C'est la probabilité de l'événement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la somme totale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Optionnel mais recommandé : additionne les probabilités de toutes les feuilles de l'arbre. Tu dois retrouver $1$. Si ce n'est pas le cas, reprends tes calculs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour l'exemple du tirage de deux boules (3R, 2B)",
+              "branches": [
+                {
+                  "label": "Rouge",
+                  "probability": 0.6,
+                  "children": [
+                    {
+                      "label": "Rouge",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "Bleu",
+                      "probability": 0.5
+                    }
+                  ]
+                },
+                {
+                  "label": "Bleu",
+                  "probability": 0.4,
+                  "children": [
+                    {
+                      "label": "Rouge",
+                      "probability": 0.75
+                    },
+                    {
+                      "label": "Bleu",
+                      "probability": 0.25
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Poursuivons avec un exemple où l'événement concerne une propriété globale, comme « les deux boules sont de couleurs différentes ». Dans l'arbre du tirage sans remise, les feuilles favorables sont « Rouge puis Bleu » et « Bleu puis Rouge ». Nous avons déjà calculé leurs probabilités : $0,3$ pour la première et $0,3$ pour la seconde (car $0,4 \\times 0,75 = 0,3$). En les additionnant, on obtient $0,6$. Remarque que cette probabilité pouvait aussi se trouver en soustrayant de $1$ la probabilité des deux boules de même couleur. Les deux méthodes sont valides, mais l'addition directe sur l'arbre renforce la compréhension de la structure."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(E) = \\sum_{\\text{feuilles } f \\in E} \\prod_{\\text{arêtes du chemin}} w"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelons que la loi des probabilités totales sur un arbre n'est rien d'autre qu'une application du principe de décomposition d'un événement en parties disjointes. Chaque feuille représente une issue élémentaire, et les poids garantissent que la somme de toutes les issues élémentaires est $1$. Cette vision te servira tout au long de l'année, notamment quand nous aborderons les variables aléatoires et les espérances. Félicitations pour avoir suivi ce cours jusqu'au bout ! Tu disposes maintenant des outils pour construire, analyser et exploiter des arbres pondérés en toute confiance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un arbre pondéré à partir d'un énoncé.",
+                "Je sais calculer la probabilité d'un chemin unique en multipliant les poids.",
+                "Je sais utiliser la loi des probabilités totales pour additionner les probabilités de plusieurs chemins.",
+                "Je vérifie systématiquement que la somme des poids à chaque nœud vaut $1$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'arbre du tirage de deux boules sans remise (3 rouges, 2 bleues), calcule la probabilité de l'événement « les deux boules sont de couleurs différentes ».",
+              "answer": "$0,3 + 0,3 = 0,6$.",
+              "hint": "Identifie les deux feuilles « Rouge puis Bleu » et « Bleu puis Rouge », additionne leurs probabilités.",
+              "explanation": "Chemin Rouge-Bleu : $3/5 \\times 2/4 = 0,3$. Chemin Bleu-Rouge : $2/5 \\times 3/4 = 0,3$. Somme = $0,6$."
+            },
+            {
+              "question": "Un arbre modélise deux lancers d'un dé à six faces. La racine a six branches de poids $1/6$ chacune. Chaque branche a six sous-branches de poids $1/6$. Quelle est la probabilité d'obtenir une somme des faces égale à $7$ ?",
+              "answer": "$6 \\times (1/6 \\times 1/6) = 6/36 = 1/6$.",
+              "hint": "Les couples donnant somme $7$ sont $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ : six feuilles favorables.",
+              "explanation": "Chaque feuille a probabilité $(1/6)^2 = 1/36$. Il y a $6$ feuilles favorables, donc $6/36 = 1/6$."
+            },
+            {
+              "question": "Vérifie que la somme des probabilités de toutes les feuilles de l'arbre du tirage de deux boules (3R, 2B) vaut $1$.",
+              "answer": "Oui, $0,3+0,3+0,3+0,1 = 1$.",
+              "hint": "Calcule les quatre chemins : RR, RB, BR, BB et additionne.",
+              "explanation": "RR : $3/5 \\times 2/4 = 0,3$. RB : $3/5 \\times 2/4 = 0,3$. BR : $2/5 \\times 3/4 = 0,3$. BB : $2/5 \\times 1/4 = 0,1$. Total $1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

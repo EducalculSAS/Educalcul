@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Suivre",
+  "title": "Quiz : Suivre un programme de calcul",
+  "questions": [
+    {
+      "text": "On exécute le programme de calcul suivant en choisissant $7$ comme nombre de départ :\\n1. Choisir un nombre.\\n2. Ajouter $3$.\\n3. Multiplier le résultat par $4$.\\nQuel est le résultat final obtenu ?",
+      "options": [
+        "$40$",
+        "$28$",
+        "$31$",
+        "$43$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "On commence avec $7$. Étape 2 : on ajoute $3$, ce qui donne $7 + 3 = 10$. Étape 3 : on multiplie ce résultat par $4$, ce qui donne $10 \\times 4 = 40$. Les autres options correspondent à des erreurs d'ordre des opérations (ex: $7 \\times 4 + 3 = 31$) ou de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme de calcul :\\n1. Choisir un nombre.\\n2. Le multiplier par $5$.\\n3. Soustraire $15$.\\nSi le résultat final est $20$, quel était le nombre de départ ?",
+      "options": [
+        "$7$",
+        "$5$",
+        "$1$",
+        "$35$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Il faut raisonner à l'envers (opérations inverses dans l'ordre inverse). Résultat final $20$. Avant l'étape 3 (soustraire $15$), on avait $20 + 15 = 35$. Avant l'étape 2 (multiplier par $5$), on avait $35 \\div 5 = 7$. Le nombre de départ est donc $7$. On vérifie : $7 \\times 5 = 35$, $35 - 15 = 20$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux programmes pour le nombre de départ $4$ :\\nProgramme A : multiplier par $3$ puis ajouter $6$.\\nProgramme B : ajouter $6$ puis multiplier par $3$.\\nLaquelle de ces affirmations est vraie ?",
+      "options": [
+        "Le programme A donne $18$ et le programme B donne $30$.",
+        "Le programme A donne $30$ et le programme B donne $18$.",
+        "Les deux programmes donnent le même résultat : $24$.",
+        "Le programme A donne $12$ et le programme B donne $18$."
+      ],
+      "correctAnswer": "Le programme A donne $18$ et le programme B donne $30$.",
+      "explanation": "Pour le programme A : $4 \\times 3 = 12$, puis $12 + 6 = 18$. Pour le programme B : $4 + 6 = 10$, puis $10 \\times 3 = 30$. L'ordre des opérations change le résultat car la multiplication est distributive sur l'addition : $3 \\times (4 + 6) \\neq 3 \\times 4 + 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le programme :\\n1. Choisir un nombre $n$.\\n2. Ajouter $4$.\\n3. Multiplier le résultat par $3$.\\nQuelle expression littérale traduit le résultat final en fonction de $n$ ?",
+      "options": [
+        "$3n + 4$",
+        "$3n + 12$",
+        "$n + 12$",
+        "$3n + 7$"
+      ],
+      "correctAnswer": "$3n + 12$",
+      "explanation": "On suit le programme pas à pas avec la lettre $n$. Étape 2 : on ajoute $4$, on obtient $n + 4$. Étape 3 : on multiplie le tout par $3$, on obtient $3 \\times (n + 4)$. En développant (distributivité) : $3 \\times n + 3 \\times 4 = 3n + 12$. L'option $3n + 4$ correspond à l'erreur de ne pas multiplier le $4$ par $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel programme de calcul correspond à la description suivante ?\\n\"Je choisis un nombre, je le multiplie par $2$, j'ajoute $5$, je multiplie le tout par $3$.\"",
+      "options": [
+        "Multiplier le nombre de départ par $2$, ajouter $5$, puis multiplier le résultat par $3$.",
+        "Multiplier le nombre de départ par $2$, ajouter $5 \\times 3$, puis additionner.",
+        "Ajouter $5$ au nombre de départ, multiplier par $2$, puis multiplier par $3$.",
+        "Multiplier le nombre de départ par $3$, ajouter $5$, puis multiplier par $2$."
+      ],
+      "correctAnswer": "Multiplier le nombre de départ par $2$, ajouter $5$, puis multiplier le résultat par $3$.",
+      "explanation": "La phrase « je multiplie le tout par $3$ » à la fin signifie que la multiplication par $3$ s'applique au résultat de l'addition ($2n + 5$). L'option correcte respecte cet ordre exact : $\\times 2$, puis $+5$, puis $\\times 3$ (le tout). Les autres options modifient l'ordre des opérations ou la répartition de la multiplication finale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

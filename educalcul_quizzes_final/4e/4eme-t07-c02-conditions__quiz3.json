@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Débogage",
+  "title": "Quiz Algorithmique : Débogage",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVARIABLE n EN ENTIER\\nDEBUT\\nn <- 10\\nTANT QUE n > 0 FAIRE\\n    AFFICHER n\\nFIN TANT QUE\\nFIN\\nQuel est le problème principal de cet algorithme ?",
+      "options": [
+        "La variable n n'est pas initialisée.",
+        "La condition d'arrêt n'est jamais modifiée, créant une boucle infinie.",
+        "L'instruction AFFICHER est mal placée.",
+        "L'opérateur > devrait être remplacé par <."
+      ],
+      "correctAnswer": "La condition d'arrêt n'est jamais modifiée, créant une boucle infinie.",
+      "explanation": "Dans une boucle TANT QUE, la variable testée dans la condition (ici n) doit être modifiée à l'intérieur de la boucle pour permettre l'arrêt. Ici, n vaut 10 au début et n'est jamais changé, donc la condition n > 0 reste vraie indéfiniment : c'est une boucle infinie. Les autres options sont incorrectes : n est initialisé à 10, AFFICHER est correctement placé, et l'opérateur > est adapté pour compter à rebours si on décrémentait n.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève veut afficher les entiers de 1 à 5 inclus. Il écrit :\\nPOUR i ALLANT DE 1 A 5 FAIRE\\n    SI i <> 5 ALORS\\n        AFFICHER i\\n    FIN SI\\nFIN POUR\\nQue va-t-il se passer ?",
+      "options": [
+        "L'algorithme affiche 1, 2, 3, 4, 5.",
+        "L'algorithme affiche 1, 2, 3, 4.",
+        "L'algorithme affiche 2, 3, 4, 5.",
+        "L'algorithme n'affiche rien."
+      ],
+      "correctAnswer": "L'algorithme affiche 1, 2, 3, 4.",
+      "explanation": "La boucle POUR fait varier i de 1 à 5. Le test SI i <> 5 (différent de 5) est vrai pour 1, 2, 3, 4 mais faux pour 5. Donc 5 n'est pas affiché. C'est une erreur classique de 'off-by-one' (erreur de borne) : la condition exclut la dernière valeur voulue. Pour corriger, il faut retirer le SI ou tester i <= 5 (ce qui est déjà géré par la boucle POUR).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut afficher 'Pair' si le nombre n est pair, 'Impair' sinon. Voici le code :\\nSI n % 2 = 0 ALORS\\n    AFFICHER 'Pair'\\nSINON\\n    AFFICHER 'Impair'\\nFIN SI\\nL'élève teste avec n = 6 et obtient 'Impair'. Quelle est l'erreur probable dans la transcription du code ?",
+      "options": [
+        "L'opérateur % renvoie le quotient au lieu du reste.",
+        "La condition devrait être n % 2 = 1 pour les pairs.",
+        "L'élève a confondu l'opérateur % (modulo) avec la division / .",
+        "Les blocs ALORS et SINON sont inversés."
+      ],
+      "correctAnswer": "L'élève a confondu l'opérateur % (modulo) avec la division / .",
+      "explanation": "Si l'élève a écrit n / 2 = 0 au lieu de n % 2 = 0, alors pour n=6, 6/2 = 3, qui n'est pas égal à 0, donc le SINON s'exécute et affiche 'Impair'. L'opérateur % (modulo) donne le reste de la division euclidienne (6 % 2 = 0 pour un pair), tandis que / donne le quotient (3). Les autres options sont fausses : % donne bien le reste, la condition = 0 est correcte pour les pairs, et l'ordre ALORS/SINON est correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Analysez cet algorithme qui devrait calculer la somme des 5 premiers entiers (1+2+3+4+5) :\\nVARIABLES somme, i EN ENTIER\\nDEBUT\\nsomme <- 0\\nPOUR i ALLANT DE 1 A 5 FAIRE\\n    somme <- somme + i\\nFIN POUR\\nAFFICHER somme\\nFIN\\nL'affichage donne 0. Où est l'erreur ?",
+      "options": [
+        "La variable somme n'est pas initialisée.",
+        "L'instruction somme <- somme + i n'est pas dans la boucle.",
+        "La boucle devrait aller de 0 à 4.",
+        "Il faut écrire i <- i + 1 dans la boucle."
+      ],
+      "correctAnswer": "L'instruction somme <- somme + i n'est pas dans la boucle.",
+      "explanation": "Dans l'énoncé, l'indentation montre que 'somme <- somme + i' est écrite APRÈS 'FIN POUR', donc elle n'est exécutée qu'une seule fois après la boucle, avec i qui vaut souvent 6 (ou la dernière valeur selon le langage) ou n'est plus défini. Mais ici, comme somme vaut 0 au départ et n'est pas modifiée dans la boucle, l'affichage final est 0. Il faut placer l'accumulation AVANT 'FIN POUR'. La variable est bien initialisée, la borne 1 à 5 est correcte, et la boucle POUR gère l'incrémentation de i automatiquement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Cet algorithme doit trouver le maximum de trois nombres a, b, c :\\nmax <- a\\nSI b > max ALORS max <- b FIN SI\\nSI c > max ALORS max <- c FIN SI\\nAFFICHER max\\nPour quels jeux de valeurs (a, b, c) cet algorithme donne-t-il un résultat INCORRECT ?",
+      "options": [
+        "a=5, b=2, c=8",
+        "a=10, b=10, c=5",
+        "a=3, b=7, c=7",
+        "Aucun, l'algorithme est correct pour tous les cas."
+      ],
+      "correctAnswer": "Aucun, l'algorithme est correct pour tous les cas.",
+      "explanation": "L'algorithme est une version standard et correcte de la recherche du maximum. Il initialise max avec a, puis compare avec b et met à jour si b est strictement plus grand, puis compare avec c et met à jour si c est strictement plus grand. En cas d'égalité (options B et C), le premier maximum rencontré est conservé (a ou b), ce qui est un comportement valide pour 'trouver un maximum'. L'option A donne 8 (correct). Il n'y a pas de bug logique ici.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

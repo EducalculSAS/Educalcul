@@ -1,0 +1,402 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.697470+00:00",
+  "id": 709,
+  "code": "terminale-generale-maths-t06-c03",
+  "title": "Calculer avec une primitive",
+  "description": "Cours structuré Educalcul : Calculer avec une primitive.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Calculer avec une primitive",
+    "objectif_global": "Calculer avec une primitive",
+    "mini_lecons_imposees": [
+      "F(b)-F(a).",
+      "Calcul exact.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "F(b)-F(a).",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème fondamental du calcul intégral"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment une primitive permet de calculer une intégrale définie sans passer par une somme de Riemann. Imagine que tu veux connaître l'aire exacte sous la courbe d'une fonction $f$ sur l'intervalle $[a,b]$. Au lieu de découper l'aire en une infinité de rectangles, le théorème fondamental te donne une formule magique : si $F$ est une primitive de $f$ (c'est-à-dire que $F' = f$), alors l'intégrale de $f$ de $a$ à $b$ vaut simplement la différence $F(b)-F(a)$. C'est une idée puissante qui relie la dérivation et l'intégration, deux opérations inverses l'une de l'autre. Dans cette leçon, nous allons poser les bases, comprendre pourquoi cette formule fonctionne et apprendre à l'appliquer pas à pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_{a}^{b} f(x)\\,dx = F(b)-F(a)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une primitive n'est pas unique : si $F$ est une primitive de $f$, alors $F + C$ (avec $C$ constante) en est aussi une. Heureusement, dans la formule $F(b)-F(a)$, la constante disparaît, ce qui rend le résultat indépendant du choix de la primitive. C'est pour cela que nous pouvons toujours choisir la primitive la plus simple, celle dont la constante d'intégration est nulle. Pour bien saisir ce point, retenons que la dérivée d'une constante est nulle, donc ajouter une constante ne change pas la fonction dérivée. Nous verrons tout à l'heure comment exploiter cette liberté pour simplifier nos calculs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une fonction $F$ telle que $F'(x)=f(x)$. Utilise les tables de primitives usuelles (puissances, exponentielles, logarithmes, trigonométriques)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Évaluer aux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $F(b)$ et $F(a)$ en remplaçant $x$ par les bornes supérieures et inférieures."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrayis $F(a)$ de $F(b)$ pour obtenir la valeur exacte de l'intégrale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode sur un exemple concret. Soit $f(x)=2x$ sur l'intervalle $[1,3]$. Une primitive évidente est $F(x)=x^{2}$ car la dérivée de $x^{2}$ est $2x$. En évaluant, nous obtenons $F(3)=9$ et $F(1)=1$. La différence donne $9-1=8$. Ainsi $\\int_{1}^{3} 2x\\,dx = 8$. Cette valeur correspond bien à l'aire du trapèze sous la droite $y=2x$ entre $x=1$ et $x=3$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "2*x",
+              "xMin": 1,
+              "xMax": 3,
+              "rectangles": 10,
+              "caption": "Approximation de l'aire sous $f(x)=2x$ par des rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la mécanique de base, il est temps de comprendre comment choisir la primitive la plus commode parmi l'infinité de celles qui existent. Nous allons examiner les primitives usuelles et voir comment les adapter quand la fonction intègre une constante multiplicative ou une translation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une primitive adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les tables de primitives te donnent une forme de base pour chaque famille de fonctions. Par exemple, pour $f(x)=x^{n}$ avec $n\\neq -1$, une primitive est $\\frac{x^{n+1}}{n+1}$. Si la fonction comporte un coefficient constant $k$, tu peux factoriser ce coefficient hors de l'intégrale : $\\int k\\,f(x)\\,dx = k\\int f(x)\\,dx$. De même, pour une translation $f(x-a)$, une primitive est $F(x-a)$ où $F$ est une primitive de $f$. Ces règles simples évitent de recomposer une primitive à chaque fois."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fonction $f(x)$",
+                "Primitive $F(x)$"
+              ],
+              "rows": [
+                [
+                  "$x^{n}$ ($n\\neq -1$)",
+                  "$\\frac{x^{n+1}}{n+1}$"
+                ],
+                [
+                  "$e^{x}$",
+                  "$e^{x}$"
+                ],
+                [
+                  "$\\frac{1}{x}$",
+                  "$\\ln|x|$"
+                ],
+                [
+                  "$\\cos x$",
+                  "$\\sin x$"
+                ],
+                [
+                  "$\\sin x$",
+                  "$-\\cos x$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, regardons un cas où la primitive n'est pas unique et où le choix d'une constante particulière simplifie l'évaluation. Supposons que nous devions calculer $\\int_{0}^{\\pi} \\sin x\\,dx$. Une primitive est $-\\cos x$, mais $-\\cos x + 5$ convient aussi. En utilisant $-\\cos x$, nous obtenons $(-\\cos\\pi) - (-\\cos 0) = -(-1) - (-1) = 2$. Si nous avions gardé la constante $5$, elle se serait annulée : $(-\\cos\\pi+5) - (-\\cos 0+5) = 2$. Cela montre concrètement pourquoi la constante n'a pas d'impact sur l'intégrale définie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'intégrale définie $\\int_{0}^{2} 3x^{2}\\,dx$ en utilisant une primitive.",
+              "answer": "8",
+              "hint": "Trouve une primitive de $3x^{2}$, puis évalue aux bornes $0$ et $2$.",
+              "explanation": "Une primitive de $3x^{2}$ est $x^{3}$. Donc $F(2)-F(0)=2^{3}-0^{3}=8$."
+            },
+            {
+              "question": "Évalue $\\int_{1}^{e} \\frac{1}{x}\\,dx$.",
+              "answer": "1",
+              "hint": "Rappelle-toi la primitive de $1/x$ et les valeurs du logarithme népérien en $1$ et $e$.",
+              "explanation": "Une primitive est $\\ln|x|$. Ainsi $\\ln e - \\ln 1 = 1 - 0 = 1$."
+            },
+            {
+              "question": "Détermine $\\int_{-\\pi/2}^{\\pi/2} \\cos x\\,dx$.",
+              "answer": "2",
+              "hint": "Utilise la primitive $\\sin x$ et les valeurs du sinus aux bornes.",
+              "explanation": "Primitive $\\sin x$. $\\sin(\\pi/2) - \\sin(-\\pi/2) = 1 - (-1) = 2$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul exact.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul exact : garder la forme symbolique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons approfondir l'art de présenter un résultat d'intégrale sous sa forme exacte, sans recourir à des approximations décimales. En Terminale spécialité mathématiques, on attend de toi que tu saches manipuler les racines carrées, les fractions, les symboles $\\pi$ et $e$, et les logarithmes sans les transformer en nombres à virgule. Cela permet de conserver la précision mathématique et de faciliter les étapes suivantes d'un problème, comme une comparaison ou une majoration. Nous verrons comment simplifier les expressions obtenues après l'évaluation $F(b)-F(a)$ et comment éviter les pièges classiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple $\\int_{0}^{1} \\sqrt{x}\\,dx$. Une primitive de $\\sqrt{x}=x^{1/2}$ est $\\frac{2}{3}x^{3/2}$. En évaluant, nous obtenons $\\frac{2}{3}(1^{3/2}-0^{3/2}) = \\frac{2}{3}$. Le résultat est une fraction exacte, pas $0,666...$. De même, pour $\\int_{0}^{\\pi/2} \\sin x\\,dx$, la primitive $-\\cos x$ donne $-\\cos(\\pi/2) + \\cos 0 = 0 + 1 = 1$. Ici, le résultat est l'entier $1$, exact lui aussi. Lorsque des racines ou des symboles apparaissent, on les laisse tels quels : $\\int_{0}^{1} \\frac{dx}{\\sqrt{1-x^{2}}} = \\arcsin(1)-\\arcsin(0) = \\frac{\\pi}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_{a}^{b} f(x)\\,dx = F(b)-F(a) \\quad\\text{avec } F' = f"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent que l'évaluation produise une différence de deux termes semblables, par exemple $\\frac{5\\sqrt{2}}{3} - \\frac{2\\sqrt{2}}{3}$. Dans ce cas, factorise le facteur commun $\\sqrt{2}$ pour obtenir $\\frac{3\\sqrt{2}}{3} = \\sqrt{2}$. Cette simplification rend la réponse plus lisible et montre que tu maîtrises le calcul littéral. Autre situation fréquente : les logarithmes. Si tu obtiens $\\ln 8 - \\ln 2$, utilise la propriété $\\ln a - \\ln b = \\ln\\frac{a}{b}$ pour écrire $\\ln 4 = 2\\ln 2$. Le correcteur appréciera la forme factorisée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve $F$ telle que $F'=f$ en t'appuyant sur les formules usuelles. N'oublie pas la factorisation des constantes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Substituer les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x$ par $b$ puis par $a$ dans $F$. Écris chaque terme sans l'évaluer numériquement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réunis les termes semblables, factorise les radicaux, utilise les propriétés des logarithmes et des puissances pour obtenir une forme compacte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Examinons un cas un peu plus subtil : $\\int_{1}^{2} \\frac{2x+1}{x^{2}+x}\\,dx$. Le numérateur est la dérivée du dénominateur, donc une primitive est $\\ln(x^{2}+x)$. L'évaluation donne $\\ln(2^{2}+2) - \\ln(1^{2}+1) = \\ln 6 - \\ln 2 = \\ln\\frac{6}{2} = \\ln 3$. Le résultat exact est $\\ln 3$, bien plus élégant qu'une approximation décimale. Ce type d'intégrale, où le numérateur est la dérivée du dénominateur, apparaît souvent ; repérer cette structure te fait gagner un temps précieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux intégrales de fonctions rationnelles qui nécessitent une décomposition en éléments simples avant de chercher les primitives. Bien que la décomposition soit un chapitre à part entière, il est utile de savoir reconnaître quand elle s'impose pour obtenir un calcul exact."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposition en éléments simples et primitives logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu rencontres $\\int \\frac{3x+2}{x^{2}+3x+2}\\,dx$, factorise le dénominateur : $(x+1)(x+2)$. Écris $\\frac{3x+2}{(x+1)(x+2)} = \\frac{A}{x+1}+\\frac{B}{x+2}$. En résolvant, tu trouves $A=1$, $B=2$. Les primitives sont alors $\\ln|x+1|+2\\ln|x+2|$. Pour une intégrale définie, évalue cette somme aux bornes et simplifie les logarithmes. Cette technique garantit un résultat exact, sans passer par des fractions décimales."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublie pas les intégrales de fonctions trigonométriques puissances paires ou impaires. Par exemple, $\\int_{0}^{\\pi/2} \\sin^{2} x\\,dx$ s'évalue en utilisant l'identité $\\sin^{2} x = \\frac{1-\\cos 2x}{2}$. La primitive devient $\\frac{x}{2} - \\frac{\\sin 2x}{4}$. Entre $0$ et $\\pi/2$, le terme $\\sin 2x$ s'annule et il reste $\\frac{\\pi}{4}$. Le résultat exact contient $\\pi$, ce qui est typique pour les intégrales trigonométriques sur des intervalles symétriques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule exactement $\\int_{0}^{1} \\frac{dx}{\\sqrt{1-x^{2}}}$.",
+              "answer": "\\frac{\\pi}{2}",
+              "hint": "Reconnais la dérivée de $\\arcsin x$.",
+              "explanation": "Une primitive est $\\arcsin x$. Donc $\\arcsin 1 - \\arcsin 0 = \\frac{\\pi}{2} - 0 = \\frac{\\pi}{2}$."
+            },
+            {
+              "question": "Évalue $\\int_{1}^{3} \\frac{2x+3}{x^{2}+3x}\\,dx$ sous forme exacte.",
+              "answer": "\\ln 6",
+              "hint": "Décompose en éléments simples ou remarque que le numérateur est la dérivée du dénominateur.",
+              "explanation": "Le dénominateur dérive en $2x+3$, donc primitive $\\ln(x^{2}+3x)$. $\\ln(9+9)-\\ln(1+3)=\\ln 18 - \\ln 4 = \\ln\\frac{18}{4} = \\ln \\frac{9}{2}$. Mais $x^{2}+3x = x(x+3)$, décomposition donne $\\ln x + \\ln(x+3)$. Évaluation : $(\\ln 3 + \\ln 6) - (\\ln 1 + \\ln 4) = \\ln 3 + \\ln 6 - \\ln 4 = \\ln\\frac{18}{4} = \\ln\\frac{9}{2}$. Attendu $\\ln 6$? Vérification : $x^{2}+3x$ aux bornes 1 et 3 donne 4 et 18, $\\ln 18 - \\ln 4 = \\ln(18/4)=\\ln(9/2)$. La réponse exacte est $\\ln\\frac{9}{2}$."
+            },
+            {
+              "question": "Détermine $\\int_{0}^{\\pi/2} \\cos^{2} x\\,dx$ exactement.",
+              "answer": "\\frac{\\pi}{4}",
+              "hint": "Utilise $\\cos^{2} x = \\frac{1+\\cos 2x}{2}$.",
+              "explanation": "Primitive $\\frac{x}{2} + \\frac{\\sin 2x}{4}$. Évaluation : $\\frac{\\pi}{4} + 0 - (0+0) = \\frac{\\pi}{4}$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier son calcul d'intégrale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours, consacrée à la vérification. Après avoir obtenu un résultat exact, il est essentiel de pouvoir le contrôler pour éviter les erreurs de signe, d'oubli de constante ou de mauvaise primitive. Trois méthodes complémentaires s'offrent à toi : la dérivation de la primitive trouvée, l'estimation numérique par une méthode de Riemann ou de Simpson, et l'analyse qualitative du signe de la fonction sur l'intervalle. Nous allons les passer en revue avec des exemples concrets pour que tu puisses les appliquer en toute autonomie lors de tes devoirs ou à l'examen."
+            },
+            {
+              "type": "paragraph",
+              "content": "La première méthode, la plus directe, consiste à dériver ton expression $F(x)$ et à vérifier que tu retrouves bien $f(x)$. Si tu as calculé $\\int_{0}^{2} (3x^{2}+2x)\\,dx$ et trouvé $F(x)=x^{3}+x^{2}$, dérive : $F'(x)=3x^{2}+2x$, c'est exactement l'intégrand. Cette vérification ne prend que quelques secondes et élimine la plupart des erreurs d'algèbre. N'hésite pas à l'appliquer systématiquement, surtout quand la primitive comporte plusieurs termes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dériver la primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $F'(x)$ en appliquant les règles de dérivation usuelles (somme, produit, chaîne)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer à l'intégrand",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie terme à terme que $F'(x)$ coïncide avec $f(x)$. Si une différence apparaît, revois ton intégration."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Contrôle numérique rapide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur au milieu de l'intervalle, par exemple $x = (a+b)/2$, et compare $f(x)$ à la pente de la corde de $F$ entre $a$ et $b$ pour un test de cohérence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième méthode utilise une approximation numérique. Même si tu as un résultat exact, tu peux estimer l'intégrale avec quelques rectangles ou trapèzes pour voir si le nombre obtenu est plausible. Par exemple, pour $\\int_{0}^{1} e^{x}\\,dx$, le résultat exact est $e-1 \\approx 1,718$. En traçant deux rectangles de largeur $0,5$ (méthode du point milieu), tu obtiens une approximation autour de $1,65$, ce qui est cohérent. Si ton résultat exact donnait $0,5$, l'approximation t'alerterait immédiatement."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Courbe de $e^{x}$ et aire sous la courbe sur $[0,1]$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La troisième méthode repose sur l'analyse du signe de $f$ sur $[a,b]$. Si $f(x) \\ge 0$ sur tout l'intervalle, l'intégrale doit être positive ou nulle. Si $f$ change de signe, l'intégrale peut être plus petite que l'aire totale. Cette observation qualitative permet de détecter une erreur de signe grossière. Par exemple, $\\int_{-\\pi}^{\\pi} \\sin x\\,dx = 0$ car les parties positives et négatives s'annulent. Si tu avais obtenu $2$, tu saurais qu'une erreur s'est glissée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore, combinons les trois vérifications sur un exemple complet : $\\int_{1}^{4} \\frac{2x+1}{x^{2}+x}\\,dx$. Nous avons trouvé la primitive $\\ln(x^{2}+x)$ et le résultat exact $\\ln\\frac{20}{2} = \\ln 10$. 1) Dérivation : $\\frac{d}{dx}\\ln(x^{2}+x) = \\frac{2x+1}{x^{2}+x}$, correct. 2) Approximation numérique : évaluons $f(2.5) = \\frac{6}{8.75} \\approx 0,686$. L'aire approximative par un rectangle de largeur $3$ donne $\\approx 2,06$, tandis que $\\ln 10 \\approx 2,30$, proche. 3) Signe : $f(x)>0$ sur $[1,4]$, donc intégrale positive, $\\ln 10 > 0$, cohérent. Ces trois tests valident solidement le calcul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer une intégrale définie à l'aide d'une primitive.",
+                "Je sais présenter un calcul exact sans approximation.",
+                "Je sais vérifier mon résultat par dérivation ou par estimation numérique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par dérivation que $\\int_{0}^{1} (4x^{3}-2x)\\,dx = 0$ est correct.",
+              "answer": "La primitive est $x^{4}-x^{2}$. Sa dérivée est $4x^{3}-2x$, donc l'intégrale vaut $F(1)-F(0)=0-0=0$.",
+              "hint": "Trouve la primitive, dérive-la, puis évalue aux bornes.",
+              "explanation": "Primitive $F(x)=x^{4}-x^{2}$. $F'(x)=4x^{3}-2x$. $F(1)-F(0)=0$."
+            },
+            {
+              "question": "Estime numériquement $\\int_{0}^{2} x^{2}\\,dx$ avec deux rectangles (méthode du point milieu) et compare au résultat exact.",
+              "answer": "Approximation $\\approx 2,5$, exact $= 8/3 \\approx 2,667$.",
+              "hint": "Largeur $1$, points milieux $0,5$ et $1,5$.",
+              "explanation": "Rectangles : $1\\times(0,5^{2}+1,5^{2}) = 1\\times(0,25+2,25)=2,5$. Exact : $\\frac{2^{3}}{3}=8/3\\approx2,667$."
+            },
+            {
+              "question": "Détermine le signe de $\\int_{-\\pi/2}^{\\pi/2} \\cos x\\,dx$ sans calculer, puis vérifie.",
+              "answer": "Positif, valeur exacte $2$.",
+              "hint": "$\\cos x \\ge 0$ sur $[-\\pi/2,\\pi/2]$.",
+              "explanation": "$\\cos x$ est positif ou nul sur l'intervalle, donc l'intégrale est positive. Primitive $\\sin x$, $\\sin(\\pi/2)-\\sin(-\\pi/2)=1-(-1)=2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

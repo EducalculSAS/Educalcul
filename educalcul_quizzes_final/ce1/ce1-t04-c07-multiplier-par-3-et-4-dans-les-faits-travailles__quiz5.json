@@ -1,0 +1,103 @@
+{
+  "_status": "done",
+  "_course_id": 104,
+  "_course_code": "ce1-t04-c07-multiplier-par-3-et-4-dans-les-faits-travailles",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Construire les résultats",
+  "title": "Multiplier par 3 et 4 : Construire les résultats",
+  "questions": [
+    {
+      "text": "On veut construire le résultat de $3 \\times 4$. Quelle addition répétée correspond à ce produit ?",
+      "options": [
+        "4 + 4 + 4",
+        "3 + 3 + 3 + 3",
+        "3 + 4",
+        "4 + 4 + 4 + 4"
+      ],
+      "correctAnswer": "4 + 4 + 4",
+      "explanation": "Multiplier $3 \\times 4$ signifie ajouter 3 fois le nombre 4. L'addition répétée est donc $4 + 4 + 4 = 12$. L'option '3 + 3 + 3 + 3' correspond à $4 \\times 3$ (qui donne le même résultat mais ne représente pas la même construction). Les autres options ne correspondent pas à la définition de la multiplication.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Modèle en grille : 3 rangées de 4 cases"
+      }
+    },
+    {
+      "text": "Pour calculer $4 \\times 6$, Léa utilise la stratégie du double du double. Quelle suite de calculs fait-elle ?",
+      "options": [
+        "6 + 6 = 12, puis 12 + 12 = 24",
+        "4 + 4 = 8, puis 8 + 8 = 16",
+        "6 + 6 = 12, puis 12 + 6 = 18",
+        "4 + 6 = 10, puis 10 + 10 = 20"
+      ],
+      "correctAnswer": "6 + 6 = 12, puis 12 + 12 = 24",
+      "explanation": "Multiplier par 4 revient à faire le double du double. On double d'abord 6 : $6 + 6 = 12$. Puis on double le résultat : $12 + 12 = 24$. Donc $4 \\times 6 = 24$. L'option '4 + 4 = 8...' calcule $4 \\times 4$. L'option '6 + 6 = 12, puis 12 + 6 = 18' calcule $3 \\times 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le tableau à trous de la table de 3. Quel nombre manque pour que l'égalité soit vraie ?\\n$3 \\times \\square = 21$",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Il faut trouver le nombre qui, multiplié par 3, donne 21. On peut compter par sauts de 3 : 3, 6, 9, 12, 15, 18, 21. C'est le 7e nombre de la suite, donc $3 \\times 7 = 21$. On peut aussi diviser : $21 \\div 3 = 7$. Les distracteurs 6 ($3\\times6=18$), 8 ($3\\times8=24$) et 9 ($3\\times9=27$) sont les produits voisins.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 7,
+        "highlighted": 21,
+        "caption": "Modèle en grille : 3 rangées de 7 cases"
+      }
+    },
+    {
+      "text": "Parmi ces produits, lequel est le plus grand ?",
+      "options": [
+        "$3 \\times 7$",
+        "$4 \\times 5$",
+        "$3 \\times 8$",
+        "$4 \\times 6$"
+      ],
+      "correctAnswer": "$4 \\times 6$",
+      "explanation": "Calculons chaque produit : $3 \\times 7 = 21$. $4 \\times 5 = 20$. $3 \\times 8 = 24$. $4 \\times 6 = 24$. Les deux plus grands sont $3 \\times 8$ et $4 \\times 6$ (égalité). Comme il faut choisir une seule réponse et que $4 \\times 6$ est souvent plus facile à construire (double de $2 \\times 6 = 12$, soit 24), c'est la réponse attendue pour 'le plus grand' (à égalité). Note : $3 \\times 8 = 24$ aussi. Si l'énoncé impliquait un choix unique strict, il y a ambigüité, mais ici $4 \\times 6$ est la réponse clé car c'est un fait travaillé (table de 4).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul sait que $4 \\times 5 = 20$. Comment peut-il construire facilement le résultat de $4 \\times 6$ à partir de ce fait connu ?",
+      "options": [
+        "Il ajoute 4 à 20",
+        "Il ajoute 6 à 20",
+        "Il double 20",
+        "Il ajoute 1 à 20"
+      ],
+      "correctAnswer": "Il ajoute 4 à 20",
+      "explanation": "Passer de $4 \\times 5$ à $4 \\times 6$, c'est ajouter un groupe de 4. Puisque $4 \\times 5 = 20$, alors $4 \\times 6 = 20 + 4 = 24$. C'est la stratégie 'un de plus' (itération). Ajouter 6 correspondrait à $5 \\times 6$. Doubler 20 donnerait $8 \\times 5$. Ajouter 1 ne correspond à aucune règle de multiplication.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "4 x 5",
+            "value": 20,
+            "tone": "blue"
+          },
+          {
+            "label": "+ 4",
+            "value": 4,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres : on ajoute un segment de 4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Réciproque intuitive",
+  "title": "Quiz sur la réciproque intuitive",
+  "questions": [
+    {
+      "text": "Quelle est la réciproque de l'implication suivante : « Si un nombre est pair, alors il est divisible par 2 » ?",
+      "options": [
+        "Si un nombre est divisible par 2, alors il est pair.",
+        "Si un nombre n'est pas pair, alors il n'est pas divisible par 2.",
+        "Si un nombre n'est pas divisible par 2, alors il n'est pas pair.",
+        "Si un nombre est pair, alors il n'est pas divisible par 2."
+      ],
+      "correctAnswer": "Si un nombre est divisible par 2, alors il est pair.",
+      "explanation": "La réciproque d'une implication « Si P alors Q » est « Si Q alors P ». Ici P = « le nombre est pair » et Q = « il est divisible par 2 ». La réciproque est donc « Si un nombre est divisible par 2, alors il est pair ». Les autres options correspondent à la contraposée, à l'inverse ou à une négation erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'implication « Si un triangle est équilatéral, alors il est isocèle » est vraie. Quelle est la valeur de vérité de sa réciproque ?",
+      "options": [
+        "Vraie",
+        "Fausse",
+        "On ne peut pas savoir",
+        "Identique à l'originale"
+      ],
+      "correctAnswer": "Fausse",
+      "explanation": "La réciproque est « Si un triangle est isocèle, alors il est équilatéral ». Un triangle isocèle n'est pas nécessairement équilatéral (exemple : triangle isocèle rectangle). Donc la réciproque est fausse alors que l'implication originale est vraie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons l'implication « Si $x>3$ alors $x^2>9$ ». Laquelle des propositions suivantes est sa réciproque ?",
+      "options": [
+        "Si $x^2>9$ alors $x>3$",
+        "Si $x\\le3$ alors $x^2\\le9$",
+        "Si $x^2\\le9$ alors $x\\le3$",
+        "Si $x>3$ alors $x^2\\le9$"
+      ],
+      "correctAnswer": "Si $x^2>9$ alors $x>3$",
+      "explanation": "La réciproque échange l'hypothèse et la conclusion : de « Si $x>3$ alors $x^2>9$ » on obtient « Si $x^2>9$ alors $x>3$ ». Les autres options correspondent à la contraposée, à l'inverse ou à une négation de la conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les phrases suivantes, laquelle correspond à la réciproque de « Si une figure est un carré, alors elle a quatre côtés égaux » ?",
+      "options": [
+        "Si une figure a quatre côtés égaux, alors elle est un carré.",
+        "Si une figure n'est pas un carré, alors elle n'a pas quatre côtés égaux.",
+        "Si une figure n'a pas quatre côtés égaux, alors elle n'est pas un carré.",
+        "Si une figure est un carré, alors elle n'a pas quatre côtés égaux."
+      ],
+      "correctAnswer": "Si une figure a quatre côtés égaux, alors elle est un carré.",
+      "explanation": "La réciproque inverse l'ordre : hypothèse « la figure a quatre côtés égaux », conclusion « elle est un carré ». Les autres phrases sont la contraposée, l'inverse ou une négation erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'énoncé « Si il pleut, alors le sol est mouillé » est vrai. Sa réciproque « Si le sol est mouillé, alors il pleut » est-elle nécessairement vraie ?",
+      "options": [
+        "Oui, toujours",
+        "Non, pas nécessairement",
+        "Seulement si le sol est mouillé par la pluie",
+        "Cela dépend de la saison"
+      ],
+      "correctAnswer": "Non, pas nécessairement",
+      "explanation": "Le sol peut être mouillé pour d'autres raisons (arrosage, déversement, rosée). La vérité de l'implication originale ne garantit pas la vérité de sa réciproque. Donc la réciproque n'est pas nécessairement vraie.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

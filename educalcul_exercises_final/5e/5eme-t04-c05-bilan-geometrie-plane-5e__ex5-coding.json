@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 399,
+  "_course_code": "5eme-t04-c05-bilan-geometrie-plane-5e",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Angles, triangles, parallélogrammes",
+  "title": "Approfondissement : Algorithmes angles triangles parallélogrammes",
+  "blocks": [
+    {
+      "title": "Troisième angle d'un triangle",
+      "content": "Écrire un algorithme qui, étant donnés les mesures de deux angles d'un triangle, détermine la mesure du troisième angle.",
+      "correctAnswer": "1. Lire $a$ et $b$\\n2. Calculer $c = 180 - (a + b)$\\n3. Afficher $c$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des angles d'un triangle vaut $180^{\\circ}$. En soustrayant la somme des deux angles connus à $180^{\\circ}$, on obtient la mesure du troisième angle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification d'un parallélogramme",
+      "content": "Écrire un algorithme qui vérifie si un quadrilatère est un parallélogramme en utilisant les longueurs de ses côtés opposés.",
+      "correctAnswer": "1. Lire $a$, $b$, $c$, $d$ (côtés dans l'ordre)\\n2. Si $a = c$ et $b = d$ alors afficher \"Parallélogramme\"\\n3. Sinon afficher \"Non parallélogramme\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un parallélogramme, les côtés opposés sont deux à deux égaux. L'algorithme teste cette propriété.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Angles formant un triangle",
+      "content": "Écrire un algorithme qui, étant donnés les mesures de trois angles, détermine s'ils peuvent former un triangle.",
+      "correctAnswer": "1. Lire $a$, $b$, $c$\\n2. Si $a > 0$ et $b > 0$ et $c > 0$ et $a + b + c = 180$ alors afficher \"Triangle possible\"\\n3. Sinon afficher \"Impossible\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour que trois angles forment un triangle, chacun doit être strictement positif et leur somme doit être exactement $180^{\\circ}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

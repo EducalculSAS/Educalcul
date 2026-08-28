@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 436,
+  "_course_code": "4eme-t04-c02-effectifs-et-frequences",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Effectifs et fréquences",
+  "title": "Quiz : Effectifs et fréquences - Applications",
+  "questions": [
+    {
+      "text": "Dans une classe de 4e, on a relevé les notes suivantes (effectifs) : $10$ élèves ont eu $10$, $8$ élèves ont eu $12$, $7$ élèves ont eu $14$, $5$ élèves ont eu $16$. Quel est l'effectif total de la classe ?",
+      "options": [
+        "$30$",
+        "$31$",
+        "$29$",
+        "$28$"
+      ],
+      "correctAnswer": "$30$",
+      "explanation": "L'effectif total est la somme de tous les effectifs partiels : $10 + 8 + 7 + 5 = 30$. Les autres propositions correspondent à des erreurs d'addition (oubli d'un groupe, ajout d'une unité, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a interrogé $40$ élèves sur leur sport préféré. Les effectifs sont : Football $18$, Basket $12$, Natation $6$, Tennis $4$. Quelle est la fréquence (en nombre décimal) des élèves qui préfèrent le basket ?",
+      "options": [
+        "$0,30$",
+        "$0,25$",
+        "$0,20$",
+        "$0,15$"
+      ],
+      "correctAnswer": "$0,30$",
+      "explanation": "La fréquence relative s'obtient en divisant l'effectif de la catégorie par l'effectif total : $12 / 40 = 0,30$. Les distracteurs correspondent à des divisions erronées (par $48$, $60$, $80$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une enquête, les fréquences relatives de quatre catégories sont : $0,25$ ; $0,35$ ; $0,20$ ; $x$. Sachant que la somme des fréquences vaut $1$, quelle est la valeur de $x$ ?",
+      "options": [
+        "$0,20$",
+        "$0,15$",
+        "$0,10$",
+        "$0,05$"
+      ],
+      "correctAnswer": "$0,20$",
+      "explanation": "La somme des trois fréquences connues est $0,25 + 0,35 + 0,20 = 0,80$. Comme le total doit être $1$, on a $x = 1 - 0,80 = 0,20$. Les autres valeurs ne complètent pas la somme à $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente les effectifs de quatre groupes. Quel groupe a le plus grand effectif ?",
+      "options": [
+        "Groupe A",
+        "Groupe B",
+        "Groupe C",
+        "Groupe D"
+      ],
+      "correctAnswer": "Groupe C",
+      "explanation": "Sur le graphique, les hauteurs des barres indiquent les effectifs : Groupe A $12$, Groupe B $9$, Groupe C $15$, Groupe D $8$. La barre la plus haute correspond au Groupe C avec un effectif de $15$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Effectifs des quatre groupes",
+        "bars": [
+          {
+            "label": "Groupe A",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe B",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Groupe C",
+            "value": 15,
+            "tone": "red"
+          },
+          {
+            "label": "Groupe D",
+            "value": 8,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une école compte $200$ élèves. La fréquence des élèves qui mangent à la cantine est de $0,55$. Combien d'élèves mangent à la cantine ?",
+      "options": [
+        "$110$",
+        "$100$",
+        "$115$",
+        "$105$"
+      ],
+      "correctAnswer": "$110$",
+      "explanation": "Le nombre d'élèves concernés est l'effectif total multiplié par la fréquence : $200 \\times 0,55 = 110$. Les autres réponses proviennent d'erreurs de multiplication (arrondi, omission de la virgule, etc.).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

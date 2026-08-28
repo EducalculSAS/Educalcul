@@ -1,0 +1,295 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.037443+00:00",
+  "id": 505,
+  "code": "2nde-t02-c03",
+  "title": "Factoriser",
+  "description": "Cours structuré Educalcul : Factoriser.",
+  "subject": "Calcul algébrique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Calcul algébrique",
+    "titre_du_cours": "Factoriser",
+    "objectif_global": "Factoriser",
+    "mini_lecons_imposees": [
+      "Facteur commun.",
+      "Identités.",
+      "Choisir forme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul algébrique",
+      "lessons": [
+        {
+          "title": "Facteur commun.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu arrives dans une chambre totalement désorganisée où des jouets et des livres sont éparpillés partout. Pour y voir plus clair, tu décides de regrouper tout ce qui se ressemble dans des cartons. C'est exactement ce que nous allons faire en mathématiques avec la factorisation. Jusqu'à présent, tu as appris à développer, c'est-à-dire à transformer un produit en somme, un peu comme si tu ouvrais tous tes cartons pour étaler le contenu sur le sol. Aujourd'hui, on fait le chemin inverse. Factoriser, c'est l'art de transformer une somme ou une différence en un produit. Pourquoi s'embêter ? Parce qu'un produit est infiniment plus facile à manipuler, notamment pour résoudre des équations où l'on cherche quand une expression s'annule. C'est un outil puissant qui permet de simplifier des écritures lourdes en expressions élégantes et compactes. Ne t'inquiète pas si cela semble abstrait au début, c'est comme un jeu de piste où l'on cherche l'élément caché qui lie les différentes parties d'une expression. Une fois que tu auras l'œil pour repérer ce lien, tu verras que c'est presque satisfaisant de ranger ses calculs de cette manière."
+            },
+            {
+              "type": "paragraph",
+              "content": "La factorisation consiste à écrire une expression mathématique sous la forme d'un produit de facteurs. Pour y parvenir, on utilise la distributivité de manière inversée. La règle d'or est l'égalité suivante : $ka + kb = k(a + b)$. Ici, la lettre $k$ représente le facteur commun, c'est-à-dire l'élément qui est présent dans chaque terme de l'addition ou de la soustraction. Un terme est une partie de l'expression séparée par un signe $+$ ou $-$. Pour factoriser, on identifie ce $k$, on le place devant une parenthèse, et à l'intérieur de cette parenthèse, on place tout ce qu'il reste après avoir divisé chaque terme par $k$. Il est crucial de comprendre que factoriser ne change pas la valeur de l'expression, on change seulement sa forme. On passe d'une forme somme à une forme produit. Cela nous permet, par exemple, de voir immédiatement que si $k$ vaut $0$, alors tout le produit vaut $0$, même sans connaître les valeurs de $a$ et $b$. C'est cette propriété qui rend la factorisation indispensable en seconde pour l'étude des signes et la résolution d'équations complexes."
+            },
+            {
+              "type": "display_math",
+              "latex": "ka + kb = k(a + b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour factoriser une expression en utilisant un facteur commun, je te suggère de suivre scrupuleusement ces trois étapes. D'abord, l'identification. Regarde chaque terme de ton expression et décompose les multiplications. Par exemple, si tu as $6x$ et $9x^2$, pense que $6x$ c'est $3 \\times 2x$ et $9x^2$ c'est $3 \\times 3x^2$. Ici, le nombre $3$ est commun. Ensuite, la mise en évidence. Tu écris ce facteur commun $k$ seul, suivi d'une parenthèse ouverte. C'est comme si tu créais la boîte de rangement dont je te parlais tout à l'heure. Enfin, la rédaction du second facteur. À l'intérieur de la parenthèse, tu écris ce qui reste pour chaque terme original. Si tu as pris $k$ dans $ka$, il reste $a$. Si tu as pris $k$ dans $kb$, il reste $b$. Tu fermes la parenthèse et tu obtiens $k(a+b)$. Un conseil important : vérifie toujours ton résultat en redistribuant mentalement le terme devant la parenthèse. Si tu retombes sur l'expression de départ, c'est que ton factorisation est parfaitement juste. Si tu obtiens autre chose, c'est qu'un petit oubli s'est glissé dans la parenthèse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression suivante : $A = 12x + 18$. Nous voulons la factoriser. La première étape consiste à chercher le plus grand diviseur commun entre $12$ et $18$. Je me rappelle mes tables de multiplication : $12$ et $18$ sont tous les deux dans la table de $6$. Je peux donc écrire $12x$ comme $6 \\times 2x$ et $18$ comme $6 \\times 3$. Le facteur commun est donc $k = 6$. Maintenant, j'applique la méthode. Je place le $6$ devant la parenthèse : $6(...)$. Ensuite, je regarde ce qu'il reste. Pour le premier terme $12x$, après avoir retiré le $6$, il me reste $2x$. Pour le second terme $18$, après avoir retiré le $6$, il me reste $3$. Je place donc ces éléments dans la parenthèse, séparés par le signe $+$ qui était présent au départ. Le résultat final est $A = 6(2x + 3)$. Pour vérifier, je fais $6 \\times 2x = 12x$ et $6 \\times 3 = 18$. On retrouve bien $12x + 18$, le résultat est donc exact. C'est un exemple simple, mais il pose les bases de tout le raisonnement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Montons d'un cran avec une expression où le facteur commun est lui-même une expression entre parenthèses : $B = (x + 2)(3x - 1) + (x + 2)(x + 5)$. Au premier regard, cela peut paraître impressionnant, mais regarde bien. On a deux grands blocs séparés par un signe $+$. Dans le premier bloc, on voit $(x + 2)$. Dans le second bloc, on voit aussi $(x + 2)$. Le facteur commun n'est plus un simple nombre, c'est tout le bloc $(x + 2)$. Je vais donc le placer devant ma parenthèse de factorisation. J'écris d'abord $(x + 2)$, puis j'ouvre une grande parenthèse ou un crochet. Maintenant, je remplis l'intérieur. Qu'est-ce qui reste quand j'enlève $(x + 2)$ du premier bloc ? Il reste $(3x - 1)$. Qu'est-ce qui reste quand j'enlève $(x + 2)$ du second bloc ? Il reste $(x + 5)$. Je rassemble tout : $B = (x + 2)[(3x - 1) + (x + 5)]$. Mais attention, je ne m'arrête pas là ! L'intérieur du crochet peut être simplifié car ce sont des termes semblables. On a $3x + x = 4x$ et $-1 + 5 = 4$. L'expression devient $B = (x + 2)(4x + 4)$. On peut même encore factoriser $4$ dans le second bloc pour obtenir $B = 4(x + 2)(x + 1)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique et la plus traître est l'oubli du chiffre $1$. Imagine que tu as l'expression $C = 5x + 5$. Le facteur commun est $5$. Si tu écris $5(x)$, tu as fait une erreur car $5 \\times x$ donne $5x$, mais on a perdu le $5$ de la fin. Il faut se dire que $5$ c'est la même chose que $5 \\times 1$. Donc, quand on factorise le $5$, il reste $1$ dans la parenthèse. La bonne réponse est $5(x + 1)$. Un autre piège concerne les signes, surtout quand il y a un signe moins devant le facteur commun. Par exemple, pour factoriser $7 - 7x$, on peut prendre $7$ comme facteur commun et obtenir $7(1 - x)$. Certains élèves écrivent par erreur $7(x - 1)$ en inversant l'ordre, ce qui change totalement le résultat. Enfin, méfie-toi des expressions où le facteur commun est caché. Parfois, il faut d'abord développer une petite partie de l'expression pour faire apparaître le facteur commun. Prends l'habitude de bien souligner le facteur commun avant de commencer à écrire, cela évite de s'embrouiller dans les lettres et les parenthèses."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise l'expression suivante : $E = 7x - 21$.",
+              "answer": "$7(x - 3)$",
+              "hint": "Cherche un nombre qui divise à la fois $7$ et $21$.",
+              "explanation": "Le facteur commun est $7$ car $7x = 7 \\times x$ et $21 = 7 \\times 3$. En mettant $7$ en facteur, il reste $x$ et $-3$ dans la parenthèse."
+            },
+            {
+              "question": "Factorise l'expression suivante : $F = (2x + 3)(x - 1) - (2x + 3)(5x + 4)$.",
+              "answer": "$(2x + 3)(-4x - 5)$",
+              "hint": "Le facteur commun est l'expression entre parenthèses qui se répète.",
+              "explanation": "Le facteur commun est $(2x + 3)$. On écrit $(2x + 3)$ suivi d'une parenthèse contenant les restes : $(x - 1) - (5x + 4)$. En simplifiant l'intérieur : $x - 1 - 5x - 4 = -4x - 5$."
+            }
+          ]
+        },
+        {
+          "title": "Identités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "C'est le moment où les mathématiques deviennent un peu comme un jeu de reconnaissance visuelle. Tu as sans doute déjà remarqué que certaines expressions reviennent tout le temps, avec toujours la même structure. C'est comme si tu reconnaissais la mélodie d'une chanson avant même que les paroles commencent. En algèbre, ces mélodies s'appellent les identités remarquables. Jusqu'ici, on a factorisé en cherchant un élément commun, un petit lien visible. Mais parfois, il n'y a aucun facteur commun apparent. Pourtant, l'expression a une forme très particulière, comme un miroir ou un motif géométrique. C'est là qu'interviennent les identités remarquables. Elles sont comme des raccourcis magiques : si tu reconnais la forme, tu peux factoriser instantanément sans avoir à chercher pendant des minutes. Au début, on a l'impression d'apprendre des formules par cœur, mais très vite, tu vas commencer à les voir comme des puzzles. On ne cherche plus un facteur commun, on cherche un motif. C'est une compétence essentielle pour la seconde, car elle permet de débloquer des situations qui semblent impossibles au premier abord. Prépare-toi à devenir un détective des formes algébriques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une identité remarquable est une égalité toujours vraie, quelle que soit la valeur des nombres utilisés. Pour factoriser, on utilise ces égalités dans le sens inverse. Il y en a principalement trois à connaître. La première est la différence de deux carrés : $a^2 - b^2 = (a - b)(a + b)$. C'est la plus utile car elle transforme une soustraction de deux carrés en un produit de deux parenthèses opposées. La deuxième est le carré d'une somme : $a^2 + 2ab + b^2 = (a + b)^2$. Ici, on reconnaît un trinôme où le premier et le dernier terme sont des carrés, et le terme du milieu est le double produit. La troisième est le carré d'une différence : $a^2 - 2ab + b^2 = (a - b)^2$, très similaire à la précédente mais avec un signe moins devant le terme central. Factoriser avec ces identités demande de l'observation. Il ne s'agit pas de calculer, mais d'identifier qui joue le rôle de $a$ et qui joue le rôle de $b$ dans l'expression donnée. Une fois ces rôles attribués, on remplace simplement dans la formule. C'est un processus mécanique, mais qui demande une précision absolue sur les signes et les puissances."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Forme Somme",
+                "Forme Produit"
+              ],
+              "rows": [
+                [
+                  "$a^2 - b^2$",
+                  "$(a - b)(a + b)$"
+                ],
+                [
+                  "$a^2 + 2ab + b^2$",
+                  "$(a + b)^2$"
+                ],
+                [
+                  "$a^2 - 2ab + b^2$",
+                  "$(a - b)^2$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour factoriser avec une identité remarquable, je te propose cette stratégie en trois étapes. Étape 1 : L'analyse de la forme. Compte le nombre de termes. S'il y a deux termes séparés par un signe moins, et que les deux ressemblent à des carrés, c'est sûrement $a^2 - b^2$. S'il y a trois termes, regarde si le premier et le dernier sont des carrés positifs. Si oui, vérifie si le terme du milieu est bien le double produit de leurs racines. Étape 2 : L'identification des racines. C'est l'étape où l'on détermine $a$ et $b$. Par exemple, si tu as $25x^2$, la racine $a$ est $5x$ car $(5x)^2 = 25x^2$. Note bien ces valeurs sur ton brouillon pour ne pas te tromper. Étape 3 : La substitution. Écris la formule cible (par exemple $(a-b)(a+b)$) et remplace $a$ et $b$ par les expressions trouvées à l'étape précédente. N'oublie jamais les parenthèses lors de la substitution, surtout si $a$ ou $b$ sont des expressions complexes. Enfin, termine par une vérification rapide en développant ton produit pour voir si tu retrouves bien l'expression initiale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons l'expression $G = 49x^2 - 64$. On observe deux termes séparés par un signe moins. Les deux termes sont des carrés. $49x^2$ est le carré de $7x$ et $64$ est le carré de $8$. On est donc exactement dans la forme $a^2 - b^2$ avec $a = 7x$ et $b = 8$. On applique la formule $(a - b)(a + b)$. On remplace $a$ par $7x$ et $b$ par $8$. On obtient donc $G = (7x - 8)(7x + 8)$. C'est terminé ! C'est beaucoup plus rapide que de chercher un facteur commun, car ici, il n'y en avait aucun (à part $1$). Pour vérifier, on peut multiplier les parenthèses : $(7x \\times 7x) + (7x \\times 8) - (8 \\times 7x) - (8 \\times 8) = 49x^2 + 56x - 56x - 64 = 49x^2 - 64$. On retrouve bien notre point de départ. Ce type de factorisation est extrêmement fréquent dans les exercices de seconde, surtout pour simplifier des fractions algébriques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons maintenant l'expression $H = 9x^2 + 30x + 25$. Ici, nous avons trois termes. On remarque que le premier terme $9x^2$ est le carré de $3x$, et le dernier terme $25$ est le carré de $5$. On a donc $a = 3x$ et $b = 5$. Pour savoir s'il s'agit d'un carré parfait, on regarde le terme du milieu. Le double produit serait $2 \\times a \\times b$, soit $2 \\times 3x \\times 5 = 30x$. C'est exactement ce que nous avons dans l'expression ! On est donc face à la forme $a^2 + 2ab + b^2$ qui se factorise en $(a + b)^2$. En remplaçant $a$ et $b$, on obtient $H = (3x + 5)^2$. Si le terme du milieu avait été $-30x$, nous aurions utilisé l'identité $(a - b)^2$ et obtenu $(3x - 5)^2$. Cette méthode permet de condenser une expression longue en une seule parenthèse au carré, ce qui est très utile pour étudier les variations d'une fonction plus tard dans l'année."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus redoutable est de confondre $a^2 - b^2$ avec $a^2 + b^2$. Attention : l'expression $a^2 + b^2$ ne se factorise pas avec les identités remarquables classiques dans l'ensemble des nombres réels. Si tu vois un plus entre deux carrés, ne force pas la factorisation avec ces formules. Un autre point de vigilance est l'oubli du coefficient $2$ dans le double produit. Certains élèves voient $x^2 + 4x + 4$ et écrivent $(x+2)^2$ correctement, mais se trompent sur $x^2 + 2x + 1$ en oubliant que le $2$ devant le $x$ est indispensable. Enfin, fais très attention aux racines. Par exemple, pour $16x^2$, la racine est $4x$ et non $16x$ ou $4$. L'erreur vient souvent d'une précipitation : on écrit le nombre sans mettre le $x$ au carré. Prends toujours le temps d'écrire $a = ...$ et $b = ...$ sur ton papier. Cela prend $5$ secondes mais t'évite $90$ % des erreurs bêtes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise $I = 100 - 9x^2$.",
+              "answer": "$(10 - 3x)(10 + 3x)$",
+              "hint": "C'est une différence de deux carrés. Qui est la racine de $100$ et celle de $9x^2$ ?",
+              "explanation": "$100 = 10^2$ et $9x^2 = (3x)^2$. On applique la formule $a^2 - b^2 = (a-b)(a+b)$ avec $a=10$ et $b=3x$."
+            },
+            {
+              "question": "Factorise $J = x^2 - 14x + 49$.",
+              "answer": "$(x - 7)^2$",
+              "hint": "Il y a trois termes. Le premier et le dernier sont des carrés. Regarde le signe du terme du milieu.",
+              "explanation": "$x^2$ est le carré de $x$, $49$ est le carré de $7$, et $-14x$ est le double produit $2 \\times x \\times (-7)$. On utilise $(a-b)^2$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir forme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux outils puissants dans ta boîte à outils mathématique : la recherche du facteur commun et les identités remarquables. Mais dans la vraie vie, et surtout dans les exercices de contrôle, on ne te dira pas : Voici un exercice pour utiliser l'identité numéro $2$. Tu te retrouveras face à une expression et tu devras décider seul quelle méthode appliquer. C'est un peu comme si tu étais devant un meuble à monter : est-ce que j'utilise le tournevis ou la clé Allen ? Si tu utilises le mauvais outil, tu vas soit perdre un temps fou, soit bloquer complètement. La difficulté n'est plus d'appliquer la formule, car tu sais le faire, mais de choisir la bonne stratégie. C'est l'étape la plus importante pour devenir vraiment agile en calcul algébrique. Parfois, il y a même un piège : les deux méthodes peuvent sembler possibles, mais l'une d'elles est beaucoup plus rapide que l'autre. Ou pire, il faut utiliser les deux l'une après l'autre ! Nous allons apprendre ensemble à lire l'expression pour qu'elle nous dise elle-même comment elle veut être factorisée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le choix de la méthode dépend entièrement de la structure visuelle de l'expression. La priorité absolue doit toujours être donnée au facteur commun. Pourquoi ? Parce que c'est la méthode la plus générale et la plus simple. Si tu vois un élément qui se répète dans tous les termes, ne cherche pas midi à quatorze heures : factorise par cet élément. Les identités remarquables, elles, sont des outils spécialisés. On ne les utilise que si le facteur commun est absent ou insuffisant. Par exemple, si tu as $3x^2 - 12$, tu pourrais être tenté de voir une différence de carrés, mais remarque que $3$ est un facteur commun. En factorisant d'abord par $3$, tu obtiens $3(x^2 - 4)$, et c'est seulement là que tu vois apparaître une identité remarquable à l'intérieur de la parenthèse : $3(x - 2)(x + 2)$. C'est ce qu'on appelle une factorisation complète. Une expression est complètement factorisée quand plus aucun des facteurs obtenus ne peut être factorisé à nouveau. C'est comme éplucher un oignon : on enlève une couche (le facteur commun), puis on regarde s'il reste une autre couche à enlever (une identité remarquable)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Facteur Commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je cherche un element present dans TOUS les termes. Si oui $\\rightarrow$ Je factorise par cet element."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Identites Remarquables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "S'il n'y a pas de facteur commun, je regarde la forme : 2 termes avec un moins ? $\\rightarrow$ $a^2-b^2$. 3 termes avec des carres ? $\\rightarrow$ $(a\\pm b)^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Verification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je regarde si mes nouveaux facteurs peuvent encore etre factorises. Si non $\\rightarrow$ Termine !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne plus jamais hésiter, je te propose d'appliquer cet algorithme de décision systématique. Étape 1 : Le scan du facteur commun. Regarde l'expression globale. Y a-t-il un nombre, une lettre ou une parenthèse qui apparaît partout ? Si oui, factorise immédiatement. C'est ton premier réflexe. Étape 2 : Le comptage des termes. Si aucun facteur commun n'est visible, compte les termes. S'il y en a $2$ et qu'il y a un signe moins, teste l'identité $a^2 - b^2$. S'il y en a $3$ et que tu vois des carrés, teste les identités $(a  b)^2$. Étape 3 : La vérification de la factorisation complète. Une fois que tu as ton produit, regarde chaque parenthèse. Peux-tu encore appliquer l'une des deux méthodes à l'intérieur d'une de ces parenthèses ? Si c'est le cas, continue jusqu'à ce que ce soit impossible. Étape 4 : La preuve finale. Développe rapidement ton résultat final pour t'assurer que tu n'as rien perdu en route. En suivant cet ordre (Facteur Commun $\\rightarrow$ Identités $\\rightarrow$ Vérification), tu éviteras la majorité des erreurs de stratégie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'expression $K = 2x^2 - 18$. Si on regarde vite, on voit un signe moins et des nombres qui ressemblent à des carrés. On pourrait tenter $a^2 - b^2$ tout de suite, mais $2$ n'est pas un carré parfait. On se rappelle alors de la priorité : chercher le facteur commun. Ici, $2$ et $18$ sont divisibles par $2$. On factorise donc d'abord par $2$. On obtient $K = 2(x^2 - 9)$. Maintenant, on s'arrête et on regarde l'intérieur de la parenthèse. $x^2 - 9$ est une différence de deux carrés ! C'est la forme $a^2 - b^2$ avec $a = x$ et $b = 3$. On factorise donc l'intérieur en $(x - 3)(x + 3)$. On ne doit pas oublier le $2$ qui était devant. Le résultat final et complet est $K = 2(x - 3)(x + 3)$. Si on s'était arrêté à $2(x^2 - 9)$, la réponse aurait été juste mais incomplète, et on aurait perdu des points. C'est l'exemple parfait de l'utilisation combinée des deux méthodes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expression $L = (x - 1)^2 + (x - 1)(2x + 5)$. Ici, on a deux termes. Le premier terme est un carré, ce qui pourrait faire penser à une identité remarquable. Mais attention ! Le terme $(x - 1)$ apparaît dans les deux parties de l'expression. Le facteur commun est donc $(x - 1)$. C'est lui qui doit passer devant. On écrit $(x - 1) [ ... ]$. Pour le premier terme $(x - 1)^2$, quand on retire un $(x - 1)$, il en reste un : $(x - 1)$. Pour le second terme $(x - 1)(2x + 5)$, quand on retire le facteur commun, il reste $(2x + 5)$. On assemble le tout : $L = (x - 1) [ (x - 1) + (2x + 5) ]$. On simplifie l'intérieur du crochet : $x - 1 + 2x + 5 = 3x + 4$. Le résultat final est $L = (x - 1)(3x + 4)$. On voit ici que même si une identité remarquable était présente au début (le carré), le facteur commun était la voie la plus simple et la seule possible pour transformer cette somme en produit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est de sauter l'étape du facteur commun pour foncer sur les identités. Par exemple, devant $5x^2 - 20$, beaucoup d'élèves essaient de forcer $\\sqrt{5}x$ et $\\sqrt{20}$ comme racines. C'est beaucoup trop compliqué et source d'erreurs. Prends l'habitude de toujours te demander : Est-ce que je peux diviser tous les termes par quelque chose ? Un autre piège est la factorisation incomplète. C'est l'erreur dont je parlais avec l'exemple $2(x^2 - 9)$. En seconde, les professeurs attendent presque toujours la forme la plus simple possible. Si tu peux encore factoriser, fais-le. Enfin, méfie-toi des expressions qui ressemblent à des identités mais n'en sont pas. Par exemple, $x^2 + 9$ n'est pas une différence de carrés car c'est un plus. Ne tente pas de factoriser cela en $(x+3)(x+3)$, car cela donnerait $x^2 + 6x + 9$, ce qui est différent. Sois vigilant sur les signes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 6
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise complètement l'expression $M = 3x^2 - 27$.",
+              "answer": "$3(x - 3)(x + 3)$",
+              "hint": "Commence par chercher le facteur commun, puis regarde si tu peux utiliser une identité remarquable.",
+              "explanation": "On factorise d'abord par $3$ pour obtenir $3(x^2 - 9)$. Ensuite, on reconnaît $x^2 - 9$ comme $x^2 - 3^2$, ce qui donne $(x-3)(x+3)$."
+            },
+            {
+              "question": "Factorise $N = (2x + 1)^2 - (2x + 1)(x - 5)$.",
+              "answer": "$(2x + 1)(x + 6)$",
+              "hint": "Identifie le facteur commun entre les deux blocs.",
+              "explanation": "Le facteur commun est $(2x + 1)$. On factorise : $(2x + 1) [ (2x + 1) - (x - 5) ]$. On simplifie l'intérieur : $2x + 1 - x + 5 = x + 6$."
+            },
+            {
+              "question": "Factorise $P = 4x^2 + 12x + 9$.",
+              "answer": "$(2x + 3)^2$",
+              "hint": "Y a-t-il un facteur commun ? Non. Combien y a-t-il de termes ? Trois. Est-ce un carré parfait ?",
+              "explanation": "Il n'y a pas de facteur commun. $4x^2 = (2x)^2$, $9 = 3^2$ et le double produit $2 \\times 2x \\times 3 = 12x$. C'est l'identité $(a+b)^2$."
+            },
+            {
+              "question": "Factorise $Q = x^2 - 16$",
+              "answer": "$(x-4)(x+4)$",
+              "hint": "C'est une différence de deux carrés.",
+              "explanation": " On utilise $a^2-b^2$ avec $a=x$ et $b=4$."
+            },
+            {
+              "question": "Factorise $R = (x+3)^2 - 25$",
+              "answer": "$(x-2)(x+8)$",
+              "hint": "C'est une différence de deux carrés où $a$ est une parenthèse.",
+              "explanation": "L'expression est de la forme $a^2-b^2$ avec $a=(x+3)$ et $b=5$. On a donc $[(x+3)-5][(x+3)+5] = (x-2)(x+8)$."
+            },
+            {
+              "question": "Factorise $S = x^2+10x+25$",
+              "answer": "$(x+5)^2$",
+              "hint": "C'est un trinôme carré parfait.",
+              "explanation": "$x^2$ est le carré de $x$, $25$ est le carré de $5$ et $10x$ est le double produit $2 \\times x \\times 5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

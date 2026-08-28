@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Si... alors",
+  "title": "Implication et contre-exemple : Si... alors",
+  "blocks": [
+    {
+      "title": "Vérité d'une implication simple",
+      "content": "L'implication « Si $x$ est un entier pair, alors $x^2$ est pair » est-elle vraie ? Répondez par Vrai ou Faux.",
+      "correctAnswer": "Vrai",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si $x$ est pair, on peut écrire $x=2k$ avec $k$ entier. Alors $x^2 = (2k)^2 = 4k^2 = 2(2k^2)$, qui est un multiple de $2$, donc pair. L'implication est donc vraie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une implication",
+      "content": "Complétez l'implication : « Si $n$ est un multiple de $4$, alors $n^2$ est un multiple de ___ ».",
+      "correctAnswer": "16",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si $n$ est multiple de $4$, on écrit $n=4k$. Alors $n^2 = 16k^2$, qui est un multiple de $16$. Le nombre manquant est $16$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver un contre-exemple",
+      "content": "Donnez une valeur de $x$ qui contredit l'implication : « Si $x>0$, alors $x^2 > x$ ».",
+      "correctAnswer": "0,5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $x=0,5$, on a $x>0$ mais $x^2 = 0,25$ qui n'est pas strictement supérieur à $0,5$. Donc $0,5$ est un contre-exemple.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

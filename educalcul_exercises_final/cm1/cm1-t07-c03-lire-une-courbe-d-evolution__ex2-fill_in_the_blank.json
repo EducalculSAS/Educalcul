@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Variation",
+  "title": "Lire une courbe d'évolution : Variation de la hauteur d'une plante",
+  "blocks": [
+    {
+      "title": "Vocabulaire de la variation",
+      "content": "Voici le tableau de la hauteur d'une plante en centimètres au cours d'une semaine :\\n\\nComplète la phrase : Entre mardi et mercredi, la hauteur de la plante {{1}}.",
+      "blanks": [
+        "reste stable|ne change pas|est stable"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après le tableau, la hauteur est de $7$ cm mardi et de $7$ cm mercredi. Comme la valeur ne change pas, on dit que la hauteur reste stable.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Hauteur (cm)"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "5"
+          ],
+          [
+            "Mardi",
+            "7"
+          ],
+          [
+            "Mercredi",
+            "7"
+          ],
+          [
+            "Jeudi",
+            "10"
+          ],
+          [
+            "Vendredi",
+            "8"
+          ]
+        ],
+        "caption": "Hauteur de la plante dans la semaine"
+      }
+    },
+    {
+      "title": "Calculer une variation",
+      "content": "On utilise toujours les mêmes données :\\nLundi : $5$ cm, Mardi : $7$ cm, Mercredi : $7$ cm, Jeudi : $10$ cm, Vendredi : $8$ cm.\\n\\nComplète : Entre lundi et mardi, la plante a grandi de {{1}} cm. Entre jeudi et vendredi, elle a {{2}} de $2$ cm.",
+      "blanks": [
+        "2",
+        "diminué|baissé|perdu"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Entre lundi ($5$ cm) et mardi ($7$ cm), la différence est $7 - 5 = 2$ cm : c'est une augmentation de $2$ cm. Entre jeudi ($10$ cm) et vendredi ($8$ cm), la différence est $8 - 10 = -2$ cm : la hauteur a diminué de $2$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser l'évolution sur la semaine",
+      "content": "Toujours avec les mêmes données (Lundi $5$, Mardi $7$, Mercredi $7$, Jeudi $10$, Vendredi $8$).\\n\\nLa plus forte augmentation a lieu entre {{1}} et {{2}} (gain de $3$ cm). Le vendredi, la hauteur mesurée est de {{3}} cm.",
+      "blanks": [
+        "mercredi",
+        "jeudi",
+        "8"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Calculons les variations journalières : Lundi-Mardi $+2$, Mardi-Mercredi $0$, Mercredi-Jeudi $+3$, Jeudi-Vendredi $-2$. La plus forte hausse est bien entre mercredi et jeudi ($+3$ cm). La valeur du vendredi est $8$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

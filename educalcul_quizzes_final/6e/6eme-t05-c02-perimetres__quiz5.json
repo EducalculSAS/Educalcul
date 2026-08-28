@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_course_id": 353,
+  "_course_code": "6eme-t05-c02-perimetres",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Formules",
+  "title": "Approfondissement : Formules de périmètres",
+  "questions": [
+    {
+      "text": "Quelle est la formule exacte pour calculer le périmètre $P$ d'un rectangle de longueur $L$ et de largeur $l$ ?",
+      "options": [
+        "$P = L \\times l$",
+        "$P = L + l$",
+        "$P = 2 \\times (L + l)$",
+        "$P = 2 \\times L \\times l$"
+      ],
+      "correctAnswer": "$P = 2 \\times (L + l)$",
+      "explanation": "Le périmètre d'un rectangle est la somme des longueurs de ses quatre côtés. Comme les côtés opposés sont égaux, on a deux longueurs $L$ et deux largeurs $l$. La formule est donc $P = L + l + L + l = 2L + 2l = 2(L + l)$. L'option A correspond à l'aire, l'option B omet les deux autres côtés, et l'option D n'a pas de sens géométrique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a un périmètre de $36$ cm. Quelle est la longueur d'un côté de ce carré ?",
+      "options": [
+        "$6$ cm",
+        "$9$ cm",
+        "$18$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$9$ cm",
+      "explanation": "Un carré a quatre côtés de même longueur $c$. Son périmètre est $P = 4 \\times c$. Pour trouver $c$, on divise le périmètre par $4$ : $c = 36 / 4 = 9$ cm. L'option $6$ cm correspond à une division par $6$, $18$ cm à une division par $2$ (demi-périmètre) et $12$ cm à une division par $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triangle $ABC$ ci-contre a des côtés mesurant $AB = 5$ cm, $BC = 7$ cm et $AC = 6$ cm. Quelle est son périmètre ?",
+      "options": [
+        "$16$ cm",
+        "$18$ cm",
+        "$17$ cm",
+        "$19$ cm"
+      ],
+      "correctAnswer": "$18$ cm",
+      "explanation": "Le périmètre d'un triangle est la somme des longueurs de ses trois côtés. On calcule $AB + BC + AC = 5 + 7 + 6 = 18$ cm. L'option $16$ cm oublie d'additionner un côté ou fait une erreur de calcul, $17$ cm et $19$ cm sont des erreurs de calcul proches du résultat.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "7 cm",
+          "6 cm"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "On donne un cercle de rayon $r = 10$ cm. En prenant $\\pi \\approx 3,14$, quelle est la valeur approchée de son périmètre (circonférence) ?",
+      "options": [
+        "$31,4$ cm",
+        "$62,8$ cm",
+        "$314$ cm",
+        "$6,28$ cm"
+      ],
+      "correctAnswer": "$62,8$ cm",
+      "explanation": "La formule du périmètre (circonférence) d'un cercle est $P = 2 \\times \\pi \\times r$. En remplaçant : $P = 2 \\times 3,14 \\times 10 = 62,8$ cm. L'option $31,4$ cm correspond à $\\pi \\times r$ (demi-cercle ou confusion avec diamètre), $314$ cm correspond à $\\pi \\times r^2$ (formule de l'aire) et $6,28$ cm correspond à $2 \\times \\pi$ (oubli du rayon).",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 10,
+        "centerLabel": "O",
+        "caption": "Cercle de rayon 10 cm"
+      }
+    },
+    {
+      "text": "Le périmètre d'un rectangle est de $30$ cm. Sa longueur mesure $8$ cm. Quelle est sa largeur ?",
+      "options": [
+        "$7$ cm",
+        "$15$ cm",
+        "$22$ cm",
+        "$11$ cm"
+      ],
+      "correctAnswer": "$7$ cm",
+      "explanation": "On utilise la formule $P = 2 \\times (L + l)$. On sait que $P = 30$ et $L = 8$. On a $30 = 2 \\times (8 + l)$. On divise par $2$ : $15 = 8 + l$. Donc $l = 15 - 8 = 7$ cm. L'option $15$ cm correspond à la demi-somme $L+l$ (oubli de soustraire $L$), $22$ cm à $30-8$ (oubli de diviser par $2$) et $11$ cm à une erreur de calcul ($15-4$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

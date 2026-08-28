@@ -1,0 +1,367 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.812644+00:00",
+  "id": 109,
+  "code": "ce1-t05-c02",
+  "title": "Problèmes de composition",
+  "description": "Cours structuré Educalcul : Problèmes de composition.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de composition",
+    "objectif_global": "Problèmes de composition",
+    "mini_lecons_imposees": [
+      "Chercher le tout.",
+      "Chercher une partie.",
+      "Représenter en parties-tout."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Chercher le tout.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chercher le tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as des billes dans deux poches. Dans la poche de gauche, tu comptes $3$ billes. Dans la poche de droite, tu en comptes $2$. Tu veux savoir combien de billes tu as en tout. C'est ce qu'on appelle un problème de composition : on cherche le tout quand on connaît les deux parties. Le tout, c'est le total, la somme des parties réunies."
+            },
+            {
+              "type": "definition",
+              "term": "Le tout",
+              "definition": "C'est le nombre total obtenu quand on met ensemble plusieurs groupes. Dans un problème, le tout est souvent la réponse à la question « Combien en tout ? » ou « Quel est le total ? ».",
+              "example": "Si tu as $4$ voitures rouges et $3$ voitures bleues, le tout est $7$ voitures."
+            },
+            {
+              "type": "number_line",
+              "caption": "On part de $3$, on ajoute $2$, on arrive à $5$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Départ"
+                },
+                {
+                  "value": 5,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 3,
+                  "end": 5,
+                  "label": "+2"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment on écrit cette addition en colonne. C'est très utile quand les nombres deviennent plus grands, par exemple $12$ et $5$. On aligne les chiffres des unités sous les unités, les dizaines sous les dizaines. On additionne colonne par colonne, en partant de la droite. Si le total d'une colonne dépasse $9$, on reporte une dizaine à la colonne de gauche."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "12",
+                "5"
+              ],
+              "result": "17",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une petite histoire. Léa a $7$ autocollants dans son album. Son frère lui en donne $5$ de plus pour son anniversaire. Combien d'autocollants Léa a-t-elle maintenant ? Pour le savoir, on identifie les deux parties : $7$ et $5$. On les additionne pour obtenir le tout. On peut aussi utiliser un diagramme en barres pour comparer les quantités."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Les deux parties ($7$ et $5$) et le total ($12$).",
+              "bars": [
+                {
+                  "label": "Partie 1",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie 2",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 12,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant trouver le tout en ajoutant les parties. Dans la prochaine leçon, nous verrons comment faire quand on connaît le tout et une seule partie. Tu vas découvrir que c'est tout aussi simple, mais avec une soustraction."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tom a $4$ billes rouges et $3$ billes bleues. Combien de billes a-t-il en tout ?",
+              "answer": "$7$ billes",
+              "hint": "Ajoute les deux parties : $4 + 3$.",
+              "explanation": "On cherche le tout. Les parties sont $4$ et $3$. L'addition $4 + 3 = 7$ donne le total."
+            },
+            {
+              "question": "Calcule l'addition suivante : $15 + 4 = ?$",
+              "answer": "$19$",
+              "hint": "Mets les nombres en colonne : aligne les unités. $5 + 4 = 9$, il n'y a pas de retenue.",
+              "explanation": "En colonne : $5 + 4 = 9$ unités, $1$ dizaine reste $1$ dizaine. Le résultat est $19$."
+            },
+            {
+              "question": "Dans un panier, il y a $8$ pommes vertes et $6$ pommes rouges. Combien de pommes y a-t-il au total ?",
+              "answer": "$14$ pommes",
+              "hint": "Identifie les deux parties : $8$ et $6$. Fais l'addition $8 + 6$.",
+              "explanation": "Les parties sont $8$ et $6$. $8 + 6 = 14$. Le tout est $14$ pommes."
+            }
+          ]
+        },
+        {
+          "title": "Chercher une partie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chercher une partie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, tu connais le total et l'une des parties. Par exemple, tu as $8$ bonbons en tout. Tu en as mangé $3$. Combien t'en reste-t-il ? Ici, le tout est $8$, une partie est $3$ (les bonbons mangés), et l'autre partie est inconnue (les bonbons qui restent). On cherche une partie manquante."
+            },
+            {
+              "type": "definition",
+              "term": "Une partie",
+              "definition": "C'est l'un des groupes qui forment le tout. Dans un problème, on peut connaître le tout et une partie, et il faut trouver l'autre partie. On utilise alors la soustraction : tout moins partie connue = partie manquante.",
+              "example": "Il y a $10$ élèves en tout. $4$ sont des garçons. L'autre partie (les filles) est $10 - 4 = 6$."
+            },
+            {
+              "type": "number_line",
+              "caption": "On part du tout $8$, on retire $3$, on arrive à $5$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "Tout"
+                },
+                {
+                  "value": 5,
+                  "label": "Partie restante"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 5,
+                  "end": 8,
+                  "label": "-3"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour faire ce calcul, on utilise la soustraction. On écrit le tout en haut, la partie connue en bas, et on trouve la différence. Attention : on ne peut pas soustraire un nombre plus grand que le tout. Vérifie toujours que la partie connue est plus petite que le tout."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "8",
+                "3"
+              ],
+              "result": "5",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons un autre exemple avec des objets. Dans une classe, il y a $12$ élèves en tout. $5$ sont des garçons. Combien y a-t-il de filles ? Le tout est $12$, une partie (garçons) est $5$. L'autre partie (filles) est $12 - 5 = 7$. On peut aussi représenter cette égalité avec une balance : le tout d'un côté, les deux parties de l'autre."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                12
+              ],
+              "right": [
+                5,
+                7
+              ],
+              "caption": "Le tout $12$ est équilibré par les deux parties $5$ et $7$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant trouver une partie manquante en faisant une soustraction. Dans la prochaine leçon, nous apprendrons à dessiner un schéma simple pour représenter ces problèmes et choisir l'opération plus facilement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a $9$ oiseaux sur une branche. $4$ s'envolent. Combien d'oiseaux restent sur la branche ?",
+              "answer": "$5$ oiseaux",
+              "hint": "Le tout est $9$, une partie est $4$. Soustrais : $9 - 4$.",
+              "explanation": "On connaît le tout ($9$) et une partie ($4$). La partie manquante est $9 - 4 = 5$."
+            },
+            {
+              "question": "Calcule la soustraction : $14 - 6 = ?$",
+              "answer": "$8$",
+              "hint": "Mets en colonne : $4 - 6$ ne va pas, on emprunte une dizaine. $14 - 6 = 8$.",
+              "explanation": "On pose $14 - 6$. On emprunte $1$ dizaine : $14$ unités $- 6$ unités $= 8$ unités. Résultat $8$."
+            },
+            {
+              "question": "Une boîte contient $15$ crayons. $7$ sont verts, les autres sont jaunes. Combien y a-t-il de crayons jaunes ?",
+              "answer": "$8$ crayons jaunes",
+              "hint": "Le tout est $15$, la partie verte est $7$. Fais $15 - 7$.",
+              "explanation": "Tout $= 15$, partie connue $= 7$. Partie manquante $= 15 - 7 = 8$."
+            }
+          ]
+        },
+        {
+          "title": "Représenter en parties-tout.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter en parties-tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessiner un schéma aide à voir le lien entre les parties et le tout. Imagine un cercle qui représente le total. On le coupe en deux parts : une part pour chaque partie. C'est comme un gâteau partagé entre deux amis. Chaque part montre une partie, le cercle entier montre le tout."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Le cercle entier vaut $5$. Les deux parts montrent $3$ et $2$.",
+              "slices": [
+                {
+                  "label": "Partie 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie 2",
+                  "value": 2,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce dessin s'appelle un diagramme en parties-tout. Il sert pour les deux types de problèmes : trouver le tout ou trouver une partie. Regarde comment on place les nombres : le tout s'écrit au-dessus ou à côté du cercle, les parties dans les parts. Si tu cherches le tout, tu additionnes les deux parties. Si tu cherches une partie, tu soustrais la partie connue du tout."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Les parties et le tout représentés par des barres.",
+              "bars": [
+                {
+                  "label": "Partie 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Partie 2",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Total",
+                  "value": 10,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu vas t'entraîner avec des problèmes mélangés. Parfois il faut ajouter, parfois soustraire. Le schéma t'aide à choisir l'opération. Lis bien la question : est-ce qu'on te demande le total (le tout) ou ce qui reste (une partie) ? Dessine ton propre diagramme si tu veux, ça rend le problème plus clair."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le tout et les parties dans un problème.",
+                "Je sais trouver le tout en ajoutant les deux parties.",
+                "Je sais trouver une partie manquante en soustrayant la partie connue du tout.",
+                "Je sais représenter un problème avec un diagramme en parties-tout (cercle ou barres).",
+                "Je choisis la bonne opération (addition ou soustraction) selon ce qu'on me demande."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde le diagramme : le cercle entier vaut $10$. Une partie vaut $4$. Combien vaut l'autre partie ?",
+              "answer": "$6$",
+              "hint": "Le tout est $10$, une partie est $4$. Fais $10 - 4$.",
+              "explanation": "Le diagramme montre le tout $10$ et une partie $4$. L'autre partie est $10 - 4 = 6$."
+            },
+            {
+              "question": "Dans un sac, il y a $6$ billes bleues et $5$ billes rouges. Dessine un diagramme en parties-tout et trouve le total.",
+              "answer": "$11$ billes",
+              "hint": "Les deux parties sont $6$ et $5$. Le tout est $6 + 5$.",
+              "explanation": "On additionne les deux parties : $6 + 5 = 11$. Le diagramme montre deux parts ($6$ et $5$) qui forment le cercle entier $11$."
+            },
+            {
+              "question": "Il y a $13$ enfants dans le parc. $8$ font du vélo, les autres jouent au ballon. Combien d'enfants jouent au ballon ?",
+              "answer": "$5$ enfants",
+              "hint": "Le tout est $13$, une partie (vélo) est $8$. L'autre partie (ballon) est $13 - 8$.",
+              "explanation": "On connaît le tout ($13$) et une partie ($8$). La partie manquante est $13 - 8 = 5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

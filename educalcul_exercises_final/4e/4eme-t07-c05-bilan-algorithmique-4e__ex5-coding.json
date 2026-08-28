@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Programmer et déboguer",
+  "title": "Approfondissement : Programmer et déboguer",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Écrire un algorithme, en pseudo‑code ou en Python, qui demande à l'utilisateur un entier naturel $n$ et qui affiche la somme $1 + 2 + \\dots + n$.",
+      "correctAnswer": "Algorithme :\\nÉtape 1 : entrer n\\nÉtape 2 : somme ← 0\\nÉtape 3 : pour i de 1 à n faire\\n    somme ← somme + i\\nÉtape 4 : fin pour\\nÉtape 5 : afficher somme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise une variable somme à 0. Ensuite, une boucle pour parcourt les entiers de 1 à n, à chaque itération on ajoute i à somme. À la fin de la boucle, somme contient 1 + 2 + ... + n, que l'on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Corriger un algorithme factoriel",
+      "content": "L'algorithme suivant est censé calculer le factoriel d'un entier $n$ mais contient une erreur. Identifier l'erreur et donner la version corrigée.\\n\\nAlgorithme :\\nÉtape 1 : entrer n\\nÉtape 2 : fact ← 0\\nÉtape 3 : pour i de 1 à n faire\\n    fact ← fact × i\\nÉtape 4 : fin pour\\nÉtape 5 : afficher fact",
+      "correctAnswer": "L'erreur est l'initialisation de fact à 0. Comme tout produit par 0 donne 0, le résultat sera toujours 0. Il faut initialiser fact à 1.\\n\\nAlgorithme corrigé :\\nÉtape 1 : entrer n\\nÉtape 2 : fact ← 1\\nÉtape 3 : pour i de 1 à n faire\\n    fact ← fact × i\\nÉtape 4 : fin pour\\nÉtape 5 : afficher fact",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable fact doit commencer à 1 car c'est l'élément neutre de la multiplication. Si on commence à 0, chaque multiplication garde la valeur 0. En corrigeant l'initialisation, la boucle calcule correctement n! = 1 × 2 × ... × n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de primalité",
+      "content": "Écrire un algorithme qui demande un entier $n > 1$ et qui affiche « Premier » si $n$ est un nombre premier, sinon « Non premier ».",
+      "correctAnswer": "Algorithme :\\nÉtape 1 : entrer n\\nÉtape 2 : si n ≤ 1 alors afficher « Non premier » et arrêter\\nÉtape 3 : premier ← vrai\\nÉtape 4 : pour i de 2 jusqu'à racine carrée de n faire\\n    si n modulo i = 0 alors premier ← faux\\nÉtape 5 : fin pour\\nÉtape 6 : si premier alors afficher « Premier » sinon afficher « Non premier »",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la divisibilité de n par tous les entiers i de 2 jusqu'à la racine carrée de n. Si un diviseur est trouvé, n n'est pas premier. Sinon, n est premier. La condition n ≤ 1 gère les cas non valides.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,519 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.911497+00:00",
+  "id": 459,
+  "code": "3eme-t01-c05",
+  "title": "Racine carrée",
+  "description": "Cours structuré Educalcul : Racine carrée.",
+  "subject": "Nombres, arithmétique, puissances et racines",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Nombres, arithmétique, puissances et racines",
+    "titre_du_cours": "Racine carrée",
+    "objectif_global": "Racine carrée",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Simplifier cas simples.",
+      "Calculs / géométrie."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Nombres, arithmétique, puissances et racines",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une racine carrée ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as un carré parfait, comme un carreau de carrelage. Si tu connais l'aire de ce carré, par exemple $16\\ \\text{cm}^2$, tu peux te demander : quelle est la longueur du côté ? C'est exactement la question à laquelle répond la racine carrée. On cherche le nombre positif qui, multiplié par lui-même, donne $16$. Tu connais sûrement la réponse : $4$, car $4 \\times 4 = 16$. On écrit cela $\\sqrt{16} = 4$. Le symbole $\\sqrt{\\ }$ s'appelle le radical, et le nombre qui se trouve dessous (ici $16$) s'appelle le radicande."
+            },
+            {
+              "type": "definition",
+              "term": "Racine carrée",
+              "definition": "Soit $a$ un nombre positif ou nul. La racine carrée de $a$, notée $\\sqrt{a}$, est l'unique nombre positif $x$ tel que $x^2 = a$.",
+              "example": "$\\sqrt{25} = 5$ car $5^2 = 25$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, la racine carrée est toujours positive ou nulle par définition. Même si $(-5)^2 = 25$, on écrit $\\sqrt{25} = 5$ et pas $-5$. C'est une convention qui évite bien des ambiguïtés. Pour les nombres qui ne sont pas des carrés parfaits, comme $2$ ou $10$, la racine carrée n'est pas un nombre entier ni un nombre décimal fini : c'est un nombre irrationnel, dont l'écriture décimale ne s'arrête jamais et ne se répète pas. On laisse alors souvent le symbole $\\sqrt{2}$ ou $\\sqrt{10}$ comme forme exacte."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{a} \\ge 0 \\quad \\text{et} \\quad (\\sqrt{a})^2 = a"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, pense à un carré d'aire $a$. La longueur de son côté est exactement $\\sqrt{a}$. Si $a=2$, le côté mesure $\\sqrt{2} \\approx 1,414\\ \\text{cm}$. Tu peux vérifier sur une calculatrice : tape $\\sqrt{2}$ et tu verras une suite de chiffres qui ne s'arrête pas. C'est ça, l'irrationnel : on ne peut pas l'écrire exactement avec une virgule, mais le symbole $\\sqrt{2}$ est son nom exact, tout comme $\\pi$ est le nom exact du rapport circonférence/diamètre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les carrés parfaits jusqu'à 144"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller vite, il est très utile de connaître par cœur les carrés des entiers de $1$ à $12$. Cela te permet de reconnaître instantanément les radicandes qui donnent un résultat entier. Fais l'effort de les mémoriser maintenant : $1^2=1$, $2^2=4$, $3^2=9$, $4^2=16$, $5^2=25$, $6^2=36$, $7^2=49$, $8^2=64$, $9^2=81$, $10^2=100$, $11^2=121$, $12^2=144$. Si tu vois $\\sqrt{81}$, tu réponds $9$ sans hésiter. C'est un gain de temps énorme pour la suite."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre $n$",
+                "Carré $n^2$",
+                "Racine $\\sqrt{n^2}$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "4",
+                  "2"
+                ],
+                [
+                  "3",
+                  "9",
+                  "3"
+                ],
+                [
+                  "4",
+                  "16",
+                  "4"
+                ],
+                [
+                  "5",
+                  "25",
+                  "5"
+                ],
+                [
+                  "6",
+                  "36",
+                  "6"
+                ],
+                [
+                  "7",
+                  "49",
+                  "7"
+                ],
+                [
+                  "8",
+                  "64",
+                  "8"
+                ],
+                [
+                  "9",
+                  "81",
+                  "9"
+                ],
+                [
+                  "10",
+                  "100",
+                  "10"
+                ],
+                [
+                  "11",
+                  "121",
+                  "11"
+                ],
+                [
+                  "12",
+                  "144",
+                  "12"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : la troisième colonne est simplement la première. Quand tu dois calculer $\\sqrt{a}$, demande-toi : « $a$ est-il dans la colonne du milieu ? ». Si oui, la réponse est le nombre de la première colonne. Si non, tu sauras au moins entre quels entiers se trouve la racine. Par exemple, $\\sqrt{30}$ : $30$ est entre $25$ et $36$, donc $\\sqrt{30}$ est entre $5$ et $6$. C'est un encadrement très pratique pour vérifier un ordre de grandeur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Racine carrée d'un carré : la propriété fondamentale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a une propriété qui marche à tous les coups et qui va devenir ton meilleur outil : pour tout nombre $x \\ge 0$, $\\sqrt{x^2} = x$. En mots : la racine carrée « annule » le carré, à condition que le nombre de départ soit positif ou nul. Pourquoi cette condition ? Parce que si $x = -3$, $x^2 = 9$ et $\\sqrt{9} = 3$, pas $-3$. La racine carrée redonne la valeur absolue : $\\sqrt{x^2} = |x|$. Mais dans nos exercices, on manipulera presque toujours des nombres positifs, donc $\\sqrt{x^2}=x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer un carré parfait",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le radicande. Est-ce un carré parfait (1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, ...) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la racine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si oui, écris directement l'entier dont le carré donne ce nombre. Exemple : $\\sqrt{64} = 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Encadrer si ce n'est pas un carré parfait",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si non, trouve les deux carrés parfaits consécutifs qui encadrent le radicande. Exemple : pour $\\sqrt{50}$, $49 < 50 < 64$, donc $7 < \\sqrt{50} < 8$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété $\\sqrt{x^2}=x$ (pour $x\\ge0$) est la clé qui ouvre la porte aux simplifications qu'on verra dans la prochaine leçon. Elle nous dit que $\\sqrt{a}$ est l'unique nombre positif dont le carré est $a$. Garde-la en tête : elle va nous servir à transformer des expressions compliquées en formes plus simples."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule les racines carrées suivantes : $\\sqrt{9}$, $\\sqrt{64}$, $\\sqrt{121}$.",
+              "answer": "$3$, $8$, $11$",
+              "hint": "Cherche quel entier, multiplié par lui-même, donne le radicande.",
+              "explanation": "$3^2=9$, $8^2=64$, $11^2=121$. Donc $\\sqrt{9}=3$, $\\sqrt{64}=8$, $\\sqrt{121}=11$."
+            },
+            {
+              "question": "Entre quels deux entiers consécutifs se trouve $\\sqrt{20}$ ? Et $\\sqrt{75}$ ?",
+              "answer": "$4 < \\sqrt{20} < 5$ et $8 < \\sqrt{75} < 9$",
+              "hint": "Trouve les carrés parfaits qui encadrent le radicande.",
+              "explanation": "$4^2=16$ et $5^2=25$, donc $16<20<25$ et $4<\\sqrt{20}<5$. De même, $8^2=64$ et $9^2=81$, donc $64<75<81$ et $8<\\sqrt{75}<9$."
+            },
+            {
+              "question": "Simplifie : $\\sqrt{5^2}$, $\\sqrt{12^2}$, $\\sqrt{(0,7)^2}$.",
+              "answer": "$5$, $12$, $0,7$",
+              "hint": "Utilise la propriété $\\sqrt{x^2}=x$ pour $x\\ge0$.",
+              "explanation": "Puisque $5\\ge0$, $\\sqrt{5^2}=5$. De même $\\sqrt{12^2}=12$ et $\\sqrt{(0,7)^2}=0,7$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier cas simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produit de racines carrées : la règle de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer $\\sqrt{16}$ ou $\\sqrt{25}$. Mais que faire face à $\\sqrt{12}$ ? Ce n'est pas un carré parfait. Heureusement, il existe une propriété magique : la racine carrée d'un produit vaut le produit des racines carrées. En symboles : pour $a \\ge 0$ et $b \\ge 0$, $\\sqrt{a \\times b} = \\sqrt{a} \\times \\sqrt{b}$. Cela veut dire qu'on peut « casser » le radicande en facteurs pour faire apparaître des carrés parfaits."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{a \\times b} = \\sqrt{a} \\times \\sqrt{b} \\quad (a \\ge 0, b \\ge 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\sqrt{12}$. On cherche un facteur de $12$ qui soit un carré parfait. $12 = 4 \\times 3$, et $4$ est un carré parfait ($2^2$). Alors $\\sqrt{12} = \\sqrt{4 \\times 3} = \\sqrt{4} \\times \\sqrt{3} = 2 \\times \\sqrt{3} = 2\\sqrt{3}$. On a « sorti » le $2$ du radical. La forme $2\\sqrt{3}$ est la forme simplifiée : il n'y a plus de carré parfait sous le radical (le $3$ n'est pas divisible par $4$, $9$, $16$...). C'est la écriture exacte la plus simple."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Visualisation : $\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas pour simplifier une racine carrée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier $\\sqrt{n}$ où $n$ est un entier, suis cette routine : (1) Décompose $n$ en facteurs premiers si tu n'as pas d'idée directe. (2) Repère les facteurs qui apparaissent au moins deux fois (ce sont des carrés). (3) Regroupe-les pour former le plus grand carré parfait possible. (4) Sors la racine de ce carré parfait devant le radical. (5) Ce qui reste sous le radical n'a plus de facteur carré. C'est fini."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposition en facteurs premiers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le radicande comme un produit de nombres premiers. Exemple : $48 = 2 \\times 2 \\times 2 \\times 2 \\times 3 = 2^4 \\times 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Former des paires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les facteurs par paires identiques. Chaque paire fait un carré : $2^4 = (2^2)^2 = 4^2$. Ici on a deux paires de $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Sortir les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque paire, sors un facteur devant le radical. Deux paires de $2$ donnent $2 \\times 2 = 4$ devant. Il reste un $3$ seul sous le radical : $\\sqrt{48} = 4\\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remets au carré : $(4\\sqrt{3})^2 = 16 \\times 3 = 48$. C'est bon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce : si tu vois tout de suite un grand carré parfait (comme $16$, $25$, $36$...), pas besoin de faire la décomposition complète. Pour $\\sqrt{75}$, $75 = 25 \\times 3$, donc $\\sqrt{75} = 5\\sqrt{3}$. C'est plus rapide. Mais la décomposition en facteurs premiers marche à tous les coups, même pour de grands nombres comme $\\sqrt{200} = \\sqrt{100 \\times 2} = 10\\sqrt{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient de racines carrées et rationalisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La même idée marche pour la division : $\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}$ pour $a \\ge 0, b > 0$. Par exemple $\\sqrt{\\frac{18}{2}} = \\sqrt{9} = 3$, ou bien $\\frac{\\sqrt{18}}{\\sqrt{2}} = \\frac{3\\sqrt{2}}{\\sqrt{2}} = 3$. Mais attention : en 3e, on n'aime pas laisser un radical au dénominateur. Si tu obtiens $\\frac{5}{\\sqrt{2}}$, on « rationalise » en multipliant le numérateur et le dénominateur par $\\sqrt{2}$ : $\\frac{5}{\\sqrt{2}} = \\frac{5 \\times \\sqrt{2}}{\\sqrt{2} \\times \\sqrt{2}} = \\frac{5\\sqrt{2}}{2}$. Le dénominateur devient un entier, c'est plus propre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}} \\quad (a \\ge 0, b > 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi rationaliser ? D'abord, c'est une convention d'écriture qui permet de comparer facilement deux expressions. Ensuite, ça évite d'avoir une racine carrée « cachée » en bas d'une fraction. La règle est simple : si tu as $\\frac{A}{\\sqrt{B}}$, multiplie le haut et le bas par $\\sqrt{B}$. Tu obtiens $\\frac{A\\sqrt{B}}{B}$. Si le dénominateur est une somme comme $\\sqrt{3}+\\sqrt{2}$, c'est plus délicat (on utilise le conjugué), mais ça, c'est pour le lycée. En 3e, on rationalise seulement les dénominateurs simples."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie les racines carrées suivantes : $\\sqrt{20}$, $\\sqrt{45}$, $\\sqrt{98}$.",
+              "answer": "$2\\sqrt{5}$, $3\\sqrt{5}$, $7\\sqrt{2}$",
+              "hint": "Cherche le plus grand carré parfait diviseur du radicande.",
+              "explanation": "$20 = 4 \\times 5 \\Rightarrow \\sqrt{20} = 2\\sqrt{5}$. $45 = 9 \\times 5 \\Rightarrow \\sqrt{45} = 3\\sqrt{5}$. $98 = 49 \\times 2 \\Rightarrow \\sqrt{98} = 7\\sqrt{2}$."
+            },
+            {
+              "question": "Simplifie : $\\sqrt{200}$, $\\sqrt{108}$, $\\sqrt{242}$.",
+              "answer": "$10\\sqrt{2}$, $6\\sqrt{3}$, $11\\sqrt{2}$",
+              "hint": "Décompose en facteurs premiers si tu ne vois pas le carré parfait tout de suite.",
+              "explanation": "$200 = 100 \\times 2 \\Rightarrow 10\\sqrt{2}$. $108 = 36 \\times 3 \\Rightarrow 6\\sqrt{3}$. $242 = 121 \\times 2 \\Rightarrow 11\\sqrt{2}$."
+            },
+            {
+              "question": "Rationalise le dénominateur : $\\frac{7}{\\sqrt{5}}$, $\\frac{4}{\\sqrt{3}}$, $\\frac{10}{\\sqrt{6}}$.",
+              "answer": "$\\frac{7\\sqrt{5}}{5}$, $\\frac{4\\sqrt{3}}{3}$, $\\frac{10\\sqrt{6}}{6} = \\frac{5\\sqrt{6}}{3}$",
+              "hint": "Multiplie le numérateur et le dénominateur par le radical qui est au dénominateur.",
+              "explanation": "$\\frac{7}{\\sqrt{5}} = \\frac{7\\sqrt{5}}{5}$. $\\frac{4}{\\sqrt{3}} = \\frac{4\\sqrt{3}}{3}$. $\\frac{10}{\\sqrt{6}} = \\frac{10\\sqrt{6}}{6} = \\frac{5\\sqrt{6}}{3}$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs / géométrie.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition et soustraction de racines carrées"
+            },
+            {
+              "type": "paragraph",
+              "content": "On ne peut additionner ou soustraire des racines carrées que si elles ont le même radicande, exactement comme pour les termes semblables en algèbre ($3x + 2x = 5x$). Par exemple, $3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$. Mais $\\sqrt{2} + \\sqrt{3}$ ne se simplifie pas : on laisse la somme telle quelle. C'est une erreur très fréquente d'écrire $\\sqrt{2} + \\sqrt{3} = \\sqrt{5}$ : c'est faux ! Vérifie avec la calculatrice : $\\sqrt{2} \\approx 1,41$, $\\sqrt{3} \\approx 1,73$, somme $\\approx 3,14$, alors que $\\sqrt{5} \\approx 2,23$. Pas du tout égal."
+            },
+            {
+              "type": "display_math",
+              "latex": "a\\sqrt{x} + b\\sqrt{x} = (a+b)\\sqrt{x}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut simplifier chaque racine avant de voir si on peut les additionner. Exemple : $\\sqrt{12} + \\sqrt{27}$. Simplifions : $\\sqrt{12} = 2\\sqrt{3}$, $\\sqrt{27} = 3\\sqrt{3}$. Maintenant les radicandes sont les mêmes ($3$), on additionne : $2\\sqrt{3} + 3\\sqrt{3} = 5\\sqrt{3}$. C'est pour ça qu'on a appris à simplifier dans la leçon précédente : ça révèle les radicandes communs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplication et division : les règles à retenir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier, on utilise la propriété du produit : $\\sqrt{a} \\times \\sqrt{b} = \\sqrt{a \\times b}$. Si tu as des coefficients devant, tu les multiplies entre eux. Exemple : $3\\sqrt{2} \\times 4\\sqrt{5} = (3 \\times 4) \\times (\\sqrt{2} \\times \\sqrt{5}) = 12\\sqrt{10}$. Parfois, le produit sous le radical donne un carré parfait qu'on peut sortir : $2\\sqrt{3} \\times 5\\sqrt{3} = 10 \\times \\sqrt{9} = 10 \\times 3 = 30$. Là, le radical a disparu !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Multiplie les coefficients (nombres devant). 2. Multiplie les radicandes sous un seul radical. 3. Simplifie le radical obtenu si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Divise les coefficients. 2. Divise les radicandes sous un seul radical : $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$. 3. Simplifie la fraction sous le radical. 4. Rationalise le dénominateur s'il reste un radical."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la division, on fait l'inverse : $\\frac{8\\sqrt{18}}{2\\sqrt{2}} = \\frac{8}{2} \\times \\sqrt{\\frac{18}{2}} = 4 \\times \\sqrt{9} = 4 \\times 3 = 12$. Là encore, tout se simplifie proprement. Si le quotient sous le radical n'est pas un carré parfait, on simplifie la fraction puis on rationalise. Exemple : $\\frac{5\\sqrt{2}}{\\sqrt{10}} = 5 \\sqrt{\\frac{2}{10}} = 5 \\sqrt{\\frac{1}{5}} = \\frac{5}{\\sqrt{5}} = \\frac{5\\sqrt{5}}{5} = \\sqrt{5}$. C'est satisfaisant quand tout tombe juste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Géométrie : Pythagore et distances"
+            },
+            {
+              "type": "paragraph",
+              "content": "La racine carrée n'est pas qu'un jeu symbolique : elle est indispensable en géométrie. Le théorème de Pythagore dit que dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Si les côtés de l'angle droit mesurent $3\\ \\text{cm}$ et $4\\ \\text{cm}$, l'hypoténuse $x$ vérifie $x^2 = 3^2 + 4^2 = 9 + 16 = 25$. Donc $x = \\sqrt{25} = 5\\ \\text{cm}$. C'est le fameux triangle $3-4-5$ que les bâtisseurs de l'Antiquité utilisaient pour tracer des angles droits parfaits."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Triangle rectangle 3-4-5 : $3^2+4^2=5^2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais souvent, la somme des carrés n'est pas un carré parfait. Supposons un triangle rectangle avec côtés $5\\ \\text{cm}$ et $7\\ \\text{cm}$. L'hypoténuse $h$ vérifie $h^2 = 5^2 + 7^2 = 25 + 49 = 74$. Donc $h = \\sqrt{74}\\ \\text{cm}$. C'est la forme exacte. Si on te demande une valeur approchée au millimètre, tu calcules $\\sqrt{74} \\approx 8,602\\ \\text{cm}$, soit $8,6\\ \\text{cm}$. La racine carrée donne la longueur exacte, la calculatrice donne l'approximation utile pour la mesure réelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre application : la distance entre deux points dans un repère. Si $A(1;2)$ et $B(4;6)$, la distance $AB = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$. La formule de distance est une application directe de Pythagore. Tu verras que la racine carrée apparaît partout dès qu'il s'agit de longueurs, d'aires, de volumes ou de vitesses."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problème complet : simplification et géométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons tout ensemble. Un terrain a la forme d'un rectangle de longueur $12\\ \\text{m}$ et de largeur $5\\ \\text{m}$. On veut connaître la longueur de la diagonale pour y passer un câble. D'après Pythagore, la diagonale $d$ vérifie $d^2 = 12^2 + 5^2 = 144 + 25 = 169$. Comme $169 = 13^2$, $d = \\sqrt{169} = 13\\ \\text{m}$. Le câble doit faire exactement $13\\ \\text{m}$. Ici, la racine carrée a donné un entier parce que $169$ est un carré parfait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine un carré d'aire $50\\ \\text{m}^2$. Quel est son périmètre ? Le côté $c$ vaut $\\sqrt{50} = 5\\sqrt{2}\\ \\text{m}$ (forme exacte simplifiée). Le périmètre $P = 4c = 20\\sqrt{2}\\ \\text{m}$. En valeur approchée, $\\sqrt{2} \\approx 1,414$, donc $P \\approx 28,28\\ \\text{m}$. Tu vois que la forme exacte $20\\sqrt{2}$ est plus précise et souvent plus simple à manipuler dans les calculs intermédiaires que l'approximation décimale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la définition de la racine carrée d'un nombre positif.",
+                "Je sais calculer la racine carrée des carrés parfaits jusqu'à 144.",
+                "Je sais encadrer une racine carrée entre deux entiers consécutifs.",
+                "Je sais simplifier une racine carrée en faisant sortir les facteurs carrés (ex : $\\sqrt{48}=4\\sqrt{3}$).",
+                "Je sais rationaliser un dénominateur de la forme $\\frac{a}{\\sqrt{b}}$.",
+                "Je sais additionner/soustraire des racines carrées seulement si elles ont le même radicande.",
+                "Je sais multiplier et diviser des expressions contenant des racines carrées.",
+                "J'utilise la racine carrée dans le théorème de Pythagore pour calculer une longueur exacte."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule et simplifie si possible : $4\\sqrt{5} + 2\\sqrt{5} - \\sqrt{5}$, $\\sqrt{12} + \\sqrt{27}$, $3\\sqrt{2} - 5\\sqrt{3}$.",
+              "answer": "$5\\sqrt{5}$, $5\\sqrt{3}$, $3\\sqrt{2} - 5\\sqrt{3}$ (ne se simplifie pas)",
+              "hint": "Simplifie d'abord chaque radical, puis regroupe les termes qui ont le même radicande.",
+              "explanation": "$4\\sqrt{5}+2\\sqrt{5}-\\sqrt{5} = (4+2-1)\\sqrt{5}=5\\sqrt{5}$. $\\sqrt{12}=2\\sqrt{3}$, $\\sqrt{27}=3\\sqrt{3}$, somme $=5\\sqrt{3}$. $3\\sqrt{2}$ et $5\\sqrt{3}$ ont des radicandes différents, on ne peut pas les additionner."
+            },
+            {
+              "question": "Effectue les multiplications et simplifie : $2\\sqrt{3} \\times 4\\sqrt{6}$, $5\\sqrt{2} \\times 3\\sqrt{2}$, $\\sqrt{10} \\times \\sqrt{15}$.",
+              "answer": "$8\\sqrt{18} = 24\\sqrt{2}$, $15 \\times 2 = 30$, $\\sqrt{150} = 5\\sqrt{6}$",
+              "hint": "Multiplie les coefficients et les radicandes séparément, puis simplifie le radical obtenu.",
+              "explanation": "$2\\sqrt{3} \\times 4\\sqrt{6} = 8\\sqrt{18} = 8\\sqrt{9\\times2} = 8\\times3\\sqrt{2}=24\\sqrt{2}$. $5\\sqrt{2} \\times 3\\sqrt{2} = 15 \\times \\sqrt{4} = 15\\times2=30$. $\\sqrt{10} \\times \\sqrt{15} = \\sqrt{150} = \\sqrt{25\\times6} = 5\\sqrt{6}$."
+            },
+            {
+              "question": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6\\ \\text{cm}$ et $8\\ \\text{cm}$. Calcule la longueur de l'hypoténuse sous forme exacte, puis donne une valeur approchée au mm près.",
+              "answer": "Exacte : $10\\ \\text{cm}$. Approchée : $10,0\\ \\text{cm}$.",
+              "hint": "Applique le théorème de Pythagore : $x^2 = 6^2 + 8^2$.",
+              "explanation": "$x^2 = 36 + 64 = 100$, donc $x = \\sqrt{100} = 10\\ \\text{cm}$. C'est un triangle $6-8-10$ (multiple du $3-4-5$). La valeur approchée est $10,0\\ \\text{cm}$."
+            },
+            {
+              "question": "Un carré a pour aire $72\\ \\text{cm}^2$. Calcule son périmètre sous forme exacte simplifiée, puis donne une valeur approchée au dixième de centimètre près.",
+              "answer": "Exact : $24\\sqrt{2}\\ \\text{cm}$. Approché : $33,9\\ \\text{cm}$.",
+              "hint": "Le côté vaut $\\sqrt{72}$. Simplifie-le. Le périmètre est 4 fois le côté.",
+              "explanation": "Côté $c = \\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}\\ \\text{cm}$. Périmètre $P = 4c = 24\\sqrt{2}\\ \\text{cm}$. Approché : $\\sqrt{2} \\approx 1,414$, $24 \\times 1,414 \\approx 33,936 \\approx 33,9\\ \\text{cm}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

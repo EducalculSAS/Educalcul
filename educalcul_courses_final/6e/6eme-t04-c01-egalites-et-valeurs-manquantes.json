@@ -1,0 +1,432 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.578152+00:00",
+  "id": 347,
+  "code": "6eme-t04-c01",
+  "title": "Égalités et valeurs manquantes",
+  "description": "Cours structuré Educalcul : Égalités et valeurs manquantes.",
+  "subject": "Algèbre et problèmes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algèbre et problèmes",
+    "titre_du_cours": "Égalités et valeurs manquantes",
+    "objectif_global": "Égalités et valeurs manquantes",
+    "mini_lecons_imposees": [
+      "Trouver inconnue simple.",
+      "Opération inverse.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algèbre et problèmes",
+      "lessons": [
+        {
+          "title": "Trouver inconnue simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une égalité avec un trou"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une balance de Roberval parfaitement équilibrée. Dans le plateau de gauche, tu as placé $5$ pommes et un sac mystère dont tu ne connais pas le contenu. Dans le plateau de droite, il y a $12$ pommes. Comme la balance ne penche ni d'un côté ni de l'autre, tu sais avec certitude que le sac mystère contient exactement le nombre de pommes qu'il faut pour que les deux côtés aient le même total. En mathématiques, on écrit cette situation sous la forme d'une égalité avec une valeur manquante : $5 + \\square = 12$. Le petit carré représente ce que nous cherchons, on l'appelle aussi l'inconnue."
+            },
+            {
+              "type": "definition",
+              "term": "Inconnue",
+              "definition": "Dans une égalité, l'inconnue est la valeur que l'on ne connaît pas encore et que l'on cherche à déterminer. On la note souvent avec une lettre comme $x$ ou un symbole comme $\\square$.",
+              "example": "Dans $x + 7 = 15$, l'inconnue est $x$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Visualisation de l'égalité $5 + x = 12$ sur une droite graduée",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "Départ"
+                },
+                {
+                  "value": 12,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 5,
+                  "end": 12,
+                  "label": "x = 7"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la valeur qui se cache dans le carré, nous allons raisonner comme un détective. Nous savons que $5$ plus quelque chose fait $12$. La question devient : quel nombre ajouté à $5$ donne $12$ ? Tu peux compter sur tes doigts, ou utiliser la droite graduée ci-dessus : en partant de $5$, il faut avancer de $7$ cases pour arriver à $12$. Donc $\\square = 7$. Vérifions : $5 + 7 = 12$, l'égalité est vraie. Cette façon de faire, qui consiste à retrouver le nombre de départ en faisant le chemin inverse, est l'idée centrale de la leçon suivante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le signe qui relie le nombre connu à l'inconnue. Ici, c'est un $+$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire l'opération inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'inverse de l'addition, c'est la soustraction. On enlève $5$ du total $12$ : $12 - 5 = 7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'inconnue vaut $7$. On remplace $\\square$ par $7$ dans l'égalité de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec une multiplication. Supposons que $4$ boîtes identiques contiennent au total $36$ crayons. Combien y a-t-il de crayons dans une seule boîte ? L'égalité s'écrit $4 \\times \\square = 36$. Ici, l'opération est une multiplication. Pour trouver le contenu d'une boîte, il faut partager le total en $4$ parts égales, c'est-à-dire faire une division : $36 \\div 4 = 9$. Il y a donc $9$ crayons par boîte. Tu vois que le raisonnement est exactement le même : on fait l'opération inverse pour isoler l'inconnue."
+            },
+            {
+              "type": "display_math",
+              "latex": "4 \\times 9 = 36 \\quad \\text{donc} \\quad 36 \\div 4 = 9"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant l'intuition : face à une égalité avec un trou, on cherche quelle opération a été faite sur l'inconnue, puis on fait l'opération inverse pour la retrouver. Dans la prochaine leçon, nous allons formaliser cette idée d'opération inverse pour en faire un outil fiable et systématique, quel que soit le calcul."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'égalité : $8 + \\square = 17$.",
+              "answer": "9",
+              "hint": "Quel nombre ajouté à $8$ donne $17$ ? Utilise une soustraction pour le trouver.",
+              "explanation": "On cherche le nombre qui, ajouté à $8$, donne $17$. On fait l'opération inverse : $17 - 8 = 9$. Donc $\\square = 9$. Vérification : $8 + 9 = 17$."
+            },
+            {
+              "question": "Trouve la valeur manquante : $\\square - 6 = 11$.",
+              "answer": "17",
+              "hint": "Ici, on a soustrait $6$ à l'inconnue pour obtenir $11$. Quelle est l'opération inverse de la soustraction ?",
+              "explanation": "L'opération est une soustraction. L'inverse est l'addition. On ajoute $6$ à $11$ pour retrouver le nombre de départ : $11 + 6 = 17$. Donc $\\square = 17$. Vérification : $17 - 6 = 11$."
+            },
+            {
+              "question": "Résous : $5 \\times \\square = 45$.",
+              "answer": "9",
+              "hint": "L'opération est une multiplication. Quelle est l'opération inverse ?",
+              "explanation": "On a multiplié l'inconnue par $5$. L'opération inverse est la division. On divise $45$ par $5$ : $45 \\div 5 = 9$. Donc $\\square = 9$. Vérification : $5 \\times 9 = 45$."
+            }
+          ]
+        },
+        {
+          "title": "Opération inverse.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'opération inverse, notre outil magique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons découvert par l'exemple que pour déloger une inconnue, il suffit de faire l'opération opposée. Maintenant, donnons un nom précis à cette idée et transformons-la en une règle fiable que tu pourras utiliser les yeux fermés. En mathématiques, chaque opération a sa jumelle inverse : l'addition et la soustraction sont inverses l'une de l'autre, tout comme la multiplication et la division. C'est comme marcher en avant puis en arrière pour revenir au point de départ."
+            },
+            {
+              "type": "definition",
+              "term": "Opération inverse",
+              "definition": "Deux opérations sont inverses si l'une annule l'effet de l'autre. L'addition et la soustraction sont inverses ; la multiplication et la division sont inverses.",
+              "example": "Si on fait $+ 8$ puis $- 8$, on retrouve le nombre de départ. De même, $\\times 5$ puis $\\div 5$ annulent leurs effets."
+            },
+            {
+              "type": "number_line",
+              "caption": "Aller et retour sur la droite graduée : $+4$ puis $-4$ ramène au point de départ",
+              "min": -2,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "Départ"
+                },
+                {
+                  "value": 6,
+                  "label": "Après +4"
+                },
+                {
+                  "value": 2,
+                  "label": "Retour après -4"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 2,
+                  "end": 6,
+                  "label": "+4"
+                },
+                {
+                  "start": 6,
+                  "end": 2,
+                  "label": "-4"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette règle à une égalité où l'inconnue est soustraite. Prenons $\\square - 9 = 14$. L'opération visible est une soustraction de $9$. Pour isoler l'inconnue, nous devons ajouter $9$ des deux côtés de l'égalité. C'est la règle d'or : ce que tu fais d'un côté, tu le fais de l'autre pour garder l'équilibre. Écrivons-le proprement : $\\square - 9 = 14$ ; j'ajoute $9$ à gauche et à droite : $\\square - 9 + 9 = 14 + 9$ ; ce qui simplifie en $\\square = 23$. L'inconnue vaut $23$. Remarque comme le $-9$ et le $+9$ s'annulent à gauche."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'opération sur l'inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, on a soustrait $9$ à l'inconnue (signe $-$ devant le $9$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer l'opération inverse des deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'inverse de $-9$ est $+9$. J'écris $+9$ à droite et à gauche du signe $=$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À gauche, $-9 + 9 = 0$, il ne reste que l'inconnue. À droite, $14 + 9 = 23$. Donc $\\square = 23$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant le cas de la division. Soit l'égalité $\\square \\div 7 = 6$. L'inconnue a été divisée par $7$. L'opération inverse est la multiplication par $7$. Nous multiplions donc les deux côtés par $7$ : $\\square \\div 7 = 6$ devient $\\square \\div 7 \\times 7 = 6 \\times 7$. Comme la division et la multiplication par le même nombre s'annulent, il reste $\\square = 42$. C'est aussi simple que cela : tu identifies l'opération, tu fais son inverse des deux côtés, et l'inconnue se retrouve toute seule. Cette méthode marche pour toutes les égalités simples, même quand les nombres sont grands ou décimaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\div 7 = 6 \\implies x \\div 7 \\times 7 = 6 \\times 7 \\implies x = 42"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu possèdes maintenant la clé universelle : addition $\\leftrightarrow$ soustraction, multiplication $\\leftrightarrow$ division. Dans la dernière leçon de ce cours, nous allons voir comment vérifier systématiquement que ta réponse est correcte, pour ne jamais laisser d'erreur s'installer."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous en utilisant l'opération inverse : $\\square + 13 = 29$.",
+              "answer": "16",
+              "hint": "L'opération sur l'inconnue est $+13$. Quelle est l'opération inverse ? Applique-la aux deux membres.",
+              "explanation": "L'opération est $+13$. L'inverse est $-13$. On soustrait $13$ des deux côtés : $\\square + 13 - 13 = 29 - 13$, soit $\\square = 16$."
+            },
+            {
+              "question": "Trouve l'inconnue : $\\square \\div 8 = 12$.",
+              "answer": "96",
+              "hint": "L'inconnue a été divisée par $8$. Que dois-tu faire des deux côtés pour l'isoler ?",
+              "explanation": "L'opération est $\\div 8$. L'inverse est $\\times 8$. On multiplie les deux côtés par $8$ : $\\square \\div 8 \\times 8 = 12 \\times 8$, donc $\\square = 96$."
+            },
+            {
+              "question": "Résous : $m - 25 = 48$.",
+              "answer": "73",
+              "hint": "Identifie l'opération sur $m$, puis fais l'inverse des deux côtés.",
+              "explanation": "On a $m - 25 = 48$. L'opération sur $m$ est $-25$. L'inverse est $+25$. On ajoute $25$ des deux côtés : $m - 25 + 25 = 48 + 25$, donc $m = 73$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier, c'est jouer la sécurité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as trouvé une valeur pour l'inconnue, tu as appliqué la méthode des opérations inverses, et tu es plutôt fier de ton résultat. Mais comment être absolument certain de ne pas t'être trompé dans un calcul ? La réponse est simple : on vérifie. Vérifier, ce n'est pas refaire le même raisonnement, c'est remettre ta réponse dans l'égalité de départ et constater que l'égalité devient vraie. C'est comme essayer une clé dans une serrure : si elle tourne, c'est la bonne. Cette habitude, prise dès maintenant, te servira toute ta scolarité, même pour des équations bien plus complexes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Reprendre l'égalité de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Recopie l'égalité originale avec le symbole de l'inconnue ($x$ ou $\\square$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer l'inconnue par ta réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Partout où tu vois l'inconnue, écris le nombre que tu as trouvé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer chaque membre séparément",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le membre de gauche, puis le membre de droite, sans les mélanger."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer les deux résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux nombres sont identiques, l'égalité est vérifiée, ta réponse est correcte. Sinon, il y a une erreur quelque part."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Nous avions résolu $3 \\times x = 27$ et trouvé $x = 9$. Pour vérifier, je reprends $3 \\times x = 27$. Je remplace $x$ par $9$ : $3 \\times 9 = 27$. Je calcule à gauche : $3 \\times 9 = 27$. À droite, c'est déjà $27$. Les deux membres donnent $27$, l'égalité est vraie. Ma réponse est validée. Si j'avais trouvé $x = 8$ par erreur, la vérification aurait donné $3 \\times 8 = 24$ à gauche, et $27$ à droite. $24 \\neq 27$, l'égalité serait fausse, j'aurais su qu'il fallait recommencer."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de pro",
+              "paragraphs": [
+                "Lors de la vérification, écris toujours l'égalité avec la valeur remplacée, puis calcule chaque membre sur une ligne différente. Cela évite les erreurs de recopie et rend ton raisonnement clair pour ton professeur."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'erreur se cache dans le calcul de l'opération inverse. Supposons l'égalité $x + 58 = 100$. Un élève répond vite : $x = 52$ (il a fait $100 - 58$ trop vite et s'est trompé). La vérification : $52 + 58 = 110$, or le membre de droite est $100$. $110 \\neq 100$, l'erreur est détectée. Le bon calcul est $100 - 58 = 42$. Vérification : $42 + 58 = 100$, c'est bon. La vérification est ton filet de sécurité : elle transforme une erreur potentielle en opportunité de corriger avant de rendre ta copie."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Égalité de départ",
+                "Réponse proposée",
+                "Vérification (membre gauche)",
+                "Membre droit",
+                "Est-ce vrai ?"
+              ],
+              "rows": [
+                [
+                  "$x + 58 = 100$",
+                  "$x = 52$",
+                  "$52 + 58 = 110$",
+                  "$100$",
+                  "Non, $110 \\neq 100$"
+                ],
+                [
+                  "$x + 58 = 100$",
+                  "$x = 42$",
+                  "$42 + 58 = 100$",
+                  "$100$",
+                  "Oui, $100 = 100$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer l'inconnue dans une égalité simple.",
+                "Je connais les couples d'opérations inverses : addition/soustraction et multiplication/division.",
+                "Je sais appliquer l'opération inverse des deux côtés de l'égalité pour isoler l'inconnue.",
+                "Je sais vérifier ma réponse en la remplaçant dans l'égalité de départ et en comparant les deux membres.",
+                "Je peux résoudre et vérifier des égalités comme $\\square - 15 = 30$ ou $6 \\times x = 54$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous et vérifie : $y - 18 = 45$.",
+              "answer": "y = 63",
+              "hint": "Trouve $y$ par opération inverse, puis remplace $y$ par ta réponse dans l'égalité de départ pour vérifier.",
+              "explanation": "Résolution : $y - 18 = 45 \\implies y = 45 + 18 = 63$. Vérification : $63 - 18 = 45$. Membre gauche $= 45$, membre droit $= 45$. L'égalité est vérifiée."
+            },
+            {
+              "question": "Résous et vérifie : $8 \\times \\square = 72$.",
+              "answer": "9",
+              "hint": "Divise $72$ par $8$ pour trouver l'inconnue, puis fais le produit inverse pour vérifier.",
+              "explanation": "Résolution : $\\square = 72 \\div 8 = 9$. Vérification : $8 \\times 9 = 72$. Membre gauche $= 72$, membre droit $= 72$. C'est correct."
+            },
+            {
+              "question": "Parmi ces égalités, laquelle a pour solution $x = 12$ ? Vérifie chaque proposition.\\nA) $x + 8 = 20$\\nB) $x - 5 = 8$\\nC) $3 \\times x = 36$\\nD) $x \\div 4 = 2$",
+              "answer": "A et C",
+              "hint": "Remplace $x$ par $12$ dans chaque égalité et regarde lesquelles deviennent vraies.",
+              "explanation": "A) $12 + 8 = 20$ vrai. B) $12 - 5 = 7 \\neq 8$ faux. C) $3 \\times 12 = 36$ vrai. D) $12 \\div 4 = 3 \\neq 2$ faux. Les bonnes réponses sont A et C."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

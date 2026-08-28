@@ -1,0 +1,308 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.847098+00:00",
+  "id": 117,
+  "code": "ce1-t06-c01",
+  "title": "Mesurer des longueurs en cm et m",
+  "description": "Cours structuré Educalcul : Mesurer des longueurs en cm et m.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Mesurer des longueurs en cm et m",
+    "objectif_global": "Mesurer des longueurs en cm et m",
+    "mini_lecons_imposees": [
+      "Choisir l'unité.",
+      "Utiliser une règle ou un mètre.",
+      "Comparer mesures."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Choisir l'unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir l'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux savoir la longueur d'un crayon. Ce crayon est petit, alors on utilise le centimètre, que l'on écrit $cm$. Un centimètre, c'est environ la largeur de ton petit doigt. Si tu poses une règle graduée le long du crayon, tu comptes les petites marques jusqu'au bout. Tu peux aussi mesurer une gomme, un livre mince ou une carte de jeu : tous ces objets se mesurent facilement en centimètres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Graduation en centimètres",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "10 cm"
+                },
+                {
+                  "value": 20,
+                  "label": "20 cm"
+                },
+                {
+                  "value": 30,
+                  "label": "30 cm"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde une porte. Elle mesure environ deux mètres de haut. Le mètre est plus grand que le centimètre : un mètre vaut cent centimètres. Pour visualiser, imagine cent petits cubes de un centimètre alignés bout à bout ; ils forment un mètre. Quand tu vois un nombre suivi de $m$, tu sais que c'est une grande longueur, comme la hauteur d'un arbre ou la largeur d'une route. Quand tu vois $cm$, c'est une longueur plus courte, comme la taille d'une poupée."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de grandes longueurs en mètres",
+              "bars": [
+                {
+                  "label": "Porte",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Table",
+                  "value": 1.5,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de choisir l'unité pour ces objets : une règle de trente centimètres, un livre épais, un couloir de l'école, une voiture garée. Pour chaque objet, dis si tu mesures en $cm$ ou en $m$. Rappelle-toi la règle simple : si l'objet tient dans ta main, tu utilises les centimètres ; si l'objet est plus grand que toi, tu utilises les mètres. Essaie aussi de dire combien de centimètres il y a dans un mètre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité utilises-tu pour mesurer un crayon ?",
+              "answer": "cm",
+              "hint": "Pense à la taille de ton doigt.",
+              "explanation": "Un crayon est petit, on utilise le centimètre."
+            },
+            {
+              "question": "Quelle unité pour la hauteur d'une porte ?",
+              "answer": "m",
+              "hint": "Une porte est plus grande que toi.",
+              "explanation": "La porte mesure plusieurs mètres."
+            },
+            {
+              "question": "Choisis l'unité pour un livre épais.",
+              "answer": "cm",
+              "hint": "Le livre tient dans ta main.",
+              "explanation": "Un livre épais se mesure en centimètres."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser une règle ou un mètre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser une règle ou un mètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour mesurer avec une règle, place le zéro exactement au début de l'objet. Regarde ensuite la marque qui arrive au bout de l'objet. Ce nombre te donne la longueur en centimètres. Par exemple, si le bout tombe sur la marque 12, l'objet mesure 12 $cm$. Essaie sur un crayon, une gomme ou un petit livre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Lecture d'une règle graduée",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12 cm"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mètre ruban ou le mètre pliant sert pour les grandes longueurs. Pose le zéro au bord de l'objet et déroule le ruban jusqu'à l'autre bord. Lis le nombre indiqué : s'il marque 1,5, la longueur est 1,5 $m$. Le mètre est divisé en dix décimètres, chaque décimètre vaut 10 $cm$. Ainsi, 2 décimètres font 20 $cm$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 1,
+              "cols": 10,
+              "highlighted": 10,
+              "caption": "Un mètre divisé en 10 décimètres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Mesure le même objet avec les deux outils pour comparer. Si un livre fait 25 $cm$ avec la règle, tu peux le convertir en mètres : 25 $cm$ = 0,25 $m$ car 1 $m$ = 100 $cm$. Essaie de faire la conversion pour d'autres mesures."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 m = 100 cm",
+              "caption": "Équivalence mètre-centimètre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu mesures un crayon avec une règle. Le zéro est au début du crayon et la marque 12 est au bout. Quelle est la longueur ?",
+              "answer": "12 cm",
+              "hint": "Regarde le nombre qui se trouve au bout.",
+              "explanation": "La règle donne la longueur en centimètres."
+            },
+            {
+              "question": "Tu mesures la largeur d'une table avec un mètre. Le zéro est au bord et la marque 1,5 est à l'autre bord. Quelle est la largeur ?",
+              "answer": "1,5 m",
+              "hint": "Le mètre montre les mètres et les demi-mètres.",
+              "explanation": "Le mètre ruban indique la longueur en mètres."
+            },
+            {
+              "question": "Mesure un livre d'abord avec la règle (en cm) puis avec le mètre (en m). Si le livre fait 25 cm, combien de mètres ?",
+              "answer": "0,25 m",
+              "hint": "1 m = 100 cm.",
+              "explanation": "25 cm équivalent à 0,25 m car on divise par 100."
+            }
+          ]
+        },
+        {
+          "title": "Comparer mesures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer mesures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux longueurs en centimètres, regarde simplement les nombres. Un crayon de 12 $cm$ est plus long qu'une gomme de 8 $cm$ parce que 12 est plus grand que 8. Tu peux aussi tracer deux barres côte à côte pour voir la différence visuellement."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux longueurs en centimètres",
+              "bars": [
+                {
+                  "label": "Crayon",
+                  "value": 12,
+                  "tone": "red"
+                },
+                {
+                  "label": "Gomme",
+                  "value": 8,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La comparaison en mètres fonctionne de la même façon. Si un couloir fait 3 $m$ et un autre 2 $m$, le premier est plus long car 3 est plus grand que 2. Sur une ligne graduée en mètres, tu vois directement lequel est devant l'autre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Positions sur une ligne en mètres",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2 m"
+                },
+                {
+                  "value": 3,
+                  "label": "3 m"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les unités sont différentes : il faut les ramener à la même unité. Rappelle-toi que 1 $m$ = 100 $cm$. Donc 150 $cm$ correspondent à 1,5 $m$. Comme 1,5 $m$ est plus grand que 1 $m$, 150 $cm$ est la plus grande longueur."
+            },
+            {
+              "type": "display_math",
+              "latex": "150 cm = 1,5 m",
+              "caption": "Conversion centimètres-mètres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir entre cm et m.",
+                "Je sais lire une règle et un mètre.",
+                "Je sais comparer deux longueurs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel objet est plus long : un crayon de 12 cm ou une gomme de 8 cm ?",
+              "answer": "Le crayon",
+              "hint": "Compare les nombres.",
+              "explanation": "12 cm > 8 cm."
+            },
+            {
+              "question": "Quelle distance est plus grande : 3 m ou 2 m ?",
+              "answer": "3 m",
+              "hint": "Regarde les chiffres.",
+              "explanation": "3 mètres sont plus grands que 2 mètres."
+            },
+            {
+              "question": "Compare 150 cm et 1 m. Laquelle est la plus grande ?",
+              "answer": "150 cm",
+              "hint": "1 m = 100 cm.",
+              "explanation": "150 cm valent 1,5 m, donc c'est plus grand que 1 m."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

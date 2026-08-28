@@ -1,0 +1,396 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.743543+00:00",
+  "id": 85,
+  "code": "ce1-t02-c07",
+  "title": "Retirer des fractions simples de même dénominateur",
+  "description": "Cours structuré Educalcul : Retirer des fractions simples de même dénominateur.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Retirer des fractions simples de même dénominateur",
+    "objectif_global": "Retirer des fractions simples de même dénominateur",
+    "mini_lecons_imposees": [
+      "Retirer des parts identiques.",
+      "Interpréter le résultat.",
+      "Vérifier par représentation."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Retirer des parts identiques.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retirer des parts identiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une tablette de chocolat coupée en huit carrés identiques. Tu en croques deux et tu veux savoir combien il t'en reste."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le nombre du haut d'une fraction, il compte les parts que l'on considère.",
+              "example": "Dans $5/8$, le numérateur est $5$."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le nombre du bas d'une fraction, il indique en combien de parts égales le tout a été découpé.",
+              "example": "Dans $5/8$, le dénominateur est $8$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "Cinq huitièmes de la tablette"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une fraction : le nombre du haut, le numérateur, compte les parts que tu as, et le nombre du bas, le dénominateur, indique en combien de parts égales le tout a été découpé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu représentes $5/8$ avec une barre fractionnée, tu vois cinq parties colorées sur huit. En enlevant deux parties, il t'en reste trois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : garde le même dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur ne change pas car la taille des parts reste la même."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : soustrais les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "5 moins 2 fait 3, donc le nouveau numérateur est 3."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction",
+              "numerator": 7,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "Sept dixièmes d'un gâteau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour retirer des parts identiques, tu gardes le même dénominateur et tu soustrais seulement les numérateurs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $7/10$ moins $3/10$ : le dénominateur reste $10$, $7$ moins $3$ fait $4$, donc il reste $4/10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la barre de $7/10$, retire trois parties, compte celles qui restent."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est comme si tu avais dix bonbons et que tu en donnais trois à un ami : il t'en reste sept, mais ici on parle de parts d'un même gâteau."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dénominateur ne change pas parce que la taille des parts ne change pas, seul le nombre de parts prises varie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ainsi, la soustraction de fractions à même dénominateur devient aussi simple que de compter les parts qui restent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la méthode, entraîne-toi sur une autre barre fractionnée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie encore avec un nouveau exemple pour bien ancrer la règle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "$5/8 - 2/8 = ?$",
+              "answer": "$3/8$",
+              "hint": "Garde le dénominateur 8 et soustrais 5 moins 2.",
+              "explanation": "Le dénominateur ne change pas, 5 - 2 = 3, donc le résultat est $3/8$."
+            },
+            {
+              "question": "$7/10 - 3/10 = ?$",
+              "answer": "$4/10$",
+              "hint": "Le dénominateur reste 10, calcule 7 - 3.",
+              "explanation": "On garde 10 en dénominateur, 7 - 3 = 4, donc $4/10$."
+            },
+            {
+              "question": "$9/12 - 4/12 = ?$",
+              "answer": "$5/12$",
+              "hint": "Même dénominateur 12, fais 9 - 4.",
+              "explanation": "Le dénominateur 12 ne bouge pas, 9 - 4 = 5, résultat $5/12$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter le résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter le résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as retiré deux parts sur huit, il te reste trois parts sur huit. Ce résultat, $3/8$, veut dire que sur les huit parts initiales, trois sont encore là."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "Trois huitièmes restants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux le lire comme : trois huitièmes du chocolat sont encore entiers, les cinq autres ont été mangés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Compare avec la moitié : $4/8$ serait la moitié, donc $3/8$ est un peu moins que la moitié."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Retiré",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restant",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Diagramme en barres du partage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres montre visuellement le total, ce qui a été retiré et ce qui reste, ce qui aide à comprendre la signification du nombre obtenu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu partages ce qui reste entre deux amis, chacun reçoit une part et il en reste une, ce qui correspond à $1/8$ pour chacun et $1/8$ en réserve."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ainsi, le numérateur du résultat indique exactement combien de parts identiques sont encore disponibles après le retrait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'expliquer avec tes mots ce que signifie $5/12$ après avoir retiré $3/12$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce diagramme et dis si le reste est plus grand ou plus petit que la moitié."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Que signifie le résultat $3/8$ après avoir retiré $2/8$ de $5/8$ ?",
+              "answer": "Il reste trois parts sur huit.",
+              "hint": "Regarde le numérateur du résultat.",
+              "explanation": "Le numérateur 3 indique le nombre de parts qui n'ont pas été retirées."
+            },
+            {
+              "question": "Si tu as $4/8$, est-ce plus, moins ou égal à la moitié ?",
+              "answer": "Égal à la moitié.",
+              "hint": "Compare 4 et 8.",
+              "explanation": "$4/8$ se simplifie en $1/2$, c'est exactement la moitié."
+            },
+            {
+              "question": "Dans le diagramme en barres, le reste est-il plus grand que la moitié du total ?",
+              "answer": "Non, il est plus petit.",
+              "hint": "La moitié de 8 est 4.",
+              "explanation": "Le reste est 3, qui est inférieur à 4, donc plus petit que la moitié."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier par représentation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr de ton calcul, dessine une barre fractionnée de huit parts et colorie cinq parts, puis efface deux parts."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "Cinq huitièmes avant retrait"
+            },
+            {
+              "type": "paragraph",
+              "content": "Compte les parties colorées qui restent après avoir effacé deux parts : tu dois trouver trois parts colorées, ce qui donne $3/8$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi utiliser un diagramme en barres : une barre pour le total, une pour ce que tu retires, une pour ce qui reste."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Retiré",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restant",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Vérification par diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le nombre de parts restantes correspond à ton résultat, ton calcul est bon."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $9/12$ moins $4/12$ : dessine douze parts, colorie neuf, efface quatre, compte ce qui reste."
+            },
+            {
+              "type": "fraction",
+              "numerator": 9,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "Neuf douzièmes avant retrait"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir retiré quatre parts, il t'en reste cinq, donc $5/12$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette vérification visuelle te donne confiance et t'aide à repérer une éventuelle erreur de soustraction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifie maintenant $6/9$ moins $2/9$ en dessinant la barre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Fais un dernier contrôle avec $8/10$ moins $3/10$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais retirer des parts identiques en gardant le même dénominateur.",
+                "J'interprète le numérateur du résultat comme le nombre de parts restantes.",
+                "Je vérifie mon calcul avec une barre fractionnée ou un diagramme en barres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine $7/10$ et retire $3/10$, combien reste-t-il ?",
+              "answer": "$4/10$",
+              "hint": "Colorie 7 parts sur 10, efface 3, compte.",
+              "explanation": "Il reste 4 parts colorées sur 10, donc $4/10$."
+            },
+            {
+              "question": "Vérifie $5/8 - 2/8$ avec un diagramme en barres.",
+              "answer": "$3/8$",
+              "hint": "Total 8, retiré 2, reste 3.",
+              "explanation": "Le diagramme montre 8 total, 2 retirés, 3 restants, donc $3/8$."
+            },
+            {
+              "question": "Quel dessin montre $9/12 - 4/12$ ?",
+              "answer": "Une barre de 12 parts avec 9 colorées puis 4 effacées, 5 restantes.",
+              "hint": "Compte les parts restantes après retrait.",
+              "explanation": "9 - 4 = 5, le dessin doit avoir 5 parts colorées sur 12."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

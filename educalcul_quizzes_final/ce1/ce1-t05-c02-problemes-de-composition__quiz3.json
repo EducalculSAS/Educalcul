@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 109,
+  "_course_code": "ce1-t05-c02-problemes-de-composition",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Représenter en parties-tout",
+  "title": "Quiz : Représenter en parties-tout (CE1)",
+  "questions": [
+    {
+      "text": "Il y a $5$ pommes dans un panier. On ajoute $3$ pommes. Combien y a-t-il de pommes au total ?",
+      "options": [
+        "$8$",
+        "$7$",
+        "$9$",
+        "$6$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "On additionne les deux parties : $5 + 3 = 8$. Le total est donc $8$ pommes. Les autres réponses correspondent à des erreurs de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Pommes initiales",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Pommes ajoutées",
+            "value": 3,
+            "tone": "green"
+          }
+        ],
+        "caption": "Représentation parties-tout pour 5 + 3"
+      }
+    },
+    {
+      "text": "Il y a $10$ bonbons au total. $4$ bonbons sont rouges. Combien de bonbons ne sont pas rouges ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Le total est $10$. On retire la partie connue $4$ : $10 - 4 = 6$. Il reste $6$ bonbons non rouges. Les autres choix sont des erreurs de soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la classe, il y a $6$ garçons et $7$ filles. Combien d'élèves y a-t-il en tout ?",
+      "options": [
+        "$13$",
+        "$12$",
+        "$14$",
+        "$11$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "On additionne les deux parties : $6 + 7 = 13$. Le nombre total d'élèves est $13$. Les autres réponses proviennent d'additions mal effectuées.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Garçons",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Filles",
+            "value": 7,
+            "tone": "red"
+          }
+        ],
+        "caption": "Représentation parties-tout pour 6 + 7"
+      }
+    },
+    {
+      "text": "Léa a $12$ crayons. Elle en donne $5$ à son ami. Combien de crayons lui restent-ils ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$6$",
+        "$5$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On soustrait la partie donnée du total : $12 - 5 = 7$. Léa conserve $7$ crayons. Les autres options correspondent à des erreurs de soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $8$ oiseaux sur un arbre. $3$ s'envolent, puis $2$ reviennent. Combien d'oiseaux sont sur l'arbre maintenant ?",
+      "options": [
+        "$7$",
+        "$6$",
+        "$8$",
+        "$5$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On commence avec $8$, on retire $3$ : $8 - 3 = 5$, puis on ajoute $2$ : $5 + 2 = 7$. Il y a $7$ oiseaux sur l'arbre. Les autres réponses ne suivent pas les deux étapes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

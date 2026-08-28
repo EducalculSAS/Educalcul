@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Assembler mentalement",
+  "title": "Quiz : Assembler mentalement les solides",
+  "questions": [
+    {
+      "text": "Observe le patron ci-dessous. Quel solide obtient-on en le pliant ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide à base carrée",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Le patron présenté est composé de six carrés identiques disposés en croix. En les pliant le long des arêtes, les six faces forment un cube, qui a six faces carrées. Les autres solides n'ont pas ce patron : le pavé droit a des faces rectangulaires, la pyramide a une base carrée et quatre triangles, le cylindre a des faces courbes.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Un patron est formé de $6$ carrés disposés en forme de croix. Quel solide peut-on assembler mentalement ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Un tétraèdre",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Un cube possède exactement six faces carrées. Le patron en croix avec six carrés correspond au dépliage standard d'un cube. Un pavé droit a des faces rectangulaires, un tétraèdre a quatre faces triangulaires, une pyramide à base carrée a une base carrée et quatre triangles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'on plie un patron composé de $4$ triangles et d'$1$ carré, quel solide obtient-on ?",
+      "options": [
+        "Une pyramide à base carrée",
+        "Un prisme triangulaire",
+        "Un tétraèdre",
+        "Un cube"
+      ],
+      "correctAnswer": "Une pyramide à base carrée",
+      "explanation": "Une pyramide à base carrée a une base carrée et quatre faces latérales triangulaires. Son patron comprend donc un carré et quatre triangles. Un prisme triangulaire a deux triangles et trois rectangles, un tétraèdre a quatre triangles, un cube a six carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les patrons suivants, lequel ne permet pas de former un solide fermé ?",
+      "options": [
+        "Patron d'un cube",
+        "Patron d'un pavé droit",
+        "Patron d'un prisme triangulaire",
+        "Cinq carrés alignés en ligne"
+      ],
+      "correctAnswer": "Cinq carrés alignés en ligne",
+      "explanation": "Un patron doit permettre de refermer toutes les faces sans chevauchement. Cinq carrés alignés en ligne ne peuvent pas se refermer pour former un solide : il manque une face pour fermer le volume. Les trois autres patrons correspondent à des solides connus (cube, pavé droit, prisme triangulaire) et se referment correctement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On plie mentalement le patron d'un pavé droit de dimensions $2 \\times 3 \\times 4$. Combien de faces rectangulaires le solide possède-t-il ?",
+      "options": [
+        "$6$",
+        "$4$",
+        "$8$",
+        "$2$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Un pavé droit a toujours six faces, toutes rectangulaires. Quelles que soient ses dimensions, le nombre de faces ne change pas. Les autres nombres correspondent à des erreurs : $4$ faces pour un tétraèdre, $8$ pour un octaèdre, $2$ pour une figure plane.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

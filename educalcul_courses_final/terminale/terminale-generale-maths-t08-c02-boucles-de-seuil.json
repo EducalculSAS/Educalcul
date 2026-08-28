@@ -1,0 +1,403 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.732724+00:00",
+  "id": 721,
+  "code": "terminale-generale-maths-t08-c02",
+  "title": "Boucles de seuil",
+  "description": "Cours structuré Educalcul : Boucles de seuil.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Boucles de seuil",
+    "objectif_global": "Boucles de seuil",
+    "mini_lecons_imposees": [
+      "While.",
+      "Premier rang.",
+      "Terminaison."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "While.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la boucle while"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux additionner les entiers naturels $1 + 2 + 3 + \\dots$ jusqu'à ce que la somme dépasse $100$. Tu ne sais pas à l'avance combien de termes il faudra ajouter : c'est exactement le genre de situation où la boucle while brille. Contrairement à la boucle for qui répète un nombre fixé de fois, la boucle while répète tant qu'une condition reste vraie. En Python, on écrit : while condition : bloc_d_instructions. Tant que la condition est vraie, le bloc s'exécute ; dès qu'elle devient fausse, on sort de la boucle. C'est comme un gardien qui laisse passer les voitures tant que le feu est vert, et les arrête dès qu'il passe au rouge."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, posons un exemple concret. On veut calculer la plus petite somme $S_n = 1 + 2 + \\dots + n$ qui dépasse $100$. On initialise $S = 0$ et $n = 0$. Puis on entre dans la boucle : while $S \\le 100$ : on incrémente $n$ de $1$, on ajoute $n$ à $S$. À la fin, $n$ vaut le premier rang où la somme dépasse $100$. Regardons pas à pas : au début $S=0$, condition vraie. Premier tour : $n=1$, $S=1$. Deuxième tour : $n=2$, $S=3$. La boucle continue jusqu'à ce que $S$ devienne $>100$. C'est un mécanisme simple mais puissant, qui s'adapte à une multitude de problèmes de seuil."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "S = 0\\nn = 0\\nwhile S <= 100:\\n    n += 1\\n    S += n\\nprint(n, S)",
+              "caption": "Algorithme pour trouver le premier n tel que la somme dépasse 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque importante : la condition est testée avant chaque itération. Si dès le départ la condition est fausse, le bloc ne s'exécute jamais. Par exemple, si on écrit while $S > 100$ : ... avec $S=0$, la boucle ne tourne pas du tout. C'est une sécurité : on ne rentre dans la boucle que quand on a vraiment du travail à faire. Essaie de modifier la condition dans ton esprit : que se passe-t-il si on écrit while $S < 100$ au lieu de $\\le$ ? La boucle s'arrêterait quand $S$ atteint exactement $100$, mais comme la somme saute de $91$ à $105$, elle ne s'arrêterait jamais sur $100$ ; elle tournerait une fois de trop. Le choix de l'opérateur de comparaison est donc crucial."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, généralisons : toute boucle de seuil suit le même schéma. On a une grandeur qui évolue (une somme, un produit, un terme de suite) et on veut savoir à partir de quel rang elle franchit une valeur donnée. On initialise les variables, on écrit la condition de continuation (tant qu'on n'a pas dépassé le seuil), et on met à jour les variables à l'intérieur. C'est un patron algorithmique qu'on retrouvera sans cesse. Pour t'en convaincre, regardons un autre exemple : déterminer le premier rang $n$ tel que $2^n > 1000$. Ici, la grandeur qui évolue est $2^n$, le seuil est $1000$. On peut initialiser $puissance = 1$ (qui vaut $2^0$) et $n = 0$, puis while $puissance \\le 1000$ : $n += 1$ ; $puissance *= 2$. À la sortie, $n$ est le premier exposant tel que $2^n > 1000$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On donne des valeurs de départ aux variables qui vont évoluer : le compteur $n$ (souvent $0$ ou $1$) et la grandeur étudiée (somme, produit, terme de suite)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Condition de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit la condition qui doit rester vraie pour continuer. C'est l'opposé de la condition d'arrêt : on continue tant qu'on n'a PAS atteint le seuil."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Mise à jour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'intérieur de la boucle, on modifie les variables pour avancer vers le seuil : incrémenter $n$, ajouter le terme suivant, multiplier, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Sortie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand la condition devient fausse, on sort de la boucle. Les variables contiennent alors le résultat cherché (le rang, la valeur franchie, etc.)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce patron en quatre étapes est ton meilleur allié pour écrire une boucle while sans erreur. Prends l'habitude de le vérifier mentalement avant de coder : ai-je bien initialisé ? La condition est-elle l'exact opposé de ce que je veux atteindre ? La mise à jour fait-elle progresser vers le seuil ? Si tu réponds oui aux trois questions, ta boucle a de grandes chances de fonctionner du premier coup. Passons à un exercice qui met en pratique ce patron sur une suite géométrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la condition de seuil s'exprime naturellement avec une inégalité stricte ou large. Il faut être vigilant : si on cherche le premier $n$ tel que $u_n > 100$, la condition de boucle sera $u_n \\le 100$. Si on cherche le premier $n$ tel que $u_n \\ge 100$, la condition sera $u_n < 100$. La règle mnémotechnique : la condition de boucle est la négation de la condition d'arrêt. Écris-la d'abord en français : « tant que je n'ai pas dépassé le seuil » puis traduis en code. Cela évite les erreurs de « off-by-one » qui font tourner la boucle une fois de trop ou pas assez. Essayons sur un cas où le seuil est une valeur négative : trouver le premier rang où une suite décroissante passe sous $-50$. La logique reste identique, seul le sens de l'inégalité change."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, rappelle-toi que la boucle while est l'outil universel pour les problèmes de seuil. Elle s'adapte à toutes les situations où le nombre d'itérations n'est pas connu à l'avance. La clé est d'identifier la grandeur qui évolue, le seuil à franchir, et d'écrire la condition de continuation comme la négation de l'objectif. Dans la prochaine leçon, nous verrons comment formaliser la notion de « premier rang » et comment l'exploiter pour résoudre des problèmes concrets sur les suites. Mais avant, assure-toi d'avoir bien assimilé le patron en quatre étapes en refaisant les exercices ci-dessus sans regarder le code."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire un algorithme en Python qui détermine le plus petit entier $n$ tel que la somme $1^2 + 2^2 + \\dots + n^2 > 200$.",
+              "answer": "n = 0\\nS = 0\\nwhile S <= 200:\\n    n += 1\\n    S += n**2\\nprint(n, S)",
+              "hint": "Initialise n et S à 0. La condition de boucle est S <= 200. À chaque tour, incrémente n et ajoute n**2 à S.",
+              "explanation": "On suit le patron : initialisation (n=0, S=0), condition de continuation (S <= 200), mise à jour (n+=1, S+=n**2). La boucle s'arrête quand S > 200, et n est alors le premier rang cherché."
+            },
+            {
+              "question": "On considère la suite définie par $u_0 = 3$ et $u_{n+1} = 2 u_n + 1$. Écrire un algorithme qui trouve le premier indice $n$ tel que $u_n > 1000$.",
+              "answer": "u = 3\\nn = 0\\nwhile u <= 1000:\\n    u = 2*u + 1\\n    n += 1\\nprint(n, u)",
+              "hint": "Initialise u avec u_0 et n=0. La condition est u <= 1000. Dans la boucle, calcule le terme suivant selon la récurrence et incrémente n.",
+              "explanation": "La grandeur qui évolue est u_n. On veut le premier n tel que u_n > 1000, donc on continue tant que u <= 1000. La mise à jour applique la relation de récurrence."
+            },
+            {
+              "question": "Sans exécuter le code, dire ce que vaut la variable n après exécution de l'algorithme suivant :\\nx = 0.5\\nn = 0\\nwhile x < 10:\\n    x = x * 2\\n    n += 1\\nprint(n)",
+              "answer": "5",
+              "hint": "Suis les valeurs de x : 0.5, 1, 2, 4, 8, 16. La boucle s'arrête quand x >= 10. Combien de multiplications par 2 ont été faites ?",
+              "explanation": "x commence à 0.5. Chaque tour multiplie par 2 : 1, 2, 4, 8 (encore <10), puis 16 (>=10). La boucle a tourné 5 fois, donc n=5."
+            }
+          ]
+        },
+        {
+          "title": "Premier rang.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le premier rang : notion et algorithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons utilisé la boucle while pour trouver un indice $n$ tel qu'une certaine grandeur franchisse un seuil. Ce $n$ est ce qu'on appelle le premier rang (ou premier indice) où la condition est satisfaite. C'est un concept central en algorithmique et en étude de suites : on cherche souvent le plus petit $n \\in \\mathbb{N}$ tel que $u_n > M$, ou $u_n < \\varepsilon$, ou encore $|u_n - \\ell| < 0,001$. La boucle while est l'outil naturel pour le déterminer, car elle s'arrête exactement au bon moment."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple classique : la suite géométrique $u_n = 2^n$. On veut le premier $n$ tel que $u_n > 10\\,000$. Au lieu de tester $n=1,2,3,\\dots$ à la main, on écrit un algorithme qui simule la suite jusqu'au seuil. L'initialisation : $u = 1$ (car $2^0=1$), $n = 0$. La condition : while $u \\le 10000$ : on met à jour $u \\leftarrow 2u$ et $n \\leftarrow n+1$. À la sortie, $n$ vaut $14$ car $2^{13}=8192 \\le 10000$ et $2^{14}=16384 > 10000$. Remarque que $n$ est incrémenté après la mise à jour de $u$ ? L'ordre a son importance : si on incrémentait $n$ avant de multiplier $u$, on décalerait l'indice. Toujours mettre à jour la grandeur étudiée en premier, puis l'indice."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_{n+1} = 2 u_n,\\quad u_0 = 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette attention à l'ordre des instructions est une source fréquente de bugs. Pour t'en convaincre, imagine qu'on échange les deux lignes : $n \\leftarrow n+1$ puis $u \\leftarrow 2u$. Au premier tour, $n$ devient $1$ alors que $u$ vaut encore $1$ (qui correspond à $n=0$). La boucle continuerait avec un décalage d'un rang. À la fin, on obtiendrait $n=15$ au lieu de $14$. C'est ce qu'on appelle une erreur « off-by-one ». Pour l'éviter, adopte la règle suivante : la mise à jour de la variable qui représente la grandeur contrôlée (ici $u$) précède toujours la mise à jour de l'indice $n$. Ainsi, à tout moment dans la boucle, $u$ correspond exactement à $u_n$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Élargissons maintenant à des suites plus générales. Supposons une suite définie par récurrence $u_{n+1} = f(u_n)$ avec $u_0$ donné. Pour trouver le premier $n$ tel que $u_n > M$, l'algorithme garde la même structure : initialiser $u$ avec $u_0$ et $n=0$ ; while $u \\le M$ : $u \\leftarrow f(u)$ ; $n \\leftarrow n+1$. Cela fonctionne pour n'importe quelle fonction $f$, à condition que la suite soit croissante (ou du moins qu'elle finisse par dépasser $M$). Si la suite est décroissante et qu'on cherche le premier $n$ tel que $u_n < m$, la condition devient $u \\ge m$. Le patron est robuste : il suffit d'adapter la condition de continuation à l'inégalité opposée à celle qu'on veut atteindre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Identifier la suite et le seuil",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire la relation de récurrence et la valeur initiale. Noter le seuil $M$ (ou $m$) et le sens de l'inégalité recherchée ($>$ ou $<$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Initialiser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Affecter à la variable u la valeur $u_0$. Mettre n = 0."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Condition de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire while u <= M (si on cherche u_n > M) ou while u >= m (si on cherche u_n < m)."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer le terme suivant : u = f(u). Puis incrémenter n : n += 1."
+                    }
+                  ]
+                },
+                {
+                  "title": "5. Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après la boucle, n est le premier rang cherché, et u vaut $u_n$ (la valeur qui a franchi le seuil)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce patron en cinq étapes est ta fiche de route pour tous les exercices de « premier rang ». Il garantit que tu ne confondras pas l'indice et la valeur, et que la condition de boucle est correcte. Appliquons-le à une suite arithmétique : $u_0 = 5$, $u_{n+1} = u_n + 3$. Trouver le premier $n$ tel que $u_n > 100$. Ici $f(x)=x+3$, le seuil $M=100$, condition while $u \\le 100$. On initialise $u=5$, $n=0$. La boucle ajoute $3$ à $u$ et incrémente $n$ jusqu'à ce que $u$ dépasse $100$. Combien de tours ? Comme $u_n = 5 + 3n$, l'inégalité $5+3n > 100$ donne $n > 95/3 \\approx 31,66$, donc $n=32$. Vérifions avec l'algorithme mental : après 32 tours, $u = 5 + 32\\times3 = 101 > 100$, et $n=32$. Parfait."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le problème demande non seulement le premier rang, mais aussi la valeur du terme à ce rang. L'algorithme donne les deux : à la sortie, n est le rang et u est la valeur $u_n$. C'est très pratique pour répondre à des questions comme « À partir de quel rang la suite dépasse-t-elle $1000$ et quelle est la valeur de ce premier terme ? ». Dans d'autres cas, on veut le dernier rang où la condition n'est pas encore satisfaite, c'est-à-dire $n-1$. Il suffit alors d'afficher n-1 à la fin. Attention : si la condition initiale est déjà fausse (par exemple $u_0 > M$), la boucle ne s'exécute pas et n reste $0$. Le premier rang est alors $0$. C'est correct car $u_0$ satisfait déjà la condition. Vérifie toujours ce cas limite dans tes programmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, retenons que la recherche du premier rang est un problème algorithmiques standard, résolu par une boucle while dont la condition est la négation de l'objectif. L'ordre des mises à jour (grandeur puis indice) est crucial pour éviter les décalages. Dans la prochaine leçon, nous aborderons une question fondamentale : comment être certain que la boucle s'arrête ? C'est le problème de la terminaison, qui garantit que notre algorithme ne tourne pas indéfiniment. Mais avant, assure-toi de maîtriser le patron en cinq étapes en refaisant les exercices ci-dessus."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite définie par $v_0 = 10$ et $v_{n+1} = 0,8 v_n$. Écrire un algorithme qui trouve le premier $n$ tel que $v_n < 1$.",
+              "answer": "v = 10\\nn = 0\\nwhile v >= 1:\\n    v = 0.8 * v\\n    n += 1\\nprint(n, v)",
+              "hint": "La suite est décroissante. On cherche v_n < 1, donc la condition de continuation est v >= 1. Mise à jour : v = 0.8*v puis n += 1.",
+              "explanation": "Initialisation v=10, n=0. Condition while v >= 1 (tant qu'on n'est pas descendu sous 1). Corps : v = 0.8*v (terme suivant), n += 1. À la sortie, n est le premier indice avec v_n < 1."
+            },
+            {
+              "question": "On considère la suite $u_n = 500 \\times 1,05^n$. Sans utiliser de logarithmes, donner un algorithme qui détermine le plus petit $n$ tel que $u_n > 1000$.",
+              "answer": "u = 500\\nn = 0\\nwhile u <= 1000:\\n    u = u * 1.05\\n    n += 1\\nprint(n, u)",
+              "hint": "Initialise u avec u_0 = 500. Condition while u <= 1000. Mise à jour : multiplier par 1.05 puis incrémenter n.",
+              "explanation": "La relation de récurrence est u_{n+1} = 1,05 u_n. Le seuil est 1000. Le patron s'applique directement."
+            },
+            {
+              "question": "Un algorithme renvoie n = 0 après exécution de la boucle while pour chercher le premier rang où u_n > M. Que pouvez-vous dire de u_0 ?",
+              "answer": "u_0 > M",
+              "hint": "Si la boucle ne s'exécute pas, c'est que la condition initiale est fausse. La condition de boucle est u <= M. Si elle est fausse au départ, alors u_0 > M.",
+              "explanation": "La boucle while teste la condition avant le premier tour. Si n reste 0, c'est que la condition u <= M était fausse dès le début, donc u_0 > M. Le premier rang est 0."
+            }
+          ]
+        },
+        {
+          "title": "Terminaison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Garantir la terminaison d'une boucle while"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons écrit des boucles while en supposant qu'elles s'arrêteraient un jour. Mais comment en être sûr ? C'est la question de la terminaison : pour une entrée donnée, l'algorithme termine-t-il toujours ? En terme de spécialité mathématiques, on doit pouvoir prouver que la boucle ne tourne pas indéfiniment. C'est une exigence de rigueur : un algorithme qui ne termine pas n'est pas un algorithme valide. Heureusement, pour les boucles de seuil sur des suites monotones, la terminaison est souvent facile à établir."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'idée centrale est celle de variant de boucle : une quantité entière strictement positive qui diminue à chaque itération. Comme on ne peut pas descendre indéfiniment dans les entiers naturels (le principe de bonne fondation de $\\mathbb{N}$), la boucle doit s'arrêter. Dans nos exemples, le variant naturel est la distance au seuil. Par exemple, pour la somme $S_n = 1+2+\\dots+n$ qui doit dépasser $100$, on peut prendre $V = 100 - S + 1$ (ou simplement $100 - S$ tant que $S \\le 100$). À chaque tour, $S$ augmente d'au moins $1$, donc $V$ diminue d'au moins $1$. $V$ est un entier positif qui ne peut pas descendre indéfiniment : la boucle termine."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\text{seuil} - \\text{grandeur} + 1 \\quad (\\text{ou une variante adaptée})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention : il ne suffit pas que la grandeur évolue, il faut qu'elle évolue dans le bon sens et qu'elle finisse par franchir le seuil. Si la suite est croissante mais bornée supérieurment par le seuil, elle ne le franchira jamais. Par exemple, $u_0 = 0$, $u_{n+1} = u_n + 1/2^n$. La suite est croissante, mais sa limite est $2$. Si le seuil est $3$, la condition $u \\le 3$ restera toujours vraie, la boucle tournera indéfiniment. C'est pourquoi, avant de coder, il faut vérifier que le seuil est atteignable : pour une suite croissante, il faut que sa limite (si elle existe) soit strictement supérieure au seuil, ou que la suite ne soit pas majorée. Pour une suite décroissante, la limite doit être strictement inférieure au seuil."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Formalisons la preuve de terminaison pour une suite croissante non majorée (ou dont la limite dépasse le seuil). On veut montrer que la boucle while u <= M : u = f(u) ; n += 1 termine. On pose $V = M - u + 1$ (ou toute fonction qui mesure la distance au seuil). Comme $u$ est croissante et tend vers $+\\infty$ (ou vers une limite $> M$), il existe un rang $N$ tel que $u_N > M$. Avant ce rang, $u_n \\le M$, donc $V \\ge 1$. À chaque itération, $u$ augmente strictement (car $f(u) > u$ pour une suite strictement croissante), donc $V$ diminue strictement. $V$ est un entier positif (si $u$ et $M$ sont entiers) ou du moins une suite de réels strictement décroissante minorée par $0$ qui ne peut pas avoir une infinité de valeurs distinctes avant de devenir $<1$. Dans tous les cas, le nombre d'itérations est fini."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Montrer que la suite est monotone",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prouver que $u_{n+1} > u_n$ (croissante) ou $u_{n+1} < u_n$ (décroissante) pour tout $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Montrer que le seuil est franchissable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une suite croissante : $\\lim u_n = +\\infty$ ou $\\lim u_n > M$. Pour une suite décroissante : $\\lim u_n = -\\infty$ ou $\\lim u_n < m$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Définir un variant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisir une quantité (souvent $M - u_n$ ou $u_n - m$) qui évolue strictement vers $0$ (ou devient négative)."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Conclure par le principe de bonne fondation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un ensemble bien fondé (comme $\\mathbb{N}$ ou un intervalle d'entiers) ne contient pas de suite strictement décroissante infinie. Donc le variant ne peut pas diminuer indéfiniment : la boucle termine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette structure de preuve est celle qu'on attend en spécialité mathématiques. Elle combine raisonnement sur les suites (monotonie, convergence) et argument algorithmique (variant). Entraîne-toi à l'écrire clairement : énoncer la monotonie, calculer la limite ou montrer non-majoration, définir le variant, conclure. C'est une compétence clé pour le bac et au-delà. Passons à un exercice où tu devras produire une preuve complète de terminaison."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe des cas où la terminaison n'est pas garantie, et il faut le détecter. Par exemple, la boucle while x != 1 : x = x/2 si x est pair, sinon x = 3*x+1 (conjecture de Syracuse). Personne ne sait si elle termine toujours ! En pratique, pour les boucles de seuil sur des suites définies par récurrence simple, la terminaison est presque toujours assurée si le seuil est du bon côté de la limite. Mais si tu écris une boucle while avec une condition mal choisie (par exemple while u < M pour une suite décroissante), tu peux créer une boucle infinie. Relis toujours ta condition : est-elle l'exacte négation de l'objectif ? La grandeur évolue-t-elle dans le sens qui réduit l'écart au seuil ? Si oui, tu es en bonne voie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce cours sur les boucles de seuil, rappelons les trois piliers : la syntaxe while et son patron en quatre étapes (initialisation, condition, mise à jour, sortie) ; la recherche du premier rang avec le patron en cinq étapes (identifier, initialiser, condition, corps, résultat) ; la preuve de terminaison via monotonie, franchissabilité du seuil, variant et bonne fondation. Ces outils te permettront de résoudre une multitude de problèmes algorithmiques sur les suites, les sommes, les produits, et bien d'autres situations de seuil. Tu as maintenant toutes les clés pour aborder sereinement les exercices du bac et les projets algorithmiques. Bravo pour ton travail !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une boucle while pour un problème de seuil en respectant l'ordre des mises à jour.",
+                "Je sais trouver le premier rang d'une suite franchissant un seuil donné.",
+                "Je sais prouver la terminaison d'une boucle de seuil en exhibant un variant et en utilisant la monotonie de la suite.",
+                "Je sais adapter la condition de boucle selon que la suite est croissante ou décroissante et selon le sens de l'inégalité.",
+                "Je sais repérer les erreurs classiques (off-by-one, boucle infinie) et les corriger."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Prouver que l'algorithme suivant termine pour toute valeur initiale entière $x \\ge 0$ :\\nwhile x > 0:\\n    x = x - 2\\nprint(x)",
+              "answer": "La variable x diminue de 2 à chaque itération. x est un entier naturel, donc la suite des valeurs de x est une suite strictement décroissante d'entiers naturels. Une telle suite ne peut pas être infinie (principe de bonne fondation de $\\mathbb{N}$). Donc la boucle termine.",
+              "hint": "Identifiez le variant (ici x lui-même). Montrez qu'il diminue strictement et reste dans $\\mathbb{N}$.",
+              "explanation": "x est un entier naturel. À chaque tour, x diminue de 2, donc la suite des valeurs de x est strictement décroissante dans $\\mathbb{N}$. Comme $\\mathbb{N}$ est bien fondé, il n'y a pas de suite strictement décroissante infinie. La boucle s'arrête quand x <= 0."
+            },
+            {
+              "question": "Soit la suite définie par $u_0 = 1$ et $u_{n+1} = u_n + \\frac{1}{u_n}$. On veut le premier $n$ tel que $u_n > 10$. Écrire l'algorithme et prouver sa terminaison.",
+              "answer": "u = 1.0\\nn = 0\\nwhile u <= 10:\\n    u = u + 1/u\\n    n += 1\\nprint(n, u)\\n\\nPreuve : La suite est strictement croissante car 1/u > 0. De plus, $u_{n+1}^2 = u_n^2 + 2 + 1/u_n^2 > u_n^2 + 2$. Donc $u_n^2 > 2n + 1$, ce qui tend vers $+\\infty$. Ainsi $u_n \\to +\\infty$, le seuil 10 est franchissable. Le variant $V = 10 - u$ (ou $10 - u + 1$) diminue strictement et ne peut pas le faire indéfiniment. La boucle termine.",
+              "hint": "Montrez que la suite est croissante et non majorée (en majorant $u_{n+1}^2 - u_n^2$). Le variant peut être $10 - u_n$.",
+              "explanation": "Algorithme standard. Preuve : croissance stricte car $1/u_n > 0$. Non-majoration : $u_{n+1}^2 = u_n^2 + 2 + 1/u_n^2 > u_n^2 + 2$, donc $u_n^2 > 2n+1 \\to +\\infty$. Le seuil 10 est donc atteint. Variant $V = 10 - u_n$ (positif tant que la boucle tourne) diminue strictement. Terminaison assurée."
+            },
+            {
+              "question": "Donner un exemple de boucle while de seuil qui ne termine pas, en expliquant pourquoi.",
+              "answer": "u = 0\\nwhile u < 10:\\n    u = u + 1/2**n  # mais n n'est pas incrémenté !\\n    # ou bien une suite convergente vers 2 avec seuil 3\\n# Exemple concret : u = 1.5 ; while u < 3 : u = (u + 2/u)/2 (suite de Newton pour sqrt(2) qui converge vers sqrt(2) < 3).",
+              "hint": "Pensez à une suite convergente dont la limite est de l'autre côté du seuil par rapport à la condition de boucle.",
+              "explanation": "Si la suite converge vers une limite L et que la condition de boucle est u < M avec L < M, alors u ne dépassera jamais M (ou mettra un temps infini). La boucle tourne indéfiniment. Exemple : u_0=1, u_{n+1} = (u_n + 2/u_n)/2 converge vers $\\sqrt{2} \\approx 1,414$. Si on met while u < 3, la condition reste toujours vraie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

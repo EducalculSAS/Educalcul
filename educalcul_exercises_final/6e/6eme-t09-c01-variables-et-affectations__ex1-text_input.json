@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 374,
+  "_course_code": "6eme-t09-c01-variables-et-affectations",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Lire",
+  "title": "Exercice : Instruction Lire en algorithmique (6e)",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Dans l'algorithme ci-dessous, la variable $x$ est déclarée entière. Après l'instruction $Lire(x)$, l'utilisateur entre $7$. Quelle est la valeur de $x$ ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction $Lire(x)$ affecte à la variable $x$ la valeur saisie par l'utilisateur. Comme l'utilisateur a entré $7$, la variable $x$ vaut $7$ à la fin de l'exécution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "L'algorithme suivant déclare deux variables entières $a$ et $b$ :\\n$Lire(a)$\\n$Lire(b)$\\nSi l'utilisateur entre $12$ puis $5$, quelles sont les valeurs de $a$ et $b$ ?",
+      "correctAnswer": "a=12, b=5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La première instruction $Lire(a)$ stocke la première valeur entrée ($12$) dans $a$. La seconde instruction $Lire(b)$ stocke la deuxième valeur entrée ($5$) dans $b$. Donc $a=12$ et $b=5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "On considère l'algorithme :\\nVariable $n$ : Entier\\nDebut\\n$Lire(n)$\\n$n \\leftarrow n \\times 2$\\nFin\\nSi l'utilisateur entre $9$, quelle est la valeur finale de $n$ ?",
+      "correctAnswer": "18",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction $Lire(n)$ affecte $9$ à $n$. Ensuite, l'affectation $n \\leftarrow n \\times 2$ multiplie la valeur actuelle de $n$ par $2$, ce qui donne $9 \\times 2 = 18$. La valeur finale de $n$ est donc $18$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

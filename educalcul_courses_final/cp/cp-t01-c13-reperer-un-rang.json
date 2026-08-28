@@ -1,0 +1,313 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.525540+00:00",
+  "id": 13,
+  "code": "cp-t01-c13",
+  "title": "Repérer un rang",
+  "description": "Cours structuré Educalcul : Repérer un rang.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Repérer un rang",
+    "objectif_global": "Repérer un rang",
+    "mini_lecons_imposees": [
+      "Comprendre premier, deuxième, troisième.",
+      "Associer rang et position.",
+      "Résoudre de petites situations ordinales."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Comprendre premier, deuxième, troisième.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois premiers rangs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau cours ! Aujourd'hui, on va parler de l'ordre dans une file. C'est une idée que tu connais déjà sans le savoir : quand tu fais la queue pour le goûter, tu sais très bien qui est devant toi. On va mettre des mots précis dessus pour que tu puisses le raconter à tout le monde."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les trois premières places sur la file",
+              "min": 0,
+              "max": 4,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1er"
+                },
+                {
+                  "value": 2,
+                  "label": "2e"
+                },
+                {
+                  "value": 3,
+                  "label": "3e"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la flèche numérotée. Le tout premier, c'est le départ, le chef de file. On l'appelle $1^{er}$. Juste derrière, il y a le $2^{e}$. Il suit le premier de tout près. Et derrière le deuxième, arrive le $3^{e}$. Il n'y a personne entre le $2^{e}$ et le $3^{e}$, ils se touchent presque !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire plus vite, les grands utilisent un code secret : un petit chiffre et des lettres en l'air. Pour premier, on écrit $1^{er}$. Pour deuxième, $2^{e}$. Pour troisième, $3^{e}$. Essaie de le tracer dans l'air avec ton doigt : le chiffre, puis la petite bulle au-dessus. C'est comme un petit chapeau sur la tête du nombre."
+            },
+            {
+              "type": "display_math",
+              "latex": "1^{er},\\ 2^{e},\\ 3^{e}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si la file s'arrête à trois ? Alors le $3^{e}$ a un rôle spécial : il est le dernier. Il ferme la marche, comme le wagon de queue d'un petit train. C'est une place importante aussi, car sans lui, la file n'est pas finie !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la file : Chat, Chien, Lapin. Qui est $2^{e}$ ?",
+              "answer": "Chien",
+              "hint": "Compte : $1^{er}$ Chat, $2^{e}$ ...",
+              "explanation": "Le chien suit le chat, il est deuxième."
+            },
+            {
+              "question": "Complète la suite : $1^{er}$, $2^{e}$, ... ?",
+              "answer": "$3^{e}$",
+              "hint": "Quel rang suit le deuxième ?",
+              "explanation": "Après deuxième vient troisième."
+            },
+            {
+              "question": "Trois oiseaux sur un fil. Le dernier est un moineau. Les deux premiers sont un rouge-gorge et une mésange. L'oiseau du milieu est le $2^{e}$. Vrai ou Faux ?",
+              "answer": "Vrai",
+              "hint": "Le milieu entre 3, c'est le 2e.",
+              "explanation": "Avec 3 oiseaux, le 2e est pile au milieu."
+            }
+          ]
+        },
+        {
+          "title": "Associer rang et position.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Où es-tu dans la file ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les trois premiers noms, on va jouer à 'Où est Charlie ?' mais avec des positions. Imagine une rangée de jouets sur une étagère. Pour savoir où est ton ours, on compte les cases depuis le bord gauche. La première case, c'est la position $1$. La d'à côté, position $2$. C'est le même principe que les marches d'un escalier."
+            },
+            {
+              "type": "number_line",
+              "caption": "Positions 1 à 4 sur une graduation",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la graduation, chaque trait correspond à une place. Le trait $1$ est le point de départ. Le trait $2$ est le premier pas. Le trait $3$, le deuxième pas. C'est comme marcher sur des dalles : dalle $1$, dalle $2$, dalle $3$. Ton pied est sur la dalle $3$, tu es en position $3$, donc tu es $3^{e}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais parfois, on regarde depuis la fin. Si tu es tout au bout, tu es le dernier. Si la file a $4$ copains, le dernier est $4^{e}$. Juste devant lui, c'est l'avant-dernier, le $3^{e}$. C'est comme lire une histoire à l'envers : on finit par le début ! Essaie de fermer les yeux et d'imaginer la file qui part de la droite au lieu de la gauche."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on bouge ? Tu es $3^{e}$. Tu fais un grand pas en avant vers le chef de file. Hop ! Tu passes devant celui qui était $2^{e}$. Tu deviens $2^{e}$. Avancer vers le début, c'est diminuer son rang. Reculer, c'est l'augmenter. C'est magique, non ? On va t'apprendre la méthode en trois temps pour ne jamais te tromper."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère ta place de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde ton rang actuel : $2^{e}$, $3^{e}$...?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte les sauts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un pas en avant = un rang de moins. Un pas en arrière = un rang de plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Donne le nouveau rang",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dis le nombre final à haute voix."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite, le point A est sur le $3$. Quel est son rang en partant de $1$ ?",
+              "answer": "$3^{e}$",
+              "hint": "Compte $1, 2, 3$.",
+              "explanation": "Le nombre sur la droite donne le rang."
+            },
+            {
+              "question": "Une file de $4$ enfants. Tu es le dernier. Quel est ton rang ?",
+              "answer": "$4^{e}$",
+              "hint": "Dernier = nombre total.",
+              "explanation": "Il y a 4 enfants, le dernier est 4e."
+            },
+            {
+              "question": "Tu es $3^{e}$. Tu avances de $1$ place. Quel est ton nouveau rang ?",
+              "answer": "$2^{e}$",
+              "hint": "Avancer vers le début fait baisser le rang.",
+              "explanation": "On passe de 3 à 2."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre de petites situations ordinales.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Petits problèmes de rang"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'heure des petites énigmes ! Tu vas voir, c'est comme une devinette. Paul, Léa et Sam font la course aux sacs. Paul franchit la ligne $1^{er}$. Léa arrive $2^{e}$. Sam arrive $3^{e}$. La question : qui est coincé entre les deux autres ? Regarde les rangs : $1$, $2$, $3$. Le $2$ est pile au milieu de $1$ et $3$. C'est Léa ! Tu as l'œil, c'est gagné."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Paul : $1^{er}$",
+                "Léa : $2^{e}$",
+                "Sam : $3^{e}$"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre situation : quatre amis pour la corde à sauter. Ana prend la place $1^{re}$. Ben est tout à la fin, place $4^{e}$ (le dernier). Chloé se place juste devant Ben. 'Juste devant' veut dire 'un rang avant'. $4^{e}$ moins $1$, ça fait $3^{e}$. Chloé est $3^{e}$. Il reste une place libre : la $2^{e}$. Diego s'y glisse. Tout le monde a sa place ! C'est comme un puzzle où chaque pièce a son numéro."
+            },
+            {
+              "type": "definition",
+              "term": "Avant / Après",
+              "definition": "Avant veut dire un rang plus petit (vers le $1^{er}$). Après veut dire un rang plus grand (vers le dernier).",
+              "example": "$2^{e}$ est avant $3^{e}$. $3^{e}$ est après $2^{e}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier défi avant la récré : cinq voitures garées côte à côte. La rouge est $2^{e}$. La bleue est $4^{e}$. La verte est garée entre la rouge et la bleue. Quel est son rang ? Entre $2$ et $4$, il y a $3$. La verte est $3^{e}$. Tu as trouvé tout seul, bravo ! Tu deviens un champion du repérage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire qui est 1er, 2e, 3e dans une file.",
+                "Je retrouve une place en comptant depuis le début ou la fin.",
+                "Je résous un petit problème avec les mots avant, après, entre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Léo arrive $1^{er}$, Mia $2^{e}$, Noah $3^{e}$. Qui arrive après Mia ?",
+              "answer": "Noah",
+              "hint": "Après $2^{e}$ vient $3^{e}$.",
+              "explanation": "Noah est 3e, donc après Mia."
+            },
+            {
+              "question": "4 voitures : Verte ($1^{re}$), Rouge ($2^{e}$), Bleue ($3^{e}$), Jaune ($4^{e}$). La voiture bleue est entre la rouge et la jaune. Vrai ?",
+              "answer": "Vrai",
+              "hint": "Regarde les rangs $2, 3, 4$.",
+              "explanation": "Bleue 3e, entre Rouge 2e et Jaune 4e."
+            },
+            {
+              "question": "Il y a 5 places. Assis : $1^{re}$ place vide, $2^{e}$ toi, $3^{e}$ ami. Tu es à quelle place ?",
+              "answer": "$2^{e}$",
+              "hint": "Compte les places occupées avant toi.",
+              "explanation": "La 1re est vide, tu es sur la 2e."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

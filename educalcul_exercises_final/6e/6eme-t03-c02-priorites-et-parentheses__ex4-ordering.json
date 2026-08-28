@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Application : Priorités et parenthèses",
+  "title": "Ordre des opérations : priorités et parenthèses",
+  "blocks": [
+    {
+      "title": "Calcul simple avec priorités",
+      "content": "Range les étapes dans l'ordre pour calculer l'expression $15 - 3 \\times 4 + 6$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je repère la priorité : la multiplication $3 \\times 4$.",
+        "Je calcule $3 \\times 4 = 12$.",
+        "Je remplace : l'expression devient $15 - 12 + 6$.",
+        "Je calcule de la gauche vers la droite : $15 - 12 = 3$.",
+        "J'effectue l'addition finale : $3 + 6 = 9$."
+      ],
+      "explanation": "On commence toujours par les multiplications et divisions avant les additions et soustractions. Ici, $3 \\times 4 = 12$. L'expression devient $15 - 12 + 6$. Comme il ne reste que $-$ et $+$, on calcule de gauche à droite : $15 - 12 = 3$, puis $3 + 6 = 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec parenthèses",
+      "content": "Range les étapes dans l'ordre pour calculer l'expression $(12 + 8) : 4 \\times 3$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je commence par les parenthèses : $12 + 8 = 20$.",
+        "Je remplace : l'expression devient $20 : 4 \\times 3$.",
+        "Je calcule la division en priorité (de gauche à droite) : $20 : 4 = 5$.",
+        "Je termine par la multiplication : $5 \\times 3 = 15$."
+      ],
+      "explanation": "Les parenthèses sont la priorité absolue. On calcule $12 + 8 = 20$. L'expression devient $20 : 4 \\times 3$. Division et multiplication ont la même priorité, on calcule donc de gauche à droite : $20 : 4 = 5$, puis $5 \\times 3 = 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul avec parenthèses et priorités imbriquées",
+      "content": "Range les étapes dans l'ordre pour calculer l'expression $5 \\times (10 - 4 : 2)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "À l'intérieur des parenthèses, je repère la priorité : la division $4 : 2$.",
+        "Je calcule $4 : 2 = 2$.",
+        "Je termine le calcul dans les parenthèses : $10 - 2 = 8$.",
+        "Je remplace : l'expression devient $5 \\times 8$.",
+        "J'effectue la multiplication : $5 \\times 8 = 40$."
+      ],
+      "explanation": "On commence par ce qui est dans les parenthèses. À l'intérieur, la division est prioritaire sur la soustraction : $4 : 2 = 2$. On fait ensuite la soustraction : $10 - 2 = 8$. L'expression devient $5 \\times 8 = 40$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

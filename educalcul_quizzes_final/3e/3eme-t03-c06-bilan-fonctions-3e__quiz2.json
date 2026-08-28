@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 472,
+  "_course_code": "3eme-t03-c06-bilan-fonctions-3e",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Checklist",
+  "title": "Checklist - Fonctions 3e",
+  "questions": [
+    {
+      "text": "Quelle condition doit être vérifiée pour affirmer qu'une fonction est proportionnelle ?",
+      "options": [
+        "Le graphique passe par l'origine et est une droite.",
+        "Le graphique est une droite qui ne passe pas par l'origine.",
+        "Le tableau de valeurs montre des quotients constants mais le graphique n'est pas une droite.",
+        "La fonction s'écrit sous la forme $f(x)=ax+b$ avec $b \\neq 0$."
+      ],
+      "correctAnswer": "Le graphique passe par l'origine et est une droite.",
+      "explanation": "Une fonction proportionnelle est une fonction linéaire qui passe par l'origine, c'est-à-dire de la forme $f(x)=ax$ avec $a$ constant. Son graphique est une droite passant par $(0,0)$. Les autres options décrivent soit une fonction affine non proportionnelle, soit une incohérence entre tableau et graphique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne le tableau de valeurs suivant :\\n$x$ : 1 ; 2 ; 3 ; 4\\n$f(x)$ : 3 ; 6 ; 9 ; 12\\nLa fonction $f$ est-elle linéaire ?",
+      "options": [
+        "Oui, car les différences successives de $f(x)$ sont constantes.",
+        "Non, car les valeurs de $f(x)$ ne sont pas proportionnelles à $x$.",
+        "Oui, car le graphique serait une parabole.",
+        "Non, car le coefficient directeur n'est pas un entier."
+      ],
+      "correctAnswer": "Oui, car les différences successives de $f(x)$ sont constantes.",
+      "explanation": "Pour une fonction linéaire (affine), les écarts entre les images d'entiers consécutifs sont constants. Ici $6-3=3$, $9-6=3$, $12-9=3$, donc $f$ est affine de coefficient directeur $3$. Comme $f(0)=0$, elle est même proportionnelle. Les autres propositions sont fausses : les valeurs sont proportionnelles, le graphique est une droite, et le coefficient directeur peut être non entier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminez l'ensemble de définition de la fonction $f(x)=\\frac{2x+1}{x-3}$.",
+      "options": [
+        "$\\mathbb{R} \\setminus \\{3\\}$",
+        "$\\mathbb{R}$",
+        "$\\mathbb{R} \\setminus \\{-3\\}$",
+        "$\\mathbb{R} \\setminus \\{0\\}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\{3\\}$",
+      "explanation": "Une fonction rationnelle est définie pour tous les réels sauf ceux qui annulent le dénominateur. Ici $x-3=0 \\Rightarrow x=3$. Donc l'ensemble de définition est $\\mathbb{R}$ sans $3$. Les autres ensembles excluent de mauvaises valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des graphiques ci-dessous correspond à une fonction proportionnelle ?",
+      "options": [
+        "Une droite passant par l'origine.",
+        "Une droite ne passant pas par l'origine.",
+        "Une courbe en forme de parabole.",
+        "Une hyperbole avec deux branches."
+      ],
+      "correctAnswer": "Une droite passant par l'origine.",
+      "explanation": "Une fonction proportionnelle a pour expression $f(x)=ax$ ; son graphique est une droite qui passe par le point $(0,0)$. Une droite ne passant pas par l'origine représente une fonction affine non proportionnelle, une parabole correspond à une fonction du second degré, une hyperbole à une fonction rationnelle de type $k/x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est correcte concernant la notation $f(x)=2x+5$ ?",
+      "options": [
+        "C'est une fonction affine de coefficient directeur $2$ et d'ordonnée à l'origine $5$.",
+        "C'est une fonction proportionnelle de coefficient de proportionnalité $2$.",
+        "C'est une fonction linéaire qui passe par l'origine.",
+        "C'est une fonction constante."
+      ],
+      "correctAnswer": "C'est une fonction affine de coefficient directeur $2$ et d'ordonnée à l'origine $5$.",
+      "explanation": "L'expression $f(x)=2x+5$ est de la forme $ax+b$ avec $a=2$ et $b=5$. Comme $b \\neq 0$, la fonction est affine (linéaire au sens large) mais non proportionnelle, car elle ne passe pas par l'origine. Elle n'est pas constante car le coefficient de $x$ n'est pas nul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

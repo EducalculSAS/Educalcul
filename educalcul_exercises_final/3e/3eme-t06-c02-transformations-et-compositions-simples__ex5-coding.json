@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Approfondissement : Image",
+  "title": "Algorithmes pour déterminer l'image d'un point par des transformations",
+  "blocks": [
+    {
+      "title": "Translation d'un point",
+      "content": "Écrire un algorithme (en langage naturel ou sous forme de code type Python) qui, étant donnés les coordonnées d'un point $A(x,y)$ et les composantes d'un vecteur de translation $v(a,b)$, renvoie les coordonnées du point image $A'$ par la translation de vecteur $v$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x, y, a, b.\\n2. Calculer x' = x + a.\\n3. Calculer y' = y + b.\\n4. Afficher (x', y').\\nVersion Python :\\ndef translation(x, y, a, b):\\n    return x + a, y + b",
+      "explanation": "La translation d'un point par un vecteur ajoute les composantes du vecteur aux coordonnées du point. L'algorithme lit les quatre nombres, effectue les deux additions et affiche le couple résultant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rotation de 90° autour de l'origine",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées d'un point $A(x,y)$, renvoie les coordonnées de son image $A'$ par une rotation de $90°$ dans le sens direct (antihoraire) autour de l'origine $O(0,0)$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x, y.\\n2. Calculer x' = -y.\\n2. Calculer y' = x.\\n3. Afficher (x', y').\\nVersion Python :\\ndef rotation_90(x, y):\\n    return -y, x",
+      "explanation": "Une rotation de 90° autour de l'origine transforme le point (x, y) en (-y, x). L'algorithme applique directement ces formules.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition homothétie puis translation",
+      "content": "Écrire un algorithme qui, étant donnés les coordonnées d'un point $A(x,y)$, un rapport d'homothétie $k$ (centre $O(0,0)$) et un vecteur de translation $v(a,b)$, renvoie les coordonnées du point image après avoir appliqué successivement l'homothétie de centre $O$ et rapport $k$, puis la translation de vecteur $v$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x, y, k, a, b.\\n2. Calculer x1 = k * x.\\n3. Calculer y1 = k * y.\\n4. Calculer x' = x1 + a.\\n5. Calculer y' = y1 + b.\\n6. Afficher (x', y').\\nVersion Python :\\ndef compose_homothetie_translation(x, y, k, a, b):\\n    x1 = k * x\\n    y1 = k * y\\n    return x1 + a, y1 + b",
+      "explanation": "L'homothétie de centre O et de rapport k multiplie les coordonnées par k. La translation ajoute ensuite le vecteur. L'algorithme effectue ces deux étapes dans l'ordre.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 345,
+  "_course_code": "6eme-t03-c04-calcul-mental-et-ordre-de-grandeur",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Estimation",
+  "title": "Quiz : Estimation et ordre de grandeur (6e)",
+  "questions": [
+    {
+      "text": "Quelle est l'ordre de grandeur de la somme $48 + 37$ ?",
+      "options": [
+        "$70$",
+        "$80$",
+        "$90$",
+        "$100$"
+      ],
+      "correctAnswer": "$90$",
+      "explanation": "On arrondit chaque nombre à la dizaine la plus proche : $48$ devient $50$ et $37$ devient $40$. La somme estimée est $50 + 40 = 90$. Le calcul exact donne $85$, ce qui confirme que $90$ est l'ordre de grandeur le plus proche.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer le produit $29 \\times 3$. Parmi les propositions suivantes, laquelle est la plus proche du résultat exact ?",
+      "options": [
+        "$60$",
+        "$80$",
+        "$90$",
+        "$100$"
+      ],
+      "correctAnswer": "$90$",
+      "explanation": "On arrondit $29$ à la dizaine supérieure : $30$. Le produit estimé est $30 \\times 3 = 90$. Le calcul exact est $29 \\times 3 = 87$. La valeur $90$ est donc l'estimation la plus pertinente. $80$ correspondrait à un arrondi de $29$ à $20$, ce qui est trop gros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève calcule $562 - 198$ et trouve $464$. En utilisant l'estimation, que peut-on conclure ?",
+      "options": [
+        "Le résultat est plausible car $500 - 200 = 300$.",
+        "Le résultat n'est pas plausible car $560 - 200 = 360$, loin de $464$.",
+        "Le résultat est plausible car $600 - 200 = 400$.",
+        "Le résultat n'est pas plausible car $562 - 198 = 364$ exactement."
+      ],
+      "correctAnswer": "Le résultat n'est pas plausible car $560 - 200 = 360$, loin de $464$.",
+      "explanation": "Pour vérifier par estimation, on arrondit à la centaine ou à la dizaine : $562 \\approx 560$ (ou $600$) et $198 \\approx 200$. La différence estimée est $560 - 200 = 360$ (ou $600 - 200 = 400$). Dans les deux cas, l'ordre de grandeur est aux alentours de $360$-$400$. Le résultat $464$ est beaucoup trop grand (erreur probable : soustraction au lieu d'addition ou erreur de retenue). La dernière option donne le calcul exact, ce n'est pas une estimation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour estimer rapidement la somme $198 + 297$ par arrondi au cent, quelle opération faut-il faire ?",
+      "options": [
+        "$190 + 290$",
+        "$200 + 300$",
+        "$100 + 200$",
+        "$198 + 297$ (calcul exact)"
+      ],
+      "correctAnswer": "$200 + 300$",
+      "explanation": "L'arrondi au cent le plus proche pour $198$ est $200$ (car $198 > 150$). Pour $297$, c'est $300$ (car $297 > 250$). L'estimation la plus efficace est donc $200 + 300 = 500$. Le résultat exact est $495$, l'estimation est excellente. L'option $190+290$ est un arrondi à la dizaine, moins rapide pour un ordre de grandeur au cent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $98$ bonbons. On veut les partager équitablement entre $4$ enfants. Combien de bonbons chaque enfant recevra-t-il environ ?",
+      "options": [
+        "$20$",
+        "$25$",
+        "$30$",
+        "$40$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "On estime le partage en arrondissant le total à la dizaine supérieure commode : $98 \\approx 100$. On divise ensuite mentalement : $100 \\div 4 = 25$. Chaque enfant recevra environ $25$ bonbons. Le calcul exact donne $98 \\div 4 = 24$ reste $2$, donc $25$ est l'estimation la plus précise.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

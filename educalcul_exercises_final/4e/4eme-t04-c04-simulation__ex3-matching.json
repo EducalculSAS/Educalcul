@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer à probabilité",
+  "title": "Comparer fréquences et probabilités",
+  "blocks": [
+    {
+      "title": "Probabilités théoriques simples",
+      "content": "Relie chaque expérience aléatoire à sa probabilité théorique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Lancer une pièce équilibrée et obtenir « face »",
+          "right": "$1/2$"
+        },
+        {
+          "left": "Lancer un dé à six faces équilibré et obtenir un 4",
+          "right": "$1/6$"
+        },
+        {
+          "left": "Tirer une carte au hasard dans un jeu de 32 cartes et obtenir un roi",
+          "right": "$4/32$"
+        },
+        {
+          "left": "Lancer un dé à six faces équilibré et obtenir un nombre pair",
+          "right": "$3/6$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour une pièce équilibrée, deux issues équiprobbables : face ou pile, donc $1/2$. Pour un dé à six faces, chaque face a une chance sur six, donc $1/6$ pour le 4. Dans un jeu de 32 cartes, il y a 4 rois, donc $4/32$ (soit $1/8$). Les nombres pairs sur un dé sont 2, 4, 6 : trois issues favorables sur six, soit $3/6$ (soit $1/2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer fréquence observée et probabilité théorique",
+      "content": "On lance un dé équilibré 200 fois et on obtient 38 fois le 6. Relie chaque descripteur à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence observée du 6",
+          "right": "$38/200$"
+        },
+        {
+          "left": "Probabilité théorique du 6",
+          "right": "$1/6$"
+        },
+        {
+          "left": "Fréquence observée exprimée en décimal",
+          "right": "$0,19$"
+        },
+        {
+          "left": "Probabilité théorique approximative en décimal",
+          "right": "$0,1667$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fréquence observée est le nombre de succès sur le nombre total d'essais : $38/200 = 0,19$. La probabilité théorique d'obtenir un 6 avec un dé équilibré est $1/6 \\approx 0,1667$. On compare ces deux valeurs pour voir si l'expérience est conforme à la théorie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'une urne et comparaison",
+      "content": "Une urne contient 3 boules rouges, 2 bleues et 5 vertes. On effectue 500 tirages avec remise. On observe 158 rouges, 92 bleues et 250 vertes. Relie chaque couleur à sa probabilité théorique ou à sa fréquence observée selon l'indication.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Probabilité théorique de tirer une boule rouge",
+          "right": "$3/10$"
+        },
+        {
+          "left": "Probabilité théorique de tirer une boule bleue",
+          "right": "$2/10$"
+        },
+        {
+          "left": "Probabilité théorique de tirer une boule verte",
+          "right": "$5/10$"
+        },
+        {
+          "left": "Fréquence observée du rouge",
+          "right": "$158/500$"
+        },
+        {
+          "left": "Fréquence observée du vert",
+          "right": "$250/500$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les probabilités théoriques sont proportionnelles au nombre de boules : 3 rouges sur 10 au total donne $3/10$, 2 bleues donnent $2/10$, 5 vertes donnent $5/10$. Les fréquences observées sont les effectifs observés divisés par le nombre total de tirages (500) : $158/500$ pour le rouge, $250/500$ pour le vert. On peut ensuite comparer chaque fréquence à sa probabilité théorique pour juger de la conformité de la simulation.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

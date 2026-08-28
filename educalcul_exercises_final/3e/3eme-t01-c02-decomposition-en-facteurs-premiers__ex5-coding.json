@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Décomposer",
+  "title": "Algorithmes et décomposition en facteurs premiers",
+  "blocks": [
+    {
+      "title": "Écriture d'un algorithme de décomposition",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui permet de décomposer l'entier $126$ en produit de facteurs premiers. L'algorithme doit afficher la liste des facteurs premiers trouvés.",
+      "correctAnswer": "Algorithme :\\n1. n ← 126\\n2. diviseur ← 2\\n3. Tant que n > 1 faire\\n4.    Si n mod diviseur = 0 alors\\n5.        Afficher diviseur\\n6.        n ← n / diviseur\\n7.    Sinon\\n8.        diviseur ← diviseur + 1\\n9.    Fin Si\\n10. Fin Tant que",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste les diviseurs à partir de 2. Tant que le diviseur divise n, on l'affiche et on divise n par ce diviseur. Sinon on passe au diviseur suivant. Pour 126 : 126 = 2 × 63, 63 = 3 × 21, 21 = 3 × 7, 7 = 7 × 1. Les facteurs premiers affichés sont 2, 3, 3, 7.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de décomposition avec exposants",
+      "content": "Écrire un algorithme qui prend en entrée un entier naturel $n \\ge 2$ et qui affiche sa décomposition en facteurs premiers sous la forme de puissances (par exemple pour $60$ : $2^2 \\times 3^1 \\times 5^1$). On utilisera une structure de données pour stocker les couples (facteur, exposant).",
+      "correctAnswer": "Algorithme :\\n1. Entrée n\\n2. facteurs ← liste vide\\n3. diviseur ← 2\\n4. Tant que n > 1 faire\\n5.    exposant ← 0\\n6.    Tant que n mod diviseur = 0 faire\\n7.        exposant ← exposant + 1\\n8.        n ← n / diviseur\\n9.    Fin Tant que\\n10.   Si exposant > 0 alors\\n11.       Ajouter (diviseur, exposant) à facteurs\\n12.   Fin Si\\n13.   diviseur ← diviseur + 1\\n14. Fin Tant que\\n15. Afficher facteurs",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle imbriquée : la boucle extérieure parcourt les diviseurs possibles, la boucle intérieure compte combien de fois le diviseur courant divise n (c'est l'exposant). On stocke le couple (diviseur, exposant) seulement si l'exposant est non nul. À la fin, on affiche la liste des couples.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application : nombre de diviseurs",
+      "content": "En utilisant la décomposition en facteurs premiers, écrire un algorithme qui calcule le nombre de diviseurs positifs d'un entier naturel $n \\ge 2$. Rappel : si $n = p_1^{\\alpha_1} \\times p_2^{\\alpha_2} \\times \\dots \\times p_k^{\\alpha_k}$, alors le nombre de diviseurs est $(\\alpha_1+1)(\\alpha_2+1)\\dots(\\alpha_k+1)$.",
+      "correctAnswer": "Algorithme :\\n1. Entrée n\\n2. nb_diviseurs ← 1\\n3. diviseur ← 2\\n4. Tant que n > 1 faire\\n5.    exposant ← 0\\n6.    Tant que n mod diviseur = 0 faire\\n7.        exposant ← exposant + 1\\n8.        n ← n / diviseur\\n9.    Fin Tant que\\n10.   Si exposant > 0 alors\\n11.       nb_diviseurs ← nb_diviseurs * (exposant + 1)\\n12.   Fin Si\\n13.   diviseur ← diviseur + 1\\n14. Fin Tant que\\n15. Afficher nb_diviseurs",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On reprend l'algorithme de décomposition avec comptage des exposants. Au lieu de stocker les couples, on applique directement la formule : on multiplie le résultat par (exposant + 1) à chaque fois qu'on trouve un facteur premier. Pour $n=60=2^2\\times3^1\\times5^1$, le calcul donne $(2+1)\\times(1+1)\\times(1+1)=12$ diviseurs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

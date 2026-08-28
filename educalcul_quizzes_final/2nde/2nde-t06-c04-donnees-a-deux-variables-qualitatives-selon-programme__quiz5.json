@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Tableau croisé",
+  "title": "Approfondissement : Tableau croisé - Variables qualitatives",
+  "questions": [
+    {
+      "text": "On étudie une population de 200 élèves. Le tableau croisé ci-dessous donne la répartition selon le sexe et la pratique d'un sport en club.\\n\\n|           | Sport en club | Pas de sport en club | Total |\\n|-----------|---------------|----------------------|-------|\\n| Filles    | 45            | 55                   | 100   |\\n| Garçons   | 60            | 40                   | 100   |\\n| Total     | 105           | 95                   | 200   |\\n\\nQuelle est la fréquence des filles qui pratiquent un sport en club parmi l'ensemble de la population ?",
+      "options": [
+        "0,225",
+        "0,45",
+        "0,4286",
+        "0,5"
+      ],
+      "correctAnswer": "0,225",
+      "explanation": "La fréquence d'une modalité croisée (Filles et Sport en club) par rapport à l'effectif total se calcule en divisant l'effectif partiel (45) par l'effectif total (200). On obtient $45 / 200 = 0,225$. L'option 0,45 correspond à la fréquence conditionnelle (sport sachant fille). L'option 0,4286 correspond à la fréquence conditionnelle (fille sachant sport). L'option 0,5 est la fréquence des filles dans la population.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau croisé résumant les réponses de 500 personnes selon leur tranche d'âge (Moins de 30 ans, 30 ans ou plus) et leur mode de transport préféré (Voiture, Transports en commun), on lit les effectifs marginaux suivants :\\n- Total 'Moins de 30 ans' : 200\\n- Total 'Voiture' : 300\\n- Effectif total : 500\\n\\nSi les deux variables sont indépendantes, quel doit être l'effectif théorique de la case (Moins de 30 ans, Voiture) ?",
+      "options": [
+        "120",
+        "100",
+        "150",
+        "200"
+      ],
+      "correctAnswer": "120",
+      "explanation": "Sous l'hypothèse d'indépendance, l'effectif théorique d'une case est le produit des effectifs marginaux correspondants divisé par l'effectif total. Ici : $(200 \\times 300) / 500 = 60000 / 500 = 120$. L'option 100 correspondrait à une répartition uniforme (500/5 ce qui n'a pas de sens ici). L'option 150 est la moyenne des marginaux. L'option 200 est l'effectif marginal 'Moins de 30 ans'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le tableau de fréquences (en pourcentages) suivant :\\n\\n|           | Études longues | Études courtes | Total |\\n|-----------|----------------|----------------|-------|\\n| Homme     | 30 %           | 20 %           | 50 %  |\\n| Femme     | 25 %           | 25 %           | 50 %  |\\n| Total     | 55 %           | 45 %           | 100 % |\\n\\nQuelle affirmation est correcte ?",
+      "options": [
+        "La fréquence conditionnelle d'avoir fait des études longues sachant que c'est un homme est 0,6.",
+        "La fréquence conditionnelle d'être un homme sachant qu'on a fait des études longues est 0,6.",
+        "Les variables 'Sexe' et 'Durée des études' sont indépendantes.",
+        "La fréquence de la modalité 'Femme et Études courtes' est 0,45."
+      ],
+      "correctAnswer": "La fréquence conditionnelle d'avoir fait des études longues sachant que c'est un homme est 0,6.",
+      "explanation": "La fréquence conditionnelle 'Études longues | Homme' se calcule en divisant la fréquence croisée (30 %) par la fréquence marginale de la condition (Homme = 50 %). Soit $30 / 50 = 0,6$. La deuxième option donne $30 / 55 \\approx 0,545$. Pour l'indépendance, il faudrait $50\\% \\times 55\\% = 27,5\\%$ dans la case (Homme, Études longues), or on a 30 %. La dernière option confond fréquence croisée (25 %) et fréquence marginale (45 %).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau croisé d'effectifs présente les données suivantes pour 400 individus :\\n- Effectif (Catégorie A, Succès) = 80\\n- Effectif marginal 'Catégorie A' = 160\\n- Effectif marginal 'Succès' = 200\\n\\nOn souhaite tester l'indépendance entre les variables. Quelle est la valeur de l'écart entre l'effectif observé et l'effectif théorique pour la case (Catégorie A, Succès) ?",
+      "options": [
+        "0",
+        "20",
+        "-20",
+        "40"
+      ],
+      "correctAnswer": "0",
+      "explanation": "L'effectif théorique sous hypothèse d'indépendance est $(160 \\times 200) / 400 = 80$. L'effectif observé est donné comme étant 80. L'écart (observé - théorique) est donc $80 - 80 = 0$. Cela signifie que pour cette case précise, les données sont parfaitement compatibles avec l'indépendance (bien qu'il faille vérifier toutes les cases pour conclure globalement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a réalisé un test du $\\chi^2$ d'indépendance sur un tableau croisé $2 \\times 2$ avec un effectif total de 300. La statistique de test calculée est $\\chi^2_{\\text{obs}} = 4,5$. Le seuil de risque est fixé à 5 %.\\nLa valeur critique du $\\chi^2$ à 1 degré de liberté au seuil de 5 % est 3,84.\\nQuelle conclusion tirer ?",
+      "options": [
+        "On rejette l'hypothèse d'indépendance : les variables sont liées.",
+        "On ne rejette pas l'hypothèse d'indépendance : les variables sont indépendantes.",
+        "On rejette l'hypothèse d'indépendance : les variables sont indépendantes.",
+        "Le test est inconclusif car l'effectif total est trop faible."
+      ],
+      "correctAnswer": "On rejette l'hypothèse d'indépendance : les variables sont liées.",
+      "explanation": "La règle de décision pour un test du $\\chi^2$ d'indépendance est : si $\\chi^2_{\\text{obs}} > \\chi^2_{\\text{critique}}$, on rejette $H_0$ (hypothèse d'indépendance). Ici $4,5 > 3,84$, on rejette donc $H_0$. Rejeter l'indépendance signifie qu'il existe un lien statistique entre les variables. L'option 2 inverse la conclusion. L'option 3 est contradictoire. L'option 4 est fausse car $n=300$ est largement suffisant (règle des effectifs théoriques > 5).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

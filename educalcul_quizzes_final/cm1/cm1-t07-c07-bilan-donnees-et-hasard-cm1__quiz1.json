@@ -1,0 +1,169 @@
+{
+  "_status": "done",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Lire / produire",
+  "title": "Quiz - Lire et produire des données (CM1)",
+  "questions": [
+    {
+      "text": "Voici un tableau présentant le nombre de livres lus par quatre élèves pendant les vacances.\\n\\nÉlève | Nombre de livres\\n------|-----------------\\nLéa   | $8$\\nMax   | $5$ \\nZoé   | $12$\\nTom   | $7$\\n\\nQuel élève a lu exactement $7$ livres ?",
+      "options": [
+        "Léa",
+        "Max",
+        "Zoé",
+        "Tom"
+      ],
+      "correctAnswer": "Tom",
+      "explanation": "Dans le tableau, on cherche la ligne où la colonne 'Nombre de livres' indique $7$. C'est la ligne correspondant à Tom. Léa a lu $8$ livres, Max $5$ livres et Zoé $12$ livres.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Nombre de livres"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "8"
+          ],
+          [
+            "Max",
+            "5"
+          ],
+          [
+            "Zoé",
+            "12"
+          ],
+          [
+            "Tom",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en bâtons ci-dessous représente les fruits préférés d'une classe de CM1.\\nChaque carré du quadrillage correspond à $1$ élève.\\n\\nPomme : $6$ carrés\\nBanane : $4$ carrés\\nFraise : $8$ carrés\\nRaisin : $3$ carrés\\n\\nCombien d'élèves ont choisi la fraise comme fruit préféré ?",
+      "options": [
+        "$4$ élèves",
+        "$6$ élèves",
+        "$8$ élèves",
+        "$3$ élèves"
+      ],
+      "correctAnswer": "$8$ élèves",
+      "explanation": "Il faut lire la hauteur de la barre correspondant à 'Fraise'. Le texte indique 'Fraise : $8$ carrés' et chaque carré vaut $1$ élève. Donc $8$ élèves ont choisi la fraise. La pomme correspond à $6$, la banane à $4$ et le raisin à $3$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés de la classe",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Banane",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraise",
+            "value": 8,
+            "tone": "pink"
+          },
+          {
+            "label": "Raisin",
+            "value": 3,
+            "tone": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une enseignante a relevé les moyens de transport utilisés par les $25$ élèves de sa classe pour venir à l'école. Elle a commencé à remplir ce tableau :\\n\\nTransport | Nombre d'élèves\\n----------|----------------\\nVoiture   | $10$\\nVélo      | $5$\\nBus       | $6$\\nÀ pied    | ?\\n\\nCombien d'élèves viennent à pied ?",
+      "options": [
+        "$4$ élèves",
+        "$5$ élèves",
+        "$6$ élèves",
+        "$9$ élèves"
+      ],
+      "correctAnswer": "$4$ élèves",
+      "explanation": "Le total de la classe est de $25$ élèves. On additionne les effectifs connus : $10$ (voiture) $+ 5$ (vélo) $+ 6$ (bus) $= 21$ élèves. Pour trouver le nombre d'élèves qui viennent à pied, on soustrait ce total du total de la classe : $25 - 21 = 4$ élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Transport",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Voiture",
+            "10"
+          ],
+          [
+            "Vélo",
+            "5"
+          ],
+          [
+            "Bus",
+            "6"
+          ],
+          [
+            "À pied",
+            "?"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le camembert ci-dessous montre la répartition des $20$ animaux d'un refuge.\\n\\nChats : $50\\%$ \\nChiens : $30\\%$ \\nNAC (Nouveaux Animaux de Compagnie) : $20\\%$ \\n\\nCombien y a-t-il de chiens au refuge ?",
+      "options": [
+        "$4$ chiens",
+        "$6$ chiens",
+        "$10$ chiens",
+        "$14$ chiens"
+      ],
+      "correctAnswer": "$6$ chiens",
+      "explanation": "Le camembert indique que les chiens représentent $30\\%$ des $20$ animaux. Pour calculer $30\\%$ de $20$, on peut faire $20 \\times 30 / 100 = 6$. Ou bien savoir que $10\\%$ de $20$ est $2$, donc $30\\%$ est $3 \\times 2 = 6$. Les chats sont $10$ ($50\\%$) et les NAC sont $4$ ($20\\%$).",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Animaux du refuge (total 20)",
+        "slices": [
+          {
+            "label": "Chats",
+            "value": 10,
+            "tone": "gray"
+          },
+          {
+            "label": "Chiens",
+            "value": 6,
+            "tone": "brown"
+          },
+          {
+            "label": "NAC",
+            "value": 4,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour produire un diagramme en bâtons représentant les notes sur $10$ obtenues par $5$ élèves ($6$, $8$, $4$, $9$, $7$), quelle est la première étape indispensable avant de tracer les bâtons ?",
+      "options": [
+        "Colorier les bâtons avec des couleurs différentes.",
+        "Choisir une échelle adaptée pour l'axe des nombres (ex: 1 carreau = 1 point).",
+        "Écrire le prénom de chaque élève au-dessus de son bâton.",
+        "Calculer la moyenne des notes de la classe."
+      ],
+      "correctAnswer": "Choisir une échelle adaptée pour l'axe des nombres (ex: 1 carreau = 1 point).",
+      "explanation": "Avant de tracer un diagramme en bâtons, il est indispensable de définir l'échelle (la graduation) de l'axe vertical pour que les hauteurs des bâtons soient proportionnelles aux valeurs. Ici, comme les notes vont de $4$ à $9$, une échelle '1 carreau = 1 point' est adaptée. Colorier, légender ou calculer la moyenne sont des étapes secondaires ou sans lien avec la construction graphique rigoureuse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

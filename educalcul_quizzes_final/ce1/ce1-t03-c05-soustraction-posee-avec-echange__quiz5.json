@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Échanger une dizaine contre 10 unités",
+  "title": "Soustraction posée : échanger une dizaine contre 10 unités",
+  "questions": [
+    {
+      "text": "Dans la soustraction $52 - 18$, on ne peut pas retirer 8 unités des 2 unités. Que fait-on avec une dizaine du nombre 52 ?",
+      "options": [
+        "On la garde telle quelle dans la colonne des dizaines",
+        "On l'échange contre 10 unités que l'on ajoute aux 2 unités",
+        "On la retire complètement du calcul",
+        "On l'échange contre 10 dizaines"
+      ],
+      "correctAnswer": "On l'échange contre 10 unités que l'on ajoute aux 2 unités",
+      "explanation": "Quand les unités du nombre du haut sont insuffisantes (2 < 8), on 'casse' une dizaine du nombre 52. Cette dizaine vaut 10 unités. On la retire de la colonne des dizaines (il reste 4 dizaines) et on ajoute ces 10 unités aux 2 unités existantes pour obtenir 12 unités. On peut alors faire $12 - 8 = 4$.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 5,
+        "units": 2,
+        "caption": "Représentation de 52 avant l'échange : 5 dizaines et 2 unités"
+      }
+    },
+    {
+      "text": "Après avoir échangé une dizaine contre 10 unités dans $52 - 18$, combien de dizaines reste-t-il dans la colonne des dizaines du nombre 52 ?",
+      "options": [
+        "5 dizaines",
+        "4 dizaines",
+        "3 dizaines",
+        "1 dizaine"
+      ],
+      "correctAnswer": "4 dizaines",
+      "explanation": "Le nombre 52 possède 5 dizaines au départ. Comme on a pris 1 dizaine pour la transformer en 10 unités, il reste $5 - 1 = 4$ dizaines dans la colonne des dizaines. On note souvent un petit 4 au-dessus de la dizaine barrée.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 4,
+        "units": 12,
+        "caption": "Représentation après échange : 4 dizaines et 12 unités"
+      }
+    },
+    {
+      "text": "On veut calculer $63 - 27$. Après l'échange, que devient le chiffre des unités du nombre 63 ?",
+      "options": [
+        "Il devient 3",
+        "Il devient 13",
+        "Il devient 10",
+        "Il devient 7"
+      ],
+      "correctAnswer": "Il devient 13",
+      "explanation": "Le nombre 63 a 3 unités. Comme on ne peut pas enlever 7 de 3, on échange 1 dizaine (soit 10 unités) contre 10 unités. On ajoute ces 10 unités aux 3 unités de départ : $3 + 10 = 13$ unités. Le nouveau chiffre des unités à utiliser pour la soustraction est donc 13.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "63",
+          "27"
+        ],
+        "result": "",
+        "carries": [
+          "1"
+        ],
+        "caption": "Mise en place de la soustraction 63 - 27 avec la retenue d'échange"
+      }
+    },
+    {
+      "text": "Dans la soustraction $81 - 36$, après avoir fait l'échange, quelle soustraction effectue-t-on dans la colonne des dizaines ?",
+      "options": [
+        "$8 - 3$",
+        "$7 - 3$",
+        "$8 - 4$",
+        "$7 - 4$"
+      ],
+      "correctAnswer": "$7 - 3$",
+      "explanation": "Au départ, il y a 8 dizaines dans 81. On en échange 1 contre 10 unités, il reste donc 7 dizaines. Le nombre du bas a 3 dizaines. La soustraction des dizaines devient donc $7 - 3 = 4$ dizaines. Attention à ne pas faire $8 - 3$ (oubli de l'échange) ni $7 - 4$ (erreur sur le chiffre du bas).",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 7,
+        "units": 11,
+        "caption": "Représentation de 81 après échange : 7 dizaines et 11 unités"
+      }
+    },
+    {
+      "text": "Paul a 42 billes. Il en perd 15. Il pose la soustraction $42 - 15$. Quelle est la bonne écriture de l'échange dans la colonne des unités ?",
+      "options": [
+        "On écrit 12 en haut à gauche du 2 et on barre le 4",
+        "On écrit 12 au-dessus du 2 et on écrit 3 au-dessus du 4",
+        "On écrit 2 au-dessus du 2 et on écrit 3 au-dessus du 4",
+        "On écrit 10 au-dessus du 2 et on écrit 4 au-dessus du 4"
+      ],
+      "correctAnswer": "On écrit 12 au-dessus du 2 et on écrit 3 au-dessus du 4",
+      "explanation": "Dans $42 - 15$, on échange 1 dizaine (le 4 devient 3) contre 10 unités. Les 2 unités deviennent $2 + 10 = 12$ unités. La convention d'écriture standard est de noter le nouveau nombre d'unités (12) petit au-dessus du chiffre des unités (le 2) et le nouveau nombre de dizaines (3) petit au-dessus du chiffre des dizaines (le 4).",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "42",
+          "15"
+        ],
+        "result": "27",
+        "carries": [
+          "1"
+        ],
+        "caption": "Soustraction 42 - 15 posée avec les notations d'échange"
+      }
+    }
+  ]
+}

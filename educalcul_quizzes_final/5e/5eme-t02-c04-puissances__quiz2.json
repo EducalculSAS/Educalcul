@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 387,
+  "_course_code": "5eme-t02-c04-puissances",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Puissances de 10",
+  "title": "Quiz sur les puissances de 10",
+  "questions": [
+    {
+      "text": "Quelle est la valeur de $10^3$ ?",
+      "options": [
+        "$100$",
+        "$1000$",
+        "$10000$",
+        "$10$"
+      ],
+      "correctAnswer": "$1000$",
+      "explanation": "La puissance $10^3$ signifie $10 × 10 × 10$, ce qui donne $1000$. Les autres options correspondent à $10^2$, $10^4$ et $10^1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $0,001$ sous la forme d'une puissance de $10$.",
+      "options": [
+        "$10^{-3}$",
+        "$10^{-2}$",
+        "$10^{3}$",
+        "$10^{2}$"
+      ],
+      "correctAnswer": "$10^{-3}$",
+      "explanation": "Le nombre $0,001$ possède trois zéros après la virgule avant le chiffre 1, donc il s'agit de $10^{-3}$. $10^{-2}$ vaut $0,01$, $10^{3}$ vaut $1000$ et $10^{2}$ vaut $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $4,5 × 10^2$.",
+      "options": [
+        "$45$",
+        "$450$",
+        "$4500$",
+        "$0,45$"
+      ],
+      "correctAnswer": "$450$",
+      "explanation": "Multiplier par $10^2$ revient à décaler la virgule de deux rangs vers la droite : $4,5$ devient $450$. Les autres réponses correspondent à un décalage d'un rang, de trois rangs ou à une division par $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la division $(7,2 × 10^4) ÷ 10^2$.",
+      "options": [
+        "$720$",
+        "$7200$",
+        "$72$",
+        "$7,2$"
+      ],
+      "correctAnswer": "$720$",
+      "explanation": "On soustrait les exposants : $10^4 ÷ 10^2 = 10^{4-2} = 10^2$. Donc $7,2 × 10^2 = 720$. $7200$ serait le résultat sans division, $72$ correspondrait à une division par $10^3$ et $7,2$ à une division par $10^4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces écritures est une notation scientifique correcte ?",
+      "options": [
+        "$3,5 × 10^2$",
+        "$35 × 10^1$",
+        "$0,35 × 10^3$",
+        "$350$"
+      ],
+      "correctAnswer": "$3,5 × 10^2$",
+      "explanation": "La notation scientifique exige un nombre $a$ tel que $1 ≤ a < 10$ multiplié par une puissance de $10$. $3,5$ respecte cette condition, alors que $35$, $0,35$ et $350$ ne la respectent pas.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

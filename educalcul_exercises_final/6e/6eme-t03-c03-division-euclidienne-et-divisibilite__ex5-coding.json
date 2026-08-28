@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Quotient / reste",
+  "title": "Algorithmes pour le quotient et le reste",
+  "blocks": [
+    {
+      "title": "Algorithme de division euclidienne",
+      "content": "Écrire un algorithme en langage naturel ou en pseudo-code qui, étant donnés deux entiers positifs $a$ et $b$ ($b \\neq 0$), calcule le quotient $q$ et le reste $r$ de la division euclidienne de $a$ par $b$. L'algorithme doit utiliser uniquement des opérations de base (soustraction, comparaison, affectation).",
+      "correctAnswer": "Algorithme :\\n1. Initialiser q <- 0 et r <- a.\\n2. Tant que r >= b faire\\n     r <- r - b\\n     q <- q + 1\\n   Fin tant que\\n3. Afficher q et r.\\nÀ la fin, q est le quotient et r le reste, avec 0 <= r < b.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part du dividende a comme reste provisoire. Tant que ce reste est au moins égal au diviseur b, on retire b du reste et on augmente le quotient de 1. Quand le reste devient inférieur à b, la boucle s'arrête : le nombre de soustractions effectuées est le quotient, et le reste final est le reste de la division euclidienne.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une fonction Python",
+      "content": "Voici une fonction Python incomplète qui doit renvoyer le couple (quotient, reste) de la division euclidienne de $a$ par $b$ (avec $a$ et $b$ entiers positifs, $b \\neq 0$). Compléter le corps de la fonction sans utiliser l'opérateur // ni %.\\n\\ndef division_euclidienne(a, b):\\n    q = 0\\n    r = a\\n    # À compléter\\n    return q, r",
+      "correctAnswer": "def division_euclidienne(a, b):\\n    q = 0\\n    r = a\\n    while r >= b:\\n        r = r - b\\n        q = q + 1\\n    return q, r",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle while répète la soustraction de b au reste r tant que r est supérieur ou égal à b. À chaque tour, on incrémente q. Lorsque la condition devient fausse, r est nécessairement strictement inférieur à b et q compte le nombre de soustractions, c'est-à-dire le quotient.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de dividendes possibles",
+      "content": "On connaît le diviseur $b = 7$ et le reste $r = 3$ d'une division euclidienne. Écrire un algorithme qui affiche les cinq premiers dividendes $a$ (entiers positifs) qui donnent ce reste avec ce diviseur. Indiquer aussi la formule mathématique qui relie $a$, $b$, $q$ et $r$.",
+      "correctAnswer": "Formule : $a = b \\times q + r$ avec $0 \\le r < b$.\\nAlgorithme :\\n1. b <- 7\\n2. r <- 3\\n3. Pour q de 0 à 4 faire\\n       a <- b * q + r\\n       Afficher a\\n   Fin pour\\nRésultats attendus : 3, 10, 17, 24, 31.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la définition de la division euclidienne, le dividende a s'exprime comme $a = bq + r$. En faisant varier le quotient q à partir de 0, on obtient tous les dividendes possibles. Pour q = 0, 1, 2, 3, 4 on obtient respectivement 3, 10, 17, 24, 31, qui sont les cinq premiers dividendes positifs donnant un reste 3 lors de la division par 7.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

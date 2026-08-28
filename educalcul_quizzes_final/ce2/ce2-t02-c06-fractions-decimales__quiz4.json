@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 157,
+  "_course_code": "ce2-t02-c06-fractions-decimales",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Application : Fractions décimales",
+  "title": "Quiz : Applications des fractions décimales (CE2)",
+  "questions": [
+    {
+      "text": "Regarde la figure ci-dessous. Quelle fraction décimale et quel nombre décimal correspondent à la partie colorée ?",
+      "options": [
+        "4/10 = 0,4",
+        "4/100 = 0,04",
+        "6/10 = 0,6",
+        "4/10 = 4,0"
+      ],
+      "correctAnswer": "4/10 = 0,4",
+      "explanation": "La barre est divisée en $10$ parties égales (dixièmes). $4$ parties sont colorées, ce qui correspond à la fraction $4/10$. En écriture décimale, les dixièmes se placent juste après la virgule : $0,4$. L'option $4/100$ correspondrait à des centièmes (barre divisée en $100$). L'option $6/10$ correspond à la partie non colorée. L'option $4,0$ est l'entier $4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 4,
+        "denominator": 10,
+        "shape": "bar",
+        "caption": "Barre divisée en 10 parties, 4 colorées"
+      }
+    },
+    {
+      "text": "Comment s'écrit en nombre décimal la fraction vingt-cinq centièmes ?",
+      "options": [
+        "0,25",
+        "0,025",
+        "2,5",
+        "25,0"
+      ],
+      "correctAnswer": "0,25",
+      "explanation": "Vingt-cinq centièmes s'écrit $25/100$. Pour passer au nombre décimal, on place le chiffre des unités des centièmes ($5$) au rang des centièmes (deuxième chiffre après la virgule) et le chiffre des dizaines ($2$) au rang des dixièmes (premier chiffre après la virgule). On obtient donc $0,25$. L'option $0,025$ correspond à vingt-cinq millièmes. L'option $2,5$ correspond à deux unités et cinq dixièmes ($25/10$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le tableau de position. Quel nombre décimal est représenté ?",
+      "options": [
+        "3,72",
+        "3,27",
+        "37,2",
+        "0,372"
+      ],
+      "correctAnswer": "3,72",
+      "explanation": "Le tableau montre $3$ jetons dans la colonne des unités, $7$ jetons dans la colonne des dixièmes (premier rang après la virgule) et $2$ jetons dans la colonne des centièmes (deuxième rang après la virgule). Le nombre est donc $3$ unités, $7$ dixièmes, $2$ centièmes, soit $3,72$. L'option $3,27$ inverse les dixièmes et les centièmes. L'option $37,2$ décale la virgule d'un rang vers la droite. L'option $0,372$ décale la virgule d'un rang vers la gauche.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.72,
+        "caption": "Tableau avec 3 unités, 7 dixièmes, 2 centièmes"
+      }
+    },
+    {
+      "text": "Parmi les deux nombres décimaux suivants, lequel est le plus grand ? $0,6$ ou $0,58$",
+      "options": [
+        "0,6",
+        "0,58",
+        "Ils sont égaux",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "0,6",
+      "explanation": "Pour comparer $0,6$ et $0,58$, on aligne la virgule et on complète avec des zéros pour avoir le même nombre de décimales : $0,60$ et $0,58$. On compare les dixièmes : $6$ dixièmes contre $5$ dixièmes. Comme $6 > 5$, alors $0,60 > 0,58$, donc $0,6 > 0,58$. L'erreur fréquente est de regarder les chiffres $58$ et $6$ comme des nombres entiers et de penser que $58 > 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $4,50$ €. Elle achète un magazine à $2,80$ €. Combien lui reste-t-il ?",
+      "options": [
+        "1,70 €",
+        "2,30 €",
+        "1,30 €",
+        "2,70 €"
+      ],
+      "correctAnswer": "1,70 €",
+      "explanation": "Il faut calculer la différence : $4,50 - 2,80$. On peut le faire en deux étapes : retirer $2$ €, il reste $2,50$ €. Puis retirer $0,80$ €. $2,50 - 0,50 = 2,00$, puis $2,00 - 0,30 = 1,70$ €. On peut aussi poser la soustraction : $4,50 - 2,80 = 1,70$. L'option $1,30$ € correspond à l'erreur $50 - 80 = 30$ (au lieu de $70$ avec la retenue). L'option $2,30$ € correspond à $4,50 - 2,20$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 4.5,
+            "tone": "blue"
+          },
+          {
+            "label": "Magazine",
+            "value": 2.8,
+            "tone": "red"
+          },
+          {
+            "label": "Reste",
+            "value": 1.7,
+            "tone": "green"
+          }
+        ],
+        "caption": "Diagramme en barres : Total 4,50 €, Partie 2,80 €, Reste ?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 199,
+  "_course_code": "ce2-t07-c04-droites-paralleles-et-perpendiculaires",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître les droites parallèles et perpendiculaires",
+  "questions": [
+    {
+      "text": "Quelle affirmation décrit correctement deux droites parallèles ?",
+      "options": [
+        "Elles se coupent en formant un angle droit.",
+        "Elles ne se coupent jamais, même si on les prolonge indéfiniment.",
+        "Elles se coupent en un point mais ne forment pas d'angle droit.",
+        "Elles sont confondues, c'est la même droite."
+      ],
+      "correctAnswer": "Elles ne se coupent jamais, même si on les prolonge indéfiniment.",
+      "explanation": "Deux droites sont parallèles si elles sont dans le même plan et n'ont aucun point commun, peu importe à quel point on les prolonge. La première option décrit des droites perpendiculaires. La troisième décrit des droites sécantes non perpendiculaires. La quatrième décrit des droites confondues, ce qui est un cas particulier distinct des droites parallèles distinctes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment reconnaître visuellement deux droites perpendiculaires ?",
+      "options": [
+        "Elles forment un angle aigu.",
+        "Elles forment un angle obtus.",
+        "Elles forment un angle droit ($90^\\circ$).",
+        "Elles sont toujours à la même distance l'une de l'autre."
+      ],
+      "correctAnswer": "Elles forment un angle droit ($90^\\circ$).",
+      "explanation": "Deux droites sont perpendiculaires si elles se coupent en formant un angle droit, c'est-à-dire un angle de $90^\\circ$. On peut le vérifier avec une équerre. Les deux premières options correspondent à des droites sécantes mais non perpendiculaires. La dernière option est la propriété des droites parallèles, pas des perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le rectangle $ABCD$ ci-dessous, quelles droites sont parallèles ?\\n(A) (AB) et (BC)\\n(B) (AB) et (CD)\\n(C) (AC) et (BD)\\n(D) (AD) et (AC)",
+      "options": [
+        "(AB) et (BC)",
+        "(AB) et (CD)",
+        "(AC) et (BD)",
+        "(AD) et (AC)"
+      ],
+      "correctAnswer": "(AB) et (CD)",
+      "explanation": "Dans un rectangle, les côtés opposés sont parallèles deux à deux. Les droites (AB) et (CD) portent des côtés opposés, elles sont donc parallèles. (AB) et (BC) sont des côtés adjacents, elles sont perpendiculaires. (AC) et (BD) sont les diagonales, elles se coupent au centre mais ne sont pas parallèles. (AD) et (AC) se coupent en A, elles sont sécantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le triangle rectangle en $A$. Quelles droites sont perpendiculaires ?",
+      "options": [
+        "(AB) et (AC)",
+        "(AB) et (BC)",
+        "(AC) et (BC)",
+        "Aucune de ces droites"
+      ],
+      "correctAnswer": "(AB) et (AC)",
+      "explanation": "Le triangle est rectangle en $A$. Cela signifie que l'angle $\\widehat{BAC}$ est un angle droit. Les droites qui forment cet angle sont (AB) et (AC). Elles sont donc perpendiculaires. Les autres paires de droites forment les angles aigus du triangle (en B et en C), elles ne sont pas perpendiculaires.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Sur une feuille de papier quadrillé (petits carrés), on trace la droite qui passe par les sommets en haut à gauche et en bas à droite d'un carré de la grille. On trace aussi la droite qui passe par les sommets en haut à droite et en bas à gauche du même carré. Quelle est la position relative de ces deux droites ?",
+      "options": [
+        "Elles sont parallèles.",
+        "Elles sont perpendiculaires.",
+        "Elles sont confondues.",
+        "Elles sont sécantes mais non perpendiculaires."
+      ],
+      "correctAnswer": "Elles sont perpendiculaires.",
+      "explanation": "Ces deux droites sont les diagonales d'un carré. Une propriété fondamentale du carré est que ses diagonales sont perpendiculaires (elles se coupent en formant un angle droit de $90^\\circ$). Elles ne sont pas parallèles car elles se coupent au centre du carré. Elles ne sont pas confondues car elles n'ont pas la même direction. Elles sont bien sécantes et perpendiculaires.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

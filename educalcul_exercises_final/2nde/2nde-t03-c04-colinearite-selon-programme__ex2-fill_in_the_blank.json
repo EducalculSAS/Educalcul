@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Calculer condition",
+  "title": "Exercices sur la condition de colinéarité",
+  "blocks": [
+    {
+      "title": "Colinéarité de deux vecteurs - valeur numérique",
+      "content": "Les vecteurs $\\vec{u}(2;3)$ et $\\vec{v}(4;k)$ sont colinéaires si $k = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Deux vecteurs $\\vec{u}(x_1;y_1)$ et $\\vec{v}(x_2;y_2)$ sont colinéaires si et seulement si leur déterminant est nul : $x_1 y_2 - x_2 y_1 = 0$. Ici $2 \\times k - 4 \\times 3 = 0$, soit $2k - 12 = 0$, d'où $k = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Colinéarité de trois points - coordonnée inconnue",
+      "content": "Soient les points $A(1;2)$, $B(3;5)$ et $C(x;8)$. Les points $A$, $B$, $C$ sont alignés si $x = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les points sont alignés si les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires. $\\overrightarrow{AB}(2;3)$ et $\\overrightarrow{AC}(x-1;6)$. La condition $2 \\times 6 - (x-1) \\times 3 = 0$ donne $12 - 3x + 3 = 0$, soit $15 = 3x$, donc $x = 5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Colinéarité avec paramètre - résolution d'équation",
+      "content": "Soient les vecteurs $\\vec{u}(a;2a+1)$ et $\\vec{v}(3;5)$. Ils sont colinéaires pour $a = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "-3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition de colinéarité : $a \\times 5 - 3 \\times (2a+1) = 0$. Cela donne $5a - 6a - 3 = 0$, soit $-a - 3 = 0$, donc $a = -3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

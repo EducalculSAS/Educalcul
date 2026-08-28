@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Boucles",
+  "title": "Quiz Algorithmique : Applications des boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nS ← 0\\nPour i de 1 à 5 faire\\n    S ← S + i\\nFinPour\\nAfficher S\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "La boucle « Pour i de 1 à 5 » parcourt les valeurs 1, 2, 3, 4, 5. La variable S accumule la somme : 0+1=1, 1+2=3, 3+3=6, 6+4=10, 10+5=15. La valeur finale affichée est donc 15. L'option 10 correspond à la somme jusqu'à 4, l'option 20 est une surestimation, et 5 est la dernière valeur de i.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nS ← 0\\nn ← 0\\nTantQue S ≤ 20 faire\\n    n ← n + 1\\n    S ← S + n\\nFinTantQue\\nAfficher n\\nQuelle valeur de n est affichée ?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "20"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La boucle s'arrête quand S devient strictement supérieur à 20. On calcule les sommes successives : n=1, S=1 ; n=2, S=3 ; n=3, S=6 ; n=4, S=10 ; n=5, S=15 ; n=6, S=21. Comme 21 > 20, la condition S ≤ 20 devient fausse et la boucle s'arrête. La valeur de n affichée est 6. L'option 5 est la valeur avant le dernier tour, 7 irait trop loin, 20 confond n et S.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nProduit ← 1\\nPour k de 1 à 5 faire\\n    Produit ← Produit × k\\nFinPour\\nAfficher Produit\\nQuel est le résultat affiché ?",
+      "options": [
+        "15",
+        "120",
+        "720",
+        "25"
+      ],
+      "correctAnswer": "120",
+      "explanation": "La variable Produit est initialisée à 1. La boucle multiplie successivement par 1, 2, 3, 4, 5. On calcule : 1×1=1, 1×2=2, 2×3=6, 6×4=24, 24×5=120. C'est le calcul du factoriel de 5 (5!). L'option 15 est la somme de ces nombres, 720 est 6! et 25 est 5×5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nCompteur ← 0\\nPour i de 10 à 1 par pas de -1 faire\\n    Si i mod 2 = 0 Alors\\n        Compteur ← Compteur + 1\\n    FinSi\\nFinPour\\nAfficher Compteur\\nQuelle valeur est affichée ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La boucle parcourt les entiers de 10 down to 1 (10, 9, 8, 7, 6, 5, 4, 3, 2, 1). Le test « i mod 2 = 0 » est vrai pour les nombres pairs. Les nombres pairs dans cette liste sont : 10, 8, 6, 4, 2. Il y en a 5. Le compteur est incrémenté 5 fois. L'option 4 oublie 10 ou 2, l'option 6 en compte trop, l'option 10 compte tous les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 10\\nTantQue x > 0 faire\\n    Afficher x\\n    x ← x + 1\\nFinTantQue\\nQue se passe-t-il lors de l'exécution ?",
+      "options": [
+        "La boucle affiche 10, 9, 8 ... jusqu'à 1 puis s'arrête.",
+        "La boucle affiche 10 une seule fois puis s'arrête.",
+        "La boucle affiche 10, 11, 12 ... indéfiniment (boucle infinie).",
+        "La boucle ne s'exécute pas car la condition est fausse au départ."
+      ],
+      "correctAnswer": "La boucle affiche 10, 11, 12 ... indéfiniment (boucle infinie).",
+      "explanation": "La variable x commence à 10. La condition x > 0 est vraie. Dans la boucle, x est augmenté de 1 (x ← x + 1), donc x devient 11, puis 12, etc. La condition x > 0 reste toujours vraie, la boucle ne s'arrête jamais. C'est une boucle infinie. La première option correspondrait à x ← x - 1. La deuxième est fausse car la condition reste vraie. La quatrième est fausse car 10 > 0 est vrai.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

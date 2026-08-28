@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 340,
+  "_course_code": "6eme-t02-c05-addition-et-soustraction-dans-les-cas-prevus",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Dénominateurs communs simples",
+  "title": "Approfondissement : Dénominateurs communs simples",
+  "questions": [
+    {
+      "text": "On veut additionner $\\frac{1}{3}$ et $\\frac{1}{6}$. Quel est le plus petit dénominateur commun que l'on peut utiliser pour effectuer cette addition ?",
+      "options": [
+        "3",
+        "6",
+        "9",
+        "18"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Pour additionner deux fractions, il faut qu'elles aient le même dénominateur. On cherche un multiple commun à 3 et 6. Les multiples de 3 sont 3, 6, 9, 12... Les multiples de 6 sont 6, 12, 18... Le plus petit commun est 6. On peut donc transformer $\\frac{1}{3}$ en $\\frac{2}{6}$ pour l'additionner à $\\frac{1}{6}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 1,
+            "denominator": 6
+          }
+        ],
+        "caption": "Comparaison des fractions 1/3 et 1/6"
+      }
+    },
+    {
+      "text": "Quelle fraction est équivalente à $\\frac{2}{5}$ avec pour dénominateur 20 ?",
+      "options": [
+        "$\\frac{4}{20}$",
+        "$\\frac{8}{20}$",
+        "$\\frac{10}{20}$",
+        "$\\frac{2}{20}$"
+      ],
+      "correctAnswer": "$\\frac{8}{20}$",
+      "explanation": "Pour passer du dénominateur 5 au dénominateur 20, on a multiplié par 4 (car $5 \\times 4 = 20$). Pour conserver l'égalité, il faut multiplier le numérateur par ce même nombre : $2 \\times 4 = 8$. La fraction équivalente est donc $\\frac{8}{20}$. L'option $\\frac{4}{20}$ correspond à une multiplication par 2 seulement, $\\frac{10}{20}$ à une multiplication par 5, et $\\frac{2}{20}$ ne change pas le numérateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $\\frac{3}{8} + \\frac{1}{4}$. Donne le résultat sous forme de fraction la plus simple possible.",
+      "options": [
+        "$\\frac{4}{12}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{4}{8}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$",
+      "explanation": "Le dénominateur 8 est un multiple de 4, on utilise 8 comme dénominateur commun. On transforme $\\frac{1}{4}$ en $\\frac{2}{8}$ (multiplication par 2). L'addition devient $\\frac{3}{8} + \\frac{2}{8} = \\frac{5}{8}$. Cette fraction est déjà irréductible. L'option $\\frac{4}{12}$ est l'erreur classique consistant à additionner numérateurs et dénominateurs. $\\frac{4}{8}$ serait le résultat si on n'avait pas converti $\\frac{1}{4}$. $\\frac{1}{2}$ est $\\frac{4}{8}$ simplifié, mais ce n'est pas le bon résultat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la soustraction $\\frac{9}{10} - \\frac{2}{5}$.",
+      "options": [
+        "$\\frac{7}{5}$",
+        "$\\frac{5}{10}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{10}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "On met au même dénominateur : 10 est multiple de 5. $\\frac{2}{5} = \\frac{4}{10}$. La soustraction donne $\\frac{9}{10} - \\frac{4}{10} = \\frac{5}{10}$. Il faut simplifier le résultat en divisant le numérateur et le dénominateur par 5 : $\\frac{5}{10} = \\frac{1}{2}$. L'option $\\frac{5}{10}$ est le résultat non simplifié. $\\frac{7}{5}$ correspond à une addition au lieu d'une soustraction. $\\frac{1}{10}$ serait le résultat si on soustrayait les numérateurs sans conversion ($9-2=7$... non, $9-8=1$ mais dénominateur 10).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $\\frac{5}{6} + \\frac{2}{3}$ écrit sous la forme d'un nombre mixte simplifié ?",
+      "options": [
+        "$\\frac{7}{9}$",
+        "$\\frac{9}{6}$",
+        "$1 \\frac{3}{6}$",
+        "$1 \\frac{1}{2}$"
+      ],
+      "correctAnswer": "$1 \\frac{1}{2}$",
+      "explanation": "Dénominateur commun : 6. $\\frac{2}{3} = \\frac{4}{6}$. L'addition donne $\\frac{5}{6} + \\frac{4}{6} = \\frac{9}{6}$. C'est une fraction impropre. On convertit en nombre mixte : $9 = 6 \\times 1 + 3$, donc $\\frac{9}{6} = 1 \\frac{3}{6}$. Il reste à simplifier la partie fractionnaire : $\\frac{3}{6} = \\frac{1}{2}$. Le résultat final simplifié est $1 \\frac{1}{2}$. L'option $\\frac{7}{9}$ additionne numérateurs et dénominateurs. $\\frac{9}{6}$ n'est pas un nombre mixte. $1 \\frac{3}{6}$ n'est pas simplifié.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

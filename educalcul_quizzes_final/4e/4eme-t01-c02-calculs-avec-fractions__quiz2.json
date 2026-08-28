@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 421,
+  "_course_code": "4eme-t01-c02-calculs-avec-fractions",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Simplification",
+  "title": "Quiz : Simplification des fractions",
+  "questions": [
+    {
+      "text": "Quelle est la forme irréductible de la fraction $\\frac{24}{36}$ ?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{4}{6}$",
+        "$\\frac{12}{18}$",
+        "$\\frac{8}{12}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Pour simplifier $\\frac{24}{36}$, on cherche le plus grand commun diviseur (PGCD) de 24 et 36. Le PGCD est 12. On divise le numérateur et le dénominateur par 12 : $24 \\div 12 = 2$ et $36 \\div 12 = 3$. On obtient $\\frac{2}{3}$. Les autres propositions sont des simplifications partielles : $\\frac{12}{18}$ (divisé par 2), $\\frac{8}{12}$ (divisé par 3), $\\frac{4}{6}$ (divisé par 6), mais elles ne sont pas irréductibles car on peut encore simplifier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue le calcul suivant en simplifiant avant de multiplier : $\\frac{15}{22} \\times \\frac{11}{25}$.",
+      "options": [
+        "$\\frac{3}{10}$",
+        "$\\frac{165}{550}$",
+        "$\\frac{33}{110}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{3}{10}$",
+      "explanation": "On simplifie en croix avant de multiplier. 15 et 25 sont divisibles par 5 : $15 \\rightarrow 3$, $25 \\rightarrow 5$. 11 et 22 sont divisibles par 11 : $11 \\rightarrow 1$, $22 \\rightarrow 2$. Le produit devient $\\frac{3}{2} \\times \\frac{1}{5} = \\frac{3 \\times 1}{2 \\times 5} = \\frac{3}{10}$. L'option $\\frac{165}{550}$ est le résultat sans simplification ($15\\times11=165$, $22\\times25=550$). $\\frac{33}{110}$ est une simplification partielle (divisé par 5 seulement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction littérale $\\frac{45a}{60b}$ (avec $a$ et $b$ non nuls).",
+      "options": [
+        "$\\frac{3a}{4b}$",
+        "$\\frac{9a}{12b}$",
+        "$\\frac{15a}{20b}$",
+        "$\\frac{5a}{6b}$"
+      ],
+      "correctAnswer": "$\\frac{3a}{4b}$",
+      "explanation": "On simplifie la partie numérique $\\frac{45}{60}$. Le PGCD de 45 et 60 est 15. $45 \\div 15 = 3$ et $60 \\div 15 = 4$. Les lettres $a$ et $b$ sont différentes, on ne peut pas les simplifier entre elles. La forme irréductible est donc $\\frac{3a}{4b}$. Les autres options correspondent à des divisions par 5 ($\\frac{9a}{12b}$), par 3 ($\\frac{15a}{20b}$) ou par 9 ($\\frac{5a}{6b}$ est faux car $45/9=5$ mais $60/9$ n'est pas entier, c'est un piège).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une recette indique $\\frac{300}{450}$ kg de farine. Quelle est cette quantité sous forme de fraction irréductible ?",
+      "options": [
+        "$\\frac{2}{3}$ kg",
+        "$\\frac{3}{4}$ kg",
+        "$\\frac{1}{2}$ kg",
+        "$\\frac{3}{5}$ kg"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$ kg",
+      "explanation": "Il faut simplifier $\\frac{300}{450}$. On peut diviser par 100 (enlever les deux zéros) pour obtenir $\\frac{3}{4,5}$ ce qui n'est pas commode, ou mieux, diviser par 50 : $300 \\div 50 = 6$ et $450 \\div 50 = 9$, ce qui donne $\\frac{6}{9}$. On simplifie encore par 3 pour obtenir $\\frac{2}{3}$. On peut aussi voir directement le PGCD 150 : $300 \\div 150 = 2$, $450 \\div 150 = 3$. La quantité est $\\frac{2}{3}$ kg.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est déjà irréductible ?",
+      "options": [
+        "$\\frac{13}{37}$",
+        "$\\frac{17}{51}$",
+        "$\\frac{23}{69}$",
+        "$\\frac{19}{57}$"
+      ],
+      "correctAnswer": "$\\frac{13}{37}$",
+      "explanation": "Une fraction est irréductible si le numérateur et le dénominateur sont premiers entre eux (PGCD = 1). 13 et 37 sont des nombres premiers distincts, leur PGCD est 1. $\\frac{13}{37}$ est donc irréductible. Pour les autres : $51 = 3 \\times 17$ donc $\\frac{17}{51} = \\frac{1}{3}$ ; $69 = 3 \\times 23$ donc $\\frac{23}{69} = \\frac{1}{3}$ ; $57 = 3 \\times 19$ donc $\\frac{19}{57} = \\frac{1}{3}$. Elles sont toutes simplifiables par 17, 23 et 19 respectivement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

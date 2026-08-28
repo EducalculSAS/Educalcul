@@ -1,0 +1,271 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.968903+00:00",
+  "id": 480,
+  "code": "3eme-t05-c02",
+  "title": "Thalès",
+  "description": "Cours structuré Educalcul : Thalès.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Thalès",
+    "objectif_global": "Thalès",
+    "mini_lecons_imposees": [
+      "Configuration.",
+      "Rapports.",
+      "Calculer."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Configuration.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu te promènes dans une ville historique et que tu tombes nez à nez avec une immense statue. Tu aimerais connaître sa hauteur, mais tu n'as ni échelle, ni drone, et monter là-haut est impossible. C'est ici qu'intervient un secret mathématique vieux de plusieurs millénaires. En observant simplement l'ombre de la statue au sol et l'ombre d'un petit bâton que tu plantes verticalement à côté, tu peux découvrir la taille du monument. Pourquoi ? Parce que les rayons du soleil arrivent presque parallèlement entre eux, créant des formes géométriques qui gardent les mêmes proportions. C'est exactement ce que nous allons étudier avec le théorème de Thalès. On ne parle pas seulement d'ombres, mais de la façon dont des droites parallèles découpent des segments de manière proportionnelle. C'est un outil puissant qui permet de mesurer des distances inaccessibles, comme la largeur d'une rivière ou la hauteur d'une montagne, simplement en utilisant des rapports de longueurs. Prépare-toi à voir la géométrie non plus comme des traits sur une feuille, mais comme un jeu de rapports et d'échelles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème de Thalès s'intéresse à une situation très précise : lorsque deux droites sont coupées par deux autres droites parallèles. La condition fondamentale, celle sans laquelle rien ne fonctionne, est le parallélisme. Si on a deux droites sécantes en un point $A$, et que l'on trace deux droites parallèles, alors ces dernières découpent les segments sur les premières droites selon un rapport constant. On distingue généralement deux figures classiques. La première est le triangle imbriqué : un petit triangle est contenu dans un plus grand, et le segment intérieur est parallèle au côté opposé au sommet commun. La seconde est la configuration dite en papillon ou sablier : les deux triangles se touchent par un seul sommet, et leurs bases respectives sont parallèles. Dans les deux cas, le point clé est d'avoir un sommet commun d'où partent les droites qui sont ensuite 'coupées' par des parallèles. C'est cette structure qui garantit que les longueurs des côtés du petit triangle sont proportionnelles à celles du grand triangle. On dit que les triangles sont semblables, car ils ont la même forme, mais pas forcément la même taille."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Configuration classique de Thalès avec $(MN) // (BC)$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "MN",
+                "BC",
+                "AB"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour utiliser Thalès, il ne faut surtout pas se précipiter dans les calculs. Il faut suivre un protocole rigoureux pour ne pas faire d'erreur de raisonnement. Première étape : identifier le sommet commun. C'est le point de départ, le point $A$ par exemple, où les droites se croisent. Deuxième étape : vérifier et écrire explicitement que les droites sont parallèles. Sans la mention 'car $(BC) // (DE)$', ton raisonnement n'est pas valable aux yeux d'un correcteur. Troisième étape : identifier les deux triangles formés. Il faut bien voir lequel est le petit et lequel est le grand. Quatrième étape : écrire les rapports de longueurs. On part toujours du sommet commun pour aller vers les bases. On écrit le rapport du petit côté sur le grand côté correspondant. Par exemple, $\\frac{AB}{AE} = \\frac{AC}{AD} = \\frac{BC}{ED}$. Il est crucial de garder le même ordre : soit $\\frac{\\text{petit}}{\\text{grand}}$ partout, soit $\\frac{\\text{grand}}{\\text{petit}}$ partout. Si tu mélanges les deux, le résultat sera faux. Enfin, on utilise le produit en croix pour trouver la longueur manquante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un triangle $ABC$. Un point $M$ est placé sur le segment $[AB]$ et un point $N$ sur le segment $[AC]$. On nous dit que la droite $(MN)$ est parallèle à la droite $(BC)$. Nous savons que $AB = 5\\text{ cm}$, $AM = 2\\text{ cm}$ et $BC = 7\\text{ cm}$. Nous voulons calculer la longueur $MN$. Ici, nous avons un triangle imbriqué avec le sommet commun $A$. On commence par rédiger : 'On sait que les points $A, M, B$ sont alignés et que les points $A, N, C$ sont alignés. Comme $(MN) // (BC)$, d'après le théorème de Thalès, on a l'égalité des rapports suivants : $\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$. Nous nous intéressons au rapport impliquant $MN$, donc on écrit $\\frac{AM}{AB} = \\frac{MN}{BC}$. En remplaçant par les valeurs, on obtient $\\frac{2}{5} = \\frac{MN}{7}$. Pour trouver $MN$, on fait le produit en croix : $MN = \\frac{2 \\times 7}{5} = \\frac{14}{5} = 2,8\\text{ cm}$. On a trouvé la longueur grâce à la proportionnalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant une configuration en papillon. On a deux droites $(AB)$ et $(CD)$ qui se coupent en un point $O$. On sait que la droite $(AC)$ est parallèle à la droite $(BD)$. Les longueurs connues sont $OA = 3\\text{ cm}$, $OB = 6\\text{ cm}$ et $OD = 8\\text{ cm}$. On cherche la longueur $OC$. Le sommet commun est ici le point $O$. On rédige soigneusement : 'Les points $A, O, B$ et $C, O, D$ sont alignés. Comme $(AC) // (BD)$, on peut appliquer le théorème de Thalès. On a donc les rapports : $\\frac{OA}{OB} = \\frac{OC}{OD} = \\frac{AC}{BD}$. Pour trouver $OC$, on utilise l'égalité $\\frac{OA}{OB} = \\frac{OC}{OD}$. On remplace par les chiffres : $\\frac{3}{6} = \\frac{OC}{8}$. On remarque que $\\frac{3}{6}$ est égal à $0,5$. On a donc $0,5 = \\frac{OC}{8}$, ce qui donne $OC = 0,5 \\times 8 = 4\\text{ cm}$. On voit bien que le triangle $OAC$ est exactement deux fois plus petit que le triangle $OBD$ car le rapport $\\frac{3}{6}$ est égal à $\\frac{1}{2}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est d'oublier de mentionner le parallélisme. Si tu écris les rapports sans dire que les droites sont parallèles, ton exercice est considéré comme faux car Thalès ne s'applique que dans ce cas précis. Un autre piège courant est de se tromper de sommet. Certains élèves prennent un point au hasard au lieu du sommet où les droites se rejoignent. Souviens-toi : on part toujours du 'sommet' pour descendre vers les bases. Un troisième piège est le mélange des rapports. Si tu écris $\\frac{\\text{petit}}{\\text{grand}}$ pour le premier rapport et $\\frac{\\text{grand}}{\\text{petit}}$ pour le deuxième, le résultat sera totalement erroné. Pour éviter cela, je te conseille de toujours dessiner des flèches sur ton schéma : une flèche partant du sommet vers le petit segment, et une flèche vers le grand segment. Cela t'aidera à maintenir la cohérence. Enfin, attention à ne pas confondre le théorème de Thalès avec celui de Pythagore. Pythagore ne s'utilise que pour calculer des longueurs dans un triangle rectangle, alors que Thalès s'utilise pour des rapports de longueurs dès lors qu'il y a des parallèles, même sans angle droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle $ABC$, on a $(MN) // (BC)$ avec $M$ sur $[AB]$ et $N$ sur $[AC]$. On donne $AB = 10\\text{ cm}$, $AM = 4\\text{ cm}$ et $MN = 3\\text{ cm}$. Quelle est la longueur $BC$ ?",
+              "answer": "$7,5\\text{ cm}$",
+              "hint": "Utilise le rapport $\\frac{AM}{AB} = \\frac{MN}{BC}$.",
+              "explanation": "D'après Thalès, $\\frac{4}{10} = \\frac{3}{BC}$. On fait le produit en croix : $BC = \\frac{10 \\times 3}{4} = \\frac{30}{4} = 7,5\\text{ cm}$."
+            },
+            {
+              "question": "Dans une configuration papillon avec sommet $O$, on a $(AC) // (BD)$. On sait que $OA = 2\\text{ cm}$, $OB = 5\\text{ cm}$ et $OC = 3\\text{ cm}$. Calcule $OD$.",
+              "answer": "$7,5\\text{ cm}$",
+              "hint": "Le rapport est $\\frac{OA}{OB} = \\frac{OC}{OD}$.",
+              "explanation": "On a $\\frac{2}{5} = \\frac{3}{OD}$, donc $OD = \\frac{5 \\times 3}{2} = \\frac{15}{2} = 7,5\\text{ cm}$."
+            },
+            {
+              "question": "Si $(MN) // (BC)$ et que $AM = 3$, $AB = 9$, $MN = 2$, quelle est la longueur $BC$ ?",
+              "answer": "$6$",
+              "hint": "Le grand triangle est $3$ fois plus grand que le petit.",
+              "explanation": "$\\frac{3}{9} = \\frac{2}{BC}$, donc $\\frac{1}{3} = \\frac{2}{BC}$, d'où $BC = 6$."
+            }
+          ]
+        },
+        {
+          "title": "Rapports.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà utilisé une carte routière ou un plan de ville ? Sur ces documents, on trouve souvent une petite mention comme 'échelle $1 : 25 000$'. Cela signifie que $1\\text{ cm}$ sur le papier représente $25 000\\text{ cm}$ (soit $250\\text{ m}$) dans la réalité. C'est exactement l'esprit des rapports de Thalès. En géométrie, on ne s'intéresse pas seulement à la longueur brute d'un segment, mais à la manière dont il évolue par rapport à un autre. Imagine que tu agrandisses une photo sur ton téléphone : si tu tires sur un coin, l'image s'agrandit proportionnellement. Le rapport entre la largeur et la hauteur reste le même. Dans le théorème de Thalès, c'est la même idée. Le petit triangle est une version 'réduite' du grand triangle. Comprendre les rapports, c'est comprendre comment le monde peut être mis à l'échelle. Que ce soit pour construire une maquette d'avion ou pour calculer la distance entre deux montagnes, on utilise cette notion de ratio. Nous allons maintenant voir comment manipuler ces fractions pour trouver n'importe quelle mesure manquante avec précision."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cœur du théorème de Thalès réside dans l'égalité de trois rapports de longueurs. Quand on a la configuration appropriée, on peut écrire que le rapport entre deux segments du petit triangle est égal au rapport entre les deux segments correspondants du grand triangle. Mathématiquement, si on a le sommet $A$, on écrit $\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$. Le premier rapport $\\frac{AM}{AB}$ représente le coefficient de réduction. Si ce rapport vaut $0,5$, cela signifie que le petit triangle est deux fois plus petit que le grand. Il est fondamental de comprendre que ces rapports sont des nombres sans unité si on les considère comme des ratios, mais on utilise les unités ($cm$, $m$) pour les calculs de longueurs. La proportionnalité signifie que si on multiplie un côté du petit triangle par un certain nombre $k$, on obtient le côté correspondant du grand triangle. On dit alors que $k$ est le coefficient d'agrandissement. Cette relation est linéaire, ce qui simplifie énormément les calculs : on n'a pas besoin de formules complexes, juste de fractions et de multiplications."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation d'un rapport d'échelle 1:3",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "Petit"
+                },
+                {
+                  "value": 6,
+                  "label": "Grand"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour maîtriser le calcul des rapports, je te propose une méthode en quatre étapes. Étape 1 : Le tri des données. Note clairement sur ton brouillon les longueurs connues et celle que tu cherches (ex : $AM=2$, $AB=6$, $MN=3$, $BC=?$). Étape 2 : L'écriture du rapport global. Écris l'égalité complète $\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$. Cela permet de visualiser toutes les relations possibles et d'éviter d'oublier un segment. Étape 3 : La sélection du rapport utile. Choisis les deux fractions qui contiennent l'inconnue et une donnée connue. Par exemple, si tu cherches $BC$, utilise $\\frac{AM}{AB} = \\frac{MN}{BC}$. Étape 4 : Le calcul par produit en croix. Le produit en croix est la technique la plus sûre. Si tu as $\\frac{a}{b} = \\frac{c}{d}$, alors $d = \\frac{b \\times c}{a}$. Applique cela scrupuleusement. Pour vérifier ton résultat, regarde si la réponse est cohérente : si tu cherches un côté du grand triangle, il doit être plus long que celui du petit. Si tu trouves un résultat plus petit, c'est que tu as probablement inversé ton rapport."
+            },
+            {
+              "type": "paragraph",
+              "content": "On a un triangle $ABC$ avec $(MN) // (BC)$. On donne $AM = 3\\text{ cm}$, $AB = 12\\text{ cm}$ et $AN = 4\\text{ cm}$. On veut calculer $AC$. Ici, on cherche un segment situé sur un côté du triangle. On commence par identifier le coefficient de réduction : $\\frac{AM}{AB} = \\frac{3}{12} = \\frac{1}{4}$. Cela nous indique que le petit triangle est quatre fois plus petit que le grand. On utilise maintenant le rapport correspondant pour $AC$ : $\\frac{AM}{AB} = \\frac{AN}{AC}$. En remplaçant, on a $\\frac{1}{4} = \\frac{4}{AC}$. On effectue le produit en croix : $AC = 4 \\times 4 = 16\\text{ cm}$. On peut vérifier la cohérence : $AC$ est bien plus long que $AN$ ($16 > 4$), et le rapport est préservé puisque $\\frac{4}{16}$ est bien égal à $\\frac{1}{4}$. Le calcul est donc correct et la logique est respectée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas un peu plus difficile où les nombres ne sont pas des entiers simples. Dans une configuration papillon de sommet $O$, $(AC) // (BD)$. On a $OA = 2,5\\text{ cm}$, $OB = 7,5\\text{ cm}$ et $AC = 4\\text{ cm}$. On cherche la longueur $BD$. D'abord, on pose l'égalité des rapports : $\\frac{OA}{OB} = \\frac{OC}{OD} = \\frac{AC}{BD}$. On s'intéresse au rapport $\\frac{OA}{OB} = \\frac{AC}{BD}$. On remplace : $\\frac{2,5}{7,5} = \\frac{4}{BD}$. Simplifions d'abord le rapport $\\frac{2,5}{7,5}$. Si on multiplie en haut et en bas par $10$, on a $\\frac{25}{75}$. En divisant par $25$, on trouve $\\frac{1}{3}$. L'équation devient $\\frac{1}{3} = \\frac{4}{BD}$. Le produit en croix nous donne $BD = 4 \\times 3 = 12\\text{ cm}$. On remarque ici que même avec des nombres à virgule, la simplification du rapport au début rend le calcul final beaucoup plus simple et limite les risques d'erreurs de multiplication."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur dans cette leçon est l'inversion du rapport. Certains élèves écrivent $\\frac{AM}{AB} = \\frac{BC}{MN}$ au lieu de $\\frac{MN}{BC}$. Pour ne plus jamais faire cette erreur, rappelle-toi l'analogie de la photo : on compare toujours le petit côté avec le grand côté correspondant. Petit sur Grand = Petit sur Grand. Si tu commences par $\\frac{\\text{petit}}{\\text{grand}}$, tu dois finir par $\\frac{\\text{petit}}{\\text{grand}}$. Un autre risque est l'erreur de calcul lors du produit en croix, surtout avec des fractions. Je te conseille de toujours écrire l'étape intermédiaire : 'multiplier les diagonales'. Par exemple, pour $\\frac{2}{5} = \\frac{x}{10}$, écris $5x = 2 \\times 10$, puis $5x = 20$, et enfin $x = 4$. Enfin, attention aux unités. Si l'énoncé donne $AM$ en $cm$ et $AB$ en $m$, tu dois impérativement tout convertir dans la même unité avant de poser tes rapports, sinon le résultat sera totalement faux car la proportionnalité ne fonctionne qu'avec des mesures homogènes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle $ABC$, $(MN) // (BC)$. On a $AM = 5\\text{ cm}$, $AB = 15\\text{ cm}$ et $AN = 7\\text{ cm}$. Calcule $AC$.",
+              "answer": "$21\\text{ cm}$",
+              "hint": "Trouve d'abord le coefficient de réduction $\\frac{AM}{AB}$.",
+              "explanation": "$\\frac{5}{15} = \\frac{1}{3}$. Donc $\\frac{1}{3} = \\frac{7}{AC}$, ce qui donne $AC = 7 \\times 3 = 21\\text{ cm}$."
+            },
+            {
+              "question": "$(AC) // (BD)$ dans une configuration papillon de sommet $O$. On a $OA = 4$, $OB = 12$, $AC = 5$. Calcule $BD$.",
+              "answer": "$15$",
+              "hint": "Le rapport est $\\frac{OA}{OB} = \\frac{AC}{BD}$.",
+              "explanation": "$\\frac{4}{12} = \\frac{1}{3}$. Donc $\\frac{1}{3} = \\frac{5}{BD}$, d'où $BD = 15$."
+            },
+            {
+              "question": "Si $\\frac{AM}{AB} = 0,2$ et $MN = 4\\text{ cm}$, quelle est la longueur $BC$ ?",
+              "answer": "$20\\text{ cm}$",
+              "hint": "$0,2 = \\frac{4}{BC}$.",
+              "explanation": "$BC = \\frac{4}{0,2} = \\frac{40}{2} = 20\\text{ cm}$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au bout de notre voyage avec Thalès. Tu sais maintenant que des droites parallèles créent des miniatures parfaites de triangles. Mais imagine que tu sois devant ton épreuve de brevet. Tu as le bon résultat, tu as fait le bon calcul, mais tu n'as pas écrit les phrases magiques. Malheureusement, en mathématiques, le résultat seul ne vaut presque rien sans la démonstration. C'est comme raconter la fin d'un film sans expliquer l'histoire : on ne comprend pas comment tu y es arrivé. Apprendre à calculer est une chose, apprendre à rédiger en est une autre. C'est ce qui transforme un élève moyen en un expert. Nous allons voir ensemble comment construire une réponse indestructible, une réponse que même le correcteur le plus sévère ne pourra pas sanctionner. On va s'entraîner à transformer un problème écrit en un schéma géométrique, puis ce schéma en une suite logique de rapports et de calculs. C'est l'étape finale pour devenir totalement autonome et confiant avec le théorème de Thalès."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une rédaction parfaite de Thalès repose sur quatre piliers. Le premier est l'alignement. Tu dois préciser que les points sont alignés, par exemple : 'Les points $A, M, B$ sont alignés dans cet ordre'. Cela prouve que tu as bien analysé la figure. Le deuxième pilier est le parallélisme. C'est la condition sine qua non. Tu dois écrire : 'On sait que $(MN) // (BC)$'. Sans cela, le théorème ne peut pas être invoqué. Le troisième pilier est l'énoncé du théorème. Tu écris : 'D'après le théorème de Thalès, on a l'égalité suivante'. C'est ici que tu poses ta suite de fractions. Le quatrième pilier est le calcul final. Tu isoles l'inconnue et tu donnes la valeur avec l'unité. Un point technique important : ne confonds pas la notation du segment $[AB]$ (la portion de droite) avec la notation de la droite $(AB)$ (la ligne infinie) ou la longueur $AB$ (le nombre). Quand tu écris un rapport, tu utilises la longueur $AB$, sans crochets ni parenthèses. En respectant ces étapes, tu montres que tu maîtrises non seulement la technique, mais aussi la logique mathématique."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "AM/AB"
+              ],
+              "rightTerms": [
+                "AN/AC",
+                "=",
+                "MN/BC"
+              ],
+              "caption": "L'équilibre des rapports de Thalès"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à un problème complexe, je te conseille d'adopter la stratégie du 'décodage'. Étape 1 : Le schéma. Ne travaille jamais sur un texte brut. Dessine la figure, même si elle n'est pas à l'échelle, et place toutes les données. Étape 2 : La chasse aux indices. Entoure le mot 'parallèle' et souligne les longueurs données. Si le parallélisme n'est pas écrit, cherche si on te dit que les droites sont perpendiculaires à une même troisième droite, car cela signifie qu'elles sont parallèles. Étape 3 : La structure de réponse. Prépare ton brouillon avec les quatre piliers cités précédemment. Étape 4 : La vérification de cohérence. Une fois le calcul fini, replace ton résultat sur le dessin. Est-ce que la longueur trouvée semble réaliste ? Si tu as trouvé que le petit segment était plus long que le grand, c'est qu'il y a une erreur. Enfin, arrondis ton résultat seulement à la fin, après tous les calculs, pour garder une précision maximale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Problème : Un poteau vertical de $2\\text{ m}$ projette une ombre de $3\\text{ m}$. Au même moment, un arbre projette une ombre de $12\\text{ m}$. Quelle est la hauteur de l'arbre ? On sait que les rayons du soleil sont parallèles. Rédaction : 1. On considère le triangle formé par l'arbre, son ombre et le rayon du soleil. On a une configuration de Thalès avec le poteau et l'arbre. 2. Le poteau et l'arbre sont tous deux perpendiculaires au sol, donc ils sont parallèles entre eux. 3. D'après le théorème de Thalès, on a l'égalité : $\\frac{\\text{Hauteur Poteau}}{\\text{Hauteur Arbre}} = \\frac{\\text{Ombre Poteau}}{\\text{Ombre Arbre}}$. 4. On remplace : $\\frac{2}{H} = \\frac{3}{12}$. On simplifie $\\frac{3}{12}$ en $\\frac{1}{4}$. On a donc $\\frac{2}{H} = \\frac{1}{4}$. Le produit en croix donne $H = 2 \\times 4 = 8\\text{ m}$. L'arbre mesure donc $8\\text{ m}$. Cette rédaction est complète car elle justifie le parallélisme et suit la logique du théorème."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cas particulier : On te donne un triangle $ABC$ et on te demande si la droite $(MN)$ est parallèle à $(BC)$. On sait que $AM = 2$, $AB = 6$, $AN = 3$ et $AC = 9$. Ici, on ne peut pas utiliser Thalès pour calculer, mais on utilise sa réciproque pour prouver. On calcule les deux rapports séparément. Premier rapport : $\\frac{AM}{AB} = \\frac{2}{6} = \\frac{1}{3}$. Deuxième rapport : $\\frac{AN}{AC} = \\frac{3}{9} = \\frac{1}{3}$. On constate que $\\frac{AM}{AB} = \\frac{AN}{AC}$. De plus, les points $M$ et $N$ sont situés respectivement sur $[AB]$ et $[AC]$. Comme les rapports sont égaux et que les points sont alignés dans le même ordre, on peut conclure que la droite $(MN)$ est bien parallèle à la droite $(BC)$. C'est l'inverse du théorème : on part des longueurs pour prouver le parallélisme. C'est un outil essentiel pour vérifier la précision d'une construction géométrique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus frustrant est le manque de précision dans le vocabulaire. Évite les phrases comme 'Je fais Thalès'. Utilise 'D'après le théorème de Thalès'. De même, ne dis pas 'le trait' mais 'le segment' ou 'la droite'. Un autre piège est l'oubli des unités dans la réponse finale. Un nombre seul ($8$) ne veut rien dire en géométrie, c'est un $8\\text{ m}$ ou un $8\\text{ cm}$ qui est correct. Attention aussi à la confusion entre le théorème et sa réciproque. Le théorème sert à CALCULER une longueur quand on SAIT que c'est parallèle. La réciproque sert à PROUVER que c'est parallèle quand on SAIT les longueurs. Si tu mélanges les deux, ton raisonnement devient circulaire. Enfin, méfie-toi des figures pièges où les droites semblent parallèles mais ne le sont pas. Ne te fie jamais à ton œil, fie-toi uniquement aux informations écrites dans l'énoncé. Si le texte ne dit pas 'parallèle', tu ne peux pas utiliser Thalès."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédige completely : Dans un triangle $ABC$, $(MN) // (BC)$. On a $AM=2$, $AB=5$, $MN=4$. Calcule $BC$.",
+              "answer": "$10$",
+              "hint": "Pense aux 4 piliers : alignement, parallélisme, formule, calcul.",
+              "explanation": "Puisque $(MN) // (BC)$ et que les points sont alignés, d'après Thalès : $\\frac{AM}{AB} = \\frac{MN}{BC}$. Donc $\\frac{2}{5} = \\frac{4}{BC}$, d'où $BC = \\frac{5 \\times 4}{2} = 10$."
+            },
+            {
+              "question": "Peut-on utiliser le théorème de Thalès pour calculer une longueur si on ne sait pas si les droites sont parallèles ?",
+              "answer": "Non",
+              "hint": "Relis la condition fondamentale de la leçon 1.",
+              "explanation": "Le parallélisme est la condition obligatoire. Sans lui, les rapports ne sont pas proportionnels."
+            },
+            {
+              "question": "Si $\\frac{AM}{AB} = 0,4$ et $\\frac{AN}{AC} = 0,4$, que peut-on conclure sur $(MN)$ et $(BC)$ ?",
+              "answer": "Elles sont parallèles",
+              "hint": "C'est l'utilisation de la réciproque du théorème.",
+              "explanation": "L'égalité des rapports $\\frac{AM}{AB} = \\frac{AN}{AC}$ prouve que $(MN) // (BC)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

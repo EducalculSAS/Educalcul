@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Tests",
+  "title": "Approfondissement : Tests",
+  "questions": [
+    {
+      "text": "On affecte $x = 7$. Le programme exécute : si $x > 5$ alors afficher \"A\" sinon afficher \"B\". Que va-t-il afficher ?",
+      "options": [
+        "A",
+        "B",
+        "A B",
+        "Erreur"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La condition $x > 5$ est vraie car $7 > 5$. Le bloc \"alors\" s'exécute et affiche \"A\". Le bloc \"sinon\" est ignoré. Les autres réponses correspondent à une mauvaise évaluation de la condition ou à une confusion entre les deux branches.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La variable $note$ vaut $12$. Le programme teste : si $note \\ge 16$ alors \"Très bien\" ; sinon si $note \\ge 12$ alors \"Assez bien\" ; sinon si $note \\ge 10$ alors \"Passable\" ; sinon \"Insuffisant\". Quelle phrase s'affiche ?",
+      "options": [
+        "Très bien",
+        "Assez bien",
+        "Passable",
+        "Insuffisant"
+      ],
+      "correctAnswer": "Assez bien",
+      "explanation": "La première condition $note \\ge 16$ est fausse. La seconde $note \\ge 12$ est vraie (12 ≥ 12), donc le programme exécute le bloc correspondant et affiche \"Assez bien\". Les tests suivants ne sont pas évalués. Les distracteurs correspondent aux autres branches qui ne sont pas atteintes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $a = 3$ et $b = 8$. On évalue l'expression booléenne $(a > 2) \\text{ et } (b < 10)$. Quel est le résultat ?",
+      "options": [
+        "Vrai",
+        "Faux",
+        "Erreur",
+        "Indéfini"
+      ],
+      "correctAnswer": "Vrai",
+      "explanation": "La première sous‑condition $a > 2$ est vraie (3 > 2). La seconde $b < 10$ est aussi vraie (8 < 10). L'opérateur \"et\" (conjonction) renvoie vrai seulement si les deux sont vraies, ce qui est le cas ici. Les autres choix correspondent à une méconnaissance de la table de vérité du \"et\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La variable $age$ vaut $15$. Le programme imbrique les tests : si $age \\ge 18$ alors \"Majeur\" ; sinon si $age \\ge 12$ alors \"Adolescent\" ; sinon \"Enfant\". Quelle chaîne est affichée ?",
+      "options": [
+        "Majeur",
+        "Adolescent",
+        "Enfant",
+        "Erreur"
+      ],
+      "correctAnswer": "Adolescent",
+      "explanation": "La première condition $age \\ge 18$ est fausse (15 < 18). On passe au \"sinon si\" : $age \\ge 12$ est vraie (15 ≥ 12), donc le programme affiche \"Adolescent\". Le dernier \"sinon\" ne sert que si les deux tests précédents sont faux. Les distracteurs proviennent d'une lecture trop rapide de la structure imbriquée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit $flag = \\text{Faux}$. Le programme teste : si non $flag$ alors afficher \"Ok\" sinon afficher \"Non\". Que s'affiche-t-il ?",
+      "options": [
+        "Ok",
+        "Non",
+        "Erreur",
+        "Aucun"
+      ],
+      "correctAnswer": "Ok",
+      "explanation": "L'opérateur \"non\" (négation) inverse la valeur booléenne. Comme $flag$ est faux, \"non flag\" devient vrai. Le bloc \"alors\" s'exécute et affiche \"Ok\". Les autres réponses correspondent à une confusion sur la négation ou à l'idée que le programme ne ferait rien.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

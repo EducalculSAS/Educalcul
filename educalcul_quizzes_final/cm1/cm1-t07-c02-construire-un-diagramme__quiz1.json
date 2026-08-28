@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 257,
+  "_course_code": "cm1-t07-c02-construire-un-diagramme",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Choisir échelle",
+  "title": "Choisir l'échelle d'un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "On veut représenter le nombre d'élèves par classe : 24, 26, 25, 27. Quelle est l'échelle la plus adaptée pour que le diagramme tienne sur une feuille de hauteur 20 cm et que les différences se voient bien ?",
+      "options": [
+        "1 cm pour 1 élève",
+        "1 cm pour 2 élèves",
+        "1 cm pour 5 élèves",
+        "1 cm pour 10 élèves"
+      ],
+      "correctAnswer": "1 cm pour 2 élèves",
+      "explanation": "Les valeurs vont de 24 à 27. Avec 1 cm pour 1 élève, les bâtons feraient 24 à 27 cm de haut : trop grand pour une feuille de 20 cm. Avec 1 cm pour 5 élèves ou 10 élèves, les hauteurs seraient de 5 à 6 cm ou 2 à 3 cm : les différences entre classes seraient difficiles à lire. Avec 1 cm pour 2 élèves, les hauteurs sont comprises entre 12 et 13,5 cm : cela tient sur la feuille et les écarts de 1 ou 2 élèves (0,5 ou 1 cm) restent visibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour un diagramme montrant les populations de 4 villages : 350, 420, 380, 400 habitants. On choisit l'échelle : 1 cm pour 50 habitants. Quelle sera la hauteur du bâton le plus haut ?",
+      "options": [
+        "7 cm",
+        "8 cm",
+        "8,4 cm",
+        "9 cm"
+      ],
+      "correctAnswer": "8,4 cm",
+      "explanation": "Le village le plus peuplé a 420 habitants. L'échelle est 1 cm pour 50 habitants. Il faut diviser 420 par 50 : 420 / 50 = 8,4. La hauteur sera donc de 8,4 cm. L'option 8 cm correspond à un arrondi au nombre entier inférieur, 7 cm correspond à 350 habitants et 9 cm à 450 habitants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a relevé le nombre de livres lus par mois : 3, 5, 4, 6, 2. Il trace un diagramme sur une grille où chaque carreau vaut 1 cm. Il choisit l'échelle : 1 carreau pour 1 livre. Quelle sera la hauteur du bâton du mois où il a lu 5 livres ?",
+      "options": [
+        "3 carreaux",
+        "4 carreaux",
+        "5 carreaux",
+        "6 carreaux"
+      ],
+      "correctAnswer": "5 carreaux",
+      "explanation": "L'échelle choisie est 1 carreau pour 1 livre. Pour représenter 5 livres, il suffit de multiplier 5 par 1 carreau, ce qui donne 5 carreaux. C'est une lecture directe de l'échelle. Les autres options correspondent aux autres valeurs de la série (3, 4, 6) ou à une erreur de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On doit représenter des températures maximales sur une semaine : 12°C, 15°C, 14°C, 16°C, 13°C. La hauteur maximale autorisée pour les bâtons est de 10 cm. Parmi ces échelles, laquelle est la seule qui permet de tout représenter sans dépasser 10 cm ?",
+      "options": [
+        "1 cm pour 1°C",
+        "1 cm pour 2°C",
+        "1 cm pour 3°C",
+        "1 cm pour 4°C"
+      ],
+      "correctAnswer": "1 cm pour 2°C",
+      "explanation": "La température maximale est 16°C. Il faut que la hauteur du bâton (valeur / échelle) soit inférieure ou égale à 10 cm. Testons : 16/1 = 16 cm (trop grand). 16/2 = 8 cm (correct, < 10 cm). 16/3 ≈ 5,3 cm (correct mais l'échelle 1 cm pour 2°C est plus précise pour voir les différences de 1°C). 16/4 = 4 cm (correct mais moins précis). La question demande celle qui permet de tout représenter ; les trois dernières fonctionnent, mais l'échelle 1 cm pour 2°C est la plus grande (la plus précise) parmi celles qui respectent la contrainte de 10 cm max. C'est le choix standard pour optimiser la place.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un diagramme montre le nombre de timbres de 4 collections : 180, 210, 195, 225. L'échelle est 1 cm pour 25 timbres. De combien de centimètres le bâton le plus haut dépasse-t-il le bâton le plus bas ?",
+      "options": [
+        "1,2 cm",
+        "1,5 cm",
+        "1,8 cm",
+        "2 cm"
+      ],
+      "correctAnswer": "1,8 cm",
+      "explanation": "Le plus haut est 225 timbres, le plus bas est 180 timbres. La différence est 225 - 180 = 45 timbres. L'échelle est 1 cm pour 25 timbres. Il faut diviser la différence par l'échelle : 45 / 25 = 1,8 cm. On peut aussi calculer chaque hauteur : 225/25 = 9 cm et 180/25 = 7,2 cm. La différence est 9 - 7,2 = 1,8 cm.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

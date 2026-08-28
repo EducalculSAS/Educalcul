@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 115,
+  "_course_code": "ce1-t05-c08-problemes-a-deux-etapes",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Conserver le résultat intermédiaire",
+  "title": "Quiz : Problèmes à deux étapes - Conserver le résultat intermédiaire",
+  "questions": [
+    {
+      "text": "Lucas a $15$ billes. Il en gagne $8$ de plus. Ensuite, il en perd $5$. Combien de billes a-t-il à la fin ?",
+      "options": [
+        "Il a $18$ billes.",
+        "Il a $23$ billes.",
+        "Il a $10$ billes.",
+        "Il a $13$ billes."
+      ],
+      "correctAnswer": "Il a $18$ billes.",
+      "explanation": "Il faut faire le calcul en deux étapes en gardant le résultat de la première. Étape 1 : Lucas gagne des billes, on additionne $15 + 8 = 23$. Il a maintenant $23$ billes (résultat intermédiaire à conserver). Étape 2 : Il en perd $5$, on soustrait $23 - 5 = 18$. La réponse $23$ correspond à l'arrêt après la première étape. La réponse $10$ correspond à $15 - 5$ (mauvaise ordre). La réponse $13$ correspond à $8 + 5$ (incohérent).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la classe, il y a $25$ élèves. Aujourd'hui, $3$ sont absents. Dans l'après-midi, $2$ nouveaux élèves arrivent. Combien d'élèves sont présents dans l'après-midi ?",
+      "options": [
+        "Il y a $24$ élèves.",
+        "Il y a $22$ élèves.",
+        "Il y a $27$ élèves.",
+        "Il y a $5$ élèves."
+      ],
+      "correctAnswer": "Il y a $24$ élèves.",
+      "explanation": "Deux étapes : d'abord soustraire les absents, puis ajouter les nouveaux. Étape 1 : $25 - 3 = 22$ élèves présents le matin (résultat intermédiaire). Étape 2 : $22 + 2 = 24$ élèves l'après-midi. La réponse $22$ oublie d'ajouter les deux nouveaux. La réponse $27$ ajoute les deux sans retirer les absents ($25 + 2$). La réponse $5$ additionne absents et nouveaux ($3 + 2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Maman a $50$ euros. Elle achète une jupe à $28$ euros. Elle veut acheter un pull avec l'argent qui reste. Combien lui reste-t-il pour le pull ?",
+      "options": [
+        "Il lui reste $22$ euros.",
+        "Il lui reste $78$ euros.",
+        "Il lui reste $28$ euros.",
+        "Il lui reste $50$ euros."
+      ],
+      "correctAnswer": "Il lui reste $22$ euros.",
+      "explanation": "C'est un problème à une question mais qui demande le résultat intermédiaire (l'argent restant après le premier achat). On soustrait le prix de la jupe à la somme de départ : $50 - 28 = 22$. Ce résultat ($22$) est la somme disponible pour le pull. La réponse $78$ fait une addition. La réponse $28$ donne le prix de la jupe. La réponse $50$ donne la somme initiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un fermier a $36$ poules. Il en vend $12$ au marché. Puis il achète $5$ nouveaux poussins. Combien de poules a-t-il maintenant ?",
+      "options": [
+        "Il a $29$ poules.",
+        "Il a $24$ poules.",
+        "Il a $41$ poules.",
+        "Il a $17$ poules."
+      ],
+      "correctAnswer": "Il a $29$ poules.",
+      "explanation": "Deux opérations successives. Étape 1 : Il vend, donc on soustrait : $36 - 12 = 24$ poules (résultat intermédiaire à garder en tête). Étape 2 : Il achète, donc on additionne : $24 + 5 = 29$ poules. La réponse $24$ s'arrête après la vente. La réponse $41$ ajoute les $5$ aux $36$ initiaux sans tenir compte de la vente. La réponse $17$ additionne vendus et achetés ($12 + 5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la kermesse, Julie a préparé $42$ sandwiches. Le midi, on en a mangé $15$. Le soir, on en a mangé $18$. Combien de sandwiches reste-t-il ?",
+      "options": [
+        "Il en reste $9$.",
+        "Il en reste $27$.",
+        "Il en reste $33$.",
+        "Il en reste $57$."
+      ],
+      "correctAnswer": "Il en reste $9$.",
+      "explanation": "Deux méthodes possibles en conservant les intermédiaires. Méthode 1 (deux soustractions) : Étape 1 : $42 - 15 = 27$ restants après midi. Étape 2 : $27 - 18 = 9$ restants le soir. Méthode 2 (addition des mangés puis soustraction) : Étape 1 : $15 + 18 = 33$ mangés en tout. Étape 2 : $42 - 33 = 9$ restants. La réponse $27$ est le résultat intermédiaire après le midi seulement. La réponse $33$ est le total mangé (étape intermédiaire méthode 2). La réponse $57$ additionne tout ($42 + 15$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

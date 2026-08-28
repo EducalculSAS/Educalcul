@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Contrôler",
+  "title": "Arrondis et valeurs approchées : Contrôler",
+  "blocks": [
+    {
+      "title": "Arrondi à l'unité",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12,3$",
+          "right": "$12$"
+        },
+        {
+          "left": "$7,8$",
+          "right": "$8$"
+        },
+        {
+          "left": "$4,5$",
+          "right": "$5$"
+        },
+        {
+          "left": "$9,2$",
+          "right": "$9$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour arrondir à l'unité, on regarde le chiffre des dixièmes : s'il est inférieur à 5, on conserve l'unité ; s'il est supérieur ou égal à 5, on ajoute 1 à l'unité. Ainsi $12,3$ donne $12$, $7,8$ donne $8$, $4,5$ donne $5$ et $9,2$ donne $9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au dixième",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3,14$",
+          "right": "$3,1$"
+        },
+        {
+          "left": "$2,67$",
+          "right": "$2,7$"
+        },
+        {
+          "left": "$5,05$",
+          "right": "$5,1$"
+        },
+        {
+          "left": "$8,99$",
+          "right": "$9,0$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour arrondir au dixième, on observe le chiffre des centièmes : s'il est inférieur à 5, le dixième reste inchangé ; s'il est supérieur ou égal à 5, on augmente le dixième de 1. Ainsi $3,14$ devient $3,1$, $2,67$ devient $2,7$, $5,05$ devient $5,1$ et $8,99$ devient $9,0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier un arrondi",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'arrondi de $12,345$ au centième est $12,35$",
+          "right": "Vrai"
+        },
+        {
+          "left": "L'arrondi de $0,999$ au dixième est $1,0$",
+          "right": "Vrai"
+        },
+        {
+          "left": "L'arrondi de $7,44$ à l'unité est $8$",
+          "right": "Faux"
+        }
+      ],
+      "items": [],
+      "explanation": "On vérifie chaque arrondi : $12,345$ au centième, le chiffre des millièmes est 5 donc on arrondit le centième 4 à 5 → $12,35$ (Vrai). $0,999$ au dixième, le chiffre des centièmes est 9 ≥ 5 donc le dixième 9 devient 10, ce qui donne $1,0$ (Vrai). $7,44$ à l'unité, le chiffre des dixièmes est 4 < 5 donc l'unité reste 7, pas 8 (Faux).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

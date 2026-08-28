@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation des variations d'un modèle",
+  "questions": [
+    {
+      "text": "Soit une fonction $f$ modélisant l'évolution d'une population au cours du temps $t$. Si on détermine que $f'(t) > 0$ sur l'intervalle $[0, 10]$, comment interprète t on ce résultat ?",
+      "options": [
+        "La population est constante durant les dix premières unités de temps",
+        "La population diminue durant les dix premières unités de temps",
+        "La population augmente durant les dix premières unités de temps",
+        "La population atteint un maximum à $t = 10$"
+      ],
+      "correctAnswer": "La population augmente durant les dix premières unités de temps",
+      "explanation": "Le signe de la dérivée $f'(t)$ indique le sens de variation de la fonction $f$. Puisque $f'(t)$ est strictement positive sur l'intervalle $[0, 10]$, la fonction $f$ est strictement croissante, ce qui signifie que la population augmente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction $C(x)$ représente le coût total de production de $x$ objets. On trouve que $C'(x) = 15$ pour tout $x$. Quelle est l'interprétation concrète de cette valeur ?",
+      "options": [
+        "Le coût total est de $15$ euros pour chaque objet produit",
+        "Le coût augmente de $15$ euros lorsque l'on produit un objet supplémentaire",
+        "Le coût minimum de production est de $15$ euros",
+        "La production est limitée à $15$ objets"
+      ],
+      "correctAnswer": "Le coût augmente de $15$ euros lorsque l'on produit un objet supplémentaire",
+      "explanation": "La dérivée $C'(x)$ représente le coût marginal. Une valeur de $15$ signifie que pour une unité supplémentaire de $x$, le coût total augmente d'environ $15$ unités monétaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le modèle d'une concentration sanguine est donné par $g(t)$. On observe que $g'(t) < 0$ et que $g''(t) > 0$ pour $t > 2$. Que peut on en déduire sur l'évolution de la concentration ?",
+      "options": [
+        "La concentration augmente de plus en plus rapidement",
+        "La concentration diminue, mais la vitesse de diminution ralentit",
+        "La concentration diminue de plus en plus rapidement",
+        "La concentration est stable et converge vers zéro"
+      ],
+      "correctAnswer": "La concentration diminue, mais la vitesse de diminution ralentit",
+      "explanation": "$g'(t) < 0$ signifie que la fonction est décroissante (la concentration diminue). $g''(t) > 0$ signifie que la dérivée $g'(t)$ est croissante, donc elle devient moins négative, ce qui traduit un ralentissement de la baisse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un modèle physique est défini par la fonction $h(x)$ sur $[0, 5]$. On sait que $h'(2) = 0$ et $h''(2) < 0$. Quelle est l'interprétation de ce point ?",
+      "options": [
+        "Le modèle admet un minimum local en $x = 2$",
+        "La fonction $h$ a un point d'inflexion en $x = 2$",
+        "Le modèle admet un maximum local en $x = 2$",
+        "La fonction $h$ est linéaire autour de $x = 2$"
+      ],
+      "correctAnswer": "Le modèle admet un maximum local en $x = 2$",
+      "explanation": "Selon la condition suffisante d'extremum, si la dérivée première s'annule en un point et que la dérivée seconde est strictement négative, alors la fonction admet un maximum local en ce point.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-x^2+4x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Représentation d'une fonction admettant un maximum"
+      }
+    },
+    {
+      "text": "On étudie la fonction $V(t)$ représentant le volume d'un réservoir. On trouve que $V'(t)$ est une fonction décroissante et positive sur $[0, 10]$. Comment interprète t on l'évolution du volume ?",
+      "options": [
+        "Le volume diminue de plus en plus vite",
+        "Le volume augmente, mais le rythme de remplissage diminue",
+        "Le volume est constant car la dérivée change de signe",
+        "Le volume augmente de façon exponentielle"
+      ],
+      "correctAnswer": "Le volume augmente, mais le rythme de remplissage diminue",
+      "explanation": "Puisque $V'(t) > 0$, le volume $V(t)$ augmente. Puisque $V'(t)$ est décroissante, la pente de la courbe diminue, ce qui signifie que l'augmentation se fait de moins en moins rapidement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

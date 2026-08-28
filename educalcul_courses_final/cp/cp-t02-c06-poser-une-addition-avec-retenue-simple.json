@@ -1,0 +1,328 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.547531+00:00",
+  "id": 20,
+  "code": "cp-t02-c06",
+  "title": "Poser une addition avec retenue simple",
+  "description": "Cours structuré Educalcul : Poser une addition avec retenue simple.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Poser une addition avec retenue simple",
+    "objectif_global": "Poser une addition avec retenue simple",
+    "mini_lecons_imposees": [
+      "Comprendre 10 unités = 1 dizaine.",
+      "Reporter une retenue.",
+      "Vérifier par estimation ou décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Comprendre 10 unités = 1 dizaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des petits cubes pour compter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte pleine de petits cubes en bois. Chaque cube, c'est $1$ unité. Quand tu en as $10$, tu peux les attacher ensemble avec un élastique pour faire un bâtonnet. Ce bâtonnet, c'est $1$ dizaine. C'est comme un paquet de $10$ bonbons : tu ne les comptes plus un par un, tu sais qu'il y en a $10$ d'un coup."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 10,
+              "caption": "10 unités lâches"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde comme c'est pratique : au lieu de dire \"dix unités\", tu dis \"une dizaine\". C'est plus court et ça va plus vite pour compter les gros nombres. Si tu as $13$ cubes, tu fais un bâtonnet de $10$ et il te reste $3$ cubes tout seuls. Tu as donc $1$ dizaine et $3$ unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "13 : 1 dizaine et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec d'autres nombres. Prends $17$ cubes : tu fais un bâtonnet de $10$ et il reste $7$ cubes. Pour $20$ cubes, tu fais deux bâtonnets et il ne reste aucun cube tout seul. C'est comme ça qu'on écrit les nombres à deux chiffres : le premier chiffre dit le nombre de dizaines, le second dit le nombre d'unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 0,
+              "caption": "20 : 2 dizaines et 0 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien y a-t-il de cubes en tout ?",
+              "answer": "10",
+              "hint": "Compte chaque petit cube un par un.",
+              "explanation": "Il y a $10$ cubes units. On peut les regrouper pour former 1 dizaine."
+            },
+            {
+              "question": "Écris le nombre montré par les cubes (1 dizaine et 3 unités).",
+              "answer": "13",
+              "hint": "Le chiffre des dizaines est 1, celui des unités est 3.",
+              "explanation": "1 dizaine = 10, plus 3 unités = 13. On écrit 13."
+            },
+            {
+              "question": "Combien de dizaines et d'unités pour le nombre 20 ?",
+              "answer": "2 dizaines et 0 unité",
+              "hint": "Deux bâtonnets de 10, aucun cube seul.",
+              "explanation": "20 = 2 × 10 + 0. On a 2 dizaines et 0 unité."
+            }
+          ]
+        },
+        {
+          "title": "Reporter une retenue.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les unités font plus de 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais poser une addition simple comme $23 + 14$ : tu ajoutes les unités ($3+4=7$) et les dizaines ($2+1=3$), ça fait $37$. Mais que se passe-t-il si les unités donnent $10$ ou plus ? Regarde $28 + 15$. Si tu mets $8+5$, ça fait $13$. On ne peut pas écrire $13$ dans la colonne des unités, elle ne prend qu'un seul chiffre !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "15"
+              ],
+              "result": "43",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il faut utiliser la retenue. $13$ unités, c'est $1$ dizaine et $3$ unités. Tu écris le $3$ sous la ligne, dans la colonne des unités. Le $1$ (la dizaine), tu l'écris petit en haut de la colonne des dizaines, à gauche. C'est la retenue. Ensuite, tu ajoutes les dizaines : $2 + 1 + 1$ (la retenue) = $4$ dizaines. Le résultat est $43$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$8 + 5 = 13$. J'écris $3$ dans la colonne des unités, je retiens $1$ dizaine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les dizaines avec la retenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 + 1 + 1 = 4$. J'écris $4$ dans la colonne des dizaines."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec des cubes pour bien voir. Pour $28$, tu as $2$ bâtons (dizaines) et $8$ cubes (unités). Pour $15$, tu as $1$ bâton et $5$ cubes. Mets tous les cubes ensemble : $8+5=13$ cubes. Tu en groupes $10$ pour faire un nouveau bâton. Tu as maintenant $2+1+1=4$ bâtons et $3$ cubes. C'est exactement $43$ !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 3,
+              "caption": "Résultat : 43 (4 dizaines, 3 unités)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pose et calcule : 28 + 15",
+              "answer": "43",
+              "hint": "8+5=13, j'écris 3, je retiens 1. Puis 2+1+1=4.",
+              "explanation": "Les unités font 13 : 3 unités, 1 dizaine retenue. Les dizaines : 2+1+1=4. Résultat 43."
+            },
+            {
+              "question": "Quelle est la retenue quand on additionne 37 + 26 ?",
+              "answer": "1",
+              "hint": "Regarde la somme des unités : 7+6.",
+              "explanation": "7+6=13. On écrit 3, on retient 1 dizaine. La retenue est 1."
+            },
+            {
+              "question": "Calcule 46 + 38 en posant l'addition.",
+              "answer": "84",
+              "hint": "Unités : 6+8=14 → 4, retenue 1. Dizaines : 4+3+1=8.",
+              "explanation": "6+8=14 (4 unités, 1 retenue). 4+3+1=8 dizaines. Total 84."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par estimation ou décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier avec une estimation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir posé ton addition, tu peux vérifier si ton résultat est raisonnable. Pour $46 + 38$, arrondis chaque nombre à la dizaine la plus proche : $46$ est près de $50$, $38$ est près de $40$. Dans ta tête, $50 + 40 = 90$. Ton résultat $84$ est proche de $90$, c'est bon signe ! Si tu avais trouvé $124$, tu verrais tout de suite que c'est trop grand."
+            },
+            {
+              "type": "number_line",
+              "caption": "46 et 38 sont proches de 50 et 40",
+              "min": 30,
+              "max": 100,
+              "points": [
+                {
+                  "value": 46,
+                  "label": "46"
+                },
+                {
+                  "value": 38,
+                  "label": "38"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier par décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre façon de vérifier : décompose les nombres en dizaines et unités, ajoute-les séparément. Pour $46 + 38$ : $46 = 40 + 6$, $38 = 30 + 8$. Ajoute les dizaines : $40 + 30 = 70$. Ajoute les unités : $6 + 8 = 14$. Maintenant, $70 + 14 = 84$. Tu retrouves le même résultat ! C'est comme si tu refaisais l'addition mais en horizontal."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "40",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "30",
+                  "value": 30,
+                  "tone": "green"
+                },
+                {
+                  "label": "8",
+                  "value": 8,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Décomposition de 46 et 38"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux super outils pour vérifier ton travail : l'estimation rapide (arrondir aux dizaines) et la décomposition (séparer dizaines et unités). Utilise-les à chaque fois, tu deviendras de plus en plus sûr de toi. Et si les deux méthodes donnent le même résultat que ton addition posée, c'est gagné !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais que 10 unités font 1 dizaine.",
+                "Je sais poser une addition avec retenue (écrire le chiffre des unités, reporter la dizaine).",
+                "Je sais vérifier mon résultat par estimation (arrondir aux dizaines).",
+                "Je sais vérifier mon résultat par décomposition (séparer dizaines et unités)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour vérifier 57 + 26, quels nombres arrondis utilises-tu ?",
+              "answer": "60 et 30",
+              "hint": "57 est proche de 60, 26 est proche de 30.",
+              "explanation": "On arrondit à la dizaine : 57 → 60, 26 → 30. Somme estimée : 90."
+            },
+            {
+              "question": "Vérifie 57 + 26 par décomposition.",
+              "answer": "83",
+              "hint": "57 = 50+7, 26 = 20+6. Dizaines : 50+20=70. Unités : 7+6=13. 70+13=83.",
+              "explanation": "50+20=70. 7+6=13. 70+13=83. Résultat correct."
+            },
+            {
+              "question": "Choisis la bonne vérification pour 49 + 34 = 83 : estimation ou décomposition ? Les deux donnent-elles le même résultat ?",
+              "answer": "Les deux donnent 83.",
+              "hint": "Estimation : 50+30=80. Décomposition : 40+30=70, 9+4=13, 70+13=83.",
+              "explanation": "Estimation : 49≈50, 34≈30 → 80 (proche de 83). Décomposition : 40+30=70, 9+4=13, 70+13=83. Les deux confirment 83."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

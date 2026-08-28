@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 235,
+  "_course_code": "cm1-t04-c02-schemas-en-barres-et-modeles",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Choisir schéma",
+  "title": "Algorithmes de choix de schémas en barres",
+  "blocks": [
+    {
+      "title": "Identifier le modèle de base",
+      "content": "Écris un algorithme en pseudo-code (style « Si ... Alors ... Sinon ») qui permet de choisir le bon schéma en barres pour un problème à une étape. L'algorithme doit distinguer trois cas : 1. Regroupement (addition), 2. Comparaison (soustraction pour trouver un écart), 3. Multiplication ou Division (répétition ou partage). Les entrées sont les mots-clés ou la structure du problème.",
+      "correctAnswer": "Algorithme ChoisirModeleBase\\nEntrée : description du problème (texte)\\nDébut\\n    Si le problème parle de « mettre ensemble », « au total », « en tout » ou « ajouter » Alors\\n        Renvoyer « Schéma Regroupement : une grande barre = barre 1 + barre 2 »\\n    Sinon Si le problème parle de « différence », « combien de plus », « combien de moins », « écart entre » Alors\\n        Renvoyer « Schéma Comparaison : deux barres alignées, une plus longue que l'autre »\\n    Sinon Si le problème parle de « fois plus », « groupes de même taille », « partager équitablement », « combien de groupes » Alors\\n        Renvoyer « Schéma Multiplication/Division : plusieurs petites barres identiques formant un tout »\\n    Sinon\\n        Renvoyer « Relire le problème pour identifier l'action »\\nFin",
+      "explanation": "En CM1, on apprend à associer l'action décrite dans le problème à une structure de schéma. L'addition (regroupement) unit des parties pour faire un tout. La comparaison superpose deux quantités pour voir l'écart. La multiplication et la division utilisent une structure de répétition (plusieurs barres égales). L'algorithme teste ces conditions dans l'ordre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Affiner le choix pour la soustraction",
+      "content": "Les problèmes de soustraction peuvent utiliser deux schémas différents : « Partie / Tout » (enlever, il reste) ou « Comparaison » (différence). Écris un algorithme qui, face à un problème impliquant une soustraction, décide quel schéma dessiner. L'algorithme doit tester la question posée : « Combien en reste-t-il ? » ou « Quelle est la différence ? / Combien de plus ? ».",
+      "correctAnswer": "Algorithme ChoisirSchemaSoustraction\\nEntrée : question du problème (texte)\\nDébut\\n    Si la question contient « reste », « en reste », « il reste », « après avoir enlevé », « a donné », « a perdu » Alors\\n        Renvoyer « Schéma Partie/Tout : une barre totale, une partie enlevée (hachurée), l'autre partie demandée »\\n    Sinon Si la question contient « différence », « plus que », « moins que », « écart », « de plus », « de moins » Alors\\n        Renvoyer « Schéma Comparaison : deux barres distinctes de longueurs différentes, l'écart est la partie non chevauchante »\\n    Sinon\\n        Renvoyer « Analyser l'action : enlever une partie ou comparer deux quantités distinctes ? »\\nFin",
+      "explanation": "C'est une confusion fréquente en CM1. Si l'action modifie une quantité unique (je mange des bonbons, il en reste), c'est un schéma Partie/Tout (une barre coupée en deux). Si on compare deux quantités distinctes (Paul a 10 billes, Luc en a 6, combien Paul en a-t-il de plus ?), ce sont deux barres séparées alignées. L'algorithme regarde le verbe ou la question finale pour trancher.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Gérer un problème à deux étapes",
+      "content": "Pour un problème à deux étapes (exemple : « Achats : je'achète 3 cahiers à 2 euros et 1 stylo à 3 euros, je paie avec un billet de 10 euros, combien me rend-on ? »), l'algorithme doit proposer une suite de schémas. Écris un algorithme qui décompose le problème en sous-problèmes, choisit le schéma pour chaque étape, et indique comment les relier (le résultat de l'étape 1 devient une donnée de l'étape 2).",
+      "correctAnswer": "Algorithme ChoisirSchemasDeuxEtapes\\nEntrée : énoncé complet du problème\\nDébut\\n    Étape 1 : Identifier la première question cachée (souvent « Combien coûte le total ? » ou « Combien a-t-il dépensé ? »)\\n    Appliquer ChoisirModeleBase sur cette sous-question\\n    Stocker le schéma 1 (ex: Multiplication pour 3 cahiers, Regroupement pour total achats)\\n    Calculer le résultat intermédiaire (mentalement ou sur brouillon)\\n    Étape 2 : Identifier la question finale (souvent « Combien me rend-on ? »)\\n    Appliquer ChoisirSchemaSoustraction sur cette question finale\\n    Stocker le schéma 2 (ex: Partie/Tout : Total argent = Dépense + Monnaie)\\n    Renvoyer la séquence : « Dessiner Schéma 1, calculer, puis dessiner Schéma 2 avec le résultat du 1 »\\nFin",
+      "explanation": "Les problèmes à deux étapes demandent de chaîner les modèles. Ici, on calcule d'abord le prix total (schéma multiplication + regroupement : 3 barres de 2 + 1 barre de 3 = barre total achats). Ce total devient la « partie enlevée » du second schéma (Partie/Tout : barre de 10 euros = barre achats + barre monnaie). L'algorithme formalise cette décomposition en deux appels aux algorithmes précédents.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

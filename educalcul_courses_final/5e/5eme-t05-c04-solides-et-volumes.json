@@ -1,0 +1,601 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.748095+00:00",
+  "id": 403,
+  "code": "5eme-t05-c04",
+  "title": "Solides et volumes",
+  "description": "Cours structuré Educalcul : Solides et volumes.",
+  "subject": "Repérage, transformations et géométrie dans l'espace",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Repérage, transformations et géométrie dans l'espace",
+    "titre_du_cours": "Solides et volumes",
+    "objectif_global": "Solides et volumes",
+    "mini_lecons_imposees": [
+      "Prismes / cylindres selon programme.",
+      "Patrons / vues.",
+      "Volumes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Repérage, transformations et géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Prismes / cylindres selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un prisme ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un solide que tu tiens dans tes mains, comme une boîte de céréales ou un tuyau en PVC. Ce que ces objets ont en commun, c'est qu'ils possèdent deux faces identiques, parallèles l'une à l'autre, que l'on appelle les **bases**. Toutes les autres faces, que l'on nomme **faces latérales**, sont des parallélogrammes. Si tu coupais ce solide par un plan parallèle aux bases, tu obtiendrais à chaque fois une figure exactement semblable aux bases : c'est la propriété fondamentale qui définit un **prisme**."
+            },
+            {
+              "type": "definition",
+              "term": "Prisme",
+              "definition": "Un prisme est un polyèdre qui a deux faces parallèles et congruentes appelées bases. Les autres faces, appelées faces latérales, sont des parallélogrammes.",
+              "example": "Un pavé droit, un cube, une tente de camping à structure triangulaire sont des prismes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons de plus près le vocabulaire précis. Les segments où deux faces se rencontrent s'appellent les **arêtes**. Les points où plusieurs arêtes se croisent sont les **sommets**. Dans un prisme, les arêtes qui relient les sommets correspondants des deux bases sont parallèles entre elles. On distingue souvent le prisme **droit**, dont les faces latérales sont des rectangles et les arêtes latérales perpendiculaires aux bases, du prisme **oblique**, où les faces latérales sont des parallélogrammes inclinés. En classe de 5e, nous travaillerons presque exclusivement avec les prismes droits, car leurs propriétés sont plus simples à utiliser pour calculer des aires ou des volumes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Prisme droit : bases parallèles, faces lat\\'erales rectangles, ar\\^etes lat\\'erales \\perp bases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cylindre : un prisme à base circulaire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si l'on remplace les bases polygonales par des disques, on obtient un **cylindre**. Attention, le cylindre n'est pas un polyèdre car ses faces ne sont pas planes : il a une surface latérale courbe. Pourtant, il partage la même structure qu'un prisme : deux bases congruentes (des disques de même rayon) et parallèles, et une surface latérale qui relie les deux bases. Lorsque l'axe reliant les centres des deux disques est perpendiculaire aux bases, on parle de **cylindre de révolution** ou **cylindre droit**. C'est le cas le plus fréquent : une boîte de conserve, un rouleau de scotch, un tronc d'arbre droit."
+            },
+            {
+              "type": "definition",
+              "term": "Cylindre de révolution",
+              "definition": "Solide limité par deux disques de même rayon, parallèles, et une surface latérale courbe. L'axe du cylindre (droite passant par les centres des disques) est perpendiculaire aux bases.",
+              "example": "Un verre droit, un tuyau, une pile électrique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un cylindre de révolution, la **hauteur** est la distance entre les deux bases, c'est-à-dire la longueur du segment de l'axe compris entre les deux centres. Le **rayon** du cylindre est simplement le rayon des disques de base. Une particularité fascinante : si l'on coupe la surface latérale le long d'une génératrice (une droite tracée sur la surface, parallèle à l'axe) et qu'on l'aplatit, on obtient un **rectangle**. La hauteur de ce rectangle est la hauteur du cylindre, et sa largeur est la **circonférence** de la base, soit $2\\pi r$. Cette propriété sera cruciale pour calculer l'aire latérale ou pour tracer le patron."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Aire lat\\'erale cylindre } = 2\\pi r \\times h = \\text{p\\'erim\\`etre base} \\times \\text{hauteur}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sections planes : que voit-on à l'intérieur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu coupes une carotte (qui ressemble à un cylindre) ou un morceau de fromage en forme de prisme avec un grand couteau. La trace laissée par la lame sur le solide est ce qu'on appelle une **section plane**. En 5e, nous nous intéressons surtout aux sections faites par un plan **parallèle aux bases**. C'est la situation la plus simple et la plus utile : la section obtenue est une figure **identique aux bases** (même forme, mêmes dimensions). Si tu coupes un prisme à base triangulaire parallèlement à sa base, tu obtiens un triangle identique à la base. Si tu coupes un cylindre parallèlement à ses bases, tu obtiens un disque de même rayon."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété est un outil de raisonnement puissant. Elle permet de dire qu'à l'intérieur d'un prisme droit ou d'un cylindre droit, toutes les sections parallèles aux bases sont superposables. C'est ce qui justifie la formule du volume que nous verrons plus tard : on peut voir le solide comme une pile infinie de fines tranches toutes identiques. En revanche, si le plan de coupe n'est pas parallèle aux bases, les sections peuvent avoir des formes très variées (ellipse, parabole, rectangle, triangle...), mais leur étude dépasse le cadre du programme de 5e."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les bases",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux faces parallèles et congruentes qui servent de bases au solide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la direction de la coupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plan de coupe est-il parallèle aux bases ? Si oui, la section est identique aux bases."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déduire la nature de la section",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si bases sont des triangles $\\rightarrow$ section triangle. Si bases sont des disques $\\rightarrow$ section disque."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître et nommer un solide de l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien démarrer un exercice de géométrie dans l'espace, la première étape est toujours d'identifier le solide dont il est question. Regarde la figure : a-t-elle des faces planes seulement ? C'est un polyèdre. A-t-elle une surface courbe ? C'est un cylindre, un cône ou une sphère. Si c'est un polyèdre avec deux faces parallèles identiques et des faces latérales parallélogrammiques, c'est un prisme. Précise alors la forme de sa base : prisme à base triangulaire, prisme à base hexagonale, pavé droit (base rectangle), cube (cas particulier du pavé droit). Si le solide a deux bases disques et une surface latérale courbe, c'est un cylindre. Vérifie si l'axe est perpendiculaire aux bases pour dire « cylindre de révolution » ou « cylindre droit ». Cette rigueur dans le vocabulaire évite bien des erreurs par la suite."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Bases",
+                "Faces latérales",
+                "Particularité"
+              ],
+              "rows": [
+                [
+                  "Prisme droit",
+                  "Polygones identiques",
+                  "Rectangles",
+                  "Arêtes latérales \\perp bases"
+                ],
+                [
+                  "Pavé droit",
+                  "Rectangles",
+                  "Rectangles",
+                  "6 faces rectangles"
+                ],
+                [
+                  "Cube",
+                  "Carrés",
+                  "Carrés",
+                  "12 arêtes égales"
+                ],
+                [
+                  "Cylindre de révolution",
+                  "Disques",
+                  "Surface courbe",
+                  "Axe \\perp bases"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les solides suivants, lesquels sont des prismes droits ? Un cube, une pyramide à base carrée, un pavé droit, un cylindre, un prisme à base pentagonale dont les arêtes latérales sont perpendiculaires à la base.",
+              "answer": "Le cube, le pavé droit et le prisme à base pentagonale (arêtes latérales perpendiculaires aux bases) sont des prismes droits. La pyramide n'a qu'une base. Le cylindre n'est pas un polyèdre (surface courbe).",
+              "hint": "Rappelle-toi la définition : deux bases parallèles congruentes, faces latérales parallélogrammes (rectangles pour un prisme droit). Le cylindre a des bases disques mais une surface latérale courbe.",
+              "explanation": "Le cube et le pavé droit sont des cas particuliers de prismes droits (bases carrées ou rectangulaires). Le prisme pentagonal décrit a des arêtes latérales perpendiculaires aux bases, donc c'est un prisme droit. La pyramide n'a qu'une base. Le cylindre n'est pas un prisme car ce n'est pas un polyèdre."
+            },
+            {
+              "question": "Un cylindre de révolution a une hauteur de $12\\,cm$ et un rayon de base de $5\\,cm$. Quelle est la largeur du rectangle obtenu en développant sa surface latérale ?",
+              "answer": "La largeur du rectangle est égale au périmètre de la base : $2 \\times \\pi \\times 5 = 10\\pi \\approx 31,4\\,cm$.",
+              "hint": "La surface latérale d'un cylindre de révolution se développe en un rectangle. La hauteur du rectangle est la hauteur du cylindre. La largeur du rectangle est la circonférence du disque de base.",
+              "explanation": "Formule de la circonférence : $C = 2\\pi r$. Ici $r=5$, donc $C = 10\\pi \\,cm$. C'est la longueur du côté du rectangle qui correspond au tour de la base."
+            },
+            {
+              "question": "On coupe un prisme droit à base triangulaire par un plan parallèle à ses bases. La base est un triangle rectangle de côtés $3\\,cm$ et $4\\,cm$. Quelle est la nature et les dimensions de la section obtenue ?",
+              "answer": "La section est un triangle rectangle isométrique à la base : ses côtés mesurent $3\\,cm$ et $4\\,cm$ (l'hypoténuse fait $5\\,cm$).",
+              "hint": "Propriété fondamentale : toute section d'un prisme (ou cylindre) par un plan parallèle aux bases est une figure identique aux bases (même forme, mêmes dimensions).",
+              "explanation": "Le plan de coupe est parallèle aux bases. La section est donc un triangle identique à la base du prisme. On recopie simplement les mesures de la base : triangle rectangle, côtés de l'angle droit $3$ et $4$."
+            },
+            {
+              "question": "Complète le tableau en associant chaque description au nom du solide correspondant.\\n1. Polyèdre à 6 faces carrées.\\n2. Solide à deux bases disques parallèles et surface latérale courbe, axe perpendiculaire aux bases.\\n3. Polyèdre à deux bases triangulaires parallèles et 3 faces latérales rectangulaires.\\n4. Polyèdre à deux bases rectangulaires parallèles et 4 faces latérales rectangulaires.",
+              "answer": "1. Cube. 2. Cylindre de révolution (ou cylindre droit). 3. Prisme droit à base triangulaire. 4. Pavé droit.",
+              "hint": "Utilise le vocabulaire précis : nombre et forme des bases, nature des faces latérales (planes ou courbes), angles droits.",
+              "explanation": "1. 6 faces carrées = Cube. 2. Bases disques + surface courbe + axe perpendiculaire = Cylindre de révolution. 3. 2 bases triangles + 3 faces latérales rectangles = Prisme droit triangulaire. 4. 2 bases rectangles + 4 faces latérales rectangles = Pavé droit."
+            }
+          ]
+        },
+        {
+          "title": "Patrons / vues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le patron : déplier un solide pour le voir à plat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà sans doute ouvert une boîte en carton pour la ranger à plat : tu as réalisé le **patron** de cette boîte. Un patron est une figure plane, composée de toutes les faces du solide, disposées de telle sorte qu'en les repliant le long des arêtes communes, on reconstitue exactement le solide de départ. C'est une compétence essentielle : passer de la 3D à la 2D et inversement. Pour un prisme droit, le patron est facile à imaginer : on « déplie » les faces latérales rectangulaires les unes à côté des autres, comme un rideau qu'on ouvrirait, et on attache les deux bases (polygones identiques) de part et d'autre de cette bande de rectangles. L'ordre des faces latérales doit respecter l'ordre des côtés de la base."
+            },
+            {
+              "type": "definition",
+              "term": "Patron d'un solide",
+              "definition": "Figure plane obtenue en coupant le solide le long de certaines arêtes et en l'aplatissant. En repliant le patron, on retrouve le solide initial.",
+              "example": "Le patron d'un cube est formé de 6 carrés joints par les côtés. Il existe 11 patrons différents pour un cube."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges classiques ! Un patron valide ne doit pas avoir de faces qui se chevauchent une fois repliées. Toutes les arêtes du solide doivent correspondre à un trait de pli sur le patron, et deux faces qui partagent une arête dans le solide doivent partager un côté dans le patron. Pour un prisme droit à base triangulaire, le patron comportera 2 triangles (les bases) et 3 rectangles (faces latérales). La largeur de chaque rectangle est la hauteur du prisme ; la longueur de chaque rectangle correspond à la longueur d'un côté du triangle de base. Vérifie toujours que le périmètre de la base est égal à la somme des longueurs des rectangles accolés."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Patr. prisme droit : } 2 \\times \\text{Base} + \\text{bande de rectangles (hauteur } h \\text{, largeurs = c\\^ot\\'es base)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le patron du cylindre : un rectangle et deux disques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le cylindre de révolution, la logique est la même mais la surface latérale est courbe. Imagine que tu coupes verticalement la surface latérale le long d'une génératrice et que tu l'aplatis : tu obtiens un **rectangle**. La hauteur de ce rectangle est exactement la hauteur $h$ du cylindre. Sa longueur, en revanche, est égale au tour du disque de base, c'est-à-dire la circonférence $2\\pi r$. Les deux bases (les disques) sont placés de part et d'autre de ce rectangle, généralement l'un sur un grand côté, l'autre sur l'autre grand côté, ou bien tous les deux du même côté. Un point crucial : le centre des disques n'est pas forcément sur le bord du rectangle dans le patron, mais lorsqu'on replie, les centres s'alignent sur l'axe du cylindre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cela crée un lien direct entre les dimensions du patron et les dimensions du solide. Si on te donne un patron avec un rectangle de $20\\,cm$ sur $10\\,cm$ et deux disques de rayon $r$, tu peux déduire que la hauteur du cylindre est $10\\,cm$ (ou $20\\,cm$ selon l'orientation) et que $2\\pi r = 20\\,cm$ (ou $10\\,cm$), ce qui te permet de calculer $r$. Réciproquement, si on te demande de tracer le patron d'un cylindre de hauteur $8\\,cm$ et de rayon $3\\,cm$, tu sais que tu dois tracer un rectangle de $8\\,cm$ sur $2\\pi \\times 3 \\approx 18,8\\,cm$ et deux cercles de rayon $3\\,cm$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Patron cylindre : Rectangle } (h \\times 2\\pi r) \\text{ + 2 disques de rayon } r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les vues : voir le solide sous tous les angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un architecte ne dessine pas une maison en 3D sur son plan ; il donne la **vue de face**, la **vue de profil** (gauche ou droite) et la **vue de dessus** (aussi appelée **plan**). Ces trois vues orthogonales (projections parallèles sur des plans perpendiculaires) suffisent à définir complètement la forme d'un solide simple. C'est le langage technique universel de l'industrie et du bâtiment. Pour un prisme droit posé sur sa base, la vue de dessus montre exactement la forme de la base. La vue de face et la vue de profil montrent des rectangles (la hauteur du prisme sur la largeur ou la profondeur de la base). Pour un cylindre de révolution posé sur sa base, la vue de dessus est un cercle (le disque du dessus), la vue de face et la vue de profil sont des rectangles de même hauteur que le cylindre et de largeur égale au diamètre $2r$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Vue de dessus",
+                "Vue de face",
+                "Vue de profil"
+              ],
+              "rows": [
+                [
+                  "Pavé droit ($L, l, h$)",
+                  "Rectangle $L \\times l$",
+                  "Rectangle $L \\times h$",
+                  "Rectangle $l \\times h$"
+                ],
+                [
+                  "Cylindre révolution ($r, h$)",
+                  "Cercle rayon $r$",
+                  "Rectangle $2r \\times h$",
+                  "Rectangle $2r \\times h$"
+                ],
+                [
+                  "Prisme droit base triangle",
+                  "Triangle (base)",
+                  "Rectangle (hauteur $\\times$ base triangle)",
+                  "Rectangle (hauteur $\\times$ côté triangle)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exercice classique consiste à associer un solide à ses trois vues, ou à reconstituer le solide à partir des vues. Il faut être très attentif aux dimensions : sur la vue de face, on voit la hauteur et la largeur ; sur la vue de profil, la hauteur et la profondeur ; sur la vue de dessus, la largeur et la profondeur (sans la hauteur). Les traits cachés (arêtes qu'on ne voit pas car elles sont derrière) sont souvent représentés en pointillés sur les vues techniques, mais en 5e on se contente souvent des traits visibles. C'est un excellent entraînement à la vision spatiale : essaie de visualiser l'objet dans ta tête en tournant autour."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer du patron aux vues et inversement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces deux représentations (patron et vues) sont complémentaires. Le patron montre **toutes les faces** développées, avec leurs vraies formes et leurs vraies dimensions, et comment elles sont connectées. Les vues montrent **l'apparence extérieure** depuis trois directions principales, mais masquent l'arrière et l'intérieur. Si tu as le patron d'un prisme, tu peux facilement deviner ses vues : la vue de dessus est la forme de la base ; les vues de face/profil sont des rectangles dont un côté est la hauteur du prisme (hauteur des rectangles du patron) et l'autre côté est une dimension de la base. Inversement, si tu as les trois vues cotées, tu peux reconstruire le patron : tu connais la forme de la base (vue de dessus), la hauteur (vue de face ou profil), et les longueurs des côtés de la base (grâce aux largeurs visibles sur les vues de face et profil). C'est un aller-retour constant entre 2D et 3D qui structure ta pensée géométrique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "De vues vers patron (prisme droit)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Identifie la base sur la vue de dessus. 2. La hauteur = hauteur sur vue de face/profil. 3. Les longueurs des rectangles latéraux = longueurs des côtés de la base (vus sur vue de face/profil). 4. Assemble : bande de rectangles (hauteur $h$, largeurs = côtés base) + 2 bases aux extrémités."
+                    }
+                  ]
+                },
+                {
+                  "title": "De patron vers vues (cylindre)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Hauteur $h$ = hauteur du rectangle. 2. Rayon $r$ = rayon des disques. 3. Vue de dessus = cercle rayon $r$. 4. Vues face/profil = rectangle $h \\times 2r$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici le patron d'un prisme droit à base triangulaire. La bande de trois rectangles mesure $15\\,cm$ de long au total et $8\\,cm$ de haut. Les deux bases sont des triangles de périmètre $15\\,cm$. Quelle est la hauteur du prisme ? Quelle est la longueur de chaque côté du triangle si le triangle est équilatéral ?",
+              "answer": "Hauteur du prisme = $8\\,cm$ (hauteur des rectangles). Côté du triangle équilatéral = $15 / 3 = 5\\,cm$.",
+              "hint": "La hauteur du prisme correspond à la hauteur des rectangles latéraux. Le périmètre de la base est égal à la longueur totale de la bande de rectangles.",
+              "explanation": "Dans le patron d'un prisme droit, les rectangles latéraux ont pour hauteur la hauteur du prisme (ici $8\\,cm$). Leur largeur respective correspond aux longueurs des côtés de la base. La somme des largeurs (longueur totale de la bande) est le périmètre de la base ($15\\,cm$). Triangle équilatéral $\\rightarrow$ 3 côtés égaux $\\rightarrow 15/3 = 5\\,cm$."
+            },
+            {
+              "question": "On veut tracer le patron d'un cylindre de révolution de hauteur $10\\,cm$ et de rayon $4\\,cm$. Quelles sont les dimensions du rectangle central ? (Donne une valeur approchée au dixième pour la longueur).",
+              "answer": "Hauteur du rectangle = $10\\,cm$. Longueur du rectangle = $2 \\times \\pi \\times 4 \\approx 25,1\\,cm$.",
+              "hint": "Le rectangle du patron a pour dimensions : hauteur du cylindre et circonférence de la base ($2\\pi r$).",
+              "explanation": "Hauteur conservée : $h = 10\\,cm$. Longueur = tour du disque = $2\\pi r = 8\\pi \\approx 25,13 \\rightarrow 25,1\\,cm$. Les deux disques de rayon $4\\,cm$ s'attachent sur les grands côtés."
+            },
+            {
+              "question": "Un solide a pour vue de face un rectangle de $6\\,cm$ sur $4\\,cm$, pour vue de profil un rectangle de $6\\,cm$ sur $4\\,cm$, et pour vue de dessus un carré de $4\\,cm$ de côté. De quel solide s'agit-il ? Donne ses dimensions.",
+              "answer": "C'est un pavé droit (ou prisme droit à base carrée). Dimensions : largeur $4\\,cm$, profondeur $4\\,cm$, hauteur $6\\,cm$.",
+              "hint": "La vue de dessus donne la forme de la base (carré $4\\times4$). La hauteur se lit sur les vues de face/profil (côté $6\\,cm$). Les deux autres côtés des rectangles face/profil donnent les dimensions de la base.",
+              "explanation": "Vue de dessus = carré $4\\,cm$ $\\rightarrow$ base carrée de côté $4$. Vues face/profil = rectangles $6 \\times 4$. Le côté $6$ est commun $\\rightarrow$ hauteur $=6$. L'autre côté $4$ correspond au côté de la base. Donc pavé droit $4 \\times 4 \\times 6$."
+            },
+            {
+              "question": "Le patron ci-contre (imagine un rectangle de $12\\,cm$ sur $5\\,cm$ avec deux cercles de rayon $r$ attachés sur les côtés de $12\\,cm$) correspond à un cylindre. La hauteur du cylindre est $5\\,cm$. Calcule le rayon $r$ des bases (valeur approchée au mm).",
+              "answer": "Le rectangle a pour longueur $12\\,cm$ (circonférence) et hauteur $5\\,cm$. $2\\pi r = 12 \\Rightarrow r = 12 / (2\\pi) = 6/\\pi \\approx 1,9\\,cm$.",
+              "hint": "Identifie quelle dimension du rectangle correspond à la hauteur du cylindre. L'autre dimension est la circonférence de la base. Utilise $C = 2\\pi r$.",
+              "explanation": "Les cercles sont sur les côtés de $12\\,cm$, donc la hauteur du cylindre est l'autre dimension du rectangle : $h=5\\,cm$. La longueur $12\\,cm$ est le développement de la base : $2\\pi r = 12$. Donc $r = 6/\\pi \\approx 1,91 \\rightarrow 1,9\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Volumes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le volume : combien d'espace à l'intérieur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le **volume** d'un solide, c'est la quantité d'espace qu'il occupe, ou la quantité de matière (sable, eau, grains) qu'il peut contenir. Pour le mesurer, on utilise un petit cube de référence : le **cube unité**. En 5e, l'unité de base est le **centimètre cube** ($cm^3$), c'est le volume d'un cube de $1\\,cm$ de côté. Si tu remplis une boîte avec des cubes de $1\\,cm^3$ sans laisser d'espace vide, le nombre de cubes utilisés est le volume de la boîte en $cm^3$. C'est une idée concrète : le volume est un **nombre** (sans unité « cube » dans le nombre, l'unité est $cm^3$). Pour un pavé droit de dimensions $L, l, h$ (en cm), on peut ranger $L$ cubes sur la longueur, $l$ sur la largeur, sur $h$ étages. Au total : $L \\times l \\times h$ cubes. D'où la formule fondamentale."
+            },
+            {
+              "type": "definition",
+              "term": "Volume",
+              "definition": "Mesure de l'espace occupé par un solide. Unité de base : le $cm^3$ (volume d'un cube de $1\\,cm$ de côté).",
+              "example": "Une boîte de $10\\,cm \\times 5\\,cm \\times 4\\,cm$ a un volume de $200\\,cm^3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{pav\\'e droit}} = L \\times l \\times h = A_{\\text{base}} \\times h"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque la deuxième écriture : $A_{\\text{base}} \\times h$. L'aire de la base ($L \\times l$) multipliée par la hauteur. Cette forme **$A_{\\text{base}} \\times h$** est la clé universelle : elle fonctionne pour **tout prisme droit** et pour **tout cylindre de révolution** ! Pourquoi ? Parce qu'on peut imaginer le solide comme une pile de tranches fines, toutes identiques à la base, empilées sur la hauteur $h$. L'aire de chaque tranche est l'aire de la base. Le volume est la somme des volumes des tranches : $A_{\\text{base}} + A_{\\text{base}} + \\dots$ ($h$ fois) = $A_{\\text{base}} \\times h$. C'est une justification intuitive du principe de Cavalieri, adapté au niveau 5e."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volume du prisme droit : aire de la base $\\times$ hauteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la formule magique $V = A_{\\text{base}} \\times h$. Pour un prisme droit, la base est un polygone : triangle, rectangle, losange, hexagone... Il faut donc savoir calculer l'aire de ce polygone (formules du cycle 3 : triangle $\\frac{b\\times h}{2}$, rectangle $L\\times l$, losange $\\frac{d_1\\times d_2}{2}$, etc.). Une fois l'aire de la base calculée, on multiplie par la **hauteur du prisme** (la distance entre les deux bases, c'est-à-dire la longueur des arêtes latérales). Attention : la hauteur du prisme n'est pas la hauteur du triangle de base ! Ne confonds pas la **hauteur du solide** (distance entre bases) et les **hauteurs des faces** (comme la hauteur du triangle qui sert de base). C'est l'erreur n°1 en 5e sur ce chapitre."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{prisme droit}} = A_{\\text{base}} \\times h_{\\text{prisme}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Triangle ? Rectangle ? Losange ? Autre polygone ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'aire de cette base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule adaptée (ex: $\\frac{b \\times h_{triangle}}{2}$). Unités : $cm^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier par la hauteur du prisme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$V = A_{\\text{base}} \\times h_{\\text{prisme}}$. Unités : $cm^3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volume du cylindre de révolution : $\\pi r^2 h$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le cylindre de révolution, la base est un **disque** de rayon $r$. L'aire de ce disque est $\\pi r^2$. En appliquant la même règle universelle ($V = A_{\\text{base}} \\times h$), on obtient immédiatement la formule star du chapitre : $V = \\pi r^2 h$. C'est élégant : le volume dépend du carré du rayon et de la hauteur. Si tu doubles le rayon, le volume est multiplié par $4$ (car $2^2=4$). Si tu doubles la hauteur, le volume double seulement. Cette formule vaut pour tout cylindre droit (circulaire). Vérifie toujours que tu as bien le **rayon** (et non le diamètre) et la **hauteur** (distance entre bases, pas la longueur d'une génératrice si le cylindre est oblique, mais en 5e c'est toujours droit)."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{cylindre}} = \\pi \\times r^2 \\times h"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas pratique fréquent : on te donne le **diamètre** $d$ au lieu du rayon. Rappelle-toi : $r = d/2$. Donc $r^2 = d^2/4$. La formule devient $V = \\pi \\frac{d^2}{4} h$. Autre situation : le solide est **composé**. Par exemple, un trou cylindrique percé dans un pavé droit. Le volume du solide restant = Volume(pavé) - Volume(cylindre). Ou bien un silo = cylindre + demi-sphère (mais la sphère n'est pas au programme 5e, on s'arrête aux compositions prisme/cylindre). La stratégie : découper le solide en morceaux simples, calculer chaque volume, additionner ou soustraire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Unités de volume et conversions : le piège des puissances de 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est un point technique qui fait perdre beaucoup de points : **les conversions de volume ne se font pas comme les conversions de longueur !** Pour les longueurs, $1\\,m = 10\\,dm = 100\\,cm = 1000\\,mm$ (facteur 10). Pour les **aires**, le facteur est $100$ ($1\\,m^2 = 100\\,dm^2$). Pour les **volumes**, le facteur est **$1000$** ($1\\,m^3 = 1000\\,dm^3 = 1\\,000\\,000\\,cm^3$). Pourquoi ? Parce que le volume a 3 dimensions. $1\\,m = 10\\,dm$, donc $1\\,m^3 = 10\\,dm \\times 10\\,dm \\times 10\\,dm = 1000\\,dm^3$. Il faut avancer de **3 cases** dans le tableau de conversion à chaque fois (et non 1 case comme pour les longueurs)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "$m^3$",
+                "$dm^3$",
+                "$cm^3$",
+                "$mm^3$"
+              ],
+              "rows": [
+                [
+                  "Symbole",
+                  "$m^3$",
+                  "$dm^3$",
+                  "$cm^3$",
+                  "$mm^3$"
+                ],
+                [
+                  "Rapport",
+                  "$1$",
+                  "$1\\,000$",
+                  "$1\\,000\\,000$",
+                  "$1\\,000\\,000\\,000$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce mémoire : **$1\\,dm^3 = 1\\,L$ (litre)**. C'est le lien crucial avec la vie quotidienne (bouteilles d'eau, bidons d'essence). $1\\,L = 1\\,dm^3 = 1000\\,cm^3 = 1000\\,mL$. Donc $1\\,cm^3 = 1\\,mL$. Si tu as un volume en $cm^3$, tu as directement le volume en $mL$. Pour passer en $L$, tu divises par $1000$ (3 cases vers la gauche). Exemple : un aquarium de $120\\,000\\,cm^3 = 120\\,dm^3 = 120\\,L$. Cette équivalence $cm^3 \\leftrightarrow mL$ et $dm^3 \\leftrightarrow L$ est à connaître par cœur, elle sert tout le temps au collège et au lycée."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,dm^3 = 1\\,L \\quad ; \\quad 1\\,cm^3 = 1\\,mL \\quad ; \\quad 1\\,m^3 = 1000\\,L = 1\\,kL"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes inverses : retrouver une dimension manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exercices ne demandent pas toujours de calculer le volume. Souvent, on te donne le volume et une ou deux dimensions, et tu dois retrouver la dimension manquante. C'est de la **résolution d'équation** simple, mais il faut bien identifier la formule à utiliser. Exemple : « Un cylindre a un volume de $500\\,cm^3$ et une hauteur de $10\\,cm$. Quel est son rayon ? » Tu écris $V = \\pi r^2 h$, tu remplaces $V$ et $h$ : $500 = \\pi \\times r^2 \\times 10$. Tu isoles $r^2$ : $r^2 = 500 / (10\\pi) = 50/\\pi$. Tu prends la racine carrée : $r = \\sqrt{50/\\pi} \\approx 3,99\\,cm$. La méthode est toujours la même : **Formule $\\rightarrow$ Remplacement $\\rightarrow$ Isolation de l'inconnue $\\rightarrow$ Calcul**. Ne saute pas l'étape d'écriture de la formule, elle structure ton raisonnement et évite les erreurs d'unités."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode : Recherche d'une dimension",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Écrire la formule du volume du solide concerné. 2. Remplacer les valeurs connues (volume, et dimensions données). 3. Isoler l'inconnue (diviser, racine carrée si $r^2$). 4. Calculer (arrondir si demandé). 5. Écrire la phrase réponse avec l'unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un prisme droit et un cylindre de révolution avec le vocabulaire précis (bases, faces latérales, arêtes, hauteur, rayon, génératrice).",
+                "Je sais reconnaître le patron d'un prisme droit ou d'un cylindre et en déduire les dimensions du solide (hauteur, périmètre base, rayon).",
+                "Je sais associer un solide à ses trois vues orthogonales (dessus, face, profil) et inversement.",
+                "Je connais et j'applique la formule universelle du volume : $V = A_{\\text{base}} \\times h$ pour tout prisme droit et tout cylindre droit.",
+                "Je sais calculer l'aire de la base selon sa forme (triangle, rectangle, disque, losange...).",
+                "Je gère les conversions d'unités de volume : je sais que $1\\,m^3 = 1000\\,dm^3 = 1\\,000\\,000\\,cm^3$ et que $1\\,dm^3 = 1\\,L$, $1\\,cm^3 = 1\\,mL$.",
+                "Je sais résoudre un problème inverse : retrouver une dimension (hauteur, rayon, côté base) connaissant le volume."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un prisme droit a une base en forme de triangle rectangle de côtés $6\\,cm$ et $8\\,cm$. Sa hauteur est de $10\\,cm$. Calcule son volume en $cm^3$.",
+              "answer": "Aire base = $(6 \\times 8) / 2 = 24\\,cm^2$. Volume = $24 \\times 10 = 240\\,cm^3$.",
+              "hint": "Calcule d'abord l'aire de la base triangulaire (formule triangle rectangle). Puis multiplie par la hauteur du prisme (pas la hauteur du triangle !).",
+              "explanation": "Base = triangle rectangle $\\rightarrow A = (b \\times h)/2 = (6 \\times 8)/2 = 24\\,cm^2$. Hauteur prisme = $10\\,cm$. $V = A_{\\text{base}} \\times h = 24 \\times 10 = 240\\,cm^3$."
+            },
+            {
+              "question": "Calcule le volume d'un cylindre de révolution de rayon $7\\,cm$ et de hauteur $15\\,cm$. Donne la valeur exacte (en fonction de $\\pi$) et une valeur approchée au $cm^3$ près.",
+              "answer": "Exact : $735\\pi\\,cm^3$. Approché : $2309\\,cm^3$ (car $735 \\times 3,1416 \\approx 2309,1$).",
+              "hint": "Formule : $V = \\pi r^2 h$. $r=7$, $h=15$. $r^2 = 49$. $V = \\pi \\times 49 \\times 15 = 735\\pi$. Pour l'approché, utilise $\\pi \\approx 3,14$ ou la touche $\\pi$ de la calculatrice.",
+              "explanation": "$r=7 \\rightarrow r^2=49$. $h=15$. $V = \\pi \\times 49 \\times 15 = 735\\pi\\,cm^3$. Valeur approchée : $735 \\times 3,14159... \\approx 2309,07 \\rightarrow 2309\\,cm^3$."
+            },
+            {
+              "question": "Un solide est formé d'un pavé droit de dimensions $20\\,cm \\times 10\\,cm \\times 10\\,cm$ dans lequel on a percé un trou cylindrique de rayon $3\\,cm$ sur toute la hauteur ($10\\,cm$). Calcule le volume de matière restante. (Valeur approchée au $cm^3$).",
+              "answer": "Volume pavé = $2000\\,cm^3$. Volume cylindre = $\\pi \\times 9 \\times 10 = 90\\pi \\approx 282,7\\,cm^3$. Reste = $2000 - 282,7 = 1717,3 \\approx 1717\\,cm^3$.",
+              "hint": "Volume total = Volume(pavé) - Volume(cylindre creusé). Le cylindre a la même hauteur que le pavé (10 cm).",
+              "explanation": "Pavé : $20 \\times 10 \\times 10 = 2000\\,cm^3$. Cylindre : $r=3, h=10 \\rightarrow V = \\pi \\times 9 \\times 10 = 90\\pi \\approx 282,74\\,cm^3$. Matière restante = $2000 - 90\\pi \\approx 1717,26 \\rightarrow 1717\\,cm^3$."
+            },
+            {
+              "question": "Convertis les volumes suivants :\\n1. $2,5\\,m^3$ en $dm^3$ et en $L$.\\n2. $4500\\,cm^3$ en $dm^3$ et en $L$.\\n3. $0,003\\,m^3$ en $cm^3$ et en $mL$.",
+              "answer": "1. $2500\\,dm^3 = 2500\\,L$. 2. $4,5\\,dm^3 = 4,5\\,L$. 3. $3000\\,cm^3 = 3000\\,mL = 3\\,L$.",
+              "hint": "Règle des 3 cases pour le volume. $1\\,m^3 = 1000\\,dm^3 = 1000\\,L$. $1\\,dm^3 = 1\\,L = 1000\\,cm^3 = 1000\\,mL$.",
+              "explanation": "1. $m^3 \\rightarrow dm^3$ : $\\times 1000$ (3 cases) $\\rightarrow 2500\\,dm^3 = 2500\\,L$. 2. $cm^3 \\rightarrow dm^3$ : $\\div 1000$ (3 cases gauche) $\\rightarrow 4,5\\,dm^3 = 4,5\\,L$. 3. $m^3 \\rightarrow cm^3$ : $\\times 1\\,000\\,000$ (6 cases) $\\rightarrow 3000\\,cm^3 = 3000\\,mL = 3\\,L$."
+            },
+            {
+              "question": "Un prisme droit à base carrée a un volume de $1250\\,cm^3$. La hauteur du prisme est de $10\\,cm$. Quelle est la longueur du côté du carré de base ?",
+              "answer": "Soit $c$ le côté. $A_{\\text{base}} = c^2$. $V = c^2 \\times 10 = 1250$. $c^2 = 125$. $c = \\sqrt{125} = 5\\sqrt{5} \\approx 11,2\\,cm$.",
+              "hint": "Utilise la formule $V = A_{\\text{base}} \\times h$. ICI $A_{\\text{base}} = c^2$. Isole $c^2$ puis prends la racine carrée.",
+              "explanation": "$V = A_{\\text{base}} \\times h \\Rightarrow 1250 = c^2 \\times 10 \\Rightarrow c^2 = 125 \\Rightarrow c = \\sqrt{125} = \\sqrt{25 \\times 5} = 5\\sqrt{5} \\approx 11,18 \\rightarrow 11,2\\,cm$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

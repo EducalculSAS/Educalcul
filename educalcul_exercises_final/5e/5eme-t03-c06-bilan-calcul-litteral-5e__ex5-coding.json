@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 394,
+  "_course_code": "5eme-t03-c06-bilan-calcul-litteral-5e",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Substituer, développer, réduire",
+  "title": "Algorithmes et calcul littéral : substitution, développement, réduction",
+  "blocks": [
+    {
+      "title": "Évaluer une expression par un algorithme",
+      "content": "On considère l'expression $E = 3x + 5$. Écris un algorithme (en langage naturel ou style Python) qui demande à l'utilisateur une valeur pour $x$, calcule la valeur de $E$ pour cette valeur, puis affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Demander la valeur de x\\n2. Lire x\\n3. Calculer E = 3 * x + 5\\n4. Afficher E\\n\\nVersion Python :\\nx = float(input(\"Entrez x : \"))\\nE = 3 * x + 5\\nprint(\"La valeur de E est :\", E)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit trois étapes principales : la saisie de la variable (input), le calcul littéral en remplaçant $x$ par sa valeur numérique (substitution), et l'affichage du résultat (output). En Python, `input` renvoie une chaîne de caractères, d'où la conversion `float` pour faire des calculs décimaux. L'opérateur `*` est obligatoire pour la multiplication.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de développement simple",
+      "content": "On veut programmer le développement de l'expression $D = 4 \\times (x + 2)$. Écris un algorithme qui prend $x$ en entrée, calcule la forme développée de $D$ (c'est-à-dire sans parenthèses) et affiche l'expression développée sous la forme \"ax + b\" avec les valeurs numériques de $a$ et $b$.",
+      "correctAnswer": "Algorithme :\\n1. Demander la valeur de x (optionnel, pour vérifier)\\n2. Calculer a = 4 * 1  (coefficient de x)\\n3. Calculer b = 4 * 2  (terme constant)\\n4. Afficher \"L'expression développée est :\", a, \"x + \", b\\n\\nVersion Python :\\n# Développement de 4(x + 2)\\na = 4 * 1\\nb = 4 * 2\\nprint(f\"Forme développée : {a}x + {b}\")\\n# Résultat affiché : 4x + 8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le développement utilise la distributivité : $k \\times (a + b) = k \\times a + k \\times b$. Ici, $k=4$, $a=x$ (coefficient 1) et $b=2$. L'algorithme calcule donc le nouveau coefficient de $x$ ($4 \\times 1 = 4$) et le nouveau terme constant ($4 \\times 2 = 8$). On affiche la structure $ax+b$ avec les valeurs calculées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet : développer et réduire",
+      "content": "On considère l'expression $F = 2 \\times (x + 3) + 5 \\times (x - 1)$. Écris un algorithme qui calcule la forme développée et réduite de $F$ (c'est-à-dire sous la forme $ax + b$), en détaillant les étapes : développement de chaque produit, puis regroupement des termes en $x$ et des nombres. L'algorithme affiche les coefficients $a$ et $b$ finaux.",
+      "correctAnswer": "Algorithme :\\n1. Développement du premier produit : 2*x + 2*3 -> 2x + 6\\n2. Développement du second produit : 5*x + 5*(-1) -> 5x - 5\\n3. Regroupement des termes en x : coeff_x = 2 + 5 = 7\\n4. Regroupement des constantes : const = 6 + (-5) = 1\\n5. Afficher \"Forme réduite :\", coeff_x, \"x + \", const\\n\\nVersion Python :\\n# Développement\\ncoeff_x_1 = 2 * 1\\nconst_1 = 2 * 3\\ncoeff_x_2 = 5 * 1\\nconst_2 = 5 * (-1)\\n# Réduction (regroupement)\\na = coeff_x_1 + coeff_x_2\\nb = const_1 + const_2\\nprint(f\"Forme développée et réduite : {a}x + {b}\")\\n# Résultat : 7x + 1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme combine développement et réduction. Étape 1 : On distribue les multiplicateurs 2 et 5. $2(x+3) = 2x+6$ et $5(x-1) = 5x-5$. Étape 2 : On réduit en ajoutant les coefficients de $x$ ($2+5=7$) et les nombres ($6+(-5)=1$). La forme finale est $7x+1$. La version Python montre comment stocker les résultats intermédiaires dans des variables avant la somme finale.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

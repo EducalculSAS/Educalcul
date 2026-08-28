@@ -1,0 +1,321 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.199375+00:00",
+  "id": 550,
+  "code": "1ere-generale-t02-c05",
+  "title": "Bilan - Information chiffrée",
+  "description": "Cours structuré Educalcul : Bilan - Information chiffrée.",
+  "subject": "Analyse de l'information chiffrée",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Analyse de l'information chiffrée",
+    "titre_du_cours": "Bilan - Information chiffrée",
+    "objectif_global": "Bilan - Information chiffrée",
+    "mini_lecons_imposees": [
+      "Calcul et lecture critique.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse de l'information chiffrée",
+      "lessons": [
+        {
+          "title": "Calcul et lecture critique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 1 : Les indicateurs de position et de dispersion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier atelier du bilan. Nous allons revoir ensemble les outils qui permettent de résumer une série de valeurs numériques, comme les notes d'un contrôle ou les températures d'une semaine. La moyenne, la médiane et l'écart-type sont les trois compagnons de route les plus fréquents. Imagine que tu as les notes de $30$ élèves : $12, 14, 9, 16, 11, 13, 15, 10, 14, 12, 13, 11, 14, 16, 9, 10, 12, 13, 14, 15, 11, 12, 13, 14, 10, 9, 16, 12, 11, 13$. Pour calculer la moyenne, on additionne toutes les notes et on divise par le nombre d'élèves. C'est une opération que tu connais bien, mais rappelons-la pour être sûr de ne rien laisser au hasard."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i"
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiane, elle, coupe la série en deux parts égales après avoir rangé les valeurs dans l'ordre croissant. Si le nombre de données est pair, on prend la moyenne des deux valeurs centrales. L'écart-type mesure la dispersion autour de la moyenne : plus il est grand, plus les notes sont éparpillées. Pour le comprendre, visualise un nuage de points autour d'un centre ; l'écart-type est comme le rayon moyen de ce nuage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les indicateurs de base sont remis en mémoire, nous allons voir comment ils s'illustrent dans des représentations graphiques. Les graphiques à barres et les tableaux de fréquences sont les supports les plus courants dans les médias et les rapports scolaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 2 : Lire un graphique à barres et un tableau de fréquences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un journal scolaire qui publie la répartition des notes au dernier devoir de mathématiques. Le graphique à barres montre, pour chaque intervalle de notes ($0$–$4$, $5$–$9$, $10$–$14$, $15$–$20$), le nombre d'élèves concernés. La hauteur de chaque barre est proportionnelle à l'effectif. Il est essentiel de vérifier l'échelle de l'axe vertical : une barre qui semble deux fois plus haute ne signifie pas nécessairement le double d'élèves si l'origine de l'axe n'est pas à zéro."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition des notes sur 30 élèves",
+              "bars": [
+                {
+                  "label": "0-4",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "5-9",
+                  "value": 5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "10-14",
+                  "value": 15,
+                  "tone": "blue"
+                },
+                {
+                  "label": "15-20",
+                  "value": 8,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de fréquences, quant à lui, présente les mêmes informations sous forme de lignes et de colonnes. Il permet de calculer rapidement la fréquence relative (effectif divisé par total) et la fréquence cumulée. Ces deux lectures sont complémentaires : le graphique donne une vue d'ensemble visuelle, le tableau offre la précision chiffrée pour les calculs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment extraire l'information d'un graphique et d'un tableau, il est temps d'aborder les pièges les plus fréquents : axes tronqués, échelles non linéaires, pourcentages sans base, ou encore la confusion entre corrélation et causalité. Savoir les repérer te rendra autonome face à n'importe quel document chiffré."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 3 : Repérer les pièges de présentation et communiquer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un graphique peut être techniquement exact mais visuellement trompeur. Par exemple, si l'axe des ordonnées commence à $10$ au lieu de $0$, une légère variation paraîtra spectaculaire. De même, un camembert dont les parts ne sont pas proportionnelles aux angles induit en erreur. La règle d'or : toujours vérifier l'origine des axes, l'unité des graduations et la légende. Pour communiquer tes propres résultats, privilégie des représentations simples, ajoute toujours l'échelle et cite la source des données."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la source et le contexte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Qui a produit le document ? Quel est l'objectif affiché ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Examiner les axes et les échelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'origine est-elle à zéro ? Les graduations sont-elles régulières ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la cohérence des calculs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les pourcentages somment-ils à $100\\%$ ? Les moyennes sont-elles plausibles ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Formuler une conclusion prudente",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évite les généralisations hâtives ; signale les limites de l'échantillon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète pour calculer, lire et critiquer une information chiffrée. La prochaine leçon te proposera de synthétiser tout cela sous forme de checklist personnelle, afin que tu puisses t'auto-évaluer avant chaque évaluation."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne, la médiane et l'écart-type de la série suivante : $5, 7, 9, 10, 12$.",
+              "answer": "Moyenne = $8,6$ ; Médiane = $9$ ; Écart-type ≈ $2,41$.",
+              "hint": "Pour l'écart-type, utilise la formule $\\sigma = \\sqrt{\\frac{1}{n}\\sum (x_i-\\overline{x})^2}$.",
+              "explanation": "On additionne les valeurs ($43$), on divise par $5$ pour la moyenne. La série triée donne la médiane $9$. Les écarts au carré sont $12,96 ; 2,56 ; 0,16 ; 1,96 ; 11,56$, leur somme $29,2$, divisée par $5$ donne $5,84$, racine carrée ≈ $2,41$."
+            },
+            {
+              "question": "Le graphique ci-dessous montre la répartition des notes. Quelle est la fréquence relative de la classe $10$–$14$ ?",
+              "answer": "0,5 (soit 50 %).",
+              "hint": "Divise l'effectif de la classe par le total des effectifs ($30$).",
+              "explanation": "La barre $10$–$14$ a une hauteur de $15$ élèves. $15/30 = 0,5$."
+            },
+            {
+              "question": "Un article affiche un graphique à barres dont l'axe vertical commence à $80$ au lieu de $0$. Les barres semblent doubler de hauteur entre deux mois. Quel piège cela représente-t-il ?",
+              "answer": "Axe tronqué qui exagère visuellement la variation.",
+              "hint": "Regarde la valeur de l'origine de l'axe des ordonnées.",
+              "explanation": "Comme l'axe ne part pas de zéro, la hauteur relative des barres ne reflète pas la proportion réelle des valeurs. Une variation de $85$ à $90$ paraîtra énorme alors qu'elle ne représente qu'environ $6\\%$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 1 : Récapitulation des outils statistiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de synthèse, nous reprenons les notions majeures abordées tout au long du module : indicateurs de position (moyenne, médiane, quartiles), indicateurs de dispersion (étendue, écart-type, interquartile), représentations graphiques (boîte à moustaches, histogramme, nuage de points) et lecture critique. Chaque outil a son domaine de prédilection : la médiane résiste aux valeurs extrêmes, l'écart-type quantifie la variabilité autour de la moyenne, la boîte à moustaches révèle la symétrie et les outliers. Pour les fixer durablement, il est utile de les associer à des situations concrètes : notes de classe, températures mensuelles, temps de trajet."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Outil",
+                "Ce qu'il mesure",
+                "Exemple d'usage"
+              ],
+              "rows": [
+                [
+                  "Moyenne",
+                  "Centre de gravité des données",
+                  "Note moyenne du devoir"
+                ],
+                [
+                  "Médiane",
+                  "Valeur centrale",
+                  "Revenu médian d'un quartier"
+                ],
+                [
+                  "Écart-type",
+                  "Dispersion autour de la moyenne",
+                  "Variabilité des temps de course"
+                ],
+                [
+                  "Boîte à moustaches",
+                  "Répartition complète (quartiles, extrêmes)",
+                  "Comparaison de deux séries de notes"
+                ]
+              ],
+              "caption": "Tableau de synthèse des principaux outils statistiques"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les outils sont rappelés, nous allons voir comment une situation dynamique peut être modélisée par une suite récurrente. C'est un pont vers l'analyse de l'évolution d'une information chiffrée dans le temps, comme l'évolution d'un indice boursier ou la croissance d'une population."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 2 : Modéliser une situation par une suite récurrente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons qu'un élève révise chaque semaine en augmentant son temps d'étude de $10\\%$ par rapport à la semaine précédente, en partant de $5$ heures. On obtient une suite $(u_n)$ définie par $u_0 = 5$ et $u_{n+1} = 1,1 \\times u_n$. Cette suite est géométrique de raison $1,1$. Pour visualiser sa convergence ou sa divergence, on peut tracer la toile d'araignée (cobweb) qui montre les itérations successives de la fonction $f(x)=1,1x$ par rapport à la bissectrice $y=x$."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "1.1*x",
+              "u0": 5,
+              "iterations": 6,
+              "xMin": 0,
+              "xMax": 15,
+              "caption": "Toile d'araignée pour la suite u_{n+1}=1,1 u_n"
+            },
+            {
+              "type": "paragraph",
+              "content": "La toile d'araignée permet de voir graphiquement que la suite diverge vers $+\\infty$ car la raison est supérieure à $1$. Si la raison était comprise entre $0$ et $1$, la suite convergerait vers $0$. Ce type de modélisation est fréquent en économie (intérêts composés) ou en biologie (croissance bactérienne)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce bilan, nous allons construire ensemble une checklist personnelle. L'idée est de lister les vérifications systématiques à effectuer face à tout document chiffré : source, définitions, échelles, calculs, interprétation. Cette checklist deviendra ton réflexe avant chaque contrôle ou lecture d'article."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sous-notion 3 : Construire sa checklist personnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commence par écrire sur une feuille les quatre grandes catégories : (1) Origine et fiabilité des données, (2) Choix des indicateurs et des graphiques, (3) Cohérence des calculs et des pourcentages, (4) Formulation des conclusions. Pour chaque catégorie, note deux ou trois questions précises. Par exemple : « L'échantillon est-il représentatif ? » ; « L'axe des ordonnées part-il de zéro ? » ; « Les pourcentages sont-ils calculés sur la même base ? » ; « La conclusion distingue-t-elle corrélation et causalité ? » Relis cette liste avant chaque évaluation pour t'assurer de ne rien oublier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant une vision d'ensemble solide et une méthode concrète pour aborder sereinement toute information chiffrée. Utilise ta checklist, entraîne-toi régulièrement et n'hésite pas à revenir sur les leçons précédentes pour consolider les points qui te semblent encore fragiles."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la moyenne, la médiane et l'écart-type d'une série statistique.",
+                "Je sais lire et interpréter un graphique à barres, un histogramme et une boîte à moustaches.",
+                "Je sais repérer les pièges visuels (axe tronqué, échelle non proportionnelle, camembert déformé).",
+                "Je sais modéliser une évolution simple par une suite récurrente et en tracer la toile d'araignée.",
+                "Je dispose d'une checklist personnelle pour vérifier la fiabilité d'un document chiffré."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la médiane et le premier quartile de la série : $3, 5, 7, 8, 9, 10, 12$.",
+              "answer": "Médiane = $8$ ; Q1 = $5$.",
+              "hint": "La série compte $7$ valeurs ; la médiane est la 4e. Q1 est la médiane des trois premières valeurs.",
+              "explanation": "Valeurs triées : $3,5,7,8,9,10,12$. Médiane = $8$. Pour Q1, on prend la moitié inférieure $3,5,7$, sa médiane est $5$."
+            },
+            {
+              "question": "Une suite est définie par $u_0=20$ et $u_{n+1}=0,8 u_n + 5$. Calcule $u_1$ et $u_2$.",
+              "answer": "$u_1 = 21$ ; $u_2 = 21,8$.",
+              "hint": "Applique la formule de récurrence deux fois.",
+              "explanation": "$u_1 = 0,8 \\times 20 + 5 = 16 + 5 = 21$. $u_2 = 0,8 \\times 21 + 5 = 16,8 + 5 = 21,8$."
+            },
+            {
+              "question": "Complète ta checklist personnelle en ajoutant une question pour la catégorie « Cohérence des calculs ».",
+              "answer": "Exemple : « Les totaux partiels correspondent-ils au total global affiché ? »",
+              "hint": "Pense aux erreurs d'addition ou de pourcentage qui ne somment pas à 100 %.",
+              "explanation": "Cette question permet de détecter rapidement une incohérence arithmétique dans un tableau ou un graphique."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

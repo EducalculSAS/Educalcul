@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 212,
+  "_course_code": "cm1-t01-c02-valeur-de-position-des-chiffres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Unités de numération",
+  "title": "Algorithmes sur les unités de numération",
+  "blocks": [
+    {
+      "title": "Extraction des chiffres d'un nombre",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui, à partir d'un nombre entier $n$ compris entre $0$ et $9999$, affiche la valeur de chaque unité de numération : milliers, centaines, dizaines et unités.",
+      "correctAnswer": "1. Calculer mille = partie entière de $n / 1000$.\\n2. Calculer reste1 = $n - mille \\times 1000$.\\n3. Calculer cent = partie entière de $reste1 / 100$.\\n4. Calculer reste2 = $reste1 - cent \\times 100$.\\n5. Calculer dix = partie entière de $reste2 / 10$.\\n6. Calculer unite = $reste2 - dix \\times 10$.\\n7. Afficher mille, cent, dix, unite.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division euclidienne successive par les puissances de dix pour isoler chaque chiffre. La partie entière donne le chiffre de l'unité courante, le reste sert à l'étape suivante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un nombre à partir de ses chiffres",
+      "content": "Écrire un algorithme qui, connaissant les quatre chiffres $m$ (milliers), $c$ (centaines), $d$ (dizaines) et $u$ (unités), calcule le nombre entier correspondant.",
+      "correctAnswer": "nombre = $m \\times 1000 + c \\times 100 + d \\times 10 + u$.\\nAfficher nombre.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque chiffre est multiplié par la valeur de son unité de numération (1000, 100, 10, 1) puis on additionne les produits pour reconstituer le nombre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de deux nombres par alignement des unités de numération",
+      "content": "Écrire un algorithme qui additionne deux nombres entiers $a$ et $b$ (chacun au plus $9999$) en procédant chiffre par chiffre de la droite vers la gauche, en gérant la retenue.",
+      "correctAnswer": "1. Initialiser retenue = 0.\\n2. Pour chaque position (unités, dizaines, centaines, milliers) faire :\\n   - chiffre_a = partie entière de $(a / 10^{position}) \\% 10$.\\n   - chiffre_b = partie entière de $(b / 10^{position}) \\% 10$.\\n   - somme = chiffre_a + chiffre_b + retenue.\\n   - chiffre_res = reste de la division de somme par 10.\\n   - retenue = partie entière de somme / 10.\\n   - Stocker chiffre_res.\\n3. Après la boucle, si retenue > 0, l'afficher comme nouveau chiffre de milliers.\\n4. Lire les chiffres stockés de gauche à droite pour obtenir le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme reproduit l'addition en colonnes : on additionne les chiffres de même poids, on garde l'unité du résultat et on transmet la dizaine (retenue) au rang supérieur. La boucle parcourt les quatre positions possibles.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

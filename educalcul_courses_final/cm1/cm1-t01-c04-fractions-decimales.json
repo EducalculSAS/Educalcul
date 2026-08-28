@@ -1,0 +1,444 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.143689+00:00",
+  "id": 214,
+  "code": "cm1-t01-c04",
+  "title": "Fractions décimales",
+  "description": "Cours structuré Educalcul : Fractions décimales.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Fractions décimales",
+    "objectif_global": "Fractions décimales",
+    "mini_lecons_imposees": [
+      "Dixièmes et centièmes.",
+      "Relier fraction et partage de l'unité.",
+      "Placer sur droite."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Dixièmes et centièmes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dixièmes : quand on partage en 10 parts égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande tablette de chocolat que tu veux partager équitablement avec 9 copains : vous êtes 10 au total. Tu casses la tablette en 10 parts identiques. Chacun reçoit exactement une de ces parts. En mathématiques, on appelle cette part un **dixième** et on l'écrit sous la forme d'une fraction : $\\frac{1}{10}$. Le chiffre du bas, le dénominateur, est 10 car l'unité (la tablette entière) a été coupée en 10 morceaux de la même taille. Si tu prends 3 parts, tu as $\\frac{3}{10}$ de la tablette, soit 3 dixièmes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 10
+                }
+              ],
+              "caption": "Une tablette partagée en 10 : 1 dixième et 3 dixièmes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centièmes : quand on divise un dixième en 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prenons un seul de ces dixièmes de tablette. Si on le coupe encore en 10 petits morceaux égaux, chaque tout petit morceau est un **centième** de la tablette originale. Comme il y a 10 dixièmes dans l'unité et que chaque dixième donne 10 centièmes, l'unité entière contient $10 \\times 10 = 100$ centièmes. On écrit un centième $\\frac{1}{100}$ : le dénominateur 100 montre qu'il faut 100 de ces parts pour reconstruire l'unité. C'est comme si tu avais une grille de 100 petites cases : une case représente $\\frac{1}{100}$ du tout."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 100,
+              "shape": "bar",
+              "caption": "Un centième : une toute fine tranche sur 100"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et écrire dixièmes et centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une fraction décimale, on dit le numérateur puis le nom du dénominateur : $\\frac{7}{10}$ se lit « sept dixièmes », $\\frac{45}{100}$ se lit « quarante-cinq centièmes ». Attention, $\\frac{10}{100}$ vaut exactement la même chose que $\\frac{1}{10}$ : 10 centièmes forment 1 dixième. On peut le voir en regroupant 10 petites cases de la grille en une seule bande. C'est une première équivalence qu'on retrouvera plus tard avec l'écriture décimale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{1}{10} = \\frac{10}{100}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir les deux premières fractions décimales : les dixièmes et les centièmes. Dans la prochaine leçon, on verra comment ces fractions racontent concrètement un partage de l'unité, comme couper un ruban ou verser de l'eau dans des verres identiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Colorie la fraction $\\frac{4}{10}$ sur une bande de 10 parties égales. Combien de parties restent non coloriées ?",
+              "answer": "6 parties",
+              "hint": "Il y a 10 parties au total. Si 4 sont coloriées, soustrais 4 de 10.",
+              "explanation": "La bande représente l'unité entière divisée en 10 dixièmes. Colorier 4 dixièmes laisse $10 - 4 = 6$ dixièmes non coloriés, soit $\\frac{6}{10}$."
+            },
+            {
+              "question": "Combien de centièmes y a-t-il dans $\\frac{3}{10}$ ?",
+              "answer": "30 centièmes",
+              "hint": "Un dixième vaut 10 centièmes. Multiplie le nombre de dixièmes par 10.",
+              "explanation": "$\\frac{3}{10} = \\frac{3 \\times 10}{10 \\times 10} = \\frac{30}{100}$. Il y a donc 30 centièmes dans 3 dixièmes."
+            },
+            {
+              "question": "Écris sous forme de fraction : « douze centièmes » et « huit dixièmes ».",
+              "answer": "$\\frac{12}{100}$ et $\\frac{8}{10}$",
+              "hint": "Le mot « centièmes » indique le dénominateur 100, « dixièmes » le dénominateur 10.",
+              "explanation": "« Douze centièmes » s'écrit $\\frac{12}{100}$ car le dénominateur est 100. « Huit dixièmes » s'écrit $\\frac{8}{10}$ car le dénominateur est 10."
+            }
+          ]
+        },
+        {
+          "title": "Relier fraction et partage de l'unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager 1 mètre de ruban en 10 : les dixièmes en action"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un ruban qui mesure exactement 1 mètre. Si je le coupe en 10 morceaux de même longueur, chaque morceau mesure 1 dixième de mètre. En fraction, c'est $\\frac{1}{10}$ m. Si je prends 4 morceaux, j'ai $\\frac{4}{10}$ m de ruban. Le partage de l'unité (le mètre) en 10 parts égales crée concrètement les dixièmes. C'est la même idée que la tablette de chocolat, mais avec une longueur au lieu d'une surface."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Morceau 1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 2",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Morceau 3",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 4",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Morceau 5",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 6",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Morceau 7",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 8",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Morceau 9",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 10",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ],
+              "caption": "1 mètre partagé en 10 parties égales : chaque partie vaut 1/10 m"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Verser 1 litre d'eau dans 100 verres : les centièmes en action"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine maintenant une carafe qui contient exactement 1 litre d'eau. Tu as 100 petits verres identiques et tu verses l'eau de façon à remplir tous les verres au même niveau. Chaque verre reçoit 1 centième de litre, soit $\\frac{1}{100}$ L. Si tu bois 25 verres, tu as bu $\\frac{25}{100}$ L. Le partage de l'unité (le litre) en 100 parts égales donne les centièmes. Remarque : 10 verres réunis forment exactement 1 dixième de litre, car $10 \\times \\frac{1}{100} = \\frac{10}{100} = \\frac{1}{10}$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 10,
+                  "denominator": 100
+                }
+              ],
+              "caption": "10 centièmes (10 verres) forment 1 dixième"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le dénominateur raconte le nombre de parts du partage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une fraction décimale, le dénominateur (le nombre du bas) est toujours 10, 100, 1000... Il nous dit en combien de parts égales l'unité a été divisée. Le numérateur (le nombre du haut) compte combien de ces parts on prend. Par exemple, $\\frac{7}{100}$ signifie : l'unité est coupée en 100 parts (centièmes) et on en prend 7. C'est le lien précis entre la fraction et le partage concret : $\\frac{\\text{parts prises}}{\\text{total des parts}}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{\\text{parts prises}}{\\text{total des parts}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant vu comment les fractions dixièmes et centièmes naissent d'un partage réel : couper un ruban, verser de l'eau, diviser une surface. La prochaine leçon nous emmènera sur une droite graduée pour y placer ces fractions et voir leur ordre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un ruban de 1 m est coupé en 10 morceaux égaux. Quelle fraction de mètre mesure 3 morceaux réunis ?",
+              "answer": "$\\frac{3}{10}$ m",
+              "hint": "Chaque morceau vaut 1/10 m. Additionne 3 fois 1/10.",
+              "explanation": "Chaque morceau est un dixième de mètre. Trois morceaux font $3 \\times \\frac{1}{10} = \\frac{3}{10}$ m."
+            },
+            {
+              "question": "Une carafe de 1 L remplit 100 verres. Quelle fraction de litre contiennent 50 verres ?",
+              "answer": "$\\frac{50}{100}$ L",
+              "hint": "Chaque verre est 1/100 L. Multiplie 50 par 1/100.",
+              "explanation": "50 verres correspondent à 50 centièmes de litre, soit $\\frac{50}{100}$ L. On peut aussi simplifier en $\\frac{1}{2}$ L, mais la fraction décimale garde le dénominateur 100."
+            },
+            {
+              "question": "Complète : « Dans la fraction $\\frac{7}{100}$, le dénominateur 100 indique que l'unité a été divisée en ___ parts égales, et le numérateur 7 indique qu'on en a pris ___ . »",
+              "answer": "100 ; 7",
+              "hint": "Relis la phrase : le dénominateur donne le total des parts, le numérateur le nombre de parts prises.",
+              "explanation": "Le dénominateur 100 signifie 100 parts au total (centièmes). Le numérateur 7 signifie 7 parts prises."
+            }
+          ]
+        },
+        {
+          "title": "Placer sur droite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La droite graduée de 0 à 1 : placer les dixièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessine une droite horizontale. Place un point à gauche et nomme-le 0, un point à droite et nomme-le 1. L'espace entre 0 et 1 représente l'unité entière. Pour placer les dixièmes, divise cet espace en 10 segments de même longueur. Le premier trait après 0 correspond à $\\frac{1}{10}$, le deuxième à $\\frac{2}{10}$, ... le neuvième à $\\frac{9}{10}$, et le point 1 correspond à $\\frac{10}{10}$. Chaque trait marque un dixième de plus. C'est comme une règle qui ne montrerait que les graduations des dixièmes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite des dixièmes de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.1,
+                  "label": "1/10"
+                },
+                {
+                  "value": 0.2,
+                  "label": "2/10"
+                },
+                {
+                  "value": 0.3,
+                  "label": "3/10"
+                },
+                {
+                  "value": 0.4,
+                  "label": "4/10"
+                },
+                {
+                  "value": 0.5,
+                  "label": "5/10"
+                },
+                {
+                  "value": 0.6,
+                  "label": "6/10"
+                },
+                {
+                  "value": 0.7,
+                  "label": "7/10"
+                },
+                {
+                  "value": 0.8,
+                  "label": "8/10"
+                },
+                {
+                  "value": 0.9,
+                  "label": "9/10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Zoomer sur un dixième : apparaître les centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde maintenant l'intervalle entre 0 et $\\frac{1}{10}$. Si on le divise à son tour en 10 minuscules parties égales, on obtient les centièmes. Le premier petit trait vaut $\\frac{1}{100}$, le deuxième $\\frac{2}{100}$, ... le dixième petit trait tombe exactement sur $\\frac{10}{100}$ qui est aussi $\\frac{1}{10}$. Ainsi, entre deux dixièmes consécutifs, il y a 9 centièmes intermédiaires. Sur une droite graduée complète des centièmes, on verrait 100 petits segments entre 0 et 1."
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom entre 0 et 1/10 : les centièmes",
+              "min": 0,
+              "max": 0.1,
+              "points": [
+                {
+                  "value": 0.01,
+                  "label": "1/100"
+                },
+                {
+                  "value": 0.02,
+                  "label": "2/100"
+                },
+                {
+                  "value": 0.03,
+                  "label": "3/100"
+                },
+                {
+                  "value": 0.04,
+                  "label": "4/100"
+                },
+                {
+                  "value": 0.05,
+                  "label": "5/100"
+                },
+                {
+                  "value": 0.06,
+                  "label": "6/100"
+                },
+                {
+                  "value": 0.07,
+                  "label": "7/100"
+                },
+                {
+                  "value": 0.08,
+                  "label": "8/100"
+                },
+                {
+                  "value": 0.09,
+                  "label": "9/100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer et ordonner : qui est le plus grand ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, plus un nombre est à droite, plus il est grand. Donc $\\frac{3}{10}$ est plus grand que $\\frac{2}{10}$ car il est placé plus à droite. Pour comparer un dixième et un centième, on peut les ramener au même dénominateur : $\\frac{3}{10} = \\frac{30}{100}$. Alors $\\frac{30}{100} > \\frac{25}{100}$, donc $\\frac{3}{10} > \\frac{25}{100}$. La droite nous donne une image visuelle de cet ordre : les centièmes sont plus précis, ils se glissent entre les dixièmes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{3}{10} = \\frac{30}{100} > \\frac{25}{100}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant placer les dixièmes et les centièmes sur une droite graduée, zoomer pour voir les centièmes entre deux dixièmes, et comparer leurs positions. Ce cours sur les fractions décimales est terminé : tu as découvert les dixièmes et centièmes, tu les as liés au partage concret de l'unité, et tu sais les situer sur une droite. Tu es prêt pour la suite : l'écriture décimale !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer et écrire un dixième ($\\frac{1}{10}$) et un centième ($\\frac{1}{100}$).",
+                "Je comprends qu'une fraction décimale représente un partage de l'unité en 10, 100... parts égales.",
+                "Je sais placer $\\frac{3}{10}$ et $\\frac{25}{100}$ sur une droite graduée de 0 à 1.",
+                "Je sais comparer deux fractions décimales en les ramenant au même dénominateur ou en utilisant la droite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite de 0 à 1 graduée en dixièmes, place un point au niveau de $\\frac{7}{10}$. Combien de graduations séparent 0 de ce point ?",
+              "answer": "7 graduations",
+              "hint": "Compte les traits à partir de 0 : le premier est 1/10, le deuxième 2/10, ...",
+              "explanation": "Chaque graduation correspond à un dixième. Pour atteindre 7/10, on passe 7 graduations après 0."
+            },
+            {
+              "question": "Entre $\\frac{4}{10}$ et $\\frac{5}{10}$, combien y a-t-il de centièmes ? Donne le premier et le dernier centième de cet intervalle.",
+              "answer": "Il y a 9 centièmes : le premier est $\\frac{41}{100}$, le dernier $\\frac{49}{100}$.",
+              "hint": "4/10 = 40/100 et 5/10 = 50/100. Les centièmes entre 40 et 50 sont 41, 42, ..., 49.",
+              "explanation": "L'intervalle entre deux dixièmes consécutifs contient 9 centièmes. Ici, de 41/100 à 49/100 inclus."
+            },
+            {
+              "question": "Compare $\\frac{6}{10}$ et $\\frac{58}{100}$ en utilisant le signe $>$ ou $<$.",
+              "answer": "$\\frac{6}{10} > \\frac{58}{100}$",
+              "hint": "Transforme 6/10 en centièmes : multiplie le numérateur et le dénominateur par 10.",
+              "explanation": "$\\frac{6}{10} = \\frac{60}{100}$. Comme $60 > 58$, on a $\\frac{60}{100} > \\frac{58}{100}$, donc $\\frac{6}{10} > \\frac{58}{100}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

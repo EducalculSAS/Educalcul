@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Tableaux d'effectifs",
+  "title": "Quiz : Tableaux d'effectifs - Application",
+  "questions": [
+    {
+      "text": "Dans un tableau d'effectifs, que représente la colonne 'Effectif' ?",
+      "options": [
+        "La valeur de la donnée",
+        "Le nombre de fois où la donnée apparaît",
+        "La somme des données",
+        "La moyenne des données"
+      ],
+      "correctAnswer": "Le nombre de fois où la donnée apparaît",
+      "explanation": "La colonne 'Effectif' indique combien de fois chaque valeur a été observée, c'est-à-dire sa fréquence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le tableau ci-dessous. Combien d'élèves ont choisi la couleur bleue ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$3$",
+        "$11$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Dans le tableau, la ligne 'Bleu' a un effectif de $8$, ce qui correspond au nombre d'élèves ayant choisi cette couleur.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "5"
+          ],
+          [
+            "Bleu",
+            "8"
+          ],
+          [
+            "Vert",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Quel est le nombre total d'élèves interrogés dans ce tableau ?",
+      "options": [
+        "$13$",
+        "$16$",
+        "$18$",
+        "$20$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "On additionne les effectifs : $5 + 8 + 3 = 16$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la couleur la plus choisie (le mode) ?",
+      "options": [
+        "Rouge",
+        "Bleu",
+        "Vert",
+        "Il y a égalité"
+      ],
+      "correctAnswer": "Bleu",
+      "explanation": "L'effectif le plus grand est $8$ pour la couleur bleue.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si un nouvel élève choisit la couleur verte, quel sera le nouvel effectif pour le vert ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "L'effectif initial pour le vert est $3$, en ajoutant un élève on obtient $3 + 1 = 4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

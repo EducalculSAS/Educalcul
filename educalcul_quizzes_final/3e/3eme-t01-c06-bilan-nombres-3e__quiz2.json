@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 460,
+  "_course_code": "3eme-t01-c06-bilan-nombres-3e",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Checklist",
+  "title": "Bilan Nombres 3e - Checklist des compétences",
+  "questions": [
+    {
+      "text": "Parmi les écritures suivantes, laquelle correspond à la notation scientifique normalisée du nombre 5000 ?",
+      "options": [
+        "$0.5 \\times 10^4$",
+        "$5 \\times 10^3$",
+        "$50 \\times 10^2$",
+        "$5000$"
+      ],
+      "correctAnswer": "$5 \\times 10^3$",
+      "explanation": "La notation scientifique normalisée s'écrit sous la forme $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier relatif. Pour 5000, on décale la virgule de 3 rangs vers la gauche pour obtenir $5$, ce qui donne $5 \\times 10^3$. Les options A et C ne respectent pas la condition sur $a$, et l'option D n'est pas une écriture scientifique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie l'expression $ \\frac{(2^3)^2 \\times 2^{-4}}{2^{-1}} $.",
+      "options": [
+        "$2^2$",
+        "$2^3$",
+        "$2^4$",
+        "$2^5$"
+      ],
+      "correctAnswer": "$2^3$",
+      "explanation": "On applique les lois des puissances : $(2^3)^2 = 2^{3 \\times 2} = 2^6$. Au numérateur : $2^6 \\times 2^{-4} = 2^{6+(-4)} = 2^2$. À la division : $\\frac{2^2}{2^{-1}} = 2^{2-(-1)} = 2^3$. La réponse est donc $2^3$ (soit 8).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sous sa forme la plus simple, l'expression $ \\sqrt{75} - \\sqrt{27} $ est égale à :",
+      "options": [
+        "$2\\sqrt{3}$",
+        "$3\\sqrt{3}$",
+        "$4\\sqrt{3}$",
+        "$8\\sqrt{3}$"
+      ],
+      "correctAnswer": "$2\\sqrt{3}$",
+      "explanation": "On simplifie chaque racine : $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$ et $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$. La soustraction donne $5\\sqrt{3} - 3\\sqrt{3} = 2\\sqrt{3}$. L'erreur fréquente serait d'additionner les coefficients (donnant $8\\sqrt{3}$) ou de mal décomposer les radicandes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La factorisation de l'expression $ 9x^2 - 25 $ donne :",
+      "options": [
+        "$(3x - 5)^2$",
+        "$(3x + 5)(3x - 5)$",
+        "$(9x - 5)(x + 5)$",
+        "$(3x + 5)^2$"
+      ],
+      "correctAnswer": "$(3x + 5)(3x - 5)$",
+      "explanation": "L'expression $9x^2 - 25$ est une différence de deux carrés : $(3x)^2 - 5^2$. L'identité remarquable $a^2 - b^2 = (a-b)(a+b)$ donne $(3x-5)(3x+5)$. L'option A correspond au développement de $(3x-5)^2 = 9x^2 - 30x + 25$, ce qui est différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fraction $ \\frac{156}{234} $. Après simplification par leur PGCD, on obtient la fraction irréductible :",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{78}{117}$",
+        "$\\frac{12}{18}$",
+        "$\\frac{26}{39}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "On décompose en facteurs premiers : $156 = 2^2 \\times 3 \\times 13$ et $234 = 2 \\times 3^2 \\times 13$. Le PGCD est $2 \\times 3 \\times 13 = 78$. En divisant numérateur et dénominateur par 78 : $156 \\div 78 = 2$ et $234 \\div 78 = 3$. La fraction irréductible est $\\frac{2}{3}$. Les autres options sont des simplifications partielles (par 2, 6 ou 13) mais pas par le PGCD.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

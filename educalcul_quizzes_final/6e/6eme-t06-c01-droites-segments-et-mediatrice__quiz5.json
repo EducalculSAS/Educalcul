@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Quiz : Droites, segments et médiatrice - Définir",
+  "questions": [
+    {
+      "text": "Parmi les notations suivantes, laquelle représente le segment de extrémités A et B ?",
+      "options": [
+        "(AB)",
+        "[AB]",
+        "[AB)",
+        "(AB]"
+      ],
+      "correctAnswer": "[AB]",
+      "explanation": "En géométrie, le segment de extrémités A et B se note [AB] avec des crochets. La notation (AB) avec des parenthèses désigne la droite passant par A et B. La notation [AB) désigne la demi-droite d'origine A passant par B.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un segment [CD] de longueur $8$ cm. Laquelle de ces affirmations définit correctement son milieu ?",
+      "options": [
+        "C'est un point E tel que $CE = 4$ cm",
+        "C'est un point E tel que $CE = 8$ cm",
+        "C'est un point E tel que $CE = 2$ cm",
+        "C'est un point E tel que $DE = 6$ cm"
+      ],
+      "correctAnswer": "C'est un point E tel que $CE = 4$ cm",
+      "explanation": "Le milieu d'un segment est le point qui le divise en deux parties de même longueur. Comme la longueur totale est $8$ cm, chaque demi-segment mesure $4$ cm. Le milieu E vérifie donc $CE = ED = 4$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la définition exacte de la médiatrice d'un segment [EF] ?",
+      "options": [
+        "La droite qui passe par E et F",
+        "La droite perpendiculaire à (EF) passant par E",
+        "La droite perpendiculaire à [EF] passant par son milieu",
+        "Le segment reliant les milieux de [EF] et d'un autre segment"
+      ],
+      "correctAnswer": "La droite perpendiculaire à [EF] passant par son milieu",
+      "explanation": "La médiatrice d'un segment est une droite. Elle a deux propriétés fondamentales : elle est perpendiculaire au segment (donc à la droite qui le porte) et elle passe par le milieu de ce segment. Les autres options décrivent la droite (EF), une perpendiculaire par un sommet, ou une notion inexistante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit M un point appartenant à la médiatrice du segment [GH]. Quelle propriété géométrique est toujours vraie ?",
+      "options": [
+        "MG = MH",
+        "MG = 2 x MH",
+        "M est le milieu de [GH]",
+        "(MG) est perpendiculaire à (MH)"
+      ],
+      "correctAnswer": "MG = MH",
+      "explanation": "La propriété caractéristique de la médiatrice est l'ensemble des points équidistants des extrémités du segment. Tout point M sur la médiatrice de [GH] est à même distance de G et de H, donc $MG = MH$. M n'est le milieu que s'il est sur le segment lui-même (intersection). Les droites (MG) et (MH) ne sont pas nécessairement perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer la médiatrice d'un segment [AB] au compas et à la règle, quelle est la première étape correcte après avoir tracé le segment ?",
+      "options": [
+        "Placer la pointe du compas sur A avec une ouverture supérieure à la moitié de AB",
+        "Placer la pointe du compas sur A avec une ouverture exactement égale à AB",
+        "Tracer la droite (AB) puis placer le compas sur le milieu",
+        "Mesurer AB avec la règle et tracer un cercle de centre A"
+      ],
+      "correctAnswer": "Placer la pointe du compas sur A avec une ouverture supérieure à la moitié de AB",
+      "explanation": "La construction classique de la médiatrice commence par tracer deux arcs de cercle de même rayon (ouverture du compas) centrés sur A et B. Pour que ces arcs se coupent en deux points (permettant de tracer la droite), le rayon doit être strictement supérieur à la moitié de la longueur AB. Une ouverture égale à AB fonctionne aussi mais n'est pas la condition minimale standard enseignée ; l'important est 'supérieur à la moitié'.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "A",
+        "caption": "Compas ouvert pour tracer un arc de cercle de centre A"
+      }
+    }
+  ]
+}

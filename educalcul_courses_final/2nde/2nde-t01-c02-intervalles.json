@@ -1,0 +1,259 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.016003+00:00",
+  "id": 497,
+  "code": "2nde-t01-c02",
+  "title": "Intervalles",
+  "description": "Cours structuré Educalcul : Intervalles.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Intervalles",
+    "objectif_global": "Intervalles",
+    "mini_lecons_imposees": [
+      "Notation.",
+      "Union / intersection simple.",
+      "Droite réelle."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Notation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu organises un événement et que tu précises aux invités qu'ils peuvent arriver entre $14$ h et $16$ h. Dans le langage courant, on comprend tout de suite qu'une personne arrivant à $14$ h $30$ ou à $15$ h $45$ est acceptée. Mais en mathématiques, pour être parfaitement précis, on a besoin d'un outil qui permet de décrire non pas un seul nombre, mais tous les nombres compris entre deux bornes. C'est exactement ce qu'est un intervalle. Plutôt que d'écrire une liste infinie de nombres comme $14{,}1$, $14{,}2$, $14{,}001$, etc., on utilise une notation compacte. C'est un gain de temps énorme et une rigueur indispensable pour tout ce que tu feras en seconde, notamment pour exprimer des solutions d'inéquations ou des domaines de définition de fonctions. Ne t'inquiète pas si les crochets te semblent étranges au début, c'est un code visuel très logique que nous allons décrypter ensemble. On ne parle plus ici de nombres isolés, mais de portions continues de la droite numérique, comme si on coloriait un segment de ligne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un intervalle est un ensemble qui contient tous les nombres réels compris entre deux bornes, appelées $a$ et $b$. La notation utilise des crochets pour indiquer si les bornes font partie ou non de l'ensemble. Si le crochet est tourné vers l'intérieur, on dit que l'intervalle est fermé en cette borne, ce qui signifie que le nombre est inclus. Par exemple, $[2, 5]$ contient tous les nombres entre $2$ et $5$, y compris $2$ et $5$ eux-mêmes. Si le crochet est tourné vers l'extérieur, l'intervalle est ouvert, et la borne est exclue. Par exemple, $]2, 5[$ contient tous les nombres entre $2$ et $5$, mais pas le $2$ ni le $5$. Il existe aussi des intervalles semi-ouverts comme $[2, 5[$, où $2$ est inclus mais $5$ est exclu. Enfin, lorsque l'ensemble s'étend sans fin vers la droite ou la gauche, on utilise le symbole de l'infini, noté $\\infty$. On écrit $+\\infty$ pour l'infini positif et $-\\infty$ pour l'infini négatif. Un point crucial à retenir est que le crochet est systématiquement ouvert du côté de $\\infty$, car l'infini n'est pas un nombre que l'on peut atteindre ou inclure."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": -2,
+              "upperBound": 3,
+              "lowerOpen": false,
+              "upperOpen": true,
+              "caption": "L'intervalle $[-2, 3[$ : le $-2$ est inclus, le $3$ est exclu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire un intervalle à partir d'une condition mathématique, suis ces étapes simples. Premièrement, identifie les deux bornes de ton ensemble, la borne minimale $a$ et la borne maximale $b$. Deuxièmement, analyse les symboles d'inégalité. Si tu vois un symbole $\\le$ ou $\\ge$ (inférieur ou égal / supérieur ou égal), cela signifie que la borne est incluse. Dans ce cas, tu dois placer le crochet fermé, tourné vers le nombre : $[$ ou $]$. Troisièmement, si tu vois un symbole $<$ ou $>$ (strictement inférieur / strictement supérieur), la borne est exclue. Tu dois alors placer le crochet ouvert, tourné vers l'extérieur : $]$ ou $[$. Quatrièmement, vérifie si l'une des bornes est l'infini. Si l'ensemble est simplement défini par $x \\ge 3$, cela signifie que $x$ peut être n'importe quel nombre à partir de $3$ jusqu'à l'infini. La notation sera donc $[3, +\\infty[$. Enfin, relis ton résultat pour t'assurer que le crochet gauche est toujours à gauche et le crochet droit toujours à droite, respectant l'ordre croissant des nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'ensemble des nombres réels $x$ tels que $x$ soit compris entre $-3$ et $7$, inclusivement. Ici, inclusivement signifie que les bornes font partie de l'ensemble. La borne inférieure est $-3$ et la borne supérieure est $7$. Comme les deux sont incluses, nous utilisons des crochets fermés. Le nombre $-3$ est à gauche, donc on ouvre avec $[-3$. Le nombre $7$ est à droite, donc on ferme avec $7]$. L'intervalle s'écrit donc $[-3, 7]$. Si on voulait vérifier si un nombre appartient à cet intervalle, on peut prendre $-2$ ou $0$ ou $6{,}5$. Tous ces nombres sont bien entre $-3$ et $7$, ils font donc partie de l'intervalle. Si on prenait $-4$, on verrait qu'il est en dehors de la zone, donc $-4 \\notin [-3, 7]$. C'est une notation très efficace pour décrire une infinité de valeurs en seulement quelques caractères."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un cas plus complexe : l'ensemble des nombres $x$ strictement supérieurs à $2$. Ici, nous n'avons qu'une seule borne finie, qui est $2$. Le terme strictement supérieur signifie que $x$ ne peut pas être égal à $2$. Le crochet en $2$ doit donc être ouvert, tourné vers l'extérieur : $]2$. Comme $x$ peut être n'importe quel nombre plus grand que $2$, sans limite supérieure, on s'aperçoit que l'ensemble s'étend vers l'infini positif. On écrit donc $+\\infty$ comme borne supérieure. Rappelle-toi que le crochet devant l'infini est toujours ouvert. On obtient ainsi l'intervalle $]2, +\\infty[$. Si on avait eu $x \\ge 2$, l'intervalle aurait été $[2, +\\infty[$. On voit bien ici que la petite différence entre strictement supérieur et supérieur ou égal change la direction du crochet au début de l'intervalle."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est l'inversion des crochets. Certains élèves écrivent $[2, INF[$, mais oublient de fermer le crochet à droite, ou pire, écrivent $[2, 5]$ quand ils veulent dire strictement compris entre $2$ et $5$. Pense toujours au crochet comme à une porte : s'il est fermé vers le nombre, le nombre peut entrer dans l'ensemble. S'il est ouvert, le nombre reste à la porte. Un autre piège classique concerne l'infini. Il arrive que l'on voie des notations comme $[-\\infty, 10]$, ce qui est mathématiquement faux. $\\infty$ n'est pas un nombre réel, c'est un concept de limite, donc on ne peut jamais fermer un crochet sur $\\infty$. Enfin, attention à l'ordre des bornes. On écrit toujours la borne la plus petite à gauche et la plus grande à droite. Écrire $[10, 2]$ n'a aucun sens en mathématiques et serait considéré comme une erreur grave dans une copie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris sous forme d'intervalle l'ensemble des nombres $x$ tels que $-5 \\le x < 4$.",
+              "answer": "[-5, 4[",
+              "hint": "Regarde bien les symboles : $\\le$ signifie fermé, $<$ signifie ouvert.",
+              "explanation": "La borne $-5$ a un symbole $\\le$, donc elle est incluse (crochet fermé $[$). La borne $4$ a un symbole $<$, donc elle est exclue (crochet ouvert $[$). L'intervalle est donc $[-5, 4[$."
+            },
+            {
+              "question": "Comment noter l'ensemble des nombres strictement inférieurs à $-10$ ?",
+              "answer": "",
+              "hint": "L'ensemble part de l'infini négatif et s'arrête juste avant $-10$.",
+              "explanation": "L'ensemble des nombres strictement inférieurs à $-10$ s'étend de $-\\infty$ jusqu'à $-10$. Puisque c'est strictement inférieur, le $-10$ est exclu. L'infini est toujours ouvert. On obtient donc $]-\\infty, -10[$. "
+            }
+          ]
+        },
+        {
+          "title": "Union / intersection simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux listes de films. La première liste contient les films d'action que tu aimes, et la seconde liste contient les films de science-fiction que tu aimes. Si tu cherches un film qui est à la fois un film d'action ET un film de science-fiction, tu cherches ce qu'on appelle l'intersection. Par contre, si tu veux simplement dresser une liste de tous les films que tu aimes, qu'ils soient d'action OU de science-fiction, tu fais une union. En mathématiques, on fait exactement la même chose avec les intervalles. On manipule des portions de la droite numérique et on cherche soit les zones où elles se superposent, soit la zone totale qu'elles couvrent ensemble. C'est une étape fondamentale pour résoudre des systèmes d'inéquations, car souvent, on cherche les valeurs qui satisfont plusieurs conditions en même temps. C'est comme jouer aux Lego : on peut soit empiler des pièces pour créer une forme plus grande (union), soit chercher la pièce exacte qui s'emboîte dans deux autres (intersection)."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intersection de deux intervalles $I$ et $J$, notée $I \\cap J$, est l'ensemble des nombres qui appartiennent à la fois à $I$ ET à $J$. C'est la zone de chevauchement. Si les deux intervalles ne se touchent pas du tout, on dit que leur intersection est l'ensemble vide, noté $\\emptyset$. L'union de deux intervalles $I$ et $J$, notée $I \\cup J$, est l'ensemble des nombres qui appartiennent à $I$, OU à $J$, ou aux deux. C'est en quelque sorte la fusion des deux ensembles. Si les intervalles se chevauchent ou se touchent, l'union forme souvent un nouvel intervalle unique, plus large. Si les intervalles sont totalement séparés, on ne peut pas simplifier la notation $I \\cup J$, on laisse l'expression telle quelle car il y a un trou entre les deux. Pour bien visualiser, imagine que l'intersection est un filtre très strict (il faut être dans les deux), tandis que l'union est très accueillante (être dans l'un ou l'autre suffit)."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Intersection et Union d'ensembles",
+              "sets": [
+                {
+                  "label": "I",
+                  "elements": [
+                    1,
+                    2,
+                    3,
+                    4
+                  ]
+                },
+                {
+                  "label": "J",
+                  "elements": [
+                    3,
+                    4,
+                    5,
+                    6
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer l'intersection ou l'union de deux intervalles, la méthode la plus fiable est le dessin. Première étape : trace une droite graduée et représente le premier intervalle $I$ avec une couleur ou un trait épais. Deuxième étape : représente le second intervalle $J$ juste en dessous, ou par-dessus avec une autre couleur. Troisième étape pour l'intersection : repère la zone où les deux couleurs se superposent. C'est là que les deux conditions sont remplies. Fais très attention aux bornes : pour que le nombre soit dans l'intersection, il doit être inclus dans les DEUX intervalles. Si un nombre est inclus dans $I$ (crochet fermé) mais exclu de $J$ (crochet ouvert), alors il est exclu de l'intersection $I \\cap J$. Quatrième étape pour l'union : repère toute la zone couverte par au moins l'une des deux couleurs, du point le plus à gauche jusqu'au point le plus à droite. Si les zones sont séparées, tu gardes les deux notations séparées par le symbole $\\cup$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient les intervalles $I = [-2, 5]$ et $J = [3, 8]$. Nous cherchons l'intersection $I \\cap J$. En traçant les deux sur une droite, on voit que $I$ va de $-2$ à $5$ et $J$ de $3$ à $8$. La zone commune commence là où le deuxième intervalle débute, c'est-à-dire en $3$. Comme $3$ est inclus dans $I$ (car $3$ est entre $-2$ et $5$) et inclus dans $J$, le crochet est fermé : $[3$. La zone commune s'arrête là où le premier intervalle se termine, c'est-à-dire en $5$. Comme $5$ est inclus dans $I$ et inclus dans $J$ (car $5$ est entre $3$ et $8$), le crochet est fermé : $5]$. L'intersection est donc $I \\cap J = [3, 5]$. Tout nombre dans cet intervalle, comme $4$, appartient bien aux deux ensembles originaux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les mêmes intervalles $I = [-2, 5]$ et $J = [3, 8]$ pour calculer l'union $I \\cup J$. L'union regroupe tous les éléments. Le point le plus à gauche de l'ensemble total est $-2$ (borne gauche de $I$). Le point le plus à droite est $8$ (borne droite de $J$). Comme les deux intervalles se chevauchent entre $3$ et $5$, il n'y a pas de coupure. L'ensemble résultant est donc un seul grand intervalle allant de $-2$ à $8$. Les bornes $-2$ et $8$ étant fermées dans leurs intervalles respectifs, elles le restent pour l'union. On obtient $I \\cup J = [-2, 8]$. Si nous avions eu $I = [-2, 1]$ et $J = [3, 8]$, ils auraient été disjoints. Dans ce cas, l'union serait simplement notée $[-2, 1] \\cup [3, 8]$, car on ne peut pas combler le vide entre $1$ et $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique est la confusion entre $\\cup$ (Union) et $\\cap$ (Intersection). Un moyen mnémotechnique : le $\\cup$ ressemble à un verre ou un pot qui recueille tout le monde (Union), alors que le $\\cap$ ressemble à un pont ou un chapeau qui ne laisse passer que ce qui est en dessous des deux (Intersection). Un autre point de vigilance concerne les crochets aux jonctions. Si tu as $I = [0, 2[$ et $J = [2, 4]$, l'intersection $I \\cap J$ est vide $\\emptyset$ car le nombre $2$ n'est pas dans $I$. Pourtant, l'union $I \\cup J$ est $[0, 4]$ car le nombre $2$ est bien présent dans $J$, donc il comble le trou. Beaucoup d'élèves répondent $[0, 2[ \\cup [2, 4]$ sans simplifier, alors que c'est possible ici. Enfin, attention à ne pas confondre l'ensemble vide $\\emptyset$ avec l'intervalle $[0, 0]$, qui contient justement le nombre $0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne $I = [-10, 2]$ et $J = [-5, 7]$. Déterminer $I \\cap J$.",
+              "answer": "[-5, 2]",
+              "hint": "Cherche la partie où les deux intervalles se superposent.",
+              "explanation": "L'intervalle $I$ s'arrête en $2$ et l'intervalle $J$ commence en $-5$. La zone commune est donc comprise entre $-5$ et $2$. Comme $-5$ et $2$ sont inclus dans les deux intervalles, on obtient $[-5, 2]$."
+            },
+            {
+              "question": "On donne $I = [1, 3]$ et $J = [5, 7]$. Déterminer $I \\cup J$.",
+              "answer": "[1, 3] \\cup [5, 7]",
+              "hint": "Est-ce que les deux intervalles se touchent ou se chevauchent ?",
+              "explanation": "Ici, l'intervalle $I$ finit à $3$ et l'intervalle $J$ commence à $5$. Il y a un vide entre $3$ et $5$. On ne peut pas fusionner les deux en un seul intervalle. La réponse reste donc l'expression de l'union : $[1, 3] \\cup [5, 7]$. "
+            }
+          ]
+        },
+        {
+          "title": "Droite réelle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons manipulé les intervalles comme des objets abstraits avec des crochets et des symboles. Mais les mathématiques sont aussi un langage visuel. Imagine que la droite réelle est une route infinie qui s'étend vers la gauche et la droite. Chaque point de cette route est un nombre. Représenter un intervalle sur cette droite, c'est comme surligner un passage précis de cette route avec un marqueur. C'est une étape cruciale car elle permet de voir instantanément si deux intervalles se croisent ou si l'un est contenu dans l'autre. En seconde, tu utiliseras souvent cette représentation pour résoudre des inéquations : on cherche la zone où une expression est positive ou négative. Au lieu de lire une suite de symboles comme $x \\in ]-\\infty, -2] \\cup [4, +\\infty[$, un simple coup d'œil sur un schéma te dira tout de suite que les solutions sont les deux extrémités de la droite, excluant la partie centrale. Nous allons apprendre à traduire parfaitement le passage de l'écriture symbolique au dessin, et vice versa."
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite réelle est représentée par une ligne horizontale munie d'une flèche à chaque extrémité pour indiquer qu'elle est infinie. On y place un point d'origine, le $0$. Pour représenter un intervalle sur cet axe, on trace un segment coloré ou hachuré entre les deux bornes $a$ et $b$. L'élément le plus important du dessin est la position des crochets. On place les crochets directement sur la droite, aux extrémités du segment coloré. Si le crochet est fermé, il englobe le segment. Si le crochet est ouvert, il tourne le dos au segment. Par exemple, pour l'intervalle $[1, 4[$, on colorie de $1$ à $4$, on met un crochet fermé en $1$ tourné vers la droite, et un crochet ouvert en $4$ tourné vers la droite également (donc tourné vers l'extérieur de la zone colorée). Lorsqu'une borne est l'infini, on ne met pas de crochet à l'extrémité de la droite, on laisse simplement le trait coloré s'étendre jusqu'à la flèche de l'axe. Cela montre que l'ensemble ne s'arrête jamais."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'intervalle [-3, 2]",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "a"
+                },
+                {
+                  "value": 2,
+                  "label": "b"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour représenter un intervalle sur la droite réelle, suis rigoureusement ces étapes. D'abord, trace ton axe horizontal avec une graduation cohérente. Si ton intervalle est $[10, 20]$, ne commence pas ton axe à $0$ pour éviter d'avoir un dessin trop long ; commence par exemple à $5$. Ensuite, place précisément les points des bornes $a$ et $b$ sur l'axe. Troisième étape : colorie ou hachure la zone comprise entre ces deux points. C'est le corps de ton intervalle. Quatrième étape : place les crochets aux extrémités. Demande-toi pour chaque borne : Est-elle incluse ? Si oui, le crochet doit 'attraper' la couleur. Si non, le crochet doit 'repousser' la couleur. Enfin, si l'intervalle est non borné (avec $\\infty$), prolonge le coloriage jusqu'au bout de l'axe. Vérifie une dernière fois que l'orientation de tes crochets correspond exactement aux symboles $\\le$ ou $<$ de l'énoncé initial."
+            },
+            {
+              "type": "paragraph",
+              "content": "Représentons l'intervalle $I = [-3, 2]$. Nous traçons l'axe des réels. Nous plaçons un point en $-3$ et un point en $2$. Nous colorions tout le segment entre $-3$ et $2$. Pour la borne $-3$, le crochet est fermé, donc on dessine un crochet $[$ en $-3$ tourné vers la droite, englobant la zone colorée. Pour la borne $2$, le crochet est également fermé, donc on dessine un crochet $]$ en $2$ tourné vers la gauche, englobant également la zone colorée. Le résultat visuel est un segment bien délimité avec deux barres perpendiculaires qui ferment les extrémités. Ce dessin nous indique immédiatement que tout nombre, même les nombres à virgule comme $-2{,}57$ ou $1{,}99$, fait partie de l'ensemble, ainsi que les bornes elles-mêmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Représentons l'intervalle $J = ]-1, +\\infty[$. Nous traçons l'axe et plaçons le point $-1$. Puisque la borne supérieure est $+\\infty$, nous colorions toute la partie de la droite qui se trouve à droite de $-1$, et nous continuons jusqu'à la flèche de l'axe. En $-1$, le crochet est ouvert. On dessine donc un crochet $]$ en $-1$ tourné vers la gauche, c'est-à-dire vers l'extérieur de la zone colorée. Il n'y a pas de crochet à droite car l'infini est toujours ouvert. Ce dessin montre visuellement que l'ensemble commence juste après $-1$ et ne s'arrête jamais. Si on nous demandait de représenter l'union de cet intervalle avec un autre, nous superposerions simplement les couleurs sur le même axe."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est de placer les crochets à l'envers. Certains élèves dessinent des crochets qui pointent vers l'extérieur même quand l'intervalle est fermé. Rappelle-toi : le crochet fermé est comme un bras qui serre la zone colorée. Un autre piège est l'oubli de la graduation. Un dessin sans nombres sur l'axe ne vaut rien en mathématiques. Il faut toujours indiquer au moins les valeurs des bornes. Enfin, attention à la confusion avec les points pleins ou vides. Dans certains systèmes, on utilise un point plein pour inclus et un point vide pour exclu. Mais en France, au lycée, la norme est l'utilisation des crochets. Utiliser des points sans crochets peut être considéré comme imprécis. Assure-toi de bien dessiner les crochets perpendiculairement à l'axe pour qu'ils soient bien visibles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Représente sur une droite graduée l'intervalle $K = ]-2, 3]$.",
+              "answer": "Surligner de -2 à 3, crochet ouvert en -2 et fermé en 3.",
+              "hint": "Le crochet en -2 doit être tourné vers la gauche et celui en 3 vers la gauche.",
+              "explanation": "On colorie la zone entre $-2$ et $3$. En $-2$, le crochet est ouvert donc il tourne le dos à la couleur. En $3$, le crochet est fermé donc il enveloppe la couleur. "
+            },
+            {
+              "question": "Traduis la représentation suivante en notation d'intervalle : un axe colorié de $-\\infty$ jusqu'à $5$, avec un crochet fermé en $5$.",
+              "answer": "]-\\infty, 5]",
+              "hint": "L'ensemble vient de la gauche et s'arrête en 5.",
+              "explanation": "La zone colorée part de l'infini négatif et s'arrête exactement au nombre $5$. Le crochet fermé signifie que $5$ est inclus. On écrit donc $]-\\infty, 5]$. "
+            },
+            {
+              "question": "Représente l'union $]-\\infty, 1[ \\cup [4, +\\infty[$.",
+              "answer": "Deux zones coloriées aux extrémités de l'axe, séparées par un blanc entre 1 et 4.",
+              "hint": "Il s'agit de deux intervalles distincts sur le même axe.",
+              "explanation": "On colorie toute la partie à gauche de $1$ (crochet ouvert en $1$) et toute la partie à droite de $4$ (crochet fermé en $4$). La zone entre $1$ et $4$ reste blanche car elle n'appartient à aucun des deux intervalles. "
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

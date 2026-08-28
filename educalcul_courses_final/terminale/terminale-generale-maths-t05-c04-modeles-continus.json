@@ -1,0 +1,465 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.687486+00:00",
+  "id": 705,
+  "code": "terminale-generale-maths-t05-c04",
+  "title": "Modèles continus",
+  "description": "Cours structuré Educalcul : Modèles continus.",
+  "subject": "Primitives, intégrales et équations différentielles",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Primitives, intégrales et équations différentielles",
+    "titre_du_cours": "Modèles continus",
+    "objectif_global": "Modèles continus",
+    "mini_lecons_imposees": [
+      "Construire EDO.",
+      "Résoudre.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Primitives, intégrales et équations différentielles",
+      "lessons": [
+        {
+          "title": "Construire EDO.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce qu'est une équation différentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux modèles continus. Ici, nous allons apprendre à transformer une situation concrète en une équation différentielle, ce que les mathématiciens appellent une EDO. Imagine que tu observes une population de bactéries qui double toutes les heures. Au lieu de simplement noter les nombres, tu cherches une relation qui relie la vitesse de variation de cette population à la population elle-même. C'est exactement ce que permet une équation différentielle : elle donne une loi dynamique, une règle qui décrit comment une quantité change à chaque instant."
+            },
+            {
+              "type": "definition",
+              "term": "équation différentielle",
+              "definition": "Une équation différentielle est une égalité qui met en relation une fonction inconnue, ses dérivées et la variable indépendante. Elle exprime comment la fonction évolue en fonction de sa propre valeur ou de ses dérivées.",
+              "example": "Par exemple, $y' = 2x$ est une équation différentielle du premier ordre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique de la croissance exponentielle. Soit $P(t)$ le nombre d'individus à l'instant $t$. Si la vitesse de variation de la population est proportionnelle à la population elle-même, on écrit que la dérivée de $P$ par rapport à $t$ est égale à une constante $k$ multipliée par $P$. Cette phrase se traduit directement par une équation différentielle."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{dP}{dt}=kP"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire une EDO à partir d'un énoncé, on suit généralement trois étapes : identifier la quantité qui varie, exprimer sa vitesse de variation (la dérivée) et traduire la relation verbale en langage mathématique. Cette démarche est systématique et devient un réflexe avec un peu d'entraînement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la variable inconnue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la grandeur qui évolue dans le temps ou par rapport à une autre variable. Dans l'exemple des bactéries, c'est la population $P$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exprimer la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La vitesse de variation s'écrit $\\frac{dP}{dt}$ si le temps est la variable indépendante, ou $P'$ si le contexte est clair."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Traduire la relation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'énoncé dit « proportionnelle à la population », on introduit une constante de proportionnalité $k$ et on écrit $\\frac{dP}{dt}=kP$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons comment naît une EDO, entraînons-nous sur un cas simple avant d'aborder la notion d'ordre et de linéarité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordre et linéarité d'une équation différentielle"
+            },
+            {
+              "type": "definition",
+              "term": "ordre",
+              "definition": "L'ordre d'une équation différentielle est l'ordre de la dérivée la plus élevée qui y apparaît.",
+              "example": "Dans $y''+3y'+2y=0$, l'ordre est 2 car la dérivée seconde $y''$ est présente."
+            },
+            {
+              "type": "definition",
+              "term": "linéaire",
+              "definition": "Une équation différentielle est linéaire si l'inconnue et ses dérivées n'apparaissent qu'au premier degré et ne sont pas multipliées entre elles.",
+              "example": "L'équation $y''+3y'+2y=\\sin x$ est linéaire, alors que $y\\cdot y'=x$ ne l'est pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reconnaître l'ordre et la linéarité est essentiel car cela détermine les méthodes de résolution disponibles. Les équations linéaires d'ordre 1 ou 2 admettent des techniques standard, tandis que les équations non linéaires demandent souvent des approches spécifiques ou numériques."
+            },
+            {
+              "type": "display_math",
+              "latex": "y''+3y'+2y=0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant d'identifier l'ordre et la nature d'une équation donnée avant de passer à la condition initiale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La condition initiale : figer une solution particulière"
+            },
+            {
+              "type": "definition",
+              "term": "condition initiale",
+              "definition": "Une condition initiale associe une valeur précise à la fonction inconnue (et éventuellement à ses dérivées) en un point donné. Elle permet de sélectionner une unique solution parmi la famille infinie des solutions générales.",
+              "example": "Pour $y'=2x$, la condition $y(0)=3$ donne la solution particulière $y=x^2+3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sans condition initiale, une EDO du premier ordre admet une infinité de solutions, paramétrées par une constante d'intégration. La condition initiale fixe cette constante et ancre le modèle dans la réalité observée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant écrire le problème de Cauchy complet pour une EDO simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les bases pour construire une équation différentielle à partir d'un énoncé, en identifier l'ordre et la linéarité, et y adjoindre une condition initiale. Ces trois compétences forment le socle de tout modèle continu."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La vitesse de variation d'une population $P$ est proportionnelle à la population elle-même. Écris l'équation différentielle correspondante.",
+              "answer": "$\\frac{dP}{dt}=kP$ avec $k$ constante de proportionnalité.",
+              "hint": "Identifie la variable inconnue et traduit « proportionnelle » par une multiplication par une constante.",
+              "explanation": "La dérivée de $P$ par rapport au temps $t$ représente la vitesse de variation. La proportionnalité s'exprime par $kP$."
+            },
+            {
+              "question": "Détermine l'ordre et dis si l'équation $y''+3y'+2y=0$ est linéaire.",
+              "answer": "Ordre 2, linéaire.",
+              "hint": "Regarde la dérivée la plus élevée et vérifie que $y$, $y'$, $y''$ apparaissent au premier degré sans produits.",
+              "explanation": "La dérivée la plus élevée est $y''$, donc l'ordre est 2. Tous les termes sont de la forme coefficient $\\times$ dérivée, sans produit ni puissance, donc l'équation est linéaire."
+            },
+            {
+              "question": "Écris le problème de Cauchy pour l'équation $y'=2x$ avec la condition $y(0)=3$.",
+              "answer": "$\\begin{cases} y'=2x \\\\ y(0)=3 \\end{cases}$",
+              "hint": "Regroupe l'équation différentielle et la condition initiale sous forme de système.",
+              "explanation": "Un problème de Cauchy associe l'EDO et la valeur de la solution en un point. Ici, $y(0)=3$ fixe la constante d'intégration."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une équation différentielle séparable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous passons de la construction à la résolution. Les équations différentielles séparables sont parmi les plus accessibles : elles s'écrivent sous la forme $y' = f(x)g(y)$. L'idée centrale est de séparer les variables, c'est-à-dire de rassembler tous les termes contenant $y$ d'un côté et tous ceux contenant $x$ de l'autre, puis d'intégrer. Cette méthode repose sur le fait que l'on peut traiter $dy$ et $dx$ comme des quantités manipulables algébriquement, ce qui est justifié par la théorie des équations différentielles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre sous forme séparable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que l'équation peut s'écrire $y' = f(x)g(y)$. Si ce n'est pas le cas, cette méthode ne s'applique pas directement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Séparer les différentielles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réécris $y' = \\frac{dy}{dx}$ et multiplie par $dx$ : $\\frac{dy}{g(y)} = f(x)\\,dx$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Intégrer les deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\int \\frac{dy}{g(y)} = \\int f(x)\\,dx + C$. Le terme $C$ est la constante d'intégration."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Exprimer $y$ si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous l'équation implicite obtenue pour $y$ en fonction de $x$. Parfois, on ne peut pas expliciter $y$ et on garde la relation implicite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons la méthode sur un exemple classique où la séparation est immédiate."
+            },
+            {
+              "type": "display_math",
+              "latex": "y' = y \\cos x"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici $f(x)=\\cos x$ et $g(y)=y$. On sépare : $\\frac{dy}{y} = \\cos x\\,dx$. L'intégration donne $\\ln|y| = \\sin x + C$, d'où $|y| = e^{\\sin x + C} = e^{C}e^{\\sin x}$. En posant $C_1 = \\pm e^{C}$, on obtient la famille $y = C_1 e^{\\sin x}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de résoudre une équation séparable par toi-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations linéaires du premier ordre : facteur intégrant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Toutes les équations du premier ordre ne sont pas séparables. La forme linéaire standard est $y' + a(x)y = b(x)$. Pour la résoudre, on utilise un facteur intégrant $\\mu(x) = \\exp\\left(\\int a(x)\\,dx\\right)$. Multiplier l'équation par $\\mu$ transforme le côté gauche en dérivée de $\\mu y$, ce qui permet d'intégrer directement."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mu(x) = \\exp\\left(\\int a(x)\\,dx\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à $y' + 2y = e^{x}$. Ici $a(x)=2$, donc $\\mu(x)=e^{2x}$. Multiplions : $e^{2x}y' + 2e^{2x}y = e^{3x}$. Le côté gauche est $(e^{2x}y)'$. Intégrons : $e^{2x}y = \\int e^{3x}\\,dx = \\frac{1}{3}e^{3x}+C$. Donc $y = \\frac{1}{3}e^{x} + Ce^{-2x}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Résous maintenant une équation linéaire du premier ordre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Existence et unicité : le théorème de Cauchy-Lipschitz"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de considérer qu'une solution est trouvée, il faut s'assurer qu'elle existe et qu'elle est unique. Le théorème de Cauchy-Lipschitz garantit l'existence et l'unicité d'une solution locale pour $y' = f(x,y)$ avec $y(x_0)=y_0$, à condition que $f$ soit continue et lipschitzienne par rapport à $y$ dans un voisinage de $(x_0,y_0)$. Si $f$ n'est pas lipschitzienne, plusieurs solutions peuvent partir du même point initial."
+            },
+            {
+              "type": "display_math",
+              "latex": "y' = \\sqrt{y},\\quad y(0)=0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $f(y)=\\sqrt{y}$, la dérivée par rapport à $y$ est $\\frac{1}{2\\sqrt{y}}$, qui n'est pas bornée près de $0$. Ainsi, la condition de Lipschitz n'est pas satisfaite. On trouve au moins deux solutions : $y(x)=0$ et $y(x)=\\frac{x^2}{4}$ pour $x\\ge 0$. Cela montre l'importance de vérifier les hypothèses du théorème."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons un cas où l'unicité fait défaut."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant résoudre les équations séparables et linéaires du premier ordre, et tu connais le critère d'existence et d'unicité. Ces outils te permettront d'aborder la modélisation concrète dans la prochaine leçon."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation différentielle $y' = y \\cos x$.",
+              "answer": "$y = C e^{\\sin x}$ avec $C \\in \\mathbb{R}$.",
+              "hint": "Sépare les variables : $\\frac{dy}{y} = \\cos x\\,dx$, puis intègre.",
+              "explanation": "L'intégration donne $\\ln|y| = \\sin x + C$. En exponentiant, $|y| = e^{C}e^{\\sin x}$. La constante $e^{C}$ peut être positive ou négative, on note $C_1 = \\pm e^{C}$."
+            },
+            {
+              "question": "Résous $y' + 2y = e^{x}$.",
+              "answer": "$y = \\frac{1}{3}e^{x} + Ce^{-2x}$.",
+              "hint": "Calcule le facteur intégrant $\\mu(x)=e^{\\int 2\\,dx}=e^{2x}$, multiplie l'équation et intègre.",
+              "explanation": "Après multiplication par $e^{2x}$, le côté gauche devient $(e^{2x}y)'$. L'intégration de $e^{3x}$ donne $\\frac{1}{3}e^{3x}+C$. On divise par $e^{2x}$ pour isoler $y$."
+            },
+            {
+              "question": "Pour l'équation $y' = \\sqrt{y}$ avec $y(0)=0$, l'unicité est-elle garantie ? Justifie.",
+              "answer": "Non, l'unicité n'est pas garantie car $f(y)=\\sqrt{y}$ n'est pas lipschitzienne en $0$.",
+              "hint": "Vérifie si $\\frac{\\partial f}{\\partial y}$ est bornée près de $y=0$.",
+              "explanation": "La dérivée $\\frac{1}{2\\sqrt{y}}$ tend vers l'infini quand $y\\to 0^+$, donc la condition de Lipschitz n'est pas remplie. On a au moins les solutions $y=0$ et $y=x^2/4$ pour $x\\ge0$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter la solution d'un modèle continu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir construit et résolu une équation différentielle, l'étape cruciale est l'interprétation. Une solution mathématique n'a de sens que si on peut la relier à la réalité qu'elle modélise. Cela implique de lire les paramètres, d'analyser le comportement à long terme, de tester la sensibilité aux conditions initiales et de vérifier la cohérence avec les données observées."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le modèle exponentiel $P(t)=P_0 e^{kt}$. Le paramètre $k$ détermine la nature de l'évolution : si $k>0$, la population croît sans limite ; si $k<0$, elle décroît vers zéro. La valeur de $P_0$ fixe l'échelle initiale. En observant une courbe de croissance bactérienne, on peut estimer $k$ par régression logarithmique et prédire le doublement."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(0.3*x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Croissance exponentielle pour $k=0.3$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'interpréter le signe de $k$ sur un cas concret."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le modèle logistique : saturation et capacité porteuse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le modèle exponentiel ne prévoit pas de limite. En biologie, les ressources sont finies, ce qui conduit au modèle logistique $P' = rP\\left(1-\\frac{P}{K}\\right)$. Le paramètre $r$ est le taux de croissance intrinsèque, et $K$ est la capacité porteuse, c'est-à-dire la population maximale que l'environnement peut soutenir. La solution tend vers $K$ quand $t\\to\\infty$, quel que soit $P_0>0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P' = rP\\left(1-\\frac{P}{K}\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La courbe en S (sigmoïde) caractéristique montre une croissance rapide au début, puis un ralentissement à l'approche de $K$. Ce comportement est observable dans la propagation d'une épidémie, l'adoption d'une technologie ou la croissance d'une tumeur."
+            },
+            {
+              "type": "graph",
+              "expression": "100/(1+99*exp(-0.5*x))",
+              "xmin": 0,
+              "xmax": 20,
+              "caption": "Courbe logistique avec $K=100$, $r=0.5$, $P_0=1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Interprète maintenant le rôle de $K$ dans un contexte donné."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valider et affiner un modèle par confrontation aux données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un modèle n'est jamais parfait. La validation consiste à comparer les prédictions de la solution aux mesures réelles. On utilise souvent la méthode des moindres carrés pour ajuster les paramètres, ou on calcule des résidus pour détecter des biais systématiques. Si le modèle échoue, on peut enrichir l'équation différentielle : ajouter un terme de récolte, un délai, ou passer à un système d'équations couplées."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de modélisation",
+              "paragraphs": [
+                "Commence toujours par le modèle le plus simple. Ajoute de la complexité seulement si les résidus le justifient."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu aies des données de population de cerfs dans une forêt. Le modèle exponentiel surestime la population après quelques années. En introduisant une capacité porteuse $K$, le modèle logistique colle beaucoup mieux aux observations. C'est un exemple typique de raffinement itératif."
+            },
+            {
+              "type": "paragraph",
+              "content": "À ton tour de choisir le modèle approprié pour une situation décrite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète : construire une EDO à partir d'un énoncé, la résoudre (séparable, linéaire, ou numérique), et interpréter la solution en la confrontant à la réalité. Ces trois piliers forment le cœur de la modélisation continue en mathématiques appliquées."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais traduire un énoncé en équation différentielle et identifier son ordre et sa linéarité.",
+                "Je sais résoudre une EDO séparable et une EDO linéaire du premier ordre, et je connais le théorème d'existence et d'unicité.",
+                "Je sais interpréter les paramètres d'un modèle (taux de croissance, capacité porteuse), analyser le comportement asymptotique et valider un modèle par confrontation aux données."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour le modèle $P(t)=P_0 e^{kt}$, que signifie $k>0$ et $k<0$ dans le contexte d'une population ?",
+              "answer": "$k>0$ indique une croissance exponentielle (population en augmentation), $k<0$ indique une décroissance exponentielle (population en diminution).",
+              "hint": "Regarde le signe de l'exposant dans l'exponentielle.",
+              "explanation": "Si $k>0$, $e^{kt}$ croît quand $t$ augmente, donc $P(t)$ augmente. Si $k<0$, $e^{kt}$ décroît vers $0$, donc $P(t)$ tend vers $0$."
+            },
+            {
+              "question": "Dans le modèle logistique $P' = rP(1-P/K)$, quel est le rôle du paramètre $K$ ?",
+              "answer": "$K$ est la capacité porteuse : la population tend vers $K$ à long terme, quel que soit $P_0>0$.",
+              "hint": "Observe l'équilibre de l'équation différentielle : $P'=0$ pour $P=K$.",
+              "explanation": "Le terme $(1-P/K)$ devient nul quand $P=K$, ce qui annule la dérivée. Pour $P<K$, la dérivée est positive ; pour $P>K$, elle est negative. Donc $K$ est un attracteur stable."
+            },
+            {
+              "question": "Tu observes une population qui croît rapidement au début puis se stabilise autour de 500 individus. Quel modèle choisir entre exponentiel et logistique ? Justifie.",
+              "answer": "Le modèle logistique est approprié car il prévoit une saturation vers une capacité porteuse, ici $K\\approx 500$.",
+              "hint": "Le modèle exponentiel ne possède pas de limite supérieure.",
+              "explanation": "La croissance exponentielle ne s'arrête jamais, alors que les données montrent un plateau. Le terme $(1-P/K)$ du modèle logistique introduit cette saturation naturelle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

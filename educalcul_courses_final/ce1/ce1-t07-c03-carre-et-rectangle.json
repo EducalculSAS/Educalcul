@@ -1,0 +1,273 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.881707+00:00",
+  "id": 128,
+  "code": "ce1-t07-c03",
+  "title": "Carré et rectangle",
+  "description": "Cours structuré Educalcul : Carré et rectangle.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Carré et rectangle",
+    "objectif_global": "Carré et rectangle",
+    "mini_lecons_imposees": [
+      "Reconnaître visuellement.",
+      "Repérer côtés et angles.",
+      "Construire sur quadrillage."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître visuellement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons apprendre à reconnaître deux figures très connues : le carré et le rectangle. Regarde autour de toi : une fenêtre, un livre, un timbre, ce sont souvent des rectangles. Un carreau de carrelage, une boîte de jeu, c'est souvent un carré. Ouvre grand les yeux, tu vas vite les repérer !"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 16,
+              "caption": "Un carré de 4 cases sur 4 cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un carré sur un quadrillage. Il a $4$ côtés de la même longueur et $4$ angles droits. Pour vérifier, tu peux poser le coin d'une feuille de papier sur chaque angle : ça tombe pile ! Compte les cases sur chaque côté : $4$ cases partout. C'est ça, un carré."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde cette figure. Elle a aussi $4$ côtés et $4$ angles droits, mais ses côtés ne sont pas tous égaux. Les deux grands côtés font $5$ cases, les deux petits côtés font $3$ cases. C'est un rectangle. Le rectangle a les angles droits comme le carré, mais seulement les côtés d'en face sont égaux deux à deux."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 5,
+              "highlighted": 15,
+              "caption": "Un rectangle de 3 cases sur 5 cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce quadrillage, le rectangle occupe $3$ cases en hauteur et $5$ cases en largeur. Pose ton doigt sur le côté du haut : $5$ cases. Sur le côté de gauche : $3$ cases. Les côtés d'en face font la même chose. C'est la grande différence avec le carré : le carré a $4$ côtés égaux, le rectangle a $2$ grandes longueurs et $2$ petites largeurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de trier ces figures dans ta tête. Si tous les côtés sont égaux et les angles droits, c'est un carré. Si les angles sont droits mais que seulement les côtés d'en face sont égaux, c'est un rectangle. Un carré est un rectangle spécial, mais un rectangle n'est pas toujours un carré. Dans la prochaine leçon, nous allons mesurer les côtés et vérifier les angles avec une règle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures, laquelle est un carré ?",
+              "answer": "La figure avec 4 côtés égaux et 4 angles droits.",
+              "hint": "Compte les cases sur chaque côté. Cherche celle où les 4 côtés ont le même nombre de cases.",
+              "explanation": "Le carré a 4 côtés de même longueur. Sur le quadrillage, cela se voit car chaque côté compte le même nombre de cases."
+            },
+            {
+              "question": "Laquelle de ces figures est un rectangle (mais pas un carré) ?",
+              "answer": "La figure avec 2 grands côtés égaux et 2 petits côtés égaux, et 4 angles droits.",
+              "hint": "Regarde les côtés d'en face : sont-ils égaux ? Vérifie les angles avec le coin d'une feuille.",
+              "explanation": "Le rectangle a 4 angles droits. Ses côtés d'en face sont égaux deux à deux, mais pas tous les quatre."
+            },
+            {
+              "question": "Vrai ou faux : tout carré est un rectangle.",
+              "answer": "Vrai",
+              "hint": "Un carré a 4 angles droits et ses côtés d'en face sont égaux. Ça correspond à la définition du rectangle.",
+              "explanation": "Le carré remplit toutes les conditions du rectangle : 4 angles droits et côtés d'en face égaux. C'est donc un rectangle particulier."
+            }
+          ]
+        },
+        {
+          "title": "Repérer côtés et angles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant reconnaître un carré et un rectangle. Aujourd'hui, nous allons apprendre à repérer leurs côtés et leurs angles avec précision. Pour cela, nous allons utiliser une règle graduée et le coin d'une feuille de papier. C'est comme une enquête : nous allons mesurer et vérifier chaque détail."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 7,
+              "unit": "cm",
+              "caption": "Mesure d'un côté de rectangle : 7 cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose ta règle le long d'un côté du rectangle. Le zéro de la règle doit coïncider avec le coin. Lis le nombre à l'autre bout : ici, c'est $7$ cm. Fais la même chose pour le côté d'en face : tu trouveras aussi $7$ cm. Les deux grands côtés sont égaux. Maintenant mesure un petit côté : $4$ cm. Le côté d'en face fait aussi $4$ cm. Dans un rectangle, les côtés d'en face ont la même longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux angles. Prends une feuille de papier bien droite. Place son coin dans l'angle de la figure. Les deux bords de la feuille doivent coller parfaitement aux deux côtés de la figure. Si ça colle sans espace, c'est un angle droit. Essaie sur les quatre angles du rectangle : ça marche à chaque fois ! Le rectangle a donc $4$ angles droits."
+            },
+            {
+              "type": "definition",
+              "term": "Angle droit",
+              "definition": "Un angle qui a la même forme que le coin d'une feuille de papier. Il mesure 90 degrés, mais au CE1 on le reconnaît juste à l'œil avec le coin de la feuille.",
+              "example": "Tous les angles d'un rectangle et d'un carré sont des angles droits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant le carré. Mesure un côté : $5$ cm. Mesure le côté d'à côté : aussi $5$ cm. Les quatre côtés font $5$ cm. C'est la propriété du carré : tous les côtés ont la même longueur. Vérifie les angles avec ton coin de feuille : les quatre sont droits. Le carré a donc $4$ côtés égaux et $4$ angles droits. Dans la prochaine leçon, nous allons apprendre à les tracer nous-mêmes sur un quadrillage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Mesure les deux grands côtés de ce rectangle. Quelle longueur trouves-tu ?",
+              "answer": "7 cm",
+              "hint": "Place le zéro de la règle au début du côté. Regarde le chiffre à la fin du côté.",
+              "explanation": "Les deux grands côtés d'un rectangle ont la même longueur. Ici, ils mesurent 7 cm chacun."
+            },
+            {
+              "question": "Combien d'angles droits y a-t-il dans un rectangle ?",
+              "answer": "4",
+              "hint": "Utilise le coin d'une feuille de papier pour tester chaque coin de la figure.",
+              "explanation": "Un rectangle a 4 angles droits. On peut le vérifier en posant le coin d'une feuille dans chaque angle."
+            },
+            {
+              "question": "Un carré a un côté de 5 cm. Quelle est la longueur des trois autres côtés ?",
+              "answer": "5 cm, 5 cm, 5 cm",
+              "hint": "Rappelle-toi : dans un carré, les 4 côtés ont la même longueur.",
+              "explanation": "Tous les côtés d'un carré sont égaux. Si l'un mesure 5 cm, les trois autres mesurent aussi 5 cm."
+            }
+          ]
+        },
+        {
+          "title": "Construire sur quadrillage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de passer à l'action ! Nous allons apprendre à construire un carré et un rectangle sur un quadrillage. Tu as besoin d'un crayon, d'une règle et de ton cahier à grands carreaux. Suis bien les étapes, c'est comme un jeu de construction."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un point de départ sur une intersection du quadrillage. Trace un segment horizontal de $4$ cases vers la droite. Compte bien : 1, 2, 3, 4 cases. Marque le point d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De ce nouveau point, trace un segment vertical de $4$ cases vers le bas. Compte encore : 1, 2, 3, 4 cases. Marque le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Les deux derniers côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment horizontal de $4$ cases vers la gauche, puis un segment vertical de $4$ cases vers le haut pour refermer le carré. Vérifie : tu es revenu au point de départ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le rectangle, la méthode est presque la même, mais les deux dimensions sont différentes. Supposons que tu veux un rectangle de $5$ cases de long sur $3$ cases de large. Commence par un côté horizontal de $5$ cases. Ensuite, descends de $3$ cases. Reviens en arrière de $5$ cases. Remonte de $3$ cases. Le rectangle est fermé !"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 6,
+              "highlighted": 12,
+              "caption": "Rectangle 3 cases sur 5 cases tracé sur le quadrillage"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le quadrillage n'est pas assez grand ou tu veux dessiner une figure plus précise. Tu peux alors utiliser ta règle pour mesurer les longueurs en centimètres. Trace un segment de $6$ cm, puis à angle droit un segment de $4$ cm, puis $6$ cm, puis $4$ cm. Pour faire l'angle droit, utilise une équerre ou le coin de ta règle si elle en a un. Bravo, tu sais maintenant construire ces figures !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un carré et un rectangle à leur forme.",
+                "Je sais qu'un carré a 4 côtés égaux et 4 angles droits.",
+                "Je sais qu'un rectangle a 4 angles droits et ses côtés d'en face égaux.",
+                "Je sais mesurer les côtés avec une règle.",
+                "Je sais vérifier les angles droits avec le coin d'une feuille.",
+                "Je sais tracer un carré et un rectangle sur un quadrillage."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de cases dois-je tracer pour faire un côté d'un carré de 4 cases ?",
+              "answer": "4 cases",
+              "hint": "Tous les côtés d'un carré ont la même longueur. Si le premier côté fait 4 cases, les autres aussi.",
+              "explanation": "Pour construire un carré sur quadrillage, chaque côté doit avoir le même nombre de cases. Ici, 4 cases."
+            },
+            {
+              "question": "Pour tracer un rectangle de 5 cases sur 3 cases, quel est l'ordre des longueurs des côtés ?",
+              "answer": "5 cases, 3 cases, 5 cases, 3 cases",
+              "hint": "Les côtés d'en face sont égaux. Commence par la longueur, puis la largeur, puis la longueur, puis la largeur.",
+              "explanation": "Un rectangle a deux longueurs égales et deux largeurs égales. On alterne : longueur, largeur, longueur, largeur."
+            },
+            {
+              "question": "Vrai ou faux : pour tracer un rectangle sur quadrillage, je peux commencer par un côté vertical.",
+              "answer": "Vrai",
+              "hint": "L'important est de respecter les dimensions et les angles droits. L'orientation n'importe pas.",
+              "explanation": "On peut commencer par un côté horizontal ou vertical. Tant que les angles sont droits et les dimensions respectées, le rectangle est correct."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

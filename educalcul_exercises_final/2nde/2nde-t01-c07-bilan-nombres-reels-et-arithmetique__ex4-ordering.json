@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Bilan - Nombres réels et arithmétique",
+  "title": "Bilan - Nombres réels et arithmétique : mise en ordre",
+  "blocks": [
+    {
+      "title": "Ordre des étapes de simplification",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour simplifier l'expression $\\frac{\\sqrt{50}}{5} + \\frac{3}{\\sqrt{2}}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Étape 1 : Simplifier $\\sqrt{50}$ en $5\\sqrt{2}$.",
+        "Étape 2 : Réécrire $\\frac{5\\sqrt{2}}{5}$ en $\\sqrt{2}$.",
+        "Étape 3 : Rationaliser $\\frac{3}{\\sqrt{2}}$ en $\\frac{3\\sqrt{2}}{2}$.",
+        "Étape 4 : Additionner $\\sqrt{2} + \\frac{3\\sqrt{2}}{2}$ pour obtenir $\\frac{5\\sqrt{2}}{2}$."
+      ],
+      "explanation": "On commence par simplifier le radicande 50 en 25×2, ce qui donne 5√2. La fraction 5√2/5 se simplifie en √2. Ensuite, on rationalise le dénominateur de 3/√2 en multipliant numérateur et dénominateur par √2, ce qui donne 3√2/2. Enfin, on additionne √2 (soit 2√2/2) et 3√2/2 pour obtenir 5√2/2.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant de nombres",
+      "content": "Classez les nombres suivants par ordre croissant : $\\sqrt{2}$, $1,4$, $\\frac{3}{2}$, $1,41$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$1,4$",
+        "$1,41$",
+        "$\\sqrt{2}$",
+        "$\\frac{3}{2}$"
+      ],
+      "explanation": "On compare les valeurs numériques : 1,4 = 1,40 ; 1,41 = 1,41 ; √2 ≈ 1,4142 ; 3/2 = 1,5. L'ordre croissant est donc 1,4 < 1,41 < √2 < 3/2.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des propriétés utilisées",
+      "content": "Rangez les propriétés des nombres réels dans l'ordre où elles sont utilisées pour démontrer que $(a+b)^2 = a^2 + 2ab + b^2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Propriété de distributivité : $(a+b)(a+b) = a(a+b) + b(a+b)$.",
+        "Propriété de distributivité (seconde fois) : $a(a+b) = a^2 + ab$ et $b(a+b) = ab + b^2$.",
+        "Propriété de commutativité de l'addition : $ab + ab = 2ab$.",
+        "Propriété d'associativité de l'addition : $a^2 + ab + ab + b^2 = a^2 + 2ab + b^2$."
+      ],
+      "explanation": "Le développement commence par appliquer la distributivité au produit (a+b)(a+b). On applique à nouveau la distributivité sur chaque terme a(a+b) et b(a+b). Les termes ab et ab sont ensuite regroupés grâce à la commutativité et l'addition pour former 2ab. Enfin, l'associativité permet d'écrire la somme finale sous la forme a^2 + 2ab + b^2.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

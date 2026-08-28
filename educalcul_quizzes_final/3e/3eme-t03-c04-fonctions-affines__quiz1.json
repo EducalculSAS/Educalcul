@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "a et b",
+  "title": "Quiz : Les paramètres a et b d'une fonction affine",
+  "questions": [
+    {
+      "text": "Dans la fonction affine $f(x)=3x-5$, quels sont les valeurs de $a$ et $b$ ?",
+      "options": [
+        "a=3, b=-5",
+        "a=-3, b=5",
+        "a=5, b=3",
+        "a=-5, b=3"
+      ],
+      "correctAnswer": "a=3, b=-5",
+      "explanation": "La forme canonique d'une fonction affine est $f(x)=ax+b$. En comparant avec $f(x)=3x-5$, on identifie directement $a=3$ et $b=-5$. Les autres choix inversent les signes ou échangent les valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a=2$ et $b=4$, quelle est la valeur de $f(3)$ pour la fonction $f(x)=ax+b$ ?",
+      "options": [
+        "10",
+        "14",
+        "6",
+        "8"
+      ],
+      "correctAnswer": "10",
+      "explanation": "On calcule $f(3)=2\\times3+4=6+4=10$. Les distracteurs correspondent aux erreurs classiques : oublier d'ajouter $b$ (6), multiplier $a$ par $b$ (8) ou ajouter $a$ et $b$ avant de multiplier (14).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction affine passe par le point $(0,-2)$ et a pour coefficient directeur $5$. Quels sont $a$ et $b$ ?",
+      "options": [
+        "a=5, b=-2",
+        "a=-5, b=2",
+        "a=5, b=2",
+        "a=-2, b=5"
+      ],
+      "correctAnswer": "a=5, b=-2",
+      "explanation": "Le coefficient directeur est $a$, donc $a=5$. Le point $(0,-2)$ est l'intersection avec l'axe des ordonnées, donc $b=-2$. Les autres options confondent le signe de $a$ ou échangent $a$ et $b$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des fonctions affines suivantes a une pente négative et une ordonnée à l'origine égale à $7$ ?",
+      "options": [
+        "f(x)=-3x+7",
+        "f(x)=3x+7",
+        "f(x)=-3x-7",
+        "f(x)=3x-7"
+      ],
+      "correctAnswer": "f(x)=-3x+7",
+      "explanation": "La pente est le coefficient de $x$ (ici $-3$, négatif) et l'ordonnée à l'origine est le terme constant (ici $+7$). Les autres fonctions ont soit une pente positive, soit une ordonnée à l'origine différente de $7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction affine passant par les points $(1,3)$ et $(4,12)$ s'écrit $f(x)=ax+b$. Déterminez $a$ et $b$.",
+      "options": [
+        "a=3, b=0",
+        "a=3, b=3",
+        "a=9, b=-6",
+        "a=1, b=2"
+      ],
+      "correctAnswer": "a=3, b=0",
+      "explanation": "Le coefficient directeur $a = \\frac{12-3}{4-1} = \\frac{9}{3}=3$. En utilisant le point $(1,3)$ : $3 = 3\\times1 + b$ donc $b=0$. Les distracteurs proviennent d'erreurs de calcul du quotient ou d'une mauvaise substitution.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

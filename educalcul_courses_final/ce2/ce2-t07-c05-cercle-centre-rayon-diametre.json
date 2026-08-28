@@ -1,0 +1,373 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.100689+00:00",
+  "id": 200,
+  "code": "ce2-t07-c05",
+  "title": "Cercle : centre, rayon, diamètre",
+  "description": "Cours structuré Educalcul : Cercle : centre, rayon, diamètre.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Cercle : centre, rayon, diamètre",
+    "objectif_global": "Cercle : centre, rayon, diamètre",
+    "mini_lecons_imposees": [
+      "Nommer éléments.",
+      "Tracer au compas.",
+      "Comparer rayons."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Nommer éléments.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le cercle et son centre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un rond parfait dessiné sur une feuille de papier. Au milieu de ce rond, il existe un point unique qui est à la même distance de tous les points du contour. Ce point porte un nom précis : le centre. C'est le point de repère à partir duquel on va pouvoir décrire toute la figure."
+            },
+            {
+              "type": "definition",
+              "term": "centre",
+              "definition": "Point intérieur du cercle équidistant de tous les points du contour. On le note souvent par la lettre $O$.",
+              "example": "Sur le dessin, le point $O$ est le centre du cercle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le centre est comme le cœur du cercle : si tu places la pointe de ton compas sur ce point, le trait que tu vas tracer restera toujours à la même distance. C'est cette propriété qui fait que le cercle est parfaitement rond."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le rayon, segment du centre au contour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un rayon est le segment qui relie le centre $O$ à un point quelconque du cercle, par exemple $A$. Tous les rayons d'un même cercle ont exactement la même longueur. Connaître la longueur d'un rayon, c'est connaître la taille du cercle."
+            },
+            {
+              "type": "definition",
+              "term": "rayon",
+              "definition": "Segment joignant le centre du cercle à un point de son contour. Sa longueur est notée $r$ ou $OA$.",
+              "example": "Si $OA = 4\\,cm$, alors le rayon mesure $4\\,cm$."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 4,
+              "unit": "cm",
+              "caption": "Mesure d'un rayon de 4 cm sur une règle graduée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le diamètre, le plus grand segment du cercle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diamètre traverse le cercle en passant par le centre. Il relie deux points opposés du contour, disons $A$ et $B$. Comme il est composé de deux rayons alignés, sa longueur vaut deux fois la longueur d'un rayon."
+            },
+            {
+              "type": "definition",
+              "term": "diamètre",
+              "definition": "Segment passant par le centre et dont les extrémités sont sur le cercle. Sa longueur est $d = 2 \\times r$.",
+              "example": "Si le rayon mesure $4\\,cm$, le diamètre mesure $8\\,cm$."
+            },
+            {
+              "type": "display_math",
+              "latex": "d = 2 \\\\times r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer les éléments sur un schéma"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un dessin, on note le centre par une lettre majuscule, souvent $O$. Un rayon s'écrit avec deux lettres : la première pour le centre, la seconde pour le point sur le cercle, par exemple $OA$. Le diamètre qui passe par $A$ et $B$ s'écrit $AB$. Cette notation aide à parler du cercle sans ambiguïté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant identifier le centre, tracer un rayon, reconnaître un diamètre et les nommer correctement. Ces mots‑clés seront tes repères pour la suite du cours."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le cercle ci‑dessous, le point $O$ est le centre. Nomme le rayon qui joint $O$ au point $A$.",
+              "answer": "$OA$",
+              "hint": "Le rayon commence toujours par la lettre du centre.",
+              "explanation": "Le segment qui relie le centre $O$ au point $A$ du contour s'écrit $OA$. C'est la notation standard pour un rayon."
+            },
+            {
+              "question": "Si un rayon mesure $5\\,cm$, quelle est la longueur du diamètre ?",
+              "answer": "$10\\,cm$",
+              "hint": "Le diamètre est deux fois plus long que le rayon.",
+              "explanation": "On applique la relation $d = 2 \\times r$. Ici $r = 5\\,cm$, donc $d = 2 \\times 5 = 10\\,cm$."
+            },
+            {
+              "question": "Complète : le segment $AB$ qui passe par le centre $O$ s'appelle le ______.",
+              "answer": "diamètre",
+              "hint": "C'est le segment le plus long qui traverse le cercle par son centre.",
+              "explanation": "Un segment dont les extrémités sont sur le cercle et qui passe par le centre est un diamètre."
+            }
+          ]
+        },
+        {
+          "title": "Tracer au compas.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Présentation du compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le compas est l'instrument classique pour tracer un cercle. Il est composé de deux branches articulées : l'une se termine par une pointe fixe qui restera plantée sur le centre, l'autre porte une mine ou un crayon qui va dessiner le contour. Les deux branches peuvent s'écarter ou se rapprocher grâce à une vis de réglage."
+            },
+            {
+              "type": "definition",
+              "term": "compas",
+              "definition": "Instrument de géométrie muni de deux branches, l'une pointue pour le centre, l'autre munie d'une mine pour tracer. Il permet de reporter une longueur et de dessiner des cercles.",
+              "example": "Pour tracer un cercle de rayon $3\\,cm$, on écarte les branches de $3\\,cm$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Régler l'ouverture pour obtenir le rayon voulu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer, tu décides de la taille du cercle. Si tu veux un rayon de $4\\,cm$, tu ouvres le compas jusqu'à ce que l'écart entre la pointe fixe et la mine corresponde à $4\\,cm$. Tu peux vérifier cet écart en posant une règle graduée contre les deux pointes."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 4,
+              "unit": "cm",
+              "caption": "Vérification de l'ouverture du compas à 4 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer le cercle pas à pas"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer la pointe fixe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la pointe métallique du compas exactement sur le point qui sera le centre $O$. Appuie fermement pour qu'elle ne bouge pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire tourner la branche mobile",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En maintenant la pointe fixe immobile, fais pivoter doucement la branche qui porte la mine. Le trait doit être régulier et fermer la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le tracé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois le tour complet, mesure un rayon avec ta règle pour t'assurer qu'il fait bien la longueur prévue. Si ce n'est pas le cas, règle à nouveau l'écartement et recommence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour utiliser un compas avec confiance. Entraîne‑toi à tracer plusieurs cercles de rayons différents pour bien sentir le geste."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle partie du compas reste plantée sur le centre du cercle ?",
+              "answer": "La pointe fixe",
+              "hint": "C'est la branche qui ne bouge pas pendant le tracé.",
+              "explanation": "La pointe fixe, souvent en métal, sert de pivot. Elle ne doit pas glisser."
+            },
+            {
+              "question": "Tu veux tracer un cercle de rayon $6\\,cm$. Quelle distance dois‑tu régler entre les deux pointes du compas ?",
+              "answer": "$6\\,cm$",
+              "hint": "L'ouverture du compas correspond exactement à la longueur du rayon.",
+              "explanation": "Le compas reporte la longueur du rayon. Donc tu écartes les branches de $6\\,cm$."
+            },
+            {
+              "question": "Après avoir tracé un cercle, tu mesures un rayon et tu trouves $5,5\\,cm$ alors que tu avais réglé $5\\,cm$. Que fais‑tu ?",
+              "answer": "Tu resserres légèrement le compas et tu retraces le cercle.",
+              "hint": "Le tracé doit correspondre au réglage initial.",
+              "explanation": "Si le rayon mesuré est trop grand, l'écartement du compas était trop large. Il faut le diminuer et recommencer."
+            }
+          ]
+        },
+        {
+          "title": "Comparer rayons.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux cercles par leurs rayons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as plusieurs cercles devant toi, le plus grand est celui dont le rayon est le plus long. Tu peux mesurer chaque rayon avec une règle ou un mètre ruban, puis comparer les nombres obtenus. C'est la méthode la plus directe."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Cercle A",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Cercle B",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparaison des rayons de deux cercles (3 cm et 5 cm)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le diamètre pour comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le diamètre est plus facile à voir que le rayon, surtout si le cercle est déjà tracé. Comme le diamètre vaut deux fois le rayon, il suffit de diviser la longueur du diamètre par deux pour retrouver le rayon. Ainsi tu peux comparer des cercles même si tu n'as mesuré que leurs diamètres."
+            },
+            {
+              "type": "display_math",
+              "latex": "r = \\\\frac{d}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer plusieurs cercles du plus petit au plus grand"
+            },
+            {
+              "type": "paragraph",
+              "content": "Note dans un petit tableau la longueur du rayon (ou du diamètre divisé par deux) de chaque cercle. Ensuite, ordonne les valeurs du plus petit au plus grand. Le cercle associé à la plus petite valeur est le plus petit, celui de la plus grande valeur est le plus grand. Cette démarche t'aide à organiser tes observations."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueurs des rayons de trois cercles",
+              "bars": [
+                {
+                  "label": "Cercle 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Cercle 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Cercle 3",
+                  "value": 6,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer des cercles en mesurant leurs rayons ou leurs diamètres, et les ranger par ordre de taille. Ces compétences te seront utiles pour résoudre bien des problèmes de géométrie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer le centre, le rayon et le diamètre d'un cercle.",
+                "Je sais régler un compas pour tracer un cercle d'un rayon donné.",
+                "Je sais comparer deux cercles en mesurant leurs rayons ou leurs diamètres.",
+                "Je sais classer plusieurs cercles du plus petit au plus grand."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le cercle A a un rayon de $3\\,cm$, le cercle B a un rayon de $5\\,cm$. Lequel est le plus grand ?",
+              "answer": "Le cercle B",
+              "hint": "Compare les nombres : $5$ est plus grand que $3$.",
+              "explanation": "Le cercle dont le rayon est le plus long est le plus grand. Ici $5\\,cm > 3\\,cm$, donc le cercle B est plus grand."
+            },
+            {
+              "question": "Un cercle a un diamètre de $12\\,cm$. Quelle est la longueur de son rayon ?",
+              "answer": "$6\\,cm$",
+              "hint": "Le rayon est la moitié du diamètre.",
+              "explanation": "On divise le diamètre par deux : $12 \\div 2 = 6\\,cm$."
+            },
+            {
+              "question": "Tu as trois cercles dont les rayons mesurent $2\\,cm$, $4\\,cm$ et $6\\,cm$. Écris-les dans l'ordre du plus petit au plus grand.",
+              "answer": "Cercle 1 ($2\\,cm$), Cercle 2 ($4\\,cm$), Cercle 3 ($6\\,cm$)",
+              "hint": "Range les nombres $2$, $4$, $6$ par ordre croissant.",
+              "explanation": "En classant les valeurs des rayons, on obtient l'ordre des cercles par taille."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

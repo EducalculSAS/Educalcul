@@ -1,0 +1,493 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.735927+00:00",
+  "id": 722,
+  "code": "terminale-generale-maths-t08-c03",
+  "title": "Simulations",
+  "description": "Cours structuré Educalcul : Simulations.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Simulations",
+    "objectif_global": "Simulations",
+    "mini_lecons_imposees": [
+      "Aléatoire.",
+      "Répétitions.",
+      "Estimer."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Aléatoire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'aléatoire dans la vie quotidienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque jour, nous faisons face à des situations dont l'issue n'est pas connue à l'avance : le temps qu'il fera demain, le nombre de voitures qui passeront devant la fenêtre dans la prochaine minute, ou le résultat d'un lancer de dé. En mathématiques, on appelle cela une expérience aléatoire : une action que l'on peut reproduire dans les mêmes conditions, mais dont le résultat ne peut pas être prédit avec certitude. Ce qui est fascinant, c'est que même si le résultat unique nous échappe, on peut décrire l'ensemble de tous les résultats possibles et attribuer à chacun une probabilité. C'est le point de départ de toute simulation : on remplace le hasard réel par un modèle mathématique que l'ordinateur peut explorer des millions de fois."
+            },
+            {
+              "type": "definition",
+              "term": "expérience aléatoire",
+              "definition": "Une expérience dont le résultat ne peut pas être prévu avec certitude, mais dont l'ensemble des issues possibles est connu.",
+              "example": "Lancer un dé à six faces : les issues possibles sont 1, 2, 3, 4, 5, 6."
+            },
+            {
+              "type": "number_line",
+              "caption": "Espace des possibles pour un dé à six faces",
+              "min": 1,
+              "max": 6,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé le décor, nous allons donner un nom à ce qui varie d'un essai à l'autre : la variable aléatoire. Elle associe un nombre à chaque issue possible, ce qui nous permet de calculer des moyennes, des variances et bien d'autres grandeurs utiles pour la simulation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variable aléatoire et distribution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une variable aléatoire est une fonction qui, à chaque résultat élémentaire d'une expérience aléatoire, associe un nombre réel. Pour un dé équilibré, la variable aléatoire X qui donne la face obtenue prend les valeurs 1, 2, 3, 4, 5, 6, chacune avec la même probabilité 1/6. La liste de ces couples (valeur, probabilité) s'appelle la loi de probabilité ou la distribution de X. Connaître cette distribution est essentiel, car c'est elle que l'ordinateur va imiter lorsqu'il générera des nombres pseudo-aléatoires."
+            },
+            {
+              "type": "definition",
+              "term": "variable aléatoire",
+              "definition": "Fonction définie sur l'espace des possibles d'une expérience aléatoire, à valeurs dans les réels, qui associe un nombre à chaque issue.",
+              "example": "X = face obtenue au lancer d'un dé."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distribution uniforme d'un dé à six faces",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 16.67,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 16.67,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 16.67,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 16.67,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 16.67,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 16.67,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que l'ordinateur puisse imiter ce lancer de dé, il doit produire une suite de nombres qui se comporte comme s'il était aléatoire, tout en étant générée par un algorithme déterministe. C'est le rôle des générateurs pseudo-aléatoires : à partir d'une graine initiale, ils calculent une suite qui passe des tests statistiques de hasard. En Python, le module random fournit de telles fonctions, et la méthode randint permet d'obtenir un entier dans un intervalle fermé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Générer des nombres aléatoires avec un ordinateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les générateurs pseudo-aléatoires ne créent pas de véritable hasard, mais une suite qui en a l'apparence. Ils utilisent une formule de récurrence linéaire modulo un grand nombre premier, ce qui garantit une période très longue avant répétition. La graine (seed) détermine le point de départ : avec la même graine, on obtient exactement la même suite, ce qui est précieux pour reproduire une simulation. Dans la pratique, on utilise souvent l'heure système comme graine pour obtenir des suites différentes à chaque exécution."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\nrandom.seed(42)  # graine fixe pour reproductibilité\\nfor _ in range(5):\\n    print(random.randint(1, 6))",
+              "caption": "Exemple de génération de cinq lancers de dé en Python",
+              "language": "python"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un lancer de dé équilibré à six faces, quelle est la probabilité d'obtenir un 4 ?",
+              "answer": "$\\frac{1}{6}$",
+              "hint": "Tous les résultats sont équiprobables.",
+              "explanation": "Il y a six issues possibles, une seule favorable."
+            },
+            {
+              "question": "Si X désigne le résultat d'un lancer de dé, quelle est l'espérance de X ?",
+              "answer": "$3.5$",
+              "hint": "Moyenne des valeurs 1 à 6.",
+              "explanation": "Somme 1+...+6 =21, divisé par 6."
+            },
+            {
+              "question": "En Python, quelle instruction permet d'obtenir un entier aléatoire entre 1 et 6 inclus ?",
+              "answer": "random.randint(1,6)",
+              "hint": "Module random.",
+              "explanation": "randint inclut les bornes."
+            }
+          ]
+        },
+        {
+          "title": "Répétitions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répéter l'expérience pour observer la fréquence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on répète une expérience aléatoire un grand nombre de fois, on peut compter combien de fois un événement se produit. Le rapport de ce nombre sur le nombre total d'essais s'appelle la fréquence empirique. Contrairement à la probabilité théorique, qui est une propriété du modèle, la fréquence est une quantité observable qui change d'une série d'essais à l'autre. Pourtant, plus le nombre d'essais augmente, plus la fréquence a tendance à se stabiliser autour de la probabilité. C'est ce phénomène que nous allons quantifier."
+            },
+            {
+              "type": "definition",
+              "term": "fréquence empirique",
+              "definition": "Rapport entre le nombre d'occurrences d'un événement et le nombre total d'essais effectués.",
+              "example": "Sur 100 lancers de pièce, 48 faces donnent une fréquence de 0,48."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence de face pour différents nombres de lancers",
+              "bars": [
+                {
+                  "label": "10 essais",
+                  "value": 0.6,
+                  "tone": "green"
+                },
+                {
+                  "label": "100 essais",
+                  "value": 0.52,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1000 essais",
+                  "value": 0.503,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Si nous continuons d'augmenter le nombre de lancers, la fréquence observée se stabilise autour de la probabilité théorique, un phénomène que les mathématiciens ont formalisé sous le nom de loi des grands nombres. Cette loi existe sous deux formes : la loi faible, qui parle de convergence en probabilité, et la loi forte, qui affirme une convergence presque sûre. Nous allons en donner l'intuition puis l'énoncé précis."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi des grands nombres : intuition et énoncé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une suite de variables aléatoires indépendantes X1, X2, …, toutes ayant la même espérance μ. La moyenne empirique après n essais est M_n = (X1+…+Xn)/n. La loi faible des grands nombres dit que pour tout ε > 0, la probabilité que M_n s'écarte de μ de plus que ε tend vers 0 quand n tend vers l'infini. En d'autres termes, la moyenne empirique devient arbitrairement proche de l'espérance avec une probabilité arbitrairement proche de 1, dès que n est assez grand. La loi forte renforce ce résultat en affirmant que M_n converge vers μ pour presque tous les tirages."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Centrer les variables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose Yi = Xi - μ. Alors E[Yi] = 0 et les Yi sont indépendants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Majorer la variance de la moyenne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Var(M_n) = Var( (Y1+…+Yn)/n ) = (1/n^2) Σ Var(Yi) = σ^2/n, où σ^2 est la variance commune."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer l'inégalité de Bienaymé-Tchebychev",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "P(|M_n - μ| ≥ ε) ≤ Var(M_n)/ε^2 = σ^2/(n ε^2) → 0 quand n → ∞."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "0.5",
+              "xmin": 0,
+              "xmax": 1000,
+              "caption": "Probabilité théorique d'obtenir face (ligne constante à 0,5)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour voir cette convergence de nos propres yeux, nous allons programmer une simulation de lancers de pièce et tracer la proportion de faces au fil des essais. À chaque nouveau lancer, on met à jour le compteur de faces et on calcule la fréquence courante. Le graphique montre comment les fluctuations initiales s'amortissent progressivement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simulation de lancers de pièce : observer la convergence"
+            },
+            {
+              "type": "paragraph",
+              "content": "On initialise un compteur faces = 0. Pour i de 1 à N, on tire un nombre aléatoire uniforme entre 0 et 1 ; s'il est inférieur à 0,5, on incrémente faces. La fréquence après i essais est faces/i. En stockant ces valeurs, on obtient une courbe qui oscille d'abord largement puis se resserre autour de 0,5. C'est une illustration visuelle directe de la loi des grands nombres."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition faces / piles après 10 000 lancers simulés",
+              "slices": [
+                {
+                  "label": "Faces",
+                  "value": 5012,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Piles",
+                  "value": 4988,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Après 100 lancers d'une pièce équilibrée, on observe 48 faces. Quelle est la fréquence empirique de face ?",
+              "answer": "$0.48$",
+              "hint": "Fréquence = nombre de faces / nombre total.",
+              "explanation": "48/100 = 0.48."
+            },
+            {
+              "question": "Énoncer la loi faible des grands nombres pour une suite de variables aléatoires indépendantes de même espérance μ.",
+              "answer": "La moyenne empirique converge en probabilité vers μ.",
+              "hint": "Convergence en probabilité.",
+              "explanation": "Pour tout ε>0, P(|M_n-μ|>ε)→0."
+            },
+            {
+              "question": "Dans une simulation de 10 000 lancers, on obtient 5 032 faces. La proportion observée est-elle compatible avec la loi des grands nombres ?",
+              "answer": "Oui, l'écart est de 0.0032, compatible avec les fluctuations attendues.",
+              "hint": "Calculer l'écart par rapport à 0.5.",
+              "explanation": "Écart = |0.5032-0.5| = 0.0032, inférieur à 1/√n ≈ 0.01."
+            }
+          ]
+        },
+        {
+          "title": "Estimer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le principe de Monte Carlo : estimer par échantillonnage"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode de Monte Carlo repose sur une idée simple mais puissante : pour estimer une quantité difficile à calculer exactement (une aire, une intégrale, une probabilité), on génère un grand nombre de points aléatoires dans une région connue et on observe la proportion qui satisfait une certaine propriété. Cette proportion, multipliée par la mesure de la région, donne une approximation de la quantité recherchée. Plus le nombre de points est grand, plus l'estimation est précise, grâce à la loi des grands nombres que nous venons d'étudier."
+            },
+            {
+              "type": "definition",
+              "term": "méthode de Monte Carlo",
+              "definition": "Technique d'estimation numérique qui utilise l'échantillonnage aléatoire pour approximer des grandeurs déterministes (intégrales, aires, probabilités).",
+              "example": "Estimer π en tirant des points uniformément dans un carré contenant un quart de disque."
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(1-x^2)",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Quart de cercle unité, aire = π/4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exemple le plus célèbre est l'estimation de π en jetant des points au hasard dans un carré qui contient un quart de disque. Si le carré a pour côté 1, son aire est 1. Le quart de disque de rayon 1 a pour aire π/4. En tirant N points uniformément dans le carré, la proportion de points qui tombent dans le quart de disque tend vers π/4. Multiplier cette proportion par 4 donne une approximation de π. C'est une illustration parfaite du principe de Monte Carlo : transformer un problème géométrique en un problème statistique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer π en lançant des points dans un carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Concrètement, on génère deux nombres aléatoires indépendants u et v dans [0,1]. Le point (u,v) est dans le quart de disque si u^2 + v^2 ≤ 1. On compte le nombre M de tels points sur N tirages. L'estimateur de π est alors 4M/N. La variance de cet estimateur diminue comme 1/N, donc la précision s'améliore avec la racine carrée du nombre de simulations. C'est pourquoi on utilise souvent des millions de points pour obtenir quelques décimales correctes."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Points dans le quart de disque vs hors du disque (N=10 000)",
+              "slices": [
+                {
+                  "label": "Dans le disque",
+                  "value": 7854,
+                  "tone": "green"
+                },
+                {
+                  "label": "Hors du disque",
+                  "value": 2146,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de π, la même idée permet d'approximer n'importe quelle intégrale définie, à condition de connaître une majoration de la fonction sur l'intervalle. Pour ∫_a^b f(x) dx, on encadre le graphe dans un rectangle de base (b-a) et de hauteur M ≥ max f. On tire des points uniformément dans ce rectangle ; la proportion sous la courbe multipliée par l'aire du rectangle donne l'estimation de l'intégrale. L'erreur statistique se contrôle par la variance de l'indicateur, ce qui permet de construire des intervalles de confiance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer une intégrale et contrôler l'erreur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que l'on veuille estimer ∫_0^1 x^2 dx = 1/3. On choisit M = 1 (majorant de x^2 sur [0,1]). On tire N points (u_i, v_i) uniformément dans [0,1]×[0,1]. On compte ceux avec v_i ≤ u_i^2. L'estimateur est (b-a)*M * (compteur/N) = compteur/N. Sa variance est p(1-p)/N où p = 1/3. L'écart-type est donc √(p(1-p)/N). Pour N = 1 000 000, l'écart-type vaut environ 0,00047, ce qui donne un intervalle de confiance à 95 % d'amplitude environ 0,0019. C'est ainsi qu'on quantifie la fiabilité d'une simulation Monte Carlo."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle de confiance à 95 % pour l'estimation de ∫_0^1 x^2 dx avec N=1 000 000",
+              "min": 0.33,
+              "max": 0.34,
+              "points": [
+                {
+                  "value": 0.33333,
+                  "label": "Estimation"
+                },
+                {
+                  "value": 0.3324,
+                  "label": "Borne inf."
+                },
+                {
+                  "value": 0.3343,
+                  "label": "Borne sup."
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0.3324,
+                  "end": 0.3343,
+                  "label": "IC 95%"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une expérience aléatoire et son espace des possibles.",
+                "Je sais expliquer ce qu'est une variable aléatoire et sa distribution.",
+                "Je connais le principe des générateurs pseudo-aléatoires et je peux écrire un code simple pour simuler un dé.",
+                "Je comprends la notion de fréquence empirique et son lien avec la probabilité via la loi des grands nombres.",
+                "Je sais énoncer la loi faible des grands nombres et en donner une esquisse de démonstration.",
+                "Je peux programmer une simulation de lancers de pièce et interpréter la convergence de la fréquence.",
+                "Je maîtrise le principe de la méthode de Monte Carlo pour estimer une aire ou une intégrale.",
+                "Je sais estimer π par la méthode du quart de disque et calculer l'erreur statistique associée.",
+                "Je suis capable de construire un intervalle de confiance pour une estimation Monte Carlo."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "L'intégrale ∫_0^1 √(1-x²) dx vaut π/4. Si on tire N points uniformément dans le carré [0,1]², combien environ tomberont dans le quart de disque ?",
+              "answer": "Environ N·π/4 points.",
+              "hint": "Aire du quart de disque = π/4.",
+              "explanation": "Proportion de points dans le disque = aire disque / aire carré = π/4."
+            },
+            {
+              "question": "On a obtenu 7 854 points dans le quart de disque sur 10 000 tirés. Quelle estimation de π en déduit-on ?",
+              "answer": "$3.1416$",
+              "hint": "π ≈ 4 × (points dans disque / total).",
+              "explanation": "4 × 7854/10000 = 3.1416."
+            },
+            {
+              "question": "Pour estimer ∫_0^1 x² dx par Monte Carlo avec 1 000 000 points, quelle est l'erreur-type approximative de l'estimateur ?",
+              "answer": "Environ 0.00029",
+              "hint": "Variance de x² sur [0,1] = 1/5 - (1/3)² = 4/45.",
+              "explanation": "Écart-type = sqrt(Var/N) ≈ sqrt(4/45 / 1e6) ≈ 0.000298."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

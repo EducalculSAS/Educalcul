@@ -1,0 +1,362 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.718553+00:00",
+  "id": 78,
+  "code": "ce1-t01-c11",
+  "title": "Bilan - Numération CE1",
+  "description": "Cours structuré Educalcul : Bilan - Numération CE1.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Bilan - Numération CE1",
+    "objectif_global": "Bilan - Numération CE1",
+    "mini_lecons_imposees": [
+      "Lecture et écriture.",
+      "Décomposition, comparaison et droite.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lecture et écriture.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et écrire les nombres jusqu'à 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà lire les nombres jusqu'à $100$, c'est super ! Aujourd'hui, on fait le point ensemble pour que tout soit bien clair dans ta tête. Prends une grande inspiration, c'est parti."
+            },
+            {
+              "type": "definition",
+              "term": "Chiffre",
+              "definition": "Un symbole qu'on utilise pour écrire les nombres. Il y en a dix : $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$.",
+              "example": "Dans $42$, il y a deux chiffres : $4$ et $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $63$. On lit : soixante-trois. Le $6$ représente les dizaines, le $3$ les unités. Essaie de le dire tout haut : soixante-trois. Bravo !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "63 : 6 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire les nombres en lettres et en chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on écrit un nombre en chiffres, comme $27$, et parfois en lettres, comme vingt-sept. Les deux veulent dire la même chose. C'est comme avoir deux tenues pour la même personne !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux nombres de $11$ à $16$ : ils ont des noms spéciaux. Onze, douze, treize, quatorze, quinze, seize. Après, c'est plus régulier : dix-sept, dix-huit, dix-neuf. Et pour les dizaines : vingt, trente, quarante, cinquante, soixante."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 5,
+              "highlighted": 7,
+              "caption": "Compte les cases colorées : 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines arrivent !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on passe aux grands nombres jusqu'à $1000$. Une centaine, c'est $10$ dizaines, ou $100$ unités. Imagine une grande boîte qui contient $100$ petits cubes. C'est impressionnant, non ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nombre $256$ se lit : deux cent cinquante-six. Le $2$ est au rang des centaines, le $5$ aux dizaines, le $6$ aux unités. On ne dit pas le \"s\" à cent quand un autre nombre suit, comme dans deux cent cinquante-six."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 5,
+              "units": 6,
+              "caption": "256 : 2 centaines, 5 dizaines, 6 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de réviser la lecture et l'écriture des nombres. Dans la prochaine leçon, on va voir comment les décomposer, les comparer et les placer sur une droite. C'est passionnant !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres : soixante-douze.",
+              "answer": "72",
+              "hint": "Soixante = 60, douze = 12. Combine-les.",
+              "explanation": "Soixante-douze s'écrit $72$ : $7$ dizaines et $2$ unités."
+            },
+            {
+              "question": "Lis ce nombre à voix haute : 48.",
+              "answer": "Quarante-huit",
+              "hint": "4 dizaines = quarante, 8 unités = huit.",
+              "explanation": "$48$ se lit quarante-huit. Le $4$ vaut $40$ (quarante), le $8$ vaut $8$ (huit)."
+            },
+            {
+              "question": "Écris en lettres : 314.",
+              "answer": "Trois cent quatorze",
+              "hint": "3 centaines, 1 dizaine, 4 unités. Attention au trait d'union.",
+              "explanation": "$314$ s'écrit trois cent quatorze. Pas de \"s\" à cent car quatorze suit."
+            }
+          ]
+        },
+        {
+          "title": "Décomposition, comparaison et droite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer un nombre en centaines, dizaines, unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue pour cette nouvelle leçon ! Tu vas voir qu'un nombre, c'est comme un sandwich : on peut le prendre tout entier, ou regarder chaque couche séparément. C'est ce qu'on appelle décomposer."
+            },
+            {
+              "type": "definition",
+              "term": "Décomposition",
+              "definition": "Écrire un nombre comme une somme de centaines, de dizaines et d'unités.",
+              "example": "$342 = 300 + 40 + 2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $342$. On a $3$ centaines ($300$), $4$ dizaines ($40$) et $2$ unités ($2$). On écrit : $342 = 300 + 40 + 2$. Essaie sur ton ardoise avec $517$ : $500 + 10 + 7$. C'est ça !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 2,
+              "caption": "342 = 300 + 40 + 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres : plus grand, plus petit, égal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir qui est le plus grand entre deux nombres, on regarde d'abord les centaines. Si c'est pareil, on regarde les dizaines. Et si c'est encore pareil, les unités. C'est comme une course : les centaines partent en premier !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons $456$ et $472$. Les centaines : $4$ et $4$, égalité. Les dizaines : $5$ et $7$. Ah ! $7$ est plus grand que $5$. Donc $472$ est plus grand que $456$. On écrit $472 > 456$. Le bec de l'oiseau mange le plus gros nombre !"
+            },
+            {
+              "type": "display_math",
+              "latex": "472 > 456"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer les nombres sur une droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande règle posée par terre. Chaque trait est un nombre. $0$ au début, puis $100$, $200$, $300$... jusqu'à $1000$. Pour placer $635$, je cherche entre $600$ et $700$. C'est plus près de $600$ ou de $700$ ? De $600$ car $35 < 50$ !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Où se cache 635 ?",
+              "min": 600,
+              "max": 700,
+              "points": [
+                {
+                  "value": 635,
+                  "label": "635"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant décomposer, comparer et placer les nombres. La dernière leçon sera ton bilan personnel avec une checklist pour voir tout ce que tu maîtrises. Tu vas être fier de toi !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose 289 en centaines, dizaines, unités.",
+              "answer": "200 + 80 + 9",
+              "hint": "2 centaines, 8 dizaines, 9 unités.",
+              "explanation": "$289 = 200 + 80 + 9$. Il y a $2$ centaines, $8$ dizaines, $9$ unités."
+            },
+            {
+              "question": "Compare 534 et 543. Écris le signe > ou < .",
+              "answer": "534 < 543",
+              "hint": "Regarde les centaines, puis les dizaines.",
+              "explanation": "Centaines identiques ($5$). Dizaines : $3 < 4$. Donc $534 < 543$."
+            },
+            {
+              "question": "Entre quelles centaines se trouve 862 ?",
+              "answer": "Entre 800 et 900",
+              "hint": "Les centaines sont 800, 900, 1000...",
+              "explanation": "$862$ a $8$ centaines, donc il est entre $800$ et $900$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Révision complète : lis, écris, décompose, compare, place"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière ligne droite ! Tu as appris tant de choses sur les nombres. Cette leçon est ton moment à toi pour tout revoir avec de nouveaux exemples, différents des précédents. Prêt ? C'est parti pour le grand tour d'honneur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la lecture. Prends le nombre $704$. On lit : sept cent quatre. Attention, il n'y a aucune dizaine ! Le $0$ au milieu marque la place. C'est comme une chaise vide dans un rang de bus. Essaie $908$ : neuf cent huit. Parfait."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 7,
+              "tens": 0,
+              "units": 4,
+              "caption": "704 : 7 centaines, 0 dizaine, 4 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, l'écriture en lettres. Le nombre $621$ s'écrit six cent vingt-et-un. Tu vois le trait d'union entre vingt et un ? Il y en a partout entre les chiffres, sauf devant cent ou mille. Écris $405$ : quatre cent cinq. Pas de trait d'union car pas de dizaine !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la décomposition, jouons avec $830$. Huit centaines ($800$), trois dizaines ($30$), zéro unité. On écrit $830 = 800 + 30 + 0$. Le $+ 0$ n'est pas obligatoire mais il montre qu'on a pensé aux unités. Essaie $105$ : $100 + 0 + 5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons $999$ et $1000$. Neuf cent quatre-vingt-dix-neuf contre mille. Regarde les centaines : $9$ contre $10$ (car $1000 = 10$ centaines). Donc $1000$ est plus grand. $999 < 1000$. Sur la droite, $999$ est juste avant $1000$, comme le dernier marche avant le sommet !"
+            },
+            {
+              "type": "number_line",
+              "caption": "999 et 1000 sont voisins",
+              "min": 990,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 999,
+                  "label": "999"
+                },
+                {
+                  "value": 1000,
+                  "label": "1000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as parcouru tout le programme de numération CE1. Regarde ci-dessous tout ce que tu sais faire maintenant. Coche chaque case avec fierté, tu l'as mérité !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire les nombres jusqu'à 1000 en chiffres et en lettres.",
+                "Je sais décomposer un nombre en centaines, dizaines et unités (ex: 456 = 400 + 50 + 6).",
+                "Je sais comparer deux nombres avec les signes <, >, =.",
+                "Je sais placer un nombre sur une droite graduée jusqu'à 1000.",
+                "Je comprends le rôle du zéro dans un nombre (ex: 307, 500).",
+                "Je connais le nom des dizaines (vingt, trente, quarante...) et les exceptions (onze à seize)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en lettres : 704.",
+              "answer": "Sept cent quatre",
+              "hint": "7 centaines, 0 dizaine, 4 unités. Pas de trait d'union.",
+              "explanation": "$704$ s'écrit sept cent Quatre. Pas de dizaine donc pas de trait d'union."
+            },
+            {
+              "question": "Écris en chiffres : quatre cent vingt-six.",
+              "answer": "426",
+              "hint": "4 centaines, 2 dizaines, 6 unités.",
+              "explanation": "Quatre cent vingt-six = $426$."
+            },
+            {
+              "question": "Décompose 105.",
+              "answer": "100 + 0 + 5 ou 100 + 5",
+              "hint": "1 centaine, 0 dizaine, 5 unités.",
+              "explanation": "$105 = 100 + 5$ (ou $100 + 0 + 5$)."
+            },
+            {
+              "question": "Compare 999 et 1000.",
+              "answer": "999 < 1000",
+              "hint": "Combien de centaines dans 1000 ?",
+              "explanation": "$1000$ fait $10$ centaines, $999$ en fait $9$. Donc $999 < 1000$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

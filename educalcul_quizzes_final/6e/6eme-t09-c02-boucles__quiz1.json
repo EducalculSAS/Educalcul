@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 375,
+  "_course_code": "6eme-t09-c02-boucles",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Répéter",
+  "title": "Quiz sur l'instruction Répéter",
+  "questions": [
+    {
+      "text": "Dans un algorithme, quelle instruction permet de répéter un bloc d'instructions un nombre déterminé de fois ?",
+      "options": [
+        "Répéter ... fois",
+        "Tant que ... faire",
+        "Si ... alors",
+        "Pour ... de ... à ..."
+      ],
+      "correctAnswer": "Répéter ... fois",
+      "explanation": "L'instruction « Répéter ... fois » est conçue pour exécuter un bloc un nombre fixe de fois. « Tant que ... faire » répète tant qu'une condition est vraie, « Si ... alors » est une conditionnelle simple, et « Pour ... de ... à ... » est une boucle avec variable de contrôle, mais elle n'est pas l'instruction de base « Répéter » demandée ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'on écrit : Répéter $3$ fois : Afficher \"Bonjour\", combien de fois le mot Bonjour sera‑t‑il affiché ?",
+      "options": [
+        "Une fois",
+        "Deux fois",
+        "Trois fois",
+        "Quatre fois"
+      ],
+      "correctAnswer": "Trois fois",
+      "explanation": "La boucle « Répéter $3$ fois » exécute l'instruction qui suit exactement trois fois. Donc le mot « Bonjour » apparaît trois fois. Les autres nombres correspondent à des erreurs de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On initialise la variable $c$ à $0$. Ensuite on exécute : Répéter $4$ fois : $c \\leftarrow c + 2$. Quelle est la valeur finale de $c$ ?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Chaque itération ajoute $2$ à $c$. Après $4$ itérations, l'augmentation totale est $4 \\times 2 = 8$. Comme $c$ part de $0$, la valeur finale est $8$. Les autres options correspondent à un nombre d'itérations ou d'additions incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'effet de l'imbrication suivante ?\\nRépéter $2$ fois :\\n Répéter $3$ fois :\\n  Afficher \"*\"",
+      "options": [
+        "Affiche $2$ étoiles",
+        "Affiche $3$ étoiles",
+        "Affiche $5$ étoiles",
+        "Affiche $6$ étoiles"
+      ],
+      "correctAnswer": "Affiche $6$ étoiles",
+      "explanation": "La boucle externe s'exécute $2$ fois. À chaque tour, la boucle interne affiche une étoile $3$ fois. Le total est $2 \\times 3 = 6$ étoiles. Les autres nombres résultent d'une confusion entre les deux niveaux de répétition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme ci‑dessous, quelle ligne contient une erreur de syntaxe pour une boucle Répéter ?\\n1. Répéter $5$ fois\\n2.   Afficher \"Bonjour\"\\n3. Fin",
+      "options": [
+        "Ligne 1",
+        "Ligne 2",
+        "Ligne 3",
+        "Aucune erreur"
+      ],
+      "correctAnswer": "Ligne 3",
+      "explanation": "La fin d'une boucle « Répéter » doit s'écrire « Fin Répéter » (ou « FinRépéter » selon le dialecte). La ligne 3 ne contient que « Fin », ce qui est incomplet et provoque une erreur de syntaxe. Les lignes 1 et 2 sont correctes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

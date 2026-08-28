@@ -1,0 +1,588 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.426056+00:00",
+  "id": 298,
+  "code": "cm2-t04-c03",
+  "title": "Égalités et inconnues",
+  "description": "Cours structuré Educalcul : Égalités et inconnues.",
+  "subject": "Problèmes et initiation à l'algèbre",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Problèmes et initiation à l'algèbre",
+    "titre_du_cours": "Égalités et inconnues",
+    "objectif_global": "Égalités et inconnues",
+    "mini_lecons_imposees": [
+      "Valeur manquante.",
+      "Opération inverse.",
+      "Tester."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Problèmes et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Valeur manquante.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une valeur manquante ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as 7 billes dans une main et que tu en as 12 au total. Combien y a-t-il dans l'autre main ? C'est exactement ce qu'on appelle une valeur manquante : un nombre que l'on ne connaît pas encore mais que l'on peut retrouver grâce à ce que l'on sait déjà. Dans ce petit problème, l'inconnue se cache derrière le signe d'interrogation et l'égalité s'écrit $7 + ? = 12$. Tu vois, le total est connu, une partie est connue, il ne reste plus qu'à découvrir la partie qui manque."
+            },
+            {
+              "type": "number_line",
+              "caption": "Droite numérique de 0 à 15",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver ce nombre caché, tu peux compter à partir de 7 jusqu'à 12. Chaque saut d'une unité te rapproche du total. Si tu fais trois sauts, tu arrives à 10, quatre sauts te mènent à 11, cinq sauts te mènent à 12. Le nombre de sauts effectués est donc la valeur que tu cherches. Cette manière de compter sur une droite numérique aide à visualiser la distance entre le nombre connu et le total."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le nombre connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le premier terme de l'addition, ici 7."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte les sauts jusqu'au total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avance sur la droite numérique jusqu'à atteindre 12."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Le nombre de sauts est la valeur manquante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, 5 sauts sont nécessaires, donc ? = 5."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons un peu la situation pour voir comment on fait quand l'inconnue se trouve dans une soustraction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu aies 15 bonbons au départ. Tu en donnes quelques-uns à un ami et il t'en reste 9. Combien en as-tu donné ? L'égalité s'écrit $15 - ? = 9$. Ici, le total de départ est connu, le résultat final est connu, mais la quantité soustraite est l'inconnue. Pour la retrouver, on peut penser à l'addition inverse : quel nombre ajouté à 9 redonne 15 ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "15 : 1 dizaine et 5 unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie le total de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total de départ est 15."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifie ce qui reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il reste 9 bonbons."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouve la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quel nombre ajouté à 9 donne 15 ? C'est 6, donc ? = 6."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois l'inconnue se place tout au début de l'addition, comme dans $? + 8 = 14$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce cas, le nombre mystère est le premier terme. Tu peux encore utiliser l'opération inverse : pour retrouver le premier terme, il suffit de soustraire le second terme du total. Ici, tu calcules $14 - 8$ et tu obtiens 6. Donc $6 + 8 = 14$ et la valeur manquante est 6."
+            },
+            {
+              "type": "display_math",
+              "latex": "14 - 8 = 6"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total est 14."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Soustrais le terme connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais 14 moins 8."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtiens le premier terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat 6 est la valeur manquante."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois façons de rencontrer une valeur manquante : dans une addition, dans une soustraction, ou au tout début d'une addition. À chaque fois, l'idée est la même : utilise ce que tu connais pour retrouver ce qui manque. Continue à t'entraîner, tu verras que cela devient très vite un réflexe naturel."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'égalité : $7 + ? = 12$.",
+              "answer": "5",
+              "hint": "Compte à partir de 7 jusqu'à 12.",
+              "explanation": "En partant de 7, il faut ajouter 5 pour atteindre 12, donc la valeur manquante est 5."
+            },
+            {
+              "question": "Complète l'égalité : $15 - ? = 9$.",
+              "answer": "6",
+              "hint": "Quel nombre ajouté à 9 donne 15 ?",
+              "explanation": "Puisque $9 + 6 = 15$, le nombre soustrait est 6."
+            },
+            {
+              "question": "Complète l'égalité : $? + 8 = 14$.",
+              "answer": "6",
+              "hint": "Soustrais 8 de 14.",
+              "explanation": "En faisant $14 - 8$, on obtient 6, donc le premier terme est 6."
+            }
+          ]
+        },
+        {
+          "title": "Opération inverse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser l'opération inverse pour trouver l'inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu que pour retrouver une valeur manquante dans une addition, on peut compter en avant ou en arrière. Une manière plus rapide et qui marche pour tous les cas, c'est d'utiliser l'opération inverse. Si l'équation montre une addition, l'opération inverse est la soustraction. Si elle montre une multiplication, l'opération inverse est la division. C'est comme défaire ce qui a été fait pour revenir au point de départ."
+            },
+            {
+              "type": "display_math",
+              "latex": "13 - 6 = 7"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère l'addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation est x + 6 = 13."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Applique l'opération inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrais 6 des deux côtés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtiens la valeur de x",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "13 - 6 = 7, donc x = 7."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant ce qui se passe quand l'inconnue est multipliée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu aies 3 groupes d'un même nombre d'objets et qu'au total tu comptes 21 objets. L'égalité s'écrit $3 \\\\times x = 21$. Pour isoler $x$, tu dois annuler la multiplication par 3. L'opération inverse de la multiplication est la division. Tu divises donc 21 par 3 et tu trouves 7. Vérifie : $3 \\\\times 7 = 21$, c'est exact."
+            },
+            {
+              "type": "display_math",
+              "latex": "21 \\\\div 3 = 7"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation est 3 × x = 21."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Applique l'opération inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise 21 par 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Obtiens la valeur de x",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "21 ÷ 3 = 7, donc x = 7."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'équation mélange addition et multiplication, comme $2x + 4 = 14$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, l'inconnue $x$ est d'abord multipliée par 2, puis on ajoute 4. Pour la retrouver, on défait les opérations dans l'ordre inverse : on commence par enlever le 4 (soustraction), puis on divise par 2. D'abord $14 - 4 = 10$, ensuite $10 \\\\div 2 = 5$. Donc $x = 5$. C'est la méthode des deux étapes inverses."
+            },
+            {
+              "type": "display_math",
+              "latex": "14 - 4 = 10 \\\\quad 10 \\\\div 2 = 5"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Enlève l'addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais 14 moins 4, ce qui donne 10."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Annule la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise 10 par 2, ce qui donne 5."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La valeur de x est 5."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète : soustraire pour annuler une addition, diviser pour annuler une multiplication, et combiner les deux quand l'équation a plusieurs étages. À chaque fois, tu reprends le chemin à l'envers. C'est une stratégie puissante qui te servira tout au long de tes mathématiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation : $x + 6 = 13$.",
+              "answer": "7",
+              "hint": "Utilise l'opération inverse de l'addition.",
+              "explanation": "Soustrais 6 des deux côtés : $13 - 6 = 7$, donc $x = 7$."
+            },
+            {
+              "question": "Résous l'équation : $3 \\\\times x = 21$.",
+              "answer": "7",
+              "hint": "Utilise l'opération inverse de la multiplication.",
+              "explanation": "Divise 21 par 3 : $21 \\\\div 3 = 7$, donc $x = 7$."
+            },
+            {
+              "question": "Résous l'équation : $2x + 4 = 14$.",
+              "answer": "5",
+              "hint": "Défais les opérations dans l'ordre inverse.",
+              "explanation": "D'abord $14 - 4 = 10$, ensuite $10 \\\\div 2 = 5$, donc $x = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier ta réponse en la testant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trouver une valeur manquante, c'est bien. Être sûr que c'est la bonne, c'est encore mieux. Le test consiste à remettre le nombre que tu as trouvé à la place de l'inconnue dans l'égalité d'origine. Si les deux côtés de l'égalité donnent le même résultat, ta réponse est correcte. Si ce n'est pas le cas, tu as une piste pour revoir ton calcul."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Écris l'égalité originale, remplace le point d'interrogation par ton nombre, puis calcule chaque côté."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris l'égalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, x + 6 = 11."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplace x par ta réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as trouvé 5, écris 5 + 6 = 11."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare les deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "5 + 6 = 11, les deux côtés sont égaux, la réponse est validée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant de tester une réponse issue d'un petit problème écrit en mots."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des bonbons : tu as trouvé que 6 bonbons avaient été donnés. L'énoncé disait : 15 bonbons au départ, après en avoir donné quelques-uns, il en reste 9. Remplace le nombre donné par 6 : $15 - 6 = 9$. Effectivement, $15 - 6$ fait 9, donc ton answer est validé. Ce test te donne une certitude immédiate."
+            },
+            {
+              "type": "display_math",
+              "latex": "15 - 6 = 9"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Remets le nombre dans l'énoncé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "15 bonbons au départ, 6 donnés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcule le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "15 - 6 = 9."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifie la correspondance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le reste correspond à l'énoncé, la réponse est correcte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, testons une équation à deux étapes comme $2x + 4 = 14$ avec $x = 5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remplace $x$ par 5 dans l'expression de gauche : $2 \\\\times 5 + 4$. Calcule d'abord la multiplication : $2 \\\\times 5 = 10$. Puis ajoute 4 : $10 + 4 = 14$. Le côté droit de l'égalité est 14, les deux côtés sont égaux, donc $x = 5$ est la bonne solution. Ce test fonctionne pour n'importe quelle équation, aussi longue soit-elle."
+            },
+            {
+              "type": "display_math",
+              "latex": "2 \\\\times 5 + 4 = 14"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Remplace la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris 2 × 5 + 4."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calcule dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplication d'abord, puis addition."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare au côté droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le résultat égale 14, la solution est bonne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer une valeur manquante dans une addition.",
+                "Je sais utiliser l'opération inverse pour résoudre une équation simple.",
+                "Je sais vérifier ma réponse en la remplaçant dans l'égalité d'origine."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si $x = 5$ est la solution de $x + 6 = 11$.",
+              "answer": "Oui",
+              "hint": "Remplace $x$ par 5 et calcule.",
+              "explanation": "$5 + 6 = 11$, les deux côtés sont égaux, donc la réponse est correcte."
+            },
+            {
+              "question": "Tu as trouvé que 6 bonbons ont été donnés dans le problème : 15 bonbons au départ, il en reste 9. Teste ta réponse.",
+              "answer": "C'est correct",
+              "hint": "Calcule $15 - 6$.",
+              "explanation": "$15 - 6 = 9$, ce qui correspond au nombre de bonbons restants."
+            },
+            {
+              "question": "Teste la solution $x = 5$ pour l'équation $2x + 4 = 14$.",
+              "answer": "C'est correct",
+              "hint": "Remplace $x$ par 5 et calcule $2 \\\\times 5 + 4$.",
+              "explanation": "$2 \\\\times 5 + 4 = 10 + 4 = 14$, l'égalité est respectée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

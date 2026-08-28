@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 158,
+  "_course_code": "ce2-t02-c07-premieres-ecritures-a-virgule",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Lire un nombre décimal en contexte",
+  "title": "Quiz : Lire un nombre décimal en contexte (CE2)",
+  "questions": [
+    {
+      "text": "Une peluche coûte $12,50$ €. Comment lit-on correctement ce prix en langage courant (contexte monnaie) ?",
+      "options": [
+        "Douze virgule cinquante euros",
+        "Douze euros cinquante centimes",
+        "Douze euros cinq centimes",
+        "Mille deux cent cinquante euros"
+      ],
+      "correctAnswer": "Douze euros cinquante centimes",
+      "explanation": "En contexte monétaire (euros), la partie après la virgule représente les centimes d'euro. $12,50$ € se lit donc 'douze euros cinquante centimes' car 50 centimes = $0,50$ €. L'option A est la lecture mathématique, pas l'usage courant pour l'argent. L'option C confond dixièmes (50) et centièmes (05). L'option D ignore la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille contient $1,25$ L de jus. Quelle est la lecture adaptée au contexte de la mesure de capacité ?",
+      "options": [
+        "Un virgule vingt-cinq litres",
+        "Un litre vingt-cinq centilitres",
+        "Un litre deux centilitres",
+        "Cent vingt-cinq litres"
+      ],
+      "correctAnswer": "Un litre vingt-cinq centilitres",
+      "explanation": "Pour les mesures de capacité, on exprime souvent les dixièmes et centièmes en unités inférieures. $1$ L = $100$ cL. $0,25$ L = $25$ cL. On lit donc 'un litre vingt-cinq centilitres'. L'option A est la lecture mathématique. L'option C confond $0,25$ (25 cL) avec $0,02$ (2 cL). L'option D ignore la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $15,07$ kg (masse d'un sac), que représente le chiffre $0$ ?",
+      "options": [
+        "Zéro kilogramme",
+        "Zéro dixième de kilogramme",
+        "Zéro centième de kilogramme",
+        "Sept kilogrammes"
+      ],
+      "correctAnswer": "Zéro dixième de kilogramme",
+      "explanation": "Dans $15,07$, les chiffres après la virgule sont les dixièmes (premier rang) et les centièmes (deuxième rang). Le $0$ est au premier rang après la virgule : c'est le chiffre des dixièmes de kilogramme (soit des hectogrammes). L'option A correspond au chiffre des unités (5). L'option C correspond au deuxième rang après la virgule (7). L'option D correspond au chiffre 7 mal placé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le saut en longueur de Léa mesure trois mètres quatre centimètres. Quelle écriture décimale en mètres correspond à cette mesure ?",
+      "options": [
+        "$3,4$ m",
+        "$3,04$ m",
+        "$3,40$ m",
+        "$34$ m"
+      ],
+      "correctAnswer": "$3,04$ m",
+      "explanation": "Il faut convertir les centimètres en mètres. $1$ m = $100$ cm, donc $1$ cm = $0,01$ m. $4$ cm = $0,04$ m. La mesure est $3 + 0,04 = 3,04$ m. L'option A ($3,4$ m) correspond à $3$ m $40$ cm (4 dixièmes). L'option C ($3,40$ m) correspond aussi à $3$ m $40$ cm. L'option D ignore la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A indique la masse d'un sac de farine en kilogrammes. Quelle est cette masse ?",
+      "options": [
+        "$4,8$ kg",
+        "$4,08$ kg",
+        "$48$ kg",
+        "$8,4$ kg"
+      ],
+      "correctAnswer": "$4,8$ kg",
+      "explanation": "La droite est graduée par pas de $1$ kg (graduations principales) et de $0,1$ kg (sous-graduations). Le point A se situe sur la 8ème sous-graduation après $4$, soit $4 + 0,8 = 4,8$ kg. L'option B placerait le point entre $4$ et $4,1$ (8 centièmes). L'option C ignore la virgule. L'option D inverse les chiffres.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Masse du sac de farine (kg)",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 4.8,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

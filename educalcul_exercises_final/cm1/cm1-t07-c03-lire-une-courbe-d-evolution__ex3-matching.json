@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Valeurs",
+  "title": "Lecture de valeurs sur une courbe",
+  "blocks": [
+    {
+      "title": "Lecture simple",
+      "content": "Observe le graphique et relie chaque moment de la journée à la température correspondée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "à $8$ heures",
+          "right": "$12$ degrés"
+        },
+        {
+          "left": "à $12$ heures",
+          "right": "$18$ degrés"
+        },
+        {
+          "left": "à $16$ heures",
+          "right": "$15$ degrés"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver la température, on part de l'heure sur l'axe horizontal et on monte verticalement jusqu'à la courbe, puis on lit la valeur sur l'axe vertical.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "-0.2*(x-12)**2 + 18",
+        "xmin": 8,
+        "xmax": 16,
+        "caption": "Températures de la journée"
+      }
+    },
+    {
+      "title": "Évolution du niveau d'eau",
+      "content": "Relie chaque jour de la semaine au niveau d'eau mesuré dans le réservoir.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Lundi",
+          "right": "$100$ litres"
+        },
+        {
+          "left": "Mercredi",
+          "right": "$80$ litres"
+        },
+        {
+          "left": "Vendredi",
+          "right": "$60$ litres"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut identifier le point correspondant au jour demandé sur l'axe des abscisses et lire la valeur du volume sur l'axe des ordonnées.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "-10*x + 120",
+        "xmin": 0,
+        "xmax": 6,
+        "caption": "Niveau du réservoir"
+      }
+    },
+    {
+      "title": "Analyse d'une croissance",
+      "content": "Relie chaque mois à la taille du plant de tomates.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Mois $1$",
+          "right": "$5$ centimètres"
+        },
+        {
+          "left": "Mois $2$",
+          "right": "$12$ centimètres"
+        },
+        {
+          "left": "Mois $3$",
+          "right": "$25$ centimètres"
+        },
+        {
+          "left": "Mois $4$",
+          "right": "$40$ centimètres"
+        }
+      ],
+      "items": [],
+      "explanation": "Le plant grandit rapidement. En projetant le point du mois sur l'axe vertical, on trouve les valeurs $5$, $12$, $25$ et $40$ centimètres.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x**2 + 3",
+        "xmin": 1,
+        "xmax": 4,
+        "caption": "Croissance du plant"
+      }
+    }
+  ]
+}

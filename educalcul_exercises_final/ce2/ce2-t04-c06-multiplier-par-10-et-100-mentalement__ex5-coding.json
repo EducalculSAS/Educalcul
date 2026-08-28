@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 174,
+  "_course_code": "ce2-t04-c06-multiplier-par-10-et-100-mentalement",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Comprendre la valeur de position",
+  "title": "Algorithmes de multiplication par 10 et 100",
+  "blocks": [
+    {
+      "title": "Algorithme : Multiplier par 10",
+      "content": "Écris un algorithme simple qui prend un nombre entier $n$ en entrée et affiche le résultat de $n \\times 10$. Utilise la règle du décalage des chiffres (ajouter un zéro à droite).",
+      "correctAnswer": "Algorithme MultiplierPar10\\nEntrée : n (nombre entier)\\nDébut\\n    résultat ← n suivi d'un 0 (ou n × 10)\\n    Afficher résultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour multiplier un nombre entier par 10, on décale tous les chiffres d'un rang vers la gauche sur le tableau de position, ce qui revient à ajouter un chiffre 0 à droite du nombre. Par exemple, $23 \\times 10 = 230$. L'algorithme traduit cette règle par l'ajout d'un zéro.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme : Multiplier par 100",
+      "content": "Adapte l'algorithme précédent pour multiplier un nombre entier $n$ par 100. Explique la différence avec la multiplication par 10.",
+      "correctAnswer": "Algorithme MultiplierPar100\\nEntrée : n (nombre entier)\\nDébut\\n    résultat ← n suivi de deux 0 (ou n × 100)\\n    Afficher résultat\\nFin\\nDifférence : On ajoute deux zéros (décalage de deux rangs) au lieu d'un seul.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier par 100 revient à décaler les chiffres de deux rangs vers la gauche sur le tableau de position, ce qui équivaut à ajouter deux zéros à droite du nombre. Par exemple, $45 \\times 100 = 4500$. La différence avec la multiplication par 10 est l'amplitude du décalage : un rang pour 10, deux rangs pour 100.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet : Choix du multiplicateur",
+      "content": "Écris un algorithme qui demande à l'utilisateur un nombre $n$ et un multiplicateur $m$ (qui vaut soit 10, soit 100). L'algorithme affiche le produit $n \\times m$ en utilisant la règle des zéros.",
+      "correctAnswer": "Algorithme MultiplicationPar10ou100\\nEntrée : n (nombre entier), m (10 ou 100)\\nDébut\\n    Si m = 10 Alors\\n        résultat ← n suivi d'un 0\\n    Sinon Si m = 100 Alors\\n        résultat ← n suivi de deux 0\\n    Fin Si\\n    Afficher résultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme utilise une structure conditionnelle (Si... Alors... Sinon) pour choisir la bonne règle selon la valeur du multiplicateur. Si $m = 10$, on ajoute un zéro (décalage d'un rang). Si $m = 100$, on en ajoute deux (décalage de deux rangs). Cela montre la compréhension de la valeur de position : le nombre de zéros ajoutés correspond au nombre de zéros du multiplicateur (1 pour 10, 2 pour 100).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

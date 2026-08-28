@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Divisibilité et nombres premiers",
+  "title": "Quiz : Applications de la divisibilité et des nombres premiers",
+  "questions": [
+    {
+      "text": "Décomposer $2310$ en produit de facteurs premiers.",
+      "options": [
+        "$2 \\times 3 \\times 5 \\times 7 \\times 11$",
+        "$2 \\times 3 \\times 5 \\times 7 \\times 13$",
+        "$2 \\times 3 \\times 5 \\times 7 \\times 9$",
+        "$2 \\times 3 \\times 5 \\times 7 \\times 11 \\times 13$"
+      ],
+      "correctAnswer": "$2 \\times 3 \\times 5 \\times 7 \\times 11$",
+      "explanation": "On divise successivement $2310$ par $2$, $3$, $5$, $7$, $11$ pour obtenir $1$. Le produit $2 \\times 3 \\times 5 \\times 7 \\times 11 = 2310$. Les autres options contiennent un facteur erroné ($13$, $9$) ou un facteur en trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer le PGCD de $180$ et $252$ à partir de leurs décompositions en facteurs premiers.",
+      "options": [
+        "$12$",
+        "$18$",
+        "$36$",
+        "$72$"
+      ],
+      "correctAnswer": "$36$",
+      "explanation": "$180 = 2^2 \\times 3^2 \\times 5$ et $252 = 2^2 \\times 3^2 \\times 7$. Le PGCD prend les puissances minimales des facteurs communs : $2^2 \\times 3^2 = 4 \\times 9 = 36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer si $997$ est un nombre premier.",
+      "options": [
+        "$997$ est premier",
+        "$997 = 13 \\times 77$",
+        "$997 = 7 \\times 143$",
+        "$997 = 17 \\times 59$"
+      ],
+      "correctAnswer": "$997$ est premier",
+      "explanation": "On teste la divisibilité par tous les nombres premiers inférieurs à $\\sqrt{997} \\approx 31,6$ : $2,3,5,7,11,13,17,19,23,29,31$. Aucune division ne donne un reste nul, donc $997$ n'a pas de diviseur propre et est premier. Les autres égalités sont fausses ($13 \\times 77 = 1001$, $7 \\times 143 = 1001$, $17 \\times 59 = 1003$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Appliquer l'algorithme d'Euclide pour trouver le PGCD de $1071$ et $462$.",
+      "options": [
+        "$21$",
+        "$7$",
+        "$14$",
+        "$3$"
+      ],
+      "correctAnswer": "$21$",
+      "explanation": "$1071 = 462 \\times 2 + 147$, $462 = 147 \\times 3 + 21$, $147 = 21 \\times 7 + 0$. Le dernier reste non nul est $21$, donc PGCD$(1071,462)=21$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouver le plus petit entier strictement positif divisible à la fois par $8$, $9$ et $10$.",
+      "options": [
+        "$180$",
+        "$360$",
+        "$720$",
+        "$120$"
+      ],
+      "correctAnswer": "$360$",
+      "explanation": "Le PPCM de $8=2^3$, $9=3^2$ et $10=2 \\times 5$ est $2^3 \\times 3^2 \\times 5 = 8 \\times 9 \\times 5 = 360$. $180$ manque un facteur $2$, $120$ manque un facteur $3$, $720$ est un multiple mais pas le plus petit.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

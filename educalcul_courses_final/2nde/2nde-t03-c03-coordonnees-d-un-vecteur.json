@@ -1,0 +1,243 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.056268+00:00",
+  "id": 512,
+  "code": "2nde-t03-c03",
+  "title": "Coordonnées d'un vecteur",
+  "description": "Cours structuré Educalcul : Coordonnées d'un vecteur.",
+  "subject": "Vecteurs et géométrie",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Vecteurs et géométrie",
+    "titre_du_cours": "Coordonnées d'un vecteur",
+    "objectif_global": "Coordonnées d'un vecteur",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Interpréter.",
+      "Utiliser."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Vecteurs et géométrie",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu te trouves dans une ville dont les rues forment un quadrillage parfait, comme à New York. Pour expliquer à un ami comment aller de ton point de départ $A$ vers un point d'arrivée $B$, tu ne vas pas lui donner une distance globale et un angle compliqué. Tu vas plutôt lui dire : Marche $3$ rues vers l'Est et $2$ rues vers le Nord. Ce petit guide de voyage, c'est précisément ce qu'on appelle en mathématiques les coordonnées d'un vecteur. Le vecteur $\\vec{AB}$ ne s'intéresse pas à l'endroit où tu te trouves sur la carte, mais uniquement au déplacement que tu as effectué pour aller de $A$ vers $B$. C'est un outil puissant car il permet de transformer de la géométrie, qui est visuelle et parfois imprécise, en calculs algébriques rigoureux. Que tu te déplaces dans un salon ou que tu calcules la trajectoire d'une sonde spatiale, le principe reste le même : on décompose le mouvement selon deux axes perpendiculaires, généralement l'axe des abscisses $x$ et l'axe des ordonnées $y$. C'est cette simplicité qui fait la force des coordonnées, car elles rendent le mouvement mesurable et calculable sans même avoir besoin de sortir sa règle et son rapporteur."
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, dans un repère orthonormal, un vecteur $\\vec{u}$ est caractérisé par deux nombres appelés ses coordonnées, notés $\\vec{u}(x; y)$. L'abscisse $x$ représente le déplacement horizontal et l'ordonnée $y$ le déplacement vertical. Si on considère un vecteur $\\vec{AB}$ défini par deux points $A(x_A; y_A)$ et $B(x_B; y_B)$, les coordonnées du vecteur correspondent à la différence entre la position finale et la position initiale. On écrit donc $\\vec{AB}(x_B - x_A; y_B - y_A)$. Il est crucial de comprendre qu'un vecteur est un objet mobile : on peut le déplacer n'importe où dans le plan tant qu'on ne change ni sa direction, ni son sens, ni sa longueur. C'est pourquoi on dit qu'un vecteur est défini par ses coordonnées, indépendamment de son point de départ. Par exemple, si un vecteur $\\vec{u}$ a pour coordonnées $(2; 3)$, cela signifie que tout objet transporté par ce vecteur se déplace de $2$ unités vers la droite (si $x$ est positif) et de $3$ unités vers le haut (si $y$ est positif). Si les valeurs étaient négatives, on se déplacerait vers la gauche ou vers le bas. C'est cette notation compacte qui nous permet de manipuler des translations de manière très efficace."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{AB}(x_B - x_A; y_B - y_A)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer les coordonnées d'un vecteur $\\vec{AB}$ quand on connaît les coordonnées des points $A$ et $B$, il faut suivre une discipline très stricte pour éviter les erreurs de signe. La règle d'or est toujours : Fin moins Début. Voici la marche à suivre détaillée. D'abord, on identifie clairement les coordonnées du point de départ $A(x_A; y_A)$ et celles du point d'arrivée $B(x_B; y_B)$. Ensuite, on calcule l'abscisse du vecteur en soustrayant l'abscisse de $A$ à celle de $B$, soit $x_{\\vec{AB}} = x_B - x_A$. C'est l'étape où l'on détermine le décalage horizontal. Puis, on effectue la même opération pour l'ordonnée : on soustrait l'ordonnée de $A$ à celle de $B$, soit $y_{\\vec{AB}} = y_B - y_A$. Cette valeur indique le décalage vertical. Enfin, on regroupe ces deux résultats dans un couple de coordonnées pour définir le vecteur $\\vec{AB}(x_{\\vec{AB}}; y_{\\vec{AB}})$. Si vous rencontrez des nombres négatifs, n'oubliez pas que soustraire un nombre négatif revient à ajouter sa valeur absolue, par exemple $5 - (-2)$ devient $5 + 2 = 7$. Cette rigueur est essentielle car une simple inversion de signe changerait totalement la direction du vecteur, vous envoyant à l'opposé de votre destination."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons deux points $A(2; 3)$ et $B(5; 7)$ dans un repère orthonormal. Nous voulons trouver les coordonnées du vecteur $\\vec{AB}$. Nous commençons par identifier nos données : le point de départ est $A$ avec $x_A = 2$ et $y_A = 3$, et le point d'arrivée est $B$ avec $x_B = 5$ et $y_B = 7$. Appliquons la formule des coordonnées. Pour l'abscisse, nous calculons la différence $x_B - x_A$, ce qui nous donne $5 - 2 = 3$. Ce résultat $3$ nous indique que pour aller de $A$ vers $B$, on se déplace de $3$ unités vers la droite. Ensuite, pour l'ordonnée, nous calculons $y_B - y_A$, ce qui nous donne $7 - 3 = 4$. Ce résultat $4$ nous indique un déplacement de $4$ unités vers le haut. Nous pouvons maintenant conclure que le vecteur $\\vec{AB}$ a pour coordonnées $(3; 4)$. On note $\\vec{AB}(3; 4)$. On peut vérifier visuellement sur un graphique : en partant du point $(2; 3)$, si l'on avance de $3$ sur l'axe des abscisses et de $4$ sur l'axe des ordonnées, on arrive bien au point $(5; 7)$. Le calcul est donc parfaitement cohérent avec la réalité géométrique du déplacement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un cas un peu plus complexe où les points se trouvent dans différents quadrants du repère, avec des coordonnées négatives. Soit le point $C(-1; 4)$ et le point $D(3; -2)$. Nous cherchons les coordonnées du vecteur $\\vec{CD}$. Ici, le point de départ est $C$ et l'arrivée est $D$. L'abscisse du vecteur $\\vec{CD}$ se calcule par $x_D - x_C$. En remplaçant par les valeurs, on obtient $3 - (-1)$. Comme nous le savons, soustraire un nombre négatif équivaut à une addition, donc $3 + 1 = 4$. L'abscisse est donc $4$, ce qui signifie un déplacement vers la droite. Passons maintenant à l'ordonnée : on calcule $y_D - y_C$, ce qui donne $-2 - 4$. Ici, on part de $-2$ et on recule encore de $4$ unités, on arrive donc à $-6$. L'ordonnée est donc $-6$, ce qui indique un déplacement vers le bas. Le vecteur $\\vec{CD}$ a pour coordonnées $(4; -6)$. Notez comme l'ordre est primordial : si on avait calculé $\\vec{DC}$, on aurait obtenu $(-4; 6)$, ce qui est exactement le vecteur opposé. Ce deuxième exemple montre que même avec des signes opposés, la méthode Fin moins Début reste l'unique guide fiable pour ne pas se perdre dans le plan."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante, et presque systématique au début, est l'inversion de l'ordre des points. Beaucoup d'élèves font l'erreur de calculer Début moins Fin, soit $x_A - x_B$. C'est un piège redoutable car cela donne le vecteur opposé, $\\vec{BA}$ au lieu de $\\vec{AB}$. Pour éviter cela, répétez-vous comme un mantra : Fin moins Début. Un autre piège classic est la confusion entre les coordonnées d'un point et celles d'un vecteur. Un point $A(2; 3)$ est une position fixe, un endroit précis. Un vecteur $\\vec{u}(2; 3)$ est un mouvement, une instruction de déplacement. On ne peut pas additionner un point et un vecteur sans une règle précise (la relation de Chasles ou la définition de l'image d'un point). Enfin, faites attention aux signes lors des soustractions. L'expression $x_B - x_A$ peut devenir piégeuse quand $x_A$ est négatif. Par exemple, si $x_B = 2$ et $x_A = -3$, le calcul est $2 - (-3) = 5$. Ne vous contentez pas de voir un signe moins et de soustraire sans réfléchir. Je vous conseille toujours d'écrire l'étape intermédiaire avec les parenthèses pour les valeurs négatives, cela sécurise votre raisonnement et permet au correcteur de voir que vous avez compris la méthode, même si une petite erreur de calcul s'est glissée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient les points $M(4; 1)$ et $N(10; 6)$. Calcule les coordonnées du vecteur $\\vec{MN}$.",
+              "answer": "(6; 5)",
+              "hint": "Applique la formule Fin moins Début : $x_N - x_M$ et $y_N - y_M$.",
+              "explanation": "L'abscisse est $10 - 4 = 6$ et l'ordonnée est $6 - 1 = 5$. On a donc $\\vec{MN}(6; 5)$."
+            },
+            {
+              "question": "Soient les points $P(-2; 5)$ et $Q(3; -1)$. Détermine les coordonnées du vecteur $\\vec{PQ}$.",
+              "answer": "(5; -6)",
+              "hint": "Fais attention aux signes : $3 - (-2)$ pour l'abscisse.",
+              "explanation": "L'abscisse est $3 - (-2) = 3 + 2 = 5$. L'ordonnée est $-1 - 5 = -6$. On a donc $\\vec{PQ}(5; -6)$."
+            },
+            {
+              "question": "On donne $\\vec{RS}(-3; 4)$ et le point $R(2; 2)$. Quelles sont les coordonnées du point $S$ ?",
+              "answer": "(-1; 6)",
+              "hint": "Si $\\vec{RS}(x_S - x_R; y_S - y_R)$, alors $x_S = x_{\\vec{RS}} + x_R$.",
+              "explanation": "On a $x_S - 2 = -3$, donc $x_S = -3 + 2 = -1$. On a $y_S - 2 = 4$, donc $y_S = 4 + 2 = 6$. Le point $S$ a pour coordonnées $(-1; 6)$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Une fois que tu sais calculer des coordonnées, tu as peut-être l'impression que ce ne sont que des chiffres dans des parenthèses. Mais en réalité, ces nombres sont les instructions secrètes d'un mouvement. Imagine que tu es un pilote de drone. Si je te dis que ton drone doit suivre le vecteur $\\vec{v}(5; -2)$, je ne te dis pas où le drone se trouve, mais comment il doit se déplacer. Le $5$ te dit : décale-toi de $5$ mètres vers la droite. Le $-2$ te dit : descends de $2$ mètres. Peu importe que ton drone soit au sol, sur un toit ou dans un arbre, l'instruction $\\vec{v}(5; -2)$ produira toujours le même déplacement relatif. C'est cela, interpréter un vecteur : c'est passer du calcul numérique à une vision géométrique. C'est comme lire une partition de musique ou un plan d'architecte. Les coordonnées sont le code, et le dessin du vecteur est la réalisation. Comprendre cette interprétation est essentiel car c'est ce qui permet, plus tard, d'étudier les forces en physique ou les trajectoires en informatique. Un vecteur n'est pas un point, c'est un pont entre deux points. En apprenant à visualiser ces coordonnées, tu transformes des soustractions abstraites en mouvements concrets dans l'espace."
+            },
+            {
+              "type": "paragraph",
+              "content": "Interpréter les coordonnées d'un vecteur, c'est comprendre comment elles traduisent un déplacement dans le plan. Si un vecteur $\\vec{u}$ a pour coordonnées $(x; y)$, alors $x$ est la projection du vecteur sur l'axe des abscisses et $y$ est sa projection sur l'axe des ordonnées. Géométriquement, cela signifie que le vecteur $\\vec{u}$ est l'hypoténuse d'un triangle rectangle dont les côtés sont les longueurs $x$ et $y$. Par exemple, un vecteur $(3; 0)$ est un pur déplacement horizontal vers la droite. Un vecteur $(0; -4)$ est une chute verticale de $4$ unités. Quand les deux coordonnées sont non nulles, le vecteur est oblique. Une notion fondamentale ici est que deux vecteurs sont égaux s'ils ont les mêmes coordonnées. Cela signifie qu'ils ont la même direction, le même sens et la même norme (longueur), même s'ils ne commencent pas au même endroit. On dit qu'ils sont translates l'un de l'autre. De plus, si un vecteur a des coordonnées $(k x; k y)$, il est colinéaire au vecteur $(x; y)$. Cela signifie qu'ils sont parallèles. Par exemple, le vecteur $(2; 1)$ et le vecteur $(4; 2)$ pointent dans la même direction car le second est simplement le double du premier. Interpréter, c'est donc savoir traduire $(x; y)$ en une flèche et savoir reconnaître des relations de parallélisme."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Illustration d'un déplacement vectoriel"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour interpréter et dessiner un vecteur $\\vec{u}(x; y)$ à partir d'un point d'origine $M$, on procède comme suit. Premièrement, on place le point $M$ dans le repère, ce sera le point de départ de notre flèche. Deuxièmement, on regarde l'abscisse $x$. Si $x$ est positif, on se déplace vers la droite de $x$ unités. Si $x$ est négatif, on se déplace vers la gauche de $|x|$ unités. On ne trace pas encore de ligne, on marque juste mentalement ou avec un petit point cette position horizontale. Troisièmement, à partir de cette position, on regarde l'ordonnée $y$. Si $y$ est positif, on monte de $y$ unités. Si $y$ est négatif, on descend de $|y|$ unités. On place alors le point d'arrivée, que l'on peut appeler $M'$. Enfin, on trace le segment $[MM']$ et on ajoute une flèche vers $M'$. Ce segment orienté est la représentation géométrique du vecteur $\\vec{u}$. Pour vérifier si deux vecteurs $\\vec{u}(x; y)$ et $\\vec{v}(x'; y')$ sont identiques, il suffit de vérifier que $x = x'$ et $y = y'$. S'ils diffèrent, on peut vérifier s'ils sont colinéaires en cherchant s'il existe un nombre $k$ tel que $x' = k x$ et $y' = k y$. C'est l'interprétation algébrique du parallélisme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que nous devions représenter le vecteur $\\vec{w}(-3; 2)$ en partant du point $A(1; 1)$. Nous commençons par placer le point $A$ aux coordonnées $(1; 1)$. Ensuite, nous analysons les coordonnées de $\\vec{w}$. L'abscisse est $-3$, ce qui nous impose de nous déplacer de $3$ unités vers la gauche. En partant de $x = 1$, on arrive à $1 - 3 = -2$. Nous sommes maintenant alignés verticalement avec notre point d'arrivée. Ensuite, nous analysons l'ordonnée $2$, ce qui nous impose de monter de $2$ unités. En partant de $y = 1$, on arrive à $1 + 2 = 3$. Le point d'arrivée, que nous appellerons $B$, a donc pour coordonnées $(-2; 3)$. Nous traçons la flèche de $A$ vers $B$. Ce vecteur $\\vec{AB}$ est une représentation du vecteur $\\vec{w}$. On remarque que si nous avions commencé au point $O(0; 0)$, nous serions arrivés au point $(-3; 2)$. C'est pour cela qu'on appelle souvent $(-3; 2)$ les coordonnées du vecteur $\\vec{w}$, car elles correspondent au point d'arrivée quand on part de l'origine. La flèche obtenue a la même longueur et la même inclinaison, quel que soit le point de départ choisi."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons maintenant la relation entre deux vecteurs $\\vec{u}(2; -1)$ et $\\vec{v}(-6; 3)$. Sont-ils identiques ? Non, car leurs coordonnées sont différentes. Sont-ils colinéaires ? Pour le savoir, on cherche si $\\vec{v}$ est un multiple de $\\vec{u}$. On regarde le rapport pour les abscisses : $-6 / 2 = -3$. On regarde le rapport pour les ordonnées : $3 / (-1) = -3$. Les deux rapports sont identiques et égaux à $-3$. Cela signifie que $\\vec{v} = -3\\vec{u}$. Interprétons cela géométriquement : le vecteur $\\vec{v}$ a la même direction que $\\vec{u}$, mais il est trois fois plus long et pointe dans le sens opposé (à cause du signe moins). Si on dessinait $\\vec{u}$ comme une petite flèche allant vers le bas et la droite, $\\vec{v}$ serait une grande flèche allant vers le haut et la gauche. Cette capacité à interpréter les coordonnées permet de prouver que deux droites sont parallèles sans même les tracer, simplement en montrant que leurs vecteurs directeurs sont colinéaires. C'est une application fondamentale de l'algèbre linéaire en seconde."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus insidieux est de confondre le vecteur $\\vec{u}(x; y)$ avec le point $U(x; y)$. Un point est une position, un vecteur est un mouvement. Dire que le vecteur $\\vec{u}$ a pour coordonnées $(2; 3)$ ne signifie pas qu'il se trouve au point $(2; 3)$. Cela signifie qu'il déplace tout point de $2$ vers la droite et $3$ vers le haut. Un autre piège concerne la lecture des signes. Dans l'interprétation, un signe moins signifie un changement de sens. Un vecteur $\\vec{u}(-2; -3)$ ne doit pas être vu comme ayant des distances négatives (une distance est toujours positive), mais comme ayant des directions opposées aux axes positifs. Enfin, attention à la confusion entre colinéarité et égalité. Deux vecteurs peuvent être colinéaires (parallèles) sans être égaux. Par exemple, $(1; 1)$ et $(2; 2)$ sont colinéaires car ils ont la même direction, mais ils ne sont pas égaux car ils n'ont pas la même longueur. Pour que deux vecteurs soient égaux, ils doivent impérativement avoir les mêmes coordonnées exactes. Ne confondez pas le fait d'avoir la même direction avec le fait d'être le même vecteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si un vecteur $\\vec{u}$ a pour coordonnées $(0; -5)$, comment interprètes-tu ce déplacement géométriquement ?",
+              "answer": "Un déplacement vertical de 5 unités vers le bas.",
+              "hint": "L'abscisse est 0, donc pas de mouvement horizontal. L'ordonnée est négative.",
+              "explanation": "Puisque $x=0$, il n'y a pas de décalage gauche-droite. Puisque $y=-5$, le mouvement est uniquement vertical et dirigé vers le bas."
+            },
+            {
+              "question": "Les vecteurs $\\vec{u}(2; 3)$ et $\\vec{v}(4; 6)$ sont-ils colinéaires ? Justifie.",
+              "answer": "Oui, car $\\vec{v} = 2\\vec{u}$.",
+              "hint": "Vérifie s'il existe un nombre k tel que x_v = k*x_u et y_v = k*y_u.",
+              "explanation": "On a $4 = 2 \\times 2$ et $6 = 2 \\times 3$. Le coefficient est $k=2$ pour les deux coordonnées, donc ils sont colinéaires."
+            },
+            {
+              "question": "À partir du point $A(3; 2)$, on applique le vecteur $\\vec{w}(-1; 4)$ pour arriver au point $B$. Quelles sont les coordonnées de $B$ ?",
+              "answer": "(2; 6)",
+              "hint": "Additionne les coordonnées du point A et celles du vecteur w.",
+              "explanation": "$x_B = 3 + (-1) = 2$ et $y_B = 2 + 4 = 6$. Le point B est donc (2; 6)."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu participes à un jeu de piste. La première étape te demande de suivre le vecteur $\\vec{u}$ pour aller d'un arbre à un banc. Puis, sans t'arrêter, tu dois suivre le vecteur $\\vec{v}$ pour aller du banc à un panneau signalétique. Au final, tu as effectué deux déplacements successifs. Mais si tu voulais raccourcir le trajet, tu pourrais simplement aller directement de l'arbre au panneau signalétique. Ce trajet direct, c'est la somme des deux vecteurs : $\\vec{u} + \\vec{v}$. C'est exactement ce que nous permet de calculer l'algèbre des vecteurs. Au lieu de dessiner des flèches et de mesurer avec une règle, nous pouvons simplement additionner les coordonnées. C'est un gain de temps immense. Si $\\vec{u}$ te déplace de $2$ pas à droite et $\\vec{v}$ te déplace de $3$ pas à droite, alors le résultat total est évident : tu t'es déplacé de $5$ pas à droite. Et s'il y a des déplacements verticaux, on fait la même chose. Cette opération, appelée somme vectorielle, est la base de nombreux calculs en physique, notamment pour calculer la force résultante quand plusieurs personnes tirent sur un même objet dans des directions différentes. C'est l'art de combiner des mouvements pour trouver le résultat global."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition de deux vecteurs $\\vec{u}(x; y)$ et $\\vec{v}(x'; y')$ consiste à additionner membre à membre leurs coordonnées. Le vecteur résultant, que l'on note $\\vec{w} = \\vec{u} + \\vec{v}$, a pour coordonnées : $\\vec{w}(x + x'; y + y')$. Cette règle algébrique est la traduction directe de la construction géométrique dite règle du parallélogramme ou méthode bout-à-bout. Si on place le début de $\\vec{v}$ au bout de $\\vec{u}$, le vecteur somme est celui qui part du début de $\\vec{u}$ et arrive au bout de $\\vec{v}$. On retrouve ici la relation de Chasles : $\\vec{AB} + \\vec{BC} = \\vec{AC}$. En termes de coordonnées, cela signifie que si on connaît le déplacement de $A$ vers $B$ et celui de $B$ vers $C$, on trouve le déplacement total de $A$ vers $C$ en additionnant les deux. Cette opération est commutative, ce qui signifie que $\\vec{u} + \\vec{v} = \\vec{v} + \\vec{u}$. Peu importe l'ordre des déplacements, on arrive toujours au même point final. L'opposé d'un vecteur $\\vec{u}(x; y)$ est le vecteur $-\\vec{u}(-x; -y)$, qui représente un mouvement exactement inverse. Soustraire un vecteur $\\vec{u}$ revient donc à additionner son opposé, ce qui se traduit par $\\vec{w}(x - x'; y - y')$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}(x; y) + \\vec{v}(x'; y') = \\vec{u} + \\vec{v}(x+x'; y+y')"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer la somme de deux vecteurs $\\vec{u}(x; y)$ et $\\vec{v}(x'; y')$, suivez ces étapes simples. Premièrement, isolez les abscisses des deux vecteurs, c'est-à-dire $x$ et $x'$. Additionnez-les ensemble pour obtenir l'abscisse du vecteur somme : $x_{\\text{somme}} = x + x'$. Attention aux signes : si l'un des deux est négatif, vous effectuez en réalité une soustraction. Deuxièmement, faites la même chose pour les ordonnées. Prenez $y$ et $y'$, et calculez leur somme : $y_{\\text{somme}} = y + y'$. Là encore, soyez vigilants avec les valeurs négatives. Troisièmement, écrivez le résultat final sous la forme d'un couple de coordonnées : $\\vec{u} + \\vec{v} (x_{\\text{somme}}; y_{\\text{somme}})$. Si l'exercice vous demande de trouver un vecteur inconnu $\\vec{w}$ tel que $\\vec{u} + \\vec{w} = \\vec{v}$, la méthode change légèrement. Il faut isoler $\\vec{w}$. On a $\\vec{w} = \\vec{v} - \\vec{u}$. Dans ce cas, vous devrez soustraire les coordonnées de $\\vec{u}$ de celles de $\\vec{v}$ : $\\vec{w}(x' - x; y' - y)$. C'est l'équivalent de chercher le déplacement nécessaire pour passer de la fin de $\\vec{u}$ à la fin de $\\vec{v}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons la somme de deux vecteurs $\\vec{u}(3; -2)$ et $\\vec{v}(1; 5)$. Nous cherchons $\\vec{w} = \\vec{u} + \\vec{v}$. Appliquons la méthode pas à pas. Pour l'abscisse, nous additionnons les abscisses de $\\vec{u}$ et $\\vec{v}$ : $x_w = 3 + 1 = 4$. Pour l'ordonnée, nous additionnons les ordonnées : $y_w = -2 + 5 = 3$. Le vecteur résultant est donc $\\vec{w}(4; 3)$. Interprétons ce résultat : le premier vecteur nous a poussé vers la droite et vers le bas, le second nous a poussé un peu plus vers la droite et beaucoup plus vers le haut. Le résultat final est une poussée nette vers la droite et vers le haut. Si on avait dessiné cela, on verrait que le déplacement total est la diagonale du parallélogramme formé par $\\vec{u}$ et $\\vec{v}$. C'est un calcul rapide qui évite tout dessin complexe. On a transformé un problème de trajectoire en une simple addition de nombres entiers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons maintenant que nous ayons $\\vec{u}(-4; 2)$ et que nous cherchions un vecteur $\\vec{v}$ tel que la somme $\\vec{u} + \\vec{v} = \\vec{s}(1; -3)$. Ici, $\\vec{s}$ est le résultat connu, et $\\vec{v}$ est l'inconnue. Nous devons isoler $\\vec{v}$. En utilisant la logique algébrique, on a $\\vec{v} = \\vec{s} - \\vec{u}$. Calculons les coordonnées de $\\vec{v}$ en soustrayant celles de $\\vec{u}$ de celles de $\\vec{s}$. Pour l'abscisse : $x_v = x_s - x_u = 1 - (-4)$. Ce qui devient $1 + 4 = 5$. Pour l'ordonnée : $y_v = y_s - y_u = -3 - 2 = -5$. Le vecteur $\\vec{v}$ a donc pour coordonnées $(5; -5)$. Vérifions notre résultat en refaisant la somme : $\\vec{u}(-4; 2) + \\vec{v}(5; -5)$ donne $(-4 + 5; 2 - 5)$, ce qui fait bien $(1; -3)$. Ce deuxième exemple est crucial car il montre que les vecteurs se manipulent exactement comme des nombres : on peut les additionner, les soustraire et résoudre des équations pour trouver un mouvement manquant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus fréquent lors de l'utilisation des coordonnées est de mélanger l'addition de points et l'addition de vecteurs. On ne peut pas additionner le point $A(1; 2)$ et le point $B(3; 4)$ pour obtenir un point $(4; 6)$. Cela n'a aucun sens géométrique. En revanche, on peut additionner un point et un vecteur : si on part du point $A(1; 2)$ et qu'on applique le vecteur $\\vec{u}(3; 4)$, on arrive au point $B(4; 6)$. C'est une distinction fondamentale. Un autre piège est l'erreur de signe lors de la soustraction $\\vec{v} - \\vec{u}$. L'élève oublie souvent que le signe moins s'applique à TOUTES les coordonnées de $\\vec{u}$, et pas seulement à la première. Par exemple, pour $\\vec{v}(1; 1) - \\vec{u}(-2; -3)$, le calcul correct est $(1 - (-2); 1 - (-3)) = (3; 4)$. Une erreur classique serait de faire $1 - (-2)$ mais d'oublier le moins pour l'ordonnée. Enfin, attention à ne pas confondre la somme vectorielle avec la distance. La longueur du vecteur somme $\\vec{u} + \\vec{v}$ n'est PAS la somme des longueurs de $\\vec{u}$ et $\\vec{v}$ (sauf s'ils sont dans la même direction). C'est l'inégalité triangulaire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule les coordonnées du vecteur $\\vec{w} = \\vec{u} + \\vec{v}$ sachant que $\\vec{u}(-2; 7)$ et $\\vec{v}(5; -3)$.",
+              "answer": "(3; 4)",
+              "hint": "Additionne les abscisses ensemble et les ordonnées ensemble.",
+              "explanation": "L'abscisse est $-2 + 5 = 3$ et l'ordonnée est $7 + (-3) = 4$. On obtient $\\vec{w}(3; 4)$."
+            },
+            {
+              "question": "On a $\\vec{u}(1; 2)$ et $\\vec{v}(3; 4)$. Calcule les coordonnées du vecteur $\\vec{w} = \\vec{v} - \\vec{u}$.",
+              "answer": "(2; 2)",
+              "hint": "Soustrait les coordonnées de u de celles de v : (x_v - x_u; y_v - y_u).",
+              "explanation": "L'abscisse est $3 - 1 = 2$ et l'ordonnée est $4 - 2 = 2$. On obtient $\\vec{w}(2; 2)$."
+            },
+            {
+              "question": "Un point $A$ a pour coordonnées $(2; -1)$. On lui applique le vecteur $\\vec{u}(-3; 5)$. Quelles sont les coordonnées du point $B$ d'arrivée ?",
+              "answer": "(-1; 4)",
+              "hint": "Le point B est la somme du point A et du vecteur u.",
+              "explanation": "$x_B = 2 + (-3) = -1$ et $y_B = -1 + 5 = 4$. Le point B est $(-1; 4)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

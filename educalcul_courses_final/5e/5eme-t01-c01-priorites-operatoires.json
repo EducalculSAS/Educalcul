@@ -1,0 +1,436 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.668318+00:00",
+  "id": 379,
+  "code": "5eme-t01-c01",
+  "title": "Priorités opératoires",
+  "description": "Cours structuré Educalcul : Priorités opératoires.",
+  "subject": "Opérations et calcul numérique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Opérations et calcul numérique",
+    "titre_du_cours": "Priorités opératoires",
+    "objectif_global": "Priorités opératoires",
+    "mini_lecons_imposees": [
+      "Lire expression.",
+      "Parenthèses.",
+      "Calculer et justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Opérations et calcul numérique",
+      "lessons": [
+        {
+          "title": "Lire expression.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expression numérique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu reçoives un message codé : $12 + 5 \\times 3$. Ce n'est pas encore un résultat, c'est une recette de calcul. En mathématiques, on appelle cela une $expression \\, num\\acute{e}rique$. C'est une écriture qui mélange des nombres et des symboles d'opérations ($+$, $-$, $\\times$, $:$ ou $\\div$) sans signe $\\pmb{=}$ à la fin. Ton travail, ce sera de la décrypter pour trouver la seule valeur qu'elle cache. Mais attention : on ne lit pas une expression comme un roman, de gauche à droite sans réfléchir. Si tu fais $12+5=17$ puis $17\\times3=51$, tu obtiens $51$. Si tu commences par la multiplication, $5\\times3=15$ puis $12+15=27$, tu trouves $27$. Deux résultats différents pour la même écriture ! C'est pour éviter ce chaos que les mathématiciens ont fixé des règles de priorité universelles. Dans cette leçon, nous allons apprendre à « lire » une expression pour repérer l'ordre des opérations avant même de sortir la calculatrice."
+            },
+            {
+              "type": "definition",
+              "term": "Expression numérique",
+              "definition": "Une écriture mathématique qui combine des nombres et des opérations ($+$, $-$, $\\times$, $:$) sans signe d'égalité. Elle représente un calcul à effectuer.",
+              "example": "$12 + 5 \\times 3$ est une expression numérique."
+            },
+            {
+              "type": "display_math",
+              "latex": "12 + 5 \\times 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La règle des priorités : qui passe en premier ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que tout le monde trouve le même résultat, une hiérarchie stricte s'applique. Retiens cette phrase simple : « Les multiplications et les divisions sont plus fortes que les additions et les soustractions. » Concrètement, quand tu scrutes une expression, tes yeux doivent d'abord chasser les symboles $\\times$ et $:$ (ou $\\div$). Ce sont les chefs. Les $+$ et $-$ attendent sagement leur tour. Si plusieurs multiplications ou divisions se côtoient, on les traite de gauche à droite, comme on lit une ligne de texte. Pareil pour les additions et soustractions : de gauche à droite. Cette règle vaut partout, même quand les nombres sont des décimaux ou des nombres relatifs que tu verras bientôt. Prenons l'exemple $20 - 8 \\times 2 + 6 : 3$. On repère d'abord $\\times$ et $:$ : $8\\times2=16$ et $6:3=2$. L'expression devient mentalement $20 - 16 + 2$. Il ne reste plus que $-$ et $+$, on calcule de gauche à droite : $20-16=4$, puis $4+2=6$. Le résultat final est $6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les opérations prioritaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Balaye l'expression des yeux. Entoure ou surligne chaque $\\times$ et chaque $:$ (ou $\\div$). Ce sont les calculs à faire en tout premier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer ces opérations prioritaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue chaque multiplication et chaque division dans l'ordre où elles apparaissent (de gauche à droite). Remplace-les par leur résultat pour simplifier l'expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Traiter les additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois que l'expression ne contient plus que des $+$ et des $-$, calcule de gauche à droite pour obtenir le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire du détective : les termes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une expression comme un pro, il est utile de connaître le mot « terme ». Dans une expression qui ne contient que des $+$ et des $-$, chaque morceau séparé par un $+$ ou un $-$ est un terme. Par exemple, dans $12 + 5 \\times 3 - 4 : 2$, il y a trois termes : $12$, $5 \\times 3$ et $4 : 2$. Remarque bien : le signe qui précède le terme lui appartient. Le deuxième terme est $+ 5 \\times 3$ (ou simplement $5 \\times 3$ s'il est en tête), le troisième est $- 4 : 2$. Cette découpe en termes est précieuse car à l'intérieur d'un terme, il n'y a que des multiplications et des divisions. Tu peux donc calculer chaque terme indépendamment des autres, puis faire la somme algébrique des résultats. C'est une méthode très sûre pour ne rien oublier et pour préparer le travail sur les nombres relatifs au chapitre suivant."
+            },
+            {
+              "type": "definition",
+              "term": "Terme",
+              "definition": "Dans une expression numérique, chaque partie séparée par un signe $+$ ou $-$ est un terme. Le signe qui précède le terme fait partie du terme.",
+              "example": "Dans $12 + 5 \\times 3 - 4 : 2$, les termes sont $12$, $+5 \\times 3$ et $-4 : 2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "S'entraîner à lire sans calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de te lancer dans les calculs, exerçe-toi à « lire » l'expression à haute voix en annonçant l'ordre des opérations. Pour $15 - 3 \\times 4 + 20 : 5$, tu dis : « Je vois une multiplication $3\\times4$ et une division $20:5$, je les fais en premier. Ensuite il me restera $15 - 12 + 4$, je ferai la soustraction puis l'addition. » Cet exercice de lecture active ancre la règle dans ta mémoire et évite les erreurs de précipitation. Essaie sur plusieurs exemples, même complexes, comme $50 - 2 \\times 6 + 18 : 3 - 4 \\times 2$. Repère les quatre opérations prioritaires, note l'ordre mental, puis seulement après, calcule. Tu verras que cette habitude te fera gagner un temps précieux et t'évitera les pièges classiques, comme oublier une division cachée au milieu des additions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'expression $18 + 4 \\times 5 - 10 : 2$, quelle opération doit être effectuée en tout premier ?",
+              "answer": "La multiplication $4 \\times 5$ (ou la division $10 : 2$, car elles ont la même priorité et on traite de gauche à droite, donc la multiplication arrivant en premier).",
+              "hint": "Repère les symboles $\\times$ et $:$ . Lequel apparaît en premier en lisant de gauche à droite ?",
+              "explanation": "On applique la règle : les multiplications et divisions sont prioritaires sur les additions et soustractions. Comme il y a une multiplication et une division, on les traite de gauche à droite. La multiplication $4 \\times 5$ arrive avant la division $10 : 2$, donc c'est elle qui se fait en première."
+            },
+            {
+              "question": "Complète les étapes pour lire l'expression $24 - 6 \\times 3 + 15 : 5$ sans la calculer : \\n1. Je repère les opérations prioritaires : ... \\n2. L'ordre de calcul sera : ... \\n3. Il restera ensuite : ...",
+              "answer": "1. La multiplication $6 \\times 3$ et la division $15 : 5$. 2. D'abord $6 \\times 3$ (car à gauche), puis $15 : 5$. 3. $24 - 18 + 3$, soit une soustraction puis une addition de gauche à droite.",
+              "hint": "Surligne les $\\times$ et $:$ . Compte combien il y en a et note leur ordre d'apparition.",
+              "explanation": "L'expression contient deux opérations prioritaires : $\\times$ et $:$. En lisant de gauche à droite, on rencontre d'abord $6 \\times 3$, puis $15 : 5$. Une fois ces deux calculs faits, l'expression se réduit à $24 - 18 + 3$ qui ne contient plus que $-$ et $+$, à traiter de gauche à droite."
+            },
+            {
+              "question": "Décompose l'expression $40 - 2 \\times 7 + 12 : 4 - 3 \\times 2$ en termes (séparés par $+$ ou $-$). Pour chaque terme, indique s'il contient une opération prioritaire.",
+              "answer": "Termes : $40$ (pas d'opération prioritaire), $- 2 \\times 7$ (contient $\\times$), $+ 12 : 4$ (contient $:$), $- 3 \\times 2$ (contient $\\times$).",
+              "hint": "Coupe l'expression à chaque $+$ ou $-$ (en gardant le signe avec le terme qui suit). Regarde ensuite dans chaque morceau s'il y a un $\\times$ ou un $:$.",
+              "explanation": "On coupe devant chaque $+$ ou $-$ : le premier terme est $40$ (nombre seul), le second est $- 2 \\times 7$ (signe $-$ + multiplication), le troisième est $+ 12 : 4$ (signe $+$ + division), le quatrième est $- 3 \\times 2$ (signe $-$ + multiplication). Trois termes sur quatre contiennent une opération prioritaire."
+            },
+            {
+              "question": "Lis l'expression suivante en annonçant l'ordre exact des calculs : $50 - 2 \\times 6 + 18 : 3 - 4 \\times 2$. Ne calcule pas le résultat final, écris seulement la suite des opérations à faire.",
+              "answer": "1. $2 \\times 6 = 12$ \\n2. $18 : 3 = 6$ \\n3. $4 \\times 2 = 8$ \\n4. $50 - 12 = 38$ \\n5. $38 + 6 = 44$ \\n6. $44 - 8 = 36$",
+              "hint": "Identifie les 3 multiplications/divisions dans l'ordre de gauche à droite, puis les 3 additions/soustractions restantes toujours de gauche à droite.",
+              "explanation": "L'expression contient trois opérations prioritaires : $2\\times6$, $18:3$, $4\\times2$ (dans cet ordre). Une fois remplacées, on a $50 - 12 + 6 - 8$. On traite les $-$ et $+$ de gauche à droite : $50-12=38$, $38+6=44$, $44-8=36$."
+            }
+          ]
+        },
+        {
+          "title": "Parenthèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les parenthèses : les chefs suprêmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises désormais la hiérarchie classique : $\\times$ et $:$ avant $+$ et $-$. Mais que se passe-t-il si l'on veut écrire « ajoute 5 et 3, puis multiplie le tout par 2 » ? Sans nouvel outil, $5 + 3 \\times 2$ donnerait $5+6=11$, ce n'est pas ce qu'on veut. Les mathématiciens ont inventé les parenthèses $( \\; )$ pour imposer un ordre différent. Elles agissent comme un coffre-fort : tout ce qui se trouve à l'intérieur doit être calculé à part, à l'abri des règles extérieures. Dans $(5+3)\\times2$, l'addition est enfermée, elle devient prioritaire sur la multiplication. On calcule $5+3=8$, puis $8\\times2=16$. Les parenthèses sont donc l'unique moyen de modifier l'ordre naturel des priorités. Elles disent : « Occupez-vous de moi en tout premier, quoi qu'il arrive ! » C'est une règle absolue, sans exception, qui vaut pour tous les niveaux de calcul, du collège jusqu'aux mathématiques supérieures."
+            },
+            {
+              "type": "definition",
+              "term": "Parenthèses",
+              "definition": "Symboles $( \\; )$ qui entourent une partie d'expression pour indiquer qu'elle doit être calculée en premier, avant toute autre opération extérieure.",
+              "example": "Dans $(12-4)\\times3$, la soustraction $12-4$ est faite avant la multiplication."
+            },
+            {
+              "type": "display_math",
+              "latex": "(5+3) \\times 2 = 8 \\times 2 = 16"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parenthèses et priorités internes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois qu'on a repéré une paire de parenthèses, on ne se contente pas de calculer le premier chiffre venu. À l'intérieur, les règles de priorités habituelles continuent de s'appliquer ! C'est un point crucial : les parenthèses créent une sous-expression qui a sa propre vie. Par exemple, dans $10 + (4 \\times 3 - 2)$, on regarde à l'intérieur : il y a une multiplication et une soustraction. La priorité interne dit : multiplication d'abord. On fait $4\\times3=12$, puis $12-2=10$. Le contenu des parenthèses devient $10$. L'expression principale redevient $10+10=20$. Si tu avais fait la soustraction en premier à l'intérieur ($4\\times1=4$), tu aurais eu tort. Alors, méthode sûre : à chaque fois que tu vois des parenthèses, tu zoomes à l'intérieur, tu appliques les règles de la leçon précédente (priorités $\\times/:$ puis $+/-$), tu remplaces les parenthèses par le résultat obtenu, et seulement après tu continues le calcul principal."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la paire de parenthèses la plus intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si plusieurs paires existent, commence par celle qui ne contient aucune autre parenthèse à l'intérieur (la plus profonde)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le contenu de ces parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les règles de priorités (× et : avant + et -) à l'intérieur même des parenthèses. Obtiens un unique nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplacer et recommencer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace les parenthèses et leur contenu par le nombre trouvé. Si d'autres parenthèses restent, retourne à l'étape 1. Sinon, termine le calcul principal avec les règles habituelles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parenthèses imbriquées : l'oignon à éplucher"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, des parenthèses se cachent à l'intérieur d'autres parenthèses : ce sont des parenthèses imbriquées. On utilise alors des formes différentes pour ne pas se perdre : des parenthèses rondes $( \\; )$, des crochets $[ \\; ]$ et parfois des accolades $\\lbrace \\; \\rbrace$. La règle d'or ne change pas : on commence toujours par le niveau le plus profond, celui qui ne contient plus aucune parenthèse à l'intérieur. C'est comme éplucher un oignon : on retire la couche la plus intérieure en premier. Prenons $5 \\times [ 12 - ( 8 : 2 ) ]$. Le plus profond est $(8:2)$. On calcule $8:2=4$. L'expression devient $5 \\times [ 12 - 4 ]$. Il reste les crochets : $12-4=8$. Enfin $5\\times8=40$. Si tu inverses l'ordre, tout s'écroule. Pour t'aider, tu peux recopier l'expression à chaque étape en remplaçant seulement la partie traitée. C'est un peu plus long à écrire, mais c'est la garantie de ne pas mélanger les pinceaux."
+            },
+            {
+              "type": "definition",
+              "term": "Parenthèses imbriquées",
+              "definition": "Plusieurs paires de parenthèses (souvent de formes différentes : $( )$, $[ ]$, $\\lbrace \\rbrace$) incluses les unes dans les autres. On calcule en commençant par la plus intérieure.",
+              "example": "$5 \\times [ 12 - ( 8 : 2 ) ]$ : on commence par $(8:2)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particulier : la barre de fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un dernier type de « parenthèses invisibles » que tu croises déjà : la barre de fraction. Quand tu écris $\\frac{12+4}{3}$, le numérateur $12+4$ et le dénominateur $3$ sont comme entourés de parenthèses. La barre de fraction signifie : « calcule tout ce qui est au-dessus, calcule tout ce qui est en-dessous, puis divise le premier par le second ». Donc $\\frac{12+4}{3}$ se traite comme $(12+4) : 3$. On fait $12+4=16$, puis $16:3$ qui donne $5,\\overline{3}$ ou $\\frac{16}{3}$. Même chose si le dénominateur est une expression : $\\frac{20}{4+1}$ vaut $(4+1)=5$ puis $20:5=4$. Cette règle est vitale pour ne pas confondre $\\frac{12+4}{3}$ (qui vaut $16/3$) avec $12+\\frac{4}{3}$ (qui vaut $12+1,\\overline{3}$). La barre de fraction groupe automatiquement le haut et le bas, c'est une priorité implicite qu'il faut avoir en tête dès maintenant."
+            },
+            {
+              "type": "fraction",
+              "numerator": 12,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "La barre de fraction agit comme des parenthèses autour du numérateur et du dénominateur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'expression : $(15 - 7) \\times 4$.",
+              "answer": "32",
+              "hint": "Commence par ce qui est dans les parenthèses.",
+              "explanation": "La priorité absolue est donnée aux parenthèses. On calcule $15-7=8$. L'expression devient $8 \\times 4 = 32$."
+            },
+            {
+              "question": "Calcule : $10 + (4 \\times 3 - 2)$ en détaillant l'ordre des opérations à l'intérieur des parenthèses.",
+              "answer": "20",
+              "hint": "Zoom à l'intérieur des parenthèses : quelle opération est prioritaire entre $\\times$ et $-$ ?",
+              "explanation": "Dans les parenthèses, la multiplication est prioritaire : $4 \\times 3 = 12$. Puis la soustraction : $12 - 2 = 10$. L'expression devient $10 + 10 = 20$."
+            },
+            {
+              "question": "Calcule l'expression avec parenthèses imbriquées : $5 \\times [ 12 - ( 8 : 2 ) ]$.",
+              "answer": "40",
+              "hint": "Identifie la parenthèse la plus profonde (celle qui n'en contient pas d'autre).",
+              "explanation": "La plus profonde est $(8:2)$. On calcule $8:2=4$. L'expression devient $5 \\times [ 12 - 4 ]$. Dans les crochets, $12-4=8$. Enfin $5 \\times 8 = 40$."
+            },
+            {
+              "question": "Calcule les deux expressions et compare : $\\frac{12+4}{3}$ et $12+\\frac{4}{3}$. Explique la différence.",
+              "answer": "La première vaut $\\frac{16}{3}$ (environ $5,33$), la seconde vaut $\\frac{40}{3}$ (environ $13,33$). La barre de fraction force l'addition au numérateur avant la division dans le premier cas, alors que dans le second, seule la division $4:3$ est faite en premier.",
+              "hint": "Traite la barre de fraction comme des parenthèses autour du haut et du bas.",
+              "explanation": "Pour $\\frac{12+4}{3}$, numérateur $12+4=16$, puis $16:3=\\frac{16}{3}$. Pour $12+\\frac{4}{3}$, la division $4:3$ est prioritaire (comme une multiplication), on obtient $12+1,\\overline{3} = \\frac{40}{3}$. Les parenthèses implicites de la barre changent tout."
+            }
+          ]
+        },
+        {
+          "title": "Calculer et justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mettre tout ensemble : la méthode complète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au terme de ce chapitre. Tu possèdes maintenant tous les outils pour calculer n'importe quelle expression numérique, même la plus touffue. Récapitulons la procédure générale, celle que tu pourras réutiliser tout au long de l'année et au-delà. Elle se décompose en trois grandes phases successives, immuables. Première phase : les parenthèses (et la barre de fraction). Tu zoomes sur le niveau le plus profond, tu calcules son contenu en respectant les priorités internes, tu remplaces, tu recommences tant qu'il reste des parenthèses. Deuxième phase : une fois l'expression débarrassée de toute parenthèse, tu traques les multiplications et les divisions. Tu les effectues de gauche à droite, une par une, en remplaçant au fur et à mesure. Troisième phase : il ne reste plus que des additions et des soustractions. Tu les effectues de gauche à droite jusqu'au résultat final. Cette méthode en entonnoir, du plus profond vers la surface, garantit l'unicité du résultat et évite les oublis."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Phase 1 : Parenthèses (et barre de fraction)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tant qu'il y a des parenthèses : prends la plus intérieure, calcule son contenu (en respectant ×/: avant +/-), remplace les parenthèses par le résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Phase 2 : Multiplications et divisions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plus de parenthèses. Effectue toutes les $\\times$ et $:$ dans l'ordre de gauche à droite. Remplace chaque opération par son résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Phase 3 : Additions et soustractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Plus de $\\times$ ni de $:$. Effectue tous les $+$ et $-$ de gauche à droite pour obtenir le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'art de justifier : écrire comme un mathématicien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au collège, on ne se contente pas de donner le résultat. On doit montrer son raisonnement, le justifier étape par étape. C'est ce qu'on appelle écrire un calcul « justifié » ou « posé ». La règle d'or : une ligne = une seule opération effectuée. On écrit l'expression de départ, puis à la ligne suivante on recopie tout à l'identique sauf la partie qu'on vient de calculer, qu'on remplace par son résultat. Les signes $=$ s'alignent verticalement. Cela permet à ton professeur (et à toi-même en relecture) de suivre exactement ton cheminement. Par exemple, pour $20 - (5+3) \\times 2$, on écrit :\\n$20 - (5+3) \\times 2 = 20 - 8 \\times 2$ (parenthèses)\\n$= 20 - 16$ (multiplication)\\n$= 4$ (soustraction).\\nRemarque : on ne écrit pas $5+3=8$ sur une ligne séparée, on intègre le résultat directement dans l'expression globale. C'est plus compact et cela montre la structure du calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{aligned} 20 - (5+3) \\times 2 &= 20 - 8 \\times 2 \\\\ &= 20 - 16 \\\\ &= 4 \\end{aligned}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges fréquents et astuces pour les éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même avec la méthode, certains pièges guettent. Le premier : les soustractions successives. Dans $15 - 4 - 2$, on fait $15-4=11$ puis $11-2=9$. Si tu fais $4-2=2$ puis $15-2=13$, c'est faux car la soustraction n'est pas associative. Le deuxième piège : le signe moins devant une parenthèse, comme $10 - (3+2)$. Après avoir calculé la parenthèse ($5$), on a $10-5=5$. Mais si l'expression était $10 - 3 + 2$, on ferait $10-3=7$ puis $7+2=9$. La présence de la parenthèse change le sens du signe moins qui la précède : il s'applique à tout le contenu. Troisième piège : la division écrite avec deux points $:$ ou une barre de fraction. $\\frac{10+2}{3}$ n'est pas $10+\\frac{2}{3}$. La barre de fraction est une parenthèse invisible. Pour t'en sortir, recopie toujours l'expression à chaque étape, même si cela te paraît long. C'est le meilleur filet de sécurité. Et si tu doutes, relis l'expression à haute voix en nommant l'opération que tu vas faire : « Je calcule la parenthèse, je fais la multiplication, je termine par l'addition ». Cette verbalisation ancre la logique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement complet : de la lecture à la justification"
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un exemple complet qui réunit tout le chapitre. Calculons et justifions : $5 \\times [ 14 - ( 6 + 2 ) ] + 18 : 3$. \\nLecture mentale : « Parenthèse la plus profonde : $(6+2)$. Puis crochets. Puis multiplication $5\\times\\dots$. Puis division $18:3$. Enfin addition. » \\nÉcriture justifiée :\\n$5 \\times [ 14 - ( 6 + 2 ) ] + 18 : 3 = 5 \\times [ 14 - 8 ] + 18 : 3$ (parenthèses rondes)\\n$= 5 \\times 6 + 18 : 3$ (crochets)\\n$= 30 + 6$ (multiplication et division de gauche à droite)\\n$= 36$ (addition).\\nObserve la propreté : chaque ligne ne fait qu'une chose, les $=$ sont alignés, les parenthèses disparaissent au fur et à mesure. C'est ce niveau de rigueur qu'on attend de toi en 5e. Entraîne-toi à produire des écritures aussi claires sur les exercices qui suivent. Tu verras que cette discipline te servira pour l'algèbre bientôt."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une expression numérique en identifiant l'ordre des opérations (priorités).",
+                "Je sais calculer une expression avec parenthèses simples en commençant par l'intérieur.",
+                "Je sais calculer une expression avec parenthèses imbriquées (rondes, crochets) en épluchant de l'intérieur vers l'extérieur.",
+                "Je sais que la barre de fraction agit comme des parenthèses sur le numérateur et le dénominateur.",
+                "Je sais écrire un calcul justifié : une ligne par opération, $=$ alignés, en indiquant la règle utilisée entre parenthèses."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule et justifie (une ligne par opération) : $20 - (5+3) \\times 2$.",
+              "answer": "$20 - (5+3) \\times 2 = 20 - 8 \\times 2 = 20 - 16 = 4$",
+              "hint": "Suis les trois phases : parenthèses, puis multiplication, puis soustraction. Écris chaque étape sur une nouvelle ligne avec le signe $=$ aligné.",
+              "explanation": "Phase 1 : parenthèses $(5+3)=8$. Phase 2 : multiplication $8\\times2=16$. Phase 3 : soustraction $20-16=4$. Chaque ligne ne fait qu'une opération."
+            },
+            {
+              "question": "Calcule et justifie : $5 \\times [ 12 - ( 8 : 2 ) ]$.",
+              "answer": "$5 \\times [ 12 - ( 8 : 2 ) ] = 5 \\times [ 12 - 4 ] = 5 \\times 8 = 40$",
+              "hint": "Commence par la parenthèse la plus profonde $(8:2)$. Puis les crochets. Enfin la multiplication.",
+              "explanation": "Parenthèse ronde : $8:2=4$. Crochets : $12-4=8$. Multiplication : $5\\times8=40$. Trois lignes, trois phases."
+            },
+            {
+              "question": "Calcule et justifie en évitant les pièges : $15 - 4 - 2$ et $10 - (3+2)$. Explique la différence de résultat.",
+              "answer": "$15 - 4 - 2 = 11 - 2 = 9$. $10 - (3+2) = 10 - 5 = 5$. Sans parenthèses, on soustrait de gauche à droite. Avec parenthèses, le moins s'applique à la somme $3+2=5$.",
+              "hint": "Pour le premier, traite les soustractions dans l'ordre. Pour le second, la parenthèse force l'addition avant la soustraction extérieure.",
+              "explanation": "Premier : $15-4=11$, puis $11-2=9$. Second : parenthèse $3+2=5$, puis $10-5=5$. Le signe $-$ devant la parenthèse s'applique au résultat global de la parenthèse."
+            },
+            {
+              "question": "Calcule et justifie complètement : $5 \\times [ 14 - ( 6 + 2 ) ] + 18 : 3$.",
+              "answer": "$5 \\times [ 14 - ( 6 + 2 ) ] + 18 : 3 = 5 \\times [ 14 - 8 ] + 18 : 3 = 5 \\times 6 + 18 : 3 = 30 + 6 = 36$",
+              "hint": "Applique la méthode en entonnoir : parenthèse ronde, crochets, multiplication et division (gauche à droite), addition.",
+              "explanation": "1. Parenthèse ronde $(6+2)=8$. 2. Crochets $14-8=6$. 3. Multiplication $5\\times6=30$ et division $18:3=6$ (de gauche à droite). 4. Addition $30+6=36$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Réunion / intersection simple",
+  "title": "Réunion et intersection d'événements - Secondes",
+  "blocks": [
+    {
+      "title": "Union et intersection d'événements simples",
+      "content": "On considère l'univers $Ω = {1,2,3,4,5,6,7,8,9,10}$. On définit les événements $A$ : \"le nombre est pair\" et $B$ : \"le nombre est strictement supérieur à $6$\". Complète : le nombre d'éléments de $A ∪ B$ est {{1}} et le nombre d'éléments de $A ∩ B$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "7",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'ensemble A contient les nombres pairs : {2,4,6,8,10} (5 éléments). L'ensemble B contient les nombres >6 : {7,8,9,10} (4 éléments). L'union A ∪ B = {2,4,6,7,8,9,10} a 7 éléments. L'intersection A ∩ B = {8,10} a 2 éléments.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilités de la réunion et de l'intersection",
+      "content": "Dans le même univers $Ω$, on choisit un élément au hasard de façon équiprobable. Donne les probabilités simplifiées : $P(A ∪ B) = $ {{1}} et $P(A ∩ B) = $ {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "7/10",
+        "1/5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Puisque l'univers a 10 éléments équiprobables, P(A ∪ B) = 7/10 et P(A ∩ B) = 2/10 = 1/5.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application à un lancer de dé",
+      "content": "Un dé à six faces numérotées de $1$ à $6$ est lancé. Soit $C$ l'événement \"le résultat est un multiple de $3$\" et $D$ l'événement \"le résultat est pair\". Complète : le nombre d'éléments de $C ∪ D$ est {{1}} et celui de $C ∩ D$ est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "C = {3,6}, D = {2,4,6}. L'union C ∪ D = {2,3,4,6} a 4 éléments. L'intersection C ∩ D = {6} a 1 élément.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

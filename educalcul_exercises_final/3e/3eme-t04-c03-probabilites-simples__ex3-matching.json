@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Exercice de calcul de probabilités simples",
+  "blocks": [
+    {
+      "title": "Question 1 : Probabilités élémentaires",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(\\text{obtenir }4\\text{ avec un d\\'e \\`a 6 faces})$",
+          "right": "$\\frac{1}{6}$"
+        },
+        {
+          "left": "$P(\\text{tirer un roi dans un jeu de 32 cartes})$",
+          "right": "$\\frac{1}{8}$"
+        },
+        {
+          "left": "$P(\\text{obtenir pair avec un d\\'e \\`a 6 faces})$",
+          "right": "$\\frac{1}{2}$"
+        },
+        {
+          "left": "$P(\\text{obtenir un nombre }>4\\text{ avec un d\\'e \\`a 6 faces})$",
+          "right": "$\\frac{1}{3}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour un d\\'e \\`a 6 faces, il y a 6 issues \\'equiprobables. L'\\'evenement \"obtenir 4\" a 1 issue favorable : $1/6$. Dans un jeu de 32 cartes, il y a 4 rois : $4/32 = 1/8$. Les nombres pairs sur un d\\'e sont 2, 4, 6 : 3 issues sur 6, soit $1/2$. Les nombres strictement sup\\'erieurs \\`a 4 sont 5 et 6 : 2 issues sur 6, soit $1/3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Probabilit\\'es d'\\'evenements ind\\'ependants",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(\\text{pile et }3)$",
+          "right": "$\\frac{1}{12}$"
+        },
+        {
+          "left": "$P(\\text{face et pair})$",
+          "right": "$\\frac{1}{4}$"
+        },
+        {
+          "left": "$P(\\text{pile et nombre }>4)$",
+          "right": "$\\frac{1}{6}$"
+        },
+        {
+          "left": "$P(\\text{face et }6)$",
+          "right": "$\\frac{1}{12}$"
+        }
+      ],
+      "items": [],
+      "explanation": "On lance une pi\\'ece (2 issues) et un d\\'e (6 issues) : 12 couples \\'equiprobables. \"Pile et 3\" : 1 couple favorable $\\Rightarrow 1/12$. \"Face et pair\" : face (1) $\\times$ nombres pairs (3) = 3 couples $\\Rightarrow 3/12 = 1/4$. \"Pile et $>4$\" : pile (1) $\\times$ {5,6} (2) = 2 couples $\\Rightarrow 2/12 = 1/6$. \"Face et 6\" : 1 couple $\\Rightarrow 1/12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Probabilit\\'es complémentaires et réunion",
+      "content": "Relie chaque expression à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$P(\\text{non }6\\text{ avec un d\\'e \\`a 6 faces})$",
+          "right": "$\\frac{5}{6}$"
+        },
+        {
+          "left": "$P(\\text{obtenir }2\\text{ ou }5\\text{ avec un d\\'e \\`a 6 faces})$",
+          "right": "$\\frac{1}{3}$"
+        },
+        {
+          "left": "$P(\\text{tirer une carte rouge dans un jeu de 32 cartes})$",
+          "right": "$\\frac{1}{2}$"
+        },
+        {
+          "left": "$P(\\text{ne pas tirer un as dans un jeu de 32 cartes})$",
+          "right": "$\\frac{7}{8}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour un d\\'e, $P(\\text{non }6)=1-P(6)=1-1/6=5/6$. Les issues 2 ou 5 sont 2 sur 6 $\\Rightarrow 1/3$. Dans un jeu de 32 cartes, la moiti\\'e sont rouges : $16/32=1/2$. Il y a 4 as, donc 28 cartes ne sont pas des as : $28/32=7/8$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

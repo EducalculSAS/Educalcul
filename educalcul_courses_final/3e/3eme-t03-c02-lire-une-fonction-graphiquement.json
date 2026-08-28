@@ -1,0 +1,589 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.936793+00:00",
+  "id": 468,
+  "code": "3eme-t03-c02",
+  "title": "Lire une fonction graphiquement",
+  "description": "Cours structuré Educalcul : Lire une fonction graphiquement.",
+  "subject": "Proportionnalité et fonctions",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Proportionnalité et fonctions",
+    "titre_du_cours": "Lire une fonction graphiquement",
+    "objectif_global": "Lire une fonction graphiquement",
+    "mini_lecons_imposees": [
+      "Images.",
+      "Antécédents.",
+      "Intersections."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité et fonctions",
+      "lessons": [
+        {
+          "title": "Images.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une image ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une balle en l'air. Sa hauteur au-dessus du sol dépend du temps qui s'écoule. Si on note $f$ la fonction qui associe à chaque instant $t$ (en secondes) la hauteur $h$ (en mètres), alors $f(t)$ est l'image de $t$ par la fonction $f$. Concrètement, si tu veux savoir à quelle hauteur se trouve la balle après $2$ secondes, tu cherches l'image de $2$. Sur le graphique de la fonction, cette image se lit comme la coordonnée $y$ du point qui se trouve exactement au-dessus de $t=2$ sur l'axe des abscisses. C'est ce que nous allons apprendre à faire avec précision."
+            },
+            {
+              "type": "definition",
+              "term": "Image",
+              "definition": "Soit $f$ une fonction définie sur un ensemble $D$. Pour tout nombre $x$ belonging à $D$, l'image de $x$ par $f$ est le nombre $f(x)$, c'est-à-dire la coordonnée $y$ du point du graphique de $f$ dont l'abscisse est $x$. On note souvent $y = f(x)$.",
+              "example": "Si $f(x) = x^2 - 2$, l'image de $3$ est $f(3) = 3^2 - 2 = 7$. Sur le graphique, le point d'abscisse $3$ a pour ordonnée $7$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Graphique de la fonction $f(x) = x^2 - 2$. Le point d'abscisse $3$ (hors cadre ici) aurait pour ordonnée $7$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe des abscisses (horizontal), trouve le nombre $x$ dont tu veux l'image. Trace mentalement ou avec ton crayon une ligne verticale passant par ce $x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'intersection avec la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette ligne verticale coupe la courbe en un unique point (car c'est une fonction). Repère ce point d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis ce point, trace une ligne horizontale vers l'axe des ordonnées (vertical). La valeur sur cet axe est l'image $f(x)$. Si le point tombe exactement sur un trait de graduation, l'image est exacte ; sinon, on donne une valeur approchée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble sur un exemple simple. Considérons la fonction $g(x) = 2x + 1$. Son graphique est une droite. Pour trouver l'image de $4$, je place mon doigt sur $4$ sur l'axe horizontal, je monte verticalement jusqu'à la droite, puis je vais horizontalement vers l'axe vertical. J'arrive sur $9$. Donc $g(4) = 9$. Vérifions par le calcul : $2 \\times 4 + 1 = 9$. C'est cohérent. Cette méthode marche pour n'importe quelle fonction, qu'elle soit une droite, une parabole ou une courbe plus compliquée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment lire une image exacte, voyons ce qui se passe quand la courbe ne passe pas pile sur une graduation. C'est très fréquent dans la vie réelle : la température à $14$ h $30$ n'est pas toujours un nombre entier !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Images exactes et images approchées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un graphique papier ou à l'écran, les graduations sont espacées régulièrement. Si le point d'intersection tombe exactement sur une graduation, tu lis une valeur exacte, comme $5$ ou $-3$. Mais souvent, le point se trouve entre deux graduations. Il faut alors estimer la valeur au plus près. Par exemple, si le point est à mi-chemin entre $2$ et $3$, tu diras $2,5$. Si c'est un peu plus près de $2$, tu pourras dire $2,2$ ou $2,3$ selon la précision demandée. En mathématiques, on accepte souvent une lecture à $0,1$ ou $0,2$ près selon l'échelle."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*x^2 - 1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphique de $h(x) = 0,5x^2 - 1$. Pour $x = 2,5$, l'image se lit approximativement $2,1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fonction $h(x) = 0,5x^2 - 1$. Pour $x = 2,5$, la verticale coupe la courbe entre $2$ et $3$ sur l'axe vertical. En observant attentivement, le point semble plus proche de $2$ que de $3$, disons $2,1$. Le calcul exact donne $h(2,5) = 0,5 \\times 6,25 - 1 = 3,125 - 1 = 2,125$. Notre lecture graphique $2,1$ est donc une bonne approximation. C'est normal : le graphique donne une vision globale, le calcul donne la précision."
+            },
+            {
+              "type": "number_line",
+              "caption": "Lecture approchée de l'image de $2,5$ sur l'axe des ordonnées.",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 2.125,
+                  "label": "Image exacte"
+                },
+                {
+                  "value": 2.1,
+                  "label": "Lecture graphique"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas confondre l'abscisse et l'ordonnée ! L'abscisse, c'est le $x$ de départ (sur l'axe horizontal), l'ordonnée, c'est l'image $f(x)$ (sur l'axe vertical). Un truc pour t'en souvenir : l'abscisse, c'est l'horizon (les deux commencent par 'h' dans 'horizontal'), l'ordonnée, c'est la verticale (les deux ont un 'v' dans 'verticale'... enfin presque). Trouve ton propre moyen mnémotechnique, l'important est de ne pas les inverser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment lire l'image d'un $x$ donné. Mais est-ce que tout $x$ a une image ? Et peut-il y avoir deux images différentes pour le même $x$ ? C'est ce que nous allons clarifier maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une seule image pour chaque $x$ : la définition d'une fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction, par définition, associe à chaque $x$ de son ensemble de définition $D$ **une unique** valeur $f(x)$. Sur le graphique, cela signifie qu'une droite verticale ne peut couper la courbe **qu'en un seul point** (ou pas du tout si $x$ n'est pas dans $D$). Si une verticale coupait la courbe en deux points, le même $x$ aurait deux images différentes, ce qui contredirait la définition d'une fonction. C'est le fameux 'test de la verticale' : si tu peux tracer une verticale qui coupe le graphique en deux points ou plus, ce graphique ne représente pas une fonction."
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(x+2)",
+              "xmin": -2,
+              "xmax": 5,
+              "caption": "Graphique de $f(x) = \\sqrt{x+2}$. L'ensemble de définition est $[-2; +\\infty[$. Pour $x < -2$, aucune image n'existe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique de la fonction racine carrée $f(x) = \\sqrt{x+2}$. Elle n'existe qu'à partir de $x = -2$. Si tu essaies de lire l'image de $-3$, ta verticale ne rencontre pas la courbe : $-3$ n'appartient pas à l'ensemble de définition, $f(-3)$ n'a pas de sens. C'est pour cela qu'il faut toujours vérifier que le $x$ choisi est bien dans le domaine de la fonction avant de chercher son image. En 3e, on te donnera souvent l'ensemble de définition, ou tu le déduiras du graphique (la partie où la courbe existe)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons : pour lire l'image de $x$, on vérifie que $x$ est dans le domaine, on monte verticalement à la courbe, on va horizontalement à l'axe des ordonnées, on lit la valeur (exacte ou approchée). C'est une compétence essentielle pour la suite, car nous allons maintenant faire l'inverse : partir d'une image pour retrouver les $x$ qui la produisent. C'est la notion d'antécédent, que nous verrons dans la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne le graphique de la fonction $f(x) = -x^2 + 4$. Lis l'image de $1$ sur ce graphique. Donne la valeur exacte.",
+              "answer": "$3$",
+              "hint": "Place $x=1$ sur l'axe horizontal, monte à la courbe, puis va à l'axe vertical.",
+              "explanation": "Pour $x=1$, $f(1) = -1^2 + 4 = -1 + 4 = 3$. Sur le graphique, le point d'abscisse $1$ a pour ordonnée $3$."
+            },
+            {
+              "question": "Sur le graphique de la fonction $g(x) = 0,2x^3 - x + 2$, l'image de $2$ se situe entre quelles deux graduations entières de l'axe des ordonnées ? Donne une valeur approchée à $0,1$ près.",
+              "answer": "Entre $1$ et $2$, environ $1,6$",
+              "hint": "Trace la verticale $x=2$, observe où elle coupe la courbe, puis reporte sur l'axe vertical.",
+              "explanation": "Calcul exact : $g(2) = 0,2 \\times 8 - 2 + 2 = 1,6$. La lecture graphique donne environ $1,6$."
+            },
+            {
+              "question": "Le graphique ci-dessous représente une fonction $h$. Parmi les affirmations suivantes, laquelle est vraie ?\\nA) $h(-3) = 2$\\nB) $h(0) = -1$\\nC) $h(2)$ n'existe pas\\nD) $h(4) = 3$",
+              "answer": "B",
+              "hint": "Vérifie chaque abscisse sur le graphique : la courbe existe-t-elle ? Quelle est l'ordonnée ?",
+              "explanation": "On regarde le graphique : pour $x=-3$, la courbe n'existe pas (A fausse). Pour $x=0$, l'ordonnée est $-1$ (B vraie). Pour $x=2$, la courbe existe (C fausse). Pour $x=4$, l'ordonnée n'est pas $3$ (D fausse)."
+            }
+          ]
+        },
+        {
+          "title": "Antécédents.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un antécédent ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous sommes partis d'un $x$ pour trouver son image $f(x)$. Maintenant, faisons le chemin inverse. Imagine une fonction qui donne le niveau d'eau dans un réservoir en fonction du temps. Si je te dis : « Le niveau d'eau est de $10$ mètres », tu vas vouloir savoir à quel(s) moment(s) cela s'est produit. Ces moments sont les antécédents de $10$ par la fonction. En mathématiques, pour une fonction $f$, un antécédent d'un nombre $y$ est une valeur $x$ telle que $f(x) = y$. Il peut y en avoir zéro, un, ou plusieurs !"
+            },
+            {
+              "type": "definition",
+              "term": "Antécédent",
+              "definition": "Soit $f$ une fonction. Pour un nombre $y$, tout nombre $x$ appartenant à l'ensemble de définition de $f$ tel que $f(x) = y$ est appelé un antécédent de $y$ par $f$. On dit aussi que $x$ est une solution de l'équation $f(x) = y$.",
+              "example": "Pour $f(x) = x^2$, les antécédents de $9$ sont $3$ et $-3$, car $f(3)=9$ et $f(-3)=9$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Graphique de $f(x)=x^2$. La horizontale $y=9$ coupe la courbe en deux points : abscisses $3$ et $-3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe des ordonnées (vertical), trouve la valeur $y$ dont tu cherches les antécédents. Trace une ligne horizontale passant par ce $y$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver les intersections avec la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette ligne horizontale peut couper la courbe en zéro, un, ou plusieurs points. Repère tous ces points d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis chaque point d'intersection, trace une ligne verticale vers l'axe des abscisses. Les valeurs lues sur cet axe sont les antécédents de $y$. S'il n'y a pas d'intersection, $y$ n'a pas d'antécédent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode sur un exemple concret. Considérons la fonction $f(x) = -0,5x^2 + 3$, qui pourrait modéliser la hauteur d'un projectile en fonction du temps horizontal. Cherchons les antécédents de $2$. Je trace l'horizontale $y=2$. Elle coupe la courbe en deux points : un à gauche de l'axe des ordonnées, un à droite. En descendant verticalement, je lis environ $-1,4$ et $1,4$. Donc $2$ a deux antécédents : $-1,4$ et $1,4$ (valeurs approchées). Vérifions : $f(1,4) = -0,5 \\times 1,96 + 3 = -0,98 + 3 = 2,02 \\approx 2$. C'est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu qu'un nombre peut avoir deux antécédents. Mais ce n'est pas la seule possibilité. Explorons les trois cas de figure."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Zéro, un, ou plusieurs antécédents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout dépend de la forme de la courbe et de la valeur $y$ choisie. Prenons trois exemples simples. Premier cas : la fonction $f(x) = x + 2$ (une droite strictement croissante). Une horizontale $y = k$ ne coupera jamais la courbe plus d'une fois. Donc chaque $y$ a **exactement un** antécédent. Deuxième cas : la fonction $g(x) = x^2$ (parabole). Pour $y > 0$, l'horizontale coupe en deux points : deux antécédents (un positif, un négatif). Pour $y = 0$, un seul point (le sommet) : un antécédent ($0$). Pour $y < 0$, aucune intersection : **zéro** antécédent. Troisième cas : une fonction en escalier ou constante par morceaux. Une horizontale peut couper la courbe sur un segment entier : alors **une infinité** d'antécédents (tous les $x$ de ce segment)."
+            },
+            {
+              "type": "graph",
+              "expression": "x+2",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite $f(x)=x+2$ : chaque horizontale coupe une seule fois."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Parabole $g(x)=x^2$ : selon $y$, 0, 1 ou 2 antécédents."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est pourquoi, quand on te demande « Donne les antécédents de $k$ », tu dois toujours regarder **tous** les points d'intersection de l'horizontale $y=k$ avec la courbe. Ne t'arrête pas au premier trouvé ! C'est une erreur fréquente : on voit un point, on note son abscisse, et on oublie qu'il y en a un autre de l'autre côté de l'axe de symétrie. Prends l'habitude de balayer tout le graphique de gauche à droite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Antécédents de $4$ par $f(x)=x^2$ : $-2$ et $2$.",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "Antécédent 1"
+                },
+                {
+                  "value": 2,
+                  "label": "Antécédent 2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais trouver les antécédents graphiquement, tu as en fait résolu une équation ! Dire « les antécédents de $5$ par $f$ » revient exactement à dire « résous l'équation $f(x) = 5 $ ». C'est un lien fondamental entre l'algèbre et la géométrie. La lecture graphique donne une vision globale et des valeurs approchées, tandis que le calcul algébrique (quand c'est possible) donne les valeurs exactes. Les deux approches se complètent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien avec la résolution d'équations : $f(x) = k$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu doives résoudre $x^2 - 4x + 1 = 0$. Tu peux tracer la courbe de $f(x) = x^2 - 4x + 1$ et chercher les antécédents de $0$. C'est exactement chercher les intersections de la courbe avec l'axe des abscisses (puisque $y=0$). C'est ce que nous ferons dans la prochaine leçon avec les intersections. Mais déjà, tu peux t'entraîner à lire des antécédents pour des valeurs non nulles, ce qui revient à résoudre $f(x) = k$ avec $k \\neq 0$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4*x + 1",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Courbe de $f(x)=x^2-4x+1$. Les antécédents de $0$ sont les intersections avec l'axe des abscisses."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, l'horizontale $y=0$ (l'axe des abscisses) coupe la courbe en deux points. Leurs abscisses sont les solutions de l'équation. On lit environ $0,3$ et $3,7$. Le calcul exact donnerait $2 \\pm \\sqrt{3}$. La lecture graphique nous a donné une bonne estimation. C'est très utile pour vérifier un calcul ou quand l'équation est trop compliquée à résoudre à la main."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le graphique de la fonction $f(x) = -x^2 + 4$ est donné. Donne les antécédents de $3$ par $f$.",
+              "answer": "$-1$ et $1$",
+              "hint": "Trace l'horizontale $y=3$, trouve les deux intersections, lis les abscisses.",
+              "explanation": "L'équation $-x^2+4=3$ donne $x^2=1$, donc $x=1$ ou $x=-1$. Sur le graphique, l'horizontale $y=3$ coupe la parabole en deux points d'abscisses $-1$ et $1$."
+            },
+            {
+              "question": "Pour la fonction $g(x) = 2x - 5$, combien d'antécédents a la valeur $0$ ? Donne cet antécédent.",
+              "answer": "Un seul antécédent : $2,5$",
+              "hint": "C'est une droite. L'horizontale $y=0$ la coupe une fois. Résous $2x-5=0$.",
+              "explanation": "Équation $2x-5=0 \\Rightarrow x=2,5$. La droite coupe l'axe des abscisses en $2,5$."
+            },
+            {
+              "question": "On donne le graphique d'une fonction $h$. L'horizontale $y = -2$ ne coupe pas la courbe. Que peux-tu dire des antécédents de $-2$ par $h$ ?",
+              "answer": "Aucun antécédent (l'ensemble des antécédents est vide).",
+              "hint": "Si l'horizontale ne rencontre pas la courbe, il n'y a pas de $x$ tel que $h(x)=-2$.",
+              "explanation": "Pas d'intersection signifie qu'il n'existe aucun $x$ dans l'ensemble de définition tel que $h(x) = -2$."
+            }
+          ]
+        },
+        {
+          "title": "Intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersections avec les axes : zéros et ordonnée à l'origine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons déjà croisé l'idée d'intersection sans la nommer : chercher les antécédents de $0$, c'est trouver où la courbe coupe l'axe des abscisses. Ces points sont appelés les **zéros de la fonction** (ou racines de l'équation $f(x)=0$). De même, l'image de $0$ (si $0$ est dans le domaine) est le point où la courbe coupe l'axe des ordonnées, on parle de l'**ordonnée à l'origine**. Ces deux intersections sont des repères fondamentaux pour comprendre le comportement d'une fonction."
+            },
+            {
+              "type": "definition",
+              "term": "Zéro d'une fonction",
+              "definition": "Un zéro d'une fonction $f$ est une valeur $x$ telle que $f(x) = 0$. Graphiquement, ce sont les abscisses des points d'intersection de la courbe avec l'axe des abscisses (l'axe $x$).",
+              "example": "Pour $f(x) = x^2 - 4$, les zéros sont $2$ et $-2$."
+            },
+            {
+              "type": "definition",
+              "term": "Ordonnée à l'origine",
+              "definition": "C'est l'image de $0$ par la fonction, notée $f(0)$, quand $0$ appartient à l'ensemble de définition. Graphiquement, c'est l'ordonnée du point où la courbe coupe l'axe des ordonnées (l'axe $y$).",
+              "example": "Pour $f(x) = x^2 - 4$, l'ordonnée à l'origine est $f(0) = -4$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Parabole $f(x)=x^2-4$. Zéros en $-2$ et $2$. Ordonnée à l'origine en $-4$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Zéros (intersection avec l'axe des abscisses)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche les points où la courbe coupe l'axe horizontal ($y=0$). Lis les abscisses de ces points. Ce sont les zéros."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ordonnée à l'origine (intersection avec l'axe des ordonnées)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le point où la courbe coupe l'axe vertical ($x=0$). Lis son ordonnée. C'est $f(0)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'une entreprise qui modélise son bénéfice $B(x)$ en milliers d'euros en fonction du nombre $x$ de centaines d'articles vendus. La fonction est $B(x) = -2x^2 + 12x - 10$. Les zéros de $B$ correspondent aux seuils de rentabilité : en dessous du premier zéro ou au-dessus du second, l'entreprise perd de l'argent ; entre les deux, elle gagne. L'ordonnée à l'origine $B(0) = -10$ représente les frais fixes (perte si rien n'est vendu). Sur le graphique, on voit les intersections avec l'axe des abscisses vers $x=1$ et $x=5$, et avec l'axe des ordonnées en $-10$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, élargissons : que se passe-t-il si on a **deux** fonctions $f$ et $g$ tracées sur le même repère ? Leurs points d'intersection correspondent aux $x$ où $f(x) = g(x)$. C'est la résolution graphique d'une équation à deux fonctions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection de deux courbes : résoudre $f(x) = g(x)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux coureurs sur une piste. Leurs positions en fonction du temps sont données par deux fonctions $f(t)$ et $g(t)$. Le moment où ils se retrouvent au même endroit correspond à une intersection de leurs graphiques : $f(t) = g(t)$. Pour le trouver graphiquement, on trace les deux courbes et on repère les points communs. Les abscisses de ces points sont les solutions de l'équation $f(x) = g(x)$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Courbe de $f(x)=x^2-2$. Pour intersection avec $g(x)=x$, on ajouterait la droite $y=x$ (non tracée ici)."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Droite $g(x)=x$. Les intersections avec $f(x)=x^2-2$ sont les solutions de $x^2-2=x$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons l'exemple $f(x) = x^2 - 2$ et $g(x) = x$. Sur le même repère, la parabole et la droite se coupent en deux points. Pour lire les abscisses, on trace une verticale depuis chaque point d'intersection vers l'axe des abscisses. On lit environ $-1$ et $2$. Vérifions : $f(-1) = 1-2=-1 = g(-1)$ ; $f(2) = 4-2=2 = g(2)$. C'est exact ! La méthode graphique nous a donné les solutions de l'équation $x^2 - 2 = x$, c'est-à-dire $x^2 - x - 2 = 0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer les deux courbes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur le même système d'axes, dessine (ou visualise) les graphiques de $f$ et $g$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les points communs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie tous les points où les deux courbes se croisent ou se touchent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque point d'intersection, projette verticalement sur l'axe des abscisses. Ces valeurs sont les solutions de $f(x)=g(x)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que deux courbes ne se coupent pas, ou qu'elles soient tangentes (un seul point de contact). Cela correspond respectivement à zéro solution ou une solution double de l'équation $f(x)=g(x)$. C'est une information précieuse que le graphique donne immédiatement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : pas d'intersection, tangence, lecture approchée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les courbes ne se rencontrent pas, l'équation $f(x)=g(x)$ n'a pas de solution réelle. Par exemple, $f(x)=x^2+1$ et $g(x)=0$ (l'axe des abscisses) : la parabole est au-dessus de l'axe, pas d'intersection, l'équation $x^2+1=0$ n'a pas de solution dans $\\mathbb{R}$. Si les courbes se touchent sans se croiser (tangence), il y a un unique point commun, l'équation a une solution double. Graphiquement, on voit un seul point de contact. Attention : la lecture graphique ne permet pas toujours de distinguer une tangence d'une intersection transversale si l'échelle est petite. C'est pour cela qu'on complète souvent par un calcul."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2+1",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole $f(x)=x^2+1$ : aucune intersection avec l'axe des abscisses."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Situation graphique",
+                "Nombre de solutions de $f(x)=g(x)$"
+              ],
+              "rows": [
+                [
+                  "Deux points d'intersection distincts",
+                  "Deux solutions distinctes"
+                ],
+                [
+                  "Un point de tangence (contact)",
+                  "Une solution double"
+                ],
+                [
+                  "Aucun point commun",
+                  "Zéro solution (dans $\\mathbb{R}$)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rappelle-toi que la lecture graphique donne souvent des valeurs **approchées**. Si le point d'intersection tombe entre deux graduations, tu donnes une valeur au dixième ou au centième près selon la précision du graphique. En revanche, le calcul algébrique (factorisation, formule du discriminant, etc.) donne les valeurs **exactes** (souvent avec des racines carrées). Les deux méthodes sont complémentaires : le graphique pour visualiser et estimer, le calcul pour valider et préciser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu viens de terminer ce cours sur la lecture graphique d'une fonction. Tu sais maintenant trouver des images, des antécédents, et interpréter les intersections avec les axes ou entre deux courbes. Ces compétences sont la base pour étudier les fonctions de manière plus approfondie au lycée. Prends le temps de réviser les points clés avec la liste ci-dessous."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'image d'un nombre $x$ sur le graphique d'une fonction (verticale puis horizontale).",
+                "Je sais trouver les antécédents d'une valeur $y$ (horizontale puis verticales).",
+                "Je sais qu'une fonction associe une unique image à chaque $x$ de son ensemble de définition.",
+                "Je sais identifier les zéros d'une fonction (intersections avec l'axe des abscisses) et l'ordonnée à l'origine (intersection avec l'axe des ordonnées).",
+                "Je sais résoudre graphiquement une équation $f(x)=g(x)$ en cherchant les intersections de deux courbes.",
+                "Je distingue lecture exacte (sur graduation) et lecture approchée (entre graduations).",
+                "Je comprends le lien entre antécédents de $k$ et solutions de $f(x)=k$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La fonction $f(x) = -x^2 + 5x - 6$ est tracée. Donne ses zéros et son ordonnée à l'origine.",
+              "answer": "Zéros : $2$ et $3$ ; Ordonnée à l'origine : $-6$",
+              "hint": "Zéros = intersections avec l'axe des abscisses ($y=0$). Ordonnée à l'origine = intersection avec l'axe des ordonnées ($x=0$).",
+              "explanation": "Résolution $-x^2+5x-6=0 \\Rightarrow x^2-5x+6=0 \\Rightarrow (x-2)(x-3)=0$, zéros $2$ et $3$. $f(0) = -6$."
+            },
+            {
+              "question": "On a deux fonctions $f(x)=x^2-1$ et $g(x)=2x-3$. En lisant le graphique, on voit deux intersections. Donnes les abscisses approximatives de ces intersections (au dixième près).",
+              "answer": "Environ $0,6$ et $3,4$",
+              "hint": "Trace les deux courbes, repère les deux points communs, lis les abscisses.",
+              "explanation": "L'équation $x^2-1=2x-3$ donne $x^2-2x+2=0$, discriminant négatif, donc pas de solution réelle. Mais l'énoncé dit qu'on voit deux intersections sur le graphique, donc il s'agit d'un autre exemple. Pour cet exercice, on lit sur le graphique fourni (non reproduit ici) des valeurs approchées."
+            },
+            {
+              "question": "Le graphique de $h(x) = \\sqrt{x-1}$ est donné. Combien y a-t-il d'intersections avec l'axe des abscisses ? Donne le zéro.",
+              "answer": "Une intersection, zéro en $x=1$",
+              "hint": "La racine carrée est nulle quand son radicande est nul. Regarde où la courbe coupe l'axe horizontal.",
+              "explanation": "$h(x)=0 \\Leftrightarrow \\sqrt{x-1}=0 \\Leftrightarrow x-1=0 \\Leftrightarrow x=1$. Le graphique démarre en $(1;0)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

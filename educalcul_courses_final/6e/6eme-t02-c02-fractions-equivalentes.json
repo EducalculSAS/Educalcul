@@ -1,0 +1,413 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.547578+00:00",
+  "id": 337,
+  "code": "6eme-t02-c02",
+  "title": "Fractions équivalentes",
+  "description": "Cours structuré Educalcul : Fractions équivalentes.",
+  "subject": "Fractions",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions équivalentes",
+    "objectif_global": "Fractions équivalentes",
+    "mini_lecons_imposees": [
+      "Égalités simples.",
+      "Simplifier cas accessibles.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Égalités simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une égalité simple ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une pizza coupée en deux parts égales. Si tu en prends une, tu as mangé $1/2$ de la pizza. Maintenant, coupe la même pizza en quatre parts égales et prends deux parts : tu as mangé $2/4$ de la pizza. Pourtant, la quantité de pizza dans ton assiette est exactement la même. C'est ce qu'on appelle une égalité simple entre deux fractions : elles représentent la même partie d'un tout, même si les nombres écrits sont différents."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "La fraction $1/2$ : une part sur deux"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La fraction $2/4$ : deux parts sur quatre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de $1/2$ à $2/4$, on a multiplié le numérateur et le dénominateur par le même nombre, ici $2$. Cette règle fonctionne pour n'importe quel entier non nul : si on multiplie le haut et le bas d'une fraction par $3$, $5$ ou $10$, on obtient une fraction qui vaut exactement la même chose. C'est la propriété fondamentale des fractions équivalentes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un entier non nul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, choisis $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$1 \\times 3 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplie le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 \\times 3 = 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écris la nouvelle fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $3/6$, qui est égale à $1/2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment repérer une égalité simple sans dessin, en utilisant seulement les nombres. Si deux fractions ont le même quotient quand on divise le numérateur par le dénominateur, elles sont égales. Par exemple, $3/6$ donne $0,5$ et $1/2$ donne aussi $0,5$, donc elles sont équivalentes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les fractions $1/2$, $2/4$ et $3/6$ se placent au même point",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2 = 2/4 = 3/6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, entraînons-nous à créer nos propres fractions égales. Partons de $3/5$ et multiplions le numérateur et le dénominateur par $4$. Le numérateur devient $12$, le dénominateur $20$, donc $12/20$ est une fraction équivalente à $3/5$. Essaie avec d'autres nombres pour sentir la régularité de la règle."
+            },
+            {
+              "type": "fraction",
+              "numerator": 12,
+              "denominator": 20,
+              "shape": "bar",
+              "caption": "La fraction $12/20$ obtenue à partir de $3/5$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les fractions $2/3$ et $4/6$ sont-elles égales ? Justifie ta réponse en une phrase.",
+              "answer": "Oui, car $2 \\times 2 = 4$ et $3 \\times 2 = 6$, on a multiplié le numérateur et le dénominateur par le même nombre $2$.",
+              "hint": "Vérifie si tu peux passer de la première fraction à la seconde en multipliant le haut et le bas par un même entier.",
+              "explanation": "On multiplie $2$ et $3$ par $2$ pour obtenir $4$ et $6$. Comme le facteur est identique, les deux fractions représentent la même quantité."
+            },
+            {
+              "question": "Parmi les fractions $5/10$, $1/2$, $3/6$ et $4/9$, lesquelles sont égales entre elles ?",
+              "answer": "$5/10$, $1/2$ et $3/6$ sont égales ; $4/9$ est différente.",
+              "hint": "Simplifie chaque fraction ou divise le numérateur par le dénominateur pour comparer les valeurs décimales.",
+              "explanation": "$5/10 = 0,5$, $1/2 = 0,5$, $3/6 = 0,5$ alors que $4/9 \\approx 0,44$. Les trois premières ont le même quotient."
+            },
+            {
+              "question": "Écris une fraction équivalente à $7/8$ en multipliant le numérateur et le dénominateur par $5$.",
+              "answer": "$35/40$",
+              "hint": "Multiplie $7$ par $5$ et $8$ par $5$.",
+              "explanation": "$7 \\times 5 = 35$ et $8 \\times 5 = 40$, donc $35/40$ vaut la même chose que $7/8$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier cas accessibles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier les fractions accessibles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une fraction comme $8/12$ apparaît, on peut la rendre plus simple en divisant le numérateur et le dénominateur par un même diviseur commun. Ici, $8$ et $12$ sont tous les deux divisibles par $4$. En divisant, on obtient $2/3$, qui est la forme la plus simple de cette fraction. Simplifier ne change pas la valeur, cela rend seulement l'écriture plus légère."
+            },
+            {
+              "type": "fraction",
+              "numerator": 8,
+              "denominator": 12,
+              "shape": "bar",
+              "caption": "La fraction $8/12$ avant simplification"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "La fraction $2/3$ après simplification par $4$"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode consiste à chercher le plus grand diviseur commun (PGCD) des deux nombres, mais pour les cas accessibles on peut simplifier étape par étape. Par exemple, avec $15/25$, on voit que $5$ divise les deux. En divisant, on obtient $3/5$. Si un autre diviseur commun apparaît, on continue jusqu'à ce qu'il n'y en ait plus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouve un diviseur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les tables de multiplication : $15$ et $25$ sont dans la table de $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Divise le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$15 \\div 5 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Divise le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$25 \\div 5 = 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écris la fraction simplifiée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $3/5$, qui ne peut plus être réduite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une fraction peut être simplifiée en plusieurs fois. Prenons $18/24$. On peut d'abord diviser par $2$ pour obtenir $9/12$, puis diviser par $3$ pour arriver à $3/4$. Chaque étape garde la valeur inchangée, et on s'arrête quand le numérateur et le dénominateur n'ont plus de diviseur commun autre que $1$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les fractions $18/24$, $9/12$ et $3/4$ se superposent",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.75,
+                  "label": "18/24 = 9/12 = 3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous à repérer directement le plus grand diviseur commun pour aller plus vite. Pour $36/48$, les deux nombres sont dans la table de $12$. En divisant par $12$ d'un coup, on obtient $3/4$ sans passer par des étapes intermédiaires. C'est la méthode la plus efficace quand le PGCD saute aux yeux."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{36}{48} = \\frac{36 \\div 12}{48 \\div 12} = \\frac{3}{4}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $14/21$ en une seule étape.",
+              "answer": "$2/3$",
+              "hint": "Cherche un nombre qui divise à la fois $14$ et $21$.",
+              "explanation": "$14$ et $21$ sont divisibles par $7$. En divisant, $14 \\div 7 = 2$ et $21 \\div 7 = 3$, donc $14/21 = 2/3$."
+            },
+            {
+              "question": "Réduis $30/45$ en deux étapes successives, puis donne la forme finale.",
+              "answer": "Étape 1 : $30/45 = 10/15$ (division par $3$). Étape 2 : $10/15 = 2/3$ (division par $5$). Forme finale : $2/3$.",
+              "hint": "Commence par diviser par $3$, puis regarde si le résultat peut encore être simplifié.",
+              "explanation": "La première division par $3$ donne $10/15$. Ensuite $10$ et $15$ sont divisibles par $5$, ce qui donne $2/3$, fraction irréductible."
+            },
+            {
+              "question": "Quel est le plus grand diviseur commun de $56$ et $72$ ? Utilise-le pour simplifier $56/72$ d'un seul coup.",
+              "answer": "Le PGCD est $8$. $56/72 = 7/9$.",
+              "hint": "Décompose $56$ et $72$ en facteurs premiers ou teste les diviseurs communs en partant du plus grand.",
+              "explanation": "$56 = 8 \\times 7$ et $72 = 8 \\times 9$. En divisant numérateur et dénominateur par $8$, on obtient $7/9$, qui ne peut plus être réduite."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier l'équivalence de deux fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dire que deux fractions sont égales, c'est bien ; savoir le prouver, c'est encore mieux. La justification la plus solide en sixième utilise le produit en croix : si $a/b = c/d$, alors $a \\times d = b \\times c$. Cette égalité vient du fait qu'on a multiplié les deux fractions par le même nombre $b \\times d$ pour éliminer les dénominateurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris l'égalité à tester",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, $3/5 = 9/15$ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie en croix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $3 \\times 15 = 45$ et $5 \\times 9 = 45$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare les produits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux produits sont égaux ($45 = 45$), donc l'égalité est vraie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre façon de justifier, très visuelle, consiste à placer les fractions sur une droite graduée. Si deux fractions correspondent exactement au même point, elles sont équivalentes. Cela fonctionne même pour des fractions qui ne sont pas évidentes au premier regard, comme $7/10$ et $14/20$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les fractions $7/10$ et $14/20$ se trouvent au même emplacement",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.7,
+                  "label": "7/10 = 14/20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on doit trouver le numérateur ou le dénominateur manquant pour que deux fractions soient égales. Par exemple, $5/8 = ?/24$. On cherche par quel nombre on a multiplié $8$ pour obtenir $24$ : c'est $3$. Alors on multiplie aussi le numérateur $5$ par $3$ et on obtient $15$. La fraction manquante est $15/24$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{5}{8} = \\frac{5 \\times 3}{8 \\times 3} = \\frac{15}{24}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître deux fractions égales en multipliant ou divisant le numérateur et le dénominateur par le même nombre.",
+                "Je sais simplifier une fraction en divisant par un diviseur commun, jusqu'à obtenir une fraction irréductible.",
+                "Je sais justifier l'équivalence de deux fractions par le produit en croix ou par leur position sur une droite graduée.",
+                "Je sais retrouver un numérateur ou un dénominateur manquant dans une égalité de fractions."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par le produit en croix si $4/7 = 12/21$.",
+              "answer": "Oui, car $4 \\times 21 = 84$ et $7 \\times 12 = 84$, les produits sont égaux.",
+              "hint": "Multiplie le numérateur de la première par le dénominateur de la seconde, et vice‑versa.",
+              "explanation": "Les deux produits en croix donnent $84$, donc l'égalité est exacte."
+            },
+            {
+              "question": "Sur une droite graduée de $0$ à $1$, place $3/5$ et $6/10$. Sont-elles au même point ?",
+              "answer": "Oui, $3/5 = 0,6$ et $6/10 = 0,6$, elles se superposent.",
+              "hint": "Convertis chaque fraction en nombre décimal pour comparer leurs positions.",
+              "explanation": "Les deux fractions valent $0,6$, donc elles correspondent au même point sur la droite."
+            },
+            {
+              "question": "Complète l'égalité : $9/14 = ?/42$.",
+              "answer": "$27/42$",
+              "hint": "Par quel nombre as‑tu multiplié $14$ pour obtenir $42$ ? Applique le même au numérateur.",
+              "explanation": "$14 \\times 3 = 42$, donc on multiplie $9$ par $3$ ce qui donne $27$. La fraction manquante est $27/42$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

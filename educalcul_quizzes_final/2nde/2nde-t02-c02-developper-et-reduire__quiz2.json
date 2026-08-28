@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Identités remarquables prévues",
+  "title": "Identités remarquables : développement et factorisation",
+  "questions": [
+    {
+      "text": "Quel est le développement réduit de l'expression $(x+5)^2$ ?",
+      "options": [
+        "$x^2+25$",
+        "$x^2+10x+25$",
+        "$x^2+5x+25$",
+        "$2x+10$"
+      ],
+      "correctAnswer": "$x^2+10x+25$",
+      "explanation": "On utilise l'identité $(a+b)^2 = a^2 + 2ab + b^2$ avec $a=x$ et $b=5$. Cela donne $x^2 + 2 \\times x \\times 5 + 5^2 = x^2 + 10x + 25$. L'option $x^2+25$ oublie le terme du milieu $2ab$. L'option $x^2+5x+25$ calcule mal le coefficient de $x$ (oublie le facteur 2). L'option $2x+10$ correspond à $2(x+5)$, ce qui n'est pas le carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez et réduisez $(3x-4)^2$.",
+      "options": [
+        "$9x^2-16$",
+        "$9x^2-24x+16$",
+        "$9x^2-12x+16$",
+        "$3x^2-24x+16$"
+      ],
+      "correctAnswer": "$9x^2-24x+16$",
+      "explanation": "On utilise $(a-b)^2 = a^2 - 2ab + b^2$ avec $a=3x$ et $b=4$. Le carré de $3x$ est $9x^2$ (et non $3x^2$). Le terme du milieu est $-2 \\times 3x \\times 4 = -24x$ (et non $-12x$). Le dernier terme est $4^2=16$. L'option $9x^2-16$ correspond à l'identité $(a-b)(a+b)$, pas au carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La forme développée et réduite de $(2x+7)(2x-7)$ est :",
+      "options": [
+        "$4x^2-49$",
+        "$4x^2+49$",
+        "$4x^2-28x-49$",
+        "$2x^2-49$"
+      ],
+      "correctAnswer": "$4x^2-49$",
+      "explanation": "C'est l'identité $(a+b)(a-b) = a^2 - b^2$ avec $a=2x$ et $b=7$. On calcule $(2x)^2 - 7^2 = 4x^2 - 49$. Les termes en $x$ s'annulent. L'option $4x^2+49$ inverse le signe. L'option $4x^2-28x-49$ correspond au développement de $(2x-7)^2$. L'option $2x^2-49$ élève mal $2x$ au carré (oublie de mettre le 2 au carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $x^2 - 12x + 36$ à l'aide d'une identité remarquable.",
+      "options": [
+        "$(x-6)^2$",
+        "$(x+6)^2$",
+        "$(x-6)(x+6)$",
+        "$(x-12)^2$"
+      ],
+      "correctAnswer": "$(x-6)^2$",
+      "explanation": "On cherche à écrire l'expression sous la forme $a^2 - 2ab + b^2 = (a-b)^2$. Le premier terme $x^2$ est le carré de $x$. Le dernier terme $36$ est le carré de $6$. Le terme du milieu est $-12x = -2 \\times x \\times 6$. Cela correspond bien à $(x-6)^2$. L'option $(x+6)^2$ donnerait $+12x$. L'option $(x-6)(x+6)$ donne $x^2-36$ (différence de deux carrés). L'option $(x-12)^2$ donne $x^2-24x+144$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez et réduisez $(x+2)^2 - (x-2)^2$.",
+      "options": [
+        "$8x$",
+        "$8$",
+        "$4x$",
+        "$x^2+8$"
+      ],
+      "correctAnswer": "$8x$",
+      "explanation": "On développe chaque carré : $(x+2)^2 = x^2 + 4x + 4$ et $(x-2)^2 = x^2 - 4x + 4$. On soustrait le second du premier : $(x^2 + 4x + 4) - (x^2 - 4x + 4) = x^2 + 4x + 4 - x^2 + 4x - 4 = 8x$. Les termes en $x^2$ et les constantes s'annulent. L'option $8$ oublie la variable $x$. L'option $4x$ divise le coefficient par deux. L'option $x^2+8$ ne réduit pas les termes en $x^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

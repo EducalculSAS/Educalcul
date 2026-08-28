@@ -1,0 +1,352 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.697344+00:00",
+  "id": 71,
+  "code": "ce1-t01-c04",
+  "title": "Lire et écrire jusqu'à 1 000",
+  "description": "Cours structuré Educalcul : Lire et écrire jusqu'à 1 000.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Lire et écrire jusqu'à 1 000",
+    "objectif_global": "Lire et écrire jusqu'à 1 000",
+    "mini_lecons_imposees": [
+      "Étendre la lecture.",
+      "Lire 1 000 comme dix centaines.",
+      "Passer entre formes orales et chiffrées."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Étendre la lecture.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire jusqu'à 999"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà lire les nombres jusqu'à $100$. Aujourd'hui, on va pousser la porte un peu plus loin : nous allons lire ensemble les nombres jusqu'à $999$. C'est comme ajouter un nouvel étage à une tour que tu connais bien."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "$63$ : 6 dizaines et 3 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce matériel : il y a $6$ baguettes de dix et $3$ cubes. On lit : soixante-trois. Le chiffre $6$ est au rang des dizaines, le $3$ au rang des unités. Facile, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine qu'on ajoute des plaques de cent. Chaque plaque vaut $100$. Si je pose $2$ plaques, $3$ baguettes et $4$ cubes, j'obtiens $234$. On lit : deux cent trente-quatre. Le premier chiffre donne le nombre de centaines, puis on lit la suite comme d'habitude."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 4,
+              "caption": "$234$ : 2 centaines, 3 dizaines, 4 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de lire ce nombre à voix haute. Tu entends bien les centaines d'abord, puis les dizaines et les unités. C'est le même rythme, juste un mot de plus : « cent » ou « cents » selon qu'il y en a une ou plusieurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, petit piège : quand il y a un zéro dans les dizaines ou les unités, on ne le prononce pas. Par exemple $305$ : trois cent cinq. Pas de « zéro dix » ! Regarde le matériel : $3$ plaques, $0$ baguette, $5$ cubes. On saute le rang vide."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 5,
+              "caption": "$305$ : 3 centaines, 0 dizaine, 5 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et pour $420$ ? Quatre cent vingt. Le zéro des unités ne se dit pas. Tu vois, c'est comme une marche d'escalier qu'on enjambe sans s'arrêter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis le nombre représenté par $5$ baguettes et $7$ cubes.",
+              "answer": "Cinquante-sept",
+              "hint": "Compte les baguettes pour les dizaines, les cubes pour les unités.",
+              "explanation": "Il y a $5$ dizaines ($50$) et $7$ unités ($7$), donc $57$ : cinquante-sept."
+            },
+            {
+              "question": "Écris en lettres le nombre $312$.",
+              "answer": "Trois cent douze",
+              "hint": "D'abord les centaines, puis la fin du nombre.",
+              "explanation": "$3$ centaines = trois cent, $1$ dizaine et $2$ unités = douze. On obtient trois cent douze."
+            },
+            {
+              "question": "Comment lit-on $508$ ?",
+              "answer": "Cinq cent huit",
+              "hint": "Il n'y a pas de dizaines, on passe directement aux unités.",
+              "explanation": "$5$ centaines = cinq cent, $0$ dizaine (on ne dit rien), $8$ unités = huit. Résultat : cinq cent huit."
+            }
+          ]
+        },
+        {
+          "title": "Lire 1 000 comme dix centaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mille, c'est dix cents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant les nombres jusqu'à $999$. Mais qu'y a-t-il après ? Imagine dix plaques de cent mises bout à bout. Elles forment un gros cube de mille. C'est le nombre $1\\,000$."
+            },
+            {
+              "type": "definition",
+              "term": "Mille",
+              "definition": "Le nombre qui vient après $999$. Il s'écrit $1\\,000$ et vaut dix centaines.",
+              "example": "$10 \\times 100 = 1\\,000$"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut lire $1\\,000$ de deux façons : « mille » (le mot courant) ou « dix cents » (pour bien voir sa composition). Les deux sont justes. C'est comme dire « une douzaine » ou « douze » pour $12$."
+            },
+            {
+              "type": "display_math",
+              "latex": "10 \\times 100 = 1\\,000"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette suite : $100$, $200$, $300$... jusqu'à $900$. Si j'ajoute encore une centaine, j'arrive à $10$ centaines, soit $1\\,000$. C'est le même principe que pour passer de $9$ dizaines à $100$, mais en plus grand."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les centaines jusqu'à mille",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 100,
+                  "label": "100"
+                },
+                {
+                  "value": 200,
+                  "label": "200"
+                },
+                {
+                  "value": 300,
+                  "label": "300"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                },
+                {
+                  "value": 600,
+                  "label": "600"
+                },
+                {
+                  "value": 700,
+                  "label": "700"
+                },
+                {
+                  "value": 800,
+                  "label": "800"
+                },
+                {
+                  "value": 900,
+                  "label": "900"
+                },
+                {
+                  "value": 1000,
+                  "label": "1000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette frise, tu vois les étapes de cent en cent. Le dernier saut, de $900$ à $1\\,000$, c'est encore $100$. Mille n'est pas un nombre mystérieux, c'est simplement la centaine d'après $900$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et après mille ? On continue comme avant : $1\\,001$ se lit « mille un », $1\\,020$ se lit « mille vingt », $1\\,100$ se lit « mille cent ». Le mot « mille » ne change jamais, il reste invariable. C'est commode, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de centaines y a-t-il dans $1\\,000$ ?",
+              "answer": "Dix",
+              "hint": "Compte par centaines : 100, 200... jusqu'à 1000.",
+              "explanation": "$1\\,000 = 10 \\times 100$. Il y a donc dix centaines dans mille."
+            },
+            {
+              "question": "Quel nombre vient juste après $900$ sur la frise des centaines ?",
+              "answer": "$1\\,000$",
+              "hint": "Ajoute une centaine à $900$.",
+              "explanation": "$900 + 100 = 1\\,000$. C'est la dixième centaine."
+            },
+            {
+              "question": "Écris en chiffres : mille quinze.",
+              "answer": "$1\\,015$",
+              "hint": "Mille = 1000, quinze = 15.",
+              "explanation": "On écrit $1\\,000$ pour mille, puis $15$ pour quinze : $1\\,015$."
+            }
+          ]
+        },
+        {
+          "title": "Passer entre formes orales et chiffrées.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'oral à l'écrit, et vice versa"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais lire les nombres, maintenant il faut savoir les écrire en chiffres quand on te les dicte, et en lettres quand tu vois les chiffres. C'est un jeu d'allers-retours."
+            },
+            {
+              "type": "paragraph",
+              "content": "Écoutons : « six cent quarante-deux ». D'abord, j'entends « six cent » : j'écris $6$ au rang des centaines. Ensuite « quarante-deux » : $4$ dizaines, $2$ unités. J'obtiens $642$. Facile quand on suit l'ordre des mots."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux zéros muets ! Si on dit « trois cent cinq », il n'y a pas de mot pour les dizaines. Il faut quand même mettre un $0$ au rang des dizaines pour garder la place : $305$. Sans ce zéro, on écrirait $35$, ce qui n'est pas du tout le même nombre."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Centaines",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dizaines",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Unités",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Décomposition de $305$ : 3 centaines, 0 dizaine, 5 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce schéma en barres montre bien la place vide. Le zéro tient la place, comme un gardien de but qui empêche les unités de glisser dans les dizaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, l'inverse : tu vois $708$ et tu dois l'écrire en lettres. Tu lis les chiffres : $7$ centaines = « sept cent », $0$ dizaine = rien, $8$ unités = « huit ». Résultat : « sept cent huit ». Le « s » de cent ? Il ne prend pas de « s » ici car il n'est pas multiplié et suivi d'un autre nombre. On verra ça plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous avec un nombre qui a tout : $999$. En lettres : « neuf cent quatre-vingt-dix-neuf ». En chiffres : $999$. Et pour $1\\,000$ ? « Mille » ou « dix cents ». Tu es prêt pour le bilan !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un nombre jusqu'à 999 en repérant les centaines, les dizaines et les unités.",
+                "Je sais que 1 000 vaut dix centaines et je peux l'écrire en chiffres.",
+                "J'écris correctement les zéros muets (ex: 305, 420).",
+                "Je passe sans erreur de l'oral à l'écrit et de l'écrit à l'oral."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres : deux cent soixante-trois.",
+              "answer": "$263$",
+              "hint": "Deux cent = 2 centaines, soixante-trois = 6 dizaines et 3 unités.",
+              "explanation": "2 centaines = 200, 6 dizaines = 60, 3 unités = 3. Total : 263."
+            },
+            {
+              "question": "Écris en lettres le nombre $507$.",
+              "answer": "Cinq cent sept",
+              "hint": "Il n'y a pas de dizaines, mais il faut le zéro en chiffres.",
+              "explanation": "$5$ centaines = cinq cent, $0$ dizaine (muette), $7$ unités = sept. On écrit : cinq cent sept."
+            },
+            {
+              "question": "Transforme en chiffres : mille quarante-cinq.",
+              "answer": "$1\\,045$",
+              "hint": "Mille = 1000, quarante-cinq = 45.",
+              "explanation": "On écrit 1000 pour mille, puis 045 pour quarante-cinq (avec le zéro des centaines). Résultat : 1 045."
+            },
+            {
+              "question": "Lis ce nombre à voix haute : $890$.",
+              "answer": "Huit cent quatre-vingt-dix",
+              "hint": "8 centaines, 9 dizaines, 0 unité.",
+              "explanation": "$8$ centaines = huit cent, $9$ dizaines = quatre-vingt-dix, $0$ unité = rien. On dit : huit cent quatre-vingt-dix."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

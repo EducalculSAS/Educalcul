@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Figures invariantes",
+  "title": "Figures invariantes par symétrie axiale",
+  "blocks": [
+    {
+      "title": "Vocabulaire de la symétrie axiale",
+      "content": "Relie chaque terme de la colonne de gauche à sa définition exacte dans la colonne de droite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Axe de symétrie",
+          "right": "Droite par rapport à laquelle on effectue la symétrie ; elle est invariante ponctuellement"
+        },
+        {
+          "left": "Figure invariante globalement",
+          "right": "Figure qui coïncide avec son image par la symétrie axiale"
+        },
+        {
+          "left": "Point invariant",
+          "right": "Point qui ne bouge pas lors de la symétrie ; il appartient à l'axe"
+        },
+        {
+          "left": "Symétrique d'un point M",
+          "right": "Point M' tel que l'axe est la médiatrice du segment [MM']"
+        }
+      ],
+      "items": [],
+      "explanation": "L'axe de symétrie est la droite fixe ; chaque point de l'axe est un point invariant (il ne bouge pas). Une figure est invariante globalement si son image se superpose exactement à elle-même (même si les points individuels bougent, sauf ceux sur l'axe). Le symétrique d'un point M est le point M' tel que l'axe soit la médiatrice de [MM'].",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre d'axes de symétrie des figures usuelles",
+      "content": "Relie chaque figure géométrique au nombre d'axes de symétrie qu'elle possède.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Carré",
+          "right": "4 axes de symétrie"
+        },
+        {
+          "left": "Rectangle (non carré)",
+          "right": "2 axes de symétrie"
+        },
+        {
+          "left": "Triangle équilatéral",
+          "right": "3 axes de symétrie"
+        },
+        {
+          "left": "Cercle",
+          "right": "Une infinité d'axes de symétrie (tous les diamètres)"
+        },
+        {
+          "left": "Triangle isocèle (non équilatéral)",
+          "right": "1 axe de symétrie (la hauteur issue du sommet principal)"
+        }
+      ],
+      "items": [],
+      "explanation": "Le carré a 4 axes (2 médiatrices et 2 diagonales). Le rectangle non carré a 2 axes (les médiatrices des côtés). Le triangle équilatéral a 3 axes (les hauteurs / médiatrices / bissectrices). Le cercle a une infinité d'axes (toute droite passant par son centre). Le triangle isocèle non équilatéral n'a qu'un seul axe : la hauteur issue du sommet principal qui est aussi médiatrice de la base.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés d'invariance globale",
+      "content": "Relie chaque figure décrite à gauche à son comportement par rapport à une symétrie axiale (droite (d)).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'axe de symétrie (d) lui-même",
+          "right": "Figure invariante ponctuellement (chaque point est fixe)"
+        },
+        {
+          "left": "Un cercle dont le centre appartient à (d)",
+          "right": "Figure invariante globalement"
+        },
+        {
+          "left": "Un segment perpendiculaire à (d) et dont le milieu est sur (d)",
+          "right": "Figure invariante globalement"
+        },
+        {
+          "left": "Une droite parallèle à (d) mais distincte de (d)",
+          "right": "Figure non invariante globalement (son image est une autre droite parallèle)"
+        }
+      ],
+      "items": [],
+      "explanation": "L'axe (d) est invariant ponctuellement : tout point de (d) est son propre symétrique. Un cercle de centre sur (d) est invariant globalement car son centre est invariant et le rayon ne change pas. Un segment perpendiculaire à (d) avec milieu sur (d) a ses extrémités symétriques l'une de l'autre, donc le segment coïncide avec son image. Une droite parallèle à (d) (différente de (d)) a pour image une droite parallèle distincte (de l'autre côté de (d) à même distance), elle n'est donc pas invariante globalement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

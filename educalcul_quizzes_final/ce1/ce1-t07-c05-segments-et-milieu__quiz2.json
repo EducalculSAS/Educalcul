@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 130,
+  "_course_code": "ce1-t07-c05-segments-et-milieu",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Trouver un milieu par mesure",
+  "title": "Quiz : Trouver le milieu d'un segment par mesure",
+  "questions": [
+    {
+      "text": "Observe la figure. Le segment mesure $8$ cm. À quelle graduation se trouve son milieu ?",
+      "options": [
+        "2 cm",
+        "4 cm",
+        "6 cm",
+        "8 cm"
+      ],
+      "correctAnswer": "4 cm",
+      "explanation": "Le milieu d'un segment le divise en deux parties égales. Pour un segment de $8$ cm, il faut calculer la moitié de $8$, c'est-à-dire $8 \\div 2 = 4$. Le milieu est donc à $4$ cm de l'origine. L'option $2$ cm correspond au quart, $6$ cm aux trois quarts et $8$ cm à l'autre extrémité.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Segment de 8 cm gradué"
+      }
+    },
+    {
+      "text": "Un segment mesure $10$ cm. On veut placer son milieu en mesurant depuis l'origine. Quelle distance faut-il reporter ?",
+      "options": [
+        "3 cm",
+        "5 cm",
+        "7 cm",
+        "10 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "Pour trouver le milieu par mesure, on divise la longueur totale par $2$. La moitié de $10$ cm est $5$ cm ($10 \\div 2 = 5$). On mesure donc $5$ cm depuis l'origine. $3$ cm et $7$ cm ne divisent pas le segment en deux parties égales, et $10$ cm correspond à la longueur totale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a tracé un segment de $12$ cm. Il a repéré son milieu. À combien de centimètres de l'extrémité de départ se trouve ce milieu ?",
+      "options": [
+        "4 cm",
+        "6 cm",
+        "8 cm",
+        "12 cm"
+      ],
+      "correctAnswer": "6 cm",
+      "explanation": "La longueur du segment est de $12$ cm. Le milieu sépare le segment en deux demi-segments de même longueur. Il faut calculer la moitié de $12$ : $12 \\div 2 = 6$ cm. Le milieu est à $6$ cm de chaque extrémité. $4$ cm et $8$ cm sont des positions incorrectes, $12$ cm est l'autre bout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le milieu d'un segment est repéré à $4$ cm de l'origine. Quelle est la longueur totale de ce segment ?",
+      "options": [
+        "4 cm",
+        "6 cm",
+        "8 cm",
+        "10 cm"
+      ],
+      "correctAnswer": "8 cm",
+      "explanation": "Puisque le milieu divise le segment en deux parties égales, la distance de l'origine au milieu ($4$ cm) représente la moitié de la longueur totale. Pour retrouver le total, on multiplie par $2$ : $4 \\times 2 = 8$ cm. Le segment mesure donc $8$ cm au total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux segments : le premier mesure $6$ cm, le second mesure $8$ cm. Lequel a son milieu le plus éloigné de l'origine ?",
+      "options": [
+        "Le premier segment",
+        "Le second segment",
+        "Les deux au même endroit",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le second segment",
+      "explanation": "Pour le premier segment ($6$ cm), le milieu est à $6 \\div 2 = 3$ cm de l'origine. Pour le second ($8$ cm), le milieu est à $8 \\div 2 = 4$ cm de l'origine. Comme $4$ cm est plus grand que $3$ cm, le milieu du second segment est plus loin de l'origine.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

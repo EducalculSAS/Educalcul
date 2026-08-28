@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Carré / inverse / racine ou autres prévues",
+  "title": "Fonctions de référence : carré, inverse, racine carrée",
+  "blocks": [
+    {
+      "title": "Domaine d'une fonction racine carrée",
+      "content": "Déterminer l'ensemble de définition de la fonction $f$ définie par $f(x) = \\sqrt{7 - 3x}$.",
+      "correctAnswer": "]-\\infty; 7/3]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction racine carrée est définie si et seulement si l'expression sous le radical est positive ou nulle. On résout donc l'inéquation $7 - 3x \\ge 0$. Cela donne $-3x \\ge -7$, soit $3x \\le 7$, donc $x \\le 7/3$. L'ensemble de définition est l'intervalle $]-\\infty; 7/3]$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation du second degré simple",
+      "content": "Résoudre dans $\\mathbb{R}$ l'équation $x^2 = 49$.",
+      "correctAnswer": "-7 ; 7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation $x^2 = 49$ admet deux solutions dans $\\mathbb{R}$ : les nombres dont le carré est $49$. Ce sont les opposés de la racine carrée de $49$. Comme $\\sqrt{49} = 7$, les solutions sont $x = -7$ et $x = 7$. On écrit l'ensemble des solutions $\\{-7; 7\\}$ ou simplement \"-7 ; 7\".",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation avec la fonction inverse",
+      "content": "Résoudre dans $\\mathbb{R}^*$ l'équation $\\frac{1}{x} = -5$.",
+      "correctAnswer": "-1/5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche $x$ non nul tel que $\\frac{1}{x} = -5$. En multipliant les deux membres par $x$ (qui est non nul), on obtient $1 = -5x$. En divisant par $-5$, on trouve $x = -\\frac{1}{5}$. Cette valeur est bien non nulle, elle est donc la solution unique.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

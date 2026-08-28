@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 153,
+  "_course_code": "ce2-t02-c02-fractions-inferieures-egales-ou-superieures-a-1",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Comparer à l'unité",
+  "title": "Comparer une fraction à l'unité",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. La fraction représentée est-elle inférieure, égale ou supérieure à 1 ?",
+      "options": [
+        "Inférieure à 1",
+        "Égale à 1",
+        "Supérieure à 1",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Inférieure à 1",
+      "explanation": "La figure montre une barre divisée en 4 parties égales (le dénominateur est 4). Seules 3 parties sont colorées (le numérateur est 3). La fraction est donc $3/4$. Comme le numérateur (3) est plus petit que le dénominateur (4), la fraction est inférieure à 1.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Fraction 3/4"
+      }
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est égale à 1 ?",
+      "options": [
+        "$2/5$",
+        "$5/5$",
+        "$5/2$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$5/5$",
+      "explanation": "Une fraction est égale à 1 lorsque son numérateur est identique à son dénominateur. Ici, $5/5$ signifie 5 parts sur 5, c'est-à-dire le tout. $2/5$ et $1/5$ sont inférieures à 1 (numérateur plus petit). $5/2$ est supérieure à 1 (numérateur plus grand).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $7/4$ est-elle inférieure, égale ou supérieure à 1 ?",
+      "options": [
+        "Inférieure à 1",
+        "Égale à 1",
+        "Supérieure à 1",
+        "Inférieure à 0"
+      ],
+      "correctAnswer": "Supérieure à 1",
+      "explanation": "Pour comparer une fraction à 1, on compare le numérateur et le dénominateur. Ici, le numérateur est 7 et le dénominateur est 4. Comme 7 est plus grand que 4, la fraction vaut plus d'un entier. $7/4 = 1$ et $3/4$, elle est donc supérieure à 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la règle : « Si le numérateur est **plus grand** que le dénominateur, la fraction est... »",
+      "options": [
+        "Inférieure à 1",
+        "Égale à 1",
+        "Supérieure à 1",
+        "Nulle"
+      ],
+      "correctAnswer": "Supérieure à 1",
+      "explanation": "C'est la règle fondamentale de comparaison à l'unité : \\n- Numérateur < Dénominateur -> Fraction < 1\\n- Numérateur = Dénominateur -> Fraction = 1\\n- Numérateur > Dénominateur -> Fraction > 1\\nIci, le numérateur est plus grand, donc la fraction est supérieure à 1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une tarte est coupée en 8 parts égales. Paul en mange 5 et Julie en mange 4. La fraction de tarte mangée par Julie est-elle inférieure, égale ou supérieure à 1 ?",
+      "options": [
+        "$4/8$, inférieure à 1",
+        "$4/8$, supérieure à 1",
+        "$8/4$, égale à 1",
+        "$5/8$, supérieure à 1"
+      ],
+      "correctAnswer": "$4/8$, inférieure à 1",
+      "explanation": "Julie a mangé 4 parts sur les 8 parts de la tarte entière. La fraction est donc $4/8$. Le numérateur (4) est plus petit que le dénominateur (8), donc cette fraction est inférieure à 1. L'option $8/4$ correspondrait à 2 tartes entières, ce qui est impossible ici. L'option $5/8$ correspond à la part de Paul.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 4,
+            "denominator": 8
+          }
+        ],
+        "caption": "Part de Julie : 4/8"
+      }
+    }
+  ]
+}

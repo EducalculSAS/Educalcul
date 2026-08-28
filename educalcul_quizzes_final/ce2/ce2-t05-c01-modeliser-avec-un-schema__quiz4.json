@@ -1,0 +1,161 @@
+{
+  "_status": "done",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Modéliser avec un schéma",
+  "title": "Modéliser avec un schéma : problèmes additifs",
+  "questions": [
+    {
+      "text": "Léa a $12$ billes. Elle en gagne $8$ de plus. Quel schéma en barres représente le mieux la situation pour trouver le total ?",
+      "options": [
+        "Une barre totale de $20$ divisée en deux parties : $12$ et $8$.",
+        "Une barre totale de $12$ divisée en deux parties : $8$ et $4$.",
+        "Deux barres séparées : une de $12$ et une de $8$.",
+        "Une barre totale de $8$ avec une partie de $12$."
+      ],
+      "correctAnswer": "Une barre totale de $20$ divisée en deux parties : $12$ et $8$.",
+      "explanation": "Il s'agit d'une réunion de deux quantités (parties) pour former un total (tout). Le schéma en barres montre une grande barre (le tout) découpée en deux parties égales aux quantités connues : $12$ et $8$. Le total $12 + 8 = 20$ est la longueur de la grande barre. Les autres propositions inversent les rôles (soustraction) ou ne modélisent pas la réunion.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Départ",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Gagnées",
+            "value": 8,
+            "tone": "green"
+          }
+        ],
+        "caption": "Modèle partie-partie-tout : 12 + 8 = ?"
+      }
+    },
+    {
+      "text": "Il y a $25$ livres sur une étagère. On en retire $9$. Quelle opération le schéma en barres (une barre totale de $25$ avec une partie de $9$ enlevée) permet-il de visualiser ?",
+      "options": [
+        "$25 + 9 = 34$",
+        "$25 - 9 = 16$",
+        "$9 - 25 = -16$",
+        "$25 - 16 = 9$"
+      ],
+      "correctAnswer": "$25 - 9 = 16$",
+      "explanation": "Le schéma montre un tout ($25$) dont on retire une partie connue ($9$). La partie restante inconnue correspond à la soustraction $25 - 9$. Le résultat est $16$. L'option A modéliserait une réunion. L'option C est impossible au CE2 (nombres négatifs). L'option D inverse les nombres de l'opération.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Restants",
+            "value": 16,
+            "tone": "blue"
+          },
+          {
+            "label": "Retirés",
+            "value": 9,
+            "tone": "red"
+          }
+        ],
+        "caption": "Modèle tout-partie-partie : 25 - 9 = ?"
+      }
+    },
+    {
+      "text": "Paul a $15$ timbres. Lucie en a $7$ de plus que Paul. Quel schéma compare correctement leurs collections ?",
+      "options": [
+        "Deux barres de même longueur : $15$ et $15$.",
+        "Une barre pour Paul ($15$) et une barre plus longue pour Lucie ($15 + 7$).",
+        "Une barre pour Paul ($15$) et une barre plus courte pour Lucie ($15 - 7$).",
+        "Une seule barre de $22$ pour les deux."
+      ],
+      "correctAnswer": "Une barre pour Paul ($15$) et une barre plus longue pour Lucie ($15 + 7$).",
+      "explanation": "C'est un problème de comparaison. '7 de plus' signifie que la quantité de Lucie est la quantité de Paul ($15$) augmentée de la différence ($7$). Le schéma montre deux barres alignées : celle de Paul ($15$) et celle de Lucie qui dépasse de $7$ (soit $22$). L'option C correspondrait à '7 de moins'. L'option A ignore la différence. L'option D ne permet pas de comparer.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paul",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Lucie",
+            "value": 22,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Comparaison : Paul (15) et Lucie (15+7=22)"
+      }
+    },
+    {
+      "text": "Un marchand a $40$ pommes. Il en vend $12$ le matin et $15$ l'après-midi. Combien lui reste-t-il ? Choisis le bon schéma à 3 parties.",
+      "options": [
+        "Total $40$, parties : $12$, $15$, $13$.",
+        "Total $40$, parties : $12$, $15$, $28$.",
+        "Total $27$, parties : $12$, $15$, $?$.",
+        "Total $40$, parties : $12$, $?$, $15$."
+      ],
+      "correctAnswer": "Total $40$, parties : $12$, $15$, $13$.",
+      "explanation": "Le tout est $40$. Les deux parties connues sont les ventes : $12$ et $15$. La troisième partie (le reste) se calcule : $40 - 12 - 15 = 13$ ou $40 - (12 + 15) = 40 - 27 = 13$. L'option B additionne les ventes ($27$) mais la met comme partie restante (erreur). L'option C prend la somme des ventes comme total. L'option D est incomplète (ne donne pas la valeur du reste).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Matin",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Après-midi",
+            "value": 15,
+            "tone": "green"
+          },
+          {
+            "label": "Restantes",
+            "value": 13,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Problème à deux étapes : 40 - 12 - 15 = 13"
+      }
+    },
+    {
+      "text": "Marie a $18$ €. Elle achète un cahier à $5$ € et un stylo. Il lui reste $9$ €. Quel schéma permet de trouver le prix du stylo ?",
+      "options": [
+        "Total $18$, parties : $5$, $9$, $4$.",
+        "Total $18$, parties : $5$, $?$, $9$.",
+        "Total $14$, parties : $5$, $9$, $?$.",
+        "Total $9$, parties : $5$, $18$, $?$."
+      ],
+      "correctAnswer": "Total $18$, parties : $5$, $?$, $9$.",
+      "explanation": "L'argent initial ($18$ €) est le tout. On connaît deux parties : le cahier ($5$ €) et le reste ($9$ €). La partie manquante est le prix du stylo. Le schéma place le total $18$ en haut, et trois parties en dessous : $5$, $?$ (stylo), $9$. Le calcul est $18 - 5 - 9 = 4$ €. L'option A donne déjà la réponse ($4$) au lieu du point d'interrogation. Les options C et D ont un total incorrect.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Cahier",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Stylo",
+            "value": 0,
+            "tone": "green"
+          },
+          {
+            "label": "Reste",
+            "value": 9,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Problème inverse : 18 = 5 + ? + 9"
+      }
+    }
+  ]
+}

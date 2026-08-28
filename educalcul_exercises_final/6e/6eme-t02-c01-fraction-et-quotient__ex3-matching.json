@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 336,
+  "_course_code": "6eme-t02-c01-fraction-et-quotient",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Écriture",
+  "title": "Écriture des fractions et quotients",
+  "blocks": [
+    {
+      "title": "Lire et nommer une fraction",
+      "content": "Relie chaque fraction à sa lecture en lettres.",
+      "pairs": [
+        {
+          "left": "$\\frac{3}{5}$",
+          "right": "trois cinquièmes"
+        },
+        {
+          "left": "$\\frac{7}{2}$",
+          "right": "sept demis"
+        },
+        {
+          "left": "$\\frac{1}{4}$",
+          "right": "un quart"
+        },
+        {
+          "left": "$\\frac{5}{3}$",
+          "right": "cinq tiers"
+        }
+      ],
+      "explanation": "Pour nommer une fraction, on dit le numérateur (chiffre du haut) suivi du dénominateur (chiffre du bas) avec la terminaison adaptée : 2 -> demi(s), 3 -> tiers, 4 -> quart(s), 5 -> cinquièmes, etc. Attention : si le numérateur est 1, on dit 'un' (un quart) et pas 'un un quart'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Passer de la division à la fraction",
+      "content": "Relie chaque division à l'écriture fractionnaire correspondante.",
+      "pairs": [
+        {
+          "left": "$12 \\div 5$",
+          "right": "$\\frac{12}{5}$"
+        },
+        {
+          "left": "$7 : 3$",
+          "right": "$\\frac{7}{3}$"
+        },
+        {
+          "left": "$25 \\div 4$",
+          "right": "$\\frac{25}{4}$"
+        },
+        {
+          "left": "$9 : 2$",
+          "right": "$\\frac{9}{2}$"
+        }
+      ],
+      "explanation": "Une division s'écrit sous forme de fraction en mettant le dividende (le nombre de gauche) au numérateur et le diviseur (le nombre de droite) au dénominateur. Les symboles $\\div$ et $:$ signifient la même chose : la division.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposer une fraction impropre",
+      "content": "Relie chaque fraction impropre à sa décomposition en somme d'un entier et d'une fraction propre.",
+      "pairs": [
+        {
+          "left": "$\\frac{7}{3}$",
+          "right": "$2 + \\frac{1}{3}$"
+        },
+        {
+          "left": "$\\frac{11}{4}$",
+          "right": "$2 + \\frac{3}{4}$"
+        },
+        {
+          "left": "$\\frac{13}{5}$",
+          "right": "$2 + \\frac{3}{5}$"
+        },
+        {
+          "left": "$\\frac{8}{3}$",
+          "right": "$2 + \\frac{2}{3}$"
+        }
+      ],
+      "explanation": "Pour décomposer une fraction impropre (numérateur $\\ge$ dénominateur), on effectue la division euclidienne du numérateur par le dénominateur. Le quotient donne l'entier, le reste donne le numérateur de la fraction propre, le dénominateur ne change pas. Exemple : $7 = 2 \\times 3 + 1$, donc $\\frac{7}{3} = 2 + \\frac{1}{3}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

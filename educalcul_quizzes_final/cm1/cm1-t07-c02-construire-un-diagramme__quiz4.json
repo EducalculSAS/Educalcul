@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 257,
+  "_course_code": "cm1-t07-c02-construire-un-diagramme",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Construire un diagramme",
+  "title": "Construire un diagramme au CM1",
+  "questions": [
+    {
+      "text": "Pour construire un diagramme en barres représentant le nombre de fruits préférés d'une classe, quelle est la première étape indispensable ?",
+      "options": [
+        "Colorier les barres en bleu",
+        "Recueillir les données dans un tableau",
+        "Tracer une droite graduée sans chiffres",
+        "Choisir la plus grande barre"
+      ],
+      "correctAnswer": "Recueillir les données dans un tableau",
+      "explanation": "Avant de dessiner un diagramme, il faut organiser les informations récoltées dans un tableau pour savoir quelle hauteur donner à chaque barre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau indique que $8$ élèves aiment les pommes, $5$ élèves les poires et $12$ élèves les bananes. Quelle sera la hauteur de la barre pour les bananes si $1$ carreau représente $1$ élève ?",
+      "options": [
+        "$5$ carreaux",
+        "$8$ carreaux",
+        "$12$ carreaux",
+        "$25$ carreaux"
+      ],
+      "correctAnswer": "$12$ carreaux",
+      "explanation": "Le nombre de bananes est de $12$. Si $1$ carreau égale $1$ élève, la barre doit monter jusqu'au chiffre $12$ sur l'axe vertical.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on décide que $1$ carreau représente $2$ élèves, quelle hauteur doit avoir la barre pour un groupe de $10$ élèves ?",
+      "options": [
+        "$2$ carreaux",
+        "$5$ carreaux",
+        "$10$ carreaux",
+        "$20$ carreaux"
+      ],
+      "correctAnswer": "$5$ carreaux",
+      "explanation": "On divise le nombre total d'élèves par la valeur d'un carreau : $10 \\div 2 = 5$. On trace donc une barre de $5$ carreaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde ce diagramme. Combien d'élèves ont choisi le sport comme activité favorite ?",
+      "options": [
+        "$4$ élèves",
+        "$6$ élèves",
+        "$8$ élèves",
+        "$10$ élèves"
+      ],
+      "correctAnswer": "$8$ élèves",
+      "explanation": "En regardant la barre correspondant au Sport, on voit qu'elle s'arrête au niveau du chiffre $8$ sur l'axe des ordonnées.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Activités favorites",
+        "bars": [
+          {
+            "label": "Dessin",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Sport",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Lecture",
+            "value": 6,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour que un diagramme soit correct et facile à lire, que doit on obligatoirement ajouter ?",
+      "options": [
+        "De nombreuses images de décoration",
+        "Un titre et des légendes sur les axes",
+        "Que des couleurs primaires",
+        "Un cadre en gras tout autour"
+      ],
+      "correctAnswer": "Un titre et des légendes sur les axes",
+      "explanation": "Le titre permet de savoir ce que le diagramme représente et les légendes indiquent ce que signifient les barres et les chiffres de l'axe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

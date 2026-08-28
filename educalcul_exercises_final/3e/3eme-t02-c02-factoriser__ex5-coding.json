@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Facteur commun",
+  "title": "Factorisation par facteur commun - Algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme (ou une suite d'instructions) qui factorise l'expression $12x + 18$ en extrayant le facteur commun.",
+      "correctAnswer": "Le plus grand commun diviseur de 12 et 18 est 6. On écrit $12x + 18 = 6(2x + 3)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le PGCD des coefficients 12 et 18 qui est 6. On divise chaque terme par 6 : $12x / 6 = 2x$ et $18 / 6 = 3$. On met 6 en facteur devant la parenthèse contenant la somme des quotients.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui factorise l'expression $8x^2y - 12xy^2 + 4xy$.",
+      "correctAnswer": "Le PGCD des coefficients 8, 12, 4 est 4. Le PGCD des parties littérales est $xy$. La factorisation est $4xy(2x - 3y + 1)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On détermine le PGCD des coefficients (4) et le PGCD des parties littérales ($x$ et $y$ présents dans chaque terme avec l'exposant minimal 1). On factorise $4xy$ et on divise chaque terme par ce facteur : $8x^2y / 4xy = 2x$, $-12xy^2 / 4xy = -3y$, $4xy / 4xy = 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Proposer un algorithme (en pseudo‑code ou en Python) qui, étant donné une liste de termes sous la forme coefficient * variable^exposant, détermine le facteur commun et renvoie l'expression factorisée.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser pgcd_coeff = coefficient du premier terme.\\n2. Pour chaque terme, mettre à jour pgcd_coeff = PGCD(pgcd_coeff, coefficient du terme).\\n3. Pour chaque variable, trouver l'exposant minimal parmi tous les termes où elle apparaît.\\n4. Construire le facteur commun = pgcd_coeff * produit(variable^exposant_min).\\n5. Diviser chaque terme par le facteur commun pour obtenir les termes restants.\\n6. Retourner facteur_commun * (somme des termes restants).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme calcule le plus grand commun diviseur des coefficients numériques et, pour chaque variable, l'exposant minimal présent dans tous les termes. Le produit de ces éléments forme le facteur commun. On divise ensuite chaque terme par ce facteur pour obtenir l'expression entre parenthèses.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

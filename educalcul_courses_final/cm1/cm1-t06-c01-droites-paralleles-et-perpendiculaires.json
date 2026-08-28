@@ -1,0 +1,527 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.245669+00:00",
+  "id": 248,
+  "code": "cm1-t06-c01",
+  "title": "Droites parallèles et perpendiculaires",
+  "description": "Cours structuré Educalcul : Droites parallèles et perpendiculaires.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Droites parallèles et perpendiculaires",
+    "objectif_global": "Droites parallèles et perpendiculaires",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Vérifier.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les droites parallèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux rails de train qui s'éloignent à l'horizon : ils ne se croisent jamais, ils gardent toujours la même distance l'un de l'autre. En géométrie, on appelle ça des droites parallèles. Aujourd'hui, nous allons apprendre à les reconnaître, à les nommer et à utiliser le bon symbole pour les décrire."
+            },
+            {
+              "type": "definition",
+              "term": "Droites parallèles",
+              "definition": "Deux droites sont parallèles si elles sont dans le même plan, ne se coupent jamais et gardent une distance constante entre elles.",
+              "example": "Les traits sur un cahier à grands carreaux sont des droites parallèles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir si deux droites sont parallèles, on peut glisser une règle le long de l'une d'elles : si la règle touche toujours l'autre droite sans jamais la couper, elles sont parallèles. C'est comme deux chemins de promenade qui restent côte à côte sans jamais se rencontrer."
+            },
+            {
+              "type": "display_math",
+              "latex": "d // d'"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le symbole $//$ se lit \"est parallèle à\". Si on écrit $d // d'$, cela veut dire : la droite $d$ est parallèle à la droite $d'$. On peut aussi mettre de petites flèches sur les droites dans un dessin pour montrer qu'elles sont parallèles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tournons-nous vers une autre situation très courante : le coin d'une feuille de papier, le bord d'une table et son pied. Ces droites se coupent en formant un angle bien particulier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les droites perpendiculaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux droites se croisent et forment un angle droit, on dit qu'elles sont perpendiculaires. C'est le cas du coin d'un livre, de la rencontre entre un mur et le sol, ou des lignes d'un quadrillage."
+            },
+            {
+              "type": "definition",
+              "term": "Droites perpendiculaires",
+              "definition": "Deux droites sont perpendiculaires si elles se coupent en formant un angle droit (un angle de $90^{\\circ}$).",
+              "example": "Les lignes d'un papier quadrillé sont perpendiculaires deux à deux."
+            },
+            {
+              "type": "display_math",
+              "latex": "d \\perp d'"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le symbole $\\perp$ se lit \"est perpendiculaire à\". Si on écrit $d \\perp d'$, la droite $d$ est perpendiculaire à la droite $d'$. Sur un schéma, on marque souvent l'angle droit par un petit carré dans le coin de l'angle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet angle droit que l'on vient de rencontrer est si important qu'il a son propre nom et sa propre notation. Apprenons à le repérer avec certitude."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'angle droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle droit mesure exactement $90^{\\circ}$. C'est l'angle que l'on voit au coin d'un carré ou d'un rectangle. Pour le repérer sur un dessin, on trace un petit carré à l'intérieur de l'angle, juste au sommet. Ce petit carré veut dire : \"Attention, ici c'est un angle droit !\""
+            },
+            {
+              "type": "definition",
+              "term": "Angle droit",
+              "definition": "Un angle droit est un angle qui mesure $90^{\\circ}$. On le note par un petit carré dans l'angle.",
+              "example": "Chaque coin d'une feuille A4 est un angle droit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu places une équerre (ton outil en forme de triangle rectangle) sur un angle et que les deux bords de l'équerre coïncident parfaitement avec les deux demi-droites, alors c'est un angle droit. C'est le test le plus simple et le plus sûr."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant distinguer des droites parallèles, qui ne se rencontrent jamais, de droites perpendiculaires, qui se coupent en formant un angle droit. Tu connais aussi les symboles $//$ et $\\perp$ pour les écrire rapidement. Dans la prochaine leçon, nous verrons comment vérifier tout cela avec tes instruments de géométrie."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Observe les paires de droites ci-dessous. Pour chaque paire, écris si les droites sont parallèles, perpendiculaires ou ni l'un ni l'autre. (Imagine les figures : 1) deux traits horizontaux espacés régulièrement ; 2) un trait vertical et un trait horizontal qui se croisent ; 3) deux droites qui se croisent en formant un angle pointu.)",
+              "answer": "1) Parallèles. 2) Perpendiculaires. 3) Ni parallèles ni perpendiculaires.",
+              "hint": "Regarde si les droites se coupent. Si elles ne se coupent pas, elles sont parallèles. Si elles se coupent, regarde l'angle formé : est-ce un angle droit ?",
+              "explanation": "Dans le cas 1, les droites ne se croisent jamais et gardent la même distance : ce sont des parallèles. Dans le cas 2, elles se coupent en formant un angle droit (comme un coin de feuille) : ce sont des perpendiculaires. Dans le cas 3, elles se coupent mais l'angle n'est pas droit : ce ne sont ni des parallèles ni des perpendiculaires."
+            },
+            {
+              "question": "Parmi les symboles suivants, entoure celui qui signifie \"est perpendiculaire à\" : $//$, $\\perp$, $=$, $\\neq$.",
+              "answer": "$\\perp$",
+              "hint": "Rappelle-toi : le symbole avec un trait horizontal et un trait vertical qui se coupent au milieu représente un angle droit.",
+              "explanation": "Le symbole $\\perp$ est composé de deux traits perpendiculaires. Il se lit \"est perpendiculaire à\". Le symbole $//$ signifie \"est parallèle à\"."
+            },
+            {
+              "question": "Sur ton cahier, trace un angle droit à l'aide de ton équerre. Puis marque-le avec le petit carré caractéristique. Combien de degrés mesure cet angle ?",
+              "answer": "L'angle mesure $90^{\\circ}$.",
+              "hint": "Utilise l'angle de ton équerre comme gabarit. Le petit carré se place dans le coin de l'angle.",
+              "explanation": "Un angle droit mesure toujours $90^{\\circ}$. Le petit carré est la notation conventionnelle pour indiquer qu'un angle est droit sans avoir à écrire le chiffre."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier si deux droites sont parallèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Hier, nous avons appris à reconnaître des droites parallèles à l'œil. Mais en géométrie, on a besoin d'une méthode sûre pour vérifier, car nos yeux peuvent nous tromper. Heureusement, tu as dans ta trousse deux outils parfaits : la règle et l'équerre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ta règle le long de la première droite. La règle doit être bien alignée, sans espace."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton équerre contre la règle, le bord le plus long de l'équerre bien collé contre la règle. L'équerre forme un angle droit avec la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser et observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle sans la tourner. Regarde le bord de l'équerre qui dépasse : s'il coïncide parfaitement avec la deuxième droite sur toute sa longueur, alors les deux droites sont parallèles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi ça marche ? Parce que l'équerre garde toujours la même orientation par rapport à la règle. Si la deuxième droite suit le bord de l'équerre partout, elle a la même direction que la première : elles sont donc parallèles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment vérifier si deux droites sont perpendiculaires. C'est encore plus simple : il suffit de tester l'angle droit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier si deux droites sont perpendiculaires"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton équerre de façon qu'un de ses bords coïncide exactement avec la première droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'autre bord",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'autre bord de l'équerre (celui qui forme l'angle droit avec le premier). Est-ce qu'il coïncide parfaitement avec la deuxième droite ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si oui, les deux droites sont perpendiculaires. Si non, elles ne le sont pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équerre est ton outil de référence pour l'angle droit. Elle est fabriquée pour avoir un angle parfait de $90^{\\circ}$. Si les deux droites épousent les deux bords de l'équerre, elles forment un angle droit entre elles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les droites sont tracées loin l'une de l'autre sur la feuille, et ton équerre n'est pas assez grande pour les atteindre en même temps. Pas de panique : on peut utiliser la règle pour prolonger l'action de l'équerre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode de la règle et de l'équerre pour les droites éloignées"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Aligner la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la règle sur la première droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser l'équerre contre la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre contre la règle, comme pour vérifier des parallèles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser jusqu'à la deuxième droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle jusqu'à ce que le bord de l'équerre passe par la deuxième droite. Vérifie alors si ce bord coïncide avec la deuxième droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette technique permet de vérifier le parallélisme ou la perpendicularité même quand les droites sont espacées. La règle sert de rail pour que l'équerre garde sa direction exacte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant vérifier avec certitude si deux droites sont parallèles ou perpendiculaires, grâce à ta règle et ton équerre. Tu as une méthode pas à pas pour chaque cas, même quand les droites sont loin l'une de l'autre. Dans la prochaine leçon, nous allons apprendre à *construire* nous-mêmes ces droites, c'est-à-dire à les tracer avec précision."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as deux droites tracées sur ta feuille. Décris dans l'ordre les trois actions à faire avec ta règle et ton équerre pour vérifier si elles sont parallèles.",
+              "answer": "1) Poser la règle sur la première droite. 2) Poser l'équerre contre la règle. 3) Glisser l'équerre le long de la règle et regarder si son bord coïncide avec la deuxième droite.",
+              "hint": "Pense à l'ordre : la règle d'abord, puis l'équerre contre la règle, puis le mouvement de glissement.",
+              "explanation": "La règle fixe la direction de la première droite. L'équerre, maintenue perpendiculairement à la règle, garde cette direction perpendiculaire. En la glissant, on transporte cette direction jusqu'à la deuxième droite. Si elles coïncident, les droites ont la même direction : elles sont parallèles."
+            },
+            {
+              "question": "Pour vérifier si une droite verticale et une droite horizontale sont perpendiculaires, comment dois-tu placer ton équerre ?",
+              "answer": "Je place un bord de l'équerre sur la droite verticale. Si l'autre bord coïncide avec la droite horizontale, elles sont perpendiculaires.",
+              "hint": "L'équerre a un angle droit. Il faut que ses deux bords épousent les deux droites.",
+              "explanation": "L'équerre est l'instrument de référence de l'angle droit. Si chaque droite coïncide avec un bord de l'équerre, l'angle entre elles est exactement l'angle de l'équerre, donc $90^{\\circ}$."
+            },
+            {
+              "question": "Deux droites sont tracées loin l'une de l'autre. Tu veux vérifier si elles sont parallèles. Ton équerre seule n'atteint pas les deux droites. Que dois-tu ajouter ?",
+              "answer": "J'ajoute la règle. Je pose la règle sur la première droite, l'équerre contre la règle, et je glisse l'équerre le long de la règle jusqu'à la deuxième droite.",
+              "hint": "La règle sert de guide pour faire glisser l'équerre sans la tourner.",
+              "explanation": "La règle prolonge la première droite. L'équerre, glissée le long de la règle, conserve son orientation. Ainsi, on peut reporter la direction de la première droite jusqu'à la deuxième, même éloignée."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une droite parallèle à une droite donnée passant par un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Construire, c'est tracer avec précision en suivant une méthode exacte. Imagine que tu as une droite $d$ et un point $A$ qui n'est pas sur $d$. Tu veux tracer la droite qui passe par $A$ et qui est parallèle à $d$. Avec ta règle et ton équerre, c'est tout à fait possible."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser la règle sur la droite donnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ta règle exactement sur la droite $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser l'équerre contre la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton équerre contre la règle, le grand bord de l'équerre bien collé contre la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser l'équerre jusqu'au point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle jusqu'à ce que le bord de l'équerre (celui qui est perpendiculaire à la règle) passe par le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer la parallèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tiens l'équerre fermement en place. Avec ton crayon, trace un trait le long du bord de l'équerre qui passe par $A$. Cette nouvelle droite est parallèle à $d$ et passe par $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi cette construction fonctionne-t-elle ? Parce que l'équerre, en glissant le long de la règle, garde toujours la même orientation. Le bord que tu as tracé est donc parallèle à la règle, donc parallèle à la droite $d$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, apprenons à tracer une droite perpendiculaire. Il y a deux cas : le point est sur la droite, ou le point est en dehors de la droite. Nous allons voir les deux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une perpendiculaire passant par un point sur la droite"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place un bord de l'équerre sur la droite donnée, de façon que le sommet de l'angle droit de l'équerre soit exactement sur le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un trait le long de l'autre bord de l'équerre (celui qui forme l'angle droit). Cette droite est perpendiculaire à la première et passe par $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la construction la plus simple : l'équerre pose directement l'angle droit sur le point. Vérifie que le petit carré de l'équerre est bien calé sur le point $A$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le point est en dehors de la droite ? Il faut encore utiliser la règle comme rail pour amener l'équerre jusqu'au point."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire une perpendiculaire passant par un point extérieur à la droite"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Règle sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la règle sur la droite donnée $d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Équerre contre la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre contre la règle, le grand bord de l'équerre contre la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Glisser jusqu'au point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais glisser l'équerre le long de la règle jusqu'à ce que le bord de l'équerre (celui qui est perpendiculaire à la règle) passe par le point $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le trait le long de ce bord de l'équerre. Tu as construit la perpendiculaire à $d$ passant par $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque : la méthode est presque identique à celle de la parallèle, sauf qu'on trace le long du bord de l'équerre qui est *perpendiculaire* à la règle, et non parallèle. C'est le même geste, mais on utilise l'autre bord de l'équerre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour construire des droites parallèles et perpendiculaires avec précision. Tu sais utiliser ta règle comme rail et ton équerre comme guide d'angle droit. Ces techniques te serviront tout au long de l'année pour tes figures géométriques."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir des droites parallèles et des droites perpendiculaires avec mes propres mots.",
+                "Je connais les symboles $//$ et $\\perp$ et je sais les lire.",
+                "Je sais vérifier le parallélisme et la perpendicularité avec ma règle et mon équerre.",
+                "Je sais construire une droite parallèle à une droite donnée passant par un point.",
+                "Je sais construire une droite perpendiculaire à une droite donnée passant par un point (sur la droite ou en dehors)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace une droite $d$ et un point $A$ non situé sur $d$. Construis la droite parallèle à $d$ passant par $A$. Décris les 4 étapes de ta construction.",
+              "answer": "1) Règle sur $d$. 2) Équerre contre la règle. 3) Glisser l'équerre jusqu'à ce que son bord passe par $A$. 4) Tracer le long de ce bord.",
+              "hint": "Relis la méthode pas à pas de la leçon. L'ordre est crucial : la règle ne bouge pas, l'équerre glisse.",
+              "explanation": "La règle fixe la direction de $d$. L'équerre, maintenue perpendiculaire à la règle, glisse sans tourner. Le bord de l'équerre qui passe par $A$ a donc la même direction que $d$ : la droite tracée est parallèle à $d$."
+            },
+            {
+              "question": "Tu as une droite $d$ et un point $A$ sur $d$. Construis la perpendiculaire à $d$ en $A$. Quelle est la particularité du placement de l'équerre ?",
+              "answer": "Le sommet de l'angle droit de l'équerre doit être posé exactement sur le point $A$.",
+              "hint": "L'équerre a un angle droit. Où doit se trouver cet angle droit pour que la droite tracée passe par $A$ et soit perpendiculaire ?",
+              "explanation": "Pour que la droite tracée passe par $A$ et forme un angle droit avec $d$, l'angle droit de l'équerre doit être centré sur $A$. Ainsi, les deux bords de l'équerre forment les deux droites perpendiculaires."
+            },
+            {
+              "question": "Compare la construction d'une parallèle et celle d'une perpendiculaire passant par un point extérieur à la droite. Quelle est la seule différence dans le geste de tracer ?",
+              "answer": "Pour la parallèle, on trace le long du bord de l'équerre parallèle à la règle. Pour la perpendiculaire, on trace le long du bord de l'équerre perpendiculaire à la règle.",
+              "hint": "Regarde les deux méthodes 'glisser l'équerre le long de la règle'. Qu'est-ce qui change au moment de tracer le trait ?",
+              "explanation": "Dans les deux cas, la règle est sur la droite de départ et l'équerre glisse dessus. La différence est le choix du bord de l'équerre : le bord parallèle à la règle donne une parallèle ; le bord perpendiculaire à la règle donne une perpendiculaire."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

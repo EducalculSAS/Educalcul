@@ -1,0 +1,355 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.711723+00:00",
+  "id": 714,
+  "code": "terminale-generale-maths-t06-c08",
+  "title": "Bilan - Intégration",
+  "description": "Cours structuré Educalcul : Bilan - Intégration.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Bilan - Intégration",
+    "objectif_global": "Bilan - Intégration",
+    "mini_lecons_imposees": [
+      "Choisir propriété / calcul.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Choisir propriété / calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi bien choisir sa méthode d'intégration"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu te trouves face à une intégrale, la première question à te poser n'est pas « comment la calculer ? » mais « quelle propriété ou quel outil va rendre ce calcul naturel ? ». En terminale spécialité, tu as déjà rencontré la linéarité de l'intégrale, la formule du changement de variable, l'intégration par parties, la décomposition en éléments simples et même les intégrales impropres. Chacune de ces techniques a son domaine de prédilection : la linéarité s'applique dès que l'intégrande est une somme ou une différence de fonctions dont tu connais les primitives ; le changement de variable devient évident quand tu repères une fonction composée dont la dérivée apparaît (ou presque) à côté ; l'intégration par parties est ta meilleure amie quand le produit d'une fonction polynomiale et d'une fonction transcendante (exponentielle, logarithme, trigonométrique) se présente. Apprendre à reconnaître ces patterns, c'est comme apprendre à choisir le bon outil dans une boîte à outils bien rangée : tu gagnes du temps, tu évites les erreurs d'algèbre et tu développes une intuition qui te servira bien au-delà du bac. Dans cette leçon, nous allons passer en revue les principaux critères de choix, illustrer chaque cas par un exemple concret et t'inviter à t'exercer immédiatement après chaque explication pour ancrer le réflexe."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 20,
+              "caption": "Approximation de l'intégrale de $x^2$ de 0 à 1 par rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le cas le plus fréquent : tu vois une intégrale dont l'expression contient une fonction et, juste à côté, sa dérivée multipliée par une constante. C'est le signal classique qui crie « changement de variable ! ». Par exemple, dans l'intégrale $\\int 2x \\, e^{x^{2}} \\, dx$, la fonction $x^{2}$ est à l'intérieur de l'exponentielle et sa dérivée $2x$ se trouve exactement en facteur. Si tu poses $u = x^{2}$, alors $du = 2x \\, dx$ et l'intégrale se transforme instantanément en $\\int e^{u} \\, du$, dont la primitive est $e^{u} + C$, c'est-à-dire $e^{x^{2}} + C$. Ce raisonnement fonctionne à chaque fois que tu peux identifier une « fonction intérieure » et sa différentielle (ou un multiple constant) dans l'intégrande. Pour t'aider à visualiser cette mécanique, nous allons détailler la méthode pas à pas dans un bloc « étapes » et te proposer un exercice ciblé juste après."
+            },
+            {
+              "type": "definition",
+              "term": "Changement de variable",
+              "definition": "Technique qui consiste à remplacer la variable d'intégration par une nouvelle variable $u = g(x)$ afin de transformer l'intégrale en une forme plus simple, en utilisant la relation $du = g'(x)\\,dx$.",
+              "example": "Pour $\\int 2x\\,e^{x^{2}}\\,dx$, on pose $u = x^{2}$, $du = 2x\\,dx$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction intérieure et sa dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère une expression de la forme $f(g(x))\\,g'(x)$ ou un multiple constant de $g'(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser le changement de variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose $u = g(x)$, alors $du = g'(x)\\,dx$ (ou $du = k\\,g'(x)\\,dx$ si un facteur constant $k$ apparaît)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réécrire l'intégrale en $u$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $g(x)$ par $u$ et $g'(x)\\,dx$ par $du$ (ou $\\frac{1}{k}du$). L'intégrale devient $\\int f(u)\\,du$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Intégrer en $u$ et revenir à $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la primitive $F(u)$, puis substitue $u = g(x)$ pour obtenir $F(g(x))+C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int f(g(x))\\,g'(x)\\,dx = \\int f(u)\\,du"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le deuxième grand pattern, c'est le produit d'une fonction qui se simplifie quand on la dérive (généralement un polynôme) et d'une fonction dont on connaît facilement une primitive (exponentielle, logarithme, sinus, cosinus). C'est là qu'intervient l'intégration par parties, issue de la formule de dérivation d'un produit : $\\int u \\, dv = u v - \\int v \\, du$. Le choix de $u$ et $dv$ suit une règle mnémotechnique souvent appelée « LIATE » (Logarithme, Inverse trigonométrique, Algébrique, Trigonométrique, Exponentielle) : on privilégie comme $u$ la fonction qui apparaît en premier dans cette liste. Prenons $\\int x \\ln x \\, dx$ : ici $\\ln x$ est logarithme, donc on pose $u = \\ln x$ et $dv = x \\, dx$. Alors $du = \\frac{1}{x} \\, dx$ et $v = \\frac{x^{2}}{2}$. En appliquant la formule, on obtient $\\frac{x^{2}}{2} \\ln x - \\int \\frac{x^{2}}{2} \\cdot \\frac{1}{x} \\, dx = \\frac{x^{2}}{2} \\ln x - \\frac{1}{2} \\int x \\, dx = \\frac{x^{2}}{2} \\ln x - \\frac{x^{2}}{4} + C$. Nous allons maintenant dérouler cette méthode dans un bloc « étapes » et te proposer un exercice pour la mettre en pratique."
+            },
+            {
+              "type": "definition",
+              "term": "Intégration par parties",
+              "definition": "Méthode issue de la dérivée d'un produit : $\\int u\\,dv = uv - \\int v\\,du$. On choisit $u$ (à dériver) et $dv$ (à intégrer) selon la règle LIATE.",
+              "example": "Pour $\\int x\\ln x\\,dx$, choisir $u=\\ln x$, $dv=x\\,dx$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir $u$ et $dv$ selon LIATE",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la fonction logarithmique, inverse trigonométrique, algébrique, trigonométrique ou exponentielle qui se trouve en premier dans la liste LIATE ; elle sera $u$. Le reste devient $dv$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $du$ et $v$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dérive $u$ pour obtenir $du$ ; intégre $dv$ pour obtenir $v$ (n'oublie pas la constante d'intégration, elle s'annulera)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace dans $\\int u\\,dv = uv - \\int v\\,du$ et simplifie l'intégrale restante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une nouvelle intégrale apparaît, répète le processus ou utilise une autre technique ; sinon, ajoute la constante $C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int u\\,dv = uv - \\int v\\,du"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois grilles de lecture principales : la linéarité pour les sommes, le changement de variable pour les compositions, l'intégration par parties pour les produits polynôme‑transcendant. Bien sûr, il existe d'autres situations (fractions rationnelles, intégrales trigonométriques, intégrales impropres) que nous aborderons dans la leçon de bilan, mais ces trois piliers couvrent déjà la grande majorité des intégrales rencontrées en terminale. L'important est de t'entraîner à repérer le pattern avant de te lancer dans le calcul : prends quelques secondes pour observer l'intégrande, note la forme qui te saute aux yeux, puis choisis l'outil adapté. Avec de la pratique, ce diagnostic deviendra automatique et tu gagneras une confiance précieuse le jour de l'épreuve. Pour finir cette leçon, refais les trois exercices proposés, vérifie tes réponses avec les explications détaillées et note dans ton cahier les critères de choix qui t'ont paru les plus utiles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\int_{0}^{1} x^{2} \\, dx$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Utilise la formule de la puissance : $\\int x^{n} dx = \\frac{x^{n+1}}{n+1}$ pour $n \\neq -1$.",
+              "explanation": "En appliquant la formule avec $n=2$, on obtient $\\frac{x^{3}}{3}$ évalué de 0 à 1, soit $\\frac{1}{3}$."
+            },
+            {
+              "question": "Calcule $\\int 2x \\, e^{x^{2}} \\, dx$.",
+              "answer": "$e^{x^{2}} + C$",
+              "hint": "Repère la fonction intérieure $x^{2}$ et sa dérivée $2x$.",
+              "explanation": "Pose $u = x^{2}$, alors $du = 2x dx$, l'intégrale devient $\\int e^{u} du = e^{u} + C = e^{x^{2}} + C$."
+            },
+            {
+              "question": "Calcule $\\int x \\ln x \\, dx$.",
+              "answer": "$\\frac{x^{2}}{2} \\ln x - \\frac{x^{2}}{4} + C$",
+              "hint": "Utilise l'intégration par parties avec $u = \\ln x$, $dv = x dx$.",
+              "explanation": "Alors $du = \\frac{1}{x} dx$, $v = \\frac{x^{2}}{2}$. La formule donne $\\frac{x^{2}}{2} \\ln x - \\int \\frac{x^{2}}{2} \\cdot \\frac{1}{x} dx = \\frac{x^{2}}{2} \\ln x - \\frac{1}{2} \\int x dx = \\frac{x^{2}}{2} \\ln x - \\frac{x^{2}}{4} + C$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des primitives usuelles et de la linéarité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant d'aborder les cas plus délicats, assurons‑nous que les bases sont solides. La linéarité de l'intégrale te permet de décomposer n'importe quelle somme ou différence d'intégrandes en une somme d'intégrales plus simples : $\\int [f(x) + g(x)] \\, dx = \\int f(x) \\, dx + \\int g(x) \\, dx$. Couplée à la table des primitives usuelles (puissances, exponentielle, logarithme, fonctions trigonométriques directes et inverses), elle te donne la clé pour intégrer toute expression polynomiale, toute combinaison linéaire d'exponentielles ou de sinus/cosinus, et bien d'autres encore. Par exemple, $\\int (3x^{2} - 4x + 5) \\, dx$ se traite terme à terme : $\\int 3x^{2} \\, dx = x^{3}$, $\\int -4x \\, dx = -2x^{2}$, $\\int 5 \\, dx = 5x$, soit $x^{3} - 2x^{2} + 5x + C$. Pour visualiser cette table, nous allons afficher un tableau récapitulatif des primitives les plus courantes, que tu pourras garder sous les yeux pendant tes révisions. Ensuite, un exercice te demandera d'appliquer cette règle sur un polynôme de degré trois, histoire de vérifier que le réflexe « linéarité + table » est bien ancré."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fonction",
+                "Primitive"
+              ],
+              "rows": [
+                [
+                  "$x^{n}$ ($n\\neq -1$)",
+                  "$\\frac{x^{n+1}}{n+1}$"
+                ],
+                [
+                  "$e^{x}$",
+                  "$e^{x}$"
+                ],
+                [
+                  "$\\ln x$",
+                  "$x\\ln x - x$"
+                ],
+                [
+                  "$\\sin x$",
+                  "$-\\cos x$"
+                ],
+                [
+                  "$\\cos x$",
+                  "$\\sin x$"
+                ]
+              ],
+              "caption": "Table des primitives usuelles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'intervalle d'intégration n'est pas borné ou la fonction présente une asymptote verticale à l'intérieur de l'intervalle. On parle alors d'intégrale impropre. La définition repose sur un passage à la limite : par exemple, $\\int_{1}^{\\infty} \\frac{1}{x^{2}} \\, dx$ se calcule comme $\\lim_{b \\to \\infty} \\int_{1}^{b} x^{-2} \\, dx$. Si la limite existe et est finie, l'intégrale converge ; sinon elle diverge. Ce concept est crucial car il apparaît non seulement en analyse mais aussi en probabilités (lois continues) et en physique (champ électrostatique). Pour t'aider à voir la zone d'intégration, nous placerons un repère sur une droite graduée avec une flèche vers l'infini, puis nous détaillerons la méthode pas à pas dans un bloc « étapes ». Un exercice suivra pour tester ta compréhension de la convergence."
+            },
+            {
+              "type": "definition",
+              "term": "Intégrale impropre",
+              "definition": "Intégrale dont l'intervalle est non borné ou dont l'intégrande n'est pas bornée ; elle se définit comme une limite d'intégrales propres.",
+              "example": "$\\int_{1}^{\\infty} \\frac{1}{x^{2}}dx = \\lim_{b\\to\\infty}\\int_{1}^{b}x^{-2}dx$."
+            },
+            {
+              "type": "graph",
+              "expression": "1/x^2",
+              "xmin": 1,
+              "xmax": 5,
+              "caption": "Graphe de $1/x^2$ sur $[1,5]$ pour visualiser l'intégrale impropre"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'intégrale comme une limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $\\int_{1}^{\\infty} \\frac{1}{x^{2}}\\,dx = \\lim_{b\\to\\infty} \\int_{1}^{b} x^{-2}\\,dx$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'intégrale sur $[1,b]$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\int_{1}^{b} x^{-2}\\,dx = \\left[ -x^{-1} \\right]_{1}^{b} = -\\frac{1}{b} + 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Passer à la limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\lim_{b\\to\\infty} \\left(-\\frac{1}{b}+1\\right) = 1$. L'intégrale converge vers $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rien ne vaut un exercice qui mélange plusieurs techniques pour vérifier que tu sais naviguer entre elles. Considère $\\int_{0}^{\\pi} \\sin x \\cos x \\, dx$. Deux approches sont possibles : utiliser l'identité trigonométrique $\\sin 2x = 2 \\sin x \\cos x$ pour transformer l'intégrande en $\\frac{1}{2} \\sin 2x$, puis intégrer directement, ou effectuer le changement de variable $u = \\sin x$, $du = \\cos x \\, dx$, ce qui ramène l'intégrale à $\\int_{0}^{0} u \\, du = 0$. Les deux méthodes mènent au même résultat, mais la première est plus rapide si tu reconnaisses l'identité. Nous allons afficher le graphe de $\\sin x \\cos x$ sur $[0,\\pi]$ pour que tu visualises l'annulation de l'aire signée, puis te proposer un dernier exercice de synthèse. Après cet exercice, tu auras parcouru l'essentiel des outils d'intégration du programme de terminale spécialité."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)*cos(x)",
+              "xmin": 0,
+              "xmax": 3.14159,
+              "caption": "Graphe de $\\sin x \\cos x$ sur $[0,\\pi]$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu arrives au terme de ce bilan. À ce stade, tu devrais être capable de : (1) identifier immédiatement si une intégrale relève de la linéarité, d'un changement de variable, d'une intégration par parties, d'une décomposition en éléments simples ou d'une intégrale impropre ; (2) appliquer la technique choisie sans hésitation, en posant correctement les substitutions ou les parties ; (3) vérifier la convergence le cas échéant et exprimer le résultat sous forme exacte. Pour ancrer ces acquis, relis la checklist qui suit, coche chaque item que tu maîtrises et revois ceux qui te semblent encore fragiles. Cette liste sera ton guide de révision jusqu'au bac et au-delà."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître quand utiliser la linéarité de l'intégrale.",
+                "Je sais poser un changement de variable adapté.",
+                "Je sais appliquer l'intégration par parties en choisissant $u$ et $dv$ selon LIATE.",
+                "Je sais décomposer une fraction rationnelle en éléments simples avant d'intégrer.",
+                "Je sais tester la convergence d'une intégrale impropre et la calculer si elle converge.",
+                "Je sais combiner plusieurs techniques sur un même exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $\\int (3x^{2} - 4x + 5) \\, dx$.",
+              "answer": "$x^{3} - 2x^{2} + 5x + C$",
+              "hint": "Intègre terme à terme en utilisant la table des primitives.",
+              "explanation": "$\\int 3x^{2} dx = x^{3}$, $\\int -4x dx = -2x^{2}$, $\\int 5 dx = 5x$."
+            },
+            {
+              "question": "Détermine si l'intégrale $\\int_{1}^{\\infty} \\frac{1}{x^{2}} \\, dx$ converge et donne sa valeur si oui.",
+              "answer": "Convergente, valeur $1$",
+              "hint": "Calcule $\\lim_{b\\to\\infty} \\int_{1}^{b} x^{-2} dx$.",
+              "explanation": "$\\int_{1}^{b} x^{-2} dx = [-x^{-1}]_{1}^{b} = -\\frac{1}{b} + 1$. La limite quand $b\\to\\infty$ est $1$."
+            },
+            {
+              "question": "Calcule $\\int_{0}^{\\pi} \\sin x \\cos x \\, dx$.",
+              "answer": "$0$",
+              "hint": "Utilise l'identité $\\sin 2x = 2\\sin x \\cos x$ ou le changement de variable $u = \\sin x$.",
+              "explanation": "Avec l'identité, l'intégrale vaut $\\frac{1}{2}\\int_{0}^{\\pi} \\sin 2x dx = \\frac{1}{2}[-\\frac{1}{2}\\cos 2x]_{0}^{\\pi} = 0$. Avec $u=\\sin x$, les bornes deviennent $0$ et $0$, donc l'intégrale est $0$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

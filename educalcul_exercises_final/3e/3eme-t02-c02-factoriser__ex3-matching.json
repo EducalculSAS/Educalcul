@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Vérifier",
+  "title": "Vérifier une factorisation",
+  "blocks": [
+    {
+      "title": "Factorisations simples",
+      "content": "Relie chaque expression développée à sa forme factorisée correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3x + 12$",
+          "right": "$3(x + 4)$"
+        },
+        {
+          "left": "$x^2 - 25$",
+          "right": "$(x - 5)(x + 5)$"
+        },
+        {
+          "left": "$4x^2 - 12x$",
+          "right": "$4x(x - 3)$"
+        },
+        {
+          "left": "$x^2 + 6x + 9$",
+          "right": "$(x + 3)^2$"
+        },
+        {
+          "left": "$9x^2 - 1$",
+          "right": "$(3x - 1)(3x + 1)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour vérifier, on développe la forme factorisée : $3(x+4)=3x+12$ ; $(x-5)(x+5)=x^2-25$ (identité remarquable $a^2-b^2$) ; $4x(x-3)=4x^2-12x$ ; $(x+3)^2=x^2+6x+9$ (identité $(a+b)^2$) ; $(3x-1)(3x+1)=9x^2-1$ (identité $a^2-b^2$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier par développement",
+      "content": "Relie chaque expression factorisée à son développement correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$5(x - 2)$",
+          "right": "$5x - 10$"
+        },
+        {
+          "left": "$(x + 4)(x - 4)$",
+          "right": "$x^2 - 16$"
+        },
+        {
+          "left": "$(2x + 3)^2$",
+          "right": "$4x^2 + 12x + 9$"
+        },
+        {
+          "left": "$x(x - 7)$",
+          "right": "$x^2 - 7x$"
+        },
+        {
+          "left": "$(3x - 2)(3x + 2)$",
+          "right": "$9x^2 - 4$"
+        }
+      ],
+      "items": [],
+      "explanation": "On développe chaque produit : $5(x-2)=5x-10$ ; $(x+4)(x-4)=x^2-16$ (différence de deux carrés) ; $(2x+3)^2=4x^2+12x+9$ (carré d'une somme) ; $x(x-7)=x^2-7x$ ; $(3x-2)(3x+2)=9x^2-4$ (différence de deux carrés).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir la bonne factorisation",
+      "content": "Relie chaque expression à sa factorisation complète et correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$16 - x^2$",
+          "right": "$(4 - x)(4 + x)$"
+        },
+        {
+          "left": "$25x^2 - 20x + 4$",
+          "right": "$(5x - 2)^2$"
+        },
+        {
+          "left": "$7x^2 - 28x$",
+          "right": "$7x(x - 4)$"
+        },
+        {
+          "left": "$x^2 - 10x + 25$",
+          "right": "$(x - 5)^2$"
+        },
+        {
+          "left": "$12x + 18$",
+          "right": "$6(2x + 3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On factorise chaque expression : $16-x^2=(4-x)(4+x)$ (différence de carrés) ; $25x^2-20x+4=(5x)^2-2(5x)(2)+2^2=(5x-2)^2$ (carré d'une différence) ; $7x^2-28x=7x(x-4)$ (mise en facteur commun $7x$) ; $x^2-10x+25=(x-5)^2$ (carré d'une différence) ; $12x+18=6(2x+3)$ (facteur commun $6$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

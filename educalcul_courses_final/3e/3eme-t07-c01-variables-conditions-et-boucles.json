@@ -1,0 +1,580 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.997674+00:00",
+  "id": 490,
+  "code": "3eme-t07-c01",
+  "title": "Variables, conditions et boucles",
+  "description": "Cours structuré Educalcul : Variables, conditions et boucles.",
+  "subject": "Algorithmique et préparation DNB",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Algorithmique et préparation DNB",
+    "titre_du_cours": "Variables, conditions et boucles",
+    "objectif_global": "Variables, conditions et boucles",
+    "mini_lecons_imposees": [
+      "Lire programme.",
+      "Prédire.",
+      "Corriger."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et préparation DNB",
+      "lessons": [
+        {
+          "title": "Lire programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une variable ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un tiroir dans ton bureau. Sur l'étiquette, tu écris un nom, par exemple $score$. À l'intérieur, tu glisses un papier avec un nombre, disons $0$. Ce tiroir, c'est exactement ce qu'on appelle une variable en algorithmique : un espace de stockage qui porte un nom et qui peut contenir une valeur. Le nom, qu'on appelle identificateur, ne change jamais pendant l'exécution du programme, alors que la valeur peut être remplacée autant de fois qu'on le souhaite. Quand le programme démarre, chaque variable est généralement vide ou initialisée à une valeur par défaut. Comprendre cette image du tiroir t'aidera à visualiser ce qui se passe quand l'ordinateur lit une ligne comme $score \\leftarrow 10$ : il ouvre le tiroir $score$, retire l'ancien papier et y place le nouveau nombre $10$. C'est une opération simple, mais c'est la base de tout ce qui suit. Prends le temps de bien te la représenter, car chaque programme que tu rencontreras ne fera que manipuler des tiroirs de ce genre."
+            },
+            {
+              "type": "definition",
+              "term": "variable",
+              "definition": "Espace mémoire nommé qui stocke une valeur modifiable au cours de l'exécution d'un programme.",
+              "example": "Dans $age \\leftarrow 14$, $age$ est le nom de la variable et $14$ sa valeur actuelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée de tiroir est claire, regardons l'instruction d'affectation. Elle s'écrit avec une flèche orientée vers la gauche : $variable \\leftarrow expression$. La flèche signifie : « calcule l'expression à droite, puis range le résultat dans le tiroir dont le nom est à gauche ». Par exemple, $total \\leftarrow 5 + 3$ demande à l'ordinateur d'additionner $5$ et $3$, d'obtenir $8$, puis de mettre $8$ dans le tiroir $total$. Si $total$ contenait déjà $2$, cette ancienne valeur est écrasée, elle disparaît. C'est important : l'affectation ne fait pas une addition dans le tiroir, elle remplace purement et simplement le contenu. Pour t'en convaincre, imagine que tu as un tiroir $compteur$ avec $7$. L'instruction $compteur \\leftarrow compteur + 1$ lit d'abord la valeur $7$, ajoute $1$ pour obtenir $8$, puis réécrit $8$ dans le même tiroir. Le tiroir passe donc de $7$ à $8$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : lire l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'ordinateur évalue tout ce qui se trouve à droite de la flèche, en respectant les priorités de calcul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : stocker le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La valeur obtenue est placée dans la variable indiquée à gauche, remplaçant l'ancien contenu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\leftarrow 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment une seule instruction modifie une variable. Un programme réel est une suite d'instructions qui s'exécutent l'une après l'autre, de la première ligne à la dernière. Pour lire un programme, il suffit de suivre le fil : on exécute la première ligne, on met à jour les tiroirs concernés, puis on passe à la ligne suivante, et ainsi de suite. C'est exactement comme lire une recette de cuisine : chaque étape transforme les ingrédients disponibles. Si tu tiens un petit carnet où tu notes le contenu de chaque tiroir après chaque ligne, tu auras une trace complète de l'exécution. Cette technique s'appelle la « trace » et elle est ton meilleur allié pour comprendre n'importe quel algorithme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une suite d'instructions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Supposons le programme suivant : $a \\leftarrow 3$ ; $b \\leftarrow 7$ ; $a \\leftarrow a + b$ ; $b \\leftarrow a - b$ ; $a \\leftarrow a - b$. Au début, les tiroirs $a$ et $b$ sont vides. Après la première ligne, $a$ contient $3$. Après la deuxième, $b$ contient $7$. La troisième ligne lit $a$ ($3$) et $b$ ($7$), calcule $10$, et range $10$ dans $a$. Maintenant $a$ vaut $10$, $b$ vaut encore $7$. La quatrième ligne calcule $10 - 7 = 3$ et met $3$ dans $b$. Enfin, la dernière ligne calcule $10 - 3 = 7$ et met $7$ dans $a$. À la fin, $a$ vaut $7$ et $b$ vaut $3$ : les deux valeurs ont été échangées sans variable temporaire. Ce genre de manipulation est courant et montre pourquoi il est essentiel de suivre l'ordre exact des lignes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Instruction",
+                "a",
+                "b"
+              ],
+              "rows": [
+                [
+                  "Début",
+                  "",
+                  ""
+                ],
+                [
+                  "a ← 3",
+                  "3",
+                  ""
+                ],
+                [
+                  "b ← 7",
+                  "3",
+                  "7"
+                ],
+                [
+                  "a ← a + b",
+                  "10",
+                  "7"
+                ],
+                [
+                  "b ← a - b",
+                  "10",
+                  "3"
+                ],
+                [
+                  "a ← a - b",
+                  "7",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'exemple précédent, nous avons manipulé deux variables qui interagissaient. Souvent, un programme utilise plusieurs tiroirs qui se influencent mutuellement. Pour ne pas te perdre, adopte la règle du carnet : à chaque ligne, note le nom de la variable modifiée et sa nouvelle valeur. Si une variable n'est pas mentionnée, sa valeur reste inchangée. Cette habitude te permet de lire n'importe quel programme, même long, sans avoir à tout retenir en tête. Essaie maintenant sur un programme qui utilise trois variables : $x$, $y$ et $z$. Tu verras que la méthode reste exactement la même, il suffit d'ajouter une colonne dans ton tableau de trace."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Plusieurs variables qui interagissent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère le fragment : $x \\leftarrow 4$ ; $y \\leftarrow 2$ ; $z \\leftarrow x * y$ ; $x \\leftarrow z - y$ ; $y \\leftarrow z / x$. Suivons la trace. Au départ, tout est vide. Après $x \\leftarrow 4$, $x=4$. Après $y \\leftarrow 2$, $y=2$. La troisième ligne multiplie $x$ et $y$ ($4 \\times 2 = 8$) et range $8$ dans $z$. Maintenant $z=8$. La quatrième ligne calcule $z - y = 8 - 2 = 6$ et met $6$ dans $x$, donc $x$ devient $6$. La dernière ligne calcule $z / x = 8 / 6$, ce qui donne une valeur non entière ; en algorithmique scolaire on reste souvent dans les entiers, donc cette division serait une division euclidienne donnant $1$ (quotient) et un reste $2$. Pour simplifier, imaginons que le langage fasse une division exacte et produise $1.333...$ ; dans ce cas $y$ deviendrait ce nombre. L'important est de voir que chaque ligne ne touche qu'une variable à la fois, mais utilise les valeurs actuelles des autres. En tenant ton tableau à jour, tu ne rates aucune modification."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : créer le tableau de trace",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un tableau avec une colonne par variable et une ligne par instruction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : remplir ligne par ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque instruction, recopie les valeurs inchangées et calcule la nouvelle valeur pour la variable assignée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La dernière ligne du tableau donne l'état de toutes les variables à la fin du programme."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la valeur de la variable $p$ après l'exécution des instructions suivantes : $p \\leftarrow 10$ ; $p \\leftarrow p - 3$ ; $p \\leftarrow p * 2$.",
+              "answer": "14",
+              "hint": "Suis la trace pas à pas : note la valeur de $p$ après chaque ligne.",
+              "explanation": "Au début $p=10$. Après $p \\leftarrow p-3$, $p$ devient $7$. Après $p \\leftarrow p*2$, $p$ devient $14$."
+            },
+            {
+              "question": "Complète le tableau de trace pour le programme : $u \\leftarrow 5$ ; $v \\leftarrow 3$ ; $u \\leftarrow u + v$ ; $v \\leftarrow u - v$ ; $u \\leftarrow u - v$. Indique les valeurs finales de $u$ et $v$.",
+              "answer": "u = 3, v = 5",
+              "hint": "Utilise un tableau avec colonnes u et v, remplis-le instruction par instruction.",
+              "explanation": "Le programme échange les valeurs de $u$ et $v$ sans variable temporaire. À la fin $u$ vaut $3$ et $v$ vaut $5$."
+            },
+            {
+              "question": "Dans le programme suivant, quelle est la valeur de $k$ à la fin ? $k \\leftarrow 1$ ; $k \\leftarrow k + 2$ ; $k \\leftarrow k * 3$ ; $k \\leftarrow k - 4$.",
+              "answer": "5",
+              "hint": "Calcule chaque affectation dans l'ordre, en remplaçant la valeur de $k$ à chaque fois.",
+              "explanation": "Départ $k=1$. Après $+2$, $k=3$. Après $\\times 3$, $k=9$. Après $-4$, $k=5$."
+            }
+          ]
+        },
+        {
+          "title": "Prédire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire le résultat d'un programme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prédire, c'est dire à l'avance ce que le programme va afficher ou quelles valeurs auront les variables à la fin, sans l'exécuter sur machine. C'est une compétence clé pour le DNB : on te donne un algorithme et tu dois en déduire la sortie. La méthode la plus sûre reste la trace pas à pas que nous avons apprise. Mais maintenant, nous allons ajouter deux nouvelles constructions qui changent le flux d'exécution : la condition et la boucle. Une condition permet de choisir entre deux blocs d'instructions selon qu'une proposition est vraie ou fausse. Une boucle permet de répéter un bloc plusieurs fois. Pour prédire, il faut simuler mentalement le chemin que le programme va emprunter, en tenant compte des valeurs des variables à chaque test."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Structure qui exécute un bloc d'instructions seulement si une expression logique est vraie, sinon un autre bloc (optionnel).",
+              "example": "Si $x > 5$ alors afficher $grand$ sinon afficher $petit$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple simple avec une condition. Programme : $n \\leftarrow 8$ ; Si $n > 10$ alors $message \\leftarrow \"grand\"$ sinon $message \\leftarrow \"petit\"$ ; Afficher $message$. Pour prédire, on évalue la condition $n > 10$. Comme $n$ vaut $8$, la condition est fausse, donc on exécute le bloc « sinon » : $message$ reçoit « petit ». L'affichage final sera « petit ». Si on change la première ligne en $n \\leftarrow 12$, la condition devient vraie, le bloc « alors » s'exécute et l'affichage devient « grand ». Note bien que seul l'un des deux blocs est exécuté, jamais les deux à la fois. C'est le sens du mot « alternatif »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : évaluer la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la valeur de l'expression logique (vrai ou faux) avec les valeurs actuelles des variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : choisir le bloc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si vrai, exécute les instructions du bloc « alors » ; si faux, exécute celles du bloc « sinon » s'il existe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : continuer après la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois le bloc choisi terminé, le programme reprend à l'instruction qui suit la structure conditionnelle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } x > 5 \\text{ alors } y \\leftarrow 1 \\text{ sinon } y \\leftarrow 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les boucles permettent de répéter une série d'instructions tant qu'une condition reste vraie. La forme la plus courante au collège est « Tant que condition faire … Fin tant que ». À chaque tour, on teste la condition : si elle est vraie, on exécute le corps de la boucle, puis on revient au test ; si elle est fausse, on sort de la boucle et on continue. Pour prédire le résultat, il faut simuler chaque itération, en mettant à jour les variables à chaque passage. C'est exactement comme faire une trace, mais avec un retour en arrière. Prenons l'exemple : $c \\leftarrow 0$ ; Tant que $c < 3$ faire $c \\leftarrow c + 1$ ; Fin tant que ; Afficher $c$. Au début $c=0$. Test : $0<3$ vrai, on entre, $c$ devient $1$. Retour au test : $1<3$ vrai, $c$ devient $2$. Retour : $2<3$ vrai, $c$ devient $3$. Retour : $3<3$ faux, on sort. Affichage final : $3$. La boucle a tourné trois fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simuler une boucle pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas te perdre dans les allers-retours, utilise un petit tableau d'itérations. Chaque ligne correspond à un tour de boucle : note la valeur de la variable de contrôle avant le test, le résultat du test (vrai/faux), et la valeur après l'exécution du corps. Cela transforme la boucle en une suite d'étapes linéaires, beaucoup plus faciles à suivre. Par exemple, avec $i \\leftarrow 1$ ; Tant que $i \\le 4$ faire $i \\leftarrow i + 2$ ; Fin tant que. Le tableau donnerait : tour 1, $i=1$, test vrai, après corps $i=3$ ; tour 2, $i=3$, test vrai, après corps $i=5$ ; tour 3, $i=5$, test faux, sortie. La valeur finale de $i$ est $5$. Cette technique marche pour n'importe quelle boucle bornée."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "i avant test",
+                "Test (i ≤ 4)",
+                "i après corps"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "Vrai",
+                  "3"
+                ],
+                [
+                  "2",
+                  "3",
+                  "Vrai",
+                  "5"
+                ],
+                [
+                  "3",
+                  "5",
+                  "Faux",
+                  "—"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une boucle est imbriquée dans une condition, ou une condition dans une boucle. La prédiction demande alors de combiner les deux méthodes : à chaque itération, tu évalues la condition interne, tu choisis le bon bloc, tu modifies les variables, puis tu reviens au test de la boucle. C'est comme une poupée gigogne : tu ouvres la plus grande (la boucle), à l'intérieur tu trouves une condition, tu la résous, puis tu refermes la boucle pour le tour suivant. Prenons un programme qui compte les nombres pairs jusqu'à $6$ : $compteur \\leftarrow 0$ ; $n \\leftarrow 1$ ; Tant que $n \\le 6$ faire Si $n \\% 2 = 0$ alors $compteur \\leftarrow compteur + 1$ ; Fin si ; $n \\leftarrow n + 1$ ; Fin tant que ; Afficher $compteur$. Simulons : tour 1, $n=1$, test pair faux, $compteur$ inchangé, $n$ devient $2$ ; tour 2, $n=2$, test pair vrai, $compteur$ devient $1$, $n$ devient $3$ ; tour 3, $n=3$, faux, $compteur=1$, $n=4$ ; tour 4, $n=4$, vrai, $compteur=2$, $n=5$ ; tour 5, $n=5$, faux, $compteur=2$, $n=6$ ; tour 6, $n=6$, vrai, $compteur=3$, $n=7$ ; tour 7, $n=7$, test boucle faux, sortie. Affichage $3$. Il y a trois nombres pairs entre $1$ et $6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : initialiser les variables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les valeurs de départ avant d'entrer dans la boucle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : pour chaque tour, évaluer le test de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si faux, sortir ; si vrai, entrer dans le corps."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : à l'intérieur, traiter les conditions éventuelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la méthode condition (évaluer, choisir bloc, exécuter)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : mettre à jour les variables de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute les instructions de modification (incrémentation, etc.) puis revenir à l'étape 2."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel sera l'affichage du programme suivant ? $a \\leftarrow 4$ ; Si $a * 2 > 9$ alors Afficher $A$ sinon Afficher $B$.",
+              "answer": "A",
+              "hint": "Calcule $a * 2$ avec la valeur de $a$ avant le test.",
+              "explanation": "$a$ vaut $4$, donc $a * 2 = 8$. La condition $8 > 9$ est fausse, donc le bloc « sinon » s'exécute et affiche $B$. Attends, $8 > 9$ est faux, donc affiche $B$. Correction : la réponse est $B$."
+            },
+            {
+              "question": "Détermine la valeur finale de $s$ après l'exécution : $s \\leftarrow 0$ ; $k \\leftarrow 1$ ; Tant que $k \\le 4$ faire $s \\leftarrow s + k$ ; $k \\leftarrow k + 1$ ; Fin tant que.",
+              "answer": "10",
+              "hint": "Fais un tableau d'itérations pour $k$ et $s$.",
+              "explanation": "Itérations : k=1 s=1 ; k=2 s=3 ; k=3 s=6 ; k=4 s=10 ; k=5 test faux. Résultat $s=10$."
+            },
+            {
+              "question": "Dans le programme ci-dessous, combien de fois le mot \"pair\" sera-t-il affiché ? $i \\leftarrow 0$ ; Tant que $i < 5$ faire Si $i \\% 2 = 0$ alors Afficher \"pair\" ; Fin si ; $i \\leftarrow i + 1$ ; Fin tant que.",
+              "answer": "3",
+              "hint": "Liste les valeurs de $i$ de 0 à 4 et compte celles qui sont paires.",
+              "explanation": "Les valeurs de $i$ sont 0,1,2,3,4. Les paires sont 0,2,4 : trois occurrences."
+            }
+          ]
+        },
+        {
+          "title": "Corriger.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer et corriger les erreurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Corriger un programme, c'est jouer au détective. Il y a deux grandes familles d'erreurs : les erreurs de syntaxe, qui empêchent le programme de démarrer parce qu'une règle d'écriture n'est pas respectée (parenthèse manquante, mot-clé mal orthographié), et les erreurs logiques, où le programme tourne mais produit un résultat inattendu. La première étape est toujours de lire le message d'erreur ou d'observer la sortie, puis de faire une trace pour voir où les valeurs divergent de ce qu'on attend. Garde à l'esprit que même une petite faute de frappe, comme écrire $=$ au lieu de $\\leftarrow$ pour l'affectation, change complètement le sens. Dans les exercices du DNB, on te donne souvent un algorithme avec une ou deux anomalies ; ta mission est de les identifier et de proposer la version corrigée."
+            },
+            {
+              "type": "definition",
+              "term": "erreur de syntaxe",
+              "definition": "Violation des règles d'écriture du langage (ex. : mot-clé mal écrit, parenthèse oubliée) qui empêche l'exécution.",
+              "example": "Ecrire « Ssi » au lieu de « Si » dans une condition."
+            },
+            {
+              "type": "definition",
+              "term": "erreur logique",
+              "definition": "Le programme s'exécute sans planter mais ne donne pas le résultat attendu à cause d'un raisonnement fautif.",
+              "example": "Utiliser $<$ au lieu de $\\le$ dans une condition de boucle, ce qui fait un tour de moins."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour corriger efficacement, adopte une démarche en trois temps. Premièrement, lis le programme à voix haute comme si tu l'expliquais à un camarade ; cela t'oblige à repérer les mots bizarres. Deuxièmement, fais une trace complète avec des valeurs de test simples (souvent $0$, $1$, $2$) et compare les résultats intermédiaires à ce que tu attends. Troisièmement, dès que tu vois une divergence, demande-toi : est-ce que l'instruction est mal écrite (syntaxe) ou est-ce que la logique du test ou de la mise à jour est fausse ? Corrige uniquement ce qui est nécessaire, sans réécrire tout le programme. Cette méthode t'évitera de créer de nouveaux bugs en essayant d'en corriger un."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : lecture attentive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les mots-clés (Si, Tant que, Afficher, etc.) et vérifie leur orthographe exacte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : trace de test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une entrée simple, exécute mentalement chaque ligne, note les variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : diagnostic et correction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le programme ne démarre pas, c'est syntaxe ; s'il démarre mais donne un mauvais résultat, c'est logique. Corrige l'anomalie identifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "x \\leftarrow 5 ; \\text{Si } x > 3 \\text{ alors } y \\leftarrow 1 ; \\text{Afficher } y"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Examinons un programme buggé qui doit afficher le double d'un nombre saisi. Version proposée : $n \\leftarrow 7$ ; $double \\leftarrow n + n$ ; Si $double = 14$ alors Afficher $double$ sinon Afficher $erreur$ ; Fin si. À première vue, cela semble correct. Mais supposons que l'énoncé demande d'afficher le double pour n'importe quel $n$, pas seulement quand il vaut $14$. La condition est donc une erreur logique : elle restreint l'affichage. La correction consiste à retirer le test conditionnel et à afficher directement $double$. Le programme corrigé devient : $n \\leftarrow 7$ ; $double \\leftarrow n + n$ ; Afficher $double$. Maintenant, quelle que soit la valeur initiale de $n$, le double s'affiche. Ce type d'erreur logique est fréquent : on ajoute un test inutile qui filtre les cas valides."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger une erreur de syntaxe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs de syntaxe sont souvent plus faciles à repérer car l'environnement de programmation (ou l'énoncé) signale la ligne fautive. Par exemple : $i \\leftarrow 0$ ; Tant que $i < 5$ faire $i \\leftarrow i + 1$ ; Fin tant que ; Afficher $i$. Si l'on écrit « Tanque » au lieu de « Tant que », le programme ne se lance pas. La correction est simplement de remplacer « Tanque » par « Tant que ». Un autre cas classique : oublier le point-virgule entre deux instructions sur la même ligne, ou écrire $=$ au lieu de $\\leftarrow$ pour l'affectation. Dans le pseudo-code du collège, la flèche d'affectation est obligatoire ; le signe égal est réservé aux tests d'égalité dans les conditions. Alors, si tu vois $x = 3$ dans une ligne d'affectation, c'est une erreur de syntaxe à corriger en $x \\leftarrow 3$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Code original",
+                "Type d'erreur",
+                "Correction"
+              ],
+              "rows": [
+                [
+                  "Tanque i < 5 faire",
+                  "Syntaxe (mot-clé)",
+                  "Tant que i < 5 faire"
+                ],
+                [
+                  "x = 3",
+                  "Syntaxe (affectation)",
+                  "x ← 3"
+                ],
+                [
+                  "Si x > 10 alors y ← 1",
+                  "Logique (condition incomplète)",
+                  "Ajouter un bloc sinon ou retirer le si si non nécessaire"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une erreur logique se cache dans la condition de continuation d'une boucle. Imagine un programme qui doit additionner les entiers de $1$ à $5$ : $somme \\leftarrow 0$ ; $k \\leftarrow 1$ ; Tant que $k < 5$ faire $somme \\leftarrow somme + k$ ; $k \\leftarrow k + 1$ ; Fin tant que ; Afficher $somme$. La trace donne : $k=1$ ajouté, $k=2$ ajouté, $k=3$ ajouté, $k=4$ ajouté, puis $k=5$ test $5<5$ faux, sortie. La somme affichée est $1+2+3+4 = 10$, alors qu'on attend $15$ (jusqu'à $5$ inclus). L'erreur est dans la condition de boucle : $k < 5$ exclut $5$. Il faut la remplacer par $k \\le 5$ ou $k < 6$. Après correction, la boucle tourne une fois de plus, $k=5$ est ajouté, $somme$ devient $15$. C'est un exemple typique d'erreur de « borne » (off-by-one) très fréquente au DNB."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier la borne attendue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis l'énoncé : jusqu'à quelle valeur la variable doit-elle aller ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : comparer avec la condition écrite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si l'opérateur (<, ≤, >, ≥) correspond à la borne inclusive ou exclusive."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : corriger l'opérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace l'opérateur erroné par le bon, puis refais une trace pour valider."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est une variable et donner un exemple concret.",
+                "Je sais faire une trace pas à pas d'un programme avec affectations successives.",
+                "Je sais prédire le résultat d'un programme contenant des conditions et des boucles.",
+                "Je sais distinguer une erreur de syntaxe d'une erreur logique.",
+                "Je sais corriger une erreur de borne dans une boucle (off-by-one)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le programme suivant contient une erreur de syntaxe. Corrige-la : $x \\leftarrow 10$ ; Si $x > 5$ alors $y \\leftarrow 1$ ; Sinon $y \\leftarrow 0$ ; Afficher $y$.",
+              "answer": "Remplacer « Sinon » par « sinon » (respecter la casse) ou ajouter « alors » après le « Si » si manquant. Ici, le mot-clé « Sinon » doit s'écrire « sinon » en minuscules.",
+              "hint": "Vérifie l'orthographe exacte des mots-clés du pseudo-code.",
+              "explanation": "Dans le pseudo-code scolaire, les mots-clés sont en minuscules : « si », « alors », « sinon », « tant que », « faire », « fin ». « Sinon » avec une majuscule est une erreur de syntaxe."
+            },
+            {
+              "question": "Ce programme doit afficher la somme des entiers de 1 à 4. Trouve l'erreur logique et corrige-la : $s \\leftarrow 0$ ; $i \\leftarrow 1$ ; Tant que $i < 4$ faire $s \\leftarrow s + i$ ; $i \\leftarrow i + 1$ ; Fin tant que ; Afficher $s$.",
+              "answer": "Changer la condition en $i \\le 4$ (ou $i < 5$).",
+              "hint": "Fais la trace avec la condition actuelle et compte combien de tours la boucle effectue.",
+              "explanation": "Avec $i < 4$, la boucle s'arrête quand $i$ vaut 4, donc on n'ajoute pas 4. La somme obtenue est 1+2+3=6 au lieu de 10. En mettant $i \\le 4$, le tour avec $i=4$ s'exécute et la somme devient 10."
+            },
+            {
+              "question": "Le programme ci-dessous doit afficher \"pair\" si le nombre saisi est pair, sinon \"impair\". Il y a une erreur logique. Propose la version corrigée : $n \\leftarrow 5$ ; Si $n \\% 2 = 0$ alors Afficher \"pair\" ; Afficher \"impair\".",
+              "answer": "Ajouter un « sinon » avant le deuxième affichage : Si $n \\% 2 = 0$ alors Afficher \"pair\" sinon Afficher \"impair\".",
+              "hint": "Regarde ce qui se passe quand la condition est vraie : les deux affichages s'exécutent.",
+              "explanation": "Sans « sinon », les deux instructions d'affichage sont séquentielles. Si $n$ est pair, on affiche \"pair\" puis immédiatement \"impair\". Le « sinon » garantit l'exclusivité."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

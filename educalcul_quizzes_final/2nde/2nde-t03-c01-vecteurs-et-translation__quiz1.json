@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Définir",
+  "title": "Quiz : Définir les vecteurs et translations",
+  "questions": [
+    {
+      "text": "Quelle est la définition d'un vecteur dans le plan ?",
+      "options": [
+        "Un vecteur est défini par sa direction, son sens et sa longueur.",
+        "Un vecteur est défini par son point d'origine et son point d'arrivée.",
+        "Un vecteur est défini par ses coordonnées dans un repère.",
+        "Un vecteur est défini par sa norme seulement."
+      ],
+      "correctAnswer": "Un vecteur est défini par sa direction, son sens et sa longueur.",
+      "explanation": "Un vecteur est une quantité caractérisée par une direction, un sens et une longueur (ou norme). Les points d'origine et d'arrivée ne définissent pas le vecteur car il est libre. Les coordonnées dépendent du repère choisi. La norme seule ne suffit pas car elle ne donne pas la direction ni le sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quand deux vecteurs sont-ils égaux ?",
+      "options": [
+        "Ils ont même origine.",
+        "Ils ont même direction, même sens et même longueur.",
+        "Ils ont mêmes coordonnées.",
+        "Ils ont même norme."
+      ],
+      "correctAnswer": "Ils ont même direction, même sens et même longueur.",
+      "explanation": "Deux vecteurs sont égaux s'ils ont la même direction, le même sens et la même longueur, indépendamment de leur origine. Avoir la même origine ne garantit pas l'égalité. Les coordonnées égales dans un repère donné impliquent l'égalité, mais la définition géométrique ne fait pas appel aux coordonnées. La norme seule ne suffit pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment définit-on le vecteur nul ?",
+      "options": [
+        "C'est le vecteur de norme 1.",
+        "C'est le vecteur de direction indéfinie.",
+        "C'est le vecteur de longueur nulle.",
+        "C'est le vecteur dont l'origine est le point O."
+      ],
+      "correctAnswer": "C'est le vecteur de longueur nulle.",
+      "explanation": "Le vecteur nul, noté $\\vec{0}$, est le vecteur dont la longueur (norme) est nulle. Sa direction est indéfinie, mais ce n'est pas sa définition. Sa norme n'est pas 1. Son origine n'est pas fixée car c'est un vecteur libre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le vecteur opposé de $\\vec{u}$ ?",
+      "options": [
+        "Le vecteur ayant même direction, même sens et même longueur.",
+        "Le vecteur ayant même direction, sens opposé et même longueur.",
+        "Le vecteur ayant direction opposée, même sens et même longueur.",
+        "Le vecteur ayant même norme mais direction quelconque."
+      ],
+      "correctAnswer": "Le vecteur ayant même direction, sens opposé et même longueur.",
+      "explanation": "Le vecteur opposé de $\\vec{u}$, noté $-\\vec{u}$, a la même direction, la même longueur mais le sens inverse. Les autres options décrivent soit le même vecteur, soit un vecteur de direction opposée mais sens identique, soit un vecteur quelconque de même norme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La translation de vecteur $\\vec{v}$ associe à tout point $M$ le point $M'$ tel que :",
+      "options": [
+        "$\\vec{MM'} = \\vec{v}$",
+        "$\\vec{M'M} = \\vec{v}$",
+        "$\\vec{OM'} = \\vec{v}$",
+        "$\\vec{M'O} = \\vec{v}$"
+      ],
+      "correctAnswer": "$\\vec{MM'} = \\vec{v}$",
+      "explanation": "Par définition, la translation de vecteur $\\vec{v}$ envoie $M$ sur $M'$ tel que le vecteur $\\vec{MM'}$ soit égal à $\\vec{v}$. Les autres égalités correspondent à des relations inverses ou dépendent d'un origine O arbitraire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

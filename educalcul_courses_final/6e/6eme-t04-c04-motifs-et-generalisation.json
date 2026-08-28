@@ -1,0 +1,448 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.586435+00:00",
+  "id": 350,
+  "code": "6eme-t04-c04",
+  "title": "Motifs et généralisation",
+  "description": "Cours structuré Educalcul : Motifs et généralisation.",
+  "subject": "Algèbre et problèmes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algèbre et problèmes",
+    "titre_du_cours": "Motifs et généralisation",
+    "objectif_global": "Motifs et généralisation",
+    "mini_lecons_imposees": [
+      "Repérer règle.",
+      "Prédire.",
+      "Exprimer relation simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algèbre et problèmes",
+      "lessons": [
+        {
+          "title": "Repérer règle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la règle d'une suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à observer une suite de nombres ou de figures pour découvrir la règle qui la construit. Imagine que tu regardes une rangée de briques posées les unes après les autres : chaque brique suit la précédente selon un même principe, comme ajouter deux briques à chaque fois. Ton rôle, c'est de devenir détective des nombres : tu scrutes les écarts, tu notes les régularités et tu formules la règle en mots simples. Pas de panique, nous avançons pas à pas et chaque exemple concret t'aidera à prendre confiance."
+            },
+            {
+              "type": "definition",
+              "term": "Suite",
+              "definition": "Une suite est une liste ordonnée de nombres ou d'objets, où chaque élément s'appelle un terme. Le premier terme est souvent noté $u_0$ ou $u_1$ selon la convention.",
+              "example": "La suite $2, 5, 8, 11, \\dots$ a pour premier terme $2$ et chaque terme suivant s'obtient en ajoutant $3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple vivant : suppose que tu collectionnes des autocollants. Le premier jour tu en as $4$, le deuxième jour tu en gagnes $3$ de plus, le troisième encore $3$, et ainsi de suite. La liste de tes totaux quotidiens forme une suite : $4, 7, 10, 13, \\dots$. Observe la différence entre deux termes consécutifs : $7-4 = 3$, $10-7 = 3$, $13-10 = 3$. Cette différence constante est le signe d'une règle d'addition fixe."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang $n$",
+                "Terme $u_n$"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "4"
+                ],
+                [
+                  "2",
+                  "7"
+                ],
+                [
+                  "3",
+                  "10"
+                ],
+                [
+                  "4",
+                  "13"
+                ],
+                [
+                  "5",
+                  "16"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les premiers termes de la suite dans l'ordre, comme dans le tableau ci‑dessus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : calculer les écarts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrait chaque terme du suivant pour voir si l'écart est toujours le même."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : formuler la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'écart est constant, la règle est « ajouter cet écart » ; sinon, cherche une autre régularité (multiplication, alternance, etc.)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer une règle d'addition constante, voyons comment vérifier que la règle trouvée fonctionne pour tous les termes, même ceux que tu n'as pas encore écrits. Cette vérification te garantit que la règle est bien la bonne et pas seulement une coïncidence sur les premiers termes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des termes de la suite $4, 7, 10, 13, \\dots$ sur une droite graduée",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "$u_1$"
+                },
+                {
+                  "value": 7,
+                  "label": "$u_2$"
+                },
+                {
+                  "value": 10,
+                  "label": "$u_3$"
+                },
+                {
+                  "value": 13,
+                  "label": "$u_4$"
+                },
+                {
+                  "value": 16,
+                  "label": "$u_5$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous allons généraliser la règle pour pouvoir calculer n'importe quel terme sans avoir à écrire toute la liste. Si la règle est « ajouter $3$ » et que le premier terme est $4$, alors le terme de rang $n$ s'exprime par $u_n = 4 + 3 \\times (n-1)$. Cette formule te permet de sauter directement au $10^{\\text{ème}}$ terme, au $100^{\\text{ème}}$, etc., sans effort."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = 4 + 3 \\times (n-1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici les premiers termes d'une suite : $5, 9, 13, 17, \\dots$. Quelle est la règle de construction ?",
+              "answer": "Ajouter $4$ à chaque terme.",
+              "hint": "Calcule la différence entre deux termes consécutifs.",
+              "explanation": "En soustrayant $9-5$, $13-9$, $17-13$, on obtient toujours $4$. La règle est donc d'ajouter $4$."
+            },
+            {
+              "question": "Pour la suite $2, 6, 18, 54, \\dots$, la règle est-elle une addition constante ? Justifie ta réponse.",
+              "answer": "Non, car les écarts ne sont pas constants ($4$, $12$, $36$). C'est une multiplication par $3$.",
+              "hint": "Regarde si les différences sont égales ou si les quotients le sont.",
+              "explanation": "Les différences varient, mais chaque terme est $3$ fois le précédent. Donc la règle est une multiplication, pas une addition."
+            },
+            {
+              "question": "Écris la formule du terme de rang $n$ pour la suite dont le premier terme est $7$ et la règle « ajouter $5$ ».",
+              "answer": "$u_n = 7 + 5 \\times (n-1)$",
+              "hint": "Utilise le modèle $u_n = \\text{premier terme} + \\text{écart} \\times (n-1)$.",
+              "explanation": "Le premier terme est $7$, l'écart constant est $5$. En remplaçant dans le modèle, on obtient $u_n = 7 + 5 \\times (n-1)$."
+            }
+          ]
+        },
+        {
+          "title": "Prédire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire les termes suivants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons utiliser la règle que tu as apprise à repérer pour prévoir les termes qui suivent, sans avoir à tout recalculer à la main. C'est comme savoir que ton bus passe toutes les $10$ minutes : si tu sais qu'il est passé à $8$ h $10$, tu peux annoncer qu'il repassera à $8$ h $20$, $8$ h $30$, etc. La prédiction repose sur la confiance dans la régularité que tu as découverte."
+            },
+            {
+              "type": "definition",
+              "term": "Prédiction",
+              "definition": "Une prédiction en mathématiques, c'est l'annonce d'un terme futur d'une suite en appliquant la règle identifiée, sans avoir à lister tous les termes intermédiaires.",
+              "example": "Si la règle est « ajouter $6$ » et que le dernier terme connu est $24$, le terme suivant prédit est $30$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des autocollants : tu avais $4$ le premier jour, puis $7$, $10$, $13$. La règle est « ajouter $3$ ». Pour prédire le nombre d'autocollants le sixième jour, tu ajoutes $3$ au cinquième terme ($16$) et tu obtiens $19$. Tu peux continuer ainsi indéfiniment : $22$, $25$, $28$, … Chaque nouveau terme est une prédiction vérifiée par la règle."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'autocollants jour après jour",
+              "bars": [
+                {
+                  "label": "Jour 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jour 2",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jour 3",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jour 4",
+                  "value": 13,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jour 5",
+                  "value": 16,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Jour 6 (prédit)",
+                  "value": 19,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la règle n'est pas une simple addition mais une alternance ou une multiplication. Il faut alors bien identifier le pattern avant de prédire. Par exemple, la suite $1, 2, 4, 8, 16, \\dots$ double à chaque fois. La prédiction du terme suivant se fait en multipliant le dernier terme connu par $2$. Cette méthode marche pour n'importe quel rang, à condition d'avoir bien reconnu la régularité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier le type de règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les écarts (addition) ou les quotients (multiplication) ou encore l'alternance (pair/impair)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : appliquer la règle au dernier terme connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue l'opération (addition, multiplication, etc.) une fois pour obtenir le terme suivant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : répéter si plusieurs termes sont demandés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Recommence l'opération sur le terme recién obtenu autant de fois que nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus vite, tu peux utiliser la formule générale que nous avons vue : $u_n = u_1 + (n-1) \\times r$ pour une suite additive, ou $u_n = u_1 \\times q^{n-1}$ pour une suite multiplicative. Ainsi, pour prédire le $10^{\\text{ème}}$ terme d'une suite additive de premier terme $5$ et raison $4$, tu calcules $5 + 9 \\times 4 = 41$ sans écrire les neuf termes intermédiaires. C'est le pouvoir de la généralisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = u_1 + (n-1) \\times r"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La suite commence par $3, 6, 12, 24, \\dots$. Prédis le $6^{\\text{ème}}$ terme.",
+              "answer": "96",
+              "hint": "Chaque terme est le double du précédent. Multiplie le $5^{\\text{ème}}$ terme par $2$.",
+              "explanation": "Les termes sont $3, 6, 12, 24, 48, 96$. Le $6^{\\text{ème}}$ terme est $96$."
+            },
+            {
+              "question": "Pour une suite additive de premier terme $10$ et raison $-2$, donne les trois termes suivants après $10, 8, 6$.",
+              "answer": "$4, 2, 0$",
+              "hint": "Ajoute $-2$ (c'est‑à‑dire soustrais $2$) à chaque fois.",
+              "explanation": "En partant de $6$, on ajoute $-2$ pour obtenir $4$, puis $2$, puis $0$."
+            },
+            {
+              "question": "Utilise la formule $u_n = u_1 + (n-1) \\times r$ pour trouver le $15^{\\text{ème}}$ terme d'une suite dont $u_1 = 7$ et $r = 3$.",
+              "answer": "$49$",
+              "hint": "Remplace $n$ par $15$, $u_1$ par $7$ et $r$ par $3$ dans la formule.",
+              "explanation": "$u_{15} = 7 + (15-1) \\times 3 = 7 + 14 \\times 3 = 7 + 42 = 49$."
+            }
+          ]
+        },
+        {
+          "title": "Exprimer relation simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exprimer une relation simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce module. Ici, nous allons apprendre à traduire la règle d'une suite en une phrase mathématique claire, appelée relation ou formule. C'est comme écrire la recette d'un gâteau : au lieu de dire « mets de la farine, puis du sucre, puis des œufs », tu notes « $200\\,g$ farine, $100\\,g$ sucre, $3$ œufs ». La relation permet à n'importe qui de reconstruire la suite sans ambiguity."
+            },
+            {
+              "type": "definition",
+              "term": "Relation (ou formule) de la suite",
+              "definition": "C'est l'expression qui donne le terme de rang $n$ en fonction de $n$, par exemple $u_n = 3n + 1$. Elle résume toute la suite en une seule ligne.",
+              "example": "Pour la suite $4, 7, 10, 13, \\dots$, la relation est $u_n = 3n + 1$ (si le premier rang est $1$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la suite des autocollants : premier terme $4$, raison $3$. Nous avons déjà vu la formule $u_n = 4 + 3 \\times (n-1)$. En développant, on obtient $u_n = 3n + 1$. Vérifie : pour $n=1$, $3\\times1+1=4$ ; pour $n=2$, $3\\times2+1=7$ ; cela fonctionne. Cette écriture simplifiée est plus commode pour calculer vite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire la formule avec le premier terme et la raison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $u_n = u_1 + (n-1) \\times r$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : développer et simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Distribue la multiplication et regroupe les constantes pour obtenir une forme $an + b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : tester sur quelques valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $n$ par $1$, $2$, $3$ et vérifie que les résultats correspondent aux termes connus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la suite n'est pas additive mais multiplicative, comme $2, 6, 18, 54, \\dots$. La relation s'écrit alors $u_n = u_1 \\times q^{n-1}$, où $q$ est le quotient (ici $3$). Développer n'est pas nécessaire, la forme exponentielle est déjà simple. Pour une suite alternée comme $1, -1, 1, -1, \\dots$, la relation peut être $u_n = (-1)^{n+1}$. Chaque type de régularité a sa notation adaptée."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = u_1 \\times q^{n-1}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, sache que tu peux aussi exprimer une relation à l'aide d'un tableau de valeurs ou d'un graphique. Le graphique d'une suite additive est une droite, celui d'une suite multiplicative est une courbe exponentielle. Visualiser la relation t'aide à confirmer que ta formule est correcte et à communiquer ton résultat aux autres."
+            },
+            {
+              "type": "graph",
+              "expression": "3*x+1",
+              "xmin": 0,
+              "xmax": 6,
+              "caption": "Graphique de la suite $u_n = 3n+1$ pour $n=1$ à $6$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer la règle d'une suite en observant les écarts ou les quotients.",
+                "Je sais prédire les termes suivants en appliquant la règle identifiée.",
+                "Je sais écrire la relation (formule) qui donne le terme de rang $n$ pour une suite additive ou multiplicative.",
+                "Je peux vérifier ma formule en testant quelques valeurs de $n$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la relation simplifiée (forme $an+b$) pour la suite $5, 9, 13, 17, \\dots$.",
+              "answer": "$u_n = 4n + 1$",
+              "hint": "Premier terme $5$, raison $4$. Utilise $u_n = 5 + (n-1)\\times4$ et simplifie.",
+              "explanation": "$u_n = 5 + 4n - 4 = 4n + 1$. Vérification : $n=1 \\rightarrow 5$, $n=2 \\rightarrow 9$."
+            },
+            {
+              "question": "Écris la relation pour la suite multiplicative $3, 12, 48, 192, \\dots$.",
+              "answer": "$u_n = 3 \\times 4^{n-1}$",
+              "hint": "Identifie le premier terme $3$ et le quotient $4$.",
+              "explanation": "Chaque terme est $4$ fois le précédent, donc $u_n = 3 \\times 4^{n-1}$."
+            },
+            {
+              "question": "Pour la suite définie par $u_n = 2n - 3$, donne les trois premiers termes.",
+              "answer": "$-1, 1, 3$",
+              "hint": "Remplace $n$ par $1$, $2$, $3$ dans la formule.",
+              "explanation": "$u_1 = 2\\times1-3 = -1$, $u_2 = 2\\times2-3 = 1$, $u_3 = 2\\times3-3 = 3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

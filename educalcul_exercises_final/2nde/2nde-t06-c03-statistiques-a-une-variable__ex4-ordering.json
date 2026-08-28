@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Statistiques à une variable",
+  "title": "Applications : Statistiques à une variable - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Étapes d'une étude statistique",
+      "content": "Rangez dans l'ordre chronologique les principales étapes pour mener une étude statistique à une variable.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Définir la population étudiée et la variable observée.",
+        "Recueillir les données (effectifs et valeurs de la variable).",
+        "Organiser les données dans un tableau de valeurs-effectifs.",
+        "Calculer les indicateurs de position (moyenne, médiane) et de dispersion (étendue, écart type).",
+        "Interpréter les résultats dans le contexte de l'étude."
+      ],
+      "explanation": "Une étude statistique suit un processus logique : on commence par définir le sujet (population, variable), puis on collecte les données, on les organise dans un tableau pour les traiter, on calcule les indicateurs numériques résumant la série, et enfin on interprète ces chiffres pour répondre à la question initiale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une boîte à moustaches",
+      "content": "Rangez dans l'ordre les étapes nécessaires pour construire la boîte à moustaches (box plot) d'une série statistique brute.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ordonner les valeurs de la série par ordre croissant.",
+        "Déterminer le minimum, le maximum et la médiane (deuxième quartile).",
+        "Calculer le premier quartile $Q_1$ (médiane de la moitié inférieure) et le troisième quartile $Q_3$ (médiane de la moitié supérieure).",
+        "Calculer l'intervalle interquartile $IQ = Q_3 - Q_1$ pour vérifier l'absence de valeurs aberrantes (moustaches).",
+        "Tracer le rectangle (boîte) de $Q_1$ à $Q_3$ avec la médiane, et les moustaches jusqu'au minimum et au maximum (ou aux valeurs non aberrantes)."
+      ],
+      "explanation": "La construction d'un box plot nécessite d'abord le tri des données. Ensuite, on repère les 5 nombres caractéristiques (Min, $Q_1$, Médiane, $Q_3$, Max). Le calcul de l'IQ permet de définir la longueur des moustaches (généralement jusqu'à 1,5 IQ au-delà des quartiles) avant le tracé final.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux séries statistiques",
+      "content": "Rangez dans l'ordre logique la démarche pour comparer deux séries statistiques (par exemple, les notes de deux classes).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire et comprendre les deux tableaux de valeurs-effectifs fournis.",
+        "Calculer la moyenne de chaque série pour comparer les niveaux de performance (position centrale).",
+        "Calculer l'écart type de chaque série pour comparer la dispersion des résultats autour de la moyenne.",
+        "Comparer les deux moyennes : la série avec la moyenne la plus élevée a un meilleur niveau global.",
+        "Comparer les deux écarts types : la série avec l'écart type le plus faible a des résultats plus homogènes (moins dispersés)."
+      ],
+      "explanation": "La comparaison de deux séries passe d'abord par la lecture des données. On compare ensuite la position centrale via les moyennes. Pour affiner l'analyse, on compare la dispersion via les écarts types (ou les intervalles interquartiles). Une moyenne plus élevée indique un meilleur niveau ; un écart type plus faible indique une plus grande homogénéité.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

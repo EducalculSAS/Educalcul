@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Univers simple",
+  "title": "Univers simple - Quiz 4e",
+  "questions": [
+    {
+      "text": "Quelle est la définition de l'univers simple (espace des résultats) d'une expérience aléatoire ?",
+      "options": [
+        "L'ensemble de tous les résultats possibles d'une expérience aléatoire",
+        "La probabilité d'un événement",
+        "Le nombre d'événements favorables",
+        "La somme des probabilités"
+      ],
+      "correctAnswer": "L'ensemble de tous les résultats possibles d'une expérience aléatoire",
+      "explanation": "L'univers simple, noté Ω, est l'ensemble de tous les résultats élémentaires possibles lors d'une expérience aléatoire. Les autres propositions correspondent à la probabilité, au nombre de cas favorables ou à une propriété de la probabilité totale, mais ne définissent pas l'univers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé équilibré à six faces numérotées de 1 à 6. Quel est l'univers simple de cette expérience ?",
+      "options": [
+        "$\\{1,2,3,4,5\\}$",
+        "$\\{1,2,3,4,5,6\\}$",
+        "$\\{2,4,6\\}$",
+        "$\\{0,1,2,3,4,5,6\\}$"
+      ],
+      "correctAnswer": "$\\{1,2,3,4,5,6\\}$",
+      "explanation": "Chaque face du dé correspond à un résultat élémentaire possible. Comme le dé a six faces numérotées de 1 à 6, l'univers simple contient exactement ces six nombres. Les autres ensembles omettent des résultats ou en ajoutent qui n'existent pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux pièces de monnaie équilibrées. Combien y a-t-il de résultats élémentaires dans l'univers simple ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Chaque pièce a deux issues possibles (pile ou face). Pour deux pièces indépendantes, le nombre total de couples ordonnés est $2 \\times 2 = 4$ : (P,P), (P,F), (F,P), (F,F).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu standard de 52 cartes. Quel est le nombre de résultats élémentaires de l'univers simple ?",
+      "options": [
+        "$13$",
+        "$26$",
+        "$52$",
+        "$104$"
+      ],
+      "correctAnswer": "$52$",
+      "explanation": "Un jeu standard contient 52 cartes distinctes. Chaque carte représente un résultat élémentaire possible, donc l'univers simple comporte 52 éléments. Les autres nombres correspondent à des sous-ensembles (couleurs, valeurs) ou à un double jeu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les situations suivantes, laquelle ne correspond pas à un univers simple fini et dénombrable ?",
+      "options": [
+        "Lancer un dé à six faces",
+        "Tirer une boule d'une urne contenant 3 boules rouges et 2 bleues",
+        "Mesurer la taille d'un élève",
+        "Choisir un jour de la semaine au hasard"
+      ],
+      "correctAnswer": "Mesurer la taille d'un élève",
+      "explanation": "Lancer un dé, tirer une boule ou choisir un jour donnent un nombre fini de résultats distincts, donc un univers simple dénombrable. Mesurer une taille produit une valeur continue (intervalle de réels), ce qui n'est pas un univers simple au sens du programme de 4e.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

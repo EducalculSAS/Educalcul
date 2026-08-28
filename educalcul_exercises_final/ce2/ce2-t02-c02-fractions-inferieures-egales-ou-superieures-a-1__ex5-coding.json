@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 153,
+  "_course_code": "ce2-t02-c02-fractions-inferieures-egales-ou-superieures-a-1",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Comparer à l'unité",
+  "title": "Algorithme : Comparer une fraction à 1",
+  "blocks": [
+    {
+      "title": "Écrire l'algorithme",
+      "content": "On veut créer un programme qui compare une fraction à l'unité. La fraction a pour numérateur $n$ et pour dénominateur $d$. Écris l'algorithme en utilisant la structure : SI ... ALORS ... SINON SI ... ALORS ... SINON ...",
+      "correctAnswer": "SI $n = d$ ALORS la fraction est égale à 1 SINON SI $n < d$ ALORS la fraction est inférieure à 1 SINON la fraction est supérieure à 1",
+      "explanation": "Une fraction vaut 1 exactement quand le numérateur et le dénominateur sont égaux. Si le numérateur est plus petit que le dénominateur, la fraction est plus petite que 1. Dans les autres cas (numérateur plus grand), elle est plus grande que 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester l'algorithme",
+      "content": "Applique l'algorithme aux trois fractions ci-dessous. Pour chacune, écris le test effectué et la conclusion (inférieure, égale ou supérieure à 1). Fractions : $4/9$, $5/5$, $8/3$.",
+      "correctAnswer": "Pour $4/9$ : $4 < 9$ donc inférieure à 1. Pour $5/5$ : $5 = 5$ donc égale à 1. Pour $8/3$ : $8 > 3$ donc supérieure à 1.",
+      "explanation": "On compare le numérateur et le dénominateur de chaque fraction. $4 < 9$ donc $4/9 < 1$. $5 = 5$ donc $5/5 = 1$. $8 > 3$ donc $8/3 > 1$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Trouver les nombres manquants",
+      "content": "Une fraction est supérieure à 1. Son dénominateur est 7. Donne trois valeurs possibles pour le numérateur. Justifie ta réponse avec la règle de l'algorithme.",
+      "correctAnswer": "Trois valeurs possibles : 8, 10, 15 (tout entier strictement supérieur à 7). Justification : pour être supérieure à 1, le numérateur doit être plus grand que le dénominateur, donc $n > 7$.",
+      "explanation": "D'après l'algorithme, une fraction est supérieure à 1 si le numérateur est strictement plus grand que le dénominateur. Ici le dénominateur est 7, donc tout numérateur $n$ tel que $n > 7$ convient (8, 9, 10, 11...).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

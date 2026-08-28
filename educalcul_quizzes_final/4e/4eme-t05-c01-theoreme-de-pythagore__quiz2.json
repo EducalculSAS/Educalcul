@@ -1,0 +1,138 @@
+{
+  "_status": "done",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Calculer longueur",
+  "title": "Théorème de Pythagore : Calculer une longueur",
+  "questions": [
+    {
+      "text": "Dans le triangle rectangle $ABC$, rectangle en $A$, on sait que $AB = 3$ cm et $AC = 4$ cm. Calcule la longueur de l'hypoténuse $BC$.",
+      "options": [
+        "5 cm",
+        "7 cm",
+        "25 cm",
+        "12 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "On applique le théorème de Pythagore : $BC^2 = AB^2 + AC^2$. Donc $BC^2 = 3^2 + 4^2 = 9 + 16 = 25$. La longueur $BC$ est la racine carrée de $25$, soit $5$ cm. L'option $7$ cm correspond à l'addition des longueurs ($3+4$), $25$ cm au carré de la longueur (oubli de la racine carrée) et $12$ cm au produit des longueurs ($3 \\times 4$).",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 3,
+        "b": 4,
+        "c": 5,
+        "caption": "Triangle rectangle ABC rectangle en A, AB=3, AC=4, BC=5"
+      }
+    },
+    {
+      "text": "Le triangle $DEF$ est rectangle en $D$. On donne $DE = 12$ cm et $EF = 13$ cm. Calcule la longueur du côté $DF$.",
+      "options": [
+        "5 cm",
+        "1 cm",
+        "25 cm",
+        "$\\sqrt{313}$ cm"
+      ],
+      "correctAnswer": "5 cm",
+      "explanation": "L'hypoténuse est $EF = 13$ cm car elle est opposée à l'angle droit. D'après Pythagore : $EF^2 = DE^2 + DF^2$. Donc $13^2 = 12^2 + DF^2$, soit $169 = 144 + DF^2$. On trouve $DF^2 = 25$, donc $DF = \\sqrt{25} = 5$ cm. L'option $1$ cm est la différence $13-12$, $25$ cm est la valeur de $DF^2$ (oubli de la racine) et $\\sqrt{313}$ cm correspondrait à l'addition des carrés ($13^2+12^2$) au lieu de la soustraction.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D, DE=12, EF=13, DF=?",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "12",
+          "?",
+          "13"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Soit un triangle rectangle $GHI$ rectangle en $H$ tel que $GH = 5$ cm et $HI = 7$ cm. Calcule une valeur approchée au dixième de cm de l'hypoténuse $GI$.",
+      "options": [
+        "8,6 cm",
+        "12 cm",
+        "74 cm",
+        "2 cm"
+      ],
+      "correctAnswer": "8,6 cm",
+      "explanation": "D'après Pythagore : $GI^2 = GH^2 + HI^2 = 5^2 + 7^2 = 25 + 49 = 74$. Donc $GI = \\sqrt{74}$. Avec une calculatrice, $\\sqrt{74} \\approx 8,602...$ Arrondi au dixième, on obtient $8,6$ cm. L'option $12$ cm est la somme des côtés ($5+7$), $74$ cm est la somme des carrés (oubli de la racine) et $2$ cm est la différence ($7-5$).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle GHI rectangle en H, GH=5, HI=7, GI=?",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "5",
+          "7",
+          "?"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Un rectangle $ABCD$ a pour dimensions $AB = 8$ cm et $BC = 6$ cm. Calcule la longueur de la diagonale $AC$.",
+      "options": [
+        "10 cm",
+        "14 cm",
+        "100 cm",
+        "48 cm"
+      ],
+      "correctAnswer": "10 cm",
+      "explanation": "La diagonale $AC$ est l'hypoténuse du triangle rectangle $ABC$ rectangle en $B$. On a $AB = 8$ cm et $BC = 6$ cm. D'après Pythagore : $AC^2 = AB^2 + BC^2 = 8^2 + 6^2 = 64 + 36 = 100$. Donc $AC = \\sqrt{100} = 10$ cm. L'option $14$ cm correspond au demi-périmètre ($8+6$), $100$ cm au carré de la diagonale (oubli de la racine) et $48$ cm à l'aire du rectangle ($8 \\times 6$).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en B issu du rectangle, AB=8, BC=6, AC=?",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "8",
+          "6",
+          "?"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Une échelle de $5$ m de long est appuyée contre un mur. Le pied de l'échelle est à $3$ m du mur. À quelle hauteur le sommet de l'échelle touche-t-il le mur ?",
+      "options": [
+        "4 m",
+        "2 m",
+        "16 m",
+        "8 m"
+      ],
+      "correctAnswer": "4 m",
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($5$ m), la distance au mur est un côté de l'angle droit ($3$ m). On cherche la hauteur $h$ (l'autre côté). Pythagore donne : $5^2 = 3^2 + h^2$, soit $25 = 9 + h^2$. Donc $h^2 = 16$ et $h = \\sqrt{16} = 4$ m. L'option $2$ m est la différence $5-3$, $16$ m est la valeur de $h^2$ (oubli de la racine) et $8$ m est la somme $5+3$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Echelle contre mur : hypoténuse 5 m, base 3 m, hauteur ?",
+        "vertexLabels": [
+          "Sommet",
+          "Pied",
+          "Mur"
+        ],
+        "sideLabels": [
+          "?",
+          "3",
+          "5"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

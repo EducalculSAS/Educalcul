@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Repérer règle",
+  "title": "Repérer la règle et écrire un algorithme",
+  "blocks": [
+    {
+      "title": "Suite arithmétique simple",
+      "content": "On considère la suite $2, 5, 8, 11, \\dots$. Écris un algorithme (en langage naturel ou pseudo‑code) qui affiche les $n$ premiers termes de cette suite.",
+      "correctAnswer": "Algorithme :\\n- Initialiser terme ← 2\\n- Initialiser pas ← 3\\n- Pour i de 1 à n faire\\n    Afficher terme\\n    terme ← terme + pas\\n- Fin pour",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La suite augmente de 3 à chaque étape. On part du premier terme 2 et on ajoute le pas 3 successivement pour obtenir les termes suivants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite des carrés",
+      "content": "La suite $1, 4, 9, 16, \\dots$ correspond aux carrés des entiers naturels. Écris une formule directe pour le $n$-ième terme et un algorithme qui calcule ce terme.",
+      "correctAnswer": "Formule directe : $u_n = n^2$.\\nAlgorithme :\\n- Lire n\\n- calcul ← n * n\\n- Afficher calcul",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque terme est le carré de son rang. La formule $n^2$ donne directement le $n$-ième terme. L'algorithme lit le rang, calcule le carré et l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Figures en allumettes",
+      "content": "On construit des figures avec des allumettes : la figure 1 utilise $4$ allumettes, la figure 2 en utilise $7$, la figure 3 en utilise $10$. Trouve la règle de construction et écris un algorithme qui donne le nombre d'allumettes pour la figure $k$.",
+      "correctAnswer": "Règle : le nombre d'allumettes pour la figure $k$ est $a_k = 3k + 1$.\\nAlgorithme :\\n- Lire k\\n- nombre ← 3 * k + 1\\n- Afficher nombre",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On observe une augmentation constante de 3 allumettes à chaque nouvelle figure. En partant de 4 pour $k=1$, la relation linéaire $3k+1$ reproduit les valeurs données. L'algorithme applique cette formule.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

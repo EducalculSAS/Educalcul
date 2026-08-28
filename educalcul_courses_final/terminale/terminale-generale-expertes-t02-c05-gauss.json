@@ -1,0 +1,308 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.789000+00:00",
+  "id": 742,
+  "code": "terminale-generale-expertes-t02-c05",
+  "title": "Gauss",
+  "description": "Cours structuré Educalcul : Gauss.",
+  "subject": "Arithmétique",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Arithmétique",
+    "titre_du_cours": "Gauss",
+    "objectif_global": "Gauss",
+    "mini_lecons_imposees": [
+      "Énoncé.",
+      "Hypothèses.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Arithmétique",
+      "lessons": [
+        {
+          "title": "Énoncé.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les entiers de Gauss : une nouvelle famille de nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce cours sur les entiers de Gauss, un chapitre fascinant de l'arithmétique qui nous fait sortir des entiers habituels pour explorer un monde à deux dimensions. Imagine que tu poses sur une feuille quadrillée un pion sur chaque intersection : chaque pion correspond à un couple d'entiers $(a,b)$. Si on identifie ce couple au nombre complexe $a+bi$, on obtient l'ensemble $\\mathbb{Z}[i] = \\{ a+bi \\mid a,b \\in \\mathbb{Z} \\}$. C'est ce qu'on appelle les entiers de Gauss. Ils forment un anneau, c'est-à-dire qu'on peut les additionner et les multiplier en restant dans l'ensemble, exactement comme pour $\\mathbb{Z}$. Mais la grande différence, c'est qu'ils vivent dans le plan complexe, ce qui nous donne des outils géométriques puissants pour faire de l'arithmétique."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 2,
+              "caption": "L'entier de Gauss $3+2i$ représenté dans le plan complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour mesurer la « taille » d'un entier de Gauss, on utilise sa norme $N(z) = a^2+b^2$ (le carré de sa distance à l'origine). Cette norme est toujours un entier naturel, elle est multiplicative : $N(zw)=N(z)N(w)$, et elle ne vaut zéro que pour $z=0$. C'est cette norme qui va jouer le rôle de la valeur absolue dans $\\mathbb{Z}$ et qui va nous permettre de faire des divisions euclidiennes. Par exemple, pour $z=3+2i$, sa norme est $N(z)=3^2+2^2=13$. Essaie de calculer la norme de $1+i$, de $2-i$ et de $4$ : tu verras qu'on obtient respectivement $2$, $5$ et $16$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons nos nombres et leur norme, nous pouvons énoncer le grand théorème qui donne tout son sel à cet anneau : $\\mathbb{Z}[i]$ est un anneau euclidien. Concrètement, cela signifie que pour tous entiers de Gauss $a$ et $b \\neq 0$, il existe un quotient $q$ et un reste $r$ tels que $a = bq + r$ avec soit $r=0$, soit $N(r) < N(b)$. C'est exactement la même propriété que dans $\\mathbb{Z}$ avec la valeur absolue, mais ici la norme est une somme de carrés. Cette propriété est le point de départ de toute une théorie : elle entraîne l'existence d'un PGCD, l'unicité de la factorisation en éléments premiers (à des unités près), et elle nous permet de résoudre des équations diophantiennes qui seraient inaccessibles autrement."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall a,b \\in \\mathbb{Z}[i],\\, b\\neq 0,\\ \\exists q,r \\in \\mathbb{Z}[i] : a=bq+r \\text{ avec } r=0 \\text{ ou } N(r) < N(b)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien saisir ce que cela change, prenons un exemple concret. Dans $\\mathbb{Z}$, on sait diviser $17$ par $5$ : $17 = 5 \\times 3 + 2$. Dans $\\mathbb{Z}[i]$, essayons de diviser $3+2i$ par $1+i$. On cherche $q$ et $r$ tels que $3+2i = (1+i)q + r$ avec $N(r) < N(1+i)=2$. En testant les quelques entiers de Gauss de norme $<2$ (c'est-à-dire $0, 1, -1, i, -i$), on trouve que $q=2+i$ et $r=-i$ conviennent : $(1+i)(2+i) = 1+3i$, et $3+2i - (1+3i) = 2-i$ ? Attends, recalculons : $(1+i)(2+i)=2+i+2i+i^2 = 2+3i-1 = 1+3i$. Alors $3+2i - (1+3i) = 2-i$, dont la norme est $5$, pas $<2$. Ce n'est pas bon. Essayons $q=3$ : $(1+i)3 = 3+3i$, reste $-i$, norme $1 < 2$. Donc $3+2i = (1+i)\\times 3 + (-i)$. Ça marche ! Tu vois que la division euclidienne existe, mais le quotient n'est pas unique (ici $q=3$ fonctionne, $q=2+i$ non). C'est une différence subtile avec $\\mathbb{Z}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque $\\mathbb{Z}[i]$ est euclidien, c'est aussi un anneau principal et un anneau factoriel. Cela veut dire que tout entier de Gauss non nul, non unitaire (les unités sont $1,-1,i,-i$) s'écrit de manière unique (à l'ordre et aux unités près) comme un produit d'éléments premiers de $\\mathbb{Z}[i]$. C'est le pendant du théorème fondamental de l'arithmétique dans $\\mathbb{Z}$. Mais attention : les nombres premiers de $\\mathbb{Z}$ ne restent pas nécessairement premiers dans $\\mathbb{Z}[i]$ ! Par exemple, $2 = (1+i)(1-i)$ et $5 = (2+i)(2-i)$ se factorisent, alors que $3$ reste premier. Cette distinction est au cœur des applications que nous verrons plus tard. Pour l'instant, retenez que la structure euclidienne nous donne une factorisation unique, ce qui est un outil incroyablement puissant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la norme des entiers de Gauss suivants : $1+i$, $2-i$, $4$, $-3+2i$, $5i$.",
+              "answer": "$N(1+i)=2$, $N(2-i)=5$, $N(4)=16$, $N(-3+2i)=13$, $N(5i)=25$.",
+              "hint": "Rappelle-toi que $N(a+bi)=a^2+b^2$. Pour $5i$, écris $0+5i$.",
+              "explanation": "On applique la définition $N(a+bi)=a^2+b^2$ : $1^2+1^2=2$, $2^2+(-1)^2=5$, $4^2+0^2=16$, $(-3)^2+2^2=13$, $0^2+5^2=25$."
+            },
+            {
+              "question": "Effectue la division euclidienne de $7+4i$ par $2+i$ dans $\\mathbb{Z}[i]$. Donne un quotient $q$ et un reste $r$ tels que $N(r) < N(2+i)=5$.",
+              "answer": "Par exemple $q=3+i$, $r=-i$ (car $(2+i)(3+i)=5+5i$ et $7+4i-(5+5i)=2-i$, norme $5$ — non, $N(2-i)=5$ pas $<5$. Essayons $q=3$ : $(2+i)3=6+3i$, reste $1+i$, norme $2 < 5$. Donc $q=3$, $r=1+i$ fonctionne.)",
+              "hint": "Calcule $N(2+i)=5$. Cherche $q$ parmi les entiers de Gauss proches du quotient complexe exact $\\frac{7+4i}{2+i}$. Multiplie numérateur et dénominateur par le conjugué $2-i$.",
+              "explanation": "Le quotient exact est $\\frac{(7+4i)(2-i)}{5} = \\frac{14-7i+8i-4i^2}{5} = \\frac{18+i}{5} = 3,6 + 0,2i$. On teste les entiers de Gauss voisins : $3$, $4$, $3+i$, $4+i$, etc. Pour $q=3$, reste $r = (7+4i) - 3(2+i) = 1+i$, $N(r)=2 < 5$. C'est valide."
+            },
+            {
+              "question": "Factorise l'entier de Gauss $10$ en éléments premiers dans $\\mathbb{Z}[i]$. (Indication : $10=2\\times5$ et on sait factoriser $2$ et $5$.)",
+              "answer": "$10 = (1+i)(1-i)(2+i)(2-i)$. On peut aussi regrouper les unités différemment, par exemple $10 = (1+i)^2 \\times (-i) \\times (2+i)(2-i)$ car $1-i = -i(1+i)$.",
+              "hint": "Utilise les factorisations $2 = (1+i)(1-i)$ et $5 = (2+i)(2-i)$. Vérifie que chaque facteur est premier (sa norme est un nombre premier dans $\\mathbb{Z}$).",
+              "explanation": "Dans $\\mathbb{Z}[i]$, un élément de norme $p$ premier dans $\\mathbb{Z}$ est premier. $N(1+i)=2$, $N(2+i)=5$, donc ils sont premiers. On a $10 = 2 \\times 5 = (1+i)(1-i)(2+i)(2-i)$. Comme $1-i = -i(1+i)$, on peut aussi écrire $10 = -i (1+i)^2 (2+i)(2-i)$. Les deux écritures sont équivalentes à une unité près."
+            }
+          ]
+        },
+        {
+          "title": "Hypothèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi la norme $N(a+bi)=a^2+b^2$ rend $\\mathbb{Z}[i]$ euclidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons énoncé le théorème sans le démontrer. Il est temps de regarder sous le capot : pourquoi la norme $N(z)=a^2+b^2$ permet-elle de faire une division euclidienne ? La clé se trouve dans le plan complexe. Quand on divise $a$ par $b \\neq 0$ dans $\\mathbb{C}$, on obtient un nombre complexe $z = a/b$. Ce nombre n'est généralement pas dans $\\mathbb{Z}[i]$, mais on peut l'approcher par un entier de Gauss $q$ (le quotient) en arrondissant sa partie réelle et sa partie imaginaire aux entiers les plus proches. Le reste sera $r = a - bq$. La norme du reste est alors $N(r) = N(b) \\cdot N(z-q)$. Si on choisit $q$ tel que $|\\operatorname{Re}(z-q)| \\le 1/2$ et $|\\operatorname{Im}(z-q)| \\le 1/2$, alors $N(z-q) \\le (1/2)^2 + (1/2)^2 = 1/2$. Donc $N(r) \\le \\frac{1}{2} N(b) < N(b)$. C'est gagné ! Cette construction géométrique est la preuve que $\\mathbb{Z}[i]$ est euclidien."
+            },
+            {
+              "type": "display_math",
+              "latex": "N(z) = a^2+b^2 = |z|^2 \\quad \\text{et} \\quad N(zw)=N(z)N(w)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La multiplicativité de la norme est une propriété cruciale : $N(zw) = (a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2 = N(z)N(w)$. Elle se vérifie par un calcul direct ou en remarquant que $N(z)=|z|^2$ et que le module est multiplicatif. Cette propriété implique que si $z$ divise $w$ dans $\\mathbb{Z}[i]$, alors $N(z)$ divise $N(w)$ dans $\\mathbb{Z}$. C'est un outil de criblage très pratique : pour savoir si $2+i$ divise $7+4i$, on calcule $N(2+i)=5$ et $N(7+4i)=65$. Comme $5$ divise $65$, c'est possible (et nous l'avons vu). Si la norme ne divisait pas, ce serait impossible. Attention toutefois : la condition sur les normes est nécessaire mais pas suffisante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons de plus près l'algorithme de division euclidienne. Donnons $a=7+4i$ et $b=2+i$. Le quotient exact dans $\\mathbb{C}$ est $z = a/b = (7+4i)(2-i)/5 = (14-7i+8i+4)/5 = (18+i)/5 = 3,6 + 0,2i$. Les entiers de Gauss les plus proches sont $3$, $4$, $3+i$, $4+i$. Essayons $q=3$ : reste $r = a - bq = 7+4i - 3(2+i) = 1+i$, $N(r)=2 < N(b)=5$. Ça marche. Essayons $q=4$ : reste $r = 7+4i - 4(2+i) = -1$, $N(r)=1 < 5$. Ça marche aussi ! Le quotient n'est pas unique, mais il existe toujours au moins un choix qui satisfait l'inégalité sur la norme. C'est ce qui fait de $\\mathbb{Z}[i]$ un anneau euclidien (mais pas à division unique)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le quotient exact dans $\\mathbb{C}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donnés $a,b \\in \\mathbb{Z}[i]$, $b \\neq 0$. On calcule $z = a/b \\in \\mathbb{C}$ en multipliant numérateur et dénominateur par le conjugué de $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir un entier de Gauss $q$ proche de $z$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On prend $q = x+yi$ avec $x,y \\in \\mathbb{Z}$ tels que $|x - \\operatorname{Re}(z)| \\le 1/2$ et $|y - \\operatorname{Im}(z)| \\le 1/2$. Il y a toujours au moins un tel $q$ (parfois plusieurs si $z$ est à distance exactement $1/2$ d'un entier)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Définir le reste $r = a - bq$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par construction, $r \\in \\mathbb{Z}[i]$. On a $N(r) = N(b) N(z-q) \\le N(b) \\cdot (1/2) < N(b)$ car $N(z-q) \\le 1/2$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette démonstration montre que la norme euclidienne n'est pas n'importe laquelle : c'est le carré du module, qui vient de la structure de $\\mathbb{C}$ comme espace vectoriel de dimension $2$ sur $\\mathbb{R}$. Le fait que l'arrondi à l'entier le plus proche donne une erreur de module au plus $1/\\sqrt{2}$ (donc norme au plus $1/2$) est spécifique au réseau carré $\\mathbb{Z}[i]$. D'autres anneaux quadratiques comme $\\mathbb{Z}[\\sqrt{-5}]$ ne sont pas euclidiens pour cette norme. C'est une propriété très spéciale de $\\mathbb{Z}[i]$ (et de quelques autres anneaux d'entiers quadratiques imaginaires)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, notons que l'algorithme d'Euclide pour le PGCD fonctionne exactement comme dans $\\mathbb{Z}$ : on fait des divisions successives jusqu'à obtenir un reste nul. Le dernier reste non nul est un PGCD. Par exemple, pour $a=11+3i$ et $b=4+i$, on divise $a$ par $b$ : $z = (11+3i)(4-i)/17 = (44-11i+12i+3)/17 = (47+i)/17 \\approx 2,76 + 0,06i$. On choisit $q=3$, reste $r = 11+3i - 3(4+i) = -1$. Norme $1 < 17$. Puis on divise $b$ par $r$ : $4+i = (-1)(-4-i) + 0$. Le PGCD est $-1$ (ou $1$, c'est une unité), donc $a$ et $b$ sont premiers entre eux. C'est un algorithme effectif et rapide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie la multiplicativité de la norme pour $z=2+3i$ et $w=1-i$ : calcule $N(z)$, $N(w)$, $N(zw)$ et vérifie que $N(zw)=N(z)N(w)$.",
+              "answer": "$N(z)=13$, $N(w)=2$, $zw = (2+3i)(1-i) = 2-2i+3i-3i^2 = 5+i$, $N(zw)=26 = 13 \\times 2$.",
+              "hint": "Calcule $zw$ d'abord, puis les normes. Rappelle-toi que $i^2=-1$.",
+              "explanation": "$N(2+3i)=4+9=13$, $N(1-i)=1+1=2$. $zw = 2-2i+3i-3(-1) = 5+i$. $N(5+i)=25+1=26 = 13 \\times 2$."
+            },
+            {
+              "question": "Effectue la division euclidienne de $11+3i$ par $4+i$ en suivant l'algorithme pas à pas (choisis un quotient valide).",
+              "answer": "Quotient exact $z = (47+i)/17 \\approx 2,76+0,06i$. Choix $q=3$, reste $r = -1$ (norme $1 < 17$). Donc $11+3i = (4+i)\\times 3 + (-1)$.",
+              "hint": "Calcule $z = a/b$ en multipliant par le conjugué $4-i$. Arrondis les parties réelle et imaginaire aux entiers les plus proches.",
+              "explanation": "Dénominateur $N(4+i)=17$. Numérateur $(11+3i)(4-i)=44-11i+12i-3i^2=47+i$. $z = (47+i)/17$. Partie réelle $47/17 \\approx 2,76$, partie imaginaire $1/17 \\approx 0,06$. Entiers les plus proches : $3$ et $0$. Donc $q=3$. Reste $r = 11+3i - 3(4+i) = -1$. $N(r)=1 < 17$."
+            },
+            {
+              "question": "En utilisant l'algorithme d'Euclide, trouve un PGCD de $5+2i$ et $3+4i$ dans $\\mathbb{Z}[i]$.",
+              "answer": "Premier division : $(5+2i)/(3+4i) = (5+2i)(3-4i)/25 = (15-20i+6i-8i^2)/25 = (23-14i)/25 = 0,92 - 0,56i$. $q=1$, reste $r = (5+2i) - (3+4i) = 2-2i$, $N(r)=8 < 25$. Deuxième division : $(3+4i)/(2-2i) = (3+4i)(2+2i)/8 = (6+6i+8i+8i^2)/8 = (-2+14i)/8 = -0,25+1,75i$. $q=i$ (partie réelle $0$, partie imaginaire $2$ ? arrondi : $-0,25\\to0$, $1,75\\to2$ donc $q=2i$ ? Essayons $q=2i$ : $(2-2i)(2i)=4i-4i^2=4+4i$, reste $3+4i-(4+4i)=-1$, norme $1<8$. Troisième division : $(2-2i)/(-1) = -2+2i$, reste $0$. PGCD = $-1$ (unité). Donc ils sont premiers entre eux.",
+              "hint": "Applique l'algorithme d'Euclide : divise le plus grand norme par le plus petit, remplace le dividende par le diviseur et le diviseur par le reste, jusqu'à reste nul.",
+              "explanation": "On suit les divisions successives. Le dernier reste non nul est un PGCD. Ici, on obtient une unité, donc les deux nombres sont premiers entre eux."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres premiers de Gauss et le théorème de Fermat sur les sommes de deux carrés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur des applications : la classification des éléments premiers de $\\mathbb{Z}[i]$ et son lien magnifique avec un théorème classique de Fermat. Un élément $\\pi \\in \\mathbb{Z}[i]$ est premier (ou irréductible) s'il n'est pas une unité et si, chaque fois que $\\pi = \\alpha \\beta$, l'un des facteurs est une unité. Grâce à la norme, on a un critère simple : si $N(\\pi)$ est un nombre premier dans $\\mathbb{Z}$, alors $\\pi$ est premier dans $\\mathbb{Z}[i]$. Réciproquement, tout premier de $\\mathbb{Z}[i]$ a une norme qui est soit un nombre premier $p \\in \\mathbb{Z}$, soit le carré d'un nombre premier $p^2$. Cela découle de la multiplicativité de la norme et du fait que $\\mathbb{Z}[i]$ est factoriel."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\pi \\text{ premier dans } \\mathbb{Z}[i] \\implies N(\\pi) = p \\text{ ou } p^2 \\text{ avec } p \\text{ premier dans } \\mathbb{Z}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cela nous permet de lister tous les premiers de Gauss en fonction des premiers ordinaires $p$. Il y a trois cas : 1) $p=2$ : $2 = (1+i)(1-i) = -i(1+i)^2$, donc $1+i$ est premier (à unité près) et sa norme est $2$. 2) $p \\equiv 1 \\pmod 4$ : alors $p$ se factorise en un produit de deux premiers conjugués $\\pi \\overline{\\pi}$ de norme $p$. Par exemple $5 = (2+i)(2-i)$, $13 = (3+2i)(3-2i)$. 3) $p \\equiv 3 \\pmod 4$ : $p$ reste premier dans $\\mathbb{Z}[i]$ (sa norme est $p^2$). Par exemple $3, 7, 11$ sont premiers dans $\\mathbb{Z}[i]$. Cette classification est un des plus beaux résultats de l'arithmétique de Gauss."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette classification prouve immédiatement le théorème de Fermat sur les sommes de deux carrés : un nombre premier impair $p$ s'écrit comme somme de deux carrés $p = x^2+y^2$ avec $x,y \\in \\mathbb{Z}$ si et seulement si $p \\equiv 1 \\pmod 4$. En effet, si $p = x^2+y^2$, alors $p = (x+iy)(x-iy)$ dans $\\mathbb{Z}[i]$. Comme $p$ n'est pas premier dans $\\mathbb{Z}[i]$ (il se factorise), il ne peut pas être congru à $3$ modulo $4$ (car ceux-là restent premiers). Donc $p=2$ ou $p \\equiv 1 \\pmod 4$. Réciproquement, si $p \\equiv 1 \\pmod 4$, on sait que $p$ se factorise en $\\pi \\overline{\\pi}$ avec $N(\\pi)=p$. En posant $\\pi = x+iy$, on a $p = x^2+y^2$. C'est une démonstration d'une élégance frappante, qui montre la puissance de l'anneau $\\mathbb{Z}[i]$ pour résoudre des problèmes purement arithmétiques sur $\\mathbb{Z}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Factoriser $p$ dans $\\mathbb{Z}[i]$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $p \\equiv 1 \\pmod 4$, on sait qu'il existe un entier $u$ tel que $u^2 \\equiv -1 \\pmod p$ (critère d'Euler). Alors $p$ divise $u^2+1 = (u+i)(u-i)$ dans $\\mathbb{Z}[i]$. Si $p$ était premier dans $\\mathbb{Z}[i]$, il diviserait l'un des facteurs, ce qui est impossible car les parties imaginaires ne sont pas multiples de $p$. Donc $p$ n'est pas premier, il se factorise."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Obtenir l'écriture $p = x^2+y^2$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $p = \\pi \\overline{\\pi}$ avec $\\pi = x+yi$. En prenant les normes, $p^2 = N(\\pi)N(\\overline{\\pi}) = N(\\pi)^2$, donc $N(\\pi)=p$, c'est-à-dire $x^2+y^2=p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des nombres premiers, cette théorie permet de résoudre l'équation $x^2+y^2 = n$ pour tout entier $n$. La condition nécessaire et suffisante pour que $n$ soit somme de deux carrés est que dans sa factorisation en premiers dans $\\mathbb{Z}$, tout premier $p \\equiv 3 \\pmod 4$ apparaisse avec un exposant pair. En effet, dans $\\mathbb{Z}[i]$, $n$ se factorise en premiers de Gauss. Les premiers $p \\equiv 3 \\pmod 4$ restent premiers et ont une norme $p^2$ ; pour que $n$ soit une norme (donc somme de deux carrés), leur exposant doit être pair. C'est un critère complet et effectif."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un exemple concret qui réunit tout : trouvons toutes les solutions entières de $x^2+y^2 = 65$. On factorise $65 = 5 \\times 13$. Les deux sont $\\equiv 1 \\pmod 4$, donc $5 = (2+i)(2-i)$ et $13 = (3+2i)(3-2i)$. Dans $\\mathbb{Z}[i]$, $65 = (2+i)(2-i)(3+2i)(3-2i)$. Pour obtenir un entier de Gauss de norme $65$, on choisit un facteur de chaque paire conjuguée et on multiplie. Par exemple, $(2+i)(3+2i) = 6+4i+3i+2i^2 = 4+7i$, ce qui donne $4^2+7^2=16+49=65$. En variant les choix (et en multipliant par les unités $\\pm1, \\pm i$), on trouve toutes les solutions : $(\\pm4, \\pm7)$, $(\\pm7, \\pm4)$, $(\\pm1, \\pm8)$, $(\\pm8, \\pm1)$ (car $(2+i)(3-2i)=8-i$). C'est la méthode systématique pour résoudre $x^2+y^2=n$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir les entiers de Gauss $\\mathbb{Z}[i]$ et leur norme $N(a+bi)=a^2+b^2$.",
+                "Je connais l'énoncé du théorème : $\\mathbb{Z}[i]$ est un anneau euclidien pour cette norme.",
+                "Je sais effectuer une division euclidienne dans $\\mathbb{Z}[i]$ en arrondissant le quotient complexe.",
+                "Je connais la classification des premiers de Gauss selon les premiers de $\\mathbb{Z}$ modulo 4.",
+                "Je sais utiliser la factorisation dans $\\mathbb{Z}[i]$ pour démontrer le théorème de Fermat sur les sommes de deux carrés.",
+                "Je sais résoudre une équation $x^2+y^2=n$ en factorisant $n$ dans $\\mathbb{Z}[i]$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine si les entiers de Gauss suivants sont premiers : $1+i$, $3$, $2+i$, $7$, $4+i$. Justifie par leur norme.",
+              "answer": "$1+i$ : norme $2$ (premier) $\\Rightarrow$ premier. $3$ : norme $9=3^2$, $3\\equiv3\\pmod4$ $\\Rightarrow$ premier. $2+i$ : norme $5$ (premier) $\\Rightarrow$ premier. $7$ : norme $49=7^2$, $7\\equiv3\\pmod4$ $\\Rightarrow$ premier. $4+i$ : norme $17$ (premier) $\\Rightarrow$ premier.",
+              "hint": "Calcule la norme. Si la norme est un nombre premier dans $\\mathbb{Z}$, l'entier de Gauss est premier. Si la norme est $p^2$, vérifie si $p\\equiv3\\pmod4$ (alors c'est premier) ou $p\\equiv1\\pmod4$ (alors ce n'est pas premier, c'est un produit de deux conjugués).",
+              "explanation": "On utilise le critère : $\\pi$ premier $\\iff$ $N(\\pi)=p$ premier, ou $N(\\pi)=p^2$ avec $p\\equiv3\\pmod4$. $N(1+i)=2$ premier. $N(3)=9=3^2$, $3\\equiv3\\pmod4$. $N(2+i)=5$ premier. $N(7)=49=7^2$, $7\\equiv3\\pmod4$. $N(4+i)=17$ premier."
+            },
+            {
+              "question": "Exprime le nombre premier $13$ comme somme de deux carrés en utilisant sa factorisation dans $\\mathbb{Z}[i]$.",
+              "answer": "$13 = (3+2i)(3-2i)$, donc $13 = 3^2+2^2 = 9+4$.",
+              "hint": "Cherche un entier de Gauss de norme $13$. Essaie les couples $(x,y)$ avec $x^2+y^2=13$.",
+              "explanation": "On sait que $13\\equiv1\\pmod4$, donc il se factorise. En cherchant $x,y$ tels que $x^2+y^2=13$, on trouve $3^2+2^2=13$. Donc $13=(3+2i)(3-2i)$."
+            },
+            {
+              "question": "Trouve toutes les solutions entières $(x,y)$ de l'équation $x^2+y^2 = 65$ en utilisant la factorisation dans $\\mathbb{Z}[i]$.",
+              "answer": "$(\\pm4,\\pm7)$, $(\\pm7,\\pm4)$, $(\\pm1,\\pm8)$, $(\\pm8,\\pm1)$ (16 solutions au total, en comptant les permutations et changements de signes).",
+              "hint": "Factorise $65=5\\times13$. Écris $5=(2+i)(2-i)$, $13=(3+2i)(3-2i)$. Multiplie un facteur de chaque paire pour obtenir un entier de Gauss de norme $65$. N'oublie pas les unités $\\pm1,\\pm i$ et l'échange des parties réelle et imaginaire.",
+              "explanation": "Les facteurs premiers de norme $5$ sont $2\\pm i$, de norme $13$ sont $3\\pm2i$. En multipliant $(2+i)(3+2i)=4+7i$ (donne $4^2+7^2$), $(2+i)(3-2i)=8-i$ (donne $8^2+1^2$). Les conjugués et les multiplications par $\\pm1,\\pm i$ donnent les 16 solutions."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

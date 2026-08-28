@@ -1,0 +1,363 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.871745+00:00",
+  "id": 444,
+  "code": "4eme-t05-c05",
+  "title": "Bilan - Triangle 4e",
+  "description": "Cours structuré Educalcul : Bilan - Triangle 4e.",
+  "subject": "Géométrie du triangle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Géométrie du triangle",
+    "titre_du_cours": "Bilan - Triangle 4e",
+    "objectif_global": "Bilan - Triangle 4e",
+    "mini_lecons_imposees": [
+      "Pythagore et raisonnement.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie du triangle",
+      "lessons": [
+        {
+          "title": "Pythagore et raisonnement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle rectangle et ses côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier bilan ! Aujourd'hui, nous allons revisiter le triangle rectangle, ce personnage géométrique qui possède un angle de $90^{\\circ}$ et qui cache une relation magique entre ses trois longueurs. Imagine un coin de table parfaitement carré : les deux bords qui se rencontrent forment l'angle droit, et le bord opposé, celui qui traverse la table en diagonale, s'appelle l'hypoténuse. Les deux autres côtés, qui touchent l'angle droit, sont simplement appelés les côtés de l'angle droit. Prends le temps de visualiser cette situation : si tu poses une règle le long des deux bords, tu as tes deux côtés ; si tu tends un fil d'un coin à l'autre, tu as l'hypoténuse. Cette image concrète t'aidera à ne jamais confondre les noms, même quand les chiffres deviennent plus grands."
+            },
+            {
+              "type": "definition",
+              "term": "hypoténuse",
+              "definition": "Le côté le plus long d'un triangle rectangle, celui qui se trouve en face de l'angle droit.",
+              "example": "Dans un triangle rectangle de côtés $3$, $4$ et $5$, l'hypoténuse mesure $5$."
+            },
+            {
+              "type": "definition",
+              "term": "côté de l'angle droit",
+              "definition": "Chacun des deux côtés qui forment l'angle droit ; ils sont toujours plus courts que l'hypoténuse.",
+              "example": "Dans le même triangle, les côtés de l'angle droit mesurent $3$ et $4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer ces définitions, regarde le triangle classique $3$-$4$-$5$. Ses deux côtés de l'angle droit sont $3$ et $4$, et son hypoténuse est $5$. Si tu construis des carrés sur chaque côté, le carré sur l'hypoténuse a une aire de $25$, tandis que les deux autres carrés ont des aires de $9$ et $16$. Remarque que $9+16=25$ : la somme des aires des deux petits carrés égale exactement l'aire du grand carré. C'est la première intuition visuelle du théorème que nous allons formuler."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Triangle rectangle $3$-$4$-$5$ avec les carrés sur les côtés"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu l'image, passons à l'énoncé précis. Le théorème de Pythagore affirme que dans tout triangle rectangle, le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés. En symboles, si $a$ et $b$ sont les côtés de l'angle droit et $c$ l'hypoténuse, on écrit $a^2+b^2=c^2$. Cette égalité est valable uniquement si l'angle considéré est bien un angle droit ; c'est la condition d'application qu'il ne faut jamais oublier."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^2+b^2=c^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'angle droit sur le schéma ou dans l'énoncé. Les deux segments qui le forment sont $a$ et $b$ ; le segment opposé est $c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Élever au carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a^2$ et $b^2$ séparément. Par exemple, si $a=6$ et $b=8$, alors $a^2=36$ et $b^2=64$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les deux carrés : $36+64=100$. Ce résultat est $c^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Racine carrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour trouver $c$, prends la racine carrée de la somme : $\\sqrt{100}=10$. L'hypoténuse mesure donc $10$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème a aussi un frère jumeau : la réciproque. Elle dit que si dans un triangle les longueurs vérifient $a^2+b^2=c^2$, alors l'angle opposé au côté $c$ est un angle droit. C'est un outil puissant pour vérifier si un triangle est rectangle sans avoir à mesurer l'angle. Par exemple, un triangle dont les côtés mesurent $7$, $24$ et $25$ satisfait $7^2+24^2=49+576=625=25^2$ ; donc c'est un triangle rectangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "7",
+                "24",
+                "25"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle $7$-$24$-$25$ : l'angle en A est droit"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce tour d'horizon, voyons comment le théorème s'invite dans la vie de tous les jours. Imagine une échelle de $10\\,m$ appuyée contre un mur, le pied de l'échelle étant à $6\\,m$ du mur. Quelle hauteur l'échelle atteint-elle ? Tu as un triangle rectangle : l'échelle est l'hypoténuse ($c=10$), la distance au mur est un côté ($a=6$), et la hauteur cherchée est l'autre côté $b$. En appliquant $a^2+b^2=c^2$, tu trouves $b=\\sqrt{10^2-6^2}=\\sqrt{100-36}=\\sqrt{64}=8\\,m$. L'échelle touche le mur à $8\\,m$ du sol."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Garde toujours en tête la condition : le théorème ne s'applique que si tu es certain que l'angle est droit. Si le triangle n'est pas rectangle, l'égalité $a^2+b^2=c^2$ n'est pas garantie."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ et $8$. Calcule la longueur de l'hypoténuse.",
+              "answer": "10",
+              "hint": "Utilise la formule $a^2+b^2=c^2$ avec $a=6$ et $b=8$.",
+              "explanation": "On calcule $6^2+8^2=36+64=100$. La racine carrée de $100$ est $10$, donc l'hypoténuse vaut $10$."
+            },
+            {
+              "question": "Un triangle rectangle a pour hypoténuse $13$ et un côté de l'angle droit $5$. Trouve la longueur de l'autre côté.",
+              "answer": "12",
+              "hint": "Isole $b^2$ dans $a^2+b^2=c^2$ avec $a=5$ et $c=13$.",
+              "explanation": "On a $5^2+b^2=13^2$, soit $25+b^2=165$. Donc $b^2=144$ et $b=\\sqrt{144}=12$."
+            },
+            {
+              "question": "Détermine si le triangle de côtés $9$, $12$ et $15$ est rectangle.",
+              "answer": "Oui",
+              "hint": "Vérifie si $9^2+12^2=15^2$.",
+              "explanation": "$9^2+12^2=81+144=225$ et $15^2=225$. L'égalité est vraie, donc le triangle est rectangle."
+            },
+            {
+              "question": "Une échelle de $10\\,m$ est posée contre un mur. Son pied est à $6\\,m$ du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+              "answer": "8 m",
+              "hint": "Applique $a^2+b^2=c^2$ avec $c=10$ et $a=6$.",
+              "explanation": "On cherche $b$ : $6^2+b^2=10^2$ donc $36+b^2=100$, $b^2=64$, $b=8$. L'échelle atteint $8\\,m$ de hauteur."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : vérifier tes acquis"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de synthèse, nous allons passer en revue les points essentiels que tu as découverts sur le triangle rectangle. L'objectif n'est pas d'apprendre du nouveau, mais de consolider chaque idée en la réexaminant sous un angle légèrement différent, avec de nouveaux nombres et de nouvelles petites histoires. Ainsi, tu pourras t'assurer que chaque notion est bien ancrée avant de passer à la suite du programme."
+            },
+            {
+              "type": "definition",
+              "term": "réciproque du théorème de Pythagore",
+              "definition": "Si dans un triangle les carrés de deux côtés additionnés égalent le carré du troisième côté, alors l'angle opposé à ce troisième côté est un angle droit.",
+              "example": "Pour les longueurs $8$, $15$, $17$ : $8^2+15^2=64+225=289=17^2$, donc le triangle est rectangle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par reconnaître un triangle rectangle rien qu'à ses longueurs. Prends le triplet $8$-$15$-$17$. Calcule les carrés : $8^2=64$, $15^2=225$, $17^2=289$. La somme des deux premiers est $64+225=289$, exactement le troisième. Cette égalité te garantit que l'angle en face du côté $17$ mesure $90^{\\circ}$. C'est la réciproque en action : pas besoin de rapporteur, les nombres parlent d'eux-mêmes."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des aires des carrés pour le triplet $8$-$15$-$17$",
+              "bars": [
+                {
+                  "label": "a^2",
+                  "value": 64,
+                  "tone": "blue"
+                },
+                {
+                  "label": "b^2",
+                  "value": 225,
+                  "tone": "green"
+                },
+                {
+                  "label": "c^2",
+                  "value": 289,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Poursuivons avec l'application directe du théorème pour trouver une longueur manquante. Imagine un triangle rectangle dont l'hypoténuse mesure $17$ et l'un des côtés de l'angle droit $8$. Nous cherchons l'autre côté. Écris l'égalité $8^2+b^2=17^2$, calcule $64+b^2=289$, donc $b^2=225$ et $b=15$. Ce triplet $8$-$15$-$17$ est un grand classique, tout comme $3$-$4$-$5$ ou $5$-$12$-$13$. Les connaître par cœur te fait gagner un temps précieux."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^2+b^2=c^2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'égalité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les valeurs connues dans $a^2+b^2=c^2$ en identifiant correctement $c$ (hypoténuse)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les carrés connus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue $a^2$ et $c^2$ (ou $b^2$ et $c^2$) selon ce qui est donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Isoler l'inconnu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrait le carré connu du carré de l'hypoténuse pour obtenir le carré du côté manquant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Racine carrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends la racine carrée positive du résultat pour obtenir la longueur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons maintenant à la réciproque pour un test de rectangle. Supposons un triangle aux côtés $9$, $40$ et $41$. Calcule $9^2+40^2=81+1600=1681$ et $41^2=1681$. L'égalité tient, donc ce triangle est rectangle. Essaie de visualiser : le côté $41$ serait l'hypoténuse, les deux autres formeraient l'angle droit. Ce genre de triplet apparaît souvent dans les problèmes de construction ou de navigation."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "sideLabels": [
+                "9",
+                "40",
+                "41"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle $9$-$40$-$41$ : angle droit en P"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, un dernier problème concret pour mêler tout cela. Deux amis, Léa et Sam, se trouvent aux coins opposés d'un terrain rectangulaire de $30\\,m$ sur $40\\,m$. Quelle est la distance en ligne droite qui les sépare ? Le terrain forme un rectangle ; la diagonale est l'hypoténuse d'un triangle rectangle dont les côtés sont $30$ et $40$. Applique $30^2+40^2=900+1600=2500$, la racine carrée donne $50\\,m$. Léa et Sam sont donc à $50\\,m$ l'un de l'autre en vol d'oiseau."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer l'hypoténuse et les côtés de l'angle droit dans un triangle rectangle.",
+                "J'applique correctement $a^2+b^2=c^2$ pour calculer une longueur manquante.",
+                "J'utilise la réciproque pour décider si un triangle est rectangle.",
+                "Je résous des problèmes concrets (échelle, diagonale, distance) en modélisant avec un triangle rectangle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si le triangle de côtés $8$, $15$, $17$ est rectangle.",
+              "answer": "Oui",
+              "hint": "Calcule $8^2+15^2$ et compare à $17^2$.",
+              "explanation": "$8^2+15^2=64+225=289$ et $17^2=289$. L'égalité est vraie, donc le triangle est rectangle."
+            },
+            {
+              "question": "Dans un triangle rectangle, l'hypoténuse vaut $17$ et un côté de l'angle droit vaut $8$. Trouve l'autre côté.",
+              "answer": "15",
+              "hint": "Utilise $8^2+b^2=17^2$.",
+              "explanation": "$64+b^2=289$, donc $b^2=225$ et $b=15$."
+            },
+            {
+              "question": "Le triangle de côtés $9$, $40$, $41$ est-il rectangle ?",
+              "answer": "Oui",
+              "hint": "Teste $9^2+40^2=41^2$.",
+              "explanation": "$81+1600=1681$ et $41^2=1681$. L'égalité vaut, donc c'est un triangle rectangle."
+            },
+            {
+              "question": "Un terrain rectangulaire mesure $30\\,m$ sur $40\\,m$. Quelle est la longueur de sa diagonale ?",
+              "answer": "50 m",
+              "hint": "La diagonale est l'hypoténuse d'un triangle rectangle de côtés $30$ et $40$.",
+              "explanation": "$30^2+40^2=900+1600=2500$, $\\sqrt{2500}=50$. La diagonale fait $50\\,m$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

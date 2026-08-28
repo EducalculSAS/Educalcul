@@ -1,0 +1,47 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Comparer",
+  "title": "Comparer deux programmes de calcul",
+  "blocks": [
+    {
+      "title": "Comparaison pour une valeur donnée",
+      "content": "On considère les deux programmes de calcul suivants :\\n\\nProgramme A :\\n- Choisir un nombre.\\n- Lui ajouter $4$.\\n- Multiplier le résultat par $3$.\\n\\nProgramme B :\\n- Choisir un nombre.\\n- Le multiplier par $3$.\\n- Ajouter $4$ au résultat.\\n\\nSi on choisit le nombre de départ $5$, le résultat du programme A est {{1}} et celui du programme B est {{2}}.\\nLe programme qui donne le plus grand résultat pour ce nombre est le programme {{3}}.",
+      "blanks": [
+        "27",
+        "19",
+        "A"
+      ],
+      "explanation": "Pour le programme A : $(5 + 4) \\times 3 = 9 \\times 3 = 27$.\\nPour le programme B : $5 \\times 3 + 4 = 15 + 4 = 19$.\\n$27 > 19$, donc le programme A donne le plus grand résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Égalité des résultats",
+      "content": "On considère les deux programmes de calcul suivants :\\n\\nProgramme 1 :\\n- Choisir un nombre $x$.\\n- Le multiplier par $5$.\\n- Soustraire $10$.\\n\\nProgramme 2 :\\n- Choisir un nombre $x$.\\n- Lui soustraire $2$.\\n- Multiplier le résultat par $5$.\\n\\nLes expressions algébriques obtenues sont respectivement $5x - 10$ pour le programme 1 et $5(x - 2)$ pour le programme 2.\\nCes deux expressions sont {{1}} pour tout nombre $x$ car $5(x - 2) = 5x - 10$ ({{2}}).",
+      "blanks": [
+        "égales",
+        "distributivité"
+      ],
+      "explanation": "Programme 1 : $5x - 10$.\\nProgramme 2 : $5(x - 2) = 5x - 10$ par distributivité de la multiplication sur la soustraction.\\nLes deux programmes donnent le même résultat quel que soit le nombre de départ choisi.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Comparaison selon le nombre de départ",
+      "content": "Soit les programmes suivants :\\n\\nProgramme P : $x \\mapsto 2x + 6$\\nProgramme Q : $x \\mapsto 2(x + 4)$\\n\\nOn développe l'expression du programme Q : $2(x + 4) = {{1}}$.\\nOn compare ensuite $2x + 6$ et $2x + 8$.\\nPour tout nombre $x$, le résultat du programme Q est {{2}} que celui du programme P.\\nLa différence entre le résultat de Q et celui de P est constante et vaut {{3}}.",
+      "blanks": [
+        "2x + 8",
+        "supérieur",
+        "2"
+      ],
+      "explanation": "Programme Q : $2(x + 4) = 2x + 8$.\\nProgramme P : $2x + 6$.\\nPour tout $x$, $2x + 8 > 2x + 6$ car $8 > 6$.\\nLa différence est $(2x + 8) - (2x + 6) = 2$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

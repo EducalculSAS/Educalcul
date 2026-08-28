@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Application : Factoriser par facteur commun",
+  "title": "Factoriser par facteur commun - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Factorisation simple",
+      "content": "Remets dans l'ordre les étapes pour factoriser l'expression $12x + 8$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le facteur commun (le PGCD des coefficients).",
+        "Écrire l'expression sous la forme produit : $12x + 8 = 4(3x + 2)$.",
+        "Vérifier en développant $4(3x + 2)$ pour retrouver $12x + 8$."
+      ],
+      "explanation": "Le PGCD de 12 et 8 est 4. On met 4 en facteur : $12x + 8 = 4 \\times 3x + 4 \\times 2 = 4(3x + 2)$. En développant $4(3x + 2)$, on retrouve bien $12x + 8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation à deux variables",
+      "content": "Remets dans l'ordre les étapes pour factoriser l'expression $9x^2y - 6xy^2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Déterminer le PGCD des coefficients (3) et les plus petites puissances de chaque variable ($x$ et $y$).",
+        "Écrire l'expression sous la forme produit : $9x^2y - 6xy^2 = 3xy(3x - 2y)$.",
+        "Vérifier en développant $3xy(3x - 2y)$ pour retrouver $9x^2y - 6xy^2$."
+      ],
+      "explanation": "Le PGCD de 9 et 6 est 3. La plus petite puissance de $x$ est $x^1$, celle de $y$ est $y^1$. Le facteur commun est donc $3xy$. On factorise : $9x^2y = 3xy \\times 3x$ et $-6xy^2 = 3xy \\times (-2y)$, d'où $3xy(3x - 2y)$. Le développement redonne l'expression initiale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation avec signe négatif",
+      "content": "Remets dans l'ordre les étapes pour factoriser l'expression $-5a^2b + 10ab^2 - 15ab$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer le facteur commun en incluant le signe : $-5ab$.",
+        "Factoriser l'expression : $-5a^2b + 10ab^2 - 15ab = -5ab(a - 2b + 3)$.",
+        "Vérifier en développant $-5ab(a - 2b + 3)$ pour retrouver l'expression initiale."
+      ],
+      "explanation": "Tous les termes sont divisibles par $5ab$ et le premier terme est négatif, on choisit $-5ab$ comme facteur commun. On divise chaque terme par $-5ab$ : $-5a^2b / (-5ab) = a$, $10ab^2 / (-5ab) = -2b$, $-15ab / (-5ab) = 3$. On obtient $-5ab(a - 2b + 3)$. Le développement redonne $-5a^2b + 10ab^2 - 15ab$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

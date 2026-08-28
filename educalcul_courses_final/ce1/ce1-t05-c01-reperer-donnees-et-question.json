@@ -1,0 +1,371 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.809759+00:00",
+  "id": 108,
+  "code": "ce1-t05-c01",
+  "title": "Repérer données et question",
+  "description": "Cours structuré Educalcul : Repérer données et question.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Repérer données et question",
+    "objectif_global": "Repérer données et question",
+    "mini_lecons_imposees": [
+      "Séparer informations utiles et inutiles.",
+      "Identifier ce qui est recherché.",
+      "Reformuler."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Séparer informations utiles et inutiles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Séparer informations utiles et inutiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon ! Aujourd'hui, tu vas apprendre à faire le tri dans un énoncé de problème. C'est comme quand tu ranges ton cartable : tu gardes ce qui sert pour la classe et tu mets de côté les jouets qui ne sont pas utiles. Ici, les « jouets » sont des nombres ou des phrases qui ne t'aident pas à répondre à la question. Prends ton temps, c'est une compétence qui te servira tout le temps."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un problème, tu trouves souvent plusieurs nombres. Par exemple : « Lucas a $3$ pommes. Il en achète $5$ de plus. Combien a-t-il de pommes au total ? » Les nombres $3$ et $5$ sont utiles car ils racontent l'histoire. Mais si on ajoute : « Lucas a $7$ ans. », cet âge ne change rien au calcul. C'est une information inutile pour la question posée."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Information",
+                "Utile ?"
+              ],
+              "rows": [
+                [
+                  "$3$ pommes au départ",
+                  "Oui"
+                ],
+                [
+                  "$5$ pommes achetées",
+                  "Oui"
+                ],
+                [
+                  "$7$ ans",
+                  "Non"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : les deux premières lignes aident à trouver le total, la dernière non. Pour savoir si une info est utile, demande-toi : « Est-ce que j'ai besoin de ce nombre pour répondre à la question ? » Si la réponse est non, tu peux la mettre de côté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le texte contient des détails qui ressemblent à des nombres mais qui ne sont pas des données mathématiques. Par exemple : « Il y a $12$ élèves dans la classe. $4$ sont absents. Le maître a $30$ ans. Combien d'élèves sont présents ? » L'âge du maître est une phrase qui ne sert pas au calcul. Essaie de repérer ce genre de piège dans l'exercice suivant."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Surligne ou entoure les nombres qui servent vraiment. Les autres, tu peux les barrer doucement."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu vas t'entraîner sur un petit problème complet. Lis bien l'énoncé, identifie chaque nombre et décide s'il est utile ou non. Puis écris le calcul qui répond à la question. C'est ton tour de jouer !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis l'énoncé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère tous les nombres écrits en chiffres ou en lettres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouve la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche le point d'interrogation et les mots « combien », « quel », « combien de »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trie les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde ceux qui aident à répondre, mets les autres de côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'énoncé : « Zoé a $4$ bonbons. Elle en donne $2$ à son frère. Elle a $6$ ans. Combien de bonbons lui reste-t-il ? », entoure les nombres utiles.",
+              "answer": "$4$ et $2$",
+              "hint": "Cherche le nombre de bonbons au départ et le nombre donné. L'âge ne compte pas.",
+              "explanation": "Les nombres $4$ (bonbons au départ) et $2$ (bonbons donnés) permettent de calculter le reste : $4 - 2 = 2$. Le nombre $6$ (âge) est inutile."
+            },
+            {
+              "question": "Parmi ces phrases, laquelle contient une information inutile pour savoir le total de billes ?\\nA) Tom a $8$ billes.\\nB) Il en gagne $3$.\\nC) Son chien s'appelle Rex.\\nD) Combien a-t-il de billes maintenant ?",
+              "answer": "C",
+              "hint": "Le nom du chien ne change pas le nombre de billes.",
+              "explanation": "Les phrases A et B donnent des nombres utiles ($8$ et $3$). La phrase C parle du chien, ce qui ne sert pas au calcul. La phrase D est la question."
+            },
+            {
+              "question": "Lis ce problème : « Il y a $10$ oiseaux sur un fil. $3$ s'envolent. Le fil mesure $2$ mètres. Combien d'oiseaux restent sur le fil ? » Écris le calcul à faire.",
+              "answer": "$10 - 3 = 7$",
+              "hint": "La longueur du fil ne change pas le nombre d'oiseaux.",
+              "explanation": "Les nombres utiles sont $10$ (oiseaux au départ) et $3$ (oiseaux partis). La longueur du fil ($2$ mètres) est une information inutile. Le calcul est une soustraction : $10 - 3 = 7$ oiseaux."
+            }
+          ]
+        },
+        {
+          "title": "Identifier ce qui est recherché.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identifier ce qui est recherché"
+            },
+            {
+              "type": "paragraph",
+              "content": "Super, tu sais déjà trier les informations ! Maintenant, nous allons nous concentrer sur la question elle-même. C'est elle qui guide tout ton travail : sans elle, tu ne sais pas quel calcul faire. Imagine que tu cherches un trésor : la question, c'est la carte qui t'indique où creuser. Prêt à devenir un détective des problèmes ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "La question se trouve souvent à la fin de l'énoncé. Elle se termine par un point d'interrogation et contient des mots-clés comme « combien », « quel », « quelle », « combien de » ou « qui ». Par exemple : « Il y a $6$ crayons dans la boîte. $2$ sont rouges. Combien de crayons ne sont pas rouges ? » La phrase « Combien de crayons ne sont pas rouges ? » est la question."
+            },
+            {
+              "type": "definition",
+              "term": "Question du problème",
+              "definition": "C'est la phrase qui demande une réponse précise. Elle finit par un point d'interrogation et commence souvent par « Combien », « Quel » ou « Quelle ».",
+              "example": "« Combien de pommes reste-t-il ? »"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la question est cachée dans une phrase plus longue. Lis bien : « Paul a $5$ billes. Il veut en avoir $10$. Combien doit-il en acheter encore ? » Ici, la question est « Combien doit-il en acheter encore ? » même si elle est précédée d'une phrase qui donne un objectif. Le mot « encore » signale qu'il faut ajouter."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Repère visuel",
+              "paragraphs": [
+                "Entoure le point d'interrogation. Les mots juste avant sont souvent « combien », « quel », « quelle »."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, voici un petit texte avec plusieurs phrases. Une seule est la vraie question. Ta mission : la trouver et la recopier. Ensuite, dis quels nombres te serviront pour y répondre. C'est parti !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Cherche le point d'interrogation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Balaye le texte des yeux jusqu'à tomber sur le « ? »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifie le mot-clé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le mot qui suit ou précède le point d'interrogation : « combien », « quel », « quelle »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Note les nombres utiles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis l'énoncé et entoure les nombres qui aident à répondre à cette question."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un énoncé : « Dans le jardin, il y a $7$ roses. $3$ sont blanches. Les autres sont rouges. Combien de roses sont rouges ? » Recopie la question exactement.",
+              "answer": "Combien de roses sont rouges ?",
+              "hint": "Cherche le point d'interrogation à la fin.",
+              "explanation": "La phrase qui se termine par un point d'interrogation est « Combien de roses sont rouges ? ». C'est la question. Les nombres utiles sont $7$ (total) et $3$ (blanches)."
+            },
+            {
+              "question": "Parmi ces phrases, laquelle est la question du problème ?\\nA) Léa a $12$ autocollants.\\nB) Elle en donne $4$ à sa sœur.\\nC) Combien lui en reste-t-il ?\\nD) Sa sœur est contente.",
+              "answer": "C",
+              "hint": "Regarde le point d'interrogation et le mot « Combien ».",
+              "explanation": "La phrase C se termine par un point d'interrogation et commence par « Combien ». C'est la question. Les phrases A et B donnent des données utiles ($12$ et $4$). La phrase D est une information inutile."
+            },
+            {
+              "question": "Lis : « Il y a $15$ billes dans un sac. $6$ sont bleues. Le sac est vert. Quel est le nombre de billes qui ne sont pas bleues ? » Écris la question et les deux nombres utiles.",
+              "answer": "Question : Quel est le nombre de billes qui ne sont pas bleues ? Nombres utiles : $15$ et $6$",
+              "hint": "La couleur du sac ne compte pas. Le total et le nombre de billes bleues sont utiles.",
+              "explanation": "La question est « Quel est le nombre de billes qui ne sont pas bleues ? ». Les nombres utiles sont $15$ (total) et $6$ (bleues). La phrase « Le sac est vert » est inutile."
+            }
+          ]
+        },
+        {
+          "title": "Reformuler.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reformuler"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais repérer les données utiles et trouver la question. La dernière étape, c'est de reformuler le problème avec tes propres mots. C'est comme raconter l'histoire à un ami : tu gardes les nombres importants et la question, mais tu changes les mots pour être sûr d'avoir bien compris. Cela t'aide à voir clair avant de calculer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple : « Marc a $8$ voitures. Il en prête $3$ à son copain. Combien de voitures Marc a-t-il encore ? » Une reformulation possible : « Marc possède $8$ voitures. Il donne $3$ voitures à son ami. Je dois trouver combien il lui reste. » Tu vois ? Les nombres $8$ et $3$ sont là, la question est là, mais les mots sont plus simples."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Pourquoi reformuler ?",
+              "paragraphs": [
+                "Ça t'oblige à lire attentivement, à garder les nombres utiles et à chasser les infos inutiles. C'est ton filet de sécurité !"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : quand tu reformules, ne change pas les nombres ni la question. Si le problème dit « $12$ oiseaux », n'écris pas « $10$ oiseaux ». Garde aussi l'action : « donne », « achète », « perd », « partage ». Ces verbes te disent quelle opération faire plus tard."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis l'énoncé deux fois",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois pour l'histoire, une fois pour les nombres et la question."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écris les nombres utiles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note-les sur ton brouillard avec un petit mot : « départ », « ajoute », « enlève »..."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réécris l'histoire en une phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise tes mots, garde la question à la fin."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de montrer tout ce que tu as appris ! Voici un dernier petit problème. Tu vas le reformuler complètement, puis indiquer les nombres utiles et la question. Après, tu pourras cocher ta liste de réussites. Tu es prêt ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les nombres utiles dans un énoncé.",
+                "Je sais trouver la question grâce au point d'interrogation et aux mots-clés.",
+                "Je sais reformuler un problème avec mes mots sans changer les nombres ni la question."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Reformule ce problème : « Il y a $9$ gâteaux sur la table. $4$ sont mangés. Combien en reste-t-il ? »",
+              "answer": "Exemple : « Sur la table, il y a $9$ gâteaux. On en mange $4$. Je cherche combien il en reste. »",
+              "hint": "Garde les nombres $9$ et $4$. La question porte sur le reste.",
+              "explanation": "Une bonne reformulation garde les nombres $9$ (total) et $4$ (mangés) et la question « combien en reste-t-il ? ». Les mots peuvent changer : « sur la table » au lieu de « il y a », « on en mange » au lieu de « sont mangés »."
+            },
+            {
+              "question": "Voici un énoncé : « Sophie a $10$ crayons. Elle en casse $2$. Son frère a $5$ ans. Combien de crayons Sophie a-t-elle encore ? » Reformule-le en une phrase.",
+              "answer": "Exemple : « Sophie possède $10$ crayons, elle en casse $2$, je dois trouver combien elle a encore. »",
+              "hint": "L'âge du frère est inutile. Garde $10$ et $2$.",
+              "explanation": "La reformulation doit inclure $10$ (crayons au départ) et $2$ (cassés) et la question sur le nombre restant. L'âge du frère ($5$ ans) ne figure pas dans la reformulation car il est inutile."
+            },
+            {
+              "question": "Problème : « Dans une classe, il y a $14$ filles et $12$ garçons. $3$ élèves sont absents. Combien d'élèves sont présents ? » Écris ta reformulation, puis liste les nombres utiles.",
+              "answer": "Reformulation : « La classe compte $14$ filles et $12$ garçons, soit $26$ élèves. $3$ sont absents. Combien sont présents ? » Nombres utiles : $14$, $12$, $3$.",
+              "hint": "Additionne les filles et les garçons pour avoir le total, puis utilise le nombre d'absents.",
+              "explanation": "Les nombres utiles sont $14$ (filles), $12$ (garçons) et $3$ (absents). Le total d'élèves ($26$) se calcule à partir de $14$ et $12$. La reformulation garde ces trois nombres et la question sur les présents."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

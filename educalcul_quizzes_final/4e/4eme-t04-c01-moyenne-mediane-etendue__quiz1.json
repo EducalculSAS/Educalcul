@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 435,
+  "_course_code": "4eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calculer",
+  "title": "Quiz : Moyenne, médiane, étendue - Calculer",
+  "questions": [
+    {
+      "text": "Calcule la moyenne de la série statistique suivante : $12$, $15$, $18$, $20$, $10$.",
+      "options": [
+        "$14$",
+        "$15$",
+        "$16$",
+        "$17$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La somme des valeurs est $12 + 15 + 18 + 20 + 10 = 75$. Il y a $5$ valeurs. La moyenne est $75 / 5 = 15$. Les autres propositions correspondent à des erreurs de calcul de la somme ou de la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle valeur doit-on ajouter à la liste $8$, $12$, $16$ pour que la moyenne des quatre nombres soit égale à $12$ ?",
+      "options": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La somme des quatre nombres doit être $12 \\times 4 = 48$. La somme des trois nombres connus est $8 + 12 + 16 = 36$. La valeur manquante est $48 - 36 = 12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine la médiane de la série : $4$, $7$, $9$, $12$, $15$, $18$.",
+      "options": [
+        "$9$",
+        "$10$",
+        "$10,5$",
+        "$11$"
+      ],
+      "correctAnswer": "$10,5$",
+      "explanation": "La série compte $6$ valeurs (effectif pair), déjà classées. Les deux valeurs centrales sont $9$ et $12$. La médiane est la moyenne de ces deux valeurs : $(9 + 12) / 2 = 10,5$. L'option $9$ correspond à la troisième valeur seulement, l'option $11$ à un arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'étendue de la série : $5$, $23$, $12$, $30$, $17$ ?",
+      "options": [
+        "$23$",
+        "$25$",
+        "$28$",
+        "$30$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "L'étendue est la différence entre la plus grande valeur ($30$) et la plus petite valeur ($5$). Étendue $= 30 - 5 = 25$. L'option $23$ est une valeur présente dans la liste, $28$ et $30$ sont d'autres valeurs ou la valeur max.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les notes obtenues par un élève à cinq devoirs :\\n\\n1 : $12$\\n2 : $14$\\n3 : $10$\\n4 : $16$\\n5 : $8$\\n\\nQuelle affirmation est exacte ?",
+      "options": [
+        "La moyenne est $11$ et la médiane est $12$.",
+        "La moyenne est $12$ et l'étendue est $6$.",
+        "La médiane est $12$ et l'étendue est $8$.",
+        "La moyenne est $13$ et la médiane est $10$."
+      ],
+      "correctAnswer": "La médiane est $12$ et l'étendue est $8$.",
+      "explanation": "Moyenne : $(12 + 14 + 10 + 16 + 8) / 5 = 60 / 5 = 12$. Médiane : série classée $8, 10, 12, 14, 16$ ; valeur centrale $12$. Étendue : $16 - 8 = 8$. Seule la troisième proposition donne la médiane et l'étendue correctes.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Devoir",
+          "Note"
+        ],
+        "rows": [
+          [
+            "1",
+            "12"
+          ],
+          [
+            "2",
+            "14"
+          ],
+          [
+            "3",
+            "10"
+          ],
+          [
+            "4",
+            "16"
+          ],
+          [
+            "5",
+            "8"
+          ]
+        ],
+        "caption": "Notes de l'élève"
+      }
+    }
+  ]
+}

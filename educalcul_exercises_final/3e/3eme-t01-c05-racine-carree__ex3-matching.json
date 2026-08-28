@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Calculs / géométrie",
+  "title": "Racines carrées : calculs et géométrie",
+  "blocks": [
+    {
+      "title": "Simplification de racines carrées",
+      "content": "Relie chaque expression à sa valeur simplifiée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\sqrt{18}$",
+          "right": "$3\\sqrt{2}$"
+        },
+        {
+          "left": "$\\sqrt{50}$",
+          "right": "$5\\sqrt{2}$"
+        },
+        {
+          "left": "$\\sqrt{72}$",
+          "right": "$6\\sqrt{2}$"
+        },
+        {
+          "left": "$\\sqrt{98}$",
+          "right": "$7\\sqrt{2}$"
+        }
+      ],
+      "items": [],
+      "explanation": "On décompose chaque radicande en produit d'un carré parfait et d'un nombre sans facteur carré : 18 = 9 × 2 donc √18 = √9 × √2 = 3√2 ; 50 = 25 × 2 donc √50 = 5√2 ; 72 = 36 × 2 donc √72 = 6√2 ; 98 = 49 × 2 donc √98 = 7√2.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Longueur de l'hypoténuse dans un triangle rectangle",
+      "content": "Relie chaque triangle rectangle (données des deux côtés de l'angle droit) à la longueur de son hypoténuse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Côtés $3$ et $4$",
+          "right": "$5$"
+        },
+        {
+          "left": "Côtés $5$ et $12$",
+          "right": "$13$"
+        },
+        {
+          "left": "Côtés $8$ et $15$",
+          "right": "$17$"
+        },
+        {
+          "left": "Côtés $7$ et $24$",
+          "right": "$25$"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique le théorème de Pythagore : l'hypoténuse c vérifie c² = a² + b². Pour (3,4) : c² = 9+16 = 25 → c = 5. Pour (5,12) : 25+144 = 169 → c = 13. Pour (8,15) : 64+225 = 289 → c = 17. Pour (7,24) : 49+576 = 625 → c = 25.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Aire d'un carré dont le côté contient une racine",
+      "content": "Relie chaque longueur de côté de carré à l'aire correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Côté $2\\sqrt{3}$",
+          "right": "$12$"
+        },
+        {
+          "left": "Côté $5\\sqrt{2}$",
+          "right": "$50$"
+        },
+        {
+          "left": "Côté $3\\sqrt{5}$",
+          "right": "$45$"
+        },
+        {
+          "left": "Côté $4\\sqrt{6}$",
+          "right": "$96$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'aire d'un carré de côté s est s². On calcule : (2√3)² = 4 × 3 = 12 ; (5√2)² = 25 × 2 = 50 ; (3√5)² = 9 × 5 = 45 ; (4√6)² = 16 × 6 = 96.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

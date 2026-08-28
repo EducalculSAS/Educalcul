@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Construire image",
+  "title": "Évaluation : Construire l'image par translation et rotation",
+  "questions": [
+    {
+      "text": "Pour construire l'image d'un point $A$ par une translation de vecteur $\\vec{v}$, quelle est la première étape ?",
+      "options": [
+        "Tracer la droite passant par $A$ et parallèle à $\\vec{v}$.",
+        "Tracer le segment $[AA']$ parallèle à $\\vec{v}$ et de même longueur.",
+        "Tracer le cercle de centre $A$ et de rayon égal à la longueur de $\\vec{v}$.",
+        "Tracer la médiatrice du segment joignant $A$ à l'origine de $\\vec{v}$."
+      ],
+      "correctAnswer": "Tracer la droite passant par $A$ et parallèle à $\\vec{v}$.",
+      "explanation": "La construction de l'image d'un point par translation commence par tracer la droite passant par ce point et parallèle au vecteur de translation. On y reporte ensuite la longueur du vecteur dans le même sens pour obtenir l'image. Les autres options correspondent à des étapes ultérieures ou à des constructions pour la rotation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un segment $[AB]$ et une translation de vecteur $\\vec{u}$. Quelle affirmation est vraie concernant l'image $A'B'$ du segment ?",
+      "options": [
+        "Le segment $A'B'$ est parallèle à $AB$ et a la même longueur.",
+        "Le segment $A'B'$ est perpendiculaire à $AB$.",
+        "Le segment $A'B'$ a une longueur double de $AB$.",
+        "Le segment $A'B'$ n'est pas parallèle à $AB$."
+      ],
+      "correctAnswer": "Le segment $A'B'$ est parallèle à $AB$ et a la même longueur.",
+      "explanation": "Une translation conserve les longueurs, les angles et le sens des droites. L'image d'un segment est donc un segment parallèle, de même longueur et de même direction. Les autres affirmations sont fausses : la translation ne change ni la direction ni la longueur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire l'image d'un triangle $ABC$ par une rotation de centre $O$ et d'angle $90^\\circ$ dans le sens direct, quelle construction est correcte ?",
+      "options": [
+        "Tracer les cercles de centre $O$ passant par $A$, $B$, $C$ puis reporter l'angle $90^\\circ$ sur chaque cercle.",
+        "Tracer les médiatrices des segments $OA$, $OB$, $OC$.",
+        "Tracer les droites $OA$, $OB$, $OC$ et construire les points $A'$, $B'$, $C'$ tels que $OA' = OA$ et $\\angle AOA' = 45^\\circ$.",
+        "Tracer les parallèles à $OA$, $OB$, $OC$ passant par $A$, $B$, $C$."
+      ],
+      "correctAnswer": "Tracer les cercles de centre $O$ passant par $A$, $B$, $C$ puis reporter l'angle $90^\\circ$ sur chaque cercle.",
+      "explanation": "Pour effectuer une rotation, on utilise le centre $O$ comme centre de cercles passant par chaque sommet. On construit ensuite l'angle donné ($90^\\circ$) sur chaque cercle pour placer les images $A'$, $B'$, $C'$. La médiatrice ne sert pas, l'angle $45^\\circ$ est incorrect, et les parallèles ne correspondent pas à une rotation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle propriété permet de vérifier que la construction de l'image d'une figure par une translation est correcte ?",
+      "options": [
+        "Les segments joignant chaque point à son image sont tous parallèles, de même longueur et de même sens.",
+        "Les segments joignant chaque point à son image sont tous perpendiculaires au vecteur de translation.",
+        "Les segments joignant chaque point à son image ont des longueurs différentes.",
+        "Les segments joignant chaque point à son image passent par le centre de rotation."
+      ],
+      "correctAnswer": "Les segments joignant chaque point à son image sont tous parallèles, de même longueur et de même sens.",
+      "explanation": "Par définition, une translation déplace tous les points selon un même vecteur. Les segments reliant chaque point à son image sont donc tous parallèles à ce vecteur, ont la même longueur (la norme du vecteur) et le même sens. Les autres propositions décrivent des propriétés fausses ou relatives à la rotation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire l'image du point $M(2;3)$ par la rotation de centre $O(0;0)$ et d'angle $-90^\\circ$ (sens indirect). Quelles sont les coordonnées de l'image $M'$ ?",
+      "options": [
+        "$M'(3;-2)$",
+        "$M'(-3;2)$",
+        "$M'(-2;-3)$",
+        "$M'(2;-3)$"
+      ],
+      "correctAnswer": "$M'(3;-2)$",
+      "explanation": "Une rotation de $-90^\\circ$ (sens horaire) autour de l'origine transforme les coordonnées $(x;y)$ en $(y;-x)$. Pour $M(2;3)$, on obtient $M'(3;-2)$. L'option B correspond à une rotation de $+90^\\circ$, l'option C à une rotation de $180^\\circ$, et l'option D à une symétrie axiale par rapport à l'axe des abscisses.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

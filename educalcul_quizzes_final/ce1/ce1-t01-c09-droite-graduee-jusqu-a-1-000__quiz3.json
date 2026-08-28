@@ -1,0 +1,136 @@
+{
+  "_status": "done",
+  "_course_id": 76,
+  "_course_code": "ce1-t01-c09-droite-graduee-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Estimer une position entre deux graduations",
+  "title": "Estimer une position entre deux graduations",
+  "questions": [
+    {
+      "text": "Sur la droite graduée de $0$ à $100$ avec une graduation tous les $10$, quel nombre se trouve exactement au milieu entre $20$ et $30$ ?",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "correctAnswer": "25",
+      "explanation": "Le milieu entre deux graduations consécutives correspond à la moyenne des deux nombres. La moyenne de $20$ et $30$ est $(20+30)/2 = 25$. Les autres options correspondent aux graduations elles‑mêmes ou à un nombre trop grand.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 100, graduations tous les 10",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 25,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On a une droite graduée de $100$ à $200$ avec une graduation tous les $10$. Un point est placé entre $120$ et $130$, un peu plus près de $130$. Quelle estimation est la plus raisonnable ?",
+      "options": [
+        "122",
+        "125",
+        "128",
+        "130"
+      ],
+      "correctAnswer": "128",
+      "explanation": "Le point est décrit comme étant un peu plus près de $130$ que de $120$. La distance entre $120$ et $130$ est de $10$. Un peu plus près de $130$ signifie une valeur supérieure à $125$, par exemple $128$. $122$ et $125$ sont trop proches de $120$, et $130$ est une graduation exacte, pas une estimation entre les deux.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 100 à 200, graduations tous les 10",
+        "min": 100,
+        "max": 200,
+        "points": [
+          {
+            "value": 128,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de $400$ à $500$ par pas de $10$, un point se situe entre $450$ et $460$ à peu près au tiers de l'intervalle en partant de $450$. Quelle valeur approche le mieux ce point ?",
+      "options": [
+        "452",
+        "453",
+        "455",
+        "458"
+      ],
+      "correctAnswer": "453",
+      "explanation": "L'intervalle entre $450$ et $460$ vaut $10$. Un tiers de $10$ est environ $3,3$. En partant de $450$, on ajoute environ $3$ pour obtenir $453$. $452$ est un peu court, $455$ correspond au milieu, et $458$ est proche des deux tiers.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 400 à 500, graduations tous les 10",
+        "min": 400,
+        "max": 500,
+        "points": [
+          {
+            "value": 453,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Une droite graduée va de $700$ à $800$ avec des graduations tous les $10$. Un point est placé entre $780$ et $790$, très proche de $790$. Parmi les nombres suivants, lequel est l'estimation la plus plausible ?",
+      "options": [
+        "782",
+        "785",
+        "788",
+        "790"
+      ],
+      "correctAnswer": "788",
+      "explanation": "Très proche de $790$ signifie une valeur supérieure à $785$ et inférieure à $790$. $788$ remplit cette condition. $782$ et $785$ sont trop éloignés de $790$, et $790$ est une graduation exacte, pas une estimation entre les deux.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 700 à 800, graduations tous les 10",
+        "min": 700,
+        "max": 800,
+        "points": [
+          {
+            "value": 788,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Enfin, on considère la droite de $900$ à $1000$ graduée tous les $10$. Un point se trouve entre $990$ et $1000$, exactement au trois‑quarts de l'intervalle en partant de $990$. Quelle valeur correspond à ce point ?",
+      "options": [
+        "992",
+        "995",
+        "997",
+        "998"
+      ],
+      "correctAnswer": "997",
+      "explanation": "L'intervalle entre $990$ et $1000$ vaut $10$. Les trois‑quarts de $10$ font $7,5$. En ajoutant $7,5$ à $990$, on obtient $997,5$, arrondi à l'entier le plus proche $998$ ou $997$ selon la convention. Comme les options sont des entiers, $997$ est le plus proche du trois‑quarts exact. $992$ correspond à un quart, $995$ au milieu, $998$ est légèrement au‑dessus.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 900 à 1000, graduations tous les 10",
+        "min": 900,
+        "max": 1000,
+        "points": [
+          {
+            "value": 997,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

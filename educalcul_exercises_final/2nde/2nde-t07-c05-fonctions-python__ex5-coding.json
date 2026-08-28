@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Paramètres",
+  "title": "Approfondissement : Paramètres en algorithmique",
+  "blocks": [
+    {
+      "title": "Fonction avec paramètre optionnel",
+      "content": "Écrire un algorithme en français pour une fonction nommée moyenne qui reçoit une liste de nombres et un paramètre optionnel arrondi dont la valeur par défaut est Faux. Si arrondi est Vrai, la fonction doit retourner la moyenne arrondie à l'entier le plus proche, sinon elle retourne la moyenne exacte.",
+      "correctAnswer": "Fonction moyenne(liste, arrondi = Faux)\\n    somme ← 0\\n    Pour chaque nombre dans liste faire\\n        somme ← somme + nombre\\n    FinPour\\n    n ← longueur(liste)\\n    Si n = 0 Alors\\n        Retourner 0\\n    FinSi\\n    moyenne ← somme / n\\n    Si arrondi = Vrai Alors\\n        Retourner arrondi(moyenne)   // arrondi à l'entier le plus proche\\n    Sinon\\n        Retourner moyenne\\n    FinSi\\nFinFonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction calcule la somme des éléments de la liste, puis divise par le nombre d'éléments pour obtenir la moyenne. Le paramètre optionnel arrondi permet de choisir si l'on arrondit le résultat. La valeur par défaut Faux garantit que sans argument supplémentaire la moyenne exacte est renvoyée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet de paramètre mutable par défaut",
+      "content": "On considère l'algorithme suivant : Fonction ajouter(element, collection = ListeVide) : collection.ajouter(element) ; Retourner collection. Expliquer pourquoi les appels successifs ajouter(1), ajouter(2), ajouter(3) produisent une liste qui s'allonge à chaque appel, et proposer une correction pour éviter ce comportement.",
+      "correctAnswer": "Le paramètre collection est initialisé une seule fois lors de la définition de la fonction, donc la même liste est réutilisée à chaque appel sans argument explicite. Cela entraîne l'accumulation des éléments. Correction : définir le paramètre par défaut à une valeur immuable comme Rien, puis créer une nouvelle liste à l'intérieur de la fonction si collection est Rien.\\nFonction ajouter(element, collection = Rien)\\n    Si collection = Rien Alors\\n        collection ← ListeVide\\n    FinSi\\n    collection.ajouter(element)\\n    Retourner collection\\nFinFonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans ce langage, les valeurs par défaut des paramètres sont évaluées une seule fois au moment de la définition de la fonction. Si une liste est utilisée comme valeur par défaut, tous les appels sans argument partagent la même liste. En utilisant une valeur par défaut immuable (Rien) et en initialisant la liste à l'intérieur de la fonction, chaque appel sans argument obtient une nouvelle liste vide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction à nombre variable d'arguments",
+      "content": "Écrire une fonction somme qui accepte un nombre variable d'arguments numériques et retourne leur somme. Donner un exemple d'appel avec les nombres 4, 7 et 10.",
+      "correctAnswer": "Fonction somme(*nombres)\\n    total ← 0\\n    Pour chaque valeur dans nombres faire\\n        total ← total + valeur\\n    FinPour\\n    Retourner total\\nFinFonction\\nExemple d'appel : somme(4, 7, 10) retourne 21.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le symbole * devant le paramètre nombres permet de regrouper tous les arguments positionnels dans un ensemble. La fonction parcourt cet ensemble et additionne chaque valeur. L'appel avec trois arguments montre que la fonction fonctionne pour tout nombre d'arguments.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

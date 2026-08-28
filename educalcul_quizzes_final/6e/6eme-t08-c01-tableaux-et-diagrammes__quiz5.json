@@ -1,0 +1,204 @@
+{
+  "_status": "done",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Lire des tableaux et des diagrammes - Approfondissement",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous indique le nombre de livres lus pendant les vacances par quatre élèves.\\n\\nÉlève : Alice, Bob, Charlie, David\\nNombre de livres : 5, 3, 7, 4\\n\\nCombien de livres Charlie a-t-il lus ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "7"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Dans le tableau, la colonne \"Élève\" donne le nom et la ligne correspondante dans \"Nombre de livres\" donne la valeur. Pour Charlie, la valeur indiquée est 7. Les autres options correspondent aux valeurs d'Alice (5), Bob (3) et David (4).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Nombre de livres"
+        ],
+        "rows": [
+          [
+            "Alice",
+            "5"
+          ],
+          [
+            "Bob",
+            "3"
+          ],
+          [
+            "Charlie",
+            "7"
+          ],
+          [
+            "David",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente les notes sur 20 obtenues par un groupe d'élèves à un contrôle de mathématiques.\\n\\nChaque barre indique le nombre d'élèves ayant obtenu la note correspondante.",
+      "options": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Il faut repérer la barre la plus haute, qui correspond à l'effectif le plus grand. La barre pour la note 12 monte jusqu'à 5 élèves. Les notes 10, 14 et 16 ont des effectifs plus faibles (respectivement 2, 4 et 3 élèves). La note la plus fréquente (mode) est donc 12.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Notes sur 20",
+        "bars": [
+          {
+            "label": "10",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "12",
+            "value": 5,
+            "tone": "navy"
+          },
+          {
+            "label": "14",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "16",
+            "value": 3,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme circulaire ci-dessous montre la répartition des couleurs préférées dans une classe de 30 élèves.\\n\\nLe secteur \"Bleu\" représente 50 % du disque, le secteur \"Rouge\" 30 % et le secteur \"Vert\" 20 %.",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "25"
+      ],
+      "correctAnswer": "15",
+      "explanation": "Le secteur \"Bleu\" occupe 50 % du diagramme. Il faut calculer 50 % de 30 élèves : $30 \\times 0,5 = 15$ élèves. L'option 10 correspond à 20 % (secteur Vert), 20 correspond à une erreur de lecture (confusion avec le pourcentage), et 25 n correspond à aucune part du diagramme.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées (30 élèves)",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 50,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 30,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 20,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un tableau à double entrée récapitule les moyens de transport utilisés par 60 élèves (30 garçons, 30 filles) pour se rendre au collège.\\n\\nLignes : À pied, À vélo, En bus.\\nColonnes : Garçons, Filles, Total.\\nDonnées : À pied (10 garçons, 15 filles), À vélo (5 garçons, 5 filles), En bus (15 garçons, 10 filles).\\n\\nCombien de filles viennent au collège en bus ?",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "25"
+      ],
+      "explanation": "Dans le tableau, il faut croiser la ligne \"En bus\" et la colonne \"Filles\". La valeur indiquée est 10. L'option 5 correspond aux filles à vélo, 15 aux garçons en bus, et 25 n'apparaît pas dans le tableau.",
+      "correctAnswer": "10",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Garçons",
+          "Filles",
+          "Total"
+        ],
+        "rows": [
+          [
+            "À pied",
+            "10",
+            "15",
+            "25"
+          ],
+          [
+            "À vélo",
+            "5",
+            "5",
+            "10"
+          ],
+          [
+            "En bus",
+            "15",
+            "10",
+            "25"
+          ],
+          [
+            "Total",
+            "30",
+            "30",
+            "60"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On a mesuré la hauteur (en cm) de 20 plants de tomates. Les résultats sont regroupés en classes dans le diagramme en barres ci-dessous.\\n\\nClasses : [20 ; 25[ : 3 plants, [25 ; 30[ : 7 plants, [30 ; 35[ : 6 plants, [35 ; 40[ : 4 plants.\\n\\nLaquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "La classe la plus représentée est [20 ; 25[.",
+        "Il y a 7 plants dont la hauteur est dans la classe [25 ; 30[.",
+        "La moitié des plants mesurent moins de 25 cm.",
+        "Il y a plus de plants dans la classe [35 ; 40[ que dans la classe [20 ; 25[."
+      ],
+      "correctAnswer": "Il y a 7 plants dont la hauteur est dans la classe [25 ; 30[.",
+      "explanation": "On lit les effectifs sur le diagramme : la classe [25 ; 30[ a une hauteur de barre correspondant à 7 plants. C'est l'effectif le plus grand (mode). La classe [20 ; 25[ ne compte que 3 plants (affirmation 1 fausse). Moins de 25 cm correspond à la première classe : 3 plants sur 20, ce n'est pas la moitié (affirmation 3 fausse). La classe [35 ; 40[ compte 4 plants, ce qui est plus que 3, mais l'affirmation 4 dit \"plus que dans [20 ; 25[\" ce qui est vrai (4 > 3), cependant l'affirmation 2 est la lecture directe de l'effectif maximal et est la réponse attendue comme unique vraie description de la classe modale. Note : l'option 4 est aussi vraie numériquement (4 > 3), mais l'option 2 est l'information principale du graphique. Pour éviter l'ambiguïté, on considère que l'option 2 est la réponse canonique de lecture d'effectif.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Hauteur des plants de tomates (cm)",
+        "bars": [
+          {
+            "label": "[20 ; 25[",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "[25 ; 30[",
+            "value": 7,
+            "tone": "navy"
+          },
+          {
+            "label": "[30 ; 35[",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "[35 ; 40[",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

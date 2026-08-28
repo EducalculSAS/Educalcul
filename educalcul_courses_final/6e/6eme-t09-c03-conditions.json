@@ -1,0 +1,409 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.661319+00:00",
+  "id": 376,
+  "code": "6eme-t09-c03",
+  "title": "Conditions",
+  "description": "Cours structuré Educalcul : Conditions.",
+  "subject": "Algorithmique",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algorithmique",
+    "titre_du_cours": "Conditions",
+    "objectif_global": "Conditions",
+    "mini_lecons_imposees": [
+      "Tester.",
+      "Branches.",
+      "Prédire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique",
+      "lessons": [
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une condition ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu décides de prendre ton parapluie seulement s'il pleut. Cette phrase « s'il pleut » est une condition : elle est soit vraie, soit fausse. En algorithmique, une condition permet au programme de choisir quelle action effectuer en fonction d'une information qui peut changer. C'est comme un petit juge qui regarde une situation et dit « oui » ou « non »."
+            },
+            {
+              "type": "definition",
+              "term": "condition",
+              "definition": "Expression qui peut être évaluée à vrai ou à faux. Elle sert à diriger le déroulement d'un algorithme.",
+              "example": "temp > 20"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : tu as une variable « temperature » qui contient le nombre de degrés. La condition « temperature > 20 » devient vraie quand il fait plus de 20 degrés et fausse sinon. Le programme pourra alors décider d'afficher « Il fait chaud » ou « Il fait frais » selon le résultat."
+            },
+            {
+              "type": "display_math",
+              "latex": "temperature > 20"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est une condition, voyons comment l'écrire dans un algorithme pour que l'ordinateur la comprenne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une condition simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la plupart des langages pour débutants, on utilise les mots‑clés « si » et « alors ». La structure de base est : si (condition) alors (instruction). Par exemple : si (age >= 18) alors afficher \"Majeur\". Les parenthèses autour de la condition ne sont pas obligatoires partout, mais elles aident à lire le code."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire le mot‑clé si",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Commence la ligne par le mot‑clé « si » suivi d'un espace."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : décrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'expression qui doit être testée, par exemple « note > 10 »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : ajouter alors",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Termine la ligne par « alors » puis l'action à faire si la condition est vraie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois une seule condition ne suffit pas. Il faut vérifier plusieurs critères en même temps, comme « l'âge est supérieur à 18 ET la personne a un permis »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combiner des conditions"
+            },
+            {
+              "type": "paragraph",
+              "content": "On utilise les opérateurs logiques « et » et « ou ». « et » demande que les deux conditions soient vraies en même temps. « ou » demande qu'au moins l'une des deux soit vraie. Par exemple : si (age >= 18 et aPermis = vrai) alors afficher \"Peut conduire\". Si l'une des deux est fausse, le message n'apparaît pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "(age \\ge 18) \\land (aPermis = \\text{vrai})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la condition qui est vraie quand la variable « score » est strictement supérieure à 50.",
+              "answer": "score > 50",
+              "hint": "Utilise le signe « > » pour « strictement supérieur ».",
+              "explanation": "La condition compare la valeur de « score » avec 50. Si « score » vaut 51 ou plus, la condition est vraie."
+            },
+            {
+              "question": "Complète l'algorithme suivant pour afficher « Pair » si le nombre « n » est pair : si ( ... ) alors afficher \"Pair\".",
+              "answer": "n % 2 = 0",
+              "hint": "Un nombre pair laisse un reste de 0 lors de la division par 2.",
+              "explanation": "L'opérateur « % » donne le reste de la division. Quand ce reste vaut 0, le nombre est pair."
+            },
+            {
+              "question": "Quelle condition combinée permet de vérifier que « x » est entre 10 et 20 inclus ?",
+              "answer": "x >= 10 et x <= 20",
+              "hint": "Il faut deux comparaisons reliées par « et ».",
+              "explanation": "La première partie « x >= 10 » assure que x n'est pas plus petit que 10. La seconde « x <= 20 » assure qu'il n'est pas plus grand que 20. Les deux doivent être vraies."
+            }
+          ]
+        },
+        {
+          "title": "Branches.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La structure « si … alors … sinon »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici nous avons vu une seule branche : l'action qui se produit quand la condition est vraie. Mais souvent il faut prévoir ce qui se passe quand la condition est fausse. C'est le rôle du mot‑clé « sinon ». La forme complète est : si (condition) alors (instructionVrai) sinon (instructionFaux). Ainsi, le programme a toujours une instruction à exécuter, quel que soit le résultat du test."
+            },
+            {
+              "type": "definition",
+              "term": "branche",
+              "definition": "Partie d'un algorithme qui est exécutée selon le résultat d'une condition. Il y a une branche « alors » et une branche « sinon ».",
+              "example": "si (note >= 10) alors \"Réussi\" sinon \"Échoué\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un programme qui décide si tu peux entrer dans un film. La condition est « age >= 12 ». Si elle est vraie, la branche « alors » affiche « Accès autorisé ». Sinon, la branche « sinon » affiche « Accès refusé ». Les deux messages ne peuvent pas apparaître en même temps."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{si } (age \\ge 12) \\text{ alors } \\text{Accès autorisé } \\text{ sinon } \\text{Accès refusé}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une décision en entraîne une autre. On peut placer une structure « si … alors … sinon » à l'intérieur d'une branche. C'est ce qu'on appelle l'imbrication."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Imbriquer des branches"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu veux vérifier d'abord si un nombre est positif. S'il l'est, tu vérifies ensuite s'il est pair. Sinon, tu affiches « Négatif ». Le code ressemble à : si (x > 0) alors si (x % 2 = 0) alors afficher \"Pair\" sinon afficher \"Impair\" sinon afficher \"Négatif\". Chaque « si » possède son propre « alors » et éventuellement son « sinon ». L'indentation aide à voir quelle branche appartient à quel test."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : tester le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le premier « si » avec la condition « x > 0 »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : à l'intérieur de la branche « alors »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute un second « si » pour tester la parité : « x % 2 = 0 »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : prévoir les deux « sinon »",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le premier « sinon » correspond au test de parité, le second au test de signe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand il y a plus de deux cas possibles, on peut chaîner plusieurs « sinon si » pour éviter d'imbriquer trop profondément. Cela rend le code plus lisible."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les branches multiples avec « sinon si »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un programme qui affiche la mention d'une note : si (note >= 16) alors \"Très bien\" sinon si (note >= 14) alors \"Bien\" sinon si (note >= 10) alors \"Passable\" sinon \"Insuffisant\". Le programme teste les conditions dans l'ordre. Dès qu'une condition est vraie, il exécute la branche correspondante et ignore les suivantes. C'est plus clair que d'imbriquer quatre « si » les uns dans les autres."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{si } (note \\ge 16) \\text{ alors } \\text{Très bien } \\text{ sinon si } (note \\ge 14) \\text{ alors } \\text{Bien } \\text{ sinon si } (note \\ge 10) \\text{ alors } \\text{Passable } \\text{ sinon } \\text{Insuffisant}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'algorithme complet qui affiche \"Majeur\" si age >= 18, sinon \"Mineur\".",
+              "answer": "si (age >= 18) alors afficher \"Majeur\" sinon afficher \"Mineur\"",
+              "hint": "N'oublie pas le mot‑clé « sinon » pour le cas contraire.",
+              "explanation": "La condition « age >= 18 » est testée. Si elle est vraie, la première branche s'exécute. Sinon, la branche « sinon » prend le relais."
+            },
+            {
+              "question": "Complète le code imbriqué pour afficher \"Positif pair\" si x > 0 et x pair, \"Positif impair\" si x > 0 et x impair, sinon \"Négatif ou nul\" : si (x > 0) alors si (x % 2 = 0) alors afficher \"Positif pair\" sinon afficher \"Positif impair\" sinon afficher \"Négatif ou nul\".",
+              "answer": "si (x > 0) alors si (x % 2 = 0) alors afficher \"Positif pair\" sinon afficher \"Positif impair\" sinon afficher \"Négatif ou nul\"",
+              "hint": "Le second « sinon » appartient au premier « si ».",
+              "explanation": "Le premier test sépare les nombres positifs des autres. À l'intérieur de la branche positive, le second test distingue pair et impair. La branche « sinon » du premier test capture tout ce qui n'est pas strictement positif."
+            },
+            {
+              "question": "Quel message s'affiche pour note = 13 avec la chaîne de « sinon si » suivante ? si (note >= 16) alors \"Très bien\" sinon si (note >= 14) alors \"Bien\" sinon si (note >= 10) alors \"Passable\" sinon \"Insuffisant\".",
+              "answer": "Passable",
+              "hint": "Vérifie chaque condition dans l'ordre jusqu'à ce qu'une soit vraie.",
+              "explanation": "13 n'est pas >= 16, ni >= 14, mais il est >= 10, donc la troisième branche est choisie et affiche \"Passable\"."
+            }
+          ]
+        },
+        {
+          "title": "Prédire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un algorithme pour prédire son résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais écrire des conditions et des branches, il est temps d'apprendre à jouer le rôle de l'ordinateur. Prends un algorithme déjà écrit, donne‑lui des valeurs concrètes pour les variables, et suis pas à pas les tests pour savoir ce qui s'affichera. C'est comme suivre une recette de cuisine en imaginant le goût final avant de goûter."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons cet exemple : variable age = 20 ; si (age >= 18) alors afficher \"Adulte\" sinon afficher \"Mineur\". En remplaçant « age » par 20, la condition devient « 20 >= 18 », qui est vraie. Donc le programme ira dans la branche « alors » et écrira \"Adulte\"."
+            },
+            {
+              "type": "display_math",
+              "latex": "age = 20 \\Rightarrow (20 \\ge 18) = \\text{vrai} \\Rightarrow \\text{Adulte}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs surviennent souvent aux frontières : quand la valeur testée est exactement égale au seuil. Il faut donc essayer des valeurs limites pour être sûr que le programme se comporte comme prévu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester les valeurs limites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'algorithme qui affiche \"Pair\" si n % 2 = 0 sinon \"Impair\". Les valeurs limites sont 0, 1, -1, 2, -2. Pour n = 0, le reste de la division par 2 est 0, donc \"Pair\". Pour n = 1, le reste est 1, donc \"Impair\". Pour n = -1, le reste peut être -1 ou 1 selon le langage, mais en algorithmique scolaire on considère généralement le modulo positif, donc \"Impair\". Tester ces cas évite les surprises."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir une valeur limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends la valeur exactement égale au seuil (par exemple 18 pour age >= 18)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : évaluer la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace la variable par cette valeur et calcule le vrai/faux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : vérifier la branche exécutée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Confirme que le message affiché correspond à ce que tu attends."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois un algorithme contient une erreur de logique : la condition est mal écrite ou les branches sont inversées. Savoir repérer et corriger ces erreurs fait partie de la compétence « Prédire »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger une erreur de logique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un code bugué : variable note = 12 ; si (note > 10) alors afficher \"Insuffisant\" sinon afficher \"Passable\". Pour note = 12, la condition « 12 > 10 » est vraie, donc le programme affiche \"Insuffisant\" alors qu'on voudrait \"Passable\". L'erreur est que les messages sont inversés par rapport à la condition. Il suffit d'échanger les deux branches ou de changer la condition en « note <= 10 »."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Code corrigé : si } (note > 10) \\text{ alors } \\text{Passable } \\text{ sinon } \\text{Insuffisant}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est une condition et donner un exemple concret.",
+                "Je sais écrire une structure « si … alors … sinon » et l'imbriquer.",
+                "Je sais utiliser « sinon si » pour plusieurs cas.",
+                "Je sais exécuter mentalement un algorithme avec des valeurs données.",
+                "Je sais tester les valeurs limites pour vérifier un programme.",
+                "Je sais repérer et corriger une inversion de branches."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour l'algorithme : age = 15 ; si (age >= 18) alors afficher \"Adulte\" sinon afficher \"Mineur\", quel message s'affiche ?",
+              "answer": "Mineur",
+              "hint": "Remplace age par 15 et évalue la condition.",
+              "explanation": "15 >= 18 est faux, donc la branche « sinon » est choisie et affiche \"Mineur\"."
+            },
+            {
+              "question": "Teste la valeur limite pour l'algorithme : n = 10 ; si (n > 10) alors afficher \"Grand\" sinon afficher \"Petit ou égal\". Que se passe-t-il ?",
+              "answer": "Petit ou égal",
+              "hint": "La condition est stricte (>), donc 10 ne la satisfait pas.",
+              "explanation": "10 > 10 est faux, la branche « sinon » s'exécute."
+            },
+            {
+              "question": "Corrige l'erreur dans ce code : x = 7 ; si (x < 5) alors afficher \"Supérieur\" sinon afficher \"Inférieur\".",
+              "answer": "si (x < 5) alors afficher \"Inférieur\" sinon afficher \"Supérieur\"",
+              "hint": "Les messages ne correspondent pas à la condition.",
+              "explanation": "Quand x < 5 est vrai, x est inférieur à 5, donc on doit afficher \"Inférieur\". Quand c'est faux, x est supérieur ou égal à 5, on affiche \"Supérieur\"."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

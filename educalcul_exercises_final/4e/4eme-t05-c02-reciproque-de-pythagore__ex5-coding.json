@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Comparer carrés",
+  "title": "Réciproque de Pythagore : Comparer les carrés",
+  "blocks": [
+    {
+      "title": "Algorithme de classification d'un triangle",
+      "content": "Écrire un algorithme (en pseudo‑code ou syntaxe Python) qui reçoit trois nombres positifs $a$, $b$, $c$ représentant les longueurs des côtés d'un triangle. L'algorithme doit d'abord vérifier que les trois longueurs peuvent former un triangle (inégalité triangulaire). Si ce n'est pas le cas, afficher \"Pas un triangle\". Sinon, identifier le plus grand côté, calculer les carrés des côtés et comparer $a^2 + b^2$ avec $c^2$ (où $c$ est le plus grand côté). Afficher \"Triangle rectangle\" si les deux sommes sont égales, \"Triangle acutangle\" si $a^2 + b^2 > c^2$, et \"Triangle obtusangle\" si $a^2 + b^2 < c^2$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c\\n2. Si a + b <= c ou a + c <= b ou b + c <= a alors\\n       Afficher \"Pas un triangle\"\\n       Fin\\n3. Trier a, b, c pour que c soit le plus grand (par exemple utiliser une liste et la fonction sort)\\n4. Calculer gauche = a^2 + b^2\\n   Calculer droite = c^2\\n5. Si gauche == droite alors\\n       Afficher \"Triangle rectangle\"\\n   Sinon si gauche > droite alors\\n       Afficher \"Triangle acutangle\"\\n   Sinon\\n       Afficher \"Triangle obtusangle\"\\n   Fin si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par vérifier l'inégalité triangulaire : la somme de deux côtés doit être strictement supérieure au troisième. Si la condition échoue, les longueurs ne forment pas un triangle. Ensuite, on trie les côtés pour identifier l'hypoténuse potentielle $c$. La réciproque de Pythagore compare la somme des carrés des deux plus petits côtés au carré du plus grand. L'égalité caractérise le triangle rectangle, la supériorité stricte le triangle acutangle, et l'infériorité stricte le triangle obtusangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exécution de l'algorithme sur un exemple",
+      "content": "Données : $a = 5$, $b = 12$, $c = 13$. Appliquer l'algorithme de la question précédente étape par étape et indiquer le résultat affiché.",
+      "correctAnswer": "Étapes :\\n1. Vérification inégalité triangulaire : 5 + 12 > 13 (17 > 13), 5 + 13 > 12 (18 > 12), 12 + 13 > 5 (25 > 5) → triangle possible.\\n2. Tri des côtés : déjà ordonné avec $c = 13$ le plus grand.\\n3. Calculs : gauche = $5^2 + 12^2 = 25 + 144 = 169$ ; droite = $13^2 = 169$.\\n4. Comparaison : gauche == droite → afficher \"Triangle rectangle\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les longueurs satisfont l'inégalité triangulaire. Après tri, le plus grand côté est $13$. La somme des carrés des deux autres côtés vaut $169$, tout comme le carré du plus grand côté. Selon la réciproque de Pythagore, le triangle est rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Adaptation pour gérer les cas non‑triangles",
+      "content": "Modifier l'algorithme de la première question afin qu'il puisse être utilisé dans une fonction réutilisable. La fonction doit prendre en paramètres trois nombres, retourner une chaîne de caractères parmi : \"Pas un triangle\", \"Triangle rectangle\", \"Triangle acutangle\", \"Triangle obtusangle\". Écrire la signature de la fonction et son corps en pseudo‑code ou Python.",
+      "correctAnswer": "Fonction classer_triangle(a, b, c) :\\n    # Vérification inégalité triangulaire\\n    si a + b <= c ou a + c <= b ou b + c <= a :\\n        retourner \"Pas un triangle\"\\n    # Trier les côtés pour avoir c le plus grand\\n    côtés = [a, b, c]\\n    côtés.trier()  # ordre croissant\\n    a, b, c = côtés[0], côtés[1], côtés[2]\\n    gauche = a*a + b*b\\n    droite = c*c\\n    si gauche == droite :\\n        retourner \"Triangle rectangle\"\\n    sinon si gauche > droite :\\n        retourner \"Triangle acutangle\"\\n    sinon :\\n        retourner \"Triangle obtusangle\"\\n    fin si\\nfin fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction commence par tester l'inégalité triangulaire ; si elle échoue, elle renvoie immédiatement \"Pas un triangle\". Sinon, elle trie les trois longueurs pour identifier le côté le plus grand $c$. Elle calcule ensuite $a^2+b^2$ et $c^2$ et renvoie la classification correspondante selon la réciproque de Pythagore. Cette structure rend l'algorithme réutilisable et clair.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

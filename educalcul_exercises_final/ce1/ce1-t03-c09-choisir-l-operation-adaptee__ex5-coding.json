@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 96,
+  "_course_code": "ce1-t03-c09-choisir-l-operation-adaptee",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Repérer mots et structure sans se fier à un mot-clé",
+  "title": "Choisir l'opération adaptée : algorithme de résolution",
+  "blocks": [
+    {
+      "title": "Problème 1 : Soustraction",
+      "content": "Écris un algorithme (une suite d'étapes claires) pour déterminer l'opération à utiliser et résoudre le problème suivant : Léa a $12$ billes. Elle en donne $5$ à son frère. Combien lui reste-t-il ?",
+      "correctAnswer": "Étape 1 : Lire le problème et identifier les quantités connues : quantité initiale $12$, quantité donnée $5$. Étape 2 : Repérer l'action : « donne » indique une diminution de la quantité initiale. Étape 3 : Déduire la structure : partie connue (donnée) retirée du tout (initial) → recherche de la partie restante. Étape 4 : Choisir l'opération : soustraction. Étape 5 : Effectuer le calcul : $12 - 5 = 7$. Étape 6 : Conclure : il reste $7$ billes.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par extraire les nombres et l'action du texte. Il analyse la structure : on connaît le tout et une partie, on cherche l'autre partie. Cela correspond à une soustraction. On ne se fie pas uniquement au mot « donne » mais à la relation entre les quantités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Multiplication",
+      "content": "Écris un algorithme pour choisir l'opération et résoudre : Il y a $4$ boîtes de crayons. Dans chaque boîte il y a $6$ crayons. Combien de crayons au total ?",
+      "correctAnswer": "Étape 1 : Lire le problème et identifier les quantités : nombre de boîtes $4$, nombre de crayons par boîte $6$. Étape 2 : Repérer la structure : plusieurs groupes de même taille (groupes égaux). Étape 3 : Déduire que l'on cherche le total en réunissant tous les groupes. Étape 4 : Choisir l'opération : multiplication. Étape 5 : Effectuer le calcul : $4 × 6 = 24$. Étape 6 : Conclure : il y a $24$ crayons au total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie des groupes égaux (chaque boîte contient le même nombre). La multiplication permet de trouver le total quand on connaît le nombre de groupes et la taille de chaque groupe. L'algorithme met en évidence cette structure sans se fier à un mot-clé comme « fois ».",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Division",
+      "content": "Écris un algorithme pour choisir l'opération et résoudre : $18$ bonbons sont partagés équitablement entre $3$ enfants. Combien chaque enfant reçoit-il ?",
+      "correctAnswer": "Étape 1 : Lire le problème et identifier les quantités : total de bonbons $18$, nombre d'enfants $3$. Étape 2 : Repérer la structure : partage équitable d'un total en un nombre connu de parts. Étape 3 : Déduire que l'on cherche la taille de chaque part. Étape 4 : Choisir l'opération : division. Étape 5 : Effectuer le calcul : $18 ÷ 3 = 6$. Étape 6 : Conclure : chaque enfant reçoit $6$ bonbons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème présente un partage équitable : on connaît le total et le nombre de parts, on cherche la valeur d'une part. La division est l'opération adaptée. L'algorithme montre comment reconnaître cette structure (partage) au-delà du mot « partagés ».",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

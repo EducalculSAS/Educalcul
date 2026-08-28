@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Bilan - Triangle 4e",
+  "title": "Bilan triangle 4e : Mise en ordre de raisonnements et constructions",
+  "blocks": [
+    {
+      "title": "Construction d'un triangle (SSS)",
+      "content": "Range les étapes dans l'ordre chronologique pour construire un triangle connaissant les longueurs de ses trois côtés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer le segment $[AB]$ de la longueur donnée.",
+        "Tracer le cercle de centre $A$ et de rayon la longueur du deuxième côté.",
+        "Tracer le cercle de centre $B$ et de rayon la longueur du troisième côté.",
+        "Repérer un point d'intersection $C$ des deux cercles.",
+        "Tracer les segments $[AC]$ et $[BC]$ pour obtenir le triangle $ABC$."
+      ],
+      "explanation": "La construction d'un triangle par trois côtés (cas SSS) suit un ordre logique strict : on commence par tracer une base (le segment $[AB]$). Ensuite, on utilise le compas pour reporter les deux autres longueurs sous forme de cercles centrés sur $A$ et $B$. L'intersection de ces cercles détermine le troisième sommet $C$. Enfin, on relie $C$ aux extrémités de la base pour fermer le triangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Réciproque de Pythagore",
+      "content": "Range les étapes du raisonnement pour démontrer qu'un triangle est rectangle en utilisant la réciproque du théorème de Pythagore.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le plus grand côté du triangle.",
+        "Calculer le carré de la longueur du plus grand côté.",
+        "Calculer la somme des carrés des longueurs des deux autres côtés.",
+        "Comparer les deux résultats obtenus.",
+        "Conclure : si ils sont égaux, le triangle est rectangle ; sinon, il ne l'est pas."
+      ],
+      "explanation": "Pour appliquer la réciproque du théorème de Pythagore, il faut d'abord identifier l'hypoténuse potentielle, c'est-à-dire le plus grand côté. On calcule ensuite son carré ($c^2$) et la somme des carrés des deux autres côtés ($a^2 + b^2$). La comparaison de ces deux valeurs permet de conclure : l'égalité $a^2 + b^2 = c^2$ implique que le triangle est rectangle (angle droit opposé au plus grand côté).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une hauteur",
+      "content": "Range les étapes dans l'ordre pour construire la hauteur issue d'un sommet d'un triangle à la règle et au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Placer la pointe du compas sur le sommet et tracer un arc de cercle coupant le côté opposé en deux points.",
+        "De ces deux points, tracer deux arcs de cercle de même rayon se coupant de l'autre côté de la droite.",
+        "Tracer la droite passant par le sommet et l'intersection des deux arcs.",
+        "Cette droite coupe le côté opposé au sommet : c'est la hauteur."
+      ],
+      "explanation": "La construction de la hauteur (perpendiculaire issue d'un point à une droite) se fait en quatre temps : 1) On trace un arc centré sur le sommet pour couper la droite support du côté opposé en deux points équidistants. 2) De ces deux points, on trace deux arcs de même rayon (supérieur à la demi-distance) qui s'intersectent. 3) La droite passant par le sommet et cette intersection est la perpendiculaire. 4) Elle coupe bien le côté opposé, définissant ainsi la hauteur du triangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

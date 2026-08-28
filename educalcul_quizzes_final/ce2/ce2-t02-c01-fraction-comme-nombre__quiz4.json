@@ -1,0 +1,130 @@
+{
+  "_status": "done",
+  "_course_id": 152,
+  "_course_code": "ce2-t02-c01-fraction-comme-nombre",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Application : Fraction comme nombre",
+  "title": "Quiz : La fraction comme nombre - Applications",
+  "questions": [
+    {
+      "text": "Sur une droite graduée allant de 0 à 1, la fraction $3/4$ se place :",
+      "options": [
+        "Au milieu entre 0 et 1",
+        "Au trois-quarts du trajet entre 0 et 1",
+        "Au quart du trajet entre 0 et 1",
+        "À la graduation 1"
+      ],
+      "correctAnswer": "Au trois-quarts du trajet entre 0 et 1",
+      "explanation": "La fraction $3/4$ signifie que l'unité (le segment de 0 à 1) est divisée en 4 parties égales. On en prend 3. Le point est donc situé aux trois-quarts du chemin, plus près de 1 que de 0. L'option 'Au milieu' correspond à $1/2$, 'Au quart' correspond à $1/4$ et 'À la graduation 1' correspond à $4/4$ ou 1.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.75,
+            "label": "3/4"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quatre enfants partagent équitablement 3 barres de chocolat identiques. Quelle fraction de barre chaque enfant reçoit-il ?",
+      "options": [
+        "1/4",
+        "3/4",
+        "4/3",
+        "1/3"
+      ],
+      "correctAnswer": "3/4",
+      "explanation": "Il y a 3 barres (le numérateur) à partager entre 4 enfants (le dénominateur). Chaque enfant reçoit 3 parts sur les 4 parts totales d'une barre, soit $3/4$ de barre. L'option $1/4$ serait la part d'un enfant s'il n'y avait qu'une barre. L'option $4/3$ inverse les nombres. L'option $1/3$ ne correspond pas à la situation.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "caption": "3 barres divisées en 4 parts",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans la fraction $4/5$, le chiffre 5 (le dénominateur) indique :",
+      "options": [
+        "Le nombre de parts prises",
+        "Le nombre de parts en tout dans l'unité",
+        "Le résultat de la division",
+        "Le nombre d'unités entières"
+      ],
+      "correctAnswer": "Le nombre de parts en tout dans l'unité",
+      "explanation": "Le dénominateur (le nombre du bas) donne le nombre de parts égales dans lesquelles l'unité entière a été découpée. Ici, l'unité est coupée en 5 parts. Le numérateur (4) indique le nombre de parts prises. Ce n'est pas un résultat de division ni un nombre d'unités entières.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban mesure 1 mètre. On le coupe en 4 morceaux de même longueur. Quelle est la longueur d'un morceau ?",
+      "options": [
+        "1/2 mètre",
+        "1/4 mètre",
+        "3/4 mètre",
+        "4 mètres"
+      ],
+      "correctAnswer": "1/4 mètre",
+      "explanation": "L'unité (1 mètre) est divisée en 4 parties égales. Chaque partie correspond à une fraction $1/4$ de l'unité, donc $1/4$ de mètre. $1/2$ mètre correspondrait à 2 morceaux. $3/4$ mètre correspondrait à 3 morceaux réunis. 4 mètres est impossible car le ruban ne fait que 1 mètre.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "caption": "Ruban de 1 mètre divisé en 4",
+        "parts": [
+          {
+            "label": "1/4 m",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "1/4 m",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "1/4 m",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "1/4 m",
+            "value": 1,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Laquelle de ces fractions est exactement égale à 1 ?",
+      "options": [
+        "2/3",
+        "5/5",
+        "3/4",
+        "1/2"
+      ],
+      "correctAnswer": "5/5",
+      "explanation": "Une fraction est égale à 1 lorsque son numérateur (nombre du haut) est identique à son dénominateur (nombre du bas). Cela signifie qu'on a pris toutes les parts de l'unité. $5/5$ = 1. Les autres fractions ($2/3$, $3/4$, $1/2$) sont toutes inférieures à 1 car le numérateur est plus petit que le dénominateur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

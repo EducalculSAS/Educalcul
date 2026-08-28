@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Hypothèses",
+  "title": "Quiz : Réciproque de Thalès - Les hypothèses",
+  "questions": [
+    {
+      "text": "Dans le cadre de la réciproque du théorème de Thalès, quelles sont les deux hypothèses principales à vérifier pour conclure au parallélisme de deux droites ?",
+      "options": [
+        "Deux droites parallèles et des segments proportionnels.",
+        "Deux droites sécantes en un point, des points alignés dans le même ordre sur chaque droite, et des segments proportionnels.",
+        "Un triangle rectangle et des segments proportionnels.",
+        "Deux droites parallèles et des angles égaux."
+      ],
+      "correctAnswer": "Deux droites sécantes en un point, des points alignés dans le même ordre sur chaque droite, et des segments proportionnels.",
+      "explanation": "La réciproque de Thalès nécessite trois conditions : 1) Deux droites qui se coupent (sécantes) en un point (souvent noté A). 2) Sur chaque droite, trois points alignés dans le même ordre par rapport au point d'intersection (par exemple A, M, B sur l'une et A, N, C sur l'autre). 3) L'égalité des rapports des longueurs (AM/AB = AN/AC). L'option A et D décrivent le théorème direct ou d'autres propriétés. L'option C concerne le théorème de Pythagore.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère deux droites sécantes en A. Sur l'une se trouvent les points B et M, sur l'autre les points C et N. Laquelle de ces configurations permet d'appliquer la réciproque de Thalès pour conclure (MN) // (BC) ?",
+      "options": [
+        "Les points sont dans l'ordre A, M, B et A, N, C et AM/AB = AN/AC.",
+        "Les points sont dans l'ordre M, A, B et A, N, C et AM/AB = AN/AC.",
+        "Les points sont dans l'ordre A, B, M et A, C, N et AM/MB = AN/NC.",
+        "Les points sont dans l'ordre A, M, B et C, A, N et AM/AB = AN/AC."
+      ],
+      "correctAnswer": "Les points sont dans l'ordre A, M, B et A, N, C et AM/AB = AN/AC.",
+      "explanation": "L'hypothèse d'ordre est cruciale : les points doivent être dans le même ordre sur les deux droites par rapport au sommet A. Ici, l'ordre A-M-B et A-N-C signifie que M est entre A et B, et N entre A et C (configuration standard 'triangle'). Les rapports doivent porter sur les segments entiers (AM/AB = AN/AC). L'option B a un ordre différent (M-A-B vs A-N-C). L'option C utilise les rapports de sections (AM/MB) qui ne sont pas la forme standard de la réciproque au collège. L'option D a un ordre C-A-N sur la seconde droite, ce qui place A entre C et N, donc ordre différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la différence fondamentale entre les hypothèses du théorème direct de Thalès et celles de sa réciproque ?",
+      "options": [
+        "Le direct suppose des droites parallèles et conclut à l'égalité des rapports ; la réciproque suppose l'égalité des rapports et l'alignement dans le même ordre pour conclure au parallélisme.",
+        "Le direct suppose l'égalité des rapports et conclut à des droites parallèles ; la réciproque suppose des droites parallèles et conclut à l'égalité des rapports.",
+        "Il n'y a aucune différence, les hypothèses sont identiques.",
+        "Le direct s'applique seulement dans un triangle, la réciproque s'applique seulement sur des droites sécantes."
+      ],
+      "correctAnswer": "Le direct suppose des droites parallèles et conclut à l'égalité des rapports ; la réciproque suppose l'égalité des rapports et l'alignement dans le même ordre pour conclure au parallélisme.",
+      "explanation": "C'est la définition même du théorème et de sa réciproque. Direct : Hypothèses = Droites parallèles + Alignement même ordre -> Conclusion = Égalité des rapports. Réciproque : Hypothèses = Alignement même ordre + Égalité des rapports -> Conclusion = Droites parallèles. L'option B inverse les rôles. L'option C est fausse. L'option D est fausse car les deux s'appliquent aux droites sécantes coupées par des parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la figure ci-contre, on sait que M appartient au segment [AB], N appartient au segment [AC], et que AM/AB = AN/AC = 2/5. Peut-on affirmer que (MN) // (BC) ?",
+      "options": [
+        "Oui, car les trois hypothèses de la réciproque de Thalès sont vérifiées.",
+        "Non, car il manque l'hypothèse des droites sécantes.",
+        "Non, car les points ne sont pas dans le même ordre sur les deux droites.",
+        "Oui, car c'est une application du théorème direct de Thalès."
+      ],
+      "correctAnswer": "Oui, car les trois hypothèses de la réciproque de Thalès sont vérifiées.",
+      "explanation": "La figure montre un triangle ABC. Les droites (AB) et (AC) sont sécantes en A (hypothèse 1). M est sur [AB] et N sur [AC], donc l'ordre est A-M-B et A-N-C : les points sont dans le même ordre (hypothèse 2). Les rapports sont égaux : AM/AB = AN/AC = 2/5 (hypothèse 3). Les trois hypothèses sont remplies, on conclut (MN) // (BC) par la réciproque. L'option B est fausse car (AB) et (AC) se coupent bien en A. L'option C est fausse car l'ordre est bien le même. L'option D confond direct et réciproque : on ne sait pas au départ que les droites sont parallèles, on le prouve.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec M sur [AB] et N sur [AC]",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "c",
+          "a",
+          "b"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Soit deux droites sécantes en A. Sur la première, les points B et M sont dans l'ordre B, A, M. Sur la seconde, les points C et N sont dans l'ordre A, C, N. On a AM/AB = AN/AC. Peut-on conclure que (MN) // (BC) ?",
+      "options": [
+        "Oui, car les rapports sont égaux.",
+        "Non, car les points ne sont pas dans le même ordre par rapport au sommet A sur les deux droites.",
+        "Oui, car la proportionnalité suffit quelle que soit la configuration.",
+        "Non, car il faut impérativement que A soit entre B et M sur les deux droites."
+      ],
+      "correctAnswer": "Non, car les points ne sont pas dans le même ordre par rapport au sommet A sur les deux droites.",
+      "explanation": "Sur la première droite, l'ordre est B-A-M : le sommet A se trouve entre B et M. Sur la seconde droite, l'ordre est A-C-N : le sommet A est à une extrémité (A est avant C et N). L'ordre des points par rapport à A n'est donc pas le même sur les deux droites (configuration 'papillon' ou croisée partielle). L'hypothèse d'alignement dans le même ordre n'est pas satisfaite, on ne peut pas appliquer la réciproque de Thalès, même si les rapports sont égaux. L'option A et C ignorent la condition d'ordre. L'option D énonce une condition fausse (A n'a pas besoin d'être entre les points sur les deux droites, il faut juste que l'ordre soit identique, par exemple A-M-B et A-N-C).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

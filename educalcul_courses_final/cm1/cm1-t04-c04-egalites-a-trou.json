@@ -1,0 +1,421 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.213243+00:00",
+  "id": 237,
+  "code": "cm1-t04-c04",
+  "title": "Égalités à trou",
+  "description": "Cours structuré Educalcul : Égalités à trou.",
+  "subject": "Résolution de problèmes et pensée algébrique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Résolution de problèmes et pensée algébrique",
+    "titre_du_cours": "Égalités à trou",
+    "objectif_global": "Égalités à trou",
+    "mini_lecons_imposees": [
+      "Trouver valeur manquante.",
+      "Raisonner par opération inverse.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes et pensée algébrique",
+      "lessons": [
+        {
+          "title": "Trouver valeur manquante.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une égalité à trou ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une balance de Roberval parfaitement équilibrée. Sur le plateau de gauche, tu as un sac mystère et $5$ cubes. Sur le plateau de droite, $12$ cubes. Comme la balance ne penche pas, le sac mystère doit contenir exactement le nombre de cubes qui manque pour atteindre $12$. En mathématiques, on écrit cela : $5 + \\square = 12$. Le petit carré, c'est notre trou, la valeur qu'on cherche."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5,
+                "?"
+              ],
+              "right": [
+                12
+              ],
+              "caption": "Le sac mystère (?) et 5 cubes équilibrent 12 cubes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette écriture s'appelle une égalité à trou. Elle dit simplement : \"quelque chose ajouté à $5$ donne $12$\". Ton travail, c'est de trouver ce \"quelque chose\". C'est comme une énigme : le trou cache un nombre, et les autres nombres sont des indices pour le démasquer."
+            },
+            {
+              "type": "definition",
+              "term": "Égalité à trou",
+              "definition": "Une égalité où un nombre est remplacé par un symbole (souvent un carré, un trait ou une lettre) qu'il faut retrouver pour que l'égalité soit vraie.",
+              "example": "$8 + \\square = 15$ ou $\\square - 4 = 9$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver le trou dans une addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons $7 + \\square = 13$. Pour trouver le nombre manquant, on peut se demander : \"Combien faut-il ajouter à $7$ pour arriver à $13$ ?\". On peut compter sur ses doigts, ou tracer un trait sur une droite numérotée. Mais il y a une astuce plus rapide : on sait que $7 + 3 = 10$ et qu'il faut encore $3$ pour atteindre $13$. Donc $3 + 3 = 6$. Le trou vaut $6$. Vérifions : $7 + 6 = 13$. C'est bon !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Connu",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Trou",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Le total 13 se décompose en 7 et le trou (6)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le trou est au début : $\\square + 4 = 11$. C'est la même idée : quel nombre, si on y ajoute $4$, fait $11$ ? On peut penser : $11 - 4 = 7$. Donc le trou vaut $7$. Le schéma en barres aide à voir que le total ($11$) est partagé en deux morceaux : le trou et le $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver le trou dans une soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons $15 - \\square = 9$. Ici, on part de $15$ et on enlève quelque chose pour obtenir $9$. Quel est ce \"quelque chose\" ? On peut se dire : \"Si j'ai $15$ et qu'il me reste $9$, j'ai enlevé $15 - 9 = 6$.\" Le trou vaut $6$. Vérification : $15 - 6 = 9$. Ça marche !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                15
+              ],
+              "right": [
+                9,
+                "?"
+              ],
+              "caption": "15 cubes d'un côté, 9 cubes et le sac mystère de l'autre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a deux cas dans la soustraction. Si le trou est le premier nombre : $\\square - 8 = 5$. Là, on cherche le nombre de départ. On sait qu'après avoir enlevé $8$, il reste $5$. Donc le départ, c'est $5 + 8 = 13$. Le trou vaut $13$. On a utilisé l'addition pour retrouver le départ !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir le secret des égalités à trou : comprendre ce que l'histoire raconte (on ajoute, on enlève, on cherche le total ou le départ) pour choisir la bonne opération. Dans la prochaine leçon, on va formaliser cette idée avec les opérations inverses, un outil puissant pour ne plus jamais hésiter."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve le nombre manquant : $9 + \\square = 17$.",
+              "answer": "8",
+              "hint": "Combien faut-il ajouter à 9 pour faire 17 ? Tu peux compter à partir de 9.",
+              "explanation": "On cherche ce qu'on ajoute à 9 pour obtenir 17. $9 + 8 = 17$, donc le trou vaut 8."
+            },
+            {
+              "question": "Complète : $\\square + 6 = 14$.",
+              "answer": "8",
+              "hint": "Le trou est au début. Quel nombre plus 6 fait 14 ?",
+              "explanation": "On veut un nombre qui, ajouté à 6, donne 14. $8 + 6 = 14$, le trou est 8."
+            },
+            {
+              "question": "Résous : $18 - \\square = 11$.",
+              "answer": "7",
+              "hint": "On part de 18, on enlève le trou, il reste 11. Combien a-t-on enlevé ?",
+              "explanation": "La différence entre 18 et 11 est 7. $18 - 7 = 11$, le trou vaut 7."
+            }
+          ]
+        },
+        {
+          "title": "Raisonner par opération inverse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'opération inverse : ton super-pouvoir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as deviné le trou en réfléchissant à l'histoire. Maintenant, on va apprendre une règle qui marche à tous les coups, même avec de grands nombres. L'addition et la soustraction sont des opérations inverses : l'une défait ce que l'autre a fait. Si $5 + 8 = 13$, alors $13 - 8 = 5$ et $13 - 5 = 8$. C'est cette relation qu'on va utiliser pour trouver le trou sans hésiter."
+            },
+            {
+              "type": "definition",
+              "term": "Opération inverse",
+              "definition": "Une opération qui annule l'effet de la première. L'addition et la soustraction sont inverses l'une de l'autre. La multiplication et la division le sont aussi.",
+              "example": "L'inverse de $+ 7$ est $- 7$. L'inverse de $\\times 4$ est $\\div 4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\square + 24 = 58$. Le trou est au début d'une addition. Pour l'isoler, je fais l'inverse de $+ 24$ : je soustrais $24$ du total $58$. J'écris : $\\square = 58 - 24$. Je pose l'opération : $58 - 24 = 34$. Le trou vaut $34$. Facile, non ?"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "58",
+                "24"
+              ],
+              "result": "34",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux cas pour la soustraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la soustraction, il faut bien regarder où se cache le trou. Cas 1 : $\\square - 15 = 27$. Le trou est le nombre de départ (le minuend). L'opération est une soustraction, son inverse est l'addition. J'ajoute ce qu'on a enlevé ($15$) à ce qui reste ($27$) : $\\square = 27 + 15 = 42$. Cas 2 : $42 - \\square = 15$. Le trou est le nombre qu'on enlève (le soustrayant). Ici, je soustrais le reste ($15$) du départ ($42$) : $\\square = 42 - 15 = 27$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le signe : $+$ ou $-$ ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver où est le trou",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-il au début, au milieu ou à la fin de l'égalité ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer l'inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Addition $\\leftrightarrow$ Soustraction. Déplace le trou tout seul d'un côté en faisant l'opération inverse sur l'autre côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose l'opération si besoin et trouve la valeur du trou."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement avec des nombres jusqu'à 999"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais la méthode, essayons avec des nombres à trois chiffres. Regarde : $\\square + 137 = 405$. Le trou est au début d'une addition. L'inverse, c'est la soustraction : $\\square = 405 - 137$. Attention aux retenues ! Je pose soigneusement : $405 - 137$. $5 - 7$, je ne peux pas, j'emprunte à la dizaine... mais la dizaine est $0$ ! Je vais chercher à la centaine. $405$ devient $3$ centaines, $9$ dizaines, $15$ unités. $15 - 7 = 8$, $9 - 3 = 6$, $3 - 1 = 2$. Résultat : $268$. Le trou vaut $268$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "405",
+                "137"
+              ],
+              "result": "268",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre : $500 - \\square = 284$. Le trou est le soustrayant. Je fais $500 - 284$. Même gymnastique avec les zéros : $500 - 284 = 216$. Le trou vaut $216$. Tu vois, la méthode est identique, peu importe la taille des nombres. Il suffit d'être rigoureux dans la pose."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode infaillible : repérer l'opération, localiser le trou, faire l'opération inverse. C'est comme avoir une clé qui ouvre toutes les portes. Mais un bon mathématicien vérifie toujours sa clé dans la serrure avant de crier victoire. C'est exactement ce qu'on va faire dans la dernière leçon : vérifier pour être sûr à $100\\%$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous en utilisant l'opération inverse : $\\square + 36 = 82$.",
+              "answer": "46",
+              "hint": "Le trou est au début d'une addition. Quelle opération inverse fais-tu ?",
+              "explanation": "C'est une addition, l'inverse est la soustraction. $\\square = 82 - 36 = 46$."
+            },
+            {
+              "question": "Trouve le nombre manquant : $75 - \\square = 28$.",
+              "answer": "47",
+              "hint": "Le trou est le nombre qu'on enlève. Comment le retrouver à partir du départ (75) et du reste (28) ?",
+              "explanation": "On soustrait le reste du départ : $75 - 28 = 47$. Le trou vaut 47."
+            },
+            {
+              "question": "Complète : $\\square - 148 = 213$.",
+              "answer": "361",
+              "hint": "Le trou est le nombre de départ. L'opération est une soustraction, son inverse est l'addition.",
+              "explanation": "On ajoute ce qu'on a enlevé à ce qui reste : $213 + 148 = 361$. Le trou vaut 361."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi vérifier ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as trouvé le trou grâce à l'opération inverse. Tu es content, c'est normal ! Mais avant de ranger ton cahier, prends une minute pour vérifier. Pourquoi ? Parce qu'une petite erreur de calcul (une retenue oubliée, un chiffre mal lu) peut transformer une bonne réponse en fausse. Vérifier, c'est comme relire un mot avant de l'envoyer : ça évite les boulettes. Et c'est très simple : tu remets ta réponse dans le trou d'origine et tu regardes si l'égalité devient vraie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple : $\\square + 137 = 405$. Nous avions trouvé $268$. Je remplace le trou par $268$ : $268 + 137$. Je pose l'addition : $8+7=15$ (j'écris $5$, je retiens $1$), $6+3+1=10$ (j'écris $0$, je retiens $1$), $2+1+1=4$. Total : $405$. C'est exactement le total de l'égalité de départ. L'égalité est vraie, ma réponse est correcte !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "268",
+                "137"
+              ],
+              "result": "405",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier avec l'opération inverse... à l'envers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a une deuxième façon de vérifier, encore plus maline. Comme tu as utilisé l'opération inverse pour trouver le trou, tu peux refaire l'opération de départ pour contrôler. Si tu as soustrait pour trouver le trou (cas $\\square + a = b$), tu vérifies en ajoutant. Si tu as ajouté pour trouver le trou (cas $\\square - a = b$), tu vérifies en soustrayant. C'est faire le chemin inverse de ton calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : $500 - \\square = 284$. Tu as calculé $500 - 284 = 216$ (soustraction). Pour vérifier, tu remets $216$ dans le trou : $500 - 216$. Tu poses la soustraction : $500 - 216 = 284$. Tu retrouves le $284$ de l'énoncé. C'est bon ! Tu as fait le chemin aller (soustraction pour trouver) et le chemin retour (soustraction pour vérifier)."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                500
+              ],
+              "right": [
+                216,
+                284
+              ],
+              "caption": "Vérification : 216 + 284 équilibrent bien 500."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter et l'auto-correction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la vérification te montre que l'égalité n'est pas vraie. Ne panique pas ! C'est là que tu apprends. Regarde : $\\square + 249 = 500$. Tu fais $500 - 249 = 251$ (attention aux zéros !). Tu vérifies : $251 + 249$. $1+9=10$ (retenue $1$), $5+4+1=10$ (retenue $1$), $2+2+1=5$. Total $500$. Parfait. Mais imagine que tu aies écrit $241$ par distraction. $241 + 249 = 490$, pas $500$. L'égalité est fausse. Le signal d'alarme sonne : tu reprends ton calcul, tu vois ton erreur sur les retenues, tu corriges. C'est ça, la force de la vérification : elle te rend autonome."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier conseil : écris toujours la vérification sous l'égalité de départ, comme une petite signature. Par exemple : $\\square + 249 = 500 \\Rightarrow \\square = 251$. Vérif : $251 + 249 = 500 \\checkmark$. Cela montre à ton prof que tu as fait le travail sérieusement, et ça t'oblige à ne pas sauter l'étape."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant résoudre n'importe quelle égalité à trou avec des additions et soustractions jusqu'à $999$. Tu connais la méthode des opérations inverses et tu as le réflexe de vérifier. Ces compétences sont les bases de l'algèbre que tu feras au collège. Garde ce rythme, tu progresses à chaque exercice !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer si le trou se trouve dans une addition ou une soustraction.",
+                "Je sais utiliser l'opération inverse pour isoler le trou et le calculer.",
+                "Je sais vérifier ma réponse en la remettant dans l'égalité d'origine.",
+                "Je pose correctement mes opérations en colonne avec les retenues."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous et vérifie : $\\square + 156 = 400$.",
+              "answer": "244",
+              "hint": "Utilise l'opération inverse pour trouver le trou, puis refais l'addition pour vérifier.",
+              "explanation": "Inverse : $400 - 156 = 244$. Vérification : $244 + 156 = 400$. L'égalité est vraie."
+            },
+            {
+              "question": "Trouve et contrôle : $600 - \\square = 273$.",
+              "answer": "327",
+              "hint": "Le trou est le soustrayant. Calcule $600 - 273$, puis vérifie en refaisant $600 - 327$.",
+              "explanation": "Calcul : $600 - 273 = 327$. Vérification : $600 - 327 = 273$. On retrouve le nombre de l'énoncé."
+            },
+            {
+              "question": "Complète et vérifie : $\\square - 189 = 311$.",
+              "answer": "500",
+              "hint": "Le trou est le minuend. L'inverse de la soustraction est l'addition. Vérifie en faisant la soustraction.",
+              "explanation": "Inverse : $311 + 189 = 500$. Vérification : $500 - 189 = 311$. C'est correct."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

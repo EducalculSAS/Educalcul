@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Déboguer",
+  "title": "Débogage conditions et boucles",
+  "blocks": [
+    {
+      "title": "Conditions simples",
+      "content": "Relie chaque description d'erreur à sa correction.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "La condition « Si la valeur est supérieure à dix Alors » ne possède pas de bloc « Fin Si ».",
+          "right": "Ajouter « Fin Si » à la fin du bloc conditionnel."
+        },
+        {
+          "left": "L'instruction « Sinon » est utilisée sans « Si » correspondant.",
+          "right": "Insérer un « Si » avant « Sinon » ou supprimer « Sinon »."
+        },
+        {
+          "left": "La variable de test n'est pas mise à jour à l'intérieur de la boucle « TantQue ».",
+          "right": "Modifier la variable de test dans le corps de la boucle."
+        },
+        {
+          "left": "L'opérateur d'affectation est confondu avec l'opérateur d'égalité dans la condition.",
+          "right": "Utiliser l'opérateur d'affectation pour modifier une variable et l'opérateur d'égalité pour comparer."
+        }
+      ],
+      "items": [],
+      "explanation": "La première erreur oublie le mot-clé Fin Si qui termine le bloc conditionnel. La deuxième erreur utilise Sinon sans un Si précédent, il faut soit ajouter un Si soit retirer Sinon. La troisième erreur concerne une boucle TantQue dont la variable de test ne change jamais, ce qui crée une boucle infinie ; il faut la modifier dans le corps. La quatrième erreur confond l'affectation (flèche) et l'égalité (signe égal) ; on doit utiliser l'affectation pour assigner une valeur et l'égalité pour comparer.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles simples",
+      "content": "Relie chaque description d'erreur à sa correction.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "La boucle « Pour le compteur de un à dix » n'incrémente pas le compteur.",
+          "right": "Le compteur est incrémenté automatiquement par la boucle « Pour »."
+        },
+        {
+          "left": "La condition d'arrêt de la boucle « TantQue » reste toujours vraie.",
+          "right": "Modifier la variable testée à l'intérieur de la boucle pour rendre la condition fausse."
+        },
+        {
+          "left": "Une instruction « Sortir » est placée en dehors de la boucle qu'elle doit quitter.",
+          "right": "Déplacer l'instruction « Sortir » à l'intérieur de la boucle concernée."
+        },
+        {
+          "left": "La variable initialisée avant la boucle est réinitialisée à chaque itération.",
+          "right": "Initialiser la variable avant la boucle et ne pas la réinitialiser dans le corps."
+        }
+      ],
+      "items": [],
+      "explanation": "Dans une boucle Pour le compteur est géré automatiquement, il ne faut pas l'incrémenter manuellement. Pour une boucle TantQue la condition doit devenir fausse à un moment, donc la variable testée doit être modifiée dans le corps. L'instruction Sortir doit se trouver à l'intérieur de la boucle qu'on veut quitter. Enfin une variable initialisée avant la boucle ne doit pas être réinitialisée à chaque tour, sinon on perd la valeur accumulée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles imbriquées",
+      "content": "Relie chaque description d'erreur à sa correction.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Deux boucles « Pour » utilisent le même nom de compteur, ce qui perturbe l'itération externe.",
+          "right": "Donner des noms distincts aux compteurs des boucles imbriquées."
+        },
+        {
+          "left": "Une condition « Si » à l'intérieur d'une boucle « TantQue » ne possède pas de « Fin Si » correspondant.",
+          "right": "Ajouter « Fin Si » après le bloc conditionnel interne."
+        },
+        {
+          "left": "La mise à jour de la variable de test de la boucle externe se trouve à l'intérieur de la boucle interne.",
+          "right": "Placer la mise à jour de la variable externe après la fin de la boucle interne."
+        },
+        {
+          "left": "Un drapeau booléen est réinitialisé à chaque passage dans la boucle interne, empêchant la sortie de la boucle externe.",
+          "right": "Initialiser le drapeau avant la boucle externe et ne le modifier que lorsque la condition de sortie est remplie."
+        }
+      ],
+      "items": [],
+      "explanation": "Lorsque deux boucles Pour sont imbriquées, chaque compteur doit avoir un nom unique sinon la boucle externe perd sa valeur. Un Si imbriqué dans un TantQue doit être fermé par Fin Si avant la fin du TantQue. La variable qui contrôle la boucle externe doit être mise à jour après la boucle interne, pas à l'intérieur. Un drapeau servant à quitter la boucle externe doit être initialisé une seule fois avant la boucle externe et changé seulement quand la condition de sortie est vraie.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

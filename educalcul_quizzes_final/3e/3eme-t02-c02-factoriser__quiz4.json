@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Application : Factoriser",
+  "title": "Quiz : Applications de la factorisation",
+  "questions": [
+    {
+      "text": "On considère l'expression $A = (3x - 2)^2 - (3x - 2)(x + 5)$. Laquelle des expressions suivantes est la forme factorisée de $A$ ?",
+      "options": [
+        "$(3x - 2)(2x - 7)$",
+        "$(3x - 2)(4x + 3)$",
+        "$(3x - 2)(2x + 3)$",
+        "$(3x - 2)(4x - 7)$"
+      ],
+      "correctAnswer": "$(3x - 2)(2x - 7)$",
+      "explanation": "On met en facteur le facteur commun $(3x - 2)$ : $A = (3x - 2)[(3x - 2) - (x + 5)]$. On simplifie l'expression entre crochets : $(3x - 2) - (x + 5) = 3x - 2 - x - 5 = 2x - 7$. Donc $A = (3x - 2)(2x - 7)$. Les autres réponses correspondent à des erreurs de signes lors de la soustraction (oubli de changer les signes du second terme) ou d'addition au lieu de soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'expression $B = 16x^2 - 25$. On veut résoudre l'équation $B = 0$. Quel est l'ensemble des solutions ?",
+      "options": [
+        "$S = \\{-5/4 ; 5/4\\}$",
+        "$S = \\{-5/4\\}$",
+        "$S = \\{5/4\\}$",
+        "$S = \\{-4/5 ; 4/5\\}$"
+      ],
+      "correctAnswer": "$S = \\{-5/4 ; 5/4\\}$",
+      "explanation": "On factorise $B$ en utilisant l'identité remarquable $a^2 - b^2 = (a-b)(a+b)$. Ici $16x^2 = (4x)^2$ et $25 = 5^2$. Donc $B = (4x - 5)(4x - 5)$ ? Non, $B = (4x - 5)(4x + 5)$. L'équation $(4x - 5)(4x + 5) = 0$ est vérifiée si $4x - 5 = 0$ ou $4x + 5 = 0$. Cela donne $x = 5/4$ ou $x = -5/4$. L'option D correspond à une inversion numérateur/dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a pour dimensions $(2x + 3)$ cm et $(x - 1)$ cm. On augmente chaque dimension de $2$ cm. Laquelle des expressions représente l'aire du nouveau rectangle sous forme factorisée ?",
+      "options": [
+        "$(2x + 5)(x + 1)$",
+        "$(2x + 1)(x + 3)$",
+        "$(2x + 7)(x + 3)$",
+        "$2x^2 + 7x + 5$"
+      ],
+      "correctAnswer": "$(2x + 5)(x + 1)$",
+      "explanation": "Les nouvelles dimensions sont $(2x + 3 + 2) = (2x + 5)$ et $(x - 1 + 2) = (x + 1)$. L'aire d'un rectangle est le produit de ses dimensions, donc l'aire factorisée est directement $(2x + 5)(x + 1)$. L'option D est la forme développée, pas factorisée. Les options B et C correspondent à des erreurs sur les nouvelles dimensions (soustraction au lieu d'addition ou mauvaise valeur ajoutée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $C = (x + 2)^2 - 9$. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "L'expression $C$ peut s'écrire sous la forme $(x - 1)(x + 5)$.",
+        "L'équation $C = 0$ admet deux solutions : $-5$ et $1$.",
+        "Pour $x = -2$, la valeur de $C$ est $-9$.",
+        "L'expression $C$ est toujours positive pour tout nombre réel $x$."
+      ],
+      "correctAnswer": "L'expression $C$ est toujours positive pour tout nombre réel $x$.",
+      "explanation": "On factorise $C = (x+2)^2 - 3^2 = [(x+2)-3][(x+2)+3] = (x-1)(x+5)$. L'affirmation A est vraie. L'équation $(x-1)(x+5)=0$ donne $x=1$ ou $x=-5$, l'affirmation B est vraie. Pour $x=-2$, $C = 0 - 9 = -9$, l'affirmation C est vraie. Comme $C$ est un trinôme du second degré à coefficient directeur positif ($1$) et discriminant $\\Delta > 0$, il prend des valeurs négatives entre ses deux racines (pour $x \\in ]-5 ; 1[$). L'affirmation D est donc fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvons l'inéquation $(2x - 1)(x + 4) \\le 0$. Quel est l'ensemble des solutions ?",
+      "options": [
+        "$S = [-4 ; 1/2]$",
+        "$S = ]-\\infty ; -4] \\cup [1/2 ; +\\infty[$",
+        "$S = [-1/2 ; 4]$",
+        "$S = ]-\\infty ; -4[ \\cup ]1/2 ; +\\infty[$"
+      ],
+      "correctAnswer": "$S = [-4 ; 1/2]$",
+      "explanation": "Le produit de deux facteurs est négatif ou nul ($\\le 0$) quand ils sont de signes contraires ou nuls. Les zéros des facteurs sont $x = 1/2$ (pour $2x-1=0$) et $x = -4$ (pour $x+4=0$). On place ces valeurs sur un tableau de signes. Le coefficient directeur du trinôme associé ($2x^2$) est positif. Le produit est négatif entre les racines. Comme l'inéquation est large ($\\le$), les bornes sont incluses. L'ensemble solution est donc l'intervalle $[-4 ; 1/2]$. L'option B correspond au signe $>=$ (positif). Les options C et D inversent les bornes ou les signes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

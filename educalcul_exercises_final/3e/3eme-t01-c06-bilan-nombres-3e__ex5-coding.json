@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 460,
+  "_course_code": "3eme-t01-c06-bilan-nombres-3e",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Arithmétique et puissances",
+  "title": "Approfondissement : Arithmétique et puissances - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme d'Euclide pour le PGCD",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui calcule le plus grand commun diviseur (PGCD) de deux entiers naturels $a$ et $b$ non nuls en utilisant l'algorithme d'Euclide.",
+      "correctAnswer": "Algorithme :\\n1. Tant que $b ≠ 0$ faire\\n   $r ← a % b$\\n   $a ← b$\\n   $b ← r$\\n2. Retourner $a$.\\nVersion Python :\\ndef pgcd(a, b):\\n    while b != 0:\\n        a, b = b, a % b\\n    return a",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme d'Euclide repose sur la propriété $pgcd(a,b) = pgcd(b, r)$ où $r$ est le reste de la division euclidienne de $a$ par $b$. À chaque itération, le reste devient le nouveau $b$, et l'ancien $b$ devient le nouveau $a$. Lorsque $b$ devient $0$, le dernier $a$ non nul est le PGCD. La version Python utilise l'affectation multiple pour échanger les valeurs et calculer le reste avec l'opérateur %. La complexité est logarithmique en la taille des nombres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exponentiation rapide (puissance par carrés)",
+      "content": "Écrire un algorithme qui calcule $a^n$ pour un entier $a$ et un entier naturel $n$ en utilisant la méthode de l'exponentiation rapide (aussi appelée exponentiation par carrés).",
+      "correctAnswer": "Algorithme :\\n1. $resultat ← 1$\\n2. $base ← a$\\n3. $exposant ← n$\\n4. Tant que $exposant > 0$ faire\\n   - Si $exposant % 2 = 1$ alors $resultat ← resultat × base$\\n   - $base ← base × base$\\n   - $exposant ← exposant // 2$\\n5. Retourner $resultat$.\\nVersion Python :\\ndef puissance_rapide(a, n):\\n    resultat = 1\\n    base = a\\n    exposant = n\\n    while exposant > 0:\\n        if exposant % 2 == 1:\\n            resultat *= base\\n        base *= base\\n        exposant //= 2\\n    return resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'exponentiation rapide utilise la décomposition binaire de l'exposant. À chaque étape, si le bit de poids faible de l'exposant est 1, on multiplie le résultat par la base courante. La base est élevée au carré à chaque itération, et l'exposant est divisé par 2 (décalage vers la droite). Cela réduit le nombre de multiplications de $O(n)$ à $O(log n)$. La version Python utilise les opérateurs % pour tester la parité, // pour la division entière et *= pour la mise à jour.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de primalité par division d'essai",
+      "content": "Écrire un algorithme qui détermine si un entier naturel $n ≥ 2$ est premier en testant les diviseurs possibles jusqu'à $√n$.",
+      "correctAnswer": "Algorithme :\\n1. Si $n < 2$ alors retourner Faux.\\n2. Si $n = 2$ alors retourner Vrai.\\n3. Si $n % 2 = 0$ alors retourner Faux.\\n4. $d ← 3$\\n5. Tant que $d × d ≤ n$ faire\\n   - Si $n % d = 0$ alors retourner Faux\\n   - $d ← d + 2$\\n6. Retourner Vrai.\\nVersion Python :\\ndef est_premier(n):\\n    if n < 2:\\n        return False\\n    if n == 2:\\n        return True\\n    if n % 2 == 0:\\n        return False\\n    d = 3\\n    while d * d <= n:\\n        if n % d == 0:\\n            return False\\n        d += 2\\n    return True",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre composé possède au moins un diviseur inférieur ou égal à sa racine carrée. Après avoir éliminé les cas pairs, on teste seulement les diviseurs impairs $3, 5, 7, …$ jusqu'à $√n$. Si aucun ne divise $n$, alors $n$ est premier. La complexité est en $O(√n)$, ce qui est acceptable pour les nombres de taille modérée rencontrés en troisième.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

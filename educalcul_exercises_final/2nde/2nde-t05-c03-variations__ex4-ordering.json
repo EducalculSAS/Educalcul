@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Variations",
+  "title": "Applications des variations",
+  "blocks": [
+    {
+      "title": "Construction d'un tableau de variations",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour construire le tableau de variations de la fonction $f(x) = -2x^2 + 4x + 1$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer la dérivée $f'(x)$",
+        "Trouver les points critiques en résolvant $f'(x)=0$",
+        "Déterminer le signe de $f'(x)$ sur chaque intervalle",
+        "Conclure les variations de $f$"
+      ],
+      "explanation": "On commence par dériver la fonction pour obtenir $f'(x) = -4x + 4$. Ensuite on résout $f'(x)=0$ ce qui donne $x=1$, unique point critique. On étudie le signe de $f'(x)$ : positif pour $x<1$, négatif pour $x>1$. Enfin on en déduit que $f$ croît sur $]-\\infty,1]$ et décroît sur $[1,+\\infty[$, avec un maximum en $x=1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de valeurs d'une fonction à variation connue",
+      "content": "La fonction $g(x) = -(x-2)^2 + 4$ est définie sur $[0,5]$. Rangez les valeurs $g(5)$, $g(0)$ et $g(2)$ du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$g(5)$",
+        "$g(0)$",
+        "$g(2)$"
+      ],
+      "explanation": "On calcule : $g(5) = -(5-2)^2 + 4 = -9 + 4 = -5$, $g(0) = -(0-2)^2 + 4 = -4 + 4 = 0$, $g(2) = -(2-2)^2 + 4 = 4$. Comme $g$ croît sur $[0,2]$ puis décroît sur $[2,5]$, le minimum est atteint en $x=5$ ($-5$), puis $g(0)=0$, et le maximum en $x=2$ ($4$). L'ordre croissant est donc $g(5) < g(0) < g(2)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'un problème d'optimisation",
+      "content": "Rangez les étapes suivantes dans l'ordre pour résoudre un problème d'optimisation à l'aide des variations d'une fonction.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Définir la fonction à optimiser",
+        "Préciser son ensemble de définition",
+        "Étudier ses variations à l'aide de la dérivée",
+        "En déduire la valeur optimale"
+      ],
+      "explanation": "La démarche standard consiste d'abord à exprimer la grandeur à optimiser en fonction d'une variable (étape 1). Il faut ensuite déterminer l'intervalle pertinent pour cette variable (étape 2). L'étude des variations via la dérivée permet de repérer les extrema (étape 3). Finalement on lit la valeur optimale (maximum ou minimum) sur le tableau de variations (étape 4).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 386,
+  "_course_code": "5eme-t02-c03-nombres-rationnels",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Écritures fractionnaires",
+  "title": "Algorithmes et écritures fractionnaires",
+  "blocks": [
+    {
+      "title": "Algorithme de simplification",
+      "content": "On veut écrire un algorithme qui prend en entrée un numérateur $a$ et un dénominateur $b$ (entiers naturels non nuls) et qui affiche la fraction irréductible équivalente à $\\frac{a}{b}$.\\n\\nComplétez l'algorithme ci-dessous en remplaçant les pointillés par les instructions adaptées (vous pouvez utiliser une syntaxe proche de Python).\\n\\nAlgorithme Simplifier\\nEntrées : $a$, $b$ (entiers > 0)\\nSortie : fraction simplifiée\\nDébut\\n    pgcd ← PGCD($a$, $b$)  // fonction déjà programmée\\n    num ← ...\\n    den ← ...\\n    Afficher \"Fraction simplifiée : \", num, \"/\", den\\nFin",
+      "correctAnswer": "num ← a / pgcd\\nden ← b / pgcd",
+      "explanation": "Pour simplifier une fraction, il faut diviser le numérateur et le dénominateur par leur PGCD. La variable 'pgcd' contient déjà ce plus grand commun diviseur. On affecte donc à 'num' le quotient de $a$ par 'pgcd' et à 'den' le quotient de $b$ par 'pgcd'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de fraction irréductible",
+      "content": "Écrivez un algorithme complet (avec Entrées, Sortie, Début, Fin) qui demande à l'utilisateur deux entiers strictement positifs $n$ et $d$, puis qui affiche \"La fraction est irréductible\" si $\\frac{n}{d}$ l'est, et \"La fraction n'est pas irréductible\" dans le cas contraire.\\n\\nOn suppose l'existence d'une fonction PGCD($x$, $y$) qui renvoie le plus grand commun diviseur de $x$ et $y$.",
+      "correctAnswer": "Algorithme TestIrreductible\\nEntrées : n, d (entiers > 0)\\nSortie : message texte\\nDébut\\n    pg ← PGCD(n, d)\\n    Si pg = 1 Alors\\n        Afficher \"La fraction est irréductible\"\\n    Sinon\\n        Afficher \"La fraction n'est pas irréductible\"\\n    Fin Si\\nFin",
+      "explanation": "Une fraction est irréductible si et seulement si le PGCD de son numérateur et de son dénominateur vaut 1. L'algorithme calcule ce PGCD, puis utilise une structure conditionnelle (Si... Alors... Sinon... Fin Si) pour afficher le message approprié selon la valeur du PGCD.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Conversion fraction décimale",
+      "content": "On souhaite programmer un algorithme qui convertit une fraction décimale (dont le dénominateur est une puissance de 10) en écriture décimale.\\n\\nL'algorithme prend en entrée un numérateur $n$ (entier) et un exposant $k$ (entier naturel) tels que la fraction est $\\frac{n}{10^k}$.\\nIl doit afficher le nombre décimal correspondant.\\n\\nExemple : si $n = 456$ et $k = 3$, la fraction est $\\frac{456}{1000}$ et l'algorithme affiche $0,456$.\\n\\nComplétez l'algorithme suivant :\\n\\nAlgorithme DecimalFromFraction\\nEntrées : n (entier), k (entier naturel)\\nVariables : chaine (chaîne de caractères), i (entier)\\nDébut\\n    chaine ← ChaineDeCaractères(n)  // convertit l'entier en texte\\n    Si Longueur(chaine) ≤ k Alors\\n        chaine ← \"0\" + chaine  // on ajoute des zéros devant si besoin\\n        // ... instruction pour répéter l'ajout de zéros tant que nécessaire ...\\n    Fin Si\\n    // Insérer la virgule au bon endroit\\n    Afficher chaine\\nFin",
+      "correctAnswer": "Tant que Longueur(chaine) ≤ k Faire\\n    chaine ← \"0\" + chaine\\nFin Tant que\\n\\n// Insertion de la virgule :\\nchaine ← PremièrePartie(chaine, Longueur(chaine) - k) + \",\" + DernièrePartie(chaine, k)\\n\\n// Ou version plus simple acceptée :\\n// Insérer \",\" avant les k derniers caractères de chaine",
+      "explanation": "Pour écrire $\\frac{n}{10^k}$ en décimal, il faut que le numérateur ait au moins $k$ chiffres. On ajoute des zéros devant tant que sa longueur est inférieure ou égale à $k$ (boucle 'Tant que'). Ensuite, on place la virgule de façon à avoir exactement $k$ chiffres après la virgule, c'est-à-dire avant les $k$ derniers caractères de la chaîne obtenue.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Fréquence",
+  "title": "Quiz : Fréquences et effectifs (Seconde)",
+  "questions": [
+    {
+      "text": "Dans une urne, il y a $5$ boules rouges, $3$ boules bleues et $2$ boules vertes. On prélève une boule au hasard. Quelle est la fréquence de l'événement « la boule est rouge » ?",
+      "options": [
+        "0,5",
+        "5",
+        "0,3",
+        "0,2"
+      ],
+      "correctAnswer": "0,5",
+      "explanation": "L'effectif total est $5 + 3 + 2 = 10$. L'effectif des boules rouges est $5$. La fréquence est le quotient de l'effectif de la modalité par l'effectif total : $5 / 10 = 0,5$. L'option « 5 » correspond à l'effectif, pas à la fréquence. Les options « 0,3 » et « 0,2 » correspondent aux fréquences des boules bleues et vertes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne les effectifs des couleurs de voitures observées dans un parking. Quelle est la fréquence (en nombre décimal) des voitures bleues ?",
+      "options": [
+        "0,18",
+        "0,36",
+        "0,45",
+        "18"
+      ],
+      "correctAnswer": "0,36",
+      "explanation": "L'effectif total est $15 + 18 + 17 = 50$. L'effectif des voitures bleues est $18$. La fréquence est $18 / 50 = 0,36$. L'option « 18 » est l'effectif. L'option « 0,18 » correspondrait à une division par $100$. L'option « 0,45 » est la fréquence des voitures rouges ($15/50$) ou une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Rouge",
+            "15"
+          ],
+          [
+            "Bleu",
+            "18"
+          ],
+          [
+            "Vert",
+            "17"
+          ]
+        ],
+        "caption": "Effectifs des couleurs de voitures"
+      }
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$ et on note le résultat. Après $100$ lancers, on obtient les effectifs suivants : $1$ : $18$ fois, $2$ : $15$ fois, $3$ : $17$ fois, $4$ : $16$ fois, $5$ : $19$ fois, $6$ : $15$ fois. Quelle est la fréquence de l'événement « obtenir un nombre pair » ?",
+      "options": [
+        "0,46",
+        "0,48",
+        "0,50",
+        "0,52"
+      ],
+      "correctAnswer": "0,46",
+      "explanation": "Les nombres pairs sont $2$, $4$ et $6$. Leurs effectifs respectifs sont $15$, $16$ et $15$. L'effectif total pour l'événement « pair » est $15 + 16 + 15 = 46$. La fréquence est $46 / 100 = 0,46$. Les autres options correspondent à des erreurs d'addition des effectifs ou à la probabilité théorique ($0,50$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On étudie une variable qualitative à trois modalités $A$, $B$ et $C$. Les fréquences de $A$ et $B$ sont respectivement $0,35$ et $0,45$. Quelle est la fréquence de la modalité $C$ ?",
+      "options": [
+        "0,10",
+        "0,20",
+        "0,80",
+        "1,00"
+      ],
+      "correctAnswer": "0,20",
+      "explanation": "La somme des fréquences de l'ensemble des modalités est toujours égale à $1$. La fréquence de $C$ est donc $1 - (0,35 + 0,45) = 1 - 0,80 = 0,20$. L'option « 0,80 » est la somme des fréquences de $A$ et $B$. L'option « 1,00 » est la somme totale. L'option « 0,10 » correspond à une erreur de soustraction ($0,45 - 0,35$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer la probabilité d'obtenir « Pile » avec une pièce de monnaie. On réalise trois séries de lancers : Série 1 : $10$ lancers, Série 2 : $100$ lancers, Série 3 : $1000$ lancers. D'après la loi des grands nombres, quelle série donnera une fréquence la plus proche de la probabilité théorique ?",
+      "options": [
+        "La série 1",
+        "La série 2",
+        "La série 3",
+        "Les trois séries donnent la même précision"
+      ],
+      "correctAnswer": "La série 3",
+      "explanation": "La loi des grands numbers stipule que la fréquence d'un événement observé tende vers sa probabilité théorique lorsque le nombre d'essais (la taille de l'échantillon) augmente. La série 3, avec $1000$ lancers, a la plus grande taille d'échantillon, donc sa fréquence observée sera statistiquement la plus proche de $0,5$. Les séries 1 et 2, avec moins d'essais, sont soumises à des fluctuations plus importantes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

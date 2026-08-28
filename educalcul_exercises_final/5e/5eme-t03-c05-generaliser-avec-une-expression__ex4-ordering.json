@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Application : Généraliser avec une expression",
+  "title": "Généraliser avec une expression : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Suite de carrés en allumettes",
+      "content": "Range les étapes dans l'ordre logique pour trouver l'expression du nombre d'allumettes nécessaires pour construire $n$ carrés accolés.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Observer le motif : un carré utilise 4 allumettes.",
+        "Deux carrés partagent un côté : 4 + 3 = 7 allumettes.",
+        "À chaque nouveau carré, on ajoute 3 allumettes.",
+        "L'expression pour n carrés est $4 + 3 \\times (n - 1)$ ou $3n + 1$."
+      ],
+      "explanation": "On commence par observer le cas de base (1 carré = 4 allumettes). Ensuite, on voit que chaque carré supplémentaire ajoute 3 allumettes (il partage un côté). Pour $n$ carrés, on a 4 allumettes pour le premier puis $3 \\times (n-1)$ pour les suivants, ce qui se simplifie en $3n + 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme de calcul",
+      "content": "Remets dans l'ordre les étapes de ce programme de calcul pour obtenir l'expression finale en fonction du nombre de départ $x$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir un nombre $x$.",
+        "Ajouter 5 : $x + 5$.",
+        "Multiplier par 3 : $3(x + 5)$.",
+        "Soustraire le nombre de départ : $3(x + 5) - x$.",
+        "Simplifier : $2x + 15$."
+      ],
+      "explanation": "Le programme commence par le choix du nombre $x$. On applique ensuite les opérations dans l'ordre : addition, multiplication, soustraction. La dernière étape consiste à développer et réduire l'expression $3x + 15 - x$ pour obtenir $2x + 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "Classe ces phrases pour exprimer le périmètre d'un rectangle dont la longueur est le double de la largeur $L$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les longueurs connues : largeur $L$, longueur $2L$.",
+        "Calculer le demi-périmètre : $L + 2L = 3L$.",
+        "Le périmètre est le double : $2 \\times 3L = 6L$.",
+        "L'expression du périmètre en fonction de $L$ est $6L$."
+      ],
+      "explanation": "On nomme d'abord les dimensions : largeur $L$ et longueur $2L$. Le demi-périmètre est la somme $L + 2L = 3Le périmètre complet vaut $2 \\times 3L = 6L$. L'expression finale est donc $6L$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

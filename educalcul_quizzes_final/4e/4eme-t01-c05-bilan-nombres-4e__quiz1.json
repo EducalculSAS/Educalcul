@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 424,
+  "_course_code": "4eme-t01-c05-bilan-nombres-4e",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Relatifs, fractions, puissances",
+  "title": "Bilan : Nombres relatifs, fractions et puissances",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel est le plus petit ?",
+      "options": [
+        "$-5,2$",
+        "$-5,02$",
+        "$-5,22$",
+        "$-5,002$"
+      ],
+      "correctAnswer": "$-5,22$",
+      "explanation": "Pour comparer des nombres relatifs négatifs, celui qui a la plus grande valeur absolue est le plus petit. On compare les parties décimales en ajoutant des zéros : $-5,220$, $-5,200$, $-5,020$, $-5,002$. Le plus grand est $5,220$, donc $-5,22$ est le plus petit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez l'expression $A = \\frac{3}{4} + \\frac{5}{6}$ et donnez le résultat sous forme de fraction irréductible.",
+      "options": [
+        "$\\frac{8}{10}$",
+        "$\\frac{19}{12}$",
+        "$1 \\frac{7}{12}$",
+        "$\\frac{38}{24}$"
+      ],
+      "correctAnswer": "$\\frac{19}{12}$",
+      "explanation": "On met au même dénominateur (PPCM de 4 et 6 est 12) : $\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$. La somme est $\\frac{19}{12}$. Cette fraction est irréductible car 19 est premier avec 12. L'option $\\frac{8}{10}$ correspond à l'addition numérateur/numérateur et dénominateur/dénominateur (erreur fréquente). $1 \\frac{7}{12}$ est la forme en nombre mixte, pas une fraction. $\\frac{38}{24}$ n'est pas irréductible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de l'expression $(-3)^4 \\times (-3)^{-2}$ ?",
+      "options": [
+        "$-9$",
+        "$9$",
+        "$-\\frac{1}{9}$",
+        "$\\frac{1}{9}$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "On utilise la règle des puissances de même base : $a^n \\times a^m = a^{n+m}$. Ici $(-3)^4 \\times (-3)^{-2} = (-3)^{4+(-2)} = (-3)^2 = 9$. L'exposant pair donne un résultat positif. L'option $-9$ serait $(-3)^3$ ou $-3^2$. Les options avec fraction correspondent à une erreur sur le signe de l'exposant final.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $B = -5^2 + (-2)^3 \\times (-4)$. Quelle est la valeur de $B$ ?",
+      "options": [
+        "$-57$",
+        "$7$",
+        "$-7$",
+        "$57$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On respecte les priorités : puissances, multiplication, addition. $-5^2 = -(5^2) = -25$ (le moins n'est pas élevé au carré). $(-2)^3 = -8$. La multiplication : $-8 \\times (-4) = 32$. La somme : $-25 + 32 = 7$. L'erreur $-57$ vient de $(-5)^2 = 25$ puis $25 + (-32) = -7$ ou $-25-32$. L'erreur $-7$ vient de $-25 + (-32)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On écrit le nombre $0,000\\,000\\,004\\,5$ en notation scientifique. Laquelle des écritures suivantes est correcte ?",
+      "options": [
+        "$4,5 \\times 10^{-9}$",
+        "$4,5 \\times 10^{9}$",
+        "$45 \\times 10^{-10}$",
+        "$0,45 \\times 10^{-8}$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^{-9}$",
+      "explanation": "La notation scientifique s'écrit $a \\times 10^n$ avec $1 \\le a < 10$. Il faut déplacer la virgule de 9 rangs vers la droite pour obtenir $4,5$, donc l'exposant est $-9$. $45 \\times 10^{-10}$ et $0,45 \\times 10^{-8}$ ne respectent pas la condition sur $a$. $4,5 \\times 10^9$ correspondrait à $4\\,500\\,000\\,000$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

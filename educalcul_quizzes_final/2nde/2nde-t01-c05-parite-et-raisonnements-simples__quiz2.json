@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Somme / produit",
+  "title": "Quiz : Parité - Somme et Produit",
+  "questions": [
+    {
+      "text": "Soient $a$ et $b$ deux entiers pairs. Quelle est la parité de la somme $a + b$ ?",
+      "options": [
+        "Pair",
+        "Impair",
+        "Pair ou impair selon les valeurs de $a$ et $b$",
+        "On ne peut pas déterminer la parité"
+      ],
+      "correctAnswer": "Pair",
+      "explanation": "Un entier pair s'écrit sous la forme $2k$ avec $k$ entier. Soit $a = 2k$ et $b = 2k'$. Alors $a + b = 2k + 2k' = 2(k + k')$. Comme $k + k'$ est un entier, la somme est un multiple de $2$, donc elle est paire. Les autres propositions sont fausses : la somme de deux pairs est toujours paire, jamais impaire, et on peut la déterminer avec certitude.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a$ et $b$ deux entiers impairs. Quelle est la parité de la somme $a + b$ ?",
+      "options": [
+        "Pair",
+        "Impair",
+        "Pair ou impair selon les valeurs de $a$ et $b$",
+        "On ne peut pas déterminer la parité"
+      ],
+      "correctAnswer": "Pair",
+      "explanation": "Un entier impair s'écrit sous la forme $2k + 1$. Soit $a = 2k + 1$ et $b = 2k' + 1$. Alors $a + b = (2k + 1) + (2k' + 1) = 2k + 2k' + 2 = 2(k + k' + 1)$. Comme $k + k' + 1$ est un entier, la somme est un multiple de $2$, donc elle est paire. L'erreur fréquente est de croire que la somme de deux impairs est impaire, or l'addition des deux unités ($1+1$) forme une nouvelle paire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a$ un entier pair et $b$ un entier impair. Quelle est la parité du produit $a \\times b$ ?",
+      "options": [
+        "Pair",
+        "Impair",
+        "Pair ou impair selon les valeurs de $a$ et $b$",
+        "On ne peut pas déterminer la parité"
+      ],
+      "correctAnswer": "Pair",
+      "explanation": "On écrit $a = 2k$ (pair) et $b = 2k' + 1$ (impair). Le produit est $a \\times b = 2k \\times (2k' + 1) = 2 \\times [k(2k' + 1)]$. Ce produit contient le facteur $2$, il est donc obligatoirement pair. Quelle que soit la valeur de l'impair $b$, multiplier par un nombre pair donne un résultat pair. La proposition \"Impair\" correspond à l'erreur de confondre avec le produit de deux impairs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a$ et $b$ deux entiers impairs. Quelle est la parité du produit $a \\times b$ ?",
+      "options": [
+        "Pair",
+        "Impair",
+        "Pair ou impair selon les valeurs de $a$ et $b$",
+        "On ne peut pas déterminer la parité"
+      ],
+      "correctAnswer": "Impair",
+      "explanation": "On écrit $a = 2k + 1$ et $b = 2k' + 1$. Le produit est $a \\times b = (2k + 1)(2k' + 1) = 4kk' + 2k + 2k' + 1 = 2(2kk' + k + k') + 1$. Cette écriture est de la forme $2 \\times \\text{entier} + 1$, ce qui est la définition d'un entier impair. Le produit de deux impairs est toujours impair. C'est le seul cas parmi les combinaisons de parité (pair+pair, pair+impair, impair+impair) pour le produit qui donne un impair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $n$ un entier naturel. On considère l'expression $E = n^2 + n$. Quelle affirmation est vraie ?",
+      "options": [
+        "$E$ est toujours pair",
+        "$E$ est toujours impair",
+        "$E$ est pair si $n$ est pair et impair si $n$ est impair",
+        "$E$ est impair si $n$ est pair et pair si $n$ est impair"
+      ],
+      "correctAnswer": "$E$ est toujours pair",
+      "explanation": "On factorise $E = n(n + 1)$. Il s'agit du produit de deux entiers consécutifs. Parmi deux entiers consécutifs, l'un est obligatoirement pair et l'autre impair. Le produit d'un pair et d'un impair est toujours pair (règle vue à la question 3). Donc $E$ est pair pour toute valeur de $n$. On peut aussi vérifier par disjonction de cas : si $n$ pair ($n=2k$), $E=4k^2+2k=2(2k^2+k)$ pair ; si $n$ impair ($n=2k+1$), $E=4k^2+4k+1+2k+1=2(2k^2+3k+1)$ pair.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

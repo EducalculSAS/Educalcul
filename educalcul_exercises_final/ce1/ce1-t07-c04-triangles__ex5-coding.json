@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître un triangle",
+  "title": "Reconnaître un triangle - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme de reconnaissance simple",
+      "content": "Propose une suite d'étapes simples, numérotées, qui permettent de décider si une figure est un triangle.",
+      "correctAnswer": "1. Compter le nombre de côtés de la figure.\\n2. Compter le nombre de sommets de la figure.\\n3. Si le nombre de côtés est trois et le nombre de sommets est trois alors la figure est un triangle, sinon ce n'est pas un triangle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle possède exactement trois côtés et trois sommets. L'algorithme vérifie ces deux caractéristiques.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec affichage du résultat",
+      "content": "Écris un algorithme qui teste une figure et affiche le résultat.",
+      "correctAnswer": "côtés devient nombre de côtés de la figure\\nsommets devient nombre de sommets de la figure\\nsi côtés est égal à trois et sommets est égal à trois alors\\n    afficher Triangle\\nsinon\\n    afficher Ce n'est pas un triangle\\nfin si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme stocke les deux mesures, teste la double condition et affiche le message approprié.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de comptage dans une liste",
+      "content": "Écris un algorithme qui parcourt une liste de figures et compte combien sont des triangles.",
+      "correctAnswer": "compteur devient zéro\\npour chaque figure dans la liste\\n    si figure a trois côtés et figure a trois sommets alors\\n        compteur devient compteur plus un\\n    fin si\\nfin pour\\nafficher compteur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise un compteur, examine chaque figure, incrémente le compteur quand la figure remplit les deux conditions, puis affiche le total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

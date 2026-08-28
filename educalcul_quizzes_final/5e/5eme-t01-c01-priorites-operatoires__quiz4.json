@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Application : Priorités opératoires",
+  "title": "Quiz : Priorités opératoires - Application",
+  "questions": [
+    {
+      "text": "Calcule $12 + 3 \\times 4$.",
+      "options": [
+        "24",
+        "60",
+        "20",
+        "48"
+      ],
+      "correctAnswer": "24",
+      "explanation": "La multiplication a la priorité sur l'addition. On calcule d'abord $3 \\times 4 = 12$, puis $12 + 12 = 24$. Les autres réponses correspondent à des erreurs comme faire l'addition avant la multiplication ($ (12+3) \\times 4 = 60$) ou à des calculs incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5 \\times (6 + 2) - 4$.",
+      "options": [
+        "36",
+        "30",
+        "20",
+        "46"
+      ],
+      "correctAnswer": "36",
+      "explanation": "Les parenthèses sont prioritaires : $6+2 = 8$. Ensuite la multiplication : $5 \\times 8 = 40$. Enfin la soustraction : $40 - 4 = 36$. L'option 30 correspond à l'oubli des parenthèses ($5 \\times 6 + 2 - 4$), 20 à une soustraction à l'intérieur des parenthèses ($5 \\times (6+2-4)$) et 46 à une addition finale erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $7 + 4 \\times 5 - 10 \\div 2$.",
+      "options": [
+        "22",
+        "37",
+        "12",
+        "27"
+      ],
+      "correctAnswer": "22",
+      "explanation": "On applique les priorités : multiplication et division avant addition et soustraction, de gauche à droite. $4 \\times 5 = 20$, $10 \\div 2 = 5$. Puis $7 + 20 - 5 = 22$. L'option 37 vient d'un calcul de gauche à droite sans priorité, 12 d'une inversion des opérations, 27 d'une addition avant la multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $(8 + 4) \\times 3 - 6 \\div 2$.",
+      "options": [
+        "33",
+        "30",
+        "42",
+        "27"
+      ],
+      "correctAnswer": "33",
+      "explanation": "Parenthèses d'abord : $8+4 = 12$. Multiplication : $12 \\times 3 = 36$. Division : $6 \\div 2 = 3$. Soustraction finale : $36 - 3 = 33$. L'option 30 correspond à une soustraction avant la division, 42 à une multiplication après la division, 27 à un oubli des parenthèses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $18 \\div 3 \\times 2 + 5$.",
+      "options": [
+        "17",
+        "23",
+        "11",
+        "41"
+      ],
+      "correctAnswer": "17",
+      "explanation": "Division et multiplication même priorité, on procède de gauche à droite. $18 \\div 3 = 6$, puis $6 \\times 2 = 12$, enfin $12 + 5 = 17$. L'option 23 résulte d'une addition avant la multiplication ($18 \\div 3 \\times (2+5)$), 11 d'une multiplication avant la division ($18 \\div (3 \\times 2) + 5$), 41 d'un calcul sans respect des priorités.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

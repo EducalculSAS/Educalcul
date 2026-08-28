@@ -1,0 +1,175 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.152743+00:00",
+  "id": 540,
+  "code": "2nde-t07-c07",
+  "title": "Bilan - Logique et algorithmique Seconde",
+  "description": "Cours structuré Educalcul : Bilan - Logique et algorithmique Seconde.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Bilan - Logique et algorithmique Seconde",
+    "objectif_global": "Bilan - Logique et algorithmique Seconde",
+    "mini_lecons_imposees": [
+      "Notations, code, automatismes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Notations, code, automatismes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles créer ton propre jeu vidéo ou même un petit robot qui range ta chambre. Pour cela, tu ne peux pas simplement lui dire 'fais le ménage', car une machine ne comprend pas le langage humain comme nous. Elle a besoin d'instructions extrêmement précises, presque comme une recette de cuisine où chaque geste est détaillé. C'est là qu'interviennent la logique et l'algorithmique. On ne parle pas ici de mathématiques abstraites, mais d'un véritable langage de construction. Quand tu navigues sur ton téléphone ou que tu utilises un filtre sur une photo, des milliers de lignes de code s'exécutent selon des règles logiques strictes. Apprendre ces automatismes, c'est comme apprendre à parler la langue universelle des machines. Au début, on peut avoir l'impression que c'est rigide, voire intimidant, mais c'est en réalité un super-pouvoir : celui de transformer une idée complexe en une suite d'étapes simples et efficaces. Nous allons voir ensemble comment structurer ta pensée pour que l'ordinateur fasse exactement ce que tu as imaginé, sans aucune erreur, en utilisant des outils que tu rencontreras tout au long de ton lycée."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algorithmique consiste à concevoir une suite d'instructions finie pour résoudre un problème. On utilise souvent des variables, qui sont comme des boîtes étiquetées où l'on stocke une information. Par exemple, une variable $score$ peut contenir un nombre entier. On distingue plusieurs types de données : les entiers ($\\text{int}$), les nombres à virgule ($\\text{float}$), les chaînes de caractères ($\\text{str}$) et les booléens ($\\text{bool}$), qui ne peuvent prendre que deux valeurs : Vrai ou Faux. La structure d'un programme se divise généralement en trois types de blocs. D'abord, la structure séquentielle, où les instructions s'exécutent l'une après l'autre. Ensuite, la structure conditionnelle (le fameux 'Si... Alors... Sinon'), qui permet au programme de prendre des décisions selon une condition logique. Enfin, la structure itérative, ou boucle, qui permet de répéter une action un certain nombre de fois ou tant qu'une condition est remplie. En Python, le langage utilisé en Seconde, la logique est renforcée par l'indentation : le décalage du texte vers la droite indique quelles instructions appartiennent à quelle condition ou boucle. C'est ce qui rend le code lisible et organisé."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def calculer_remise(prix):\\n    if prix > 100:\\n        return prix * 0.9  # 10% de remise\\n    else:\\n        return prix\\n\\nmontant = 120\\nprint(f'Prix final : {calculer_remise(montant)}')",
+              "language": "python",
+              "caption": "Exemple de fonction avec condition et retour de valeur"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un algorithme efficace et sans erreur, il est conseillé de suivre une méthodologie rigoureuse avant même de toucher au clavier. \\n\\nD'abord, l'étape de l'analyse : identifie clairement les données d'entrée (ce que le programme reçoit) et les données de sortie (le résultat attendu). Par exemple, si tu veux calculer l'aire d'un rectangle, l'entrée est la longueur $L$ et la largeur $l$, et la sortie est l'aire $A$.\\n\\nEnsuite, l'écriture du pseudo-code : écris la logique en français simplifié sans te soucier de la syntaxe informatique. Utilise des mots comme 'TANT QUE' ou 'SI'. Cela permet de vérifier que le raisonnement est juste.\\n\\nTrois fois, la traduction en code : transforme ton pseudo-code en langage Python. Fais très attention à la syntaxe : n'oublie pas les parenthèses pour les fonctions comme $\\text{print}()$ ou $\\text{input}()$, et surtout, place bien les deux-points $:$ à la fin des lignes de condition ou de boucle.\\n\\nEnfin, le test et le débogage : lance ton programme avec des valeurs simples et known pour vérifier s'il réagit correctement. Si le résultat est faux, relis ton code ligne par ligne pour trouver l'erreur, appelée 'bug'."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons le problème suivant : créer un programme qui demande l'âge d'un utilisateur et affiche s'il est majeur ou mineur. \\n\\nIci, la donnée d'entrée est l'âge, un nombre entier que l'on stockera dans une variable $age$. Le programme doit tester une condition : est-ce que $age \\text{ est supérieur ou égal à } 18$ ? \\n\\nVoici comment on le rédige en Python : \\n$\\text{age = int(input('Quel est ton âge ? '))}$\\n$\\text{if age >= 18:}$\\n    $\\text{print('Vous êtes majeur.')}$\\n$\\text{else:}$\\n    $\\text{print('Vous êtes mineur.')}$\\n\\nAnalyse détaillée : \\n1. On utilise $\\text{input}$ pour récupérer la saisie, et $\\text{int}$ pour transformer le texte reçu en nombre entier, car on ne peut pas comparer du texte avec le nombre $18$.\\n2. L'instruction $\\text{if}$ vérifie la condition. Si elle est vraie, le bloc indenté juste en dessous s'exécute.\\n3. Si la condition est fausse, c'est le bloc $\\text{else}$ (sinon) qui prend le relais. \\nLe résultat est immédiat et logique, couvrant tous les cas de figure possibles pour un âge positif."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant un programme plus complexe : calculer la somme des nombres de $1$ jusqu'à un nombre $n$ choisi par l'utilisateur. C'est l'idée d'ajouter $1 + 2 + 3 + ... + n$.\\n\\nNous avons besoin d'une variable pour accumuler le résultat, appelons-la $somme$, initialisée à $0$, et d'une boucle pour parcourir les nombres.\\n\\nCode Python :\\n$\\text{n = int(input('Entrez un nombre entier positif : '))}$\\n$\\text{somme = 0}$\\n$\\text{for i in range(1, n + 1):}$\\n    $\\text{somme = somme + i}$\\n$\\text{print('La somme totale est :', somme)}$\\n\\nExplication du fonctionnement :\\n1. La variable $somme$ commence à $0$. C'est notre point de départ.\\n2. La boucle $\\text{for i in range(1, n + 1)}$ signifie que la variable $i$ va prendre successivement toutes les valeurs de $1$ jusqu'à $n$ inclusivement. \\n3. À chaque passage dans la boucle, on ajoute la valeur actuelle de $i$ à la somme existante. Par exemple, si $n = 3$, on fait $0+1=1$, puis $1+2=3$, puis $3+3=6$.\\n4. Une fois la boucle terminée, on affiche le résultat final. C'est un exemple parfait d'automatisme itératif."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'un des pièges les plus courants, surtout pour ceux qui débutent, est la confusion entre l'opérateur d'affectation $=$ et l'opérateur de comparaison $==$. En Python, écrire $x = 5$ signifie 'je mets la valeur $5$ dans la boîte $x$'. Par contre, écrire $\\text{if x == 5}$ signifie 'est-ce que le contenu de $x$ est égal à $5$ ?'. Utiliser $=$ dans un test provoquera une erreur fatale du programme.\\n\\nUn autre point de vigilance est l'indentation. Contrairement à d'autres langages où on utilise des accolades, Python utilise des espaces. Si tu oublies de décaler ton texte après un $\\text{if}$ ou un $\\text{for}$, le programme ne saura pas quelle instruction dépend de la condition et renverra une $\\text{IndentationError}$. \\n\\nEnfin, attention au type des données. Un débutant oublie souvent de convertir l'entrée d'un $\\text{input}$. Par défaut, $\\text{input}$ renvoie toujours une chaîne de caractères ($\\text{str}$). Si tu essaies de faire $\\text{input() + 10}$, Python affichera une erreur car on ne peut pas additionner du texte et un nombre. Il faut toujours utiliser $\\text{int()}$ ou $\\text{float()}$ pour transformer la saisie si on attend un chiffre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On souhaite créer un programme qui demande un nombre $x$ et affiche 'Positif' si $x \\ge 0$ et 'Négatif' sinon. Quel code Python est correct ?\\nA) $\\text{if x > 0: print('Positif') else: print('Négatif')}$\\nB) $\\text{if x >= 0:}\\n    \\text{print('Positif')}\\n\\text{else:}\\n    \\text{print('Négatif')}$\\nC) $\\text{if x == 0: print('Positif')}$",
+              "answer": "B",
+              "hint": "Vérifie bien la présence des deux-points et l'indentation des blocs print.",
+              "explanation": "La réponse B est correcte car elle respecte la syntaxe Python : les deux-points après le if et le else, et le décalage (indentation) des instructions qui suivent."
+            },
+            {
+              "question": "Que vaut la variable $total$ après l'exécution du code suivant : $\\text{total = 0}$ puis $\\text{for i in range(1, 4): total = total + i}$ ?",
+              "answer": "6",
+              "hint": "Le range(1, 4) va de 1 jusqu'à 3 (le 4 est exclu).",
+              "explanation": "Le programme fait : $0 + 1 = 1$, puis $1 + 2 = 3$, puis $3 + 3 = 6$. Le résultat final est $6$."
+            },
+            {
+              "question": "Si on écrit $\\text{age = input('Ton âge : ')}$ et que l'utilisateur tape $15$, quel est le type de la variable $age$ ?",
+              "answer": "str (chaîne de caractères)",
+              "hint": "Rappelle-toi ce que renvoie la fonction input par défaut.",
+              "explanation": "La fonction input() renvoie toujours du texte (une chaîne de caractères), même si l'utilisateur tape des chiffres. Pour avoir un entier, il faudrait utiliser int(input())."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Te voilà arrivé au bout de ce voyage dans l'univers de la logique et de l'algorithmique ! Je me rappelle sans doute tes premières hésitations face à un message d'erreur rouge et intimidant sur ton écran, ou ce moment où tu t'es demandé pourquoi un simple oubli d'espace pouvait tout bloquer. Mais regarde le chemin parcouru : tu ne vois plus le code comme une suite de symboles mystérieux, mais comme un outil puissant pour résoudre des problèmes. Tu as appris à décomposer une difficulté en petites étapes, à anticiper les erreurs et à structurer ton raisonnement. Cette capacité à penser de manière logique est un atout qui te servira bien au-delà de l'informatique, que ce soit pour organiser tes révisions, analyser un texte philosophique ou résoudre un problème de physique complexe. La logique, c'est l'art de rendre les choses claires et indiscutables. En maîtrisant ces automatismes, tu as acquis une rigueur intellectuelle précieuse. Ce bilan n'est pas juste une répétition, c'est le moment de consolider tes bases pour que tout devienne un réflexe naturel. Soyez fier de votre progression, car vous parlez désormais le langage qui fait tourner le monde numérique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, rappelons les piliers fondamentaux de la logique. Tout repose sur les booléens : Vrai ou Faux. Pour manipuler ces valeurs, on utilise des connecteurs logiques. Le $\\text{ET}$ (en Python $\\text{and}$) demande que toutes les conditions soient vraies pour que le résultat final soit vrai. Le $\\text{OU}$ (en Python $\\text{or}$) demande qu'au moins une des conditions soit vraie. Le $\\text{NON}$ (en Python $\\text{not}$) inverse simplement la valeur. \\n\\nEn algorithmique, la puissance vient de la combinaison de ces outils. Un programme robuste est un programme qui prévoit tous les cas, même les plus étranges (les cas limites). Par exemple, si ton programme demande un nombre positif, que se passe-t-il si l'utilisateur tape $-5$ ? C'est là qu'intervient la boucle $\\text{while}$ (Tant que), qui permet de forcer l'utilisateur à donner une valeur correcte avant de continuer. L'algorithmique en Seconde nous apprend surtout la modélisation : transformer un problème du monde réel (calculer un prix, gérer un stock, vérifier un mot de passe) en un modèle mathématique et informatique. C'est ce passage de l'idée concrète à la structure logique qui constitue le cœur de ton apprentissage."
+            },
+            {
+              "type": "display_math",
+              "latex": "(A \\text{ and } B) \\text{ or } (C \\text{ or } D)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une compétence cruciale pour tout informaticien est l'exécution mentale, ou 'trace d'exécution'. C'est la capacité de lire un code et de savoir exactement ce qu'il fait sans utiliser l'ordinateur. \\n\\nLa première étape consiste à créer un tableau de variables sur une feuille de papier. Chaque colonne représente une variable du programme. \\n\\nEnsuite, on lit le code ligne par ligne. À chaque fois qu'une variable change de valeur (affectation), on barre l'ancienne valeur dans le tableau et on écrit la nouvelle. \\n\\nLorsqu'on rencontre un $\\text{if}$ ou un $\\text{while}$, on évalue la condition avec les valeurs actuelles du tableau. Si c'est Vrai, on entre dans le bloc ; si c'est Faux, on saute directement à la fin du bloc. \\n\\nEnfin, on note les sorties (ce qui est affiché par $\\text{print}$). Cette méthode lente mais rigoureuse évite bien des erreurs et permet de comprendre précisément où un programme 'déraille'. C'est l'outil ultime pour déboguer un code complexe avant même de le lancer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons ensemble ce petit morceau de code : \\n$\\text{a = 10}$\\n$\\text{b = 20}$\\n$\\text{if a > 5 and b < 15:}$\\n    $\\text{print('Condition A')}$\\n$\\text{elif a > 5 or b < 15:}$\\n    $\\text{print('Condition B')}$\\n$\\text{else:}$\\n    $\\text{print('Condition C')}$\\n\\nFaisons la trace d'exécution :\\n1. Les variables sont $\\text{a}=10$ et $\\text{b}=20$.\\n2. On teste le premier $\\text{if}$ : $\\text{a} > 5$ est Vrai ($10 > 5$), mais $\\text{b} < 15$ est Faux ($20 < 15$). Comme on utilise $\\text{and}$, il faut que les deux soient vrais. Le résultat est donc Faux. On passe à la suite.\\n3. On teste le $\\text{elif}$ : $\\text{a} > 5$ est Vrai. Comme on utilise $\\text{or}$, il suffit qu'une seule condition soit vraie pour que l'ensemble le soit. Le résultat est donc Vrai.\\n4. Le programme affiche 'Condition B' et ignore le reste du bloc (le $\\text{else}$ n'est pas exécuté).\\nC'est un excellent exemple pour voir comment le $\\text{or}$ est plus 'permissif' que le $\\text{and}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un algorithme classique : trouver le maximum dans une liste de nombres, par exemple $[12, 45, 7, 23]$. \\n\\nLe raisonnement est le suivant : on imagine que le premier nombre est le plus grand, puis on compare ce record avec tous les autres nombres de la liste. Si on trouve un nombre plus grand, il devient le nouveau record.\\n\\nCode Python :\\n$\\text{nombres = [12, 45, 7, 23]}$\\n$\\text{maxi = nombres[0]}$\\n$\\text{for n in nombres:}$\\n    $\\text{if n > maxi:}$\\n        $\\text{maxi = n}$\\n$\\text{print('Le maximum est :', maxi)}$\\n\\nTrace d'exécution :\\n- Initialisation : $\\text{maxi} = 12$.\\n- Passage 1 : $\\text{n} = 12$. $12 > 12$ est Faux. $\\text{maxi}$ reste $12$.\\n- Passage 2 : $\\text{n} = 45$. $45 > 12$ est Vrai. $\\text{maxi}$ devient $45$.\\n- Passage 3 : $\\text{n} = 7$. $7 > 45$ est Faux. $\\text{maxi}$ reste $45$.\\n- Passage 4 : $\\text{n} = 23$. $23 > 45$ est Faux. $\\text{maxi}$ reste $45$.\\n- Fin : on affiche $45$.\\nC'est une méthode simple et efficace qui fonctionne quelle que soit la taille de la liste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus insidieux lors de la gestion des conditions complexes est l'oubli des parenthèses pour prioriser les opérations logiques. Tout comme en mathématiques où la multiplication est prioritaire sur l'addition, certains connecteurs logiques peuvent s'influencer. Si tu mélanges des $\\text{and}$ et des $\\text{or}$, utilise des parenthèses pour être certain de l'ordre d'évaluation. Par exemple, $\\text{if (a or b) and c}$ est très différent de $\\text{if a or (b and c)}$. \\n\\nUn autre piège est la boucle infinie avec l'instruction $\\text{while}$. Cela arrive quand la condition du $\\text{while}$ reste toujours vraie car on a oublié de modifier la variable de contrôle à l'intérieur de la boucle. Ton programme semble alors 'gelé' car il tourne dans le vide à l'infini. \\n\\nEnfin, attention à l'accès aux listes. En Python, on commence à compter à partir de $0$. Si une liste contient $4$ éléments, l'index maximum est $3$. Tenter d'accéder à l'élément d'index $4$ provoquera une $\\text{IndexError}$. C'est une erreur classique qui demande juste un peu de vigilance lors du parcours de données."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le résultat de l'expression booléenne suivante : $\\text{(5 > 3) and (10 < 2) or (7 == 7)}$ ?",
+              "answer": "True (Vrai)",
+              "hint": "Évalue d'abord les parenthèses, puis le 'and', et enfin le 'or'.",
+              "explanation": "(5 > 3) est True, (10 < 2) est False. True and False donne False. Ensuite, (7 == 7) est True. False or True donne True."
+            },
+            {
+              "question": "Dans un programme, on a $\\text{x = 0}$. Ensuite, on exécute $\\text{while x < 3: x = x + 1}$. Quelle est la valeur finale de $x$ ?",
+              "answer": "3",
+              "hint": "Répète l'opération jusqu'à ce que la condition x < 3 devienne fausse.",
+              "explanation": "D'abord x=0 (0<3 Vrai) -> x devient 1. Puis x=1 (1<3 Vrai) -> x devient 2. Puis x=2 (2<3 Vrai) -> x devient 3. Enfin x=3 (3<3 Faux), la boucle s'arrête. La valeur est 3."
+            },
+            {
+              "question": "Que se passe-t-il si on tente d'accéder à $\\text{liste[3]}$ dans une liste contenant seulement $\\text{deux}$ éléments ?",
+              "answer": "Une erreur IndexError",
+              "hint": "Rappelle-toi que les indices commencent à 0.",
+              "explanation": "Si la liste a deux éléments, les indices valides sont 0 et 1. L'indice 3 est hors des limites de la liste."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Simplifier cas simples",
+  "title": "Simplification de racines carrées - Cas simples",
+  "blocks": [
+    {
+      "title": "Racines carrées de nombres entiers",
+      "content": "Complète les égalités suivantes :\\n$\\sqrt{49} = $ {{1}}\\n$\\sqrt{12} = $ {{2}}\\n$\\sqrt{18} = $ {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "7",
+        "2\\sqrt{3}|2√3",
+        "3\\sqrt{2}|3√2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $\\sqrt{49}$, on cherche le nombre positif dont le carré est 49, c'est 7. Pour $\\sqrt{12}$, on décompose 12 en $4 \\times 3$, donc $\\sqrt{12} = \\sqrt{4 \\times 3} = \\sqrt{4} \\times \\sqrt{3} = 2\\sqrt{3}$. Pour $\\sqrt{18}$, on décompose 18 en $9 \\times 2$, donc $\\sqrt{18} = \\sqrt{9 \\times 2} = \\sqrt{9} \\times \\sqrt{2} = 3\\sqrt{2}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Racine carrée d'un quotient et d'un nombre décimal",
+      "content": "Simplifie les expressions suivantes :\\n$\\sqrt{50} = $ {{1}}\\n$\\sqrt{\\frac{25}{4}} = $ {{2}}\\n$\\sqrt{0,09} = $ {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "5\\sqrt{2}|5√2",
+        "\\frac{5}{2}|2,5|2,5",
+        "0,3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $\\sqrt{50}$, on factorise par le plus grand carré parfait : $50 = 25 \\times 2$, donc $\\sqrt{50} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}$. Pour $\\sqrt{\\frac{25}{4}}$, on utilise la propriété $\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}$, ce qui donne $\\frac{\\sqrt{25}}{\\sqrt{4}} = \\frac{5}{2}$ (ou 2,5). Pour $\\sqrt{0,09}$, on remarque que $0,09 = \\frac{9}{100} = (0,3)^2$, donc la racine carrée est 0,3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture sous la forme $a\\sqrt{b}$",
+      "content": "Écris les nombres suivants sous la forme $a\\sqrt{b}$ avec $a$ et $b$ entiers et $b$ le plus petit possible :\\n$\\sqrt{75} = $ {{1}}\\n$\\sqrt{98} = $ {{2}}\\n$\\sqrt{200} = $ {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "5\\sqrt{3}|5√3",
+        "7\\sqrt{2}|7√2",
+        "10\\sqrt{2}|10√2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $\\sqrt{75}$, $75 = 25 \\times 3$, donc $\\sqrt{75} = 5\\sqrt{3}$. Pour $\\sqrt{98}$, $98 = 49 \\times 2$, donc $\\sqrt{98} = 7\\sqrt{2}$. Pour $\\sqrt{200}$, $200 = 100 \\times 2$, donc $\\sqrt{200} = 10\\sqrt{2}$. Dans chaque cas, on a extrait le plus grand diviseur carré parfait.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

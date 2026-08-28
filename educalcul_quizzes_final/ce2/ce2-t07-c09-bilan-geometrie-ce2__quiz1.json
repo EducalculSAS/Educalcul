@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 204,
+  "_course_code": "ce2-t07-c09-bilan-geometrie-ce2",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître, décrire, construire",
+  "title": "Géométrie CE2 : Reconnaître, décrire, construire",
+  "questions": [
+    {
+      "text": "Parmi ces quadrilatères, lequel a quatre côtés de même longueur et quatre angles droits ?",
+      "options": [
+        "Un rectangle",
+        "Un carré",
+        "Un losange",
+        "Un trapèze"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Le carré a quatre côtés de même longueur et quatre angles droits. Le rectangle a quatre angles droits mais seulement les côtés opposés égaux. Le losange a quatre côtés égaux mais pas d'angle droit nécessairement. Le trapèze a seulement deux côtés parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment décrire un rectangle ?",
+      "options": [
+        "Un quadrilatère avec quatre côtés de même longueur",
+        "Un quadrilatère avec quatre angles droits et les côtés opposés de même longueur",
+        "Un triangle avec un angle droit",
+        "Une figure ronde sans côté"
+      ],
+      "correctAnswer": "Un quadrilatère avec quatre angles droits et les côtés opposés de même longueur",
+      "explanation": "Un rectangle est un quadrilatère (quatre côtés) qui possède quatre angles droits. Ses côtés opposés sont parallèles et de même longueur, mais les quatre côtés ne sont pas nécessairement égaux (ce serait un carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un carré de côté $5$ cm, quels instruments sont indispensables ?",
+      "options": [
+        "Une règle et un compas",
+        "Une règle et une équerre",
+        "Un compas et une équerre",
+        "Une règle seulement"
+      ],
+      "correctAnswer": "Une règle et une équerre",
+      "explanation": "Pour tracer un carré, il faut mesurer les côtés avec la règle et construire les angles droits avec l'équerre. Le compas sert à tracer des cercles, pas des angles droits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le patron ci-dessous. Quel solide peut-on obtenir en le repliant ?",
+      "options": [
+        "Un pavé droit",
+        "Un cube",
+        "Une pyramide",
+        "Un cône"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Ce patron est composé de six carrés identiques. En le repliant, on obtient un cube qui a six faces carrées. Un pavé droit a des faces rectangulaires, une pyramide a une base polygonale et des faces triangulaires, un cône a une base circulaire.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Regarde le triangle ABC. Quelle est sa particularité ?",
+      "options": [
+        "C'est un triangle équilatéral",
+        "C'est un triangle isocèle",
+        "C'est un triangle rectangle en B",
+        "C'est un triangle quelconque"
+      ],
+      "correctAnswer": "C'est un triangle rectangle en B",
+      "explanation": "Le petit carré dans l'angle en B indique un angle droit. Ce triangle a donc un angle droit en B, c'est un triangle rectangle. Il n'est pas équilatéral (trois côtés égaux) ni nécessairement isocèle (deux côtés égaux).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

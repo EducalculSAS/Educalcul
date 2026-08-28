@@ -1,0 +1,342 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.634604+00:00",
+  "id": 49,
+  "code": "cp-t06-c03",
+  "title": "Découvrir le mètre",
+  "description": "Cours structuré Educalcul : Découvrir le mètre.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Découvrir le mètre",
+    "objectif_global": "Découvrir le mètre",
+    "mini_lecons_imposees": [
+      "Associer le mètre à des objets adaptés.",
+      "Comparer cm et m qualitativement.",
+      "Choisir l'unité pertinente."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Associer le mètre à des objets adaptés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le mètre, une grande mesure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu fais un très grand pas, comme un géant qui traverse la pièce ! Ce grand pas, c'est à peu près un mètre. Tu peux aussi écarter les bras bien large : la distance entre tes deux mains, c'est souvent proche d'un mètre. Le mètre, noté $m$, c'est une mesure pour les grandes choses : la largeur d'une porte, la hauteur d'une table, la longueur d'un lit. C'est bien plus grand que ton petit doigt !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Objet",
+                "Longueur approximative"
+              ],
+              "rows": [
+                [
+                  "Largeur d'une porte",
+                  "1 $m$"
+                ],
+                [
+                  "Hauteur d'une table",
+                  "1 $m$"
+                ],
+                [
+                  "Un grand pas d'enfant",
+                  "1 $m$"
+                ],
+                [
+                  "Largeur d'un lit simple",
+                  "1 $m$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons des objets qui sont plus grands qu'un mètre. Le couloir de l'école, la hauteur d'un arbre, la longueur de la classe : tout cela mesure plusieurs mètres. On compte alors les mètres les uns après les autres, comme des grands pas que l'on pose bout à bout. Deux mètres, c'est deux grands pas ; trois mètres, c'est trois grands pas !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueurs de quelques grands objets en mètres",
+              "bars": [
+                {
+                  "label": "Couloir",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Arbre",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Classe",
+                  "value": 8,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Terrain de sport",
+                  "value": 20,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si l'objet est plus petit qu'un mètre ? Un livre, une voiturette, une feuille de papier, ton cahier : ils sont plus courts. Pour eux, le mètre est trop grand, il ne va pas bien. Imagine mesurer une fourmi avec un mètre ruban de chantier ! Nous avons besoin d'une plus petite mesure, plus précise. Nous la découvrirons dans la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels mesurent environ 1 $m$ ? (Plusieurs réponses possibles)",
+              "answer": "Largeur d'une porte, Hauteur d'une table, Un grand pas d'enfant, Largeur d'un lit simple",
+              "hint": "Pense à ton grand pas ou à tes bras écartés.",
+              "explanation": "Ces objets font tous à peu près la longueur d'un grand pas d'enfant, soit 1 $m$."
+            },
+            {
+              "question": "Le couloir de l'école mesure 5 $m$. Combien de grands pas d'enfant faut-il pour le traverser ?",
+              "answer": "5 grands pas",
+              "hint": "1 grand pas = 1 $m$.",
+              "explanation": "Puisque 1 grand pas vaut 1 $m$, pour 5 $m$ il faut 5 grands pas."
+            },
+            {
+              "question": "Pour mesurer la longueur de ton cahier, est-ce que le mètre est adapté ?",
+              "answer": "Non, le mètre est trop grand.",
+              "hint": "Compare la taille de ton cahier à ton grand pas.",
+              "explanation": "Ton cahier est bien plus court qu'un mètre. Il faut une unité plus petite."
+            }
+          ]
+        },
+        {
+          "title": "Comparer cm et m qualitativement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le centimètre, une petite mesure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour mesurer des petites choses, nous avons le centimètre, noté $cm$. Regarde ton petit doigt : la largeur de ton ongle, c'est environ 1 $cm$. C'est tout petit ! Ton crayon, ta gomme, ton doigt, une pièce de monnaie : tout cela se mesure en centimètres. Le centimètre, c'est l'ami des petits objets."
+            },
+            {
+              "type": "definition",
+              "term": "centimètre (cm)",
+              "definition": "Unité de mesure pour les petites longueurs. 1 $cm$ correspond à la largeur d'un ongle d'enfant.",
+              "example": "Un crayon mesure environ 15 $cm$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, comment le mètre et le centimètre sont-ils liés ? Imagine une règle de 1 $m$ : elle est graduée en tout petits traits. Il y a 100 petits traits de 1 $cm$ sur 1 $m$. Cent centimètres, ça fait exactement un mètre ! On peut l'écrire : $1\\,m = 100\\,cm$. C'est comme si le mètre était un grand train de 100 petits wagons centimètres."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "1 mètre = 1 centaine de centimètres = 100 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer sans compter : le mètre, c'est grand, très grand. Le centimètre, c'est tout petit. Si tu veux mesurer la hauteur de ton papa, tu utilises des mètres. Si tu veux mesurer la longueur de ton pied, tu utilises des centimètres. Le mètre contient 100 centimètres, donc le mètre est 100 fois plus grand que le centimètre. C'est une énorme différence !"
+            },
+            {
+              "type": "number_line",
+              "caption": "De 0 à 100 cm = 1 m",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0 cm"
+                },
+                {
+                  "value": 100,
+                  "label": "100 cm = 1 m"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité pour mesurer la largeur de ton ongle ?",
+              "answer": "Le centimètre (cm)",
+              "hint": "C'est tout petit, comme ton ongle.",
+              "explanation": "La largeur d'un ongle fait environ 1 $cm$, donc on utilise le centimètre."
+            },
+            {
+              "question": "Combien de centimètres dans 1 mètre ?",
+              "answer": "100 centimètres",
+              "hint": "Le mètre est un train de 100 petits wagons centimètres.",
+              "explanation": "Par définition, 1 $m = 100\\,cm$."
+            },
+            {
+              "question": "Ton papa mesure 180 $cm$. Est-ce qu'il mesure plus ou moins de 1 $m$ ?",
+              "answer": "Plus de 1 $m$ (il mesure 1 $m$ 80 $cm$).",
+              "hint": "100 $cm$ = 1 $m$. 180 est plus grand que 100.",
+              "explanation": "Puisque 1 $m = 100\\,cm$, 180 $cm$ dépassent 100 $cm$, donc c'est plus d'1 $m$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir l'unité pertinente.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment savoir si on mesure en mètres ou en centimètres ? C'est simple : regarde la taille de l'objet ! Si l'objet est grand comme toi, comme une porte, comme un lit, comme la classe : on sort les mètres. Si l'objet est petit comme ta main, comme un livre, comme un jouet, comme une feuille : on sort les centimètres. Ton corps est un super outil pour deviner !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarde l'objet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-il plus grand que toi ou plus petit que ta main ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Grand objet → mètres ($m$). Petit objet → centimètres ($cm$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise un mètre ruban ou une règle graduée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on utilise les deux ! Pour ta taille, on dit : 1 $m$ 20 $cm$. Les mètres pour la grande partie, les centimètres pour le reste. C'est comme pour l'argent : les euros pour les gros montants, les centimes pour le petit appoint. Ton mètre ruban à la maison a les deux graduations : les gros chiffres pour les mètres, les petits traits pour les centimètres."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Objet",
+                "Unité choisie",
+                "Pourquoi ?"
+              ],
+              "rows": [
+                [
+                  "Hauteur de la porte",
+                  "$m$",
+                  "Objet très grand"
+                ],
+                [
+                  "Longueur d'un crayon",
+                  "$cm$",
+                  "Objet petit"
+                ],
+                [
+                  "Ta taille",
+                  "$m$ et $cm$",
+                  "Plus d'1 mètre, avec des centimètres en plus"
+                ],
+                [
+                  "Largeur de la classe",
+                  "$m$",
+                  "Plusieurs mètres"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître le mètre et le centimètre, les comparer et choisir le bon selon l'objet. Tu es prêt à mesurer le monde autour de toi !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer des objets qui mesurent environ 1 $m$.",
+                "Je sais que 1 $m = 100\\,cm$.",
+                "Je sais choisir entre $m$ et $cm$ selon la taille de l'objet.",
+                "Je peux donner ma taille en mètres et centimètres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour mesurer la longueur de ton lit, quelle unité choisis-tu ?",
+              "answer": "Le mètre ($m$)",
+              "hint": "Un lit est grand, comme une porte.",
+              "explanation": "Un lit mesure environ 1 $m$ ou 2 $m$ de long, donc on utilise le mètre."
+            },
+            {
+              "question": "Pour mesurer l'épaisseur de ton cahier, quelle unité choisis-tu ?",
+              "answer": "Le centimètre ($cm$)",
+              "hint": "Un cahier est fin, comme quelques crayons empilés.",
+              "explanation": "L'épaisseur d'un cahier fait quelques centimètres, donc on utilise le centimètre."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

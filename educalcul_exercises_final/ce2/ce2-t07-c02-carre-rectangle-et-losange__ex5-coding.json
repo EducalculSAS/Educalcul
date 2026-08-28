@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 197,
+  "_course_code": "ce2-t07-c02-carre-rectangle-et-losange",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Repérer propriétés simples",
+  "title": "Algorithmes pour reconnaître les quadrilatères particuliers",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de reconnaissance",
+      "content": "On donne les longueurs des quatre côtés $a$, $b$, $c$, $d$ et les mesures des quatre angles $α$, $β$, $γ$, $δ$ d'un quadrilatère. Écris un algorithme (en pseudo‑code) qui affiche « carré » si les quatre côtés sont égaux et les quatre angles sont droits, « rectangle » si les côtés opposés sont égaux deux à deux et les quatre angles sont droits, « losange » si les quatre côtés sont égaux mais les angles ne sont pas tous droits, sinon « autre quadrilatère ».",
+      "correctAnswer": "Algorithme :\\nSi $a$ = $b$ = $c$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"carré\"\\nSinon si $a$ = $c$ et $b$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"rectangle\"\\nSinon si $a$ = $b$ = $c$ = $d$ alors\\n    Afficher \"losange\"\\nSinon\\n    Afficher \"autre quadrilatère\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste d'abord si le quadrilatère est un carré : les quatre côtés sont égaux ($a = b = c = d$) et les quatre angles sont droits ($α = β = γ = δ = 90$). Si ce n'est pas un carré, il teste s'il est un rectangle : les côtés opposés sont égaux deux à deux ($a = c$ et $b = d$) et les quatre angles sont droits. Si ce n'est pas un rectangle, il teste s'il est un losange : les quatre côtés sont égaux ($a = b = c = d$) sans condition sur les angles. Sinon, c'est un autre quadrilatère.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exécuter l'algorithme sur un exemple",
+      "content": "On utilise l'algorithme suivant :\\nSi $a$ = $b$ = $c$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"carré\"\\nSinon si $a$ = $c$ et $b$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"rectangle\"\\nSinon si $a$ = $b$ = $c$ = $d$ alors\\n    Afficher \"losange\"\\nSinon\\n    Afficher \"autre quadrilatère\"\\nPour le quadrilatère avec $a$ = $5$, $b$ = $5$, $c$ = $5$, $d$ = $5$, $α$ = $90$, $β$ = $90$, $γ$ = $90$, $δ$ = $90$, indique quelle sera l'affichage et explique pourquoi.",
+      "correctAnswer": "L'algorithme affichera « carré » car les quatre côtés sont égaux ($5$) et les quatre angles sont droits ($90°$). La première condition est vraie, donc le programme entre dans ce bloc et affiche « carré ».",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste la première condition : $a = b = c = d$ (ici $5 = 5 = 5 = 5$) et $α = β = γ = δ = 90°$. Comme c'est vrai, il affiche « carré » et ne passe pas aux autres conditions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Corriger un algorithme erroné",
+      "content": "Voici un algorithme qui prétend reconnaître un losange, mais il contient une erreur :\\nSi $a$ = $b$ = $c$ = $d$ alors\\n    Afficher \"losange\"\\nSinon si $a$ = $c$ et $b$ = $d$ alors\\n    Afficher \"rectangle\"\\nSinon\\n    Afficher \"autre quadrilatère\"\\nIdentifie l'erreur et réécris l'algorithme correct pour distinguer carré, rectangle et losange.",
+      "correctAnswer": "L'erreur est que l'algorithme ne vérifie pas les angles. Un carré a aussi quatre côtés égaux, mais il doit être identifié comme carré et non comme losange. De plus, un rectangle nécessite que les angles soient droits. L'algorithme corrigé :\\nSi $a$ = $b$ = $c$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"carré\"\\nSinon si $a$ = $c$ et $b$ = $d$ et $α$ = $90$ et $β$ = $90$ et $γ$ = $90$ et $δ$ = $90$ alors\\n    Afficher \"rectangle\"\\nSinon si $a$ = $b$ = $c$ = $d$ alors\\n    Afficher \"losange\"\\nSinon\\n    Afficher \"autre quadrilatère\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme original classait tout quadrilatère à quatre côtés égaux comme un losange, sans distinguer le cas où les angles sont droits (carré). Il ne vérifiait pas non plus les angles pour le rectangle. La version corrigée teste d'abord le carré (côtés égaux et angles droits), puis le rectangle (côtés opposés égaux et angles droits), puis le losange (côtés égaux seulement), et enfin les autres quadrilatères.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Lire",
+  "title": "Lire et interpréter les quartiles et diagrammes en boîte",
+  "questions": [
+    {
+      "text": "On considère la série statistique suivante, déjà triée : $12 ; 15 ; 18 ; 20 ; 22 ; 25 ; 28 ; 30$. Quelle est la valeur du premier quartile $Q_1$ ?",
+      "options": [
+        "15",
+        "16,5",
+        "18",
+        "19,5"
+      ],
+      "correctAnswer": "16,5",
+      "explanation": "La série comporte $8$ valeurs. Le premier quartile $Q_1$ est la médiane de la moitié inférieure des données (les $4$ premières valeurs : $12 ; 15 ; 18 ; 20$). Comme il y a un nombre pair de valeurs dans cette moitié, $Q_1$ est la moyenne des deux valeurs centrales : $\\frac{15 + 18}{2} = 16,5$. L'option 15 correspond à la 2e valeur seulement, 18 à la 3e, et 19,5 est la médiane de la série complète.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un diagramme en boîte (box-plot) représente les notes sur 20 d'une classe. La boîte s'étend de 8 à 14, la médiane est à 11 et les moustaches vont de 4 à 18. Quelle affirmation est correcte ?",
+      "options": [
+        "25 % des élèves ont une note comprise entre 8 et 11",
+        "50 % des élèves ont une note comprise entre 8 et 14",
+        "75 % des élèves ont une note supérieure à 14",
+        "La note la plus fréquente est 11"
+      ],
+      "correctAnswer": "50 % des élèves ont une note comprise entre 8 et 14",
+      "explanation": "Dans un diagramme en boîte, la boîte représente l'intervalle interquartile $[Q_1 ; Q_3]$. Ici $Q_1 = 8$ et $Q_3 = 14$. Par définition, 50 % des données se situent entre le premier et le troisième quartile. L'option 1 est fausse car entre 8 et 11 (médiane) se trouve 25 % des données. L'option 3 est fausse car 25 % des notes sont supérieures à 14. L'option 4 est fausse car le box-plot ne donne pas d'information sur la fréquence (mode).",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte des notes sur 20",
+        "min": 4,
+        "q1": 8,
+        "median": 11,
+        "q3": 14,
+        "max": 18
+      }
+    },
+    {
+      "text": "Deux classes passent le même contrôle. Leurs résultats sont résumés par les diagrammes en boîte ci-dessous. Classe A : $Q_1=10$, Médiane$=13$, $Q_3=15$. Classe B : $Q_1=8$, Médiane$=12$, $Q_3=16$. On peut affirmer que :",
+      "options": [
+        "La classe A a des résultats globalement meilleurs et plus homogènes que la classe B",
+        "La classe B a des résultats globalement meilleurs car son maximum est plus élevé",
+        "Les deux classes ont le même écart interquartile",
+        "La médiane de la classe A étant plus élevée, tous les élèves de A ont réussi"
+      ],
+      "correctAnswer": "La classe A a des résultats globalement meilleurs et plus homogènes que la classe B",
+      "explanation": "Comparaison des positions : Médiane A (13) > Médiane B (12), donc tendance centrale meilleure pour A. Comparaison de la dispersion : Écart interquartile A = $15-10=5$ ; Écart interquartile B = $16-8=8$. L'EIQ de A est plus petit, donc les 50 % centraux sont plus regroupés (plus homogènes). On ne connaît pas les max/min pour l'option 2. L'option 3 est fausse ($5 \\neq 8$). L'option 4 est fausse : la médiane ne renseigne pas sur chaque individu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une série de 20 salaires (en milliers d'euros), on a calculé : minimum $= 18$, $Q_1 = 22$, Médiane $= 26$, $Q_3 = 31$, maximum $= 45$. Quel pourcentage de salaires est strictement compris entre 22 et 31 ?",
+      "options": [
+        "25 %",
+        "50 %",
+        "75 %",
+        "100 %"
+      ],
+      "correctAnswer": "50 %",
+      "explanation": "Les valeurs 22 et 31 correspondent respectivement au premier quartile $Q_1$ et au troisième quartile $Q_3$. Par définition des quartiles, exactement 50 % des effectifs (la moitié centrale de la série) se situent entre $Q_1$ et $Q_3$. Comme l'effectif total est 20, cela correspond à 10 salaires. L'option 25 % correspond à la part entre Min et $Q_1$ ou entre Médiane et $Q_3$. L'option 75 % n'a pas de sens direct ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe le diagramme en boîte ci-dessous. La boîte est très courte et centrée vers la valeur haute de l'échelle, la moustache inférieure est très longue, la moustache supérieure est inexistante (max = Q3). Quelle forme de distribution cela suggère-t-il ?",
+      "options": [
+        "Une distribution symétrique",
+        "Une distribution étalée uniformément",
+        "Une distribution asymétrique à gauche (queue de gauche)",
+        "Une distribution bimodale"
+      ],
+      "correctAnswer": "Une distribution asymétrique à gauche (queue de gauche)",
+      "explanation": "Une boîte courte indique une forte concentration des 50 % centraux (faible EIQ). Son positionnement vers la valeur haute (Q1, Médiane, Q3 proches du max) et la longue moustache inférieure montrent que les valeurs faibles sont très écartées vers le bas, tandis que les valeurs hautes sont regroupées au plafond. C'est la définition d'une asymétrie à gauche (queue de gauche). Une distribution symétrique aurait des moustaches égales. Une uniforme aurait une boîte longue. Un box-plot ne permet pas de voir la bimodalité.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Distribution asymétrique à gauche",
+        "min": 10,
+        "q1": 40,
+        "median": 45,
+        "q3": 48,
+        "max": 48
+      }
+    }
+  ]
+}

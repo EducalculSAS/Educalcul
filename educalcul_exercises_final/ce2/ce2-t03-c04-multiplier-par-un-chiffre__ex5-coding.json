@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 163,
+  "_course_code": "ce2-t03-c04-multiplier-par-un-chiffre",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Poser l'opération",
+  "title": "L'algorithme de la multiplication posée",
+  "blocks": [
+    {
+      "title": "Algorithme pour une multiplication simple",
+      "content": "Écris les étapes de l'algorithme pour calculer la multiplication posée $23 \\times 4$. Présente ton raisonnement sous forme d'instructions numérotées claires et ordonnées.",
+      "correctAnswer": "1. Écrire le multiplicande $23$ au-dessus du multiplicateur $4$ en alignant les unités.\\n2. Multiplier le chiffre des unités du multiplicande ($3$) par le multiplicateur ($4$) : $3 \\times 4 = 12$.\\n3. Écrire $2$ dans la colonne des unités du résultat et retenir $1$ dizaine.\\n4. Multiplier le chiffre des dizaines du multiplicande ($2$) par le multiplicateur ($4$) : $2 \\times 4 = 8$.\\n5. Ajouter la retenue ($1$) : $8 + 1 = 9$.\\n6. Écrire $9$ dans la colonne des dizaines du résultat.\\n7. Le résultat final est $92$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour multiplier $23$ par $4$, on commence toujours par les unités. $3 \\times 4 = 12$, on pose $2$ et on retient $1$. Ensuite on fait $2 \\times 4 = 8$, on ajoute la retenue $1$ ce qui fait $9$. On écrit $9$ à gauche du $2$. Le produit est $92$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec plusieurs retenues",
+      "content": "Écris les étapes de l'algorithme pour calculer la multiplication posée $145 \\times 3$. Détaille la gestion des retenues à chaque colonne.",
+      "correctAnswer": "1. Écrire le multiplicande $145$ au-dessus du multiplicateur $3$ en alignant les unités.\\n2. Multiplier le chiffre des unités ($5$) par $3$ : $5 \\times 3 = 15$. Écrire $5$ dans la colonne des unités, retenir $1$.\\n3. Multiplier le chiffre des dizaines ($4$) par $3$ : $4 \\times 3 = 12$. Ajouter la retenue ($1$) : $12 + 1 = 13$. Écrire $3$ dans la colonne des dizaines, retenir $1$.\\n4. Multiplier le chiffre des centaines ($1$) par $3$ : $1 \\times 3 = 3$. Ajouter la retenue ($1$) : $3 + 1 = 4$. Écrire $4$ dans la colonne des centaines.\\n5. Le résultat final est $435$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ici, chaque colonne génère une retenue. Aux unités : $5 \\times 3 = 15$ (pose $5$, retient $1$). Aux dizaines : $4 \\times 3 = 12$, plus la retenue $1$ fait $13$ (pose $3$, retient $1$). Aux centaines : $1 \\times 3 = 3$, plus la retenue $1$ fait $4$. Le produit final est $435$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général de la multiplication par un chiffre",
+      "content": "Rédige l'algorithme général qui permet de multiplier un nombre entier à trois chiffres (centaines $c$, dizaines $d$, unités $u$) par un chiffre $m$. Utilise des mots-clés comme \"Pour chaque chiffre\", \"Retenue\", \"Écrire\".",
+      "correctAnswer": "Algorithme général :\\n1. Poser l'opération : écrire le nombre à trois chiffres au-dessus du chiffre multiplicateur, en alignant les unités.\\n2. Initialiser la retenue à $0$.\\n3. Pour chaque chiffre du multiplicande en partant de la droite (unités, puis dizaines, puis centaines) :\\n   a. Calculer le produit partiel : multiplier le chiffre courant par le multiplicateur $m$.\\n   b. Ajouter la retenue précédente à ce produit partiel.\\n   c. Écrire le chiffre des unités de ce total dans la colonne correspondante du résultat.\\n   d. Définir la nouvelle retenue comme le chiffre des dizaines de ce total (ou $0$ s'il n'y a pas de dizaine).\\n4. Après le traitement du chiffre des centaines, si la retenue finale n'est pas nulle, l'écrire à gauche du résultat.\\n5. Le nombre formé par les chiffres écrits est le produit final.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme structure la méthode posée. L'étape 3 est une boucle qui se répète pour chaque colonne. La retenue est propagée de droite à gauche. L'initialisation de la retenue à $0$ et l'écriture finale d'une éventuelle retenue restante sont essentielles pour que l'algorithme fonctionne dans tous les cas (avec ou sans retenue finale).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 518,
+  "_course_code": "2nde-t04-c04-parallelisme-et-intersection",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Parallélisme et intersection",
+  "title": "Quiz : Parallélisme et intersection - Applications",
+  "questions": [
+    {
+      "text": "Les droites $d_1 : y = 2x + 1$ et $d_2 : y = 2x - 4$ sont-elles parallèles, sécantes ou confondues ?",
+      "options": [
+        "Parallèles",
+        "Sécantes en un point",
+        "Confondues",
+        "Perpendiculaires"
+      ],
+      "correctAnswer": "Parallèles",
+      "explanation": "Les deux droites ont le même coefficient directeur $2$ mais des ordonnées à l'origine différentes ($1$ et $-4$). Elles sont donc parallèles distinctes, ni sécantes ni confondues, et elles ne sont pas perpendiculaires car le produit des pentes n'est pas $-1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer le point d'intersection des droites $d_1 : y = -x + 5$ et $d_2 : y = 3x - 1$.",
+      "options": [
+        "(1,5 ; 3,5)",
+        "(2 ; 5)",
+        "(0 ; 5)",
+        "(1 ; 2)"
+      ],
+      "correctAnswer": "(1,5 ; 3,5)",
+      "explanation": "On égalise les deux expressions de $y$ : $-x + 5 = 3x - 1$. Cela donne $4x = 6$ donc $x = 1,5$. En remplaçant dans $y = -x + 5$, on obtient $y = -1,5 + 5 = 3,5$. Le point d'intersection est $(1,5 ; 3,5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'équation de la droite parallèle à $d : y = 0,5x + 3$ et passant par le point $A(2 ; 5)$ ?",
+      "options": [
+        "y = 0,5x + 4",
+        "y = 2x + 1",
+        "y = -0,5x + 6",
+        "y = 0,5x + 3"
+      ],
+      "correctAnswer": "y = 0,5x + 4",
+      "explanation": "Une droite parallèle à $d$ a le même coefficient directeur $0,5$. En utilisant la forme point-pente : $y - 5 = 0,5(x - 2)$, on obtient $y = 0,5x - 1 + 5 = 0,5x + 4$. Les autres options ont soit un coefficient directeur différent, soit une ordonnée à l'origine incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de solutions possède le système $\\begin{cases} 2x + 3y = 7 \\\\ 4x + 6y = 15 \\end{cases}$ ?",
+      "options": [
+        "Aucune solution",
+        "Une unique solution",
+        "Une infinité de solutions",
+        "Deux solutions"
+      ],
+      "correctAnswer": "Aucune solution",
+      "explanation": "La seconde équation est le double de la première pour les coefficients de $x$ et $y$ ($4x+6y = 2(2x+3y)$) mais le second membre $15$ n'est pas le double de $7$ ($14$). Les deux droites sont parallèles distinctes, donc le système n'a aucune solution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites d'équations $3x - 2y = 6$ et $6x - 4y = 12$ sont-elles parallèles, sécantes, confondues ou perpendiculaires ?",
+      "options": [
+        "Parallèles distinctes",
+        "Sécantes",
+        "Confondues",
+        "Perpendiculaires"
+      ],
+      "correctAnswer": "Confondues",
+      "explanation": "La seconde équation est exactement le double de la première ($6x - 4y = 2(3x - 2y)$ et $12 = 2 \\times 6$). Les deux équations représentent donc la même droite : elles sont confondues.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

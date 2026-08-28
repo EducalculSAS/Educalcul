@@ -1,0 +1,72 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Antécédents",
+  "title": "Lecture graphique : antécédents",
+  "blocks": [
+    {
+      "title": "Antécédent d'une fonction affine",
+      "content": "Soit la fonction $f$ définie par $f(x)=3x-2$. L'antécédent de $4$ par $f$ est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver l'antécédent de $4$, on résout l'équation $3x-2=4$. On ajoute $2$ des deux côtés : $3x=6$. On divise par $3$ : $x=2$. Ainsi, l'antécédent de $4$ est $2$. Sur le graphique, le point d'abscisse $2$ a pour ordonnée $4$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x-2",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=3x-2"
+      }
+    },
+    {
+      "title": "Antécédents d'une fonction quadratique",
+      "content": "Soit la fonction $f$ définie par $f(x)=x^2-4$. Les antécédents de $5$ par $f$ sont {{1}} et {{2}} (dans l'ordre croissant).",
+      "correctAnswer": "",
+      "blanks": [
+        "-3",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $x^2-4=5$, soit $x^2=9$. Les solutions sont $x=-3$ et $x=3$. Dans l'ordre croissant, les antécédents sont $-3$ puis $3$. Sur le graphique, la droite horizontale $y=5$ coupe la parabole en deux points d'abscisses $-3$ et $3$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=x^2-4"
+      }
+    },
+    {
+      "title": "Antécédents d'une fonction cubique",
+      "content": "Soit la fonction $f$ définie par $f(x)=x^3-4x$. Les antécédents de $0$ par $f$ sont {{1}}, {{2}} et {{3}} (dans l'ordre croissant).",
+      "correctAnswer": "",
+      "blanks": [
+        "-2",
+        "0",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $x^3-4x=0$, soit $x(x^2-4)=0$, donc $x(x-2)(x+2)=0$. Les solutions sont $x=-2$, $x=0$ et $x=2$. Dans l'ordre croissant, les antécédents sont $-2$, $0$ et $2$. Sur le graphique, la courbe coupe l'axe des abscisses en ces trois points.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^3-4*x",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de la fonction f(x)=x^3-4x"
+      }
+    }
+  ]
+}

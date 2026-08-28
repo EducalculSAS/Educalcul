@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 82,
+  "_course_code": "ce1-t02-c04-representer-des-fractions-simples",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Application : Représenter des fractions simples",
+  "title": "Représenter des fractions simples",
+  "questions": [
+    {
+      "text": "Observe le cercle ci-dessous. Quelle fraction est représentée par la partie colorée ?",
+      "options": [
+        "$1/2$",
+        "$1/3$",
+        "$1/4$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Le cercle est divisé en $2$ parties égales. Une seule partie est colorée. La fraction représentant une partie sur deux est $1/2$. Les autres propositions correspondent à un partage en $3$ ou $4$ parties, ou à deux parties sur trois.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Cercle divisé en 2 parties égales, 1 partie colorée"
+      }
+    },
+    {
+      "text": "Regarde le rectangle divisé en parties égales. Quelle fraction correspond à la zone colorée ?",
+      "options": [
+        "$1/2$",
+        "$1/3$",
+        "$1/4$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Le rectangle est partagé en $4$ parties égales (le dénominateur est $4$). Une seule partie est colorée (le numérateur est $1$). La fraction est donc $1/4$. L'option $1/2$ correspondrait à $2$ parties sur $4$, $3/4$ à $3$ parties sur $4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Rectangle divisé en 4 parties égales, 1 partie colorée"
+      }
+    },
+    {
+      "text": "Le cercle ci-dessous est divisé en trois parties égales. Deux parties sont colorées. Quelle fraction cela représente-t-il ?",
+      "options": [
+        "$1/3$",
+        "$2/3$",
+        "$1/2$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$2/3$",
+      "explanation": "Le cercle est divisé en $3$ parties égales, donc le dénominateur est $3$. Comme $2$ parties sont colorées, le numérateur est $2$. La fraction représentée est $2/3$. L'option $1/3$ correspondrait à une seule partie colorée.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Cercle divisé en 3 parties égales, 2 parties colorées"
+      }
+    },
+    {
+      "text": "Dans cette grille, certains carrés sont colorés. Quelle fraction des carrés totaux est colorée ?",
+      "options": [
+        "$1/2$",
+        "$1/3$",
+        "$1/4$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "La grille compte $3 \\times 4 = 12$ carrés au total. Il y a $3$ carrés colorés. La fraction est $3/12$, ce qui équivaut à $1/4$ (car $3$ est un quart de $12$). On peut aussi voir qu'une ligne sur quatre est colorée.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 3,
+        "caption": "Grille de 3 lignes et 4 colonnes, 3 carrés colorés"
+      }
+    },
+    {
+      "text": "La bande ci-dessous est divisée en quatre parties égales. Trois parties sont colorées. Écris la fraction correspondante.",
+      "options": [
+        "$1/4$",
+        "$2/4$",
+        "$3/4$",
+        "$4/4$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "La bande est divisée en $4$ parties égales (dénominateur $4$). Trois parties sont colorées (numérateur $3$). La fraction est donc $3/4$. $4/4$ correspondrait à la bande entièrement colorée, $2/4$ à deux parties sur quatre (équivalent à $1/2$).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Bande divisée en 4 parties égales, 3 parties colorées"
+      }
+    }
+  ]
+}

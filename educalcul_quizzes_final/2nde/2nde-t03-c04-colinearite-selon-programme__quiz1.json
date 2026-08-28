@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Reconnaître",
+  "title": "Quiz : Reconnaître la colinéarité de vecteurs",
+  "questions": [
+    {
+      "text": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs non nuls. Quelle condition est nécessaire et suffisante pour que $\\vec{u}$ et $\\vec{v}$ soient colinéaires ?",
+      "options": [
+        "Il existe un réel $k$ tel que $\\vec{u} = k\\vec{v}$.",
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ ont même direction et même sens.",
+        "Les vecteurs $\\vec{u}$ et $\\vec{v}$ ont même norme.",
+        "Le produit scalaire $\\vec{u} \\cdot \\vec{v}$ est égal à $0$."
+      ],
+      "correctAnswer": "Il existe un réel $k$ tel que $\\vec{u} = k\\vec{v}$.",
+      "explanation": "La définition même de la colinéarité pour deux vecteurs non nuls est l'existence d'un coefficient de proportionnalité $k \\in \\mathbb{R}$ tel que l'un soit le multiple de l'autre. L'option B est fausse car des vecteurs colinéaires peuvent avoir des sens opposés ($k < 0$). L'option C confond colinéarité et isométrie (même longueur). L'option D caractérise l'orthogonalité, pas la colinéarité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} -6 \\\\ 4 \\end{pmatrix}$. Ces deux vecteurs sont-ils colinéaires ?",
+      "options": [
+        "Oui, car $\\vec{v} = -2\\vec{u}$.",
+        "Non, car leurs coordonnées ne sont pas proportionnelles.",
+        "Oui, car ils ont même direction et même sens.",
+        "Non, car le déterminant $\\det(\\vec{u}, \\vec{v})$ est non nul."
+      ],
+      "correctAnswer": "Oui, car $\\vec{v} = -2\\vec{u}$.",
+      "explanation": "On vérifie la proportionnalité des coordonnées : $\\frac{-6}{3} = -2$ et $\\frac{4}{-2} = -2$. Le rapport est constant ($k = -2$), donc $\\vec{v} = -2\\vec{u}$. Les vecteurs sont bien colinéaires. L'option B est fausse car les coordonnées SONT proportionnelles. L'option C est fausse car le coefficient $k = -2$ est négatif, donc les sens sont opposés. L'option D est fausse car le déterminant est nul pour des vecteurs colinéaires : $\\det(\\vec{u}, \\vec{v}) = 3 \\times 4 - (-2) \\times (-6) = 12 - 12 = 0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient trois points distincts $A$, $B$ et $C$. Quelle assertion permet d'affirmer que ces trois points sont alignés ?",
+      "options": [
+        "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires.",
+        "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{BC}$ sont opposés.",
+        "Les longueurs $AB$, $BC$ et $AC$ satisfont $AB + BC = AC$.",
+        "Le milieu de $[AB]$ est le point $C$."
+      ],
+      "correctAnswer": "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires.",
+      "explanation": "La propriété fondamentale du cours est : trois points $A, B, C$ sont alignés si et seulement si les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires (ils partagent le même point d'origine $A$). L'option B est une condition trop restrictive (cas particulier où $B$ est le milieu de $AC$). L'option C n'est vraie que si $B$ est entre $A$ et $C$, mais pas si $A$ est entre $B$ et $C$ par exemple. L'option D place $C$ sur le segment $[AB]$, ce qui est un cas particulier d'alignement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne les points $A(1; 2)$, $B(4; 5)$ et $C(7; 8)$ dans un repère orthonormé. Quelle méthode correcte permet de montrer que $A$, $B$, $C$ sont alignés ?",
+      "options": [
+        "Calculer $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ 6 \\end{pmatrix}$ et observer que $\\overrightarrow{AC} = 2\\overrightarrow{AB}$.",
+        "Vérifier que $AB + BC = AC$ en calculant les distances.",
+        "Montrer que le triangle $ABC$ est rectangle en $B$.",
+        "Calculer les pentes des droites $(AB)$ et $(BC)$ et trouver des valeurs différentes."
+      ],
+      "correctAnswer": "Calculer $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ 6 \\end{pmatrix}$ et observer que $\\overrightarrow{AC} = 2\\overrightarrow{AB}$.",
+      "explanation": "La méthode vectorielle est la plus directe et rigoureuse au programme de Seconde. $\\overrightarrow{AB}(3;3)$ et $\\overrightarrow{AC}(6;6)$ sont bien proportionnels (coefficient 2), donc colinéaires, ce qui prouve l'alignement. L'option B (relation de Chasles sur les longueurs) ne fonctionne que si $B$ est entre $A$ et $C$ ; ici ce n'est pas le cas car $AB = 3\\sqrt{2}$, $BC = 3\\sqrt{2}$, $AC = 6\\sqrt{2}$, donc $AB+BC=AC$ est vrai par hasard car $B$ est le milieu, mais ce n'est pas la méthode générale attendue. L'option C est fausse (un triangle rectangle n'est pas aligné). L'option D est fausse car des pentes égales indiquent des droites parallèles (donc confondues car elles partagent $B$), des pentes différentes indiquent qu'elles ne sont pas parallèles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un parallélogramme $ABCD$ (dans cet ordre). On note $I$ le milieu de la diagonale $[AC]$. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont colinéaires.",
+        "Les vecteurs $\\overrightarrow{AI}$ et $\\overrightarrow{IC}$ sont colinéaires.",
+        "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$ sont colinéaires.",
+        "Les vecteurs $\\overrightarrow{IA}$ et $\\overrightarrow{IC}$ sont opposés."
+      ],
+      "correctAnswer": "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$ sont colinéaires.",
+      "explanation": "Dans un parallélogramme, les côtés opposés sont parallèles : $(AB) \\parallel (DC)$ donc $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont colinéaires (A vrai). $I$ est le milieu de $[AC]$, donc $A, I, C$ sont alignés : $\\overrightarrow{AI}$ et $\\overrightarrow{IC}$ sont colinéaires (B vrai) et même opposés car $I$ est entre $A$ et $C$ (D vrai). En revanche, $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$ portent sur deux côtés consécutifs qui ne sont pas parallèles (sauf cas particulier du parallélogramme aplati, exclu par définition), ils ne sont donc pas colinéaires. C'est l'affirmation fausse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Rédiger",
+  "title": "Théorème de Pythagore : Rédiger",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle en $A$, quel côté est l'hypoténuse ?",
+      "options": [
+        "Le côté $[AB]$",
+        "Le côté $[AC]$",
+        "Le côté $[BC]$",
+        "Le côté le plus court"
+      ],
+      "correctAnswer": "Le côté $[BC]$",
+      "explanation": "Dans un triangle rectangle, l'hypoténuse est toujours le côté opposé à l'angle droit. Comme le triangle est rectangle en $A$, l'angle droit est en $A$. Le côté opposé à $A$ est $[BC]$. C'est aussi le côté le plus long du triangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$ rectangle en $A$. Quelle écriture correspond exactement au théorème de Pythagore ?",
+      "options": [
+        "$AB + AC = BC$",
+        "$AB^2 + AC^2 = BC^2$",
+        "$AB^2 + BC^2 = AC^2$",
+        "$AB^2 = AC^2 + BC^2$"
+      ],
+      "correctAnswer": "$AB^2 + AC^2 = BC^2$",
+      "explanation": "Le théorème de Pythagore s'écrit : le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés. Ici, l'hypoténuse est $[BC]$ (opposé à l'angle droit en $A$). Les côtés de l'angle droit sont $[AB]$ et $[AC]$. L'égalité correcte est donc $AB^2 + AC^2 = BC^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour appliquer le théorème de Pythagore dans un triangle $DEF$ rectangle en $D$, on écrit $DE^2 + DF^2 = EF^2$. Quelle phrase justifie correctement cette écriture ?",
+      "options": [
+        "Car $EF$ est l'hypoténuse car c'est le côté le plus court.",
+        "Car $DE$ est l'hypoténuse car le triangle est rectangle en $D$.",
+        "Car $EF$ est l'hypoténuse car le triangle est rectangle en $D$.",
+        "Car $DF$ est l'hypoténuse car il est opposé à l'angle droit."
+      ],
+      "correctAnswer": "Car $EF$ est l'hypoténuse car le triangle est rectangle en $D$.",
+      "explanation": "L'hypoténuse est le côté opposé à l'angle droit. Puisque le triangle est rectangle en $D$, l'angle droit est en $D$. Le côté opposé à $D$ est $[EF]$. C'est donc l'hypoténuse, et son carré ($EF^2$) est seul d'un côté de l'égalité. Les deux autres côtés ($[DE]$ et $[DF]$) sont les côtés de l'angle droit, leurs carrés sont additionnés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut vérifier si un triangle $MNP$ est rectangle en $M$. Les longueurs sont $MN = 3$ cm, $MP = 4$ cm et $NP = 6$ cm. Quelle rédaction est correcte pour conclure ?",
+      "options": [
+        "$3^2 + 4^2 = 9 + 16 = 25$ et $6^2 = 36$. Comme $25 \\neq 36$, le triangle est rectangle en $M$.",
+        "$3^2 + 4^2 = 9 + 16 = 25$ et $6^2 = 36$. Comme $25 \\neq 36$, le triangle n'est pas rectangle en $M$.",
+        "$3 + 4 = 7$ et $6 = 6$. Comme $7 \\neq 6$, le triangle n'est pas rectangle en $M$.",
+        "$3^2 + 6^2 = 9 + 36 = 45$ et $4^2 = 16$. Comme $45 \\neq 16$, le triangle est rectangle en $M$."
+      ],
+      "correctAnswer": "$3^2 + 4^2 = 9 + 16 = 25$ et $6^2 = 36$. Comme $25 \\neq 36$, le triangle n'est pas rectangle en $M$.",
+      "explanation": "On utilise la réciproque du théorème de Pythagore. Si le triangle était rectangle en $M$, l'hypoténuse serait $[NP]$ (côté opposé à $M$). Il faudrait alors $MN^2 + MP^2 = NP^2$. On calcule $3^2 + 4^2 = 25$ et $6^2 = 36$. Comme $25 \\neq 36$, l'égalité n'est pas vérifiée, donc le triangle n'est pas rectangle en $M$. Les autres options font des erreurs de calcul (addition au lieu de carrés) ou inversent la conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $RST$ rectangle en $R$, on sait que $RS = 5$ cm et $RT = 12$ cm. Quelle phrase rédige correctement le calcul de la longueur $ST$ ?",
+      "options": [
+        "D'après le théorème de Pythagore, $ST = RS + RT = 5 + 12 = 17$ cm.",
+        "D'après le théorème de Pythagore, $ST^2 = RS^2 + RT^2 = 5^2 + 12^2 = 25 + 144 = 169$, donc $ST = \\sqrt{169} = 13$ cm.",
+        "D'après le théorème de Pythagore, $RS^2 = ST^2 + RT^2$, donc $25 = ST^2 + 144$, alors $ST^2 = -119$ impossible.",
+        "D'après le théorème de Pythagore, $ST^2 = RS^2 - RT^2 = 25 - 144 = -119$, donc $ST$ n'existe pas."
+      ],
+      "correctAnswer": "D'après le théorème de Pythagore, $ST^2 = RS^2 + RT^2 = 5^2 + 12^2 = 25 + 144 = 169$, donc $ST = \\sqrt{169} = 13$ cm.",
+      "explanation": "Le triangle est rectangle en $R$, donc l'hypoténuse est $[ST]$ (côté opposé à $R$). Le théorème de Pythagore donne $ST^2 = RS^2 + RT^2$. On remplace par les valeurs : $ST^2 = 5^2 + 12^2 = 25 + 144 = 169$. Pour trouver $ST$, on prend la racine carrée : $ST = \\sqrt{169} = 13$. Les autres options confondent addition et carrés, identifient mal l'hypoténuse ou font une soustraction incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

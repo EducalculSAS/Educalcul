@@ -1,0 +1,479 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.516467+00:00",
+  "id": 650,
+  "code": "terminale-generale-complementaires-t04-c02",
+  "title": "Aire sous une courbe",
+  "description": "Cours structuré Educalcul : Aire sous une courbe.",
+  "subject": "Calculs d'aires et intégrales",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Calculs d'aires et intégrales",
+    "titre_du_cours": "Aire sous une courbe",
+    "objectif_global": "Aire sous une courbe",
+    "mini_lecons_imposees": [
+      "Signe.",
+      "Intégrale.",
+      "Unités."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calculs d'aires et intégrales",
+      "lessons": [
+        {
+          "title": "Signe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe de l'aire sous une courbe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons explorer ce que signifie le signe d'une aire située sous une courbe. Jusqu'à présent, vous avez l'habitude de calculer des aires positives, comme l'aire d'un rectangle ou d'un triangle. Ici, la courbe peut passer au-dessus de l'axe des abscisses, mais aussi en dessous. Lorsque la fonction prend des valeurs négatives, l'aire « sous » la courbe devient une aire signée : elle est comptée négativement. Cette convention permet de conserver l'additivité de l'intégrale et de relier naturellement l'aire à des grandeurs physiques comme le déplacement, qui peut être positif ou négatif selon le sens du mouvement. Prenons l'exemple simple de la fonction $f(x)=x^2-1$ sur l'intervalle $[-2,2]$. Entre $-1$ et $1$, la courbe se trouve sous l'axe, donc la contribution à l'aire signée est négative, tandis qu'en dehors de cet intervalle elle est positive. Comprendre ce mécanisme est la clé pour manipuler les intégrales définies avec aisance."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-1",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Graphique de $f(x)=x^2-1$ : parties au-dessus et en-dessous de l'axe"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée de signe est posée, voyons comment séparer l'aire totale en deux parties distinctes : la partie où la fonction est positive et la partie où elle est négative. Cette décomposition va nous permettre de calculer l'aire signée en ajoutant l'aire positive et en soustrayant l'aire négative, ce qui est exactement ce que fait l'intégrale définie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer l'aire en parties positive et négative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une fonction continue sur un intervalle $[a,b]$, on commence par repérer les zéros de la fonction, c'est-à-dire les abscisses où la courbe coupe l'axe des abscisses. Ces points partagent l'intervalle en sous-intervalles sur lesquels la fonction garde un signe constant. Sur chaque sous-intervalle, l'aire usuelle (toujours positive) est calculée normalement. Ensuite, on attribue un signe $+$ si la fonction est positive sur ce sous-intervalle, et un signe $-$ si elle est négative. La somme algébrique de ces aires signées donne l'aire signée totale, qui coïncide avec la valeur de l'intégrale définie $\\int_a^b f(x)\\,dx$. Reprenons $f(x)=x^2-1$ sur $[-2,2]$ : les zéros sont $-1$ et $1$. On a donc trois sous-intervalles : $[-2,-1]$ où $f\\ge0$, $[-1,1]$ où $f\\le0$, et $[1,2]$ où $f\\ge0$. L'aire positive est la somme des aires sur $[-2,-1]$ et $[1,2]$, l'aire négative est l'aire sur $[-1,1]$ prise avec un signe moins."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des zéros et signes de $f(x)=x^2-1$ sur $[-2,2]$",
+              "min": -2,
+              "max": 2,
+              "points": [
+                {
+                  "value": -1,
+                  "label": "-1"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -2,
+                  "end": -1,
+                  "label": "+"
+                },
+                {
+                  "start": -1,
+                  "end": 1,
+                  "label": "-"
+                },
+                {
+                  "start": 1,
+                  "end": 2,
+                  "label": "+"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment décomposer l'intervalle grâce aux zéros. La méthode générale pour connaître le signe d'une fonction sur un intervalle complet consiste à : trouver les racines, tester un point dans chaque sous-intervalle, et noter le signe. Cette procédure systématique évite les erreurs et prépare le calcul de l'intégrale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pour connaître le signe sur un intervalle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode se déroule en trois étapes claires. Premièrement, on résout l'équation $f(x)=0$ pour obtenir toutes les racines dans l'intervalle considéré. Deuxièmement, on choisit une valeur test dans chaque sous-intervalle délimité par ces racines (et les bornes $a$ et $b$). Troisièmement, on évalue $f$ en ce point test : si le résultat est positif, la fonction est positive sur tout le sous-intervalle ; s'il est négatif, elle est négative. Cette approche fonctionne pour toute fonction continue, car le signe ne peut changer qu'en passant par zéro."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver les zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez $f(x)=0$ sur $[a,b]$. Notez les solutions $x_1<x_2<\\dots<x_k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir des points tests",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prenez un point dans chaque intervalle $[a,x_1]$, $[x_1,x_2]$, ..., $[x_k,b]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Évaluer le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $f$ en chaque point test. Le signe obtenu s'applique à tout le sous-intervalle correspondant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "A_{\\text{sign\\'ee}} = \\\\int_a^b f(x)\\,dx = \\\\sum_{i} (\\\\text{signe}_i)\\\\times A_i"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, le signe de l'aire sous une courbe n'est pas un simple détail : c'est la manifestation concrète du fait que l'intégrale additionne des contributions positives et négatives. Maîtriser la décomposition en parties de signe constant vous donne un outil puissant pour aborder n'importe quelle intégrale définie, même lorsque la fonction oscille plusieurs fois."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur l'intervalle $[-2,2]$, la fonction $f(x)=x^2-1$ est-elle positive, négative ou change-t-elle de signe ?",
+              "answer": "Elle change de signe : positive sur $[-2,-1] \\\\cup [1,2]$, négative sur $[-1,1]$.",
+              "hint": "Regarde les racines de $f$.",
+              "explanation": "Les racines sont $x=-1$ et $x=1$. Entre elles, $x^2<1$ donc $f(x)<0$. En dehors, $x^2>1$ donc $f(x)>0$."
+            },
+            {
+              "question": "Calculez l'aire signée de $f(x)=x^2-1$ sur $[-2,2]$ en décomposant en parties positive et négative.",
+              "answer": "L'aire positive vaut $\\\\frac{8}{3}$, l'aire négative vaut $-\\\\frac{4}{3}$, donc l'aire signée est $\\\\frac{4}{3}$.",
+              "hint": "Utilisez l'antidérivée $F(x)=\\\\frac{x^3}{3}-x$.",
+              "explanation": "Calculez $F(2)-F(1)$ pour la partie positive de $1$ à $2$, et $F(-1)-F(-2)$ pour la partie positive de $-2$ à $-1$. L'aire négative est $F(1)-F(-1)$ avec un signe moins."
+            },
+            {
+              "question": "Donnez la règle générale pour obtenir l'aire signée d'une fonction continue sur $[a,b]$.",
+              "answer": "On sépare $[a,b]$ en sous-intervalles où $f$ ne change pas de signe, on calcule l'aire usuelle sur chaque sous-intervalle et on additionne en donnant un signe $+$ si $f\\\\ge0$ et $-$ si $f\\\\le0$.",
+              "hint": "Pensez à la définition de l'intégrale comme somme de signes.",
+              "explanation": "C'est la définition de l'intégrale de Riemann pour une fonction à signe variable : l'intégrale est la limite des sommes de Riemann où chaque terme porte le signe de $f$ au point choisi."
+            }
+          ]
+        },
+        {
+          "title": "Intégrale.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La somme de Riemann : approcher l'aire par des rectangles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons construire l'intégrale définie à partir de l'idée intuitive d'approximer une aire curviligne par une somme d'aires de rectangles. Imaginez que vous vouliez mesurer la surface d'un terrain bordé par une rivière sinueuse. Vous pourriez poser des planches rectangulaires le long de la rive, plus les planches sont étroites, plus la somme de leurs surfaces se rapproche de la vraie surface. En mathématiques, on découpe l'intervalle $[a,b]$ en $n$ sous-intervalles de même largeur $\\\\Delta x = \\\\frac{b-a}{n}$. Sur chaque sous-intervalle, on choisit un point $x_i^*$ (par exemple le milieu) et on dresse un rectangle de hauteur $f(x_i^*)$. La somme des aires de ces rectangles s'écrit $\\\\sum_{i=1}^{n} f(x_i^*)\\\\Delta x$. C'est ce qu'on appelle une somme de Riemann. Plus $n$ grandit, plus $\\\\Delta x$ diminue, et plus la somme de Riemann colle à la courbe."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 10,
+              "caption": "Approximation de l'aire sous $y=x^2$ par des rectangles (curseur sur le nombre de rectangles)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment une somme de rectangles approxime l'aire. La étape suivante consiste à passer à la limite lorsque le nombre de rectangles tend vers l'infini. C'est là que naît la notion d'intégrale définie : si la limite des sommes de Riemann existe et est indépendante du choix des points $x_i^*$, on dit que la fonction est intégrable sur $[a,b]$ et on note cette limite $\\\\int_a^b f(x)\\,dx$. Cette définition rigoureuse fonde tout le calcul intégral et garantit que l'aire signée que nous avons manipulée dans la leçon précédente est bien un objet mathématique précis."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition de l'intégrale définie comme limite de sommes de Riemann"
+            },
+            {
+              "type": "paragraph",
+              "content": "Formellement, soit $f$ une fonction bornée sur $[a,b]$. Pour chaque entier $n\\\\ge1$, on considère une subdivision régulière $a=x_0<x_1<\\\\dots<x_n=b$ avec $x_i=a+i\\\\Delta x$. On choisit un point $x_i^*\\\\in[x_{i-1},x_i]$. La somme de Riemann associée est $R_n=\\\\sum_{i=1}^{n} f(x_i^*)\\\\Delta x$. Si la suite $(R_n)$ converge vers un nombre réel $I$ quand $n\\\\to\\\\infty$ quel que soit le choix des $x_i^*$, alors $f$ est intégrable au sens de Riemann sur $[a,b]$ et on pose $\\\\int_a^b f(x)\\,dx = I$. Cette définition ne demande pas que $f$ soit continue, seulement qu'elle soit bornée et que l'ensemble de ses points de discontinuité soit négligeable (de mesure nulle). En pratique, toutes les fonctions continues par morceaux que vous rencontrerez sont intégrables."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\int_a^b f(x)\\,dx = \\\\lim_{n\\\\to\\\\infty} \\\\sum_{i=1}^{n} f(x_i^*)\\\\Delta x"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le lien magique entre l'intégrale et la dérivation est donné par le théorème fondamental du calcul. Il existe deux formulations : la première dit que si $F$ est une primitive de $f$ sur $[a,b]$ (c'est-à-dire $F'=f$), alors $\\\\int_a^b f(x)\\,dx = F(b)-F(a)$. La seconde affirme que la fonction $F(x)=\\\\int_a^x f(t)\\,dt$ est une primitive de $f$. Ce théorème transforme le calcul d'aires, a priori limite de sommes, en une simple évaluation de primitives. C'est la raison pour laquelle l'intégrale est un outil si puissant en physique, en économie, en probabilités..."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème fondamental du calcul et calcul effectif"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer concrètement une intégrale, on cherche d'abord une primitive $F$ de $f$. Les tables de primitives usuelles (puissances, exponentielle, logarithme, trigonométriques) sont vos meilleures alliées. Une fois $T$ trouvée, on applique la formule $F(b)-F(a)$. Attention : la constante d'intégration disparaît dans la différence, donc on peut prendre n'importe quelle primitive. Par exemple, pour $\\\\int_0^2 x^2\\,dx$, une primitive est $\\\\frac{x^3}{3}$. L'intégrale vaut $\\\\frac{2^3}{3}-\\\\frac{0^3}{3}=\\\\frac{8}{3}$. Si la fonction change de signe, le théorème reste valable : l'intégrale donne directement l'aire signée, sans avoir à décomposer manuellement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherchez $F$ tel que $F'=f$. Utilisez les formules de dérivation à l'envers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Évaluer aux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $F(b)$ et $F(a)$, puis faites la différence $F(b)-F(a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f\\\\ge0$ sur $[a,b]$, le résultat est l'aire usuelle. Sinon, c'est l'aire signée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 2,
+              "caption": "Aire exacte sous $y=x^2$ de $0$ à $2$ : $\\\\frac{8}{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'intégrale ne peut pas s'exprimer en fonctions élémentaires. Dans ce cas, on utilise des méthodes numériques (rectangles, trapèzes, Simpson) ou des développements en série. Mais pour le programme de terminale, vous maîtriserez les intégrales de fonctions rationnelles, exponentielles, logarithmiques et trigonométriques simples. L'entraînement régulier sur des exercices variés est la clé pour gagner en rapidité et en sûreté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, l'intégrale définie est née du désir de mesurer des aires courbes. La somme de Riemann en donne une définition rigoureuse, le théorème fondamental du calcul en fait un outil de calcul efficace, et la notion d'aire signée en assure la cohérence avec les applications physiques. Vous possédez maintenant les fondements pour aborder les chapitres suivants avec confiance."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrivez la somme de Riemann pour $f(x)=x^2$ sur $[0,2]$ avec une subdivision régulière en $n$ intervalles et des points tests choisis comme les milieux.",
+              "answer": "$R_n = \\\\sum_{i=1}^{n} \\\\left(\\\\frac{2i-1}{n}\\\\right)^2 \\\\cdot \\\\frac{2}{n}$.",
+              "hint": "Le milieu du $i$-ième sous-intervalle est $x_i^* = \\\\frac{2i-1}{n}$.",
+              "explanation": "La largeur est $\\\\Delta x = 2/n$. Le milieu de $[(i-1)\\\\Delta x, i\\\\Delta x]$ est $(i-1/2)\\\\Delta x = (2i-1)/n$. On élève au carré et on multiplie par $\\\\Delta x$."
+            },
+            {
+              "question": "En utilisant la définition de l'intégrale comme limite de sommes de Riemann, expliquez pourquoi $\\\\int_0^1 x\\,dx = 1/2$.",
+              "answer": "La somme de Riemann avec points à droite donne $\\\\sum_{i=1}^n \\\\frac{i}{n}\\\\cdot\\\\frac{1}{n} = \\\\frac{1}{n^2}\\\\frac{n(n+1)}{2} \\\\to 1/2$.",
+              "hint": "Utilisez la formule de la somme des premiers entiers.",
+              "explanation": "La somme des $i$ de $1$ à $n$ vaut $n(n+1)/2$. En divisant par $n^2$, la limite est $1/2$."
+            },
+            {
+              "question": "Calculez $\\\\int_1^4 \\\\frac{1}{x}\\,dx$ en utilisant le théorème fondamental du calcul.",
+              "answer": "$\\\\ln 4$.",
+              "hint": "Une primitive de $1/x$ est $\\\\ln|x|$.",
+              "explanation": "On prend $F(x)=\\\\ln x$ sur $[1,4]$. Alors $F(4)-F(1)=\\\\ln 4 - \\\\ln 1 = \\\\ln 4$."
+            },
+            {
+              "question": "Déterminez $\\\\int_{-1}^1 (x^3 - x)\\,dx$ sans calculer de primitive, en utilisant la parité de la fonction.",
+              "answer": "$0$.",
+              "hint": "La fonction est impaire et l'intervalle est symétrique par rapport à $0$.",
+              "explanation": "Pour une fonction impaire $f(-x)=-f(x)$, l'intégrale sur $[-a,a]$ est nulle car les contributions opposées s'annulent."
+            }
+          ]
+        },
+        {
+          "title": "Unités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les unités de l'aire sous une courbe : produit des unités des axes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette dernière leçon, nous abordons une question souvent négligée mais essentielle : quelle est l'unité de mesure de l'aire située sous une courbe ? Si l'axe horizontal porte une unité (par exemple des secondes $s$) et l'axe vertical une autre unité (par exemple des mètres par seconde $m/s$), alors chaque petit rectangle d'approximation a pour aire le produit de sa base (en $s$) par sa hauteur (en $m/s$), soit des mètres $m$. L'intégrale, qui est la limite de la somme de ces rectangles, hérite donc de cette unité produit. C'est une règle universelle : l'unité de $\\\\int_a^b f(x)\\,dx$ est l'unité de $x$ multipliée par l'unité de $f(x)$."
+            },
+            {
+              "type": "display_math",
+              "latex": "[\\\\int_a^b f(x)\\,dx] = [x]\\\\times[f(x)]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret tiré de la cinématique. Soit $v(t)$ la vitesse d'un mobile en fonction du temps $t$. L'axe des abscisses est le temps, son unité est la seconde $s$. L'axe des ordonnées est la vitesse, son unité est le mètre par seconde $m/s$. L'aire sous la courbe $v(t)$ entre $t_1$ et $t_2$ représente le déplacement. Son unité est donc $s \\\\times m/s = m$, ce qui est bien une longueur. Cette cohérence dimensionnelle est un excellent moyen de vérifier qu'une formule physique est plausible : si vous obtenez une aire en $m^2$ pour un déplacement, il y a une erreur quelque part."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Unités typiques : temps (s), vitesse (m/s), aire (m)",
+              "bars": [
+                {
+                  "label": "Temps",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vitesse",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Aire (déplacement)",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent de devoir convertir les unités avant ou après l'intégration. Par exemple, si le temps est donné en heures $h$ et la vitesse en kilomètres par heure $km/h$, l'aire sera en kilomètres $km$. Mais si l'on veut le résultat en mètres, il faut convertir : $1\\,km = 1000\\,m$. On peut soit convertir les données avant d'intégrer (changer l'échelle de l'axe horizontal ou vertical), soit convertir le résultat final. Les deux méthodes sont équivalentes grâce à la linéarité de l'intégrale : $\\\\int_a^b (k\\\\cdot f(x))\\,dx = k\\\\int_a^b f(x)\\,dx$ pour toute constante $k$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conversion d'unités et linéarité de l'intégrale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que vous ayez calculé $\\\\int_0^2 v(t)\\,dt = 5$ avec $t$ en heures et $v$ en $km/h$, donc l'aire est $5\\,km$. Pour l'exprimer en mètres, multipliez par $1000$ : $5000\\,m$. Vous auriez aussi pu changer l'unité de temps en secondes ($1\\,h = 3600\\,s$) et la vitesse en $m/s$ ($1\\,km/h = 1000/3600\\,m/s$), puis intégrer. Le produit des facteurs de conversion donne le même facteur global $1000$. Cette propriété est très utile en physique pour passer d'un système d'unités à un autre sans refaire tout le calcul."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Grandeurs",
+                "Unité initiale",
+                "Facteur de conversion",
+                "Unité finale"
+              ],
+              "rows": [
+                [
+                  "Temps",
+                  "h",
+                  "3600",
+                  "s"
+                ],
+                [
+                  "Vitesse",
+                  "km/h",
+                  "1000/3600",
+                  "m/s"
+                ],
+                [
+                  "Aire",
+                  "km",
+                  "1000",
+                  "m"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, l'analyse dimensionnelle permet de deviner la forme d'une intégrale sans la calculer. Si vous savez que le résultat doit être une énergie (en joules $J = kg\\\\cdot m^2/s^2$) et que vous intégrez une force (en newtons $N = kg\\\\cdot m/s^2$) par rapport à une distance (en mètres $m$), vous vérifiez immédiatement que $N \\\\times m = J$. Cette vérification rapide évite bien des erreurs d'inattention, surtout dans les problèmes complexes où plusieurs intégrales s'enchaînent."
+            },
+            {
+              "type": "display_math",
+              "latex": "[F] = N,\\; [x] = m \\\\Rightarrow [\\\\int F\\,dx] = N\\\\cdot m = J"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant une vision complète : le signe de l'aire, sa définition rigoureuse par les sommes de Riemann, le lien avec les primitives grâce au théorème fondamental, et enfin la gestion des unités qui ancre les mathématiques dans la réalité physique. Ces quatre piliers vous accompagneront tout au long de vos études supérieures, que ce soit en mathématiques pures, en physique, en économie ou en ingénierie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est une aire signée et la relier aux zéros de la fonction.",
+                "Je sais construire une somme de Riemann et comprendre sa limite comme intégrale définie.",
+                "J'applique le théorème fondamental du calcul pour évaluer des intégrales.",
+                "Je détermine l'unité d'une intégrale comme produit des unités des axes et je sais convertir les unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si $x$ est en mètres $m$ et $f(x)$ en newtons $N$, quelle est l'unité de $\\\\int_a^b f(x)\\,dx$ ?",
+              "answer": "Joule $J$ (car $N\\\\cdot m = J$).",
+              "hint": "Multipliez les unités des axes.",
+              "explanation": "L'unité de l'intégrale est le produit de l'unité de la variable d'intégration et de l'unité de la fonction."
+            },
+            {
+              "question": "Un mobile a pour vitesse $v(t)=3t^2$ avec $t$ en secondes et $v$ en $m/s$. Calculez son déplacement entre $t=0$ et $t=2$ et donnez son unité.",
+              "answer": "Déplacement $= \\\\int_0^2 3t^2\\,dt = 8\\,m$.",
+              "hint": "Intégrez $3t^2$ pour obtenir $t^3$.",
+              "explanation": "Une primitive est $t^3$. L'intégrale vaut $2^3-0^3=8$. L'unité est $s \\\\times m/s = m$."
+            },
+            {
+              "question": "Vous avez calculé une aire de $12$ avec $x$ en $cm$ et $f(x)$ en $g/cm^2$. Convertissez le résultat en $kg$.",
+              "answer": "$0,12\\,kg$.",
+              "hint": "Unité de l'aire : $cm \\\\times g/cm^2 = g/cm$. Attention : $g/cm$ n'est pas une masse. Revoyez les unités.",
+              "explanation": "L'unité de $f$ est $g/cm^2$, celle de $x$ est $cm$, donc l'aire est en $g/cm$. Pour obtenir une masse en $g$, il faut que $f$ soit en $g/cm$ (linéaire) ou que $x$ soit en $cm^2$. Vérifiez la cohérence du problème."
+            },
+            {
+              "question": "Vérifiez par analyse dimensionnelle que $\\\\int_0^T P(t)\\,dt$ a pour unité l'énergie si $P$ est une puissance.",
+              "answer": "Puissance en $W = J/s$, temps en $s$, produit $J$.",
+              "hint": "Unité de la puissance : joule par seconde.",
+              "explanation": "$[P]=J/s$, $[t]=s$, donc $[\\\\int P\\,dt] = (J/s)\\\\times s = J$, qui est bien une énergie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

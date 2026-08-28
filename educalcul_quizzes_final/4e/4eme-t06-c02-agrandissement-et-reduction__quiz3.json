@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 446,
+  "_course_code": "4eme-t06-c02-agrandissement-et-reduction",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Aires intuitives selon programme",
+  "title": "Aires intuitives et agrandissement/réduction",
+  "questions": [
+    {
+      "text": "On considère un rectangle de 2 unités de long sur 3 unités de large. Son aire est de 6 unités d'aire. On agrandit ce rectangle avec un rapport d'agrandissement $k = 2$. Quelle est l'aire du rectangle image ?",
+      "options": [
+        "12 unités d'aire",
+        "18 unités d'aire",
+        "24 unités d'aire",
+        "36 unités d'aire"
+      ],
+      "correctAnswer": "24 unités d'aire",
+      "explanation": "Lors d'un agrandissement de rapport $k$, les longueurs sont multipliées par $k$ et les aires sont multipliées par $k^2$. Ici $k = 2$, donc $k^2 = 4$. L'aire initiale est 6, l'aire finale est $6 \\times 4 = 24$ unités d'aire. L'option 12 correspond à une multiplication par $k$ (erreur : confusion longueur/aire). L'option 18 correspond à une multiplication par 3. L'option 36 correspond à une multiplication par 6 ($k \\times$ aire initiale).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 6,
+        "caption": "Rectangle initial 2 x 3 (aire 6)"
+      }
+    },
+    {
+      "text": "Une figure a une aire de $15 \\text{ cm}^2$. On effectue un agrandissement de rapport $k = 3$. Quelle est l'aire de l'image ?",
+      "options": [
+        "45 cm²",
+        "135 cm²",
+        "405 cm²",
+        "30 cm²"
+      ],
+      "correctAnswer": "135 cm²",
+      "explanation": "L'aire de l'image s'obtient en multipliant l'aire initiale par $k^2$. Ici $k = 3$, donc $k^2 = 9$. Le calcul est $15 \\times 9 = 135$. L'option 45 correspond à $15 \\times 3$ (multiplication par $k$ au lieu de $k^2$). L'option 405 correspond à $15 \\times 27$ ($k^3$). L'option 30 correspond à $15 \\times 2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a une aire de $8 \\text{ cm}^2$. Après un agrandissement, son image a une aire de $72 \\text{ cm}^2$. Quel est le rapport d'agrandissement $k$ ?",
+      "options": [
+        "3",
+        "9",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le rapport des aires vaut $k^2$. On a $\\frac{72}{8} = 9$. Donc $k^2 = 9$, ce qui donne $k = 3$ (le rapport est positif). L'option 9 est le rapport des aires ($k^2$), pas le rapport de longueur $k$. L'option 4 ne correspond à aucun calcul simple ici. L'option 6 correspondrait à $k = \\frac{72}{12}$ approximativement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On réduit une figure avec un rapport $k = 0,5$. L'aire de la figure initiale est $50 \\text{ cm}^2$. Quelle est l'aire de l'image ?",
+      "options": [
+        "25 cm²",
+        "12,5 cm²",
+        "100 cm²",
+        "200 cm²"
+      ],
+      "correctAnswer": "12,5 cm²",
+      "explanation": "Pour une réduction, $k < 1$. L'aire est multipliée par $k^2$. Ici $k = 0,5$, donc $k^2 = 0,25$. L'aire image est $50 \\times 0,25 = 12,5 \\text{ cm}^2$. L'option 25 correspond à $50 \\times 0,5$ (multiplication par $k$). L'option 100 correspond à une multiplication par 2 (inverse de $k$). L'option 200 correspond à une multiplication par 4 (inverse de $k^2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une photographie rectangulaire mesure $10 \\text{ cm}$ sur $15 \\text{ cm}$. On l'agrandit pour obtenir un poster de $30 \\text{ cm}$ sur $45 \\text{ cm}$. L'aire du poster est combien de fois plus grande que l'aire de la photo ?",
+      "options": [
+        "3 fois",
+        "6 fois",
+        "9 fois",
+        "12 fois"
+      ],
+      "correctAnswer": "9 fois",
+      "explanation": "Le rapport d'agrandissement $k$ est le rapport des longueurs correspondantes : $k = \\frac{30}{10} = 3$ (ou $\\frac{45}{15} = 3$). Le rapport des aires est $k^2 = 3^2 = 9$. L'aire de la photo est $150 \\text{ cm}^2$, celle du poster est $1350 \\text{ cm}^2$, et $\\frac{1350}{150} = 9$. L'option 3 est le rapport des longueurs ($k$). L'option 6 est $2k$. L'option 12 est $4k$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 91,
+  "_course_code": "ce1-t03-c04-soustraction-posee-sans-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Aligner les chiffres",
+  "title": "Quiz : Aligner les chiffres pour une soustraction posée",
+  "questions": [
+    {
+      "text": "Pour calculer $45 - 23$ en posé, comment doit-on placer les chiffres les uns par rapport aux autres ?",
+      "options": [
+        "Les unités sous les dizaines",
+        "Les unités sous les unités et les dizaines sous les dizaines",
+        "Les dizaines sous les unités",
+        "N'importe comment tant que le trait de séparation est tracé"
+      ],
+      "correctAnswer": "Les unités sous les unités et les dizaines sous les dizaines",
+      "explanation": "En soustraction posée, la règle fondamentale est d'aligner les chiffres selon leur valeur de position : les chiffres des unités doivent être exactement au-dessus les uns des autres, et les chiffres des dizaines doivent être exactement au-dessus les uns des autres. Cela permet de soustraire les unités aux unités et les dizaines aux dizaines. L'option A et C décrivent un mauvais alignement qui mènerait à un résultat faux. L'option D est fausse car l'alignement est obligatoire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la soustraction posée ci-dessous. Est-elle correctement alignée ?",
+      "options": [
+        "Oui, les unités sont alignées et les dizaines sont alignées.",
+        "Non, les unités du nombre du bas sont sous les dizaines du nombre du haut.",
+        "Non, il manque le signe moins à gauche.",
+        "Non, le résultat affiché est incorrect."
+      ],
+      "correctAnswer": "Oui, les unités sont alignées et les dizaines sont alignées.",
+      "explanation": "La figure montre l'opération $45 - 23$. Le chiffre 3 (unités du second nombre) est bien placé sous le 5 (unités du premier nombre). Le chiffre 2 (dizaines du second nombre) est bien placé sous le 4 (dizaines du premier nombre). L'alignement est donc parfait. Le signe moins est présent à gauche. Le résultat $22$ est correct pour cette soustraction sans échange.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "45",
+          "23"
+        ],
+        "result": "22",
+        "carries": []
+      }
+    },
+    {
+      "text": "On veut poser la soustraction $58 - 34$. Parmi les propositions suivantes, laquelle décrit le bon alignement ?",
+      "options": [
+        "Le 3 est sous le 5 et le 4 est sous le 8.",
+        "Le 3 est sous le 8 et le 4 est sous le 5.",
+        "Le 4 est sous le 5 et le 3 est sous le 8.",
+        "Le 8 est sous le 5 et le 4 est sous le 3."
+      ],
+      "correctAnswer": "Le 3 est sous le 5 et le 4 est sous le 8.",
+      "explanation": "Dans $58$, le 5 est le chiffre des dizaines et le 8 celui des unités. Dans $34$, le 3 est le chiffre des dizaines et le 4 celui des unités. Pour aligner correctement, il faut mettre les dizaines sous les dizaines (3 sous 5) et les unités sous les unités (4 sous 8). L'option B inverse les positions (dizaines sous unités). L'option C inverse aussi les chiffres du second nombre. L'option D ne correspond à aucune logique de position.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève pose la soustraction $46 - 21$ de cette manière : il écrit le 2 sous le 6 et le 1 à droite du 2. Quelle est son erreur ?",
+      "options": [
+        "Il a mis les dizaines sous les unités.",
+        "Il a mis les unités sous les dizaines.",
+        "Il a oublié d'écrire le chiffre des dizaines du premier nombre.",
+        "Il a inversé les chiffres du second nombre."
+      ],
+      "correctAnswer": "Il a mis les dizaines sous les unités.",
+      "explanation": "Le nombre du bas est $21$ : le 2 représente les dizaines et le 1 les unités. Le nombre du haut est $46$ : le 4 représente les dizaines et le 6 les unités. En mettant le 2 (dizaines) sous le 6 (unités), l'élève aligne les dizaines du second nombre sous les unités du premier. C'est l'erreur classique de décalage vers la droite. L'option B serait l'erreur inverse (décalage vers la gauche). Les options C et D ne correspondent pas à la description.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle phrase décrit la règle générale pour bien aligner une soustraction posée sans échange ?",
+      "options": [
+        "On aligne les chiffres à partir de la gauche.",
+        "On aligne les chiffres en mettant le plus grand nombre au-dessus.",
+        "On aligne les chiffres en commençant par les unités (à droite).",
+        "On centre les deux nombres au milieu de la colonne."
+      ],
+      "correctAnswer": "On aligne les chiffres en commençant par les unités (à droite).",
+      "explanation": "La règle universelle pour poser une opération (addition, soustraction, multiplication) est d'aligner les nombres par la droite, c'est-à-dire en commençant par placer les unités l'une sous l'autre. Cela garantit que les dizaines, centaines, etc., se retrouvent automatiquement alignées. L'option A est fausse car aligner à gauche décale tout si les nombres n'ont pas le même nombre de chiffres. L'option B concerne l'ordre des nombres (le plus grand au-dessus pour la soustraction) mais pas l'alignement des colonnes. L'option D n'a pas de sens mathématique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

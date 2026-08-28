@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 506,
+  "_course_code": "2nde-t02-c04-fractions-algebriques-simples",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Calculs simples",
+  "title": "Quiz : Calculs simples sur les fractions algébriques",
+  "questions": [
+    {
+      "text": "Simplifier la fraction algébrique $\\frac{x^2 - 4}{x + 2}$ pour $x \\neq -2$.",
+      "options": [
+        "$x - 2$",
+        "$x + 2$",
+        "$x - 4$",
+        "$\\frac{x - 2}{x + 2}$"
+      ],
+      "correctAnswer": "$x - 2$",
+      "explanation": "On factorise le numérateur en utilisant l'identité remarquable $a^2 - b^2 = (a-b)(a+b)$ : $x^2 - 4 = (x-2)(x+2)$. La fraction devient $\\frac{(x-2)(x+2)}{x+2}$. On simplifie par le facteur commun $x+2$ (non nul car $x \\neq -2$), ce qui donne $x-2$. Les autres options correspondent à une erreur de factorisation, une absence de simplification ou une simplification partielle incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $\\frac{x^2 + 5x + 6}{x + 3}$ pour $x \\neq -3$.",
+      "options": [
+        "$x + 2$",
+        "$x + 3$",
+        "$x + 5$",
+        "$\\frac{x + 2}{x + 3}$"
+      ],
+      "correctAnswer": "$x + 2$",
+      "explanation": "On factorise le trinôme du numérateur : $x^2 + 5x + 6 = (x+2)(x+3)$. La fraction s'écrit $\\frac{(x+2)(x+3)}{x+3}$. On simplifie par $x+3$ (non nul car $x \\neq -3$), il reste $x+2$. L'option $x+3$ confond les facteurs, $x+5$ correspond à une addition incorrecte des coefficients, et la dernière option oublie de simplifier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectuer le produit suivant et simplifier : $\\frac{2x}{x-1} \\times \\frac{x-1}{3x}$ pour $x \\neq 0, 1$.",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{2x}{3}$",
+        "$\\frac{2}{3x}$",
+        "$\\frac{2x^2}{3x-3}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "On multiplie les numérateurs entre eux et les dénominateurs entre eux : $\\frac{2x \\times (x-1)}{(x-1) \\times 3x} = \\frac{2x(x-1)}{3x(x-1)}$. On simplifie les facteurs communs $x$ (non nul) et $x-1$ (non nul). Il reste $\\frac{2}{3}$. L'option $\\frac{2x}{3}$ oublie de simplifier $x$, $\\frac{2}{3x}$ simplifie mal $x-1$ mais garde $x$ au dénominateur, et la dernière option est le produit non simplifié.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer la somme $\\frac{3}{x+2} + \\frac{x}{x+2}$ pour $x \\neq -2$.",
+      "options": [
+        "$\\frac{x+3}{x+2}$",
+        "$\\frac{3x}{x+2}$",
+        "$\\frac{x+3}{2x+4}$",
+        "$x+3$"
+      ],
+      "correctAnswer": "$\\frac{x+3}{x+2}$",
+      "explanation": "Les deux fractions ont le même dénominateur $x+2$. On additionne les numérateurs en gardant le dénominateur commun : $\\frac{3 + x}{x+2} = \\frac{x+3}{x+2}$. L'option $\\frac{3x}{x+2}$ multiplie les numérateurs au lieu de les ajouter. L'option $\\frac{x+3}{2x+4}$ ajoute incorrectement les dénominateurs. L'option $x+3$ supprime le dénominateur à tort.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Mettre au même dénominateur et simplifier : $\\frac{1}{x} - \\frac{1}{x+1}$ pour $x \\neq 0, -1$.",
+      "options": [
+        "$\\frac{1}{x(x+1)}$",
+        "$\\frac{1}{x+1}$",
+        "$\\frac{-1}{x(x+1)}$",
+        "$\\frac{1}{2x+1}$"
+      ],
+      "correctAnswer": "$\\frac{1}{x(x+1)}$",
+      "explanation": "Le dénominateur commun est $x(x+1)$. On écrit $\\frac{1}{x} = \\frac{x+1}{x(x+1)}$ et $\\frac{1}{x+1} = \\frac{x}{x(x+1)}$. La différence est $\\frac{x+1 - x}{x(x+1)} = \\frac{1}{x(x+1)}$. L'option $\\frac{1}{x+1}$ correspond à une annulation incorrecte. L'option $\\frac{-1}{x(x+1)}$ inverse l'ordre de la soustraction au numérateur. L'option $\\frac{1}{2x+1}$ additionne les dénominateurs ce qui est une erreur classique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

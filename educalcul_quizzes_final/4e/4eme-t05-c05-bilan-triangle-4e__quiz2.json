@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Checklist",
+  "title": "Bilan Triangle 4e - Checklist",
+  "questions": [
+    {
+      "text": "Dans un triangle ABC, on sait que l'angle A mesure $40^\\circ$ et que l'angle B mesure $70^\\circ$. Quelle est la mesure de l'angle C ?",
+      "options": [
+        "$50^\\circ$",
+        "$60^\\circ$",
+        "$70^\\circ$",
+        "$80^\\circ$"
+      ],
+      "correctAnswer": "$70^\\circ$",
+      "explanation": "La somme des angles d'un triangle vaut toujours $180^\\circ$. On calcule $180 - (40 + 70) = 180 - 110 = 70$. L'angle C mesure donc $70^\\circ$. Les autres options correspondent à des erreurs de calcul ou à une confusion avec la somme $360^\\circ$ d'un quadrilatère.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les triplets de longueurs suivants, lequel peut correspondre aux côtés d'un triangle ?",
+      "options": [
+        "$2$, $3$, $6$",
+        "$4$, $5$, $10$",
+        "$5$, $7$, $12$",
+        "$6$, $8$, $10$"
+      ],
+      "correctAnswer": "$6$, $8$, $10$",
+      "explanation": "Dans un triangle, la somme de deux côtés doit être strictement supérieure au troisième côté (inégalité triangulaire). Pour $2, 3, 6$ : $2+3=5 < 6$ (impossible). Pour $4, 5, 10$ : $4+5=9 < 10$ (impossible). Pour $5, 7, 12$ : $5+7=12$ (triangle aplati, impossible). Pour $6, 8, 10$ : $6+8=14 > 10$, $6+10=16 > 8$, $8+10=18 > 6$, toutes les inégalités sont vérifiées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie pour tout triangle ?",
+      "options": [
+        "La somme des angles vaut $360^\\circ$.",
+        "La médiane issue d'un sommet est toujours perpendiculaire au côté opposé.",
+        "La somme de deux côtés est toujours strictement supérieure au troisième côté.",
+        "Les trois hauteurs se coupent toujours à l'intérieur du triangle."
+      ],
+      "correctAnswer": "La somme de deux côtés est toujours strictement supérieure au troisième côté.",
+      "explanation": "C'est l'énoncé de l'inégalité triangulaire, propriété fondamentale de tout triangle. La somme des angles vaut $180^\\circ$ (pas $360^\\circ$). La médiane n'est perpendiculaire au côté opposé que dans un triangle isocèle (au sommet principal) ou équilatéral. Les trois hauteurs se coupent à l'orthocentre, qui est à l'extérieur du triangle si ce dernier est obtusangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle, comment s'appelle la droite qui passe par un sommet et coupe le côté opposé en son milieu ?",
+      "options": [
+        "La hauteur",
+        "La médiatrice",
+        "La médiane",
+        "La bissectrice"
+      ],
+      "correctAnswer": "La médiane",
+      "explanation": "Par définition : la médiane relie un sommet au milieu du côté opposé. La hauteur passe par un sommet et est perpendiculaire au côté opposé. La médiatrice est perpendiculaire à un côté et passe par son milieu (elle ne passe pas nécessairement par un sommet). La bissectrice coupe l'angle en deux angles égaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $9$, $12$ et $15$. Quelle est sa nature ?",
+      "options": [
+        "Rectangle",
+        "Aigu",
+        "Obtus",
+        "Impossible à déterminer"
+      ],
+      "correctAnswer": "Rectangle",
+      "explanation": "On utilise la réciproque du théorème de Pythagore. Le plus grand côté est $15$. On calcule $9^2 + 12^2 = 81 + 144 = 225$. On calcule $15^2 = 225$. Comme $9^2 + 12^2 = 15^2$, le triangle est rectangle (l'angle opposé au côté de longueur 15 est droit). C'est un triangle rectangle particulier (multiple du triangle 3-4-5).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Graphique",
+  "title": "Graphiques de fonctions linéaires",
+  "blocks": [
+    {
+      "title": "Pente et ordonnée à l'origine",
+      "content": "La droite passe par les points A($0$, $2$) et B($3$, $5$). Sa pente est ${{1}}$ et son ordonnée à l'origine est ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La pente se calcule par $(5 - 2) / (3 - 0) = 3 / 3 = 1$. L'ordonnée à l'origine est la coordonnée y du point d'abscisse $0$, ici $2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation d'une droite à partir de son graphique",
+      "content": "Le graphique ci‑dessous représente une droite. Son équation réduite est y = ${{1}}$x + ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "-2",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On repère deux points sur la droite, par exemple ($0$, $4$) et ($1$, $2$). La pente est $(2 - 4) / (1 - 0) = -2$. L'ordonnée à l'origine est $4$. Donc l'équation est $y = -2x + 4$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "-2*x+4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Droite d'équation y = -2x + 4"
+      }
+    },
+    {
+      "title": "Coefficient directeur et intersection avec l'axe des ordonnées",
+      "content": "Une droite passe par les points C($1$, $3$) et D($4$, $0$). Son coefficient directeur est ${{1}}$ et elle coupe l'axe des ordonnées au point (0, ${{2}}$).",
+      "correctAnswer": "",
+      "blanks": [
+        "-1",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient directeur (pente) est $(0 - 3) / (4 - 1) = -3 / 3 = -1$. En utilisant l'équation $y = -x + b$ et le point ($1$, $3$), on trouve $3 = -1 + b$, donc $b = 4$. L'intersection avec l'axe des ordonnées est ($0$, $4$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

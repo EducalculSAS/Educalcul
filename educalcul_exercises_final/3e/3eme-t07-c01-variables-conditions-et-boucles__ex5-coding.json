@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Lire programme",
+  "title": "Lire un programme algorithmique - Approfondissement",
+  "blocks": [
+    {
+      "title": "Somme d'entiers avec une boucle Pour",
+      "content": "On exécute l'algorithme suivant :\\n\\na ← 0\\nPour i de 1 à 5 faire\\n    a ← a + i\\nFin pour\\nAfficher a\\n\\nQuelle valeur est affichée ?",
+      "correctAnswer": "La valeur affichée est $15$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable a est initialisée à $0$. La boucle Pour fait varier i de $1$ à $5$ et ajoute i à a à chaque tour. Les valeurs successives de a sont : $1$, $3$, $6$, $10$, $15$. À la fin de la boucle, a vaut $15$, qui est affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle Pour avec condition Si",
+      "content": "On exécute l'algorithme suivant :\\n\\nx ← 10\\nPour k de 1 à 4 faire\\n    Si x > 5 alors\\n        x ← x - 2\\n    Sinon\\n        x ← x + 3\\n    Fin si\\nFin pour\\nAfficher x\\n\\nQuelle valeur est affichée ?",
+      "correctAnswer": "La valeur affichée est $7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au départ x = $10$. \\n- k = 1 : x > 5, donc x devient $8$.\\n- k = 2 : x > 5, donc x devient $6$.\\n- k = 3 : x > 5, donc x devient $4$.\\n- k = 4 : x ≤ 5, donc x devient $7$.\\nÀ la fin de la boucle, x vaut $7$, qui est affiché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle Tant que avec deux variables",
+      "content": "On exécute l'algorithme suivant :\\n\\nn ← 1\\ns ← 0\\nTant que s < 20 faire\\n    s ← s + n\\n    n ← n + 1\\nFin tant que\\nAfficher n\\n\\nQuelle valeur de n est affichée ?",
+      "correctAnswer": "La valeur affichée est $7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On suit les valeurs de s et n à chaque itération :\\n- Début : n = $1$, s = $0$.\\n- Itération 1 : s = $1$, n = $2$.\\n- Itération 2 : s = $3$, n = $3$.\\n- Itération 3 : s = $6$, n = $4$.\\n- Itération 4 : s = $10$, n = $5$.\\n- Itération 5 : s = $15$, n = $6$.\\n- Itération 6 : s = $21$, n = $7$.\\nAprès la sixième itération, la condition s < 20 devient fausse (s = $21$), la boucle s'arrête et n vaut $7$, qui est affiché.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Conditions et boucles",
+  "title": "Quiz : Conditions et boucles - Applications",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, quelle valeur est affichée si $x = -3$ ? Si $x > 0$ alors afficher $x$ sinon afficher $-x$.",
+      "options": [
+        "$3$",
+        "$-3$",
+        "$0$",
+        "$6$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "La condition $x > 0$ est fausse pour $x = -3$, donc on exécute la branche sinon qui affiche $-x = -(-3) = 3$. Les autres options correspondent à une mauvaise évaluation de la condition ou au signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'algorithme ci-dessous calcule la somme des entiers de $1$ à $5$. Quelle valeur est affichée ? s ← 0 ; Pour i de $1$ à $5$ faire s ← s + i ; Fin pour ; Afficher s.",
+      "options": [
+        "$10$",
+        "$15$",
+        "$20$",
+        "$12$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "La boucle ajoute successivement $1, 2, 3, 4, 5$ à $s$. La somme $1+2+3+4+5 = 15$. Les distracteurs proviennent d'oublis d'un terme ou d'une addition erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat affiché par l'algorithme suivant ? c ← 0 ; n ← 7 ; Tant que n > 0 faire c ← c + 1 ; n ← n - 2 ; Fin tant que ; Afficher c.",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "La boucle s'exécute tant que $n>0$. Les valeurs successives de $n$ sont $7,5,3,1,-1$ ; la boucle tourne donc 4 fois, incrémentant $c$ à chaque tour. Résultat $c=4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le programme à boucles imbriquées ci-dessous, quelle valeur finale de $s$ est affichée ? s ← 0 ; Pour i de $1$ à $3$ faire Pour j de $1$ à $2$ faire s ← s + i * j ; Fin pour ; Fin pour ; Afficher s.",
+      "options": [
+        "$12$",
+        "$18$",
+        "$24$",
+        "$9$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "On additionne $i\\times j$ pour $i=1,2,3$ et $j=1,2$. Les produits sont $1,2,2,4,3,6$ ; leur somme est $18$. Les autres réponses correspondent à des oublis de termes ou à une borne de boucle erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'algorithme suivant recherche le maximum d'un tableau. Quelle valeur est affichée ? tab ← [$4$, $12$, $7$, $9$] ; max ← tab[0] ; Pour i de $1$ à $3$ faire Si tab[i] > max alors max ← tab[i] ; Fin si ; Fin pour ; Afficher max.",
+      "options": [
+        "$9$",
+        "$12$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Initialement $max=4$. La boucle compare successivement $12,7,9$ ; seul $12$ est plus grand que le $max$ courant, donc $max$ devient $12$ et ne change plus. La réponse $12$ est le maximum du tableau.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

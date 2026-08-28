@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 352,
+  "_course_code": "6eme-t05-c01-conversions-et-unites",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Longueur, masse, capacité",
+  "title": "Algorithmes de conversion d'unités (longueur, masse, capacité)",
+  "blocks": [
+    {
+      "title": "Conversion centimètres vers mètres",
+      "content": "Écrire un algorithme qui demande une longueur en centimètres et affiche la même longueur en mètres. (Rappel : $1 m = 100 cm$)",
+      "correctAnswer": "Algorithme :\\nDemander longueur_cm\\nlongueur_m = longueur_cm / 100\\nAfficher longueur_m",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise la valeur en centimètres par 100 car 1 mètre vaut 100 centimètres. L'algorithme lit la valeur, effectue la division et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion kilogrammes et grammes",
+      "content": "Écrire un algorithme qui demande une masse en kilogrammes, puis affiche la masse en grammes, et inversement : si l'utilisateur entre une valeur suivie de la lettre 'g' (par exemple 2500g), l'algorithme affiche la valeur en kilogrammes. (Rappel : $1 kg = 1000 g$)",
+      "correctAnswer": "Algorithme :\\nDemander entree\\nSi entree se termine par 'g' Alors\\n    valeur = nombre avant 'g'\\n    kg = valeur / 1000\\n    Afficher kg + ' kg'\\nSinon\\n    kg = entree\\n    g = kg * 1000\\n    Afficher g + ' g'\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme détecte l'unité grâce au suffixe 'g'. S'il est présent, on convertit les grammes en kilogrammes en divisant par 1000. Sinon, on considère que l'entrée est en kilogrammes et on multiplie par 1000 pour obtenir les grammes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion litres et millilitres avec plusieurs valeurs",
+      "content": "Écrire un algorithme qui demande à l'utilisateur d'entrer plusieurs capacités séparées par des espaces (par exemple : 2 L 500 mL 1.5 L). L'algorithme doit afficher le total en millilitres. (Rappel : $1 L = 1000 mL$)",
+      "correctAnswer": "Algorithme :\\nDemander chaine\\ntotal_ml = 0\\nPour chaque token dans chaine séparé par espace\\n    Si token se termine par 'L' Alors\\n        valeur = nombre avant 'L'\\n        total_ml = total_ml + valeur * 1000\\n    Sinon Si token se termine par 'mL' Alors\\n        valeur = nombre avant 'mL'\\n        total_ml = total_ml + valeur\\n    Fin Si\\nFin Pour\\nAfficher total_ml + ' mL'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt chaque élément de la saisie. Si l'unité est le litre (L), on multiplie par 1000 pour obtenir des millilitres. Si l'unité est le millilitre (mL), on ajoute directement la valeur. La somme finale donne le total en millilitres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

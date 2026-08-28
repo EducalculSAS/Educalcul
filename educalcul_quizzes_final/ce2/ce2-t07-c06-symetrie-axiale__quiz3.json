@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 201,
+  "_course_code": "ce2-t07-c06-symetrie-axiale",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Vérifier distances",
+  "title": "Quiz : Vérifier les distances en symétrie axiale",
+  "questions": [
+    {
+      "text": "Dans une symétrie axiale, un point A et son image A' sont placés par rapport à l'axe de symétrie :",
+      "options": [
+        "À des distances différentes de l'axe.",
+        "À la même distance de l'axe, de part et d'autre.",
+        "Sur l'axe de symétrie.",
+        "Alignés parallèlement à l'axe."
+      ],
+      "correctAnswer": "À la même distance de l'axe, de part et d'autre.",
+      "explanation": "En symétrie axiale, l'axe est la médiatrice du segment qui relie un point à son image. Par définition, les deux points sont à la même distance de l'axe, de chaque côté de celui-ci.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, l'axe de symétrie est une ligne verticale. Le point A se trouve à 3 cases à gauche de l'axe. Où doit-on placer le point A', image de A par symétrie axiale ?",
+      "options": [
+        "À 3 cases à droite de l'axe, sur la même ligne horizontale.",
+        "À 2 cases à droite de l'axe, sur la même ligne horizontale.",
+        "À 3 cases à gauche de l'axe, sur la ligne du dessus.",
+        "Sur l'axe de symétrie, en face de A."
+      ],
+      "correctAnswer": "À 3 cases à droite de l'axe, sur la même ligne horizontale.",
+      "explanation": "La symétrie axiale conserve les distances à l'axe. Si A est à 3 cases à gauche, A' doit être à 3 cases à droite. De plus, le segment [AA'] est perpendiculaire à l'axe, donc A et A' sont sur la même ligne horizontale (même ordonnée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier si le point B' est bien l'image du point B par symétrie axiale d'axe (d), on mesure la distance de B à (d) et de B' à (d). Sur la figure, la distance de B à (d) est de $3\\,cm$. Quelle doit être la distance de B' à (d) ?",
+      "options": [
+        "$2\\,cm$",
+        "$3\\,cm$",
+        "$4\\,cm$",
+        "$6\\,cm$"
+      ],
+      "correctAnswer": "$3\\,cm$",
+      "explanation": "La propriété fondamentale de la symétrie axiale est l'égalité des distances à l'axe. Si la distance de B à l'axe est de $3\\,cm$, l'image B' doit se trouver exactement à $3\\,cm$ de l'axe, de l'autre côté.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 3,
+        "unit": "cm",
+        "caption": "Distance du point B à l'axe (d)"
+      }
+    },
+    {
+      "text": "Léo a tracé le point C' comme image du point C par symétrie axiale d'axe (d). En vérifiant les distances à l'axe, on trouve $4\\,cm$ pour C et $5\\,cm$ pour C'. Que peut-on conclure ?",
+      "options": [
+        "C' est bien l'image de C car les distances sont proches.",
+        "C' n'est pas l'image de C car les distances à l'axe sont différentes.",
+        "C' n'est pas l'image de C car les points ne sont pas alignés.",
+        "C'est correct seulement si l'axe est horizontal."
+      ],
+      "correctAnswer": "C' n'est pas l'image de C car les distances à l'axe sont différentes.",
+      "explanation": "Pour être symétriques par rapport à un axe, deux points doivent impérativement être à la même distance de cet axe. Ici $4\\,cm \\neq 5\\,cm$, donc la construction de Léo est fausse, quel que soit l'orientation de l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire l'image d'un point D par symétrie axiale d'axe (d), on trace la perpendiculaire à (d) passant par D. On reporte la distance de D à (d) de l'autre côté. Si la distance de D à (d) est de $2,5\\,cm$, à quelle distance de l'axe se trouve le point D' ?",
+      "options": [
+        "$1,25\\,cm$",
+        "$2,5\\,cm$",
+        "$5\\,cm$",
+        "$3\\,cm$"
+      ],
+      "correctAnswer": "$2,5\\,cm$",
+      "explanation": "Le report de la distance de l'autre côté de l'axe ne change pas la valeur de cette distance. Le point D' se trouve à la même distance de l'axe que D, soit $2,5\\,cm$. L'axe coupe le segment [DD'] en son milieu.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

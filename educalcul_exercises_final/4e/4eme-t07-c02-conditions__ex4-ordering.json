@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Conditions",
+  "title": "Ordre des instructions conditionnelles",
+  "blocks": [
+    {
+      "title": "Structure SI ... ALORS ... SINON ... FIN SI",
+      "content": "Range les lignes suivantes dans l'ordre logique pour former un algorithme qui affiche \"Majeur\" si la variable $age$ est supérieure ou égale à 18, et \"Mineur\" sinon.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "SI $age \\ge 18$ ALORS",
+        "    AFFICHER \"Majeur\"",
+        "SINON",
+        "    AFFICHER \"Mineur\"",
+        "FIN SI"
+      ],
+      "explanation": "Une structure conditionnelle simple commence toujours par SI suivie de la condition et du mot-clé ALORS. Vient ensuite l'instruction à exécuter si la condition est vraie. Le mot-clé SINON introduit le bloc d'instructions pour le cas où la condition est fausse. La structure se termine obligatoirement par FIN SI.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Imbrication de deux conditions SI",
+      "content": "Range les lignes dans l'ordre pour construire un algorithme qui affiche \"Quadrant 1\" seulement si les deux variables $x$ et $y$ sont strictement positives (premier quadrant du repère).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "SI $x > 0$ ALORS",
+        "    SI $y > 0$ ALORS",
+        "        AFFICHER \"Quadrant 1\"",
+        "    FIN SI",
+        "FIN SI"
+      ],
+      "explanation": "On teste d'abord la condition sur $x$. Si elle est vraie, on entre dans le premier bloc ALORS où se trouve un second SI pour tester $y$. L'affichage n'a lieu que si les deux conditions sont vraies. Chaque SI doit être refermé par son propre FIN SI, dans l'ordre inverse de leur ouverture (le dernier ouvert est le premier fermé).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Affectation conditionnelle (maximum de deux nombres)",
+      "content": "Remets dans l'ordre les instructions qui permettent d'affecter à la variable $max$ le plus grand des deux nombres $a$ et $b$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "SI $a \\ge b$ ALORS",
+        "    $max \\leftarrow a$",
+        "SINON",
+        "    $max \\leftarrow b$",
+        "FIN SI"
+      ],
+      "explanation": "L'algorithme compare $a$ et $b$. Si $a$ est plus grand ou égal à $b$, on affecte $a$ à $max$. Sinon (c'est-à-dire si $b$ est plus grand que $a$), on affecte $b$ à $max$. La flèche d'affectation $\\leftarrow$ signifie que la variable de gauche prend la valeur de l'expression de droite. La structure se termine par FIN SI.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

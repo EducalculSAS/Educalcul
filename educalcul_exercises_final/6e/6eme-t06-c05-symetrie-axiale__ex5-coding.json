@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Construire",
+  "title": "Algorithmes de construction en symétrie axiale",
+  "blocks": [
+    {
+      "title": "Symétrique d'un point",
+      "content": "Écrire un algorithme (ou une suite d'instructions) permettant de construire, à la règle et au compas, le point $A'$, symétrique du point $A$ par rapport à la droite $d$.",
+      "correctAnswer": "1. Tracer la perpendiculaire à $d$ passant par $A$.\\n2. Mesurer la distance $AH$ où $H$ est l'intersection de la perpendiculaire avec $d$.\\n3. Reporter cette distance de l'autre côté de $d$ sur la même perpendiculaire pour obtenir $A'$ tel que $H$ soit le milieu de $[AA']$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La symétrie axiale d'un point par rapport à une droite se construit en traçant la perpendiculaire à la droite passant par le point, en trouvant le pied de cette perpendiculaire (le point $H$) et en reportant la distance $AH$ de l'autre côté de la droite. Le point obtenu $A'$ est le symétrique de $A$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétrique d'un segment",
+      "content": "Écrire un algorithme pour construire le segment $A'B'$, image du segment $AB$ par la symétrie axiale de centre la droite $d$.",
+      "correctAnswer": "1. Construire le point $A'$, symétrique de $A$ par rapport à $d$ (voir algorithme précédent).\\n2. Construire le point $B'$, symétrique de $B$ par rapport à $d$ (même méthode).\\n3. Tracer le segment $A'B'$. Ce segment est l'image de $AB$ par la symétrie axiale.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'image d'un segment par une symétrie axiale est le segment dont les extrémités sont les symétriques des extrémités du segment initial. Il suffit donc d'appliquer la construction du symétrique d'un point aux deux extrémités $A$ et $B$, puis de relier les points obtenus $A'$ et $B'$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétrique d'un triangle",
+      "content": "Écrire un algorithme pour construire le triangle $A'B'C'$, image du triangle $ABC$ par la symétrie axiale de centre la droite $d$.",
+      "correctAnswer": "1. Construire $A'$, symétrique de $A$ par rapport à $d$.\\n2. Construire $B'$, symétrique de $B$ par rapport à $d$.\\n3. Construire $C'$, symétrique de $C$ par rapport à $d$.\\n4. Tracer les segments $A'B'$, $B'C'$, $C'A'$. Le triangle $A'B'C'$ est l'image de $ABC$ par la symétrie axiale.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'image d'un polygone par une symétrie axiale est le polygone dont les sommets sont les symétriques des sommets du polygone initial. On répète donc la construction du symétrique d'un point pour chaque sommet $A$, $B$, $C$, puis on relie les points images dans le même ordre pour obtenir le triangle symétrique.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

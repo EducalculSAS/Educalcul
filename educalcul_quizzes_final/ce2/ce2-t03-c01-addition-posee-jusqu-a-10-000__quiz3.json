@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Vérifier par estimation",
+  "title": "Quiz : Vérifier une addition par estimation",
+  "questions": [
+    {
+      "text": "Pour vérifier le résultat de l'addition $238 + 412$, on arrondit chaque nombre à la centaine la plus proche. Quelle addition estimative faut-il faire ?",
+      "options": [
+        "$200 + 400 = 600$",
+        "$200 + 500 = 700$",
+        "$300 + 400 = 700$",
+        "$300 + 500 = 800$"
+      ],
+      "correctAnswer": "$200 + 400 = 600$",
+      "explanation": "On arrondit $238$ à la centaine la plus proche : c'est $200$ (car $38 < 50$). On arrondit $412$ à la centaine la plus proche : c'est $400$ (car $12 < 50$). L'estimation est donc $200 + 400 = 600$. Le résultat exact est $650$, l'estimation $600$ est proche, ce qui est bon signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu as calculé $1\\,245 + 3\\,678$ et tu as trouvé $4\\,923$. Pour vérifier par estimation, tu arrondis les nombres au millier le plus proche. Quel résultat estimatif obtiens-tu ?",
+      "options": [
+        "$4\\,000$",
+        "$5\\,000$",
+        "$6\\,000$",
+        "$7\\,000$"
+      ],
+      "correctAnswer": "$5\\,000$",
+      "explanation": "$1\\,245$ s'arrondit à $1\\,000$ (car $245 < 500$). $3\\,678$ s'arrondit à $4\\,000$ (car $678 > 500$). L'addition estimative est $1\\,000 + 4\\,000 = 5\\,000$. Ton résultat exact $4\\,923$ est très proche de $5\\,000$, ton calcul est donc vraisemblablement correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces additions posées, laquelle a un résultat qui ne correspond PAS à l'estimation par arrondi au millier ?",
+      "options": [
+        "$2\\,100 + 3\\,200 = 5\\,300$",
+        "$4\\,800 + 1\\,300 = 6\\,100$",
+        "$5\\,600 + 2\\,500 = 7\\,100$",
+        "$3\\,900 + 4\\,200 = 9\\,100$"
+      ],
+      "correctAnswer": "$3\\,900 + 4\\,200 = 9\\,100$",
+      "explanation": "On estime chaque opération au millier :\\n- $2\\,100 \\approx 2\\,000$ et $3\\,200 \\approx 3\\,000$, somme estimée $5\\,000$. Résultat $5\\,300$ (proche).\\n- $4\\,800 \\approx 5\\,000$ et $1\\,300 \\approx 1\\,000$, somme estimée $6\\,000$. Résultat $6\\,100$ (proche).\\n- $5\\,600 \\approx 6\\,000$ et $2\\,500 \\approx 3\\,000$ (ou $2\\,000$), somme estimée $8\\,000$ ou $9\\,000$. Résultat $7\\,100$ (un peu loin mais possible).\\n- $3\\,900 \\approx 4\\,000$ et $4\\,200 \\approx 4\\,000$, somme estimée $8\\,000$. Le résultat donné est $9\\,100$, qui est très loin de $8\\,000$. C'est l'erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour l'addition $4\\,562 + 2\\,891$, Léa fait l'estimation $5\\,000 + 3\\,000 = 8\\,000$. Elle trouve $7\\,453$ comme résultat exact. Son calcul est-il correct ?",
+      "options": [
+        "Oui, car $7\\,453$ est proche de $8\\,000$.",
+        "Non, car $7\\,453$ est trop loin de $8\\,000$.",
+        "Oui, car $4\\,000 + 2\\,000 = 6\\,000$ et $7\\,453$ est plus grand.",
+        "Non, car elle aurait dû arrondir à la centaine."
+      ],
+      "correctAnswer": "Oui, car $7\\,453$ est proche de $8\\,000$.",
+      "explanation": "L'arrondi au millier donne $5\\,000 + 3\\,000 = 8\\,000$. Le résultat exact $7\\,453$ diffère de $547$ de l'estimation. C'est une différence acceptable (moins de $10\\%$), cela ne prouve pas une erreur. L'estimation sert à détecter les grosses erreurs (ex: trouver $12\\,000$), pas à valider le chiffre des unités. Arrondir à la centaine ($4\\,600 + 2\\,900 = 7\\,500$) serait plus précis mais l'arrondi au millier suffit pour valider l'ordre de grandeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tom additionne $6\\,450 + 2\\,780$. Il fait l'estimation $6\\,000 + 3\\,000 = 9\\,000$. Il trouve $9\\,230$ comme résultat. Quelle affirmation est vraie ?",
+      "options": [
+        "Le résultat est faux car $9\\,230 > 9\\,000$.",
+        "Le résultat est plausible car $9\\,230$ est proche de $9\\,000$.",
+        "L'estimation est mauvaise car il fallait arrondir $6\\,450$ à $7\\,000$.",
+        "On ne peut pas vérifier car les nombres sont trop grands."
+      ],
+      "correctAnswer": "Le résultat est plausible car $9\\,230$ est proche de $9\\,000$.",
+      "explanation": "$6\\,450$ s'arrondit bien à $6\\,000$ ($450 < 500$) et $2\\,780$ à $3\\,000$ ($780 > 500$). L'estimation $9\\,000$ est correcte. Le résultat exact $9\\,230$ est supérieur à l'estimation car on a arrondi le premier nombre à la baisse ($450$ perdu) et le second à la hausse ($220$ gagné), mais la somme des arrondis ($-230$) explique l'écart. L'écart de $230$ est faible, le résultat est cohérent.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

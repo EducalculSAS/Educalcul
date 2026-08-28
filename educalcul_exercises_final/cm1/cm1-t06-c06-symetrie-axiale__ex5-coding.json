@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Propriétés",
+  "title": "Algorithmes et symétrie axiale : propriétés",
+  "blocks": [
+    {
+      "title": "Construction du point symétrique",
+      "content": "On considère une droite $d$ (l'axe de symétrie) et un point $M$ qui n'appartient pas à $d$. Écris un algorithme sous forme d'instructions numérotées pour construire le point $M'$, symétrique de $M$ par rapport à $d$, en utilisant les propriétés de la symétrie axiale (alignement, perpendicularité, égalité des distances).",
+      "correctAnswer": "1. Tracer la droite perpendiculaire à $d$ qui passe par $M$. \\n2. Repérer le point d'intersection $H$ entre cette perpendiculaire et la droite $d$. \\n3. Mesurer la distance $MH$. \\n4. Sur la perpendiculaire, de l'autre côté de $d$ par rapport à $M$, reporter la distance $MH$ à partir de $H$ pour obtenir le point $M'$. \\n5. Le point $M'$ est le symétrique de $M$ par rapport à $d$.",
+      "explanation": "La construction du symétrique d'un point repose sur trois propriétés fondamentales : l'axe $d$ est le médiateur du segment $[MM']$. Cela implique que $(MM') \\perp d$ (perpendicularité), que $d$ passe par le milieu $H$ de $[MM']$ (alignement de $H$ sur $d$) et que $MH = M'H$ (égalité des distances). L'algorithme décrit exactement ces étapes à la règle et au compas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification de symétrie",
+      "content": "On a tracé une droite $d$ et deux points $A$ et $B$ de part et d'autre de $d$. Écris un algorithme de vérification (avec des tests \"Si... Alors... Sinon...\") qui permet de déterminer si $B$ est le symétrique de $A$ par rapport à $d$. L'algorithme doit tester les trois propriétés caractéristiques.",
+      "correctAnswer": "1. Tracer la droite $(AB)$. \\n2. Si $(AB)$ n'est pas perpendiculaire à $d$ Alors : Afficher \"A et B ne sont pas symétriques par rapport à d\" et Arrêter. \\n3. Sinon : Repérer le point d'intersection $I$ de $(AB)$ et $d$. \\n4. Mesurer les distances $AI$ et $BI$. \\n5. Si $AI = BI$ Alors : Afficher \"B est le symétrique de A par rapport à d\". \\n6. Sinon : Afficher \"A et B ne sont pas symétriques par rapport à d\".",
+      "explanation": "Pour vérifier une symétrie axiale, on doit contrôler que l'axe est le médiateur du segment joignant les deux points. L'algorithme teste d'abord la perpendicularité (propriété nécessaire), puis l'égalité des distances au point d'intersection (propriété du milieu). Si les deux conditions sont remplies, la symétrie est confirmée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétrique d'un segment",
+      "content": "On considère un segment $[AB]$ qui ne coupe pas la droite $d$. En t'appuyant sur l'algorithme de la question 1, écris un algorithme complet pour tracer le segment $[A'B']$, image du segment $[AB]$ par la symétrie axiale de axe $d$. Précise la propriété qui permet de conclure que $[A'B']$ est bien un segment.",
+      "correctAnswer": "1. Appliquer l'algorithme de construction du point symétrique au point $A$ pour obtenir $A'$. \\n2. Appliquer l'algorithme de construction du point symétrique au point $B$ pour obtenir $B'$. \\n3. Tracer le segment $[A'B']$. \\n4. Propriété : La symétrie axiale conserve les alignements et les distances, donc l'image d'un segment est un segment de même longueur.",
+      "explanation": "La symétrie axiale est une transformation qui conserve les alignements (collinéarité) et les longueurs. Pour obtenir l'image d'une figure complexe, il suffit de construire l'image de ses points caractéristiques (ici les extrémités $A$ et $B$) puis de les relier dans le même ordre. Le segment $[A'B']$ a même longueur que $[AB]$ et est de l'autre côté de l'axe.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

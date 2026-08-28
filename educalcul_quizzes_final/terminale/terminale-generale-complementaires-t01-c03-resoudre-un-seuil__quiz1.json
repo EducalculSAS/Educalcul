@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Équation / lecture",
+  "title": "Résoudre un seuil : Équation et Lecture",
+  "questions": [
+    {
+      "text": "Une population évolue selon la fonction $P(t) = 500e^{0,04t}$, où $t$ est le temps en années. On cherche le moment où la population atteint le seuil de $1000$ individus. Quelle équation doit on résoudre ?",
+      "options": [
+        "$1000 = 500e^{0,04t}$",
+        "$500 = 1000e^{0,04t}$",
+        "$1000 = 500 + 0,04t$",
+        "$0,04 = 1000e^{500t}$"
+      ],
+      "correctAnswer": "$1000 = 500e^{0,04t}$",
+      "explanation": "Pour trouver quand la population atteint un seuil, on pose $P(t)$ égal à la valeur du seuil. Ici, on cherche $t$ tel que $P(t) = 1000$, ce qui donne $1000 = 500e^{0,04t}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction $f(x) = \\ln(x + 2)$. On souhaite déterminer la valeur de $x$ pour laquelle le seuil $f(x) = 2$ est atteint. Quelle est la solution exacte ?",
+      "options": [
+        "$x = e^2$",
+        "$x = e^2 - 2$",
+        "$x = 2e - 2$",
+        "$x = \\ln(2) - 2$"
+      ],
+      "correctAnswer": "$x = e^2 - 2$",
+      "explanation": "L'équation est $\\ln(x + 2) = 2$. En appliquant la fonction exponentielle des deux côtés, on obtient $x + 2 = e^2$, d'où $x = e^2 - 2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $g(x) = 10 \\cdot 2^{0,1x}$. À quel moment $x$ la fonction atteint elle le seuil de $80$ ?",
+      "options": [
+        "$x = 3$",
+        "$x = 30$",
+        "$x = 8$",
+        "$x = 80$"
+      ],
+      "correctAnswer": "$x = 30$",
+      "explanation": "L'équation est $10 \\cdot 2^{0,1x} = 80$. On divise par $10$ pour avoir $2^{0,1x} = 8$. Comme $8 = 2^3$, on en déduit que $0,1x = 3$, donc $x = \\frac{3}{0,1} = 30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur le graphique ci”dessous, on observe l'évolution d'une quantité $Q$ en fonction du temps $t$. On cherche le temps $t$ pour lequel $Q(t)$ atteint le seuil $50$. Quelle est la lecture approximative ?",
+      "options": [
+        "$t \\approx 2$, car $Q(2) \\approx 50$",
+        "$t \\approx 50$, car $Q(50) \\approx 2$",
+        "$t \\approx 10$, car $Q(10) \\approx 50$",
+        "$t \\approx 0$, car l'ordonnée à l'origine est $50$"
+      ],
+      "correctAnswer": "$t \\approx 2$, car $Q(2) \\approx 50$",
+      "explanation": "Pour lire un seuil graphiquement, on trace une droite horizontale à l'ordonnée $y = 50$. L'abscisse du point d'intersection avec la courbe donne la valeur de $t$. Sur ce graphique, l'intersection se situe vers $t = 2$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "25*exp(0.5*x)",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Évolution de Q(t)"
+      }
+    },
+    {
+      "text": "On résout l'inéquation $100e^{0,05t} \\ge 200$ pour savoir quand une valeur dépasse un seuil. Quelle est la condition sur $t$ ?",
+      "options": [
+        "$t \\le \\ln(2) / 0,05$",
+        "$t \\ge \\ln(2) / 0,05$",
+        "$t \\ge 2 / 0,05$",
+        "$t \\le 0,05 \\ln(2)$"
+      ],
+      "correctAnswer": "$t \\ge \\ln(2) / 0,05$",
+      "explanation": "On a $100e^{0,05t} \\ge 200$, ce qui simplifie en $e^{0,05t} \\ge 2$. En appliquant le logarithme népérien, on a $0,05t \\ge \\ln(2)$. Puisque $0,05$ est positif, on divise sans changer le sens de l'inégalité, soit $t \\ge \\frac{\\ln(2)}{0,05}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

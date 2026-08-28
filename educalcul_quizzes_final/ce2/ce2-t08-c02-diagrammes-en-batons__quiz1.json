@@ -1,0 +1,131 @@
+{
+  "_status": "done",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire une échelle",
+  "title": "Quiz : Lire une échelle sur un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons. L'échelle va de $0$ à $10$ par pas de $1$. Quelle est la valeur de la barre « Pommes » ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La graduation $7$ se trouve exactement au sommet de la barre « Pommes ». Les autres options correspondent aux graduations voisines ($6$ et $8$) ou à une erreur de comptage ($5$).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons : échelle de 0 à 10 par pas de 1",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 7,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur ce diagramme, l'échelle va de $0$ à $20$ par pas de $2$. Quelle est la valeur de la barre « Livres » ?",
+      "options": [
+        "$12$",
+        "$14$",
+        "$16$",
+        "$18$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Les graduations sont $0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20$. Le sommet de la barre « Livres » atteint la graduation $14$. $12$ et $16$ sont les graduations immédiatement inférieures et supérieures.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons : échelle de 0 à 20 par pas de 2",
+        "bars": [
+          {
+            "label": "Livres",
+            "value": 14,
+            "tone": "blue"
+          }
+        ]
+      }
+    },
+    {
+      "text": "L'échelle de ce diagramme va de $0$ à $50$ par pas de $5$. Quelle est la valeur de la barre « Billes » ?",
+      "options": [
+        "$30$",
+        "$35$",
+        "$40$",
+        "$45$"
+      ],
+      "correctAnswer": "$35$",
+      "explanation": "Les graduations sont $0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50$. La barre « Billes » s'arrête pile sur la graduation $35$. $30$ et $40$ sont les graduations de part et d'autre.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons : échelle de 0 à 50 par pas de 5",
+        "bars": [
+          {
+            "label": "Billes",
+            "value": 35,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ici, l'échelle va de $0$ à $20$ par pas de $2$. La barre « Crayons » s'arrête exactement à mi-hauteur entre deux graduations. Quelle est sa valeur ?",
+      "options": [
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "Les graduations paires sont $12$ et $14$. Le milieu entre $12$ et $14$ est $13$. Comme la barre s'arrête à mi-hauteur, sa valeur est $13$. $11$ est trop bas, $12$ et $14$ sont les graduations voisines.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons : échelle de 0 à 20 par pas de 2, barre à mi-hauteur",
+        "bars": [
+          {
+            "label": "Crayons",
+            "value": 13,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur ce diagramme, l'échelle va de $0$ à $40$ par pas de $4$. Quelle est la valeur de la barre « B » ?",
+      "options": [
+        "$28$",
+        "$30$",
+        "$32$",
+        "$36$"
+      ],
+      "correctAnswer": "$32$",
+      "explanation": "Les graduations sont $0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40$. Le sommet de la barre « B » coïncide avec la graduation $32$. $28$ et $36$ sont les graduations précédentes et suivantes. $30$ n'est pas une graduation de cette échelle.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Diagramme en bâtons : échelle de 0 à 40 par pas de 4, deux barres",
+        "bars": [
+          {
+            "label": "A",
+            "value": 24,
+            "tone": "blue"
+          },
+          {
+            "label": "B",
+            "value": 32,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

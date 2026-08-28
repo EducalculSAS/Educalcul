@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 527,
+  "_course_code": "2nde-t06-c01-proportions-et-pourcentages",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Calculer proportion",
+  "title": "Quiz : Calculer une proportion",
+  "questions": [
+    {
+      "text": "Dans une classe de $30$ élèves, on compte $12$ filles. Quelle est la proportion de filles dans cette classe ?",
+      "options": [
+        "0,4",
+        "0,6",
+        "0,2",
+        "0,8"
+      ],
+      "correctAnswer": "0,4",
+      "explanation": "La proportion correspond au quotient de l'effectif partiel (nombre de filles) par l'effectif total. On calcule $12 / 30 = 0,4$. L'option 0,6 correspond à la proportion de garçons ($18/30$). Les options 0,2 et 0,8 ne correspondent à aucun quotient simple de cette situation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous récapitule les couleurs des yeux d'un groupe de $50$ personnes.\\n\\n| Couleur | Effectif |\\n|---------|----------|\\n| Bleu    | 15       |\\n| Marron  | 25       |\\n| Vert    | 10       |\\n\\nQuelle est la proportion de personnes aux yeux marron ?",
+      "options": [
+        "0,5",
+        "0,3",
+        "0,2",
+        "0,25"
+      ],
+      "correctAnswer": "0,5",
+      "explanation": "L'effectif total est $50$. L'effectif 'Marron' est $25$. La proportion est $25 / 50 = 0,5$. L'option 0,3 correspond à la proportion des yeux bleus ($15/50$). L'option 0,2 correspond aux yeux verts ($10/50$). L'option 0,25 serait le résultat si on divisait par $100$ au lieu de $50$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Bleu",
+            "15"
+          ],
+          [
+            "Marron",
+            "25"
+          ],
+          [
+            "Vert",
+            "10"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Lors d'un sondage, $400$ personnes ont été interrogées. La proportion de personnes satisfaites est de $0,35$. Combien de personnes satisfaites cela représente-t-il ?",
+      "options": [
+        "140",
+        "120",
+        "160",
+        "35"
+      ],
+      "correctAnswer": "140",
+      "explanation": "Pour retrouver l'effectif partiel à partir de la proportion et du total, on multiplie : $400 \\times 0,35 = 140$. L'option 120 correspond à $400 \\times 0,3$. L'option 160 correspond à $400 \\times 0,4$. L'option 35 est l'erreur consistant à confondre la proportion (0,35) avec le pourcentage (35\\%) sans appliquer le total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux classes :\\n- Classe A : $20$ élèves dont $5$ gauchers.\\n- Classe B : $30$ élèves dont $8$ gauchers.\\nLaquelle des affirmations est exacte ?",
+      "options": [
+        "La classe A a une plus forte proportion de gauchers.",
+        "La classe B a une plus forte proportion de gauchers.",
+        "Les deux classes ont la même proportion de gauchers.",
+        "On ne peut pas comparer les proportions car les effectifs totaux sont différents."
+      ],
+      "correctAnswer": "La classe B a une plus forte proportion de gauchers.",
+      "explanation": "Il faut calculer les proportions pour comparer. Classe A : $5 / 20 = 0,25$. Classe B : $8 / 30 \\approx 0,267$. Comme $0,267 > 0,25$, la classe B a une proportion plus élevée. L'effectif total différent n'empêche pas la comparaison, c'est justement l'intérêt de la proportion (nombre entre 0 et 1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une entreprise, $60\\%$ des salariés sont des femmes. Parmi ces femmes, $30\\%$ sont cadres. Quelle est la proportion de femmes cadres parmi l'ensemble des salariés ?",
+      "options": [
+        "0,18",
+        "0,90",
+        "0,42",
+        "0,50"
+      ],
+      "correctAnswer": "0,18",
+      "explanation": "Il s'agit d'une proportion composée. On convertit les pourcentages en proportions : $60\\% = 0,6$ et $30\\% = 0,3$. La proportion de femmes cadres sur l'ensemble est le produit : $0,6 \\times 0,3 = 0,18$. L'option 0,90 est la somme (erreur). L'option 0,42 correspond à $0,6 + 0,3 - 0,18$ (formule union mal appliquée). L'option 0,50 n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

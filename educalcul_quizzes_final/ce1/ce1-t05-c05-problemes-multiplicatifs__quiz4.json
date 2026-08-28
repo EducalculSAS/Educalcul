@@ -1,0 +1,127 @@
+{
+  "_status": "done",
+  "_course_id": 112,
+  "_course_code": "ce1-t05-c05-problemes-multiplicatifs",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Problèmes multiplicatifs",
+  "title": "Quiz : Problèmes multiplicatifs (CE1)",
+  "questions": [
+    {
+      "text": "Dans la classe, il y a $4$ tables. Sur chaque table, il y a $5$ cahiers. Combien y a-t-il de cahiers en tout ?",
+      "options": [
+        "$9$ cahiers",
+        "$20$ cahiers",
+        "$15$ cahiers",
+        "$1$ cahier"
+      ],
+      "correctAnswer": "$20$ cahiers",
+      "explanation": "C'est un problème de multiplication (regroupement). Il y a $4$ groupes de $5$. On calcule $4 \\times 5 = 20$. L'option $9$ correspond à une addition ($4+5$), $15$ à $3 \\times 5$ et $1$ à une soustraction ou division incorrecte.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Table 1",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Table 2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Table 3",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Table 4",
+            "value": 5,
+            "tone": "blue"
+          }
+        ],
+        "caption": "4 groupes de 5 cahiers"
+      }
+    },
+    {
+      "text": "Luc a $15$ billes. Il veut les ranger dans des boîtes de $3$ billes. Combien de boîtes lui faut-il ?",
+      "options": [
+        "$5$ boîtes",
+        "$12$ boîtes",
+        "$18$ boîtes",
+        "$3$ boîtes"
+      ],
+      "correctAnswer": "$5$ boîtes",
+      "explanation": "C'est un problème de groupement (division quotitive). On cherche le nombre de groupes de $3$ dans $15$. On calcule $15 \\div 3 = 5$. L'option $12$ vient de $15-3$, $18$ de $15+3$ et $3$ confond le nombre de boîtes avec la taille des boîtes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Maman a acheté $18$ madeleines. Elle les partage équitablement entre ses $3$ enfants. Combien de madeleines chaque enfant reçoit-il ?",
+      "options": [
+        "$6$ madeleines",
+        "$21$ madeleines",
+        "$15$ madeleines",
+        "$3$ madeleines"
+      ],
+      "correctAnswer": "$6$ madeleines",
+      "explanation": "C'est un problème de partage (division partition). On partage $18$ en $3$ parts égales. On calcule $18 \\div 3 = 6$. L'option $21$ est une addition ($18+3$), $15$ une soustraction ($18-3$) et $3$ confond le nombre d'enfants avec la part de chacun.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Enfant 1",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Enfant 2",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Enfant 3",
+            "value": 6,
+            "tone": "green"
+          }
+        ],
+        "caption": "Partage de 18 en 3 parts égales"
+      }
+    },
+    {
+      "text": "Un paquet de feutres contient $10$ feutres. L'institutrice achète $6$ paquets. Combien de feutres a-t-elle au total ?",
+      "options": [
+        "$60$ feutres",
+        "$16$ feutres",
+        "$4$ feutres",
+        "$66$ feutres"
+      ],
+      "correctAnswer": "$60$ feutres",
+      "explanation": "C'est une multiplication par $10$ (table de $10$). $6$ groupes de $10$ font $6 \\times 10 = 60$. L'option $16$ correspond à l'addition $6+10$, $4$ à la soustraction $10-6$ et $66$ à une erreur de table (confusion avec $6 \\times 11$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 10,
+        "highlighted": 60,
+        "caption": "6 rangées de 10 feutres"
+      }
+    },
+    {
+      "text": "Au jardin, il y a $5$ rangées de fleurs. Dans chaque rangée, il y a $4$ fleurs. Combien y a-t-il de fleurs en tout ?",
+      "options": [
+        "$20$ fleurs",
+        "$9$ fleurs",
+        "$1$ fleur",
+        "$25$ fleurs"
+      ],
+      "correctAnswer": "$20$ fleurs",
+      "explanation": "Problème de multiplication (table de $4$ ou $5$). $5$ rangées de $4$ fleurs : $5 \\times 4 = 20$. L'option $9$ est l'addition $5+4$, $1$ la soustraction $5-4$ et $25$ correspondrait à $5 \\times 5$ (erreur sur le nombre de fleurs par rangée).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

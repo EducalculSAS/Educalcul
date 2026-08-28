@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 3,
+  "_course_code": "cp-t01-c03-compter-lire-et-ecrire-jusqu-a-10",
+  "_level": "cp",
+  "_subject": "Les nombres jusqu'à 100",
+  "_subtheme": "Passer d'une collection au nombre et inversement",
+  "title": "Quiz : Collection et nombre jusqu'à 10",
+  "questions": [
+    {
+      "text": "Combien y a-t-il de cases coloriées sur la grille ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On compte les cases coloriées une par une : 1, 2, 3, 4, 5, 6, 7. Il y en a donc $7$. Les autres propositions correspondent à un comptage trop rapide (en oubliant une case ou en en comptant une de trop).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 5,
+        "highlighted": 7,
+        "caption": "Grille 2x5 avec 7 cases coloriées"
+      }
+    },
+    {
+      "text": "Regarde le nombre $4$. Laquelle de ces collections représente ce nombre ?",
+      "options": [
+        "Une main ouverte (5 doigts)",
+        "Une main fermée (0 doigt)",
+        "Quatre cubes empilés",
+        "Six jetons"
+      ],
+      "correctAnswer": "Quatre cubes empilés",
+      "explanation": "Le chiffre $4$ représente une quantité de quatre objets. 'Quatre cubes empilés' est la seule collection qui contient exactement 4 objets. Une main ouverte en a 5, une main fermée en a 0 et six jetons en a 6.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il d'unités représentées par les cubes ?",
+      "options": [
+        "$8$",
+        "$9$",
+        "$10$",
+        "$7$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "On compte les petits cubes (unités) visibles sur la figure : 1, 2, 3, 4, 5, 6, 7, 8, 9. Il y a donc $9$ unités. L'erreur courante est de s'arrêter à $8$ ou d'en inventer une dixième.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 0,
+        "units": 9,
+        "caption": "Neuf cubes unités"
+      }
+    },
+    {
+      "text": "Comment s'écrit en chiffres le nombre six ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Le nombre 'six' (écrit en lettres) correspond au chiffre $6$ (écrit en chiffres). $5$ est cinq, $7$ est sept et $8$ est huit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compte la collection : trois oursons, deux voitures et une balle. Combien d'objets au total ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "On additionne les quantités de chaque type d'objet : 3 oursons + 2 voitures + 1 balle = 6 objets au total. On peut compter sur les doigts : 3, puis 4, 5, puis 6.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

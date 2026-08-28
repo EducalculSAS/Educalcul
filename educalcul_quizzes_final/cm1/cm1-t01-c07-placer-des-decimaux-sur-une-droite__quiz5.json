@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Choisir échelle",
+  "title": "Choisir l'échelle sur une droite graduée",
+  "questions": [
+    {
+      "text": "Observe la droite graduée ci-dessous. Quelle est l'échelle (le pas de graduation) choisie pour cette droite ?",
+      "options": [
+        "Unité",
+        "Dixième",
+        "Centième",
+        "Millième"
+      ],
+      "correctAnswer": "Dixième",
+      "explanation": "La droite va de 0 à 1 et est divisée en 10 parties égales. Chaque trait correspond donc à 1 dixième (0,1). L'échelle est bien au dixième. L'unité serait un seul trait pour 1, le centième demanderait 100 traits entre 0 et 1.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 par pas de 0,1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 0.5,
+            "label": ""
+          },
+          {
+            "value": 1,
+            "label": "1"
+          }
+        ],
+        "intervals": [
+          {
+            "start": 0,
+            "end": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "Tu dois placer les nombres $0,3$ ; $0,7$ et $0,9$ sur une droite graduée. Quelle échelle est la plus adaptée pour les placer précisément sur les traits ?",
+      "options": [
+        "Graduation au centième",
+        "Graduation au dixième",
+        "Graduation à l'unité",
+        "Graduation au millième"
+      ],
+      "correctAnswer": "Graduation au dixième",
+      "explanation": "Ces nombres s'écrivent avec un seul chiffre après la virgule (dixièmes). Une graduation au dixième place exactement 0,3 ; 0,7 et 0,9 sur des traits. Au centième ou millième, ce serait trop précis (traits trop serrés) et à l'unité, ils seraient tous entre 0 et 1 sans précision.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour placer les nombres $0,25$ ; $0,68$ et $0,99$ sur une droite allant de 0 à 1, quelle échelle dois-tu choisir ?",
+      "options": [
+        "Graduation au dixième",
+        "Graduation au centième",
+        "Graduation à l'unité",
+        "Graduation au millième"
+      ],
+      "correctAnswer": "Graduation au centième",
+      "explanation": "Ces nombres ont deux chiffres après la virgule (centièmes). Pour les placer exactement sur des traits de graduation, il faut que la droite soit divisée en 100 parties égales, soit une graduation au centième. Au dixième, 0,25 se situerait entre deux traits (entre 0,2 et 0,3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo veut placer le nombre $3,14$ sur une droite graduée. Il trace une droite qui commence à 3 et finit à 4. Quelle graduation doit-il choisir pour que $3,14$ tombe exactement sur un trait ?",
+      "options": [
+        "Une graduation au dixième",
+        "Une graduation au centième",
+        "Une graduation à l'unité",
+        "Une graduation au millième"
+      ],
+      "correctAnswer": "Une graduation au centième",
+      "explanation": "Le nombre $3,14$ a deux décimales (14 centièmes). Sur une droite de 3 à 4, une graduation au centième divise l'intervalle en 100 parties, ce qui place exactement 3,14 sur le 14e trait après 3. Au dixième, 3,14 serait entre 3,1 et 3,2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée de 0 à 1 avec une échelle au dixième, un élève place le nombre $0,05$ exactement sur un trait de graduation. Pourquoi est-ce une erreur ?",
+      "options": [
+        "Parce que $0,05$ est plus grand que $1$",
+        "Parce que l'échelle au dixième ne permet pas de placer les centièmes exactement sur un trait",
+        "Parce qu'il faut une droite de $0$ à $10$",
+        "Parce que $0,05$ est un nombre entier"
+      ],
+      "correctAnswer": "Parce que l'échelle au dixième ne permet pas de placer les centièmes exactement sur un trait",
+      "explanation": "L'échelle au dixième ne matérialise que les multiples de 0,1 (0,1 ; 0,2 ; 0,3...). Le nombre $0,05$ vaut 5 centièmes, il se situe exactement au milieu entre 0 et 0,1. Il ne peut pas tomber sur un trait avec cette échelle ; il faudrait une graduation au centième.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

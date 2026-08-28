@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 90,
+  "_course_code": "ce1-t03-c03-soustraire-comme-retirer-ou-chercher-un-ecart",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Distinguer deux sens",
+  "title": "Distinguer les deux sens de la soustraction : algorithmes",
+  "blocks": [
+    {
+      "title": "Situation 1 : Retirer",
+      "content": "Lisez la situation : « Il y a $12$ pommes dans le panier. On en retire $5$ pour les manger. Combien de pommes restent dans le panier ? » Écrivez un algorithme en français structuré (étapes numérotées) qui montre comment trouver le résultat et précisez le sens de la soustraction utilisé (retirer ou chercher un écart).",
+      "correctAnswer": "1. Noter le nombre initial de pommes : $12$.\\n2. Noter le nombre de pommes retirées : $5$.\\n3. Effectuer la soustraction $12 - 5$.\\n4. Obtenir le résultat $7$.\\n5. Conclure : le sens de la soustraction est « retirer » car on enlève une quantité d'un ensemble.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'énoncé parle de retirer des pommes d'un panier, ce qui correspond au sens « retirer » de la soustraction. L'algorithme identifie la quantité de départ, la quantité enlevée, fait la soustraction dans cet ordre et nomme le sens utilisé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Situation 2 : Chercher un écart",
+      "content": "Lisez la situation : « Marie a $8$ billes et Paul en a $14$. Combien de billes Paul a-t-il de plus que Marie ? » Écrivez un algorithme en français structuré qui montre comment trouver la différence et précisez le sens de la soustraction utilisé.",
+      "correctAnswer": "1. Noter les deux quantités : Marie $8$, Paul $14$.\\n2. Identifier la plus grande quantité ($14$) et la plus petite ($8$).\\n3. Soustraire la plus petite de la plus grande : $14 - 8$.\\n4. Obtenir le résultat $6$.\\n5. Conclure : le sens de la soustraction est « chercher un écart » car on compare deux ensembles pour trouver la différence.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ici, on ne retire rien, on compare deux nombres pour savoir combien l'un dépasse l'autre. L'algorithme repère les deux nombres, détermine le plus grand, soustrait le plus petit du plus grand et nomme le sens « chercher un écart ».",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix du sens selon l'énoncé",
+      "content": "On donne la soustraction $14 - 8 = 6$. Deux énoncés sont proposés :\\nA) « Il y a $14$ bonbons, on en donne $8$ à un ami. Combien en reste-t-il ? »\\nB) « Léa a $8$ autocollants, Tom en a $14$. Combien d'autocollants Tom a-t-il de plus que Léa ? »\\nÉcrivez un algorithme qui, pour chaque énoncé, détermine le sens de la soustraction (retirer ou chercher un écart) et vérifie que le calcul correspond.",
+      "correctAnswer": "Algorithme pour chaque énoncé :\\n1. Lire l'énoncé.\\n2. Repérer les mots‑clés :\\n   - « donne », « retire », « reste » → sens « retirer ».\\n   - « plus que », « de plus », « différence », « écart » → sens « chercher un écart ».\\n3. Associer les nombres : nombre initial / plus grand, nombre retiré / plus petit.\\n4. Effectuer la soustraction dans l'ordre approprié (grand - petit).\\n5. Vérifier que le résultat est $6$.\\n6. Conclure : énoncé A → retirer ; énoncé B → chercher un écart.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la lecture des verbes et expressions pour décider du sens. Dans A, on enlève des bonbons, donc « retirer ». Dans B, on compare deux quantités, donc « chercher un écart ». Les deux donnent la même soustraction $14 - 8 = 6$ mais le sens diffère.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

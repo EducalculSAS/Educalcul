@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Rayon / diamètre",
+  "title": "Quiz : Rayon et diamètre du cercle",
+  "questions": [
+    {
+      "text": "Quelle est la relation entre le diamètre $d$ et le rayon $r$ d'un cercle ?",
+      "options": [
+        "$d = r$",
+        "$d = 2r$",
+        "$d = r/2$",
+        "$d = r^2$"
+      ],
+      "correctAnswer": "$d = 2r$",
+      "explanation": "Le diamètre passe par le centre et relie deux points du cercle, il est donc composé de deux rayons. Ainsi $d = 2r$. Les autres options confondent la relation ou utilisent une opération incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un rayon de $7$ cm. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "$3,5$ cm",
+        "$7$ cm",
+        "$14$ cm",
+        "$21$ cm"
+      ],
+      "correctAnswer": "$14$ cm",
+      "explanation": "Le diamètre est le double du rayon : $2 \\times 7 = 14$ cm. L'option A correspond à la moitié du rayon, B au rayon lui‑même, D à trois fois le rayon.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diamètre d'un cercle mesure $20$ cm. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$15$ cm",
+        "$40$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le rayon est la moitié du diamètre : $20 / 2 = 10$ cm. L'option A correspond à un quart du diamètre, C à trois quarts, D au double du diamètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure, le segment $OA$ mesure $5$ cm. Quelle est la longueur du diamètre de ce cercle ?",
+      "options": [
+        "$5$ cm",
+        "$10$ cm",
+        "$15$ cm",
+        "$20$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le segment $OA$ est un rayon, donc le diamètre vaut deux fois cette longueur : $2 \\times 5 = 10$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et de rayon 5 cm"
+      }
+    },
+    {
+      "text": "Un cercle a un diamètre de $12$ cm. On trace un autre cercle dont le rayon est égal au diamètre du premier. Quel est le diamètre du second cercle ?",
+      "options": [
+        "$6$ cm",
+        "$12$ cm",
+        "$24$ cm",
+        "$48$ cm"
+      ],
+      "correctAnswer": "$24$ cm",
+      "explanation": "Le rayon du second cercle vaut $12$ cm (le diamètre du premier). Son diamètre est donc $2 \\times 12 = 24$ cm. L'option A correspond au rayon du premier cercle, B à son diamètre, D au quadruple du diamètre initial.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

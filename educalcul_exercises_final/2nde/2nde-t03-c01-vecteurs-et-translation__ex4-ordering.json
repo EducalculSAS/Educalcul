@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 510,
+  "_course_code": "2nde-t03-c01-vecteurs-et-translation",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Vecteurs et translation",
+  "title": "Applications des vecteurs : translations",
+  "blocks": [
+    {
+      "title": "Définition d'une translation",
+      "content": "Remets dans l'ordre logique les étapes pour définir une translation à l'aide d'un vecteur.",
+      "items": [
+        "On choisit un vecteur $\\vec{v}$ non nul.",
+        "La translation de vecteur $\\vec{v}$ transforme tout point $M$ en un point $M'$ tel que $\\vec{MM'} = \\vec{v}$.",
+        "Le point $M'$ est l'image de $M$ par cette translation.",
+        "La translation conserve les distances, les angles et le parallélisme."
+      ],
+      "explanation": "On commence par choisir le vecteur directeur $\\vec{v}$. La définition formelle associe alors à chaque point $M$ son image $M'$ tel que le vecteur $\\vec{MM'}$ soit égal à $\\vec{v}$. On nomme ensuite $M'$ l'image de $M$. Enfin, on rappelle les propriétés invariantes de la translation (isométrie).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction de l'image d'un point",
+      "content": "Range dans l'ordre chronologique les étapes de la construction à la règle et au compas de l'image $A'$ d'un point $A$ par la translation de vecteur $\\vec{u}$.",
+      "items": [
+        "On trace la droite $(D)$ passant par $A$ et de direction $\\vec{u}$.",
+        "On reporte la longueur de $\\vec{u}$ sur $(D)$ en partant de $A$ dans le sens de $\\vec{u}$.",
+        "On obtient le point $A'$ tel que $\\vec{AA'} = \\vec{u}$.",
+        "$A'$ est l'image de $A$ par la translation de vecteur $\\vec{u}$."
+      ],
+      "explanation": "La construction géométrique suit la définition : le vecteur $\\vec{AA'}$ doit avoir même direction, même sens et même norme que $\\vec{u}$. On trace donc le support (la droite), on y reporte la longueur dans le bon sens pour trouver $A'$, puis on conclut.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de deux translations",
+      "content": "Ordonne le raisonnement démontrant que la composée de deux translations est une translation dont le vecteur est la somme des deux vecteurs.",
+      "items": [
+        "Soit $t_1$ la translation de vecteur $\\vec{u}$ et $t_2$ la translation de vecteur $\\vec{v}$.",
+        "Pour un point $M$, notons $M' = t_1(M)$ et $M'' = t_2(M')$.",
+        "On a $\\vec{MM'} = \\vec{u}$ et $\\vec{M'M''} = \\vec{v}$.",
+        "D'après la relation de Chasles, $\\vec{MM''} = \\vec{u} + \\vec{v}$.",
+        "La composée $t_2 \\circ t_1$ est la translation de vecteur $\\vec{u} + \\vec{v}$."
+      ],
+      "explanation": "On définit les deux translations $t_1$ et $t_2$. On applique $t_1$ à $M$ pour obtenir $M'$, puis $t_2$ à $M'$ pour obtenir $M''$. Les vecteurs $\\vec{MM'}$ et $\\vec{M'M''}$ sont respectivement $\\vec{u}$ et $\\vec{v}$. La relation de Chasles donne $\\vec{MM''} = \\vec{MM'} + \\vec{M'M''} = \\vec{u} + \\vec{v}$. Comme $\\vec{MM''}$ ne dépend pas de $M$, la transformation $M \\mapsto M''$ est bien la translation de vecteur $\\vec{u} + \\vec{v}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

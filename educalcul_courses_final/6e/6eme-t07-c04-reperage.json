@@ -1,0 +1,515 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.634581+00:00",
+  "id": 366,
+  "code": "6eme-t07-c04",
+  "title": "Repérage",
+  "description": "Cours structuré Educalcul : Repérage.",
+  "subject": "Espace",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Espace",
+    "titre_du_cours": "Repérage",
+    "objectif_global": "Repérage",
+    "mini_lecons_imposees": [
+      "Coordonnées.",
+      "Placer.",
+      "Lire déplacement."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace",
+      "lessons": [
+        {
+          "title": "Coordonnées.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un quadrillage pour se repérer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois expliquer à un ami où se trouve ton siège dans une grande salle de spectacle. Tu ne peux pas dire « là-bas » en montrant du doigt, car tu es au téléphone. La solution la plus simple est d'utiliser un système de repérage : tu donnes le numéro de la rangée et le numéro du siège dans cette rangée. En mathématiques, on fait exactement la même chose sur une feuille quadrillée. On trace deux droites perpendiculaires qui se coupent en un point précis, l'origine. C'est le point de départ de toute mesure, un peu comme le kilomètre zéro sur une autoroute."
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Un repère orthonormé avec ses deux axes et l'origine O"
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite horizontale s'appelle l'axe des abscisses. On la note souvent avec une flèche vers la droite et la lettre $x$. La droite verticale est l'axe des ordonnées, notée avec une flèche vers le haut et la lettre $y$. Ces deux axes découpent le plan en quatre zones que l'on nomme quadrants. Le point où elles se croisent est l'origine, notée $O$. Ses coordonnées sont $(0; 0)$ car il ne faut faire aucun pas ni à droite, ni à gauche, ni en haut, ni en bas pour l'atteindre. C'est notre point « zéro », notre camp de base."
+            },
+            {
+              "type": "definition",
+              "term": "Repère du plan",
+              "definition": "Un repère du plan est formé de deux droites perpendiculaires graduées, qui se coupent en un point appelé origine. La droite horizontale est l'axe des abscisses, la verticale est l'axe des ordonnées.",
+              "example": "Sur un cahier à grands carreaux, les lignes du quadrillage forment un repère naturel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le décor est planté avec les axes et l'origine, nous allons voir comment donner une « adresse » précise à n'importe quel point du plan. C'est le rôle des coordonnées : deux nombres qui disent exactement où se trouve le point par rapport à notre camp de base $O$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'adresse d'un point : l'abscisse et l'ordonnée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour connaître les coordonnées d'un point $A$, on joue au jeu du « projection ». Imagine que tu laisses tomber une ombre verticale du point $A$ sur l'axe horizontal. Le nombre lu sur l'axe des $x$ à cet endroit est l'abscisse du point. C'est le premier nombre du couple. Ensuite, tu laisses tomber une ombre horizontale sur l'axe vertical. Le nombre lu sur l'axe des $y$ est l'ordonnée. C'est le second nombre. On écrit toujours l'abscisse en premier, puis l'ordonnée, séparés par un point-virgule et enfermés entre parenthèses : $(x_A ; y_A)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une parallèle à l'axe des ordonnées (verticale) passant par le point. Lis le nombre sur l'axe des abscisses au point d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une parallèle à l'axe des abscisses (horizontale) passant par le point. Lis le nombre sur l'axe des ordonnées au point d'intersection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le couple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le résultat sous la forme $(abscisse ; ordonnée)$. Par exemple $(3 ; 2)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Point A(3; 2) avec ses projections sur les axes"
+            },
+            {
+              "type": "definition",
+              "term": "Coordonnées d'un point",
+              "definition": "Les coordonnées d'un point $A$ dans un repère sont le couple de nombres $(x_A ; y_A)$. $x_A$ est l'abscisse (position sur l'axe horizontal), $y_A$ est l'ordonnée (position sur l'axe vertical).",
+              "example": "Le point $B$ d'abscisse $-2$ et d'ordonnée $4$ a pour coordonnées $(-2 ; 4)$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment lire des coordonnées positives, ce qui place le point dans le quadrant en haut à droite. Mais le plan est grand ! Les axes sont gradués dans les deux sens : les nombres positifs à droite et en haut, les nombres négatifs à gauche et en bas. Cela nous permet de repérer des points partout, même « derrière » l'origine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quatre quadrants : élargir le terrain de jeu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux axes découpent le plan en quatre régions. Dans le premier quadrant (en haut à droite), les deux coordonnées sont positives $(+ ; +)$. Dans le second (en haut à gauche), l'abscisse est négative, l'ordonnée positive $(- ; +)$. Dans le troisième (en bas à gauche), les deux sont négatives $(- ; -)$. Enfin, dans le quatrième (en bas à droite), l'abscisse est positive, l'ordonnée négative $(+ ; -)$. C'est comme une boussole : le signe des nombres te dit dans quelle direction regarder par rapport à l'origine."
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Quatre points A, B, C, D dans les quatre quadrants"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce pour ne pas confondre l'ordre",
+              "paragraphs": [
+                "L'abscisse, c'est la position horizontale ($x$), comme « aller-avancer » sur le sol. L'ordonnée, c'est la position verticale ($y$), comme « monter-descendre » dans un ascenseur. L'ordre alphabétique ($x$ avant $y$) te donne l'ordre d'écriture : $(x ; y)$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il reste un cas particulier très utile : les points qui se trouvent pile sur un axe. Si un point est sur l'axe des abscisses, il n'est ni haut ni bas : son ordonnée est $0$. Ses coordonnées sont donc $(x ; 0)$. À l'inverse, sur l'axe des ordonnées, l'abscisse est $0$ : $(0 ; y)$. L'origine $O$ elle-même a les deux coordonnées nulles : $(0 ; 0)$. Tu as maintenant toutes les clés pour lire n'importe quelle position sur la carte !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, l'axe horizontal porte un nom. Comment s'appelle-t-il ?",
+              "answer": "L'axe des abscisses",
+              "hint": "C'est l'axe qui va de la gauche vers la droite, celui sur lequel on lit les $x$.",
+              "explanation": "La droite horizontale graduée est l'axe des abscisses. On y repère les abscisses (les $x$). La droite verticale est l'axe des ordonnées."
+            },
+            {
+              "question": "Donne les coordonnées du point $A$ représenté sur le graphique ci-contre (projections tracées).",
+              "answer": "(3 ; 2)",
+              "hint": "Regarde où la verticale coupe l'axe des $x$ (abscisse) et où l'horizontale coupe l'axe des $y$ (ordonnée).",
+              "explanation": "La projection verticale de $A$ coupe l'axe des abscisses en $3$, donc $x_A = 3$. La projection horizontale coupe l'axe des ordonnées en $2$, donc $y_A = 2$. Les coordonnées sont $(3 ; 2)$."
+            },
+            {
+              "question": "Le point $B$ a pour coordonnées $(-2 ; 4)$. Dans quel quadrant se trouve-t-il ?",
+              "answer": "Dans le deuxième quadrant (en haut à gauche).",
+              "hint": "Regarde les signes : abscisse négative (gauche), ordonnée positive (haut).",
+              "explanation": "L'abscisse $-2$ signifie qu'on est à gauche de l'origine. L'ordonnée $4$ signifie qu'on est au-dessus. C'est donc le quadrant en haut à gauche, appelé deuxième quadrant."
+            },
+            {
+              "question": "Un point $C$ a pour coordonnées $(5 ; 0)$. Sur quel axe se trouve-t-il ?",
+              "answer": "Sur l'axe des abscisses.",
+              "hint": "Quelle coordonnée est nulle ? Qu'est-ce que cela veut dire pour la position verticale ?",
+              "explanation": "L'ordonnée est $0$, donc le point n'est ni au-dessus ni en dessous de l'axe horizontal. Il est posé dessus. Tout point d'ordonnée $0$ appartient à l'axe des abscisses."
+            }
+          ]
+        },
+        {
+          "title": "Placer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'adresse au point : le grand saut"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons appris à lire l'adresse d'un point déjà tracé. Aujourd'hui, nous faisons le chemin inverse : on te donne l'adresse (les coordonnées) et tu dois construire le point sur la feuille. C'est comme si on te donnait une carte au trésor avec les coordonnées GPS : à toi de marcher le bon nombre de pas pour planter le drapeau. La règle d'or, c'est l'ordre : on traite toujours l'abscisse (le $x$) en premier, l'ordonnée (le $y$) en second. C'est une convention universelle, comme mettre ses chaussettes avant ses chaussures."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Partir de l'origine $O$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton crayon (ou ton doigt) sur le point $O(0;0)$, le croisement des deux axes. C'est ton point de départ, le camp de base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Avancer sur l'axe des abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le premier nombre du couple (l'abscisse). S'il est positif, compte ce nombre de graduations vers la droite. S'il est négatif, compte vers la gauche. Marque un petit trait ou garde le doigt là."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Monter ou descendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis ta position sur l'axe horizontal, regarde le second nombre (l'ordonnée). S'il est positif, monte verticalement du nombre de graduations indiqué. S'il est négatif, descends. Trace le point final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Construction du point A(2; 3) : 2 à droite, puis 3 en haut"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble avec le point $A(2 ; 3)$. Je pose mon crayon sur $O$. L'abscisse est $2$, positif : je vais deux graduations vers la droite. J'arrive sur le trait vertical qui porte le numéro $2$. De là, l'ordonnée est $3$, positif : je monte trois graduations vers le haut. Je pointe mon crayon : me voici arrivé en $A$. Si j'avais inversé l'ordre (monté d'abord, puis allé à droite), j'aurais quand même fini au même endroit, mais la méthode officielle garantit de ne jamais se tromper, surtout quand les nombres deviennent négatifs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as placé ton premier point avec des coordonnées positives, c'est déjà une belle victoire ! Mais le plan ne s'arrête pas au premier quadrant. Les coordonnées peuvent être négatives, ce qui signifie simplement « va dans l'autre sens ». C'est là que la méthode étape par étape devient ton meilleur filet de sécurité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer des points dans les quatre quadrants"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la méthode pour le point $B(-3 ; 1)$. Départ de $O$. Abscisse $-3$ : le signe moins signifie « gauche ». Je compte trois graduations vers la gauche. Je suis maintenant sur la ligne verticale $-3$. Ordonnée $1$ : positif, donc « haut ». Je monte d'une graduation. Je marque $B$. Tu vois ? La logique est rigoureusement la même, seul le sens de la flèche change. Pour $C(-2 ; -4)$, je vais à gauche (abscisse $-2$), puis je descends (ordonnée $-4$). Pour $D(3 ; -2)$, je vais à droite ($3$), puis je descends ($-2$). À chaque fois, tu construis un chemin en « L » : un segment horizontal, puis un segment vertical."
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Points B(-3;1), C(-2;-4), D(3;-2) placés dans leurs quadrants"
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne confonds pas l'abscisse et l'ordonnée au moment du tracé. Si tu montes d'abord pour $B(-3;1)$, tu te retrouves en $(0;1)$ et tu risques d'aller à droite au lieu de gauche. Toujours : horizontal d'abord (abscisse), vertical ensuite (ordonnée)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe des points un peu timides qui ne veulent pas quitter les axes. Comment placer $E(4 ; 0)$ ? Je pars de $O$, j'avance de $4$ vers la droite (abscisse $4$). L'ordonnée est $0$ : je ne monte pas, je ne descends pas. Je reste exactement sur l'axe horizontal. Le point $E$ est posé sur l'axe des abscisses. De même, $F(0 ; -3)$ : je ne bouge pas horizontalement (abscisse $0$), je descends de $3$ (ordonnée $-3$). $F$ est sur l'axe des ordonnées. C'est la même règle, avec un déplacement nul sur l'une des deux directions."
+            },
+            {
+              "type": "definition",
+              "term": "Point sur un axe",
+              "definition": "Un point d'abscisse nulle ($x=0$) se trouve sur l'axe des ordonnées. Un point d'ordonnée nulle ($y=0$) se trouve sur l'axe des abscisses. L'origine $O(0;0)$ est le seul point sur les deux axes à la fois.",
+              "example": "$P(0; 5)$ est sur l'axe des ordonnées. $Q(-2; 0)$ est sur l'axe des abscisses."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le repère n'est pas gradué de $1$ en $1$. Il peut y avoir une graduation tous les $2$, tous les $5$, ou tous les $10$. La méthode ne change pas, mais il faut lire l'échelle avant de compter tes pas. Si une graduation vaut $2$, alors pour placer $x=6$, tu comptes $3$ graduations. Prends toujours le temps de regarder les chiffres écrits sur les axes avant de te lancer. C'est comme vérifier l'échelle d'une carte avant de mesurer une distance : une habitude qui évite bien des erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu dois placer le point $M(4 ; 2)$. Quelle est la toute première action à faire ?",
+              "answer": "Se placer sur l'origine $O(0;0)$.",
+              "hint": "Avant de compter les graduations, il faut être au bon point de départ.",
+              "explanation": "La méthode commence toujours par se positionner sur l'origine $O$, le point $(0;0)$, intersection des deux axes."
+            },
+            {
+              "question": "Place le point $N(-2 ; 3)$ en suivant la méthode. Décris le chemin parcouru depuis l'origine.",
+              "answer": "Depuis $O$, aller 2 graduations à gauche, puis 3 graduations en haut.",
+              "hint": "Abscisse $-2$ = gauche. Ordonnée $3$ = haut.",
+              "explanation": "L'abscisse est $-2$ (négatif), on se déplace de $2$ unités vers la gauche sur l'axe des $x$. L'ordonnée est $3$ (positif), on se déplace de $3$ unités vers le haut, parallèlement à l'axe des $y$."
+            },
+            {
+              "question": "Le point $P$ a pour coordonnées $(0 ; -4)$. Sur quel axe se trouve-t-il ?",
+              "answer": "Sur l'axe des ordonnées.",
+              "hint": "Regarde quelle coordonnée est nulle. L'autre coordonnée te dit où sur cet axe.",
+              "explanation": "L'abscisse est $0$, donc le point ne s'éloigne pas horizontalement de l'axe vertical. Il reste sur l'axe des ordonnées, à $4$ unités en dessous de l'origine (ordonnée $-4$)."
+            },
+            {
+              "question": "Sur un repère où une graduation vaut $5$ unités, combien de graduations faut-il compter pour placer l'abscisse $20$ ?",
+              "answer": "4 graduations.",
+              "hint": "Divise la valeur cherchée par la valeur d'une graduation.",
+              "explanation": "L'échelle est de $5$ unités par graduation. Pour atteindre $20$, il faut faire $20 \\div 5 = 4$ graduations vers la droite depuis l'origine."
+            }
+          ]
+        },
+        {
+          "title": "Lire déplacement.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand un point fait un voyage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons regardé des points immobiles, bien assis à leurs coordonnées. Mais les mathématiques adorent le mouvement ! Imagine un personnage de jeu vidéo qui se déplace de la case $A$ à la case $B$. Comment décrire ce déplacement avec des nombres ? On ne veut pas juste savoir où il est, mais *comment* il y est allé. Combien de pas à droite (ou à gauche) ? Combien de pas en haut (ou en bas) ? C'est ce qu'on appelle un déplacement, ou une translation. On note ce déplacement par un couple de nombres, exactement comme des coordonnées, mais qui racontent une histoire de trajet."
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Déplacement du point A(1;1) vers le point B(4;3)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le point $A(1 ; 1)$ et le point $B(4 ; 3)$. Pour aller de $A$ à $B$, je dois avancer horizontalement. Je compte les graduations : de $1$ à $4$, il y a $3$ pas vers la droite. Verticalement : de $1$ à $3$, il y a $2$ pas vers le haut. Le déplacement qui emmène $A$ sur $B$ se note donc $(3 ; 2)$. Le premier nombre est le déplacement horizontal (variation de l'abscisse), le second est le déplacement vertical (variation de l'ordonnée). C'est la différence entre les coordonnées d'arrivée et les coordonnées de départ."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les coordonnées de départ et d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $x_A, y_A$ pour le point de départ et $x_B, y_B$ pour le point d'arrivée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le déplacement horizontal",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $x_B - x_A$. Si le résultat est positif, le déplacement va vers la droite. S'il est négatif, vers la gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le déplacement vertical",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais $y_B - y_A$. Si le résultat est positif, le déplacement va vers le haut. S'il est négatif, vers le bas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le vecteur déplacement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le déplacement (ou vecteur) s'écrit $\\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$ ou simplement $(x_B - x_A ; y_B - y_A)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment calculer le déplacement en comptant les cases sur le quadrillage. Mais très vite, le quadrillage devient trop petit ou les nombres trop grands pour compter à la main. Heureusement, la formule de calcul $x_B - x_A$ et $y_B - y_A$ fonctionne toujours, même sans figure ! C'est la puissance de l'algèbre : elle remplace le dessin par un calcul exact. Essayons avec des nombres qui ne sont pas sur le même graphique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un déplacement sans dessiner"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $C(-2 ; 5)$ et $D(3 ; 1)$. Je veux le déplacement de $C$ vers $D$. Je n'ai pas besoin de tracer le repère. Horizontalement : $x_D - x_C = 3 - (-2) = 3 + 2 = 5$. Le déplacement horizontal est $+5$ (5 pas à droite). Verticalement : $y_D - y_C = 1 - 5 = -4$. Le déplacement vertical est $-4$ (4 pas en bas). Le déplacement $\\overrightarrow{CD}$ est donc $(5 ; -4)$. Remarque bien l'ordre : c'est toujours **coordonnées d'arrivée moins coordonnées de départ**. Si tu inverses, tu obtiens le déplacement inverse, celui qui ramène de $D$ vers $C$ : $(-5 ; 4)$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Mémo : Le sens de la soustraction",
+              "paragraphs": [
+                "Pour ne jamais te tromper : « J'arrive moins je pars ». Arrivée $-$ Départ. C'est valable pour l'abscisse comme pour l'ordonnée."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un déplacement peut être nul. Si je vais de $E(2 ; 3)$ à $F(2 ; 3)$, je ne bouge pas ! Le calcul donne $x_F - x_E = 2 - 2 = 0$ et $y_F - y_E = 3 - 3 = 0$. Le déplacement est $(0 ; 0)$. C'est le vecteur nul, l'équivalent du « reste sur place ». À l'inverse, deux déplacements opposés s'annulent. Si je fais $(3 ; -2)$ puis $(-3 ; 2)$, je reviens au point de départ. La somme de ces deux déplacements est $(0 ; 0)$. C'est une idée très importante : les déplacements s'additionnent coordonnée par coordonnée, exactement comme des nombres."
+            },
+            {
+              "type": "graph",
+              "expression": "",
+              "xmin": -5,
+              "xmax": 5,
+              "ymin": -5,
+              "ymax": 5,
+              "caption": "Deux déplacements opposés : aller et retour"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne le départ et le déplacement, et on te demande de trouver l'arrivée. C'est l'opération inverse : tu ajoutes le déplacement aux coordonnées de départ. Si je suis en $G(1 ; -2)$ et que je fais le déplacement $(4 ; 3)$, j'arrive en $H(1+4 ; -2+3) = H(5 ; 1)$. C'est la même logique qu'un calcul de solde bancaire : solde initial + mouvement = solde final. Tu sais maintenant lire une position (coordonnées), placer un point, et lire ou calculer un déplacement. Tu as toutes les clés pour te repérer dans le plan comme un pro !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer les axes (abscisses/ordonnées) et l'origine d'un repère.",
+                "Je sais lire les coordonnées $(x ; y)$ d'un point placé sur un quadrillage.",
+                "Je sais placer un point connaissant ses coordonnées (positives ou négatives).",
+                "Je sais identifier sur quel axe se trouve un point dont une coordonnée est nulle.",
+                "Je sais déterminer le déplacement (variation $x$, variation $y$) pour aller d'un point $A$ à un point $B$, en comptant ou en calculant $x_B - x_A$ et $y_B - y_A$.",
+                "Je sais retrouver le point d'arrivée connaissant le point de départ et le déplacement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On va de $A(2 ; 1)$ à $B(5 ; 4)$. Quel est le déplacement horizontal (variation d'abscisse) ?",
+              "answer": "+3 (ou 3 vers la droite)",
+              "hint": "Calcule $x_B - x_A$.",
+              "explanation": "$x_B - x_A = 5 - 2 = 3$. Le déplacement horizontal est $+3$, soit 3 graduations vers la droite."
+            },
+            {
+              "question": "Calcule le déplacement (le vecteur) qui va de $M(-1 ; 3)$ à $N(4 ; -2)$.",
+              "answer": "(5 ; -5)",
+              "hint": "Fais $x_N - x_M$ puis $y_N - y_M$. Attention aux signes !",
+              "explanation": "Abscisse : $4 - (-1) = 4 + 1 = 5$. Ordonnée : $-2 - 3 = -5$. Le déplacement est $(5 ; -5)$ : 5 à droite, 5 en bas."
+            },
+            {
+              "question": "Le déplacement de $P$ vers $Q$ est $(-3 ; 2)$. Si $P$ a pour coordonnées $(4 ; 1)$, quelles sont les coordonnées de $Q$ ?",
+              "answer": "Q(1 ; 3)",
+              "hint": "Ajoute le déplacement aux coordonnées de départ : $x_Q = x_P + \\text{déplacement}_x$.",
+              "explanation": "$x_Q = 4 + (-3) = 1$. $y_Q = 1 + 2 = 3$. Le point d'arrivée est $Q(1 ; 3)$."
+            },
+            {
+              "question": "Un personnage est en $R(-2 ; -2)$. Il fait un déplacement $(0 ; 5)$. Où se trouve-t-il maintenant ?",
+              "answer": "En $(-2 ; 3)$.",
+              "hint": "Le déplacement horizontal est nul, il ne bouge pas à gauche ni à droite.",
+              "explanation": "L'abscisse ne change pas : $-2 + 0 = -2$. L'ordonnée augmente de $5$ : $-2 + 5 = 3$. Nouvelle position : $(-2 ; 3)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

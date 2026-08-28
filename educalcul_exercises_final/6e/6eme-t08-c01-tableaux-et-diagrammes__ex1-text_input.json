@@ -1,0 +1,113 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Lire",
+  "title": "Lecture de tableaux et diagrammes",
+  "blocks": [
+    {
+      "title": "Question $1$ : Lecture d'un tableau",
+      "content": "Le tableau ci-dessous indique le nombre d'élèves présents chaque jour de la semaine. Combien d'élèves étaient présents mardi ?",
+      "correctAnswer": "$15$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le tableau, la ligne correspondant à mardi affiche le nombre $15$. Donc il y avait $15$ élèves présents mardi.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "12"
+          ],
+          [
+            "Mardi",
+            "15"
+          ],
+          [
+            "Mercredi",
+            "10"
+          ],
+          [
+            "Jeudi",
+            "14"
+          ],
+          [
+            "Vendredi",
+            "13"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Question $2$ : Lecture d'un diagramme en barres",
+      "content": "Le diagramme en barres représente le nombre de fruits vendus au marché. Quelle est la quantité de bananes vendue ?",
+      "correctAnswer": "$30$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La barre correspondant aux bananes monte jusqu'à $30$. Donc $30$ bananes ont été vendues.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits vendus au marché",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Bananes",
+            "value": 30,
+            "tone": "green"
+          },
+          {
+            "label": "Oranges",
+            "value": 20,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Question $3$ : Lecture d'un diagramme circulaire",
+      "content": "Le diagramme circulaire montre la répartition des sports préférés des élèves de la classe. Quel sport est le plus pratiqué ?",
+      "correctAnswer": "Football",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La part la plus grande du cercle correspond au football, avec $40$ pour cent des élèves. C'est donc le sport le plus pratiqué.",
+      "points": 2,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés des élèves",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Basket",
+            "value": 30,
+            "tone": "green"
+          },
+          {
+            "label": "Natation",
+            "value": 30,
+            "tone": "red"
+          }
+        ]
+      }
+    }
+  ]
+}

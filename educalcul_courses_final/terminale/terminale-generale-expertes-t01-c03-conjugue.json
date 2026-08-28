@@ -1,0 +1,401 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.754821+00:00",
+  "id": 729,
+  "code": "terminale-generale-expertes-t01-c03",
+  "title": "Conjugué",
+  "description": "Cours structuré Educalcul : Conjugué.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Conjugué",
+    "objectif_global": "Conjugué",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Propriétés.",
+      "Calculs."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition algébrique du conjugué"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée au conjugué d'un nombre complexe. En terminale experte, vous manipulez déjà les nombres complexes sous forme algébrique $z = a + i b$ avec $a,b \\in \\mathbb{R}$. Le conjugué de $z$, noté $\\overline{z}$, est tout simplement le nombre obtenu en changeant le signe de la partie imaginaire : $\\overline{z} = a - i b$. Cette opération est fondamentale car elle permet de revenir au domaine réel quand on additionne un nombre et son conjugué, et elle joue un rôle central dans la division des complexes."
+            },
+            {
+              "type": "definition",
+              "term": "conjugué",
+              "definition": "Pour un nombre complexe $z = a + i b$ (avec $a,b \\in \\mathbb{R}$), son conjugué est le nombre complexe $\\overline{z} = a - i b$. La partie réelle ne change pas, seule la partie imaginaire change de signe.",
+              "example": "Si $z = 3 + 4i$, alors $\\overline{z} = 3 - 4i$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer la définition. Soit $z_1 = -2 + 5i$. Son conjugué est $\\overline{z_1} = -2 - 5i$. Remarquez que la partie réelle $-2$ reste identique, tandis que la partie imaginaire passe de $+5$ à $-5$. Cette symétrie par rapport à l'axe des réels est la clé de l'interprétation géométrique que nous verrons juste après."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{a + i b} = a - i b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition algébrique est claire, tournons notre regard vers le plan complexe. La géométrie offre une image très intuitive : le conjugué est la réflexion du point $z$ par rapport à l'axe des abscisses (l'axe réel). Cette vision géométrique rend évidentes plusieurs propriétés que nous démontrerons plus tard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : symétrie axiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le plan complexe, un nombre $z = a + i b$ est représenté par le point de coordonnées $(a,b)$. Son conjugué $\\overline{z} = a - i b$ correspond au point $(a,-b)$. Les deux points sont symétriques par rapport à l'axe horizontal. Cette symétrie conserve la distance à l'origine, c'est-à-dire le module, mais change le signe de l'argument. C'est une propriété que nous exploiterons constamment."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 4,
+              "caption": "Point $z = 3 + 4i$ et son conjugué $\\overline{z} = 3 - 4i$ reflétés par rapport à l'axe réel"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer aux calculs plus élaborés, établissons deux propriétés de base qui découlent directement de la définition. Elles seront vos outils quotidiens pour simplifier des expressions contenant des conjugués."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Premières propriétés : somme et produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $z_1 = a_1 + i b_1$ et $z_2 = a_2 + i b_2$. En développant les définitions, on obtient $\\overline{z_1 + z_2} = \\overline{z_1} + \\overline{z_2}$ et $\\overline{z_1 \\cdot z_2} = \\overline{z_1} \\cdot \\overline{z_2}$. Ces égalités montrent que la conjugaison est un morphisme pour l'addition et la multiplication. Nous allons les démontrer pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Conjugué de la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculons $z_1 + z_2 = (a_1 + a_2) + i(b_1 + b_2)$. Son conjugué est $(a_1 + a_2) - i(b_1 + b_2)$. D'autre part, $\\overline{z_1} + \\overline{z_2} = (a_1 - i b_1) + (a_2 - i b_2) = (a_1 + a_2) - i(b_1 + b_2)$. Les deux expressions coïncident."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Conjugué du produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit $z_1 z_2 = (a_1 a_2 - b_1 b_2) + i(a_1 b_2 + a_2 b_1)$. Son conjugué est $(a_1 a_2 - b_1 b_2) - i(a_1 b_2 + a_2 b_1)$. Calculons $\\overline{z_1} \\cdot \\overline{z_2} = (a_1 - i b_1)(a_2 - i b_2) = (a_1 a_2 - b_1 b_2) - i(a_1 b_2 + a_2 b_1)$. Égalité vérifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire le conjugué de $z = -7 + 2i$.",
+              "answer": "$\\overline{z} = -7 - 2i$",
+              "hint": "Changez le signe devant $i$.",
+              "explanation": "La partie réelle $-7$ reste inchangée, la partie imaginaire $+2$ devient $-2$."
+            },
+            {
+              "question": "Dans le plan complexe, le point $A$ a pour affixe $2 - 3i$. Donner l'affixe du point $A'$, image de $A$ par symétrie par rapport à l'axe réel.",
+              "answer": "$2 + 3i$",
+              "hint": "La symétrie par rapport à l'axe réel change le signe de la partie imaginaire.",
+              "explanation": "L'affixe de $A$ est $2 - 3i$. Son conjugué est $2 + 3i$, qui correspond exactement à la réflexion demandée."
+            },
+            {
+              "question": "Vérifier la propriété $\\overline{z_1 + z_2} = \\overline{z_1} + \\overline{z_2}$ pour $z_1 = 1 + 4i$ et $z_2 = -3 - 2i$.",
+              "answer": "Les deux membres valent $-2 - 2i$.",
+              "hint": "Calculez d'abord la somme, puis son conjugué ; ensuite calculez les conjugués séparément et additionnez-les.",
+              "explanation": "$z_1+z_2 = -2+2i$, son conjugué $-2-2i$. $\\overline{z_1}=1-4i$, $\\overline{z_2}=-3+2i$, leur somme $-2-2i$."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Linéarité de la conjugaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous approfondissons les propriétés du conjugué. Vous avez déjà vu que la conjugaison respecte l'addition et la multiplication. Elle respecte aussi la soustraction et la division, ce qui en fait une application linéaire sur le corps des complexes muni de sa structure d'espace vectoriel sur $\\mathbb{R}$. Nous allons établir ces résultats avec rigueur, puis illustrer leur utilité pour simplifier des quotients."
+            },
+            {
+              "type": "definition",
+              "term": "linéarité (pour la conjugaison)",
+              "definition": "Une application $f : \\mathbb{C} \\to \\mathbb{C}$ est linéaire sur $\\mathbb{R}$ si pour tous $z_1,z_2 \\in \\mathbb{C}$ et $\\lambda \\in \\mathbb{R}$, on a $f(z_1+z_2)=f(z_1)+f(z_2)$ et $f(\\lambda z_1)=\\lambda f(z_1)$. La conjugaison vérifie ces deux conditions.",
+              "example": "$\\overline{(2+3i)+(1-4i)} = \\overline{3-i}=3+i = \\overline{2+3i}+\\overline{1-4i}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la soustraction : $\\overline{z_1 - z_2} = \\overline{z_1} - \\overline{z_2}$. C'est une conséquence immédiate de la propriété sur la somme, car $z_1 - z_2 = z_1 + (-z_2)$ et $\\overline{-z_2} = -\\overline{z_2}$. Pour la division, on utilise le produit par l'inverse : $\\overline{\\frac{z_1}{z_2}} = \\frac{\\overline{z_1}}{\\overline{z_2}}$ pour $z_2 \\neq 0$. Cette formule est la clé pour rationnaliser un dénominateur complexe."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{\\frac{z_1}{z_2}} = \\frac{\\overline{z_1}}{\\overline{z_2}} \\quad (z_2 \\neq 0)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux propriétés liées au module et à l'argument. Le module d'un nombre complexe ne change pas sous conjugaison, tandis que l'argument change de signe. Ces faits géométriques découlent directement de la symétrie axiale vue précédemment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Module et argument du conjugué"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $z = r(\\cos\\theta + i\\sin\\theta) = r e^{i\\theta}$ avec $r \\ge 0$, on a $\\overline{z} = r(\\cos\\theta - i\\sin\\theta) = r e^{-i\\theta}$. Donc $|\\overline{z}| = |z| = r$ et $\\arg(\\overline{z}) = -\\arg(z)$ (modulo $2\\pi$). Cette relation est extrêmement utile pour passer d'une forme trigonométrique à l'autre sans recalculer le module."
+            },
+            {
+              "type": "display_math",
+              "latex": "|\\overline{z}| = |z|, \\qquad \\arg(\\overline{z}) \\equiv -\\arg(z) \\pmod{2\\pi}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, examinons une application majeure : les polynômes à coefficients réels. Si un polynôme $P \\in \\mathbb{R}[X]$ admet une racine complexe non réelle $z$, alors son conjugué $\\overline{z}$ est aussi racine de $P$. Cette propriété assure que les racines non réelles apparaissent par paires conjuguées, ce qui simplifie la factorisation sur $\\mathbb{R}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Racines conjuguées des polynômes réels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $P(X) = a_n X^n + \\dots + a_0$ avec $a_k \\in \\mathbb{R}$. Pour tout $z \\in \\mathbb{C}$, $\\overline{P(z)} = P(\\overline{z})$ car les coefficients sont réels et la conjugaison est un morphisme. Si $P(z)=0$, alors $0 = \\overline{0} = \\overline{P(z)} = P(\\overline{z})$. Donc $\\overline{z}$ annule aussi $P$. C'est un résultat classique que vous retrouverez dans l'étude des équations différentielles et de la transformée de Laplace."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Conjugué d'un polynôme à coefficients réels",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivons $P(z) = \\sum_{k=0}^n a_k z^k$. En appliquant la conjugaison : $\\overline{P(z)} = \\sum_{k=0}^n \\overline{a_k z^k} = \\sum_{k=0}^n a_k \\overline{z}^k = P(\\overline{z})$, car $\\overline{a_k}=a_k$ (réels) et $\\overline{z^k} = (\\overline{z})^k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Conséquence sur les racines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $P(z)=0$, alors $\\overline{P(z)}=0$, donc $P(\\overline{z})=0$. Ainsi $\\overline{z}$ est aussi racine. Les racines non réelles viennent par paires $(z,\\overline{z})$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier $\\frac{3+4i}{1-2i}$ en utilisant le conjugué du dénominateur.",
+              "answer": "$-1+2i$",
+              "hint": "Multipliez numérateur et dénominateur par $\\overline{1-2i}=1+2i$.",
+              "explanation": "$\\frac{3+4i}{1-2i} = \\frac{(3+4i)(1+2i)}{(1-2i)(1+2i)} = \\frac{3+6i+4i+8i^2}{1+4} = \\frac{-5+10i}{5} = -1+2i$."
+            },
+            {
+              "question": "Donner le module et un argument principal de $\\overline{z}$ si $z = 2 e^{i\\pi/3}$.",
+              "answer": "Module $2$, argument principal $-\\pi/3$ (ou $5\\pi/3$).",
+              "hint": "Le module ne change pas, l'argument change de signe.",
+              "explanation": "$|\\overline{z}| = |z| = 2$. $\\arg(\\overline{z}) = -\\arg(z) = -\\pi/3$. Un argument principal dans $[0,2\\pi)$ est $5\\pi/3$."
+            },
+            {
+              "question": "Le polynôme $P(X)=X^3-3X^2+4X-12$ a une racine $z=2i$. Trouver les deux autres racines.",
+              "answer": "Les racines sont $2i, -2i, 3$.",
+              "hint": "Utilisez la propriété des racines conjuguées pour obtenir $-2i$, puis divisez par $(X-2i)(X+2i)=X^2+4$.",
+              "explanation": "Puisque les coefficients sont réels, $-2i$ est aussi racine. Le produit $(X-2i)(X+2i)=X^2+4$. La division euclidienne de $P$ par $X^2+4$ donne $X-3$, d'où la racine réelle $3$."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs de conjugués sous forme algébrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon met l'accent sur la pratique du calcul de conjugués dans les trois représentations usuelles : algébrique, trigonométrique et exponentielle. Vous verrez comment passer de l'une à l'autre sans effort, et comment exploiter le conjugué pour simplifier des expressions, résoudre des équations ou déterminer des parties réelles et imaginaires."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons la forme algébrique $z = x + i y$. Son conjugué est $\\overline{z} = x - i y$. La partie réelle s'obtient par $\\Re(z) = \\frac{z+\\overline{z}}{2}$ et la partie imaginaire par $\\Im(z) = \\frac{z-\\overline{z}}{2i}$. Ces formules sont très commodes quand $z$ est donné sous forme exponentielle ou trigonométrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Re(z) = \\frac{z+\\overline{z}}{2}, \\quad \\Im(z) = \\frac{z-\\overline{z}}{2i}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la forme trigonométrique $z = r(\\cos\\theta + i\\sin\\theta)$ et à la forme exponentielle $z = r e^{i\\theta}$. Le conjugué s'écrit alors $\\overline{z} = r(\\cos\\theta - i\\sin\\theta) = r e^{-i\\theta}$. Cette écriture montre immédiatement que le module est invariant et que l'argument change de signe. C'est particulièrement puissant pour calculer des puissances ou des racines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conjugué en forme trigonométrique et exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $z = 5 e^{i 2\\pi/3}$. Son conjugué est $\\overline{z} = 5 e^{-i 2\\pi/3} = 5 e^{i 4\\pi/3}$ (argument principal dans $[0,2\\pi)$). Si l'on élève $z$ au carré, $z^2 = 25 e^{i 4\\pi/3}$ et $\\overline{z^2} = 25 e^{-i 4\\pi/3} = (\\overline{z})^2$. La propriété $\\overline{z^n} = (\\overline{z})^n$ se vérifie aisément par récurrence."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{z^n} = (\\overline{z})^n \\quad (n \\in \\mathbb{N})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous abordons maintenant une application concrète : la résolution d'équations où l'inconnue et son conjugué apparaissent simultanément. L'astuce consiste à écrire $z = x + i y$, à remplacer $\\overline{z}$ par $x - i y$, puis à identifier parties réelle et imaginaire. Cette méthode transforme une équation complexe en un système réel de deux équations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations faisant intervenir $z$ et $\\overline{z}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'équation $z + 2\\overline{z} = 3 - 4i$. Posons $z = x + i y$. Alors $\\overline{z} = x - i y$ et l'équation devient $(x+iy) + 2(x-iy) = 3x - i y = 3 - 4i$. Identification : $3x = 3$ et $-y = -4$, d'où $x=1$, $y=4$. La solution unique est $z = 1 + 4i$. Cette technique fonctionne pour toute équation linéaire en $z$ et $\\overline{z}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser $z = x + i y$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $z$ et $\\overline{z}$ par leurs expressions cartésiennes. L'équation devient une égalité entre deux complexes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les parties réelle et imaginaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Égalisez les coefficients de $1$ et de $i$ des deux côtés. Vous obtenez un système linéaire $2 \\times 2$ facile à résoudre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reconstituer $z$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois $x$ et $y$ trouvés, écrivez $z = x + i y$. Vérifiez en remplaçant dans l'équation d'origine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, une illustration algorithmique : en Python, la bibliothèque `cmath` fournit la méthode `.conjugate()` qui renvoie le conjugué d'un complexe. Cela permet de tester rapidement vos calculs manuels."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import cmath\\nz = 3 + 4j\\nprint(z.conjugate())  # (3-4j)",
+              "caption": "Exemple de calcul de conjugué en Python"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le conjugué d'un nombre complexe sous forme algébrique.",
+                "Je sais interpréter géométriquement le conjugué comme une symétrie par rapport à l'axe réel.",
+                "Je connais et sais démontrer les propriétés : $\\overline{z_1+z_2}=\\overline{z_1}+\\overline{z_2}$, $\\overline{z_1 z_2}=\\overline{z_1}\\overline{z_2}$, $|\\overline{z}|=|z|$, $\\arg(\\overline{z})=-\\arg(z)$.",
+                "Je sais calculer le conjugué en forme trigonométrique et exponentielle.",
+                "Je sais résoudre une équation linéaire faisant intervenir $z$ et $\\overline{z}$ en posant $z=x+iy$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\Re(z)$ et $\\Im(z)$ pour $z = (2+i)^2$ en utilisant les formules avec le conjugué.",
+              "answer": "$\\Re(z)=3$, $\\Im(z)=4$",
+              "hint": "Calculez $z$, puis $\\overline{z}$, puis appliquez $\\frac{z+\\overline{z}}{2}$ et $\\frac{z-\\overline{z}}{2i}$.",
+              "explanation": "$z = 3+4i$, $\\overline{z}=3-4i$. $\\Re(z) = (3+4i+3-4i)/2 = 3$. $\\Im(z) = (3+4i-3+4i)/(2i) = 8i/(2i)=4$."
+            },
+            {
+              "question": "Écrire le conjugué de $z = 4 e^{-i\\pi/6}$ sous forme exponentielle avec un argument principal dans $[0,2\\pi)$.",
+              "answer": "$4 e^{i\\pi/6}$",
+              "hint": "Le module reste $4$, l'argument change de signe puis on ajoute $2\\pi$ si nécessaire.",
+              "explanation": "$\\arg(z) = -\\pi/6$. $\\arg(\\overline{z}) = \\pi/6$, qui est déjà dans $[0,2\\pi)$."
+            },
+            {
+              "question": "Résoudre $2z - i\\overline{z} = 5 + i$.",
+              "answer": "$z = 2 - i$",
+              "hint": "Poser $z = x + i y$, exprimer $\\overline{z}$, identifier parties réelle et imaginaire.",
+              "explanation": "$2(x+iy) - i(x-iy) = 2x+2iy - ix - y = (2x - y) + i(2y - x) = 5 + i$. Système : $2x - y = 5$, $2y - x = 1$. Résolution donne $x=2$, $y=-1$. Donc $z=2-i$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

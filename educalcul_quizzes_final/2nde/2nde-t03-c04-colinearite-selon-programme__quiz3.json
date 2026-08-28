@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Applications géométriques",
+  "title": "Applications géométriques de la colinéarité",
+  "questions": [
+    {
+      "text": "Les points $A(1;2)$, $B(3;6)$ et $C(5;10)$ sont-ils alignés ?",
+      "options": [
+        "Oui, car les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont proportionnels.",
+        "Non, car les coordonnées de $C$ ne vérifient pas l'équation de la droite $(AB)$.",
+        "Oui, car les pentes des segments $[AB]$ et $[BC]$ sont différentes.",
+        "Non, car le déterminant des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ est non nul."
+      ],
+      "correctAnswer": "Oui, car les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont proportionnels.",
+      "explanation": "Les vecteurs $\\overrightarrow{AB} = (2;4)$ et $\\overrightarrow{AC} = (4;8)$ vérifient $\\overrightarrow{AC} = 2\\overrightarrow{AB}$, ils sont donc proportionnels, ce qui prouve que $A$, $B$, $C$ sont alignés. Les autres affirmations sont fausses : la pente de $[AB]$ et $[BC]$ est la même ($2$), et le déterminant est nul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A(2;3)$, $B(5;7)$ et $C(k;11)$. Déterminez la valeur de $k$ pour que $A$, $B$, $C$ soient alignés.",
+      "options": [
+        "$k = 8$",
+        "$k = 6$",
+        "$k = 7$",
+        "$k = 9$"
+      ],
+      "correctAnswer": "$k = 8$",
+      "explanation": "Le vecteur $\\overrightarrow{AB} = (3;4)$. Pour que $C$ soit aligné, $\\overrightarrow{AC} = (k-2;8)$ doit être proportionnel à $\\overrightarrow{AB}$, donc $\\frac{k-2}{3} = \\frac{8}{4} = 2$, d'où $k-2=6$ et $k=8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite $d$ passe par $A(0;0)$ et $B(3;4)$. Lequel des points suivants appartient à $d$ ?",
+      "options": [
+        "$C(6;8)$",
+        "$C(5;7)$",
+        "$C(4;5)$",
+        "$C(3;5)$"
+      ],
+      "correctAnswer": "$C(6;8)$",
+      "explanation": "La droite $d$ a pour vecteur directeur $\\overrightarrow{AB} = (3;4)$. Un point $M(x;y)$ appartient à $d$ ssi $\\overrightarrow{AM}$ est colinéaire à $\\overrightarrow{AB}$, c'est-à-dire $\\frac{x}{3} = \\frac{y}{4}$. Pour $C(6;8)$, $\\frac{6}{3}=2$ et $\\frac{8}{4}=2$, l'égalité est vérifiée. Les autres points ne satisfont pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u} = \\begin{pmatrix}2\\\\3\\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix}k\\\\9\\end{pmatrix}$. Pour quelle valeur de $k$ les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils colinéaires ?",
+      "options": [
+        "$k = 6$",
+        "$k = 4$",
+        "$k = 5$",
+        "$k = 3$"
+      ],
+      "correctAnswer": "$k = 6$",
+      "explanation": "Deux vecteurs sont colinéaires s'il existe un réel $t$ tel que $\\vec{v} = t\\vec{u}$. Ici $\\vec{u} = (2;3)$, $\\vec{v} = (k;9)$. On a $9 = 3t \\Rightarrow t=3$, puis $k = 2t = 6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, les points $A(1;2)$, $B(4;8)$ et $C(x;14)$ sont alignés. Calculez $x$.",
+      "options": [
+        "$x = 7$",
+        "$x = 6$",
+        "$x = 5$",
+        "$x = 8$"
+      ],
+      "correctAnswer": "$x = 7$",
+      "explanation": "Le vecteur $\\overrightarrow{AB} = (3;6)$. Pour que $C$ soit aligné, $\\overrightarrow{AC} = (x-1;12)$ doit être proportionnel à $\\overrightarrow{AB}$, donc $\\frac{x-1}{3} = \\frac{12}{6} = 2$, ce qui donne $x-1=6$ et $x=7$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

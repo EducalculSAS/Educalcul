@@ -1,0 +1,410 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.379708+00:00",
+  "id": 603,
+  "code": "1ere-generale-maths-t05-c09",
+  "title": "Bilan - Analyse Première",
+  "description": "Cours structuré Educalcul : Bilan - Analyse Première.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Bilan - Analyse Première",
+    "objectif_global": "Bilan - Analyse Première",
+    "mini_lecons_imposees": [
+      "Dérivation, exponentielle, trigo.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Dérivation, exponentielle, trigo.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La dérivée : définition et premier calcul"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier grand rappel. Nous allons retrouver ensemble l'idée centrale de la dérivée : mesurer comment une fonction varie au voisinage d'un point. Imagine que tu conduises une voiture et que tu regardes le compteur de vitesse à un instant précis ; ce chiffre est exactement la dérivée de ta position par rapport au temps. En mathématiques, on note cette vitesse instantanée $f'(x_0)$ ou $\\frac{df}{dx}(x_0)$."
+            },
+            {
+              "type": "definition",
+              "term": "Dérivée en un point",
+              "definition": "La dérivée de la fonction $f$ au point $x_0$ est la limite, si elle existe, du taux d'accroissement $\\frac{f(x_0+h)-f(x_0)}{h}$ quand $h$ tend vers $0$. On écrit $f'(x_0)=\\lim_{h\\to 0}\\frac{f(x_0+h)-f(x_0)}{h}$.",
+              "example": "Pour $f(x)=x^2$ en $x_0=1$, le taux d'accroissement vaut $\\frac{(1+h)^2-1}{h}=2+h$ ; sa limite est $2$, donc $f'(1)=2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le taux d'accroissement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On forme la fraction $\\frac{f(x_0+h)-f(x_0)}{h}$ en remplaçant $f$ par son expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simplifier l'expression",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On développe les carrés, on factorise $h$ au numérateur et on annule $h$ (car $h\\neq0$ pendant le calcul)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire tendre $h$ vers $0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il ne reste plus qu'une expression sans $h$ au dénominateur ; on substitue $h=0$ pour obtenir la dérivée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "x^2",
+              "x0": 1,
+              "xMin": -2,
+              "xMax": 3,
+              "caption": "Tangente à la parabole $y=x^2$ au point d'abscisse $1$ ; la pente de cette droite est $f'(1)=2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir comment on passe d'une définition formelle à un calcul concret. Cette méthode fonctionne pour toute fonction polynomiale, et elle est la base de toutes les règles de dérivation que nous allons revoir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée de l'exponentielle et de la logarithmique népérienne"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'exponentielle $e^x$ a une propriété magique : elle est égale à sa propre dérivée. C'est la seule fonction (à facteur constant près) qui ne change pas quand on la dérive. Pour une base quelconque $a>0$, la dérivée de $a^x$ fait apparaître le logarithme népérien : $(a^x)' = a^x \\ln a$."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction exponentielle de base $a$",
+              "definition": "La fonction $x\\mapsto a^x$ (avec $a>0$, $a\\neq1$) est définie pour tout réel $x$. Sa dérivée est $a^x \\ln a$. En particulier, pour $a=e$, on a $(e^x)'=e^x$.",
+              "example": "La dérivée de $3\\cdot e^{2x}$ est $3\\cdot e^{2x}\\cdot 2 = 6 e^{2x}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(e^x)' = e^x \\quad\\text{et}\\quad (a^x)' = a^x \\ln a"
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Courbe de $y=e^x$ et sa tangente en $x=0$ ; la pente vaut $1$, confirmant $(e^x)'=e^x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'exponentielle n'a plus de secret pour toi, nous allons voir comment les fonctions trigonométriques se comportent sous la dérivation. Elles aussi ont des formules très régulières qui valent la peine d'être mémorisées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivées des fonctions trigonométriques usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions $\\sin$ et $\\cos$ sont les piliers de la trigonométrie. Leur dérivée s'obtient à partir des limites remarquables $\\lim_{h\\to0}\\frac{\\sin h}{h}=1$ et $\\lim_{h\\to0}\\frac{1-\\cos h}{h}=0$. On trouve $(\\sin x)'=\\cos x$ et $(\\cos x)'=-\\sin x$. Pour la tangente, on utilise le quotient $\\tan x = \\frac{\\sin x}{\\cos x}$ et la règle du quotient."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire $\\tan x = \\frac{\\sin x}{\\cos x}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On identifie $u(x)=\\sin x$ et $v(x)=\\cos x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle du quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\(\\tan x)' = \\frac{u'v - uv'}{v^2} = \\frac{\\cos x\\cdot\\cos x - \\sin x\\cdot(-\\sin x)}{\\cos^2 x}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier avec l'identité $\\cos^2 x + \\sin^2 x = 1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur devient $1$, donc $(\\tan x)' = \\frac{1}{\\cos^2 x} = \\sec^2 x$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -6.28,
+              "xmax": 6.28,
+              "caption": "Courbes de $y=\\sin x$ (bleu) et $y=\\cos x$ (rouge) ; la pente de $\\sin$ en chaque point est exactement la valeur de $\\cos$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant revisité les trois piliers de l'analyse de Première : la définition de la dérivée, le comportement unique de l'exponentielle, et les formules trigonométriques. Ces outils seront tes compagnons pour la suite du programme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la dérivée de la fonction $f(x)=x^3$ en $x=2$.",
+              "answer": "$12$",
+              "hint": "Utilise la règle de la puissance : $(x^n)' = n x^{n-1}$.",
+              "explanation": "La dérivée de $x^3$ est $3x^2$. En $x=2$, cela donne $3\\times 4 = 12$."
+            },
+            {
+              "question": "Détermine la dérivée de $g(x)=3\\,e^{2x}$.",
+              "answer": "$6 e^{2x}$",
+              "hint": "Applique la règle de la chaîne : $(e^{u})' = u' e^{u}$.",
+              "explanation": "Ici $u(x)=2x$, donc $u'=2$. La dérivée est $3 \\times 2 e^{2x} = 6 e^{2x}$."
+            },
+            {
+              "question": "Trouve la dérivée de $h(x)=\\sin(2x)$.",
+              "answer": "$2\\cos(2x)$",
+              "hint": "Utilise la règle de la chaîne avec $(\\sin u)' = \\cos u \\cdot u'$.",
+              "explanation": "Posons $u=2x$, alors $u'=2$. La dérivée est $\\cos(2x) \\times 2 = 2\\cos(2x)$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des règles de dérivation usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon de synthèse, nous allons passer en revue les principales règles qui permettent de dériver rapidement n'importe quelle combinaison de fonctions élémentaires. Pense à ces règles comme à une boîte à outils : chacune a son usage précis, et savoir laquelle choisir te fera gagner un temps précieux."
+            },
+            {
+              "type": "definition",
+              "term": "Règle de la chaîne",
+              "definition": "Si $u$ est dérivable en $x$ et $f$ dérivable en $u(x)$, alors la composée $f\\circ u$ est dérivable en $x$ et $(f\\circ u)'(x)=f'(u(x))\\cdot u'(x)$.",
+              "example": "Pour dériver $\\cos(x^2)$, on pose $u(x)=x^2$ et $f(t)=\\cos t$ ; on obtient $-2x\\sin(x^2)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction extérieure et la fonction intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la dernière opération effectuée sur la variable ; c'est la fonction extérieure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver l'extérieure en gardant l'intérieure inchangée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f'(u(x))$ sans toucher à $u(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplier par la dérivée de l'intérieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat final est $f'(u(x))\\cdot u'(x)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "(x^2+1)^3",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Courbe de $y=(x^2+1)^3$ ; sa dérivée $6x(x^2+1)^2$ s'annule en $x=0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir consolidé les règles algébriques, tournons-nous vers les fonctions exponentielles et logarithmiques. Elles apparaissent sans cesse en modélisation (croissance démographique, désintégration radioactive, intérêts composés) et leurs dérivées sont d'une simplicité déconcertante une fois qu'on a compris le rôle du logarithme népérien."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivées de l'exponentielle et du logarithme népérien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelle-toi que $\\ln x$ est la fonction réciproque de $e^x$. Cette relation inverse implique $(\\ln x)' = \\frac{1}{x}$ pour $x>0$. Plus généralement, si $u(x)>0$ et dérivable, alors $(\\ln u(x))' = \\frac{u'(x)}{u(x)}$. C'est une formule qu'il faut avoir en tête pour tout exercice impliquant un logarithme."
+            },
+            {
+              "type": "definition",
+              "term": "Logarithme népérien",
+              "definition": "La fonction $\\ln : ]0,+\\infty[ \\to \\mathbb{R}$ est définie par $\\ln x = \\int_1^x \\frac{1}{t}\\,dt$. Elle satisfait $\\ln(ab)=\\ln a+\\ln b$ et $\\ln(a^b)=b\\ln a$.",
+              "example": "Dérivée de $\\ln(5x)$ : $(\\ln(5x))' = \\frac{5}{5x} = \\frac{1}{x}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(e^{u(x)})' = u'(x) e^{u(x)} \\quad\\text{et}\\quad (\\ln u(x))' = \\frac{u'(x)}{u(x)}"
+            },
+            {
+              "type": "graph",
+              "expression": "log(x)",
+              "xmin": 0.1,
+              "xmax": 5,
+              "caption": "Courbe de $y=\\ln x$ et sa tangente en $x=1$ ; la pente vaut $1$, confirmant $(\\ln x)'=1/x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce tour d'horizon, les fonctions trigonométriques et leurs inverses complètent la panoplie. La dérivée de $\\tan x$ que nous avons vue plus tôt s'étend aux fonctions $\\arcsin$, $\\arccos$, $\\arctan$ grâce à la formule de dérivation des fonctions réciproques. Ces dérivées interviennent souvent dans les intégrales et les équations différentielles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivées des fonctions trigonométriques inverses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $y=\\arcsin x$, alors $x=\\sin y$ avec $y\\in[-\\pi/2,\\pi/2]$. En dérivant l'égalité $x=\\sin y$ par rapport à $x$, on obtient $1=\\cos y \\cdot y'$, d'où $y' = \\frac{1}{\\cos y} = \\frac{1}{\\sqrt{1-x^2}}$. De manière analogue, $(\\arccos x)' = -\\frac{1}{\\sqrt{1-x^2}}$ et $(\\arctan x)' = \\frac{1}{1+x^2}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la relation inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, $x = \\sin(\\arcsin x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver les deux membres par rapport à $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $1 = \\cos(\\arcsin x) \\cdot (\\arcsin x)'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprimer $\\cos(\\arcsin x)$ en fonction de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\cos^2 y + \\sin^2 y = 1$, on a $\\cos(\\arcsin x) = \\sqrt{1-x^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$(\\arcsin x)' = \\frac{1}{\\sqrt{1-x^2}}$ pour $x\\in(-1,1)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "atan(x)",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Courbe de $y=\\arctan x$ ; sa dérivée $\\frac{1}{1+x^2}$ est toujours positive et tend vers $0$ aux infinis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant sous les yeux l'ensemble des outils de dérivation du programme de Première spécialité. Chaque règle, chaque formule a été illustrée par un exemple concret et un graphique pour ancrer l'intuition visuelle."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer la dérivée d'une fonction puissance, d'un produit, d'un quotient et d'une composée.",
+                "Je connais la dérivée de $e^x$, de $a^x$ et de $\\ln x$ ainsi que les règles de la chaîne associées.",
+                "Je maîtrise les dérivées de $\\sin$, $\\cos$, $\\tan$ et de leurs fonctions réciproques $\\arcsin$, $\\arccos$, $\\arctan$.",
+                "Je sais identifier la règle à appliquer en observant la structure de la fonction (somme, produit, chaîne, etc.).",
+                "Je peux tracer ou esquisser la courbe d'une fonction et de sa dérivée pour vérifier la cohérence des signes et des zéros."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dérive la fonction $f(x) = (x^2+1)^3$.",
+              "answer": "$6x(x^2+1)^2$",
+              "hint": "Identifie la fonction extérieure $u\\mapsto u^3$ et l'intérieure $u(x)=x^2+1$.",
+              "explanation": "La dérivée de $u^3$ est $3u^2$. Ici $u'=2x$. Donc $f'(x)=3(x^2+1)^2 \\cdot 2x = 6x(x^2+1)^2$."
+            },
+            {
+              "question": "Calcule la dérivée de $g(x) = \\ln(5x)$ pour $x>0$.",
+              "answer": "$\\frac{1}{x}$",
+              "hint": "Utilise la formule $(\\ln u)' = u'/u$ avec $u(x)=5x$.",
+              "explanation": "Ici $u'=5$, donc $g'(x) = \\frac{5}{5x} = \\frac{1}{x}$."
+            },
+            {
+              "question": "Donne la dérivée de $h(x) = \\tan x$ sur son ensemble de définition.",
+              "answer": "$\\sec^2 x$ ou $\\frac{1}{\\cos^2 x}$",
+              "hint": "Écris $\\tan x = \\frac{\\sin x}{\\cos x}$ et applique la règle du quotient.",
+              "explanation": "$(\\tan x)' = \\frac{\\cos x\\cdot\\cos x - \\sin x\\cdot(-\\sin x)}{\\cos^2 x} = \\frac{\\cos^2 x+\\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

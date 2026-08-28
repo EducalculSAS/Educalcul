@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Algorithmes de construction et de vérification en géométrie",
+  "blocks": [
+    {
+      "title": "Construction du milieu d'un segment",
+      "content": "Écrire un algorithme (en pseudo-code) qui permet de construire le milieu du segment $[AB]$ à l'aide d'une règle et d'un compas.",
+      "correctAnswer": "Algorithme :\\n1. Tracer le segment $[AB]$.\\n2. Placer la pointe du compas en $A$ et tracer un arc de cercle de rayon supérieur à la moitié de $[AB]$.\\n3. Sans changer l'écartement, placer la pointe en $B$ et tracer un second arc coupant le premier en deux points $C$ et $D$.\\n4. Tracer la droite $(CD)$.\\n5. Le point d'intersection de $(CD)$ avec $[AB]$ est le milieu $M$ de $[AB]$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la propriété selon laquelle la médiatrice d'un segment passe par son milieu. En traçant deux arcs de même rayon depuis les extrémités, leurs intersections déterminent la médiatrice ; son intersection avec le segment donne le milieu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction de la médiatrice d'un segment",
+      "content": "Écrire un algorithme (en pseudo-code) qui permet de construire la médiatrice du segment $[AB]$ à l'aide d'une règle et d'un compas.",
+      "correctAnswer": "Algorithme :\\n1. Tracer le segment $[AB]$.\\n2. Placer la pointe du compas en $A$ et tracer un arc de cercle de rayon supérieur à la moitié de $[AB]$.\\n3. Sans changer l'écartement, placer la pointe en $B$ et tracer un second arc coupant le premier en deux points $C$ et $D$.\\n4. Tracer la droite $(CD)$.\\n5. La droite $(CD)$ est la médiatrice de $[AB]$ ; elle est perpendiculaire à $[AB]$ et passe par son milieu.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction utilise deux arcs de même rayon pour obtenir deux points équidistants de $A$ et $B$. La droite passant par ces deux points est l'ensemble des points équidistants de $A$ et $B$, c'est à dire la médiatrice.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test d'appartenance à la médiatrice",
+      "content": "Soit $M$ un point du plan. Écrire un algorithme qui teste si $M$ appartient à la médiatrice du segment $[AB]$.",
+      "correctAnswer": "Algorithme :\\n1. Mesurer les distances $MA$ et $MB$ (avec un compas ou en calculant si les coordonnées sont connues).\\n2. Si $MA = MB$ alors afficher \"M appartient à la médiatrice de $[AB]$\".\\n3. Sinon afficher \"M n'appartient pas à la médiatrice de $[AB]$\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Par définition, la médiatrice d'un segment est l'ensemble des points équidistants de ses extrémités. Donc $M$ y appartient si et seulement si $MA = MB$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

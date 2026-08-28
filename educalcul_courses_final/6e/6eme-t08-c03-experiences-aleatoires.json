@@ -1,0 +1,529 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.644989+00:00",
+  "id": 370,
+  "code": "6eme-t08-c03",
+  "title": "Expériences aléatoires",
+  "description": "Cours structuré Educalcul : Expériences aléatoires.",
+  "subject": "Données, probabilités et proportionnalité",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Données, probabilités et proportionnalité",
+    "titre_du_cours": "Expériences aléatoires",
+    "objectif_global": "Expériences aléatoires",
+    "mini_lecons_imposees": [
+      "Issues.",
+      "Événements simples.",
+      "Fréquences."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données, probabilités et proportionnalité",
+      "lessons": [
+        {
+          "title": "Issues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces. Tu ne peux pas savoir à l'avance sur quelle face il va tomber, n'est-ce pas ? C'est exactement ça, une expérience aléatoire : une action dont le résultat ne peut pas être prévu avec certitude, même si on connaît toutes les issues possibles. Dans la vie de tous les jours, on en rencontre plein : tirer une carte dans un jeu mélangé, faire tourner une roulette, ou même lancer une pièce de monnaie. Ce qui les unit, c'est l'incertitude du résultat. Mais attention, \"aléatoire\" ne veut pas dire \"n'importe quoi\" : les issues sont bien définies, c'est juste qu'on ne sait pas laquelle va se produire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple du dé. Les issues possibles sont les nombres $1$, $2$, $3$, $4$, $5$ et $6$. On appelle chaque résultat possible une \\textbf{issue}. Quand tu lances le dé, une seule de ces issues se réalise. Si tu notes le résultat sur un papier, tu obtiens une liste d'issues observées. C'est la base de tout ce qu'on va étudier : comprendre les issues, les compter, et plus tard mesurer leur fréquence."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Lancer",
+                "Issue observée"
+              ],
+              "rows": [
+                [
+                  "1er lancer",
+                  "3"
+                ],
+                [
+                  "2e lancer",
+                  "6"
+                ],
+                [
+                  "3e lancer",
+                  "1"
+                ],
+                [
+                  "4e lancer",
+                  "4"
+                ],
+                [
+                  "5e lancer",
+                  "2"
+                ],
+                [
+                  "6e lancer",
+                  "5"
+                ]
+              ],
+              "caption": "Exemple de six lancers de dé et issues obtenues"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu ce qu'est une issue, regardons comment on regroupe toutes les issues possibles d'une expérience. C'est ce qu'on appelle l'espace des issues, ou l'ensemble des issues. C'est comme la liste complète de tout ce qui peut arriver, sans oublier aucune possibilité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'ensemble des issues possibles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une pièce de monnaie qu'on lance, il n'y a que deux issues : \"Face\" ou \"Pile\". On note cet ensemble $\\Omega = \\{\\text{Face}, \\text{Pile}\\}$. Le symbole $\\Omega$ (oméga majuscule) est la notation mathématique classique pour désigner l'ensemble de toutes les issues possibles. C'est un peu comme le menu complet d'un restaurant : tous les plats qui peuvent être servis. Pour un dé à six faces, $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. Pour une roulette à $10$ secteurs numérotés de $1$ à $10$, $\\Omega = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$. À chaque expérience son ensemble $\\Omega$ !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il est très important de bien identifier $\\Omega$ avant de faire tout calcul. Si tu oublies une issue, ton raisonnement sera faux. Par exemple, si tu lances deux dés et que tu notes la somme, les issues possibles vont de $2$ à $12$, mais attention : toutes les sommes n'ont pas le même nombre de façons de se produire. On verra ça plus tard. Pour l'instant, retiens qu'une expérience aléatoire est définie par son ensemble $\\Omega$ d'issues."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Issues possibles d'un lancer de pièce",
+              "bars": [
+                {
+                  "label": "Face",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Pile",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une bonne idée de ce que sont les issues et l'ensemble $\\Omega$. Mais est-ce que toutes les issues ont la même chance de se produire ? Pas toujours ! C'est une question cruciale qui nous mène à la notion d'équiprobabilité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des issues équiprobables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre dé. Si le dé est bien fait, bien équilibré, et qu'on le lance correctement, chaque face a la même chance d'apparaître. On dit alors que les issues sont \\textbf{équiprobables}. C'est un mot savant pour dire \"même probabilité\". Pour un dé à six faces équilibré, la probabilité de chaque issue est $\\frac{1}{6}$. De même, pour une pièce de monnaie non truquée, Face et Pile sont équiproprobables : chacune a une chance sur deux, soit $\\frac{1}{2}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention ! Toutes les expériences n'ont pas des issues équiproprobables. Imagine une roulette où le secteur $1$ est deux fois plus grand que les autres. Alors l'issue $1$ aura plus de chances de sortir. Ou pense à un dé pipé (truqué) où le $6$ sort plus souvent. Dans ces cas, les issues ne sont pas équiproprobables. Pour savoir si elles le sont, il faut examiner l'objet utilisé : symétrie, équilibre, fabrication. En maths, on supposera souvent que le matériel est \"idéal\" (dé parfait, pièce parfaite) sauf indication contraire."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Roulette à 4 secteurs équiproprobables",
+              "slices": [
+                {
+                  "label": "Rouge",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vert",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Jaune",
+                  "value": 1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu lances un dé à six faces numéroté de $1$ à $6$. Quelle est l'issue obtenue si le dé montre le chiffre $4$ ?",
+              "answer": "L'issue est $4$.",
+              "hint": "L'issue est simplement le résultat que tu observes sur la face du dé.",
+              "explanation": "Une issue est un résultat possible de l'expérience. Ici, le dé affiche $4$, donc l'issue observée est $4$."
+            },
+            {
+              "question": "Écris l'ensemble $\\Omega$ des issues possibles pour l'expérience : \"On lance une pièce de monnaie et on observe la face visible.\"",
+              "answer": "$\\Omega = \\{\\text{Face}, \\text{Pile}\\}$",
+              "hint": "Il n'y a que deux résultats possibles. Utilise les mots exacts \"Face\" et \"Pile\" entre accolades.",
+              "explanation": "L'ensemble des issues possibles contient exactement les deux résultats qu'on peut obtenir : Face ou Pile. On note cet ensemble $\\Omega$."
+            },
+            {
+              "question": "Une roulette est divisée en $5$ secteurs de tailles égales, numérotés $1, 2, 3, 4, 5$. Les issues sont-elles équiproprobables ? Justifie ta réponse.",
+              "answer": "Oui, les issues sont équiproprobables car les secteurs ont la même taille, donc la même chance d'être atteints par la flèche.",
+              "hint": "Regarde la description : \"secteurs de tailles égales\". Que cela implique-t-il pour les chances de chaque numéro ?",
+              "explanation": "Équiproprobable signifie que chaque issue a la même probabilité. Comme les secteurs sont de tailles égales, la flèche a autant de chances de s'arrêter sur l'un que sur l'autre. Chaque issue a donc une probabilité de $\\frac{1}{5}$."
+            }
+          ]
+        },
+        {
+          "title": "Événements simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un événement ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, on a vu qu'une issue est un résultat unique, comme obtenir un $3$ au dé. Mais souvent, on s'intéresse à un groupe d'issues. Par exemple, tu veux savoir si le dé montre un nombre pair. Ça ne te dérange pas si c'est $2$, $4$ ou $6$ : tant que c'est pair, tu es content. Ce groupe d'issues, on l'appelle un \\textbf{événement}. Un événement est donc une partie de l'ensemble $\\Omega$, c'est-à-dire un ensemble d'issues. L'événement \"nombre pair\" s'écrit $E = \\{2, 4, 6\\}$. L'événement \"nombre impair\" s'écrit $F = \\{1, 3, 5\\}$. Et l'événement \"nombre supérieur à $4$\" s'écrit $G = \\{5, 6\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a deux événements spéciaux qu'il faut connaître. L'événement \\textbf{impossible} : il ne contient aucune issue, on le note $\\emptyset$ (ensemble vide). Par exemple, \"obtenir un $7$ avec un dé à six faces\" est impossible. L'événement \\textbf{certain} : il contient toutes les issues de $\\Omega$, c'est $\\Omega$ lui-même. \"Obtenir un nombre entre $1$ et $6$\" est certain. Entre ces deux extrêmes, il y a une infinité d'événements possibles."
+            },
+            {
+              "type": "definition",
+              "term": "Événement",
+              "definition": "Un événement est un ensemble d'issues, c'est-à-dire une partie de l'espace des issues $\\Omega$. Il se réalise si l'issue observée appartient à cet ensemble.",
+              "example": "Pour un dé, l'événement \"multiple de 3\" est $\\{3, 6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Événements dans l'espace des issues d'un dé",
+              "sets": [
+                {
+                  "label": "Ω",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "Pair",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "Supérieur à 4",
+                  "elements": [
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est un événement, distinguons les événements simples des événements composés. C'est une distinction utile pour organiser notre raisonnement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Événement simple et événement composé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un \\textbf{événement simple} (ou événement élémentaire) est un événement qui ne contient qu'une seule issue. Par exemple, \"obtenir exactement $4$\" est un événement simple : $\\{4\\}$. Un \\textbf{événement composé} contient au moins deux issues. \"Obtenir un nombre pair\" est composé car il contient $2$, $4$ et $6$. Pourquoi cette distinction ? Parce qu'un événement simple correspond à une issue unique, tandis qu'un événement composé regroupe plusieurs issues. Plus tard, pour calculer des probabilités, on additionnera les probabilités des issues simples qui composent l'événement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'expérience : \"On tire une carte au hasard dans un jeu de $32$ cartes.\" L'événement \"tirer l'as de cœur\" est simple (une seule carte). L'événement \"tirer un cœur\" est composé (il y a $8$ cœurs). L'événement \"tirer une figure\" (valet, dame, roi) est aussi composé ($12$ figures). Essaie toi-même : trouve un événement simple et un événement composé pour l'expérience \"On lance un dé à six faces\"."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'issues dans quelques événements au dé",
+              "bars": [
+                {
+                  "label": "Simple {3}",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "Pair {2,4,6}",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Supérieur à 2 {3,4,5,6}",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Certain {1..6}",
+                  "value": 6,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à bien manipuler les événements. Il reste une notion pratique : l'événement contraire. C'est l'ensemble des issues qui ne sont \\textbf{pas} dans l'événement considéré. C'est très utile pour calculer des probabilités plus facilement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'événement contraire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un événement $A$. Son événement contraire, noté $\\overline{A}$ (on lit \"A barre\" ou \"non A\"), est l'ensemble des issues de $\\Omega$ qui n'appartiennent pas à $A$. En d'autres termes, $\\overline{A}$ se réalise exactement quand $A$ ne se réalise pas. Par exemple, pour un dé, si $A = \\{2, 4, 6\\}$ (nombre pair), alors $\\overline{A} = \\{1, 3, 5\\}$ (nombre impair). Si $B = \\{5, 6\\}$ (supérieur à $4$), alors $\\overline{B} = \\{1, 2, 3, 4\\}$ (inférieur ou égal à $4$). Remarque que $A$ et $\\overline{A}$ n'ont aucune issue en commun et que, ensemble, ils forment tout $\\Omega$."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une propriété fondamentale : pour tout événement $A$, l'événement $A$ et son contraire $\\overline{A}$ sont incompatibles (ils ne peuvent pas se produire en même temps) et leur réunion est l'événement certain $\\Omega$. On s'en servira plus tard pour dire que la probabilité de $A$ plus la probabilité de $\\overline{A}$ font $1$. Mais pour l'instant, exercé-toi à identifier les contraires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour l'expérience \"On lance un dé à six faces\", donne l'événement \"obtenir un multiple de 3\" en extension (en listant ses issues).",
+              "answer": "$\\{3, 6\\}$",
+              "hint": "Quels sont les multiples de 3 entre 1 et 6 ?",
+              "explanation": "Les multiples de 3 dans l'ensemble $\\{1,2,3,4,5,6\\}$ sont 3 et 6. L'événement est donc $\\{3, 6\\}$."
+            },
+            {
+              "question": "Parmi les événements suivants pour un lancer de dé, lesquels sont simples ? Coches les bonnes réponses.\\nA. $\\{1\\}$\\nB. $\\{2, 4\\}$\\nC. $\\{5\\}$\\nD. $\\{1, 2, 3, 4, 5, 6\\}$",
+              "answer": "A et C",
+              "hint": "Un événement simple ne contient qu'une seule issue.",
+              "explanation": "A contient seulement l'issue 1, C contient seulement l'issue 5. B en contient deux, D en contient six (c'est l'événement certain)."
+            },
+            {
+              "question": "Soit l'événement $E = \\{1, 2, 3\\}$ pour un lancer de dé. Écris son événement contraire $\\overline{E}$.",
+              "answer": "$\\overline{E} = \\{4, 5, 6\\}$",
+              "hint": "Le contraire de E contient toutes les issues de Ω qui ne sont pas dans E.",
+              "explanation": "Ω = {1,2,3,4,5,6}. En retirant 1,2,3, il reste 4,5,6. Donc $\\overline{E} = \\{4, 5, 6\\}$."
+            }
+          ]
+        },
+        {
+          "title": "Fréquences.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fréquence et fréquence relative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, on a parlé d'issues et d'événements de manière théorique. Mais les maths, ça sert aussi à décrire la réalité ! Imagine que tu lances un dé $60$ fois et que tu notes chaque résultat. Tu vas obtenir une liste de $60$ nombres. Combien de fois le $3$ est-il sorti ? C'est ce qu'on appelle la \\textbf{fréquence} (ou effectif) de l'issue $3$. Si le $3$ est apparu $12$ fois, sa fréquence est $12$. La fréquence est un nombre entier, un compteur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais pour comparer des expériences qui n'ont pas le même nombre total de lancers, on utilise la \\textbf{fréquence relative}. C'est la fréquence divisée par le nombre total d'essais. Dans notre exemple, la fréquence relative du $3$ est $\\frac{12}{60} = 0,2$ (soit $20\\%$). La fréquence relative est toujours un nombre entre $0$ et $1$. Elle te donne une idée de la part que représente cette issue dans l'ensemble de l'expérience. C'est une proportion, comme une part de gâteau."
+            },
+            {
+              "type": "definition",
+              "term": "Fréquence",
+              "definition": "Nombre de fois qu'une issue (ou un événement) est observée lors d'une expérience aléatoire répétée plusieurs fois.",
+              "example": "Sur 100 lancers de dé, le 4 sort 18 fois. La fréquence du 4 est 18."
+            },
+            {
+              "type": "definition",
+              "term": "Fréquence relative",
+              "definition": "Quotient de la fréquence par le nombre total d'essais. Elle s'exprime en décimal, en fraction ou en pourcentage.",
+              "example": "Fréquence relative du 4 = 18/100 = 0,18 = 18%."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, faisons une petite expérience ensemble, sur le papier. On va simuler $30$ lancers de dé et remplir un tableau de fréquences. C'est exactement ce que font les statisticiens : ils collectent des données, les organisent, et les visualisent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Organiser les données dans un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici les résultats de $30$ lancers (simulés) : $1, 3, 2, 6, 4, 5, 2, 1, 3, 4, 6, 2, 5, 1, 4, 3, 2, 6, 1, 5, 4, 3, 2, 1, 6, 5, 4, 3, 2, 1$. Pour ne pas se tromper, on fait un tableau à trois colonnes : l'issue, la fréquence (effectif), et la fréquence relative. On compte chaque issue. Par exemple, le $1$ apparaît $6$ fois. Sa fréquence est $6$, sa fréquence relative est $\\frac{6}{30} = 0,2$. On fait pareil pour $2, 3, 4, 5, 6$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Issue",
+                "Fréquence",
+                "Fréquence relative"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "6",
+                  "0,20"
+                ],
+                [
+                  "2",
+                  "6",
+                  "0,20"
+                ],
+                [
+                  "3",
+                  "5",
+                  "0,167"
+                ],
+                [
+                  "4",
+                  "5",
+                  "0,167"
+                ],
+                [
+                  "5",
+                  "4",
+                  "0,133"
+                ],
+                [
+                  "6",
+                  "4",
+                  "0,133"
+                ]
+              ],
+              "caption": "Tableau des fréquences pour 30 lancers de dé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la somme des fréquences : $6+6+5+5+4+4 = 30$, c'est le nombre total d'essais. La somme des fréquences relatives fait $1$ (ou $100\\%$). C'est une bonne vérification : si ce n'est pas le cas, tu as fait une erreur de comptage !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les tableaux, c'est bien, mais les graphiques, c'est encore mieux pour voir les tendances d'un coup d'œil. On va représenter ces fréquences relatives avec un diagramme en barres. Chaque barre correspond à une issue, sa hauteur donne la fréquence relative. Ça permet de comparer visuellement les issues."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Visualiser les fréquences avec un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'axe horizontal, on met les issues $1$ à $6$. Sur l'axe vertical, les fréquences relatives de $0$ à $0,25$ par exemple. Chaque barre est centrée sur son issue. Pour notre expérience, les barres pour $1$ et $2$ montent à $0,20$, celles pour $3$ et $4$ à $0,167$, celles pour $5$ et $6$ à $0,133$. On voit tout de suite que $1$ et $2$ sont sortis un peu plus souvent que les autres. Mais attention : avec seulement $30$ lancers, c'est normal d'avoir des irrégularités. Si on faisait $300$ lancers, les barres seraient beaucoup plus proches de $0,166...$ (qui est $\\frac{1}{6}$). C'est ce qu'on appelle la loi des grands nombres : plus on répète l'expérience, plus les fréquences relatives se stabilisent autour des probabilités théoriques."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences relatives observées sur 30 lancers de dé",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 0.2,
+                  "tone": "red"
+                },
+                {
+                  "label": "2",
+                  "value": 0.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 0.167,
+                  "tone": "green"
+                },
+                {
+                  "label": "4",
+                  "value": 0.167,
+                  "tone": "gold"
+                },
+                {
+                  "label": "5",
+                  "value": 0.133,
+                  "tone": "navy"
+                },
+                {
+                  "label": "6",
+                  "value": 0.133,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comprendre comment on passe de l'aléatoire à des chiffres concrets. Les fréquences sont le pont entre l'expérience réelle et la théorie des probabilités. Dans les prochains chapitres, on verra comment calculer ces probabilités théoriques sans avoir à lancer le dé des milliers de fois. Mais garde en tête cette idée : la fréquence relative est une estimation de la probabilité, et elle devient plus précise quand le nombre d'essais augmente."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les issues d'une expérience aléatoire et écrire l'ensemble Ω.",
+                "Je sais distinguer un événement simple d'un événement composé.",
+                "Je sais écrire l'événement contraire d'un événement donné.",
+                "Je sais calculer la fréquence et la fréquence relative d'une issue à partir d'un tableau de résultats.",
+                "Je sais lire et interpréter un diagramme en barres représentant des fréquences relatives."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance une pièce de monnaie $50$ fois. On obtient $28$ fois \"Face\". Quelle est la fréquence de l'issue \"Face\" ? Quelle est sa fréquence relative (en décimal) ?",
+              "answer": "Fréquence = 28 ; Fréquence relative = 0,56",
+              "hint": "La fréquence est le nombre d'occurrences. La fréquence relative = fréquence / nombre total d'essais.",
+              "explanation": "Sur 50 lancers, Face est apparu 28 fois. Fréquence = 28. Fréquence relative = 28/50 = 0,56."
+            },
+            {
+              "question": "Complète le tableau suivant pour un dé lancé 40 fois :\\nIssue 1 : fréquence 8\\nIssue 2 : fréquence ?\\nIssue 3 : fréquence 6\\nIssue 4 : fréquence 7\\nIssue 5 : fréquence 9\\nIssue 6 : fréquence 6\\nSachant que la somme des fréquences est 40.",
+              "answer": "Fréquence de l'issue 2 = 4",
+              "hint": "Additionne les fréquences connues et soustrais de 40.",
+              "explanation": "8+6+7+9+6 = 36. Il manque 4 pour arriver à 40. Donc l'issue 2 a une fréquence de 4."
+            },
+            {
+              "question": "Sur le diagramme en barres ci-dessous, quelle issue a la plus grande fréquence relative ? Quelle est sa valeur approximative ?\\n(Imaginons un diagramme où la barre du 3 monte à 0,25, celle du 4 à 0,20, les autres plus basses.)",
+              "answer": "L'issue 3 a la plus grande fréquence relative, environ 0,25.",
+              "hint": "Repère la barre la plus haute et lis sa hauteur sur l'axe vertical.",
+              "explanation": "La barre la plus haute correspond à l'issue 3. Sa hauteur est environ 0,25 sur l'échelle des fréquences relatives."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

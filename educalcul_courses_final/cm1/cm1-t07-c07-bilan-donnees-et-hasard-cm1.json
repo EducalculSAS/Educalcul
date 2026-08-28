@@ -1,0 +1,585 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.288808+00:00",
+  "id": 262,
+  "code": "cm1-t07-c07",
+  "title": "Bilan - Données et hasard CM1",
+  "description": "Cours structuré Educalcul : Bilan - Données et hasard CM1.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Bilan - Données et hasard CM1",
+    "objectif_global": "Bilan - Données et hasard CM1",
+    "mini_lecons_imposees": [
+      "Lire / produire.",
+      "Hasard.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Lire / produire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau de données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ouvres ton cahier de notes et que tu vois un tableau avec trois colonnes : le nom du fruit, le nombre de fruits récoltés et la couleur dominante. Ce tableau organise l'information pour que tu puisses la lire rapidement, sans avoir à tout retenir dans ta tête. En CM1, tu apprends à repérer les titres de colonnes, à suivre une ligne pour associer chaque fruit à son nombre, et à comparer les quantités d'un coup d'œil."
+            },
+            {
+              "type": "definition",
+              "term": "tableau",
+              "definition": "Un tableau est une grille qui range des données en lignes et en colonnes pour les rendre faciles à lire et à comparer.",
+              "example": "Le tableau ci‑dessous montre la récolte de trois fruits."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Quantité",
+                "Couleur"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "10",
+                  "Rouge"
+                ],
+                [
+                  "Banane",
+                  "12",
+                  "Jaune"
+                ],
+                [
+                  "Orange",
+                  "8",
+                  "Orange"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessous. La première ligne indique les en‑têtes, les lignes suivantes donnent les données pour la pomme, la banane et l'orange. Essaie de dire combien de pommes ont été récoltées et quelle est la couleur de la banane. Cet exercice t'entraîne à extraire l'information exacte sans te perdre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, transformons ces nombres en un diagramme en barres. Chaque barre représente une quantité : plus la barre est haute, plus le nombre est grand. Pour le construire, tu choisis une échelle (par exemple 1 cm pour 2 fruits), tu traces l'axe vertical avec les nombres, l'axe horizontal avec les noms, puis tu dessines les rectangles. Cette méthode visuelle aide à comparer d'un seul regard."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme en barres",
+              "definition": "Un diagramme en barres utilise des rectangles dont la hauteur est proportionnelle à la valeur représentée, ce qui permet de comparer plusieurs grandeurs d'un coup d'œil.",
+              "example": "Le graphique ci‑dessous montre la récolte de fruits."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide combien d'unités correspond à 1 cm sur l'axe vertical."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer les axes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine l'axe vertical (quantités) et l'axe horizontal (noms des fruits)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dessiner les barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque fruit, trace un rectangle dont la hauteur correspond à sa quantité selon l'échelle choisie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Récolte de fruits",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 10,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 12,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 8,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme circulaire, aussi appelé camembert, montre la part de chaque fruit dans le total. Le cercle entier vaut 100 % de la récolte. Si les pommes représentent 10 fruits sur 30, leur part est $\\frac{10}{30} = \\frac{1}{3}$ du cercle, soit environ 33 %. Tu vois ainsi la proportion sans faire de calculs compliqués."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme circulaire",
+              "definition": "Un diagramme circulaire (ou camembert) partage un cercle en parts proportionnelles aux valeurs représentées, la totalité du cercle correspondant à 100 %.",
+              "example": "Le camembert ci‑dessous répartit la récolte entre pommes, bananes et oranges."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Part de chaque fruit dans la récolte",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 10,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 12,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 8,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, imagine que ton professeur te raconte une petite histoire : \"Dans le jardin, il y a 4 tomates, 7 carottes et 3 courgettes.\" Ta mission est de produire toi‑même un tableau clair avec trois colonnes : légume, quantité, couleur. Tu écris les en‑têtes, tu remplis chaque ligne, et tu vérifies que le total correspond à 14 légumes. C'est une façon concrète de passer du texte au tableau."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produire un tableau à partir d'une histoire"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Légume",
+                "Quantité",
+                "Couleur"
+              ],
+              "rows": [
+                [
+                  "Tomate",
+                  "4",
+                  "Rouge"
+                ],
+                [
+                  "Carotte",
+                  "7",
+                  "Orange"
+                ],
+                [
+                  "Courgette",
+                  "3",
+                  "Vert"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de pratiquer la lecture d'un tableau, la construction d'un diagramme en barres, l'interprétation d'un camembert et la création d'un tableau à partir d'un texte. Ces quatre compétences sont les piliers de l'organisation des données en CM1."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de pommes ont été récoltées selon le tableau ?",
+              "answer": "10",
+              "hint": "Regarde la ligne « Pomme » et la colonne « Quantité ».",
+              "explanation": "Dans le tableau, la ligne Pomme indique 10 dans la colonne Quantité."
+            },
+            {
+              "question": "Quel fruit a la barre la plus haute sur le diagramme en barres ?",
+              "answer": "La banane",
+              "hint": "Compare la hauteur des barres.",
+              "explanation": "La barre de la banane atteint 12, plus haut que celles de la pomme (10) et de l'orange (8)."
+            },
+            {
+              "question": "Quelle fraction du cercle représente les oranges dans le camembert ?",
+              "answer": "$\\frac{5}{30} = \\frac{1}{6}$",
+              "hint": "Compte les oranges et divise par le total des fruits.",
+              "explanation": "Il y a 5 oranges sur 30 fruits au total, donc la fraction est 5/30 qui se simplifie en 1/6."
+            },
+            {
+              "question": "Écris le tableau pour l'histoire : 4 tomates, 7 carottes, 3 courgettes.",
+              "answer": "Légume | Quantité | Couleur\\nTomate | 4 | Rouge\\nCarotte | 7 | Orange\\nCourgette | 3 | Vert",
+              "hint": "N'oublie pas les en‑têtes et une ligne par légume.",
+              "explanation": "Le tableau comporte trois colonnes (Légume, Quantité, Couleur). Chaque ligne correspond à un légume avec sa quantité et sa couleur habituelle."
+            }
+          ]
+        },
+        {
+          "title": "Hasard.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est‑ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une expérience aléatoire est une action dont le résultat ne peut pas être prévu avec certitude, même si on connaît toutes les conditions. Lancer une pièce de monnaie, tirer une bille d'un sac ou lancer un dé sont des exemples classiques. Ce qui compte, c'est que plusieurs résultats sont possibles et qu'on ne sait pas lequel va se produire avant d'agir. Par exemple, quand tu lances une pièce, tu ne peux pas savoir à l'avance si elle tombera sur pile ou sur face, même si la pièce est parfaitement symétrique."
+            },
+            {
+              "type": "definition",
+              "term": "expérience aléatoire",
+              "definition": "Une expérience dont le résultat ne peut pas être déterminé à l'avance, bien que l'ensemble des issues possibles soit connu.",
+              "example": "Lancer un dé à six faces."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Lancer une pièce",
+              "branches": [
+                {
+                  "label": "Pile",
+                  "probability": "1/2"
+                },
+                {
+                  "label": "Face",
+                  "probability": "1/2"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans une expérience, chaque résultat possible s'appelle une issue. Quand toutes les issues ont la même chance de se produire, on dit qu'elles sont équiprobables. Par exemple, un dé à six faces bien équilibré donne six issues équiprobables : 1, 2, 3, 4, 5, 6. Si tu tires une bille rouge parmi trois billes rouges et une bleue, les issues ne sont pas équiprobables. C'est pour cela qu'on parle d'équiprobabilité seulement quand le matériel est bien équilibré et que rien ne favorise une issue plutôt qu'une autre."
+            },
+            {
+              "type": "definition",
+              "term": "issue",
+              "definition": "Chaque résultat possible d'une expérience aléatoire.",
+              "example": "Pour un dé, les issues sont 1, 2, 3, 4, 5, 6."
+            },
+            {
+              "type": "definition",
+              "term": "équiprobable",
+              "definition": "Se dit d'issues qui ont toutes la même probabilité de se produire.",
+              "example": "Les six faces d'un dé parfait sont équiprobables."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Probabilité d'obtenir un 4 avec un dé"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité d'un événement se calcule en divisant le nombre d'issues favorables par le nombre total d'issues possibles. Si tu veux obtenir un 4 avec un dé, il y a une issue favorable (le 4) sur six issues totales, donc la probabilité est $\\frac{1}{6}$. Cette fraction peut aussi s'écrire en décimal (≈0,17) ou en pourcentage (≈17 %). N'oublie pas de simplifier la fraction quand c'est possible, par exemple $\\frac{2}{6}$ devient $\\frac{1}{3}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les issues totales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine combien de résultats différents sont possibles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les issues favorables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie combien de ces résultats correspondent à l'événement recherché."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le nombre d'issues favorables au numérateur et le total au dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réduis la fraction au plus simple pour la rendre plus lisible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "P = \\\\frac{favorables}{total}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Toutes les probabilités se placent entre 0 et 1. 0 signifie impossible, 1 signifie certain. Une probabilité de $\\frac{1}{2}$ se trouve exactement au milieu. Sur une droite graduée de 0 à 1, tu peux placer $\\frac{1}{6}$, $\\frac{1}{3}$, $\\frac{1}{2}$, $\\frac{2}{3}$, $\\frac{5}{6}$ pour visualiser leur grandeur relative. Cela t'aide à comparer des risques sans calculer à chaque fois. Ainsi, une probabilité de $\\frac{3}{10}$ se situe un peu avant le milieu, ce qui correspond à « peu probable » mais pas impossible."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle des probabilités",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.166,
+                  "label": "1/6"
+                },
+                {
+                  "value": 0.333,
+                  "label": "1/3"
+                },
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.666,
+                  "label": "2/3"
+                },
+                {
+                  "value": 0.833,
+                  "label": "5/6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour décrire une expérience aléatoire, lister ses issues, vérifier l'équiprobabilité, calculer une probabilité simple et la situer sur une échelle. Ces idées sont la base de tout raisonnement probabiliste au collège."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne un exemple d'expérience aléatoire dans la vie de tous les jours.",
+              "answer": "Lancer une pièce de monnaie.",
+              "hint": "Pense à une action dont le résultat n'est pas sûr à l'avance.",
+              "explanation": "Lancer une pièce, tirer une carte, lancer un dé sont des expériences aléatoires car on ne peut pas prédire le résultat exact."
+            },
+            {
+              "question": "Un dé à six faces est lancé. Les issues sont‑elles équiprobables ? Justifie.",
+              "answer": "Oui, car le dé est symétrique et chaque face a la même chance d'apparaître.",
+              "hint": "Vérifie si le matériel est bien équilibré.",
+              "explanation": "Un dé parfait a six faces identiques, donc chaque issue (1 à 6) a la même probabilité 1/6."
+            },
+            {
+              "question": "Quelle est la probabilité d'obtenir un nombre pair avec un dé à six faces ?",
+              "answer": "$\\frac{3}{6} = \\frac{1}{2}$",
+              "hint": "Compte les issues favorables (2, 4, 6) et divise par 6.",
+              "explanation": "Il y a 3 nombres pairs sur 6 issues possibles, donc la fraction est 3/6 qui se simplifie en 1/2."
+            },
+            {
+              "question": "Place la probabilité 3/10 sur la droite de 0 à 1. Est‑elle plus proche de 0, de 1/2 ou de 1 ?",
+              "answer": "Plus proche de 1/2 (0,5) car 0,3 est à 0,2 de 0,5 et à 0,3 de 0.",
+              "hint": "Convertis 3/10 en décimal (0,3) et compare les distances.",
+              "explanation": "0,3 est à 0,2 de 0,5 et à 0,3 de 0, donc elle est plus près de 1/2."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Revenir sur la lecture de données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du jardin, mais avec de nouveaux nombres : 6 fraises, 9 pommes, 4 poires. Essaie de lire le tableau correspondant, puis de dessiner mentalement le diagramme en barres. Quelle barre sera la plus haute ? Quelle part du camembert représenteront les fraises ? Ce petit rappel renforce ta capacité à passer d'un format à l'autre sans hésiter. Observe que le total est 19 fruits, donc la barre des pommes montera jusqu'à 9, celle des fraises jusqu'à 6, et celle des poires jusqu'à 4. Essaie de visualiser les hauteurs relatives avant de regarder le graphique."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nouvelle récolte du jardin",
+              "bars": [
+                {
+                  "label": "Fraises",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Pommes",
+                  "value": 9,
+                  "tone": "green"
+                },
+                {
+                  "label": "Poires",
+                  "value": 4,
+                  "tone": "yellow"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant un sac contenant 2 billes rouges, 3 billes bleues et 5 billes vertes. Tu tires une bille au hasard. Quelle est la probabilité d'obtenir une bille bleue ? Il y a 3 issues favorables sur 10 totales, donc $\\frac{3}{10}$. Essaie aussi de placer cette probabilité sur la droite de 0 à 1. Ce rappel te montre que la méthode reste la même, quels que soient les objets. Le total des billes est 10, donc la fraction 3/10 ne se simplifie pas. Sur la droite, 0,3 se trouve entre 0,25 (1/4) et 0,5 (1/2), ce qui t'aide à situer l'événement."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Tirage d'une bille dans le sac",
+              "branches": [
+                {
+                  "label": "Rouge",
+                  "probability": "2/10"
+                },
+                {
+                  "label": "Bleue",
+                  "probability": "3/10"
+                },
+                {
+                  "label": "Verte",
+                  "probability": "5/10"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, associons les deux domaines. Voici un tableau qui indique le nombre de cartes de chaque couleur dans un jeu : 8 rouges, 7 bleues, 5 vertes. Si tu pioches une carte au hasard, quelle est la probabilité qu'elle soit verte ? Utilise le tableau pour trouver le total, puis calcule la fraction. Cet exercice mélange lecture de données et calcul de probabilité, exactement comme dans les problèmes du brevet. Le total des cartes est 20, donc la probabilité verte est 5/20 = 1/4. Essaie de la placer sur la droite et de dire si c'est plus ou moins probable qu'une carte rouge (8/20 = 2/5)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Couleur",
+                "Nombre de cartes"
+              ],
+              "rows": [
+                [
+                  "Rouge",
+                  "8"
+                ],
+                [
+                  "Bleue",
+                  "7"
+                ],
+                [
+                  "Verte",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant revu les trois grandes compétences du chapitre : lire et produire des tableaux, des diagrammes en barres et des camemberts ; comprendre une expérience aléatoire, identifier les issues et calculer une probabilité ; situer une probabilité sur une échelle. Prends un moment pour cocher ce que tu sais faire seul et ce que tu veux revoir. Cette liste de vérification te servira aussi pour le prochain contrôle, alors sois honnête avec toi‑même."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan personnel"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un tableau et en extraire l'information principale.",
+                "Je sais construire un diagramme en barres à partir de données.",
+                "Je sais interpréter un diagramme circulaire et donner la fraction correspondante.",
+                "Je sais reconnaître une expérience aléatoire et lister ses issues.",
+                "Je sais calculer une probabilité simple sous forme de fraction.",
+                "Je sais placer une probabilité sur une droite graduée de 0 à 1."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "D'après le diagramme en barres, quel fruit a la quantité la plus grande ?",
+              "answer": "Les pommes (9).",
+              "hint": "Regarde la barre la plus haute.",
+              "explanation": "La barre des pommes atteint 9, ce qui est supérieur à 6 (fraises) et 4 (poires)."
+            },
+            {
+              "question": "Quelle est la probabilité de tirer une bille bleue du sac (2 rouges, 3 bleues, 5 vertes) ?",
+              "answer": "$\\frac{3}{10}$",
+              "hint": "Compte les billes bleues et divise par le total.",
+              "explanation": "Il y a 3 billes bleues sur 10 billes au total, donc la probabilité est 3/10."
+            },
+            {
+              "question": "Dans le jeu de cartes (8 rouges, 7 bleues, 5 vertes), quelle est la probabilité de piocher une carte verte ?",
+              "answer": "$\\frac{5}{20} = \\frac{1}{4}$",
+              "hint": "Additionne toutes les cartes pour obtenir le total, puis forme la fraction.",
+              "explanation": "Le total est 8+7+5 = 20. Les cartes vertes sont 5, donc 5/20 = 1/4."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

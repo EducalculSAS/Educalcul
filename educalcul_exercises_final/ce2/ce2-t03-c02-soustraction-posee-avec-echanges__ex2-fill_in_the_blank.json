@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 161,
+  "_course_code": "ce2-t03-c02-soustraction-posee-avec-echanges",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Calculer colonne par colonne",
+  "title": "Soustraction posée : calculer colonne par colonne",
+  "blocks": [
+    {
+      "title": "Échange simple (unités)",
+      "content": "Effectue la soustraction posée $52 - 18$.\\n\\n$52$\\n$- 18$\\n$\\overline{\\quad\\quad}$\\n\\nDans la colonne des unités, je ne peux pas faire $2 - 8$. J'échange une dizaine contre {{1}} unités. Le chiffre des dizaines passe de 5 à {{2}}. Je calcule ensuite {{3}} - 8 = 4.",
+      "correctAnswer": "",
+      "blanks": [
+        "dix|10",
+        "quatre|4",
+        "douze|12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On pose l'opération. Aux unités, $2 < 8$, donc on emprunte 1 dizaine (10 unités) à la colonne des dizaines. Le 5 des dizaines devient 4. Les unités deviennent 12. On calcule $12 - 8 = 4$. Aux dizaines, $4 - 1 = 3$. Résultat : 34.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échange en cascade (dizaines nulles)",
+      "content": "Calcule $306 - 148$ en posant l'opération.\\n\\n$306$\\n$- 148$\\n$\\overline{\\quad\\quad\\quad}$\\n\\nAux unités : $6 < 8$. Il faut échanger mais il y a {{1}} dizaine. On va chercher une centaine : 3 centaines = {{2}} centaines et {{3}} dizaines.",
+      "correctAnswer": "",
+      "blanks": [
+        "zéro|0",
+        "deux|2",
+        "dix|10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Aux unités, $6 < 8$. La colonne des dizaines est à 0, on ne peut pas emprunter directement. On emprunte 1 centaine (10 dizaines) à la colonne des centaines. Les centaines passent de 3 à 2. Les dizaines deviennent 10. On pourra ensuite emprunter 1 dizaine pour les unités (9 dizaines, 16 unités).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échanges multiples (zéros au milieu)",
+      "content": "Pour calculer $500 - 237$, on commence par décomposer le nombre du haut pour pouvoir soustraire.\\n\\n$500$\\n$- 237$\\n$\\overline{\\quad\\quad\\quad}$\\n\\n5 centaines = {{1}} centaines et {{2}} dizaines.\\nPuis j'échange 1 dizaine : il reste {{3}} dizaines et 10 unités.",
+      "correctAnswer": "",
+      "blanks": [
+        "quatre|4",
+        "dix|10",
+        "neuf|9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ne peut rien soustraire aux unités (0) ni aux dizaines (0). On casse 1 centaine en 10 dizaines : il reste 4 centaines et 10 dizaines. Puis on casse 1 dizaine en 10 unités : il reste 9 dizaines et 10 unités. On peut alors soustraire : $10-7=3$, $9-3=6$, $4-2=2$. Résultat : 263.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

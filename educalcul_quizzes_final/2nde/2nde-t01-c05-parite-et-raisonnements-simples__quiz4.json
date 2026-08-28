@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Parité et raisonnements simples",
+  "title": "Quiz : Parité et raisonnements simples",
+  "questions": [
+    {
+      "text": "Laquelle des affirmations suivantes définit correctement un entier pair ?",
+      "options": [
+        "Un entier n est pair s'il existe un entier k tel que $n = 2k$.",
+        "Un entier n est pair s'il existe un entier k tel que $n = 2k+1$.",
+        "Un entier n est pair si $n$ est divisible par $3$.",
+        "Un entier n est pair si $n$ est supérieur à $0$."
+      ],
+      "correctAnswer": "Un entier n est pair s'il existe un entier k tel que $n = 2k$.",
+      "explanation": "Par définition, un entier est pair exactement lorsqu'il est un multiple de 2, c'est-à-dire qu'il existe un entier k tel que n = 2k. Les autres propositions correspondent à la définition des impairs, à une divisibilité par 3 ou à une condition de signe, qui ne caractérisent pas la parité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a$ et $b$ deux entiers pairs. Quelle est la parité de la somme $a+b$ ?",
+      "options": [
+        "La somme $a+b$ est toujours paire.",
+        "La somme $a+b$ est toujours impaire.",
+        "La somme $a+b$ peut être paire ou impaire selon les valeurs de $a$ et $b$.",
+        "La somme $a+b$ n'est pas définie pour des entiers pairs."
+      ],
+      "correctAnswer": "La somme $a+b$ est toujours paire.",
+      "explanation": "Si $a=2k$ et $b=2\\ell$ avec $k,\\ell\\in\\mathbb{Z}$, alors $a+b=2(k+\\ell)$, qui est un multiple de 2, donc pair. La somme de deux pairs ne peut jamais être impaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $m$ est un entier pair et $n$ un entier impair, quelle est la parité du produit $m \\times n$ ?",
+      "options": [
+        "Le produit $m \\times n$ est toujours pair.",
+        "Le produit $m \\times n$ est toujours impair.",
+        "Le produit $m \\times n$ peut être pair ou impair.",
+        "Le produit $m \\times n$ n'est pas un entier."
+      ],
+      "correctAnswer": "Le produit $m \\times n$ est toujours pair.",
+      "explanation": "Écrivons $m=2k$ (pair) et $n=2\\ell+1$ (impair). Alors $m\\times n = 2k(2\\ell+1) = 2\\bigl(k(2\\ell+1)\\bigr)$, qui est un multiple de 2, donc pair. La présence d'un facteur pair force le produit à être pair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $n^2$ est un entier pair. Que peut-on conclure sur la parité de $n$ ?",
+      "options": [
+        "$n$ est nécessairement pair.",
+        "$n$ est nécessairement impair.",
+        "$n$ peut être pair ou impair.",
+        "On ne peut rien conclure sur $n$."
+      ],
+      "correctAnswer": "$n$ est nécessairement pair.",
+      "explanation": "Si $n$ était impair, on pourrait écrire $n=2k+1$. Alors $n^2 = (2k+1)^2 = 4k^2+4k+1 = 2(2k^2+2k)+1$, ce qui est impair. Cela contredit l'hypothèse que $n^2$ est pair. Donc $n$ ne peut pas être impair ; il est pair.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $n$ un entier naturel. Déterminez la parité de l'expression $(2n+1)^2 + (2n+1)$.",
+      "options": [
+        "L'expression est toujours paire.",
+        "L'expression est toujours impaire.",
+        "La parité dépend de la valeur de $n$.",
+        "L'expression n'est pas un entier."
+      ],
+      "correctAnswer": "L'expression est toujours paire.",
+      "explanation": "On développe : $(2n+1)^2 = 4n^2+4n+1$. En ajoutant $(2n+1)$, on obtient $4n^2+6n+2 = 2(2n^2+3n+1)$, qui est un multiple de 2. Donc l'expression est paire pour tout entier naturel $n$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

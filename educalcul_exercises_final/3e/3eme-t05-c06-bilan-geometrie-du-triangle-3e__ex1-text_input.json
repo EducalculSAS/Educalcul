@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Choisir Pythagore / Thalès / trigo",
+  "title": "Choisir la méthode : Pythagore, Thalès ou Trigonométrie",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Dans le triangle rectangle ABC, l'angle A est droit. On sait que AB = 6 cm et AC = 8 cm. Quelle méthode permet de calculer la longueur BC ?",
+      "correctAnswer": "Pythagore",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le triangle est rectangle en A, donc on connaît les longueurs des deux côtés de l'angle droit. Pour trouver l'hypoténuse BC, on utilise le théorème de Pythagore : $BC^2 = AB^2 + AC^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Dans le triangle ABC, les points D et E appartiennent respectivement aux côtés AB et AC, avec DE parallèlement à BC. On a AD = 3 cm, DB = 6 cm et AE = 4 cm. Quelle méthode permet de calculer la longueur EC ?",
+      "correctAnswer": "Thales",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme DE // BC, le théorème de Thalès s'applique : les segments sur les côtés sont proportionnels. On a $\\frac{AD}{DB} = \\frac{AE}{EC}$, ce qui permet de trouver EC.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Dans un triangle rectangle, on connaît un angle aigu de 30° et la longueur de l'hypoténuse qui vaut 10 cm. Quelle méthode permet de calculer la longueur du côté opposé à cet angle ?",
+      "correctAnswer": "Trigonométrie",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On connaît un angle et l'hypoténuse. Le sinus de l'angle relie le côté opposé à l'hypoténuse : $\\sin 30^\\circ = \\frac{\\text{côté opposé}}{10}$. On utilise donc la trigonométrie.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

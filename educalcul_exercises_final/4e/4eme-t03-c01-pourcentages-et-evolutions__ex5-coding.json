@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 430,
+  "_course_code": "4eme-t03-c01-pourcentages-et-evolutions",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Taux",
+  "title": "Approfondissement : Taux - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul du prix après une augmentation",
+      "content": "Écrire un algorithme (ou une fonction en pseudo‑code style Python) qui prend en entrée le prix initial $P$ (en euros) et un taux d'augmentation $t$ (en pour cent), et qui affiche le prix final après application de ce taux. Utiliser la formule $P_{\\text{final}} = P \\times (1 + \\frac{t}{100})$.",
+      "correctAnswer": "Algorithme :\\n1. Lire P, t\\n2. Calculer facteur = 1 + t / 100\\n3. Calculer P_final = P * facteur\\n4. Afficher P_final\\n\\nVersion Python :\\ndef prix_apres_augmentation(P, t):\\n    facteur = 1 + t / 100\\n    return P * facteur",
+      "explanation": "On convertit le taux en pourcentage en un coefficient multiplicateur en ajoutant 1 à t divisé par 100. Le prix final s'obtient en multipliant le prix initial par ce coefficient. L'algorithme suit exactement ces étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Taux global après deux variations successives",
+      "content": "Un produit voit son prix augmenter de $t_1\\%$ puis diminuer de $t_2\\%$. Écrire un algorithme qui, à partir de $t_1$ et $t_2$, calcule le taux global $t_{\\text{global}}$ (en pour cent) équivalent à ces deux variations successives. Rappel : le coefficient multiplicateur global est $(1 + \\frac{t_1}{100}) \\times (1 - \\frac{t_2}{100})$ et $t_{\\text{global}} = (\\text{coeff} - 1) \\times 100$.",
+      "correctAnswer": "Algorithme :\\n1. Lire t1, t2\\n2. coeff = (1 + t1 / 100) * (1 - t2 / 100)\\n3. t_global = (coeff - 1) * 100\\n4. Afficher t_global\\n\\nVersion Python :\\ndef taux_global(t1, t2):\\n    coeff = (1 + t1 / 100) * (1 - t2 / 100)\\n    return (coeff - 1) * 100",
+      "explanation": "On combine les deux coefficients multiplicateurs (augmentation puis diminution) par multiplication. Le coefficient global минус 1 donne la variation relative, qu'on ramène en pour cent en multipliant par 100.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Taux annuel constant équivalent à une suite de taux",
+      "content": "On dispose d'une liste de taux annuels de croissance (en pour cent) sur plusieurs années, par exemple $t = [3, 5, -2, 4]$. Écrire un algorithme qui calcule le facteur de croissance global sur la période, puis déduit le taux annuel constant $t_{\\text{eq}}$ (en pour cent) qui aurait produit le même facteur global s'il avait été appliqué chaque année. Formule : $\\text{facteur} = \\prod_{i}(1 + \\frac{t_i}{100})$ et $t_{\\text{eq}} = (\\text{facteur}^{1/n} - 1) \\times 100$ où $n$ est le nombre d'années.",
+      "correctAnswer": "Algorithme :\\n1. Lire liste_taux\\n2. n = longueur(liste_taux)\\n3. facteur = 1\\n4. Pour chaque taux dans liste_taux :\\n       facteur = facteur * (1 + taux / 100)\\n5. t_eq = (facteur ** (1 / n) - 1) * 100\\n6. Afficher t_eq\\n\\nVersion Python :\\ndef taux_equivalent(liste_taux):\\n    n = len(liste_taux)\\n    facteur = 1.0\\n    for taux in liste_taux:\\n        facteur *= (1 + taux / 100)\\n    return (facteur ** (1 / n) - 1) * 100",
+      "explanation": "On multiplie tous les coefficients annuels pour obtenir le facteur global. La racine n‑ième de ce facteur donne le coefficient annuel constant ; en retranchant 1 et en multipliant par 100 on obtient le taux équivalent en pour cent.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

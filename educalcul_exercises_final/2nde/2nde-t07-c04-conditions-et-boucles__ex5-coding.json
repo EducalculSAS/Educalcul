@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : If",
+  "title": "Approfondissement des structures conditionnelles If",
+  "blocks": [
+    {
+      "title": "Question 1 : Test de positivité",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir un nombre entier $n$ et qui affiche Positif si $n > 0$, sinon affiche Non positif.",
+      "correctAnswer": "Variables\\n    n : entier\\nDébut\\n    Afficher Entrez un nombre :\\n    Lire n\\n    Si n > 0 Alors\\n        Afficher Positif\\n    Sinon\\n        Afficher Non positif\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme déclare une variable entière n. Il affiche un message pour demander la saisie, lit la valeur entrée. La structure conditionnelle Si n > 0 Alors exécute l'instruction Afficher Positif si la condition est vraie, sinon le bloc Sinon affiche Non positif. Cela couvre tous les cas y compris zéro et les nombres négatifs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Multiple de 6",
+      "content": "Écrire un algorithme qui lit un entier $n$ et qui affiche Multiple de 6 si $n$ est divisible par 2 et par 3, sinon affiche Pas multiple de 6. Utiliser une structure Si imbriquée.",
+      "correctAnswer": "Variables\\n    n : entier\\nDébut\\n    Afficher Entrez un entier :\\n    Lire n\\n    Si n mod 2 = 0 Alors\\n        Si n mod 3 = 0 Alors\\n            Afficher Multiple de 6\\n        Sinon\\n            Afficher Pas multiple de 6\\n        Fin Si\\n    Sinon\\n        Afficher Pas multiple de 6\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste d'abord la divisibilité par 2 avec n mod 2 = 0. Si c'est vrai, on teste la divisibilité par 3 à l'intérieur d'un second Si. Seulement si les deux conditions sont vraies, on affiche Multiple de 6. Dans tous les autres cas, on affiche Pas multiple de 6. L'imbrication permet de vérifier la conjonction des deux conditions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Classement d'une note",
+      "content": "Écrire un algorithme qui lit une note $x$ (entier entre 0 et 20) et qui affiche la mention correspondante selon le barème : Insuffisant pour $x < 10$, Passable pour $10 \\le x < 12$, Assez bien pour $12 \\le x < 14$, Bien pour $14 \\le x < 16$, Très bien pour $x \\ge 16$. Utiliser une chaîne de Si Sinon Si.",
+      "correctAnswer": "Variables\\n    x : entier\\nDébut\\n    Afficher Entrez une note entre 0 et 20 :\\n    Lire x\\n    Si x < 10 Alors\\n        Afficher Insuffisant\\n    Sinon Si x < 12 Alors\\n        Afficher Passable\\n    Sinon Si x < 14 Alors\\n        Afficher Assez bien\\n    Sinon Si x < 16 Alors\\n        Afficher Bien\\n    Sinon\\n        Afficher Très bien\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La chaîne de Si Sinon Si permet de tester les intervalles dans l'ordre croissant. Comme les conditions sont mutuellement exclusives et exhaustives, le premier test vrai détermine la mention affichée. Les seuils 10, 12, 14, 16 correspondent aux bornes du barème. Le dernier Sinon capture les notes supérieures ou égales à 16.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

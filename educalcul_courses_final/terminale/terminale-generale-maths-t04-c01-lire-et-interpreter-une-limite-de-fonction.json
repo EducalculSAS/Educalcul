@@ -1,0 +1,424 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.633583+00:00",
+  "id": 690,
+  "code": "terminale-generale-maths-t04-c01",
+  "title": "Lire et interpréter une limite de fonction",
+  "description": "Cours structuré Educalcul : Lire et interpréter une limite de fonction.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Lire et interpréter une limite de fonction",
+    "objectif_global": "Lire et interpréter une limite de fonction",
+    "mini_lecons_imposees": [
+      "Finie / infinie.",
+      "En un point / à l'infini.",
+      "Graphique."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Finie / infinie.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la limite finie en un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans ce premier volet, nous allons nous familiariser avec l'idée qu'une fonction peut se rapprocher d'une valeur précise lorsque la variable s'approche d'un nombre donné. Imagine que tu marches vers une porte : plus tu t'en approches, plus la distance qui te sépare de la porte diminue, jusqu'à devenir aussi petite que tu le souhaites. En mathématiques, on note cette idée avec le symbole $\\lim_{x\\to a} f(x) = L$, qui se lit « la limite de $f(x)$ quand $x$ tend vers $a$ est égale à $L$ ». Le nombre $a$ est le point vers lequel $x$ se dirige, $L$ est la valeur que la fonction approche, et la flèche $\\to$ rappelle le mouvement d'approche. Il est essentiel de comprendre que $x$ ne prend jamais exactement la valeur $a$ dans la définition de la limite ; on s'intéresse seulement aux valeurs de $f(x)$ pour des $x$ arbitrairement proches de $a$, mais distincts de $a$. Cette subtilité permet de parler de limite même si la fonction n'est pas définie en $a$, comme c'est le cas pour la fonction $f(x)=\\frac{x^2-1}{x-1}$ en $x=1$. Nous verrons comment exploiter cette notion pour lire des limites à partir de formules algébriques et de représentations graphiques."
+            },
+            {
+              "type": "definition",
+              "term": "limite finie",
+              "definition": "On dit que la fonction $f$ admet une limite finie $L$ en $a$ si, pour tout nombre positif $\\varepsilon$, il existe un nombre positif $\\eta$ tel que pour tout $x$ satisfaisant $0<|x-a|<\\eta$, on ait $|f(x)-L|<\\varepsilon$. En mots simples : on peut rendre $f(x)$ aussi proche que l'on veut de $L$ en prenant $x$ suffisamment proche de $a$, sans que $x$ ne soit égal à $a$.",
+              "example": "Par exemple, $\\lim_{x\\to 2} x^2 = 4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fonction $f(x)=x^2$. Quand $x$ approche $2$, les valeurs $f(x)$ approchent $4$. On peut le vérifier numériquement : $f(1,9)=3,61$, $f(1,99)=3,9601$, $f(2,01)=4,0401$. La tendance est claire : la limite est $4$. Cette convergence peut être visualisée sur le graphique de la parabole, où l'on voit les points se resserrer autour du point $(2,4)$ quand $x$ se rapproche de $2$ par la gauche comme par la droite."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 4,
+              "caption": "Courbe de $f(x)=x^2$ autour de $x=2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la limite infinie en un point"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une fonction ne se stabilise pas près d'une valeur finie : ses valeurs deviennent arbitrairement grandes en valeur absolue quand $x$ se rapproche d'un certain nombre. On parle alors de limite infinie. Le symbole $\\lim_{x\\to a} f(x) = +\\infty$ (ou $-\\infty$) signifie que $f(x)$ dépasse tout nombre fixé dès que $x$ est assez proche de $a$, sans y être égal. Géométriquement, la courbe possède une asymptote verticale d'équation $x=a$ : la branche de la courbe s'éloigne indéfiniment vers le haut ou vers le bas en se rapprochant de cette droite. C'est le cas typique des fonctions rationnelles dont le dénominateur s'annule en $a$ alors que le numérateur ne s'annule pas."
+            },
+            {
+              "type": "definition",
+              "term": "limite infinie",
+              "definition": "On dit que $\\lim_{x\\to a} f(x) = +\\infty$ si, pour tout nombre réel $M$, il existe $\\eta>0$ tel que $0<|x-a|<\\eta$ entraîne $f(x)>M$. La définition pour $-\\infty$ est symétrique en remplaçant $>$ par $<$.",
+              "example": "Par exemple, $\\lim_{x\\to 1} \\frac{1}{x-1} = +\\infty$ quand $x$ tend vers $1$ par valeurs supérieures, et $-\\infty$ par valeurs inférieures."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $g(x)=\\frac{1}{x-1}$. Pour $x=1,1$, $g(1,1)=10$ ; pour $x=1,01$, $g(1,01)=100$ ; pour $x=1,001$, $g(1,001)=1000$. Les valeurs explosent vers $+\\infty$ quand $x$ approche $1$ par la droite. Par la gauche, $x=0,9$ donne $-10$, $x=0,99$ donne $-100$, etc., d'où une limite $-\\infty$. Le graphique montre deux branches qui s'écartent verticalement de part et d'autre de la droite $x=1$."
+            },
+            {
+              "type": "graph",
+              "expression": "1/(x-1)",
+              "xmin": -1,
+              "xmax": 3,
+              "caption": "Courbe de $g(x)=\\frac{1}{x-1}$ avec asymptote verticale $x=1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites unilatérales : approche par la gauche et par la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que la limite bilatérale n'existe pas parce que les valeurs approchées diffèrent selon que $x$ arrive par valeurs inférieures ou supérieures à $a$. On note alors la limite à gauche $\\lim_{x\\to a^-} f(x)$ et la limite à droite $\\lim_{x\\to a^+} f(x)$. Si ces deux limites existent et sont égales, la limite bilatérale existe et leur est commune. Si elles sont différentes, la limite bilatérale n'existe pas. Cette distinction est cruciale pour étudier les fonctions définies par morceaux ou présentant un saut."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le point $a$ et la définition de $f$ de chaque côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'expression de $f(x)$ pour $x<a$ et pour $x>a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la limite à gauche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $x$ par des valeurs inférieures à $a$ qui tendent vers $a$, ou utilise les règles algébriques sur l'expression de gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la limite à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais de même avec l'expression valable pour $x>a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux résultats coïncident, c'est la limite en $a$. Sinon, la limite bilatérale n'existe pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour distinguer limite finie, limite infinie et limites unilatérales. Dans la prochaine leçon, nous verrons comment ces idées s'étendent lorsque $x$ part vers l'infini, c'est-à-dire lorsque la variable grandit sans borne."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la limite de $f(x)=3x+1$ quand $x$ tend vers $2$ ?",
+              "answer": "$7$",
+              "hint": "Remplace $x$ par $2$ dans l'expression affine.",
+              "explanation": "Comme $f$ est continue, la limite en $2$ vaut $f(2)=3\\times2+1=7$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to 0} \\frac{1}{x^2}$.",
+              "answer": "$+\\infty$",
+              "hint": "Le dénominateur $x^2$ est toujours positif et tend vers $0$.",
+              "explanation": "Pour $x\\neq0$, $x^2>0$ et $x^2\\to0$, donc $\\frac{1}{x^2}$ devient arbitrairement grand, la limite est $+\\infty$."
+            },
+            {
+              "question": "Soit $h(x)=\\begin{cases} x+2 & \\text{si } x<1 \\\\ 3 & \\text{si } x=1 \\\\ 2x & \\text{si } x>1 \\end{cases}$. Calculer $\\lim_{x\\to1^-}h(x)$ et $\\lim_{x\\to1^+}h(x)$. La limite en $1$ existe-t-elle ?",
+              "answer": "Limite à gauche $=3$, limite à droite $=2$. La limite bilatérale n'existe pas.",
+              "hint": "Utilise les expressions de chaque côté de $1$.",
+              "explanation": "Pour $x<1$, $h(x)=x+2\\to3$. Pour $x>1$, $h(x)=2x\\to2$. Comme $3\\neq2$, la limite en $1$ n'existe pas."
+            }
+          ]
+        },
+        {
+          "title": "En un point / à l'infini.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limite en un point : rappels et techniques algébriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant d'explorer les limites à l'infini, consolidons la lecture des limites en un point fini. Lorsque $f$ est une expression rationnelle, une racine carrée ou une combinaison de fonctions usuelles, on peut souvent obtenir la limite par substitution directe si la fonction est continue en $a$. Si la substitution donne une forme indéterminée comme $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$, il faut transformer l'expression : factoriser, rationaliser, ou utiliser des identités remarquables. Par exemple, pour $\\lim_{x\\to 2} \\frac{x^2-4}{x-2}$, le numérateur se factorise en $(x-2)(x+2)$, ce qui permet de simplifier le facteur $x-2$ et d'évaluer la limite de $x+2$ en $2$, soit $4$. Cette manipulation algébrique est le cœur de la résolution de limites en un point."
+            },
+            {
+              "type": "definition",
+              "term": "forme indéterminée",
+              "definition": "Une expression obtenue par substitution directe qui ne permet pas de conclure immédiatement sur la limite, par exemple $\\frac{0}{0}$, $\\frac{\\infty}{\\infty}$, $0\\times\\infty$, $\\infty-\\infty$, $1^\\infty$, $0^0$, $\\infty^0$.",
+              "example": "$\\displaystyle\\lim_{x\\to 0}\\frac{\\sin x}{x}$ donne $\\frac{0}{0}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple plus riche : $\\lim_{x\\to 3} \\frac{\\sqrt{x+1}-2}{x-3}$. La substitution donne $\\frac{0}{0}$. On multiplie numérateur et dénominateur par le conjugué $\\sqrt{x+1}+2$ pour obtenir $\\frac{(x+1)-4}{(x-3)(\\sqrt{x+1}+2)}=\\frac{x-3}{(x-3)(\\sqrt{x+1}+2)}$. Après simplification, il reste $\\frac{1}{\\sqrt{x+1}+2}$, dont la limite en $3$ est $\\frac{1}{4}$. Cette technique de rationalisation est incontournable pour les racines."
+            },
+            {
+              "type": "graph",
+              "expression": "(sqrt(x+1)-2)/(x-3)",
+              "xmin": 0,
+              "xmax": 6,
+              "caption": "Courbe de $\\frac{\\sqrt{x+1}-2}{x-3}$ près de $x=3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limite quand $x$ tend vers $+\\infty$ : comportement au loin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imaginons que $x$ grandit sans borne : on note $\\lim_{x\\to +\\infty} f(x)$. On s'intéresse à la valeur vers laquelle $f(x)$ se stabilise lorsque $x$ devient très grand. Pour les fonctions polynomiales, le terme de plus haut degré domine : $\\lim_{x\\to +\\infty} (2x^3-5x+1)=+\\infty$ car $2x^3$ l'emporte. Pour une fraction rationnelle $\\frac{P(x)}{Q(x)}$, on compare les degrés : si $\\deg P < \\deg Q$, la limite est $0$ ; si $\\deg P = \\deg Q$, la limite est le quotient des coefficients directeurs ; si $\\deg P > \\deg Q$, la limite est $\\pm\\infty$ selon les signes. Cette règle permet de lire rapidement l'asymptote horizontale ou oblique."
+            },
+            {
+              "type": "definition",
+              "term": "asymptote horizontale",
+              "definition": "Une droite $y=L$ est asymptote horizontale de la courbe de $f$ si $\\lim_{x\\to +\\infty} f(x)=L$ ou $\\lim_{x\\to -\\infty} f(x)=L$. La courbe se rapproche indéfiniment de cette droite quand $x$ grandit.",
+              "example": "Pour $f(x)=\\frac{3x+2}{x-1}$, $\\lim_{x\\to +\\infty} f(x)=3$, donc $y=3$ est asymptote horizontale."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $f(x)=\\frac{3x+2}{x-1}$. En divisant numérateur et dénominateur par $x$, on obtient $\\frac{3+\\frac{2}{x}}{1-\\frac{1}{x}}$. Quand $x\\to+\\infty$, les fractions $\\frac{2}{x}$ et $\\frac{1}{x}$ tendent vers $0$, donc la limite vaut $\\frac{3}{1}=3$. Le graphique montre la courbe qui se colle à la droite $y=3$ pour les grandes abscisses."
+            },
+            {
+              "type": "graph",
+              "expression": "(3*x+2)/(x-1)",
+              "xmin": -10,
+              "xmax": 20,
+              "caption": "Courbe de $f(x)=\\frac{3x+2}{x-1}$ et asymptote horizontale $y=3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limite quand $x$ tend vers $-\\infty$ : symétrie et différences"
+            },
+            {
+              "type": "paragraph",
+              "content": "La limite en $-\\infty$ s'étudie de la même façon, mais il faut prêter attention aux puissances impaires qui changent de signe. Pour $f(x)=x^3$, $\\lim_{x\\to -\\infty} x^3 = -\\infty$, alors que pour $x^2$, la limite est $+\\infty$. Pour les fractions rationnelles, la règle des degrés reste valable, mais le signe du coefficient directeur du terme dominant détermine si la limite est $+\\infty$ ou $-\\infty$. Par exemple, $\\lim_{x\\to -\\infty} \\frac{-2x^2+5}{x^2+1} = -2$ car les degrés sont égaux et le quotient des coefficients directeurs est $-2$. Le graphique confirme que la courbe approche la droite $y=-2$ par le bas quand $x$ devient très négatif."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position relative de $f(x)=\\frac{-2x^2+5}{x^2+1}$ pour de grandes valeurs négatives de $x$",
+              "min": -10,
+              "max": 0,
+              "points": [
+                {
+                  "value": -10,
+                  "label": "x=-10"
+                },
+                {
+                  "value": -5,
+                  "label": "x=-5"
+                },
+                {
+                  "value": -1,
+                  "label": "x=-1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire une limite en un point fini, reconnaître les formes indéterminées et les résoudre, puis déterminer le comportement d'une fonction quand $x$ part vers $+\\infty$ ou $-\\infty$. La prochaine leçon te montrera comment retrouver toutes ces informations directement sur une représentation graphique, sans calcul algébrique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to 2} \\frac{x^2-4}{x-2}$.",
+              "answer": "$4$",
+              "hint": "Factorise le numérateur.",
+              "explanation": "$x^2-4=(x-2)(x+2)$, on simplifie $x-2$, il reste $x+2\\to4$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to +\\infty} \\frac{5x^2-3x+1}{2x^2+7}$.",
+              "answer": "$\\frac{5}{2}$",
+              "hint": "Divise numérateur et dénominateur par $x^2$.",
+              "explanation": "Les degrés sont égaux, la limite est le quotient des coefficients directeurs : $5/2$."
+            },
+            {
+              "question": "Trouver $\\lim_{x\\to -\\infty} \\frac{x^3+2x}{x^2-1}$.",
+              "answer": "$-\\infty$",
+              "hint": "Compare les degrés : numérateur degré 3, dénominateur degré 2.",
+              "explanation": "Le terme dominant est $x^3/x^2 = x$, qui tend vers $-\\infty$ quand $x\\to-\\infty$."
+            }
+          ]
+        },
+        {
+          "title": "Graphique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une limite finie sur un graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un graphique est souvent le moyen le plus intuitif pour saisir la limite d'une fonction en un point. Pour repérer $\\lim_{x\\to a} f(x)$, place ton regard sur l'abscisse $a$ et observe la hauteur des points de la courbe quand $x$ se rapproche de $a$ par la gauche et par la droite. Si les deux branches convergent vers la même ordonnée $L$, la limite existe et vaut $L$. Il n'importe pas que la fonction soit définie en $a$ ni quelle valeur elle y prend : un trou (point vide) ou un point isolé ne change pas la limite. Par exemple, sur le graphique de $f(x)=\\frac{x^2-1}{x-1}$, on voit un trou en $(1,2)$ ; pourtant les deux côtés pointent vers $2$, donc $\\lim_{x\\to1}f(x)=2$."
+            },
+            {
+              "type": "graph",
+              "expression": "(x^2-1)/(x-1)",
+              "xmin": -1,
+              "xmax": 3,
+              "caption": "Graphique de $f(x)=\\frac{x^2-1}{x-1}$ avec un trou en $(1,2)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer une limite infinie et une asymptote verticale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand la courbe s'éloigne verticalement sans borne en approchant d'une abscisse $a$, on identifie une limite infinie. Visuellement, les branches montent vers $+\\infty$ ou descendent vers $-\\infty$ de part et d'autre de la droite verticale $x=a$. Cette droite est une asymptote verticale. Sur le graphique de $g(x)=\\frac{1}{(x-2)^2}$, les deux branches s'élèvent vers $+\\infty$ quand $x\\to2$, indiquant $\\lim_{x\\to2}g(x)=+\\infty$. Si les branches partent dans des sens opposés, comme pour $h(x)=\\frac{1}{x-2}$, on a $\\lim_{x\\to2^-}h(x)=-\\infty$ et $\\lim_{x\\to2^+}h(x)=+\\infty$ ; la limite bilatérale n'existe pas, mais les limites unilatérales sont infinies."
+            },
+            {
+              "type": "graph",
+              "expression": "1/(x-2)^2",
+              "xmin": 0,
+              "xmax": 4,
+              "caption": "Courbe de $g(x)=\\frac{1}{(x-2)^2}$ avec asymptote verticale $x=2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les limites à l'infini et les asymptotes horizontales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour connaître $\\lim_{x\\to +\\infty} f(x)$ ou $\\lim_{x\\to -\\infty} f(x)$, regarde le comportement de la courbe aux extrémités du graphique. Si la courbe se rapproche d'une droite horizontale $y=L$ quand $x$ augmente (ou diminue), alors $L$ est la limite correspondante. Cette droite est l'asymptote horizontale. Parfois, la courbe oscille ou diverge, auquel point la limite n'existe pas. Sur le graphique de $k(x)=\\frac{2x+1}{x-3}$, on voit clairement la courbe se coller à la droite $y=2$ pour de grandes abscisses positives et négatives, donc $\\lim_{x\\to\\pm\\infty}k(x)=2$."
+            },
+            {
+              "type": "graph",
+              "expression": "(2*x+1)/(x-3)",
+              "xmin": -20,
+              "xmax": 20,
+              "caption": "Courbe de $k(x)=\\frac{2x+1}{x-3}$ avec asymptote horizontale $y=2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas où la limite n'existe pas : sauts et oscillations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que le graphique présente un saut brutal : les limites à gauche et à droite en $a$ sont finies mais différentes. C'est le cas des fonctions définies par morceaux, comme la fonction partie entière $E(x)$ en $x=1$ : $\\lim_{x\\to1^-}E(x)=0$ et $\\lim_{x\\to1^+}E(x)=1$. La limite bilatérale n'existe pas. Un autre phénomène est l'oscillation infinie près d'un point, par exemple $\\sin\\frac{1}{x}$ en $0$ : la courbe oscille entre $-1$ et $1$ de plus en plus vite, sans se stabiliser, donc aucune limite n'existe. Savoir reconnaître ces motifs visuels te permet de conclure rapidement sans calcul formel."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(1/x)",
+              "xmin": -1,
+              "xmax": 1,
+              "caption": "Oscillations de $\\sin\\frac{1}{x}$ près de $0$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une limite finie sur un graphique, même s'il y a un trou.",
+                "Je sais repérer une limite infinie et l'asymptote verticale correspondante.",
+                "Je sais lire les limites à $\\pm\\infty$ et déterminer l'asymptote horizontale.",
+                "Je sais reconnaître l'absence de limite (saut ou oscillation) sur une courbe."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique de $f(x)=\\frac{x^2-4}{x-2}$, quelle est $\\lim_{x\\to2}f(x)$ ?",
+              "answer": "$4$",
+              "hint": "Observe la hauteur vers laquelle les deux branches convergent près de $x=2$.",
+              "explanation": "La courbe a un trou en $(2,4)$ ; les deux côtés pointent vers $4$, donc la limite est $4$."
+            },
+            {
+              "question": "Pour $g(x)=\\frac{1}{x+1}$, quelles sont $\\lim_{x\\to-1^-}g(x)$ et $\\lim_{x\\to-1^+}g(x)$ ?",
+              "answer": "$\\lim_{x\\to-1^-}g(x)=-\\infty$, $\\lim_{x\\to-1^+}g(x)=+\\infty$",
+              "hint": "Regarde le signe du dénominateur de chaque côté de $-1$.",
+              "explanation": "Pour $x<-1$, $x+1<0$ donc la fraction tend vers $-\\infty$ ; pour $x>-1$, le dénominateur est positif, la fraction tend vers $+\\infty$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to+\\infty} \\frac{3x-5}{2x+1}$ à partir de son graphique.",
+              "answer": "$\\frac{3}{2}$",
+              "hint": "Identifie la droite horizontale que la courbe approche pour de grandes abscisses.",
+              "explanation": "Les coefficients directeurs sont $3$ et $2$, l'asymptote horizontale est $y=3/2$."
+            },
+            {
+              "question": "Le graphique de $h(x)=\\begin{cases} 1 & \\text{si } x<0 \\\\ -1 & \\text{si } x\\ge0 \\end{cases}$ montre-t-il une limite en $0$ ?",
+              "answer": "Non, la limite n'existe pas car $\\lim_{x\\to0^-}h(x)=1$ et $\\lim_{x\\to0^+}h(x)=-1$ sont différentes.",
+              "hint": "Compare les valeurs de part et d'autre de $0$.",
+              "explanation": "Il y a un saut de $1$ à $-1$ en $0$, donc pas de limite bilatérale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 81,
+  "_course_code": "ce1-t02-c03-numerateur-et-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Relier numérateur au nombre de parts prises",
+  "title": "Quiz : Le numérateur et les parts prises",
+  "questions": [
+    {
+      "text": "Regarde le cercle ci-dessous. Combien de parts sont coloriées ? Ce nombre correspond au numérateur.",
+      "options": [
+        "1",
+        "3",
+        "4",
+        "7"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le cercle est divisé en 4 parts égales (le dénominateur). 3 parts sont coloriées en bleu. Le numérateur indique le nombre de parts prises ou coloriées, donc c'est 3. La fraction est $3/4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Cercle divisé en 4, 3 parts coloriées"
+      }
+    },
+    {
+      "text": "Une barre de chocolat est coupée en 5 parts égales. Léa en mange 2. Quel est le numérateur de la fraction qui représente la partie mangée ?",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Le total des parts est 5 (dénominateur). Léa en a pris 2. Le numérateur compte le nombre de parts prises, donc c'est 2. La fraction est $2/5$. Les 3 parts restantes correspondent à $3/5$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 5,
+        "shape": "bar",
+        "caption": "Barre divisée en 5, 2 parts coloriées"
+      }
+    },
+    {
+      "text": "Dans la fraction $3/8$, que représente le chiffre 3 (le numérateur) ?",
+      "options": [
+        "Le nombre total de parts",
+        "Le nombre de parts restantes",
+        "Le nombre de parts prises",
+        "Le nombre de parts non prises"
+      ],
+      "correctAnswer": "Le nombre de parts prises",
+      "explanation": "Dans une fraction, le numérateur (au-dessus de la barre) indique toujours le nombre de parts que l'on prend, que l'on colore ou que l'on considère. Le dénominateur (8 ici) indique le nombre total de parts égales. 3 n'est pas le total, ni le reste (qui serait 5).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un gâteau est partagé en 6 parts identiques. Paul prend 4 parts. Quelle phrase est exacte ?",
+      "options": [
+        "Le numérateur est 6 car c'est le total.",
+        "Le numérateur est 2 car il reste 2 parts.",
+        "Le numérateur est 4 car Paul a pris 4 parts.",
+        "Le numérateur est 10 car $6 + 4 = 10$."
+      ],
+      "correctAnswer": "Le numérateur est 4 car Paul a pris 4 parts.",
+      "explanation": "Paul a pris 4 parts sur 6. Le numérateur correspond au nombre de parts prises (4). Le dénominateur est 6 (le total). L'option 2 confond numérateur et parts restantes. L'option 1 confond numérateur et dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde les trois bandes de fractions. Laquelle a pour numérateur 2 ?",
+      "options": [
+        "La première bande ($1/4$)",
+        "La deuxième bande ($2/4$)",
+        "La troisième bande ($3/4$)",
+        "Aucune, le numérateur est toujours 4."
+      ],
+      "correctAnswer": "La deuxième bande ($2/4$)",
+      "explanation": "On cherche la fraction où le nombre de parts coloriées (numérateur) est 2. La première bande a 1 part colorée ($1/4$). La deuxième en a 2 ($2/4$). La troisième en a 3 ($3/4$). Le dénominateur est 4 pour les trois, mais le numérateur change.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Trois bandes : 1/4, 2/4, 3/4"
+      }
+    }
+  ]
+}

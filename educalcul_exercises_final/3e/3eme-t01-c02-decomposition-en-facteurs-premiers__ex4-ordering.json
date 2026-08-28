@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 456,
+  "_course_code": "3eme-t01-c02-decomposition-en-facteurs-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Décomposition en facteurs premiers",
+  "title": "Applications de la décomposition en facteurs premiers",
+  "blocks": [
+    {
+      "title": "Simplification d'une fraction",
+      "content": "On veut simplifier la fraction $\\frac{126}{224}$ en utilisant la décomposition en facteurs premiers. Range les étapes dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer 126 et 224 en produits de facteurs premiers.",
+        "Écrire la fraction en remplaçant le numérateur et le dénominateur par leurs décompositions.",
+        "Simplifier les facteurs premiers communs au numérateur et au dénominateur.",
+        "Calculer le numérateur et le dénominateur de la fraction irréductible obtenue."
+      ],
+      "explanation": "On commence par décomposer les deux nombres : $126 = 2 \\times 3^2 \\times 7$ et $224 = 2^5 \\times 7$. On réécrit la fraction $\\frac{2 \\times 3^2 \\times 7}{2^5 \\times 7}$. On simplifie les facteurs communs ($2$ et $7$), ce qui donne $\\frac{3^2}{2^4} = \\frac{9}{16}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Obtenir un carré parfait",
+      "content": "Quel est le plus petit entier naturel non nul par lequel il faut multiplier 540 pour obtenir un carré parfait ? Range les étapes de la résolution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer 540 en produit de facteurs premiers.",
+        "Repérer les exposants impairs dans la décomposition.",
+        "Multiplier 540 par les facteurs premiers nécessaires pour rendre tous les exposants pairs.",
+        "Écrire le plus petit entier naturel à multiplier et vérifier que le produit est un carré parfait."
+      ],
+      "explanation": "La décomposition de 540 est $2^2 \\times 3^3 \\times 5$. Les exposants de 3 et 5 sont impairs (3 et 1). Pour avoir un carré parfait, tous les exposants doivent être pairs. Il faut donc multiplier par $3 \\times 5 = 15$. On obtient $540 \\times 15 = 8100 = 90^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de synchronisation (PPCM)",
+      "content": "Deux bus quittent la gare à 8 h 00. Le premier passe toutes les 24 minutes, le second toutes les 36 minutes. À quelle heure repartiront-ils ensemble ? Range les étapes pour résoudre ce problème.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer 24 et 36 en produits de facteurs premiers.",
+        "Déterminer le PPCM de 24 et 36 en conservant les plus grands exposants.",
+        "Calculer la valeur numérique du PPCM.",
+        "Ajouter cette durée à l'heure de départ pour trouver l'heure du prochain départ commun."
+      ],
+      "explanation": "$24 = 2^3 \\times 3$ et $36 = 2^2 \\times 3^2$. Le PPCM est $2^3 \\times 3^2 = 8 \\times 9 = 72$ minutes. 72 minutes = 1 h 12 min. Les bus repartiront ensemble à 9 h 12.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

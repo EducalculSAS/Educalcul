@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Thalès",
+  "title": "Applications du théorème de Thalès : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Calculer une longueur (Thalès direct)",
+      "content": "Dans le triangle $ABC$, les points $M$ et $N$ sont placés sur les côtés $[AB]$ et $[AC]$ tels que $(MN) \\parallel (BC)$. On donne $AB = 12$ cm, $AM = 4$ cm et $AC = 15$ cm. Range les étapes dans l'ordre logique pour calculer la longueur $AN$.",
+      "items": [
+        "Identifier la configuration : triangle $ABC$ et droite parallèle $(MN) \\parallel (BC)$ coupant les deux autres côtés.",
+        "Écrire l'égalité des rapports issue du théorème de Thalès : $\\frac{AM}{AB} = \\frac{AN}{AC}$.",
+        "Remplacer les longueurs connues : $\\frac{4}{12} = \\frac{AN}{15}$.",
+        "Simplifier le rapport $\\frac{4}{12}$ en $\\frac{1}{3}$ et résoudre l'équation $\\frac{1}{3} = \\frac{AN}{15}$.",
+        "Conclure : $AN = 5$ cm."
+      ],
+      "explanation": "On commence par vérifier la configuration (triangle et droite parallèle) pour pouvoir appliquer le théorème direct. On écrit alors l'égalité des rapports des longueurs correspondantes. Après substitution des valeurs numériques, on simplifie la fraction pour trouver facilement la valeur de l'inconnue $AN$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démontrer que deux droites sont parallèles (Réciproque)",
+      "content": "Soit un triangle $DEF$. Le point $P$ appartient au segment $[DE]$ et le point $Q$ appartient au segment $[DF]$. On sait que $DP = 6$ cm, $DE = 9$ cm, $DQ = 8$ cm et $DF = 12$ cm. Range les étapes pour démontrer que $(PQ) \\parallel (EF)$.",
+      "items": [
+        "Calculer le rapport $\\frac{DP}{DE} = \\frac{6}{9} = \\frac{2}{3}$.",
+        "Calculer le rapport $\\frac{DQ}{DF} = \\frac{8}{12} = \\frac{2}{3}$.",
+        "Constater que les deux rapports sont égaux : $\\frac{DP}{DE} = \\frac{DQ}{DF}$.",
+        "Vérifier que les points $P$ et $Q$ sont bien sur les côtés $[DE]$ et $[DF]$ (ordre $D-P-E$ et $D-Q-F$).",
+        "Conclure par la réciproque du théorème de Thalès : $(PQ) \\parallel (EF)$."
+      ],
+      "explanation": "Pour utiliser la réciproque, il faut d'abord s'assurer que les points appartiennent bien aux côtés du triangle (alignement et ordre). On calcule ensuite les deux rapports des longueurs correspondantes. Comme ils sont égaux, la réciproque du théorème de Thalès permet d'affirmer que les droites sont parallèles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème à deux étapes (Thalès imbriqué)",
+      "content": "Dans la figure, les droites $(BC)$, $(MN)$ et $(PQ)$ sont parallèles. Les points $A$, $M$, $P$, $B$ sont alignés dans cet ordre. Les points $A$, $N$, $Q$, $C$ sont alignés dans cet ordre. On donne $AM = 3$ cm, $MP = 2$ cm, $PB = 5$ cm et $AN = 4$ cm. Range les étapes pour calculer $AQ$ puis $AC$.",
+      "items": [
+        "Calculer $AP = AM + MP = 5$ cm et $AB = AM + MP + PB = 10$ cm.",
+        "Appliquer Thalès dans le triangle $APQ$ (avec $(MN) \\parallel (PQ)$) : $\\frac{AM}{AP} = \\frac{AN}{AQ}$ soit $\\frac{3}{5} = \\frac{4}{AQ}$, d'où $AQ = \\frac{20}{3}$ cm.",
+        "Appliquer Thalès dans le triangle $ABC$ (avec $(PQ) \\parallel (BC)$) : $\\frac{AP}{AB} = \\frac{AQ}{AC}$ soit $\\frac{5}{10} = \\frac{20/3}{AC}$.",
+        "Résoudre l'équation $\\frac{1}{2} = \\frac{20/3}{AC}$ pour trouver $AC = \\frac{40}{3}$ cm.",
+        "Réponse finale : $AQ = \\frac{20}{3}$ cm (environ $6,67$ cm) et $AC = \\frac{40}{3}$ cm (environ $13,33$ cm)."
+      ],
+      "explanation": "Il faut d'abord reconstituer les longueurs totales $AP$ et $AB$ à partir des segments donnés. On utilise d'abord Thalès dans le petit triangle $APQ$ pour trouver $AQ$. Ensuite, on utilise Thalès dans le grand triangle $ABC$ avec les valeurs trouvées ($AP$, $AB$, $AQ$) pour déterminer $AC$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

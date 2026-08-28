@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester",
+  "title": "Tester un programme",
+  "blocks": [
+    {
+      "title": "Le rôle du test",
+      "content": "Pour savoir si un programme fonctionne correctement, on doit le {{1}} avec des exemples. Si le résultat obtenu est différent du résultat attendu, cela signifie qu'il y a un {{2}} dans le code.",
+      "correctAnswer": "",
+      "blanks": [
+        "tester",
+        "bug|bogue"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Tester un programme consiste à l'exécuter pour vérifier son comportement. On découvre ainsi les erreurs, appelées bugs ou bogues, pour pouvoir les corriger.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le résultat attendu",
+      "content": "Imaginons un programme qui doit calculer l'addition $15 + 10$. Le résultat {{1}} est $25$. Si le programme affiche $20$, le test est {{2}} et on doit déboguer le programme.",
+      "correctAnswer": "",
+      "blanks": [
+        "attendu",
+        "échoué|raté"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le résultat attendu est la réponse correcte que l'on prévoit avant de lancer le programme. Si le programme donne un autre résultat, le test échoue.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir des tests",
+      "content": "Pour être sûr qu'un programme est robuste, il ne faut pas faire un seul test, mais {{1}} tests différents. On utilise des valeurs simples, mais aussi des valeurs {{2}} pour vérifier que le programme ne s'arrête pas.",
+      "correctAnswer": "",
+      "blanks": [
+        "plusieurs|divers",
+        "différentes|complexes|variées"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier les tests avec des valeurs variées permet de s'assurer que le programme fonctionne dans toutes les situations et pas seulement pour un seul cas particulier.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

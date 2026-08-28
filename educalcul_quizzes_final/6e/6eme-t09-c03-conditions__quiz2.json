@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Branches",
+  "title": "Quiz Algorithmique : Les branches conditionnelles (SI / SINON)",
+  "questions": [
+    {
+      "text": "Dans un algorithme, quelle instruction permet d'exécuter une action seulement si une condition est vraie ?",
+      "options": [
+        "RÉPÉTER",
+        "TANT QUE",
+        "SI",
+        "POUR"
+      ],
+      "correctAnswer": "SI",
+      "explanation": "L'instruction 'SI' (souvent suivie de 'ALORS') introduit une structure conditionnelle : les instructions qui suivent ne sont exécutées que si la condition testée est vraie. 'RÉPÉTER' et 'POUR' sont des boucles bornées, 'TANT QUE' est une boucle non bornée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec la variable $age$ valant $12$ :\\nDEBUT\\n  age ← 12\\n  SI age ≥ 18 ALORS\\n    AFFICHER \"Majeur\"\\n  SINON\\n    AFFICHER \"Mineur\"\\n  FIN SI\\nFIN\\nQue va afficher le programme ?",
+      "options": [
+        "Majeur",
+        "Mineur",
+        "Rien du tout",
+        "Erreur"
+      ],
+      "correctAnswer": "Mineur",
+      "explanation": "La condition testée est $age ≥ 18$. Comme $age$ vaut $12$, la condition est fausse ($12$ n'est pas supérieur ou égal à $18$). Le programme exécute donc la branche SINON et affiche \"Mineur\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complétez l'algorithme pour qu'il affiche \"Pair\" si le nombre $n$ est divisible par $2$, et \"Impair\" sinon :\\nDEBUT\\n  n ← 7\\n  SI ... ALORS\\n    AFFICHER \"Pair\"\\n  SINON\\n    AFFICHER \"Impair\"\\n  FIN SI\\nFIN\\nQuelle condition écrire à la place des points ?",
+      "options": [
+        "n = 2",
+        "n / 2 = 0",
+        "n est un multiple de 2",
+        "n > 2"
+      ],
+      "correctAnswer": "n est un multiple de 2",
+      "explanation": "Un nombre est pair s'il est un multiple de $2$ (ou si le reste de la division par $2$ vaut $0$). L'option 'n = 2' ne teste que si $n$ vaut exactement $2$. 'n / 2 = 0' est faux pour tout $n > 0$. 'n > 2' ne teste pas la parité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère cet algorithme :\\nDEBUT\\n  note ← 14\\n  SI note ≥ 10 ALORS\\n    SI note ≥ 16 ALORS\\n      AFFICHER \"Très bien\"\\n    SINON\\n      AFFICHER \"Assez bien\"\\n    FIN SI\\n  SINON\\n    AFFICHER \"Insuffisant\"\\n  FIN SI\\nFIN\\nQuel sera l'affichage ?",
+      "options": [
+        "Très bien",
+        "Assez bien",
+        "Insuffisant",
+        "Assez bien\\nInsuffisant"
+      ],
+      "correctAnswer": "Assez bien",
+      "explanation": "La première condition $note ≥ 10$ est vraie ($14 ≥ 10$), on entre dans le premier SI. La deuxième condition imbriquée $note ≥ 16$ est fausse ($14 < 16$), on exécute donc le SINON correspondant qui affiche \"Assez bien\". Le SINON externe (Insuffisant) est ignoré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour afficher \"Gagné\" si le dé vaut $6$ et \"Perdu\" pour toute autre valeur ($1$ à $5$), quelle structure est la plus adaptée ?",
+      "options": [
+        "Une boucle POUR de 1 à 6",
+        "Une instruction SI ... ALORS ... SINON ... FIN SI",
+        "Une instruction SI ... ALORS ... FIN SI sans SINON",
+        "Une boucle TANT QUE dé ≠ 6"
+      ],
+      "correctAnswer": "Une instruction SI ... ALORS ... SINON ... FIN SI",
+      "explanation": "Il y a deux cas exclusifs et exhaustifs : le dé fait $6$ (Gagné) ou le dé ne fait pas $6$ (Perdu). La structure 'SI condition ALORS ... SINON ... FIN SI' est faite pour traiter exactement deux cas opposés. Une boucle répéterait l'action, ce qui n'est pas demandé. Un SI sans SINON ne gérerait pas le cas 'Perdu'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

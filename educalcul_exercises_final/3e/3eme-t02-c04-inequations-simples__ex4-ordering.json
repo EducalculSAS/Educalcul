@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 464,
+  "_course_code": "3eme-t02-c04-inequations-simples",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Application : Inéquations simples",
+  "title": "Résolution de problèmes par inéquations",
+  "blocks": [
+    {
+      "title": "Achats avec un budget",
+      "content": "Paul dispose de 20 €. Il achète un magazine à 4,50 € et souhaite acheter des stylos à 1,20 € l'unité. On note x le nombre de stylos achetés. Rangez dans l'ordre chronologique les étapes pour déterminer le nombre maximum de stylos qu'il peut acheter.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'inéquation : $4,50 + 1,20x \\le 20$",
+        "Isoler le terme en x : $1,20x \\le 15,50$",
+        "Diviser par 1,20 : $x \\le 12,916...$",
+        "Conclure : x est un entier naturel, donc au maximum 12 stylos"
+      ],
+      "explanation": "On modélise le problème par l'inéquation $4,50 + 1,20x \\le 20$. On soustrait 4,50 des deux côtés : $1,20x \\le 15,50$. On divise par 1,20 (positif, le sens ne change pas) : $x \\le 12,916...$. Comme x représente un nombre d'objets, c'est un entier naturel. Le plus grand entier inférieur ou égal à 12,916... est 12. Paul peut acheter au maximum 12 stylos.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux forfaits",
+      "content": "On compare deux forfaits téléphoniques. Forfait A : 10 € par mois + 0,05 € par minute d'appel. Forfait B : 20 € par mois appels illimités. On note x le nombre de minutes d'appel par mois. Rangez dans l'ordre les étapes pour trouver à partir de quel nombre de minutes le forfait B devient au moins aussi avantageux que le forfait A.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'inéquation : $10 + 0,05x \\ge 20$",
+        "Soustraire 10 des deux côtés : $0,05x \\ge 10$",
+        "Diviser par 0,05 : $x \\ge 200$",
+        "Conclure : À partir de 200 minutes, le forfait B est moins cher ou équivalent"
+      ],
+      "explanation": "Le coût du forfait A est $10 + 0,05x$, celui du forfait B est 20. On veut que le forfait B soit au plus aussi cher que A : $10 + 0,05x \\ge 20$. On soustrait 10 : $0,05x \\ge 10$. On divise par 0,05 > 0 : $x \\ge 200$. Pour 200 minutes ou plus, le forfait B est préférable.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Contrainte sur un périmètre",
+      "content": "Un rectangle a une longueur de 8 cm et une largeur de x cm. Son périmètre doit être strictement inférieur à 30 cm. Rangez dans l'ordre les étapes pour déterminer l'ensemble des valeurs possibles pour la largeur x.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire la formule du périmètre : $P = 2(8 + x)$",
+        "Écrire l'inéquation : $2(8 + x) < 30$",
+        "Développer et simplifier : $16 + 2x < 30$ puis $2x < 14$",
+        "Diviser par 2 : $x < 7$",
+        "Conclure : La largeur x doit vérifier $0 < x < 7$ (largeur strictement positive)"
+      ],
+      "explanation": "Le périmètre d'un rectangle est $P = 2(L + l)$. Ici $P = 2(8 + x)$. La contrainte est $2(8 + x) < 30$. On développe : $16 + 2x < 30$. On soustrait 16 : $2x < 14$. On divise par 2 > 0 : $x < 7$. Comme une largeur est strictement positive, les valeurs possibles sont $0 < x < 7$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

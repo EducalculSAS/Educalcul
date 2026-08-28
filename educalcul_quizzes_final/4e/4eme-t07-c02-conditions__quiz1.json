@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Tests",
+  "title": "Quiz sur les tests conditionnels en algorithmique",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, quelle instruction est exécutée si la variable $x$ vaut $7$ ?\\nSi $x > 5$ Alors Afficher 'Grand' Sinon Afficher 'Petit' Fin Si",
+      "options": [
+        "Afficher 'Grand'",
+        "Afficher 'Petit'",
+        "Afficher 'Égal'",
+        "Aucune instruction"
+      ],
+      "correctAnswer": "Afficher 'Grand'",
+      "explanation": "La condition $x > 5$ est vraie pour $x = 7$, donc le bloc Alors est exécuté et affiche 'Grand'. Les autres options correspondent à une condition fausse ou à une erreur de lecture.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez l'algorithme imbriqué :\\nSi $a > 10$ Alors\\n    Si $b < 5$ Alors Afficher 'A' Sinon Afficher 'B' Fin Si\\nSinon Afficher 'C' Fin Si\\nQue sera affiché pour $a = 12$ et $b = 3$ ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "Erreur"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La première condition $a > 10$ est vraie (12 > 10), on entre dans le bloc Alors. La seconde condition $b < 5$ est aussi vraie (3 < 5), donc l'instruction Afficher 'A' est exécutée. Les autres réponses correspondent à une évaluation erronée d'une des deux conditions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le test suivant, quel message apparaît pour $x = 5$ et $y = 12$ ?\\nSi ($x > 0$ ET $y < 10$) Alors Afficher 'OK' Sinon Afficher 'NON' Fin Si",
+      "options": [
+        "OK",
+        "NON",
+        "Erreur",
+        "Aucun"
+      ],
+      "correctAnswer": "NON",
+      "explanation": "L'opérateur ET exige que les deux sous-conditions soient vraies. Ici $x > 0$ est vrai mais $y < 10$ est faux (12 n'est pas inférieur à 10), donc la condition globale est fausse et le bloc Sinon affiche 'NON'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Algorithme avec sinon-si :\\nSi $note \\ge 16$ Alors Afficher 'Très bien'\\nSinon Si $note \\ge 12$ Alors Afficher 'Bien'\\nSinon Si $note \\ge 8$ Alors Afficher 'Passable'\\nSinon Afficher 'Insuffisant' Fin Si\\nQuel est l'affichage pour $note = 14$ ?",
+      "options": [
+        "Très bien",
+        "Bien",
+        "Passable",
+        "Insuffisant"
+      ],
+      "correctAnswer": "Bien",
+      "explanation": "La première condition $note \\ge 16$ est fausse (14 < 16). On passe au premier Sinon Si : $note \\ge 12$ est vrai (14 \\ge 12), donc 'Bien' est affiché. Les autres branches ne sont pas évaluées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Algorithme :\\nLire $n$\\nSi $n \\bmod 2 = 0$ Alors Afficher 'Pair' Sinon Afficher 'Impair' Fin Si\\nQue s'affiche-t-il pour $n = 9$ ?",
+      "options": [
+        "Pair",
+        "Impair",
+        "Erreur",
+        "Aucun"
+      ],
+      "correctAnswer": "Impair",
+      "explanation": "Le modulo 2 de 9 est 1, différent de 0, donc la condition $n \\bmod 2 = 0$ est fausse. Le bloc Sinon est exécuté et affiche 'Impair'.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.991611+00:00",
+  "id": 162,
+  "code": "ce2-t03-c03",
+  "title": "Comprendre la multiplication à plusieurs chiffres",
+  "description": "Cours structuré Educalcul : Comprendre la multiplication à plusieurs chiffres.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Comprendre la multiplication à plusieurs chiffres",
+    "objectif_global": "Comprendre la multiplication à plusieurs chiffres",
+    "mini_lecons_imposees": [
+      "Décomposer un facteur.",
+      "Utiliser distributivité intuitive.",
+      "Relier à l'opération posée."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Décomposer un facteur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Casser un nombre pour mieux le multiplier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives calculer $14 \\times 3$. Ce n'est pas une table que tu connais par cœur. Mais tu sais déjà multiplier par $10$ et par $4$. Si tu arrives à transformer $14$ en $10 + 4$, le calcul devient beaucoup plus simple. C'est exactement ce qu'on appelle décomposer un facteur."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 4,
+              "caption": "14 : 1 dizaine et 4 unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la représentation ci-dessus. Le nombre $14$ est formé d'une barre de dix et de quatre petits cubes. Tu peux le lire de deux façons : $14$ unités, ou bien $1$ dizaine et $4$ unités. En écriture chiffrée, cela donne $14 = 10 + 4$. Cette décomposition est la plus naturelle, mais ce n'est pas la seule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a envie de couper le nombre différemment selon le calcul qu'on veut faire. Prenons $23$. Tu peux le voir comme $20 + 3$ (deux dizaines et trois unités), mais aussi comme $10 + 13$ ou même $15 + 8$. L'important est que la somme des deux parties redonne toujours le nombre de départ. Essaie sur ton ardoise : écris $23$ au centre et trace deux flèches vers deux nombres qui, ajoutés, font $23$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "20",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "23 = 20 + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilisons cette idée pour préparer une multiplication. Si tu veux calculer $14 \\times 3$, tu remplaces $14$ par $10 + 4$. Le calcul devient : $(10 + 4) \\times 3$. Tu as maintenant deux petites multiplications faciles : $10 \\times 3$ et $4 \\times 3$. C'est la clé pour multiplier les grands nombres sans te tromper."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le facteur à deux chiffres comme une somme de dizaines et d'unités. Exemple : $14 = 10 + 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie la dizaine par l'autre facteur, puis les unités par l'autre facteur. Ici : $10 \\times 3 = 30$ et $4 \\times 3 = 12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les deux produits : $30 + 12 = 42$. C'est le résultat final de $14 \\times 3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $27$ en dizaines et unités. Écris l'addition correspondante.",
+              "answer": "$27 = 20 + 7$",
+              "hint": "Combien y a-t-il de dizaines dans $27$ ? Combien d'unités ?",
+              "explanation": "Le chiffre des dizaines est $2$, cela fait $20$. Le chiffre des unités est $7$. Donc $27 = 20 + 7$."
+            },
+            {
+              "question": "Donne deux décompositions différentes du nombre $35$ (autre qu'en dizaines et unités).",
+              "answer": "Par exemple $35 = 20 + 15$ ou $35 = 30 + 5$ (mais celle-ci est la décomposition classique) ou $35 = 10 + 25$.",
+              "hint": "Cherche deux nombres qui, ajoutés, donnent $35$. Tu peux prendre une dizaine de moins et l'ajouter aux unités.",
+              "explanation": "Tant que la somme des deux nombres fait $35$, la décomposition est correcte. $20 + 15 = 35$, $10 + 25 = 35$, $17 + 18 = 35$, etc."
+            },
+            {
+              "question": "Pour calculer $13 \\times 4$, par quelle addition peux-tu remplacer $13$ ? Écris les deux multiplications faciles qui en découlent.",
+              "answer": "$13 = 10 + 3$. Les deux multiplications sont $10 \\times 4 = 40$ et $3 \\times 4 = 12$.",
+              "hint": "Décompose $13$ en dizaine et unités. Multiplie chaque partie par $4$.",
+              "explanation": "On casse $13$ en $10 + 3$. On multiplie chaque terme par $4$ : $10 \\times 4 = 40$ et $3 \\times 4 = 12$. On ajoutera $40 + 12 = 52$ pour obtenir le résultat final."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser distributivité intuitive.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répartir la multiplication sur chaque partie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as appris à casser un nombre comme $14$ en $10 + 4$. Aujourd'hui, on va voir pourquoi on a le droit de multiplier chaque partie séparément. Imagine que tu as $3$ boîtes de crayons. Dans chaque boîte, il y a $14$ crayons : $10$ verts et $4$ rouges. Combien as-tu de crayons au total ?"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 14,
+              "highlighted": 42,
+              "caption": "3 groupes de 14 : 3 groupes de 10 verts + 3 groupes de 4 rouges"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux compter de deux façons. Soit tu comptes tous les crayons boîte par boîte : $14 + 14 + 14$. Soit tu sépares les couleurs : tu comptes d'abord tous les verts ($10 + 10 + 10 = 30$), puis tous les rouges ($4 + 4 + 4 = 12$), et tu additionnes $30 + 12 = 42$. Les deux méthodes donnent le même résultat. C'est la distributivité : multiplier une somme par un nombre, c'est multiplier chaque terme de la somme par ce nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un autre exemple : $12 \\times 4$. Décompose $12$ en $10 + 2$. Au lieu de faire $12 + 12 + 12 + 12$, tu vas faire $4$ fois $10$ et $4$ fois $2$. C'est beaucoup plus rapide car les tables de $10$ et de $2$ sont faciles. Regarde comment on écrit les étapes pour ne rien oublier."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$12 = 10 + 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distribuer la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$(10 + 2) \\times 4 = 10 \\times 4 + 2 \\times 4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer chaque produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$10 \\times 4 = 40$ et $2 \\times 4 = 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$40 + 8 = 48$. Donc $12 \\times 4 = 48$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche pour tous les nombres à deux chiffres. Même si les unités sont plus grandes que $5$, comme dans $15 \\times 3$. Décompose $15$ en $10 + 5$. Multiplie $10 \\times 3 = 30$ et $5 \\times 3 = 15$. Additionne $30 + 15 = 45$. Tu as trouvé le résultat sans avoir à réciter la table de $15$ !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 5,
+              "caption": "15 : 1 dizaine et 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Représente $3 \\times 14$ par une addition de deux produits (distributivité). Écris le calcul complet.",
+              "answer": "$3 \\times 14 = 3 \\times (10 + 4) = 3 \\times 10 + 3 \\times 4 = 30 + 12 = 42$",
+              "hint": "Décompose $14$ en $10 + 4$. Multiplie $3$ par $10$ et $3$ par $4$.",
+              "explanation": "On utilise la décomposition $14 = 10 + 4$. On multiplie $3$ par chaque terme : $3 \\times 10 = 30$ et $3 \\times 4 = 12$. On additionne les deux résultats : $30 + 12 = 42$."
+            },
+            {
+              "question": "Calcule $13 \\times 5$ en utilisant la distributivité. Montre les étapes.",
+              "answer": "$13 = 10 + 3$. $13 \\times 5 = (10 + 3) \\times 5 = 10 \\times 5 + 3 \\times 5 = 50 + 15 = 65$.",
+              "hint": "Casse $13$ en dizaine et unités. Multiplie chaque partie par $5$.",
+              "explanation": "Décomposition : $13 = 10 + 3$. Distributivité : $10 \\times 5 = 50$, $3 \\times 5 = 15$. Somme : $50 + 15 = 65$."
+            },
+            {
+              "question": "Vrai ou faux ? $16 \\times 2 = 10 \\times 2 + 6 \\times 2$. Justifie ta réponse.",
+              "answer": "Vrai. $16 = 10 + 6$, donc $16 \\times 2 = (10 + 6) \\times 2 = 10 \\times 2 + 6 \\times 2 = 20 + 12 = 32$.",
+              "hint": "Décompose $16$ et applique la distributivité.",
+              "explanation": "L'égalité est vraie car on a simplement réparti la multiplication par $2$ sur les deux termes de la décomposition de $16$ ($10$ et $6$)."
+            }
+          ]
+        },
+        {
+          "title": "Relier à l'opération posée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'opération posée : l'écriture rangée de nos calculs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant décomposer un nombre et utiliser la distributivité pour multiplier. Mais écrire toutes les étapes $(10 + 4) \\times 3 = 10 \\times 3 + 4 \\times 3 = 30 + 12 = 42$ prend de la place. Les mathématiciens ont inventé une écriture plus compacte : la multiplication posée. Elle fait exactement la même chose, mais en alignant les chiffres soigneusement."
+            },
+            {
+              "type": "column_operation",
+              "operator": "x",
+              "operands": [
+                "14",
+                "3"
+              ],
+              "result": "42",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'opération ci-dessus. On écrit $14$ au-dessus et $3$ en dessous, alignés à droite. On commence par multiplier les unités : $3 \\times 4 = 12$. On écrit le $2$ sous la ligne, au niveau des unités, et on retient le $1$ (qui vaut $1$ dizaine) au-dessus de la colonne des dizaines. Ensuite, on multiplie les dizaines : $3 \\times 1 = 3$ dizaines. On ajoute la dizaine retenue : $3 + 1 = 4$ dizaines. On écrit $4$ sous la ligne, au niveau des dizaines. Le résultat $42$ apparaît directement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la multiplication des unités donne plus de $9$, et la multiplication des dizaines aussi. C'est le cas pour $16 \\times 4$. Essaie de le faire en posé sur ton cahier. Multiplie $4 \\times 6 = 24$ unités. Écris $4$, retiens $2$ dizaines. Multiplie $4 \\times 1 = 4$ dizaines. Ajoute les $2$ dizaines retenues : $4 + 2 = 6$ dizaines. Écris $6$. Le résultat est $64$. Vérifie avec la distributivité : $16 \\times 4 = (10 + 6) \\times 4 = 40 + 24 = 64$. C'est bien le même nombre."
+            },
+            {
+              "type": "column_operation",
+              "operator": "x",
+              "operands": [
+                "16",
+                "4"
+              ],
+              "result": "64",
+              "carries": [
+                "2"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode posée fonctionne aussi pour les nombres à trois chiffres, comme $123 \\times 2$. On procède colonne par colonne, de la droite vers la gauche : unités, dizaines, centaines. Comme il n'y a pas de retenue ici, c'est encore plus simple. C'est l'entraînement qui te rendra rapide et sûr de toi."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 \\times 3 = 6$. J'écris $6$ au niveau des unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 \\times 2 = 4$. J'écris $4$ au niveau des dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 \\times 1 = 2$. J'écris $2$ au niveau des centaines. Résultat : $246$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre à deux chiffres en dizaines et unités.",
+                "Je sais utiliser la distributivité pour calculer un produit comme $14 \\times 3$.",
+                "Je sais poser une multiplication à deux chiffres par un chiffre (avec ou sans retenue).",
+                "Je sais poser une multiplication à trois chiffres par un chiffre sans retenue."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pose l'opération $15 \\times 3$ et donne le résultat.",
+              "answer": "45",
+              "hint": "Multiplie $3 \\times 5 = 15$, écris $5$, retiens $1$. Multiplie $3 \\times 1 = 3$, ajoute la retenue $1$, donne $4$.",
+              "explanation": "$3 \\times 5 = 15$ : j'écris $5$, je retiens $1$ dizaine. $3 \\times 1 = 3$ dizaines, plus $1$ dizaine retenue = $4$ dizaines. Résultat : $45$."
+            },
+            {
+              "question": "Calcule en posé : $23 \\times 4$.",
+              "answer": "92",
+              "hint": "Commence par les unités : $4 \\times 3 = 12$. Écris $2$, retiens $1$. Puis les dizaines : $4 \\times 2 = 8$, plus $1$ = $9$.",
+              "explanation": "Unités : $4 \\times 3 = 12$ → $2$, retenue $1$. Dizaines : $4 \\times 2 = 8$, $8 + 1 = 9$. Résultat : $92$."
+            },
+            {
+              "question": "Effectue la multiplication posée $211 \\times 3$.",
+              "answer": "633",
+              "hint": "Multiplie chaque chiffre par $3$ en commençant par la droite. Il n'y a pas de retenue ici.",
+              "explanation": "$3 \\times 1 = 3$ (unités). $3 \\times 1 = 3$ (dizaines). $3 \\times 2 = 6$ (centaines). Résultat : $633$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

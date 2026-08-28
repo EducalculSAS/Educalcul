@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 431,
+  "_course_code": "4eme-t03-c02-vitesse-et-grandeurs-composees",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Formule",
+  "title": "Quiz : Approfondissement sur la formule de la vitesse",
+  "questions": [
+    {
+      "text": "On rappelle la formule de la vitesse : $v = \\frac{d}{t}$. Si on veut exprimer la distance $d$ en fonction de la vitesse $v$ et du temps $t$, quelle formule obtient-on ?",
+      "options": [
+        "d = v + t",
+        "d = v - t",
+        "d = v \\times t",
+        "d = \\frac{v}{t}"
+      ],
+      "correctAnswer": "d = v \\times t",
+      "explanation": "Pour isoler $d$ dans la formule $v = \\frac{d}{t}$, il faut multiplier les deux membres par $t$. On obtient $v \\times t = \\frac{d}{t} \\times t$, donc $d = v \\times t$. Les autres opérations (addition, soustraction, division) ne permettent pas de conserver l'égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt une distance de $36$ km en $2$ h $30$ min. Quelle est sa vitesse moyenne en km/h ?",
+      "options": [
+        "12 km/h",
+        "14,4 km/h",
+        "15 km/h",
+        "72 km/h"
+      ],
+      "correctAnswer": "14,4 km/h",
+      "explanation": "Il faut convertir le temps en heures : $2$ h $30$ min $= 2 + \\frac{30}{60} = 2,5$ h. Ensuite on applique la formule $v = \\frac{d}{t} = \\frac{36}{2,5} = 14,4$ km/h. L'option 12 km/h correspond à une division par 3 (erreur de conversion), 15 km/h est une approximation, et 72 km/h correspond à une multiplication $36 \\times 2$ au lieu d'une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture roule à une vitesse constante de $90$ km/h. Quelle distance parcourt-elle en $1$ h $20$ min ?",
+      "options": [
+        "108 km",
+        "120 km",
+        "135 km",
+        "180 km"
+      ],
+      "correctAnswer": "120 km",
+      "explanation": "On convertit le temps en heures : $1$ h $20$ min $= 1 + \\frac{20}{60} = 1 + \\frac{1}{3} = \\frac{4}{3}$ h. On utilise la formule $d = v \\times t = 90 \\times \\frac{4}{3} = \\frac{360}{3} = 120$ km. L'option 108 km correspond à $90 \\times 1,2$ (erreur : 20 min = 0,2 h), 135 km correspond à $90 \\times 1,5$ (confusion avec 1 h 30), et 180 km correspond à $90 \\times 2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un train met $1$ h $40$ min pour relier deux gares distantes de $200$ km. Quelle est sa vitesse moyenne ?",
+      "options": [
+        "100 km/h",
+        "110 km/h",
+        "120 km/h",
+        "133,3 km/h"
+      ],
+      "correctAnswer": "120 km/h",
+      "explanation": "On convertit $1$ h $40$ min en heures : $40$ min $= \\frac{40}{60} = \\frac{2}{3}$ h. Le temps total est $1 + \\frac{2}{3} = \\frac{5}{3}$ h. La vitesse est $v = \\frac{d}{t} = 200 \\div \\frac{5}{3} = 200 \\times \\frac{3}{5} = \\frac{600}{5} = 120$ km/h. L'option 100 km/h correspond à une division par 2, 110 km/h est une approximation, et 133,3 km/h correspond à une division par 1,5 (1 h 30).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un coureur effectue un $10$ km en $50$ min. Exprimez sa vitesse moyenne en m/s (arrondi au dixième).",
+      "options": [
+        "3,3 m/s",
+        "5,6 m/s",
+        "12,0 m/s",
+        "20,0 m/s"
+      ],
+      "correctAnswer": "3,3 m/s",
+      "explanation": "Il faut convertir la distance en mètres ($10$ km $= 10\\ 000$ m) et le temps en secondes ($50$ min $= 50 \\times 60 = 3\\ 000$ s). La vitesse est $v = \\frac{10\\ 000}{3\\ 000} = \\frac{10}{3} \\approx 3,33$ m/s, soit $3,3$ m/s arrondi au dixième. L'option 5,6 m/s correspond à une conversion en km/h ($12$ km/h $\\div 3,6$), 12,0 m/s est la vitesse en km/h, et 20,0 m/s correspond à une erreur de conversion (division par 500 au lieu de 3000).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

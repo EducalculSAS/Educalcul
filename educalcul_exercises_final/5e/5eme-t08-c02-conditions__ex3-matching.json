@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Déboguer",
+  "title": "Débogage de conditions",
+  "blocks": [
+    {
+      "title": "Condition simple",
+      "content": "Relie chaque instruction buggée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $x > 10$ Afficher \"Grand\"",
+          "right": "Si $x > 10$ Alors Afficher \"Grand\""
+        },
+        {
+          "left": "Si $y = 5$ Alors Afficher \"Égal\" Sinon Afficher \"Différent\"",
+          "right": "Si $y == 5$ Alors Afficher \"Égal\" Sinon Afficher \"Différent\""
+        },
+        {
+          "left": "Si $a < b$ Afficher \"a inférieur\" Sinon Afficher \"a supérieur\"",
+          "right": "Si $a < b$ Alors Afficher \"a inférieur\" Sinon Afficher \"a supérieur\""
+        },
+        {
+          "left": "Si $z >= 0$ Afficher \"Positif\" Sinon Afficher \"Négatif\"",
+          "right": "Si $z >= 0$ Alors Afficher \"Positif\" Sinon Afficher \"Négatif\""
+        }
+      ],
+      "items": [],
+      "explanation": "Dans chaque paire, l'instruction de gauche omet le mot-clé « Alors » ou utilise un opérateur d'affectation au lieu de comparaison. La version corrigée ajoute « Alors » après la condition et remplace « = » par « == » pour tester l'égalité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conditions imbriquées",
+      "content": "Relie chaque instruction buggée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $a > 0$ Alors Si $b > 0$ Afficher \"Tous positifs\"",
+          "right": "Si $a > 0$ Alors Si $b > 0$ Alors Afficher \"Tous positifs\""
+        },
+        {
+          "left": "Si $x == 10$ Afficher \"Dix\" Sinon Afficher \"Pas dix\" Sinon Afficher \"Autre\"",
+          "right": "Si $x == 10$ Alors Afficher \"Dix\" Sinon Afficher \"Pas dix\""
+        },
+        {
+          "left": "Si $m < n$ Alors Afficher \"m plus petit\" Sinon Si $m > n$ Afficher \"m plus grand\"",
+          "right": "Si $m < n$ Alors Afficher \"m plus petit\" Sinon Si $m > n$ Alors Afficher \"m plus grand\""
+        },
+        {
+          "left": "Si $p != 0$ Afficher \"Non nul\" Sinon Afficher \"Nul\"",
+          "right": "Si $p != 0$ Alors Afficher \"Non nul\" Sinon Afficher \"Nul\""
+        }
+      ],
+      "items": [],
+      "explanation": "Les bugs portent sur l'oubli de « Alors » après une condition imbriquée, la présence d'un « Sinon » en trop ou l'absence de « Alors » dans la branche alternative. La correction ajoute les mots-clés manquants et supprime les « Sinon » superflus.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conditions composées",
+      "content": "Relie chaque instruction buggée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $a > 0$ et $b > 0$ Afficher \"Positifs\"",
+          "right": "Si $a > 0$ et $b > 0$ Alors Afficher \"Positifs\""
+        },
+        {
+          "left": "Si $x == 5$ ou $y == 5$ Afficher \"Cinq\"",
+          "right": "Si $x == 5$ ou $y == 5$ Alors Afficher \"Cinq\""
+        },
+        {
+          "left": "Si $n % 2 == 0$ Afficher \"Pair\" Sinon Afficher \"Impair\"",
+          "right": "Si $n % 2 == 0$ Alors Afficher \"Pair\" Sinon Afficher \"Impair\""
+        },
+        {
+          "left": "Si $p > 10$ et $q < 5$ Afficher \"OK\" Sinon Afficher \"KO\"",
+          "right": "Si $p > 10$ et $q < 5$ Alors Afficher \"OK\" Sinon Afficher \"KO\""
+        }
+      ],
+      "items": [],
+      "explanation": "Les erreurs concernent l'absence de « Alors » après une condition composée avec « et » ou « ou », ainsi que l'oubli de « Alors » pour le test de parité. La version corrigée insère « Alors » là où il est requis.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 517,
+  "_course_code": "2nde-t04-c03-coefficient-directeur",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Coefficient directeur",
+  "title": "Applications du coefficient directeur",
+  "blocks": [
+    {
+      "title": "Calcul du coefficient directeur",
+      "content": "Range les étapes dans l'ordre chronologique pour calculer le coefficient directeur de la droite passant par les points $A(2; 5)$ et $B(6; 13)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer les coordonnées des points $A$ et $B$ : $x_A = 2$, $y_A = 5$, $x_B = 6$, $y_B = 13$.",
+        "Calculer la différence des ordonnées : $y_B - y_A = 13 - 5 = 8$.",
+        "Calculer la différence des abscisses : $x_B - x_A = 6 - 2 = 4$.",
+        "Calculer le quotient $\\frac{y_B - y_A}{x_B - x_A} = \\frac{8}{4}$.",
+        "Simplifier pour obtenir le coefficient directeur $a = 2$."
+      ],
+      "explanation": "Le coefficient directeur d'une droite passant par deux points $A(x_A; y_A)$ et $B(x_B; y_B)$ se calcule par la formule $a = \\frac{y_B - y_A}{x_B - x_A}$. Il faut d'abord identifier les coordonnées, puis calculer les différences d'ordonnées et d'abscisses, effectuer la division et enfin simplifier le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation d'une droite connaissant son coefficient directeur et un point",
+      "content": "Range les étapes dans l'ordre pour déterminer l'équation réduite de la droite de coefficient directeur $3$ passant par le point $C(1; 4)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire la forme générale de l'équation réduite : $y = ax + b$ avec $a = 3$, donc $y = 3x + b$.",
+        "Remplacer $x$ et $y$ par les coordonnées du point $C$ : $4 = 3 \\times 1 + b$.",
+        "Résoudre l'équation pour trouver $b$ : $4 = 3 + b \\Rightarrow b = 1$.",
+        "Écrire l'équation finale de la droite : $y = 3x + 1$."
+      ],
+      "explanation": "Une droite de coefficient directeur $a$ a pour équation $y = ax + b$. On connaît $a = 3$. En substituant les coordonnées du point $C(1; 4)$, on obtient une équation à une inconnue $b$ qu'on résout. On réécrit ensuite l'équation avec les valeurs de $a$ et $b$ trouvées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Équation d'une droite parallèle à une droite donnée",
+      "content": "Range les étapes dans l'ordre pour trouver l'équation de la droite parallèle à la droite $d : y = -2x + 5$ et passant par le point $D(3; -1)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le coefficient directeur de la droite $d$ : $a = -2$.",
+        "Utiliser ce coefficient pour la droite cherchée (parallèles $\\Rightarrow$ même coefficient directeur) : $y = -2x + b$.",
+        "Substituer les coordonnées du point $D(3; -1)$ : $-1 = -2 \\times 3 + b$.",
+        "Calculer $b$ : $-1 = -6 + b \\Rightarrow b = 5$.",
+        "Écrire l'équation finale : $y = -2x + 5$."
+      ],
+      "explanation": "Deux droites sont parallèles si et seulement si elles ont le même coefficient directeur. La droite $d$ a pour coefficient directeur $-2$. La droite cherchée a donc pour équation $y = -2x + b$. Le passage par $D(3; -1)$ permet de déterminer $b$ par substitution.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

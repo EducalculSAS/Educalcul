@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 111,
+  "_course_code": "ce1-t05-c04-problemes-de-comparaison",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Plus que / moins que",
+  "title": "Exercices de comparaison : Plus que / Moins que (Algorithme)",
+  "blocks": [
+    {
+      "title": "Différence simple",
+      "content": "Léa a $14$ autocollants. Tom a $9$ autocollants. Écrire un algorithme (suite d'instructions) qui permet de trouver combien d'autocollants Léa a de plus que Tom.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre d'autocollants de Léa : $14$.\\n2. Lire le nombre d'autocollants de Tom : $9$.\\n3. Calculer la différence : $14 - 9 = 5$.\\n4. Afficher le résultat : Léa a $5$ autocollants de plus que Tom.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On soustrait le plus petit nombre du plus grand pour obtenir la différence. $14 - 9 = 5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule de comparaison",
+      "content": "Dans la classe, il y a $18$ garçons et $12$ filles. Écrire la formule mathématique qui donne le nombre de garçons en plus par rapport aux filles, puis calculer le résultat.",
+      "correctAnswer": "Formule : $18 - 12 = 6$.\\nCalcul : $18 - 12 = 6$.\\nIl y a $6$ garçons de plus que de filles.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La comparaison 'plus que' se traduit par une soustraction : nombre de garçons moins nombre de filles. $18 - 12 = 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme à deux étapes",
+      "content": "Un jardinier a $10$ fleurs. Il en plante $7$ nouvelles, puis il en cueille $4$ pour faire un bouquet. Écrire un algorithme qui détermine combien de fleurs de plus il y a maintenant dans le jardin par rapport au début.",
+      "correctAnswer": "Algorithme :\\n1. Nombre initial de fleurs : $10$.\\n2. Ajouter les fleurs plantées : $10 + 7 = 17$.\\n3. Soustraire les fleurs cueillies : $17 - 4 = 13$.\\n4. Calculer la différence avec le début : $13 - 10 = 3$.\\n5. Afficher : Il y a $3$ fleurs de plus qu'au début.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On met à jour le nombre de fleurs étape par étape, puis on compare le nombre final au nombre initial par une soustraction. $10 + 7 - 4 = 13$, puis $13 - 10 = 3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

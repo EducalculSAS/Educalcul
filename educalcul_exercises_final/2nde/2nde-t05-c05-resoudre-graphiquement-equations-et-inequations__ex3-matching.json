@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation graphique d'équations et d'inéquations",
+  "blocks": [
+    {
+      "title": "Interprétation graphique d'inéquations quadratiques",
+      "content": "Relie chaque inéquation à l'intervalle solution correspondant sur la droite réelle, d'après la courbe de $f(x)=x^2-4$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x) > 0$",
+          "right": "$x \\in (-\\infty,-2) \\cup (2,+\\infty)$"
+        },
+        {
+          "left": "$f(x) \\ge 0$",
+          "right": "$x \\in (-\\infty,-2] \\cup [2,+\\infty)$"
+        },
+        {
+          "left": "$f(x) < 0$",
+          "right": "$x \\in (-2,2)$"
+        },
+        {
+          "left": "$f(x) \\le 0$",
+          "right": "$x \\in [-2,2]$"
+        }
+      ],
+      "items": [],
+      "explanation": "La courbe de $f(x)=x^2-4$ coupe l'axe des abscisses en $x=-2$ et $x=2$. Pour $f(x)>0$, la courbe est au-dessus de l'axe, donc $x<-2$ ou $x>2$. Pour $f(x)\\ge0$, on inclut les points d'intersection. Pour $f(x)<0$, la courbe est en dessous entre $-2$ et $2$. Pour $f(x)\\le0$, on inclut les bornes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de solutions graphiques d'équations",
+      "content": "Relie chaque équation au nombre de points d'intersection de sa courbe avec l'axe des abscisses.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x^2-4=0$",
+          "right": "Deux points"
+        },
+        {
+          "left": "$x^2+1=0$",
+          "right": "Aucun point"
+        },
+        {
+          "left": "$x^3-x=0$",
+          "right": "Trois points"
+        },
+        {
+          "left": "$|x-2|=0$",
+          "right": "Un point"
+        }
+      ],
+      "items": [],
+      "explanation": "L'équation $x^2-4=0$ a deux racines réelles ($-2$ et $2$). $x^2+1=0$ n'a pas de solution réelle (parabole au-dessus de l'axe). $x^3-x=x(x-1)(x+1)$ a trois racines ($-1,0,1$). $|x-2|=0$ donne l'unique solution $x=2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Interprétation de systèmes d'inéquations",
+      "content": "Relie chaque système d'inéquations à la description de la région du plan solution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "\\begin{cases} y > x^2 \\\\ y \\le 2 \\end{cases}",
+          "right": "Région comprise entre la parabole $y=x^2$ (exclue) et la droite $y=2$ (incluse)"
+        },
+        {
+          "left": "\\begin{cases} y \\ge -x+1 \\\\ y < 3 \\end{cases}",
+          "right": "Région au-dessus de la droite $y=-x+1$ (incluse) et en dessous de la droite $y=3$ (exclue)"
+        },
+        {
+          "left": "\\begin{cases} y \\le x^2-1 \\\\ y > -2 \\end{cases}",
+          "right": "Région en dessous de la parabole $y=x^2-1$ (incluse) et au-dessus de la droite $y=-2$ (exclue)"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour le premier système, on cherche les points strictement au-dessus de la parabole $y=x^2$ et en dessous ou sur la droite $y=2$. Le second système correspond à l'intersection du demi-plan au-dessus de la droite $y=-x+1$ (bord inclus) et du demi-plan strictement sous $y=3$. Le troisième système est l'intersection du domaine sous la parabole $y=x^2-1$ (bord inclus) et au-dessus de la ligne $y=-2$ (bord exclu).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

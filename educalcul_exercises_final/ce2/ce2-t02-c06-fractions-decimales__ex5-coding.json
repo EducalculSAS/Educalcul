@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 157,
+  "_course_code": "ce2-t02-c06-fractions-decimales",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Dixièmes comme parts de 10",
+  "title": "Algorithmes sur les dixièmes",
+  "blocks": [
+    {
+      "title": "Trouver un dixième d'un nombre entier",
+      "content": "Écris un algorithme étape par étape qui, à partir d'un nombre entier donné, calcule la valeur d'un dixième de ce nombre. Par exemple, pour $30$, l'algorithme doit donner $3$.",
+      "correctAnswer": "1. Lire le nombre entier N.\\n2. Calculer D = N / 10.\\n3. Afficher D.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un dixième d'un nombre correspond à la division de ce nombre par 10. L'algorithme lit le nombre, effectue la division par 10 et affiche le résultat. Pour $30$, $30 / 10 = 3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exprimer un nombre à un chiffre après la virgule en fraction de dénominateur 10",
+      "content": "Écris un algorithme qui transforme un nombre décimal à un chiffre après la virgule (comme $4,3$) en une fraction dont le dénominateur est $10$. L'algorithme doit afficher le numérateur et le dénominateur.",
+      "correctAnswer": "1. Lire le nombre décimal X (exemple $4,3$).\\n2. Séparer la partie entière E et le chiffre des dixièmes D (pour $4,3$, E = 4, D = 3).\\n3. Calculer le numérateur N = E * 10 + D.\\n4. Le dénominateur est 10.\\n5. Afficher la fraction N / 10.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre après la virgule représente les dixièmes. Pour $4,3$, on a $4$ unités et $3$ dixièmes, soit $43$ dixièmes au total, ce qui s'écrit $\\frac{43}{10}$. L'algorithme construit le numérateur en multipliant la partie entière par 10 et en ajoutant le chiffre des dixièmes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme simple pour diviser par 10",
+      "content": "Propose un court programme (syntaxe proche de Python) qui demande à l'utilisateur un nombre, le divise par 10 et affiche le résultat avec un chiffre après la virgule.",
+      "correctAnswer": "nombre = float(input(\"Entrez un nombre : \"))\\nresultat = nombre / 10\\nprint(f\"Le résultat est {resultat:.1f}\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme lit un nombre (converti en nombre à virgule), effectue la division par 10, puis affiche le résultat arrondi à un chiffre après la virgule grâce au format {resultat:.1f}. Cela illustre concrètement le passage aux dixièmes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

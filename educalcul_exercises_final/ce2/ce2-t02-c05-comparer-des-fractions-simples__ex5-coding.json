@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 156,
+  "_course_code": "ce2-t02-c05-comparer-des-fractions-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Même dénominateur",
+  "title": "Comparer des fractions de même dénominateur - Algorithme",
+  "blocks": [
+    {
+      "title": "Écrire l'algorithme de comparaison",
+      "content": "Écris un algorithme (ou une suite d'étapes) qui permet de comparer deux fractions ayant le même dénominateur. Utilise une notation simple, par exemple : SI ... ALORS ... SINON ... FIN SI.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux fractions a/b et c/b (même dénominateur b).\\n2. Comparer les numérateurs a et c.\\n3. SI a > c ALORS afficher \"a/b est plus grand que c/b\".\\n4. SINON SI a < c ALORS afficher \"a/b est plus petit que c/b\".\\n5. SINON afficher \"Les deux fractions sont égales\".\\n6. FIN SI.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les dénominateurs sont identiques, la taille de la fraction dépend uniquement du numérateur. L'algorithme compare donc directement les numérateurs pour déterminer l'ordre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer l'algorithme",
+      "content": "Applique l'algorithme précédent pour comparer les fractions $3/8$ et $5/8$. Indique laquelle est la plus grande.",
+      "correctAnswer": "Les dénominateurs sont égaux (8). On compare les numérateurs : 5 > 3. Donc $5/8$ est plus grand que $3/8$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme dit de comparer les numérateurs lorsque les dénominateurs sont les mêmes. Ici 5 est supérieur à 3, donc la fraction $5/8$ est la plus grande.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordonner plusieurs fractions",
+      "content": "En utilisant le même principe, ordonne les fractions $2/7$, $5/7$, $1/7$ et $6/7$ de la plus petite à la plus grande.",
+      "correctAnswer": "Ordre croissant : $1/7$ < $2/7$ < $5/7$ < $6/7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Tous les dénominateurs valent 7. Il suffit de classer les numérateurs 1, 2, 5, 6 dans l'ordre croissant pour obtenir l'ordre des fractions.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "_status": "done",
+  "_course_id": 217,
+  "_course_code": "cm1-t01-c07-placer-des-decimaux-sur-une-droite",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Placer des décimaux sur une droite",
+  "title": "Placer des décimaux sur une droite",
+  "questions": [
+    {
+      "text": "Sur la droite graduée de 0 à 1 par dixièmes, où se trouve le nombre $0,3$ ?",
+      "options": [
+        "Entre 0 et 0,2",
+        "Entre 0,2 et 0,4",
+        "Entre 0,4 et 0,6",
+        "Entre 0,6 et 0,8"
+      ],
+      "correctAnswer": "Entre 0,2 et 0,4",
+      "explanation": "La graduation 0,3 se situe après 0,2 et avant 0,4. Les autres intervalles ne contiennent pas 0,3.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.3,
+            "label": "0,3"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur la droite graduée de 0 à 2 par dixièmes, quelle graduation correspond au nombre $1,6$ ?",
+      "options": [
+        "$1,5$",
+        "$1,6$",
+        "$1,7$",
+        "$1,8$"
+      ],
+      "correctAnswer": "$1,6$",
+      "explanation": "Chaque graduation représente un dixième. La sixième graduation après 1 est 1,6.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 2 graduée par dixièmes",
+        "min": 0,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.6,
+            "label": "1,6"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de 0 à 1 par dixièmes, le nombre $0,75$ se trouve entre quelles deux graduations ?",
+      "options": [
+        "$0,6$ et $0,7$",
+        "$0,7$ et $0,8$",
+        "$0,8$ et $0,9$",
+        "$0,5$ et $0,6$"
+      ],
+      "correctAnswer": "$0,7$ et $0,8$",
+      "explanation": "0,75 est supérieur à 0,7 et inférieur à 0,8, donc il se situe entre ces deux graduations de dixièmes.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.75,
+            "label": "0,75"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On a une droite numérotée de 0 à 1 par centièmes. Le point A est placé sur la graduation $0,42$. Quelle est la valeur du point A ?",
+      "options": [
+        "$0,24$",
+        "$0,42$",
+        "$0,52$",
+        "$0,34$"
+      ],
+      "correctAnswer": "$0,42$",
+      "explanation": "Le point A est exactement sur la graduation 0,42, donc sa valeur est 0,42.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par centièmes avec le point A",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.42,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de 0 à 1 par dixièmes, on place les nombres $0,8$ et $0,78$. Lequel est le plus à droite ?",
+      "options": [
+        "$0,78$",
+        "$0,8$",
+        "Les deux sont au même endroit",
+        "Impossible à savoir"
+      ],
+      "correctAnswer": "$0,8$",
+      "explanation": "0,8 est supérieur à 0,78, donc sur la droite il se trouve plus à droite.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes avec 0,8 et 0,78",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.8,
+            "label": "0,8"
+          },
+          {
+            "value": 0.78,
+            "label": "0,78"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

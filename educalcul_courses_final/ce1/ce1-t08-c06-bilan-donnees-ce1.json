@@ -1,0 +1,405 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.922678+00:00",
+  "id": 141,
+  "code": "ce1-t08-c06",
+  "title": "Bilan - Données CE1",
+  "description": "Cours structuré Educalcul : Bilan - Données CE1.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Bilan - Données CE1",
+    "objectif_global": "Bilan - Données CE1",
+    "mini_lecons_imposees": [
+      "Passer du relevé au tableau.",
+      "Lire diagramme et tableau.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Passer du relevé au tableau.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du comptage au tableau bien rangé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu aides le maître à compter les fruits préférés de la classe. Chaque élève lève la main pour dire : pomme, banane ou orange. Pour ne pas perdre le fil, on trace des petits traits verticaux : un trait pour chaque voix. C'est ce qu'on appelle un $relevé$. C'est très pratique sur le moment, mais quand il y a beaucoup de traits, on a du mal à voir le total d'un coup d'œil."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme c'est plus clair quand on range tout dans un $tableau$. Le tableau a des colonnes avec des titres : le nom du fruit et le nombre de votes. Au lieu de recompter les traits un par un, on regroupe par paquets de $5$ : quatre traits droits et un trait en travers. Hop, on voit tout de suite qu'il y a $5$ voix !"
+            },
+            {
+              "type": "definition",
+              "term": "Relevé",
+              "definition": "Une façon de compter en traçant des traits pour ne rien oublier. On regroupe souvent les traits par $5$ pour aller plus vite.",
+              "example": "Pour $7$ pommes : |||| / ||"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Traits (relevé)",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "|||| / ||",
+                  "7"
+                ],
+                [
+                  "Banane",
+                  "|||| /",
+                  "5"
+                ],
+                [
+                  "Orange",
+                  "|||",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec une autre situation. Supposons que tu notes les couleurs des voitures qui passent devant chez toi : $4$ rouges, $6$ bleues, $2$ vertes. Tu commences par faire ton relevé sur un bout de papier, puis tu reports les totaux dans un joli tableau à deux colonnes. C'est exactement le même travail que pour les fruits, juste l'histoire qui change !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Faire le relevé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un trait pour chaque voiture. Groupe par $5$ dès que tu peux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les paquets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque paquet barré vaut $5$. Ajoute les traits restants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le total dans la colonne « Nombre » en face de chaque couleur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois comme c'est satisfaisant ? Au début, on a une liste un peu en vrac. À la fin, on a un tableau bien propre où chaque information a sa place. C'est comme ranger sa chambre : on met chaque jouet dans la bonne boîte, et après, on retrouve tout tout de suite. La prochaine fois, nous allons apprendre à lire des tableaux encore plus grands et même des dessins en barres !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un relevé pour les goûters préférés : Gâteau : |||| / ||  Yaourt : |||  Fruit : ||||  Combien d'enfants ont choisi le gâteau ?",
+              "answer": "7",
+              "hint": "Compte les paquets de 5 et les traits restants.",
+              "explanation": "Il y a un paquet de 5 (|||| /) et 2 traits de plus, donc 5 + 2 = 7 enfants."
+            },
+            {
+              "question": "Complète le tableau avec les totaux pour les goûters : Gâteau 7, Yaourt 3, Fruit 4.",
+              "answer": "Gâteau | 7 ; Yaourt | 3 ; Fruit | 4",
+              "hint": "Recompte chaque relevé calmement.",
+              "explanation": "On reporte simplement les nombres trouvés en comptant les traits de chaque ligne du relevé."
+            },
+            {
+              "question": "Invente ton propre relevé pour 3 jeux de récréation (cache-cache, marelle, ballon) avec des nombres entre 2 et 8. Écris le tableau qui va avec.",
+              "answer": "Réponse libre (ex: Cache-cache 5, Marelle 3, Ballon 6)",
+              "hint": "Choisis 3 nombres, fais les traits, puis remplis le tableau.",
+              "explanation": "Il n'y a pas de réponse unique. Vérifie que ton tableau correspond bien à tes traits."
+            }
+          ]
+        },
+        {
+          "title": "Lire diagramme et tableau.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un tableau et un diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, on ouvre les yeux sur deux façons de montrer les mêmes chiffres. D'un côté, le $tableau$ avec ses lignes et ses colonnes bien droites. De l'autre, le $diagramme\\ en\\ barres$ où chaque barre monte plus ou moins haut selon le nombre. C'est comme deux langues différentes pour raconter la même histoire !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un tableau, tu lis d'abord le titre tout en haut. Ensuite, tu regardes les en-têtes de colonnes : ils te disent ce qu'on compare. Ici, on a « Animal » et « Nombre d'élèves ». Chaque ligne donne une information complète : $6$ élèves ont un chat, $4$ un chien, $2$ un poisson. C'est net, précis, on ne peut pas se tromper."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Animal",
+                "Nombre d'élèves"
+              ],
+              "rows": [
+                [
+                  "Chat",
+                  "6"
+                ],
+                [
+                  "Chien",
+                  "4"
+                ],
+                [
+                  "Poisson",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde maintenant le diagramme en barres. En bas, l'$axe\\ horizontal$ porte les noms : chat, chien, poisson. Sur le côté, l'$axe\\ vertical$ a des graduations : $0$, $1$, $2$, $3$... jusqu'à $6$. La barre du chat monte jusqu'à $6$, celle du chien s'arrête à $4$, et la petite barre du poisson arrive à $2$. D'un seul regard, tu vois quel animal est le plus populaire : le chat, sa barre est la plus haute !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Animaux préférés des élèves",
+              "bars": [
+                {
+                  "label": "Chat",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Chien",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Poisson",
+                  "value": 2,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le secret pour ne pas se tromper : pose ton doigt sur le sommet de la barre, puis suis la ligne imaginaire vers la gauche jusqu'à l'échelle. C'est là que tu lis le chiffre. Essaie sur le diagramme : la barre du chien, tu vas vers la gauche... tu tombes sur $4$. C'est exactement le même nombre que dans le tableau. Les deux représentations sont copines, elles se disent la même chose !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Pour lire un tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Lis le titre. 2. Regarde les en-têtes de colonnes. 3. Suis la ligne choisie jusqu'au chiffre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Pour lire un diagramme en barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Lis le titre. 2. Choisis une barre. 3. Du sommet, va vers l'échelle de gauche pour lire le nombre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens un vrai détective des données ! Tu sais maintenant passer du relevé au tableau, et lire à la fois les tableaux et les diagrammes en barres. C'est une super puissance pour comprendre le monde : résultats d'un sondage, scores d'un match, préférences de la cantine... La dernière leçon fera le point sur tout ce que tu as appris, avec de nouveaux exemples pour t'entraîner encore."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau des animaux, combien d'élèves ont un chien ?",
+              "answer": "4",
+              "hint": "Cherche la ligne « Chien » et lis le nombre dans la deuxième colonne.",
+              "explanation": "La ligne « Chien » indique 4 dans la colonne « Nombre d'élèves »."
+            },
+            {
+              "question": "Sur le diagramme en barres, quelle est la hauteur de la barre « Poisson » ?",
+              "answer": "2",
+              "hint": "Pose ton doigt sur le haut de la barre Poisson et va vers l'échelle de gauche.",
+              "explanation": "La barre Poisson s'arrête au niveau de la graduation 2 sur l'axe vertical."
+            },
+            {
+              "question": "Combien d'élèves au total ont répondu au sondage sur les animaux ? (Additionne les trois nombres.)",
+              "answer": "12",
+              "hint": "6 + 4 + 2 = ?",
+              "explanation": "6 chats + 4 chiens + 2 poissons = 12 élèves au total."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : je sais organiser et lire des données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as fait un chemin énorme depuis le début. Rappelle-toi : au début, on avait juste des petits traits un peu partout sur une feuille. Maintenant, tu sais les transformer en un tableau bien propre, et tu sais lire ce tableau mais aussi un diagramme en barres. C'est trois grandes compétences dans ton sac à dos de mathématicien !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rejouons ensemble avec une toute nouvelle histoire. Dans la cour de récré, la maîtresse demande : « Quel est votre jeu de balle préféré ? » Les réponses : $5$ pour le foot, $3$ pour le basket, $4$ pour le dodgeball, $2$ pour la balle au prisonnier. Toi, tu sors ton carnet et tu fais ton relevé. Puis tu fais ton tableau. Ensuite, tu dessines ton diagramme en barres. Regarde comme tu es à l'aise avec tout ça !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Jeu de balle",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Foot",
+                  "5"
+                ],
+                [
+                  "Basket",
+                  "3"
+                ],
+                [
+                  "Dodgeball",
+                  "4"
+                ],
+                [
+                  "Balle au prisonnier",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on essayait un diagramme en barres horizontal cette fois ? Les barres partent de la gauche et vont vers la droite. C'est pareil, il suffit de tourner la tête ! Le foot a la plus longue barre ($5$), le basket va jusqu'à $3$, le dodgeball à $4$, et la balle au prisonnier fait un petit $2$. Tu arrives à lire les quatre valeurs sans hésiter ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Jeux de balle préférés (barres horizontales)",
+              "bars": [
+                {
+                  "label": "Foot",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Basket",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dodgeball",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Balle au prisonnier",
+                  "value": 2,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une dernière astuce de pro : quand tu regardes un diagramme, vérifie toujours l'$échelle$. Parfois, les graduations montent de $2$ en $2$ ($0$, $2$, $4$, $6$...), parfois de $1$ en $1$. Si tu ne regardes pas, tu risques de lire le double ou la moitié ! Prends l'habitude de toucher la première graduation et de dire tout haut : « Ici, ça compte de $1$ en $1$ » ou « de $2$ en $2$ ». C'est le réflexe des champions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais faire un relevé avec des traits et les regrouper par 5.",
+                "Je sais transformer un relevé en tableau avec deux colonnes.",
+                "Je sais lire un tableau : titre, en-têtes, lignes et nombres.",
+                "Je sais lire un diagramme en barres (vertical ou horizontal) en suivant la barre jusqu'à l'échelle.",
+                "Je vérifie toujours l'échelle du diagramme avant de lire les nombres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau pour les jeux de balle : Foot 5, Basket 3, Dodgeball 4, Balle au prisonnier 2.",
+              "answer": "Foot | 5 ; Basket | 3 ; Dodgeball | 4 ; Balle au prisonnier | 2",
+              "hint": "Reprends les nombres de l'histoire.",
+              "explanation": "Chaque ligne du tableau associe le nom du jeu au nombre d'élèves qui l'ont choisi."
+            },
+            {
+              "question": "Sur le diagramme en barres horizontales, quel jeu a la barre la plus longue ?",
+              "answer": "Foot",
+              "hint": "Compare les longueurs : 5, 3, 4, 2. Le plus grand est 5.",
+              "explanation": "La barre « Foot » va jusqu'à 5, c'est la valeur la plus grande, donc la barre la plus longue."
+            },
+            {
+              "question": "Si l'échelle du diagramme montait de 2 en 2 (0, 2, 4, 6...), jusqu'où irait la barre du Basket (3 élèves) ?",
+              "answer": "Entre 2 et 4 (au milieu)",
+              "hint": "3 est entre 2 et 4 sur une échelle qui saute de 2 en 2.",
+              "explanation": "Avec une échelle de 2 en 2, la graduation 2 existe, la suivante est 4. La valeur 3 se trouve exactement au milieu entre les deux."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

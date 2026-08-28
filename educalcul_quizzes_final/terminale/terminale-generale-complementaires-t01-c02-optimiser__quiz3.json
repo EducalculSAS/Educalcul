@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Conclure dans le contexte",
+  "title": "Optimisation : Conclure dans le contexte",
+  "questions": [
+    {
+      "text": "Une entreprise modélise son coût de production journalier par la fonction $C(x) = 2x^2 - 80x + 1000$, où $x$ est le nombre d'unités produites. On a trouvé que le minimum de $C$ est atteint pour $x = 20$. Quelle est la conclusion correcte pour le gestionnaire ?",
+      "options": [
+        "Le coût minimum est de $20$ euros",
+        "Pour minimiser les coûts, il faut produire $20$ unités",
+        "La production de $20$ unités entraîne un coût de $1000$ euros",
+        "L'entreprise réalise un profit maximum pour $x = 20$"
+      ],
+      "correctAnswer": "Pour minimiser les coûts, il faut produire $20$ unités",
+      "explanation": "La variable $x$ représente la quantité produite. Si le minimum de la fonction coût $C(x)$ est atteint pour $x = 20$, cela signifie que la valeur de la production qui minimise le coût est précisément $20$ unités. Le coût minimum lui-même serait $C(20)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le volume d'un emballage est modélisé par $V(x) = -4x^3 + 24x^2$, où $x$ est la hauteur du pliage en centimètres, avec $x$ compris dans l'intervalle $[0, 6]$. Le calcul de la dérivée et l'étude de signe montrent que $V$ croît sur $[0, 4]$ et décroît sur $[4, 6]$. Quel est le volume maximal ?",
+      "options": [
+        "Le volume est maximal pour $x = 0$",
+        "Le volume est maximal pour $x = 6$",
+        "Le volume est maximal pour $x = 4$",
+        "Le volume est maximal quand $V(x) = 0$"
+      ],
+      "correctAnswer": "Le volume est maximal pour $x = 4$",
+      "explanation": "Puisque la fonction $V$ est croissante sur $[0, 4]$ et décroissante sur $[4, 6]$, elle admet un maximum global au point de changement de variation, c'est-à-dire pour $x = 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite minimiser la surface d'un cylindre $\\mathcal{C}$ de volume fixe. La fonction surface $S(r)$ dépend du rayon $r$. On détermine que $S'(r) = 0$ pour $r = 3$ et que $S''(3) > 0$. Que peut-on conclure ?",
+      "options": [
+        "Le rayon $r = 3$ donne un maximum de surface",
+        "Le rayon $r = 3$ ne correspond à aucun extremum",
+        "Le rayon $r = 3$ donne un minimum de surface",
+        "La surface est constante pour tout $r$ autour de $3$"
+      ],
+      "correctAnswer": "Le rayon $r = 3$ donne un minimum de surface",
+      "explanation": "L'existence d'un point critique $S'(3) = 0$ associée à une dérivée seconde positive $S''(3) > 0$ indique, d'après la condition suffisante d'optimalité, que la fonction admet un minimum local en $r = 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction bénéfice $B(t)$ sur l'intervalle $[0, 10]$ est définie par $B(t) = -t^2 + 6t + 15$. L'étude montre que le maximum est atteint en $t = 3$ avec $B(3) = 24$. Si $t$ représente le temps en mois, quelle est l'interprétation exacte ?",
+      "options": [
+        "Le bénéfice augmente de $24$ unités chaque mois",
+        "Au bout de $3$ mois, le bénéfice maximal est de $24$ unités",
+        "Le bénéfice maximal est atteint après $24$ mois",
+        "Le bénéfice est de $3$ unités après $24$ mois"
+      ],
+      "correctAnswer": "Au bout de $3$ mois, le bénéfice maximal est de $24$ unités",
+      "explanation": "Ici $t$ est l'antécédent (le temps) et $B(t)$ est l'image (le bénéfice). Le couple $(3, 24)$ signifie qu'au temps $t = 3$, la valeur maximale du bénéfice est $24$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une entreprise veut maximiser son revenu $R(x) = -0,5x^2 + 100x$. On a trouvé que $R'(x) = 0$ pour $x = 100$. Cependant, pour des raisons techniques, la production $x$ est limitée à l'intervalle $[0, 80]$. Quelle est la valeur de $x$ qui maximise le revenu dans ce contexte ?",
+      "options": [
+        "Le revenu est maximal pour $x = 100$ car $R'(100) = 0$",
+        "Il n'y a pas de maximum car $100$ est hors intervalle",
+        "Le revenu est maximal pour $x = 0$",
+        "Le revenu est maximal pour $x = 80$"
+      ],
+      "correctAnswer": "Le revenu est maximal pour $x = 80$",
+      "explanation": "La fonction $R$ est une parabole tournée vers le bas avec un sommet en $x = 100$. Sur l'intervalle $[0, 80]$, la fonction est donc strictement croissante. Le maximum sur cet intervalle fermé est donc atteint à la borne supérieure, soit $x = 80$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

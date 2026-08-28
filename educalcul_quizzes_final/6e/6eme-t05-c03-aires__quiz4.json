@@ -1,0 +1,130 @@
+{
+  "_status": "done",
+  "_course_id": 354,
+  "_course_code": "6eme-t05-c03-aires",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Aires",
+  "title": "Quiz : Applications du calcul d'aires (6e)",
+  "questions": [
+    {
+      "text": "Un rectangle a une longueur de huit centimètres et une largeur de cinq centimètres. Quelle est son aire ?",
+      "options": [
+        "$13 \\text{ cm}^2$",
+        "$26 \\text{ cm}^2$",
+        "$40 \\text{ cm}^2$",
+        "$40 \\text{ cm}$"
+      ],
+      "correctAnswer": "$40 \\text{ cm}^2$",
+      "explanation": "L'aire d'un rectangle se calcule en multipliant la longueur par la largeur : $8 \\times 5 = 40$. L'unité est le centimètre carré ($\\text{cm}^2$). L'option $13$ correspond à l'addition des côtés, $26$ au périmètre, et $40 \\text{ cm}$ oublie l'exposant 2.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 8,
+            "height": 5,
+            "label": "Rectangle"
+          }
+        ],
+        "caption": "Rectangle de 8 cm sur 5 cm"
+      }
+    },
+    {
+      "text": "Un triangle rectangle a une base de dix centimètres et une hauteur de six centimètres. Quelle est son aire ?",
+      "options": [
+        "$60 \\text{ cm}^2$",
+        "$30 \\text{ cm}^2$",
+        "$16 \\text{ cm}^2$",
+        "$32 \\text{ cm}^2$"
+      ],
+      "correctAnswer": "$30 \\text{ cm}^2$",
+      "explanation": "L'aire d'un triangle est la moitié de l'aire du rectangle de même base et même hauteur : $(10 \\times 6) / 2 = 60 / 2 = 30 \\text{ cm}^2$. L'option $60$ oublie de diviser par deux, $16$ est la somme de la base et de la hauteur, $32$ ne correspond à aucune formule standard.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle de base 10 cm et hauteur 6 cm",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "10 cm",
+          "6 cm",
+          "?"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "La figure ci-dessous est composée de deux rectangles. Le premier mesure six centimètres sur quatre centimètres. Le second mesure quatre centimètres sur trois centimètres. Quelle est l'aire totale de la figure ?",
+      "options": [
+        "$36 \\text{ cm}^2$",
+        "$24 \\text{ cm}^2$",
+        "$12 \\text{ cm}^2$",
+        "$48 \\text{ cm}^2$"
+      ],
+      "correctAnswer": "$36 \\text{ cm}^2$",
+      "explanation": "On calcule l'aire de chaque rectangle puis on les additionne. Premier rectangle : $6 \\times 4 = 24 \\text{ cm}^2$. Second rectangle : $4 \\times 3 = 12 \\text{ cm}^2$. Total : $24 + 12 = 36 \\text{ cm}^2$. Les autres options correspondent à l'aire d'un seul des rectangles ou à une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 6,
+            "height": 4,
+            "label": "A"
+          },
+          {
+            "width": 4,
+            "height": 3,
+            "label": "B"
+          }
+        ],
+        "caption": "Figure composée de deux rectangles"
+      }
+    },
+    {
+      "text": "L'aire d'un rectangle est de quarante-deux centimètres carrés. Sa longueur mesure sept centimètres. Quelle est la mesure de sa largeur ?",
+      "options": [
+        "$6 \\text{ cm}$",
+        "$35 \\text{ cm}$",
+        "$49 \\text{ cm}$",
+        "$294 \\text{ cm}$"
+      ],
+      "correctAnswer": "$6 \\text{ cm}$",
+      "explanation": "Pour trouver la largeur, on divise l'aire par la longueur : $42 / 7 = 6$. La largeur est donc de $6 \\text{ cm}$. L'option $35$ correspond à une soustraction, $49$ à une addition et $294$ à une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare l'aire d'un carré de côté dix centimètres et celle d'un rectangle de longueur douze centimètres et de largeur huit centimètres. Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "Le carré a la plus grande aire.",
+        "Le rectangle a la plus grande aire.",
+        "Les deux figures ont la même aire.",
+        "Il est impossible de comparer sans figure."
+      ],
+      "correctAnswer": "Le carré a la plus grande aire.",
+      "explanation": "Aire du carré : $10 \\times 10 = 100 \\text{ cm}^2$. Aire du rectangle : $12 \\times 8 = 96 \\text{ cm}^2$. Puisque $100 > 96$, le carré a la plus grande aire.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 10,
+            "height": 10,
+            "label": "Carré"
+          },
+          {
+            "width": 12,
+            "height": 8,
+            "label": "Rectangle"
+          }
+        ],
+        "caption": "Comparaison d'un carré 10x10 et d'un rectangle 12x8"
+      }
+    }
+  ]
+}

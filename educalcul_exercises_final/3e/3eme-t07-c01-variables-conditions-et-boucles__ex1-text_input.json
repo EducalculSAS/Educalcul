@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Lire programme",
+  "title": "Lecture de programmes simples",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "On exécute le programme suivant :\\n$a \\leftarrow 5$\\nSi $a > 3$ alors\\n$a \\leftarrow a + 2$\\nFin Si\\nAfficher $a$\\nQuelle valeur est affichée ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $a$ vaut initialement 5. La condition $a > 3$ est vraie, donc on exécute $a \\leftarrow a + 2$, ce qui donne $a = 7$. Le programme affiche donc 7.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "On exécute le programme suivant :\\n$s \\leftarrow 0$\\nPour $i$ de 1 à 4 faire\\n$s \\leftarrow s + i$\\nFin Pour\\nAfficher $s$\\nQuelle valeur est affichée ?",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle ajoute successivement $i = 1, 2, 3, 4$ à $s$. La somme est $1+2+3+4 = 10$. Le programme affiche donc 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "On exécute le programme suivant :\\n$x \\leftarrow 10$\\nTant que $x > 0$ faire\\nSi $x \\bmod 2 = 0$ alors\\n$x \\leftarrow x - 2$\\nSinon\\n$x \\leftarrow x - 1$\\nFin Si\\nFin Tant que\\nAfficher $x$\\nQuelle valeur est affichée ?",
+      "correctAnswer": "0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au départ $x=10$ (pair) -> $x=8$ ; $x=8$ -> $6$ ; $6$ -> $4$ ; $4$ -> $2$ ; $2$ -> $0$. La condition $x>0$ devient fausse, la boucle s'arrête et $x$ vaut 0, qui est affiché.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

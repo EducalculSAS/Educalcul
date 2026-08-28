@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Taux réciproque simple si prévu",
+  "title": "Taux réciproque : associations",
+  "blocks": [
+    {
+      "title": "Facteurs multiplicatifs et réciproques",
+      "content": "Relie chaque facteur multiplicatif à son facteur réciproque.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$6/5$",
+          "right": "$5/6$"
+        },
+        {
+          "left": "$3/2$",
+          "right": "$2/3$"
+        },
+        {
+          "left": "$4/3$",
+          "right": "$3/4$"
+        },
+        {
+          "left": "$5/4$",
+          "right": "$4/5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le facteur réciproque d'un nombre $a$ (avec $a \\neq 0$) est $1/a$. Pour une fraction $\\frac{p}{q}$, son réciproque est $\\frac{q}{p}$. Ainsi $\\frac{6}{5}$ a pour réciproque $\\frac{5}{6}$, $\\frac{3}{2}$ a pour réciproque $\\frac{2}{3}$, $\\frac{4}{3}$ a pour réciproque $\\frac{3}{4}$ et $\\frac{5}{4}$ a pour réciproque $\\frac{4}{5}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Taux d'évolution et taux réciproques",
+      "content": "Relie chaque taux d'évolution (sous forme de fraction) à son taux réciproque (celui qui ramène à la valeur initiale).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$1/5$",
+          "right": "$-1/6$"
+        },
+        {
+          "left": "$1/2$",
+          "right": "$-1/3$"
+        },
+        {
+          "left": "$1/4$",
+          "right": "$-1/5$"
+        },
+        {
+          "left": "$1/10$",
+          "right": "$-1/11$"
+        }
+      ],
+      "items": [],
+      "explanation": "Si un taux d'évolution est $t$ (facteur multiplicatif $1+t$), le taux réciproque $t'$ vérifie $(1+t)(1+t')=1$, soit $t' = -t/(1+t)$. Pour $t=1/5$, $t' = -(1/5)/(6/5) = -1/6$. Pour $t=1/2$, $t' = -(1/2)/(3/2) = -1/3$. Pour $t=1/4$, $t' = -(1/4)/(5/4) = -1/5$. Pour $t=1/10$, $t' = -(1/10)/(11/10) = -1/11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Pourcentages d'augmentation et diminutions réciproques",
+      "content": "Relie chaque pourcentage d'augmentation au pourcentage de diminution qui ramène à la valeur de départ.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$20\\%$",
+          "right": "$16,67\\%$"
+        },
+        {
+          "left": "$50\\%$",
+          "right": "$33,33\\%$"
+        },
+        {
+          "left": "$25\\%$",
+          "right": "$20\\%$"
+        },
+        {
+          "left": "$10\\%$",
+          "right": "$9,09\\%$"
+        }
+      ],
+      "items": [],
+      "explanation": "Une augmentation de $p\\%$ correspond à un facteur $1+p/100$. La diminution réciproque $q\\%$ vérifie $(1+p/100)(1-q/100)=1$, soit $q = 100 \\times \\frac{p}{100+p}$. Pour $p=20$, $q = 100 \\times 20/120 = 16,67\\%$. Pour $p=50$, $q = 100 \\times 50/150 = 33,33\\%$. Pour $p=25$, $q = 100 \\times 25/125 = 20\\%$. Pour $p=10$, $q = 100 \\times 10/110 = 9,09\\%$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

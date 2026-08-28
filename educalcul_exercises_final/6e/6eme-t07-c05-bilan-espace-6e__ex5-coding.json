@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 367,
+  "_course_code": "6eme-t07-c05-bilan-espace-6e",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Solides et repérage",
+  "title": "Algorithmes et solides : déplacements et patrons",
+  "blocks": [
+    {
+      "title": "Déplacement sur une face de cube",
+      "content": "On considère un quadrillage carré de $4$ cases sur $4$ représentant une face d'un cube. Un robot se trouve dans le coin en bas à gauche (point $A$), orienté vers le haut. Écris un algorithme (en pseudo-code style Python) pour que le robot rejoigne le coin en haut à droite (point $B$) en se déplaçant seulement sur les lignes du quadrillage. Utilise les instructions : `avancer(n)`, `tourner_droite()`, `tourner_gauche()`.",
+      "correctAnswer": "avancer(4)\\ntourner_droite()\\navancer(4)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le robot part du coin bas gauche face au haut (vers le nord). Pour aller au coin haut droit, il doit d'abord monter de $4$ cases jusqu'au coin haut gauche avec `avancer(4)`. Il se trouve alors face au nord au coin haut gauche. Il doit tourner à droite pour faire face à l'est avec `tourner_droite()`. Enfin, il avance de $4$ cases vers la droite pour atteindre le coin haut droit $B$ avec `avancer(4)`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Parcours sur les arêtes d'un cube",
+      "content": "Un cube de côté $1$ est placé dans un repère orthogonal $(O; x, y, z)$ avec un sommet à l'origine $O(0,0,0)$ et les trois arêtes issues de $O$ sur les axes positifs. Le sommet opposé à $O$ est $S(1,1,1)$. Écris un algorithme pour déplacer un point depuis $O$ jusqu'à $S$ en ne suivant que les arêtes du cube. Utilise les instructions : `avancer_x()`, `avancer_y()`, `avancer_z()` (chaque instruction avance de $1$ unité le long de l'axe correspondant).",
+      "correctAnswer": "avancer_x()\\navancer_y()\\navancer_z()\\n# L'ordre des trois instructions peut être changé.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le point de départ est $O(0,0,0)$ et le point d'arrivée est $S(1,1,1)$. Pour passer de l'un à l'autre en suivant les arêtes (segments parallèles aux axes), il faut augmenter chaque coordonnée de $0$ à $1$. L'instruction `avancer_x()` fait passer $x$ de $0$ à $1$, `avancer_y()` fait passer $y$ de $0$ à $1$, et `avancer_z()` fait passer $z$ de $0$ à $1$. Il faut donc exécuter ces trois instructions, dans n'importe quel ordre, pour atteindre $S$ en trois segments de longueur $1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programmation d'un patron de cube",
+      "content": "On veut programmer le tracé du patron « en croix » d'un cube de côté $c$ (un carré central, quatre carrés attachés à chacun de ses quatre côtés, et un sixième carré attaché à l'un des quatre carrés latéraux). Écris un algorithme complet en pseudo-code utilisant une fonction `carre(c)` qui trace un carré de côté $c$ (à définir avec une boucle), puis le tracé du carré central, et enfin une boucle pour tracer les quatre carrés adjacents. La tortue part du coin en bas à gauche du carré central, orientée vers la droite. Instructions disponibles : `avancer(c)`, `tourner_droite(angle)`, `reculer(c)`, `Répète n fois ... Fin Répète`.",
+      "correctAnswer": "Fonction carre(c):\\n    Répète 4 fois:\\n        avancer(c)\\n        tourner_droite(90)\\n    Fin Répète\\nFin Fonction\\n\\ncarre(c)  # Trace le carré central\\nRépète 4 fois:\\n    avancer(c)       # Va au centre du côté suivant\\n    carre(c)         # Trace le carré adjacent\\n    reculer(c)       # Revient au centre du carré central\\n    tourner_droite(90) # Tourne pour le côté suivant\\nFin Répète",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On définit d'abord une fonction `carre(c)` qui trace un carré en répétant $4$ fois : avancer de $c$ et tourner à droite de $90^\\circ$. On trace le carré central. Pour les quatre carrés adjacents, on utilise une boucle `Répète 4 fois`. À chaque tour : on avance de $c$ pour se placer au milieu du côté du carré central (coïncidant avec un côté du nouveau carré), on trace ce carré avec `carre(c)`, on recule de $c$ pour revenir au centre du carré central, et on tourne de $90^\\circ$ à droite pour s'orienter vers le côté suivant. Le sixième carré (le dernier du patron) n'est pas tracé ici mais pourrait l'être en ajoutant une instruction après la boucle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

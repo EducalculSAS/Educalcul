@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 385,
+  "_course_code": "5eme-t02-c02-additionner-et-soustraire-des-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Sens déplacement",
+  "title": "Algorithmes de déplacement pour l'addition et la soustraction de relatifs",
+  "blocks": [
+    {
+      "title": "Somme de deux relatifs par déplacement",
+      "content": "Écrire un algorithme qui, étant donnés deux nombres relatifs $a$ et $b$, calcule la somme $a+b$ en modélisant un déplacement sur une droite graduée. L'algorithme doit indiquer le point de départ, le sens du déplacement et le nombre de pas.",
+      "correctAnswer": "Algorithme :\\nLire $a$ et $b$.\\nLe point de départ est $a$.\\nSi $b$ est positif ou nul, on se déplace de $b$ pas vers la droite.\\nSi $b$ est négatif, on se déplace de $-b$ pas vers la gauche.\\nLa position finale est $a+b$.\\nAfficher $a+b$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le modèle du déplacement sur une droite graduée : partir de $a$, avancer de $b$ unités vers la droite si $b$ est positif, reculer de $|b|$ unités vers la gauche si $b$ est négatif. Le résultat est la somme $a+b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Différence de deux relatifs par déplacement",
+      "content": "Écrire un algorithme qui calcule la différence $a-b$ en utilisant le modèle de déplacement. Préciser comment le signe de $b$ influence le sens du déplacement.",
+      "correctAnswer": "Algorithme :\\nLire $a$ et $b$.\\nLe point de départ est $a$.\\nSi $b$ est positif ou nul, on se déplace de $b$ pas vers la gauche car on soustrait un nombre positif.\\nSi $b$ est négatif, on se déplace de $-b$ pas vers la droite car soustraire un négatif revient à ajouter son opposé.\\nLa position finale est $a-b$.\\nAfficher $a-b$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Soustraire $b$ revient à ajouter l'opposé de $b$. Si $b$ est positif, son opposé est négatif, donc on se déplace vers la gauche. Si $b$ est négatif, son opposé est positif, donc on se déplace vers la droite. Le résultat est $a-b$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position finale après une suite de déplacements",
+      "content": "Écrire une fonction, dans un pseudo-code simple, qui prend en entrée une liste de nombres relatifs et renvoie la position finale après avoir effectué successivement les déplacements correspondants à chaque nombre de la liste, en partant de l'origine $0$.",
+      "correctAnswer": "Fonction position_finale(liste) :\\nInitialiser $position$ à $0$.\\nPour chaque $x$ dans liste faire\\n    $position$ prend la valeur $position + x$.\\nFin pour\\nRetourner $position$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part de l'origine $0$. Chaque nombre de la liste représente un déplacement : on ajoute ce nombre à la position courante. Après avoir traité tous les nombres, la variable $position$ contient la somme de tous les déplacements, c'est à dire la position finale.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

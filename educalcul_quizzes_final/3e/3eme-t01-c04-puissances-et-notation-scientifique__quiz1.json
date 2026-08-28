@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Règles",
+  "title": "Quiz : Règles des puissances et notation scientifique",
+  "questions": [
+    {
+      "text": "Simplifie $2^3 × 2^4$.",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$8^7$",
+        "$2^{-1}$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "Lorsqu'on multiplie deux puissances de même base, on ajoute les exposants : $2^3 × 2^4 = 2^{3+4} = 2^7$. Les autres options correspondent à des erreurs fréquentes : multiplier les exposants ($2^{12}$), changer la base ($8^7$) ou soustraire les exposants ($2^{-1}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $\\frac{5^6}{5^2}$.",
+      "options": [
+        "$5^4$",
+        "$5^3$",
+        "$5^8$",
+        "$5^{-4}$"
+      ],
+      "correctAnswer": "$5^4$",
+      "explanation": "Lorsqu'on divise deux puissances de même base, on soustrait l'exposant du dénominateur de celui du numérateur : $\\frac{5^6}{5^2} = 5^{6-2} = 5^4$. Les distracteurs proviennent d'addition ($5^8$), de division des exposants ($5^3$) ou d'inversion du signe ($5^{-4}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $(3^2)^4$.",
+      "options": [
+        "$3^8$",
+        "$3^6$",
+        "$3^{10}$",
+        "$3^2$"
+      ],
+      "correctAnswer": "$3^8$",
+      "explanation": "La règle de la puissance d'une puissance dit de multiplier les exposants : $(3^2)^4 = 3^{2×4} = 3^8$. Les autres choix correspondent à une addition des exposants ($3^6$), une addition erronée ($3^{10}$) ou l'oubli de la puissance extérieure ($3^2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de $10^{-3}$ ?",
+      "options": [
+        "$0,001$",
+        "$0,01$",
+        "$0,1$",
+        "$1000$"
+      ],
+      "correctAnswer": "$0,001$",
+      "explanation": "Un exposant négatif indique l'inverse de la puissance positive : $10^{-3} = \\frac{1}{10^3} = \\frac{1}{1000} = 0,001$. Les autres valeurs correspondent à $10^{-2}$, $10^{-1}$ et $10^3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $4,5 × 10^4$ en notation décimale.",
+      "options": [
+        "$45000$",
+        "$4500$",
+        "$450000$",
+        "$0,00045$"
+      ],
+      "correctAnswer": "$45000$",
+      "explanation": "La notation scientifique $4,5 × 10^4$ signifie qu'on décale la virgule de 4 rangs vers la droite : $4,5 → 45 → 450 → 4500 → 45000$. Les autres options correspondent à un décalage de 3, 5 rangs ou dans le mauvais sens.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

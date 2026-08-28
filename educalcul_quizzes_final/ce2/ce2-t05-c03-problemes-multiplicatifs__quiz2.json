@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 180,
+  "_course_code": "ce2-t05-c03-problemes-multiplicatifs",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Produit cartésien très concret",
+  "title": "Quiz : Produit cartésien concret",
+  "questions": [
+    {
+      "text": "Léo a $3$ t-shirts et $2$ shorts. Combien de tenues différentes peut-il faire en associant un t-shirt et un short ?",
+      "options": [
+        "$5$ tenues",
+        "$6$ tenues",
+        "$8$ tenues",
+        "$9$ tenues"
+      ],
+      "correctAnswer": "$6$ tenues",
+      "explanation": "Il faut associer chaque t-shirt à chaque short. C'est un produit cartésien : on multiplie le nombre de t-shirts par le nombre de shorts. $3 \\times 2 = 6$. Les autres réponses correspondent à une addition ($3+2=5$), une erreur de multiplication ($3\\times3=9$) ou une confusion ($4\\times2=8$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 2,
+        "highlighted": 6,
+        "caption": "Grille des tenues possibles : 3 lignes (t-shirts) et 2 colonnes (shorts)"
+      }
+    },
+    {
+      "text": "À la fête foraine, il y a $4$ parfums de glace et $2$ types de cornets. Combien de choix différents de glace (un parfum dans un cornet) est-il possible de faire ?",
+      "options": [
+        "$6$ choix",
+        "$8$ choix",
+        "$10$ choix",
+        "$12$ choix"
+      ],
+      "correctAnswer": "$8$ choix",
+      "explanation": "Chaque parfum peut être mis dans chaque type de cornet. On multiplie le nombre de parfums par le nombre de cornets : $4 \\times 2 = 8$. L'option $6$ correspond à l'addition $4+2$, $10$ et $12$ sont des erreurs de tables de multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marie a $3$ pantalons. Elle peut composer $12$ tenues différentes en associant un pantalon et un pull. Combien de pulls Marie possède-t-elle ?",
+      "options": [
+        "$3$ pulls",
+        "$4$ pulls",
+        "$6$ pulls",
+        "$9$ pulls"
+      ],
+      "correctAnswer": "$4$ pulls",
+      "explanation": "Le nombre total de tenues ($12$) est le produit du nombre de pantalons ($3$) par le nombre de pulls (inconnu). Il faut trouver le nombre qui multiplié par $3$ donne $12$. $12 \\div 3 = 4$ ou $3 \\times 4 = 12$. Marie a donc $4$ pulls.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La cantine propose $5$ sandwichs différents et $3$ boissons différentes. Combien de menus différents (un sandwich et une boisson) peut-on composer ?",
+      "options": [
+        "$8$ menus",
+        "$12$ menus",
+        "$15$ menus",
+        "$18$ menus"
+      ],
+      "correctAnswer": "$15$ menus",
+      "explanation": "Chaque sandwich peut être accompagné de chaque boisson. C'est un produit cartésien : $5 \\times 3 = 15$. L'option $8$ vient de l'addition $5+3$, $12$ de $4\\times3$ ou $3\\times4$, et $18$ de $6\\times3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On range toutes les combinaisons possibles entre $3$ couleurs (bleu, rouge, vert) et $4$ formes (cercle, carré, triangle, losange) dans un tableau. Combien de cases ce tableau contient-il ?",
+      "options": [
+        "$7$ cases",
+        "$10$ cases",
+        "$12$ cases",
+        "$14$ cases"
+      ],
+      "correctAnswer": "$12$ cases",
+      "explanation": "Le tableau a autant de lignes qu'il y a de couleurs ($3$) et autant de colonnes qu'il y a de formes ($4$). Le nombre total de cases est le produit $3 \\times 4 = 12$. Chaque case correspond à un couple (couleur, forme).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Tableau des combinaisons : 3 couleurs en lignes, 4 formes en colonnes"
+      }
+    }
+  ]
+}

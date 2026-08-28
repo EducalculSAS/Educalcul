@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Lire",
+  "title": "Repérage dans l'espace : Lire les coordonnées",
+  "blocks": [
+    {
+      "title": "Vocabulaire et notation",
+      "content": "Dans un repère orthonormé de l'espace $(O; \\vec{i}, \\vec{j}, \\vec{k})$, les coordonnées d'un point $M$ s'écrivent sous la forme $M({{1}})$. La première coordonnée s'appelle l'{{2}}, la deuxième l'{{3}} et la troisième la cote.",
+      "correctAnswer": "",
+      "blanks": [
+        "x; y; z|x;y;z",
+        "abscisse",
+        "ordonnée"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans l'espace, un repère orthonormé est formé d'un origine $O$ et de trois vecteurs unitaires orthogonaux. Les coordonnées d'un point $M$ sont un triplet $(x; y; z)$ (séparés par des points-virgules en France). $x$ est l'abscisse, $y$ l'ordonnée et $z$ la cote.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture de coordonnées et projection",
+      "content": "Le point $A$ a pour coordonnées $(2; -3; 4)$ dans le repère $(O; \\vec{i}, \\vec{j}, \\vec{k})$. Sa projection orthogonale sur le plan $(xOy)$ est le point $H$ de coordonnées $({{1}})$. La distance du point $A$ au plan $(xOy)$ est ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "2; -3; 0|2;-3;0",
+        "4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le plan $(xOy)$ est le plan des points de cote nulle ($z=0$). La projection $H$ de $A(2;-3;4)$ sur ce plan garde les mêmes abscisse et ordonnée, mais sa cote est $0$, d'où $H(2;-3;0)$. La distance d'un point au plan $(xOy)$ est la valeur absolue de sa cote, ici $|4| = 4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Symétrie par rapport à un plan",
+      "content": "Dans un repère orthonormé, le point $B$ est le symétrique du point $A(1; -2; 5)$ par rapport au plan $(xOz)$. Les coordonnées de $B$ sont $({{1}})$.",
+      "correctAnswer": "",
+      "blanks": [
+        "1; 2; 5|1;2;5"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le plan $(xOz)$ est l'ensemble des points d'ordonnée nulle ($y=0$). La symétrie par rapport à ce plan change le signe de l'ordonnée (la deuxième coordonnée) tout en conservant l'abscisse et la cote. Le symétrique de $A(1; -2; 5)$ est donc $B(1; 2; 5)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

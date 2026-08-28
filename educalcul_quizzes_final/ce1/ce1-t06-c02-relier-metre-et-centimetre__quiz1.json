@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 118,
+  "_course_code": "ce1-t06-c02-relier-metre-et-centimetre",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Comprendre 1 m = 100 cm",
+  "title": "Relier mètre et centimètre : 1 m = 100 cm",
+  "questions": [
+    {
+      "text": "Quelle représentation en matériel de base dix correspond à la longueur de 1 mètre en centimètres ?",
+      "options": [
+        "Un cube mille",
+        "Une plaque de cent",
+        "Une barre de dix",
+        "Un cube unité"
+      ],
+      "correctAnswer": "Une plaque de cent",
+      "explanation": "Par définition, 1 mètre équivaut à 100 centimètres. En matériel de base dix, la plaque de cent représente exactement 100 unités. Le cube mille représente 1000, la barre de dix représente 10 et le cube unité représente 1.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 1,
+        "tens": 0,
+        "units": 0,
+        "caption": "1 plaque de cent = 100 unités = 1 m = 100 cm"
+      }
+    },
+    {
+      "text": "Combien y a-t-il de centimètres dans 2 mètres ?",
+      "options": [
+        "20 cm",
+        "200 cm",
+        "102 cm",
+        "2 cm"
+      ],
+      "correctAnswer": "200 cm",
+      "explanation": "Puisque 1 mètre vaut 100 centimètres, pour convertir 2 mètres en centimètres, on multiplie 2 par 100 : $2 \\times 100 = 200$. L'erreur '20 cm' correspond à une multiplication par 10, '102 cm' à une addition incorrecte et '2 cm' à une confusion d'unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si une corde mesure 300 centimètres, quelle est sa longueur en mètres ?",
+      "options": [
+        "30 m",
+        "3 m",
+        "300 m",
+        "0,3 m"
+      ],
+      "correctAnswer": "3 m",
+      "explanation": "Pour passer des centimètres aux mètres, on regroupe par paquets de 100. $300$ centimètres font 3 paquets de 100, donc 3 mètres. L'option '30 m' correspondrait à 3000 cm, '300 m' à 30000 cm et '0,3 m' à 30 cm (niveau CE2).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare les deux longueurs : 1 m ... 50 cm",
+      "options": [
+        "1 m < 50 cm",
+        "1 m > 50 cm",
+        "1 m = 50 cm",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "1 m > 50 cm",
+      "explanation": "Il faut convertir dans la même unité pour comparer. 1 mètre vaut 100 centimètres. On compare donc 100 cm et 50 cm. Comme 100 est plus grand que 50, on a 100 cm > 50 cm, donc 1 m > 50 cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas a un ruban de 1 m. Il en coupe 40 cm pour faire un nœud. Quelle longueur de ruban lui reste-t-il ?",
+      "options": [
+        "60 cm",
+        "40 cm",
+        "1 m 40 cm",
+        "96 cm"
+      ],
+      "correctAnswer": "60 cm",
+      "explanation": "D'abord, on convertit la longueur totale en centimètres : 1 m = 100 cm. Ensuite, on soustrait la partie coupée : $100 - 40 = 60$. Il reste 60 cm. L'option '40 cm' est la partie coupée, '1 m 40 cm' est une addition au lieu d'une soustraction, et '96 cm' est une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

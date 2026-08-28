@@ -1,0 +1,135 @@
+{
+  "_status": "done",
+  "_course_id": 122,
+  "_course_code": "ce1-t06-c06-rendre-une-monnaie-simple",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Calculer l'écart",
+  "title": "Quiz : Calculer l'écart et rendre la monnaie",
+  "questions": [
+    {
+      "text": "Un bonbon coûte $0,50$ €. Je paie avec une pièce de $1$ €. Combien le commerçant me rend-il ?",
+      "options": [
+        "0,50 €",
+        "0,40 €",
+        "0,60 €",
+        "1,50 €"
+      ],
+      "correctAnswer": "0,50 €",
+      "explanation": "Pour trouver la monnaie, on calcule l'écart entre la somme donnée ($1$ €) et le prix ($0,50$ €). $1,00 - 0,50 = 0,50$. Le commerçant rend 0,50 €. L'option 0,40 € correspond à une erreur de calcul, 0,60 € à une addition au lieu d'une soustraction, et 1,50 € à une addition des deux montants.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100
+        ],
+        "target": 50,
+        "caption": "Paiement de 1 € pour un achat de 0,50 €"
+      }
+    },
+    {
+      "text": "Un livre coûte $7$ €. Je donne un billet de $10$ €. Quelle est la monnaie ?",
+      "options": [
+        "3 €",
+        "4 €",
+        "17 €",
+        "2 €"
+      ],
+      "correctAnswer": "3 €",
+      "explanation": "On cherche l'écart entre $10$ € et $7$ €. $10 - 7 = 3$. La monnaie est de 3 €. L'option 4 € est une erreur de comptage (souvent $10-6$), 17 € est le résultat d'une addition ($10+7$), et 2 € correspond à $10-8$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Prix livre",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Monnaie",
+            "value": 3,
+            "tone": "green"
+          }
+        ],
+        "caption": "Décomposition de 10 € en 7 € et 3 €"
+      }
+    },
+    {
+      "text": "Un jouet coûte $12$ €. Un jeu coûte $8$ €. Quel est l'écart de prix entre le jouet et le jeu ?",
+      "options": [
+        "4 €",
+        "20 €",
+        "5 €",
+        "3 €"
+      ],
+      "correctAnswer": "4 €",
+      "explanation": "L'écart de prix est la différence entre le prix le plus élevé ($12$ €) et le prix le plus bas ($8$ €). On calcule $12 - 8 = 4$. L'écart est de 4 €. L'option 20 € correspond à l'addition ($12+8$), 5 € et 3 € sont des erreurs de calcul de la différence.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Jeu 8 €",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Écart",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Comparaison des prix : 12 € et 8 €"
+      }
+    },
+    {
+      "text": "J'achète une pomme à $0,30$ € et une poire à $0,40$ €. Je paie avec une pièce de $1$ €. Combien je récupère ?",
+      "options": [
+        "0,30 €",
+        "0,70 €",
+        "0,20 €",
+        "0,50 €"
+      ],
+      "correctAnswer": "0,30 €",
+      "explanation": "D'abord, on additionne les prix : $0,30 + 0,40 = 0,70$ €. Ensuite, on calcule l'écart avec la pièce de $1$ € : $1,00 - 0,70 = 0,30$ €. Je récupère 0,30 €. L'option 0,70 € est le total des achats (oubli de soustraire), 0,20 € est une erreur de soustraction ($1,00 - 0,80$), et 0,50 € ne correspond à aucune étape logique.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100
+        ],
+        "target": 70,
+        "caption": "Paiement de 1 € pour un total de 0,70 €"
+      }
+    },
+    {
+      "text": "J'ai $15$ €. Après avoir acheté un cahier, il me reste $9$ €. Combien coûte le cahier ?",
+      "options": [
+        "6 €",
+        "24 €",
+        "5 €",
+        "7 €"
+      ],
+      "correctAnswer": "6 €",
+      "explanation": "On connaît le montant de départ ($15$ €) et le reste ($9$ €). Le prix du cahier est l'écart entre ces deux montants : $15 - 9 = 6$ €. Le cahier coûte 6 €. L'option 24 € est l'addition ($15+9$), 5 € et 7 € sont des erreurs de calcul de la différence ($15-10$ ou $16-9$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Cahier",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Reste",
+            "value": 9,
+            "tone": "green"
+          }
+        ],
+        "caption": "Décomposition de 15 € en prix du cahier et reste"
+      }
+    }
+  ]
+}

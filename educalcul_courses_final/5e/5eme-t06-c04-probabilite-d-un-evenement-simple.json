@@ -1,0 +1,496 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.763055+00:00",
+  "id": 408,
+  "code": "5eme-t06-c04",
+  "title": "Probabilité d'un événement simple",
+  "description": "Cours structuré Educalcul : Probabilité d'un événement simple.",
+  "subject": "Statistiques et probabilités",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Probabilité d'un événement simple",
+    "objectif_global": "Probabilité d'un événement simple",
+    "mini_lecons_imposees": [
+      "Issues équiprobables accessibles.",
+      "Calcul.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Issues équiprobables accessibles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une expérience aléatoire ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé à six faces bien équilibré. Tu ne peux pas deviner à l'avance sur quelle face il va tomber : c'est le hasard qui décide. En mathématiques, on appelle cela une expérience aléatoire. C'est une manipulation dont on connaît tous les résultats possibles, mais dont on ne peut pas prédire lequel va se produire. D'autres exemples familiers : tirer une bille dans un sac sans regarder, faire tourner une roulette, ou encore lancer une pièce de monnaie. À chaque fois, le résultat t'échappe, même si tu connais la liste de tout ce qui pourrait arriver."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien raisonner, il faut d'abord dresser la liste exhaustive de tous les résultats possibles. Cette liste porte un nom précis : l'univers, souvent noté $\\Omega$ (oméga majuscule). Pour un dé à six faces, l'univers s'écrit $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$. Chacun de ces résultats s'appelle une issue. Ici, il y a six issues distinctes. Prends le temps de visualiser cet univers : c'est le terrain de jeu sur lequel nous allons travailler."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Les six issues équilibrées d'un dé parfait",
+              "slices": [
+                {
+                  "label": "1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "3",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "4",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "5",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "6",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les issues d'une expérience, une question naturelle se pose : toutes ces issues ont-elles la même chance de se produire ? C'est là qu'intervient l'idée d'équiprobabilité, un concept clé pour la suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les issues sont-elles équiprobables ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre dé. S'il est bien cubique, s'il n'est pas truqué et qu'on le lance correctement, aucune face n'est avantagée par rapport aux autres. La symétrie physique de l'objet garantit que chaque issue a exactement la même probabilité d'apparaître. On dit alors que les issues sont équiprobables. Attention : ce n'est pas vrai pour n'importe quel objet ! Si tu lances un dé déformé, une bille plus lourde que les autres, ou une pièce de monnaie tordue, les chances ne sont plus égales. L'équiprobabilité vient d'une régularité, d'une justice dans le dispositif : même forme, même masse, même surface de contact."
+            },
+            {
+              "type": "definition",
+              "term": "Issues équiprobables",
+              "definition": "On dit que les issues d'une expérience aléatoire sont équiprobables lorsque chacune a la même chance de se réaliser. Cela se produit souvent grâce à la symétrie de l'objet utilisé (dé parfait, pièce équilibrée, billes identiques dans un sac opaque).",
+              "example": "Avec un dé non truqué, les six issues 1, 2, 3, 4, 5, 6 sont équiprobables."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des chances pour un dé équilibré",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "3",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "4",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "5",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "6",
+                  "value": 1,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à voir la mécanique : identifier l'univers, vérifier l'équiprobabilité. Il nous reste à formaliser cela pour pouvoir calculer sereinement dans la prochaine leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'univers et les issues équiprobables : le vocabulaire exact"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résumons les mots importants que tu croiseras tout le temps. L'univers $\\Omega$ est l'ensemble de toutes les issues possibles. Un événement est une partie de cet univers : par exemple « obtenir un nombre pair » correspond à l'ensemble $\\{2; 4; 6\\}$. Lorsque les issues sont équiprobables, on peut attacher un nombre à chaque issue : sa probabilité. Comme il y a $6$ issues équivalentes et que la somme de toutes les probabilités doit faire $1$, chaque issue vaut $\\frac{1}{6}$. C'est une fraction, mais on pourra aussi l'écrire en décimal ($0{,}166\\ldots$) ou en pourcentage ($16{,}6\\%$)."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "La probabilité de chaque face d'un dé parfait"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour chacune des expériences ci-dessous, écris l'univers $\\Omega$ (la liste de toutes les issues possibles).\\n1. On lance une pièce de monnaie équilibrée.\\n2. On tire une bille au hasard dans un sac contenant une bille rouge, une bille bleue et une bille verte.\\n3. On fait tourner une flèche sur un cadran divisé en 4 secteurs numérotés 1, 2, 3, 4.",
+              "answer": "1. $\\Omega = \\{\\text{face}, \\text{pile}\\}$ ou $\\{F; P\\}$.\\n2. $\\Omega = \\{\\text{rouge}, \\text{bleu}, \\text{vert}\\}$.\\n3. $\\Omega = \\{1; 2; 3; 4\\}$.",
+              "hint": "Note simplement tout ce qui peut arriver, sans oublier de résultat. L'ordre n'a pas d'importance dans l'ensemble.",
+              "explanation": "L'univers est la liste exhaustive des issues. Pour la pièce : face ou pile. Pour le sac : les trois couleurs. Pour le cadran : les quatre numéros."
+            },
+            {
+              "question": "Dans quelles situations les issues sont-elles équiprobables ? Justifie brièvement.\\nA. Un dé standard à six faces lancé sur une table.\\nB. Une punaise lancée en l'air (elle peut tomber « pointe en haut » ou « pointe en bas »).\\nC. Un sac contient 3 billes rouges et 1 bille bleue. On en tire une au hasard.",
+              "answer": "A. Oui : le dé est symétrique, aucune face n'est favorisée.\\nB. Non : la forme de la punaise fait que « pointe en bas » est beaucoup plus fréquent.\\nC. Non : il y a 3 billes rouges contre 1 bleue, donc la chance de tirer rouge est plus grande.",
+              "hint": "Demande-toi : l'objet a-t-il une symétrie parfaite ? Les éléments en jeu sont-ils identiques en nombre et en aspect ?",
+              "explanation": "L'équiprobabilité demande une égalité des chances. Le dé standard la respecte. La punaise est asymétrique. Le sac a plus de billes rouges, donc l'issue « rouge » est avantagée."
+            },
+            {
+              "question": "On lance un dé à six faces équilibré. On note l'événement $E$ : « obtenir un multiple de 3 ».\\n1. Écris l'univers $\\Omega$.\\n2. Écris l'événement $E$ en ensemble.\\n3. Les issues de $\\Omega$ sont-elles équiprobables ? Pourquoi ?",
+              "answer": "1. $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$.\\n2. $E = \\{3; 6\\}$.\\n3. Oui, car le dé est équilibré (symétrique, non truqué), donc les six faces ont la même chance.",
+              "hint": "Les multiples de 3 entre 1 et 6 sont 3 et 6. Pour la justification, rappelle la condition de symétrie.",
+              "explanation": "L'univers contient les six faces. L'événement « multiple de 3 » ne garde que 3 et 6. L'équiprobabilité vient de la régularité du dé."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment calculer une probabilité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au cœur du sujet : maintenant que nous savons repérer un univers équiprobable, comment mesure-t-on la chance qu'un événement se produise ? La réponse est une fraction simple, intuitive, qui compare deux compteurs. D'un côté, le nombre d'issues favorables à l'événement (celles qui nous font « gagner »). De l'autre, le nombre total d'issues possibles dans l'univers. La probabilité de l'événement $A$ s'écrit donc $P(A) = \\frac{\\text{nombre d'issues favorables}}{\\text{nombre total d'issues}}$. Cette formule ne fonctionne que si les issues sont équiprobables : c'est la condition indispensable, ne l'oublie jamais."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons tout de suite sur un exemple concret. Tu lances un dé équilibré. L'événement $A$ : « obtenir un nombre pair ». L'univers a $6$ issues. Les issues favorables sont $2, 4, 6$ : il y en a $3$. Donc $P(A) = \\frac{3}{6} = \\frac{1}{2}$. Facile, non ? Essaie maintenant avec l'événement $B$ : « obtenir un nombre strictement supérieur à 4 ». Les issues favorables : $5$ et $6$, soit $2$ issues. $P(B) = \\frac{2}{6} = \\frac{1}{3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une probabilité est un nombre qui se promène entre $0$ et $1$. On a le droit de l'écrire sous plusieurs habits : fraction simplifiée, nombre décimal, ou pourcentage. C'est souvent plus parlant au quotidien. Reprenons $P(A) = \\frac{1}{2}$. En décimal, c'est $0{,}5$. En pourcentage, $50\\%$. Pour $P(B) = \\frac{1}{3}$, le décimal est $0{,}333\\ldots$ (on arrondit souvent à $0{,}33$) et le pourcentage $33{,}3\\%$. Savoir passer de l'un à l'autre te sera utile pour comparer ou pour comprendre un bulletin météo."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "3 issues favorables sur 6 au total"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Fraction simplifiée : 1 sur 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne jamais te tromper, adopte une routine en quatre temps. C'est une méthode qui marche à tous les coups, du brevet aux concours. Suis le guide."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister l'univers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'ensemble $\\Omega$ de toutes les issues possibles. Vérifie qu'il n'en manque aucune."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demande-toi : les issues ont-elles la même chance ? (Symétrie, objets identiques, hasard bien mélangé). Si non, la formule ne s'applique pas directement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter les favorables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie l'événement demandé et compte combien d'issues de $\\Omega$ le réalisent. Note ce nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer et simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la fraction $\\frac{\\text{favorables}}{\\text{total}}$. Simplifie-la si possible. Donne aussi le décimal et le pourcentage si on te le demande."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode solide. Mais une probabilité, ce n'est pas juste un calcul : c'est un nombre qui vit entre $0$ et $1$. Regardons de plus près ce que cela veut dire concrètement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une probabilité est toujours entre 0 et 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Puisque le nombre de cas favorables ne peut pas être négatif ni dépasser le nombre total de cas, la fraction est toujours comprise entre $0$ et $1$. Si l'événement est impossible (aucun cas favorable), la probabilité vaut $0$. Si l'événement est certain (tous les cas sont favorables), elle vaut $1$. Entre les deux, plus la probabilité est proche de $1$, plus l'événement est probable ; plus elle est proche de $0$, plus il est improbable. C'est une échelle de mesure de l'incertitude."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'échelle des probabilités de 0 à 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Impossible"
+                },
+                {
+                  "value": 0.5,
+                  "label": "Équiprobable"
+                },
+                {
+                  "value": 1,
+                  "label": "Certain"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à six faces équilibré. Calcule la probabilité de l'événement : « obtenir un nombre multiple de 3 ». Donne le résultat sous forme de fraction simplifiée.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Combien de faces sont des multiples de 3 sur un dé ? Combien de faces au total ?",
+              "explanation": "Les multiples de 3 entre 1 et 6 sont 3 et 6 : 2 issues favorables. L'univers a 6 issues. $P = \\frac{2}{6} = \\frac{1}{3}$."
+            },
+            {
+              "question": "Un sac contient 5 billes rouges, 3 billes bleues et 2 billes vertes. On tire une bille au hasard. Calcule la probabilité de tirer une bille bleue. Donne le résultat en fraction, en décimal (arrondi au centième) et en pourcentage.",
+              "answer": "Fraction : $\\frac{3}{10}$. Décimal : $0{,}30$. Pourcentage : $30\\%$.",
+              "hint": "Total des billes = 5 + 3 + 2. Favorables = billes bleues.",
+              "explanation": "Il y a 10 billes au total, 3 sont bleues. $P = \\frac{3}{10} = 0{,}3 = 30\\%$."
+            },
+            {
+              "question": "Applique la méthode en 4 étapes pour cet exercice : Une roulette est divisée en 8 secteurs numérotés de 1 à 8, tous de même taille. On la fait tourner. Quel est l'événement « obtenir un nombre premier » ? Calcule sa probabilité.",
+              "answer": "Étape 1 : $\\Omega = \\{1;2;3;4;5;6;7;8\\}$ (8 issues).\\nÉtape 2 : Oui, secteurs identiques → équiprobables.\\nÉtape 3 : Nombres premiers dans $\\Omega$ : 2, 3, 5, 7 → 4 issues favorables.\\nÉtape 4 : $P = \\frac{4}{8} = \\frac{1}{2} = 0{,}5 = 50\\%$.",
+              "hint": "Rappelle-toi les nombres premiers inférieurs ou égaux à 8. Vérifie l'équiprobabilité (secteurs de même taille).",
+              "explanation": "Les nombres premiers entre 1 et 8 sont 2, 3, 5, 7. Il y a 4 issues favorables sur 8. La fraction se simplifie en 1/2."
+            },
+            {
+              "question": "Parmi les nombres suivants, lesquels peuvent être une probabilité ? $1{,}2$ ; $0$ ; $0{,}75$ ; $-0{,}5$ ; $1$ ; $\\frac{5}{4}$ ; $50\\%$.",
+              "answer": "$0$ ; $0{,}75$ ; $1$ ; $50\\%$ (car $50\\% = 0{,}5$).",
+              "hint": "Une probabilité est toujours comprise entre 0 et 1 inclus. Convertis le pourcentage en décimal pour comparer.",
+              "explanation": "1,2 et 5/4 = 1,25 sont > 1. -0,5 est < 0. Les autres sont dans [0 ; 1]."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De 0 à 1 : l'échelle des probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais calculer une probabilité, mais sais-tu la lire ? Un nombre comme $0{,}2$ ou $\\frac{3}{4}$ raconte une histoire. Sur l'échelle qui va de $0$ à $1$, chaque valeur a un sens précis. $0$ signifie « impossible » : l'événement ne peut pas arriver (par exemple, tirer une bille jaune dans un sac qui n'en contient pas). $1$ signifie « certain » : l'événement est sûr d'arriver (tirer une bille rouge dans un sac qui ne contient que des billes rouges). Au milieu, $0{,}5$ (ou $\\frac{1}{2}$, ou $50\\%$) correspond à « aussi probable qu'improbable » : c'est le cas d'une pièce équilibrée (face ou pile). Entre $0$ et $0{,}5$, on dit « peu probable » ; entre $0{,}5$ et $1$, « très probable ». Ces mots ne sont pas des définitions mathématiques rigoureuses, mais ils aident à se faire une image mentale."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vocabulaire courant sur l'échelle des probabilités",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Impossible"
+                },
+                {
+                  "value": 0.25,
+                  "label": "Peu probable"
+                },
+                {
+                  "value": 0.5,
+                  "label": "Autant probable qu'improbable"
+                },
+                {
+                  "value": 0.75,
+                  "label": "Très probable"
+                },
+                {
+                  "value": 1,
+                  "label": "Certain"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer deux probabilités, c'est comparer deux nombres. Comme ce sont des fractions ou des décimaux, tu sais déjà faire : tu les mets au même dénominateur ou tu compares leurs écritures décimales. Imaginons deux sacs. Sac A : 3 billes rouges sur 10 au total → $P_A(\\text{rouge}) = 0{,}3$. Sac B : 4 billes rouges sur 12 au total → $P_B(\\text{rouge}) = \\frac{1}{3} \\approx 0{,}33$. Donc $P_B > P_A$ : tu as plus de chances de tirer rouge dans le sac B. Attention au piège : ne compare pas seulement les nombres de billes rouges (4 > 3) sans regarder le total ! C'est l'erreur classique."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des chances de tirer une bille rouge",
+              "bars": [
+                {
+                  "label": "Sac A",
+                  "value": 0.3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Sac B",
+                  "value": 0.33,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une probabilité ne sert pas qu'à faire des exercices : elle aide à prendre des décisions. Si la météo annonce $70\\%$ de chances de pluie, tu prends ton parapluie. Si un jeu vidéo t'indique $10\\%$ de chances d'obtenir un objet rare, tu sais qu'il faudra de la patience. Interpréter, c'est dire en mots ce que le nombre signifie dans la situation réelle. Par exemple, une probabilité de $\\frac{1}{4}$ pour gagner à un jeu de grattage ne veut pas dire que tu gagneras exactement une fois sur quatre essais, mais que *si tu joues un très grand nombre de fois*, la proportion de gains se rapprochera de $1$ sur $4$. C'est la loi des grands nombres, que tu retrouveras plus tard."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Prévisions météo : 70% pluie, 30% sec",
+              "slices": [
+                {
+                  "label": "Pluie",
+                  "value": 70,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sec",
+                  "value": 30,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : ce que tu as appris"
+            },
+            {
+              "type": "paragraph",
+              "content": "Faisons le point avec des exemples frais. Tu sais maintenant qu'une expérience aléatoire a un univers $\\Omega$, et que si ses issues sont équiprobables (symétrie, mélange parfait), la probabilité d'un événement $A$ se calcule par $P(A) = \\frac{\\text{favorables}}{\\text{total}}$. Tu sais écrire ce nombre en fraction, décimal ou pourcentage. Tu sais le situer sur l'échelle de $0$ (impossible) à $1$ (certain) et utiliser le vocabulaire : peu probable, très probable. Tu sais comparer deux probabilités en comparant les nombres (attention aux totaux différents !). Et tu sais qu'une probabilité comme $0{,}8$ signifie qu'en répétant l'expérience un très grand nombre de fois, l'événement se réalisera environ $80\\%$ du temps. Ce ne sont pas des mots magiques, ce sont des outils pour dompter l'incertitude."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier l'univers d'une expérience aléatoire et lister ses issues.",
+                "Je sais reconnaître si les issues sont équiprobables (symétrie, objets identiques).",
+                "Je sais calculer une probabilité : nombre de cas favorables divisé par nombre de cas possibles.",
+                "Je sais exprimer une probabilité en fraction simplifiée, en nombre décimal et en pourcentage.",
+                "Je sais situer une probabilité sur l'échelle de 0 à 1 et utiliser le vocabulaire : impossible, peu probable, aussi probable qu'improbable, très probable, certain.",
+                "Je sais comparer deux probabilités en comparant leurs valeurs numériques (décimales ou fractions).",
+                "Je sais interpréter une probabilité dans une situation concrète (météo, jeu, tirage)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Associe chaque probabilité à la description qui lui correspond le mieux.\\nA. $0$ \\nB. $0{,}1$ \\nC. $0{,}5$ \\nD. $0{,}9$ \\nE. $1$\\n\\nDescriptions :\\n1. Certain\\n2. Impossible\\n3. Peu probable\\n4. Aussi probable qu'improbable\\n5. Très probable",
+              "answer": "A → 2 ; B → 3 ; C → 4 ; D → 5 ; E → 1",
+              "hint": "Replace chaque nombre sur l'échelle de 0 à 1. 0,1 est proche de 0. 0,9 est proche de 1.",
+              "explanation": "0 = impossible. 0,1 = peu probable. 0,5 = aussi probable qu'improbable. 0,9 = très probable. 1 = certain."
+            },
+            {
+              "question": "Deux jeux de cartes sont proposés.\\nJeu 1 : 40 cartes dont 8 sont des « gagnantes ».\\nJeu 2 : 50 cartes dont 12 sont des « gagnantes ».\\nDans quel jeu as-tu le plus de chances de tirer une carte gagnante ? Justifie par un calcul.",
+              "answer": "Jeu 2. $P_1 = \\frac{8}{40} = 0{,}2$. $P_2 = \\frac{12}{50} = 0{,}24$. $0{,}24 > 0{,}2$.",
+              "hint": "Calcule la probabilité pour chaque jeu sous forme décimale pour comparer facilement.",
+              "explanation": "Jeu 1 : 8/40 = 0,2. Jeu 2 : 12/50 = 0,24. 0,24 est plus grand, donc le jeu 2 est plus avantageux."
+            },
+            {
+              "question": "Un bulletin météo indique : « Probabilité de pluie : 30 % ». Écris une phrase qui explique ce que cela signifie pour quelqu'un qui doit décider de prendre son parapluie.",
+              "answer": "Cela signifie qu'en moyenne, sur 10 jours annoncés avec 30 % de pluie, il pleut environ 3 jours. Le risque existe mais reste modéré ; prendre un parapluie est une précaution raisonnable.",
+              "hint": "Traduis le pourcentage en fraction (30/100 = 3/10) et explique l'idée de fréquence sur le long terme.",
+              "explanation": "30 % = 3 chances sur 10. Ce n'est pas une certitude, mais ce n'est pas négligeable non plus. L'interprétation porte sur la fréquence observée sur de nombreuses situations analogues."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Arrondir",
+  "title": "Quiz - Arrondir (6e)",
+  "questions": [
+    {
+      "text": "Arrondis $12,7$ à l'unité.",
+      "options": [
+        "$12$",
+        "$13$",
+        "$12,7$",
+        "$10$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "Le chiffre des dixièmes est $7$, qui est supérieur ou égal à $5$, donc on arrondit l'unité $12$ à $13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $3,456$ au dixième.",
+      "options": [
+        "$3,4$",
+        "$3,5$",
+        "$3,46$",
+        "$3,45$"
+      ],
+      "correctAnswer": "$3,5$",
+      "explanation": "On regarde le chiffre des centièmes ($5$) : comme il est égal à $5$, le dixième $4$ devient $5$, ce qui donne $3,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $0,999$ au centième.",
+      "options": [
+        "$1,00$",
+        "$0,99$",
+        "$1,0$",
+        "$0,999$"
+      ],
+      "correctAnswer": "$1,00$",
+      "explanation": "Le chiffre des millièmes est $9$ (≥5), donc le centième $9$ devient $10$ et provoque une retenue : $0,999$ s'arrondit à $1,00$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $4567$ à la dizaine.",
+      "options": [
+        "$4560$",
+        "$4570$",
+        "$4500$",
+        "$4600$"
+      ],
+      "correctAnswer": "$4570$",
+      "explanation": "Le chiffre des unités est $7$ (≥5), donc la dizaine $6$ passe à $7$ : $4567$ devient $4570$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $123,4567$ au millième.",
+      "options": [
+        "$123,457$",
+        "$123,456$",
+        "$123,46$",
+        "$123,45$"
+      ],
+      "correctAnswer": "$123,457$",
+      "explanation": "On observe le chiffre des dixièmes de millième ($7$) : il est ≥5, donc le millième $6$ augmente de $1$ et donne $123,457$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

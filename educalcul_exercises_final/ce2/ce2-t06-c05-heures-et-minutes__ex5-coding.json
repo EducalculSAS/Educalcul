@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 191,
+  "_course_code": "ce2-t06-c05-heures-et-minutes",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Lire une horloge",
+  "title": "Approfondissement : Lire une horloge - Algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Observe l'horloge ci-dessous. Écris un algorithme en pseudo-code qui permet de lire l'heure affichée et de l'écrire sous la forme $heures:minutes$.\\n(Indication : la grande aiguille pointe sur un chiffre, chaque chiffre correspond à $5$ minutes.)",
+      "correctAnswer": "ALGORITHME LireHeure\\nENTRÉE : position_petite_aiguille, position_grande_aiguille\\nDEBUT\\n    heure <- position_petite_aiguille\\n    minute <- position_grande_aiguille * 5\\n    SI minute = 60 ALORS\\n        minute <- 0\\n        heure <- heure + 1\\n    FIN SI\\n    AFFICHER heure, ':', minute\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme récupère la position de la petite aiguille pour l'heure. La grande aiguille indique un chiffre de 1 à 12, chaque chiffre vaut 5 minutes, donc on multiplie par 5. Si le résultat est 60, on remet les minutes à 0 et on incrémente l'heure. Enfin on affiche l'heure au format heures:minutes.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 20,
+        "caption": "Horloge indiquant 4 h 20",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Question 2",
+      "content": "Regarde cette horloge. Complète l'algorithme ci-dessous pour qu'il calcule correctement le nombre de minutes à partir de la position de la grande aiguille.\\nALGORITHME CalculerMinutes\\nENTRÉE : position_grande_aiguille\\nDEBUT\\n    minute <- ...\\n    AFFICHER minute\\nFIN",
+      "correctAnswer": "ALGORITHME CalculerMinutes\\nENTRÉE : position_grande_aiguille\\nDEBUT\\n    minute <- position_grande_aiguille * 5\\n    SI minute = 60 ALORS minute <- 0 FIN SI\\n    AFFICHER minute\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque chiffre sur le cadran correspond à 5 minutes. On multiplie donc la position de la grande aiguille par 5. Si la grande aiguille est sur 12 (position 12), le produit donne 60, ce qui correspond à 0 minute et on passe à l'heure suivante.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 10,
+        "minutes": 35,
+        "caption": "Horloge indiquant 10 h 35",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Question 3",
+      "content": "Cette horloge indique une heure pile. Écris un algorithme qui affiche « heure pile » lorsque les minutes sont égales à $0$, sinon il affiche l'heure au format $heures:minutes$.\\nALGORITHME AfficherHeure\\nENTRÉE : heure, minute\\nDEBUT\\n    ...\\nFIN",
+      "correctAnswer": "ALGORITHME AfficherHeure\\nENTRÉE : heure, minute\\nDEBUT\\n    SI minute = 0 ALORS\\n        AFFICHER 'heure pile'\\n    SINON\\n        AFFICHER heure, ':', minute\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la valeur des minutes. Si elle est nulle, c'est une heure pile, on affiche le message correspondant. Sinon on affiche l'heure normale avec les deux nombres séparés par deux-points.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 6,
+        "minutes": 0,
+        "caption": "Horloge indiquant 6 h 00",
+        "interactive": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Rayon / diamètre",
+  "title": "Algorithmes et cercle : rayon et diamètre",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme simple",
+      "content": "On veut écrire un algorithme qui, à partir de la longueur du rayon $r$ d'un cercle, calcule et affiche la longueur de son diamètre $d$. Rappel : $d = 2 \\times r$. Complète l'algorithme ci-dessous en remplaçant les pointillés par les instructions adaptées (saisie, calcul, affichage).\\n\\nAlgorithme CalculDiametre\\nVariables : $r$, $d$ (nombres)\\nDébut\\n    Afficher \"Entrez la longueur du rayon : \"\\n    ................\\n    $d$ ← ................\\n    Afficher \"Le diamètre vaut \", $d$\\nFin",
+      "correctAnswer": "Algorithme CalculDiametre\\nVariables : r, d (nombres)\\nDébut\\n    Afficher \"Entrez la longueur du rayon : \"\\n    Saisir r\\n    d ← 2 × r\\n    Afficher \"Le diamètre vaut \", d\\nFin",
+      "explanation": "L'algorithme demande à l'utilisateur de saisir une valeur pour le rayon (instruction 'Saisir r'). Il applique ensuite la formule du diamètre : le diamètre est le double du rayon, donc on affecte à la variable d le résultat de 2 × r (instruction 'd ← 2 × r'). Enfin, il affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme inverse : du diamètre au rayon",
+      "content": "Cette fois, on part du diamètre $d$ pour retrouver le rayon $r$. On rappelle que $r = d \\div 2$. Écris l'algorithme complet (nom, variables, début, instructions, fin) qui demande le diamètre, calcule le rayon et l'affiche.",
+      "correctAnswer": "Algorithme CalculRayon\\nVariables : d, r (nombres)\\nDébut\\n    Afficher \"Entrez la longueur du diamètre : \"\\n    Saisir d\\n    r ← d / 2\\n    Afficher \"Le rayon vaut \", r\\nFin",
+      "explanation": "L'algorithme suit la même structure que le précédent mais utilise la formule inverse. On déclare les variables d et r. Après la saisie du diamètre, on calcule le rayon en divisant le diamètre par 2 (r ← d / 2 ou r ← d ÷ 2). On affiche ensuite la valeur du rayon.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec condition",
+      "content": "On souhaite un algorithme qui demande une longueur $L$ et une lettre $C$ (\"R\" pour rayon ou \"D\" pour diamètre).\\n- Si $C = $\"R\", l'algorithme considère $L$ comme un rayon et affiche le diamètre correspondant.\\n- Si $C = $\"D\", l'algorithme considère $L$ comme un diamètre et affiche le rayon correspondant.\\n- Sinon, il affiche \"Code incorrect\".\\n\\nÉcris cet algorithme en utilisant une structure \"Si ... Sinon ... Fin Si\".",
+      "correctAnswer": "Algorithme ConversionRayonDiametre\\nVariables : L (nombre), C (chaîne), Résultat (nombre)\\nDébut\\n    Afficher \"Entrez la longueur : \"\\n    Saisir L\\n    Afficher \"Entrez le code (R ou D) : \"\\n    Saisir C\\n    Si C = \"R\" Alors\\n        Résultat ← 2 × L\\n        Afficher \"Le diamètre vaut \", Résultat\\n    Sinon\\n        Si C = \"D\" Alors\\n            Résultat ← L / 2\\n            Afficher \"Le rayon vaut \", Résultat\\n        Sinon\\n            Afficher \"Code incorrect\"\\n        Fin Si\\n    Fin Si\\nFin",
+      "explanation": "Cet algorithme utilise des conditions imbriquées (ou une structure 'Si ... Sinon Si ... Sinon ... Fin Si'). Il commence par saisir la longueur L et le code C. Le premier 'Si' teste si C vaut \"R\" : si oui, il calcule le diamètre (2 × L). Sinon, un second 'Si' teste si C vaut \"D\" : si oui, il calcule le rayon (L / 2). Si aucune des deux conditions n'est remplie, le bloc 'Sinon' final affiche le message d'erreur.",
+      "points": 5,
+      "figure": null
+    }
+  ]
+}

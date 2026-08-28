@@ -1,0 +1,324 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.021682+00:00",
+  "id": 499,
+  "code": "2nde-t01-c04",
+  "title": "Divisibilité et nombres premiers",
+  "description": "Cours structuré Educalcul : Divisibilité et nombres premiers.",
+  "subject": "Nombres réels et arithmétique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Nombres réels et arithmétique",
+    "titre_du_cours": "Divisibilité et nombres premiers",
+    "objectif_global": "Divisibilité et nombres premiers",
+    "mini_lecons_imposees": [
+      "Multiples / diviseurs.",
+      "Décomposition.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres réels et arithmétique",
+      "lessons": [
+        {
+          "title": "Multiples / diviseurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu organises une petite fête avec tes amis. Tu as acheté un sac de $60$ bonbons et tu veux les répartir équitablement entre tes invités, sans qu'il n'en reste aucun dans le sac. Si vous êtes $5$ personnes, cela fonctionne parfaitement car chacun reçoit $12$ bonbons. On dit alors que $60$ est divisible par $5$, ou que $5$ est un diviseur de $60$. Mais que se passe t-il si vous êtes $7$ ? En faisant le calcul, tu t'apercevras qu'il restera des bonbons. Dans ce cas, $7$ n'est pas un diviseur de $60$. C'est exactement cela que nous allons étudier : la capacité d'un nombre entier à être partagé en parts égales et entières. Cette notion, qui semble simple, est la base fondamentale de toute l'arithmétique. Elle nous permet de comprendre comment les nombres sont construits et comment ils interagissent entre eux. Que ce soit pour simplifier des fractions plus tard ou pour coder des algorithmes informatiques, savoir manipuler les multiples et les diviseurs est un outil indispensable. Ne t'inquiète pas si tu as un doute au début, c'est une notion très intuitive qui va devenir un automatisme avec un peu de pratique."
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, on utilise un vocabulaire précis pour décrire ces relations. On dit qu'un entier naturel $a$ non nul divise un entier naturel $b$ s'il existe un autre entier naturel $k$ tel que l'égalité $b = a \\times k$ soit vraie. Dans ce cas, on dit aussi que $b$ est un multiple de $a$. Par exemple, si on prend $a = 4$ et $b = 20$, on peut écrire $20 = 4 \\times 5$. Ici, l'entier $k$ est $5$. Donc, $4$ divise $20$, et $20$ est un multiple de $4$. Il est important de comprendre que la division dont on parle ici est la division euclidienne dont le reste est nul. Si le reste n'est pas nul, on ne peut pas parler de divisibilité. Un point crucial à retenir est que tout nombre entier $n$ est toujours divisible par $1$ et par lui-même. Par exemple, pour le nombre $15$, les diviseurs sont $1, 3, 5$ et $15$. On remarque que les diviseurs viennent souvent par paires : $1 \\times 15 = 15$ et $3 \\times 5 = 15$. Cette symétrie est très utile pour ne pas oublier de diviseurs lors de recherches systématiques. La relation de divisibilité est ce qu'on appelle une relation d'ordre sur les entiers naturels."
+            },
+            {
+              "type": "display_math",
+              "latex": "b = a \\times k"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir si un nombre $a$ divise un nombre $b$, ou pour trouver tous les diviseurs d'un nombre, voici la marche à suivre. Premièrement, pour une vérification simple, effectue la division euclidienne de $b$ par $a$. Si le reste est égal à $0$, alors $a$ est bien un diviseur de $b$. Deuxièmement, utilise les critères de divisibilité rapides pour gagner du temps : un nombre est divisible par $2$ s'il est pair, par $5$ s'il se termine par $0$ ou $5$, et par $3$ si la somme de ses chiffres est un multiple de $3$. Troisièmement, pour lister tous les diviseurs d'un nombre, procède par paires. Commence par $1$ et le nombre lui-même. Ensuite, teste $2$, puis $3$, et ainsi de suite. Si tu trouves que $2$ divise le nombre, note également le résultat de la division. Continue ainsi jusqu'à ce que les deux nombres de la paire se rejoignent ou se croisent. Par exemple, pour $20$, on note $(1, 20)$, puis $(2, 10)$, puis $(4, 5)$. On s'arrête là car le nombre suivant est $5$, qui est déjà dans notre liste. Cette méthode rigoureuse garantit que tu ne manqueras aucun diviseur, même pour des nombres plus importants."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons le nombre $72$. Nous voulons savoir si $6$ est un diviseur de $72$. Pour cela, nous appliquons la définition : cherchons s'il existe un entier $k$ tel que $72 = 6 \\times k$. En effectuant la division $72 \\div 6$, nous trouvons $12$. Comme $12$ est bien un nombre entier, on peut écrire $72 = 6 \\times 12$. On en conclut que $6$ divise $72$. Inversement, on peut dire que $72$ est un multiple de $6$. Si nous avions testé le nombre $7$, nous aurions trouvé $72 = 7 \\times 10 + 2$. Ici, le reste est $2$, et non $0$. Par conséquent, $7$ ne divise pas $72$. On voit bien que la condition est stricte : soit le partage est parfait, soit il ne l'est pas. Dans le premier cas, on a un lien de divisibilité, dans le second, nous n'avons aucun lien arithmétique de ce type. C'est cette précision qui permet ensuite de définir des concepts plus complexes comme les nombres premiers."
+            },
+            {
+              "type": "number_line",
+              "caption": "Multiples de 4",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 16,
+                  "label": "16"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cherchons maintenant tous les diviseurs de $48$ de manière systématique. Nous allons utiliser la technique des paires pour être certains de notre résultat. D'abord, nous savons que $1 \\times 48 = 48$. Première paire : $(1, 48)$. Ensuite, $48$ est pair, donc $2$ est un diviseur. $48 \\div 2 = 24$. Deuxième paire : $(2, 24)$. Testons $3$. La somme des chiffres de $48$ est $4 + 8 = 12$, et $12$ est divisible par $3$, donc $48$ l'est aussi. $48 \\div 3 = 16$. Troisième paire : $(3, 16)$. Testons $4$. $48 \\div 4 = 12$. Quatrième paire : $(4, 12)$. Testons $5$. Le nombre ne finit ni par $0$ ni par $5$, donc $5$ n'est pas un diviseur. Testons $6$. $6 \\times 8 = 48$. Cinquième paire : $(6, 8)$. Testons $7$. $48 \\div 7$ donne un reste de $6$, donc non. Le nombre suivant est $8$, mais $8$ est déjà présent dans notre paire $(6, 8)$. Nous avons donc terminé notre recherche. La liste complète des diviseurs de $48$ est : $1, 2, 3, 4, 6, 8, 12, 16, 24, 48$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est l'inversion entre les termes multiple et diviseur. Souviens-toi : le diviseur est le petit nombre qui casse l'autre, et le multiple est le grand nombre qui résulte de la multiplication. Par exemple, $3$ divise $15$ ($3$ est le diviseur) et $15$ est un multiple de $3$. Un autre piège classique est d'oublier le nombre $1$ ou le nombre lui-même dans la liste des diviseurs. C'est pourtant essentiel, car tout nombre entier possède au minimum ces deux diviseurs. Enfin, attention à ne pas confondre la divisibilité avec la division décimale. En arithmétique, quand on demande si $a$ divise $b$, on s'intéresse uniquement aux nombres entiers. Si le résultat est $2,5$, cela ne compte pas, même si le calcul est correct. La question est : existe-t-il un entier $k$ ? Si la réponse est non, alors il n'y a pas de divisibilité. Garde toujours en tête que nous travaillons ici dans l'univers des entiers naturels, où les virgules n'existent pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le nombre $126$ est-il divisible par $3$ ? Justifie ta réponse.",
+              "answer": "Oui",
+              "hint": "Utilise le critère de la somme des chiffres.",
+              "explanation": "La somme des chiffres de $126$ est $1 + 2 + 6 = 9$. Comme $9$ est un multiple de $3$, alors $126$ est divisible par $3$. On a d'ailleurs $126 = 3 \\\\times 42$."
+            },
+            {
+              "question": "Trouve tous les diviseurs du nombre $30$.",
+              "answer": "1, 2, 3, 5, 6, 10, 15, 30",
+              "hint": "Cherche les diviseurs par paires (1 et 30, 2 et ...).",
+              "explanation": "On a les paires : $1 \\\\times 30$, $2 \\\\times 15$, $3 \\\\times 10$ et $5 \\\\times 6$. Tous ces nombres sont des entiers, donc la liste complète est 1, 2, 3, 5, 6, 10, 15, 30."
+            },
+            {
+              "question": "Est-ce que $15$ est un diviseur de $40$ ? Pourquoi ?",
+              "answer": "Non",
+              "hint": "Est-ce qu'il existe un nombre entier qui, multiplié par 15, donne 40 ?",
+              "explanation": "Si on divise $40$ par $15$, on obtient $2$ avec un reste de $10$. Comme le reste n'est pas nul, $15$ ne divise pas $40$."
+            }
+          ]
+        },
+        {
+          "title": "Décomposition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As tu déjà remarqué que tout objet complexe est en réalité composé de pièces plus simples ? Un château en LEGO est fait de petites briques. Une molécule d'eau est faite d'atomes d'hydrogène et d'oxygène. En mathématiques, c'est exactement la même chose pour les nombres. Chaque nombre entier peut être vu comme une structure construite à partir de briques fondamentales que l'on appelle les nombres premiers. Ces nombres premiers sont des nombres spéciaux qui ne peuvent pas être cassés en morceaux plus petits. Par exemple, le nombre $7$ est comme une brique unique, tu ne peux pas le fabriquer en multipliant deux nombres plus petits que lui (à part $1$ et lui-même). En revanche, le nombre $6$ n'est pas une brique élémentaire, car il est composé de $2 \\times 3$. Apprendre à décomposer un nombre, c'est comme démonter un objet pour voir exactement quelles briques ont été utilisées pour le construire. C'est une compétence puissante qui simplifie énormément les calculs de fractions et permet de résoudre des énigmes mathématiques complexes avec une aisance surprenante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par définir notre brique de base. Un nombre premier est un entier naturel qui possède exactement deux diviseurs distincts : $1$ et lui-même. Par exemple, $2, 3, 5, 7, 11, 13, 17, 19$ sont les premiers nombres premiers. Attention, le nombre $1$ n'est pas premier car il n'a qu'un seul diviseur (lui-même). Le nombre $2$ est le seul nombre premier pair. Tous les autres nombres, qui ont plus de deux diviseurs, sont appelés des nombres composés. Le point le plus important ici est le Théorème Fondamental de l'Arithmétique : tout nombre entier supérieur ou égal à $2$ peut être écrit comme un produit de nombres premiers. De plus, cette écriture est unique, peu importe l'ordre des facteurs. Par exemple, $12$ sera toujours $2 \\times 2 \\times 3$, que tu l'écrives ainsi ou $3 \\times 2 \\times 2$. On utilise souvent les puissances pour rendre l'écriture plus élégante. Au lieu d'écrire $2 \\times 2 \\times 3$, on écrira $2^2 \\times 3$. Cette forme est appelée la décomposition en facteurs premiers. Elle agit comme l'ADN du nombre : elle nous dit tout sur ses propriétés de divisibilité."
+            },
+            {
+              "type": "display_math",
+              "latex": "n = p_1^{a_1} \\times p_2^{a_2} \\times ... \\times p_k^{a_k}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour décomposer un nombre, la méthode la plus efficace est la division successive par les nombres premiers, en commençant par le plus petit. Voici les étapes à suivre. Première étape : regarde si le nombre est divisible par $2$. Si oui, divise-le par $2$ et note le résultat. Recommence l'opération avec le nouveau résultat jusqu'à ce qu'il ne soit plus divisible par $2$. Deuxième étape : passe au nombre premier suivant, le $3$. Teste la divisibilité et divise autant de fois que possible. Troisième étape : continue ainsi avec $5, 7, 11$ et ainsi de suite. Chaque fois que tu effectues une division, tu identifies un facteur premier. La méthode s'arrête lorsque le quotient final est égal à $1$. Pour organiser ton travail, tu peux utiliser un tableau à deux colonnes : à gauche le nombre que tu divises, et à droite le diviseur premier utilisé. Enfin, pour conclure, écris le produit de tous les diviseurs utilisés. N'oublie pas de regrouper les facteurs identiques sous forme de puissances pour respecter la notation mathématique standard. C'est une méthode mécanique qui ne laisse aucune place à l'erreur si on suit bien l'ordre des nombres premiers."
+            },
+            {
+              "type": "paragraph",
+              "content": "Décomposons le nombre $60$ en facteurs premiers. On commence par le plus petit nombre premier, qui est $2$. Comme $60$ est pair, on divise : $60 \\div 2 = 30$. On note le premier $2$. Le résultat $30$ est encore pair, donc on recommence : $30 \\div 2 = 15$. On note le deuxième $2$. Maintenant, on a $15$. $15$ n'est plus divisible par $2$ car il est impair. On passe au nombre premier suivant, le $3$. On sait que $15 \\div 3 = 5$. On note le $3$. On a maintenant $5$. $5$ n'est pas divisible par $3$, on passe au nombre premier suivant, qui est justement $5$. On a $5 \\div 5 = 1$. On note le $5$. Nous sommes arrivés à $1$, le processus est terminé. Les diviseurs utilisés sont $2, 2, 3, 5$. On écrit donc l'égalité : $60 = 2 \\times 2 \\times 3 \\times 5$. Pour être plus rigoureux, on utilise les puissances : $60 = 2^2 \\times 3 \\times 5$. On a ainsi extrait l'identité arithmétique du nombre $60$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Division par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Diviser le nombre par 2 aussi longtemps que possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Division par 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Passer au 3 et diviser tant que possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Nombres suivants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Continuer avec 5, 7, 11... jusqu'à atteindre 1."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant un nombre un peu plus grand : $210$. Appliquons la même méthode rigoureuse. $210$ se termine par $0$, donc il est divisible par $2$. $210 \\div 2 = 105$. Premier facteur : $2$. Passons au $3$. La somme des chiffres de $105$ est $1 + 0 + 5 = 6$, ce qui est divisible par $3$. $105 \\div 3 = 35$. Deuxième facteur : $3$. Passons au $5$ car $35$ n'est pas divisible par $3$ ($3 + 5 = 8$). On a $35 \\div 5 = 7$. Troisième facteur : $5$. Enfin, nous avons $7$. Le $7$ est lui-même un nombre premier, donc $7 \\div 7 = 1$. Quatrième facteur : $7$. Nous avons atteint $1$, nous avons fini. La liste des facteurs est $2, 3, 5, 7$. L'écriture du produit est $210 = 2 \\times 3 \\times 5 \\times 7$. On remarque ici que $210$ est le produit des quatre premiers nombres premiers. C'est un cas intéressant car chaque facteur n'apparaît qu'une seule fois. Cette décomposition nous montre immédiatement que $210$ est divisible par n'importe quel produit de ces nombres, par exemple par $15$ car $3 \\times 5 = 15$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fatale est de considérer que $1$ est un nombre premier. Rappelle-toi bien : un nombre premier doit avoir EXACTEMENT deux diviseurs. $1$ n'en a qu'un seul, donc il est exclu. Si tu commences ta décomposition par $1$, tu tourneras en rond indéfiniment car $1 \\times 1 \\times 1...$ ne fera jamais changer le nombre. Un autre piège est de s'arrêter trop tôt. Certains élèves, en arrivant à un nombre comme $9$ ou $21$, s'arrêtent en pensant que c'est fini. Mais $9$ et $21$ ne sont pas des nombres premiers ! $9 = 3 \\times 3$ et $21 = 3 \\times 7$. Vérifie toujours que chaque facteur de ton résultat final appartient bien à la liste des nombres premiers. Enfin, fais attention aux erreurs de calcul lors des divisions. Une seule petite erreur au début de la chaîne fausse tout le résultat final. Je te conseille de toujours vérifier ton résultat à la fin en refaisant la multiplication des facteurs pour voir si tu retombes bien sur le nombre de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le nombre $1$ est-il premier ? Pourquoi ?",
+              "answer": "Non",
+              "hint": "Combien de diviseurs a le nombre 1 ?",
+              "explanation": "Un nombre premier doit avoir exactement deux diviseurs distincts (1 et lui-même). Le nombre 1 n'a qu'un seul diviseur, donc il n'est pas premier."
+            },
+            {
+              "question": "Décompose le nombre $84$ en produit de facteurs premiers.",
+              "answer": "2^2 \\times 3 \\times 7",
+              "hint": "Commence par diviser par 2, puis 3, puis 5...",
+              "explanation": "84/2 = 42; 42/2 = 21; 21/3 = 7; 7/7 = 1. On a donc 2, 2, 3, 7, ce qui s'écrit 2^2 \\times 3 \\times 7."
+            },
+            {
+              "question": "Est-ce que la décomposition 120 = 2 \\times 2 \\times 2 \\times 3 \\times 5 est correcte ?",
+              "answer": "Oui",
+              "hint": "Multiplie les nombres entre eux pour vérifier.",
+              "explanation": "2 \\times 2 = 4; 4 \\times 2 = 8; 8 \\times 3 = 24; 24 \\times 5 = 120. Le produit est correct et tous les facteurs sont premiers."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux situations du quotidien. La première : tu as deux rubans, l'un de $48$ cm et l'autre de $60$ cm, et tu veux les couper en morceaux de même longueur, les plus longs possibles, sans aucune perte. C'est un problème de partage maximal : on cherche le plus grand nombre qui divise à la fois $48$ et $60$. C'est ce qu'on appelle le PGCD. La seconde situation est différente : deux bus partent de la même station. Le bus A passe toutes les $12$ minutes, et le bus B toutes les $18$ minutes. S'ils partent ensemble à $8$ h, quand se retrouveront-ils pour la première fois au départ ? Ici, on ne cherche pas à diviser, mais à trouver un moment futur où les deux cycles se rejoignent. On cherche le plus petit multiple commun aux deux fréquences. C'est le PPCM. Ces deux outils, le PGCD et le PPCM, sont les applications directes de tout ce que nous avons appris sur la divisibilité et la décomposition. Ils nous permettent de transformer des problèmes complexes de synchronisation ou d'optimisation en calculs simples et rigoureux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le PGCD (Plus Grand Commun Diviseur) de deux entiers est le plus grand nombre entier qui divise simultanément ces deux nombres. Il est extrêmement utile pour simplifier des fractions au maximum en une seule étape. Le PPCM (Plus Petit Commun Multiple) est le plus petit entier positif qui est un multiple des deux nombres. Il est indispensable pour mettre des fractions au même dénominateur ou pour calculer des cycles de rencontre. Pour calculer ces deux valeurs, la méthode la plus élégante consiste à utiliser la décomposition en facteurs premiers. Pour le PGCD, on regarde les facteurs qui sont présents dans TOUTES les décompositions, et on prend pour chacun le plus petit exposant. Si un facteur n'est pas commun, on l'ignore. Pour le PPCM, on prend TOUS les facteurs qui apparaissent dans au moins une des décompositions, et on garde pour chacun le plus grand exposant. Par exemple, si on a $2^3 \\times 3^1$ et $2^2 \\times 3^2$, le PGCD sera $2^2 \\times 3^1$ et le PPCM sera $2^3 \\times 3^2$. On voit bien que le PGCD est une sorte de noyau commun, tandis que le PPCM est une enveloppe qui contient tout le monde."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Décomposition"
+              ],
+              "rows": [
+                [
+                  "36",
+                  "2^2 \\times 3^2"
+                ],
+                [
+                  "48",
+                  "2^4 \\times 3^1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la méthode pas à pas pour résoudre un problème de PGCD ou de PPCM. Première étape : décompose chaque nombre impliqué en produit de facteurs premiers. C'est l'étape cruciale, car tout le reste en dépend. Deuxième étape : écris les décompositions l'une sous l'autre pour bien visualiser les puissances. Troisième étape pour le PGCD : identifie les nombres premiers communs aux deux listes. Pour chacun d'eux, choisis la puissance la plus faible. Multiplie ces résultats pour obtenir le PGCD. Quatrième étape pour le PPCM : liste tous les nombres premiers apparaissant dans n'importe quelle décomposition. Pour chacun d'eux, choisis la puissance la plus forte. Multiplie-les pour obtenir le PPCM. Cinquième étape : interprète le résultat selon le contexte du problème. S'il s'agit de couper des objets, c'est le PGCD. S'il s'agit de cycles qui se répètent, c'est le PPCM. N'oublie pas d'ajouter l'unité (cm, min, etc.) à ta réponse finale pour que le résultat ait un sens concret."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons le PGCD et le PPCM de $36$ et $48$. COMMENÇONS PAR LA DÉCOMPOSITION. Pour $36$, on a $36 = 2 \\times 18 = 2 \\times 2 \\times 9 = 2^2 \\times 3^2$. Pour $48$, on on a $48 = 2 \\times 24 = 2 \\times 2 \\times 12 = 2 \\times 2 \\times 2 \\times 6 = 2 \\times 2 \\times 2 \\times 2 \\times 3 = 2^4 \\times 3^1$. CALCUL DU PGCD : Les facteurs communs sont $2$ et $3$. Le plus petit exposant pour $2$ est $2$ (dans $2^2$) et pour $3$ est $1$ (dans $3^1$). Donc $PGCD(36, 48) = 2^2 \\times 3^1 = 4 \\times 3 = 12$. CALCUL DU PPCM : On prend tous les facteurs avec le plus grand exposant. Pour $2$, c'est $2^4$. Pour $3$, c'est $3^2$. Donc $PPCM(36, 48) = 2^4 \\times 3^2 = 16 \\times 9 = 144$. On peut vérifier : $144$ est bien divisible par $36$ ($144 = 36 \\times 4$) et par $48$ ($144 = 48 \\times 3$)."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier un diviseur et un multiple.",
+                "Je sais reconnaître un nombre premier.",
+                "Je sais décomposer un nombre en produit de facteurs premiers.",
+                "Je sais calculer le PGCD et le PPCM de deux nombres.",
+                "Je sais choisir entre PGCD et PPCM selon l'énoncé d'un problème."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Résolvons un problème concret : un phare A s'allume toutes les $15$ secondes et un phare B toutes les $20$ secondes. Ils viennent de s'allumer ensemble. Dans combien de temps s'allumeront-ils à nouveau ensemble ? Ici, on cherche un moment futur, un multiple commun aux deux durées. On cherche donc le PPCM. ÉTAPE 1 : Décomposition. $15 = 3^1 \\times 5^1$. $20 = 2^2 \\times 5^1$. ÉTAPE 2 : Identification des facteurs. Les facteurs présents sont $2, 3$ et $5$. ÉTAPE 3 : Choix des plus grands exposants. Pour $2$, on a $2^2$. Pour $3$, on a $3^1$. Pour $5$, on a $5^1$. ÉTAPE 4 : Calcul. $PPCM(15, 20) = 2^2 \\times 3^1 \\times 5^1 = 4 \\times 3 \\times 5 = 60$. RÉPONSE : Les deux phares s'allumeront ensemble toutes les $60$ secondes, soit exactement toutes les $1$ minute. Ce résultat nous montre que le PPCM est l'outil parfait pour synchroniser des événements périodiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est de se tromper d'outil : utiliser le PGCD quand on a besoin du PPCM. Astuce : si le résultat doit être plus petit que les nombres de départ (comme couper un ruban), c'est le PGCD. Si le résultat doit être plus grand (comme une date de rencontre), c'est le PPCM. Un autre piège se situe dans le calcul des exposants. Certains élèves additionnent les exposants au lieu de choisir le plus petit ou le plus grand. Rappelle-toi : pour le PGCD, on est restrictif (on ne prend que le minimum commun), pour le PPCM, on est gourmand (on prend le maximum de tout). Enfin, attention aux erreurs de décomposition au début. Si tu oublies un facteur dans la décomposition de $36$, tout ton PGCD et ton PPCM seront faux. Je te conseille de toujours multiplier tes facteurs à la fin pour vérifier que tu retrouves bien le nombre original avant de passer au calcul du PGCD ou PPCM."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le PGCD de 24 et 36.",
+              "answer": "12",
+              "hint": "Décompose les deux nombres et prends les facteurs communs avec le plus petit exposant.",
+              "explanation": "24 = 2^3 \\times 3^1 et 36 = 2^2 \\times 3^2. Le PGCD est 2^2 \\times 3^1 = 4 \\times 3 = 12."
+            },
+            {
+              "question": "Un cycle de sport dure 45 min et un autre 60 min. S'ils commencent ensemble, au bout de combien de temps finissent-ils ensemble pour la première fois ?",
+              "answer": "180 min",
+              "hint": "C'est un problème de rencontre, cherche le PPCM de 45 et 60.",
+              "explanation": "45 = 3^2 \\times 5^1 et 60 = 2^2 \\times 3^1 \\times 5^1. PPCM = 2^2 \\times 3^2 \\times 5^1 = 4 \\times 9 \\times 5 = 180 min."
+            },
+            {
+              "question": "Simplifie la fraction 48/60 en utilisant le PGCD.",
+              "answer": "4/5",
+              "hint": "Calcule le PGCD de 48 et 60, puis divise le numérateur et le dénominateur par ce nombre.",
+              "explanation": "PGCD(48, 60) = 12. On divise 48 par 12 = 4 et 60 par 12 = 5. La fraction simplifiée est 4/5."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

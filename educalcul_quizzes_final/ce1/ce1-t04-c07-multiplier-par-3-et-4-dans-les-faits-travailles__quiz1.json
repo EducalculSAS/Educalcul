@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_course_id": 104,
+  "_course_code": "ce1-t04-c07-multiplier-par-3-et-4-dans-les-faits-travailles",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Construire les résultats",
+  "title": "Quiz : Construire les tables de 3 et de 4",
+  "questions": [
+    {
+      "text": "On a 4 plateaux. Sur chaque plateau, il y a 3 pommes. Combien y a-t-il de pommes en tout ?",
+      "options": [
+        "Il y a 7 pommes.",
+        "Il y a 12 pommes.",
+        "Il y a 9 pommes.",
+        "Il y a 15 pommes."
+      ],
+      "correctAnswer": "Il y a 12 pommes.",
+      "explanation": "Il y a 4 groupes de 3 pommes. On fait l'addition $3 + 3 + 3 + 3 = 12$ ou la multiplication $4 \\times 3 = 12$. L'erreur 7 correspond à $4+3$, l'erreur 9 à $3 \\times 3$, l'erreur 15 à $5 \\times 3$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 3,
+        "highlighted": 12,
+        "caption": "4 plateaux de 3 pommes"
+      }
+    },
+    {
+      "text": "Complète le calcul suivant : $3 \\times 4 = \\dots$",
+      "options": [
+        "$3 \\times 4 = 7$",
+        "$3 \\times 4 = 11$",
+        "$3 \\times 4 = 12$",
+        "$3 \\times 4 = 13$"
+      ],
+      "correctAnswer": "$3 \\times 4 = 12$",
+      "explanation": "$3 \\times 4$ signifie 3 groupes de 4 (ou 4 groupes de 3). On compte de 4 en 4 : 4, 8, 12. Ou de 3 en 3 : 3, 6, 9, 12. Le résultat est 12. 7 est $3+4$, 11 et 13 sont des erreurs de comptage proches.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa range ses billes. Elle fait 3 tas de 4 billes. Quelle addition correspond à cette situation ?",
+      "options": [
+        "$4 + 4 + 4$",
+        "$3 + 3 + 3 + 3$",
+        "$3 + 4$",
+        "$4 + 4 + 4 + 4$"
+      ],
+      "correctAnswer": "$4 + 4 + 4$",
+      "explanation": "3 tas de 4 billes veut dire qu'on ajoute 4 billes 3 fois : $4 + 4 + 4 = 12$. L'option $3 + 3 + 3 + 3$ correspond à 4 tas de 3 billes. $3+4$ n'est qu'un seul tas de chaque. $4+4+4+4$ serait 4 tas de 4.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Tas 1",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Tas 2",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Tas 3",
+            "value": 4,
+            "tone": "blue"
+          }
+        ],
+        "caption": "3 tas de 4 billes"
+      }
+    },
+    {
+      "text": "Parmi ces multiplications, laquelle donne le résultat 12 ?",
+      "options": [
+        "$2 \\times 4$",
+        "$3 \\times 3$",
+        "$4 \\times 3$",
+        "$2 \\times 6$"
+      ],
+      "correctAnswer": "$4 \\times 3$",
+      "explanation": "On teste chaque calcul : $2 \\times 4 = 8$. $3 \\times 3 = 9$. $4 \\times 3 = 12$ (c'est la bonne réponse). $2 \\times 6 = 12$ aussi, mais ce n'est pas un fait de la table de 3 ou de 4 travaillé ici (c'est la table de 2 ou 6). La question porte sur les tables de 3 et 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $4 \\times 4$, Tom sait que $3 \\times 4 = 12$. Comment peut-il trouver le résultat ?",
+      "options": [
+        "Il ajoute 3 à 12.",
+        "Il ajoute 4 à 12.",
+        "Il retire 4 à 12.",
+        "Il ajoute 1 à 12."
+      ],
+      "correctAnswer": "Il ajoute 4 à 12.",
+      "explanation": "$4 \\times 4$, c'est un groupe de 4 de plus que $3 \\times 4$. Puisque $3 \\times 4 = 12$, on fait $12 + 4 = 16$. Ajouter 3 donnerait 15 (erreur), retirer 4 donnerait 8 ($2 \\times 4$), ajouter 1 donnerait 13 (erreur de comptage).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 16,
+        "caption": "Comparaison 3x4 et 4x4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Pythagore et sa réciproque",
+  "title": "Mise en ordre : Applications de Pythagore et sa réciproque",
+  "blocks": [
+    {
+      "title": "Calculer une longueur dans un triangle rectangle",
+      "content": "Voici les étapes pour calculer la longueur de l'hypoténuse d'un triangle rectangle dont les côtés de l'angle droit mesurent $6$ cm et $8$ cm. Remets-les dans l'ordre chronologique.",
+      "items": [
+        "Identifier le triangle rectangle et repérer l'hypoténuse (le plus grand côté).",
+        "Écrire la relation du théorème de Pythagore : $c^2 = a^2 + b^2$ où $c$ est l'hypoténuse.",
+        "Remplacer les lettres par les valeurs connues : $c^2 = 6^2 + 8^2$.",
+        "Calculer les carrés et effectuer l'addition : $c^2 = 36 + 64 = 100$.",
+        "Extraire la racine carrée pour trouver la longueur : $c = \\sqrt{100} = 10$ cm."
+      ],
+      "explanation": "On commence par identifier l'hypoténuse. On écrit ensuite la formule $c^2 = a^2 + b^2$. On substitue les valeurs $6$ et $8$. On calcule $36 + 64 = 100$. Enfin, on prend la racine carrée de $100$ pour obtenir $10$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démontrer qu'un triangle est rectangle (réciproque)",
+      "content": "On veut savoir si un triangle de côtés $7$ cm, $8$ cm et $\\sqrt{113}$ cm est rectangle. Remets dans l'ordre les étapes du raisonnement par la réciproque de Pythagore.",
+      "items": [
+        "Repérer le plus grand côté : $\\sqrt{113}$ cm (candidat pour l'hypoténuse).",
+        "Calculer le carré du plus grand côté : $(\\sqrt{113})^2 = 113$.",
+        "Calculer la somme des carrés des deux autres côtés : $7^2 + 8^2 = 49 + 64 = 113$.",
+        "Comparer les deux résultats : ils sont égaux ($113 = 113$).",
+        "Conclure : d'après la réciproque du théorème de Pythagore, le triangle est rectangle."
+      ],
+      "explanation": "La réciproque s'applique en comparant le carré du plus grand côté à la somme des carrés des deux autres. Ici, $(\\sqrt{113})^2 = 113$ et $7^2 + 8^2 = 113$. L'égalité prouve que le triangle est rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre un problème géométrique en plusieurs étapes",
+      "content": "Dans un triangle isocèle ABC au sommet A, on a $AB = AC = 10$ cm et $BC = 12$ cm. On trace la hauteur AH. Remets dans l'ordre les étapes pour calculer la longueur AH.",
+      "items": [
+        "Dans un triangle isocèle, la hauteur issue du sommet principal est aussi médiane : H est le milieu de $[BC]$, donc $BH = 6$ cm.",
+        "Le triangle ABH est rectangle en H, on peut appliquer le théorème de Pythagore : $AB^2 = AH^2 + BH^2$.",
+        "Isoler $AH^2$ : $AH^2 = AB^2 - BH^2$.",
+        "Remplacer par les valeurs : $AH^2 = 10^2 - 6^2 = 100 - 36 = 64$.",
+        "Calculer la racine carrée : $AH = \\sqrt{64} = 8$ cm."
+      ],
+      "explanation": "La propriété du triangle isocèle donne $BH = 6$. Le triangle ABH est rectangle en H. On applique Pythagore : $10^2 = AH^2 + 6^2$, d'où $AH^2 = 100 - 36 = 64$, donc $AH = 8$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

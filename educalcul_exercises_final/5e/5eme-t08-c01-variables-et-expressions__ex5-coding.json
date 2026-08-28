@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Affecter",
+  "title": "L'affectation de variables : tracé et écriture d'algorithmes",
+  "blocks": [
+    {
+      "title": "Tracé d'un algorithme simple",
+      "content": "On exécute l'algorithme suivant :\\n$a \\leftarrow 10$\\n$b \\leftarrow 5$\\n$a \\leftarrow b$\\n$b \\leftarrow a$\\nQuelles sont les valeurs finales des variables $a$ et $b$ ?",
+      "correctAnswer": "À la fin de l'exécution, la variable $a$ vaut $5$ et la variable $b$ vaut $5$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au début, $a$ vaut $10$ et $b$ vaut $5$. L'instruction $a \\leftarrow b$ affecte à $a$ la valeur actuelle de $b$, soit $5$. $a$ devient $5$. L'instruction suivante $b \\leftarrow a$ affecte à $b$ la valeur actuelle de $a$, qui est maintenant $5$. $b$ reste $5$. Les deux variables valent donc $5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle et accumulateur",
+      "content": "On exécute l'algorithme suivant :\\n$somme \\leftarrow 0$\\nPour $i$ de $1$ à $4$ faire\\n    $somme \\leftarrow somme + i$\\nFin Pour\\nAfficher $somme$\\nQuelle valeur est affichée à la fin ?",
+      "correctAnswer": "La valeur affichée est $10$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $somme$ est initialisée à $0$. La boucle répète l'addition pour $i$ prenant les valeurs $1$, $2$, $3$, $4$. Pas à pas : $somme = 0+1=1$, puis $1+2=3$, puis $3+3=6$, puis $6+4=10$. La somme des quatre premiers entiers est $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture d'affectations : formules et permutation",
+      "content": "Compléter les lignes pointillées de l'algorithme ci-dessous pour qu'il échange correctement les valeurs des variables $x$ et $y$ en utilisant une variable temporaire $temp$.\\n$x \\leftarrow 8$\\n$y \\leftarrow 3$\\n$temp \\leftarrow \\dots$\\n$x \\leftarrow \\dots$\\n$y \\leftarrow \\dots$\\nAfficher $x$, $y$\\nÉcrire les trois instructions d'affectation manquantes.",
+      "correctAnswer": "$temp \\leftarrow x$\\n$x \\leftarrow y$\\n$y \\leftarrow temp$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour échanger deux variables sans perdre de valeur, on utilise une variable temporaire. 1. On sauvegarde la valeur de $x$ ($8$) dans $temp$. 2. On écrase $x$ avec la valeur de $y$ ($3$). 3. On affecte à $y$ la valeur sauvegardée dans $temp$ ($8$). À la fin, $x$ vaut $3$ et $y$ vaut $8$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

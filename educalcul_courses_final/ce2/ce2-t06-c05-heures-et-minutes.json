@@ -1,0 +1,400 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.074128+00:00",
+  "id": 191,
+  "code": "ce2-t06-c05",
+  "title": "Heures et minutes",
+  "description": "Cours structuré Educalcul : Heures et minutes.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Heures et minutes",
+    "objectif_global": "Heures et minutes",
+    "mini_lecons_imposees": [
+      "Lire une horloge.",
+      "Relier 1 h et 60 min.",
+      "Convertir cas simples."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Lire une horloge.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une horloge"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui nous allons apprendre à lire l'heure sur une horloge à aiguilles. C'est une compétence très utile pour savoir quand commence la récréation, quand il faut rentrer à la maison ou quand ton dessin animé préféré passe à la télé. Prends ton temps, observe bien le cadran et tu verras que c'est plus simple qu'il n'y paraît."
+            },
+            {
+              "type": "definition",
+              "term": "aiguille des heures",
+              "definition": "C'est l'aiguille la plus courte et la plus épaisse. Elle indique l'heure en pointant vers un chiffre du cadran.",
+              "example": "Quand elle pointe sur le 3, il est 3 heures."
+            },
+            {
+              "type": "definition",
+              "term": "aiguille des minutes",
+              "definition": "C'est l'aiguille la plus longue et la plus fine. Elle fait le tour du cadran en une heure et montre les minutes écoulées depuis le dernier chiffre d'heure.",
+              "example": "Quand elle pointe sur le 6, il est 30 minutes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une heure pile, regarde d'abord l'aiguille des heures. Si elle est exactement sur un chiffre, l'heure est ce chiffre. Ensuite vérifie l'aiguille des minutes : si elle est sur le 12, il n'y a pas de minutes en plus. Par exemple, si l'aiguille des heures est sur le 4 et l'aiguille des minutes sur le 12, il est $4$ heures pile."
+            },
+            {
+              "type": "clock",
+              "hours": 4,
+              "minutes": 0,
+              "caption": "Il est 4 heures pile",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant essayons les demi-heures. L'aiguille des minutes se place sur le 6, ce qui veut dire 30 minutes. L'aiguille des heures se trouve alors à mi-chemin entre deux chiffres. Si elle est entre le 5 et le 6, l'heure est $5$ heures et demie, c'est-à-dire $5$ heures $30$ minutes."
+            },
+            {
+              "type": "clock",
+              "hours": 5,
+              "minutes": 30,
+              "caption": "Il est 5 heures 30",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les autres minutes, l'aiguille des minutes pointe sur un chiffre du cadran. Chaque chiffre correspond à 5 minutes. Si elle est sur le 3, cela fait $3 \\times 5 = 15$ minutes. L'aiguille des heures est un peu après le chiffre de l'heure. Par exemple, si l'aiguille des heures est un peu après le 2 et l'aiguille des minutes sur le 3, il est $2$ heures $15$ minutes."
+            },
+            {
+              "type": "clock",
+              "hours": 2,
+              "minutes": 15,
+              "caption": "Il est 2 heures 15",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire l'heure pile, la demi-heure et les quarts d'heure. Dans la prochaine leçon nous verrons comment relier les heures et les minutes pour faire des conversions simples."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde l'horloge : l'aiguille des heures est sur le 7, l'aiguille des minutes sur le 12. Quelle heure est-il ?",
+              "answer": "7 heures",
+              "hint": "L'aiguille des minutes sur le 12 signifie 0 minute.",
+              "explanation": "L'aiguille des heures pointe exactement le 7 et l'aiguille des minutes est sur le 12, donc il est 7 heures pile."
+            },
+            {
+              "question": "L'aiguille des heures est entre le 9 et le 10, l'aiguille des minutes sur le 6. Quelle heure affiche l'horloge ?",
+              "answer": "9 heures 30",
+              "hint": "Le 6 correspond à 30 minutes, l'aiguille des heures est à mi-chemin entre 9 et 10.",
+              "explanation": "L'aiguille des minutes sur le 6 indique 30 minutes. L'aiguille des heures étant entre 9 et 10, l'heure est 9 heures 30."
+            },
+            {
+              "question": "Sur une horloge, l'aiguille des heures vient de passer le 11, l'aiguille des minutes est sur le 9. Combien de minutes après 11 heures ?",
+              "answer": "45 minutes",
+              "hint": "Chaque chiffre vaut 5 minutes. Le 9 correspond à 9 × 5.",
+              "explanation": "Le chiffre 9 sur l'aiguille des minutes donne 9 × 5 = 45 minutes. L'heure est donc 11 heures 45."
+            }
+          ]
+        },
+        {
+          "title": "Relier 1 h et 60 min.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier 1 h et 60 min"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu que l'aiguille des minutes fait un tour complet en une heure. Cela veut dire qu'une heure entière contient exactement 60 minutes. C'est une règle fondamentale qui va te servir tout le temps pour changer des durées d'une unité à l'autre."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour retenir 1 h = 60 min, imagine une pizza coupée en 60 petites parts. Chaque part est une minute, la pizza entière est une heure."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le cadran, chaque chiffre représente 5 minutes. Il y a 12 chiffres, donc $12 \\times 5 = 60$ minutes. Quand l'aiguille des minutes fait le tour complet, elle a passé par tous les chiffres et l'aiguille des heures a avancé d'un cran."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 heure",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "60 minutes",
+                  "value": 60,
+                  "tone": "green"
+                }
+              ],
+              "caption": "1 heure équivaut à 60 minutes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, si tu as 2 heures, tu peux multiplier : $2 \\times 60 = 120$ minutes. De même, 3 heures font $3 \\times 60 = 180$ minutes. C'est comme ajouter 60 minutes autant de fois qu'il y a d'heures."
+            },
+            {
+              "type": "number_line",
+              "caption": "Heures converties en minutes",
+              "min": 0,
+              "max": 180,
+              "points": [
+                {
+                  "value": 60,
+                  "label": "1 h"
+                },
+                {
+                  "value": 120,
+                  "label": "2 h"
+                },
+                {
+                  "value": 180,
+                  "label": "3 h"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on a un nombre de minutes qui n'est pas un multiple de 60. Par exemple 90 minutes. On peut dire que 90 minutes = 1 heure (60 minutes) + 30 minutes. Donc 90 minutes = 1 h 30 min. Cette décomposition aide à lire la durée plus facilement."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "60 min",
+                  "value": 60,
+                  "tone": "blue"
+                },
+                {
+                  "label": "30 min",
+                  "value": 30,
+                  "tone": "orange"
+                }
+              ],
+              "caption": "90 minutes = 1 h 30 min"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant relier heures et minutes. Dans la prochaine leçon nous allons pratiquer la conversion de cas simples pour devenir encore plus à l'aise."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de minutes y a-t-il dans 4 heures ?",
+              "answer": "240 minutes",
+              "hint": "Multiplie 4 par 60.",
+              "explanation": "4 heures × 60 minutes = 240 minutes."
+            },
+            {
+              "question": "Convertis 150 minutes en heures et minutes.",
+              "answer": "2 h 30 min",
+              "hint": "Enlève 60 minutes deux fois, il reste 30 minutes.",
+              "explanation": "150 minutes = 60 + 60 + 30 = 2 heures 30 minutes."
+            },
+            {
+              "question": "Si un film dure 2 heures 15 minutes, combien de minutes cela fait-il au total ?",
+              "answer": "135 minutes",
+              "hint": "2 heures = 120 minutes, ajoute 15 minutes.",
+              "explanation": "2 h = 120 min, 120 + 15 = 135 minutes."
+            }
+          ]
+        },
+        {
+          "title": "Convertir cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir cas simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant transformer des durées données en heures et minutes, ou l'inverse, pour résoudre de petits problèmes du quotidien. C'est comme passer d'une langue à une autre : on utilise la règle 1 h = 60 min comme un dictionnaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour convertir des heures en minutes, on multiplie le nombre d'heures par 60. Par exemple, pour 5 heures : $5 \\times 60 = 300$ minutes. C'est rapide et cela marche à chaque fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier les heures",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le nombre d'heures entières dans la durée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : multiplier par 60",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le produit heures × 60 pour obtenir les minutes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : ajouter les minutes restantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "S'il y a des minutes en plus, ajoute-les au total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour faire l'inverse, c'est-à-dire passer de minutes à heures et minutes, on divise le nombre de minutes par 60. Le quotient donne les heures, le reste donne les minutes. Par exemple, 200 minutes : $200 \\div 60 = 3$ reste $20$, donc 3 h 20 min."
+            },
+            {
+              "type": "number_line",
+              "caption": "Conversion 200 minutes",
+              "min": 0,
+              "max": 240,
+              "points": [
+                {
+                  "value": 60,
+                  "label": "1 h"
+                },
+                {
+                  "value": 120,
+                  "label": "2 h"
+                },
+                {
+                  "value": 180,
+                  "label": "3 h"
+                },
+                {
+                  "value": 200,
+                  "label": "200 min"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois un problème demande d'additionner deux durées. On convertit tout en minutes, on additionne, puis on reconvertit en heures et minutes si besoin. Par exemple, 1 h 40 min + 2 h 30 min = 100 min + 150 min = 250 min = 4 h 10 min."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 h 40 min",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2 h 30 min",
+                  "value": 150,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Addition de deux durées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu maîtrises maintenant la lecture de l'horloge, le lien entre heures et minutes et la conversion de durées simples. Continue à t'entraîner avec les horloges de la maison ou de la classe."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'heure pile, la demi-heure et les quarts d'heure sur une horloge à aiguilles.",
+                "Je sais que 1 heure = 60 minutes et je peux multiplier ou diviser par 60.",
+                "Je sais convertir des heures en minutes et des minutes en heures + minutes.",
+                "Je peux additionner deux durées en passant par les minutes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Transforme 6 heures en minutes.",
+              "answer": "360 minutes",
+              "hint": "Multiplie 6 par 60.",
+              "explanation": "6 × 60 = 360 minutes."
+            },
+            {
+              "question": "Convertis 275 minutes en heures et minutes.",
+              "answer": "4 h 35 min",
+              "hint": "Divise 275 par 60, note le quotient et le reste.",
+              "explanation": "275 ÷ 60 = 4 reste 35, donc 4 heures 35 minutes."
+            },
+            {
+              "question": "Un trajet dure 1 h 50 min, un autre dure 2 h 20 min. Quelle est la durée totale en heures et minutes ?",
+              "answer": "4 h 10 min",
+              "hint": "Convertis chaque durée en minutes, additionne, puis reconvertis.",
+              "explanation": "1 h 50 = 110 min, 2 h 20 = 140 min, total = 250 min = 4 h 10 min."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

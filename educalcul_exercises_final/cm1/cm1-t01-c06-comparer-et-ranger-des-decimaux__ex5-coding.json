@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Aligner valeurs de position",
+  "title": "Algorithmes pour comparer et ranger des décimaux",
+  "blocks": [
+    {
+      "title": "Comparer deux nombres décimaux",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui compare deux nombres décimaux en alignant les valeurs de position (unités, dixièmes, centièmes, …). L'algorithme doit indiquer si le premier nombre est plus petit, plus grand ou égal au second.",
+      "correctAnswer": "Algorithme comparer(a, b) :\\n1. Écrire a et b avec le même nombre de chiffres après la virgule en ajoutant des zéros à droite si nécessaire.\\n2. Comparer la partie entière : si partie_entiere(a) < partie_entiere(b) alors retourner -1 ; si > alors retourner 1.\\n3. Sinon, pour chaque position après la virgule de gauche à droite :\\n   - si chiffre_a < chiffre_b alors retourner -1 ;\\n   - si chiffre_a > chiffre_b alors retourner 1.\\n4. Si toutes les positions sont égales, retourner 0.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On aligne d'abord les nombres en complétant par des zéros pour avoir le même nombre de décimales. On compare ensuite la partie entière, puis chaque chiffre des dixièmes, centièmes, etc. Le premier chiffre différent détermine l'ordre. Si aucun chiffre ne diffère, les nombres sont égaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ranger une liste de nombres décimaux",
+      "content": "Écrire un algorithme qui prend en entrée une liste de nombres décimaux et les range dans l'ordre croissant en alignant les valeurs de position. Décrire les étapes principales (alignement, comparaison, permutation).",
+      "correctAnswer": "Algorithme trier_decimaux(liste) :\\n1. Pour chaque nombre de la liste, ajouter des zéros à droite afin que tous aient le même nombre de chiffres après la virgule (le maximum observé).\\n2. Appliquer un tri simple (par exemple tri à bulles) :\\n   pour i de 0 à longueur(liste)-2 :\\n     pour j de 0 à longueur(liste)-i-2 :\\n       si comparer(liste[j], liste[j+1]) > 0 alors échanger liste[j] et liste[j+1].\\n3. Retourner la liste triée.\\nLa fonction comparer est celle de l'exercice précédent.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On normalise d'abord toutes les écritures décimales en ajoutant des zéros pour aligner les positions. Ensuite, on utilise un algorithme de tri classique (tri à bulles, tri par insertion, etc.) qui repose sur la fonction de comparaison définie précédemment. Chaque permutation place le plus petit nombre avant le plus grand, aboutissant à une liste croissante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction de comparaison avec zéros d'alignement",
+      "content": "Proposer une fonction (style Python) compare_decimaux(a, b) qui reçoit deux chaînes de caractères représentant des nombres décimaux, ajoute des zéros à droite pour qu'elles aient le même nombre de chiffres après la virgule, puis renvoie -1 si a < b, 0 si a = b, 1 si a > b.",
+      "correctAnswer": "def compare_decimaux(a, b):\\n    # a et b sont des chaînes comme \"3,14\" ou \"2,5\"\\n    if ',' in a:\\n        ent_a, dec_a = a.split(',')\\n    else:\\n        ent_a, dec_a = a, ''\\n    if ',' in b:\\n        ent_b, dec_b = b.split(',')\\n    else:\\n        ent_b, dec_b = b, ''\\n    # aligner les parties décimales\\n    max_len = max(len(dec_a), len(dec_b))\\n    dec_a = dec_a.ljust(max_len, '0')\\n    dec_b = dec_b.ljust(max_len, '0')\\n    # comparer parties entières\\n    if int(ent_a) < int(ent_b):\\n        return -1\\n    elif int(ent_a) > int(ent_b):\\n        return 1\\n    # comparer parties décimales chiffre par chiffre\\n    for da, db in zip(dec_a, dec_b):\\n        if da < db:\\n            return -1\\n        elif da > db:\\n            return 1\\n    return 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction sépare la partie entière et la partie décimale de chaque chaîne. Elle complète la partie décimale la plus courte avec des zéros (méthode ljust) pour que les deux aient la même longueur. Ensuite, elle compare les parties entières ; si elles sont égales, elle compare les chiffres des parties décimales un à un. Le premier écart détermine le résultat. Si tout est identique, elle renvoie 0.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

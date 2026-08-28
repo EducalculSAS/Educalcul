@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Construire",
+  "title": "Quiz Patrons - Construire",
+  "questions": [
+    {
+      "text": "Lequel des patrons suivants peut être plié pour obtenir un cube ?",
+      "options": [
+        "Un patron formé de six carrés disposés en croix",
+        "Un patron formé de cinq carrés",
+        "Un patron formé de six carrés alignés en ligne",
+        "Un patron formé de quatre carrés"
+      ],
+      "correctAnswer": "Un patron formé de six carrés disposés en croix",
+      "explanation": "Un cube possède six faces carrées identiques. Le seul patron qui contient exactement six carrés et qui peut se refermer sans chevauchement est la disposition en croix (quatre carrés autour d'un central et un sixième attaché à l'un d'eux). Les autres propositions n'ont pas le bon nombre de faces ou ne permettent pas de former un volume fermé.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Dans le patron d'un pavé droit de dimensions $4 cm × 3 cm × 2 cm$, combien de faces mesurent $4 cm × 3 cm$ ?",
+      "options": [
+        "Deux",
+        "Trois",
+        "Une",
+        "Quatre"
+      ],
+      "correctAnswer": "Deux",
+      "explanation": "Un pavé droit a trois paires de faces opposées égales. Les faces de dimensions $4 cm × 3 cm$ forment une paire, donc il y en a exactement deux dans le patron.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le patron d'une pyramide à base carrée de côté $4 cm$ et de hauteur $5 cm$, combien de triangles isocèles faut-il tracer ?",
+      "options": [
+        "Quatre",
+        "Cinq",
+        "Trois",
+        "Six"
+      ],
+      "correctAnswer": "Quatre",
+      "explanation": "Une pyramide à base carrée possède une base carrée et quatre faces latérales triangulaires. Chaque face latérale est un triangle isocèle, donc il faut tracer quatre triangles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève dessine le patron d'un cylindre en utilisant deux cercles et un rectangle. Quelle dimension du rectangle correspond à la hauteur du cylindre ?",
+      "options": [
+        "La hauteur du rectangle",
+        "La largeur du rectangle",
+        "Le périmètre de la base",
+        "Le rayon de la base"
+      ],
+      "correctAnswer": "La hauteur du rectangle",
+      "explanation": "Dans le patron d'un cylindre, le rectangle se replie pour former la surface latérale. Sa hauteur devient la hauteur du cylindre, tandis que sa largeur équivaut au périmètre de la base circulaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les patrons suivants, lequel ne peut pas former un solide convexe ?",
+      "options": [
+        "Patron d'un tétraèdre",
+        "Patron d'un cube",
+        "Patron d'un pavé droit",
+        "Patron avec cinq carrés en croix"
+      ],
+      "correctAnswer": "Patron avec cinq carrés en croix",
+      "explanation": "Un solide convexe fermé nécessite que le patron contienne toutes les faces du solide. Un tétraèdre, un cube et un pavé droit ont respectivement 4, 6 et 6 faces, et leurs patrons complets existent. Un patron ne comportant que cinq carrés ne peut pas se refermer pour former un volume convexe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

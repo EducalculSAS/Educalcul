@@ -1,0 +1,449 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.793153+00:00",
+  "id": 419,
+  "code": "5eme-t08-c05",
+  "title": "Bilan - Algorithmique 5e",
+  "description": "Cours structuré Educalcul : Bilan - Algorithmique 5e.",
+  "subject": "Pensée informatique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Bilan - Algorithmique 5e",
+    "objectif_global": "Bilan - Algorithmique 5e",
+    "mini_lecons_imposees": [
+      "Variables, conditions, boucles.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Variables, conditions, boucles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les variables : des boîtes pour stocker"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux garder en mémoire le score d'un jeu vidéo. Au lieu de l'écrire sur un papier qui risque de se perdre, tu vas demander à l'ordinateur de réserver un petit espace dans sa mémoire. Cet espace a un nom que tu choisis, comme $score$, et il peut contenir une valeur qui change au fil du temps. C'est exactement ce qu'est une variable : une boîte étiquetée dont le contenu peut varier."
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Une variable est un emplacement nommé dans la mémoire de l'ordinateur qui stocke une valeur (un nombre, un texte, etc.). Cette valeur peut être modifiée pendant l'exécution du programme.",
+              "example": "score ← 0   (la variable score reçoit la valeur 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, pense à un thermomètre qui affiche la température extérieure. La température est une variable : elle change au cours de la journée, mais elle a toujours un nom ($température$) et une valeur numérique à un instant donné."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -10,
+              "max": 40,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "Matin"
+                },
+                {
+                  "value": 12,
+                  "label": "Midi"
+                },
+                {
+                  "value": 18,
+                  "label": "Soir"
+                }
+              ],
+              "caption": "La variable température prend des valeurs différentes selon l'heure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un algorithme, on utilise une flèche pour affecter une valeur : $age ← 12$ signifie \"la variable age reçoit la valeur 12\". Plus tard, on peut écrire $age ← age + 1$ pour fêter un anniversaire : l'ordinateur lit la valeur actuelle (12), ajoute 1, et range le résultat (13) dans la même boîte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nom clair",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise un mot qui décrit ce que la variable contient : $nbVies$, $prixTotal$, $prenom$. Évite les noms d'une seule lettre comme $x$ sauf pour des calculs très courts."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Initialiser la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne-lui une valeur de départ avant de l'utiliser : $nbVies ← 3$. Sans initialisation, la boîte existe mais est vide, ce qui provoque une erreur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Modifier la valeur si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise une nouvelle affectation : $nbVies ← nbVies - 1$ après avoir perdu une vie. L'ancien contenu est remplacé par le nouveau."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais créer et modifier une variable, voyons comment faire prendre des décisions à ton programme selon la valeur stockée. C'est le rôle des conditions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les conditions : prendre des décisions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tous les matins, tu regardes par la fenêtre : s'il pleut, tu prends ton parapluie ; sinon, tu laisses le parapluie à la maison. Ton cerveau vient d'exécuter une structure conditionnelle ! En algorithmique, on écrit cette logique avec les mots-clés SI, ALORS, SINON."
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Une structure qui permet d'exécuter une série d'instructions seulement si une proposition logique est vraie. On peut prévoir un cas contraire avec SINON.",
+              "example": "SI age ≥ 18 ALORS afficher \"Majeur\" SINON afficher \"Mineur\""
+            },
+            {
+              "type": "paragraph",
+              "content": "La proposition logique (appelée condition) utilise des opérateurs de comparaison : $<$ (strictement inférieur), $>$ (strictement supérieur), $\\le$ (inférieur ou égal), $\\ge$ (supérieur ou égal), $=$ (égal), $\\ne$ (différent). Le résultat est toujours vrai ou faux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition entre SI et ALORS",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'expression qui renvoie vrai ou faux : SI $note \\ge 10$ ALORS ..."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Indiquer les instructions si vrai",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris ce qui doit se passer quand la condition est remplie. Indente ces lignes pour bien voir qu'elles appartiennent au bloc ALORS."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : (Optionnel) Ajouter un bloc SINON",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu veux prévoir le cas contraire, ajoute SINON suivi des instructions alternatives. Si tu n'as rien à faire dans l'autre cas, omet simplement le SINON."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant stocker des informations et faire des choix. Il reste un outil puissant : répéter des actions sans les réécrire dix fois. Bienvenue dans le monde des boucles !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles : répéter sans s'ennuyer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Suppose que tu dois arroser 5 plantes identiques. Au lieu d'écrire \"arroser\" cinq fois, tu dis : \"Répète 5 fois : arroser la plante suivante\". C'est une boucle : un bloc d'instructions qui s'exécute plusieurs fois de suite."
+            },
+            {
+              "type": "definition",
+              "term": "Boucle (Répéter ... fois)",
+              "definition": "Une structure qui exécute un bloc d'instructions un nombre déterminé de fois. Le nombre de répétitions est connu avant d'entrer dans la boucle.",
+              "example": "RÉPÉTER 4 FOIS\\n    AVANCER 10\\n    TOURNER 90\\nFIN RÉPÉTER"
+            },
+            {
+              "type": "paragraph",
+              "content": "On utilise souvent une variable compteur pour savoir où l'on en est. Par exemple, pour afficher la table de multiplication par 7, on fait varier $i$ de 1 à 10 et on affiche $i \\times 7$ à chaque tour."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour de boucle",
+                "Valeur de i",
+                "Affichage"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "1",
+                  "1 × 7 = 7"
+                ],
+                [
+                  "2",
+                  "2",
+                  "2 × 7 = 14"
+                ],
+                [
+                  "3",
+                  "3",
+                  "3 × 7 = 21"
+                ],
+                [
+                  "...",
+                  "...",
+                  "..."
+                ],
+                [
+                  "10",
+                  "10",
+                  "10 × 7 = 70"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Déterminer le nombre de répétitions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris RÉPÉTER n FOIS où n est un nombre entier positif (ou une variable qui en contient un)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le bloc à répéter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indente toutes les instructions qui doivent être jouées à chaque tour. Elles se trouvent entre RÉPÉTER et FIN RÉPÉTER."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser un compteur si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as besoin de connaître le numéro du tour actuel, crée une variable $i ← 0$ avant la boucle, puis fais $i ← i + 1$ comme toute première instruction à l'intérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On exécute l'algorithme suivant :\\n$score ← 10$\\n$score ← score + 5$\\n$score ← score - 3$\\nQuelle est la valeur finale de la variable $score$ ?",
+              "answer": "12",
+              "hint": "Suis les affectations une par une, comme si tu mettais à jour le contenu d'une boîte.",
+              "explanation": "Au départ $score$ vaut $10$. La deuxième ligne ajoute $5$ : $10+5=15$. La troisième ligne soustrait $3$ : $15-3=12$. La valeur finale est donc $12$."
+            },
+            {
+              "question": "Complète l'algorithme ci-dessous pour qu'il affiche \"Pair\" si le nombre stocké dans $n$ est pair, et \"Impair\" sinon.\\nSI ________ ALORS\\n    AFFICHER \"Pair\"\\nSINON\\n    AFFICHER \"Impair\"",
+              "answer": "n % 2 = 0   (ou : n modulo 2 = 0)",
+              "hint": "Un nombre est pair s'il est divisible par 2, c'est-à-dire si le reste de la division euclidienne par 2 vaut 0.",
+              "explanation": "L'opérateur modulo (souvent noté % ou modulo) donne le reste de la division. Si $n \\% 2 = 0$, le reste est nul donc $n$ est pair. Sinon, le reste est 1 et $n$ est impair."
+            },
+            {
+              "question": "On veut afficher les 6 premiers multiples de 4 (4, 8, 12, 16, 20, 24) à l'aide d'une boucle. Complète :\\nRÉPÉTER ________ FOIS\\n    AFFICHER ________\\nFIN RÉPÉTER",
+              "answer": "6  puis  i × 4  (avec i initialisé à 1 et incrémenté à chaque tour)",
+              "hint": "Combien de multiples veux-tu afficher ? Comment exprimer le multiple de rang i ?",
+              "explanation": "Il faut 6 tours de boucle. Si on initialise $i ← 1$ avant la boucle et qu'on fait $i ← i + 1$ à chaque tour, les valeurs successives de $i$ sont 1, 2, 3, 4, 5, 6. Le multiple correspondant est $i \\times 4$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reprenons les variables sous un nouvel angle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce bilan, imagine que tu programmes un petit jeu de course. Tu as besoin de retenir le nom du joueur, son meilleur chrono et le nombre de pièces collectées. Chaque information a son type : du texte pour le nom, un nombre décimal pour le temps, un entier pour les pièces. Choisir le bon type aide l'ordinateur à réserver l'espace mémoire adéquat."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelle-toi : une variable se déclare par un nom explicite, s'initialise avec une valeur de départ, et se met à jour par affectation. Par exemple, $meilleurTemps ← 59.3$ au début, puis si le joueur fait mieux : $meilleurTemps ← nouveauTemps$."
+            },
+            {
+              "type": "definition",
+              "term": "Type de variable",
+              "definition": "La nature de la valeur stockée : entier (ex: 42), décimal (ex: 3.14), chaîne de caractères (ex: \"Alice\"), booléen (vrai/faux). Le type détermine les opérations autorisées.",
+              "example": "pseudo ← \"Léo\"  (chaîne)   pieces ← 17  (entier)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux conditions. Dans ton jeu, tu veux afficher un message différent selon que le joueur a battu son record ou non. Cette fois, la comparaison porte sur des nombres décimaux (les chronos). La logique reste identique : on teste, on agit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conditions : affiner les comparaisons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux combiner plusieurs tests avec les opérateurs logiques ET, OU, NON. Par exemple : SI ($nouveauTemps < meilleurTemps$) ET ($pieces \\ge 10$) ALORS débloquer le niveau bonus. Cela rend ton programme beaucoup plus riche."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les grandeurs comparées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que les deux côtés de l'opérateur sont du même type (deux nombres, deux textes). Comparer un nombre et un texte n'a pas de sens."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opérateur adapté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour des nombres : $<, >, \\le, \\ge, =, \\ne$. Pour des chaînes : on utilise souvent $=$ (identique) ou $\\ne$ (différent)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Combiner si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise ET (les deux conditions doivent être vraies), OU (au moins une vraie), NON (inverse la vérité). Parenthesise pour lever toute ambiguïté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les boucles. Ton jeu propose 3 manches. Au lieu de copier-coller le code d'une manche trois fois, tu enveloppes le déroulement d'une manche dans une boucle qui tourne exactement 3 fois. C'est propre, lisible et facile à modifier si tu décides plus tard de passer à 5 manches."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Boucles : structurer les répétitions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce de pro : initialise ton compteur de manches à 1 avant la boucle, affiche \"Manche n°\" suivi de la valeur du compteur, puis incrémente-le à la fin du bloc. Ainsi, le joueur voit \"Manche n°1\", \"Manche n°2\", \"Manche n°3\" sans effort supplémentaire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Manche",
+                "Code exécuté",
+                "Variable manche"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Déroulement d'une manche",
+                  "1"
+                ],
+                [
+                  "2",
+                  "Déroulement d'une manche",
+                  "2"
+                ],
+                [
+                  "3",
+                  "Déroulement d'une manche",
+                  "3"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour lire, comprendre et écrire des algorithmes structurés. Voici une liste de contrôle pour t'assurer que rien n'est oublié avant de te lancer dans des projets plus ambitieux."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer une variable de façon claire et l'initialiser avant de l'utiliser.",
+                "Je sais modifier la valeur d'une variable avec une flèche d'affectation.",
+                "Je sais écrire une condition SI ... ALORS ... SINON ... avec des opérateurs de comparaison.",
+                "Je sais combiner plusieurs conditions avec ET, OU, NON.",
+                "Je sais créer une boucle RÉPÉTER n FOIS ... FIN RÉPÉTER pour exécuter un bloc plusieurs fois.",
+                "Je sais utiliser une variable compteur à l'intérieur d'une boucle pour numéroter les tours.",
+                "Je sais imbriquer une condition à l'intérieur d'une boucle (et inversement).",
+                "Je relis mon algorithme pour vérifier l'indentation et la logique pas à pas."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un algorithme, on a les variables : $pseudo ← \"Zoé\"$, $niveau ← 3$, $score ← 1250$. Quelle instruction permet d'augmenter le score de 200 points ?",
+              "answer": "score ← score + 200",
+              "hint": "Pense à la flèche d'affectation : la nouvelle valeur remplace l'ancienne.",
+              "explanation": "L'instruction $score ← score + 200$ lit la valeur actuelle de $score$ (1250), ajoute 200 pour obtenir 1450, puis stocke ce résultat dans $score$."
+            },
+            {
+              "question": "On veut afficher \"Accès autorisé\" si l'utilisateur a 18 ans ou plus ET possède un badge, sinon afficher \"Accès refusé\". Écris la condition complète.",
+              "answer": "SI (age ≥ 18) ET (badge = vrai) ALORS AFFICHER \"Accès autorisé\" SINON AFFICHER \"Accès refusé\"",
+              "hint": "Deux conditions doivent être vraies en même temps : utilise ET. Pense aux parenthèses pour la clarté.",
+              "explanation": "L'opérateur ET exige que les deux propositions soient vraies. Ici, $age \\ge 18$ teste la majorité, $badge = vrai$ teste la possession du badge. Si l'une est fausse, le bloc SINON s'exécute."
+            },
+            {
+              "question": "Écris une boucle qui affiche les carrés des entiers de 1 à 5 (1, 4, 9, 16, 25) en utilisant une variable $i$ initialisée à 1.",
+              "answer": "i ← 1\\nRÉPÉTER 5 FOIS\\n    AFFICHER i × i\\n    i ← i + 1\\nFIN RÉPÉTER",
+              "hint": "Combien de tours ? Que fait-on à chaque tour ? Comment fait-on avancer i ?",
+              "explanation": "La boucle tourne 5 fois. Au premier tour $i=1$, on affiche $1\\times1=1$, puis $i$ devient 2. Au dernier tour $i=5$, on affiche $25$, puis $i$ devient 6 et la boucle s'arrête."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

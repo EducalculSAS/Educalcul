@@ -1,0 +1,435 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.552179+00:00",
+  "id": 338,
+  "code": "6eme-t02-c03",
+  "title": "Comparer et placer des fractions",
+  "description": "Cours structuré Educalcul : Comparer et placer des fractions.",
+  "subject": "Fractions",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Fractions",
+    "titre_du_cours": "Comparer et placer des fractions",
+    "objectif_global": "Comparer et placer des fractions",
+    "mini_lecons_imposees": [
+      "Droite.",
+      "Repères.",
+      "Comparaison."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Droite.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment une fraction trouve sa place sur une droite. Imagine une règle qui commence à zéro et qui s'allonge jusqu'à un. Entre ces deux repères, il y a une infinité de points, et chaque fraction en est un. Ce n'est pas une idée abstraite : c'est exactement comme quand tu partages une baguette en parts égales et que tu poses le couteau à la bonne place. Nous allons prendre le temps de bien voir comment le dénominateur découpe le segment unité et comment le numérateur te dit combien de parts tu comptes. Pas de précipitation, chaque étape sera illustrée pour que tu te sentes à l'aise dès maintenant."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le numérateur est le nombre écrit au-dessus de la barre de fraction. Il indique combien de parts égales on considère parmi le total découpé par le dénominateur. Par exemple, dans $\\frac{3}{4}$, le numérateur est $3$ : on prend trois quarts.",
+              "example": "Dans $\\frac{5}{8}$, le numérateur est $5$."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le dénominateur est le nombre écrit sous la barre de fraction. Il précise en combien de parties égales l'unité est divisée. Dans $\\frac{3}{4}$, le dénominateur $4$ signifie que le segment $[0;1]$ est coupé en quatre parts identiques.",
+              "example": "Dans $\\frac{7}{10}$, le dénominateur est $10$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de $\\frac{1}{2}$ sur la droite graduée de $0$ à $1$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la droite ci‑dessus : le segment $[0;1]$ est divisé en deux parties égales grâce au dénominateur $2$. Le numérateur $1$ nous dit de compter une seule de ces parties à partir de zéro. Le point obtenu est exactement au milieu, c'est $\\frac{1}{2}$. Essaie de visualiser le trait de coupe au centre ; c'est une image mentale que tu pourras réutiliser pour d'autres fractions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le cas simple de $\\frac{1}{2}$, nous allons explorer ce qui se passe quand le dénominateur est $3$. Le segment unité sera partagé en trois tronçons de même longueur. Le numérateur nous guidera pour choisir le premier, le deuxième ou le troisième tronçon. Cette idée de \"compter des parts\" est la clé pour placer n'importe quelle fraction."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de $\\frac{1}{3}$ et $\\frac{2}{3}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.3333333333333333,
+                  "label": "$\\frac{1}{3}$"
+                },
+                {
+                  "value": 0.6666666666666666,
+                  "label": "$\\frac{2}{3}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette nouvelle droite, le dénominateur $3$ a créé trois intervalles égaux. Le point $\\frac{1}{3}$ se trouve au premier trait, $\\frac{2}{3}$ au second. Remarque que $\\frac{3}{3}$ retomberait sur $1$, car trois tiers recomposent l'unité entière. Essaie de tracer toi‑même ces repères sur une feuille : cela ancre la compréhension."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, voici une méthode générale que tu pourras appliquer à toute fraction $\\frac{a}{b}$ avec $b>0$. Nous la décomposons en étapes claires, comme une recette de cuisine, pour que tu n'aies jamais à deviner."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre sous la barre : c'est lui qui décide en combien de parts égales tu vas couper le segment $[0;1]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace $b-1$ traits équidistants entre $0$ et $1$. Chaque petit segment mesure $\\frac{1}{b}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En partant de $0$, avance de $a$ petits segments. Le point où tu t'arrêtes est l'image de $\\frac{a}{b}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a=b$, tu dois retomber sur $1$. Si $a>b$, le point se situera au‑delà de $1$ (nous verrons cela plus tard)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne‑toi maintenant avec une fraction un peu plus grande, comme $\\frac{3}{4}$. Utilise la méthode à quatre étapes et observe où le point se place par rapport à $\\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $1$, place le point correspondant à la fraction $\\frac{1}{2}$. Indique sa position en donnant la distance depuis $0$.",
+              "answer": "$0,5$ (ou $\\frac{1}{2}$)",
+              "hint": "Le dénominateur $2$ coupe le segment en deux parts égales. Le numérateur $1$ signifie qu'on prend la première part.",
+              "explanation": "Le segment $[0;1]$ est divisé en deux parties de longueur $\\frac{1}{2}$. Le point $\\frac{1}{2}$ se trouve exactement au milieu, à une distance de $0,5$ de l'origine."
+            },
+            {
+              "question": "Place la fraction $\\frac{1}{3}$ sur la même droite. Quelle est sa distance depuis $0$ ?",
+              "answer": "$\\frac{1}{3}$ (environ $0,33$)",
+              "hint": "Divise le segment en trois parts égales. Le numérateur $1$ t'indique de t'arrêter au premier trait.",
+              "explanation": "Chaque part mesure $\\frac{1}{3}$. En comptant une part depuis $0$, on obtient le point $\\frac{1}{3}$."
+            },
+            {
+              "question": "En utilisant la méthode en quatre étapes, place la fraction $\\frac{3}{4}$ sur la droite de $0$ à $1$. À quelle distance de $0$ se trouve ce point ?",
+              "answer": "$\\frac{3}{4}$ (soit $0,75$)",
+              "hint": "Le dénominateur $4$ donne quatre parts de $\\frac{1}{4}$. Compte trois parts depuis $0$.",
+              "explanation": "Quatre parts égales font chacune $\\frac{1}{4}$. En avançant de trois parts, on arrive à $\\frac{3}{4}$, soit $0,75$ sur la graduation."
+            }
+          ]
+        },
+        {
+          "title": "Repères.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repères pour comparer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à nous repérer sur la droite pour comparer des fractions sans avoir à les poser toutes au même dénominateur. Pense à une carte : tu as des points de repère familiers (la maison, l'école, le parc) qui t'aident à situer un lieu inconnu. Ici, nos repères seront $0$, $\\frac{1}{2}$ et $1$. Ils sont faciles à visualiser et ils divisent la droite en zones claires. Nous verrons comment décider si une fraction est plus petite ou plus grande que $\\frac{1}{2}$ rien qu'en regardant son numérateur et son dénominateur. C'est un outil puissant qui te fera gagner du temps."
+            },
+            {
+              "type": "definition",
+              "term": "repère",
+              "definition": "Un repère est un point de référence connu sur une droite graduée qui permet de situer d'autres nombres. En 6e, les repères principaux sont $0$, $\\frac{1}{2}$ et $1$.",
+              "example": "Pour savoir où se trouve $\\frac{3}{5}$, on compare à $\\frac{1}{2}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repères $0$, $\\frac{1}{2}$ et $1$ sur la droite",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "$0$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                },
+                {
+                  "value": 1,
+                  "label": "$1$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe la droite : les trois repères découpent l'intervalle en deux grandes zones. Toute fraction située entre $0$ et $\\frac{1}{2}$ est plus petite que $\\frac{1}{2}$ ; toute fraction entre $\\frac{1}{2}$ et $1$ est plus grande. Pour savoir de quel côté se trouve une fraction $\\frac{a}{b}$, il suffit de comparer $2a$ et $b$. Si $2a < b$, la fraction est à gauche de $\\frac{1}{2}$ ; si $2a > b$, elle est à droite ; si $2a = b$, elle coïncide avec $\\frac{1}{2}$. Essaie mentalement avec $\\frac{3}{5}$ : $2\\times3=6$ et $6>5$, donc $\\frac{3}{5} > \\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais utiliser le repère $\\frac{1}{2}$, nous allons voir comment ordonner plusieurs fractions en les comparant deux à deux grâce à ce repère. Imagine que tu as trois parts de gâteau de tailles différentes : tu veux les ranger de la plus petite à la plus grande. En plaçant chaque fraction par rapport à $\\frac{1}{2}$, tu obtiens déjà un premier tri. Ensuite, pour départager celles qui sont du même côté, on peut les ramener au même dénominateur ou utiliser la multiplication croisée. Nous allons pratiquer les deux approches."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Fraction $\\frac{3}{5}$ comparée à $\\frac{1}{2}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "La barre ci‑dessus montre $\\frac{3}{5}$ en bleu et $\\frac{1}{2}$ en gris superposé. Visuellement, la partie bleue dépasse la moitié, ce qui confirme que $\\frac{3}{5} > \\frac{1}{2}$. Essaie de faire le même dessin pour $\\frac{2}{5}$ : tu verras qu'elle reste en deçà du trait central."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons ordonner trois fractions : $\\frac{2}{5}$, $\\frac{3}{4}$ et $\\frac{1}{2}$. Place-les d'abord par rapport au repère $\\frac{1}{2}$, puis affine l'ordre entre celles qui sont du même côté. Cette démarche en deux temps (repère puis précision) est la méthode que tu retrouveras souvent au collège."
+            },
+            {
+              "type": "number_line",
+              "caption": "Ordre des fractions $\\frac{2}{5}$, $\\frac{1}{2}$, $\\frac{3}{4}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.4,
+                  "label": "$\\frac{2}{5}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                },
+                {
+                  "value": 0.75,
+                  "label": "$\\frac{3}{4}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La fraction $\\frac{4}{9}$ est-elle plus petite ou plus grande que $\\frac{1}{2}$ ? Justifie en utilisant la règle $2a \\; ? \\; b$.",
+              "answer": "Plus petite, car $2\\times4=8 < 9$.",
+              "hint": "Calcule $2 \\times$ numérateur et compare au dénominateur.",
+              "explanation": "Pour $\\frac{4}{9}$, $2a = 8$ et $b = 9$. Puisque $8 < 9$, la fraction se situe à gauche de $\\frac{1}{2}$, donc $\\frac{4}{9} < \\frac{1}{2}$."
+            },
+            {
+              "question": "Compare $\\frac{3}{5}$ et $\\frac{1}{2}$ à l'aide d'un dessin de barres (comme ci‑dessus) et donne le résultat.",
+              "answer": "$\\frac{3}{5} > \\frac{1}{2}$",
+              "hint": "Divise une barre en 5 parts, colorie 3 parts. Divise une autre barre en 2 parts, colorie 1 part. Superpose-les mentalement.",
+              "explanation": "La barre des cinquièmes montre trois parts sur cinq, ce qui dépasse la moitié de la barre. Donc $\\frac{3}{5}$ est plus grande que $\\frac{1}{2}$."
+            },
+            {
+              "question": "Range dans l'ordre croissant les fractions $\\frac{2}{5}$, $\\frac{3}{4}$ et $\\frac{1}{2}$.",
+              "answer": "$\\frac{2}{5} < \\frac{1}{2} < \\frac{3}{4}$",
+              "hint": "D'abord compare chaque fraction à $\\frac{1}{2}$ avec la règle $2a ? b$, puis compare $\\frac{2}{5}$ et $\\frac{3}{4}$ en les ramenant au dénominateur $20$.",
+              "explanation": "$\\frac{2}{5}$ donne $2\\times2=4 < 5$, donc $< \\frac{1}{2}$. $\\frac{3}{4}$ donne $2\\times3=6 > 4$, donc $> \\frac{1}{2}$. Pour départager $\\frac{2}{5}$ et $\\frac{3}{4}$, on utilise $20$ : $\\frac{8}{20} < \\frac{15}{20}$. L'ordre final est $\\frac{2}{5} < \\frac{1}{2} < \\frac{3}{4}$."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours. Tu sais déjà placer une fraction sur une droite et utiliser les repères $0$, $\\frac{1}{2}$, $1$. Maintenant, nous allons comparer directement deux fractions quelconques, par exemple $\\frac{2}{3}$ et $\\frac{3}{5}$. Il existe deux méthodes fiables : la réduction au même dénominateur (que tu as déjà croisée) et la multiplication croisée, plus rapide quand les nombres sont grands. Nous allons les explorer pas à pas, avec des exemples concrets, pour que tu choisisses celle qui te convient le mieux. Rappelle‑toi : comprendre pourquoi ça marche est plus important que d'appliquer une recette sans réfléchir."
+            },
+            {
+              "type": "definition",
+              "term": "multiplication croisée",
+              "definition": "Pour comparer $\\frac{a}{b}$ et $\\frac{c}{d}$ (avec $b,d>0$), on calcule $a\\times d$ et $c\\times b$. Si $a d > c b$, alors $\\frac{a}{b} > \\frac{c}{d}$ ; si $a d < c b$, alors $\\frac{a}{b} < \\frac{c}{d}$ ; sinon elles sont égales.",
+              "example": "Comparer $\\frac{2}{3}$ et $\\frac{3}{5}$ : $2\\times5=10$, $3\\times3=9$, donc $\\frac{2}{3} > \\frac{3}{5}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode 1 : Même dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve un multiple commun des deux dénominateurs (souvent leur produit). Réécris chaque fraction avec ce dénominateur commun, puis compare les numérateurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Méthode 2 : Multiplication croisée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur de la première par le dénominateur de la seconde, et vice‑versa. Compare les deux produits obtenus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Choisir la méthode",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les dénominateurs sont petits, le même dénominateur est simple. Si l'un des dénominateurs est grand ou si tu veux aller vite, la multiplication croisée est souvent plus commode."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} > \\frac{c}{d} \\iff a d > c b"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule ci‑dessus résume la multiplication croisée. Elle est valable tant que $b$ et $d$ sont positifs, ce qui est toujours le cas pour nos fractions en 6e. Essaie de l'appliquer mentalement à $\\frac{5}{8}$ et $\\frac{3}{4}$ : $5\\times4=20$, $3\\times8=24$, donc $\\frac{5}{8} < \\frac{3}{4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, entraînons‑nous à ordonner plusieurs fractions en combinant les deux méthodes. Prenons $\\frac{1}{3}$, $\\frac{2}{5}$ et $\\frac{3}{4}$. Commence par comparer $\\frac{1}{3}$ et $\\frac{2}{5}$ par multiplication croisée, puis place $\\frac{3}{4}$ par rapport aux deux autres. Cette approche progressive t'évitera de te perdre dans les calculs."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{1}{3}$, $\\frac{2}{5}$, $\\frac{3}{4}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.3333333333333333,
+                  "label": "$\\frac{1}{3}$"
+                },
+                {
+                  "value": 0.4,
+                  "label": "$\\frac{2}{5}$"
+                },
+                {
+                  "value": 0.75,
+                  "label": "$\\frac{3}{4}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, fais un dernier exercice où tu devras comparer deux fractions au choix de ton professeur (ou de ton cahier d'exercices) en expliquant quelle méthode tu as utilisée et pourquoi. Cela montrera que tu as non seulement le calcul, mais aussi la réflexion critique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais placer une fraction sur une droite graduée en utilisant le dénominateur pour diviser l'unité.",
+                "Je sais utiliser les repères $0$, $\\frac{1}{2}$ et $1$ pour situer rapidement une fraction.",
+                "Je sais comparer deux fractions en les ramenant au même dénominateur.",
+                "Je sais comparer deux fractions par multiplication croisée.",
+                "Je sais ordonner plusieurs fractions en combinant repères et calculs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{2}{3}$ et $\\frac{3}{5}$ en utilisant la multiplication croisée. Écris les deux produits et la conclusion.",
+              "answer": "$2\\times5=10$, $3\\times3=9$, donc $\\frac{2}{3} > \\frac{3}{5}$.",
+              "hint": "Multiplie en croix : numérateur gauche × dénominateur droit, et numérateur droit × dénominateur gauche.",
+              "explanation": "La multiplication croisée donne $10$ et $9$. Comme $10 > 9$, la fraction de gauche est plus grande."
+            },
+            {
+              "question": "Range dans l'ordre croissant $\\frac{1}{3}$, $\\frac{2}{5}$ et $\\frac{3}{4}$. Montre tes calculs (multiplication croisée ou même dénominateur).",
+              "answer": "$\\frac{1}{3} < \\frac{2}{5} < \\frac{3}{4}$",
+              "hint": "Compare $\\frac{1}{3}$ et $\\frac{2}{5}$ : $1\\times5=5$, $2\\times3=6$. Puis compare $\\frac{2}{5}$ et $\\frac{3}{4}$ : $2\\times4=8$, $3\\times5=15$.",
+              "explanation": "Pour $\\frac{1}{3}$ vs $\\frac{2}{5}$ : $5<6$ donc $\\frac{1}{3}<\\frac{2}{5}$. Pour $\\frac{2}{5}$ vs $\\frac{3}{4}$ : $8<15$ donc $\\frac{2}{5}<\\frac{3}{4}$. L'ordre final est $\\frac{1}{3} < \\frac{2}{5} < \\frac{3}{4}$."
+            },
+            {
+              "question": "Choisis deux fractions de ton choix (dénominateurs $\\le 12$), compare-les avec les deux méthodes et explique laquelle tu as trouvée plus simple.",
+              "answer": "Réponse libre, par exemple $\\frac{4}{7}$ et $\\frac{5}{9}$ : multiplication croisée $4\\times9=36$, $5\\times7=35$ → $\\frac{4}{7}>\\frac{5}{9}$. Même dénominateur $63$ : $\\frac{36}{63}>\\frac{35}{63}$. La multiplication croisée est plus rapide ici.",
+              "hint": "Prends des fractions simples, calcule les deux produits croisés et aussi le dénominateur commun (produit des dénominateurs).",
+              "explanation": "L'exercice vise à vérifier que tu maîtrises les deux techniques et que tu sais justifier ton choix. Toute réponse correcte avec explication claire est acceptée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

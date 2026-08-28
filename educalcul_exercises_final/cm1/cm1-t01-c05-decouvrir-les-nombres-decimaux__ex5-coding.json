@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 215,
+  "_course_code": "cm1-t01-c05-decouvrir-les-nombres-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Partie entière / décimale",
+  "title": "Algorithme pour séparer partie entière et partie décimale",
+  "blocks": [
+    {
+      "title": "Question 1 : Extraction simple",
+      "content": "Écrire un algorithme en langage naturel (ou pseudo-code) qui, étant donné le nombre décimal $12.34$, affiche sa partie entière et sa partie décimale.",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre décimal (par exemple $12.34$).\\n2. La partie entière est le nombre avant la virgule : $12$.\\n3. La partie décimale est le nombre après la virgule, précédé de $0,$ : $0,34$ (ou $0.34$).\\n4. Afficher \"Partie entière : 12\" et \"Partie décimale : 0,34\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On repère la virgule qui sépare la partie entière (à gauche) de la partie décimale (à droite). La partie entière s'écrit telle quelle. La partie décimale s'écrit en ajoutant un zéro et une virgule devant les chiffres après la virgule pour former un nombre décimal inférieur à 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Fonction en pseudo-code",
+      "content": "Écrire une fonction en pseudo-code nommée `separer_parties` qui prend en paramètre un nombre décimal positif (par exemple $7.89$) et renvoie un couple (partie_entiere, partie_decimale) où la partie décimale est un nombre décimal (par exemple $0.89$).",
+      "correctAnswer": "Fonction separer_parties(nombre)\\n    entier ← partie_entiere(nombre)   // conversion en entier\\n    decimal ← nombre - entier\\n    Retourner (entier, decimal)\\nFin Fonction\\n\\nExemple : separer_parties(7.89) renvoie (7, 0.89)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction utilise l'opération `partie_entiere` pour obtenir la partie entière (troncature vers zéro). La partie décimale est calculée par la différence entre le nombre original et sa partie entière. Le couple est retourné avec `Retourner`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Boucle sur une liste",
+      "content": "Écrire un algorithme (en pseudo-code) qui parcourt la liste de nombres décimaux $[3.14, 10.5, 0.99, 42.0]$ et affiche pour chaque nombre sa partie entière et sa partie décimale.",
+      "correctAnswer": "Liste ← [3.14, 10.5, 0.99, 42.0]\\nPour chaque nombre dans Liste faire\\n    entier ← partie_entiere(nombre)\\n    decimal ← nombre - entier\\n    Afficher \"Nombre : \" + nombre + \" -> Entier : \" + entier + \" , Décimal : \" + decimal\\nFin Pour\\n\\nRésultat attendu :\\nNombre : 3.14 -> Entier : 3 , Décimal : 0.14\\nNombre : 10.5 -> Entier : 10 , Décimal : 0.5\\nNombre : 0.99 -> Entier : 0 , Décimal : 0.99\\nNombre : 42.0 -> Entier : 42 , Décimal : 0.0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle `Pour chaque` pour traiter chaque élément de la liste. Pour chaque nombre, on extrait la partie entière avec `partie_entiere`. La partie décimale est la différence. On affiche ensuite les deux parties. Cela montre la généralisation de la méthode aux listes.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

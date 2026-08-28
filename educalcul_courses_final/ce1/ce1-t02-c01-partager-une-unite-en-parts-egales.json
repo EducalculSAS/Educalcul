@@ -1,0 +1,412 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.722187+00:00",
+  "id": 79,
+  "code": "ce1-t02-c01",
+  "title": "Partager une unité en parts égales",
+  "description": "Cours structuré Educalcul : Partager une unité en parts égales.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Partager une unité en parts égales",
+    "objectif_global": "Partager une unité en parts égales",
+    "mini_lecons_imposees": [
+      "Reconnaître un partage équitable.",
+      "Nommer moitié, tiers, quart.",
+      "Distinguer part égale et part inégale."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Reconnaître un partage équitable.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître un partage équitable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on partage quelque chose, on veut que chaque personne reçoive la même quantité. C'est ce qu'on appelle un partage équitable. Pour bien comprendre, imagine que tu as $6$ bonbons et que tu veux les donner à deux amis pour que chacun ait la même quantité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu poses les bonbons sur la table, tu comptes jusqu'à $6$ et tu fais deux tas identiques en mettant un bonbon dans chaque tas à tour de rôle. À la fin, chaque tas contient $3$ bonbons, donc le partage est équitable."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Enfant 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Enfant 2",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "6 bonbons partagés équitablement en 2 parts de 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec $8$ crayons de couleur que tu veux répartir entre quatre camarades de classe pour que tout le monde soit content."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu alignes les huit crayons et tu formes quatre groupes de la même taille en donnant un crayon à chaque groupe, puis un second crayon. Chaque groupe reçoit $2$ crayons, donc chaque camarade a la même part et le partage reste équitable."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Camarade 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Camarade 2",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Camarade 3",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Camarade 4",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ],
+              "caption": "8 crayons partagés équitablement en 4 parts de 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais il arrive que le nombre d'objets ne permette pas un partage parfait, comme quand tu as $5$ pommes à donner à deux enfants."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu essaies de faire deux tas, mais l'un aura $3$ pommes et l'autre seulement $2$. Les parts ne sont pas égales, donc le partage est inéquitable. Tu remarques que l'un des enfants a une pomme de plus que l'autre."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Enfant 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Enfant 2",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ],
+              "caption": "5 pommes partagées en 2 parts inégales (3 et 2)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $6$ bonbons à partager équitablement entre $2$ enfants. Combien de bonbons chaque enfant reçoit-il ?",
+              "answer": "$3$",
+              "hint": "Compte les bonbons et fais deux tas identiques.",
+              "explanation": "En faisant deux tas de $3$ bonbons chacun, le partage est équitable."
+            },
+            {
+              "question": "Tu as $8$ crayons à répartir entre $4$ camarades. Combien de crayons chaque camarade reçoit-il ?",
+              "answer": "$2$",
+              "hint": "Forme quatre groupes de même taille.",
+              "explanation": "Chaque groupe reçoit $2$ crayons, donc le partage est équitable."
+            },
+            {
+              "question": "Tu as $5$ pommes à donner à $2$ enfants. Est-ce un partage équitable ? Réponds par oui ou non.",
+              "answer": "non",
+              "hint": "Essaie de faire deux tas avec le même nombre de pommes.",
+              "explanation": "Un tas aura $3$ pommes et l'autre $2$, les parts ne sont pas égales."
+            }
+          ]
+        },
+        {
+          "title": "Nommer moitié, tiers, quart.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer moitié, tiers, quart"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, tu vas apprendre à donner un nom aux parts égales quand tu coupes un objet en deux, en trois ou en quatre. C'est très utile pour parler de gâteaux, de pizzas ou de feuilles de papier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commence par la moitié. Si tu as une barre de chocolat et que tu la casses en deux morceaux de la même taille, chaque morceau est une moitié. On écrit cela avec le chiffre $1$ au-dessus d'un trait et le chiffre $2$ en dessous."
+            },
+            {
+              "type": "definition",
+              "term": "moitié",
+              "definition": "Une moitié, c'est l'une des deux parts égales d'un tout.",
+              "example": "Une pomme coupée en deux donne deux moitiés."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Une moitié"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au tiers, qui est le nom de chaque part quand on divise quelque chose en trois parties égales."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une tarte ronde que tu coupes en trois parts identiques. Chaque part représente un tiers de la tarte. On l'écrit avec un $1$ au-dessus et un $3$ en dessous du trait."
+            },
+            {
+              "type": "definition",
+              "term": "tiers",
+              "definition": "Un tiers, c'est l'une des trois parts égales d'un tout.",
+              "example": "Un gâteau partagé en trois donne trois tiers."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Un tiers"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, découvrons le quart, qui correspond à l'une des quatre parts égales d'un tout."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends une feuille de papier et plie-la en deux, puis encore en deux. Tu obtiens quatre rectangles de la même taille. Chaque rectangle est un quart de la feuille. L'écriture utilise un $1$ au-dessus et un $4$ en dessous."
+            },
+            {
+              "type": "definition",
+              "term": "quart",
+              "definition": "Un quart, c'est l'une des quatre parts égales d'un tout.",
+              "example": "Une pizza coupée en quatre donne quatre quarts."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Un quart"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu coupes une pomme en deux parts égales, comment s'appelle chaque part ?",
+              "answer": "moitié",
+              "hint": "Le mot commence par m et finit par tié.",
+              "explanation": "Chaque part égale d'un tout divisé en deux s'appelle une moitié."
+            },
+            {
+              "question": "Tu partages un gâteau en trois parts identiques. Quel est le nom de chaque part ?",
+              "answer": "tiers",
+              "hint": "Le mot ressemble à trois.",
+              "explanation": "Chaque part égale d'un tout divisé en trois s'appelle un tiers."
+            },
+            {
+              "question": "Une feuille pliée en quatre parties égales donne des parts qu'on appelle comment ?",
+              "answer": "quart",
+              "hint": "Le mot commence par q et finit par art.",
+              "explanation": "Chaque part égale d'un tout divisé en quatre s'appelle un quart."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer part égale et part inégale.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distinguer part égale et part inégale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà la moitié, le tiers et le quart. Rappelle-toi : quand tu coupes un gâteau en deux parts identiques, chaque part est une moitié. En trois, c'est un tiers. En quatre, c'est un quart."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien voir ces parts égales, on peut utiliser une droite graduée qui montre les repères à zéro, à un demi, à un tiers, à un quart et à un."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repères des parts égales sur une droite",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.33,
+                  "label": "1/3"
+                },
+                {
+                  "value": 0.25,
+                  "label": "1/4"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais parfois, les parts ne sont pas de la même taille, par exemple quand on casse une baguette en deux morceaux très différents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier morceau peut mesurer $30$ $cm$ et le second seulement $10$ $cm$. Les deux parts ne sont pas égales, donc le partage est inéquitable. On dit que les parts sont inégales."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueurs des deux morceaux de baguette",
+              "bars": [
+                {
+                  "label": "Morceau 1",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Morceau 2",
+                  "value": 10,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, entraînons-nous à reconnaître si un partage est équitable ou non en observant différentes situations."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde une image où un rectangle est divisé en trois bandes de largeurs différentes. Demande-toi si chaque bande a la même superficie. Si ce n'est pas le cas, le partage est inégal. Essaie aussi avec un cercle partagé en quatre quarts parfaits."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Un cercle divisé en quatre quarts égaux",
+              "slices": [
+                {
+                  "label": "Quart 1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Quart 2",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Quart 3",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Quart 4",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un partage équitable.",
+                "Je sais nommer moitié, tiers et quart.",
+                "Je sais dire si des parts sont égales ou inégales."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée, les points $0$, $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$ et $1$ marquent des parts égales. Quelle part correspond à $\\frac{1}{2}$ ?",
+              "answer": "moitié",
+              "hint": "Deux parts égales font un tout.",
+              "explanation": "Le point $\\frac{1}{2}$ se trouve à mi-chemin entre $0$ et $1$, c'est la moitié."
+            },
+            {
+              "question": "Un bâton de $30$ $cm$ est cassé en deux morceaux de $30$ $cm$ et $10$ $cm$. Les parts sont-elles égales ?",
+              "answer": "non",
+              "hint": "Compare les longueurs des deux morceaux.",
+              "explanation": "Les longueurs $30$ $cm$ et $10$ $cm$ sont différentes, donc les parts sont inégales."
+            },
+            {
+              "question": "Un rectangle est divisé en trois bandes de largeurs $2$ $cm$, $3$ $cm$ et $5$ $cm$. Le partage est-il équitable ?",
+              "answer": "non",
+              "hint": "Vérifie si toutes les largeurs sont identiques.",
+              "explanation": "Les largeurs $2$ $cm$, $3$ $cm$ et $5$ $cm$ ne sont pas les mêmes, donc le partage est inégal."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

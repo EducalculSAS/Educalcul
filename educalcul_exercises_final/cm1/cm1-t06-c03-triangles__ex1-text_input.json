@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 250,
+  "_course_code": "cm1-t06-c03-triangles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Propriétés simples",
+  "title": "Propriétés simples des triangles",
+  "blocks": [
+    {
+      "title": "Somme des angles",
+      "content": "Dans un triangle, la somme des trois angles mesure combien de degrés ?",
+      "correctAnswer": "180",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des angles intérieurs d'un triangle est toujours égale à $180^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Triangle à deux côtés égaux",
+      "content": "Un triangle a deux côtés de même longueur. Comment appelle-t-on ce triangle ?",
+      "correctAnswer": "isocèle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle qui possède deux côtés de même longueur est appelé triangle isocèle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Repérer l'angle droit",
+      "content": "Dans le triangle ABC ci-dessous, quel sommet porte l'angle droit ?",
+      "correctAnswer": "B",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le triangle montre un petit carré à l'angle B, ce qui indique un angle droit de $90^\\circ$. Donc le sommet de l'angle droit est B.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec angle droit en B",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

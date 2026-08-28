@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Variables, conditions et boucles",
+  "title": "Quiz Algorithmique : Variables, conditions et boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$\\text{a} \\leftarrow 7$\\n$\\text{b} \\leftarrow 4$\\n$\\text{a} \\leftarrow \\text{a} + \\text{b}$\\n$\\text{b} \\leftarrow \\text{a} - \\text{b}$\\n$\\text{a} \\leftarrow \\text{a} - \\text{b}$\\nQuelles sont les valeurs finales des variables $\\text{a}$ et $\\text{b}$ ?",
+      "options": [
+        "$\\text{a} = 7$ et $\\text{b} = 4$",
+        "$\\text{a} = 4$ et $\\text{b} = 7$",
+        "$\\text{a} = 11$ et $\\text{b} = 7$",
+        "$\\text{a} = 3$ et $\\text{b} = -3$"
+      ],
+      "correctAnswer": "$\\text{a} = 4$ et $\\text{b} = 7$",
+      "explanation": "Cet algorithme échange les valeurs de $\\text{a}$ et $\\text{b}$ sans variable temporaire. Pas à pas : $\\text{a}$ devient $7+4=11$. $\\text{b}$ devient $11-4=7$ (ancienne valeur de $\\text{a}$). $\\text{a}$ devient $11-7=4$ (ancienne valeur de $\\text{b}$). Résultat final : $\\text{a}=4$, $\\text{b}=7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant :\\n$\\text{x} \\leftarrow -5$\\n$\\text{Si } \\text{x} > 0 \\text{ Alors}$\\n$\\quad \\text{y} \\leftarrow 2 \\times \\text{x}$\\n$\\text{Sinon}$\\n$\\quad \\text{y} \\leftarrow \\text{x} + 10$\\n$\\text{Fin Si}$\\nQuelle est la valeur de $\\text{y}$ à la fin de l'exécution ?",
+      "options": [
+        "$\\text{y} = -10$",
+        "$\\text{y} = 5$",
+        "$\\text{y} = -15$",
+        "$\\text{y} = 0$"
+      ],
+      "correctAnswer": "$\\text{y} = 5$",
+      "explanation": "La condition $\\text{x} > 0$ est fausse car $\\text{x} = -5$. On exécute donc la branche $\\text{Sinon}$ : $\\text{y} \\leftarrow -5 + 10 = 5$. La branche $\\text{Alors}$ ($\\text{y} = -10$) n'est pas exécutée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute la boucle suivante :\\n$\\text{s} \\leftarrow 0$\\n$\\text{Pour } \\text{i} \\text{ de } 1 \\text{ à } 6 \\text{ faire}$\\n$\\quad \\text{s} \\leftarrow \\text{s} + \\text{i}$\\n$\\text{Fin Pour}$\\nQuelle est la valeur finale de $\\text{s}$ ?",
+      "options": [
+        "$\\text{s} = 15$",
+        "$\\text{s} = 21$",
+        "$\\text{s} = 6$",
+        "$\\text{s} = 18$"
+      ],
+      "correctAnswer": "$\\text{s} = 21$",
+      "explanation": "La boucle ajoute les entiers de $1$ à $6$ à la variable $\\text{s}$ initialisée à $0$. Somme : $1+2+3+4+5+6 = 21$. L'option $15$ correspond à la somme jusqu'à $5$, l'option $18$ à une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel sera l'affichage final de cet algorithme ?\\n$\\text{p} \\leftarrow 1$\\n$\\text{Pour } \\text{k} \\text{ de } 1 \\text{ à } 4 \\text{ faire}$\\n$\\quad \\text{p} \\leftarrow \\text{p} \\times \\text{k}$\\n$\\text{Fin Pour}$\\n$\\text{Afficher } \\text{p}$",
+      "options": [
+        "$10$",
+        "$24$",
+        "$12$",
+        "$4$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "La boucle calcule le factoriel de $4$ (noté $4!$). $\\text{p}$ prend successivement les valeurs : $1\\times1=1$, $1\\times2=2$, $2\\times3=6$, $6\\times4=24$. L'affichage final est $24$. L'option $10$ est la somme, $12$ est $3! \\times 2$ ou erreur d'itération.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$\\text{n} \\leftarrow 20$\\n$\\text{TantQue } \\text{n} > 5 \\text{ Faire}$\\n$\\quad \\text{n} \\leftarrow \\text{n} - 3$\\n$\\text{FinTantQue}$\\n$\\text{Afficher } \\text{n}$\\nQuelle valeur est affichée ?",
+      "options": [
+        "$2$",
+        "$5$",
+        "$8$",
+        "$-1$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "La boucle diminue $\\text{n}$ de $3$ tant que $\\text{n} > 5$. Valeurs successives de $\\text{n}$ : $20 \\rightarrow 17 \\rightarrow 14 \\rightarrow 11 \\rightarrow 8 \\rightarrow 5$. Quand $\\text{n}$ devient $5$, la condition $\\text{n} > 5$ devient fausse, la boucle s'arrête. La valeur affichée est $5$. Attention : l'option $2$ correspondrait à un tour de boucle de trop ($\\text{n}>5$ faux pour $5$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Automatismes",
+  "title": "Approfondissement : Automatismes algorithmiques",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Écrire un algorithme qui calcule la somme des $n$ premiers entiers positifs. L'algorithme doit demander la valeur de $n$ et afficher le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Demander $n$\\n2. $somme$ ← 0\\n3. Pour $i$ de 1 à $n$ faire\\n4.     $somme$ ← $somme$ + $i$\\n5. Fin pour\\n6. Afficher $somme$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la variable $somme$ à 0. La boucle pour $i$ de 1 à $n$ ajoute chaque entier $i$ à $somme$. À la fin, $somme$ vaut 1 + 2 + ... + $n$, soit la somme demandée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de primalité",
+      "content": "Écrire un algorithme qui détermine si un entier $p$ donné est premier. L'algorithme doit afficher \"Premier\" ou \"Non premier\".",
+      "correctAnswer": "Algorithme :\\n1. Demander $p$\\n2. Si $p$ ≤ 1 alors afficher \"Non premier\" et arrêter\\n3. $premier$ ← Vrai\\n4. Pour $d$ de 2 à racine($p$) faire\\n5.     Si $p$ modulo $d$ = 0 alors $premier$ ← Faux\\n6. Fin pour\\n7. Si $premier$ alors afficher \"Premier\" sinon afficher \"Non premier\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste la divisibilité de $p$ par tous les entiers $d$ de 2 jusqu'à la racine carrée de $p$. Si un diviseur est trouvé, $p$ n'est pas premier. Le test s'arrête à la racine car si $p$ = $a$ × $b$, l'un des facteurs est ≤ la racine carrée de $p$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD par l'algorithme d'Euclide",
+      "content": "Écrire un algorithme qui calcule le plus grand commun diviseur (PGCD) de deux entiers $a$ et $b$ en utilisant l'algorithme d'Euclide. L'algorithme doit afficher le PGCD.",
+      "correctAnswer": "Algorithme :\\n1. Demander $a$, $b$\\n2. Tant que $b$ ≠ 0 faire\\n3.     $r$ ← $a$ modulo $b$\\n4.     $a$ ← $b$\\n5.     $b$ ← $r$\\n6. Fin tant que\\n7. Afficher $a$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme d'Euclide remplace successivement le couple ($a$, $b$) par ($b$, $a$ mod $b$) jusqu'à ce que le reste devienne nul. Le dernier reste non nul est le PGCD des deux nombres initiaux.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

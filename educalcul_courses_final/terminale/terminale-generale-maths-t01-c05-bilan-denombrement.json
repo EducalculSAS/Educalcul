@@ -1,0 +1,423 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.592787+00:00",
+  "id": 677,
+  "code": "terminale-generale-maths-t01-c05",
+  "title": "Bilan - Dénombrement",
+  "description": "Cours structuré Educalcul : Bilan - Dénombrement.",
+  "subject": "Dénombrement et algèbre",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Dénombrement et algèbre",
+    "titre_du_cours": "Bilan - Dénombrement",
+    "objectif_global": "Bilan - Dénombrement",
+    "mini_lecons_imposees": [
+      "Choix de méthode.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Dénombrement et algèbre",
+      "lessons": [
+        {
+          "title": "Choix de méthode.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne méthode de dénombrement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan consacré au dénombrement. En terminale spécialité mathématiques, tu as déjà rencontré de nombreuses situations où il faut compter des possibilités : mots de passe, tirages au sort, arrangements de livres sur une étagère, ou encore chemins dans un graphe. Ce qui peut sembler intimidant au premier abord devient beaucoup plus clair dès qu'on adopte une démarche systématique. Prends le temps de lire chaque partie, note les idées qui te parlent, et n'hésite pas à revenir en arrière si une notion te paraît floue. La confiance se construit pas à pas, et chaque exemple concret que nous allons traverser ensemble renforce ton intuition."
+            },
+            {
+              "type": "definition",
+              "term": "Permutation",
+              "definition": "Une permutation d'un ensemble à $n$ éléments est un arrangement ordonné de la totalité de ces éléments. Le nombre de permutations vaut $n!$.",
+              "example": "Les $3! = 6$ permutations des lettres A, B, C sont ABC, ACB, BAC, BCA, CAB, CBA."
+            },
+            {
+              "type": "definition",
+              "term": "Arrangement",
+              "definition": "Un arrangement de $p$ éléments parmi $n$ (sans répétition) est une sélection ordonnée de $p$ éléments distincts. Son nombre est $A_n^p = \\frac{n!}{(n-p)!}$.",
+              "example": "Choisir un président, un secrétaire et un trésorier parmi $10$ personnes : $A_{10}^3 = 720$ façons."
+            },
+            {
+              "type": "definition",
+              "term": "Combinaison",
+              "definition": "Une combinaison de $p$ éléments parmi $n$ (sans répétition) est une sélection non ordonnée. Son nombre est $C_n^p = \\binom{n}{p} = \\frac{n!}{p!(n-p)!}$.",
+              "example": "Former un comité de $4$ personnes parmi $12$ : $C_{12}^4 = 495$ possibilités."
+            },
+            {
+              "type": "definition",
+              "term": "Dénombrement avec répétition",
+              "definition": "Lorsque l'ordre compte et que chaque position peut être remplie par n'importe lequel des $n$ objets, le nombre de $p$-uplets est $n^p$. Si l'ordre ne compte pas, on utilise la formule des combinaisons avec répétition $\\binom{n+p-1}{p}$.",
+              "example": "Un code à $4$ chiffres (chiffres de $0$ à $9$) : $10^4 = 10\\,000$ codes possibles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : L'ordre a-t-il de l'importance ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si changer l'ordre des éléments choisis modifie le résultat (par exemple un mot de passe, une place au podium), on est dans un problème ordonné. Sinon, on est dans un problème non ordonné (comité, main de cartes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : La répétition est-elle autorisée ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si un même objet peut être choisi plusieurs fois (chiffres d'un code, lettres d'un mot avec répétition), on utilise les formules avec répétition ($n^p$ ou $\\binom{n+p-1}{p}$). Sinon, on utilise les formules sans répétition (factorielle, arrangement, combinaison)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Croise les réponses des deux étapes : ordonné + sans répétition → arrangement $A_n^p$ ; ordonné + avec répétition → $n^p$ ; non ordonné + sans répétition → combinaison $C_n^p$ ; non ordonné + avec répétition → $\\binom{n+p-1}{p}$. Si le problème demande d'arranger la totalité des $n$ objets, c'est une permutation $n!$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "n! = n \\times (n-1) \\times \\dots \\times 1"
+            },
+            {
+              "type": "display_math",
+              "latex": "A_n^p = \\frac{n!}{(n-p)!}"
+            },
+            {
+              "type": "display_math",
+              "latex": "C_n^p = \\binom{n}{p} = \\frac{n!}{p!(n-p)!}"
+            },
+            {
+              "type": "display_math",
+              "latex": "n^p \\quad \\text{(avec répétition, ordre)}"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{n+p-1}{p} \\quad \\text{(avec répétition, sans ordre)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant une situation concrète : tu dois créer un mot de passe de longueur $6$ en utilisant les $26$ lettres minuscules de l'alphabet, les $10$ chiffres et les $10$ symboles spéciaux, soit $46$ caractères au total. L'ordre des caractères compte évidemment, et tu as le droit de répéter un caractère. Selon notre méthode, nous sommes dans le cas ordonné avec répétition, donc le nombre de mots de passe possibles est $46^6$. Calcule mentalement : $46^2 = 2116$, $46^3 \\approx 97\\,336$, $46^6 \\approx 9,5 \\times 10^9$. C'est un nombre énorme, ce qui montre pourquoi les mots de passe longs sont plus sûrs. Essaie maintenant de compter le nombre de façons de choisir $3$ livres parmi $8$ pour les emporter en vacances, sans tenir compte de l'ordre dans ton sac. Ici l'ordre ne compte pas, pas de répétition possible, donc $C_8^3 = 56$ possibilités. Ces deux exemples illustrent bien comment la même démarche à trois étapes te guide vers la bonne formule sans hésitation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment distinguer les quatre cas de base, abordons un outil puissant pour les problèmes où plusieurs conditions se chevauchent : le principe d'inclusion-exclusion. Ce principe permet de compter l'union de plusieurs ensembles en ajoutant les tailles des ensembles individuels, puis en soustrayant les intersections deux à deux, en ajoutant les intersections trois à trois, et ainsi de suite. C'est particulièrement utile quand on demande, par exemple, le nombre d'entiers entre $1$ et $100$ qui sont multiples de $2$ ou de $3$ ou de $5$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le principe d'inclusion-exclusion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour deux ensembles $A$ et $B$, la formule est $|A \\cup B| = |A| + |B| - |A \\cap B|$. Pour trois ensembles $A$, $B$, $C$, on a $|A \\cup B \\cup C| = |A|+|B|+|C| - |A\\cap B| - |A\\cap C| - |B\\cap C| + |A\\cap B\\cap C|$. Le motif se généralise : on alterne addition et soustraction selon la cardinalité de l'intersection. Cette alternance évite de compter plusieurs fois les éléments qui appartiennent à plusieurs ensembles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les ensembles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Définis clairement chaque propriété qui caractérise un ensemble (ex. : multiples de $2$, multiples de $3$, multiples de $5$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter chaque ensemble et chaque intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $|A|$, $|B|$, $|C|$, puis $|A\\cap B|$, $|A\\cap C|$, $|B\\cap C|$, et enfin $|A\\cap B\\cap C|$. Pour les multiples, utilise la division entière : $\\lfloor 100/2 \\rfloor = 50$, $\\lfloor 100/6 \\rfloor = 16$, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule en alternant les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les cardinaux des ensembles simples, soustrais les intersections deux à deux, ajoute l'intersection triple, et ainsi de suite. Le résultat final est le nombre d'éléments satisfaisant au moins une des propriétés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B| = |A| + |B| - |A \\cap B|"
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B \\cup C| = |A|+|B|+|C| - |A\\cap B| - |A\\cap C| - |B\\cap C| + |A\\cap B\\cap C|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à l'exemple des multiples de $2$, $3$ et $5$ jusqu'à $100$. On trouve $|A|=50$, $|B|=33$, $|C|=20$. Les intersections deux à deux : $|A\\cap B| = \\lfloor 100/6 \\rfloor = 16$, $|A\\cap C| = \\lfloor 100/10 \\rfloor = 10$, $|B\\cap C| = \\lfloor 100/15 \\rfloor = 6$. L'intersection triple : $|A\\cap B\\cap C| = \\lfloor 100/30 \\rfloor = 3$. En appliquant la formule : $50+33+20 - (16+10+6) + 3 = 74$. Il y a donc $74$ entiers entre $1$ et $100$ qui sont multiples de $2$, $3$ ou $5$. Essaie de refaire le calcul pour $1$ à $200$ pour t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, découvrons une approche plus avancée qui relie le dénombrement à l'algèbre : les fonctions génératrices et les récurrences. Une fonction génératrice associe à une suite $(a_n)$ la série formelle $\\sum_{n\\ge 0} a_n x^n$. Les opérations sur les séries (produit, composition) traduisent des constructions combinatoires (suite de choix indépendants, structures récursives). C'est un outil très prisé en terminale pour résoudre des problèmes de partitions, de pavages, ou de chemins dans un graphe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fonctions génératrices et récurrences"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique du pavage d'un rectangle $2 \\times n$ par des dominos $2 \\times 1$. Notons $u_n$ le nombre de pavages. On voit immédiatement que $u_1 = 1$ (un domino vertical) et $u_2 = 2$ (deux verticaux ou deux horizontaux). Pour $n \\ge 3$, le premier domino peut être vertical (reste un $2 \\times (n-1)$) ou horizontal (oblige un second horizontal au-dessus, reste un $2 \\times (n-2)$). Donc $u_n = u_{n-1} + u_{n-2}$, la suite de Fibonacci décalée. La fonction génératrice $U(x) = \\sum u_n x^n$ satisfait $U(x) = x + 2x^2 + xU(x) + x^2U(x)$, d'où $U(x) = \\frac{x+2x^2}{1-x-x^2}$. En développant en série, on retrouve les coefficients. Cette méthode transforme un problème de dénombrement en manipulation algébrique, souvent plus simple pour obtenir une formule close."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def fibonacci(n):\\n    a, b = 1, 2\\n    for _ in range(n-1):\\n        a, b = b, a + b\\n    return a\\n\\nfor i in range(1, 11):\\n    print(i, fibonacci(i))",
+              "caption": "Calcul des premiers termes de la suite de pavages $u_n$ (Fibonacci décalée)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le code ci-dessus illustre comment une récurrence simple se programme en quelques lignes. Tu peux l'adapter pour d'autres problèmes : par exemple, le nombre de façons de monter un escalier de $n$ marches en avançant de $1$ ou $2$ marches à la fois suit la même récurrence. L'essentiel est de reconnaître la structure récursive : décomposer le problème en sous-problèmes plus petits de même nature. Cette habitude de modélisation te servira tout au long de l'année, notamment en algorithmique et en probabilités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant en main une méthode en trois étapes pour choisir la formule de base, le principe d'inclusion-exclusion pour les unions d'ensembles, et un aperçu des fonctions génératrices pour les structures récursives. La leçon suivante rassemblera tout cela sous forme de checklist pratique pour t'assurer de ne rien oublier lors de tes prochains exercices ou à l'examen."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un code de sécurité est composé de $5$ symboles choisis parmi $20$ symboles distincts. Les symboles peuvent se répéter et l'ordre compte. Combien de codes différents existe-t-il ?",
+              "answer": "20^5 = 3\\,200\\,000",
+              "hint": "Identifie si l'ordre compte et si la répétition est autorisée, puis applique la formule $n^p$.",
+              "explanation": "Ici $n=20$ symboles, $p=5$ positions, ordre important, répétition autorisée → $20^5 = 3\\,200\\,000$."
+            },
+            {
+              "question": "Combien d'entiers entre $1$ et $200$ sont multiples de $4$ ou de $6$ ?",
+              "answer": "67",
+              "hint": "Utilise l'inclusion-exclusion pour deux ensembles : multiples de $4$ et multiples de $6$. N'oublie pas l'intersection (multiples de $12$).",
+              "explanation": "|A| = \\lfloor 200/4 \\rfloor = 50, |B| = \\lfloor 200/6 \\rfloor = 33, |A\\cap B| = \\lfloor 200/12 \\rfloor = 16. Donc 50+33-16 = 67."
+            },
+            {
+              "question": "Soit $v_n$ le nombre de façons de pavée un rectangle $2 \\times n$ avec des dominos $2 \\times 1$. Donne la relation de récurrence satisfaite par $v_n$ et calcule $v_5$.",
+              "answer": "v_n = v_{n-1} + v_{n-2} avec v_1=1, v_2=2 → v_5 = 8",
+              "hint": "Regarde le premier domino : vertical (reste $2\\times(n-1)$) ou horizontal (force un second horizontal, reste $2\\times(n-2)$).",
+              "explanation": "La récurrence est $v_n = v_{n-1}+v_{n-2}$. On calcule : $v_1=1$, $v_2=2$, $v_3=3$, $v_4=5$, $v_5=8$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Votre checklist de dénombrement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations pour avoir parcouru les notions essentielles du dénombrement ! Avant de passer aux exercices de synthèse, prenons un moment pour construire ensemble une checklist personnelle. Cette liste te servira de boussole à chaque fois que tu feras face à un problème de comptage : elle t'évitera d'oublier une condition, de confondre ordre et répétition, ou d'appliquer la mauvaise formule. Lis chaque point, imagine une situation où il s'applique, et coche mentalement ceux que tu maîtrises déjà."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Identifier si l'ordre des éléments choisis influence le résultat.",
+                "Déterminer si la répétition d'un même élément est autorisée.",
+                "Choisir la formule adaptée parmi $n!$, $A_n^p$, $C_n^p$, $n^p$, $\\binom{n+p-1}{p}$.",
+                "Vérifier si plusieurs conditions se chevauchent (union d'ensembles) → inclusion-exclusion.",
+                "Repérer une structure récursive (premier choix détermine le reste) → fonction génératrice ou récurrence.",
+                "Contrôler les cas particuliers : ensembles vides, $p>n$ sans répétition (résultat $0$), $p=0$ (résultat $1$).",
+                "Relire l'énoncé pour s'assurer qu'aucune contrainte supplémentaire (ex. : éléments identiques, positions imposées) n'a été oubliée."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le temps d'illustrer chaque point avec un exemple frais, différent de ceux vus précédemment. Pour le premier point, imagine que tu dois former un trio de chanteurs pour un concours : l'ordre de passage sur scène change le résultat, donc l'ordre compte. Pour le second point, pense à un menu où tu peux choisir le même plat plusieurs fois (répétition autorisée) versus un menu où chaque plat est unique (pas de répétition). Le troisième point est le cœur de la décision : une fois les deux premières réponses connues, tu as une correspondance directe vers l'une des cinq formules principales. Le quatrième point surgit souvent dans les problèmes du type « multiples de 2 ou de 3 » où les ensembles se chevauchent. Le cinquième point apparaît quand le problème se décompose naturellement : par exemple, le nombre de façons de parenthéser un produit de $n$ facteurs suit la récurrence de Catalan. Le sixième point te rappelle les cas limites qui piègent parfois : si tu dois choisir $5$ cartes parmi $3$, c'est impossible, le résultat est $0$. Enfin, le septième point t'invite à relire l'énoncé pour repérer des contraintes cachées comme « les deux premiers chiffres sont fixes » ou « les lettres A et B ne peuvent pas être adjacentes »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Utiliser la checklist face à un nouvel exercice",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé une première fois pour en saisir le contexte global."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Cocher les points 1 à 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réponds aux questions : ordre ? répétition ? Choisis la formule de base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Examiner les points 4 et 5",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Y a-t-il plusieurs critères qui se combinent (union) ? Y a-t-il une décomposition récursive naturelle ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Valider les points 6 et 7",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie les cas limites et relis l'énoncé pour toute contrainte supplémentaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Calculer et vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue le calcul, puis demande-toi si le résultat est plausible (ordre de grandeur, parité, divisibilité)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "n! = n \\times (n-1) \\times \\dots \\times 1"
+            },
+            {
+              "type": "display_math",
+              "latex": "A_n^p = \\frac{n!}{(n-p)!}"
+            },
+            {
+              "type": "display_math",
+              "latex": "C_n^p = \\binom{n}{p} = \\frac{n!}{p!(n-p)!}"
+            },
+            {
+              "type": "display_math",
+              "latex": "n^p \\; (\\text{ordre, répétition})"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{n+p-1}{p} \\; (\\text{sans ordre, répétition})"
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B| = |A| + |B| - |A \\cap B|"
+            },
+            {
+              "type": "display_math",
+              "latex": "|A \\cup B \\cup C| = \\sum |A_i| - \\sum |A_i \\cap A_j| + |A_1 \\cap A_2 \\cap A_3|"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, mettons la checklist à l'épreuve avec un exercice ciblé. Imagine que tu dois former un comité de $5$ personnes parmi $12$ candidats, mais deux candidats, Alice et Bob, refusent de siéger ensemble. Combien de comités possibles ? Commence par identifier : ordre ? non. Répétition ? non. Donc combinaison $C_{12}^5 = 792$ au total. Ensuite, applique le point 4 : soustrais les comités contenant à la fois Alice et Bob. Si ils sont tous les deux présents, il reste à choisir $3$ personnes parmi les $10$ autres : $C_{10}^3 = 120$. Résultat final : $792 - 120 = 672$. Essaie de refaire le raisonnement si la condition était « Alice et Bob doivent être ensemble ou absents tous les deux »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les pièges les plus fréquents en dénombrement ne viennent pas de la difficulté des formules, mais de l'inattention aux détails du texte. Un classique est de confondre arrangement et combinaison quand l'énoncé parle de « choisir » sans préciser l'ordre : il faut se demander si la présentation finale (classement, mot, code) dépend de l'ordre. Un autre piège est d'oublier que la formule $C_n^p$ suppose $p \\le n$ ; si $p>n$, le résultat est $0$ et non une valeur négative. Un troisième piège concerne l'inclusion-exclusion avec trois ensembles ou plus : il est facile d'oublier d'ajouter l'intersection triple après avoir soustrait les intersections doubles. Enfin, attention aux objets identiques : si tu dois ranger $5$ livres dont $2$ sont identiques, le nombre d'arrangements n'est pas $5!$ mais $\\frac{5!}{2!}$. Prends l'habitude de lire chaque mot de l'énoncé comme une contrainte potentielle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges fréquents et comment les éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici trois situations pièges, chacune accompagnée de la parade à adopter. Première situation : « Combien de mots de 4 lettres peut-on former avec les lettres du mot MATHS ? » Le mot MATHS a 5 lettres distinctes. Si on lit trop vite, on pourrait penser à $5^4$ (répétition autorisée) mais l'énoncé sous-entend généralement sans répétition car on « forme » à partir des lettres disponibles. La bonne réponse est $A_5^4 = 120$. Deuxième situation : « Une urne contient 3 boules rouges, 2 bleues, 1 verte. On tire 3 boules simultanément. Combien de tirages possibles ? » Ici l'ordre ne compte pas, mais les boules de même couleur sont indiscernables. Il faut compter les solutions entières de $r+b+v=3$ avec $0\\le r\\le 3$, $0\\le b\\le 2$, $0\\le v\\le 1$. On énumère les cas : $(3,0,0)$, $(2,1,0)$, $(2,0,1)$, $(1,2,0)$, $(1,1,1)$, $(1,0,2)$ impossible, $(0,2,1)$, $(0,1,2)$ impossible, $(0,0,3)$ impossible. Ce qui donne 6 tirages distincts. Troisième situation : « Combien de chemins de $(0,0)$ à $(5,5)$ en ne se déplaçant que vers la droite ou vers le haut ? » C'est un classique : il faut choisir les 5 étapes « droite » parmi les 10 étapes totales, donc $C_{10}^5 = 252$. Le piège serait de multiplier $5 \\times 5$ ou d'utiliser une formule de permutation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce bilan, confrontons-nous à un exercice de synthèse qui mobilise plusieurs outils de la checklist. Un club de bridge organise un tournoi : 20 joueurs doivent être répartis en 5 tables de 4 joueurs chacune. L'ordre des tables n'a pas d'importance, ni l'ordre des places autour d'une table (on considère seulement la composition de chaque table). De plus, deux joueurs, Marc et Lucie, ne veulent pas se retrouver à la même table. Combien de répartitions possibles ? Commence par compter le nombre total de partitions de 20 joueurs en 5 groupes de 4 sans restriction : c'est le coefficient multinomial $\\frac{20!}{(4!)^5 \\times 5!}$. Ensuite, soustrais les partitions où Marc et Lucie sont ensemble : place-les dans une même table, il reste à former 4 tables de 4 avec les 18 autres joueurs, soit $\\frac{18!}{(4!)^4 \\times 4!}$ pour le choix de la table commune, multiplié par le nombre de façons de choisir les 2 autres compagnons de leur table parmi les 18 ($C_{18}^2$). Applique l'inclusion-exclusion (point 4) pour obtenir le résultat final. Ce problème illustre parfaitement comment la checklist te guide : identification de l'absence d'ordre, pas de répétition, utilisation du multinomial, puis gestion d'une contrainte d'exclusion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exercice de synthèse"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais distinguer ordre / non-ordre et répétition / non-répétition.",
+                "Je choisis la bonne formule parmi $n!$, $A_n^p$, $C_n^p$, $n^p$, $\\binom{n+p-1}{p}$.",
+                "J'applique l'inclusion-exclusion pour les unions d'ensembles.",
+                "Je repère une structure récursive et j'écris la récurrence correspondante.",
+                "Je vérifie les cas limites ($p>n$, $p=0$, ensembles vides).",
+                "Je relis l'énoncé pour détecter toute contrainte cachée (objets identiques, positions imposées, exclusions)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un comité de 5 personnes doit être choisi parmi 12 candidats, mais Alice et Bob refusent de siéger ensemble. Combien de comités possibles ?",
+              "answer": "672",
+              "hint": "Calcule le total $C_{12}^5$, puis soustrais les comités contenant Alice et Bob ($C_{10}^3$).",
+              "explanation": "Total $C_{12}^5 = 792$. Comités avec Alice et Bob : choisir 3 autres parmi 10 → $C_{10}^3 = 120$. Résultat $792-120 = 672$."
+            },
+            {
+              "question": "Combien de tirages de 3 boules simultanées peut-on faire dans une urne contenant 3 rouges, 2 bleues, 1 verte (boules de même couleur indiscernables) ?",
+              "answer": "6",
+              "hint": "Énumère les solutions entières de $r+b+v=3$ avec les bornes $0\\le r\\le3$, $0\\le b\\le2$, $0\\le v\\le1$.",
+              "explanation": "Les triplets valides : (3,0,0), (2,1,0), (2,0,1), (1,2,0), (1,1,1), (0,2,1) → 6 tirages."
+            },
+            {
+              "question": "20 joueurs de bridge sont répartis en 5 tables de 4 (tables et places non ordonnées). Marc et Lucie ne veulent pas être à la même table. Nombre de répartitions ?",
+              "answer": "\\frac{20!}{(4!)^5 5!} - C_{18}^2 \\times \\frac{18!}{(4!)^4 4!}",
+              "hint": "Total partitions de 20 en 5 groupes de 4 : multinomial divisé par 5!. Pour Marc et Lucie ensemble : choisis leurs 2 compagnons ($C_{18}^2$), puis partage les 18 restants en 4 groupes de 4.",
+              "explanation": "Total = 20! / ((4!)^5 * 5!). Avec Marc+Lucie ensemble : choix des 2 autres de leur table = C(18,2). Reste 18 joueurs à répartir en 4 tables de 4 = 18! / ((4!)^4 * 4!). Soustraire."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

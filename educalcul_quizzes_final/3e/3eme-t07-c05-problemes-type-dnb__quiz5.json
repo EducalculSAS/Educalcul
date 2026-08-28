@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Choisir méthode",
+  "title": "Quiz : Choisir la méthode adaptée (3e)",
+  "questions": [
+    {
+      "text": "On veut résoudre l'équation $3x - 7 = 2x + 5$. Quelle méthode est la plus adaptée ?",
+      "options": [
+        "Isoler $x$ par opérations inverses",
+        "Factoriser le second membre",
+        "Tracer les deux droites et lire l'intersection",
+        "Utiliser un tableau de valeurs"
+      ],
+      "correctAnswer": "Isoler $x$ par opérations inverses",
+      "explanation": "L'équation est linéaire à une inconnue. La méthode standard consiste à regrouper les termes en $x$ d'un côté et les constantes de l'autre, puis à diviser par le coefficient de $x$. Factoriser n'est pas utile car il n'y a pas de produit. Le tracé graphique ou un tableau de valeurs sont possibles mais moins rapides et moins précis sans outil.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer si un triangle dont les côtés mesurent 5 cm, 12 cm et 13 cm est rectangle. Quelle méthode choisir ?",
+      "options": [
+        "Appliquer le théorème de Pythagore",
+        "Calculer les angles avec la trigonométrie",
+        "Mesurer l'angle à l'aide d'un rapporteur",
+        "Comparer l'aire avec celle d'un rectangle"
+      ],
+      "correctAnswer": "Appliquer le théorème de Pythagore",
+      "explanation": "Le théorème de Pythagore permet de vérifier directement si $5^2 + 12^2 = 13^2$. Ici $25 + 144 = 169$, donc l'égalité est vraie et le triangle est rectangle. La trigonométrie ou la mesure physique sont superflues, et la comparaison d'aires ne prouve pas l'angle droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer le volume d'un cylindre de rayon 3 cm et de hauteur 7 cm. Quelle méthode est la plus efficace ?",
+      "options": [
+        "Utiliser la formule $V = \\pi r^2 h$",
+        "Décomposer le cylindre en cubes unitaires",
+        "Calculer une intégrale",
+        "Remplir le cylindre d'eau et mesurer le volume"
+      ],
+      "correctAnswer": "Utiliser la formule $V = \\pi r^2 h$",
+      "explanation": "La formule du volume d'un cylindre donne directement $V = \\pi \\times 3^2 \\times 7 = 63\\pi$ cm³. La décomposition en cubes est imprécise, l'intégrale est inutile au niveau 3e, et la mesure expérimentale n'est pas une méthode mathématique de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre le système $\\begin{cases}2x + y = 10 \\\\ x - y = 2\\end{cases}$. Quelle méthode choisir pour être le plus rapide ?",
+      "options": [
+        "Méthode d'élimination par addition",
+        "Méthode de substitution",
+        "Méthode graphique",
+        "Essai-erreur"
+      ],
+      "correctAnswer": "Méthode d'élimination par addition",
+      "explanation": "En ajoutant les deux équations, $y$ s'élimine immédiatement : $(2x + y) + (x - y) = 10 + 2$ donne $3x = 12$, donc $x = 4$. On trouve ensuite $y = 2$. La substitution fonctionne aussi mais demande une étape de plus. Le graphique et l'essai-erreur sont moins précis et plus longs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Estimer la valeur de $\\sqrt{50}$ sans calculatrice. Quelle méthode est la plus appropriée ?",
+      "options": [
+        "Encadrer entre deux carrés parfaits consécutifs",
+        "Appliquer l'algorithme de Héron",
+        "Factoriser 50 en nombres premiers",
+        "Utiliser une table de carrés"
+      ],
+      "correctAnswer": "Encadrer entre deux carrés parfaits consécutifs",
+      "explanation": "On sait que $7^2 = 49$ et $8^2 = 64$, donc $7 < \\sqrt{50} < 8$. On peut affiner en remarquant que $50$ est plus proche de $49$, donc $\\sqrt{50} \\approx 7,07$. L'algorithme de Héron est possible mais plus complexe, la factorisation ne donne pas la racine, et une table de carrés n'est pas nécessaire pour cet encadrement simple.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

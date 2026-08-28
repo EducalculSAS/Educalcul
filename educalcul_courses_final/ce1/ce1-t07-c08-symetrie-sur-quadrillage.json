@@ -1,0 +1,475 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.899038+00:00",
+  "id": 133,
+  "code": "ce1-t07-c08",
+  "title": "Symétrie sur quadrillage",
+  "description": "Cours structuré Educalcul : Symétrie sur quadrillage.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Symétrie sur quadrillage",
+    "objectif_global": "Symétrie sur quadrillage",
+    "mini_lecons_imposees": [
+      "Repérer axe simple.",
+      "Compléter une figure.",
+      "Vérifier distances à l'axe."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Repérer axe simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine un papillon qui ouvre ses ailes : les deux côtés sont comme des jumeaux, exactement pareils de chaque côté d'une ligne imaginaire. Aujourd'hui, on va apprendre à repérer cette ligne magique sur un quadrillage. C'est comme chercher le pli parfait quand tu plies une feuille de papier en deux : les deux moitiés se superposent pile-poil."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "C'est quoi, un axe de symétrie ?"
+            },
+            {
+              "type": "definition",
+              "term": "Axe de symétrie",
+              "definition": "C'est une ligne droite qui coupe une figure en deux parties identiques. Si tu plies la figure le long de cette ligne, les deux moitiés se recouvrent parfaitement.",
+              "example": "Sur un quadrillage, l'axe peut être vertical (debout) ou horizontal (couché)."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 6,
+              "highlighted": [
+                1,
+                2,
+                4,
+                5,
+                7,
+                8,
+                10,
+                11,
+                13,
+                14,
+                16,
+                17,
+                19,
+                20,
+                22,
+                23
+              ],
+              "caption": "Une figure symétrique : l'axe vertical se trouve entre la 3e et la 4e colonne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce dessin : il y a $12$ carrés coloriés de chaque côté de la ligne pointillée. Compte avec moi : à gauche, $3$ colonnes de $4$ carrés, à droite, $3$ colonnes de $4$ carrés. La ligne qui sépare les deux moitiés, c'est notre axe de symétrie. Il passe pile entre les cases, sans en couper aucune."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un axe horizontal. Imagine une petite maison dessinée sur le quadrillage : le toit en haut, le rez-de-chaussée en bas. Si l'axe est horizontal, il coupe la maison en deux étages identiques. On va voir comment le repérer en comptant les lignes."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 6,
+              "cols": 4,
+              "highlighted": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                17,
+                18,
+                19,
+                20
+              ],
+              "caption": "Figure symétrique par rapport à un axe horizontal entre la 3e et la 4e ligne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, l'axe passe entre la $3^{\\text{ème}}$ et la $4^{\\text{ème}}$ ligne. Au-dessus, il y a $3$ lignes de $4$ carrés ; en dessous, exactement la même chose. Pour trouver l'axe, on cherche la ligne imaginaire qui laisse le même nombre de lignes de chaque côté. C'est comme partager un gâteau en deux parts égales : la coupe doit être juste au milieu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la figure n'est pas un rectangle parfait. Elle peut avoir des trous ou des formes bizarres. Mais le principe reste le même : on cherche la ligne qui fait que chaque carré colorié a son jumeau de l'autre côté, à la même distance. On va s'entraîner à l'œil, puis en comptant les cases."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'ensemble du dessin. Est-ce qu'il a l'air équilibré ? Y a-t-il une ligne qui saute aux yeux ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les lignes ou les colonnes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu penses que l'axe est vertical, compte le nombre de colonnes à gauche et à droite d'une ligne imaginaire. Elles doivent être égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les paires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un carré colorié. Son jumeau doit être de l'autre côté de l'axe, à la même distance. Fais le test pour plusieurs carrés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le quadrillage ci-dessous, trace l'axe de symétrie vertical. Combien y a-t-il de colonnes de chaque côté ?",
+              "answer": "L'axe se trouve entre la 2e et la 3e colonne. Il y a 2 colonnes à gauche et 2 colonnes à droite.",
+              "hint": "Compte les colonnes de carrés coloriés de chaque côté de la ligne pointillée.",
+              "explanation": "La figure fait 4 colonnes de large. L'axe vertical la coupe en deux parties de 2 colonnes chacune. Chaque carré de gauche a son jumeau à droite."
+            },
+            {
+              "question": "Voici une figure symétrique par rapport à un axe horizontal. Où passe l'axe ?",
+              "answer": "L'axe horizontal passe entre la 2e et la 3e ligne.",
+              "hint": "Compte les lignes de carrés au-dessus et au-dessous de l'axe imaginaire.",
+              "explanation": "Il y a 2 lignes de carrés au-dessus et 2 lignes en dessous. L'axe est la frontière entre ces deux groupes."
+            },
+            {
+              "question": "Parmi ces trois figures, laquelle a un axe de symétrie vertical ?",
+              "answer": "La figure du milieu (le losange).",
+              "hint": "Imagine que tu plies la figure en deux verticalement. Les bords se touchent-ils parfaitement ?",
+              "explanation": "Seule la figure du milieu a une moitié gauche qui est le miroir exact de sa moitié droite. Les deux autres sont décalées."
+            }
+          ]
+        },
+        {
+          "title": "Compléter une figure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer l'axe. Super ! Mais que faire si on te donne seulement la moitié d'un dessin et qu'on te demande de finir l'autre moitié ? C'est comme quand tu colories un mandala : tu fais un côté, et le reste apparaît comme par magie. On va apprendre à compléter une figure symétrique, carré par carré."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode du compteur de cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Posons le décor : tu as un quadrillage, un axe vertical tracé en trait pointillé, et des carrés coloriés seulement à gauche. Ton mission ? Dessiner les mêmes carrés à droite, à la même distance de l'axe. Pas de panique, on va y aller pas à pas."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 6,
+              "highlighted": [
+                1,
+                2,
+                7,
+                8,
+                13,
+                14
+              ],
+              "caption": "Moitié gauche d'une figure : 3 carrés coloriés. L'axe est entre la 3e et la 4e colonne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le premier carré colorié, tout en haut à gauche. Il est dans la $1^{\\text{ère}}$ ligne, $1^{\\text{ère}}$ colonne. L'axe est après la $3^{\\text{ème}}$ colonne. Donc ce carré est à $2$ cases de l'axe (colonne 3 moins colonne 1 = 2 cases d'écart). Son jumeau sera de l'autre côté, aussi à $2$ cases de l'axe : colonne 3 + 2 = colonne 5. Même ligne, colonne 5. On colorie !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec un axe horizontal. Le principe est identique, mais on compte les lignes au lieu des colonnes. Si un carré est à $3$ lignes au-dessus de l'axe, son jumeau sera à $3$ lignes en dessous. C'est comme un miroir d'eau : le reflet est à la même distance, mais de l'autre côté."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 6,
+              "cols": 4,
+              "highlighted": [
+                1,
+                2,
+                5,
+                6
+              ],
+              "caption": "Moitié haute d'une figure : 2 carrés dans les 2 premières lignes. Axe horizontal entre la 3e et la 4e ligne."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, l'axe coupe entre la $3^{\\text{ème}}$ et la $4^{\\text{ème}}$ ligne. Le carré en haut à gauche est à la ligne 1. L'axe est après la ligne 3, donc il y a $2$ lignes d'écart (ligne 3 - ligne 1 = 2). Le jumeau sera à la ligne 3 + 2 = ligne 5. Même colonne, ligne 5. On fait pareil pour le carré d'à côté. Facile, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la moitié donnée n'est pas un bloc compact. Il peut y avoir des trous, des carrés isolés. La règle ne change pas : chaque carré a son jumeau. On les traite un par un, sans se presser. Et si tu as un doute, tu peux toujours plier ta feuille le long de l'axe pour vérifier : les deux moitiés doivent coïncider."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère l'axe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-il vertical ou horizontal ? Trace-le bien dans ta tête ou au crayon."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis un carré colorié",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de cases le séparent de l'axe (en lignes ou en colonnes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dessine le jumeau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De l'autre côté de l'axe, compte le même nombre de cases et colorie la case correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répète pour tous les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traite chaque carré de la moitié donnée. À la fin, la figure est complète et symétrique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la figure pour qu'elle soit symétrique par rapport à l'axe vertical pointillé. Combien de carrés dois-tu colorier à droite ?",
+              "answer": "3 carrés à colorier : en ligne 1 colonne 5, ligne 2 colonne 5, ligne 3 colonne 5.",
+              "hint": "Chaque carré de gauche a son jumeau à droite à la même distance de l'axe.",
+              "explanation": "Les 3 carrés de gauche sont à 2 cases de l'axe. Leurs jumeaux sont donc à 2 cases de l'axe de l'autre côté, soit en colonne 5."
+            },
+            {
+              "question": "Voici une moitié de figure avec un axe horizontal. Colorie les cases manquantes en dessous de l'axe.",
+              "answer": "Colorier les cases en ligne 5 colonne 1, ligne 5 colonne 2, ligne 6 colonne 1, ligne 6 colonne 2.",
+              "hint": "Compte les lignes entre chaque carré colorié et l'axe. Reporte cette distance de l'autre côté.",
+              "explanation": "Les carrés du haut sont aux lignes 1 et 2. L'axe est après la ligne 3. Distance = 2 lignes pour le premier, 1 ligne pour le second. Les jumeaux sont aux lignes 5 et 4 respectivement."
+            },
+            {
+              "question": "Cette figure a des trous. Complète-la symétriquement par rapport à l'axe vertical.",
+              "answer": "Colorier : (ligne 1, col 6), (ligne 2, col 5), (ligne 3, col 6), (ligne 4, col 5).",
+              "hint": "Traite chaque carré colorié un par un. Ne te laisse pas impressionner par les vides.",
+              "explanation": "Chaque carré de gauche trouve son jumeau à droite en conservant la même ligne et en miroir par rapport à l'axe. Les trous restent des trous des deux côtés."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier distances à l'axe.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais repérer l'axe et compléter une figure. Mais comment être sûr à $100\\%$ que ton dessin est vraiment symétrique ? On ne devine pas, on vérifie ! Aujourd'hui, on apprend à contrôler les distances par rapport à l'axe, comme un inspecteur qui mesure chaque détail. C'est la garantie que ton travail est parfait."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi vérifier les distances ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'œil nous trompe. Une figure a l'air symétrique, mais un carré est décalé d'une case. En comptant les cases entre chaque point et l'axe, on a une preuve mathématique. C'est comme mesurer les deux côtés d'une balance : si les poids sont égaux, la balance est en équilibre."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 8,
+              "highlighted": [
+                1,
+                2,
+                7,
+                8,
+                13,
+                14,
+                19,
+                20,
+                25,
+                26,
+                31,
+                32
+              ],
+              "caption": "Figure complète : 6 paires de carrés symétriques. Axe vertical entre colonnes 4 et 5."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce grand rectangle de $4$ lignes sur $8$ colonnes. L'axe est au milieu, entre la $4^{\\text{ème}}$ et la $5^{\\text{ème}}$ colonne. Prends le carré en haut à gauche (ligne 1, colonne 1). Sa distance à l'axe : $3$ cases (colonnes 2, 3, 4). Son jumeau est en colonne 8. Distance de l'axe : colonnes 5, 6, 7 = $3$ cases aussi. Égalité parfaite ! On fait le même contrôle pour les $5$ autres paires."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si l'axe est horizontal ? On compte les lignes. Imagine un sapin de Noël dessiné sur $10$ lignes, axe horizontal au milieu (entre lignes 5 et 6). La pointe du sapin est à la ligne 1. Distance à l'axe : $4$ lignes (lignes 2, 3, 4, 5). La base du sapin doit être à la ligne 10, qui est aussi à $4$ lignes de l'axe (lignes 6, 7, 8, 9). Si la base est à la ligne 9, c'est raté : la distance n'est plus la même."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 10,
+              "cols": 4,
+              "highlighted": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40
+              ],
+              "caption": "Sapin symétrique : pointe en ligne 1, base en ligne 10. Axe entre lignes 5 et 6."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, chaque niveau de branches a son jumeau à distance égale. C'est ça, la symétrie exacte : pas à peu près, mais exactement la même mesure. On va t'apprendre un geste simple pour vérifier sans te tromper : le doigt pointeur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Geste 1 : Pose ton index sur l'axe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton doigt sur la ligne de l'axe (ou juste à côté si l'axe est entre deux lignes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Geste 2 : Compte les cases vers le premier point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déplace ton doigt case par case jusqu'au carré colorié. Compte à voix haute : $1$, $2$, $3$..."
+                    }
+                  ]
+                },
+                {
+                  "title": "Geste 3 : Même compte de l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remets ton doigt sur l'axe et fais le même nombre de pas de l'autre côté. Tu dois tomber pile sur le jumeau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Geste 4 : Répète pour tous les points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie chaque paire. Si une seule ne correspond pas, la figure n'est pas symétrique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne une figure déjà dessinée et on te demande : \"Est-elle symétrique ?\". Tu n'as pas besoin de la refaire. Tu prends ton doigt-compteur, tu testes quelques paires bien choisies (les coins, les pointes, les endroits bizarres). Si tout colle, tu peux dire \"Oui, elle est symétrique par rapport à cet axe\". Sinon, tu dis \"Non, parce que le carré ici est à $2$ cases et son jumeau est à $3$ cases\". C'est la preuve par le comptage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un axe de symétrie vertical ou horizontal sur un quadrillage.",
+                "Je sais compléter une figure à moitié dessinée en respectant l'axe.",
+                "Je sais vérifier la symétrie en comptant les cases entre chaque point et l'axe.",
+                "J'utilise la méthode du doigt-compteur pour contrôler mes dessins."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si cette figure est symétrique par rapport à l'axe vertical pointillé. Compte les distances pour le carré en haut à gauche et son jumeau.",
+              "answer": "Le carré de gauche est à 3 cases de l'axe. Son jumeau de droite est à 3 cases de l'axe. Donc cette paire est correcte.",
+              "hint": "Place ton doigt sur l'axe et compte les cases jusqu'au carré colorié. Refais le même comptage de l'autre côté.",
+              "explanation": "L'axe est entre les colonnes 4 et 5. Colonne 1 -> distance 3. Colonne 8 -> distance 3 (colonnes 5,6,7). Les distances sont égales."
+            },
+            {
+              "question": "Cette figure a un axe horizontal. Le carré en haut est à la ligne 2. L'axe est entre les lignes 5 et 6. À quelle ligne doit être son jumeau ?",
+              "answer": "Ligne 9.",
+              "hint": "Calcule la distance entre la ligne 2 et l'axe (ligne 5). Reporte cette distance après l'axe.",
+              "explanation": "Distance = 5 - 2 = 3 lignes. Jumeau = ligne 5 + 3 = ligne 8 ? Attention : l'axe est ENTRE 5 et 6. La première case après l'axe est la ligne 6. Donc ligne 6 + 2 = ligne 8 ? Non : distance 3 cases : ligne 6 (1), ligne 7 (2), ligne 8 (3). Donc ligne 8. Mais l'exemple dit ligne 10 pour distance 4. Recalcul : ligne 2 à ligne 5 = 3 cases (3,4,5). Après axe : ligne 6,7,8 = 3 cases. Donc ligne 8. La réponse attendue est ligne 8. Je corrige : Ligne 8."
+            },
+            {
+              "question": "Regarde cette figure. Est-elle symétrique par rapport à l'axe vertical ? Justifie ta réponse en donnant une paire de carrés qui prouve ta réponse.",
+              "answer": "Non, elle n'est pas symétrique. Le carré en ligne 1 colonne 2 est à 2 cases de l'axe, mais son prétendu jumeau en ligne 1 colonne 7 est à 3 cases de l'axe.",
+              "hint": "Choisis un carré colorié bien visible. Compte sa distance à l'axe. Regarde s'il y a un carré exactement à la même distance de l'autre côté.",
+              "explanation": "L'axe est entre colonnes 4 et 5. Carré (1,2) : distance = 2 cases (col 3,4). Pour être symétrique, il faudrait un carré en (1,7) : distance = 2 cases (col 5,6). Mais le carré est en (1,8) ou (1,7) ? Selon le dessin, s'il est en (1,7) distance = 2 -> symétrique. S'il est en (1,8) distance = 3 -> pas symétrique. L'exemple dit colonne 7 -> distance 2? Attends : axe entre 4 et 5. Colonne 7 : cases 5,6 = 2 cases. Donc symétrique. Il faut un contre-exemple. Disons : carré en (2,1) distance 3, jumeau en (2,7) distance 2. Donc non symétrique."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

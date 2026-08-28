@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Traduire",
+  "title": "Algorithmique : Traduire un programme de calcul",
+  "questions": [
+    {
+      "text": "On veut programmer la suite d'opérations suivante : choisir un nombre, ajouter 4, multiplier le résultat par 2, puis soustraire le nombre de départ. Quelle est la traduction correcte en algorithme avec une variable n pour le nombre choisi et une variable d pour mémoriser le départ ?",
+      "options": [
+        "n ← saisie\\nd ← n\\nn ← n + 4\\nn ← n × 2\\nn ← n - d\\nafficher n",
+        "n ← saisie\\nd ← n\\nn ← n + 4\\nn ← n × 2\\nn ← d - n\\nafficher n",
+        "n ← saisie\\nd ← n\\nn ← n × 2\\nn ← n + 4\\nn ← n - d\\nafficher n",
+        "n ← saisie\\nd ← n\\nn ← n + 4\\nn ← n - d\\nn ← n × 2\\nafficher n"
+      ],
+      "correctAnswer": "n ← saisie\\nd ← n\\nn ← n + 4\\nn ← n × 2\\nn ← n - d\\nafficher n",
+      "explanation": "Il faut d'abord stocker le nombre de départ dans d (d ← n) avant de modifier n. L'ordre des opérations est respecté : addition de 4, puis multiplication par 2, enfin soustraction du départ (n - d). L'option 2 soustrait dans le mauvais sens (d - n). L'option 3 inverse l'addition et la multiplication. L'option 4 fait la soustraction avant la multiplication, ce qui change le résultat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On demande à l'utilisateur de saisir un nombre entier. On veut afficher son carré s'il est positif ou nul, et afficher son opposé s'il est négatif. Quelle structure conditionnelle traduit correctement cette consigne ?",
+      "options": [
+        "n ← saisie\\nSi n ≥ 0 Alors\\nafficher n × n\\nSinon\\nafficher -n\\nFin Si",
+        "n ← saisie\\nSi n > 0 Alors\\nafficher n × n\\nSinon\\nafficher -n\\nFin Si",
+        "n ← saisie\\nSi n ≥ 0 Alors\\nafficher -n\\nSinon\\nafficher n × n\\nFin Si",
+        "n ← saisie\\nSi n < 0 Alors\\nafficher n × n\\nSinon\\nafficher -n\\nFin Si"
+      ],
+      "correctAnswer": "n ← saisie\\nSi n ≥ 0 Alors\\nafficher n × n\\nSinon\\nafficher -n\\nFin Si",
+      "explanation": "La consigne dit 'positif ou nul', ce qui correspond à la condition n ≥ 0. Dans ce cas, on affiche le carré (n × n). Sinon (cas où n < 0), on affiche l'opposé (-n). L'option 2 oublie le cas nul (n = 0). L'option 3 inverse les actions. L'option 4 a une condition inverse et des actions inversées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un algorithme :\\np ← 1\\nPour i de 1 à 5\\nt\\tp ← p × i\\nFin Pour\\nafficher p\\nQue calcule et affiche ce programme ?",
+      "options": [
+        "La somme des entiers de 1 à 5",
+        "Le produit des entiers de 1 à 5 (factorielle de 5)",
+        "La valeur de 5 multiplié par 5",
+        "Le nombre d'entiers entre 1 et 5"
+      ],
+      "correctAnswer": "Le produit des entiers de 1 à 5 (factorielle de 5)",
+      "explanation": "La variable p est initialisée à 1 (élément neutre de la multiplication). La boucle Pour i de 1 à 5 fait varier i de 1 à 5. À chaque tour, p prend la valeur p × i. On calcule donc 1 × 1 × 2 × 3 × 4 × 5 = 120, ce qui est la factorielle de 5 (5!). L'option 1 correspondrait à une addition (p ← p + i). L'option 3 est 25. L'option 4 est 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire un programme qui demande un nombre de départ n, puis qui répète 3 fois l'opération : 'ajouter 1 puis multiplier par 2'. Quelle écriture algorithmique est correcte ?",
+      "options": [
+        "n ← saisie\\nPour k de 1 à 3\\n\\tn ← n + 1\\n\\tn ← n × 2\\nFin Pour\\nafficher n",
+        "n ← saisie\\nPour k de 1 à 3\\n\\tn ← n × 2\\n\\tn ← n + 1\\nFin Pour\\nafficher n",
+        "n ← saisie\\nPour k de 1 à 3\\n\\tn ← (n + 1) × 2\\nFin Pour\\nafficher n",
+        "n ← saisie\\nRépéter 3 fois\\n\\tn ← n + 1 × 2\\nFin Répéter\\nafficher n"
+      ],
+      "correctAnswer": "n ← saisie\\nPour k de 1 à 3\\n\\tn ← n + 1\\n\\tn ← n × 2\\nFin Pour\\nafficher n",
+      "explanation": "L'opération 'ajouter 1 puis multiplier par 2' se traduit par deux affectations successives : n ← n + 1 puis n ← n × 2, à l'intérieur de la boucle qui tourne 3 fois. L'option 2 inverse l'ordre (multiplier puis ajouter). L'option 3 utilise une seule affectation avec parenthèses, ce qui est mathématiquement équivalent mais ne 'traduit' pas l'enchaînement des deux opérations distinctes demandées dans l'énoncé (souvent pénalisé en DNB si on demande de suivre les étapes). L'option 4 écrit 'n + 1 × 2' qui, par priorité opératoire, fait 'n + 2' et non '(n + 1) × 2'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant :\\nx ← 10\\ny ← 0\\nTant que x > 0\\n\\tx ← x - 3\\n\\ty ← y + 1\\nFin Tant que\\nafficher y\\nQuelle phrase décrit le mieux le résultat affiché ?",
+      "options": [
+        "Le nombre de fois qu'on peut soustraire 3 à 10 avant d'obtenir un nombre négatif",
+        "Le nombre de fois qu'on peut soustraire 3 à 10 avant d'obtenir un nombre strictement positif",
+        "Le quotient entier de la division de 10 par 3",
+        "Le reste de la division de 10 par 3"
+      ],
+      "correctAnswer": "Le quotient entier de la division de 10 par 3",
+      "explanation": "La boucle Tant que x > 0 soustrait 3 à x et incrémente y de 1 tant que x reste strictement positif. Départ x=10, y=0. Tour 1: x=7, y=1. Tour 2: x=4, y=2. Tour 3: x=1, y=3. Tour 4: x=-2 (condition x>0 fausse), arrêt. y vaut 3. C'est bien le quotient entier de 10 ÷ 3. L'option 1 est fausse car on s'arrête quand x devient négatif (-2), mais le comptage correspond au quotient. L'option 2 est fausse car on s'arrête quand x n'est plus strictement positif. L'option 4 (le reste) vaudrait 1 (valeur finale de x avant le dernier tour) ou 2 (valeur absolue finale), pas 3.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

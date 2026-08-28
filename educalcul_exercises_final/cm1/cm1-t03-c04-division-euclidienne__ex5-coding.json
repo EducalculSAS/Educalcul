@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 229,
+  "_course_code": "cm1-t03-c04-division-euclidienne",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Quotient et reste",
+  "title": "Algorithmes et division euclidienne : quotient et reste",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de division par soustractions successives",
+      "content": "Écris un algorithme en langage naturel (ou pseudo-code simple) qui permet de trouver le quotient et le reste de la division euclidienne de $A$ par $B$ ($A$ et $B$ entiers naturels, $B > 0$) en utilisant uniquement des soustractions successives. L'algorithme doit afficher le quotient $q$ et le reste $r$.",
+      "correctAnswer": "Algorithme :\\n1. Demander $A$ et $B$.\\n2. Initialiser $q ← 0$ et $r ← A$.\\n3. Tant que $r ≥ B$ faire :\\n   $r ← r - B$\\n   $q ← q + 1$\\n4. Fin tant que.\\n5. Afficher $q$ (quotient) et $r$ (reste).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise le quotient à 0 et le reste au dividende $A$. Tant que le reste est assez grand pour contenir encore un diviseur $B$, on retire $B$ du reste et on ajoute 1 au quotient. À la fin, le reste est strictement inférieur à $B$, ce qui correspond à la définition de la division euclidienne.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme pour retrouver le dividende",
+      "content": "Voici un algorithme incomplet qui doit calculer le dividende $D$ en connaissant le diviseur $d$, le quotient $q$ et le reste $r$.\\nComplète la ligne 4 pour que l'algorithme soit correct.\\n\\nAlgorithme :\\n1. Demander $d$, $q$, $r$.\\n2. Si $r ≥ d$ alors afficher \"Erreur : reste trop grand\" et arrêter.\\n3. Sinon :\\n4.     $D ← ...$\\n5.     Afficher $D$.\\n6. Fin si.",
+      "correctAnswer": "$D ← d × q + r$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La relation fondamentale de la division euclidienne est $D = d × q + r$. Il suffit d'appliquer cette formule pour retrouver le dividende. La condition ligne 2 vérifie que le reste est bien strictement inférieur au diviseur, sinon la division euclidienne n'est pas valide.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser un algorithme de partage équitable",
+      "content": "On veut partager $N$ bonbons entre $E$ enfants de façon équitable. Chaque enfant reçoit le même nombre de bonbons, et il en reste le moins possible.\\nÉcris un algorithme qui demande $N$ et $E$, puis affiche le nombre de bonbons par enfant et le nombre de bonbons restants. Utilise les opérations quotient et reste (notés `//` et `%` ou `quotient` et `reste`).",
+      "correctAnswer": "Algorithme :\\n1. Demander $N$ (nombre de bonbons) et $E$ (nombre d'enfants).\\n2. Calculer $nb\\_bonbons\\_par\\_enfant ← N // E$ (ou quotient($N$, $E$)).\\n3. Calculer $nb\\_restants ← N % E$ (ou reste($N$, $E$)).\\n4. Afficher \"Chaque enfant a \" + $nb\\_bonbons\\_par\\_enfant$ + \" bonbons.\"\\n5. Afficher \"Il reste \" + $nb\\_restants$ + \" bonbons.\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme utilise directement les opérations de division euclidienne. Le quotient donne le nombre de bonbons par enfant (partage équitable), le reste donne ceux qui ne peuvent pas être distribués équitablement. La condition $E > 0$ est implicite pour que le partage ait un sens.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

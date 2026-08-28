@@ -1,0 +1,439 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.812437+00:00",
+  "id": 750,
+  "code": "terminale-generale-expertes-t03-c04",
+  "title": "Matrices : opérations",
+  "description": "Cours structuré Educalcul : Matrices : opérations.",
+  "subject": "Graphes et matrices",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Graphes et matrices",
+    "titre_du_cours": "Matrices : opérations",
+    "objectif_global": "Matrices : opérations",
+    "mini_lecons_imposees": [
+      "Addition.",
+      "Produit.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Graphes et matrices",
+      "lessons": [
+        {
+          "title": "Addition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une matrice ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une matrice est un tableau rectangulaire de nombres, appelés coefficients, organisés en lignes et en colonnes. On note généralement une matrice par une lettre majuscule, par exemple $A$, et ses coefficients par $a_{ij}$ où $i$ désigne le numéro de la ligne et $j$ celui de la colonne. La taille d'une matrice se donne par le couple $(m,n)$ avec $m$ lignes et $n$ colonnes. Si $m=n$, la matrice est carrée. Cette notion apparaît naturellement quand on veut rassembler plusieurs données de même nature, comme les notes d'une classe dans plusieurs matières, ou les coordonnées de plusieurs points dans l'espace."
+            },
+            {
+              "type": "definition",
+              "term": "matrice",
+              "definition": "Tableau rectangulaire à $m$ lignes et $n$ colonnes dont les entrées sont des nombres réels (ou complexes). On écrit $A = (a_{ij})_{1 \\le i \\le m, 1 \\le j \\le n}$.",
+              "example": "La matrice $A = \\begin{pmatrix} 2 & -1 \\ 0 & 3 \\ 4 & 5 \\end{pmatrix}$ a $3$ lignes et $2$ colonnes, on dit qu'elle est de taille $3 \\times 2$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition de deux matrices"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition ne fait sens que pour deux matrices de même taille. Si $A = (a_{ij})$ et $B = (b_{ij})$ sont toutes deux de taille $m \\times n$, leur somme $C = A + B$ est la matrice $C = (c_{ij})$ de même taille définie coefficient par coefficient par $c_{ij} = a_{ij} + b_{ij}$. En d'autres termes, on additionne simplement les nombres qui se trouvent à la même position dans les deux tableaux. Cette opération est très proche de l'addition usuelle des nombres, mais elle s'applique simultanément à toute une grille de valeurs."
+            },
+            {
+              "type": "display_math",
+              "latex": "A+B = (a_{ij}+b_{ij})_{1\\le i\\le m,\\,1\\le j\\le n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition est posée, regardons les propriétés algébriques qui rendent le calcul avec les matrices commode. Elles sont les analogues directs des propriétés de l'addition des nombres, ce qui permet de manipuler des expressions matricielles avec la même aisance."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de l'addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'addition des matrices est commutative : $A+B = B+A$. Elle est aussi associative : $(A+B)+C = A+(B+C)$. Il existe une matrice nulle, notée $0_{m,n}$, dont tous les coefficients sont $0$ ; elle joue le rôle d'élément neutre : $A+0_{m,n}=A$. Enfin, chaque matrice $A$ possède un opposé $-A$ obtenu en changeant le signe de chaque coefficient, et l'on a $A+(-A)=0_{m,n}$. Ces règles permettent de regrouper, réordonner ou simplifier des sommes de matrices sans changer le résultat."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "À retenir",
+              "paragraphs": [
+                "Commutativité : $A+B = B+A$",
+                "Associativité : $(A+B)+C = A+(B+C)$",
+                "Élément neutre : matrice nulle $0$",
+                "Opposé : $-A$ coefficient par coefficient"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer ces idées, travaillons un exemple concret où l'on additionne deux matrices de taille $2 \\times 3$. Suivez les étapes, chaque coefficient est traité indépendamment, ce qui montre la simplicité de l'opération."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple pas à pas"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les dimensions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux matrices $A = \\begin{pmatrix} 1 & 4 & -2 \\ 0 & 3 & 5 \\end{pmatrix}$ et $B = \\begin{pmatrix} -3 & 2 & 7 \\ 1 & -1 & 0 \\end{pmatrix}$ ont toutes deux $2$ lignes et $3$ colonnes, l'addition est donc possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner coefficient par coefficient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $c_{11}=1+(-3)=-2$, $c_{12}=4+2=6$, $c_{13}=-2+7=5$, $c_{21}=0+1=1$, $c_{22}=3+(-1)=2$, $c_{23}=5+0=5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la matrice résultante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme est $A+B = \\begin{pmatrix} -2 & 6 & 5 \\ 1 & 2 & 5 \\end{pmatrix}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $A = \\begin{pmatrix} 2 & -1 \\ 3 & 0 \\end{pmatrix}$ et $B = \\begin{pmatrix} -2 & 4 \\ 1 & -3 \\end{pmatrix}$. Calculer $A+B$.",
+              "answer": "$\\begin{pmatrix} 0 & 3 \\ 4 & -3 \\end{pmatrix}$",
+              "hint": "Additionnez les coefficients de même position : premier ligne première colonne, etc.",
+              "explanation": "On additionne coefficient par coefficient : $2+(-2)=0$, $-1+4=3$, $3+1=4$, $0+(-3)=-3$."
+            },
+            {
+              "question": "Vérifier la commutativité pour les matrices $A = \\begin{pmatrix} 5 & 1 \\ -2 & 3 \\end{pmatrix}$ et $B = \\begin{pmatrix} 0 & -4 \\ 2 & 1 \\end{pmatrix}$ en calculant $A+B$ et $B+A$.",
+              "answer": "Les deux sommes donnent $\\begin{pmatrix} 5 & -3 \\ 0 & 4 \\end{pmatrix}$.",
+              "hint": "Calculez $A+B$ puis $B+A$ et comparez.",
+              "explanation": "Comme l'addition des réels est commutative, chaque coefficient $a_{ij}+b_{ij}=b_{ij}+a_{ij}$, donc les matrices résultantes sont identiques."
+            },
+            {
+              "question": "Trouver la matrice nulle $0_{2,3}$ et l'opposé de $C = \\begin{pmatrix} -1 & 2 & 0 \\ 4 & -3 & 5 \\end{pmatrix}$.",
+              "answer": "$0_{2,3} = \\begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\end{pmatrix}$, $-C = \\begin{pmatrix} 1 & -2 & 0 \\ -4 & 3 & -5 \\end{pmatrix}$.",
+              "hint": "La matrice nulle a tous ses coefficients égaux à $0$. L'opposé change le signe de chaque coefficient.",
+              "explanation": "Par définition, $0_{m,n}$ est la matrice à $m$ lignes et $n$ colonnes remplie de zéros. L'opposé $-C$ s'obtient en multipliant chaque entrée par $-1$."
+            }
+          ]
+        },
+        {
+          "title": "Produit.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produit de deux matrices"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit de matrices est une opération plus riche que l'addition. Il ne se définit pas pour n'importe quel couple de matrices : le nombre de colonnes de la première doit coïncider avec le nombre de lignes de la seconde. Si $A$ est de taille $m \\times p$ et $B$ de taille $p \\times n$, alors le produit $C = AB$ est une matrice de taille $m \\times n$. Chaque coefficient $c_{ij}$ s'obtient en faisant le produit scalaire de la $i$-ième ligne de $A$ avec la $j$-ième colonne de $B$. Cette règle reflète la composition d'applications linéaires, ce qui explique son importance capitale en algèbre linéaire."
+            },
+            {
+              "type": "definition",
+              "term": "produit de matrices",
+              "definition": "Soient $A \\in M_{m,p}(\\mathbb{R})$ et $B \\in M_{p,n}(\\mathbb{R})$. Le produit $C = AB$ est la matrice de $M_{m,n}(\\mathbb{R})$ dont les coefficients sont $c_{ij} = \\sum_{k=1}^{p} a_{ik} b_{kj}$ pour $1 \\le i \\le m$, $1 \\le j \\le n$.",
+              "example": "Si $A = \\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix}$ ($2\\times2$) et $B = \\begin{pmatrix} 5 & 6 \\ 7 & 8 \\end{pmatrix}$ ($2\\times2$), alors $AB = \\begin{pmatrix} 1\\cdot5+2\\cdot7 & 1\\cdot6+2\\cdot8 \\\\ 3\\cdot5+4\\cdot7 & 3\\cdot6+4\\cdot8 \\end{pmatrix} = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "(AB)_{ij} = \\sum_{k=1}^{p} a_{ik} b_{kj}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Contrairement à l'addition, le produit de matrices n'est pas commutatif en général : $AB$ et $BA$ peuvent être de tailles différentes, ou même quand ils sont tous deux définis, ils donnent des résultats distincts. En revanche, l'associativité et la distributivité par rapport à l'addition restent valables, ce qui permet de développer des expressions comme $(A+B)C = AC+BC$ ou $A(BC) = (AB)C$."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Le produit n'est pas commutatif : $AB \\neq BA$ en général.",
+                "Vérifiez toujours la compatibilité des dimensions avant de multiplier.",
+                "L'élément neutre pour le produit est la matrice identité $I_n$ (diagonale de $1$)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons la mécanique du produit avec un exemple où les dimensions ne sont pas carrées : une matrice $2 \\times 3$ multipliée par une matrice $3 \\times 2$. Le résultat sera une matrice $2 \\times 2$. Suivez les étapes pour voir comment chaque coefficient du résultat se construit comme une somme de trois produits."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple détaillé : $2 \\times 3$ par $3 \\times 2$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la compatibilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$A = \\begin{pmatrix} 1 & 0 & 2 \\ -1 & 3 & 1 \\end{pmatrix}$ ($2\\times3$), $B = \\begin{pmatrix} 2 & -1 \\ 0 & 4 \\ 3 & 1 \\end{pmatrix}$ ($3\\times2$). Le nombre de colonnes de $A$ ($3$) égale le nombre de lignes de $B$ ($3$), le produit $AB$ existe et sera de taille $2\\times2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $c_{11}$ (ligne 1 de $A$, colonne 1 de $B$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$c_{11} = 1\\cdot2 + 0\\cdot0 + 2\\cdot3 = 2 + 0 + 6 = 8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer $c_{12}$ (ligne 1 de $A$, colonne 2 de $B$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$c_{12} = 1\\cdot(-1) + 0\\cdot4 + 2\\cdot1 = -1 + 0 + 2 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer $c_{21}$ (ligne 2 de $A$, colonne 1 de $B$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$c_{21} = (-1)\\cdot2 + 3\\cdot0 + 1\\cdot3 = -2 + 0 + 3 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Calculer $c_{22}$ (ligne 2 de $A$, colonne 2 de $B$)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$c_{22} = (-1)\\cdot(-1) + 3\\cdot4 + 1\\cdot1 = 1 + 12 + 1 = 14$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 6 : Assembler le produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $AB = \\begin{pmatrix} 8 & 1 \\\\ 1 & 14 \\end{pmatrix}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $A = \\begin{pmatrix} 2 & 1 \\ 0 & -1 \\end{pmatrix}$ et $B = \\begin{pmatrix} 3 & 0 \\ 2 & 4 \\end{pmatrix}$. Calculer $AB$ et $BA$. Sont-ils égaux ?",
+              "answer": "$AB = \\begin{pmatrix} 8 & 4 \\\\ -2 & -4 \\end{pmatrix}$, $BA = \\begin{pmatrix} 6 & 3 \\\\ 8 & -2 \\end{pmatrix}$. Ils sont différents.",
+              "hint": "Effectuez les deux multiplications en respectant la règle ligne $\\times$ colonne.",
+              "explanation": "Le produit $AB$ donne $\\begin{pmatrix} 2\\cdot3+1\\cdot2 & 2\\cdot0+1\\cdot4 \\\\ 0\\cdot3+(-1)\\cdot2 & 0\\cdot0+(-1)\\cdot4 \\end{pmatrix} = \\begin{pmatrix} 8 & 4 \\\\ -2 & -4 \\end{pmatrix}$. Le produit $BA$ donne $\\begin{pmatrix} 3\\cdot2+0\\cdot0 & 3\\cdot1+0\\cdot(-1) \\\\ 2\\cdot2+4\\cdot0 & 2\\cdot1+4\\cdot(-1) \\end{pmatrix} = \\begin{pmatrix} 6 & 3 \\\\ 8 & -2 \\end{pmatrix}$. La non-commutativité est manifeste."
+            },
+            {
+              "question": "Vérifier l'associativité pour $A = \\begin{pmatrix} 1 & 2 \\ 3 & 4 \\end{pmatrix}$, $B = \\begin{pmatrix} 0 & 1 \\ 1 & 0 \\end{pmatrix}$, $C = \\begin{pmatrix} 2 & 0 \\ 0 & 2 \\end{pmatrix}$ en calculant $(AB)C$ et $A(BC)$.",
+              "answer": "Les deux produits donnent $\\begin{pmatrix} 4 & 2 \\\\ 8 & 6 \\end{pmatrix}$.",
+              "hint": "Calculez $AB$ puis multipliez par $C$, puis calculez $BC$ puis multipliez par $A$ à gauche.",
+              "explanation": "On trouve $AB = \\begin{pmatrix} 2 & 1 \\\\ 4 & 3 \\end{pmatrix}$, puis $(AB)C = \\begin{pmatrix} 4 & 2 \\\\ 8 & 6 \\end{pmatrix}$. De l'autre côté, $BC = \\begin{pmatrix} 0 & 2 \\\\ 2 & 0 \\end{pmatrix}$, puis $A(BC) = \\begin{pmatrix} 4 & 2 \\\\ 8 & 6 \\end{pmatrix}$. L'égalité illustre l'associativité."
+            },
+            {
+              "question": "Soit $A = \\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\end{pmatrix}$ ($2\\times3$) et $B = \\begin{pmatrix} 7 & 8 \\ 9 & 10 \\ 11 & 12 \\end{pmatrix}$ ($3\\times2$). Calculer $AB$.",
+              "answer": "$AB = \\begin{pmatrix} 58 & 64 \\\\ 139 & 154 \\end{pmatrix}$.",
+              "hint": "Chaque coefficient est une somme de trois produits : ligne de $A$ par colonne de $B$.",
+              "explanation": "Première ligne : $1\\cdot7+2\\cdot9+3\\cdot11 = 7+18+33=58$, $1\\cdot8+2\\cdot10+3\\cdot12 = 8+20+36=64$. Deuxième ligne : $4\\cdot7+5\\cdot9+6\\cdot11 = 28+45+66=139$, $4\\cdot8+5\\cdot10+6\\cdot12 = 32+50+72=154$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique du produit matriciel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une matrice carrée $n \\times n$ peut être vue comme une application linéaire de $\\mathbb{R}^n$ dans lui-même. Le produit de deux matrices correspond alors à la composition de leurs applications associées : si $A$ et $B$ représentent les applications $f$ et $g$, la matrice $AB$ représente $f \\circ g$ (on applique d'abord $g$ puis $f$). Cette lecture donne un sens concret à la non-commutativité : changer l'ordre des transformations change le résultat final, tout comme faire une rotation puis une symétrie n'est pas la même chose que l'inverse."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=Ax,\\quad g(x)=Bx \\implies (f\\circ g)(x)=A(Bx)=(AB)x"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "En dimension $2$, les matrices les plus familières sont celles qui réalisent des rotations, des homothéties ou des symétries. Une rotation d'angle $\\theta$ est codée par la matrice $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$. Une homothétie de rapport $k$ est $k I_2$. Le produit d'une rotation et d'une homothétie donne une similitude directe ; le produit de deux rotations donne une rotation dont l'angle est la somme des angles. Ces faits permettent de comprendre géométriquement le produit sans calculer chaque coefficient."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Exemples usuels en dimension 2",
+              "paragraphs": [
+                "Rotation $R_{\\theta} = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$",
+                "Symétrie par rapport à l'axe $x$ : $S_x = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+                "Homothétie $k I_2 = \\begin{pmatrix} k & 0 \\\\ 0 & k \\end{pmatrix}$"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une application importante du produit matriciel est la résolution de systèmes linéaires. Si l'on écrit un système sous la forme $AX = B$ avec $A$ inversible, la solution unique est $X = A^{-1}B$. Le calcul de l'inverse repose lui-même sur des produits de matrices (adjugué divisé par le déterminant). Bien que le cours n'entre pas dans le détail algorithmique de l'inversion, il est essentiel de voir que le produit matriciel est l'outil qui relie l'algèbre des matrices à la résolution concrète de problèmes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'un système par inversion"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le système sous forme matricielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le système $\\begin{cases} 2x + y = 5 \\\\ x - 3y = -4 \\end{cases}$ s'écrit $A X = B$ avec $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & -3 \\end{pmatrix}$, $X = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$, $B = \\begin{pmatrix} 5 \\\\ -4 \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier que $A$ est inversible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le déterminant $\\det(A) = 2\\cdot(-3) - 1\\cdot1 = -7 \\neq 0$, donc $A$ est inversible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer $A^{-1}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$A^{-1} = \\frac{1}{-7} \\begin{pmatrix} -3 & -1 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} \\frac{3}{7} & \\frac{1}{7} \\\\ \\frac{1}{7} & -\\frac{2}{7} \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Multiplier $A^{-1}$ par $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$X = A^{-1}B = \\begin{pmatrix} \\frac{3}{7} & \\frac{1}{7} \\\\ \\frac{1}{7} & -\\frac{2}{7} \\end{pmatrix} \\begin{pmatrix} 5 \\\\ -4 \\end{pmatrix} = \\begin{pmatrix} \\frac{15-4}{7} \\\\ \\frac{5+8}{7} \\end{pmatrix} = \\begin{pmatrix} \\frac{11}{7} \\\\ \\frac{13}{7} \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution est $x = \\frac{11}{7}$, $y = \\frac{13}{7}$. On voit que le produit matriciel a permis de passer du système à la solution en une seule multiplication après l'inversion."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'addition de deux matrices de même taille et en donner les propriétés.",
+                "Je sais multiplier deux matrices lorsque le nombre de colonnes de la première égale le nombre de lignes de la seconde.",
+                "Je connais les propriétés algébriques du produit : associativité, distributivité, non-commutativité, rôle de l'identité.",
+                "J'interprète le produit matriciel comme composition d'applications linéaires et je reconnais les matrices de rotation, symétrie, homothétie en dimension 2.",
+                "Je sais utiliser l'inverse d'une matrice pour résoudre un système linéaire $AX=B$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $R_{\\pi/2} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ (rotation de $90^\\circ$) et $S_x = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$ (symétrie axe $x$). Calculer $R_{\\pi/2} S_x$ et $S_x R_{\\pi/2}$. Que représente chaque produit géométriquement ?",
+              "answer": "$R_{\\pi/2} S_x = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ (symétrie par rapport à la droite $y=x$). $S_x R_{\\pi/2} = \\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$ (symétrie par rapport à la droite $y=-x$).",
+              "hint": "Multipliez les matrices dans les deux ordres et identifiez la transformation géométrique obtenue.",
+              "explanation": "Le premier produit effectue d'abord la symétrie $S_x$ puis la rotation $R_{\\pi/2}$, ce qui envoie $(x,y)$ sur $(y,x)$. Le second produit fait la rotation puis la symétrie, envoyant $(x,y)$ sur $(-y,-x)$, soit une symétrie par rapport à $y=-x$. L'ordre change le résultat, illustrant la non-commutativité."
+            },
+            {
+              "question": "Déterminer la matrice de l'homothétie de rapport $3$ composée avec la rotation de $45^\\circ$ (dans cet ordre).",
+              "answer": "$3 R_{\\pi/4} = \\begin{pmatrix} \\frac{3\\sqrt{2}}{2} & -\\frac{3\\sqrt{2}}{2} \\\\ \\frac{3\\sqrt{2}}{2} & \\frac{3\\sqrt{2}}{2} \\end{pmatrix}$.",
+              "hint": "La matrice d'homothétie est $3I_2$. Multipliez $3I_2$ par la matrice de rotation $R_{\\pi/4}$.",
+              "explanation": "L'homothétie $3I_2$ multiplie chaque vecteur par $3$. La rotation $R_{\\pi/4}$ a pour matrice $\\begin{pmatrix} \\cos\\frac{\\pi}{4} & -\\sin\\frac{\\pi}{4} \\\\ \\sin\\frac{\\pi}{4} & \\cos\\frac{\\pi}{4} \\end{pmatrix} = \\begin{pmatrix} \\frac{\\sqrt{2}}{2} & -\\frac{\\sqrt{2}}{2} \\\\ \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\end{pmatrix}$. Le produit $3I_2 \\cdot R_{\\pi/4} = 3 R_{\\pi/4}$ donne la matrice indiquée."
+            },
+            {
+              "question": "Résoudre le système $\\begin{cases} x + 2y = 4 \\\\ 3x - y = 5 \\end{cases}$ en écrivant $AX=B$, calculant $A^{-1}$ et trouvant $X = A^{-1}B$.",
+              "answer": "$x = 2$, $y = 1$.",
+              "hint": "Calculez le déterminant de $A$, puis l'inverse via la formule de la comatrice, enfin multipliez par $B$.",
+              "explanation": "$A = \\begin{pmatrix} 1 & 2 \\\\ 3 & -1 \\end{pmatrix}$, $\\det(A) = -1 - 6 = -7$. $A^{-1} = \\frac{1}{-7} \\begin{pmatrix} -1 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} \\frac{1}{7} & \\frac{2}{7} \\\\ \\frac{3}{7} & -\\frac{1}{7} \\end{pmatrix}$. $B = \\begin{pmatrix} 4 \\\\ 5 \\end{pmatrix}$. $X = A^{-1}B = \\begin{pmatrix} \\frac{1}{7}\\cdot4 + \\frac{2}{7}\\cdot5 \\\\ \\frac{3}{7}\\cdot4 - \\frac{1}{7}\\cdot5 \\end{pmatrix} = \\begin{pmatrix} \\frac{14}{7} \\\\ \\frac{7}{7} \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

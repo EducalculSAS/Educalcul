@@ -1,0 +1,511 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.694818+00:00",
+  "id": 708,
+  "code": "terminale-generale-maths-t06-c02",
+  "title": "Propriétés de l'intégrale",
+  "description": "Cours structuré Educalcul : Propriétés de l'intégrale.",
+  "subject": "Intégration",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Intégration",
+    "titre_du_cours": "Propriétés de l'intégrale",
+    "objectif_global": "Propriétés de l'intégrale",
+    "mini_lecons_imposees": [
+      "Linéarité.",
+      "Relation de Chasles.",
+      "Ordre / positivité."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Intégration",
+      "lessons": [
+        {
+          "title": "Linéarité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant calculer des intégrales de fonctions usuelles grâce aux primitives. Mais en Terminale, on rencontre souvent des fonctions qui sont des combinaisons de plusieurs termes : sommes, différences, multiples par un nombre. Heureusement, l'intégrale possède une propriété fondamentale qui va nous permettre de décomposer ces calculs complexes en une suite de calculs élémentaires. C'est la linéarité. Imagine que tu dois mesurer la surface totale d'un terrain composé de deux parcelles juxtaposées : tu mesures l'aire de la première, celle de la seconde, et tu additionnes. L'intégrale fonctionne exactement de la même manière : l'aire sous la courbe d'une somme est la somme des aires sous chaque courbe."
+            },
+            {
+              "type": "definition",
+              "term": "Linéarité de l'intégrale",
+              "definition": "Soient $f$ et $g$ deux fonctions continues sur un intervalle $[a;b]$ et $\\lambda, \\mu \\in \\mathbb{R}$. Alors la fonction $\\lambda f + \\mu g$ est continue sur $[a;b]$ et on a : $\\int_a^b (\\lambda f(x) + \\mu g(x)) \\, dx = \\lambda \\int_a^b f(x) \\, dx + \\mu \\int_a^b g(x) \\, dx$.",
+              "example": "En particulier, $\\int_a^b (f+g) = \\int_a^b f + \\int_a^b g$ et $\\int_a^b (\\lambda f) = \\lambda \\int_a^b f$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b (f(x)+g(x))\\,dx = \\int_a^b f(x)\\,dx + \\int_a^b g(x)\\,dx"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Utiliser les primitives",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $F$ et $G$ des primitives respectives de $f$ et $g$ sur $[a;b]$. Par définition de l'intégrale, $\\int_a^b f = F(b)-F(a)$ et $\\int_a^b g = G(b)-G(a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Primitive de la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction $F+G$ est une primitive de $f+g$ car $(F+G)' = F' + G' = f+g$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer le théorème fondamental",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $\\int_a^b (f+g) = (F+G)(b) - (F+G)(a) = (F(b)+G(b)) - (F(a)+G(a)) = (F(b)-F(a)) + (G(b)-G(a)) = \\int_a^b f + \\int_a^b g$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Cas du multiple par un scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\lambda \\in \\mathbb{R}$, $\\lambda F$ est une primitive de $\\lambda f$. Donc $\\int_a^b \\lambda f = \\lambda F(b) - \\lambda F(a) = \\lambda (F(b)-F(a)) = \\lambda \\int_a^b f$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété de somme s'étend naturellement à n'importe quelle combinaison linéaire. Concrètement, quand tu dois intégrer un polynôme comme $3x^2 - 5x + 2$, tu n'as pas besoin de chercher une primitive globale d'un coup : tu intègres terme à terme. C'est un gain de temps considérable et cela évite les erreurs d'algèbre. Le coefficient constant sort de l'intégrale, la somme se sépare, et tu ne te concentres plus que sur des intégrales de base : $\\int x^n$, $\\int \\cos$, $\\int e^x$, etc."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b (\\lambda f(x) + \\mu g(x))\\,dx = \\lambda\\int_a^b f(x)\\,dx + \\mu\\int_a^b g(x)\\,dx"
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2 + 0.5*x",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 20,
+              "caption": "Visualisation de l'aire sous $f(x)=x^2+0.5x$ : elle est bien la somme de l'aire sous $x^2$ et de l'aire sous $0.5x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention toutefois : la linéarité ne s'applique qu'aux opérations d'addition et de multiplication par une constante. Elle ne permet pas de factoriser une intégrale de produit ou de quotient : $\\int fg \\neq \\int f \\times \\int g$ en général, et $\\int \\frac{f}{g} \\neq \\frac{\\int f}{\\int g}$. C'est une erreur classique en début d'année. Pour les produits, il faudra attendre la leçon sur l'intégration par parties. Pour l'instant, maîtrise parfaitement l'art de \"découper\" les sommes et de \"sortir\" les coefficients. C'est la clé pour intégrer n'importe quel polynôme ou combinaison de fonctions usuelles sans peine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer l'intégrale $\\int_0^1 (x^2 + 3x) \\, dx$ en utilisant la linéarité.",
+              "answer": "$\\frac{11}{6}$",
+              "hint": "Séparez l'intégrale en deux : $\\int_0^1 x^2 dx + 3\\int_0^1 x dx$. Utilisez les primitives $\\frac{x^3}{3}$ et $\\frac{x^2}{2}$.",
+              "explanation": "Par linéarité : $\\int_0^1 (x^2+3x)dx = \\int_0^1 x^2 dx + 3\\int_0^1 x dx = [\\frac{x^3}{3}]_0^1 + 3[\\frac{x^2}{2}]_0^1 = \\frac{1}{3} + 3\\times\\frac{1}{2} = \\frac{1}{3} + \\frac{3}{2} = \\frac{2+9}{6} = \\frac{11}{6}$."
+            },
+            {
+              "question": "Calculer $\\int_1^2 5x^3 \\, dx$.",
+              "answer": "$\\frac{75}{4}$",
+              "hint": "Sortez le coefficient 5 de l'intégrale. La primitive de $x^3$ est $\\frac{x^4}{4}$.",
+              "explanation": "$\\int_1^2 5x^3 dx = 5 \\int_1^2 x^3 dx = 5 [\\frac{x^4}{4}]_1^2 = 5 (\\frac{16}{4} - \\frac{1}{4}) = 5 \\times \\frac{15}{4} = \\frac{75}{4}$."
+            },
+            {
+              "question": "Calculer $\\int_{-1}^1 (2x^3 - 4x + 1) \\, dx$.",
+              "answer": "$2$",
+              "hint": "Utilisez la linéarité terme à terme. Remarquez la parité des fonctions $x^3$ et $x$ sur un intervalle symétrique.",
+              "explanation": "$\\int_{-1}^1 (2x^3 - 4x + 1) dx = 2\\int_{-1}^1 x^3 dx - 4\\int_{-1}^1 x dx + \\int_{-1}^1 1 dx$. Les fonctions $x^3$ et $x$ sont impaires, leurs intégrales sur $[-1;1]$ valent 0. Il reste $\\int_{-1}^1 1 dx = [x]_{-1}^1 = 1 - (-1) = 2$."
+            }
+          ]
+        },
+        {
+          "title": "Relation de Chasles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment découper une fonction en somme, voyons comment découper l'intervalle d'intégration lui-même. C'est l'objet de la relation de Chasles, un outil indispensable qui permet de \"scier\" le domaine de calcul en plusieurs tronçons. Imagine que tu doives calculer la surface d'un grand terrain : tu peux le diviser en deux parcelles, mesurer l'aire de chacune, puis additionner les résultats. En intégration, c'est exactement le même principe : l'intégrale sur $[a;b]$ est la somme de l'intégrale sur $[a;c]$ et de l'intégrale sur $[c;b]$, pour peu que $c$ soit un point quelconque (même en dehors de l'intervalle, grâce aux intégrales orientées)."
+            },
+            {
+              "type": "definition",
+              "term": "Relation de Chasles",
+              "definition": "Soit $f$ continue sur un intervalle $I$ et $a, b, c \\in I$. Alors : $\\int_a^b f(t) \\, dt = \\int_a^c f(t) \\, dt + \\int_c^b f(t) \\, dt$. Cette formule reste vraie quel que soit l'ordre de $a, b, c$ sur la droite réelle, à condition d'utiliser la convention d'orientation $\\int_a^b f = -\\int_b^a f$.",
+              "example": "$\\int_0^2 f = \\int_0^1 f + \\int_1^2 f = \\int_0^3 f + \\int_3^2 f$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Illustration de Chasles : l'aire totale de $a$ à $b$ est la somme des aires de $a$ à $c$ et de $c$ à $b$.",
+              "min": -1,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "a"
+                },
+                {
+                  "value": 2,
+                  "label": "c"
+                },
+                {
+                  "value": 4,
+                  "label": "b"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 2,
+                  "label": "$\\int_a^c$",
+                  "tone": "blue"
+                },
+                {
+                  "start": 2,
+                  "end": 4,
+                  "label": "$\\int_c^b$",
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser une primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $F$ une primitive de $f$ sur $I$. Par définition, pour tout $x,y \\in I$, $\\int_x^y f = F(y) - F(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Décomposer la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $F(b) - F(a) = (F(c) - F(a)) + (F(b) - F(c))$. C'est une simple identité algébrique (le $F(c)$ s'annule)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reconnaître les intégrales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le premier terme est $\\int_a^c f$, le second est $\\int_c^b f$. On obtient bien $\\int_a^b f = \\int_a^c f + \\int_c^b f$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Généraliser aux ordres quelconques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $c \\notin [a,b]$, par exemple $c > b > a$, alors $\\int_c^b f = -\\int_b^c f$. La formule $\\int_a^b = \\int_a^c + \\int_c^b$ devient $\\int_a^b = \\int_a^c - \\int_b^c$, ce qui est vrai car $\\int_a^c = \\int_a^b + \\int_b^c$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La relation de Chasles devient vraiment puissante quand on la combine avec la convention des intégrales orientées : $\\int_a^b f = -\\int_b^a f$. Cela signifie que tu peux placer le point de coupure $c$ n'importe où sur la droite réelle, pas seulement entre $a$ et $b$. Si tu connais $\\int_0^2 f$ et $\\int_0^1 f$, tu déduis immédiatement $\\int_1^2 f$ par soustraction. C'est souvent plus rapide que de recalculer une primitive. De plus, cela permet de gérer les intégrales où la borne inférieure est plus grande que la borne supérieure sans changer l'ordre : on insère simplement un point intermédiaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f = \\int_a^c f + \\int_c^b f \\quad \\text{pour tout } a,b,c \\in I"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'application la plus fréquente en Terminale, c'est l'intégration de fonctions définies par morceaux (partie entière, valeur absolue, fonctions par morceaux). La fonction change d'expression en certains points : il suffit de couper l'intégrale exactement à ces points de changement de formule. Par exemple, pour $\\int_{-1}^2 |x| dx$, l'expression de $|x|$ change en $0$. On écrit $\\int_{-1}^0 (-x) dx + \\int_0^2 x dx$. C'est une méthode systématique : repérer les points de rupture, appliquer Chasles, puis calculer chaque morceau avec la bonne expression. C'est la seule méthode rigoureuse pour ces fonctions."
+            },
+            {
+              "type": "graph",
+              "expression": "abs(x)",
+              "xmin": -1.5,
+              "xmax": 2.5,
+              "caption": "Graphique de $f(x)=|x|$. L'intégrale sur $[-1;2]$ se coupe naturellement en $0$ où la dérivée change."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les points de rupture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez les valeurs de $x$ où l'expression analytique de $f$ change (ex: $x=0$ pour $|x|$, entiers pour $E(x)$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer Chasles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Découpez l'intégrale initiale en une somme d'intégrales sur des sous-intervalles où $f$ a une expression unique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer chaque morceau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez $f$ par son expression locale sur chaque sous-intervalle et calculez l'intégrale usuelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Faites la somme des résultats pour obtenir la valeur finale de l'intégrale de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On sait que $\\int_0^2 f(t) \\, dt = 5$ et $\\int_0^1 f(t) \\, dt = 2$. Calculer $\\int_1^2 f(t) \\, dt$.",
+              "answer": "$3$",
+              "hint": "Utilisez la relation de Chasles : $\\int_0^2 = \\int_0^1 + \\int_1^2$.",
+              "explanation": "Par Chasles : $\\int_0^2 f = \\int_0^1 f + \\int_1^2 f$. Donc $\\int_1^2 f = \\int_0^2 f - \\int_0^1 f = 5 - 2 = 3$."
+            },
+            {
+              "question": "Calculer $\\int_2^0 3x^2 \\, dx$ sans déterminer de primitive sur $[0;2]$, en utilisant Chasles et l'orientation.",
+              "answer": "$-8$",
+              "hint": "Rappelez-vous que $\\int_a^b = -\\int_b^a$. Vous pouvez aussi utiliser un point intermédiaire comme $c=1$.",
+              "explanation": "Méthode 1 (orientation) : $\\int_2^0 3x^2 dx = -\\int_0^2 3x^2 dx = -[x^3]_0^2 = -8$. Méthode 2 (Chasles avec $c=1$) : $\\int_2^0 = \\int_2^1 + \\int_1^0 = -\\int_1^2 - \\int_0^1$. Calcul rapide : $-(8-1) - (1-0) = -7-1=-8$."
+            },
+            {
+              "question": "Calculer $\\int_{-1}^2 |x| \\, dx$.",
+              "answer": "$\\frac{5}{2}$",
+              "hint": "Coupez l'intégrale en $0$. Sur $[-1;0]$, $|x| = -x$. Sur $[0;2]$, $|x| = x$.",
+              "explanation": "$\\int_{-1}^2 |x| dx = \\int_{-1}^0 (-x) dx + \\int_0^2 x dx = [-\\frac{x^2}{2}]_{-1}^0 + [\\frac{x^2}{2}]_0^2 = (0 - (-\\frac{1}{2})) + (\\frac{4}{2} - 0) = \\frac{1}{2} + 2 = \\frac{5}{2}$."
+            }
+          ]
+        },
+        {
+          "title": "Ordre / positivité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment manipuler l'intégrale algébriquement (linéarité) et comment découper son domaine (Chasles). Il nous reste une propriété d'ordre, intimement liée à la géométrie : la positivité. Si une fonction est positive sur un intervalle, son intégrale (l'aire sous la courbe) est nécessairement positive. Cela semble évident sur un dessin, mais c'est un théorème rigoureux qui permet de comparer des intégrales sans les calculer, de les encadrer, et de démontrer des inégalités analytiques. C'est le passage du calcul pur à l'analyse quantitative."
+            },
+            {
+              "type": "definition",
+              "term": "Positivité de l'intégrale",
+              "definition": "Soit $f$ continue sur $[a;b]$ avec $a < b$. Si $f(x) \\ge 0$ pour tout $x \\in [a;b]$, alors $\\int_a^b f(x) \\, dx \\ge 0$. Si de plus $f$ n'est pas identiquement nulle (il existe $c$ tel que $f(c) > 0$), alors l'intégrale est strictement positive : $\\int_a^b f > 0$.",
+              "example": "Pour $f(x)=x^2+1 > 0$ sur $[0;1]$, $\\int_0^1 (x^2+1) dx > 0$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2 + 1",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 30,
+              "caption": "La fonction $x^2+1$ est strictement positive. La somme des aires des rectangles (intégrale) est donc strictement positive."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Primitive croissante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $F$ une primitive de $f$. Comme $f \\ge 0$, la dérivée $F' = f$ est positive ou nulle. Donc $F$ est croissante sur $[a;b]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $a < b$ et $F$ croissante, on a $F(a) \\le F(b)$. Donc $F(b) - F(a) \\ge 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Or $\\int_a^b f = F(b) - F(a) \\ge 0$. Si $f$ n'est pas identiquement nulle, $F$ est strictement croissante par morceaux, donc $F(b) > F(a)$ et l'intégrale est $> 0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "De la positivité, on déduit immédiatement la propriété d'ordre : si deux fonctions $f$ et $g$ vérifient $f(x) \\le g(x)$ sur $[a;b]$, alors la différence $g-f$ est positive. En appliquant la linéarité et la positivité à $g-f$, on obtient $\\int_a^b f \\le \\int_a^b g$. C'est un outil de comparaison redoutable : pour savoir laquelle de deux intégrales est la plus grande, il suffit de comparer les fonctions point par point. Pas besoin de calculer les primitives ! C'est souvent plus rapide et plus éclairant pour comprendre le comportement d'une intégrale."
+            },
+            {
+              "type": "definition",
+              "term": "Propriété d'ordre (comparaison)",
+              "definition": "Soient $f, g$ continues sur $[a;b]$ avec $a<b$. Si $f(x) \\le g(x)$ pour tout $x \\in [a;b]$, alors $\\int_a^b f(x) \\, dx \\le \\int_a^b g(x) \\, dx$.",
+              "example": "Sur $[0;1]$, $x^2 \\le x$, donc $\\int_0^1 x^2 dx \\le \\int_0^1 x dx$ (soit $\\frac{1}{3} \\le \\frac{1}{2}$)."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Comparaison de $y=x$ (bleu) et $y=x^2$ (rouge) sur $[0;1]$. La courbe bleue est au-dessus, donc son intégrale est plus grande."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une conséquence majeure de l'ordre est l'encadrement d'une intégrale par des rectangles. Si une fonction $f$ est bornée sur $[a;b]$ par $m \\le f(x) \\le M$, alors en intégrant cette inégalité, on obtient $m(b-a) \\le \\int_a^b f(x) dx \\le M(b-a)$. Géométriquement, l'aire sous la courbe est coincée entre l'aire du rectangle de hauteur $m$ (le minimum) et celle du rectangle de hauteur $M$ (le maximum). C'est la base de la méthode des rectangles pour approximer une intégrale, et cela permet de donner une valeur approchée avec une marge d'erreur garantie, sans calculatrice sophistiquée."
+            },
+            {
+              "type": "display_math",
+              "latex": "m(b-a) \\le \\int_a^b f(x)\\,dx \\le M(b-a) \\quad \\text{si } m \\le f(x) \\le M"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver des bornes $m$ et $M$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Étudiez la fonction $f$ sur $[a;b]$ (dérivée, variations) pour déterminer son minimum $m$ et son maximum $M$ sur cet intervalle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez l'inégalité $m(b-a) \\le \\int_a^b f \\le M(b-a)$. La longueur de l'intervalle est $b-a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intégrale est piégée entre l'aire du petit rectangle (hauteur $m$) et du grand rectangle (hauteur $M$). Plus $f$ varie peu, plus l'encadrement est précis."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, une inégalité fondamentale relie l'intégrale de la valeur absolue et la valeur absolue de l'intégrale : $|\\int_a^b f| \\le \\int_a^b |f|$. Géométriquement, le membre de gauche est l'aire algébrique (les parties sous l'axe comptent négativement, il y a compensation), tandis que le membre de droite est l'aire totale (tout est compté positivement). L'aire totale est toujours au moins aussi grande que l'aire algébrique en valeur absolue. Cette inégalité est cruciale en analyse pour majorer des intégrales, notamment dans les preuves de convergence ou pour estimer des restes de séries."
+            },
+            {
+              "type": "display_math",
+              "latex": "|\\int_a^b f(x)\\,dx| \\le \\int_a^b |f(x)|\\,dx"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.28,
+              "caption": "Sur $[0; 2\\pi]$, l'intégrale de $\\sin x$ est nulle (aires compensées), mais l'intégrale de $|\\sin x|$ est $4$ (aire totale)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais utiliser la linéarité pour intégrer une combinaison linéaire de fonctions.",
+                "Je sais appliquer la relation de Chasles pour découper un intervalle ou changer les bornes.",
+                "Je sais utiliser la positivité pour comparer deux intégrales sans les calculer.",
+                "Je sais encadrer une intégrale par $m(b-a)$ et $M(b-a)$.",
+                "Je connais l'inégalité $|\\int f| \\le \\int |f|$ et son interprétation géométrique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Montrer que $\\int_0^1 e^{-x^2} \\, dx > 0$ sans calculer la valeur exacte.",
+              "answer": "L'intégrale est strictement positive.",
+              "hint": "Regardez le signe de la fonction $e^{-x^2}$ sur l'intervalle $[0;1]$.",
+              "explanation": "Pour tout $x \\in [0;1]$, $x^2 \\ge 0$ donc $-x^2 \\le 0$ et $e^{-x^2} > 0$ (l'exponentielle est toujours strictement positive). La fonction est continue et strictement positive sur $[0;1]$. Par la propriété de positivité stricte, $\\int_0^1 e^{-x^2} dx > 0$."
+            },
+            {
+              "question": "Comparer $\\int_0^1 x^2 \\, dx$ et $\\int_0^1 x \\, dx$ sans les calculer.",
+              "answer": "$\\int_0^1 x^2 dx < \\int_0^1 x dx$",
+              "hint": "Comparez $x^2$ et $x$ pour $x \\in [0;1]$.",
+              "explanation": "Sur $[0;1]$, on a $x^2 \\le x$ (car $x(x-1) \\le 0$). L'inégalité est stricte sur $]0;1[$. D'après la propriété d'ordre, $\\int_0^1 x^2 dx < \\int_0^1 x dx$."
+            },
+            {
+              "question": "Encadrer l'intégrale $I = \\int_0^1 \\frac{dx}{1+x^2}$.",
+              "answer": "$\\frac{1}{2} \\le I \\le 1$",
+              "hint": "Trouvez le minimum et le maximum de $f(x)=\\frac{1}{1+x^2}$ sur $[0;1]$.",
+              "explanation": "La fonction $f(x)=\\frac{1}{1+x^2}$ est décroissante sur $[0;1]$ (dérivée négative). Son maximum est $f(0)=1$, son minimum est $f(1)=\\frac{1}{2}$. Pour tout $x \\in [0;1]$, $\\frac{1}{2} \\le f(x) \\le 1$. En intégrant : $\\int_0^1 \\frac{1}{2} dx \\le I \\le \\int_0^1 1 dx$, soit $\\frac{1}{2} \\le I \\le 1$."
+            },
+            {
+              "question": "Vérifier l'inégalité $|\\int_0^{2\\pi} \\sin x \\, dx| \\le \\int_0^{2\\pi} |\\sin x| \\, dx$.",
+              "answer": "$0 \\le 4$, l'inégalité est vérifiée.",
+              "hint": "Calculez les deux intégrales séparément. $\\int_0^{2\\pi} \\sin x dx = 0$. Pour la valeur absolue, coupez en $[0;\\pi]$ et $[\\pi;2\\pi]$.",
+              "explanation": "Membre de gauche : $\\int_0^{2\\pi} \\sin x dx = [-\\cos x]_0^{2\\pi} = -1 - (-1) = 0$, donc valeur absolue $0$. Membre de droite : $\\int_0^{2\\pi} |\\sin x| dx = \\int_0^{\\pi} \\sin x dx + \\int_{\\pi}^{2\\pi} (-\\sin x) dx = [-\\cos x]_0^{\\pi} + [\\cos x]_{\\pi}^{2\\pi} = (1+1) + (1+1) = 4$. On a bien $0 \\le 4$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

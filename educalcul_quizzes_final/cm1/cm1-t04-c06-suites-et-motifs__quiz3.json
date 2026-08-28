@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Décrire généralisation simple",
+  "title": "Quiz : Décrire une généralisation simple",
+  "questions": [
+    {
+      "text": "On construit une suite de figures avec des allumettes. La figure 1 est un triangle (3 allumettes). La figure 2 est un losange (4 allumettes). La figure 3 est un pentagone (5 allumettes). On continue ainsi. Combien d'allumettes faut-il pour la figure 10 ?",
+      "options": [
+        "10 allumettes",
+        "11 allumettes",
+        "12 allumettes",
+        "13 allumettes"
+      ],
+      "correctAnswer": "12 allumettes",
+      "explanation": "On observe que la figure 1 a 3 côtés, la figure 2 en a 4, la figure 3 en a 5. Le nombre de côtés (et donc d'allumettes) est égal au numéro de la figure plus 2. Pour la figure 10, on calcule $10 + 2 = 12$ allumettes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite de nombres : $2, 5, 8, 11, 14, \\dots$ Quelle phrase décrit correctement la règle pour passer d'un terme au suivant ?",
+      "options": [
+        "On ajoute 2 à chaque fois.",
+        "On ajoute 3 à chaque fois.",
+        "On multiplie par 2 à chaque fois.",
+        "On ajoute 1 puis on multiplie par 2."
+      ],
+      "correctAnswer": "On ajoute 3 à chaque fois.",
+      "explanation": "Calculons les différences : $5 - 2 = 3$, $8 - 5 = 3$, $11 - 8 = 3$, $14 - 11 = 3$. La différence est constante et vaut 3. La règle est donc d'ajouter 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une suite commence par 1. La règle est : \"On multiplie par 2, puis on ajoute 1\". Quels sont les 4 premiers termes de cette suite ?",
+      "options": [
+        "1, 2, 4, 8",
+        "1, 3, 7, 15",
+        "1, 4, 9, 19",
+        "1, 3, 6, 13"
+      ],
+      "correctAnswer": "1, 3, 7, 15",
+      "explanation": "On applique la règle pas à pas :\\nTerme 1 : 1\\nTerme 2 : $1 \\times 2 + 1 = 3$\\nTerme 3 : $3 \\times 2 + 1 = 7$\\nTerme 4 : $7 \\times 2 + 1 = 15$\\nLa suite est bien 1, 3, 7, 15.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul range des billes. Il met 1 bille dans la 1$^\\text{re}$ boîte, 3 billes dans la 2$^\\text{e}$ boîte, 5 billes dans la 3$^\\text{e}$ boîte, 7 billes dans la 4$^\\text{e}$ boîte. S'il continue ainsi, combien de billes y aura-t-il dans la 10$^\\text{e}$ boîte ?",
+      "options": [
+        "19 billes",
+        "20 billes",
+        "18 billes",
+        "21 billes"
+      ],
+      "correctAnswer": "19 billes",
+      "explanation": "Les nombres de billes forment la suite des nombres impairs : 1, 3, 5, 7... On ajoute 2 à chaque fois. La formule pour le $n^\\text{e}$ terme est $2 \\times n - 1$. Pour la 10$^\\text{e}$ boîte : $2 \\times 10 - 1 = 20 - 1 = 19$ billes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la suite des carrés : $1, 4, 9, 16, 25, \\dots$ (ce sont les carrés des entiers $1^2, 2^2, 3^2...$). Quelle affirmation est vraie pour passer du 5$^\\text{e}$ terme (25) au 6$^\\text{e}$ terme ?",
+      "options": [
+        "On ajoute 5.",
+        "On ajoute 10.",
+        "On ajoute 11.",
+        "On multiplie par 2."
+      ],
+      "correctAnswer": "On ajoute 11.",
+      "explanation": "Le 5$^\\text{e}$ terme est $5^2 = 25$. Le 6$^\\text{e}$ terme est $6^2 = 36$. La différence est $36 - 25 = 11$. On peut aussi remarquer que la différence entre deux carrés consécutifs $n^2$ et $(n+1)^2$ est $2n+1$. Ici $2 \\times 5 + 1 = 11$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

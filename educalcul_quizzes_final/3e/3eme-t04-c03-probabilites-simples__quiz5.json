@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Univers",
+  "title": "Approfondissement : Univers probabiliste",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quel ensemble représente l'univers $\\Omega$ de cette expérience aléatoire ?",
+      "options": [
+        "\\{1; 2; 3; 4; 5\\}",
+        "\\{1; 2; 3; 4; 5; 6\\}",
+        "\\{1; 2; 3; 4; 5; 6; 7\\}",
+        "\\{pair; impair\\}"
+      ],
+      "correctAnswer": "\\{1; 2; 3; 4; 5; 6\\}",
+      "explanation": "L'univers $\\Omega$ est l'ensemble de toutes les issues possibles de l'expérience. Pour un dé à six faces numérotées de $1$ à $6$, les issues possibles sont exactement les nombres $1, 2, 3, 4, 5, 6$. L'option A oublie le $6$, l'option C ajoute un $7$ impossible, et l'option D donne une partition de $\\Omega$ (pair/impair) mais pas la liste des issues élémentaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu de $32$ cartes. On note $A$ l'événement « Tirer un Roi » et $B$ l'événement « Tirer une carte rouge ». Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "Les événements $A$ et $B$ ne sont pas incompatibles.",
+        "L'événement contraire de $A$ est « Ne pas tirer un Roi ».",
+        "$A \\cup B = \\Omega$.",
+        "$A \\cap B$ contient deux issues."
+      ],
+      "correctAnswer": "$A \\cup B = \\Omega$.",
+      "explanation": "Il y a $4$ Rois (dont $2$ rouges) et $16$ cartes rouges. $A$ et $B$ ne sont pas incompatibles car on peut tirer le Roi de cœur ou de carreau (intersection non vide, $2$ issues), donc la première et la dernière affirmations sont vraies. Le contraire de $A$ est bien « ne pas tirer un Roi ». En revanche, $A \\cup B$ regroupe les Rois et les cartes rouges ; il manque les cartes noires qui ne sont pas des Rois (Valets, Dames, 10, 9, 8, 7 noirs), donc $A \\cup B \\neq \\Omega$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une expérience aléatoire consiste à lancer une pièce de monnaie équilibrée. Si on obtient « Face », on lance un dé à six faces ; si on obtient « Pile », on s'arrête. Combien l'univers $\\Omega$ de cette expérience contient-il d'issues possibles ?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "12"
+      ],
+      "correctAnswer": "7",
+      "explanation": "On construit l'univers par cas : si « Pile » (1 issue), on s'arrête $\\rightarrow$ issue : P. Si « Face » (1 issue), on lance le dé (6 issues possibles) $\\rightarrow$ issues : F1, F2, F3, F4, F5, F6. Au total, l'univers contient $1 + 6 = 7$ issues élémentaires : $\\Omega = \\{\\text{P}; \\text{F}1; \\text{F}2; \\text{F}3; \\text{F}4; \\text{F}5; \\text{F}6\\}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une urne, il y a $5$ boules vertes, $3$ boules bleues et $2$ boules rouges. On prélève une boule au hasard. On note $V$ l'événement « La boule est verte ». Quelle est la probabilité de l'événement contraire de $V$ ?",
+      "options": [
+        "0,5",
+        "0,3",
+        "0,2",
+        "0,8"
+      ],
+      "correctAnswer": "0,5",
+      "explanation": "L'urne contient $5 + 3 + 2 = 10$ boules au total. L'événement $V$ (boule verte) a $5$ issues favorables, donc $P(V) = \\frac{5}{10} = 0,5$. L'événement contraire $\\overline{V}$ est « La boule n'est pas verte » (donc bleue ou rouge). Sa probabilité est $P(\\overline{V}) = 1 - P(V) = 1 - 0,5 = 0,5$. On peut aussi compter les issues favorables à $\\overline{V}$ : $3 + 2 = 5$, soit $\\frac{5}{10} = 0,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une expérience aléatoire dont l'univers est $\\Omega = \\{1; 2; 3; 4; 5; 6; 7; 8; 9; 10\\}$. On définit les événements $A = \\{2; 4; 6; 8; 10\\}$ (nombres pairs) et $B = \\{3; 6; 9\\}$ (multiples de $3$). Quel est l'ensemble $A \\cap B$ ?",
+      "options": [
+        "\\{6\\}",
+        "\\{2; 3; 4; 6; 8; 9; 10\\}",
+        "\\{3; 6; 9\\}",
+        "\\varnothing"
+      ],
+      "correctAnswer": "\\{6\\}",
+      "explanation": "L'intersection $A \\cap B$ contient les éléments qui appartiennent à la fois à $A$ (nombres pairs) et à $B$ (multiples de $3$). Parmi les éléments de $B = \\{3; 6; 9\\}$, seul le $6$ est pair. Les autres éléments ($3$ et $9$) sont impairs. L'ensemble $A \\cup B$ serait $\\{2; 3; 4; 6; 8; 9; 10\\}$ (option B), $B$ seul est l'option C, et l'intersection n'est pas vide car $6$ y appartient.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

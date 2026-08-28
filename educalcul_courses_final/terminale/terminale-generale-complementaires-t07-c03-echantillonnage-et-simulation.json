@@ -1,0 +1,363 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.554495+00:00",
+  "id": 663,
+  "code": "terminale-generale-complementaires-t07-c03",
+  "title": "Échantillonnage et simulation",
+  "description": "Cours structuré Educalcul : Échantillonnage et simulation.",
+  "subject": "Expériences indépendantes et échantillonnage",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Expériences indépendantes et échantillonnage",
+    "titre_du_cours": "Échantillonnage et simulation",
+    "objectif_global": "Échantillonnage et simulation",
+    "mini_lecons_imposees": [
+      "Fluctuation.",
+      "Simulation.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Expériences indépendantes et échantillonnage",
+      "lessons": [
+        {
+          "title": "Fluctuation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi les résultats d'un sondage varient-ils ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux connaître la proportion d'élèves de ton lycée qui préfèrent le chocolat au lait au chocolat noir. Tu ne peux pas interroger les 1 200 élèves, alors tu en choisis $100$ au hasard. Si tu refais le même sondage une deuxième fois avec un autre groupe de $100$ élèves, le pourcentage obtenu sera légèrement différent. Ce n'est pas une erreur : c'est la fluctuation d'échantillonnage, un phénomène tout à fait normal quand on travaille avec un échantillon au lieu de la population entière."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser cette fluctuation, supposons que la vraie proportion dans le lycée soit $p = 0,55$ ($55\\%$ de préférence pour le chocolat au lait). Si tu tires $100$ élèves au hasard, le nombre $X$ d'élèves qui préfèrent le chocolat au lait suit une loi binomiale de paramètres $n = 100$ et $p = 0,55$. La proportion observée est $f = X/100$. Comme $n$ est grand, on peut approximer la distribution de $f$ par une loi normale d'espérance $p$ et d'écart-type $\\sqrt{p(1-p)/n}$. Concrètement, la plupart des échantillons donneront une proportion proche de $0,55$, mais quelques-uns s'en écartent plus fortement."
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(2*pi*0.55*0.45/100)*exp(-(x-0.55)^2/(2*0.55*0.45/100))",
+              "xmin": 0.4,
+              "xmax": 0.7,
+              "caption": "Densité de la loi normale approchée pour la proportion d'échantillon (n=100, p=0,55)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as une image mentale de la dispersion des proportions possibles, passons à l'outil principal pour quantifier cette fluctuation : l'intervalle de fluctuation asymptotique au seuil de $95\\%$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'intervalle de fluctuation au seuil de 95 %"
+            },
+            {
+              "type": "paragraph",
+              "content": "Grâce au théorème central limite, on sait que pour un échantillon de taille $n$ suffisamment grande (généralement $n \\ge 30$ et $np \\ge 5$, $n(1-p) \\ge 5$), la proportion d'échantillon $f$ suit approximativement une loi normale $\\mathcal{N}(p, \\sqrt{p(1-p)/n})$. Un intervalle de fluctuation au seuil de $95\\%$ est un intervalle centré sur $p$ qui contient $95\\%$ des valeurs possibles de $f$. En utilisant les quantiles de la loi normale réduite, on obtient la formule :"
+            },
+            {
+              "type": "display_math",
+              "latex": "I_{95\\%} = \\left[ p - 1,96 \\sqrt{\\frac{p(1-p)}{n}} ;\\; p + 1,96 \\sqrt{\\frac{p(1-p)}{n}} \\right]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la pratique, la vraie proportion $p$ est inconnue (c'est justement ce qu'on cherche à estimer). On remplace alors $p$ par la proportion observée $f$ dans la formule de l'écart-type, ce qui donne l'intervalle de confiance approximatif :"
+            },
+            {
+              "type": "display_math",
+              "latex": "IC_{95\\%} = \\left[ f - 1,96 \\sqrt{\\frac{f(1-f)}{n}} ;\\; f + 1,96 \\sqrt{\\frac{f(1-f)}{n}} \\right]"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les conditions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que $n \\ge 30$, $n f \\ge 5$ et $n(1-f) \\ge 5$. Si ce n'est pas le cas, l'approximation normale n'est pas fiable."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la marge d'erreur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $m = 1,96 \\sqrt{\\frac{f(1-f)}{n}}$. C'est la demi-longueur de l'intervalle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intervalle de confiance à $95\\%$ est $[f - m ; f + m]$. Interprète-le : si on refaisait le sondage un grand nombre de fois, $95\\%$ des intervalles ainsi construits contiendraient la vraie proportion $p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, appliquons la méthode sur un cas concret : un sondage réalisé auprès de $400$ personnes dont $220$ se déclarent favorables à une mesure. Calcule l'intervalle de confiance à $95\\%$ et interprète le résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On suppose que la proportion réelle d'élèves préférant le chocolat au lait est $p = 0,55$. On prélève un échantillon de $n = 100$ élèves. Quelle est l'écart-type théorique de la proportion d'échantillon $f$ ? Donne une valeur arrondie au millième.",
+              "answer": "0,050",
+              "hint": "Utilise la formule $\\sqrt{p(1-p)/n}$ avec $p=0,55$ et $n=100$.",
+              "explanation": "L'écart-type de $f$ est $\\sqrt{0,55 \\times 0,45 / 100} = \\sqrt{0,2475 / 100} = \\sqrt{0,002475} \\approx 0,04975$, soit $0,050$ arrondi au millième."
+            },
+            {
+              "question": "Dans un échantillon de $n = 200$ personnes, on observe une proportion $f = 0,42$. Vérifie que les conditions d'utilisation de l'intervalle de fluctuation asymptotique sont satisfaites, puis calcule la marge d'erreur $m$ au seuil de $95\\%$ (arrondie au millième).",
+              "answer": "Conditions satisfaites car $n=200 \\ge 30$, $nf = 84 \\ge 5$, $n(1-f)=116 \\ge 5$. Marge d'erreur $m \\approx 0,067$.",
+              "hint": "Calcule $m = 1,96 \\sqrt{f(1-f)/n}$.",
+              "explanation": "On a $f(1-f) = 0,42 \\times 0,58 = 0,2436$. La racine carrée de $0,2436/200 = 0,001218$ est $\\approx 0,0349$. Multiplié par $1,96$ donne $0,0684$, arrondi à $0,068$ (ou $0,067$ selon l'arrondi intermédiaire)."
+            },
+            {
+              "question": "Un sondage auprès de $400$ personnes donne $220$ avis favorables. Détermine l'intervalle de confiance à $95\\%$ pour la proportion de favorables dans la population. Donne les bornes arrondies au centième.",
+              "answer": "[0,50 ; 0,60]",
+              "hint": "Calcule $f$, puis la marge d'erreur, puis les bornes.",
+              "explanation": "Proportion observée $f = 220/400 = 0,55$. Marge d'erreur $m = 1,96 \\sqrt{0,55 \\times 0,45 / 400} = 1,96 \\sqrt{0,2475/400} = 1,96 \\sqrt{0,00061875} \\approx 1,96 \\times 0,02487 \\approx 0,0487$. Intervalle : $[0,55 - 0,0487 ; 0,55 + 0,0487] = [0,5013 ; 0,5987]$, arrondi au centième : $[0,50 ; 0,60]$."
+            }
+          ]
+        },
+        {
+          "title": "Simulation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le principe de la simulation Monte Carlo"
+            },
+            {
+              "type": "paragraph",
+              "content": "La simulation est une technique puissante qui permet d'étudier un phénomène aléatoire en le reproduisant un très grand nombre de fois sur ordinateur. Au lieu de calculer des formules complexes, on laisse la machine générer des tirages aléatoires selon la loi de probabilité qui modélise la situation. C'est l'idée de la méthode Monte Carlo : répéter l'expérience virtuelle $N$ fois (avec $N$ grand, par exemple $10\\ 000$ ou $100\\ 000$) et observer la distribution des résultats obtenus."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du sondage sur le chocolat. La vraie proportion $p$ est inconnue, mais on peut simuler ce qui se passerait si on connaissait $p$. Supposons qu'on veuille tester l'hypothèse $p = 0,55$. On peut programmer un algorithme qui, pour chaque simulation, tire $n = 100$ fois une variable de Bernoulli de paramètre $0,55$ (c'est-à-dire qu'on génère un nombre aléatoire entre $0$ et $1$ : s'il est $< 0,55$, on compte un succès), puis on calcule la proportion de succès. En répétant cela $10\\ 000$ fois, on obtient un nuage de $10\\ 000$ proportions simulées dont l'histogramme ressemble à la courbe normale vue dans la leçon précédente."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\n\\ndef simuler_proportion(n, p, N):\\n    \"\"\"Renvoie une liste de N proportions simulées.\"\"\"\\n    proportions = []\\n    for _ in range(N):\\n        succes = sum(1 for _ in range(n) if random.random() < p)\\n        proportions.append(succes / n)\\n    return proportions\\n\\n# Exemple d'utilisation :\\nresultats = simuler_proportion(100, 0.55, 10000)\\nprint(\"Moyenne simulée :\", sum(resultats)/len(resultats))\\nprint(\"Écart-type simulé :\", (sum((x - sum(resultats)/len(resultats))**2 for x in resultats)/len(resultats))**0.5)",
+              "caption": "Algorithme Python pour simuler la fluctuation d'une proportion d'échantillon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de la simple visualisation, la simulation permet de construire un intervalle de fluctuation empirique sans faire appel à l'approximation normale. C'est particulièrement utile quand les conditions d'application de l'intervalle asymptotique ne sont pas remplies (petit $n$, $p$ proche de $0$ ou $1$)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intervalle de fluctuation par simulation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est simple : après avoir simulé $N$ proportions $f_1, f_2, \\dots, f_N$ sous l'hypothèse $p = p_0$, on trie ces valeurs par ordre croissant. Pour obtenir un intervalle au seuil de $95\\%$, on élimine les $2,5\\%$ des valeurs les plus basses et les $2,5\\%$ les plus hautes. Les bornes de l'intervalle sont alors les valeurs aux rangs $0,025 \\times N$ et $0,975 \\times N$ (arrondis à l'entier supérieur). C'est ce qu'on appelle la méthode des percentiles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'hypothèse $p_0$ et la taille $n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Définis la proportion théorique $p_0$ que tu veux tester et la taille de l'échantillon $n$ qui correspond à ton protocole réel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Simuler un grand nombre $N$ d'échantillons",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Génère $N$ proportions $f_i$ en tirant $n$ fois une variable de Bernoulli($p_0$) pour chaque $i$. Typiquement $N = 10\\ 000$ ou $100\\ 000$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trier et extraire les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trie la liste des $f_i$. La borne inférieure est la valeur au rang $\\lceil 0,025 N \\rceil$, la borne supérieure au rang $\\lfloor 0,975 N \\rfloor$. L'intervalle $[f_{\\text{inf}} ; f_{\\text{sup}}]$ est ton intervalle de fluctuation empirique à $95\\%$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La simulation permet aussi d'estimer une $p$-value : si tu as observé une proportion $f_{\\text{obs}}$ dans ton vrai sondage, tu peux calculer la proportion de simulations qui donnent une valeur au moins aussi extrême que $f_{\\text{obs}}$ (c'est-à-dire $\\le f_{\\text{obs}}$ si $f_{\\text{obs}} < p_0$, ou $\\ge f_{\\text{obs}}$ si $f_{\\text{obs}} > p_0$). Cela donne une idée de la compatibilité entre l'observation et l'hypothèse $p_0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "L'algorithme ci-dessus simule $10\\ 000$ échantillons de taille $100$ avec $p=0,55$. Quelle est la proportion théorique de succès attendue pour chaque échantillon ?",
+              "answer": "0,55",
+              "hint": "C'est le paramètre $p$ de la loi de Bernoulli utilisée dans la simulation.",
+              "explanation": "Chaque tirage est un Bernoulli de paramètre $0,55$, donc l'espérance de la proportion de succès sur $100$ tirages est $0,55$."
+            },
+            {
+              "question": "On simule $N = 20\\ 000$ proportions sous $p_0 = 0,4$ avec $n = 50$. Après tri, on veut l'intervalle de fluctuation empirique à $95\\%$. Quels sont les rangs (entiers) des bornes inférieure et supérieure dans la liste triée ?",
+              "answer": "Rang inférieur : 501, rang supérieur : 19500",
+              "hint": "Calcule $0,025 \\times N$ et $0,975 \\times N$, puis arrondis convenablement.",
+              "explanation": "$0,025 \\times 20000 = 500$, on prend le rang supérieur : $501$. $0,975 \\times 20000 = 19500$, rang exact. Les bornes sont les valeurs aux indices $501$ et $19500$ (indice 1-based)."
+            },
+            {
+              "question": "Dans la simulation précédente, on observe $f_{\\text{obs}} = 0,32$ dans le vrai sondage. Parmi les $20\\ 000$ proportions simulées, $1\\ 200$ sont $\\le 0,32$. Quelle est la $p$-value approximative pour tester $p = 0,4$ contre $p < 0,4$ ?",
+              "answer": "0,06",
+              "hint": "La $p$-value est la proportion de simulations au moins aussi extrêmes que l'observation dans le sens de l'hypothèse alternative.",
+              "explanation": "Ici $f_{\\text{obs}} = 0,32 < p_0 = 0,4$, l'alternative est $p < 0,4$. La proportion de simulations $\\le 0,32$ est $1200 / 20000 = 0,06$. C'est la $p$-value unilatérale."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire et comprendre un résultat de sondage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis dans la presse \"$52\\%$ des Français sont favorables à telle mesure, marge d'erreur $3\\%$\", il est essentiel de savoir ce que cela signifie réellement. La proportion annoncée ($52\\%$) est la proportion observée $f$ dans l'échantillon. La marge d'erreur ($3\\%$) correspond à la demi-longueur de l'intervalle de confiance à $95\\%$ (souvent arrondie). L'intervalle complet est donc $[49\\% ; 55\\%]$. Cela ne veut pas dire que la vraie proportion est certainement dans cet intervalle pour ce sondage précis, mais que la méthode utilisée pour construire l'intervalle a $95\\%$ de chances de produire un intervalle qui contient la vraie proportion."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas confondre intervalle de fluctuation et intervalle de confiance. L'intervalle de fluctuation est centré sur la vraie proportion $p$ (inconnue) et décrit où se situent $95\\%$ des proportions d'échantillon possibles. L'intervalle de confiance est centré sur la proportion observée $f$ et donne une plage de valeurs plausibles pour $p$. Ils ont la même longueur (asymptotiquement) mais des centres différents. C'est une nuance subtile mais fondamentale."
+            },
+            {
+              "type": "display_math",
+              "latex": "IC_{95\\%} = \\left[ f - 1,96 \\sqrt{\\frac{f(1-f)}{n}} ; f + 1,96 \\sqrt{\\frac{f(1-f)}{n}} \\right]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à l'interprétation pour la prise de décision. Suppose qu'un candidat à une élection est crédité de $48\\%$ d'intentions de vote avec une marge d'erreur de $2,5\\%$. L'intervalle de confiance est $[45,5\\% ; 50,5\\%]$. Comme la borne supérieure dépasse $50\\%$, on ne peut pas affirmer que le candidat est minoritaire dans la population : l'hypothèse $p = 0,5$ (égalité) n'est pas rejetée au seuil de $5\\%$. En revanche, si l'intervalle était $[44\\% ; 49\\%]$, entièrement strictement en dessous de $50\\%$, on pourrait conclure que le candidat est probablement minoritaire (au seuil de $5\\%$)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle de confiance [45,5 % ; 50,5 %] et seuil de 50 %.",
+              "min": 40,
+              "max": 55,
+              "points": [
+                {
+                  "value": 45.5,
+                  "label": "Borne inf."
+                },
+                {
+                  "value": 50,
+                  "label": "Seuil 50 %"
+                },
+                {
+                  "value": 50.5,
+                  "label": "Borne sup."
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 45.5,
+                  "end": 50.5,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe aussi des pièges classiques à éviter. Par exemple, ne pas dire \"il y a $95\\%$ de chances que la vraie proportion soit dans l'intervalle\" : la vraie proportion est un nombre fixe, pas une variable aléatoire. C'est l'intervalle qui est aléatoire. De plus, la marge d'erreur ne prend en compte que l'erreur d'échantillonnage ; elle ignore les biais de non-réponse, de formulation des questions, ou de sélection de l'échantillon. Un sondage bien conduit doit préciser sa méthode (échantillonnage aléatoire stratifié, quota, etc.) pour que l'intervalle de confiance ait un sens."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, rappelons que la taille de l'échantillon $n$ influence directement la précision : la marge d'erreur est proportionnelle à $1/\\sqrt{n}$. Pour diviser la marge d'erreur par deux, il faut multiplier $n$ par quatre. C'est pourquoi les instituts de sondage utilisent souvent des échantillons de $1\\ 000$ à $2\\ 000$ personnes pour obtenir une marge d'erreur autour de $2\\%$ à $3\\%$."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer la différence entre intervalle de fluctuation et intervalle de confiance.",
+                "Je sais calculer et interpréter un intervalle de confiance à 95 % pour une proportion.",
+                "Je sais utiliser la simulation pour obtenir un intervalle de fluctuation empirique.",
+                "Je sais lire un résultat de sondage avec sa marge d'erreur et en tirer une conclusion statistiquement correcte.",
+                "Je connais les limites de la marge d'erreur (biais non couverts)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un sondage réalisé sur $1000$ personnes donne $520$ réponses \"oui\". Calcule l'intervalle de confiance à $95\\%$ pour la proportion de \"oui\" dans la population. Donne les bornes en pourcentage arrondies au dixième.",
+              "answer": "[48,9 % ; 55,1 %]",
+              "hint": "Calcule $f$, puis la marge d'erreur $m = 1,96 \\sqrt{f(1-f)/n}$, puis convertis en pourcentage.",
+              "explanation": "$f = 520/1000 = 0,52$. $m = 1,96 \\sqrt{0,52 \\times 0,48 / 1000} = 1,96 \\sqrt{0,2496/1000} = 1,96 \\times 0,0158 \\approx 0,031$. Intervalle : $[0,489 ; 0,551]$, soit $[48,9\\% ; 55,1\\%]$."
+            },
+            {
+              "question": "Un candidat est crédité de $47\\%$ d'intentions de vote avec une marge d'erreur de $3\\%$. L'intervalle de confiance contient-il $50\\%$ ? Peut-on affirmer au seuil de $5\\%$ que le candidat est minoritaire ?",
+              "answer": "L'intervalle est [44 % ; 50 %]. Il contient 50 % (borne supérieure). On ne peut pas affirmer qu'il est minoritaire au seuil de 5 %.",
+              "hint": "L'intervalle est [f - m ; f + m]. Vérifie si 50 % est strictement en dehors.",
+              "explanation": "Intervalle = $[47\\% - 3\\% ; 47\\% + 3\\%] = [44\\% ; 50\\%]$. La valeur $50\\%$ est incluse (borne supérieure). Puisque l'hypothèse $p=0,5$ n'est pas exclue de l'intervalle, on ne la rejette pas au seuil de $5\\%$."
+            },
+            {
+              "question": "Pourquoi la phrase \"Il y a 95 % de chances que la vraie proportion soit entre 48 % et 52 %\" est-elle une formulation incorrecte ?",
+              "answer": "La vraie proportion est un paramètre fixe, non aléatoire. C'est l'intervalle qui est aléatoire : 95 % des intervalles construits ainsi contiennent le paramètre.",
+              "hint": "Rappelle la définition fréquentiste de l'intervalle de confiance.",
+              "explanation": "Dans l'approche fréquentiste, le paramètre $p$ est une constante inconnue. L'aléa porte sur l'échantillon et donc sur l'intervalle calculé à partir de lui. La probabilité $95\\%$ concerne la procédure de construction de l'intervalle, pas la position de $p$ par rapport à un intervalle déjà réalisé."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

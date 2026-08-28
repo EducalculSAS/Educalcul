@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : N, Z, Q, R",
+  "title": "Approfondissement : N, Z, Q, R - Algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme (en pseudocode ou en syntaxe proche de Python) qui prend en entrée un nombre réel $x$ et affiche l'ensemble le plus précis parmi $N$, $Z$, $Q$, $R$ auquel $x$ appartient, en utilisant les inclusions $N \\subset Z \\subset Q \\subset R$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Si x est un entier (x == floor(x)) alors\\n       Si x >= 0 alors afficher \"N\"\\n       Sinon afficher \"Z\"\\n   Sinon si x peut s'écrire comme fraction de deux entiers (par exemple si x est donné sous forme rationnelle ou si sa représentation décimale est finie ou périodique) alors afficher \"Q\"\\n   Sinon afficher \"R\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste d'abord si $x$ est un entier. Si c'est le cas, on vérifie son signe : les entiers naturels sont les entiers positifs ou nuls ($N$), les autres entiers appartiennent à $Z$ mais pas à $N$. Si $x$ n'est pas entier, on vérifie s'il est rationnel (écriture sous forme de fraction d'entiers, développement décimal fini ou périodique). Si oui, il appartient à $Q$. Sinon, c'est un nombre irrationnel, donc il appartient à $R$ mais pas à $Q$. La hiérarchie $N \\subset Z \\subset Q \\subset R$ garantit que le premier ensemble trouvé est le plus précis.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire une fonction qui reçoit une liste de nombres (donnés sous forme de chaînes de caractères ou de nombres décimaux) et renvoie un dictionnaire comptant combien de nombres appartiennent à chaque ensemble $N$, $Z$, $Q$, $R$ (chaque nombre étant compté dans l'ensemble le plus précis).",
+      "correctAnswer": "Fonction compter_ensembles(liste) :\\n    initialiser compteurs = { \"N\":0, \"Z\":0, \"Q\":0, \"R\":0 }\\n    pour chaque élément s dans liste :\\n        convertir s en nombre réel x (par exemple float(s) ou Fraction(s) si possible)\\n        si x est un entier (x == int(x)) :\\n            si x >= 0 : compteurs[\"N\"] += 1\\n            sinon : compteurs[\"Z\"] += 1\\n        sinon si x est rationnel (par exemple isinstance(x, Fraction) ou détection de décimal fini/périodique) :\\n            compteurs[\"Q\"] += 1\\n        sinon :\\n            compteurs[\"R\"] += 1\\n    retourner compteurs\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction parcourt la liste, convertit chaque entrée en un nombre exploitable. Elle utilise le même test que dans la question 1 pour classer chaque nombre dans l'ensemble le plus précis. Les compteurs sont mis à jour en conséquence. À la fin, le dictionnaire contient les effectifs pour $N$, $Z$, $Q$ et $R$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui, étant donnés deux nombres rationnels $a/b$ et $c/d$ (avec $a,b,c,d \\in Z$, $b \\neq 0$, $d \\neq 0$), calcule leur somme, la simplifie sous forme irréductible $p/q$, puis détermine si le résultat appartient à $N$, $Z$ ou $Q$ (mais pas à $R$ au-delà de $Q$). L'algorithme affiche la fraction simplifiée et l'ensemble correspondant.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d\\n2. Calculer num = a*d + c*b\\n   Calculer den = b*d\\n3. Calculer g = pgcd(|num|, |den|)\\n   num = num / g\\n   den = den / g\\n4. Si den == 1 alors\\n       Si num >= 0 alors ensemble = \"N\"\\n       Sinon ensemble = \"Z\"\\n   Sinon ensemble = \"Q\"\\n5. Afficher \"Fraction simplifiée : \" + num + \"/\" + den\\n   Afficher \"Ensemble : \" + ensemble\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux fractions $a/b + c/d$ est $(ad+bc)/(bd)$. On simplifie en divisant numérateur et dénominateur par leur plus grand commun diviseur (pgcd). Après simplification, si le dénominateur vaut 1, le résultat est un entier. S'il est de plus positif ou nul, il appartient à $N$ ; sinon à $Z$. Si le dénominateur est différent de 1, le nombre est un rationnel non entier, donc il appartient à $Q$. Comme la somme de deux rationnels est toujours rationnelle, l'ensemble $R$ n'est jamais atteint ici.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

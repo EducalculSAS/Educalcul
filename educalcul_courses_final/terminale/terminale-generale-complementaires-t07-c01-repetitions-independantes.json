@@ -1,0 +1,555 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.547882+00:00",
+  "id": 661,
+  "code": "terminale-generale-complementaires-t07-c01",
+  "title": "Répétitions indépendantes",
+  "description": "Cours structuré Educalcul : Répétitions indépendantes.",
+  "subject": "Expériences indépendantes et échantillonnage",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Expériences indépendantes et échantillonnage",
+    "titre_du_cours": "Répétitions indépendantes",
+    "objectif_global": "Répétitions indépendantes",
+    "mini_lecons_imposees": [
+      "Bernoulli.",
+      "Arbre.",
+      "Probabilités."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Expériences indépendantes et échantillonnage",
+      "lessons": [
+        {
+          "title": "Bernoulli.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'expérience de Bernoulli"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux répétitions indépendantes. Nous allons commencer par poser les bases avec l'expérience de Bernoulli, une notion simple en apparence mais fondamentale pour toute la suite. Imagine que tu lances une pièce de monnaie équilibrée : il n'y a que deux issues possibles, face ou pile, et le résultat de ce lancer ne dépend d'aucun autre événement. C'est exactement ce qu'on appelle une expérience de Bernoulli : une épreuve aléatoire qui ne possède que deux issues, que l'on code souvent par succès (1) et échec (0). Ce cadre minimaliste permet de modéliser une multitude de situations concrètes, comme le fait qu'un élève réussisse ou non un exercice, qu'un composant électronique soit défectueux ou non, ou encore qu'un médicament soit efficace pour un patient donné. En terminale, nous allons apprendre à manipuler cet objet avec rigueur, à en calculer les caractéristiques numériques et à comprendre pourquoi il constitue la brique élémentaire de la loi binomiale."
+            },
+            {
+              "type": "definition",
+              "term": "Expérience de Bernoulli",
+              "definition": "Une expérience aléatoire qui admet exactement deux issues, traditionnellement notées succès (valeur 1) et échec (valeur 0). La probabilité de succès est notée $p$, celle d'échec est $q = 1-p$.",
+              "example": "Lancer une pièce équilibrée : succès = face ($p=0,5$), échec = pile ($q=0,5$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser cette dichotomie, regardons un arbre de probabilité minimal qui ne comporte qu'un seul niveau de branchement. Chaque branche porte une issue et sa probabilité associée. C'est un outil graphique très puissant que nous réutiliserons plus tard pour des enchaînements d'épreuves."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre d'une expérience de Bernoulli (pièce équilibrée)",
+              "branches": [
+                {
+                  "label": "Face (succès)",
+                  "probability": "0,5"
+                },
+                {
+                  "label": "Pile (échec)",
+                  "probability": "0,5"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée d'une seule épreuve à deux issues est bien ancrée, penchons-nous sur les paramètres numériques qui la caractérisent. La probabilité de succès $p$ est le seul nombre qui définit complètement la loi de Bernoulli ; l'échec a automatiquement une probabilité $q = 1-p$. À partir de $p$, on peut déduire l'espérance et la variance de la variable aléatoire $X$ qui vaut 1 en cas de succès et 0 sinon. Ces deux grandeurs sont essentielles car elles résument la tendance centrale et la dispersion de l'expérience."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Paramètres et moments d'une variable de Bernoulli"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons les formules fondamentales : l'espérance $\\mathbb{E}[X] = p$ et la variance $\\operatorname{Var}(X) = p(1-p) = pq$. Elles s'obtiennent directement de la définition de l'espérance et de la variance pour une variable discrète à deux valeurs. Si $p=0,3$, par exemple, l'espérance vaut $0,3$ et la variance $0,21$. Ces calculs sont simples mais ils constituent la pierre angulaire pour l'étude de la somme de plusieurs variables de Bernoulli indépendantes, c'est-à-dire la loi binomiale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}[X]=p,\\quad \\operatorname{Var}(X)=p(1-p)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $p$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'énoncé et repère la probabilité de succès. C'est le paramètre unique de la loi."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'espérance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $\\mathbb{E}[X]=p$. Aucune autre opération n'est nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la variance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $\\operatorname{Var}(X)=p(1-p)$. Vérifie que le résultat est compris entre 0 et 0,25, car le maximum de $p(1-p)$ est atteint pour $p=0,5$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant tous les outils pour comprendre comment plusieurs expériences de Bernoulli indépendantes se combinent. Si l'on répète $n$ fois la même épreuve de Bernoulli, le nombre total de succès suit une loi binomiale de paramètres $n$ et $p$. C'est une généralisation naturelle : la variable $S_n = X_1 + \\dots + X_n$ compte les succès. Sa distribution est donnée par $\\mathbb{P}(S_n = k) = \\binom{n}{k} p^k (1-p)^{n-k}$ pour $k=0,\\dots,n$. Cette formule sera le cœur du prochain chapitre, mais déjà nous pouvons en apercevoir la forme à travers un diagramme en barres pour un petit $n$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vers la loi binomiale : illustration pour $n=3$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $n=3$ essais indépendants avec $p=0,4$. Les probabilités des $k=0,1,2,3$ succès sont respectivement $0,216$, $0,432$, $0,288$, $0,064$. Le graphique en barres ci-dessous montre cette répartition ; on voit bien la forme asymétrique due à $p \\neq 0,5$. Ce type de visualisation aide à développer l'intuition sur la concentration de la masse de probabilité autour de l'espérance $np = 1,2$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distribution binomiale pour $n=3$, $p=0,4$",
+              "bars": [
+                {
+                  "label": "0 succès",
+                  "value": 0.216,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 succès",
+                  "value": 0.432,
+                  "tone": "green"
+                },
+                {
+                  "label": "2 succès",
+                  "value": 0.288,
+                  "tone": "gold"
+                },
+                {
+                  "label": "3 succès",
+                  "value": 0.064,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette première leçon a posé les fondations : une expérience de Bernoulli se résume à un paramètre $p$, ses moments s'en déduisent immédiatement, et la répétition indépendante de cette épreuve engendre la loi binomiale. Dans la leçon suivante, nous apprendrons à représenter graphiquement des enchaînements d'épreuves à l'aide d'arbres de probabilités, ce qui rendra le calcul des probabilités composées beaucoup plus transparent."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une urne contient 3 boules rouges et 7 boules bleues. On tire une boule au hasard, on note sa couleur, puis on la remet. Quelle est la probabilité de tirer une boule rouge ? Identifiez $p$ et $q$ pour cette expérience de Bernoulli.",
+              "answer": "$p = 0,3$, $q = 0,7$",
+              "hint": "Le tirage avec remise rend les tirages indépendants. La probabilité de succès (rouge) est le rapport du nombre de boules rouges sur le total.",
+              "explanation": "Il y a 3 boules rouges sur 10 au total, donc $p = 3/10 = 0,3$. L'échec (bleu) a une probabilité $q = 1-p = 0,7$."
+            },
+            {
+              "question": "Soit $X$ une variable de Bernoulli de paramètre $p = 0,25$. Calculez $\\mathbb{E}[X]$ et $\\operatorname{Var}(X)$.",
+              "answer": "$\\mathbb{E}[X] = 0,25$, $\\operatorname{Var}(X) = 0,1875$",
+              "hint": "Appliquez directement les formules $\\mathbb{E}[X]=p$ et $\\operatorname{Var}(X)=p(1-p)$.",
+              "explanation": "L'espérance vaut $p = 0,25$. La variance vaut $0,25 \\times 0,75 = 0,1875$."
+            },
+            {
+              "question": "On effectue $n=4$ essais de Bernoulli indépendants avec $p=0,5$. Quelle est la probabilité d'obtenir exactement $k=2$ succès ?",
+              "answer": "$\\binom{4}{2} (0,5)^2 (0,5)^2 = 6 \\times 0,0625 = 0,375$",
+              "hint": "Utilisez la formule de la loi binomiale $\\mathbb{P}(S_n=k)=\\binom{n}{k}p^k(1-p)^{n-k}$.",
+              "explanation": "Le coefficient binomial $\\binom{4}{2}=6$. Comme $p=0,5$, $p^k(1-p)^{n-k} = (0,5)^4 = 0,0625$. Le produit donne $0,375$."
+            }
+          ]
+        },
+        {
+          "title": "Arbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons découvrir l'arbre de probabilités, un outil visuel et systématique pour organiser les issues successives d'expériences indépendantes. Imagine que tu lances deux fois une pièce équilibrée. Au premier lancer, deux branches partent de la racine : face et pile, chacune avec une probabilité de $0,5$. Au second lancer, chaque branche se divise à nouveau en deux, donnant quatre chemins complets. Chaque chemin correspond à une issue ordonnée (par exemple face puis pile) et sa probabilité s'obtient en multipliant les probabilités le long du chemin, grâce à l'indépendance. Cette règle du produit est la clé de voûte de l'arbre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Dessiner le premier niveau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Partis d'une racine, tracez une branche pour chaque issue de la première épreuve, en indiquant sa probabilité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les niveaux suivants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'extrémité de chaque branche, reproduisez l'ensemble des issues de l'épreuve suivante, avec les probabilités conditionnelles (identiques aux probabilités initiales si les épreuves sont indépendantes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les probabilités des chemins",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multipliez les probabilités rencontrées le long de chaque chemin complet. La somme de toutes ces probabilités doit valoir 1."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux lancers d'une pièce équilibrée",
+              "branches": [
+                {
+                  "label": "Face (0,5)",
+                  "probability": "0,5",
+                  "children": [
+                    {
+                      "label": "Face (0,5)",
+                      "probability": "0,5"
+                    },
+                    {
+                      "label": "Pile (0,5)",
+                      "probability": "0,5"
+                    }
+                  ]
+                },
+                {
+                  "label": "Pile (0,5)",
+                  "probability": "0,5",
+                  "children": [
+                    {
+                      "label": "Face (0,5)",
+                      "probability": "0,5"
+                    },
+                    {
+                      "label": "Pile (0,5)",
+                      "probability": "0,5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'arbre est construit, voyons comment l'exploiter pour répondre à des questions plus élaborées. Supposons que l'on s'intéresse à l'événement « au moins un face » lors des deux lancers. Sur l'arbre, il suffit de repérer les chemins qui contiennent au moins une branche « Face » et d'additionner leurs probabilités. C'est une méthode systématique qui évite d'oublier des cas ou de compter deux fois le même. De plus, l'arbre permet de visualiser immédiatement les événements complémentaires : « aucun face » correspond au unique chemin Pile–Pile."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer des probabilités composées à l'aide de l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple légèrement plus riche : une urne contient 4 boules blanches et 6 boules noires. On tire une boule, on note sa couleur, on la remet, puis on tire une seconde fois. L'arbre a deux niveaux, chacun avec deux branches (blanc $0,4$, noir $0,6$). Pour obtenir la probabilité d'avoir exactement une boule blanche, on additionne les probabilités des deux chemins « Blanc–Noir » et « Noir–Blanc ». Chaque chemin a une probabilité $0,4 \\times 0,6 = 0,24$, donc le total est $0,48$. Le tableau ci-dessous récapitule les quatre issues jointes et leurs probabilités, ce qui facilite la lecture."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Issue",
+                "Probabilité"
+              ],
+              "rows": [
+                [
+                  "Blanc, Blanc",
+                  "0,16"
+                ],
+                [
+                  "Blanc, Noir",
+                  "0,24"
+                ],
+                [
+                  "Noir, Blanc",
+                  "0,24"
+                ],
+                [
+                  "Noir, Noir",
+                  "0,36"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arbre de probabilités devient encore plus précieux lorsque l'on veut calculer des probabilités conditionnelles. Supposons qu'on sache que le second tirage a donné une boule blanche. Quelle est la probabilité que le premier tirage ait été noir ? On regarde dans l'arbre les chemins qui se terminent par « Blanc » : ce sont « Blanc–Blanc » et « Noir–Blanc ». Leur probabilité totale est $0,16+0,24=0,40$. Parmi eux, seul « Noir–Blanc » correspond à l'événement conditionnel, avec une probabilité $0,24$. La probabilité conditionnelle est donc $0,24/0,40 = 0,6$. Cette logique est exactement celle du théorème de Bayes, que nous formaliserons dans la prochaine leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilités conditionnelles et formule de Bayes dans l'arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule de Bayes s'écrit $\\mathbb{P}(A|B) = \\frac{\\mathbb{P}(B|A)\\mathbb{P}(A)}{\\mathbb{P}(B)}$. Dans l'arbre, $\\mathbb{P}(B|A)$ se lit sur la branche partant de $A$ vers $B$, $\\mathbb{P}(A)$ est la probabilité du chemin menant à $A$, et $\\mathbb{P}(B)$ est la somme des probabilités de tous les chemins aboutissant à $B$. L'arbre offre donc une représentation graphique directe de chaque terme de la formule, ce qui aide à ne pas confondre les probabilités directes et inverses."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(A|B)=\\frac{\\mathbb{P}(B|A)\\,\\mathbb{P}(A)}{\\mathbb{P}(B)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon t'a montré comment construire un arbre de probabilités pour des épreuves indépendantes, comment y lire les probabilités jointes et comment en extraire des probabilités conditionnelles. L'arbre est un véritable tableau de bord qui organise l'information et évite les erreurs de raisonnement. Dans la dernière leçon, nous généraliserons ces idées avec la loi des probabilités totales et le théorème de Bayes, et nous verrons comment la loi binomiale émerge naturellement de la répétition d'épreuves de Bernoulli."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance deux dés à six faces équilibrés. Construisez l'arbre des probabilités pour les résultats « pair » (P) et « impair » (I) à chaque lancer. Donnez la probabilité d'obtenir (P, I).",
+              "answer": "$\\mathbb{P}(P,I) = 0,5 \\times 0,5 = 0,25$",
+              "hint": "Chaque dé a 3 faces paires et 3 faces impaires, donc $p=0,5$ pour chaque issue. Multipliez les probabilités le long du chemin.",
+              "explanation": "Les deux lancers sont indépendants. La probabilité de « pair » au premier lancer est $0,5$, de « impair » au second est $0,5$. Le produit donne $0,25$."
+            },
+            {
+              "question": "Une urne contient 2 boules vertes et 8 boules jaunes. On tire deux fois avec remise. En utilisant l'arbre, calculez la probabilité d'obtenir au moins une boule verte.",
+              "answer": "$1 - \\mathbb{P}(\\text{jaune, jaune}) = 1 - 0,8 \\times 0,8 = 0,36$",
+              "hint": "Calculez d'abord la probabilité de l'événement complémentaire « deux jaunes » grâce à l'arbre, puis soustrayez de 1.",
+              "explanation": "La probabilité de jaune à chaque tirage est $0,8$. Le chemin (jaune, jaune) a une probabilité $0,64$. L'événement « au moins un vert » est le complémentaire, donc $1-0,64=0,36$."
+            },
+            {
+              "question": "Dans l'exemple de l'urne (4 blanches, 6 noires, deux tirages avec remise), on sait que le second tirage est blanc. Quelle est la probabilité que le premier tirage ait été noir ?",
+              "answer": "$0,6$",
+              "hint": "Utilisez la définition de la probabilité conditionnelle : $\\mathbb{P}(\\text{Noir}_1 | \\text{Blanc}_2) = \\frac{\\mathbb{P}(\\text{Noir}_1, \\text{Blanc}_2)}{\\mathbb{P}(\\text{Blanc}_2)}$.",
+              "explanation": "Le numérateur est la probabilité du chemin (Noir, Blanc) = $0,6 \\times 0,4 = 0,24$. Le dénominateur est la somme des probabilités des chemins se terminant par Blanc : (Blanc, Blanc) $0,16$ + (Noir, Blanc) $0,24$ = $0,40$. Le quotient donne $0,6$."
+            }
+          ]
+        },
+        {
+          "title": "Probabilités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi des probabilités totales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous abordons maintenant la loi des probabilités totales, un théorème central qui permet de décomposer la probabilité d'un événement en la sommant sur une partition de l'espace des issues. Une partition est une famille d'événements deux à deux incompatibles et dont la réunion est l'événement certain. Concrètement, si tu as plusieurs scénarios mutuellement exclusifs qui couvrent toutes les possibilités (par exemple : « la machine est en état A », « état B », « état C »), la probabilité qu'un défaut survienne est la somme des probabilités du défaut sous chaque scénario, pondérées par la probabilité de ce scénario. Cette idée est intuitive : on fait le total en additionnant les contributions de chaque cas."
+            },
+            {
+              "type": "definition",
+              "term": "Partition",
+              "definition": "Une famille d'événements $(A_i)_{i\\in I}$ tels que $A_i \\cap A_j = \\varnothing$ pour $i \\neq j$ et $\\bigcup_{i\\in I} A_i = \\Omega$.",
+              "example": "Les événements « le dé montre 1 », « le dé montre 2 », …, « le dé montre 6 » forment une partition de l'espace des issues d'un lancer de dé."
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule s'écrit : pour tout événement $B$, $\\mathbb{P}(B) = \\sum_{i} \\mathbb{P}(B|A_i)\\,\\mathbb{P}(A_i)$. Le terme $\\mathbb{P}(B|A_i)$ est la probabilité de $B$ sachant que le scénario $A_i$ s'est réalisé, et $\\mathbb{P}(A_i)$ est la probabilité a priori de ce scénario. Le diagramme en barres ci-dessous illustre une partition à trois scénarios avec leurs probabilités a priori et la probabilité conditionnelle d'un événement $B$ dans chaque scénario. La surface totale des barres représente $\\mathbb{P}(B)$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Décomposition de $\\mathbb{P}(B)$ selon une partition à trois classes",
+              "bars": [
+                {
+                  "label": "Scénario A1 (p=0,3)",
+                  "value": 0.12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Scénario A2 (p=0,5)",
+                  "value": 0.25,
+                  "tone": "green"
+                },
+                {
+                  "label": "Scénario A3 (p=0,2)",
+                  "value": 0.06,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi des probabilités totales est souvent le prélude au théorème de Bayes, qui permet d'inverser le conditionnement. Si l'on connaît $\\mathbb{P}(B|A_i)$ et $\\mathbb{P}(A_i)$, on peut calculer $\\mathbb{P}(A_i|B)$, c'est-à-dire la probabilité a posteriori du scénario $A_i$ après avoir observé $B$. C'est exactement ce que font les tests médicaux : on connaît la sensibilité (probabilité d'être positif si malade) et la prévalence (probabilité d'être malade), et on veut la probabilité d'être malade sachant un test positif. Le raisonnement pas à pas ci-dessous montre comment on passe de la loi des probabilités totales à la formule de Bayes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de Bayes : du direct à l'inversé"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la loi des probabilités totales pour $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{P}(B) = \\sum_i \\mathbb{P}(B|A_i)\\,\\mathbb{P}(A_i)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exprimer $\\mathbb{P}(A_k|B)$ par définition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{P}(A_k|B) = \\frac{\\mathbb{P}(A_k \\cap B)}{\\mathbb{P}(B)} = \\frac{\\mathbb{P}(B|A_k)\\,\\mathbb{P}(A_k)}{\\mathbb{P}(B)}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Substituer l'expression de $\\mathbb{P}(B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient la formule de Bayes : $\\mathbb{P}(A_k|B) = \\frac{\\mathbb{P}(B|A_k)\\,\\mathbb{P}(A_k)}{\\sum_i \\mathbb{P}(B|A_i)\\,\\mathbb{P}(A_i)}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour fixer les idées, considérons un test de dépistage. La prévalence de la maladie est $0,01$ ($\\mathbb{P}(M)=0,01$). La sensibilité est $0,95$ ($\\mathbb{P}(+|M)=0,95$) et la spécificité est $0,90$ ($\\mathbb{P}(-|\\bar M)=0,90$, donc $\\mathbb{P}(+|\\bar M)=0,10$). On veut $\\mathbb{P}(M|+)$. Le tableau suivant résume les calculs intermédiaires : la probabilité totale d'un test positif est $\\mathbb{P}(+) = 0,95\\times0,01 + 0,10\\times0,99 = 0,1085$. La probabilité a posteriori d'être malade sachant un test positif est $\\frac{0,95\\times0,01}{0,1085} \\approx 0,0876$. Malgré une sensibilité élevée, la rareté de la maladie rend le test positif peu prédictif."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Scénario",
+                "Prior $\\mathbb{P}(A_i)$",
+                "$\\mathbb{P}(+|A_i)$",
+                "Produit"
+              ],
+              "rows": [
+                [
+                  "Malade (M)",
+                  "0,01",
+                  "0,95",
+                  "0,0095"
+                ],
+                [
+                  "Non malade (\\bar M)",
+                  "0,99",
+                  "0,10",
+                  "0,099"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, réunissons les fils conducteurs du cours : la répétition indépendante d'expériences de Bernoulli donne naissance à la loi binomiale. Si $X_1,\\dots,X_n$ sont $n$ variables de Bernoulli indépendantes de même paramètre $p$, leur somme $S_n$ suit une loi binomiale $\\mathcal{B}(n,p)$. Sa fonction de masse est $\\mathbb{P}(S_n=k)=\\binom{n}{k}p^k(1-p)^{n-k}$. L'espérance est $np$ et la variance $np(1-p)$. Le graphique ci-dessous montre la forme de cette distribution pour $n=10$ et $p=0,3$ ; on observe une courbe en cloche décentrée vers la gauche, reflet de l'asymétrie due à $p<0,5$. Cette visualisation aide à comprendre la concentration de la probabilité autour de la moyenne."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distribution binomiale : illustration pour $n=10$, $p=0,3$"
+            },
+            {
+              "type": "definition",
+              "term": "Loi binomiale $\\mathcal{B}(n,p)$",
+              "definition": "Loi de probabilité de la somme de $n$ variables de Bernoulli indépendantes de paramètre $p$. Pour $k=0,\\dots,n$, $\\mathbb{P}(S_n=k)=\\binom{n}{k}p^k(1-p)^{n-k}$.",
+              "example": "Nombre de faces obtenues en lançant 10 fois une pièce équilibrée ($p=0,5$) suit $\\mathcal{B}(10,0,5)$."
+            },
+            {
+              "type": "graph",
+              "expression": "binom(10,0.3)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Fonction de masse de la loi binomiale $\\mathcal{B}(10,0,3)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce cours sur les répétitions indépendantes. Tu as découvert l'expérience de Bernoulli comme brique élémentaire, appris à construire et exploiter des arbres de probabilités pour des enchaînements d'épreuves, maîtrisé la loi des probabilités totales et le théorème de Bayes pour inverser les conditionnements, et enfin vu comment la loi binomiale émerge naturellement de la somme de variables de Bernoulli. Ces outils constituent le socle de la modélisation aléatoire en terminale et te serviront tout au long de tes études supérieures."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une expérience de Bernoulli et donner son paramètre $p$.",
+                "Je sais calculer l'espérance et la variance d'une variable de Bernoulli.",
+                "Je sais construire un arbre de probabilités pour deux épreuves indépendantes.",
+                "Je sais lire sur un arbre les probabilités jointes et conditionnelles.",
+                "Je sais appliquer la loi des probabilités totales avec une partition.",
+                "Je sais utiliser la formule de Bayes pour calculer une probabilité a posteriori.",
+                "Je sais reconnaître une loi binomiale $\\mathcal{B}(n,p)$ et en écrire la fonction de masse.",
+                "Je sais calculer l'espérance $np$ et la variance $np(1-p)$ d'une variable binomiale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une usine a trois machines A, B, C qui produisent respectivement 30 %, 50 %, 20 % des pièces. Les taux de défaut sont 2 % pour A, 1 % pour B, 3 % pour C. Une pièce est choisie au hasard et s'avère défectueuse. Quelle est la probabilité qu'elle vienne de la machine C ?",
+              "answer": "$\\mathbb{P}(C|D) = \\frac{0,03 \\times 0,20}{0,02 \\times 0,30 + 0,01 \\times 0,50 + 0,03 \\times 0,20} = \\frac{0,006}{0,017} \\approx 0,353$",
+              "hint": "Utilisez la loi des probabilités totales pour $\\mathbb{P}(D)$ puis la formule de Bayes pour $\\mathbb{P}(C|D)$.",
+              "explanation": "Les prior sont $\\mathbb{P}(A)=0,3$, $\\mathbb{P}(B)=0,5$, $\\mathbb{P}(C)=0,2$. Les conditionnelles $\\mathbb{P}(D|A)=0,02$, $\\mathbb{P}(D|B)=0,01$, $\\mathbb{P}(D|C)=0,03$. $\\mathbb{P}(D)=0,006+0,005+0,006=0,017$. Le numérateur pour C est $0,006$. Le quotient donne environ $0,353$."
+            },
+            {
+              "question": "Un test de dépistage a une sensibilité de 98 % et une spécificité de 95 %. La prévalence de la maladie est 0,5 %. Calculez la valeur prédictive positive (probabilité d'être malade sachant un test positif).",
+              "answer": "$\\mathbb{P}(M|+) = \\frac{0,98 \\times 0,005}{0,98 \\times 0,005 + 0,05 \\times 0,995} \\approx 0,0896$",
+              "hint": "Identifiez $\\mathbb{P}(M)=0,005$, $\\mathbb{P}(+|M)=0,98$, $\\mathbb{P}(+|\\bar M)=1-0,95=0,05$. Appliquez Bayes.",
+              "explanation": "Le numérateur est $0,98\\times0,005=0,0049$. Le dénominateur est $0,0049 + 0,05\\times0,995 = 0,0049+0,04975=0,05465$. Le quotient vaut environ $0,0896$, soit moins de 9 %."
+            },
+            {
+              "question": "On lance 12 fois une pièce équilibrée. Quelle est la probabilité d'obtenir exactement 5 faces ?",
+              "answer": "$\\binom{12}{5} (0,5)^{12} = 792 \\times 0,000244140625 \\approx 0,193$",
+              "hint": "Utilisez la formule de la loi binomiale avec $n=12$, $p=0,5$, $k=5$.",
+              "explanation": "Le coefficient binomial $\\binom{12}{5}=792$. Comme $p=0,5$, $p^k(1-p)^{n-k} = (0,5)^{12} = 1/4096 \\approx 0,00024414$. Le produit donne environ $0,193$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

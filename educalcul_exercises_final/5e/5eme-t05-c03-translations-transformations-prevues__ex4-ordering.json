@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Application : Translations / transformations prévues",
+  "title": "Ordre des étapes d'une translation",
+  "blocks": [
+    {
+      "title": "Construction de l'image d'un point",
+      "content": "Range les étapes dans l'ordre chronologique pour construire l'image d'un point $A$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer le point $A$ et le vecteur $\\vec{v}$ (son origine, son extrémité, sa direction, son sens et sa longueur).",
+        "Tracer la droite passant par $A$ et parallèle à la droite porteuse du vecteur $\\vec{v}$.",
+        "Sur cette droite, reporter la longueur du vecteur $\\vec{v}$ en partant de $A$ dans le même sens que $\\vec{v}$.",
+        "Le point obtenu est l'image $A'$ de $A$ par la translation de vecteur $\\vec{v}$."
+      ],
+      "explanation": "La construction suit la définition : le quadrilatère formé par l'origine et l'extrémité du vecteur et les points $A$ et $A'$ est un parallélogramme. On trace donc la parallèle à la droite du vecteur passant par $A$, puis on y reporte la longueur et le sens du vecteur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction de l'image d'un triangle",
+      "content": "Range les étapes dans l'ordre pour construire l'image du triangle $ABC$ par la translation de vecteur $\\vec{v}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Construire l'image $A'$ du sommet $A$ par la translation de vecteur $\\vec{v}$.",
+        "Construire l'image $B'$ du sommet $B$ par la même translation.",
+        "Construire l'image $C'$ du sommet $C$ par la même translation.",
+        "Relier les points $A'$, $B'$ et $C'$ pour obtenir le triangle image $A'B'C'$."
+      ],
+      "explanation": "Une translation conserve les alignements et les distances. Il suffit de construire l'image de chaque sommet un par un avec le même vecteur, puis de relier les images dans le même ordre pour obtenir la figure image.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination du vecteur de translation",
+      "content": "On a une figure $F$ et son image $F'$ par une translation. Range les étapes pour déterminer le vecteur de cette translation.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Choisir un point $M$ sur la figure $F$ et repérer son image $M'$ sur la figure $F'$.",
+        "Tracer le segment $[MM']$.",
+        "Le vecteur de translation est le vecteur $\\overrightarrow{MM'}$ (tout vecteur équivalent convient).",
+        "Vérifier qu'un autre couple de points correspondants $N$ et $N'$ donne bien le même vecteur $\\overrightarrow{NN'} = \\overrightarrow{MM'}$."
+      ],
+      "explanation": "Le vecteur de translation est unique. Il suffit de relier un point et son image. La vérification avec un second couple assure qu'il s'agit bien d'une translation (et non d'une rotation ou symétrie).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

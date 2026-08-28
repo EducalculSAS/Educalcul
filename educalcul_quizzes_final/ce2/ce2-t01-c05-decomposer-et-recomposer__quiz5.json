@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 146,
+  "_course_code": "ce2-t01-c05-decomposer-et-recomposer",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Décomposition additive",
+  "title": "Quiz : Décomposition additive (Approfondissement)",
+  "questions": [
+    {
+      "text": "Observe la représentation en matériel de base dix. Quelle est la décomposition additive canonique (en centaines, dizaines, unités) de ce nombre ?",
+      "options": [
+        "$200 + 40 + 7$",
+        "$200 + 4 + 7$",
+        "$20 + 40 + 7$",
+        "$200 + 47$"
+      ],
+      "correctAnswer": "$200 + 40 + 7$",
+      "explanation": "Le matériel montre 2 centaines (200), 4 dizaines (40) et 7 unités (7). La décomposition canonique s'écrit donc $200 + 40 + 7 = 247$. L'option B confond dizaines et unités (4 au lieu de 40). L'option C ne compte pas les centaines correctement. L'option D regroupe les dizaines et les unités.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 2,
+        "tens": 4,
+        "units": 7,
+        "caption": "Représentation du nombre 247"
+      }
+    },
+    {
+      "text": "Complète la décomposition additive suivante : $365 = 300 + \\dots + 5$",
+      "options": [
+        "$6$",
+        "$60$",
+        "$65$",
+        "$56$"
+      ],
+      "correctAnswer": "$60$",
+      "explanation": "Le nombre 365 se décompose en 3 centaines (300), 6 dizaines (60) et 5 unités (5). Il manque donc la valeur des dizaines : $60$. L'option A ne donne que le chiffre des dizaines sans sa valeur de position. L'option C regroupe dizaines et unités. L'option D inverse les chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre correspond à la décomposition additive représentée ci-dessous ?",
+      "options": [
+        "$428$",
+        "$528$",
+        "$4128$",
+        "$5208$"
+      ],
+      "correctAnswer": "$528$",
+      "explanation": "Le diagramme montre trois parties : $400$, $120$ et $8$. En les ajoutant : $400 + 120 = 520$, puis $520 + 8 = 528$. C'est une décomposition non canonique car il y a plus de 9 dizaines (12 dizaines = 120). L'option A oublie de convertir 12 dizaines en 1 centaine et 2 dizaines. Les options C et D placent mal les chiffres.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "400",
+            "value": 400,
+            "tone": "blue"
+          },
+          {
+            "label": "120",
+            "value": 120,
+            "tone": "green"
+          },
+          {
+            "label": "8",
+            "value": 8,
+            "tone": "red"
+          }
+        ],
+        "caption": "Décomposition additive : 400 + 120 + 8"
+      }
+    },
+    {
+      "text": "Laquelle de ces décompositions correspond à l'écriture canonique (classique) du nombre $542$ ?",
+      "options": [
+        "$500 + 40 + 2$",
+        "$400 + 140 + 2$",
+        "$500 + 30 + 12$",
+        "$400 + 40 + 12$"
+      ],
+      "correctAnswer": "$500 + 40 + 2$",
+      "explanation": "La décomposition canonique respecte strictement les valeurs de position : 5 centaines ($500$), 4 dizaines ($40$), 2 unités ($2$). Les options B et C sont des décompositions additives correctes (elles donnent bien 542) mais non canoniques car elles utilisent plus de 9 dizaines ou plus de 9 unités. L'option D donne $452$, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouve le nombre manquant dans cette égalité : $703 = 600 + \\dots + 3$",
+      "options": [
+        "$100$",
+        "$10$",
+        "$103$",
+        "$13$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "Pour passer de $600$ à $703$, il faut ajouter $100$ (pour faire $700$) puis $3$ (pour faire $703$). Le terme manquant est donc $100$. C'est une décomposition non canonique où l'on a 'cassé' une centaine en 10 dizaines, mais ici on a gardé 6 centaines et mis le reste (1 centaine + 3 unités) dans le terme manquant : $100 + 3 = 103$, mais l'égalité sépare déjà le $+3$, il ne reste que $100$. L'option C ($103$) serait la réponse si l'égalité était $703 = 600 + \\dots$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

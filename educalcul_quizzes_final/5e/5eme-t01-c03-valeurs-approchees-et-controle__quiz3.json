@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Vérifier calculatrice",
+  "title": "Quiz - Vérifier calculatrice (5e)",
+  "questions": [
+    {
+      "text": "Tu effectues le produit $48 \\times 27$ sur ta calculatrice et tu obtiens $1296$. Quelle vérification par approximation est correcte ?",
+      "options": [
+        "En arrondissant à la dizaine, $50 \\times 30 = 1500$, donc $1296$ est plausible.",
+        "En arrondissant à la dizaine, $40 \\times 20 = 800$, donc $1296$ est trop grand.",
+        "En arrondissant à la centaine, $100 \\times 100 = 10000$, donc $1296$ est trop petit.",
+        "En arrondissant à l'unité, $48 \\times 27 = 1296$, donc pas besoin de vérification."
+      ],
+      "correctAnswer": "En arrondissant à la dizaine, $50 \\times 30 = 1500$, donc $1296$ est plausible.",
+      "explanation": "On arrondit chaque facteur à la dizaine la plus proche : $48 \\approx 50$ et $27 \\approx 30$. Le produit approximatif est $50 \\times 30 = 1500$. Le résultat exact $1296$ est de même ordre de grandeur, donc plausible. Les autres options utilisent de mauvais arrondis ou concluent à tort.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu calcules $735 \\div 12$ et la calculatrice affiche $61,25$. Quelle estimation permet de vérifier ce résultat ?",
+      "options": [
+        "Environ $720 \\div 12 = 60$, le résultat $61,25$ est proche.",
+        "Environ $700 \\div 10 = 70$, le résultat $61,25$ est trop petit.",
+        "Environ $800 \\div 20 = 40$, le résultat $61,25$ est trop grand.",
+        "Environ $735 \\div 10 = 73,5$, le résultat $61,25$ est correct."
+      ],
+      "correctAnswer": "Environ $720 \\div 12 = 60$, le résultat $61,25$ est proche.",
+      "explanation": "On choisit un dividende proche et divisible facilement : $720$ (multiple de $12$). $720 \\div 12 = 60$. Le quotient exact $61,25$ est très proche de $60$, ce qui valide l'ordre de grandeur. Les autres estimations utilisent des diviseurs ou dividendes mal choisis, donnant des écarts trop grands.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu additionnes $12,34 + 5,678$ et la calculatrice donne $18,018$. Quelle vérification par ordre de grandeur est correcte ?",
+      "options": [
+        "Arrondis à l'unité : $12 + 6 = 18$, le résultat $18,018$ est cohérent.",
+        "Arrondis à la dizaine : $10 + 10 = 20$, le résultat $18,018$ est trop petit.",
+        "Arrondis au centième : $12,34 + 5,68 = 18,02$, le résultat $18,018$ est faux.",
+        "Arrondis au millième : $12,340 + 5,678 = 18,018$, donc pas de vérification nécessaire."
+      ],
+      "correctAnswer": "Arrondis à l'unité : $12 + 6 = 18$, le résultat $18,018$ est cohérent.",
+      "explanation": "Arrondir chaque nombre à l'unité donne $12$ et $6$, somme $18$. Le résultat de la calculatrice $18,018$ est tout près de $18$, confirmant l'ordre de grandeur. L'arrondi à la dizaine est trop grossier, l'arrondi au centième change le résultat, et l'arrondi au millième reproduit le calcul exact sans vérification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu calcules $2^8$ sur la calculatrice et elle affiche $256$. Quelle estimation simple confirme ce résultat ?",
+      "options": [
+        "Puisque $2^5 = 32$, $2^8 = 32 \\times 2^3 = 32 \\times 8 = 256$, le résultat est exact.",
+        "Puisque $2^8$ est proche de $10^2 = 100$, le résultat $256$ est trop grand.",
+        "Puisque $2^8 = 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 128$, le résultat $256$ est faux.",
+        "Puisque $2^8$ est un nombre pair, le résultat $256$ est plausible."
+      ],
+      "correctAnswer": "Puisque $2^5 = 32$, $2^8 = 32 \\times 2^3 = 32 \\times 8 = 256$, le résultat est exact.",
+      "explanation": "On décompose $2^8 = 2^{5+3} = 2^5 \\times 2^3$. On connaît $2^5 = 32$ et $2^3 = 8$, leur produit $32 \\times 8 = 256$. Cela confirme le résultat. Les autres options sont soit une approximation trop faible, soit un calcul erroné, soit un argument non mathématique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tu cherches $\\sqrt{50}$ et la calculatrice donne $7,07$. Quelle vérification par encadrement est correcte ?",
+      "options": [
+        "Car $7^2 = 49$ et $8^2 = 64$, $\\sqrt{50}$ est compris entre $7$ et $8$, $7,07$ est plausible.",
+        "Car $6^2 = 36$ et $7^2 = 49$, $\\sqrt{50}$ est compris entre $6$ et $7$, $7,07$ est trop grand.",
+        "Car $8^2 = 64$ et $9^2 = 81$, $\\sqrt{50}$ est compris entre $8$ et $9$, $7,07$ est trop petit.",
+        "Car $50$ est un carré parfait, $\\sqrt{50}$ doit être un entier, $7,07$ est faux."
+      ],
+      "correctAnswer": "Car $7^2 = 49$ et $8^2 = 64$, $\\sqrt{50}$ est compris entre $7$ et $8$, $7,07$ est plausible.",
+      "explanation": "Les carrés des entiers encadrent $50$ : $7^2 = 49 < 50 < 64 = 8^2$. Donc $\\sqrt{50}$ se situe entre $7$ et $8$. La valeur $7,07$ respecte cet encadrement. Les autres propositions utilisent de mauvais carrés ou affirment à tort que $50$ est un carré parfait.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

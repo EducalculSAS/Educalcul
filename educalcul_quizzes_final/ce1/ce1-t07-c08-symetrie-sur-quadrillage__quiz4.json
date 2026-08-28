@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Symétrie sur quadrillage",
+  "title": "Quiz : Symétrie sur quadrillage (Applications)",
+  "questions": [
+    {
+      "text": "Observe la figure ci-dessous. Les trois cases de la première colonne sont coloriées. L'axe de symétrie est vertical et se trouve au bord droit de cette colonne. Quelle figure obtient-on en complétant la symétrie ?",
+      "options": [
+        "Un rectangle de $3$ cases sur $2$",
+        "Un carré de $3$ cases sur $3$",
+        "Une ligne de $6$ cases",
+        "Un rectangle de $2$ cases sur $3$"
+      ],
+      "correctAnswer": "Un rectangle de $3$ cases sur $2$",
+      "explanation": "La figure de départ est une colonne de $3$ cases. L'axe de symétrie vertical est placé à droite de cette colonne. La symétrie crée une seconde colonne de $3$ cases à droite de l'axe. On obtient donc un rectangle de $3$ cases de haut sur $2$ cases de large (soit $6$ cases au total).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 3,
+        "caption": "Les 3 cases de la première colonne (à gauche) sont coloriées. L'axe de symétrie vertical est au bord droit de cette colonne."
+      }
+    },
+    {
+      "text": "Sur ce quadrillage, les quatre cases de la première ligne sont coloriées. L'axe de symétrie est horizontal et se trouve juste sous cette ligne. Combien de cases seront coloriées au total après avoir tracé la symétrie ?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La figure de départ comporte $4$ cases sur la première ligne. L'axe horizontal est sous cette ligne. La symétrie reproduit ces $4$ cases symétriquement en dessous de l'axe, sur la deuxième ligne. Le total est donc $4 + 4 = 8$ cases coloriées.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "Les 4 cases de la première ligne (en haut) sont coloriées. L'axe de symétrie horizontal est sous cette ligne."
+      }
+    },
+    {
+      "text": "Une figure en forme de L composée de $4$ cases est coloriée à gauche d'un axe vertical. La figure occupe la première colonne entièrement (3 cases) et la case du bas de la deuxième colonne. Combien de cases comportera la figure complète après symétrie axiale ?",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "4"
+      ],
+      "correctAnswer": "8",
+      "explanation": "La figure initiale a $4$ cases. La symétrie axiale conserve le nombre de cases : l'image symétrique en a exactement autant que la figure de départ. Le total est donc $4 \\times 2 = 8$ cases.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "Figure en L de 4 cases à gauche de l'axe vertical (colonne 1 pleine + bas de colonne 2)."
+      }
+    },
+    {
+      "text": "Regarde ce quadrillage. Un carré de $2$ cases sur $2$ est coloriée au centre. L'axe de symétrie vertical passe pile au milieu de ce carré (entre la 2ème et la 3ème colonne). La figure coloriée est-elle symétrique par rapport à cet axe ?",
+      "options": [
+        "Vrai",
+        "Faux",
+        "On ne peut pas savoir",
+        "C'est symétrique seulement horizontalement"
+      ],
+      "correctAnswer": "Vrai",
+      "explanation": "L'axe de symétrie vertical coupe le carré de $2 \\times 2$ cases exactement en son milieu (il sépare la 2ème et la 3ème colonne). La partie gauche du carré (1 case de large) est l'image symétrique de la partie droite par rapport à cet axe. La figure est donc bien symétrique par rapport à cet axe.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "Carré 2x2 centré sur l'axe vertical (cases colonnes 2-3, lignes 2-3). L'axe passe au milieu."
+      }
+    },
+    {
+      "text": "Une figure de $5$ cases est dessinée à gauche d'un axe vertical sur un quadrillage. Si on complète la figure par symétrie axiale par rapport à cet axe, quel sera le nombre total de cases coloriées ?",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "5"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La symétrie axiale double la figure. La figure de départ a $5$ cases, son image symétrique en aura aussi $5$. Le nombre total de cases coloriées sera $5 + 5 = 10$ cases.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 5,
+        "caption": "Figure quelconque de 5 cases à gauche de l'axe vertical."
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 164,
+  "_course_code": "ce2-t03-c05-multiplier-par-10-et-100",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Relier aux unités de numération",
+  "title": "Multiplier par 10 et 100 : Relier aux unités de numération",
+  "questions": [
+    {
+      "text": "On multiplie $23$ par $10$. Que deviennent les chiffres du nombre dans le tableau de numération ?",
+      "options": [
+        "Les chiffres se décalent d'un rang vers la gauche : les unités deviennent dizaines, les dizaines deviennent centaines",
+        "Les chiffres se décalent d'un rang vers la droite",
+        "Les chiffres ne bougent pas, on ajoute juste un zéro à la fin",
+        "Les unités deviennent centaines et les dizaines deviennent milliers"
+      ],
+      "correctAnswer": "Les chiffres se décalent d'un rang vers la gauche : les unités deviennent dizaines, les dizaines deviennent centaines",
+      "explanation": "Multiplier par $10$, c'est augmenter chaque unité de numération d'un rang. Les $3$ unités deviennent $3$ dizaines, les $2$ dizaines deviennent $2$ centaines. On obtient $230$. L'ajout d'un zéro est une conséquence visuelle, mais la règle mathématique est le décalage vers la gauche.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 23,
+        "caption": "Représentation de 23 dans le tableau de numération"
+      }
+    },
+    {
+      "text": "Quel est le résultat de $45 \\times 100$ ?",
+      "options": [
+        "$4\\ 500$",
+        "$450$",
+        "$45\\ 000$",
+        "$4\\ 050$"
+      ],
+      "correctAnswer": "$4\\ 500$",
+      "explanation": "Multiplier par $100$, c'est décaler les chiffres de deux rangs vers la gauche. Les $5$ unités deviennent $5$ centaines, les $4$ dizaines deviennent $4$ milliers. On obtient donc $4$ milliers $5$ centaines, soit $4\\ 500$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si l'on multiplie $3$ centaines par $10$, on obtient :",
+      "options": [
+        "$3$ milliers",
+        "$30$ dizaines",
+        "$300$ unités",
+        "$3$ centaines"
+      ],
+      "correctAnswer": "$3$ milliers",
+      "explanation": "$3$ centaines correspondent à $300$. $300 \\times 10 = 3\\ 000$, soit $3$ milliers. On peut aussi raisonner directement sur les unités : $1$ centaine $\\times 10 = 1$ mille, donc $3$ centaines $\\times 10 = 3$ milliers. Les autres options correspondent à d'autres décompositions de $300$ mais pas au résultat de la multiplication par $10$.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 3,
+        "tens": 0,
+        "units": 0,
+        "caption": "3 centaines"
+      }
+    },
+    {
+      "text": "Par quel nombre a-t-on multiplié $56$ pour obtenir $560$ ?",
+      "options": [
+        "$10$",
+        "$100$",
+        "$1\\ 000$",
+        "$1$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Pour passer de $56$ à $560$, les chiffres se sont décalés d'un rang vers la gauche : les $6$ unités sont devenues $6$ dizaines, les $5$ dizaines sont devenues $5$ centaines. C'est l'effet d'une multiplication par $10$. Une multiplication par $100$ aurait donné $5\\ 600$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de centaines dans $50$ dizaines ?",
+      "options": [
+        "$5$",
+        "$50$",
+        "$500$",
+        "$5\\ 000$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "$10$ dizaines font $1$ centaine. Donc $50$ dizaines font $5$ groupes de $10$ dizaines, soit $5$ centaines. On peut aussi calculer $50 \\times 10 = 500$ unités, et $500$ unités font $5$ centaines.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 132,
+  "_course_code": "ce1-t07-c07-cercle-et-compas",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Cercle et compas",
+  "title": "Applications du cercle et du compas - CE1",
+  "questions": [
+    {
+      "text": "Observe le compas sur la figure. Il est réglé pour tracer un cercle de centre $O$. Quelle est la longueur du rayon de ce cercle ?",
+      "options": [
+        "$2\\,cm$",
+        "$4\\,cm$",
+        "$6\\,cm$",
+        "$8\\,cm$"
+      ],
+      "correctAnswer": "$4\\,cm$",
+      "explanation": "Sur la figure, l'ouverture du compas correspond à la distance entre la pointe (centre $O$) et le crayon. Cette distance est le rayon. La graduation indique $4\\,cm$.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Compas ouvert à 4 cm"
+      }
+    },
+    {
+      "text": "Léa veut tracer un cercle de rayon $3\\,cm$. Comment doit-elle régler l'ouverture de son compas ?",
+      "options": [
+        "L'ouvrir à $1,5\\,cm$",
+        "L'ouvrir à $3\\,cm$",
+        "L'ouvrir à $6\\,cm$",
+        "L'ouvrir à $9\\,cm$"
+      ],
+      "correctAnswer": "L'ouvrir à $3\\,cm$",
+      "explanation": "Le rayon d'un cercle est la distance du centre à la circonférence. Pour tracer un cercle de rayon $3\\,cm$, il faut exactement ouvrir le compas à $3\\,cm$. $1,5\\,cm$ est la moitié, $6\\,cm$ est le diamètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un diamètre de $8\\,cm$. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$2\\,cm$",
+        "$4\\,cm$",
+        "$8\\,cm$",
+        "$16\\,cm$"
+      ],
+      "correctAnswer": "$4\\,cm$",
+      "explanation": "Le diamètre est deux fois plus long que le rayon ($d = 2 \\times r$). Donc le rayon est la moitié du diamètre : $8 \\div 2 = 4\\,cm$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace deux cercles de même centre $O$. Le petit cercle a un rayon de $2\\,cm$, le grand cercle a un rayon de $5\\,cm$. Quelle est la distance entre les deux circonférences ?",
+      "options": [
+        "$2\\,cm$",
+        "$3\\,cm$",
+        "$5\\,cm$",
+        "$7\\,cm$"
+      ],
+      "correctAnswer": "$3\\,cm$",
+      "explanation": "Les cercles sont concentriques (même centre). La distance entre les deux circonférences est la différence des rayons : $5\\,cm - 2\\,cm = 3\\,cm$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un triangle équilatéral de côté $4\\,cm$ au compas, on trace un segment $[AB]$ de $4\\,cm$. Quelle ouverture de compas faut-il pour tracer les arcs de cercle centres $A$ et $B$ qui se coupent en $C$ ?",
+      "options": [
+        "$2\\,cm$",
+        "$4\\,cm$",
+        "$6\\,cm$",
+        "$8\\,cm$"
+      ],
+      "correctAnswer": "$4\\,cm$",
+      "explanation": "Dans un triangle équilatéral, les trois côtés ont la même longueur. Pour trouver le sommet $C$, on trace un arc de cercle centre $A$ de rayon $AB$ et un arc centre $B$ de rayon $BA$. L'ouverture du compas doit donc être égale à la longueur du côté : $4\\,cm$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

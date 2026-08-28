@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Séquences, boucles, conditions",
+  "title": "Séquences, boucles et conditions en informatique",
+  "questions": [
+    {
+      "text": "Qu'est ce qu'une séquence dans un programme informatique ?",
+      "options": [
+        "Une action qui se répète sans fin",
+        "Une suite d'instructions exécutées l'une après l'autre",
+        "Un choix entre deux chemins différents",
+        "Une erreur dans le code"
+      ],
+      "correctAnswer": "Une suite d'instructions exécutées l'une après l'autre",
+      "explanation": "Une séquence est l'ordre logique des étapes. Le programme suit les instructions dans l'ordre, de la première à la dernière.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'instruction boucle répéter $4$ fois permet de :",
+      "options": [
+        "Écrire l'instruction $4$ fois de suite dans le code",
+        "Supprimer l'instruction après $4$ secondes",
+        "Exécuter la même action $4$ fois sans tout réécrire",
+        "Vérifier si le résultat est égal à $4$"
+      ],
+      "correctAnswer": "Exécuter la même action $4$ fois sans tout réécrire",
+      "explanation": "La boucle sert à simplifier le programme en évitant les répétitions inutiles d'instructions identiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un programme, à quoi sert l'instruction SI... ALORS...",
+      "options": [
+        "À créer une boucle infinie",
+        "À demander au programme d'attendre",
+        "À exécuter une action seulement si une condition est vraie",
+        "À multiplier un nombre par deux"
+      ],
+      "correctAnswer": "À exécuter une action seulement si une condition est vraie",
+      "explanation": "C'est une condition. Le programme teste si l'affirmation est vraie pour décider s'il doit lancer l'action ou non.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot doit avancer de $3$ cases, puis tourner à droite, et recommencer cela $3$ fois. Quelle est la structure la plus efficace ?",
+      "options": [
+        "Répéter $3$ fois (Avancer $3$ cases, Tourner à droite)",
+        "Avancer $3$ cases, Tourner à droite, Avancer $3$ cases",
+        "SI Avancer $3$ cases ALORS Tourner à droite",
+        "Tourner à droite, Répéter $3$ fois (Avancer $3$ cases)"
+      ],
+      "correctAnswer": "Répéter $3$ fois (Avancer $3$ cases, Tourner à droite)",
+      "explanation": "Pour répéter un groupe d'actions, on place toute la séquence (avancer et tourner) à l'intérieur de la boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on programme : Répéter $5$ fois (Avancer de $2$ cm), quelle distance totale le robot aura t il parcourue ?",
+      "options": [
+        "$5$ cm",
+        "$7$ cm",
+        "$10$ cm",
+        "$2$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le robot fait $5$ bonds de $2$ cm. On calcule donc $5 \\times 2 = 10$ cm.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

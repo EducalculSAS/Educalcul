@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Corriger",
+  "title": "Correction d'algorithmes : affectations, conditions, boucles",
+  "blocks": [
+    {
+      "title": "Correction d'affectations",
+      "content": "Relie chaque instruction erronée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x = 10$",
+          "right": "$x ← 10$"
+        },
+        {
+          "left": "$y = x + 5$",
+          "right": "$y ← x + 5$"
+        },
+        {
+          "left": "$z ← 2 * (3 + 4$",
+          "right": "$z ← 2 * (3 + 4)$"
+        },
+        {
+          "left": "$w ← 7 / 0$",
+          "right": "$w ← 7 / 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'affectation en algorithmique utilise la flèche ← (et non le signe =). Toutes les parenthèses ouvrantes doivent être refermées. Une division par zéro est une erreur : on la remplace par une division correcte (par exemple 7 / 2).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction de conditions",
+      "content": "Relie chaque condition erronée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$Si x ← 5 Alors$",
+          "right": "$Si x = 5 Alors$"
+        },
+        {
+          "left": "$Si x > 10$",
+          "right": "$Si x > 10 Alors$"
+        },
+        {
+          "left": "$Sinon Si x < 0$",
+          "right": "$Sinon Si x < 0 Alors$"
+        },
+        {
+          "left": "$Si y = 3 Alors ... Fin$",
+          "right": "$Si y = 3 Alors ... Fin Si$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans une condition, on teste l'égalité avec = et on n'utilise jamais ←. Le mot-clé Alors est obligatoire après la condition. Chaque bloc Si doit être terminé par Fin Si.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Correction de boucles",
+      "content": "Relie chaque boucle erronée à sa version corrigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$TantQue i < 10$",
+          "right": "$TantQue i < 10 Faire$"
+        },
+        {
+          "left": "$Pour k De 1 À 5$",
+          "right": "$Pour k De 1 À 5 Faire$"
+        },
+        {
+          "left": "$TantQue j > 0 Faire ... Fin$",
+          "right": "$TantQue j > 0 Faire ... Fin TantQue$"
+        },
+        {
+          "left": "$Pour m De 10 À 1 Faire$",
+          "right": "$Pour m De 10 À 1 Pas -1 Faire$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les boucles TantQue et Pour nécessitent le mot-clé Faire après la condition. Elles doivent être clôturées par Fin TantQue ou Fin Pour. Pour une boucle descendante, il faut préciser le pas négatif (Pas -1).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

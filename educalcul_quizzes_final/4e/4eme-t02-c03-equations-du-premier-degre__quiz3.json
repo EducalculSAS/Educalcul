@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 427,
+  "_course_code": "4eme-t02-c03-equations-du-premier-degre",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Vérifier solution",
+  "title": "Vérifier une solution d'équation du premier degré",
+  "questions": [
+    {
+      "text": "On considère l'équation $3x - 7 = 2$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "$x = 3$ est une solution de l'équation.",
+        "$x = 2$ est une solution de l'équation.",
+        "$x = 1$ est une solution de l'équation.",
+        "$x = -1$ est une solution de l'équation."
+      ],
+      "correctAnswer": "$x = 3$ est une solution de l'équation.",
+      "explanation": "Pour vérifier si une valeur est solution, on la remplace à la place de $x$ dans l'équation et on calcule les deux membres. Pour $x = 3$ : membre de gauche $= 3 \\times 3 - 7 = 9 - 7 = 2$. Membre de droite $= 2$. Les deux membres sont égaux, donc $x = 3$ est bien la solution. Pour $x = 2$ : $3 \\times 2 - 7 = -1 \\neq 2$. Pour $x = 1$ : $3 \\times 1 - 7 = -4 \\neq 2$. Pour $x = -1$ : $3 \\times (-1) - 7 = -10 \\neq 2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Vérifions si $x = 5$ est solution de l'équation $4(x - 2) = 12$. Quel calcul montre le résultat correct ?",
+      "options": [
+        "Membre de gauche : $4 \\times 5 - 2 = 18$ ; membre de droite : $12$. Pas égal.",
+        "Membre de gauche : $4 \\times (5 - 2) = 12$ ; membre de droite : $12$. Égal.",
+        "Membre de gauche : $4 \\times 5 - 8 = 12$ ; membre de droite : $12$. Égal.",
+        "Membre de gauche : $4 \\times 3 = 7$ ; membre de droite : $12$. Pas égal."
+      ],
+      "correctAnswer": "Membre de gauche : $4 \\times (5 - 2) = 12$ ; membre de droite : $12$. Égal.",
+      "explanation": "Il faut remplacer $x$ par $5$ en respectant les parenthèses. Membre de gauche : $4 \\times (5 - 2) = 4 \\times 3 = 12$. Membre de droite : $12$. Comme $12 = 12$, $x = 5$ est bien solution. La première option oublie les parenthèses (erreur de priorité). La troisième option développe correctement $4(x-2)$ en $4x-8$ et trouve $12$, mais l'énoncé de l'option présente le calcul intermédiaire $4 \\times 5 - 8$ ce qui est correct, toutefois la formulation de la deuxième option est la méthode directe de substitution la plus claire. La quatrième option contient une erreur de calcul ($4 \\times 3 = 7$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les équations suivantes, laquelle admet $x = -2$ pour solution ?",
+      "options": [
+        "$2x + 5 = 9$",
+        "$5x - 4 = -14$",
+        "$-3x + 1 = -5$",
+        "$x - 6 = -4$"
+      ],
+      "correctAnswer": "$5x - 4 = -14$",
+      "explanation": "On teste $x = -2$ dans chaque équation. A) $2(-2) + 5 = -4 + 5 = 1 \\neq 9$. B) $5(-2) - 4 = -10 - 4 = -14$. Le membre de gauche vaut $-14$, égal au membre de droite. C'est la bonne réponse. C) $-3(-2) + 1 = 6 + 1 = 7 \\neq -5$. D) $-2 - 6 = -8 \\neq -4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève affirme : \"$x = 4$ est solution de l'équation $\\frac{x}{2} + 3 = 5$\". Sa vérification est-elle correcte ?",
+      "options": [
+        "Oui, car $4 \\div 2 + 3 = 2 + 3 = 5$.",
+        "Non, car $\\frac{4}{2} + 3 = 2 + 3 = 6 \\neq 5$.",
+        "Non, car il faut multiplier par 2 avant de remplacer $x$.",
+        "Oui, car $4 + 3 = 7$ et $7 \\div 2 = 3,5$."
+      ],
+      "correctAnswer": "Oui, car $4 \\div 2 + 3 = 2 + 3 = 5$.",
+      "explanation": "On substitue $x$ par $4$ dans le membre de gauche : $\\frac{4}{2} + 3$. Selon la priorité des opérations, on effectue la division d'abord : $4 \\div 2 = 2$. Puis l'addition : $2 + 3 = 5$. Le membre de gauche vaut $5$, égal au membre de droite. L'option B fait une erreur de calcul ($2+3=6$). L'option C est fausse : on peut très bien vérifier en substituant directement. L'option D ne respecte pas l'ordre des opérations (addition avant division).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour l'équation $7 - 2x = 13$, quelle valeur de $x$ est la solution ?",
+      "options": [
+        "$x = 3$",
+        "$x = -3$",
+        "$x = 10$",
+        "$x = -10$"
+      ],
+      "correctAnswer": "$x = -3$",
+      "explanation": "On teste chaque option. Pour $x = 3$ : $7 - 2 \\times 3 = 7 - 6 = 1 \\neq 13$. Pour $x = -3$ : $7 - 2 \\times (-3) = 7 - (-6) = 7 + 6 = 13$. Le membre de gauche vaut $13$, égal au membre de droite. C'est la solution. Pour $x = 10$ : $7 - 20 = -13 \\neq 13$. Pour $x = -10$ : $7 - (-20) = 27 \\neq 13$. L'erreur fréquente est d'oublier que moins fois moins fait plus ($-2 \\times -3 = +6$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

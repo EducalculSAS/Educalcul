@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Choisir variable",
+  "title": "Choisir la variable en modélisation",
+  "questions": [
+    {
+      "text": "Dans une modélisation, on étudie le prix total $P$ (en euros) d'achat de $n$ kilogrammes de pommes à $2,50$ € le kg. Quelle est la variable indépendante ?",
+      "options": [
+        "Le prix total $P$",
+        "Le nombre de kilogrammes $n$",
+        "Le prix au kilogramme ($2,50$)",
+        "L'unité euro"
+      ],
+      "correctAnswer": "Le nombre de kilogrammes $n$",
+      "explanation": "La variable indépendante est celle que l'on choisit librement et qui fait varier les autres grandeurs. Ici, on décide de la quantité de pommes (le nombre de kilogrammes $n$), et le prix total $P$ en découle par la relation $P = 2,50 \\times n$. Le prix au kg est une constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut exprimer l'aire $A$ d'un carré en fonction de la longueur $c$ de son côté. Quelle variable faut-il choisir comme variable indépendante pour définir la fonction aire ?",
+      "options": [
+        "L'aire $A$",
+        "Le périmètre du carré",
+        "La longueur du côté $c$",
+        "La diagonale du carré"
+      ],
+      "correctAnswer": "La longueur du côté $c$",
+      "explanation": "L'aire d'un carré se calcule par $A = c^2$. La grandeur qui détermine l'aire est la longueur du côté. On choisit donc $c$ comme variable indépendante (l'antécédent) et $A$ devient la variable dépendante (l'image). Le périmètre et la diagonale sont d'autres grandeurs liées à $c$, mais ce n'est pas la variable naturelle pour définir la fonction aire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une balle est lancée verticalement. Sa hauteur $h$ (en mètres) par rapport au sol dépend du temps $t$ (en secondes) écoulé depuis le lancer. Dans la fonction $h = f(t)$, que représente la variable $t$ ?",
+      "options": [
+        "La hauteur maximale atteinte",
+        "L'instant initial du lancer",
+        "Le temps écoulé depuis le lancer",
+        "La vitesse initiale de la balle"
+      ],
+      "correctAnswer": "Le temps écoulé depuis le lancer",
+      "explanation": "La notation $h = f(t)$ signifie que $h$ est l'image de $t$ par la fonction $f$. La variable située entre parenthèses ($t$) est toujours la variable indépendante (l'antécédent). Dans ce contexte physique, le temps $t$ s'écoule et la hauteur $h$ en dépend à chaque instant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a un périmètre fixé à $20$ cm. On note $x$ la longueur d'un côté (en cm) et $A(x)$ l'aire du rectangle (en cm²). Quelle expression correspond à la fonction $A$ ?",
+      "options": [
+        "$A(x) = x(10 - x)$",
+        "$A(x) = x(20 - x)$",
+        "$A(x) = 2x(10 - x)$",
+        "$A(x) = x^2$"
+      ],
+      "correctAnswer": "$A(x) = x(10 - x)$",
+      "explanation": "Le périmètre est $2(x + L) = 20$, où $L$ est l'autre côté. Donc $x + L = 10$, soit $L = 10 - x$. L'aire est $A = x \\times L = x(10 - x)$. La variable indépendante choisie est $x$ (un côté), l'autre côté s'en déduit par la contrainte du périmètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour étudier la variation de la température $T$ (en °C) d'un four au cours du temps $t$ (en minutes), on modélise $T$ en fonction de $t$. Quelle phrase traduit correctement l'écriture $T = g(t)$ ?",
+      "options": [
+        "Le temps dépend de la température.",
+        "La température dépend du temps.",
+        "La température et le temps sont indépendants.",
+        "Le temps est une fonction de la température."
+      ],
+      "correctAnswer": "La température dépend du temps.",
+      "explanation": "L'égalité $T = g(t)$ se lit : \"$T$ est l'image de $t$ par la fonction $g$\". La variable $T$ (température) est la variable dépendante (les images), et la variable $t$ (temps) est la variable indépendante (les antécédents). Physiquement, l'état du four (température) évolue au fil du temps.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

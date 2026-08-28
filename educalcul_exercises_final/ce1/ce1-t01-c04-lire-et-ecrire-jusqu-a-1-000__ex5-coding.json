@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 71,
+  "_course_code": "ce1-t01-c04-lire-et-ecrire-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Étendre la lecture",
+  "title": "Algorithmes pour lire et écrire les nombres jusqu'à 1 000",
+  "blocks": [
+    {
+      "title": "Lire un nombre à trois chiffres",
+      "content": "On veut créer un algorithme qui prend un nombre à trois chiffres (par exemple $345$) et qui affiche son nom en toutes lettres. Voici le début de l'algorithme :\\nÉTAPE 1 : Regarder le chiffre des centaines.\\nÉTAPE 2 : Dire le nombre de centaines (exemple : \"trois cents\").\\nÉTAPE 3 : Regarder le chiffre des dizaines.\\nÉTAPE 4 : ...\\nÉTAPE 5 : Regarder le chiffre des unités.\\nÉTAPE 6 : ...\\nComplète les étapes 4 et 6 pour que l'algorithme fonctionne pour tous les nombres de $100$ à $999$.",
+      "correctAnswer": "ÉTAPE 4 : Si le chiffre des dizaines est 1, lire la dizaine et l'unité ensemble (exemple : 12 -> \"douze\"). Sinon, dire le nombre de dizaines (exemple : 4 -> \"quarante\").\\nÉTAPE 6 : Si le chiffre des dizaines n'est pas 1, dire le nom de l'unité (exemple : 5 -> \"cinq\"). Si le nombre finit par 0, ne rien ajouter pour les unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour lire un nombre à trois chiffres, on décompose en centaines, dizaines, unités. L'étape 4 gère le cas particulier des nombres de 11 à 16 (et 10) où la dizaine et l'unité forment un mot unique (onze, douze... seize). L'étape 6 gère les unités simples seulement si la dizaine n'est pas 1 (car 11 se lit \"onze\" pas \"dix-un\"). On n'oublie pas le trait d'union entre dizaines et unités (ex: quarante-cinq).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire un nombre en chiffres depuis son nom",
+      "content": "On veut maintenant faire l'inverse : un algorithme qui prend un nombre écrit en lettres (par exemple \"six cent huit\") et qui l'écrit en chiffres ($608$). L'algorithme doit gérer le cas où il n'y a pas de dizaines. Complète les instructions manquantes :\\n1. Chercher le mot \"cent\". Le mot avant donne le chiffre des centaines.\\n2. Chercher les mots des dizaines (vingt, trente... quatre-vingt-dix). S'il n'y en a pas, le chiffre des dizaines est $0$.\\n3. ...\\n4. Assembler les trois chiffres : centaines, dizaines, unités.\\nQuelle est l'instruction 3 pour trouver le chiffre des unités ?",
+      "correctAnswer": "3. Chercher le mot de l'unité (un, deux... neuf) qui suit le mot de la dizaine. S'il n'y a pas de mot dizaine (cas du 0) et pas de mot unité après \"cent\", l'unité est $0$. S'il y a un mot unité seul après \"cent\" (ex: \"six cent huit\"), ce mot donne le chiffre des unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'instruction 3 doit permettre de trouver le chiffre des unités dans tous les cas. Si le nombre s'arrête à \"cent\" (ex: trois cents), unités = 0. S'il y a une dizaine (ex: quarante), l'unité suit (ex: quatre -> 4). S'il n'y a pas de dizaine (ex: six cent huit), le mot qui suit \"cent\" directement est l'unité (huit -> 8).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux nombres sous forme différente",
+      "content": "On a deux nombres :\\n- Nombre A : écrit en chiffres ($472$).\\n- Nombre B : écrit en lettres (\"quatre cent soixante-trois\").\\nÉcris un algorithme simple (suite d'instructions) qui permet d'afficher le plus grand des deux nombres. Tu pourras utiliser les mots-clés : SI, ALORS, SINON, FIN SI.",
+      "correctAnswer": "1. Convertir B en chiffres : lire \"quatre cent\" -> 4 centaines, \"soixante-trois\" -> 6 dizaines et 3 unités. B = $463$.\\n2. Comparer les centaines de A ($4$) et B ($4$) : elles sont égales.\\n3. SI les centaines sont égales ALORS comparer les dizaines : A a $7$ dizaines, B a $6$ dizaines.\\n4. SI les dizaines de A > dizaines de B ALORS afficher A ($472$).\\n5. SINON afficher B.\\n6. FIN SI",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par mettre les deux nombres sous la même forme (chiffres) pour pouvoir les comparer. On compare d'abord les centaines (poids le plus fort). Comme elles sont égales ($4$), on passe aux dizaines. $7$ dizaines ($70$) est plus grand que $6$ dizaines ($60$), donc $472 > 463$. L'affichage final est $472$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

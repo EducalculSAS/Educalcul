@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Événements",
+  "title": "Quiz sur les événements en probabilités",
+  "questions": [
+    {
+      "text": "Dans le langage des probabilités, un événement est défini comme :",
+      "options": [
+        "Un sous-ensemble de l'univers",
+        "Un résultat élémentaire",
+        "Une probabilité",
+        "Une expérience aléatoire"
+      ],
+      "correctAnswer": "Un sous-ensemble de l'univers",
+      "explanation": "Un événement correspond à tout ensemble de résultats possibles d'une expérience aléatoire, c'est-à-dire une partie de l'espace des possibles $\\Omega$. Un résultat élémentaire est un seul élément de $\\Omega$, une probabilité est un nombre entre 0 et 1, et une expérience aléatoire est le processus qui génère les résultats.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A$ et $B$ deux événements. L'union $A \\cup B$ représente :",
+      "options": [
+        "L'ensemble des résultats qui appartiennent à $A$ ou à $B$ (ou aux deux)",
+        "L'ensemble des résultats qui appartiennent à $A$ et à $B$",
+        "L'ensemble des résultats qui n'appartiennent ni à $A$ ni à $B$",
+        "L'ensemble vide"
+      ],
+      "correctAnswer": "L'ensemble des résultats qui appartiennent à $A$ ou à $B$ (ou aux deux)",
+      "explanation": "Par définition, l'union de deux événements regroupe tous les résultats qui sont dans $A$, dans $B$, ou dans les deux. L'intersection $A \\cap B$ correspond à la deuxième option, le complémentaire de l'union à la troisième, et l'ensemble vide est un cas particulier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'intersection $A \\cap B$ de deux événements $A$ et $B$ est :",
+      "options": [
+        "L'ensemble des résultats qui appartiennent à $A$ et à $B$ simultanément",
+        "L'ensemble des résultats qui appartiennent à $A$ ou à $B$",
+        "L'ensemble des résultats qui n'appartiennent pas à $A$",
+        "L'univers $\\Omega$"
+      ],
+      "correctAnswer": "L'ensemble des résultats qui appartiennent à $A$ et à $B$ simultanément",
+      "explanation": "L'intersection ne conserve que les résultats communs aux deux événements. La première option décrit l'union, la troisième le complémentaire de $A$, et la quatrième l'ensemble de tous les résultats possibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le complémentaire $\\overline{A}$ d'un événement $A$ dans l'univers $\\Omega$ est :",
+      "options": [
+        "L'ensemble des résultats qui n'appartiennent pas à $A$",
+        "L'ensemble des résultats qui appartiennent à $A$",
+        "L'univers $\\Omega$",
+        "L'ensemble vide"
+      ],
+      "correctAnswer": "L'ensemble des résultats qui n'appartiennent pas à $A$",
+      "explanation": "Par définition, $\\overline{A} = \\Omega \\setminus A$. C'est l'ensemble de tous les résultats possibles qui ne font pas partie de $A$. Les autres options correspondent respectivement à $A$ lui-même, à l'univers entier et à l'ensemble vide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la probabilité de l'événement impossible (l'ensemble vide) ?",
+      "options": [
+        "0",
+        "1",
+        "0,5",
+        "Non définie"
+      ],
+      "correctAnswer": "0",
+      "explanation": "L'événement impossible ne contient aucun résultat, donc sa probabilité est nulle. L'événement certain (l'univers $\\Omega$) a probabilité 1, 0,5 correspond à une chance sur deux, et la probabilité est toujours définie pour tout événement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

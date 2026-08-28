@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 358,
+  "_course_code": "6eme-t06-c02-angles",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Mesurer",
+  "title": "Mesure d'angles - 6e",
+  "blocks": [
+    {
+      "title": "Lecture d'un rapporteur",
+      "content": "Mesurez l'angle représenté sur le rapporteur.",
+      "correctAnswer": "45",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'angle affiché sur le rapporteur intérieur correspond à $45$ degrés. On lit la graduation qui coïncide avec le second rayon de l'angle.",
+      "points": 2,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 45,
+        "caption": "Angle à mesurer"
+      }
+    },
+    {
+      "title": "Angle sur une horloge",
+      "content": "Quelle est la mesure de l'angle formé par les aiguilles de l'horloge à $3$ heures ?",
+      "correctAnswer": "90",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "À $3$ heures, la grande aiguille pointe sur $12$ et la petite sur $3$. L'angle entre deux heures successives est de $30$ degrés ($360$ degrés divisés par $12$). Il y a $3$ intervalles entre $12$ et $3$, donc $3$ fois $30$ degrés = $90$ degrés.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 0,
+        "caption": "Horloge indiquant $3$ heures",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Angle plat",
+      "content": "Un angle plat mesure combien de degrés ?",
+      "correctAnswer": "180",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un angle plat correspond à une demi-droite tournée de $180$ degrés. C'est la moitié du tour complet ($360$ degrés).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

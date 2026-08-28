@@ -1,0 +1,423 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.887983+00:00",
+  "id": 130,
+  "code": "ce1-t07-c05",
+  "title": "Segments et milieu",
+  "description": "Cours structuré Educalcul : Segments et milieu.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Segments et milieu",
+    "objectif_global": "Segments et milieu",
+    "mini_lecons_imposees": [
+      "Mesurer un segment.",
+      "Trouver un milieu par mesure.",
+      "Coder ou marquer le milieu."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Mesurer un segment.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux savoir la longueur du côté de ton cahier. Tu ne peux pas deviner, il faut mesurer ! Un segment, c'est un bout de droite qui a un début et une fin, comme le bord de ta règle ou le côté d'une table. Pour le mesurer, on utilise une règle graduée en centimètres. Regarde bien : le zéro de la règle doit coïncider exactement avec le début du segment."
+            },
+            {
+              "type": "number_line",
+              "caption": "Un segment de $5$ cm sur une règle",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Début"
+                },
+                {
+                  "value": 5,
+                  "label": "Fin"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 5,
+                  "label": "5 cm"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons ensemble. Pose ta règle bien à plat. Aligne le trait du zéro au tout début du segment. Ensuite, regarde quel chiffre se trouve juste au-dessus de la fin du segment. Ce chiffre, c'est la longueur en centimètres. Si le segment s'arrête pile sur le $7$, alors il mesure $7$ cm. C'est comme lire l'heure, mais pour la longueur !"
+            },
+            {
+              "type": "display_math",
+              "latex": "Longueur = chiffre\\ lu\\ sur\\ la\\ règle\\ au\\ point\\ d'arrivée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "N'oublie jamais d'écrire l'unité après le nombre. On écrit $7\\ cm$ et pas seulement $7$. Le petit $c$ veut dire centi (centième) et le $m$ veut dire mètre. Un centimètre, c'est à peu près la largeur de ton ongle. Si ton segment mesure $12$ cm, c'est $1$ dizaine et $2$ unités, comme $12$ petits cubes alignés."
+            },
+            {
+              "type": "base_ten_blocks",
+              "caption": "$12$ cm : $1$ dizaine et $2$ unités",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant mesurer n'importe quel segment avec ta règle. La prochaine fois, nous verrons comment trouver exactement le milieu d'un segment en utilisant cette mesure. C'est comme partager une barre de chocolat en deux parts égales !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la règle, le segment commence à $0$ et finit sur le chiffre $8$. Quelle est sa longueur ?",
+              "answer": "$8\\ cm$",
+              "hint": "Regarde le chiffre au-dessus de la fin du segment.",
+              "explanation": "Le zéro est au début, le chiffre $8$ est à la fin, donc le segment mesure $8$ centimètres."
+            },
+            {
+              "question": "Tu mesures un crayon. Le zéro est à la mine, le bout arrive sur $14$. Écris la mesure avec l'unité.",
+              "answer": "$14\\ cm$",
+              "hint": "N'oublie pas les deux lettres après le nombre.",
+              "explanation": "La longueur est $14$, l'unité est centimètre, on écrit $14\\ cm$."
+            },
+            {
+              "question": "Un segment mesure $10\\ cm$. Combien de dizaines et d'unités dans ce nombre ?",
+              "answer": "$1$ dizaine et $0$ unité",
+              "hint": "Décompose le nombre $10$.",
+              "explanation": "$10 = 1 \\times 10 + 0$, donc $1$ dizaine et $0$ unité."
+            }
+          ]
+        },
+        {
+          "title": "Trouver un milieu par mesure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver un milieu par mesure"
+            },
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà partagé une baguette de pain en deux parts égales avec un ami ? Le point où tu coupes pour que les deux morceaux fassent la même taille, c'est le milieu ! Pour le trouver sur un segment, on a une méthode toute simple : on mesure la longueur totale, puis on divise ce nombre par deux."
+            },
+            {
+              "type": "number_line",
+              "caption": "Segment de $8$ cm, milieu à $4$ cm",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 4,
+                  "label": "M"
+                },
+                {
+                  "value": 8,
+                  "label": "B"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "label": "4 cm"
+                },
+                {
+                  "start": 4,
+                  "end": 8,
+                  "label": "4 cm"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Ton segment mesure $8$ cm. Le double de $4$, c'est $8$. Donc la moitié de $8$, c'est $4$. Tu places un point à $4$ cm du début. Si tu mesures de ce point jusqu'à la fin, tu retrouves aussi $4$ cm. Les deux morceaux ont la même longueur, c'est gagné !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure le segment entier avec ta règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le nombre trouvé par $2$ (cherche la moitié)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère cette demi-mesure sur la règle et marque le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie : les deux parties font la même longueur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la longueur totale est un nombre impair, comme $9$ cm. La moitié de $9$, c'est $4,5$ cm. Sur ta règle, tu verras un petit trait entre $4$ et $5$. C'est là que se cache le milieu ! Tu peux quand même marquer le point pile au milieu de ce petit trait. Les deux moitiés feront $4,5$ cm chacune."
+            },
+            {
+              "type": "number_line",
+              "caption": "Milieu d'un segment de $9$ cm à $4,5$ cm",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 4.5,
+                  "label": "M"
+                },
+                {
+                  "value": 9,
+                  "label": "B"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 4.5,
+                  "label": "4,5 cm"
+                },
+                {
+                  "start": 4.5,
+                  "end": 9,
+                  "label": "4,5 cm"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant trouver le milieu en mesurant. Mais comment faire pour le montrer sur un dessin sans écrire les chiffres ? La prochaine leçon te montrera le petit code secret des géomètres pour marquer le milieu proprement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un segment mesure $6\\ cm$. À quelle distance du début se trouve son milieu ?",
+              "answer": "$3\\ cm$",
+              "hint": "Quelle est la moitié de $6$ ?",
+              "explanation": "La moitié de $6$ est $3$. Le milieu est à $3\\ cm$ du début."
+            },
+            {
+              "question": "Tu as trouvé le milieu d'un segment de $10\\ cm$ à $5\\ cm$. Les deux parties mesurent combien chacune ?",
+              "answer": "$5\\ cm$",
+              "hint": "Vérifie en ajoutant les deux parties.",
+              "explanation": "Le milieu coupe le segment en deux parties égales. $5 + 5 = 10$, donc chaque partie fait $5\\ cm$."
+            },
+            {
+              "question": "Un segment fait $9\\ cm$. Son milieu est à $4,5\\ cm$. Combien font les deux moitiés ensemble ?",
+              "answer": "$9\\ cm$",
+              "hint": "Additionne les deux moitiés.",
+              "explanation": "$4,5 + 4,5 = 9$. Les deux moitiés réunies refont le segment entier."
+            }
+          ]
+        },
+        {
+          "title": "Coder ou marquer le milieu.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder ou marquer le milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur les figures de géométrie, on n'écrit pas les mesures partout. Les mathématiciens ont inventé un code visuel : un petit trait perpendiculaire au segment, posé exactement au milieu. Ce trait signifie : « attention, ici les deux côtés ont la même longueur ». C'est comme un petit drapeau planté au centre !"
+            },
+            {
+              "type": "display_math",
+              "latex": "A\\ \\bullet\\!\\!-\\!\\!-\\!\\!-\\!\\!-\\!\\!\\bullet\\ M\\ \\bullet\\!\\!-\\!\\!-\\!\\!-\\!\\!-\\!\\!\\bullet\\ B\\quad\\text{avec un trait court sur } M"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien cette figure. Le segment $[AB]$ a un point $M$ au milieu. On dessine un petit trait qui coupe le segment en formant un angle droit. Ce trait ne touche qu'un seul point : le milieu. Si tu vois ce trait sur un dessin, tu sais tout de suite que $MA = MB$ sans même sortir ta règle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Segment avec milieu marqué d'un trait",
+              "vertexLabels": [
+                "A",
+                "M",
+                "B"
+              ],
+              "sideLabels": [
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une figure a plusieurs segments avec leur milieu. Pour ne pas confondre, on utilise un code : un trait pour le premier milieu, deux traits pour le second, trois traits pour le troisième. C'est comme les rayures sur les épaulettes des officiers ! Chaque nombre de traits correspond à un milieu différent."
+            },
+            {
+              "type": "number_line",
+              "caption": "Deux segments avec milieux codés différemment",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "M₁"
+                },
+                {
+                  "value": 6,
+                  "label": "B"
+                },
+                {
+                  "value": 7,
+                  "label": "C"
+                },
+                {
+                  "value": 10,
+                  "label": "M₂"
+                },
+                {
+                  "value": 13,
+                  "label": "D"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "label": "1 trait"
+                },
+                {
+                  "start": 7,
+                  "end": 13,
+                  "label": "2 traits"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés : mesurer un segment, trouver son milieu par le calcul, et le marquer avec le bon code. Tu es prêt à repérer les milieux sur n'importe quelle figure géométrique !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais mesurer un segment avec une règle en alignant le zéro.",
+                "Je sais écrire la longueur avec l'unité $cm$.",
+                "Je sais trouver le milieu en divisant la longueur par $2$.",
+                "Je sais marquer le milieu par un petit trait perpendiculaire.",
+                "Je comprends le code : 1 trait, 2 traits, 3 traits pour des milieux différents."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un dessin, un segment a un petit trait perpendiculaire en son centre. Que signifie ce trait ?",
+              "answer": "C'est le milieu du segment.",
+              "hint": "Rappelle-toi le code des géomètres.",
+              "explanation": "Ce trait est le symbole qui indique que le point est le milieu, les deux moitiés sont égales."
+            },
+            {
+              "question": "Un segment $[CD]$ a son milieu marqué d'un trait. Un autre segment $[EF]$ a son milieu marqué de deux traits. Pourquoi utilise-t-on un nombre de traits différent ?",
+              "answer": "Pour distinguer les milieux des deux segments différents.",
+              "hint": "Pense aux épaulettes des officiers.",
+              "explanation": "Chaque segment a son propre milieu. Le nombre de traits permet de savoir à quel segment appartient chaque milieu."
+            },
+            {
+              "question": "Tu dessines un segment de $12\\ cm$. Tu marques son milieu avec le code. Combien de traits dessines-tu si c'est le premier milieu de ta figure ?",
+              "answer": "Un seul trait.",
+              "hint": "Premier milieu = un trait.",
+              "explanation": "Pour le premier milieu rencontré sur une figure, on utilise un seul petit trait perpendiculaire."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

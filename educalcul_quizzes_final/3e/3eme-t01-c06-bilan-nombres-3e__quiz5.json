@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 460,
+  "_course_code": "3eme-t01-c06-bilan-nombres-3e",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Arithmétique et puissances",
+  "title": "Quiz : Arithmétique et puissances (3e)",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $2^3 \\times 2^4$.",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$8^7$",
+        "$16^3$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "Lorsqu'on multiplie des puissances de même base, on ajoute les exposants : $2^3 \\times 2^4 = 2^{3+4} = 2^7$. Les autres réponses correspondent à des erreurs : multiplier les exposants ($2^{12}$), changer la base ($8^7$ ou $16^3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris la décomposition en facteurs premiers de $72$ sous forme de produit de puissances.",
+      "options": [
+        "$2^3 \\times 3^2$",
+        "$2^2 \\times 3^3$",
+        "$2^4 \\times 3$",
+        "$2 \\times 3^4$"
+      ],
+      "correctAnswer": "$2^3 \\times 3^2$",
+      "explanation": "On divise successivement par 2 : $72 = 2 \\times 36 = 2^2 \\times 18 = 2^3 \\times 9 = 2^3 \\times 3^2$. Les autres choix inversent les exposants ou utilisent des puissances incorrectes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $\\frac{5^6}{5^2}$.",
+      "options": [
+        "$5^4$",
+        "$5^8$",
+        "$25^3$",
+        "$5^3$"
+      ],
+      "correctAnswer": "$5^4$",
+      "explanation": "Lorsqu'on divise des puissances de même base, on soustrait les exposants : $\\frac{5^6}{5^2} = 5^{6-2} = 5^4$. $5^8$ correspondrait à une addition d'exposants, $25^3$ change la base, $5^3$ soustrait mal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Évalue $10^{-2} \\times 10^5$.",
+      "options": [
+        "$10^3$",
+        "$10^{-7}$",
+        "$10^{-3}$",
+        "$10^7$"
+      ],
+      "correctAnswer": "$10^3$",
+      "explanation": "On additionne les exposants même si l'un est négatif : $10^{-2} \\times 10^5 = 10^{-2+5} = 10^3$. Les autres réponses résultent d'une soustraction ($10^{-7}$), d'une erreur de signe ($10^{-3}$) ou d'une addition incorrecte ($10^7$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouve $n$ tel que $3^{n} \\times 3^{2} = 3^{7}$.",
+      "options": [
+        "$5$",
+        "$9$",
+        "$3$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "En additionnant les exposants : $n + 2 = 7$, donc $n = 5$. Les autres valeurs ne satisfont pas l'équation : $9$ donnerait $3^{11}$, $3$ donnerait $3^{5}$, $7$ donnerait $3^{9}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

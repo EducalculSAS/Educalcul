@@ -1,0 +1,522 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.269040+00:00",
+  "id": 571,
+  "code": "1ere-generale-maths-t01-c01",
+  "title": "Ensembles et intervalles",
+  "description": "Cours structuré Educalcul : Ensembles et intervalles.",
+  "subject": "Outils, automatismes, logique et algorithmique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Outils, automatismes, logique et algorithmique",
+    "titre_du_cours": "Ensembles et intervalles",
+    "objectif_global": "Ensembles et intervalles",
+    "mini_lecons_imposees": [
+      "Opérations.",
+      "Notations.",
+      "Résoudre conditions."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Outils, automatismes, logique et algorithmique",
+      "lessons": [
+        {
+          "title": "Opérations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Union et intersection"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur les ensembles. Aujourd'hui nous allons découvrir deux opérations fondamentales : l'union et l'intersection. Imagine que tu as deux paniers de fruits. Le premier panier $A$ contient des pommes, des poires et des bananes. Le second panier $B$ contient des bananes, des oranges et des raisins. L'union de $A$ et $B$, notée $A \\cup B$, rassemble tous les fruits qui se trouvent dans au moins l'un des deux paniers. L'intersection, notée $A \\cap B$, ne garde que les fruits communs aux deux paniers, ici seulement les bananes. Ces deux opérations sont la base de tout le reste du cours, alors prenons le temps de bien les visualiser."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Union et intersection de deux ensembles A et B",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    "pomme",
+                    "poire",
+                    "banane"
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    "banane",
+                    "orange",
+                    "raisin"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les éléments de chaque ensemble",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris clairement les éléments de $A$ et de $B$. Par exemple $A=\\{1,2,3\\}$ et $B=\\{3,4,5\\}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'union",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemble tous les éléments distincts présents dans $A$ ou dans $B$. Ici $A \\cup B = \\{1,2,3,4,5\\}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde uniquement les éléments qui appartiennent à la fois à $A$ et à $B$. Ici $A \\cap B = \\{3\\}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Différence et complémentaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la différence de deux ensembles. La différence $A \\setminus B$ (parfois notée $A - B$) contient les éléments qui sont dans $A$ mais pas dans $B$. Reprenons nos paniers : si $A$ a pommes, poires, bananes et $B$ a bananes, oranges, raisins, alors $A \\setminus B$ garde pommes et poires seulement. Le complémentaire d'un ensemble $A$ par rapport à un ensemble universel $U$, noté $A^c$ ou $\\overline{A}$, rassemble tous les éléments de $U$ qui ne sont pas dans $A$. Si $U=\\{1,2,3,4,5,6\\}$ et $A=\\{2,4,6\\}$, le complémentaire est $\\{1,3,5\\}$. Ces notions permettent de décrire des parties d'un tout de façon précise."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Différence A \\setminus B et complémentaire de A dans U",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    "2",
+                    "4",
+                    "6"
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
+                },
+                {
+                  "label": "U",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'universel $U$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Définis clairement l'ensemble de référence $U$ qui contient tous les éléments possibles du problème."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la différence $A \\setminus B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Retire de $A$ tous les éléments qui appartiennent aussi à $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le complémentaire $A^c$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Liste tous les éléments de $U$ qui ne figurent pas dans $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales des opérations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les opérations sur les ensembles obéissent à des lois très pratiques qui ressemblent à celles de l'arithmétique. L'union et l'intersection sont commutatives : $A \\cup B = B \\cup A$ et $A \\cap B = B \\cap A$. Elles sont aussi associatives : $(A \\cup B) \\cup C = A \\cup (B \\cup C)$ et de même pour l'intersection. La distributivité est un peu plus subtile : $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$ et $A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)$. Enfin, les lois de De Morgan lient complémentaire, union et intersection : $(A \\cup B)^c = A^c \\cap B^c$ et $(A \\cap B)^c = A^c \\cup B^c$. Connaître ces propriétés permet de simplifier des expressions complexes sans avoir à lister tous les éléments."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $A=\\{1,2,3\\}$ et $B=\\{3,4,5\\}$. Détermine $A \\cup B$ et $A \\cap B$.",
+              "answer": "$A \\cup B = \\{1,2,3,4,5\\}$, $A \\cap B = \\{3\\}$",
+              "hint": "Liste les éléments de chaque ensemble puis applique les définitions d'union et d'intersection.",
+              "explanation": "L'union rassemble tous les éléments distincts : 1,2,3,4,5. L'intersection ne garde que l'élément commun : 3."
+            },
+            {
+              "question": "Soit $U=\\{1,2,3,4,5,6\\}$, $A=\\{2,4,6\\}$ et $B=\\{1,2,3\\}$. Calcule $A \\setminus B$ et le complémentaire $A^c$ dans $U$.",
+              "answer": "$A \\setminus B = \\{4,6\\}$, $A^c = \\{1,3,5\\}$",
+              "hint": "Pour la différence, retire de $A$ les éléments qui sont aussi dans $B$. Pour le complémentaire, liste les éléments de $U$ absents de $A$.",
+              "explanation": "Dans $A$, les éléments 2 est aussi dans $B$, donc on le retire. Il reste 4 et 6. Dans $U$, les éléments manquants de $A$ sont 1,3,5."
+            },
+            {
+              "question": "Vérifie la distributivité $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$ pour $A=\\{1,2\\}$, $B=\\{2,3\\}$, $C=\\{3,4\\}$.",
+              "answer": "Les deux membres donnent $\\{2\\}$.",
+              "hint": "Calcule d'abord $B \\cup C$, puis intersecate avec $A$. Ensuite calcule $A \\cap B$ et $A \\cap C$ séparément et fais leur union.",
+              "explanation": "$B \\cup C = \\{2,3,4\\}$. $A \\cap (B \\cup C) = \\{2\\}$. Par ailleurs $A \\cap B = \\{2\\}$, $A \\cap C = \\emptyset$, leur union est $\\{2\\}$. L'égalité est vérifiée."
+            }
+          ]
+        },
+        {
+          "title": "Notations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation en compréhension et ensembles définis par une propriété"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons apprendre à décrire un ensemble non plus en listant ses éléments, mais en donnant une propriété que tous ses éléments partagent. C'est ce qu'on appelle la notation en compréhension. Par exemple, l'ensemble des nombres réels strictement supérieurs à $2$ et inférieurs ou égaux à $5$ s'écrit $\\{x \\in \\mathbb{R} \\mid 2 < x \\le 5\\}$. Le symbole $\\in$ signifie « appartient à », le trait vertical $\\mid$ se lit « tel que ». Cette écriture est très puissante car elle permet de décrire des ensembles infinis de façon concise. Nous verrons aussi comment passer de cette notation à la notation d'intervalle, plus visuelle."
+            },
+            {
+              "type": "definition",
+              "term": "Notation en compréhension",
+              "definition": "Écriture d'un ensemble sous la forme $\\{x \\in E \\mid P(x)\\}$, où $E$ est un ensemble de référence et $P(x)$ une propriété sur $x$.",
+              "example": "$\\{x \\in \\mathbb{R} \\mid x^2 < 4\\}$ désigne l'ensemble des réels dont le carré est strictement inférieur à 4."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'intervalle (2,5] sur la droite réelle",
+              "min": 0,
+              "max": 6,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2 (ouvert)"
+                },
+                {
+                  "value": 5,
+                  "label": "5 (fermé)"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 2,
+                  "end": 5,
+                  "startOpen": true,
+                  "endOpen": false
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation d'intervalle : ouverts, fermés, semi-ouverts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les intervalles sont des sous-ensembles de $\\mathbb{R}$ délimités par deux bornes. On utilise des parenthèses pour indiquer que la borne n'appartient pas à l'intervalle (borne ouverte) et des crochets pour indiquer qu'elle y appartient (borne fermée). Ainsi $(a,b)$ est l'intervalle ouvert, $[a,b]$ l'intervalle fermé, $(a,b]$ et $[a,b)$ sont des intervalles semi-ouverts. Les bornes peuvent être infinies : $(-\\infty, a)$, $(a, +\\infty)$, $(-\\infty, +\\infty)=\\mathbb{R}$. Il est essentiel de bien distinguer les symboles car ils changent la nature de l'ensemble des solutions d'une inéquation."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Construction de l'intervalle [2,5) avec bornes inclusives/exclusives",
+              "min": -5,
+              "max": 10,
+              "lowerBound": 2,
+              "upperBound": 5,
+              "lowerOpen": false,
+              "upperOpen": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inclusion, sous-ensemble et ensemble vide"
+            },
+            {
+              "type": "paragraph",
+              "content": "On note $A \\subset B$ (ou $A \\subseteq B$) quand tout élément de $A$ appartient aussi à $B$ ; on dit que $A$ est un sous-ensemble de $B$. Si en plus $A \\neq B$, on parle de sous-ensemble strict et on écrit $A \\subsetneq B$. L'ensemble vide, noté $\\emptyset$ ou $\\{\\}$, ne contient aucun élément ; il est sous-ensemble de tout ensemble. L'ensemble universel $U$ (ou $\\mathcal{U}$) contient tous les objets considérés dans le contexte ; tout ensemble du problème est alors un sous-ensemble de $U$. Ces notations permettent de formuler des affirmations logiques précises, par exemple $\\emptyset \\subset A$ est toujours vrai."
+            },
+            {
+              "type": "definition",
+              "term": "Sous-ensemble strict",
+              "definition": "$A \\subsetneq B$ signifie $A \\subseteq B$ et $A \\neq B$.",
+              "example": "$\\{1,2\\} \\subsetneq \\{1,2,3\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\emptyset \\subset A \\quad \\text{pour tout ensemble } A"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passage de la notation en compréhension à l'intervalle et vice-versa"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer une condition comme $2 < x \\le 5$ en intervalle, on repère les bornes : la borne inférieure $2$ est exclue (parenthèse), la borne supérieure $5$ est incluse (crochet). L'intervalle correspondant est $(2,5]$. Réciproquement, l'intervalle $[ -3, 7 )$ se traduit par $\\{x \\in \\mathbb{R} \\mid -3 \\le x < 7\\}$. Entraîne-toi à faire cet aller-retour : c'est une compétence clé pour résoudre des inéquations et exprimer les ensembles de solutions de façon standardisée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en notation en compréhension l'ensemble des réels $x$ tels que $x > -1$ et $x \\le 4$.",
+              "answer": "$\\{x \\in \\mathbb{R} \\mid -1 < x \\le 4\\}$",
+              "hint": "Utilise le symbole $\\in$ pour l'appartenance à $\\mathbb{R}$ et le trait vertical pour « tel que ».",
+              "explanation": "La condition se traduit directement par $-1 < x \\le 4$ après le trait vertical."
+            },
+            {
+              "question": "Représente l'intervalle $(2,5]$ sur une droite graduée et donne son écriture en notation en compréhension.",
+              "answer": "Notation en compréhension : $\\{x \\in \\mathbb{R} \\mid 2 < x \\le 5\\}$. Sur la droite, un cercle vide en 2 et un point plein en 5, trait entre eux.",
+              "hint": "Rappelle-toi : parenthèse = borne exclue (cercle vide), crochet = borne incluse (point plein).",
+              "explanation": "L'intervalle $(2,5]$ exclut 2 et inclut 5, d'où l'écriture $\\{x \\in \\mathbb{R} \\mid 2 < x \\le 5\\}$."
+            },
+            {
+              "question": "Détermine si les affirmations suivantes sont vraies ou fausses : $\\{1,2\\} \\subset \\{1,2,3\\}$, $\\{1,2\\} \\subseteq \\{1,2\\}$, $\\emptyset \\subset \\{a,b\\}$.",
+              "answer": "Toutes vraies.",
+              "hint": "Rappelle la définition de l'inclusion et le fait que l'ensemble vide est sous-ensemble de tout ensemble.",
+              "explanation": "Chaque élément de $\\{1,2\\}$ est dans $\\{1,2,3\\}$, donc inclusion. Un ensemble est toujours sous-ensemble de lui-même (inclusion large). L'ensemble vide n'a pas d'élément qui violerait l'inclusion."
+            },
+            {
+              "question": "Convertis l'intervalle $[ -3, 7 )$ en notation en compréhension.",
+              "answer": "$\\{x \\in \\mathbb{R} \\mid -3 \\le x < 7\\}$",
+              "hint": "La borne gauche -3 est incluse (crochet), la borne droite 7 est exclue (parenthèse).",
+              "explanation": "On traduit directement les symboles d'intervalle en inégalités : $-3 \\le x < 7$."
+            }
+          ]
+        },
+        {
+          "title": "Résoudre conditions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'inéquations du premier degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous abordons maintenant la résolution de conditions, c'est-à-dire la recherche de toutes les valeurs d'une variable qui satisfont une inéquation. Commençons par les inéquations du premier degré, de la forme $ax + b < c$ (ou $\\le$, $>$, $\\ge$). La méthode est très proche de celle des équations : on isole $x$ en effectuant les mêmes opérations des deux côtés, en prenant soin de renverser le signe de l'inégalité si on multiplie ou divise par un nombre négatif. Par exemple, pour $2x - 3 < 5$, on ajoute 3 des deux côtés : $2x < 8$, puis on divise par 2 (positif) : $x < 4$. L'ensemble des solutions est l'intervalle ouvert $(-\\infty, 4)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Simplifier chaque membre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes en $x$ d'un côté et les constantes de l'autre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par le coefficient de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le coefficient est positif, le sens de l'inégalité reste inchangé. S'il est négatif, il faut inverser le signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprimer la solution en intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traduis l'inégalité finale sous forme d'intervalle (ouvert, fermé, semi-ouvert) selon le signe strict ou large."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inéquations du second degré et méthode du tableau de signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les inéquations du type $ax^2 + bx + c > 0$ (ou $\\ge$, $<$, $\\le$) se résolvent à l'aide du trinôme. On commence par trouver les racines de l'équation associée $ax^2+bx+c=0$ (si le discriminant $\\Delta \\ge 0$). Ensuite, on étudie le signe du trinôme sur $\\mathbb{R}$ grâce à un tableau de signes ou en utilisant la forme factorisée $a(x-x_1)(x-x_2)$. Le signe de $a$ détermine la concavité de la parabole. Par exemple, pour $x^2 - 4 \\ge 0$, les racines sont $-2$ et $2$. Comme $a=1>0$, le trinôme est positif en dehors des racines, donc l'ensemble des solutions est $(-\\infty, -2] \\cup [2, +\\infty)$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Ensemble des solutions de $x^2 - 4 \\ge 0$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "-2 (inclus)"
+                },
+                {
+                  "value": 2,
+                  "label": "2 (inclus)"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -5,
+                  "end": -2,
+                  "startOpen": true,
+                  "endOpen": false
+                },
+                {
+                  "start": 2,
+                  "end": 5,
+                  "startOpen": false,
+                  "endOpen": true
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combinaison de conditions : « et » et « ou »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, un problème impose plusieurs conditions simultanées. Le connecteur « et » correspond à l'intersection des ensembles de solutions : il faut satisfaire toutes les conditions à la fois. Le connecteur « ou » correspond à l'union : il suffit de satisfaire au moins une condition. Par exemple, résoudre $\\begin{cases} x > 1 \\\\ x \\le 4 \\end{cases}$ revient à intersector $(1, +\\infty)$ et $(-\\infty, 4]$, ce qui donne $(1, 4]$. Pour $\\begin{cases} x < -2 \\\\ x > 3 \\end{cases}$ (connecteur « ou »), on unit $(-\\infty, -2)$ et $(3, +\\infty)$, ce qui reste deux intervalles disjoints. Savoir passer du langage usuel aux symboles $\\cap$ et $\\cup$ est essentiel pour écrire la solution finale de façon rigoureuse."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Intersection de (1, +∞) et (-∞, 4] donnant (1,4]",
+              "min": -2,
+              "max": 6,
+              "lowerBound": 1,
+              "upperBound": 4,
+              "lowerOpen": true,
+              "upperOpen": false
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écriture finale de l'ensemble des solutions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les intervalles trouvés, il faut les présenter clairement. On utilise la notation d'intervalle standard, en séparant les intervalles disjoints par le symbole d'union $\\cup$. Par exemple, la solution de $(x-2)(x+3) > 0$ est $(-\\infty, -3) \\cup (2, +\\infty)$. Vérifie toujours les bornes : sont-elles incluses ou exclues ? Cela dépend du signe strict ou large de l'inéquation originale. Une bonne habitude est de tester une valeur dans chaque intervalle pour confirmer le signe. Cette leçon te donne tous les outils pour résoudre n'importe quelle condition algébrique simple et exprimer le résultat avec précision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais résoudre une inéquation du premier degré et écrire la solution en intervalle.",
+                "Je sais résoudre une inéquation du second degré à l'aide du tableau de signes.",
+                "Je sais combiner plusieurs conditions avec « et » (intersection) et « ou » (union).",
+                "Je sais exprimer un ensemble de solutions sous forme d'union d'intervalles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'inéquation $3x + 2 \\le 11$ et donne l'ensemble des solutions en notation d'intervalle.",
+              "answer": "$(-\\infty, 3]$",
+              "hint": "Isole $x$ en soustrayant 2 puis en divisant par 3 (positif).",
+              "explanation": "$3x \\le 9 \\Rightarrow x \\le 3$. L'intervalle correspondant est $(-\\infty, 3]$."
+            },
+            {
+              "question": "Résous $x^2 - 5x + 6 < 0$ et exprime l'ensemble des solutions.",
+              "answer": "$(2, 3)$",
+              "hint": "Factorise le trinôme : $(x-2)(x-3)$. Étudie le signe entre les racines 2 et 3.",
+              "explanation": "Le trinôme est négatif strictement entre ses racines 2 et 3, donc l'intervalle ouvert $(2,3)$."
+            },
+            {
+              "question": "Trouve l'ensemble des $x$ vérifiant simultanément $x > -1$ et $x \\le 5$.",
+              "answer": "$(-1, 5]$",
+              "hint": "Intersecte les deux intervalles $(-1, +\\infty)$ et $(-\\infty, 5]$.",
+              "explanation": "L'intersection donne les nombres supérieurs à -1 et inférieurs ou égaux à 5, soit $(-1,5]$."
+            },
+            {
+              "question": "Résous $(x-2)(x+3) > 0$ et écris la solution comme union d'intervalles.",
+              "answer": "$(-\\infty, -3) \\cup (2, +\\infty)$",
+              "hint": "Les racines sont -3 et 2. Le produit est positif en dehors des racines car le coefficient dominant est positif.",
+              "explanation": "Pour $x<-3$, les deux facteurs sont négatifs, produit positif. Pour $-3<x<2$, signes opposés, produit négatif. Pour $x>2$, les deux positifs, produit positif. Les bornes sont exclues car inégalité stricte."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

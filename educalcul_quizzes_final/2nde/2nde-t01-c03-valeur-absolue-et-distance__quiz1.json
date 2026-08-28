@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 498,
+  "_course_code": "2nde-t01-c03-valeur-absolue-et-distance",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Définir",
+  "title": "Définition de la valeur absolue et de la distance",
+  "questions": [
+    {
+      "text": "Quelle est la définition de la valeur absolue d'un nombre réel $x$ ?",
+      "options": [
+        "$|x| = x$ si $x \\ge 0$ et $|x| = -x$ si $x < 0$",
+        "$|x| = x$ pour tout $x$",
+        "$|x| = -x$ pour tout $x$",
+        "$|x| = x^2$"
+      ],
+      "correctAnswer": "$|x| = x$ si $x \\ge 0$ et $|x| = -x$ si $x < 0$",
+      "explanation": "La valeur absolue d'un réel $x$ est définie par morceaux : elle vaut $x$ lorsque $x$ est positif ou nul, et son opposé $-x$ lorsque $x$ est négatif. Les autres options ne respectent pas cette définition : la deuxième ignore le cas négatif, la troisième inverse le signe pour tout $x$, et la quatrième confond valeur absolue et carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La valeur absolue $|x|$ représente géométriquement :",
+      "options": [
+        "La distance entre $x$ et $0$ sur la droite réelle",
+        "La distance entre $x$ et $1$",
+        "Le carré de $x$",
+        "L'opposé de $x$"
+      ],
+      "correctAnswer": "La distance entre $x$ et $0$ sur la droite réelle",
+      "explanation": "Par définition, $|x|$ est la distance du point $x$ à l'origine $0$ sur la droite graduée. Les autres propositions correspondent à des interprétations erronées : la distance à $1$, le carré ou l'opposé ne donnent pas la valeur absolue en général.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La distance entre deux nombres réels $a$ et $b$ se note et se calcule :",
+      "options": [
+        "$d(a,b) = |a-b|$",
+        "$d(a,b) = a-b$",
+        "$d(a,b) = |a| - |b|$",
+        "$d(a,b) = a+b$"
+      ],
+      "correctAnswer": "$d(a,b) = |a-b|$",
+      "explanation": "La distance entre $a$ et $b$ est la valeur absolue de leur différence, $|a-b|$, ce qui garantit un résultat non négatif et symétrique. Les autres formules donnent soit un nombre pouvant être négatif ($a-b$), soit une expression non symétrique ($|a|-|b|$), soit une somme sans lien avec la distance.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est une propriété fondamentale de la valeur absolue ?",
+      "options": [
+        "$|x| \\ge 0$ pour tout $x \\in \\mathbb{R}$",
+        "$|x| \\le 0$ pour tout $x$",
+        "$|x| = -x$ pour tout $x$",
+        "$|x| = x$ pour tout $x$"
+      ],
+      "correctAnswer": "$|x| \\ge 0$ pour tout $x \\in \\mathbb{R}$",
+      "explanation": "La valeur absolue est toujours positive ou nulle, c'est sa propriété de base. Les trois autres affirmations sont fausses : $|x|$ n'est jamais strictement négatif, elle n'est pas égale à $-x$ pour les $x$ positifs, ni à $x$ pour les $x$ négatifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $a = -4$ et $b = 7$, quelle est la distance entre $a$ et $b$ ?",
+      "options": [
+        "$11$",
+        "$3$",
+        "$-11$",
+        "$0$"
+      ],
+      "correctAnswer": "$11$",
+      "explanation": "La distance est $|a-b| = |-4-7| = |-11| = 11$. Les autres valeurs correspondent à des erreurs fréquentes : $3$ serait $|a|-|b|$ ou $b-a$ sans valeur absolue, $-11$ oublie la valeur absolue, et $0$ serait le cas $a=b$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

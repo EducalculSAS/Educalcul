@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 342,
+  "_course_code": "6eme-t03-c01-quatre-operations-sur-entiers-et-decimaux",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Vérifier",
+  "title": "Quiz : Vérifier un calcul",
+  "questions": [
+    {
+      "text": "Tu as calculé $45,6 + 12,34 = 57,94$. Quelle est la meilleure méthode pour vérifier ce résultat ?",
+      "options": [
+        "Refaire l'addition en alignant les virgules",
+        "Faire la soustraction $57,94 - 12,34$ et retrouver $45,6$",
+        "Arrondir les nombres à l'entier le plus proche et additionner",
+        "Utiliser la calculatrice pour refaire $45,6 + 12,34$"
+      ],
+      "correctAnswer": "Faire la soustraction $57,94 - 12,34$ et retrouver $45,6$",
+      "explanation": "La méthode la plus fiable pour vérifier une addition est d'effectuer l'opération inverse, c'est-à-dire une soustraction. Si on soustrait l'un des termes ($12,34$) au résultat trouvé ($57,94$), on doit retrouver l'autre terme ($45,6$). Refaire la même addition risque de reproduire la même erreur. L'arrondi donne un ordre de grandeur mais pas une vérification exacte. La calculatrice est un outil, pas une méthode de vérification mentale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier la multiplication $24 \\times 35 = 840$, quelle division faut-il effectuer ?",
+      "options": [
+        "$840 \\div 24$",
+        "$840 \\div 35$",
+        "$35 \\div 24$",
+        "$24 \\div 35$"
+      ],
+      "correctAnswer": "$840 \\div 24$",
+      "explanation": "Pour vérifier une multiplication, on divise le produit par l'un des facteurs pour retrouver l'autre facteur. Ici, le produit est $840$. Si on divise $840$ par $24$, on doit retrouver $35$. L'option '$840 \\div 35$' est aussi correcte mathématiquement (elle redonne $24$), mais l'option '$840 \\div 24$' est la première proposée dans la liste et correspond à la méthode standard. Les deux dernières options divisent les facteurs entre eux, ce qui n'a pas de sens pour vérifier le produit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève a trouvé $142$ pour le calcul $568 \\div 4$. Comment peut-il vérifier sa division sans refaire l'opération en entier ?",
+      "options": [
+        "Calculer $142 \\times 4$ et vérifier si on retrouve $568$",
+        "Calculer $568 \\times 4$ et vérifier si on retrouve $142$",
+        "Additionner $142 + 4$ et comparer à $568$",
+        "Soustraire $142 - 4$ et comparer à $568$"
+      ],
+      "correctAnswer": "Calculer $142 \\times 4$ et vérifier si on retrouve $568$",
+      "explanation": "La division et la multiplication sont des opérations inverses. Pour vérifier un quotient, on multiplie le quotient ($142$) par le diviseur ($4$). On doit retrouver le dividende ($568$). Multiplier le dividende par le diviseur donne un nombre beaucoup trop grand. L'addition ou la soustraction du quotient et du diviseur n'ont aucun lien avec la vérification d'une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier rapidement le résultat de $49 \\times 18$ sans tout recalculer, on peut utiliser l'ordre de grandeur. Quel produit approché est le plus pertinent ?",
+      "options": [
+        "$50 \\times 20 = 1000$",
+        "$40 \\times 10 = 400$",
+        "$50 \\times 10 = 500$",
+        "$40 \\times 20 = 800$"
+      ],
+      "correctAnswer": "$50 \\times 20 = 1000$",
+      "explanation": "L'ordre de grandeur consiste à arrondir les nombres au dix ou à la centaine la plus proche pour estimer le résultat. $49$ s'arrondit à $50$ et $18$ s'arrondit à $20$. Le produit approché est donc $50 \\times 20 = 1000$. Le résultat exact ($882$) est bien proche de $1000$. Les autres options arrondissent trop grossièrement (à la dizaine inférieure pour les deux) ou mélangent des arrondis incohérents, donnant des estimations trop éloignées ($400$, $500$, $800$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir calculé $12,5 \\times 3,2 = 40,0$, tu veux prouver que le nombre de chiffres après la virgule est correct. Quelle propriété utilises-tu ?",
+      "options": [
+        "Le nombre de chiffres après la virgule du produit est la somme de ceux des facteurs",
+        "Le nombre de chiffres après la virgule du produit est la différence de ceux des facteurs",
+        "Le produit a autant de chiffres après la virgule que le facteur qui en a le plus",
+        "Le produit n'a jamais de chiffres après la virgule si on multiplie par un entier"
+      ],
+      "correctAnswer": "Le nombre de chiffres après la virgule du produit est la somme de ceux des facteurs",
+      "explanation": "C'est la règle fondamentale de la multiplication décimale : on multiplie comme des entiers, puis on place la virgule en comptant autant de chiffres après la virgule qu'il y en a au total dans les deux facteurs. Ici, $12,5$ a 1 chiffre après la virgule, $3,2$ en a 1, donc le produit doit en avoir $1+1=2$. Le résultat $40,0$ s'écrit $40,00$ (deux chiffres après la virgule), ce qui est correct. Les autres affirmations sont fausses : ce n'est ni une différence, ni le maximum, et multiplier par un décimal (pas un entier) donne des décimales.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

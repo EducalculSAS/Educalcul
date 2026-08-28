@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 509,
+  "_course_code": "2nde-t02-c07-bilan-calcul-algebrique-seconde",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Calcul algébrique - Révision",
+  "blocks": [
+    {
+      "title": "Identités remarquables et développement",
+      "content": "Pour factoriser une expression de la forme $a^2 - b^2$, on utilise l'identité remarquable : $a^2 - b^2 = {{1}}$. Le développement de $(x+3)^2$ s'écrit : $x^2 + {{2}}x + 9$.",
+      "correctAnswer": "",
+      "blanks": [
+        "(a-b)(a+b)|(a+b)(a-b)",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'identité remarquable pour la différence de deux carrés est $a^2 - b^2 = (a-b)(a+b)$. Pour le développement du carré d'une somme, $(x+3)^2 = x^2 + 2 \\times 3 \\times x + 3^2 = x^2 + 6x + 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification de fractions algébriques",
+      "content": "Pour simplifier la fraction $\\frac{x^2-9}{x-3}$, on commence par factoriser le numérateur : $x^2-9 = {{1}}$. On peut alors simplifier par $x-3$ (pour $x \\neq 3$) et le résultat est : $x {{2}} 3$.",
+      "correctAnswer": "",
+      "blanks": [
+        "(x-3)(x+3)|(x+3)(x-3)",
+        "+"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le numérateur $x^2-9$ est une différence de deux carrés : $x^2-9 = (x-3)(x+3)$. La fraction devient $\\frac{(x-3)(x+3)}{x-3}$. Pour $x \\neq 3$, on simplifie par $x-3$ et on obtient $x+3$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'équation par factorisation",
+      "content": "La résolution de l'équation $(2x-1)(x+4)=0$ utilise la propriété : un produit est nul si et seulement si l'un au moins des facteurs est {{1}}. Les solutions sont $x = {{2}}$ et $x = {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "nul|nulle",
+        "1/2|0,5",
+        "-4"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété du produit nul stipule que si $a \\times b = 0$, alors $a=0$ ou $b=0$. Ici, $2x-1=0 \\Rightarrow x = 1/2$ et $x+4=0 \\Rightarrow x = -4$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

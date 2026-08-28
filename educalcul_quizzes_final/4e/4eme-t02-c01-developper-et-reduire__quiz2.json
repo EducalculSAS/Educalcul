@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 425,
+  "_course_code": "4eme-t02-c01-developper-et-reduire",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Double distributivité si prévue",
+  "title": "Quiz : Double distributivité",
+  "questions": [
+    {
+      "text": "Développer et réduire l'expression $(x+3)(x+5)$.",
+      "options": [
+        "$x^2 + 15$",
+        "$x^2 + 8x + 15$",
+        "$x^2 + 8x + 8$",
+        "$2x + 8$"
+      ],
+      "correctAnswer": "$x^2 + 8x + 15$",
+      "explanation": "On applique la double distributivité : $(x+3)(x+5) = x \\times x + x \\times 5 + 3 \\times x + 3 \\times 5 = x^2 + 5x + 3x + 15$. On réduit les termes en $x$ : $5x + 3x = 8x$. Le résultat est $x^2 + 8x + 15$. L'option A oublie les termes du milieu, l'option C se trompe sur le produit $3 \\times 5$, l'option D additionne au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire $(2x+1)(3x+4)$.",
+      "options": [
+        "$6x^2 + 11x + 4$",
+        "$6x^2 + 4$",
+        "$5x^2 + 11x + 4$",
+        "$6x^2 + 12x + 4$"
+      ],
+      "correctAnswer": "$6x^2 + 11x + 4$",
+      "explanation": "On multiplie chaque terme : $2x \\times 3x = 6x^2$, $2x \\times 4 = 8x$, $1 \\times 3x = 3x$, $1 \\times 4 = 4$. On obtient $6x^2 + 8x + 3x + 4$. En réduisant les termes en $x$ ($8x+3x=11x$), on trouve $6x^2 + 11x + 4$. L'option B oublie les produits croisés, l'option C additionne les coefficients de $x^2$ ($2+3$) au lieu de les multiplier, l'option D se trompe dans la somme $8x+3x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire $(x-4)(x+2)$.",
+      "options": [
+        "$x^2 - 2x - 8$",
+        "$x^2 + 2x - 8$",
+        "$x^2 - 6x - 8$",
+        "$x^2 - 8$"
+      ],
+      "correctAnswer": "$x^2 - 2x - 8$",
+      "explanation": "On utilise la double distributivité en respectant les signes : $x \\times x = x^2$, $x \\times 2 = 2x$, $-4 \\times x = -4x$, $-4 \\times 2 = -8$. Cela donne $x^2 + 2x - 4x - 8$. En réduisant : $2x - 4x = -2x$. Le résultat est $x^2 - 2x - 8$. L'option B oublie le signe moins devant $4x$, l'option C additionne $2x$ et $-4x$ comme s'ils avaient le même signe, l'option D omet les termes du milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire $(3x-2)(2x-5)$.",
+      "options": [
+        "$6x^2 - 19x + 10$",
+        "$6x^2 - 19x - 10$",
+        "$6x^2 - 11x + 10$",
+        "$6x^2 + 10$"
+      ],
+      "correctAnswer": "$6x^2 - 19x + 10$",
+      "explanation": "On calcule les quatre produits : $3x \\times 2x = 6x^2$, $3x \\times (-5) = -15x$, $-2 \\times 2x = -4x$, $-2 \\times (-5) = +10$. La somme donne $6x^2 -15x -4x + 10$. La réduction des termes en $x$ donne $-19x$. Le produit de deux nombres négatifs est positif pour le terme constant. L'option B se trompe sur le signe du terme constant, l'option C calcule $-15x + 4x$ au lieu de $-15x -4x$, l'option D oublie les termes du milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes est égale à $(4x-3)(x+2)$ ?",
+      "options": [
+        "$4x^2 + 5x - 6$",
+        "$4x^2 + 11x - 6$",
+        "$4x^2 - 5x - 6$",
+        "$4x^2 - 6$"
+      ],
+      "correctAnswer": "$4x^2 + 5x - 6$",
+      "explanation": "On développe : $4x \\times x = 4x^2$, $4x \\times 2 = 8x$, $-3 \\times x = -3x$, $-3 \\times 2 = -6$. On obtient $4x^2 + 8x - 3x - 6$. La réduction donne $4x^2 + 5x - 6$. L'option B fait $8x + 3x$ au lieu de $8x - 3x$, l'option C fait $-8x + 3x$, l'option D omet les termes du milieu.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

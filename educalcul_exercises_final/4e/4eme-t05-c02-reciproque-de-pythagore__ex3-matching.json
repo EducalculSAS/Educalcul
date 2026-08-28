@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Rédiger",
+  "title": "Réciproque de Pythagore : rédiger une démonstration",
+  "blocks": [
+    {
+      "title": "Structure du théorème",
+      "content": "Relie chaque énoncé de l'hypothèse à la conclusion correcte du réciproque du théorème de Pythagore.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Dans un triangle, si le carré du plus grand côté est égal à la somme des carrés des deux autres côtés",
+          "right": "alors ce triangle est rectangle et l'angle droit est opposé au plus grand côté."
+        },
+        {
+          "left": "On vérifie que $AB^2 + AC^2 = BC^2$ dans le triangle $ABC$",
+          "right": "Donc le triangle $ABC$ est rectangle en $A$."
+        },
+        {
+          "left": "Si $a^2 = b^2 + c^2$ dans le triangle $ABC$ avec $BC = a$, $AC = b$, $AB = c$",
+          "right": "L'angle $\\widehat{A}$ est un angle droit."
+        }
+      ],
+      "items": [],
+      "explanation": "Le réciproque de Pythagore s'énonce : 'Si dans un triangle le carré de la longueur du plus grand côté est égal à la somme des carrés des longueurs des deux autres côtés, alors ce triangle est rectangle et l'angle droit est opposé au plus grand côté.' Il faut identifier le plus grand côté (l'hypoténuse potentielle) pour localiser l'angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique",
+      "content": "Relie chaque triplet de longueurs au bon résultat après application du réciproque de Pythagore.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Triangle de côtés $3$, $4$, $5$. On a $5^2 = 25$ et $3^2 + 4^2 = 25$.",
+          "right": "Triangle rectangle, angle droit opposé au côté $5$."
+        },
+        {
+          "left": "Triangle de côtés $6$, $8$, $10$. On a $10^2 = 100$ et $6^2 + 8^2 = 100$.",
+          "right": "Triangle rectangle, angle droit opposé au côté $10$."
+        },
+        {
+          "left": "Triangle de côtés $5$, $7$, $9$. On a $9^2 = 81$ et $5^2 + 7^2 = 74$.",
+          "right": "Ce triangle n'est pas rectangle car $81 \\neq 74$."
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut toujours comparer le carré du plus grand côté à la somme des carrés des deux autres. Si égalité : triangle rectangle (angle droit opposé au plus grand côté). Si différence : pas rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rédaction complète",
+      "content": "Relie les calculs effectués à la phrase de conclusion correctement rédigée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Soit un triangle $EFG$ tel que $EF = 8$, $FG = 10$, $EG = 6$. On calcule $10^2 = 100$ et $8^2 + 6^2 = 100$.",
+          "right": "Donc $EFG$ est rectangle en $E$ car $FG$ est le plus grand côté."
+        },
+        {
+          "left": "Dans le triangle $HIJ$, $HI = 12$, $IJ = 13$, $HJ = 5$. On a $13^2 = 169$ et $12^2 + 5^2 = 169$.",
+          "right": "Le triangle est rectangle en $H$ (angle opposé à $IJ$)."
+        },
+        {
+          "left": "Triangle $KLM$ avec $KL = 7$, $LM = 9$, $KM = 11$. $11^2 = 121$ et $7^2 + 9^2 = 130$.",
+          "right": "$121 \\neq 130$, donc $KLM$ n'est pas rectangle."
+        }
+      ],
+      "items": [],
+      "explanation": "Une rédaction correcte cite les calculs, compare les valeurs, cite le théorème (réciproque de Pythagore) et conclut en nommant le triangle et l'angle droit (ou le fait qu'il ne soit pas rectangle). Il faut bien identifier le sommet de l'angle droit : celui qui ne fait pas partie du plus grand côté.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

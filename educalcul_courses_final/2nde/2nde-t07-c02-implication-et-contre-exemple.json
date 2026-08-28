@@ -1,0 +1,469 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.139835+00:00",
+  "id": 535,
+  "code": "2nde-t07-c02",
+  "title": "Implication et contre-exemple",
+  "description": "Cours structuré Educalcul : Implication et contre-exemple.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Implication et contre-exemple",
+    "objectif_global": "Implication et contre-exemple",
+    "mini_lecons_imposees": [
+      "Si... alors.",
+      "Réciproque intuitive.",
+      "Contre-exemple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Si... alors.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Implication : « Si … alors … »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir ce que signifie exactement l’expression « si … alors … » en mathématiques. Tu as déjà entendu cette tournure dans la vie de tous les jours : « Si il pleut, alors je prends mon parapluie ». En logique, on donne un sens très précis à cette phrase : on parle d’implication. L’idée centrale, c’est que l’affirmation « si P alors Q » ne dit rien sur ce qui se passe quand P est faux ; elle ne nous engage que dans le cas où P est vrai. Nous allons voir comment on peut décider si une telle phrase est vraie ou fausse, et pourquoi cette règle peut sembler surprenante au premier abord. Prends le temps de lire chaque exemple, imagine la situation concrète, et tu verras que la logique devient un outil clair pour raisonner sans ambiguity."
+            },
+            {
+              "type": "definition",
+              "term": "implication",
+              "definition": "Une implication est une proposition de la forme $P \\Rightarrow Q$ qui se lit « si P alors Q ». Elle est fausse uniquement lorsque P est vrai et Q est faux ; dans tous les autres cas elle est vraie.",
+              "example": "« Si $2+2=4$ alors $5$ est pair » s’écrit $P \\Rightarrow Q$ avec $P$ vrai et $Q$ faux, donc l’implication est fausse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser le fonctionnement, imagine un interrupteur : P est l’interrupteur, Q est la lampe. Si l’interrupteur est enclenché (P vrai) et que la lampe ne s’allume pas (Q faux), l’affirmation « si j’enclenche alors la lampe s’allume » est contredite. Si l’interrupteur reste éteint (P faux), la phrase ne promet rien, donc on la considère vraie par convention. C’est cette convention qui permet de construire des raisonnements solides sans avoir à vérifier les cas où l’hypothèse ne se réalise pas."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "P",
+                "Q",
+                "$P \\Rightarrow Q$"
+              ],
+              "rows": [
+                [
+                  "Vrai",
+                  "Vrai",
+                  "Vrai"
+                ],
+                [
+                  "Vrai",
+                  "Faux",
+                  "Faux"
+                ],
+                [
+                  "Faux",
+                  "Vrai",
+                  "Vrai"
+                ],
+                [
+                  "Faux",
+                  "Faux",
+                  "Vrai"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l’antécédent et le conséquent",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la partie qui suit « si » (l’antécédent P) et celle qui suit « alors » (le conséquent Q)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Consulter la table de vérité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la ligne qui correspond aux valeurs de vérité de P et Q que tu as trouvées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la ligne donne « Vrai », l’implication est vraie ; si elle donne « Faux », elle est fausse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Valeurs de vérité de l’implication : 0 = faux, 1 = vrai",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Faux"
+                },
+                {
+                  "value": 1,
+                  "label": "Vrai"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire la table, passons à la façon dont on rencontre l’implication dans des énoncés mathématiques courants. Nous allons examiner comment traduire une phrase du langage courant en symbole $P \\Rightarrow Q$ et comment en vérifier la validité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Table de vérité de l’implication"
+            },
+            {
+              "type": "paragraph",
+              "content": "La table que nous venons de voir résume tous les cas possibles. Observe la ligne où P est faux : quelle que soit la valeur de Q, l’implication est vraie. C’est souvent le point qui déroute au début, mais c’est exactement ce qui permet d’écrire des théorèmes du type « Si une fonction est dérivable, alors elle est continue » sans avoir à se soucier des fonctions non dérivables. Essaie de créer toi‑même deux exemples : un où P et Q sont tous les deux vrais, un où P est faux et Q vrai, et vérifie que la table donne bien « Vrai » à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, voyons comment on exprime une implication dans le langage de tous les jours sans perdre la rigueur logique. Par exemple, « Tout nombre pair est divisible par 2 » se traduit par « Si un nombre est pair, alors il est divisible par 2 ». La forme « tout … est … » cache toujours une implication universelle. Essaie de reformuler « Les carrés ont quatre côtés égaux » en « Si une figure est un carré, alors elle a quatre côtés égaux ». Cette gymnastique te servira plus tard pour écrire des démonstrations claires."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Quand tu vois « tout », « chaque », «任何 » (dans un énoncé mathématique), pense immédiatement à une implication $P \\Rightarrow Q$ où P décrit l’objet et Q la propriété."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit P : « 2 + 2 = 4 » et Q : « 5 est un nombre pair ». Détermine la valeur de vérité de l’implication $P \\Rightarrow Q$.",
+              "answer": "Faux",
+              "hint": "Rappelle‑toi la table de vérité : l’implication est fausse seulement quand P est vrai et Q est faux.",
+              "explanation": "P est vrai, Q est faux, donc l’implication est fausse."
+            },
+            {
+              "question": "Si P est faux et Q est vrai, quelle est la valeur de vérité de $P \\Rightarrow Q$ ?",
+              "answer": "Vrai",
+              "hint": "Consulte la ligne où P = faux dans la table.",
+              "explanation": "Quand l’antécédent est faux, l’implication est toujours vraie."
+            },
+            {
+              "question": "Écris en langage courant l’implication : « Si $x > 3$ alors $x^2 > 9$ ».",
+              "answer": "Tout nombre strictement supérieur à 3 a un carré strictement supérieur à 9.",
+              "hint": "Traduis les symboles en phrase.",
+              "explanation": "On remplace les symboles par des mots."
+            }
+          ]
+        },
+        {
+          "title": "Réciproque intuitive.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La réciproque d’une implication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons explorer ce qui se passe quand on inverse les rôles de l’antécédent et du conséquent. La phrase « Si Q alors P » s’appelle la réciproque de « Si P alors Q ». Attention : la vérité de l’implication d’origine ne garantit pas celle de sa réciproque. Nous allons voir pourquoi, comment la tester, et nous entraînerons à la repérer dans des énoncés géométriques et arithmétiques."
+            },
+            {
+              "type": "definition",
+              "term": "réciproque",
+              "definition": "La réciproque d’une implication $P \\Rightarrow Q$ est l’implication $Q \\Rightarrow P$. Elle s’obtient en échangeant l’antécédent et le conséquent.",
+              "example": "Réciproque de « Si un triangle est équilatéral, alors il est isocèle » : « Si un triangle est isocèle, alors il est équilatéral »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour sentir la différence, imagine un club de lecture : « Si tu as lu le livre, alors tu peux participer à la discussion » (implication). Sa réciproque serait « Si tu peux participer à la discussion, alors tu as lu le livre ». La première est une règle du club, la seconde n’est pas nécessairement vraie car on pourrait t’inviter sans que tu aies lu le livre. Cette petite histoire montre que l’inversion change le sens et la validité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l’implication de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie clairement P et Q dans l’énoncé original."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Échanger P et Q",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la nouvelle implication $Q \\Rightarrow P$ en mots ou en symboles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester la vérité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un exemple où Q est vrai mais P est faux. Si tu en trouves un, la réciproque est fausse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "P \\Rightarrow Q \\quad\\text{a pour réciproque}\\quad Q \\Rightarrow P"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à des exemples concrets où la réciproque est vraie, et d’autres où elle ne l’est pas. Cela t’aidera à développer l’intuition nécessaire pour ne pas confondre une propriété avec sa réciproque."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand la réciproque est‑elle vraie ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l’implication « Si $x = 2$ alors $x^2 = 4$ ». Sa réciproque est « Si $x^2 = 4$ alors $x = 2$ ». Est‑elle vraie ? Non, car $x = -2$ satisfait $x^2 = 4$ sans satisfaire $x = 2 $. Ici un seul contre‑exemple suffit pour invalider la réciproque. En revanche, pour « Si un triangle est équilatéral, alors il a trois angles de $60^{\\circ}$ », la réciproque « Si un triangle a trois angles de $60^{\\circ}$, alors il est équilatéral » est vraie : en géométrie euclidienne, l’égalité des angles force l’égalité des côtés. Essaie de trouver toi‑même une implication dont la réciproque est vraie et une dont elle est fausse."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne jamais affirmer « la réciproque est vraie » sans la vérifier. Beaucoup d’élèves supposent à tort que « si P alors Q » et « si Q alors P » sont équivalents."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, entraînons‑nous à écrire la réciproque d’une implication donnée sous forme symbolique et à en discuter la validité. Cet exercice renforce la rigueur : tu devras non seulement inverser les symboles, mais aussi justifier ta réponse par un exemple ou un contre‑exemple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exercice de synthèse sur la réciproque"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère l’implication « Si un nombre est multiple de 6, alors il est multiple de 3 ». Écris sa réciproque, décide si elle est vraie, et explique ton raisonnement en une phrase. Puis fais de même pour « Si une fonction est continue en un point, alors elle admet une limite en ce point »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la réciproque de l’implication : « Si un triangle est équilatéral, alors il est isocèle ».",
+              "answer": "Si un triangle est isocèle, alors il est équilatéral.",
+              "hint": "Échange l’antécédent et le conséquent.",
+              "explanation": "La réciproque inverse les rôles de l’hypothèse et de la conclusion."
+            },
+            {
+              "question": "Cette réciproque est‑elle vraie ? Justifie.",
+              "answer": "Non, un triangle isocèle n’est pas nécessairement équilatéral.",
+              "hint": "Cherche un contre‑exemple.",
+              "explanation": "Un triangle isocèle avec deux côtés égaux mais le troisième différent montre que la réciproque est fausse."
+            },
+            {
+              "question": "Pour l’implication « Si $x = 2$ alors $x^2 = 4$ », écris sa réciproque et dis si elle est vraie.",
+              "answer": "Réciproque : « Si $x^2 = 4$ alors $x = 2$ ». Elle est fausse car $x = -2$ aussi.",
+              "hint": "Résous l’équation $x^2 = 4$.",
+              "explanation": "L’équation admet deux solutions, donc la réciproque ne tient pas."
+            }
+          ]
+        },
+        {
+          "title": "Contre-exemple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le contre‑exemple : outil de réfutation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette dernière leçon nous découvrons la puissance du contre‑exemple. Une affirmation du type « Pour tout $x$, si $P(x)$ alors $Q(x)$ » est fausse dès qu’on trouve un seul $x$ qui rend $P(x)$ vrai et $Q(x)$ faux. Ce unique cas suffit à casser l’universalité de la proposition. Nous allons apprendre à construire un contre‑exemple méthodiquement, à le présenter clairement, et à comprendre pourquoi c’est la technique de base pour montrer qu’une implication universelle ne tient pas."
+            },
+            {
+              "type": "definition",
+              "term": "contre‑exemple",
+              "definition": "Un contre‑exemple est un cas particulier qui satisfait l’hypothèse d’une implication universelle mais ne satisfait pas sa conclusion. Son existence prouve que l’implication est fausse.",
+              "example": "Pour « Tout nombre pair est multiple de 4 », le nombre $2$ est un contre‑exemple : il est pair (hypothèse vraie) mais n’est pas multiple de 4 (conclusion fausse)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu affirmes « Tous les oiseaux volent ». Pour réfuter cette phrase, il te suffit de montrer un manchot : c’est un oiseau (hypothèse vraie) qui ne vole pas (conclusion fausse). Tu n’as pas besoin de lister tous les oiseaux non volants, un seul suffit. C’est exactement le même principe en mathématiques : la logique universelle est très fragile face à un unique cas contraire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme universelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la structure « Pour tout $x$, si $P(x)$ alors $Q(x)$ »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chercher un $x$ tel que $P(x)$ soit vrai",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur concrète qui remplit l’hypothèse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier que $Q(x)$ est faux pour ce $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c’est le cas, tu as ton contre‑exemple ; sinon, essaie une autre valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Présenter le contre‑exemple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris clairement : « Pour $x = …$, $P(x)$ est vrai mais $Q(x)$ est faux, donc l’implication est fausse. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall x, \\, P(x) \\Rightarrow Q(x) \\text{ est faux } \\iff \\exists x_0, \\, P(x_0) \\land \\lnot Q(x_0)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode est claire, appliquons‑la à des affirmations géométriques et arithmétiques variées. Tu verras que la recherche d’un contre‑exemple ressemble souvent à une petite enquête : on teste des candidats jusqu’à tomber sur celui qui brise la règle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contre‑exemple en géométrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère l’implication « Si un quadrilatère a ses diagonales perpendiculaires, alors c’est un losange ». Est‑elle toujours vraie ? Non : un cerf‑volant (kite) a des diagonales perpendiculaires sans être un losange. Dessine mentalement un cerf‑volant symétrique dont les diagonales se coupent à angle droit mais dont les côtés ne sont pas tous égaux. Ce dessin mental est ton contre‑exemple. Note que la réciproque « Si c’est un losange, alors ses diagonales sont perpendiculaires » est vraie pour un losange, mais pas pour tous les quadrilatères."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Rappel",
+              "paragraphs": [
+                "Un contre‑exemple ne prouve pas que la conclusion est toujours fausse, il prouve seulement que l’implication « pour tout » ne tient pas."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, rappelons pourquoi un unique contre‑exemple suffit à invalider une affirmation universelle. En logique, « pour tout $x$, $P(x) \\Rightarrow Q(x)$ » est une conjonction infinie de toutes les implications particulières. Si l’une d’entre elles est fausse, la conjonction entière devient fausse. C’est la raison pour laquelle les mathématiciens chassent le contre‑exemple comme une aiguille dans une botte de foin : une fois trouvée, l’affaire est close."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse : trouver et écrire un contre‑exemple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraîne‑toi maintenant à produire toi‑même un contre‑exemple pour l’affirmation « Si un nombre est impair, alors il est premier ». Puis explique en une phrase pourquoi cet unique exemple suffit à montrer que l’affirmation est fausse. Enfin, relie cette idée à la notion de réciproque vue dans la leçon précédente : un contre‑exemple à la réciproque montre que l’implication originale n’est pas une équivalence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une implication $P \\Rightarrow Q$ et en donner la table de vérité.",
+                "Je sais écrire la réciproque $Q \\Rightarrow P$ et tester sa validité.",
+                "Je comprends qu’un seul contre‑exemple suffit pour réfuter une implication universelle.",
+                "Je sais construire un contre‑exemple en suivant les quatre étapes de la méthode.",
+                "Je peux expliquer la différence entre implication, réciproque et contre‑exemple avec mes propres mots."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Montre par un contre‑exemple que l’implication « Si un nombre est pair, alors il est multiple de 4 » est fausse.",
+              "answer": "Le nombre 2 est pair mais n’est pas multiple de 4.",
+              "hint": "Cherche un nombre pair qui n’est pas divisible par 4.",
+              "explanation": "2 satisfait l’antécédent mais pas le conséquent, donc l’implication est fausse."
+            },
+            {
+              "question": "Trouve un contre‑exemple à la réciproque de « Si un carré a un côté de 3 cm, alors son périmètre est 12 cm ».",
+              "answer": "Un rectangle de périmètre 12 cm mais qui n’est pas un carré de côté 3 cm (par exemple 2 cm × 4 cm).",
+              "hint": "La réciproque échange les conditions : « Si le périmètre est 12 cm, alors c’est un carré de côté 3 cm ».",
+              "explanation": "Le rectangle 2×4 a périmètre 12 cm sans être un carré de côté 3 cm, donc la réciproque est fausse."
+            },
+            {
+              "question": "Explique pourquoi un seul contre‑exemple suffit pour réfuter une implication universelle.",
+              "answer": "Parce qu’une affirmation « pour tout » est fausse dès qu’un cas la contredit.",
+              "hint": "Rappelle la définition de l’implication universelle comme conjonction de tous les cas particuliers.",
+              "explanation": "L’existence d’un $x_0$ tel que $P(x_0)$ vrai et $Q(x_0)$ faux rend la conjonction globale fausse."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

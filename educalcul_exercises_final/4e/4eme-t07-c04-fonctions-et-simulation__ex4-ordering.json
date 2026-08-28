@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Fonctions et simulation",
+  "title": "Fonctions et simulation : exercices de mise en ordre",
+  "blocks": [
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "Remets les instructions dans l'ordre pour définir une fonction qui calcule le périmètre d'un rectangle.",
+      "items": [
+        "Définir la fonction périmètre(longueur, largeur).",
+        "Calculer $2 \\times (longueur + largeur)$ et stocker le résultat dans une variable.",
+        "Retourner la variable contenant le périmètre.",
+        "Appeler la fonction avec des valeurs données pour longueur et largeur."
+      ],
+      "explanation": "La fonction doit d'abord être définie avec ses paramètres, puis effectuer le calcul du périmètre $2 \\times (longueur + largeur)$, stocker ce résultat, le retourner, et enfin on peut l'appeler avec des valeurs concrètes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation de deux dés",
+      "content": "Remets les lignes de code dans l'ordre pour simuler le lancer de deux dés à six faces et afficher leur somme.",
+      "items": [
+        "Importer le module random avec `import random`.",
+        "Générer le premier dé : `de1 = random.randint(1, 6)`.",
+        "Générer le second dé : `de2 = random.randint(1, 6)`.",
+        "Calculer la somme : `somme = de1 + de2`.",
+        "Afficher la somme avec `print(somme)`."
+      ],
+      "explanation": "On importe d'abord le module random, puis on génère deux nombres aléatoires entre 1 et 6, on les additionne, et on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de trois nombres",
+      "content": "Remets les étapes dans l'ordre pour écrire une fonction qui renvoie le maximum de trois nombres.",
+      "items": [
+        "Définir la fonction max_trois(a, b, c).",
+        "Comparer a et b, stocker le plus grand dans une variable max_ab.",
+        "Comparer max_ab avec c, mettre à jour la variable si c est plus grand.",
+        "Retourner la variable contenant le maximum final."
+      ],
+      "explanation": "La fonction commence par sa définition, puis on détermine le plus grand des deux premiers nombres, on compare ce résultat avec le troisième nombre, et on retourne le maximum trouvé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

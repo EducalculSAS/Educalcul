@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Multiples / diviseurs",
+  "title": "Quiz : Multiples et diviseurs (Seconde)",
+  "questions": [
+    {
+      "text": "Quel est l'ensemble des diviseurs positifs de $36$ ?",
+      "options": [
+        "$1, 2, 3, 4, 6, 9, 12, 18, 36$",
+        "$1, 2, 3, 4, 6, 8, 12, 18, 36$",
+        "$1, 2, 3, 4, 6, 9, 12, 24, 36$",
+        "$1, 2, 3, 4, 5, 6, 9, 12, 18, 36$"
+      ],
+      "correctAnswer": "$1, 2, 3, 4, 6, 9, 12, 18, 36$",
+      "explanation": "Les diviseurs de $36$ sont obtenus à partir de sa décomposition en facteurs premiers $36 = 2^2 * 3^2$. En variant les exposants de $0$ à $2$ pour chaque facteur, on trouve $9$ diviseurs : $1, 2, 3, 4, 6, 9, 12, 18, 36$. Les autres options contiennent des nombres qui ne divisent pas $36$ ($8$, $24$, $5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des nombres suivants est un multiple de $12$ et de $15$ ?",
+      "options": [
+        "$60$",
+        "$90$",
+        "$105$",
+        "$150$"
+      ],
+      "correctAnswer": "$60$",
+      "explanation": "Un multiple commun à $12$ et $15$ doit être un multiple de leur PPCM. $12 = 2^2 * 3$, $15 = 3 * 5$, donc PPCM(12,15) = 2^2 * 3 * 5 = 60. Parmi les choix, seul $60$ est multiple de $60$. $90$ n'est pas multiple de $12$, $105$ n'est multiple ni de $12$ ni de $15$, $150$ n'est pas multiple de $12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a=48$ et $b=180$. Quelle est la valeur de PGCD(a,b) * PPCM(a,b) ?",
+      "options": [
+        "$8640$",
+        "$4320$",
+        "$17280$",
+        "$2160$"
+      ],
+      "correctAnswer": "$8640$",
+      "explanation": "Pour tous entiers $a,b$, on a PGCD(a,b) * PPCM(a,b) = a * b. Ici $48 * 180 = 8640$. Les autres valeurs correspondent à des erreurs de calcul ou à la moitié, au double, etc.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $180$ s'écrit $2^2 * 3^2 * 5$. Combien de diviseurs positifs possède-t-il ?",
+      "options": [
+        "$18$",
+        "$12$",
+        "$24$",
+        "$16$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "Si $n = p1^a1 * p2^a2 * ... * pk^ak$, le nombre de diviseurs positifs est $(a1+1)(a2+1)...(ak+1)$. Pour $180 = 2^2 * 3^2 * 5^1$, on obtient $(2+1)(2+1)(1+1) = 3 * 3 * 2 = 18$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En appliquant l'algorithme d'Euclide à $221$ et $153$, quel est le dernier reste non nul ?",
+      "options": [
+        "$17$",
+        "$34$",
+        "$51$",
+        "$68$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "On effectue les divisions successives : $221 = 153 * 1 + 68$, $153 = 68 * 2 + 17$, $68 = 17 * 4 + 0$. Le dernier reste non nul est $17$, qui est le PGCD de $221$ et $153$. Les autres valeurs sont des restes intermédiaires ou des multiples.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

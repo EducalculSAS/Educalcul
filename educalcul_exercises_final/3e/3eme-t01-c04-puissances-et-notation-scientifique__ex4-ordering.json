@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Puissances et notation scientifique",
+  "title": "Applications : Puissances et notation scientifique",
+  "blocks": [
+    {
+      "title": "Ordre croissant : exposants positifs",
+      "content": "Range les nombres suivants dans l'ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$3,2 \\times 10^3$",
+        "$1,5 \\times 10^4$",
+        "$8,7 \\times 10^4$",
+        "$2,1 \\times 10^5$"
+      ],
+      "explanation": "Pour comparer des nombres en notation scientifique, on compare d'abord les exposants de 10. Ici, les exposants sont 3, 4, 4 et 5. Le plus petit est $10^3$, donc $3,2 \\times 10^3$ est le plus petit. Pour les deux nombres avec l'exposant 4, on compare les coefficients : $1,5 < 8,7$, donc $1,5 \\times 10^4 < 8,7 \\times 10^4$. Enfin, $10^5$ est le plus grand exposant, donc $2,1 \\times 10^5$ est le plus grand.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant : exposants négatifs",
+      "content": "Range les nombres suivants dans l'ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$4,5 \\times 10^{-6}$",
+        "$9,2 \\times 10^{-5}$",
+        "$3,1 \\times 10^{-4}$",
+        "$6,8 \\times 10^{-3}$"
+      ],
+      "explanation": "Avec des exposants négatifs, le nombre est d'autant plus petit que l'exposant est grand en valeur absolue (plus négatif). On compare les exposants : $-6 < -5 < -4 < -3$. Donc $10^{-6} < 10^{-5} < 10^{-4} < 10^{-3}$. L'ordre croissant des nombres suit l'ordre croissant des exposants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Mise en notation scientifique et comparaison",
+      "content": "Range les nombres suivants dans l'ordre croissant après les avoir tous écrits en notation scientifique normalisée (un seul chiffre non nul avant la virgule).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$2500 \\times 10^1$",
+        "$3,7 \\times 10^4$",
+        "$0,04 \\times 10^6$",
+        "$520 \\times 10^2$"
+      ],
+      "explanation": "On convertit chaque nombre en notation scientifique normalisée :\\n- $2500 \\times 10^1 = 2,5 \\times 10^3 \\times 10^1 = 2,5 \\times 10^4$\\n- $3,7 \\times 10^4$ est déjà normalisé.\\n- $0,04 \\times 10^6 = 4 \\times 10^{-2} \\times 10^6 = 4 \\times 10^4$\\n- $520 \\times 10^2 = 5,2 \\times 10^2 \\times 10^2 = 5,2 \\times 10^4$\\nTous ont l'exposant $10^4$. On compare les coefficients : $2,5 < 3,7 < 4 < 5,2$. L'ordre est donc : $2500 \\times 10^1$, $3,7 \\times 10^4$, $0,04 \\times 10^6$, $520 \\times 10^2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

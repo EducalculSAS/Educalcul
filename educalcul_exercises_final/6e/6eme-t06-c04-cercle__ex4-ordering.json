@@ -1,0 +1,67 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Cercle",
+  "title": "Applications du cercle : constructions et calculs",
+  "blocks": [
+    {
+      "title": "Tracer un cercle au compas",
+      "content": "Range les étapes dans l'ordre chronologique pour tracer un cercle de centre O et de rayon 3 cm au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Je place la pointe du compas sur le point O.",
+        "J'ouvre le compas pour obtenir un écartement de 3 cm en utilisant une règle.",
+        "Je trace le cercle en faisant tourner le compas autour du point O sans changer l'écartement.",
+        "Je vérifie que la distance du centre O à plusieurs points du cercle est bien de 3 cm."
+      ],
+      "explanation": "Pour tracer un cercle au compas, on commence par positionner la pointe sur le centre donné (O). On règle ensuite l'écartement du compas sur la valeur du rayon (3 cm) à l'aide d'une règle. On trace alors le cercle en effectuant une rotation complète. Enfin, on peut vérifier la construction en mesurant quelques rayons.",
+      "points": 2,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas prêt à tracer un cercle de centre O et de rayon 3 cm"
+      }
+    },
+    {
+      "title": "Calculer le périmètre d'un cercle",
+      "content": "Remets les étapes dans l'ordre pour calculer le périmètre d'une roue de diamètre 50 cm (on donnera une valeur approchée avec $\\pi \\approx 3,14$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "J'identifie la donnée : le diamètre $d$ mesure 50 cm.",
+        "Je rappelle la formule du périmètre d'un cercle : $P = \\pi \\times d$.",
+        "Je remplace $d$ par 50 et $\\pi$ par 3,14 : $P = 3,14 \\times 50$.",
+        "Je calcule le produit : $P = 157$ cm.",
+        "Je conclus : le périmètre de la roue est d'environ 157 cm."
+      ],
+      "explanation": "La résolution d'un problème de calcul de périmètre suit une démarche logique : identifier les données (ici le diamètre), écrire la formule adaptée ($P = \\pi \\times d$), substituer les valeurs numériques, effectuer le calcul ($3,14 \\times 50 = 157$) et formuler la réponse finale avec l'unité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retrouver le rayon à partir du périmètre",
+      "content": "Range les étapes pour trouver le rayon d'un cercle dont le périmètre est de 31,4 cm (on prend $\\pi \\approx 3,14$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "J'écris la formule du périmètre en fonction du rayon : $P = 2 \\times \\pi \\times r$.",
+        "Je remplace $P$ par 31,4 et $\\pi$ par 3,14 : $31,4 = 2 \\times 3,14 \\times r$.",
+        "Je calcule le produit $2 \\times 3,14 = 6,28$.",
+        "Je divise 31,4 par 6,28 pour isoler $r$ : $r = 31,4 / 6,28$.",
+        "Je trouve $r = 5$ et je conclus : le rayon mesure 5 cm."
+      ],
+      "explanation": "Pour retrouver le rayon à partir du périmètre, on utilise la formule $P = 2 \\pi r$. On substitue les valeurs connues ($P=31,4$, $\\pi=3,14$). On simplifie le membre de droite en calculant $2 \\times 3,14 = 6,28$. Il reste une division : $31,4$ divisé par $6,28$ donne $5$. Le rayon est donc de 5 cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

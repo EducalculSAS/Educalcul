@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Information chiffrée et hasard",
+  "title": "Approfondissement : Information chiffrée et hasard - Algorithmes de simulation",
+  "blocks": [
+    {
+      "title": "Simulation d’un lancer de dé",
+      "content": "Écrire un algorithme en pseudo‑code (ou en langage de programmation) qui simule un lancer d’un dé à six faces équilibré et affiche le résultat obtenu.",
+      "correctAnswer": "Algorithme :\\nDébut\\n    $face$ ← Aléa($1$, $6$)\\n    Écrire $face$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction Aléa($1$, $6$) renvoie un entier uniformément distribué entre $1$ et $6$, ce qui modélise un dé équilibré. L’instruction Écrire affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fréquences sur N lancers",
+      "content": "Modifier l’algorithme pour demander à l’utilisateur un entier $N$, répéter le lancer $N$ fois, compter le nombre d’apparitions de chaque face de $1$ à $6$, puis afficher les six fréquences (nombre d’apparitions divisé par $N$).",
+      "correctAnswer": "Algorithme :\\nDébut\\n    Lire $N$\\n    Pour $k$ de $1$ à $6$ faire\\n        $compteur$[$k$] ← $0$\\n    Fin Pour\\n    Pour $i$ de $1$ à $N$ faire\\n        $face$ ← Aléa($1$, $6$)\\n        $compteur$[$face$] ← $compteur$[$face$] + $1$\\n    Fin Pour\\n    Pour $k$ de $1$ à $6$ faire\\n        $frequence$ ← $compteur$[$k$] / $N$\\n        Écrire $k$, $frequence$\\n    Fin Pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le tableau $compteur$ stocke les effectifs de chaque face. La division par $N$ donne la fréquence empirique. Lorsque $N$ devient grand, ces fréquences tendent vers $1/6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation de la probabilité d’un nombre pair",
+      "content": "Écrire un algorithme qui, après avoir simulé $N$ lancers de dé, calcule l’estimation de la probabilité d’obtenir un nombre pair ($2$, $4$ ou $6$) et affiche la différence entre cette estimation et la valeur théorique $1/2$.",
+      "correctAnswer": "Algorithme :\\nDébut\\n    Lire $N$\\n    $compteur\\_pair$ ← $0$\\n    Pour $i$ de $1$ à $N$ faire\\n        $face$ ← Aléa($1$, $6$)\\n        Si $face$ modulo $2$ = $0$ Alors\\n            $compteur\\_pair$ ← $compteur\\_pair$ + $1$\\n        Fin Si\\n    Fin Pour\\n    $estimation$ ← $compteur\\_pair$ / $N$\\n    $difference$ ← ValeurAbsolue($estimation$ - $1/2$)\\n    Écrire \"Estimation :\", $estimation$\\n    Écrire \"Différence avec 1/2 :\", $difference$\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compte les faces paires parmi les $N$ lancers. La fréquence des faces paires est une estimation de la probabilité théorique $1/2$. La différence absolue montre l’écart entre simulation et théorie ; elle diminue quand $N$ augmente grâce à la loi des grands nombres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

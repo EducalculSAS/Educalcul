@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 390,
+  "_course_code": "5eme-t03-c02-structure-d-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Somme / produit / différence",
+  "title": "Quiz : Structure d'une expression - Somme, produit, différence",
+  "questions": [
+    {
+      "text": "Dans l'expression $E = 3x + 7$, quel est le terme qui est une somme ?",
+      "options": [
+        "L'expression entière $E$",
+        "Le terme $3x$",
+        "Le terme $7$",
+        "Le coefficient $3$"
+      ],
+      "correctAnswer": "L'expression entière $E$",
+      "explanation": "Une somme est une addition de plusieurs termes. Ici, $E = 3x + 7$ est la somme de deux termes : $3x$ et $7$. Les termes $3x$ et $7$ sont chacun un seul terme (un produit pour le premier, un nombre pour le second), ils ne sont pas des sommes. Le coefficient $3$ n'est qu'une partie du terme $3x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'expression $F = 5 \\times (y - 2)$. Quelle affirmation est exacte ?",
+      "options": [
+        "$F$ est une différence",
+        "$F$ est un produit dont l'un des facteurs est une différence",
+        "$F$ est une somme de deux produits",
+        "$F$ est un quotient"
+      ],
+      "correctAnswer": "$F$ est un produit dont l'un des facteurs est une différence",
+      "explanation": "L'opération principale (la dernière effectuée) est la multiplication par $5$. C'est donc un produit. Ses deux facteurs sont $5$ et $(y - 2)$. Le second facteur, $(y - 2)$, est une différence (soustraction de $2$ à $y$). Ce n'est pas une différence globale, ni une somme, ni un quotient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle est une différence de deux produits ?",
+      "options": [
+        "$7a - 4b$",
+        "$7(a - 4b)$",
+        "$(7a - 4) \\times b$",
+        "$7a + 4b$"
+      ],
+      "correctAnswer": "$7a - 4b$",
+      "explanation": "Une différence est une soustraction. Dans $7a - 4b$, l'opération principale est le moins. Le terme de gauche $7a$ est un produit ($7 \\times a$) et le terme de droite $4b$ est un produit ($4 \\times b$). C'est donc bien une différence de deux produits. L'option $7(a - 4b)$ est un produit. L'option $(7a - 4) \\times b$ est un produit dont un facteur est une différence. L'option $7a + 4b$ est une somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $G = (x + 3) \\times (x - 5)$. Quelle est la nature de l'expression $G$ ?",
+      "options": [
+        "Une somme de deux produits",
+        "Un produit de deux sommes",
+        "Un produit de deux différences",
+        "Un produit d'une somme et d'une différence"
+      ],
+      "correctAnswer": "Un produit d'une somme et d'une différence",
+      "explanation": "L'opération principale est la multiplication (le $\\times$ entre les deux parenthèses), donc $G$ est un produit. Le premier facteur est $(x + 3)$, qui est une somme. Le second facteur est $(x - 5)$, qui est une différence. $G$ est donc le produit d'une somme et d'une différence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On développe et on réduit l'expression $H = 2(x + 4) - 3(x - 1)$. Quelle est la forme finale simplifiée de $H$ ?",
+      "options": [
+        "$-x + 11$",
+        "$-x + 5$",
+        "$5x + 11$",
+        "$-x - 11$"
+      ],
+      "correctAnswer": "$-x + 11$",
+      "explanation": "On développe chaque produit : $2(x + 4) = 2x + 8$ et $-3(x - 1) = -3x + 3$ (attention au double signe : moins fois moins fait plus). On additionne les résultats : $(2x + 8) + (-3x + 3) = 2x - 3x + 8 + 3 = -x + 11$. L'erreur $-x + 5$ vient souvent de $-3 \\times -1 = -3$. L'erreur $5x + 11$ vient de l'oubli du signe moins devant le $3$. L'erreur $-x - 11$ vient d'une erreur de signe sur les constantes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

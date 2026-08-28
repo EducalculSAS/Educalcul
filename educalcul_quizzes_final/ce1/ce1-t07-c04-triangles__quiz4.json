@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 129,
+  "_course_code": "ce1-t07-c04-triangles",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Triangles",
+  "title": "Application : Triangles",
+  "questions": [
+    {
+      "text": "Combien de côtés a le triangle représenté sur la figure ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Un triangle est une figure géométrique à trois côtés. La figure montre un triangle, donc il a $3$ côtés. Les autres nombres correspondent à d'autres polygones.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Combien d'angles droits a un triangle rectangle ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Par définition, un triangle rectangle possède exactement un angle droit, c'est-à-dire un angle de $90$ degrés. Les autres choix ne correspondent pas à cette définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on un triangle dont les trois côtés ont la même longueur ?",
+      "options": [
+        "triangle équilatéral",
+        "triangle isocèle",
+        "triangle rectangle",
+        "triangle quelconque"
+      ],
+      "correctAnswer": "triangle équilatéral",
+      "explanation": "Un triangle équilatéral a ses trois côtés de même longueur et ses trois angles égaux à $60$ degrés. Un triangle isocèle a seulement deux côtés égaux, un triangle rectangle a un angle droit, et un triangle quelconque n'a aucune propriété particulière.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a des côtés de longueurs $5$ cm, $5$ cm et $8$ cm. Quel type de triangle est-ce ?",
+      "options": [
+        "triangle équilatéral",
+        "triangle isocèle",
+        "triangle rectangle",
+        "triangle quelconque"
+      ],
+      "correctAnswer": "triangle isocèle",
+      "explanation": "Deux côtés mesurent $5$ cm, le troisième $8$ cm. Comme exactement deux côtés sont égaux, c'est un triangle isocèle. Ce n'est pas équilatéral (trois côtés égaux), pas rectangle (aucun angle droit garanti), ni quelconque (qui n'a pas de côtés égaux).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a des côtés de $4$ cm, $6$ cm et $7$ cm. Quel est son périmètre ?",
+      "options": [
+        "$17$ cm",
+        "$16$ cm",
+        "$18$ cm",
+        "$15$ cm"
+      ],
+      "correctAnswer": "$17$ cm",
+      "explanation": "Le périmètre d'un triangle est la somme de ses trois côtés : $4 + 6 + 7 = 17$. Donc le périmètre est $17$ cm. Les autres résultats correspondent à des erreurs d'addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

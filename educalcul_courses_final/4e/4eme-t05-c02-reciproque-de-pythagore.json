@@ -1,0 +1,414 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.862232+00:00",
+  "id": 441,
+  "code": "4eme-t05-c02",
+  "title": "Réciproque de Pythagore",
+  "description": "Cours structuré Educalcul : Réciproque de Pythagore.",
+  "subject": "Géométrie du triangle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Géométrie du triangle",
+    "titre_du_cours": "Réciproque de Pythagore",
+    "objectif_global": "Réciproque de Pythagore",
+    "mini_lecons_imposees": [
+      "Comparer carrés.",
+      "Conclure rectangle.",
+      "Rédiger."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie du triangle",
+      "lessons": [
+        {
+          "title": "Comparer carrés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les carrés des côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce nouveau chapitre ! Tu connais déjà le théorème de Pythagore : dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Aujourd'hui, nous allons faire un pas de côté passionnant : nous allons apprendre à **comparer** ces carrés **sans savoir** si le triangle est rectangle. C'est une compétence d'enquêteur géométrique : à partir de trois longueurs, tu vas pouvoir deviner la nature de l'angle le plus grand. Rassure-toi, la méthode est simple et rigoureuse, nous allons la construire ensemble, pas à pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un triangle quelconque, appelons-le $ABC$. Parmi ses trois côtés, il y en a toujours un qui est le plus long (ou au moins aussi long que les autres). Disons que c'est le côté $a = BC$, opposé à l'angle $\\widehat{A}$. Les deux autres côtés sont $b = AC$ et $c = AB$. L'idée centrale est de calculer deux valeurs : le carré du plus grand côté, $a^2$, et la somme des carrés des deux autres, $b^2 + c^2$. Ensuite, nous comparons ces deux nombres. Trois situations seulement peuvent se produire, et chacune nous révèle un secret sur l'angle $\\widehat{A}$."
+            },
+            {
+              "type": "definition",
+              "term": "Côté le plus long",
+              "definition": "Dans un triangle, le côté le plus long est celui qui a la plus grande longueur. Il est toujours opposé à l'angle le plus grand du triangle.",
+              "example": "Dans un triangle de côtés 5, 7 et 9 cm, le côté le plus long est 9 cm."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Visualisation des carrés construits sur les trois côtés d'un triangle 3-4-5. Le grand carré (côté 5) a une aire égale à la somme des deux petits carrés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien la figure ci-dessus. Elle montre le cas d'égalité : $5^2 = 3^2 + 4^2$. Mais si nous déformations un peu le triangle, l'égalité se brise. Si l'angle $\\widehat{A}$ devient plus aigu (plus petit que $90^\\circ$), le côté $a$ raccourcit : son carré $a^2$ devient **plus petit** que $b^2 + c^2$. À l'inverse, si l'angle $\\widehat{A}$ devient obtus (plus grand que $90^\\circ$), le côté $a$ s'allonge : son carré $a^2$ devient **plus grand** que $b^2 + c^2$. C'est toute la logique de la comparaison : le carré du plus grand côté « siente » l'ouverture de l'angle opposé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le plus grand côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les trois longueurs données. Repère la plus grande. C'est elle qui jouera le rôle de $a$ (l'hypoténuse potentielle). Les deux autres seront $b$ et $c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $a^2$ (le carré du plus grand côté) et $b^2 + c^2$ (la somme des carrés des deux autres). Fais les calculs posés ou avec la calculatrice, mais note les résultats clairement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les deux nombres obtenus. Trois issues : $a^2 < b^2 + c^2$, $a^2 = b^2 + c^2$, ou $a^2 > b^2 + c^2$. Note le signe de la comparaison, c'est ton indice principal."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as la méthode en tête, essayons de l'appliquer sur un premier exemple concret. Tu verras, c'est très satisfaisant de voir les nombres parler d'eux-mêmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as comparé tes premiers carrés. Tu as vu que selon le signe de l'inégalité, on obtient une information précise sur l'angle. Mais attention : cette comparaison ne nous dit pas encore *formellement* que le triangle est rectangle. Elle nous donne un **indice fort**. Pour transformer cet indice en certitude mathématique, il nous faut un théorème précis : la réciproque de Pythagore. C'est exactement ce que nous allons découvrir dans la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu commences à manipuler les inégalités entre carrés avec aisance. Remarque comme la comparaison $a^2 \\; ? \\; b^2+c^2$ agit comme une boussole : elle oriente notre regard vers le type d'angle. Dans le prochain cycle, nous allons explorer un cas particulier très utile : celui où les trois longueurs sont des nombres entiers. On appelle cela des triplets pythagoriciens. Savoir les repérer te fera gagner un temps précieux."
+            },
+            {
+              "type": "definition",
+              "term": "Triplet pythagoricien",
+              "definition": "Trois nombres entiers positifs $(a, b, c)$ tels que $a^2 = b^2 + c^2$ (avec $a$ le plus grand). Ils forment les côtés d'un triangle rectangle.",
+              "example": "Les triplets classiques : $(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Connaître ces triplets par cœur n'est pas obligatoire, mais c'est un atout majeur. Quand tu vois les longueurs 5, 12 et 13, tu sais instantanément que $13^2 = 169$ et $5^2+12^2 = 25+144 = 169$. L'égalité saute aux yeux sans calculette. Cela te permet de conclure « triangle rectangle » en une ligne. Entraîne-toi à en reconnaître quelques-uns, ils reviennent souvent dans les exercices et les problèmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main pour comparer les carrés dans n'importe quel triangle. Tu sais identifier le grand côté, calculer les carrés, comparer, et même repérer les triplets célèbres. Cette compétence de comparaison est la **clé d'entrée** pour la réciproque de Pythagore. Dans la leçon suivante, nous franchirons le pas décisif : passer de la comparaison à la conclusion formelle « donc le triangle est rectangle ». Prépare-toi, c'est le moment où l'enquête devient preuve !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle $ABC$, on a $AB = 6\\,cm$, $AC = 8\\,cm$ et $BC = 11\\,cm$. Compare $BC^2$ et $AB^2 + AC^2$. Que peux-tu dire de l'angle $\\widehat{A}$ ?",
+              "answer": "$BC^2 = 121$, $AB^2+AC^2 = 36+64=100$. Donc $BC^2 > AB^2+AC^2$. L'angle $\\widehat{A}$ est obtus.",
+              "hint": "Identifie le plus grand côté. Calcule son carré et la somme des carrés des deux autres. Compare.",
+              "explanation": "Le plus grand côté est $BC=11$. $11^2=121$. $6^2+8^2=36+64=100$. Comme $121>100$, le carré du plus grand côté est strictement plus grand que la somme des carrés des deux autres. L'angle opposé au plus grand côté (ici $\\widehat{A}$) est donc obtus (supérieur à $90^\\circ$)."
+            },
+            {
+              "question": "Un triangle a pour côtés $7\\,cm$, $24\\,cm$ et $25\\,cm$. Effectue la comparaison des carrés. Est-ce un triplet pythagoricien ?",
+              "answer": "$25^2 = 625$, $7^2+24^2 = 49+576 = 625$. Égalité : c'est un triplet pythagoricien $(7, 24, 25)$.",
+              "hint": "Le plus grand côté est 25. Calcule $25^2$ et $7^2+24^2$.",
+              "explanation": "Le plus grand côté est $25$. $25^2 = 625$. $7^2+24^2 = 49+576 = 625$. Les deux valeurs sont égales, donc $(7, 24, 25)$ est bien un triplet pythagoricien. Si ce triangle existe, il serait rectangle."
+            },
+            {
+              "question": "Soit un triangle de côtés $9\\,cm$, $12\\,cm$ et $15\\,cm$. Sans faire tous les calculs, comment savoir rapidement si c'est un triplet pythagoricien ?",
+              "answer": "On remarque que $9=3\\times3$, $12=3\\times4$, $15=3\\times5$. C'est le triplet $(3,4,5)$ multiplié par 3. Donc c'est un triplet pythagoricien.",
+              "hint": "Cherche un facteur commun aux trois nombres. Divise par ce facteur.",
+              "explanation": "Les trois nombres sont des multiples de 3 : $9=3\\times3$, $12=3\\times4$, $15=3\\times5$. On retrouve le triplet de base $(3,4,5)$. Multiplier un triplet pythagoricien par un même nombre donne un autre triplet pythagoricien. Donc $(9,12,15)$ en est un."
+            }
+          ]
+        },
+        {
+          "title": "Conclure rectangle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conclure : le triangle est rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous y voilà ! Tu sais maintenant comparer $a^2$ et $b^2+c^2$. Le moment est venu de transformer cette comparaison en une **affirmation mathématique incontestable**. C'est là qu'intervient la **réciproque du théorème de Pythagore**. C'est un théorème puissant, qui fonctionne comme une clé : si l'égalité des carrés est vérifiée, alors la porte du « triangle rectangle » s'ouvre toute grande. Mais attention, comme toute clé, elle ne tourne que si on l'insère dans le bon sens : il faut respecter ses conditions d'application."
+            },
+            {
+              "type": "definition",
+              "term": "Réciproque d'un théorème",
+              "definition": "On échange l'hypothèse et la conclusion. Si le théorème dit « Si A alors B », la réciproque dit « Si B alors A ». La réciproque n'est pas toujours vraie, mais celle de Pythagore l'est.",
+              "example": "Théorème : « Si triangle rectangle, alors $a^2=b^2+c^2$ ». Réciproque : « Si $a^2=b^2+c^2$, alors triangle rectangle. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Énonçons-la officiellement : **Dans un triangle, si le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors ce triangle est rectangle.** L'angle droit est opposé au plus grand côté. C'est une phrase courte, mais chaque mot compte. « Dans un triangle » : la figure doit être un triangle (trois points non alignés). « Le plus grand côté » : il faut impérativement identifier le plus grand côté *avant* de comparer. « Est égal à » : c'est une égalité exacte, pas une approximation. Si ces conditions sont réunies, la conclusion tombe : « alors ce triangle est rectangle »."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 5,
+              "b": 12,
+              "c": 13,
+              "caption": "Triangle 5-12-13 : le carré sur l'hypoténuse (13) a la même aire que la somme des carrés sur les deux autres côtés. L'angle droit est bien opposé au côté 13."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette figure : les carrés s'emboîtent parfaitement. C'est la preuve visuelle que l'égalité des aires force l'angle à être droit. Mais en mathématiques, on ne se contente pas de regarder une figure : on écrit un raisonnement. Voici la structure type d'une conclusion par la réciproque : 1) On nomme le triangle et ses côtés. 2) On identifie le plus grand côté. 3) On calcule les carrés et on constate l'égalité. 4) On invoque la réciproque de Pythagore. 5) On conclut : le triangle est rectangle en tel sommet."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Nommer et ordonner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « Soit un triangle $ABC$ avec $AB = ...$, $AC = ...$, $BC = ...$. Le plus grand côté est $BC = ...$ ». C'est la base de ton raisonnement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer et comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $BC^2$ et $AB^2 + AC^2$. Écris l'égalité : $BC^2 = AB^2 + AC^2$. Montre les calculs intermédiaires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure par la réciproque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « D'après la réciproque du théorème de Pythagore, le triangle $ABC$ est rectangle en $A$. » (L'angle droit est opposé au plus grand côté $BC$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est à ton tour de jouer ! Applique cette méthode sur un triangle dont tu as les trois longueurs. Prends ton temps pour bien écrire chaque étape, comme si tu devais convaincre un ami sceptique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bien joué ! Tu as rédigé ta première conclusion formelle. Tu as vu comme c'est satisfaisant d'écrire « Donc le triangle est rectangle » après avoir aligné les calculs. Mais il y a un piège classique dans lequel beaucoup d'élèves tombent : **oublier de vérifier quel est le plus grand côté**. Si tu prends le mauvais côté pour $a$, ton égalité peut être fausse même si le triangle est rectangle, ou pire, tu pourrais croire qu'un triangle est rectangle alors qu'il ne l'est pas. Dans le cycle suivant, nous allons nous entraîner à ne jamais zapper cette étape cruciale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfait ! Tu as évité le piège. Maintenant, imaginons une situation un peu différente : on te donne trois longueurs, mais **on ne te dit pas qu'elles forment un triangle**. Peut-on quand même utiliser la réciproque ? La réponse est non : la réciproque s'applique **dans un triangle**. Si les trois longueurs ne satisfont pas l'inégalité triangulaire (chaque côté plus petit que la somme des deux autres), elles ne forment pas un triangle du tout, et la réciproque ne s'applique pas. C'est une subtilité importante pour les problèmes complexes."
+            },
+            {
+              "type": "definition",
+              "term": "Inégalité triangulaire",
+              "definition": "Dans tout triangle, la longueur de chaque côté est strictement inférieure à la somme des longueurs des deux autres côtés.",
+              "example": "Les longueurs 2, 3, 6 ne forment pas un triangle car $6 > 2+3$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette vérification de l'inégalité triangulaire est souvent implicite dans les exercices simples, mais elle devient essentielle quand tu dois *prouver* qu'un triangle existe avant de dire s'il est rectangle. Dans le prochain exercice, je te propose un cas où tu devras vérifier les deux conditions : existence du triangle, puis réciproque de Pythagore. C'est le niveau supérieur de rigueur attendu en 4e."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une maîtrise solide de la réciproque : tu sais l'énoncer, tu connais ses conditions (triangle existant, plus grand côté identifié, égalité exacte), et tu sais structurer ton raisonnement en trois étapes claires. C'est exactement ce qu'on attend de toi en contrôle. La dernière leçon de ce cours sera consacrée à l'art de **rédiger** une preuve complète, propre, avec le vocabulaire précis et la mise en page soignée qui font la différence entre un brouillon et une copie parfaite. On se retrouve là-bas pour peaufiner ton style !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un triangle $DEF$ a pour côtés $DE = 8\\,cm$, $EF = 15\\,cm$ et $DF = 17\\,cm$. Démontre que ce triangle est rectangle. Précise l'angle droit.",
+              "answer": "Le plus grand côté est $DF=17$. $DF^2=289$. $DE^2+EF^2=64+225=289$. Égalité. Par la réciproque de Pythagore, $DEF$ est rectangle en $E$ (opposé à $DF$).",
+              "hint": "Identifie le plus grand côté. Calcule les carrés. Conclus par la réciproque.",
+              "explanation": "Le plus grand côté est $DF=17$. $17^2=289$. $8^2+15^2=64+225=289$. L'égalité est vérifiée. D'après la réciproque du théorème de Pythagore, le triangle $DEF$ est rectangle. L'angle droit est opposé au plus grand côté $DF$, donc c'est l'angle $\\widehat{E}$."
+            },
+            {
+              "question": "On donne trois longueurs : $5\\,cm$, $10\\,cm$ et $12\\,cm$. Peut-on affirmer qu'elles forment un triangle rectangle ? Justifie.",
+              "answer": "Le plus grand est 12. $12^2=144$. $5^2+10^2=25+100=125$. $144 \\neq 125$. Ce n'est pas un triangle rectangle (et l'angle opposé à 12 est obtus car $144>125$).",
+              "hint": "Compare le carré du plus grand à la somme des carrés des deux autres. Regarde si c'est une égalité.",
+              "explanation": "Le plus grand côté serait $12$. $12^2=144$. $5^2+10^2=125$. Les carrés ne sont pas égaux ($144 \\neq 125$). Donc, si ce triangle existe, il n'est pas rectangle. De plus, comme $144>125$, l'angle opposé au côté 12 serait obtus."
+            },
+            {
+              "question": "Les longueurs $4\\,cm$, $7\\,cm$ et $12\\,cm$ peuvent-elles être les côtés d'un triangle rectangle ? Explique pourquoi avant même de calculer les carrés.",
+              "answer": "Non, car $12 > 4+7$ (inégalité triangulaire non respectée). Ces trois longueurs ne forment même pas un triangle.",
+              "hint": "Vérifie si le plus grand côté est plus petit que la somme des deux autres.",
+              "explanation": "Pour former un triangle, il faut que chaque côté soit plus petit que la somme des deux autres. Ici le plus grand est 12, et $4+7=11$. Comme $12 > 11$, ces trois segments ne peuvent pas se refermer pour former un triangle. La réciproque de Pythagore ne s'applique donc pas."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger une preuve parfaite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais la théorie, tu sais manipuler les nombres, tu évites les pièges. Il ne te manque plus qu'une chose : **savoir présenter ton travail** comme un mathématicien. En 4e, la rédaction compte autant que le calcul. Une preuve bien écrite, c'est une preuve qu'on prend plaisir à lire, qui guide le correcteur (ou ton futur toi-même) sans effort. Dans cette leçon, nous allons décortiquer les codes de la rédaction géométrique : vocabulaire précis, connecteurs logiques, mise en page aérée. Tu verras, c'est comme apprendre à bien tenir son stylo : une fois l'habitude prise, ça devient naturel et valorisant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le vocabulaire. Oublie « ça fait », « on trouve », « c'est égal ». Adopte le langage de la démonstration : **« Soit... »** pour poser l'objet, **« Le plus grand côté est... »** pour l'identification, **« On calcule... »** pour les opérations, **« Or... »** ou **« Donc... »** pour le lien logique, **« D'après la réciproque du théorème de Pythagore... »** pour l'invocation du théorème, **« Par conséquent... »** ou **« En conclusion... »** pour la chute. Ces mots ne sont pas de la décoration : ils structurent le raisonnement et montrent que tu maîtrises la logique."
+            },
+            {
+              "type": "definition",
+              "term": "Connecteur logique",
+              "definition": "Mot ou expression qui relie deux idées en montrant leur relation (cause, conséquence, opposition, exemple). En démonstration : « donc », « or », « car », « par conséquent », « ainsi ».",
+              "example": "\"On a $a^2 = b^2+c^2$. **Donc**, d'après la réciproque, le triangle est rectangle.\""
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : L'en-tête (Données)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris « Soit un triangle $ABC$ tel que $AB = ...$, $AC = ...$, $BC = ...$. » Si le triangle est déjà nommé dans l'énoncé, reprends ce nom. Indique clairement quelle longueur est la plus grande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les calculs (Traitement)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Affiche les calculs de carrés alignés : $BC^2 = ...$, $AB^2 + AC^2 = ... + ... = ...$. Utilise des flèches ou des retours à la ligne pour aérer. Termine par « On a donc $BC^2 = AB^2 + AC^2$. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : La conclusion (Réponse)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « D'après la réciproque du théorème de Pythagore, le triangle $ABC$ est rectangle en $A$. » (Remplace $A$ par le sommet opposé au plus grand côté). Termine par un point final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un modèle de rédaction complète, comme je l'attends sur ta copie. Observe la clarté, l'alignement, les mots de liaison :\\n\\n**Soit un triangle $MNP$ avec $MN = 9\\,cm$, $NP = 12\\,cm$, $MP = 15\\,cm$.**\\n**Le plus grand côté est $MP = 15\\,cm$.**\\n**On calcule : $MP^2 = 15^2 = 225$. $MN^2 + NP^2 = 9^2 + 12^2 = 81 + 144 = 225$.**\\n**On a donc $MP^2 = MN^2 + NP^2$.**\\n**D'après la réciproque du théorème de Pythagore, le triangle $MNP$ est rectangle en $N$.**\\n\\nC'est net, précis, sans phrase superflue. À toi de jouer maintenant !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Ta rédaction est claire et structurée. Tu as utilisé les bons connecteurs, tu as nommé le triangle, identifié le grand côté, montré les calculs, invoqué le théorème. C'est exactement le niveau attendu. Mais il y a encore un détail qui fait la différence entre une bonne copie et une copie **parfaite** : la **vérification de l'inégalité triangulaire** quand l'énoncé ne dit pas explicitement « Soit un triangle... ». Si l'énoncé dit « Trois longueurs sont... », tu dois d'abord écrire : « Vérifions que ces longueurs peuvent former un triangle : $... < ... + ...$ (vrai). Donc il existe un triangle de telles longueurs. » Cela montre une rigueur exemplaire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo pour cette rigueur ! Maintenant, parlons des **erreurs fréquentes à ne plus jamais commettre** : 1) Écrire « Par Pythagore » au lieu de « Par la **réciproque** de Pythagore ». C'est une confusion majeure : le théorème direct va du rectangle aux carrés, la réciproque va des carrés au rectangle. 2) Ne pas identifier le plus grand côté et calculer n'importe quel carré. 3) Conclure « triangle rectangle » sans préciser **où est l'angle droit** (le sommet). 4) Faire des calculs dans le coin de la copie sans les intégrer au texte. Évite ces écueils et ta note montera d'un cran."
+            },
+            {
+              "type": "definition",
+              "term": "Théorème direct vs Réciproque",
+              "definition": "Direct : Hypothèse (rectangle) $\\Rightarrow$ Conclusion (égalité carrés). Réciproque : Hypothèse (égalité carrés) $\\Rightarrow$ Conclusion (rectangle). Sens inverse !",
+              "example": "Direct : « Car rectangle $\\Rightarrow a^2=b^2+c^2$ ». Réciproque : « Car $a^2=b^2+c^2 \\Rightarrow$ rectangle. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce cours en beauté, je te propose un dernier exercice de rédaction complète, où tu devras tout mettre en œuvre : vérification d'existence, identification, calculs, invocation précise de la réciproque, conclusion avec sommet de l'angle droit. C'est ton « examen blanc » pour ce chapitre. Prends une feuille, écris comme si c'était le brevet, puis compare avec la correction détaillée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as terminé ce cours sur la réciproque de Pythagore. Tu es passé de la simple comparaison de carrés à la rédaction d'une preuve rigoureuse. Tu sais maintenant : identifier le grand côté, comparer $a^2$ et $b^2+c^2$, invoquer la réciproque seulement si l'égalité est exacte et si le triangle existe, et surtout **rédiger** ton raisonnement avec un vocabulaire précis et une structure logique. Ces compétences te serviront tout au long du collège et au lycée, en géométrie bien sûr, mais aussi en algorithmique et en physique. Sois fier de ta progression !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le plus grand côté d'un triangle.",
+                "Je sais calculer et comparer $a^2$ et $b^2+c^2$.",
+                "Je connais les trois cas : $a^2 < b^2+c^2$ (acutangle), $a^2 = b^2+c^2$ (rectangle), $a^2 > b^2+c^2$ (obtusangle).",
+                "Je sais énoncer la réciproque de Pythagore avec ses conditions.",
+                "Je sais rédiger une démonstration complète : Données, Calculs, Conclusion avec le sommet de l'angle droit.",
+                "Je ne confonds pas le théorème direct et sa réciproque.",
+                "Je vérifie l'inégalité triangulaire si l'énoncé ne garantit pas l'existence du triangle."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédige une démonstration complète pour affirmer que le triangle de côtés $10\\,cm$, $24\\,cm$ et $26\\,cm$ est rectangle. Précise l'angle droit.",
+              "answer": "Soit un triangle $ABC$ tel que $AB=10$, $AC=24$, $BC=26$. Le plus grand côté est $BC=26$. $BC^2=676$. $AB^2+AC^2=100+576=676$. On a $BC^2=AB^2+AC^2$. D'après la réciproque de Pythagore, $ABC$ est rectangle en $A$.",
+              "hint": "Suis le modèle en 3 étapes : Données, Calculs, Conclusion. N'oublie pas 'D'après la réciproque...'",
+              "explanation": "On nomme le triangle, on identifie le plus grand côté (26), on calcule les carrés (676 et 676), on note l'égalité, on invoque la réciproque, on conclut en précisant le sommet opposé au plus grand côté (A)."
+            },
+            {
+              "question": "On donne les longueurs $11\\,cm$, $60\\,cm$ et $61\\,cm$. Écris une preuve complète pour montrer qu'elles forment un triangle rectangle. Vérifie d'abord l'inégalité triangulaire.",
+              "answer": "Vérification : $61 < 11+60$ (vrai), $60 < 11+61$ (vrai), $11 < 60+61$ (vrai). Un triangle existe. Soit $DEF$ avec $DE=11$, $EF=60$, $DF=61$. Le plus grand est $DF=61$. $DF^2=3721$. $DE^2+EF^2=121+3600=3721$. Égalité. Par la réciproque, $DEF$ rectangle en $E$.",
+              "hint": "Commence par 'Vérifions l'inégalité triangulaire...'. Puis suis la structure habituelle.",
+              "explanation": "L'inégalité triangulaire est satisfaite (chaque côté < somme des deux autres). On peut donc parler d'un triangle. Le reste suit le schéma classique : grand côté 61, carrés égaux à 3721, réciproque, angle droit opposé à 61 donc en E."
+            },
+            {
+              "question": "Corrige les erreurs dans cette rédaction : \"On a un triangle avec côtés 5, 12, 13. Par Pythagore, $13^2 = 5^2+12^2 = 25+144=169$. Donc c'est un triangle rectangle.\"",
+              "answer": "Erreurs : 1) 'Par Pythagore' -> 'Par la réciproque de Pythagore'. 2) Pas de nommage du triangle ni du grand côté. 3) Pas de conclusion avec le sommet de l'angle droit. Version corrigée : 'Soit un triangle $ABC$ avec $AB=5$, $AC=12$, $BC=13$. Le plus grand côté est $BC=13$. $BC^2=169$, $AB^2+AC^2=169$. D'après la réciproque de Pythagore, $ABC$ est rectangle en $A$.'",
+              "hint": "Cherche : vocabulaire imprécis, étapes manquantes, conclusion incomplète.",
+              "explanation": "La rédaction originale utilise le théorème direct ('Par Pythagore') au lieu de la réciproque. Elle ne nomme pas le triangle, n'identifie pas explicitement le plus grand côté avant calcul, et ne précise pas où se trouve l'angle droit. La version corrigée suit toutes les conventions de rédaction."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

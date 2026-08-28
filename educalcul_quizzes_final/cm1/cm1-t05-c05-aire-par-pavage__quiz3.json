@@ -1,0 +1,113 @@
+{
+  "_status": "done",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Passer au rectangle",
+  "title": "Aire par pavage : Passer au rectangle",
+  "questions": [
+    {
+      "text": "On veut trouver l'aire d'un parallélogramme construit sur un quadrillage. Quelle méthode permet de « passer au rectangle » pour calculer son aire facilement ?",
+      "options": [
+        "Compter tous les carrés un par un, même les incomplets.",
+        "Couper un triangle rectangle d'un côté et le coller de l'autre côté pour former un rectangle.",
+        "Multiplier la longueur du côté oblique par la longueur de la base.",
+        "Tracer les deux diagonales et compter les triangles obtenus."
+      ],
+      "correctAnswer": "Couper un triangle rectangle d'un côté et le coller de l'autre côté pour former un rectangle.",
+      "explanation": "La méthode « passer au rectangle » consiste à transformer le parallélogramme en un rectangle de même aire. On découpe un triangle rectangle à l'une des extrémités (par une hauteur) et on le transpose de l'autre côté. Le rectangle obtenu a pour dimensions la base du parallélogramme et sa hauteur. Compter les carrés incomplets est imprécis, multiplier par le côté oblique donne une aire fausse, et les diagonales ne forment pas un rectangle.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 6,
+        "highlighted": 12,
+        "caption": "Parallélogramme sur quadrillage (base 6, hauteur 2) transformable en rectangle 6x2"
+      }
+    },
+    {
+      "text": "Un triangle rectangle a pour base $8$ cm et pour hauteur $5$ cm. On veut trouver son aire en « passant par le rectangle ». Quelle est l'aire de ce triangle ?",
+      "options": [
+        "$40$ cm$^2$",
+        "$20$ cm$^2$",
+        "$13$ cm$^2$",
+        "$26$ cm$^2$"
+      ],
+      "correctAnswer": "$20$ cm$^2$",
+      "explanation": "Deux triangles rectangles identiques de base $8$ cm et hauteur $5$ cm forment un rectangle de dimensions $8$ cm sur $5$ cm. L'aire du rectangle est $8 \\times 5 = 40$ cm$^2$. Le triangle en est la moitié, donc son aire est $40 \\div 2 = 20$ cm$^2$. L'option $40$ cm$^2$ est l'aire du rectangle, pas du triangle. $13$ cm$^2$ correspond à l'addition $8+5$. $26$ cm$^2$ correspond au périmètre.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 8,
+            "height": 5,
+            "label": "Rectangle 8x5"
+          }
+        ],
+        "caption": "Rectangle 8 cm x 5 cm composé de 2 triangles rectangles"
+      }
+    },
+    {
+      "text": "Une figure est composée de deux rectangles accolés : le premier mesure $6$ cm sur $4$ cm, le second mesure $3$ cm sur $4$ cm. Quelle est l'aire totale de la figure ?",
+      "options": [
+        "$36$ cm$^2$",
+        "$24$ cm$^2$",
+        "$12$ cm$^2$",
+        "$48$ cm$^2$"
+      ],
+      "correctAnswer": "$36$ cm$^2$",
+      "explanation": "On « passe au rectangle » en calculant l'aire de chaque rectangle puis en les additionnant. Aire du premier : $6 \\times 4 = 24$ cm$^2$. Aire du second : $3 \\times 4 = 12$ cm$^2$. Aire totale : $24 + 12 = 36$ cm$^2$. On peut aussi voir la figure comme un grand rectangle de $9$ cm ($6+3$) sur $4$ cm : $9 \\times 4 = 36$ cm$^2$. $24$ cm$^2$ est l'aire du premier seul. $12$ cm$^2$ est l'aire du second seul. $48$ cm$^2$ serait $12 \\times 4$ ou $6 \\times 8$, dimensions inexistantes.",
+      "points": 1,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 6,
+            "height": 4,
+            "label": "Rect. 6x4"
+          },
+          {
+            "width": 3,
+            "height": 4,
+            "label": "Rect. 3x4"
+          }
+        ],
+        "caption": "Figure composée de deux rectangles accolés (hauteur commune 4 cm)"
+      }
+    },
+    {
+      "text": "Un rectangle a une aire de $42$ cm$^2$. Sa longueur est de $7$ cm. Quelle est sa largeur ?",
+      "options": [
+        "$6$ cm",
+        "$35$ cm",
+        "$49$ cm",
+        "$7$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "L'aire d'un rectangle se calcule par $A = L \\times l$. On connaît l'aire ($42$ cm$^2$) et la longueur ($7$ cm). On cherche la largeur $l$ : $42 = 7 \\times l$. Donc $l = 42 \\div 7 = 6$ cm. $35$ cm correspond à $42 - 7$ (soustraction au lieu de division). $49$ cm correspond à $42 + 7$ (addition). $7$ cm confond longueur et largeur (carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la figure ci-dessous. C'est un polygone sur quadrillage. Quelle est son aire en unités d'aire (carreaux) ?",
+      "options": [
+        "16 unités d'aire",
+        "18 unités d'aire",
+        "20 unités d'aire",
+        "24 unités d'aire"
+      ],
+      "correctAnswer": "18 unités d'aire",
+      "explanation": "On « passe au rectangle » en complétant la figure pour former un grand rectangle de $6$ carreaux sur $4$ carreaux (aire $24$). Il manque un rectangle de $3$ carreaux sur $2$ carreaux (aire $6$) en haut à droite. L'aire de la figure est $24 - 6 = 18$ unités d'aire. On peut aussi décomposer en deux rectangles : un de $6 \\times 2 = 12$ et un de $3 \\times 2 = 6$, total $18$. $16$ et $20$ sont des erreurs de comptage ou de décomposition. $24$ est l'aire du rectangle englobant sans retirer le creux.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 6,
+        "highlighted": 18,
+        "caption": "Polygone en L sur quadrillage 6x4 (manque un rectangle 3x2 en haut à droite)"
+      }
+    }
+  ]
+}

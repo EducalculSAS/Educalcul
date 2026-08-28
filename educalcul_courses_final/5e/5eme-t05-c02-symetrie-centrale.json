@@ -1,0 +1,512 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.741681+00:00",
+  "id": 401,
+  "code": "5eme-t05-c02",
+  "title": "Symétrie centrale",
+  "description": "Cours structuré Educalcul : Symétrie centrale.",
+  "subject": "Repérage, transformations et géométrie dans l'espace",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Repérage, transformations et géométrie dans l'espace",
+    "titre_du_cours": "Symétrie centrale",
+    "objectif_global": "Symétrie centrale",
+    "mini_lecons_imposees": [
+      "Construction.",
+      "Propriétés.",
+      "Figures invariantes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Repérage, transformations et géométrie dans l'espace",
+      "lessons": [
+        {
+          "title": "Construction.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la symétrie centrale ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu poses une feuille de papier sur une table et que tu plantes une aiguille verticalement en un point $O$. Si tu fais tourner la feuille d'un demi-tour, soit $180^{\\circ}$, autour de cette aiguille, chaque point de la feuille change de place mais la figure globale ne bouge pas. C'est exactement l'idée de la symétrie centrale : un point $O$, appelé centre de symétrie, agit comme le pivot d'un demi-tour. Pour tout point $A$, son image $A'$ est l'unique point tel que $O$ soit le milieu du segment $[AA']$. Les trois points $A$, $O$ et $A'$ sont donc alignés, dans cet ordre, et les distances $OA$ et $OA'$ sont égales."
+            },
+            {
+              "type": "definition",
+              "term": "Symétrie centrale",
+              "definition": "Transformation qui, à tout point $A$, associe un point $A'$ tel que le centre $O$ est le milieu du segment $[AA']$. On note $s_O(A) = A'$.",
+              "example": "Si $O$ est l'origine d'un repère, le symétrique de $A(2; 3)$ est $A'(-2; -3)$."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Points $A(2;1)$, $O(0;0)$ et $A'(-2;-1)$ alignés. $O$ est le milieu de $[AA']$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque bien que l'ordre des points sur la droite compte : $A$ et $A'$ sont de part et d'autre de $O$. Si tu te places en $O$ et que tu regardes vers $A$, tu dois tourner la tête de $180^{\\circ}$ pour voir $A'$. Cette notion de demi-tour est essentielle pour visualiser la transformation sans avoir besoin de tracer le segment à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un point à la règle et au compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ta copie, tu n'as pas de papier à tourner. Heureusement, la règle et le compas permettent de retrouver le point $A'$ avec précision. La méthode repose entièrement sur la définition : $O$ doit être le milieu de $[AA']$. Voici la démarche pas à pas, que tu pourras réutiliser pour n'importe quel point."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la droite support",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la droite $(AO)$ à la règle. C'est sur cette droite que se trouvera obligatoirement le point $A'$, car les trois points sont alignés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe sèche du compas sur $O$ et ouvre-le jusqu'au point $A$. Sans changer l'écartement, pointe sur $O$ de l'autre côté de la droite et trace un arc de cercle qui coupe la droite $(AO)$. Ce point d'intersection est $A'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure $OA$ et $OA'$ à la règle : les deux longueurs doivent être égales. Si ce n'est pas le cas, recommence l'écartement du compas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "O",
+                "A'"
+              ],
+              "sideLabels": [
+                "",
+                "OA",
+                "OA'"
+              ],
+              "caption": "Construction du symétrique $A'$ de $A$ par rapport à $O$ : $OA = OA'$.",
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette construction est valable même si le point $A$ est déjà de l'autre côté de $O$ par rapport à ton repère visuel. La règle est immuable : même droite, même distance, côté opposé. Entraîne-toi sur ton cahier avec plusieurs positions de $A$ par rapport à $O$ pour ancrer le geste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coordonnées dans un repère orthonormé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on travaille dans un repère $(O; \\vec{i}, \\vec{j})$, le centre de symétrie est souvent l'origine $O$. Dans ce cas, le calcul des coordonnées devient très simple et rapide. Si un point $A$ a pour coordonnées $(x_A ; y_A)$, alors son image $A'$ par la symétrie de centre $O$ a pour coordonnées $(-x_A ; -y_A)$. C'est une règle qu'il faut connaître par cœur car elle évite bien des tracés."
+            },
+            {
+              "type": "display_math",
+              "latex": "s_O(x_A ; y_A) = (-x_A ; -y_A)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : le point $B(4 ; -2)$. Son symétrique $B'$ par rapport à l'origine aura pour coordonnées $(-4 ; 2)$. Le $x$ change de signe, le $y$ change de signe. Géométriquement, cela revient à faire un demi-tour autour de l'origine : le point qui était à droite en bas se retrouve à gauche en haut. Si le centre de symétrie n'est pas l'origine, par exemple $I(a ; b)$, la formule s'adapte : $x_{A'} = 2a - x_A$ et $y_{A'} = 2b - y_A$, car $I$ est le milieu de $[AA']$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Symétrique d'un segment et d'une figure complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire le symétrique d'un segment $[AB]$, il suffit de construire les symétriques $A'$ et $B'$ des deux extrémités, puis de relier $A'$ et $B'$. Le segment $[A'B']$ est l'image de $[AB]$. Pour un polygone comme un triangle ou un quadrilatère, on procède sommet par sommet : on trace les images $A', B', C'...$ de tous les sommets, puis on les relie dans le même ordre. La figure obtenue a la même forme et les mêmes dimensions que l'originale, elle est simplement retournée."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Triangle $ABC$ et son image $A'B'C'$ par symétrie centrale de centre $O$. L'ordre des sommets est conservé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe sur le graphique que l'orientation du parcours des sommets est inversée : si $A \\to B \\to C$ tourne dans le sens direct, alors $A' \\to B' \\to C'$ tourne dans le sens indirect. C'est une caractéristique du demi-tour : la figure est comme retournée dans un miroir qui serait un point. Nous verrons dans la prochaine leçon que malgré ce retournement, toutes les longueurs et tous les angles restent intacts."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un repère orthonormé, le point $M$ a pour coordonnées $(3 ; -5)$. Quelles sont les coordonnées de $M'$, symétrique de $M$ par rapport à l'origine $O$ ?",
+              "answer": "$M'(-3 ; 5)$",
+              "hint": "Applique la règle : change le signe des deux coordonnées.",
+              "explanation": "La symétrie centrale de centre $O(0;0)$ transforme $(x;y)$ en $(-x;-y)$. Donc $M(3;-5)$ devient $M'(-3;5)$."
+            },
+            {
+              "question": "Sur une figure, le point $O$ est le milieu de $[PP']$. Les points $P$, $O$, $P'$ sont-ils alignés ? Justifie.",
+              "answer": "Oui, ils sont alignés.",
+              "hint": "Rappelle-toi la définition de la symétrie centrale : le centre est le milieu du segment joignant un point à son image.",
+              "explanation": "Par définition de la symétrie centrale de centre $O$, pour tout point $P$, son image $P'$ est telle que $O$ est le milieu de $[PP']$. Cela implique que $P$, $O$ et $P'$ appartiennent à la même droite."
+            },
+            {
+              "question": "Soit $A(2;1)$ et $B(-1;3)$ dans un repère $(O;\\vec{i},\\vec{j})$. Construis les points $A'$ et $B'$, images de $A$ et $B$ par la symétrie de centre $O$. Donne leurs coordonnées.",
+              "answer": "$A'(-2;-1)$ et $B'(1;-3)$",
+              "hint": "Utilise la formule de coordonnées pour chaque point.",
+              "explanation": "On applique $s_O(x;y)=(-x;-y)$. Pour $A(2;1) \\rightarrow A'(-2;-1)$. Pour $B(-1;3) \\rightarrow B'(1;-3)$."
+            },
+            {
+              "question": "Le segment $[CD]$ a pour extrémités $C(1;2)$ et $D(4;0)$. Sans faire de figure, donne les coordonnées de $C'$ et $D'$, images de $C$ et $D$ par la symétrie de centre $I(2;1)$. Indice : $I$ est le milieu de $[CC']$ et $[DD']$.",
+              "answer": "$C'(3;0)$ et $D'(0;2)$",
+              "hint": "Utilise les formules du milieu : $x_I = \\frac{x_C + x_{C'}}{2}$.",
+              "explanation": "Pour $C(1;2)$ et $I(2;1)$ : $2 = \\frac{1+x_{C'}}{2} \\Rightarrow x_{C'}=3$ ; $1 = \\frac{2+y_{C'}}{2} \\Rightarrow y_{C'}=0$. Donc $C'(3;0)$. Pour $D(4;0)$ : $2 = \\frac{4+x_{D'}}{2} \\Rightarrow x_{D'}=0$ ; $1 = \\frac{0+y_{D'}}{2} \\Rightarrow y_{D'}=2$. Donc $D'(0;2)$."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le centre de symétrie est le milieu de tous les segments"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu que pour un point $A$ et son image $A'$, le centre $O$ est le milieu de $[AA']$. Cette propriété est le socle de tout l'édifice. Elle signifie que le vecteur $\\vec{OA'}$ est l'opposé du vecteur $\\vec{OA}$. En d'autres termes, si tu vas de $O$ vers $A$, pour aller vers $A'$ tu fais exactement le même chemin mais en sens inverse. Cette relation vectorielle est d'une puissance incroyable pour démontrer des propriétés sans même avoir besoin de figure."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteur opposé",
+              "definition": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont opposés s'ils ont même direction, même norme, mais sens contraire. On note $\\vec{v} = -\\vec{u}$.",
+              "example": "$\\vec{OA'} = -\\vec{OA}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{OA'} = -\\vec{OA} \\quad \\text{et} \\quad \\vec{AA'} = 2\\vec{OA}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette égalité vectorielle $\\vec{OA'} = -\\vec{OA}$ est la signature algébrique de la symétrie centrale. Elle permet de calculer des coordonnées, comme nous l'avons fait, mais aussi de raisonner sur des figures entières. Par exemple, si tu connais le vecteur $\\vec{AB}$, tu peux trouver le vecteur $\\vec{A'B'}$ sans connaître les coordonnées des points, simplement en utilisant la relation de Chasles. C'est ce que nous allons explorer maintenant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La symétrie centrale conserve les longueurs et les angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une propriété fondamentale : la symétrie centrale est une isométrie. Cela veut dire qu'elle ne déforme pas les figures. Si tu mesures un segment $[AB]$ et son image $[A'B']$, tu trouveras exactement la même longueur. De même, un angle de $30^{\\circ}$ donnera un angle image de $30^{\\circ}$. La figure initiale et son image sont superposables : il suffit de faire un demi-tour pour que l'une coïncide parfaitement avec l'autre. C'est pour cela qu'on dit souvent que la symétrie centrale est un « retournement » qui ne change pas les dimensions."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "caption": "Triangle $ABC$ et son image $A'B'C'$. Les longueurs $AB=A'B'$, $BC=B'C'$, $AC=A'C'$ sont égales deux à deux. Les angles le sont aussi.",
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le triangle ci-dessus. Même si l'orientation a changé (le sens de parcours des sommets est inversé), les mesures métriques sont identiques. Cette conservation explique pourquoi, pour construire l'image d'une figure complexe, il suffit de construire les images des points caractéristiques (sommets, centre de cercle, intersection de droites) : les relations de distance et d'angle entre ces points sont préservées, donc la figure globale garde sa forme exacte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Alignement, parallélisme et milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois autres propriétés coulent de source dès qu'on a compris le demi-tour. Premièrement, l'alignement : si trois points $A, B, C$ sont alignés, leurs images $A', B', C'$ le sont aussi. Une droite se transforme toujours en une droite. Deuxièmement, le parallélisme : deux droites parallèles donnent deux droites images parallèles. Mieux encore : une droite et son image par symétrie centrale sont toujours parallèles (ou confondues si la droite passe par le centre). Troisièmement, le milieu : l'image du milieu d'un segment est le milieu du segment image. Si $I$ est le milieu de $[AB]$, alors $I'$ est le milieu de $[A'B']$."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Droite $(d)$ et son image $(d')$ par symétrie de centre $O$. Les deux droites sont parallèles. Le milieu $I$ de $[AB]$ a pour image $I'$, milieu de $[A'B']$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés sont des outils de raisonnement puissants. Par exemple, si tu dois démontrer que deux segments ont même milieu, tu peux essayer de montrer qu'ils sont images l'un de l'autre par une symétrie centrale. Ou si tu sais que deux droites sont parallèles et que l'une passe par le centre de symétrie, tu déduis immédiatement que l'autre passe aussi par ce centre (car elle est confondue avec son image). Nous allons voir comment utiliser ces liens vectoriels."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La relation vectorielle fondamentale : $\\vec{A'B'} = -\\vec{AB}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la propriété reine de ce chapitre, celle qu'il faut savoir écrire, justifier et utiliser. Soient $A, B$ deux points et $A', B'$ leurs images par la symétrie de centre $O$. Alors le vecteur $\\vec{A'B'}$ est l'opposé du vecteur $\\vec{AB}$. En notation : $\\vec{A'B'} = -\\vec{AB}$. Cela signifie que les segments $[AB]$ et $[A'B']$ ont même longueur, même direction, mais sens contraire. Ils sont parallèles et de même longueur, mais l'un est « retourné » par rapport à l'autre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{A'B'} = -\\vec{AB} = \\vec{BA}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Démontrons-le rapidement avec la relation de Chasles : $\\vec{A'B'} = \\vec{A'O} + \\vec{OB'}$. Or $\\vec{A'O} = -\\vec{OA} = \\vec{AO}$ et $\\vec{OB'} = -\\vec{OB} = \\vec{BO}$. Donc $\\vec{A'B'} = \\vec{AO} + \\vec{OB} = \\vec{AB}$... Attends, vérifions les sens. $\\vec{A'B'} = \\vec{A'O} + \\vec{OB'}$. Comme $O$ est milieu de $[AA']$, $\\vec{A'O} = \\vec{OA}$ ? Non, $\\vec{OA'} = -\\vec{OA}$, donc $\\vec{A'O} = -\\vec{OA'} = \\vec{OA}$. Et $\\vec{OB'} = -\\vec{OB}$. Donc $\\vec{A'B'} = \\vec{OA} + (-\\vec{OB}) = \\vec{OA} + \\vec{BO} = \\vec{BA} = -\\vec{AB}$. C'est prouvé ! Cette égalité vectorielle est ton meilleur allié pour les exercices de démonstration."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $s_O$ la symétrie de centre $O$. On a $\\vec{OA} = \\vec{u}$ et $\\vec{OB} = \\vec{v}$. Exprime $\\vec{A'B'}$ en fonction de $\\vec{u}$ et $\\vec{v}$.",
+              "answer": "$\\vec{A'B'} = \\vec{v} - \\vec{u}$ (ou $-\\vec{u} + \\vec{v}$)",
+              "hint": "Utilise $\\vec{A'B'} = -\\vec{AB}$ et la relation de Chasles pour $\\vec{AB}$.",
+              "explanation": "$\\vec{AB} = \\vec{AO} + \\vec{OB} = -\\vec{u} + \\vec{v}$. Donc $\\vec{A'B'} = -\\vec{AB} = -(-\\vec{u} + \\vec{v}) = \\vec{u} - \\vec{v}$. Attention au piège : $\\vec{A'B'} = -\\vec{AB} = -(\\vec{v} - \\vec{u}) = \\vec{u} - \\vec{v}$."
+            },
+            {
+              "question": "Dans un triangle $ABC$, $I$ est le milieu de $[AB]$ et $J$ le milieu de $[AC]$. On note $A', B', C'$ les images de $A, B, C$ par la symétrie de centre $O$. Les points $I'$ et $J'$ (images de $I$ et $J$) sont-ils les milieux de $[A'B']$ et $[A'C']$ ? Justifie.",
+              "answer": "Oui, $I'$ est le milieu de $[A'B']$ et $J'$ est le milieu de $[A'C']$.",
+              "hint": "La symétrie centrale conserve les milieux des segments.",
+              "explanation": "La symétrie centrale est une isométrie qui conserve les rapports de division. Puisque $I$ est le milieu de $[AB]$, son image $I'$ est le milieu de l'image du segment $[AB]$, qui est $[A'B']$. Même raisonnement pour $J$ et $J'$."
+            },
+            {
+              "question": "Les droites $(d_1)$ et $(d_2)$ sont parallèles. $(d_1)$ passe par le centre $O$ d'une symétrie centrale. Que peut-on dire de l'image de $(d_2)$ ?",
+              "answer": "L'image de $(d_2)$ est une droite $(d_2')$ parallèle à $(d_2)$ (et à $(d_1)$).",
+              "hint": "La symétrie conserve le parallélisme. Une droite passant par le centre est invariante globalement.",
+              "explanation": "La symétrie centrale transforme une droite en une droite parallèle (ou confondue). Comme $(d_1)$ passe par $O$, son image est $(d_1)$ elle-même. Puisque $(d_2) \\parallel (d_1)$, l'image $(d_2')$ est parallèle à l'image de $(d_1)$, donc parallèle à $(d_1)$ et à $(d_2)$."
+            },
+            {
+              "question": "Soit $ABCD$ un parallélogramme de centre $O$. Exprime $\\vec{AB}$ en fonction de $\\vec{DC}$ en utilisant la symétrie centrale de centre $O$.",
+              "answer": "$\\vec{AB} = \\vec{DC}$",
+              "hint": "Le centre du parallélogramme est le centre de symétrie qui échange $A$ et $C$, $B$ et $D$.",
+              "explanation": "La symétrie de centre $O$ envoie $A$ sur $C$ et $B$ sur $D$ (et inversement). Donc $A' = C$ et $B' = D$. La propriété vectorielle donne $\\vec{A'B'} = -\\vec{AB}$, soit $\\vec{CD} = -\\vec{AB}$. Or $\\vec{DC} = -\\vec{CD}$. Donc $\\vec{DC} = \\vec{AB}$."
+            }
+          ]
+        },
+        {
+          "title": "Figures invariantes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une figure invariante ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une figure est dite invariante par une symétrie centrale (ou globale) si, après avoir appliqué la transformation, la figure se retrouve exactement sur elle-même. Attention : cela ne veut pas dire que chaque point ne bouge pas ! Seuls les points situés précisément au centre $O$ restent fixes. Pour les autres points, ils échangent leur place deux par deux, mais l'ensemble de la figure ne change pas d'aspect ni de position. C'est comme un jeu de chaises musicales où tout le monde change de place mais l'occupation globale des chaises est identique."
+            },
+            {
+              "type": "definition",
+              "term": "Figure invariante (globalement)",
+              "definition": "Une figure $\\mathcal{F}$ est invariante par la symétrie de centre $O$ si pour tout point $M$ de $\\mathcal{F}$, son image $M'$ appartient aussi à $\\mathcal{F}$. On a $s_O(\\mathcal{F}) = \\mathcal{F}$.",
+              "example": "Un cercle de centre $O$ est invariant par la symétrie de centre $O$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 + y^2 - 4",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Cercle de centre $O(0;0)$ et de rayon $2$. Tout point $M$ du cercle a son symétrique $M'$ qui appartient aussi au cercle. La figure ne bouge pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Outre le cercle centré en $O$, la droite passant par $O$ est l'exemple le plus simple de figure invariante : chaque point de la droite a son symétrique sur cette même droite. Plus généralement, toute figure possédant un centre de symétrie est invariante par la symétrie de ce centre. C'est une façon commode de caractériser certaines figures : au lieu de lister toutes leurs propriétés, on peut dire « cette figure admet un centre de symétrie »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le parallélogramme : figure invariante par excellence"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le grand théorème de ce chapitre : un quadrilatère est un parallélogramme si et seulement si ses diagonales ont même milieu. Ce milieu commun est alors le centre de symétrie du parallélogramme. Cela signifie que la symétrie centrale de centre $O$ (intersection des diagonales) échange les sommets deux à deux : $A$ et $C$, $B$ et $D$. Les côtés $[AB]$ et $[CD]$ s'échangent, tout comme $[BC]$ et $[AD]$. C'est une propriété « si et seulement si » : elle permet de définir le parallélogramme, de le reconnaître et d'en déduire toutes ses autres propriétés (côtés parallèles, angles opposés égaux...)."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "AB",
+                "BC",
+                "CD",
+                "DA"
+              ],
+              "caption": "Parallélogramme $ABCD$. Les diagonales $[AC]$ et $[BD]$ se coupent en leur milieu $O$. $O$ est le centre de symétrie de la figure.",
+              "rightAngleAt": -1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diagonales même milieu $\\Rightarrow$ Symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les diagonales $[AC]$ et $[BD]$ ont même milieu $O$, alors $O$ est le milieu de $[AC]$ et de $[BD]$. La symétrie $s_O$ envoie $A$ sur $C$ et $B$ sur $D$. Donc $s_O$ échange les sommets opposés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Côtés opposés parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après la propriété vectorielle, $\\vec{DC} = \\vec{AB}$ (car $D$ image de $B$, $C$ image de $A$). Donc $(DC) \\parallel (AB)$. De même $\\vec{AD} = \\vec{BC}$, donc $(AD) \\parallel (BC)$. C'est un parallélogramme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Réciproque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $ABCD$ est un parallélogramme, on sait que ses diagonales se coupent en leur milieu (propriété connue). Donc elles ont même milieu $O$. La symétrie de centre $O$ envoie $A$ sur $C$ et $B$ sur $D$, donc la figure est invariante."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette equivalence est un outil de démonstration redoutable. Pour prouver qu'un quadrilatère est un parallélogramme, il te suffit souvent de montrer que les diagonales ont même milieu. Pour prouver que deux segments ont même milieu, montre qu'ils sont images l'un de l'autre par une symétrie centrale. C'est une logique circulaire très élégante qui simplifie beaucoup de problèmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Autres figures à centre de symétrie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le parallélogramme n'est pas seul. Le rectangle, le losange et le carré, cas particuliers du parallélogramme, possèdent bien sûr un centre de symétrie (intersection des diagonales). Mais il y a d'autres figures : le segment (son milieu est centre de symétrie), la droite (tout point est centre de symétrie pour la droite entière), le cercle (son centre), et les polygones réguliers à nombre pair de côtés (hexagone, octogone...). Pour un polygone régulier à $2n$ côtés, le centre du cercle circonscrit est centre de symétrie : il échange les sommets opposés."
+            },
+            {
+              "type": "graph",
+              "expression": "cos(6*x)",
+              "xmin": -3.14,
+              "xmax": 3.14,
+              "caption": "Hexagone régulier (approximation). Le centre $O$ est centre de symétrie : sommets opposés s'échangent."
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'inverse, un triangle équilatéral, un pentagone régulier, un trapèze quelconque (sauf parallélogramme) n'ont pas de centre de symétrie. C'est un critère de distinction très net : si tu trouves un point $O$ tel que la figure coïncide avec son image par $s_O$, alors la figure a un centre de symétrie. Sinon, elle n'en a pas. Cette propriété binaire (oui/non) aide à classer les quadrilatères par exemple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la symétrie pour démontrer : stratégie gagnante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, retenons la méthode type d'un exercice « montre que... » utilisant la symétrie centrale. 1. Identifie un centre de symétrie potentiel (souvent l'intersection de diagonales, ou un milieu donné). 2. Vérifie que ce point est bien le milieu de segments joignant des points correspondants. 3. Conclus que la figure est invariante par cette symétrie. 4. Déduis les égalités de longueurs, parallélismes, ou égalités vectorielles recherchées. Par exemple, pour montrer que les droites $(AC)$ et $(BD)$ sont parallèles, montre qu'elles sont images l'une de l'autre par une symétrie centrale. C'est souvent plus rapide que d'utiliser les angles alternes-internes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main : construction précise, propriétés métriques et vectorielles, classification des figures invariantes. La symétrie centrale n'est pas un gadget, c'est une loupe grossissante sur la structure des figures. Elle transforme des problèmes compliqués en évidences visuelles et vectorielles. Fais le bilan avec la checklist ci-dessous."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la symétrie centrale de centre $O$ et donner les coordonnées de l'image d'un point dans un repère.",
+                "Je sais construire à la règle et au compas le symétrique d'un point, d'un segment, d'un polygone.",
+                "Je connais les propriétés de conservation : longueurs, angles, alignement, parallélisme, milieux.",
+                "Je sais écrire et utiliser la relation vectorielle fondamentale $\\vec{A'B'} = -\\vec{AB}$.",
+                "Je sais reconnaître une figure invariante et citer des exemples (cercle, droite passant par $O$, parallélogramme, polygone régulier pair).",
+                "Je sais utiliser la propriété « diagonales même milieu $\\Leftrightarrow$ parallélogramme » pour démontrer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les figures suivantes, lesquelles admettent un centre de symétrie ? Cercle, segment, triangle équilatéral, rectangle, losange, trapèze quelconque, hexagone régulier.",
+              "answer": "Cercle, segment, rectangle, losange, hexagone régulier.",
+              "hint": "Vérifie pour chacune si un demi-tour autour d'un point fait coïncider la figure avec elle-même.",
+              "explanation": "Le cercle (centre), le segment (milieu), le rectangle et le losange (parallélogrammes, centre = intersection diagonales), l'hexagone régulier (centre du cercle circonscrit) ont un centre de symétrie. Le triangle équilatéral et le trapèze quelconque (non parallélogramme) n'en ont pas."
+            },
+            {
+              "question": "Soit $ABCD$ un quadrilatère tel que les diagonales $[AC]$ et $[BD]$ ont même milieu $O$. Démontre que $ABCD$ est un parallélogramme.",
+              "answer": "Puisque $O$ est le milieu de $[AC]$ et $[BD]$, la symétrie $s_O$ échange $A$ et $C$, $B$ et $D$. Donc $\\vec{AB} = \\vec{DC}$, donc $(AB) \\parallel (DC)$ et $AB = DC$. C'est un parallélogramme.",
+              "hint": "Utilise la symétrie de centre $O$ et la relation vectorielle $\\vec{A'B'} = -\\vec{AB}$.",
+              "explanation": "La symétrie $s_O$ envoie $A$ sur $C$ ($A'=C$) et $B$ sur $D$ ($B'=D$). La propriété vectorielle donne $\\vec{A'B'} = -\\vec{AB}$, soit $\\vec{CD} = -\\vec{AB}$, donc $\\vec{AB} = \\vec{DC}$. Les vecteurs sont égaux, donc même direction, même sens, même norme : $(AB) \\parallel (DC)$ et $AB=DC$. Le quadrilatère a une paire de côtés opposés parallèles et égaux, c'est un parallélogramme."
+            },
+            {
+              "question": "Dans un repère orthonormé, on donne $A(1;2)$, $B(5;4)$, $C(7;1)$. On cherche $D$ tel que $ABCD$ soit un parallélogramme. Détermine les coordonnées de $D$ en utilisant le centre de symétrie.",
+              "answer": "$D(3;-1)$",
+              "hint": "Le centre $O$ est le milieu de $[AC]$. $O$ est aussi le milieu de $[BD]$. Calcule $O$ puis $D$.",
+              "explanation": "Milieu $O$ de $[AC]$ : $x_O = \\frac{1+7}{2}=4$, $y_O = \\frac{2+1}{2}=1.5$. Soit $O(4;1.5)$. $O$ est milieu de $[BD]$ : $4 = \\frac{5+x_D}{2} \\Rightarrow x_D=3$ ; $1.5 = \\frac{4+y_D}{2} \\Rightarrow y_D=-1$. Donc $D(3;-1)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

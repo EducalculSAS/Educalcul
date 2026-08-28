@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Répéter expérience",
+  "title": "Quiz : Répéter une expérience (Simulation)",
+  "questions": [
+    {
+      "text": "Lorsqu'on répète une expérience aléatoire un grand nombre de fois, la fréquence relative d'un événement tend vers quelle valeur ?",
+      "options": [
+        "Elle tend vers la probabilité théorique de l'événement",
+        "Elle tend vers $0$",
+        "Elle tend vers $1$",
+        "Elle tend vers le nombre total d'essais"
+      ],
+      "correctAnswer": "Elle tend vers la probabilité théorique de l'événement",
+      "explanation": "La loi des grands nombres stipule que la fréquence relative se stabilise autour de la probabilité théorique lorsque le nombre d'essais augmente. Les autres propositions correspondent à des idées fausses : la fréquence ne converge pas vers 0, 1 ou le nombre total d'essais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $600$ lancers d'un dé équilibré à $6$ faces. Quelle est la fréquence attendue du face $4$ ?",
+      "options": [
+        "$100$",
+        "$600$",
+        "$50$",
+        "$150$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "La probabilité d'obtenir un 4 à un lancer est $1/6$. Sur $600$ lancers, l'effectif attendu est $600 \\times 1/6 = 100$. Les autres valeurs correspondent à des erreurs de calcul (par exemple multiplier par 1, diviser par 12, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule $200$ lancers d'une pièce équilibrée. Quelle affirmation sur la fréquence relative de « face » est correcte ?",
+      "options": [
+        "Elle sera exactement $0,5$",
+        "Elle sera proche de $0,5$ mais pas nécessairement exacte",
+        "Elle sera supérieure à $0,5$",
+        "Elle sera inférieure à $0,5$"
+      ],
+      "correctAnswer": "Elle sera proche de $0,5$ mais pas nécessairement exacte",
+      "explanation": "Même avec un grand nombre d'essais, la fréquence relative fluctue autour de la probabilité théorique $0,5$ ; elle n'est pas garantie d'être exactement $0,5$. Les affirmations « supérieure » ou « inférieure » ne sont pas systématiquement vraies.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une simulation, on répète une expérience $1000$ fois et l'événement A se produit $370$ fois. Quelle est l'estimation de la probabilité de A ?",
+      "options": [
+        "$0,37$",
+        "$0,63$",
+        "$0,5$",
+        "$0,3$"
+      ],
+      "correctAnswer": "$0,37$",
+      "explanation": "L'estimation de la probabilité est la fréquence relative : $370/1000 = 0,37$. Les autres valeurs correspondent à l'erreur de prendre le complément ($0,63$), à une approximation grossière ($0,5$) ou à une division incorrecte ($0,3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pourquoi augmente-t-on le nombre de répétitions dans une simulation ?",
+      "options": [
+        "Pour réduire la variabilité de l'estimation",
+        "Pour garantir la probabilité exacte",
+        "Pour rendre la simulation plus lente",
+        "Pour modifier la probabilité théorique"
+      ],
+      "correctAnswer": "Pour réduire la variabilité de l'estimation",
+      "explanation": "Augmenter le nombre d'essais diminue l'écart-type de la fréquence relative, ce qui rend l'estimation plus stable et plus proche de la vraie probabilité. Cela ne garantit pas la valeur exacte, ne ralentit pas volontairement la simulation et ne change pas la probabilité théorique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

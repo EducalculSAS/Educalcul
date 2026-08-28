@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 155,
+  "_course_code": "ce2-t02-c04-fractions-equivalentes-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Reconnaître 1/2=2/4 sur dessin",
+  "title": "Reconnaître l'équivalence 1/2 = 2/4 sur dessin",
+  "questions": [
+    {
+      "text": "Quelle fraction représente la partie colorée sur le dessin ?",
+      "options": [
+        "$1/2$",
+        "$1/3$",
+        "$2/4$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "La barre est divisée en deux parties égales et une seule est colorée, ce qui correspond à la fraction un demi. Les autres options ne correspondent pas au nombre de parties colorées sur le total.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "bar",
+        "caption": "Barre divisée en 2 parties égales, une partie colorée"
+      }
+    },
+    {
+      "text": "Quelle fraction représente la partie colorée sur le dessin ?",
+      "options": [
+        "$1/2$",
+        "$2/4$",
+        "$3/4$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "Le cercle est partagé en quatre quarts et deux d'entre eux sont colorés, ce qui donne la fraction deux quarts. Bien que deux quarts soit équivalent à un demi, l'écriture sur le dessin est 2/4.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Cercle divisé en 4 parties égales, deux parties colorées"
+      }
+    },
+    {
+      "text": "Ce dessin montre la même quantité que le dessin de la question 1. Quelle fraction est écrite sur ce dessin ?",
+      "options": [
+        "$1/2$",
+        "$2/4$",
+        "$3/4$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "La barre est divisée en quatre parties égales et deux sont colorées. La fraction lue directement sur le dessin est donc deux quarts, qui est équivalente à un demi.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Barre divisée en 4 parties égales, deux parties colorées"
+      }
+    },
+    {
+      "text": "Parmi les fractions suivantes, laquelle est équivalente à $1/2$ ?",
+      "options": [
+        "$2/4$",
+        "$3/5$",
+        "$4/7$",
+        "$5/9$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "Deux quarts simplifiés donnent un demi. Les autres fractions n'ont pas le même quotient lorsque l'on divise le numérateur par le dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point A se trouve à la fraction $1/2$ sur la droite graduée. Laquelle des fractions suivantes représente le même emplacement ?",
+      "options": [
+        "$2/4$",
+        "$3/5$",
+        "$4/7$",
+        "$5/9$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "Sur une droite numérique, les fractions équivalentes occupent le même point. Deux quarts est équivalent à un demi, donc le point A correspond aussi à 2/4.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 avec un point à 0,5",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.5,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

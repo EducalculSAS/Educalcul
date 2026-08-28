@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 405,
+  "_course_code": "5eme-t06-c01-effectifs-et-frequences",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Tableau",
+  "title": "Algorithmique et tableaux de fréquences",
+  "blocks": [
+    {
+      "title": "Calculer une fréquence",
+      "content": "On considère un tableau de valeurs avec leurs effectifs. L'effectif total est noté $N$. Compléter l'algorithme suivant (style pseudo-code) pour calculer la fréquence de chaque valeur.\\nVariables : `valeur`, `effectif`, `N`, `frequence`.\\nDébut\\n  Pour chaque ligne du tableau\\n    `effectif` ← lire l'effectif de la ligne\\n    `frequence` ← ...\\n    Afficher `valeur`, `frequence`\\n  Fin Pour\\nFin",
+      "correctAnswer": "`frequence` ← `effectif` / `N`",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fréquence d'une valeur est le quotient de son effectif par l'effectif total. Dans l'algorithme, on affecte à la variable `frequence` le résultat de la division de `effectif` par `N`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retrouver un effectif manquant",
+      "content": "Dans un tableau statistique, on connaît la fréquence $f$ d'une valeur (exprimée en nombre décimal) et l'effectif total $N$. Écrire la formule mathématiques permettant de calculer l'effectif $E$ de cette valeur, puis proposer une instruction d'affectation correspondante dans un algorithme (variable `E`).",
+      "correctAnswer": "Formule : $E = f \\times N$. Instruction : `E` ← `f` * `N`",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Puisque la fréquence est définie par $f = E / N$, on en déduit $E = f \\times N$. En algorithmique, on utilise l'opérateur de multiplication `*` pour calculer l'effectif à partir de la fréquence `f` et du total `N`.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme Python : construire un tableau de fréquences",
+      "content": "On lance un dé à six faces dix fois et on obtient la liste des résultats : `resultats = [3, 5, 2, 3, 6, 1, 3, 2, 4, 3]`. Écrire un programme Python complet qui construit un dictionnaire `frequences` où les clés sont les faces (1 à 6) et les valeurs sont les fréquences (effectif divisé par 10). Le programme doit afficher ce dictionnaire à la fin.",
+      "correctAnswer": "resultats = [3, 5, 2, 3, 6, 1, 3, 2, 4, 3]\\nN = len(resultats)\\nfrequences = {}\\nfor face in range(1, 7):\\n    effectif = resultats.count(face)\\n    frequences[face] = effectif / N\\nprint(frequences)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la liste `resultats` et on calcule `N` (10) avec `len`. On crée un dictionnaire vide `frequences`. La boucle `for face in range(1, 7)` parcourt les six faces possibles. `resultats.count(face)` compte les occurrences de chaque face. On calcule la fréquence par division et on stocke dans le dictionnaire. Enfin `print` affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

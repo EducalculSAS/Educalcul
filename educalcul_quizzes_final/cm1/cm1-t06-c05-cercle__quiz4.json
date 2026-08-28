@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 252,
+  "_course_code": "cm1-t06-c05-cercle",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Application : Cercle",
+  "title": "Quiz : Applications du cercle (CM1)",
+  "questions": [
+    {
+      "text": "Quel segment relie le centre d'un cercle à un point de ce cercle ?",
+      "options": [
+        "Un rayon",
+        "Un diamètre",
+        "Une corde",
+        "Un arc"
+      ],
+      "correctAnswer": "Un rayon",
+      "explanation": "Par définition, le rayon est le segment qui joint le centre du cercle à n'importe quel point de ce cercle. Le diamètre passe par le centre mais relie deux points du cercle. La corde relie deux points du cercle sans passer forcément par le centre. L'arc est une portion du cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un rayon qui mesure six centimètres. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "Trois centimètres",
+        "Douze centimètres",
+        "Six centimètres",
+        "Neuf centimètres"
+      ],
+      "correctAnswer": "Douze centimètres",
+      "explanation": "Le diamètre est le double du rayon. On calcule $2 \\times 6 = 12$. La réponse trois centimètres correspond à la moitié du rayon (erreur de division par deux au lieu de multiplication). Six centimètres confond rayon et diamètre. Neuf centimètres n'a pas de lien direct avec la relation $d = 2r$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diamètre d'un cercle mesure quatorze centimètres. Quelle est la longueur de son rayon ?",
+      "options": [
+        "Vingt-huit centimètres",
+        "Sept centimètres",
+        "Quatorze centimètres",
+        "Douze centimètres"
+      ],
+      "correctAnswer": "Sept centimètres",
+      "explanation": "Le rayon est la moitié du diamètre. On calcule $14 \\div 2 = 7$. Vingt-huit centimètres est le double du diamètre (erreur de multiplication au lieu de division). Quatorze centimètres confond diamètre et rayon. Douze centimètres est une valeur approximative incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure, le compas est ouvert pour tracer un cercle de centre $O$. La distance entre les deux pointes du compas mesure trois centimètres. Quelle est la longueur du rayon du cercle tracé ?",
+      "options": [
+        "Un centimètre et demi",
+        "Trois centimètres",
+        "Six centimètres",
+        "Neuf centimètres"
+      ],
+      "correctAnswer": "Trois centimètres",
+      "explanation": "L'ouverture du compas correspond exactement à la longueur du rayon du cercle que l'on va tracer. La distance entre la pointe sèche (centre) et la pointe crayon (point du cercle) est le rayon. Donc le rayon mesure trois centimètres. Six centimètres serait le diamètre. Un centimètre et demi serait la moitié du rayon.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas ouvert pour tracer un cercle de rayon 3 cm"
+      }
+    },
+    {
+      "text": "Une roue de vélo a un rayon de vingt-cinq centimètres. Quelle est la longueur du diamètre de cette roue ?",
+      "options": [
+        "Cinquante centimètres",
+        "Vingt-cinq centimètres",
+        "Cent centimètres",
+        "Douze centimètres et demi"
+      ],
+      "correctAnswer": "Cinquante centimètres",
+      "explanation": "Le diamètre vaut deux fois le rayon. On calcule $2 \\times 25 = 50$. Le diamètre de la roue est donc cinquante centimètres. Vingt-cinq centimètres est la valeur du rayon. Cent centimètres est le quadruple du rayon. Douze centimètres et demi est la moitié du rayon.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 370,
+  "_course_code": "6eme-t08-c03-experiences-aleatoires",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Issues",
+  "title": "Quiz : Issues d'une expérience aléatoire (6e)",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quelle affirmation décrit correctement l'ensemble des issues possibles de cette expérience ?",
+      "options": [
+        "Il y a $5$ issues possibles.",
+        "Les issues sont les nombres pairs uniquement.",
+        "Il y a $6$ issues possibles : $1$, $2$, $3$, $4$, $5$, $6$.",
+        "L'issue $7$ est possible."
+      ],
+      "correctAnswer": "Il y a $6$ issues possibles : $1$, $2$, $3$, $4$, $5$, $6$.",
+      "explanation": "Une issue est un résultat possible de l'expérience. Un dé à six faces porte les numéros $1$, $2$, $3$, $4$, $5$, $6$. Il y a donc exactement $6$ issues possibles, distinctes et équilibrées. L'option A oublie une face. L'option B ne retient que la moitié des faces. L'option D propose un résultat impossible car la face $7$ n'existe pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On réalise une expérience en deux étapes : on lance une pièce de monnaie (Face ou Pile) puis on lance un dé à $6$ faces. Combien y a-t-il d'issues possibles au total pour cette expérience ?",
+      "options": [
+        "Il y a $8$ issues possibles.",
+        "Il y a $12$ issues possibles.",
+        "Il y a $6$ issues possibles.",
+        "Il y a $2$ issues possibles."
+      ],
+      "correctAnswer": "Il y a $12$ issues possibles.",
+      "explanation": "Pour compter les issues d'une expérience à plusieurs étapes, on multiplie le nombre d'issues de chaque étape. La pièce a $2$ issues (Face, Pile) et le dé en a $6$ ($1$ à $6$). Le nombre total d'issues est donc $2 \\times 6 = 12$. L'option A correspond à une addition ($2+6$) qui est une erreur fréquente. Les options C et D ne prennent en compte qu'une seule des deux étapes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac contient $3$ billes rouges numérotées $R1$, $R2$, $R3$ et $2$ billes bleues numérotées $B1$, $B2$. On tire une bille au hasard. Laquelle des propositions suivantes représente une issue élémentaire de cette expérience ?",
+      "options": [
+        "Tirer une bille rouge.",
+        "Tirer la bille $R2$.",
+        "Tirer une bille verte.",
+        "Tirer deux billes."
+      ],
+      "correctAnswer": "Tirer la bille $R2$.",
+      "explanation": "Une issue (ou issue élémentaire) est un résultat unique et précis de l'expérience. Ici, les issues possibles sont exactement les cinq billes distinctes : $R1$, $R2$, $R3$, $B1$, $B2$. \"Tirer la bille $R2$\" en est une. \"Tirer une bille rouge\" est un événement qui regroupe trois issues ($R1$, $R2$, $R3$). Les options C et D décrivent des résultats impossibles avec ce sac et ce protocole.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On fait tourner une roue sectorielle divisée en $4$ secteurs égaux numérotés $1$, $2$, $3$, $4$ et on lance un dé à $6$ faces. On note le numéro du secteur puis le résultat du dé. Quel est le nombre total d'issues possibles ?",
+      "options": [
+        "Il y a $10$ issues possibles.",
+        "Il y a $24$ issues possibles.",
+        "Il y a $4$ issues possibles.",
+        "Il y a $6$ issues possibles."
+      ],
+      "correctAnswer": "Il y a $24$ issues possibles.",
+      "explanation": "L'expérience comporte deux étapes indépendantes. La roue a $4$ issues possibles ($1$, $2$, $3$, $4$) et le dé en a $6$ ($1$ à $6$). On applique la règle du produit : le nombre total d'issues est le produit des nombres d'issues de chaque étape, soit $4 \\times 6 = 24$. L'option A correspond à l'addition ($4+6$). Les options C et D ne comptent que les issues d'une seule étape.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance simultanément deux dés à six faces (numérotés de $1$ à $6$). On note le résultat du premier dé puis celui du second. Parmi les couples suivants, lequel n'est PAS une issue possible de cette expérience ?",
+      "options": [
+        "($3$ ; $4$)",
+        "($1$ ; $1$)",
+        "($6$ ; $6$)",
+        "($2$ ; $7$)"
+      ],
+      "correctAnswer": "($2$ ; $7$)",
+      "explanation": "Chaque dé ne peut donner qu'un entier entre $1$ et $6$. Une issue est un couple ordonné $(a ; b)$ où $a$ est le résultat du premier dé et $b$ celui du second. Les couples ($3$ ; $4$), ($1$ ; $1$) et ($6$ ; $6$) sont formés uniquement de nombres entre $1$ et $6$, ils sont donc possibles. Le couple ($2$ ; $7$) contient le nombre $7$ qui ne figure sur aucune face d'un dé standard, cette issue est donc impossible.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

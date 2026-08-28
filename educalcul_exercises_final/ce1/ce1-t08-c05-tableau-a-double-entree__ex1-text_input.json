@@ -1,0 +1,132 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 140,
+  "_course_code": "ce1-t08-c05-tableau-a-double-entree",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Repérer ligne et colonne",
+  "title": "Repérer une case dans un tableau à double entrée",
+  "blocks": [
+    {
+      "title": "Lire une case",
+      "content": "Regarde le tableau ci-dessous. Quelle est l'indication inscrite dans la case à l'intersection de la ligne de Léa et de la colonne Pomme ?",
+      "correctAnswer": "Oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On repère d'abord la ligne correspondant à Léa (la première ligne de données). On repère ensuite la colonne correspondant à Pomme (la première colonne de données). À l'intersection de cette ligne et de cette colonne, on lit le mot « Oui ».",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pomme",
+          "Banane",
+          "Fraise"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "Oui",
+            "Non",
+            "Oui"
+          ],
+          [
+            "Tom",
+            "Non",
+            "Oui",
+            "Non"
+          ],
+          [
+            "Zoé",
+            "Oui",
+            "Oui",
+            "Oui"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    },
+    {
+      "title": "Trouver la colonne",
+      "content": "Regarde le même tableau. Sur la ligne de Tom, il y a un seul « Oui ». Dans quelle colonne se trouve ce « Oui » ?",
+      "correctAnswer": "Banane",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde la ligne de Tom (la deuxième ligne). On cherche la case qui contient « Oui ». Cette case se trouve sous l'en-tête « Banane ». La colonne est donc Banane.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pomme",
+          "Banane",
+          "Fraise"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "Oui",
+            "Non",
+            "Oui"
+          ],
+          [
+            "Tom",
+            "Non",
+            "Oui",
+            "Non"
+          ],
+          [
+            "Zoé",
+            "Oui",
+            "Oui",
+            "Oui"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    },
+    {
+      "title": "Compter sur une ligne",
+      "content": "Regarde le même tableau. Combien y a-t-il de « Oui » au total sur la ligne de Zoé ?",
+      "correctAnswer": "trois",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde la ligne de Zoé (la troisième ligne). On compte les cases contenant « Oui » : il y en a une sous Pomme, une sous Banane et une sous Fraise. Cela fait trois « Oui » au total.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Pomme",
+          "Banane",
+          "Fraise"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "Oui",
+            "Non",
+            "Oui"
+          ],
+          [
+            "Tom",
+            "Non",
+            "Oui",
+            "Non"
+          ],
+          [
+            "Zoé",
+            "Oui",
+            "Oui",
+            "Oui"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    }
+  ]
+}

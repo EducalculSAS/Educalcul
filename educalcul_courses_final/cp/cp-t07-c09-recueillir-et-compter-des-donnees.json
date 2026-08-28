@@ -1,0 +1,473 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.677134+00:00",
+  "id": 64,
+  "code": "cp-t07-c09",
+  "title": "Recueillir et compter des données",
+  "description": "Cours structuré Educalcul : Recueillir et compter des données.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Recueillir et compter des données",
+    "objectif_global": "Recueillir et compter des données",
+    "mini_lecons_imposees": [
+      "Faire un relevé.",
+      "Utiliser bâtons ou marques.",
+      "Calculer un effectif simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Faire un relevé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire un relevé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd’hui tu vas découvrir comment faire un relevé, c’est-à-dire noter les réponses de tes camarades pour les retrouver facilement."
+            },
+            {
+              "type": "definition",
+              "term": "relevé",
+              "definition": "Un relevé est une liste où l’on écrit chaque réponse que l’on recueille.",
+              "example": "Par exemple, tu demandes : quel fruit préfères‑tu ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide ce que tu veux savoir, comme la couleur favorite ou le jeu préféré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Interroger les copains",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la question à chaque élève et note la réponse tout de suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Marquer avec des traits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque réponse, trace un petit trait vertical. Au cinquième trait, fais une barre oblique pour former un groupe de cinq."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Les traits forment des groupes faciles à compter. Regarde comme c’est simple de voir $5$ traits ensemble."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Traits"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "||||"
+                ],
+                [
+                  "Banane",
+                  "|||"
+                ],
+                [
+                  "Fraise",
+                  "|||| |"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, voyons comment ranger ces informations dans un tableau clair pour les lire d’un coup d’œil."
+            },
+            {
+              "type": "paragraph",
+              "content": "On écrit le nom de chaque choix dans la première colonne et le nombre de traits dans la deuxième. Ainsi, on voit tout de suite quel fruit est le plus aimé."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "5"
+                ],
+                [
+                  "Banane",
+                  "3"
+                ],
+                [
+                  "Fraise",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, on peut transformer le tableau en un petit graphique à barres. Chaque barre montre la quantité d’un choix."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés de la classe",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 3,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 6,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de traits y a‑t‑il pour la fraise dans le premier tableau ?",
+              "answer": "6",
+              "hint": "Compte les groupes de cinq et le trait restant.",
+              "explanation": "Il y a un groupe de cinq traits (||||) et un trait de plus, donc $5+1 = 6$."
+            },
+            {
+              "question": "Quel fruit a le plus grand nombre dans le deuxième tableau ?",
+              "answer": "Fraise",
+              "hint": "Compare les nombres $5$, $3$ et $6$.",
+              "explanation": "Le nombre $6$ est le plus grand, donc la fraise est le fruit le plus choisi."
+            },
+            {
+              "question": "Quelle barre est la plus haute sur le graphique ?",
+              "answer": "La barre Fraise",
+              "hint": "Regarde la hauteur de chaque barre.",
+              "explanation": "La barre Fraise monte jusqu’à $6$, elle est plus haute que Pomme ($5$) et Banane ($3$)."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser bâtons ou marques.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser bâtons ou marques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon tu vas apprendre à compter avec des bâtons ou des petites marques sur le papier, comme le font les bergers pour leurs moutons."
+            },
+            {
+              "type": "definition",
+              "term": "bâton de comptage",
+              "definition": "Un bâton de comptage est un objet (ou un trait) que l’on ajoute à chaque fois qu’on compte un élément.",
+              "example": "Tu poses un bâton pour chaque pomme que tu vois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer des bâtons",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends $10$ bâtonnets ou dessine $10$ traits verticaux sur une feuille."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter par groupes de cinq",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À chaque cinquième bâton, trace une barre oblique pour former un paquet de $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regrouper par dix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand tu as deux paquets de $5$, attache‑les ensemble : cela fait une dizaine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme les paquets de $5$ et les dizaines rendent le comptage rapide, même pour de grands nombres."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "23 : 2 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant de compter une collection d’objets en utilisant seulement des marques sur le cahier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace un trait pour chaque objet. Après $5$ traits, fais la barre oblique. Continue jusqu’à la fin de la collection."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Objets comptés",
+                  "value": 12,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "12 objets représentés par des marques groupées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment transformer les marques en chiffres écrits pour les garder en mémoire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Compte les groupes de $5$ et les traits restants, puis écris le nombre total. C’est comme passer du dessin au nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de dizaines y a‑t‑il dans l’image des blocs de base dix ?",
+              "answer": "2",
+              "hint": "Regarde le nombre de barres de dix.",
+              "explanation": "Il y a deux barres de dix, donc $2$ dizaines."
+            },
+            {
+              "question": "Si tu as $12$ marques groupées par $5$, combien de groupes de $5$ as‑tu ?",
+              "answer": "2",
+              "hint": "Divise $12$ par $5$ en ignorant le reste.",
+              "explanation": "$12 = 5 + 5 + 2$, donc deux groupes complets de $5$."
+            },
+            {
+              "question": "Écris le nombre total représenté par $2$ groupes de $5$ et $3$ traits isolés.",
+              "answer": "13",
+              "hint": "Ajoute $5+5+3$.",
+              "explanation": "$5+5 = 10$, puis $10+3 = 13$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer un effectif simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer un effectif simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd’hui tu vas apprendre à trouver l’effectif, c’est‑à‑dire le nombre total d’éléments d’une liste ou d’un tableau."
+            },
+            {
+              "type": "definition",
+              "term": "effectif",
+              "definition": "L’effectif est le nombre total d’objets ou de réponses que l’on a comptés.",
+              "example": "Si $4$ enfants aiment le rouge et $3$ le bleu, l’effectif est $7$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les nombres du tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère chaque chiffre écrit dans la colonne « Nombre »."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute les nombres les uns après les autres, en commençant par le plus grand si tu veux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat final est l’effectif de toute la collecte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessous : on a $5$ pommes, $3$ bananes et $6$ fraises. En les additionnant, on obtient l’effectif total."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "5"
+                ],
+                [
+                  "Banane",
+                  "3"
+                ],
+                [
+                  "Fraise",
+                  "6"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un graphique en camembert. Chaque part montre une partie de l’effectif."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits préférés",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 3,
+                  "tone": "yellow"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 6,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, on peut aussi calculer l’effectif en comptant directement les marques sur une feuille de relevé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace toutes les marques, groupe‑les par $5$, puis additionne les groupes. C’est une autre façon d’obtenir le même total."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais faire un relevé en posant une question et en notant les réponses.",
+                "Je sais utiliser des bâtons ou des marques pour compter par groupes de cinq et de dix.",
+                "Je sais calculer un effectif simple en additionnant les nombres d’un tableau ou d’un graphique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l’effectif total des fruits dans le tableau ?",
+              "answer": "14",
+              "hint": "Additionne $5$, $3$ et $6$.",
+              "explanation": "$5 + 3 = 8$, puis $8 + 6 = 14$."
+            },
+            {
+              "question": "Combien de parts le camembert montre‑t‑il au total ?",
+              "answer": "14",
+              "hint": "Additionne les valeurs de chaque part.",
+              "explanation": "Les parts valent $5$, $3$ et $6$. Leur somme est $14$."
+            },
+            {
+              "question": "Si tu as $4$ groupes de $5$ marques et $2$ marques seules, quel est l’effectif ?",
+              "answer": "22",
+              "hint": "Calcule $4 \\times 5 + 2$.",
+              "explanation": "$4 \\times 5 = 20$, puis $20 + 2 = 22$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

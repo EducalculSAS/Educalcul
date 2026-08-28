@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 358,
+  "_course_code": "6eme-t06-c02-angles",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Application : Angles",
+  "title": "Quiz Applications sur les angles - 6e",
+  "questions": [
+    {
+      "text": "Observe le rapporteur ci-dessous. Quelle est la mesure de l'angle rapporté ?",
+      "options": [
+        "45 degrés",
+        "50 degrés",
+        "130 degrés",
+        "135 degrés"
+      ],
+      "correctAnswer": "50 degrés",
+      "explanation": "Sur le rapporteur, la graduation indique 50 degrés sur l'échelle intérieure (celle qui commence à 0 à droite). L'angle est aigu, sa mesure est donc bien 50 degrés. 130 degrés correspond à l'échelle extérieure, 45 et 135 degrés sont des valeurs proches mais incorrectes.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 50,
+        "caption": "Mesure d'un angle de 50 degrés au rapporteur"
+      }
+    },
+    {
+      "text": "Un angle mesure $115$ degrés. Comment classe-t-on cet angle ?",
+      "options": [
+        "Angle aigu",
+        "Angle droit",
+        "Angle obtus",
+        "Angle plat"
+      ],
+      "correctAnswer": "Angle obtus",
+      "explanation": "Un angle aigu mesure entre 0 et 90 degrés. Un angle droit mesure exactement 90 degrés. Un angle obtus mesure entre 90 et 180 degrés. Un angle plat mesure 180 degrés. Comme $115$ est strictement compris entre 90 et 180, c'est un angle obtus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux angles sont complémentaires. L'un mesure $37$ degrés. Quelle est la mesure de l'autre ?",
+      "options": [
+        "53 degrés",
+        "63 degrés",
+        "143 degrés",
+        "37 degrés"
+      ],
+      "correctAnswer": "53 degrés",
+      "explanation": "Deux angles sont complémentaires si la somme de leurs mesures vaut 90 degrés. Il faut donc calculer $90 - 37 = 53$. L'autre angle mesure 53 degrés. 63 degrés correspond à une erreur de calcul ($90-27$), 143 degrés correspond à des angles supplémentaires (somme 180), et 37 degrés serait l'angle lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, l'angle A mesure $50$ degrés et l'angle B mesure $70$ degrés. Quelle est la mesure de l'angle C ?",
+      "options": [
+        "50 degrés",
+        "60 degrés",
+        "70 degrés",
+        "120 degrés"
+      ],
+      "correctAnswer": "60 degrés",
+      "explanation": "La somme des angles d'un triangle vaut toujours 180 degrés. On calcule $180 - (50 + 70) = 180 - 120 = 60$. L'angle C mesure donc 60 degrés. 120 degrés est la somme des deux angles connus, pas le troisième. 50 et 70 sont les mesures des autres angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux droites se coupent en formant quatre angles. L'un de ces angles mesure $120$ degrés. Quelles sont les mesures des trois autres angles ?",
+      "options": [
+        "60, 60, 120 degrés",
+        "60, 120, 120 degrés",
+        "30, 60, 90 degrés",
+        "120, 120, 120 degrés"
+      ],
+      "correctAnswer": "60, 60, 120 degrés",
+      "explanation": "Lorsque deux droites se coupent, les angles opposés par le sommet sont égaux. Il y a donc un autre angle de 120 degrés. Les angles adjacents sont supplémentaires (somme 180 degrés), donc $180 - 120 = 60$ degrés. Il y a deux angles de 60 degrés. Les quatre angles sont donc 120, 60, 120, 60 degrés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.222798+00:00",
+  "id": 240,
+  "code": "cm1-t04-c07",
+  "title": "Bilan - Problèmes et algèbre CM1",
+  "description": "Cours structuré Educalcul : Bilan - Problèmes et algèbre CM1.",
+  "subject": "Résolution de problèmes et pensée algébrique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Résolution de problèmes et pensée algébrique",
+    "titre_du_cours": "Bilan - Problèmes et algèbre CM1",
+    "objectif_global": "Bilan - Problèmes et algèbre CM1",
+    "mini_lecons_imposees": [
+      "Choix de modèle.",
+      "Inconnues et motifs.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes et pensée algébrique",
+      "lessons": [
+        {
+          "title": "Choix de modèle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre l'histoire avant de calculer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis un problème, la première chose à faire n'est pas de sortir ta calculette ni d'aligner des chiffres. C'est de te faire un petit film dans la tête : qui fait quoi ? Qu'est-ce qui arrive ? Imagine que tu regardes une bande-dessinée sans bulles : tu vois les personnages, les objets, les actions. Si Léa a $7$ billes et qu'elle en donne $3$ à Tom, tu vois les billes partir de la main de Léa vers celle de Tom. Ce qui se passe, c'est un départ, une diminution. À l'inverse, si Paul a $4$ voitures et qu'il en reçoit $5$ de plus pour son anniversaire, tu vois une arrivée, une augmentation. Prendre le temps de visualiser l'action t'évite de confondre « plus » et « moins » : le mot « plus » n'est pas toujours une addition, et « moins » n'est pas toujours une soustraction. Tout dépend du sens de l'histoire."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Léa au début",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Données à Tom",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restent à Léa",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Un schéma en barres pour voir ce qui part et ce qui reste"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois grands modèles à reconnaître"
+            },
+            {
+              "type": "paragraph",
+              "content": "En CM1, la plupart des problèmes rentrent dans trois grandes familles. La première, c'est la **transformation** : une quantité de départ change, elle augmente ou elle diminue, et on cherche le résultat final (ou parfois le départ, ou le changement). La deuxième famille, c'est la **comparaison** : on a deux quantités et on cherche l'écart entre elles, ou on connaît l'écart et l'une des deux quantités. La troisième, c'est la **composition** : une quantité totale est faite de deux parties (ou plus), on connaît le total et une partie, on cherche l'autre partie, ou on connaît les deux parties et on cherche le total. Pour chaque problème, demande-toi : « Est-ce qu'une chose change ? Est-ce qu'on compare deux choses ? Est-ce qu'on sépare ou qu'on regroupe un tout ? » La réponse t'oriente vers le bon modèle."
+            },
+            {
+              "type": "definition",
+              "term": "Modèle de problème",
+              "definition": "Une structure type qui organise les données d'un problème (transformation, comparaison, composition). Choisir le bon modèle, c'est choisir le bon schéma pour raisonner.",
+              "example": "« Il y a 12 pommes dans le panier, 5 sont vertes, les autres sont rouges. Combien de pommes rouges ? » → Modèle composition : total = partie 1 + partie 2."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner ton schéma en barres, ton meilleur allié"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le modèle repéré, trace un petit schéma en barres (aussi appelé diagramme en bandes). C'est un dessin tout simple : un rectangle pour le total, des rectangles plus petits pour les parties. Si c'est une transformation, tu dessines la barre de départ, puis tu ajoutes ou tu coupes un bout pour le changement, et tu vois la barre finale. Si c'est une comparaison, tu mets les deux barres l'une sous l'autre, alignées à gauche, et l'écart saute aux yeux. Si c'est une composition, tu coupes la grande barre en deux (ou trois) morceaux. Le schéma ne sert pas à faire joli : il te montre **quelle opération faire**. Quand tu vois « total moins partie connue = partie cherchée », tu sais qu'il faut soustraire. Quand tu vois « partie 1 plus partie 2 = total », tu sais qu'il faut additionner. Le schéma transforme les mots en image, et l'image te guide vers le calcul."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis et raconte l'histoire à voix basse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les personnages, les objets, l'action (arrivée, départ, comparaison, partage)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transformation ? Comparaison ? Composition ? Dis-le tout haut : « C'est une transformation, la quantité diminue. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trace le schéma en barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les nombres connus, laisse un point d'interrogation pour l'inconnu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Décide l'opération et calcule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le schéma te dit : addition ou soustraction ? Multiplication ou division ? Fais le calcul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Réponds par une phrase complète",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Il reste 4 billes à Léa. » Vérifie que ça a du sens dans l'histoire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens d'apprendre à lire un problème comme une histoire, à repérer son modèle et à tracer le schéma qui va bien. Dans la prochaine leçon, on ira plus loin : on verra comment utiliser une inconnue (un petit trou, une lettre, une forme) pour noter ce qu'on ne connaît pas encore, et comment reconnaître des motifs qui reviennent souvent. C'est le début de l'algèbre, et c'est passionnant !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis ce problème : \"Au parc, il y a 18 enfants. 9 jouent au foot, les autres font du vélo. Combien d'enfants font du vélo ?\" Quel est le modèle ? Trace le schéma en barres et donne la réponse.",
+              "answer": "Modèle composition. Schéma : barre totale 18, partie 1 = 9 (foot), partie 2 = ? (vélo). 18 - 9 = 9. Réponse : 9 enfants font du vélo.",
+              "hint": "Est-ce qu'une quantité change ? Est-ce qu'on compare ? Ou est-ce qu'un total se partage en deux groupes ?",
+              "explanation": "Le total (18 enfants) est composé de deux parties : les footballeurs (9) et les cyclistes (inconnu). C'est un modèle composition. On soustrait la partie connue du total pour trouver l'autre partie : 18 - 9 = 9."
+            },
+            {
+              "question": "Choisis le bon modèle pour : \"Marc a 14 cartes. Il en achète 6 de plus. Combien a-t-il de cartes maintenant ?\"",
+              "answer": "Modèle transformation (augmentation). 14 + 6 = 20 cartes.",
+              "hint": "La quantité de cartes de Marc change : elle augmente. C'est une transformation.",
+              "explanation": "Quantité de départ : 14. Changement : +6 (achat). Quantité finale : 14 + 6 = 20. Le schéma montre une barre de 14 prolongée d'un bout de 6."
+            },
+            {
+              "question": "Dans une classe, il y a 12 filles et 15 garçons. Combien y a-t-il d'enfants au total ? Quel modèle ?",
+              "answer": "Modèle composition. 12 + 15 = 27 enfants.",
+              "hint": "On a deux groupes (filles, garçons) qui forment ensemble la classe entière.",
+              "explanation": "Deux parties connues (12 et 15) forment un total inconnu. C'est une composition où on additionne les parties : 12 + 15 = 27."
+            }
+          ]
+        },
+        {
+          "title": "Inconnues et motifs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'inconnue, cette étoile mystérieuse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le problème « Léa a quelques billes. Elle en gagne 5 et maintenant elle en a 12. Combien en avait-elle au début ? », il y a un nombre qu'on ne connaît pas : le nombre de billes de départ. Au lieu d'écrire « ? » ou de laisser un trou, les mathématiciens utilisent un **symbole** pour représenter ce nombre mystère. Ça peut être un petit carré $\\square$, une lettre comme $x$ ou $n$, ou même un dessin d'étoile $\\star$. Ce symbole, on l'appelle une **inconnue**. C'est comme un coffre verrouillé : on sait qu'il y a un nombre dedans, mais on ne l'a pas encore trouvé. L'avantage d'écrire $\\square + 5 = 12$ plutôt que « ? + 5 = 12 », c'est qu'on peut manipuler le symbole comme s'il était un vrai nombre : on peut lui soustraire 5 des deux côtés, on peut le déplacer, on peut raisonner avec. C'est le tout début de l'algèbre, et ça te donne un super pouvoir : résoudre des problèmes où l'inconnue n'est pas à la fin, mais au milieu ou au début !"
+            },
+            {
+              "type": "definition",
+              "term": "Inconnue",
+              "definition": "Un symbole (carré, lettre, forme) qui représente un nombre qu'on ne connaît pas encore mais qu'on va chercher. Dans $\\square + 5 = 12$, l'inconnue est $\\square$.",
+              "example": "« J'ai un nombre en tête. Je le multiplie par 3, j'ajoute 4, je trouve 19. Quel est mon nombre ? » → $3 \\times \\square + 4 = 19$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire l'équation du problème avec l'inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'histoire de Léa : « Léa a $\\square$ billes. Elle en gagne 5. Maintenant elle en a 12. » Tu as repéré le modèle : transformation, augmentation. Le schéma en barres montre : une barre de départ $\\square$, un bout ajouté de 5, une barre finale de 12. Pour écrire l'équation, tu suis le schéma de gauche à droite : $\\square + 5 = 12$. Maintenant, comment trouver $\\square$ ? Tu as deux méthodes. Méthode 1 : tu cherches « quoi + 5 = 12 ? » Tu sais que $7 + 5 = 12$, donc $\\square = 7$. Méthode 2 : tu fais l'opération inverse. Puisque l'histoire dit « on a ajouté 5 », pour remonter au départ tu **soustrayes** 5 : $12 - 5 = 7$. Les deux méthodes donnent le même résultat. La méthode 2 marche tout le temps, même quand les nombres sont trop grands pour deviner. C'est pour ça qu'on l'apprend : elle devient ton outil fiable pour tous les problèmes."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 12,
+              "caption": "12 = 1 dizaine et 2 unités. Pour soustraire 5, on décompose la dizaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les motifs qui reviennent : les familles d'opérations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as peut-être remarqué quelque chose : dans « $\\square + 5 = 12$ », on a soustrait 5 pour trouver $\\square$. Dans « $\\square - 4 = 9$ », on va **additionner** 4 pour trouver $\\square$ (car $9 + 4 = 13$). Dans « $3 \\times \\square = 21$ », on va **diviser** 21 par 3 (car $21 \\div 3 = 7$). Dans « $\\square \\div 4 = 6$ », on va **multiplier** 6 par 4 (car $6 \\times 4 = 24$). Il y a un motif, une **règle** : pour retrouver l'inconnue, on fait **l'opération inverse** de celle qui est écrite dans l'équation. C'est comme défaire ce qui a été fait : si on a attaché les lacets (addition), on les détache (soustraction) ; si on a multiplié (grandir), on divise (rétrécir). Ce motif, tu le retrouveras tout le temps, au collège, au lycée, partout. Apprends à le reconnaître : addition ↔ soustraction, multiplication ↔ division. C'est ton passeport pour l'algèbre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie l'opération qui lie l'inconnue au connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le signe devant l'inconnue : + , - , × , ÷ ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis l'opération inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "+ → - ,  - → + ,  × → ÷ ,  ÷ → × ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Applique l'opération inverse au nombre connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $\\square + 5 = 12$, on fait $12 - 5$. Dans $3 \\times \\square = 21$, on fait $21 \\div 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifie en remettant l'inconnue trouvée dans l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$7 + 5 = 12$ ? Oui. $3 \\times 7 = 21$ ? Oui. C'est gagné !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant poser une inconnue, écrire l'équation du problème et utiliser l'opération inverse pour la trouver. Dans la dernière leçon de ce bilan, on fera le point sur tout ce qu'on a appris : choisir le modèle, tracer le schéma, poser l'inconnue, repérer le motif de l'opération inverse. Tu auras une checklist pour t'auto-évaluer et être prêt pour les problèmes du CM2. C'est parti pour la révision finale !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'équation avec une inconnue pour : \"J'ai un nombre. Je lui ajoute 8, j'obtiens 15. Quel est mon nombre ?\" Puis trouve l'inconnue.",
+              "answer": "Équation : $\\square + 8 = 15$. Inconnue : $15 - 8 = 7$. Le nombre est 7.",
+              "hint": "L'inconnue est le nombre de départ. L'action est « ajoute 8 ». Le résultat est 15.",
+              "explanation": "Modèle transformation augmentation. $\\square + 8 = 15$. Opération inverse : soustraction. $15 - 8 = 7$. Vérification : $7 + 8 = 15$."
+            },
+            {
+              "question": "Résous : $\\square - 6 = 9$. Explique ta méthode.",
+              "answer": "Opération inverse de la soustraction : l'addition. $9 + 6 = 15$. Donc $\\square = 15$.",
+              "hint": "Quelle opération annule « moins 6 » ?",
+              "explanation": "L'équation dit : l'inconnue moins 6 donne 9. Pour retrouver l'inconnue, on refait le chemin à l'envers : on ajoute 6 à 9. $9 + 6 = 15$. Vérification : $15 - 6 = 9$."
+            },
+            {
+              "question": "Trouve l'inconnue : $5 \\times \\square = 35$. Quel motif as-tu utilisé ?",
+              "answer": "$\\square = 7$. Motif : multiplication ↔ division. J'ai fait $35 \\div 5 = 7$.",
+              "hint": "5 fois quoi fait 35 ? Ou alors : quelle est l'opération inverse de « fois 5 » ?",
+              "explanation": "L'équation montre une multiplication par 5. L'opération inverse est la division par 5. $35 \\div 5 = 7$. Vérification : $5 \\times 7 = 35$. Le motif « opération inverse » fonctionne pour toutes les opérations."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répétons ensemble : le fil conducteur du problème"
+            },
+            {
+              "type": "paragraph",
+              "content": "Depuis le début de l'année, tu as appris à ne plus te jeter sur les chiffres. Tu sais maintenant que chaque problème a une **structure**, un squelette invisible. La première leçon t'a montré comment lire l'histoire, repérer l'action (arrivée, départ, comparaison, partage) et choisir le bon modèle : transformation, comparaison ou composition. La deuxième t'a donné un outil puissant : l'inconnue, ce petit symbole qui tient la place du nombre mystère, et le réflexe de l'opération inverse pour la débusquer. Aujourd'hui, on met tout bout à bout. Imagine que tu as une boîte à outils : dedans, il y a le **schéma en barres** pour voir, l'**équation avec inconnue** pour écrire, et la **règle de l'inverse** pour calculer. Quand tu ouvres un problème, tu ne te demandes plus « est-ce que j'additionne ou je soustrais ? ». Tu te dis : « Quel est le modèle ? Je trace le schéma. Je pose l'inconnue. J'applique l'inverse. Je vérifie. » C'est une routine, une chorégraphie en quatre temps qui marche à tous les coups."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 24 autocollants",
+                  "value": 24,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Donnés à Julie : 9",
+                  "value": 9,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Restent : ?",
+                  "value": 15,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Exemple de révision : composition / transformation selon la lecture"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'entraînement mixte : un problème, trois regards"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce problème : « Une boîte contient 24 crayons. L'instituteur en donne 9 à la classe. Combien en reste-t-il dans la boîte ? » Tu peux le voir de trois façons, et les trois mènent au même calcul. Regard 1 : **Transformation** (départ 24, départ de 9, final ?). Schéma : barre de 24, on coupe 9, il reste ?. Équation : $24 - 9 = \\square$ ou $\\square + 9 = 24$. Regard 2 : **Composition** (total 24 = partie 1 (donnés) 9 + partie 2 (restants) ?). Schéma : barre totale 24 coupée en deux, un bout 9, l'autre ?. Équation : $9 + \\square = 24$. Regard 3 : **Comparaison** (la boîte avant et après : l'écart est 9). Les trois regards sont justes ! L'important, c'est que ton schéma corresponde à ta lecture et que l'équation suive le schéma. Si tu as bien vu « il y en a moins à la fin », tu sais que c'est une soustraction ou une addition à trou. La soustraction directe $24 - 9$ est souvent la plus rapide ici, mais l'addition à trou $\\square + 9 = 24$ marche tout aussi bien et prépare l'algèbre."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 9,
+                  "denominator": 24
+                },
+                {
+                  "numerator": 15,
+                  "denominator": 24
+                }
+              ],
+              "caption": "Visualiser les parties du total 24 : 9/24 et 15/24"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter et les bons réflexes à garder"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a trois pièges classiques en CM1. Piège 1 : **Lire en diagonale** et voir « 24 » et « 9 » puis faire $24 + 9 = 33$ parce que « plus » est dans la phrase (« donne 9 de plus » n'existe pas ici, mais « en donne 9 » veut dire enlève). La parade : raconte l'histoire avec tes mots avant de calculer. Piège 2 : **Oublier l'inconnue** quand elle n'est pas à la fin. « $\\square - 7 = 12 $ » ne se résout pas par $12 - 7$ ! Là, l'inconnue est au début, l'opération est une soustraction, donc l'inverse c'est l'addition : $12 + 7 = 19$. La parade : repère où est l'inconnue et quel signe est devant elle. Piège 3 : **Ne pas vérifier** dans l'histoire. Tu as trouvé 15 crayons restants. Relis : « 24 au début, 9 donnés, 15 restants. $15 + 9 = 24 $, ça colle. » La vérification, c'est ton filet de sécurité. Prends l'habitude de la faire à chaque fois, même quand c'est facile. C'est comme attacher sa ceinture : ça ne prend deux secondes et ça évite les gros bobos."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de pro",
+              "paragraphs": [
+                "Quand tu bloques sur un problème, change de regard : si tu l'as vu en transformation, essaie de le voir en composition. Souvent, le deuxième regard débloque l'évidence."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Voilà, tu as toutes les cartes en main pour aborder sereinement les problèmes du CM2 et du collège. Tu sais lire l'histoire, choisir le modèle, tracer le schéma, poser l'inconnue, appliquer l'opération inverse et vérifier. C'est une méthode complète, rigoureuse, et elle te servira toute ta scolarité. Sois fier de ton parcours ! La checklist qui suit te permet de valider chaque compétence une par une. Coche ce que tu sais faire, et si une case reste vide, reviens sur la leçon correspondante. Tu es prêt !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un problème et raconter l'histoire avec mes mots.",
+                "Je sais reconnaître le modèle : transformation, comparaison ou composition.",
+                "Je sais tracer un schéma en barres (diagramme en bandes) adapté au modèle.",
+                "Je sais poser une inconnue (carré, lettre) pour le nombre que je cherche.",
+                "Je sais écrire l'équation qui correspond à mon schéma.",
+                "Je sais utiliser l'opération inverse pour trouver l'inconnue ( + ↔ - , × ↔ ÷ ).",
+                "Je sais vérifier ma réponse en la remettant dans l'histoire.",
+                "Je sais expliquer mon raisonnement à l'oral ou à l'écrit."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Problème : \"Il y a 32 élèves dans l'école. 18 sont en classe de CP, les autres sont en CE1. Combien d'élèves en CE1 ?\" Choisis le modèle, trace le schéma, pose l'inconnue, calcule et vérifie.",
+              "answer": "Modèle composition. Schéma : total 32, partie 1 = 18 (CP), partie 2 = □ (CE1). Équation : 18 + □ = 32. Inconnue : 32 - 18 = 14. Vérification : 18 + 14 = 32. Réponse : 14 élèves en CE1.",
+              "hint": "Le total est connu (32). Une partie est connue (18). On cherche l'autre partie. C'est une composition.",
+              "explanation": "Composition : total = partie 1 + partie 2. 32 = 18 + □. Opération inverse de l'addition : soustraction. 32 - 18 = 14. On vérifie : 18 + 14 = 32. Le schéma montre une barre de 32 coupée en 18 et 14."
+            },
+            {
+              "question": "Résous : □ ÷ 4 = 6. Quelle opération inverse utilises-tu ?",
+              "answer": "Opération inverse : multiplication. □ = 6 × 4 = 24.",
+              "hint": "L'équation dit : l'inconnue divisée par 4 donne 6. Quelle opération annule la division par 4 ?",
+              "explanation": "Division par 4 ↔ multiplication par 4. On fait 6 × 4 = 24. Vérification : 24 ÷ 4 = 6. C'est le motif inverse."
+            },
+            {
+              "question": "Un problème : \"Tom a quelques billes. Il en perd 7. Il lui en reste 13. Combien en avait-il au début ?\" Écris l'équation, trouve l'inconnue, vérifie.",
+              "answer": "Équation : □ - 7 = 13. Inconnue : 13 + 7 = 20. Vérification : 20 - 7 = 13. Tom avait 20 billes.",
+              "hint": "L'inconnue est au début. L'action est « perd 7 » (soustraction). Le résultat final est 13. Opération inverse ?",
+              "explanation": "Transformation diminution. Départ □, changement -7, final 13. Équation : □ - 7 = 13. Inconnue au début, opération soustraction → inverse = addition. 13 + 7 = 20. Vérification : 20 - 7 = 13."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

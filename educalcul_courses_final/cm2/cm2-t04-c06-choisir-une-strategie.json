@@ -1,0 +1,410 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.435372+00:00",
+  "id": 301,
+  "code": "cm2-t04-c06",
+  "title": "Choisir une stratégie",
+  "description": "Cours structuré Educalcul : Choisir une stratégie.",
+  "subject": "Problèmes et initiation à l'algèbre",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Problèmes et initiation à l'algèbre",
+    "titre_du_cours": "Choisir une stratégie",
+    "objectif_global": "Choisir une stratégie",
+    "mini_lecons_imposees": [
+      "Comparer plusieurs procédures.",
+      "Justifier efficacité.",
+      "Vérifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Problèmes et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Comparer plusieurs procédures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer plusieurs procédures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à regarder plusieurs façons de résoudre le même calcul. Imagine que tu dois ajouter $47$ et $28$ pour savoir combien de billes tu as au total. Tu peux le faire dans ta tête, en décomposant les nombres, ou bien poser l'addition comme on le fait sur le cahier. Les deux chemins mènent au même résultat, mais l'un peut être plus rapide ou plus confortable selon le moment. Prends le temps d'observer chaque méthode, car comprendre pourquoi l'une marche mieux qu'une autre t'aidera à choisir la tienne en toute confiance."
+            },
+            {
+              "type": "definition",
+              "term": "procédure",
+              "definition": "Une procédure est une suite d'étapes précises que l'on suit pour effectuer un calcul ou résoudre un problème.",
+              "example": "La procédure de l'addition posée : aligner les unités, ajouter les dizaines, noter les retenues."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la méthode mentale. Décompose $47$ en $40$ et $7$, puis $28$ en $20$ et $8$. Ajoute d'abord les dizaines : $40 + 20 = 60$. Ensuite les unités : $7 + 8 = 15$. Enfin, regroupe : $60 + 15 = 75$. Cette façon de faire utilise la valeur de position des chiffres et te permet de calculer sans écrire. Pour visualiser la décomposition, regarde les blocs de base dix ci‑dessous."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 7,
+              "caption": "47 : 4 dizaines et 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à l'addition posée, la procédure que tu utilises souvent sur le papier. Écris les nombres l'un sous l'autre en alignant les unités et les dizaines. Ajoute la colonne des unités : $7 + 8 = 15$, écris $5$ et retiens $1$ dizaine. Puis ajoute la colonne des dizaines : $4 + 2 + 1 (retenue) = 7$. Le résultat s'affiche $75$. Regarde l'opération posée pour bien voir chaque étape."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "47",
+                "28"
+              ],
+              "result": "75",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu les deux procédures, compare-les. La méthode mentale est souvent plus rapide pour des nombres simples, car elle ne demande pas d'écrire. L'addition posée, elle, est plus sûre quand les nombres sont plus grands ou quand tu veux vérifier ton travail. Choisis la procédure qui te semble la plus adaptée à la situation. Pour t'aider à retenir les étapes, voici un résumé sous forme d'étapes numérotées."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Méthode mentale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décomposer chaque nombre en dizaines et unités, additionner séparément, puis regrouper."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Addition posée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aligner les chiffres, additionner colonne par colonne en gérant les retenues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la taille des nombres et ton aisance, décider quelle procédure utiliser."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux outils dans ta boîte à calcul. Dans la prochaine leçon, nous verrons comment justifier pourquoi l'une est plus efficace que l'autre pour un cas précis."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $36 + 19$ en utilisant la méthode mentale (décomposition).",
+              "answer": "55",
+              "hint": "Décompose $36$ en $30 + 6$ et $19$ en $10 + 9$.",
+              "explanation": "On ajoute les dizaines $30 + 10 = 40$, les unités $6 + 9 = 15$, puis $40 + 15 = 55$."
+            },
+            {
+              "question": "Effectue l'addition posée de $36 + 19$.",
+              "answer": "55",
+              "hint": "Aligne les unités et les dizaines, n'oublie pas la retenue.",
+              "explanation": "Unités : $6 + 9 = 15$, écris $5$, retiens $1$. Dizaines : $3 + 1 + 1 = 5$. Résultat $55$."
+            },
+            {
+              "question": "Quelle procédure préfères‑tu pour $36 + 19$ et pourquoi ?",
+              "answer": "Réponse libre, par exemple : la méthode mentale car les nombres sont petits.",
+              "hint": "Pense à la rapidité et à la facilité de chaque méthode.",
+              "explanation": "Il n'y a pas de mauvaise réponse ; l'important est d'expliquer ton choix avec des mots comme 'rapide', 'simple' ou 'sûr'."
+            }
+          ]
+        },
+        {
+          "title": "Justifier efficacité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier l'efficacité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à expliquer pourquoi une procédure est plus efficace qu'une autre pour un calcul donné. Imagine que tu dois ajouter $125$ et $378$. Tu pourrais le faire mentalement en décomposant les centaines, les dizaines et les unités, ou bien poser l'addition. Pour justifier ton choix, tu peux compter le nombre d'étapes, regarder si des retenues sont nécessaires, ou vérifier si les nombres sont 'ronds' (comme $100$, $200$). Plus tu donnes de raisons précises, plus ton argument est solide."
+            },
+            {
+              "type": "definition",
+              "term": "efficacité",
+              "definition": "L'efficacité d'une procédure mesure la rapidité et la simplicité avec laquelle elle permet d'obtenir le bon résultat.",
+              "example": "Une addition sans retenue est souvent plus efficace qu'une addition avec plusieurs retenues."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons l'exemple $125 + 378$. Avec la méthode mentale, il faut décomposer $125$ en $100 + 20 + 5$ et $378$ en $300 + 70 + 8$. Cela demande trois additions de centaines, trois de dizaines, trois d'unités, puis un regroupement final. C'est beaucoup d'étapes pour un élève de CM2. En revanche, l'addition posée aligne les chiffres et ne nécessite que trois colonnes, avec une seule retenue (au niveau des dizaines). Le nombre d'opérations écrites est donc plus petit."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'étapes pour chaque méthode",
+              "bars": [
+                {
+                  "label": "Méthode mentale",
+                  "value": 9,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Addition posée",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour justifier l'efficacité, tu peux utiliser des critères concrets : le nombre de retenues, la présence de chiffres ronds, la longueur de l'écriture. Par exemple, ajouter $200 + 300$ est immédiat mentalement car ce sont des centaines rondes. Mais $198 + 237$ comporte des retenues à chaque colonne, ce qui rend l'addition posée plus claire. Entraîne‑toi à formuler une phrase qui compare les deux méthodes en citant un critère précis."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Critère 1 : Retenu(s)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de retenues apparaissent dans l'addition posée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Critère 2 : Chiffres ronds",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les centaines, dizaines ou unités qui sont des multiples de $10$ ou $100$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Critère 3 : Nombre d'étapes écrites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare le total d'opérations à écrire pour chaque méthode."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, applique ces critères à un nouveau calcul : $456 + 289$. Décris en une phrase quelle procédure tu juges la plus efficace et pourquoi, en utilisant au moins un des critères vus. Cette justification écrite te servira aussi pour la prochaine leçon où nous vérifierons nos résultats."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comment argumenter ton choix. Dans la dernière leçon, nous verrons comment vérifier que le résultat obtenu est correct, quelle que soit la procédure utilisée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $125 + 378$, quelle méthode est la plus efficace selon le graphique ?",
+              "answer": "L'addition posée",
+              "hint": "Regarde la hauteur des barres : la plus basse correspond au moins d'étapes.",
+              "explanation": "La barre verte (addition posée) vaut $4$ étapes, la barre bleue (méthode mentale) vaut $9$ étapes. Moins d'étapes signifie plus d'efficacité."
+            },
+            {
+              "question": "Cite un critère qui montre que l'addition posée est plus efficace pour $198 + 237$.",
+              "answer": "Il y a une retenue à chaque colonne, ce qui rend l'addition posée plus claire.",
+              "hint": "Pense aux retenues et aux chiffres ronds.",
+              "explanation": "L'addition posée gère les retenues proprement, alors que la méthode mentale demanderait de retenir plusieurs reports."
+            },
+            {
+              "question": "Écris une phrase justifiant ton choix pour $456 + 289$.",
+              "answer": "Réponse libre, par exemple : 'Je choisis l'addition posée car il y a deux retenues et peu de chiffres ronds.'",
+              "hint": "Utilise les mots 'retenue', 'chiffre rond' ou 'étapes'.",
+              "explanation": "Toute phrase qui mentionne un critère précis (retenue, chiffre rond, nombre d'étapes) est acceptée."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu arrives à la dernière leçon de ce module. Savoir vérifier ton résultat, c'est comme relire un message avant de l'envoyer : tu t'assures qu'il n'y a pas d'erreur. Que tu aies utilisé la méthode mentale ou l'addition posée, il existe des astuces simples pour contrôler ton calcul. Nous allons voir trois techniques : l'addition inverse (soustraction), l'estimation par arrondi, et le test des neuf (optionnel pour les curieux). Chaque technique te donne une sécurité supplémentaire."
+            },
+            {
+              "type": "definition",
+              "term": "vérification",
+              "definition": "Action de contrôler qu'un résultat est correct en utilisant une autre méthode ou un test rapide.",
+              "example": "Après avoir trouvé $75$ pour $47 + 28$, on vérifie en faisant $75 - 28 = 47$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La première technique, l'addition inverse, consiste à soustraire l'un des nombres du résultat pour retrouver l'autre. Si tu as calculé $456 + 289 = 745$, fais $745 - 289$. Si tu retrouves $456$, ton addition est bonne. Essaie sur l'exemple ci‑dessous avec une soustraction posée."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "745",
+                "289"
+              ],
+              "result": "456",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième technique est l'estimation par arrondi. Arrondis chaque nombre à la dizaine ou à la centaine la plus proche, additionne ces nombres arrondis, et compare avec ton résultat exact. Pour $456 + 289$, arrondis à la centaine : $500 + 300 = 800$. Ton résultat exact $745$ est proche de $800$, ce qui est rassurant. Si tu avais obtenu $650$, l'écart aurait signalé une erreur."
+            },
+            {
+              "type": "number_line",
+              "caption": "Estimation par arrondi à la centaine",
+              "min": 600,
+              "max": 900,
+              "points": [
+                {
+                  "value": 800,
+                  "label": "Estimation"
+                },
+                {
+                  "value": 745,
+                  "label": "Résultat exact"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La troisième technique, le test des neuf, est un petit jeu de chiffres : additionne les chiffres de chaque nombre, réduis à un seul chiffre (somme des chiffres jusqu'à obtenir un chiffre de $1$ à $9$), fais de même pour le résultat, et compare. Ce test ne prouve pas à coup sûr, mais il détecte souvent une erreur. Nous l'abordons pour le plaisir de découvrir une astuce de mathématicien."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Somme des chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $456$ : $4+5+6 = 15$, puis $1+5 = 6$. Pour $289$ : $2+8+9 = 19$, puis $1+9 = 10$, puis $1+0 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Addition des restes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$6 + 1 = 7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérification du résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $745$ : $7+4+5 = 16$, puis $1+6 = 7$. Les deux donnent $7$, le test est passé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour vérifier tes additions. Choisis celui qui te convient le mieux selon le temps dont tu disposes et la complexité du calcul. Rappelle‑toi : vérifier, c'est prendre soin de ton travail et gagner en confiance."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux procédures pour un même calcul.",
+                "Je sais justifier pourquoi l'une est plus efficace en citant un critère précis.",
+                "Je sais vérifier mon résultat avec l'addition inverse, l'estimation ou le test des neuf."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie $47 + 28 = 75$ en faisant la soustraction inverse.",
+              "answer": "75 - 28 = 47",
+              "hint": "Pose la soustraction $75 - 28$ et regarde si tu retrouves $47$.",
+              "explanation": "Si la soustraction redonne le premier nombre, l'addition est correcte."
+            },
+            {
+              "question": "Estime $456 + 289$ en arrondissant à la centaine et compare avec $745$.",
+              "answer": "Estimation $800$, résultat exact $745$, écart $55$.",
+              "hint": "Arrondis $456$ à $500$ et $289$ à $300$, additionne.",
+              "explanation": "L'estimation $800$ est proche de $745$, ce qui confirme que le résultat est plausible."
+            },
+            {
+              "question": "Applique le test des neuf à $123 + 456 = 579$.",
+              "answer": "Test passé (les deux côtés donnent $3$).",
+              "hint": "Calcule la somme des chiffres de chaque nombre jusqu'à un chiffre unique.",
+              "explanation": "$123 \\rightarrow 6$, $456 \\rightarrow 6$, $6+6=12 \\rightarrow 3$. $579 \\rightarrow 21 \\rightarrow 3$. Les deux donnent $3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Bilan - Vecteurs Seconde",
+  "title": "Bilan vecteurs Seconde - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Alignement de trois points",
+      "content": "Mettez les étapes dans l'ordre chronologique pour démontrer que les points A, B, C sont alignés en utilisant les vecteurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les coordonnées des vecteurs $\\vec{AB}$ et $\\vec{AC}$.",
+        "Vérifier qu'il existe un réel $k$ tel que $\\vec{AC}=k\\vec{AB}$.",
+        "Conclure que les points A, B, C sont alignés."
+      ],
+      "explanation": "Pour prouver l'alignement de trois points, on commence par déterminer les vecteurs $\\vec{AB}$ et $\\vec{AC}$ à partir des coordonnées des points. Ensuite, on cherche un coefficient de proportionnalité $k$ tel que $\\vec{AC}=k\\vec{AB}$ ; si un tel $k$ existe, les deux vecteurs sont colinéaires, ce qui implique que les points A, B et C appartiennent à une même droite. La conclusion suit directement de cette colinéarité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un parallélogramme",
+      "content": "Mettez les étapes dans l'ordre chronologique pour déterminer les coordonnées du point D tel que ABCD soit un parallélogramme.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Exprimer $\\vec{AD}$ en fonction de $\\vec{AB}$ et $\\vec{AC}$ en utilisant la relation $\\vec{AD}=\\vec{AB}+\\vec{AC}$.",
+        "Calculer les coordonnées de $\\vec{AB}$ et $\\vec{AC}$ à partir des points donnés.",
+        "Ajouter les coordonnées pour obtenir $\\vec{AD}$.",
+        "Ajouter les coordonnées de A à $\\vec{AD}$ pour obtenir les coordonnées de D."
+      ],
+      "explanation": "Dans un parallélogramme, le vecteur $\\vec{AD}$ est la somme des vecteurs $\\vec{AB}$ et $\\vec{AC}$ (règle du parallélogramme). On commence donc par écrire cette relation vectorielle. Ensuite, on calcule les composantes de $\\vec{AB}$ et $\\vec{AC}$ à partir des coordonnées des points A, B et C. On effectue l'addition composante par composante pour obtenir $\\vec{AD}$. Enfin, on retrouve les coordonnées de D en ajoutant les composantes de $\\vec{AD}$ à celles du point A.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Preuve parallélogramme par vecteurs",
+      "content": "Mettez les étapes dans l'ordre chronologique pour prouver que le quadrilatère EFGH est un parallélogramme en utilisant les vecteurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer les vecteurs $\\vec{EF}$ et $\\vec{HG}$.",
+        "Vérifier que $\\vec{EF}=\\vec{HG}$.",
+        "Calculer les vecteurs $\\vec{FG}$ et $\\vec{EH}$.",
+        "Vérifier que $\\vec{FG}=\\vec{EH}$.",
+        "Conclure que EFGH est un parallélogramme."
+      ],
+      "explanation": "Un quadrilatère est un parallélogramme si et seulement si ses côtés opposés sont parallèles et de même longueur, ce qui se traduit vectoriellement par l'égalité des vecteurs correspondants. On commence par calculer les vecteurs des deux paires de côtés opposés : $\\vec{EF}$ et $\\vec{HG}$, puis $\\vec{FG}$ et $\\vec{EH}$. On vérifie ensuite l'égalité de chaque paire. Si les deux égalités sont satisfaites, les côtés opposés sont égaux et parallèles, ce qui permet de conclure que EFGH est un parallélogramme.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

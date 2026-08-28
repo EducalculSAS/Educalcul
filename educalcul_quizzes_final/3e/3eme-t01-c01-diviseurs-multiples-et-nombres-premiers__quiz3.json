@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Problèmes",
+  "title": "Problèmes : diviseurs, multiples et nombres premiers",
+  "questions": [
+    {
+      "text": "Quel est le plus grand commun diviseur de $48$ et $60$ ?",
+      "options": [
+        "$12$",
+        "$24$",
+        "$6$",
+        "$4$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "On décompose $48 = 2^4 \\times 3$ et $60 = 2^2 \\times 3 \\times 5$. Les facteurs communs sont $2^2 \\times 3 = 12$. Les autres options correspondent à des diviseurs partiels ou à des multiples.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux sonneries retentissent toutes les $6$ minutes et toutes les $8$ minutes. Au bout de combien de minutes sonneront-elles ensemble pour la première fois ?",
+      "options": [
+        "$24$",
+        "$12$",
+        "$48$",
+        "$14$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Il faut le plus petit commun multiple de $6$ et $8$. $6 = 2 \\times 3$, $8 = 2^3$. Le PPCM est $2^3 \\times 3 = 24$. $12$ n'est pas multiple de $8$, $48$ est un multiple commun mais pas le plus petit, $14$ n'est multiple d'aucun des deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre entier $n$ est tel que $n$ est multiple de $5$ et de $9$. Le plus petit $n$ strictement positif est :",
+      "options": [
+        "$45$",
+        "$90$",
+        "$15$",
+        "$27$"
+      ],
+      "correctAnswer": "$45$",
+      "explanation": "Le plus petit commun multiple de $5$ et $9$ est $5 \\times 9 = 45$ car ils sont premiers entre eux. $90$ est un multiple commun mais pas le plus petit, $15$ n'est pas multiple de $9$, $27$ n'est pas multiple de $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On décompose $84$ en produit de facteurs premiers. Quelle décomposition est correcte ?",
+      "options": [
+        "$2^2 * 3 * 7$",
+        "$2 * 3^2 * 7$",
+        "$2^2 * 3^2 * 7$",
+        "$2 * 3 * 7$"
+      ],
+      "correctAnswer": "$2^2 * 3 * 7$",
+      "explanation": "$84 = 2 \\times 42 = 2 \\times 2 \\times 21 = 2^2 \\times 3 \\times 7$. La deuxième option donne $2 \\times 9 \\times 7 = 126$, la troisième $4 \\times 9 \\times 7 = 252$, la quatrième $2 \\times 3 \\times 7 = 42$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, on veut former des groupes d'élèves de même taille. Il y a $36$ garçons et $48$ filles. Quel est le plus grand nombre d'élèves par groupe pour que chaque groupe contienne le même nombre de garçons et le même nombre de filles ?",
+      "options": [
+        "$12$",
+        "$6$",
+        "$24$",
+        "$8$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Il faut le PGCD de $36$ et $48$. $36 = 2^2 \\times 3^2$, $48 = 2^4 \\times 3$. Le PGCD est $2^2 \\times 3 = 12$. $6$ est un diviseur commun mais pas le plus grand, $24$ ne divise pas $36$, $8$ ne divise pas $36$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

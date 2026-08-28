@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Transformer",
+  "title": "Transformer des expressions algébriques : développer et factoriser",
+  "blocks": [
+    {
+      "title": "Développement simple",
+      "content": "Relie chaque expression factorisée à sa forme développée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3(x + 2)$",
+          "right": "$3x + 6$"
+        },
+        {
+          "left": "$-2(4x - 5)$",
+          "right": "$-8x + 10$"
+        },
+        {
+          "left": "$x(x + 3)$",
+          "right": "$x^2 + 3x$"
+        },
+        {
+          "left": "$5(2 - x)$",
+          "right": "$10 - 5x$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour développer, on utilise la distributivité : $a(b+c) = ab + ac$. Attention aux signes : moins fois moins donne plus. Pour $x(x+3)$, on obtient $x \\times x + x \\times 3 = x^2 + 3x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Développement double et identités remarquables",
+      "content": "Relie chaque produit de deux sommes à sa forme développée et réduite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$(x + 2)(x + 3)$",
+          "right": "$x^2 + 5x + 6$"
+        },
+        {
+          "left": "$(2x - 1)(x + 4)$",
+          "right": "$2x^2 + 7x - 4$"
+        },
+        {
+          "left": "$(x - 5)^2$",
+          "right": "$x^2 - 10x + 25$"
+        },
+        {
+          "left": "$(3x + 2)(3x - 2)$",
+          "right": "$9x^2 - 4$"
+        }
+      ],
+      "items": [],
+      "explanation": "On applique la double distributivité (ou les identités remarquables). $(x+2)(x+3) = x^2 + 3x + 2x + 6 = x^2 + 5x + 6$. $(x-5)^2 = x^2 - 2 \\times 5x + 25 = x^2 - 10x + 25$. $(3x+2)(3x-2) = (3x)^2 - 2^2 = 9x^2 - 4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation",
+      "content": "Relie chaque expression développée à sa forme factorisée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x^2 + 6x$",
+          "right": "$x(x + 6)$"
+        },
+        {
+          "left": "$4x^2 - 9$",
+          "right": "$(2x - 3)(2x + 3)$"
+        },
+        {
+          "left": "$x^2 - 4x + 4$",
+          "right": "$(x - 2)^2$"
+        },
+        {
+          "left": "$6x^2 + 9x$",
+          "right": "$3x(2x + 3)$"
+        }
+      ],
+      "items": [],
+      "explanation": "On cherche le facteur commun ou on utilise les identités remarquables à l'envers. $x^2+6x = x(x+6)$. $4x^2-9 = (2x)^2-3^2 = (2x-3)(2x+3)$. $x^2-4x+4 = (x-2)^2$. $6x^2+9x = 3x(2x+3)$ (facteur commun $3x$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

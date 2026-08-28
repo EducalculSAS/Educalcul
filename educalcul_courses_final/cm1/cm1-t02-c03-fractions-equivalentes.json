@@ -1,0 +1,401 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.166148+00:00",
+  "id": 221,
+  "code": "cm1-t02-c03",
+  "title": "Fractions équivalentes",
+  "description": "Cours structuré Educalcul : Fractions équivalentes.",
+  "subject": "Fractions",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions équivalentes",
+    "objectif_global": "Fractions équivalentes",
+    "mini_lecons_imposees": [
+      "Agrandir / réduire une représentation.",
+      "Reconnaître équivalences simples.",
+      "Justifier."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Agrandir / réduire une représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Agrandir une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une barre de chocolat coupée en deux parts égales. Si tu coupes chaque part en deux, tu obtiens quatre parts au total. La part que tu mangeais, c'était $\\frac{1}{2}$ de la barre ; maintenant c'est $\\frac{2}{4}$. Pourtant, la quantité de chocolat n'a pas changé. C'est ce qu'on appelle agrandir une fraction : on multiplie le numérateur et le dénominateur par le même nombre, ici 2, pour obtenir une nouvelle écriture qui représente exactement la même quantité."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Deux bandes : $\\frac{1}{2}$ et $\\frac{2}{4}$ ont la même longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment faire l'inverse : réduire une fraction. Si tu as une pizza partagée en huit parts et que tu en mange quatre, tu as mangé $\\frac{4}{8}$ de la pizza. Mais tu sais que quatre parts sur huit, c'est la même chose que une part sur deux. Pour le voir, on divise le numérateur et le dénominateur par le même nombre, ici 4. La fraction devient plus simple, mais la part de pizza reste identique."
+            },
+            {
+              "type": "fraction",
+              "numerator": 4,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "La barre $\\frac{4}{8}$ se superpose exactement à $\\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr de ne pas se tromper, on suit une méthode en trois étapes. D'abord, on choisit un nombre non nul. Ensuite, on multiplie (pour agrandir) ou on divise (pour réduire) le numérateur et le dénominateur par ce nombre. Enfin, on vérifie que la nouvelle fraction représente bien la même partie du tout. Cette méthode marche à tous les coups tant qu'on fait la même opération en haut et en bas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un entier naturel non nul, par exemple 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur et le dénominateur par ce nombre pour agrandir, ou divise-les s'ils sont divisibles pour réduire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les deux fractions avec une bande ou un dessin : elles doivent couvrir la même surface."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant agrandir et réduire une fraction en gardant la même quantité. Cette compétence te sera utile pour comparer, additionner ou soustraire des fractions plus tard."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle fraction équivalente à $\\frac{1}{2}$ obtient-on en multipliant le numérateur et le dénominateur par 2 ?",
+              "answer": "$\\frac{2}{4}$",
+              "hint": "Multiplie le haut et le bas par le même nombre.",
+              "explanation": "En multipliant 1 et 2 par 2, on obtient $\\frac{2}{4}$ qui représente la même partie."
+            },
+            {
+              "question": "Réduis la fraction $\\frac{4}{8}$ en divisant le numérateur et le dénominateur par 4.",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Cherche un nombre qui divise les deux.",
+              "explanation": "4 et 8 sont divisibles par 4, donc $\\frac{4}{8} = \\frac{1}{2}$."
+            },
+            {
+              "question": "Si on agrandit $\\frac{3}{5}$ en multipliant par 3, quelle fraction obtient-on ?",
+              "answer": "$\\frac{9}{15}$",
+              "hint": "Multiplie 3 et 5 par 3.",
+              "explanation": "$3\\times3=9$ et $5\\times3=15$, donc $\\frac{9}{15}$ équivaut à $\\frac{3}{5}$."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître équivalences simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître des équivalences simples"
+            },
+            {
+              "type": "definition",
+              "term": "fraction équivalente",
+              "definition": "Deux fractions sont équivalentes si elles représentent exactement la même partie d'un même tout, même si leurs numérateurs et dénominateurs sont différents.",
+              "example": "$\\frac{1}{2}$ et $\\frac{2}{4}$ sont équivalentes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la famille des demis. Sur une droite graduée de 0 à 1, place le point $\\frac{1}{2}$. Si tu coupes chaque moitié en deux, tu vois apparaître $\\frac{2}{4}$ au même endroit. Coupe encore chaque quart en deux : $\\frac{3}{6}$ tombe pile au même point. Tous ces points se confondent, ce qui prouve que $\\frac{1}{2} = \\frac{2}{4} = \\frac{3}{6}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les fractions $\\frac{1}{2}$, $\\frac{2}{4}$ et $\\frac{3}{6}$ occupent la même position.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{1}{2}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{2}{4}$"
+                },
+                {
+                  "value": 0.5,
+                  "label": "$\\frac{3}{6}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant la famille des tiers. Sur un rectangle divisé en trois parties égales, colorie une partie : c'est $\\frac{1}{3}$. Si tu subdivises chaque tiers en deux, tu obtiens six parts et deux sont coloriées : $\\frac{2}{6}$. Subdivise encore chaque sixièmes en deux : six parts sur dix-huit, soit $\\frac{3}{9}$. Les trois zones colorées ont exactement la même surface."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des surfaces : $\\frac{1}{3}$, $\\frac{2}{6}$, $\\frac{3}{9}$ sont égales.",
+              "bars": [
+                {
+                  "label": "$\\frac{1}{3}$",
+                  "value": 33,
+                  "tone": "blue"
+                },
+                {
+                  "label": "$\\frac{2}{6}$",
+                  "value": 33,
+                  "tone": "green"
+                },
+                {
+                  "label": "$\\frac{3}{9}$",
+                  "value": 33,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, explorons la famille des cinquièmes. Prends une bande de papier pliée en cinq parties égales. Colorie deux parties : c'est $\\frac{2}{5}$. Si tu replies chaque cinquième en deux, tu as dix parties et quatre sont coloriées : $\\frac{4}{10}$. Replie encore chaque dixième en trois : trente parties et douze coloriées, soit $\\frac{12}{30}$ qui se simplifie en $\\frac{2}{5}$. Tu vois que le même morceau de bande reste colorié, peu importe le nombre de plis."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 5
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 10
+                }
+              ],
+              "caption": "Deux bandes : $\\frac{2}{5}$ et $\\frac{4}{10}$ ont la même longueur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois familles d'équivalences simples en tête. Quand tu rencontres une fraction, demande-toi : à quelle famille appartient-elle ? Puis écris les autres écritures en multipliant ou divisant le numérateur et le dénominateur par le même nombre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces fractions, lesquelles sont équivalentes à $\\frac{1}{2}$ ? $\\frac{2}{4}$, $\\frac{3}{5}$, $\\frac{4}{8}$, $\\frac{5}{10}$",
+              "answer": "$\\frac{2}{4}$, $\\frac{4}{8}$, $\\frac{5}{10}$",
+              "hint": "Vérifie si le numérateur est la moitié du dénominateur.",
+              "explanation": "Chaque fraction où le numérateur est la moitié du dénominateur vaut $\\frac{1}{2}$."
+            },
+            {
+              "question": "Écris deux fractions équivalentes à $\\frac{1}{3}$ en multipliant le numérateur et le dénominateur par 2 puis par 3.",
+              "answer": "$\\frac{2}{6}$ et $\\frac{3}{9}$",
+              "hint": "Multiplie 1 et 3 par 2, puis par 3.",
+              "explanation": "$1\\times2=2$, $3\\times2=6$ donne $\\frac{2}{6}$ ; $1\\times3=3$, $3\\times3=9$ donne $\\frac{3}{9}$."
+            },
+            {
+              "question": "Laquelle de ces fractions n'est PAS équivalente à $\\frac{2}{5}$ ? $\\frac{4}{10}$, $\\frac{6}{15}$, $\\frac{8}{20}$, $\\frac{3}{7}$",
+              "answer": "$\\frac{3}{7}$",
+              "hint": "Teste si le numérateur fois 5 égale le dénominateur fois 2.",
+              "explanation": "Pour $\\frac{2}{5}$, $2\\times5=10$ et $5\\times2=10$. $\\frac{3}{7}$ ne respecte pas cette égalité."
+            }
+          ]
+        },
+        {
+          "title": "Justifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier l'équivalence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir dire que deux fractions sont équivalentes, c'est bien. Savoir le prouver, c'est encore mieux. Pour justifier, on utilise la propriété fondamentale : si on multiplie ou divise le numérateur et le dénominateur par le même nombre non nul, la valeur de la fraction ne change pas. C'est comme partager un gâteau en parts plus petites ou plus grandes : la part de chacun reste la même."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux fractions. Demande-toi : quel nombre a été multiplié (ou divisé) au numérateur et au dénominateur pour passer de l'une à l'autre ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'égalité des produits croisés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le numérateur de la première par le dénominateur de la seconde, et le dénominateur de la première par le numérateur de la seconde. Si les deux produits sont égaux, les fractions sont équivalentes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la justification",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note la phrase : « $\\frac{a}{b} = \\frac{c}{d}$ car $a\\times d = b\\times c$ » ou « car on a multiplié (ou divisé) le numérateur et le dénominateur par le même nombre »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il est plus simple de réduire une fraction pour voir l'équivalence. Prenons $\\frac{12}{18}$ et $\\frac{2}{3}$. On divise 12 et 18 par 6, on obtient $\\frac{2}{3}$. Les deux fractions sont donc équivalentes. Pour le montrer clairement, on peut dresser un petit tableau qui liste les divisions successives."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fraction",
+                "Divisé par",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "$\\frac{12}{18}$",
+                  "6",
+                  "$\\frac{2}{3}$"
+                ],
+                [
+                  "$\\frac{2}{3}$",
+                  "1",
+                  "$\\frac{2}{3}$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, entraînons-nous à décider si deux fractions données sont équivalentes et à écrire une justification complète. Imagine que tu as $\\frac{5}{8}$ et $\\frac{15}{24}$. Tu peux multiplier 5 et 8 par 3 pour obtenir 15 et 24, ou diviser 15 et 24 par 3 pour retrouver 5 et 8. Dans les deux cas, l'égalité des produits croisés ($5\\times24 = 8\\times15 = 120$) confirme l'équivalence."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les points $\\frac{5}{8}$ et $\\frac{15}{24}$ se superposent.",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.625,
+                  "label": "$\\frac{5}{8}$"
+                },
+                {
+                  "value": 0.625,
+                  "label": "$\\frac{15}{24}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais agrandir une fraction en multipliant numérateur et dénominateur par le même nombre.",
+                "Je sais réduire une fraction en divisant numérateur et dénominateur par un diviseur commun.",
+                "Je reconnais les équivalences simples comme $\\frac{1}{2}=\\frac{2}{4}=\\frac{3}{6}$.",
+                "Je justifie l'équivalence par l'égalité des produits croisés ou par l'opération commune sur numérateur et dénominateur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Justifie que $\\frac{3}{4}$ et $\\frac{9}{12}$ sont équivalentes en utilisant la multiplication.",
+              "answer": "On a multiplié 3 et 4 par 3 pour obtenir 9 et 12, donc $\\frac{3}{4}=\\frac{9}{12}$.",
+              "hint": "Quel nombre relie 3 à 9 et 4 à 12 ?",
+              "explanation": "3×3=9 et 4×3=12, l'opération est la même en haut et en bas, donc les fractions sont équivalentes."
+            },
+            {
+              "question": "Montre que $\\frac{14}{21}$ et $\\frac{2}{3}$ sont équivalentes en réduisant la première.",
+              "answer": "En divisant 14 et 21 par 7, on obtient $\\frac{2}{3}$, donc elles sont équivalentes.",
+              "hint": "Cherche le plus grand diviseur commun de 14 et 21.",
+              "explanation": "14÷7=2 et 21÷7=3, la fraction se simplifie en $\\frac{2}{3}$."
+            },
+            {
+              "question": "Les fractions $\\frac{7}{10}$ et $\\frac{21}{30}$ sont-elles équivalentes ? Justifie ta réponse.",
+              "answer": "Oui, car $7\\times30 = 210$ et $10\\times21 = 210$, les produits croisés sont égaux.",
+              "hint": "Calcule les produits croisés pour vérifier.",
+              "explanation": "L'égalité des produits croisés ($7\\times30 = 10\\times21$) prouve l'équivalence."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

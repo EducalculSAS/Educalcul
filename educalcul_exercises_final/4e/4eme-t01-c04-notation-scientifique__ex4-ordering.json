@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Application : Notation scientifique",
+  "title": "Applications de la notation scientifique",
+  "blocks": [
+    {
+      "title": "Écrire un nombre en notation scientifique",
+      "content": "Range les étapes dans l'ordre chronologique pour écrire un nombre décimal en notation scientifique.",
+      "items": [
+        "Identifier le premier chiffre non nul du nombre.",
+        "Placer la virgule immédiatement après ce chiffre.",
+        "Compter le nombre de positions de déplacement de la virgule pour obtenir l'exposant de 10.",
+        "Écrire le nombre sous la forme $a \\times 10^n$ avec $1 \\le a < 10$."
+      ],
+      "explanation": "Pour mettre un nombre en notation scientifique, on commence par repérer le premier chiffre significatif (non nul). On place ensuite la virgule après ce chiffre pour obtenir un nombre $a$ compris entre 1 et 10. Le nombre de déplacements de la virgule donne l'exposant $n$ (positif si déplacement vers la gauche, négatif vers la droite). Enfin, on écrit le produit $a \\times 10^n$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordonner des nombres en notation scientifique",
+      "content": "Classe les nombres suivants du plus petit au plus grand.",
+      "items": [
+        "$3,2 \\times 10^{-4}$",
+        "$1,5 \\times 10^{-3}$",
+        "$4,7 \\times 10^{-2}$",
+        "$9,1 \\times 10^{-1}$"
+      ],
+      "explanation": "On compare d'abord les exposants de 10 : $-4 < -3 < -2 < -1$. Comme tous les exposants sont différents, l'ordre des nombres suit l'ordre des exposants, quel que soit le coefficient (mantisse). Ainsi $3,2 \\times 10^{-4}$ est le plus petit et $9,1 \\times 10^{-1}$ le plus grand.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplier deux nombres en notation scientifique",
+      "content": "Range les étapes dans l'ordre pour effectuer le produit $(2,5 \\times 10^3) \\times (4 \\times 10^{-2})$ et donner le résultat en notation scientifique.",
+      "items": [
+        "Multiplier les mantisses : $2,5 \\times 4 = 10$.",
+        "Additionner les exposants : $3 + (-2) = 1$.",
+        "Obtenir le produit intermédiaire $10 \\times 10^1$.",
+        "Réécrire en notation scientifique correcte : $1,0 \\times 10^2$."
+      ],
+      "explanation": "La multiplication en notation scientifique se fait en deux temps : on multiplie les coefficients (mantisses) et on additionne les exposants. Ici $2,5 \\times 4 = 10$ et $3 + (-2) = 1$, ce qui donne $10 \\times 10^1$. Comme la mantisse doit être comprise entre 1 et 10, on réécrit $10$ en $1,0 \\times 10^1$, ce qui donne $1,0 \\times 10^{1+1} = 1,0 \\times 10^2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

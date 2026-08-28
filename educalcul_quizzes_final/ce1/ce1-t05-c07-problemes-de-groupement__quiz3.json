@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 114,
+  "_course_code": "ce1-t05-c07-problemes-de-groupement",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Gérer un reste concret simple",
+  "title": "Problèmes de groupement : le reste concret",
+  "questions": [
+    {
+      "text": "Il y a $17$ bonbons. On veut faire des sachets de $3$ bonbons. Combien de sachets pleins peut-on faire et combien de bonbons reste-t-il ?",
+      "options": [
+        "$5$ sachets et $2$ bonbons restants",
+        "$6$ sachets et $1$ bonbon restant",
+        "$4$ sachets et $5$ bonbons restants",
+        "$5$ sachets et $1$ bonbon restant"
+      ],
+      "correctAnswer": "$5$ sachets et $2$ bonbons restants",
+      "explanation": "On cherche combien de fois $3$ rentre dans $17$. $5 \\times 3 = 15$. $17 - 15 = 2$. On peut faire $5$ sachets pleins et il reste $2$ bonbons. L'option B correspond à $6 \\times 3 = 18$ qui dépasse $17$. L'option C ne fait pas le maximum de sachets possibles. L'option D calcule mal le reste ($17 - 15 = 2$, pas $1$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La maîtresse a $24$ crayons. Elle veut en donner $5$ à chaque élève. Combien d'élèves auront $5$ crayons et combien de crayons resteront dans la boîte ?",
+      "options": [
+        "$4$ élèves et $4$ crayons restants",
+        "$5$ élèves et $1$ crayon restant",
+        "$4$ élèves et $1$ crayon restant",
+        "$5$ élèves et $4$ crayons restants"
+      ],
+      "correctAnswer": "$4$ élèves et $4$ crayons restants",
+      "explanation": "On regroupe $24$ par $5$. $4 \\times 5 = 20$. $24 - 20 = 4$. Donc $4$ élèves reçoivent $5$ crayons et il reste $4$ crayons dans la boîte. L'option B ferait $5 \\times 5 = 25$ ce qui dépasse $24$. L'option C donne un reste incorrect. L'option D dépasse le nombre total de crayons.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a $31$ pains. Il les range dans des caisses de $6$ pains. Combien de caisses pleines remplit-il et combien de pains restent sur la table ?",
+      "options": [
+        "$5$ caisses et $1$ pain restant",
+        "$6$ caisses et $1$ pain restant",
+        "$5$ caisses et $5$ pains restants",
+        "$4$ caisses et $7$ pains restants"
+      ],
+      "correctAnswer": "$5$ caisses et $1$ pain restant",
+      "explanation": "On divise $31$ par $6$. $5 \\times 6 = 30$. $31 - 30 = 1$. Le boulanger remplit $5$ caisses pleines et il lui reste $1$ pain sur la table. L'option B nécessite $36$ pains. L'option C laisse trop de pains dehors (on pourrait remplir une caisse de plus avec $6$ pains). L'option D ne remplit pas le maximum de caisses possibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la kermesse, on a fait des paquets de $4$ tickets. On a fait $7$ paquets complets et il restait $3$ tickets. Combien y avait-il de tickets au départ ?",
+      "options": [
+        "$28$ tickets",
+        "$31$ tickets",
+        "$30$ tickets",
+        "$25$ tickets"
+      ],
+      "correctAnswer": "$31$ tickets",
+      "explanation": "Il faut retrouver le total. $7$ paquets de $4$ font $7 \\times 4 = 28$ tickets. En ajoutant les $3$ tickets restants : $28 + 3 = 31$ tickets au total. L'option A oublie d'ajouter le reste. L'option C ajoute $2$ au lieu de $3$. L'option D ne correspond à aucun calcul logique pour cette situation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a $29$ billes. Elle en met $8$ par boîte. Max a $26$ billes. Il en met $7$ par boîte. Lequel des deux enfants a le plus de billes restantes hors des boîtes ?",
+      "options": [
+        "Léa",
+        "Max",
+        "Ils ont le même nombre de billes restantes",
+        "Léa a $3$ billes restantes et Max en a $5$"
+      ],
+      "correctAnswer": "Ils ont le même nombre de billes restantes",
+      "explanation": "Pour Léa : $29 = 3 \\times 8 + 5$ (car $3 \\times 8 = 24$, $29 - 24 = 5$). Il lui reste $5$ billes. Pour Max : $26 = 3 \\times 7 + 5$ (car $3 \\times 7 = 21$, $26 - 21 = 5$). Il lui reste $5$ billes. Ils ont tous les deux $5$ billes restantes. L'option D donne de faux restes pour les deux enfants.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

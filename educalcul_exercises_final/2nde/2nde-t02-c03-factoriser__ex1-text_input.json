@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 505,
+  "_course_code": "2nde-t02-c03-factoriser",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Facteur commun",
+  "title": "Factorisation par facteur commun",
+  "blocks": [
+    {
+      "title": "Factorisation simple",
+      "content": "Factoriser l'expression $E = 5x + 15$.",
+      "correctAnswer": "5(x + 3)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les deux termes $5x$ et $15$ ont un facteur commun $5$. On met $5$ devant la parenthèse : $5x = 5 \\times x$ et $15 = 5 \\times 3$. Donc $E = 5(x + 3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation avec variable commune",
+      "content": "Factoriser l'expression $F = 4x^2 - 8x$.",
+      "correctAnswer": "4x(x - 2)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les termes sont $4x^2$ et $-8x$. Le facteur commun le plus grand est $4x$ car $4x^2 = 4x \\times x$ et $-8x = 4x \\times (-2)$. On écrit $F = 4x(x - 2)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation avec facteur commun binôme",
+      "content": "Factoriser l'expression $G = 3(x + 2) + 5x(x + 2)$.",
+      "correctAnswer": "(x + 2)(5x + 3)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les deux termes ont le facteur commun $(x + 2)$. On le met en facteur : $3(x + 2) + 5x(x + 2) = (x + 2)(3 + 5x)$. Par convention, on écrit souvent le terme en $x$ en premier dans la seconde parenthèse : $(x + 2)(5x + 3)$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

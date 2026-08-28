@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Information chiffrée et hasard",
+  "title": "Exercice : Probabilités simples",
+  "blocks": [
+    {
+      "title": "Probabilité d'un nombre pair au dé",
+      "content": "On lance un dé équilibré à $6$ faces numérotées de $1$ à $6$. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "correctAnswer": "1/2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dé a $6$ faces équivalentes. Les nombres pairs sont $2$, $4$ et $6$, soit $3$ issues favorables. La probabilité est le nombre d'issues favorables divisé par le nombre total d'issues, donc $3/6 = 1/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité de tirer un roi dans un jeu de 32 cartes",
+      "content": "On tire une carte au hasard dans un jeu de $32$ cartes. Quelle est la probabilité de tirer un roi ?",
+      "correctAnswer": "1/8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un jeu de $32$ cartes contient $4$ rois. La probabilité est le nombre de rois divisé par le nombre total de cartes, soit $4/32 = 1/8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fréquence relative attendue du 3 après 600 lancers",
+      "content": "On répète l'expérience du lancer de dé $600$ fois. Selon la loi des grands nombres, quelle fréquence relative du nombre $3$ peut-on attendre approximativement ?",
+      "correctAnswer": "1/6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque face du dé a une probabilité de $1/6$ d'apparaître. La loi des grands nombres indique que la fréquence relative d'une issue tend vers sa probabilité lorsque le nombre d'essais augmente. Ainsi, après $600$ lancers, la fréquence relative du $3$ sera proche de $1/6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

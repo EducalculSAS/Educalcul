@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 196,
+  "_course_code": "ce2-t07-c01-polygones-et-vocabulaire",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Côtés et sommets",
+  "title": "Algorithmes : Côtés et sommets des polygones",
+  "blocks": [
+    {
+      "title": "Nom du polygone vers nombre de côtés",
+      "content": "Écris un algorithme sous forme de texte structuré (style Python simplifié) qui demande le nom d'un polygone (triangle, carré ou pentagone) et affiche son nombre de côtés et son nombre de sommets.",
+      "correctAnswer": "DEBUT\\nLIRE nomPolygone\\nSI nomPolygone = \"triangle\" ALORS\\n  AFFICHER \"Côtés : 3, Sommets : 3\"\\nSINON SI nomPolygone = \"carré\" ALORS\\n  AFFICHER \"Côtés : 4, Sommets : 4\"\\nSINON SI nomPolygone = \"pentagone\" ALORS\\n  AFFICHER \"Côtés : 5, Sommets : 5\"\\nSINON\\n  AFFICHER \"Polygone non reconnu\"\\nFIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un polygone a toujours autant de sommets que de côtés. L'algorithme utilise une structure conditionnelle (SI... SINON SI) pour associer chaque nom à ses caractéristiques. Pour le triangle : 3 côtés, 3 sommets. Pour le carré : 4 côtés, 4 sommets. Pour le pentagone : 5 côtés, 5 sommets.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de côtés vers nom et sommets",
+      "content": "Écris un algorithme qui lit un nombre entier $n$ (compris entre 3 et 6) représentant le nombre de côtés d'un polygone. L'algorithme doit déterminer le nom du polygone (triangle, quadrilatère, pentagone, hexagone) et afficher ce nom ainsi que le nombre de sommets correspondant.",
+      "correctAnswer": "DEBUT\\nLIRE n\\nSI n = 3 ALORS\\n  nom <- \"triangle\"\\nSINON SI n = 4 ALORS\\n  nom <- \"quadrilatère\"\\nSINON SI n = 5 ALORS\\n  nom <- \"pentagone\"\\nSINON SI n = 6 ALORS\\n  nom <- \"hexagone\"\\nSINON\\n  nom <- \"inconnu\"\\nFIN SI\\nsommets <- n\\nAFFICHER \"Nom : \", nom\\nAFFICHER \"Sommets : \", sommets\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété fondamentale est : nombre de sommets = nombre de côtés. La variable 'sommets' reçoit la valeur de $n$. La structure conditionnelle associe la valeur de $n$ au nom usuel du polygone : 3->triangle, 4->quadrilatère, 5->pentagone, 6->hexagone.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Boucle de tracé d'un polygone régulier",
+      "content": "Complète l'algorithme suivant pour qu'il décrive le tracé d'un polygone régulier à $n$ côtés par un robot. Le robot avance de 100 pas à chaque côté. L'angle de rotation à chaque sommet est l'angle extérieur, calculé par $360 / n$.\\n\\nDEBUT\\nLIRE n\\nangle <- 360 / n\\nREPETER n FOIS\\n  AVANCER 100\\n  TOURNER angle\\nFIN REPETER\\nFIN",
+      "correctAnswer": "DEBUT\\nLIRE n\\nangle <- 360 / n\\nREPETER n FOIS\\n  AVANCER 100\\n  TOURNER angle\\nFIN REPETER\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour refermer un polygone régulier à $n$ côtés, le robot doit effectuer $n$ fois la même action : avancer (tracer un côté) puis tourner de l'angle extérieur. La somme des angles extérieurs valant toujours 360 degrés, chaque angle extérieur vaut $360 / n$. La boucle REPETER n FOIS structure cette répétition.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

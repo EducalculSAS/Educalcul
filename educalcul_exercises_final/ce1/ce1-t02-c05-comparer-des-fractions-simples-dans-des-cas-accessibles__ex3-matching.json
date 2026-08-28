@@ -1,0 +1,159 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 83,
+  "_course_code": "ce1-t02-c05-comparer-des-fractions-simples-dans-des-cas-accessibles",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Justifier à l'aide d'une représentation",
+  "title": "Comparer des fractions simples : justification par la représentation",
+  "blocks": [
+    {
+      "title": "Lire une fraction sur une figure",
+      "content": "Relie chaque fraction écrite en chiffres à la description de sa représentation visuelle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$1/2$",
+          "right": "Un rectangle divisé en 2 parties égales, 1 partie colorée"
+        },
+        {
+          "left": "$1/3$",
+          "right": "Un rectangle divisé en 3 parties égales, 1 partie colorée"
+        },
+        {
+          "left": "$1/4$",
+          "right": "Un rectangle divisé en 4 parties égales, 1 partie colorée"
+        },
+        {
+          "left": "$2/3$",
+          "right": "Un rectangle divisé en 3 parties égales, 2 parties colorées"
+        }
+      ],
+      "items": [],
+      "explanation": "Le numérateur (au-dessus du trait) indique le nombre de parties colorées. Le dénominateur (en-dessous) indique en combien de parties égales le tout est divisé. Pour $1/2$, on colorie 1 part sur 2. Pour $2/3$, on colorie 2 parts sur 3.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 3
+          }
+        ],
+        "caption": "Représentations en barres des fractions $1/2$, $1/3$, $1/4$ et $2/3$."
+      }
+    },
+    {
+      "title": "Comparer des fractions de même dénominateur",
+      "content": "Relie chaque paire de fractions au bon signe de comparaison en t'aidant des barres de fractions.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$1/4$ et $3/4$",
+          "right": "$1/4 < 3/4$"
+        },
+        {
+          "left": "$2/4$ et $2/4$",
+          "right": "$2/4 = 2/4$"
+        },
+        {
+          "left": "$3/4$ et $1/4$",
+          "right": "$3/4 > 1/4$"
+        },
+        {
+          "left": "$1/4$ et $2/4$",
+          "right": "$1/4 < 2/4$"
+        }
+      ],
+      "items": [],
+      "explanation": "Quand les fractions ont le même dénominateur (ici 4), les parts sont de la même taille. Il suffit de comparer les numérateurs : 1 est plus petit que 3, donc $1/4 < 3/4$. 2 est égal à 2, donc $2/4 = 2/4$. 3 est plus grand que 1, donc $3/4 > 1/4$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Barres de fractions pour comparer les quarts : $1/4$, $2/4$, $3/4$."
+      }
+    },
+    {
+      "title": "Comparer à la référence $1/2$",
+      "content": "Relie chaque fraction à sa position par rapport à la moitié ($1/2$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$1/3$",
+          "right": "Plus petit que $1/2$"
+        },
+        {
+          "left": "$3/4$",
+          "right": "Plus grand que $1/2$"
+        },
+        {
+          "left": "$2/4$",
+          "right": "Égal à $1/2$"
+        },
+        {
+          "left": "$1/4$",
+          "right": "Plus petit que $1/2$"
+        }
+      ],
+      "items": [],
+      "explanation": "On compare chaque fraction à $1/2$ en regardant la figure. $2/4$ recouvre exactement la même surface que $1/2$ (équivalence). $1/3$ et $1/4$ ont une partie colorée plus petite que la moitié. $3/4$ a une partie colorée plus grande que la moitié.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Barres de fractions pour comparer à $1/2$ : $1/2$, $1/3$, $1/4$, $2/4$, $3/4$."
+      }
+    }
+  ]
+}

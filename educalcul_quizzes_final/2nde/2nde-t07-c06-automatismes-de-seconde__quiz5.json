@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Calcul numérique",
+  "title": "Quiz Calcul numérique Seconde",
+  "questions": [
+    {
+      "text": "Calcule $3 + 4 \\times 2^2 - 5$.",
+      "options": [
+        "14",
+        "22",
+        "10",
+        "18"
+      ],
+      "correctAnswer": "14",
+      "explanation": "On applique l'ordre des priorités : d'abord l'exposant $2^2 = 4$, puis la multiplication $4 \\times 4 = 16$, enfin les additions et soustractions de gauche à droite $3 + 16 = 19$, $19 - 5 = 14$. Les autres réponses correspondent à des erreurs d'ordre (par exemple faire l'addition avant la multiplication).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue l'addition $\\frac{3}{4} + \\frac{5}{6}$ et donne le résultat sous forme de fraction irréductible.",
+      "options": [
+        "19/12",
+        "1 7/12",
+        "8/10",
+        "2/5"
+      ],
+      "correctAnswer": "19/12",
+      "explanation": "Le plus petit commun multiple de 4 et 6 est 12. On écrit $\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$. La somme est $\\frac{19}{12}$, qui est déjà irréductible. La réponse $1 7/12$ est la forme mixte, mais la question demande une fraction. Les autres options sont des résultats d'erreurs de denominateur commun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $0,000045$ en notation scientifique.",
+      "options": [
+        "$4,5 \\times 10^{-5}$",
+        "$4,5 \\times 10^{-4}$",
+        "$0,45 \\times 10^{-4}$",
+        "$45 \\times 10^{-6}$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^{-5}$",
+      "explanation": "On déplace la virgule de 5 positions vers la droite pour obtenir un nombre entre 1 et 10 : $4,5$. Le nombre de déplacements donne l'exposant $-5$. Les autres choix correspondent à un mauvais comptage des déplacements ou à une forme non normalisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule 15 % de $240$.",
+      "options": [
+        "36",
+        "3,6",
+        "24",
+        "40"
+      ],
+      "correctAnswer": "36",
+      "explanation": "15 % équivaut à $0,15$. On multiplie $0,15 \\times 240 = 36$. L'erreur $3,6$ correspond à un déplacement de virgule, $24$ à 10 %, $40$ à un arrondi incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie $\\sqrt{72}$.",
+      "options": [
+        "$6\\sqrt{2}$",
+        "$3\\sqrt{8}$",
+        "$12\\sqrt{2}$",
+        "$2\\sqrt{18}$"
+      ],
+      "correctAnswer": "$6\\sqrt{2}$",
+      "explanation": "On factorise $72 = 36 \\times 2$. Comme $\\sqrt{36} = 6$, on obtient $6\\sqrt{2}$. Les autres formes ne sont pas simplifiées complètement : $3\\sqrt{8} = 3 \\times 2\\sqrt{2} = 6\\sqrt{2}$ mais n'est pas sous forme canonique, $12\\sqrt{2}$ et $2\\sqrt{18}$ sont incorrects.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 471,
+  "_course_code": "3eme-t03-c05-modeliser-avec-une-fonction",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Approfondissement : Choisir modèle",
+  "title": "Choisir le modèle fonctionnel adapté",
+  "questions": [
+    {
+      "text": "Une entreprise facture un forfait de $15$ € plus $2$ € par kilomètre parcouru. Quel type de fonction modélise le coût total $C$ en fonction de la distance $d$ (en km) ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction du second degré",
+        "Fonction exponentielle"
+      ],
+      "correctAnswer": "Fonction affine",
+      "explanation": "Le coût total s'exprime par $C = 2d + 15$. La présence d'un terme constant ($15$) empêche la proportionnalité (qui nécessite $C = kd$). Il s'agit donc d'une fonction affine (droite ne passant pas par l'origine). Les autres modèles ne correspondent pas à cette expression linéaire avec un terme constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant donne des couples $(x ; y)$ : $x = 1, 2, 3, 4$ et $y = 3, 6, 9, 12$. Quelle relation lie $x$ et $y$ ?",
+      "options": [
+        "Proportionnelle",
+        "Affine non proportionnelle",
+        "Quadratique",
+        "Exponentielle"
+      ],
+      "correctAnswer": "Proportionnelle",
+      "explanation": "Le rapport $y/x$ est constant et vaut $3$ pour tous les couples. Cela caractérise une fonction proportionnelle de coefficient $3$ ($y = 3x$). Une fonction affine non proportionnelle aurait un terme constant non nul, une quadratique ferait varier le rapport, et une exponentielle ne donnerait pas un rapport constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique d'une fonction est une droite qui passe par l'origine du repère. Quel modèle correspond à cette description ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction du second degré",
+        "Fonction inverse"
+      ],
+      "correctAnswer": "Fonction proportionnelle",
+      "explanation": "Une droite passant par l'origine a pour équation $y = ax$ avec $a$ réel. C'est exactement la définition d'une fonction proportionnelle. Une fonction affine générale est une droite qui ne passe pas nécessairement par l'origine, le second degré donne une parabole, et l'inverse donne une hyperbole.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour modéliser la surface $S$ d'un carré en fonction de la longueur $c$ de son côté, on utilise quel type de fonction ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction du second degré",
+        "Fonction exponentielle"
+      ],
+      "correctAnswer": "Fonction du second degré",
+      "explanation": "La surface d'un carré est $S = c^{2}$. L'exposant $2$ sur la variable indique une fonction du second degré (quadratique). Ce n'est pas proportionnel (ce serait $S = kc$), ni affine (terme constant absent mais degré 1), ni exponentielle (variable à l'exposant).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La relation $y = 5 \\times 2^{x}$ correspond à quel type de modèle ?",
+      "options": [
+        "Fonction proportionnelle",
+        "Fonction affine",
+        "Fonction du second degré",
+        "Fonction exponentielle"
+      ],
+      "correctAnswer": "Fonction exponentielle",
+      "explanation": "Dans $y = 5 \\times 2^{x}$, la variable $x$ se trouve à l'exposant. C'est la caractéristique d'une fonction exponentielle de base $2$ et de coefficient $5$. Les autres modèles placent la variable en facteur (proportionnelle, affine) ou en puissance entière (second degré).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

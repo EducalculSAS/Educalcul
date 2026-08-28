@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Écrire",
+  "title": "Algorithmes et notation scientifique",
+  "blocks": [
+    {
+      "title": "Conversion nombre décimal vers notation scientifique (supérieur à 1)",
+      "content": "Écrire un algorithme (en langage naturel ou syntaxe Python) qui permet de convertir un nombre décimal $x \\ge 1$ en notation scientifique. L'algorithme doit déterminer le mantisse $m$ (tel que $1 \\le m < 10$) et l'exposant $n$ (entier naturel) pour écrire $x = m \\times 10^n$.",
+      "correctAnswer": "Algorithme :\\n1. Demander x (nombre décimal, x >= 1)\\n2. Initialiser n <- 0\\n3. Tant que x >= 10 faire\\n      x <- x / 10\\n      n <- n + 1\\n   Fin tant que\\n4. m <- x\\n5. Afficher m, n  (la notation scientifique est m × 10^n)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un nombre supérieur ou égal à 1, on divise successivement par 10 tant que le nombre est supérieur ou égal à 10. Chaque division correspond à une augmentation de 1 de l'exposant. Quand le nombre devient compris entre 1 (inclus) et 10 (exclu), on a trouvé le mantisse m et l'exposant n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion nombre décimal vers notation scientifique (inférieur à 1)",
+      "content": "Écrire un algorithme qui convertit un nombre décimal $0 < x < 1$ en notation scientifique. L'algorithme doit déterminer le mantisse $m$ (tel que $1 \\le m < 10$) et l'exposant $n$ (entier relatif négatif) pour écrire $x = m \\times 10^n$.",
+      "correctAnswer": "Algorithme :\\n1. Demander x (nombre décimal, 0 < x < 1)\\n2. Initialiser n <- 0\\n3. Tant que x < 1 faire\\n      x <- x * 10\\n      n <- n - 1\\n   Fin tant que\\n4. m <- x\\n5. Afficher m, n  (la notation scientifique est m × 10^n)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour un nombre strictement compris entre 0 et 1, on multiplie successivement par 10 tant que le nombre est strictement inférieur à 1. Chaque multiplication correspond à une diminution de 1 de l'exposant (qui devient négatif). Quand le nombre atteint l'intervalle [1 ; 10[, on a le mantisse m et l'exposant n.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication de deux nombres en notation scientifique",
+      "content": "Écrire un algorithme qui prend en entrée deux nombres écrits en notation scientifique $a = m_a \\times 10^{n_a}$ et $b = m_b \\times 10^{n_b}$ et qui affiche le produit $a \\times b$ sous forme normalisée (mantisse entre 1 et 10, exposant entier).",
+      "correctAnswer": "Algorithme :\\n1. Demander m_a, n_a, m_b, n_b\\n2. m_prod <- m_a * m_b\\n3. n_prod <- n_a + n_b\\n4. Tant que m_prod >= 10 faire\\n      m_prod <- m_prod / 10\\n      n_prod <- n_prod + 1\\n   Fin tant que\\n5. Tant que m_prod < 1 faire\\n      m_prod <- m_prod * 10\\n      n_prod <- n_prod - 1\\n   Fin tant que\\n6. Afficher m_prod, n_prod  (le produit est m_prod × 10^n_prod)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie les mantisses et on additionne les exposants. Le résultat n'est pas nécessairement normalisé : le mantisse peut être supérieur ou égal à 10 (cas 1) ou inférieur à 1 (cas 2, rare mais possible si mantisses < 1, hors norme standard). On utilise donc deux boucles 'Tant que' pour réajuster : on divise le mantisse par 10 et on incrémente l'exposant s'il est trop grand ; on multiplie par 10 et on décrémente l'exposant s'il est trop petit.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

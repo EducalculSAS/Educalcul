@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Application : Fonction linéaire intuitive",
+  "title": "Applications de la fonction linéaire intuitive - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Calculer l'image d'un nombre par une fonction linéaire",
+      "content": "Mets les étapes dans l'ordre pour calculer $f(5)$ si $f(x) = 2x + 3$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Remplacer $x$ par $5$ dans l'expression $2x + 3$.",
+        "Effectuer la multiplication $2 \\times 5$.",
+        "Ajouter $3$ au résultat.",
+        "Obtenir la valeur $13$."
+      ],
+      "explanation": "On commence par substituer $x = 5$ dans $f(x) = 2x + 3$, ce qui donne $2 \\times 5 + 3$. On effectue ensuite la multiplication $2 \\times 5 = 10$, puis on ajoute $3$ pour obtenir $13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver l'équation d'une fonction linéaire à partir d'un tableau",
+      "content": "Mets les étapes dans l'ordre pour déterminer l'équation de la fonction linéaire qui correspond au tableau de valeurs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer le coefficient directeur $a$ en divisant la différence des $y$ par la différence des $x$.",
+        "Identifier l'ordonnée à l'origine $b$ en utilisant un couple $(x,y)$ et l'équation $y = ax + b$.",
+        "Écrire l'équation sous la forme $y = ax + b$.",
+        "Vérifier l'équation avec un autre couple de valeurs du tableau."
+      ],
+      "explanation": "Le coefficient directeur $a$ est le taux de variation constant. On le calcule par $\\frac{y_2 - y_1}{x_2 - x_1}$. Ensuite, on remplace $x$ et $y$ par un couple connu dans $y = ax + b$ pour trouver $b$. On écrit alors l'équation complète et on la teste sur un autre point.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modéliser un problème par une fonction linéaire",
+      "content": "Mets les étapes dans l'ordre pour écrire la fonction linéaire qui donne le prix $P$ en euros en fonction de la distance $d$ en kilomètres pour un taxi coûtant $2$ € par km avec une prise en charge de $5$ €.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le coût fixe (prise en charge) : $5$ €.",
+        "Identifier le coût variable par kilomètre : $2$ €.",
+        "Écrire la fonction $P(d) = 2d + 5$.",
+        "Calculer le prix pour $10$ km : $P(10) = 2 \\times 10 + 5 = 25$ €."
+      ],
+      "explanation": "Le prix total est la somme d'un montant fixe (la prise en charge) et d'une partie proportionnelle à la distance. Le terme constant est $5$, le coefficient de $d$ est $2$. L'évaluation pour $d=10$ donne $25$ €.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 160,
+  "_course_code": "ce2-t03-c01-addition-posee-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Gérer plusieurs retenues",
+  "title": "Additions posées : gérer plusieurs retenues",
+  "blocks": [
+    {
+      "title": "Calculer une somme avec retenues",
+      "content": "Calcule l'addition posée ci-contre et écris le résultat final. $2 645 + 1 587 = $ {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "4 232"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne chiffre par chiffre en partant de la droite. Unités : $5 + 7 = 12$, j'écris 2, je retiens 1. Dizaines : $4 + 8 + 1 = 13$, j'écris 3, je retiens 1. Centaines : $6 + 5 + 1 = 12$, j'écris 2, je retiens 1. Milliers : $2 + 1 + 1 = 4$. Le résultat est $4 232$.",
+      "points": 2,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "2645",
+          "1587"
+        ],
+        "result": "4232",
+        "carries": [
+          "1",
+          "1",
+          "1"
+        ],
+        "caption": "Addition 2 645 + 1 587"
+      }
+    },
+    {
+      "title": "Identifier les retenues",
+      "content": "Observe l'addition posée ci-contre. La retenue des unités est {{1}}, la retenue des dizaines est {{2}} et la retenue des centaines est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "1",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde les sommes colonne par colonne. Unités : $6 + 5 = 11$, la retenue est 1. Dizaines : $9 + 1 + 1 (\\text{retenue}) = 11$, la retenue est 1. Centaines : $7 + 2 + 1 (\\text{retenue}) = 10$, la retenue est 1. Les trois retenues valent donc 1.",
+      "points": 2,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "3796",
+          "4215"
+        ],
+        "result": "8011",
+        "carries": [
+          "1",
+          "1",
+          "1"
+        ],
+        "caption": "Addition 3 796 + 4 215"
+      }
+    },
+    {
+      "title": "Compléter le résultat",
+      "content": "Pour l'addition $5 009 + 3 992$ posée ci-contre, le chiffre des centaines du résultat est {{1}} et le chiffre des milliers est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "0",
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Unités : $9 + 2 = 11$ (ret 1). Dizaines : $0 + 9 + 1 = 10$ (ret 1). Centaines : $0 + 9 + 1 = 10$, j'écris 0, je retiens 1. Milliers : $5 + 3 + 1 = 9$. Le chiffre des centaines est 0 et celui des milliers est 9. Le résultat complet est $9 001$.",
+      "points": 3,
+      "figure": {
+        "type": "column_operation",
+        "operator": "+",
+        "operands": [
+          "5009",
+          "3992"
+        ],
+        "result": "9001",
+        "carries": [
+          "1",
+          "1",
+          "1"
+        ],
+        "caption": "Addition 5 009 + 3 992"
+      }
+    }
+  ]
+}

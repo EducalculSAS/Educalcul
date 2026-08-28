@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 366,
+  "_course_code": "6eme-t07-c04-reperage",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Coordonnées",
+  "title": "Algorithmes et coordonnées dans le plan",
+  "blocks": [
+    {
+      "title": "Translation d'un point",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui demande à l'utilisateur les coordonnées $x$ et $y$ d'un point $A$, puis affiche les coordonnées du point $A$ après une translation de $4$ unités vers la droite et $3$ unités vers le haut.",
+      "correctAnswer": "Algorithme :\\n1. Demander x\\n2. Demander y\\n3. x ← x + 4\\n4. y ← y + 3\\n5. Afficher x, y",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute 4 à l'abscisse pour déplacer le point vers la droite et 3 à l'ordonnée pour le déplacer vers le haut. Les nouvelles coordonnées sont $(x+4; y+3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Milieu d'un segment",
+      "content": "Écrire un algorithme qui, étant donné les coordonnées de deux points $A(x_A; y_A)$ et $B(x_B; y_B)$, calcule et affiche les coordonnées du milieu $M$ du segment $[AB]$.",
+      "correctAnswer": "Algorithme :\\n1. Demander xA, yA\\n2. Demander xB, yB\\n3. xM ← (xA + xB) / 2\\n4. yM ← (yA + yB) / 2\\n5. Afficher xM, yM",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du milieu sont la moyenne des abscisses et la moyenne des ordonnées : $x_M = (x_A + x_B)/2$, $y_M = (y_A + y_B)/2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quadrant d'un point",
+      "content": "Écrire un algorithme qui détermine dans quel quadrant se trouve un point $P(x; y)$ (en supposant $x ≠ 0$ et $y ≠ 0$) et affiche le numéro du quadrant ($1$, $2$, $3$ ou $4$).",
+      "correctAnswer": "Algorithme :\\n1. Demander x, y\\n2. Si x > 0 et y > 0 alors afficher 1\\n3. Sinon si x < 0 et y > 0 alors afficher 2\\n4. Sinon si x < 0 et y < 0 alors afficher 3\\n5. Sinon afficher 4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le plan est divisé en quatre quadrants : le premier pour $x>0, y>0$, le second pour $x<0, y>0$, le troisième pour $x<0, y<0$, le quatrième pour $x>0, y<0$. L'algorithme teste ces conditions successivement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

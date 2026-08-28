@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Choisir",
+  "title": "Choisir une représentation statistique adaptée",
+  "questions": [
+    {
+      "text": "On interroge $30$ élèves de cinquième sur leur couleur préférée parmi : bleu, rouge, vert, jaune. Quelle représentation graphique est la plus adaptée pour afficher ces résultats ?",
+      "options": [
+        "Diagramme en barres",
+        "Diagramme en bandes (histogramme)",
+        "Nuage de points",
+        "Boîte à moustaches"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "La variable étudiée est qualitative nominale (des couleurs). Le diagramme en barres (ou le diagramme circulaire) est conçu pour représenter les effectifs de chaque modalité d'une variable qualitative. Le diagramme en bandes (histogramme) et la boîte à moustaches nécessitent une variable quantitative. Le nuage de points nécessite deux variables quantitatives.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une enquête porte sur le niveau de satisfaction des élèves à la cantine : « Insatisfait », « Moyennement satisfait », « Satisfait », « Très satisfait ». Quelle représentation permet de respecter l'ordre naturel de ces modalités ?",
+      "options": [
+        "Diagramme circulaire",
+        "Diagramme en barres",
+        "Graphique en lignes",
+        "Diagramme en bandes"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "Il s'agit d'une variable qualitative ordinale : les modalités ont un ordre logique. Le diagramme en barres place les modalités dans cet ordre sur l'axe horizontal. Le diagramme circulaire ne visualise pas l'ordre. Le graphique en lignes est réservé à l'évolution dans le temps. Le diagramme en bandes (histogramme) s'applique aux variables quantitatives continues.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On relève le nombre de frères et sœurs de chaque élève d'une classe (valeurs possibles : $0$, $1$, $2$, $3$, $4$). Quel diagramme choisir pour représenter la distribution de cet effectif ?",
+      "options": [
+        "Diagramme circulaire",
+        "Diagramme en barres",
+        "Courbe d'évolution temporelle",
+        "Boîte à moustaches"
+      ],
+      "correctAnswer": "Diagramme en barres",
+      "explanation": "Le nombre de frères et sœurs est une variable quantitative discrète prenant peu de valeurs entières. Le diagramme en barres représente parfaitement l'effectif pour chaque valeur. Le diagramme circulaire masque la nature numérique et l'ordre des valeurs. La courbe d'évolution temporelle nécessite une variable temps. La boîte à moustaches est généralement introduite plus tard pour des séries plus étendues.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On suit la température moyenne mensuelle à Paris sur une année ($12$ mois). Quelle représentation permet de visualiser au mieux l'évolution au cours du temps ?",
+      "options": [
+        "Diagramme en barres",
+        "Diagramme circulaire",
+        "Graphique en lignes",
+        "Nuage de points"
+      ],
+      "correctAnswer": "Graphique en lignes",
+      "explanation": "On observe une variable quantitative (température) mesurée à des instants réguliers (les mois). Le graphique en lignes (ou courbe d'évolution) relie les points dans l'ordre chronologique, ce qui met en évidence les variations et la tendance saisonnière. Le diagramme en barres est possible mais moins lisible pour l'évolution. Le circulaire n'a pas de sens (pas de notion de partie d'un tout). Le nuage de points ne relie pas les points dans l'ordre du temps.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare les sports préférés (Football, Natation, Tennis, Danse) entre les filles et les garçons d'un collège. Quel diagramme permet de comparer directement les deux groupes pour chaque sport ?",
+      "options": [
+        "Diagramme en barres simple",
+        "Diagramme en barres groupées",
+        "Deux diagrammes circulaires distincts",
+        "Diagramme en bandes"
+      ],
+      "correctAnswer": "Diagramme en barres groupées",
+      "explanation": "Pour comparer deux populations (filles/garçons) sur une même variable qualitative (le sport), le diagramme en barres groupées (ou juxtaposées) place côte à côte les barres de chaque groupe pour chaque modalité, facilitant la comparaison visuelle immédiate. Un diagramme en barres simple ne montre qu'un seul groupe. Deux diagrammes circulaires distincts rendent la comparaison des angles difficile. Le diagramme en bandes est adapté aux variables quantitatives continues.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

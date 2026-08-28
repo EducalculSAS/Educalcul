@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Critères simples si prévus",
+  "title": "Critères de divisibilité : associer",
+  "blocks": [
+    {
+      "title": "Identifier les critères",
+      "content": "Relie chaque énoncé du critère de divisibilité au diviseur correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le nombre se termine par $0$ ou $5$",
+          "right": "Divisible par $5$"
+        },
+        {
+          "left": "La somme des chiffres est un multiple de $3$",
+          "right": "Divisible par $3$"
+        },
+        {
+          "left": "Le nombre se termine par un chiffre pair",
+          "right": "Divisible par $2$"
+        },
+        {
+          "left": "Le nombre se termine par $0$",
+          "right": "Divisible par $10$"
+        },
+        {
+          "left": "La somme des chiffres est un multiple de $9$",
+          "right": "Divisible par $9$"
+        }
+      ],
+      "items": [],
+      "explanation": "On utilise les critères de divisibilité classiques :\\n- Un nombre est divisible par $2$ s'il se termine par $0, 2, 4, 6$ ou $8$ (chiffre pair).\\n- Un nombre est divisible par $3$ si la somme de ses chiffres est un multiple de $3$.\\n- Un nombre est divisible par $5$ s'il se termine par $0$ ou $5$.\\n- Un nombre est divisible par $9$ si la somme de ses chiffres est un multiple de $9$.\\n- Un nombre est divisible par $10$ s'il se termine par $0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appliquer les critères",
+      "content": "Relie chaque nombre à la liste de ses diviseurs parmi $2, 3, 5, 9, 10$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$120$",
+          "right": "Divisible par $2$, $3$, $5$, $10$"
+        },
+        {
+          "left": "$45$",
+          "right": "Divisible par $3$, $5$, $9$"
+        },
+        {
+          "left": "$28$",
+          "right": "Divisible par $2$"
+        },
+        {
+          "left": "$108$",
+          "right": "Divisible par $2$, $3$, $9$"
+        },
+        {
+          "left": "$250$",
+          "right": "Divisible par $2$, $5$, $10$"
+        }
+      ],
+      "items": [],
+      "explanation": "On teste chaque nombre :\\n- $120$ : pair (divisible par $2$), somme $1+2+0=3$ (divisible par $3$), termine par $0$ (divisible par $5$ et $10$). Pas divisible par $9$ (somme $3$).\\n- $45$ : impair, somme $4+5=9$ (divisible par $3$ et $9$), termine par $5$ (divisible par $5$).\\n- $28$ : pair (divisible par $2$), somme $10$ (pas $3$ ni $9$), ne termine pas par $0$ ou $5$.\\n- $108$ : pair (divisible par $2$), somme $1+0+8=9$ (divisible par $3$ et $9$), ne termine pas par $0$ ou $5$.\\n- $250$ : pair (divisible par $2$), somme $7$ (pas $3$ ni $9$), termine par $0$ (divisible par $5$ et $10$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer selon les critères",
+      "content": "Relie chaque nombre à la phrase qui décrit exactement sa divisibilité par $2, 3, 5, 9, 10$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$50$",
+          "right": "Divisible par $2$ et $5$"
+        },
+        {
+          "left": "$27$",
+          "right": "Divisible par $3$ et $9$"
+        },
+        {
+          "left": "$12$",
+          "right": "Divisible par $2$ et $3$"
+        },
+        {
+          "left": "$25$",
+          "right": "Divisible par $5$ seulement"
+        },
+        {
+          "left": "$30$",
+          "right": "Divisible par $10$"
+        }
+      ],
+      "items": [],
+      "explanation": "On analyse chaque nombre :\\n- $50$ : pair (divisible par $2$), termine par $0$ (divisible par $5$ et $10$). La proposition \"Divisible par $2$ et $5$\" est la seule qui correspond parmi les choix (le $10$ n'est pas listé seul pour ce nombre).\\n- $27$ : impair, somme $2+7=9$ (divisible par $3$ et $9$).\\n- $12$ : pair (divisible par $2$), somme $1+2=3$ (divisible par $3$), pas par $9$ (somme $\\neq 9$), ne termine pas par $0$ ou $5$.\\n- $25$ : impair, somme $7$ (pas $3$ ni $9$), termine par $5$ (divisible par $5$ seulement).\\n- $30$ : termine par $0$ donc divisible par $10$ (et aussi $2, 3, 5$). La proposition \"Divisible par $10$\" est la caractéristique forte (critère du $10$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

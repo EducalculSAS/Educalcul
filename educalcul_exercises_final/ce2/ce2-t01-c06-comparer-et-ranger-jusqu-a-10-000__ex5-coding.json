@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 147,
+  "_course_code": "ce2-t01-c06-comparer-et-ranger-jusqu-a-10-000",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Comparer milliers puis centaines",
+  "title": "Algorithme de comparaison : milliers puis centaines",
+  "blocks": [
+    {
+      "title": "Écrire l'algorithme de comparaison",
+      "content": "Écris un algorithme (sous forme de liste d'instructions numérotées) qui permet de comparer deux nombres entiers entre $0$ et $10000$. L'algorithme doit d'abord comparer le chiffre des milliers, puis si nécessaire le chiffre des centaines. Utilise les mots SI, ALORS, SINON, FIN SI.",
+      "correctAnswer": "1. Lire le nombre A et le nombre B.\\n2. Extraire le chiffre des milliers de A (mA) et de B (mB).\\n3. SI mA > mB ALORS afficher \"A est plus grand que B\".\\n4. SINON SI mA < mB ALORS afficher \"A est plus petit que B\".\\n5. SINON (les milliers sont égaux) :\\n6.    Extraire le chiffre des centaines de A (cA) et de B (cB).\\n7.    SI cA > cB ALORS afficher \"A est plus grand que B\".\\n8.    SINON SI cA < cB ALORS afficher \"A est plus petit que B\".\\n9.    SINON afficher \"Il faut comparer les dizaines et les unités\".\\n10. FIN SI\\n11. FIN SI",
+      "explanation": "Pour comparer deux nombres jusqu'à 10 000, on regarde d'abord le chiffre le plus à gauche (les milliers). Si les milliers sont différents, le plus grand nombre est celui qui a le plus grand chiffre des milliers. Si les milliers sont égaux, on passe au chiffre suivant : les centaines. On applique la même logique. Si les centaines sont aussi égales, il faut continuer avec les dizaines puis les unités, mais l'exercice s'arrête à l'étape des centaines.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester l'algorithme avec des exemples",
+      "content": "Applique l'algorithme écrit à la question précédente pour comparer les deux paires de nombres suivantes. Écris le résultat de chaque comparaison (supérieur, inférieur ou égal au niveau des milliers/centaines) et la conclusion finale.\\nPaire 1 : $4521$ et $3890$\\nPaire 2 : $6245$ et $6281$",
+      "correctAnswer": "Paire 1 ($4521$ vs $3890$) :\\n- Milliers : $4$ et $3$. $4 > 3$.\\n- Conclusion : $4521$ est plus grand que $3890$. (On s'arrête ici).\\n\\nPaire 2 ($6245$ vs $6281$) :\\n- Milliers : $6$ et $6$. Égaux.\\n- Centaines : $2$ et $2$. Égaux.\\n- Conclusion : Les milliers et les centaines sont égaux. L'algorithme indique qu'il faut comparer les dizaines et les unités pour trancher. (Ici $45 < 81$ donc $6245 < 6281$).",
+      "explanation": "Pour la première paire, le chiffre des milliers ($4$ contre $3$) suffit à conclure. Pour la deuxième paire, les milliers ($6$) et les centaines ($2$) sont identiques. L'algorithme prévu s'arrête à l'étape des centaines et signale qu'il faut aller plus loin (dizaines/unités) pour départager les nombres.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Compléter un code style Python",
+      "content": "Complète le script Python ci-dessous pour qu'il compare deux nombres `nombre1` et `nombre2` entre $0$ et $10000$ en suivant la règle : comparer les milliers, puis les centaines si les milliers sont égaux. Remplace les commentaires `# ...` par les bonnes instructions.\\n\\n```python\\nnombre1 = 4350\\nnombre2 = 4280\\n\\nmilliers1 = nombre1 // 1000\\nmilliers2 = nombre2 // 1000\\n\\nif milliers1 > milliers2:\\n    print(\"nombre1 est plus grand\")\\n# ... compléter ici pour le cas milliers1 < milliers2\\n# ... compléter ici pour le cas égal (else)\\n    # calculer centaines1 et centaines2\\n    # comparer centaines1 et centaines2\\n    # afficher résultat\\n```",
+      "correctAnswer": "```python\\nnombre1 = 4350\\nnombre2 = 4280\\n\\nmilliers1 = nombre1 // 1000\\nmilliers2 = nombre2 // 1000\\n\\nif milliers1 > milliers2:\\n    print(\"nombre1 est plus grand\")\\nelif milliers1 < milliers2:\\n    print(\"nombre1 est plus petit\")\\nelse:\\n    centaines1 = (nombre1 // 100) % 10\\n    centaines2 = (nombre2 // 100) % 10\\n    if centaines1 > centaines2:\\n        print(\"nombre1 est plus grand\")\\n    elif centaines1 < centaines2:\\n        print(\"nombre1 est plus petit\")\\n    else:\\n        print(\"Milliers et centaines égaux, comparer le reste\")\\n```",
+      "explanation": "La structure `if / elif / else` gère les trois cas pour les milliers. Dans le `else` (milliers égaux), on calcule le chiffre des centaines : `(nombre // 100) % 10` permet d'isoler le chiffre des centaines (division entière par 100 pour enlever dizaines/unités, puis modulo 10 pour garder le dernier chiffre). On répète ensuite la même structure de comparaison pour les centaines.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

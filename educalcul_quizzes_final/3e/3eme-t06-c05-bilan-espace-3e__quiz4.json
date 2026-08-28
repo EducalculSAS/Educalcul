@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 489,
+  "_course_code": "3eme-t06-c05-bilan-espace-3e",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Bilan - Espace 3e",
+  "title": "Bilan Espace 3e - Applications",
+  "questions": [
+    {
+      "text": "Un pavé droit a pour dimensions $4$ cm, $5$ cm et $6$ cm. Quelle est son volume ?",
+      "options": [
+        "120 cm³",
+        "15 cm³",
+        "120 cm²",
+        "30 cm³"
+      ],
+      "correctAnswer": "120 cm³",
+      "explanation": "Le volume d'un pavé droit se calcule en multipliant ses trois dimensions : $4 \\times 5 \\times 6 = 120$. L'unité est le cm³ car c'est un volume. Les autres options correspondent à des erreurs : $15$ cm³ serait le produit de deux dimensions seulement, $120$ cm² confond aire et volume, $30$ cm³ est le produit de $5$ et $6$ seulement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de rayon $2$ cm et de hauteur $5$ cm. Quelle est son aire totale (arrondie au cm² près) ?",
+      "options": [
+        "88 cm²",
+        "87 cm²",
+        "88 cm³",
+        "87 cm³"
+      ],
+      "correctAnswer": "88 cm²",
+      "explanation": "L'aire totale d'un cylindre est $2\\pi r(r+h)$. Ici $r=2$ et $h=5$ : $2\\pi \\times 2 \\times (2+5) = 28\\pi \\approx 87,96$. Arrondi au cm² près, cela donne $88$ cm². Les distracteurs $87$ cm² correspondent à un arrondi par défaut, et les options en cm³ confondent aire et volume.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $A(2; -1; 3)$ est l'image du point $B$ par la translation de vecteur $\\vec{v}(3; 4; -2)$. Quelles sont les coordonnées de $B$ ?",
+      "options": [
+        "(-1; -5; 5)",
+        "(5; 3; 1)",
+        "(-1; 3; 5)",
+        "(5; -5; 1)"
+      ],
+      "correctAnswer": "(-1; -5; 5)",
+      "explanation": "Si $A$ est l'image de $B$ par la translation de vecteur $\\vec{v}$, alors $\\overrightarrow{OA} = \\overrightarrow{OB} + \\vec{v}$, donc $\\overrightarrow{OB} = \\overrightarrow{OA} - \\vec{v}$. On calcule $(2-3; -1-4; 3-(-2)) = (-1; -5; 5)$. Les autres options résultent d'addition au lieu de soustraction ou d'erreurs sur les signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône droit de sommet $S$ et de base un disque de centre $O$ est coupé par un plan parallèle à sa base passant par le milieu de la hauteur. Quelle est la forme de la section ?",
+      "options": [
+        "Un cercle",
+        "Une ellipse",
+        "Un triangle",
+        "Un carré"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Toute section d'un cône droit par un plan parallèle à sa base est un cercle. Une ellipse apparaîtrait pour un plan incliné, un triangle pour un plan passant par le sommet, et un carré n'est pas une section plane d'un cône.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u}(1; 2; -1)$ et $\\vec{v}(-2; 0; 3)$. Quel est le vecteur $\\vec{u} + 2\\vec{v}$ ?",
+      "options": [
+        "(-3; 2; 5)",
+        "(-1; 2; 5)",
+        "(-3; 4; 5)",
+        "(-3; 2; 3)"
+      ],
+      "correctAnswer": "(-3; 2; 5)",
+      "explanation": "On calcule $2\\vec{v} = (-4; 0; 6)$. Ensuite $\\vec{u} + 2\\vec{v} = (1-4; 2+0; -1+6) = (-3; 2; 5)$. Les distracteurs correspondent à des erreurs : oubli du facteur 2 sur la première coordonnée, erreur sur la deuxième coordonnée, ou erreur sur la troisième coordonnée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

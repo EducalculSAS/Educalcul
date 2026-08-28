@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Triangles semblables",
+  "title": "Applications des triangles semblables - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Repérer la semejance",
+      "content": "Voici deux triangles ABC et DEF. Les angles correspondent : $\\angle A = \\angle D$, $\\angle B = \\angle E$, $\\angle C = \\angle F$. Range les étapes dans l'ordre pour montrer que les triangles sont semblables.",
+      "items": [
+        "Observer les angles donnés",
+        "Vérifier que deux angles sont respectivement égaux",
+        "Conclure que les triangles sont semblables par le critère AA",
+        "Écrire la relation de semejance $\\triangle ABC \\sim \\triangle DEF$"
+      ],
+      "explanation": "On commence par observer les angles. Comme deux angles du premier triangle sont égaux à deux angles du second, le critère AA (Angle-Angle) garantit la semejance. On peut alors écrire $\\triangle ABC \\sim \\triangle DEF$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Établir une proportion",
+      "content": "Les triangles semblables ont des côtés proportionnels. Si $AB = 6$, $DE = 9$ et $BC = 8$, trouve la longueur de $EF$. Range les étapes dans l'ordre.",
+      "items": [
+        "Écrire la proportion $\\frac{AB}{DE} = \\frac{BC}{EF}$",
+        "Remplacer les valeurs connues",
+        "Effectuer le produit en croix",
+        "Calculer $EF$"
+      ],
+      "explanation": "La proportion $\\frac{6}{9} = \\frac{8}{EF}$ donne $6 \\times EF = 9 \\times 8$, donc $EF = \\frac{72}{6} = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre un problème concret",
+      "content": "Un poteau de $2\\,m$ de haut projette une ombre de $3\\,m$. Au même moment, un arbre projette une ombre de $12\\,m$. Détermine la hauteur de l'arbre en rangeant les étapes.",
+      "items": [
+        "Identifier les deux triangles rectangles semblables (poteau/ombre et arbre/ombre)",
+        "Écrire la proportion $\\frac{2}{3} = \\frac{h}{12}$ où $h$ est la hauteur de l'arbre",
+        "Faire le produit en croix : $2 \\times 12 = 3 \\times h$",
+        "Résoudre pour $h$ : $h = 8\\,m$"
+      ],
+      "explanation": "Les rayons du soleil sont parallèles, donc les triangles formés par le poteau et son ombre, et l'arbre et son ombre, sont semblables. La proportion $\\frac{2}{3} = \\frac{h}{12}$ mène à $h = 8\\,m$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

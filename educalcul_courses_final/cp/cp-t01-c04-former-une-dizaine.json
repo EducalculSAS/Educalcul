@@ -1,0 +1,296 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.484920+00:00",
+  "id": 4,
+  "code": "cp-t01-c04",
+  "title": "Former une dizaine",
+  "description": "Cours structuré Educalcul : Former une dizaine.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Former une dizaine",
+    "objectif_global": "Former une dizaine",
+    "mini_lecons_imposees": [
+      "Regrouper exactement 10 unités.",
+      "Nommer le paquet de dix comme une dizaine.",
+      "Reconnaître ce qui forme ou non une dizaine complète."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Regrouper exactement 10 unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter jusqu'à dix avec des objets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, on va jouer avec des petits cubes. Pose $10$ cubes devant toi sur la table. Touche le premier cube et dis $1$, touche le deuxième et dis $2$, continue ainsi jusqu'au dernier. Combien en as-tu compté ? $10$ exactement ! C'est notre nombre magique pour former un paquet."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 10,
+              "caption": "Dix cubes unités posés les uns à côté des autres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, rapproche tous ces cubes pour former un petit tas bien serré. Regarde : ils tiennent dans une main ! Ce tas, c'est un groupe de $10$. On ne les compte plus un par un, on les voit ensemble comme un seul bloc. C'est plus pratique pour ranger ou pour donner à un copain."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "right": [
+                10
+              ],
+              "caption": "Dix unités à gauche, un paquet de dix à droite : la balance est en équilibre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions ensemble : si tu défaites ton paquet, tu retrouves tes $10$ cubes de départ. Essaie ! Compte-les à nouveau un par un pour être sûr. $1$, $2$, $3$... jusqu'à $10$. Le paquet n'a rien perdu, il a juste changé de forme. C'est ça, regrouper exactement $10$ unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de cubes unités faut-il pour former un paquet de dix ?",
+              "answer": "$10$",
+              "hint": "Compte sur tes doigts : deux mains ouvertes font combien ?",
+              "explanation": "Il faut exactement $10$ cubes unités pour faire un paquet de dix. C'est comme les $10$ doigts de tes deux mains."
+            },
+            {
+              "question": "Si j'ai un paquet de dix cubes et que je le défais, combien de cubes ai-je dans les mains ?",
+              "answer": "$10$",
+              "hint": "Le paquet ne mange pas les cubes, il les range seulement.",
+              "explanation": "Un paquet de dix contient toujours $10$ cubes. En le défaisant, on retrouve les $10$ cubes de départ."
+            },
+            {
+              "question": "Sur l'image, combien y a-t-il de cubes au total ?",
+              "answer": "$10$",
+              "hint": "Compte les cubes un par un en les touchant du doigt sur l'écran.",
+              "explanation": "L'image montre $10$ cubes unités. C'est le nombre qu'il faut pour former une dizaine."
+            }
+          ]
+        },
+        {
+          "title": "Nommer le paquet de dix comme une dizaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le nom magique : une dizaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais faire un paquet de $10$ cubes ? Bravo ! Ce paquet a un nom spécial qu'on utilise tout le temps en classe. On l'appelle **une dizaine**. C'est un mot de grand, mais l'idée est simple : *di-zaine* veut dire *dix* ensemble. Une dizaine, c'est exactement un paquet de $10$ unités bien rangées."
+            },
+            {
+              "type": "definition",
+              "term": "Dizaine",
+              "definition": "Un groupe de exactement $10$ unités rassemblées ensemble. On l'écrit souvent comme un bâtonnet ou un paquet ficelé.",
+              "example": "1 dizaine = 10 unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 0,
+              "caption": "Une dizaine : un bâtonnet de dix cubes collés"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la différence : à gauche, $10$ cubes séparés qui roulent sur la table. À droite, **une dizaine** bien propre qui ne s'éparpille pas. Les deux images montrent la même quantité, mais la dizaine est plus facile à transporter, à compter et à ranger dans une boîte. C'est pour ça qu'on l'aime bien !"
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "right": [
+                10
+              ],
+              "caption": "Dix unités éparses équivalent à une dizaine : même poids, même nombre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de le dire à voix haute : \"J'ai fait **une dizaine** !\" Montre ton bâtonnet à ton voisin. Ensemble, vous avez **deux dizaines**. Si tu en ajoutes une troisième, tu auras **trois dizaines**. Le mot *dizaine* sert à compter les paquets tout faits, comme on compte des pommes ou des bonbons."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment appelle-t-on un paquet de 10 unités ?",
+              "answer": "Une dizaine",
+              "hint": "Ça commence par \"di\" comme dans dix.",
+              "explanation": "Un paquet de $10$ unités groupées ensemble s'appelle une dizaine. C'est le mot exact pour dire \"un groupe de dix\"."
+            },
+            {
+              "question": "Sur l'image, que représente le bâtonnet bleu ?",
+              "answer": "Une dizaine",
+              "hint": "Regarde s'il y a des traits qui séparent les cubes sur le bâtonnet.",
+              "explanation": "Le bâtonnet bleu représente une dizaine, c'est-à-dire $10$ cubes unités collés les uns aux autres pour former un seul bloc."
+            },
+            {
+              "question": "Si j'ai 3 paquets de 10 cubes chacun, combien de dizaines ai-je ?",
+              "answer": "$3$ dizaines",
+              "hint": "Compte les paquets, pas les cubes un par un.",
+              "explanation": "Chaque paquet de $10$ cubes est une dizaine. Trois paquets font donc $3$ dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître ce qui forme ou non une dizaine complète.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dizaine complète ou pas complète ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on a un joli paquet de $10$, parfois on a quelques cubes en plus, parfois il en manque. Apprenons à regarder vite fait et à dire : \"C'est une dizaine complète\" ou \"Ce n'est pas encore une dizaine\". C'est comme vérifier si ton sac de billes est plein ou s'il y a de la place."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 3,
+              "caption": "Une dizaine et 3 unités : la dizaine est complète, il y a des unités en plus"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons trois situations. Première situation : tu as un bâtonnet bleu tout seul. C'est **une dizaine complète**, il n'y a rien d'autre. Deuxième situation : tu as $7$ cubes rouges dispersés. Ce n'est **pas une dizaine**, il en manque $3$ pour la finir. Troisième situation : tu as un bâtonnet bleu **et** $4$ cubes rouges. Là, tu as **une dizaine complète** et des unités en plus."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérer 10, 7 et 14 sur la droite numérique",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "7 unités"
+                },
+                {
+                  "value": 10,
+                  "label": "1 dizaine"
+                },
+                {
+                  "value": 14,
+                  "label": "1 dizaine 4 unités"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce pour vérifier : compte les bâtons bleus. Un bâton bleu = une dizaine complète. Zéro bâton bleu = zéro dizaine. Regarde aussi les cubes rouges : s'il y en a $10$ ou plus, tu peux en refaire une nouvelle dizaine ! C'est le jeu des \"dizaines qui se cachent\". Essaie avec tes cubes : fais des groupes de $10$ tant que tu peux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais regrouper exactement 10 cubes pour former un paquet.",
+                "Je sais dire \"une dizaine\" pour nommer ce paquet de 10.",
+                "Je sais reconnaître une dizaine complète (un bâtonnet bleu seul).",
+                "Je sais dire s'il manque des cubes pour faire une dizaine.",
+                "Je sais repérer une dizaine et des unités en plus (ex: 1 dizaine et 3 unités)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces images, laquelle montre une dizaine complète sans rien d'autre ?",
+              "answer": "Un bâtonnet bleu seul",
+              "hint": "Cherche l'image où il n'y a qu'un seul bâtonnet et aucun cube rouge à côté.",
+              "explanation": "Une dizaine complète, c'est exactement un bâtonnet de 10 cubes, ni plus ni moins. S'il y a des cubes rouges en plus, ce n'est plus seulement une dizaine."
+            },
+            {
+              "question": "J'ai 6 cubes rouges. Est-ce une dizaine complète ?",
+              "answer": "Non",
+              "hint": "Compte jusqu'à 10 sur tes doigts en partant de 6.",
+              "explanation": "Avec 6 cubes, il en manque 4 pour arriver à 10. Ce n'est pas encore une dizaine complète."
+            },
+            {
+              "question": "J'ai 1 bâtonnet bleu et 2 cubes rouges. Combien de dizaines complètes ai-je ?",
+              "answer": "1 dizaine",
+              "hint": "Compte seulement les bâtons bleus.",
+              "explanation": "Le bâtonnet bleu fait 1 dizaine complète. Les 2 cubes rouges sont des unités en plus, ils ne forment pas une nouvelle dizaine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

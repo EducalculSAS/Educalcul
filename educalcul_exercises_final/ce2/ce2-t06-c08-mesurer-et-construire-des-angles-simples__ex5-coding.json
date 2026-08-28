@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 194,
+  "_course_code": "ce2-t06-c08-mesurer-et-construire-des-angles-simples",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Reconnaître angle droit",
+  "title": "Algorithmes et angle droit",
+  "blocks": [
+    {
+      "title": "Vérifier un angle droit",
+      "content": "Écris un algorithme en langage structuré (avec Début, Si, Alors, Sinon, Fin) qui décrit la procédure pour vérifier si un angle quelconque est un angle droit à l'aide d'une équerre.",
+      "correctAnswer": "Début\\nPlacer le sommet de l'équerre sur le sommet de l'angle.\\nAligner un côté de l'équerre sur un côté de l'angle.\\nSi l'autre côté de l'angle coïncide avec l'autre côté de l'équerre Alors\\n    Afficher \"C'est un angle droit.\"\\nSinon\\n    Afficher \"Ce n'est pas un angle droit.\"\\nFin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décrit les étapes précises de l'utilisation de l'équerre : superposition du sommet, alignement d'un côté, puis test de coïncidence du second côté. La structure conditionnelle Si/Alors/Sinon permet de donner le résultat du test.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter les angles droits d'un polygone",
+      "content": "Écris un algorithme qui permet de compter le nombre d'angles droits présents dans un polygone (par exemple un carré, un rectangle ou un triangle rectangle). On suppose qu'on sait tester si un angle est droit (grâce à l'algorithme précédent).",
+      "correctAnswer": "Début\\ncompteur ← 0\\nPour chaque sommet du polygone\\n    Si l'angle au sommet est un angle droit Alors\\n        compteur ← compteur + 1\\n    Fin Si\\nFin Pour\\nAfficher \"Le nombre d'angles droits est :\", compteur\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise un compteur à 0. Une boucle « Pour chaque sommet » parcourt tous les angles du polygone. À chaque tour, on utilise le test de l'angle droit : s'il est vrai, on incrémente le compteur. À la fin, on affiche le total. Pour un carré ou un rectangle, le résultat sera 4 ; pour un triangle rectangle, ce sera 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer une perpendiculaire",
+      "content": "Écris un algorithme pour tracer une droite perpendiculaire à une droite $(d)$ passant par un point $A$ placé sur $(d)$, en utilisant une règle et une équerre.",
+      "correctAnswer": "Début\\nPlacer la règle sur la droite $(d)$.\\nPlacer l'équerre contre la règle, avec son angle droit sur le point $A$.\\nVérifier qu'un côté de l'équerre coïncide avec la droite $(d)$.\\nTracer un trait le long de l'autre côté de l'équerre.\\nCette nouvelle droite est perpendiculaire à $(d)$ en $A$.\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction de la perpendiculaire repose sur l'angle droit de l'équerre. La règle sert de guide fixe sur la droite $(d)$. En bloquant la règle et en plaçant l'équerre contre elle avec le sommet de l'angle droit sur $A$, le deuxième côté de l'équerre forme par définition un angle droit avec $(d)$. Tracer le long de ce côté donne la perpendiculaire.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

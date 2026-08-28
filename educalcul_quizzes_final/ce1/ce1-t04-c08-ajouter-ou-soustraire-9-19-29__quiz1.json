@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 105,
+  "_course_code": "ce1-t04-c08-ajouter-ou-soustraire-9-19-29",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Ajouter la dizaine puis corriger",
+  "title": "Quiz : Ajouter 9, 19, 29 en ajoutant la dizaine puis en corrigeant",
+  "questions": [
+    {
+      "text": "Pour calculer $24 + 9$, on utilise la stratégie : j'ajoute 10 puis j'enlève 1. Quelle est la bonne suite d'opérations ?",
+      "options": [
+        "$24 + 10 = 34$ puis $34 - 1 = 33$",
+        "$24 + 10 = 34$ puis $34 + 1 = 35$",
+        "$24 + 10 = 34$ (on s'arrête là)",
+        "$24 - 10 = 14$ puis $14 - 1 = 13$"
+      ],
+      "correctAnswer": "$24 + 10 = 34$ puis $34 - 1 = 33$",
+      "explanation": "La stratégie pour ajouter 9 consiste à ajouter 10 (plus facile) puis à corriger en retirant 1 car on a ajouté 1 de trop. $24 + 10 = 34$, puis $34 - 1 = 33$. L'option B se trompe en ajoutant 1 au lieu de retirer. L'option C oublie la correction. L'option D soustrait au lieu d'ajouter.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Calcul de 24 + 9 : saut de +10 puis -1",
+        "min": 20,
+        "max": 40,
+        "points": [
+          {
+            "value": 24,
+            "label": "Départ"
+          },
+          {
+            "value": 34,
+            "label": "+10"
+          },
+          {
+            "value": 33,
+            "label": "-1"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "En utilisant la même méthode (j'ajoute la dizaine suivante puis je corrige), quel est le résultat de $15 + 19$ ?",
+      "options": [
+        "34",
+        "35",
+        "36",
+        "24"
+      ],
+      "correctAnswer": "34",
+      "explanation": "Pour ajouter 19, j'ajoute 20 (la dizaine au-dessus) puis j'enlève 1. $15 + 20 = 35$, puis $35 - 1 = 34$. L'option B (35) correspond à l'erreur d'oublier la correction. L'option C (36) ajoute 1 au lieu de retrancher. L'option D (24) soustrait 10 au lieu d'ajouter 20.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Applique la stratégie pour trouver le résultat de $42 + 29$.",
+      "options": [
+        "71",
+        "72",
+        "73",
+        "61"
+      ],
+      "correctAnswer": "71",
+      "explanation": "Pour ajouter 29, j'ajoute 30 puis j'enlève 1. $42 + 30 = 72$, puis $72 - 1 = 71$. L'option B (72) est le résultat avant correction. L'option C (73) ajoute 1 de trop. L'option D (61) correspond à une soustraction de 10 au lieu de l'addition de 30.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'addition avec trou : $... + 9 = 56$.",
+      "options": [
+        "47",
+        "46",
+        "48",
+        "65"
+      ],
+      "correctAnswer": "47",
+      "explanation": "Pour trouver le nombre de départ, on fait l'opération inverse : on enlève 9 à 56. Avec la stratégie, on enlève 10 puis on remet 1. $56 - 10 = 46$, puis $46 + 1 = 47$. On vérifie : $47 + 9 = 47 + 10 - 1 = 57 - 1 = 56$. L'option B (46) oublie de remettre 1. L'option C (48) ajoute 1 au lieu de retirer 10 puis remettre. L'option D (65) additionne au lieu de chercher le terme manquant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a 38 autocollants. Elle en reçoit 19 de plus. Combien d'autocollants a-t-elle maintenant ?",
+      "options": [
+        "57",
+        "58",
+        "59",
+        "47"
+      ],
+      "correctAnswer": "57",
+      "explanation": "Il faut calculer $38 + 19$. Stratégie : $38 + 20 = 58$, puis $58 - 1 = 57$. L'option B (58) oublie la correction finale. L'option C (59) ajoute 1 au lieu de retrancher. L'option D (47) correspond à $38 - 10 + 1$ (soustraction au lieu d'addition).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

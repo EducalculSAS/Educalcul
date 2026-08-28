@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Application : Développer et réduire",
+  "title": "Développer et réduire - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Exercice 1",
+      "content": "Remets les étapes dans l'ordre pour développer et réduire l'expression $(x+2)(x-3)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Appliquer la distributivité : $(x+2)(x-3) = x(x-3) + 2(x-3)$",
+        "Développer chaque terme : $x(x-3) = x^2 - 3x$ et $2(x-3) = 2x - 6$",
+        "Regrouper les termes semblables : $x^2 - 3x + 2x - 6 = x^2 - x - 6$"
+      ],
+      "explanation": "On commence par distribuer la somme $(x+2)$ sur $(x-3)$, ce qui donne $x(x-3)+2(x-3)$. Ensuite on développe chaque produit : $x^2-3x$ et $2x-6$. Enfin on additionne les termes semblables $-3x+2x = -x$ pour obtenir $x^2 - x - 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exercice 2",
+      "content": "Remets les étapes dans l'ordre pour développer et réduire l'expression $(2x-5)^2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire le carré comme un produit : $(2x-5)^2 = (2x-5)(2x-5)$",
+        "Appliquer la distributivité (FOIL) : $2x(2x-5) -5(2x-5)$",
+        "Développer : $4x^2 -10x -10x +25$",
+        "Regrouper les termes semblables : $4x^2 -20x +25$"
+      ],
+      "explanation": "Le carré d'un binôme s'écrit comme le produit de ce binôme par lui-même. On utilise ensuite la distributivité (ou la méthode FOIL) pour multiplier chaque terme du premier binôme par chaque terme du second. Cela donne $4x^2 -10x -10x +25$. On rassemble enfin les termes en $x$ : $-10x-10x = -20x$, ce qui donne $4x^2 -20x +25$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exercice 3",
+      "content": "Remets les étapes dans l'ordre pour développer et réduire l'expression $(3x+4)(2x-1) - (x+2)^2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Développer le premier produit : $(3x+4)(2x-1) = 3x(2x-1) + 4(2x-1)$",
+        "Développer le second carré : $(x+2)^2 = (x+2)(x+2) = x(x+2) + 2(x+2)$",
+        "Calculer chaque développement : $6x^2 -3x +8x -4 = 6x^2 +5x -4$ et $x^2 +2x +2x +4 = x^2 +4x +4$",
+        "Effectuer la soustraction : $(6x^2 +5x -4) - (x^2 +4x +4)$",
+        "Regrouper les termes semblables : $5x^2 + x -8$"
+      ],
+      "explanation": "On commence par développer le produit $(3x+4)(2x-1)$ en distributant chaque terme, ce qui donne $6x^2 +5x -4$. On développe ensuite le carré $(x+2)^2$ de la même façon pour obtenir $x^2 +4x +4$. On soustrait alors le second développement du premier : $(6x^2 +5x -4) - (x^2 +4x +4)$. Enfin on regroupe les termes semblables : $6x^2 - x^2 = 5x^2$, $5x - 4x = x$, $-4 - 4 = -8$, ce qui donne $5x^2 + x -8$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Interprétation",
+  "title": "Interprétation des fonctions affines",
+  "questions": [
+    {
+      "text": "Pour la fonction affine $f(x)=3x-2$, quelles sont la pente et l'ordonnée à l'origine ?",
+      "options": [
+        "Pente $3$ et ordonnée à l'origine $-2$",
+        "Pente $-2$ et ordonnée à l'origine $3$",
+        "Pente $3$ et ordonnée à l'origine $2$",
+        "Pente $-3$ et ordonnée à l'origine $-2$"
+      ],
+      "correctAnswer": "Pente $3$ et ordonnée à l'origine $-2$",
+      "explanation": "Dans une fonction affine $f(x)=ax+b$, le coefficient $a$ est la pente et $b$ est l'ordonnée à l'origine. Ici $a=3$ et $b=-2$. Les autres options inversent les valeurs ou changent les signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite passe par les points $(0,4)$ et $(2,10)$. Quelle est son équation réduite ?",
+      "options": [
+        "$f(x)=3x+4$",
+        "$f(x)=4x+3$",
+        "$f(x)=3x+2$",
+        "$f(x)=2x+4$"
+      ],
+      "correctAnswer": "$f(x)=3x+4$",
+      "explanation": "La pente $a = \\frac{10-4}{2-0}=3$. L'ordonnée à l'origine est la coordonnée $y$ du point d'abscisse $0$, soit $4$. Donc $f(x)=3x+4$. Les autres propositions correspondent à des erreurs de calcul de la pente ou de l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un taxi facture $5$ euros de prise en charge plus $2$ euros par kilomètre. Quelle fonction affine modélise le coût $C$ (en euros) en fonction de la distance $d$ (en km) ?",
+      "options": [
+        "$C=2d+5$",
+        "$C=5d+2$",
+        "$C=2d-5$",
+        "$C=5d-2$"
+      ],
+      "correctAnswer": "$C=2d+5$",
+      "explanation": "Le coût fixe (prise en charge) est l'ordonnée à l'origine $5$. Le coût variable par kilomètre est la pente $2$. Donc $C=2d+5$. Les autres options échangent les rôles du fixe et du variable ou utilisent des signes incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $f(x)=-0,5x+10$ donne la température (en °C) $x$ heures après minuit. Que signifie la pente $-0,5$ ?",
+      "options": [
+        "La température diminue de $0,5$ °C par heure",
+        "La température augmente de $0,5$ °C par heure",
+        "La température diminue de $2$ °C par heure",
+        "La température reste constante"
+      ],
+      "correctAnswer": "La température diminue de $0,5$ °C par heure",
+      "explanation": "La pente d'une fonction affine représente le taux de variation. Une pente négative $-0,5$ indique une diminution de $0,5$ unité de $y$ (température) pour chaque augmentation de $1$ unité de $x$ (heure). Les autres réponses inversent le signe ou donnent une valeur erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère les fonctions affines $f(x)=4x+1$ et $g(x)=4x-3$. Que peut-on dire de leurs graphes ?",
+      "options": [
+        "Ce sont deux droites parallèles avec des ordonnées à l'origine différentes",
+        "Elles se coupent en $x=1$",
+        "Ce sont la même droite",
+        "Elles sont perpendiculaires"
+      ],
+      "correctAnswer": "Ce sont deux droites parallèles avec des ordonnées à l'origine différentes",
+      "explanation": "Deux fonctions affines ont des graphes parallèles si et seulement si elles ont la même pente. Ici les deux pentes valent $4$, donc les droites sont parallèles. Leurs ordonnées à l'origine sont $1$ et $-3$, donc distinctes. Elles ne se coupent pas, ne sont pas confondues et ne sont pas perpendiculaires (produit des pentes serait $-1$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

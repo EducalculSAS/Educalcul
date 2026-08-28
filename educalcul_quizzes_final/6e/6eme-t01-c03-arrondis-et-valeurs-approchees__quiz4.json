@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Arrondis et valeurs approchées",
+  "title": "Quiz : Arrondis et valeurs approchées (Application)",
+  "questions": [
+    {
+      "text": "Arrondis $12,7$ à l'entier le plus proche.",
+      "options": [
+        "12",
+        "13",
+        "12,5",
+        "12,7"
+      ],
+      "correctAnswer": "13",
+      "explanation": "La partie décimale est $0,7$, qui est supérieure ou égale à $0,5$, donc on arrondit à l'entier supérieur, c'est‑à‑dire $13$. Les autres options correspondent soit à l'entier inférieur, soit à une valeur non arrondie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Arrondis $3,46$ au dixième près.",
+      "options": [
+        "3,4",
+        "3,5",
+        "3,46",
+        "3,0"
+      ],
+      "correctAnswer": "3,5",
+      "explanation": "On regarde le chiffre des centièmes ($6$). Comme $6 \\ge 5$, on augmente le chiffre des dixièmes ($4$) de $1$, ce qui donne $3,5$. Les autres choix sont soit l'arrondi à l'entier, soit le nombre original, soit l'arrondi par défaut.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer la somme $4,8 + 2,3$ en arrondissant chaque nombre à l'entier le plus proche avant d'additionner. Quel résultat obtient‑on ?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "explanation": "$4,8$ s'arrondit à $5$ (partie décimale $0,8 \\ge 0,5$) et $2,3$ s'arrondit à $2$ (partie décimale $0,3 < 0,5$). La somme estimée est $5 + 2 = 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre arrondi au centième près vaut $5,67$. Parmi les propositions, lequel pourrait être le nombre exact ?",
+      "options": [
+        "5,664",
+        "5,665",
+        "5,675",
+        "5,68"
+      ],
+      "correctAnswer": "5,665",
+      "explanation": "Pour obtenir $5,67$ après arrondi au centième, le nombre exact doit être compris entre $5,665$ (inclus) et $5,674\\ldots$ (exclus). $5,665$ appartient à cet intervalle, alors que $5,664$ arrondit à $5,66$, $5,675$ arrondit à $5,68$ et $5,68$ a déjà deux décimales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un article est affiché $12,49$ €. Le commerçant arrondit ce prix à l'euro le plus proche pour l'affichage. Quel prix affiche‑t‑il ?",
+      "options": [
+        "12 €",
+        "13 €",
+        "12,5 €",
+        "12,49 €"
+      ],
+      "correctAnswer": "12 €",
+      "explanation": "La partie décimale $0,49$ est strictement inférieure à $0,5$, donc on arrondit à l'entier inférieur, soit $12$ €. $13$ € correspondrait à un arrondi par excès, $12,5$ € n'est pas un nombre d'euros entiers et $12,49$ € est le prix initial non arrondi.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

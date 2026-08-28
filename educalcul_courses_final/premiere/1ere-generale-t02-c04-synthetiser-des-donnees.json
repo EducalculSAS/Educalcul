@@ -1,0 +1,633 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.196053+00:00",
+  "id": 549,
+  "code": "1ere-generale-t02-c04",
+  "title": "Synthétiser des données",
+  "description": "Cours structuré Educalcul : Synthétiser des données.",
+  "subject": "Analyse de l'information chiffrée",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Analyse de l'information chiffrée",
+    "titre_du_cours": "Synthétiser des données",
+    "objectif_global": "Synthétiser des données",
+    "mini_lecons_imposees": [
+      "Indicateurs.",
+      "Comparer.",
+      "Argumenter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse de l'information chiffrée",
+      "lessons": [
+        {
+          "title": "Indicateurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré à la synthèse des données. Tu vas découvrir comment, à partir d'une liste brute de valeurs, on peut extraire quelques nombres représentatifs qui racontent l'histoire de l'ensemble. Imagine que tu as relevé les notes de toute ta classe à un contrôle : tu te retrouves avec trente chiffres. Impossible de les garder tous en tête pour en parler. C'est là qu'interviennent les indicateurs de position et de dispersion : ils sont comme un résumé fidèle, un peu comme la quatrième de couverture d'un livre qui te donne l'essentiel sans tout lire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi synthétiser ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de manipuler des formules, posons le décor. En statistique, on observe une population (les élèves de la classe) sur un caractère étudié (la note sur 20). Les valeurs recueillies forment une série statistique. Si le caractère est quantitatif (des nombres), on a besoin d'indicateurs pour décrire deux aspects fondamentaux : où se situe le centre de la série (position) et dans quelle mesure les valeurs s'écartent de ce centre (dispersion). Sans ces repères, toute comparaison ou argumentation resterait floue."
+            },
+            {
+              "type": "definition",
+              "term": "Série statistique",
+              "definition": "Liste des valeurs prises par un caractère quantitatif pour chaque individu d'une population.",
+              "example": "Les notes sur 20 de 30 élèves : 12, 15, 8, 14, 16, ..."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La moyenne : centre de gravité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier indicateur que l'on rencontre est la moyenne arithmétique. Elle correspond à la valeur que chaque individu aurait si l'on répartissait équitablement le total des notes entre tous. Concrètement, on additionne toutes les valeurs et on divise par l'effectif total. C'est le point d'équilibre de la distribution : si l'on place les notes sur une règle graduée, la moyenne est le point où la règle basculerait si chaque note avait le même poids."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : cinq élèves ont obtenu les notes suivantes : $10$, $12$, $14$, $16$, $18$. La somme vaut $70$, l'effectif $n=5$, donc la moyenne est $\\bar{x} = \\frac{70}{5} = 14$. Remarque que la moyenne n'est pas nécessairement une note réellement obtenue (ici $14$ l'est, mais ce n'est pas obligatoire). Elle est sensible aux valeurs extrêmes : si l'on ajoute une note de $20$, la moyenne monte à $15$, alors que la plupart des notes n'ont pas changé."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Élève",
+                "Note"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "10"
+                ],
+                [
+                  "B",
+                  "12"
+                ],
+                [
+                  "C",
+                  "14"
+                ],
+                [
+                  "D",
+                  "16"
+                ],
+                [
+                  "E",
+                  "18"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la moyenne est en place, nous avons besoin d'un indicateur plus robuste face aux valeurs aberrantes. C'est le rôle de la médiane et des quartiles, qui découpent la série en parts égales après l'avoir triée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Médiane et quartiles : couper en parts égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiane est la valeur qui sépare la série ordonnée en deux groupes d'effectifs égaux (ou au plus un écart de $1$). Si $n$ est impair, c'est la valeur centrale ; si $n$ est pair, c'est la moyenne des deux valeurs centrales. Les quartiles prolongent cette idée : le premier quartile $Q_1$ laisse $25\\%$ des observations en dessous, le troisième $Q_3$ en laisse $75\\%$ en dessous. L'intervalle interquartile $IQ = Q_3 - Q_1$ mesure l'étalement du cœur de la série, sans subir l'influence des queues."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trier les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Range les valeurs par ordre croissant. C'est la condition sine qua non pour repérer les positions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver la position de la médiane",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $n$ est impair, position $= \\frac{n+1}{2}$ ; si $n$ est pair, prendre la moyenne des valeurs aux positions $\\frac{n}{2}$ et $\\frac{n}{2}+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer $Q_1$ et $Q_3$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la même logique sur la moitié inférieure (pour $Q_1$) et la moitié supérieure (pour $Q_3$). Attention : il existe plusieurs conventions (inclusion/exclusion de la médiane) ; nous adopterons celle où la médiane n'est pas reprise dans les demi-séries."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre série : $10, 12, 14, 16, 18$. $n=5$ (impair), médiane = valeur au rang $3$ : $14$. La moitié inférieure : $10, 12$ → $Q_1 = 11$. La moitié supérieure : $16, 18$ → $Q_3 = 17$. L'intervalle interquartile vaut $6$. Ces chiffres résistent à l'ajout d'une note extrême : si l'on remplace $18$ par $100$, la médiane reste $14$, $Q_1$ et $Q_3$ ne bougent presque pas."
+            },
+            {
+              "type": "box_plot",
+              "caption": "Boîte à moustaches de la série 10, 12, 14, 16, 18",
+              "min": 10,
+              "q1": 11,
+              "median": 14,
+              "q3": 17,
+              "max": 18
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant des repères de position. Mais pour décrire une série, il faut aussi savoir si les valeurs sont serrées autour du centre ou très dispersées. C'est l'objet des indicateurs de dispersion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écart-type et variance : mesurer l'éparpillement"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'écart-type (noté $\\sigma$ ou $s$) est la racine carrée de la variance. La variance est la moyenne des carrés des écarts à la moyenne. Pourquoi élever au carré ? Pour éviter que les écarts positifs et négatifs ne s'annulent, et pour pénaliser les grands écarts. L'écart-type s'exprime dans la même unité que les données (ici des points), ce qui le rend directement interprétable : environ $68\\%$ des valeurs se trouvent dans l'intervalle $[\\bar{x}-\\sigma ; \\bar{x}+\\sigma]$ pour une distribution symétrique en cloche."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sigma^2 = \\frac{1}{n}\\sum_{i=1}^{n} (x_i - \\bar{x})^2 \\quad ; \\quad \\sigma = \\sqrt{\\sigma^2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons pour notre série : moyenne $14$. Écart au carré : $(10-14)^2=16$, $(12-14)^2=4$, $(14-14)^2=0$, $(16-14)^2=4$, $(18-14)^2=16$. Somme $=40$. Variance $=40/5=8$. Écart-type $\\sigma = \\sqrt{8} \\approx 2,83$. Cela signifie qu'en moyenne, les notes s'écartent d'environ $2,8$ points de la moyenne. Si l'on ajoute une note extrême, l'écart-type augmente fortement, ce qui signale une dispersion plus grande."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Écarts à la moyenne pour chaque note",
+              "bars": [
+                {
+                  "label": "10",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "14",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "16",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "18",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce tour d'horizon, il est crucial de savoir choisir l'indicateur adapté à la situation. La moyenne et l'écart-type conviennent aux distributions symétriques sans valeurs aberrantes. La médiane et l'intervalle interquartile sont préférables pour des distributions asymétriques ou en présence de valeurs extrêmes. En pratique, on regarde souvent la boîte à moustaches : si les moustaches sont de longueurs très différentes ou s'il y a des points isolés, la médiane est plus représentative."
+            },
+            {
+              "type": "definition",
+              "term": "Distribution symétrique",
+              "definition": "La partie gauche de l'histogramme est le miroir de la partie droite par rapport au centre.",
+              "example": "Notes réparties régulièrement autour de 14."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux classes : la classe A a des notes groupées autour de $14$ (écart-type $2$), la classe B a la même moyenne mais des notes très étalées (écart-type $8$). La moyenne seule ne distingue pas les deux situations ; l'écart-type révèle que la classe B est bien plus hétérogène. C'est cette combinaison position-dispersion qui permet une vraie synthèse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne de la série suivante : $5, 8, 11, 14, 17$.",
+              "answer": "11",
+              "hint": "Additionne les cinq nombres et divise par $5$.",
+              "explanation": "La somme est $5+8+11+14+17 = 55$. L'effectif $n=5$. Moyenne $= 55/5 = 11$."
+            },
+            {
+              "question": "Détermine la médiane et les quartiles de la série : $3, 7, 9, 12, 15, 18, 21$.",
+              "answer": "Médiane = 12, Q1 = 7, Q3 = 18",
+              "hint": "Trie la série (elle l'est déjà). $n=7$, médiane au rang 4. Pour les quartiles, sépare en deux demi-séries sans la médiane.",
+              "explanation": "Médiane = valeur rang 4 = 12. Demi-série inférieure : 3, 7, 9 → Q1 = 7 (rang 2). Demi-série supérieure : 15, 18, 21 → Q3 = 18 (rang 2)."
+            },
+            {
+              "question": "Calcule l'écart-type de la série : $2, 4, 6, 8, 10$.",
+              "answer": "$\\sqrt{8} \\approx 2,83$",
+              "hint": "Moyenne = 6. Calcule les écarts au carré, leur moyenne, puis la racine carrée.",
+              "explanation": "Moyenne = 6. Écarts au carré : 16, 4, 0, 4, 16. Somme = 40. Variance = 40/5 = 8. Écart-type = $\\sqrt{8} \\approx 2,83$."
+            },
+            {
+              "question": "Une série a pour moyenne $20$ et écart-type $5$. Une valeur aberrante $50$ est ajoutée. Que se passe-t-il pour la moyenne et l'écart-type ?",
+              "answer": "La moyenne augmente, l'écart-type augmente fortement.",
+              "hint": "Pense à l'influence des valeurs extrêmes sur la moyenne et sur les écarts au carré.",
+              "explanation": "La valeur $50$ tire la moyenne vers le haut. Comme elle est très éloignée de l'ancienne moyenne, son écart au carré est énorme, ce qui fait gonfler la variance et donc l'écart-type."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant calculer des indicateurs pour une seule série. Mais en pratique, on compare souvent deux groupes : garçons/filles, avant/après, traitement/placebo. Cette leçon te donne les outils pour mener ces comparaisons avec rigueur, en associant chiffres et graphiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des indicateurs numériques"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première étape consiste à calculer les mêmes indicateurs (moyenne, médiane, quartiles, écart-type) pour chaque groupe. Ensuite, on les place côte à côte dans un tableau. Cela permet de voir immédiatement quelle groupe a un niveau plus élevé (moyenne/ médiane plus grande) et quelle groupe est plus homogène (écart-type ou intervalle interquartile plus petit). Attention : une différence de moyenne ne suffit pas ; il faut aussi regarder la dispersion. Deux groupes peuvent avoir la même moyenne mais des écarts-types très différents, ce qui change complètement l'interprétation."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Indicateur",
+                "Groupe A",
+                "Groupe B"
+              ],
+              "rows": [
+                [
+                  "Effectif",
+                  "30",
+                  "30"
+                ],
+                [
+                  "Moyenne",
+                  "14,2",
+                  "14,2"
+                ],
+                [
+                  "Médiane",
+                  "14",
+                  "13"
+                ],
+                [
+                  "Q1",
+                  "12",
+                  "10"
+                ],
+                [
+                  "Q3",
+                  "16",
+                  "18"
+                ],
+                [
+                  "Écart-type",
+                  "2,1",
+                  "4,8"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : les deux groupes ont même effectif et même moyenne. Pourtant, le groupe B a un écart-type plus du double de celui du groupe A. Ses quartiles sont plus écartés ($Q_1=10, Q_3=18$ contre $12$ et $16$). Cela signifie que le groupe B est bien plus hétérogène : il y a à la fois des notes très basses et très hautes, alors que le groupe A est concentré autour de la moyenne. Si tu devais choisir un élève au hasard, tu serais plus sûr de sa performance dans le groupe A."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les tableaux sont précis, mais les graphiques donnent une vision immédiate. La boîte à moustaches (box plot) est l'outil roi pour comparer visuellement plusieurs distributions sur le même axe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Boîtes à moustaches juxtaposées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trace deux boîtes à moustaches sur la même graduation : une pour chaque groupe. Aligne-les verticalement pour faciliter la comparaison. Tu verras d'un coup d'œil : la position de la médiane (trait central), l'étalement de la boîte (intervalle interquartile), la longueur des moustaches (valeurs extrêmes non aberrantes) et la présence éventuelle de points isolés (valeurs aberrantes). C'est une lecture en « lecture rapide » qui complète les chiffres."
+            },
+            {
+              "type": "box_plot",
+              "caption": "Groupe A : notes concentrées",
+              "min": 9,
+              "q1": 12,
+              "median": 14,
+              "q3": 16,
+              "max": 19
+            },
+            {
+              "type": "box_plot",
+              "caption": "Groupe B : notes dispersées",
+              "min": 5,
+              "q1": 10,
+              "median": 13,
+              "q3": 18,
+              "max": 20
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe les deux boîtes ci-dessus. La boîte du groupe A est étroite, centrée sur $14$, avec des moustaches courtes. Celle du groupe B est large, décalée vers le bas (médiane $13$), avec une moustache inférieure très longue (jusqu'à $5$). Cela raconte une histoire : le groupe B a quelques élèves en grande difficulté qui tirent la distribution vers le bas, tandis que le groupe A est plus uniforme. C'est exactement ce que les chiffres du tableau murmuraient, mais ici ça saute aux yeux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer, ce n'est pas seulement constater des différences ; c'est aussi se demander si ces différences sont significatives ou dues au hasard. En Première, on n'entre pas encore dans les tests statistiques formels, mais on peut raisonner sur l'ampleur des écarts relatifs à la dispersion."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signification pratique des écarts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une règle de bon sens : si la différence entre les deux moyennes est petite devant les écarts-types (par exemple, différence $= 1$ point alors que les écarts-types sont $5$ et $6$), les deux groupes se chevauchent énormément. Dire « le groupe A est meilleur » serait trompeur. En revanche, si la différence est grande par rapport à la dispersion (différence $= 10$, écarts-types $2$ et $3$), la séparation est nette. On peut alors affirmer avec confiance que les groupes diffèrent réellement sur le caractère étudié."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Rapport } = \\frac{|\\bar{x}_A - \\bar{x}_B|}{\\max(\\sigma_A, \\sigma_B)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce rapport donne une idée de la séparation. S'il est supérieur à $2$ ou $3$, les groupes sont bien distincts. S'il est inférieur à $1$, ils sont fortement mélangés. Bien sûr, la taille des échantillons joue aussi : avec de grands effectifs, de petites différences peuvent être statistiquement significatives, mais pour une analyse descriptive, on reste sur l'ordre de grandeur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, comparer c'est communiquer. Tu devras souvent rédiger un court paragraphe qui résume la comparaison : rappelle les effectifs, cite les indicateurs clés (moyenne et écart-type ou médiane et interquartile), décris ce que montrent les boîtes à moustaches, et conclu sur la similitude ou la différence des groupes. Utilise un vocabulaire précis : « plus dispersé », « décalé vers le haut », « présence de valeurs aberrantes », « chevauchement important ». Évite les jugements de valeur non étayés (« le groupe A est meilleur ») au profit de constats factuels (« le groupe A a une moyenne plus élevée et une dispersion plus faible »)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Présenter les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indique les effectifs, la nature du caractère, l'unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir les indicateurs adaptés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Moyenne/écart-type si symétrique, médiane/IQ sinon."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer chiffre à chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Position d'abord, puis dispersion."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appuyer par le graphique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décris ce que montrent les boîtes à moustaches."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Conclure avec nuance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parle de chevauchement, de différence notable, sans généraliser au-delà des données."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux séries ont même moyenne $15$. Série 1 : écart-type $2$. Série 2 : écart-type $6$. Laquelle est plus homogène ?",
+              "answer": "Série 1",
+              "hint": "L'homogénéité correspond à une faible dispersion.",
+              "explanation": "L'écart-type mesure la dispersion. Plus il est petit, plus les valeurs sont proches de la moyenne, donc la série est plus homogène."
+            },
+            {
+              "question": "Sur un box plot, la boîte du groupe X va de $10$ à $20$ (médiane $15$), celle du groupe Y va de $12$ à $18$ (médiane $15$). Que peux-tu dire de leur dispersion ?",
+              "answer": "Le groupe X est plus dispersé que le groupe Y.",
+              "hint": "Compare les longueurs des boîtes (intervalle interquartile).",
+              "explanation": "L'intervalle interquartile du groupe X est $10$ ($20-10$), celui du groupe Y est $6$ ($18-12$). Le groupe X a donc une dispersion centrale plus grande."
+            },
+            {
+              "question": "Moyenne groupe A = $50$, $\\sigma_A = 5$. Moyenne groupe B = $55$, $\\sigma_B = 4$. Calcule le rapport de séparation et interprète.",
+              "answer": "Rapport = $5/5 = 1$. Chevauchement important.",
+              "hint": "Utilise la formule du rapport avec le max des écarts-types.",
+              "explanation": "Différence des moyennes = $5$. Max des écarts-types = $5$. Rapport = $1$. Cela indique que les distributions se chevauchent fortement ; la différence n'est pas nette au regard de la dispersion."
+            },
+            {
+              "question": "Rédige en trois phrases une comparaison entre deux classes dont les boîtes à moustaches montrent : classe 1 (médiane 14, IQ 4), classe 2 (médiane 12, IQ 8).",
+              "answer": "La classe 1 a un niveau médian plus élevé (14 vs 12) et est plus homogène (IQ 4 vs 8). Les deux distributions se chevauchent car les intervalles interquartiles se recouvrent partiellement. La classe 2 présente une plus grande variété de résultats.",
+              "hint": "Cite médiane et IQ, parle de chevauchement.",
+              "explanation": "Une bonne comparaison cite les chiffres, décrit le graphique et nuance la conclusion."
+            }
+          ]
+        },
+        {
+          "title": "Argumenter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à l'étape finale : transformer des chiffres en argumentaire convaincant. Que ce soit pour un exposé, un article de journal ou une décision personnelle, savoir argumenter à partir de données est une compétence citoyenne essentielle. Cette leçon t'apprendra à structurer ton raisonnement, à repérer les pièges et à présenter tes conclusions avec honnêteté intellectuelle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la donnée à la thèse : construire une affirmation étayée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout argument statistique repose sur trois piliers : une affirmation (thèse), des preuves (indicateurs, graphiques), et un lien logique (raisonnement). Supposons que tu veuilles défendre l'idée : « Le nouveau mode d'évaluation améliore les résultats ». Tes preuves seront la comparaison des moyennes avant/après, l'évolution de l'écart-type, peut-être un box plot. Ton raisonnement expliquera pourquoi ces changements ne sont pas dus au hasard (effectifs stables, même enseignant, etc.). Sans ce lien, les chiffres ne parlent pas d'eux-mêmes."
+            },
+            {
+              "type": "definition",
+              "term": "Argumentaire statistique",
+              "definition": "Discours qui utilise des indicateurs et des représentations graphiques pour appuyer une thèse, en explicitant le raisonnement qui relie les données à la conclusion.",
+              "example": "« La moyenne est passée de 11 à 13, l'écart-type a baissé de 4 à 2, donc les élèves sont globalement meilleurs et plus homogènes. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas concret : une association mesure la qualité de l'air dans deux quartiers. Quartier Nord : moyenne $NO_2 = 45 \\mu g/m^3$, écart-type $5$. Quartier Sud : moyenne $38$, écart-type $12$. Si tu affirmes « Le Nord est plus pollué », tu t'appuies sur la moyenne. Mais si tu dis « Le Sud a des pics plus dangereux », tu regardes l'écart-type et le maximum. Les mêmes données servent deux thèses différentes selon l'angle choisi. C'est pourquoi il faut toujours expliciter quel indicateur guide ton argument."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Argumenter, c'est aussi faire preuve d'esprit critique face aux statistiques qu'on te présente. Les données peuvent être biaisées, mal échantillonnées, ou présentées de façon trompeuse (échelle tronquée, moyenne masquant une bimodalité, confusion corrélation/causalité). Apprends à poser les bonnes questions : d'où viennent les données ? Comment ont-elles été collectées ? Quel indicateur a été choisi et pourquoi ? Y a-t-il des valeurs manquantes ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges classiques à déjouer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier piège : la moyenne qui cache une réalité bimodale. Imagine un examen où la moitié de la classe a $5$ et l'autre moitié $15$. La moyenne est $10$, mais aucun élève n'a $10$ ! La médiane serait $10$ aussi, mais l'intervalle interquartile révélerait l'écart. Deuxième piège : l'échelle graphique. Un histogramme dont l'axe des ordonnées ne commence pas à $0$ exagère visuellement les différences. Troisième piège : la corrélation prise pour causalité. Si les ventes de glaces et les noyades augmentent ensemble, ce n'est pas la glace qui noie, c'est la chaleur qui cause les deux."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Corr\\'elation} \\neq \\text{Causalité}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quatrième piège : l'échantillon non représentatif. Un sondage fait uniquement auprès des abonnés d'un magazine sportif surestime l'intérêt pour le sport. Toujours vérifier la méthode d'échantillonnage (aléatoire ? stratifié ?) et la taille de l'échantillon. Cinquième piège : les pourcentages sans base. « 80 % des utilisateurs sont satisfaits » ne veut rien dire si on ne sait pas que la base est $10$ personnes. En gardant ces pièges en tête, tu deviens un lecteur critique, capable de séparer le solide du fallacieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, passons à la rédaction. Un bon argumentaire statistique suit une structure en entonnoir : contexte → question → données → analyse → conclusion → limites. Commence par planter le décor : quelle population, quel caractère, quelle source. Pose la question précise. Présente les indicateurs choisis (avec leurs valeurs) et les graphiques (box plot, histogramme). Analyse : compare, interprète, relie à la question. Conclus : réponds à la question avec nuance. Termine par les limites : effectif faible, données anciennes, indicateur imparfait, confusion possible. Cette honnêteté renforce ta crédibilité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Contexte & Question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décris la population, le caractère, la source. Formule la question en une phrase."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Données & Indicateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne effectifs, moyenne/écart-type ou médiane/IQ. Insère un graphique (box plot)."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Analyse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare les groupes, commente dispersion, forme, valeurs aberrantes. Relie à la question."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Conclusion & Limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réponds à la question. Ajoute une phrase sur les réserves (échantillon, indicateurs, causalité)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble : tu veux savoir si les élèves qui dorment plus de 8 heures ont de meilleures notes en maths. Tu as deux groupes (dormeurs longs vs courts), effectifs $40$ chacun. Moyennes : $13,5$ vs $11,2$. Écarts-types : $2,1$ vs $3,4$. Box plots : le groupe longs dormeurs a une boîte étroite centrée haut, l'autre large et plus bas. Ton argumentaire : « L'étude compare 40 élèves dormant >8h et 40 dormant <6h. La moyenne des notes est supérieure de 2,3 points pour les longs dormeurs, avec une dispersion deux fois plus faible. Les boîtes à moustaches confirment un net décalage vers le haut et une concentration plus forte. Cela suggère un lien entre sommeil et performance, mais attention : c'est une observation, pas une expérience ; d'autres facteurs (méthode de travail, santé) peuvent expliquer la différence. » Voilà un argumentaire complet, honnête et nuancé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour synthétiser, comparer et argumenter à partir de données. Rappelle-toi : les indicateurs sont des résumés, pas la réalité entière ; les graphiques éclairent mais ne remplacent pas le raisonnement ; et l'honnêteté intellectuelle consiste à montrer les limites de tes propres conclusions. Continue t'entraîner sur des jeux de données réels (résultats sportifs, enquêtes publiques, notes de classe) : c'est en manipulant que l'intuition statistique se forge."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer et interpréter la moyenne, la médiane, les quartiles, l'écart-type.",
+                "Je sais choisir l'indicateur de position et de dispersion adapté à la forme de la distribution.",
+                "Je sais comparer deux groupes à l'aide d'un tableau d'indicateurs et de boîtes à moustaches juxtaposées.",
+                "Je sais évaluer la significativité pratique d'une différence entre moyennes par rapport à la dispersion.",
+                "Je sais repérer les pièges classiques (moyenne trompeuse, échelle graphique, corrélation/causalité, échantillon biaisé).",
+                "Je sais structurer un argumentaire statistique : contexte, question, données, analyse, conclusion, limites."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as deux séries : A (moyenne 100, écart-type 5) et B (moyenne 102, écart-type 20). Laquelle présente une différence de moyenne significative au regard de la dispersion ?",
+              "answer": "Aucune, la différence (2) est petite devant les écarts-types.",
+              "hint": "Calcule le rapport différence / max(écart-type).",
+              "explanation": "Différence = 2. Max écart-type = 20. Rapport = 0,1 < 1. Les distributions se chevauchent énormément."
+            },
+            {
+              "question": "Un article titre : « 80 % des Français favorables à la réforme » sans donner la taille de l'échantillon. Quel piège cela illustre-t-il ?",
+              "answer": "Pourcentage sans base (effectif inconnu).",
+              "hint": "Un pourcentage seul ne renseigne pas sur la fiabilité.",
+              "explanation": "Sans connaître l'effectif interrogé (10 personnes ? 1000 ?) et la méthode d'échantillonnage, on ne peut évaluer la précision de l'estimation."
+            },
+            {
+              "question": "Rédige une conclusion nuancée pour une comparaison où la moyenne du groupe traitement est supérieure de 5 points au groupe contrôle, mais les écarts-types sont de 12 et 10 respectivement.",
+              "answer": "Le groupe traitement a une moyenne plus élevée, mais l'écart important des écarts-types (12 et 10) indique un fort chevauchement ; la différence n'est pas nette au regard de la dispersion. D'autres études avec des effectifs plus grands seraient nécessaires pour confirmer.",
+              "hint": "Utilise le vocabulaire : chevauchement, dispersion, nuance, limites.",
+              "explanation": "Une bonne conclusion cite les chiffres, parle de chevauchement et mentionne les limites."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

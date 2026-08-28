@@ -1,0 +1,482 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.980146+00:00",
+  "id": 484,
+  "code": "3eme-t05-c06",
+  "title": "Bilan - Géométrie du triangle 3e",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie du triangle 3e.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Bilan - Géométrie du triangle 3e",
+    "objectif_global": "Bilan - Géométrie du triangle 3e",
+    "mini_lecons_imposees": [
+      "Choisir Pythagore / Thalès / trigo.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Choisir Pythagore / Thalès / trigo.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment choisir le bon outil géométrique ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu te retrouves devant un triangle et tu ne sais pas par où commencer : Pythagore, Thalès ou trigonométrie ? C'est normal, chaque outil a son domaine de prédilection. Dans cette leçon, nous allons apprendre à reconnaître les indices qui pointent vers la bonne méthode. Prends le temps de bien visualiser chaque situation, car c'est la clé pour ne plus hésiter."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de Pythagore : l'allié des triangles rectangles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le théorème de Pythagore ne s'applique qu'à une condition stricte : le triangle doit être rectangle. Si tu repères un angle droit (souvent marqué par un petit carré dans la figure), alors Pythagore entre en jeu. Il relie les longueurs des trois côtés : le carré de l'hypoténuse (le côté le plus long, opposé à l'angle droit) est égal à la somme des carrés des deux autres côtés. Concrètement, si tu connais deux côtés, tu trouves le troisième ; si tu connais les trois, tu peux vérifier si l'angle est droit."
+            },
+            {
+              "type": "definition",
+              "term": "Hypoténuse",
+              "definition": "Dans un triangle rectangle, le côté opposé à l'angle droit. C'est toujours le plus long des trois côtés.",
+              "example": "Dans un triangle rectangle de côtés $3\\,cm$, $4\\,cm$ et $5\\,cm$, l'hypoténuse mesure $5\\,cm$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle ABC, angle droit en A. Côtés : AB = 3 cm, AC = 4 cm, BC = 5 cm.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "4",
+                "3",
+                "5"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la figure : y a-t-il un petit carré marquant un angle de $90^\\circ$ ? Si oui, le triangle est rectangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le côté qui ne touche pas l'angle droit. Note sa longueur (ou la lettre qui la représente)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $a^2 = b^2 + c^2$ où $a$ est l'hypoténuse. Remplace par les valeurs connues et résous l'équation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que Pythagore n'a plus de secret pour toi, tournons-nous vers une configuration très différente : les droites parallèles. Le théorème de Thalès ne demande pas d'angle droit, mais une figure bien précise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de Thalès : la puissance des droites parallèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Thalès intervient quand deux droites sécantes sont coupées par au moins deux droites parallèles. Tu obtiens alors un grand triangle et un petit triangle (ou deux triangles imbriqués) dont les côtés sont proportionnels. L'indice visuel : cherche des flèches marquant des parallèles, ou une phrase du type « (DE) est parallèle à (BC) ». Si tu as des longueurs sur les deux sécantes et qu'il t'en manque une, Thalès est souvent la solution."
+            },
+            {
+              "type": "definition",
+              "term": "Configuration de Thalès",
+              "definition": "Deux droites sécantes en un point (souvent le sommet d'un triangle) sont coupées par deux droites parallèles. Les segments correspondants sur les sécantes sont proportionnels.",
+              "example": "Dans le triangle ABC, si (DE) // (BC) avec D sur (AB) et E sur (AC), alors AD/AB = AE/AC = DE/BC."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avec droite DE parallèle à BC. D sur AB, E sur AC. Longueurs : AD = 2 cm, DB = 3 cm, AE = 4 cm.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi qu'il y a bien deux droites parallèles coupant les deux mêmes sécantes. Sans parallélisme, Thalès ne s'applique pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Nommer les segments correspondants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les paires de segments sur chaque sécante : par exemple AD et AB sur une sécante, AE et AC sur l'autre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les égalités de rapports",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets en proportion les longueurs connues et l'inconnue : $\\frac{AD}{AB} = \\frac{AE}{AC}$. Résous l'équation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu deux outils purement géométriques. Le troisième, la trigonométrie, ajoute une dimension nouvelle : les angles. Elle devient indispensable dès qu'un angle (autre que l'angle droit) et un côté sont connus dans un triangle rectangle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La trigonométrie : angles et côtés dans le triangle rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle rectangle, si tu connais un angle aigu (disons $30^\\circ$) et la longueur d'un côté, tu peux calculer n'importe quel autre côté grâce aux rapports sinus, cosinus, tangente. Contrairement à Pythagore qui ne relie que des longueurs, la trigonométrie relie un angle à des longueurs. L'astuce : nomme les côtés par rapport à l'angle qui t'intéresse : l'hypoténuse (toujours la même), le côté adjacent (qui touche l'angle) et le côté opposé (en face de l'angle)."
+            },
+            {
+              "type": "definition",
+              "term": "Rapports trigonométriques",
+              "definition": "Pour un angle aigu $\\alpha$ dans un triangle rectangle : $\\cos(\\alpha) = \\frac{\\text{adjacent}}{\\text{hypoténuse}}$, $\\sin(\\alpha) = \\frac{\\text{opposé}}{\\text{hypoténuse}}$, $\\tan(\\alpha) = \\frac{\\text{opposé}}{\\text{adjacent}}$.",
+              "example": "Si $\\alpha = 30^\\circ$ et l'hypoténuse = $10\\,cm$, alors le côté adjacent = $10 \\times \\cos(30^\\circ) \\approx 8,66\\,cm$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle ABC, angle droit en B. Angle A = 30°. Hypoténuse AC = 10 cm. Côté adjacent à A : AB. Côté opposé à A : BC.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                "10"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'angle connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'angle aigu dont tu connais la mesure. C'est ton angle de référence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Nommer les côtés par rapport à cet angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Hypoténuse = côté le plus long. Adjacent = côté qui forme l'angle avec l'hypoténuse. Opposé = côté qui ne touche pas l'angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir le bon rapport",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu cherches l'hypoténuse et que tu as l'adjacent → cosinus. Si tu cherches l'opposé et que tu as l'hypoténuse → sinus. Si tu cherches l'opposé et que tu as l'adjacent → tangente."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la formule, remplace par les valeurs, utilise ta calculette en mode degrés, et arrondis si nécessaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu disposes maintenant de trois outils puissants. Mais face à un problème complexe, comment décider lequel utiliser en premier ? Parfois, il faut même les combiner. Voici une méthode pour ne plus jamais rester bloqué au démarrage."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arbre de décision : quel outil choisir ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose-toi trois questions dans l'ordre : 1) Y a-t-il un triangle rectangle ? Si oui, as-tu deux côtés (Pythagore) ou un angle et un côté (trigonométrie) ? 2) Sinon, y a-t-il des droites parallèles coupant deux sécantes ? Si oui, c'est Thalès. 3) Parfois, il faut d'abord utiliser Thalès pour trouver une longueur, puis Pythagore ou la trigonométrie dans un triangle rectangle qui apparaît. Garde toujours en tête les conditions d'application : angle droit pour Pythagore et trigonométrie, parallélisme pour Thalès."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Question 1 : Triangle rectangle ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la figure : y a-t-il un angle droit marqué ? Si non, passe à la question 2. Si oui, vas à la question 1bis."
+                    }
+                  ]
+                },
+                {
+                  "title": "Question 1bis : Données disponibles ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Deux longueurs de côtés connues → Pythagore. Un angle aigu et un côté connus → Trigonométrie. Deux angles connus → le troisième angle se déduit ($180^\\circ - 90^\\circ - \\text{angle connu}$), puis trigonométrie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Question 2 : Parallélisme ?",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Y a-t-il des flèches indiquant des droites parallèles, ou une phrase l'affirmant ? Si oui → Thalès. Si non, relis l'énoncé : il manque peut-être une info pour créer un triangle rectangle (hauteur, médiatrice...)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle rectangle ABC, angle droit en A, on sait que AB = 6 cm et AC = 8 cm. Quelle est la longueur de BC ?",
+              "answer": "10 cm",
+              "hint": "Identifie l'hypoténuse (le côté opposé à l'angle droit) et applique $BC^2 = AB^2 + AC^2$.",
+              "explanation": "Le triangle est rectangle en A, donc BC est l'hypoténuse. D'après Pythagore : $BC^2 = 6^2 + 8^2 = 36 + 64 = 100$. Donc $BC = \\sqrt{100} = 10\\,cm$."
+            },
+            {
+              "question": "Dans le triangle ABC, les points D et E sont tels que D appartient à [AB], E appartient à [AC] et (DE) est parallèle à (BC). On donne AD = 3 cm, DB = 6 cm, AE = 4 cm. Calcule AC.",
+              "answer": "12 cm",
+              "hint": "Utilise la proportionnalité des côtés : $\\frac{AD}{AB} = \\frac{AE}{AC}$. Attention, AB = AD + DB.",
+              "explanation": "AB = AD + DB = 3 + 6 = 9 cm. D'après Thalès : $\\frac{AD}{AB} = \\frac{AE}{AC}$, soit $\\frac{3}{9} = \\frac{4}{AC}$. En croisant : $3 \\times AC = 9 \\times 4 = 36$, donc $AC = 12\\,cm$."
+            },
+            {
+              "question": "Un triangle rectangle DEF a un angle de $40^\\circ$ en D. L'hypoténuse EF mesure 15 cm. Calcule la longueur du côté adjacent à l'angle de $40^\\circ$ (arrondi au dixième).",
+              "answer": "11,5 cm",
+              "hint": "Le côté adjacent à l'angle de $40^\\circ$ est DF. Quel rapport trigonométrique relie l'adjacent et l'hypoténuse ?",
+              "explanation": "L'adjacent à l'angle de $40^\\circ$ est DF, l'hypoténuse est EF = 15 cm. On utilise le cosinus : $\\cos(40^\\circ) = \\frac{DF}{15}$. Donc $DF = 15 \\times \\cos(40^\\circ) \\approx 15 \\times 0,766 = 11,49 \\approx 11,5\\,cm$."
+            },
+            {
+              "question": "Un triangle ABC n'est pas rectangle. On sait que (DE) est parallèle à (BC) avec D sur [AB] et E sur [AC]. AD = 5 cm, DB = 10 cm, DE = 4 cm. On cherche BC. Quel théorème utiliser et quel est le résultat ?",
+              "answer": "Thalès ; BC = 12 cm",
+              "hint": "Le parallélisme (DE) // (BC) indique Thalès. AB = AD + DB. Utilise le rapport $\\frac{DE}{BC} = \\frac{AD}{AB}$.",
+              "explanation": "Configuration de Thalès confirmée par les parallèles. AB = 5 + 10 = 15 cm. $\\frac{DE}{BC} = \\frac{AD}{AB}$ donne $\\frac{4}{BC} = \\frac{5}{15} = \\frac{1}{3}$. Donc $BC = 4 \\times 3 = 12\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : les trois piliers de la géométrie du triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce parcours. Tu as maintenant toutes les cartes en main pour aborder sereinement n'importe quel problème de triangle. Rappelons les idées forces avec des exemples neufs, histoire de bien ancrer les réflexes. Chaque outil a sa signature visuelle : apprends à la reconnaître au premier coup d'œil."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pythagore : le spécialiste des longueurs pures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une échelle de $5\\,m$ posée contre un mur. Le pied de l'échelle est à $3\\,m$ du mur. Jusqu'à quelle hauteur l'échelle monte-t-elle ? C'est un classique : le mur, le sol et l'échelle forment un triangle rectangle. Tu as l'hypoténuse ($5\\,m$) et un côté ($3\\,m$), tu cherches l'autre côté. Pythagore donne directement la réponse sans aucun angle. Retiens ce signal : « triangle rectangle + deux côtés connus = Pythagore »."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle formé par l'échelle (hypoténuse 5 m), le mur (hauteur inconnue) et le sol (3 m). Angle droit entre mur et sol.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "?",
+                "3",
+                "5"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une situation où les parallèles font tout le travail. Thalès est le roi des grandeurs inaccessibles : largeur d'une rivière, hauteur d'un immeuble sans y monter, etc."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Thalès : le magicien des proportions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu veux connaître la largeur d'un fleuve sans le traverser. Tu plantes un piquet A sur ta berge, tu mesures $20\\,m$ le long de la berge jusqu'à un point B, puis tu continues $10\\,m$ jusqu'à C. De l'autre côté, un arbre D est aligné avec A et C. Tu mesures la distance de l'arbre à la berge (perpendiculaire) : $15\\,m$. Les droites (BD) et (AC) sont parallèles (par construction). Tu as là une configuration de Thalès parfaite pour trouver la largeur. Le mot-clé : « parallèles + sécantes = proportions égales »."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Configuration Thalès pour mesurer une rivière. Points A, B, C alignés sur une berge. D sur l'autre berge. (BD) // (AC). AB = 20 m, BC = 10 m, distance D à la berge = 15 m.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "",
+                "",
+                ""
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la trigonométrie brille dès qu'un angle entre en scène. Elle transforme un problème de mesure en calcul sur ta calculette."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trigonométrie : l'art de lire les angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu observes le sommet d'un clocher sous un angle de $35^\\circ$. Tu te trouves à $30\\,m$ du pied du clocher. Quelle est sa hauteur ? Le triangle rectangle est formé par ton œil, le pied du clocher et son sommet. L'angle de $35^\\circ$ est à ton œil, le côté adjacent est la distance au clocher ($30\\,m$), le côté opposé est la hauteur cherchée. Le rapport qui lie adjacent et opposé est la tangente. Un coup de calculette : $30 \\times \\tan(35^\\circ) \\approx 21\\,m$. La trigonométrie, c'est : « angle connu + un côté = n'importe quel autre côté »."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle : observateur en A, pied du clocher B, sommet C. Angle en A = 35°. AB = 30 m (adjacent). BC = hauteur (opposé). Angle droit en B.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "30",
+                "",
+                ""
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant revisité les trois outils avec des situations concrètes différentes de la première leçon. Le moment est venu de vérifier que tous les réflexes sont bien ancrés. Voici ta liste de contrôle personnelle : coche chaque item seulement si tu es capable de l'expliquer avec tes propres mots et de l'appliquer sur un exemple nouveau."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un triangle rectangle sur une figure (angle droit marqué ou propriété).",
+                "J'identifie l'hypoténuse et j'applique correctement $a^2 = b^2 + c^2$ pour trouver un côté manquant.",
+                "Je repère une configuration de Thalès : deux sécantes coupées par des parallèles, et j'écris les égalités de rapports.",
+                "Dans un triangle rectangle, je nomme les côtés (adjacent, opposé, hypoténuse) par rapport à un angle aigu donné.",
+                "Je choisis le bon rapport trigonométrique (sin, cos, tan) selon les données (angle + côté) et la question.",
+                "Face à un problème, je suis l'arbre de décision : rectangle ? → Pythagore ou trigo. Parallèles ? → Thalès. Besoin de combiner ? → j'enchaîne les outils.",
+                "Je vérifie toujours les conditions d'application (angle droit, parallélisme) avant d'écrire une formule."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une échelle de 6,5 m est posée contre un mur vertical. Son pied est à 2,5 m du mur. À quelle hauteur le sommet de l'échelle touche-t-il le mur ? (Arrondi au centimètre)",
+              "answer": "6,02 m",
+              "hint": "Triangle rectangle : l'échelle est l'hypoténuse. Utilise Pythagore : $h^2 + 2,5^2 = 6,5^2$.",
+              "explanation": "Soit $h$ la hauteur. $h^2 = 6,5^2 - 2,5^2 = 42,25 - 6,25 = 36$. Donc $h = \\sqrt{36} = 6\\,m$. (Ici, pas d'arrondi nécessaire, c'est exact.)"
+            },
+            {
+              "question": "Pour mesurer la hauteur d'un arbre, Marc place un miroir au sol à 12 m de l'arbre. Il recule jusqu'à voir le sommet de l'arbre dans le miroir ; ses yeux sont à 1,6 m du sol et il se trouve à 2 m du miroir. Les droites (regard) et (arbre) sont parallèles. Quelle est la hauteur de l'arbre ?",
+              "answer": "9,6 m",
+              "hint": "Configuration de Thalès : deux triangles rectangles semblables. Rapport : $\\frac{1,6}{2} = \\frac{h}{12}$.",
+              "explanation": "Les triangles formés par le regard, le miroir et l'arbre sont en configuration de Thalès (parallèles). $\\frac{\\text{hauteur yeux}}{\\text{distance yeux-miroir}} = \\frac{\\text{hauteur arbre}}{\\text{distance miroir-arbre}}$. Soit $\\frac{1,6}{2} = \\frac{h}{12}$. $h = 12 \\times \\frac{1,6}{2} = 12 \\times 0,8 = 9,6\\,m$."
+            },
+            {
+              "question": "Un câble relie le sommet d'un pylône à un point au sol situé à 25 m du pied du pylône. Le câble fait un angle de 50° avec le sol. Quelle est la longueur du câble ? (Arrondi au dixième de mètre)",
+              "answer": "38,9 m",
+              "hint": "Triangle rectangle : angle 50° au sol, côté adjacent = 25 m, on cherche l'hypoténuse (câble). Utilise le cosinus.",
+              "explanation": "Côté adjacent = 25 m, hypoténuse = longueur du câble. $\\cos(50^\\circ) = \\frac{25}{\\text{câble}}$. Donc $\\text{câble} = \\frac{25}{\\cos(50^\\circ)} \\approx \\frac{25}{0,6428} \\approx 38,9\\,m$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

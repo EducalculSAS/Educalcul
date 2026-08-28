@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Image",
+  "title": "Images par transformations simples",
+  "blocks": [
+    {
+      "title": "Translation d'un point",
+      "content": "Soit le point $A(2;3)$ et le vecteur $v(4;-1)$. Déterminer les coordonnées de l'image $A'$ de $A$ par la translation de vecteur $v$.",
+      "correctAnswer": "6;2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation de vecteur $v(4;-1)$ ajoute les composantes du vecteur aux coordonnées du point. Ainsi $A'(2+4;3-1) = A'(6;2)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rotation d'un point",
+      "content": "Soit le point $B(1;2)$. On effectue une rotation d'un quart de tour dans le sens direct autour de l'origine $O(0;0)$. Déterminer les coordonnées de l'image $B'$ de $B$.",
+      "correctAnswer": "-2;1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une rotation d'un quart de tour (90°) dans le sens direct autour de l'origine transforme $(x;y)$ en $(-y;x)$. Donc $B'( -2;1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Composition de transformations",
+      "content": "Soit le point $C(0;5)$. On applique d'abord la translation de vecteur $u(3;-2)$, puis la symétrie axiale par rapport à l'axe des abscisses (axe $x$). Déterminer les coordonnées de l'image finale $C''$ de $C$.",
+      "correctAnswer": "3;-3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La translation donne $C'(0+3;5-2) = C'(3;3)$. La symétrie axiale par rapport à l'axe $x$ change le signe de l'ordonnée : $C''(3;-3)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

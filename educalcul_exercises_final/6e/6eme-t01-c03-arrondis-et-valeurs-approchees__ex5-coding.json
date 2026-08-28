@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Choisir précision",
+  "title": "Algorithmes et choix de la précision",
+  "blocks": [
+    {
+      "title": "Arrondi selon une précision demandée",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui demande à l'utilisateur un nombre décimal et une précision parmi \"unité\", \"dixième\", \"centième\", puis affiche le nombre arrondi à cette précision.",
+      "correctAnswer": "Algorithme ArrondiPrecision\\nVariables : nombre (réel), precision (chaîne), resultat (réel)\\nDébut\\n    Afficher \"Entrez un nombre : \"\\n    Saisir nombre\\n    Afficher \"Choisissez la précision (unité, dixième, centième) : \"\\n    Saisir precision\\n    Si precision = \"unité\" Alors\\n        resultat <- Arrondi(nombre, 0)\\n    Sinon Si precision = \"dixième\" Alors\\n        resultat <- Arrondi(nombre, 1)\\n    Sinon Si precision = \"centième\" Alors\\n        resultat <- Arrondi(nombre, 2)\\n    Sinon\\n        Afficher \"Précision non reconnue\"\\n    Fin Si\\n    Afficher \"Nombre arrondi : \", resultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une structure conditionnelle pour choisir le nombre de chiffres après la virgule selon la précision demandée : 0 pour l'unité, 1 pour le dixième, 2 pour le centième. La fonction Arrondi(n, k) arrondit n à 10^-k près (au k-ième chiffre après la virgule).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retrouver la précision d'un arrondi",
+      "content": "On donne un nombre exact $x = 12,345$ et sa valeur approchée $y = 12,3$. Écrire un algorithme qui détermine la précision de l'arrondi (unité, dixième, centième, millième...).",
+      "correctAnswer": "Algorithme TrouverPrecision\\nVariables : x, y (réels), i (entier), chaineX, chaineY (chaînes)\\nDébut\\n    x <- 12,345\\n    y <- 12,3\\n    chaineX <- ConvertirEnChaine(x)\\n    chaineY <- ConvertirEnChaine(y)\\n    i <- 0\\n    TantQue i < Longueur(chaineY) Et Caractère(chaineX, i) = Caractère(chaineY, i) Faire\\n        i <- i + 1\\n    Fin TantQue\\n    // i est l'indice du premier chiffre différent ou de la fin de y\\n    // On déduit la précision par la position de la virgule\\n    posVirgule <- Position(chaineY, \",\")\\n    nbDecimales <- Longueur(chaineY) - posVirgule - 1\\n    Si nbDecimales = 0 Alors Afficher \"Précision : unité\"\\n    Sinon Si nbDecimales = 1 Alors Afficher \"Précision : dixième\"\\n    Sinon Si nbDecimales = 2 Alors Afficher \"Précision : centième\"\\n    Sinon Afficher \"Précision : \", nbDecimales, \"-ième\"\\n    Fin Si\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme compare les représentations textuelles des deux nombres pour trouver où ils diffèrent. Ici $y=12,3$ a un chiffre après la virgule, donc l'arrondi a été fait au dixième près. On compte le nombre de décimales de la valeur approchée pour nommer la précision.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Précision adaptée à un calcul",
+      "content": "Deux longueurs sont mesurées : $L_1 = 12,3\\text{ cm}$ (précision au millimètre soit dixième de cm) et $L_2 = 4,67\\text{ cm}$ (précision au centième de cm). Écrire un algorithme qui calcule la somme $L_1 + L_2$ et l'arrondit à la précision la moins précise des deux mesures.",
+      "correctAnswer": "Algorithme SommeAvecPrecision\\nVariables : L1, L2, somme (réels), prec1, prec2, precFinale (entiers)\\nDébut\\n    L1 <- 12,3\\n    L2 <- 4,67\\n    prec1 <- 1  // dixième (mm)\\n    prec2 <- 2  // centième\\n    somme <- L1 + L2\\n    // La précision du résultat est le minimum des précisions (le plus grand pas)\\n    Si prec1 < prec2 Alors\\n        precFinale <- prec1\\n    Sinon\\n        precFinale <- prec2\\n    Fin Si\\n    sommeArrondie <- Arrondi(somme, precFinale)\\n    Afficher \"Somme = \", somme\\n    Afficher \"Somme arrondie = \", sommeArrondie, \" cm (précision au \", \\n    Si precFinale = 1 Alors Afficher \"dixième\"\\n    Sinon Si precFinale = 2 Alors Afficher \"centième\"\\n    Fin Si, \")\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle en sciences physiques et en maths appliquées est que la précision d'un résultat de calcul (addition/soustraction) ne peut pas être meilleure que la moins précise des données. $L_1$ a 1 décimale (précision 1), $L_2$ en a 2 (précision 2). Le minimum est 1. La somme exacte est $16,97$, arrondie au dixième elle donne $17,0\\text{ cm}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

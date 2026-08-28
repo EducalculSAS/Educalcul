@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 471,
+  "_course_code": "3eme-t03-c05-modeliser-avec-une-fonction",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter une fonction - Quiz 3e",
+  "questions": [
+    {
+      "text": "On donne le graphe de la fonction $f(x)=2x+1$. Que signifie le coefficient directeur 2 dans ce contexte ?",
+      "options": [
+        "Pour chaque augmentation de 1 de $x$, $f(x)$ augmente de 2.",
+        "L'ordonnée à l'origine est 2.",
+        "La fonction passe par le point $(2,0)$.",
+        "La fonction est décroissante."
+      ],
+      "correctAnswer": "Pour chaque augmentation de 1 de $x$, $f(x)$ augmente de 2.",
+      "explanation": "Le coefficient directeur d'une fonction affine $f(x)=ax+b$ indique la variation de $f(x)$ lorsque $x$ augmente de 1 unité. Ici $a=2$, donc $f(x)$ augmente de 2 à chaque pas de 1 sur $x$. L'ordonnée à l'origine est $b=1$, pas 2. Le point $(2,0)$ ne vérifie pas l'équation ($f(2)=5$). La fonction est croissante car $a>0$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphe de la fonction f(x)=2x+1"
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous montre une relation proportionnelle entre $x$ et $y$.\\n$x$ : 1 ; 2 ; 3 ; 4\\n$y$ : 3 ; 6 ; 9 ; 12\\nQuel est le coefficient de proportionnalité ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "1/3"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Dans une relation proportionnelle $y = kx$, le coefficient $k$ se calcule en divisant $y$ par $x$ pour n'importe quelle paire. $3/1 = 6/2 = 9/3 = 12/4 = 3$. Donc $k=3$. Les autres valeurs ne correspondent pas au quotient constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un taxi facture 2 € de prise en charge plus 1,50 € par kilomètre. La fonction coût est $C(d)=1,5d+2$ où $d$ est la distance en km. Que représente le nombre 2 ?",
+      "options": [
+        "Le prix par kilomètre.",
+        "Le coût total pour 0 km.",
+        "Le nombre de kilomètres.",
+        "Le coefficient directeur."
+      ],
+      "correctAnswer": "Le coût total pour 0 km.",
+      "explanation": "Dans l'expression $C(d)=1,5d+2$, le terme constant 2 est la valeur de $C$ quand $d=0$, c'est-à-dire le prix à payer avant de rouler (prise en charge). Le coefficient directeur 1,5 correspond au prix par kilomètre. Le nombre de kilomètres est la variable $d$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphe ci-dessous représente une fonction quadratique dont le sommet est au point $(1,-3)$. Quelle est la valeur minimale de cette fonction ?",
+      "options": [
+        "-3",
+        "1",
+        "0",
+        "3"
+      ],
+      "correctAnswer": "-3",
+      "explanation": "Pour une parabole tournée vers le haut, le sommet donne la valeur minimale de la fonction. Le sommet a pour coordonnées $(1,-3)$, donc l'ordonnée $-3$ est la plus petite valeur prise par la fonction. Les autres nombres correspondent à l'abscisse du sommet ou à des valeurs non pertinentes.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "(x-1)^2-3",
+        "xmin": -3,
+        "xmax": 5,
+        "caption": "Graphe de la fonction quadratique avec sommet (1,-3)"
+      }
+    },
+    {
+      "text": "Une entreprise paie 10 € de l'heure pour les premières 35 heures, puis 15 € de l'heure au-delà. La fonction salaire est $S(h)=10h$ pour $h\\le 35$ et $S(h)=10\\cdot35+15(h-35)$ pour $h>35$. Quel est le salaire pour 40 heures de travail ?",
+      "options": [
+        "400 €",
+        "425 €",
+        "450 €",
+        "475 €"
+      ],
+      "correctAnswer": "425 €",
+      "explanation": "Pour 40 heures, on utilise la deuxième formule car $h>35$. $10\\times35 = 350$ € pour les 35 premières heures. Les 5 heures supplémentaires sont payées $15\\times5 = 75$ €. Le total est $350+75 = 425$ €. Les autres montants correspondent à des calculs erronés (ex. 10 € pour toutes les heures, ou 15 € pour toutes les heures).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

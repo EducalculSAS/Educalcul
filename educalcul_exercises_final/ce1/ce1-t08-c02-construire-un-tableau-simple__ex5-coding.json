@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Organiser catégories et effectifs",
+  "title": "Algorithmes pour organiser des données en tableau",
+  "blocks": [
+    {
+      "title": "Compléter un tableau à partir d'une liste",
+      "content": "On a la liste des fruits suivants : $pomme, poire, pomme, banane, poire, pomme$. Écris l'algorithme (la suite d'étapes) pour remplir un tableau à deux colonnes (Fruit, Effectif) avec les bonnes catégories et les bons nombres.",
+      "correctAnswer": "1. Créer un tableau vide avec les en-têtes 'Fruit' et 'Effectif'.\\n2. Pour chaque fruit de la liste :\\n   - Si le fruit est déjà dans le tableau, ajouter $1$ à son effectif.\\n   - Sinon, ajouter une nouvelle ligne avec ce fruit et l'effectif $1$.\\n3. À la fin, le tableau affiche : Pomme $3$, Poire $2$, Banane $1$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt la liste une seule fois. Il maintient le tableau à jour : soit il incrémente un compteur existant, soit il crée une nouvelle catégorie. Cela permet d'obtenir les effectifs exacts : $3$ pommes, $2$ poires, $1$ banane.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construire le tableau des effectifs",
+      "content": "Voici les couleurs préférées d'élèves : $bleu, rouge, bleu, vert, rouge, bleu, vert, rouge, bleu$. Écris un algorithme pour construire le tableau complet des effectifs par couleur.",
+      "correctAnswer": "1. Initialiser un tableau vide avec colonnes 'Couleur' et 'Nombre'.\\n2. Pour chaque couleur de la liste :\\n   - Chercher si la couleur existe dans le tableau.\\n   - Si oui, augmenter son nombre de $1$.\\n   - Si non, ajouter la couleur avec le nombre $1$.\\n3. Résultat final : Bleu $4$, Rouge $3$, Vert $2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On traite chaque donnée de la liste. Le tableau se remplit au fur et à mesure : la première fois qu'on voit 'bleu', on crée la ligne avec $1$ ; les fois suivantes, on ajoute $1$. À la fin, on a bien $4$ bleus, $3$ rouges et $2$ verts.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Trouver la valeur la plus fréquente",
+      "content": "À partir du tableau obtenu (Bleu : $4$, Rouge : $3$, Vert : $2$), écris un algorithme pour déterminer quelle est la couleur la plus choisie et donner son effectif.",
+      "correctAnswer": "1. Prendre la première ligne du tableau : couleur_max = 'Bleu', effectif_max = $4$.\\n2. Pour chaque ligne suivante du tableau :\\n   - Si l'effectif de la ligne est plus grand que effectif_max :\\n     - effectif_max prend cette valeur.\\n     - couleur_max prend cette couleur.\\n3. Afficher : 'La couleur la plus choisie est ' + couleur_max + ' avec ' + effectif_max + ' votes.'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les effectifs entre eux. On garde en mémoire le maximum trouvé et la catégorie correspondante. Ici, $4 > 3$ et $4 > 2$, donc 'Bleu' avec $4$ est le résultat.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

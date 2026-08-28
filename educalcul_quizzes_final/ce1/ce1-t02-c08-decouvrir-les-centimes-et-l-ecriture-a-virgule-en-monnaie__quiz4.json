@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Application : Découvrir les centimes et l'écriture à virgule en monnaie",
+  "title": "Quiz : Les centimes et l'écriture à virgule en monnaie",
+  "questions": [
+    {
+      "text": "Parmi les pièces suivantes, laquelle représente une valeur de $10$ centimes d'euro ?",
+      "options": [
+        "La pièce de couleur cuivrée avec le chiffre $10$",
+        "La pièce de couleur dorée avec le chiffre $1$",
+        "La pièce de couleur argentée avec le chiffre $50$",
+        "La pièce de couleur cuivrée avec le chiffre $5$"
+      ],
+      "correctAnswer": "La pièce de couleur cuivrée avec le chiffre $10$",
+      "explanation": "La pièce de $10$ centimes est reconnaissable à sa couleur cuivrée (rouge-orangé) et au chiffre $10$ gravé dessus. La pièce dorée avec $1$ est $1$ euro ($100$ centimes), la pièce argentée avec $50$ est $50$ centimes, et la pièce cuivrée avec $5$ est $5$ centimes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de pièces de $10$ centimes faut-il pour faire exactement $1$ euro ?",
+      "options": [
+        "Dix pièces",
+        "Cinq pièces",
+        "Cent pièces",
+        "Vingt pièces"
+      ],
+      "correctAnswer": "Dix pièces",
+      "explanation": "Un euro vaut $100$ centimes. Comme chaque pièce vaut $10$ centimes, on compte par sauts de $10$ : $10, 20, 30, 40, 50, 60, 70, 80, 90, 100$. Il faut donc $10$ pièces de $10$ centimes pour atteindre $100$ centimes, soit $1$ euro. Cinq pièces font $50$ centimes, vingt pièces font $2$ euros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On écrit $3$ euros et $50$ centimes en notation décimale. Quelle est l'écriture correcte ?",
+      "options": [
+        "$3,50$ €",
+        "$3,5$ €",
+        "$3,05$ €",
+        "$35,0$ €"
+      ],
+      "correctAnswer": "$3,50$ €",
+      "explanation": "En notation décimale monétaire, les euros sont avant la virgule et les centimes après, sur exactement deux chiffres. $3$ euros $50$ centimes s'écrit donc $3,50$ €. L'écriture $3,5$ € est une écriture mathématique simplifiée mais pas l'écriture monétaire standard (qui exige deux décimales). $3,05$ € correspond à $3$ euros $05$ centimes. $35,0$ € correspond à $35$ euros.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3.5,
+        "caption": "Tableau de position pour 3,50 €"
+      }
+    },
+    {
+      "text": "Léo a une pièce de $1$ euro et une pièce de $50$ centimes. Il achète une pomme à $1,20$ €. Combien lui reste-t-il ?",
+      "options": [
+        "$0,30$ €",
+        "$0,80$ €",
+        "$1,30$ €",
+        "$0,70$ €"
+      ],
+      "correctAnswer": "$0,30$ €",
+      "explanation": "Léo possède $1$ euro + $50$ centimes = $1,50$ €. Il dépense $1,20$ €. La différence est $1,50 - 1,20 = 0,30$ €. On peut calculer en centimes : $150 - 120 = 30$ centimes, soit $0,30$ €. L'erreur $0,80$ € correspond à une addition au lieu d'une soustraction. L'erreur $0,70$ € vient d'un mauvais calcul de retenue.",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          100,
+          50
+        ],
+        "target": 120,
+        "caption": "Monnaie de Léo et prix de la pomme"
+      }
+    },
+    {
+      "text": "Quel est le prix exact en euros et centimes pour l'écriture $4,05$ € ?",
+      "options": [
+        "Quatre euros et cinq centimes",
+        "Quatre euros et cinquante centimes",
+        "Quatre euros cinq centimes",
+        "Quatre cent cinq euros"
+      ],
+      "correctAnswer": "Quatre euros et cinq centimes",
+      "explanation": "L'écriture $4,05$ € signifie $4$ euros (partie entière) et $05$ centimes (partie décimale sur deux chiffres). Le zéro des dixièmes indique qu'il n'y a pas de dizaine de centimes, il y a seulement $5$ centimes (un centime). On lit donc \"quatre euros et cinq centimes\". \"Quatre euros et cinquante centimes\" correspond à $4,50$ €. \"Quatre cent cinq euros\" correspond à $405$ €.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

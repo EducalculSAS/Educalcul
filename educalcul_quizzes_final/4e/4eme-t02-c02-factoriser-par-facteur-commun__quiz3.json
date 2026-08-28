@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Vérifier en développant",
+  "title": "Vérifier une factorisation en développant",
+  "questions": [
+    {
+      "text": "On propose la factorisation $3(2x+3)$ pour l'expression $6x+9$. Quel développement correspond à cette factorisation ?",
+      "options": [
+        "$6x+9$",
+        "$6x+3$",
+        "$3x+9$",
+        "$6x+27$"
+      ],
+      "correctAnswer": "$6x+9$",
+      "explanation": "En développant $3(2x+3)$, on multiplie $3$ par $2x$ ce qui donne $6x$, et $3$ par $3$ ce qui donne $9$. Le résultat est $6x+9$. Les autres options correspondent à des erreurs de distribution ou de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La factorisation $4x(x-3)$ est proposée pour $4x^2-12x$. Quel est le développement correct ?",
+      "options": [
+        "$4x^2-12x$",
+        "$4x^2-3x$",
+        "$4x^2-12$",
+        "$4x^2-3$"
+      ],
+      "correctAnswer": "$4x^2-12x$",
+      "explanation": "En développant $4x(x-3)$, on obtient $4x \\times x = 4x^2$ et $4x \\times (-3) = -12x$. Le terme constant $-12$ ou $-3$ n'apparaît pas car il n'y a pas de terme sans $x$ dans le facteur commun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On factorise $-5x+15$ par $-5(x-3)$. Lequel des développements suivants est exact ?",
+      "options": [
+        "$-5x+15$",
+        "$-5x-15$",
+        "$5x-15$",
+        "$5x+15$"
+      ],
+      "correctAnswer": "$-5x+15$",
+      "explanation": "Le développement de $-5(x-3)$ donne $-5 \\times x = -5x$ et $-5 \\times (-3) = +15$. Les distracteurs correspondent à des erreurs de signe sur le second terme ou sur le facteur commun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'expression $2x^2+6x$ est factorisée en $2x(x+3)$. Choisissez le bon développement.",
+      "options": [
+        "$2x^2+6x$",
+        "$2x^2+3x$",
+        "$2x^2+6$",
+        "$2x^2+3$"
+      ],
+      "correctAnswer": "$2x^2+6x$",
+      "explanation": "En distribuant $2x$ sur $(x+3)$, on obtient $2x \\times x = 2x^2$ et $2x \\times 3 = 6x$. Les autres options oublient le $x$ dans le second terme ou suppriment la variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On propose $3(x+3)(y-2)$ comme factorisation de $3xy-6x+9y-18$. Quel développement vérifie cette factorisation ?",
+      "options": [
+        "$3xy-6x+9y-18$",
+        "$3xy-6x-9y-18$",
+        "$3xy+6x+9y-18$",
+        "$3xy-6x+9y+18$"
+      ],
+      "correctAnswer": "$3xy-6x+9y-18$",
+      "explanation": "D'abord, développons $(x+3)(y-2) = xy -2x +3y -6$. En multipliant par $3$, on obtient $3xy -6x +9y -18$, ce qui correspond exactement à l'expression initiale. Les autres choix modifient les signes des termes $9y$ ou $18$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Organiser des données",
+  "title": "Approfondissement : Organiser des données",
+  "questions": [
+    {
+      "text": "Voici les résultats de $8$ lancers de dé : $3$, $5$, $2$, $3$, $6$, $3$, $4$, $5$. Quel est l'effectif de la valeur $3$ ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "On compte le nombre de fois où le chiffre $3$ apparaît dans la liste : $3$, $5$, $2$, $3$, $6$, $3$, $4$, $5$. Il y a trois $3$. L'effectif est donc $3$. L'option $2$ correspond à l'effectif de $5$, l'option $4$ est le nombre de valeurs distinctes, et $5$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau d'effectifs répertorie les notes obtenues à un exercice :\\nValeur : $1$ ; $2$ ; $3$ ; $4$\\nEffectif : $2$ ; $5$ ; $1$ ; $2$\\nCombien d'élèves ont passé cet exercice ?",
+      "options": [
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Le nombre total d'élèves (l'effectif total) est la somme de tous les effectifs : $2 + 5 + 1 + 2 = 10$. L'option $8$ oublie d'additionner le dernier effectif, $9$ fait une erreur de calcul, et $11$ en ajoute un de trop.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Valeur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "1",
+            "2"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "1"
+          ],
+          [
+            "4",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On a relevé les animaux préférés de plusieurs élèves : chat, chien, chat, poisson, chien, chat.\\nOn commence à remplir le tableau d'effectifs :\\nValeur : chat | chien | poisson\\nEffectif : $3$ | ... | $1$\\nQuel nombre faut-il écrire à la place des points de suspension ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Dans la liste, le mot 'chien' apparaît deux fois (deuxième et cinquième position). L'effectif du chien est donc $2$. L'effectif du chat est bien $3$ et celui du poisson est $1$. L'option $1$ sous-compte, $3$ confond avec le chat, et $0$ ignore cette valeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau d'effectifs à deux colonnes, à quoi correspond la deuxième colonne (souvent intitulée 'Effectif') ?",
+      "options": [
+        "La liste de toutes les valeurs différentes observées",
+        "Le nombre de fois où chaque valeur apparaît",
+        "La somme de toutes les valeurs",
+        "La valeur qui arrive le plus souvent"
+      ],
+      "correctAnswer": "Le nombre de fois où chaque valeur apparaît",
+      "explanation": "Par définition, un tableau d'effectifs associe à chaque valeur (première colonne) son effectif, c'est-à-dire le nombre d'occurrences de cette valeur dans la série de données (deuxième colonne). La première option décrit la première colonne. La troisième option décrit l'effectif total. La quatrième option décrit le mode.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la série de nombres : $10$, $20$, $10$, $30$, $20$, $10$.\\nUn élève propose ce tableau :\\nValeur : $10$ | $20$ | $30$\\nEffectif : $2$ | $2$ | $1$\\nQuelle erreur a-t-il commise ?",
+      "options": [
+        "L'effectif de $10$ est faux",
+        "L'effectif de $20$ est faux",
+        "L'effectif de $30$ est faux",
+        "Le total des effectifs est faux"
+      ],
+      "correctAnswer": "L'effectif de $10$ est faux",
+      "explanation": "Dans la série, le nombre $10$ apparaît trois fois (1er, 3e, 6e). L'élève a écrit $2$. L'effectif de $20$ est bien $2$ (2e, 5e) et celui de $30$ est bien $1$ (4e). Le total proposé ($2+2+1=5$) est faux aussi, mais l'erreur origine est sur l'effectif de $10$ qui devrait être $3$, ce qui ferait un total de $6$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

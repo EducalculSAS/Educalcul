@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 409,
+  "_course_code": "5eme-t06-c05-bilan-statistiques-et-probabilites-5e",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Données et hasard",
+  "title": "Algorithmes et simulation aléatoire",
+  "blocks": [
+    {
+      "title": "Simulation d'un dé",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui simule $100$ lancers d'un dé à six faces équilibré (numéroté de $1$ à $6$) et qui affiche le nombre de fois où le résultat $6$ est obtenu.",
+      "correctAnswer": "Variables : compteur <- 0\\nPour i de 1 à 100 faire\\n    resultat <- entier_aleatoire(1, 6)\\n    Si resultat = 6 alors\\n        compteur <- compteur + 1\\n    Fin si\\nFin pour\\nAfficher compteur",
+      "explanation": "On initialise un compteur à zéro. Une boucle répète 100 fois l'action : tirer un entier au hasard entre 1 et 6. Si ce tirage vaut 6, on incrémente le compteur. À la fin, on affiche la valeur du compteur qui correspond à la fréquence du 6.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de la moyenne d'une série",
+      "content": "On donne une liste de notes : $notes = [12, 8, 15, 10, 14, 9, 11]$. Écrire un algorithme qui calcule et affiche la moyenne de cette série statistique.",
+      "correctAnswer": "Variables : notes <- [12, 8, 15, 10, 14, 9, 11]\\nsomme <- 0\\nnb_notes <- longueur(notes)\\nPour chaque note dans notes faire\\n    somme <- somme + note\\nFin pour\\nmoyenne <- somme / nb_notes\\nAfficher moyenne",
+      "explanation": "On stocke les notes dans une liste. On initialise une variable somme à 0. On parcourt la liste pour ajouter chaque note à la somme. On divise la somme totale par le nombre de notes (longueur de la liste) pour obtenir la moyenne.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Estimation d'une probabilité",
+      "content": "On lance une pièce de monnaie équilibrée. Écrire un algorithme qui simule $N$ lancers (avec $N$ saisi par l'utilisateur), compte le nombre de faces \"Pile\" obtenues et affiche la fréquence de \"Pile\" (nombre de Pile divisé par $N$).",
+      "correctAnswer": "Variables : N <- saisie utilisateur\\npile <- 0\\nPour i de 1 à N faire\\n    tirage <- entier_aleatoire(1, 2)  // 1 pour Pile, 2 pour Face\\n    Si tirage = 1 alors\\n        pile <- pile + 1\\n    Fin si\\nFin pour\\nfrequence <- pile / N\\nAfficher frequence",
+      "explanation": "On demande à l'utilisateur le nombre de simulations N. On initialise un compteur 'pile' à 0. La boucle répète N fois un tirage aléatoire entre 1 et 2 (modélisant Pile/Face). Si le tirage est 1, on incrémente le compteur. La fréquence est le quotient du compteur par N. Pour N grand, cette fréquence approche la probabilité théorique 0,5.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

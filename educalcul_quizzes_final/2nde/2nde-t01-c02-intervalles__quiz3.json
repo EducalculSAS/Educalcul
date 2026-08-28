@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Droite réelle",
+  "title": "Quiz : La droite réelle (Seconde)",
+  "questions": [
+    {
+      "text": "Parmi les ensembles suivants, lequel contient le nombre $\\sqrt{2}$ mais ne contient pas le nombre $\\frac{3}{2}$ ?",
+      "options": [
+        "$\\mathbb{N}$",
+        "$\\mathbb{Z}$",
+        "$\\mathbb{Q}$",
+        "$\\mathbb{R} \\setminus \\mathbb{Q}$"
+      ],
+      "correctAnswer": "$\\mathbb{R} \\setminus \\mathbb{Q}$",
+      "explanation": "$\\sqrt{2}$ est un nombre irrationnel : il n\\'est pas dans $\\mathbb{Q}$, donc il est dans $\\mathbb{R} \\setminus \\mathbb{Q}$. $\\frac{3}{2}$ est un nombre rationnel, il appartient à $\\mathbb{Q}$, donc il n\\'est pas dans $\\mathbb{R} \\setminus \\mathbb{Q}$. Les ensembles $\\mathbb{N}$, $\\mathbb{Z}$ et $\\mathbb{Q}$ ne contiennent pas $\\sqrt{2}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez la valeur exacte de l\\'expression $| -5 | + | 3 - 7 |$.",
+      "options": [
+        "2",
+        "9",
+        "-9",
+        "14"
+      ],
+      "correctAnswer": "9",
+      "explanation": "On calcule chaque valeur absolue : $| -5 | = 5$ et $| 3 - 7 | = | -4 | = 4$. La somme est $5 + 4 = 9$. L\\'option 2 correspond à $5 - 4$, l\\'option -9 à $-(5+4)$ et l\\'option 14 à $5 + 9$ (erreur sur la seconde valeur absolue).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, les points A et B ont pour abscisses respectives $-3$ et $4$. Quelle est la distance $AB$ ?",
+      "options": [
+        "1",
+        "7",
+        "-7",
+        "12"
+      ],
+      "correctAnswer": "7",
+      "explanation": "La distance entre deux points d\\'abscisses $x_A$ et $x_B$ est $|x_B - x_A|$. Ici $|4 - (-3)| = |4 + 3| = 7$. La distance est toujours positive. L\\'option 1 correspond à $4-3$, l\\'option -7 oublie la valeur absolue, l\\'option 12 correspond à $|4| + |-3|$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Points A(-3) et B(4) sur la droite graduée",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          },
+          {
+            "value": 4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On considère les nombres $\\sqrt{5}$, $2,2$, $\\frac{11}{5}$ et $-\\sqrt{2}$. Laquelle des propositions suivantes donne l\\'ordre exact de ces nombres du plus petit au plus grand ?",
+      "options": [
+        "$-\\sqrt{2} < 2,2 < \\frac{11}{5} < \\sqrt{5}$",
+        "$-\\sqrt{2} < \\frac{11}{5} < 2,2 < \\sqrt{5}$",
+        "$-\\sqrt{2} < 2,2 = \\frac{11}{5} < \\sqrt{5}$",
+        "$\\sqrt{5} < 2,2 = \\frac{11}{5} < -\\sqrt{2}$"
+      ],
+      "correctAnswer": "$-\\sqrt{2} < 2,2 = \\frac{11}{5} < \\sqrt{5}$",
+      "explanation": "$-\\sqrt{2} \\approx -1,41$ est le plus petit. $\\frac{11}{5} = 2,2$ exactement. $\\sqrt{5} \\approx 2,236$ est le plus grand. L\\'ordre est donc $-\\sqrt{2} < 2,2 = \\frac{11}{5} < \\sqrt{5}$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position approximative des nombres sur la droite réelle",
+        "min": -2,
+        "max": 3,
+        "points": [
+          {
+            "value": -1.414,
+            "label": "-\\sqrt{2}"
+          },
+          {
+            "value": 2.2,
+            "label": "2,2 = 11/5"
+          },
+          {
+            "value": 2.236,
+            "label": "\\sqrt{5}"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Que représente géométriquement l\\'expression $|x - y|$ pour deux nombres réels $x$ et $y$ ?",
+      "options": [
+        "La somme de $x$ et $y$",
+        "La distance entre $x$ et $y$ sur la droite réelle",
+        "Le produit de $x$ et $y$",
+        "La différence entre $x$ et $y$ (sans valeur absolue)"
+      ],
+      "correctAnswer": "La distance entre $x$ et $y$ sur la droite réelle",
+      "explanation": "Par définition, la distance entre deux points d\\'abscisses $x$ et $y$ sur la droite réelle est la valeur absolue de leur différence : $d(x,y) = |x - y| = |y - x|$. C\\'est une grandeur toujours positive ou nulle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

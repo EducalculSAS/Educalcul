@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Bilan - Logique et algorithmique Seconde",
+  "title": "Bilan : Logique, ensembles et algorithmique",
+  "blocks": [
+    {
+      "title": "Vocabulaire logique : implication et transformations",
+      "content": "Relie chaque notion logique à l'énoncé correspondant pour la proposition : « Si un triangle est équilatéral, alors il est isocèle ».",
+      "pairs": [
+        {
+          "left": "Proposition initiale",
+          "right": "Si un triangle est équilatéral, alors il est isocèle"
+        },
+        {
+          "left": "Réciproque",
+          "right": "Si un triangle est isocèle, alors il est équilatéral"
+        },
+        {
+          "left": "Contraposée",
+          "right": "Si un triangle n'est pas isocèle, alors il n'est pas équilatéral"
+        },
+        {
+          "left": "Négation",
+          "right": "Un triangle est équilatéral et n'est pas isocèle"
+        }
+      ],
+      "explanation": "La proposition initiale est une implication $P \\implies Q$ avec $P$ : « le triangle est équilatéral » et $Q$ : « il est isocèle ». La réciproque échange $P$ et $Q$ : $Q \\implies P$. La contraposée nie $Q$ et $P$ et les échange : $\\text{non } Q \\implies \\text{non } P$ (elle est logiquement équivalente à l'initiale). La négation de $P \\implies Q$ est $P \\text{ et } \\text{non } Q$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Notations ensemblistes et quantificateurs",
+      "content": "Relie chaque symbole ou écriture formelle à sa lecture en français.",
+      "pairs": [
+        {
+          "left": "$\\forall x \\in E$",
+          "right": "Pour tout $x$ appartenant à $E$"
+        },
+        {
+          "left": "$\\exists y \\in F$",
+          "right": "Il existe un $y$ appartenant à $F$"
+        },
+        {
+          "left": "$A \\subset B$",
+          "right": "$A$ est inclus dans $B$"
+        },
+        {
+          "left": "$x \\notin A$",
+          "right": "$x$ n'appartient pas à $A$"
+        },
+        {
+          "left": "$A \\cap B = \\emptyset$",
+          "right": "$A$ et $B$ sont disjoints"
+        }
+      ],
+      "explanation": "Le symbole $\\forall$ se lit « pour tout », $\\exists$ se lit « il existe ». Le symbole $\\in$ signifie « appartient à », $\\notin$ signifie « n'appartient pas à ». L'inclusion $A \\subset B$ signifie que tout élément de $A$ est dans $B$. L'intersection $A \\cap B$ est l'ensemble des éléments communs ; si elle est vide ($\\emptyset$), les ensembles n'ont aucun élément commun, ils sont dits disjoints.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Structures algorithmiques de base (Python)",
+      "content": "Relie chaque instruction ou structure algorithmique à sa description ou son effet.",
+      "pairs": [
+        {
+          "left": "$x \\leftarrow x + 1$",
+          "right": "Incrémenter la variable $x$ de 1"
+        },
+        {
+          "left": "Pour $i$ de 1 à 10",
+          "right": "Boucle bornée (non conditionnelle) 실행 10 fois"
+        },
+        {
+          "left": "Tant que $x > 0$",
+          "right": "Boucle non bornée a priori (conditionnelle)"
+        },
+        {
+          "left": "Si $x > 0$ Alors ... Sinon ...",
+          "right": "Structure conditionnelle alternative"
+        },
+        {
+          "left": "$L[0]$",
+          "right": "Accès au premier élément de la liste $L$"
+        }
+      ],
+      "explanation": "L'affectation $x \\leftarrow x + 1$ ajoute 1 à la valeur actuelle de $x$ (incrémentation). « Pour $i$ de 1 à 10 » définit une boucle dont le nombre d'itérations est connu à l'avance (bornée). « Tant que $x > 0$ » répète le bloc tant que la condition est vraie ; le nombre de tours n'est pas connu au départ. « Si ... Alors ... Sinon ... » exécute l'un ou l'autre bloc selon la condition. En Python, les listes sont indexées à partir de 0, donc $L[0]$ désigne le premier élément.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

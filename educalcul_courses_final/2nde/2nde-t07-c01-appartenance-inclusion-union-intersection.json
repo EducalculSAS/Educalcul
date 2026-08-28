@@ -1,0 +1,402 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.136198+00:00",
+  "id": 534,
+  "code": "2nde-t07-c01",
+  "title": "Appartenance, inclusion, union, intersection",
+  "description": "Cours structuré Educalcul : Appartenance, inclusion, union, intersection.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Appartenance, inclusion, union, intersection",
+    "objectif_global": "Appartenance, inclusion, union, intersection",
+    "mini_lecons_imposees": [
+      "Notations.",
+      "Diagrammes / droites.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Notations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les ensembles et l'appartenance"
+            },
+            {
+              "type": "paragraph",
+              "content": "En seconde, nous allons manipuler des ensembles d'objets mathématiques : des nombres, des points, des solutions d'équations. Un ensemble est simplement une collection bien définie d'éléments. Par exemple, l'ensemble des entiers naturels se note $\\mathbb{N}$, celui des entiers relatifs $\\mathbb{Z}$, les décimaux $\\mathbb{D}$, les réels $\\mathbb{R}$. Quand un objet $x$ fait partie d'un ensemble $E$, on écrit $x \\in E$ ; s'il n'en fait pas partie, on écrit $x \\notin E$. Cette notation est le tout premier vocabulaire à maîtriser : elle permet de parler de membership sans ambiguïté."
+            },
+            {
+              "type": "definition",
+              "term": "Appartenance",
+              "definition": "Soit $E$ un ensemble et $x$ un objet. On dit que $x$ appartient à $E$ si $x$ est l'un des éléments de $E$. On note $x \\in E$. Sinon, on note $x \\notin E$.",
+              "example": "$3 \\in \\mathbb{N}$ car $3$ est un entier naturel ; $\\frac{1}{2} \\notin \\mathbb{N}$ car ce n'est pas un entier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : l'ensemble $A = \\{2, 4, 6, 8\\}$. Les éléments sont listés entre accolades. On a $4 \\in A$ et $5 \\notin A$. On peut aussi décrire un ensemble par une propriété : $B = \\{x \\in \\mathbb{R} \\mid x^2 < 9\\}$. Cela se lit : \"l'ensemble des réels $x$ tels que $x^2 < 9$\". Ici, $2 \\in B$ car $2^2 = 4 < 9$, mais $3 \\notin B$ car $3^2 = 9$ n'est pas strictement inférieur à $9$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'appartenance est claire, intéressons-nous à la relation entre deux ensembles. On dit qu'un ensemble $A$ est inclus dans un ensemble $B$ si tout élément de $A$ est aussi un élément de $B$. On note $A \\subset B$. Si au moins un élément de $A$ n'est pas dans $B$, alors $A$ n'est pas inclus dans $B$, notation $A \\not\\subset B$. Attention : l'inclusion n'est pas symétrique, $A \\subset B$ n'implique pas $B \\subset A$."
+            },
+            {
+              "type": "definition",
+              "term": "Inclusion",
+              "definition": "Soient $A$ et $B$ deux ensembles. $A$ est inclus dans $B$ (on note $A \\subset B$) si et seulement si pour tout $x$, $x \\in A \\Rightarrow x \\in B$.",
+              "example": "$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{D} \\subset \\mathbb{R}$. En revanche, $\\{1,2\\} \\not\\subset \\{2,3\\}$ car $1$ n'appartient pas au second."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérifier une inclusion $A \\subset B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Prenez un élément arbitraire $x \\in A$ (sans choisir une valeur précise)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Montrez, en utilisant la définition de $A$ et celle de $B$, que cet $x$ satisfait aussi la condition d'appartenance à $B$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Concluez : comme $x$ était arbitraire, tout élément de $A$ est dans $B$, donc $A \\subset B$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons aux opérations qui permettent de construire de nouveaux ensembles à partir de deux ensembles donnés. L'union de $A$ et $B$, notée $A \\cup B$, est l'ensemble des éléments qui appartiennent à $A$ ou à $B$ (ou aux deux). L'intersection, notée $A \\cap B$, est l'ensemble des éléments qui appartiennent à la fois à $A$ et à $B$. Ces deux opérations sont commutatives et associatives, ce qui sera très utile pour simplifier des expressions ensemblistes."
+            },
+            {
+              "type": "definition",
+              "term": "Union et intersection",
+              "definition": "Soient $A$ et $B$ deux ensembles. L'union est $A \\cup B = \\{x \\mid x \\in A \\lor x \\in B\\}$. L'intersection est $A \\cap B = \\{x \\mid x \\in A \\land x \\in B\\}$.",
+              "example": "Si $A = \\{1,2,3\\}$ et $B = \\{3,4,5\\}$, alors $A \\cup B = \\{1,2,3,4,5\\}$ et $A \\cap B = \\{3\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Union (zone hachurée) et intersection (zone centrale) de deux ensembles A et B",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant les notations de base : appartenance, inclusion, union, intersection. Dans la prochaine leçon, nous verrons comment représenter visuellement ces ensembles sur une droite graduée ou à l'aide de diagrammes de Venn, ce qui rendra la résolution d'inéquations beaucoup plus intuitive."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $E = \\{x \\in \\mathbb{Z} \\mid -2 \\le x < 4\\}$. Parmi les nombres $-3, -2, 0, 3, 4$, lesquels appartiennent à $E$ ?",
+              "answer": "$-2, 0, 3$",
+              "hint": "Rappelez-vous que $\\mathbb{Z}$ est l'ensemble des entiers relatifs. Vérifiez chaque nombre : est-il un entier ? Est-il $\\ge -2$ et $< 4$ ?",
+              "explanation": "$E$ contient les entiers de $-2$ inclus jusqu'à $4$ exclus. $-3 < -2$ donc $-3 \\notin E$. $-2, 0, 3$ satisfont la condition. $4$ n'est pas strictement inférieur à $4$, donc $4 \\notin E$."
+            },
+            {
+              "question": "Soient $A = \\{x \\in \\mathbb{R} \\mid x > 1\\}$ et $B = \\{x \\in \\mathbb{R} \\mid x \\le 5\\}$. Déterminez si $A \\subset B$, $B \\subset A$ ou aucune des deux.",
+              "answer": "Aucune des deux inclusions n'est vraie.",
+              "hint": "Testez avec des valeurs : $6 \\in A$ mais $6 \\notin B$. $0 \\in B$ mais $0 \\notin A$.",
+              "explanation": "$6 > 1$ donc $6 \\in A$, mais $6 \\not\\le 5$ donc $6 \\notin B$ : $A \\not\\subset B$. $0 \\le 5$ donc $0 \\in B$, mais $0 \\not> 1$ donc $0 \\notin A$ : $B \\not\\subset A$."
+            },
+            {
+              "question": "Soient $C = \\{x \\in \\mathbb{R} \\mid x^2 \\le 4\\}$ et $D = \\{x \\in \\mathbb{R} \\mid x \\ge 0\\}$. Exprimez $C \\cup D$ et $C \\cap D$ sous forme d'intervalles.",
+              "answer": "$C \\cup D = \\mathbb{R}$ ; $C \\cap D = [0, 2]$",
+              "hint": "Résolvez $x^2 \\le 4$ pour trouver $C$. Ensuite, réunissez et intersectez avec $D = [0, +\\infty[$.",
+              "explanation": "$x^2 \\le 4 \\Leftrightarrow -2 \\le x \\le 2$, donc $C = [-2, 2]$. $D = [0, +\\infty[$. L'union couvre tous les réels car $C$ couvre $(-\\infty, 2]$ et $D$ couvre $[0, +\\infty[$, ensemble ils donnent $\\mathbb{R}$. L'intersection est la partie commune : $[0, 2]$."
+            }
+          ]
+        },
+        {
+          "title": "Diagrammes / droites.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter des ensembles sur une droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir manipulé les symboles, il est temps de donner une image géométrique aux ensembles de nombres réels. La droite graduée (ou droite des réels) est l'outil idéal : chaque nombre réel correspond à un point unique, et chaque point correspond à un nombre. Un intervalle, c'est simplement une portion de cette droite. On utilise des crochets pour indiquer si les bornes sont incluses (fermé) ou exclues (ouvert). Par exemple, $[a, b]$ contient $a$ et $b$, $]a, b[$ ne contient ni l'un ni l'autre, $[a, b[$ contient $a$ mais pas $b$."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalles",
+              "definition": "Soient $a, b \\in \\mathbb{R}$, $a < b$. On définit : $[a, b] = \\{x \\in \\mathbb{R} \\mid a \\le x \\le b\\}$, $]a, b[ = \\{x \\in \\mathbb{R} \\mid a < x < b\\}$, $[a, b[ = \\{x \\in \\mathbb{R} \\mid a \\le x < b\\}$, $]a, b] = \\{x \\in \\mathbb{R} \\mid a < x \\le b\\}$. On a aussi les intervalles non bornés : $[a, +\\infty[$, $]a, +\\infty[$, $]-\\infty, b]$, $]-\\infty, b[$ et $]-\\infty, +\\infty[ = \\mathbb{R}$.",
+              "example": "$[2, 5]$ est l'ensemble des réels entre $2$ et $5$ bornes comprises. $]-\\infty, 0[$ est l'ensemble des réels strictement négatifs."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": -2,
+              "upperBound": 3,
+              "lowerOpen": false,
+              "upperOpen": true,
+              "caption": "Représentation de l'intervalle $[-2, 3[$ sur une droite graduée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les diagrammes de Venn offrent une autre vision, très puissante pour visualiser les relations entre plusieurs ensembles. Au lieu d'une ligne, on utilise des disques (ou des ovales) qui se chevauchent. L'intérieur d'un disque représente les éléments de l'ensemble. L'union correspond à la surface totale couverte par les deux disques, l'intersection à la zone de chevauchement. Le complémentaire d'un ensemble $A$ dans un ensemble de référence $U$ (souvent $\\mathbb{R}$ ou un ensemble fini donné) est la zone en dehors du disque $A$ mais à l'intérieur du rectangle représentant $U$."
+            },
+            {
+              "type": "definition",
+              "term": "Complémentaire",
+              "definition": "Soient $A$ et $U$ deux ensembles tels que $A \\subset U$. Le complémentaire de $A$ dans $U$, noté $A^c$ ou $\\overline{A}$ (ou encore $U \\setminus A$), est l'ensemble des éléments de $U$ qui n'appartiennent pas à $A$ : $A^c = \\{x \\in U \\mid x \\notin A\\}$.",
+              "example": "Si $U = \\{1,2,3,4,5\\}$ et $A = \\{2,4\\}$, alors $A^c = \\{1,3,5\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn pour deux ensembles A et B : union, intersection, complémentaires",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    "3",
+                    "4",
+                    "5"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le vrai pouvoir de ces représentations apparaît quand on résout des inéquations. Une inéquation comme $2x - 5 \\le 3$ définit implicitement un ensemble : l'ensemble de ses solutions. Résoudre l'inéquation, c'est déterminer cet ensemble et le décrire sous forme d'intervalle. La méthode est algorithmique : on isole $x$ en appliquant les mêmes opérations des deux côtés, en prenant garde au changement de sens si l'on multiplie ou divise par un nombre négatif. Une fois l'intervalle trouvé, on le place sur la droite graduée pour bien voir l'ensemble des solutions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Résoudre une inéquation du premier degré $ax + b \\le cx + d$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Regroupez les termes en $x$ à gauche et les constantes à droite : $ax - cx \\le d - b$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Factorisez par $x$ : $(a - c)x \\le d - b$."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Divisez par le coefficient de $x$. Si ce coefficient est positif, le sens de l'inégalité ne change pas. S'il est négatif, il faut inverser le sens ($\\le$ devient $\\ge$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "4. Écrivez l'ensemble solution sous forme d'intervalle et représentez-le sur une droite graduée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant représenter des ensembles sur une droite (intervalles) et avec des diagrammes de Venn, et vous commencez à lier cela à la résolution d'inéquations. La prochaine leçon poussera plus loin : nous résoudrons des inéquations du second degré à l'aide de tableaux de signes, et nous verrons comment modéliser des problèmes concrets avec le langage des ensembles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Représentez sur une droite graduée l'ensemble $E = \\{x \\in \\mathbb{R} \\mid -3 < x \\le 1\\}$. Quelle est son écriture en notation d'intervalle ?",
+              "answer": "] -3, 1 ]",
+              "hint": "La borne inférieure $-3$ est exclue (parenthèse ou crochet ouvert), la borne supérieure $1$ est incluse (crochet fermé).",
+              "explanation": "La condition $-3 < x \\le 1$ signifie $x$ strictement plus grand que $-3$ et inférieur ou égal à $1$. En notation d'intervalle, on écrit $]-3, 1]$. Sur la droite, on place un cercle ouvert en $-3$ et un cercle plein en $1$, avec un trait entre les deux."
+            },
+            {
+              "question": "Soient $A = [1, 4]$ et $B = ]2, 6[$. Dessinez un diagramme de Venn schématique (deux disques chevauchants) et indiquez quelle zone correspond à $A \\cap B$. Donnez $A \\cap B$ sous forme d'intervalle.",
+              "answer": "$A \\cap B = ]2, 4]$",
+              "hint": "L'intersection est la partie commune aux deux intervalles. $A$ va de $1$ à $4$ bornes comprises, $B$ va de $2$ (exclu) à $6$ (exclu). La partie commune commence juste après $2$ et finit à $4$ inclus.",
+              "explanation": "Les éléments communs à $A$ et $B$ sont ceux qui sont $\\ge 1$ et $\\le 4$ ET $> 2$ et $< 6$. Cela donne $x > 2$ et $x \\le 4$, soit $]2, 4]$. Sur le diagramme de Venn, c'est la zone de chevauchement des deux disques."
+            },
+            {
+              "question": "Résolvez l'inéquation $3(x - 2) > 2x + 1$ et donnez l'ensemble solution sous forme d'intervalle. Représentez-le sur une droite graduée.",
+              "answer": "]7, +\\infty[",
+              "hint": "Développez, regroupez les $x$ à gauche, les constantes à droite. Attention au sens de l'inégalité si vous divisez par un négatif (ici ce n'est pas le cas).",
+              "explanation": "$3(x-2) > 2x+1 \\Leftrightarrow 3x - 6 > 2x + 1 \\Leftrightarrow 3x - 2x > 1 + 6 \\Leftrightarrow x > 7$. L'ensemble solution est $]7, +\\infty[$. Sur la droite, cercle ouvert en $7$ et flèche vers la droite."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'inéquations du premier degré et modélisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu la méthode algorithmique pour résoudre une inéquation du premier degré. À présent, nous allons l'appliquer à des situations concrètes : modéliser un problème par une inéquation, la résoudre, puis interpréter la solution dans le contexte. C'est là que le langage ensembliste prend tout son sens : l'ensemble des solutions n'est pas une simple réponse numérique, c'est un intervalle qui a une signification réelle (un budget, une distance, un nombre d'objets...)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple : vous avez $50\\,\\text{\\euro}$ pour acheter des stylos à $3\\,\\text{\\euro}$ l'unité et un cahier à $8\\,\\text{\\euro}$. Combien de stylos pouvez-vous acheter au maximum ? Soit $x$ le nombre de stylos. Le coût total est $3x + 8$. La contrainte budgétaire s'écrit $3x + 8 \\le 50$. On résout : $3x \\le 42$, donc $x \\le 14$. Comme $x$ est un nombre entier naturel, l'ensemble des solutions est $\\{0, 1, 2, \\dots, 14\\}$. On peut acheter au maximum $14$ stylos."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Modéliser et résoudre un problème par une inéquation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Identifiez l'inconnue (souvent un nombre, une quantité) et choisissez une variable $x$. Précisez son ensemble de définition (souvent $\\mathbb{N}$ ou $\\mathbb{R}_+$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "2. Traduisez les contraintes du problème en inéquation(s) algébrique(s)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "3. Résolvez l'inéquation dans $\\mathbb{R}$ (méthode du premier degré)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "4. Interprétez la solution dans l'ensemble de définition initial (par exemple, ne garder que les entiers si $x \\in \\mathbb{N}$)."
+                    },
+                    {
+                      "type": "paragraph",
+                      "content": "5. Rédigez une phrase de conclusion qui répond à la question posée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux inéquations du second degré, qui font leur apparition en seconde. Une inéquation de la forme $ax^2 + bx + c \\le 0$ (ou $\\ge$, $<$, $>$) se résout en étudiant le signe du trinôme. La méthode du tableau de signes est systématique : on trouve les racines (s'il y en a), on place ces racines sur une ligne, on détermine le signe du trinôme sur chaque intervalle, puis on sélectionne les intervalles qui satisfont l'inégalité. C'est une application directe de la notion d'ensemble : l'ensemble solution est une réunion d'intervalles."
+            },
+            {
+              "type": "definition",
+              "term": "Tableau de signes d'un trinôme $ax^2+bx+c$",
+              "definition": "Soit $a \\neq 0$. Si le discriminant $\\Delta = b^2 - 4ac$ est strictement négatif, le trinôme a le signe de $a$ pour tout $x$. Si $\\Delta = 0$, il a le signe de $a$ partout sauf en la racine double où il est nul. Si $\\Delta > 0$, il a deux racines distinctes $x_1 < x_2$ ; le trinôme a le signe de $a$ en dehors de l'intervalle $[x_1, x_2]$ et le signe opposé à $a$ à l'intérieur de $]x_1, x_2[$.",
+              "example": "Pour $x^2 - 5x + 6$, $\\Delta = 1$, racines $2$ et $3$. Le coefficient de $x^2$ est positif ($a=1$). Le trinôme est positif sur $]-\\infty, 2[ \\cup ]3, +\\infty[$ et négatif sur $]2, 3[$."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^2 - 5x + 6 = (x-2)(x-3)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous abordons les problèmes qui mêlent plusieurs ensembles : union, intersection, complémentaire. Par exemple : \"Dans une classe de $30$ élèves, $18$ font du football, $15$ font du basket, $8$ font les deux. Combien ne font aucun des deux sports ?\" On modélise : $F$ ensemble des footballeurs, $B$ ensemble des basketteurs. On connaît $|F| = 18$, $|B| = 15$, $|F \\cap B| = 8$. L'ensemble des sportifs est $F \\cup B$. Par la formule d'inclusion-exclusion : $|F \\cup B| = |F| + |B| - |F \\cap B| = 18 + 15 - 8 = 25$. Les non-sportifs sont le complémentaire dans la classe : $30 - 25 = 5$. Cette logique ensembliste est un outil de raisonnement puissant, bien au-delà des simples calculs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre classique : résoudre un système d'inéquations. Par exemple : $\\begin{cases} 2x + 1 \\ge 3 \\\\ x^2 - 4 < 0 \\end{cases}$. L'ensemble solution est l'intersection des ensembles solutions de chaque inéquation. La première donne $x \\ge 1$, soit $[1, +\\infty[$. La seconde donne $-2 < x < 2$, soit $]-2, 2[$. L'intersection est $[1, 2[$. On voit ici l'intersection opérer naturellement : il faut satisfaire les deux conditions simultanément."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais utiliser les symboles $\\in$, $\\notin$, $\\subset$, $\\not\\subset$, $\\cup$, $\\cap$, $^c$.",
+                "Je sais représenter un ensemble de réels sur une droite graduée (intervalles) et avec un diagramme de Venn.",
+                "Je sais résoudre une inéquation du premier degré et exprimer l'ensemble solution en intervalle.",
+                "Je sais résoudre une inéquation du second degré à l'aide d'un tableau de signes.",
+                "Je sais modéliser un problème concret par une inéquation ou un système d'inéquations et interpréter le résultat."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle a une longueur $L$ (en cm) supérieure de $5$ à sa largeur $l$. Son périmètre doit être au plus $50\\,\\text{cm}$. Détermine l'ensemble des largeurs possibles $l$ (en cm).",
+              "answer": "]0, 10]",
+              "hint": "Exprimez $L$ en fonction de $l$. Le périmètre $P = 2(L+l)$. Traduisez la contrainte $P \\le 50$ en inéquation. N'oubliez pas que $l > 0$.",
+              "explanation": "$L = l + 5$. $P = 2(l+5 + l) = 2(2l+5) = 4l + 10$. Condition : $4l + 10 \\le 50 \\Rightarrow 4l \\le 40 \\Rightarrow l \\le 10$. Comme une largeur est strictement positive, $l \\in ]0, 10]$."
+            },
+            {
+              "question": "Résolvez l'inéquation $x^2 - 4x - 5 \\ge 0$ et donnez l'ensemble solution sous forme de réunion d'intervalles.",
+              "answer": "]-\\infty, -1] \\cup [5, +\\infty[",
+              "hint": "Calculez le discriminant, trouvez les racines. Le coefficient de $x^2$ est positif, donc le trinôme est positif en dehors des racines.",
+              "explanation": "$\\Delta = 16 + 20 = 36$. Racines : $x_1 = \\frac{4-6}{2} = -1$, $x_2 = \\frac{4+6}{2} = 5$. Le trinôme $x^2-4x-5$ a le signe de $a=1$ (positif) en dehors de $[-1, 5]$, et négatif à l'intérieur. L'inéquation $\\ge 0$ sélectionne les intervalles où il est positif ou nul : $]-\\infty, -1] \\cup [5, +\\infty[$."
+            },
+            {
+              "question": "Dans un groupe de $40$ personnes, $25$ aiment le café, $20$ aiment le thé, $12$ aiment les deux. Combien de personnes n'aiment ni le café ni le thé ?",
+              "answer": "$7$",
+              "hint": "Utilisez la formule d'inclusion-exclusion pour l'union : $|C \\cup T| = |C| + |T| - |C \\cap T|$. Le complémentaire dans le groupe de $40$ donne la réponse.",
+              "explanation": "$|C \\cup T| = 25 + 20 - 12 = 33$ personnes aiment au moins l'une des deux boissons. Le groupe total compte $40$ personnes. Celles qui n'aiment ni l'une ni l'autre sont $40 - 33 = 7$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

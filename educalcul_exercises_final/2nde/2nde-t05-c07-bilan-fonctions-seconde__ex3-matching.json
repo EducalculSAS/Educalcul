@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Bilan - Fonctions Seconde",
+  "title": "Bilan sur les fonctions - Association",
+  "blocks": [
+    {
+      "title": "Vocabulaire et définitions",
+      "content": "Relie chaque terme à sa définition correcte.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Domaine de définition",
+          "right": "Ensemble des valeurs que peut prendre la variable x"
+        },
+        {
+          "left": "Image d'un nombre",
+          "right": "Valeur prise par la fonction pour un antécédent donné"
+        },
+        {
+          "left": "Antécédent d'un nombre",
+          "right": "Valeur de x pour laquelle la fonction prend une valeur donnée"
+        },
+        {
+          "left": "Fonction paire",
+          "right": "Fonction telle que f(-x) = f(x) pour tout x du domaine"
+        }
+      ],
+      "items": [],
+      "explanation": "Le domaine de définition est l'ensemble des x autorisés. L'image de x par f est f(x). Un antécédent de y est un x tel que f(x)=y. Une fonction est paire si sa courbe est symétrique par rapport à l'axe des ordonnées, ce qui se traduit algébriquement par f(-x)=f(x).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonctions de référence et variations",
+      "content": "Relie chaque fonction de référence à son sens de variation sur son domaine.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fonction carrée $x \\mapsto x^2$",
+          "right": "Décroissante sur $]-\\infty;0]$ et croissante sur $[0;+\\infty[$"
+        },
+        {
+          "left": "Fonction inverse $x \\mapsto \\frac{1}{x}$",
+          "right": "Décroissante sur $]-\\infty;0[$ et sur $]0;+\\infty[$"
+        },
+        {
+          "left": "Fonction racine carrée $x \\mapsto \\sqrt{x}$",
+          "right": "Croissante sur $[0;+\\infty[$"
+        },
+        {
+          "left": "Fonction affine $x \\mapsto ax+b$",
+          "right": "Croissante si $a>0$, décroissante si $a<0$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fonction carrée décroît jusqu'à 0 puis croît. La fonction inverse décroît sur chacun des deux intervalles de son domaine (attention, pas sur $\\mathbb{R}^*$ entier). La racine carrée est strictement croissante sur $\\mathbb{R}_+$. Une fonction affine varie comme son coefficient directeur a.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression algébrique et variations",
+      "content": "Relie chaque expression de fonction à son tableau de variations simplifié.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x) = 2x - 3$",
+          "right": "Fonction croissante sur $\\mathbb{R}$"
+        },
+        {
+          "left": "$f(x) = -x^2 + 4$",
+          "right": "Fonction croissante sur $]-\\infty;0]$ et décroissante sur $[0;+\\infty[$"
+        },
+        {
+          "left": "$f(x) = \\frac{2}{x}$ ($x>0$)",
+          "right": "Fonction décroissante sur $]0;+\\infty[$"
+        },
+        {
+          "left": "$f(x) = \\sqrt{x+1}$",
+          "right": "Fonction croissante sur $[-1;+\\infty[$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour $f(x)=2x-3$, le coefficient directeur 2 est positif, donc croissante sur $\\mathbb{R}$. Pour $f(x)=-x^2+4$, c'est une parabole tournée vers le bas, sommet en 0, donc croissante avant 0, décroissante après. Pour $f(x)=2/x$ sur $x>0$, c'est une homothétie de la fonction inverse (décroissante) par 2, donc décroissante. Pour $f(x)=\\sqrt{x+1}$, la racine carrée est croissante, le domaine est $x+1 \\ge 0 \\iff x \\ge -1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

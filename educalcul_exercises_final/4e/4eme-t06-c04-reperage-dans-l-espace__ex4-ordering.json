@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 448,
+  "_course_code": "4eme-t06-c04-reperage-dans-l-espace",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Application : Repérage dans l'espace",
+  "title": "Repérage dans l'espace : Mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Lire les coordonnées d'un point",
+      "content": "Dans un repère de l'espace $(O ; \\vec{\\imath}, \\vec{\\jmath}, \\vec{k})$, on veut déterminer les coordonnées d'un point $M$. Range les étapes suivantes dans l'ordre logique.",
+      "items": [
+        "Projeter le point $M$ sur le plan $(xOy)$ suivant la direction de l'axe $(Oz)$ pour obtenir le point $M'$.",
+        "Lire l'abscisse $x$ du point $M'$ sur l'axe $(Ox)$.",
+        "Lire l'ordonnée $y$ du point $M'$ sur l'axe $(Oy)$.",
+        "Lire la cote $z$ du point $M$ sur l'axe $(Oz)$ (ou mesurer la distance $MM'$).",
+        "Écrire les coordonnées de $M$ sous la forme $(x ; y ; z)$."
+      ],
+      "explanation": "Pour lire les coordonnées d'un point $M$ dans l'espace, on commence par le projeter sur le plan horizontal $(xOy)$ pour obtenir $M'$. Cela permet de séparer la recherche des deux premières coordonnées (dans le plan) de la troisième (la hauteur). On lit ensuite l'abscisse $x$ et l'ordonnée $y$ de $M'$ sur les axes $(Ox)$ et $(Oy)$. On détermine enfin la cote $z$ en mesurant la distance du point $M$ au plan $(xOy)$ (sur l'axe $(Oz)$). La dernière étape consiste à regrouper ces trois nombres dans l'ordre $(x ; y ; z)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Placer un point connaissant ses coordonnées",
+      "content": "On veut placer le point $A$ de coordonnées $(2 ; -3 ; 1)$ dans un repère de l'espace $(O ; \\vec{\\imath}, \\vec{\\jmath}, \\vec{k})$. Range les étapes de construction dans l'ordre.",
+      "items": [
+        "Sur l'axe $(Ox)$, repérer le point d'abscisse $2$.",
+        "Parallèlement à l'axe $(Oy)$, tracer une droite passant par ce point.",
+        "Sur cette droite, repérer le point d'ordonnée $-3$ (dans le sens opposé à $\\vec{\\jmath}$).",
+        "Parallèlement à l'axe $(Oz)$, tracer une droite passant par ce dernier point.",
+        "Sur cette droite verticale, repérer le point de cote $1$ : c'est le point $A(2 ; -3 ; 1)$."
+      ],
+      "explanation": "La construction d'un point par ses coordonnées suit l'ordre des axes. On commence par l'abscisse $x=2$ sur $(Ox)$. De là, on se déplace parallèlement à $(Oy)$ pour atteindre l'ordonnée $y=-3$ (donc dans le sens négatif). On a ainsi construit la projection $A'$ de $A$ sur le plan $(xOy)$. Il reste à monter (ou descendre) parallèlement à $(Oz)$ pour atteindre la cote $z=1$. Le point ainsi obtenu est $A(2 ; -3 ; 1)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées d'un sommet de parallélépipède",
+      "content": "Dans un parallélépipède rectangle $ABCDEFGH$, on donne $A(0 ; 0 ; 0)$, $B(3 ; 0 ; 0)$, $D(0 ; 2 ; 0)$ et $E(0 ; 0 ; 5)$. Range les étapes pour déterminer les coordonnées du sommet $G$.",
+      "items": [
+        "Identifier les coordonnées des points $A$, $B$, $D$ et $E$ données par l'énoncé.",
+        "En déduire les composantes des vecteurs $\\overrightarrow{AB} = (3 ; 0 ; 0)$, $\\overrightarrow{AD} = (0 ; 2 ; 0)$ et $\\overrightarrow{AE} = (0 ; 0 ; 5)$.",
+        "Utiliser la relation de Chasles : $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$.",
+        "Calculer les composantes de $\\overrightarrow{AG}$ : $(3+0+0 ; 0+2+0 ; 0+0+5) = (3 ; 2 ; 5)$.",
+        "Conclure que le sommet $G$ a pour coordonnées $(3 ; 2 ; 5)$."
+      ],
+      "explanation": "Le sommet $G$ est l'opposé de $A$ dans le parallélépipède. Le vecteur $\\overrightarrow{AG}$ est la somme des trois vecteurs arêtes qui partent de $A$ : $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$. On connaît les coordonnées de $B$, $D$, $E$ par rapport à $A(0;0;0)$, ce qui donne directement les composantes de ces trois vecteurs. En les additionnant composante par composante, on obtient les composantes de $\\overrightarrow{AG}$. Comme $A$ est l'origine du repère, les composantes de $\\overrightarrow{AG}$ sont exactement les coordonnées du point $G$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

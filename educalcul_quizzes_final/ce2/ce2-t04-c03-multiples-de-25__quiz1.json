@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 171,
+  "_course_code": "ce2-t04-c03-multiples-de-25",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "25, 50, 75, 100",
+  "title": "Quiz : Les multiples de 25 (25, 50, 75, 100)",
+  "questions": [
+    {
+      "text": "Complète la suite de nombres : $25$, $50$, $75$, ...",
+      "options": [
+        "$80$",
+        "$90$",
+        "$100$",
+        "$125$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "Les multiples de $25$ s'obtiennent en ajoutant $25$ à chaque fois : $25 + 25 = 50$, $50 + 25 = 75$, $75 + 25 = 100$. L'option $125$ est le multiple suivant, mais pas celui qui vient juste après $75$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de l'addition $75 + 25$ ?",
+      "options": [
+        "$90$",
+        "$95$",
+        "$100$",
+        "$105$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "$75 + 25$ forme une centaine. On peut décomposer : $75 + 5 = 80$, puis $80 + 20 = 100$. C'est un automatisme à connaître par cœur : $75$ et $25$ sont complémentaires à $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle soustraction donne $50$ comme résultat ?",
+      "options": [
+        "$100 - 25$",
+        "$100 - 50$",
+        "$75 - 25$",
+        "$100 - 75$"
+      ],
+      "correctAnswer": "$100 - 50$",
+      "explanation": "$100 - 50 = 50$ car $50 + 50 = 100$. Les autres calculs donnent : $100 - 25 = 75$, $75 - 25 = 50$ (mais ce n'est pas une soustraction depuis $100$), $100 - 75 = 25$. La question porte sur les compléments à $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien font $4 \\times 25$ ?",
+      "options": [
+        "$75$",
+        "$100$",
+        "$125$",
+        "$90$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "$4 \\times 25$ signifie $25 + 25 + 25 + 25$. On peut regrouper : $(25 + 25) + (25 + 25) = 50 + 50 = 100$. C'est une table de multiplication fondamentale : $4$ quarts font un entier ($100$ centimes = $1$ euro).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Avec des pièces de $25$ centimes, combien de pièces faut-il pour faire exactement $1$ euro ($100$ centimes) ?",
+      "options": [
+        "$3$ pièces",
+        "$4$ pièces",
+        "$5$ pièces",
+        "$2$ pièces"
+      ],
+      "correctAnswer": "$4$ pièces",
+      "explanation": "Il faut trouver combien de fois $25$ rentre dans $100$. $25 + 25 + 25 + 25 = 100$, donc $4$ pièces. $3$ pièces font $75$ centimes, $5$ pièces font $125$ centimes ($1,25$ euro).",
+      "points": 1,
+      "figure": {
+        "type": "coin_purse",
+        "coins": [
+          25,
+          25,
+          25,
+          25
+        ],
+        "target": 100,
+        "caption": "Pièces de 25 centimes pour faire 1 euro"
+      }
+    }
+  ]
+}

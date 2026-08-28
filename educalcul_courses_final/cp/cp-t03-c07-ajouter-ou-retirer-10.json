@@ -1,0 +1,383 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.572266+00:00",
+  "id": 29,
+  "code": "cp-t03-c07",
+  "title": "Ajouter ou retirer 10",
+  "description": "Cours structuré Educalcul : Ajouter ou retirer 10.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Ajouter ou retirer 10",
+    "objectif_global": "Ajouter ou retirer 10",
+    "mini_lecons_imposees": [
+      "Observer que les unités restent stables.",
+      "Modifier le nombre de dizaines.",
+      "Réinvestir sur des nombres à deux chiffres."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Observer que les unités restent stables.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Observer que les unités restent stables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte avec $23$ billes. C'est $2$ pochettes de $10$ billes et $3$ billes toutes seules. Regarde bien les $3$ billes toutes seules : ce sont les unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : $2$ dizaines et $3$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on ajoute une pochette de $10$ billes en plus. Tu as maintenant $3$ pochettes de $10$. Compte les billes toutes seules : il y en a encore $3$ ! Les unités n'ont pas bougé, seules les dizaines ont changé."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 3,
+              "caption": "$33$ : $3$ dizaines et $3$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on fait l'inverse ? Tu as $45$ bonbons : $4$ sachets de $10$ et $5$ bonbons à l'unité. On retire un sachet de $10$ bonbons. Regarde les $5$ bonbons tout seuls : ils sont toujours là, intacts !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 5,
+              "caption": "$45$ : $4$ dizaines et $5$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir retiré la dizaine, il reste $3$ sachets de $10$. Les $5$ unités n'ont pas bougé d'un millimètre. C'est comme une règle magique : quand on ajoute ou on retire $10$, le chiffre des unités ne change jamais."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 5,
+              "caption": "$35$ : $3$ dizaines et $5$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, c'est comme faire un grand saut de $10$ en $10$. Le chiffre des unités reste collé au sol pendant que le chiffre des dizaines grimpe ou descend. Essaie de voir le dessin : on part de $13$, on saute à $23$, puis $33$. Le $3$ des unités ne bouge pas !"
+            },
+            {
+              "type": "number_line",
+              "min": 10,
+              "max": 40,
+              "points": [
+                {
+                  "value": 13,
+                  "label": "13"
+                },
+                {
+                  "value": 23,
+                  "label": "23"
+                },
+                {
+                  "value": 33,
+                  "label": "33"
+                }
+              ],
+              "intervals": [],
+              "caption": "Sauter de $10$ en $10$ : les unités ne bougent pas"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as découvert le secret des unités. Elles sont tranquilles, elles ne bougent pas quand on joue avec les dizaines. On va maintenant voir comment changer le chiffre des dizaines tout seul."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $17$ autocollants. On t'en donne $10$ de plus. Combien d'autocollants as-tu maintenant ?",
+              "answer": "$27$",
+              "hint": "Regarde le chiffre des unités : il ne change pas. Ajoute $1$ au chiffre des dizaines.",
+              "explanation": "$17$ c'est $1$ dizaine et $7$ unités. En ajoutant $10$, on a $2$ dizaines et $7$ unités, donc $27$. Le $7$ est resté pareil."
+            },
+            {
+              "question": "Il y a $36$ livres sur l'étagère. On en retire $10$. Combien reste-t-il de livres ?",
+              "answer": "$26$",
+              "hint": "Le chiffre des unités reste $6$. Enlève $1$ au chiffre des dizaines.",
+              "explanation": "$36$ c'est $3$ dizaines et $6$ unités. En retirant $10$, il reste $2$ dizaines et $6$ unités, donc $26$. Le $6$ n'a pas bougé."
+            },
+            {
+              "question": "Complète le saut sur la droite : $42$ $\\rightarrow$ ? (on ajoute $10$)",
+              "answer": "$52$",
+              "hint": "Fais un grand saut de $10$. Le $2$ des unités reste au même endroit.",
+              "explanation": "On part de $42$ ($4$ dizaines, $2$ unités). On ajoute une dizaine : $5$ dizaines, $2$ unités. Cela fait $52$."
+            }
+          ]
+        },
+        {
+          "title": "Modifier le nombre de dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modifier le nombre de dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais que les unités dorment tranquilles, regardons ce qui se passe du côté des dizaines. C'est là que tout bouge ! Prends le nombre $16$. Le chiffre des dizaines, c'est le $1$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 6,
+              "caption": "$16$ : $1$ dizaine et $6$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si j'ajoute $10$, j'ajoute une dizaine entière. Le $1$ des dizaines devient $2$. Le $6$ des unités dort toujours. Regarde le dessin : on a rajouté un bâton de $10$. Le nombre devient $26$. C'est simple : on ajoute $1$ au chiffre des dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 6,
+              "caption": "$26$ : $2$ dizaines et $6$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et pour retirer $10$, c'est l'inverse. Imagine $54$ billes. Le $5$ représente les dizaines. Si on enlève $10$ billes, on enlève une dizaine. Le $5$ devient $4$. Les $4$ unités n'ont pas bougé. Le nombre devient $44$. On a retiré $1$ au chiffre des dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 5,
+              "units": 4,
+              "caption": "$54$ : $5$ dizaines et $4$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le résultat après avoir retiré la dizaine. Le chiffre des dizaines a baissé d'un cran, comme un ascenseur qui descend d'un étage. Le chiffre des unités est resté au rez-de-chaussée."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 4,
+              "caption": "$44$ : $4$ dizaines et $4$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut faire une longue suite de nombres en sautant de $10$ en $10$. Regarde cette droite : on part de $12$, puis $22$, $32$, $42$... À chaque saut, seul le chiffre des dizaines grandit de $1$. C'est comme monter les marches d'un escalier, une marche à la fois."
+            },
+            {
+              "type": "number_line",
+              "min": 10,
+              "max": 60,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 22,
+                  "label": "22"
+                },
+                {
+                  "value": 32,
+                  "label": "32"
+                },
+                {
+                  "value": 42,
+                  "label": "42"
+                },
+                {
+                  "value": 52,
+                  "label": "52"
+                }
+              ],
+              "intervals": [],
+              "caption": "La suite des nombres en ajoutant $10$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est noté ! Pour ajouter $10$, j'augmente le chiffre des dizaines de $1$. Pour retirer $10$, je diminue le chiffre des dizaines de $1$. Les unités font la sieste. Prêt pour t'entraîner sur plein de nombres différents ?"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le nombre qui suit $28$ quand on compte de $10$ en $10$ ?",
+              "answer": "$38$",
+              "hint": "Ajoute $1$ au chiffre des dizaines. Le $8$ ne bouge pas.",
+              "explanation": "$28$ a $2$ dizaines. En ajoutant $10$, on a $3$ dizaines. Les unités restent $8$. Donc $38$."
+            },
+            {
+              "question": "On retire $10$ à $73$. Quel est le résultat ?",
+              "answer": "$63$",
+              "hint": "Enlève $1$ au chiffre des dizaines. Le $3$ des unités reste là.",
+              "explanation": "$73$ a $7$ dizaines. En retirant $10$, il reste $6$ dizaines. Les unités sont $3$. Résultat : $63$."
+            },
+            {
+              "question": "Complète la suite : $15$, $25$, $35$, ?, $55$",
+              "answer": "$45$",
+              "hint": "Regarde les dizaines : $1$, $2$, $3$... la suivante c'est $4$. Les unités sont toujours $5$.",
+              "explanation": "Chaque nombre a $5$ unités. Les dizaines augmentent de $1$ à chaque fois : $1$, $2$, $3$, $4$, $5$. Le nombre manquant est $45$."
+            }
+          ]
+        },
+        {
+          "title": "Réinvestir sur des nombres à deux chiffres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réinvestir sur des nombres à deux chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu es devenu un pro pour ajouter ou retirer $10$ ! Maintenant, on mélange tout. Parfois on ajoute, parfois on retire. Ton œil doit bien regarder le signe : plus ou moins. Mais la règle ne change pas : les unités dorment, les dizaines travaillent."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 7,
+              "caption": "Départ : $37$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie dans ta tête : on part de $37$. On ajoute $10$ (ça fait $47$). Puis on retire $10$ (ça redevient $37$). C'est comme faire un pas en avant et un pas en arrière : on revient au point de départ. Les unités $7$ n'ont jamais bougé !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une petite histoire. Léa a $42$ images dans son album. Pour son anniversaire, on lui en offre $10$ de plus. Combien a-t-elle d'images maintenant ? Imagine les $4$ dizaines et les $2$ unités. On ajoute une dizaine : ça fait $5$ dizaines. Les $2$ unités sont toujours là."
+            },
+            {
+              "type": "number_line",
+              "min": 40,
+              "max": 60,
+              "points": [
+                {
+                  "value": 42,
+                  "label": "42"
+                },
+                {
+                  "value": 52,
+                  "label": "52"
+                }
+              ],
+              "intervals": [],
+              "caption": "Léa ajoute $10$ images"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, jouons à \"devine la suite\". Regarde bien la série de nombres. Le chiffre des unités est figé, les dizaines défilent. C'est un jeu de rapidité : ton cerveau doit voir tout de suite quelle dizaine vient après ou avant."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "14",
+                "24",
+                "34",
+                "44"
+              ],
+              "options": [
+                "54",
+                "45",
+                "34"
+              ],
+              "answer": "54",
+              "caption": "Quelle est la suite ? Les unités sont bloquées sur $4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais que les unités ne changent pas quand j'ajoute ou retire 10.",
+                "Je sais ajouter 1 au chiffre des dizaines pour ajouter 10.",
+                "Je sais retirer 1 au chiffre des dizaines pour retirer 10.",
+                "Je réussis les calculs +10 et -10 sur des nombres à deux chiffres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule : $29 + 10 = $ ?",
+              "answer": "$39$",
+              "hint": "Garde le $9$. Transforme le $2$ des dizaines en $3$.",
+              "explanation": "$29$ c'est $2$ dizaines et $9$ unités. $+10$ fait $3$ dizaines et $9$ unités = $39$."
+            },
+            {
+              "question": "Léa a $42$ images. On lui en donne $10$. Combien a-t-elle ?",
+              "answer": "$52$",
+              "hint": "Le $2$ ne bouge pas. Le $4$ devient $5$.",
+              "explanation": "$42 + 10 = 52$. On ajoute une dizaine aux $4$ dizaines, ça fait $5$ dizaines. Les unités $2$ restent."
+            },
+            {
+              "question": "Quelle est la suite de $68$ quand on compte de $10$ en $10$ ?",
+              "answer": "$78$",
+              "hint": "Les unités $8$ sont collées. La dizaine $6$ devient $7$.",
+              "explanation": "La suite est $58, 68, 78, 88...$ Le chiffre des dizaines augmente de $1$ à chaque fois. Après $68$ vient $78$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

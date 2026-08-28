@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 480,
+  "_course_code": "3eme-t05-c02-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Configuration",
+  "title": "Exercice sur les configurations de Thalès",
+  "blocks": [
+    {
+      "title": "Identification de la configuration",
+      "content": "Dans un triangle $ABC$, les points $D$ et $E$ appartiennent respectivement aux côtés $[AB]$ et $[AC]$ tels que $(DE) \\parallel (BC)$. Quelle configuration du théorème de Thales est illustrée ?",
+      "correctAnswer": "Configuration en triangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Puisque les droites $(DE)$ et $(BC)$ sont parallèles et que les points $D$ et $E$ sont sur les côtés du triangle $ABC$, on est dans la configuration en triangle (aussi appelée configuration en V).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'une longueur dans la configuration en triangle",
+      "content": "Dans le triangle $ABC$ de la question précédente, on sait que $AB = 12$ cm, $AC = 15$ cm et $AD = 8$ cm. En utilisant le théorème de Thales, détermine la longueur $AE$.",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après Thales, $\\frac{AD}{AB} = \\frac{AE}{AC}$. Donc $AE = \\frac{AD \\times AC}{AB} = \\frac{8 \\times 15}{12} = 10$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul dans la configuration en papillon",
+      "content": "Deux droites sécantes en $O$ portent les points $A$, $B$ sur l'une et $C$, $D$ sur l'autre, avec $(AC) \\parallel (BD)$. Si $OA = 6$, $OB = 9$ et $OC = 4$, calcule $OD$.",
+      "correctAnswer": "6",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans la configuration en papillon, le théorème de Thales donne $\\frac{OA}{OB} = \\frac{OC}{OD}$. Ainsi $OD = \\frac{OB \\times OC}{OA} = \\frac{9 \\times 4}{6} = 6$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

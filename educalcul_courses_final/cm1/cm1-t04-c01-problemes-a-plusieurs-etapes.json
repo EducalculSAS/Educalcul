@@ -1,0 +1,364 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.205300+00:00",
+  "id": 234,
+  "code": "cm1-t04-c01",
+  "title": "Problèmes à plusieurs étapes",
+  "description": "Cours structuré Educalcul : Problèmes à plusieurs étapes.",
+  "subject": "Résolution de problèmes et pensée algébrique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Résolution de problèmes et pensée algébrique",
+    "titre_du_cours": "Problèmes à plusieurs étapes",
+    "objectif_global": "Problèmes à plusieurs étapes",
+    "mini_lecons_imposees": [
+      "Organiser données.",
+      "Planifier.",
+      "Rédiger."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes et pensée algébrique",
+      "lessons": [
+        {
+          "title": "Organiser données.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les informations utiles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis un problème à plusieurs étapes, la première chose à faire est de te poser tranquillement et de chercher ce que l'énoncé te donne. Imagine que tu es un détective : chaque phrase cache un indice, un nombre, une unité comme $cm$ ou $kg$, ou une question à laquelle tu devras répondre. Prends le temps de souligner ou d'entourer chaque chiffre et chaque mot-clé. Cette habitude t'évite de perdre une donnée en route et te donne confiance pour la suite."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Information",
+                "Valeur",
+                "Unité"
+              ],
+              "rows": [
+                [
+                  "Longueur du ruban",
+                  "45",
+                  "$cm$"
+                ],
+                [
+                  "Largeur du ruban",
+                  "12",
+                  "$cm$"
+                ],
+                [
+                  "Nombre de rubans",
+                  "3",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as isolé les nombres, tu vas voir comment les ranger pour qu'ils ne se mélangent pas. Un tableau bien organisé te permettra de retrouver chaque donnée en un clin d'œil quand tu devras calculer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer les données dans un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Crée un petit tableau avec trois colonnes : la première pour le nom de la donnée, la deuxième pour le chiffre, la troisième pour l'unité. Écris chaque information sur une ligne différente. Si le problème parle de plusieurs objets semblables, ajoute une colonne pour le nombre d'objets. Ainsi, tu transforms un texte un peu flou en une grille claire où chaque case a sa place. C'est comme ranger tes jouets dans des boîtes étiquetées : tu sais exactement où tout se trouve."
+            },
+            {
+              "type": "definition",
+              "term": "Tableau de données",
+              "definition": "Un tableau qui regroupe toutes les informations numériques d'un problème, avec leur unité, pour les avoir sous les yeux avant de calculer.",
+              "example": "Longueur : 45 $cm$ ; Largeur : 12 $cm$ ; Quantité : 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le tableau rempli, il reste une vérification toute simple : regarde si toutes les unités sont les mêmes ou si tu devras les convertir. Cette étape t'évitera des erreurs surprenantes plus tard."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la cohérence des unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parcours ton tableau et demande-toi : est-ce que toutes les longueurs sont en $cm$ ? Les masses en $kg$ ? Les durées en $min$ ? Si tu vois un mélange, note la conversion à faire (par exemple $1$ $m$ = $100$ $cm$). Écris la conversion à côté de la valeur concernée. C'est un petit geste qui te fait gagner du temps et de la sérénité quand tu arrives aux calculs."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Colorie les unités identiques avec le même feutre pour les repérer d'un coup d'œil."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'énoncé suivant, relève tous les nombres et leur unité : \"Paul a 2 boîtes de 250 g de farine et 1 sac de 1 kg de sucre.\"",
+              "answer": "2 boîtes, 250 g, 1 sac, 1 kg",
+              "hint": "Cherche les chiffres et les mots qui indiquent une mesure.",
+              "explanation": "Il y a deux nombres pour la farine (2 et 250) avec l'unité gramme, et deux nombres pour le sucre (1 et 1) avec l'unité kilogramme."
+            },
+            {
+              "question": "Complète le tableau ci-dessous avec les données du problème : \"Léa coupe 3 rubans de 45 cm de long et 12 cm de large.\"",
+              "answer": "Longueur : 45 cm ; Largeur : 12 cm ; Nombre : 3",
+              "hint": "Utilise trois colonnes : information, valeur, unité.",
+              "explanation": "Chaque ruban a la même longueur et la même largeur, donc on note ces valeurs une seule fois et on indique le nombre de rubans."
+            },
+            {
+              "question": "Le tableau montre une longueur en $m$ et une autre en $cm$. Quelle conversion faut-il faire pour les avoir dans la même unité ?",
+              "answer": "Convertir les mètres en centimètres en multipliant par 100.",
+              "hint": "Rappelle-toi que 1 m = 100 cm.",
+              "explanation": "Pour additionner ou comparer, toutes les longueurs doivent être exprimées dans la même unité. Multiplie la valeur en mètres par 100 pour obtenir des centimètres."
+            }
+          ]
+        },
+        {
+          "title": "Planifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir les opérations dans l'ordre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tes données sont bien rangées, il faut décider quelles opérations faire et dans quel ordre. Lis la question finale du problème : que te demande-t-on ? Si on veut savoir la longueur totale de plusieurs rubans, tu devras d'abord multiplier la longueur d'un ruban par le nombre de rubans, puis peut-être ajouter une autre longueur. Écris chaque opération sur une ligne, comme une petite recette de cuisine : d'abord les ingrédients, ensuite la cuisson, enfin le dressage."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la phrase qui se termine par un point d'interrogation. C'est elle qui guide tout le plan."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les calculs nécessaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque donnée, demande-toi : faut-il additionner, soustraire, multiplier ou diviser ? Note l'opération à côté de la donnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ordonner les calculs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les opérations dans l'ordre logique : ce qui doit être fait en premier tout en haut, le dernier calcul tout en bas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ton plan d'opérations sous les yeux, tu vas pouvoir écrire un petit scénario qui explique chaque étape avant de te lancer dans les chiffres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un plan d'action clair"
+            },
+            {
+              "type": "paragraph",
+              "content": "Transforme ta liste d'opérations en phrases simples : \"Je multiplie 45 par 3 pour obtenir la longueur totale des trois rubans.\" Puis \"J'ajoute 12 cm pour la largeur si nécessaire.\" Ce plan écrit te sert de fil conducteur. Si tu te perds en cours de route, tu relis ton plan et tu sais exactement où tu en es. C'est comme avoir une carte avant de partir en randonnée."
+            },
+            {
+              "type": "definition",
+              "term": "Plan de résolution",
+              "definition": "Une suite d'étapes écrites en mots qui décrit quels calculs faire et dans quel ordre pour répondre au problème.",
+              "example": "1. Multiplier la longueur par le nombre de rubans. 2. Additionner la largeur si demandé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de calculer, essaie d'estimer le résultat de chaque étape. Cette anticipation te permet de repérer une erreur grosse comme une maison si le chiffre final te paraît impossible."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Anticiper les résultats intermédiaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la première opération de ton plan : si tu dois multiplier 45 par 3, tu sais déjà que le résultat sera autour de 135. Note cette estimation à côté de l'opération. Fais de même pour chaque étape. Quand tu feras les vrais calculs, tu compareras ton résultat à l'estimation. Si tu tombes sur 1 350 au lieu de 135, tu sauras tout de suite qu'il y a un souci. Cette habitude développe ton sens du nombre et ta confiance."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Conseil",
+              "paragraphs": [
+                "Arrondis les nombres au dix ou au cent près pour estimer vite."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le problème demande : \"Quelle est la longueur totale de 4 rubans de 38 cm chacun ?\" Écris les opérations dans l'ordre.",
+              "answer": "Multiplier 38 par 4.",
+              "hint": "Il n'y a qu'une seule opération nécessaire.",
+              "explanation": "La question porte sur la longueur totale, donc on multiplie la longueur d'un ruban par le nombre de rubans."
+            },
+            {
+              "question": "Pour le problème : \"Paul a 3 boîtes de 250 g de farine. Il en utilise 400 g. Combien de grammes lui reste-t-il ?\" Rédige le plan de résolution en phrases.",
+              "answer": "1. Multiplier 250 par 3 pour avoir la quantité totale. 2. Soustraire 400 du total.",
+              "hint": "Deux étapes : d'abord le total, ensuite ce qui reste.",
+              "explanation": "On calcule d'abord le total de farine, puis on retire la quantité utilisée."
+            },
+            {
+              "question": "Estime le résultat de 47 × 6 avant de calculer exactement.",
+              "answer": "Environ 300 (50 × 6 = 300).",
+              "hint": "Arrondis 47 à 50 pour faire le calcul de tête.",
+              "explanation": "L'estimation permet de vérifier que le résultat exact (282) est dans le bon ordre de grandeur."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger la réponse avec des phrases complètes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as fait tous les calculs, bravo ! Il reste à écrire la réponse finale pour que n'importe qui la comprenne sans relire le problème. Une bonne réponse est une phrase complète qui rappelle la question et donne le chiffre avec son unité. Par exemple : \"La longueur totale des quatre rubans est de 152 cm.\" Évite les réponses toutes seules comme \"152\". Une phrase montre que tu as vraiment compris ce qu'on te demandait."
+            },
+            {
+              "type": "definition",
+              "term": "Réponse complète",
+              "definition": "Une phrase qui reformule la question, donne le résultat numérique et précise l'unité.",
+              "example": "Le périmètre du rectangle mesure 36 cm."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que ton explication soit fluide, utilise des mots de liaison qui guident le lecteur d'une étape à l'autre. Ces petits mots font tout le différence entre une suite de calculs et un vrai raisonnement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les mots de liaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les mots comme \"d'abord\", \"ensuite\", \"donc\", \"parce que\" ou \"enfin\" relient tes phrases. Écris par exemple : \"D'abord, j'ai multiplié 38 par 4 pour obtenir 152. Ensuite, j'ai ajouté 12 cm pour la largeur. Donc la longueur totale est de 164 cm.\" Le lecteur suit ton cheminement sans effort. Essaie de placer au moins un mot de liaison par phrase de ton explication."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Colorie les mots de liaison dans ton brouillon pour vérifier qu'il y en a assez."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière étape, souvent oubliée, est la relecture. Prends une minute pour relire ta réponse à voix haute. Vérifie que le chiffre correspond bien à tes calculs, que l'unité est présente, et que la phrase répond exactement à la question posée. Corrige les fautes d'orthographe ou d'accord. Cette relecture te permet de rendre un travail soigné et d'être fier de ton résultat."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relire et corriger"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pose-toi trois questions rapides : 1) Ai-je répondu à la question ? 2) Le nombre et l'unité sont-ils corrects ? 3) Ma phrase est-elle claire et bien écrite ? Si tu peux répondre \"oui\" aux trois, ton travail est prêt. Sinon, modifie ce qui cloche. C'est un petit geste qui change tout : ton professeur verra que tu as pris soin de ton travail."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer et lister toutes les données d'un problème.",
+                "Je sais organiser ces données dans un tableau avec leurs unités.",
+                "Je sais choisir les opérations et les ordonner dans un plan.",
+                "Je sais estimer les résultats intermédiaires pour vérifier.",
+                "Je sais rédiger une réponse complète avec des phrases et des mots de liaison.",
+                "Je sais relire mon travail et corriger les erreurs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une réponse complète pour : \"Quelle est la surface d'un rectangle de 12 cm de long et 5 cm de large ?\"",
+              "answer": "La surface du rectangle est de 60 cm².",
+              "hint": "Surface = longueur × largeur. N'oublie pas l'unité.",
+              "explanation": "12 × 5 = 60. L'unité de surface est le centimètre carré (cm²). La phrase reformule la question."
+            },
+            {
+              "question": "Complète le texte avec des mots de liaison : \"___, je calcule le total de farine. ___, je soustrais la quantité utilisée. ___, il me reste 350 g.\"",
+              "answer": "D'abord, ensuite, donc",
+              "hint": "Choisis parmi : d'abord, ensuite, donc, parce que, enfin.",
+              "explanation": "Les mots de liaison ordonnent les étapes : d'abord la multiplication, ensuite la soustraction, donc le résultat final."
+            },
+            {
+              "question": "Relis la réponse suivante et dis si elle est correcte : \"Le périmètre est 48.\" Problème : \"Calcule le périmètre d'un carré de côté 12 cm.\"",
+              "answer": "Non, il manque l'unité et la phrase n'est pas complète.",
+              "hint": "Vérifie la présence de l'unité et la forme de phrase.",
+              "explanation": "Une réponse correcte serait : \"Le périmètre du carré est de 48 cm.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

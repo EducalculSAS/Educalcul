@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Lire expression",
+  "title": "Quiz : Lire une expression numérique",
+  "questions": [
+    {
+      "text": "Dans l'expression $15 + 4 \\times (8 - 3)$, quelle est la toute première opération à effectuer en respectant les priorités ?",
+      "options": [
+        "L'addition $15 + 4$",
+        "La multiplication $4 \\times 8$",
+        "La soustraction $8 - 3$",
+        "La multiplication $4 \\times 5$"
+      ],
+      "correctAnswer": "La soustraction $8 - 3$",
+      "explanation": "Les parenthèses ont la priorité absolue. Il faut donc commencer par calculer ce qui est à l'intérieur : $8 - 3 = 5$. L'addition $15 + 4$ et la multiplication $4 \\times 8$ ne sont pas prioritaires. La multiplication $4 \\times 5$ ne peut se faire qu'après avoir calculé la parenthèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lit l'expression $7 \\times (12 + 5) - 20 \\div 4$. Laquelle de ces phrases décrit correctement la structure de cette expression ?",
+      "options": [
+        "C'est une soustraction dont le premier terme est un produit et le second terme un quotient.",
+        "C'est un produit dont le premier facteur est une somme et le second facteur une différence.",
+        "C'est une addition dont les termes sont un produit et un quotient.",
+        "C'est une différence de deux produits."
+      ],
+      "correctAnswer": "C'est une soustraction dont le premier terme est un produit et le second terme un quotient.",
+      "explanation": "L'opération principale (la dernière effectuée) est la soustraction (le signe - qui n'est pas dans des parenthèses). Le terme de gauche est $7 \\times (12 + 5)$, c'est un produit. Le terme de droite est $20 \\div 4$, c'est un quotient (une division). Ce n'est pas un produit global ni une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle expression correspond à la phrase : « J'ajoute 6 au triple de la différence de 15 et de 9 » ?",
+      "options": [
+        "$6 + 3 \\times 15 - 9$",
+        "$(6 + 3) \\times (15 - 9)$",
+        "$6 + 3 \\times (15 - 9)$",
+        "$3 \\times (15 - 9 + 6)$"
+      ],
+      "correctAnswer": "$6 + 3 \\times (15 - 9)$",
+      "explanation": "« La différence de 15 et de 9 » s'écrit $(15 - 9)$ (parenthèses obligatoires). « Le triple de cette différence » s'écrit $3 \\times (15 - 9)$. « J'ajoute 6 à » ce résultat s'écrit $6 + 3 \\times (15 - 9)$. L'option A oublie les parenthèses pour la différence. L'option B fait la somme avant le triple. L'option D ajoute 6 dans la parenthèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $50 - (12 + 8 \\div 2) \\times 3$, après avoir calculé la division $8 \\div 2$ à l'intérieur de la parenthèse, quelle opération suit immédiatement ?",
+      "options": [
+        "L'addition $12 + 4$",
+        "La multiplication $4 \\times 3$",
+        "La soustraction $50 - 12$",
+        "La multiplication $12 \\times 3$"
+      ],
+      "correctAnswer": "L'addition $12 + 4$",
+      "explanation": "À l'intérieur des parenthèses, la division $8 \\div 2 = 4$ est prioritaire. Il reste alors $(12 + 4)$. L'addition est l'opération qui suit pour terminer le calcul de la parenthèse. La multiplication par 3 ne se fait qu'après avoir fini la parenthèse. La soustraction $50 - ...$ est l'opération finale de toute l'expression.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle est une somme dont l'un des termes est le produit de 5 par la somme de 8 et de 2 ?",
+      "options": [
+        "$5 \\times 8 + 2$",
+        "$5 \\times (8 + 2) + 10$",
+        "$(5 + 8) \\times (2 + 10)$",
+        "$5 + 8 \\times 2 + 10$"
+      ],
+      "correctAnswer": "$5 \\times (8 + 2) + 10$",
+      "explanation": "On cherche une somme (opération principale = addition). L'expression B s'écrit : $[5 \\times (8 + 2)] + 10$. C'est bien une somme de deux termes : le premier terme est le produit de 5 par la somme $(8+2)$, le second terme est 10. A est une somme mais le produit ne porte que sur 8. C est un produit. D est une somme mais sans parenthèses, le produit ne porte que sur $8 \\times 2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

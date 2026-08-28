@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Bilan - Algorithmique 5e",
+  "title": "Bilan Algorithmique 5e",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$x \\leftarrow 10$\\n$y \\leftarrow 3$\\n$x \\leftarrow x + y$\\n$y \\leftarrow x - y$\\nAfficher $x$, $y$\\nQue affiche l'algorithme ?",
+      "options": [
+        "13 et 10",
+        "10 et 3",
+        "13 et 3",
+        "10 et 13"
+      ],
+      "correctAnswer": "13 et 10",
+      "explanation": "Au début $x=10$ et $y=3$. L'instruction $x \\leftarrow x + y$ donne $x = 10 + 3 = 13$. Ensuite $y \\leftarrow x - y$ utilise la nouvelle valeur de $x$ : $y = 13 - 3 = 10$. L'affichage final est donc 13 puis 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme ci-dessous :\\n$s \\leftarrow 0$\\nPour $i$ de $1$ à $4$ faire\\n    $s \\leftarrow s + i$\\nFin pour\\nAfficher $s$\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "10",
+        "6",
+        "15",
+        "4"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La boucle ajoute les valeurs de $i$ de 1 à 4 à la variable $s$ initialisée à 0. On calcule $0+1=1$, puis $1+2=3$, puis $3+3=6$, puis $6+4=10$. La somme des entiers de 1 à 4 est 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que affiche l'algorithme suivant ?\\n$x \\leftarrow -5$\\nSi $x > 0$ Alors\\n    $x \\leftarrow x \\times 2$\\nSinon\\n    $x \\leftarrow x + 10$\\nFin Si\\nAfficher $x$",
+      "options": [
+        "5",
+        "-10",
+        "-5",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La condition $x > 0$ est fausse car $x$ vaut $-5$. On exécute donc la branche Sinon : $x \\leftarrow -5 + 10 = 5$. La valeur affichée est 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme :\\n$n \\leftarrow 20$\\nTant que $n > 5$ faire\\n    $n \\leftarrow n - 3$\\nFin Tant que\\nAfficher $n$\\nQuelle est la valeur finale de $n$ ?",
+      "options": [
+        "5",
+        "2",
+        "8",
+        "11"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La boucle répète l'instruction $n \\leftarrow n - 3$ tant que $n$ est strictement supérieur à 5. Les valeurs successives de $n$ sont : 20, 17, 14, 11, 8, 5. Lorsque $n$ vaut 5, la condition $5 > 5$ devient fausse, la boucle s'arrête et on affiche 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de fois la boucle Tant que est-elle exécutée dans l'algorithme suivant ?\\n$compteur \\leftarrow 0$\\n$valeur \\leftarrow 2$\\nTant que $valeur < 50$ faire\\n    $valeur \\leftarrow valeur \\times 2$\\n    $compteur \\leftarrow compteur + 1$\\nFin Tant que\\nAfficher $compteur$",
+      "options": [
+        "5",
+        "4",
+        "6",
+        "3"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On suit les valeurs : départ $valeur=2, compteur=0$. 1er tour : $valeur=4, compteur=1$. 2e : $valeur=8, compteur=2$. 3e : $valeur=16, compteur=3$. 4e : $valeur=32, compteur=4$. 5e : $valeur=64, compteur=5$. Comme $64 < 50$ est faux, la boucle s'arrête après 5 tours. La valeur affichée est 5.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

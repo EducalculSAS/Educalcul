@@ -1,0 +1,134 @@
+{
+  "_status": "done",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Quiz : Interpréter des données à deux variables qualitatives",
+  "questions": [
+    {
+      "text": "On interroge $100$ élèves sur leur sport favori (Football ou Tennis) et leur sexe. Le tableau de contingence des effectifs est donné ci-dessous. Quel est l'effectif total des élèves interrogés ?",
+      "options": [
+        "$50$",
+        "$90$",
+        "$100$",
+        "$40$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "L'effectif total figure dans la case en bas à droite du tableau (marge 'Total' / 'Total'), soit $100$. Les autres valeurs correspondent aux effectifs marginaux partiels (total garçons $50$, total football $40$) ou à une somme partielle incorrecte ($90$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Effectifs selon le sexe et le sport favori",
+        "headers": [
+          "",
+          "Football",
+          "Tennis",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Garçon",
+            "30",
+            "20",
+            "50"
+          ],
+          [
+            "Fille",
+            "10",
+            "40",
+            "50"
+          ],
+          [
+            "Total",
+            "40",
+            "60",
+            "100"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "En se référant au même tableau, quelle est la fréquence (en pourcentage) des garçons qui pratiquent le football parmi l'ensemble des garçons ?",
+      "options": [
+        "$30\\%$",
+        "$60\\%$",
+        "$75\\%$",
+        "$40\\%$"
+      ],
+      "correctAnswer": "$60\\%$",
+      "explanation": "Il s'agit d'une fréquence conditionnelle (profil-ligne). On divise l'effectif partiel 'Garçon & Football' ($30$) par l'effectif marginal 'Total Garçons' ($50$) : $30 / 50 = 0,6 = 60\\%$. L'option $30\\%$ correspond à la fréquence sur l'effectif total, $40\\%$ à la fréquence du football sur le total, et $75\\%$ à une erreur de calcul ($30/40$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Effectifs selon le sexe et le sport favori",
+        "headers": [
+          "",
+          "Football",
+          "Tennis",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Garçon",
+            "30",
+            "20",
+            "50"
+          ],
+          [
+            "Fille",
+            "10",
+            "40",
+            "50"
+          ],
+          [
+            "Total",
+            "40",
+            "60",
+            "100"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "En comparant les profils-lignes (pourcentages par ligne), quelle affirmation traduit correctement le lien entre le sexe et le sport favori ?",
+      "options": [
+        "Les garçons et les filles ont les mêmes goûts sportifs.",
+        "La pratique du tennis est majoritaire chez les filles.",
+        "Le football est le sport le plus pratiqué au total.",
+        "Les effectifs marginaux de sexe sont différents."
+      ],
+      "correctAnswer": "La pratique du tennis est majoritaire chez les filles.",
+      "explanation": "Chez les filles, la fréquence conditionnelle pour le tennis est $40/50 = 80\\%$ (majoritaire), contre $20\\%$ pour le football. Chez les garçons, c'est l'inverse (football $60\\%$, tennis $40\\%$). Les profils-lignes sont donc très différents, ce qui montre un lien statistique. La première affirmation est fausse, la troisième porte sur les effectifs marginaux (profil global) et non sur le lien, la quatrième est fausse car les effectifs de sexe sont égaux ($50/50$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de contingence à deux variables qualitatives, on conclut à l'existence d'un lien statistique entre les deux variables lorsque :",
+      "options": [
+        "Les effectifs marginaux de lignes sont tous égaux.",
+        "Les distributions conditionnelles (lignes ou colonnes) sont très différentes les unes des autres.",
+        "La somme des effectifs du tableau est égale à $100$.",
+        "Le tableau est un carré (même nombre de lignes et de colonnes)."
+      ],
+      "correctAnswer": "Les distributions conditionnelles (lignes ou colonnes) sont très différentes les unes des autres.",
+      "explanation": "Par définition, deux variables sont liées (non indépendantes) si la distribution de l'une change selon la modalité de l'autre. Cela se vérifie en comparant les profils-lignes (ou profils-colonnes) : s'ils sont très différents, il y a un lien. L'égalité des marges, la forme du tableau ou l'effectif total n'ont pas de rapport direct avec l'indépendance statistique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une étude statistique met en évidence un lien fort entre la variable 'Nombre de pompiers intervenant sur un incendie' et la variable 'Dégâts matériels importants'. Laquelle des interprétations suivantes est statistiquement correcte ?",
+      "options": [
+        "Envoyer plus de pompiers cause des dégâts plus importants.",
+        "Il faut envoyer moins de pompiers pour limiter les dégâts.",
+        "Il existe une relation statistique, mais la gravité de l'incendie est une variable explicative commune (variable confondante).",
+        "Le lien prouve que les pompiers sont inefficaces."
+      ],
+      "correctAnswer": "Il existe une relation statistique, mais la gravité de l'incendie est une variable explicative commune (variable confondante).",
+      "explanation": "C'est un exemple classique de corrélation ne signifiant pas causalité. Les gros incendies (variable confondante) causent à la fois l'envoi de nombreux pompiers et d'importants dégâts. Les trois premières options interprètent le lien comme une causalité directe (inversée ou non), ce qui est une erreur d'interprétation majeure en statistique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

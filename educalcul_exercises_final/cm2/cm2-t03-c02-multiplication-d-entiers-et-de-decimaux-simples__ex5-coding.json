@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 290,
+  "_course_code": "cm2-t03-c02-multiplication-d-entiers-et-de-decimaux-simples",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Approfondissement : Sens de la virgule",
+  "title": "Algorithme et position de la virgule",
+  "blocks": [
+    {
+      "title": "Le comptage des décimales",
+      "content": "Imagine que tu crées un programme informatique pour placer la virgule dans le résultat d'une multiplication. L'algorithme doit suivre cette règle :\\n1. Multiplier les nombres comme s'il n'y avait pas de virgule.\\n2. Compter le nombre total de chiffres après la virgule dans les deux facteurs.\\n3. Placer la virgule dans le résultat final pour avoir ce même nombre de chiffres après la virgule.\\n\\nApplique ce raisonnement pour trouver le résultat de $1,2 \\times 0,3$. Quel est le résultat final ?",
+      "correctAnswer": "0,36",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On multiplie d'abord $12$ par $3$, ce qui donne $36$. On compte les chiffres après la virgule : un chiffre dans $1,2$ et un chiffre dans $0,3$, soit $2$ chiffres au total. On place donc la virgule pour avoir deux chiffres après la virgule, ce qui donne $0,36$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'algorithme et l'entier",
+      "content": "Un robot exécute l'algorithme suivant pour calculer $4,5 \\times 7$ :\\nEtape A : Calculer $45$ fois $7$.\\nEtape B : Identifier le nombre total de chiffres après la virgule dans les facteurs.\\nEtape C : Déplacer la virgule du résultat de l'étape A vers la gauche d'un nombre de rangs égal au résultat de l'étape B.\\n\\nQuel est le résultat final produit par le robot ?",
+      "correctAnswer": "31,5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Etape A : $45 \\times 7 = 315$. Etape B : Il y a un seul chiffre après la virgule dans $4,5$ et aucun dans $7$, donc le total est $1$. Etape C : On déplace la virgule d'un rang vers la gauche dans $315$, ce qui donne $31,5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détection d'erreur de code",
+      "content": "Un élève a écrit un pseudo-code pour calculer $0,12 \\times 0,5$. Voici son raisonnement :\\nLigne 1 : $12 \\times 5 = 60$\\nLigne 2 : Il y a deux chiffres après la virgule dans $0,12$ et un chiffre dans $0,5$, donc le total est $3$.\\nLigne 3 : Je place la virgule pour avoir trois chiffres après la virgule.\\nLigne 4 : Le résultat est $0,60$ car $60$ n'a que deux chiffres.\\n\\nL'erreur se trouve à la ligne 4. Quel devrait être le résultat correct en suivant strictement l'algorithme ?",
+      "correctAnswer": "0,060 ou 0,06",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le calcul $12 \\times 5$ donne bien $60$. Le nombre total de chiffres après la virgule est bien $3$. Pour avoir trois chiffres après la virgule avec le nombre $60$, on doit ajouter un zéro devant pour combler le rang manquant, ce qui donne $0,060$. On peut simplifier ce résultat en $0,06$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

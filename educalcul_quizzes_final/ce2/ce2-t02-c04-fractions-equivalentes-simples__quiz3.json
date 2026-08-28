@@ -1,0 +1,127 @@
+{
+  "_status": "done",
+  "_course_id": 155,
+  "_course_code": "ce2-t02-c04-fractions-equivalentes-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Vérifier visuellement",
+  "title": "Quiz : Vérifier visuellement des fractions équivalentes",
+  "questions": [
+    {
+      "text": "Regarde les deux bandes de fractions ci-dessous. La première montre $1/2$ et la seconde montre $2/4$. Ces deux fractions sont-elles équivalentes ?",
+      "options": [
+        "Oui, car la partie colorée a la même longueur sur les deux bandes.",
+        "Non, car les dénominateurs sont différents.",
+        "Non, car $2/4$ est plus grand que $1/2$.",
+        "Oui, car les deux numérateurs sont pairs."
+      ],
+      "correctAnswer": "Oui, car la partie colorée a la même longueur sur les deux bandes.",
+      "explanation": "Visuellement, on voit que la zone colorée de la bande du haut ($1/2$) recouvre exactement la même longueur que la zone colorée de la bande du bas ($2/4$). Les deux fractions représentent la même quantité, elles sont donc équivalentes. Le fait que les dénominateurs soient différents n'empêche pas l'équivalence.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison de 1/2 et 2/4"
+      }
+    },
+    {
+      "text": "Observe le disque divisé en 5 parts égales, dont 2 sont colorées. Quelle fraction, parmi les propositions, est équivalente à la partie colorée ?",
+      "options": [
+        "$2/5$",
+        "$4/10$",
+        "$3/5$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$4/10$",
+      "explanation": "Le disque montre $2/5$ (2 parts sur 5). Si l'on divise chaque part en deux, on obtient 10 parts au total et 4 parts colorées, soit $4/10$. Visuellement, la surface colorée ne change pas. $3/5$ et $1/2$ correspondent à des surfaces plus grandes.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 5,
+        "shape": "circle",
+        "caption": "Disque représentant 2/5"
+      }
+    },
+    {
+      "text": "Sur la figure, la bande du haut représente $1/3$. La bande du bas est divisée en 6 parts égales. Combien de parts faut-il colorier sur la bande du bas pour obtenir une fraction équivalente à $1/3$ ?",
+      "options": [
+        "2 parts",
+        "3 parts",
+        "1 part",
+        "4 parts"
+      ],
+      "correctAnswer": "2 parts",
+      "explanation": "Pour passer de 3 parts (dénominateur 3) à 6 parts (dénominateur 6), on a multiplié le nombre de parts par 2. Il faut donc aussi multiplier le nombre de parts colorées par 2 : $1 \\times 2 = 2$. Visuellement, $2/6$ recouvre exactement la même longueur que $1/3$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          },
+          {
+            "numerator": 0,
+            "denominator": 6
+          }
+        ],
+        "caption": "Bande du haut : 1/3. Bande du bas : 6 parts vides."
+      }
+    },
+    {
+      "text": "Une grille de 4 carrés sur 4 (16 carrés au total) a 4 carrés colorés. Quelle affirmation est vraie ?",
+      "options": [
+        "La fraction colorée est $1/4$ et elle est équivalente à $4/16$.",
+        "La fraction colorée est $1/2$ car il y a 4 carrés colorés.",
+        "La fraction colorée est $4/4$ car il y a 4 carrés colorés.",
+        "Il n'y a pas de fraction équivalente car 4 et 16 sont différents."
+      ],
+      "correctAnswer": "La fraction colorée est $1/4$ et elle est équivalente à $4/16$.",
+      "explanation": "La grille comporte 16 carrés au total (dénominateur 16) et 4 sont colorés (numérateur 4), ce qui donne $4/16$. En regroupant les carrés par paquet de 4, on forme 4 grands carrés dont 1 est coloré, soit $1/4$. Visuellement, la surface colorée est identique, donc $4/16 = 1/4$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 4,
+        "caption": "Grille 4x4 avec 4 cases colorées"
+      }
+    },
+    {
+      "text": "Deux élèves comparent des fractions avec des bandes. Léa a colorié $3/4$ d'une bande. Max a colorié $6/8$ d'une bande de même longueur. Que peut-on conclure ?",
+      "options": [
+        "Les fractions $3/4$ et $6/8$ sont équivalentes.",
+        "La fraction de Max ($6/8$) est plus grande car 6 > 3.",
+        "La fraction de Léa ($3/4$) est plus grande car 4 < 8.",
+        "On ne peut pas comparer car les bandes n'ont pas le même nombre de parts."
+      ],
+      "correctAnswer": "Les fractions $3/4$ et $6/8$ sont équivalentes.",
+      "explanation": "Visuellement, si on superpose les bandes, la partie colorée de Léa ($3/4$) et celle de Max ($6/8$) ont exactement la même longueur. Max a divisé sa bande en deux fois plus de parts (8 au lieu de 4) et en a colorié deux fois plus (6 au lieu de 3). La quantité representée est identique.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 4
+          },
+          {
+            "numerator": 6,
+            "denominator": 8
+          }
+        ],
+        "caption": "Comparaison de 3/4 et 6/8"
+      }
+    }
+  ]
+}

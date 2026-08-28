@@ -1,0 +1,78 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Placer",
+  "title": "Placer des nombres décimaux sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Placement simple",
+      "content": "Sur une droite graduée où l'unité est le centimètre, je place le point $A$ à $3,4$ cm de l'origine. Le point $A$ se trouve après le nombre entier {{1}} et correspond à la {{2}} petite graduation après cet entier.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "quatrième"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre $3,4$ est composé de la partie entière $3$ et d'une partie décimale de $4$ dixièmes. On place donc le point après le chiffre $3$, à la quatrième graduation (chaque graduation représentant $0,1$).",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de $0$ à $5$ avec des graduations tous les dixièmes",
+        "min": 0,
+        "max": 5,
+        "points": [
+          {
+            "value": 3.4,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Placement avec centièmes",
+      "content": "Je cherche à placer le nombre $7,25$ sur une droite graduée. Ce nombre se situe exactement au {{1}} des intervalles entre $7,2$ et {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "milieu",
+        "7,3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre $7,25$ se trouve entre $7,20$ (ou $7,2$) et $7,30$ (ou $7,3$). Comme $25$ est le milieu entre $20$ et $30$, le point se place exactement au milieu de l'intervalle séparant $7,2$ et $7,3$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Zoom sur la droite entre $7$ et $8$",
+        "min": 7,
+        "max": 8,
+        "points": [
+          {
+            "value": 7.25,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Analyse de l'échelle",
+      "content": "Sur une droite graduée, j'ai un trait tous les $0,5$ unité. Pour placer le nombre $2,5$, je dois compter {{1}} graduations à partir de $0$. Si je veux placer $3$, je dois compter {{2}} graduations.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si chaque graduation vaut $0,5$, alors $2,5 \\div 0,5 = 5$ graduations. Pour le nombre $3$, on calcule $3 \\div 0,5 = 6$ graduations.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

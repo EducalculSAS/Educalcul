@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Lire déplacement",
+  "title": "Quiz : Lire un déplacement dans le plan",
+  "questions": [
+    {
+      "text": "Le point A a pour coordonnées ($2$, $3$). Après un déplacement de $4$ cases vers la droite et $2$ cases vers le haut, quelles sont les coordonnées du point d'arrivée ?",
+      "options": [
+        "($6$, $5$)",
+        "($6$, $1$)",
+        "($-2$, $5$)",
+        "($2$, $5$)"
+      ],
+      "correctAnswer": "($6$, $5$)",
+      "explanation": "Le déplacement vers la droite ajoute $4$ à l'abscisse : $2 + 4 = 6$. Le déplacement vers le haut ajoute $2$ à l'ordonnée : $3 + 2 = 5$. Le point d'arrivée est donc ($6$, $5$). Les autres options correspondent à des erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point B a pour coordonnées ($5$, $-2$). On applique le vecteur déplacement ($-3$, $4$). Quelles sont les coordonnées du point image ?",
+      "options": [
+        "($2$, $2$)",
+        "($8$, $2$)",
+        "($2$, $-6$)",
+        "($8$, $-6$)"
+      ],
+      "correctAnswer": "($2$, $2$)",
+      "explanation": "Pour obtenir l'image, on ajoute les composantes du vecteur aux coordonnées du point de départ : abscisse $5 + (-3) = 2$, ordonnée $-2 + 4 = 2$. Le point image est ($2$, $2$). Les distracteurs proviennent d'additions incorrectes ou de confusion de signes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point C($-1$, $4$) est déplacé jusqu'au point D($3$, $1$). Quel est le vecteur déplacement ?",
+      "options": [
+        "($4$, $-3$)",
+        "($4$, $3$)",
+        "($-4$, $-3$)",
+        "($-4$, $3$)"
+      ],
+      "correctAnswer": "($4$, $-3$)",
+      "explanation": "Le vecteur déplacement se calcule en soustrayant les coordonnées du point de départ à celles du point d'arrivée : abscisse $3 - (-1) = 4$, ordonnée $1 - 4 = -3$. Le vecteur est donc ($4$, $-3$). Les autres options inversent les signes ou l'ordre de la soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un déplacement est décrit comme « 3 cases à gauche et 5 cases en haut ». Si le point de départ est l'origine ($0$, $0$), quelles sont les coordonnées du point d'arrivée ?",
+      "options": [
+        "($-3$, $5$)",
+        "($3$, $5$)",
+        "($-3$, $-5$)",
+        "($3$, $-5$)"
+      ],
+      "correctAnswer": "($-3$, $5$)",
+      "explanation": "Aller à gauche diminue l'abscisse de $3$ : $0 - 3 = -3$. Monter augmente l'ordonnée de $5$ : $0 + 5 = 5$. Le point d'arrivée est ($-3$, $5$). Les distracteurs confondent les directions gauche/droite et haut/bas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue deux déplacements successifs : d'abord ($2$, $-1$) puis ($-4$, $3$). Quel est le vecteur déplacement résultant ?",
+      "options": [
+        "($-2$, $2$)",
+        "($2$, $2$)",
+        "($-2$, $-2$)",
+        "($2$, $-2$)"
+      ],
+      "correctAnswer": "($-2$, $2$)",
+      "explanation": "Le vecteur résultant est la somme composante par composante des deux déplacements : abscisse $2 + (-4) = -2$, ordonnée $-1 + 3 = 2$. Le vecteur résultant est ($-2$, $2$). Les autres options correspondent à des erreurs d'addition ou de signe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

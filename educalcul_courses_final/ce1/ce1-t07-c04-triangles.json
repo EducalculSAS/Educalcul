@@ -1,0 +1,390 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.884950+00:00",
+  "id": 129,
+  "code": "ce1-t07-c04",
+  "title": "Triangles",
+  "description": "Cours structuré Educalcul : Triangles.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Triangles",
+    "objectif_global": "Triangles",
+    "mini_lecons_imposees": [
+      "Reconnaître un triangle.",
+      "Comparer des formes.",
+      "Construire avec règle."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître un triangle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle, une figure à trois côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde autour de toi : le toit d'une maison, une part de pizza, un drapeau sur un château de sable... Toutes ces formes ressemblent à un triangle. Mais qu'est-ce qui fait qu'on appelle cela un triangle ? C'est très simple : un triangle est une figure fermée qui a exactement $3$ côtés et $3$ sommets. Les côtés sont des segments droits, tracés à la règle, et les sommets sont les coins où deux côtés se rejoignent. Si tu comptes, tu trouveras toujours le chiffre $3$ : $3$ côtés, $3$ sommets, et donc $3$ angles."
+            },
+            {
+              "type": "definition",
+              "term": "Triangle",
+              "definition": "Figure géométrique plane fermée, constituée de $3$ segments de droite (les côtés) qui se rejoignent deux à deux en $3$ points (les sommets).",
+              "example": "Un triangle a toujours $3$ côtés et $3$ sommets."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle nommé ABC avec ses 3 côtés et 3 sommets",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu fais tourner ce triangle sur la table. Tu le penches vers la gauche, puis vers la droite, tu le mets sur la pointe... Est-ce qu'il change de nom ? Non ! Un triangle reste un triangle, peu importe sa position. Il peut être grand comme une voile de bateau ou petit comme un bouton, il peut être penché ou bien droit : tant qu'il a $3$ côtés droits et $3$ sommets, c'est un triangle. C'est comme toi : même si tu te couches ou si tu te tiens sur la tête, tu restes la même personne."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Le même triangle tourné sur la pointe",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges ! Parfois, une figure ressemble à un triangle mais n'en est pas un. Si un côté est courbe comme un arc-en-ciel, ce n'est pas un triangle car les côtés doivent être droits. Si la figure n'est pas fermée, s'il y a un trou entre deux côtés, ce n'est pas un triangle non plus. Pour en être sûr, tu as une méthode infaillible : prends ton doigt et suis le contour. Tu dois passer par $3$ coins distincts et revenir au départ sans lever le doigt, en ne suivant que des lignes droites."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, regarde des images de formes variées : des carrés, des ronds, des triangles de toutes les couleurs. Ton mission : entoure seulement les vrais triangles. Vérifie à chaque fois : est-ce fermé ? Les côtés sont-ils droits ? Y a-t-il bien $3$ côtés et $3$ sommets ? Si tu as répondu oui trois fois, tu as trouvé un triangle ! Bravo, tu sais maintenant reconnaître cette figure géométrique essentielle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de côtés et de sommets a le triangle du dessin ?",
+              "answer": "Il a $3$ côtés et $3$ sommets.",
+              "hint": "Compte les traits droits qui forment le contour.",
+              "explanation": "Un triangle a toujours exactement $3$ côtés et $3$ sommets, c'est sa définition."
+            },
+            {
+              "question": "Parmi ces figures : un triangle penché, un triangle droit, un carré, un rond. Lesquels sont des triangles ?",
+              "answer": "Le triangle penché et le triangle droit sont des triangles.",
+              "hint": "La position ne change pas la nature de la figure. Compte les côtés.",
+              "explanation": "Peu importe l'orientation, une figure à $3$ côtés droits et $3$ sommets est un triangle. Le carré en a $4$, le rond n'a pas de côtés droits."
+            },
+            {
+              "question": "Vrai ou faux ? Une figure avec $3$ côtés mais un côté courbe est un triangle.",
+              "answer": "Faux.",
+              "hint": "Regarde la définition : les côtés doivent être des segments droits.",
+              "explanation": "Un triangle est formé uniquement de segments de droite. Un côté courbe empêche la figure d'être un triangle."
+            },
+            {
+              "question": "Tu as devant toi $5$ figures. $2$ sont des triangles, $1$ est un carré, $2$ sont des ronds. Combien de triangles dois-tu entourer ?",
+              "answer": "$2$ triangles.",
+              "hint": "Seules les figures à $3$ côtés droits et fermées sont des triangles.",
+              "explanation": "Il faut appliquer les critères : fermé, $3$ côtés droits, $3$ sommets. Il y en a $2$ qui correspondent."
+            }
+          ]
+        },
+        {
+          "title": "Comparer des formes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Triangle, carré, rectangle : le grand tri"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu es un expert du triangle, jouons à un jeu de différences. Imagine une boîte remplie de formes : des triangles, des carrés, des rectangles et des ronds. Comment les ranger vite fait ? Le secret, c'est de compter les côtés. Tu sais déjà que le triangle a $3$ côtés. Le carré et le rectangle, eux, en ont $4$. Mais attention, le carré a $4$ côtés de la même longueur, alors que le rectangle a $2$ grands côtés et $2$ petits côtés. Quant au rond, il n'a aucun côté droit, c'est une courbe qui tourne sans s'arrêter."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Point où deux côtés d'une figure se rejoignent. C'est un coin de la figure.",
+              "example": "Le triangle a $3$ sommets, le carré en a $4$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de côtés pour chaque figure",
+              "bars": [
+                {
+                  "label": "Triangle",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Rond",
+                  "value": 0,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons de plus près les coins, qu'on appelle les sommets. Le triangle a $3$ sommets. Le carré et le rectangle en ont $4$. Mais il y a une différence spéciale : les $4$ coins du carré et du rectangle sont des \"coins carrés\", des angles droits. Ça veut dire qu'ils font tous la même forme, comme le coin d'une feuille de papier. Le triangle, lui, a des coins qui peuvent être pointus ou larges, mais pas forcément des coins carrés. C'est une astuce pour les distinguer vite : si tu vois $4$ coins carrés, c'est un carré ou un rectangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle avec ses 3 sommets",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons de les classer par familles. Première famille : les figures à $3$ côtés. Il n'y a que le triangle dedans, c'est le seul ! Deuxième famille : les figures à $4$ côtés droits. Ici, on trouve le carré et le rectangle. Ils sont cousins car ils ont tous les deux $4$ côtés et $4$ angles droits. Troisième famille : les figures sans côtés droits. Le rond est tout seul dans cette famille. Ce tri te aide à ne plus les confondre : tu comptes les côtés, tu regardes les coins, et hop, tu sais comment elle s'appelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, un petit jeu de l'intrus. Je te montre $4$ figures : un triangle, un carré, un rectangle, et un autre triangle. Trois de ces figures ont $4$ sommets. Une seule en a $3$. Laquelle est l'intrus ? C'est le triangle bien sûr ! Tu vois, comparer les formes, c'est juste observer le nombre de côtés et de sommets. Tu deviens de plus en plus fort en géométrie, continue comme ça !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Relie chaque figure à son nombre de côtés : Triangle, Carré, Rectangle, Rond.",
+              "answer": "Triangle : $3$ ; Carré : $4$ ; Rectangle : $4$ ; Rond : $0$.",
+              "hint": "Compte les traits droits pour le triangle, le carré et le rectangle. Le rond n'en a pas.",
+              "explanation": "Le triangle a $3$ côtés. Le carré et le rectangle en ont $4$. Le rond est une courbe continue sans côté droit."
+            },
+            {
+              "question": "Combien de sommets a un rectangle ? Sont-ils tous identiques ?",
+              "answer": "Un rectangle a $4$ sommets. Oui, ce sont tous des angles droits (coins carrés).",
+              "hint": "Un sommet est un coin. Regarde le coin d'une feuille de papier.",
+              "explanation": "Le rectangle a $4$ coins. Chacun forme un angle droit, comme le coin d'un cahier."
+            },
+            {
+              "question": "Classe ces figures en deux groupes : celles qui ont $3$ côtés et celles qui en ont $4$. Figures : Triangle, Carré, Rectangle, Triangle.",
+              "answer": "Groupe $3$ côtés : Triangle, Triangle. Groupe $4$ côtés : Carré, Rectangle.",
+              "hint": "Compte les côtés de chaque figure une par une.",
+              "explanation": "Les deux triangles ont $3$ côtés. Le carré et le rectangle en ont $4$."
+            },
+            {
+              "question": "Parmi un triangle, un carré, un rectangle et un rond, lequel n'a aucun côté droit ?",
+              "answer": "Le rond.",
+              "hint": "Les autres sont formés de segments de droite.",
+              "explanation": "Le triangle, le carré et le rectangle sont des polygones (côtés droits). Le rond est une courbe."
+            }
+          ]
+        },
+        {
+          "title": "Construire avec règle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À toi de jouer : dessine ton triangle !"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de passer à l'action. Pour dessiner un beau triangle, tu as besoin de ton outil magique : la règle. La règle ne sert pas seulement à mesurer, elle sert surtout à tracer des traits parfaitement droits. Pose ta règle sur ta feuille, appuie bien dessus avec une main pour qu'elle ne bouge pas, et avec ton crayon, trace le long du bord. Tu viens de faire un segment, c'est-à-dire un morceau de droite délimité par deux points. C'est la base de ton futur triangle."
+            },
+            {
+              "type": "grid_painter",
+              "caption": "Exemple de triangle sur quadrillage (3 cases de large, 2 de haut)",
+              "rows": 5,
+              "cols": 6,
+              "highlighted": 6
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, la méthode des grands pour faire un triangle parfait. Première étape : tu marques trois petits points sur ta feuille. Ce seront les trois sommets. Essaie de ne pas les mettre en ligne droite, sinon tu ne fermeras pas ta figure. Deuxième étape : tu prends ta règle, tu la poses sur le premier et le deuxième point, et tu traces le trait. Troisième étape : tu relis le deuxième point au troisième. Quatrième étape : tu fermes le triangle en reliant le troisième point au premier. Regarde : $3$ traits, $3$ coins, c'est gagné !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Marquer les sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose $3$ petits croix ou points sur la feuille, pas alignés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Règle sur le point 1 et le point 2, trace le segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Règle sur le point 2 et le point 3, trace le segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Règle sur le point 3 et le point 1, trace le dernier segment."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ton cahier à grands carreaux, c'est encore plus facile. Les lignes du quadrillage te guident. Choisis un point à l'intersection de deux lignes. Compte $3$ cases à droite, marque un point. Compte $2$ cases en haut, marque un point. Relie les trois points avec ta règle en suivant bien les lignes du quadrillage pour t'aider à être droit. Tu obtiens un triangle bien propre, bien net. Essaie d'en faire un grand qui prend toute la page, et un tout petit dans le coin."
+            },
+            {
+              "type": "grid_painter",
+              "caption": "Triangle rectangle sur quadrillage (base 4, hauteur 3)",
+              "rows": 6,
+              "cols": 7,
+              "highlighted": 8
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de ranger ta règle, fais le contrôle qualité. Prends ton doigt et suis le contour de ton dessin. Est-ce que les $3$ côtés se touchent bien aux extrémités sans laisser d'espace ? Est-ce que les traits sont bien droits (pas tremblants) ? Est-ce que tu as bien $3$ sommets distincts ? Si tu as dit oui à tout, félicitations ! Tu as construit un vrai triangle. Tu peux même écrire fièrement \"Triangle\" à côté. Tu es maintenant capable de reconnaître, comparer et construire cette figure géométrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître un triangle à ses 3 côtés et 3 sommets.",
+                "Je sais différencier un triangle d'un carré, d'un rectangle et d'un rond.",
+                "Je sais utiliser ma règle pour tracer des segments droits.",
+                "Je sais construire un triangle en reliant 3 points.",
+                "Je vérifie que ma figure est bien fermée et a 3 côtés droits."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé un segment entre deux points. Que dois-tu faire pour commencer un triangle ?",
+              "answer": "Tracer un deuxième segment à partir de l'un des deux points vers un troisième point.",
+              "hint": "Un triangle a 3 côtés. Tu en as déjà 1.",
+              "explanation": "Il faut ajouter un deuxième côté en reliant un des sommets existants à un nouveau sommet."
+            },
+            {
+              "question": "Pour dessiner un triangle, dans quel ordre relier les 3 points A, B, C ?",
+              "answer": "Relier A à B, puis B à C, puis C à A (ou n'importe quel ordre qui ferme la figure).",
+              "hint": "Il faut faire le tour complet des 3 points pour fermer la figure.",
+              "explanation": "L'ordre n'importe pas tant qu'on relie les 3 points deux à deux pour former 3 côtés fermés."
+            },
+            {
+              "question": "Sur ton quadrillage, tu as mis un point au coin en bas à gauche. Tu comptes 4 cases à droite et tu marques un point. Tu comptes 3 cases en haut depuis le premier point et tu marques un point. Quelle figure obtiens-tu en les reliant ?",
+              "answer": "Un triangle rectangle.",
+              "hint": "Les lignes du quadrillage forment des angles droits.",
+              "explanation": "Les côtés le long des lignes du quadrillage sont perpendiculaires, ce qui crée un angle droit."
+            },
+            {
+              "question": "Tu as fini ton dessin. Comment vérifier que c'est bien un triangle ?",
+              "answer": "Je compte 3 côtés droits, 3 sommets et la figure est fermée.",
+              "hint": "Utilise ton doigt pour suivre le contour.",
+              "explanation": "Les 3 critères du triangle : fermé, 3 côtés droits, 3 sommets. Si tout est bon, c'est un triangle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

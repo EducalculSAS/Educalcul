@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 268,
+  "_course_code": "cm1-t08-c06-bilan-proportionnalite-cm1",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Approfondissement : Reconnaître et calculer",
+  "title": "Algorithmes et proportionnalité",
+  "blocks": [
+    {
+      "title": "Reconnaître un tableau proportionnel",
+      "content": "Voici un tableau de valeurs :\\n\\nNombre de cahiers : 2 ; 4 ; 7 ; 10\\nPrix total en euros : 6 ; 12 ; 21 ; 30\\n\\nÉcris un algorithme en langage naturel (étapes numérotées) pour vérifier si ce tableau est un tableau de proportionnalité et, le cas échéant, déterminer le coefficient de proportionnalité.",
+      "correctAnswer": "1. Choisir une ligne (par exemple la première) : diviser le prix par le nombre de cahiers : $30 / 10 = 3$ ou $6 / 2 = 3$. Le coefficient candidat est $3$.\\n2. Vérifier toutes les autres lignes : multiplier le nombre de cahiers par $3$ et comparer au prix.\\n   - $4 \\times 3 = 12$ (correspond)\\n   - $7 \\times 3 = 21$ (correspond)\\n   - $10 \\times 3 = 30$ (correspond)\\n3. Conclusion : toutes les vérifications sont exactes, le tableau est proportionnel. Le coefficient de proportionnalité est $3$ (prix = $3 \\times$ nombre).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour reconnaître la proportionnalité, on calcule le rapport entre les deux grandeurs (prix / nombre) pour une première paire de valeurs. On obtient $3$. Ensuite, on vérifie que ce même rapport fonctionne pour toutes les autres lignes du tableau. Ici, $4 \\times 3 = 12$, $7 \\times 3 = 21$, $10 \\times 3 = 30$. Comme tous les résultats correspondent aux valeurs du tableau, c'est bien une situation proportionnelle avec un coefficient de $3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau par un algorithme",
+      "content": "Un tableau de proportionnalité est incomplet :\\n\\nLongueur (m) : 3 ; ... ; 8\\nPrix (€)     : 12 ; 28 ; ...\\n\\nÉcris la suite d'instructions (algorithme) permettant de trouver les deux valeurs manquantes. Indique les calculs effectués et les résultats finaux.",
+      "correctAnswer": "1. Calculer le coefficient de proportionnalité $k$ à partir de la colonne complète : $k = 12 / 3 = 4$.\\n2. Pour trouver la longueur manquante (2e colonne) : diviser le prix par le coefficient : $28 / 4 = 7$.\\n3. Pour trouver le prix manquant (3e colonne) : multiplier la longueur par le coefficient : $8 \\times 4 = 32$.\\n4. Résultat : Longueur = $7$ m ; Prix = $32$ €.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La première étape consiste à déterminer le coefficient en divisant les deux valeurs connues de la même colonne ($12 / 3 = 4$). Une fois le coefficient $4$ trouvé, on l'utilise dans les deux sens : on divise pour remonter à la première grandeur ($28 / 4 = 7$) et on multiplie pour aller vers la seconde grandeur ($8 \\times 4 = 32$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre un problème par un algorithme structuré",
+      "content": "Un cycliste parcourt $90$ km en $3$ heures à vitesse constante.\\nÉcris un algorithme structuré (avec des variables : distance, temps, vitesse) pour répondre aux deux questions :\\n1. Quelle distance parcourt-il en $5$ heures ?\\n2. En combien de temps parcourt-il $150$ km ?",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs initiales : distance_initiale = $90$, temps_initial = $3$.\\n2. Calculer la vitesse (coefficient) : vitesse = distance_initiale / temps_initial = $90 / 3 = 30$ km/h.\\n3. Pour question 1 : lire temps_cible = $5$. Calculer distance = vitesse * temps_cible = $30 \\times 5 = 150$ km.\\n4. Pour question 2 : lire distance_cible = $150$. Calculer temps = distance_cible / vitesse = $150 / 30 = 5$ heures.\\n5. Afficher les résultats : $150$ km et $5$ h.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On modélise la situation par les variables distance, temps et vitesse. Le coefficient de proportionnalité (la vitesse) se calcule une seule fois par division ($90 / 3 = 30$). Ensuite, selon la question, on utilise la formule distance = vitesse $\\times$ temps (multiplication) ou temps = distance / vitesse (division). Pour $5$ heures : $30 \\times 5 = 150$ km. Pour $150$ km : $150 / 30 = 5$ h.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

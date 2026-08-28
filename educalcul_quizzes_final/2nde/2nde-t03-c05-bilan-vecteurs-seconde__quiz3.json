@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Bilan - Vecteurs Seconde",
+  "title": "Bilan - Vecteurs Seconde",
+  "questions": [
+    {
+      "text": "Deux vecteurs sont égaux si et seulement si :",
+      "options": [
+        "Ils ont même direction, même sens et même norme.",
+        "Ils ont même direction.",
+        "Ils ont même norme.",
+        "Ils ont même sens."
+      ],
+      "correctAnswer": "Ils ont même direction, même sens et même norme.",
+      "explanation": "Deux vecteurs sont égaux lorsque leurs trois caractéristiques (direction, sens, norme) coïncident. Avoir seulement la même direction, la même norme ou le même sens ne suffit pas : il faut les trois simultanément.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $\\vec{u} = (2, -1)$ et $\\vec{v} = (-3, 4)$. Quelle est la somme $\\vec{u} + \\vec{v}$ ?",
+      "options": [
+        "$(-1, 3)$",
+        "$(5, -5)$",
+        "$(-1, -3)$",
+        "$(5, 3)$"
+      ],
+      "correctAnswer": "$(-1, 3)$",
+      "explanation": "On additionne composante par composante : $2 + (-3) = -1$ pour l'abscisse et $-1 + 4 = 3$ pour l'ordonnée, ce qui donne $(-1, 3)$. Les autres options correspondent à des erreurs de signe ou d'ordre d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $\\vec{w} = (1, 2)$, quel est le vecteur $3\\vec{w}$ ?",
+      "options": [
+        "$(3, 6)$",
+        "$(3, 2)$",
+        "$(1, 6)$",
+        "$(4, 5)$"
+      ],
+      "correctAnswer": "$(3, 6)$",
+      "explanation": "La multiplication par un scalaire multiplie chaque composante : $3 \\times 1 = 3$ et $3 \\times 2 = 6$, donc $(3, 6)$. Les distracteurs oublient de multiplier une composante ou additionnent au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les vecteurs $\\vec{a} = (2, 4)$ et $\\vec{b} = (1, 2)$ sont-ils colinéaires ?",
+      "options": [
+        "Oui, car $\\vec{a} = 2\\vec{b}$.",
+        "Non, car leurs composantes ne sont pas proportionnelles.",
+        "Oui, car elles ont même direction mais sens opposé.",
+        "Non, car leurs normes sont différentes."
+      ],
+      "correctAnswer": "Oui, car $\\vec{a} = 2\\vec{b}$.",
+      "explanation": "Deux vecteurs sont colinéaires s'il existe un réel $k$ tel que $\\vec{a} = k\\vec{b}$. Ici $k=2$ car $(2,4) = 2\\times(1,2)$. Les composantes sont proportionnelles (rapport 2), donc ils sont colinéaires et de même sens. Les autres réponses confondent proportionnalité, sens opposé ou normes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, quelle relation vectorielle est toujours vraie ?",
+      "options": [
+        "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{BC} = \\vec{CA}$",
+        "$\\vec{AB} - \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{CB} = \\vec{AC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+      "explanation": "La relation de Chasles affirme que pour trois points A, B, C, on a $\\vec{AB} + \\vec{BC} = \\vec{AC}$. Les autres options inversent l'ordre des points ou utilisent le vecteur opposé $\\vec{CB}$, ce qui change le résultat.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

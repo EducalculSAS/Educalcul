@@ -1,0 +1,811 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.760075+00:00",
+  "id": 407,
+  "code": "5eme-t06-c03",
+  "title": "Diagrammes et représentations",
+  "description": "Cours structuré Educalcul : Diagrammes et représentations.",
+  "subject": "Statistiques et probabilités",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Diagrammes et représentations",
+    "objectif_global": "Diagrammes et représentations",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Choisir.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le diagramme en barres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux comparer le nombre de livres lus par tes camarades pendant les vacances. Un diagramme en barres te montre chaque élève sous forme d'une barre verticale dont la hauteur correspond au nombre de livres. C'est un moyen visuel très clair pour voir qui a lu le plus et qui a lu le moins, sans avoir à lire une longue liste de chiffres."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme en barres",
+              "definition": "Représentation graphique où chaque catégorie est associée à une barre dont la longueur ou la hauteur est proportionnelle à la valeur numérique de cette catégorie.",
+              "example": "Barres pour les notes de maths : 12, 15, 9, 14."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les axes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'axe horizontal porte les noms des catégories (ici les prénoms). L'axe vertical est gradué en unités (nombre de livres)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la hauteur de chaque barre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place ton doigt sur le sommet de la barre et descends verticalement jusqu'à l'axe vertical pour lire la valeur correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La barre la plus haute indique la valeur maximale, la plus basse la valeur minimale. Tu peux aussi calculer l'écart entre deux barres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de livres lus par cinq élèves",
+              "bars": [
+                {
+                  "label": "Alice",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Benoît",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Chloé",
+                  "value": 12,
+                  "tone": "red"
+                },
+                {
+                  "label": "David",
+                  "value": 7,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Emma",
+                  "value": 9,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une barre, passons au diagramme circulaire qui montre des parts d'un tout."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme circulaire, aussi appelé camembert, découpe un cercle en secteurs. Chaque secteur représente une fraction du total. Par exemple, si tu veux savoir quelle part du budget de la classe est consacrée aux sorties, aux fournitures et aux jeux, le camembert te donne une vue d'ensemble immédiate."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme circulaire",
+              "definition": "Représentation d'un total divisé en parts proportionnelles, chaque part étant un secteur d'un cercle dont l'angle central est proportionnel à la valeur de la catégorie.",
+              "example": "Budget : sorties 40 %, fournitures 35 %, jeux 25 %."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le cercle entier représente 100 % ou la somme de toutes les valeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'angle ou le pourcentage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque secteur est souvent annoté avec son pourcentage. Si ce n'est pas le cas, mesure l'angle au rapporteur et calcule la part : (angle / 360) × 100."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plus grand secteur correspond à la catégorie majoritaire. Tu peux aussi additionner plusieurs secteurs pour obtenir une part combinée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition du budget de la classe",
+              "slices": [
+                {
+                  "label": "Sorties",
+                  "value": 40,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fournitures",
+                  "value": 35,
+                  "tone": "green"
+                },
+                {
+                  "label": "Jeux",
+                  "value": 25,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les graphiques, voyons comment un tableau organise les mêmes informations avant toute représentation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exploiter un tableau de données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau range les données en lignes et en colonnes. Chaque ligne correspond à une observation (un élève, un mois, une expérience) et chaque colonne à une variable (nom, nombre de livres, note). C'est la forme la plus brute, idéale pour vérifier les chiffres avant de tracer un graphique."
+            },
+            {
+              "type": "definition",
+              "term": "tableau de données",
+              "definition": "Organisation rectangulaire de valeurs où les lignes désignent les individus ou les cas et les colonnes les caractéristiques mesurées.",
+              "example": "Élève | Livres lus | Note de maths"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les en-têtes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La première ligne donne le nom de chaque variable. Repère l'unité (livres, points, euros)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Extraire une valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis la ligne de l'individu qui t'intéresse, puis lis la colonne correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire des calculs simples",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu peux additionner une colonne pour obtenir un total, ou calculer une moyenne en divisant la somme par le nombre de lignes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Élève",
+                "Livres lus",
+                "Note maths"
+              ],
+              "rows": [
+                [
+                  "Alice",
+                  "8",
+                  "14"
+                ],
+                [
+                  "Benoît",
+                  "5",
+                  "11"
+                ],
+                [
+                  "Chloé",
+                  "12",
+                  "16"
+                ],
+                [
+                  "David",
+                  "7",
+                  "13"
+                ],
+                [
+                  "Emma",
+                  "9",
+                  "15"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le diagramme en barres, quelle élève a lu le plus de livres ?",
+              "answer": "Chloé",
+              "hint": "Regarde la barre la plus haute et lis son nom sur l'axe horizontal.",
+              "explanation": "La barre de Chloé atteint $12$ unités, c'est la valeur maximale du graphique."
+            },
+            {
+              "question": "Quel pourcentage du budget est consacré aux fournitures ?",
+              "answer": "35 %",
+              "hint": "Cherche le secteur « Fournitures » sur le camembert et lis l'annotation.",
+              "explanation": "Le secteur Fournitures représente $35$ % du cercle total."
+            },
+            {
+              "question": "Combien de livres ont été lus au total par les cinq élèves ?",
+              "answer": "41",
+              "hint": "Additionne les valeurs de la colonne « Livres lus » du tableau.",
+              "explanation": "$8 + 5 + 12 + 7 + 9 = 41$ livres au total."
+            }
+          ]
+        },
+        {
+          "title": "Choisir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quel diagramme pour quel type de données ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer un graphique, il faut regarder la nature de tes données. Si tu as des catégories sans ordre naturel (couleurs, prénoms, types d'animaux), tu manipules des données qualitatives. Si tu as des nombres que l'on peut ordonner ou mesurer (âge, taille, notes), ce sont des données quantitatives. Le choix du diagramme en dépend directement."
+            },
+            {
+              "type": "definition",
+              "term": "données qualitatives",
+              "definition": "Données qui décrivent une qualité ou une catégorie, sans valeur numérique intrinsèque.",
+              "example": "Couleur préférée : bleu, rouge, vert."
+            },
+            {
+              "type": "definition",
+              "term": "données quantitatives",
+              "definition": "Données numériques qui peuvent être mesurées, comptées ou ordonnées.",
+              "example": "Nombre de frères et sœurs : 0, 1, 2, 3."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour des données qualitatives, privilégie le diagramme en barres ou le camembert. Pour des données quantitatives continues, un histogramme ou une courbe sera plus adapté."
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemple de données qualitatives : couleurs préférées",
+              "bars": [
+                {
+                  "label": "Bleu",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rouge",
+                  "value": 9,
+                  "tone": "red"
+                },
+                {
+                  "label": "Vert",
+                  "value": 7,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu distingues les types de données, voyons comment choisir entre barres et secteurs pour une même série qualitative."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir entre barres et secteurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres facilite la comparaison précise des effectifs car l'œil compare des longueurs alignées. Le camembert, lui, met en avant la part de chaque catégorie dans le total. Si ton objectif est de montrer « qui est majoritaire », le camembert est très expressif. Si tu veux permettre une lecture exacte des effectifs, la barre est plus sûre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir l'objectif de la lecture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Veux-tu comparer des valeurs entre elles (barres) ou montrer la proportion de chaque partie dans le tout (secteurs) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier le nombre de catégories",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au-delà de 6 à 7 catégories, le camembert devient illisible ; les barres restent claires."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir le graphique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la règle : peu de catégories + proportion → camembert ; beaucoup de catégories ou comparaison fine → barres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des sports pratiqués (5 catégories)",
+              "slices": [
+                {
+                  "label": "Football",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Basket",
+                  "value": 20,
+                  "tone": "red"
+                },
+                {
+                  "label": "Natation",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "Tennis",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Autres",
+                  "value": 25,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, avant de dessiner, il est souvent utile de rassembler les données dans un tableau de fréquence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser un tableau pour organiser avant de représenter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau de fréquence liste chaque modalité et son effectif. Il permet de vérifier qu'aucune donnée n'a été oubliée, de calculer le total et les pourcentages, et de repérer d'éventuelles erreurs de saisie. C'est l'étape de nettoyage qui garantit un graphique fiable."
+            },
+            {
+              "type": "definition",
+              "term": "tableau de fréquence",
+              "definition": "Tableau à deux colonnes : la première donne les modalités (catégories), la seconde leur effectif (nombre d'occurrences).",
+              "example": "Sport | Effectif"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les modalités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque valeur différente trouvée dans l'enquête."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les effectifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parcours les réponses et incrémente le compteur de la modalité correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les pourcentages",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise chaque effectif par le total et multiplie par $100$ pour obtenir la part en pourcent."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sport",
+                "Effectif",
+                "Pourcentage"
+              ],
+              "rows": [
+                [
+                  "Football",
+                  "30",
+                  "30 %"
+                ],
+                [
+                  "Basket",
+                  "20",
+                  "20 %"
+                ],
+                [
+                  "Natation",
+                  "15",
+                  "15 %"
+                ],
+                [
+                  "Tennis",
+                  "10",
+                  "10 %"
+                ],
+                [
+                  "Autres",
+                  "25",
+                  "25 %"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour représenter les couleurs préférées d'une classe, quel diagramme est le plus adapté ?",
+              "answer": "Diagramme en barres ou camembert",
+              "hint": "Les couleurs sont des données qualitatives ; les deux graphiques conviennent, mais les barres permettent une lecture plus précise.",
+              "explanation": "Comme il s'agit de catégories sans ordre, un diagramme en barres ou un camembert montre bien la répartition."
+            },
+            {
+              "question": "Si tu veux montrer la part de chaque sport dans le total des élèves, quel graphique choisiras-tu ?",
+              "answer": "Camembert",
+              "hint": "Le camembert met en évidence les proportions dans un tout.",
+              "explanation": "Le diagramme circulaire affiche directement les pourcentages de chaque sport par rapport à l'ensemble."
+            },
+            {
+              "question": "Dans le tableau de fréquence, quel est le pourcentage des élèves qui pratiquent la natation ?",
+              "answer": "15 %",
+              "hint": "Regarde la ligne « Natation » et lis la colonne « Pourcentage ».",
+              "explanation": "Le tableau indique $15$ % pour la natation, ce qui correspond à $15$ élèves sur $100$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme en barres à partir d'un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant un tableau propre avec les effectifs. Pour tracer le diagramme en barres, commence par dessiner deux axes perpendiculaires. L'axe horizontal portera les noms des catégories, l'axe vertical sera gradué en fonction de l'effectif maximal. Choisis une échelle commode : par exemple, 1 cm pour 2 unités si le maximum est 30."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir l'échelle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve la valeur maximale du tableau. Divise-la par le nombre de centimètres que tu veux pour la barre la plus haute, arrondis à un chiffre simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer les axes et les graduations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine l'axe horizontal, écris les catégories espacées régulièrement. Sur l'axe vertical, marque les graduations selon l'échelle choisie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dessiner les barres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque catégorie, monte verticalement jusqu'à la hauteur correspondante, trace un rectangle de largeur constante, colore-le."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Ajouter titres et légendes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris un titre clair au-dessus du graphique, indique l'unité sur l'axe vertical et, si besoin, une légende pour les couleurs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Diagramme en barres construit depuis le tableau des sports",
+              "bars": [
+                {
+                  "label": "Football",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Basket",
+                  "value": 20,
+                  "tone": "red"
+                },
+                {
+                  "label": "Natation",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "Tennis",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Autres",
+                  "value": 25,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la construction d'un camembert, qui demande de transformer les effectifs en angles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un diagramme circulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cercle complet fait $360^{\\circ}$. Pour chaque catégorie, calcule son angle central : (effectif / total) × $360^{\\circ}$. Par exemple, si le football compte $30$ élèves sur $100$, son angle est $(30/100) \\times 360 = 108^{\\circ}$. Trace ensuite chaque secteur à l'aide d'un rapporteur en partant du centre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque ligne du tableau, applique la formule $\\frac{\\text{effectif}}{\\text{total}} \\times 360^{\\circ}$ et note le résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dessiner le cercle et le premier rayon",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un cercle au compas. Place le rapporteur au centre, aligne le zéro sur un rayon de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer chaque secteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Marque l'angle du premier secteur, trace le second rayon. Recommence pour chaque catégorie en continuant sur le cercle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Colorier et légender",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplis chaque secteur d'une couleur différente, ajoute un titre et une légende liant couleur et catégorie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Camembert construit à partir des mêmes données",
+              "slices": [
+                {
+                  "label": "Football",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Basket",
+                  "value": 20,
+                  "tone": "red"
+                },
+                {
+                  "label": "Natation",
+                  "value": 15,
+                  "tone": "green"
+                },
+                {
+                  "label": "Tennis",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Autres",
+                  "value": 25,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois tes graphiques tracés, il est essentiel de vérifier qu'ils sont cohérents avec les données d'origine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la cohérence de ta représentation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Relis le tableau et compare chaque valeur avec la hauteur de la barre ou l'angle du secteur. La somme des pourcentages doit faire $100\\,%$ (ou $360^{\\circ}$ pour les angles). Si un écart apparaît, revérifie tes calculs d'échelle ou d'angles. Cette étape de contrôle évite les erreurs de lecture ultérieures."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Une mauvaise échelle sur l'axe vertical déforme toutes les barres. Un angle mal mesuré décale tous les secteurs suivants."
+              ]
+            },
+            {
+              "type": "area_decomposer",
+              "caption": "Décomposition de l'aire des barres pour vérification",
+              "shapes": [
+                {
+                  "width": 4,
+                  "height": 3,
+                  "label": "Barre Football"
+                },
+                {
+                  "width": 4,
+                  "height": 2,
+                  "label": "Barre Basket"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un diagramme en barres et en extraire les valeurs exactes.",
+                "Je sais interpréter un diagramme circulaire et calculer les pourcentages.",
+                "Je sais choisir le graphique adapté au type de données (qualitatif / quantitatif).",
+                "Je sais construire un diagramme en barres à partir d'un tableau de fréquence.",
+                "Je sais construire un diagramme circulaire en calculant les angles.",
+                "Je sais vérifier la cohérence entre mes graphiques et les données sources."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle échelle as-tu choisie pour l'axe vertical si le maximum est 30 et que tu veux une barre de 6 cm de haut ?",
+              "answer": "1 cm pour 5 unités",
+              "hint": "Divise la valeur maximale par la hauteur souhaitée en centimètres.",
+              "explanation": "$30 \\div 6 = 5$, donc chaque centimètre représente $5$ unités."
+            },
+            {
+              "question": "Calcule l'angle du secteur « Tennis » (effectif 10 sur 100).",
+              "answer": "36°",
+              "hint": "Applique la formule (effectif / total) × 360°.",
+              "explanation": "$(10 / 100) \\times 360 = 36^{\\circ}$."
+            },
+            {
+              "question": "Après avoir dessiné ton camembert, la somme des angles mesure 358°. Que dois-tu faire ?",
+              "answer": "Revoir les calculs d'angles et le tracé au rapporteur.",
+              "hint": "La somme doit être exactement 360° ; un écart indique une erreur de mesure ou de calcul.",
+              "explanation": "Un total de $358^{\\circ}$ signale une imprécision ; refais les mesures ou recalcule les angles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

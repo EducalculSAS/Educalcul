@@ -1,0 +1,595 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.111384+00:00",
+  "id": 530,
+  "code": "2nde-t06-c04",
+  "title": "Données à deux variables qualitatives selon programme",
+  "description": "Cours structuré Educalcul : Données à deux variables qualitatives selon programme.",
+  "subject": "Statistiques, information chiffrée et probabilités",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Statistiques, information chiffrée et probabilités",
+    "titre_du_cours": "Données à deux variables qualitatives selon programme",
+    "objectif_global": "Données à deux variables qualitatives selon programme",
+    "mini_lecons_imposees": [
+      "Tableau croisé.",
+      "Fréquences conditionnelles simples.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques, information chiffrée et probabilités",
+      "lessons": [
+        {
+          "title": "Tableau croisé.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un tableau croisé ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu interroges une classe de $30$ élèves sur deux caractéristiques : le sexe (garçon ou fille) et le sport préféré (football, natation, tennis). Au lieu de noter chaque réponse sur une ligne séparée, tu peux organiser l'information dans un tableau à double entrée. Les lignes correspondent aux modalités de la première variable, les colonnes à celles de la seconde. Chaque case du tableau contient alors le nombre d'élèves qui réunissent les deux caractéristiques simultanément. C'est ce qu'on appelle un tableau croisé, ou tableau de contingence. Il permet de voir d'un coup d'œil comment les deux variables se répartissent ensemble, sans avoir à parcourir une longue liste de réponses brutes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Football",
+                "Natation",
+                "Tennis",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Garçon",
+                  "8",
+                  "4",
+                  "2",
+                  "14"
+                ],
+                [
+                  "Fille",
+                  "5",
+                  "7",
+                  "4",
+                  "16"
+                ],
+                [
+                  "Total",
+                  "13",
+                  "11",
+                  "6",
+                  "30"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu à quoi ressemble un tableau croisé, nous allons apprendre à le construire toi-même à partir d'une liste de données brutes. Cette étape est essentielle car, dans la réalité, les données arrivent souvent sous forme de relevés non organisés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau croisé à partir de données brutes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu aies relevé les réponses de $20$ personnes interrogées sur leur moyen de transport habituel (voiture, vélo, transports en commun) et sur leur tranche d'âge (moins de $25$ ans, $25$ à $40$ ans, plus de $40$ ans). La première chose à faire est de dresser la liste des modalités de chaque variable. Ensuite, tu crées un tableau vide dont les lignes sont les tranches d'âge et les colonnes les moyens de transport. Tu parcours ensuite chaque fiche de réponse : pour chaque personne, tu repères la case qui correspond à sa tranche d'âge et à son moyen de transport, et tu ajoutes $1$ dans cette case. À la fin, tu additionnes chaque ligne et chaque colonne pour obtenir les totaux marginaux. Cette procédure garantit que chaque individu est compté une seule fois et que la somme des effectifs joints retrouve le total de l'échantillon."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les modalités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les catégories de la variable « âge » en lignes et celles de la variable « transport » en colonnes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Initialiser le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplis toutes les cases avec $0$ avant de commencer le comptage."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque individu, incrémente de $1$ la case située à l'intersection de sa ligne et de sa colonne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer les marges",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne chaque ligne (total par âge) et chaque colonne (total par transport). Vérifie que la somme des totaux marginaux égale le nombre total d'individus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le tableau rempli, il est très utile de savoir lire les effectifs marginaux, c'est-à-dire les totaux qui apparaissent en bout de lignes et en bas de colonnes. Ils résument la distribution de chaque variable prise séparément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les effectifs marginaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le tableau de l'exemple précédent sur les sports préférés. La dernière colonne « Total » indique combien de garçons et de filles ont participé : $14$ garçons et $16$ filles. La dernière ligne « Total » montre combien d'élèves préfèrent chaque sport : $13$ pour le football, $11$ pour la natation, $6$ pour le tennis. Ces nombres sont les effectifs marginaux. Ils permettent de répondre à des questions comme « Combien de filles ont répondu ? » sans avoir à regarder le détail des sports. De plus, la somme de tous les effectifs marginaux (ou la case en bas à droite) donne la taille totale de l'échantillon, ici $30$ élèves."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Effectifs marginaux par sexe et par sport",
+              "bars": [
+                {
+                  "label": "Garçons",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Filles",
+                  "value": 16,
+                  "tone": "red"
+                },
+                {
+                  "label": "Football",
+                  "value": 13,
+                  "tone": "green"
+                },
+                {
+                  "label": "Natation",
+                  "value": 11,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Tennis",
+                  "value": 6,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, on s'intéresse aux effectifs joints, c'est-à-dire aux nombres qui se trouvent à l'intérieur du tableau, à l'intersection d'une ligne et d'une colonne. Ils racontent l'histoire commune des deux variables. On peut aussi les exprimer en fréquences jointes en divisant chaque effectif joint par l'effectif total."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les effectifs joints et les fréquences jointes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans notre tableau sur le sport, l'effectif joint « Garçon – Football » vaut $8$. La fréquence jointe correspondante est $\\frac{8}{30} \\approx 0,267$, soit $26,7\\%$ de l'échantillon. On procède de la même façon pour chaque case. L'ensemble des fréquences jointes forme une distribution de probabilité sur les couples de modalités : la somme de toutes ces fréquences vaut $1$. Cette vision est précieuse quand on veut comparer la part de chaque combinaison par rapport à l'ensemble de la population étudiée."
+            },
+            {
+              "type": "display_math",
+              "latex": "f_{ij} = \\frac{n_{ij}}{N}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour lire, construire et interpréter un tableau croisé. Dans la prochaine leçon, nous verrons comment extraire des informations encore plus fines grâce aux fréquences conditionnelles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau présenté, quelle est la fréquence jointe correspondant à « Fille – Natation » ? Donne le résultat en pourcentage arrondi au dixième.",
+              "answer": "43,3 %",
+              "hint": "Divise l'effectif joint par l'effectif total ($30$) puis multiplie par $100$.",
+              "explanation": "L'effectif joint « Fille – Natation » est $7$. La fréquence jointe est $\\frac{7}{30} \\approx 0,2333$, soit $23,3\\%$."
+            },
+            {
+              "question": "Tu as relevé les réponses de $12$ personnes sur leur boisson favorite (thé, café, jus) et leur moment de consommation (matin, après-midi). Construis le tableau croisé vide avec les totaux marginaux initialisés à $0$.",
+              "answer": "Tableau à trois lignes (thé, café, jus) et deux colonnes (matin, après-midi) avec une ligne et une colonne « Total » remplies de $0$.",
+              "hint": "Pense à ajouter une ligne et une colonne pour les totaux.",
+              "explanation": "Le tableau doit comporter les modalités de la première variable en lignes, celles de la seconde en colonnes, plus une ligne et une colonne « Total » initialisées à zéro."
+            },
+            {
+              "question": "À partir du tableau sur les sports, quel est l'effectif marginal du sport « Tennis » ?",
+              "answer": "6",
+              "hint": "Regarde la dernière ligne du tableau, colonne « Tennis ».",
+              "explanation": "L'effectif marginal d'une colonne se lit dans la ligne « Total » : pour le tennis, c'est $6$."
+            },
+            {
+              "question": "Calcule la fréquence jointe « Garçon – Tennis » et exprime-la en fraction irréductible.",
+              "answer": "1/15",
+              "hint": "Effectif joint $2$, total $30$. Simplifie la fraction.",
+              "explanation": "$\\frac{2}{30} = \\frac{1}{15}$."
+            }
+          ]
+        },
+        {
+          "title": "Fréquences conditionnelles simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une fréquence conditionnelle simple ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir découvert le tableau croisé, tu te demandes peut-être comment comparer les préférences sportives à l'intérieur d'un seul groupe, par exemple uniquement chez les garçons. C'est là qu'interviennent les fréquences conditionnelles. Une fréquence conditionnelle simple est le rapport entre un effectif joint et l'effectif marginal de la condition choisie. Concrètement, si tu veux savoir quelle proportion de garçons pratique le football, tu divises l'effectif « Garçon – Football » par le total des garçons. Cette opération « conditionne » l'analyse à une modalité fixe de l'une des deux variables."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le tableau de la leçon précédente. Le total des garçons est $14$. L'effectif joint « Garçon – Football » est $8$. La fréquence conditionnelle de football chez les garçons vaut donc $\\frac{8}{14} \\approx 0,571$, soit $57,1\\%$. De même, pour les filles, le total est $16$ et l'effectif « Fille – Football » est $5$, ce qui donne $\\frac{5}{16} = 0,3125$, soit $31,3\\%$. On voit immédiatement que le football est plus populaire chez les garçons que chez les filles dans cet échantillon."
+            },
+            {
+              "type": "fraction",
+              "numerator": 8,
+              "denominator": 14,
+              "shape": "bar",
+              "caption": "Fréquence conditionnelle football chez les garçons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe deux façons naturelles de conditionner : par ligne (condition sur la variable en lignes) ou par colonne (condition sur la variable en colonnes). Le choix dépend de la question posée. Si tu te demandes « Quelle est la répartition des sports chez les garçons ? », tu conditionnes par ligne (sexe). Si tu te demandes « Quelle est la répartition des sexes parmi les amateurs de football ? », tu conditionnes par colonne (sport). Les deux perspectives sont complémentaires et peuvent mener à des conclusions différentes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conditionner par ligne ou par colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour conditionner par ligne, on divise chaque effectif d'une ligne par le total de cette ligne. Cela produit un tableau de fréquences conditionnelles par ligne dont chaque ligne somme à $1$ (ou $100\\%$). Pour conditionner par colonne, on divise chaque effectif d'une colonne par le total de cette colonne ; chaque colonne somme alors à $1$. Il est crucial de bien indiquer quelle condition a été utilisée, car les valeurs n'ont pas le même sens. Par exemple, la fréquence conditionnelle « Football | Garçon » ($57,1\\%$) n'est pas la même que « Garçon | Football » ($\\frac{8}{13} \\approx 61,5\\%$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide si tu fixes la variable en lignes ou en colonnes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le total de la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'effectif marginal correspondant (total de la ligne ou de la colonne)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser chaque effectif joint",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque case de la ligne (ou colonne) choisie, calcule $\\frac{\\text{effectif joint}}{\\text{total de la condition}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la somme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme des fréquences obtenues sur la ligne (ou colonne) conditionnée doit valoir $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fréquences conditionnelles permettent de détecter une éventuelle association entre les deux variables. Si les fréquences conditionnelles d'une variable sont très différentes selon la modalité de l'autre variable, cela suggère un lien. À l'inverse, si elles restent proches, les variables semblent indépendantes. Cette idée sera approfondie dans la prochaine leçon, mais tu peux déjà t'exercer à les calculer et à les comparer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des fréquences conditionnelles pour pressentir un lien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des sports. Les fréquences conditionnelles de football sont $57,1\\%$ chez les garçons et $31,3\\%$ chez les filles : une différence nette. Pour la natation, c'est $28,6\\%$ chez les garçons contre $43,8\\%$ chez les filles. Pour le tennis, $14,3\\%$ contre $25\\%$. Ces écarts indiquent que le sexe influence le choix du sport dans cet échantillon. Si les pourcentages avaient été quasi identiques pour chaque sport, on aurait conclu à une absence de relation visible."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences conditionnelles par sexe pour chaque sport",
+              "bars": [
+                {
+                  "label": "Football - Garçons",
+                  "value": 57.1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Football - Filles",
+                  "value": 31.3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Natation - Garçons",
+                  "value": 28.6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Natation - Filles",
+                  "value": 43.8,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Tennis - Garçons",
+                  "value": 14.3,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Tennis - Filles",
+                  "value": 25.0,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour calculer et interpréter des fréquences conditionnelles simples. Dans la dernière leçon, nous verrons comment formuler une conclusion rigoureuse à partir de ces comparaisons."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la fréquence conditionnelle « Natation | Fille » à partir du tableau de la leçon 1. Donne le résultat en pourcentage arrondi au dixième.",
+              "answer": "43,8 %",
+              "hint": "Divise l'effectif joint « Fille – Natation » ($7$) par le total des filles ($16$).",
+              "explanation": "$\\frac{7}{16} = 0,4375$, soit $43,8\\%$."
+            },
+            {
+              "question": "Dans un tableau croisé sur la couleur des yeux (bleu, marron) et la couleur des cheveux (blond, brun), le total des yeux bleus est $30$. L'effectif joint « Bleu – Blond » est $12$. Quelle est la fréquence conditionnelle « Cheveux blonds | Yeux bleus » ?",
+              "answer": "0,4 ou 40 %",
+              "hint": "Utilise la formule $\\frac{\\text{effectif joint}}{\\text{total de la condition}}$.",
+              "explanation": "$\\frac{12}{30} = 0,4$."
+            },
+            {
+              "question": "Observe le graphique en barres des fréquences conditionnelles par sexe. Quel sport montre la plus grande différence entre garçons et filles ?",
+              "answer": "Football",
+              "hint": "Compare les écarts entre les barres bleues et rouges pour chaque sport.",
+              "explanation": "L'écart pour le football est $57,1 - 31,3 = 25,8$ points, plus grand que pour la natation ($15,2$) ou le tennis ($10,7$)."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les résultats : association ou indépendance ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir construit un tableau croisé et calculé des fréquences conditionnelles, l'étape finale consiste à tirer une conclusion statistiquement sensée. On cherche à savoir si les deux variables qualitatives sont liées (association) ou si elles évoluent indépendamment l'une de l'autre. Pour cela, on compare les fréquences conditionnelles d'une variable selon les modalités de l'autre. Si elles sont très proches, on n'a pas de raison de rejeter l'indépendance. Si elles diffèrent markedly, on suspecte une association. Attention toutefois : un échantillon de taille modeste peut montrer des différences dues au hasard. C'est pourquoi, en seconde, on se contente d'une lecture qualitative, sans test formel."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des sports. Les fréquences conditionnelles de football chez les garçons ($57,1\\%$) et chez les filles ($31,3\\%$) sont clairement distinctes. De même pour la natation ($28,6\\%$ vs $43,8\\%$) et le tennis ($14,3\\%$ vs $25\\%$). Ces écarts répétés sur les trois sports suggèrent que le sexe et le sport préféré ne sont pas indépendants dans cette classe. On peut donc affirmer : « Il existe une association entre le sexe et le sport préféré chez les élèves interrogés. »"
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des sports préférés chez les garçons",
+              "slices": [
+                {
+                  "label": "Football",
+                  "value": 57.1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Natation",
+                  "value": 28.6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Tennis",
+                  "value": 14.3,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les données ne montrent pas de différence nette. Imagine un sondage sur la couleur des yeux (bleu, marron) et le groupe sanguin (A, B, O, AB) auprès de $200$ personnes. Les fréquences conditionnelles de chaque groupe sanguin sont presque identiques pour les yeux bleus et les yeux marron. Dans ce cas, on dit qu'il n'y a pas d'association apparente. On écrit alors : « Les variables « couleur des yeux » et « groupe sanguin » semblent indépendantes dans cet échantillon. » Cette formulation prudente rappelle qu'on ne prouve pas l'indépendance, on constate simplement l'absence de lien visible."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Formuler une conclusion rédigée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une bonne conclusion en statistiques à deux variables qualitatives suit trois étapes. Premièrement, tu rappelles la question posée (ex : « Y a-t-il un lien entre le sexe et le sport préféré ? »). Deuxièmement, tu présentes les chiffres clés : les fréquences conditionnelles qui illustrent la différence ou la similarité. Troisièmement, tu donnes ton verdict en termes d'association ou d'indépendance, en précisant que cela concerne l'échantillon étudié. N'oublie pas d'ajouter une phrase de prudence : « Ces résultats ne permettent pas de généraliser à toute la population sans une étude plus large. »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Reformuler la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris clairement quelle relation tu testes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Citer les fréquences conditionnelles pertinentes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis deux ou trois couples de valeurs qui montrent le contraste ou la proximité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure avec prudence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise « association » ou « indépendance apparente » et mentionne la limite de l'échantillon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine un nouveau tableau croisé portant sur le niveau d'études (CAP, Bac, Supérieur) et le secteur d'emploi (Industrie, Services, Agriculture) pour $500$ actifs. Les fréquences conditionnelles de « Industrie » sont $30\\%$ chez les CAP, $28\\%$ chez les Bac, $27\\%$ chez les Supérieur. Les fréquences de « Services » sont $50\\%$, $52\\%$, $53\\%$. Les fréquences d'« Agriculture » sont $20\\%$, $20\\%$, $20\\%$. Que peux-tu dire de l'association entre niveau d'études et secteur d'emploi ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences conditionnelles du secteur selon le niveau d'études",
+              "bars": [
+                {
+                  "label": "Industrie - CAP",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Industrie - Bac",
+                  "value": 28,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Industrie - Supérieur",
+                  "value": 27,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Services - CAP",
+                  "value": 50,
+                  "tone": "green"
+                },
+                {
+                  "label": "Services - Bac",
+                  "value": 52,
+                  "tone": "green"
+                },
+                {
+                  "label": "Services - Supérieur",
+                  "value": 53,
+                  "tone": "green"
+                },
+                {
+                  "label": "Agriculture - CAP",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Agriculture - Bac",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Agriculture - Supérieur",
+                  "value": 20,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru tout le chemin : du tableau croisé brut aux fréquences conditionnelles, jusqu'à l'interprétation finale. Chaque étape t'a permis d'affiner ton regard sur les données à deux variables qualitatives. Continue à t'exercer avec des tableaux variés pour développer ton intuition statistique."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un tableau croisé à partir de données brutes.",
+                "Je sais lire les effectifs marginaux et les effectifs joints.",
+                "Je sais calculer une fréquence jointe et une fréquence conditionnelle simple.",
+                "Je sais comparer des fréquences conditionnelles pour détecter une association.",
+                "Je sais rédiger une conclusion statistiquement correcte avec prudence."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "À partir du tableau sur les sports, rédige une conclusion complète sur l'association entre le sexe et le sport préféré.",
+              "answer": "Il existe une association entre le sexe et le sport préféré dans cet échantillon : les garçons privilégient le football (57,1 %) tandis que les filles privilégient la natation (43,8 %). Ces résultats ne permettent pas de généraliser à toute la population sans étude plus large.",
+              "hint": "Suis les trois étapes : question, chiffres, verdict prudent.",
+              "explanation": "La conclusion cite la question, les fréquences conditionnelles contrastées et termine par une phrase de prudence."
+            },
+            {
+              "question": "Pour le tableau imaginé sur le niveau d'études et le secteur, quelle conclusion peux-tu tirer ?",
+              "answer": "Les fréquences conditionnelles sont très proches selon le niveau d'études, suggérant une indépendance apparente entre niveau d'études et secteur d'emploi dans cet échantillon.",
+              "hint": "Observe les écarts entre les pourcentages pour chaque secteur.",
+              "explanation": "Les différences sont inférieures à 3 points pour l'industrie, 3 points pour les services, 0 point pour l'agriculture : pas d'association visible."
+            },
+            {
+              "question": "Dans une étude sur 150 personnes, les fréquences conditionnelles de « Fumeur » selon « Sexe » sont : Homme 40 %, Femme 38 %. Y a-t-il association ?",
+              "answer": "L'écart est faible (2 points), ce qui suggère une indépendance apparente entre le sexe et le statut de fumeur dans cet échantillon.",
+              "hint": "Compare les deux pourcentages et juge de l'amplitude de la différence.",
+              "explanation": "Une différence de 2 % sur un échantillon de 150 n'est pas suffisante pour affirmer une association."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

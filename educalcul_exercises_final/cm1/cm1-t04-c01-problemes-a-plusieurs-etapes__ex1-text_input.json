@@ -1,0 +1,122 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 234,
+  "_course_code": "cm1-t04-c01-problemes-a-plusieurs-etapes",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Organiser données",
+  "title": "Organiser des données - CM1",
+  "blocks": [
+    {
+      "title": "Total d'élèves",
+      "content": "Observe le tableau ci-dessous et donne le total d'élèves.",
+      "correctAnswer": "64",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne le nombre d'élèves de chaque classe : $24 + 21 + 19 = 64$. Le total est donc 64 élèves.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Classe",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "CM1 A",
+            "24"
+          ],
+          [
+            "CM1 B",
+            "21"
+          ],
+          [
+            "CM1 C",
+            "19"
+          ],
+          [
+            "Total",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Livres lus par Léa",
+      "content": "Regarde le diagramme en barres et indique le nombre de livres lus par Léa.",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur le diagramme, la barre correspondant à Léa monte jusqu'à 8. Léa a donc lu 8 livres.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par élève",
+        "bars": [
+          {
+            "label": "Pierre",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Léa",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Sami",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Emma",
+            "value": 6,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Moyenne de pommes",
+      "content": "À partir du tableau ci-dessous, calcule la moyenne du nombre de pommes récoltées par jour.",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne les pommes de chaque jour : $12 + 15 + 9 + 14 + 10 = 60$. Il y a 5 jours, donc la moyenne est $60 \\div 5 = 12$ pommes par jour.",
+      "points": 2,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Pommes"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "12"
+          ],
+          [
+            "Mardi",
+            "15"
+          ],
+          [
+            "Mercredi",
+            "9"
+          ],
+          [
+            "Jeudi",
+            "14"
+          ],
+          [
+            "Vendredi",
+            "10"
+          ]
+        ]
+      }
+    }
+  ]
+}

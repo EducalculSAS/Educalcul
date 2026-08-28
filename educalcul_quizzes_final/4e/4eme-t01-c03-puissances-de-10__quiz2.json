@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 422,
+  "_course_code": "4eme-t01-c03-puissances-de-10",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Calculs",
+  "title": "Quiz : Calculs avec les puissances de 10",
+  "questions": [
+    {
+      "text": "Quelle est la valeur de l'expression $4,5 \\times 10^3$ ?",
+      "options": [
+        "45",
+        "450",
+        "4 500",
+        "45 000"
+      ],
+      "correctAnswer": "4 500",
+      "explanation": "Multiplier par $10^3$ (soit 1 000) revient à déplacer la virgule de trois rangs vers la droite. $4,5$ devient $4 500$. L'option 45 correspond à $\\times 10$, 450 à $\\times 10^2$ et 45 000 à $\\times 10^4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue le calcul suivant : $7,2 \\div 10^2$. Quel est le résultat ?",
+      "options": [
+        "720",
+        "72",
+        "0,72",
+        "0,072"
+      ],
+      "correctAnswer": "0,072",
+      "explanation": "Diviser par $10^2$ (soit 100) revient à déplacer la virgule de deux rangs vers la gauche. $7,2$ devient $0,072$. L'option 720 correspond à une multiplication par 100, 72 à une multiplication par 10, et 0,72 à une division par 10 seulement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est égal à $3,6 \\times 10^{-2}$ ?",
+      "options": [
+        "360",
+        "36",
+        "0,36",
+        "0,036"
+      ],
+      "correctAnswer": "0,036",
+      "explanation": "Une puissance de 10 à exposant négatif ($10^{-2}$) indique une division par $10^2$ (soit 100). On divise donc $3,6$ par 100, ce qui donne $0,036$ (virgule décalée de deux rangs vers la gauche). Les autres options correspondent à des multiplications ou des erreurs de décalage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer : $(2,5 \\times 10^4) \\times (4 \\times 10^2)$.",
+      "options": [
+        "10 \\times 10^6",
+        "1 \\times 10^7",
+        "10 \\times 10^8",
+        "1 \\times 10^6"
+      ],
+      "correctAnswer": "1 \\times 10^7",
+      "explanation": "On regroupe les nombres et les puissances de 10 : $(2,5 \\times 4) \\times (10^4 \\times 10^2) = 10 \\times 10^{4+2} = 10 \\times 10^6$. En écriture scientifique normale, le nombre devant doit être compris entre 1 et 10. $10 \\times 10^6 = 1 \\times 10^1 \\times 10^6 = 1 \\times 10^7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le résultat de la division $\\frac{9 \\times 10^5}{3 \\times 10^{-2}}$ s'écrit en notation scientifique :",
+      "options": [
+        "3 \\times 10^3",
+        "3 \\times 10^7",
+        "27 \\times 10^3",
+        "0,3 \\times 10^7"
+      ],
+      "correctAnswer": "3 \\times 10^7",
+      "explanation": "On divise les coefficients et on soustrait les exposants : $\\frac{9}{3} \\times 10^{5 - (-2)} = 3 \\times 10^{5+2} = 3 \\times 10^7$. L'option $3 \\times 10^3$ oublie le signe moins de l'exposant du diviseur. $27 \\times 10^3$ multiplie les coefficients au lieu de diviser. $0,3 \\times 10^7$ n'est pas normalisé (coefficient < 1).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

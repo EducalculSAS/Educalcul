@@ -1,0 +1,656 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.600473+00:00",
+  "id": 355,
+  "code": "6eme-t05-c04",
+  "title": "Volumes",
+  "description": "Cours structuré Educalcul : Volumes.",
+  "subject": "Grandeurs et mesures",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Volumes",
+    "objectif_global": "Volumes",
+    "mini_lecons_imposees": [
+      "Pavé droit.",
+      "Unités cubes.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Pavé droit.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un pavé droit ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre sur les volumes ! Avant de calculer, il faut savoir reconnaître l'objet principal de notre étude. Regarde autour de toi : une boîte de chaussures, un carton de lait, une brique de construction, ta trousse rectangulaire... Tous ces objets ont la même forme géométrique : ce sont des **pavés droits**. C'est un solide, c'est-à-dire qu'il a de l'épaisseur, il prend de la place dans l'espace, contrairement aux figures planes comme le carré ou le rectangle qui restent sur une feuille de papier."
+            },
+            {
+              "type": "definition",
+              "term": "Pavé droit",
+              "definition": "Un solide qui possède $6$ faces, toutes rectangles. Ses $12$ arêtes se coupent deux à deux perpendiculairement (angle droit) et ses $8$ sommets sont des angles droits. Les faces opposées sont identiques (mêmes dimensions).",
+              "example": "Une boîte de conserve rectangulaire, un livre fermé, un immeuble vu de loin."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, imagine que tu poses un rectangle sur la table. Si tu le fais \"monter\" en hauteur sans le pencher, tu crées un pavé droit. C'est comme un empilement parfait de rectangles tous pareils. Essaie de compter sur un objet réel : tu trouveras toujours $6$ faces (le dessus, le dessous, le devant, le derrière, la gauche, la droite), $12$ arêtes (les segments où deux faces se rejoignent) et $8$ sommets (les pointes). C'est une règle immuable !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois dimensions : longueur, largeur, hauteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais en reconnaître un, il faut apprendre à le mesurer. Un pavé droit se décrit grâce à **trois mesures** : la longueur ($L$), la largeur ($l$) et la hauteur ($h$). Attention, ces mots ne sont pas figés : selon comment tu poses l'objet, la \"longueur\" peut devenir la \"hauteur\". L'essentiel est de repérer les **trois directions perpendiculaires**. Sur une face, tu as deux dimensions (ex: longueur et largeur), et la troisième (la hauteur) est celle qui part de cette face vers l'intérieur du solide."
+            },
+            {
+              "type": "table",
+              "caption": "Repères pour nommer les dimensions",
+              "headers": [
+                "Direction",
+                "Nom usuel",
+                "Symbole"
+              ],
+              "rows": [
+                [
+                  "La plus grande dimension de la base",
+                  "Longueur",
+                  "$L$"
+                ],
+                [
+                  "L'autre dimension de la base",
+                  "Largeur",
+                  "$l$"
+                ],
+                [
+                  "La dimension verticale",
+                  "Hauteur",
+                  "$h$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Une propriété très utile pour ne pas se tromper : **les faces opposées sont des rectangles identiques**. La face du dessus a exactement les mêmes dimensions que la face du dessous. La face de gauche est pareille à la face de droite. Du coup, sur les $12$ arêtes, il n'y a que **trois longueurs distinctes** : $L$, $l$ et $h$. Chaque longueur d'arête apparaît $4$ fois. C'est un gain de temps énorme pour décrire l'objet !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas particulier : le cube"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un pavé droit très spécial, que tu connais sûrement par cœur : le **cube**. C'est un pavé droit dont les $6$ faces sont des **carrés**. Conséquence immédiate : les trois dimensions sont égales. On n'a plus besoin de $L$, $l$ et $h$ ; une seule mesure suffit : le côté, noté souvent $c$ ou $a$. C'est le dé parfait, le sucre en morceaux, le Rubik's Cube. Tous les angles sont droits, toutes les arêtes ont la même longueur."
+            },
+            {
+              "type": "definition",
+              "term": "Cube",
+              "definition": "Pavé droit dont les six faces sont des carrés congrus. Il a $12$ arêtes de même longueur et $8$ sommets.",
+              "example": "Un dé à jouer, un morceau de sucre, une caisse en bois cubique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien faire la différence dans ta tête : tout cube est un pavé droit, mais l'inverse est faux. Un pavé droit n'est un cube que si sa longueur, sa largeur et sa hauteur sont égales. Si tu as une boîte où $L=10\\,cm$, $l=10\\,cm$ mais $h=5\\,cm$, c'est un pavé droit aplati, pas un cube. Garde ce critère simple : **toutes les arêtes mesurent la même chose**."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître un pavé droit dans la vie de tous les jours"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, entraînons-nous à l'œil. Un pavé droit n'a pas besoin d'être un objet mathématique parfait en plastique. Ton frigo, ton cartable (s'il est bien rangé !), une piscine rectangulaire, une pièce de la maison : ce sont des pavés droits \"à l'échelle 1\". Les architectes et les menuisiers raisonnent en pavés droits pour concevoir des meubles, des pièces, des bâtiments. Savoir en identifier les trois dimensions sur un croquis ou une photo est la clé pour la suite : le calcul du volume."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Exemples de dimensions réelles (en cm)",
+              "bars": [
+                {
+                  "label": "Boîte chaussures",
+                  "value": 30,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Brique Lego 2x4",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Frigo",
+                  "value": 180,
+                  "tone": "green"
+                },
+                {
+                  "label": "Cahier A4 fermé",
+                  "value": 2,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : il compare la hauteur de quatre objets du quotidien qui ont tous une forme de pavé droit. Même si leurs tailles changent complètement, la logique géométrique reste identique. C'est la force des mathématiques : un même modèle décrit l'infiniment petit (la brique) et l'infiniment grand (le frigo). Tu es prêt pour l'exercice final de cette leçon !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels ont la forme d'un pavé droit ? Une balle de tennis, une boîte de céréales, une pyramide d'Égypte, un dictionnaire, un tuyau de plomberie.",
+              "answer": "La boîte de céréales et le dictionnaire.",
+              "hint": "Cherche les objets qui ont 6 faces planes, 12 arêtes et 8 sommets, avec des angles droits.",
+              "explanation": "La balle est une sphère, la pyramide a une base carrée mais 4 faces triangulaires et un sommet unique, le tuyau est un cylindre (faces courbes). Seuls la boîte et le dictionnaire correspondent à la définition."
+            },
+            {
+              "question": "Un pavé droit a une longueur de $15\\,cm$, une largeur de $8\\,cm$ et une hauteur de $10\\,cm$. Combien d'arêtes mesurent $15\\,cm$ ? Combien mesurent $8\\,cm$ ? Combien mesurent $10\\,cm$ ?",
+              "answer": "4 arêtes de $15\\,cm$, 4 arêtes de $8\\,cm$, 4 arêtes de $10\\,cm$.",
+              "hint": "Rappelle-toi : chaque dimension correspond à 4 arêtes parallèles.",
+              "explanation": "Il y a 3 groupes de 4 arêtes parallèles. Les 4 arêtes de la longueur mesurent $L=15$, les 4 de la largeur mesurent $l=8$, les 4 de la hauteur mesurent $h=10$. Total : $12$ arêtes."
+            },
+            {
+              "question": "Vrai ou faux ? 1) Tout cube est un pavé droit. 2) Tout pavé droit est un cube. 3) Un pavé droit a 8 sommets. 4) Les faces d'un pavé droit sont des carrés.",
+              "answer": "1) Vrai. 2) Faux. 3) Vrai. 4) Faux (ce sont des rectangles, des carrés seulement pour le cube).",
+              "hint": "Relis la définition du cube : c'est un cas particulier de pavé droit.",
+              "explanation": "Le cube est un pavé droit spécial (faces carrées). Un pavé droit standard a des faces rectangulaires non carrées. Le nombre de sommets (8) est constant pour tous les pavés droits."
+            },
+            {
+              "question": "Sur le patron ci-contre (imagine un patron en croix de 6 carrés), quelle affirmation est vraie ? A) C'est le patron d'un pavé droit de dimensions $2\\times3\\times4$. B) C'est le patron d'un cube de côté $5\\,cm$. C) Ce n'est pas un patron de pavé droit. D) C'est le patron d'un pavé droit avec 2 faces carrées et 4 faces rectangulaires.",
+              "answer": "B) C'est le patron d'un cube de côté $5\\,cm$.",
+              "hint": "Compte le nombre de faces et regarde leur forme. Si ce sont 6 carrés identiques, c'est un cube.",
+              "explanation": "Un patron de cube est composé de 6 carrés identiques. Si le patron montre 6 carrés de même taille, il forme un cube. Les autres options décrivent des pavés droits avec des rectangles."
+            }
+          ]
+        },
+        {
+          "title": "Unités cubes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'idée de volume : remplir l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant reconnaître un pavé droit. Mais comment comparer la taille de deux boîtes ? On ne peut pas utiliser la longueur seule, ni la surface d'une face. Il faut une mesure qui prend en compte **les trois dimensions à la fois** : c'est le **volume**. Imagine que tu as une boîte vide et une montagne de petits cubes en bois, tous identiques, de $1\\,cm$ de côté. Si tu remplis la boîte complètement, sans laisser de vide et sans dépasser, le nombre de petits cubes utilisés *est* le volume de la boîte."
+            },
+            {
+              "type": "definition",
+              "term": "Volume",
+              "definition": "Mesure de l'espace occupé par un solide. Pour un pavé droit, c'est le nombre de cubes unités qu'il peut contenir.",
+              "example": "Une boîte contient $60$ cubes de $1\\,cm^3$. Son volume est $60\\,cm^3$."
+            },
+            {
+              "type": "definition",
+              "term": "Unité de volume",
+              "definition": "Le cube unité sert de référence. Au système métrique, l'unité de base est le centimètre cube ($cm^3$), volume d'un cube de $1\\,cm$ de côté.",
+              "example": "$1\\,cm^3 = 1\\,cm \\times 1\\,cm \\times 1\\,cm$."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est une idée concrète : le volume, c'est une **quantité de matière** qui rentre à l'intérieur. Si tu verses du sable, de l'eau ou des billes dans la boîte, le volume reste le même. C'est pour cela qu'on utilise des cubes pour le mesurer : ils s'emboîtent parfaitement sans laisser de trous, contrairement aux billes ou au sable. Cette image du remplissage par des cubes unités est la fondation de tout calcul de volume."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les multiples et sous-multiples : le tableau de conversion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un $cm^3$ est minuscule (un dé de 1 cm de côté). Pour mesurer une piscine, un déménagement ou une planète, il faut des unités plus grandes. Le système métrique est décimal : on multiplie ou divise par $1000$ à chaque échelon. Pourquoi $1000$ ? Parce que $1\\,dm = 10\\,cm$, donc $1\\,dm^3 = 10\\,cm \\times 10\\,cm \\times 10\\,cm = 1000\\,cm^3$. C'est la règle d'or : **pour passer d'une unité à la suivante, on met 3 chiffres par case** (ou on décale la virgule de 3 crans)."
+            },
+            {
+              "type": "table",
+              "caption": "Tableau de conversion des volumes",
+              "headers": [
+                "$km^3$",
+                "$hm^3$",
+                "$dam^3$",
+                "$m^3$",
+                "$dm^3$",
+                "$cm^3$",
+                "$mm^3$"
+              ],
+              "rows": [
+                [
+                  "",
+                  "",
+                  "",
+                  "1",
+                  "0",
+                  "0",
+                  "0"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "1",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : pour convertir $2,5\\,m^3$ en $dm^3$, j'écris le $2$ dans la case $m^3$, le $5$ dans la case $dm^3$ (car $1\\,m^3 = 1000\\,dm^3$, donc $0,5\\,m^3 = 500\\,dm^3$), et j'ajoute des zéros jusqu'à l'unité voulue : $2500\\,dm^3$. Pour $4500\\,cm^3$ en $dm^3$, j'écris les chiffres en partant de la case $cm^3$ vers la gauche : $4$ dans $dm^3$, $5$ dans $cm^3$... non, $4500\\,cm^3 = 4,5\\,dm^3$. L'astuce : **groupe les chiffres par 3 en partant de la virgule**."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule magique : $V = L \\times l \\times h$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Inutile de compter les petits cubes un par un pour une grande piscine ! La mathématique nous offre un raccourci puissant. Imagine le pavé droit : sur la base (le rectangle du fond), tu peux ranger $L \\times l$ cubes (longueur $\\times$ largeur). C'est le nombre de cubes pour **une seule couche**. Comme il y a $h$ couches empilées (la hauteur), le total est : **Volume = (Nombre de cubes par couche) $\\times$ (Nombre de couches)**."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les dimensions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère $L$, $l$ et $h$ sur la figure ou dans l'énoncé. Vérifie qu'elles sont dans la **même unité** (tout en $cm$, ou tout en $m$, etc.)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $V = L \\times l \\times h$. L'ordre n'importe pas grâce à la commutativité de la multiplication."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exprimer le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le volume s'exprime en **unité cube** : $cm^3$, $m^3$, $dm^3$... N'oublie jamais l'exposant $3$ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "V = L \\times l \\times h"
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons : une boîte de $L=5\\,cm$, $l=3\\,cm$, $h=4\\,cm$. Base : $5\\times3=15$ cubes par couche. Hauteur : $4$ couches. Total : $15\\times4=60\\,cm^3$. La formule donne $5\\times3\\times4=60$. C'est instantané et ça marche pour n'importe quel pavé droit, même énorme !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes inverses : retrouver une dimension manquante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on connaît le volume et deux dimensions, et on cherche la troisième. C'est un calcul de **division**. Si $V = L \\times l \\times h$, alors $h = V \\div (L \\times l)$. C'est comme si on enlevait les couches une par une pour voir combien il y en a. Attention : il faut d'abord calculer le produit des deux dimensions connues (la surface de la base), puis diviser le volume par cette surface."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la surface de la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les deux dimensions connues. Ex: $L \\times l = S_{base}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser le volume par cette surface",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La dimension cherchée $= V \\div S_{base}$. Vérifie l'unité du résultat (elle est la même que $L$ et $l$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : Un aquarium a un volume de $120\\,dm^3$ (soit $120$ litres). Sa base fait $40\\,cm \\times 30\\,cm$. Attention aux unités ! Convertissons en $dm$ : $4\\,dm \\times 3\\,dm = 12\\,dm^2$. Hauteur $= 120 \\div 12 = 10\\,dm$ (soit $1\\,m$). L'aquarium fait $1\\,m$ de haut. C'est logique : $12$ litres par décimètre de hauteur, $120$ litres au total, donc $10$ décimètres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un pavé droit est rempli par $8$ rangées de $5$ cubes unités sur la longueur et $3$ cubes unités sur la largeur. Quel est son volume en $cm^3$ ?",
+              "answer": "$120\\,cm^3$",
+              "hint": "Calcule le nombre de cubes par couche (longueur $\\times$ largeur) puis multiplie par le nombre de couches (hauteur).",
+              "explanation": "Couche de base : $8 \\times 5 = 40$ cubes. Il y a $3$ couches (hauteur). Volume = $40 \\times 3 = 120\\,cm^3$."
+            },
+            {
+              "question": "Convertis : $3,2\\,m^3$ en $dm^3$ ; $450\\,cm^3$ en $dm^3$ ; $0,007\\,dam^3$ en $m^3$.",
+              "answer": "$3200\\,dm^3$ ; $0,45\\,dm^3$ ; $7\\,m^3$.",
+              "hint": "Utilise le tableau de conversion : 3 chiffres par case. $1\\,m^3 = 1000\\,dm^3$, $1\\,dm^3 = 1000\\,cm^3$, $1\\,dam^3 = 1000\\,m^3$.",
+              "explanation": "$3,2\\,m^3 = 3200\\,dm^3$ (décalage virgule 3 vers droite). $450\\,cm^3 = 0,45\\,dm^3$ (décalage virgule 3 vers gauche). $0,007\\,dam^3 = 7\\,m^3$ (décalage virgule 3 vers droite)."
+            },
+            {
+              "question": "Calcule le volume d'un pavé droit de dimensions $L = 12\\,cm$, $l = 5\\,cm$, $h = 8\\,cm$.",
+              "answer": "$480\\,cm^3$",
+              "hint": "Applique la formule $V = L \\times l \\times h$. Tu peux regrouper les multiplications comme tu veux.",
+              "explanation": "$V = 12 \\times 5 \\times 8 = 60 \\times 8 = 480$. L'unité est $cm^3$ car les dimensions sont en $cm$."
+            },
+            {
+              "question": "Un conteneur a un volume de $36\\,m^3$. Sa longueur est $6\\,m$ et sa largeur $3\\,m$. Quelle est sa hauteur ?",
+              "answer": "$2\\,m$",
+              "hint": "Calcule d'abord la surface de la base ($L \\times l$), puis divise le volume par cette surface.",
+              "explanation": "Surface de la base = $6 \\times 3 = 18\\,m^2$. Hauteur = $36 \\div 18 = 2\\,m$. Vérification : $6 \\times 3 \\times 2 = 36$."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode : résoudre un problème de volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons les outils (formule, conversions), place maintenant à la résolution de problèmes concrets. En 6e, on attend de toi une **démarche structurée**, pas seulement le résultat. C'est comme une recette de cuisine : si tu mélanges tout dans le désordre, le gâteau rate. Suis ces étapes à chaque fois, tu verras, ça devient un réflexe rassurant."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Lire et comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Souligne les données numériques et leur unité. Identifie la question (que cherche-t-on ? Volume ? Hauteur ? Coût ?). Fais un petit schéma si ça aide."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Uniformiser les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toutes les longueurs doivent être dans la **même unité** avant de calculer. Convertis tout en $cm$, ou tout en $m$, ou tout en $dm$... Choisis l'unité la plus pratique."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Choisir la formule et calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Volume direct : $V = L \\times l \\times h$. Inverse : dimension manquante $= V \\div (\\text{autres dimensions})$. Pose l'opération clairement."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Conclure par une phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réponds à la question posée avec une phrase complète et l'unité. Ex: \"Le volume de la caisse est $0,45\\,m^3$.\""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode te protège des erreurs bêtes (oubli de conversion, mauvaise formule). Prends le temps de l'appliquer sur l'exercice suivant, même s'il te semble simple. C'est en s'entraînant sur des cas faciles qu'on est prêt pour les cas complexes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges des conversions dans les problèmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'erreur n°1 en 6e : mélanger les unités. L'énoncé donne la longueur en $m$, la largeur en $cm$, la hauteur en $dm$... Si tu multiplies direct, le nombre n'a aucun sens physique. **Obligation** : convertir **avant** de multiplier. Choisis l'unité qui donne des nombres entiers ou simples. Pour une pièce de maison, le $m$ est roi. Pour une boîte de jeu, le $cm$. Pour un aquarium, le $dm$ (car $1\\,dm^3 = 1\\,L$)."
+            },
+            {
+              "type": "table",
+              "caption": "Choisir l'unité pratique selon l'objet",
+              "headers": [
+                "Objet",
+                "Unité longueurs conseillée",
+                "Unité volume résultat"
+              ],
+              "rows": [
+                [
+                  "Pièce, maison, piscine",
+                  "$m$",
+                  "$m^3$"
+                ],
+                [
+                  "Boîte, carton, livre",
+                  "$cm$",
+                  "$cm^3$"
+                ],
+                [
+                  "Aquarium, seau, bouteille",
+                  "$dm$",
+                  "$dm^3$ (ou L)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce de pro : si le problème parle de \"litres\" (capacité), passe immédiatement en $dm$ pour les longueurs. $1\\,L = 1\\,dm^3$. Cela t'évitera une conversion finale hasardeuse. Note aussi que $1\\,m^3 = 1000\\,L$. Ces repères valent de l'or le jour du contrôle !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Solides composés : la stratégie du découpage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le solide n'est pas un parfait pavé droit ? Imagine un meuble en L, une maison avec un garage accolé, une piscine avec un escalier... La technique universelle : **découper le solide complexe en plusieurs pavés droits simples** dont on sait calculer le volume. Le volume total est la **somme** des volumes des parties. C'est additif, comme les aires !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Découper sur le schéma",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace des traits pour isoler des pavés droits (souvent 2 ou 3). Numérote-les (Pavé A, Pavé B...)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver les dimensions de chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déduis les mesures manquantes par soustraction ou addition sur le schéma global. Attention aux dimensions communes !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer et additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $V_A$, $V_B$... puis $V_{total} = V_A + V_B + ...$. Conclus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : Un banc de jardin en forme de L. Le grand rectangle (assise) fait $120\\times40\\times10\\,cm$. Le petit rectangle (pied) fait $20\\times40\\times40\\,cm$. Volume assise = $48\\,000\\,cm^3$. Volume pied = $32\\,000\\,cm^3$. Total = $80\\,000\\,cm^3$ (soit $80\\,L$). Facile quand on y va étape par étape !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer, estimer, choisir : le volume au service de la décision"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le volume n'est pas qu'un calcul scolaire, c'est un outil pour décider. Quel déménageur choisir ? Quel bac de rangement acheter ? Combien de terre pour le potager ? Savoir **estimer** un volume rapidement est une compétence de la vie courante. Arrondis les dimensions au dix ou au cent supérieur pour majorer (prévoyer large) ou au inférieur pour minorer. Compare les volumes de deux contenants pour choisir le plus adapté."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Volume de contenants courants (en Litres = $dm^3$)",
+              "bars": [
+                {
+                  "label": "Canette",
+                  "value": 0.33,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bouteille eau",
+                  "value": 1.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Pack 6 bouteilles",
+                  "value": 9,
+                  "tone": "green"
+                },
+                {
+                  "label": "Caisse déménagement",
+                  "value": 60,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Coffre de toit",
+                  "value": 350,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : il donne une échelle de volumes réels. Si tu dois emporter $10\\,L$ d'eau en rando, tu sais qu'un pack de 6 bouteilles ($9\\,L$) ne suffit pas, il faut prévoir un peu plus. Si tu as $350\\,L$ de bagages, un coffre de toit pile à la limite est risqué, vise plus grand. Cette intuition des ordres de grandeur ($10\\,L$, $100\\,L$, $1000\\,L$) te servira toute ta vie. Dernier exercice pour t'entraîner à ce raisonnement !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un pavé droit et un cube (faces, arêtes, sommets, angles droits).",
+                "Je sais nommer les trois dimensions (longueur, largeur, hauteur) et repérer les faces opposées égales.",
+                "Je connais la définition du volume et l'unité de base ($cm^3$) ainsi que les multiples ($dm^3, m^3$) et sous-multiples ($mm^3$).",
+                "Je sais utiliser le tableau de conversion en groupant les chiffres par 3.",
+                "J'applique la formule $V = L \\times l \\times h$ en vérifiant que les unités sont homogènes.",
+                "Je sais retrouver une dimension manquante par division ($h = V / (L \\times l)$).",
+                "Je résous un problème en 4 étapes : lire, convertir, calculer, conclure par une phrase.",
+                "Je sais décomposer un solide complexe en pavés droits pour calculer son volume total.",
+                "J'ai une idée des ordres de grandeur : $1\\,dm^3 = 1\\,L$, $1\\,m^3 = 1000\\,L$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une caisse de déménagement a des dimensions intérieures : $L = 60\\,cm$, $l = 40\\,cm$, $h = 35\\,cm$. Quel est son volume en $dm^3$ (litres) ?",
+              "answer": "$84\\,dm^3$ (ou $84\\,L$)",
+              "hint": "Convertis les dimensions en $dm$ avant de multiplier ($60\\,cm = 6\\,dm$, etc.).",
+              "explanation": "$L=6\\,dm, l=4\\,dm, h=3,5\\,dm$. Volume = $6 \\times 4 \\times 3,5 = 24 \\times 3,5 = 84\\,dm^3$."
+            },
+            {
+              "question": "Pierre veut remplir un aquarium de $80\\,cm$ de long, $40\\,cm$ de large et $50\\,cm$ de haut. Il a des seaux de $10\\,L$. Combien de seaux pleins faut-il ?",
+              "answer": "16 seaux.",
+              "hint": "Calcule le volume de l'aquarium en $dm^3$ (litres), puis divise par la contenance d'un seau ($10\\,L$).",
+              "explanation": "Dimensions en $dm$ : $8 \\times 4 \\times 5 = 160\\,dm^3 = 160\\,L$. Nombre de seaux = $160 \\div 10 = 16$."
+            },
+            {
+              "question": "Un abri de jardin est composé de deux parties : un grand pavé droit (corps principal) de $L=3\\,m, l=2\\,m, h=2\\,m$ et un petit pavé droit (auvent) de $L=3\\,m, l=1\\,m, h=0,5\\,m$. Quel est le volume total d'air à chauffer ?",
+              "answer": "$13,5\\,m^3$",
+              "hint": "Calcule le volume de chaque partie séparément avec la formule, puis additionne les deux résultats.",
+              "explanation": "Corps : $3 \\times 2 \\times 2 = 12\\,m^3$. Auvent : $3 \\times 1 \\times 0,5 = 1,5\\,m^3$. Total = $12 + 1,5 = 13,5\\,m^3$."
+            },
+            {
+              "question": "Deux boîtes de rangement : Boîte A ($40\\,cm \\times 30\\,cm \\times 20\\,cm$) et Boîte B ($50\\,cm \\times 25\\,cm \\times 15\\,cm$). Laquelle a le plus grand volume ? De combien ?",
+              "answer": "Boîte A ($24\\,000\\,cm^3$) > Boîte B ($18\\,750\\,cm^3$). Différence : $5\\,250\\,cm^3$.",
+              "hint": "Calcule le volume de chacune dans la même unité ($cm^3$), compare, puis fais la soustraction.",
+              "explanation": "$V_A = 40 \\times 30 \\times 20 = 24\\,000\\,cm^3$. $V_B = 50 \\times 25 \\times 15 = 18\\,750\\,cm^3$. $V_A > V_B$. Différence = $24\\,000 - 18\\,750 = 5\\,250\\,cm^3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

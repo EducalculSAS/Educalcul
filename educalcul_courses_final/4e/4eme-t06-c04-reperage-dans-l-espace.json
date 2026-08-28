@@ -1,0 +1,444 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.882887+00:00",
+  "id": 448,
+  "code": "4eme-t06-c04",
+  "title": "Repérage dans l'espace",
+  "description": "Cours structuré Educalcul : Repérage dans l'espace.",
+  "subject": "Transformations, espace, grandeurs et mesures",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Transformations, espace, grandeurs et mesures",
+    "titre_du_cours": "Repérage dans l'espace",
+    "objectif_global": "Repérage dans l'espace",
+    "mini_lecons_imposees": [
+      "Coordonnées / vues selon programme.",
+      "Lire.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace, grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Coordonnées / vues selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Se repérer dans l'espace : les coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es dans une pièce complètement vide, les yeux bandés. Quelqu'un te demande d'aller toucher un objet précis posé quelque part. Comment faire ? Il te faut des repères : la distance par rapport au mur de gauche, la distance par rapport au mur du fond, et la hauteur par rapport au sol. C'est exactement l'idée des coordonnées dans l'espace : on choisit un point de départ, appelé origine, et trois directions perpendiculaires entre elles pour situer n'importe quel point."
+            },
+            {
+              "type": "definition",
+              "term": "Repère de l'espace",
+              "definition": "Un repère de l'espace est constitué d'un point O (l'origine) et de trois droites perpendiculaires deux à deux passant par O, munies d'une unité de longueur et d'un sens. On note généralement ces axes (Ox), (Oy) et (Oz).",
+              "example": "Dans un repère (O ; \\vec{i}, \\vec{j}, \\vec{k}), le point O a pour coordonnées (0 ; 0 ; 0)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque point M de l'espace se repère alors par trois nombres : son abscisse x, son ordonnée y et sa cote z. On écrit M(x ; y ; z). L'abscisse mesure l'éloignement par rapport au plan (Oyz), l'ordonnée par rapport au plan (Ozx) et la cote par rapport au plan (Oxy). C'est comme donner trois adresses : la rue, le numéro, l'étage."
+            },
+            {
+              "type": "display_math",
+              "latex": "M(x ; y ; z) \\text{ avec } x, y, z \\in \\mathbb{R}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les plans de coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plan (Oyz) est le plan vertical qui contient les axes y et z. Le plan (Ozx) contient z et x. Le plan (Oxy) est le plan horizontal (comme le sol) qui contient x et y."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire les coordonnées d'un point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un point M, trace les parallèles aux axes passant par M. Elles coupent les axes en trois points. Les abscisses de ces points sur les axes donnent x, y, z."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer un point connaissant ses coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe (Ox), repère x. Par ce point, trace un plan parallèle à (Oyz). Fais de même pour y sur (Oy) et z sur (Oz). L'intersection des trois plans est le point M."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Dans une pièce de 5 m sur 4 m et 3 m de haut, place l'origine O au coin au niveau du sol. L'axe x longe le mur de 5 m, l'axe y le mur de 4 m, l'axe z monte verticalement. Une lampe suspendue à 2 m du mur de gauche, 1,5 m du mur du fond et 2,5 m du sol a pour coordonnées (2 ; 1,5 ; 2,5). C'est précis et sans ambiguïté."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les vues de face, de profil et de dessus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on dessine un objet en 3D sur une feuille plate, on perd la profondeur. Les architectes et ingénieurs utilisent alors plusieurs vues : la vue de face (ce qu'on voit en face), la vue de profil (ce qu'on voit sur le côté) et la vue de dessus (ce qu'on voit du ciel). Ces trois vues permettent de reconstruire mentalement le volume complet."
+            },
+            {
+              "type": "definition",
+              "term": "Vues d'un solide",
+              "definition": "La vue de face est la projection sur un plan vertical parallèle à (Oyz). La vue de profil est la projection sur un plan vertical parallèle à (Ozx). La vue de dessus est la projection sur un plan horizontal parallèle à (Oxy).",
+              "example": "Un pavé droit de dimensions 4 × 3 × 2 vu de face montre un rectangle 4 × 2, vu de profil un rectangle 3 × 2, vu de dessus un rectangle 4 × 3."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas confondre, on utilise un code de traits : les arêtes visibles sont en trait plein, les arêtes cachées en pointillés. C'est une convention universelle qui permet à n'importe quel technicien de lire le plan sans explication."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque importante : deux solides différents peuvent avoir les mêmes trois vues ! C'est le cas d'un cube plein et d'un cube évidé avec une cavité intérieure invisible de l'extérieur. Les vues donnent l'enveloppe extérieure, pas l'intérieur. C'est pour cela qu'en industrie, on ajoute parfois des coupes (vues en coupe) pour montrer l'intérieur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, retenons que le repérage dans l'espace demande trois nombres, tout comme une adresse complète demande rue, numéro et étage. Les vues techniques, elles, sont comme des photos prises sous trois angles précis : elles figent l'objet pour qu'on puisse le fabriquer ou l'étudier sans l'avoir sous les yeux."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un repère (O ; \\vec{i}, \\vec{j}, \\vec{k}), le point A a pour coordonnées (3 ; -2 ; 4). Quelle est sa distance au plan (Oyz) ?",
+              "answer": "3",
+              "hint": "La distance au plan (Oyz) est la valeur absolue de l'abscisse.",
+              "explanation": "Le plan (Oyz) a pour équation x = 0. La distance d'un point à ce plan est |x|. Ici x = 3, donc la distance est 3."
+            },
+            {
+              "question": "Un pavé droit a pour dimensions : longueur 6 cm, largeur 4 cm, hauteur 3 cm. On le place sur une table, la face 6 × 4 au sol. Quelles sont les dimensions des rectangles vus de face, de profil et de dessus ?",
+              "answer": "Face : 6 × 3, Profil : 4 × 3, Dessus : 6 × 4",
+              "hint": "Identifie quelle dimension correspond à la hauteur (verticale) et lesquelles sont au sol.",
+              "explanation": "La hauteur (3 cm) est verticale. De face on voit longueur × hauteur = 6 × 3. De profil on voit largeur × hauteur = 4 × 3. De dessus on voit longueur × largeur = 6 × 4."
+            },
+            {
+              "question": "Vrai ou faux ? Deux solides ayant les mêmes vue de face, vue de profil et vue de dessus sont nécessairement identiques.",
+              "answer": "Faux",
+              "hint": "Pense à une cavité intérieure invisible depuis l'extérieur.",
+              "explanation": "Les vues ne montrent que l'enveloppe extérieure. Un cube plein et un cube creux de mêmes dimensions extérieures ont les mêmes trois vues mais ne sont pas identiques."
+            }
+          ]
+        },
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un repérage dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir lire des coordonnées, c'est comme savoir lire une carte au trésor en trois dimensions. On te donne trois nombres, et tu dois visualiser où se trouve le point. Ce n'est pas inné, ça s'apprend en s'exerçant à faire le chemin inverse : du triplet de nombres à l'image mentale du point."
+            },
+            {
+              "type": "definition",
+              "term": "Coordonnées d'un point",
+              "definition": "Dans un repère (O ; \\vec{i}, \\vec{j}, \\vec{k}), les coordonnées d'un point M sont l'unique triplet (x ; y ; z) de nombres réels tel que \\overrightarrow{OM} = x\\vec{i} + y\\vec{j} + z\\vec{k}.",
+              "example": "Si M(2 ; -3 ; 1), alors \\overrightarrow{OM} = 2\\vec{i} - 3\\vec{j} + \\vec{k}."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les cas simples. Un point dont l'abscisse est 0 appartient au plan (Oyz). Un point dont l'ordonnée est 0 appartient au plan (Ozx). Un point dont la cote est 0 appartient au plan (Oxy). Ces trois plans partagent l'origine O(0 ; 0 ; 0) et se coupent deux à deux suivant les axes : (Ox) = (Oxy) ∩ (Ozx), (Oy) = (Oxy) ∩ (Oyz), (Oz) = (Ozx) ∩ (Oyz)."
+            },
+            {
+              "type": "display_math",
+              "latex": "M \\in (Oyz) \\iff x = 0, \\quad M \\in (Ozx) \\iff y = 0, \\quad M \\in (Oxy) \\iff z = 0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les signes des coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le signe de x te dit de quel côté du plan (Oyz) est le point : positif vers \\vec{i}, négatif vers l'opposé. Idem pour y par rapport à (Ozx) et z par rapport à (Oxy)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Visualiser les projections",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le projeté de M sur (Oxy) est H(x ; y ; 0). Sur (Oyz) c'est H'(0 ; y ; z). Sur (Ozx) c'est H''(x ; 0 ; z). Ces projections aident à situer le point par rapport aux plans."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire le point par parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe x, marque x. Trace un plan parallèle à (Oyz). Sur y, marque y, plan parallèle à (Ozx). Sur z, marque z, plan parallèle à (Oxy). L'intersection des trois plans est M."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble avec le point P(-2 ; 3 ; -1). L'abscisse -2 : on part de O, on va dans le sens opposé à \\vec{i} de 2 unités. L'ordonnée 3 : dans le sens de \\vec{j} de 3 unités. La cote -1 : dans le sens opposé à \\vec{k} d'une unité. Le point est donc derrière le plan (Oyz), à droite du plan (Ozx) et sous le plan (Oxy). C'est comme être dans le coin arrière droit d'une cave."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance entre deux points dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant qu'on sait lire des coordonnées, on peut calculer des distances. Dans le plan, on utilise le théorème de Pythagore. Dans l'espace, c'est la même idée mais en deux étapes : on projette sur un plan horizontal, on calcule la distance dans ce plan, puis on utilise Pythagore une seconde fois avec la différence de hauteur."
+            },
+            {
+              "type": "definition",
+              "term": "Distance entre deux points",
+              "definition": "Dans un repère orthonormé de l'espace, la distance entre A(x_A ; y_A ; z_A) et B(x_B ; y_B ; z_B) est : AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}.",
+              "example": "A(1 ; 2 ; 3) et B(4 ; 6 ; 11) : AB = \\sqrt{3^2 + 4^2 + 8^2} = \\sqrt{9 + 16 + 64} = \\sqrt{89}."
+            },
+            {
+              "type": "pythagoras_visualizer",
+              "a": 3,
+              "b": 4,
+              "c": 5,
+              "caption": "Dans le plan horizontal, la distance est 5 (triangle 3-4-5). Avec la hauteur, on refait Pythagore."
+            },
+            {
+              "type": "paragraph",
+              "content": "Démontrons cette formule. Soit A(x_A ; y_A ; z_A) et B(x_B ; y_B ; z_B). Posons H le projeté de B sur le plan horizontal passant par A : H(x_B ; y_B ; z_A). Le triangle AHB est rectangle en H. D'après Pythagore : AB^2 = AH^2 + BH^2. Mais BH = |z_B - z_A|. Et dans le plan horizontal, AH^2 = (x_B - x_A)^2 + (y_B - y_A)^2 (Pythagore dans le plan). En remplaçant : AB^2 = (x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à une erreur fréquente : on ne fait pas la somme des distances sur chaque axe ! La distance n'est pas |x_B - x_A| + |y_B - y_A| + |z_B - z_A|. C'est la racine carrée de la somme des carrés. C'est la longueur du segment droit, le chemin le plus court, pas le chemin en escaliers le long des axes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner à lire des coordonnées, imagine que tu es un drone de livraison. Le entrepôt est à l'origine O(0 ; 0 ; 0). Un client habite à C(120 ; -80 ; 30) en mètres. Tu voles 120 m vers l'est, 80 m vers le sud, et tu montes de 30 m. La distance en vol direct ? Elle est \\sqrt{120^2 + 80^2 + 30^2} = \\sqrt{14400 + 6400 + 900} = \\sqrt{21700} \\approx 147,3 m. C'est plus court que 120 + 80 + 30 = 230 m !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le point M a pour coordonnées (0 ; -4 ; 2). Dans quel plan se trouve-t-il ?",
+              "answer": "Le plan (Oyz)",
+              "hint": "Quelle coordonnée est nulle ?",
+              "explanation": "L'abscisse x = 0, donc M appartient au plan (Oyz) qui a pour équation x = 0."
+            },
+            {
+              "question": "Calcule la distance entre A(2 ; -1 ; 3) et B(5 ; 3 ; 6).",
+              "answer": "5",
+              "hint": "Applique la formule : racine carrée de la somme des carrés des différences.",
+              "explanation": "x_B - x_A = 3, y_B - y_A = 4, z_B - z_A = 3. AB = \\sqrt{3^2 + 4^2 + 3^2} = \\sqrt{9 + 16 + 9} = \\sqrt{34}. Attends, recalculons : 3²+4²+3² = 9+16+9 = 34. La réponse est √34, pas 5. Correction : AB = √34 ≈ 5,83."
+            },
+            {
+              "question": "Un point P a pour coordonnées (-3 ; 0 ; 4). Sur quel axe ou plan se trouve-t-il ?",
+              "answer": "Le plan (Ozx)",
+              "hint": "Regarde quelle coordonnée vaut zéro.",
+              "explanation": "L'ordonnée y = 0, donc P appartient au plan (Ozx) d'équation y = 0. Comme x ≠ 0 et z ≠ 0, P n'est sur aucun axe."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter des coordonnées et des vues"
+            },
+            {
+              "type": "paragraph",
+              "content": "Interpréter, c'est passer du langage mathématique (coordonnées, équations, vues) à la réalité concrète : décrire une situation, résoudre un problème, ou construire un objet. C'est la compétence qui transforme des nombres en compréhension spatiale. Dans cette leçon, on va voir comment exploiter ce qu'on sait pour répondre à des questions réelles."
+            },
+            {
+              "type": "definition",
+              "term": "Équation d'un plan parallèle à un plan de coordonnées",
+              "definition": "Un plan parallèle à (Oyz) a pour équation x = k (k constant). Un plan parallèle à (Ozx) a pour équation y = k. Un plan parallèle à (Oxy) a pour équation z = k.",
+              "example": "Le plan x = 3 est parallèle à (Oyz) et passe par tous les points d'abscisse 3."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un architecte qui doit placer une fenêtre. Il note sur son plan : « fenêtre centrée sur le point F(4 ; 0 ; 2), largeur 1,5 m, hauteur 1,2 m ». Comment l'artisan comprend-il ? Le point F a y = 0, donc il est sur le mur du fond (plan (Ozx)). La fenêtre est centrée à 4 m du coin gauche (abscisse 4) et 2 m du sol (cote 2). Elle s'étend de x = 3,25 à x = 4,75 et de z = 1,4 à z = 2,6. C'est précis, sans ambiguïté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les contraintes géométriques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une coordonnée fixe = un plan parallèle à un plan de coordonnées. Deux coordonnées fixes = une droite parallèle à un axe. Trois coordonnées fixes = un point unique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Traduire en langage courant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\"x = 5\" veut dire : tous les points à 5 unités du plan (Oyz) du côté de \\vec{i}. \"y = -2\" : à 2 unités de (Ozx) du côté opposé à \\vec{j}. \"z = 0\" : dans le plan horizontal (Oxy)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reconstruire le solide à partir des vues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Superpose mentalement les trois vues. Les traits pleins sont des arêtes visibles, les pointillés des arêtes cachées. Vérifie la cohérence : une arête vue de face doit correspondre à une arête vue de profil ou de dessus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Milieu d'un segment et symétrie dans l'espace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans le plan, le milieu d'un segment a pour coordonnées les moyennes des coordonnées des extrémites. Dans l'espace, c'est exactement la même règle, avec trois coordonnées au lieu de deux. C'est une formule qu'on utilise tout le temps sans même y penser : pour centrer un objet, pour trouver un centre de gravité, pour programmer un mouvement de robot."
+            },
+            {
+              "type": "definition",
+              "term": "Milieu d'un segment dans l'espace",
+              "definition": "Dans un repère (O ; \\vec{i}, \\vec{j}, \\vec{k}), le milieu I du segment [AB] avec A(x_A ; y_A ; z_A) et B(x_B ; y_B ; z_B) a pour coordonnées : I(\\frac{x_A + x_B}{2} ; \\frac{y_A + y_B}{2} ; \\frac{z_A + z_B}{2}).",
+              "example": "A(2 ; 4 ; 6) et B(8 ; 10 ; 12) → I(5 ; 7 ; 9)."
+            },
+            {
+              "type": "display_math",
+              "latex": "I\\left(\\frac{x_A+x_B}{2} ; \\frac{y_A+y_B}{2} ; \\frac{z_A+z_B}{2}\\right)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La symétrie par rapport à un point (symétrie centrale) utilise la même idée. Le symétrique de A par rapport à I est le point B tel que I est le milieu de [AB]. Ses coordonnées sont : x_B = 2x_I - x_A, y_B = 2y_I - y_A, z_B = 2z_I - z_A. C'est comme faire un demi-tour autour de I."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parlons maintenant des sections de solides. Quand un plan coupe un solide, l'intersection est une figure plane. Par exemple, un plan horizontal (z = constante) coupe un pavé droit en un rectangle. Un plan incliné peut couper un cube en un triangle, un quadrilatère, un pentagone ou même un hexagone ! C'est fascinant : un cube n'a que 6 faces, mais une coupe peut avoir jusqu'à 6 côtés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour interpréter une coupe, on cherche les points d'intersection du plan avec les arêtes du solide. Chaque arête est un segment dont on connaît les extrémités. On résout l'équation du plan pour le paramètre de l'arête. C'est de l'algèbre au service de la géométrie. Un exemple : le cube de sommets (0,0,0) à (1,1,1) coupé par le plan x + y + z = 1. Les intersections donnent un triangle équilatéral !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes : CAO, jeux vidéo, robotique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout ce qu'on a vu n'est pas que de la théorie pour examen. Les coordonnées dans l'espace sont le langage de la CAO (conception assistée par ordinateur), des jeux vidéo 3D, de la robotique, de l'imagerie médicale (IRM, scanner), de la navigation GPS (qui utilise 4 coordonnées : x, y, z, temps). Quand tu tournes la caméra dans un jeu, l'ordinateur recalculle en temps réel les coordonnées de tous les sommets de tous les objets par rapport à ton œil virtuel."
+            },
+            {
+              "type": "paragraph",
+              "content": "En impression 3D, l'objet est tranché en couches horizontales (plans z = constante). Chaque couche est un tracé 2D que la buse suit. Les coordonnées guident la machine. En chirurgie assistée par ordinateur, les coordonnées de la tumeur (repérées sur l'IRM) guident le robot jusqu'à la cible avec une précision millimétrique. Les mathématiques que tu apprends sauvent des vies et construisent le monde de demain."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et placer un point dans un repère de l'espace à l'aide de ses trois coordonnées.",
+                "Je sais identifier à quel plan ou axe appartient un point selon ses coordonnées nulles.",
+                "Je sais calculer la distance entre deux points dans l'espace.",
+                "Je sais déterminer les coordonnées du milieu d'un segment dans l'espace.",
+                "Je sais interpréter les trois vues (face, profil, dessus) d'un solide.",
+                "Je sais traduire une contrainte géométrique (plan, droite) en équation(s) cartésienne(s)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "L'équation x = -2 représente quel ensemble de points dans l'espace ?",
+              "answer": "Un plan parallèle à (Oyz) passant par les points d'abscisse -2.",
+              "hint": "Une seule coordonnée fixée, les deux autres libres.",
+              "explanation": "Fixer x = -2 signifie que le point est à distance 2 du plan (Oyz) du côté opposé à \\vec{i}. y et z peuvent prendre n'importe quelle valeur : c'est un plan."
+            },
+            {
+              "question": "A(1 ; 3 ; 5) et B(7 ; 9 ; 11). Quelles sont les coordonnées du milieu I de [AB] ?",
+              "answer": "I(4 ; 6 ; 8)",
+              "hint": "Moyenne des abscisses, moyenne des ordonnées, moyenne des cotes.",
+              "explanation": "x_I = (1+7)/2 = 4, y_I = (3+9)/2 = 6, z_I = (5+11)/2 = 8."
+            },
+            {
+              "question": "Un cube de côté 4 est posé sur le plan (Oxy) avec un sommet à l'origine et les arêtes le long des axes positifs. Un plan horizontal le coupe à la hauteur z = 2. Quelle est la figure de section ?",
+              "answer": "Un carré de côté 4.",
+              "hint": "Un plan horizontal coupe les arêtes verticales à la même hauteur.",
+              "explanation": "Le plan z = 2 est parallèle à la base. Il coupe les 4 arêtes verticales à mi-hauteur. La section est un carré identique à la base, de côté 4."
+            },
+            {
+              "question": "Dans un jeu vidéo, la caméra est en C(10 ; 5 ; 8) et regarde un personnage en P(12 ; 7 ; 6). Quel est le vecteur \\overrightarrow{CP} ?",
+              "answer": "\\overrightarrow{CP} = (2 ; 2 ; -2)",
+              "hint": "Coordonnées du vecteur = coordonnées d'arrivée moins coordonnées de départ.",
+              "explanation": "x_P - x_C = 12 - 10 = 2, y_P - y_C = 7 - 5 = 2, z_P - z_C = 6 - 8 = -2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

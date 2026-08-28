@@ -1,0 +1,117 @@
+{
+  "_status": "done",
+  "_course_id": 533,
+  "_course_code": "2nde-t06-c07-bilan-statistiques-et-probabilites-seconde",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Checklist",
+  "title": "Checklist - Statistiques et probabilités Seconde",
+  "questions": [
+    {
+      "text": "Dans une étude statistique, on interroge $30$ élèves sur leur moyen de transport pour venir au lycée. Quel est le caractère étudié ?",
+      "options": [
+        "Les $30$ élèves interrogés",
+        "Le moyen de transport utilisé",
+        "Le nombre d'élèves prenant le bus",
+        "La proportion d'élèves marchant à pied"
+      ],
+      "correctAnswer": "Le moyen de transport utilisé",
+      "explanation": "Le caractère étudié est la propriété observée sur chaque individu de la population. Ici, on observe le moyen de transport pour chaque élève. La population est l'ensemble des $30$ élèves. Le nombre d'élèves prenant le bus est un effectif partiel. La proportion d'élèves marchant à pied est une fréquence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en boîte ci-dessous représente la série des notes sur $20$ d'une classe de Seconde. Quelle affirmation est fausse ?",
+      "options": [
+        "L'étendue de la série est $12$",
+        "Le premier quartile est $5$",
+        "La médiane est $7$",
+        "L'intervalle interquartile est $3$"
+      ],
+      "correctAnswer": "L'intervalle interquartile est $3$",
+      "explanation": "Sur le box plot : le minimum est $2$, le maximum est $14$, donc l'étendue est $14 - 2 = 12$. Le premier quartile (bord gauche de la boîte) est $5$. La médiane (trait dans la boîte) est $7$. Le troisième quartile (bord droit de la boîte) est $10$. L'intervalle interquartile vaut $Q_3 - Q_1 = 10 - 5 = 5$, et non $3$.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Notes sur 20",
+        "min": 2,
+        "q1": 5,
+        "median": 7,
+        "q3": 10,
+        "max": 14
+      }
+    },
+    {
+      "text": "On considère la série statistique suivante :\\nValeur : $5$ | $10$ | $15$ | $20$\\nEffectif : $2$ | $3$ | $1$ | $4$\\nQuelle est la moyenne de cette série ?",
+      "options": [
+        "$12,5$",
+        "$13,5$",
+        "$12$",
+        "$10$"
+      ],
+      "correctAnswer": "$13,5$",
+      "explanation": "L'effectif total est $2 + 3 + 1 + 4 = 10$. La somme des valeurs pondérées par leurs effectifs est $(5 \\times 2) + (10 \\times 3) + (15 \\times 1) + (20 \\times 4) = 10 + 30 + 15 + 80 = 135$. La moyenne est $135 / 10 = 13,5$. L'option $12,5$ correspond à la médiane (moyenne des 5e et 6e valeurs : $10$ et $15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $3$ boules rouges et $2$ boules bleues. On tire deux boules successivement sans remise. L'arbre probabiliste ci-dessous modélise l'expérience. Quelle est la probabilité d'obtenir deux boules rouges ?",
+      "options": [
+        "$\\frac{9}{25}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{1}{5}$",
+        "$\\frac{2}{5}$"
+      ],
+      "correctAnswer": "$\\frac{3}{10}$",
+      "explanation": "Le premier tirage donne une boule rouge avec une probabilité de $\\frac{3}{5}$. Sans remise, il reste $2$ boules rouges sur $4$ au total, donc la probabilité conditionnelle d'avoir une rouge au second tirage sachant que la première est rouge est $\\frac{2}{4} = \\frac{1}{2}$. La probabilité cherchée est $\\frac{3}{5} \\times \\frac{1}{2} = \\frac{3}{10}$. L'option $\\frac{9}{25}$ correspond à un tirage avec remise. L'option $\\frac{2}{5}$ est la probabilité d'une rouge au premier tirage seulement.",
+      "points": 1,
+      "figure": {
+        "type": "probability_tree",
+        "caption": "Tirages sans remise",
+        "branches": [
+          {
+            "label": "R",
+            "probability": "3/5",
+            "branches": [
+              {
+                "label": "R",
+                "probability": "2/4"
+              },
+              {
+                "label": "B",
+                "probability": "2/4"
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "probability": "2/5",
+            "branches": [
+              {
+                "label": "R",
+                "probability": "3/4"
+              },
+              {
+                "label": "B",
+                "probability": "1/4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance une pièce de monnaie $100$ fois et on obtient $42$ fois \"face\". On souhaite tester si la pièce est équilibrée au seuil de $5\\%$. L'intervalle de fluctuation au seuil de $5\\%$ pour $n=100$ et $p=0,5$ est $[40 ; 60]$. Quelle conclusion tirer ?",
+      "options": [
+        "La pièce est truquée car $42 < 50$",
+        "La pièce est équilibrée car $42$ appartient à l'intervalle $[40 ; 60]$",
+        "On ne peut pas conclure car $n$ est trop petit",
+        "La pièce est truquée car la fréquence $0,42$ est différente de $0,5$"
+      ],
+      "correctAnswer": "La pièce est équilibrée car $42$ appartient à l'intervalle $[40 ; 60]$",
+      "explanation": "Au seuil de $5\\%$, si le nombre de succès observé appartient à l'intervalle de fluctuation, on ne rejette pas l'hypothèse selon laquelle la pièce est équilibrée ($p=0,5$). Ici, $42 \\in [40 ; 60]$, donc on ne peut pas affirmer que la pièce est truquée. La différence entre $0,42$ et $0,5$ est compatible avec les fluctuations dues au hasard pour un échantillon de cette taille.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 416,
+  "_course_code": "5eme-t08-c02-conditions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Déboguer",
+  "title": "Quiz : Déboguer des conditions",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant avec la variable $age$ initialisée à $12$ :\\nSI $age > 12$ ALORS\\n    AFFICHER \"Collégien\"\\nSINON\\n    AFFICHER \"Écolier\"\\nFIN SI\\nL'affichage est \"Écolier\" mais on attendait \"Collégien\" pour un élève de 12 ans. Quelle correction apporter à la condition ?",
+      "options": [
+        "Remplacer $age > 12$ par $age >= 12$",
+        "Remplacer $age > 12$ par $age < 12$",
+        "Remplacer $age > 12$ par $age = 12$",
+        "Supprimer le SINON"
+      ],
+      "correctAnswer": "Remplacer $age > 12$ par $age >= 12$",
+      "explanation": "Avec $age = 12$, la condition $age > 12$ est fausse (12 n'est pas strictement supérieur à 12), donc le programme exécute le bloc SINON. Pour inclure 12 ans dans la catégorie \"Collégien\", il faut utiliser l'opérateur « supérieur ou égal » : $age >= 12$. L'option « $age < 12$ » inverserait la logique. L'option « $age = 12$ » ne fonctionnerait que pour 12 ans exactement. Supprimer le SINON ne changerait pas le fait que la condition est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme doit afficher \"Positif\" si le nombre $n$ est strictement positif, \"Négatif\" s'il est strictement négatif et \"Nul\" s'il vaut $0$. Voici le code :\\nSI $n > 0$ ALORS AFFICHER \"Positif\"\\nSINON SI $n < 0$ ALORS AFFICHER \"Négatif\"\\nFIN SI\\nPourquoi ce code est-il bogué pour $n = 0$ ?",
+      "options": [
+        "Il affiche \"Positif\"",
+        "Il affiche \"Négatif\"",
+        "Il n'affiche rien",
+        "Il affiche une erreur de syntaxe"
+      ],
+      "correctAnswer": "Il n'affiche rien",
+      "explanation": "Lorsque $n = 0$, la première condition $n > 0$ est fausse. La seconde condition $n < 0$ est aussi fausse. Comme il n'y a pas de bloc SINON final (sans condition) pour capturer le cas restant ($n = 0$), aucune instruction d'affichage n'est exécutée. Le programme termine silencieusement sans afficher \"Nul\". Ce n'est pas une erreur de syntaxe, mais une erreur logique (oubli d'un cas).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut diviser $100$ par une variable $x$ seulement si $x$ est différent de $0$. Le code ci-dessous tourne en boucle infinie :\\nx <- 5\\nTANT QUE $x <> 0$ FAIRE\\n    quotient <- 100 / x\\n    AFFICHER quotient\\nFIN TANT QUE\\nQuelle instruction manque à l'intérieur de la boucle pour corriger le bogue ?",
+      "options": [
+        "x <- x + 1",
+        "x <- x - 1",
+        "SI $x = 0$ ALORS ARRÊTER",
+        "quotient <- 0"
+      ],
+      "correctAnswer": "x <- x - 1",
+      "explanation": "La condition de la boucle est $x <> 0$ (différent de 0). Au départ $x = 5$. Si on ne modifie pas la valeur de $x$ à l'intérieur de la boucle, la condition reste vraie indéfiniment : c'est une boucle infinie. Pour que la boucle s'arrête, il faut que $x$ tende vers $0$. L'instruction $x <- x - 1$ décrémente $x$ (5, 4, 3, 2, 1, 0) jusqu'à ce que la condition devienne fausse. L'option $x <- x + 1$ éloigne $x$ de $0$. Un test $SI$ n'empêche pas la répétition. Remettre $quotient$ à $0$ ne change pas $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On teste cet algorithme avec $note = 10$ :\\nSI $note >= 10$ ALORS\\n    AFFICHER \"Admis\"\\nSINON SI $note > 15$ ALORS\\n    AFFICHER \"Mention\"\\nFIN SI\\nL'affichage est \"Admis\". Pourquoi le message \"Mention\" ne s'affiche-t-il jamais, quelle que soit la note ?",
+      "options": [
+        "La condition $note > 15$ est impossible",
+        "Le SINON SI est mal indenté",
+        "La première condition est trop large et capture les notes > 15",
+        "Il faut utiliser SI au lieu de SINON SI"
+      ],
+      "correctAnswer": "La première condition est trop large et capture les notes > 15",
+      "explanation": "La structure SINON SI signifie « sinon, si la condition précédente est fausse, alors teste celle-ci ». Si $note = 16$, la première condition $note >= 10$ est vraie. Le programme affiche \"Admis\" et saute tout le bloc SINON SI. La seconde condition n'est jamais évaluée pour les notes supérieures à 15. Pour corriger, il faut tester la condition la plus restrictive en premier (note > 15) puis la plus large (note >= 10). L'indentation n'affecte pas l'exécution. La condition $note > 15$ est possible (16, 17...).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tracez l'exécution de cet algorithme avec $a = 3$ et $b = 7$ :\\nSI $a > b$ ALORS\\n    $a <- a + 2$\\nSINON\\n    $b <- b - 3$\\nFIN SI\\nAFFICHER $a$, $b$\\nQuel couple est affiché ?",
+      "options": [
+        "5, 7",
+        "3, 4",
+        "3, 10",
+        "5, 4"
+      ],
+      "correctAnswer": "3, 4",
+      "explanation": "On compare $a$ (3) et $b$ (7). La condition $a > b$ ($3 > 7$) est fausse. On exécute donc le bloc SINON : $b <- b - 3$, donc $b$ devient $7 - 3 = 4$. La variable $a$ n'est pas modifiée, elle reste $3$. L'affichage final est donc $3, 4$. L'option $5, 7$ correspondrait à l'exécution du bloc ALORS (si la condition était vraie). L'option $3, 10$ correspond à une addition au lieu d'une soustraction. L'option $5, 4$ correspond à l'exécution des deux blocs, ce qui est impossible avec une structure SI/SINON.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

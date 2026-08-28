@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Construire",
+  "title": "Quiz : Construire des triangles et quadrilatères",
+  "questions": [
+    {
+      "text": "Pour construire un triangle connaissant les longueurs de ses trois côtés (cas SSS), quels sont les deux instruments indispensables ?",
+      "options": [
+        "Règle et rapporteur",
+        "Compas et rapporteur",
+        "Règle et compas",
+        "Équerre et compas"
+      ],
+      "correctAnswer": "Règle et compas",
+      "explanation": "La construction d'un triangle par les trois côtés (SSS) repose sur l'intersection de deux cercles. On trace d'abord un côté à la règle, puis on utilise le compas pour reporter les longueurs des deux autres côtés sous forme de cercles centrés sur les extrémités du premier côté. Le rapporteur sert à mesurer des angles (cas SAS) et l'équerre à tracer des perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire le triangle $ABC$ tel que $AB = 5$ cm, $AC = 4$ cm et $BC = 6$ cm. Après avoir tracé le segment $[AB]$, quelle est l'étape suivante correcte ?",
+      "options": [
+        "Tracer un cercle de centre $A$ et de rayon $4$ cm",
+        "Tracer un cercle de centre $B$ et de rayon $5$ cm",
+        "Tracer la perpendiculaire à $[AB]$ passant par $A$",
+        "Mesurer l'angle $\\widehat{BAC}$ au rapporteur"
+      ],
+      "correctAnswer": "Tracer un cercle de centre $A$ et de rayon $4$ cm",
+      "explanation": "Une fois la base $[AB]$ tracée (longueur $5$ cm), le sommet $C$ doit être à $4$ cm de $A$ et $6$ cm de $B$. On trace donc un cercle de centre $A$ et de rayon $4$ cm (longueur $AC$) et un cercle de centre $B$ et de rayon $6$ cm (longueur $BC$). Leur intersection donne le point $C$. L'option B utilise un rayon de $5$ cm qui correspond à $AB$, pas à $BC$.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "A",
+        "caption": "Cercle de centre A et de rayon 4 cm"
+      }
+    },
+    {
+      "text": "Pour construire un triangle $DEF$ tel que $DE = 6$ cm, $EF = 5$ cm et $\\widehat{E} = 40^\\circ$, dans quel ordre faut-il procéder ?",
+      "options": [
+        "Tracer $[DE]$, puis l'angle $\\widehat{E}$, puis reporter $EF$ sur le côté de l'angle",
+        "Tracer $[EF]$, puis l'angle $\\widehat{F}$, puis reporter $DE$",
+        "Tracer les trois côtés à la règle, puis mesurer l'angle",
+        "Tracer un cercle de centre $E$ de rayon $6$ cm"
+      ],
+      "correctAnswer": "Tracer $[DE]$, puis l'angle $\\widehat{E}$, puis reporter $EF$ sur le côté de l'angle",
+      "explanation": "C'est la construction du cas SAS (côté-angle-côté). On commence par tracer l'un des côtés connus ($[DE]$). Au point $E$, on construit l'angle donné ($40^\\circ$) à l'aide du rapporteur. Sur le deuxième côté de cet angle, on reporte la longueur du deuxième côté connu ($EF = 5$ cm) à l'aide du compas ou de la règle. Le point $F$ est ainsi déterminé. Il reste à relier $D$ et $F$.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 40,
+        "caption": "Rapporteur indiquant un angle de 40 degrés"
+      }
+    },
+    {
+      "text": "Quelle construction à la règle et au compas permet d'obtenir la médiatrice d'un segment $[PQ]$ ?",
+      "options": [
+        "Tracer deux cercles de même rayon, centres $P$ et $Q$, et relier leurs intersections",
+        "Tracer le cercle de centre $P$ passant par $Q$",
+        "Mesurer le milieu de $[PQ]$ à la règle et tracer la perpendiculaire à l'équerre",
+        "Tracer la bissectrice de l'angle $\\widehat{PQ}$"
+      ],
+      "correctAnswer": "Tracer deux cercles de même rayon, centres $P$ et $Q$, et relier leurs intersections",
+      "explanation": "La médiatrice est l'ensemble des points équidistants de $P$ et $Q$. En traçant deux cercles de même rayon (strictement supérieur à la moitié de $PQ$) centrés sur $P$ et $Q$, les deux points d'intersection de ces cercles sont équidistants de $P$ et $Q$. La droite passant par ces deux intersections est donc la médiatrice. L'option C utilise des instruments de mesure (règle graduée, équerre) et non une construction pure à la règle et au compas. L'option D ne s'applique qu'à un angle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On construit un rectangle $ABCD$ tel que $AB = 7$ cm et $BC = 4$ cm. Après avoir tracé $[AB]$, quelle construction géométrique assure que l'angle $\\widehat{B}$ est droit ?",
+      "options": [
+        "Tracer un cercle de centre $B$ et de rayon $4$ cm",
+        "Tracer la médiatrice de $[AB]$",
+        "Construire la perpendiculaire à la droite $(AB)$ passant par $B$",
+        "Reporter la longueur $7$ cm sur la droite $(AB)$"
+      ],
+      "correctAnswer": "Construire la perpendiculaire à la droite $(AB)$ passant par $B$",
+      "explanation": "Un rectangle a quatre angles droits. Une fois le côté $[AB]$ tracé, le côté $[BC]$ doit être perpendiculaire à $[AB]$ en $B$. Il faut donc construire la perpendiculaire à la droite $(AB)$ passant par le point $B$ (à l'équerre ou au compas). C'est sur cette perpendiculaire que l'on reportera la longueur $BC = 4$ cm pour placer le point $C$. Tracer un cercle (option A) ne donne pas la direction de la perpendiculaire. La médiatrice (option B) est perpendiculaire mais passe par le milieu de $AB$, pas par $B$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

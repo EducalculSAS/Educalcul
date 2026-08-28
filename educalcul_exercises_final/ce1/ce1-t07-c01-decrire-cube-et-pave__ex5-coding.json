@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 126,
+  "_course_code": "ce1-t07-c01-decrire-cube-et-pave",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Faces, arêtes et sommets",
+  "title": "Approfondissement : Faces, arêtes et sommets - Algorithmes",
+  "blocks": [
+    {
+      "title": "Nombre de faces d'un cube",
+      "content": "Écris un algorithme en langage naturel ou en pseudo-code qui permet de trouver le nombre de faces d'un cube.",
+      "correctAnswer": "Algorithme :\\n1. Début.\\n2. Le cube possède $6$ faces.\\n3. Afficher $6$.\\n4. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un cube est un solide qui a toujours $6$ faces carrées. L'algorithme consiste simplement à énoncer cette propriété et à afficher le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre d'arêtes d'un cube",
+      "content": "Écris un algorithme qui calcule le nombre d'arêtes d'un cube en utilisant le fait que chaque face est un carré à $4$ arêtes et que chaque arête est partagée par $2$ faces.",
+      "correctAnswer": "Algorithme :\\n1. Début.\\n2. Nombre de faces = $6$.\\n3. Arêtes par face = $4$.\\n4. Total arêtes comptées = $6 × 4 = 24$.\\n5. Chaque arête est comptée $2$ fois, donc nombre d'arêtes = $24 ÷ 2 = 12$.\\n6. Afficher $12$.\\n7. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque face du cube est un carré qui a $4$ arêtes. En multipliant le nombre de faces ($6$) par $4$, on compte chaque arête deux fois car elle appartient à deux faces adjacentes. En divisant par $2$, on obtient le nombre réel d'arêtes : $12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nombre de sommets d'un pavé droit",
+      "content": "Écris un algorithme qui détermine le nombre de sommets d'un pavé droit (ou d'un cube) en utilisant le nombre de faces, le nombre de sommets par face et le nombre de faces qui se rencontrent à chaque sommet.",
+      "correctAnswer": "Algorithme :\\n1. Début.\\n2. Nombre de faces = $6$.\\n3. Sommets par face = $4$.\\n4. Total sommets comptés = $6 × 4 = 24$.\\n5. À chaque sommet se rencontrent $3$ faces, donc chaque sommet est compté $3$ fois.\\n6. Nombre de sommets = $24 ÷ 3 = 8$.\\n7. Afficher $8$.\\n8. Fin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque face du pavé droit est un rectangle (ou un carré) qui a $4$ sommets. En multipliant $6$ faces par $4$, on obtient $24$ sommets comptés avec répétitions. Comme chaque sommet appartient à $3$ faces, on divise par $3$ pour obtenir le nombre réel de sommets : $8$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

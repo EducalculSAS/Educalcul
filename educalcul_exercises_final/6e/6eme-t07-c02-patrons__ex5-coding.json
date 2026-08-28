@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Associer",
+  "title": "Algorithmes et patrons : Associer et vérifier",
+  "blocks": [
+    {
+      "title": "Associer un patron à un solide",
+      "content": "Voici la description d'un patron : il est composé de six carrés identiques disposés en croix (un carré central, quatre carrés attachés à chacun de ses côtés, et un sixième carré attaché à l'un des carrés latéraux). Écris un algorithme sous forme d'une suite d'instructions numérotées qui permet de déterminer le nom du solide correspondant à ce patron.",
+      "correctAnswer": "Algorithme :\\n1. Compter le nombre de faces du patron (nb_faces).\\n2. Identifier la forme géométrique de chaque face (forme_faces).\\n3. Analyser l'arrangement des faces (connexité, disposition).\\n4. Si nb_faces = 6 ET forme_faces = 'carré' ET arrangement = 'croix' ALORS afficher 'Le solide est un cube'.\\n5. Sinon afficher 'Patron non reconnu pour un cube'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie un cube par ses 6 faces carrées. L'arrangement en croix (un arbre à 6 sommets et 5 arêtes) est un des 11 patrons possibles du cube. L'algorithme vérifie ces propriétés caractéristiques.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester les patrons d'un pavé droit",
+      "content": "On souhaite programmer un test pour vérifier si un patron donné peut former un pavé droit. Le patron est décrit par une liste de 6 faces, chacune définie par sa forme (rectangle) et ses deux dimensions (longueur, largeur). Écris la structure d'un algorithme utilisant des conditions (SI / ALORS / SINON) qui vérifie si les faces correspondent aux trois paires de rectangles identiques nécessaires pour former un pavé droit.",
+      "correctAnswer": "Algorithme :\\n1. Créer une liste vide paires_trouvees.\\n2. POUR chaque face DANS la liste des 6 faces FAIRE\\n3.     SI une face dans paires_trouvees a les mêmes dimensions ALORS\\n4.         Marquer cette paire comme complète.\\n5.     SINON\\n6.         Ajouter cette face dans paires_trouvees comme nouvelle paire en attente.\\n7. FIN SI\\n8. FIN POUR\\n9. SI le nombre de paires complètes = 3 ET il reste 0 face en attente ALORS\\n10.    AFFICHER 'Patron valide pour un pavé droit'.\\n11. SINON\\n12.    AFFICHER 'Patron invalide pour un pavé droit'.\\n13. FIN SI",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un pavé droit possède 3 paires de faces opposées identiques (deux faces de dimensions L×l, deux de L×h, deux de l×h). L'algorithme regroupe les faces par dimensions identiques et vérifie qu'on obtient exactement 3 paires complètes sans face restante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier la validité topologique d'un patron de cube",
+      "content": "Un patron valide pour un cube doit former un solide fermé sans chevauchement ni trou. On considère un ensemble de polygones connectés par leurs côtés. Propose un raisonnement structuré en étapes logiques (pouvant utiliser des variables comme $nb\\_faces$, $nb\\_aretes\\_communes$, $forme\\_faces$, $a\\_cycle$) pour vérifier si cet ensemble peut être un patron de cube.",
+      "correctAnswer": "Raisonnement structuré :\\n1. $nb\\_faces \\leftarrow$ compter le nombre de polygones.\\n2. $forme\\_faces \\leftarrow$ VRAI si tous les polygones sont des carrés, FAUX sinon.\\n3. Construire le graphe d'adjacence : sommets = faces, arêtes = côtés communs entre deux faces.\\n4. $nb\\_aretes\\_communes \\leftarrow$ nombre d'arêtes dans ce graphe.\\n5. $a\\_cycle \\leftarrow$ détecter s'il existe un cycle dans le graphe (parcours en profondeur).\\n6. SI $nb\\_faces = 6$ ET $forme\\_faces =$ VRAI ET $nb\\_aretes\\_communes = 5$ ET $a\\_cycle =$ FAUX ALORS\\n7.     AFFICHER 'Patron de cube valide'.\\n8. SINON\\n9.     AFFICHER 'Patron invalide pour un cube'.\\n10. FIN SI",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un patron de cube est un arbre couvrant du graphe dual du cube. Il a exactement 6 faces (sommets), toutes carrées, reliées par 5 côtés communs (arêtes) sans former de cycle (sinon le patron se refermerait sur lui-même dans le plan). Ces conditions sont nécessaires et suffisantes pour la validité topologique.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

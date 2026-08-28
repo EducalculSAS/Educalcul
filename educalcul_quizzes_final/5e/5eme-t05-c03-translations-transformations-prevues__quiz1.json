@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Image d'un point",
+  "title": "Quiz : Image d'un point par translation",
+  "questions": [
+    {
+      "text": "Soit la translation de vecteur $\\vec{v}(2;-1)$. Quel est le point image $A'$ du point $A(3;4)$ ?",
+      "options": [
+        "$A'(5;3)$",
+        "$A'(5;5)$",
+        "$A'(1;3)$",
+        "$A'(1;5)$"
+      ],
+      "correctAnswer": "$A'(5;3)$",
+      "explanation": "On ajoute les composantes du vecteur aux coordonnées de $A$ : $3+2=5$ et $4+(-1)=3$, donc $A'(5;3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La translation de vecteur $\\vec{v}(-3;4)$ envoie le point $A$ sur $A'(6;2)$. Quelles sont les coordonnées de $A$ ?",
+      "options": [
+        "$A(9;-2)$",
+        "$A(3;6)$",
+        "$A(9;6)$",
+        "$A(3;-2)$"
+      ],
+      "correctAnswer": "$A(9;-2)$",
+      "explanation": "On soustrait le vecteur à $A'$ : $6-(-3)=9$, $2-4=-2$, donc $A(9;-2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On applique successivement les translations de vecteurs $\\vec{v_1}(1;2)$ puis $\\vec{v_2}(-2;3)$ au point $B(0;0)$. Quelles sont les coordonnées de l'image finale $B''$ ?",
+      "options": [
+        "$B''(-1;5)$",
+        "$B''(-1;-5)$",
+        "$B''(1;5)$",
+        "$B''(1;-5)$"
+      ],
+      "correctAnswer": "$B''(-1;5)$",
+      "explanation": "La translation composée a pour vecteur la somme $(1-2;2+3)=(-1;5)$, donc $B''(-1;5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le point $A(2;3)$ est transformé en $A'(5;7)$ par une translation. Quel est le vecteur de cette translation ?",
+      "options": [
+        "$\\vec{v}(3;4)$",
+        "$\\vec{v}(-3;-4)$",
+        "$\\vec{v}(7;10)$",
+        "$\\vec{v}(-7;-10)$"
+      ],
+      "correctAnswer": "$\\vec{v}(3;4)$",
+      "explanation": "Le vecteur est obtenu par $A'-A$ : $(5-2;7-3)=(3;4)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un repère, le point $C(-2;1)$ a pour image $C'(1;4)$ par une translation. Déterminez le vecteur de cette translation.",
+      "options": [
+        "$\\vec{v}(3;3)$",
+        "$\\vec{v}(-3;-3)$",
+        "$\\vec{v}(3;-3)$",
+        "$\\vec{v}(-3;3)$"
+      ],
+      "correctAnswer": "$\\vec{v}(3;3)$",
+      "explanation": "On calcule $C'-C$ : $(1-(-2);4-1)=(3;3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

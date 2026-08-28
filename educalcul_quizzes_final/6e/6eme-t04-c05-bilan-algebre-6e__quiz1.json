@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 351,
+  "_course_code": "6eme-t04-c05-bilan-algebre-6e",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Formules et inconnues",
+  "title": "Quiz : Formules et inconnues",
+  "questions": [
+    {
+      "text": "On utilise la formule du périmètre d'un rectangle : $P = 2 \\times (L + l)$. Si la longueur $L$ vaut $8$ cm et la largeur $l$ vaut $5$ cm, quelle est la valeur du périmètre $P$ ?",
+      "options": [
+        "26 cm",
+        "13 cm",
+        "40 cm",
+        "30 cm"
+      ],
+      "correctAnswer": "26 cm",
+      "explanation": "On remplace les lettres par leurs valeurs : $P = 2 \\times (8 + 5)$. On calcule d'abord la parenthèse : $8 + 5 = 13$. Puis on multiplie par $2$ : $2 \\times 13 = 26$. Le périmètre est donc de $26$ cm. L'option 13 cm correspond à la somme $L+l$ sans multiplier par 2. L'option 40 cm correspond à $2 \\times 8 \\times 5$ (confusion avec l'aire). L'option 30 cm ne correspond à aucun calcul standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La formule du volume d'un pavé droit est $V = L \\times l \\times h$. Un pavé a un volume $V = 60$ cm$^3$, une longueur $L = 5$ cm et une largeur $l = 3$ cm. Quelle est sa hauteur $h$ ?",
+      "options": [
+        "4 cm",
+        "5 cm",
+        "3 cm",
+        "15 cm"
+      ],
+      "correctAnswer": "4 cm",
+      "explanation": "On remplace les valeurs connues dans la formule : $60 = 5 \\times 3 \\times h$. On calcule $5 \\times 3 = 15$. L'équation devient $60 = 15 \\times h$. Pour trouver $h$, on divise $60$ par $15$ : $h = 60 / 15 = 4$. La hauteur est donc $4$ cm. L'option 15 cm correspond au produit $L \\times l$ (aire de la base). Les options 5 cm et 3 cm reprennent les valeurs de la longueur et de la largeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle formule permet de calculer le périmètre $P$ d'un carré de côté $c$ ?",
+      "options": [
+        "P = 4 x c",
+        "P = c x c",
+        "P = 2 x c",
+        "P = c + 4"
+      ],
+      "correctAnswer": "P = 4 x c",
+      "explanation": "Un carré a quatre côtés de même longueur $c$. Le périmètre est la somme des longueurs des quatre côtés : $c + c + c + c$, ce qui s'écrit $4 \\times c$. La formule $P = c \\times c$ calcule l'aire du carré. La formule $P = 2 \\times c$ ne compte que deux côtés. La formule $P = c + 4$ n'a pas de sens géométrique ici (addition d'une longueur et d'un nombre pur).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La formule de la distance parcourue est $d = v \\times t$ (distance = vitesse x temps). Un cycliste roule à une vitesse constante de $20$ km/h pendant $3$ heures. Quelle distance a-t-il parcourue ?",
+      "options": [
+        "60 km",
+        "23 km",
+        "17 km",
+        "6,7 km"
+      ],
+      "correctAnswer": "60 km",
+      "explanation": "On applique la formule $d = v \\times t$ en remplaçant $v$ par $20$ et $t$ par $3$ : $d = 20 \\times 3 = 60$. La distance parcourue est de $60$ km. L'option 23 km correspond à une addition ($20+3$). L'option 17 km correspond à une soustraction ($20-3$). L'option 6,7 km correspond approximativement à une division ($20/3$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'aire $A$ d'un rectangle se calcule avec la formule $A = L \\times l$. Un rectangle a une aire de $56$ cm$^2$ et une longueur $L = 8$ cm. Quelle est sa largeur $l$ ?",
+      "options": [
+        "7 cm",
+        "8 cm",
+        "48 cm",
+        "64 cm"
+      ],
+      "correctAnswer": "7 cm",
+      "explanation": "On connaît l'aire $A = 56$ et la longueur $L = 8$. La formule donne $56 = 8 \\times l$. Pour trouver l'inconnue $l$, il faut diviser l'aire par la longueur : $l = 56 / 8 = 7$. La largeur est donc $7$ cm. L'option 8 cm confond la largeur avec la longueur donnée. L'option 48 cm correspond à $56 - 8$ (soustraction au lieu de division). L'option 64 cm correspond à $56 + 8$ (addition).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

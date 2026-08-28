@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 110,
+  "_course_code": "ce1-t05-c03-problemes-de-transformation",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Quantité initiale, changement, finale",
+  "title": "Problèmes de transformation : initiale, changement, finale",
+  "questions": [
+    {
+      "text": "Léa a $12$ billes. Elle en gagne $5$ de plus. Combien a-t-elle de billes maintenant ?",
+      "options": [
+        "$7$ billes",
+        "$17$ billes",
+        "$18$ billes",
+        "$60$ billes"
+      ],
+      "correctAnswer": "$17$ billes",
+      "explanation": "C'est un problème d'ajout : quantité initiale $12$, changement $+5$. On calcule $12 + 5 = 17$. L'option $7$ correspond à une soustraction ($12 - 5$), $18$ à une erreur de comptage ($12 + 6$), $60$ à une multiplication ($12 \\times 5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $18$ oiseaux sur un fil. $6$ s'envolent. Combien d'oiseaux restent sur le fil ?",
+      "options": [
+        "$24$ oiseaux",
+        "$12$ oiseaux",
+        "$11$ oiseaux",
+        "$108$ oiseaux"
+      ],
+      "correctAnswer": "$12$ oiseaux",
+      "explanation": "C'est un problème de retrait : quantité initiale $18$, changement $-6$. On calcule $18 - 6 = 12$. L'option $24$ correspond à une addition ($18 + 6$), $11$ à une erreur de retrait ($18 - 7$), $108$ à une multiplication ($18 \\times 6$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tom a mangé $4$ bonbons. Il lui en reste $9$. Combien en avait-il au début ?",
+      "options": [
+        "$5$ bonbons",
+        "$13$ bonbons",
+        "$14$ bonbons",
+        "$36$ bonbons"
+      ],
+      "correctAnswer": "$13$ bonbons",
+      "explanation": "On cherche la quantité initiale. On connaît le changement ($-4$) et la finale ($9$). On fait l'opération inverse : $9 + 4 = 13$. L'option $5$ correspond à $9 - 4$ (mauvaise opération), $14$ à $9 + 5$ (erreur de $1$), $36$ à $9 \\times 4$ (multiplication).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boîte contient $20$ crayons. Après en avoir pris quelques-uns, il en reste $14$. Combien de crayons a-t-on pris ?",
+      "options": [
+        "$34$ crayons",
+        "$6$ crayons",
+        "$7$ crayons",
+        "$5$ crayons"
+      ],
+      "correctAnswer": "$6$ crayons",
+      "explanation": "On cherche le changement. Initiale $20$, finale $14$. Le changement est la différence : $20 - 14 = 6$. L'option $34$ est une addition ($20 + 14$), $7$ et $5$ sont des erreurs de calcul proches ($20 - 13$ ou $20 - 15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le marchand a $35$ pommes. Il en vend $12$ le matin et $8$ l'après-midi. Combien lui reste-t-il de pommes ?",
+      "options": [
+        "$15$ pommes",
+        "$55$ pommes",
+        "$27$ pommes",
+        "$23$ pommes"
+      ],
+      "correctAnswer": "$15$ pommes",
+      "explanation": "Problème à deux changements successifs. Total vendu : $12 + 8 = 20$. Reste : $35 - 20 = 15$. Ou bien : $35 - 12 = 23$ le midi, puis $23 - 8 = 15$ le soir. L'option $55$ additionne tout ($35 + 20$), $27$ ne soustrait que le matin ($35 - 8$), $23$ ne soustrait que l'après-midi ($35 - 12$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

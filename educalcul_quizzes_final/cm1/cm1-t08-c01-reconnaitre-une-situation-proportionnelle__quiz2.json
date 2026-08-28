@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 263,
+  "_course_code": "cm1-t08-c01-reconnaitre-une-situation-proportionnelle",
+  "_level": "cm1",
+  "_subject": "Proportionnalité",
+  "_subtheme": "Distinguer contre-exemples",
+  "title": "Reconnaître une situation de proportionnalité",
+  "questions": [
+    {
+      "text": "Une situation est proportionnelle si on peut passer d'une valeur à l'autre en multipliant toujours par le même nombre. Laquelle de ces situations N'EST PAS proportionnelle ?",
+      "options": [
+        "Le prix de $3$ cahiers est de $6$ euros, celui de $6$ cahiers est de $12$ euros",
+        "Un enfant mesure $100$ cm à $4$ ans, il mesurera $200$ cm à $8$ ans",
+        "Un ticket de bus coûte $2$ euros, donc $5$ tickets coûtent $10$ euros",
+        "Dans un sachet, il y a $2$ bonbons rouges pour $3$ jaunes, donc $4$ rouges pour $6$ jaunes"
+      ],
+      "correctAnswer": "Un enfant mesure $100$ cm à $4$ ans, il mesurera $200$ cm à $8$ ans",
+      "explanation": "La croissance d'un enfant n'est pas proportionnelle à son âge. Si on multiplie l'âge par $2$, la taille ne double pas. C'est un contre-exemple classique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe ce tableau. Est-ce une situation de proportionnalité ?",
+      "options": [
+        "Oui, car on multiplie toujours par $2$",
+        "Oui, car on ajoute toujours $2$",
+        "Non, car on ne multiplie pas toujours par le même nombre",
+        "Non, car les nombres sont trop petits"
+      ],
+      "correctAnswer": "Non, car on ne multiplie pas toujours par le même nombre",
+      "explanation": "Dans le tableau, $1$ devient $3$ ($1 \\times 3 = 3$), mais $2$ devient $5$. Or $2 \\times 3 = 6$ et non $5$. Le coefficient multiplicateur n'est pas constant.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Nombre d'objets",
+          "Prix en euros"
+        ],
+        "rows": [
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Léo dit : Pour qu'une situation soit proportionnelle, il suffit que les nombres augmentent tous les deux. A-t-il raison ?",
+      "options": [
+        "Oui, si les deux colonnes augmentent, c'est proportionnel",
+        "Non, car ils peuvent augmenter sans être multipliés par le même nombre",
+        "Oui, car l'augmentation est la preuve de la proportionnalité",
+        "Non, car les nombres doivent toujours diminuer"
+      ],
+      "correctAnswer": "Non, car ils peuvent augmenter sans être multipliés par le même nombre",
+      "explanation": "C'est une erreur courante. Par exemple, passer de $1$ à $2$ puis de $2$ à $5$ est une augmentation, mais ce n'est pas proportionnel car $2 \\div 1 = 2$ alors que $5 \\div 2 = 2,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces tableaux représente un contre-exemple de proportionnalité ?",
+      "options": [
+        "Nombre de pommes : $1$, $2$, $3$ / Prix : $2$, $4$, $6$",
+        "Nombre d'heures : $1$, $2$, $3$ / Distance : $50$, $100$, $150$",
+        "Âge : $2$ ans, $4$ ans, $6$ ans / Pointure : $22$, $26$, $30$",
+        "Nombre de stylos : $1$, $5$, $10$ / Prix : $1$, $5$, $10$"
+      ],
+      "correctAnswer": "Âge : $2$ ans, $4$ ans, $6$ ans / Pointure : $22$, $26$, $30$",
+      "explanation": "La pointure ne double pas quand l'âge double. Entre $2$ et $4$ ans, l'âge est multiplié par $2$, mais la pointure passe de $22$ à $26$, ce qui n'est pas une multiplication par $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quelle situation le rapport entre les deux quantités reste-t-il constant ?",
+      "options": [
+        "Un forfait téléphone avec $10$ euros fixes plus $1$ euro par appel",
+        "Une recette où l'on met $2$ œufs pour $100$ g de farine, et $4$ œufs pour $200$ g",
+        "Un prix qui baisse de $5$ euros dès que l'on achète $3$ articles",
+        "Un enfant qui gagne $2$ cm par mois pendant un an"
+      ],
+      "correctAnswer": "Une recette où l'on met $2$ œufs pour $100$ g de farine, et $4$ œufs pour $200$ g",
+      "explanation": "Ici, on multiplie les quantités par $2$ ($2 \\times 2 = 4$ et $100 \\times 2 = 200$). Le rapport est constant. Dans les autres cas, il y a soit une addition fixe, soit une remise, soit une croissance additive.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

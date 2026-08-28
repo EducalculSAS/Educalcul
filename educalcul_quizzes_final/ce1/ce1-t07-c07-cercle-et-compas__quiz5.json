@@ -1,0 +1,91 @@
+{
+  "_status": "done",
+  "_course_id": 132,
+  "_course_code": "ce1-t07-c07-cercle-et-compas",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Centre et rayon dans un langage simple",
+  "title": "Le centre et le rayon du cercle",
+  "questions": [
+    {
+      "text": "Comment appelle-t-on le point qui se trouve exactement au milieu du cercle ?",
+      "options": [
+        "Le centre",
+        "Le rayon",
+        "Le bord",
+        "Le diamètre"
+      ],
+      "correctAnswer": "Le centre",
+      "explanation": "Le centre est le point qui est à la même distance de tous les points du bord du cercle. C'est le point fixe autour duquel on trace le cercle avec le compas. Le rayon est un segment, le bord est la circonférence et le diamètre traverse le cercle en passant par le centre.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Un cercle avec son centre O"
+      }
+    },
+    {
+      "text": "Qu'est-ce que le rayon d'un cercle ?",
+      "options": [
+        "Un segment qui relie le centre à un point du cercle",
+        "La distance autour du cercle",
+        "Un segment qui traverse le cercle en passant par le centre",
+        "Le nom du point du milieu"
+      ],
+      "correctAnswer": "Un segment qui relie le centre à un point du cercle",
+      "explanation": "Le rayon est un segment dont une extrémité est le centre et l'autre est un point sur le cercle. Tous les rayons d'un même cercle ont la même longueur. La distance autour du cercle est le périmètre (circonférence), le segment qui traverse le cercle en passant par le centre est le diamètre, et le point du milieu est le centre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on écarte les branches du compas de $3$ cm, quelle sera la longueur du rayon du cercle tracé ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$1,5$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$3$ cm",
+      "explanation": "L'écartement des branches du compas correspond exactement à la longueur du rayon. Si on écarte de $3$ cm, le rayon du cercle sera de $3$ cm. Le diamètre vaudrait $6$ cm (le double), mais la question porte sur le rayon.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 3,
+        "centerLabel": "O",
+        "caption": "Compas écarté de 3 cm"
+      }
+    },
+    {
+      "text": "Dans un cercle de centre O, les segments [OA], [OB] et [OC] sont des rayons. Que peut-on dire de leurs longueurs ?",
+      "options": [
+        "Elles sont toutes égales",
+        "[OA] est plus grand que [OB]",
+        "[OB] est plus petit que [OC]",
+        "Elles sont toutes différentes"
+      ],
+      "correctAnswer": "Elles sont toutes égales",
+      "explanation": "Par définition, tous les points du cercle (A, B, C) sont à la même distance du centre O. Donc tous les rayons [OA], [OB], [OC] ont la même longueur. C'est la propriété fondamentale du cercle : distance constante du centre au bord.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer un cercle de rayon $4$ cm avec un compas, que doit-on faire ?",
+      "options": [
+        "Régler l'écartement du compas sur $4$ cm",
+        "Régler l'écartement du compas sur $8$ cm",
+        "Régler l'écartement du compas sur $2$ cm",
+        "Tracer un segment de $4$ cm sans compas"
+      ],
+      "correctAnswer": "Régler l'écartement du compas sur $4$ cm",
+      "explanation": "L'écartement entre la pointe sèche (le centre) et la mine (le trait) du compas donne directement la longueur du rayon. Pour obtenir un rayon de $4$ cm, il faut donc régler cet écartement sur $4$ cm (souvent à l'aide d'une règle graduée). $8$ cm correspondrait au diamètre, $2$ cm à la moitié du rayon.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 4,
+        "unit": "cm",
+        "caption": "Réglage du compas sur 4 cm"
+      }
+    }
+  ]
+}

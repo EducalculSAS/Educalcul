@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Cas",
+  "title": "Quiz Algorithmique : La structure SELON - CAS",
+  "questions": [
+    {
+      "text": "Dans un algorithme, quelle structure de contrôle permet de tester plusieurs valeurs possibles d'une même variable de manière claire et structurée, en évitant une longue chaîne de `SI ... SINON SI` ?",
+      "options": [
+        "La boucle `POUR`",
+        "La structure `SELON ... CAS ... FIN SELON`",
+        "La boucle `TANT QUE`",
+        "L'instruction `AFFICHER`"
+      ],
+      "correctAnswer": "La structure `SELON ... CAS ... FIN SELON`",
+      "explanation": "La structure `SELON` (ou `SELON ... FAIRE`) est spécialement conçue pour comparer une variable (appelée sélecteur) à une liste de valeurs discrètes. Chaque `CAS` correspond à une valeur possible. C'est plus lisible et plus efficace qu'une succession de `SI ... SINON SI` pour ce cas précis. La boucle `POUR` et `TANT QUE` servent à répéter des instructions, et `AFFICHER` sert à communiquer un résultat.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec la variable $note$ égale à $12$ :\\n```\\nSELON note FAIRE\\n    CAS 16 : AFFICHER \"Très bien\"\\n    CAS 12 : AFFICHER \"Assez bien\"\\n    CAS 8  : AFFICHER \"Passable\"\\n    SINON   : AFFICHER \"Insuffisant\"\\nFIN SELON\\n```\\nQue va afficher le programme ?",
+      "options": [
+        "Très bien",
+        "Assez bien",
+        "Passable",
+        "Insuffisant"
+      ],
+      "correctAnswer": "Assez bien",
+      "explanation": "Le programme teste la valeur de $note$ ($12$) et la compare successivement aux valeurs des `CAS`. Il trouve une correspondance exacte avec `CAS 12`. Il exécute donc l'instruction associée : `AFFICHER \"Assez bien\"`, puis sort de la structure `SELON`. Les autres `CAS` et le `SINON` sont ignorés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme ci-dessous où $age$ vaut $15$ :\\n```\\nSELON age FAIRE\\n    CAS 0 A 12 : categorie <- \"Enfant\"\\n    CAS 13 A 17 : categorie <- \"Adolescent\"\\n    CAS 18 A 65 : categorie <- \"Adulte\"\\n    SINON : categorie <- \"Senior\"\\nFIN SELON\\n```\\nQuelle sera la valeur de la variable $categorie$ à la fin de l'exécution ?",
+      "options": [
+        "Enfant",
+        "Adolescent",
+        "Adulte",
+        "Senior"
+      ],
+      "correctAnswer": "Adolescent",
+      "explanation": "Certains langages algorithmiques (comme celui utilisé souvent en 4e) permettent la notation `CAS borne_inf A borne_sup` pour définir un intervalle de valeurs entières. La valeur $15$ appartient à l'intervalle $[13, 17]$ défini par `CAS 13 A 17`. L'affectation `categorie <- \"Adolescent\"` est donc réalisée. Les autres cas ne sont pas testés ensuite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme suivant :\\n```\\nx <- 5\\nSELON x FAIRE\\n    CAS 1 : y <- 10\\n    CAS 5 : y <- 20\\n    CAS 10 : y <- 30\\n    SINON : y <- 0\\nFIN SELON\\n```\\nQuelle est la valeur de $y$ après l'exécution ?",
+      "options": [
+        "0",
+        "10",
+        "20",
+        "30"
+      ],
+      "correctAnswer": "20",
+      "explanation": "La variable sélecteur est $x$ qui vaut $5$. Le programme parcourt les `CAS` : $5 \\neq 1$, puis trouve $5 = 5$ au deuxième `CAS`. Il exécute $y \\leftarrow 20$ et quitte la structure. Le `CAS 10` et le `SINON` ne sont pas exécutés. La réponse $0$ correspondrait au cas où $x$ ne vaut ni $1$, ni $5$, ni $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la caractéristique principale que doit avoir la variable testée (le sélecteur) dans une structure `SELON ... CAS` standard (sans intervalles `A`) pour que la structure soit utilisable ?",
+      "options": [
+        "Elle doit obligatoirement être un nombre décimal",
+        "Elle doit obligatoirement être une chaîne de caractères",
+        "Elle doit pouvoir prendre un nombre fini de valeurs discrètes (entiers, caractères, booléens...)",
+        "Elle doit être un booléen uniquement"
+      ],
+      "correctAnswer": "Elle doit pouvoir prendre un nombre fini de valeurs discrètes (entiers, caractères, booléens...)",
+      "explanation": "La structure `SELON` compare le sélecteur à des valeurs constantes précises (étiquettes de `CAS`). Cela impose que le type de la variable permette une comparaison d'égalité discrète (entiers, caractères, énumérations). Les nombres décimaux (réels) sont généralement exclus car les tests d'égalité sont risqués (erreurs d'arrondi). Le booléen n'a que deux valeurs, ce qui limite l'intérêt d'un `SELON` (un `SI` suffit).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

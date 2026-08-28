@@ -1,0 +1,344 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.764934+00:00",
+  "id": 92,
+  "code": "ce1-t03-c05",
+  "title": "Soustraction posée avec échange",
+  "description": "Cours structuré Educalcul : Soustraction posée avec échange.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Soustraction posée avec échange",
+    "objectif_global": "Soustraction posée avec échange",
+    "mini_lecons_imposees": [
+      "Échanger une dizaine contre 10 unités.",
+      "Effectuer la soustraction.",
+      "Expliquer la retenue / échange."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Échanger une dizaine contre 10 unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $43$ billes dans ton sac. Tu veux en donner $18$ à ton ami. Tu as $4$ dizaines et $3$ unités. Mais attention : pour enlever $8$ unités, il t'en manque ! On ne peut pas prendre $8$ quand on n'en a que $3$. C'est là qu'un petit tour de magie devient possible : on va casser une dizaine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une dizaine, c'est dix unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien : $1$ dizaine, c'est exactement la même chose que $10$ unités. Si tu ouvres un paquet de $10$ billes, tu te retrouves avec $10$ billes en vrac. Le total ne change pas, mais la présentation, si. C'est comme échanger un billet de $10$ euros contre $10$ pièces de $1$ euro : tu as toujours la même somme dans ton porte-monnaie."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 4,
+              "units": 3,
+              "caption": "Au départ : 4 dizaines et 3 unités pour former 43"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour pouvoir soustraire les unités, on transforme. On prend une des $4$ dizaines, on la \"casse\" et on ajoute ses $10$ unités aux $3$ unités qu'on avait déjà. Résultat : il nous reste $3$ dizaines et on a maintenant $13$ unités. C'est beaucoup plus facile pour enlever $8$ !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le manque",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On regarde les unités : $3$ est plus petit que $8$. On ne peut pas enlever $8$ de $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Casser une dizaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On barre une dizaine (il en reste $3$) et on écrit un petit $1$ devant les unités : $3$ devient $13$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant on a $13$ unités. C'est plus grand que $8$, on peut soustraire !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien vu le geste ? Essaie maintenant sur le nombre $52$. Si tu veux enlever $7$ unités, quelle dizaine vas-tu casser ? Combien d'unités auras-tu après l'échange ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant préparer le terrain. Dans la prochaine leçon, on passera à l'action : on fera la soustraction complète, colonnes par colonnes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour faire $64 - 27$, on regarde les unités : $4$ et $7$. Que doit-on faire avant de soustraire ?",
+              "answer": "Casser une dizaine : 6 dizaines deviennent 5 dizaines, et 4 unités deviennent 14 unités.",
+              "hint": "Regarde si le chiffre du haut (4) est plus grand ou plus petit que celui du bas (7).",
+              "explanation": "Comme $4 < 7$, on ne peut pas enlever $7$ de $4$. On emprunte une dizaine aux $6$ dizaines : il en reste $5$, et les $4$ unités deviennent $14$ unités."
+            },
+            {
+              "question": "Complète l'échange pour $81 - 35$ : $8$ dizaines $1$ unité = $\\ldots$ dizaines $\\ldots$ unités.",
+              "answer": "7 dizaines 11 unités",
+              "hint": "On prend 1 dizaine, il en reste 7. On ajoute 10 aux 1 unité.",
+              "explanation": "On casse une dizaine : $8 - 1 = 7$ dizaines. Les $1$ unité reçoit $10$ unités de plus : $1 + 10 = 11$ unités. On a maintenant $7$ dizaines et $11$ unités."
+            }
+          ]
+        },
+        {
+          "title": "Effectuer la soustraction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "C'est le grand jour ! Tu as appris à échanger une dizaine contre $10$ unités. Maintenant, tes unités sont assez nombreuses pour être soustraites. On va pouvoir terminer l'opération proprement, comme les grands."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La soustraction posée, colonne par colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "On écrit les nombres les uns sous les autres, bien alignés : les unités sous les unités, les dizaines sous les dizaines. On a déjà fait l'échange : on a barré la dizaine du haut et on a écrit le petit $1$ à côté des unités. Maintenant, on soustrait d'abord les unités, ensuite les dizaines. C'est l'ordre obligatoire !"
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "43",
+                "18"
+              ],
+              "result": "25",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'exemple $43 - 18$. Après l'échange, on a $13$ unités en haut. On calcule $13 - 8 = 5$. On écrit $5$ sous la ligne, dans la colonne des unités. Ensuite, on passe aux dizaines : on avait $4$ dizaines, on en a cassé $1$, il en reste $3$. On calcule $3 - 1 = 2$. On écrit $2$ dans la colonne des dizaines. Le résultat est $25$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Poser l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les chiffres bien en face : unités sous unités, dizaines sous dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Échanger si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si unités du haut < unités du bas : barre 1 dizaine, ajoute 10 aux unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Soustraire les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le calcul dans la colonne des unités. Écris le résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Soustraire les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Attention : utilise le nombre de dizaines RESTANT après l'échange !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu as réussi ta première soustraction avec échange. Pour être sûr de ton coup, on peut toujours vérifier en ajoutant : le résultat $+$ le nombre enlevé doit retrouver le nombre de départ. Essaie sur une nouvelle opération."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens vraiment fort ! Mais sais-tu expliquer à un copain pourquoi on a écrit ce petit $1$ au-dessus des unités ? C'est exactement ce qu'on va voir dans la dernière leçon : mettre des mots sur tes gestes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $52 - 17$ en posant l'opération. Quel est le résultat ?",
+              "answer": "35",
+              "hint": "Échange une dizaine : 5 dizaines -> 4 dizaines, 2 unités -> 12 unités. Puis 12-7 et 4-1.",
+              "explanation": "Après échange : 4 dizaines et 12 unités. Unités : $12 - 7 = 5$. Dizaines : $4 - 1 = 3$. Résultat : $35$. Vérification : $35 + 17 = 52$."
+            },
+            {
+              "question": "Effectue la soustraction $61 - 24$. Donne le résultat final.",
+              "answer": "37",
+              "hint": "Il faut échanger : 6 dizaines deviennent 5, 1 unité devient 11. Puis soustrais.",
+              "explanation": "Échange : $5$ dizaines, $11$ unités. Unités : $11 - 4 = 7$. Dizaines : $5 - 2 = 3$. Résultat : $37$."
+            }
+          ]
+        },
+        {
+          "title": "Expliquer la retenue / échange.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es le professeur et que ton doudou est l'élève. Il a fait l'opération $72 - 35$ et il a écrit un petit $1$ au-dessus du $2$. Il te demande : \"Pourquoi tu as fait ça ?\". Sauras-tu lui répondre avec tes mots ? C'est le signe qu'on a vraiment compris !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Raconter l'échange comme une histoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le petit $1$ qu'on écrit, ce n'est pas de la décoration. Il veut dire : \"J'ai pris une dizaine chez les dizaines, je l'ai transformée en $10$ unités, et je l'ai ajoutée ici.\". Du coup, dans la colonne des dizaines, il y en a une de moins. C'est pour ça qu'on la barre. Expliquer, c'est dire : \"J'avais $7$ dizaines, j'en ai prêté $1$, il m'en reste $6$. J'avais $2$ unités, j'ai reçu $10$, j'en ai $12$.\""
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "72",
+                "35"
+              ],
+              "result": "37",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette opération. Le $7$ des dizaines est barré, il devient $6$. Le $2$ des unités a un petit $1$ devant, il devient $12$. Si tu racontes ça à ton doudou, tu peux dire : \"J'ai cassé une dizaine pour avoir assez d'unités.\" C'est une phrase courte, claire, et tout le monde comprend."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Pour bien expliquer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Dis ce que tu as fait : \"J'ai échangé une dizaine contre 10 unités.\""
+                    }
+                  ]
+                },
+                {
+                  "title": "Montre les traces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "2. Pointe le chiffre barré : \"Ici, j'ai enlevé 1 dizaine.\""
+                    }
+                  ]
+                },
+                {
+                  "title": "Montre le gain",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "3. Pointe le petit 1 : \"Là, j'ai ajouté 10 unités.\""
+                    }
+                  ]
+                },
+                {
+                  "title": "Conclus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "4. Dis le résultat : \"Maintenant je peux soustraire sans problème.\""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as l'air d'un vrai prof ! Pour finir, essaie de repérer l'erreur dans une explication ou de compléter les phrases manquantes. C'est le meilleur moyen de vérifier que l'échange n'a plus de secret pour toi."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais échanger 1 dizaine contre 10 unités avec du matériel.",
+                "Je sais poser une soustraction avec échange et la calculer.",
+                "Je sais expliquer pourquoi j'ai barré une dizaine et écrit un petit 1.",
+                "Je vérifie mon résultat en faisant l'addition inverse."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $83 - 46$, un élève a écrit : \"J'ai barré le 8 et mis un 1 devant le 3.\" Est-ce bien expliqué ? Que manque-t-il ?",
+              "answer": "Il faut dire : le 8 devient 7 (car on a pris 1 dizaine) et le 3 devient 13 (car on a ajouté 10 unités).",
+              "hint": "Quand on barre un chiffre, il change de valeur. Quelles sont les nouvelles valeurs ?",
+              "explanation": "L'explication est incomplète. Il faut dire ce que deviennent les chiffres : 8 dizaines -> 7 dizaines. 3 unités + 10 = 13 unités. C'est ça, l'échange complet."
+            },
+            {
+              "question": "Complète l'explication pour $91 - 27$ : \"J'avais 9 dizaines, j'en ai prêté 1, il m'en reste $\\ldots$. J'avais 1 unité, j'en ai reçu 10, j'en ai $\\ldots$ unités.\"",
+              "answer": "8 dizaines et 11 unités",
+              "hint": "9 - 1 = ? pour les dizaines. 1 + 10 = ? pour les unités.",
+              "explanation": "On prête 1 dizaine : $9 - 1 = 8$ dizaines restantes. On reçoit 10 unités : $1 + 10 = 11$ unités. Maintenant $11 - 7$ et $8 - 2$ sont possibles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

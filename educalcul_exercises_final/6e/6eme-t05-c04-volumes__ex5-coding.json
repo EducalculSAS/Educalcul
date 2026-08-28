@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 355,
+  "_course_code": "6eme-t05-c04-volumes",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Pavé droit",
+  "title": "Algorithmes et volume d'un pavé droit",
+  "blocks": [
+    {
+      "title": "Calcul du volume",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir la longueur $L$, la largeur $l$ et la hauteur $h$ d'un pavé droit (en centimètres), qui calcule son volume $V$ en centimètres cubes, puis qui affiche le résultat.",
+      "correctAnswer": "Algorithme VolumePaveDroit\\nVariables L, l, h, V en numérique\\nDébut\\n    Afficher \"Saisir la longueur L : \"\\n    Lire L\\n    Afficher \"Saisir la largeur l : \"\\n    Lire l\\n    Afficher \"Saisir la hauteur h : \"\\n    Lire h\\n    V ← L × l × h\\n    Afficher \"Le volume est \", V, \" cm3\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme déclare quatre variables numériques. Il utilise des instructions d'affichage et de lecture pour récupérer les trois dimensions. Le volume est calculé par la formule $V = L \\times l \\times h$ grâce à une instruction d'affectation (flèche gauche). Enfin, le résultat est affiché avec l'unité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test sur le volume",
+      "content": "Compléter l'algorithme suivant pour qu'il affiche \"Grand volume\" si le volume calculé est strictement supérieur à $1000$ cm$^3$, et \"Petit volume\" sinon.\\n\\nAlgorithme TestVolume\\nVariables L, l, h, V en numérique\\nDébut\\n    Afficher \"Saisir L, l, h : \"\\n    Lire L, l, h\\n    V ← L × l × h\\n    ...\\nFin",
+      "correctAnswer": "Si V > 1000 Alors\\n    Afficher \"Grand volume\"\\nSinon\\n    Afficher \"Petit volume\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une structure conditionnelle \"Si ... Alors ... Sinon ... Fin Si\". La condition teste si la variable V est strictement supérieure à 1000. Si c'est vrai, on exécute la première instruction d'affichage, sinon on exécute celle du bloc Sinon.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'une dimension",
+      "content": "Écrire un algorithme qui demande le volume $V$ (en cm$^3$), la longueur $L$ et la largeur $l$ d'un pavé droit, qui calcule sa hauteur $h$, puis qui affiche cette hauteur. On suppose que $L$ et $l$ sont non nuls.",
+      "correctAnswer": "Algorithme HauteurPaveDroit\\nVariables V, L, l, h en numérique\\nDébut\\n    Afficher \"Saisir le volume V : \"\\n    Lire V\\n    Afficher \"Saisir la longueur L : \"\\n    Lire L\\n    Afficher \"Saisir la largeur l : \"\\n    Lire l\\n    h ← V / (L × l)\\n    Afficher \"La hauteur est \", h, \" cm\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole la hauteur $h$ dans la formule du volume : $V = L \\times l \\times h$ donc $h = V / (L \\times l)$. L'algorithme lit les trois valeurs connues, effectue la division (en respectant la priorité des opérations avec des parenthèses pour le produit $L \\times l$) et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

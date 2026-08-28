@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 421,
+  "_course_code": "4eme-t01-c02-calculs-avec-fractions",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Produit / quotient",
+  "title": "Calculs avec fractions : Produit et quotient",
+  "blocks": [
+    {
+      "title": "Produit de deux fractions",
+      "content": "Écrire un algorithme (en pseudo-code ou style Python) qui prend en entrée deux fractions sous forme de couples (numérateur, dénominateur) et qui affiche le produit simplifié. Utilise la notation $a/b$ pour les fractions.",
+      "correctAnswer": "Algorithme ProduitFraction(f1, f2) :\\n    // f1 = (num1, den1), f2 = (num2, den2)\\n    num ← num1 * num2\\n    den ← den1 * den2\\n    // Simplification par le PGCD\\n    g ← PGCD(num, den)\\n    num ← num / g\\n    den ← den / g\\n    Afficher (num, den)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme multiplie les numérateurs entre eux et les dénominateurs entre eux pour obtenir le produit brut. Ensuite, il calcule le plus grand commun diviseur (PGCD) du numérateur et du dénominateur et divise les deux par ce PGCD pour obtenir la fraction irréductible. Enfin, il affiche le couple (numérateur, dénominateur) simplifié.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quotient de deux fractions",
+      "content": "Écrire un algorithme qui calcule le quotient de deux fractions données sous forme de couples (numérateur, dénominateur) et qui affiche le résultat simplifié. Rappel : diviser par une fraction revient à multiplier par son inverse.",
+      "correctAnswer": "Algorithme QuotientFraction(f1, f2) :\\n    // f1 = (num1, den1), f2 = (num2, den2)\\n    // Vérifier que f2 n'est pas nul\\n    Si num2 = 0 Alors\\n        Afficher \"Erreur : division par zéro\"\\n        Retourner\\n    FinSi\\n    // Inverse de f2\\n    num ← num1 * den2\\n    den ← den1 * num2\\n    // Simplification par le PGCD\\n    g ← PGCD(num, den)\\n    num ← num / g\\n    den ← den / g\\n    Afficher (num, den)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour diviser deux fractions, on multiplie la première par l'inverse de la seconde. L'algorithme vérifie d'abord que le numérateur de la seconde fraction n'est pas nul (division par zéro impossible). Il calcule ensuite le nouveau numérateur comme le produit du numérateur de la première fraction et du dénominateur de la seconde, et le nouveau dénominateur comme le produit du dénominateur de la première et du numérateur de la seconde. La fraction obtenue est simplifiée par le PGCD avant d'être affichée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression combinée produit et quotient",
+      "content": "Écrire un algorithme qui, étant données trois fractions $a/b$, $c/d$ et $e/f$, calcule l'expression $a/b * c/d / e/f$ et affiche le résultat simplifié.",
+      "correctAnswer": "Algorithme ExpressionCombinee(f1, f2, f3) :\\n    // f1 = (a, b), f2 = (c, d), f3 = (e, f)\\n    // Vérifier que f3 n'est pas nul\\n    Si e = 0 Alors\\n        Afficher \"Erreur : division par zéro\"\\n        Retourner\\n    FinSi\\n    // Calcul du produit des deux premières fractions\\n    num ← a * c\\n    den ← b * d\\n    // Division par la troisième fraction (multiplication par l'inverse)\\n    num ← num * f\\n    den ← den * e\\n    // Simplification par le PGCD\\n    g ← PGCD(num, den)\\n    num ← num / g\\n    den ← den / g\\n    Afficher (num, den)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par multiplier les deux premières fractions : numérateur = a*c, dénominateur = b*d. Ensuite, pour diviser par la troisième fraction, on multiplie par son inverse : on multiplie le numérateur par f et le dénominateur par e. On vérifie au préalable que e n'est pas nul pour éviter une division par zéro. Finalement, on simplifie la fraction résultante en divisant numérateur et dénominateur par leur PGCD et on affiche le couple simplifié.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Erreur / précision",
+  "title": "Quiz : Erreur et précision (Seconde)",
+  "questions": [
+    {
+      "text": "Soit $x$ une valeur exacte et $X$ une valeur approchée de $x$. Comment définit-on l'erreur absolue commise en remplaçant $x$ par $X$ ?",
+      "options": [
+        "La valeur absolue de la différence $|x - X|$",
+        "La différence simple $x - X$",
+        "Le quotient $\\frac{|x - X|}{|x|}$",
+        "Le quotient $\\frac{x - X}{x}$"
+      ],
+      "correctAnswer": "La valeur absolue de la différence $|x - X|$",
+      "explanation": "L'erreur absolue mesure la distance entre la valeur exacte et la valeur approchée. Comme une distance est toujours positive ou nulle, on utilise la valeur absolue de la différence : $E_a = |x - X|$. L'option B peut être négative. Les options C et D correspondent à l'erreur relative (ou une variante signée).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une longueur exacte vaut $x = 12,345$ cm. On donne la valeur approchée $X = 12,3$ cm. Quelle est l'erreur absolue commise ?",
+      "options": [
+        "$0,045$ cm",
+        "$0,05$ cm",
+        "$0,45$ cm",
+        "$0,0045$ cm"
+      ],
+      "correctAnswer": "$0,045$ cm",
+      "explanation": "L'erreur absolue est $|x - X| = |12,345 - 12,3| = |0,045| = 0,045$ cm. L'option B correspond à un arrondi de l'erreur (au centième), ce qui n'est pas l'erreur exacte. Les options C et D sont des erreurs de position de la virgule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On mesure une masse $m = 250$ g avec une erreur absolue de $5$ g. Quelle est l'erreur relative exprimée en pourcentage ?",
+      "options": [
+        "$2\\%$",
+        "$5\\%$",
+        "$20\\%$",
+        "$0,2\\%$"
+      ],
+      "correctAnswer": "$2\\%$",
+      "explanation": "L'erreur relative est le quotient de l'erreur absolue sur la valeur exacte : $E_r = \\frac{5}{250} = 0,02$. En pourcentage, cela donne $0,02 \\times 100 = 2\\%$. L'option B confond erreur absolue et relative. L'option C inverse le quotient ($250/5$). L'option D divise par 1000 au lieu de 100.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $3,14 \\le \\pi \\le 3,15$. Si l'on choisit $X = 3,14$ comme valeur approchée de $\\pi$, que peut-on affirmer avec certitude sur l'erreur absolue ?",
+      "options": [
+        "Elle est au plus $0,01$",
+        "Elle est exactement $0,01$",
+        "Elle est exactement $0,00159...$",
+        "Elle est strictement supérieure à $0,01$"
+      ],
+      "correctAnswer": "Elle est au plus $0,01$",
+      "explanation": "L'encadrement donne une largeur de $3,15 - 3,14 = 0,01$. La valeur exacte $\\pi$ se trouve quelque part dans cet intervalle. La distance maximale entre $\\pi$ et la borne $3,14$ est donc la largeur de l'intervalle, soit $0,01$. L'erreur absolue est donc $\\le 0,01$. Elle n'est pas exactement $0,01$ car $\\pi \\neq 3,15$ (option B fausse). L'option C est la valeur numérique approchée de l'erreur réelle, mais on ne la connaît pas 'avec certitude' seulement grâce à l'encadrement donné. L'option D est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche un encadrement de $\\sqrt{2} \\approx 1,41421356...$ par deux nombres décimaux à $10^{-3}$ près (au millième). Lequel est correct ?",
+      "options": [
+        "$1,414 \\le \\sqrt{2} \\le 1,415$",
+        "$1,413 \\le \\sqrt{2} \\le 1,414$",
+        "$1,414 \\le \\sqrt{2} \\le 1,414$",
+        "$1,415 \\le \\sqrt{2} \\le 1,416$"
+      ],
+      "correctAnswer": "$1,414 \\le \\sqrt{2} \\le 1,415$",
+      "explanation": "Les chiffres de $\\sqrt{2}$ sont $1,4142...$. Le chiffre des millièmes est $4$, celui des dixièmes de millièmes est $2$. L'encadrement au millième par défaut est $1,414$ et par excès est $1,415$. On a bien $1,414 \\le 1,4142... \\le 1,415$. L'option B place $\\sqrt{2}$ au-dessus de $1,414$ (faux). L'option C suppose que $\\sqrt{2}$ vaut exactement $1,414$ (faux, c'est un irrationnel). L'option D décale l'intervalle trop haut.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

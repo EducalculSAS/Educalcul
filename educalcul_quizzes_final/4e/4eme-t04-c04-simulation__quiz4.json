@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Quiz : Application de la simulation en probabilités (4e)",
+  "questions": [
+    {
+      "text": "Qu'est-ce qu'une simulation en probabilités ?",
+      "options": [
+        "Remplacer une expérience aléatoire par une expérience déterministe qui en imite le comportement",
+        "Calculer la probabilité exacte d'un événement sans expérience",
+        "Mesurer la fréquence d'un événement lors d'une seule expérience",
+        "Utiliser une calculatrice pour obtenir un nombre aléatoire"
+      ],
+      "correctAnswer": "Remplacer une expérience aléatoire par une expérience déterministe qui en imite le comportement",
+      "explanation": "La simulation consiste à reproduire le comportement d'un phénomène aléatoire à l'aide d'un modèle déterministe (par exemple des nombres pseudo-aléatoires) pour estimer des probabilités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour simuler un lancer de pièce équilibrée, on attribue les chiffres $0$ à $4$ à « face » et $5$ à $9$ à « pile ». Quelle est la probabilité d'obtenir « face » dans cette simulation ?",
+      "options": [
+        "$0,5$",
+        "$0,4$",
+        "$0,6$",
+        "$0,1$"
+      ],
+      "correctAnswer": "$0,5$",
+      "explanation": "Il y a 10 chiffres équitablement probables, 5 correspondent à « face », donc $5/10 = 0,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule un dé à six faces équilibré en générant un chiffre aléatoire entre $0$ et $9$. On accepte les chiffres $0$ à $5$ (chacun représentant une face) et on rejette les chiffres $6$ à $9$. Quelle est la probabilité qu'un chiffre généré soit accepté ?",
+      "options": [
+        "$0,6$",
+        "$0,5$",
+        "$0,4$",
+        "$1$"
+      ],
+      "correctAnswer": "$0,6$",
+      "explanation": "6 chiffres acceptés sur 10 possibles, donc $6/10 = 0,6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après $200$ essais d'une simulation, l'événement étudié s'est produit $48$ fois. Quelle est l'estimation de la probabilité de cet événement ?",
+      "options": [
+        "$0,24$",
+        "$0,48$",
+        "$0,12$",
+        "$0,52$"
+      ],
+      "correctAnswer": "$0,24$",
+      "explanation": "L'estimation est la fréquence observée $48/200 = 0,24$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes décrit correctement la loi des grands nombres dans le cadre d'une simulation ?",
+      "options": [
+        "La fréquence observée converge vers la probabilité théorique quand le nombre d'essais augmente.",
+        "La fréquence observée reste constante quel que soit le nombre d'essais.",
+        "La probabilité théorique change à mesure que l'on répète l'expérience.",
+        "La simulation donne toujours la probabilité exacte dès le premier essai."
+      ],
+      "correctAnswer": "La fréquence observée converge vers la probabilité théorique quand le nombre d'essais augmente.",
+      "explanation": "La loi des grands nombres assure que la fréquence relative d'un événement se rapproche de sa probabilité théorique lorsque le nombre d'essais devient très grand.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

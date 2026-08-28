@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 201,
+  "_course_code": "ce2-t07-c06-symetrie-axiale",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Symétrie axiale",
+  "title": "Quiz Symétrie axiale - Applications",
+  "questions": [
+    {
+      "text": "Quelle est la définition de la symétrie axiale ?",
+      "options": [
+        "Une figure qui se superpose à elle-même après un demi-tour.",
+        "Une figure qui se superpose à elle-même par réflexion par rapport à une droite.",
+        "Une figure qui a deux axes de symétrie.",
+        "Une figure qui peut être tournée de 90 degrés."
+      ],
+      "correctAnswer": "Une figure qui se superpose à elle-même par réflexion par rapport à une droite.",
+      "explanation": "La symétrie axiale est une transformation qui associe à chaque point son image par réflexion par rapport à une droite appelée axe de symétrie. La figure originale et son image se superposent exactement par pliage le long de cet axe. Les autres propositions décrivent la rotation (demi-tour, quart de tour) ou une propriété particulière (deux axes) qui ne définissent pas la symétrie axiale en général.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, la droite $d$ est l'axe de symétrie. Le point $A$ est à $3$ cm de $d$. À quelle distance de $d$ se trouve le point $A'$, symétrique de $A$ par rapport à $d$ ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$1,5$ cm",
+        "$0$ cm"
+      ],
+      "correctAnswer": "$3$ cm",
+      "explanation": "Dans une symétrie axiale, l'axe est la médiatrice du segment qui joint un point à son image. Par conséquent, le point et son image sont à la même distance de l'axe. Puisque $A$ est à $3$ cm de $d$, son image $A'$ est également à $3$ cm de $d$. Les autres valeurs correspondent à des erreurs fréquentes : doubler la distance, la diviser par deux ou croire que le point se trouve sur l'axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les lettres suivantes, laquelle possède un axe de symétrie vertical ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "A",
+      "explanation": "La lettre capitale A possède un axe de symétrie vertical qui passe par son sommet et le milieu de sa barre horizontale. Les lettres B, C et D n'ont pas d'axe de symétrie vertical (B a un axe horizontal, C n'en a pas, D a un axe vertical seulement si on considère une police particulière mais pas en écriture standard).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace un triangle rectangle $ABC$ avec l'angle droit en $B$. On construit le point $C'$ symétrique de $C$ par rapport à la droite $(AB)$. Quelle affirmation est vraie ?",
+      "options": [
+        "Le segment $CC'$ est parallèle à $(AB)$.",
+        "Le segment $CC'$ est perpendiculaire à $(AB)$ et son milieu appartient à $(AB)$.",
+        "Le point $C'$ coïncide avec $C$.",
+        "Le triangle $ABC'$ est équilatéral."
+      ],
+      "correctAnswer": "Le segment $CC'$ est perpendiculaire à $(AB)$ et son milieu appartient à $(AB)$.",
+      "explanation": "Par définition de la symétrie axiale, l'axe $(AB)$ est la médiatrice du segment $CC'$. Donc $CC'$ est perpendiculaire à $(AB)$ et son milieu se trouve sur $(AB)$. Le segment ne peut pas être parallèle à l'axe, $C'$ est distinct de $C$ sauf si $C$ est déjà sur l'axe, et le triangle $ABC'$ n'est pas nécessairement équilatéral.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage, un carré de côté $4$ cases est dessiné. On trace son axe de symétrie vertical passant par le centre du carré. Combien de cases du carré se trouvent exactement sur cet axe ?",
+      "options": [
+        "4",
+        "2",
+        "1",
+        "0"
+      ],
+      "correctAnswer": "0",
+      "explanation": "Un carré de $4$ cases de côté a un nombre pair de colonnes. Son axe de symétrie vertical passe par la ligne médiane qui sépare la 2e et la 3e colonne. Aucune case n'est centrée sur cette ligne ; chaque case est soit entièrement à gauche, soit entièrement à droite. Par conséquent, zéro case se trouve exactement sur l'axe. Les réponses 4, 2 ou 1 correspondent à une confusion avec un carré de côté impair ou à un comptage des cases touchées par la ligne.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.321731+00:00",
+  "id": 273,
+  "code": "cm1-t09-c05",
+  "title": "Déboguer un programme",
+  "description": "Cours structuré Educalcul : Déboguer un programme.",
+  "subject": "Pensée informatique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Déboguer un programme",
+    "objectif_global": "Déboguer un programme",
+    "mini_lecons_imposees": [
+      "Repérer erreur.",
+      "Tester.",
+      "Corriger."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Repérer erreur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un bug ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as écrit un petit programme pour faire avancer un personnage sur l'écran, mais au lieu d'avancer, il reste immobile ou affiche un message étrange. C'est ce qu'on appelle un bug, une erreur dans le code qui empêche le programme de faire ce que tu as prévu. Même les programmeurs expérimentés rencontrent des bugs chaque jour, donc ne t'inquiète pas si ton code ne marche pas du premier coup."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bug peut être une faute de frappe, comme oublier un point-virgule à la fin d'une instruction, ou une erreur de logique, comme demander au personnage de tourner à gauche alors qu'il doit aller tout droit. Les deux types ne se ressemblent pas, mais ils produisent tous les deux un résultat inattendu qui te dit que quelque chose ne va pas."
+            },
+            {
+              "type": "definition",
+              "term": "bug",
+              "definition": "Une erreur dans le code qui fait que le programme ne fonctionne pas comme prévu.",
+              "example": "Oublier un point-virgule à la fin d'une instruction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce qu'est un bug, nous allons apprendre à le repérer dès que le programme s'arrête et t'envoie un message d'erreur. Ce message est ton premier indice, il te montre où regarder et quel type d'erreur il s'agit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire le message d'erreur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le programme plante, l'ordinateur t'envoie un message qui indique souvent la ligne où se trouve le problème. Ce message peut parler de syntaxe, ce qui veut dire que l'écriture du code ne respecte pas les règles du langage, ou de logique, ce qui veut dire que le code s'exécute mais ne donne pas le bon résultat. Apprendre à lire ce message te fait gagner beaucoup de temps."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs de syntaxe sont les plus faciles à corriger car le message te donne exactement la ligne et le caractère manquant. Les erreurs de logique sont plus discrètes : le programme tourne sans planter, mais le résultat est faux. Pour les trouver, il faut observer les valeurs des variables pendant l'exécution."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Ouvrir la console",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la fenêtre où apparaissent les messages d'erreur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter le numéro de ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le message donne un numéro, par exemple ligne 4. C'est là qu'il faut regarder en premier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire le texte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le texte explique le type d'erreur : 'missing semicolon' ou 'unexpected token'."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir lu le message, tu peux ajouter une instruction d'affichage pour voir la valeur d'une variable à un moment précis et ainsi comprendre pourquoi le résultat est incorrect. Essaie de placer un print juste avant la ligne suspecte pour voir ce qui s'y passe."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Utilise print(variable) juste avant la ligne suspecte pour savoir ce qu'elle contient."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "L'instruction print est ton meilleur ami pour espionner le programme. Place un print(variable) juste avant la ligne qui te semble suspecte, puis lance le programme. La console t'affichera la valeur actuelle de la variable, ce qui te permet de vérifier si elle correspond à ce que tu attends."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si la valeur affichée est différente de ton attente, tu as localisé l'endroit où la logique déraille. Tu peux alors modifier le calcul ou la condition qui produit cette valeur erronée. Répète l'opération jusqu'à ce que toutes les valeurs soient correctes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour repérer un bug : connaître les deux grandes familles d'erreurs, lire le message de la console et observer les valeurs avec print. Avec de l'entraînement, tu deviendras rapide pour trouver et corriger n'importe quel bug."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le programme ci-dessous, quelle ligne contient une faute de frappe ?\\n1: avance()\\n2: tourne_gauche()\\n3: avance()\\n4: tourne_droite\\n5: avance()",
+              "answer": "Ligne 4",
+              "hint": "Cherche la ligne qui manque un point-virgule à la fin.",
+              "explanation": "La ligne 4 écrit 'tourne_droite' sans point-virgule, ce qui provoque une erreur de syntaxe."
+            },
+            {
+              "question": "Le programme affiche 'Erreur de syntaxe' à la ligne 3. Que dois-tu vérifier en premier ?",
+              "answer": "Vérifier s'il manque un point-virgule ou une parenthèse à la ligne 3.",
+              "hint": "Les messages d'erreur de syntaxe indiquent souvent la ligne exacte.",
+              "explanation": "Une erreur de syntaxe signifie que le code ne respecte pas la grammaire du langage ; le point-virgule manquant est la cause la plus fréquente."
+            },
+            {
+              "question": "Tu ajoutes 'print(position)' juste avant la ligne 3. Si la variable position vaut 5, que verras-tu dans la console ?",
+              "answer": "5",
+              "hint": "print affiche la valeur actuelle de la variable.",
+              "explanation": "L'instruction print écrit la valeur de la variable dans la console, donc tu verras le nombre 5."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi tester ton programme ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire un programme, c'est comme préparer une recette : tu dois goûter le plat à plusieurs étapes pour être sûr qu'il est bon. Tester, c'est faire goûter ton programme avec différentes entrées pour vérifier qu'il produit le bon résultat à chaque fois. Sans test, tu ne sais pas si ton code fonctionne vraiment."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un test simple consiste à donner une entrée connue, par exemple le nombre 2, et à regarder si la sortie correspond à ce que tu attends, comme 4 pour un programme qui double le nombre. Si le résultat est différent, il y a un bug à corriger. Chaque test te donne une preuve que ton programme fait ce qu'il doit faire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Entrée",
+                "Sortie attendue",
+                "Sortie obtenue"
+              ],
+              "rows": [
+                [
+                  "2",
+                  "4",
+                  "4"
+                ],
+                [
+                  "5",
+                  "10",
+                  "9"
+                ],
+                [
+                  "0",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu un tableau de tests, essayons de créer nos propres cas de test pour un programme qui additionne deux nombres. Un bon ensemble de tests couvre plusieurs situations différentes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un cas de test"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bon cas de test couvre une situation normale, une situation limite et une situation inattendue. Pour l'addition, tu peux tester 3 + 4 (normal), 0 + 0 (limite) et -2 + 5 (inattendu avec un nombre négatif). Chaque cas vérifie une partie différente du comportement du programme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir l'entrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux nombres que tu vas donner au programme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le résultat attendu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le calcul à la main ou dans ta tête."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lancer le programme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne les deux nombres au programme et note la sortie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la sortie obtenue est égale à la sortie attendue, le test passe. Sinon, il y a un bug."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un programme fonctionne pour les cas simples mais échoue pour des valeurs plus grandes ou des nombres décimaux. C'est pourquoi il faut aussi tester des cas extrêmes, comme des nombres très grands ou des valeurs négatives, pour être certain que le code tient la route."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "N'oublie pas de tester avec des nombres très grands, des nombres à virgule et des valeurs négatives."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode complète : préparer un tableau de tests, exécuter le programme pour chaque ligne et comparer les résultats. Cela te permet de repérer rapidement les erreurs de logique et de gagner du temps lors de la correction."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour un programme qui double un nombre, quelle sortie attends-tu pour l'entrée 7 ?",
+              "answer": "14",
+              "hint": "Le double de 7 est 7 fois 2.",
+              "explanation": "Le programme doit multiplier l'entrée par 2, donc 7 * 2 = 14."
+            },
+            {
+              "question": "Tu testes l'addition avec les entrées 10 et -3. Quelle est la sortie attendue ?",
+              "answer": "7",
+              "hint": "Additionne 10 et -3.",
+              "explanation": "10 + (-3) = 7, c'est le résultat correct que le programme doit afficher."
+            },
+            {
+              "question": "Le programme affiche 15 pour l'entrée 5 dans le doublage. Le test passe-t-il ?",
+              "answer": "Non",
+              "hint": "Compare la sortie obtenue (15) avec la sortie attendue (10).",
+              "explanation": "Le double de 5 est 10, pas 15. Le test échoue, il y a un bug dans le programme."
+            }
+          ]
+        },
+        {
+          "title": "Corriger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger une erreur de syntaxe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le message d'erreur parle de syntaxe, le problème est souvent un caractère manquant ou en trop : un point-virgule oublié, une parenthèse qui ne se ferme pas, ou un mot-clé mal écrit. La correction est rapide : tu ajoutes ou retires le caractère indiqué, puis tu relances le programme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, si la console dit 'missing semicolon at line 4', tu vas à la ligne 4, tu regardes la fin de l'instruction et tu ajoutes le point-virgule. Après cette petite modification, le programme doit démarrer sans message d'erreur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le message",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le type d'erreur (syntaxe) et le numéro de ligne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ouvrir le code à la ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'instruction concernée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger le caractère",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute le point-virgule, ferme la parenthèse ou corrige le mot-clé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Relancer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute à nouveau le programme pour voir si le message disparaît."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le programme démarre mais donne un résultat faux. C'est une erreur de logique : le code suit les règles du langage, mais l'algorithme n'est pas le bon. Pour la corriger, il faut comprendre ce que le programme fait réellement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger une erreur de logique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Utilise les print que tu as appris à placer pour observer les valeurs intermédiaires. Compare ces valeurs avec ce que tu attends à chaque étape. Si une variable ne contient pas la valeur prévue, tu as trouvé l'endroit où la logique déraille."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un programme qui doit calculer la moyenne de trois notes. Si le programme additionne les notes mais oublie de diviser par 3, la somme sera affichée au lieu de la moyenne. En ajoutant un print après l'addition, tu verras la somme, puis tu comprendras qu'il manque la division."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Divise toujours le total par le nombre de valeurs pour obtenir une moyenne."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la correction faite, tu dois vérifier qu'elle règle le problème sans en créer d'autres. Relance tous les tests que tu as préparés dans la leçon précédente."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valider la correction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passe chaque cas de test un par un. Si tous les tests passent, tu peux être confiant que le bug est corrigé. Si un test échoue encore, recommence le cycle : lire le message, observer avec print, corriger, tester."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un message d'erreur de syntaxe et le corriger.",
+                "Je sais utiliser print pour suivre les valeurs d'une variable.",
+                "Je sais créer un tableau de tests avec des cas normaux, limites et inattendus.",
+                "Je sais relancer tous les tests après une correction pour valider le programme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le message d'erreur indique 'missing semicolon at line 2'. Quelle correction dois-tu faire ?",
+              "answer": "Ajouter un point-virgule à la fin de la ligne 2.",
+              "hint": "Cherche la fin de l'instruction à la ligne 2.",
+              "explanation": "L'erreur de syntaxe 'missing semicolon' signifie qu'un point-virgule manque à la fin de l'instruction."
+            },
+            {
+              "question": "Ton programme additionne trois notes 12, 14, 16 et affiche 42. Quelle correction faut-il apporter pour obtenir la moyenne ?",
+              "answer": "Diviser la somme par 3.",
+              "hint": "La moyenne est la somme divisée par le nombre de notes.",
+              "explanation": "La somme 12+14+16 = 42. Pour avoir la moyenne, il faut faire 42 / 3 = 14."
+            },
+            {
+              "question": "Après avoir corrigé le programme, tu relances tes trois tests (normal, limite, inattendu). Tous passent. Que peux-tu conclure ?",
+              "answer": "Le bug est corrigé et le programme fonctionne pour les cas testés.",
+              "hint": "Si tous les tests passent, la correction est validée.",
+              "explanation": "Le passage de tous les cas de test montre que la correction règle l'erreur sans en introduire de nouvelles."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Bilan - Fonctions Seconde",
+  "title": "Bilan - Fonctions Seconde",
+  "questions": [
+    {
+      "text": "Quelle est l'ensemble de définition de la fonction $f(x) = \\frac{\\sqrt{x-2}}{x-3}$ ?",
+      "options": [
+        "[2, +∞) sans 3",
+        "(2, +∞)",
+        "[2, +∞)",
+        "(-∞, 3) ∪ (3, +∞)"
+      ],
+      "correctAnswer": "[2, +∞) sans 3",
+      "explanation": "La racine carrée impose $x-2 \\ge 0$, donc $x \\ge 2$. Le dénominateur ne doit pas s'annuler : $x-3 \\neq 0$, soit $x \\neq 3$. L'intersection donne $[2, +∞) \\setminus \\{3\\}$, c'est-à-dire $[2, +∞)$ sans 3. Les autres options oublient soit l'exclusion de 3, soit la condition de la racine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur l'intervalle $[0, 3]$, comment varie la fonction $f(x) = -2x^2 + 4x + 1$ ?",
+      "options": [
+        "Croissante sur [0, 1] puis décroissante sur [1, 3]",
+        "Décroissante sur tout [0, 3]",
+        "Croissante sur tout [0, 3]",
+        "Constante sur [0, 1] puis croissante sur [1, 3]"
+      ],
+      "correctAnswer": "Croissante sur [0, 1] puis décroissante sur [1, 3]",
+      "explanation": "Le trinôme a un coefficient directeur négatif ($-2$), donc il est concave. Son sommet est à $x = -b/(2a) = -4/(2\\times -2) = 1$. Avant le sommet la fonction croît, après elle décroît. Sur $[0,3]$ elle est donc croissante sur $[0,1]$ et décroissante sur $[1,3]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $f(x) = x^3 - x$ est-elle paire, impaire ou ni l'une ni l'autre ?",
+      "options": [
+        "Paire",
+        "Impaire",
+        "Ni paire ni impaire",
+        "Constante"
+      ],
+      "correctAnswer": "Impaire",
+      "explanation": "On calcule $f(-x) = (-x)^3 - (-x) = -x^3 + x = -(x^3 - x) = -f(x)$. La relation $f(-x) = -f(x)$ caractérise les fonctions impaires. Elle n'est pas paire car $f(-x) \\neq f(x)$ sauf en $0$, et elle n'est pas constante.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente la fonction $g(x) = (x-1)^2 + 2$. Quelle est la valeur minimale de $g$ ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "-1"
+      ],
+      "correctAnswer": "2",
+      "explanation": "La fonction est un trinôme du second degré sous forme canonique $g(x) = (x-1)^2 + 2$. Le sommet du parabole est en $(1,2)$ et comme le coefficient de $(x-1)^2$ est positif, le parabole s'ouvre vers le haut. La valeur minimale est donc l'ordonnée du sommet, soit $2$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "(x-1)^2+2",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de g(x) = (x-1)^2+2"
+      }
+    },
+    {
+      "text": "Soit la fonction $h(x) = \\frac{1}{x+2}$ définie sur $[-1, 1]$. Quelle est son ensemble image ?",
+      "options": [
+        "[1/3, 1]",
+        "(1/3, 1)",
+        "[1/2, 1]",
+        "(0, 1]"
+      ],
+      "correctAnswer": "[1/3, 1]",
+      "explanation": "Sur $[-1,1]$, le dénominateur $x+2$ varie de $1$ à $3$ (strictement positif). La fonction $h$ est strictement décroissante car sa dérivée $h'(x) = -1/(x+2)^2 < 0$. Donc le maximum est atteint en $x=-1$ : $h(-1)=1$, le minimum en $x=1$ : $h(1)=1/3$. L'image est l'intervalle fermé $[1/3, 1]$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

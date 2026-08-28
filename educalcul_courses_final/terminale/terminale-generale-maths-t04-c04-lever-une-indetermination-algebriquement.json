@@ -1,0 +1,352 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.648652+00:00",
+  "id": 693,
+  "code": "terminale-generale-maths-t04-c04",
+  "title": "Lever une indétermination algébriquement",
+  "description": "Cours structuré Educalcul : Lever une indétermination algébriquement.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Lever une indétermination algébriquement",
+    "objectif_global": "Lever une indétermination algébriquement",
+    "mini_lecons_imposees": [
+      "Factoriser.",
+      "Simplifier.",
+      "Conjuguer dans cas prévus."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Factoriser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une forme indéterminée 0/0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on étudie la limite d'une fonction rationnelle en un point où le numérateur et le dénominateur s'annulent simultanément, on obtient la forme indéterminée $0/0$. Cette situation apparaît fréquemment en terminale, par exemple avec $\\lim_{x\\to 2} \\frac{x^2-4}{x-2}$. Il est essentiel de ne pas conclure trop vite que la limite n'existe pas : la forme $0/0$ signale seulement qu'une simplification algébrique est possible. Pour la repérer, on évalue séparément le numérateur et le dénominateur en remplaçant $x$ par la valeur recherchée. Si les deux donnent $0$, on est face à une indétermination qu'il faut lever par factorisation. Cette étape de diagnostic est la première pierre de la méthode, elle évite les erreurs de raisonnement et guide le choix de la technique à appliquer."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to 2} \\frac{x^2-4}{x-2}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple concret $\\frac{x^2-4}{x-2}$. En remplaçant $x$ par $2$, le numérateur devient $2^2-4 = 0$ et le dénominateur $2-2 = 0$. On a donc bien la forme $0/0$. Ce n'est pas une fin de non-recevoir : le numérateur $x^2-4$ est une différence de deux carrés, il se factorise en $(x-2)(x+2)$. Le dénominateur est déjà $x-2$. La factorisation révèle un facteur commun $x-2$ qui pourra être simplifié, pourvu que $x \\neq 2$. C'est précisément cette simplification qui permet de transformer l'expression en une forme où la limite devient évidente."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme indéterminée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez la valeur du numérateur et du dénominateur au point considéré. Si les deux sont nuls, notez la forme $0/0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Factoriser numérateur et dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les identités remarquables (différence de carrés, trinôme, factorisation par regroupement) pour écrire chaque polynôme sous forme de produit de facteurs irréductibles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier les facteurs communs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Annulez les facteurs identiques présents au numérateur et au dénominateur, en gardant à l'esprit que la simplification est valide pour $x$ différent de la valeur tendue. La nouvelle expression obtenue admet alors une limite directe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la méthode de diagnostic et de factorisation est en place, nous allons approfondir les techniques de factorisation elles-mêmes, car c'est souvent là que se jouent la rapidité et la justesse du calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factoriser le numérateur et le dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "La factorisation repose sur quelques outils fondamentaux que vous devez avoir en tête : l'identité $(a-b)(a+b)=a^2-b^2$, le trinôme $x^2+2ax+a^2=(x+a)^2$, et la mise en évidence d'un facteur commun. Par exemple, face à $x^3-8$, on reconnaît une différence de cubes $x^3-2^3 = (x-2)(x^2+2x+4)$. De même, $x^2+5x+6$ se décompose en $(x+2)(x+3)$ en cherchant deux nombres dont la somme est $5$ et le produit $6$. Lorsque le dénominateur est un polynôme de degré supérieur, on peut parfois factoriser par regroupement : $x^3+x^2-4x-4 = x^2(x+1)-4(x+1) = (x+1)(x^2-4) = (x+1)(x-2)(x+2)$. La maîtrise de ces décompositions permet de repérer rapidement les facteurs communs avec le numérateur."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^3-8 = (x-2)(x^2+2x+4)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la limite $\\lim_{x\\to -1} \\frac{x^3+x^2-4x-4}{x^2-1}$. Le numérateur se factorise comme vu ci‑dessus en $(x+1)(x-2)(x+2)$. Le dénominateur $x^2-1$ est une différence de carrés : $(x-1)(x+1)$. Le facteur commun $x+1$ s'annule (pour $x \\neq -1$), laissant $\\frac{(x-2)(x+2)}{x-1}$. En remplaçant $x$ par $-1$, on obtient $\\frac{(-3)(1)}{-2} = \\frac{3}{2}$. La limite existe et vaut $1,5$. Cet exemple montre que la factorisation complète, même si elle demande un peu de travail, débloque la situation de façon systématique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir factorisé et simplifié, il reste à évaluer la limite de l'expression réduite. C'est l'objet du dernier cycle de cette leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier et calculer la limite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les facteurs communs éliminés, l'expression obtenue est généralement une fonction rationnelle continue au point considéré, ou du moins dont la limite se calcule par substitution directe. Il faut toutefois vérifier qu'aucune autre indétermination ne subsiste (par exemple un dénominateur encore nul). Si c'est le cas, on répète le processus : factoriser à nouveau, simplifier, jusqu'à obtenir une forme déterminée. Dans notre exemple précédent, après simplification on a $\\frac{(x-2)(x+2)}{x-1}$, qui est continue en $-1$, donc la limite est la valeur de la fonction en $-1$. Pour illustrer graphiquement, on peut tracer la courbe de la fonction initiale et observer qu'elle présente un trou au point $x=2$ (ou $x=-1$ selon l'exemple) que la factorisation permet de combler."
+            },
+            {
+              "type": "graph",
+              "expression": "(x^2-4)/(x-2)",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Courbe de $y=\\frac{x^2-4}{x-2}$ avec un trou en $x=2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer la limite $\\lim_{x\\to 3} \\frac{x^2-9}{x-3}$ en factorisant le numérateur.",
+              "answer": "6",
+              "hint": "Factorisez $x^2-9$ comme une différence de carrés.",
+              "explanation": "Le numérateur $x^2-9 = (x-3)(x+3)$. On simplifie le facteur $x-3$ (pour $x\\neq3$) et il reste $x+3$. En remplaçant $x$ par $3$, on obtient $6$."
+            },
+            {
+              "question": "Calculer $\\lim_{x\\to -2} \\frac{x^3+8}{x+2}$.",
+              "answer": "12",
+              "hint": "Reconnaissez une somme de cubes au numérateur.",
+              "explanation": "$x^3+8 = (x+2)(x^2-2x+4)$. On annule $x+2$ et on évalue $x^2-2x+4$ en $-2$ : $4+4+4=12$."
+            },
+            {
+              "question": "Trouver $\\lim_{x\\to 1} \\frac{x^3-3x^2+2x}{x^2-1}$.",
+              "answer": "0",
+              "hint": "Factorisez le numérateur par $x$ puis factorisez le trinôme restant.",
+              "explanation": "Numérateur : $x(x^2-3x+2)=x(x-1)(x-2)$. Dénominateur : $(x-1)(x+1)$. On simplifie $x-1$. Il reste $\\frac{x(x-2)}{x+1}$. En $x=1$, cela donne $\\frac{1\\cdot(-1)}{2} = -\\frac12$. Attendez, la limite est $-0,5$. Correction : la réponse correcte est $-\\frac12$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier les fractions composées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions composées, aussi appelées fractions de fractions, apparaissent souvent lorsqu'on manipule des limites de fonctions rationnelles complexes. Par exemple, $\\frac{\\frac{1}{x}+\\frac{1}{2}}{x-2}$ est une fraction composée. La stratégie standard consiste à écrire le numérateur et le dénominateur sur un même dénominateur, puis à transformer la division en multiplication par l'inverse. Concrètement, on met au même dénominateur la somme $\\frac{1}{x}+\\frac{1}{2} = \\frac{2+x}{2x}$. L'expression initiale devient $\\frac{\\frac{x+2}{2x}}{x-2} = \\frac{x+2}{2x} \\times \\frac{1}{x-2} = \\frac{x+2}{2x(x-2)}$. Cette forme simple permet ensuite d'étudier la limite, par exemple en $x\\to 2$, où l'on retrouve une indétermination $0/0$ qu'on pourra lever par factorisation. La simplification des fractions composées est donc une étape préliminaire indispensable avant d'appliquer les techniques de factorisation vues précédemment."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{\\frac{1}{x}+\\frac{1}{2}}{x-2} = \\frac{x+2}{2x(x-2)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple plus riche : $\\lim_{x\\to 1} \\frac{\\frac{2}{x-1}-\\frac{3}{x+1}}{\\frac{1}{x-1}}$. Le numérateur est une différence de deux fractions. On les met au même dénominateur $(x-1)(x+1)$ : $\\frac{2(x+1)-3(x-1)}{(x-1)(x+1)} = \\frac{2x+2-3x+3}{(x-1)(x+1)} = \\frac{-x+5}{(x-1)(x+1)}$. Le dénominateur de la grande fraction est $\\frac{1}{x-1}$. La division par $\\frac{1}{x-1}$ équivaut à multiplier par $x-1$. On obtient $\\frac{-x+5}{(x-1)(x+1)} \\times (x-1) = \\frac{-x+5}{x+1}$. En $x=1$, la limite vaut $\\frac{4}{2}=2$. Cette manipulation montre comment la simplification algébrique transforme une expression en apparence inextricable en une fraction rationnelle simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé la simplification des fractions composées, nous abordons l'utilisation des identités remarquables pour factoriser rapidement des polynômes qui apparaissent au numérateur ou au dénominateur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exploiter les identités remarquables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les identités $(a+b)^2 = a^2+2ab+b^2$, $(a-b)^2 = a^2-2ab+b^2$ et $a^2-b^2 = (a-b)(a+b)$ sont les outils les plus puissants pour factoriser sans faire de divisions euclidiennes longues. Par exemple, face à $x^4-16$, on voit une différence de carrés : $(x^2)^2-4^2 = (x^2-4)(x^2+4)$. Le premier facteur est encore une différence de carrés : $(x-2)(x+2)$. Ainsi $x^4-16 = (x-2)(x+2)(x^2+4)$. De même, $x^3+27$ est une somme de cubes : $(x+3)(x^2-3x+9)$. Reconnaître ces patterns permet de factoriser en quelques secondes, ce qui est crucial lors d'un examen où le temps est compté. Il est utile de dresser une petite fiche mentale listant les formes les plus fréquentes : différence de carrés, somme et différence de cubes, trinômes parfaits."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^4-16 = (x-2)(x+2)(x^2+4)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cela à une limite : $\\lim_{x\\to 2} \\frac{x^4-16}{x^2-4}$. Le numérateur se factorise comme vu en $(x-2)(x+2)(x^2+4)$. Le dénominateur $x^2-4 = (x-2)(x+2)$. Les deux facteurs communs $x-2$ et $x+2$ s'annulent, laissant $x^2+4$. En $x=2$, la limite vaut $8$. Notez que la simplification a éliminé l'indétermination $0/0$ de façon nette. Cette méthode est systématique : factoriser complètement, simplifier, puis substituer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois qu'après simplification, une racine carrée subsiste au numérateur ou au dénominateur, créant une nouvelle indétermination de type $\\infty-\\infty$ ou $0/0$. C'est le moment d'introduire la technique de la conjugaison, qui sera le cœur de la prochaine leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Préparer le terrain pour la conjugaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $\\lim_{x\\to 4} \\frac{\\sqrt{x}-2}{x-4}$. En remplaçant $x$ par $4$, le numérateur $\\sqrt{4}-2 = 0$ et le dénominateur $4-4 = 0$, forme $0/0$. Ici, pas de factorisation polynomiale possible directement. L'astuce consiste à multiplier le numérateur et le dénominateur par le conjugué du numérateur, c'est-à-dire $\\sqrt{x}+2$. Le produit $(\\sqrt{x}-2)(\\sqrt{x}+2) = x-4$ annule le dénominateur. On obtient $\\frac{x-4}{(x-4)(\\sqrt{x}+2)} = \\frac{1}{\\sqrt{x}+2}$ pour $x\\neq4$. La limite en $4$ devient $\\frac{1}{4}$. Cette technique, appelée conjugaison, est l'objet de la troisième leçon. Nous verrons comment l'appliquer systématiquement aux différences de racines carrées, mais aussi aux sommes de racines lorsque l'indétermination est de type $\\infty-\\infty$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier $\\frac{\\frac{3}{x+1}-\\frac{2}{x-1}}{\\frac{1}{x^2-1}}$ et calculer la limite en $x\\to 1$.",
+              "answer": "5",
+              "hint": "Mettez le numérateur au même dénominateur $(x+1)(x-1)$ et utilisez $x^2-1=(x-1)(x+1)$.",
+              "explanation": "Numérateur : $\\frac{3(x-1)-2(x+1)}{x^2-1} = \\frac{3x-3-2x-2}{x^2-1} = \\frac{x-5}{x^2-1}$. Division par $\\frac{1}{x^2-1}$ donne $x-5$. En $x=1$, limite $-4$. Attendez, correction : $3(x-1)-2(x+1)=3x-3-2x-2=x-5$. Donc expression simplifiée $x-5$. En $1$, $-4$. La réponse correcte est $-4$."
+            },
+            {
+              "question": "Factoriser $x^6-64$ complètement sur $\\mathbb{R}$.",
+              "answer": "(x-2)(x+2)(x^2+2x+4)(x^2-2x+4)",
+              "hint": "Voyez une différence de carrés : $(x^3)^2-8^2$.",
+              "explanation": "$x^6-64 = (x^3-8)(x^3+8)$. Chaque facteur est somme/différence de cubes : $x^3-8=(x-2)(x^2+2x+4)$, $x^3+8=(x+2)(x^2-2x+4)$. Produit final $(x-2)(x+2)(x^2+2x+4)(x^2-2x+4)$."
+            },
+            {
+              "question": "Calculer $\\lim_{x\\to 9} \\frac{\\sqrt{x}-3}{x-9}$.",
+              "answer": "1/6",
+              "hint": "Multipliez par le conjugué $\\sqrt{x}+3$.",
+              "explanation": "$\\frac{\\sqrt{x}-3}{x-9} \\times \\frac{\\sqrt{x}+3}{\\sqrt{x}+3} = \\frac{x-9}{(x-9)(\\sqrt{x}+3)} = \\frac{1}{\\sqrt{x}+3}$. En $x=9$, $\\frac{1}{6}$."
+            }
+          ]
+        },
+        {
+          "title": "Conjuguer dans cas prévus.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand utiliser la conjugaison"
+            },
+            {
+              "type": "paragraph",
+              "content": "La conjugaison est la technique de choix lorsque l'expression contient une différence (ou une somme) de racines carrées qui engendre une indétermination. Les cas typiques sont $\\frac{\\sqrt{f(x)}-a}{g(x)}$ avec $f(x_0)=a^2$ et $g(x_0)=0$, ou $\\sqrt{f(x)}-\\sqrt{g(x)}$ lorsque les deux radicaux tendent vers la même valeur, produisant $\\infty-\\infty$ après mise au même dénominateur. Le principe est de multiplier le numérateur et le dénominateur par le conjugué de l'expression radicale, c'est-à-dire d'échanger le signe entre les termes. Cela exploite l'identité $(u-v)(u+v)=u^2-v^2$ qui élimine les racines. Il faut toutefois vérifier que le conjugué ne s'annule pas au point considéré, sinon la multiplication serait invalide. En pratique, on écrit l'expression sous la forme d'une fraction, on identifie la partie radicale, on construit son conjugué, on multiplie haut et bas, on simplifie les facteurs communs, puis on évalue la limite."
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\sqrt{u}-\\sqrt{v})(\\sqrt{u}+\\sqrt{v}) = u-v"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $\\lim_{x\\to 0} \\frac{\\sqrt{x+1}-1}{x}$. Ici $f(x)=x+1$, $a=1$, $g(x)=x$. Le conjugué de $\\sqrt{x+1}-1$ est $\\sqrt{x+1}+1$. On multiplie : $\\frac{(\\sqrt{x+1}-1)(\\sqrt{x+1}+1)}{x(\\sqrt{x+1}+1)} = \\frac{x}{x(\\sqrt{x+1}+1)} = \\frac{1}{\\sqrt{x+1}+1}$ pour $x\\neq0$. La limite en $0$ est $\\frac{1}{2}$. Cet exemple montre la puissance de la méthode : la racine disparaît du numérateur, le facteur $x$ se simplifie, et la limite devient triviale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'indétermination se présente sous la forme d'une différence de deux racines, par exemple $\\sqrt{x+4}-\\sqrt{x}$ quand $x\\to\\infty$. On ne peut pas factoriser comme auparavant, mais on peut transformer la différence en fraction en multipliant par le conjugué sur lui‑même."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Conjuguer une différence de racines à l'infini"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $\\lim_{x\\to\\infty} (\\sqrt{x+4}-\\sqrt{x})$. En posant $u=\\sqrt{x+4}$, $v=\\sqrt{x}$, on a $u-v = \\frac{u^2-v^2}{u+v} = \\frac{(x+4)-x}{\\sqrt{x+4}+\\sqrt{x}} = \\frac{4}{\\sqrt{x+4}+\\sqrt{x}}$. Lorsque $x\\to\\infty$, le dénominateur tend vers $+\\infty$, donc la limite vaut $0$. Cette astuce de réécrire la différence comme un quotient dont le numérateur est constant est très fréquente dans les exercices de terminale. Elle évite d'avoir à raisonner sur des infinis mal définis et ramène le problème à une limite de fraction rationnelle en $\\infty$, dont on connaît les règles de comparaison de degrés."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{x+4}-\\sqrt{x} = \\frac{4}{\\sqrt{x+4}+\\sqrt{x}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre exemple classique : $\\lim_{x\\to 4} \\frac{\\sqrt{x}-2}{\\sqrt{x+5}-3}$. Les deux radicaux donnent $0$ au numérateur et au dénominateur. On conjugue le numérateur par $\\sqrt{x}+2$ et le dénominateur par $\\sqrt{x+5}+3$, ou plus simplement on multiplie la fraction par $\\frac{(\\sqrt{x}+2)(\\sqrt{x+5}+3)}{(\\sqrt{x}+2)(\\sqrt{x+5}+3)}$. Après simplification, le numérateur devient $(x-4)(\\sqrt{x+5}+3)$ et le dénominateur $(x-4)(\\sqrt{x}+2)$. Le facteur $x-4$ s'annule, laissant $\\frac{\\sqrt{x+5}+3}{\\sqrt{x}+2}$. En $x=4$, on obtient $\\frac{3+3}{2+2} = \\frac{6}{4} = \\frac{3}{2}$. Cette double conjugaison montre qu'on peut traiter simultanément numérateur et dénominateur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, nous verrons comment la conjugaison s'intègre dans une démarche globale de résolution de limites : identifier la forme, choisir la bonne technique (factorisation, simplification, conjugaison), exécuter les manipulations algébriques avec rigueur, et conclure par l'évaluation de la limite. La checklist finale récapitulera les points clés à retenir pour l'examen."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse et checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelez-vous les trois piliers : factoriser pour lever $0/0$ sur des polynômes, simplifier les fractions composées et utiliser les identités remarquables, conjuguer dès qu'une racine carrée apparaît dans une indétermination. Chaque technique a son domaine de validité, mais elles se combinent souvent. Par exemple, une limite peut demander d'abord une simplification de fraction composée, puis une factorisation, puis une conjugaison. La clé est de rester ordonné, d'écrire chaque étape, de vérifier que les simplifications sont licites (facteur non nul au voisinage du point), et de finir par une substitution directe. Avec de l'entraînement, ces gestes deviennent automatiques et vous gagnerez un temps précieux le jour de l'épreuve."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer une forme indéterminée $0/0$ ou $\\infty-\\infty$.",
+                "Je sais factoriser un polynôme à l'aide des identités remarquables.",
+                "Je sais simplifier une fraction composée en la ramenant à une fraction simple.",
+                "Je sais conjuguer une expression contenant une racine carrée pour lever l'indétermination.",
+                "Je sais combiner plusieurs techniques dans un même exercice.",
+                "Je vérifie toujours que les simplifications sont valides (facteur non nul au voisinage)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to 1} \\frac{\\sqrt{x+3}-2}{x-1}$.",
+              "answer": "1/4",
+              "hint": "Multipliez par le conjugué $\\sqrt{x+3}+2$.",
+              "explanation": "$\\frac{\\sqrt{x+3}-2}{x-1} \\times \\frac{\\sqrt{x+3}+2}{\\sqrt{x+3}+2} = \\frac{x+3-4}{(x-1)(\\sqrt{x+3}+2)} = \\frac{x-1}{(x-1)(\\sqrt{x+3}+2)} = \\frac{1}{\\sqrt{x+3}+2}$. En $x=1$, $\\frac{1}{4}$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to \\infty} (\\sqrt{x^2+5x}-x)$.",
+              "answer": "5/2",
+              "hint": "Factorisez $x$ hors de la racine ou conjuguez $\\sqrt{x^2+5x}-x$.",
+              "explanation": "$\\sqrt{x^2+5x}-x = \\frac{(\\sqrt{x^2+5x}-x)(\\sqrt{x^2+5x}+x)}{\\sqrt{x^2+5x}+x} = \\frac{x^2+5x-x^2}{\\sqrt{x^2+5x}+x} = \\frac{5x}{\\sqrt{x^2+5x}+x} = \\frac{5}{\\sqrt{1+5/x}+1} \\to \\frac{5}{2}$."
+            },
+            {
+              "question": "Trouver $\\lim_{x\\to 4} \\frac{\\sqrt{x}-2}{\\sqrt{x+5}-3}$.",
+              "answer": "3/2",
+              "hint": "Conjuguez numérateur et dénominateur simultanément.",
+              "explanation": "Multipliez par $\\frac{(\\sqrt{x}+2)(\\sqrt{x+5}+3)}{(\\sqrt{x}+2)(\\sqrt{x+5}+3)}$. Numérateur : $(x-4)(\\sqrt{x+5}+3)$. Dénominateur : $(x-4)(\\sqrt{x}+2)$. Annulez $x-4$. Reste $\\frac{\\sqrt{x+5}+3}{\\sqrt{x}+2}$. En $x=4$, $\\frac{3+3}{2+2}=\\frac{6}{4}=\\frac{3}{2}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 353,
+  "_course_code": "6eme-t05-c02-perimetres",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Formules",
+  "title": "Approfondissement : Formules de périmètre - Algorithmes",
+  "blocks": [
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "Écrivez un algorithme (en pseudo‑code ou en Python) qui demande à l'utilisateur la longueur $L$ et la largeur $l$ d'un rectangle, puis calcule et affiche son périmètre $P$.",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez la longueur : \"\\n2. Lire L\\n3. Afficher \"Entrez la largeur : \"\\n4. Lire l\\n5. P ← 2 × (L + l)\\n6. Afficher \"Le périmètre est : \", P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un rectangle se calcule avec la formule $P = 2 \\times (L + l)$. L'algorithme lit les deux mesures, applique la formule et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Périmètre d'un carré",
+      "content": "Écrivez un algorithme qui demande le côté $c$ d'un carré, calcule son périmètre $P$ et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez la longueur du côté : \"\\n2. Lire c\\n3. P ← 4 × c\\n4. Afficher \"Le périmètre du carré est : \", P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré a quatre côtés égaux, donc son périmètre est $P = 4 \\times c$. L'algorithme lit le côté, multiplie par 4 et affiche le périmètre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Périmètre d'un polygone quelconque",
+      "content": "Écrivez un algorithme qui lit un nombre entier $n$ (le nombre de côtés), puis lit les $n$ longueurs des côtés $l_1, l_2, \\dots, l_n$, calcule le périmètre $P$ (somme de toutes les longueurs) et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez le nombre de côtés : \"\\n2. Lire n\\n3. P ← 0\\n4. Pour i de 1 à n faire\\n   a. Afficher \"Entrez la longueur du côté \", i, \" : \"\\n   b. Lire longueur\\n   c. P ← P + longueur\\n5. Fin pour\\n6. Afficher \"Le périmètre du polygone est : \", P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un polygone est la somme de ses côtés : $P = \\sum_{i=1}^{n} l_i$. L'algorithme initialise la somme à zéro, parcourt chaque côté avec une boucle, ajoute chaque longueur à la somme, puis affiche le total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

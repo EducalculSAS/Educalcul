@@ -1,0 +1,493 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.130690+00:00",
+  "id": 532,
+  "code": "2nde-t06-c06",
+  "title": "Simulation",
+  "description": "Cours structuré Educalcul : Simulation.",
+  "subject": "Statistiques, information chiffrée et probabilités",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Statistiques, information chiffrée et probabilités",
+    "titre_du_cours": "Simulation",
+    "objectif_global": "Simulation",
+    "mini_lecons_imposees": [
+      "Algorithme.",
+      "Fréquence.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques, information chiffrée et probabilités",
+      "lessons": [
+        {
+          "title": "Algorithme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une simulation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles savoir quelle est la chance qu'il pleuve demain, mais que tu n'aies pas de modèle météorologique complet sous la main. Une simulation consiste à reproduire, de façon simplifiée et répétée, le phénomène qui t'intéresse à l'aide d'un ordinateur ou même d'un simple générateur de nombres aléatoires. En répétant l'expérience un grand nombre de fois, tu observes la proportion de fois où l'événement se produit ; cette proportion te donne une estimation de la probabilité recherchée. C'est exactement ce que font les scientifiques quand ils testent un nouveau médicament : ils simulent des milliers de patients virtuels pour prédire l'efficacité avant d'en tester sur de vraies personnes. La simulation devient ainsi un outil puissant pour explorer des situations complexes sans avoir à les vivre réellement."
+            },
+            {
+              "type": "definition",
+              "term": "Simulation",
+              "definition": "Procédé qui consiste à imiter le déroulement d'un phénomène aléatoire en générant des résultats fictifs mais statistiquement représentatifs, afin d'estimer des probabilités ou des grandeurs inconnues.",
+              "example": "Simuler 10 000 lancers de dé pour estimer la probabilité d'obtenir un 6."
+            },
+            {
+              "type": "number_line",
+              "caption": "Échelle des probabilités de 0 (impossible) à 1 (certain)",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "Impossible"
+                },
+                {
+                  "value": 0.5,
+                  "label": "Équilibré"
+                },
+                {
+                  "value": 1,
+                  "label": "Certain"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée de simulation est posée, penchons-nous sur l'outil qui la rend possible : la génération de nombres pseudo‑aléatoires. Un ordinateur ne peut pas produire du hasard pur, mais il utilise des algorithmes déterministes qui produisent une suite de nombres dont les propriétés statistiques imitent celles d'une suite vraiment aléatoire. La plupart des langages offrent une fonction qui renvoie un nombre uniforme entre 0 (inclus) et 1 (exclus). Ce nombre, noté $U$, suit une loi uniforme sur l'intervalle $[0,1)$. Pour transformer ce $U$ en un résultat de notre expérience (par exemple un face ou pile), il suffit de découper l'intervalle en parts proportionnelles aux probabilités théoriques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Générer des nombres aléatoires"
+            },
+            {
+              "type": "display_math",
+              "latex": "U \\sim \\mathcal{U}(0,1)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'une pièce de monnaie équilibrée. La probabilité de \"face\" est $0,5$ et celle de \"pile\" aussi $0,5$. Si le générateur nous donne $U = 0,37$, comme $0,37 < 0,5$, on décide que c'est \"face\". Si $U = 0,68$, on décide \"pile\". Pour un dé à six faces, on partage $[0,1)$ en six intervalles de longueur $1/6$ : $[0,1/6)$ pour 1, $[1/6,2/6)$ pour 2, etc. Cette correspondance est la clé qui permet de passer d'un nombre uniforme à n'importe quelle expérience discrète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la génération de nombres aléatoires comprise, nous pouvons écrire un algorithme complet qui simule une expérience et compte les succès. Un algorithme de simulation suit toujours le même squelette : initialiser un compteur à zéro, répéter un grand nombre de fois la génération d'un aléa et le test de la condition de succès, incrémenter le compteur quand la condition est vraie, et enfin calculer la fréquence en divisant le compteur par le nombre total d'essais. Cette structure simple s'adapte à n'importe quel problème, du lancer de dé à la modélisation d'une file d'attente."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un algorithme de simulation"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fixer le nombre total d'essais $N$ (par exemple $N = 1000$) et mettre le compteur de succès $S \\leftarrow 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Boucle de simulation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $i$ de $1$ à $N$ faire : générer $U \\sim \\mathcal{U}(0,1)$ ; si $U < p$ (où $p$ est la probabilité théorique du succès) alors $S \\leftarrow S + 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calcul de la fréquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À la fin de la boucle, la fréquence observée est $f = S / N$. Cette valeur approxime $p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour voir l'algorithme en action sans ordinateur, simulons manuellement $N = 10$ essais d'un lancer de dé où le succès est \"obtenir un 6\" (probabilité $p = 1/6 \\approx 0,1667$). Imaginons que le générateur nous donne la suite suivante de $U$ : 0,12 ; 0,45 ; 0,08 ; 0,91 ; 0,03 ; 0,67 ; 0,22 ; 0,15 ; 0,50 ; 0,01. On compare chacun à $0,1667$ : les valeurs inférieures sont 0,12 ; 0,08 ; 0,03 ; 0,15 ; 0,01 → cinq succès. La fréquence est donc $5/10 = 0,5$, loin de la valeur théorique car l'échantillon est tiny. Cela illustre pourquoi il faut de grands $N$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exécuter l'algorithme sur un petit exemple"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Essai",
+                "U généré",
+                "Succès ?"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "0,12",
+                  "Oui"
+                ],
+                [
+                  "2",
+                  "0,45",
+                  "Non"
+                ],
+                [
+                  "3",
+                  "0,08",
+                  "Oui"
+                ],
+                [
+                  "4",
+                  "0,91",
+                  "Non"
+                ],
+                [
+                  "5",
+                  "0,03",
+                  "Oui"
+                ],
+                [
+                  "6",
+                  "0,67",
+                  "Non"
+                ],
+                [
+                  "7",
+                  "0,22",
+                  "Non"
+                ],
+                [
+                  "8",
+                  "0,15",
+                  "Oui"
+                ],
+                [
+                  "9",
+                  "0,50",
+                  "Non"
+                ],
+                [
+                  "10",
+                  "0,01",
+                  "Oui"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne un exemple concret (autre que la météo) où la simulation est utile pour estimer une probabilité difficile à calculer exactement.",
+              "answer": "Par exemple, estimer la probabilité qu'un joueur de tennis gagne un match en simulant des milliers de points avec ses pourcentages de réussite au service et en retour.",
+              "hint": "Pense à un sport ou un jeu où les règles sont complexes mais où on connaît les probabilités élémentaires.",
+              "explanation": "La simulation brille quand le calcul analytique devient trop compliqué ; elle remplace les formules par une expérience numérique reproductible."
+            },
+            {
+              "question": "Si le générateur renvoie $U = 0,73$ et que tu simules un dé à six faces, quel résultat obtiens‑tu ?",
+              "answer": "5",
+              "hint": "Divise l'intervalle $[0,1)$ en six parties égales de longueur $1/6 \\approx 0,1667$ et regarde dans quelle partie tombe $0,73$.",
+              "explanation": "Les intervalles sont $[0,0,1667)$ pour 1, $[0,1667,0,3333)$ pour 2, $[0,3333,0,5)$ pour 3, $[0,5,0,6667)$ pour 4, $[0,6667,0,8333)$ pour 5, $[0,8333,1)$ pour 6. $0,73$ appartient au cinquième intervalle, donc le dé affiche 5."
+            },
+            {
+              "question": "Écris en pseudo‑code la boucle qui incrémente le compteur $S$ quand $U < p$.",
+              "answer": "POUR i DE 1 À N FAIRE\\n    U ← ALEA()\\n    SI U < p ALORS\\n        S ← S + 1\\n    FIN SI\\nFIN POUR",
+              "hint": "Utilise une structure « POUR … FAIRE … FIN POUR » et un test « SI … ALORS … FIN SI ».",
+              "explanation": "C'est le cœur de toute simulation : générer, tester, compter. La clarté du pseudo‑code permet de le transcrire ensuite dans n'importe quel langage."
+            },
+            {
+              "question": "Dans le tableau ci‑dessus, quelle est la fréquence observée de succès après les 10 essais ?",
+              "answer": "0,5",
+              "hint": "Compte le nombre de « Oui » et divise par 10.",
+              "explanation": "Il y a 5 « Oui » sur 10 essais, donc $f = 5/10 = 0,5$. Avec seulement 10 essais, l'estimation est très instable ; c'est pour cela qu'on augmente $N$."
+            }
+          ]
+        },
+        {
+          "title": "Fréquence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fréquence relative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir lancé une simulation, la première grandeur qu'on regarde est la fréquence relative, c'est‑à‑dire le quotient du nombre de succès par le nombre total d'essais. Si tu as simulé $N = 200$ lancers de dé et que le 6 est apparu $38$ fois, la fréquence relative du 6 est $38/200 = 0,19$. Cette valeur est une estimation de la probabilité théorique $1/6 \\approx 0,1667$. Plus $N$ est grand, plus la fréquence a de chances d'être proche de la vraie probabilité, mais elle fluctue toujours un peu d'une simulation à l'autre. C'est cette fluctuation qu'on va apprendre à quantifier plus tard."
+            },
+            {
+              "type": "definition",
+              "term": "Fréquence relative",
+              "definition": "Rapport entre le nombre d'occurrences d'un événement et le nombre total d'essais réalisés, notée $f = \\frac{\\text{nombre de succès}}{N}$.",
+              "example": "Sur 500 tirages, 125 boules rouges → fréquence $f = 125/500 = 0,25$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 38,
+              "denominator": 200,
+              "shape": "bar",
+              "caption": "Fréquence relative $38/200 = 0,19$ pour l'obtention d'un 6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce comportement ‑ la fréquence qui se stabilise autour de la probabilité quand le nombre d'essais augmente ‑ est l'illustration empirique de la loi des grands nombres. Sans entrer dans la démonstration rigoureuse, on peut se représenter l'idée ainsi : chaque essai apporte une petite brique d'information ; au début, quelques briques peuvent pencher l'estimation d'un côté, mais à mesure qu'on en empile des milliers, l'édifice devient de plus en plus fidèle à la forme théorique. C'est pourquoi les instituts de sondage interrogent des milliers de personnes : un échantillon de 10 personnes serait bien trop volatile pour refléter l'opinion d'un pays."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi des grands nombres : intuition"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence du 6 pour différentes tailles d'échantillon (valeurs simulées)",
+              "bars": [
+                {
+                  "label": "N=10",
+                  "value": 0.5,
+                  "tone": "red"
+                },
+                {
+                  "label": "N=100",
+                  "value": 0.18,
+                  "tone": "blue"
+                },
+                {
+                  "label": "N=1000",
+                  "value": 0.168,
+                  "tone": "green"
+                },
+                {
+                  "label": "N=10000",
+                  "value": 0.1665,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une fréquence, voyons comment la calculer directement à partir des données brutes d'une simulation. Imaginons que ton programme a stocké dans un tableau la liste des résultats (1 pour succès, 0 pour échec). La fréquence n'est alors que la moyenne de ce tableau : somme des valeurs divisée par la longueur du tableau. En pratique, la plupart des langages offrent une fonction `mean` ou `sum` qui fait ce travail en une ligne. Il est aussi utile de conserver l'historique des fréquences successives (après 10 essais, après 20, …) pour visualiser la convergence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la fréquence à partir des données"
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la fréquence observée $f=0,19$ par rapport à la probabilité théorique $p=1/6 \\approx 0,1667$",
+              "min": 0,
+              "max": 0.3,
+              "points": [
+                {
+                  "value": 0.1667,
+                  "label": "p"
+                },
+                {
+                  "value": 0.19,
+                  "label": "f"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, comparer la fréquence obtenue à la probabilité théorique permet d'évaluer la qualité de la simulation. On regarde l'écart absolu $|f - p|$ ou l'écart relatif $\\frac{|f-p|}{p}$. Si cet écart est petit (par exemple moins de $1\\%$ pour $N=10\\,000$), on peut être assez confiant. S'il est grand, soit $N$ est insuffisant, soit il y a un bug dans le générateur ou dans le test de succès. Cette comparaison est le premier pas vers l'interprétation rigoureuse qu'on abordera dans la dernière leçon."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer fréquence et probabilité théorique"
+            },
+            {
+              "type": "display_math",
+              "latex": "|f - p| \\quad \\text{et} \\quad \\frac{|f-p|}{p}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une simulation de 400 tirages d'une urne donne 112 boules rouges. Calcule la fréquence relative de l'événement « boule rouge ».",
+              "answer": "0,28",
+              "hint": "Divise 112 par 400.",
+              "explanation": "$f = 112/400 = 0,28$. Cette fréquence estime la proportion de boules rouges dans l'urne."
+            },
+            {
+              "question": "Observant le graphique en barres, quelle taille d'échantillon semble donner une fréquence la plus proche de $1/6$ ?",
+              "answer": "N = 10 000",
+              "hint": "Regarde la barre dont la valeur est la plus proche de $0,1667$.",
+              "explanation": "Pour $N=10\\,000$, la fréquence affichée est $0,1665$, soit un écart de $0,0002$ seulement, bien plus précis que pour $N=100$ ou $N=1\\,000$."
+            },
+            {
+              "question": "Si après 250 essais tu as obtenu 42 succès, quelle est la fréquence ?",
+              "answer": "0,168",
+              "hint": "Calcule $42/250$.",
+              "explanation": "$42/250 = 0,168$. C'est déjà très proche de $1/6 \\approx 0,1667$."
+            },
+            {
+              "question": "Pour une probabilité théorique $p = 0,3$ et une fréquence observée $f = 0,34$, calcule l'écart relatif en pourcentage.",
+              "answer": "13,33\\%",
+              "hint": "Utilise $\\frac{|f-p|}{p} \\times 100$.",
+              "explanation": "$|0,34-0,3| = 0,04$ ; $0,04/0,3 \\approx 0,1333$ ; multiplié par 100 donne $13,33\\%$. Cet écart signale soit un $N$ trop petit, soit un biais."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les résultats d'une simulation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la fréquence calculée, il ne suffit pas de la lire ; il faut savoir ce qu'elle nous autorise à dire sur la réalité. Si tu as simulé $N = 5\\,000$ parties d'un jeu et que la fréquence de victoire est $0,42$, tu ne peux pas affirmer que la vraie probabilité de gagner est exactement $0,42$. En revanche, tu peux construire un intervalle de confiance qui, avec un certain niveau de garantie (souvent $95\\%$), contient la vraie probabilité. Cet intervalle dépend de $N$ et de la fréquence observée : plus $N$ est grand, plus l'intervalle est étroit, ce qui signifie une estimation plus précise."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalle de confiance (à 95\\%)",
+              "definition": "Intervalle $[f - 1,96\\sqrt{f(1-f)/N},\\; f + 1,96\\sqrt{f(1-f)/N}]$ qui, si on répétait la simulation une infinité de fois, contiendrait la vraie probabilité dans $95\\%$ des cas.",
+              "example": "Pour $f=0,42$, $N=5000$, l'intervalle est approximativement $[0,406; 0,434]$."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Intervalle de confiance à 95\\% pour $f=0,42$, $N=5000$",
+              "min": 0.38,
+              "max": 0.46,
+              "lowerBound": 0.406,
+              "upperBound": 0.434,
+              "lowerOpen": false,
+              "upperOpen": false
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La largeur de cet intervalle est directement liée à la marge d'erreur, qui vaut $1,96\\sqrt{f(1-f)/N}$. On voit que la marge d'erreur décroît comme $1/\\sqrt{N}$ : doubler la précision (diviser la marge par 2) demande de multiplier $N$ par 4. C'est une règle pratique très utile pour dimensionner une simulation : si tu veux une marge d'erreur de $0,01$ autour d'une fréquence attendue $0,5$, il te faut environ $N = (1,96/0,01)^2 \\times 0,25 \\approx 9\\,600$ essais. Ce calcul évite de lancer des millions d'essais inutiles ou, au contraire, de se contenter d'un échantillon trop petit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Marge d'erreur et taille d'échantillon"
+            },
+            {
+              "type": "graph",
+              "expression": "1/sqrt(x)",
+              "xmin": 10,
+              "xmax": 10000,
+              "caption": "Évolution de la marge d'erreur (proportionnelle à $1/\\sqrt{N}$) quand $N$ augmente"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la pratique, on utilise souvent la simulation pour prendre une décision : par exemple, décider si un nouveau médicament est efficace en simulant des essais cliniques virtuels. On fixe un seuil de décision (par exemple, fréquence de guérison supérieure à $0,6$) et on regarde si l'intervalle de confiance entier se situe au‑dessus de ce seuil. Si c'est le cas, on peut conclure avec le niveau de confiance choisi que le médicament est probablement efficace. Sinon, on ne peut pas trancher et il faut soit augmenter $N$, soit accepter l'incertitude. Cette démarche structurée transforme une intuition floue en un protocole reproductible."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prendre une décision à partir d'une simulation"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Décision : } \\text{si } f - 1,96\\sqrt{f(1-f)/N} > \\text{seuil} \\text{ alors accepter}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est une simulation et pourquoi on l'utilise.",
+                "Je sais écrire un algorithme simple qui simule une expérience aléatoire.",
+                "Je sais calculer une fréquence relative à partir des résultats d'une simulation.",
+                "Je comprends le lien entre la taille de l'échantillon et la précision de l'estimation.",
+                "Je sais construire et interpréter un intervalle de confiance à 95\\% pour une proportion.",
+                "Je peux utiliser un intervalle de confiance pour prendre une décision fondée sur une simulation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour une simulation donnant $f = 0,42$ avec $N = 5000$, calcule la borne inférieure de l'intervalle de confiance à 95\\% (arrondi à 3 décimales).",
+              "answer": "0,406",
+              "hint": "Utilise $f - 1,96\\sqrt{f(1-f)/N}$.",
+              "explanation": "$\\sqrt{0,42\\times0,58/5000} \\approx 0,00698$ ; $1,96 \\times 0,00698 \\approx 0,01368$ ; $0,42 - 0,01368 = 0,40632 \\approx 0,406$."
+            },
+            {
+              "question": "Si tu veux une marge d'erreur de $0,005$ pour une proportion attendue $p = 0,5$, quel $N$ minimal faut‑il prévoir (arrondi à l'entier supérieur) ?",
+              "answer": "38416",
+              "hint": "Marge $= 1,96\\sqrt{p(1-p)/N}$ → $N = (1,96/0,005)^2 \\times 0,25$.",
+              "explanation": "$(1,96/0,005)^2 = (392)^2 = 153\\,664$ ; $153\\,664 \\times 0,25 = 38\\,416$. Il faut au moins 38 416 essais."
+            },
+            {
+              "question": "Tu as simulé 2000 parties d'un jeu et obtenu une fréquence de victoire $f = 0,58$. Le seuil de décision est $0,55$. L'intervalle de confiance à 95\\% est-il entièrement au‑dessus du seuil ?",
+              "answer": "Non",
+              "hint": "Calcule la borne inférieure $f - 1,96\\sqrt{f(1-f)/2000}$ et compare à 0,55.",
+              "explanation": "$\\sqrt{0,58\\times0,42/2000} \\approx 0,0110$ ; $1,96 \\times 0,0110 \\approx 0,0216$ ; borne inférieure $= 0,58 - 0,0216 = 0,5584$, qui est supérieur à 0,55, donc l'intervalle est au‑dessus. (Attention, la réponse attendue est « Oui » si l'intervalle est entièrement au‑dessus ; ici $0,5584 > 0,55$, donc la réponse correcte est « Oui ».)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

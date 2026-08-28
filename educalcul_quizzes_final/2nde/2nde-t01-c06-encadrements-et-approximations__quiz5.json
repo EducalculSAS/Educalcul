@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Arrondis",
+  "title": "Quiz : Approfondissement - Arrondis (Seconde)",
+  "questions": [
+    {
+      "text": "On arrondit le nombre $12,3456$ au centième près ($10^{-2}$). Quelle est la valeur obtenue ?",
+      "options": [
+        "12,34",
+        "12,35",
+        "12,3",
+        "12,346"
+      ],
+      "correctAnswer": "12,35",
+      "explanation": "Pour arrondir au centième, on regarde le chiffre des millièmes (le 3e après la virgule). Ici, le chiffre des millièmes est 5. Comme ce chiffre est supérieur ou égal à 5, on augmente le chiffre des centièmes (4) d'une unité, ce qui donne 5. Le nombre arrondi au centième est donc $12,35$. L'option 12,34 correspond à une troncature, 12,3 à un arrondi au dixième, et 12,346 au millième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite écrire le nombre $0,004506$ avec 3 chiffres significatifs. Quelle est la bonne écriture ?",
+      "options": [
+        "0,00450",
+        "0,00451",
+        "0,0045",
+        "4,51 × 10^{-3}"
+      ],
+      "correctAnswer": "0,00451",
+      "explanation": "Les chiffres significatifs commencent au premier chiffre non nul. Ici, les trois premiers chiffres significatifs sont 4, 5 et 0. Le chiffre suivant est 6 (supérieur à 5), donc on arrondit le dernier chiffre significatif (0) à l'entier supérieur : 1. On obtient donc $0,00451$. L'option 0,00450 correspond à une troncature, 0,0045 n'a que 2 chiffres significatifs, et $4,51 × 10^{-3}$, bien que équivalent, n'est pas l'écriture décimale demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit le nombre $x = 3,14159$. On considère sa troncature et son arrondi au millième ($10^{-3}$). Quelle affirmation est exacte ?",
+      "options": [
+        "La troncature vaut 3,142 et l'arrondi vaut 3,141",
+        "La troncature vaut 3,141 et l'arrondi vaut 3,141",
+        "La troncature vaut 3,141 et l'arrondi vaut 3,142",
+        "La troncature vaut 3,14 et l'arrondi vaut 3,142"
+      ],
+      "correctAnswer": "La troncature vaut 3,141 et l'arrondi vaut 3,142",
+      "explanation": "La troncature au millième consiste à conserver les 3 premiers décimales sans modifier le dernier : $3,141$. L'arrondi au millième regarde le chiffre des dixièmes de millième (le 4e chiffre), qui est 5. Comme il est égal à 5, on arrondit le millième (1) à l'entier supérieur : 2. L'arrondi est donc $3,142$. Les autres options confondent troncature et arrondi ou utilisent le mauvais rang de décimales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $\\sqrt{10} \\approx 3,162$ (arrondi au millième). Quel encadrement au centième près par défaut et par excès peut-on en déduire ?",
+      "options": [
+        "3,16 ≤ √10 ≤ 3,17",
+        "3,16 < √10 < 3,17",
+        "3,15 < √10 < 3,16",
+        "3,16 ≤ √10 ≤ 3,16"
+      ],
+      "correctAnswer": "3,16 < √10 < 3,17",
+      "explanation": "L'arrondi au millième $3,162$ signifie que la valeur exacte est comprise entre $3,1615$ et $3,1625$. Au centième, cela donne un encadrement strict : $3,16 < √10 < 3,17$. On utilise des inégalités strictes car $√10$ est un nombre irrationnel, il ne peut pas être égal à une valeur arrondie (qui est un nombre décimal). L'option avec des inégalités larges est fausse pour un nombre irrationnel, et les autres donnent de mauvaises bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On mesure deux longueurs : $L = 12,345$ m et $l = 6,789$ m. On calcule le périmètre $P = 2 \\times (L + l)$ et on arrondit le résultat au centimètre ($10^{-2}$ m). Quelle valeur obtient-on ?",
+      "options": [
+        "38,26 m",
+        "38,27 m",
+        "38,3 m",
+        "38,268 m"
+      ],
+      "correctAnswer": "38,27 m",
+      "explanation": "On calcule d'abord la somme exacte : $L + l = 12,345 + 6,789 = 19,134$ m. Puis le périmètre exact : $P = 2 \\times 19,134 = 38,268$ m. Pour arrondir au centimètre (2 décimales), on regarde le 3e chiffre après la virgule (millimètre), qui est 8. Comme 8 ≥ 5, on arrondit le centième (6) à l'entier supérieur : 7. Le résultat final est $38,27$ m. L'option 38,26 correspond à une troncature, 38,3 à un arrondi au dixième, et 38,268 est la valeur exacte non arrondie.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "_status": "done",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Trigonométrie dans le triangle rectangle",
+  "title": "Applications de la trigonométrie dans le triangle rectangle",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $A$, on considère l'angle $\\widehat{B}$. Quel côté est adjacent à cet angle ?",
+      "options": [
+        "Le côté $BC$ (l'hypoténuse)",
+        "Le côté $AC$ (opposé à l'angle)",
+        "Le côté $AB$",
+        "Le côté $CA$"
+      ],
+      "correctAnswer": "Le côté $AB$",
+      "explanation": "Dans un triangle rectangle, par rapport à un angle aigu (ici $\\widehat{B}$), il y a trois côtés : l'hypoténuse (toujours opposée à l'angle droit, donc $BC$), le côté opposé à l'angle (ici $AC$) et le côté adjacent à l'angle (qui touche l'angle sans être l'hypoténuse, ici $AB$). Le côté $CA$ est le même segment que $AC$, il est donc opposé.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans le triangle $DEF$ rectangle en $D$, on sait que $\\widehat{E} = 30^{\\circ}$ et $DE = 10\\,cm$. Quelle formule permet de calculer la longueur $DF$ ?",
+      "options": [
+        "$DF = 10 \\times \\cos 30^{\\circ}$",
+        "$DF = 10 \\times \\sin 30^{\\circ}$",
+        "$DF = 10 \\times \\tan 30^{\\circ}$",
+        "$DF = \\frac{10}{\\tan 30^{\\circ}}$"
+      ],
+      "correctAnswer": "$DF = 10 \\times \\tan 30^{\\circ}$",
+      "explanation": "Par rapport à l'angle $\\widehat{E} = 30^{\\circ}$, le côté $DE = 10\\,cm$ est adjacent (il touche l'angle et n'est pas l'hypoténuse) et le côté $DF$ est opposé. La relation trigonométrique qui lie le côté opposé et le côté adjacent est la tangente : $\\tan 30^{\\circ} = \\frac{DF}{10}$, d'où $DF = 10 \\times \\tan 30^{\\circ}$. Le cosinus utiliserait l'hypoténuse, et le sinus utiliserait aussi l'hypoténuse.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "d",
+          "e",
+          "f"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans un triangle $GHI$ rectangle en $H$, on a $GH = 12\\,cm$ et $\\widehat{G} = 40^{\\circ}$. Quelle est la longueur arrondie au dixième de $HI$ ?",
+      "options": [
+        "$9,2\\,cm$",
+        "$10,1\\,cm$",
+        "$7,7\\,cm$",
+        "$15,7\\,cm$"
+      ],
+      "correctAnswer": "$10,1\\,cm$",
+      "explanation": "Par rapport à l'angle $\\widehat{G} = 40^{\\circ}$, le côté $GH = 12\\,cm$ est adjacent et le côté $HI$ est opposé. On utilise la tangente : $\\tan 40^{\\circ} = \\frac{HI}{12}$. Donc $HI = 12 \\times \\tan 40^{\\circ} \\approx 12 \\times 0,8391 \\approx 10,069$. Arrondi au dixième, on obtient $10,1\\,cm$. La réponse $9,2\\,cm$ correspondrait à $12 \\times \\sin 40^{\\circ}$ (erreur : confusion avec l'hypoténuse), $7,7\\,cm$ à $12 \\times \\cos 40^{\\circ}$, et $15,7\\,cm$ à $\\frac{12}{\\cos 40^{\\circ}}$ (calcul de l'hypoténuse).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle GHI rectangle en H",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "g",
+          "h",
+          "i"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Dans un triangle $JKL$ rectangle en $K$, on connaît $JL = 14\\,cm$ (hypoténuse) et $KL = 7\\,cm$. Quelle est la mesure arrondie au degré près de l'angle $\\widehat{J}$ ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$45^{\\circ}$",
+        "$60^{\\circ}$",
+        "$25^{\\circ}$"
+      ],
+      "correctAnswer": "$30^{\\circ}$",
+      "explanation": "Par rapport à l'angle $\\widehat{J}$, l'hypoténuse est $JL = 14\\,cm$ et le côté opposé est $KL = 7\\,cm$. On utilise le sinus : $\\sin \\widehat{J} = \\frac{7}{14} = 0,5$. L'angle dont le sinus vaut $0,5$ est $30^{\\circ}$. On vérifie : $\\sin 30^{\\circ} = 0,5$. Les autres valeurs correspondent à $\\sin 45^{\\circ} \\approx 0,7$, $\\sin 60^{\\circ} \\approx 0,87$, $\\sin 25^{\\circ} \\approx 0,42$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle JKL rectangle en K",
+        "vertexLabels": [
+          "J",
+          "K",
+          "L"
+        ],
+        "sideLabels": [
+          "j",
+          "k",
+          "l"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Une échelle de $6\\,m$ de long est appuyée contre un mur vertical. Le pied de l'échelle est à $3\\,m$ du mur. Quel est l'angle formé par l'échelle et le sol, arrondi au degré près ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$45^{\\circ}$",
+        "$60^{\\circ}$",
+        "$25^{\\circ}$"
+      ],
+      "correctAnswer": "$60^{\\circ}$",
+      "explanation": "On modélise la situation par un triangle rectangle : l'échelle est l'hypoténuse ($6\\,m$), la distance du pied au mur est le côté adjacent à l'angle cherché ($3\\,m$). On utilise le cosinus : $\\cos \\theta = \\frac{3}{6} = 0,5$. L'angle dont le cosinus vaut $0,5$ est $60^{\\circ}$. L'angle $30^{\\circ}$ aurait un cosinus de $\\frac{\\sqrt{3}}{2} \\approx 0,866$, $45^{\\circ}$ un cosinus de $\\frac{\\sqrt{2}}{2} \\approx 0,707$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Échelle contre un mur : triangle rectangle",
+        "vertexLabels": [
+          "Mur",
+          "Pied",
+          "Sommet"
+        ],
+        "sideLabels": [
+          "echelle",
+          "sol",
+          "hauteur"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

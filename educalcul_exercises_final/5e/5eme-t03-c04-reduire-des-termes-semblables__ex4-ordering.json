@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 392,
+  "_course_code": "5eme-t03-c04-reduire-des-termes-semblables",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Application : Réduire des termes semblables",
+  "title": "Réduire des termes semblables : Mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Expression simple à une variable",
+      "content": "Range les étapes dans l'ordre chronologique pour réduire l'expression $5x + 3 - 2x + 7$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les termes en $x$ et les termes numériques.",
+        "Regrouper les termes en $x$ : $5x - 2x$.",
+        "Regrouper les termes numériques : $3 + 7$.",
+        "Effectuer les calculs : $3x$ et $10$.",
+        "Écrire la forme réduite finale : $3x + 10$."
+      ],
+      "explanation": "Pour réduire l'expression, on commence par identifier les termes semblables : ceux qui contiennent $x$ ($5x$ et $-2x$) et les nombres ($3$ et $7$). On les regroupe ensuite : $5x - 2x = 3x$ et $3 + 7 = 10$. La forme réduite est donc $3x + 10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression à deux variables",
+      "content": "Range les étapes dans l'ordre pour réduire l'expression $4a - 2b + 3a + 5b - 6$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les termes en $a$, en $b$ et le nombre seul.",
+        "Regrouper les termes en $a$ : $4a + 3a$.",
+        "Regrouper les termes en $b$ : $-2b + 5b$.",
+        "Calculer chaque groupe : $7a$ et $3b$.",
+        "Écrire la forme réduite finale : $7a + 3b - 6$."
+      ],
+      "explanation": "On repère trois types de termes : ceux en $a$ ($4a$ et $3a$), ceux en $b$ ($-2b$ et $5b$) et le nombre $-6$. On additionne les coefficients pour chaque lettre : $4+3=7$ pour $a$, $-2+5=3$ pour $b$. Le nombre $-6$ ne change pas. Le résultat est $7a + 3b - 6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression avec distributivité",
+      "content": "Range les étapes pour réduire l'expression $2(x + 3) + 4x - 5$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Distribuer le $2$ aux termes de la parenthèse : $2 \\times x + 2 \\times 3$.",
+        "Écrire l'expression sans parenthèse : $2x + 6 + 4x - 5$.",
+        "Regrouper les termes en $x$ : $2x + 4x$.",
+        "Regrouper les nombres : $6 - 5$.",
+        "Calculer et écrire la forme réduite : $6x + 1$."
+      ],
+      "explanation": "La priorité est de lever la parenthèse par distributivité : $2(x+3) = 2x + 6$. L'expression devient $2x + 6 + 4x - 5$. On regroupe ensuite les termes en $x$ ($2x+4x=6x$) et les nombres ($6-5=1$). La forme réduite finale est $6x + 1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 408,
+  "_course_code": "5eme-t06-c04-probabilite-d-un-evenement-simple",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Issues équiprobables accessibles",
+  "title": "Probabilités : issues équiprobables",
+  "questions": [
+    {
+      "text": "Un dé à six faces équilibré est lancé une fois. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Les issues possibles sont 1, 2, 3, 4, 5, 6, toutes équiprobables. Les nombres pairs sont 2, 4, 6, soit 3 issues favorables sur 6. La probabilité est donc $3/6 = 1/2$. Les autres options correspondent à des erreurs de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac contient 4 billes rouges, 3 billes bleues et 3 billes vertes. On tire une bille au hasard. Quelle est la probabilité qu'elle soit bleue ?",
+      "options": [
+        "$3/10$",
+        "$1/3$",
+        "$3/7$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "Il y a au total $4+3+3 = 10$ billes, toutes équiprobables. Les billes bleues sont au nombre de 3, donc la probabilité est $3/10$. Les distracteurs proviennent de mauvais calculs du total ou des favorables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux pièces de monnaie équilibrées. Quelle est la probabilité d'obtenir au moins une face (pile) ?",
+      "options": [
+        "$1/2$",
+        "$3/4$",
+        "$1/4$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$3/4$",
+      "explanation": "L'espace des issues équippables contient 4 couples : (P,P), (P,F), (F,P), (F,F). Trois d'entre eux contiennent au moins une face (pile). La probabilité est $3/4$. L'option $1/2$ correspond à l'erreur de ne compter que les issues avec exactement une face.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une roulette est divisée en 8 secteurs numérotés de 1 à 8, tous de même taille. Quelle est la probabilité que l'aiguille s'arrête sur un multiple de 3 ?",
+      "options": [
+        "$1/8$",
+        "$1/4$",
+        "$3/8$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Les multiples de 3 inférieurs ou égaux à 8 sont 3 et 6, soit 2 issues favorables sur 8 équiprobables. La probabilité vaut $2/8 = 1/4$. Les autres fractions ne correspondent pas au bon comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un jeu de 52 cartes standard, on tire une carte au hasard. Quelle est la probabilité qu'il s'agisse d'une figure (valet, dame, roi) ?",
+      "options": [
+        "$3/13$",
+        "$1/4$",
+        "$1/13$",
+        "$4/13$"
+      ],
+      "correctAnswer": "$3/13$",
+      "explanation": "Il y a 4 couleurs et 3 figures par couleur, soit $4 \\times 3 = 12$ figures au total. La probabilité est $12/52 = 3/13$. L'option $1/4$ correspond à $13/52$, l'option $1/13$ à $4/52$, et $4/13$ à $16/52$, toutes erronées.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

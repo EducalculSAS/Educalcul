@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Si / alors",
+  "title": "L'algorithme et les conditions",
+  "blocks": [
+    {
+      "title": "Le distributeur de bonbons",
+      "content": "Un robot distribue des bonbons selon cette règle : Si l'enfant a $10$ centimes, alors le robot donne un bonbon. Si l'enfant a moins de $10$ centimes, alors le robot ne donne rien. \\n\\nÉcris l'algorithme pour un enfant qui possède $8$ centimes.",
+      "correctAnswer": "Si argent est inférieur à $10$ alors\\nLe robot ne donne rien",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'enfant possède $8$ centimes, ce qui est inférieur à $10$. Selon la condition, le robot ne donne donc rien.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'alarme de température",
+      "content": "L'ordinateur d'une serre gère la température. \\nSi la température est supérieure à $25$ degrés, alors il allume le ventilateur. \\nSinon, il laisse le ventilateur éteint. \\n\\nÉcris l'algorithme pour une température de $28$ degrés.",
+      "correctAnswer": "Si température est supérieure à $25$ alors\\nAllumer le ventilateur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La température est de $28$ degrés. Comme $28$ est supérieur à $25$, la condition est vraie et le ventilateur doit être allumé.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le jeu du nombre mystère",
+      "content": "Un programme demande un nombre à l'utilisateur. \\nSi le nombre est égal à $42$, alors le programme affiche GAGNÉ. \\nSinon, le programme affiche PERDU. \\n\\nÉcris l'algorithme complet en utilisant Si et Sinon pour un utilisateur qui a choisi le nombre $15$.",
+      "correctAnswer": "Si nombre est égal à $42$ alors\\nAfficher GAGNÉ\\nSinon\\nAfficher PERDU",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un algorithme avec une alternative. Comme $15$ n'est pas égal à $42$, la condition est fausse et le programme exécute l'instruction après le Sinon, donc il affiche PERDU.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

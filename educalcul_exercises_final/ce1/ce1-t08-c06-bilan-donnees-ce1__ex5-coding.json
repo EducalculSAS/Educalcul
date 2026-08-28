@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 141,
+  "_course_code": "ce1-t08-c06-bilan-donnees-ce1",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Passer du relevé au tableau",
+  "title": "Algorithme : Passer du relevé au tableau",
+  "blocks": [
+    {
+      "title": "Étape $1$ : Comprendre le relevé",
+      "content": "Tu as un relevé de comptage obtenu en faisant des traits pour chaque occurrence d'une valeur. Explique par écrit les premières actions à faire pour préparer la construction d'un tableau de fréquences.",
+      "correctAnswer": "$1$. Lire le relevé et identifier les différentes valeurs observées. $2$. Compter le nombre de traits pour chaque valeur. $3$. Noter chaque valeur et son effectif correspondant.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par examiner le relevé pour repérer les valeurs distinctes. Ensuite on compte les traits associés à chaque valeur. Enfin on associe chaque valeur à son effectif pour remplir le tableau.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape $2$ : Construire le tableau",
+      "content": "À partir des effectifs trouvés, écris un algorithme simple (en langage courant) qui permet de remplir un tableau avec deux colonnes : 'Valeur' et 'Effectif'.",
+      "correctAnswer": "Algorithme :\\nPour chaque valeur différente trouvée dans le relevé :\\n    Écrire la valeur dans la colonne 'Valeur'.\\n    Écrire le nombre de traits comptés pour cette valeur dans la colonne 'Effectif'.\\nFin pour.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt la liste des valeurs distinctes. À chaque itération, il inscrit la valeur et son effectif dans les colonnes correspondantes du tableau.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étape $3$ : Vérifier et utiliser le tableau",
+      "content": "Une fois le tableau rempli, décris les deux dernières étapes pour vérifier que le tableau est correct et pour l'utiliser afin de répondre à une question comme 'Quelle valeur a le plus grand effectif ?'.",
+      "correctAnswer": "$1$. Vérifier que la somme des effectifs égale le nombre total de traits du relevé. $2$. Comparer les effectifs pour identifier la valeur avec l'effectif le plus grand.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La vérification assure qu'aucune donnée n'a été oubliée. La comparaison des effectifs permet de répondre à la question posée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

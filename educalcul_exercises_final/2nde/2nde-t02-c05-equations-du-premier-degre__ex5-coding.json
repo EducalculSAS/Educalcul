@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 507,
+  "_course_code": "2nde-t02-c05-equations-du-premier-degre",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Résoudre",
+  "title": "Algorithmes de résolution d'équations du premier degré",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme qui résout une équation du premier degré de la forme $ax + b = 0$ avec $a \\neq 0$.",
+      "correctAnswer": "L'algorithme commence par lire les coefficients $a$ et $b$. Si $a = 0$ alors afficher 'Ce n'est pas une équation du premier degré'. Sinon calculer $x = -b / a$ et afficher la valeur de $x$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie d'abord que le coefficient de $x$ est non nul pour être dans le cadre d'une équation du premier degré. Si $a$ est non nul, la solution unique est obtenue en isolant $x$ : $ax = -b$ donc $x = -b / a$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui résout une équation du premier degré comportant des fractions, par exemple $\\frac{2x}{3} - \\frac{5}{4} = \\frac{x}{6} + 1$.",
+      "correctAnswer": "L'algorithme commence par identifier les dénominateurs $3$, $4$, $6$. Calculer le plus petit commun multiple $12$. Multiplier les deux membres de l'équation par $12$ pour éliminer les fractions. On obtient $8x - 15 = 2x + 12$. Ramener les termes en $x$ à gauche et les constantes à droite : $8x - 2x = 12 + 15$ soit $6x = 27$. Diviser par $6$ pour obtenir $x = 27 / 6 = 4,5$. Afficher le résultat.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode consiste à mettre au même dénominateur en multipliant par le PPCM des dénominateurs, ce qui transforme l'équation en une équation sans fractions. On applique ensuite les opérations élémentaires pour isoler $x$ et obtenir la solution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui résout une équation du premier degré dépendant d'un paramètre $k$, par exemple $kx + 3 = 2x - k$, et qui discute le nombre de solutions selon la valeur de $k$.",
+      "correctAnswer": "L'algorithme lit la valeur du paramètre $k$. Il ramène les termes en $x$ du même côté : $(k - 2)x = -k - 3$. Si $k - 2 = 0$ alors on examine le second membre : si $-k - 3 = 0$ (c'est-à-dire $k = -3$) l'équation admet une infinité de solutions, sinon elle n'admet aucune solution. Si $k - 2 \\neq 0$ on calcule $x = (-k - 3) / (k - 2)$ et on affiche cette solution unique.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes contenant $x$ pour faire apparaître le coefficient $(k-2)$. Selon que ce coefficient est nul ou non, on distingue les cas : coefficient nul et second membre nul donne une infinité de solutions, coefficient nul et second membre non nul donne aucune solution, coefficient non nul donne une solution unique obtenue par division.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.065745+00:00",
+  "id": 188,
+  "code": "ce2-t06-c02",
+  "title": "Masses : g et kg",
+  "description": "Cours structuré Educalcul : Masses : g et kg.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Masses : g et kg",
+    "objectif_global": "Masses : g et kg",
+    "mini_lecons_imposees": [
+      "Lire une masse.",
+      "Comparer.",
+      "Convertir cas entiers simples."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Lire une masse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la masse ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "La masse, c'est la quantité de matière qu'un objet contient. Pour la mesurer, on utilise deux unités principales : le gramme, noté $g$, pour les choses légères comme une plume ou un bonbon, et le kilogramme, noté $kg$, pour les objets plus lourds comme un sac de farine ou un petit chien. Un kilogramme vaut exactement mille grammes. Quand tu vois un chiffre suivi de $g$ ou de $kg$, tu sais tout de suite quelle unité est utilisée et tu peux imaginer la taille de l'objet."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 kg = 1000 g",
+              "caption": "Un kilogramme égal mille grammes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons comment une balance numérique affiche la masse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une balance numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une balance numérique affiche directement le nombre et l'unité. Si l'écran montre 250 $g$, la masse de l'objet posé dessus est deux cent cinquante grammes. Pas besoin de faire de calcul, il suffit de lire le chiffre et de noter l'unité indiquée. Parfois la balance peut afficher des kilogrammes, par exemple 1,5 $kg$, ce qui veut dire un kilogramme et demi, soit mille cinq cents grammes."
+            },
+            {
+              "type": "number_line",
+              "caption": "La balance indique 250 g",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 250,
+                  "label": "250 g"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, voyons comment écrire correctement une masse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire la masse avec l'unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire une masse correctement, on place le nombre, un espace, puis l'unité. Par exemple, trois cent grammes s'écrit 300 $g$ et deux kilogrammes s'écrit 2 $kg$. L'espace entre le chiffre et la lettre aide à bien voir où s'arrête le nombre. N'oublie pas d'utiliser la bonne lettre : $g$ pour gramme, $kg$ pour kilogramme."
+            },
+            {
+              "type": "display_math",
+              "latex": "300 g",
+              "caption": "Exemple d'écriture"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une balance numérique, l'écran affiche 400 $g$. Quelle est la masse de l'objet ?",
+              "answer": "400 $g$",
+              "hint": "Regarde le chiffre et l'unité sur l'écran.",
+              "explanation": "La balance donne directement la masse en grammes."
+            },
+            {
+              "question": "Une balance affiche 1,2 $kg$. Combien de grammes cela fait-il ?",
+              "answer": "1200 $g$",
+              "hint": "1 $kg$ = 1000 $g$, donc 1,2 $kg$ = 1,2 × 1000 $g$.",
+              "explanation": "Multiplie le nombre de kilogrammes par 1000."
+            },
+            {
+              "question": "Écris la masse de deux kilogrammes cinq cents grammes en utilisant l'unité gramme seulement.",
+              "answer": "2500 $g$",
+              "hint": "2 $kg$ = 2000 $g$, ajoute 500 $g$.",
+              "explanation": "Convertis les kilogrammes en grammes puis additionne."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux masses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux masses, regarde d'abord les unités. Si les deux sont en grammes, le plus grand nombre indique la masse la plus lourde. Si l'une est en kilogrammes et l'autre en grammes, transforme mentalement le kilogramme en grammes : 1 $kg$ = 1000 $g$. Ainsi, 500 $g$ est plus léger que 1 $kg$ car 500 < 1000. Si les deux masses sont en kilogrammes, compare directement les nombres."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Comparaison 500 g et 1 kg",
+              "parts": [
+                {
+                  "label": "Objet A",
+                  "value": 500,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Objet B",
+                  "value": 1000,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à l'ordre de plusieurs masses."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner plusieurs masses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as plusieurs masses, place-les sur une ligne graduée de 0 à 2000 $g$. Le plus petit nombre se trouve à gauche, le plus grand à droite. Cela te permet de ranger les objets du plus léger au plus lourd sans te tromper. Essaie avec 300 $g$, 800 $g$, 1 $kg$ (1000 $g$) et 1,5 $kg$ (1500 $g$). La ligne graduée t'aide à visualiser les écarts entre les masses."
+            },
+            {
+              "type": "number_line",
+              "caption": "Ordre de masses",
+              "min": 0,
+              "max": 2000,
+              "points": [
+                {
+                  "value": 300,
+                  "label": "300 g"
+                },
+                {
+                  "value": 800,
+                  "label": "800 g"
+                },
+                {
+                  "value": 1000,
+                  "label": "1 kg"
+                },
+                {
+                  "value": 1500,
+                  "label": "1,5 kg"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Apprenons à écrire les comparaisons avec des signes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les signes >, <, = "
+            },
+            {
+              "type": "paragraph",
+              "content": "On utilise trois signes pour écrire une comparaison : $>$ signifie plus grand que, $<$ signifie plus petit que, $=$ signifie égal à. Par exemple, 500 $g$ < 1 $kg$ et 2 $kg$ > 1500 $g$. Entraîne-toi à écrire le bon signe entre 2 $kg$ et 1500 $g$. Le signe $=$ s'utilise quand les deux masses sont exactement les mêmes, comme 1000 $g$ = 1 $kg$."
+            },
+            {
+              "type": "display_math",
+              "latex": "500 g < 1 kg",
+              "caption": "Exemple de comparaison"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare 750 $g$ et 1 $kg$. Écris le signe correct entre les deux.",
+              "answer": "750 $g$ < 1 $kg$",
+              "hint": "Convertis 1 $kg$ en grammes.",
+              "explanation": "1 $kg$ = 1000 $g$, donc 750 $g$ est plus petit."
+            },
+            {
+              "question": "Range ces masses du plus léger au plus lourd : 300 $g$, 1 $kg$, 800 $g$, 1500 $g$.",
+              "answer": "300 $g$, 800 $g$, 1 $kg$, 1500 $g$",
+              "hint": "Convertis tout en grammes.",
+              "explanation": "1 $kg$ = 1000 $g$, 1500 $g$ = 1,5 $kg$."
+            },
+            {
+              "question": "Complète avec >, < ou = : 2 $kg$ ___ 2000 $g$.",
+              "answer": "2 $kg$ = 2000 $g$",
+              "hint": "Combien de grammes dans 2 $kg$ ?",
+              "explanation": "2 $kg$ = 2 × 1000 = 2000 $g$."
+            }
+          ]
+        },
+        {
+          "title": "Convertir cas entiers simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le lien entre kilogramme et gramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un kilogramme, c'est exactement mille grammes. Imagine un grand sac de riz de 1 $kg$ : si tu le verses dans des petits sachets de 1 $g$, tu en fais mille. Ce lien ne change jamais, c'est la base de toutes les conversions entre les deux unités. C'est pourquoi on dit souvent que le kilogramme est l'unité de base pour les masses un peu lourdes."
+            },
+            {
+              "type": "display_math",
+              "latex": "1 kg = 1000 g",
+              "caption": "Égalité de base"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment passer des kilogrammes aux grammes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer des kilogrammes aux grammes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour transformer des kilogrammes en grammes, tu multiplies le nombre de kilogrammes par mille. Par exemple, 3 $kg$ deviennent 3 × 1000 = 3000 $g$. C'est comme ajouter trois zéros à droite du nombre. Cette règle marche pour tout nombre entier de kilogrammes. Si tu as 0,5 $kg$, tu fais 0,5 × 1000 = 500 $g$, ce qui montre que la règle marche aussi avec des nombres à virgule."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le nombre de kg",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le chiffre qui indique les kilogrammes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie par 1000",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le calcul : nombre de kg × 1000."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris le résultat en g",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute l'unité $g$ après le nombre obtenu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, faisons l'inverse : des grammes aux kilogrammes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer des grammes aux kilogrammes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller de grammes en kilogrammes, tu divides le nombre de grammes par mille. Si tu as 5000 $g$, tu fais 5000 ÷ 1000 = 5 $kg$. C'est comme enlever trois zéros à droite du nombre. Attention, cela ne fonctionne proprement que quand le nombre de grammes est un multiple de mille. Par exemple, 2500 $g$ donne 2,5 $kg$, car 2500 ÷ 1000 = 2,5."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère le nombre de g",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le chiffre qui indique les grammes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Divise par 1000",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le calcul : nombre de g ÷ 1000."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris le résultat en kg",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute l'unité $kg$ après le nombre obtenu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une masse en $g$ et en $kg$.",
+                "Je sais comparer deux masses avec $>$, $<$ ou $=$.",
+                "Je sais convertir des $kg$ en $g$ et des $g$ en $kg$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de grammes y a-t-il dans 4 $kg$ ?",
+              "answer": "4000 $g$",
+              "hint": "Multiplie 4 par 1000.",
+              "explanation": "4 $kg$ = 4 × 1000 $g$ = 4000 $g$."
+            },
+            {
+              "question": "Convertis 6000 $g$ en kilogrammes.",
+              "answer": "6 $kg$",
+              "hint": "Divise 6000 par 1000.",
+              "explanation": "6000 $g$ ÷ 1000 = 6 $kg$."
+            },
+            {
+              "question": "Un sac pèse 2,5 $kg$. Quelle est sa masse en grammes ?",
+              "answer": "2500 $g$",
+              "hint": "2,5 × 1000.",
+              "explanation": "2,5 $kg$ = 2,5 × 1000 = 2500 $g$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

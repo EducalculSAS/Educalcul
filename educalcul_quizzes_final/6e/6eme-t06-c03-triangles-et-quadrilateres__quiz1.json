@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés des triangles et quadrilatères",
+  "questions": [
+    {
+      "text": "Observe le triangle $ABC$ ci-contre. Les côtés $[AB]$ et $[AC]$ portent le même repère. Quelle est la nature de ce triangle ?",
+      "options": [
+        "Triangle rectangle",
+        "Triangle isocèle",
+        "Triangle équilatéral",
+        "Triangle scalène"
+      ],
+      "correctAnswer": "Triangle isocèle",
+      "explanation": "Un triangle qui a deux côtés de même longueur est un triangle isocèle. Les repères identiques sur $[AB]$ et $[AC]$ indiquent que ces deux côtés ont la même longueur. Ce n'est pas nécessairement un triangle rectangle (pas d'angle droit indiqué), ni équilatéral (les trois côtés ne sont pas marqués égaux), ni scalène (qui n'a aucun côté égal).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec AB = AC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est **toujours vraie** pour un losange ?",
+      "options": [
+        "Il a quatre angles droits.",
+        "Ses diagonales sont de même longueur.",
+        "Ses quatre côtés ont la même longueur.",
+        "Ses diagonales ne se coupent pas à leur milieu."
+      ],
+      "correctAnswer": "Ses quatre côtés ont la même longueur.",
+      "explanation": "La définition même du losange est un quadrilatère qui a ses quatre côtés de même longueur. Les angles droits ne sont pas obligatoires (c'est le cas du carré, un losange particulier). Les diagonales d'un losange ne sont pas nécessairement de même longueur (elles le sont seulement dans le carré). Enfin, les diagonales d'un losange se coupent toujours à leur milieu (c'est un parallélogramme).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $DEF$, l'angle $\\widehat{D}$ mesure $50^{\\circ}$ et l'angle $\\widehat{E}$ mesure $60^{\\circ}$. Quelle est la mesure de l'angle $\\widehat{F}$ ?",
+      "options": [
+        "$50^{\\circ}$",
+        "$60^{\\circ}$",
+        "$70^{\\circ}$",
+        "$110^{\\circ}$"
+      ],
+      "correctAnswer": "$70^{\\circ}$",
+      "explanation": "La somme des angles d'un triangle vaut toujours $180^{\\circ}$. On calcule : $180 - 50 - 60 = 70$. L'angle $\\widehat{F}$ mesure donc $70^{\\circ}$. Les valeurs $50^{\\circ}$ et $60^{\\circ}$ correspondent aux angles donnés, et $110^{\\circ}$ est la somme des deux angles connus au lieu de leur complément à $180^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un rectangle $ABCD$, les diagonales $[AC]$ et $[BD]$ se coupent en $O$. Quelle affirmation est **fausse** ?",
+      "options": [
+        "Les diagonales ont la même longueur.",
+        "Le point $O$ est le milieu de $[AC]$.",
+        "Les diagonales sont perpendiculaires.",
+        "Les diagonales se coupent à leur milieu."
+      ],
+      "correctAnswer": "Les diagonales sont perpendiculaires.",
+      "explanation": "Dans un rectangle, les diagonales ont la même longueur et se coupent à leur milieu (propriété des parallélogrammes). En revanche, elles ne sont pas perpendiculaires (sauf cas particulier du carré). L'affirmation fausse est donc celle qui dit que les diagonales sont perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un quadrilatère a ses quatre angles droits. Ses diagonales sont de même longueur, se coupent à leur milieu, mais ne sont pas perpendiculaires. De quel quadrilatère s'agit-il ?",
+      "options": [
+        "Carré",
+        "Rectangle",
+        "Losange",
+        "Parallélogramme"
+      ],
+      "correctAnswer": "Rectangle",
+      "explanation": "Un quadrilatère à quatre angles droits est un rectangle (ou un carré). Comme les diagonales ne sont pas perpendiculaires, ce n'est pas un carré (dont les diagonales sont perpendiculaires). C'est donc un rectangle. Le losange n'a pas forcément d'angles droits, et le parallélogramme n'a pas forcément d'angles droits ni de diagonales égales.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 399,
+  "_course_code": "5eme-t04-c05-bilan-geometrie-plane-5e",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Checklist",
+  "title": "Quiz : Checklist Géométrie Plane 5e",
+  "questions": [
+    {
+      "text": "Deux droites parallèles sont coupées par une sécante. Quel couple d\\'angles permet d\\'affirmer que les droites sont parallèles si les deux angles sont égaux ?",
+      "options": [
+        "Angles alternes-internes",
+        "Angles correspondants",
+        "Angles opposés par le sommet",
+        "Angles adjacents"
+      ],
+      "correctAnswer": "Angles correspondants",
+      "explanation": "La propriété des angles correspondants stipule que si deux droites sont parallèles, alors les angles correspondants ont même mesure. Réciproquement, si deux angles correspondants ont même mesure, les deux droites sont parallèles. Les angles alternes-internes égaux prouvent aussi le parallélisme, mais les angles correspondants sont la réponse attendue ici comme critère direct. Les angles opposés par le sommet sont toujours égaux, et les angles adjacents ne donnent pas d\\'information sur le parallélisme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle isocèle en A, quelle affirmation figure sur la checklist des propriétés systématiquement vraies ?",
+      "options": [
+        "Les trois côtés ont la même longueur",
+        "Les angles B et C ont même mesure",
+        "L\\'angle A est un angle droit",
+        "La hauteur issue de A ne passe pas par le milieu de [BC]"
+      ],
+      "correctAnswer": "Les angles B et C ont même mesure",
+      "explanation": "Dans un triangle isocèle en A, les deux côtés [AB] et [AC] ont même longueur. La propriété fondamentale (checklist) est que les angles à la base, ici B et C, sont égaux. L\\'option A décrit un triangle équilatéral. L\\'option C décrit un triangle rectangle isocèle, ce n\\'est pas systématique. L\\'option D est fausse car la hauteur, la médiane et la bissectrice issues du sommet principal coïncident.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Quelle propriété de la checklist permet d\\'affirmer qu\\'un quadrilatère est un parallélogramme ?",
+      "options": [
+        "Ses diagonales sont perpendiculaires",
+        "Ses diagonales se coupent en leur milieu",
+        "Il a un angle droit",
+        "Deux côtés consécutifs sont égaux"
+      ],
+      "correctAnswer": "Ses diagonales se coupent en leur milieu",
+      "explanation": "C\\'est une caractérisation (réciproque) du parallélogramme : si les diagonales d\\'un quadrilatère ont même milieu, alors c\\'est un parallélogramme. L\\'option A caractérise un losange (ou un cerf-volant). L\\'option C caractérise un rectangle (si c\\'est déjà un parallélogramme). L\\'option D caractérise un cerf-volant ou un losange (si c\\'est déjà un parallélogramme).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour prouver qu\\'un parallélogramme est un rectangle, quelle condition de la checklist est suffisante ?",
+      "options": [
+        "Ses diagonales sont perpendiculaires",
+        "Ses diagonales ont même longueur",
+        "Deux côtés consécutifs sont égaux",
+        "Ses diagonales se coupent en leur milieu"
+      ],
+      "correctAnswer": "Ses diagonales ont même longueur",
+      "explanation": "Un parallélogramme est un rectangle si et seulement si ses diagonales sont égales (ou s\\'il a un angle droit). L\\'option A (diagonales perpendiculaires) caractérise un losange. L\\'option C (deux côtés consécutifs égaux) caractérise aussi un losange. L\\'option D est vraie pour tout parallélogramme, elle ne permet pas de distinguer le rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle ABC tel que AB = $5$ cm, AC = $5$ cm et BC = $6$ cm. En consultant la checklist des triangles, comment classer ce triangle ?",
+      "options": [
+        "Triangle équilatéral",
+        "Triangle rectangle",
+        "Triangle isocèle en A",
+        "Triangle isocèle en B"
+      ],
+      "correctAnswer": "Triangle isocèle en A",
+      "explanation": "Deux côtés ont la même longueur : AB = AC = $5$ cm. Le sommet commun à ces deux côtés égaux est A. Par définition, le triangle est isocèle en A. Ce n\\'est pas équilatéral car BC = $6$ cm est différent. On ne peut pas affirmer qu\\'il est rectangle sans calculer (ce n\\'est pas un triplet pythagoricien classique comme 3-4-5). Il n\\'est pas isocèle en B car les côtés égaux ne se rejoignent pas en B.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

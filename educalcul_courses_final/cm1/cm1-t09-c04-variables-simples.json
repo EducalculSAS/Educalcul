@@ -1,0 +1,323 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.319348+00:00",
+  "id": 272,
+  "code": "cm1-t09-c04",
+  "title": "Variables simples",
+  "description": "Cours structuré Educalcul : Variables simples.",
+  "subject": "Pensée informatique",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Pensée informatique",
+    "titre_du_cours": "Variables simples",
+    "objectif_global": "Variables simples",
+    "mini_lecons_imposees": [
+      "Stocker une valeur.",
+      "Modifier.",
+      "Lire résultat."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Pensée informatique",
+      "lessons": [
+        {
+          "title": "Stocker une valeur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une boîte bien étiquetée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte en carton devant toi. Pour ne pas mélanger son contenu avec d'autres boîtes, tu colles une étiquette dessus : tu écris \"Score\" au feutre. Cette étiquette, c'est le **nom** de ta variable. À l'intérieur, tu glisses un petit papier sur lequel est écrit le chiffre $10$. Ce chiffre, c'est la **valeur** que tu stockes. En informatique, on appelle cela une **variable** : un espace de stockage qui a un nom unique et qui garde une information pour toi, le temps que le programme tourne."
+            },
+            {
+              "type": "definition",
+              "term": "Variable",
+              "definition": "Un espace nommé dans la mémoire de l'ordinateur qui permet de conserver une valeur (un nombre, un mot) pendant l'exécution d'un programme.",
+              "example": "La variable \"age\" contient la valeur $10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nom que tu choisis est important. Il doit être clair pour que tu te souviennes de ce qu'il y a dedans. \"Score\" est parfait pour un score. \"NombreDeVies\" va très bien pour compter les vies restantes. Évite les noms trop courts comme \"x\" ou \"a\" : dans quelques jours, tu ne sauras plus ce qu'ils veulent dire. Un bon nom, c'est comme une étiquette bien lisible sur un tiroir : tu trouves tout de suite ce que tu cherches."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nom de la variable",
+                "Valeur stockée",
+                "Type d'information"
+              ],
+              "rows": [
+                [
+                  "score",
+                  "0",
+                  "Nombre entier"
+                ],
+                [
+                  "prenom",
+                  "\"Léo\"",
+                  "Texte (chaîne)"
+                ],
+                [
+                  "niveau",
+                  "1",
+                  "Nombre entier"
+                ],
+                [
+                  "gagnant",
+                  "vrai",
+                  "Vrai ou Faux"
+                ]
+              ],
+              "caption": "Exemples de variables avec leur nom, leur valeur et le type de donnée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu que l'on peut ranger des nombres entiers comme $0$, $1$, $10$. Mais une variable sait aussi garder des **mots** ou des phrases. Pour que l'ordinateur comprenne qu'il s'agit de texte et pas d'un calcul, on met le texte entre guillemets : \"Bonjour\" ou \"Victoire !\". C'est ce qu'on appelle une chaîne de caractères. C'est très utile pour afficher un message personnalisé, comme \"Bravo \" + prenom + \" !\"."
+            },
+            {
+              "type": "definition",
+              "term": "Chaîne de caractères",
+              "definition": "Une suite de lettres, de chiffres ou de symboles considérée comme du texte. On l'écrit toujours entre guillemets.",
+              "example": "\"CM1\" est une chaîne, $10$ est un nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu décides de mettre une valeur dans ta boîte pour la première fois, on dit que tu **initialises** la variable. C'est le moment où la boîte passe de \"vide\" à \"remplie\". Par exemple, au tout début d'un jeu, on écrit souvent : score ← 0. Cela veut dire : \"Dans la boîte nommée score, je mets le chiffre 0\". C'est le point de départ, la ligne de départ avant que l'aventure ne commence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant créer une boîte, lui donner un nom clair et y glisser une première information, qu'elle soit un chiffre ou un mot. C'est la base de tout programme : avoir des endroits identifiés pour ranger ses trésors. Dans la prochaine leçon, nous verrons comment changer le contenu de ces boîtes au fur et à mesure que l'histoire avance, sans en créer de nouvelles à chaque fois."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu veux stocker le nombre de pommes dans un panier. Quel nom de variable est le plus clair ?",
+              "answer": "nombreDePommes",
+              "hint": "Choisis le nom qui décrit le mieux ce que tu comptes, sans abréviation mystérieuse.",
+              "explanation": "Un bon nom de variable explique son contenu. \"nombreDePommes\" est explicite. \"x\" ou \"n\" ne disent rien. \"pommes\" seul ne précise pas si c'est un nombre ou une liste."
+            },
+            {
+              "question": "Parmi ces lignes, laquelle initialise correctement une variable \"meilleurScore\" avec le nombre $100$ ?",
+              "answer": "meilleurScore ← 100",
+              "hint": "La flèche (ou le signe = selon les langages) pointe vers la variable qui reçoit la valeur.",
+              "explanation": "L'initialisation, c'est donner une première valeur. La syntaxe standard est : NomVariable ← Valeur. Ici, on met $100$ dans \"meilleurScore\"."
+            }
+          ]
+        },
+        {
+          "title": "Modifier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Effacer et réécrire : le pouvoir de la gomme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons ta boîte \"Score\". Au début, elle contient $0$. Tu gagnes une pièce ! Le score doit devenir $10$. Que fais-tu ? Tu ne prends pas une nouvelle boîte. Tu ouvres celle qui existe déjà, tu **effaces** le $0$ qui est écrit sur le papier, et tu écris $10$ à la place. En informatique, c'est exactement ça : **modifier** une variable, c'est remplacer son ancienne valeur par une nouvelle. L'ancien contenu est oublié, seule la dernière valeur écrite compte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : L'état initial",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La variable score contient $0$. C'est le point de départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : L'action",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le programme lit : score ← 10. Il va à la boîte \"score\", efface $0$, écrit $10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant, si on regarde dans la boîte, on voit $10$. Le $0$ a disparu pour de bon."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, la nouvelle valeur dépend de l'ancienne. Imagine : tu as $5$ points, tu gagnes $3$ points. Le nouveau score, c'est l'ancien score **plus** $3$. On écrit : score ← score + 3. Attention, ce n'est pas une égalité mathématique ! C'est une instruction dans l'ordre du temps : \"Prends ce qu'il y a dans score, ajoute $3$, et remets le résultat dans score\". C'est comme si tu disais : \"J'ai 5 euros, j'en gagne 3, maintenant j'en ai 8\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut échanger le contenu de deux boîtes. Tu as une boîte \"mainGauche\" avec une pomme et une boîte \"mainDroite\" avec une banane. Si tu vides \"mainGauche\" pour y mettre la banane, tu as perdu la pomme ! Il te faut une **troisième boîte temporaire\" (souvent appelée \"temp\"). Tu mets la pomme dans \"temp\", tu déplaces la banane dans \"mainGauche\", puis tu reprends la pomme de \"temp\" pour la mettre dans \"mainDroite\". C'est le tour de magie de l'échange !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens d'apprendre que une variable n'est pas figée : elle vit, elle change, elle suit l'histoire de ton programme. C'est ce qui rend les jeux dynamiques : le score qui grimpe, les vies qui descendent, le niveau qui augmente. Maintenant que tu sais stocker et modifier, il te manque une chose essentielle : savoir **lire** ce qu'il y a dedans pour t'en servir vraiment. C'est le sujet de notre dernière leçon."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La variable \"vies\" vaut $3$. Le programme exécute : vies ← vies - 1. Quelle est la nouvelle valeur de \"vies\" ?",
+              "answer": "2",
+              "hint": "Lis l'instruction comme une recette : prend la valeur actuelle, retire $1$, remets le résultat dans la boîte.",
+              "explanation": "Au départ, vies = 3. L'instruction dit : nouvelle valeur = ancienne valeur - 1. Donc 3 - 1 = 2. La boîte contient maintenant $2$."
+            },
+            {
+              "question": "Au départ, \"x\" contient $5$ et \"y\" contient $12$. On exécute : x ← x + y. Que contiennent \"x\" et \"y\" à la fin ?",
+              "answer": "x contient 17, y contient 12",
+              "hint": "Seule la variable à gauche de la flèche change. L'autre ne bouge pas.",
+              "explanation": "On calcule x + y = 5 + 12 = 17. On stocke $17$ dans x. La variable y n'est pas mentionnée à gauche, elle garde sa valeur $12$."
+            },
+            {
+              "question": "Pour échanger les valeurs de A ($10$) et B ($20$) avec une variable temp, quelle est la bonne suite d'instructions ?",
+              "answer": "temp ← A ; A ← B ; B ← temp",
+              "hint": "Il faut sauver la première valeur avant de l'écraser. Pense aux trois boîtes : main gauche, main droite, poche.",
+              "explanation": "1. temp ← A (temp=10, A=10, B=20). 2. A ← B (temp=10, A=20, B=20). 3. B ← temp (temp=10, A=20, B=10). Échange réussi !"
+            }
+          ]
+        },
+        {
+          "title": "Lire résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ouvrir la boîte pour s'en servir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as une boîte \"meilleurScore\" qui brille sur ton étagère. Elle contient $550$. À quoi ça sert si tu ne l'ouvres jamais ? **Lire** une variable, c'est simplement aller regarder ce qu'il y a écrit sur le papier à l'intérieur pour l'utiliser. Tu peux l'afficher à l'écran pour le joueur : \"Ton record : 550\". Tu peux t'en servir dans un calcul : \"Si meilleurScore > 1000 alors affiche 'Champion !'\". Tu peux même la copier dans une autre variable : \"scoreActuel ← meilleurScore\". Lire ne vide pas la boîte, elle reste intacte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Afficher la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Instruction : afficher(score). L'ordinateur va chercher la valeur dans la boîte \"score\" et l'écrit à l'écran. La boîte ne change pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Utiliser dans un calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Instruction : total ← score + bonus. L'ordinateur lit \"score\", lit \"bonus\", additionne, met le résultat dans \"total\". Les deux premières boîtes sont inchangées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Tester une condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Instruction : si niveau > 5 alors... L'ordinateur lit \"niveau\", compare la valeur lue à $5$. Selon le résultat, la suite du programme change."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est ici que la variable devient un vrai outil de décision. Imagine un jeu de devinette. L'ordinateur a choisi un nombre secret stocké dans \"nombreMystere\". Le joueur propose un nombre stocké dans \"proposition\". Le programme **lit** les deux boîtes, les **compare**, et décide : \"Trop grand\", \"Trop petit\" ou \"Gagné !\". Sans la lecture des variables, l'ordinateur ne pourrait pas réagir à ce que fait le joueur. C'est le dialogue entre le programme et ses données."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un piège classique : confondre le **nom** de la variable et sa **valeur**. Si j'écris : afficher(\"score\"), l'ordinateur écrira le mot \"score\" (le texte). Si j'écris : afficher(score), sans guillemets, l'ordinateur ira **lire** dans la boîte et écrira le chiffre qui est dedans, par exemple $42$. Les guillemets, c'est pour dire \"c'est du texte\". Pas de guillemets, c'est \"vas voir dans la boîte\". C'est la différence entre lire l'étiquette et regarder le contenu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les trois piliers de la variable : **stocker** une première information dans une boîte nommée, **modifier** son contenu quand la situation change, et **lire** cette valeur pour l'afficher, calculer ou décider. Ces trois actions simples sont le moteur de tous les programmes, du plus petit script au plus gros jeu vidéo. Tu as les clés pour commencer à coder tes propres histoires interactives !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais créer une variable en lui donnant un nom clair et une valeur de départ.",
+                "Je sais changer la valeur d'une variable existante (écraser l'ancienne).",
+                "Je sais utiliser la valeur d'une variable pour l'afficher ou faire un calcul.",
+                "Je fais la différence entre le nom (ex: \"score\") et la valeur (ex: $10$).",
+                "Je comprends que lire une variable ne la vide pas, elle garde sa valeur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La variable \"temperature\" contient $18$. Que va afficher l'instruction : afficher(\"temperature\") ?",
+              "answer": "Le mot : temperature",
+              "hint": "Regarde bien s'il y a des guillemets autour du mot. Les guillemets veulent dire \"texte\".",
+              "explanation": "Avec des guillemets, c'est une chaîne de caractères. L'ordinateur affiche exactement ce qui est entre les guillemets : le mot \"temperature\". Il ne va pas regarder dans la boîte."
+            },
+            {
+              "question": "Variables : a = 7, b = 3. On exécute : afficher(a + b). Que voit l'utilisateur ?",
+              "answer": "10",
+              "hint": "L'ordinateur lit la valeur de a, lit la valeur de b, fait l'addition, puis affiche le résultat.",
+              "explanation": "a vaut 7, b vaut 3. L'expression a + b est calculée : 7 + 3 = 10. C'est le résultat $10$ qui est affiché. Les variables a et b n'ont pas bougé."
+            },
+            {
+              "question": "Tu veux afficher la phrase : \"Ton score est : 50\" (en supposant que score = 50). Quelle instruction écrire ?",
+              "answer": "afficher(\"Ton score est : \" + score)",
+              "hint": "Il faut coller le texte (avec guillemets) et la variable (sans guillemets) avec un signe +.",
+              "explanation": "\"Ton score est : \" est du texte (guillemets). score est la variable (pas de guillemets, on lit sa valeur $50$). Le + colle les deux pour faire une seule phrase affichée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

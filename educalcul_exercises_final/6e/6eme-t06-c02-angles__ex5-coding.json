@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 358,
+  "_course_code": "6eme-t06-c02-angles",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Mesurer",
+  "title": "Algorithmes de mesure d'angles",
+  "blocks": [
+    {
+      "title": "Mesurer un angle au rapporteur",
+      "content": "Écris un algorithme (en pseudo‑code ou en Python) qui décrit les étapes pour mesurer un angle à l'aide d'un rapporteur. L'algorithme doit indiquer comment positionner le rapporteur, aligner la base et lire la graduation.",
+      "correctAnswer": "Algorithme MesurerAngle\\n1. Placer le centre du rapporteur sur le sommet de l'angle.\\n2. Aligner la base du rapporteur (le trait 0°) avec un des côtés de l'angle.\\n3. Lire la graduation sur l'autre côté de l'angle : si l'angle est inférieur à 180°, utiliser l'échelle intérieure ; sinon utiliser l'échelle extérieure.\\n4. Noter la valeur lue en degrés.\\n5. Afficher la mesure.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit les étapes classiques de la mesure au rapporteur : centrer, aligner, choisir la bonne échelle et lire la valeur. Il permet d'obtenir la mesure en degrés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classifier un angle selon sa mesure",
+      "content": "Écris un algorithme qui prend en entrée la mesure d'un angle en degrés et affiche sa nature : aigu, droit, obtus, plat ou rentrant.",
+      "correctAnswer": "Algorithme ClasserAngle\\nEntrée : mesure (en degrés)\\nSi mesure < 90 alors afficher \"aigu\"\\nSinon si mesure = 90 alors afficher \"droit\"\\nSinon si mesure < 180 alors afficher \"obtus\"\\nSinon si mesure = 180 alors afficher \"plat\"\\nSinon afficher \"rentrant\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare la mesure aux valeurs caractéristiques : 90° pour l'angle droit, 180° pour l'angle plat. Les angles inférieurs à 90° sont aigus, entre 90° et 180° sont obtus, supérieurs à 180° sont rentrants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer la mesure d'un angle manquant dans un triangle",
+      "content": "Écris un algorithme qui, connaissant les mesures de deux angles d'un triangle, calcule la mesure du troisième angle. Rappelle que la somme des angles d'un triangle vaut $180^\\circ$.",
+      "correctAnswer": "Algorithme AngleManquantTriangle\\nEntrée : angle1, angle2 (en degrés)\\nsomme = angle1 + angle2\\nangle3 = 180 - somme\\nAfficher angle3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des trois angles d'un triangle est toujours $180^\\circ$. En soustrayant la somme des deux angles connus à $180^\\circ$, on obtient la mesure de l'angle restant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

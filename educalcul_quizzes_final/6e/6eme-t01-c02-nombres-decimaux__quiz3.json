@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 332,
+  "_course_code": "6eme-t01-c02-nombres-decimaux",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Intercaler",
+  "title": "Quiz : Intercaler des nombres décimaux",
+  "questions": [
+    {
+      "text": "Parmi les nombres suivants, lequel est intercalé entre $3,4$ et $3,5$ ?",
+      "options": [
+        "3,3",
+        "3,45",
+        "3,55",
+        "3,6"
+      ],
+      "correctAnswer": "3,45",
+      "explanation": "Pour être intercalé entre $3,4$ et $3,5$, un nombre doit être strictement supérieur à $3,4$ et strictement inférieur à $3,5$. On peut écrire $3,4 = 3,40$ et $3,5 = 3,50$. Le nombre $3,45$ vérifie $3,40 < 3,45 < 3,50$. Les autres options sont soit trop petites ($3,3$), soit trop grandes ($3,55$ et $3,6$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut intercaler un nombre entre $0,7$ et $0,71$. Laquelle de ces propositions convient ?",
+      "options": [
+        "0,701",
+        "0,72",
+        "0,69",
+        "0,710"
+      ],
+      "correctAnswer": "0,701",
+      "explanation": "Il faut comparer en alignant les virgules et en ajoutant des zéros pour avoir le même nombre de décimales : $0,7 = 0,700$ et $0,71 = 0,710$. On cherche un nombre $x$ tel que $0,700 < x < 0,710$. Le nombre $0,701$ convient car $701$ millièmes est entre $700$ et $710$ millièmes. $0,72 = 0,720$ est trop grand, $0,69$ est trop petit, $0,710$ est égal à la borne supérieure (il faut strictement inférieur).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus grand nombre décimal à deux chiffres après la virgule que l'on peut intercaler entre $12,34$ et $12,35$ ?",
+      "options": [
+        "12,349",
+        "12,345",
+        "12,344",
+        "12,350"
+      ],
+      "correctAnswer": "12,349",
+      "explanation": "On cherche un nombre à 2 décimales (centièmes) strictement entre $12,34$ et $12,35$. Les nombres à 2 décimales entre ces deux bornes sont $12,341, 12,342, ..., 12,349$. Le plus grand est $12,349$. Attention : $12,349$ a 3 décimales, mais c'est le plus grand nombre *à 2 décimales* qui est $12,34$ suivi d'un chiffre des millièmes non nul, ici $9$. En réalité, à 2 décimales exactement, il n'y en a pas (le suivant serait $12,35$). La question porte sur l'écriture décimale finie : le plus grand nombre *inférieur à 12,35* et *supérieur à 12,34* s'écrit $12,349$ (ou $12,3499...$). Parmi les choix, $12,349$ est le plus proche de $12,35$ sans l'atteindre. $12,350$ vaut $12,35$ (borne exclue).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complétez l'encadrement : $4,56 \\square 4,567 \\square 4,57$.",
+      "options": [
+        "< ; <",
+        "> ; >",
+        "< ; >",
+        "> ; <"
+      ],
+      "correctAnswer": "< ; <",
+      "explanation": "On compare les nombres en les mettant au même nombre de décimales : $4,56 = 4,560$, $4,567 = 4,567$, $4,57 = 4,570$. On a bien $4,560 < 4,567 < 4,570$. Donc les deux symboles sont des signes 'inférieur à' ($<$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul dit : 'Il n'existe aucun nombre décimal entre $0,9$ et $1$.' Cette affirmation est-elle vraie ?",
+      "options": [
+        "Non, car $0,95$ est entre les deux.",
+        "Oui, car $0,9$ est le nombre qui précède $1$.",
+        "Non, car $1,1$ est entre les deux.",
+        "Oui, car il n'y a pas de chiffre après $9$."
+      ],
+      "correctAnswer": "Non, car $0,95$ est entre les deux.",
+      "explanation": "L'affirmation est fausse. Entre deux nombres décimaux distincts, il existe toujours une infinité d'autres nombres décimaux. Ici $0,9 = 0,90$ et $1 = 1,00$. Le nombre $0,95$ (soit 95 centièmes) vérifie $0,90 < 0,95 < 1,00$. On pourrait aussi citer $0,91$, $0,99$, $0,999$, etc. L'option C propose $1,1$ qui est supérieur à $1$. Les options B et D reflètent des idées fausses courantes (existence d'un 'successeur' pour les décimaux).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

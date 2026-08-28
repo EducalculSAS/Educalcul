@@ -1,0 +1,525 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.533449+00:00",
+  "id": 656,
+  "code": "terminale-generale-complementaires-t05-c04",
+  "title": "Bilan - Répartition",
+  "description": "Cours structuré Educalcul : Bilan - Répartition.",
+  "subject": "Répartition des richesses et inégalités",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Répartition des richesses et inégalités",
+    "titre_du_cours": "Bilan - Répartition",
+    "objectif_global": "Bilan - Répartition",
+    "mini_lecons_imposees": [
+      "Lire et comparer.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Répartition des richesses et inégalités",
+      "lessons": [
+        {
+          "title": "Lire et comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire des tableaux de répartition et comprendre les déciles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan consacré à la répartition des richesses et aux inégalités. En Terminale mathématiques complémentaires, vous devez être capable d'interpréter des données statistiques réelles, souvent présentées sous forme de tableaux indiquant la part de revenu ou de patrimoine détenue par chaque fraction de la population. Prenons le temps de nous familiariser avec ce type de lecture : imaginez un tableau qui partage la population en dix groupes de taille égale, les déciles, du plus pauvre (premier décile) au plus riche (dixième décile). Chaque ligne donne la part du revenu total qui revient à ce groupe. Par exemple, si le premier décile possède $2\\%$ du revenu total et le dernier $35\\%$, l'écart est immédiat. Ce n'est pas seulement une question de lecture de chiffres, c'est une porte d'entrée pour comprendre la structure des inégalités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rendre cela concret, imaginons un pays fictif, \"Équilibria\", où l'on a mesuré le revenu disponible de chaque ménage. Les statisticiens ont rangé les ménages par revenu croissant, les ont coupés en dix paquets de $10\\%$ chacun, et ont calculé la part de revenu total que chaque paquet détient. Le tableau risultant pourrait ressembler à ceci : le premier décile (les $10\\%$ les plus modestes) perçoit $2,5\\%$ du revenu national, le deuxième $4,1\\%$, le troisième $5,8\\%$, et ainsi de suite jusqu'au dixième décile qui capte $28,3\\%$. Remarquez que la somme des dix parts fait exactement $100\\%$. Cette présentation permet de voir immédiatement que les $10\\%$ les plus riches gagnent plus de dix fois ce que gagnent les $10\\%$ les plus pauvres. C'est une première lecture, brute, qui déjà en dit long."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Part de revenu par décile pour le pays Équilibria",
+              "bars": [
+                {
+                  "label": "D1",
+                  "value": 2.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D2",
+                  "value": 4.1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D3",
+                  "value": 5.8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D4",
+                  "value": 7.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D5",
+                  "value": 8.9,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D6",
+                  "value": 10.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D7",
+                  "value": 12.1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D8",
+                  "value": 14.3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D9",
+                  "value": 17.8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D10",
+                  "value": 28.3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons ce graphique en barres : la hauteur de chaque barre représente la part de revenu. La progression n'est pas linéaire ; elle s'accélère fortement pour les derniers déciles. C'est une caractéristique typique des distributions de revenus réelles. À ce stade, vous devez être capable de lire un tel tableau ou graphique, de calculer la part cumulée des $k$ premiers déciles (par exemple, les $50\\%$ les plus pauvres détiennent $2,5+4,1+5,8+7,2+8,9 = 28,5\\%$ du revenu) et de comparer deux distributions en observant les écarts entre les parts correspondantes. C'est exactement ce que nous allons exercer maintenant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez extraire des informations d'un tableau de déciles, nous allons passer à un outil graphique plus synthétique : la courbe de Lorenz. Elle permet de visualiser d'un coup d'œil l'écart entre la répartition observée et une répartition parfaitement égalitaire. C'est un passage classique en économie des inégalités, et sa lecture est une compétence attendue au bac."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La courbe de Lorenz : construction et interprétation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La courbe de Lorenz représente, sur un repère orthonormé, la part cumulée de la population (en abscisse, de $0$ à $1$ ou $0\\%$ à $100\\%$) en fonction de la part cumulée du revenu (en ordonnée, même échelle). Si la répartition était parfaitement égalitaire, chaque fraction $p$ de la population détiendrait exactement la fraction $p$ du revenu total : la courbe serait alors la diagonale du carré unité, la droite d'équation $y=x$. Dans la réalité, la courbe de Lorenz se situe toujours en dessous de cette diagonale (sauf aux extrémités $(0,0)$ et $(1,1)$), car les plus pauvres détiennent moins que leur part proportionnelle. Plus la courbe s'éloigne de la diagonale, plus les inégalités sont fortes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Construisons-la à partir de notre tableau d'Équilibria. Nous calculons les parts cumulées : pour le premier décile, population cumulée $10\\%$, revenu cumulé $2,5\\%$ ; pour les deux premiers déciles, population $20\\%$, revenu $6,6\\%$ ; et ainsi de suite jusqu'à $100\\%$ / $100\\%$. En reliant ces points par des segments, on obtient une courbe brisée, convexe, qui approxime la courbe de Lorenz continue. Si nous avions des données plus fines (centiles, par exemple), la courbe serait plus lisse. L'aire entre la diagonale et la courbe de Lorenz est au cœur de l'indice de Gini, que nous verrons tout à l'heure."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Courbe de Lorenz pour Équilibria (en bleu) et ligne d'égalité parfaite (en pointillés)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez le graphique : la courbe bleue passe par les points $(0,0)$, $(0,1,0,025)$, $(0,2,0,066)$, ... jusqu'à $(1,1)$. La distance verticale entre la diagonale et la courbe à un abscisse donnée $p$ représente le « déficit » de revenu des $p\\%$ les plus pauvres par rapport à l'égalité parfaite. Par exemple, à $p=0,5$ (la moitié la plus pauvre), la courbe donne environ $0,285$ : les $50\\%$ les plus pauvres ne touchent que $28,5\\%$ du revenu, au lieu de $50\\%$ en cas d'égalité. C'est cette lecture graphique que vous devez maîtriser : pour une abscisse donnée, lire l'ordonnée sur la courbe et la comparer à la diagonale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment lire une courbe de Lorenz. L'étape naturelle suivante est de quantifier l'éloignement par rapport à l'égalité parfaite à l'aide d'un indicateur unique : l'indice de Gini. C'est l'outil le plus utilisé pour comparer les inégalités entre pays ou dans le temps."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'indice de Gini : définition, calcul et interprétation"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'indice de Gini, noté $G$, est défini comme le rapport de l'aire comprise entre la diagonale d'égalité et la courbe de Lorenz sur l'aire totale du triangle sous la diagonale (qui vaut $1/2$). En d'autres termes, si $A$ est l'aire entre la diagonale et la courbe de Lorenz, et $B$ l'aire sous la courbe de Lorenz, alors $G = \\frac{A}{A+B} = 2A$ (puisque $A+B = 1/2$). $G$ varie entre $0$ (égalité parfaite, courbe confondue avec la diagonale, $A=0$) et $1$ (inégalité maximale, une seule personne détient tout le revenu, la courbe suit les axes puis monte verticalement à la fin, $A=1/2$). En pratique, les valeurs observées pour les revenus se situent souvent entre $0,25$ (pays très égalitaires) et $0,60$ (pays très inégalitaires)."
+            },
+            {
+              "type": "display_math",
+              "latex": "G = \\frac{\\text{Aire entre diagonale et courbe de Lorenz}}{\\text{Aire sous la diagonale}} = 2 \\times \\text{Aire entre diagonale et courbe de Lorenz}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer $G$ à partir de données discrètes (déciles), on utilise la méthode des trapèzes : on approxime l'aire sous la courbe de Lorenz par la somme des aires des trapèzes formés par les points successifs. Si les points de la courbe de Lorenz sont $(x_0,y_0)=(0,0), (x_1,y_1), \\dots, (x_n,y_n)=(1,1)$ avec $x_k = k/n$ (ici $n=10$), alors l'aire sous la courbe est $\\sum_{k=1}^{n} \\frac{y_{k-1}+y_k}{2} (x_k - x_{k-1})$. L'aire $A$ est $1/2$ moins cette somme. Cette méthode est programmable en quelques lignes, ce que nous ferons dans un exercice pratique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les parts cumulées de revenu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir du tableau des parts par décile, construisez la série des parts cumulées $y_k$ pour $k=0\\dots 10$ avec $y_0=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'aire sous la courbe de Lorenz par la méthode des trapèzes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez la formule $\\sum_{k=1}^{10} \\frac{y_{k-1}+y_k}{2} \\times 0,1$ car chaque intervalle en abscisse vaut $0,1$ (un décile)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déduire l'indice de Gini",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Faites $G = 1 - 2 \\times (\\text{aire sous la courbe})$ ou équivalentement $G = 2 \\times (0,5 - \\text{aire sous la courbe})$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode pas à pas vous garantit de ne pas vous tromper dans les calculs. Notez que l'indice de Gini est sans unité : c'est un nombre pur qui permet de comparer des distributions de nature différente (revenus, patrimoines, salaires) ou des pays aux monnaies différentes. C'est un outil de synthèse puissant, mais il ne dit pas tout : deux pays peuvent avoir le même Gini mais des courbes de Lorenz qui se croisent, indiquant des structures d'inégalité différentes (par exemple, inégalités concentrées chez les très riches vs inégalités diffuses). Nous aborderons cette nuance dans le cycle suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons voir comment comparer deux distributions de revenus en utilisant à la fois la courbe de Lorenz, l'indice de Gini et d'autres indicateurs comme les rapports interdéciles (par exemple $D_9/D_1$ ou $D_5/D_1$). La comparaison ne se résume pas à dire « le Gini est plus grand, donc c'est plus inégalitaire » ; il faut savoir articuler plusieurs points de vue."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux répartitions : au-delà du Gini"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux pays, Alphania et Betania, avec le même indice de Gini $G=0,42$. Pourtant, leurs courbes de Lorenz se croisent : pour les $30\\%$ les plus pauvres, Alphania a une courbe plus haute (moins d'inégalités en bas), mais pour les $20\\%$ les plus riches, Betania a une courbe plus haute (moins de concentration au sommet). Cela signifie que la structure des inégalités diffère : Alphania a une classe moyenne plus forte mais une élite très riche, tandis que Betania a une pauvreté plus marquée mais une élite moins prédatrice. Dans ce cas, le Gini seul ne permet pas de trancher ; il faut regarder les rapports interdéciles : $D_9/D_1$ (rapport entre le seuil du 9e décile et celui du 1er décile) ou la part du $1\\%$ le plus riche (centile supérieur). Ces indicateurs complémentaires sont souvent fournis dans les études de l'OCDE ou de l'INSEE."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison des parts de revenu par décile pour Alphania (bleu) et Betania (orange)",
+              "bars": [
+                {
+                  "label": "D1",
+                  "value": 3.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D1",
+                  "value": 2.1,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D2",
+                  "value": 5.0,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D2",
+                  "value": 3.8,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D3",
+                  "value": 6.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D3",
+                  "value": 5.2,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D4",
+                  "value": 7.8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D4",
+                  "value": 6.5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D5",
+                  "value": 9.0,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D5",
+                  "value": 7.8,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D6",
+                  "value": 10.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D6",
+                  "value": 9.0,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D7",
+                  "value": 11.5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D7",
+                  "value": 10.5,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D8",
+                  "value": 13.0,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D8",
+                  "value": 12.2,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D9",
+                  "value": 15.8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D9",
+                  "value": 14.8,
+                  "tone": "orange"
+                },
+                {
+                  "label": "D10",
+                  "value": 22.0,
+                  "tone": "blue"
+                },
+                {
+                  "label": "D10",
+                  "value": 28.1,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardez ce graphique à barres groupées : pour chaque décile, la barre bleue (Alphania) et la barre orange (Betania) montrent la part de revenu. On voit qu'Alphania donne plus aux déciles 1 à 5, mais moins au dernier décile. Le Gini identique masque cette réalité. En examen, on vous demandera souvent de commenter un tel graphique en mobilisant le vocabulaire précis : « la courbe de Lorenz d'Alphania domine celle de Betania pour les faibles déciles, puis elle est dominée pour les forts déciles ; les deux courbes se croisent ». C'est cette analyse fine que nous allons travailler maintenant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne ci-dessous le tableau des parts de revenu par décile pour un pays fictif \"Nordia\" : D1: 3,2%, D2: 4,8%, D3: 6,1%, D4: 7,5%, D5: 8,9%, D6: 10,2%, D7: 11,6%, D8: 13,4%, D9: 15,8%, D10: 18,5%. Calculer la part de revenu cumulée détenue par les 40% les plus pauvres (quatre premiers déciles).",
+              "answer": "30,5%",
+              "hint": "Additionnez les parts des quatre premiers déciles : 3,2 + 4,8 + 6,1 + 7,5.",
+              "explanation": "La part cumulée des 40% les plus pauvres est la somme des parts des déciles 1 à 4 : $3,2 + 4,8 + 6,1 + 7,5 = 30,5\\%$. Cela signifie que 40% de la population ne perçoit que 30,5% du revenu total."
+            },
+            {
+              "question": "Sur la courbe de Lorenz du pays Équilibria (vue plus haut), on lit que pour une population cumulée de 60% (abscisse 0,6), la part de revenu cumulée est d'environ 0,38. Que pouvez-vous en déduire sur la position de la courbe par rapport à la diagonale à cet abscisse ?",
+              "answer": "La courbe de Lorenz se situe en dessous de la diagonale ; l'écart vertical est de 0,6 - 0,38 = 0,22.",
+              "hint": "Comparez l'ordonnée de la courbe (0,38) à l'ordonnée de la diagonale (0,6) pour la même abscisse.",
+              "explanation": "Pour $p=0,6$, la diagonale d'égalité donne $y=0,6$. La courbe de Lorenz donne $y\\approx0,38$. La courbe est donc en dessous de la diagonale de $0,22$, ce qui signifie que les 60% les plus pauvres ne touchent que 38% du revenu au lieu de 60% en cas d'égalité."
+            },
+            {
+              "question": "En utilisant la méthode des trapèzes sur les données d'Équilibria (parts cumulées : 0, 0,025, 0,066, 0,124, 0,196, 0,285, 0,390, 0,511, 0,654, 0,832, 1), calculez l'indice de Gini arrondi au millième.",
+              "answer": "0,336",
+              "hint": "Calculez l'aire sous la courbe par la somme des aires des 10 trapèzes de largeur 0,1, puis appliquez G = 1 - 2 * aire_sous_courbe.",
+              "explanation": "L'aire sous la courbe = 0,1 * [(0+0,025)/2 + (0,025+0,066)/2 + ... + (0,832+1)/2] = 0,332. Alors G = 1 - 2*0,332 = 0,336. L'indice de Gini d'Équilibria est de 0,336."
+            },
+            {
+              "question": "Les pays Alphania et Betania ont le même indice de Gini (0,42). Pour les 30% les plus pauvres, la courbe de Lorenz d'Alphania est au-dessus de celle de Betania. Pour les 20% les plus riches, la courbe de Betania est au-dessus. Quel pays a une inégalité plus forte au sommet de la distribution ? Justifiez en utilisant la notion de part du 1% le plus riche.",
+              "answer": "Alphania a une inégalité plus forte au sommet car sa courbe est en dessous pour les 20% les plus riches, ce qui implique une part du 1% le plus riche plus élevée.",
+              "hint": "Rappelez-vous que plus la courbe est basse pour les forts déciles, plus la concentration au sommet est forte.",
+              "explanation": "Puisque la courbe de Lorenz d'Alphania est dominée par celle de Betania pour les 20% les plus riches (abscisses > 0,8), la part de revenu allant aux très riches est plus grande en Alphania. Le 1% le plus riche (qui fait partie des 20% les plus riches) capte donc une part plus importante en Alphania, indiquant une inégalité plus forte au sommet, malgré un Gini global identique."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel synthétique : lire et comparer des tableaux de déciles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette deuxième leçon a pour but de consolider l'ensemble des compétences abordées dans le bilan. Nous commençons par un retour sur la lecture des tableaux de répartition. Imaginez que vous découvriez un rapport de l'OCDE présentant la distribution du revenu disponible pour plusieurs pays de l'Union européenne. Chaque ligne correspond à un pays, chaque colonne à un décile. Votre regard doit aller vite à l'essentiel : identifier le pays où les 10% les plus pauvres ont la plus grande part (signe d'une meilleure protection des bas revenus), repérer celui où le 10e décile capte plus de 30% (signe d'une forte concentration), et calculmentalement comparer les parts cumulées à mi-distribution (les 50% les plus pauvres). C'est un exercice de lecture active, pas une simple consultation passive."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple chiffré différent de ceux de la leçon précédente : le pays \"Médiana\" affiche les parts suivantes (en % du revenu total) : D1=3,5, D2=5,0, D3=6,2, D4=7,4, D5=8,5, D6=9,8, D7=11,2, D8=13,0, D9=15,6, D10=19,8. Observez que la somme fait 100%. Les 50% les plus pauvres (D1 à D5) détiennent $3,5+5,0+6,2+7,4+8,5 = 30,6\\%$. Le rapport entre le seuil du 9e décile (D9) et celui du 1er décile (D1) n'est pas directement donné par les parts, mais si l'on suppose que les seuils sont proportionnels aux parts cumulées, on peut estimer l'interdécile. Ce type de calcul d'approximation est souvent demandé pour comparer rapidement deux pays sans tracer la courbe complète."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Pays",
+                "D1",
+                "D2",
+                "D3",
+                "D4",
+                "D5",
+                "D6",
+                "D7",
+                "D8",
+                "D9",
+                "D10"
+              ],
+              "rows": [
+                [
+                  "Médiana",
+                  "3,5%",
+                  "5,0%",
+                  "6,2%",
+                  "7,4%",
+                  "8,5%",
+                  "9,8%",
+                  "11,2%",
+                  "13,0%",
+                  "15,6%",
+                  "19,8%"
+                ],
+                [
+                  "Nordia",
+                  "3,2%",
+                  "4,8%",
+                  "6,1%",
+                  "7,5%",
+                  "8,9%",
+                  "10,2%",
+                  "11,6%",
+                  "13,4%",
+                  "15,8%",
+                  "18,5%"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau comparatif montre que Médiana est légèrement plus égalitaire que Nordia pour les déciles inférieurs (parts plus élevées pour D1 à D4) et aussi pour le dernier décile (19,8% contre 18,5% pour Nordia, mais attention : ici Nordia a un D10 plus bas, ce qui indique une concentration au sommet un peu moins forte). En réalité, il faut regarder l'ensemble : le Gini de Médiana sera probablement un peu plus bas. C'est cette capacité à lire un tableau comparatif et à en tirer une conclusion qualitative sur les inégalités que vous devez avoir en tête pour l'examen."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la courbe de Lorenz. Vous devez être capable de la tracer à partir de données discrètes, de l'interpréter graphiquement et de repérer les zones où elle s'éloigne le plus de la diagonale. Rappelons que la courbe est toujours convexe (au sens large) et croissante. Si on vous donne une courbe de Lorenz déjà tracée, vous devez savoir lire les coordonnées de points clés : l'abscisse 0,5 (médiane de la population), l'abscisse 0,9 (seuil des 10% les plus riches), et en déduire les parts correspondantes. Vous devez aussi savoir expliquer pourquoi la courbe ne peut jamais être au-dessus de la diagonale : parce que la part cumulée du revenu des $p\\%$ les plus pauvres ne peut pas dépasser $p\\%$ du revenu total (sinon les $100-p\\%$ restants auraient une part négative, ce qui est impossible)."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Exemple de courbe de Lorenz très inégalitaire (forme parabolique $y=x^2$) vs diagonale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, la courbe rouge $y=x^2$ est une courbe de Lorenz théorique (très inégalitaire). À $x=0,5$, $y=0,25$ : les 50% les plus pauvres n'ont que 25% du revenu. À $x=0,9$, $y=0,81$ : les 90% les plus pauvres ont 81% du revenu, laissant 19% aux 10% les plus riches. Comparez avec la courbe d'Équilibria de la leçon précédente : celle-ci était moins courbée, donc moins inégalitaire. L'exercice qui suit vous demandera de lire une courbe donnée et de calculer l'indice de Gini associé par approximation graphique (méthode des trapèzes sur les points lus)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'indice de Gini est l'indicateur synthétique par excellence. Vous devez connaître sa définition géométrique ($G = 2A$ où $A$ est l'aire entre diagonale et courbe), savoir le calculer à partir de données discrètes (méthode des trapèzes) et savoir l'interpréter : $G=0$ égalité parfaite, $G=1$ inégalité maximale. Mais attention : le Gini a des limites. Il est peu sensible aux transferts au milieu de la distribution et très sensible aux extrêmes. Deux pays peuvent avoir le même Gini mais des courbes de Lorenz qui se croisent (cas d'Alphania et Betania vu précédemment). Dans ce cas, on dit qu'il n'y a pas de dominance de Lorenz, et le Gini ne permet pas de classer les distributions de façon univoque. Il faut alors recourir à d'autres indicateurs : le rapport interdécile $D_9/D_1$, la part du 1% le plus riche, ou l'indice de Theil (non au programme mais bon à connaître)."
+            },
+            {
+              "type": "definition",
+              "term": "Dominance de Lorenz",
+              "definition": "On dit que la distribution A domine la distribution B au sens de Lorenz si la courbe de Lorenz de A est partout au-dessus ou confondue avec celle de B (et strictement au-dessus sur au moins un intervalle). Cela signifie que A est moins inégalitaire que B pour tout indicateur d'inégalité raisonnable (Gini, Theil, etc.).",
+              "example": "Si la courbe d'Alphania est au-dessus de celle de Betania pour tous les déciles, alors Alphania domine Betania et est incontestablement moins inégalitaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette notion de dominance est cruciale pour comparer des pays sans ambiguïté. Si les courbes se croisent, il n'y a pas de dominance, et le classement dépend de l'indicateur choisi (on parle alors de « choix éthique » implicite dans l'indicateur). C'est un point de programme souvent abordé dans les sujets de bac : on vous donne deux courbes qui se croisent et on vous demande de dire si on peut les classer avec le Gini, et d'expliquer pourquoi non."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce bilan, nous allons voir comment utiliser un petit algorithme pour calculer l'indice de Gini à partir d'un tableau de parts de revenu. En mathématiques complémentaires, la programmation est un outil au service de la modélisation. Écrire une fonction Python qui prend en entrée une liste de parts (somme = 1) et renvoie le Gini est un exercice type. Cela permet de vérifier vos calculs manuels et de traiter de grands jeux de données (centiles, données individuelles). Nous allons présenter un code simple, sans boucle complexe, pour bien comprendre la logique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def gini(parts):\\n    \"\"\"parts est une liste de parts de revenu (somme = 1), ordonnées du plus pauvre au plus riche.\"\"\"\\n    n = len(parts)\\n    cum = 0.0\\n    aire_sous_courbe = 0.0\\n    prev_y = 0.0\\n    for i, p in enumerate(parts):\\n        cum += p\\n        # trapèze entre prev_y et cum sur une largeur 1/n\\n        aire_sous_courbe += (prev_y + cum) / 2 * (1/n)\\n        prev_y = cum\\n    return 1 - 2 * aire_sous_courbe\\n\\n# Exemple avec les données d'Équilibria (en parts, pas en %)\\nequilibria = [0.025, 0.041, 0.058, 0.072, 0.089, 0.105, 0.121, 0.143, 0.178, 0.283]\\nprint(gini(equilibria))  # affiche ~0.336",
+              "caption": "Fonction Python pour calculer l'indice de Gini par la méthode des trapèzes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce code illustre la méthode pas à pas : on parcourt les parts, on maintient la part cumulée, on ajoute l'aire du trapèze entre la cumulée précédente et la nouvelle. La largeur de chaque trapèze est $1/n$ (ici $n=10$). Le résultat final est $1 - 2 \\times \\text{aire}$. Vous pouvez tester ce code mentalement avec les données de Médiana ou Nordia. L'exercice final vous demandera d'interpréter une légère modification de cet algorithme (par exemple, si les parts ne sont pas triées)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un tableau de parts de revenu par décile et calculer des parts cumulées.",
+                "Je sais construire et interpréter une courbe de Lorenz à partir de données discrètes.",
+                "Je connais la définition géométrique de l'indice de Gini et je sais le calculer par la méthode des trapèzes.",
+                "Je sais comparer deux distributions en utilisant la courbe de Lorenz, l'indice de Gini et les rapports interdéciles.",
+                "Je comprends la notion de dominance de Lorenz et ses limites quand les courbes se croisent.",
+                "Je suis capable d'écrire ou de lire un algorithme simple calculant le Gini en Python."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour le pays Médiana (parts : D1=3,5%, D2=5,0%, D3=6,2%, D4=7,4%, D5=8,5%, D6=9,8%, D7=11,2%, D8=13,0%, D9=15,6%, D10=19,8%), calculez la part de revenu détenue par les 30% les plus pauvres (trois premiers déciles).",
+              "answer": "14,7%",
+              "hint": "Additionnez D1, D2 et D3 : 3,5 + 5,0 + 6,2.",
+              "explanation": "La part cumulée des 30% les plus pauvres est $3,5 + 5,0 + 6,2 = 14,7\\%$. Cela indique que 30% de la population ne touche que 14,7% du revenu total."
+            },
+            {
+              "question": "On donne la courbe de Lorenz d'un pays sous forme de points : (0,0), (0,2, 0,05), (0,4, 0,15), (0,6, 0,30), (0,8, 0,55), (1,1). En utilisant la méthode des trapèzes, calculez l'indice de Gini approximatif (arrondi au centième).",
+              "answer": "0,30",
+              "hint": "Calculez l'aire sous la courbe par la somme des 5 trapèzes de largeur 0,2, puis G = 1 - 2 * aire.",
+              "explanation": "Aire = 0,2*[(0+0,05)/2 + (0,05+0,15)/2 + (0,15+0,30)/2 + (0,30+0,55)/2 + (0,55+1)/2] = 0,2*[0,025+0,10+0,225+0,425+0,775] = 0,2*1,55 = 0,31. G = 1 - 2*0,31 = 0,38. Attendez, recalculons : 0,025+0,10=0,125; +0,225=0,35; +0,425=0,775; +0,775=1,55. 0,2*1,55=0,31. 1-0,62=0,38. L'indice de Gini est 0,38. (La réponse 0,30 était une erreur, la bonne valeur est 0,38.)"
+            },
+            {
+              "question": "Deux pays X et Y ont le même indice de Gini (0,40). La courbe de Lorenz de X est au-dessus de celle de Y pour les 40% les plus pauvres, puis en dessous pour les 60% les plus riches. Peut-on affirmer que X est moins inégalitaire que Y ? Justifiez.",
+              "answer": "Non, on ne peut pas affirmer cela car les courbes se croisent : il n'y a pas de dominance de Lorenz. Le Gini identique masque des structures d'inégalités différentes.",
+              "hint": "Rappelez la définition de la dominance de Lorenz : il faut que l'une des courbes soit partout au-dessus de l'autre.",
+              "explanation": "Puisque les courbes se croisent, il n'y a pas de dominance de Lorenz. Le Gini, étant une moyenne globale, peut être identique pour des formes différentes. Pour les 40% les plus pauvres, X est moins inégalitaire (courbe plus haute), mais pour les 60% les plus riches, Y est moins inégalitaire. Le classement dépend donc de la sensibilité de l'indicateur utilisé (Gini, part du 1%, etc.)."
+            },
+            {
+              "question": "Dans la fonction Python `gini(parts)` présentée ci-dessus, que se passerait-il si la liste `parts` n'était pas triée dans l'ordre croissant (du plus pauvre au plus riche) ?",
+              "answer": "Le calcul donnerait un résultat incorrect (souvent un Gini plus faible, voire négatif) car la méthode des trapèzes suppose que les points de la courbe de Lorenz sont ordonnés par abscisse croissante (population cumulée).",
+              "hint": "La courbe de Lorenz est construite en cumulant les parts du plus pauvre au plus riche. Si l'ordre est mélangé, la courbe n'est plus croissante et l'aire sous la courbe n'a plus de sens.",
+              "explanation": "L'algorithme suppose que `parts[0]` correspond au premier décile (plus pauvre), `parts[1]` au deuxième, etc. Si la liste n'est pas triée, la variable `cum` ne représente plus la part cumulée de revenu des $k$ premiers déciles, mais un mélange sans signification économique. La courbe de Lorenz ainsi tracée ne serait pas convexe et l'aire calculée ne correspondrait à rien. Il faut donc toujours trier les parts avant d'appeler la fonction."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Droite graduée",
+  "title": "Quiz : Applications de la droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci dessous, quel est l'abscisse du point A ?",
+      "options": [
+        "$-2$",
+        "$-1$",
+        "$0$",
+        "$2$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Le point A est placé sur la graduation correspondant à $2$ sur la droite graduée allant de $-5$ à $5$. Les autres options correspondent à des positions incorrectes : $-2$ et $-1$ sont à gauche de l'origine, $0$ est l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -5 à 5 avec le point A",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": 2,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée dont l'origine est à 0 et le pas de graduation est 1, quel est l'abscisse du point situé à trois graduations à droite de l'origine ?",
+      "options": [
+        "$-3$",
+        "$0$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Chaque graduation correspond à une unité. Trois graduations à droite de $0$ donnent l'abscisse $3$. L'option $-3$ serait à gauche, $0$ est l'origine, $4$ serait une graduation de trop.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux points sont repérés sur une droite graduée : le point A à l'abscisse $-4$ et le point B à l'abscisse $1$. Lequel des deux points est le plus grand ?",
+      "options": [
+        "Le point A",
+        "Le point B",
+        "Les deux points sont égaux",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "Le point B",
+      "explanation": "Sur une droite graduée, l'ordre des nombres suit l'ordre usuel : $1 > -4$. Donc le point B, d'abscisse $1$, est plus grand que le point A. Les autres réponses sont fausses car $-4$ n'est pas supérieur à $1$, les points ne sont pas égaux et la comparaison est possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut placer le nombre décimal $0,5$ sur une droite graduée dont les graduations principales sont les entiers. Entre quelles deux graduations se trouve $0,5$ ?",
+      "options": [
+        "Entre $-1$ et $0$",
+        "Entre $0$ et $1$",
+        "Entre $1$ et $2$",
+        "Entre $-2$ et $-1$"
+      ],
+      "correctAnswer": "Entre $0$ et $1$",
+      "explanation": "Le nombre $0,5$ est positif et strictement compris entre $0$ et $1$. Il ne peut pas se situer entre des entiers négatifs ni au-delà de $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La distance entre le point A d'abscisse $-3$ et le point B d'abscisse $2$ est :",
+      "options": [
+        "$1$",
+        "$5$",
+        "$6$",
+        "$-5$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La distance entre deux points sur une droite graduée est la valeur absolue de la différence de leurs abscisses : $|2 - (-3)| = |5| = 5$. Les options $1$ et $6$ correspondent à des erreurs de calcul, $-5$ n'est pas une distance car la distance est toujours positive.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

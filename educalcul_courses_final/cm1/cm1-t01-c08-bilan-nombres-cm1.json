@@ -1,0 +1,428 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.156429+00:00",
+  "id": 218,
+  "code": "cm1-t01-c08",
+  "title": "Bilan - Nombres CM1",
+  "description": "Cours structuré Educalcul : Bilan - Nombres CM1.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Bilan - Nombres CM1",
+    "objectif_global": "Bilan - Nombres CM1",
+    "mini_lecons_imposees": [
+      "Entiers et décimaux.",
+      "Comparaison et droite.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Entiers et décimaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres entiers jusqu'à 9999"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première partie, nous rappelons comment écrire et lire un nombre entier jusqu'à quatre chiffres. Chaque chiffre a une place précise : les unités, les dizaines, les centaines et les milliers. Par exemple, dans $3045$, le $3$ occupe la place des milliers, le $0$ celle des centaines, le $4$ celle des dizaines et le $5$ celle des unités. On peut le décomposer en $3\\times1000 + 0\\times100 + 4\\times10 + 5$. Prends le temps de visualiser chaque colonne, cela t'aidera à ne pas confondre les valeurs."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3045,
+              "caption": "Décomposition de 3045 dans le tableau de numération"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres décimaux : dixièmes et centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les nombres décimaux ajoutent une partie après la virgule. Le premier chiffre après la virgule représente les dixièmes, le second les centièmes. Ainsi $12,34$ se lit \"douze virgule trente-quatre\" et signifie $12 + \\frac{34}{100}$. Pour bien comprendre, imagine une barre partagée en dix parts égales : chaque part est un dixième. Si tu en colores trois, tu as $0,3$. Si tu divises chaque dixième en dix, tu obtiens des centièmes."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 10
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 100
+                }
+              ],
+              "caption": "Un dixième et un centième représentés par des réglettes"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : lire la partie entière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le chiffre(s) avant la virgule comme un nombre entier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : dire \"virgule\"",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ne dis pas \"point\" mais bien \"virgule\"."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : lire chaque chiffre après la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Énumère les chiffres un par un : $12,34$ devient \"douze virgule trois quatre\"."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer un nombre décimal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $3045,34$. La partie entière $3045$ se décompose avec des milliers, centaines, dizaines, unités. La partie décimale $34$ centièmes s'écrit $\\frac{34}{100}$. On peut la représenter par une barre divisée en cent parties dont trente-quatre sont colorées. Essaie de faire le lien entre les blocs de base dix pour l'entier et la barre de fraction pour le décimal."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 4,
+              "caption": "Partie entière 3045 : 3 milliers, 0 centaines, 4 dizaines, 5 unités"
+            },
+            {
+              "type": "fraction",
+              "numerator": 34,
+              "denominator": 100,
+              "shape": "bar",
+              "caption": "Partie décimale 34 centièmes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire et lire les nombres en lettres et en chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de l'écriture en chiffres à l'écriture en lettres, groupe les chiffres par trois en partant de la droite pour les entiers, puis ajoute la partie décimale chiffre par chiffre. Exemple : $3045,34$ s'écrit \"trois mille quarante-cinq virgule trois-quatre\". L'inverse consiste à placer chaque mot dans la bonne colonne du tableau de numération. Entraîne-toi avec plusieurs exemples pour gagner en aisance."
+            },
+            {
+              "type": "display_math",
+              "latex": "3045 = 3\\times1000 + 0\\times100 + 4\\times10 + 5 \\quad ; \\quad 12,34 = 12 + \\frac{34}{100}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres : cinq mille deux cent huit.",
+              "answer": "5208",
+              "hint": "Place le 5 au thousands, le 2 aux hundreds, le 0 aux tens, le 8 aux units.",
+              "explanation": "Le nombre se décompose en 5 milliers, 2 centaines, 0 dizaines, 8 unités."
+            },
+            {
+              "question": "Lis le nombre $7,56$ en respectant la règle de la virgule.",
+              "answer": "sept virgule cinq six",
+              "hint": "N'oublie pas de dire \"virgule\" et de lire chaque chiffre après.",
+              "explanation": "La partie entière est 7, la partie décimale est 5 dixièmes et 6 centièmes."
+            },
+            {
+              "question": "Décompose $402,07$ en partie entière et partie décimale sous forme de fraction.",
+              "answer": "Partie entière : 402 ; partie décimale : 7/100",
+              "hint": "Le zéro après la virgule indique qu'il n'y a pas de dixièmes.",
+              "explanation": "402 = 4 centaines + 0 dizaines + 2 unités. 07 centièmes = 7/100."
+            },
+            {
+              "question": "Écris en lettres : $1005,09$.",
+              "answer": "mille cinq virgule zéro neuf",
+              "hint": "Attention aux zéros : ils se lisent quand ils sont après la virgule.",
+              "explanation": "1005 = mille cinq. Après la virgule, 0 dixièmes et 9 centièmes."
+            }
+          ]
+        },
+        {
+          "title": "Comparaison et droite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres entiers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux entiers, regarde d'abord le nombre de chiffres. Celui qui en a le plus est le plus grand. S'ils ont le même nombre de chiffres, compare chiffre par chiffre en partant de la gauche. Le premier chiffre différent décide. Par exemple, $3456$ et $3429$ : les milliers et les centaines sont égaux, aux dizaines $5 > 2$, donc $3456 > 3429$. Cette méthode fonctionne jusqu'à 9999."
+            },
+            {
+              "type": "number_line",
+              "min": 3400,
+              "max": 3500,
+              "points": [
+                {
+                  "value": 3429,
+                  "label": "A"
+                },
+                {
+                  "value": 3456,
+                  "label": "B"
+                }
+              ],
+              "caption": "Position de 3429 et 3456 sur une droite graduée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres décimaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "La comparaison des décimaux suit le même principe, à condition d'aligner les virgules. Ajoute des zéros à droite pour avoir le même nombre de chiffres après la virgule. Compare ensuite la partie entière, puis les dixièmes, puis les centièmes. Exemple : $12,4$ et $12,38$ → écris $12,40$ et $12,38$. Les parties entières sont égales, aux dixièmes $4 > 3$, donc $12,4 > 12,38$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : aligner les virgules",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux nombres l'un sous l'autre, virgule sous virgule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : compléter par des zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute des zéros à droite du plus court pour égaler le nombre de décimales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer chiffre à chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parcours de gauche à droite jusqu'à trouver une différence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner une liste de nombres sur une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place chaque nombre sur une droite graduée pour visualiser leur ordre. Choisis une échelle adaptée (par exemple, un trait tous les dixièmes). Marque chaque point et lis l'ordre de gauche à droite. Cela aide à vérifier tes comparaisons et à repérer les intervalles. Essaie avec $3,2 ; 3,15 ; 3,25 ; 3,1$."
+            },
+            {
+              "type": "number_line",
+              "min": 3,
+              "max": 3.3,
+              "points": [
+                {
+                  "value": 3.1,
+                  "label": "A"
+                },
+                {
+                  "value": 3.15,
+                  "label": "B"
+                },
+                {
+                  "value": 3.2,
+                  "label": "C"
+                },
+                {
+                  "value": 3.25,
+                  "label": "D"
+                }
+              ],
+              "caption": "Quatre nombres décimaux positionnés entre 3 et 3,3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser les symboles < , > , = "
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la comparaison faite, écris le résultat avec le symbole approprié. Rappelle-toi : le symbole \"ouvre\" vers le plus grand nombre. Par exemple, $7,5 > 7,45$ et $100 = 100,0$. Entraîne-toi à écrire ces relations pour ancrer le réflexe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $4567$ et $4576$ avec le bon symbole.",
+              "answer": "4567 < 4576",
+              "hint": "Regarde les centaines, puis les dizaines.",
+              "explanation": "Les milliers et centaines sont égaux, aux dizaines 6 < 7."
+            },
+            {
+              "question": "Lequel est plus grand : $0,9$ ou $0,12$ ?",
+              "answer": "0,9 > 0,12",
+              "hint": "Transforme $0,9$ en $0,90$ pour comparer aux centièmes.",
+              "explanation": "9 dixièmes = 90 centièmes, ce qui est plus grand que 12 centièmes."
+            },
+            {
+              "question": "Ordonne ces nombres du plus petit au plus grand : $2,5 ; 2,05 ; 2,55 ; 2,505$.",
+              "answer": "2,05 < 2,5 < 2,505 < 2,55",
+              "hint": "Écris tous les nombres avec trois décimales.",
+              "explanation": "2,050 < 2,500 < 2,505 < 2,550."
+            },
+            {
+              "question": "Complète : $15,6 \\_\\_ 15,58$.",
+              "answer": ">",
+              "hint": "Ajoute un zéro à $15,6$ pour obtenir $15,60$.",
+              "explanation": "60 centièmes > 58 centièmes."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : lire, écrire et décomposer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les essentiels : un nombre entier se lit en groupant par trois chiffres, un décimal se lit chiffre par chiffre après la virgule. La décomposition en milliers, centaines, dizaines, unités pour l'entier, et en dixièmes, centièmes pour le décimal, reste la base de tous les exercices. Essaie de transformer $607,08$ en mots et en décomposition additive."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : comparer et ordonner"
+            },
+            {
+              "type": "paragraph",
+              "content": "La comparaison suit toujours la même routine : aligner, compléter, comparer. Pour ordonner plusieurs nombres, place-les sur une droite ou range-les par paires successives. Vérifie que tu sais utiliser $<$, $>$ et $=$ sans hésiter. Teste-toi avec la série $4,3 ; 4,28 ; 4,31 ; 4,03$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement mixte : repérer l'erreur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici trois affirmations. Une seule est fausse. Trouve laquelle et corrige-la. 1) $5000 = 5 \\times 1000$. 2) $0,7 = 7/10$. 3) $12,345$ se lit \"douze virgule trois cent quarante-cinq\". Analyse chaque phrase avec les règles vues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan final"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant tous les outils pour manipuler les nombres entiers et décimaux jusqu'aux centièmes : lecture, écriture, décomposition, comparaison, ordre. Continue à t'exercer régulièrement pour que ces gestes deviennent automatiques. Bravo pour ton travail !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire un nombre entier jusqu'à 9999.",
+                "Je sais lire et écrire un nombre décimal jusqu'aux centièmes.",
+                "Je sais décomposer un nombre en parties entières et décimales.",
+                "Je sais comparer deux nombres (entiers ou décimaux) avec <, >, =.",
+                "Je sais ordonner une liste de nombres sur une droite graduée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en lettres : $607,08$.",
+              "answer": "six cent sept virgule zéro huit",
+              "hint": "N'oublie pas le zéro des dixièmes.",
+              "explanation": "607 = six cent sept. Après la virgule : 0 dixièmes, 8 centièmes."
+            },
+            {
+              "question": "Ordonne du plus petit au plus grand : $4,3 ; 4,28 ; 4,31 ; 4,03$.",
+              "answer": "4,03 < 4,28 < 4,3 < 4,31",
+              "hint": "Mets tous les nombres à deux décimales.",
+              "explanation": "4,03 ; 4,28 ; 4,30 ; 4,31."
+            },
+            {
+              "question": "Laquelle de ces affirmations est fausse ? 1) $5000 = 5 \\times 1000$. 2) $0,7 = 7/10$. 3) $12,345$ se lit \"douze virgule trois cent quarante-cinq\".",
+              "answer": "L'affirmation 3 est fausse.",
+              "hint": "Après la virgule, on lit chaque chiffre séparément.",
+              "explanation": "On lit \"douze virgule trois quatre cinq\", pas \"trois cent quarante-cinq\"."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

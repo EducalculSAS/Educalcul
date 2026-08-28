@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Application : Division euclidienne et divisibilité",
+  "title": "Applications de la division euclidienne et de la divisibilité",
+  "blocks": [
+    {
+      "title": "Ordre des étapes de la division euclidienne",
+      "content": "Range les étapes suivantes dans l'ordre pour effectuer la division euclidienne de $157$ par $12$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Diviser le dividende par le diviseur pour obtenir le quotient.",
+        "Multiplier le quotient par le diviseur.",
+        "Soustraire le produit du dividende pour obtenir le reste.",
+        "Vérifier que le reste est strictement inférieur au diviseur.",
+        "Écrire l'égalité : dividende = diviseur × quotient + reste."
+      ],
+      "explanation": "Pour diviser $157$ par $12$, on commence par trouver le quotient en divisant $157$ par $12$ (quotient $13$). On multiplie ensuite $13$ par $12$ pour obtenir $156$. On soustrait $156$ de $157$ ce qui donne un reste de $1$. On vérifie que $1 < 12$. Enfin on écrit $157 = 12 \\times 13 + 1$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des étapes pour tester la divisibilité par 3",
+      "content": "Range les étapes suivantes dans l'ordre pour déterminer si un nombre est divisible par $3$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Additionner les chiffres du nombre.",
+        "Si la somme a plusieurs chiffres, additionner à nouveau ses chiffres.",
+        "Obtenir une somme à un seul chiffre.",
+        "Si cette somme finale est $3$, $6$ ou $9$, le nombre est divisible par $3$.",
+        "Sinon, le nombre n'est pas divisible par $3$."
+      ],
+      "explanation": "La règle de divisibilité par $3$ consiste à sommer les chiffres du nombre. Si la somme a plusieurs chiffres, on répète l'addition jusqu'à obtenir un chiffre unique. Si ce chiffre est $3$, $6$ ou $9$, le nombre initial est un multiple de $3$ ; dans le cas contraire, il ne l'est pas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant des multiples de 6",
+      "content": "Range les multiples de $6$ suivants du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$6$",
+        "$12$",
+        "$18$",
+        "$24$",
+        "$30$"
+      ],
+      "explanation": "Les multiples de $6$ s'obtiennent en multipliant $6$ par les entiers naturels $1,2,3,4,5$. Cela donne $6 \\times 1 = 6$, $6 \\times 2 = 12$, $6 \\times 3 = 18$, $6 \\times 4 = 24$, $6 \\times 5 = 30$. Ils sont déjà classés par ordre croissant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

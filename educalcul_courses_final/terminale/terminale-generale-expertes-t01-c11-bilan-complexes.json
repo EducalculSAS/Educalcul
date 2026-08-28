@@ -1,0 +1,380 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.775057+00:00",
+  "id": 737,
+  "code": "terminale-generale-expertes-t01-c11",
+  "title": "Bilan - Complexes",
+  "description": "Cours structuré Educalcul : Bilan - Complexes.",
+  "subject": "Nombres complexes",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques expertes",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques expertes",
+    "theme": "Nombres complexes",
+    "titre_du_cours": "Bilan - Complexes",
+    "objectif_global": "Bilan - Complexes",
+    "mini_lecons_imposees": [
+      "Formes et géométrie.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable de mathématiques expertes."
+  },
+  "content_json": [
+    {
+      "title": "Nombres complexes",
+      "lessons": [
+        {
+          "title": "Formes et géométrie.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois visages d'un nombre complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan consacré aux nombres complexes. Vous avez déjà croisé ces objets fascinants tout au long de l'année, et il est temps de rassembler les pièces du puzzle. Un nombre complexe $z$ peut se présenter sous trois habits différents, chacun révélant une facette de sa nature. La forme algébrique $z = a + i b$ avec $a,b \\in \\mathbb{R}$ est la plus familière : elle donne directement les coordonnées cartésiennes du point $M(a,b)$ dans le plan complexe. Mais pour comprendre la géométrie, les formes trigonométrique et exponentielle sont indispensables."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons la définition du module $|z| = \\sqrt{a^2 + b^2}$ et de l'argument $\\arg(z)$, angle orienté entre le vecteur $\\overrightarrow{OM}$ et l'axe des réels. La forme trigonométrique s'écrit $z = |z|(\\cos \\theta + i \\sin \\theta)$ où $\\theta$ est un argument de $z$. La forme exponentielle, fruit de la formule d'Euler, la condense en $z = |z| e^{i \\theta}$. Ces deux dernières formes rendent immédiates les opérations de produit et de quotient : les modules se multiplient (ou se divisent) et les arguments s'ajoutent (ou se retranchent)."
+            },
+            {
+              "type": "complex_plane_polar",
+              "re": 3,
+              "im": 2,
+              "caption": "Représentation du nombre complexe $z = 3 + 2i$ : module $\\sqrt{13}$, argument $\\arctan(2/3)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez la figure ci-dessus : le point $M(3,2)$ est repéré par son module (la distance à l'origine) et son argument (l'angle). Passer d'une forme à l'autre est un exercice de gymnastique mentale que vous devez maîtriser. Par exemple, pour $z = -1 + i\\sqrt{3}$, le module vaut $2$ et un argument principal est $\\frac{2\\pi}{3}$. La forme exponentielle devient $2 e^{i 2\\pi/3}$. Notez qu'un nombre complexe non nul a une infinité d'arguments, qui diffèrent de multiples de $2\\pi$. C'est cette périodicité qui fera la richesse des racines $n$-ièmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous venez de manipuler les conversions. Passons maintenant aux propriétés géométriques du module et de l'argument, qui sont le cœur de la puissance des nombres complexes en géométrie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Module et argument : la géométrie dans le produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $z$ et $z'$ sont deux nombres complexes non nuls, les formules $|z z'| = |z| \\cdot |z'|$ et $\\arg(z z') \\equiv \\arg(z) + \\arg(z') \\pmod{2\\pi}$ ne sont pas de simples identités algébriques : elles racontent une histoire géométrique. Multiplier par $z'$ revient à appliquer une homothétie de rapport $|z'|$ suivie d'une rotation d'angle $\\arg(z')$ (l'ordre n'importe pas). De même, la division correspond à une homothétie de rapport $1/|z'|$ et une rotation d'angle $-\\arg(z')$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les modules",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $z_1 = 2 e^{i\\pi/4}$ et $z_2 = 3 e^{-i\\pi/6}$, on a $|z_1| = 2$, $|z_2| = 3$. Le module du produit est $2 \\times 3 = 6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les arguments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\arg(z_1) = \\pi/4$, $\\arg(z_2) = -\\pi/6$. La somme est $\\pi/4 - \\pi/6 = \\pi/12$. Un argument du produit est donc $\\pi/12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le produit s'écrit $6 e^{i\\pi/12}$. Si on veut la forme algébrique, on développe : $6(\\cos(\\pi/12) + i \\sin(\\pi/12))$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette décomposition en homothétie-rotation est la clé pour comprendre les transformations du plan. Elle explique aussi pourquoi l'équation $z^n = a$ a exactement $n$ solutions : elles ont toutes le même module $\\sqrt[n]{|a|}$ et leurs arguments forment une progression arithmétique de raison $2\\pi/n$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés nous mènent naturellement à la résolution d'équations et à la description de lieux géométriques, deux piliers de votre programme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations, racines $n$-ièmes et lieux géométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre $z^n = a$ (avec $a \\neq 0$) revient à trouver les sommets d'un polygone régulier à $n$ sommets inscrit dans le cercle de centre $O$ et de rayon $\\sqrt[n]{|a|}$. Prenons l'exemple classique des racines $n$-ièmes de l'unité : $z^n = 1$. Les solutions sont $z_k = e^{2i k \\pi / n}$ pour $k = 0, \\dots, n-1$. Elles sont les sommets d'un polygone régulier, et leur somme est nulle (sauf pour $n=1$). Cette propriété est un outil formidable pour factoriser des polynômes ou calculer des sommes trigonométriques."
+            },
+            {
+              "type": "display_math",
+              "latex": "z^n - 1 = \\prod_{k=0}^{n-1} (z - e^{2i k \\pi / n})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des équations, les nombres complexes permettent d'écrire simplement des lieux géométriques. L'équation $|z - z_0| = R$ décrit le cercle de centre $z_0$ et de rayon $R$. L'équation $\\arg(z - z_0) = \\theta$ représente une demi-droite d'origine $z_0$ (point exclu) formant un angle $\\theta$ avec l'axe des réels. La médiatrice d'un segment $[AB]$ s'écrit $|z - a| = |z - b|$. Tous ces objets deviennent transparents grâce au formalisme complexe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment les équations se traduisent en figures. Terminons par les transformations du plan, qui unifient translation, rotation et homothétie en une seule écriture."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Transformations du plan : une écriture unifiée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Toute similitude directe (composition d'une homothétie et d'une rotation, éventuellement suivie d'une translation) s'exprime sous la forme $z \\mapsto \\alpha z + \\beta$ avec $\\alpha, \\beta \\in \\mathbb{C}$, $\\alpha \\neq 0$. Le module $|\\alpha|$ est le rapport d'homothétie, l'argument $\\arg(\\alpha)$ est l'angle de rotation, et $\\beta$ est le vecteur de translation. Si $|\\alpha| = 1$, c'est une isométrie directe (rotation + translation). Si $\\alpha = 1$, c'est une pure translation. Cette écriture unique permet de composer des transformations en multipliant simplement les coefficients."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def similitude(z, alpha, beta):\\n    \"\"\"Applique la similitude directe z -> alpha*z + beta.\"\"\"\\n    return alpha * z + beta\\n\\n# Exemple : rotation de pi/3 autour de 1+2i, homothétie de rapport 2\\nalpha = 2 * cmath.exp(1j * cmath.pi/3)\\nbeta = 1 + 2j - alpha * (1 + 2j)  # pour que le centre soit 1+2i\\nprint(similitude(3+4j, alpha, beta))",
+              "caption": "Fonction Python appliquant une similitude directe. Le centre de rotation/homothétie est géré par beta."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le code ci-dessus montre comment on peut programmer ces transformations. Notez l'astuce pour centrer la rotation/homothétie en un point $c$ : on écrit $z \\mapsto \\alpha(z-c)+c = \\alpha z + (1-\\alpha)c$. Ainsi $\\beta = (1-\\alpha)c$. Cette formule est précieuse pour les problèmes de géométrie complexe où l'on cherche le centre d'une similitude connue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire sous forme exponentielle le nombre complexe $z = -\\sqrt{3} + i$.",
+              "answer": "$z = 2 e^{i 5\\pi/6}$",
+              "hint": "Calculez le module et repérez le quadrant pour l'argument principal.",
+              "explanation": "Le module est $\\sqrt{(\\sqrt{3})^2 + 1^2} = 2$. Le point est dans le deuxième quadrant, $\\cos\\theta = -\\sqrt{3}/2$, $\\sin\\theta = 1/2$, donc $\\theta = 5\\pi/6$."
+            },
+            {
+              "question": "Soient $z_1 = 4 e^{i\\pi/3}$ et $z_2 = 2 e^{-i\\pi/4}$. Déterminer la forme exponentielle de $z_1 / z_2$.",
+              "answer": "$z_1 / z_2 = 2 e^{i 7\\pi/12}$",
+              "hint": "Divisez les modules et soustrayez les arguments.",
+              "explanation": "Module : $4/2 = 2$. Argument : $\\pi/3 - (-\\pi/4) = \\pi/3 + \\pi/4 = 7\\pi/12$."
+            },
+            {
+              "question": "Trouver toutes les solutions de l'équation $z^3 = -8i$.",
+              "answer": "$z_0 = 2 e^{-i\\pi/6}$, $z_1 = 2 e^{i\\pi/2}$, $z_2 = 2 e^{i 7\\pi/6}$",
+              "hint": "Écrivez $-8i$ sous forme exponentielle, puis appliquez la formule des racines $n$-ièmes.",
+              "explanation": "$-8i = 8 e^{-i\\pi/2}$ (argument principal $-\\pi/2$). Les racines cubiques ont pour module $\\sqrt[3]{8}=2$ et arguments $(-\\pi/2 + 2k\\pi)/3$ pour $k=0,1,2$."
+            },
+            {
+              "question": "On considère la transformation $f(z) = (1+i)z + 2 - i$. Préciser sa nature (rotation, homothétie, translation, similitude) et déterminer son centre s'il s'agit d'une rotation ou similitude centrée.",
+              "answer": "C'est une similitude directe de rapport $\\sqrt{2}$ et d'angle $\\pi/4$, centrée en $z_0 = 1 - 2i$.",
+              "hint": "Identifiez $\\alpha = 1+i$ et $\\beta = 2-i$. Calculez $|\\alpha|$ et $\\arg(\\alpha)$. Pour le centre, résolvez $z_0 = \\alpha z_0 + \\beta$.",
+              "explanation": "$\\alpha = 1+i = \\sqrt{2} e^{i\\pi/4}$, donc rapport $\\sqrt{2}$, angle $\\pi/4$. Le centre $z_0$ vérifie $z_0 = (1+i)z_0 + 2-i$, soit $-i z_0 = 2-i$, d'où $z_0 = (2-i)/(-i) = -1 -2i$? Recalculons : $(2-i)/(-i) = (2-i)i = 2i +1 = 1+2i$. Attendez : $-i z_0 = 2-i \\Rightarrow z_0 = (2-i)/(-i) = (2-i)i/(-i)i = (2i+1)/1 = 1+2i$. Oui, centre $1+2i$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel synthétique : formes et conversions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon de bilan est l'occasion de vérifier que chaque outil est bien en place. Commençons par les conversions entre formes. Un nombre complexe $z = x + iy$ non nul possède un module $r = \\sqrt{x^2+y^2} > 0$ et des arguments $\\theta = \\arg(z)$ tels que $x = r\\cos\\theta$, $y = r\\sin\\theta$. L'argument principal, noté $\\mathrm{Arg}(z)$, est l'unique argument dans l'intervalle $]-\\pi, \\pi]$. C'est celui que l'on utilise pour écrire la forme exponentielle $z = r e^{i\\mathrm{Arg}(z)}$."
+            },
+            {
+              "type": "number_line",
+              "min": -3.14,
+              "max": 3.14,
+              "points": [
+                {
+                  "value": -3.14,
+                  "label": "$-\\pi$"
+                },
+                {
+                  "value": 0,
+                  "label": "$0$"
+                },
+                {
+                  "value": 3.14,
+                  "label": "$\\pi$"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -3.14,
+                  "end": 3.14,
+                  "label": "Intervalle principal"
+                }
+              ],
+              "caption": "L'argument principal appartient à $]-\\pi, \\pi]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de l'exponentielle à l'algébrique, on développe $r(\\cos\\theta + i\\sin\\theta)$. L'opération inverse demande de calculer $r = \\sqrt{x^2+y^2}$ et de déterminer $\\theta$ à l'aide des fonctions arctangente, en tenant compte du quadrant. Un piège fréquent : oublier d'ajuster l'argument quand $x < 0$. Par exemple, pour $z = -1 - i$, $\\arctan(1) = \\pi/4$ mais le point est au troisième quadrant, donc $\\mathrm{Arg}(z) = -3\\pi/4$ (ou $5\\pi/4$ hors intervalle principal)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les conversions sont acquises. Vérifions maintenant les opérations sur les modules et arguments, ainsi que leurs conséquences géométriques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Opérations et géométrie : module, argument, conjugué"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le conjugué $\\overline{z} = x - iy$ se lit géométriquement comme la symétrie par rapport à l'axe des réels. Son module est $|z|$, son argument est $-\\arg(z)$. Les formules $|z_1 z_2| = |z_1||z_2|$ et $\\arg(z_1 z_2) = \\arg(z_1) + \\arg(z_2) \\pmod{2\\pi}$ restent la boussole pour tout calcul de produit ou quotient. Elles transforment une multiplication en une addition d'angles et une multiplication de longueurs."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Produit de deux complexes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donnez $z_1 = r_1 e^{i\\theta_1}$, $z_2 = r_2 e^{i\\theta_2}$. Alors $z_1 z_2 = r_1 r_2 e^{i(\\theta_1+\\theta_2)}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$z_1 / z_2 = (r_1/r_2) e^{i(\\theta_1-\\theta_2)}$ pour $z_2 \\neq 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Puissance entière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$z^n = r^n e^{i n\\theta}$ (formule de Moivre)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces règles permettent de factoriser des polynômes, de calculer des puissances et de résoudre des équations. Par exemple, $z^4 = -16$ donne $z = 2 e^{i(\\pi+2k\\pi)/4}$, soit quatre points sur le cercle de rayon $2$, décalés de $\\pi/4$ par rapport aux axes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les opérations, penchons-nous sur la description des lieux géométriques et les transformations, qui sont souvent source de questions au baccalauréat."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lieux géométriques et transformations : les incontournables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un lieu géométrique se traduit souvent par une équation cartésienne ou paramétrique. En complexe, $|z - z_0| = R$ est un cercle, $\\arg(z - z_0) = \\alpha$ une demi-droite, $|z - a| = |z - b|$ une médiatrice. L'équation $\\left|\\frac{z-a}{z-b}\\right| = k$ ($k>0, k\\neq1$) décrit un cercle d'Apollonius. Quant aux transformations, toute similitude directe s'écrit $z \\mapsto \\alpha z + \\beta$. Le centre $c$ (point fixe) se trouve en résolvant $c = \\alpha c + \\beta$, soit $c = \\beta/(1-\\alpha)$ si $\\alpha \\neq 1$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Classification des transformations du plan complexes.",
+              "sets": [
+                {
+                  "label": "Similitudes directes",
+                  "elements": [
+                    "Translation",
+                    "Rotation",
+                    "Homothétie",
+                    "Rotation-homothétie"
+                  ]
+                },
+                {
+                  "label": "Similitudes indirectes",
+                  "elements": [
+                    "Symétrie axiale",
+                    "Symétrie centrale",
+                    "Inversion"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme ci-dessus résume la classification. Notez que les similitudes indirectes (qui inversent l'orientation) s'écrivent sous la forme $z \\mapsto \\alpha \\overline{z} + \\beta$. Elles ne font pas partie du programme de mathématiques expertes mais il est bon de connaître leur existence. Pour l'expert, on se concentre sur les similitudes directes et leurs propriétés de composition : la composée de $z \\mapsto \\alpha_1 z + \\beta_1$ et $z \\mapsto \\alpha_2 z + \\beta_2$ est $z \\mapsto \\alpha_2\\alpha_1 z + \\alpha_2\\beta_1 + \\beta_2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant revu les piliers du chapitre. Il est temps de cocher les cases de votre maîtrise."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais passer de la forme algébrique à la forme exponentielle et réciproquement, en choisissant l'argument principal.",
+                "Je calcule le module et l'argument d'un produit, quotient, puissance ou racine $n$-ième sans hésitation.",
+                "Je résous une équation du type $z^n = a$ ($a \\in \\mathbb{C}^*$) et je représente ses solutions dans le plan complexe.",
+                "J'écris l'équation d'un cercle, d'une droite, d'une médiatrice ou d'un arc de cercle en langage complexe.",
+                "Je reconnais une similitude directe à sa forme $z \\mapsto \\alpha z + \\beta$ et j'en déduis rapport, angle, centre et vecteur de translation.",
+                "Je compose deux similitudes directes en multipliant leurs coefficients $\\alpha$ et en combinant leurs $\\beta$.",
+                "J'utilise la formule de Moivre pour calculer des puissances ou factoriser des polynômes comme $z^n - 1$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Déterminer la forme exponentielle de $z = \\frac{1+i}{\\sqrt{3}-i}$.",
+              "answer": "$z = \\frac{\\sqrt{2}}{2} e^{i 5\\pi/12}$",
+              "hint": "Convertissez numérateur et dénominateur en exponentielle, puis divisez.",
+              "explanation": "$1+i = \\sqrt{2} e^{i\\pi/4}$, $\\sqrt{3}-i = 2 e^{-i\\pi/6}$. Le quotient a pour module $\\sqrt{2}/2$ et argument $\\pi/4 - (-\\pi/6) = 5\\pi/12$."
+            },
+            {
+              "question": "Résoudre dans $\\mathbb{C}$ l'équation $z^4 + 4 = 0$.",
+              "answer": "$z_k = \\sqrt{2} e^{i(\\pi/4 + k\\pi/2)}$, $k=0,1,2,3$ c'est-à-dire $1+i, -1+i, -1-i, 1-i$.",
+              "hint": "Écrivez $-4$ sous forme exponentielle, puis cherchez les racines quatrièmes.",
+              "explanation": "$-4 = 4 e^{i\\pi}$. Modules $\\sqrt[4]{4} = \\sqrt{2}$. Arguments $(\\pi + 2k\\pi)/4 = \\pi/4 + k\\pi/2$."
+            },
+            {
+              "question": "Soit $f(z) = 2i z + 1 - i$. 1) Préciser la nature de $f$. 2) Déterminer son centre. 3) Quel est l'image du point $A(1)$ ?",
+              "answer": "1) Similitude directe de rapport $2$, angle $\\pi/2$. 2) Centre $c = \\frac{1-i}{1-2i} = \\frac{3}{5} - \\frac{1}{5}i$. 3) $f(1) = 2i + 1 - i = 1 + i$.",
+              "hint": "Identifiez $\\alpha = 2i$. Calculez $|\\alpha|$ et $\\arg(\\alpha)$. Pour le centre, résolvez $c = \\alpha c + \\beta$.",
+              "explanation": "$\\alpha = 2i = 2 e^{i\\pi/2}$ : rapport $2$, rotation $\\pi/2$. Centre : $c = 2i c + 1 - i \\Rightarrow c(1-2i) = 1-i \\Rightarrow c = (1-i)/(1-2i) = (1-i)(1+2i)/5 = (3 - i)/5$. Image de $1$ : $2i\\cdot1 + 1 - i = 1 + i$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

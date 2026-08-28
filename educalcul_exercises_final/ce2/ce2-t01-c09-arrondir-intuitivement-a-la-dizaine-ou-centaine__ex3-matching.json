@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 150,
+  "_course_code": "ce2-t01-c09-arrondir-intuitivement-a-la-dizaine-ou-centaine",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Justifier sans algorithme abstrait",
+  "title": "Arrondir intuitivement - Justification sans algorithme",
+  "blocks": [
+    {
+      "title": "Arrondi à la dizaine - Justification",
+      "content": "Relie chaque nombre à la phrase qui justifie son arrondi à la dizaine la plus proche.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12$",
+          "right": "Il est plus proche de $10$ que de $20$."
+        },
+        {
+          "left": "$18$",
+          "right": "Il est plus proche de $20$ que de $10$."
+        },
+        {
+          "left": "$23$",
+          "right": "Il est plus proche de $20$ que de $30$."
+        },
+        {
+          "left": "$27$",
+          "right": "Il est plus proche de $30$ que de $20$."
+        }
+      ],
+      "items": [],
+      "explanation": "Pour chaque nombre, on regarde les deux dizaines qui l'encadrent. $12$ est entre $10$ et $20$, il est à $2$ de $10$ et à $8$ de $20$, donc plus proche de $10$. $18$ est à $2$ de $20$ et à $8$ de $10$, donc plus proche de $20$. $23$ est à $3$ de $20$ et à $7$ de $30$, donc plus proche de $20$. $27$ est à $3$ de $30$ et à $7$ de $20$, donc plus proche de $30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi à la centaine - Justification",
+      "content": "Relie chaque nombre à la phrase qui justifie son arrondi à la centaine la plus proche.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$112$",
+          "right": "Il est plus proche de $100$ que de $200$."
+        },
+        {
+          "left": "$188$",
+          "right": "Il est plus proche de $200$ que de $100$."
+        },
+        {
+          "left": "$235$",
+          "right": "Il est plus proche de $200$ que de $300$."
+        },
+        {
+          "left": "$276$",
+          "right": "Il est plus proche de $300$ que de $200$."
+        }
+      ],
+      "items": [],
+      "explanation": "On compare la distance aux deux centaines voisines. $112$ est à $12$ de $100$ et à $88$ de $200$, donc plus proche de $100$. $188$ est à $12$ de $200$ et à $88$ de $100$, donc plus proche de $200$. $235$ est à $35$ de $200$ et à $65$ de $300$, donc plus proche de $200$. $276$ est à $24$ de $300$ et à $76$ de $200$, donc plus proche de $300$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi mixte - Justification",
+      "content": "Relie chaque nombre à la phrase qui justifie son arrondi (à la dizaine ou à la centaine) indiqué.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$34$ (dizaine)",
+          "right": "Il est plus proche de $30$ que de $40$."
+        },
+        {
+          "left": "$67$ (dizaine)",
+          "right": "Il est plus proche de $70$ que de $60$."
+        },
+        {
+          "left": "$142$ (centaine)",
+          "right": "Il est plus proche de $100$ que de $200$."
+        },
+        {
+          "left": "$368$ (centaine)",
+          "right": "Il est plus proche de $400$ que de $300$."
+        }
+      ],
+      "items": [],
+      "explanation": "Pour $34$ arrondi à la dizaine : entre $30$ et $40$, distance $4$ à $30$ et $6$ à $40$, donc $30$. Pour $67$ : entre $60$ et $70$, distance $3$ à $70$ et $7$ à $60$, donc $70$. Pour $142$ arrondi à la centaine : entre $100$ et $200$, distance $42$ à $100$ et $58$ à $200$, donc $100$. Pour $368$ : entre $300$ et $400$, distance $32$ à $400$ et $68$ à $300$, donc $400$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

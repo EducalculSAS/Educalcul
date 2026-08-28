@@ -1,0 +1,405 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.998265+00:00",
+  "id": 164,
+  "code": "ce2-t03-c05",
+  "title": "Multiplier par 10 et 100",
+  "description": "Cours structuré Educalcul : Multiplier par 10 et 100.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Multiplier par 10 et 100",
+    "objectif_global": "Multiplier par 10 et 100",
+    "mini_lecons_imposees": [
+      "Relier aux unités de numération.",
+      "Distinguer déplacement de valeur et ajout de zéro comme raccourci.",
+      "Réinvestir dans problèmes."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Relier aux unités de numération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le rôle des unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu multiplies un nombre par 10, chaque chiffre change de place : les unités deviennent des dizaines, les dizaines deviennent des centaines. C'est comme si le nombre glissait d'un cran vers la gauche sur le tableau de numération. Par exemple, le 3 tout seul représente trois unités. Après la multiplication par 10, il représente trois dizaines, soit trente."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Un groupe de dix unités. On l'écrit avec un chiffre au rang des dizaines.",
+              "example": "$30$ contient trois dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 0,
+              "caption": "3 unités deviennent 3 dizaines après ×10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour multiplier par 10, il suffit d'ajouter un zéro à droite du nombre, mais rappelle-toi que ce zéro marque le changement de place."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu multiplies par 100, le glissement est de deux crans. Les unités deviennent des centaines, les dizaines deviennent des milliers. Regarde le 4 : quatre unités deviennent quatre cents, c'est-à-dire quatre cents."
+            },
+            {
+              "type": "definition",
+              "term": "centaine",
+              "definition": "Un groupe de cent unités, soit dix dizaines. Elle s'écrit avec un chiffre au rang des centaines.",
+              "example": "$400$ contient quatre centaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 4,
+              "tens": 0,
+              "units": 0,
+              "caption": "4 unités deviennent 4 centaines après ×100"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec un nombre à deux chiffres, le déplacement concerne chaque chiffre. Prenons 23 : le 2 des dizaines passe aux centaines, le 3 des unités passe aux dizaines. Le résultat s'écrit 230."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écris le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le nombre de départ, par exemple $23$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajoute un zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour ×10, ajoute un zéro à droite ; pour ×100, ajoute deux zéros."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lis le nouveau nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le zéro ajouté montre le nouveau rang de chaque chiffre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 3,
+              "units": 0,
+              "caption": "23 devient 230 après ×10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment le tableau de numération guide le déplacement des chiffres. Cette image te servira pour tous les calculs avec 10 et 100."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $3 \\\\times 10$ ?",
+              "answer": "30",
+              "hint": "Pense au déplacement des unités vers les dizaines.",
+              "explanation": "3 unités deviennent 3 dizaines, donc 30."
+            },
+            {
+              "question": "Combien font $4 \\\\times 100$ ?",
+              "answer": "400",
+              "hint": "Deux crans vers la gauche.",
+              "explanation": "4 unités deviennent 4 centaines."
+            },
+            {
+              "question": "Combien font $23 \\\\times 10$ ?",
+              "answer": "230",
+              "hint": "Chaque chiffre avance d'une place.",
+              "explanation": "2 dizaines deviennent 2 centaines, 3 unités deviennent 3 dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer déplacement de valeur et ajout de zéro comme raccourci.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déplacement de valeur ou simple zéro ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on écrit $5 \\\\times 10 = 50$, on a l'impression d'ajouter un zéro. En réalité, le 5 qui était au rang des unités monte au rang des dizaines. Le zéro n'est pas un chiffre ajouté au hasard, il marque la nouvelle place vide des unités."
+            },
+            {
+              "type": "number_line",
+              "caption": "5 puis 50 sur la droite numérique",
+              "min": 0,
+              "max": 60,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention",
+              "paragraphs": [
+                "Le raccourci « ajouter un zéro » fonctionne seulement si on comprend le déplacement de valeur."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $7 \\\\times 100$, le 7 saute de deux rangs : des unités aux centaines. On écrit deux zéros pour montrer que les rangs des dizaines et des unités sont maintenant vides."
+            },
+            {
+              "type": "number_line",
+              "caption": "7 puis 700",
+              "min": 0,
+              "max": 800,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 700,
+                  "label": "700"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde $20 \\\\times 10$. Le 2 est déjà au rang des dizaines. Après multiplication, il passe aux centaines. Le zéro qui était aux unités devient le zéro des dizaines. Le résultat est 200, pas 2000."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 0,
+              "units": 0,
+              "caption": "20 devient 200 après ×10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Garde en tête que le zéro ajouté est le signe visible du déplacement. Si tu visualises le tableau de numération, tu ne confondras jamais les deux idées."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le résultat de $5 \\\\times 10$ ?",
+              "answer": "50",
+              "hint": "Ajoute un zéro mais pense au sens.",
+              "explanation": "5 unités deviennent 5 dizaines."
+            },
+            {
+              "question": "Quel est le résultat de $7 \\\\times 100$ ?",
+              "answer": "700",
+              "hint": "Deux zéros.",
+              "explanation": "7 unités deviennent 7 centaines."
+            },
+            {
+              "question": "Quel est le résultat de $20 \\\\times 10$ ?",
+              "answer": "200",
+              "hint": "Le zéro du 20 se déplace aussi.",
+              "explanation": "2 dizaines deviennent 2 centaines, le zéro des unités devient zéro des dizaines."
+            }
+          ]
+        },
+        {
+          "title": "Réinvestir dans problèmes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser ×10 et ×100 dans des situations concrètes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu achètes 5 paquets de crayons. Chaque paquet contient 10 crayons. Pour savoir le total, tu multiplies le nombre de paquets par 10. C'est une multiplication par 10 qui répond à une question du quotidien."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paquet 1",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 2",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 3",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 4",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 5",
+                  "value": 10,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "5 groupes de 10 crayons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pense à une boîte de bonbons. Une boîte contient 100 bonbons. Si tu as 3 boîtes, le calcul est $3 \\\\times 100$. Le nombre 3 est au rang des unités, il passe aux centaines. Le résultat est 300 bonbons."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de bonbons par boîte",
+              "bars": [
+                {
+                  "label": "Boîte 1",
+                  "value": 100,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 100,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 100,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, suppose que 12 élèves ont chacun 10 billes. Pour trouver le total, tu multiplies 12 par 10. Le 1 des dizaines devient une centaine, le 2 des unités devient une dizaine. Tu obtiens 120 billes."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Élèves",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "Billes par élève",
+                  "value": 10,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "12 groupes de 10 billes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais multiplier un nombre par 10 en déplaçant les chiffres.",
+                "Je sais multiplier par 100 en déplaçant de deux rangs.",
+                "Je distingue le vrai déplacement de valeur du simple ajout de zéro.",
+                "Je résous des problèmes avec ×10 et ×100."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a 5 paquets de 10 crayons. Combien de crayons au total ?",
+              "answer": "50",
+              "hint": "Multiplie 5 par 10.",
+              "explanation": "5 × 10 = 50 crayons."
+            },
+            {
+              "question": "Une boîte contient 100 bonbons. Combien de bonbons dans 3 boîtes ?",
+              "answer": "300",
+              "hint": "Multiplie 3 par 100.",
+              "explanation": "3 × 100 = 300 bonbons."
+            },
+            {
+              "question": "12 élèves ont chacun 10 billes. Combien de billes en tout ?",
+              "answer": "120",
+              "hint": "Multiplie 12 par 10.",
+              "explanation": "12 × 10 = 120 billes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

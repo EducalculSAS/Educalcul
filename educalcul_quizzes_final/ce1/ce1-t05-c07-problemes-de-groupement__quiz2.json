@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 114,
+  "_course_code": "ce1-t05-c07-problemes-de-groupement",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Chercher le nombre de groupes",
+  "title": "Problèmes de groupement : chercher le nombre de groupes",
+  "questions": [
+    {
+      "text": "Il y a $12$ pommes. On veut faire des paniers avec $3$ pommes dans chaque panier. Combien de paniers peut-on faire ?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$9$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Il s'agit de trouver le nombre de groupes de $3$ dans $12$. On effectue la division $12 / 3 = 4$. On peut faire $4$ paniers. L'option $3$ correspond à la taille d'un groupe, $9$ est le résultat d'une soustraction $12 - 3$, et $5$ est une erreur de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un maître a $20$ crayons. Il les range dans des boîtes de $4$ crayons. Combien de boîtes lui faut-il ?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$6$",
+        "$16$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Il faut trouver combien de groupes de $4$ il y a dans $20$. Le calcul est $20 / 4 = 5$. Il faut $5$ boîtes. L'option $4$ est le nombre de crayons par boîte, $16$ vient de $20 - 4$, et $6$ est une approximation fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a $15$ billes. Elle veut les partager équitablement en faisant des groupes de $5$ billes. Combien de groupes aura-t-elle ?",
+      "options": [
+        "$3$",
+        "$5$",
+        "$2$",
+        "$10$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "On cherche le nombre de groupes de $5$ dans $15$. La division $15 / 5$ donne $3$. Julie fera $3$ groupes. L'option $5$ est la taille des groupes, $10$ est le résultat de $15 - 5$, et $2$ ne correspond à aucune opération logique ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, $24$ élèves doivent former des équipes de $6$ pour un jeu. Combien d'équipes y aura-t-il ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$3$",
+        "$18$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Le nombre total d'élèves est $24$, la taille de chaque équipe est $6$. On calcule $24 / 6 = 4$. Il y aura $4$ équipes. L'option $6$ est le nombre d'élèves par équipe, $18$ correspond à $24 - 6$, et $3$ serait le résultat pour des équipes de $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a $30$ petits pains. Il les met dans des sachets de $5$ pains. Combien de sachets remplit-il ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$25$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Il faut déterminer combien de fois $5$ rentre dans $30$. L'opération est $30 / 5 = 6$. Le boulanger remplit $6$ sachets. L'option $5$ est le contenu d'un sachet, $25$ est le reste si on enlevait un sachet ($30 - 5$), et $7$ est une erreur de table de multiplication.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

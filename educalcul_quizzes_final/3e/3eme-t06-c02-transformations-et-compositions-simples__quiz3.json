@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 486,
+  "_course_code": "3eme-t06-c02-transformations-et-compositions-simples",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Reconnaître",
+  "title": "Quiz : Reconnaître les transformations planes",
+  "questions": [
+    {
+      "text": "Quelle transformation est définie par un vecteur $\\vec{v}$ et fait correspondre à tout point $M$ un point $M'$ tel que $\\overrightarrow{MM'} = \\vec{v}$ ?",
+      "options": [
+        "Une translation de vecteur $\\vec{v}$",
+        "Une rotation de centre $O$ et d'angle $\\alpha$",
+        "Une symétrie axiale d'axe $(d)$",
+        "Une homothétie de centre $O$ et de rapport $k$"
+      ],
+      "correctAnswer": "Une translation de vecteur $\\vec{v}$",
+      "explanation": "La définition même d'une translation est le déplacement de tous les points du plan selon un même vecteur $\\vec{v}$. La rotation fixe un centre, la symétrie axiale fixe un axe, l'homothétie fixe un centre et multiplie les distances par un rapport $k$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une rotation de centre $O$ et d'angle $90^\\circ$ dans le sens direct. Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "L'image du centre $O$ est $O$ lui-même.",
+        "Les distances sont conservées : pour tous points $A, B$, $A'B' = AB$.",
+        "L'image d'un segment est un segment de même longueur.",
+        "L'orientation d'un triangle est inversée."
+      ],
+      "correctAnswer": "L'orientation d'un triangle est inversée.",
+      "explanation": "Une rotation est une isométrie qui conserve les distances, les longueurs, les angles et l'orientation (sens direct). Seules les symétries (axiale ou centrale) inversent l'orientation. L'affirmation fausse est donc celle sur l'inversion de l'orientation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une transformation $f$ vérifie : pour tout point $M$, son image $M'$ est telle que $I$ est le milieu de $[MM']$, où $I$ est un point fixe. Comment nomme-t-on cette transformation ?",
+      "options": [
+        "Une symétrie centrale de centre $I$",
+        "Une symétrie axiale d'axe $(d)$ passant par $I$",
+        "Une translation de vecteur $\\overrightarrow{II}$",
+        "Une rotation de centre $I$ et d'angle $180^\\circ$"
+      ],
+      "correctAnswer": "Une symétrie centrale de centre $I$",
+      "explanation": "La définition géométrique de la symétrie centrale de centre $I$ est exactement : $I$ est le milieu du segment $[MM']$ pour tout point $M$ et son image $M'$. Bien qu'une rotation de $180^\\circ$ ait le même effet, le terme exact correspondant à cette définition de milieu est 'symétrie centrale'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une homothétie de centre $O$ et de rapport $k = -2$. Quelle affirmation est vraie concernant l'image $M'$ d'un point $M$ distinct de $O$ ?",
+      "options": [
+        "Les points $O$, $M$, $M'$ sont alignés dans cet ordre.",
+        "Les points $O$, $M$, $M'$ sont alignés, $M'$ et $M$ sont de part et d'autre de $O$, et $OM' = 2 \\times OM$.",
+        "Les points $O$, $M$, $M'$ sont alignés, $M'$ et $M$ sont du même côté de $O$, et $OM' = 2 \\times OM$.",
+        "$M' = M$."
+      ],
+      "correctAnswer": "Les points $O$, $M$, $M'$ sont alignés, $M'$ et $M$ sont de part et d'autre de $O$, et $OM' = 2 \\times OM$.",
+      "explanation": "Pour une homothétie de rapport $k$, les points $O, M, M'$ sont toujours alignés. Si $k < 0$, $M$ et $M'$ sont de part et d'autre de $I$ (ici $O$). La distance est multipliée par la valeur absolue du rapport : $OM' = |k| \\times OM = 2 \\times OM$. L'option B décrit exactement cette situation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La composition de deux symétries axiales d'axes parallèles $(d_1)$ et $(d_2)$, distants de $d$, est une translation. Quel est le vecteur de cette translation ?",
+      "options": [
+        "Un vecteur de norme $d$, perpendiculaire aux axes, orienté de $(d_1)$ vers $(d_2)$.",
+        "Un vecteur de norme $2d$, perpendiculaire aux axes, orienté de $(d_1)$ vers $(d_2)$.",
+        "Un vecteur de norme $d$, parallèle aux axes.",
+        "Un vecteur de norme $2d$, parallèle aux axes."
+      ],
+      "correctAnswer": "Un vecteur de norme $2d$, perpendiculaire aux axes, orienté de $(d_1)$ vers $(d_2)$.",
+      "explanation": "C'est un théorème classique : la composition de deux symétries axiales d'axes parallèles est une translation. Le vecteur de cette translation est perpendiculaire aux axes, sa norme vaut le double de la distance entre les axes ($2d$), et il est orienté du premier axe vers le second axe (dans l'ordre de la composition).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

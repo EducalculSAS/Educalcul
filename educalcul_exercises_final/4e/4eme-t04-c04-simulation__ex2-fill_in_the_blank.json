@@ -1,0 +1,44 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Fréquence",
+  "title": "Fréquence et simulation",
+  "blocks": [
+    {
+      "title": "Calcul de fréquence",
+      "content": "Lors d'une expérience aléatoire, on répète $200$ fois le lancer d'un dé équilibré. Le résultat $6$ est obtenu $34$ fois. La fréquence d'apparition du $6$ est {{1}}.",
+      "blanks": [
+        "0,17|17/100|17%"
+      ],
+      "explanation": "La fréquence d'un événement est le quotient du nombre de fois où cet événement s'est produit par le nombre total d'essais. Ici, l'événement \"obtenir un 6\" s'est produit $34$ fois sur $200$ essais. La fréquence est donc $34 / 200 = 0,17$ (soit $17/100$ ou $17\\%$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fréquence et probabilité théorique",
+      "content": "On lance une pièce de monnaie équilibrée $500$ fois. On obtient $260$ fois \"Face\". La fréquence d'apparition de \"Face\" est {{1}}. On remarque qu'elle est proche de la probabilité théorique qui vaut {{2}}.",
+      "blanks": [
+        "0,52|52/100|52%",
+        "0,5|1/2|50%"
+      ],
+      "explanation": "La fréquence observée est $260 / 500 = 0,52$. Pour une pièce équilibrée, la probabilité théorique d'obtenir \"Face\" est $1/2 = 0,5$. La loi des grands nombres dit que si on répète l'expérience un très grand nombre de fois, la fréquence se rapproche de la probabilité théorique.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Simulation et fréquence",
+      "content": "Pour simuler l'expérience \"lancer un dé et observer si le résultat est pair\", on utilise un tableur. La formule `=SI(ALEA.ENTRE.BORNES(1;6)<=3;\"Pair\";\"Impair\")` est recopiée sur $1000$ lignes. On compte $512$ occurrences de \"Pair\". La fréquence simulée de l'événement \"résultat pair\" est {{1}}. Elle est une approximation de la probabilité théorique qui est {{2}}.",
+      "blanks": [
+        "0,512|512/1000|51,2%",
+        "0,5|1/2|50%"
+      ],
+      "explanation": "La simulation a été réalisée $1000$ fois. L'événement \"Pair\" est apparu $512$ fois. La fréquence simulée est donc $512 / 1000 = 0,512$. Sur un dé à 6 faces, les faces paires sont 2, 4 et 6 (3 faces sur 6). La probabilité théorique d'obtenir un nombre pair est donc $3/6 = 1/2 = 0,5$. La fréquence simulée s'en rapproche.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

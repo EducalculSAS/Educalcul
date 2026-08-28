@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Choisir précision",
+  "title": "Quiz : Choisir la précision d'un arrondi",
+  "questions": [
+    {
+      "text": "La figure montre une mesure effectuée avec une règle graduée au millimètre. Quelle est la valeur approchée de cette longueur au millimètre près ?",
+      "options": [
+        "$5$ cm",
+        "$5,3$ cm",
+        "$5,35$ cm",
+        "$5,4$ cm"
+      ],
+      "correctAnswer": "$5,3$ cm",
+      "explanation": "La règle est graduée au millimètre, soit au dixième de centimètre. La lecture directe donne $5,3$ cm. On ne doit pas ajouter un chiffre estimé ($5,35$ cm) ni arrondir au centimètre ($5$ cm) ou au millimètre supérieur ($5,4$ cm) sans raison.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 5.3,
+        "unit": "cm",
+        "caption": "Mesure au millimètre près"
+      }
+    },
+    {
+      "text": "On mesure les côtés d'un rectangle : $L = 12,5$ cm et $l = 8,2$ cm. On calcule le périmètre $P = 2 \\times (L + l)$. Quelle écriture est la plus adaptée pour le résultat ?",
+      "options": [
+        "$41$ cm",
+        "$41,4$ cm",
+        "$41,40$ cm",
+        "$41,400$ cm"
+      ],
+      "correctAnswer": "$41,4$ cm",
+      "explanation": "Les mesures initiales sont données au dixième de centimètre près (un chiffre après la virgule). La précision du résultat ne peut pas dépasser celle des données les moins précises. Le calcul donne $2 \\times 20,7 = 41,4$ cm. On conserve un seul chiffre après la virgule. Écrire $41,40$ ou $41,400$ cm laisserait croire à une précision au centième ou au millième qui n'existe pas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La population d'une ville est de $123\\,456$ habitants. On veut donner une valeur approquée pour un article de journal donnant une idée de l'ordre de grandeur. Quel arrondi est le plus usuel ?",
+      "options": [
+        "Au unité près : $123\\,456$",
+        "Au dix près : $123\\,460$",
+        "Au cent près : $123\\,500$",
+        "Au mille près : $123\\,000$"
+      ],
+      "correctAnswer": "Au mille près : $123\\,000$",
+      "explanation": "Pour communiquer une population de cette taille, on arrondit généralement au millier (ou parfois à la centaine). L'arrondi au mille donne $123\\,000$ habitants, ce qui est facile à lire et à retenir. L'arrondi à l'unité ou au dix est trop précis pour un article généraliste, l'arrondi au cent ($123\\,500$) est possible mais moins courant que le millier pour les grandes villes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre arrondi au dixième vaut $7,4$. Quel intervalle contient la valeur exacte de ce nombre ?",
+      "options": [
+        "$[7,35 ; 7,45[$",
+        "$[7,3 ; 7,5[$",
+        "$[7,35 ; 7,45]$",
+        "$]7,35 ; 7,45[$"
+      ],
+      "correctAnswer": "$[7,35 ; 7,45[$",
+      "explanation": "L'arrondi au dixième $7,4$ signifie que la valeur exacte $x$ vérifie $7,35 \\le x < 7,45$. La borne inférieure $7,35$ est incluse (car $7,35$ s'arrondit à $7,4$), la borne supérieure $7,45$ est exclue (car $7,45$ s'arrondit à $7,5$). L'intervalle s'écrit donc $[7,35 ; 7,45[$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Des pommes coûtent $4,58$ € le kg. J'en achète $1,5$ kg. Le calcul exact du prix à payer donne $6,87$ €. Comment doit-on écrire le prix final sur le ticket de caisse ?",
+      "options": [
+        "$6,8$ €",
+        "$6,9$ €",
+        "$6,87$ €",
+        "$7$ €"
+      ],
+      "correctAnswer": "$6,87$ €",
+      "explanation": "En euros, les prix s'expriment obligatoirement au centime près, c'est-à-dire avec exactement deux chiffres après la virgule. Le calcul $4,58 \\times 1,5 = 6,87$ donne déjà deux décimales. On ne doit pas arrondir à $6,9$ € (dixième) ni à $7$ € (unité), car cela modifierait la somme due. On conserve donc $6,87$ €.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

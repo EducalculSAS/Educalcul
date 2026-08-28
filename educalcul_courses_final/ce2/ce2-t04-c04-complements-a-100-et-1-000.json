@@ -1,0 +1,416 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.023754+00:00",
+  "id": 172,
+  "code": "ce2-t04-c04",
+  "title": "Compléments à 100 et 1 000",
+  "description": "Cours structuré Educalcul : Compléments à 100 et 1 000.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Compléments à 100 et 1 000",
+    "objectif_global": "Compléments à 100 et 1 000",
+    "mini_lecons_imposees": [
+      "Compléter une dizaine / centaine.",
+      "Utiliser décomposition.",
+      "Choisir une stratégie rapide."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Compléter une dizaine / centaine.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléter une dizaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $34$ billes dans ta main et que tu veux savoir combien il t'en faut pour atteindre $40$. C'est exactement ce qu'on appelle compléter une dizaine. Regarde bien les blocs de base dix : tu vois $3$ dizaines et $4$ unités. Pour faire une dizaine de plus, il te manque $6$ unités. C'est comme si tu avais une boîte à $10$ cases et qu'il y en a déjà $4$ de remplies : il reste $6$ cases vides."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 4,
+              "caption": "$34$ : 3 dizaines et 4 unités"
+            },
+            {
+              "type": "definition",
+              "term": "Complément à la dizaine",
+              "definition": "C'est le nombre qu'il faut ajouter à un nombre pour atteindre la dizaine supérieure.",
+              "example": "Le complément à la dizaine de $34$ est $6$ car $34 + 6 = 40$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite numérotée, tu peux visualiser ce saut. Place ton doigt sur $34$ et avance jusqu'à $40$ : tu as fait un bond de $6$. Essaie avec d'autres nombres comme $27$ ou $58$ : le complément est toujours ce qu'il faut pour que les unités fassent $10$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Saut de $34$ à $40$",
+              "min": 30,
+              "max": 45,
+              "points": [
+                {
+                  "value": 34,
+                  "label": "34"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, passons aux centaines. Si tu as $340$ autocollants et que tu veux en avoir $400$, tu dois compléter une centaine. Avec les blocs, tu vois $3$ centaines et $4$ dizaines. Il te manque $6$ dizaines pour faire une centaine de plus, car $10$ dizaines font $1$ centaine. C'est le même raisonnement, mais avec des dizaines au lieu des unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 0,
+              "caption": "$340$ : 3 centaines et 4 dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, le saut de $340$ à $400$ se fait en ajoutant $60$. Le complément à la centaine supérieure est donc $60$. Attention : on ne compte plus les unités, mais les groupes de $10$. Essaie avec $250$ : il manque $50$ pour arriver à $300$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Saut de $340$ à $400$",
+              "min": 300,
+              "max": 420,
+              "points": [
+                {
+                  "value": 340,
+                  "label": "340"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut aller directement à $100$ ou à $1000$. Prenons $37$ euros : pour avoir $100$ euros, tu peux décomposer en deux sauts. D'abord $37 + 3 = 40$ (complément à la dizaine), puis $40 + 60 = 100$ (complément à la centaine). Le total ajouté est $3 + 60 = 63$. C'est le complément à $100$. Le schéma en barres ci-dessous montre bien les deux parties."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "37",
+                  "value": 37,
+                  "tone": "blue"
+                },
+                {
+                  "label": "63",
+                  "value": 63,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Complément à 100 : $37 + 63 = 100$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien faut-il ajouter à $28$ pour obtenir $30$ ?",
+              "answer": "2",
+              "hint": "Compte les unités qui manquent à la dizaine supérieure : $28$ a $8$ unités, il en faut $2$ pour faire $10$.",
+              "explanation": "$28$ a $8$ unités. Pour atteindre $30$, il faut $2$ unités de plus car $8 + 2 = 10$. Donc $28 + 2 = 30$."
+            },
+            {
+              "question": "Combien faut-il ajouter à $250$ pour obtenir $300$ ?",
+              "answer": "50",
+              "hint": "Regarde les dizaines : $250$ a $5$ dizaines, il en manque $5$ pour faire $10$ dizaines soit $100$.",
+              "explanation": "$250$ a $5$ dizaines. Pour atteindre $300$, il faut $5$ dizaines de plus, soit $50$. En effet, $250 + 50 = 300$."
+            },
+            {
+              "question": "Trouve le complément à $100$ de $46$.",
+              "answer": "54",
+              "hint": "Utilise la décomposition : $46 + 4 = 50$, puis $50 + 50 = 100$. Le total ajouté est $4 + 50 = 54$.",
+              "explanation": "On fait d'abord le complément à la dizaine : $46 + 4 = 50$. Ensuite le complément à la centaine : $50 + 50 = 100$. En tout, on a ajouté $4 + 50 = 54$. Vérification : $46 + 54 = 100$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la décomposition pour aller à 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà compléter une dizaine et une centaine. Maintenant, on va utiliser la décomposition pour trouver rapidement le complément à $100$ ou à $1000$. L'idée est de couper le nombre à enlever en morceaux faciles : d'abord les dizaines, puis les unités. Regarde comment on fait pour $100 - 37$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Enlever les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$37$ contient $3$ dizaines. On les enlève de $100$ : $100 - 30 = 70$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Enlever les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il reste $7$ unités à enlever : $70 - 7 = 63$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le complément à $100$ de $37$ est $63$. Vérifions : $37 + 63 = 100$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche pour tous les nombres à deux chiffres. Essaie mentalement avec $58$ : $100 - 50 = 50$, puis $50 - 8 = 42$. C'est souvent plus rapide que de compter sur les doigts."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les nombres à trois chiffres et le complément à $1000$, on fait pareil mais avec les centaines, les dizaines et les unités. Prenons $1000 - 340$. On décompose $340$ en $300 + 40$. D'abord, on enlève les centaines : $1000 - 300 = 700$. Ensuite, on enlève les dizaines : $700 - 40 = 660$. Le complément à $1000$ de $340$ est donc $660$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 0,
+              "caption": "$340$ décomposé en 3 centaines et 4 dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que les unités de $340$ sont $0$, donc il n'y a pas d'étape pour les unités. Si le nombre était $347$, on ferait : $1000 - 300 = 700$, $700 - 40 = 660$, $660 - 7 = 653$. La décomposition rend le calcul mental beaucoup plus simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi utiliser la décomposition en addition, en faisant des sauts sur la droite numérotée. Pour trouver quoi ajouter à $73$ pour faire $100$, on saute d'abord à la dizaine supérieure : $73 + 7 = 80$. Puis on saute à la centaine : $80 + 20 = 100$. Le total ajouté est $7 + 20 = 27$. C'est la même idée que la soustraction, mais en avançant au lieu de reculer."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sauts de $73$ à $100$",
+              "min": 70,
+              "max": 105,
+              "points": [
+                {
+                  "value": 73,
+                  "label": "73"
+                },
+                {
+                  "value": 80,
+                  "label": "80"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $100 - 58$ en décomposant.",
+              "answer": "42",
+              "hint": "Décompose $58$ en $50 + 8$. Fais $100 - 50 = 50$, puis $50 - 8 = 42$.",
+              "explanation": "On enlève d'abord les dizaines : $100 - 50 = 50$. Ensuite les unités : $50 - 8 = 42$. Le complément à $100$ de $58$ est $42$."
+            },
+            {
+              "question": "Calcule $1000 - 460$ en décomposant.",
+              "answer": "540",
+              "hint": "Décompose $460$ en $400 + 60$. Fais $1000 - 400 = 600$, puis $600 - 60 = 540$.",
+              "explanation": "On enlève les centaines : $1000 - 400 = 600$. Puis les dizaines : $600 - 60 = 540$. Le complément à $1000$ de $460$ est $540$."
+            },
+            {
+              "question": "Trouve le nombre à ajouter à $73$ pour faire $100$ en utilisant des sauts.",
+              "answer": "27",
+              "hint": "Saute à la dizaine supérieure : $73 + 7 = 80$. Puis saute à $100$ : $80 + 20 = 100$. Additionne les sauts : $7 + 20 = 27$.",
+              "explanation": "Le premier saut de $7$ amène à $80$. Le second saut de $20$ amène à $100$. En tout, on a ajouté $27$. Vérification : $73 + 27 = 100$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une stratégie rapide.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégie 1 : Les compléments connus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant plusieurs façons de trouver un complément. La première stratégie, c'est d'utiliser les compléments que tu as mémorisés. Par exemple, tu sais sûrement que $2 + 8 = 10$, $3 + 7 = 10$, $4 + 6 = 10$, etc. Pour aller à $100$, tu peux utiliser ces paires sur les dizaines : $20 + 80 = 100$, $30 + 70 = 100$. Si on te demande le complément à $100$ de $82$, tu vois tout de suite qu'il faut $8$ pour faire $90$ et $10$ pour faire $100$, soit $18$ au total. C'est ultra rapide quand les chiffres s'arrangent bien."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Paires de compléments à 10 et à 100",
+              "bars": [
+                {
+                  "label": "2+8",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3+7",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "20+80",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "30+70",
+                  "value": 100,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégie 2 : La décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième stratégie, c'est celle qu'on a vue la dernière fois : décomposer le nombre à enlever en centaines, dizaines, unités. Elle est idéale pour les nombres un peu plus complexes, comme $1000 - 370$. Tu coupes $370$ en $300 + 70$, tu enlèves $300$ (il reste $700$), puis $70$ (il reste $630$). Cette méthode est très sûre et marche à tous les coups, même pour les grands nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégie 3 : Les sauts sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "La troisième stratégie, c'est de faire des sauts sur la droite numérotée, en passant par les dizaines et les centaines. Elle est super quand le nombre de départ est proche d'une dizaine, comme $45$. Tu fais $45 + 5 = 50$, puis $50 + 50 = 100$. Le complément est $55$. C'est visuel et ça aide à bien comprendre la structure des nombres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sauts de $45$ à $100$",
+              "min": 40,
+              "max": 105,
+              "points": [
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de choisir la meilleure stratégie selon les nombres ! Pour $82$, les compléments connus sont les plus rapides. Pour $370$, la décomposition est claire. Pour $45$, les sauts sont évidents. En t'entraînant, tu verras que ton cerveau choisira tout seul la bonne méthode. C'est ça, devenir fort en calcul mental : avoir plusieurs outils dans sa boîte et savoir lequel sortir."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais trouver le complément à la dizaine supérieure.",
+                "Je sais trouver le complément à la centaine supérieure.",
+                "Je sais décomposer pour calculer un complément à 100 ou 1000.",
+                "Je choisis la stratégie la plus rapide selon les nombres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle stratégie utilises-tu pour trouver le complément à $100$ de $82$ ? Donne le résultat.",
+              "answer": "18",
+              "hint": "Pense aux compléments à $10$ : $82 + 8 = 90$, puis $90 + 10 = 100$.",
+              "explanation": "La stratégie des compléments connus est la plus rapide ici. $82$ a $2$ unités, il faut $8$ pour faire $90$. Ensuite $90$ a $9$ dizaines, il faut $10$ dizaines pour faire $100$. Total : $8 + 10 = 18$."
+            },
+            {
+              "question": "Pour $1000 - 370$, quelle décomposition est la plus rapide ? Donne le résultat.",
+              "answer": "630",
+              "hint": "Décompose $370$ en $300 + 70$. Fais $1000 - 300 = 700$, puis $700 - 70 = 630$.",
+              "explanation": "La décomposition en centaines et dizaines est idéale. $1000 - 300 = 700$, $700 - 70 = 630$. Le complément à $1000$ de $370$ est $630$."
+            },
+            {
+              "question": "Choisis la meilleure méthode pour $45 + \\square = 100$ et donne le résultat.",
+              "answer": "55",
+              "hint": "Fais un saut à la dizaine : $45 + 5 = 50$. Puis un saut à la centaine : $50 + 50 = 100$.",
+              "explanation": "La méthode des sauts est parfaite car $45$ est tout près de $50$. $45 + 5 = 50$, $50 + 50 = 100$. Le nombre manquant est $5 + 50 = 55$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

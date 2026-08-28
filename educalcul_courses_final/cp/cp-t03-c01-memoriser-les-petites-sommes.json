@@ -1,0 +1,315 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.555913+00:00",
+  "id": 23,
+  "code": "cp-t03-c01",
+  "title": "Mémoriser les petites sommes",
+  "description": "Cours structuré Educalcul : Mémoriser les petites sommes.",
+  "subject": "Calcul mental et automatismes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Mémoriser les petites sommes",
+    "objectif_global": "Mémoriser les petites sommes",
+    "mini_lecons_imposees": [
+      "Construire les sommes jusqu'à 10.",
+      "Reconnaître des résultats fréquents.",
+      "Répondre rapidement à des calculs courts."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Construire les sommes jusqu'à 10.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mettre ensemble des objets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ pommes dans un panier et que tu en ajoutes $4$ autres. Pour savoir combien il y a de pommes au total, tu peux les mettre toutes ensemble et les compter une par une. C'est exactement ce que fait l'addition : elle regroupe deux groupes pour en faire un seul plus grand."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 3,
+              "caption": "3 objets"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 4,
+              "caption": "4 objets"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de compter en avançant sur une ligne de nombres. Place ton doigt sur le $3$ et fais $4$ petits sauts vers la droite. Chaque saut ajoute $1$. Où arrives‑tu ? C'est une façon visuelle de voir la même addition."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter de 3 à 7",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour garder une trace, on écrit l'addition avec le signe $+$ et le signe $=$. Cela donne une petite phrase mathématique que tout le monde comprend : $3+4=7$. Écris‑la dans ton cahier et relis‑la à voix haute."
+            },
+            {
+              "type": "display_math",
+              "latex": "3+4=7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $3$ pommes plus $4$ pommes ?",
+              "answer": "$7$",
+              "hint": "Compte les pommes une par une ou utilise tes doigts.",
+              "explanation": "On met les deux groupes ensemble : $3+4=7$."
+            },
+            {
+              "question": "Sur la ligne des nombres, si tu pars de $2$ et que tu fais $5$ sauts, où arriv­es‑tu ?",
+              "answer": "$7$",
+              "hint": "Chaque saut ajoute $1$.",
+              "explanation": "En partant de $2$, cinq sauts donnent $2+5=7$."
+            },
+            {
+              "question": "Écris l'addition qui correspond à $6$ bonbons plus $2$ bonbons.",
+              "answer": "$6+2=8$",
+              "hint": "Utilise le signe $+$ et le signe $=$.",
+              "explanation": "L'addition s'écrit $6+2=8$."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître des résultats fréquents.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les doubles et les compléments à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Certaines sommes reviennent tout le temps. Les doubles, comme $1+1$, $2+2$, $3+3$, sont très faciles à retenir parce que les deux nombres sont identiques. Essaie de les dire tout haut : $1+1=2$, $2+2=4$, $3+3=6$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 4,
+              "caption": "Le double de 2 fait 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre groupe très utile, ce sont les compléments à $10$. Si tu as $6$ billes, il t'en faut $4$ de plus pour atteindre $10$. On dit que $6$ et $4$ sont amis pour faire $10$. Essaie avec d'autres paires : $7$ et $3$, $8$ et $2$."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                1,
+                2,
+                5
+              ],
+              "target": 10,
+              "caption": "Faire 10 avec des pièces"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il y a des sommes qui apparaissent souvent dans les jeux et les exercices, comme $3+4$, $4+5$ ou $2+6$. Les reconnaître vite te fait gagner du temps. Regarde le graphique ci‑dessous : il montre lesquelles sont les plus fréquentes."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquence de quelques petites sommes",
+              "bars": [
+                {
+                  "label": "3+4",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4+5",
+                  "value": 7,
+                  "tone": "green"
+                },
+                {
+                  "label": "2+6",
+                  "value": 6,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le double de $3$ ?",
+              "answer": "$6$",
+              "hint": "Ajoute $3$ à lui‑même.",
+              "explanation": "Le double de $3$ s'écrit $3+3=6$."
+            },
+            {
+              "question": "Avec quelles deux pièces peux‑tu faire exactement $10$ centimes si tu as des pièces de $1$, $2$ et $5$ centimes ?",
+              "answer": "$5$ et $5$ (ou $5+2+2+1$)",
+              "hint": "Cherche une combinaison qui donne $10$.",
+              "explanation": "Par exemple $5+5=10$ ou $5+2+2+1=10$."
+            },
+            {
+              "question": "Quelle somme donne $9$ parmi celles-ci : $3+4$, $4+5$, $2+6$ ?",
+              "answer": "$4+5$",
+              "hint": "Calcule chaque proposition.",
+              "explanation": "$4+5=9$, les autres font $7$ et $8$."
+            }
+          ]
+        },
+        {
+          "title": "Répondre rapidement à des calculs courts.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre vite aux calculs courts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus vite, tu peux utiliser des petites astuces. Par exemple, si tu vois $3+4$, tu sais déjà que cela fait $7$ grâce à l'exercice précédent. Essaie de visualiser une balance : les deux plateaux sont équilibrés quand les deux côtés font le même total."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                4
+              ],
+              "right": [
+                7
+              ],
+              "caption": "Vérifier 3+4=7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre astuce, c'est de t'appuyer sur les doubles. Si tu dois calculer $5+6$, pense au double de $5$ qui est $10$, puis ajoute $1$ de plus pour obtenir $11$. C'est souvent plus rapide que de recompter depuis le début."
+            },
+            {
+              "type": "clock",
+              "hours": 0,
+              "minutes": 30,
+              "caption": "Chronomètre 30 secondes",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, joue à un petit jeu de cartes : retourne deux cartes, additionne les chiffres et dis le résultat avant que le sablier ne soit fini. Cela transforme l'exercice en défi amusant et t'aide à mémoriser les sommes sans t'en rendre compte."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des bonnes réponses au jeu",
+              "slices": [
+                {
+                  "label": "Correct",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "Incorrect",
+                  "value": 3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais mettre ensemble deux groupes d'objets et trouver le total.",
+                "Je reconnais vite les doubles et les compléments à 10.",
+                "Je réponds rapidement à des additions comme $3+4$ ou $5+6$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie avec la balance : $2+5$ fait‑il $7$ ?",
+              "answer": "Oui",
+              "hint": "Mets $2$ et $5$ à gauche, $7$ à droite.",
+              "explanation": "Les deux plateaux s'équilibrent car $2+5=7$."
+            },
+            {
+              "question": "Calcule $5+6$ en utilisant le double de $5$.",
+              "answer": "$11$",
+              "hint": "Double de $5$ = $10$, puis $+1$.",
+              "explanation": "$5+5=10$, donc $5+6=10+1=11$."
+            },
+            {
+              "question": "Au jeu de cartes, tu tires un $4$ et un $3$. Quel est le total ?",
+              "answer": "$7$",
+              "hint": "Rappelle‑toi la somme $3+4$.",
+              "explanation": "$4+3=7$, c'est une somme fréquente."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

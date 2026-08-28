@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Quotient / reste",
+  "title": "Division euclidienne : quotient et reste - Approfondissement",
+  "questions": [
+    {
+      "text": "Effectue la division euclidienne de $47$ par $5$. Quel sont le quotient et le reste ?",
+      "options": [
+        "Quotient 9, reste 2",
+        "Quotient 8, reste 7",
+        "Quotient 10, reste -3",
+        "Quotient 9, reste 3"
+      ],
+      "correctAnswer": "Quotient 9, reste 2",
+      "explanation": "On cherche le plus grand multiple de $5$ inférieur ou égal à $47$. $5 \\times 9 = 45$. Le reste est $47 - 45 = 2$. Les autres propositions ne respectent pas la condition $0 \\le reste < 5$ ou donnent un produit incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre divisé par $6$ donne un quotient de $7$ et un reste de $3$. Quel est ce nombre ?",
+      "options": [
+        "45",
+        "44",
+        "42",
+        "46"
+      ],
+      "correctAnswer": "45",
+      "explanation": "D'après la relation de la division euclidienne : dividende = diviseur $\\times$ quotient + reste. Donc $6 \\times 7 + 3 = 42 + 3 = 45$. Les autres valeurs ne satisfont pas cette égalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule le quotient et le reste de la division de $1234$ par $12$.",
+      "options": [
+        "Quotient 102, reste 10",
+        "Quotient 103, reste -2",
+        "Quotient 101, reste 22",
+        "Quotient 102, reste 11"
+      ],
+      "correctAnswer": "Quotient 102, reste 10",
+      "explanation": "$12 \\times 102 = 1224$. Le reste est $1234 - 1224 = 10$, ce qui respecte $0 \\le reste < 12$. La proposition avec un reste négatif est impossible, et les autres donnent un produit trop grand ou un reste trop grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet de $56$ bonbons est partagé équitablement entre $8$ enfants. Combien de bonbons chaque enfant reçoit-il et combien en reste-t-il ?",
+      "options": [
+        "7 bonbons chacun, 0 reste",
+        "6 bonbons chacun, 8 reste",
+        "8 bonbons chacun, 0 reste",
+        "7 bonbons chacun, 1 reste"
+      ],
+      "correctAnswer": "7 bonbons chacun, 0 reste",
+      "explanation": "$56 \\div 8 = 7$ exactement, car $8 \\times 7 = 56$. Il n'y a donc aucun reste. Les autres options donnent soit un produit différent de $56$, soit un reste non nul alors que la division est exacte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la division euclidienne $a = bq + r$ avec $0 \\le r < b$. Quel terme représente le reste de la division de $a$ par $b$ ?",
+      "options": [
+        "r",
+        "q",
+        "b",
+        "a"
+      ],
+      "correctAnswer": "r",
+      "explanation": "Dans l'égalité $a = bq + r$, $q$ est le quotient, $b$ le diviseur, $a$ le dividende et $r$ le reste, qui vérifie $0 \\le r < b$. Donc le reste est bien $r$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

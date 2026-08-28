@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 224,
+  "_course_code": "cm1-t02-c06-fraction-d-une-quantite",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Partager en parts égales",
+  "title": "Approfondissement : Partager en parts égales - Algorithmes",
+  "blocks": [
+    {
+      "title": "Partage simple",
+      "content": "Écris un algorithme qui permet de partager $24$ objets en $6$ parts égales. Indique le nombre d'objets dans chaque part.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total égal à vingt quatre.\\n2. Lire le nombre de parts égal à six.\\n3. Calculer la part en divisant le total par le nombre de parts.\\n4. Afficher la part.\\nRésultat : chaque part contient quatre objets.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise le total vingt quatre par le nombre de parts six. La division donne quatre. Chaque part reçoit donc quatre objets. L'algorithme suit ces étapes de lecture, calcul et affichage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partage avec vérification",
+      "content": "Écris un algorithme qui partage $35$ bonbons en $5$ parts égales et qui vérifie le résultat en multipliant le nombre de parts par la taille d'une part.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total égal à trente cinq.\\n2. Lire le nombre de parts égal à cinq.\\n3. Calculer la part en divisant le total par le nombre de parts.\\n4. Calculer la vérification en multipliant la part par le nombre de parts.\\n5. Si la vérification est égale au total alors afficher \"Partage correct\" sinon afficher \"Erreur\".\\n6. Afficher la part.\\nRésultat : chaque part contient sept bonbons, la vérification donne trente cinq.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division de trente cinq par cinq donne sept. On vérifie en multipliant sept par cinq, ce qui redonne trente cinq. L'algorithme inclut une étape de contrôle pour s'assurer que le partage est exact.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme générique",
+      "content": "Propose un algorithme sous forme de fonction qui reçoit deux nombres : le total $T$ et le nombre de parts $n$. La fonction doit retourner la taille de chaque part $q$ et le reste $r$ s'il y en a un. Utilise la division euclidienne.",
+      "correctAnswer": "Fonction partager(total, nombre de parts) :\\n    quotient = division entière de total par nombre de parts\\n    reste = reste de la division de total par nombre de parts\\n    retourner quotient, reste\\nExemple : partager(vingt neuf, quatre) donne quotient = sept, reste = un car vingt neuf = quatre fois sept plus un.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division euclidienne de total par nombre de parts fournit le quotient qui est la taille de chaque part et le reste qui est le nombre d'objets non distribués. L'algorithme utilise la division entière pour le quotient et le reste pour le reste. Cela fonctionne pour tout couple de nombres entiers positifs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

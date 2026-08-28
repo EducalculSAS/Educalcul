@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 403,
+  "_course_code": "5eme-t05-c04-solides-et-volumes",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Prismes / cylindres selon programme",
+  "title": "Quiz : Prismes et cylindres - 5e",
+  "questions": [
+    {
+      "text": "Parmi les solides suivants, lequel est un prisme droit ?",
+      "options": [
+        "Un solide dont les bases sont deux polygones identiques et parallèles, et dont les faces latérales sont des rectangles.",
+        "Un solide dont la base est un polygone et dont les faces latérales sont des triangles se rejoignant en un sommet.",
+        "Un solide limité par une surface courbe et deux bases circulaires parallèles.",
+        "Un solide dont les faces sont toutes des carrés identiques."
+      ],
+      "correctAnswer": "Un solide dont les bases sont deux polygones identiques et parallèles, et dont les faces latérales sont des rectangles.",
+      "explanation": "Un prisme droit se définit par deux bases polygonales identiques, parallèles et superposables par translation, et des faces latérales qui sont des rectangles (ou un rectangle développé). L'option B décrit une pyramide. L'option C décrit un cylindre droit. L'option D décrit un cube, qui est un cas particulier de prisme droit mais pas la définition générale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre droit a une base de rayon $r = 3$ cm et une hauteur $h = 10$ cm. Quelle est la formule exacte pour calculer son volume $V$ ?",
+      "options": [
+        "$V = \\pi \\times r^2 \\times h$",
+        "$V = 2 \\times \\pi \\times r \\times h$",
+        "$V = \\pi \\times r \\times h$",
+        "$V = \\frac{1}{3} \\times \\pi \\times r^2 \\times h$"
+      ],
+      "correctAnswer": "$V = \\pi \\times r^2 \\times h$",
+      "explanation": "Le volume d'un cylindre droit (et de tout prisme droit) se calcule en multipliant l'aire de la base par la hauteur. L'aire du disque de base est $\\pi r^2$, donc $V = \\pi r^2 h$. L'option B correspond à l'aire latérale. L'option C est dimensionnellement incorrecte (longueur au cube vs longueur au carré). L'option D est la formule du volume d'un cône.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un prisme droit a pour base un triangle rectangle de côtés adjacents $4$ cm et $3$ cm. Sa hauteur est de $12$ cm. Quel est son volume ?",
+      "options": [
+        "$72 \\text{ cm}^3$",
+        "$144 \\text{ cm}^3$",
+        "$36 \\text{ cm}^3$",
+        "$288 \\text{ cm}^3$"
+      ],
+      "correctAnswer": "$72 \\text{ cm}^3$",
+      "explanation": "L'aire de la base (triangle rectangle) est $\\frac{4 \\times 3}{2} = 6 \\text{ cm}^2$. Le volume du prisme est $V = \\text{Aire}_{base} \\times h = 6 \\times 12 = 72 \\text{ cm}^3$. L'option B correspond à l'oubli de la division par 2 pour l'aire du triangle ($4 \\times 3 \\times 12$). L'option C correspond à une erreur de calcul ($6 \\times 6$). L'option D double le volume correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On coupe un cylindre droit par un plan parallèle à ses bases. Quelle est la nature de la section obtenue ?",
+      "options": [
+        "Un disque de même rayon que les bases.",
+        "Une ellipse.",
+        "Un rectangle.",
+        "Un cercle de rayon inférieur à celui des bases."
+      ],
+      "correctAnswer": "Un disque de même rayon que les bases.",
+      "explanation": "Dans un cylindre droit, toute section par un plan parallèle aux bases est un disque identique aux bases (même centre, même rayon). C'est une propriété fondamentale du cylindre droit. Une ellipse apparaît si le plan est incliné (non parallèle). Un rectangle apparaît si le plan contient l'axe (section axiale).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit (prisme droit à base rectangulaire) a un volume de $240 \\text{ cm}^3$. La surface de sa base est $30 \\text{ cm}^2$. Quelle est sa hauteur ?",
+      "options": [
+        "$8 \\text{ cm}$",
+        "$72 \\text{ cm}$",
+        "$270 \\text{ cm}$",
+        "$7200 \\text{ cm}$"
+      ],
+      "correctAnswer": "$8 \\text{ cm}$",
+      "explanation": "La formule du volume est $V = \\text{Aire}_{base} \\times h$. On en déduit $h = \\frac{V}{\\text{Aire}_{base}} = \\frac{240}{30} = 8 \\text{ cm}$. L'option B correspond à une multiplication ($240 \\times 0,3$ ou confusion). L'option C est une addition. L'option D est une multiplication ($240 \\times 30$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

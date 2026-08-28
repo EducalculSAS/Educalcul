@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Modéliser",
+  "title": "Modélisation algorithmique - 3e",
+  "blocks": [
+    {
+      "title": "Écriture d'un algorithme simple",
+      "content": "Écrivez un algorithme (en pseudo-code) qui demande à l'utilisateur la longueur $L$ et la largeur $l$ d'un rectangle, puis affiche son périmètre $P = 2(L + l)$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $L$\\n2. Lire $l$\\n3. Calculer $P = 2 * (L + l)$\\n4. Afficher $P$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit les deux mesures, on applique la formule du périmètre d'un rectangle $P = 2(L + l)$, puis on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation d'un problème de location",
+      "content": "Une agence de location de voitures facture un forfait de $30$ euros plus $0,15$ euro par kilomètre parcouru. Écrivez un algorithme qui lit le nombre de kilomètres $k$ et affiche le prix total $C = 30 + 0,15k$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $k$\\n2. Calculer $C = 30 + 0,15 * k$\\n3. Afficher $C$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coût total est la somme du forfait fixe $30$ euros et du coût variable $0,15$ euro par kilomètre. On lit $k$, on calcule $C = 30 + 0,15k$, on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour une suite récurrente",
+      "content": "Soit la suite définie par $u_0 = 5$ et $u_{n+1} = 2u_n + 3$ pour $n >= 0$. Écrivez un algorithme qui lit un entier naturel $n$ et affiche la valeur de $u_n$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$\\n2. $u = 5$\\n3. Pour $i$ de $0$ à $n-1$ faire\\n4.     $u = 2 * u + 3$\\n5. Fin pour\\n6. Afficher $u$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise $u$ à $u_0 = 5$. On répète $n$ fois la relation de récurrence $u = 2u + 3$. Après la boucle, $u$ vaut $u_n$, qu'on affiche.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

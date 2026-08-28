@@ -1,0 +1,198 @@
+{
+  "_status": "done",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Bilan - Données CE2",
+  "title": "Bilan Données CE2 : Lecture et Calculs",
+  "questions": [
+    {
+      "text": "Regarde le tableau ci-dessous. Combien d'élèves ont choisi le chat comme animal préféré ?",
+      "options": [
+        "$5$",
+        "$8$",
+        "$12$",
+        "$3$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Dans le tableau, la ligne « Chat » correspond à la valeur $12$. Les autres valeurs correspondent au chien ($8$), au lapin ($5$) et à l'oiseau ($3$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "8"
+          ],
+          [
+            "Chat",
+            "12"
+          ],
+          [
+            "Lapin",
+            "5"
+          ],
+          [
+            "Oiseau",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Observe le diagramme en barres représentant les fruits préférés. Quel fruit a été choisi par exactement $6$ élèves ?",
+      "options": [
+        "Pommes",
+        "Bananes",
+        "Fraises",
+        "Raisins"
+      ],
+      "correctAnswer": "Bananes",
+      "explanation": "La barre des bananes s'arrête à la graduation $6$. Les pommes sont à $10$, les fraises à $14$ et les raisins à $8$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés des élèves",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 10,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 6,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraises",
+            "value": 14,
+            "tone": "pink"
+          },
+          {
+            "label": "Raisins",
+            "value": 8,
+            "tone": "purple"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau indique le nombre de livres lus par quatre enfants pendant les vacances. Quel est le nombre total de livres lus par les quatre enfants ?",
+      "options": [
+        "$20$",
+        "$24$",
+        "$26$",
+        "$22$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Il faut additionner les quatre valeurs : $5 + 8 + 4 + 7 = 24$. Lucas a lu $5$, Emma $8$, Noah $4$ et Léa $7$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Enfant",
+          "Livres lus"
+        ],
+        "rows": [
+          [
+            "Lucas",
+            "5"
+          ],
+          [
+            "Emma",
+            "8"
+          ],
+          [
+            "Noah",
+            "4"
+          ],
+          [
+            "Léa",
+            "7"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "D'après le diagramme en barres sur les couleurs préférées, quelle est la couleur la plus choisie par la classe (le mode) ?",
+      "options": [
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Jaune"
+      ],
+      "correctAnswer": "Bleu",
+      "explanation": "La barre la plus haute correspond à la valeur la plus grande. Le bleu atteint $15$, ce qui est supérieur au rouge ($9$), au vert ($11$) et au jaune ($5$). Le bleu est donc le mode.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Couleur préférée",
+        "bars": [
+          {
+            "label": "Bleu",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 9,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 11,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 5,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Voici les points marqués par quatre équipes. De combien de points l'équipe C a-t-elle marqué plus que l'équipe B ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$14$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "L'équipe C a $30$ points et l'équipe B en a $18$. La différence se calcule par une soustraction : $30 - 18 = 12$ points d'écart.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Équipe",
+          "Points"
+        ],
+        "rows": [
+          [
+            "Équipe A",
+            "25"
+          ],
+          [
+            "Équipe B",
+            "18"
+          ],
+          [
+            "Équipe C",
+            "30"
+          ],
+          [
+            "Équipe D",
+            "22"
+          ]
+        ]
+      }
+    }
+  ]
+}

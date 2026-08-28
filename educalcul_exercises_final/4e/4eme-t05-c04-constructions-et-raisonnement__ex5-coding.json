@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 443,
+  "_course_code": "4eme-t05-c04-constructions-et-raisonnement",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Choisir propriété",
+  "title": "Choisir la propriété géométrique adaptée",
+  "blocks": [
+    {
+      "title": "Vérification et classification par les angles",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo‑code) qui, étant donnés les trois angles d'un triangle, vérifie si la somme vaut $180^\\circ$ et classe le triangle selon ses angles (acutangle, rectangle, obtusangle).",
+      "correctAnswer": "Algorithme :\\n1. Lire les trois angles A, B, C.\\n2. Calculer somme = A + B + C.\\n3. Si somme ≠ 180 alors afficher \"Pas un triangle\" et arrêter.\\n4. Si A = 90 ou B = 90 ou C = 90 alors afficher \"Triangle rectangle\".\\n5. Sinon si A > 90 ou B > 90 ou C > 90 alors afficher \"Triangle obtusangle\".\\n6. Sinon afficher \"Triangle acutangle\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété fondamentale est que la somme des angles d'un triangle vaut $180^\\circ$. On teste d'abord cette condition. Ensuite, la classification selon les angles utilise les définitions : un angle droit ($90^\\circ$) donne un triangle rectangle ; un angle supérieur à $90^\\circ$ donne un triangle obtusangle ; sinon tous les angles sont inférieurs à $90^\\circ$ et le triangle est acutangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détection d'un triangle rectangle par Pythagore",
+      "content": "Écrire un algorithme qui, connaissant les longueurs des trois côtés a, b, c d'un triangle (avec c le plus grand), détermine si le triangle est rectangle en utilisant la propriété de Pythagore.",
+      "correctAnswer": "Algorithme :\\n1. Lire les trois longueurs a, b, c.\\n2. Identifier le plus grand côté, l'appeler c (les deux autres a et b).\\n3. Calculer gauche = a*a + b*b.\\n4. Calculer droite = c*c.\\n5. Si gauche = droite alors afficher \"Triangle rectangle\".\\n6. Sinon afficher \"Triangle non rectangle\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La propriété de Pythagore stipule que dans un triangle rectangle, le carré de l'hypoténuse (le plus grand côté) est égal à la somme des carrés des deux autres côtés. L'algorithme trie les côtés pour identifier l'hypoténuse, puis teste l'égalité $a^2 + b^2 = c^2$. Si elle est vraie, le triangle est rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul des angles à la base d'un triangle isocèle",
+      "content": "Écrire un algorithme qui, pour un triangle isocèle dont on connaît l'angle au sommet, calcule les deux angles à la base en choisissant la propriété appropriée (angles à la base égaux et somme des angles).",
+      "correctAnswer": "Algorithme :\\n1. Lire l'angle au sommet S.\\n2. Vérifier que 0 < S < 180.\\n3. Calculer somme_base = 180 - S.\\n4. Comme les angles à la base sont égaux, chaque angle base = somme_base / 2.\\n5. Afficher les deux angles à la base.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle isocèle, les angles à la base sont égaux. La somme des trois angles vaut $180^\\circ$. En soustrayant l'angle au sommet, on obtient la somme des deux angles à la base. En divisant par deux, on trouve la mesure de chaque angle à la base.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

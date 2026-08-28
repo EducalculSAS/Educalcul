@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Fréquences conditionnelles simples",
+  "title": "Quiz sur les fréquences conditionnelles simples",
+  "questions": [
+    {
+      "text": "On considère le tableau de contingence suivant :\\n\\n|          | Garçon | Fille |\\n|----------|--------|-------|\\n| Sport    | 12     | 8     |\\n| Musique  | 5      | 15    |\\n\\nQuelle est la fréquence conditionnelle de « Sport » sachant « Garçon » ?",
+      "options": [
+        "$12/17$",
+        "$12/30$",
+        "$5/17$",
+        "$12/20$"
+      ],
+      "correctAnswer": "$12/17$",
+      "explanation": "La fréquence conditionnelle de Sport sachant Garçon se calcule en divisant l'effectif de la cellule (Sport, Garçon) par l'effectif marginal de la colonne Garçon. L'effectif de la cellule est $12$, le total des garçons est $12+5=17$. Donc la fréquence conditionnelle est $12/17$. Les autres options correspondent à des erreurs : utiliser le total général ($30$), utiliser l'effectif de Musique ($5$) ou le total de la ligne Sport ($20$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Garçon",
+          "Fille"
+        ],
+        "rows": [
+          [
+            "Sport",
+            "12",
+            "8"
+          ],
+          [
+            "Musique",
+            "5",
+            "15"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Avec le même tableau, quelle est la fréquence conditionnelle de « Fille » sachant « Musique » ?",
+      "options": [
+        "$15/20$",
+        "$15/30$",
+        "$5/20$",
+        "$20/15$"
+      ],
+      "correctAnswer": "$15/20$",
+      "explanation": "On divise l'effectif de la cellule (Fille, Musique) qui est $15$ par l'effectif marginal de la colonne Musique, soit $5+15=20$. La fréquence conditionnelle est donc $15/20$. Les distracteurs utilisent le total général ($30$), l'effectif de Garçon Musique ($5$) ou inversent numérateur et dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une enquête, on apprend que 40 % des élèves qui jouent aux jeux vidéo sont des filles. Quelle est la fréquence conditionnelle de « fille » sachant « joue aux jeux vidéo » ?",
+      "options": [
+        "$0,4$",
+        "$0,6$",
+        "$40$",
+        "$60$"
+      ],
+      "correctAnswer": "$0,4$",
+      "explanation": "Un pourcentage de 40 % correspond à une fréquence de $0,4$ (ou $40/100$). Les options $0,6$, $40$ et $60$ correspondent respectivement au complément, à la valeur en pourcentage sans division par 100, et au complément en pourcentage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, 30 % des élèves sont des garçons. Parmi les garçons, 40 % pratiquent le football. Quelle est la fréquence de l'événement « garçon et football » ?",
+      "options": [
+        "$0,12$",
+        "$0,7$",
+        "$0,3$",
+        "$0,4$"
+      ],
+      "correctAnswer": "$0,12$",
+      "explanation": "La fréquence conjointe « garçon et football » est le produit de la fréquence marginale des garçons ($0,3$) par la fréquence conditionnelle du football sachant garçon ($0,4$) : $0,3 \\times 0,4 = 0,12$. Les autres options sont les fréquences marginales ou conditionnelles prises seules, ou leur somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe les fréquences conditionnelles suivantes pour deux variables qualitatives A et B :\\n- $P(A|X) = 0,5$\\n- $P(A|Y) = 0,5$\\nPeut-on affirmer que les variables sont indépendantes ?",
+      "options": [
+        "Oui, car les fréquences conditionnelles sont égales",
+        "Non, car les fréquences conditionnelles sont égales",
+        "Oui, car les fréquences marginales sont égales",
+        "Non, car les effectifs totaux sont différents"
+      ],
+      "correctAnswer": "Oui, car les fréquences conditionnelles sont égales",
+      "explanation": "Deux variables qualitatives sont indépendantes si et seulement si la fréquence conditionnelle de l'une sachant l'autre ne dépend pas de la modalité de la seconde. Ici $P(A|X)=P(A|Y)=0,5$, donc la distribution de A est la même quelle que soit la modalité de B : les variables sont indépendantes. Les autres réponses confondent indépendance et égalité des marginales ou des effectifs totaux.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

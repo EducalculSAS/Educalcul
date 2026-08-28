@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Variables et calculs",
+  "title": "Ordonnancement d'algorithmes simples",
+  "blocks": [
+    {
+      "title": "Calcul de périmètre",
+      "content": "Rangez les instructions dans l'ordre pour calculer et afficher le périmètre $P$ d'un rectangle de longueur $L = 10$ et de largeur $l = 6$ avec la formule $P = 2 \\times (L + l)$.",
+      "items": [
+        "L ← 10",
+        "l ← 6",
+        "P ← 2 × (L + l)",
+        "Afficher P"
+      ],
+      "explanation": "On commence par affecter les valeurs aux variables $L$ et $l$. On calcule ensuite le périmètre $P$ en utilisant ces variables. Enfin, on affiche le résultat stocké dans $P$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échange de deux variables",
+      "content": "Voici un algorithme qui échange le contenu des variables $A$ et $B$ à l'aide d'une variable temporaire $temp$. Rangez les trois instructions dans l'ordre correct.",
+      "items": [
+        "temp ← A",
+        "A ← B",
+        "B ← temp"
+      ],
+      "explanation": "Pour échanger deux valeurs sans en perdre une, on stocke d'abord la valeur de $A$ dans $temp$. On peut alors mettre la valeur de $B$ dans $A$. Enfin, on récupère l'ancienne valeur de $A$ (stockée dans $temp$) pour la mettre dans $B$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme des cinq premiers entiers",
+      "content": "Rangez les blocs pour écrire l'algorithme qui calcule la somme $S = 1 + 2 + 3 + 4 + 5$ à l'aide d'une boucle \"Pour\" et affiche le résultat.",
+      "items": [
+        "S ← 0",
+        "Pour i de 1 à 5 faire",
+        "    S ← S + i",
+        "Fin pour",
+        "Afficher S"
+      ],
+      "explanation": "On initialise l'accumulateur $S$ à $0$. La boucle fait varier $i$ de $1$ à $5$. À chaque tour, on ajoute la valeur courante de $i$ à $S$. Après la boucle, $S$ vaut $15$ et on l'affiche.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

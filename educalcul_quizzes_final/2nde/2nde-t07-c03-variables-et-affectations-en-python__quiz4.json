@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Variables et affectations en Python",
+  "title": "Quiz : Variables et affectations en Python",
+  "questions": [
+    {
+      "text": "Après l'exécution du code suivant, quelle est la valeur de la variable a ?\\n\\na = 5\\nb = 3\\na = b",
+      "options": [
+        "5",
+        "3",
+        "8",
+        "2"
+      ],
+      "correctAnswer": "3",
+      "explanation": "L'affectation a = b copie la valeur actuelle de b (qui est 3) dans a. La valeur précédente de a (5) est perdue. Donc a vaut 3.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que valent les variables x et y après l'exécution de ce fragment ?\\n\\nx, y = 10, 20\\nx, y = y, x",
+      "options": [
+        "x = 10, y = 20",
+        "x = 20, y = 10",
+        "x = 20, y = 20",
+        "x = 10, y = 10"
+      ],
+      "correctAnswer": "x = 20, y = 10",
+      "explanation": "L'affectation multiple x, y = y, x utilise les valeurs originales de y et x (20 et 10) pour assigner simultanément. Ainsi x devient 20 et y devient 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le type de la variable a après l'instruction a = 7 / 2 ?",
+      "options": [
+        "int",
+        "float",
+        "str",
+        "bool"
+      ],
+      "correctAnswer": "float",
+      "explanation": "En Python, l'opérateur / effectue une division réelle et renvoie toujours un nombre à virgule flottante (float), même si le résultat est un entier mathématique. 7 / 2 donne 3.5, qui est de type float.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel des identifiants suivants est un nom de variable valide en Python ?",
+      "options": [
+        "2var",
+        "ma-variable",
+        "_var2",
+        "class"
+      ],
+      "correctAnswer": "_var2",
+      "explanation": "Un nom de variable doit commencer par une lettre ou un underscore, ne peut pas contenir de tiret, ne peut pas être un mot réservé (comme class) et ne peut pas commencer par un chiffre. Seule l'option _var2 respecte ces règles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur finale de n après l'exécution du code suivant ?\\n\\nn = 5\\nn += 3\\nn *= 2",
+      "options": [
+        "16",
+        "13",
+        "10",
+        "8"
+      ],
+      "correctAnswer": "16",
+      "explanation": "L'opérateur += ajoute 3 à n (5 + 3 = 8). Ensuite *= multiplie le résultat par 2 (8 * 2 = 16). La valeur finale est donc 16.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

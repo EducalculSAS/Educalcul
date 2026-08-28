@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 180,
+  "_course_code": "ce2-t05-c03-problemes-multiplicatifs",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Problèmes multiplicatifs",
+  "title": "Quiz : Problèmes multiplicatifs (CE2)",
+  "questions": [
+    {
+      "text": "Il y a $4$ boîtes de crayons. Dans chaque boîte, il y a $6$ crayons. Combien y a-t-il de crayons au total ?",
+      "options": [
+        "$24$",
+        "$10$",
+        "$20$",
+        "$26$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Il faut multiplier le nombre de boîtes par le nombre de crayons par boîte : $4 \\times 6 = 24$. L'option $10$ correspond à une addition ($4 + 6$). L'option $20$ correspond à $4 \\times 5$. L'option $26$ est une réponse approximative.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Boîte 1",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Boîte 2",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Boîte 3",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Boîte 4",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "4 boîtes de 6 crayons"
+      }
+    },
+    {
+      "text": "Lucas a $8$ billes. Emma a $3$ fois plus de billes que Lucas. Combien de billes a Emma ?",
+      "options": [
+        "$24$",
+        "$11$",
+        "$16$",
+        "$21$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Emma a 3 fois le nombre de billes de Lucas, on calcule $8 \\times 3 = 24$. L'option $11$ correspond à l'addition $8 + 3$. L'option $16$ correspond à $8 \\times 2$ (le double). L'option $21$ correspond à $7 \\times 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour s'habiller, Léa a $3$ pantalons différents et $4$ t-shirts différents. Combien de tenues différentes (un pantalon et un t-shirt) peut-elle composer ?",
+      "options": [
+        "$12$",
+        "$7$",
+        "$9$",
+        "$15$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "C'est un produit cartésien : pour chaque pantalon, il y a $4$ choix de t-shirt. On calcule $3 \\times 4 = 12$. L'option $7$ correspond à l'addition $3 + 4$. L'option $9$ correspond à $3 \\times 3$. L'option $15$ correspond à $3 \\times 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet contient $6$ gâteaux. La maîtresse achète $5$ paquets pour la classe. Elle donne $2$ gâteaux à un collègue. Combien de gâteaux reste-t-il pour les élèves ?",
+      "options": [
+        "$28$",
+        "$30$",
+        "$32$",
+        "$11$"
+      ],
+      "correctAnswer": "$28$",
+      "explanation": "D'abord, on calcule le total de gâteaux : $5 \\times 6 = 30$. Ensuite, on soustrait les $2$ gâteaux donnés : $30 - 2 = 28$. L'option $30$ oublie la soustraction. L'option $32$ ajoute au lieu de soustraire. L'option $11$ fait $5 + 6$ au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $35$ bonbons. On veut les mettre dans des sachets de $5$ bonbons chacun. Combien de sachets peut-on faire ?",
+      "options": [
+        "$7$",
+        "$5$",
+        "$30$",
+        "$40$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Il faut trouver combien de fois $5$ rentre dans $35$, c'est la division $35 \\div 5 = 7$ (ou multiplication manquante $5 \\times \\square = 35$). L'option $5$ confond le nombre de sachets et le contenu d'un sachet. L'option $30$ fait $35 - 5$. L'option $40$ fait $35 + 5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

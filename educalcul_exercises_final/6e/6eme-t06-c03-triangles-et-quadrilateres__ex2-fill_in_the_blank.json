@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Construire",
+  "title": "Constructions géométriques : vocabulaire et méthodes",
+  "blocks": [
+    {
+      "title": "Outils de construction",
+      "content": "Pour réaliser une construction géométrique, trois instruments sont indispensables : la {{1}}, le {{2}} et le {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "règle|règle graduée",
+        "compas",
+        "crayon|équerre|rapporteur"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle graduée permet de tracer des segments et de mesurer des longueurs, le compas permet de reporter des longueurs et de tracer des cercles ou des arcs de cercle, le crayon sert à marquer les traits. L'équerre et le rapporteur sont utilisés pour tracer des perpendiculaires, des parallèles ou mesurer et construire des angles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un triangle par trois côtés",
+      "content": "Pour construire un triangle dont on connaît les trois longueurs $a$, $b$ et $c$, on commence par tracer un {{1}} de longueur $a$. On trace ensuite un {{2}} de centre l'une des extrémités et de rayon $b$, puis un second de centre l'autre extrémité et de rayon $c$. Le troisième sommet du triangle est l'un des points d'{{3}} de ces deux cercles.",
+      "correctAnswer": "",
+      "blanks": [
+        "segment",
+        "cercle|arc de cercle",
+        "intersection"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction d'un triangle connaissant ses trois côtés (cas SSS) utilise la propriété : deux cercles de centres distincts et de rayons donnés se coupent en au plus deux points symétriques par rapport à la droite passant par leurs centres. On trace d'abord la base (segment), puis les deux cercles (ou arcs) pour trouver le troisième sommet.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriété de la médiatrice",
+      "content": "La médiatrice d'un segment $[AB]$ est la droite qui passe par le {{1}} de $[AB]$ et qui est {{2}} à la droite $(AB)$. Tout point de la médiatrice est à égale distance des points $A$ et $B$.",
+      "correctAnswer": "",
+      "blanks": [
+        "milieu",
+        "perpendiculaire|orthogonale"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiatrice d'un segment est l'ensemble des points du plan équidistants des extrémités de ce segment. C'est une droite qui coupe le segment en son milieu et qui forme un angle droit (90°) avec la droite qui contient le segment. On la trace à la règle et au compas en traçant deux arcs de cercle de même rayon (supérieur à la demi-longueur du segment) centrés sur $A$ et $B$, puis en reliant leurs intersections.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

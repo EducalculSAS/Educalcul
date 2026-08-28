@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 70,
+  "_course_code": "ce1-t01-c03-lire-et-ecrire-jusqu-a-599",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Stabiliser centaines-dizaines-unités",
+  "title": "Algorithmes sur les centaines, dizaines et unités jusqu'à 599",
+  "blocks": [
+    {
+      "title": "Décomposition d'un nombre",
+      "content": "Écris un algorithme (suite d'instructions) qui, étant donné un nombre entier $N$ compris entre $100$ et $599$, affiche le chiffre des centaines, le chiffre des dizaines et le chiffre des unités.",
+      "correctAnswer": "Algorithme Décomposer(N)\\n    Si N < 100 ou N > 599 alors\\n        Afficher \"Nombre hors intervalle\"\\n    Sinon\\n        centaines ← partie entière de N / 100\\n        reste ← N - centaines * 100\\n        dizaines ← partie entière de reste / 10\\n        unités ← reste - dizaines * 10\\n        Afficher \"Centaines : \", centaines\\n        Afficher \"Dizaines : \", dizaines\\n        Afficher \"Unités : \", unités\\n    Fin Si\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie d'abord que le nombre est dans l'intervalle demandé. La division entière par 100 donne le chiffre des centaines. On retire la valeur des centaines pour obtenir le reste. La division entière du reste par 10 donne le chiffre des dizaines. Ce qui reste après avoir retiré les dizaines est le chiffre des unités. Chaque étape utilise seulement des opérations élémentaires adaptées au niveau CE1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recomposition d'un nombre",
+      "content": "Écris un algorithme qui, à partir de trois chiffres donnés : centaines $c$, dizaines $d$, unités $u$ (avec $c$ entre 1 et 5, $d$ et $u$ entre 0 et 9), calcule et affiche le nombre entier correspondant.",
+      "correctAnswer": "Algorithme Recomposer(c, d, u)\\n    Si c < 1 ou c > 5 ou d < 0 ou d > 9 ou u < 0 ou u > 9 alors\\n        Afficher \"Chiffres invalides\"\\n    Sinon\\n        nombre ← c * 100 + d * 10 + u\\n        Afficher \"Le nombre est : \", nombre\\n    Fin Si\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie que chaque chiffre respecte sa plage autorisée. Le nombre se construit en multipliant le chiffre des centaines par 100, le chiffre des dizaines par 10 et en ajoutant le chiffre des unités. Cette formule reflète directement la notation positionnelle en base dix.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux nombres",
+      "content": "Écris un algorithme qui compare deux nombres $A$ et $B$ compris entre $100$ et $599$ en utilisant leurs centaines, dizaines et unités, et qui affiche lequel est le plus grand ou s'ils sont égaux.",
+      "correctAnswer": "Algorithme Comparer(A, B)\\n    Décomposer A en (cA, dA, uA) avec l'algorithme Décomposer\\n    Décomposer B en (cB, dB, uB) avec l'algorithme Décomposer\\n    Si cA > cB alors\\n        Afficher \"A est plus grand que B\"\\n    Sinon Si cA < cB alors\\n        Afficher \"B est plus grand que A\"\\n    Sinon\\n        Si dA > dB alors\\n            Afficher \"A est plus grand que B\"\\n        Sinon Si dA < dB alors\\n            Afficher \"B est plus grand que A\"\\n        Sinon\\n            Si uA > uB alors\\n                Afficher \"A est plus grand que B\"\\n            Sinon Si uA < uB alors\\n                Afficher \"B est plus grand que A\"\\n            Sinon\\n                Afficher \"A et B sont égaux\"\\n            Fin Si\\n        Fin Si\\n    Fin Si\\nFin Algorithme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La comparaison suit l'ordre de grandeur des positions : on compare d'abord les centaines, puis les dizaines si les centaines sont égales, enfin les unités. L'algorithme réutilise la décomposition définie précédemment, ce qui montre la modularité des algorithmes simples.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

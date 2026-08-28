@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 338,
+  "_course_code": "6eme-t02-c03-comparer-et-placer-des-fractions",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Droite",
+  "title": "Algorithmes pour comparer et placer des fractions sur une droite",
+  "blocks": [
+    {
+      "title": "Comparer deux fractions",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo‑code) qui prend en entrée deux fractions $a/b$ et $c/d$ (avec $b>0$, $d>0$) et affiche laquelle est la plus grande. Utilise la méthode du produit en croix.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d.\\n2. Calculer p1 = a * d.\\n3. Calculer p2 = c * b.\\n4. Si p1 > p2 alors afficher \"a/b est plus grand que c/d\".\\n5. Sinon si p1 < p2 alors afficher \"c/d est plus grand que a/b\".\\n6. Sinon afficher \"Les deux fractions sont égales\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer $a/b$ et $c/d$, on met les deux fractions au même dénominateur virtuel $b \\times d$. Le numérateur de la première devient $a \\times d$, celui de la seconde $c \\times b$. Comparer ces deux produits entiers suffit pour savoir quelle fraction est la plus grande.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Placer une fraction sur la droite graduée de 0 à 1",
+      "content": "Écris un algorithme qui, étant donné une fraction $p/q$ (avec $0 < p < q$), détermine sa position sur une droite graduée de $0$ à $1$ divisée en $q$ parties égales. L'algorithme doit indiquer le numéro de la graduation (en partant de $0$) où se trouve le point.",
+      "correctAnswer": "Algorithme :\\n1. Lire p, q.\\n2. Si p = 0 alors afficher \"Position : graduation 0 (origine)\".\\n3. Sinon si p = q alors afficher \"Position : graduation q (extrémité 1)\".\\n4. Sinon afficher \"Position : graduation \" + p + \" (le point se trouve sur la \" + p + \"-ième marque après 0)\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fraction $p/q$ correspond exactement à la $p$-ième subdivision quand l'intervalle $[0,1]$ est découpé en $q$ parties égales. Le numérateur $p$ donne directement le numéro de la graduation (en comptant à partir de $0$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver une fraction entre deux fractions données",
+      "content": "Écris un algorithme qui, étant donné deux fractions $a/b$ et $c/d$ telles que $a/b < c/d$, calcule une fraction strictement comprise entre elles en utilisant la médiante $(a+c)/(b+d)$. L'algorithme doit vérifier que la médiante est bien entre les deux fractions.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d.\\n2. Calculer num = a + c.\\n3. Calculer den = b + d.\\n4. Calculer gauche = a * den.\\n5. Calculer milieu = num * b.\\n6. Calculer droite = c * den.\\n7. Si gauche < milieu et milieu < droite alors afficher \"La fraction \" + num + \"/\" + den + \" est entre \" + a + \"/\" + b + \" et \" + c + \"/\" + d.\\n8. Sinon afficher \"Erreur : la médiante n'est pas entre les deux fractions (vérifier l'ordre initial)\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiante de deux fractions $a/b$ et $c/d$ (avec $a/b < c/d$) est $(a+c)/(b+d)$. Elle satisfait toujours $a/b < (a+c)/(b+d) < c/d$. Pour le vérifier algorithmatiquement, on compare les produits en croix : $a(b+d) < (a+c)b$ et $(a+c)d < c(b+d)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

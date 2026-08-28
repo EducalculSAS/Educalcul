@@ -1,0 +1,223 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.971624+00:00",
+  "id": 481,
+  "code": "3eme-t05-c03",
+  "title": "Réciproque de Thalès",
+  "description": "Cours structuré Educalcul : Réciproque de Thalès.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Réciproque de Thalès",
+    "objectif_global": "Réciproque de Thalès",
+    "mini_lecons_imposees": [
+      "Hypothèses.",
+      "Rapports.",
+      "Conclure parallélisme."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Hypothèses.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es un architecte ou un artisan. On te demande de vérifier si deux poutres dans un bâtiment sont parfaitement parallèles. Tu ne peux pas utiliser un laser, mais tu as un mètre ruban. Comment faire ? C'est là qu'intervient la réciproque du théorème de Thalès. Jusqu'à présent, tu utilisais le théorème de Thalès pour calculer une longueur manquante en sachant déjà que les droites étaient parallèles. C'était comme avoir la solution et chercher un détail. Ici, on inverse la situation : on a toutes les longueurs, et on veut découvrir si le parallélisme existe. C'est un peu comme un travail de détective. Tu observes des indices, tu mesures des segments, et si toutes les conditions sont réunies, tu peux affirmer avec certitude : Oui, ces droites sont parallèles ! C'est un outil puissant car il permet de prouver une propriété géométrique invisible à l'œil nu, simplement en utilisant des chiffres et des rapports de longueurs. Nous allons voir ensemble comment ne rien oublier pour que ta preuve soit inattaquable."
+            },
+            {
+              "type": "paragraph",
+              "content": "La réciproque du théorème de Thalès est une propriété qui permet de démontrer que deux droites sont parallèles. Pour l'utiliser, il ne suffit pas que des chiffres soient égaux, il faut respecter des conditions strictes. D'abord, nous devons avoir deux droites sécantes en un point, appelons le point $A$. Sur l'une de ces droites, nous avons deux points $B$ et $M$, et sur l'autre, deux points $C$ et $N$. La condition fondamentale est que les points $A$, $B$, $M$ soient alignés dans cet ordre, et que les points $A$, $C$, $N$ soient aussi alignés dans cet ordre. On dit que les points sont alignés dans le même ordre. Si on place les points au hasard, la réciproque ne fonctionne pas. Ensuite, nous devons regarder les rapports des longueurs. Si le rapport $\\frac{AM}{AB}$ est exactement égal au rapport $\\frac{AN}{AC}$, alors nous avons une preuve. La réciproque nous dit que si ces deux conditions, l'alignement et l'égalité des rapports, sont vraies, alors la droite $(MN)$ est obligatoirement parallèle à la droite $(BC)$. C'est une conclusion logique et rigoureuse."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{AM}{AB} = \\frac{AN}{AC} \\implies (MN) \\parallel (BC)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réussir ta démonstration sans faire d'erreur, je te conseille de toujours suivre ces étapes dans l'ordre. Premièrement, identifie le sommet commun aux deux triangles, le point d'origine $A$. Dessine ou visualise les deux droites qui partent de ce point. Deuxièmement, rédige une phrase cruciale sur l'alignement. Tu dois écrire explicitement que les points $A$, $B$, $M$ et $A$, $C$, $N$ sont alignés dans le même ordre. Ne saute jamais cette étape, car sans elle, ton raisonnement est incomplet. Troisièmement, calcule séparément les deux rapports de longueurs. Calcule d'abord le rapport sur la première droite, par exemple $\\frac{AM}{AB}$, et écris le résultat sous forme de fraction simplifiée ou de nombre décimal. Ensuite, calcule le rapport sur la seconde droite, $\\frac{AN}{AC}$. Quatrièmement, compare les deux résultats. S'ils sont strictement identiques, tu peux conclure. Cinquièmement, rédige ta conclusion finale en citant le nom de la propriété : d'après la réciproque du théorème de Thalès, les droites sont parallèles. Si les rapports sont différents, tu conclus que les droites ne sont pas parallèles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un triangle $ABC$. Soit $M$ un point sur le segment $[AB]$ et $N$ un point sur le segment $[AC]$. On nous donne les mesures suivantes : $AB = 5\\text{ cm}$, $AM = 2\\text{ cm}$, $AC = 7.5\\text{ cm}$ et $AN = 3\\text{ cm}$. Nous voulons savoir si $(MN)$ est parallèle à $(BC)$. D'abord, nous constatons que les points $A$, $M$, $B$ sont alignés dans cet ordre et que les points $A$, $N$, $C$ sont alignés dans cet ordre. C'est la condition de base. Maintenant, calculons les rapports. Pour la première droite, nous avons $\\frac{AM}{AB} = \\frac{2}{5} = 0.4$. Pour la seconde droite, nous avons $\\frac{AN}{AC} = \\frac{3}{7.5}$. Si on divise $3$ par $7.5$, on trouve également $0.4$. Nous comparons les deux résultats : $0.4 = 0.4$. Les rapports sont donc égaux. On peut maintenant conclure avec assurance : puisque les points sont alignés dans le même ordre et que $\\frac{AM}{AB} = \\frac{AN}{AC}$, alors les droites $(MN)$ et $(BC)$ sont parallèles d'après la réciproque du théorème de Thalès. C'est une démonstration complète et propre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine maintenant une configuration différente, un peu comme un papillon. Le point $A$ est le centre. Les points $M$ et $B$ sont sur une droite, mais de part et d'autre de $A$. On a $AM = 4\\text{ cm}$, $AB = 6\\text{ cm}$. Sur l'autre droite, on a $AN = 2\\text{ cm}$ et $AC = 3\\text{ cm}$. On remarque que $\\frac{AM}{AB} = \\frac{4}{6} \\approx 0.66$ et $\\frac{AN}{AC} = \\frac{2}{3} \\approx 0.66$. Les rapports sont égaux ! Mais attention, regardons l'ordre des points. Si $M$ et $B$ sont de chaque côté de $A$, et que $N$ et $C$ sont aussi de chaque côté de $A$, on a bien une configuration de papillon. On doit vérifier si $M$ est associé à $N$ et $B$ associé à $C$. Si l'ordre est respecté, comme $A$ est entre $M$ et $B$, et $A$ est entre $N$ et $C$, alors la réciproque s'applique. On conclura que $(MN)$ est parallèle à $(BC)$. Par contre, si $M$ était entre $A$ et $B$, mais que $A$ était entre $N$ et $C$, l'ordre ne serait pas le même. On ne pourrait alors pas conclure au parallélisme même avec des rapports égaux. C'est l'importance capitale de l'ordre des points."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique, et celui qui coûte le plus de points, est d'oublier de mentionner l'alignement et l'ordre des points. Beaucoup d'élèves se lancent directement dans les calculs de fractions. Or, en géométrie, le calcul n'est rien sans la structure. Si tu ne précises pas que les points sont alignés, ta démonstration est considérée comme fausse, même si ton résultat numérique est juste. Un autre piège est de confondre le théorème et sa réciproque. Le théorème sert à calculer une longueur quand on SAIT que c'est parallèle. La réciproque sert à PROUVER que c'est parallèle quand on a les longueurs. Ne commence jamais ton texte par d'après le théorème de Thalès si ton but est de prouver le parallélisme. Enfin, attention aux erreurs de lecture du schéma. Assure-toi de bien identifier quelle longueur est le petit segment et laquelle est le grand segment. Le rapport doit toujours être construit de la même manière pour les deux droites, par exemple Petit sur Grand, ou Grand sur Petit, mais jamais un mélange des deux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle $ABC$, on place $M$ sur $[AB]$ tel que $AM=3\\text{ cm}$ et $AB=9\\text{ cm}$. On place $N$ sur $[AC]$ tel que $AN=2\\text{ cm}$ et $AC=6\\text{ cm}$. Les droites $(MN)$ et $(BC)$ sont-elles parallèles ? Justifie ta réponse.",
+              "answer": "Oui, elles sont parallèles.",
+              "hint": "Vérifie d'abord l'alignement, puis calcule les deux rapports $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$.",
+              "explanation": "L'ordre des points est respecté. Calcul des rapports : $\\frac{AM}{AB} = \\frac{3}{9} = \\frac{1}{3} \\approx 0.33$ et $\\frac{AN}{AC} = \\frac{2}{6} = \\frac{1}{3} \\approx 0.33$. Comme $\\frac{AM}{AB} = \\frac{AN}{AC}$ et que les points sont alignés, la réciproque de Thalès confirme que $(MN) \\parallel (BC)$."
+            }
+          ]
+        },
+        {
+          "title": "Rapports.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons quelles conditions sont nécessaires, plongeons dans le cœur du moteur : les rapports de longueurs. Tu peux voir un rapport comme une sorte de coefficient de zoom. Imagine que tu prennes une photo d'un triangle et que tu l'agrandisses. Toutes les longueurs augmentent, mais elles le font dans la même proportion. Si la base double, la hauteur doit aussi doubler pour que la forme reste la même. C'est exactement ce qui se passe avec la réciproque de Thalès. On ne regarde pas si les segments ont la même longueur, car c'est rarement le cas. On regarde si le petit segment représente la même fraction du grand segment sur les deux droites. C'est cette harmonie numérique, cette proportionnalité, qui nous indique que les droites sont parallèles. Si un côté a été réduit de moitié mais que l'autre a été réduit d'un tiers, l'équilibre est rompu, et les droites ne seront jamais parallèles. C'est une question de proportion, pas de valeur absolue."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un rapport en mathématiques, c'est simplement le résultat d'une division. Dans la réciproque de Thalès, on compare deux rapports. Le premier rapport est formé par les longueurs sur la première droite, et le second par les longueurs sur la deuxième droite. Pour que cela fonctionne, il faut être cohérent. Si tu choisis de diviser la petite longueur par la grande longueur pour la première droite, tu dois ABSOLUMENT faire la même chose pour la seconde. Par exemple, si tu as un point $A$ comme sommet, et les points $M, B$ d'un côté et $N, C$ de l'autre, tu calculeras $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$. On dit que ces rapports sont égaux si $\\frac{AM}{AB} = \\frac{AN}{AC}$. Pour prouver cette égalité, tu as deux options. Soit tu transformes les fractions en nombres décimaux, ce qui est très rapide avec une calculatrice. Soit tu simplifies les fractions au maximum pour voir si elles deviennent identiques. Par exemple, $\\frac{2}{4}$ et $\\frac{3}{6}$ sont toutes les deux égales à $\\frac{1}{2}$. C'est cette égalité parfaite qui valide le parallélisme."
+            },
+            {
+              "type": "column_operation",
+              "operator": "/",
+              "operands": [
+                "4",
+                "12"
+              ],
+              "result": "0.33",
+              "carries": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne jamais te tromper dans tes rapports, je te suggère une méthode visuelle. Premièrement, identifie toujours le sommet commun, le point $A$. Ce point doit être au numérateur ET au dénominateur de tes rapports, car c'est lui le point de départ. Deuxièmement, écris tes rapports sous forme de fractions avant de calculer. Écris $\\frac{AM}{AB}$ d'un côté et $\\frac{AN}{AC}$ de l'autre. Cela t'évite d'inverser les chiffres dans la précipitation. Troisièmement, effectue les calculs. Si tu utilises des nombres décimaux, garde au moins trois ou quatre chiffres après la virgule pour être sûr de ne pas masquer une petite différence due aux arrondis. Quatrièmement, compare les deux valeurs. S'ils sont identiques jusqu'à la dernière décimale, alors les rapports sont égaux. Cinquièmement, note clairement l'égalité : $\\frac{AM}{AB} = \\frac{AN}{AC}$. C'est cette ligne précise qui justifie ton passage à la conclusion finale. N'oublie pas que si tu trouves $\\frac{AM}{AB} = 0.5$ et $\\frac{AN}{AC} = 0.51$, ce n'est pas égal, et donc pas parallèle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple où tout s'aligne parfaitement. On a un triangle $ABC$. Un point $M$ est sur $[AB]$ et $N$ sur $[AC]$. On a $AM = 4\\text{ cm}$, $AB = 12\\text{ cm}$, $AN = 5\\text{ cm}$ et $AC = 15\\text{ cm}$. Calculons le premier rapport sur la droite $(AB)$ : $\\frac{AM}{AB} = \\frac{4}{12}$. Si on simplifie par $4$, on obtient $\\frac{1}{3}$. Maintenant, calculons le second rapport sur la droite $(AC)$ : $\\frac{AN}{AC} = \\frac{5}{15}$. Si on simplifie par $5$, on obtient également $\\frac{1}{3}$. Nous comparons les deux résultats : $\\frac{1}{3} = \\frac{1}{3}$. Les rapports sont donc parfaitement égaux. Puisque les points sont alignés dans le même ordre et que les rapports sont égaux, nous pouvons conclure que la droite $(MN)$ est parallèle à la droite $(BC)$. Ici, l'utilisation des fractions simplifiées a permis de voir l'égalité instantanément sans même utiliser de calculatrice. C'est une méthode élégante et très précise."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant un cas où le parallélisme n'existe pas. On a les mêmes points $A, B, C, M, N$. On nous donne $AM = 3\\text{ cm}$, $AB = 10\\text{ cm}$, $AN = 4\\text{ cm}$ et $AC = 12\\text{ cm}$. On commence par calculer le premier rapport : $\\frac{AM}{AB} = \\frac{3}{10} = 0.3$. Ensuite, on calcule le second rapport : $\\frac{AN}{AC} = \\frac{4}{12}$. En simplifiant par $4$, on trouve $\\frac{1}{3}$, ce qui donne environ $0.333...$ en nombre décimal. On compare maintenant les deux résultats : $0.3$ n'est pas égal à $0.333$. Les rapports ne sont pas égaux. On peut donc conclure que la droite $(MN)$ n'est pas parallèle à la droite $(BC)$. C'est une conclusion tout aussi importante que la première. On a prouvé l'absence de parallélisme. Note bien que même si les chiffres sont proches, la moindre différence suffit à dire que les droites ne sont pas parallèles. La géométrie exige une précision absolue."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus redoutable est d'utiliser le segment intérieur au lieu du segment total. Par exemple, utiliser $MB$ au lieu de $AB$. Le rapport doit toujours être basé sur la distance depuis le sommet $A$. Si tu calcules $\\frac{AM}{MB}$, tu calcules un rapport de segments adjacents, ce qui est utile pour d'autres calculs, mais pour la réciproque de Thalès classique, on utilise $\\frac{AM}{AB}$. Si tu mélanges les deux, tes résultats seront faux. Un autre problème courant sont les arrondis prématurés. Si tu arrondis $\\frac{1}{3}$ à $0.3$ et $\\frac{2}{7}$ à $0.3$, tu pourrais croire que c'est égal alors que ça ne l'est pas. Utilise toujours les fractions simplifiées quand c'est possible, ou garde beaucoup de chiffres après la virgule. Enfin, fais attention à ne pas inverser le numérateur et le dénominateur entre les deux rapports. Si tu fais $\\frac{AM}{AB}$ pour l'un et $\\frac{AC}{AN}$ pour l'autre, tu compares une réduction et un agrandissement, ce qui n'a aucun sens mathématique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit un triangle $ABC$. $M$ est sur $[AB]$ et $N$ sur $[AC]$. On sait que $AM = 7\\text{ cm}$, $AB = 21\\text{ cm}$, $AN = 5\\text{ cm}$, $AC = 15\\text{ cm}$. Calcule les deux rapports et dis si $(MN)$ est parallèle à $(BC)$.",
+              "answer": "Oui, elles sont parallèles.",
+              "hint": "Calcule $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$ puis compare les résultats.",
+              "explanation": "Rapport 1 : $\\frac{7}{21} = \\frac{1}{3} \\approx 0.33$. Rapport 2 : $\\frac{5}{15} = \\frac{1}{3} \\approx 0.33$. Les rapports sont égaux et les points sont alignés, donc $(MN) \\parallel (BC)$ d'après la réciproque de Thalès."
+            }
+          ]
+        },
+        {
+          "title": "Conclure parallélisme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous y sommes ! C'est le moment final, celui où toutes tes mesures, tes calculs et tes observations se rejoignent pour donner une réponse claire. Tu peux comparer cela à un juge qui rend son verdict. Le juge ne dit pas simplement Oui ou Non, il explique pourquoi il a pris cette décision en s'appuyant sur les preuves. En géométrie, c'est pareil. Tes calculs de rapports étaient tes preuves, l'alignement des points était ton cadre légal, et maintenant, tu vas rédiger ta conclusion. C'est l'étape la plus gratifiante car c'est là que tu montres que tu as maîtrisé tout le raisonnement. Une conclusion bien écrite est le signe d'un élève rigoureux et organisé. Que la réponse soit positive ou négative, l'important est la structure de ton raisonnement. Une conclusion incomplète peut transformer un exercice presque parfait en une erreur regrettable. Nous allons apprendre à rédiger ce verdict final avec une précision chirurgicale pour que ton correcteur n'ait aucune question à se poser."
+            },
+            {
+              "type": "paragraph",
+              "content": "La conclusion d'une réciproque de Thalès se divise en deux scénarios possibles. Le premier scénario est celui de l'égalité. Si tu as prouvé que les points sont alignés dans le même ordre ET que les rapports $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$ sont strictement égaux, tu conclues par l'affirmative. Tu dois écrire que les droites sont parallèles. Le second scénario est celui de l'inégalité. Si, après tes calculs, tu constates que $\\frac{AM}{AB}$ n'est pas égal à $\\frac{AN}{AC}$, alors tu conclus par la négative. Tu écris que les droites ne sont pas parallèles. Un point très important : dans les deux cas, tu dois nommer la propriété utilisée. Pour le cas positif, on cite la réciproque du théorème de Thalès. Pour le cas négatif, on parle souvent de la contraposée du théorème de Thalès, même si au niveau 3e, dire que les rapports ne sont pas égaux donc les droites ne sont pas parallèles suffit largement. La rigueur consiste à lier logiquement tes preuves à ton résultat final par des mots comme Donc, Par conséquent, ou Ainsi."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Alignement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifier que les points sont dans le bon ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Rapports",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Comparaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifier si $\\frac{AM}{AB} = \\frac{AN}{AC}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Verdict",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Conclure au parallélisme ou non."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rédiger une conclusion parfaite, je te suggère de suivre ce canevas de rédaction. D'abord, commence par la partie structurelle : Dans le triangle $ABC$, les points $A, M, B$ et $A, N, C$ sont alignés dans le même ordre. C'est ton socle. Ensuite, présente tes calculs clairement. Écris $\\frac{AM}{AB} = \\dots$ et $\\frac{AN}{AC} = \\dots$. Ne mets pas les résultats dans un coin de ta feuille, ils font partie de la démonstration. Troisièmement, effectue la comparaison. Écris explicitement $\\frac{AM}{AB} = \\frac{AN}{AC}$ ou $\\frac{AM}{AB} \\neq \\frac{AN}{AC}$. Cette égalité ou inégalité est le pivot de ton exercice. Enfin, termine par la phrase de conclusion finale. Si c'est égal, utilise la formule : D'après la réciproque du théorème de Thalès, les droites $(MN)$ et $(BC)$ sont parallèles. Si ce n'est pas égal, utilise : Comme les rapports ne sont pas égaux, les droites $(MN)$ et $(BC)$ ne sont pas parallèles. En suivant ce plan, tu ne risques plus d'oublier un élément et ta copie sera exemplaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici comment rédiger un exercice complet. Énoncé : $AM=2\\text{ cm}, AB=6\\text{ cm}, AN=3\\text{ cm}, AC=9\\text{ cm}$. Les droites $(MN)$ et $(BC)$ sont-elles parallèles ? Rédaction : Dans le triangle $ABC$, les points $A, M, B$ et $A, N, C$ sont alignés dans le même ordre. Calculons les rapports des longueurs : d'une part, $\\frac{AM}{AB} = \\frac{2}{6} = \\frac{1}{3}$. D'autre part, $\\frac{AN}{AC} = \\frac{3}{9} = \\frac{1}{3}$. On constate que $\\frac{AM}{AB} = \\frac{AN}{AC}$ car les deux rapports sont égaux à $\\frac{1}{3}$. Par conséquent, d'après la réciproque du théorème de Thalès, les droites $(MN)$ et $(BC)$ sont parallèles. Admire la fluidité de ce texte : on part de la situation, on apporte les preuves, on compare, et on conclut. Tout est lié. C'est exactement ce que attend ton professeur. Il n'y a aucun saut logique, chaque phrase entraîne la suivante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant la rédaction pour un cas où les droites ne sont pas parallèles. Énoncé : $AM=2\\text{ cm}, AB=5\\text{ cm}, AN=3\\text{ cm}, AC=8\\text{ cm}$. Rédaction : Nous travaillons dans le triangle $ABC$. Les points $A, M, B$ et $A, N, C$ sont alignés dans le même ordre. Calculons les rapports : $\\frac{AM}{AB} = \\frac{2}{5} = 0.4$. Pour la seconde droite, on a $\\frac{AN}{AC} = \\frac{3}{8} = 0.375$. On remarque que $0.4$ n'est pas égal à $0.375$, donc $\\frac{AM}{AB} \\neq \\frac{AN}{AC}$. Ainsi, les rapports ne sont pas égaux. On en conclut que les droites $(MN)$ et $(BC)$ ne sont pas parallèles. Note que même dans ce cas négatif, on a gardé la même structure : alignement, calculs, comparaison, conclusion. On ne s'arrête pas brusquement après le calcul en disant juste Non. On explique pourquoi c'est non en s'appuyant sur l'inégalité des rapports. C'est cela être rigoureux en mathématiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est le saut logique, ou conclusion magique. C'est quand un élève écrit les longueurs, puis écrit directement Les droites sont parallèles sans montrer les rapports. C'est comme si un témoin disait au juge Le coupable est reconnu sans présenter de preuves. C'est inacceptable. Tu dois toujours montrer le chemin : Longueurs $\\to$ Rapports $\\to$ Comparaison $\\to$ Conclusion. Un autre piège est l'utilisation de termes flous. Évite de dire Les rapports se ressemblent ou C'est presque pareil. En géométrie, c'est soit égal, soit différent. Un millième de différence suffit pour que ce ne soit pas parallèle. Enfin, fais attention à bien nommer les droites avec des parenthèses, comme $(MN)$, et non juste $MN$, car $MN$ désigne la longueur du segment, alors que $(MN)$ désigne la droite infinie. Cette petite distinction montre que tu maîtrises le vocabulaire technique de la 3e."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédige entièrement la démonstration suivante : $AM=4\\text{ cm}, AB=10\\text{ cm}, AN=6\\text{ cm}, AC=15\\text{ cm}$. Les points sont alignés dans l'ordre. $(MN)$ est-elle parallèle à $(BC)$ ?",
+              "answer": "Oui, elles sont parallèles.",
+              "hint": "Suis le plan : Alignement $\\to$ Rapports $\\to$ Comparaison $\\to$ Conclusion.",
+              "explanation": "Alignement : OK. Rapports : $\\frac{4}{10} = 0.4$ et $\\frac{6}{15} = 0.4$. Comparaison : $0.4 = 0.4$. Conclusion : D'après la réciproque de Thalès, $(MN) \\parallel (BC)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 343,
+  "_course_code": "6eme-t03-c02-priorites-et-parentheses",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Application : Priorités et parenthèses",
+  "title": "Quiz : Priorités et parenthèses - Application",
+  "questions": [
+    {
+      "text": "Calcule $ (5 + 3) \\times 2 $.",
+      "options": [
+        "$16$",
+        "$11$",
+        "$13$",
+        "$10$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "On commence par la parenthèse : $5+3=8$. Ensuite on multiplie par $2$ : $8 \\times 2 = 16$. Les autres réponses correspondent à des erreurs comme multiplier avant d'additionner ou oublier la parenthèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ (12 - 4) \\div 2 + 3 $.",
+      "options": [
+        "$7$",
+        "$13$",
+        "$11$",
+        "$5$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Parenthèse d'abord : $12-4=8$. Division : $8 \\div 2 = 4$. Addition : $4+3=7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ 2 \\times (3 + (4 \\times 2)) $.",
+      "options": [
+        "$22$",
+        "$14$",
+        "$20$",
+        "$18$"
+      ],
+      "correctAnswer": "$22$",
+      "explanation": "Parenthèse intérieure : $4 \\times 2 = 8$. Parenthèse extérieure : $3+8=11$. Multiplication : $2 \\times 11 = 22$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Marie a $3$ boîtes de crayons. Dans chaque boîte il y a $5$ crayons. Elle donne $2$ crayons à son frère. Combien de crayons lui reste-t-il ?",
+      "options": [
+        "$13$",
+        "$15$",
+        "$11$",
+        "$10$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "On calcule le total de crayons : $3 \\times 5 = 15$. On soustrait les $2$ donnés : $15 - 2 = 13$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ 8 + 2 \\times (6 - 4) \\div 2 $.",
+      "options": [
+        "$10$",
+        "$12$",
+        "$8$",
+        "$14$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Parenthèse : $6-4=2$. Multiplication : $2 \\times 2 = 4$. Division : $4 \\div 2 = 2$. Addition : $8+2=10$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

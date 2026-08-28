@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 469,
+  "_course_code": "3eme-t03-c03-fonctions-lineaires",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Graphique",
+  "title": "Quiz : Graphiques des fonctions linéaires (3e)",
+  "questions": [
+    {
+      "text": "Le graphique d'une fonction linéaire $f$ passe par les points $A(0,2)$ et $B(3,5)$. Quelle est l'expression de $f(x)$ ?",
+      "options": [
+        "$f(x)=x+2$",
+        "$f(x)=2x+2$",
+        "$f(x)=x+3$",
+        "$f(x)=3x+2$"
+      ],
+      "correctAnswer": "$f(x)=x+2$",
+      "explanation": "Le coefficient directeur est $(5-2)/(3-0)=1$. L'ordonnée à l'origine est $2$ car le point $A$ a pour abscisse $0$. Donc $f(x)=1x+2=x+2$. Les autres options correspondent à une pente erronée (2 ou 3) ou à une mauvaise ordonnée à l'origine (3).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction linéaire $g(x)= -2x + 4$. Quel est le coefficient directeur (la pente) de son graphique ?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$4$",
+        "$-4$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "Dans l'expression $g(x)=ax+b$, le coefficient directeur est $a$. Ici $a=-2$. Les distracteurs reprennent le terme constant $4$ ou changent le signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fonction linéaire $h$ a pour coefficient directeur $3$ et passe par le point $C(1,5)$. Quelle est son expression ?",
+      "options": [
+        "$h(x)=3x+2$",
+        "$h(x)=3x+5$",
+        "$h(x)=2x+3$",
+        "$h(x)=3x-2$"
+      ],
+      "correctAnswer": "$h(x)=3x+2$",
+      "explanation": "On cherche $b$ tel que $5=3\\cdot1+b$, donc $b=2$. L'expression est $h(x)=3x+2$. Les autres options utilisent une mauvaise ordonnée à l'origine ou un coefficient directeur différent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique d'une fonction linéaire $k$ coupe l'axe des ordonnées au point $(0,-3)$ et l'axe des abscisses au point $(4,0)$. Quelle est l'équation de $k$ ?",
+      "options": [
+        "$k(x)=\\frac{3}{4}x-3$",
+        "$k(x)=\\frac{4}{3}x-3$",
+        "$k(x)=\\frac{3}{4}x+3$",
+        "$k(x)=-\\frac{3}{4}x-3$"
+      ],
+      "correctAnswer": "$k(x)=\\frac{3}{4}x-3$",
+      "explanation": "La pente est $(0-(-3))/(4-0)=3/4$. L'ordonnée à l'origine est $-3$. Donc $k(x)=\\frac{3}{4}x-3$. Les distracteurs inversent la pente, changent le signe de l'ordonnée à l'origine ou les deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la fonction linéaire $p(x)=5x-10$, déterminer l'abscisse du point d'intersection avec l'axe des abscisses.",
+      "options": [
+        "$2$",
+        "$-2$",
+        "$10$",
+        "$5$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "L'intersection avec l'axe des abscisses correspond à $p(x)=0$. On résout $5x-10=0$, ce qui donne $x=2$. Les autres valeurs sont obtenues en oubliant de diviser par $5$, en changeant le signe ou en confondant avec le coefficient directeur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

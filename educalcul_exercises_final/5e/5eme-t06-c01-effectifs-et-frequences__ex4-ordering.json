@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 405,
+  "_course_code": "5eme-t06-c01-effectifs-et-frequences",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Effectifs et fréquences",
+  "title": "Mise en ordre : Calcul et utilisation des fréquences",
+  "blocks": [
+    {
+      "title": "Calculer une fréquence",
+      "content": "Range les étapes dans l'ordre chronologique pour calculer la fréquence de la valeur 5 dans la série statistique suivante : $3 ; 5 ; 7 ; 5 ; 2 ; 5 ; 8$.",
+      "items": [
+        "Compter l'effectif total de la série (ici 7 valeurs).",
+        "Compter l'effectif de la valeur 5 (ici 3 fois).",
+        "Diviser l'effectif de la valeur 5 par l'effectif total : $3 / 7$.",
+        "Exprimer le résultat sous forme de fraction, de nombre décimal ou de pourcentage."
+      ],
+      "explanation": "Pour calculer une fréquence, on suit toujours la même procédure : 1. On détermine l'effectif total (somme de tous les effectifs). 2. On détermine l'effectif partiel correspondant à la valeur étudiée. 3. On applique la formule : fréquence = effectif partiel / effectif total. 4. On présente le résultat sous la forme demandée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un tableau de fréquences",
+      "content": "Un tableau d'effectifs présente les notes d'un contrôle. Range les actions dans l'ordre pour compléter la colonne des fréquences et vérifier le tableau.",
+      "items": [
+        "Calculer l'effectif total en faisant la somme des effectifs de chaque note.",
+        "Pour chaque note, diviser son effectif par l'effectif total pour obtenir sa fréquence.",
+        "Remplir la colonne des fréquences avec les résultats obtenus.",
+        "Vérifier que la somme de toutes les fréquences est bien égale à 1 (ou 100 %)."
+      ],
+      "explanation": "La construction d'un tableau de fréquences suit une logique précise : d'abord l'effectif total (base du calcul), puis le calcul de chaque fréquence (effectif partiel / effectif total), puis le remplissage du tableau, et enfin la vérification invariante : la somme des fréquences vaut toujours 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer deux séries statistiques",
+      "content": "Deux classes de cinquième ont passé le même test. Range les étapes pour déterminer dans quelle classe le taux de réussite est le plus élevé (note $\\ge 10$).",
+      "items": [
+        "Relever l'effectif total de chaque classe.",
+        "Relever l'effectif des élèves ayant obtenu une note $\\ge 10$ dans chaque classe.",
+        "Calculer la fréquence de réussite pour chaque classe (effectif réussite / effectif total).",
+        "Comparer les deux fréquences obtenues pour conclure."
+      ],
+      "explanation": "Pour comparer deux populations de tailles différentes, il faut utiliser les fréquences (taux) et non les effectifs bruts. La démarche est : 1. Connaître les totaux. 2. Identifier les effectifs favorables. 3. Calculer les taux (fréquences). 4. Comparer ces taux pour tirer une conclusion.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

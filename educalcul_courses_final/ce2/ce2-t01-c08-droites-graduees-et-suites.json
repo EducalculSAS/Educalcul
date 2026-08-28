@@ -1,0 +1,606 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.945099+00:00",
+  "id": 149,
+  "code": "ce2-t01-c08",
+  "title": "Droites graduées et suites",
+  "description": "Cours structuré Educalcul : Droites graduées et suites.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Droites graduées et suites",
+    "objectif_global": "Droites graduées et suites",
+    "mini_lecons_imposees": [
+      "Lire une échelle.",
+      "Placer / estimer un nombre.",
+      "Poursuivre une suite avec pas donné."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lire une échelle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une règle très longue posée sur la table. Sur cette règle, il y a des traits rapprochés et des chiffres écrits dessous. C'est une $droite\\ graduée$. Elle commence souvent à $0$, qu'on appelle l'$origine$. Chaque petit trait représente un nombre. Pour lire la droite, il faut d'abord regarder l'espace entre deux gros traits numérotés : c'est le $pas$ de l'échelle."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de 0 à 10 avec un pas de 1",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, le pas est $1$. Il y a exactement un trait pour chaque nombre entier. Si je veux savoir quelle valeur correspond au trait au-dessus du $5$, je compte les sauts depuis $0$ : un, deux, trois, quatre, cinq. C'est comme marcher sur une ligne de carreaux : chaque pas te fait avancer d'un nombre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les échelles à pas différent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les gros traits ne sont pas espacés de $1$. Ils peuvent sauter de $2$ en $2$, de $5$ en $5$ ou même de $10$ en $10$. Regarde une règle de classe : les centimètres sont les gros traits, les millimètres sont les tout petits traits entre deux centimètres. C'est une échelle à pas de $1$ $cm$ pour les gros traits, mais à pas de $1$ $mm$ pour les petits."
+            },
+            {
+              "type": "ruler_measurer",
+              "caption": "Une règle graduée en centimètres et millimètres",
+              "segmentLength": 8,
+              "unit": "cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une échelle, tu te poses trois questions : Quel est le nombre de départ ? Quel est le pas entre deux gros traits ? Combien de petits traits y a-t-il entre deux gros traits ? Si entre $0$ et $10$ il y a $5$ gros traits, le pas est de $2$. Chaque petit trait vaut alors $1$ si on les compte tous."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer un nombre sur l'échelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de trouver où se cache le nombre $27$ sur une droite qui va de $0$ à $100$ par pas de $10$. Les gros traits sont $0, 10, 20, 30, 40...$. Le $27$ est entre $20$ et $30$. Comme il y a $10$ petites graduations entre $20$ et $30$, chaque petit trait vaut $1$. Je compte $7$ petits traits après $20$ : $21, 22, 23, 24, 25, 26, 27$. J'ai trouvé !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Zoom entre 20 et 30 pour trouver 27",
+              "min": 20,
+              "max": 30,
+              "points": [
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 27,
+                  "label": "27"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'astuce, c'est de toujours regarder les deux gros traits qui encadrent ton nombre. Ensuite, tu comptes les petits pas jusqu'à ton nombre. C'est comme chercher une page dans un livre : tu regardes le chapitre (le gros trait) puis tu tournes les pages une par une (les petits traits)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux échelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux droites peuvent avoir la même longueur mais pas le même pas. L'une va de $0$ à $100$ par $10$, l'autre de $0$ à $100$ par $20$. Sur la première, il y a plus de traits, ils sont plus serrés. Sur la seconde, les traits sont plus espacés. Pour lire la bonne valeur, il ne faut jamais deviner : il faut toujours vérifier le pas écrit sur les gros traits."
+            },
+            {
+              "type": "number_line",
+              "caption": "Deux échelles différentes pour le même segment 0-100",
+              "min": 0,
+              "max": 100,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 100,
+                  "label": "100"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $20$ par pas de $2$, quels sont les nombres écrits sur les gros traits ?",
+              "answer": "$0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20$",
+              "hint": "Commence à $0$ et ajoute $2$ à chaque fois jusqu'à $20$.",
+              "explanation": "Le pas est $2$. Les gros traits marquent les multiples de $2$ depuis $0$ jusqu'à $20$."
+            },
+            {
+              "question": "Une règle affiche des gros traits tous les $5$ $cm$. Combien de $cm$ y a-t-il entre le trait $10$ $cm$ et le trait $25$ $cm$ ?",
+              "answer": "$15$ $cm$",
+              "hint": "Compte les sauts de $5$ $cm$ entre $10$ et $25$ : $10 \\rightarrow 15 \\rightarrow 20 \\rightarrow 25$.",
+              "explanation": "Il y a $3$ intervalles de $5$ $cm$. $3 \\times 5 = 15$ $cm$."
+            },
+            {
+              "question": "Sur une droite de $0$ à $100$ par pas de $10$, entre quels deux gros traits se trouve le nombre $63$ ?",
+              "answer": "Entre $60$ et $70$",
+              "hint": "Cherche la dizaine juste en dessous et celle juste au-dessus de $63$.",
+              "explanation": "Les dizaines sont $60$ et $70$. $63$ est plus grand que $60$ et plus petit que $70$."
+            },
+            {
+              "question": "Deux droites vont de $0$ à $50$. La première a un pas de $5$, la seconde un pas de $10$. Laquelle a le plus de gros traits ?",
+              "answer": "La première (pas de $5$)",
+              "hint": "Plus le pas est petit, plus il y a de traits pour aller de $0$ à $50$.",
+              "explanation": "Avec un pas de $5$, il y a $11$ gros traits ($0,5,...,50$). Avec un pas de $10$, il y en a $6$ ($0,10,...,50$)."
+            }
+          ]
+        },
+        {
+          "title": "Placer / estimer un nombre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poser un nombre exactement sur un trait"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous apprenons à placer un nombre nous-mêmes sur la droite. C'est comme planter un drapeau à l'endroit exact. Si la droite est graduée par $10$ ($0, 10, 20, 30...$) et que je dois placer $50$, c'est facile : $50$ est déjà un gros trait. Je pose mon point juste au-dessus du $50$. Pas besoin de compter les petits traits, le nombre tombe pile sur une graduation principale."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placer 50 sur une échelle par 10",
+              "min": 0,
+              "max": 60,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 60,
+                  "label": "60"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec $130$ sur une droite qui va de $100$ à $200$ par pas de $10$. Les gros traits sont $100, 110, 120, 130, 140...$. Tu vois $130$ écrit ? Pose ton point dessus. C'est comme retrouver ta place numérotée dans la cour de récréation : tu vas direct au bon numéro."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer entre deux graduations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais souvent, le nombre à placer n'est pas un gros trait. Imagine qu'il faut placer $53$ sur la même droite (pas de $10$). Le $53$ n'est pas écrit. Il se cache entre $50$ et $60$. Il y a $10$ petits espaces entre $50$ et $60$. Chaque petit espace vaut $1$. Pour aller à $53$, je pars de $50$ et je compte $3$ petits traits vers la droite. Je marque mon point là, un peu après le troisième petit trait."
+            },
+            {
+              "type": "ruler_measurer",
+              "caption": "Utiliser une règle pour placer 53 entre 50 et 60",
+              "segmentLength": 10,
+              "unit": "cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il n'y a pas de petits traits visibles, juste les gros. Alors, il faut estimer à l'œil. Pour $53$, je sais qu'il est plus près de $50$ que de $60$. Je divise l'espace en $10$ parts dans ma tête et je vise la troisième. C'est comme couper un gâteau en $10$ parts égales et en prendre $3$ : tu coupes approximativement au bon endroit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le repère du milieu pour mieux estimer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a un repère magique pour estimer vite : le $milieu$ de l'intervalle. Entre $50$ et $60$, le milieu est $55$. Si je dois placer $57$, je sais qu'il est après le milieu, mais pas tout à fait à $60$. Je vise un peu après le milieu. Si je dois placer $52$, je sais qu'il est avant le milieu, tout près de $50$. Le milieu coupe l'incertitude en deux !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Le milieu 55 aide à situer 52 et 57",
+              "min": 50,
+              "max": 60,
+              "points": [
+                {
+                  "value": 50,
+                  "label": "50"
+                },
+                {
+                  "value": 52,
+                  "label": "52"
+                },
+                {
+                  "value": 55,
+                  "label": "55"
+                },
+                {
+                  "value": 57,
+                  "label": "57"
+                },
+                {
+                  "value": 60,
+                  "label": "60"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet astuce marche pour n'importe quel pas. Entre $100$ et $200$ (pas de $100$), le milieu est $150$. Entre $0$ et $1000$ (pas de $1000$), le milieu est $500$. Repérer le milieu te donne un point de comparaison fiable pour poser ton nombre au bon endroit, même sans petits traits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "S'entraîner sur plusieurs échelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, jouons à cache-cache avec les nombres. Sur une droite de $0$ à $1000$ par $100$, où se cachent $350$, $720$ et $990$ ? Pour $350$ : c'est pile le milieu entre $300$ et $400$. Pour $720$ : c'est entre $700$ et $800$, deux petits pas après $700$. Pour $990$ : c'est tout près de $1000$, juste un petit pas avant. À chaque fois, je cherche les gros traits voisins, je trouve le milieu si ça m'aide, et je pose mon point."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placer 350, 720 et 990 sur une grande échelle",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 350,
+                  "label": "350"
+                },
+                {
+                  "value": 720,
+                  "label": "720"
+                },
+                {
+                  "value": 990,
+                  "label": "990"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, placer un nombre, c'est toujours la même danse : 1) Regarder le pas. 2) Trouver les deux gros traits qui encadrent. 3) Décider si c'est pile sur un trait, près du milieu, ou près d'un bord. 4) Poser ton point avec confiance. Plus tu t'entraînes, plus ton œil devient précis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $100$ par pas de $10$, place le nombre $80$.",
+              "answer": "Sur le gros trait $80$",
+              "hint": "Cherche le gros trait où est écrit $80$.",
+              "explanation": "$80$ est un multiple de $10$, il correspond exactement à un gros trait."
+            },
+            {
+              "question": "Sur la même droite (pas de $10$), où se trouve environ le nombre $83$ ?",
+              "answer": "Entre $80$ et $90$, trois petits traits après $80$",
+              "hint": "Compte $3$ petits pas depuis $80$ vers $90$.",
+              "explanation": "Chaque petit trait vaut $1$. $83 = 80 + 3$."
+            },
+            {
+              "question": "Entre $200$ et $300$, quel est le nombre du milieu ?",
+              "answer": "$250$",
+              "hint": "Le milieu est la moyenne des deux bornes : $(200+300)/2$.",
+              "explanation": "$250$ est exactement à égale distance de $200$ et $300$."
+            },
+            {
+              "question": "Sur une droite de $0$ à $1000$ par $100$, place $450$, $680$ et $910$.",
+              "answer": "$450$ au milieu de $400$ et $500$ ; $680$ près de $700$ (8 petits pas après $600$) ; $910$ juste après $900$",
+              "hint": "Utilise les centaines comme repères et le milieu (50) pour $450$.",
+              "explanation": "$450$ est le milieu de $400$ et $500$. $680$ est entre $600$ et $700$, plus près de $700$. $910$ est entre $900$ et $1000$, tout près de $900$."
+            }
+          ]
+        },
+        {
+          "title": "Poursuivre une suite avec pas donné.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une suite de nombres ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une $suite$, c'est une liste de nombres qui se suivent selon une règle précise. Comme les marches d'un escalier : chaque marche est un peu plus haut que la précédente. Par exemple : $2, 4, 6, 8, 10...$ Ici, à chaque fois, j'ajoute $2$. C'est le $pas$ de la suite. Le pas, c'est la différence entre un nombre et le suivant. On peut le trouver en soustrayant : $4-2=2$, $6-4=2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "La suite 2, 4, 6, 8, 10 visualisée par des sauts de 2",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la suite $100, 90, 80, 70...$ Ici, les nombres descendent. Le pas est $-10$ (ou on dit : on retire $10$ à chaque fois). C'est comme descendre un escalier. Pour trouver le pas, tu regardes simplement : de combien le nombre change-t-il pour aller au suivant ? C'est ton pas, positif si ça monte, négatif si ça descend."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poursuivre une suite qui monte"
+            },
+            {
+              "type": "paragraph",
+              "content": "On te donne le début d'une suite : $15, 20, 25, 30...$ et on te demande de donner les trois nombres qui suivent. D'abord, tu cherches le pas. $20-15=5$, $25-20=5$. Le pas est $+5$. Ensuite, tu continues le rythme : après $30$, j'ajoute $5 \\rightarrow 35$. Après $35$, j'ajoute $5 \\rightarrow 40$. Après $40$, j'ajoute $5 \\rightarrow 45$. La suite continue : $35, 40, 45$. C'est comme ajouter un wagon de $5$ à chaque fois à ton train de nombres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustray deux nombres consécutifs : $20 - 15 = 5$. Le pas est $+5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $5$ au dernier nombre connu ($30$) : $30+5=35$. Recommence : $35+5=40$, $40+5=45$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis la suite complète : $15, 20, 25, 30, 35, 40, 45$. L'écart est toujours $5$. C'est bon !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en trois temps (trouver le pas, l'appliquer, vérifier) marche pour toutes les suites. Prends le temps de bien faire l'étape 1 : si tu te trompes de pas, toute la suite sera fausse. C'est comme prendre le mauvais sentier en randonnée : plus tu avances, plus tu t'éloignes du but."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poursuivre une suite qui descend"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant une suite qui descend : $85, 80, 75, 70...$ Le pas est négatif. $80-85 = -5$ (ou on retire $5$). Pour continuer, je retire $5$ à chaque fois. $70 - 5 = 65$. $65 - 5 = 60$. $60 - 5 = 55$. Les trois suivants sont $65, 60, 55$. Sur la droite graduée, c'est comme faire des sauts vers la gauche, vers les nombres plus petits."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sauts de -5 pour la suite descendante",
+              "min": 50,
+              "max": 90,
+              "points": [
+                {
+                  "value": 85,
+                  "label": "85"
+                },
+                {
+                  "value": 80,
+                  "label": "80"
+                },
+                {
+                  "value": 75,
+                  "label": "75"
+                },
+                {
+                  "value": 70,
+                  "label": "70"
+                },
+                {
+                  "value": 65,
+                  "label": "65"
+                },
+                {
+                  "value": 60,
+                  "label": "60"
+                },
+                {
+                  "value": 55,
+                  "label": "55"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention au piège des centaines ! Regarde : $210, 200, 190, 180...$ Le pas est $-10$. Après $180$, on retire $10 \\rightarrow 170$. Pas $170$ ? Si, car on change de centaine. Continue : $160, 150$. C'est là qu'il faut être vigilant : le passage à la centaine inférieure se fait naturellement si on suit le pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compléter une suite à trous"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la suite a des trous au milieu : $12, \\_, 22, \\_, 32$. Pas de panique ! Tu as assez d'indices pour trouver le pas. Regarde $22$ et $32$ : $32-22=10$. Mais il y a un trou entre eux, donc le pas n'est pas $10$ directement. En fait, il y a $2$ sauts entre $22$ et $32$ (un pour le trou, un pour $32$). Donc $2 \\times pas = 10$, le pas est $5$. Vérifie : $12+5=17$ (premier trou), $17+5=22$, $22+5=27$ (deuxième trou), $27+5=32$. C'est gagné !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Compléter les trous avec un pas de 5",
+              "min": 10,
+              "max": 35,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 17,
+                  "label": "17"
+                },
+                {
+                  "value": 22,
+                  "label": "22"
+                },
+                {
+                  "value": 27,
+                  "label": "27"
+                },
+                {
+                  "value": 32,
+                  "label": "32"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'astuce pour les trous : compte le nombre de sauts entre deux nombres connus. Divise l'écart par le nombre de sauts, tu obtiens le pas. Ensuite, tu remplis les cases manquantes une par une. C'est comme reconstruire un puzzle : tu as les pièces de coin, tu retrouves le motif, et tu poses les pièces du milieu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire le pas d'une échelle sur une droite graduée.",
+                "Je sais placer un nombre exactement sur une graduation ou l'estimer entre deux graduations.",
+                "Je sais utiliser le milieu d'un intervalle pour mieux estimer.",
+                "Je sais trouver le pas d'une suite (croissante ou décroissante).",
+                "Je sais poursuivre une suite en ajoutant ou retirant le pas.",
+                "Je sais compléter une suite à trous en calculant le pas."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve le pas de la suite : $7, 12, 17, 22...$",
+              "answer": "$+5$",
+              "hint": "Calcule $12-7$ ou $17-12$.",
+              "explanation": "L'écart entre deux termes consécutifs est toujours $5$. La suite monte de $5$ en $5$."
+            },
+            {
+              "question": "Donne les trois termes qui suivent : $50, 45, 40, 35, \\_, \\_, \\_$",
+              "answer": "$30, 25, 20$",
+              "hint": "La suite descend. De combien ? Applique ce pas trois fois.",
+              "explanation": "Le pas est $-5$ ($45-50=-5$). $35-5=30$, $30-5=25$, $25-5=20$."
+            },
+            {
+              "question": "Complète la suite : $100, \\_, 120, \\_, 140$",
+              "answer": "$110, 130$",
+              "hint": "Combien de sauts entre $100$ et $120$ ? Divise l'écart par ce nombre.",
+              "explanation": "Il y a $2$ sauts entre $100$ et $120$ (un pour le trou, un pour $120$). $20 \\div 2 = 10$. Le pas est $10$. $100+10=110$, $120+10=130$."
+            },
+            {
+              "question": "Une suite commence par $245$ et son pas est $+10$. Quels sont les 4 premiers termes ?",
+              "answer": "$245, 255, 265, 275$",
+              "hint": "Ajoute $10$ trois fois de suite au premier terme.",
+              "explanation": "$245+10=255$, $255+10=265$, $265+10=275$. Attention au passage des centaines : $245 \\rightarrow 255$ (centaines inchangées), $295 \\rightarrow 305$ changerait la centaine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

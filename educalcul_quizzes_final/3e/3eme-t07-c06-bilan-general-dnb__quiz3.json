@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Checklist",
+  "title": "Quiz Checklist Algorithmique DNB",
+  "questions": [
+    {
+      "text": "Quel est l'objectif principal d'une liste de controle (checklist) lors de la redaction ou de la verification d'un algorithme ?",
+      "options": [
+        "Decorier le script pour le rendre plus esthetique.",
+        "S'assurer que toutes les etapes logiques sont presentes et correctes (initialisation, boucles, affichage).",
+        "Remplacer le code par du texte en langage naturel.",
+        "Calculer la complexite en temps d'execution."
+      ],
+      "correctAnswer": "S'assurer que toutes les etapes logiques sont presentes et correctes (initialisation, boucles, affichage).",
+      "explanation": "La checklist sert de guide methodique pour ne rien oublier : initialisation des variables, condition d'arret des boucles, instructions de modification des variables, et affichage final du resultat. Les autres options ne correspondent pas a l'utilite pedagogique d'une checklist.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une checklist algorithmique, pourquoi est-il crucial de verifier l'initialisation des variables avant une boucle ?",
+      "options": [
+        "Pour que le programme demarre plus vite.",
+        "Pour eviter d'utiliser une valeur indefinie qui fausserait les calculs ou la condition de la boucle.",
+        "Pour reserver de la memoire supplementaire.",
+        "Pour afficher la valeur initiale a l'ecran."
+      ],
+      "correctAnswer": "Pour eviter d'utiliser une valeur indefinie qui fausserait les calculs ou la condition de la boucle.",
+      "explanation": "Une variable non initialisee contient une valeur aleatoire (ou zero selon les langages), ce qui rend le comportement de l'algorithme imprevisible. L'initialisation garantit un etat de depart connu et correct pour les accumulations (somme, produit) ou les compteurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel point de la checklist permet d'eviter une boucle infinie ?",
+      "options": [
+        "La presence d'une instruction d'affichage a l'interieur de la boucle.",
+        "La declaration de toutes les variables au debut du script.",
+        "La modification de la variable testee dans la condition de continuation de la boucle.",
+        "L'utilisation d'une fonction predefinie."
+      ],
+      "correctAnswer": "La modification de la variable testee dans la condition de continuation de la boucle.",
+      "explanation": "Pour qu'une boucle `Tant que` s'arrete, la condition doit devenir fausse. Cela impose que la (ou les) variable(s) utilisee(s) dans cette condition soit modifiee(s) a l'interieur du corps de la boucle (ex: incrementer un compteur). L'affichage ou la declaration seule ne garantissent pas l'arret.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lors du passage au traceur (execution pas a pas) pour valider un algorithme, quel element la checklist recommande-t-elle de surveiller en priorite ?",
+      "options": [
+        "La couleur du texte dans l'editeur.",
+        "L'evolution des valeurs des variables cles et la veracite des conditions a chaque iteration.",
+        "Le nombre de lignes de code total.",
+        "La syntaxe exacte des commentaires."
+      ],
+      "correctAnswer": "L'evolution des valeurs des variables cles et la veracite des conditions a chaque iteration.",
+      "explanation": "Le traceur (ou table de traces) est l'outil principal pour debugger. Il faut verifier que les variables prennent les valeurs attendues (initialisation, mise a jour) et que les conditions `Si` ou `Tant que` s'evaluent correctement (Vrai/Faux) pour suivre le bon cheminement logique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Avant de rendre une copie d'algorithmique au DNB, quelle verification finale figure sur la checklist officielle type ?",
+      "options": [
+        "Verifier que l'algorithme repond a la question posee (affichage du resultat demande, format correct).",
+        "Compter le nombre de caracteres du script.",
+        "S'assurer que le nom du programme est original.",
+        "Verifier qu'il n'y a aucune ligne vide."
+      ],
+      "correctAnswer": "Verifier que l'algorithme repond a la question posee (affichage du resultat demande, format correct).",
+      "explanation": "L'erreur frequente est de calculer le resultat sans l'afficher, ou d'afficher une variable intermediaire au lieu du resultat final. La checklist finale impose de relire l'enonce pour confirmer que la sortie (instruction `Afficher`) correspond exactement a ce qui est demande (valeur, phrase, unite).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

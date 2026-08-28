@@ -1,0 +1,570 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.690286+00:00",
+  "id": 386,
+  "code": "5eme-t02-c03",
+  "title": "Nombres rationnels",
+  "description": "Cours structuré Educalcul : Nombres rationnels.",
+  "subject": "Nombres relatifs, rationnels et puissances",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Nombres relatifs, rationnels et puissances",
+    "titre_du_cours": "Nombres rationnels",
+    "objectif_global": "Nombres rationnels",
+    "mini_lecons_imposees": [
+      "Écritures fractionnaires.",
+      "Signe d'un quotient simple.",
+      "Comparer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, rationnels et puissances",
+      "lessons": [
+        {
+          "title": "Écritures fractionnaires.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écritures fractionnaires : qu'est-ce qu'une fraction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu partages une barre de chocolat entre deux amis. Chacun reçoit la même part, c'est-à-dire la moitié de la barre. En mathématiques, on note cette part $\\frac{1}{2}$ : le chiffre du haut, $1$, s'appelle le numérateur, il compte combien de parts on prend ; le chiffre du bas, $2$, s'appelle le dénominateur, il indique en combien de parts égales l'objet a été découpé. Une fraction est donc simplement une manière d'écrire un partage équitable. Le numérateur et le dénominateur sont toujours des nombres entiers, et le dénominateur ne peut jamais être zéro car on ne peut pas diviser par rien."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction ; il indique le nombre de parts prises.",
+              "example": "Dans $\\frac{3}{5}$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre écrit au-dessous de la barre de fraction ; il indique en combien de parts égales le tout a été divisé.",
+              "example": "Dans $\\frac{3}{5}$, le dénominateur est $5$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "La fraction un demi, $\\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons lire une fraction, voyons comment transformer un nombre décimal en fraction. C'est une compétence très utile car beaucoup de mesures du quotidien (prix, longueurs, masses) sont données avec une virgule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Du décimal à la fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour écrire un nombre décimal sous forme fractionnaire, on compte le nombre de chiffres après la virgule. Si le nombre a $n$ chiffres après la virgule, on écrit le nombre sans virgule comme numérateur et on met $1$ suivi de $n$ zéros comme dénominateur. Par exemple, $0,75$ a deux chiffres après la virgule, donc on écrit $\\frac{75}{100}$. Ensuite, on simplifie la fraction en divisant le numérateur et le dénominateur par leur plus grand commun diviseur. Ici, $75$ et $100$ sont tous les deux divisibles par $25$, ce qui donne $\\frac{3}{4}$. Cette méthode marche pour tout nombre décimal fini."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les décimales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre $0,75$. Il y a deux chiffres après la virgule ($7$ et $5$), donc $n = 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la fraction brute",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On enlève la virgule : $75$ devient le numérateur. Le dénominateur est $1$ suivi de $2$ zéros, soit $100$. On obtient $\\frac{75}{100}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On cherche le plus grand diviseur commun de $75$ et $100$, c'est $25$. On divise les deux par $25$ : $\\frac{75 \\div 25}{100 \\div 25} = \\frac{3}{4}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "0,75 = \\frac{75}{100} = \\frac{3}{4}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la fraction obtenue peut être simplifiée encore plus, ou bien elle est déjà sous sa forme la plus simple. Apprenons à repérer une fraction irréductible, c'est-à-dire qu'on ne peut plus la réduire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Simplifier une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifier une fraction, c'est diviser le numérateur et le dénominateur par le même nombre entier non nul. On peut le faire plusieurs fois de suite jusqu'à ce qu'il n'y ait plus de diviseur commun. Le moyen le plus rapide est de calculer le PGCD (plus grand commun diviseur) du numérateur et du dénominateur, puis de diviser les deux par ce PGCD. Par exemple, pour $\\frac{18}{24}$, le PGCD de $18$ et $24$ est $6$. En divisant, on obtient $\\frac{3}{4}$. Si le PGCD est $1$, la fraction est déjà irréductible."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction irréductible",
+              "definition": "Une fraction dont le numérateur et le dénominateur n'ont aucun diviseur commun autre que $1$. Elle ne peut plus être simplifiée.",
+              "example": "$\\frac{3}{4}$ est irréductible car $\\text{PGCD}(3,4)=1$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "La fraction $\\frac{2}{4}$ peut être simplifiée en $\\frac{1}{2}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, apprenons à reconnaître immédiatement si une fraction est déjà irréductible sans faire tout le calcul du PGCD. C'est un gain de temps précieux lors des contrôles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une fraction irréductible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction $\\frac{a}{b}$ est irréductible si et seulement si $a$ et $b$ sont premiers entre eux, c'est-à-dire que leur PGCD vaut $1$. Pour le vérifier rapidement, on peut tester les petits diviseurs : $2$, $3$, $5$, $7$... Si aucun ne divise à la fois le numérateur et le dénominateur, la fraction est irréductible. Par exemple, $\\frac{5}{9}$ : $5$ n'est divisible que par $1$ et $5$ ; $9$ est divisible par $3$ ; ils n'ont pas de diviseur commun, donc la fraction est irréductible. Attention : une fraction comme $\\frac{6}{9}$ n'est pas irréductible car $3$ divise les deux."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Si le numérateur est $1$, la fraction est toujours irréductible (sauf si le dénominateur est $1$, ce qui donne un entier)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la fraction qui représente la partie colorée si un rectangle est divisé en $5$ parts égales et que $3$ parts sont colorées.",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Le dénominateur est le nombre total de parts, le numérateur le nombre de parts colorées.",
+              "explanation": "Le rectangle est partagé en $5$ parts égales, donc le dénominateur est $5$. Trois parts sont colorées, donc le numérateur est $3$. La fraction est $\\frac{3}{5}$."
+            },
+            {
+              "question": "Transforme le nombre décimal $0,6$ en fraction irréductible.",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Il y a un chiffre après la virgule, donc le dénominateur brut est $10$. Simplifie ensuite.",
+              "explanation": "$0,6 = \\frac{6}{10}$. Le PGCD de $6$ et $10$ est $2$. En divisant les deux par $2$, on obtient $\\frac{3}{5}$, qui est irréductible."
+            },
+            {
+              "question": "Simplifie la fraction $\\frac{28}{42}$.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Cherche le PGCD de $28$ et $42$.",
+              "explanation": "Le PGCD de $28$ et $42$ est $14$. En divisant numérateur et dénominateur par $14$, on obtient $\\frac{2}{3}$. Comme $2$ et $3$ sont premiers entre eux, la fraction est irréductible."
+            },
+            {
+              "question": "La fraction $\\frac{7}{15}$ est-elle irréductible ? Justifie ta réponse.",
+              "answer": "Oui, elle est irréductible.",
+              "hint": "Teste les diviseurs communs de $7$ et $15$.",
+              "explanation": "Les diviseurs de $7$ sont $1$ et $7$. Les diviseurs de $15$ sont $1$, $3$, $5$, $15$. Le seul diviseur commun est $1$, donc le PGCD est $1$. La fraction est irréductible."
+            }
+          ]
+        },
+        {
+          "title": "Signe d'un quotient simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signe d'un quotient simple : la règle des signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on divise un nombre par un autre, le signe du résultat dépend seulement des signes du numérateur et du dénominateur. C'est exactement la même règle que pour la multiplication : si les deux nombres ont le même signe (tous les deux positifs ou tous les deux négatifs), le quotient est positif ; s'ils ont des signes contraires, le quotient est négatif. Cette règle vaut pour tous les nombres relatifs, donc aussi pour les fractions dont le numérateur et le dénominateur sont des entiers relatifs."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -6,
+                  "label": "-6"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                }
+              ],
+              "caption": "Repère vertical pour visualiser des nombres positifs et négatifs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la règle des signes est claire, voyons comment l'appliquer concrètement à une fraction dont le numérateur et le dénominateur peuvent être négatifs. Il suffit de regarder le signe de chaque partie séparément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déterminer le signe d'une fraction à numérateur et dénominateur relatifs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la fraction $\\frac{-8}{4}$. Le numérateur est négatif, le dénominateur est positif. Les signes sont contraires, donc le quotient est négatif : $\\frac{-8}{4} = -2$. Autre exemple : $\\frac{-15}{-5}$. Les deux sont négatifs, signes identiques, le quotient est positif : $\\frac{-15}{-5} = 3$. Enfin, $\\frac{12}{-3}$ donne un quotient négatif car les signes sont opposés. On peut toujours réduire la fraction après avoir déterminé le signe, mais le signe ne change pas lors de la simplification."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le signe du numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le numérateur est précédé d'un moins ou non."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le signe du dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si le dénominateur est précédé d'un moins."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mêmes signes $\\rightarrow$ quotient positif ; signes contraires $\\rightarrow$ quotient négatif."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{-8}{4} = -2,\\quad \\frac{-15}{-5} = 3,\\quad \\frac{12}{-3} = -4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas particulier mérite qu'on s'y attarde : quand le dénominateur est négatif. En mathématiques, on préfère écrire les fractions avec un dénominateur positif. On peut donc multiplier le numérateur et le dénominateur par $-1$ sans changer la valeur de la fraction, mais cela change l'apparence du signe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cas du dénominateur négatif"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu rencontres une fraction comme $\\frac{5}{-7}$, tu peux la transformer en $\\frac{-5}{7}$ en multipliant le haut et le bas par $-1$. Les deux fractions sont égales, mais la seconde a un dénominateur positif, ce qui est la convention habituelle. Cette manipulation ne modifie pas le signe global de la fraction : $\\frac{5}{-7}$ est négatif, $\\frac{-5}{7}$ est aussi négatif. C'est une astuce très utile pour comparer plus facilement des fractions par la suite."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Convention",
+              "paragraphs": [
+                "On écrit toujours le signe éventuel devant la fraction ou au numérateur, jamais au dénominateur."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, appliquons la règle des signes à des nombres rationnels écrits sous forme décimale ou fractionnaire. Le signe d'un nombre rationnel est simplement le signe de sa valeur : positif si le nombre est à droite de zéro sur la droite graduée, négatif s'il est à gauche."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Application aux nombres rationnels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un nombre rationnel peut être écrit sous plusieurs formes : fraction, décimal, ou même nombre entier. Quel que soit l'écriture, son signe ne change pas. Par exemple, $-0,25 = \\frac{-1}{4} = \\frac{1}{-4}$. Les trois écritures représentent le même nombre, qui est négatif. Pour déterminer le signe, tu peux soit regarder le signe devant le nombre (s'il y en a un), soit utiliser la règle du quotient si le nombre est donné sous forme de fraction. Cette compétence te servira tout au long de l'année pour comparer, ordonner et calculer avec des rationnels."
+            },
+            {
+              "type": "number_line",
+              "min": -2,
+              "max": 2,
+              "points": [
+                {
+                  "value": -0.25,
+                  "label": "-0,25"
+                },
+                {
+                  "value": 0.75,
+                  "label": "0,75"
+                }
+              ],
+              "caption": "Position de $-0,25$ et $0,75$ sur la droite graduée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le signe du quotient $\\frac{-9}{3}$ ?",
+              "answer": "Négatif",
+              "hint": "Regarde les signes du numérateur et du dénominateur.",
+              "explanation": "Le numérateur $-9$ est négatif, le dénominateur $3$ est positif. Les signes sont contraires, donc le quotient est négatif. La valeur est $-3$."
+            },
+            {
+              "question": "Détermine le signe de $\\frac{-12}{-4}$ et donne sa valeur simplifiée.",
+              "answer": "Positif, valeur $3$",
+              "hint": "Mêmes signes donnent un quotient positif. Simplifie ensuite.",
+              "explanation": "Numérateur et dénominateur sont tous deux négatifs, donc le quotient est positif. $\\frac{-12}{-4} = \\frac{12}{4} = 3$."
+            },
+            {
+              "question": "Réécris la fraction $\\frac{7}{-5}$ avec un dénominateur positif.",
+              "answer": "$\\frac{-7}{5}$",
+              "hint": "Multiplie le numérateur et le dénominateur par $-1$.",
+              "explanation": "En multipliant le haut et le bas par $-1$, on obtient $\\frac{7 \\times (-1)}{-5 \\times (-1)} = \\frac{-7}{5}$. Le dénominateur est maintenant positif."
+            },
+            {
+              "question": "Parmi les nombres suivants, lesquels sont négatifs ? $-\\frac{2}{3}$, $0,4$, $\\frac{-5}{-2}$, $-1,2$",
+              "answer": "$-\\frac{2}{3}$ et $-1,2$",
+              "hint": "Regarde le signe devant chaque nombre ou applique la règle du quotient.",
+              "explanation": "$-\\frac{2}{3}$ a un moins devant, donc négatif. $0,4$ est positif. $\\frac{-5}{-2}$ a numérateur et dénominateur négatifs, quotient positif. $-1,2$ a un moins devant, donc négatif."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux fractions de même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux fractions ont exactement le même dénominateur, la comparaison est immédiate : il suffit de regarder les numérateurs. La fraction qui a le plus grand numérateur est la plus grande, car les parts sont de même taille. Par exemple, $\\frac{3}{8}$ et $\\frac{5}{8}$ : les parts sont des huitièmes, donc $5$ huitièmes sont plus grands que $3$ huitièmes. On écrit $\\frac{3}{8} < \\frac{5}{8}$. Cette règle vaut aussi pour des fractions négatives : avec le même dénominateur négatif, le numérateur le plus grand (donc le moins négatif) correspond à la fraction la plus grande."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "$\\frac{3}{8}$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "$\\frac{5}{8}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, les fractions n'ont pas le même dénominateur. Il faut alors les mettre au même dénominateur avant de comparer. C'est l'étape clé : trouver un dénominateur commun, généralement le plus petit multiple commun (PPCM) des deux dénominateurs, puis réécrire chaque fraction en multipliant le numérateur et le dénominateur par le même facteur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer en réduisant au même dénominateur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\frac{2}{3}$ et $\\frac{3}{5}$. Les dénominateurs sont $3$ et $5$. Leur PPCM est $15$. On transforme $\\frac{2}{3}$ en multipliant le haut et le bas par $5$ : $\\frac{10}{15}$. On transforme $\\frac{3}{5}$ en multipliant par $3$ : $\\frac{9}{15}$. Maintenant les dénominateurs sont égaux, on compare les numérateurs : $10 > 9$, donc $\\frac{2}{3} > \\frac{3}{5}$. Cette méthode fonctionne pour toutes les fractions positives. Si l'une est négative, on peut d'abord comparer les valeurs absolues ou placer les nombres sur une droite graduée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver un dénominateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le PPCM des deux dénominateurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Adapter les fractions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie numérateur et dénominateur de chaque fraction par le facteur qui donne le dénominateur commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plus grand numérateur correspond à la plus grande fraction (si le dénominateur commun est positif)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{2}{3} = \\frac{10}{15},\\quad \\frac{3}{5} = \\frac{9}{15},\\quad \\frac{10}{15} > \\frac{9}{15}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'on doive comparer un nombre rationnel (fraction ou décimal) avec un entier. Rappelle-toi qu'un entier $n$ peut s'écrire sous forme de fraction $\\frac{n}{1}$. Ainsi, comparer $4$ et $\\frac{9}{2}$ revient à comparer $\\frac{4}{1}$ et $\\frac{9}{2}$. On met au même dénominateur : $\\frac{8}{2}$ et $\\frac{9}{2}$, donc $4 < \\frac{9}{2}$. C'est une astuce simple qui évite de convertir en décimal."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer un rationnel et un entier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer un entier $a$ et une fraction $\\frac{b}{c}$ (avec $c>0$), on écrit $a = \\frac{a \\times c}{c}$. On compare alors les numérateurs $a \\times c$ et $b$. Si $a \\times c > b$, alors $a > \\frac{b}{c}$ ; si $a \\times c < b$, alors $a < \\frac{b}{c}$ ; sinon ils sont égaux. Cette méthode marche aussi pour les entiers négatifs, à condition de respecter les signes lors de la multiplication."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce rapide",
+              "paragraphs": [
+                "Pour comparer $5$ et $\\frac{11}{3}$, calcule $5 \\times 3 = 15$. Comme $15 > 11$, $5 > \\frac{11}{3}$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, on doit souvent ordonner plusieurs nombres rationnels entre eux. La stratégie consiste à tous les mettre sous la même forme (fractions au même dénominateur ou décimaux) puis à les ranger du plus petit au plus grand. On peut aussi les placer sur une droite graduée pour visualiser l'ordre. C'est une excellente façon de vérifier ses comparaisons deux à deux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ordonner plusieurs nombres rationnels"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons la liste : $-1,2$, $\\frac{3}{4}$, $0$, $-\\frac{5}{2}$, $2$. D'abord, on repère les négatifs : $-1,2 = -\\frac{6}{5}$ et $-\\frac{5}{2} = -2,5$. Sur la droite graduée, $-2,5$ est plus à gauche que $-1,2$, donc $-\\frac{5}{2} < -1,2$. Ensuite viennent $0$, puis $\\frac{3}{4} = 0,75$, puis $2$. L'ordre croissant final est : $-\\frac{5}{2} < -1,2 < 0 < \\frac{3}{4} < 2$. Utiliser la droite graduée comme support visuel aide à ne pas se tromper."
+            },
+            {
+              "type": "number_line",
+              "min": -3,
+              "max": 3,
+              "points": [
+                {
+                  "value": -2.5,
+                  "label": "-5/2"
+                },
+                {
+                  "value": -1.2,
+                  "label": "-1,2"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "caption": "Ordre croissant de cinq nombres rationnels sur la droite graduée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire un nombre décimal sous forme fractionnaire.",
+                "Je sais déterminer le signe d'un quotient.",
+                "Je sais comparer deux nombres rationnels.",
+                "Je sais ordonner plusieurs nombres rationnels."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{4}{9}$ et $\\frac{5}{9}$. Quelle est la plus grande ?",
+              "answer": "$\\frac{5}{9}$",
+              "hint": "Même dénominateur, compare les numérateurs.",
+              "explanation": "Les deux fractions ont le dénominateur $9$. Le numérateur $5$ est plus grand que $4$, donc $\\frac{5}{9} > \\frac{4}{9}$."
+            },
+            {
+              "question": "Compare $\\frac{7}{12}$ et $\\frac{5}{8}$ en les ramenant au même dénominateur.",
+              "answer": "$\\frac{7}{12} < \\frac{5}{8}$",
+              "hint": "Le PPCM de $12$ et $8$ est $24$.",
+              "explanation": "$\\frac{7}{12} = \\frac{14}{24}$ (multiplié par $2$). $\\frac{5}{8} = \\frac{15}{24}$ (multiplié par $3$). Comme $14 < 15$, $\\frac{7}{12} < \\frac{5}{8}$."
+            },
+            {
+              "question": "Lequel est plus grand : $3$ ou $\\frac{10}{3}$ ?",
+              "answer": "$\\frac{10}{3}$",
+              "hint": "Écris $3$ sous la forme $\\frac{9}{3}$.",
+              "explanation": "$3 = \\frac{3 \\times 3}{3} = \\frac{9}{3}$. On compare $\\frac{9}{3}$ et $\\frac{10}{3}$ : $10 > 9$, donc $\\frac{10}{3} > 3$."
+            },
+            {
+              "question": "Range les nombres suivants dans l'ordre croissant : $\\frac{2}{5}$, $-0,4$, $1$, $-\\frac{3}{2}$, $0,6$.",
+              "answer": "$-\\frac{3}{2} < -0,4 < \\frac{2}{5} < 0,6 < 1$",
+              "hint": "Convertis tous en décimaux ou en fractions au même dénominateur, puis place-les sur une droite graduée.",
+              "explanation": "$-\\frac{3}{2} = -1,5$ ; $-0,4$ ; $\\frac{2}{5}=0,4$ ; $0,6$ ; $1$. L'ordre croissant est donc $-1,5 < -0,4 < 0,4 < 0,6 < 1$, soit $-\\frac{3}{2} < -0,4 < \\frac{2}{5} < 0,6 < 1$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Repérer axe simple",
+  "title": "Quiz : Repérer un axe de symétrie sur quadrillage",
+  "questions": [
+    {
+      "text": "On a tracé un « T » majuscule sur un quadrillage. Il est formé de $5$ cases : une barre horizontale de $3$ cases en haut et une barre verticale de $3$ cases au centre qui descend. Laquelle de ces droites est un axe de symétrie pour ce « T » ?",
+      "options": [
+        "La droite verticale passant par la colonne centrale du « T »",
+        "La droite horizontale passant par la barre du haut",
+        "La droite diagonale reliant le coin en haut à gauche au coin en bas à droite",
+        "La droite verticale passant par le bord gauche de la barre du haut"
+      ],
+      "correctAnswer": "La droite verticale passant par la colonne centrale du « T »",
+      "explanation": "Le « T » est symétrique par rapport à sa colonne centrale : la partie de gauche se superpose exactement à la partie de droite par pliage. La barre du haut n'est pas un axe (le haut et le bas sont différents). Les diagonales et le bord gauche ne superposent pas la figure sur elle-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure est un rectangle vertical de $2$ cases de large sur $4$ cases de haut. Parmi les droites proposées, laquelle est un axe de symétrie de ce rectangle ?",
+      "options": [
+        "La droite horizontale qui coupe le rectangle en deux moitiés égales (au milieu de la hauteur)",
+        "La droite verticale qui passe le long du bord droit du rectangle",
+        "La droite diagonale qui relie les deux coins opposés",
+        "La droite horizontale qui passe le long du bord du bas"
+      ],
+      "correctAnswer": "La droite horizontale qui coupe le rectangle en deux moitiés égales (au milieu de la hauteur)",
+      "explanation": "Un rectangle possède deux axes de symétrie orthogonaux : le milieu de la hauteur (horizontal) et le milieu de la largeur (vertical). Ici, l'option A décrit correctement l'axe horizontal médian. Le bord droit (B) et le bord du bas (D) sont des bords, pas des axes de symétrie. La diagonale (C) n'est pas un axe de symétrie pour un rectangle (contrairement au carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a construit un « H » majuscule sur quadrillage avec $7$ cases : deux barres verticales de $3$ cases espacées d'une case, reliées par une case au centre. Laquelle de ces droites est un axe de symétrie ?",
+      "options": [
+        "La droite verticale passant par la case centrale qui relie les deux barres",
+        "La droite horizontale passant par le haut des barres verticales",
+        "La droite verticale passant par le bord gauche de la barre de gauche",
+        "La droite horizontale passant par le bas des barres verticales"
+      ],
+      "correctAnswer": "La droite verticale passant par la case centrale qui relie les deux barres",
+      "explanation": "Le « H » est symétrique verticalement : la barre de gauche est le miroir de la barre de droite par rapport à la colonne centrale. Les droites horizontales proposées (haut, bas) ne sont pas des axes car le haut et le bas de la figure sont identiques mais la symétrie horizontale n'échange pas les barres verticales entre elles (elles resteraient à leur place), cependant l'option B et D décrivent des droites sur les bords, pas au milieu. Seule la verticale centrale (A) est un axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux carrés identiques de $2 \\times 2$ cases sont tracés sur un quadrillage. Ils sont séparés par une bande vide de $2$ cases de large. L'axe de symétrie de l'ensemble des deux carrés se trouve :",
+      "options": [
+        "Sur la ligne verticale exactement au milieu de la bande vide qui sépare les deux carrés",
+        "Sur le bord droit du carré de gauche",
+        "Sur la ligne horizontale passant par le milieu de la hauteur des carrés",
+        "Il n'y a pas d'axe de symétrie car ils sont séparés"
+      ],
+      "correctAnswer": "Sur la ligne verticale exactement au milieu de la bande vide qui sépare les deux carrés",
+      "explanation": "Deux figures identiques placées symétriquement l'une par rapport à l'autre ont pour axe de symétrie la médiatrice de l'espace qui les sépare. Ici, la bande vide fait $2$ cases ; son milieu est une ligne de cases (ou une ligne de grille) qui sépare l'ensemble en deux moitiés miroirs. Le bord droit du carré de gauche (B) est trop à gauche. L'horizontale (C) est un axe pour chaque carré individuellement, mais pas pour l'ensemble (les carrés sont côte à côte, pas l'un au-dessus de l'autre).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une figure est formée d'un rectangle de $3$ cases de large sur $2$ cases de haut, auquel on a ajouté une case unique juste au milieu du côté long du haut (comme un toit central). Quel est l'axe de symétrie de cette figure ?",
+      "options": [
+        "La droite verticale passant par le milieu de la base du rectangle",
+        "La droite horizontale passant par le milieu de la hauteur du rectangle",
+        "La droite verticale passant par le coin en bas à gauche",
+        "La droite diagonale montant du coin bas gauche au coin haut droit"
+      ],
+      "correctAnswer": "La droite verticale passant par le milieu de la base du rectangle",
+      "explanation": "La figure est symétrique verticalement : la case du « toit » est centrée, les deux moitiés gauche et droite du rectangle sont identiques. L'axe vertical passe par le centre de la case du toit et coupe le rectangle en deux parties égales. L'horizontale (B) ne fonctionne pas car le toit est seulement en haut. Le coin (C) et la diagonale (D) ne superposent pas la figure.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

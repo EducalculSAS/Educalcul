@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Contrôler l'erreur de façon intuitive",
+  "title": "Vérifier ses arrondis de nombres décimaux",
+  "questions": [
+    {
+      "text": "Un élève arrondit $14,8$ à l'unité. Il trouve $10$. Pourquoi ce résultat est îl intuitivement faux ?",
+      "options": [
+        "Parce que $14,8$ est plus proche de $10$ que de $15$",
+        "Parce que $14,8$ est compris entre $14$ et $15$, donc le résultat ne peut pas être $10$",
+        "Parce qu'on ne peut pas arrondir un nombre qui finit par $8$",
+        "Parce que $10$ est un nombre pair"
+      ],
+      "correctAnswer": "Parce que $14,8$ est compris entre $14$ et $15$, donc le résultat ne peut pas être $10$",
+      "explanation": "Pour arrondir à l'unité, on cherche l'entier le plus proche. $14,8$ se situe entre l'entier $14$ et l'entier $15$. Un résultat de $10$ est beaucoup trop éloigné et donc impossible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on arrondit $7,24$ à l'unité, laquelle de ces réponses est impossible ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$70$",
+        "$7,2$"
+      ],
+      "correctAnswer": "$70$",
+      "explanation": "L'arrondi à l'unité d'un nombre comme $7,24$ doit être un entier proche. $70$ est beaucoup trop grand par rapport à $7$ et ne peut pas être le résultat d'un arrondi à l'unité pour ce nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa arrondit $12,56$ au dixième. Elle trouve $13$. Pourquoi son résultat n'est îl pas correct ?",
+      "options": [
+        "Parce que $13$ est un nombre entier et non un nombre avec un dixième",
+        "Parce que $13$ est trop petit",
+        "Parce que $12,56$ est plus proche de $12$ que de $13$",
+        "Parce qu'on ne peut pas arrondir $12,56$"
+      ],
+      "correctAnswer": "Parce que $13$ est un nombre entier et non un nombre avec un dixième",
+      "explanation": "L'énoncé demande un arrondi au dixième. Le résultat doit donc posséder un chiffre après la virgule (comme $12,6$). $13$ est un arrondi à l'unité, pas au dixième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On arrondit $4,12$ au dixième. Le résultat est soit $4,1$ soit $4,2$. Pourquoi $4,5$ serait îl une erreur ?",
+      "options": [
+        "Parce que $4,5$ est un nombre pair",
+        "Parce que $4,5$ est trop loin de $4,12$ pour être l'arrondi le plus proche",
+        "Parce que $4,5$ n'a qu'un seul chiffre après la virgule",
+        "Parce que $4,12$ est plus petit que $4,5$"
+      ],
+      "correctAnswer": "Parce que $4,5$ est trop loin de $4,12$ pour être l'arrondi le plus proche",
+      "explanation": "L'arrondi consiste à trouver la valeur la plus proche. $4,1$ est très proche de $4,12$, alors que $4,5$ est beaucoup plus éloigné. L'erreur est intuitive car on s'écarte trop de la valeur initiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève arrondit $9,72$ à l'unité et obtient $9$. En regardant la position de $9,72$ entre $9$ et $10$, que peut îl conclure ?",
+      "options": [
+        "Que son résultat est juste car $9$ est présent dans le nombre",
+        "Que son résultat est faux car $9,72$ est beaucoup plus proche de $10$ que de $9$",
+        "Que son résultat est juste car $9$ est plus petit que $10$",
+        "Que son résultat est faux car $9,72$ est un nombre décimal"
+      ],
+      "correctAnswer": "Que son résultat est faux car $9,72$ est beaucoup plus proche de $10$ que de $9$",
+      "explanation": "L'arrondi à l'unité suit la règle de proximité. $9,72$ est après le milieu $9,5$. Il est donc intuitivement plus proche de l'entier supérieur, $10$, que de l'entier inférieur, $9$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Position de 9,72",
+        "min": 9,
+        "max": 10,
+        "points": [
+          {
+            "value": 9.72,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

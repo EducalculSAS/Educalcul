@@ -1,0 +1,487 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.258969+00:00",
+  "id": 252,
+  "code": "cm1-t06-c05",
+  "title": "Cercle",
+  "description": "Cours structuré Educalcul : Cercle.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Cercle",
+    "objectif_global": "Cercle",
+    "mini_lecons_imposees": [
+      "Rayon / diamètre.",
+      "Constructions.",
+      "Problèmes de distance."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Rayon / diamètre.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le cercle et son centre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une roue de vélo parfaitement ronde. Le point exact au milieu du moyeu, celui qui ne bouge pas quand la roue tourne, c'est le centre du cercle. On le note souvent par la lettre $O$. Tout autour, la jante forme le cercle : c'est l'ensemble des points qui sont tous à la même distance de ce centre $O$. C'est cette distance constante qui fait la régularité du cercle, un peu comme si tous les rayons de la roue avaient exactement la même longueur."
+            },
+            {
+              "type": "definition",
+              "term": "Centre d'un cercle",
+              "definition": "Point fixe $O$ à partir duquel tous les points du cercle sont à égale distance.",
+              "example": "Sur le schéma, le point $O$ est le centre du cercle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mainarde, penche-toi sur ton compas. La pointe sèche, c'est le centre $O$. Le crayon, lui, trace le cercle. La distance entre la pointe et la mine, c'est ce qu'on appelle le rayon. C'est un segment qui relie le centre $O$ à n'importe quel point du cercle. Comme tous les points du cercle sont à la même distance du centre, tous les rayons d'un même cercle ont la même longueur. C'est la définition même du cercle : une rondeur parfaite où rien ne dépasse et rien ne manque."
+            },
+            {
+              "type": "definition",
+              "term": "Rayon",
+              "definition": "Segment $[OA]$ qui joint le centre $O$ à un point $A$ du cercle. Sa longueur est notée $R$.",
+              "example": "Si $OA = 3$ cm, alors le rayon $R$ vaut $3$ cm."
+            },
+            {
+              "type": "display_math",
+              "latex": "R = OA"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le diamètre, le grand frère du rayon"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu plantes la pointe de ton compas au centre $O$ et que tu traces un trait qui traverse tout le cercle en passant par $O$ pour aller d'un bord à l'autre, tu obtiens le diamètre. C'est le plus long segment qu'on puisse tracer à l'intérieur d'un cercle. Il passe toujours par le centre et ses deux extrémités sont sur le cercle. Observe bien : le diamètre est composé de deux rayons mis bout à bout. Donc, le diamètre est deux fois plus long que le rayon. C'est une relation qui ne change jamais, quel que soit la taille du cercle."
+            },
+            {
+              "type": "definition",
+              "term": "Diamètre",
+              "definition": "Segment $[BC]$ qui passe par le centre $O$ et dont les extrémités $B$ et $C$ sont sur le cercle. Sa longueur est notée $d$.",
+              "example": "Si le rayon $R = 3$ cm, le diamètre $d = 6$ cm."
+            },
+            {
+              "type": "display_math",
+              "latex": "d = 2 \\times R"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Le rayon est la moitié du diamètre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer l'un à partir de l'autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais le secret ($d = 2 \\times R$), tu peux jouer au détective. Si on te donne le rayon, tu multiplies par $2$ pour trouver le diamètre. Si on te donne le diamètre, tu divises par $2$ (ou tu cherches la moitié) pour trouver le rayon. C'est comme un jeu de double ou moitié. Attention à l'unité : si le rayon est en centimètres, le diamètre sera aussi en centimètres. Ne mélange pas les mètres et les centimètres sans convertir !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier ce qu'on connaît",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'énoncé : est-ce qu'on te donne $R$ ou $d$ ? Note la valeur et l'unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as $R$, fais $\\times 2$. Si tu as $d$, fais $\\div 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Complète la phrase : « Le diamètre mesure ... » ou « Le rayon mesure ... » avec l'unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître le centre, mesurer un rayon et déduire le diamètre. Dans la prochaine leçon, nous allons sortir les compas pour tracer nous-mêmes de beaux cercles bien ronds. Tu verras, c'est très satisfaisant quand la mine rejoint le point de départ sans trembler !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, le point $O$ est le centre du cercle. Le segment $[OA]$ mesure $4$ cm. Quelle est la longueur du rayon $R$ ?",
+              "answer": "$4$ cm",
+              "hint": "Le rayon est le segment qui relie le centre à un point du cercle.",
+              "explanation": "Le segment $[OA]$ relie le centre $O$ au point $A$ du cercle. C'est donc un rayon. Sa longueur est $4$ cm, donc $R = 4$ cm."
+            },
+            {
+              "question": "Un cercle a un rayon $R = 5$ cm. Quelle est la longueur de son diamètre $d$ ?",
+              "answer": "$10$ cm",
+              "hint": "Le diamètre est le double du rayon. Utilise la formule $d = 2 \\times R$.",
+              "explanation": "On applique la relation $d = 2 \\times R$. Ici $R = 5$ cm, donc $d = 2 \\times 5 = 10$ cm."
+            },
+            {
+              "question": "Un cercle a un diamètre $d = 14$ cm. Quelle est la longueur de son rayon $R$ ?",
+              "answer": "$7$ cm",
+              "hint": "Le rayon est la moitié du diamètre. Divise $14$ par $2$.",
+              "explanation": "La relation $d = 2 \\times R$ veut dire que $R = d \\div 2$. Ici $d = 14$ cm, donc $R = 14 \\div 2 = 7$ cm."
+            }
+          ]
+        },
+        {
+          "title": "Constructions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le compas, ton meilleur ami"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer, fais connaissance avec ton compas. Il a deux branches : l'une se termine par une pointe sèche (la pointe métallique qui pique le papier), l'autre porte un crayon à papier (la mine). La vis au milieu permet d'écarter ou de rapprocher les branches. C'est elle qui règle l'ouverture, c'est-à-dire la longueur du rayon. Tiens le compas par la vis supérieure, bien droit, comme un petit oiseau posé sur son pied. N'appuie pas trop fort sur la pointe, sinon elle déchire la feuille, et n'incline pas le crayon, sinon le trait sera épais et imprécis."
+            },
+            {
+              "type": "definition",
+              "term": "Compas",
+              "definition": "Instrument de géométrie composé de deux branches articulées, servant à tracer des cercles ou à reporter des longueurs.",
+              "example": "J'ouvre le compas pour obtenir un écartement de $3$ cm entre la pointe et la mine."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Régler l'ouverture sur la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose la pointe sèche sur le zéro de ta règle graduée. Écarte la branche du crayon jusqu'à la graduation voulue (par exemple $4$ cm). Resserre bien la vis pour que l'ouverture ne bouge plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier le réglage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Referme légèrement les branches puis rouvre-les : la pointe doit retomber pile sur le zéro et la mine sur $4$ cm. C'est le test de sécurité !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un cercle centre $O$ et rayon donné"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le moment de passer à l'action. Tu as un point $O$ marqué sur ta feuille. C'est ton centre. Tu as réglé ton compas sur la longueur du rayon demandée (disons $3$ cm). Plante la pointe sèche bien fermement sur le point $O$. Pose la mine du crayon sur le papier. Tourne la vis supérieure entre ton pouce et ton index pour faire faire un tour complet au compas. Essaie de tourner dans le sens qui te semble le plus naturel (souvent dans le sens inverse des aiguilles d'une montre pour les droitiers). Le trait doit être fin, continu, et la mine doit retrouver exactement son point de départ. Si le cercle n'est pas parfait, recommence sur une feuille neuve : l'entraînement est la clé de la précision."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer la pointe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe sèche sur le point $O$ (le centre). Appuie juste ce qu'il faut pour qu'elle ne glisse pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Poser la mine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le crayon sur la feuille. Vérifie que l'ouverture n'a pas bougé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tourner d'un tour complet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais pivoter le compas sur lui-même en tenant la vis. Arrête-toi quand la mine rejoint le trait de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un cercle quand on connaît le diamètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'exercice te donne le diamètre $d$ au lieu du rayon. Pas de panique ! Tu sais maintenant que le rayon est la moitié du diamètre. Tu vas donc commencer par calculer $R = d \\div 2$. Une fois que tu as cette valeur, tu règles ton compas sur cette longueur $R$ et tu traces ton cercle exactement comme avant. Le diamètre donné te sert juste à trouver le bon réglage du compas. C'est une étape de calcul en plus, mais le geste du tracé reste identique."
+            },
+            {
+              "type": "display_math",
+              "latex": "R = \\frac{d}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les cercles concentriques : même centre, rayons différents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde une cible de tir à l'arc ou les anneaux d'un tronc d'arbre coupé. Tous ces cercles partagent le même centre, mais leurs rayons grandissent l'un après l'autre. On appelle cela des cercles concentriques. Pour les tracer, tu ne changes pas la position de la pointe sèche : elle reste plantée sur le centre $O$. Tu changes seulement l'ouverture du compas : d'abord le plus petit rayon, tu traces. Ensuite, tu élargis un peu le compas pour le deuxième rayon, tu traces sans bouger la pointe. Et ainsi de suite. C'est une excellente façon de t'entraîner à régler ton compas avec précision."
+            },
+            {
+              "type": "definition",
+              "term": "Cercles concentriques",
+              "definition": "Cercles qui ont le même centre mais des rayons de longueurs différentes.",
+              "example": "Les ronds d'une cible de fléchettes sont des cercles concentriques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant maîtriser ton compas pour tracer des cercles parfaits, que l'on te donne le rayon ou le diamètre. La prochaine leçon nous emmènera sur le terrain des problèmes : nous allons utiliser le cercle pour résoudre des histoires de distances, comme arroser un jardin ou prévoir la place d'une roue. C'est là que la géométrie devient vraiment utile au quotidien !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu veux tracer un cercle de rayon $3$ cm. Sur ta règle, entre quelles deux graduations dois-tu placer la pointe et la mine du compas ?",
+              "answer": "Pointe sur $0$ cm, mine sur $3$ cm.",
+              "hint": "Le zéro de la règle correspond à la pointe sèche.",
+              "explanation": "Pour régler un rayon de $3$ cm, on place la pointe sèche sur le zéro de la règle et on écarte la mine jusqu'à la graduation $3$ cm."
+            },
+            {
+              "question": "Trace un cercle de centre $O$ et de rayon $4$ cm. (Exercice à faire sur ta feuille, ici on vérifie la méthode). Quelle est la première chose à faire avant de poser la pointe sur $O$ ?",
+              "answer": "Régler l'ouverture du compas sur $4$ cm à l'aide de la règle.",
+              "hint": "Le compas doit être réglé avant d'être posé sur la feuille.",
+              "explanation": "Il faut d'abord régler le compas sur la longueur du rayon ($4$ cm) à l'aide d'une règle, puis seulement poser la pointe sur le centre $O$ pour tracer."
+            },
+            {
+              "question": "On veut tracer un cercle de diamètre $10$ cm. Quelle ouverture de compas (rayon) dois-tu régler ?",
+              "answer": "$5$ cm",
+              "hint": "Le rayon est la moitié du diamètre.",
+              "explanation": "Le diamètre $d = 10$ cm. Le rayon $R = d \\div 2 = 10 \\div 2 = 5$ cm. On règle donc le compas sur $5$ cm."
+            },
+            {
+              "question": "Tu traces trois cercles concentriques de centre $O$ avec les rayons $2$ cm, $4$ cm et $6$ cm. Combien de fois changes-tu l'ouverture du compas ? Combien de fois bouges-tu la pointe sèche ?",
+              "answer": "Je change l'ouverture $3$ fois (une par cercle). Je ne bouge jamais la pointe sèche (elle reste sur $O$).",
+              "hint": "Concentrique = même centre. Donc la pointe ne bouge pas. Mais les rayons changent, donc l'ouverture change.",
+              "explanation": "Pour des cercles concentriques, le centre $O$ est commun. La pointe sèche reste fixée sur $O$ pour les trois tracés. En revanche, il faut régler le compas sur $2$ cm, tracer, puis régler sur $4$ cm, tracer, puis régler sur $6$ cm, tracer. Soit $3$ changements d'ouverture."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes de distance.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Où est le point par rapport au cercle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un arroseur automatique au milieu d'une pelouse circulaire. L'eau arrive jusqu'au bord de la pelouse, mais pas au-delà. Le jet d'eau représente le rayon $R$. Si tu places une chaise à une distance du centre $O$ plus petite que $R$, la chaise sera mouillée : elle est à l'intérieur du cercle. Si tu la places exactement à distance $R$, elle est juste au bord : elle est sur le cercle. Si tu la places plus loin que $R$, elle reste au sec : elle est à l'extérieur du cercle. Pour le savoir, il suffit de mesurer la distance $OM$ entre le centre $O$ et le point $M$ (ta chaise) et de comparer ce nombre au rayon $R$. C'est une simple comparaison de deux longueurs."
+            },
+            {
+              "type": "definition",
+              "term": "Position d'un point par rapport à un cercle",
+              "definition": "On compare la distance $OM$ au rayon $R$. Si $OM < R$, le point est à l'intérieur. Si $OM = R$, il est sur le cercle. Si $OM > R$, il est à l'extérieur.",
+              "example": "Centre $O$, rayon $R = 5$ cm. Point $M$ tel que $OM = 3$ cm. Comme $3 < 5$, $M$ est à l'intérieur."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparaison de la distance OM au rayon R",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "OM = 3 cm (Intérieur)"
+                },
+                {
+                  "value": 5,
+                  "label": "R = 5 cm (Sur le cercle)"
+                },
+                {
+                  "value": 8,
+                  "label": "OM = 8 cm (Extérieur)"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux cercles : quel espace entre eux ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine deux arroseurs, l'un au point $O_1$, l'autre au point $O_2$. Chacun a son rayon : $R_1$ et $R_2$. La distance entre les deux centres est $O_1O_2$. Pour savoir si les zones arrosées se touchent, se chevauchent ou sont séparées, on compare encore des longueurs. Si la somme des deux rayons ($R_1 + R_2$) est plus grande que la distance entre les centres ($O_1O_2$), les cercles se chevauchent (ils ont des points communs). Si la somme est exactement égale à la distance, ils se touchent en un seul point (ils sont tangents extérieurement). Si la somme est plus petite que la distance, ils sont séparés, il y a de l'herbe sèche entre les deux zones. C'est comme deux amis qui tendent les bras : si leurs doigts se touchent, ils sont tangents ; s'ils peuvent se serrer la main, ils se coupent ; s'ils sont trop loin, ils ne se touchent pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la somme des rayons",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne $R_1 + R_2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer à la distance des centres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde $O_1O_2$. Est-ce que $R_1 + R_2 > O_1O_2$ (chevauchement), $= O_1O_2$ (tangents) ou $< O_1O_2$ (séparés) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la phrase qui décrit la situation : « Les cercles se coupent », « Les cercles sont tangents » ou « Les cercles sont extérieurs l'un à l'autre »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des problèmes de la vie courante"
+            },
+            {
+              "type": "paragraph",
+              "content": "La géométrie du cercle n'est pas seulement sur le papier, elle guide nos pas tous les jours. Un cycliste veut savoir combien de tours de roue il faut pour parcourir $1$ km : il lui faut le périmètre de la roue (on appelle cela la circonférence, nous la verrons plus tard). Un jardinier place son arroseur au centre d'un massif circulaire de rayon $4$ m : il sait que l'eau n'ira pas au-delà de $4$ m. Un architecte dessine un rond-point : il calcule le rayon pour que les voitures puissent tourner. À chaque fois, la question est une question de distance par rapport à un centre. Tu as maintenant tous les outils pour raisonner sur ces situations : identifier le centre, connaître le rayon, comparer les distances."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Portée d'arroseurs selon leur rayon",
+              "bars": [
+                {
+                  "label": "Petit arroseur",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Moyen arroseur",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Grand arroseur",
+                  "value": 10,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer le centre, le rayon et le diamètre d'un cercle.",
+                "Je connais la relation $d = 2 \\times R$ et je sais l'utiliser pour calculer.",
+                "Je sais régler mon compas sur une longueur donnée à l'aide d'une règle.",
+                "Je sais tracer un cercle en connaissant son centre et son rayon (ou son diamètre).",
+                "Je sais déterminer si un point est à l'intérieur, sur ou à l'extérieur d'un cercle en comparant $OM$ et $R$.",
+                "Je sais comparer deux cercles (chevauchants, tangents, séparés) en comparant $R_1 + R_2$ et $O_1O_2$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un cercle a pour centre $O$ et pour rayon $R = 6$ cm. Un point $M$ est tel que $OM = 8$ cm. Le point $M$ est-il à l'intérieur, sur ou à l'extérieur du cercle ?",
+              "answer": "À l'extérieur du cercle.",
+              "hint": "Compare $OM$ (8 cm) et $R$ (6 cm). 8 est-il plus grand, plus petit ou égal à 6 ?",
+              "explanation": "On compare la distance $OM = 8$ cm au rayon $R = 6$ cm. Comme $8 > 6$ (donc $OM > R$), le point $M$ est à l'extérieur du cercle."
+            },
+            {
+              "question": "Deux cercles ont pour centres $O_1$ et $O_2$. Leurs rayons sont $R_1 = 3$ cm et $R_2 = 4$ cm. La distance entre les centres est $O_1O_2 = 8$ cm. Ces cercles sont-ils sécants, tangents ou extérieurs l'un à l'autre ?",
+              "answer": "Extérieurs l'un à l'autre (séparés).",
+              "hint": "Calcule la somme des rayons $R_1 + R_2$ et compare à $O_1O_2 = 8$ cm.",
+              "explanation": "Somme des rayons : $R_1 + R_2 = 3 + 4 = 7$ cm. Distance des centres : $O_1O_2 = 8$ cm. Comme $7 < 8$ (somme des rayons $<$ distance des centres), les cercles ne se touchent pas, ils sont extérieurs l'un à l'autre."
+            },
+            {
+              "question": "Un arroseur est placé au centre $O$ d'une pelouse circulaire. Son jet atteint $5$ m. Un rosier est planté à $4,50$ m du centre $O$. Le rosier sera-t-il arrosé ?",
+              "answer": "Oui, il sera arrosé.",
+              "hint": "Le rayon d'arrosage est $R = 5$ m. La distance du rosier au centre est $4,50$ m. Compare les deux nombres.",
+              "explanation": "Le rayon $R = 5$ m. Distance du rosier au centre $OM = 4,50$ m. Comme $4,50 < 5$ (donc $OM < R$), le rosier est à l'intérieur de la zone arrosée. Il recevra de l'eau."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

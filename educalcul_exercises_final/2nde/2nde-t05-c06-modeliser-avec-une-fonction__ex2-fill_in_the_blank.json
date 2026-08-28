@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Construire formule",
+  "title": "Construire une formule de fonction",
+  "blocks": [
+    {
+      "title": "Modélisation affine : abonnement salle de sport",
+      "content": "Une salle de sport propose un abonnement mensuel fixe de $30$ euros auquel s'ajoute $5$ euros par séance suivie. On note $x$ le nombre de séances suivies dans le mois et $f(x)$ le prix total à payer en euros. La fonction $f$ s'écrit sous la forme $f(x) =$ {{1}} $x +$ {{2}}.",
+      "blanks": [
+        "5",
+        "30"
+      ],
+      "explanation": "Le prix total est la somme du prix fixe (l'abonnement de $30$ euros, qui est le terme constant) et du prix variable qui dépend du nombre de séances $x$ (coût de $5$ euros par séance, qui est le coefficient directeur). On obtient donc $f(x) = 5x + 30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation quadratique : aire d'un rectangle",
+      "content": "Un rectangle a un périmètre de $40$ cm. On note $x$ la longueur en cm d'un de ses côtés (avec $0 < x < 20$). La longueur de l'autre côté s'exprime en fonction de $x$ par {{1}}. L'aire $A(x)$ de ce rectangle en cm$^2$ est donnée par la formule $A(x) =$ {{2}}.",
+      "blanks": [
+        "20 - x|20-x",
+        "-x^2 + 20x|20x - x^2|-x^2+20x"
+      ],
+      "explanation": "Le périmètre est $2 \\times (x + \\text{autre côté}) = 40$, donc $x + \\text{autre côté} = 20$. L'autre côté vaut donc $20 - x$. L'aire est le produit des deux côtés : $A(x) = x(20 - x) = 20x - x^2 = -x^2 + 20x$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux offres : forfaits mobile",
+      "content": "Deux opérateurs proposent des forfaits mensuels. Opérateur A : $15$ euros par mois plus $0,10$ euro par minute d'appel. Opérateur B : $25$ euros par mois avec appels illimités. On note $x$ le nombre de minutes d'appel consommées dans le mois. Le coût chez l'opérateur A est $C_A(x) =$ {{1}} et le coût chez l'opérateur B est $C_B(x) =$ {{2}}.",
+      "blanks": [
+        "0,1x + 15|0.1x + 15|0,1*x + 15",
+        "25"
+      ],
+      "explanation": "Pour l'opérateur A, le coût est la somme d'un fixe ($15$) et d'un variable ($0,10 \\times x$), soit $C_A(x) = 0,1x + 15$. Pour l'opérateur B, le coût est constant quel que soit $x$, soit $C_B(x) = 25$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

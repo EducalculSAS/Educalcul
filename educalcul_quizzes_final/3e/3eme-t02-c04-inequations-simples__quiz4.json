@@ -1,0 +1,85 @@
+{
+  "_status": "done",
+  "_course_id": 464,
+  "_course_code": "3eme-t02-c04-inequations-simples",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Application : Inéquations simples",
+  "title": "Applications des inéquations simples",
+  "questions": [
+    {
+      "text": "Un rectangle a une longueur de $x+5$ cm et une largeur de $x$ cm. Son périmètre est au moins égal à $30$ cm. Quelle inéquation traduit cette situation ?",
+      "options": [
+        "$2(2x+5) > 30$",
+        "$2(2x+5) \\ge 30$",
+        "$2(2x+5) < 30$",
+        "$2(2x+5) \\le 30$"
+      ],
+      "correctAnswer": "$2(2x+5) \\ge 30$",
+      "explanation": "Le périmètre d'un rectangle est $2 \\times (\\text{longueur} + \\text{largeur}) = 2((x+5)+x) = 2(2x+5)$. L'expression 'au moins égal à' se traduit par le symbole $\\ge$. L'inéquation correcte est donc $2(2x+5) \\ge 30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré de côté $x$ cm a une aire strictement supérieure à $25$ cm$^2$. Quelle est l'ensemble des valeurs possibles pour $x$ ?",
+      "options": [
+        "$x > 5$",
+        "$x \\ge 5$",
+        "$x < -5$ ou $x > 5$",
+        "$0 < x < 5$"
+      ],
+      "correctAnswer": "$x > 5$",
+      "explanation": "L'aire du carré est $x^2$. L'inéquation est $x^2 > 25$. Les solutions réelles sont $x < -5$ ou $x > 5$. Comme $x$ représente une longueur, il doit être strictement positif. L'ensemble des valeurs possibles est donc $x > 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour louer un vélo, le tarif A coûte $15 + 2x$ euros pour $x$ heures, le tarif B coûte $5x$ euros. On cherche à partir de quelle durée le tarif A est moins cher que le tarif B. L'inéquation à résoudre est $15 + 2x < 5x$. Quelle en est la solution ?",
+      "options": [
+        "$x < 5$",
+        "$x \\le 5$",
+        "$x > 5$",
+        "$x \\ge 5$"
+      ],
+      "correctAnswer": "$x > 5$",
+      "explanation": "On résout $15 + 2x < 5x$. En soustrayant $2x$ des deux côtés : $15 < 3x$. En divisant par $3$ (positif, le sens ne change pas) : $5 < x$, soit $x > 5$. Le tarif A est moins cher pour une durée strictement supérieure à $5$ heures.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le bénéfice en euros pour $x$ t-shirts vendus est modélisé par $B(x) = -2x + 100$. On veut un bénéfice d'au moins $40$ euros. On résout l'inéquation $-2x + 100 \\ge 40$. Quelle est la solution ?",
+      "options": [
+        "$x \\le 30$",
+        "$x \\ge 30$",
+        "$x \\le -30$",
+        "$x \\ge -30$"
+      ],
+      "correctAnswer": "$x \\le 30$",
+      "explanation": "On résout $-2x + 100 \\ge 40$. On soustrait $100$ : $-2x \\ge -60$. On divise par $-2$ (négatif), ce qui inverse le sens de l'inégalité : $x \\le 30$. Il faut vendre au maximum $30$ t-shirts.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'inéquation $3(x-2) \\le 2x + 1$. La solution est l'intervalle :",
+      "options": [
+        "$[7; +\\infty[$",
+        "$]-\\infty; 7[$",
+        "$]-\\infty; 7]$",
+        "$]-7; +\\infty[$"
+      ],
+      "correctAnswer": "$]-\\infty; 7]$",
+      "explanation": "On développe : $3x - 6 \\le 2x + 1$. On soustrait $2x$ : $x - 6 \\le 1$. On ajoute $6$ : $x \\le 7$. L'ensemble des solutions est l'intervalle $]-\\infty; 7]$.",
+      "points": 1,
+      "figure": {
+        "type": "interval_builder",
+        "min": -10,
+        "max": 10,
+        "lowerBound": -10,
+        "upperBound": 7,
+        "lowerOpen": true,
+        "upperOpen": false,
+        "caption": "Représentation de l'intervalle solution $]-\\infty; 7]$"
+      }
+    }
+  ]
+}

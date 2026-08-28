@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 230,
+  "_course_code": "cm1-t03-c05-multiples-et-diviseurs-simples",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Chercher diviseurs simples",
+  "title": "Quiz : Chercher les diviseurs simples",
+  "questions": [
+    {
+      "text": "Lequel de ces nombres est un diviseur de $12$ ?",
+      "options": [
+        "$2$",
+        "$5$",
+        "$7$",
+        "$11$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Un diviseur d'un nombre permet de faire une division exacte (sans reste). $12 = 2 \\times 6$, donc $2$ est un diviseur de $12$. $12 \\div 5 = 2$ reste $2$, $12 \\div 7 = 1$ reste $5$, $12 \\div 11 = 1$ reste $1$. Ces trois derniers ne sont pas des diviseurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est divisible par $3$ ?",
+      "options": [
+        "$25$",
+        "$34$",
+        "$42$",
+        "$53$"
+      ],
+      "correctAnswer": "$42$",
+      "explanation": "Un nombre est divisible par $3$ si la somme de ses chiffres est un multiple de $3$. Pour $42$ : $4 + 2 = 6$, qui est dans la table de $3$. $25 \\rightarrow 2+5=7$ (non), $34 \\rightarrow 3+4=7$ (non), $53 \\rightarrow 5+3=8$ (non). Donc seul $42$ est divisible par $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la liste complète des diviseurs de $18$ ?",
+      "options": [
+        "$1, 2, 3, 6, 9, 18$",
+        "$1, 2, 3, 4, 6, 9, 18$",
+        "$1, 2, 3, 6, 9$",
+        "$1, 18$"
+      ],
+      "correctAnswer": "$1, 2, 3, 6, 9, 18$",
+      "explanation": "On cherche tous les nombres qui divisent $18$ exactement. $18 = 1 \\times 18$, $18 = 2 \\times 9$, $18 = 3 \\times 6$. Les diviseurs sont donc $1, 2, 3, 6, 9, 18$. La deuxième option ajoute $4$ qui ne divise pas $18$ ($18 \\div 4 = 4$ reste $2$). La troisième oublie $1$ et $18$. La quatrième ne donne que les diviseurs triviaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quels sont les diviseurs communs à $12$ et $18$ ?",
+      "options": [
+        "$1, 2, 3, 6$",
+        "$1, 2, 3, 4, 6$",
+        "$1, 2, 3, 6, 9$",
+        "$1, 2, 3, 4, 6, 12$"
+      ],
+      "correctAnswer": "$1, 2, 3, 6$",
+      "explanation": "Diviseurs de $12$ : $1, 2, 3, 4, 6, 12$. Diviseurs de $18$ : $1, 2, 3, 6, 9, 18$. Les nombres présents dans les deux listes sont $1, 2, 3, 6$. $4$ et $12$ ne divisent pas $18$. $9$ ne divise pas $12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un instituteur a $24$ feutres. Il veut les répartir équitablement dans des boîtes sans en avoir de reste. Quel nombre de boîtes est impossible ?",
+      "options": [
+        "$4$ boîtes",
+        "$6$ boîtes",
+        "$7$ boîtes",
+        "$8$ boîtes"
+      ],
+      "correctAnswer": "$7$ boîtes",
+      "explanation": "Le nombre de boîtes doit être un diviseur de $24$. Diviseurs de $24$ : $1, 2, 3, 4, 6, 8, 12, 24$. $4$ est possible ($6$ par boîte), $6$ est possible ($4$ par boîte), $8$ est possible ($3$ par boîte). $7$ n'est pas un diviseur de $24$ ($24 \\div 7 = 3$ reste $3$), donc impossible.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

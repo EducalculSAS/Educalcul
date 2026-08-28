@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Programme de calcul",
+  "title": "Approfondissement : Programme de calcul",
+  "blocks": [
+    {
+      "title": "Programme de calcul simple",
+      "content": "Écris un algorithme (ou un code façon Python) qui réalise le programme suivant : choisis un nombre, ajoute 3, puis multiplie le résultat par 2. Note le résultat final en fonction du nombre de départ x.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. y ← x + 3\\n3. z ← y * 2\\n4. Afficher z\\n\\nExpression littérale : $z = 2(x + 3)$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part du nombre x. On ajoute 3 ce qui donne x + 3. On multiplie ensuite ce résultat par 2, ce qui s'écrit 2(x + 3). L'algorithme suit exactement ces étapes : lecture, addition, multiplication, affichage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme avec plusieurs opérations",
+      "content": "Écris un algorithme qui effectue ce programme : choisis un nombre, multiplie-le par 4, soustrais 5, puis divise le tout par 3. Exprime le résultat final en fonction du nombre de départ x.",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. a ← x * 4\\n3. b ← a - 5\\n4. c ← b / 3\\n5. Afficher c\\n\\nExpression littérale : $c = \\frac{4x - 5}{3}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme enchaîne multiplication par 4, soustraction de 5 et division par 3. En notant x le nombre de départ, on obtient successivement 4x, puis 4x - 5, puis (4x - 5)/3. L'algorithme traduit chaque étape par une affectation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inverser un programme de calcul",
+      "content": "Le programme suivant est appliqué à un nombre inconnu x : on ajoute 7, on multiplie par 3, on soustrait 12, on obtient 33. Écris un algorithme qui permet de retrouver x à partir du résultat final, puis donne la valeur de x.",
+      "correctAnswer": "Algorithme inverse :\\n1. Lire résultat r (ici 33)\\n2. r ← r + 12\\n3. r ← r / 3\\n4. r ← r - 7\\n5. Afficher r (valeur de x)\\n\\nCalcul : $x = \\frac{33 + 12}{3} - 7 = \\frac{45}{3} - 7 = 15 - 7 = 8$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour retrouver x, on effectue les opérations inverses dans l'ordre inverse : on ajoute 12 (inverse de soustraire 12), on divise par 3 (inverse de multiplier par 3), on soustrait 7 (inverse d'ajouter 7). En partant de 33, on obtient 33 + 12 = 45, 45 / 3 = 15, 15 - 7 = 8. Donc x = 8.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

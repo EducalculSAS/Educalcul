@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 502,
+  "_course_code": "2nde-t01-c07-bilan-nombres-reels-et-arithmetique",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Bilan - Nombres réels et arithmétique",
+  "title": "Bilan - Nombres réels et arithmétique",
+  "questions": [
+    {
+      "text": "Soient les intervalles $I = [2; 5[$ et $J = ]3; 7]$. Quelle est l'intersection $I \\cap J$ ?",
+      "options": [
+        "$]3; 5[$",
+        "$[3; 5[$",
+        "$]3; 5]$",
+        "$[2; 7]$"
+      ],
+      "correctAnswer": "$]3; 5[$",
+      "explanation": "L'intersection de deux intervalles ne conserve que les valeurs communes aux deux. La borne inférieure est le maximum des bornes inférieures : $\\max(2, 3) = 3$. Comme $3$ n'appartient pas à $J$ (crochet ouvert), il n'appartient pas à l'intersection. La borne supérieure est le minimum des bornes supérieures : $\\min(5, 7) = 5$. Comme $5$ n'appartient pas à $I$ (crochet ouvert), il n'appartient pas à l'intersection. L'intersection est donc l'intervalle ouvert $]3; 5[$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $E = \\sqrt{75} - 2\\sqrt{27} + \\sqrt{48}$.",
+      "options": [
+        "$3\\sqrt{3}$",
+        "$\\sqrt{3}$",
+        "$15\\sqrt{3}$",
+        "$-\\sqrt{3}$"
+      ],
+      "correctAnswer": "$3\\sqrt{3}$",
+      "explanation": "On décompose les radicandes en facteurs carrés : $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$, $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$, $\\sqrt{48} = \\sqrt{16 \\times 3} = 4\\sqrt{3}$. En remplaçant : $E = 5\\sqrt{3} - 2 \\times 3\\sqrt{3} + 4\\sqrt{3} = 5\\sqrt{3} - 6\\sqrt{3} + 4\\sqrt{3} = (5 - 6 + 4)\\sqrt{3} = 3\\sqrt{3}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer et donner le résultat sous forme scientifique normale : $\\dfrac{(6 \\times 10^4) \\times (2 \\times 10^{-3})}{3 \\times 10^2}$.",
+      "options": [
+        "$4 \\times 10^{-1}$",
+        "$4 \\times 10^{1}$",
+        "$0,4 \\times 10^{0}$",
+        "$4 \\times 10^{3}$"
+      ],
+      "correctAnswer": "$4 \\times 10^{-1}$",
+      "explanation": "On regroupe les puissances de $10$ et les coefficients : $\\dfrac{6 \\times 2}{3} \\times 10^{4 + (-3) - 2} = \\dfrac{12}{3} \\times 10^{-1} = 4 \\times 10^{-1}$. L'écriture scientifique normale impose un coefficient entre $1$ et $10$, ce qui est le cas pour $4$. L'option $0,4 \\times 10^0$ n'est pas normalisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $a = 2^3 \\times 3^2 \\times 5$ et $b = 2^2 \\times 3^3 \\times 7$. Quelle est la décomposition en facteurs premiers de $\\text{PGCD}(a, b) \\times \\text{PPCM}(a, b)$ ?",
+      "options": [
+        "$2^5 \\times 3^5 \\times 5 \\times 7$",
+        "$2^3 \\times 3^3 \\times 5 \\times 7$",
+        "$2^2 \\times 3^2$",
+        "$2^6 \\times 3^6 \\times 5^2 \\times 7^2$"
+      ],
+      "correctAnswer": "$2^5 \\times 3^5 \\times 5 \\times 7$",
+      "explanation": "Pour tous entiers $a$ et $b$, on a la relation fondamentale $\\text{PGCD}(a, b) \\times \\text{PPCM}(a, b) = a \\times b$. On calcule donc le produit $a \\times b$ en additionnant les exposants des mêmes bases : $2^{3+2} \\times 3^{2+3} \\times 5^1 \\times 7^1 = 2^5 \\times 3^5 \\times 5 \\times 7$. L'option B correspond au PPCM, l'option C au PGCD.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $|x - 2| < 3$ dans $\\mathbb{R}$.",
+      "options": [
+        "$]-1; 5[$",
+        "$[-1; 5]$",
+        "$]-\\infty; -1[ \\cup ]5; +\\infty[$",
+        "$]-5; 1[$"
+      ],
+      "correctAnswer": "$]-1; 5[$",
+      "explanation": "L'inéquation $|x - 2| < 3$ signifie que la distance entre $x$ et $2$ est strictement inférieure à $3$. Cela s'écrit sous forme d'encadrement : $-3 < x - 2 < 3$. En ajoutant $2$ à chaque membre, on obtient $-1 < x < 5$. L'ensemble solution est l'intervalle ouvert $]-1; 5[$. Les bornes sont exclues car l'inégalité est stricte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 122,
+  "_course_code": "ce1-t06-c06-rendre-une-monnaie-simple",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Vérifier somme payée et rendu",
+  "title": "Quiz : Vérifier la somme payée et le rendu",
+  "questions": [
+    {
+      "text": "Un jouet coûte $7\\,\\text{€}$. Je paie avec un billet de $10\\,\\text{€}$. Le commerçant me rend $3\\,\\text{€}$. Comment vérifier si le rendu est correct ?",
+      "options": [
+        "J'additionne $7 + 3$ et je vérifie si je retrouve $10$.",
+        "Je soustrais $10 - 3$ et je vérifie si je retrouve $7$.",
+        "J'additionne $10 + 3$ et je vérifie si je retrouve $7$.",
+        "Je soustrais $7 - 3$ et je vérifie si je retrouve $10$."
+      ],
+      "correctAnswer": "J'additionne $7 + 3$ et je vérifie si je retrouve $10$.",
+      "explanation": "Pour vérifier un rendu de monnaie, on utilise la relation : prix de l'objet + monnaie rendue = somme donnée. Ici, $7\\,\\text{€} + 3\\,\\text{€} = 10\\,\\text{€}$. On retrouve bien le billet donné. La soustraction $10 - 3 = 7$ permet de trouver le rendu, mais la vérification standard est l'addition. Les autres options font des calculs sans lien avec la situation (additionner la somme donnée et le rendu, ou soustraire le prix et le rendu).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bande dessinée coûte $8\\,\\text{€}$. Je donne un billet de $20\\,\\text{€}$. Le commerçant me rend $11\\,\\text{€}$. Y a-t-il une erreur ?",
+      "options": [
+        "Non, le rendu est exact.",
+        "Oui, il manque $1\\,\\text{€}$.",
+        "Oui, il y a $1\\,\\text{€}$ en trop.",
+        "Oui, il manque $2\\,\\text{€}$."
+      ],
+      "correctAnswer": "Oui, il manque $1\\,\\text{€}$.",
+      "explanation": "Le prix est de $8\\,\\text{€}$ et la somme donnée est de $20\\,\\text{€}$. Le rendu correct est $20 - 8 = 12\\,\\text{€}$. Le commerçant a rendu $11\\,\\text{€}$. Il manque donc $12 - 11 = 1\\,\\text{€}$. On peut aussi vérifier par l'addition : $8\\,\\text{€} (\\text{prix}) + 11\\,\\text{€} (\\text{rendu}) = 19\\,\\text{€}$, ce qui ne fait pas $20\\,\\text{€}$. Il manque $1\\,\\text{€}$ pour atteindre la somme donnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "J'achète une pomme à $2\\,\\text{€}$ et une poire à $3\\,\\text{€}$. Je paie avec un billet de $10\\,\\text{€}$. Combien dois-je recevoir de monnaie ?",
+      "options": [
+        "$4\\,\\text{€}$",
+        "$5\\,\\text{€}$",
+        "$6\\,\\text{€}$",
+        "$7\\,\\text{€}$"
+      ],
+      "correctAnswer": "$5\\,\\text{€}$",
+      "explanation": "D'abord, on calcule le total des achats : $2\\,\\text{€} + 3\\,\\text{€} = 5\\,\\text{€}$. Ensuite, on soustrait ce total de la somme donnée : $10\\,\\text{€} - 5\\,\\text{€} = 5\\,\\text{€}$. La monnaie est de $5\\,\\text{€}$. On vérifie : $5\\,\\text{€} (\\text{achats}) + 5\\,\\text{€} (\\text{monnaie}) = 10\\,\\text{€} (\\text{somme donnée})$. L'erreur $4\\,\\text{€}$ vient d'un mauvais calcul de $10-6$, $6\\,\\text{€}$ de $10-4$, et $7\\,\\text{€}$ correspond à l'oubli de la pomme ($10-3$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Pomme",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Poire",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Monnaie",
+            "value": 5,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Somme payée : 10 €"
+      }
+    },
+    {
+      "text": "Un cahier coûte $4\\,\\text{€}\\,50$. Je paie avec un billet de $10\\,\\text{€}$. Le commerçant me rend $5\\,\\text{€}\\,50$. Est-ce le bon rendu ?",
+      "options": [
+        "Oui, car $4\\,\\text{€}\\,50 + 5\\,\\text{€}\\,50 = 10\\,\\text{€}$.",
+        "Non, il manque $50\\,\\text{centimes}$.",
+        "Non, il y a $50\\,\\text{centimes}$ en trop.",
+        "Oui, car $10\\,\\text{€} - 4\\,\\text{€}\\,50 = 5\\,\\text{€}$."
+      ],
+      "correctAnswer": "Oui, car $4\\,\\text{€}\\,50 + 5\\,\\text{€}\\,50 = 10\\,\\text{€}$.",
+      "explanation": "On vérifie en additionnant le prix et le rendu : $4\\,\\text{€}\\,50 + 5\\,\\text{€}\\,50 = 9\\,\\text{€}\\,100$, ce qui fait bien $10\\,\\text{€}$. Le rendu est donc exact. L'option B pense que le rendu devrait être $6\\,\\text{€}$ (erreur de complément à 10). L'option C pense que le rendu devrait être $5\\,\\text{€}$ (oubli des 50 centimes du prix). L'option D donne une mauvaise soustraction ($10 - 4,50 = 5,50$, pas $5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Je paie un livre avec un billet de $20\\,\\text{€}$. Je reçois $6\\,\\text{€}$ de monnaie. Quel est le prix du livre ?",
+      "options": [
+        "$13\\,\\text{€}$",
+        "$14\\,\\text{€}$",
+        "$15\\,\\text{€}$",
+        "$26\\,\\text{€}$"
+      ],
+      "correctAnswer": "$14\\,\\text{€}$",
+      "explanation": "La somme donnée ($20\\,\\text{€}$) est égale au prix du livre plus la monnaie rendue ($6\\,\\text{€}$). Pour trouver le prix, on soustrait la monnaie de la somme donnée : $20\\,\\text{€} - 6\\,\\text{€} = 14\\,\\text{€}$. On vérifie : $14\\,\\text{€} + 6\\,\\text{€} = 20\\,\\text{€}$. L'option $13\\,\\text{€}$ correspond à $20-7$, $15\\,\\text{€}$ à $20-5$, et $26\\,\\text{€}$ à l'addition erronée $20+6$ au lieu de la soustraction.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

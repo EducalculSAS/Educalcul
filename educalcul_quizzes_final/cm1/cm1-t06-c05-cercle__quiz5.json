@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 252,
+  "_course_code": "cm1-t06-c05-cercle",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Rayon / diamètre",
+  "title": "Quiz : Rayon et Diamètre (Approfondissement)",
+  "questions": [
+    {
+      "text": "Dans un cercle, comment le diamètre est-il lié au rayon ?",
+      "options": [
+        "Le diamètre est la moitié du rayon.",
+        "Le diamètre est égal au rayon.",
+        "Le diamètre est le double du rayon.",
+        "Le diamètre est le triple du rayon."
+      ],
+      "correctAnswer": "Le diamètre est le double du rayon.",
+      "explanation": "Par définition, le diamètre est un segment qui passe par le centre du cercle et dont les extrémités sont sur le cercle. Il est composé de deux rayons alignés. Donc le diamètre vaut deux fois le rayon : $d = 2 \\times r$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle a un diamètre de $12$ cm. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$6$ cm",
+        "$24$ cm",
+        "$10$ cm",
+        "$3$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Le rayon est la moitié du diamètre. Pour trouver le rayon, on divise le diamètre par $2$ : $12 \\div 2 = 6$. Le rayon mesure donc $6$ cm. L'option $24$ cm correspond à l'erreur de multiplier au lieu de diviser.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le rayon d'un cercle mesure $7$ cm. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "$3,5$ cm",
+        "$14$ cm",
+        "$21$ cm",
+        "$10$ cm"
+      ],
+      "correctAnswer": "$14$ cm",
+      "explanation": "Le diamètre est le double du rayon. On multiplie la longueur du rayon par $2$ : $7 \\times 2 = 14$. Le diamètre mesure donc $14$ cm. L'option $3,5$ cm correspond à l'erreur de diviser par $2$ au lieu de multiplier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure, le segment $[OA]$ est un rayon du cercle de centre $O$. Si $OA = 5$ cm, quelle est la longueur du diamètre de ce cercle ?",
+      "options": [
+        "$5$ cm",
+        "$2,5$ cm",
+        "$10$ cm",
+        "$15$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le segment $[OA]$ relie le centre $O$ à un point $A$ du cercle, c'est donc un rayon. Il mesure $5$ cm. Le diamètre est le double du rayon : $5 \\times 2 = 10$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O et de rayon 5 cm"
+      }
+    },
+    {
+      "text": "Le diamètre d'un cercle mesure $18$ cm. On trace un autre cercle dont le rayon est égal à la moitié du diamètre du premier cercle. Quel est le rayon du second cercle ?",
+      "options": [
+        "$9$ cm",
+        "$18$ cm",
+        "$36$ cm",
+        "$4,5$ cm"
+      ],
+      "correctAnswer": "$9$ cm",
+      "explanation": "Le diamètre du premier cercle est $18$ cm. La moitié de ce diamètre est $18 \\div 2 = 9$ cm. Le rayon du second cercle vaut donc $9$ cm. On remarque que ce rayon est égal au rayon du premier cercle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

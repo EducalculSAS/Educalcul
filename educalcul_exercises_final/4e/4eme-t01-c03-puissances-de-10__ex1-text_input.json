@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 422,
+  "_course_code": "4eme-t01-c03-puissances-de-10",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Exposants entiers",
+  "title": "Exposants entiers : puissances de 10",
+  "blocks": [
+    {
+      "title": "Produit de puissances de 10",
+      "content": "Simplifie l'expression $10^3 \\times 10^{-5}$ en une seule puissance de 10.",
+      "correctAnswer": "10^{-2}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la règle $a^m \\times a^n = a^{m+n}$. Ici $10^3 \\times 10^{-5} = 10^{3+(-5)} = 10^{-2}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture scientifique",
+      "content": "Écris le nombre $0,00045$ en notation scientifique (sous la forme $a \\times 10^n$ avec $1 \\le a < 10$).",
+      "correctAnswer": "4,5 \\times 10^{-4}",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décale la virgule de 4 rangs vers la droite pour obtenir $4,5$. Comme on a décalé vers la droite, l'exposant est négatif : $0,00045 = 4,5 \\times 10^{-4}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Division de puissances de 10",
+      "content": "Calcule $\\frac{10^6}{10^2 \\times 10^3}$ et donne le résultat sous forme de puissance de 10.",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'abord on simplifie le dénominateur : $10^2 \\times 10^3 = 10^{2+3} = 10^5$. Ensuite $\\frac{10^6}{10^5} = 10^{6-5} = 10^1 = 10$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

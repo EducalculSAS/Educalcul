@@ -1,0 +1,186 @@
+{
+  "_status": "done",
+  "_course_id": 235,
+  "_course_code": "cm1-t04-c02-schemas-en-barres-et-modeles",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Traduire relation",
+  "title": "Quiz : Traduire une relation en schéma en barres (CM1)",
+  "questions": [
+    {
+      "text": "Léa a $15$ billes. Elle en a $5$ de plus que Tom. Quelle relation permet de trouver le nombre de billes de Tom ?",
+      "options": [
+        "Tom = 15 + 5",
+        "Tom = 15 - 5",
+        "Tom = 15 × 5",
+        "Tom = 15 ÷ 5"
+      ],
+      "correctAnswer": "Tom = 15 - 5",
+      "explanation": "Léa a $5$ billes de plus que Tom. Cela signifie que la barre de Léa est plus longue que celle de Tom de $5$ unités. Pour trouver la barre de Tom (la plus petite), il faut retrancher la différence ($5$) au total de Léa ($15$). L'opération est donc $15 - 5 = 10$. L'option 'Tom = 15 + 5' correspond à l'erreur d'additionner au lieu de retrancher.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Tom",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Différence (+5)",
+            "value": 5,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Léa (15) = Tom + 5"
+      }
+    },
+    {
+      "text": "Un sac de billes rouges pèse $40$ grammes. Il pèse $4$ fois plus lourd qu'un sac de billes bleues. Quel schéma en barres représente correctement cette relation ?",
+      "options": [
+        "Une barre 'Rouge' divisée en 4 parties égales, une barre 'Bleu' de la taille d'une partie.",
+        "Une barre 'Rouge' de 40, une barre 'Bleu' de 40, et une petite barre '×4' à côté.",
+        "Une barre 'Rouge' de 40, une barre 'Bleu' plus courte de 4 unités.",
+        "Une barre 'Rouge' et une barre 'Bleu' de la même taille, avec un multiplicateur 4 au-dessus."
+      ],
+      "correctAnswer": "Une barre 'Rouge' divisée en 4 parties égales, une barre 'Bleu' de la taille d'une partie.",
+      "explanation": "La relation 'pèse 4 fois plus lourd' est une relation multiplicative. Le grand total (Rouge = 40 g) correspond à 4 fois la quantité de base (Bleu). Le schéma en barres montre donc la grande barre (Rouge) partitionnée en 4 parties égales, dont une seule correspond à la barre 'Bleu'. Cela permet de visualiser la division $40 ÷ 4 = 10$ pour trouver la masse du sac bleu. Les autres options confondent addition/soustraction ou ne montrent pas la structure multiplicative.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Rouge (40 g)",
+            "value": 40,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 10,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Rouge = 4 × Bleu"
+      }
+    },
+    {
+      "text": "Dans une classe, il y a $28$ élèves. Il y a $4$ filles de plus que de garçons. Quelle écriture mathématique traduit correctement la relation pour trouver le nombre de garçons ?",
+      "options": [
+        "Garçons = (28 - 4) ÷ 2",
+        "Garçons = 28 ÷ 2",
+        "Garçons = 28 - 4",
+        "Garçons = (28 + 4) ÷ 2"
+      ],
+      "correctAnswer": "Garçons = (28 - 4) ÷ 2",
+      "explanation": "Le total (28) est composé de deux groupes : les garçons et les filles. Les filles sont en nombre supérieur de 4. Si on retire la différence (4) au total, on obtient le double du nombre de garçons (car il reste 'Garçons + Garçons'). Il faut donc faire : $(28 - 4) = 24$, puis diviser par 2 pour trouver un seul groupe : $24 ÷ 2 = 12$ garçons. L'option '28 ÷ 2' ignore la différence. L'option '28 - 4' donne le double du nombre de garçons.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Garçons",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Garçons",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "+ 4 filles",
+            "value": 4,
+            "tone": "red"
+          }
+        ],
+        "caption": "Total 28 = 2 × Garçons + 4"
+      }
+    },
+    {
+      "text": "Un rectangle a un périmètre de $36$ cm. Sa longueur est $2$ fois sa largeur. Quelle relation permet de trouver la largeur ?",
+      "options": [
+        "Largeur = 36 ÷ 6",
+        "Largeur = 36 ÷ 4",
+        "Largeur = 36 ÷ 3",
+        "Largeur = 36 ÷ 2"
+      ],
+      "correctAnswer": "Largeur = 36 ÷ 6",
+      "explanation": "Le périmètre d'un rectangle est la somme de tous les côtés : $2 × (Longueur + Largeur)$. Ici, Longueur = $2 × Largeur$. Donc Périmètre = $2 × (2L + L) = 2 × 3L = 6L$. Avec $L$ la largeur. On a donc $6 × Largeur = 36$, d'où $Largeur = 36 ÷ 6 = 6$ cm. En schéma en barres, le demi-périmètre (18 cm) se divise en 3 parties égales (2 pour la longueur, 1 pour la largeur). Le périmètre total se divise en 6 parties égales pour la largeur.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "L",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "L",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "l",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "l",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "l",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "l",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Périmètre 36 = 6 × largeur"
+      }
+    },
+    {
+      "text": "Paul a $35$ euros. Il achète $3$ cahiers au même prix et il lui reste $5$ euros. Quel schéma en barres modélise la situation pour trouver le prix d'un cahier ?",
+      "options": [
+        "Une barre totale 35, une partie 'reste 5', le reste divisé en 3 parties égales 'cahier'.",
+        "Une barre totale 35 divisée en 3 parties égales, avec un reste 5 à côté.",
+        "Une barre '3 cahiers' de 35, une barre 'reste' de 5.",
+        "Une barre totale 35, une partie 'cahier', une partie 'reste 5', le tout multiplié par 3."
+      ],
+      "correctAnswer": "Une barre totale 35, une partie 'reste 5', le reste divisé en 3 parties égales 'cahier'.",
+      "explanation": "Le montant de départ (35) est le tout. On retire d'abord ce qui n'est pas dépensé : le reste (5). Ce qui reste ($35 - 5 = 30$) correspond au prix total des 3 cahiers. Comme les 3 cahiers ont le même prix, on divise ce montant restant en 3 parties égales. Chaque partie vaut $30 ÷ 3 = 10$ euros. Le schéma doit montrer : Total -> [Reste 5] + [Cahier 1] + [Cahier 2] + [Cahier 3]. L'option B divise le total par 3 avant de retirer le reste, ce qui est incorrect.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Cahier 1",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Cahier 2",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Cahier 3",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Reste 5 €",
+            "value": 5,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Total 35 € = 3 × Cahier + 5"
+      }
+    }
+  ]
+}

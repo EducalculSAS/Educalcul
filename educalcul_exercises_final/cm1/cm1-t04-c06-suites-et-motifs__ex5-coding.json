@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Approfondissement : Identifier règle",
+  "title": "Algorithmes et suites : identifier la règle",
+  "blocks": [
+    {
+      "title": "Suite additive",
+      "content": "On considère la suite de nombres : $3$, $7$, $11$, $15$, $19$...\\nQuelle est la règle de construction de cette suite ?\\nÉcris un algorithme (en langage naturel ou style Python) qui permet d'afficher les six premiers termes de cette suite.",
+      "correctAnswer": "Règle : Le premier terme est $3$. Pour passer d'un terme au suivant, on ajoute $4$.\\nAlgorithme :\\nterme = 3\\nRépéter 6 fois :\\n    Afficher terme\\n    terme = terme + 4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On observe les différences entre termes consécutifs : $7 - 3 = 4$, $11 - 7 = 4$, $15 - 11 = 4$. La règle est donc une suite arithmétique de raison $4$ et de premier terme $3$. L'algorithme initialise une variable à $3$, l'affiche, puis ajoute $4$ avant de recommencer, six fois au total pour obtenir les six premiers termes : $3, 7, 11, 15, 19, 23$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite multiplicative",
+      "content": "On considère la suite : $5$, $15$, $45$, $135$...\\nIdentifie la règle de passage d'un terme au suivant.\\nÉcris un algorithme qui calcule et affiche les cinq premiers termes de cette suite.",
+      "correctAnswer": "Règle : Le premier terme est $5$. Pour passer d'un terme au suivant, on multiplie par $3$.\\nAlgorithme :\\nterme = 5\\nRépéter 5 fois :\\n    Afficher terme\\n    terme = terme * 3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On observe les rapports entre termes consécutifs : $15 / 5 = 3$, $45 / 15 = 3$, $135 / 45 = 3$. C'est une suite géométrique de raison $3$ et de premier terme $5$. L'algorithme démarre à $5$, affiche la valeur, puis la multiplie par $3$ à chaque tour de boucle, cinq fois. Les termes affichés sont : $5, 15, 45, 135, 405$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'algorithme",
+      "content": "Voici un algorithme :\\nnombre = 2\\nRépéter 4 fois :\\n    Afficher nombre\\n    nombre = nombre * 2 + 1\\nQuels sont les quatre nombres affichés par cet algorithme ?",
+      "correctAnswer": "Les nombres affichés sont : $2$, $5$, $11$, $23$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On exécute l'algorithme pas à pas :\\n1. Initialisation : nombre = $2$. Premier affichage : $2$. Calcul : $2 \\times 2 + 1 = 5$.\\n2. Deuxième tour : nombre = $5$. Affichage : $5$. Calcul : $5 \\times 2 + 1 = 11$.\\n3. Troisième tour : nombre = $11$. Affichage : $11$. Calcul : $11 \\times 2 + 1 = 23$.\\n4. Quatrième tour : nombre = $23$. Affichage : $23$.\\nLa boucle s'arrête après 4 répétitions. La suite obtenue est $2, 5, 11, 23$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,708 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.663770+00:00",
+  "id": 377,
+  "code": "6eme-t09-c04",
+  "title": "Programmes géométriques",
+  "description": "Cours structuré Educalcul : Programmes géométriques.",
+  "subject": "Algorithmique",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algorithmique",
+    "titre_du_cours": "Programmes géométriques",
+    "objectif_global": "Programmes géométriques",
+    "mini_lecons_imposees": [
+      "Coordonnées.",
+      "Tracer.",
+      "Déboguer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique",
+      "lessons": [
+        {
+          "title": "Coordonnées.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le repère orthonormé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une grande feuille quadrillée qui s'étend à l'infini dans toutes les directions. Au centre de cette feuille, on place un point spécial que l'on appelle l'origine et que l'on note $O$. De l'origine partent deux droites perpendiculaires : l'une horizontale, appelée axe des abscisses, et l'autre verticale, appelée axe des ordonnées. Chaque point de la feuille peut alors être repéré par deux nombres : le premier dit à quelle distance il se trouve à gauche ou à droite de l'origine, le second dit à quelle distance il se trouve au-dessus ou en dessous. Ce système de repérage s'appelle un repère orthonormé parce que les deux axes ont la même unité de longueur et forment un angle droit. Grâce à lui, on peut décrire n'importe quelle position de façon précise et sans ambiguïté."
+            },
+            {
+              "type": "definition",
+              "term": "abscisse",
+              "definition": "L'abscisse est la première coordonnée d'un point, elle indique sa position horizontale par rapport à l'origine.",
+              "example": "Pour le point $A(3;2)$, l'abscisse vaut $3$."
+            },
+            {
+              "type": "definition",
+              "term": "ordonnée",
+              "definition": "L'ordonnée est la seconde coordonnée d'un point, elle indique sa position verticale par rapport à l'origine.",
+              "example": "Pour le point $A(3;2)$, l'ordonnée vaut $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des abscisses avec l'origine et le point 3",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "O"
+                },
+                {
+                  "value": 3,
+                  "label": "A"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le point sur l'axe horizontal et note le nombre qui se trouve sous sa projection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le point sur l'axe vertical et note le nombre qui se trouve à gauche de sa projection."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le couple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux nombres dans l'ordre (abscisse ; ordonnée) entre parenthèses, par exemple $(3;2)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire les coordonnées, voyons comment faire l'opération inverse : placer un point quand on connaît son couple de nombres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un point connaissant ses coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que l'on te donne le couple $( -2 ; 4 )$. Le premier nombre, $-2$, te demande de partir de l'origine et de te déplacer de deux unités vers la gauche sur l'axe des abscisses. Le second nombre, $4$, t'invite ensuite à monter de quatre unités vers le haut sur l'axe des ordonnées. L'endroit où tu arrives est exactement la position du point cherché. Cette méthode fonctionne pour n'importe quel couple, qu'il contienne des nombres positifs, négatifs ou nuls."
+            },
+            {
+              "type": "display_math",
+              "latex": "(-2;4)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Se déplacer horizontalement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis $O$, avance de $|x|$ graduations vers la droite si $x>0$, vers la gauche si $x<0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Se déplacer verticalement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Depuis cette nouvelle position, monte de $|y|$ graduations si $y>0$, descends si $y<0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Marquer le point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose un petit croix ou un point et note son nom à côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant placer un point. Apprenons à faire le chemin inverse : à partir d'un point déjà dessiné, retrouver ses coordonnées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les coordonnées d'un point déjà tracé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le point $B$ sur la figure. Trace mentalement une ligne verticale descendante jusqu'à l'axe des abscisses : le nombre lu est l'abscisse. Ensuite, trace une ligne horizontale vers l'axe des ordonnées : le nombre lu est l'ordonnée. Si le point se trouve dans le quadrant en haut à gauche, l'abscisse sera négative et l'ordonnée positive. Cette lecture visuelle devient rapide avec un peu d'entraînement."
+            },
+            {
+              "type": "number_line",
+              "caption": "Axe des ordonnées avec le point B à 4",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "O"
+                },
+                {
+                  "value": 4,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, découvrons comment déplacer un point en ajoutant un vecteur, ce qui revient à modifier ses deux coordonnées simultanément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déplacer un point par un vecteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un vecteur se note $\\vec{v}(a;b)$ et signifie : avance de $a$ sur l'axe horizontal, puis de $b$ sur l'axe vertical. Si le point de départ est $P(x;y)$, le point d'arrivée $P'$ aura pour coordonnées $(x+a ; y+b)$. Par exemple, en appliquant $\\vec{v}(3;-1)$ au point $P( -2 ; 4 )$, on obtient $P'( 1 ; 3 )$. C'est exactement la même idée que d'ajouter deux nombres, mais faite sur les deux axes à la fois."
+            },
+            {
+              "type": "display_math",
+              "latex": "P' = (x+a ; y+b)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les coordonnées du point $C$ placé à 2 unités à droite de l'origine et 3 unités au-dessus.",
+              "answer": "C(2;3)",
+              "hint": "L'abscisse correspond au déplacement horizontal, l'ordonnée au déplacement vertical.",
+              "explanation": "Puisque le point est à droite, l'abscisse est positive $2$. Comme il est au-dessus, l'ordonnée est positive $3$. On écrit donc $C(2;3)$."
+            },
+            {
+              "question": "Place le point $D(-4; -1)$ sur un repère orthonormé.",
+              "answer": "Point en quadrant en bas à gauche, à 4 graduations à gauche et 1 en bas.",
+              "hint": "Commence par l'abscisse négative (gauche), puis l'ordonnée négative (bas).",
+              "explanation": "L'abscisse $-4$ t'envoie 4 unités à gauche de l'origine. L'ordonnée $-1$ t'envoie 1 unité en bas. Marque l'intersection."
+            },
+            {
+              "question": "Le point $E$ a pour coordonnées $(5; -2)$. Quelles sont son abscisse et son ordonnée ?",
+              "answer": "Abscisse = 5, Ordonnée = -2",
+              "hint": "Le premier nombre du couple est l'abscisse, le second l'ordonnée.",
+              "explanation": "Dans le couple $(5;-2)$, le nombre $5$ est l'abscisse (horizontal) et $-2$ est l'ordonnée (vertical)."
+            },
+            {
+              "question": "Applique le vecteur $\\vec{v}(-3; 2)$ au point $F(1; -4)$. Donne les coordonnées de $F'$.",
+              "answer": "F'(-2; -2)",
+              "hint": "Ajoute les composantes du vecteur aux coordonnées du point de départ.",
+              "explanation": "Abscisse : $1 + (-3) = -2$. Ordonnée : $-4 + 2 = -2$. Le point image est $F'(-2;-2)$."
+            }
+          ]
+        },
+        {
+          "title": "Tracer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un segment entre deux points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un segment est la portion de droite qui relie deux points sans les dépasser. Pour le tracer, il suffit de poser la règle de manière à ce qu'elle passe par les deux points donnés, puis de tracer le trait entre eux. Si les points sont $A(1;2)$ et $B(4;5)$, tu places d'abord $A$ et $B$ sur le repère, ensuite tu alignes ta règle sur ces deux croix et tu dessines le segment $[AB]$. Le segment a une longueur mesurable et deux extrémités bien définies."
+            },
+            {
+              "type": "display_math",
+              "latex": "[AB]"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les deux points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la méthode apprise pour placer $A$ et $B$ d'après leurs coordonnées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aligner la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le bord de la règle sur les deux points de manière qu'ils soient tous les deux sur le trait."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le trait seulement entre $A$ et $B$, sans dépasser."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après le segment, nous allons assembler trois segments pour former un triangle, figure géométrique fondamentale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un triangle à partir de ses trois sommets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un triangle est défini par trois points non alignés, appelés sommets. Pour le tracer, commence par placer les trois sommets $A$, $B$, $C$ grâce à leurs coordonnées. Ensuite, trace le segment $[AB]$, puis $[BC]$, et enfin $[CA]$. Les trois segments se referment et forment le triangle $ABC$. Vérifie toujours que les trois points ne sont pas sur la même droite, sinon tu obtiendrais un segment et non un triangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avec sommets A(0;0), B(4;0), C(2;3)",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "c",
+                "a",
+                "b"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer les trois sommets",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère chaque couple de coordonnées sur le repère."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Relier les sommets deux à deux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace $[AB]$, puis $[BC]$, puis $[CA]$ à la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Nommer le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le nom $ABC$ à l'intérieur de la figure."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cercle est une autre figure essentielle. Il se définit par un centre et un rayon, c'est-à-dire une distance fixe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer un cercle avec centre et rayon"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer un cercle de centre $O(0;0)$ et de rayon $3\\,cm$, ouvre ton compas à une ouverture de $3\\,cm$ en te servant de la graduation de la règle. Pose la pointe sèche sur le point $O$ et fais tourner le compas pour dessiner la circonférence. Tous les points du cercle sont à exactement $3\\,cm$ du centre. Si le centre a d'autres coordonnées, place d'abord ce centre puis règle le compas de la même façon."
+            },
+            {
+              "type": "compass_tool",
+              "caption": "Cercle de centre O(0;0) et rayon 3 cm",
+              "radius": 3,
+              "centerLabel": "O"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer le centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le point centre d'après ses coordonnées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Régler le compas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ouvre le compas à la longueur du rayon indiquée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la circonférence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tourne le compas d'un tour complet sans bouger la pointe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment une boucle dans un programme peut répéter des instructions pour tracer un carré sans réécrire quatre fois la même commande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser une boucle pour tracer un carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un carré a quatre côtés de même longueur et quatre angles droits. Au lieu d'écrire quatre fois « avancer de 5 cm, tourner de 90° », on écrit une boucle qui répète ce bloc d'instructions quatre fois. En langage de programmation visuelle, cela ressemble à : « Répéter 4 fois : avancer 5 ; tourner 90 ». Le programme exécute les deux instructions, revient au début du bloc, et recommence jusqu'à ce que le compteur atteigne 4. C'est plus court, plus clair et moins source d'erreurs."
+            },
+            {
+              "type": "display_math",
+              "latex": "R\\acute{e}p\\acute{e}ter\\ 4\\ fois\\ :\\ \\\\text{avancer }5\\ ;\\ \\\\text{tourner }90^{\\circ}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir la longueur du côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur, par exemple $5\\,cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répéter 4 fois : avancer la longueur choisie ; tourner de $90^{\\circ}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lancer le programme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe le tracé : un carré parfait apparaît."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace le segment $[PQ]$ avec $P( -1 ; 2 )$ et $Q( 3 ; -1 )$.",
+              "answer": "Segment reliant les deux points placés aux coordonnées données.",
+              "hint": "Place d'abord les deux points, puis aligne la règle.",
+              "explanation": "Après avoir placé $P$ et $Q$, la règle passe par les deux points. Le trait tracé entre eux est le segment $[PQ]$."
+            },
+            {
+              "question": "Donne les coordonnées des sommets d'un triangle rectangle isocèle dont le sommet de l'angle droit est à l'origine et les deux autres sommets sur les axes à 4 cm.",
+              "answer": "A(0;0), B(4;0), C(0;4)",
+              "hint": "Les points sur l'axe des abscisses ont ordonnée 0, sur l'axe des ordonnées abscisse 0.",
+              "explanation": "Le sommet de l'angle droit est l'origine $A(0;0)$. Sur l'axe horizontal à 4 cm on a $B(4;0)$. Sur l'axe vertical à 4 cm on a $C(0;4)$. Le triangle $ABC$ est rectangle en $A$ et isocèle."
+            },
+            {
+              "question": "Trace un cercle de centre $M(2; -3)$ et de rayon $2\\,cm$.",
+              "answer": "Cercle centré en (2;-3) de rayon 2 cm.",
+              "hint": "Place le centre puis règle le compas sur 2 cm.",
+              "explanation": "On repère $M(2;-3)$. On ouvre le compas à 2 cm. On pose la pointe sur $M$ et on trace le tour complet."
+            },
+            {
+              "question": "Écris l'instruction de boucle pour tracer un carré de côté 6 cm.",
+              "answer": "Répéter 4 fois : avancer 6 ; tourner 90",
+              "hint": "La boucle répète le motif « avancer, tourner » quatre fois.",
+              "explanation": "Chaque côté mesure 6 cm, chaque angle vaut 90°. La boucle « Répéter 4 fois : avancer 6 ; tourner 90 » produit exactement le carré."
+            }
+          ]
+        },
+        {
+          "title": "Déboguer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer une erreur de coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand un programme de tracé ne donne pas la figure attendue, la première chose à vérifier est la justesse des coordonnées utilisées. Imagine que tu aies écrit $A(3;2)$ mais que le point apparaisse à l'écran en $(-3;2)$. L'erreur vient souvent d'un signe oublié ou inversé sur l'abscisse. Pour la détecter, compare les coordonnées prévues avec la position réelle du point sur le repère. Une astuce : note les coordonnées lues visuellement à côté du point tracé, puis compare avec le code."
+            },
+            {
+              "type": "number_line",
+              "caption": "Point attendu à (3;2) et point affiché à (-3;2)",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Attendu"
+                },
+                {
+                  "value": -3,
+                  "label": "Affiché"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire les coordonnées réelles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur le repère, projette le point sur les axes et note les valeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer avec le code",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la ligne du programme qui définit ce point et vois si les signes correspondent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger le signe erroné",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Modifie le nombre dans le code, relance le programme et vérifie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois l'erreur ne vient pas des nombres mais de l'ordre des instructions de tracé : un segment tracé avant que ses extrémités ne soient placées, ou un cercle dessiné avant que son centre ne soit défini."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Corriger une instruction de tracé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un programme, les instructions s'exécutent séquentiellement. Si tu écris « tracer segment [AB] » avant les lignes « placer A » et « placer B », l'ordinateur ne trouve pas les points et affiche une erreur ou ne dessine rien. La règle simple est : tout point doit être placé avant d'être utilisé. Pour corriger, déplace les lignes de placement au-dessus de la ligne de tracé. Vérifie aussi que les noms de points correspondent exactement, majuscules comprises."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Ordre des instructions",
+              "paragraphs": [
+                "Toujours placer les points avant de les utiliser dans un tracé."
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'instruction fautive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la ligne qui provoque l'erreur (souvent signalée par le logiciel)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remonter les définitions manquantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve où les points utilisés sont définis et monte ces lignes avant l'instruction fautive."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester à nouveau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relance le programme et observe si le tracé apparaît correctement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr que ton programme fonctionne pas à pas, tu peux l'exécuter en mode « débogage » : le logiciel s'arrête après chaque instruction et t'affiche l'état du repère. C'est comme avancer dans une recette de cuisine en vérifiant chaque étape avant de passer à la suivante."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exécuter le programme pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Active le mode pas à pas (souvent une icône avec une flèche et une pause). Le programme s'arrête sur la première instruction. Regarde le repère : le point est-il bien placé ? Appuie sur « suivant » pour passer à l'instruction suivante. Continue ainsi jusqu'à la fin. Si à un moment le dessin ne correspond pas à ce que tu attends, tu as trouvé l'instruction fautive. Cette méthode est très puissante pour comprendre la logique de ton code."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Activer le mode pas à pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Clique sur le bouton « Déboguer » ou « Pas à pas » de l'éditeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer après chaque instruction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le repère correspond à ce que l'instruction vient de faire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger et recommencer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une erreur apparaît, modifie le code, puis relance le mode pas à pas depuis le début."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et écrire les coordonnées d'un point dans un repère orthonormé.",
+                "Je sais placer un point connaissant ses coordonnées.",
+                "Je sais tracer un segment, un triangle et un cercle à partir de leurs données.",
+                "Je sais utiliser une boucle pour répéter des instructions de tracé.",
+                "Je sais repérer une erreur de signe dans les coordonnées.",
+                "Je sais corriger l'ordre des instructions dans un programme.",
+                "Je sais exécuter un programme en mode pas à pas pour le déboguer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le programme affiche le point $R$ en $(-2;5)$ alors que le code contient $R(2;5)$. Quel signe est erroné ?",
+              "answer": "L'abscisse a un signe opposé : le code a $2$ au lieu de $-2$.",
+              "hint": "Compare l'abscisse attendue et l'abscisse affichée.",
+              "explanation": "L'ordonnée $5$ est correcte. L'abscisse affichée est $-2$ alors que le code dit $2$. Il faut changer $2$ en $-2$ dans le code."
+            },
+            {
+              "question": "Dans le programme suivant, quelle ligne doit être déplacée avant la ligne « tracer segment [AB] » ?\\n1. tracer segment [AB]\\n2. placer A(1;1)\\n3. placer B(4;3)",
+              "answer": "Les lignes 2 et 3 doivent être placées avant la ligne 1.",
+              "hint": "Les points doivent exister avant d'être utilisés.",
+              "explanation": "L'instruction de tracé utilise les points A et B. Il faut donc d'abord exécuter « placer A(1;1) » et « placer B(4;3) » avant « tracer segment [AB] »."
+            },
+            {
+              "question": "En mode pas à pas, après l'instruction « placer C( -3 ; 2 ) », que dois-tu observer sur le repère ?",
+              "answer": "Un point au quadrant en haut à gauche, à 3 graduations à gauche et 2 en haut.",
+              "hint": "L'abscisse négative va à gauche, l'ordonnée positive va en haut.",
+              "explanation": "L'instruction place le point C. Sur le repère, tu dois voir une croix à l'intersection de l'abscisse -3 et de l'ordonnée 2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

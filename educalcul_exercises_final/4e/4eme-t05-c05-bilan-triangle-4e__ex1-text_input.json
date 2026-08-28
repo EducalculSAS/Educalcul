@@ -1,0 +1,73 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 444,
+  "_course_code": "4eme-t05-c05-bilan-triangle-4e",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Pythagore et raisonnement",
+  "title": "Pythagore et raisonnement - Exercices progressifs",
+  "blocks": [
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $6$ cm et $8$ cm. Calcule la longueur de l'hypoténuse.",
+      "correctAnswer": "10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le théorème de Pythagore : $c^2 = a^2 + b^2$. Ici $a = 6$ et $b = 8$. Donc $c^2 = 6^2 + 8^2 = 36 + 64 = 100$. La racine carrée de $100$ est $10$. L'hypoténuse mesure $10$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle avec côtés 6 et 8",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "6",
+          "8",
+          "?"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Recherche d'un côté manquant",
+      "content": "Le triangle $ABC$ est rectangle en $B$. On sait que $AB = 5$ cm et $AC = 13$ cm. Détermine la longueur de $BC$.",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le triangle rectangle en $B$, $AC$ est l'hypoténuse. D'après Pythagore : $AC^2 = AB^2 + BC^2$. Donc $13^2 = 5^2 + BC^2$, soit $169 = 25 + BC^2$. Alors $BC^2 = 144$ et $BC = \\sqrt{144} = 12$. Le côté $BC$ mesure $12$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en B avec AB=5, AC=13",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5",
+          "?",
+          "13"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "title": "Problème concret : l'échelle",
+      "content": "Une échelle de $5$ m de long est appuyée contre un mur. Son pied est à $3$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "correctAnswer": "4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($5$ m), la distance au mur est un côté ($3$ m). Soit $h$ la hauteur cherchée. Pythagore donne $5^2 = 3^2 + h^2$, soit $25 = 9 + h^2$. Donc $h^2 = 16$ et $h = 4$. L'échelle atteint $4$ m de hauteur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Statistiques et Probabilités - Notions Clés 4e",
+  "blocks": [
+    {
+      "title": "Vocabulaire statistique de base",
+      "content": "L'ensemble des individus sur lesquels porte l'étude s'appelle la {{1}}. La caractéristique observée (qualitative ou quantitative) est le {{2}}. Pour une valeur donnée, le nombre d'individus qui la présentent est son {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "population",
+        "caractère",
+        "effectif"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La **population** est l'ensemble complet des individus étudiés (ex : les élèves d'une classe). Le **caractère** est la propriété mesurée (ex : la taille, la couleur des yeux). L'**effectif** d'une valeur est le nombre de fois qu'elle apparaît dans la série. La fréquence est l'effectif divisé par l'effectif total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Indicateurs numériques : position et dispersion",
+      "content": "L'indicateur obtenu en divisant la somme des valeurs par l'effectif total est la {{1}}. Celui qui sépare la série ordonnée en deux parties de même effectif est la {{2}}. La différence entre la valeur maximale et la valeur minimale s'appelle l'{{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "moyenne",
+        "médiane",
+        "étendue"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La **moyenne** est le centre de gravité de la série : $\\text{Moyenne} = \\frac{\\text{Somme des valeurs}}{\\text{Effectif total}}$. La **médiane** est la valeur du milieu quand les données sont triées (ou la moyenne des deux valeurs centrales si l'effectif est pair). L'**étendue** mesure la dispersion totale : $\\text{Étendue} = \\text{Max} - \\text{Min}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilités : équilibre et représentation",
+      "content": "Si toutes les issues d'une expérience aléatoire ont la même chance de se produire, on dit qu'elles sont {{1}}. La probabilité d'un événement A s'écrit alors $P(A) = {{2}}$. Le diagramme représentant les issues successives d'une expérience à plusieurs étapes, avec les probabilités sur les branches, est un {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "équiprobables",
+        "nombre de cas favorables / nombre de cas possibles",
+        "arbre pondéré"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Des issues **équiprobables** ont même probabilité (ex : dé équilibré, pièce non truquée). Dans ce cas, la formule de **Laplace** s'applique : $P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$. Un **arbre pondéré** (ou arbre de probabilités) permet de visualiser les issues d'expériences composées (ex : deux lancers de dé) ; les probabilités sont indiquées sur chaque branche et la somme des probabilités arrivant à un même nœud vaut 1.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

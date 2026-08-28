@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_course_id": 198,
+  "_course_code": "ce2-t07-c03-triangles-particuliers-accessibles",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Construire dans cas simples",
+  "title": "Quiz : Construire des triangles particuliers (CE2)",
+  "questions": [
+    {
+      "text": "Quel instrument utilise-t-on pour tracer un angle droit ?",
+      "options": [
+        "Une règle",
+        "Un compas",
+        "Une équerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Une équerre",
+      "explanation": "La règle permet de tracer des segments et de mesurer des longueurs. Le compas sert à tracer des cercles ou reporter des longueurs. Le rapporteur mesure les angles. L'équerre est l'outil spécifique pour tracer et vérifier les angles droits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le triangle ci-dessous. Quel est son nom particulier ?",
+      "options": [
+        "Triangle équilatéral",
+        "Triangle isocèle",
+        "Triangle rectangle",
+        "Triangle quelconque"
+      ],
+      "correctAnswer": "Triangle rectangle",
+      "explanation": "Le petit carré tracé dans l'angle au sommet A indique que cet angle est un angle droit. Un triangle qui possède un angle droit s'appelle un triangle rectangle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec un angle droit en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Pour construire un triangle isocèle en connaissant la base et la longueur des deux côtés égaux, quel instrument est indispensable après avoir tracé la base ?",
+      "options": [
+        "La règle graduée",
+        "Le compas",
+        "L'équerre",
+        "Le rapporteur"
+      ],
+      "correctAnswer": "Le compas",
+      "explanation": "Une fois la base tracée à la règle, on utilise le compas pour reporter la longueur des côtés égaux depuis chaque extrémité de la base. L'intersection des deux arcs de cercle détermine le troisième sommet du triangle isocèle.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "A",
+        "caption": "Utilisation du compas pour reporter une longueur"
+      }
+    },
+    {
+      "text": "On veut construire un triangle équilatéral de côté $5$ cm. Quelle est la première étape après avoir tracé le premier côté ?",
+      "options": [
+        "Tracer la hauteur avec l'équerre",
+        "Mesurer $5$ cm sur la règle",
+        "Tracer deux arcs de cercle de rayon $5$ cm aux extrémités du côté",
+        "Tracer un angle de $60$ degrés au rapporteur"
+      ],
+      "correctAnswer": "Tracer deux arcs de cercle de rayon $5$ cm aux extrémités du côté",
+      "explanation": "Un triangle équilatéral a trois côtés de même longueur. Après avoir tracé un côté de $5$ cm, on ouvre le compas à $5$ cm. On place la pointe à une extrémité et on trace un arc, puis on fait de même à l'autre extrémité. L'intersection des arcs donne le troisième sommet.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "A",
+        "caption": "Premier arc de cercle de rayon 5 cm"
+      }
+    },
+    {
+      "text": "On a codé un triangle avec deux traits sur deux côtés (côtés de même longueur) et un petit carré dans un angle (angle droit). Comment appelle-t-on ce triangle ?",
+      "options": [
+        "Triangle équilatéral",
+        "Triangle rectangle isocèle",
+        "Triangle rectangle quelconque",
+        "Triangle isocèle non rectangle"
+      ],
+      "correctAnswer": "Triangle rectangle isocèle",
+      "explanation": "Le codage avec deux traits sur deux côtés signifie que ces deux côtés ont la même longueur : le triangle est isocèle. Le petit carré dans un angle signale un angle droit : le triangle est rectangle. C'est donc un triangle rectangle isocèle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle isocèle codé",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "5 cm",
+          "base"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

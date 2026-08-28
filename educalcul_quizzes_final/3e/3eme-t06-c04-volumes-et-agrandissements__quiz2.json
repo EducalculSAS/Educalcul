@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 488,
+  "_course_code": "3eme-t06-c04-volumes-et-agrandissements",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Effet d'un rapport",
+  "title": "Effet d'un rapport sur les volumes",
+  "questions": [
+    {
+      "text": "Un cube de côté $2$ cm est agrandi par un rapport $3$. Quel est le volume du nouveau cube ?",
+      "options": [
+        "Volume $8$ cm$^3$",
+        "Volume $24$ cm$^3$",
+        "Volume $216$ cm$^3$",
+        "Volume $72$ cm$^3$"
+      ],
+      "correctAnswer": "Volume $216$ cm$^3$",
+      "explanation": "Le volume initial est $2^3 = 8$ cm$^3$. Un agrandissement de rapport $3$ multiplie les longueurs par $3$, les aires par $3^2 = 9$ et les volumes par $3^3 = 27$. Le nouveau volume est donc $8 \\times 27 = 216$ cm$^3$. Les autres options correspondent à une multiplication par $3$ (24), par $9$ (72) ou au volume initial (8).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux pyramides semblables ont des volumes $27$ cm$^3$ et $64$ cm$^3$. Quel est le rapport de leurs longueurs correspondantes ?",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{9}{16}$",
+        "$\\frac{27}{64}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "Le rapport des volumes est $\\frac{27}{64}$. Pour des solides semblables, le rapport des volumes est le cube du rapport de similitude $k$. Donc $k^3 = \\frac{27}{64}$, d'où $k = \\sqrt[3]{\\frac{27}{64}} = \\frac{3}{4}$. L'option $\\frac{4}{3}$ est l'inverse, $\\frac{9}{16}$ est le carré du rapport, et $\\frac{27}{64}$ est le rapport des volumes lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône de volume $100$ cm$^3$ est réduit par un rapport $\\frac{1}{2}$. Quel est le volume du cône réduit ?",
+      "options": [
+        "$12,5$ cm$^3$",
+        "$25$ cm$^3$",
+        "$50$ cm$^3$",
+        "$75$ cm$^3$"
+      ],
+      "correctAnswer": "$12,5$ cm$^3$",
+      "explanation": "Un rapport de réduction $\\frac{1}{2}$ multiplie les longueurs par $\\frac{1}{2}$, les aires par $\\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$ et les volumes par $\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$. Le nouveau volume est $100 \\times \\frac{1}{8} = 12,5$ cm$^3$. L'option $25$ correspond à une division par $4$ (aire), $50$ à une division par $2$ (longueur), $75$ n'a pas de lien direct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavé droit a des dimensions $4$ cm, $5$ cm, $6$ cm. On l'agrandit par un rapport $2$. Quelle est l'aire totale de la surface du nouveau pavé ?",
+      "options": [
+        "$148$ cm$^2$",
+        "$296$ cm$^2$",
+        "$592$ cm$^2$",
+        "$1184$ cm$^2$"
+      ],
+      "correctAnswer": "$592$ cm$^2$",
+      "explanation": "L'aire totale initiale est $2(ab+bc+ac) = 2(4\\times5 + 5\\times6 + 4\\times6) = 2(20+30+24) = 148$ cm$^2$. Un agrandissement de rapport $2$ multiplie les aires par $2^2 = 4$. L'aire nouvelle est $148 \\times 4 = 592$ cm$^2$. L'option $148$ est l'aire initiale, $296$ correspond à un facteur $2$ (longueur), $1184$ à un facteur $8$ (volume).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux sphères semblables ont des rayons dans le rapport $2:5$. Quel est le rapport de leurs volumes ?",
+      "options": [
+        "$2:5$",
+        "$4:25$",
+        "$8:125$",
+        "$16:625$"
+      ],
+      "correctAnswer": "$8:125$",
+      "explanation": "Le rapport des rayons est $2:5$, donc le rapport de similitude $k = \\frac{2}{5}$. Les volumes varient comme $k^3 = \\left(\\frac{2}{5}\\right)^3 = \\frac{8}{125}$, soit $8:125$. L'option $2:5$ est le rapport des longueurs, $4:25$ le carré (aires), $16:625$ la quatrième puissance.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

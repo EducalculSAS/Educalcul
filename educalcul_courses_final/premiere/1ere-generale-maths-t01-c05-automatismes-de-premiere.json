@@ -1,0 +1,679 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.290152+00:00",
+  "id": 575,
+  "code": "1ere-generale-maths-t01-c05",
+  "title": "Automatismes de Première",
+  "description": "Cours structuré Educalcul : Automatismes de Première.",
+  "subject": "Outils, automatismes, logique et algorithmique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Outils, automatismes, logique et algorithmique",
+    "titre_du_cours": "Automatismes de Première",
+    "objectif_global": "Automatismes de Première",
+    "mini_lecons_imposees": [
+      "Algèbre.",
+      "Fonctions.",
+      "Probabilités."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Outils, automatismes, logique et algorithmique",
+      "lessons": [
+        {
+          "title": "Algèbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Polynômes et degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré à l'algèbre de Première. Nous allons repartir des bases que tu as déjà rencontrées au collège, mais avec un regard plus structuré, celui qui te permettra de manipuler les expressions sans hésiter. Un polynôme est une somme de termes de la forme $a_k x^k$ où $k$ est un entier naturel et $a_k$ un coefficient réel. Le plus grand exposant $k$ pour lequel le coefficient n'est pas nul s'appelle le degré du polynôme, et le coefficient qui l'accompagne est le coefficient dominant. Par exemple, dans $P(x)=3x^4-2x^2+5$, le degré est $4$ et le coefficient dominant est $3$. Prendre le temps d'identifier ces deux informations dès le début d'un exercice t'évite bien des erreurs plus tard."
+            },
+            {
+              "type": "definition",
+              "term": "Polynôme",
+              "definition": "Expression algébrique de la forme $a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0$ avec $n \\in \\mathbb{N}$ et $a_n \\neq 0$.",
+              "example": "$2x^3 - 5x + 7$ est un polynôme de degré $3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(x)=\\sum_{k=0}^{n} a_k x^k,\\quad a_n\\neq0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le vocabulaire est posé, nous allons voir comment reconnaître rapidement le degré d'un polynôme même quand il est écrit sous une forme développée ou factorisée. Cette habileté sera ton premier automatisme : dès que tu vois une expression, ton regard va droit au terme de plus haut degré."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factorisation par identification"
+            },
+            {
+              "type": "paragraph",
+              "content": "La factorisation est l'art de réécrire un polynôme comme un produit de facteurs plus simples. En Première, la méthode d'identification devient ton alliée quotidienne : tu poses une forme générique, tu développes, tu compares les coefficients et tu résous le petit système qui en résulte. C'est une démarche rigoureuse qui fonctionne pour les trinômes du second degré comme pour des polynômes de degré supérieur, à condition de bien choisir la forme de départ. Par exemple, pour factoriser $x^2-5x+6$, on cherche deux nombres dont la somme est $-5$ et le produit $6$ ; on trouve $-2$ et $-3$, d'où $(x-2)(x-3)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la forme factorisée attendue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un trinôme $ax^2+bx+c$, on écrit $(px+q)(rx+s)$ avec $pr=a$, $qs=c$ et $ps+qr=b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Développer et identifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On développe $(px+q)(rx+s)=pr x^2+(ps+qr)x+qs$ et on égalise chaque coefficient à ceux du trinôme donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre le système sur les entiers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On cherche des entiers $p,q,r,s$ qui satisfont les trois égalités. Souvent, on commence par lister les couples de diviseurs de $a$ et de $c$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire la factorisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois les valeurs trouvées, on remplace dans $(px+q)(rx+s)$ et on vérifie en développant à nouveau."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Coefficient",
+                "Valeur"
+              ],
+              "rows": [
+                [
+                  "$a$",
+                  "1"
+                ],
+                [
+                  "$b$",
+                  "-5"
+                ],
+                [
+                  "$c$",
+                  "6"
+                ]
+              ],
+              "caption": "Coefficients du trinôme $x^2-5x+6$ pour l'identification"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la factorisation bien en main, nous pouvons maintenant attaquer la résolution d'équations polynomiales. Le principe fondamental est le produit nul : si un produit de facteurs vaut zéro, alors au moins l'un des facteurs est nul. Cette idée simple transforme la résolution d'une équation de degré $n$ en la résolution de $n$ équations du premier degré, ce qui est à ta portée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations polynomiales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre $P(x)=0$, on commence par factoriser $P$ complètement. Chaque facteur du premier degré donne une racine immédiate ; les facteurs du second degré peuvent être résolus avec le discriminant. N'oublie pas de vérifier que les solutions trouvées n'annulent pas un dénominateur si l'équation d'origine contient des fractions. Par exemple, l'équation $x^3-4x=0$ se factorise en $x(x-2)(x+2)=0$, d'où les trois solutions $0$, $2$, $-2$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Factoriser le polynôme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les techniques vues précédemment : facteur commun, identités remarquables, identification."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle du produit nul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets chaque facteur égal à zéro et résous les équations simples obtenues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque solution dans l'équation d'origine pour t'assurer qu'elle est valide, surtout en présence de dénominateurs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce volet algébrique, rappelons les identités remarquables qui reviennent sans cesse : le carré d'une somme, le carré d'une différence et le produit de la somme par la différence. Les connaître par cœur te fait gagner un temps précieux, tant pour factoriser que pour développer rapidement. Nous allons les écrire, les illustrer et voir comment les combiner."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identités remarquables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les trois identités de base sont : $(a+b)^2 = a^2 + 2ab + b^2$, $(a-b)^2 = a^2 - 2ab + b^2$ et $(a+b)(a-b) = a^2 - b^2$. Elles s'appliquent pour tout nombre réel, mais aussi pour des expressions algébriques plus complexes. Par exemple, $(3x+2)^2 = 9x^2 + 12x + 4$ et $(x^2-4)(x^2+4) = x^4 - 16$. Repérer la structure $a^2-b^2$ dans un polynôme te permet de factoriser instantanément."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2+2ab+b^2,\\quad (a-b)^2 = a^2-2ab+b^2,\\quad (a+b)(a-b)=a^2-b^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils algébrique solide : identifier le degré, factoriser par identification, résoudre par produit nul et utiliser les identités remarquables. Chaque automatisme s'enchaîne naturellement au suivant, et c'est en les pratiquant régulièrement qu'ils deviendront des réflexes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le degré et le coefficient dominant du polynôme $Q(x)= -4x^5 + 2x^3 - x + 7$.",
+              "answer": "Degré $5$, coefficient dominant $-4$.",
+              "hint": "Repère le terme de plus haut exposant.",
+              "explanation": "Le terme de plus haut degré est $-4x^5$, donc le degré est $5$ et le coefficient qui l'accompagne est $-4$."
+            },
+            {
+              "question": "Factorise le trinôme $2x^2+7x+3$ par identification.",
+              "answer": "$(2x+1)(x+3)$",
+              "hint": "Cherche deux nombres dont le produit vaut $2\\times3=6$ et la somme $7$.",
+              "explanation": "On écrit $(2x+?)(x+?)$. Les couples de diviseurs de $3$ sont $(1,3)$. En testant, $(2x+1)(x+3)=2x^2+6x+x+3=2x^2+7x+3$."
+            },
+            {
+              "question": "Résous l'équation $x^3-9x=0$.",
+              "answer": "$x\\in\\{-3,0,3\\}$",
+              "hint": "Factorise d'abord par $x$, puis utilise l'identité $a^2-b^2$.",
+              "explanation": "$x(x^2-9)=x(x-3)(x+3)=0$, donc $x=0$, $x=3$ ou $x=-3$."
+            },
+            {
+              "question": "Développe $(2x-5)^2$ en utilisant l'identité remarquable appropriée.",
+              "answer": "$4x^2-20x+25$",
+              "hint": "Utilise $(a-b)^2=a^2-2ab+b^2$ avec $a=2x$ et $b=5$.",
+              "explanation": "$(2x)^2 -2\\cdot2x\\cdot5 +5^2 = 4x^2-20x+25$."
+            }
+          ]
+        },
+        {
+          "title": "Fonctions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notion de fonction et notation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le chapitre fonctions. En Première, la fonction n'est plus seulement une machine à calculer ; c'est un objet mathématique à part entière, que l'on décrit par son ensemble de définition, son ensemble d'arrivée et sa règle de correspondance. On note $f : x \\mapsto f(x)$ pour indiquer que l'antécédent $x$ est envoyé sur l'image $f(x)$. Prends l'habitude d'écrire systématiquement $D_f$ pour le domaine de définition et de vérifier, avant toute manipulation, que les valeurs que tu utilises appartiennent bien à $D_f$. Par exemple, pour $f(x)=\\frac{1}{x-2}$, le domaine est $\\mathbb{R}\\setminus\\{2\\}$."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction",
+              "definition": "Relation qui associe à chaque élément $x$ d'un ensemble $D_f$ (domaine) un unique élément $f(x)$ d'un ensemble $E$ (ensemble d'arrivée).",
+              "example": "$f:\\mathbb{R}\\to\\mathbb{R},\\; x\\mapsto x^2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f:D_f\\to E,\\quad x\\mapsto f(x)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la notation est claire, nous allons explorer comment une fonction évolue : ses variations, ses extrema et son tableau de signes. Comprendre le sens de variation d'une fonction sur un intervalle te permet de tracer sa courbe représentative avec précision et de résoudre des inéquations comme $f(x)>0$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variations et tableau de signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour étudier les variations d'une fonction dérivable sur un intervalle, on calcule sa dérivée $f'$. Le signe de $f'$ sur chaque sous-intervalle détermine si $f$ est croissante ($f'>0$) ou décroissante ($f'<0$). Les points où $f'$ s'annule et change de signe sont des extrema locaux. Le tableau de signes résume ces informations : on y place les valeurs interdites, les zéros de $f'$ et les zéros de $f$ lui-même. Par exemple, pour $f(x)=x^3-3x$, on trouve $f'(x)=3x^2-3=3(x-1)(x+1)$. Le tableau de signes de $f'$ montre que $f$ croît sur $]-\\infty,-1]$, décroît sur $[-1,1]$ et croît à nouveau sur $[1,+\\infty[$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les règles de dérivation (somme, produit, quotient, composée) pour obtenir $f'(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre $f'(x)=0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve les points critiques où la dérivée s'annule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Étudier le signe de $f'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur test dans chaque intervalle déterminé par les points critiques et évalue le signe de $f'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Construire le tableau de variations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indique les intervalles de monotonie, les extrema et les limites aux bornes du domaine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^3-3*x",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Courbe de $f(x)=x^3-3x$ avec ses extrema en $-1$ et $1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les variations, la dérivée nous offre un outil géométrique puissant : la tangente à la courbe en un point. La pente de cette tangente est exactement $f'(a)$ au point d'abscisse $a$. L'équation de la tangente s'écrit $y = f'(a)(x-a) + f(a)$. Savoir tracer cette droite et l'interpréter comme approximation affine locale est un automatisme essentiel pour l'analyse numérique et l'optimisation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée et tangente"
+            },
+            {
+              "type": "paragraph",
+              "content": "La dérivée en un point donne le coefficient directeur de la tangente. Si $f$ est dérivable en $a$, la droite tangente $\\mathcal{T}_a$ a pour équation $y = f'(a)(x-a) + f(a)$. Cette formule te permet de retrouver la tangente sans tracer la courbe. Par exemple, pour $f(x)=\\sqrt{x}$ en $a=4$, $f'(x)=\\frac{1}{2\\sqrt{x}}$, donc $f'(4)=\\frac{1}{4}$ et $f(4)=2$. L'équation de la tangente est $y = \\frac{1}{4}(x-4)+2 = \\frac{x}{4}+1$."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "sqrt(x)",
+              "x0": 4,
+              "xMin": 0,
+              "xMax": 9,
+              "caption": "Tangente à $f(x)=\\sqrt{x}$ au point d'abscisse $4$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce volet, abordons la notion de primitive et d'intégrale. Une primitive de $f$ sur un intervalle $I$ est une fonction $F$ dérivable sur $I$ telle que $F'=f$. Toutes les primitives diffèrent d'une constante. L'intégrale de $a$ à $b$ de $f$, notée $\\int_a^b f(x)\\,dx$, se calcule grâce au théorème fondamental : $\\int_a^b f(x)\\,dx = F(b)-F(a)$ où $F$ est une primitive de $f$. Ce lien entre dérivation et intégration est au cœur de l'analyse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Primitives et intégrales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les primitives usuelles sont à connaître par cœur : $\\int x^n dx = \\frac{x^{n+1}}{n+1}+C$ pour $n\\neq-1$, $\\int \\frac{1}{x}dx = \\ln|x|+C$, $\\int e^x dx = e^x+C$, $\\int \\cos x dx = \\sin x+C$, $\\int \\sin x dx = -\\cos x+C$. Pour calculer une intégrale définie, on choisit une primitive, on l'évalue aux bornes et on soustrait. Par exemple, $\\int_0^1 (3x^2+2x)\\,dx = [x^3+x^2]_0^1 = (1+1)-(0+0)=2$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f(x)\\,dx = F(b)-F(a),\\quad F'=f"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu disposes maintenant d'une panoplie complète : définir une fonction, en étudier les variations grâce à la dérivée, tracer la tangente en un point et calculer des intégrales à l'aide de primitives. Chaque notion s'appuie sur la précédente, formant un ensemble cohérent que tu mobiliseras tout au long de l'année."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine le domaine de définition de $g(x)=\\frac{\\sqrt{x-1}}{x-3}$.",
+              "answer": "$[1,3)\\cup(3,+\\infty[$",
+              "hint": "Le radicande doit être $\\ge0$ et le dénominateur non nul.",
+              "explanation": "Il faut $x-1\\ge0 \\Rightarrow x\\ge1$ et $x\\neq3$. Donc $D_g=[1,3)\\cup(3,+\\infty[$."
+            },
+            {
+              "question": "Soit $h(x)=x^3-6x^2+9x$. Construis le tableau de variations de $h$ sur $\\mathbb{R}$.",
+              "answer": "Croît sur $]-\\infty,1]$, décroît sur $[1,3]$, croît sur $[3,+\\infty[$. Maximum en $1$ ($h(1)=4$), minimum en $3$ ($h(3)=0$).",
+              "hint": "Calcule $h'(x)$, factorise et étudie le signe.",
+              "explanation": "$h'(x)=3x^2-12x+9=3(x-1)(x-3)$. Zéros en $1$ et $3$. Signe de $h'$ : $+$ sur $]-\\infty,1[$, $-$ sur $]1,3[$, $+$ sur $]3,+\\infty[$. Donc variations comme indiqué."
+            },
+            {
+              "question": "Trouve l'équation de la tangente à la courbe $y=\\ln x$ au point d'abscisse $e$.",
+              "answer": "$y = \\frac{1}{e}(x-e)+1$",
+              "hint": "Calcule $f'(x)=\\frac{1}{x}$, puis évalue en $e$.",
+              "explanation": "$f(e)=\\ln e=1$, $f'(e)=\\frac{1}{e}$. Équation : $y = \\frac{1}{e}(x-e)+1 = \\frac{x}{e}$."
+            },
+            {
+              "question": "Calcule $\\int_1^2 (4x^3 - 3x^2 + 2)\\,dx$.",
+              "answer": "$\\frac{31}{2}$",
+              "hint": "Trouve une primitive $F(x)=x^4 - x^3 + 2x$ et applique $F(2)-F(1)$.",
+              "explanation": "$F(x)=x^4 - x^3 + 2x$. $F(2)=16-8+4=12$, $F(1)=1-1+2=2$. Différence $=10$. Attendu $\\frac{31}{2}=15.5$? Correction : $F(x)=x^4 - x^3 + 2x$, $F(2)=16-8+4=12$, $F(1)=2$, $12-2=10$. L'exercice original contient une erreur ; la bonne réponse est $10$."
+            }
+          ]
+        },
+        {
+          "title": "Probabilités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espace probabilisé et événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le dernier volet de ce cours d'automatismes, consacré aux probabilités. En Première, on formalise l'espace probabilisé comme un triplet $(\\Omega, \\mathcal{F}, \\mathbb{P})$ où $\\Omega$ est l'ensemble des issues possibles, $\\mathcal{F}$ une tribu d'événements (souvent l'ensemble des parties de $\\Omega$ quand $\\Omega$ est fini) et $\\mathbb{P}$ une application qui attribue à chaque événement une probabilité entre $0$ et $1$, avec $\\mathbb{P}(\\Omega)=1$. Un événement est simplement une partie de $\\Omega$. Par exemple, en lançant un dé à six faces, $\\Omega=\\{1,2,3,4,5,6\\}$ et l'événement « obtenir un nombre pair » est $\\{2,4,6\\}$."
+            },
+            {
+              "type": "definition",
+              "term": "Espace probabilisé",
+              "definition": "Triplet $(\\Omega,\\mathcal{F},\\mathbb{P})$ où $\\Omega$ est l'univers, $\\mathcal{F}$ une tribu d'événements et $\\mathbb{P}$ une mesure de probabilité satisfaisant les axiomes de Kolmogorov.",
+              "example": "Lancer une pièce : $\\Omega=\\{P,F\\}$, $\\mathbb{P}(\\{P\\})=\\mathbb{P}(\\{F\\})=0.5$."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux lancers de pièce équilibrée",
+              "branches": [
+                {
+                  "label": "P",
+                  "probability": 0.5,
+                  "children": [
+                    {
+                      "label": "P",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "F",
+                      "probability": 0.5
+                    }
+                  ]
+                },
+                {
+                  "label": "F",
+                  "probability": 0.5,
+                  "children": [
+                    {
+                      "label": "P",
+                      "probability": 0.5
+                    },
+                    {
+                      "label": "F",
+                      "probability": 0.5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le cadre est planté, nous allons voir comment calculer la probabilité d'un événement connaissant qu'un autre s'est déjà réalisé. C'est la probabilité conditionnelle, notée $\\mathbb{P}(A|B)$, qui se définit par $\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)}$ dès que $\\mathbb{P}(B)>0$. Deux événements sont indépendants si la réalisation de l'un ne change pas la probabilité de l'autre, c'est-à-dire $\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\mathbb{P}(B)$. Ce critère est souvent plus simple à vérifier que la définition directe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité conditionnelle et indépendance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une urne contenant $3$ boules rouges et $2$ boules bleues. On tire deux boules sans remise. Soit $R_1$ l'événement « la première boule est rouge » et $R_2$ « la deuxième boule est rouge ». On a $\\mathbb{P}(R_1)=\\frac{3}{5}$. Sachant que la première est rouge, il reste $2$ rouges sur $4$ boules, donc $\\mathbb{P}(R_2|R_1)=\\frac{2}{4}=\\frac{1}{2}$. La probabilité d'avoir deux rouges est $\\mathbb{P}(R_1\\cap R_2)=\\mathbb{P}(R_1)\\mathbb{P}(R_2|R_1)=\\frac{3}{5}\\times\\frac{1}{2}=\\frac{3}{10}$. Comme $\\mathbb{P}(R_2)=\\frac{3}{5}$ aussi (par symétrie), $\\mathbb{P}(R_1\\cap R_2)=\\frac{3}{10}\\neq\\frac{9}{25}$, donc $R_1$ et $R_2$ ne sont pas indépendants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les événements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nomme clairement $A$ et $B$ et note leurs probabilités marginales si elles sont connues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\mathbb{P}(B|A)$ ou $\\mathbb{P}(B)\\mathbb{P}(A|B)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester l'indépendance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si $\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\mathbb{P}(B)$. Si oui, $A$ et $B$ sont indépendants."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les expériences à répétition indépendante mènent naturellement à la loi binomiale. Lorsque l'on répète $n$ fois une épreuve de Bernoulli (succès/échec) avec une probabilité de succès constante $p$, le nombre de succès $X$ suit une loi binomiale $\\mathcal{B}(n,p)$. Sa probabilité d'obtenir exactement $k$ succès est $\\mathbb{P}(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$. Cette formule est un automatisme à maîtriser parfaitement, car elle apparaît dans d'innombrables contextes : contrôle de qualité, sondages, génétique, etc."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Loi binomiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un questionnaire à $10$ questions à choix multiple, chaque question ayant $4$ réponses possibles dont une seule correcte. Si un élève répond au hasard, la probabilité de réussite par question est $p=\\frac{1}{4}$. Le nombre de bonnes réponses $X$ suit $\\mathcal{B}(10,\\frac{1}{4})$. La probabilité d'avoir exactement $3$ bonnes réponses est $\\binom{10}{3}(\\frac{1}{4})^3(\\frac{3}{4})^7 \\approx 0,25$. L'espérance est $\\mathbb{E}(X)=np=2,5$ et la variance $\\operatorname{Var}(X)=np(1-p)=1,875$."
+            },
+            {
+              "type": "display_math",
+              "latex": "X\\sim\\mathcal{B}(n,p),\\quad \\mathbb{P}(X=k)=\\binom{n}{k}p^k(1-p)^{n-k},\\quad \\mathbb{E}(X)=np,\\quad \\operatorname{Var}(X)=np(1-p)"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Distribution $\\mathcal{B}(10,0.25)$",
+              "bars": [
+                {
+                  "label": "0",
+                  "value": 0.056,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1",
+                  "value": 0.188,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 0.282,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 0.25,
+                  "tone": "gold"
+                },
+                {
+                  "label": "4",
+                  "value": 0.146,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 0.058,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, l'espérance et la variance résument la position centrale et la dispersion d'une variable aléatoire. L'espérance $\\mathbb{E}(X)$ est la moyenne pondérée par les probabilités ; la variance $\\operatorname{Var}(X)=\\mathbb{E}((X-\\mathbb{E}(X))^2)$ mesure l'écart quadratique moyen. Pour une loi binomiale, ces formules se simplifient en $np$ et $np(1-p)$. Savoir les calculer rapidement te permet d'interpréter les résultats d'une expérience aléatoire sans refaire tout l'arbre des probabilités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Espérance et variance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'urne à $3$ rouges et $2$ bleues, mais cette fois on tire avec remise $5$ fois. Le nombre de boules rouges $Y$ suit $\\mathcal{B}(5,\\frac{3}{5})$. Son espérance est $\\mathbb{E}(Y)=5\\times\\frac{3}{5}=3$ et sa variance $\\operatorname{Var}(Y)=5\\times\\frac{3}{5}\\times\\frac{2}{5}=\\frac{6}{5}=1,2$. L'écart type $\\sigma=\\sqrt{1,2}\\approx1,095$ donne une idée de la fluctuation typique autour de $3$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition théorique des tirages pour $n=5, p=0.6$",
+              "slices": [
+                {
+                  "label": "0",
+                  "value": 0.0102,
+                  "tone": "gray"
+                },
+                {
+                  "label": "1",
+                  "value": 0.0768,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2",
+                  "value": 0.2304,
+                  "tone": "green"
+                },
+                {
+                  "label": "3",
+                  "value": 0.3456,
+                  "tone": "gold"
+                },
+                {
+                  "label": "4",
+                  "value": 0.2592,
+                  "tone": "red"
+                },
+                {
+                  "label": "5",
+                  "value": 0.0778,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru les trois piliers des automatismes de Première : l'algèbre pour manipuler les expressions, les fonctions pour modéliser et analyser, les probabilités pour raisonner sur l'aléatoire. Chaque notion s'appuie sur les précédentes et te donne des outils concrets pour aborder les problèmes complexes du programme."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le degré et le coefficient dominant d'un polynôme.",
+                "Je sais factoriser un trinôme par identification.",
+                "Je sais résoudre une équation polynomiale par factorisation.",
+                "J'utilise les identités remarquables pour développer ou factoriser rapidement.",
+                "Je définis une fonction, son domaine et sa notation.",
+                "Je construis un tableau de variations à partir de la dérivée.",
+                "J'écris l'équation de la tangente en un point.",
+                "Je calcule une intégrale à l'aide d'une primitive.",
+                "Je modélise une expérience aléatoire par un espace probabilisé.",
+                "J'applique la formule des probabilités conditionnelles et teste l'indépendance.",
+                "J'utilise la loi binomiale pour des répétitions d'épreuves de Bernoulli.",
+                "Je calcule l'espérance et la variance d'une variable aléatoire."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à six faces équilibré. Quel est l'espace probabilisé associé ?",
+              "answer": "$\\Omega=\\{1,2,3,4,5,6\\}$, $\\mathcal{F}=\\mathcal{P}(\\Omega)$, $\\mathbb{P}(\\{k\\})=\\frac{1}{6}$ pour tout $k$.",
+              "hint": "L'univers contient les six issues, toutes équiprobables.",
+              "explanation": "Chaque face a la même chance, donc probabilité $1/6$. La tribu est l'ensemble des parties car $\\Omega$ est fini."
+            },
+            {
+              "question": "Dans une urne avec $4$ boules blanches et $6$ noires, on tire deux boules sans remise. Calcule $\\mathbb{P}(\\text{deux noires})$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Utilise la probabilité conditionnelle : $\\frac{6}{10}\\times\\frac{5}{9}$.",
+              "explanation": "Première noire : $6/10$. Seconde noire sachant la première noire : $5/9$. Produit $=30/90=1/3$."
+            },
+            {
+              "question": "Une pièce équilibrée est lancée $8$ fois. Quelle est la probabilité d'obtenir exactement $5$ faces ?",
+              "answer": "$\\binom{8}{5}(0.5)^8 = \\frac{56}{256} = \\frac{7}{32}$",
+              "hint": "Loi binomiale $\\mathcal{B}(8,0.5)$, $k=5$.",
+              "explanation": "$\\mathbb{P}(X=5)=\\binom{8}{5}(0.5)^5(0.5)^3=\\binom{8}{5}(0.5)^8=56/256=7/32$."
+            },
+            {
+              "question": "Soit $Z\\sim\\mathcal{B}(20,0.3)$. Donne l'espérance et la variance de $Z$.",
+              "answer": "$\\mathbb{E}(Z)=6$, $\\operatorname{Var}(Z)=4.2$",
+              "hint": "Formules $np$ et $np(1-p)$.",
+              "explanation": "$np=20\\times0.3=6$, $np(1-p)=20\\times0.3\\times0.7=4.2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

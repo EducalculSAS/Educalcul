@@ -1,0 +1,406 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.127115+00:00",
+  "id": 208,
+  "code": "ce2-t08-c04",
+  "title": "Tableaux à double entrée",
+  "description": "Cours structuré Educalcul : Tableaux à double entrée.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Tableaux à double entrée",
+    "objectif_global": "Tableaux à double entrée",
+    "mini_lecons_imposees": [
+      "Repérer deux critères.",
+      "Compléter.",
+      "Croiser ligne et colonne."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Repérer deux critères.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux critères pour tout ranger"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois ranger tes cartes à collectionner. Tu pourrais les trier par couleur : les rouges d'un côté, les bleues de l'autre. Mais si tu veux aussi savoir quelles sont les cartes \"Feu\" ou \"Eau\", un seul tri ne suffit plus. C'est là qu'intervient le tableau à double entrée : il permet de croiser deux critères en même temps, comme le $type$ de carte et sa $couleur$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau vide. En haut, les colonnes indiquent la $couleur$ : $Rouge$, $Bleu$, $Vert$. Sur le côté, les lignes indiquent le $type$ : $Feu$, $Eau$, $Plante$. Chaque petite case attend une information précise : une carte $Feu$ $et$ $Rouge$, une carte $Eau$ $et$ $Bleue$, etc. C'est comme un plan de ville : la rue (la ligne) et l'avenue (la colonne) se croisent pour donner une adresse unique."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Rouge",
+                "Bleu",
+                "Vert"
+              ],
+              "rows": [
+                [
+                  "Feu",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "Eau",
+                  "",
+                  "",
+                  ""
+                ],
+                [
+                  "Plante",
+                  "",
+                  "",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois la structure, entraînons-nous à lire une case déjà remplie. Pose ton doigt sur la ligne $Feu$, puis fais-le glisser vers la droite jusqu'à la colonne $Bleu$. Tes deux doigts se rencontrent dans une seule case. C'est là qu'on note le nombre de cartes qui sont $à$ $la$ $fois$ $Feu$ $et$ $Bleues$. Essaie sur le tableau ci-dessous : combine la ligne et la colonne pour trouver l'info."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Chien",
+                "Chat",
+                "Oiseau"
+              ],
+              "rows": [
+                [
+                  "Mâle",
+                  "$5$",
+                  "$3$",
+                  "$2$"
+                ],
+                [
+                  "Femelle",
+                  "$4$",
+                  "$6$",
+                  "$1$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne plus jamais te perdre, mémorisons trois mots-clés. La $ligne$ court horizontalement, comme l'horizon. La $colonne$ monte verticalement, comme un pilier. Et la $case$ est la petite boîte où la ligne et la colonne se croisent. Un tableau à double entrée, c'est simplement un grand rectangle découpé en cases pour croiser deux critères."
+            },
+            {
+              "type": "definition",
+              "term": "Tableau à double entrée",
+              "definition": "Un tableau qui permet d'organiser des données selon deux critères : un critère en lignes et un critère en colonnes.",
+              "example": "Critère lignes : Garçon / Fille. Critère colonnes : Vélo / Trotinette / Marche."
+            },
+            {
+              "type": "definition",
+              "term": "Ligne",
+              "definition": "Une rangée horizontale dans le tableau. Elle correspond à une valeur du premier critère.",
+              "example": "La ligne \"Garçon\" regroupe tous les garçons."
+            },
+            {
+              "type": "definition",
+              "term": "Colonne",
+              "definition": "Une rangée verticale dans le tableau. Elle correspond à une valeur du deuxième critère.",
+              "example": "La colonne \"Vélo\" regroupe tous ceux qui viennent à vélo."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau des cartes (Feu/Eau/Plante vs Rouge/Bleu/Vert), quelle case correspond aux cartes Plante et Vert ?",
+              "answer": "La case à l'intersection de la ligne Plante et de la colonne Vert.",
+              "hint": "Repère le mot Plante à gauche, puis le mot Vert en haut.",
+              "explanation": "La ligne donne le type (Plante), la colonne donne la couleur (Vert). Leur croisement donne la case exacte."
+            },
+            {
+              "question": "Combien y a-t-il de Chats Femelles dans le tableau des animaux ?",
+              "answer": "$6$",
+              "hint": "Trouve la ligne Femelle et la colonne Chat.",
+              "explanation": "La ligne Femelle et la colonne Chat se croisent sur la case contenant $6$."
+            },
+            {
+              "question": "Complète : Dans un tableau à double entrée, la _______ court horizontalement et la _______ monte verticalement.",
+              "answer": "ligne ; colonne",
+              "hint": "Pense à l'horizon pour l'horizontale et à un pilier pour la verticale.",
+              "explanation": "Par définition, les lignes sont horizontales, les colonnes verticales."
+            }
+          ]
+        },
+        {
+          "title": "Compléter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau a des trous, à nous de les boucher"
+            },
+            {
+              "type": "paragraph",
+              "content": "La maîtresse a fait un sondage : « Comment viens-tu à l'école ? » avec les réponses $Vélo$, $Bus$, $Pied$. Elle a noté les résultats dans un tableau à double entrée avec les lignes $Garçons$ et $Filles$. Mais catastrophe : sa gomme a effacé plusieurs chiffres ! Heureusement, elle a écrit les $totaux$ en bout de ligne et en bas de colonne. Ces totaux sont nos indices pour retrouver les nombres disparus."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau. Sur la ligne $Garçons$, on sait qu'il y a $8$ élèves au total. On voit $3$ à $Vélo$ et $2$ en $Bus$. Combien viennent à $Pied$ ? C'est une soustraction : le total moins ce qu'on connaît déjà. $8 - 3 - 2 = 3$. La case $Garçons / Pied$ reçoit donc un $3$. C'est la méthode du « total moins le connu »."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Vélo",
+                "Bus",
+                "Pied",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Garçons",
+                  "$3$",
+                  "$2$",
+                  "?",
+                  "$8$"
+                ],
+                [
+                  "Filles",
+                  "$4$",
+                  "?",
+                  "$1$",
+                  "$7$"
+                ],
+                [
+                  "Total",
+                  "$7$",
+                  "$5$",
+                  "$4$",
+                  "$16$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, c'est une colonne qui a un trou. Regarde la colonne $Bus$ : le total est $5$. On a $2$ garçons. Combien de filles ? $5 - 2 = 3$. On écrit $3$ dans la case $Filles / Bus$. Et hop, un trou de bouché ! Continue ainsi : cherche une ligne ou une colonne où il ne manque qu'un seul chiffre, utilise le total, et remplis la case vide."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer une ligne ou colonne presque pleine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une ligne ou une colonne où une seule case est vide et où le total est connu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le manquant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais : Total $-$ (somme des cases connues). Le résultat va dans la case vide."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les cases de la ligne (ou colonne) : tu dois retomber sur le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, piège ! Parfois, il faut remplir une case pour pouvoir en remplir une autre. C'est comme une chaîne. Dans notre exemple, une fois le $3$ des $Filles / Bus$ écrit, la ligne $Filles$ n'a plus qu'un trou : la case $Vélo$. Le total filles est $7$. On a $4$ (Vélo) + $3$ (Bus) + $1$ (Pied) = $8$... Attends, $4+3+1=8$ mais le total est $7$. Il y a une erreur ! Reviens sur tes calculs, vérifie chaque soustraction. C'est normal de se tromper, on corrige et on avance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, le tableau est complet ! Maintenant, on peut répondre à toutes les questions : « Combien de filles prennent le bus ? » « Y a-t-il plus de vélos ou de bus ? » Le tableau rempli est une mine d'or. La prochaine leçon, on apprendra à aller chercher l'info pile au bon endroit, sans se tromper de case."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau du sondage école, quelle opération permet de trouver le nombre de Garçons à Pied ?",
+              "answer": "$8 - 3 - 2 = 3$",
+              "hint": "Utilise le total de la ligne Garçons (8) et soustrais les cases Vélo et Bus connues.",
+              "explanation": "Total ligne = 8. Connus : 3 + 2 = 5. Manquant = 8 - 5 = 3."
+            },
+            {
+              "question": "Complète la case manquante : Filles / Bus. Total colonne Bus = 5, Garçons Bus = 2.",
+              "answer": "$3$",
+              "hint": "Total colonne moins connu sur la colonne.",
+              "explanation": "5 (total Bus) - 2 (Garçons Bus) = 3 (Filles Bus)."
+            },
+            {
+              "question": "Le tableau est-il cohérent si Filles Vélo = 4, Filles Bus = 3, Filles Pied = 1 et Total Filles = 7 ?",
+              "answer": "Non, 4+3+1 = 8, pas 7.",
+              "hint": "Additionne les trois cases de la ligne Filles et compare au total affiché.",
+              "explanation": "La somme des cases (8) ne correspond pas au total indiqué (7). Il y a une erreur dans les données ou les calculs."
+            }
+          ]
+        },
+        {
+          "title": "Croiser ligne et colonne.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Là où la ligne rencontre la colonne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire les critères et remplir les trous. La dernière étape, c'est de devenir un pro du « croisement ». Imagine : le directeur demande « Combien de $filles$ viennent en $vélo$ ? ». Tu ne lis pas toute la ligne, ni toute la colonne. Tu poses un doigt sur le mot $Filles$ à gauche, un autre sur $Vélo$ en haut, et tu les fais glisser jusqu'à ce qu'ils se touchent. *Paf !* Tu es sur la bonne case. C'est le geste du croisé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur ce tableau de la cantine. Les lignes : $Entrée$ ($Tomates$, $Carottes$), $Plat$ ($Pâtes$, $Riz$). Les colonnes : $Lundi$, $Mardi$. Pour savoir l'entrée du $Mardi$, croise la ligne $Entrée$ et la colonne $Mardi$. Mais attention, il y a deux entrées possibles ! Le tableau dit $Tomates$ $30$, $Carottes$ $20$. La case « Entrée / Mardi » ne donne pas le détail. Il faut regarder les *sous-lignes* si elles existent, ou comprendre que le tableau résume différemment. Ici, regardons un tableau plus simple pour t'entraîner au geste pur."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Pomme",
+                "Banane",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Garçons",
+                  "$12$",
+                  "$8$",
+                  "$20$"
+                ],
+                [
+                  "Filles",
+                  "$15$",
+                  "$5$",
+                  "$20$"
+                ],
+                [
+                  "Total",
+                  "$27$",
+                  "$13$",
+                  "$40$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilisons ce tableau pour répondre à des questions qui demandent de *comparer* ou d'*additionner* des cases croisées. « Y a-t-il plus de garçons ou de filles qui aiment la pomme ? » Croise $Garçons / Pomme$ ($12$) et $Filles / Pomme$ ($15$). $15 > 12$, ce sont les filles. « Combien d'enfants au total aiment la banane ? » Regarde le total de la colonne $Banane$ : $13$. Pas besoin d'additionner, le total est déjà là ! C'est tout l'intérêt des totaux en bout de ligne et de colonne."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Garçons Pomme",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Filles Pomme",
+                  "value": 15,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Comparaison visuelle : qui préfère la pomme ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier défi : un petit problème à résoudre toi-même. « Dans la classe, on a demandé le sport préféré : $Natation$, $Judo$, $Foot$. Le tableau est complet. $18$ élèves font du $Foot$. Parmi eux, $10$ sont des garçons. Combien de filles font du foot ? » Ici, tu croises $Filles$ et $Foot$. Tu as le total $Foot$ ($18$) et la case $Garçons / Foot$ ($10$). Une petite soustraction : $18 - 10 = 8$ filles. Tu as croisé l'info totale et l'info partielle pour trouver l'info manquante. C'est puissant !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les deux critères d'un tableau (lignes et colonnes).",
+                "Je sais retrouver une case en croisant une ligne et une colonne avec mes doigts.",
+                "Je sais compléter une case vide en utilisant le total de la ligne ou de la colonne.",
+                "Je sais lire une information précise dans une case (effectif).",
+                "Je sais utiliser les totaux pour comparer ou additionner sans tout recompter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau fruits, combien de filles ont choisi la pomme ?",
+              "answer": "$15$",
+              "hint": "Croise la ligne Filles et la colonne Pomme.",
+              "explanation": "L'intersection de la ligne Filles et de la colonne Pomme contient le nombre 15."
+            },
+            {
+              "question": "Qui préfère la banane : les garçons ou les filles ?",
+              "answer": "Les garçons ($8$ contre $5$).",
+              "hint": "Compare la case Garçons/Banane et la case Filles/Banane.",
+              "explanation": "Garçons/Banane = 8. Filles/Banane = 5. 8 > 5, donc les garçons sont plus nombreux."
+            },
+            {
+              "question": "18 élèves font du Foot. 10 sont des garçons. Combien de filles font du Foot ?",
+              "answer": "$8$",
+              "hint": "Total Foot moins Garçons Foot.",
+              "explanation": "La case Filles/Foot = Total colonne Foot (18) - case Garçons/Foot (10) = 8."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 148,
+  "_course_code": "ce2-t01-c07-encadrer-et-intercaler",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Encadrer aux dizaines",
+  "title": "Approfondissement : Encadrer aux dizaines",
+  "questions": [
+    {
+      "text": "Quelles sont les deux dizaines consécutives qui encadrent le nombre $63$ ?",
+      "options": [
+        "$60$ et $70$",
+        "$50$ et $60$",
+        "$70$ et $80$",
+        "$63$ et $70$"
+      ],
+      "correctAnswer": "$60$ et $70$",
+      "explanation": "Pour encadrer un nombre aux dizaines, on regarde le chiffre des dizaines. Pour $63$, le chiffre des dizaines est $6$, donc la dizaine inférieure est $60$. La dizaine supérieure est la suivante, soit $70$. On a bien $60 < 63 < 70$. L'option $50$ et $60$ correspond à l'encadrement de $53$, l'option $70$ et $80$ à celui de $73$, et $63$ n'est pas une dizaine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut encadrer le nombre $241$ aux dizaines. Quelle est la bonne écriture ?",
+      "options": [
+        "$240$ et $250$",
+        "$200$ et $300$",
+        "$230$ et $240$",
+        "$241$ et $250$"
+      ],
+      "correctAnswer": "$240$ et $250$",
+      "explanation": "Le nombre $241$ a $4$ dizaines. La dizaine inférieure est donc $240$ et la dizaine supérieure est $250$. On vérifie : $240 < 241 < 250$. L'option $200$ et $300$ est un encadrement aux centaines. L'option $230$ et $240$ est trop basse ($241 > 240$). L'option $241$ et $250$ utilise le nombre lui-même comme borne inférieure, or une dizaine se termine par $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $398$ est encadré par quelles deux dizaines ?",
+      "options": [
+        "$390$ et $400$",
+        "$300$ et $400$",
+        "$380$ et $390$",
+        "$400$ et $410$"
+      ],
+      "correctAnswer": "$390$ et $400$",
+      "explanation": "Le nombre $398$ a $9$ dizaines. La dizaine inférieure est $390$. La dizaine suivante est $400$ car on change de centaine ($9$ dizaines $+ 1$ dizaine $= 10$ dizaines $= 1$ centaine). On a bien $390 < 398 < 400$. L'option $300$ et $400$ encadre aux centaines. L'option $380$ et $390$ est inférieure au nombre. L'option $400$ et $410$ est supérieure au nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un nombre est encadré par $540$ et $550$. Lequel de ces nombres convient ?",
+      "options": [
+        "$546$",
+        "$536$",
+        "$556$",
+        "$540$"
+      ],
+      "correctAnswer": "$546$",
+      "explanation": "Un nombre encadré par $540$ et $550$ doit être strictement plus grand que $540$ et strictement plus petit que $550$. Parmi les options, $546$ est le seul à satisfaire $540 < 546 < 550$. Le nombre $536$ est plus petit que $540$ (il est entre $530$ et $540$). Le nombre $556$ est plus grand que $550$ (il est entre $550$ et $560$). Le nombre $540$ est la borne inférieure, pas un nombre strictement compris entre les deux bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel est encadré aux dizaines par $100$ et $110$ ?",
+      "options": [
+        "$105$",
+        "$95$",
+        "$115$",
+        "$100$"
+      ],
+      "correctAnswer": "$105$",
+      "explanation": "L'encadrement $100$ et $110$ correspond aux nombres strictement compris entre $100$ et $110$. Le nombre $105$ vérifie $100 < 105 < 110$. Le nombre $95$ est encadré par $90$ et $100$. Le nombre $115$ est encadré par $110$ et $120$. Le nombre $100$ est la borne inférieure de l'encadrement, il n'est pas strictement entre les deux dizaines.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

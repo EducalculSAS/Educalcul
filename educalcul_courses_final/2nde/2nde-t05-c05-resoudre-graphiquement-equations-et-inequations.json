@@ -1,0 +1,531 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.093050+00:00",
+  "id": 524,
+  "code": "2nde-t05-c05",
+  "title": "Résoudre graphiquement équations et inéquations",
+  "description": "Cours structuré Educalcul : Résoudre graphiquement équations et inéquations.",
+  "subject": "Fonctions, représentations et variations",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Fonctions, représentations et variations",
+    "titre_du_cours": "Résoudre graphiquement équations et inéquations",
+    "objectif_global": "Résoudre graphiquement équations et inéquations",
+    "mini_lecons_imposees": [
+      "Intersections.",
+      "Signe.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions, représentations et variations",
+      "lessons": [
+        {
+          "title": "Intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation $f(x) = k$ : une ligne horizontale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as devant toi le graphique d'une fonction $f$, une belle courbe qui monte, descend, fait un ventre ou un dos d'âne. On te demande de résoudre $f(x) = 3$. Ne panique pas : cette égalité cherche simplement les abscisses des points où la courbe coupe la ligne horizontale d'équation $y = 3$. C'est tout. Tu traces mentalement (ou au crayon à papier) cette ligne droite bien plate à la hauteur $3$ sur l'axe des ordonnées, et tu regardes : la courbe la traverse-t-elle ? Si oui, combien de fois ? Chaque point de rencontre te donne une solution. C'est une lecture graphique pure, sans aucun calcul algébrique pour l'instant."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2*x",
+              "xmin": -2,
+              "xmax": 4,
+              "caption": "Courbe de $f(x) = x^2 - 2x$ et ligne $y = 3$ : deux intersections visibles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le graphique ci-dessus, la parabole $f(x) = x^2 - 2x$ croise la ligne $y = 3$ en deux points distincts. En lisant les abscisses sur l'axe horizontal, on voit environ $-1$ et $3$. Ces deux nombres sont les solutions de l'équation $x^2 - 2x = 3$. Remarque bien : on ne cherche pas l'ordonnée (on la connaît déjà, c'est $3$), on cherche l'abscisse. C'est le geste inverse d'habitude : d'ordinaire, tu donnes $x$ pour trouver $y$ ; là, tu donnes $y$ pour retrouver $x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la valeur $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe des ordonnées, localise le nombre $k$ (ici $3$). Trace la ligne horizontale $y = k$ en pointillés si tu es sur papier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver les intersections",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde où la courbe de $f$ rencontre cette ligne. Chaque point de contact ou de croisement compte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Projette chaque point d'intersection sur l'axe des abscisses. Les valeurs lues (approchées ou exactes si la grille le permet) sont les solutions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, élargissons le terrain : que se passe-t-il si le second membre n'est pas un nombre fixe $k$, mais une autre fonction $g(x)$ ? L'idée reste la même, mais le décor change."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'équation $f(x) = g(x)$ : deux courbes qui se croisent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre $f(x) = g(x)$, c'est chercher les $x$ pour lesquels les deux fonctions prennent la même valeur. Graphiquement, cela signifie superposer les deux courbes $C_f$ et $C_g$ dans le même repère, et repérer leurs points communs. Chaque intersection correspond à un $x$ où $f(x)$ et $g(x)$ sont égaux. C'est une généralisation naturelle : la ligne horizontale $y=k$ n'est qu'une courbe particulière (celle d'une fonction constante)."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2*x; x + 1",
+              "xmin": -2,
+              "xmax": 4,
+              "caption": "Intersections de $f(x) = x^2 - 2x$ (parabole) et $g(x) = x + 1$ (droite)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la parabole et la droite se coupent en deux points. Leurs abscisses sont les solutions de $x^2 - 2x = x + 1$, soit $x^2 - 3x - 1 = 0$. À l'œil, on dirait environ $-0,3$ et $3,3$. La précision de la lecture dépend de l'échelle du graphique et de ton crayon. En Seconde, on attend souvent une lecture approchée (au dixième près par exemple), sauf si les points tombent pile sur les graduations. Ne t'invente pas une précision qui n'existe pas sur le papier !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que les courbes ne se rencontrent pas, ou qu'elles se frôlent juste. Explorons ces cas limites qui ne sont pas des \"bugs\", mais des informations précieuses sur le nombre de solutions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Zéro, une, ou plusieurs solutions : lire le nombre d'intersections"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois situations classiques peuvent se présenter devant tes yeux. Première situation : les courbes ne se croisent pas du tout. L'équation n'a alors aucune solution, on note l'ensemble solution $\\varnothing$ (l'ensemble vide). Deuxième situation : les courbes sont tangentes, elles se touchent en un seul point sans se croiser. L'équation a une unique solution (on dit parfois une solution double). Troisième situation : elles se croisent franchement en deux, trois points ou plus. Chaque croisement franchement transverse donne une solution distincte."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des solutions sur l'axe des abscisses : aucune, une (tangente), ou deux.",
+              "min": -3,
+              "max": 5,
+              "points": [
+                {
+                  "value": -0.3,
+                  "label": "S1"
+                },
+                {
+                  "value": 3.3,
+                  "label": "S2"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée ci-dessus illustre le cas à deux solutions. Si la droite était tangente à la parabole, tu n'aurais qu'un seul point marqué. S'il n'y a pas d'intersection, la droite reste vide. C'est une façon visuelle de résumer l'ensemble solution $S$ avant de l'écrire avec des accolades : $S = \\{-0,3 ; 3,3\\}$ par exemple. Attention à la notation : on met les solutions entre accolades, séparées par des points-virgules."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne le graphique de la fonction $f(x) = -x^2 + 4$ dans un repère orthonormé. En utilisant seulement la lecture graphique, donne l'ensemble solution de l'équation $f(x) = 2$.",
+              "answer": "S = {-1,4 ; 1,4} (valeurs approchées au dixième près)",
+              "hint": "Trace la ligne horizontale $y = 2$ et regarde où elle coupe la parabole. Projette sur l'axe des abscisses.",
+              "explanation": "La parabole $f(x) = -x^2 + 4$ a son sommet en $(0;4)$ et s'ouvre vers le bas. La ligne $y=2$ la coupe en deux points symétriques par rapport à l'axe des ordonnées. La lecture graphique donne environ $-1,4$ et $1,4$."
+            },
+            {
+              "question": "Les courbes $C_f$ et $C_g$ des fonctions $f(x) = x^2$ et $g(x) = 2x - 1$ sont tracées. Combien l'équation $f(x) = g(x)$ a-t-elle de solutions ? Justifie par une observation graphique.",
+              "answer": "Une unique solution (la droite est tangente à la parabole en $x=1$).",
+              "hint": "Regarde si la droite coupe la parabole en deux points, la touche en un point, ou ne la rencontre pas.",
+              "explanation": "L'équation $x^2 = 2x - 1$ s'écrit $x^2 - 2x + 1 = 0$, soit $(x-1)^2 = 0$. Graphiquement, la droite $y=2x-1$ est tangente à la parabole $y=x^2$ au point d'abscisse $1$. Il y a donc un seul point d'intersection, donc une seule solution."
+            },
+            {
+              "question": "Sur le graphique ci-dessous, la courbe $C_f$ ne coupe pas la droite $y = -3$. Que peux-tu dire de l'ensemble solution de $f(x) = -3$ ?",
+              "answer": "L'ensemble solution est vide : $S = \\varnothing$.",
+              "hint": "Si aucun point commun n'existe, il n'y a aucune abscisse qui vérifie l'égalité.",
+              "explanation": "L'absence d'intersection entre la courbe et la ligne horizontale signifie qu'aucun $x$ ne satisfait $f(x) = -3$. Par convention, on note l'ensemble des solutions $\\varnothing$."
+            }
+          ]
+        },
+        {
+          "title": "Signe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe d'une fonction : au-dessus ou en dessous de l'axe des abscisses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une inéquation comme $f(x) > 0$, ce n'est pas chercher des points précis, c'est chasser des élargissements entiers sur l'axe des $x$. Regarde le graphique de $f$ : la question \"où $f(x)$ est-il positif ?\" se traduit par \"où la courbe se trouve-t-elle à l'air libre, au-dessus de l'axe des abscisses ?\". Inversement, $f(x) < 0$ demande où la courbe plonge sous l'axe, dans la zone negative. C'est une lecture en épaisseur, pas en pointillé."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Courbe de $f(x) = x^2 - 4$. Au-dessus de l'axe pour $x < -2$ et $x > 2$, en dessous entre $-2$ et $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette parabole qui passe par $(-2;0)$ et $(2;0)$, la courbe est au-dessus de l'axe (donc $f(x) > 0$) pour les $x$ plus petits que $-2$ et pour les $x$ plus grands que $2$. Elle est en dessous (donc $f(x) < 0$) pour les $x$ compris entre $-2$ et $2$. Les zéros $-2$ et $2$ sont les frontières : là, $f(x) = 0$, ni positif, ni négatif. Selon que l'inéquation est large ($>$, $<$) ou large ou égale ($≥$, $≤$), on inclut ou pas ces frontières dans la réponse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les abscisses où la courbe coupe l'axe des abscisses ($f(x)=0$). Ce sont les bornes des intervalles de signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir un point test par zone",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans chaque intervalle délimité par les zéros, prends une valeur de $x$ facile (souvent $0$ si c'est dans l'intervalle) et regarde si le point de la courbe est au-dessus ($>0$) ou en dessous ($<0$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'ensemble solution en notation d'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les intervalles où le signe correspond à l'inéquation. Utilise des crochets [ ] si la borne est incluse (inéquation large ou égale), des parenthèses ] [ si elle est exclue (inéquation stricte)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparons maintenant deux fonctions entre elles. Résoudre $f(x) > g(x)$, ce n'est pas regarder par rapport à l'axe des abscisses, mais par rapport à l'autre courbe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux courbes : $f(x) > g(x)$ ou $f(x) < g(x)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'inéquation $f(x) > g(x)$ demande : \"Pour quels $x$ la courbe de $f$ est-elle à l'intérieur, au-dessus de la courbe de $g$ ?\". C'est exactement le même principe que tout à l'heure, mais la \"ligne de référence\" n'est plus l'axe horizontal, c'est la courbe voisine. Tu superposes $C_f$ et $C_g$, tu repères leurs intersections (les frontières), et tu regardes dans chaque zone laquelle est la plus haute."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2*x; x + 1",
+              "xmin": -2,
+              "xmax": 4,
+              "caption": "Zone où $f(x) > g(x)$ (parabole au-dessus de la droite) et zone où $f(x) < g(x)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons nos deux courbes : la parabole $f(x) = x^2 - 2x$ et la droite $g(x) = x + 1$. Elles se croisent vers $x ≈ -0,3$ et $x ≈ 3,3$. Pour $x$ très négatif (ex: $-2$), la parabole est au-dessus de la droite : $f(x) > g(x)$. Entre les deux intersections, la droite passe au-dessus : $f(x) < g(x)$. Après la seconde intersection, la parabole repart au-dessus : $f(x) > g(x)$ à nouveau. L'ensemble solution de $f(x) > g(x)$ est donc la réunion de deux intervalles : $]-\\infty ; -0,3[ \\cup ]3,3 ; +\\infty[$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire ces ensembles solutions demande une notation précise : les intervalles. Rappelons les règles pour ne jamais hésiter devant les parenthèses et les crochets."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation par intervalles : parenthèses ou crochets ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un intervalle est un segment de la droite des nombres. Si la borne fait partie de la solution (inéquation $\\ge$ ou $\\le$), on met un crochet $[ \\, ]$ du côté de cette borne. Si la borne est exclue (inéquation $>$ ou $<$), on met une parenthèse $] \\, [$. Pour l'infini, on met toujours une parenthèse car $+\\infty$ n'est pas un nombre atteignable. Exemple : $x > 2$ s'écrit $]2; +\\infty[$. $x \\ge 2$ s'écrit $[2; +\\infty[$. La réunion de deux intervalles disjoints se note avec le symbole $\\cup$ (union)."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": -2,
+              "upperBound": 2,
+              "lowerOpen": false,
+              "upperOpen": true,
+              "caption": "Construction de l'intervalle $[-2 ; 2[$ : borne -2 incluse (crochet), borne 2 exclue (parenthèse)."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'outil ci-dessus te permet de visualiser la différence : un crochet plein signifie \"on prend ce point\", une parenthèse creuse signifie \"on s'en approche mais on ne le prend pas\". C'est crucial pour la rigueur attendue en Seconde. Une erreur de crochet change la réponse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour synthétiser le signe d'une fonction ou d'une différence $f-g$ sur toute la droite, le tableau de signe est l'outil roi. Il condense toute l'analyse graphique en une grille lisible."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau de signe : la synthèse visuelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de signe aligne les valeurs de $x$ sur la première ligne, les signes des expressions (comme $x+2$, $x-2$, ou $f(x)-g(x)$) sur les lignes suivantes, et le signe final du produit ou du quotient sur la dernière. Les zéros trouvés graphiquement deviennent les colonnes de séparation. Les doubles barres $\\|$ marquent les valeurs interdites (zéros d'un dénominateur). C'est la traduction algébrique fidèle de ce que tes yeux ont vu sur le graphique : \"ici c'est plus, là c'est moins\"."
+            },
+            {
+              "type": "sign_table",
+              "caption": "Tableau de signe pour $f(x) = (x+2)(x-2)$ ou $x^2-4$.",
+              "headers": [
+                "$x$",
+                "$-\\infty$",
+                "-2",
+                "2",
+                "$+\\infty$"
+              ],
+              "rows": [
+                [
+                  "$x+2$",
+                  "-",
+                  "$\\|\\|$",
+                  "+",
+                  "+"
+                ],
+                [
+                  "$x-2$",
+                  "-",
+                  "-",
+                  "$\\|\\|$",
+                  "+"
+                ],
+                [
+                  "$f(x)$",
+                  "+",
+                  "$0$",
+                  "-",
+                  "$0$",
+                  "+"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la dernière ligne : le signe de $f(x)$ est $+$ sur $]-\\infty;-2[$, $0$ en $-2$, $-$ sur $]-2;2[$, $0$ en $2$, $+$ sur $]2;+\\infty[$. Pour résoudre $f(x) \\ge 0$, tu lis la ligne du bas : tu prends les zones $+$ et les zéros. La solution est $]-\\infty;-2] \\cup [2;+\\infty[$. Le tableau de signe est ton meilleur allié pour ne rien oublier, surtout quand il y a trois ou quatre facteurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le graphique de la fonction $f$ est une parabole passant par $(-3;0)$ et $(1;0)$, avec un sommet en $(-1;-4)$. Donne l'ensemble solution de $f(x) < 0$ par intervalle.",
+              "answer": "] -3 ; 1 [",
+              "hint": "La parabole est en dessous de l'axe des abscisses entre ses deux zéros. L'inéquation est stricte, donc parenthèses.",
+              "explanation": "Les zéros sont -3 et 1. Le sommet est en -4 (négatif), donc la parabole est creuse vers le haut (coefficient directeur positif). Elle est donc négative strictement entre ses deux racines. L'intervalle est ouvert car $f(x)=0$ aux bornes."
+            },
+            {
+              "question": "On a deux fonctions $f$ et $g$ dont les courbes se coupent en $x = 0$ et $x = 4$. Pour $x = 2$, la courbe de $f$ est au-dessus de celle de $g$. Donne l'ensemble solution de $f(x) > g(x)$.",
+              "answer": "] 0 ; 4 [",
+              "hint": "Teste une valeur entre les intersections (2) : f > g. Teste une valeur à l'extérieur (ex: -1 ou 5) : f < g. L'inégalité est stricte.",
+              "explanation": "Les intersections (0 et 4) sont les frontières. Puisque f > g au milieu (en 2), l'inégalité est vraie sur l'intervalle ouvert entre les deux intersections. Aux bornes, f = g, donc exclus car inégalité stricte."
+            },
+            {
+              "question": "Écris en notation d'intervalle l'ensemble des $x$ tels que $x \\le -1$ ou $x > 3$.",
+              "answer": "]-\\infty ; -1] \\cup ]3 ; +\\infty[",
+              "hint": "Deux morceaux disjoints : un intervalle fermé à gauche (borne -1 incluse), un intervalle ouvert à droite (borne 3 exclue). N'oublie pas l'union.",
+              "explanation": "La condition $x \\le -1$ donne l'intervalle $]-\\infty ; -1]$ (crochet à -1 car inclus). La condition $x > 3$ donne $]3 ; +\\infty[$ (parenthèse à 3 car exclue, parenthèse à l'infini toujours). La réunion se note $\\cup$."
+            },
+            {
+              "question": "Complète le tableau de signe pour $h(x) = (x+1)(3-x)$ et déduis l'ensemble solution de $h(x) \\ge 0$.",
+              "answer": "S = [-1 ; 3]",
+              "hint": "Zéros en -1 et 3. Signe de (x+1) : - puis +. Signe de (3-x) : + puis -. Produit : + sur [-1;3].",
+              "explanation": "Les facteurs s'annulent en -1 et 3. Pour $x < -1$ : $(x+1) < 0$ et $(3-x) > 0$, produit $-$. Pour $-1 < x < 3$ : les deux facteurs $> 0$, produit $+$. Pour $x > 3$ : $(x+1) > 0$ et $(3-x) < 0$, produit $-$. L'inéquation $\\ge 0$ prend le $+$ et les zéros : $[-1 ; 3]$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un graphique avec rigueur : échelles, graduations, précision"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de crier victoire sur une solution lue graphiquement, il faut jouer au détective sur les axes. Quelle est l'unité sur l'axe des abscisses ? Un carreau vaut-il $1$, $0,5$, $2$ ? Et sur l'axe des ordonnées ? Un graphique sans échelle lisible est une énigme insoluble. Prends le temps de repérer deux graduations numérotées, compte les carreaux entre elles, et déduis la valeur d'un carreau. C'est la base de toute lecture approchée fiable. Une erreur d'échelle transforme une solution $x=2$ en $x=4$ ou $x=1$ : le résultat est faux, même si le raisonnement est bon."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x + 1",
+              "xmin": -1,
+              "xmax": 5,
+              "caption": "Droite $y = 2x + 1$ avec grille visible. Un carreau = 0,5 sur x, 1 sur y ? À toi de vérifier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, si tu veux résoudre $2x+1 = 4$, tu cherches l'intersection avec $y=4$. Si l'échelle en $y$ est $1$ carreau pour $1$ unité, tu montes de $3$ carreaux depuis $y=1$. Si l'échelle est $1$ carreau pour $2$ unités, tu montes de $1,5$ carreaux. La lecture de l'abscisse suit la même rigueur. En Seconde, on t'indique souvent : \"Donner une valeur approchée au dixième près\". Cela veut dire que ton œil doit discriminer la position entre deux graduations de dixièmes. Si la graduation est au demi ($0,5$), tu ne peux pas lire le dixième : tu donnes la valeur au demi près, ou tu signales l'imprécision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, l'exercice te demande de résoudre une équation ET une inéquation sur le même graphique. C'est l'occasion de montrer que tu sais passer du point (équation) à l'intervalle (inéquation) sans te tromper de notation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équation et inéquation associées : le duo inséparable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit la courbe $C_f$ et la ligne $y = k$. Résoudre $f(x) = k$ te donne les bornes (les points de passage). Résoudre $f(x) > k$ te donne les intervalles où la courbe est au-dessus. Les deux questions sont sœurs : les solutions de l'équation sont les bornes des intervalles solution de l'inéquation. Si tu as bien trouvé $x = 2$ et $x = 5$ pour l'équation, l'inéquation $f(x) > k$ sera soit $]2;5[$, soit $]-\\infty;2[ \\cup ]5;+\\infty[$, selon que la courbe est au-dessus entre les deux ou à l'extérieur. Un coup d'œil au sommet de la courbe (ou un point test) tranche instantanément."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "$-\\infty$",
+                "2",
+                "5",
+                "$+\\infty$"
+              ],
+              "rows": [
+                [
+                  "Position de $C_f$ vs $y=k$",
+                  "au-dessus",
+                  "sur la ligne",
+                  "en-dessous",
+                  "sur la ligne",
+                  "au-dessus"
+                ],
+                [
+                  "Signe de $f(x)-k$",
+                  "+",
+                  "0",
+                  "-",
+                  "0",
+                  "+"
+                ]
+              ],
+              "caption": "Tableau de position : la courbe est au-dessus avant 2, entre 2 et 5 elle est en dessous, après 5 elle revient au-dessus."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau de position (cousin du tableau de signe) résume tout. Pour $f(x) = k$, solutions : $\\{2; 5\\}$. Pour $f(x) > k$, solution : $]-\\infty; 2[ \\cup ]5; +\\infty[$. Pour $f(x) \\le k$, solution : $[2; 5]$. Remarque la cohérence : les bornes $2$ et $5$ reviennent tout le temps, seuls les symboles d'intervalle changent. C'est la puissance de la lecture graphique : une seule analyse visuelle répond à toute une famille de questions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions ne vivent pas que dans les manuels. Elles modélisent des situations réelles : une trajectoire, un coût, une population, une température. Résoudre graphiquement, c'est alors répondre à une question concrète : \"À partir de quand le bénéfice devient-il positif ?\", \"Jusqu'à quelle heure la température dépasse-t-elle 20°C ?\"."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modélisation : quand le graphique raconte une histoire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une entreprise dont le bénéfice (en milliers d'euros) au bout de $x$ mois est modélisé par $B(x) = -0,5x^2 + 4x - 3$. Le graphique est une parabole tournée vers le bas. L'équation $B(x) = 0$ demande : \"Quand l'entreprise est-elle à l'équilibre (bénéfice nul) ?\". Les solutions (les intersections avec l'axe des abscisses) donnent les mois de début et de fin d'activité rentable. L'inéquation $B(x) > 0$ demande : \"Pendant quels mois l'entreprise gagne-t-elle de l'argent ?\". La solution est l'intervalle entre les deux zéros. Ici, $x$ représente du temps : les valeurs négatives n'ont pas de sens physique, on restreint l'étude à $x \\ge 0$."
+            },
+            {
+              "type": "graph",
+              "expression": "-0.5*x^2 + 4*x - 3",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Bénéfice $B(x) = -0,5x^2 + 4x - 3$. Zéros vers 1 et 7. Positif entre les deux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, on lit les zéros vers $x=1$ et $x=7$. L'entreprise est bénéficiaire pour $x \\in [1 ; 7]$ (si on inclut l'équilibre) ou $]1 ; 7[$ (si on exige un bénéfice strict). Au-delà de 7 mois, le bénéfice redevient négatif : l'entreprise perd de l'argent. La lecture graphique permet de répondre immédiatement à la question \"Combien de temps l'activité est-elle rentable ?\" : environ 6 mois. C'est là toute la force de la méthode : transformer une question floue en une réponse chiffrée et visuelle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour aborder sereinement n'importe quel exercice de résolution graphique. Fais le point sur tes acquis avec cette liste de vérification."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais tracer ou repérer la ligne horizontale $y=k$ pour résoudre $f(x)=k$.",
+                "Je sais superposer deux courbes $C_f$ et $C_g$ pour résoudre $f(x)=g(x)$.",
+                "Je sais lire les abscisses des intersections et les écrire en ensemble de solutions.",
+                "Je sais identifier les zones où $f(x) > 0$ (courbe au-dessus de l'axe) et $f(x) < 0$ (courbe en dessous).",
+                "Je sais comparer deux courbes : $f(x) > g(x)$ signifie $C_f$ au-dessus de $C_g$.",
+                "Je connais la notation par intervalles : crochets pour inclus, parenthèses pour exclus, $\\cup$ pour réunion.",
+                "Je sais construire et lire un tableau de signe ou de position à partir des zéros graphiques.",
+                "Je vérifie toujours l'échelle des axes avant de donner une valeur approchée.",
+                "Je sais interpréter les solutions dans le contexte d'un problème modélisé (temps, prix, quantité)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique ci-contre, l'échelle sur l'axe des abscisses est : 1 cm pour 2 unités. La courbe coupe l'axe des abscisses à 3 cm de l'origine. Quelle est la valeur approchée de ce zéro ?",
+              "answer": "x = 6",
+              "hint": "Multiplie la distance en cm par l'échelle (unités par cm).",
+              "explanation": "3 cm × 2 unités/cm = 6 unités. L'abscisse du zéro est donc 6."
+            },
+            {
+              "question": "La courbe $C_f$ coupe la droite $y = 2$ en $x = -1$ et $x = 4$. Entre ces deux valeurs, la courbe est au-dessus de la droite. Donne les ensembles solutions de $f(x) = 2$, $f(x) > 2$ et $f(x) \\le 2$.",
+              "answer": "f(x)=2 : S={-1; 4} ; f(x)>2 : S=]-1; 4[ ; f(x)≤2 : S=]-∞; -1] ∪ [4; +∞[",
+              "hint": "Les intersections sont les bornes. Au-dessus entre les bornes => >2 à l'intérieur, ≤2 à l'extérieur.",
+              "explanation": "Équation : bornes -1 et 4. Inéquation stricte > : intervalle ouvert entre les bornes. Inéquation large ≤ : complémentaire (extérieur) avec bornes incluses (crochets)."
+            },
+            {
+              "question": "La hauteur $h(t)$ (en mètres) d'un projectile au temps $t$ (en secondes) est donnée par $h(t) = -5t^2 + 20t + 2$. Le graphique est tracé pour $t \\ge 0$. Pendant combien de temps le projectile est-il à plus de 17 mètres de hauteur ?",
+              "answer": "Environ 2 secondes (entre t=1 et t=3).",
+              "hint": "Résous $h(t) > 17$ graphiquement : intersections de la parabole avec $y=17$, puis intervalle où la parabole est au-dessus.",
+              "explanation": "L'équation $-5t^2+20t+2=17$ donne $-5t^2+20t-15=0$ soit $t^2-4t+3=0$, racines $t=1$ et $t=3$. Parabole tournée vers le bas, donc au-dessus de 17 entre 1 et 3. Durée = 3 - 1 = 2 secondes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

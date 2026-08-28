@@ -1,0 +1,192 @@
+{
+  "_status": "done",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Échelles",
+  "title": "Quiz : Échelles sur une droite graduée",
+  "questions": [
+    {
+      "text": "Observez la droite graduée ci-dessous. Quelle est l'échelle utilisée (valeur d'une graduation) ?",
+      "options": [
+        "1",
+        "2",
+        "5",
+        "10"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On observe que les graduations principales sont numérotées $0$, $2$, $4$, $6$, $8$, $10$. La différence entre deux graduations successives est $2 - 0 = 2$. L'échelle est donc $2$. L'option $1$ correspondrait à une graduation tous les entiers, $5$ à une graduation tous les $5$, et $10$ à une seule graduation pour toute la droite.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 10",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 2,
+            "label": "2"
+          },
+          {
+            "value": 4,
+            "label": "4"
+          },
+          {
+            "value": 6,
+            "label": "6"
+          },
+          {
+            "value": 8,
+            "label": "8"
+          },
+          {
+            "value": 10,
+            "label": "10"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, l'échelle est $5$. Quelle est l'abscisse du point A ?",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "L'échelle est $5$, donc chaque graduation vaut $5$. En partant de l'origine $0$, on compte les graduations jusqu'au point A : $5$, $10$, $15$. Le point A se trouve sur la troisième graduation, son abscisse est donc $3 \\times 5 = 15$. L'option $10$ correspond à la deuxième graduation, $20$ à la quatrième et $5$ à la première.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée échelle 5",
+        "min": 0,
+        "max": 20,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 5,
+            "label": "5"
+          },
+          {
+            "value": 10,
+            "label": "10"
+          },
+          {
+            "value": 15,
+            "label": "A"
+          },
+          {
+            "value": 20,
+            "label": "20"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "La droite graduée ci-dessous a une échelle de $0,1$. Quelle est l'abscisse du point B ?",
+      "options": [
+        "3,4",
+        "3,5",
+        "3,6",
+        "3,7"
+      ],
+      "correctAnswer": "3,6",
+      "explanation": "L'échelle est $0,1$ (un dixième). La graduation de départ est $3$. On compte les petites graduations jusqu'au point B : $3,1$ ; $3,2$ ; $3,3$ ; $3,4$ ; $3,5$ ; $3,6$. Le point B se trouve sur la sixième graduation après $3$, son abscisse est $3 + 6 \\times 0,1 = 3,6$. Les autres options correspondent aux graduations voisines ($3,5$ ou $3,7$) ou à un mauvais comptage ($3,4$).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée échelle 0,1 entre 3 et 4",
+        "min": 3,
+        "max": 4,
+        "points": [
+          {
+            "value": 3,
+            "label": "3"
+          },
+          {
+            "value": 3.6,
+            "label": "B"
+          },
+          {
+            "value": 4,
+            "label": "4"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur la droite ci-dessous, les points A et B ont pour abscisses $0$ et $40$. Il y a exactement $4$ intervalles (espaces entre deux graduations successives) entre A et B. Quelle est l'échelle de cette droite ?",
+      "options": [
+        "5",
+        "8",
+        "10",
+        "20"
+      ],
+      "correctAnswer": "10",
+      "explanation": "La distance entre A ($0$) et B ($40$) est $40 - 0 = 40$. Cette distance est divisée en $4$ intervalles égaux. La valeur d'un intervalle (l'échelle) est le quotient de la distance par le nombre d'intervalles : $40 \\div 4 = 10$. L'échelle est donc $10$. L'option $5$ correspondrait à $8$ intervalles, $20$ à $2$ intervalles, et $8$ n'est pas un diviseur entier de $40$ donnant un nombre d'intervalles entier.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée points A(0) et B(40)",
+        "min": 0,
+        "max": 40,
+        "points": [
+          {
+            "value": 0,
+            "label": "A"
+          },
+          {
+            "value": 40,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "La droite graduée ci-dessous a une échelle de $0,5$. Quelle est l'abscisse du point C ?",
+      "options": [
+        "-1",
+        "-1,5",
+        "-2",
+        "-0,5"
+      ],
+      "correctAnswer": "-1,5",
+      "explanation": "L'échelle est $0,5$ (un demi). L'origine est à $0$. Le point C se trouve à gauche de l'origine (nombres négatifs). On descend par pas de $0,5$ : $-0,5$ (premier trait), $-1$ (deuxième trait), $-1,5$ (troisième trait). Le point C est sur le troisième trait à gauche de zéro, son abscisse est donc $-1,5$. L'option $-1$ correspond au deuxième trait, $-2$ au quatrième, et $-0,5$ au premier.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée échelle 0,5 nombres négatifs",
+        "min": -3,
+        "max": 0,
+        "points": [
+          {
+            "value": -3,
+            "label": "-3"
+          },
+          {
+            "value": -1.5,
+            "label": "C"
+          },
+          {
+            "value": 0,
+            "label": "0"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 95,
+  "_course_code": "ce1-t03-c08-comprendre-partage-et-groupement",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Partager en parts égales",
+  "title": "Partage en parts égales - Algorithmes",
+  "blocks": [
+    {
+      "title": "Partage simple",
+      "content": "Écris un algorithme qui partage $12$ bonbons entre $3$ enfants de façon égale.",
+      "correctAnswer": "Algorithme : 1. Lire le nombre total de bonbons (12). 2. Lire le nombre d'enfants (3). 3. Calculer le nombre de bonbons par enfant = 12 divisé par 3 = 4. 4. Afficher 4 bonbons par enfant.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise le total $12$ par le nombre de parts $3$ pour obtenir $4$ bonbons par enfant. L'algorithme décrit ces étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partage avec reste",
+      "content": "Écris un algorithme qui partage $20$ billes en $4$ sacs égaux et indique s'il reste des billes.",
+      "correctAnswer": "Algorithme : 1. Lire le total de billes (20). 2. Lire le nombre de sacs (4). 3. Calculer le quotient = 20 divisé par 4 = 5. 4. Calculer le reste = 20 modulo 4 = 0. 5. Afficher 5 billes par sac et reste 0.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La division euclidienne de $20$ par $4$ donne un quotient de $5$ et un reste de $0$. L'algorithme montre le calcul du quotient et du reste.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général de partage",
+      "content": "Propose un algorithme en pseudo-code qui, pour un nombre total d'objets $N$ et un nombre de parts $P$, affiche le nombre d'objets par part et le reste.",
+      "correctAnswer": "Algorithme : 1. Lire N. 2. Lire P. 3. quotient = N // P. 4. reste = N % P. 5. Afficher quotient et reste.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la division entière (//) pour obtenir le nombre d'objets par part et le modulo (%) pour le reste. Il fonctionne pour tout N et P.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

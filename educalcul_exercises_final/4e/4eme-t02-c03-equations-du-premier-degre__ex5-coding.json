@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 427,
+  "_course_code": "4eme-t02-c03-equations-du-premier-degre",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Égalité",
+  "title": "Équations du premier degré : algorithmes d'égalité",
+  "blocks": [
+    {
+      "title": "Algorithme de résolution d'une équation simple",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui résout une équation du premier degré de la forme $ax + b = c$ où $a$, $b$, $c$ sont des nombres donnés et $a ≠ 0$. L'algorithme doit afficher la valeur de $x$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs de a, b, c.\\n2. Vérifier que a ≠ 0.\\n3. Calculer x = (c - b) / a.\\n4. Afficher x.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole x en soustrayant b des deux côtés : $ax = c - b$. Puis on divise par a (non nul) : $x = (c - b)/a$. L'algorithme applique ces deux étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test d'égalité de deux expressions",
+      "content": "Écrire un algorithme qui, pour une valeur donnée de $x$, calcule les deux expressions $E_1 = 3x + 4$ et $E_2 = 2x + 10$ et affiche \"Égal\" si elles sont égales, sinon \"Différent\".",
+      "correctAnswer": "Algorithme :\\n1. Lire la valeur de x.\\n2. Calculer E1 = 3 * x + 4.\\n3. Calculer E2 = 2 * x + 10.\\n4. Si E1 == E2 alors afficher \"Égal\" sinon afficher \"Différent\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On évalue les deux expressions pour le x donné. Si les résultats numériques sont identiques, les expressions sont égales pour cette valeur de x.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution d'une équation à variable des deux côtés",
+      "content": "Écrire un algorithme qui résout une équation de la forme $ax + b = cx + d$ avec $a ≠ c$. L'algorithme lit les coefficients $a$, $b$, $c$, $d$, calcule $x$ et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d.\\n2. Vérifier que a ≠ c.\\n3. Calculer x = (d - b) / (a - c).\\n4. Afficher x.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes en x : $ax - cx = d - b$, soit $(a - c)x = d - b$. Comme $a ≠ c$, on divise : $x = (d - b)/(a - c)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

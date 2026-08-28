@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 156,
+  "_course_code": "ce2-t02-c05-comparer-des-fractions-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Même dénominateur",
+  "title": "Comparer des fractions de même dénominateur",
+  "questions": [
+    {
+      "text": "Regarde les deux barres de fractions ci-dessous. Quelle comparaison est correcte ?",
+      "options": [
+        "$3/8 > 5/8$",
+        "$3/8 < 5/8$",
+        "$3/8 = 5/8$",
+        "On ne peut pas comparer car les dénominateurs sont différents"
+      ],
+      "correctAnswer": "$3/8 < 5/8$",
+      "explanation": "Lorsque deux fractions ont le même dénominateur (ici 8), il suffit de comparer les numérateurs. $3$ est plus petit que $5$, donc $3/8$ est plus petit que $5/8$. On écrit $3/8 < 5/8$. Les barres montrent visuellement que la partie colorée pour $3/8$ est plus courte que celle pour $5/8$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 8
+          },
+          {
+            "numerator": 5,
+            "denominator": 8
+          }
+        ],
+        "caption": "Comparaison de 3/8 et 5/8"
+      }
+    },
+    {
+      "text": "Complète la comparaison suivante en choisissant le bon signe : $4/6$ ... $5/6$.",
+      "options": [
+        "$>$",
+        "$<$",
+        "$=$",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "$<$",
+      "explanation": "Les deux fractions ont le même dénominateur ($6$). On compare donc les numérateurs : $4$ et $5$. Comme $4$ est strictement plus petit que $5$, la fraction $4/6$ est plus petite que $5/6$. Le signe correct est donc $<$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Classe ces trois fractions du plus petit au plus grand : $2/7$, $5/7$, $3/7$.",
+      "options": [
+        "$2/7 < 3/7 < 5/7$",
+        "$5/7 < 3/7 < 2/7$",
+        "$3/7 < 2/7 < 5/7$",
+        "$2/7 < 5/7 < 3/7$"
+      ],
+      "correctAnswer": "$2/7 < 3/7 < 5/7$",
+      "explanation": "Toutes les fractions ont le dénominateur $7$. On ordonne les numérateurs : $2$, $3$, $5$. L'ordre croissant des numérateurs donne l'ordre croissant des fractions : $2/7$ (le plus petit), puis $3/7$, puis $5/7$ (le plus grand).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a mangé $3/10$ d'une tablette de chocolat. Léa a mangé $7/10$ de la même tablette. Qui en a mangé le plus ?",
+      "options": [
+        "Paul",
+        "Léa",
+        "Ils ont mangé la même quantité",
+        "Impossible de savoir"
+      ],
+      "correctAnswer": "Léa",
+      "explanation": "On compare $3/10$ et $7/10$. Même dénominateur ($10$), on regarde les numérateurs : $7$ est plus grand que $3$. Léa a donc mangé une plus grande partie de la tablette que Paul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction est plus grande que $3/9$ mais plus petite que $6/9$ ?",
+      "options": [
+        "$2/9$",
+        "$4/9$",
+        "$7/9$",
+        "$6/9$"
+      ],
+      "correctAnswer": "$4/9$",
+      "explanation": "On cherche un numérateur strictement compris entre $3$ et $6$ (car le dénominateur $9$ est fixe). $2$ est trop petit ($<3$), $7$ est trop grand ($>6$), $6$ est égal à la borne supérieure. $4$ est bien entre $3$ et $6$, donc $4/9$ est la seule fraction qui convient : $3/9 < 4/9 < 6/9$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

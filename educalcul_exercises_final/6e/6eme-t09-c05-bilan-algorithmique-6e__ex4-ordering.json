@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Bilan - Algorithmique 6e",
+  "title": "Bilan Algorithmique - Mise en ordre de programmes",
+  "blocks": [
+    {
+      "title": "Déplacement sur quadrillage",
+      "content": "Remets dans l'ordre les instructions pour guider le lutin du point de départ au trésor sur le quadrillage.",
+      "items": [
+        "Début : le lutin est au point de départ, orienté vers la droite.",
+        "Avancer de 3 cases.",
+        "Tourner à gauche de 90 degrés.",
+        "Avancer de 2 cases.",
+        "Fin : le lutin a atteint le trésor."
+      ],
+      "explanation": "Le programme suit une logique séquentielle : on part de la position initiale, on exécute le premier déplacement, on change de direction, on exécute le second déplacement et on arrive à destination. L'ordre des blocs est impératif pour suivre le bon chemin.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour tracer un carré",
+      "content": "Range les blocs dans l'ordre pour écrire le programme qui trace un carré de côté 100 pas en utilisant une boucle « Répéter ».",
+      "items": [
+        "Répéter 4 fois",
+        "    Avancer de 100 pas",
+        "    Tourner à droite de 90 degrés",
+        "Fin répéter",
+        "Le carré est tracé."
+      ],
+      "explanation": "La structure d'une boucle « Répéter » impose un ordre strict : d'abord l'instruction de boucle avec le nombre de répétitions, ensuite les instructions à l'intérieur (indentées) qui forment le motif de base (côté + angle), puis la fin de la boucle. Ici, le motif « Avancer, Tourner » est reproduit 4 fois pour fermer le carré.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de calcul d'aire",
+      "content": "Classe les étapes dans l'ordre logique pour construire un algorithme qui calcule et affiche l'aire $A$ d'un rectangle de longueur $L$ et de largeur $l$.",
+      "items": [
+        "Demander la longueur L et la largeur l",
+        "Calculer A = L × l",
+        "Afficher A",
+        "Fin de l'algorithme"
+      ],
+      "explanation": "Un algorithme de calcul suit toujours la séquence : Entrées (demander les valeurs nécessaires) → Traitement (effectuer le calcul avec la formule $A = L \\times l$) → Sortie (afficher le résultat) → Fin. On ne peut pas calculer avant d'avoir les valeurs, ni afficher avant d'avoir calculé.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

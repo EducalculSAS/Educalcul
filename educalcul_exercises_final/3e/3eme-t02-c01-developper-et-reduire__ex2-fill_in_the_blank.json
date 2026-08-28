@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Identités remarquables si programme applicable",
+  "title": "Identités remarquables : développement et réduction",
+  "blocks": [
+    {
+      "title": "Développement d'un carré de somme",
+      "content": "Développez l'expression $(x+5)^2$ en utilisant l'identité remarquable $(a+b)^2 = a^2 + 2ab + b^2$. Complétez : $(x+5)^2 = x^2 + {{1}}x + {{2}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "10",
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie $a=x$ et $b=5$. L'identité donne $x^2 + 2 \\times x \\times 5 + 5^2 = x^2 + 10x + 25$. Donc le premier trou est 10 et le second 25.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Développement d'un carré de différence",
+      "content": "Développez l'expression $(3y-4)^2$ à l'aide de l'identité $(a-b)^2 = a^2 - 2ab + b^2$. Complétez : $(3y-4)^2 = {{1}}y^2 - {{2}}y + {{3}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "9",
+        "24",
+        "16"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On prend $a=3y$ et $b=4$. Alors $a^2 = (3y)^2 = 9y^2$, $2ab = 2 \\times 3y \\times 4 = 24y$, $b^2 = 16$. L'expression devient $9y^2 - 24y + 16$. Les trous sont donc 9, 24 et 16.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Produit somme-différence (différence de deux carrés)",
+      "content": "Calculez le produit $(2a+7)(2a-7)$ en utilisant l'identité $(a+b)(a-b) = a^2 - b^2$. Complétez : $(2a+7)(2a-7) = {{1}}a^2 - {{2}}$",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "49"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On identifie $a=2a$ et $b=7$. L'identité donne $(2a)^2 - 7^2 = 4a^2 - 49$. Les nombres manquants sont 4 et 49.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "_status": "done",
+  "_course_id": 156,
+  "_course_code": "ce2-t02-c05-comparer-des-fractions-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Même dénominateur",
+  "title": "Comparer des fractions de même dénominateur",
+  "questions": [
+    {
+      "text": "Observe les deux bandes de fractions ci-dessous. Laquelle des deux fractions est la plus grande ?",
+      "options": [
+        "$\\frac{3}{8}$",
+        "$\\frac{5}{8}$",
+        "Elles sont égales",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$",
+      "explanation": "Lorsque deux fractions ont le même dénominateur (ici $8$), les parts sont de la même taille. Il suffit de comparer les numérateurs : $5$ parts sont plus nombreuses que $3$ parts. Donc $\\frac{5}{8}$ est plus grand que $\\frac{3}{8}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 8
+          },
+          {
+            "numerator": 5,
+            "denominator": 8
+          }
+        ],
+        "caption": "Comparaison de 3/8 et 5/8"
+      }
+    },
+    {
+      "text": "Complète la comparaison en choisissant le bon signe entre $\\frac{4}{9}$ et $\\frac{7}{9}$.",
+      "options": [
+        "$\\frac{4}{9} > \\frac{7}{9}$",
+        "$\\frac{4}{9} < \\frac{7}{9}$",
+        "$\\frac{4}{9} = \\frac{7}{9}$",
+        "Impossible à comparer"
+      ],
+      "correctAnswer": "$\\frac{4}{9} < \\frac{7}{9}$",
+      "explanation": "Les deux fractions ont le même dénominateur ($9$). On compare les numérateurs : $4$ est strictement inférieur à $7$. Par conséquent, $\\frac{4}{9}$ est plus petit que $\\frac{7}{9}$, ce qui s'écrit $\\frac{4}{9} < \\frac{7}{9}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les trois fractions suivantes du plus petit au plus grand : $\\frac{2}{6}$, $\\frac{5}{6}$, $\\frac{1}{6}$.",
+      "options": [
+        "$\\frac{2}{6} < \\frac{1}{6} < \\frac{5}{6}$",
+        "$\\frac{5}{6} < \\frac{2}{6} < \\frac{1}{6}$",
+        "$\\frac{1}{6} < \\frac{2}{6} < \\frac{5}{6}$",
+        "$\\frac{1}{6} < \\frac{5}{6} < \\frac{2}{6}$"
+      ],
+      "correctAnswer": "$\\frac{1}{6} < \\frac{2}{6} < \\frac{5}{6}$",
+      "explanation": "Tous les dénominateurs sont $6$. On ordonne les numérateurs : $1$, puis $2$, puis $5$. L'ordre croissant est donc $\\frac{1}{6}$, puis $\\frac{2}{6}$, puis $\\frac{5}{6}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction, de dénominateur $10$, se trouve entre $\\frac{3}{10}$ et $\\frac{7}{10}$ ?",
+      "options": [
+        "$\\frac{2}{10}$",
+        "$\\frac{5}{10}$",
+        "$\\frac{8}{10}$",
+        "$\\frac{10}{10}$"
+      ],
+      "correctAnswer": "$\\frac{5}{10}$",
+      "explanation": "On cherche un numérateur compris entre $3$ et $7$. Les nombres entiers possibles sont $4$, $5$ et $6$. Parmi les propositions, seul $5$ convient. La fraction $\\frac{5}{10}$ est bien plus grande que $\\frac{3}{10}$ et plus petite que $\\frac{7}{10}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a mangé $\\frac{3}{8}$ d'un gâteau et Léa a mangé $\\frac{5}{8}$ du même gâteau. Qui a mangé la plus grande part ?",
+      "options": [
+        "Paul",
+        "Léa",
+        "Ils ont mangé la même quantité",
+        "On ne peut pas le savoir"
+      ],
+      "correctAnswer": "Léa",
+      "explanation": "Le gâteau est le même (même dénominateur $8$). Léa a mangé $5$ parts sur $8$, Paul en a mangé $3$ sur $8$. Puisque $5 > 3$, Léa a mangé une plus grande quantité que Paul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

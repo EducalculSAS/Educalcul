@@ -1,0 +1,176 @@
+{
+  "_status": "done",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Effectifs",
+  "title": "Quiz : Lire les effectifs dans les tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "Voici un tableau recensant les animaux préférés des élèves d'une classe de CM1.\\n\\nCombien d'élèves y a-t-il au total dans cette classe ?",
+      "options": [
+        "$20$",
+        "$25$",
+        "$15$",
+        "$30$"
+      ],
+      "correctAnswer": "$25$",
+      "explanation": "Pour trouver le total des effectifs, il faut additionner les effectifs de chaque catégorie : $8$ (chien) $+$ $12$ (chat) $+$ $5$ (lapin) $= 25$. L'option $20$ correspond à l'oubli des lapins, $15$ à l'oubli des chats, et $30$ à une erreur d'addition.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "8"
+          ],
+          [
+            "Chat",
+            "12"
+          ],
+          [
+            "Lapin",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en bâtons ci-dessous représente les fruits préférés d'un groupe d'enfants.\\n\\nQuel est l'effectif pour la catégorie \"Pomme\" ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$10$",
+        "$16$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Sur un diagramme en bâtons, l'effectif se lit sur l'axe vertical (les nombres) en face du sommet du bâton. Le bâton \"Pomme\" monte jusqu'à la graduation $6$. La valeur $4$ correspond aux bananes, $10$ aux fraises, et $16$ est la somme de tous les effectifs.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés",
+        "bars": [
+          {
+            "label": "Pomme",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Banane",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Fraise",
+            "value": 10,
+            "tone": "pink"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme en bâtons montre les sports pratiqués par des élèves.\\n\\nCombien y a-t-il d'élèves de plus qui pratiquent le foot que la natation ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$23$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Il faut comparer les deux effectifs : Foot $= 14$, Natation $= 9$. La différence est $14 - 9 = 5$. L'option $23$ est la somme des deux effectifs (erreur : addition au lieu de soustraction), $6$ et $7$ sont des erreurs de lecture des graduations.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Sports pratiqués",
+        "bars": [
+          {
+            "label": "Foot",
+            "value": 14,
+            "tone": "green"
+          },
+          {
+            "label": "Natation",
+            "value": 9,
+            "tone": "blue"
+          },
+          {
+            "label": "Vélo",
+            "value": 7,
+            "tone": "gray"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme circulaire (camembert) ci-dessous montre les modes de transport pour venir à l'école. Le total est de $20$ élèves.\\n\\nCombien d'élèves viennent en voiture ?",
+      "options": [
+        "$5$",
+        "$10$",
+        "$15$",
+        "$20$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La part \"Voiture\" occupe exactement la moitié du cercle. La moitié de $20$ élèves est $10$ élèves. Les parts \"Bus\" et \"Vélo\" font chacune un quart du cercle, soit $5$ élèves chacune. $10 + 5 + 5 = 20$.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Modes de transport",
+        "slices": [
+          {
+            "label": "Voiture",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Bus",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Vélo",
+            "value": 5,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans le tableau ci-dessous, un effectif a été effacé par erreur. Le total de la classe est de $30$ élèves.\\n\\nQuel est l'effectif manquant pour la couleur \"Rouge\" ?",
+      "options": [
+        "$8$",
+        "$10$",
+        "$12$",
+        "$20$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "On connait le total ($30$) et deux effectifs : Bleu ($12$) et Vert ($8$). On additionne les effectifs connus : $12 + 8 = 20$. On soustrait cette somme du total pour trouver le manque : $30 - 20 = 10$. L'effectif manquant est donc $10$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur préférée",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Bleu",
+            "12"
+          ],
+          [
+            "Rouge",
+            "?"
+          ],
+          [
+            "Vert",
+            "8"
+          ]
+        ]
+      }
+    }
+  ]
+}

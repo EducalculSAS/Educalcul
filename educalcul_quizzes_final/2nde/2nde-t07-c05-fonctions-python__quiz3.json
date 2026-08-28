@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Utiliser",
+  "title": "Quiz : Utiliser des fonctions en Python",
+  "questions": [
+    {
+      "text": "Quelle est la syntaxe correcte pour définir une fonction Python nommée $calcul$ qui ne prend aucun paramètre et affiche le texte $Resultat$ ?",
+      "options": [
+        "function calcul() : print(\"Resultat\")",
+        "def calcul : print(\"Resultat\")",
+        "def calcul(): print(\"Resultat\")",
+        "calcul = def(): print(\"Resultat\")"
+      ],
+      "correctAnswer": "def calcul(): print(\"Resultat\")",
+      "explanation": "En Python, on utilise le mot-clé `def` suivi du nom de la fonction, de parenthèses (vides si aucun paramètre) et de deux-points. Le corps de la fonction doit être indenté. L'option A utilise `function` (syntaxe JavaScript), l'option B omet les parenthèses obligatoires, et l'option D utilise une syntaxe invalide.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction suivante :\\n$def\\ soustraction(a, b):\\n\\quad return\\ a - b$\\nQue renvoie l'instruction $print(soustraction(10, 4))$ ?",
+      "options": [
+        "6",
+        "14",
+        "None",
+        "Erreur"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La fonction `soustraction` calcule $a - b$ et retourne le résultat grâce à `return`. L'appel `soustraction(10, 4)` retourne $10 - 4 = 6$. La fonction `print` affiche cette valeur retournée. L'option 14 correspondrait à une addition, `None` serait affiché si la fonction n'avait pas d'instruction `return`, et il n'y a pas d'erreur de syntaxe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérons ces deux fonctions :\\n$def\\ f1(x):\\n\\quad print(x * 2)$\\n$def\\ f2(x):\\n\\quad return\\ x * 2$\\nQuelle instruction permet d'afficher le double de $5$ en utilisant $f2$ ?",
+      "options": [
+        "print(f2(5))",
+        "f2(5)",
+        "print(f1(5))",
+        "f1(print(5))"
+      ],
+      "correctAnswer": "print(f2(5))",
+      "explanation": "La fonction `f2` utilise `return` : elle renvoie une valeur mais ne l'affiche pas. Il faut donc envelopper l'appel dans `print()` pour voir le résultat : `print(f2(5))` affiche $10$. L'option `f2(5)` calcule le résultat mais ne l'affiche pas. L'option `print(f1(5))` affiche $10$ (via `print` dans `f1`) puis affiche `None` (valeur de retour implicite de `f1`). La dernière option est une erreur de logique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant :\\n$valeur = 20\\n\\ndef\\ modifier():\\n\\quad valeur = 10\\n\\nmodifier()\\n\\nprint(valeur)$\\nQuelle valeur est affichée ?",
+      "options": [
+        "10",
+        "20",
+        "Erreur (variable non définie)",
+        "None"
+      ],
+      "correctAnswer": "20",
+      "explanation": "À l'intérieur de la fonction `modifier`, l'instruction `valeur = 10` crée une nouvelle variable *locale* nommée `valeur` qui masque la variable globale. Cette variable locale est détruite à la fin de la fonction. La variable globale `valeur` n'est jamais modifiée et conserve sa valeur initiale $20$. Pour modifier la variable globale, il faudrait utiliser le mot-clé `global valeur` au début de la fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction :\\n$def\\ puissance(base, exposant=2):\\n\\quad return\\ base ** exposant$\\nQuel est le résultat de l'appel $puissance(3)$ ?",
+      "options": [
+        "9",
+        "6",
+        "27",
+        "Erreur (argument manquant)"
+      ],
+      "correctAnswer": "9",
+      "explanation": "Le paramètre `exposant` possède une valeur par défaut ($2$) indiquée dans la définition `exposant=2`. Lors de l'appel `puissance(3)`, seul l'argument `base` est fourni (valeur $3$). L'exposant prend sa valeur par défaut $2$. Le calcul effectué est donc $3^2 = 9$. L'option 6 correspond à $3 \\times 2$, l'option 27 à $3^3$, et il n'y a pas d'erreur car l'argument manquant est optionnel.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

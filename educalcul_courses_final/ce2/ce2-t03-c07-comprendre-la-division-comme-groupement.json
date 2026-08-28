@@ -1,0 +1,455 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.005889+00:00",
+  "id": 166,
+  "code": "ce2-t03-c07",
+  "title": "Comprendre la division comme groupement",
+  "description": "Cours structuré Educalcul : Comprendre la division comme groupement.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Comprendre la division comme groupement",
+    "objectif_global": "Comprendre la division comme groupement",
+    "mini_lecons_imposees": [
+      "Former des groupes.",
+      "Chercher nombre de groupes.",
+      "Interpréter le reste."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Former des groupes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Former des groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $12$ bonbons dans ta main. Tu veux faire des petits sachets pour tes copains, et tu décides de mettre exactement $3$ bonbons dans chaque sachet. La question, c'est : combien de sachets vas-tu pouvoir remplir ? Pour le savoir, on va manipuler l'idée de $groupement$ : on prend le total, et on forme des paquets de même taille."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 12",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe de 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe de 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe de 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe de 3",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "On partage $12$ en groupes de $3$. On obtient $4$ groupes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le dessin : le grand rectangle bleu, c'est ton total de $12$ bonbons. Les rectangles verts, ce sont tes sachets de $3$ bonbons. Tu vois bien qu'il y en a $4$ au total. C'est ça, former des groupes : on découpe une grande quantité en morceaux tous identiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons un peu l'histoire. Tu as $15$ billes et tu veux faire des tas de $5$ billes chacun. Cette fois, le total est plus grand, mais l'idée reste la même : on cherche à savoir combien de fois $5$ « rentre » dans $15$. On peut utiliser des jetons, des traits sur l'ardoise, ou même dessiner des petits ronds pour représenter les billes."
+            },
+            {
+              "type": "definition",
+              "term": "Groupement (division)",
+              "definition": "C'est l'action de partager une quantité totale en plusieurs groupes qui ont tous la même taille. On connaît le total et la taille d'un groupe, on cherche le nombre de groupes.",
+              "example": "Avec $20$ crayons, je fais des boîtes de $4$ crayons. Je fais du groupement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'abord, je note combien j'ai d'objets au départ. Ici, $15$ billes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la taille du groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je décide combien d'objets je mets dans chaque paquet. Ici, $5$ billes par tas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Former les groupes un par un",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je prélève $5$ billes, je les mets à part : c'est le premier groupe. Je recommence tant qu'il m'en reste assez."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Compter les groupes formés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "J'ai fait $3$ tas. Donc $15$ groupé par $5$, ça fait $3$ groupes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu begins à voir le truc ? Ce groupement, c'est exactement l'inverse de la multiplication. Si je sais que $3 \\times 5 = 15$, alors je sais direct qu'en groupant $15$ par $5$, je trouve $3$. C'est comme défaire une multiplication pour retrouver l'un des nombres de départ. Essaie de le vérifier avec d'autres tables que tu connais bien."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $16$ feutres. Tu veux faire des pots de $4$ feutres. Combien de pots vas-tu remplir ? Dessine ou explique avec des mots.",
+              "answer": "4 pots",
+              "hint": "Compte par $4$ : $4, 8, 12, 16$. Combien de fois as-tu compté ?",
+              "explanation": "On forme des groupes de $4$ dans $16$. $4 + 4 + 4 + 4 = 16$. Il y a $4$ groupes."
+            },
+            {
+              "question": "Complète : $20$ bonbons groupés par $5$, ça fait $\\dots$ groupes de $5$.",
+              "answer": "4",
+              "hint": "Utilise la table de $5$ : $5 \\times \\dots = 20$.",
+              "explanation": "$5 \\times 4 = 20$, donc on peut faire $4$ groupes de $5$ avec $20$ bonbons."
+            },
+            {
+              "question": "Léa a $18$ autocollants. Elle en met $3$ sur chaque page de son cahier. Sur combien de pages va-t-elle en coller ?",
+              "answer": "6 pages",
+              "hint": "Combien de fois $3$ dans $18$ ? $3 \\times 6 = 18$.",
+              "explanation": "On groupe $18$ par $3$. $3 \\times 6 = 18$, donc $6$ groupes, donc $6$ pages."
+            }
+          ]
+        },
+        {
+          "title": "Chercher nombre de groupes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chercher le nombre de groupes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais former des groupes avec des objets réels ou des dessins, on va apprendre à l'écrire comme un vrai calcul de « grands ». Pour dire « $12$ groupé par $3$ fait $4$ groupes », les mathématiciens ont inventé un signe spécial : le signe $\\div$ (on lit « divisé par »). On écrit donc : $12 \\div 3 = 4$."
+            },
+            {
+              "type": "number_line",
+              "caption": "On fait des sauts de $3$ en arrière depuis $12$ jusqu'à $0$. Il y a $4$ sauts.",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 12,
+                  "label": "Départ"
+                },
+                {
+                  "value": 9,
+                  "label": ""
+                },
+                {
+                  "value": 6,
+                  "label": ""
+                },
+                {
+                  "value": 3,
+                  "label": ""
+                },
+                {
+                  "value": 0,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 9,
+                  "end": 12,
+                  "label": "3"
+                },
+                {
+                  "start": 6,
+                  "end": 9,
+                  "label": "3"
+                },
+                {
+                  "start": 3,
+                  "end": 6,
+                  "label": "3"
+                },
+                {
+                  "start": 0,
+                  "end": 3,
+                  "label": "3"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette droite graduée. On part de $12$ (le total) et on fait des sauts de $3$ en arrière (la taille du groupe). On s'arrête à $0$. Combien de sauts as-tu faits ? $4$ sauts ! Chaque saut, c'est un groupe de $3$ que l'on a retiré. Le nombre de sauts, c'est exactement le nombre de groupes cherché."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais dessiner une droite à chaque fois, c'est long. Heureusement, tes tables de multiplication sont là pour t'aider ! Puisque la division, c'est l'inverse de la multiplication, pour calculer $24 \\div 3$, tu te demandes : « Par quel nombre je multiplie $3$ pour obtenir $24 $ ? » Si tu sais que $3 \\times 8 = 24$, alors tu as ta réponse tout de suite : $24 \\div 3 = 8$."
+            },
+            {
+              "type": "definition",
+              "term": "Dividende / Diviseur / Quotient",
+              "definition": "Dans $24 \\div 3 = 8$ : $24$ est le dividende (le total), $3$ est le diviseur (la taille du groupe), $8$ est le quotient (le nombre de groupes).",
+              "example": "$30 \\div 5 = 6$. Dividende $30$, diviseur $5$, quotient $6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le total (dividende)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le grand nombre de départ. Exemple : $24$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier la taille du groupe (diviseur)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le nombre après le signe $\\div$. Exemple : $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Chercher dans la table du diviseur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la table de $3$ : $3 \\times 8 = 24$. Le multiplicateur manquant, c'est $8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$24 \\div 3 = 8$. Il y a $8$ groupes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les nombres sont un peu plus gros, comme $36 \\div 3$ ou $45 \\div 5$. Pas de panique ! Tu peux décomposer le total en dizaines et unités pour t'aider. Pour $36 \\div 3$, tu penses : $30 \\div 3 = 10$ (dizaines) et $6 \\div 3 = 2$ (unités). Au total, $10 + 2 = 12$ groupes. C'est une astuce de pro pour aller plus vite sans tout redessiner."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 6,
+              "caption": "$36$ : $3$ dizaines et $6$ unités. On partage les dizaines par $3$, puis les unités par $3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée, on part de $15$ et on fait des sauts de $5$ jusqu'à $0$. Combien de sauts ? Écris la division correspondante.",
+              "answer": "3 sauts. $15 \\div 5 = 3$",
+              "hint": "Compte les sauts : $15 \\to 10 \\to 5 \\to 0$.",
+              "explanation": "Chaque saut de $5$ représente un groupe. Il faut $3$ sauts pour aller de $15$ à $0$."
+            },
+            {
+              "question": "Calcule en utilisant la table de multiplication : $28 \\div 4 = \\dots$",
+              "answer": "7",
+              "hint": "$4 \\times \\dots = 28$ ?",
+              "explanation": "$4 \\times 7 = 28$, donc $28 \\div 4 = 7$. Il y a $7$ groupes de $4$ dans $28$."
+            },
+            {
+              "question": "Un jardinier a $42$ bulbes de tulipes. Il en plante $6$ par massif. Combien de massifs va-t-il faire ? Écris la division et le résultat.",
+              "answer": "$42 \\div 6 = 7$ massifs",
+              "hint": "Table de $6$ : $6 \\times 7 = 42$.",
+              "explanation": "Total $42$, groupe de $6$. $6 \\times 7 = 42$, donc $7$ groupes, donc $7$ massifs."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter le reste.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter le reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Hasta là, nos divisions tombaient « juste » : il ne restait rien. Mais imagine : tu as $13$ bonbons et tu veux faire des sachets de $3$. Tu fais un premier sachet ($3$), un deuxième ($3$), un troisième ($3$), un quatrième ($3$)... et il t'en reste $1$ tout seul dans la main. On ne peut pas faire un cinquième sachet complet de $3$ ! Ce bonbon tout seul, on l'appelle le $reste$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total 13",
+                  "value": 13,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Reste 1",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ],
+              "caption": "$13$ groupés par $3$ : $4$ groupes et $1$ reste (en rouge)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le dessin : les $4$ barres vertes, ce sont tes $4$ sachets pleins. Le tout petit bout rouge à la fin, c'est le bonbon qui n'a pas de copains pour faire un groupe de $3$. En maths, on écrit ça comme ça : $13 \\div 3 = 4$, reste $1$. Le reste, c'est ce qui est « en trop » pour faire un groupe complet de la taille demandée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a une règle d'or super importante pour le reste : il est TOUJOURS plus petit que la taille du groupe (le diviseur). Ici, le groupe, c'est $3$. Le reste, c'est $1$. $1$ est bien plus petit que $3$. Si ton reste était $3$ ou $4$, ça voudrait dire que tu as oublié de faire un groupe supplémentaire ! Vérifie toujours ça."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Règle du reste",
+              "paragraphs": [
+                "Le reste est strictement inférieur au diviseur. Si reste $\\ge$ diviseur, on peut encore faire au moins un groupe de plus."
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "Reste (division)",
+              "definition": "C'est la quantité qui reste après avoir formé le maximum de groupes complets possibles. Elle est toujours plus petite que la taille d'un groupe.",
+              "example": "$17 \\div 5 = 3$, reste $2$. ($5 \\times 3 = 15$, $17 - 15 = 2$. $2 < 5$.)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le reste, ça change tout dans la vie de tous les jours ! Si tu as $13$ élèves et que tu veux faire des équipes de $3$ pour un jeu, tu feras $4$ équipes complètes... et il restera $1$ élève sans équipe. Il faudra soit l'ajouter dans une équipe (qui aura $4$ joueurs), soit qu'il soit arbitre. Mais si tu achètes des boîtes de $6$ œufs pour avoir $13$ œufs, il t'en faut $3$ boîtes ($18$ œufs) car $2$ boîtes ne font que $12$ œufs : il en manque $1$ ! Le contexte décide ce qu'on fait du reste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais former des groupes de même taille à partir d'un total.",
+                "J'écris une division pour chercher le nombre de groupes : total $\\div$ taille = nombre de groupes.",
+                "J'utilise mes tables de multiplication pour trouver le quotient rapidement.",
+                "Je sais repérer le reste quand la division ne tombe pas juste.",
+                "Je vérifie que le reste est plus petit que le diviseur.",
+                "Je sais expliquer ce que veut dire le reste dans une petite histoire (équipes, boîtes, sachets...)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $19$ billes. Tu fais des groupes de $4$. Combien de groupes complets ? Combien de billes restantes ?",
+              "answer": "4 groupes, reste 3",
+              "hint": "$4 \\times 4 = 16$. $19 - 16 = 3$. Le reste $3$ est-il plus petit que $4$ ?",
+              "explanation": "On fait $4$ groupes de $4$ ($16$ billes). Il reste $3$ billes. $3 < 4$, c'est bon. $19 \\div 4 = 4$, reste $3$."
+            },
+            {
+              "question": "Complète l'égalité : $26 \\div 5 = \\dots$, reste $\\dots$",
+              "answer": "$26 \\div 5 = 5$, reste $1$",
+              "hint": "Table de $5$ : $5 \\times 5 = 25$. $26 - 25 = 1$.",
+              "explanation": "$5 \\times 5 = 25$. On ne peut pas faire $6$ groupes ($30 > 26$). Donc $5$ groupes, reste $1$."
+            },
+            {
+              "question": "Pour une fête, il faut $23$ jus de fruits. Ils sont vendus par pack de $4$. Combien de packs faut-il acheter ?",
+              "answer": "6 packs",
+              "hint": "$23 \\div 4 = 5$ reste $3$. $5$ packs font $20$ jus, il en manque $3$. Il faut un 6ème pack.",
+              "explanation": "$23 \\div 4 = 5$ reste $3$. Avec $5$ packs, on a $20$ jus, il en manque $3$. Il faut acheter $6$ packs pour avoir assez (on aura $1$ jus en trop)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

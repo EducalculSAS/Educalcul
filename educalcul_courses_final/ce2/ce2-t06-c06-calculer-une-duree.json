@@ -1,0 +1,357 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.076721+00:00",
+  "id": 192,
+  "code": "ce2-t06-c06",
+  "title": "Calculer une durée",
+  "description": "Cours structuré Educalcul : Calculer une durée.",
+  "subject": "Grandeurs et mesures",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Calculer une durée",
+    "objectif_global": "Calculer une durée",
+    "mini_lecons_imposees": [
+      "Heure de début / fin.",
+      "Passage par heure ronde.",
+      "Exprimer le résultat."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Heure de début / fin.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer l'heure de début et l'heure de fin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux savoir combien de temps dure ton dessin animé préféré. Pour le découvrir, il te faut deux informations : l'heure à laquelle il commence (l'heure de début) et l'heure à laquelle il se termine (l'heure de fin). C'est comme quand tu notes l'heure de ton départ pour l'école et l'heure de ton arrivée : la différence entre les deux te donne la durée du trajet."
+            },
+            {
+              "type": "clock",
+              "hours": 14,
+              "minutes": 0,
+              "caption": "Le dessin animé commence à 14h00",
+              "interactive": false
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette horloge : la petite aiguille pointe sur le $2$ (qui signifie $14$ heures l'après-midi) et la grande aiguille est sur le $12$. C'est l'heure de début. Maintenant, imagine que le dessin animé se termine à $15$ heures $15$. Nous allons apprendre à lire cette heure de fin sur une autre horloge."
+            },
+            {
+              "type": "clock",
+              "hours": 15,
+              "minutes": 15,
+              "caption": "Le dessin animé finit à 15h15",
+              "interactive": false
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la petite aiguille est un peu après le $3$ (soit $15$ heures) et la grande aiguille sur le $3$ (ce qui fait $15$ minutes). Tu vois ? L'heure de fin n'est pas toujours une heure pile. Il faut bien regarder où se trouvent les deux aiguilles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les deux heures, passons à l'écriture numérique. Souvent, on note l'heure avec des chiffres : $14$h$00$ pour le début et $15$h$15$ pour la fin. Le \"h\" sépare les heures des minutes. C'est plus rapide à écrire que de dessiner une horloge à chaque fois !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie d'écrire toi-même l'heure de début et de fin pour ton goûter : s'il commence à $16$ heures $30$ et finit à $17$ heures, tu écriras $16$h$30$ et $17$h$00$. Attention, on met toujours deux chiffres pour les minutes, même s'il y en a zéro."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'heure de début et l'heure de fin sont sur deux jours différents, comme pour une veillée qui commence à $20$h$00$ et se termine à $22$h$30$. Pas de panique : la méthode reste la même, on repère simplement les deux moments. Demain, nous verrons comment calculer l'écart entre ces deux heures en passant par une heure ronde."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde l'horloge : la petite aiguille est sur le $10$ et la grande sur le $12$. Quelle heure est-il ? Écris-la en chiffres avec le \"h\".",
+              "answer": "10h00",
+              "hint": "La grande aiguille sur le $12$ veut dire $00$ minutes.",
+              "explanation": "Quand la grande aiguille est sur le $12$, c'est une heure pile. La petite aiguille sur le $10$ indique $10$ heures. On écrit $10$h$00$."
+            },
+            {
+              "question": "Ton cours de sport commence à $9$h$10$ et se termine à $10$h$00$. Écris ces deux heures en notation numérique.",
+              "answer": "Début : 9h10, Fin : 10h00",
+              "hint": "N'oublie pas le \"h\" entre les heures et les minutes, et deux chiffres pour les minutes.",
+              "explanation": "L'heure de début s'écrit $9$h$10$ (la petite aiguille un peu après $9$, la grande sur $2$). L'heure de fin est $10$h$00$ (petite sur $10$, grande sur $12$)."
+            },
+            {
+              "question": "Une fête commence à $15$h$45$ et finit à $18$h$30$. Quelles sont l'heure de début et l'heure de fin ?",
+              "answer": "Début : 15h45, Fin : 18h30",
+              "hint": "Repère les heures et les minutes pour chaque moment.",
+              "explanation": "L'heure de début est $15$h$45$ (après-midi), l'heure de fin est $18$h$30$. On les écrit exactement comme on les lit."
+            }
+          ]
+        },
+        {
+          "title": "Passage par heure ronde.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer la durée en passant par une heure ronde"
+            },
+            {
+              "type": "paragraph",
+              "content": "Hier, nous avons appris à repérer l'heure de début et l'heure de fin. Aujourd'hui, nous allons calculer la durée qui les sépare. Le secret, c'est de faire une escale à une \"heure ronde\" : une heure où les minutes sont à $00$ (comme $10$h$00$, $11$h$00$...). C'est beaucoup plus facile de compter par étapes !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre dessin animé : début $14$h$00$, fin $15$h$15$. Comme le début est déjà une heure ronde ($14$h$00$), on peut compter directement les heures pleines jusqu'à $15$h$00$ : cela fait $1$ heure. Ensuite, il reste $15$ minutes pour aller de $15$h$00$ à $15$h$15$. Au total : $1$ heure $15$ minutes."
+            },
+            {
+              "type": "number_line",
+              "caption": "De 14h00 à 15h15 en passant par 15h00",
+              "min": 0,
+              "max": 90,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "14h00"
+                },
+                {
+                  "value": 60,
+                  "label": "15h00"
+                },
+                {
+                  "value": 75,
+                  "label": "15h15"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette frise, tu vois le saut de $60$ minutes (une heure) de $14$h$00$ à $15$h$00$, puis le petit saut de $15$ minutes jusqu'à $15$h$15$. C'est visuel et ça aide à ne pas se tromper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si l'heure de début n'est pas ronde ? Par exemple, un cours commence à $9$h$20$ et finit à $10$h$10$. On vise la première heure ronde après le début : $10$h$00$. De $9$h$20$ à $10$h$00$, il y a $40$ minutes (car $20 + 40 = 60$). Puis de $10$h$00$ à $10$h$10$, il y a $10$ minutes. Total : $40 + 10 = 50$ minutes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver l'heure ronde suivante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les minutes de l'heure de début. Combien de minutes pour atteindre $60$ ? C'est le temps jusqu'à l'heure ronde."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les heures pleines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De l'heure ronde trouvée à l'heure ronde de la fin (ou à l'heure de fin si elle est ronde), compte le nombre d'heures."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajouter les minutes restantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'heure de fin n'est pas ronde, ajoute les minutes qui dépassent l'heure ronde."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en trois étapes marche à tous les coups. Elle te permet de découper un calcul qui semble difficile en tout petits morceaux faciles. Essaie sur ton prochain exercice !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la durée dépasse une heure et demie, voire deux heures. Le principe ne change pas : on saute d'heure ronde en heure ronde. Par exemple, de $14$h$30$ à $17$h$15$ : on va à $15$h$00$ ($30$ min), puis $16$h$00$ ($1$h), puis $17$h$00$ ($1$h), puis $17$h$15$ ($15$ min). Total : $2$h$45$ min. La semaine prochaine, nous apprendrons à écrire ce résultat proprement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la durée entre $10$h$00$ et $11$h$30$ en passant par l'heure ronde $11$h$00$.",
+              "answer": "1h30",
+              "hint": "De 10h00 à 11h00 il y a 1 heure. De 11h00 à 11h30 il y a 30 minutes.",
+              "explanation": "Étape 1 : 10h00 est déjà ronde. Étape 2 : 1 heure jusqu'à 11h00. Étape 3 : 30 minutes jusqu'à 11h30. Durée = 1h30."
+            },
+            {
+              "question": "Un film commence à $14$h$40$ et se termine à $16$h$10$. Quelle est la durée ? Utilise la méthode des trois étapes.",
+              "answer": "1h30",
+              "hint": "Heure ronde après 14h40 : 15h00 (20 min). Ensuite 15h00 à 16h00 (1h). Enfin 16h00 à 16h10 (10 min). Total : 20+60+10 = 90 min = 1h30.",
+              "explanation": "Étape 1 : de 14h40 à 15h00 = 20 min. Étape 2 : de 15h00 à 16h00 = 1h. Étape 3 : de 16h00 à 16h10 = 10 min. Total = 1h30."
+            },
+            {
+              "question": "De $8$h$45$ à $10$h$15$, calcule la durée en passant par les heures rondes.",
+              "answer": "1h30",
+              "hint": "8h45 → 9h00 (15 min), 9h00 → 10h00 (1h), 10h00 → 10h15 (15 min).",
+              "explanation": "Étape 1 : 15 min pour atteindre 9h00. Étape 2 : 1h jusqu'à 10h00. Étape 3 : 15 min jusqu'à 10h15. Total = 1h30."
+            }
+          ]
+        },
+        {
+          "title": "Exprimer le résultat.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exprimer la durée en heures et minutes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant calculer une durée en passant par les heures rondes. Mais il reste une étape importante : écrire le résultat correctement. On note toujours les heures d'abord, puis les minutes, avec un \"h\" entre les deux. Par exemple, $90$ minutes, ça s'écrit $1$h$30$ (car $60$ minutes = $1$ heure, il reste $30$ minutes)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : on n'écrit jamais $1$h$90$ ! Si le nombre de minutes dépasse $60$, on convertit en heures. C'est comme pour l'argent : $100$ centimes = $1$ euro. Ici, $60$ minutes = $1$ heure. Alors $75$ minutes = $1$h$15$, $125$ minutes = $2$h$05$, etc."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "1 heure = 60 minutes. 30 minutes = 1/2 heure, 15 minutes = 1/4 heure."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ces réglettes : une heure entière (la barre du haut) vaut $60$ minutes. La moitié ($30$ min) et le quart ($15$ min) sont des repères très utiles. Si tu trouves $45$ minutes, tu sais que c'est $3$ quarts d'heure, mais on écrira quand même $0$h$45$ s'il n'y a pas d'heure pleine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le calcul te donne un total de minutes qu'il faut transformer. Prenons l'exemple d'hier : $2$h$45$ min. C'est déjà bien écrit car les minutes sont inférieures à $60$. Mais si tu trouves $1$h$75$ min, ce n'est pas fini : $75$ min = $1$h$15$ min. Alors $1$h$75$ min devient $2$h$15$ min. On ajoute l'heure gagnée aux heures existantes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Séparer les heures et les minutes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le nombre d'heures d'un côté, le nombre de minutes de l'autre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertir les minutes en heures si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les minutes sont $60$ ou plus, forme des paquets de $60$ minutes = $1$ heure. Ajoute ces heures au total des heures."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le total des heures, puis \"h\", puis les minutes restantes (toujours sur deux chiffres)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec cette méthode, tu ne feras plus d'erreur. Essaie de convertir $3$h$85$ min : $85$ min = $1$h$25$ min, donc total $4$h$25$ min. C'est comme ranger des livres par paquets de $60$ sur une étagère !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais tout : repérer les heures, calculer la durée par étapes, et écrire le résultat proprement. Tu es prêt pour le bilan final où tu vas tout mettre en pratique sur des situations variées : une recette de cuisine, un trajet en train, une partie de jeu vidéo... Chaque fois, tu seras le maître du temps !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer l'heure de début et l'heure de fin sur une horloge et en écriture numérique.",
+                "Je sais calculer une durée en passant par une heure ronde (étape par étape).",
+                "Je sais exprimer le résultat en heures et minutes, en convertissant les minutes si elles dépassent 60."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis ces durées en notation \"heures et minutes\" : $90$ min, $130$ min, $45$ min.",
+              "answer": "1h30, 2h10, 0h45",
+              "hint": "Combien de fois 60 minutes dans le total ? Le reste sont les minutes.",
+              "explanation": "90 min = 60+30 = 1h30. 130 min = 120+10 = 2h10. 45 min < 60 = 0h45."
+            },
+            {
+              "question": "Un trajet dure $2$h$80$ min. Réécris correctement cette durée.",
+              "answer": "3h20",
+              "hint": "80 minutes = 1 heure + 20 minutes. Ajoute cette heure aux 2 heures.",
+              "explanation": "80 min = 60 min + 20 min = 1h20. 2h + 1h20 = 3h20."
+            },
+            {
+              "question": "Ton anniversaire commence à $15$h$30$ et finit à $18$h$45$. Calcule la durée et écris-la proprement.",
+              "answer": "3h15",
+              "hint": "Utilise la méthode des 3 étapes : heure ronde, heures pleines, minutes restantes. Puis vérifie l'écriture.",
+              "explanation": "15h30 → 16h00 (30 min), 16h00 → 18h00 (2h), 18h00 → 18h45 (45 min). Total = 2h75 min = 3h15."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

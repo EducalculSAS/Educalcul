@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Réciproque de Thalès",
+  "title": "Quiz : Réciproque de Thalès - Applications",
+  "questions": [
+    {
+      "text": "Dans le triangle ABC, les points D et E appartiennent respectivement aux côtés [AB] et [AC]. On sait que $\\frac{AD}{AB} = \\frac{AE}{AC}$. Quelle conclusion peut-on tirer ?",
+      "options": [
+        "La droite (DE) est parallèle à (BC).",
+        "La droite (DE) est perpendiculaire à (BC).",
+        "Les points D et E sont les milieux de [AB] et [AC].",
+        "Le triangle ADE est rectangle en A."
+      ],
+      "correctAnswer": "La droite (DE) est parallèle à (BC).",
+      "explanation": "D'après la réciproque du théorème de Thalès, si un segment coupe deux côtés d'un triangle et que les rapports des longueurs sont égaux, alors ce segment est parallèle au troisième côté. Ici $\\frac{AD}{AB} = \\frac{AE}{AC}$, donc (DE) // (BC). Les autres affirmations ne découlent pas de cette hypothèse.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec DE parallèle à BC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "AB",
+          "BC",
+          "CA"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans le triangle ABC, on a $AB = 12$, $AD = 4$, $AC = 15$ et $AE = 5$. Les droites (DE) et (BC) sont-elles parallèles ?",
+      "options": [
+        "Oui, car $\\frac{AD}{AB} = \\frac{AE}{AC}$.",
+        "Non, car les rapports sont différents.",
+        "On ne peut pas savoir sans connaître la longueur de BC.",
+        "Elles sont sécantes en un point extérieur au triangle."
+      ],
+      "correctAnswer": "Oui, car $\\frac{AD}{AB} = \\frac{AE}{AC}$.",
+      "explanation": "On calcule $\\frac{AD}{AB} = \\frac{4}{12} = \\frac{1}{3}$ et $\\frac{AE}{AC} = \\frac{5}{15} = \\frac{1}{3}$. Les rapports sont égaux, donc par la réciproque de Thalès, (DE) // (BC).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle ABC, $AB = 10$, $AD = 3$, $AC = 14$, $AE = 5$. Peut-on affirmer que (DE) // (BC) ?",
+      "options": [
+        "Oui, les triangles sont semblables.",
+        "Non, car $\\frac{AD}{AB} \\neq \\frac{AE}{AC}$.",
+        "Oui, si on prolonge les côtés.",
+        "Non, car les rapports sont égaux."
+      ],
+      "correctAnswer": "Non, car $\\frac{AD}{AB} \\neq \\frac{AE}{AC}$.",
+      "explanation": "$\\frac{AD}{AB} = \\frac{3}{10} = 0,3$ alors que $\\frac{AE}{AC} = \\frac{5}{14} \\approx 0,357$. Les rapports ne sont pas égaux, donc la condition de la réciproque de Thalès n'est pas satisfaite : (DE) n'est pas parallèle à (BC).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, une droite parallèle à (BC) coupe [AB] en D tel que $AD = 6$ et $AB = 12$. Si $AC = 24$, quelle est la longueur de $AE$ où E est l'intersection de cette parallèle avec [AC] ?",
+      "options": [
+        "12",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Puisque (DE) // (BC), la réciproque de Thalès donne $\\frac{AD}{AB} = \\frac{AE}{AC}$. On a $\\frac{6}{12} = \\frac{1}{2}$, donc $\\frac{AE}{24} = \\frac{1}{2}$ ce qui donne $AE = 12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle ABC, (DE) // (BC) avec D sur [AB] et E sur [AC]. On connaît $AD = 5$, $DB = 10$ et $AE = 7$. Calculer $EC$.",
+      "options": [
+        "14",
+        "7",
+        "3,5",
+        "21"
+      ],
+      "correctAnswer": "14",
+      "explanation": "D'après Thalès, $\\frac{AD}{DB} = \\frac{AE}{EC}$. Ainsi $\\frac{5}{10} = \\frac{1}{2} = \\frac{7}{EC}$, d'où $EC = 14$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

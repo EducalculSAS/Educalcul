@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Réciproque de Pythagore",
+  "title": "Ordonner les étapes de la réciproque de Pythagore",
+  "blocks": [
+    {
+      "title": "Démarche logique",
+      "content": "Voici les étapes du raisonnement pour savoir si un triangle est rectangle en utilisant la réciproque du théorème de Pythagore. Remets-les dans l'ordre chronologique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier le plus grand côté du triangle.",
+        "Calculer le carré de la longueur du plus grand côté.",
+        "Calculer la somme des carrés des longueurs des deux autres côtés.",
+        "Comparer les deux résultats obtenus.",
+        "Conclure : si les deux résultats sont égaux, le triangle est rectangle ; sinon, il ne l'est pas."
+      ],
+      "explanation": "La réciproque du théorème de Pythagore s'applique selon une procédure précise : on commence par repérer l'hypoténuse potentielle (le plus grand côté), on calcule son carré, on calcule la somme des carrés des deux autres côtés, on compare ces deux nombres et on tire la conclusion finale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique",
+      "content": "On veut savoir si un triangle de côtés $5$ cm, $7$ cm et $9$ cm est rectangle. Remets dans l'ordre les étapes du calcul et de la conclusion.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le plus grand côté mesure $9$ cm.",
+        "On calcule $9^2 = 81$.",
+        "On calcule $5^2 + 7^2 = 25 + 49 = 74$.",
+        "On compare : $81 \\neq 74$.",
+        "Le triangle n'est pas rectangle car l'égalité de Pythagore n'est pas vérifiée."
+      ],
+      "explanation": "On identifie le plus grand côté ($9$ cm). Son carré est $81$. La somme des carrés des deux autres côtés est $25 + 49 = 74$. Comme $81$ est différent de $74$, la condition de la réciproque n'est pas remplie : le triangle n'est pas rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème concret",
+      "content": "Un maçon vérifie l'équerrage d'un mur. Il mesure $1,50$ m sur un côté, $2$ m sur l'autre et $2,50$ m sur la diagonale. Remets dans l'ordre les étapes pour valider l'angle droit.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "La plus grande longueur mesurée est $2,50$ m (la diagonale).",
+        "On calcule le carré de cette longueur : $2,50^2 = 6,25$.",
+        "On calcule la somme des carrés des deux autres longueurs : $1,50^2 + 2^2 = 2,25 + 4 = 6,25$.",
+        "Les deux résultats sont égaux : $6,25 = 6,25$.",
+        "L'angle est un angle droit d'après la réciproque du théorème de Pythagore, le mur est bien d'équerre."
+      ],
+      "explanation": "La diagonale correspond au plus grand côté ($2,50$ m). Son carré vaut $6,25$. La somme des carrés des côtés de l'angle ($1,50$ m et $2$ m) vaut $2,25 + 4 = 6,25$. L'égalité est vérifiée, donc l'angle est droit grâce à la réciproque de Pythagore.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "_status": "done",
+  "_course_id": 166,
+  "_course_code": "ce2-t03-c07-comprendre-la-division-comme-groupement",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Former des groupes",
+  "title": "Quiz : La division comme groupement (Approfondissement)",
+  "questions": [
+    {
+      "text": "On a $15$ pommes. On veut faire des sacs de $3$ pommes. Combien de sacs peut-on remplir ?",
+      "options": [
+        "$3$ sacs",
+        "$4$ sacs",
+        "$5$ sacs",
+        "$6$ sacs"
+      ],
+      "correctAnswer": "$5$ sacs",
+      "explanation": "Pour trouver le nombre de sacs, on cherche combien de fois $3$ rentre dans $15$. On fait le partage : $15 \\div 3 = 5$. On peut faire $5$ groupes de $3$ avec $15$ objets. Les autres réponses correspondent à des erreurs de table de multiplication ($3 \\times 4 = 12$, $3 \\times 6 = 18$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 3,
+        "highlighted": 15,
+        "caption": "15 pommes regroupées par 3"
+      }
+    },
+    {
+      "text": "Une maîtresse a $24$ crayons. Elle les range dans des boîtes de $6$ crayons. Combien de boîtes lui faut-il ?",
+      "options": [
+        "$3$ boîtes",
+        "$4$ boîtes",
+        "$5$ boîtes",
+        "$6$ boîtes"
+      ],
+      "correctAnswer": "$4$ boîtes",
+      "explanation": "Il faut trouver le nombre de groupes de $6$ dans $24$. On utilise la multiplication inverse : $6 \\times ? = 24$. Comme $6 \\times 4 = 24$, il faut $4$ boîtes. L'option $3$ donne $18$ crayons ($6 \\times 3$), l'option $5$ en donne $30$ ($6 \\times 5$) et l'option $6$ en donne $36$ ($6 \\times 6$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "6",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "6",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "6",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "6",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "24 crayons regroupés par 6"
+      }
+    },
+    {
+      "text": "Avec $17$ bonbons, on forme des sachets de $5$ bonbons. Combien de sachets pleins peut-on faire ?",
+      "options": [
+        "$2$ sachets",
+        "$3$ sachets",
+        "$4$ sachets",
+        "$5$ sachets"
+      ],
+      "correctAnswer": "$3$ sachets",
+      "explanation": "On cherche le nombre de groupes entiers de $5$ dans $17$. $5 \\times 3 = 15$, on peut faire $3$ sachets pleins. Il reste $2$ bonbons ($17 - 15 = 2$), ce qui ne suffit pas pour un 4e sachet. L'option $4$ est impossible car $5 \\times 4 = 20 > 17$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "5",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "5",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "reste 2",
+            "value": 2,
+            "tone": "gray"
+          }
+        ],
+        "caption": "17 bonbons regroupés par 5"
+      }
+    },
+    {
+      "text": "Luc a fait $6$ groupes de $4$ billes. Combien de billes a-t-il au total ?",
+      "options": [
+        "$20$ billes",
+        "$24$ billes",
+        "$26$ billes",
+        "$18$ billes"
+      ],
+      "correctAnswer": "$24$ billes",
+      "explanation": "C'est la situation inverse : on connaît le nombre de groupes ($6$) et la taille de chaque groupe ($4$), on cherche le total. On multiplie : $6 \\times 4 = 24$. Luc a $24$ billes. $20$ correspond à $5 \\times 4$, $18$ n'est pas un multiple de $4$, $26$ non plus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $30$ élèves. Le maître veut former des groupes. Quel choix permet d'avoir le plus grand nombre de groupes ?",
+      "options": [
+        "Des groupes de $5$ élèves",
+        "Des groupes de $6$ élèves",
+        "Les deux font le même nombre de groupes",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Des groupes de $5$ élèves",
+      "explanation": "Plus les groupes sont petits, plus il y en a. Groupes de $5$ : $30 \\div 5 = 6$ groupes. Groupes de $6$ : $30 \\div 6 = 5$ groupes. $6$ groupes est plus grand que $5$ groupes. Donc former des groupes de $5$ donne plus de groupes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

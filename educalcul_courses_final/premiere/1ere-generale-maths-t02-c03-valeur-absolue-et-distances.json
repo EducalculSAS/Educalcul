@@ -1,0 +1,488 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.302798+00:00",
+  "id": 579,
+  "code": "1ere-generale-maths-t02-c03",
+  "title": "Valeur absolue et distances",
+  "description": "Cours structuré Educalcul : Valeur absolue et distances.",
+  "subject": "Calcul numérique et algébrique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Calcul numérique et algébrique",
+    "titre_du_cours": "Valeur absolue et distances",
+    "objectif_global": "Valeur absolue et distances",
+    "mini_lecons_imposees": [
+      "Intervalles.",
+      "Équations simples.",
+      "Géométrie."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul numérique et algébrique",
+      "lessons": [
+        {
+          "title": "Intervalles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les intervalles et leurs notations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux intervalles. Tu as déjà croisé ces objets en Seconde, mais nous allons les revisiter sous l'angle de la valeur absolue, ce qui va nous permettre de résoudre bien plus aisément certaines inéquations. Un intervalle, c'est simplement une portion de la droite des nombres réels. On le délimite par deux bornes, qui peuvent être incluses ou exclues. Par exemple, l'intervalle $]2, 5]$ contient tous les nombres $x$ tels que $2 < x \\leq 5$. La borne $2$ est exclue (parenthèse), la borne $5$ est incluse (crochet). C'est une convention de rédaction qu'il faut avoir en tête pour ne pas se tromper quand on passe de l'écriture en inégalité à l'écriture en intervalle, et inversement."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalle",
+              "definition": "Un intervalle de $\\mathbb{R}$ est une partie $I$ de $\\mathbb{R}$ telle que pour tout $a, b \\in I$ avec $a < b$, on a $[a, b] \\subset I$. Concrètement, c'est un segment, un rayon ou la droite entière, sans trous.",
+              "example": "$[3, 7[$, $\\]{-2}, +\\infty[$, $\\{4\\}$ sont des intervalles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser ces intervalles, rien ne vaut une représentation graphique. Le bloc ci-dessous te permet de construire toi-même un intervalle en choisissant ses bornes et en décidant si elles sont ouvertes ou fermées. Joue avec les curseurs pour voir comment l'intervalle change sur la droite graduée."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": 1,
+              "upperBound": 4,
+              "lowerOpen": true,
+              "upperOpen": false,
+              "caption": "Intervalle $]1, 4]$ : borne inférieure exclue, borne supérieure incluse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que lorsque la borne est exclue, on met un petit cercle vide sur la droite, et lorsqu'elle est incluse, un cercle plein. Cette habitude graphique te servira plus tard quand tu devras tracer l'ensemble des solutions d'une inéquation. Maintenant, essayons de passer de l'écriture en inégalité à l'intervalle. Si j'écris $-3 \\leq x < 6$, quel est l'intervalle correspondant ? C'est $[-3, 6[$. La borne $-3$ est incluse (crochet), la borne $6$ est exclue (parenthèse). À toi de t'entraîner avec le premier exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lien entre valeur absolue et intervalles centrés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici maintenant le cœur de la leçon : la valeur absolue permet de décrire très naturellement les intervalles centrés en un point. Rappelle-toi la définition : pour tout réel $x$, $|x|$ est la distance de $x$ à l'origine. Plus généralement, $|x - a|$ est la distance entre $x$ et $a$. Donc l'inégalité $|x - a| < r$ (avec $r > 0$) signifie : la distance entre $x$ et $a$ est strictement inférieure à $r$. Géométriquement, ce sont tous les points situés à moins de $r$ de $a$, c'est-à-dire l'intervalle ouvert $]a - r, a + r[$. Si l'inégalité est large ($\\leq$), on obtient l'intervalle fermé $[a - r, a + r]$."
+            },
+            {
+              "type": "display_math",
+              "latex": "|x - a| < r \\iff x \\in ]a-r, a+r["
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette équivalence est fondamentale. Elle transforme une inéquation avec valeur absolue en une double inégalité simple, puis en intervalle. Par exemple, $|x - 2| < 3$ signifie que $x$ est à distancestrictementinférieure à $3$ de $2$. Les bornes sont $2-3 = -1$ et $2+3 = 5$. L'intervalle solution est donc $]-1, 5[$. Sur la droite graduée ci-dessous, tu vois cet intervalle centré en $2$ de rayon $3$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de $|x-2| < 3$ : intervalle $]-1, 5[$ centré en $2$ de rayon $3$",
+              "min": -4,
+              "max": 8,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -1,
+                  "end": 5,
+                  "startOpen": true,
+                  "endOpen": true
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe bien : le centre de l'intervalle est le nombre $a$ qui apparaît dans $|x-a|$, et le rayon est le nombre $r$ qui est de l'autre côté de l'inégalité. C'est une astuce visuelle très puissante : au lieu de faire de l'algèbre, tu peux souvent lire la solution directement sur la droite. Maintenant, que se passe-t-il si l'inégalité est $|x - a| > r$ ? Cette fois, on veut les points dont la distance à $a$ est strictement supérieure à $r$. Ce sont deux intervalles disjoints : $\\]{-\\infty}, a-r[ \\cup ]a+r, +\\infty[$. Le bloc suivant te permettra de vérifier cette intuition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution systématique des inéquations avec valeur absolue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu les cas particuliers $|x-a| < r$ et $|x-a| > r$. Mais en Première, on te demandera de résoudre des inéquations un peu plus générales, comme $|2x+1| \\leq 5$ ou $|x-3| > 2x$. La méthode universelle consiste à lever la valeur absolue en distinguant les cas selon le signe de l'expression à l'intérieur. C'est une démarche rigoureuse qui marche à tous les coups. Je vais te la présenter pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler la valeur absolue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets l'expression en valeur absolue seule d'un côté de l'inégalité. Par exemple, $|2x+1| \\leq 5$ est déjà isolée. Si tu as $2|x-3| < 4$, divise par $2$ pour obtenir $|x-3| < 2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distinguer les cas selon le signe de l'intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $f(x)$ l'expression dans la valeur absolue. On considère deux cas : $f(x) \\geq 0$ et $f(x) < 0$. Dans le premier cas, $|f(x)| = f(x)$ ; dans le second, $|f(x)| = -f(x)$. Cela transforme l'inéquation en une ou deux inéquations sans valeur absolue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre chaque inéquation obtenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous les inéquations classiques (du premier degré généralement) en respectant la condition de cas. Par exemple, pour $|2x+1| \\leq 5$ : Cas 1 : $2x+1 \\geq 0$ (i.e. $x \\geq -0,5$) et $2x+1 \\leq 5$ (i.e. $x \\leq 2$) → intersection $[-0,5, 2]$. Cas 2 : $2x+1 < 0$ (i.e. $x < -0,5$) et $-(2x+1) \\leq 5$ (i.e. $x \\geq -3$) → intersection $[-3, -0,5[$. Réunion des deux cas : $[-3, 2]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Réunir les solutions et écrire en intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution finale est la réunion des intervalles trouvés dans chaque cas. Vérifie toujours les bornes (inclues ou exclues) selon le sens de l'inégalité initiale (strict ou large)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre étapes est ton meilleur allié. Elle évite les erreurs de signe et te guide même quand l'inéquation n'est pas de la forme simple $|x-a| < r$. Note que pour les inéquations de type $|f(x)| < g(x)$ avec $g(x)$ non constant, il faut aussi imposer $g(x) > 0$ (ou $\\geq 0$ selon le cas). Nous verrons cela en exercice. À toi de jouer avec le troisième exercice qui met en pratique cette méthode complète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire sous forme d'intervalle : $-4 < x \\leq 1$.",
+              "answer": "]{-4}, 1]",
+              "hint": "La borne inférieure est exclue (parenthèse), la borne supérieure est incluse (crochet).",
+              "explanation": "L'inégalité $-4 < x \\leq 1$ signifie que $x$ est strictement plus grand que $-4$ et inférieur ou égal à $1$. En notation d'intervalle, on utilise une parenthèse pour la borne exclue ($-4$) et un crochet pour la borne incluse ($1$). Donc l'intervalle est $]{-4}, 1]$."
+            },
+            {
+              "question": "Résoudre l'inéquation $|x + 2| < 4$ et donner la solution sous forme d'intervalle.",
+              "answer": "]{-6}, 2[",
+              "hint": "Utilise l'équivalence $|x-a| < r \\iff x \\in ]a-r, a+r[$. Ici $a = -2$ et $r = 4$.",
+              "explanation": "On a $|x - (-2)| < 4$. Le centre est $a = -2$, le rayon $r = 4$. Les bornes sont $a-r = -6$ et $a+r = 2$. Comme l'inégalité est stricte, l'intervalle est ouvert : $]{-6}, 2[$."
+            },
+            {
+              "question": "Résoudre l'inéquation $|3x - 2| \\geq 7$.",
+              "answer": "]{-∞}, -5/3] ∪ [3, +∞[",
+              "hint": "Utilise la méthode des cas : $3x-2 \\geq 0$ et $3x-2 < 0$. Ou utilise l'équivalence $|x-a| \\geq r \\iff x \\leq a-r$ ou $x \\geq a+r$ après avoir mis sous la forme $|x-a| \\geq r$.",
+              "explanation": "On isole la valeur absolue : $|3x-2| \\geq 7$. Méthode des cas : Cas 1 : $3x-2 \\geq 0 \\iff x \\geq 2/3$. Alors $3x-2 \\geq 7 \\iff 3x \\geq 9 \\iff x \\geq 3$. Intersection : $[3, +\\infty[$. Cas 2 : $3x-2 < 0 \\iff x < 2/3$. Alors $-(3x-2) \\geq 7 \\iff -3x+2 \\geq 7 \\iff -3x \\geq 5 \\iff x \\leq -5/3$. Intersection : $]{-\\infty}, -5/3]$. Réunion : $]{-\\infty}, -5/3] \\cup [3, +\\infty[$."
+            }
+          ]
+        },
+        {
+          "title": "Équations simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équation $|x| = a$ : les deux opposés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attaquons-nous maintenant aux équations faisant intervenir la valeur absolue. La plus simple est $|x| = a$ avec $a$ un réel donné. Si $a < 0$, l'équation n'a aucune solution car une valeur absolue est toujours positive ou nulle. Si $a = 0$, l'unique solution est $x = 0$. Si $a > 0$, alors $|x| = a$ signifie que la distance de $x$ à l'origine vaut $a$. Il y a exactement deux nombres à distance $a$ de $0$ : $a$ et $-a$. Donc les solutions sont $x = a$ ou $x = -a$. C'est une propriété qu'il faut connaître par cœur."
+            },
+            {
+              "type": "definition",
+              "term": "Équation $|x| = a$",
+              "definition": "Pour $a \\in \\mathbb{R}$, l'équation $|x| = a$ admet : aucune solution si $a < 0$ ; une solution $x=0$ si $a=0$ ; deux solutions $x=a$ et $x=-a$ si $a > 0$.",
+              "example": "$|x| = 5 \\iff x = 5$ ou $x = -5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée ci-dessous, tu vois les deux solutions de $|x| = 3$ : les points $-3$ et $3$, tous deux à distance $3$ de l'origine. Cette représentation géométrique est souvent plus parlante que l'algèbre pure. Imagine que tu places un compas de rayon $3$ à l'origine : il coupe la droite en deux points symétriques."
+            },
+            {
+              "type": "number_line",
+              "caption": "Solutions de $|x| = 3$ : $x = -3$ et $x = 3$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "-3"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, si l'inconnue n'est pas seule dans la valeur absolue mais qu'on a $|f(x)| = a$, le raisonnement est le même : on ramène à $f(x) = a$ ou $f(x) = -a$, à condition que $a \\geq 0$. Si $a < 0$, pas de solution. C'est ce que nous allons pratiquer au premier exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode générale pour $|f(x)| = a$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'équation est de la forme $|f(x)| = a$ avec $a \\geq 0$, on utilise l'équivalence fondamentale : $|f(x)| = a \\iff f(x) = a$ ou $f(x) = -a$. Cela revient à résoudre deux équations séparées (souvent du premier ou second degré) et à réunir leurs solutions. Attention : il ne faut pas oublier la condition $a \\geq 0$. Si le second membre est une expression qui peut être négative, il faut d'abord en déterminer le signe. Par exemple, $|x-2| = x+1$ impose $x+1 \\geq 0$, c'est-à-dire $x \\geq -1$, avant de lever la valeur absolue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Condition sur le second membre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le second membre $a$ (ou l'expression à droite du $=$) est $\\geq 0$. Si ce n'est pas le cas pour certaines valeurs de $x$, ces valeurs sont exclues d'office."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lever la valeur absolue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les deux équations : $f(x) = a$ et $f(x) = -a$. Résous chacune d'elles indépendamment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Filtrer les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ne garde que les solutions qui satisfont la condition de l'étape 1 (et éventuellement d'autres conditions du domaine de définition si $f(x)$ contient des racines ou des fractions)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à l'exemple $|2x-1| = 3$. Le second membre $3$ est positif, pas de condition. On écrit $2x-1 = 3$ ou $2x-1 = -3$. La première donne $2x=4 \\Rightarrow x=2$. La seconde donne $2x=-2 \\Rightarrow x=-1$. Les deux solutions sont $2$ et $-1$. Vérifions : $|2\\times2-1| = |3| = 3$ et $|2\\times(-1)-1| = |-3| = 3$. C'est correct. Pour t'entraîner, le deuxième exercice te propose une équation où le second membre dépend de $x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations $|f(x)| = |g(x)|$ : deux méthodes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au dernier type d'équation de cette leçon : quand les deux membres sont des valeurs absolues. L'équation $|f(x)| = |g(x)|$ signifie que les expressions $f(x)$ et $g(x)$ ont la même valeur absolue, donc sont soit égales, soit opposées. On a donc l'équivalence : $|f(x)| = |g(x)| \\iff f(x) = g(x)$ ou $f(x) = -g(x)$. C'est exactement la même idée que précédemment, mais appliquée aux deux côtés. Une autre méthode, souvent plus rapide pour les équations du second degré, consiste à élever au carré les deux membres : $|f(x)| = |g(x)| \\iff f(x)^2 = g(x)^2 \\iff (f(x)-g(x))(f(x)+g(x)) = 0$. Les deux méthodes sont valides ; choisis celle qui te semble la plus simple selon l'exercice."
+            },
+            {
+              "type": "display_math",
+              "latex": "|f(x)| = |g(x)| \\iff f(x) = g(x) \\text{ ou } f(x) = -g(x)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $|x+2| = |2x-1|$. Méthode 1 : $x+2 = 2x-1$ ou $x+2 = -(2x-1)$. La première équation donne $x=3$. La seconde donne $x+2 = -2x+1 \\Rightarrow 3x = -1 \\Rightarrow x = -1/3$. Méthode 2 : on élève au carré : $(x+2)^2 = (2x-1)^2 \\iff x^2+4x+4 = 4x^2-4x+1 \\iff 3x^2-8x-3=0 \\iff (3x+1)(x-3)=0$, même résultat. Le troisième exercice te laissera choisir ta méthode préférée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre l'équation $|x - 4| = 6$.",
+              "answer": "$x = 10$ ou $x = -2$",
+              "hint": "Utilise la règle : $|x-a| = r \\iff x = a+r$ ou $x = a-r$ (avec $r \\geq 0$).",
+              "explanation": "Ici $a=4$ et $r=6$. Les solutions sont $x = 4+6 = 10$ et $x = 4-6 = -2$. On vérifie : $|10-4| = |6| = 6$ et $|-2-4| = |-6| = 6$."
+            },
+            {
+              "question": "Résoudre l'équation $|2x+3| = x+1$.",
+              "answer": "$x = -2$ ou $x = -4/3$",
+              "hint": "Commence par imposer la condition $x+1 \\geq 0$. Puis résous les deux équations $2x+3 = x+1$ et $2x+3 = -(x+1)$.",
+              "explanation": "Condition : $x+1 \\geq 0 \\iff x \\geq -1$. Cas 1 : $2x+3 = x+1 \\iff x = -2$. Mais $-2 \\ngeq -1$, donc rejeté. Cas 2 : $2x+3 = -x-1 \\iff 3x = -4 \\iff x = -4/3$. Vérification : $-4/3 \\geq -1$ est vrai. Donc l'unique solution est $x = -4/3$. (Note : $x=-2$ ne satisfait pas la condition initiale)."
+            },
+            {
+              "question": "Résoudre l'équation $|x-2| = |x+4|$.",
+              "answer": "$x = -1$",
+              "hint": "Deux méthodes : soit $x-2 = x+4$ (impossible) ou $x-2 = -(x+4)$ ; soit élever au carré.",
+              "explanation": "Méthode 1 : $x-2 = x+4$ donne $-2=4$ impossible. $x-2 = -x-4$ donne $2x = -2 \\iff x = -1$. Méthode 2 : $(x-2)^2 = (x+4)^2 \\iff x^2-4x+4 = x^2+8x+16 \\iff -12x = 12 \\iff x = -1$. L'unique solution est $x = -1$. Vérification : $|-1-2| = |-3| = 3$ et $|-1+4| = |3| = 3$."
+            }
+          ]
+        },
+        {
+          "title": "Géométrie.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Distance sur la droite : $|x-y|$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon donne tout son sens géométrique à la valeur absolue. Sur une droite graduée, la distance entre deux points d'abscisses $x$ et $y$ est exactement $|x-y|$. C'est une définition fondamentale : la distance est toujours positive (ou nulle si les points coïncident), et l'ordre des points n'importe pas car $|x-y| = |y-x|$. Cette symétrie est naturelle : la distance de Paris à Lyon est la même que de Lyon à Paris. Sur la figure ci-dessous, tu peux déplacer les points $A$ et $B$ pour voir la distance s'afficher."
+            },
+            {
+              "type": "number_line",
+              "caption": "Distance entre $A$ (abscisse $x$) et $B$ (abscisse $y$) : $d(A,B) = |x-y|$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "A"
+                },
+                {
+                  "value": 3,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, $A$ a pour abscisse $-2$, $B$ a pour abscisse $3$. La distance est $|-2 - 3| = |-5| = 5$ (ou $|3 - (-2)| = 5$). Cette interprétation géométrique permet de résoudre des problèmes de position sans calculs algébriques lourds. Par exemple, « Trouver les points $x$ tels que la distance de $x$ à $2$ soit égale à $3 $ » s'écrit $|x-2| = 3$, ce qui donne $x = -1$ ou $x = 5$. C'est exactement ce que nous faisions dans la leçon précédente, mais maintenant tu as une image mentale : ce sont les deux points de la droite situés à distance $3$ du point $2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Inéquations et régions du plan (sur la droite)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les inéquations avec valeur absolue décrivent des ensembles de points sur la droite. L'inéquation $|x-a| < r$ (avec $r>0$) désigne l'ensemble des points dont la distance à $a$ est strictement inférieure à $r$. C'est l'intervalle ouvert $]a-r, a+r[$, c'est-à-dire le segment centré en $a$ de rayon $r$, bornes exclues. De même, $|x-a| \\leq r$ donne le segment fermé $[a-r, a+r]$. Pour $|x-a| > r$, ce sont les points à l'extérieur de ce segment : deux demi-droites $\\]{-\\infty}, a-r[ \\cup ]a+r, +\\infty[$. Le bloc interactif ci-dessous te permet de visualiser ces régions en faisant varier $a$ et $r$."
+            },
+            {
+              "type": "interval_builder",
+              "min": -10,
+              "max": 10,
+              "lowerBound": -1,
+              "upperBound": 5,
+              "lowerOpen": true,
+              "upperOpen": true,
+              "caption": "Région $|x-2| < 3$ : intervalle $]-1, 5[$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que le centre de l'intervalle est toujours le nombre $a$ qui apparaît dans $|x-a|$, et le rayon est le nombre $r$. Cette lecture visuelle est un atout majeur pour gagner du temps et éviter les erreurs de signe. Par exemple, si on te demande de représenter l'ensemble des $x$ tels que $|x+4| \\geq 2$, tu identifies immédiatement $a = -4$ (car $x+4 = x-(-4)$) et $r=2$. L'intervalle « interdit » est $[-6, -2]$, donc la solution est son complémentaire : $\\]{-\\infty}, -6] \\cup [-2, +\\infty[$. Le deuxième exercice te permettra de t'exercer sur ce type de traduction géométrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes de géométrie sur la droite : milieu, points alignés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment la valeur absolue aide à résoudre des problèmes classiques de géométrie sur une droite. Le milieu $M$ de deux points $A$ et $B$ d'abscisses $a$ et $b$ a pour abscisse $\\frac{a+b}{2}$. La distance $AM = MB = \\frac{|a-b|}{2}$. Si un point $P$ est à distance $d$ de $A$ et à distance $d'$ de $B$, on peut écrire des équations avec valeurs absolues pour trouver sa position. Par exemple : « Sur une droite, on a trois points $A$, $B$, $C$ tels que $AB = 5$, $BC = 3$ et $AC = 8 $. Déterminer l'ordre des points. » On pose une origine et on utilise les distances. Mais souvent, il suffit de raisonner avec les intervalles : $C$ est à distance $8$ de $A$ et $3$ de $B$. Cela place $C$ de part et d'autre de $B$ par rapport à $A$. Un raisonnement par intervalles (ou une petite figure) montre que $B$ est entre $A$ et $C$. Le dernier exercice te propose un problème de ce type."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un repère",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place un point origine $O$ et un sens positif sur la droite. Attribue des coordonnées aux points connus (souvent on met $A$ à l'origine ou on utilise des variables)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Traduire les conditions en équations ou inéquations avec valeurs absolues",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime chaque distance donnée sous la forme $|x_A - x_B| = d$. Tu obtiens un système d'équations ou d'inéquations."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre et interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous le système (souvent en levant les valeurs absolues par cas). Vérifie que les solutions trouvées correspondent bien à un ordre des points cohérent sur la droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en trois étapes structure ta résolution de problèmes géométriques. Elle t'oblige à formaliser la situation avant de calculer, ce qui évite bien des erreurs. Maintenant, c'est à toi de mettre tout cela en pratique avec l'exercice final de cette leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire un intervalle sous forme d'inégalité et réciproquement.",
+                "Je sais résoudre une inéquation du type $|x-a| < r$ ou $|x-a| > r$ en utilisant la notion de distance.",
+                "Je sais résoudre une équation $|f(x)| = a$ en distinguant les cas $f(x)=a$ et $f(x)=-a$.",
+                "Je sais résoudre une équation $|f(x)| = |g(x)|$ par la méthode des deux équations ou par élévation au carré.",
+                "J'interprète géométriquement $|x-y|$ comme la distance entre les points d'abscisses $x$ et $y$ sur une droite.",
+                "Je sais traduire un problème de position sur une droite en équations avec valeurs absolues et le résoudre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée, les points $A$ et $B$ ont pour abscisses $-3$ et $4$. Calculer la distance $AB$.",
+              "answer": "$7$",
+              "hint": "La distance est la valeur absolue de la différence des abscisses : $|x_A - x_B|$.",
+              "explanation": "Abscisse de $A$ : $-3$, abscisse de $B$ : $4$. Distance $AB = |-3 - 4| = |-7| = 7$. On peut aussi faire $|4 - (-3)| = |7| = 7$."
+            },
+            {
+              "question": "Représenter sur une droite l'ensemble des réels $x$ tels que $|x+1| \\geq 4$.",
+              "answer": "]{-∞}, -5] ∪ [3, +∞[",
+              "hint": "Identifie le centre $a$ et le rayon $r$ dans $|x-a| \\geq r$. Ici $x+1 = x-(-1)$, donc $a=-1$, $r=4$. L'intervalle exclu est $[-5, 3]$.",
+              "explanation": "L'inéquation $|x+1| \\geq 4$ s'écrit $|x-(-1)| \\geq 4$. Le centre est $-1$, le rayon $4$. Les points à distance $\\geq 4$ de $-1$ sont ceux en dehors de l'intervalle $[-5, 3]$. La solution est $\\]{-\\infty}, -5] \\cup [3, +\\infty[$."
+            },
+            {
+              "question": "Sur une droite, on donne trois points $A$, $B$, $C$ tels que $AB = 6$, $BC = 4$ et $AC = 10$. Dans quel ordre sont-ils alignés ?",
+              "answer": "L'ordre est $A$, $B$, $C$ (ou $C$, $B$, $A$).",
+              "hint": "Utilise la relation entre les distances : si $B$ est entre $A$ et $C$, alors $AB + BC = AC$. Vérifie si c'est le cas.",
+              "explanation": "On a $AB + BC = 6 + 4 = 10 = AC$. Donc $B$ est entre $A$ et $C$. L'ordre sur la droite est soit $A$, $B$, $C$ soit $C$, $B$, $A$ selon le sens choisi. Les deux sont corrects car la droite n'est pas orientée dans l'énoncé."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,353 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.138358+00:00",
+  "id": 212,
+  "code": "cm1-t01-c02",
+  "title": "Valeur de position des chiffres",
+  "description": "Cours structuré Educalcul : Valeur de position des chiffres.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Valeur de position des chiffres",
+    "objectif_global": "Valeur de position des chiffres",
+    "mini_lecons_imposees": [
+      "Unités de numération.",
+      "Décomposer.",
+      "Recomposer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Unités de numération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les unités de numération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une grande boîte de briques Lego. Pour les ranger, tu pourrais tout mettre en vrac, mais ce serait bien difficile de savoir combien tu en as ! En maths, c'est pareil : pour lire et écrire les grands nombres sans se tromper, on a inventé un système de rangement très malin. Chaque chiffre a une « place » précise, et cette place lui donne sa valeur. Aujourd'hui, nous allons explorer ce système ensemble, pas à pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par ce que tu connais déjà. Quand tu comptes sur tes doigts, tu vas jusqu'à $10$. Cette première groupe, on l'appelle les **unités**. C'est la plus petite place, celle tout à droite quand on écrit un nombre. Essaie d'écrire $7$ : le chiffre $7$ est tout seul, il vaut $7$ unités. Facile, non ?"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "7 unités représentées par 7 petits cubes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu as $10$ petits cubes. Au lieu de les laisser en vrac, tu peux les attacher ensemble pour former une **barre de dix**. Cette barre, c'est une **dizaine** ! Elle vaut $10$ unités. Dans un nombre, la dizaine se place juste à gauche des unités. Par exemple, dans $23$, le $2$ est au rang des dizaines : il signifie $2$ barres de dix, soit $20$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "23 : 2 dizaines (barres) et 3 unités (cubes)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si on continue ? $10$ barres de dix forment un grand carré plat : c'est une **centaine** ! Elle vaut $100$ unités. Puis $10$ centaines forment un gros cube : c'est un **mille** (ou unité de mille). Et on peut continuer encore : dix mille, cent mille… À chaque fois, on groupe par $10$ pour créer la place suivante. C'est la règle magique : **une place vaut toujours $10$ fois la place à sa droite**."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 324587,
+              "caption": "Tableau de numération jusqu'aux centaines de mille"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien ce tableau. Chaque colonne a un nom : unités, dizaines, centaines, unités de mille, dizaines de mille, centaines de mille. Quand tu lis un nombre, tu donnes le nom de la colonne du chiffre le plus à gauche. Par exemple, $5\\,432$ se lit « cinq mille quatre cent trente-deux » car le $5$ est dans la colonne des unités de mille. Essaie de repérer la colonne de chaque chiffre dans le nombre $68\\,904$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre $56$, quel chiffre est au rang des dizaines ?",
+              "answer": "$5$",
+              "hint": "Regarde le chiffre le plus à gauche.",
+              "explanation": "Le $5$ est au rang des dizaines, il vaut $5$ dizaines soit $50$. Le $6$ est au rang des unités."
+            },
+            {
+              "question": "Combien vaut le chiffre $4$ dans le nombre $407$ ?",
+              "answer": "$400$ (quatre cents)",
+              "hint": "Dans quelle colonne se trouve le $4$ ?",
+              "explanation": "Le $4$ est au rang des centaines, donc il vaut $4 \\times 100 = 400$."
+            },
+            {
+              "question": "Écris le nombre qui a $3$ centaines de mille, $8$ dizaines de mille, $2$ unités de mille, $9$ centaines, $0$ dizaine et $4$ unités.",
+              "answer": "$382\\,904$",
+              "hint": "Place chaque chiffre dans sa colonne du tableau de numération.",
+              "explanation": "On place $3$ en centaines de mille, $8$ en dizaines de mille, $2$ en unités de mille, $9$ en centaines, $0$ en dizaines, $4$ en unités. Cela donne $382\\,904$."
+            },
+            {
+              "question": "Dans le nombre $68\\,904$, quel est le chiffre des dizaines de mille ?",
+              "answer": "$6$",
+              "hint": "Compte les colonnes en partant de la droite : unités, dizaines, centaines, unités de mille, dizaines de mille.",
+              "explanation": "En partant de la droite, la 5e colonne est celle des dizaines de mille. Le chiffre qui s'y trouve est $6$."
+            }
+          ]
+        },
+        {
+          "title": "Décomposer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer un nombre en somme de valeurs de position"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant que chaque chiffre a une valeur selon sa place. Mais comment faire pour « voir » tout ce qui se cache à l'intérieur d'un nombre comme $4\\,527$ ? C'est là qu'intervient la **décomposition** : on va défaire le nombre pour n'en garder que les briques élémentaires. C'est un peu comme démonter une tour de Lego pour retrouver chaque pièce séparément."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $4\\,527$. Regarde le tableau de numération : le $4$ est aux unités de mille, le $5$ aux centaines, le $2$ aux dizaines, le $7$ aux unités. Pour décomposer, j'écris la valeur de chaque chiffre non nul et je les additionne. Cela donne : $4\\,000 + 500 + 20 + 7$. Chaque terme de cette somme correspond exactement à une colonne du tableau. C'est ce qu'on appelle l'**écriture décomposée additive**."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 4527,
+              "caption": "Décomposition de 4 527 dans le tableau"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a un piège fréquent : les zéros ! Dans $3\\,045$, il n'y a pas de centaines. Faut-il écrire $+ 0$ dans la décomposition ? Non, on ne écrit pas les termes nuls. La décomposition correcte est $3\\,000 + 40 + 5$. Le zéro marque simplement qu'il n'y a rien dans cette colonne, mais il est indispensable pour garder les autres chiffres à leur place. Sans le zéro, $345$ ne serait pas le même nombre !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 45,
+              "caption": "3 045 : 3 milliers, 0 centaine, 4 dizaines, 5 unités (attention, les blocs montrent 3045 mais le 0 centaine est invisible)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi décomposer en **produits** : au lieu d'écrire $4\\,000$, on écrit $4 \\times 1\\,000$. C'est l'écriture décomposée **multiplicative**. Pour $4\\,527$, cela donne $4 \\times 1\\,000 + 5 \\times 100 + 2 \\times 10 + 7 \\times 1$. Cette forme montre encore mieux le lien entre le chiffre et la valeur de sa colonne. C'est très utile quand on veut comparer deux nombres ou faire des calculs posés plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "4527 = 4 \\times 1000 + 5 \\times 100 + 2 \\times 10 + 7 \\times 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te demandera une décomposition **non canonique**, c'est-à-dire pas la décomposition standard. Par exemple, $320$ peut se décomposer en $300 + 20$ (canonique), mais aussi en $200 + 120$ ou $100 + 220$ ou encore $32 \\times 10$. C'est comme échanger une barre de dix contre dix cubes : la valeur totale ne change pas, mais le groupement change. Essaie d'en trouver une pour $1\\,450$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'écriture décomposée additive de $2\\,806$.",
+              "answer": "$2\\,000 + 800 + 6$",
+              "hint": "Il n'y a pas de dizaines, donc on ne met pas de terme pour les dizaines.",
+              "explanation": "Le $2$ vaut $2\\,000$, le $8$ vaut $800$, le $0$ ne donne pas de terme, le $6$ vaut $6$."
+            },
+            {
+              "question": "Écris $7\\,004$ en décomposition multiplicative.",
+              "answer": "$7 \\times 1\\,000 + 4 \\times 1$",
+              "hint": "Seuls les chiffres non nuls donnent un terme. Le chiffre des centaines et des dizaines sont des zéros.",
+              "explanation": "$7$ milliers = $7 \\times 1\\,000$, $4$ unités = $4 \\times 1$. Les zéros ne s'écrivent pas."
+            },
+            {
+              "question": "Quelle décomposition correspond à $5 \\times 100 + 3 \\times 10 + 9 \\times 1$ ?",
+              "answer": "$539$",
+              "hint": "Calcule chaque produit puis additionne : $500 + 30 + 9$.",
+              "explanation": "$5 \\times 100 = 500$, $3 \\times 10 = 30$, $9 \\times 1 = 9$. La somme donne $539$."
+            },
+            {
+              "question": "Donne une décomposition non canonique de $1\\,450$ (différente de $1\\,000 + 400 + 50$).",
+              "answer": "$1\\,000 + 300 + 150$ (ou $14 \\times 100 + 50$, ou $145 \\times 10$, etc.)",
+              "hint": "Échange une centaine contre dix dizaines, ou une dizaine contre dix unités.",
+              "explanation": "On peut « casser » une centaine en $10$ dizaines : $400 = 300 + 100 = 300 + 10 \\times 10$. Donc $1\\,450 = 1\\,000 + 300 + 150$."
+            }
+          ]
+        },
+        {
+          "title": "Recomposer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Recomposer : retrouver le nombre à partir de ses morceaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir démonté le nombre, il est temps de tout remonter ! **Recomposer**, c'est l'opération inverse : on part d'une somme de valeurs de position (comme $3\\,000 + 600 + 40 + 8$) et on retrouve le nombre unique qu'elle forme. C'est comme reconstituer le puzzle : chaque pièce a sa place, et une fois toutes assemblées, l'image apparaît."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode est simple : on aligne les termes dans un tableau de numération, colonne par colonne. Prenons $5\\,000 + 300 + 70 + 2$. J'écris $5$ en milliers, $3$ en centaines, $7$ en dizaines, $2$ en unités. Il n'y a pas de terme pour les dizaines de mille ni les centaines de mille, donc je mets $0$ dans ces colonnes. Le nombre recomposé est $5\\,372$. Facile, quand on a le tableau sous les yeux !"
+            },
+            {
+              "type": "place_value_chart",
+              "number": 5372,
+              "caption": "Recomposition de 5 000 + 300 + 70 + 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention, parfois la somme n'est pas déjà bien rangée. Imagine qu'on te donne $4\\,000 + 1\\,200 + 30 + 5$. Ici, $1\\,200$ mélange des milliers et des centaines ! Il faut d'abord « casser » ce terme : $1\\,200 = 1\\,000 + 200$. Ensuite, on regroupe : $4\\,000 + 1\\,000 = 5\\,000$ (milliers), $200$ (centaines), $30$ (dizaines), $5$ (unités). Le résultat est $5\\,235$. C'est ce qu'on appelle **faire les échanges** ou **regrouper par $10$**."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Éclater les termes mélangés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les termes qui contiennent plusieurs ordres (ex: $1\\,200$). Écris-les en somme simple : $1\\,200 = 1\\,000 + 200$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regrouper les mêmes ordres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne tous les milliers entre eux, toutes les centaines entre elles, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire dans le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place chaque total dans sa colonne. Si un total fait $10$ ou plus, échange (ex: $12$ centaines = $1$ mille + $2$ centaines)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Lire le nombre final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les chiffres dans le tableau, lus de gauche à droite, donnent le nombre recomposé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi qu'après regroupement, une colonne dépasse $9$. Par exemple : $2\\,000 + 1\\,500 + 80 + 7$. Les centaines font $500 + 1\\,000$ (car $1\\,500 = 1\\,000 + 500$) = $1\\,500$, soit $15$ centaines. Mais on ne peut pas écrire $15$ dans une case ! On échange $10$ centaines contre $1$ mille. Il reste $5$ centaines, et on ajoute $1$ aux milliers : $2 + 1 = 3$ milliers. Résultat : $3\\,587$. C'est exactement comme quand on pose une addition et qu'on « retient » une dizaine !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 15,
+              "tens": 8,
+              "units": 7,
+              "caption": "15 centaines = 1 mille + 5 centaines (échange visuel)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, sache que recomposer, c'est aussi ce qu'on fait mentalement quand on compare deux nombres. Si je vois $4 \\times 1\\,000 + 12 \\times 100 + 3 \\times 10$ et $5 \\times 1\\,000 + 1 \\times 100 + 9 \\times 10$, je recompose vite : le premier fait $5\\,230$, le second $5\\,190$. Le premier est plus grand car aux centaines, $2 > 1$. Cette compétence te servira tout au long de l'année, pour les calculs, les mesures, et même la résolution de problèmes !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer les unités de numération jusqu'aux centaines de mille.",
+                "Je sais lire et écrire un nombre dans un tableau de numération.",
+                "Je sais décomposer un nombre en somme additive (ex: $3\\,405 = 3\\,000 + 400 + 5$).",
+                "Je sais décomposer un nombre en somme multiplicative (ex: $3\\,405 = 3 \\times 1\\,000 + 4 \\times 100 + 5 \\times 1$).",
+                "Je sais recomposer un nombre à partir d'une décomposition, même avec des échanges.",
+                "Je comprends que la position d'un chiffre détermine sa valeur (règle du $\\times 10$)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Recompose le nombre : $6\\,000 + 400 + 80 + 3$.",
+              "answer": "$6\\,483$",
+              "hint": "Place chaque terme dans sa colonne du tableau de numération.",
+              "explanation": "$6$ milliers, $4$ centaines, $8$ dizaines, $3$ unités donnent $6\\,483$."
+            },
+            {
+              "question": "Recompose : $3\\,000 + 1\\,700 + 50 + 6$. Attention, il y a un échange à faire !",
+              "answer": "$4\\,756$",
+              "hint": "Éclate $1\\,700$ en $1\\,000 + 700$, puis regroupe les milliers.",
+              "explanation": "$3\\,000 + 1\\,000 = 4\\,000$ (milliers), $700$ (centaines), $50$ (dizaines), $6$ (unités) = $4\\,756$."
+            },
+            {
+              "question": "Quel nombre correspond à $2 \\times 1\\,000 + 14 \\times 100 + 5 \\times 10 + 9 \\times 1$ ?",
+              "answer": "$3\\,459$",
+              "hint": "$14 \\times 100 = 1\\,400 = 1\\,000 + 400$. Ajoute le mille aux milliers.",
+              "explanation": "$2\\,000 + 1\\,000 = 3\\,000$ (milliers), $400$ (centaines), $50$ (dizaines), $9$ (unités) = $3\\,459$."
+            },
+            {
+              "question": "Compare sans tout calculer : $4 \\times 1\\,000 + 12 \\times 100 + 3 \\times 10$ et $5 \\times 1\\,000 + 1 \\times 100 + 9 \\times 10$. Lequel est le plus grand ?",
+              "answer": "Le premier ($5\\,230$) est plus grand que le second ($5\\,190$).",
+              "hint": "Recompose mentalement les centaines : $12$ centaines = $1$ mille $+ 2$ centaines.",
+              "explanation": "Premier : $4\\,000 + 1\\,200 + 30 = 5\\,230$. Second : $5\\,000 + 100 + 90 = 5\\,190$. Aux centaines, $2 > 1$, donc le premier est plus grand."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

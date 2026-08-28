@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 528,
+  "_course_code": "2nde-t06-c02-evolutions-successives",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Coefficient multiplicateur",
+  "title": "Évolutions successives : coefficient multiplicateur - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul du montant final après plusieurs variations",
+      "content": "On dispose d'un montant initial $M_0$ et d'une liste de pourcentages de variation $p_1, p_2, ..., p_n$ (exprimés en pourcent, par exemple $5$ pour $5\\%$). Écrire un algorithme (en pseudo‑code ou style Python) qui calcule le montant final $M_n$ en utilisant les coefficients multiplicateurs correspondants.",
+      "correctAnswer": "Algorithme :\\nM ← M0\\nPour chaque p dans liste_p :\\n    coeff ← 1 + p/100\\n    M ← M * coeff\\nFin pour\\nAfficher M",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient multiplicateur associé à une variation de p % est 1 + p/100. En multipliant successivement le montant par chaque coefficient, on obtient le montant final après toutes les variations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination du coefficient multiplicateur global",
+      "content": "Un programme calcule le coefficient multiplicateur global à partir d'une liste de coefficients multiplicateurs individuels $c_1, c_2, ..., c_n$. Compléter l'algorithme suivant pour qu'il affiche le coefficient global $C$ :\\n\\nC ← 1\\nPour chaque c dans liste_c :\\n    ...\\nFin pour\\nAfficher C",
+      "correctAnswer": "Il faut multiplier C par chaque coefficient c :\\nC ← 1\\nPour chaque c dans liste_c :\\n    C ← C * c\\nFin pour\\nAfficher C",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient multiplicateur global d'une suite d'évolutions est le produit des coefficients multiplicateurs de chaque étape. Initialiser C à 1 puis multiplier par chaque c donne le produit total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction renvoyant la variation globale en pourcent",
+      "content": "Écrire une fonction `variation_globale(liste_c)` qui reçoit une liste de coefficients multiplicateurs (par exemple $[1.05, 0.98, 1.10]$) et renvoie la variation globale exprimée en pourcentage (arrondie à deux décimales). Par exemple, pour la liste donnée, la fonction doit renvoyer $13.29$ car $(1.05 \\times 0.98 \\times 1.10 - 1) \\times 100 \\approx 13.29$.",
+      "correctAnswer": "def variation_globale(liste_c):\\n    C = 1\\n    for c in liste_c:\\n        C = C * c\\n    variation = (C - 1) * 100\\n    return round(variation, 2)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule le produit C de tous les coefficients. La variation globale en pourcentage est (C - 1) * 100. On arrondit à deux décimales avec round.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

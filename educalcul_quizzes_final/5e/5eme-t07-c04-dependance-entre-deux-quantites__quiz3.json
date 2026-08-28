@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_course_id": 413,
+  "_course_code": "5eme-t07-c04-dependance-entre-deux-quantites",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Vocabulaire fonctionnel initial",
+  "title": "Quiz : Vocabulaire fonctionnel initial (5e)",
+  "questions": [
+    {
+      "text": "Dans une situation où une grandeur $y$ dépend d'une grandeur $x$, comment appelle-t-on la grandeur $x$ que l'on fait varier librement ?",
+      "options": [
+        "Variable dépendante",
+        "Variable indépendante",
+        "Coefficient de proportionnalité",
+        "Image"
+      ],
+      "correctAnswer": "Variable indépendante",
+      "explanation": "La variable indépendante (souvent notée $x$) est celle que l'on choisit ou que l'on fait varier arbitrairement. La variable dépendante (souvent notée $y$) varie en conséquence. Le coefficient de proportionnalité est le nombre fixed qui relie $x$ et $y$ dans une proportionnalité. L'image est la valeur obtenue pour $y$ à partir d'une valeur de $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la relation $y = 5x$. Si l'on prend $x = 3$, on obtient $y = 15$. Quel est le terme exact pour désigner la valeur $15$ par rapport à $3$ ?",
+      "options": [
+        "L'antécédent de $3$",
+        "L'image de $3$",
+        "Le coefficient directeur",
+        "La variable indépendante"
+      ],
+      "correctAnswer": "L'image de $3$",
+      "explanation": "Dans une fonction, quand on part d'une valeur de la variable indépendante ($x = 3$, l'antécédent) pour calculer la valeur correspondante de la variable dépendante ($y = 15$), cette valeur obtenue s'appelle l'image de l'antécédent. Le coefficient directeur est le nombre $5$ devant $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau de valeurs :\\n$x$ | $2$ | $5$ | $8$\\n$y$ | $6$ | $15$ | $24$\\nDans ce tableau, que représente le nombre $5$ ?",
+      "options": [
+        "Une image",
+        "Un antécédent",
+        "Le coefficient de proportionnalité",
+        "Une ordonnée"
+      ],
+      "correctAnswer": "Un antécédent",
+      "explanation": "Dans un tableau de valeurs, la première ligne (ou colonne) correspond aux valeurs de la variable indépendante $x$ : ce sont les antécédents. La seconde ligne correspond aux valeurs de $y$ : ce sont les images (ou ordonnées). Le coefficient de proportionnalité se calcule en divisant $y$ par $x$ (ici $6/2 = 3$), ce n'est pas une valeur du tableau.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "2",
+          "5",
+          "8"
+        ],
+        "rows": [
+          [
+            "y",
+            "6",
+            "15",
+            "24"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On dit que \"$y$ est une fonction de $x$\" lorsque :",
+      "options": [
+        "Les grandeurs $x$ et $y$ sont toujours proportionnelles",
+        "À chaque valeur de $x$ correspond une unique valeur de $y$",
+        "Le graphique est obligatoirement une droite passant par l'origine",
+        "Les variables $x$ et $y$ sont des nombres entiers"
+      ],
+      "correctAnswer": "À chaque valeur de $x$ correspond une unique valeur de $y$",
+      "explanation": "C'est la définition même d'une fonction : à tout antécédent $x$ (dans l'ensemble de définition) correspond un seul image $y$. La proportionnalité est un cas particulier de fonction (fonction linéaire passant par l'origine). Une fonction peut être représentée par une courbe qui n'est pas une droite, et les variables peuvent être des nombres décimaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé utilisé pour représenter une fonction, l'axe horizontal gradué porte le nom de :",
+      "options": [
+        "Axe des ordonnées",
+        "Axe des abscisses",
+        "Origine du repère",
+        "Coordonnée y"
+      ],
+      "correctAnswer": "Axe des abscisses",
+      "explanation": "Par convention, l'axe horizontal est l'axe des abscisses (on y porte les valeurs de $x$, les antécédents). L'axe vertical est l'axe des ordonnées (valeurs de $y$, les images). L'origine est le point d'intersection des deux axes (coordonnées $(0;0)$). La coordonnée y est une valeur (un nombre), pas l'axe lui-même.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

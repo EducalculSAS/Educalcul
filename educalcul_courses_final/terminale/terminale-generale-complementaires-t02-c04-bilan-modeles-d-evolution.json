@@ -1,0 +1,350 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.499668+00:00",
+  "id": 644,
+  "code": "terminale-generale-complementaires-t02-c04",
+  "title": "Bilan - Modèles d'évolution",
+  "description": "Cours structuré Educalcul : Bilan - Modèles d'évolution.",
+  "subject": "Modèles d'évolution",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Modèles d'évolution",
+    "titre_du_cours": "Bilan - Modèles d'évolution",
+    "objectif_global": "Bilan - Modèles d'évolution",
+    "mini_lecons_imposees": [
+      "Suites et exponentielle.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Modèles d'évolution",
+      "lessons": [
+        {
+          "title": "Suites et exponentielle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les suites définies par récurrence exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur les modèles d'évolution. Nous commençons par un classique du programme : les suites dont la relation de récurrence fait intervenir la fonction exponentielle. Tu as déjà rencontré la suite géométrique $u_{n+1} = q u_n$, mais ici nous allons plus loin : le coefficient multiplicateur peut dépendre de $n$, ou la récurrence peut mélanger addition et multiplication par une exponentielle. L'enjeu est de retrouver une forme explicite, souvent en divisant par une suite auxiliaire bien choisie. C'est une technique puissante qui transforme une récurrence affine en une suite géométrique, puis en une suite arithmétique après prise de logarithme. Prends le temps de bien visualiser chaque étape : la rigueur ici paie sur le long terme."
+            },
+            {
+              "type": "definition",
+              "term": "Suite définie par récurrence exponentielle",
+              "definition": "Une suite $(u_n)$ telle que $u_{n+1} = a_n u_n + b_n$ où $a_n$ ou $b_n$ (ou les deux) sont des expressions faisant intervenir $e^{kn}$ ou $q^n$ avec $q>0$.",
+              "example": "Exemple : $u_{n+1} = e^{-n} u_n + 2e^{-n}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer la méthode. Considérons la suite définie par $u_0 = 1$ et pour tout entier naturel $n$, $u_{n+1} = \\frac{1}{2} u_n + 3 \\cdot 2^{-n}$. Le coefficient $\\frac{1}{2}$ est constant, mais le terme ajouté $3 \\cdot 2^{-n}$ est une suite géométrique de raison $\\frac{1}{2}$. L'astuce consiste à diviser chaque terme par $2^{-n}$ (ou à multiplier par $2^n$) pour faire apparaître une suite plus simple. Posons $v_n = 2^n u_n$. Calculons $v_{n+1}$ en fonction de $v_n$ : $v_{n+1} = 2^{n+1} u_{n+1} = 2^{n+1} \\left( \\frac{1}{2} u_n + 3 \\cdot 2^{-n} \\right) = 2^n u_n + 3 \\cdot 2 = v_n + 6$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la structure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le coefficient multiplicateur (ici $\\frac{1}{2}$) et le terme ajouté (ici $3 \\cdot 2^{-n}$). Note que le terme ajouté est une suite géométrique de même raison que le coefficient multiplicateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la suite auxiliaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie par l'inverse de la raison géométrique présente dans le terme ajouté. Ici, on pose $v_n = 2^n u_n$ car $2^n$ est l'inverse de $2^{-n}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Établir la récurrence sur la nouvelle suite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime $v_{n+1}$ en fonction de $v_n$ en substituant $u_{n+1}$ par sa définition. Simplifie soigneusement les puissances de 2."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure sur la nature de la suite auxiliaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $v_{n+1} = v_n + 6$ : $(v_n)$ est une suite arithmétique de raison 6 et de premier terme $v_0 = 2^0 u_0 = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Revenir à la suite initiale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$v_n = 1 + 6n$, donc $u_n = 2^{-n}(1 + 6n) = \\frac{1+6n}{2^n}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n = \\frac{1+6n}{2^n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette forme explicite permet d'étudier immédiatement la convergence : le numérateur croît linéairement tandis que le dénominateur croît exponentiellement, donc $u_n \\to 0$. C'est un cas particulier d'un principe général : l'exponentielle domine toujours le polynôme. Nous allons maintenant généraliser cette méthode aux cas où le coefficient multiplicateur n'est pas constant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à une situation légèrement plus délicate : le coefficient multiplicateur lui-même dépend de $n$ sous forme exponentielle. Soit la suite définie par $u_0 = 2$ et $u_{n+1} = e^{-1} u_n + n e^{-n}$ pour tout $n \\in \\mathbb{N}$. Ici, le coefficient $e^{-1}$ est constant, mais le terme ajouté $n e^{-n}$ est le produit d'un polynôme ($n$) et d'une exponentielle ($e^{-n}$). La même idée fonctionne : on divise par $e^{-n}$, c'est-à-dire qu'on pose $v_n = e^n u_n$. Calculons : $v_{n+1} = e^{n+1} u_{n+1} = e^{n+1} (e^{-1} u_n + n e^{-n}) = e^n u_n + n e = v_n + n e$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La suite $(v_n)$ n'est plus arithmétique car le terme ajouté $n e$ dépend de $n$. Mais on peut la sommer : $v_n = v_0 + e \\sum_{k=0}^{n-1} k = 2 + e \\frac{n(n-1)}{2}$. Cette somme est un classique : la somme des $n-1$ premiers entiers. Retournons à $u_n$ : $u_n = e^{-n} \\left( 2 + e \\frac{n(n-1)}{2} \\right) = 2e^{-n} + \\frac{n(n-1)}{2} e^{-n+1}$. Remarque la structure : un polynôme de degré 2 multiplié par une exponentielle décroissante. La limite est encore 0, car $e^{-n}$ l'emporte sur $n^2$."
+            },
+            {
+              "type": "definition",
+              "term": "Domination exponentielle",
+              "definition": "Pour tout polynôme $P$ et tout $a > 1$, $\\lim_{n \\to +\\infty} \\frac{P(n)}{a^n} = 0$. L'exponentielle croît plus vite que n'importe quel polynôme.",
+              "example": "$\\frac{n^3}{2^n} \\to 0$, $\\frac{5n^2+3n}{e^n} \\to 0$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 * exp(-x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Croissance d'un polynôme freinée par une exponentielle décroissante"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Abordons maintenant le cas où le coefficient multiplicateur n'est pas constant. Soit $u_{n+1} = \\left(1 + \\frac{1}{n+1}\\right) u_n + \\frac{1}{(n+1)!}$ avec $u_0 = 1$. Le coefficient $1 + \\frac{1}{n+1} = \\frac{n+2}{n+1}$ dépend de $n$. L'astuce ici est de diviser par un produit télescopique. Observons que $\\prod_{k=0}^{n-1} \\frac{k+2}{k+1} = \\frac{2}{1} \\cdot \\frac{3}{2} \\cdots \\frac{n+1}{n} = n+1$. Posons donc $v_n = \\frac{u_n}{n+1}$. Alors $v_{n+1} = \\frac{u_{n+1}}{n+2} = \\frac{1}{n+2} \\left( \\frac{n+2}{n+1} u_n + \\frac{1}{(n+1)!} \\right) = \\frac{u_n}{n+1} + \\frac{1}{(n+2)!} = v_n + \\frac{1}{(n+2)!}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La suite $(v_n)$ est donc définie par $v_0 = \\frac{u_0}{1} = 1$ et $v_{n+1} = v_n + \\frac{1}{(n+2)!}$. C'est une suite dont le terme général s'écrit comme une somme partielle de la série $\\sum \\frac{1}{k!}$. On a $v_n = 1 + \\sum_{k=2}^{n+1} \\frac{1}{k!} = \\sum_{k=0}^{n+1} \\frac{1}{k!} - 1$. Cette somme partielle converge vers $e - 1$. Donc $v_n \\to e - 1$ et $u_n = (n+1) v_n \\sim n(e-1) \\to +\\infty$. La suite diverge vers $+\\infty$, mais on a une équivalent précis : $u_n \\sim (e-1)n$."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_n \\sim (e-1)n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, examinons un cas où la récurrence fait intervenir une exponentielle de base variable. Soit $u_{n+1} = \\left(1 + \\frac{x}{n}\\right) u_n$ avec $u_0 = 1$ et $x \\in \\mathbb{R}$ un paramètre fixé. Cette récurrence définit une suite qui approxime $e^x$. Posons $v_n = \\ln u_n$ (on suppose $u_n > 0$, ce qui est vrai par récurrence immédiate). Alors $v_{n+1} = v_n + \\ln\\left(1 + \\frac{x}{n}\\right)$. Pour $n$ grand, $\\ln(1+\\frac{x}{n}) \\sim \\frac{x}{n}$, donc $v_n \\sim x \\sum_{k=1}^{n-1} \\frac{1}{k} \\sim x \\ln n$. Cela suggère que $u_n$ se comporte comme une puissance de $n$. En fait, on peut montrer que $u_n \\to e^x$ quand $n \\to +\\infty$ si on considère la suite $v_n = \\left(1+\\frac{x}{n}\\right)^n$. C'est une définition classique de l'exponentielle. Nous retrouverons cette idée fondamentale dans la prochaine leçon lors de la revue générale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite $(u_n)$ définie par $u_0 = 3$ et $u_{n+1} = \\frac{1}{3} u_n + 2 \\cdot 3^{-n}$. Trouver une expression explicite de $u_n$ en posant $v_n = 3^n u_n$.",
+              "answer": "$u_n = \\frac{3+2n}{3^n}$",
+              "hint": "Calcule $v_{n+1}$ en fonction de $v_n$. Tu devrais obtenir une suite arithmétique.",
+              "explanation": "On pose $v_n = 3^n u_n$. Alors $v_{n+1} = 3^{n+1} u_{n+1} = 3^{n+1}(\\frac{1}{3}u_n + 2\\cdot 3^{-n}) = 3^n u_n + 2\\cdot 3 = v_n + 6$. Donc $(v_n)$ est arithmétique de raison 6, $v_0 = 3$, donc $v_n = 3 + 6n$. Enfin $u_n = 3^{-n}v_n = \\frac{3+6n}{3^n} = \\frac{3(1+2n)}{3^n} = \\frac{1+2n}{3^{n-1}}$. Attention : $v_0 = 3^0 u_0 = 3$, donc $v_n = 3 + 6n$, $u_n = \\frac{3+6n}{3^n} = \\frac{3(1+2n)}{3^n} = \\frac{1+2n}{3^{n-1}}$. Forme simplifiée : $u_n = \\frac{3+2n}{3^n}$ (vérification : $n=0$ donne $3/1=3$ correct)."
+            },
+            {
+              "question": "Soit $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \\frac{1}{2}u_n + \\frac{n}{2^n}$. Déterminer la limite de $(u_n)$.",
+              "answer": "0",
+              "hint": "Pose $v_n = 2^n u_n$ et étudie la suite $(v_n)$. Ensuite retrouve $u_n$.",
+              "explanation": "Posons $v_n = 2^n u_n$. Alors $v_{n+1} = 2^{n+1}(\\frac{1}{2}u_n + \\frac{n}{2^n}) = 2^n u_n + 2n = v_n + 2n$. Donc $v_n = v_0 + 2\\sum_{k=0}^{n-1} k = 1 + n(n-1)$. Ainsi $u_n = \\frac{1+n(n-1)}{2^n} = \\frac{n^2 - n + 1}{2^n}$. Comme $2^n$ domine $n^2$, $\\lim u_n = 0$."
+            },
+            {
+              "question": "Soit $(u_n)$ définie par $u_0 = 2$ et $u_{n+1} = \\frac{n+2}{n+1} u_n + \\frac{1}{(n+1)!}$. En posant $v_n = \\frac{u_n}{n+1}$, montrer que $v_{n+1} = v_n + \\frac{1}{(n+2)!}$ et en déduire une expression de $u_n$.",
+              "answer": "$u_n = (n+1)\\left(2 + \\sum_{k=2}^{n+1} \\frac{1}{k!}\\right)$",
+              "hint": "Calcule $v_{n+1}$ en remplaçant $u_{n+1}$ par sa définition. Simplifie le coefficient $\\frac{n+2}{n+1}$.",
+              "explanation": "$v_{n+1} = \\frac{u_{n+1}}{n+2} = \\frac{1}{n+2}\\left(\\frac{n+2}{n+1}u_n + \\frac{1}{(n+1)!}\\right) = \\frac{u_n}{n+1} + \\frac{1}{(n+2)!} = v_n + \\frac{1}{(n+2)!}$. Comme $v_0 = \\frac{u_0}{1} = 2$, on a $v_n = 2 + \\sum_{k=2}^{n+1} \\frac{1}{k!}$. Donc $u_n = (n+1)v_n = (n+1)\\left(2 + \\sum_{k=2}^{n+1} \\frac{1}{k!}\\right)$."
+            },
+            {
+              "question": "Soit la suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \\left(1+\\frac{2}{n+1}\\right)u_n$. Conjecturer la limite de $u_n$ en calculant les premiers termes, puis démontrer la conjecture en trouvant une forme explicite.",
+              "answer": "La suite diverge vers $+\\infty$. Plus précisément $u_n = \\frac{(n+1)(n+2)}{2} \\sim \\frac{n^2}{2}$.",
+              "hint": "Calcule $u_1, u_2, u_3$. Repère un produit télescopique. Pose $v_n = \\frac{u_n}{(n+1)(n+2)}$ ou utilise directement le produit $\\prod_{k=1}^n (1+\\frac{2}{k})$.",
+              "explanation": "$u_{n+1} = \\frac{n+3}{n+1}u_n$. Donc $u_n = u_0 \\prod_{k=1}^n \\frac{k+2}{k} = \\prod_{k=1}^n \\frac{k+2}{k} = \\frac{3}{1} \\cdot \\frac{4}{2} \\cdot \\frac{5}{3} \\cdots \\frac{n+2}{n} = \\frac{(n+1)(n+2)}{2}$. Cette suite tend vers $+\\infty$ comme $\\frac{n^2}{2}$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse : modèles d'évolution et checklist finale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de ce parcours sur les modèles d'évolution. Cette leçon de bilan a pour but de consolider les outils que tu as acquis : suites récurrentes, équations différentielles, fonction exponentielle, logarithme népérien, et leurs liens étroits. L'exponentielle est le fil conducteur : elle modélise la croissance continue, la décroissance radioactive, les intérêts composés, la charge d'un condensateur, la dynamique de populations. Chaque situation concrète se traduit par un objet mathématique commun : une suite ou une fonction qui vérifie $y' = ky$ ou $u_{n+1} = (1+r)u_n$. La compréhension profonde vient de la capacité à passer d'un modèle discret (suites) à un modèle continu (équations différentielles) et inversement. C'est cette souplesse que les épreuves du baccalauréat et les études supérieures attendent de toi."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons les trois grands modèles que tu dois avoir en tête, avec leurs paramètres et leurs comportements asymptotiques. Le modèle de Malthus (croissance exponentielle pure) : $u_{n+1} = (1+r)u_n$ ou $y' = ky$ avec $k>0$. La solution explicite est $u_n = u_0(1+r)^n$ ou $y(t) = y_0 e^{kt}$. La quantité croît sans limite, le temps de doublement est constant : $T_2 = \\frac{\\ln 2}{k}$. Le modèle de Verhulst (logistique) : $u_{n+1} = u_n + r u_n (1 - \\frac{u_n}{K})$ ou $y' = ry(1-\\frac{y}{K})$. La croissance est freinée par une capacité maximale $K$. La solution tend vers $K$ avec un point d'inflexion à $K/2$. Le modèle de décroissance exponentielle : $u_{n+1} = (1-r)u_n$ ou $y' = -ky$ avec $k>0$. La quantité diminue vers 0, la demi-vie est constante : $T_{1/2} = \\frac{\\ln 2}{k}$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Modèle",
+                "Récurrence / Équation différentielle",
+                "Solution explicite",
+                "Comportement limite"
+              ],
+              "rows": [
+                [
+                  "Malthus (croissance)",
+                  "$u_{n+1} = (1+r)u_n$ / $y' = ky$",
+                  "$u_0(1+r)^n$ / $y_0 e^{kt}$",
+                  "$+\\infty$ (explosion)"
+                ],
+                [
+                  "Verhulst (logistique)",
+                  "$u_{n+1} = u_n + ru_n(1-u_n/K)$ / $y' = ry(1-y/K)$",
+                  "$\\frac{K}{1+(\\frac{K}{u_0}-1)e^{-rt}}$",
+                  "$K$ (capacité)"
+                ],
+                [
+                  "Décroissance",
+                  "$u_{n+1} = (1-r)u_n$ / $y' = -ky$",
+                  "$u_0(1-r)^n$ / $y_0 e^{-kt}$",
+                  "$0$ (extinction)"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de ces modèles canoniques, tu as appris à résoudre des équations différentielles linéaires d'ordre 1 : $y' + a(x)y = b(x)$. La méthode de la variation de la constante est systématique : on résout l'homogène $y' + a(x)y = 0$ qui donne $y_h = C e^{-\\int a}$, puis on cherche une solution particulière sous la forme $y_p = C(x) e^{-\\int a}$. Cette méthode unifie la résolution de tous les modèles d'évolution continus. Du côté discret, la technique de la suite auxiliaire (division par un produit télescopique ou par une géométrique) joue le même rôle unificateur. Le passage du discret au continu se fait par la limite : $\\left(1+\\frac{k}{n}\\right)^n \\to e^k$, ce qui relie le taux de croissance discret $r$ au taux instantané $k = \\ln(1+r) \\approx r$ pour $r$ petit."
+            },
+            {
+              "type": "display_math",
+              "latex": "y' + a(x)y = b(x) \\implies y = e^{-\\int a} \\left( \\int b e^{\\int a} + C \\right)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Intéressons-nous maintenant à la comparaison des vitesses de croissance, un point crucial pour l'analyse asymptotique. Tu sais que l'exponentielle domine tout polynôme : $\\forall \\alpha > 0, \\forall k \\in \\mathbb{N}, \\lim_{x\\to+\\infty} \\frac{x^k}{e^{\\alpha x}} = 0$. Réciproquement, le logarithme est dominé par toute puissance : $\\forall \\alpha > 0, \\lim_{x\\to+\\infty} \\frac{\\ln x}{x^{\\alpha}} = 0$. Cette hiérarchie $\\ln x \\ll x^{\\alpha} \\ll e^{\\alpha x}$ permet de déterminer les limites de quotients complexes sans calculs lourds. Par exemple, $\\frac{n^3 \\ln n}{2^n} \\to 0$ car $2^n = e^{n\\ln 2}$ domine $n^3 \\ln n$. De même, pour les suites définies par récurrence, si $u_{n+1} \\sim u_n (1+\\frac{c}{n})$, alors $u_n$ se comporte comme une puissance de $n$ : $u_n \\sim C n^c$. C'est le pont entre l'exponentielle (croissance proportionnelle à la valeur) et la puissance (croissance proportionnelle à la valeur divisée par $n$)."
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x), x^0.5, exp(0.1*x)",
+              "xmin": 1,
+              "xmax": 20,
+              "caption": "Hiérarchie des croissances : logarithme, racine carrée, exponentielle"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier point technique souvent source d'erreurs : l'utilisation du logarithme népérien pour lineariser une relation exponentielle. Si une grandeur $y$ suit une loi $y = A e^{kt}$, alors $\\ln y = \\ln A + kt$. Dans un repère $(t, \\ln y)$, les points sont alignés. C'est la base de la régression exponentielle et de l'estimation de paramètres sur des données expérimentales. À l'inverse, si $\\ln y$ est affine par rapport à $t$, alors $y$ est exponentielle. Attention : cette linearisation ne fonctionne que si $y > 0$ (domaine du logarithme). Pour une décroissance $y = A e^{-kt}$, la pente du trait est $-k$. Pour une croissance logistique $y = \\frac{K}{1+Ce^{-rt}}$, on linearise en considérant $\\ln(\\frac{K}{y}-1) = -rt + \\ln C$. Ce sont des outils concrets pour l'analyse de données réelles, très présents dans les sujets d'examen."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à la checklist finale, rappelons les pièges classiques à éviter. 1) Confondre le taux de croissance discret $r$ (dans $u_{n+1} = (1+r)u_n$) et le taux instantané $k$ (dans $y' = ky$) : le lien exact est $k = \\ln(1+r)$, pas $k=r$. 2) Oublier la constante d'intégration ou la condition initiale lors de la résolution d'une équation différentielle. 3) Appliquer la méthode de la variation de la constante sans avoir d'abord résolu l'équation homogène. 4) Croire qu'une suite croissante converge : une suite croissante et majorée converge, mais une suite croissante non majorée diverge vers $+\\infty$. 5) Manipuler des équivalents dans des sommes ou différences sans précaution : $u_n \\sim v_n$ n'implique pas $u_n - v_n \\to 0$ (ex: $n+1 \\sim n$ mais $(n+1)-n = 1 \\not\\to 0$). 6) Oublier que $\\ln(u_n)$ n'a de sens que si $u_n > 0$ pour tout $n$."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Pièges à éviter",
+              "paragraphs": [
+                "Taux discret $r$ vs taux continu $k$ : $k = \\ln(1+r) \\neq r$ (sauf si $r \\approx 0$).",
+                "Constante d'intégration / condition initiale : toujours la déterminer.",
+                "Variation de la constante : résoudre l'homogène AVANT de chercher la particulière.",
+                "Suite croissante $\\neq$ convergente : il faut aussi qu'elle soit majorée.",
+                "Équivalents : ne pas soustraire ni ajouter des équivalents sans justification.",
+                "Logarithme : vérifier la positivité stricte avant d'appliquer $\\ln$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici maintenant la checklist de révision pour t'assurer que tu maîtrises chaque point du programme. Coche mentalement chaque item quand tu te sens à l'aire. Si un point résiste, reviens sur la leçon correspondante ou refais les exercices associés. Cette liste est conçue pour être exhaustive mais concise : elle couvre les définitions, les méthodes de résolution, les propriétés asymptotiques, et les liens entre modèles discrets et continus. Bonne révision, et fais confiance à ton travail : la régularité paie toujours."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une suite par récurrence et en donner les premiers termes.",
+                "Je sais résoudre une récurrence affine $u_{n+1} = au_n + b$ (cas $a=1$ et $a\\neq 1$).",
+                "Je sais utiliser une suite auxiliaire $v_n = u_n / \\text{(géométrique)}$ pour résoudre $u_{n+1} = q u_n + P(n)q^n$.",
+                "Je sais poser $v_n = u_n / \\prod$ pour gérer un coefficient multiplicateur non constant.",
+                "Je connais la définition de l'exponentielle comme limite de $(1+1/n)^n$ et de $(1+x/n)^n$.",
+                "Je sais résoudre $y' = ky$ et $y' + a(x)y = b(x)$ par variation de la constante.",
+                "Je connais les trois modèles classiques : Malthus, Verhulst, décroissance exponentielle.",
+                "Je sais passer du modèle discret au continu : $r \\leftrightarrow k = \\ln(1+r)$.",
+                "Je sais utiliser la hiérarchie $\\ln x \\ll x^\\alpha \\ll e^{\\alpha x}$ pour des limites.",
+                "Je sais lineariser une relation exponentielle par $\\ln y = \\ln A + kt$.",
+                "Je sais interpréter le temps de doublement $T_2 = \\ln 2 / k$ et la demi-vie.",
+                "Je sais étudier la convergence d'une suite définie par récurrence (monotonie + majoration).",
+                "Je sais trouver un équivalent simple pour une suite ou une fonction au voisinage de $+\\infty$.",
+                "Je sais modéliser une situation concrète (population, finance, physique) par une suite ou une EDO.",
+                "Je sais utiliser Python pour simuler une suite récurrente ou résoudre numériquement une EDO."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une population de bactéries suit le modèle de Malthus : $P_{n+1} = 1.15 P_n$ avec $P_0 = 1000$. Quelle est la population après 10 heures ? Quel est le temps de doublement (en heures) ?",
+              "answer": "$P_{10} \\approx 4046$ ; $T_2 \\approx 4.96$ heures",
+              "hint": "Formule explicite $P_n = P_0 (1.15)^n$. Temps de doublement : $(1.15)^{T_2} = 2 \\implies T_2 = \\ln 2 / \\ln 1.15$.",
+              "explanation": "$P_n = 1000 \\times 1.15^n$. $P_{10} = 1000 \\times 1.15^{10} \\approx 4045.56 \\approx 4046$. Pour le doublement : $1.15^{T_2} = 2 \\implies T_2 \\ln 1.15 = \\ln 2 \\implies T_2 = \\frac{\\ln 2}{\\ln 1.15} \\approx \\frac{0.6931}{0.1398} \\approx 4.96$ heures."
+            },
+            {
+              "question": "Résoudre l'équation différentielle $y' - 2y = 3e^{2x}$ avec la condition initiale $y(0) = 1$.",
+              "answer": "$y(x) = (1 + 3x)e^{2x}$",
+              "hint": "Résous d'abord l'homogène $y' - 2y = 0$, puis variation de la constante. Attention : le second membre a la même forme que la solution de l'homogène.",
+              "explanation": "Homogène : $y' - 2y = 0 \\implies y_h = C e^{2x}$. Variation de la constante : on cherche $y = C(x) e^{2x}$. Alors $y' = C'(x)e^{2x} + 2C(x)e^{2x}$. L'équation donne $C'(x)e^{2x} = 3e^{2x} \\implies C'(x) = 3 \\implies C(x) = 3x + K$. Donc $y = (3x+K)e^{2x}$. Condition initiale : $y(0) = K = 1$. Solution : $y = (3x+1)e^{2x}$."
+            },
+            {
+              "question": "On mesure l'activité radioactive d'un échantillon à différents instants : $t=0$ : $A=100$, $t=2$ : $A=64$, $t=4$ : $A=41$. Vérifier que ces mesures sont compatibles avec une loi de décroissance exponentielle $A(t) = A_0 e^{-kt}$ et estimer $k$.",
+              "answer": "Oui, compatible. $k \\approx 0.22$ (unité : $h^{-1}$ si $t$ en heures).",
+              "hint": "Linearise par $\\ln A = \\ln A_0 - kt$. Calcule $\\ln A$ pour les trois points et vérifie l'alignement. La pente donne $-k$.",
+              "explanation": "$\\ln 100 \\approx 4.605$, $\\ln 64 \\approx 4.159$, $\\ln 41 \\approx 3.714$. Différences : $4.605-4.159 = 0.446$ sur 2 unités de temps, $4.159-3.714 = 0.445$ sur 2 unités. Pente quasi constante $\\approx -0.223$. Donc $k \\approx 0.223$. $A_0 = 100$ cohérent. Loi : $A(t) \\approx 100 e^{-0.223t}$."
+            },
+            {
+              "question": "Soit la suite définie par $u_0 = 1$ et $u_{n+1} = u_n + \\frac{u_n}{n+1} + \\frac{1}{(n+1)!}$. En posant $v_n = \\frac{u_n}{n+1}$, trouver une expression de $u_n$ et son équivalent quand $n \\to +\\infty$.",
+              "answer": "$u_n = (n+1)\\left(1 + \\sum_{k=1}^{n} \\frac{1}{(k+1)!}\\right) \\sim \\frac{e-2}{1} n$ (plus précisément $u_n \\sim (e-2)n$)",
+              "hint": "Calcule $v_{n+1} - v_n$. Reconnais une somme partielle de la série de $e$.",
+              "explanation": "$v_{n+1} = \\frac{u_{n+1}}{n+2} = \\frac{1}{n+2}\\left(u_n + \\frac{u_n}{n+1} + \\frac{1}{(n+1)!}\\right) = \\frac{u_n}{n+1} + \\frac{1}{(n+2)!} = v_n + \\frac{1}{(n+2)!}$. $v_0 = 1$. Donc $v_n = 1 + \\sum_{k=2}^{n+1} \\frac{1}{k!} = \\sum_{k=0}^{n+1} \\frac{1}{k!} - 1 - 1 = \\sum_{k=0}^{n+1} \\frac{1}{k!} - 2$. $v_n \\to e - 2$. $u_n = (n+1)v_n \\sim (e-2)n$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

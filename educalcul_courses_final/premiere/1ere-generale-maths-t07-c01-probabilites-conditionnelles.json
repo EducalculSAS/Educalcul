@@ -1,0 +1,501 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.399500+00:00",
+  "id": 610,
+  "code": "1ere-generale-maths-t07-c01",
+  "title": "Probabilités conditionnelles",
+  "description": "Cours structuré Educalcul : Probabilités conditionnelles.",
+  "subject": "Probabilités et statistiques",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Probabilités et statistiques",
+    "titre_du_cours": "Probabilités conditionnelles",
+    "objectif_global": "Probabilités conditionnelles",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Tableau / arbre.",
+      "Calcul."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Probabilités et statistiques",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition de la probabilité conditionnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé équilibré à six faces. Tu sais déjà que la chance d'obtenir un nombre pair est $1/2$. Maintenant, suppose qu'on t'annonce que le résultat est supérieur à $3$. Cette information modifie l'espace des issues possibles : il ne reste plus que $\\{4,5,6\\}$. Parmi ces trois issues, deux sont paires ($4$ et $6$). La probabilité d'obtenir un nombre pair *sachant* que le résultat est supérieur à $3$ devient donc $2/3$. C'est exactement ce que l'on appelle une probabilité conditionnelle : la probabilité d'un événement $A$ sous l'hypothèse qu'un autre événement $B$ est déjà réalisé."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité conditionnelle",
+              "definition": "Soient $A$ et $B$ deux événements d'un même espace probabilisé, avec $P(B)>0$. La probabilité conditionnelle de $A$ sachant $B$, notée $P(A|B)$, est le quotient $P(A \\cap B) / P(B)$. Elle mesure la chance que $A$ se produise dès lors qu'on sait que $B$ s'est produit.",
+              "example": "Avec le dé, $A$ = \"résultat pair\", $B$ = \"résultat > 3\". $P(A \\cap B)=2/6$, $P(B)=3/6$, donc $P(A|B)=\\frac{2/6}{3/6}=2/3$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\quad (P(B)>0)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les événements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère clairement quel est l'événement dont tu cherches la probabilité ($A$) et quel est l'événement conditionnant ($B$). Écris-les en mots puis en notation ensembliste."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier que $P(B)>0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $P(B)=0$, la condition n'a pas de sens (on ne peut pas conditionner sur un événement impossible). Dans tous les exercices du programme, $P(B)$ sera strictement positif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer $P(A \\cap B)$ et $P(B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les données du problème (équirépartition, tableau, arbre, etc.) pour obtenir ces deux probabilités. Souvent $P(A \\cap B)$ se lit directement sur un diagramme de Venn ou un arbre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise $P(A \\cap B)$ par $P(B)$. Simplifie la fraction si possible et donne le résultat sous forme exacte (fraction) ou décimale selon la consigne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition et la méthode de calcul sont posées, voyons comment la probabilité conditionnelle se comporte face à quelques propriétés fondamentales qui seront très utilises pour la suite du cours."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première propriété est presque évidente : si $B \\subset A$ (chaque issue de $B$ appartient aussi à $A$), alors $P(A|B)=1$. En effet, sachant que $B$ est réalisé, $A$ l'est automatiquement. À l'opposé, si $A \\cap B = \\varnothing$, les deux événements sont incompatibles et $P(A|B)=0$. Une troisième propriété, souvent utilisée, est la règle du produit : $P(A \\cap B) = P(B) \\times P(A|B)$. Elle permet de passer d'une probabilité conditionnelle à une probabilité d'intersection, ce qui est très pratique dans les arbres de probabilités."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Illustration : $B$ inclus dans $A$ (zone commune = $B$) ; $A$ et $B$ disjoints (aucune zone commune).",
+              "sets": [
+                {
+                  "label": "A",
+                  "color": "blue",
+                  "opacity": 0.3
+                },
+                {
+                  "label": "B",
+                  "color": "red",
+                  "opacity": 0.3
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés permettent déjà de résoudre bien des questions. Pour aller plus loin, il faut comprendre le lien entre probabilité conditionnelle et indépendance, notion qui simplifie énormément les calculs quand elle s'applique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Indépendance et probabilité conditionnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux événements $A$ et $B$ sont dits indépendants si la réalisation de l'un ne change pas la probabilité de l'autre. En termes de probabilité conditionnelle, cela s'écrit $P(A|B)=P(A)$ (à condition que $P(B)>0$). Équivalentement, $P(A \\cap B)=P(A)P(B)$. C'est une caractérisation très commode : pour tester l'indépendance, il suffit de vérifier cette égalité. Attention, l'indépendance n'est pas la même chose que l'incompatibilité ; deux événements incompatibles non vides ne sont jamais indépendants car $P(A \\cap B)=0$ alors que $P(A)P(B)>0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\text{ et } B \\text{ indépendants } \\iff P(A|B)=P(A) \\iff P(A \\cap B)=P(A)P(B)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les bases pour manipuler la probabilité conditionnelle. La prochaine leçon te montrera comment organiser les données dans un tableau de contingence ou un arbre de probabilités pour lire directement les probabilités conditionnelles sans refaire le calcul à chaque fois."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé équilibré à six faces. Soit $A$ l'événement \"le résultat est un multiple de $3$\" et $B$ l'événement \"le résultat est pair\". Calculer $P(A|B)$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Liste les issues de $B$ puis celles qui appartiennent aussi à $A$.",
+              "explanation": "Les issues de $B$ sont $\\{2,4,6\\}$. Parmi elles, seule $6$ est multiple de $3$. Donc $P(A \\cap B)=1/6$, $P(B)=3/6=1/2$. La formule donne $P(A|B)=\\frac{1/6}{1/2}=1/3$."
+            },
+            {
+              "question": "Dans une urne, il y a $5$ boules rouges et $3$ boules vertes. On tire une boule au hasard, on note sa couleur, on la remet, puis on tire une seconde boule. Soit $R_1$ l'événement \"la première boule est rouge\" et $R_2$ l'événement \"la deuxième boule est rouge\". Vérifier si $R_1$ et $R_2$ sont indépendants en utilisant la définition par probabilité conditionnelle.",
+              "answer": "Oui, ils sont indépendants car $P(R_2|R_1)=P(R_2)=5/8$.",
+              "hint": "Calcule $P(R_2|R_1)$ en remarquant que le remise en place rend les tirages identiques.",
+              "explanation": "Comme on remet la boule, la composition de l'urne ne change pas. Donc $P(R_2|R_1)=5/8$. Par ailleurs $P(R_2)=5/8$. L'égalité $P(R_2|R_1)=P(R_2)$ prouve l'indépendance."
+            },
+            {
+              "question": "Soit $A$ et $B$ deux événements tels que $P(A)=0,4$, $P(B)=0,5$ et $P(A \\cap B)=0,1$. Déterminer $P(A|B)$ et dire si $A$ et $B$ sont indépendants.",
+              "answer": "$P(A|B)=0,2$ ; $A$ et $B$ ne sont pas indépendants.",
+              "hint": "Applique la formule de la probabilité conditionnelle et compare $P(A|B)$ à $P(A)$.",
+              "explanation": "$P(A|B)=\\frac{0,1}{0,5}=0,2$. Comme $0,2 \\neq 0,4 = P(A)$, les événements ne sont pas indépendants. On pourrait aussi constater que $P(A)P(B)=0,2 \\neq 0,1 = P(A \\cap B)$."
+            }
+          ]
+        },
+        {
+          "title": "Tableau / arbre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter les probabilités conditionnelles : tableau de contingence et arbre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons appris à calculer $P(A|B)$ à partir de la formule. Souvent, les données d'un problème sont présentées sous forme de nombres bruts (effectifs) ou de probabilités croisées. Deux outils visuels permettent de lire les probabilités conditionnelles presque sans calcul : le tableau de contingence (aussi appelé tableau à double entrée) et l'arbre de probabilités. Le tableau organise les effectifs ou les probabilités selon deux critères (par exemple : sexe et couleur des yeux). L'arbre, lui, montre la chronologie d'une expérience aléatoire en branches successives, chaque branche portant une probabilité conditionnelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Dans un lycée, on interroge $200$ élèves sur leur série (générale, technologique, professionnelle) et sur leur pratique du sport en club (oui/non). Les résultats sont résumés dans le tableau ci‑dessous. Chaque case contient un effectif. Pour obtenir une probabilité conditionnelle, par exemple la probabilité qu'un élève fasse du sport en club *sachant* qu'il est en série générale, il suffit de se restreindre à la ligne « générale » et de calculer le rapport entre la case « oui » et le total de la ligne."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Sport club : Oui",
+                "Sport club : Non",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "Générale",
+                  "70",
+                  "50",
+                  "120"
+                ],
+                [
+                  "Technologique",
+                  "30",
+                  "20",
+                  "50"
+                ],
+                [
+                  "Professionnelle",
+                  "10",
+                  "20",
+                  "30"
+                ],
+                [
+                  "Total",
+                  "110",
+                  "90",
+                  "200"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la ligne ou la colonne conditionnante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la condition porte sur la série (ex. : « sachant que l'élève est en générale »), on regarde la ligne correspondante. Si la condition porte sur le sport, on regarde la colonne correspondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire le total de cette ligne (ou colonne)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce total est le dénominateur $P(B)$ (ou l'effectif de $B$). Dans l'exemple, pour la ligne « générale », le total est $120$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'effectif de l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est la case à l'intersection de la ligne conditionnante et de la colonne de l'événement d'intérêt. Pour « sport = oui » et « générale », c'est $70$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Former le quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise l'effectif de l'intersection par le total de la ligne. Ici $70/120 = 7/12 \\approx 0,583$. C'est $P(\\text{sport}|\\text{générale})$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de contingence est idéal quand les données sont données en effectifs globaux. Quand l'expérience se déroule en étapes successives (tirage sans remise, étapes d'un processus), l'arbre de probabilités est souvent plus naturel. Chaque branche porte une probabilité conditionnelle par rapport au nœud précédent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'arbre de probabilités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une urne contenant $4$ boules rouges et $6$ boules bleues. On tire une boule, on note sa couleur, on ne la remet pas, puis on tire une seconde boule. Le premier niveau de l'arbre correspond au premier tirage : deux branches, « Rouge » avec probabilité $4/10$ et « Bleu » avec probabilité $6/10$. Le second niveau part de chaque issue du premier tirage. Si la première boule était rouge, l'urne contient alors $3$ rouges et $6$ bleues, donc la branche « Rouge » du second niveau a une probabilité conditionnelle $3/9$, et la branche « Bleu » $6/9$. Si la première était bleue, les probabilités conditionnelles sont $4/9$ pour rouge et $5/9$ pour bleu. Les probabilités aux feuilles s'obtiennent en multipliant les probabilités le long du chemin (règle du produit)."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre pour deux tirages sans remise : premier niveau (R/B), second niveau conditionnel.",
+              "branches": [
+                {
+                  "label": "R1",
+                  "probability": "0.4",
+                  "children": [
+                    {
+                      "label": "R2",
+                      "probability": "0.3333"
+                    },
+                    {
+                      "label": "B2",
+                      "probability": "0.6667"
+                    }
+                  ]
+                },
+                {
+                  "label": "B1",
+                  "probability": "0.6",
+                  "children": [
+                    {
+                      "label": "R2",
+                      "probability": "0.4444"
+                    },
+                    {
+                      "label": "B2",
+                      "probability": "0.5556"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arbre permet de lire directement les probabilités conditionnelles : elles sont écrites sur les branches du second niveau. Par exemple, la probabilité d'obtenir une boule rouge au second tirage *sachant* que la première était bleue est exactement l'étiquette $4/9$ sur la branche correspondante. Inversement, si on te donne un arbre incomplet, tu peux remonter aux probabilités manquantes en utilisant le fait que la somme des probabilités issues d'un même nœud vaut $1$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer du tableau à l'arbre et inversement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un même problème peut être modélisé par les deux représentations. Le tableau donne une vue statique (toutes les issues en même temps), l'arbre une vue dynamique (étape par étape). Pour passer du tableau à l'arbre, il faut identifier la chronologie : quel critère est observé en premier ? Les probabilités marginales du tableau deviennent les probabilités du premier niveau de l'arbre ; les probabilités conditionnelles (lignes ou colonnes) deviennent les branches du second niveau. L'inverse est aussi vrai : à partir d'un arbre, on remplit un tableau en calculant les probabilités des feuilles (produits le long des branches) et en sommant pour obtenir les marges."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant lire et construire un tableau de contingence et un arbre de probabilités pour extraire n'importe quelle probabilité conditionnelle. La prochaine leçon te montrera comment utiliser ces outils pour effectuer des calculs plus élaborés, notamment la loi des probabilités totales et la formule de Bayes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau de contingence ci‑dessus (lycée), calculer la probabilité qu'un élève choisi au hasard soit en série technologique sachant qu'il ne fait pas de sport en club.",
+              "answer": "$\\frac{2}{9}$",
+              "hint": "Regarde la colonne « Non » et trouve la case « Technologique, Non ». Divise par le total de la colonne.",
+              "explanation": "Effectif « Technologique, Non » = $20$. Total colonne « Non » = $90$. Probabilité = $20/90 = 2/9$."
+            },
+            {
+              "question": "Pour l'urne à $4$ rouges et $6$ bleues (tirages sans remise), lire sur l'arbre la probabilité conditionnelle $P(\\text{deuxième rouge} | \\text{premier bleu})$.",
+              "answer": "$\\frac{4}{9}$",
+              "hint": "Cherche la branche partant de « B1 » vers « R2 » sur le second niveau.",
+              "explanation": "Après un premier tirage bleu, l'urne contient $4$ rouges et $5$ bleues, soit $9$ boules. La branche correspondante porte $4/9$."
+            },
+            {
+              "question": "Un arbre de probabilités à deux niveaux a pour premier niveau $P(A)=0,3$ et $P(\\overline{A})=0,7$. Au second niveau, les branches issues de $A$ sont $P(B|A)=0,6$ et $P(\\overline{B}|A)=0,4$. Celles issues de $\\overline{A}$ sont $P(B|\\overline{A})=0,2$ et $P(\\overline{B}|\\overline{A})=0,8$. Construire le tableau de contingence correspondant (probabilités, pas effectifs).",
+              "answer": "Tableau : lignes A / $\\overline{A}$, colonnes B / $\\overline{B}$. Cases : $P(A\\cap B)=0,18$, $P(A\\cap\\overline{B})=0,12$, $P(\\overline{A}\\cap B)=0,14$, $P(\\overline{A}\\cap\\overline{B})=0,56$.",
+              "hint": "Multiplie les probabilités le long de chaque chemin pour obtenir les quatre intersections, puis complète les marges.",
+              "explanation": "Produits : $0,3\\times0,6=0,18$ ; $0,3\\times0,4=0,12$ ; $0,7\\times0,2=0,14$ ; $0,7\\times0,8=0,56$. Les marges lignes sont $0,3$ et $0,7$, les marges colonnes $0,32$ et $0,68$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculs avancés : loi des probabilités totales et formule de Bayes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons vu comment lire une probabilité conditionnelle sur un tableau ou un arbre. Mais souvent, le problème ne donne pas directement $P(A \\cap B)$ ni $P(B)$. On connaît plutôt des probabilités conditionnelles dans un sens (par exemple $P(B|A_i)$ pour une partition $A_1,\\dots,A_n$) et on veut retrouver $P(A_i|B)$. C'est là qu'interviennent deux théorèmes majeurs : la loi des probabilités totales et la formule de Bayes. Ils sont les piliers du raisonnement probabiliste en classe de Première spécialité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelons d'abord ce qu'est une partition de l'espace probabilisé : une famille d'événements $A_1,\\dots,A_n$ deux à deux incompatibles ($A_i \\cap A_j = \\varnothing$ pour $i\\neq j$) et dont la réunion est l'espace tout entier $\\Omega$. Dans un arbre, les branches du premier niveau forment toujours une partition. La loi des probabilités totales permet de calculer la probabilité d'un événement $B$ en sommant ses probabilités conditionnelles par rapport à chaque élément de la partition, pondérées par les probabilités de ces éléments."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(B) = \\sum_{i=1}^{n} P(A_i) \\times P(B|A_i)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une partition adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche dans l'énoncé des événements qui se réalisent à la première étape de l'expérience (premier tirage, choix d'une usine, résultat d'un test initial). Vérifie qu'ils sont incompatibles deux à deux et qu'ils couvrent toutes les possibilités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire les probabilités de la partition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $P(A_i)$ pour chaque élément de la partition. Ces valeurs sont souvent données directement ou se déduisent d'un premier niveau d'arbre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les probabilités conditionnelles $P(B|A_i)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ce sont les probabilités de l'événement final $B$ sachant que l'étape initiale a donné $A_i$. Elles figurent sur les branches du second niveau de l'arbre ou sont données dans l'énoncé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule de la loi des probabilités totales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la somme $\\sum P(A_i)P(B|A_i)$. Le résultat est $P(B)$, la probabilité marginale de l'événement final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois $P(B)$ connu, on peut renverser le conditionnement grâce à la formule de Bayes. Elle s'écrit $P(A_i|B) = \\frac{P(A_i)P(B|A_i)}{P(B)}$. Le numérateur est exactement le terme de la somme qui correspond à $A_i$ ; le dénominateur est la somme totale que nous venons de calculer. Cette formule est fondamentale en diagnostic médical, en contrôle qualité, en reconnaissance de formes, etc."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A_i|B) = \\frac{P(A_i) P(B|A_i)}{\\sum_{j=1}^{n} P(A_j) P(B|A_j)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un exemple classique. Une usine produit des composants sur trois lignes $L_1, L_2, L_3$ qui fournissent respectivement $30\\%$, $45\\%$, $25\\%$ de la production. Les taux de défaut sont $2\\%$ pour $L_1$, $1\\%$ pour $L_2$, $3\\%$ pour $L_3$. On prélève un composant au hasard et on découvre qu'il est défectueux. Quelle est la probabilité qu'il provienne de la ligne $L_2$ ? La partition est $\\{L_1, L_2, L_3\\}$. $P(L_1)=0,3$, $P(L_2)=0,45$, $P(L_3)=0,25$. $P(\\text{déf}|L_1)=0,02$, $P(\\text{déf}|L_2)=0,01$, $P(\\text{déf}|L_3)=0,03$. La loi des probabilités totales donne $P(\\text{déf}) = 0,3\\times0,02 + 0,45\\times0,01 + 0,25\\times0,03 = 0,006 + 0,0045 + 0,0075 = 0,018$. Ensuite, Bayes : $P(L_2|\\text{déf}) = \\frac{0,45 \\times 0,01}{0,018} = \\frac{0,0045}{0,018} = 0,25$. Donc, sachant que le composant est défectueux, il y a $25\\%$ de chances qu'il vienne de la ligne $L_2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule de Bayes peut aussi s'appliquer quand la partition n'est pas évidente au premier abord. Parfois, il faut créer soi‑même une partition en considérant un événement et son complémentaire. Par exemple, pour un test de dépistage, la partition naturelle est « malade » / « non malade ». Les données habituelles sont la sensibilité $P(\\text{test +}|\\text{malade})$, la spécificité $P(\\text{test -}|\\text{non malade})$ et la prévalence $P(\\text{malade})$. On veut $P(\\text{malade}|\\text{test +})$. La loi des probabilités totales calcule $P(\\text{test +}) = P(\\text{malade})P(\\text{test +}|\\text{malade}) + P(\\text{non malade})P(\\text{test +}|\\text{non malade})$, où $P(\\text{test +}|\\text{non malade}) = 1 - \\text{spécificité}$. Ensuite Bayes donne la valeur prédictive positive."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour résoudre des problèmes complets de probabilités conditionnelles : définir, représenter (tableau, arbre), calculer avec la loi des probabilités totales et inverser le conditionnement avec Bayes. Ces outils seront réinvestis tout au long de l'année, notamment dans les chapitres sur les variables aléatoires et l'inférence statistique."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la probabilité conditionnelle $P(A|B)$ et l'appliquer avec la formule $P(A|B)=\\frac{P(A\\cap B)}{P(B)}$.",
+                "Je sais lire et construire un tableau de contingence pour en extraire des probabilités conditionnelles.",
+                "Je sais lire et construire un arbre de probabilités à deux niveaux et utiliser la règle du produit.",
+                "Je sais appliquer la loi des probabilités totales pour calculer $P(B)$ à partir d'une partition.",
+                "Je sais utiliser la formule de Bayes pour calculer $P(A_i|B)$.",
+                "Je sais identifier l'indépendance à l'aide de $P(A|B)=P(A)$ ou $P(A\\cap B)=P(A)P(B)$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une entreprise a deux usines $U_1$ et $U_2$ qui produisent respectivement $60\\%$ et $40\\%$ des articles. Les taux de défaut sont $1\\%$ pour $U_1$ et $3\\%$ pour $U_2$. Un article est choisi au hasard et s'avère défectueux. Calculer la probabilité qu'il provienne de $U_1$.",
+              "answer": "$\\frac{1}{3}$",
+              "hint": "Utilise la loi des probabilités totales pour $P(\\text{déf})$ puis la formule de Bayes pour $P(U_1|\\text{déf})$.",
+              "explanation": "$P(\\text{déf}) = 0,6\\times0,01 + 0,4\\times0,03 = 0,006 + 0,012 = 0,018$. $P(U_1|\\text{déf}) = \\frac{0,6\\times0,01}{0,018} = \\frac{0,006}{0,018} = 1/3$."
+            },
+            {
+              "question": "Un test de dépistage a une sensibilité de $0,95$ et une spécificité de $0,90$. La prévalence de la maladie est $0,02$. Calculer la valeur prédictive positive $P(\\text{malade}|\\text{test +})$.",
+              "answer": "$\\frac{0,019}{0,118} \\approx 0,161$",
+              "hint": "Calcule $P(\\text{test +})$ par la loi des probabilités totales avec la partition {malade, non malade}.",
+              "explanation": "$P(\\text{malade})=0,02$, $P(\\text{non malade})=0,98$. $P(\\text{test +}|\\text{malade})=0,95$. $P(\\text{test +}|\\text{non malade})=1-0,90=0,10$. $P(\\text{test +}) = 0,02\\times0,95 + 0,98\\times0,10 = 0,019 + 0,098 = 0,117$. $P(\\text{malade}|\\text{test +}) = \\frac{0,019}{0,117} \\approx 0,162$. (Arrondi à $0,161$ selon le nombre de décimales.)"
+            },
+            {
+              "question": "Dans un arbre à deux niveaux, les branches du premier niveau sont $A$ ($0,4$) et $\\overline{A}$ ($0,6$). Les branches conditionnelles sont $P(B|A)=0,7$, $P(\\overline{B}|A)=0,3$, $P(B|\\overline{A})=0,2$, $P(\\overline{B}|\\overline{A})=0,8$. Calculer $P(A|B)$.",
+              "answer": "$\\frac{14}{23}$",
+              "hint": "Applique la loi des probabilités totales pour $P(B)$, puis Bayes.",
+              "explanation": "$P(B) = 0,4\\times0,7 + 0,6\\times0,2 = 0,28 + 0,12 = 0,40$. $P(A|B) = \\frac{0,4\\times0,7}{0,40} = \\frac{0,28}{0,40} = \\frac{14}{23} \\approx 0,6087$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

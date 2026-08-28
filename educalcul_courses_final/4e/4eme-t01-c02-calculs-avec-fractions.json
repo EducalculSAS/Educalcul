@@ -1,0 +1,271 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.798826+00:00",
+  "id": 421,
+  "code": "4eme-t01-c02",
+  "title": "Calculs avec fractions",
+  "description": "Cours structuré Educalcul : Calculs avec fractions.",
+  "subject": "Nombres relatifs, fractions et puissances",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Nombres relatifs, fractions et puissances",
+    "titre_du_cours": "Calculs avec fractions",
+    "objectif_global": "Calculs avec fractions",
+    "mini_lecons_imposees": [
+      "Produit / quotient.",
+      "Simplification.",
+      "Priorités."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Nombres relatifs, fractions et puissances",
+      "lessons": [
+        {
+          "title": "Produit / quotient.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prépares un cocktail de fruits exotiques pour tes amis. Ta recette demande $\\frac{3}{4}$ d'un litre de jus d'orange, mais tu veux préparer seulement la moitié de la quantité pour un petit goûter. Comment calculer $\\frac{1}{2}$ de $\\frac{3}{4}$ de litre ? Dans le langage mathématique, le mot 'de' se traduit souvent par une multiplication. Ici, tu dois multiplier $\\frac{1}{2}$ par $\\frac{3}{4}$. C'est exactement ce que nous allons apprendre aujourd'hui. Multiplier des fractions est bien plus simple que de les additionner, car on n'a pas besoin de chercher un dénominateur commun. C'est un peu comme si on multipliait les quantités en haut et les parts en bas. Que ce soit pour cuisiner, calculer des surfaces ou partager des gains, savoir multiplier et diviser des fractions est un outil indispensable pour progresser en mathématiques et dans la vie courante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le produit de deux fractions est une opération très directe. Pour multiplier deux fractions, on multiplie les numérateurs entre eux pour obtenir le nouveau numérateur, et on multiplie les dénominateurs entre eux pour obtenir le nouveau dénominateur. Par exemple, pour calculer $\\frac{a}{b} \\times \\frac{c}{d}$, le résultat est $\\frac{a \\times c}{b \\times d}$. Pour le quotient, c'est-à-dire la division, il existe une astuce simple : diviser par une fraction revient exactement à multiplier par son inverse. L'inverse d'une fraction $\\frac{c}{d}$ est la fraction $\\frac{d}{c}$ (on échange le haut et le bas). Ainsi, $\\frac{a}{b} \\div \\frac{c}{d}$ devient $\\frac{a}{b} \\times \\frac{d}{c}$. Il est crucial de se rappeler que le dénominateur ne peut jamais être égal à $0$, car la division par zéro est impossible en mathématiques. Cette règle s'applique même quand on manipule des nombres relatifs avec des signes moins."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{b} \\times \\frac{c}{d} = \\frac{a \\times c}{b \\times d}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réussir ton calcul à tous les coups, suis ces étapes précises. Pour un produit : premièrement, identifie les deux numérateurs et multiplie-les ensemble. Deuxièmement, identifie les deux dénominateurs et multiplie-les ensemble. Troisièmement, écris le résultat sous forme de fraction. Pour un quotient, la méthode change légèrement. Première étape : garde la première fraction telle quelle. Deuxième étape : transforme le signe de division $\\div$ en signe de multiplication $\\times$. Troisième étape : remplace la deuxième fraction par son inverse. Par exemple, si tu as $\\frac{2}{3} \\div \\frac{5}{7}$, tu écris $\\frac{2}{3} \\times \\frac{7}{5}$. Enfin, applique la méthode du produit que nous venons de voir en multipliant les numérateurs et les dénominateurs. N'oublie pas de vérifier le signe final en appliquant la règle des signes : deux signes identiques donnent un résultat positif, deux signes différents donnent un résultat négatif."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple simple de multiplication. Nous voulons calculer le produit de $\\frac{2}{5}$ et $\\frac{3}{7}$. Nous appliquons la méthode : on multiplie les numérateurs $2 \\times 3 = 6$ et on multiplie les dénominateurs $5 \\times 7 = 35$. Le résultat final est donc $\\frac{6}{35}$. Ce résultat ne peut pas être simplifié davantage car $6$ et $35$ n'ont pas de diviseur commun autre que $1$. On voit ici que le calcul est rapide car on a simplement procédé à deux multiplications classiques. Si l'on voulait représenter cela visuellement, on pourrait imaginer un rectangle coupé en $5$ colonnes, dont on colorie $2$, puis on coupe ce rectangle en $7$ rangées et on colorie $3$ de ces rangées. La zone où les couleurs se superposent représenterait $\\frac{6}{35}$ de la surface totale du rectangle initial."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple de division avec des nombres relatifs, ce qui est plus fréquent en classe de $4^e$. Calculons $\\frac{-4}{9} \\div \\frac{2}{3}$. La première étape consiste à transformer la division en multiplication par l'inverse. On écrit donc $\\frac{-4}{9} \\times \\frac{3}{2}$. Maintenant, on multiplie les numérateurs : $-4 \\times 3 = -12$. Puis, on multiplie les dénominateurs : $9 \\times 2 = 18$. On obtient la fraction $\\frac{-12}{18}$. À ce stade, on peut remarquer que $-12$ et $18$ sont tous les deux divisibles par $6$. En simplifiant, on obtient $\\frac{-2}{3}$. Le résultat final est $\\frac{-2}{3}$. Note bien que le signe moins provient du fait qu'un seul des deux nombres multipliés était négatif, ce qui rend l'ensemble du produit négatif selon la règle des signes."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante et la plus gênante est de vouloir mettre les fractions au même dénominateur avant de multiplier. C'est un réflexe qui vient de l'addition et de la soustraction, mais c'est totalement inutile et faux pour le produit. Si tu cherches un dénominateur commun pour multiplier, tu vas perdre un temps précieux et risquer de faire des erreurs de calcul inutiles. Un autre piège classique concerne la division : certains élèves oublient d'inverser la deuxième fraction et font simplement un produit. Rappelle-toi bien : on n'inverse JAMAIS la première fraction, seulement la seconde. Enfin, fais attention aux signes. Un oubli du signe $-$ dans l'un des numérateurs peut fausser tout ton résultat. Je te conseille de toujours écrire le signe $\\times$ et l'inverse explicitement sur ta copie pour ne pas sauter d'étape et éviter ces petites inattentions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le produit suivant : $\\frac{4}{7} \\times \\frac{3}{5}$. Donne le résultat sous forme de fraction irréductible.",
+              "answer": "$\\frac{12}{35}$",
+              "hint": "Multiplie les numérateurs entre eux et les dénominateurs entre eux.",
+              "explanation": "On calcule $4 \\times 3 = 12$ pour le haut et $7 \\times 5 = 35$ pour le bas, ce qui donne $\\frac{12}{35}$."
+            },
+            {
+              "question": "Effectue la division suivante : $\\frac{5}{8} \\div \\frac{3}{4}$.",
+              "answer": "$\\frac{20}{24} = \\frac{5}{6}$",
+              "hint": "Transforme la division en multiplication par l'inverse de la deuxième fraction.",
+              "explanation": "On écrit $\\frac{5}{8} \\times \\frac{4}{3}$. Le produit est $\\frac{5 \\times 4}{8 \\times 3} = \\frac{20}{24}$. En simplifiant par $4$, on obtient $\\frac{5}{6}$."
+            },
+            {
+              "question": "Calcule $\\frac{-2}{3} \\times \\frac{5}{11}$.",
+              "answer": "$\\frac{-10}{33}$",
+              "hint": "Applique la règle des signes : un nombre négatif multiplié par un positif donne un résultat négatif.",
+              "explanation": "Numérateurs : $-2 \\times 5 = -10$. Dénominateurs : $3 \\times 11 = 33$. Le résultat est donc $\\frac{-10}{33}$."
+            }
+          ]
+        },
+        {
+          "title": "Simplification.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives transporter un énorme sac de pierres pour monter un escalier. C'est fatigant et lourd, n'est-ce pas ? En mathématiques, travailler avec des fractions comme $\\frac{120}{240}$ est un peu comme porter ce sac trop lourd. C'est juste et correct, mais c'est très encombrant pour faire d'autres calculs. Heureusement, il existe une technique pour 'alléger' ourselves : la simplification. Simplifier une fraction, c'est l'écrire avec des nombres plus petits, mais sans changer sa valeur. $\\frac{120}{240}$ représente exactement la même proportion que $\\frac{1}{2}$. C'est comme si on remplaçait le gros sac de pierres par un petit caillou qui pèse la même proportion du poids total. Apprendre à simplifier, c'est s'offrir la liberté de faire des calculs plus rapides, plus clairs et surtout avec beaucoup moins de risques d'erreurs de calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction est dite irréductible lorsqu'on ne peut plus la simplifier, c'est-à-dire que le numérateur et le dénominateur n'ont plus aucun diviseur commun autre que $1$. Pour simplifier une fraction, on utilise la propriété fondamentale des fractions : si on divise le numérateur et le dénominateur par un même nombre non nul, la valeur de la fraction ne change pas. On dit que l'on cherche des fractions équivalentes. Par exemple, pour simplifier $\\frac{15}{20}$, on remarque que $15$ et $20$ sont tous les deux dans la table de $5$. En divisant les deux par $5$, on obtient $\\frac{3}{4}$. On a ainsi transformé une fraction complexe en une fraction simple. Cette opération est essentielle car, en $4^e$, on demande presque systématiquement que le résultat final d'un exercice soit donné sous forme de fraction irréductible, car c'est la forme la plus élégante et la plus utile."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "circle",
+              "caption": "$\\frac{1}{2}$ est équivalent à $\\frac{50}{100}$ ou $\\frac{5}{10}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier une fraction efficacement, je te propose deux chemins selon ton aisance avec les tables de multiplication. La méthode pas à pas consiste à chercher des diviseurs communs simples. Si les deux nombres sont pairs, commence par diviser par $2$. S'ils finissent par $0$ ou $5$, divise par $5$. Répète l'opération jusqu'à ce que ce ne soit plus possible. La méthode rapide, elle, consiste à chercher le Plus Grand Commun Diviseur (PGCD). Tu cherches le plus grand nombre qui divise à la fois le numérateur et le dénominateur. En divisant une seule fois par ce grand nombre, tu arrives directement à la fraction irréductible. Enfin, une astuce très puissante lors d'un produit de fractions : simplifie AVANT de multiplier. Si tu vois un même nombre au numérateur d'une fraction et au dénominateur d'une autre, tu peux les barrer (les simplifier par eux-mêmes), ce qui évite de manipuler des nombres géants pour ensuite devoir les simplifier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions la fraction $\\frac{48}{60}$. Utilisons la méthode pas à pas pour être sûrs de ne rien oublier. D'abord, $48$ et $60$ sont pairs, donc je divise par $2$. J'obtiens $\\frac{24}{30}$. Je vois que $24$ et $30$ sont encore pairs, je divise à nouveau par $2$. J'obtiens $\\frac{12}{15}$. Maintenant, $12$ et $15$ ne sont plus pairs, mais je sais qu'ils sont tous les deux dans la table de $3$. Je divise donc par $3$. $12 \\div 3 = 4$ et $15 \\div 3 = 5$. J'arrive donc à $\\frac{4}{5}$. Je vérifie : $4$ et $5$ n'ont plus de diviseur commun. La fraction est irréductible. Si j'avais utilisé le PGCD, j'aurais vu que $12$ est le plus grand diviseur commun : $48 \\div 12 = 4$ et $60 \\div 12 = 5$. Le résultat est le même, mais le chemin est plus court !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment simplifier un produit avant même de faire les multiplications, ce qui est la marque des pros. Calculons $\\frac{7}{12} \\times \\frac{8}{21}$. Si on multiplie tout, on obtient $\\frac{56}{252}$, un nombre énorme et difficile à simplifier. Utilisons l'astuce : on regarde les numérateurs et les dénominateurs. Je vois $7$ en haut et $21$ en bas. Je sais que $21 = 7 \\times 3$, donc je simplifie par $7$. Le $7$ devient $1$ et le $21$ devient $3$. Ensuite, je vois $8$ en haut et $12$ en bas. Ils sont tous deux divisibles par $4$. Le $8$ devient $2$ et le $12$ devient $3$. Mon calcul devient alors très simple : $\\frac{1}{3} \\times \\frac{2}{3}$. Il ne me reste plus qu'à multiplier : $1 \\times 2 = 2$ et $3 \\times 3 = 9$. Le résultat est $\\frac{2}{9}$. C'est beaucoup plus rapide et moins risqué !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus dangereux est de croire qu'on peut simplifier un nombre en haut avec un nombre en bas alors qu'on est en train de faire une addition ou une soustraction. Attention : on ne simplifie JAMAIS dans $\\frac{2}{3} + \\frac{4}{5}$ en barrant les $2$ et les $4$. La simplification ne fonctionne que pour la multiplication et la division. Un autre piège est de diviser le numérateur par un nombre et le dénominateur par un autre. Par exemple, dans $\\frac{10}{15}$, si tu divises $10$ par $2$ et $15$ par $3$, tu obtiens $\\frac{5}{5} = 1$, ce qui est faux ! Tu dois impérativement utiliser le MÊME diviseur pour le haut et pour le bas. Enfin, n'oublie pas de bien vérifier à la fin si ta fraction est vraiment irréductible. Parfois, on s'arrête trop tôt alors qu'une dernière division par $2$ ou $3$ était encore possible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la fraction $\\frac{36}{48}$ pour la rendre irréductible.",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Cherche un diviseur commun comme $6$ ou $12$.",
+              "explanation": "En divisant le numérateur et le dénominateur par $12$, on a $36 \\div 12 = 3$ et $48 \\div 12 = 4$. On obtient $\\frac{3}{4}$."
+            },
+            {
+              "question": "Donne la forme irréductible de $\\frac{-14}{21}$.",
+              "answer": "$\\frac{-2}{3}$",
+              "hint": "Le signe reste, concentre-toi sur $14$ et $21$. Quel nombre divise les deux ?",
+              "explanation": "$14$ et $21$ sont tous deux dans la table de $7$. $\\frac{-14 \\div 7}{21 \\div 7} = \\frac{-2}{3}$."
+            },
+            {
+              "question": "Calcule et simplifie avant de multiplier : $\\frac{5}{9} \\times \\frac{3}{10}$.",
+              "answer": "$\\frac{1}{6}$",
+              "hint": "Simplifie $5$ avec $10$ et $3$ avec $9$.",
+              "explanation": "$5$ et $10$ se simplifient par $5$ (deviennent $1$ et $2$). $3$ et $9$ se simplifient par $3$ (deviennent $1$ et $3$). On a alors $\\frac{1}{3} \\times \\frac{1}{2} = \\frac{1}{6}$."
+            }
+          ]
+        },
+        {
+          "title": "Priorités.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà remarqué que dans une phrase, si on change l'ordre des mots, on peut changer tout le sens ? C'est exactement la même chose en mathématiques. Si je te dis : 'Prends $2$ bonbons, puis multiplie tout par $3$', tu en auras $6$. Mais si je te dis : 'Prends $2$ bonbons et ajoute $3$, puis multiplie tout par $2$', le résultat est très différent. Quand on manipule des fractions, on se retrouve souvent face à de longues expressions avec des additions, des multiplications et des parenthèses. Si on effectue les calculs dans le désordre, on obtient un résultat totalement faux. C'est pour cela qu'il existe des règles de priorité, comme un code de la route pour les nombres. Ce code nous indique quelle opération a le 'priorité de passage' sur les autres, nous permettant ainsi d'arriver toujours au bon résultat, peu importe la complexité de la fraction."
+            },
+            {
+              "type": "paragraph",
+              "content": "En $4^e$, on applique aux fractions les mêmes règles de priorité qu'aux nombres entiers. La hiérarchie est stricte. En premier lieu, on traite tout ce qui se trouve à l'intérieur des parenthèses, en commençant par les parenthèses les plus imbriquées si nécessaire. Ensuite, on s'occupe des multiplications et des divisions. Ces deux opérations ont le même niveau de priorité : on les effectue donc de la gauche vers la droite, dans l'ordre où elles apparaissent. Enfin, on termine par les additions et les soustractions, elles aussi de la gauche vers la droite. Un point crucial : la multiplication et la division sont PRIORITAIRES sur l'addition et la soustraction. Cela signifie que même si une addition est écrite au début de l'expression, on doit d'abord calculer toutes les multiplications présentes ailleurs dans le calcul. Le respect de cet ordre est la seule façon de garantir l'exactitude du résultat final."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Priorité 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parenthèses (en commençant par les plus internes)"
+                    }
+                  ]
+                },
+                {
+                  "title": "Priorité 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplications et Divisions (de gauche à droite)"
+                    }
+                  ]
+                },
+                {
+                  "title": "Priorité 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additions et Soustractions (de gauche à droite)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à une expression complexe de fractions, je te conseille de suivre ce protocole rigoureux. Étape $1$ : Analyse. Repère toutes les opérations présentes. Y a-t-il des parenthèses ? Des multiplications ? Des additions ? Étape $2$ : Les Parenthèses. Si tu en vois, calcule d'abord l'intérieur. Si l'intérieur contient lui-même des priorités, applique-les. Étape $3$ : Le Bloc Prioritaire. Repère toutes les multiplications et divisions. Effectue-les l'une après l'autre, de gauche à droite. Ne sois pas tenté de faire une addition qui se trouve juste à côté. Étape $4$ : Le Bloc Final. Une fois qu'il ne reste plus que des additions et des soustractions, effectue-les de gauche à droite. Étape $5$ : La Touche Finale. Simplifie ton résultat pour obtenir une fraction irréductible. Je te suggère d'écrire chaque étape sur une nouvelle ligne pour éviter de t'embrouiller."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons l'expression $A = \\frac{1}{2} + \\frac{3}{4} \\times \\frac{1}{3}$. Ici, nous avons une addition et une multiplication. Selon la règle des priorités, la multiplication est prioritaire. On commence donc par calculer $\\frac{3}{4} \\times \\frac{1}{3}$. On multiplie les numérateurs ($3 \\times 1 = 3$) et les dénominateurs ($4 \\times 3 = 12$), ce qui donne $\\frac{3}{12}$. On peut simplifier $\\frac{3}{12}$ en $\\frac{1}{4}$. Notre expression devient alors $A = \\frac{1}{2} + \\frac{1}{4}$. Pour additionner ces deux fractions, on doit les mettre au même dénominateur. On transforme $\\frac{1}{2}$ en $\\frac{2}{4}$. On a donc $A = \\frac{2}{4} + \\frac{1}{4} = \\frac{3}{4}$. Le résultat final est $\\frac{3}{4}$. Si on avait fait l'addition en premier, on aurait trouvé $\\frac{5}{4} \\times \\frac{1}{3} = \\frac{5}{12}$, ce qui est totalement faux !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attaquons-nous à un calcul plus complexe avec des parenthèses : $B = (\\frac{5}{6} - \\frac{1}{3}) \\div \\frac{1}{2}$. Ici, la parenthèse est la priorité absolue. On commence par calculer $\\frac{5}{6} - \\frac{1}{3}$. On met au même dénominateur : $\\frac{1}{3} = \\frac{2}{6}$. Le calcul devient $\\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6}$. On simplifie $\\frac{3}{6}$ en $\\frac{1}{2}$. Maintenant, on remplace la parenthèse dans l'expression principale : $B = \\frac{1}{2} \\div \\frac{1}{2}$. Nous savons que diviser un nombre par lui-même donne toujours $1$. Pour le prouver avec la méthode, on multiplie par l'inverse : $\\frac{1}{2} \\times \\frac{2}{1} = \\frac{2}{2} = 1$. Le résultat final est $1$. On voit bien que le respect de l'ordre (parenthèses d'abord, puis division) a permis de simplifier le problème rapidement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique est le 'calcul linéaire'. C'est quand un élève lit l'expression de gauche à droite comme un livre, sans tenir compte des priorités. Il additionne, puis multiplie, puis soustrait, simplement dans l'ordre d'apparition. C'est l'erreur fatale ! Pour l'éviter, je te conseille de surligner ou d'entourer les multiplications et divisions avant de commencer, pour bien les identifier comme zones prioritaires. Un autre piège survient lors de la simplification : certains élèves simplifient un numérateur d'une fraction avec le dénominateur d'une autre ALORS qu'il y a une addition entre les deux. Rappelle-toi : on ne peut simplifier en croisé que s'il y a un signe de multiplication. Enfin, attention à la gestion des signes moins devant une parenthèse, cela change tous les signes à l'intérieur lors du développement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $C = \\frac{2}{3} \\times (\\frac{1}{4} + \\frac{1}{2})$.",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "Calcule d'abord l'intérieur de la parenthèse.",
+              "explanation": "Dans la parenthèse : $\\frac{1}{4} + \\frac{2}{4} = \\frac{3}{4}$. Ensuite, $\\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{12}$. En simplifiant, on obtient $\\frac{1}{2}$."
+            },
+            {
+              "question": "Effectue le calcul $D = \\frac{7}{8} - \\frac{1}{4} \\div \\frac{1}{2}$.",
+              "answer": "$\\frac{1}{2}$",
+              "hint": "La division est prioritaire sur la soustraction.",
+              "explanation": "Division d'abord : $\\frac{1}{4} \\div \\frac{1}{2} = \\frac{1}{4} \\times 2 = \\frac{2}{4} = \\frac{1}{2}$. Ensuite, la soustraction : $\\frac{7}{8} - \\frac{1}{2} = \\frac{7}{8} - \\frac{4}{8} = \\frac{3}{8}$. Oups, correction : $\\frac{7}{8} - \\frac{4}{8} = \\frac{3}{8}$. (Réponse corrigée : $\\frac{3}{8}$)."
+            },
+            {
+              "question": " Calcule $E = \\frac{3}{5} \\times \\frac{2}{3} + \\frac{1}{5}$.",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Multiplie d'abord, puis ajoute.",
+              "explanation": "Produit : $\\frac{3 \\times 2}{5 \\times 3} = \\frac{6}{15} = \\frac{2}{5}$. Addition : $\\frac{2}{5} + \\frac{1}{5} = \\frac{3}{5}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

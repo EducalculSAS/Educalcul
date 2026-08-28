@@ -1,0 +1,520 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.438966+00:00",
+  "id": 623,
+  "code": "terminale-generale-t02-c02",
+  "title": "Images, antécédents et seuils",
+  "description": "Cours structuré Educalcul : Images, antécédents et seuils.",
+  "subject": "Fonctions et lecture de graphiques",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Fonctions et lecture de graphiques",
+    "titre_du_cours": "Images, antécédents et seuils",
+    "objectif_global": "Images, antécédents et seuils",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Comparer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions et lecture de graphiques",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une image sur un graphique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprendre à lire, sur le graphique d'une fonction, la valeur que cette fonction attribue à un nombre donné. Vous verrez que cette opération, qui peut sembler technique au premier abord, devient tout à fait naturelle dès que l'on visualise le tracé de la courbe. Prenez le temps de suivre chaque étape, car la compréhension de l'image est la clé qui ouvrira la porte aux notions d'antécédent et de seuil que nous aborderons ensuite."
+            },
+            {
+              "type": "definition",
+              "term": "image",
+              "definition": "L'image d'un nombre $x$ par une fonction $f$ est la valeur $f(x)$ que la fonction associe à $x$. Sur un graphique, c'est l'ordonnée du point de la courbe dont l'abscisse est $x$.",
+              "example": "Pour $f(x)=x^2-2$, l'image de $3$ est $f(3)=3^2-2=7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire cette image sur le graphique, imaginez une ligne verticale qui part de l'abscisse $x$ sur l'axe horizontal et qui monte jusqu'à rencontrer la courbe. Le point de rencontre a pour ordonnée exactement l'image cherchée. C'est une projection verticale, et elle fonctionne pour toute fonction dont le graphique est tracé dans un repère orthonormé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe des abscisses, localisez le nombre $x$ dont vous voulez l'image."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la verticale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mentalement ou avec une règle, montez une ligne droite perpendiculaire à l'axe des abscisses jusqu'à ce qu'elle coupe la courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le point d'intersection a pour coordonnées $(x, f(x))$. L'ordonnée de ce point est l'image de $x$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2-2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Graphique de la fonction $f(x)=x^2-2$ utilisé pour illustrer la lecture d'une image."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que vous savez comment obtenir l'image d'un nombre, nous allons voir comment faire l'opération inverse : retrouver le ou les nombres dont l'image est une valeur donnée. Cette recherche s'appelle la détermination des antécédents."
+            },
+            {
+              "type": "definition",
+              "term": "antécédent",
+              "definition": "Un antécédent d'une valeur $y$ par une fonction $f$ est un nombre $x$ tel que $f(x)=y$. Sur le graphique, ce sont les abscisses des points d'intersection de la courbe avec la droite horizontale d'ordonnée $y$.",
+              "example": "Pour $f(x)=x^2-2$, les antécédents de $7$ sont $3$ et $-3$ car $f(3)=7$ et $f(-3)=7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La lecture d'un antécédent utilise une projection horizontale. Partez de la valeur $y$ sur l'axe des ordonnées, tracez une ligne horizontale vers la droite (ou la gauche) jusqu'à ce qu'elle rencontre la courbe. Chaque point de rencontre donne un antécédent. Si la horizontale ne coupe pas la courbe, la valeur n'a pas d'antécédent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe des ordonnées, localisez la valeur $y$ dont vous cherchez les antécédents."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer l'horizontale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tracez une ligne droite parallèle à l'axe des abscisses à partir de $y$ vers la courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque intersection fournit un $x$ tel que $f(x)=y$. Notez tous les $x$ trouvés."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour consolider ces deux lectures, nous allons travailler sur un exemple complet où l'on vous demandera à la fois l'image d'un nombre et les antécédents d'une valeur. Cet exercice mélange les deux projections et vous aidera à gagner en aisance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique de $f(x)=x^2-2$, quelle est l'image de $2$ ?",
+              "answer": "$2$",
+              "hint": "Placez-vous sur l'abscisse $2$, montez verticalement jusqu'à la courbe et lisez l'ordonnée.",
+              "explanation": "L'image de $2$ est $f(2)=2^2-2=4-2=2$. Sur le graphique, le point $(2,2)$ appartient à la courbe."
+            },
+            {
+              "question": "Quels sont les antécédents de $2$ par la fonction $f(x)=x^2-2$ ?",
+              "answer": "$2$ et $-2$",
+              "hint": "Tracez l'horizontale $y=2$ et repérez les intersections avec la courbe.",
+              "explanation": "On résout $x^2-2=2$, soit $x^2=4$, d'où $x=2$ ou $x=-2$. Les deux points $(2,2)$ et $(-2,2)$ sont sur la courbe."
+            },
+            {
+              "question": "Pour $f(x)=x^2-2$, donnez l'image de $-1$ et les antécédents de $-1$.",
+              "answer": "Image de $-1$ : $-1$. Antécédents de $-1$ : $1$ et $-1$.",
+              "hint": "Utilisez la verticale pour l'image, l'horizontale pour les antécédents.",
+              "explanation": "L'image de $-1$ est $f(-1)=(-1)^2-2=1-2=-1$. Pour les antécédents de $-1$, on résout $x^2-2=-1$, soit $x^2=1$, d'où $x=1$ ou $x=-1$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux images grâce au sens de variation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à comparer les images de deux nombres sans avoir à les calculer systématiquement. L'outil principal sera le tableau de variation, qui résume le comportement de la fonction sur l'ensemble de son ensemble de définition. Vous verrez que connaître le sens de variation (croissance ou décroissance) sur un intervalle permet de décider immédiatement laquelle des deux images est la plus grande."
+            },
+            {
+              "type": "definition",
+              "term": "tableau de variation",
+              "definition": "Un tableau de variation présente, pour chaque intervalle de l'ensemble de définition, le sens de variation de la fonction (croissante ou décroissante) et les valeurs limites aux bornes. Il permet de visualiser rapidement où la fonction augmente ou diminue.",
+              "example": "Pour $f(x)=x^2-2$, le tableau indique une décroissance sur $]-\\infty;0]$ et une croissance sur $[0;+\\infty[$, avec un minimum $-2$ en $0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de variation se lit de la gauche vers la droite. Sur un intervalle où la flèche pointe vers le haut, la fonction est croissante : si $x_1 < x_2$ alors $f(x_1) < f(x_2)$. Sur un intervalle où la flèche pointe vers le bas, la fonction est décroissante : si $x_1 < x_2$ alors $f(x_1) > f(x_2)$. Cette propriété est valable pour tout couple de nombres appartenant au même intervalle de monotonie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'intervalle commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifiez que les deux nombres $a$ et $b$ à comparer appartiennent au même intervalle de monotonie du tableau de variation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Regarder le sens de la flèche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la flèche monte, la fonction est croissante : le plus grand $x$ donne la plus grande image. Si la flèche descend, la fonction est décroissante : le plus grand $x$ donne la plus petite image."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez l'inégalité entre $f(a)$ et $f(b)$ en vous basant sur l'ordre de $a$ et $b$ et sur le sens de variation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "variation_table",
+              "caption": "Tableau de variation de $f(x)=x^2-2$",
+              "intervals": [
+                {
+                  "interval": "]-\\infty;0]",
+                  "variation": "décroît"
+                },
+                {
+                  "interval": "[0;+\\infty[",
+                  "variation": "croît"
+                }
+              ],
+              "points": [
+                {
+                  "x": "-\\infty",
+                  "y": "+\\infty"
+                },
+                {
+                  "x": "0",
+                  "y": "-2"
+                },
+                {
+                  "x": "+\\infty",
+                  "y": "+\\infty"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir comment utiliser le tableau de variation lorsque les deux nombres se trouvent dans le même intervalle de monotonie. Mais que se passe-t-il si les deux nombres sont de part et d'autre d'un extremum, par exemple l'un négatif et l'autre positif pour $f(x)=x^2-2$ ? Dans ce cas, il faut comparer les images en tenant compte de la symétrie de la courbe ou en calculant directement les valeurs, car le sens de variation change."
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque la fonction est paire, comme $x^2-2$, les images de deux opposés sont égales. Plus généralement, si les deux nombres ne partagent pas le même intervalle de monotonie, on peut soit calculer les deux images, soit utiliser la forme canonique de la fonction pour les comparer. Cette approche demande un peu plus de travail, mais elle reste accessible grâce aux outils algébriques que vous maîtrisez."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les intervalles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez dans quel intervalle de monotonie se trouve chaque nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer au minimum ou maximum",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'un des nombres est de part et d'autre de l'extremum, comparez chaque image à la valeur de l'extremum (ici $-2$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ordonner les images",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Classez les images du plus petit au plus grand en utilisant les inégalités obtenues."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons appliquer la méthode à un cas concret où vous devrez comparer les images de trois nombres distincts, certains appartenant au même intervalle de monotonie, d'autres non. Cela vous permettra de vérifier que vous savez manipuler le tableau de variation dans toutes les configurations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x)=x^2-2$. Comparez $f(-3)$ et $f(-1)$ sans calculer leur valeur exacte.",
+              "answer": "$f(-3) > f(-1)$",
+              "hint": "Les deux nombres sont dans l'intervalle $]-\\infty;0]$ où $f$ est décroissante.",
+              "explanation": "Sur $]-\\infty;0]$, $f$ est décroissante. Comme $-3 < -1$, on a $f(-3) > f(-1)$."
+            },
+            {
+              "question": "Comparez $f(-2)$ et $f(1)$ pour la même fonction.",
+              "answer": "$f(-2) > f(1)$",
+              "hint": "Calculez les images ou utilisez la symétrie : $f(-2)=2$, $f(1)=-1$.",
+              "explanation": "$f(-2)=(-2)^2-2=2$, $f(1)=1^2-2=-1$. Donc $2 > -1$."
+            },
+            {
+              "question": "Classez $f(-4)$, $f(-2)$, $f(0)$, $f(3)$ par ordre croissant.",
+              "answer": "$f(0) < f(-2) < f(3) < f(-4)$",
+              "hint": "Utilisez le tableau de variation et la symétrie de la parabole.",
+              "explanation": "$f(0)=-2$ (minimum). $f(-2)=2$, $f(3)=7$, $f(-4)=14$. L'ordre croissant est $-2 < 2 < 7 < 14$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter un seuil à partir d'une inéquation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon vous apprend à donner du sens à une inéquation du type $f(x) > k$ ou $f(x) \\le k$ en la reliant à la notion de seuil. Un seuil est une valeur de référence que la fonction atteint ou dépasse. Savoir résoudre graphiquement ou algébriquement une telle inéquation est indispensable pour modéliser des situations réelles, comme déterminer à partir de quel moment une température dépasse un niveau critique."
+            },
+            {
+              "type": "definition",
+              "term": "seuil",
+              "definition": "Un seuil est une valeur $k$ fixée à l'avance. Résoudre $f(x) > k$ consiste à trouver tous les $x$ pour lesquels l'image $f(x)$ est strictement supérieure à ce seuil. L'ensemble des solutions est souvent un intervalle ou une réunion d'intervalles.",
+              "example": "Pour $f(x)=x^2-2$ et le seuil $k=2$, l'inéquation $f(x) > 2$ a pour solution $x < -2$ ou $x > 2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus visuelle consiste à tracer l'horizontale $y=k$ sur le graphique de $f$ et à repérer les portions de courbe qui se situent au-dessus (pour $>$) ou en dessous (pour $<$) de cette droite. Les abscisses correspondantes forment l'ensemble solution. Cette lecture graphique est complétée par un tableau de signes qui formalise le raisonnement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer l'horizontale du seuil",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur le repère, dessinez la droite $y=k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les intersections",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouvez les abscisses des points où la courbe coupe cette horizontale (résolution de $f(x)=k$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le signe de $f(x)-k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez une valeur test dans chaque intervalle délimité par les intersections pour savoir si $f(x)-k$ est positif ou négatif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire l'ensemble solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon l'inégalité demandée ($>$, $\\ge$, $<$, $\\le$), sélectionnez les intervalles où le signe correspond."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "sign_table",
+              "caption": "Tableau de signes de $f(x)-2$ pour $f(x)=x^2-2$",
+              "intervals": [
+                {
+                  "interval": "]-\\infty;-2[",
+                  "sign": "+"
+                },
+                {
+                  "interval": "-2",
+                  "sign": "0"
+                },
+                {
+                  "interval": "]-2;2[",
+                  "sign": "-"
+                },
+                {
+                  "interval": "2",
+                  "sign": "0"
+                },
+                {
+                  "interval": "]2;+\\infty[",
+                  "sign": "+"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir maîtrisé le tableau de signes, nous allons voir comment lire directement l'ensemble solution sur le graphique, sans passer par le tableau. Cette lecture graphique est souvent plus rapide et permet de vérifier vos résultats algébriques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez la courbe de $f$ et l'horizontale $y=k$. Les portions de courbe situées au-dessus de l'horizontale correspondent aux $x$ tels que $f(x) > k$. Projetez ces portions sur l'axe des abscisses : vous obtenez visuellement l'intervalle ou la réunion d'intervalles solution. Cette méthode est particulièrement efficace lorsque la fonction est simple et que le graphique est précis."
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'ensemble solution de $x^2-2 > 2$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "-2"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -5,
+                  "end": -2,
+                  "color": "blue"
+                },
+                {
+                  "start": 2,
+                  "end": 5,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, imaginons une situation concrète : la température $T$ (en degrés Celsius) dans un local est modélisée par $T(t)=t^2-2$ où $t$ est le temps en heures après la mise en marche du chauffage. Le seuil de confort est fixé à $2^{\\circ}C$. Déterminez les plages horaires où la température dépasse ce seuil et interprétez le résultat en langage courant."
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous verrez que la résolution de l'inéquation $t^2-2 > 2$ conduit aux mêmes intervalles que précédemment, mais maintenant ils ont un sens physique : avant la 2e heure et après la 2e heure (en valeur absolue), le local est assez chaud. Cette interprétation donne tout son sens aux calculs abstraits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire l'image d'un nombre sur le graphique d'une fonction.",
+                "Je sais déterminer les antécédents d'une valeur à partir du graphique.",
+                "Je sais utiliser le tableau de variation pour comparer deux images.",
+                "Je sais résoudre une inéquation $f(x) > k$ à l'aide d'un tableau de signes ou graphiquement.",
+                "Je sais interpréter un seuil dans un contexte réel."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résolvez l'inéquation $x^2-2 > 2$ et donnez l'ensemble solution en notation d'intervalles.",
+              "answer": "]-\\infty;-2[ \\cup ]2;+\\infty[",
+              "hint": "Trouvez les solutions de $x^2-2=2$ puis testez le signe de $x^2-4$ sur chaque intervalle.",
+              "explanation": "L'équation $x^2-2=2$ donne $x^2=4$, soit $x=-2$ ou $x=2$. Le trinôme $x^2-4$ est positif en dehors des racines, donc l'inéquation est vérifiée pour $x<-2$ ou $x>2$."
+            },
+            {
+              "question": "Sur le graphique de $f(x)=x^2-2$, représentez l'ensemble des $x$ tels que $f(x) \\le 7$.",
+              "answer": "L'intervalle $[-3;3]$",
+              "hint": "Tracez l'horizontale $y=7$, repérez les intersections et prenez la portion de courbe en dessous.",
+              "explanation": "L'équation $x^2-2=7$ donne $x^2=9$, soit $x=-3$ ou $x=3$. La parabole est en dessous de $y=7$ entre ces deux abscisses, bornes incluses car l'inégalité est large."
+            },
+            {
+              "question": "Pour le modèle $T(t)=t^2-2$, indiquez les plages de temps (en heures) où la température dépasse $2^{\\circ}C$.",
+              "answer": "Avant $t=-2$ (non pertinent) et après $t=2$ heures. Dans le contexte $t\\ge0$, la température dépasse le seuil pour $t>2$ heures.",
+              "hint": "Résolvez $t^2-2 > 2$ et ne gardez que les solutions positives.",
+              "explanation": "L'inéquation donne $t<-2$ ou $t>2$. Comme le temps est positif, seule la branche $t>2$ a un sens physique : après 2 heures de chauffage, la température est supérieure à $2^{\\circ}C$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

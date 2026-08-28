@@ -1,0 +1,393 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.754301+00:00",
+  "id": 88,
+  "code": "ce1-t03-c01",
+  "title": "Additionner des nombres jusqu'à 1 000",
+  "description": "Cours structuré Educalcul : Additionner des nombres jusqu'à 1 000.",
+  "subject": "Les quatre opérations",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Les quatre opérations",
+    "titre_du_cours": "Additionner des nombres jusqu'à 1 000",
+    "objectif_global": "Additionner des nombres jusqu'à 1 000",
+    "mini_lecons_imposees": [
+      "Décomposer pour additionner.",
+      "Choisir calcul mental ou posé.",
+      "Vérifier par ordre de grandeur simple."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Les quatre opérations",
+      "lessons": [
+        {
+          "title": "Décomposer pour additionner.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Décomposer en centaines, dizaines et unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $342$ billes. Tu peux les ranger en trois paquets : $3$ centaines, $4$ dizaines et $2$ unités. C'est comme faire trois petites tours qui ne se mélangent pas. Quand tu vois un nombre à trois chiffres, pense toujours à ces trois étages."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 2,
+              "caption": "342 : 3 centaines, 4 dizaines, 2 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on additionne chaque étage séparément. Les centaines avec les centaines, les dizaines avec les dizaines, les unités avec les unités. C'est plus simple que d'essayer de tout faire d'un coup."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Additionner les centaines, les dizaines et les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $256 + 134$. Les centaines : $200 + 100 = 300$. Les dizaines : $50 + 30 = 80$. Les unités : $6 + 4 = 10$. On remet tout ensemble : $300 + 80 + 10 = 390$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "256",
+                "134"
+              ],
+              "result": "390",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que les unités fassent une nouvelle dizaine, ou les dizaines une nouvelle centaine. On recompose alors le total en regroupant ce qui dépasse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Recomposer le total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie $312 + 178$. Centaines : $300 + 100 = 400$. Dizaines : $10 + 70 = 80$. Unités : $2 + 8 = 10$, cela donne une dizaine de plus. On ajoute cette dizaine aux $80$ pour obtenir $90$. Le total final est $400 + 90 = 490$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Somme 312 + 178 = 490",
+              "min": 300,
+              "max": 500,
+              "points": [
+                {
+                  "value": 312,
+                  "label": "312"
+                },
+                {
+                  "value": 490,
+                  "label": "490"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose $425 + 367$ en centaines, dizaines et unités, puis trouve la somme.",
+              "answer": "792",
+              "hint": "Additionne $400+300$, $20+60$, $5+7$ et regroupe.",
+              "explanation": "Centaines $400+300=700$, dizaines $20+60=80$, unités $5+7=12$ (une dizaine et deux unités). Total $700+80+10+2=792$."
+            },
+            {
+              "question": "Calcule $256 + 134$ en additionnant chaque groupe séparément.",
+              "answer": "390",
+              "hint": "Sépare les centaines, les dizaines et les unités.",
+              "explanation": "Centaines $200+100=300$, dizaines $50+30=80$, unités $6+4=10$. $300+80+10=390$."
+            },
+            {
+              "question": "Trouve le résultat de $312 + 178$ en recomposant les dizaines qui apparaissent.",
+              "answer": "490",
+              "hint": "Les unités font $10$, transforme-les en une dizaine.",
+              "explanation": "Centaines $300+100=400$, dizaines $10+70=80$, unités $2+8=10$ → une dizaine de plus → $90$. $400+90=490$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir calcul mental ou posé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le calcul mental suffit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu dois ajouter $200 + 300$, tu vois tout de suite que cela fait $500$. Pas besoin d'écrire, ton cerveau connaît déjà le saut de centaine. C'est comme monter deux marches d'un escalier bien large."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Calcul mental vs posé pour 200+300",
+              "bars": [
+                {
+                  "label": "Mental",
+                  "value": 500,
+                  "tone": "green"
+                },
+                {
+                  "label": "Posé",
+                  "value": 500,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois les nombres sont plus mêlés, comme $487 + 256$. Les centaines ne sont pas rondes, les dizaines demandent une retenue. Là, poser l'addition aide à ne rien oublier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand il faut poser l'addition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écris $487$ au-dessus de $256$, aligne les unités, les dizaines, les centaines. Ajoute colonne par colonne, note la retenue si ça dépasse $9$. C'est ton filet de sécurité."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "487",
+                "256"
+              ],
+              "result": "743",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a des cas où tu peux choisir. Pour $123 + 456$, les centaines sont simples, les dizaines et unités ne font pas de retenue. Tu peux le faire dans ta tête ou le poser, les deux marchent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "Demande-toi : est-ce que je vois tout de suite le total des centaines ? Est-ce qu'une colonne va déborder ? Si oui, pose. Sinon, le mental est plus rapide."
+            },
+            {
+              "type": "number_line",
+              "caption": "Choix pour 123 + 456",
+              "min": 100,
+              "max": 600,
+              "points": [
+                {
+                  "value": 123,
+                  "label": "123"
+                },
+                {
+                  "value": 456,
+                  "label": "456"
+                },
+                {
+                  "value": 579,
+                  "label": "579"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $200 + 300$, choisis mental ou posé et donne le résultat.",
+              "answer": "Mental, 500",
+              "hint": "Les centaines sont rondes, pas de retenue.",
+              "explanation": "On ajoute simplement les centaines : $200+300=500$, le calcul mental est immédiat."
+            },
+            {
+              "question": "Calcule $487 + 256$ en posant l'addition.",
+              "answer": "743",
+              "hint": "Aligne les chiffres, ajoute colonne par colonne, note les retenues.",
+              "explanation": "Unités $7+6=13$ (3, retenue 1), dizaines $8+5+1=14$ (4, retenue 1), centaines $4+2+1=7$. Résultat $743$."
+            },
+            {
+              "question": "Pour $123 + 456$, décide mental ou posé et donne la somme.",
+              "answer": "Mental ou posé, 579",
+              "hint": "Aucune colonne ne dépasse 9.",
+              "explanation": "Centaines $100+400=500$, dizaines $20+50=70$, unités $3+6=9$. Total $579$, facile en mental."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par ordre de grandeur simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à la centaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier vite, on replace chaque nombre à la centaine la plus proche. $462$ est plus près de $500$ que de $400$, donc on dit $500$. C'est comme arrondir un prix à l'euro supérieur pour être sûr d'avoir assez d'argent."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arrondi de 462 à 500",
+              "min": 400,
+              "max": 500,
+              "points": [
+                {
+                  "value": 462,
+                  "label": "462"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les deux nombres arrondis, on les additionne. C'est l'estimation. Elle ne donne pas le résultat exact, mais elle te dit si ta réponse finale est dans le bon quartier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Faire une addition approximative"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie $789 + 215$. $789$ devient $800$, $215$ devient $200$. L'estimation est $800 + 200 = 1000$. Si ton calcul exact donne $950$ ou $1050$, tu sais que c'est plausible."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Estimation vs exact pour 789+215",
+              "bars": [
+                {
+                  "label": "Estimation",
+                  "value": 1000,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Exact",
+                  "value": 1004,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, compare l'estimation au résultat exact. Si l'écart est petit (quelques dizaines), ton calcul est probablement bon. Un grand écart signale une erreur de retenue ou d'alignement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer l'estimation au résultat exact"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $654 + 237$. Arrondi : $700 + 200 = 900$. Calcul exact : $654 + 237 = 891$. L'estimation $900$ est très proche de $891$, donc le calcul est fiable."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "654",
+                "237"
+              ],
+              "result": "891",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en centaines, dizaines, unités.",
+                "Je choisis le calcul mental quand c'est simple et le posé sinon.",
+                "J'arrondis à la centaine pour vérifier mes additions."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis $462$ et $318$ à la centaine la plus proche, puis additionne les arrondis.",
+              "answer": "Estimation 800",
+              "hint": "462 → 500, 318 → 300.",
+              "explanation": "462 arrondi à 500, 318 arrondi à 300. 500+300=800."
+            },
+            {
+              "question": "Fais l'estimation de $789 + 215$ par arrondi à la centaine.",
+              "answer": "1000",
+              "hint": "789 → 800, 215 → 200.",
+              "explanation": "789 arrondi à 800, 215 arrondi à 200. 800+200=1000."
+            },
+            {
+              "question": "Vérifie $654 + 237$ en comparant l'estimation (arrondi centaines) au calcul exact.",
+              "answer": "Estimation 900, exact 891, écart 9 → correct",
+              "hint": "Arrondis 654→700, 237→200, additionne, puis calcule exact.",
+              "explanation": "Arrondis : 700+200=900. Exact : 654+237=891. Différence 9, donc le calcul est bon."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

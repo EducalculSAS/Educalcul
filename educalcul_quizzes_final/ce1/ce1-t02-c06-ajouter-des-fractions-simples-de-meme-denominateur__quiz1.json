@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 84,
+  "_course_code": "ce1-t02-c06-ajouter-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Réunir des parts de même taille",
+  "title": "Quiz : Réunir des parts de même taille (CE1)",
+  "questions": [
+    {
+      "text": "Regarde le modèle ci-dessous. Quelle addition correspond aux parts réunies ?",
+      "options": [
+        "$1/4 + 2/4 = 3/4$",
+        "$1/4 + 2/4 = 3/8$",
+        "$1/4 + 1/4 = 2/4$",
+        "$2/4 + 2/4 = 4/4$"
+      ],
+      "correctAnswer": "$1/4 + 2/4 = 3/4$",
+      "explanation": "Le modèle montre une première part de $1/4$ et une deuxième part de $2/4$. En les réunissant, on obtient $3$ parts sur $4$, soit $3/4$. Le dénominateur (le nombre de parts totales) ne change pas, seul le numérateur (le nombre de parts prises) s'additionne : $1 + 2 = 3$. L'option B est une erreur fréquente où l'on additionne aussi les dénominateurs. Les options C et D ne correspondent pas aux parts représentées.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Modèle : 1/4 et 2/4 réunis"
+      }
+    },
+    {
+      "text": "Paul mange $2/5$ d'une tablette de chocolat. Léa mange $1/5$ de la même tablette. Quelle fraction de la tablette ont-ils mangée ensemble ?",
+      "options": [
+        "$3/5$",
+        "$3/10$",
+        "$2/5$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$3/5$",
+      "explanation": "Paul a mangé $2$ parts sur $5$ et Léa $1$ part sur $5$. Comme les parts sont de la même taille (même dénominateur $5$), on additionne seulement les numérateurs : $2 + 1 = 3$. Ils ont donc mangé $3/5$ de la tablette au total. L'option $3/10$ correspond à l'erreur d'additionner les dénominateurs. Les options $2/5$ et $1/5$ correspondent à la quantité mangée par un seul des deux enfants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a colorié $3/6$ d'un rectangle. Elle a colorié $1/6$ en rouge et le reste en bleu. Quelle fraction du rectangle est coloriée en bleu ?",
+      "options": [
+        "$2/6$",
+        "$4/6$",
+        "$1/6$",
+        "$3/6$"
+      ],
+      "correctAnswer": "$2/6$",
+      "explanation": "Le total colorié est $3/6$. La partie rouge est $1/6$. Pour trouver la partie bleue, on cherche ce qu'il faut ajouter à $1/6$ pour obtenir $3/6$ : $1/6 + ? = 3/6$. Il manque $2/6$ car $1 + 2 = 3$. L'option $4/6$ correspond à une addition ($3+1$) au lieu d'une soustraction. Les options $1/6$ et $3/6$ reprennent les valeurs données dans l'énoncé sans faire le calcul demandé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète l'addition pour former un entier : $2/3 + \\dots = 3/3$",
+      "options": [
+        "$1/3$",
+        "$2/3$",
+        "$3/3$",
+        "$0/3$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "Un entier correspond à $3/3$ (trois tiers). On a déjà $2/3$. Il faut ajouter le nombre de tiers manquants pour arriver à $3$ : $2 + 1 = 3$. Il faut donc $1/3$. L'option $2/3$ ferait $4/3$ (plus d'un entier). L'option $3/3$ ferait $5/3$. L'option $0/3$ ne change rien au total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de l'addition $3/4 + 3/4$ ?",
+      "options": [
+        "$6/4$",
+        "$6/8$",
+        "$3/4$",
+        "$1$"
+      ],
+      "correctAnswer": "$6/4$",
+      "explanation": "On additionne deux fractions de même dénominateur ($4$). On garde le dénominateur $4$ et on additionne les numérateurs : $3 + 3 = 6$. Le résultat est donc $6/4$ (six quarts). L'option $6/8$ est l'erreur classique consistant à additionner les dénominateurs. L'option $3/4$ ne tient pas compte de la seconde fraction. L'option $1$ correspond à $4/4$, ce qui est inférieur au résultat réel.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 4
+          },
+          {
+            "numerator": 3,
+            "denominator": 4
+          }
+        ],
+        "caption": "Modèle : 3/4 + 3/4"
+      }
+    }
+  ]
+}

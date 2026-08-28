@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 344,
+  "_course_code": "6eme-t03-c03-division-euclidienne-et-divisibilite",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Quotient / reste",
+  "title": "Division euclidienne : quotient et reste",
+  "blocks": [
+    {
+      "title": "Division euclidienne simple",
+      "content": "Effectue la division euclidienne de $47$ par $5$. Donne le quotient et le reste.",
+      "correctAnswer": "9 et 2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche le plus grand multiple de $5$ inférieur ou égal à $47$. $5 × 9 = 45$, donc le quotient est $9$ et le reste est $47 - 45 = 2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche du dividende",
+      "content": "Un nombre divisé par $7$ donne un quotient de $8$ et un reste de $3$. Quel est ce nombre ?",
+      "correctAnswer": "59",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la relation de la division euclidienne : dividende = diviseur × quotient + reste. Ici, dividende = $7 × 8 + 3 = 56 + 3 = 59$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de partage",
+      "content": "Un pâtissier a $123$ biscuits. Il les range dans des boîtes de $8$ biscuits chacune. Combien de boîtes pleines peut-il faire et combien de biscuits restent-ils ?",
+      "correctAnswer": "15 et 3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On effectue la division euclidienne de $123$ par $8$. $8 × 15 = 120$, donc le quotient est $15$ (boîtes pleines) et le reste est $123 - 120 = 3$ (biscuits restants).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

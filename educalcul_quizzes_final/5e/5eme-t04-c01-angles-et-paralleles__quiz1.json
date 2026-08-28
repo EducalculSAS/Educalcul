@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 395,
+  "_course_code": "5eme-t04-c01-angles-et-paralleles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Angles particuliers",
+  "title": "Quiz : Angles particuliers (5e)",
+  "questions": [
+    {
+      "text": "Quelle est la mesure d'un angle droit ?",
+      "options": [
+        "$90^\\circ$",
+        "$45^\\circ$",
+        "$180^\\circ$",
+        "$60^\\circ$"
+      ],
+      "correctAnswer": "$90^\\circ$",
+      "explanation": "Un angle droit mesure $90^\\circ$ par définition. Les autres mesures correspondent à un angle aigu ($45^\\circ$, $60^\\circ$) ou à un angle plat ($180^\\circ$).",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Angle droit"
+      }
+    },
+    {
+      "text": "Deux angles sont complémentaires. Si l'un mesure $30^\\circ$, quelle est la mesure de l'autre ?",
+      "options": [
+        "$60^\\circ$",
+        "$150^\\circ$",
+        "$120^\\circ$",
+        "$90^\\circ$"
+      ],
+      "correctAnswer": "$60^\\circ$",
+      "explanation": "La somme de deux angles complémentaires est $90^\\circ$. Donc $90^\\circ - 30^\\circ = 60^\\circ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un angle mesure $120^\\circ$. Comment le classer ?",
+      "options": [
+        "Angle obtus",
+        "Angle aigu",
+        "Angle droit",
+        "Angle plat"
+      ],
+      "correctAnswer": "Angle obtus",
+      "explanation": "Un angle obtus mesure entre $90^\\circ$ et $180^\\circ$. Comme $120^\\circ$ se trouve dans cet intervalle, c'est un angle obtus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux angles sont supplémentaires. L'un d'eux mesure $65^\\circ$. Quelle est la mesure de l'autre ?",
+      "options": [
+        "$115^\\circ$",
+        "$25^\\circ$",
+        "$155^\\circ$",
+        "$75^\\circ$"
+      ],
+      "correctAnswer": "$115^\\circ$",
+      "explanation": "La somme de deux angles supplémentaires est $180^\\circ$. Donc $180^\\circ - 65^\\circ = 115^\\circ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lorsque deux droites parallèles sont coupées par une sécante, quels angles sont dits alternes-internes ?",
+      "options": [
+        "Les angles situés de part et d'autre de la sécante et à l'intérieur des parallèles",
+        "Les angles correspondants",
+        "Les angles opposés par le sommet",
+        "Les angles adjacents"
+      ],
+      "correctAnswer": "Les angles situés de part et d'autre de la sécante et à l'intérieur des parallèles",
+      "explanation": "Les angles alternes-internes sont formés de chaque côté de la sécante et se trouvent entre les deux droites parallèles. Les angles correspondants sont du même côté de la sécante, les angles opposés par le sommet se partagent un sommet commun, et les angles adjacents partagent un côté.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

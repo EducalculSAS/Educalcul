@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Déboguer",
+  "title": "Quiz Débogage - Algorithmique 6e",
+  "questions": [
+    {
+      "text": "Voici un programme en pseudo‑code qui doit afficher les nombres de 1 à 5.\\n\\nDEBUT\\n  i <- 0\\n  TANT QUE i < 5 FAIRE\\n    AFFICHER i\\n    i <- i + 1\\n  FIN TANT QUE\\nFIN\\n\\nQuel est l'erreur qui empêche l'affichage correct ?",
+      "options": [
+        "La variable i n'est pas initialisée avant la boucle",
+        "La condition de la boucle devrait être i <= 5",
+        "L'instruction AFFICHER i doit être placée après l'incrémentation",
+        "La boucle devrait utiliser REPETER au lieu de TANT QUE"
+      ],
+      "correctAnswer": "L'instruction AFFICHER i doit être placée après l'incrémentation",
+      "explanation": "Le programme commence avec i = 0, puis teste i < 5 (vrai). Il affiche 0 avant d'incrémenter, donc le premier nombre affiché est 0 au lieu de 1. Pour afficher 1 à 5, il faut d'abord incrémenter i (i <- i + 1) puis afficher i. Les autres options ne corrigent pas ce décalage : l'initialisation est correcte, la condition i < 5 est adaptée si l'affichage suit l'incrémentation, et le type de boucle n'est pas la cause du problème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit le programme suivant pour calculer la somme des entiers de 1 à 10.\\n\\nDEBUT\\n  somme <- 0\\n  POUR k DE 1 A 10 FAIRE\\n    somme <- somme + k\\n  FIN POUR\\n  AFFICHER somme\\nFIN\\n\\nLe programme affiche 0. Quelle en est la cause ?",
+      "options": [
+        "La variable somme n'est pas déclarée",
+        "L'instruction AFFICHER somme se trouve avant la boucle",
+        "La boucle POUR ne s'exécute pas car la borne supérieure est exclusive",
+        "L'incrémentation de k est manquante dans la boucle"
+      ],
+      "correctAnswer": "L'instruction AFFICHER somme se trouve avant la boucle",
+      "explanation": "Dans le code présenté, l'affichage est écrit après la boucle, donc ce n'est pas la cause. Cependant, si l'élève a placé AFFICHER somme avant FIN POUR (c'est-à-dire à l'intérieur de la boucle mais avant l'addition), la variable somme vaudrait encore 0 au moment de l'affichage. Les autres options sont fausses : la variable est initialisée, la boucle POUR en pseudo‑code inclusif exécute bien 10 itérations, et l'incrémentation de k est implicite dans la structure POUR.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme ci‑dessous doit afficher \"Pair\" si le nombre saisi est pair, sinon \"Impair\".\\n\\nDEBUT\\n  LIRE n\\n  SI n % 2 = 0 ALORS\\n    AFFICHER \"Impair\"\\n  SINON\\n    AFFICHER \"Pair\"\\n  FIN SI\\nFIN\\n\\nQuelle correction faut‑il apporter ?",
+      "options": [
+        "Échanger les deux messages AFFICHER",
+        "Remplacer = par <> dans la condition",
+        "Ajouter une instruction LIRE n avant le SI",
+        "Changer n % 2 = 0 en n / 2 = 0"
+      ],
+      "correctAnswer": "Échanger les deux messages AFFICHER",
+      "explanation": "La condition n % 2 = 0 est vraie exactement pour les nombres pairs. Le programme affiche actuellement \"Impair\" dans ce cas et \"Pair\" dans le cas contraire, ce qui est l'inverse du comportement attendu. Il suffit d'inverser les deux instructions AFFICHER. Les autres propositions ne corrigent pas l'erreur logique : l'opérateur = est correct pour tester l'égalité, la lecture de n est déjà présente, et n / 2 = 0 ne teste pas la parité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme doit demander un nombre tant que l'utilisateur n'entre pas un entier positif. Voici la version buggée :\\n\\nDEBUT\\n  REPETER\\n    LIRE x\\n  JUSQU'A x > 0\\nFIN\\n\\nPourquoi cette boucle peut‑elle devenir infinie ?",
+      "options": [
+        "La condition JUSQU'A x > 0 est évaluée avant la première lecture",
+        "Si l'utilisateur entre un nombre négatif, la condition reste fausse et la boucle continue",
+        "La variable x n'est pas initialisée avant la boucle",
+        "L'instruction LIRE x ne met pas à jour la variable x"
+      ],
+      "correctAnswer": "Si l'utilisateur entre un nombre négatif, la condition reste fausse et la boucle continue",
+      "explanation": "La structure REPETER … JUSQU'A exécute le bloc au moins une fois, puis teste la condition. Tant que x n'est pas strictement positif (x > 0), la condition est fausse et la boucle repart, ce qui est le comportement normal. Le problème survient si l'utilisateur ne saisit jamais de nombre positif : la boucle ne s'arrête jamais, c'est-à-dire qu'elle devient infinie. Les autres options sont incorrectes : la condition est évaluée après la lecture, x reçoit une valeur à chaque LIRE, et l'initialisation préalable n'est pas nécessaire car la première lecture donne une valeur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme suivant doit afficher les carrés des entiers de 1 à 5.\\n\\nDEBUT\\n  POUR i DE 1 A 5 FAIRE\\n    carre <- i * i\\n  FIN POUR\\n  AFFICHER carre\\nFIN\\n\\nQuel est le défaut principal ?",
+      "options": [
+        "La variable carre n'est pas initialisée avant la boucle",
+        "L'instruction AFFICHER carre doit être à l'intérieur de la boucle",
+        "La boucle devrait utiliser TANT QUE au lieu de POUR",
+        "L'opérateur * n'est pas défini pour les entiers"
+      ],
+      "correctAnswer": "L'instruction AFFICHER carre doit être à l'intérieur de la boucle",
+      "explanation": "Avec la version actuelle, la boucle calcule successivement les carrés mais n'affiche que la dernière valeur (25) après la fin de la boucle. Pour voir tous les carrés (1, 4, 9, 16, 25), il faut placer AFFICHER carre à l'intérieur de la boucle, juste après le calcul. L'initialisation de carre n'est pas nécessaire car elle reçoit une valeur à chaque itération, le type de boucle POUR est approprié, et la multiplication * fonctionne normalement sur les entiers.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 204,
+  "_course_code": "ce2-t07-c09-bilan-geometrie-ce2",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître, décrire, construire",
+  "title": "Quiz : Reconnaître, décrire, construire (CE2)",
+  "questions": [
+    {
+      "text": "Parmi ces figures, laquelle est un carré ?",
+      "options": [
+        "Un rectangle",
+        "Un losange",
+        "Un carré",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Un carré est un quadrilatère qui a $4$ côtés de même longueur et $4$ angles droits. Le rectangle a $4$ angles droits mais pas forcément $4$ côtés égaux. Le losange a $4$ côtés égaux mais pas forcément d'angles droits. Le triangle n'a que $3$ côtés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de côtés, de sommets et d'angles droits a un rectangle ?",
+      "options": [
+        "$4$ côtés, $4$ sommets, $4$ angles droits",
+        "$3$ côtés, $3$ sommets, $0$ angle droit",
+        "$4$ côtés, $4$ sommets, $0$ angle droit",
+        "$5$ côtés, $5$ sommets, $5$ angles droits"
+      ],
+      "correctAnswer": "$4$ côtés, $4$ sommets, $4$ angles droits",
+      "explanation": "Par définition, un rectangle est un quadrilatère : il a donc $4$ côtés et $4$ sommets. Sa propriété principale est d'avoir $4$ angles droits. Les autres options correspondent au triangle, au losange ou au pentagone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment appelle-t-on le segment qui relie deux sommets opposés d'un quadrilatère ?",
+      "options": [
+        "Un côté",
+        "Une diagonale",
+        "Une médiane",
+        "Une hauteur"
+      ],
+      "correctAnswer": "Une diagonale",
+      "explanation": "Une diagonale relie deux sommets non consécutifs (opposés) d'un polygone. Un côté relie deux sommets consécutifs. La médiane et la hauteur sont des notions liées au triangle (médiane : milieu du côté au sommet opposé ; hauteur : perpendiculaire d'un sommet au côté opposé).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tracer un carré de côté $5$ cm, quels instruments sont indispensables ?",
+      "options": [
+        "Une règle et un compas",
+        "Une règle et une équerre",
+        "Un compas et une équerre",
+        "Une règle seulement"
+      ],
+      "correctAnswer": "Une règle et une équerre",
+      "explanation": "Pour construire un carré, il faut tracer des segments de longueur donnée (règle pour mesurer $5$ cm) et des angles droits (équerre pour garantir les $90^\\circ$). Le compas n'est pas nécessaire pour cette construction simple. La règle seule ne permet pas de tracer des angles droits précis.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 5,
+        "unit": "cm",
+        "caption": "Mesure d'un côté de 5 cm"
+      }
+    },
+    {
+      "text": "Une figure a $4$ côtés de même longueur. Ses angles ne sont pas tous droits. De quelle figure s'agit-il ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un losange",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un losange",
+      "explanation": "Le losange est défini comme un quadrilatère ayant $4$ côtés de même longueur, sans condition sur les angles (ils ne sont pas nécessairement droits). Le carré a aussi $4$ côtés égaux mais ses angles sont tous droits. Le rectangle a des angles droits mais pas $4$ côtés égaux. Le triangle n'a que $3$ côtés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

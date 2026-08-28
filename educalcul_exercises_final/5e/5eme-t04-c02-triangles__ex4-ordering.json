@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 396,
+  "_course_code": "5eme-t04-c02-triangles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Application : Triangles",
+  "title": "Applications des triangles - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Construction d'un triangle (SSS)",
+      "content": "Range les étapes dans l'ordre correct pour construire un triangle connaissant les trois longueurs de ses côtés à la règle et au compas.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer un segment AB de longueur égale au premier côté.",
+        "Avec le centre A, tracer un arc de cercle de rayon égal au deuxième côté.",
+        "Avec le centre B, tracer un arc de cercle de rayon égal au troisième côté.",
+        "L'intersection des deux arcs donne le point C.",
+        "Tracer les segments AC et BC pour obtenir le triangle ABC."
+      ],
+      "explanation": "La construction SSS suit l'ordre : on trace d'abord un côté, puis on repère le troisième sommet par l'intersection de deux arcs de cercles centrés aux extrémités du premier côté et de rayons égaux aux deux autres côtés, enfin on relie ce sommet aux extrémités du premier côté.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des angles d'un triangle",
+      "content": "Un triangle a des côtés de longueurs $5$ cm, $7$ cm et $9$ cm. Range les angles intérieurs du plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Angle opposé au côté de $5$ cm",
+        "Angle opposé au côté de $7$ cm",
+        "Angle opposé au côté de $9$ cm"
+      ],
+      "explanation": "Dans tout triangle, le plus grand angle est opposé au plus grand côté, et le plus petit angle est opposé au plus petit côté. Ici $5 < 7 < 9$, donc l'ordre des angles suit le même ordre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classification des triangles selon les côtés égaux",
+      "content": "Range les trois types de triangles du nombre de côtés égaux le plus petit au plus grand.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Triangle scalène",
+        "Triangle isocèle",
+        "Triangle équilatéral"
+      ],
+      "explanation": "Un triangle scalène n'a aucun côté égal, un triangle isocèle en a deux égaux, un triangle équilatéral en a trois égaux. L'ordre croissant du nombre de côtés égaux est donc scalène, isocèle, équilatéral.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Application : Symétrie axiale",
+  "title": "Quiz : Applications de la symétrie axiale",
+  "questions": [
+    {
+      "text": "On a tracé un segment $[AB]$ et son symétrique $[A'B']$ par rapport à une droite $d$. La droite $d$ est le milieu du segment $[AA']$. Que peut-on affirmer sur la droite $d$ et le segment $[AA']$ ?",
+      "options": [
+        "La droite $d$ est parallèle au segment $[AA']$.",
+        "La droite $d$ est perpendiculaire au segment $[AA']$ et passe par son milieu.",
+        "La droite $d$ coupe le segment $[AA']$ sans être perpendiculaire.",
+        "La droite $d$ ne coupe pas le segment $[AA']$."
+      ],
+      "correctAnswer": "La droite $d$ est perpendiculaire au segment $[AA']$ et passe par son milieu.",
+      "explanation": "Par définition de la symétrie axiale, l'axe de symétrie est la médiatrice du segment qui joint un point à son image. La médiatrice est perpendiculaire au segment et passe par son milieu. Les autres propositions contredisent cette propriété fondamentale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle $ABC$ est symétrique d'un triangle $A'B'C'$ par rapport à une droite $d$. On sait que $AB = 6$ cm, $BC = 8$ cm et $AC = 10$ cm. Quelles sont les longueurs des côtés du triangle $A'B'C'$ ?",
+      "options": [
+        "$A'B' = 3$ cm, $B'C' = 4$ cm, $A'C' = 5$ cm",
+        "$A'B' = 12$ cm, $B'C' = 16$ cm, $A'C' = 20$ cm",
+        "$A'B' = 6$ cm, $B'C' = 8$ cm, $A'C' = 10$ cm",
+        "On ne peut pas le savoir sans connaître la position de la droite $d$."
+      ],
+      "correctAnswer": "$A'B' = 6$ cm, $B'C' = 8$ cm, $A'C' = 10$ cm",
+      "explanation": "La symétrie axiale conserve les longueurs, les angles et les aires. Le triangle image est superposable au triangle initial. Les longueurs des côtés correspondants sont donc égales. Les deux premières options correspondent à un agrandissement ou une réduction (homothétie), ce qui n'est pas une symétrie axiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une figure, un point $M$ est situé sur l'axe de symétrie $d$. On construit le point $M'$, symétrique de $M$ par rapport à $d$. Où se trouve le point $M'$ ?",
+      "options": [
+        "Le point $M'$ est de l'autre côté de la droite $d$, à la même distance que $M$.",
+        "Le point $M'$ est confondu avec le point $M$.",
+        "Le point $M'$ est n'importe où sur la droite $d$.",
+        "Il est impossible de construire le symétrique d'un point qui est sur l'axe."
+      ],
+      "correctAnswer": "Le point $M'$ est confondu avec le point $M$.",
+      "explanation": "Les points appartenant à l'axe de symétrie sont des points fixes : leur symétrique est eux-mêmes. C'est une propriété essentielle de la symétrie axiale. Si $M$ est sur $d$, alors $M' = M$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un angle $\\widehat{XOY}$ de $40^{\\circ}$. On trace son symétrique par rapport à la droite $(OY)$. Quelle est la mesure de l'angle symétrique ?",
+      "options": [
+        "$20^{\\circ}$",
+        "$40^{\\circ}$",
+        "$80^{\\circ}$",
+        "$140^{\\circ}$"
+      ],
+      "correctAnswer": "$40^{\\circ}$",
+      "explanation": "La symétrie axiale conserve les mesures d'angles. L'image de l'angle $\\widehat{XOY}$ est un angle de même mesure, soit $40^{\\circ}$. Les autres valeurs correspondent à une division par deux, un doublement ou un angle supplémentaire, ce qui sont des erreurs fréquentes de confusion avec d'autres transformations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique d'un cercle de centre $O$ et de rayon $3$ cm par rapport à une droite $d$, quelle est la méthode correcte ?",
+      "options": [
+        "On trace le symétrique du centre $O$ (noté $O'$) et on trace un cercle de centre $O'$ et de rayon $3$ cm.",
+        "On trace le symétrique du centre $O$ (noté $O'$) et on trace un cercle de centre $O'$ et de rayon $6$ cm.",
+        "On garde le même centre $O$ et on change le rayon à $6$ cm.",
+        "On trace le symétrique de trois points du cercle et on relie ces points."
+      ],
+      "correctAnswer": "On trace le symétrique du centre $O$ (noté $O'$) et on trace un cercle de centre $O'$ et de rayon $3$ cm.",
+      "explanation": "Le symétrique d'un cercle est un cercle de même rayon (conservation des longueurs). Il suffit de construire le symétrique du centre $O$ pour obtenir le centre $O'$ du cercle image, et de conserver le rayon initial ($3$ cm). L'option 2 double le rayon à tort. L'option 3 ne fait pas de symétrie. L'option 4 est une méthode approximative (par points) alors que la construction du centre est exacte et standard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

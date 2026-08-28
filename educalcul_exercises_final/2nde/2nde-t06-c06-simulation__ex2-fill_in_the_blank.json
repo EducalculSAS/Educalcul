@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Fréquence",
+  "title": "Exercices sur la fréquence",
+  "blocks": [
+    {
+      "title": "Définition de la fréquence",
+      "content": "La fréquence d'un événement est le quotient du {{1}} sur le {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "nombre de fois où l'événement se produit",
+        "nombre total d'essais"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fréquence se calcule en divisant le nombre de fois où l'événement s'est produit par le nombre total d'essais effectués.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de fréquence à partir d'une simulation",
+      "content": "Dans une simulation de $200$ lancers d'un dé équilibré, le visage $6$ est apparu $38$ fois. La fréquence d'apparition du $6$ est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "38/200|0,19|19%"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fréquence est le rapport entre le nombre d'apparitions du 6 ($38$) et le nombre total de lancers ($200$), soit $38/200 = 0,19$, ce qui correspond à 19%.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lien entre fréquence et probabilité",
+      "content": "Si la fréquence d'un événement tend vers $0,3$ lorsque le nombre d'essais augmente, on conjecture que la probabilité de cet événement est environ {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "0,3|3/10|30%"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la loi des grands nombres, la fréquence se stabilise autour de la probabilité théorique ; une fréquence proche de $0,3$ suggère une probabilité d'environ $0,3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

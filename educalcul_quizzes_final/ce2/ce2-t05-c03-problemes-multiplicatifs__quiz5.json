@@ -1,0 +1,157 @@
+{
+  "_status": "done",
+  "_course_id": 180,
+  "_course_code": "ce2-t05-c03-problemes-multiplicatifs",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Groupes égaux",
+  "title": "Quiz : Groupes égaux - Approfondissement CE2",
+  "questions": [
+    {
+      "text": "Il y a $6$ boîtes de crayons. Dans chaque boîte, il y a $8$ crayons. Combien y a-t-il de crayons en tout ?",
+      "options": [
+        "$42$",
+        "$48$",
+        "$54$",
+        "$56$"
+      ],
+      "correctAnswer": "$48$",
+      "explanation": "Il faut trouver le total en multipliant le nombre de groupes ($6$ boîtes) par le nombre d'éléments dans chaque groupe ($8$ crayons). Le calcul est $6 \\times 8 = 48$. Les autres résultats correspondent à des erreurs de tables de multiplication ($6 \\times 7 = 42$, $6 \\times 9 = 54$, $7 \\times 8 = 56$).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 8,
+        "highlighted": 48,
+        "caption": "6 rangées de 8 cases représentent les 6 boîtes de 8 crayons."
+      }
+    },
+    {
+      "text": "Le maître a $45$ cahiers. Il veut les ranger en paquets de $5$ cahiers. Combien de paquets pourra-t-il faire ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "C'est un problème de groupement (division) : on connait le total ($45$) et la taille de chaque groupe ($5$), on cherche le nombre de groupes. Il faut calculer $45 \\div 5 = 9$. On peut aussi chercher par quel nombre on multiplie $5$ pour obtenir $45$ : $5 \\times 9 = 45$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Paquet 1",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Paquet 2",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Paquet 3",
+            "value": 5,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Le total 45 est divisé en groupes de 5. Il y a 9 groupes au total."
+      }
+    },
+    {
+      "text": "Julie a $56$ billes. Elle les partage équitablement entre $8$ copains. Combien de billes chaque copain reçoit-il ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "C'est un problème de partage (division) : on connait le total ($56$) et le nombre de groupes ($8$ copains), on cherche la taille de chaque groupe. Le calcul est $56 \\div 8 = 7$. Vérification : $8 \\times 7 = 56$. L'erreur $6$ viendrait de $48 \\div 8$, l'erreur $8$ de $64 \\div 8$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Copain 1",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Copain 2",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Copain 3",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Copain 4",
+            "value": 7,
+            "tone": "green"
+          }
+        ],
+        "caption": "Les 56 billes sont divisées en 8 parts égales de 7."
+      }
+    },
+    {
+      "text": "Dans la cour, il y a $4$ bancs. Sur chaque banc, $6$ enfants sont assis. Puis $3$ enfants partent. Combien d'enfants restent assis sur les bancs ?",
+      "options": [
+        "$18$",
+        "$21$",
+        "$24$",
+        "$27$"
+      ],
+      "correctAnswer": "$21$",
+      "explanation": "C'est un problème à deux étapes. 1. Calculer le total d'enfants au départ : $4 \\times 6 = 24$ enfants. 2. Soustraire les enfants qui partent : $24 - 3 = 21$ enfants. L'option $24$ correspond à l'oubli de la soustraction. L'option $18$ correspond à $4 \\times 6 - 6$ (erreur sur le nombre qui part). L'option $27$ correspond à une addition au lieu d'une soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul a $28$ cartes. Il en a $4$ fois plus que Luc. Combien de cartes Luc a-t-il ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "C'est une comparaison multiplicative. La quantité de Paul ($28$) est $4$ fois la quantité de Luc. Pour trouver la quantité de Luc, on divise la quantité de Paul par $4$ : $28 \\div 4 = 7$. Luc a $7$ cartes. Vérification : $7 \\times 4 = 28$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Luc",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Paul (1)",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Paul (2)",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Paul (3)",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Paul (4)",
+            "value": 7,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Paul a 4 parts égales à celle de Luc. Total Paul : 28."
+      }
+    }
+  ]
+}

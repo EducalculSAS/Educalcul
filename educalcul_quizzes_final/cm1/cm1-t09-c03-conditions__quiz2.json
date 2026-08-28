@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 271,
+  "_course_code": "cm1-t09-c03-conditions",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester une situation",
+  "title": "Tester une situation en informatique",
+  "questions": [
+    {
+      "text": "En informatique, qu'est-ce qu'une condition pour tester une situation ?",
+      "options": [
+        "Un calcul pour trouver la somme de deux nombres",
+        "Une question dont la réponse est soit vrai, soit faux",
+        "Une instruction pour répéter une action dix fois",
+        "Le nom donné à un robot"
+      ],
+      "correctAnswer": "Une question dont la réponse est soit vrai, soit faux",
+      "explanation": "Une condition est un test logique. Le programme vérifie si une situation est vraie ou fausse pour décider quelle action effectuer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on veut tester si un nombre $n$ est plus grand que $10$, quel symbole de comparaison doit on utiliser ?",
+      "options": [
+        "$=$",
+        "$\\text{et}$",
+        "$>$",
+        "$\\text{si}$"
+      ],
+      "correctAnswer": "$>$",
+      "explanation": "Le symbole $>$ signifie strictement supérieur. On l'utilise pour tester si une valeur est plus grande qu'une autre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde l'heure sur l'horloge. Si la condition est SI l'heure est exactement $3$ heures $30$ minutes ALORS le robot sonne, que fait le robot ?",
+      "options": [
+        "Le robot ne sonne pas",
+        "Le robot sonne",
+        "Le robot s'éteint",
+        "Le robot avance d'une heure"
+      ],
+      "correctAnswer": "Le robot sonne",
+      "explanation": "L'horloge indique $3$ heures $30$ minutes. La condition est donc vraie,Therefore le robot exécute l'action de sonner.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 30,
+        "caption": "Heure actuelle",
+        "interactive": false
+      }
+    },
+    {
+      "text": "On a l'instruction suivante : SI le nombre de billes est inférieur à $5$ ALORS on en ajoute une. Si on a $4$ billes, combien en a-t-on après l'instruction ?",
+      "options": [
+        "quatre billes",
+        "cinq billes",
+        "six billes",
+        "zéro bille"
+      ],
+      "correctAnswer": "cinq billes",
+      "explanation": "Le test est : est-ce que $4 < 5$ ? Oui, c'est vrai. On exécute donc l'action d'ajouter une bille : $4 + 1 = 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un bloc SI... SINON..., quand l'ordinateur exécute-t-il l'instruction placée après le SINON ?",
+      "options": [
+        "Quand la condition du SI est vraie",
+        "Quand la condition du SI est fausse",
+        "Toujours, peu importe la condition",
+        "Jamais, le SINON ne sert à rien"
+      ],
+      "correctAnswer": "Quand la condition du SI est fausse",
+      "explanation": "Le bloc SINON permet de définir une action alternative. Si le test initial est faux, le programme saute l'action du SI et fait l'action du SINON.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

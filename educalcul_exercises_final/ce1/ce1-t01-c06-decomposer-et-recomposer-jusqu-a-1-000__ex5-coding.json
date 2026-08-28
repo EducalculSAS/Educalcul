@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 73,
+  "_course_code": "ce1-t01-c06-decomposer-et-recomposer-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Décomposition additive",
+  "title": "Algorithmes de décomposition et recomposition additive",
+  "blocks": [
+    {
+      "title": "Décomposer en centaines, dizaines, unités",
+      "content": "Écris un algorithme (une suite d'instructions claires) qui permet de décomposer un nombre entier $N$ (compris entre $100$ et $999$) en centaines, dizaines et unités. L'algorithme doit afficher le nombre d'entiers de centaines, le nombre d'entiers de dizaines et le nombre d'unités.",
+      "correctAnswer": "Algorithme :\\n1. Demander le nombre $N$.\\n2. Calculer $H = N // 100$ (quotient de la division par 100).\\n3. Calculer $R = N % 100$ (reste de la division par 100).\\n4. Calculer $D = R // 10$ (quotient de la division de $R$ par 10).\\n5. Calculer $U = R % 10$ (reste de la division de $R$ par 10).\\n6. Afficher \"Centaines :\", $H$.\\n7. Afficher \"Dizaines :\", $D$.\\n8. Afficher \"Unités :\", $U$.\\nFin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour décomposer un nombre en centaines, dizaines et unités, on utilise les divisions successives par 100 puis par 10. Le quotient de la division par 100 donne le chiffre des centaines. Le reste de cette division est un nombre à deux chiffres (ou moins) que l'on divise par 10 : le quotient donne le chiffre des dizaines et le reste final donne le chiffre des unités. C'est la méthode algorithmique standard pour extraire les chiffres d'un nombre en base 10.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recomposer le nombre à partir de ses parties",
+      "content": "Écris un algorithme qui prend en entrée trois nombres entiers $H$ (centaines), $D$ (dizaines) et $U$ (unités) et qui calcule et affiche le nombre entier $N$ correspondant. On suppose que $H$ est entre $1$ et $9$, $D$ et $U$ sont entre $0$ et $9$.",
+      "correctAnswer": "Algorithme :\\n1. Demander $H$ (nombre de centaines).\\n2. Demander $D$ (nombre de dizaines).\\n3. Demander $U$ (nombre d'unités).\\n4. Calculer $N = H \\times 100 + D \\times 10 + U$.\\n5. Afficher \"Le nombre est :\", $N$.\\nFin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La recomposition additive est l'opération inverse de la décomposition. Chaque centaine vaut 100, chaque dizaine vaut 10, chaque unité vaut 1. On multiplie donc le nombre de centaines par 100, le nombre de dizaines par 10, on ajoute le nombre d'unités, et on somme le tout pour retrouver le nombre initial. C'est l'écriture chiffrée du nombre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver deux décompositions additives différentes",
+      "content": "Écris un algorithme qui, pour un nombre entier $N$ donné (entre $100$ et $999$), trouve et affiche deux décompositions additives différentes de $N$ sous la forme $N = A + B$ avec $A > 0$ et $B > 0$. Par exemple, pour $N=345$, on peut afficher $345 = 300 + 45$ et $345 = 200 + 145$.",
+      "correctAnswer": "Algorithme :\\n1. Demander le nombre $N$.\\n2. Décomposition 1 (canonique) :\\n   - Calculer $H = N // 100$.\\n   - Calculer $R = N % 100$.\\n   - Poser $A_1 = H \\times 100$.\\n   - Poser $B_1 = R$.\\n   - Afficher $N = A_1 + B_1$.\\n3. Décomposition 2 (échange d'une centaine) :\\n   - Si $H > 0$ alors :\\n       - Poser $A_2 = (H - 1) \\times 100$.\\n       - Poser $B_2 = 100 + R$.\\n       - Afficher $N = A_2 + B_2$.\\n   - Sinon (si $N < 100$, cas non prévu ici car $N\\ge100$) :\\n       - Poser $A_2 = N - 1$.\\n       - Poser $B_2 = 1$.\\n       - Afficher $N = A_2 + B_2$.\\nFin.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre admet une infinité de décompositions additives $N = A + B$. L'algorithme propose une méthode systématique pour en trouver deux distinctes. La première utilise la décomposition canonique (centaines + reste). La seconde « casse » une centaine (si possible) pour la déplacer dans le second terme : on retire 100 au premier terme et on l'ajoute au second. Cela garantit deux décompositions différentes tant que le nombre a au moins une centaine (ce qui est le cas ici car $N \\ge 100$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

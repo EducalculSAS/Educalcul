@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 386,
+  "_course_code": "5eme-t02-c03-nombres-rationnels",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Écritures fractionnaires",
+  "title": "Écritures fractionnaires : égalité, simplification et conversions",
+  "questions": [
+    {
+      "text": "Laquelle des fractions suivantes est égale à $\\frac{3}{5}$ ?",
+      "options": [
+        "$\\frac{6}{10}$",
+        "$\\frac{9}{10}$",
+        "$\\frac{3}{15}$",
+        "$\\frac{5}{3}$"
+      ],
+      "correctAnswer": "$\\frac{6}{10}$",
+      "explanation": "Deux fractions sont égales si on a multiplié (ou divisé) le numérateur et le dénominateur par le même nombre non nul. Pour passer de $\\frac{3}{5}$ à $\\frac{6}{10}$, on a multiplié le numérateur et le dénominateur par $2$. Les autres propositions sont fausses : $\\frac{9}{10}$ correspond à une multiplication par $3$ au numérateur seulement, $\\frac{3}{15}$ divise le dénominateur par $5$ sans toucher au numérateur, et $\\frac{5}{3}$ est l'inverse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne la fraction $\\frac{24}{36}$. Quelle est son écriture sous forme irréductible ?",
+      "options": [
+        "$\\frac{12}{18}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{4}{6}$",
+        "$\\frac{8}{12}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Pour simplifier une fraction, il faut diviser le numérateur et le dénominateur par leur PGCD. Le PGCD de $24$ et $36$ est $12$. On a $\\frac{24 \\div 12}{36 \\div 12} = \\frac{2}{3}$. Les fractions $\\frac{12}{18}$, $\\frac{4}{6}$ et $\\frac{8}{12}$ sont égales à $\\frac{24}{36}$ mais ne sont pas irréductibles car on peut encore les simplifier (par $6$, $2$ et $4$ respectivement).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'écriture fractionnaire irréductible du nombre décimal $0,375$ ?",
+      "options": [
+        "$\\frac{375}{1000}$",
+        "$\\frac{75}{200}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{15}{40}$"
+      ],
+      "correctAnswer": "$\\frac{3}{8}$",
+      "explanation": "Le nombre $0,375$ a trois chiffres après la virgule, il s'écrit d'abord $\\frac{375}{1000}$. Pour l'irréduire, on divise par $25$ (ou on simplifie par $5$ trois fois) : $\\frac{375 \\div 125}{1000 \\div 125} = \\frac{3}{8}$. Les autres fractions proposées sont égales à $0,375$ mais ne sont pas irréductibles ($\\frac{375}{1000}$ se simplifie par $125$, $\\frac{75}{200}$ par $25$, $\\frac{15}{40}$ par $5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare les fractions $\\frac{5}{6}$ et $\\frac{7}{8}$. Quelle affirmation est exacte ?",
+      "options": [
+        "$\\frac{5}{6} > \\frac{7}{8}$",
+        "$\\frac{5}{6} < \\frac{7}{8}$",
+        "$\\frac{5}{6} = \\frac{7}{8}$",
+        "On ne peut pas les comparer car les dénominateurs sont différents"
+      ],
+      "correctAnswer": "$\\frac{5}{6} < \\frac{7}{8}$",
+      "explanation": "Pour comparer, on les met au même dénominateur. Le PPCM de $6$ et $8$ est $24$. $\\frac{5}{6} = \\frac{5 \\times 4}{6 \\times 4} = \\frac{20}{24}$ et $\\frac{7}{8} = \\frac{7 \\times 3}{8 \\times 3} = \\frac{21}{24}$. Comme $20 < 21$, on a $\\frac{20}{24} < \\frac{21}{24}$, donc $\\frac{5}{6} < \\frac{7}{8}$. On peut toujours comparer deux fractions en les ramenant au même dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur de $12$ cm et une largeur de $8$ cm. Quelle fraction irréductible représente le rapport de la largeur sur la longueur ?",
+      "options": [
+        "$\\frac{8}{12}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{4}{6}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Le rapport de la largeur sur la longueur s'écrit $\\frac{\\text{largeur}}{\\text{longueur}} = \\frac{8}{12}$. Pour obtenir la forme irréductible, on simplifie par le PGCD de $8$ et $12$, qui est $4$ : $\\frac{8 \\div 4}{12 \\div 4} = \\frac{2}{3}$. La fraction $\\frac{8}{12}$ n'est pas irréductible, $\\frac{4}{6}$ non plus (simplifiable par $2$), et $\\frac{3}{2}$ est l'inverse (longueur sur largeur).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Checklist",
+  "title": "Quiz - Checklist algorithmique",
+  "questions": [
+    {
+      "text": "Avant d'écrire un algorithme, à quoi sert principalement une checklist de spécification ?",
+      "options": [
+        "Vérifier la syntaxe du langage de programmation choisi",
+        "Définir précisément les entrées, les sorties et le traitement attendu",
+        "Optimiser la complexité en temps et en mémoire",
+        "Rédiger la documentation utilisateur finale"
+      ],
+      "correctAnswer": "Définir précisément les entrées, les sorties et le traitement attendu",
+      "explanation": "La checklist de spécification (ou cahier des charges) sert à formaliser le problème : quelles sont les données d'entrée (type, domaine), quelle est la sortie attendue et quel traitement les relie. La syntaxe concerne le codage, l'optimisation vient après un premier algorithme correct, et la documentation utilisateur est une étape ultérieure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un algorithme calcule la racine carrée d'un nombre réel $x$. Quelle est la pré-condition nécessaire sur $x$ ?",
+      "options": [
+        "$x > 0$",
+        "$x \\ge 0$",
+        "$x < 0$",
+        "$x \\neq 0$"
+      ],
+      "correctAnswer": "$x \\ge 0$",
+      "explanation": "La racine carrée d'un nombre réel n'est définie que pour les nombres positifs ou nuls. La pré-condition doit donc être $x \\ge 0$. L'option $x > 0$ exclut zéro qui a bien une racine (zéro). Les options $x < 0$ et $x \\neq 0$ incluent des valeurs négatives pour lesquelles l'algorithme ne peut pas fonctionner dans $\\mathbb{R}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la boucle :\\n$\\texttt{somme \\leftarrow 0}$\\n$\\texttt{Pour } i \\texttt{ de } 1 \\texttt{ à } n \\texttt{ faire}$\\n$\\qquad \\texttt{somme \\leftarrow somme + i}$\\n$\\texttt{Fin pour}$\\nQuel est l'invariant de boucle au début de l'itération $k$ (pour $1 \\le k \\le n+1$) ?",
+      "options": [
+        "$\\texttt{somme} = k$",
+        "$\\texttt{somme} = \\frac{k(k+1)}{2}$",
+        "$\\texttt{somme} = 1 + 2 + \\dots + (k-1)$",
+        "$\\texttt{somme} = \\frac{n(n+1)}{2}$"
+      ],
+      "correctAnswer": "$\\texttt{somme} = 1 + 2 + \\dots + (k-1)$",
+      "explanation": "Au début de l'itération $k$, la variable $i$ a déjà pris les valeurs $1, 2, \\dots, k-1$. La variable $\\texttt{somme}$ contient donc la somme des entiers de $1$ à $k-1$. L'option $\\frac{k(k+1)}{2}$ correspond à la somme jusqu'à $k$ (fin de l'itération $k$). L'option $\\frac{n(n+1)}{2}$ est la valeur finale après la boucle. L'option $\\texttt{somme}=k$ est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tester une fonction $\\texttt{maximum}(a, b)$ qui renvoie le plus grand de deux entiers, quel couple de valeurs correspond à un test de valeur limite (cas frontière) ?",
+      "options": [
+        "$(5, 10)$",
+        "$(-3, -3)$",
+        "$(0, 1)$",
+        "$(100, 200)$"
+      ],
+      "correctAnswer": "$(-3, -3)$",
+      "explanation": "Un test de valeur limite (ou cas frontière) vise à vérifier le comportement du programme dans des situations particulières : valeurs égales, zéro, valeurs maximales/minimales du type. Le couple $(-3, -3)$ teste le cas d'égalité (frontière entre $a > b$ et $a < b$) avec des nombres négatifs. Les autres couples sont des cas nominaux standards ($a < b$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec $x = 5$ :\\n$\\texttt{TantQue } x > 0 \\texttt{ Faire}$\\n$\\qquad x \\leftarrow x - 2$\\n$\\texttt{Fin TantQue}$\\nQuelle est la valeur finale de $x$ ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$-1$",
+        "$2$"
+      ],
+      "correctAnswer": "$-1$",
+      "explanation": "On trace la boucle :\\nDébut : $x = 5$.\\n1er tour : $5 > 0$ vrai, $x$ devient $3$.\\n2e tour : $3 > 0$ vrai, $x$ devient $1$.\\n3e tour : $1 > 0$ vrai, $x$ devient $-1$.\\n4e tour : $-1 > 0$ faux, sortie de boucle.\\nLa valeur finale est $-1$. L'erreur fréquente est de croire que la boucle s'arrête quand $x$ atteint $0$ ou $1$, or la condition est testée au début de chaque itération.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

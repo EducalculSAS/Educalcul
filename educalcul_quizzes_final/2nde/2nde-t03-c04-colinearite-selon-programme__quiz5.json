@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Quiz : Colinéarité - Reconnaître",
+  "questions": [
+    {
+      "text": "Les vecteurs $u = (2, 3)$ et $v = (4, 6)$ sont-ils colinéaires ?",
+      "options": [
+        "Oui, car $v = 2u$",
+        "Non, car les composantes ne sont pas proportionnelles",
+        "Oui, car le déterminant est non nul",
+        "Non, car ils ont même direction mais sens opposé"
+      ],
+      "correctAnswer": "Oui, car $v = 2u$",
+      "explanation": "Deux vecteurs sont colinéaires s'il existe un scalaire $k$ tel que $v = k u$. Ici $v = (4, 6) = 2 \\times (2, 3) = 2u$, donc ils sont colinéaires. Le déterminant $2 \\times 6 - 4 \\times 3 = 12 - 12 = 0$ confirme la colinéarité. Les autres propositions sont fausses : les composantes sont proportionnelles, le déterminant est nul (pas non nul), et les vecteurs ont même direction et même sens.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $A(1,2)$, $B(3,4)$ et $C(5,6)$ sont-ils alignés ?",
+      "options": [
+        "Les points sont alignés car les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires",
+        "Les points ne sont pas alignés car les coordonnées ne sont pas proportionnelles",
+        "Les points sont alignés car le déterminant de $(\\overrightarrow{AB}, \\overrightarrow{AC})$ est $1$",
+        "Les points sont alignés car $\\overrightarrow{AB} = \\overrightarrow{AC}$"
+      ],
+      "correctAnswer": "Les points sont alignés car les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires",
+      "explanation": "$\\overrightarrow{AB} = (2,2)$ et $\\overrightarrow{AC} = (4,4) = 2 \\times (2,2)$. Ils sont colinéaires, donc $A$, $B$, $C$ sont alignés. Le déterminant $2 \\times 4 - 4 \\times 2 = 0$, pas $1$. Les vecteurs ne sont pas égaux, et les coordonnées sont proportionnelles (ratio $2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $u = (a, 2)$ et $v = (3, 6)$. Quelle valeur de $a$ rend $u$ et $v$ colinéaires ?",
+      "options": [
+        "a = 1",
+        "a = 2",
+        "a = 3",
+        "a = 0"
+      ],
+      "correctAnswer": "a = 1",
+      "explanation": "Pour que $u$ et $v$ soient colinéaires, il faut $u = k v$ ou $v = k u$. $v = (3,6) = 3 \\times (1,2)$. Donc $u$ doit être proportionnel à $(1,2)$, ce qui impose $a = 1$. Les autres valeurs donnent un déterminant non nul : $a \\times 6 - 3 \\times 2 = 6a - 6 \\neq 0$ si $a \\neq 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez le déterminant des vecteurs $u = (2, -1)$ et $v = (-4, 2)$. En déduire s'ils sont colinéaires.",
+      "options": [
+        "0",
+        "2",
+        "-2",
+        "4"
+      ],
+      "correctAnswer": "0",
+      "explanation": "Le déterminant est $x_u y_v - x_v y_u = 2 \\times 2 - (-4) \\times (-1) = 4 - 4 = 0$. Un déterminant nul signifie que les vecteurs sont colinéaires. Les autres valeurs correspondent à des erreurs de signe ou de multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, $D$ appartient à $[AB]$ et $E$ à $[AC]$ tels que $\\frac{AD}{DB} = \\frac{AE}{EC} = 2$. Les points $D$, $E$ et le milieu $M$ de $[BC]$ sont-ils alignés ?",
+      "options": [
+        "Oui, car $D$, $E$ et le milieu de $BC$ sont alignés par le théorème de Thalès",
+        "Non, car $DE$ est parallèle à $BC$ et ne passe pas par le milieu de $BC$",
+        "Oui, car le rapport est $2$",
+        "Non, car les points ne sont pas sur la même droite"
+      ],
+      "correctAnswer": "Non, car $DE$ est parallèle à $BC$ et ne passe pas par le milieu de $BC$",
+      "explanation": "D'après Thalès, comme $\\frac{AD}{DB} = \\frac{AE}{EC}$, la droite $(DE)$ est parallèle à $(BC)$. Une parallèle à $(BC)$ passant par $D$ et $E$ ne peut pas contenir le milieu $M$ de $[BC]$ (sauf cas dégénéré). Donc $D$, $E$, $M$ ne sont pas alignés. La première affirmation confond parallélisme et alignement avec le milieu. La troisième ne justifie pas l'alignement. La quatrième est vague.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

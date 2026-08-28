@@ -1,0 +1,180 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.902887+00:00",
+  "id": 456,
+  "code": "3eme-t01-c02",
+  "title": "Décomposition en facteurs premiers",
+  "description": "Cours structuré Educalcul : Décomposition en facteurs premiers.",
+  "subject": "Nombres, arithmétique, puissances et racines",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Nombres, arithmétique, puissances et racines",
+    "titre_du_cours": "Décomposition en facteurs premiers",
+    "objectif_global": "Décomposition en facteurs premiers",
+    "mini_lecons_imposees": [
+      "Décomposer.",
+      "PGCD / simplification selon programme.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Nombres, arithmétique, puissances et racines",
+      "lessons": [
+        {
+          "title": "Décomposer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as un immense ensemble de constructions en Lego. Chaque modèle complexe que tu as construit est en fait l'assemblage de petites briques de base, indivisibles. Les nombres fonctionnent exactement de la même manière en mathématiques. On peut voir chaque nombre entier comme un édifice construit à partir de briques invisibles appelées nombres premiers. Par exemple, quand tu regardes le nombre $12$, tu ne vois qu'un seul bloc, mais en réalité, il est fabriqué avec deux briques de $2$ et une brique de $3$, car $2 \\times 2 \\times 3 = 12$. Apprendre à décomposer un nombre, c'est comme devenir un expert en architecture numérique : tu apprends à démonter n'importe quel nombre pour voir quels composants fondamentaux le constituent. C'est une compétence puissante car une fois que tu as ces briques, tu peux manipuler le nombre beaucoup plus facilement pour simplifier des fractions ou calculer des racines. C'est un voyage vers l'intérieur des nombres qui nous permet de comprendre leur structure profonde et unique, car chaque nombre a sa propre signature de facteurs premiers, comme une véritable empreinte digitale mathématique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien décomposer, il faut d'abord s'accorder sur ce qu'est un nombre premier. Un nombre premier est un entier naturel qui possède exactement deux diviseurs distincts : $1$ et lui-même. Par exemple, $7$ est premier car on ne peut le diviser que par $1$ et $7$. En revanche, $6$ n'est pas premier car on peut aussi le diviser par $2$ et $3$. Attention, le nombre $1$ n'est pas considéré comme premier car il n'a qu'un seul diviseur. Les premiers nombres premiers sont $2, 3, 5, 7, 11, 13, 17, 19, 23$ et ainsi de suite. La décomposition en facteurs premiers consiste à écrire un nombre comme un produit de ces nombres premiers. Le théorème fondamental de l'arithmétique nous assure que tout nombre entier supérieur à $1$ peut être écrit de cette façon, et que cette écriture est unique, à l'ordre des facteurs près. On utilise souvent les puissances pour rendre l'écriture plus élégante. Au lieu d'écrire $2 \\times 2 \\times 2 \\times 3 \\times 5$, on écrira $2^3 \\times 3 \\times 5$. C'est une notation compacte et rigoureuse, essentielle pour les calculs de niveau $3e$."
+            },
+            {
+              "type": "display_math",
+              "latex": "60 = 2^2 \\times 3 \\times 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus fiable pour décomposer un nombre est la division successive. On procède toujours en testant les nombres premiers dans l'ordre croissant. Voici la marche à suivre détaillée :\\n\\n1. On prend le nombre à décomposer et on regarde s'il est divisible par le plus petit nombre premier, qui est $2$. Si c'est le cas, on divise et on note $2$ à côté. On recommence avec le résultat obtenu jusqu'à ce que le nombre ne soit plus divisible par $2$.\\n2. On passe ensuite au nombre premier suivant, $3$. On teste la divisibilité du dernier résultat obtenu. Si on peut diviser par $3$, on le fait et on note $3$. On continue tant que c'est possible.\\n3. On répète l'opération avec $5, 7, 11$ et ainsi de suite, en utilisant toujours le dernier quotient trouvé.\\n4. Le processus s'arrête dès que le quotient final est égal à $1$. \\n5. Pour conclure, on rassemble tous les diviseurs notés sur le côté et on les multiplie entre eux, en regroupant les facteurs identiques sous forme de puissances pour obtenir la signature finale du nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Décomposons ensemble le nombre $60$. Nous allons appliquer la méthode des divisions successives avec rigueur.\\n\\nD'abord, $60$ est pair, donc on peut le diviser par $2$. $60 = 2 \\times 30$. \\nLe résultat est $30$, qui est encore pair. On divise à nouveau par $2$. $30 = 2 \\times 15$. \\nLe résultat est maintenant $15$. $15$ est impair, donc on ne peut plus utiliser $2$. On passe au nombre premier suivant : $3$. Comme $1+5=6$ (divisible par $3$), on sait que $15$ est divisible par $3$. $15 = 3 \\times 5$. \\nLe résultat est $5$. $5$ est lui-même un nombre premier. On le divise donc par $5$. $5 = 5 \\times 1$. \\nNous avons atteint $1$, le voyage s'arrête ici. \\n\\nRécupérons nos diviseurs : nous avons utilisé deux fois $2$, une fois $3$ et une fois $5$. \\nL'écriture brute est $60 = 2 \\times 2 \\times 3 \\times 5$. \\nPour être parfaitement rigoureux en $3e$, nous utilisons les puissances : $60 = 2^2 \\times 3 \\times 5$. \\nC'est la décomposition complète et unique de $60$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un nombre un peu plus grand pour bien maîtriser l'exercice : décomposons $462$.\\n\\nCommençons par le $2$. $462$ se termine par $2$, il est donc pair. $462 = 2 \\times 231$. \\nPassons au $3$ car $231$ est impair. On vérifie la somme des chiffres : $2+3+1 = 6$. $6$ est divisible par $3$, donc $231$ l'est aussi. En effectuant la division, on trouve $231 = 3 \\times 77$. \\nMaintenant, regardons $77$. Ce n'est pas divisible par $3$ ($7+7=14$) ni par $5$ (il ne finit pas par $0$ ou $5$). Essayons le nombre premier suivant : $7$. On sait que $77 = 7 \\times 11$. \\nLe résultat est $11$. Or, $11$ est un nombre premier connu. On divise donc par $11$. $11 = 11 \\times 1$. \\nNous avons terminé la décomposition car nous sommes arrivés à $1$. \\n\\nListons les facteurs trouvés : $2, 3, 7, 11$. \\nComme chaque facteur n'apparaît qu'une seule fois, nous n'avons pas de puissances à noter ici. \\nLe résultat final est : $462 = 2 \\times 3 \\times 7 \\times 11$. \\nOn voit ici que même un nombre apparemment complexe se fragmente très vite en petites briques simples."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est de confondre nombre premier et nombre impair. Beaucoup d'élèves pensent que tous les nombres impairs sont premiers. C'est faux ! Prenons le nombre $9$ ou $15$. Ils sont impairs, mais $9$ est $3 \\times 3$ et $15$ est $3 \\times 5$. Ils ne sont donc pas premiers. À l'inverse, n'oubliez jamais que $2$ est le seul nombre premier pair. Si vous voyez un nombre pair, commencez systématiquement par diviser par $2$ jusqu'à épuisement.\\n\\nUn autre piège est l'oubli d'un facteur. Parfois, on s'arrête trop tôt, en pensant que le dernier quotient est premier alors qu'il ne l'est pas. Par exemple, si vous arrivez à $91$, ne vous arrêtez pas : $91$ semble premier, mais $91 = 7 \\times 13$. Le conseil pour éviter cela est de toujours tester les nombres premiers dans l'ordre ($2, 3, 5, 7, 11...$) et de ne jamais sauter d'étape. Enfin, vérifiez toujours votre résultat final en effectuant la multiplication inverse pour voir si vous retombez bien sur le nombre de départ."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose le nombre $120$ en facteurs premiers et écris le résultat avec des puissances.",
+              "answer": "$120 = 2^3 \\times 3 \\times 5$",
+              "hint": "Commence par diviser par $2$ autant de fois que possible.",
+              "explanation": "$120 = 2 \\times 60$, $60 = 2 \\times 30$, $30 = 2 \\times 15$, $15 = 3 \\times 5$, $5 = 5 \\times 1$. On a trois $2$, un $3$ et un $5$."
+            }
+          ]
+        },
+        {
+          "title": "PGCD / simplification selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà essayé de simplifier une fraction immense, comme $\\frac{1260}{1800}$, en tâtonnant, en divisant par $2$, puis par $3$, puis encore par $2$ sans savoir quand t'arrêter ? C'est un peu comme essayer de ranger une chambre en déplaçant les objets d'un coin à l'autre sans plan : on finit par y passer des heures. C'est là qu'intervient le PGCD, le Plus Grand Commun Diviseur. Le PGCD est comme un super-outil de nettoyage. Au lieu de faire dix petites simplifications, il te permet de trouver, en une seule fois, le plus grand nombre possible par lequel tu peux diviser le haut et le bas de ta fraction. C'est le raccourci ultime. En utilisant la décomposition en facteurs premiers que nous avons vue précédemment, le PGCD devient un jeu d'observation : on cherche les briques communes aux deux nombres. Une fois ce nombre magique trouvé, ta fraction devient irréductible instantanément, c'est-à-dire qu'elle est dans sa forme la plus simple et la plus pure possible."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le PGCD de deux nombres est le plus grand entier qui divise ces deux nombres simultanément. Pour le trouver grâce à la décomposition en facteurs premiers, on utilise une règle très précise. On regarde les décompositions des deux nombres et on ne retient que les facteurs premiers qui apparaissent dans les DEUX décompositions. Pour chacun de ces facteurs communs, on choisit toujours celui qui a le plus petit exposant. Pourquoi le plus petit ? Parce que pour être un diviseur commun, le nombre doit pouvoir entrer dans les deux nombres ; s'il y a trois $2$ dans le premier nombre mais seulement deux $2$ dans le second, on ne peut en prendre que deux pour que ça marche pour les deux.\\n\\nPar exemple, si $A = 2^3 \\times 3^2 \\times 5$ et $B = 2^2 \\times 3^4 \\times 7$, les facteurs communs sont $2$ et $3$. Le plus petit exposant pour $2$ est $2$ (dans $B$) et pour $3$ est $2$ (dans $A$). Le PGCD sera donc $2^2 \\times 3^2 = 4 \\times 9 = 36$. Cette méthode est beaucoup plus rapide que de lister tous les diviseurs, surtout pour les grands nombres."
+            },
+            {
+              "type": "display_math",
+              "latex": "PGCD(a,b) = \\prod p_i^{\\min(e_{i,a}, e_{i,b})}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la méthode rigoureuse pour simplifier une fraction en utilisant le PGCD :\\n\\n1. Décomposition : On décompose le numérateur et le dénominateur en produits de facteurs premiers. C'est l'étape fondamentale, car sans elle, on avance à l'aveugle.\\n2. Identification du PGCD : On identifie les facteurs premiers communs aux deux décompositions. On les multiplie entre eux en prenant systématiquement la plus petite puissance rencontrée pour chaque facteur. On calcule la valeur numérique de ce PGCD.\\n3. Division simultanée : On divise le numérateur par le PGCD et le dénominateur par le même PGCD. Il est crucial de faire l'opération pour les deux parties de la fraction pour ne pas modifier sa valeur.\\n4. Vérification : On obtient une fraction irréductible. On peut vérifier qu'elle est irréductible en s'assurant que le nouveau numérateur et le nouveau dénominateur n'ont plus aucun facteur premier en commun."
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons le PGCD de $84$ et $120$ en utilisant la décomposition.\\n\\nÉtape 1 : Décomposition de $84$.\\n$84 = 2 \\times 42 = 2 \\times 2 \\times 21 = 2^2 \\times 3 \\times 7$.\\n\\nÉtape 2 : Décomposition de $120$.\\n$120 = 2 \\times 60 = 2^2 \\times 30 = 2^3 \\times 15 = 2^3 \\times 3 \\times 5$.\\n\\nÉtape 3 : Recherche des facteurs communs.\\nLes deux nombres possèdent le facteur $2$ et le facteur $3$. \\nPour le $2$, on a $2^2$ d'un côté et $2^3$ de l'autre. Le plus petit est $2^2$.\\nPour le $3$, on a $3^1$ des deux côtés. Le plus petit est $3^1$.\\nLe facteur $7$ n'est que dans $84$ et le $5$ n'est que dans $120$, on les ignore donc.\\n\\nÉtape 4 : Calcul final.\\n$PGCD(84, 120) = 2^2 \\times 3 = 4 \\times 3 = 12$.\\n\\nLe plus grand nombre qui divise à la fois $84$ et $120$ est donc $12$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions maintenant la fraction $\\frac{84}{120}$ en utilisant le résultat précédent.\\n\\nNous savons déjà que le $PGCD(84, 120) = 12$. \\nPour simplifier la fraction, nous allons diviser le numérateur et le dénominateur par ce nombre $12$.\\n\\nNumérateur : $84 \\div 12 = 7$.\\nDénominateur : $120 \\div 12 = 10$.\\n\\nOn obtient donc la fraction $\\frac{7}{10}$. \\n\\nVérifions si elle est irréductible :\\nLe numérateur $7$ est un nombre premier. \\nLe dénominateur $10$ est $2 \\times 5$. \\nIls n'ont aucun facteur premier en commun, la fraction est donc bien irréductible. \\n\\nC'est beaucoup plus rapide que de diviser par $2$, puis par $2$, puis par $3$ successivment ! On a transformé une fraction complexe en une fraction simple en une seule opération grâce à la puissance du PGCD."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique est de confondre le PGCD avec le PPCM (Plus Petit Commun Multiple). Pour le PPCM, on prend TOUS les facteurs avec le PLUS GRAND exposant. Pour le PGCD, c'est l'inverse : on ne prend que les COMMUNS avec le PLUS PETIT exposant. Rappelle-toi : le PGCD est un diviseur, donc il doit être plus petit ou égal aux nombres de départ. Si tu trouves un PGCD plus grand que tes nombres, c'est que tu as calculé le PPCM par erreur.\\n\\nUne autre erreur est d'oublier de diviser le dénominateur. Certains élèves divisent le numérateur par le PGCD et s'arrêtent là, ou divisent le dénominateur par un autre nombre. Pour garder l'égalité de la fraction, on doit appliquer exactement la même opération en haut et en bas. Enfin, attention à la précision des calculs de division finale : une petite erreur de calcul à la fin peut rendre la fraction fausse même si la méthode du PGCD était parfaite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouve le PGCD de $48$ et $72$ en utilisant la décomposition en facteurs premiers.",
+              "answer": "$24$",
+              "hint": "Décompose $48 = 2^4 \\times 3$ et $72 = 2^3 \\times 3^2$.",
+              "explanation": "Les facteurs communs sont $2$ et $3$. Le plus petit exposant pour $2$ est $3$ ($2^3$) et pour $3$ est $1$ ($3^1$). Ainsi, $PGCD = 2^3 \\times 3 = 8 \\times 3 = 24$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es face à une racine carrée intimidante, comme $\\sqrt{180}$. La plupart des gens s'arrêtent là ou utilisent une calculatrice pour obtenir un nombre à virgule interminable. Mais en mathématiques, on préfère les réponses élégantes et précises. La décomposition en facteurs premiers est ici comme une clé magique qui permet de débloquer la racine. Au lieu de voir $180$ comme un bloc monolithique, on le voit comme un assemblage de briques. On cherche alors les paires de briques identiques : chaque paire de facteurs identiques peut sortir de la racine pour devenir un nombre entier. C'est un peu comme si la racine carrée était un péage : pour sortir, il faut être en binôme. Les facteurs qui restent seuls à l'intérieur sont ceux qui n'ont pas trouvé de partenaire. Cette technique transforme des expressions complexes en formes simplifiées, ce qui est indispensable pour résoudre des équations de géométrie ou simplifier des calculs de distances dans le plan."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour simplifier une racine carrée $\\sqrt{n}$ grâce à la décomposition, on s'appuie sur la propriété suivante : $\\sqrt{a \\times b} = \\sqrt{a} \\times \\sqrt{b}$. Le but est d'écrire $n$ comme un produit où l'un des facteurs est le plus grand carré parfait possible. Un carré parfait est un nombre dont la décomposition en facteurs premiers ne contient que des exposants pairs. \\n\\nPar exemple, si on a $2^4 \\times 3^2$, c'est un carré parfait car $4$ et $2$ sont pairs. On peut alors dire que $\\sqrt{2^4 \\times 3^2} = 2^{4/2} \\times 3^{2/2} = 2^2 \\times 3^1 = 12$. \\n\\nSi la décomposition contient des exposants impairs, on sépare le facteur : on écrit $2^3$ comme $2^2 \\times 2$. On sort le carré parfait ($2^2$) de la racine et on laisse le facteur restant ($2$) à l'intérieur. Ainsi, la décomposition transforme un problème de racine carrée en un simple problème d'exposants et de groupements par deux. C'est la méthode la plus rigoureuse pour garantir que l'on a obtenu la forme la plus simplifiée possible."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sqrt{a^2 \\times b} = a\\sqrt{b}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la méthode pas à pas pour simplifier $\\sqrt{n}$ :\\n\\n1. Décomposition complète : On décompose le nombre $n$ sous la racine en produit de facteurs premiers. \\n2. Groupement par paires : On regarde chaque facteur premier. On groupe les facteurs identiques par deux. Par exemple, si on a $2 \\times 2 \\times 2 \\times 2 \\times 2$, on a deux paires de $2$ et un $2$ tout seul.\\n3. Sortie de la racine : Pour chaque paire de facteurs identiques, on sort un seul exemplaire de ce facteur devant la racine. Si on a deux paires de $2$, on sort $2 \\times 2$ (ce qui fait $4$).\\n4. Regroupement final : On multiplie tous les nombres sortis ensemble devant la racine. On multiplie tous les facteurs restants (ceux qui n'avaient pas de paire) à l'intérieur de la racine.\\n5. Écriture : On écrit le résultat sous la forme $a \\sqrt{b}$, où $a$ est le produit des sorties et $b$ le produit des restants."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions la racine carrée de $72$, notée $\\sqrt{72}$.\\n\\nPremière étape, la décomposition de $72$.\\n$72 = 2 \\times 36 = 2 \\times 2 \\times 18 = 2 \\times 2 \\times 2 \\times 9 = 2^3 \\times 3^2$.\\n\\nDeuxième étape, on identifie les paires.\\nOn a trois $2$ et deux $3$. \\nPour les $2$ : on peut faire une paire $(2 \\times 2)$ et il reste un $2$ seul.\\nPour les $3$ : on peut faire une paire $(3 \\times 3)$ et il ne reste rien.\\n\\nTroisième étape, on sort les paires.\\nUne paire de $2$ donne un $2$ à l'extérieur.\\nUne paire de $3$ donne un $3$ à l'extérieur.\\nLe $2$ seul reste à l'intérieur.\\n\\nCalcul final :\\n$\\sqrt{72} = 2 \\times 3 \\times \\sqrt{2} = 6\\sqrt{2}$.\\nL'expression est maintenant simplifiée. $6\\sqrt{2}$ est beaucoup plus facile à utiliser dans un calcul que $\\sqrt{72}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attaquons-nous à un nombre plus impressionnant : $\\sqrt{1080}$.\\n\\nDécomposons $1080$ :\\n$1080 = 2 \\times 540 = 2^2 \\times 270 = 2^3 \\times 135$.\\n$135$ est divisible par $5$ : $135 = 5 \\times 27$.\\n$27$ est $3^3$.\\nDonc, $1080 = 2^3 \\times 3^3 \\times 5$.\\n\\nCherchons les paires :\\nPour les $2$ : $2^3 = (2 \\times 2) \\times 2$. Une paire sort, un $2$ reste.\\nPour les $3$ : $3^3 = (3 \\times 3) \\times 3$. Une paire sort, un $3$ reste.\\nPour les $5$ : $5^1$. Aucun binôme, le $5$ reste à l'intérieur.\\n\\nSortons les éléments :\\nÀ l'extérieur : $2 \\times 3 = 6$. \\nÀ l'intérieur : $2 \\times 3 \\times 5 = 30$.\\n\\nRésultat final :\\n$\\sqrt{1080} = 6\\sqrt{30}$.\\nOn voit ici que même pour un nombre très grand, la décomposition rend la simplification systématique et sécurisée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est de vouloir sortir le nombre entier d'une paire. Certains élèves, voyant $2 \\times 2$ sous la racine, écrivent $4\\sqrt{...}$ au lieu de $2\\sqrt{...}$. Rappelle-toi : la racine carrée d'un produit de deux nombres identiques est l'un de ces nombres. $\\sqrt{2^2} = 2$ et non $4$.\\n\\nUne autre erreur classique est la confusion entre addition et multiplication. On ne peut JAMAIS simplifier $\\sqrt{a+b}$ en $\\sqrt{a} + \\sqrt{b}$. Par exemple, $\\sqrt{9+16} = \\sqrt{25} = 5$, alors que $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$. La méthode de décomposition ne fonctionne QUE pour les produits (multiplications).\\n\\nEnfin, n'oubliez pas de bien multiplier tous les facteurs restants à l'intérieur de la racine. Si vous avez laissé un $2$, un $3$ et un $5$ à l'intérieur, vous devez écrire $\\sqrt{30}$ et non $\\sqrt{2 \\times 3 \\times 5}$ dans votre réponse finale pour être parfaitement propre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifie la racine carrée suivante : $\\sqrt{300}$.",
+              "answer": "$10\\sqrt{3}$",
+              "hint": "Décompose $300$ en facteurs premiers : $2^2 \\times 3 \\times 5^2$.",
+              "explanation": "On a une paire de $2$ et une paire de $5$. Ils sortent : $2 \\times 5 = 10$. Le $3$ reste seul à l'intérieur. Donc $10\\sqrt{3}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

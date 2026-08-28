@@ -1,0 +1,148 @@
+{
+  "_status": "done",
+  "_course_id": 166,
+  "_course_code": "ce2-t03-c07-comprendre-la-division-comme-groupement",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Application : Comprendre la division comme groupement",
+  "title": "Quiz : La division comme groupement (CE2)",
+  "questions": [
+    {
+      "text": "Il y a $12$ bonbons. On veut faire des paquets de $3$ bonbons chacun. Combien de paquets peut-on faire ?",
+      "options": [
+        "3 paquets",
+        "4 paquets",
+        "6 paquets",
+        "9 paquets"
+      ],
+      "correctAnswer": "4 paquets",
+      "explanation": "Pour trouver le nombre de paquets, on divise le nombre total de bonbons ($12$) par le nombre de bonbons par paquet ($3$). On cherche combien de fois $3$ rentre dans $12$. $12 \\div 3 = 4$. On peut donc faire $4$ paquets. L'option $3$ correspond à $12 \\div 4$, l'option $6$ à $12 \\div 2$ et l'option $9$ est une erreur de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 3,
+        "highlighted": 12,
+        "caption": "12 bonbons regroupés par 3"
+      }
+    },
+    {
+      "text": "Dans la cour, $20$ élèves forment des groupes de $4$ pour jouer. Quelle division permet de trouver le nombre de groupes formés ?",
+      "options": [
+        "$20 \\div 4 = 5$",
+        "$20 \\div 5 = 4$",
+        "$4 \\times 5 = 20$",
+        "$20 - 4 = 16$"
+      ],
+      "correctAnswer": "$20 \\div 4 = 5$",
+      "explanation": "C'est une situation de groupement : on connaît le total ($20$ élèves) et la taille de chaque groupe ($4$ élèves). On cherche le nombre de groupes. L'opération est donc la division du total par la taille du groupe : $20 \\div 4 = 5$. L'option $20 \\div 5 = 4$ inverse les nombres, l'option $4 \\times 5 = 20$ est la multiplication inverse (utile pour vérifier) mais ne répond pas à la question 'quelle division', et l'option $20 - 4 = 16$ est une soustraction qui ne donne pas le nombre de groupes.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 5",
+            "value": 4,
+            "tone": "blue"
+          }
+        ],
+        "caption": "20 élèves en 5 groupes de 4"
+      }
+    },
+    {
+      "text": "Léa a $18$ billes. Elle veut les ranger dans des petites boîtes qui contiennent exactement $6$ billes chacune. Combien de boîtes lui faut-il ?",
+      "options": [
+        "3 boîtes",
+        "4 boîtes",
+        "6 boîtes",
+        "9 boîtes"
+      ],
+      "correctAnswer": "3 boîtes",
+      "explanation": "On cherche le nombre de boîtes (groupes) en divisant le total des billes ($18$) par la capacité d'une boîte ($6$). $18 \\div 6 = 3$. Léa a besoin de $3$ boîtes. L'option $4$ boxes correspondrait à $24 \\div 6$, l'option $6$ à $36 \\div 6$ ou une confusion avec la taille du groupe, et l'option $9$ à $18 \\div 2$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 6,
+        "highlighted": 18,
+        "caption": "18 billes regroupées par 6 (3 boîtes)"
+      }
+    },
+    {
+      "text": "Un instituteur a fait $5$ groupes de $7$ crayons de couleur sur sa table. Quelle opération lui permet de retrouver le nombre total de crayons qu'il a posés ?",
+      "options": [
+        "$5 \\times 7 = 35$",
+        "$35 \\div 5 = 7$",
+        "$35 \\div 7 = 5$",
+        "$5 + 7 = 12$"
+      ],
+      "correctAnswer": "$5 \\times 7 = 35$",
+      "explanation": "Ici, on connaît le nombre de groupes ($5$) et le nombre d'objets dans chaque groupe ($7$). Pour retrouver le total, c'est l'opération inverse de la division groupement : la multiplication. On multiplie le nombre de groupes par le nombre d'objets par groupe : $5 \\times 7 = 35$. Les divisions proposées ($35 \\div 5$ ou $35 \\div 7$) servent à retrouver la taille du groupe ou le nombre de groupes si on connaît déjà le total. L'addition $5 + 7$ ne donne pas le total d'objets.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 7,
+            "tone": "green"
+          },
+          {
+            "label": "Groupe 5",
+            "value": 7,
+            "tone": "green"
+          }
+        ],
+        "caption": "5 groupes de 7 crayons"
+      }
+    },
+    {
+      "text": "Un boulanger a $36$ petits pains. Il les met dans des sacs de $6$ pains. Il a déjà rempli $4$ sacs. Combien de sacs lui reste-t-il à remplir pour avoir mis tous les pains ?",
+      "options": [
+        "2 sacs",
+        "6 sacs",
+        "10 sacs",
+        "30 sacs"
+      ],
+      "correctAnswer": "2 sacs",
+      "explanation": "D'abord, on calcule le nombre total de sacs nécessaires : $36 \\div 6 = 6$ sacs au total. Comme $4$ sacs sont déjà pleins, on soustrait : $6 - 4 = 2$ sacs restants à remplir. L'option $6$ sacs est le total, pas le reste. L'option $10$ sacs pourrait venir de $36 \\div 6 + 4$. L'option $30$ sacs correspond à $36 - 6$ (soustraction incorrecte).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

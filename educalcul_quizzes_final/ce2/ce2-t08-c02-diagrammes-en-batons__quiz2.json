@@ -1,0 +1,206 @@
+{
+  "_status": "done",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer barres",
+  "title": "Comparer des barres dans un diagramme",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous. Il représente les animaux préférés des élèves de la classe. Quel est l'animal le plus populaire ?",
+      "options": [
+        "Chat",
+        "Chien",
+        "Lapin",
+        "Hamster"
+      ],
+      "correctAnswer": "Chien",
+      "explanation": "Dans un diagramme en bâtons, la barre la plus haute correspond à la plus grande valeur. La barre « Chien » monte jusqu'à $8$, ce qui est plus haut que « Chat » ($5$), « Lapin » ($3$) et « Hamster » ($2$). Donc le chien est l'animal préféré.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves",
+        "bars": [
+          {
+            "label": "Chat",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "gold"
+          },
+          {
+            "label": "Lapin",
+            "value": 3,
+            "tone": "green"
+          },
+          {
+            "label": "Hamster",
+            "value": 2,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme montre le nombre de livres lus par Tom pendant quatre mois. Combien de livres de plus Tom a-t-il lus en mars qu'en février ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Il faut lire la valeur de chaque barre : mars est à $7$ et février est à $4$. La différence se calcule par une soustraction : $7 - 4 = 3$. Tom a lu $3$ livres de plus en mars.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus par Tom",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Mars",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Avril",
+            "value": 5,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme ci-dessous indique les points marqués par quatre équipes. Laquelle de ces affirmations est exacte ?",
+      "options": [
+        "L'équipe A a marqué plus de points que l'équipe C.",
+        "L'équipe B et l'équipe D ont marqué le même nombre de points.",
+        "L'équipe C a marqué 5 points de plus que l'équipe A.",
+        "L'équipe C a marqué 7 points de plus que l'équipe B."
+      ],
+      "correctAnswer": "L'équipe C a marqué 7 points de plus que l'équipe B.",
+      "explanation": "On lit les valeurs : Équipe A = $12$, Équipe B = $8$, Équipe C = $15$, Équipe D = $10$. On vérifie chaque affirmation : A ($12 < 15$) faux. B ($8 \\neq 10$) faux. C ($15 - 12 = 3$, pas $5$) faux. D ($15 - 8 = 7$) vrai.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Points des équipes",
+        "bars": [
+          {
+            "label": "Équipe A",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Équipe B",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Équipe C",
+            "value": 15,
+            "tone": "gold"
+          },
+          {
+            "label": "Équipe D",
+            "value": 10,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme représente le nombre de billes de quatre enfants. La barre de Noah n'est pas graduée. On sait que Noah a $3$ billes de plus qu'Emma. Combien de billes a Noah ?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La barre d'Emma s'arrête à $9$. Noah a $3$ billes de plus. On fait l'addition : $9 + 3 = 12$. La barre de Noah doit donc monter jusqu'à $12$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de billes",
+        "bars": [
+          {
+            "label": "Lucas",
+            "value": 14,
+            "tone": "blue"
+          },
+          {
+            "label": "Emma",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Noah",
+            "value": 12,
+            "tone": "gray"
+          },
+          {
+            "label": "Mia",
+            "value": 11,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme montre les ventes de glaces du lundi au vendredi. Entre quels deux jours consécutifs l'augmentation des ventes a-t-elle été la plus forte ?",
+      "options": [
+        "Lundi à Mardi",
+        "Mardi à Mercredi",
+        "Mercredi à Jeudi",
+        "Jeudi à Vendredi"
+      ],
+      "correctAnswer": "Jeudi à Vendredi",
+      "explanation": "On calcule les différences entre jours consécutifs : Lundi ($10$) à Mardi ($15$) : $+5$. Mardi ($15$) à Mercredi ($20$) : $+5$. Mercredi ($20$) à Jeudi ($12$) : $-8$ (baisse). Jeudi ($12$) à Vendredi ($18$) : $+6$. La plus forte augmentation est $+6$, entre jeudi et vendredi.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Ventes de glaces",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 15,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 20,
+            "tone": "gold"
+          },
+          {
+            "label": "Jeudi",
+            "value": 12,
+            "tone": "red"
+          },
+          {
+            "label": "Vendredi",
+            "value": 18,
+            "tone": "navy"
+          }
+        ]
+      }
+    }
+  ]
+}

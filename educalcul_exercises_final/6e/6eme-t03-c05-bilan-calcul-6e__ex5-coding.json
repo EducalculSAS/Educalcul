@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 346,
+  "_course_code": "6eme-t03-c05-bilan-calcul-6e",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Techniques, priorités, estimation",
+  "title": "Algorithmes et priorités de calcul",
+  "blocks": [
+    {
+      "title": "Calcul respectant les priorités",
+      "content": "Écrire un algorithme (en pseudo-code ou style Python) qui calcule la valeur de l'expression $12 + 5 \\cdot 3 - 8 \\div 2$ en respectant les priorités des opérations.",
+      "correctAnswer": "Algorithme :\\n1. Calculer la multiplication : $5 \\cdot 3 = 15$.\\n2. Calculer la division : $8 \\div 2 = 4$.\\n3. Effectuer l'addition et la soustraction de gauche à droite : $12 + 15 = 27$, puis $27 - 4 = 23$.\\nRésultat final : 23.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la règle des priorités : les multiplications et divisions avant les additions et soustractions. On calcule d'abord $5 \\cdot 3$ et $8 \\div 2$, puis on effectue $12 + 15 - 4$ de gauche à droite, ce qui donne 23.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation par arrondi",
+      "content": "Donner une estimation du résultat de $47 \\times 23$ en arrondissant chaque nombre à la dizaine la plus proche, puis écrire un algorithme qui calcule cette estimation.",
+      "correctAnswer": "Estimation :\\n- Arrondir 47 à 50.\\n- Arrondir 23 à 20.\\n- Calculer $50 \\times 20 = 1000$.\\nAlgorithme :\\n1. Lire a = 47, b = 23.\\n2. Arrondir a à la dizaine supérieure : a_arr = 50.\\n3. Arrondir b à la dizaine inférieure : b_arr = 20.\\n4. Calculer estimation = a_arr * b_arr.\\n5. Afficher estimation.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'arrondi à la dizaine la plus proche donne 50 pour 47 (car 47 est plus proche de 50 que de 40) et 20 pour 23 (plus proche de 20 que de 30). Le produit estimé est $50 \\times 20 = 1000$. L'algorithme suit ces étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul étape par étape avec parenthèses et puissance",
+      "content": "Un élève doit calculer $ (15 + 9) \\times 4 - 6^2 $. Écrire un algorithme complet qui effectue ce calcul étape par étape, en indiquant les résultats intermédiaires.",
+      "correctAnswer": "Algorithme :\\n1. Calculer la parenthèse : $15 + 9 = 24$.\\n2. Calculer la puissance : $6^2 = 36$.\\n3. Effectuer la multiplication : $24 \\times 4 = 96$.\\n4. Effectuer la soustraction : $96 - 36 = 60$.\\nRésultat final : 60.\\nRésultats intermédiaires :\\n- Somme dans la parenthèse = 24\\n- Carré de 6 = 36\\n- Produit = 96\\n- Différence finale = 60",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On respecte l'ordre des priorités : parenthèses, puis puissances, puis multiplications/divisions, enfin additions/soustractions. L'algorithme détaille chaque étape et conserve les résultats intermédiaires.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

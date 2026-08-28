@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 148,
+  "_course_code": "ce2-t01-c07-encadrer-et-intercaler",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Intercaler dans une suite",
+  "title": "Intercaler un nombre dans une suite",
+  "blocks": [
+    {
+      "title": "Prédécesseur, successeur et intercalation simple",
+      "content": "Relie chaque énoncé au nombre correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le nombre qui suit $256$",
+          "right": "$257$"
+        },
+        {
+          "left": "Le nombre qui précède $400$",
+          "right": "$399$"
+        },
+        {
+          "left": "Le nombre intercalé entre $128$ et $130$",
+          "right": "$129$"
+        },
+        {
+          "left": "Le nombre intercalé entre $599$ et $601$",
+          "right": "$600$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour trouver le nombre qui suit, on ajoute $1$. Pour trouver celui qui précède, on retire $1$. Le nombre intercalé entre deux nombres consécutifs (comme $128$ et $130$) est celui qui se trouve juste au milieu, ici $129$. Entre $599$ et $601$, c'est $600$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter une suite avec un pas régulier",
+      "content": "Relie chaque suite au nombre manquant pour la compléter.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Suite : $10, 20, 30, \\_, 50$ (pas de $10$)",
+          "right": "$40$"
+        },
+        {
+          "left": "Suite : $100, 200, \\_, 400$ (pas de $100$)",
+          "right": "$300$"
+        },
+        {
+          "left": "Suite : $24, 26, 28, \\_, 32$ (pas de $2$)",
+          "right": "$30$"
+        },
+        {
+          "left": "Suite : $65, 70, \\_, 80$ (pas de $5$)",
+          "right": "$75$"
+        }
+      ],
+      "items": [],
+      "explanation": "On identifie le pas de la suite (la différence entre deux nombres qui se suivent). Pour la première, on compte de $10$ en $10$ : après $30$ vient $40$. Pour la deuxième, de $100$ en $100$ : après $200$ vient $300$. Pour la troisième, de $2$ en $2$ : après $28$ vient $30$. Pour la dernière, de $5$ en $5$ : après $70$ vient $75$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Intercaler un nombre entre deux bornes",
+      "content": "Relie chaque intervalle au nombre qui s'y intercalle correctement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Un nombre entre $450$ et $460$",
+          "right": "$455$"
+        },
+        {
+          "left": "Compléter : $234, \\_, 236$",
+          "right": "$235$"
+        },
+        {
+          "left": "Intercaler entre $789$ et $791$",
+          "right": "$790$"
+        },
+        {
+          "left": "Suite : $500, 510, \\_, 530$",
+          "right": "$520$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut trouver un nombre plus grand que la borne inférieure et plus petit que la borne supérieure. Entre $450$ et $460$, $455$ convient (milieu). Pour $234, \\_, 236$, le nombre manquant est le successeur de $234$ et le prédécesseur de $236$, donc $235$. Entre $789$ et $791$, c'est $790$. Dans la suite de $10$ en $10$, après $510$ vient $520$ avant $530$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

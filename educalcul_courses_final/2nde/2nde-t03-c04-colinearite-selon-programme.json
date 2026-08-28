@@ -1,0 +1,451 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.059399+00:00",
+  "id": 513,
+  "code": "2nde-t03-c04",
+  "title": "Colinéarité selon programme",
+  "description": "Cours structuré Educalcul : Colinéarité selon programme.",
+  "subject": "Vecteurs et géométrie",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Vecteurs et géométrie",
+    "titre_du_cours": "Colinéarité selon programme",
+    "objectif_global": "Colinéarité selon programme",
+    "mini_lecons_imposees": [
+      "Reconnaître.",
+      "Calculer condition.",
+      "Applications géométriques."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Vecteurs et géométrie",
+      "lessons": [
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand deux vecteurs pointent dans la même direction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu donnes un coup de pied dans un ballon. Le ballon part dans une certaine direction, avec une certaine force. Si ton camarade donne aussi un coup de pied au même ballon, mais exactement dans le même sens (ou pile dans le sens inverse), les deux actions se combinent : le ballon file plus vite, mais il ne change pas de trajectoire. En mathématiques, on dit que les deux vecteurs qui représentent ces coups de pied sont « colinéaires ». C'est le tout premier mot-clé de ce chapitre, et nous allons le rencontrer très souvent."
+            },
+            {
+              "type": "definition",
+              "term": "Vecteurs colinéaires",
+              "definition": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont colinéaires s'ils ont la même direction. Concrètement, cela veut dire qu'il existe un nombre $k$ (appelé coefficient de proportionnalité) tel que $\\vec{v} = k \\vec{u}$. Si $k>0$, ils ont le même sens ; si $k<0$, ils ont des sens opposés ; si $k=0$, $\\vec{v}$ est le vecteur nul.",
+              "example": "Les vecteurs $\\vec{u} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 4 \\\\ 6 \\end{pmatrix}$ sont colinéaires car $\\vec{v} = 2 \\vec{u}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, prenons un exemple du quotidien. Suppose que tu marches sur une grande avenue droite. Ton déplacement du point de départ au premier carrefour est un vecteur. Si tu continues tout droit jusqu'au deuxième carrefour, ton second déplacement est un vecteur qui a exactement la même direction que le premier (même droité). Ils sont colinéaires. En revanche, si tu tournes à gauche à la première intersection, ton nouveau déplacement a une direction différente : les deux vecteurs ne sont plus colinéaires."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 2,
+              "uy": 1,
+              "vx": 4,
+              "vy": 2,
+              "caption": "Deux vecteurs colinéaires : le second est le double du premier, ils pointent dans la même direction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la figure ci-dessus, tu vois deux flèches. La deuxième est exactement deux fois plus longue que la première, et elles sont sur la même droite. C'est l'image parfaite de la colinéarité : même droite support, même direction (ou sens opposé). Remarque que le vecteur nul $\\vec{0}$ est colinéaire à tous les vecteurs, car on peut écrire $\\vec{0} = 0 \\times \\vec{u}$ pour n'importe quel $\\vec{u}$. C'est un cas particulier qu'il ne faut pas oublier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment repérer la colinéarité grâce aux coordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "En classe de seconde, nous travaillons souvent dans un repère orthonormé. Un vecteur est alors repéré par ses coordonnées $(x ; y)$. La bonne nouvelle, c'est qu'il existe un critère tout simple pour savoir si deux vecteurs sont colinéaires sans avoir à dessiner : il suffit de comparer leurs coordonnées. Deux vecteurs $\\vec{u}(x ; y)$ et $\\vec{v}(x' ; y')$ sont colinéaires si et seulement si $x y' - x' y = 0$. Cette expression, $x y' - x' y$, s'appelle le déterminant des deux vecteurs. Quand il vaut zéro, les vecteurs sont colinéaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}(x;y) \\text{ et } \\vec{v}(x';y') \\text{ colinéaires } \\iff x y' - x' y = 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi cette formule ? Revenons à la définition : $\\vec{v} = k \\vec{u}$ signifie $x' = k x$ et $y' = k y$. Si on élimine $k$, on obtient $x' y = x y'$, ce qui revient exactement à $x y' - x' y = 0$. C'est une condition nécessaire et suffisante : elle marche dans les deux sens. Si le déterminant est nul, les vecteurs sont colinéaires ; s'ils sont colinéaires, le déterminant est nul. C'est un outil très puissant que tu vas utiliser à chaque exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter quand on teste la colinéarité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a quelques erreurs classiques que je vois souvent. La première : croire que deux vecteurs sont colinéaires parce qu'ils ont la même longueur. Faux ! La longueur (la norme) n'a rien à voir avec la direction. Deux vecteurs peuvent avoir la même norme et pointer dans des directions complètement différentes. La deuxième erreur : faire le calcul $x y' - x' y$ mais inverser les coordonnées par distraction. Rappelle-toi l'ordre : abscisse du premier fois ordonnée du second, moins abscisse du second fois ordonnée du premier. Une astuce pour ne pas te tromper : écris les coordonnées en colonne et fais le produit en croix."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $\\vec{u} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} x' \\\\ y' \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le déterminant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $D = x y' - x' y$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $D = 0$, les vecteurs sont colinéaires. Si $D \\neq 0$, ils ne le sont pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la définition, le critère numérique et la méthode pas à pas, nous allons passer à la suite : comment utiliser cette condition pour résoudre des problèmes concrets, comme trouver un coefficient inconnu ou prouver que trois points sont alignés. C'est tout l'objet de la prochaine leçon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main pour reconnaître la colinéarité. Dans la prochaine partie, nous allons apprendre à exploiter cette condition pour calculer des inconnues, déterminer des coordonnées et résoudre des problèmes géométriques. C'est là que la colinéarité devient un vrai outil de travail."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient les vecteurs $\\vec{u} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} -6 \\\\ 4 \\end{pmatrix}$. Sont-ils colinéaires ? Justifie par un calcul.",
+              "answer": "Oui, ils sont colinéaires car le déterminant vaut $3 \\times 4 - (-6) \\times (-2) = 12 - 12 = 0$. On remarque aussi que $\\vec{v} = -2 \\vec{u}$.",
+              "hint": "Calcule le déterminant $x y' - x' y$ avec les coordonnées données.",
+              "explanation": "On calcule $D = 3 \\times 4 - (-6) \\times (-2) = 12 - 12 = 0$. Comme le déterminant est nul, les vecteurs sont colinéaires. De plus, on voit que $\\vec{v} = -2 \\vec{u}$, le coefficient de proportionnalité est $k = -2$ (sens opposés)."
+            },
+            {
+              "question": "Détermine la valeur de $a$ pour que les vecteurs $\\vec{u} = \\begin{pmatrix} 5 \\\\ a \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 2 \\\\ -4 \\end{pmatrix}$ soient colinéaires.",
+              "answer": "$a = -10$",
+              "hint": "Écris la condition de colinéarité $x y' - x' y = 0$ et résous l'équation pour $a$.",
+              "explanation": "La condition donne $5 \\times (-4) - 2 \\times a = 0$, soit $-20 - 2a = 0$. On ajoute $20$ des deux côtés : $-2a = 20$, donc $a = -10$. On vérifie : $\\vec{u} = \\begin{pmatrix} 5 \\\\ -10 \\end{pmatrix} = 2,5 \\times \\begin{pmatrix} 2 \\\\ -4 \\end{pmatrix}$, ils sont bien colinéaires."
+            },
+            {
+              "question": "Les points $A(1;2)$, $B(3;5)$ et $C(5;8)$ sont-ils alignés ? Explique ta démarche.",
+              "answer": "Oui, les points $A$, $B$, $C$ sont alignés car les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires.",
+              "hint": "Calcule les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, puis teste leur colinéarité avec le déterminant.",
+              "explanation": "$\\overrightarrow{AB} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} 4 \\\\ 6 \\end{pmatrix}$. Leur déterminant est $2 \\times 6 - 4 \\times 3 = 12 - 12 = 0$. Ils sont colinéaires, donc $A$, $B$, $C$ sont alignés."
+            }
+          ]
+        },
+        {
+          "title": "Calculer condition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la colinéarité pour trouver une inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons appris à reconnaître si deux vecteurs sont colinéaires. Maintenant, nous allons voir comment transformer ce test en un véritable outil de calcul. Souvent, on te donne deux vecteurs dont l'un contient une lettre (un paramètre), et on te demande de trouver la valeur de cette lettre pour que les vecteurs soient colinéaires. C'est exactement comme résoudre une équation, mais avec une signification géométrique : tu cherches la valeur qui aligne les deux flèches."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Imagine un drone qui doit voler le long d'une droite précise pour photographier une ligne électrique. Son vecteur déplacement prévu est $\\vec{u} = \\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}$. Mais à cause du vent, son déplacement réel est $\\vec{v} = \\begin{pmatrix} 6 \\\\ k \\end{pmatrix}$. Pour que le drone reste sur la bonne trajectoire, $\\vec{v}$ doit être colinéaire à $\\vec{u}$. Quelle doit être la valeur de $k$ ? C'est ce que nous allons calculer ensemble."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition de colinéarité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $\\vec{u} = \\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 6 \\\\ k \\end{pmatrix}$. La condition est $3 \\times k - 6 \\times 5 = 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Résoudre l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$3k - 30 = 0 \\iff 3k = 30 \\iff k = 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $k=10$, $\\vec{v} = \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix} = 2 \\vec{u}$. Le drone suit bien la droite (même direction, même sens, deux fois plus vite)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que la méthode est systématique : on écrit le déterminant, on le met égal à zéro, on résout l'équation du premier degré qui en résulte. Cela marche à tous les coups, que l'inconnue soit dans l'abscisse ou dans l'ordonnée, et même s'il y a deux inconnues liées par une relation (mais alors il faut une deuxième condition)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Condition : } x y' - x' y = 0 \\Rightarrow \\text{équation en l'inconnue}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particulier : le vecteur nul et les coordonnées nulles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a deux situations qui demandent un peu d'attention. La première : l'un des vecteurs est le vecteur nul $\\vec{0} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}$. Rappelle-toi : le vecteur nul est colinéaire à tous les vecteurs. Si ton calcul de déterminant donne $0 \\times y' - x' \\times 0 = 0$, c'est toujours vrai, quoi que valent $x'$ et $y'$. Donc si on te dit « $\\vec{u}$ et $\\vec{v}$ sont colinéaires » et que $\\vec{u} = \\vec{0}$, cela ne te donne aucune information sur $\\vec{v}$ : il peut être n'importe quoi."
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième situation : l'une des coordonnées est nulle. Par exemple $\\vec{u} = \\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}$ (vecteur vertical) et $\\vec{v} = \\begin{pmatrix} 0 \\\\ -2 \\end{pmatrix}$. Le déterminant est $0 \\times (-2) - 0 \\times 4 = 0$, ils sont colinéaires (tous les deux verticaux). Mais si $\\vec{v} = \\begin{pmatrix} 3 \\\\ 0 \\end{pmatrix}$ (horizontal), le déterminant est $0 \\times 0 - 3 \\times 4 = -12 \\neq 0$, ils ne sont pas colinéaires. Le calcul marche parfaitement, pas besoin de raisonner à part."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déterminer un coefficient de proportionnalité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'exercice ne te demande pas seulement la valeur d'une coordonnée, mais le coefficient $k$ tel que $\\vec{v} = k \\vec{u}$. Une fois que tu as vérifié la colinéarité (déterminant nul), tu peux trouver $k$ très simplement : si $x \\neq 0$, alors $k = \\frac{x'}{x}$ ; si $y \\neq 0$, alors $k = \\frac{y'}{y}$. Les deux donnent le même résultat grâce à la colinéarité. C'est une façon de passer du test « sont-ils colinéaires ? » à la relation exacte « quel est le rapport ? »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du drone : $\\vec{u} = \\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}$, $\\vec{v} = \\begin{pmatrix} 6 \\\\ 10 \\end{pmatrix}$. On a $k = \\frac{6}{3} = 2$ (ou $k = \\frac{10}{5} = 2$). Le coefficient est $2$. Cela veut dire que le déplacement réel est deux fois plus grand que le déplacement prévu, dans le même sens. Si $k$ avait été négatif, le drone serait parti en sens inverse !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer une condition de colinéarité, gérer les cas particuliers et même retrouver le coefficient de proportionnalité. Dans la dernière leçon, nous allons voir comment tout cela s'applique à la géométrie : alignement de points, parallélisme de droites, milieux, et même des problèmes de sections planes. C'est là que la colinéarité montre toute sa puissance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $\\vec{u} = \\begin{pmatrix} -2 \\\\ 7 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 4 \\\\ a \\end{pmatrix}$. Trouve $a$ pour que $\\vec{u}$ et $\\vec{v}$ soient colinéaires.",
+              "answer": "$a = -14$",
+              "hint": "Utilise la condition $x y' - x' y = 0$ avec $x=-2$, $y=7$, $x'=4$, $y'=a$.",
+              "explanation": "Le déterminant est $(-2) \\times a - 4 \\times 7 = -2a - 28$. On met à zéro : $-2a - 28 = 0 \\Rightarrow -2a = 28 \\Rightarrow a = -14$. On vérifie : $\\vec{v} = \\begin{pmatrix} 4 \\\\ -14 \\end{pmatrix} = -2 \\vec{u}$."
+            },
+            {
+              "question": "Les vecteurs $\\vec{u} = \\begin{pmatrix} 0 \\\\ 5 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 0 \\\\ -3 \\end{pmatrix}$ sont-ils colinéaires ? Et $\\vec{u}$ et $\\vec{w} = \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}$ ?",
+              "answer": "$\\vec{u}$ et $\\vec{v}$ sont colinéaires (tous deux verticaux). $\\vec{u}$ et $\\vec{w}$ ne sont pas colinéaires.",
+              "hint": "Calcule les déterminants. Pour le premier : $0 \\times (-3) - 0 \\times 5$. Pour le second : $0 \\times 0 - 2 \\times 5$.",
+              "explanation": "Pour $\\vec{u}$ et $\\vec{v}$ : $D = 0 \\times (-3) - 0 \\times 5 = 0$, donc colinéaires. Pour $\\vec{u}$ et $\\vec{w}$ : $D = 0 \\times 0 - 2 \\times 5 = -10 \\neq 0$, donc non colinéaires."
+            },
+            {
+              "question": "Si $\\vec{u} = \\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} -6 \\\\ 2 \\end{pmatrix}$ sont colinéaires, quel est le coefficient $k$ tel que $\\vec{v} = k \\vec{u}$ ?",
+              "answer": "$k = -2$",
+              "hint": "Puisque les vecteurs sont colinéaires, $k = \\frac{x'}{x}$ (si $x \\neq 0$) ou $k = \\frac{y'}{y}$ (si $y \\neq 0$).",
+              "explanation": "Ici $x=3 \\neq 0$, donc $k = \\frac{-6}{3} = -2$. On vérifie avec les ordonnées : $k = \\frac{2}{-1} = -2$. Les deux donnent le même résultat."
+            },
+            {
+              "question": "On donne $\\vec{u} = \\begin{pmatrix} m \\\\ 4 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 6 \\\\ 8 \\end{pmatrix}$. Pour quelles valeurs de $m$ ces vecteurs sont-ils colinéaires ?",
+              "answer": "$m = 3$",
+              "hint": "Écris la condition de colinéarité et résous par rapport à $m$.",
+              "explanation": "Condition : $m \\times 8 - 6 \\times 4 = 0 \\Rightarrow 8m - 24 = 0 \\Rightarrow 8m = 24 \\Rightarrow m = 3$. Alors $\\vec{u} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$ et $\\vec{v} = 2 \\vec{u}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications géométriques.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la colinéarité à l'alignement de points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la partie la plus concrète et la plus utilisée au lycée : l'application de la colinéarité à la géométrie. Le lien est direct : trois points $A$, $B$, $C$ sont alignés si et seulement si les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires. Pourquoi ? Parce que $\\overrightarrow{AB}$ donne la direction de la droite $(AB)$, et $\\overrightarrow{AC}$ celle de la droite $(AC)$. Si ces deux directions sont les mêmes (ou opposées), les trois points sont sur la même droite. C'est un critère d'alignement redoutable d'efficacité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un problème de géométrie dans le plan : on te donne trois points $A(2;1)$, $B(5;3)$ et $C(8;5)$. Pour savoir s'ils sont alignés, tu n'as pas besoin de tracer la figure (ce qui est souvent imprécis). Tu calcules $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ 4 \\end{pmatrix}$. Leur déterminant est $3 \\times 4 - 6 \\times 2 = 12 - 12 = 0$. Conclusion immédiate : $A$, $B$, $C$ sont alignés. C'est une méthode purement algébrique, rigoureuse et rapide."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir un point de référence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends l'un des trois points, par exemple $A$, et construis les deux vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} x_C - x_A \\\\ y_C - y_A \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester la colinéarité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le déterminant. S'il est nul, les points sont alignés ; sinon, ils ne le sont pas."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parallélisme de droites et vecteurs directeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre application majeure : deux droites sont parallèles si et seulement si elles ont même direction. En langage vectoriel, cela signifie que leurs vecteurs directeurs sont colinéaires. Si une droite $d$ a pour vecteur directeur $\\vec{u}$ et une droite $d'$ a pour vecteur directeur $\\vec{v}$, alors $d \\parallel d' \\iff \\vec{u}$ et $\\vec{v}$ sont colinéaires. C'est exactement le même critère que pour l'alignement, mais appliqué aux droites au lieu des points."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, la droite d'équation $y = 2x + 1$ a pour vecteur directeur $\\vec{u} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ (car quand $x$ augmente de $1$, $y$ augmente de $2$). Une droite parallèle aura un vecteur directeur colinéaire à $\\vec{u}$, donc de la forme $\\begin{pmatrix} k \\\\ 2k \\end{pmatrix}$. Si on te donne une droite passant par $A(0;3)$ avec un vecteur directeur $\\vec{v} = \\begin{pmatrix} -2 \\\\ -4 \\end{pmatrix}$, tu vérifies la colinéarité : $1 \\times (-4) - (-2) \\times 2 = -4 + 4 = 0$. Les droites sont parallèles."
+            },
+            {
+              "type": "display_math",
+              "latex": "d \\parallel d' \\iff \\text{vecteurs directeurs colinéaires}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes avec paramètre : trouver une coordonnée pour l'alignement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exercices types du baccalauréat te demandent souvent : « Détermine $t$ pour que les points $A(1;2)$, $B(3;5)$ et $C(t;8)$ soient alignés. » La méthode est toujours la même : tu écris les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ en fonction de $t$, tu calcules leur déterminant, tu le mets à zéro, tu résous l'équation. C'est de l'algèbre pure au service de la géométrie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Faisons-le ensemble : $\\overrightarrow{AB} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} t-1 \\\\ 6 \\end{pmatrix}$. Déterminant : $2 \\times 6 - (t-1) \\times 3 = 12 - 3(t-1) = 12 - 3t + 3 = 15 - 3t$. On met à zéro : $15 - 3t = 0 \\Rightarrow 3t = 15 \\Rightarrow t = 5$. Donc pour $t=5$, le point $C$ est sur la droite $(AB)$. Vérification : $C(5;8)$, $\\overrightarrow{AC} = \\begin{pmatrix} 4 \\\\ 6 \\end{pmatrix} = 2 \\overrightarrow{AB}$, c'est bon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Milieu d'un segment et colinéarité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le milieu $I$ d'un segment $[AB]$ a une propriété vectorielle fondamentale : $\\overrightarrow{AI} = \\frac{1}{2} \\overrightarrow{AB}$. Cela veut dire que $\\overrightarrow{AI}$ et $\\overrightarrow{AB}$ sont colinéaires (coefficient $k = 1/2$). Réciproquement, si un point $I$ appartient à la droite $(AB)$ et que $\\overrightarrow{AI} = \\frac{1}{2} \\overrightarrow{AB}$, alors $I$ est le milieu de $[AB]$. C'est une façon élégante de caractériser le milieu sans utiliser les formules de coordonnées du milieu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cela permet de résoudre des problèmes comme : « Soit $A(2;-1)$, $B(6;3)$. Trouve les coordonnées du milieu $I$ de $[AB]$ en utilisant la colinéarité. » On pose $I(x;y)$. On a $\\overrightarrow{AI} = \\begin{pmatrix} x-2 \\\\ y+1 \\end{pmatrix}$ et $\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 4 \\end{pmatrix}$. La condition $\\overrightarrow{AI} = \\frac{1}{2} \\overrightarrow{AB}$ donne $\\begin{pmatrix} x-2 \\\\ y+1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 2 \\end{pmatrix}$, donc $x=4$, $y=1$. Le milieu est $I(4;1)$. C'est exactement la même chose que la formule habituelle, mais dérivée de la colinéarité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru tout le programme de colinéarité en seconde : reconnaître, calculer la condition, et l'appliquer à l'alignement, au parallélisme, aux milieux et aux problèmes paramétrés. C'est une notion centrale qui te servira tout au long du lycée, en géométrie bien sûr, mais aussi en étude de fonctions (tangentes, asymptotes) et en physique (forces, vitesses). Rappelle-toi la méthode unique : écrire les vecteurs, calculer le déterminant, conclure. Avec de l'entraînement, cela deviendra un réflexe."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître deux vecteurs colinéaires à leurs coordonnées (déterminant nul).",
+                "Je sais calculer la valeur d'un paramètre pour que deux vecteurs soient colinéaires.",
+                "Je sais prouver que trois points sont alignés en utilisant les vecteurs.",
+                "Je sais déterminer si deux droites sont parallèles grâce à leurs vecteurs directeurs.",
+                "Je sais utiliser la colinéarité pour trouver le milieu d'un segment."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les points $A(1;1)$, $B(4;3)$ et $C(7;5)$ sont-ils alignés ? Justifie.",
+              "answer": "Oui, ils sont alignés car $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ 4 \\end{pmatrix}$ sont colinéaires (déterminant nul).",
+              "hint": "Calcule $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, puis leur déterminant.",
+              "explanation": "$\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} 6 \\\\ 4 \\end{pmatrix}$. Déterminant : $3 \\times 4 - 6 \\times 2 = 12 - 12 = 0$. Les vecteurs sont colinéaires, donc $A$, $B$, $C$ alignés."
+            },
+            {
+              "question": "La droite $d$ a pour vecteur directeur $\\vec{u} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$. La droite $d'$ passe par $A(0;2)$ et $B(4;0)$. $d$ et $d'$ sont-elles parallèles ?",
+              "answer": "Oui, elles sont parallèles car $\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix} = 2 \\vec{u}$, donc colinéaires.",
+              "hint": "Trouve un vecteur directeur de $d'$ (par exemple $\\overrightarrow{AB}$) et teste la colinéarité avec $\\vec{u}$.",
+              "explanation": "$\\overrightarrow{AB} = \\begin{pmatrix} 4-0 \\\\ 0-2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix}$. Déterminant avec $\\vec{u}$ : $2 \\times (-2) - 4 \\times (-1) = -4 + 4 = 0$. Les vecteurs directeurs sont colinéaires, donc les droites sont parallèles."
+            },
+            {
+              "question": "Détermine $k$ pour que les points $A(2;3)$, $B(5;7)$ et $C(k;11)$ soient alignés.",
+              "answer": "$k = 8$",
+              "hint": "Écris $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, calcule leur déterminant en fonction de $k$, mets-le à zéro.",
+              "explanation": "$\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} k-2 \\\\ 8 \\end{pmatrix}$. Déterminant : $3 \\times 8 - (k-2) \\times 4 = 24 - 4k + 8 = 32 - 4k$. $32 - 4k = 0 \\Rightarrow 4k = 32 \\Rightarrow k = 8$."
+            },
+            {
+              "question": "Soit $A(-1;2)$ et $B(5;4)$. Trouve les coordonnées du milieu $I$ de $[AB]$ en utilisant la relation $\\overrightarrow{AI} = \\frac{1}{2} \\overrightarrow{AB}$.",
+              "answer": "$I(2;3)$",
+              "hint": "Calcule $\\overrightarrow{AB}$, divise par 2, puis ajoute à $A$ pour obtenir $I$.",
+              "explanation": "$\\overrightarrow{AB} = \\begin{pmatrix} 6 \\\\ 2 \\end{pmatrix}$, donc $\\frac{1}{2}\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$. Comme $\\overrightarrow{AI} = \\begin{pmatrix} x_I+1 \\\\ y_I-2 \\end{pmatrix}$, on a $x_I+1=3 \\Rightarrow x_I=2$ et $y_I-2=1 \\Rightarrow y_I=3$. Le milieu est $I(2;3)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

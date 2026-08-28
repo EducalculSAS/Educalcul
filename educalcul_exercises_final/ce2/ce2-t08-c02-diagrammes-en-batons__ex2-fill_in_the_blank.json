@@ -1,0 +1,126 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer barres",
+  "title": "Comparer des barres dans un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Comparer deux barres",
+      "content": "La barre des {{1}} est plus haute que la barre des pommes.",
+      "correctAnswer": "",
+      "blanks": [
+        "poires|Poires"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La barre des poires a une valeur de 8, alors que la barre des pommes a une valeur de 5. Donc la barre des poires est plus haute.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits vendus",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calculer la différence entre deux barres",
+      "content": "La barre des raisins est plus haute de ${{1}}$ unités que la barre des bananes.",
+      "correctAnswer": "",
+      "blanks": [
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La barre des raisins a une valeur de 6, la barre des bananes a une valeur de 3. La différence est 6 - 3 = 3.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits vendus",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Identifier la barre la plus haute",
+      "content": "Le fruit dont la barre est la plus haute est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "poires|Poires"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La barre la plus haute correspond aux poires avec une valeur de 8, supérieure aux autres fruits.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits vendus",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Raisins",
+            "value": 6,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

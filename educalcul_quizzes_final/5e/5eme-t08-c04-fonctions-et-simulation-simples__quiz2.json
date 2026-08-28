@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Appeler",
+  "title": "Quiz : Appeler une fonction (5e)",
+  "questions": [
+    {
+      "text": "Que signifie « appeler une fonction » en programmation ?",
+      "options": [
+        "Définir une fonction",
+        "Exécuter le code d'une fonction en l'utilisant",
+        "Supprimer une fonction",
+        "Modifier le nom d'une fonction"
+      ],
+      "correctAnswer": "Exécuter le code d'une fonction en l'utilisant",
+      "explanation": "Appeler une fonction signifie demander au programme d'exécuter les instructions contenues dans cette fonction. Définir une fonction correspond à la créer, la supprimer ou la renommer sont d'autres actions distinctes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En Python, quelle écriture permet d'appeler la fonction « saluer » qui ne prend aucun argument ?",
+      "options": [
+        "saluer",
+        "saluer()",
+        "call saluer",
+        "function saluer"
+      ],
+      "correctAnswer": "saluer()",
+      "explanation": "En Python, l'appel d'une fonction se fait en écrivant son nom suivi de parenthèses, même si aucun argument n'est passé. Les autres écritures sont soit une référence à la fonction, soit une syntaxe incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction « addition(a,b) » renvoie la somme de ses deux paramètres. Quel est le résultat de l'appel « addition($3$,$5$) » ?",
+      "options": [
+        "$3$",
+        "$5$",
+        "$8$",
+        "$15$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La fonction additionne $3$ et $5$, ce qui donne $8$. Les autres valeurs correspondent à l'un des arguments ou à une multiplication erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'instruction « $x$ = carre($4$) » où la fonction « carre » renvoie le carré de son argument, que contient la variable $x$ ?",
+      "options": [
+        "Affiche $16$",
+        "Assigne $16$ à $x$",
+        "Crée une nouvelle fonction",
+        "Ne fait rien"
+      ],
+      "correctAnswer": "Assigne $16$ à $x$",
+      "explanation": "L'appel « carre($4$) » renvoie $16$. L'opérateur d'affectation « = » stocke cette valeur dans la variable $x$. L'affichage nécessiterait une instruction d'impression distincte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la fonction « double(n) » renvoie $2 × n$, quelle est la valeur de l'expression « double(double($3$)) » ?",
+      "options": [
+        "$6$",
+        "$12$",
+        "$9$",
+        "$3$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Le premier appel « double($3$) » donne $6$. Le second appel « double($6$) » donne $12$. Les autres réponses correspondent à une seule application ou à une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

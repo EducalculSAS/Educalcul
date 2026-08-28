@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Facteur commun",
+  "title": "Quiz : Factorisation - Facteur commun",
+  "questions": [
+    {
+      "text": "Quel est le facteur commun de l'expression $6x^2 + 9x$ ?",
+      "options": [
+        "$3x$",
+        "$3$",
+        "$6x$",
+        "$9x$"
+      ],
+      "correctAnswer": "$3x$",
+      "explanation": "On décompose chaque terme : $6x^2 = 3x \\times 2x$ et $9x = 3x \\times 3$. Le plus grand facteur commun aux deux termes est donc $3x$. Les autres options ne divisent pas les deux termes simultanément.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez l'expression $12a^3b - 18a^2b^2$ en extrayant le facteur commun.",
+      "options": [
+        "$6a^2b(2a - 3b)$",
+        "$6ab(2a^2 - 3b)$",
+        "$3a^2b(4a - 6b)$",
+        "$2a^2b(6a - 9b)$"
+      ],
+      "correctAnswer": "$6a^2b(2a - 3b)$",
+      "explanation": "Le PGCD des coefficients 12 et 18 est 6. Pour les variables, la plus petite puissance de $a$ est $a^2$ et celle de $b$ est $b$. Le facteur commun est $6a^2b$. En le mettant hors parenthèses, on obtient $6a^2b(2a - 3b)$. Les autres propositions ne correspondent pas au PGCD complet.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes est la factorisation complète de $8x^3y^2 + 12x^2y^3$ ?",
+      "options": [
+        "$4x^2y^2(2x + 3y)$",
+        "$2xy(4x^2y + 6xy^2)$",
+        "$4xy(2x^2y + 3xy^2)$",
+        "$8x^2y^2(x + 1.5y)$"
+      ],
+      "correctAnswer": "$4x^2y^2(2x + 3y)$",
+      "explanation": "Le PGCD des coefficients 8 et 12 est 4. Les plus petites puissances sont $x^2$ et $y^2$. Le facteur commun maximal est $4x^2y^2$. En factorisant, on obtient $4x^2y^2(2x + 3y)$. Les autres choix laissent un facteur commun résiduel à l'intérieur des parenthèses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Identifiez le facteur commun de $15m^4n^2 - 25m^3n^3 + 35m^2n$.",
+      "options": [
+        "$5m^2n$",
+        "$5mn$",
+        "$5m^3n^2$",
+        "$5m^2n^2$"
+      ],
+      "correctAnswer": "$5m^2n$",
+      "explanation": "Le PGCD des coefficients 15, 25 et 35 est 5. La plus petite puissance de $m$ presente dans les trois termes est $m^2$, et celle de $n$ est $n$. Donc le facteur commun est $5m^2n$. Les autres options contiennent soit une puissance trop élevée, soit une puissance trop faible pour $n$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez complètement $9p^2q - 6pq^2 + 3pq$.",
+      "options": [
+        "$3pq(3p - 2q + 1)$",
+        "$3p(3pq - 2q^2 + q)$",
+        "$3q(3p^2 - 2pq + p)$",
+        "$9pq(p - 0.666...)$"
+      ],
+      "correctAnswer": "$3pq(3p - 2q + 1)$",
+      "explanation": "Le PGCD des coefficients 9, 6 et 3 est 3. Chaque terme contient au moins un facteur $p$ et un facteur $q$, donc le facteur commun est $3pq$. En le mettant hors parenthèses, on obtient $3pq(3p - 2q + 1)$. Les autres propositions ne factorisent pas le PGCD complet ou introduisent des nombres décimaux non exacts.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

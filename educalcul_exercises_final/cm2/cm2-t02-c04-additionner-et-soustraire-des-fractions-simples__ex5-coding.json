@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 285,
+  "_course_code": "cm2-t02-c04-additionner-et-soustraire-des-fractions-simples",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Même dénominateur ou cas prévus",
+  "title": "Algorithmes et calculs de fractions",
+  "blocks": [
+    {
+      "title": "La règle d'addition",
+      "content": "Imagine que tu dois créer un petit programme pour aider un robot à additionner deux fractions qui ont le même dénominateur. Quelles sont les deux étapes logiques que le robot doit suivre pour trouver le résultat ?",
+      "correctAnswer": "Etape 1 : additionner les numérateurs pour obtenir le nouveau numérateur. \\nEtape 2 : garder le même dénominateur sans le modifier.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour additionner des fractions de même dénominateur, on additionne uniquement les parties hautes (numérateurs) et on conserve la même unité de division (le dénominateur).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de soustraction",
+      "content": "Écris le raisonnement structuré (ou un pseudo-code) pour calculer le résultat de l'opération suivante : $\\frac{7}{12} - \\frac{3}{12}$",
+      "correctAnswer": "1. Vérifier que les dénominateurs sont identiques : ils sont tous les deux égaux à $12$. \\n2. Soustraire les numérateurs : $7 - 3 = 4$. \\n3. Écrire le résultat avec le dénominateur commun : $\\frac{4}{12}$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On suit la logique de la soustraction de fractions : on soustrait les numérateurs $7$ et $3$ tout en gardant le dénominateur $12$. Le résultat est $\\frac{4}{12}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Cas particulier et simplification",
+      "content": "Un programme informatique calcule $\\frac{2}{5} + \\frac{3}{5}$. Il trouve le résultat $\\frac{5}{5}$. Quel raisonnement supplémentaire le programme doit-il appliquer pour donner la réponse la plus simple possible ?",
+      "correctAnswer": "Le programme doit vérifier si le numérateur est égal au dénominateur. Si $5 = 5$, alors la fraction est égale à l'unité, donc le résultat final est $1$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque le numérateur et le dénominateur d'une fraction sont identiques, la fraction représente l'entier complet, soit $1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

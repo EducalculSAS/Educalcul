@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 391,
+  "_course_code": "5eme-t03-c03-distributivite-simple",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Vérifier par substitution",
+  "title": "Quiz : Vérifier par substitution",
+  "questions": [
+    {
+      "text": "Vérifier si l'égalité $3(x+4) = 3x+12$ est vraie pour $x=2$.",
+      "options": [
+        "Vraie, car $3(2+4)=18$ et $3*2+12=18$.",
+        "Fausse, car $3(2+4)=18$ et $3*2+12=14$.",
+        "Vraie, car $3(2+4)=14$ et $3*2+12=14$.",
+        "Fausse, car $3(2+4)=14$ et $3*2+12=18$."
+      ],
+      "correctAnswer": "Vraie, car $3(2+4)=18$ et $3*2+12=18$.",
+      "explanation": "On substitue $x=2$ dans chaque membre. À gauche : $3(2+4)=3\\times6=18$. À droite : $3\\times2+12=6+12=18$. Les deux résultats sont égaux, donc l'égalité est vérifiée pour $x=2$. Les autres options contiennent des erreurs de calcul (oubli de la multiplication, mauvaise addition).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour $y=7$, comparer les valeurs des expressions $5(y-3)$ et $5y-15$.",
+      "options": [
+        "Les deux expressions donnent $20$.",
+        "Les deux expressions donnent $35$.",
+        "La première donne $20$, la seconde $35$.",
+        "La première donne $35$, la seconde $20$."
+      ],
+      "correctAnswer": "Les deux expressions donnent $20$.",
+      "explanation": "On remplace $y$ par $7$. Première expression : $5(7-3)=5\\times4=20$. Deuxième expression : $5\\times7-15=35-15=20$. Les deux valent $20$, ce qui confirme la distributivité. Les distracteurs correspondent à l'oubli de la soustraction dans la parenthèse ou à une erreur de priorité des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Vérifier l'égalité $3(x+5) = 3x+10$ pour $x=2$.",
+      "options": [
+        "Vraie, car les deux côtés valent $21$.",
+        "Fausse, car le côté gauche vaut $21$ et le droit $16$.",
+        "Vraie, car les deux côtés valent $16$.",
+        "Fausse, car le côté gauche vaut $16$ et le droit $21$."
+      ],
+      "correctAnswer": "Fausse, car le côté gauche vaut $21$ et le droit $16$.",
+      "explanation": "On substitue $x=2$. Côté gauche : $3(2+5)=3\\times7=21$. Côté droit : $3\\times2+10=6+10=16$. Les résultats diffèrent, donc l'égalité n'est pas vérifiée pour $x=2$. L'erreur courante serait de croire que $3(x+5)$ se développe en $3x+10$ au lieu de $3x+15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour $z=0$, déterminer les valeurs de $7(2z+1)$ et $14z+7$.",
+      "options": [
+        "Les deux valent $7$.",
+        "Le premier vaut $7$, le second $0$.",
+        "Le premier vaut $0$, le second $7$.",
+        "Les deux valent $0$."
+      ],
+      "correctAnswer": "Les deux valent $7$.",
+      "explanation": "On remplace $z$ par $0$. Première expression : $7(2\\times0+1)=7(0+1)=7\\times1=7$. Deuxième expression : $14\\times0+7=0+7=7$. Les deux membres donnent $7$, l'égalité est vérifiée. Les distracteurs proviennent d'une confusion entre multiplication par zéro et addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Vérifier si l'égalité $6(a+3) = 6a+18$ est vraie pour $a=-2$.",
+      "options": [
+        "Vraie, car les deux côtés valent $6$.",
+        "Fausse, car le côté gauche vaut $6$ et le droit $0$.",
+        "Vraie, car les deux côtés valent $0$.",
+        "Fausse, car le côté gauche vaut $0$ et le droit $6$."
+      ],
+      "correctAnswer": "Vraie, car les deux côtés valent $6$.",
+      "explanation": "On substitue $a=-2$. Côté gauche : $6(-2+3)=6\\times1=6$. Côté droit : $6\\times(-2)+18=-12+18=6$. Les deux résultats sont égaux à $6$, donc l'égalité est correcte pour $a=-2$. Les autres options mélangent les signes ou oublient l'addition de $18$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

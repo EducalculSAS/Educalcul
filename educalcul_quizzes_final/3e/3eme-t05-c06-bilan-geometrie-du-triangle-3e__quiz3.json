@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 484,
+  "_course_code": "3eme-t05-c06-bilan-geometrie-du-triangle-3e",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Bilan - Géométrie du triangle 3e",
+  "title": "Bilan - Géométrie du triangle 3e",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ cm et $8$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$10$ cm",
+        "$14$ cm",
+        "$12$ cm",
+        "$9$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "D'après le théorème de Pythagore, l'hypoténuse $c$ vérifie $c^2 = 6^2 + 8^2 = 36 + 64 = 100$, donc $c = \\sqrt{100} = 10$ cm. Les autres valeurs correspondent à des erreurs de calcul (somme des côtés, produit, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, les points $D$ et $E$ appartiennent respectivement à $[AB]$ et $[AC]$ avec $(DE) \\parallel (BC)$. On sait que $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm. Quelle est la longueur de $EC$ ?",
+      "options": [
+        "$8$ cm",
+        "$6$ cm",
+        "$10$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "D'après Thalès, $\\frac{AD}{AB} = \\frac{AE}{AC}$. Ici $AB = AD+DB = 9$ cm, donc $\\frac{3}{9} = \\frac{1}{3}$. On a $\\frac{AE}{AE+EC} = \\frac{4}{4+EC} = \\frac{1}{3}$, d'où $12 = 4 + EC$ et $EC = 8$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, l'angle aigu $\\alpha$ vaut $30^\\circ$ et le côté opposé à cet angle mesure $5$ cm. Quelle est la longueur de l'hypoténuse ?",
+      "options": [
+        "$10$ cm",
+        "$5\\sqrt{3}$ cm",
+        "$5\\sqrt{2}$ cm",
+        "$15$ cm"
+      ],
+      "correctAnswer": "$10$ cm",
+      "explanation": "Le sinus de $30^\\circ$ vaut $\\frac{1}{2}$. On a $\\sin 30^\\circ = \\frac{\\text{opposé}}{\\text{hypoténuse}} = \\frac{5}{\\text{hyp}} = \\frac{1}{2}$, donc l'hypoténuse $= 5 \\div \\frac{1}{2} = 10$ cm. $5\\sqrt{3}$ correspondrait à $\\tan 30^\\circ$, $5\\sqrt{2}$ à un angle de $45^\\circ$, $15$ cm est une confusion possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $7$ cm, $24$ cm et $25$ cm. Est-ce un triangle rectangle ?",
+      "options": [
+        "Oui, c'est un triangle rectangle",
+        "Non, ce n'est pas un triangle rectangle",
+        "On ne peut pas savoir",
+        "C'est un triangle isocèle"
+      ],
+      "correctAnswer": "Oui, c'est un triangle rectangle",
+      "explanation": "On vérifie la réciproque de Pythagore : $7^2 + 24^2 = 49 + 576 = 625 = 25^2$. L'égalité est vérifiée, donc le triangle est rectangle (l'angle droit est opposé au côté de $25$ cm). Les autres propositions sont fausses.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 7,
+        "b": 24,
+        "c": 25,
+        "caption": "Triangle rectangle de côtés 7, 24 et 25"
+      }
+    },
+    {
+      "text": "Une échelle de $10$ m est appuyée contre un mur. Son pied est à $6$ m du mur. À quelle hauteur l'échelle touche-t-elle le mur ?",
+      "options": [
+        "$8$ m",
+        "$6$ m",
+        "$10$ m",
+        "$4$ m"
+      ],
+      "correctAnswer": "$8$ m",
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'hypoténuse est l'échelle ($10$ m), un côté est la distance au mur ($6$ m). L'autre côté (hauteur) $h$ vérifie $h^2 = 10^2 - 6^2 = 100 - 36 = 64$, donc $h = 8$ m.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

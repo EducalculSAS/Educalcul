@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 187,
+  "_course_code": "ce2-t06-c01-longueurs-mm-cm-m-km",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Lire / mesurer",
+  "title": "Mesurer et choisir les unités de longueur",
+  "blocks": [
+    {
+      "title": "Lire une mesure sur une règle",
+      "content": "Regarde la règle ci-dessous. Le segment mesuré a une longueur de {{1}} {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "7",
+        "cm"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regarde sur quelle graduation se termine le segment. Ici, il s'arrête exactement sur le chiffre 7. L'unité utilisée sur cette règle est le centimètre (cm). La mesure est donc 7 cm.",
+      "points": 2,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 7,
+        "unit": "cm",
+        "caption": "Règle graduée en centimètres"
+      }
+    },
+    {
+      "title": "Convertir des centimètres en millimètres",
+      "content": "Un crayon mesure $12$ cm. Exprime cette longueur en millimètres : {{1}} mm.",
+      "correctAnswer": "",
+      "blanks": [
+        "120"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour convertir des centimètres en millimètres, on multiplie par 10 car $1$ cm $= 10$ mm. On effectue le calcul : $12 \\times 10 = 120$. Le crayon mesure donc 120 mm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir l'unité de longueur adaptée",
+      "content": "Choisis l'unité la plus adaptée parmi km, m, cm, mm :\\n- La hauteur d'une table : {{1}}\\n- La longueur d'une fourmi : {{2}}\\n- La distance de Paris à Lyon : {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "m",
+        "mm",
+        "km"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On choisit l'unité selon la grandeur de l'objet ou de la distance. Une table fait environ 1 mètre (m). Une fourmi est très petite, on la mesure en millimètres (mm). Une distance entre deux villes est très grande, on l'exprime en kilomètres (km).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

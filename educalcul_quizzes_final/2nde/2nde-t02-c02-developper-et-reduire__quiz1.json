@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 504,
+  "_course_code": "2nde-t02-c02-developper-et-reduire",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Distributivité",
+  "title": "Quiz Distributivité - Seconde",
+  "questions": [
+    {
+      "text": "Développez et réduisez l'expression $(3x + 2)(x - 4)$.",
+      "options": [
+        "$3x^2 - 10x - 8$",
+        "$3x^2 - 12x + 2x - 8$",
+        "$3x^2 - 8x - 8$",
+        "$3x^2 + 10x - 8$"
+      ],
+      "correctAnswer": "$3x^2 - 10x - 8$",
+      "explanation": "On applique la distributivité : $(3x)(x) + (3x)(-4) + 2(x) + 2(-4) = 3x^2 -12x +2x -8$. En regroupant les termes semblables $-12x+2x = -10x$, on obtient $3x^2 -10x -8$. Les autres options correspondent à une absence de réduction, à une erreur de signe ou à un coefficient erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez et réduisez $(2a - 5)(3a + 7)$.",
+      "options": [
+        "$6a^2 - a - 35$",
+        "$6a^2 + a - 35$",
+        "$6a^2 - 29a - 35$",
+        "$6a^2 + 29a - 35$"
+      ],
+      "correctAnswer": "$6a^2 - a - 35$",
+      "explanation": "Produit : $2a \\times 3a = 6a^2$, $2a \\times 7 = 14a$, $-5 \\times 3a = -15a$, $-5 \\times 7 = -35$. Somme des termes en $a$ : $14a-15a = -a$. Résultat $6a^2 - a - 35$. Les distracteurs inversent le signe du terme en $a$ ou utilisent des coefficients incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduisez l'expression $4(x + 3) - 2(x - 5)$.",
+      "options": [
+        "$2x + 22$",
+        "$2x + 2$",
+        "$6x + 22$",
+        "$2x - 2$"
+      ],
+      "correctAnswer": "$2x + 22$",
+      "explanation": "Distribuez : $4x + 12 - 2x + 10 = (4x-2x) + (12+10) = 2x + 22$. L'option B oublie d'ajouter $+10$, C additionne les coefficients de $x$ au lieu de les soustraire, D change le signe du terme constant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez $5y^2 + 15y$.",
+      "options": [
+        "$5y(y + 3)$",
+        "$5y(y - 3)$",
+        "$5(y^2 + 3y)$",
+        "$y(5y + 15)$"
+      ],
+      "correctAnswer": "$5y(y + 3)$",
+      "explanation": "Le PGCD des deux termes est $5y$. En le mettant en facteur : $5y^2 + 15y = 5y(y + 3)$. L'option B change le signe, C ne factorise pas complètement, D factorise seulement $y$ en laissant un coefficient $5$ à l'intérieur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez et réduisez $(x + 2)^2 - (x - 3)(x + 3)$.",
+      "options": [
+        "$4x + 13$",
+        "$4x - 5$",
+        "$2x + 13$",
+        "$x^2 + 4x + 13$"
+      ],
+      "correctAnswer": "$4x + 13$",
+      "explanation": "$(x+2)^2 = x^2 + 4x + 4$. $(x-3)(x+3) = x^2 - 9$. La différence donne $x^2 + 4x + 4 - x^2 + 9 = 4x + 13$. Les autres options résultent d'erreurs de signe sur le terme constant, d'oubli du terme $x^2$ ou d'une réduction partielle.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

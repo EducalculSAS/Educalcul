@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 429,
+  "_course_code": "4eme-t02-c05-bilan-algebre-4e",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Développer, factoriser, résoudre",
+  "title": "Quiz : Développer, factoriser, résoudre (4e)",
+  "questions": [
+    {
+      "text": "Développer l'expression $3(x - 4)$.",
+      "options": [
+        "$3x - 12$",
+        "$3x - 4$",
+        "$3x + 12$",
+        "$x - 12$"
+      ],
+      "correctAnswer": "$3x - 12$",
+      "explanation": "On utilise la distributivité : on multiplie le $3$ par chaque terme de la parenthèse. $3 \\times x = 3x$ et $3 \\times (-4) = -12$. Le résultat est $3x - 12$. L'option $3x - 4$ oublie de multiplier le second terme, $3x + 12$ fait une erreur de signe, et $x - 12$ oublie de multiplier le premier terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser au maximum l'expression $12x + 8$.",
+      "options": [
+        "$4(3x + 2)$",
+        "$2(6x + 4)$",
+        "$4(3x + 8)$",
+        "$12(x + 8)$"
+      ],
+      "correctAnswer": "$4(3x + 2)$",
+      "explanation": "Il faut chercher le plus grand commun diviseur des coefficients $12$ et $8$, qui est $4$. On met $4$ en facteur : $12x + 8 = 4 \\times 3x + 4 \\times 2 = 4(3x + 2)$. L'option $2(6x + 4)$ est une factorisation mais pas maximale car il reste un facteur $2$ dans la parenthèse. Les deux autres options contiennent des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développer et réduire l'expression $(x + 5)(x - 2)$.",
+      "options": [
+        "$x^2 + 3x - 10$",
+        "$x^2 - 10$",
+        "$x^2 + 7x - 10$",
+        "$x^2 + 3x + 10$"
+      ],
+      "correctAnswer": "$x^2 + 3x - 10$",
+      "explanation": "On applique la double distributivité : $x \\times x = x^2$, $x \\times (-2) = -2x$, $5 \\times x = 5x$, $5 \\times (-2) = -10$. On regroupe les termes en $x$ : $-2x + 5x = 3x$. Le résultat final est $x^2 + 3x - 10$. L'option $x^2 - 10$ oublie les termes croisés, $x^2 + 7x - 10$ fait une erreur de signe sur le $2x$, et $x^2 + 3x + 10$ fait une erreur de signe sur le produit des constantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $5x^2 + 10x$.",
+      "options": [
+        "$5x(x + 2)$",
+        "$5(x^2 + 2x)$",
+        "$x(5x + 10)$",
+        "$5x^2(1 + 2x)$"
+      ],
+      "correctAnswer": "$5x(x + 2)$",
+      "explanation": "On cherche le facteur commun le plus grand. Les termes sont $5x^2$ et $10x$. Le PGCD des coefficients est $5$ et la plus petite puissance de $x$ est $x^1$. Le facteur commun est donc $5x$. On écrit $5x^2 = 5x \\times x$ et $10x = 5x \\times 2$, d'où $5x(x + 2)$. L'option $5(x^2 + 2x)$ et $x(5x + 10)$ ne sont pas factorisées au maximum. L'option $5x^2(1 + 2x)$ est fausse car $5x^2 \\times 2x = 10x^3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'équation $4x - 7 = 2x + 5$.",
+      "options": [
+        "$x = 6$",
+        "$x = 1$",
+        "$x = -1$",
+        "$x = -6$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On regroupe les $x$ à gauche et les nombres à droite : $4x - 2x = 5 + 7$. Cela donne $2x = 12$. On divise par $2$ : $x = 6$. L'erreur $x = 1$ viendrait de $4x - 2x = 5 - 7$. L'erreur $x = -1$ viendrait d'une mauvaise gestion des signes. L'erreur $x = -6$ viendrait de $2x = -12$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

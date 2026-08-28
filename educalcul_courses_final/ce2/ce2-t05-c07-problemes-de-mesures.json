@@ -1,0 +1,468 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.055402+00:00",
+  "id": 184,
+  "code": "ce2-t05-c07",
+  "title": "Problèmes de mesures",
+  "description": "Cours structuré Educalcul : Problèmes de mesures.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes de mesures",
+    "objectif_global": "Problèmes de mesures",
+    "mini_lecons_imposees": [
+      "Choisir unité.",
+      "Faire conversion simple.",
+      "Calculer et interpréter."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Choisir unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir la bonne unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu veux savoir la longueur d'un objet, son poids ou combien de temps dure une activité, tu as besoin d'une unité de mesure. Imagine que tu mesures la largeur de ton cahier avec des kilomètres : ce serait ridicule ! À l'inverse, mesurer la distance entre deux villes en centimètres prendrait des heures. Choisir l'unité adaptée, c'est comme choisir le bon outil pour un bricolage : ça rend tout plus simple."
+            },
+            {
+              "type": "definition",
+              "term": "Unité de longueur",
+              "definition": "C'est le repère qu'on utilise pour comparer des longueurs. Les plus courantes sont le millimètre ($mm$), le centimètre ($cm$), le mètre ($m$) et le kilomètre ($km$).",
+              "example": "Un trombone fait environ $1$ $cm$, une porte fait environ $2$ $m$, la distance de l'école à la maison peut être de $2$ $km$."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 8,
+              "unit": "cm",
+              "caption": "Ce segment mesure $8$ $cm$, c'est la longueur d'un petit crayon."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, pensons aux objets qu'on pèse ou qu'on verse. Pour la masse, on utilise le gramme ($g$) et le kilogramme ($kg$). Pour la capacité, le centilitre ($cL$) et le litre ($L$). Une pomme pèse environ $150$ $g$, un sac de farine $1$ $kg$. Une cuillère à soupe contient $1,5$ $cL$, une bouteille d'eau $1,5$ $L$."
+            },
+            {
+              "type": "definition",
+              "term": "Masse et capacité",
+              "definition": "La masse indique la quantité de matière (poids). La capacité indique le volume qu'un liquide peut occuper.",
+              "example": "Un litre de lait a une masse d'environ $1$ $kg$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de masses courantes",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 150,
+                  "tone": "red"
+                },
+                {
+                  "label": "Sac de farine",
+                  "value": 1000,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Plume",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour le temps, les unités sont la seconde ($s$), la minute ($min$) et l'heure ($h$). Un battement de cœur dure environ $1$ $s$, se brosser les dents prend $2$ $min$, un film dure $1$ $h$ $30$ $min$. Choisir la bonne unité permet de donner une information claire sans faire de calculs compliqués."
+            },
+            {
+              "type": "clock",
+              "hours": 1,
+              "minutes": 30,
+              "caption": "Une heure et demie : $1$ $h$ $30$ $min$.",
+              "interactive": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer l'unité qui convient selon ce que tu mesures : longueur, masse, capacité ou temps. Dans la prochaine leçon, nous verrons comment passer d'une unité à une autre sans te tromper."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité choisirais-tu pour mesurer la longueur d'un crayon ? $cm$, $m$ ou $km$ ?",
+              "answer": "$cm$",
+              "hint": "Pense à la taille d'un crayon par rapport à ta main.",
+              "explanation": "Un crayon fait une dizaine de centimètres, donc le centimètre est l'unité la plus pratique."
+            },
+            {
+              "question": "Pour indiquer la masse d'un sac de courses, quelle unité est la plus adaptée : $g$ ou $kg$ ?",
+              "answer": "$kg$",
+              "hint": "Un sac de courses pèse plusieurs centaines de grammes.",
+              "explanation": "Comme le sac pèse environ $2$ $kg$ à $5$ $kg$, le kilogramme évite d'écrire de grands nombres en grammes."
+            },
+            {
+              "question": "Combien de minutes y a-t-il dans $1$ $h$ $30$ $min$ ?",
+              "answer": "$90$ $min$",
+              "hint": "Une heure vaut $60$ minutes.",
+              "explanation": "$1$ $h$ $30$ $min$ = $60$ $min$ + $30$ $min$ = $90$ $min$."
+            }
+          ]
+        },
+        {
+          "title": "Faire conversion simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir les unités simplement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a une mesure en mètres et on veut la connaître en centimètres, ou en kilogrammes et on a besoin de grammes. C'est ce qu'on appelle une conversion. Heureusement, il suffit de connaître les liens entre les unités : $1$ $m$ = $100$ $cm$, $1$ $km$ = $1000$ $m$, $1$ $kg$ = $1000$ $g$, $1$ $L$ = $100$ $cL$, $1$ $h$ = $60$ $min$."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 m",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "100 cm",
+                  "value": 100,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Un mètre découpé en 100 centimètres."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le lien",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux unités : si tu passes du mètre au centimètre, tu multiplies par $100$ car $1$ $m$ = $100$ $cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Faire le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exemple : $3$ $m$ = $3 \\times 100$ = $300$ $cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis l'énoncé pour t'assurer que l'unité demandée correspond bien à ton résultat."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la masse et la capacité, le principe est le même. $1$ $kg$ = $1000$ $g$ et $1$ $L$ = $100$ $cL$. Si tu as $2$ $kg$ de pommes, tu as $2 \\times 1000$ = $2000$ $g$. Si une bouteille contient $1,5$ $L$ de jus, cela fait $1,5 \\times 100$ = $150$ $cL$. Attention : pour passer d'une grande unité à une plus petite, on multiplie ; pour l'inverse, on divise."
+            },
+            {
+              "type": "definition",
+              "term": "Conversion",
+              "definition": "Changer l'unité d'une mesure sans changer sa valeur, en multipliant ou divisant par 10, 100, 1000 (ou 60 pour le temps).",
+              "example": "$5$ $km$ = $5000$ $m$ (multiplication par $1000$)."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Équivalences utiles",
+              "bars": [
+                {
+                  "label": "1 km",
+                  "value": 1000,
+                  "tone": "navy"
+                },
+                {
+                  "label": "1 m",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "1 kg",
+                  "value": 1000,
+                  "tone": "gold"
+                },
+                {
+                  "label": "1 L",
+                  "value": 100,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Le temps suit une règle un peu différente : $1$ $h$ = $60$ $min$ et $1$ $min$ = $60$ $s$. Pour convertir $2$ $h$ en minutes, on fait $2 \\times 60$ = $120$ $min$. Pour convertir $90$ $s$ en minutes, on divise par $60$ : $90 \\div 60$ = $1$ $min$ $30$ $s$. C'est comme partager des bonbons par paquets de $60$."
+            },
+            {
+              "type": "clock",
+              "hours": 2,
+              "minutes": 0,
+              "caption": "Deux heures = $120$ minutes.",
+              "interactive": true
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine si tu passes d'heures en minutes (multiplier par 60) ou de minutes en heures (diviser par 60)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la multiplication ou la division, puis écris le résultat avec la bonne unité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant convertir les longueurs, les masses, les capacités et les durées. Dans la dernière leçon, nous utiliserons ces conversions pour résoudre des problèmes complets."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis $4$ $m$ en centimètres.",
+              "answer": "$400$ $cm$",
+              "hint": "1 mètre = 100 centimètres.",
+              "explanation": "$4$ $m$ = $4 \\times 100$ $cm$ = $400$ $cm$."
+            },
+            {
+              "question": "Un sac de riz pèse $3$ $kg$. Combien de grammes cela fait-il ?",
+              "answer": "$3000$ $g$",
+              "hint": "1 kilogramme = 1000 grammes.",
+              "explanation": "$3$ $kg$ = $3 \\times 1000$ $g$ = $3000$ $g$."
+            },
+            {
+              "question": "Combien de minutes y a-t-il dans $3$ $h$ ?",
+              "answer": "$180$ $min$",
+              "hint": "1 heure = 60 minutes.",
+              "explanation": "$3$ $h$ = $3 \\times 60$ $min$ = $180$ $min$."
+            }
+          ]
+        },
+        {
+          "title": "Calculer et interpréter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre des problèmes de mesures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais choisir l'unité et convertir, tu peux t'attaquer à des problèmes concrets. La méthode est toujours la même : lis bien l'énoncé, repère les mesures données, décide si tu dois additionner ou soustraire, fais le calcul et réponds par une phrase complète."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Corde 1",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Corde 2",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Deux cordes bout à bout : $2$ $m$ + $3$ $m$ = $5$ $m$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la question et les nombres utiles. Ici : longueur totale de deux cordes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme on met les cordes ensemble, c'est une addition."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2$ $m$ + $3$ $m$ = $5$ $m$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La longueur totale est de $5$ $m$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut soustraire pour trouver une différence ou ce qu'il reste. Par exemple, tu as $1$ $kg$ $500$ $g$ de farine, tu en utilises $800$ $g$ pour un gâteau. Combien te reste-t-il ? D'abord, convertis tout en grammes : $1$ $kg$ $500$ $g$ = $1500$ $g$. Ensuite, soustrais : $1500$ $g$ - $800$ $g$ = $700$ $g$. Il reste $700$ $g$ de farine."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Farine totale",
+                  "value": 1500,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Utilisée",
+                  "value": 800,
+                  "tone": "red"
+                },
+                {
+                  "label": "Restante",
+                  "value": 700,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Soustraction de masses : $1500$ $g$ - $800$ $g$ = $700$ $g$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes peuvent mélanger plusieurs étapes. Par exemple : Léa court $2$ $km$ le matin et $1500$ $m$ le soir. Quelle distance totale a-t-elle parcourue en mètres ? Convertis $2$ $km$ en $2000$ $m$, puis additionne : $2000$ $m$ + $1500$ $m$ = $3500$ $m$. Elle a couru $3500$ $m$ au total, soit $3$ $km$ $500$ $m$. Prends le temps de bien convertir avant de calculer."
+            },
+            {
+              "type": "number_line",
+              "caption": "Distance totale de Léa",
+              "min": 0,
+              "max": 4000,
+              "points": [
+                {
+                  "value": 2000,
+                  "label": "Matin"
+                },
+                {
+                  "value": 3500,
+                  "label": "Total"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais choisir l'unité adaptée (longueur, masse, capacité, temps).",
+                "Je sais convertir des mètres en centimètres, des kilomètres en mètres, des kilogrammes en grammes, des litres en centilitres, des heures en minutes.",
+                "Je sais résoudre un problème en additionnant ou soustrayant des mesures de même unité.",
+                "Je sais répondre par une phrase complète avec l'unité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Paul a une planche de $1$ $m$ $20$ $cm$. Il en scie $40$ $cm$. Quelle longueur reste-t-il ? Donne la réponse en centimètres.",
+              "answer": "$80$ $cm$",
+              "hint": "Convertis d'abord la planche en centimètres.",
+              "explanation": "$1$ $m$ $20$ $cm$ = $120$ $cm$. $120$ $cm$ - $40$ $cm$ = $80$ $cm$."
+            },
+            {
+              "question": "Une bouteille contient $2$ $L$ d'eau. On verse $75$ $cL$ dans un verre. Combien de centilitres restent dans la bouteille ?",
+              "answer": "$125$ $cL$",
+              "hint": "Convertis les litres en centilitres.",
+              "explanation": "$2$ $L$ = $200$ $cL$. $200$ $cL$ - $75$ $cL$ = $125$ $cL$."
+            },
+            {
+              "question": "Marc fait ses devoirs pendant $45$ $min$, puis il lit pendant $30$ $min$. Combien de temps a-t-il passé au total ? Donne la réponse en heures et minutes.",
+              "answer": "$1$ $h$ $15$ $min$",
+              "hint": "Additionne les minutes, puis convertis en heures si besoin.",
+              "explanation": "$45$ $min$ + $30$ $min$ = $75$ $min$ = $1$ $h$ $15$ $min$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

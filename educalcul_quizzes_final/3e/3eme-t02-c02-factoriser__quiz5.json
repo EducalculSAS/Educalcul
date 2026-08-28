@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 462,
+  "_course_code": "3eme-t02-c02-factoriser",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Facteur commun",
+  "title": "Factorisation : Approfondissement sur le facteur commun",
+  "questions": [
+    {
+      "text": "On considère l'expression $E = 12x^3y^2 - 18x^2y^3 + 6xy$. Quelle est la forme factorisée de $E$ en mettant en évidence le plus grand facteur commun ?",
+      "options": [
+        "$6xy(2x^2y - 3xy^2 + 1)$",
+        "$3xy(4x^2y - 6xy^2 + 2)$",
+        "$6xy(2x^2y - 3xy + 1)$",
+        "$6x^2y^2(2x - 3y + 1)$"
+      ],
+      "correctAnswer": "$6xy(2x^2y - 3xy^2 + 1)$",
+      "explanation": "Le PGCD des coefficients 12, 18 et 6 est 6. Pour les variables, la plus petite puissance de $x$ est $x^1$ et celle de $y$ est $y^1$. Le facteur commun est donc $6xy$. En factorisant : $12x^3y^2 = 6xy \\times 2x^2y$, $-18x^2y^3 = 6xy \\times (-3xy^2)$, $6xy = 6xy \\times 1$. L'option B n'utilise pas le PGCD des coefficients (3 au lieu de 6). L'option C oublie un $y$ dans le second terme. L'option D prend des puissances trop élevées pour le facteur commun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut factoriser l'expression $F = 5a(2b - 3) + 7(3 - 2b)$. Quelle manipulation permet de faire apparaître un facteur commun ?",
+      "options": [
+        "Écrire $3 - 2b = -(2b - 3)$ pour obtenir $5a(2b - 3) - 7(2b - 3)$",
+        "Écrire $5a(2b - 3) = -5a(3 - 2b)$ pour obtenir $-5a(3 - 2b) + 7(3 - 2b)$",
+        "Développer les deux produits puis factoriser le résultat",
+        "Factoriser par $5a + 7$ directement"
+      ],
+      "correctAnswer": "Écrire $3 - 2b = -(2b - 3)$ pour obtenir $5a(2b - 3) - 7(2b - 3)$",
+      "explanation": "Les parenthèses $(2b-3)$ et $(3-2b)$ sont opposées : $(3-2b) = -(2b-3)$. En remplaçant dans le second terme, $F = 5a(2b-3) + 7[-(2b-3)] = 5a(2b-3) - 7(2b-3)$. Le facteur commun $(2b-3)$ apparaît alors clairement. L'option B fonctionne aussi mathématiquement mais la convention est de garder le terme en $x$ (ou $b$) positif dans la parenthèse. L'option C est plus longue (développement puis refactorisation). L'option D est impossible car $5a+7$ n'est pas facteur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir mis en facteur commun, on obtient $G = (x - 4)(3x + 2) - (x - 4)(5 - x)$. Laquelle des égalités suivantes est la suite exacte et correcte de la factorisation ?",
+      "options": [
+        "$G = (x - 4)[(3x + 2) - (5 - x)] = (x - 4)(4x - 3)$",
+        "$G = (x - 4)[(3x + 2) - (5 - x)] = (x - 4)(2x - 3)$",
+        "$G = (x - 4)[(3x + 2) + (5 - x)] = (x - 4)(2x + 7)$",
+        "$G = (x - 4)(3x + 2 - 5 - x) = (x - 4)(2x - 3)$"
+      ],
+      "correctAnswer": "$G = (x - 4)[(3x + 2) - (5 - x)] = (x - 4)(4x - 3)$",
+      "explanation": "Le facteur commun est $(x-4)$. On écrit $G = (x-4)[(3x+2) - (5-x)]$. Attention au signe moins devant la seconde parenthèse : $-(5-x) = -5 + x$. La somme dans la parenthèse donne $3x + 2 - 5 + x = 4x - 3$. L'option B oublie le changement de signe pour le $x$ (donne $3x-x=2x$). L'option C met un plus au lieu d'un moins. L'option D oublie les parenthèses lors de la soustraction, ce qui conduit à l'erreur de signe sur $x$ ($-x$ au lieu de $+x$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'expression $H = (2y + 1)^2 - 5(2y + 1)$. Quelle est sa forme factorisée ?",
+      "options": [
+        "$(2y + 1)(2y - 4)$",
+        "$(2y + 1)(2y + 1 - 5)$",
+        "$(2y + 1)(2y - 4) = 2(2y + 1)(y - 2)$",
+        "$4y^2 + 4y + 1 - 10y - 5$"
+      ],
+      "correctAnswer": "$(2y + 1)(2y - 4) = 2(2y + 1)(y - 2)$",
+      "explanation": "Le facteur commun est $(2y+1)$. On a $H = (2y+1)[(2y+1) - 5] = (2y+1)(2y - 4)$. On peut encore factoriser 2 dans la seconde parenthèse : $2y-4 = 2(y-2)$. La forme la plus factorisée est donc $2(2y+1)(y-2)$. L'option A n'est pas complètement factorisée (on peut encore sortir 2). L'option B montre l'étape intermédiaire mais n'est pas simplifiée. L'option D est la forme développée, pas factorisée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $K = 9x^2 - 6x(3x - 2) + (3x - 2)^2$. On reconnaît une identité remarquable après factorisation. Quelle est la forme factorisée finale de $K$ ?",
+      "options": [
+        "$4$",
+        "$(3x - (3x - 2))^2$",
+        "$(2)^2$",
+        "$9x^2 - 18x^2 + 12x + 9x^2 - 12x + 4$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "L'expression est de la forme $a^2 - 2ab + b^2$ avec $a = 3x$ et $b = 3x - 2$. Elle factorise en $(a - b)^2 = (3x - (3x - 2))^2 = (3x - 3x + 2)^2 = 2^2 = 4$. L'option B est une étape intermédiaire correcte mais non simplifiée. L'option C est le carré calculé mais pas la forme finale simplifiée (on écrit $4$). L'option D est le développement complet qui retrouve bien $4$ mais n'est pas une forme factorisée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

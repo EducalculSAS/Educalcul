@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 513,
+  "_course_code": "2nde-t03-c04-colinearite-selon-programme",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Calculer condition",
+  "title": "Colinéarité : Calcul de condition",
+  "questions": [
+    {
+      "text": "Soient les vecteurs $\\vec{u}(2; -1)$ et $\\vec{v}(-6; k)$. Pour quelle valeur de $k$ ces deux vecteurs sont-ils colinéaires ?",
+      "options": [
+        "$k = 3$",
+        "$k = -3$",
+        "$k = 6$",
+        "$k = -6$"
+      ],
+      "correctAnswer": "$k = 3$",
+      "explanation": "Deux vecteurs $\\vec{u}(x_1; y_1)$ et $\\vec{v}(x_2; y_2)$ sont colinéaires si et seulement si leur déterminant est nul : $x_1 y_2 - x_2 y_1 = 0$. Ici, $2 \\times k - (-6) \\times (-1) = 2k - 6 = 0$, donc $2k = 6$ et $k = 3$. L'option $k = -3$ correspond à l'erreur de signe $2k + 6 = 0$, l'option $k = 6$ à l'oubli du terme $-6$, et $k = -6$ à une double erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient les points $A(1; 2)$, $B(3; 5)$ et $C(5; k)$. Quelle valeur de $k$ assure l'alignement des points $A$, $B$ et $C$ ?",
+      "options": [
+        "$k = 8$",
+        "$k = 4$",
+        "$k = -8$",
+        "$k = 2$"
+      ],
+      "correctAnswer": "$k = 8$",
+      "explanation": "Les points $A$, $B$, $C$ sont alignés si les vecteurs $\\vec{AB}$ et $\\vec{AC}$ sont colinéaires. $\\vec{AB}(2; 3)$ et $\\vec{AC}(4; k-2)$. La condition de colinéarité donne $2(k-2) - 4 \\times 3 = 0$, soit $2k - 4 - 12 = 0$, donc $2k = 16$ et $k = 8$. L'option $k = 4$ vient de l'erreur $2k - 4 = 12 \\Rightarrow 2k = 8$, l'option $k = -8$ d'une erreur de signe sur le déterminant, et $k = 2$ correspond à l'ordonnée de $A$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $\\vec{u}(3; 4)$ et $\\vec{v}(k; -8)$. Déterminer $k$ pour que $\\vec{u}$ et $\\vec{v}$ soient colinéaires.",
+      "options": [
+        "$k = -6$",
+        "$k = 6$",
+        "$k = -\\frac{3}{2}$",
+        "$k = 24$"
+      ],
+      "correctAnswer": "$k = -6$",
+      "explanation": "La condition de colinéarité est $3 \\times (-8) - k \\times 4 = 0$, soit $-24 - 4k = 0$. On obtient $-4k = 24$, donc $k = -6$. L'option $k = 6$ correspond à l'erreur de signe $-24 + 4k = 0$. L'option $k = -3/2$ provient d'une confusion avec l'égalité des rapports $3/4 = k/-8$ mal résolue ($3 \\times -8 = 4k \\Rightarrow k = -6$, pas $-3/2$). L'option $k = 24$ oublie la division par $-4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les points $A(2; -1)$, $B(5; 2)$ et $C(x; 5)$ sont alignés. Calculer la valeur de $x$.",
+      "options": [
+        "$x = 8$",
+        "$x = 6$",
+        "$x = -8$",
+        "$x = 4$"
+      ],
+      "correctAnswer": "$x = 8$",
+      "explanation": "Vecteurs $\\vec{AB}(3; 3)$ et $\\vec{AC}(x-2; 6)$. Colinéarité $\\Leftrightarrow 3 \\times 6 - (x-2) \\times 3 = 0 \\Leftrightarrow 18 - 3x + 6 = 0 \\Leftrightarrow 24 = 3x \\Leftrightarrow x = 8$. L'option $x = 6$ est obtenue en oubliant le $+6$ (calcul $18 - 3x = 0$). L'option $x = -8$ correspond à une erreur de signe globale. L'option $x = 4$ ne correspond à aucune étape logique simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u}(k; k+1)$ et $\\vec{v}(2; 5)$. Trouver $k$ tel que $\\vec{u}$ et $\\vec{v}$ soient colinéaires.",
+      "options": [
+        "$k = \\frac{2}{3}$",
+        "$k = -\\frac{2}{3}$",
+        "$k = \\frac{3}{2}$",
+        "$k = -\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$k = \\frac{2}{3}$",
+      "explanation": "Condition : $k \\times 5 - 2 \\times (k+1) = 0 \\Leftrightarrow 5k - 2k - 2 = 0 \\Leftrightarrow 3k = 2 \\Leftrightarrow k = 2/3$. L'option $-2/3$ vient de $3k = -2$ (erreur de signe sur le $2$). L'option $3/2$ est l'inverse (confusion $x_1/y_1 = x_2/y_2$). L'option $-3/2$ combine les deux erreurs précédentes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

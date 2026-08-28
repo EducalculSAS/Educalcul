@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 438,
+  "_course_code": "4eme-t04-c04-simulation",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Répéter expérience",
+  "title": "Simulation : Répéter une expérience aléatoire",
+  "blocks": [
+    {
+      "title": "Simulation d'un dé à six faces",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui simule le lancer d'un dé équilibré à six faces 100 fois. L'algorithme doit compter le nombre d'apparitions de chaque face (1 à 6) et afficher les six compteurs à la fin.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser un tableau compteurs de taille 6 avec des zéros.\\n2. Répéter 100 fois :\\n   a. Générer un entier aléatoire entre 1 et 6 (inclus).\\n   b. Incrémenter compteurs[valeur - 1].\\n3. Afficher le contenu du tableau compteurs.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle pour répéter l'expérience 100 fois. À chaque itération, on tire un nombre aléatoire uniforme entre 1 et 6, ce qui modélise un lancer de dé équilibré. Le tableau compteurs enregistre la fréquence de chaque face. Après la boucle, l'affichage donne la distribution observée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation de lancers de pièce jusqu'au premier pile",
+      "content": "Écrire un algorithme qui simule le lancer d'une pièce équilibrée jusqu'à l'obtention du premier « pile ». L'algorithme doit compter le nombre de lancers nécessaires. Répéter cette expérience 1000 fois et calculer la moyenne du nombre de lancers. Afficher cette moyenne.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser somme = 0.\\n2. Répéter 1000 fois :\\n   a. Initialiser compteur = 0.\\n   b. Tant que vrai :\\n      i. Incrémenter compteur.\\n      ii. Générer un aléa : 0 pour face, 1 pour pile.\\n      iii. Si aléa == 1 (pile) alors sortir de la boucle.\\n   c. Ajouter compteur à somme.\\n3. Calculer moyenne = somme / 1000.\\n4. Afficher moyenne.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque répétition correspond à une expérience indépendante : on lance la pièce jusqu'au premier pile. La variable compteur enregistre le nombre de lancers pour cette expérience. Après 1000 expériences, la somme des compteurs divisée par 1000 donne une estimation de l'espérance mathématique, qui théoriquement vaut 2 pour une pièce équilibrée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation de la probabilité de tirer une boule rouge",
+      "content": "Une urne contient 3 boules rouges et 7 boules bleues. On tire une boule au hasard, on note sa couleur, on remet la boule dans l'urne (tirage avec remise). Écrire un algorithme qui répète ce tirage 5000 fois, compte le nombre de boules rouges obtenues, calcule la fréquence observée de rouge et l'affiche. Comparer cette fréquence à la probabilité théorique $3/10$.",
+      "correctAnswer": "Algorithme :\\n1. Initialiser compteurRouge = 0.\\n2. Répéter 5000 fois :\\n   a. Générer un entier aléatoire entre 1 et 10 (inclus).\\n   b. Si entier <= 3 alors incrémenter compteurRouge.\\n3. Calculer frequence = compteurRouge / 5000.\\n4. Afficher frequence.\\n5. Afficher probabilité théorique = 3/10 = 0,3.\\n6. Comparer les deux valeurs (différence = |frequence - 0,3|).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le tirage avec remise se modélise par un entier aléatoire uniforme de 1 à 10 : les valeurs 1 à 3 représentent une boule rouge (3 chances sur 10). Après 5000 répétitions, la fréquence observée approche la probabilité théorique $0,3$ grâce à la loi des grands nombres. L'algorithme affiche les deux valeurs et leur écart pour illustrer la convergence.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

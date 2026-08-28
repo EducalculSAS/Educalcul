@@ -1,0 +1,331 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.628893+00:00",
+  "id": 47,
+  "code": "cp-t06-c01",
+  "title": "Comparer des longueurs",
+  "description": "Cours structuré Educalcul : Comparer des longueurs.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Comparer des longueurs",
+    "objectif_global": "Comparer des longueurs",
+    "mini_lecons_imposees": [
+      "Comparer directement deux objets.",
+      "Utiliser plus long / plus court.",
+      "Ordonner plusieurs longueurs."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Comparer directement deux objets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux objets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux crayons devant toi. Tu les poses côte à côte sur la table et tu regardes lequel dépasse l'autre. C'est comme ça qu'on compare directement deux longueurs, sans rien mesurer."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                12
+              ],
+              "right": [
+                8
+              ],
+              "caption": "Le crayon de $12$ cm est plus long que celui de $8$ cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le plateau de gauche descend, l'objet de gauche est plus long. Quand le plateau de droite descend, l'objet de droite est plus long. C'est tout simple, comme une balance qui penche."
+            },
+            {
+              "type": "definition",
+              "term": "plus long",
+              "definition": "Un objet est plus long qu'un autre s'il dépasse quand on les met bout à bout.",
+              "example": "Le bâton de $12$ cm est plus long que le bâton de $8$ cm."
+            },
+            {
+              "type": "definition",
+              "term": "plus court",
+              "definition": "Un objet est plus court qu'un autre s'il ne dépasse pas quand on les met bout à bout.",
+              "example": "Le bâton de $8$ cm est plus court que le bâton de $12$ cm."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu la balance, apprenons les mots pour dire ce que tu observes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les mots plus long et plus court"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu compares deux rubans, tu peux dire : le ruban bleu est plus long que le ruban rouge, ou le ruban rouge est plus court que le ruban bleu. Ces deux phrases veulent dire la même chose, mais l'une utilise 'plus long' et l'autre 'plus court'."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la longueur du crayon le plus long sur la balance ?",
+              "answer": "$12$ cm",
+              "hint": "Regarde quel plateau est le plus bas.",
+              "explanation": "Le plateau de gauche est plus bas, donc le crayon de gauche ($12$ cm) est le plus long."
+            },
+            {
+              "question": "Complète la phrase : Le ruban bleu est ___ que le ruban rouge.",
+              "answer": "plus long",
+              "hint": "Compare les deux rubans du dessin.",
+              "explanation": "Le ruban bleu dépasse le ruban rouge, donc il est plus long."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser plus long / plus court.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire plus long ou plus court"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu comment poser deux objets l'un à côté de l'autre. Maintenant, on va utiliser les mots 'plus long' et 'plus court' pour décrire ce que tu vois, même sans balance."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "A"
+                },
+                {
+                  "value": 9,
+                  "label": "B"
+                },
+                {
+                  "value": 12,
+                  "label": "C"
+                }
+              ],
+              "caption": "Trois longueurs repérées sur une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite, le point le plus à droite correspond à la plus grande longueur. Le point C à $12$ est donc le plus long, le point A à $5$ est le plus court."
+            },
+            {
+              "type": "definition",
+              "term": "comparer",
+              "definition": "Regarder deux ou plusieurs grandeurs pour savoir laquelle est la plus grande ou la plus petite.",
+              "example": "Je compare les trois bâtons et je dis : C est plus long que B, B est plus long que A."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on n'a pas de règle sous la main. On peut quand même dire qui est plus long en regardant simplement les objets."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                15
+              ],
+              "right": [
+                10
+              ],
+              "caption": "Le bâton de $15$ cm est plus long que celui de $10$ cm"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le plateau de gauche descend, donc le bâton de gauche est plus long. Le plateau de droite monte, donc le bâton de droite est plus court."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite, quel point montre la plus grande longueur ?",
+              "answer": "Le point C ($12$)",
+              "hint": "Cherche le nombre le plus grand.",
+              "explanation": "Le nombre $12$ est plus grand que $9$ et $5$, donc le point C correspond à la plus grande longueur."
+            },
+            {
+              "question": "Lequel des deux bâtons est le plus court ?",
+              "answer": "Le bâton de $10$ cm",
+              "hint": "Regarde quel plateau de la balance est le plus haut.",
+              "explanation": "Le plateau de droite est plus haut, ce qui signifie que le bâton de droite ($10$ cm) est plus court."
+            }
+          ]
+        },
+        {
+          "title": "Ordonner plusieurs longueurs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mettre en ordre plusieurs longueurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine trois rubans de couleurs différentes. Tu veux les ranger du plus court au plus long pour faire une jolie guirlande. On va apprendre à les ordonner ensemble."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Longueurs de trois rubans",
+              "bars": [
+                {
+                  "label": "Rouge",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vert",
+                  "value": 10,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La barre la plus basse (rouge, $4$) est la plus courte. La barre du milieu (bleu, $7$) est entre les deux. La barre la plus haute (vert, $10$) est la plus longue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : comparer deux rubans",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le ruban rouge et le ruban bleu. Pose-les côte à côte. Le bleu dépasse, donc il est plus long."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : placer le plus court à gauche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets le ruban rouge (le plus court) tout à gauche de ta rangée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : ajouter le suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compare le ruban bleu avec le vert. Le vert est plus long, donc tu le mets à droite du bleu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : vérifier l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde ta rangée : rouge ($4$), bleu ($7$), vert ($10$). C'est bien du plus court au plus long."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois l'ordre trouvé, on peut le vérifier sur une droite graduée pour être sûr de ne pas s'être trompé."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 12,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Rouge"
+                },
+                {
+                  "value": 7,
+                  "label": "Bleu"
+                },
+                {
+                  "value": 10,
+                  "label": "Vert"
+                }
+              ],
+              "caption": "Les trois longueurs sur une droite"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux objets en les posant côte à côte.",
+                "Je sais dire qu'un objet est plus long ou plus court qu'un autre.",
+                "Je sais ranger plusieurs longueurs du plus court au plus long."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Range les trois bâtons du plus court au plus long.",
+              "answer": "$4$ cm, $7$ cm, $10$ cm",
+              "hint": "Regarde les hauteurs des barres du graphique.",
+              "explanation": "La barre rouge ($4$) est la plus basse, puis la bleue ($7$), puis la verte ($10$)."
+            },
+            {
+              "question": "Quel bâton se trouve au milieu de l'ordre ?",
+              "answer": "$7$ cm",
+              "hint": "Cherche le nombre qui est entre les deux autres.",
+              "explanation": "Sur la droite, $7$ est entre $4$ et $10$, donc le bâton bleu est au milieu."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 68,
+  "_course_code": "ce1-t01-c01-construire-la-centaine",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Regrouper 10 dizaines",
+  "title": "Approfondissement : Regrouper 10 dizaines",
+  "questions": [
+    {
+      "text": "Regarde la représentation ci-dessous. Combien de centaines peut-on former avec ces dix dizaines ?",
+      "options": [
+        "1 centaine",
+        "10 centaines",
+        "100 centaines",
+        "0 centaine"
+      ],
+      "correctAnswer": "1 centaine",
+      "explanation": "Par définition, 10 dizaines regroupées forment exactement 1 centaine. L'image montre 10 barres de dix (10 dizaines), qui équivalent à 1 plaque de cent (1 centaine). Les autres réponses confondent le nombre de dizaines (10) avec le nombre de centaines formées, ou mélangent les unités.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 10,
+        "units": 0,
+        "caption": "Représentation de 10 dizaines"
+      }
+    },
+    {
+      "text": "Combien y a-t-il de centaines dans $40$ dizaines ?",
+      "options": [
+        "4 centaines",
+        "40 centaines",
+        "400 centaines",
+        "14 centaines"
+      ],
+      "correctAnswer": "4 centaines",
+      "explanation": "Pour trouver le nombre de centaines, il faut faire des groupes de 10 dizaines. $40$ dizaines correspondent à $4$ groupes de $10$ dizaines ($10 + 10 + 10 + 10 = 40$). Chaque groupe fait 1 centaine, donc $4$ centaines au total. L'erreur '40 centaines' confond le nombre de dizaines avec le nombre de centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici le nombre $320$ écrit dans un tableau de numération. Si on regroupe toutes les dizaines de ce nombre, combien de centaines obtient-on au total ?",
+      "options": [
+        "3 centaines",
+        "32 centaines",
+        "2 centaines",
+        "30 centaines"
+      ],
+      "correctAnswer": "3 centaines",
+      "explanation": "Le nombre 320 contient 3 centaines (soit 30 dizaines) et 2 dizaines. Au total, cela fait 32 dizaines. En regroupant ces dizaines par paquets de 10, on forme 3 centaines (avec 30 dizaines) et il reste 2 dizaines non regroupées. On obtient donc 3 centaines au total.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 320,
+        "caption": "Tableau de numération du nombre 320"
+      }
+    },
+    {
+      "text": "Pour écrire le nombre $500$ en dizaines, combien de dizaines faut-il ?",
+      "options": [
+        "5 dizaines",
+        "50 dizaines",
+        "500 dizaines",
+        "15 dizaines"
+      ],
+      "correctAnswer": "50 dizaines",
+      "explanation": "Puisque 1 centaine = 10 dizaines, 5 centaines = 5 × 10 dizaines = 50 dizaines. L'option '5 dizaines' correspond à 50, pas à 500. L'option '500 dizaines' serait 5000. Il faut multiplier le chiffre des centaines par 10.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un paquet contient 10 dizaines de crayons. Combien y a-t-il de centaines de crayons dans 3 paquets ?",
+      "options": [
+        "3 centaines",
+        "30 centaines",
+        "13 centaines",
+        "300 centaines"
+      ],
+      "correctAnswer": "3 centaines",
+      "explanation": "1 paquet = 10 dizaines = 1 centaine. Donc 3 paquets = 3 × 1 centaine = 3 centaines. L'option '30 centaines' correspondrait à 30 paquets. L'option '300 centaines' confond avec le nombre total d'unités (3000).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

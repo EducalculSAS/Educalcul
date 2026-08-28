@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Bilan - Stats-probas 3e",
+  "title": "Bilan Statistiques et Probabilités - Associations",
+  "blocks": [
+    {
+      "title": "Vocabulaire statistique",
+      "content": "Relie chaque terme de vocabulaire à sa définition correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Population",
+          "right": "Ensemble de tous les individus que l'on étudie"
+        },
+        {
+          "left": "Échantillon",
+          "right": "Sous-ensemble de la population sélectionné pour l'étude"
+        },
+        {
+          "left": "Effectif total",
+          "right": "Somme de tous les effectifs de la série statistique"
+        },
+        {
+          "left": "Fréquence",
+          "right": "Rapport de l'effectif d'une valeur sur l'effectif total"
+        }
+      ],
+      "items": [],
+      "explanation": "La population est l'ensemble complet étudié. L'échantillon en est une partie. L'effectif total est la somme des effectifs (souvent noté $N$). La fréquence d'une valeur est son effectif divisé par $N$ ; la somme des fréquences vaut toujours 1.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Règles de probabilités",
+      "content": "Relie chaque situation ou propriété à la formule de probabilité qui lui correspond.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Événement certain",
+          "right": "Probabilité = 1"
+        },
+        {
+          "left": "Événement impossible",
+          "right": "Probabilité = 0"
+        },
+        {
+          "left": "Événement contraire de $A$ (noté $\\overline{A}$)",
+          "right": "$p(\\overline{A}) = 1 - p(A)$"
+        },
+        {
+          "left": "Deux événements incompatibles $A$ et $B$",
+          "right": "$p(A \\text{ ou } B) = p(A) + p(B)$"
+        }
+      ],
+      "items": [],
+      "explanation": "Un événement certain a une probabilité de 1 (ou 100 %). Un événement impossible a une probabilité de 0. La probabilité de l'événement contraire est 1 moins la probabilité de l'événement. Si deux événements ne peuvent pas se produire en même temps (incompatibles), la probabilité de leur réunion est la somme de leurs probabilités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Indicateurs de position et de dispersion",
+      "content": "Relie chaque indicateur statistique à sa définition ou sa méthode de calcul.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Moyenne",
+          "right": "Somme des valeurs multipliées par leurs effectifs, divisée par l'effectif total"
+        },
+        {
+          "left": "Médiane",
+          "right": "Valeur qui partage la série ordonnée en deux parts d'effectifs égaux"
+        },
+        {
+          "left": "Étendue",
+          "right": "Différence entre la plus grande valeur et la plus petite valeur"
+        },
+        {
+          "left": "Premier quartile ($Q_1$)",
+          "right": "Médiane de la première moitié de la série ordonnée (25 % des effectifs en dessous)"
+        }
+      ],
+      "items": [],
+      "explanation": "La moyenne est le centre de gravité de la distribution. La médiane est la valeur centrale (position $(N+1)/2$). L'étendue mesure la dispersion totale. Le premier quartile $Q_1$ est la valeur sous laquelle se trouvent 25 % des données ; c'est la médiane de la partie inférieure de la série.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 385,
+  "_course_code": "5eme-t02-c02-additionner-et-soustraire-des-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Sens déplacement",
+  "title": "Sens des déplacements sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur une droite graduée, on part de l'origine $O$. On effectue un premier déplacement de $+4$, puis un second déplacement de $-6$. À quel nombre arrive-t-on ?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$-10$",
+        "$10$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "On part de $0$. Le premier déplacement $+4$ nous amène à $4$. Le second déplacement $-6$ signifie qu'on recule de $6$ unités depuis $4$, ce qui donne $4 - 6 = -2$. L'option $2$ correspondrait à $+4 + (-2)$ ou $-4 + 6$. L'option $-10$ correspond à $-4 + (-6)$. L'option $10$ correspond à $+4 + 6$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Déplacements +4 puis -6 depuis l'origine",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": 0,
+            "label": "O"
+          },
+          {
+            "value": 4,
+            "label": "A"
+          },
+          {
+            "value": -2,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On se place au point $A(-3)$. On effectue un déplacement de $+5$. Quel est le point d'arrivée ?",
+      "options": [
+        "$B(2)$",
+        "$B(-8)$",
+        "$B(8)$",
+        "$B(-2)$"
+      ],
+      "correctAnswer": "$B(2)$",
+      "explanation": "Le point de départ est $-3$. Un déplacement de $+5$ signifie qu'on avance de $5$ unités vers la droite. On calcule $-3 + 5 = 2$. L'option $B(-8)$ correspond à un déplacement de $-5$ (vers la gauche). L'option $B(8)$ correspond à $3 + 5$ (erreur sur le signe du départ). L'option $B(-2)$ correspond à $-3 + 1$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Déplacement +5 depuis -3",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          },
+          {
+            "value": 2,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Quelle opération correspond au déplacement suivant : on part de $4$ et on arrive à $-3$ ?",
+      "options": [
+        "$4 + (-3) = 1$",
+        "$4 - 7 = -3$",
+        "$4 + 7 = 11$",
+        "$-3 - 4 = -7$"
+      ],
+      "correctAnswer": "$4 - 7 = -3$",
+      "explanation": "Le déplacement va de $4$ vers $-3$. C'est un déplacement vers la gauche (négatif). La distance parcourue est $4 - (-3) = 7$ unités. Le vecteur déplacement est donc $-7$. L'opération est $4 + (-7) = -3$, ce qui s'écrit aussi $4 - 7 = -3$. L'option $4 + (-3)$ correspond à un déplacement de $-3$ seulement. L'option $4 + 7$ va vers la droite. L'option $-3 - 4$ part de $-3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compléter l'égalité pour que le déplacement parte de $-2$ et arrive à $5$ : $-2 + \\dots = 5$.",
+      "options": [
+        "$+3$",
+        "$+7$",
+        "$-7$",
+        "$-3$"
+      ],
+      "correctAnswer": "$+7$",
+      "explanation": "Pour aller de $-2$ à $5$, il faut avancer vers la droite. La distance est $5 - (-2) = 5 + 2 = 7$. Le déplacement est donc $+7$. On vérifie : $-2 + 7 = 5$. L'option $+3$ amène à $1$. L'option $-7$ amène à $-9$. L'option $-3$ amène à $-5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue deux déplacements successifs. Le premier est un déplacement de $-4$. Le second est un déplacement de $+6$. Quel est le déplacement équivalent unique (la somme vectorielle) ?",
+      "options": [
+        "$+2$",
+        "$-2$",
+        "$+10$",
+        "$-10$"
+      ],
+      "correctAnswer": "$+2$",
+      "explanation": "Le déplacement équivalent est la somme des deux vecteurs : $(-4) + (+6)$. On peut regrouper : $-4 + 6 = 2$. Comme la valeur absolue de $+6$ est plus grande que celle de $-4$, le résultat est positif. L'option $-2$ correspond à $+4 + (-6)$. L'option $+10$ correspond à l'addition des valeurs absolues sans tenir compte des signes ($4+6$). L'option $-10$ correspond à $-4 + (-6)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

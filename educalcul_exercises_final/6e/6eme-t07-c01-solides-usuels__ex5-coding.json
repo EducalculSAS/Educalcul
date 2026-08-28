@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 363,
+  "_course_code": "6eme-t07-c01-solides-usuels",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Approfondissement : Prisme / pyramide selon programme",
+  "title": "Algorithmes pour volumes de prismes et pyramides",
+  "blocks": [
+    {
+      "title": "Volume d'un prisme droit",
+      "content": "Écrire un algorithme (ou un programme en Python) qui demande à l'utilisateur l'aire de la base $B$ (en cm$^2$) et la hauteur $h$ (en cm) d'un prisme droit, puis affiche son volume $V$.",
+      "correctAnswer": "Algorithme :\\n1. Demander B (aire de la base).\\n2. Demander h (hauteur).\\n3. Calculer V = B * h.\\n4. Afficher V.\\n\\nExemple en Python :\\nB = float(input(\"Aire de la base (cm²) : \"))\\nh = float(input(\"Hauteur (cm) : \"))\\nV = B * h\\nprint(\"Volume = \", V, \"cm³\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'un prisme droit est égal au produit de l'aire de sa base par sa hauteur : $V = B \\times h$. L'algorithme suit directement cette formule : lecture des deux grandeurs, multiplication, affichage du résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'une pyramide",
+      "content": "Écrire un algorithme qui demande l'aire de la base $B$ et la hauteur $h$ d'une pyramide, puis calcule et affiche son volume $V$.",
+      "correctAnswer": "Algorithme :\\n1. Demander B (aire de la base).\\n2. Demander h (hauteur).\\n3. Calculer V = (1/3) * B * h.\\n4. Afficher V.\\n\\nExemple en Python :\\nB = float(input(\"Aire de la base (cm²) : \"))\\nh = float(input(\"Hauteur (cm) : \"))\\nV = (1/3) * B * h\\nprint(\"Volume = \", V, \"cm³\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'une pyramide vaut le tiers du produit de l'aire de la base par la hauteur : $V = \\frac{1}{3} B h$. L'algorithme implémente cette formule en multipliant B et h puis en divisant par 3 (ou en multipliant par 1/3).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconnaître un prisme ou une pyramide",
+      "content": "Écrire un algorithme qui, à partir du nombre de bases $n$ (1 ou 2) et de la forme des faces latérales (rectangles ou triangles), détermine si le solide est un prisme ou une pyramide et affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Demander n (nombre de bases : 1 ou 2).\\n2. Demander type_faces (\"rectangles\" ou \"triangles\").\\n3. Si n == 2 et type_faces == \"rectangles\" alors afficher \"Prisme\".\\n4. Sinon si n == 1 et type_faces == \"triangles\" alors afficher \"Pyramide\".\\n5. Sinon afficher \"Solide non reconnu\".\\n\\nExemple en Python :\\nn = int(input(\"Nombre de bases (1 ou 2) : \"))\\ntype_faces = input(\"Forme des faces latérales (rectangles/triangles) : \")\\nif n == 2 and type_faces == \"rectangles\":\\n    print(\"Prisme\")\\nelif n == 1 and type_faces == \"triangles\":\\n    print(\"Pyramide\")\\nelse:\\n    print(\"Solide non reconnu\")",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un prisme possède deux bases parallèles et congruentes, et ses faces latérales sont des rectangles (ou parallélogrammes). Une pyramide a une seule base et ses faces latérales sont des triangles se rejoignant au sommet. L'algorithme teste ces deux caractéristiques pour classifier le solide.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

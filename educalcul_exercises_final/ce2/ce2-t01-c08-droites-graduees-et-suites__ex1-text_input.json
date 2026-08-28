@@ -1,0 +1,149 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Lire une échelle",
+  "title": "Lire une échelle sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Échelle par dizaines",
+      "content": "Observe la droite graduée ci-dessous. Les graduations principales sont espacées de $10$ en $10$. Quelle est la valeur du point $A$ ?",
+      "correctAnswer": "60",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La droite commence à $0$ et les grands traits (graduations principales) indiquent les nombres $0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100$. Le point $A$ est placé exactement sur la graduation correspondant à $60$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100 par pas de 10",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 20,
+            "label": "20"
+          },
+          {
+            "value": 40,
+            "label": "40"
+          },
+          {
+            "value": 60,
+            "label": "A"
+          },
+          {
+            "value": 80,
+            "label": "80"
+          },
+          {
+            "value": 100,
+            "label": "100"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Échelle par cinq",
+      "content": "Sur cette droite graduée, les graduations principales sont espacées de $10$ en $10$, mais les petites graduations (intercalaires) sont espacées de $5$ en $5$. Quelle est la valeur du point $B$ ?",
+      "correctAnswer": "35",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les grands traits correspondent aux multiples de $10$ : $0, 10, 20, 30, 40, 50$. Les petits traits se trouvent exactement au milieu, ils correspondent aux nombres se terminant par $5$ : $5, 15, 25, 35, 45$. Le point $B$ est situé sur le petit trait qui suit $30$, c'est donc $35$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 50 par pas de 5",
+        "min": 0,
+        "max": 50,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 10,
+            "label": "10"
+          },
+          {
+            "value": 20,
+            "label": "20"
+          },
+          {
+            "value": 30,
+            "label": "30"
+          },
+          {
+            "value": 35,
+            "label": "B"
+          },
+          {
+            "value": 40,
+            "label": "40"
+          },
+          {
+            "value": 50,
+            "label": "50"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Échelle sur les centaines",
+      "content": "Cette droite graduée va de $200$ à $300$. Les graduations principales sont espacées de $20$ en $20$. Quelle est la valeur du point $C$ ?",
+      "correctAnswer": "270",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les valeurs inscrites sont $200, 220, 240, 260, 280, 300$. L'écart entre deux graduations principales est de $20$. Le point $C$ se trouve exactement au milieu entre $260$ et $280$. La moitié de $20$ est $10$, donc on ajoute $10$ à $260$ (ou on retire $10$ à $280$), ce qui donne $270$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 200 à 300 par pas de 20",
+        "min": 200,
+        "max": 300,
+        "points": [
+          {
+            "value": 200,
+            "label": "200"
+          },
+          {
+            "value": 220,
+            "label": "220"
+          },
+          {
+            "value": 240,
+            "label": "240"
+          },
+          {
+            "value": 260,
+            "label": "260"
+          },
+          {
+            "value": 270,
+            "label": "C"
+          },
+          {
+            "value": 280,
+            "label": "280"
+          },
+          {
+            "value": 300,
+            "label": "300"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

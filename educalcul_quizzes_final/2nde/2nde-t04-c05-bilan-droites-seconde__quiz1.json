@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Équations, pentes, intersections",
+  "title": "Quiz - Équations, pentes, intersections",
+  "questions": [
+    {
+      "text": "Quelle est la pente (coefficient directeur) de la droite d'équation $y = 2x + 3$ ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$-2$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Dans l'équation réduite $y = ax + b$, le coefficient $a$ est la pente. Ici $a = 2$. Les autres options correspondent à l'ordonnée à l'origine, à l'opposé de la pente ou à l'inverse de la pente, qui sont des erreurs fréquentes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La droite passant par les points $A(1;2)$ et $B(3;6)$ a pour équation :",
+      "options": [
+        "$y = 2x$",
+        "$y = 2x + 2$",
+        "$y = 2x - 2$",
+        "$y = 0.5x + 1$"
+      ],
+      "correctAnswer": "$y = 2x$",
+      "explanation": "La pente est $(6-2)/(3-1) = 2$. En utilisant le point $A$ : $y-2 = 2(x-1)$ donc $y = 2x$. L'option $y = 2x+2$ correspond à une erreur sur l'ordonnée à l'origine, $y = 2x-2$ à un signe erroné, et $y = 0.5x+1$ à l'inverse de la pente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites $d_1 : y = 3x - 1$ et $d_2 : y = -x + 5$ se coupent en un point. Ses coordonnées sont :",
+      "options": [
+        "$(1,5 ; 3,5)$",
+        "$(1 ; 2)$",
+        "$(2 ; 5)$",
+        "$(0 ; 5)$"
+      ],
+      "correctAnswer": "$(1,5 ; 3,5)$",
+      "explanation": "On résout $3x - 1 = -x + 5$ ce qui donne $4x = 6$ donc $x = 1,5$. En remplaçant dans $d_1$ : $y = 3(1,5) - 1 = 4,5 - 1 = 3,5$. Le point d'intersection est $(1,5 ; 3,5)$. Les autres paires ne satisfont pas les deux équations simultanément.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les droites $y = 4x + 2$ et $y = -\\frac{1}{4}x + 3$ sont :",
+      "options": [
+        "Perpendiculaire",
+        "Parallèles",
+        "Sécantes non perpendiculaires",
+        "Confondues"
+      ],
+      "correctAnswer": "Perpendiculaire",
+      "explanation": "Le produit des pentes est $4 \\times (-\\frac{1}{4}) = -1$, ce qui caractérise deux droites perpendiculaires. Elles ne sont pas parallèles (pentes différentes), ni confondues (équations différentes), et elles sont sécantes mais perpendiculaires.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'équation de la droite parallèle à $y = -2x + 5$ et passant par le point $(2 ; -1)$ ?",
+      "options": [
+        "$y = -2x + 3$",
+        "$y = -2x - 3$",
+        "$y = 2x + 3$",
+        "$y = -0,5x$"
+      ],
+      "correctAnswer": "$y = -2x + 3$",
+      "explanation": "Une droite parallèle a même pente $-2$. En utilisant la forme point-pente : $y - (-1) = -2(x - 2)$ soit $y + 1 = -2x + 4$ donc $y = -2x + 3$. L'option $-2x-3$ correspond à une erreur de signe sur l'ordonnée à l'origine, $2x+3$ utilise la pente opposée, et $-0,5x$ utilise l'inverse de la pente.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

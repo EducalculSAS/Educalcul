@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_course_id": 83,
+  "_course_code": "ce1-t02-c05-comparer-des-fractions-simples-dans-des-cas-accessibles",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Application : Comparer des fractions simples dans des cas accessibles",
+  "title": "Comparer des fractions simples",
+  "questions": [
+    {
+      "text": "Regarde les deux bandes de fractions. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "Un demi est plus petit qu'un quart",
+        "Un demi est plus grand qu'un quart",
+        "Un demi est égal à un quart",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "Un demi est plus grand qu'un quart",
+      "explanation": "Lorsque l'on partage un tout en deux parts égales, chaque part (un demi) est plus grande que lorsque l'on partage le même tout en quatre parts égales (un quart). Sur la figure, la zone colorée pour $1/2$ est plus grande que celle pour $1/4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison visuelle de 1/2 et 1/4"
+      }
+    },
+    {
+      "text": "On partage deux gâteaux identiques en quatre parts égales. Léa mange deux parts. Tom mange trois parts. Qui a mangé la plus grande quantité de gâteau ?",
+      "options": [
+        "Léa",
+        "Tom",
+        "Ils ont mangé la même quantité",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Tom",
+      "explanation": "Les deux gâteaux sont identiques et coupés en le même nombre de parts (quatre). On compare donc les nombres de parts mangées : deux parts ($2/4$) contre trois parts ($3/4$). Comme $3$ est plus grand que $2$, Tom a mangé plus que Léa.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Deux quarts (Léa)"
+      }
+    },
+    {
+      "text": "Compare les deux fractions unitaires suivantes : $1/3$ et $1/5$. Laquelle est la plus grande ?",
+      "options": [
+        "Un tiers",
+        "Un cinquième",
+        "Elles sont égales",
+        "Cela dépend de la forme du gâteau"
+      ],
+      "correctAnswer": "Un tiers",
+      "explanation": "Pour les fractions unitaires (numérateur 1), plus le dénominateur est grand, plus la part est petite. Partager en $3$ parts donne des parts plus grandes que partager en $5$ parts. Donc $1/3$ est plus grand que $1/5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces fractions, laquelle est comprise entre $1/2$ et $1$ (le tout) ?",
+      "options": [
+        "Un quart",
+        "Un tiers",
+        "Trois quarts",
+        "Un cinquième"
+      ],
+      "correctAnswer": "Trois quarts",
+      "explanation": "Un quart ($1/4$) et un tiers ($1/3$) sont plus petits qu'un demi ($1/2$). Un cinquième ($1/5$) est encore plus petit. Trois quarts ($3/4$) représente trois parts sur quatre : c'est plus que la moitié ($2/4$) mais moins que le tout ($4/4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, la moitié des élèves portent des lunettes. Un tiers des élèves portent un chapeau. Y a-t-il plus d'élèves avec des lunettes ou avec un chapeau ?",
+      "options": [
+        "Plus d'élèves avec des lunettes",
+        "Plus d'élèves avec un chapeau",
+        "Autant dans les deux cas",
+        "Impossible à savoir sans le nombre total d'élèves"
+      ],
+      "correctAnswer": "Plus d'élèves avec des lunettes",
+      "explanation": "On compare la moitié ($1/2$) et le tiers ($1/3$). Partager un groupe en deux fait des parts plus grandes que le partager en trois. Donc la moitié de la classe est une quantité plus grande que le tiers de la classe, quel que soit le nombre total d'élèves.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

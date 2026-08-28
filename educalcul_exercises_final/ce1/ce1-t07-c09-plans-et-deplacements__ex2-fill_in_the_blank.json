@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 134,
+  "_course_code": "ce1-t07-c09-plans-et-deplacements",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Coder un déplacement",
+  "title": "Codage de déplacements sur grille",
+  "blocks": [
+    {
+      "title": "Déplacement sans changement de direction",
+      "content": "Sur une grille de $4$ cases sur $4$, le point de départ est en bas à gauche et le point d'arrivée est en haut à droite. Pour aller du départ à l'arrivée, il faut avancer de {{1}} cases vers le haut et de {{2}} cases vers la droite.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur une grille de 4 cases sur 4, il y a 3 cases entre le bas et le haut, et 3 cases entre la gauche et la droite. Donc il faut avancer 3 cases vers le haut et 3 cases vers la droite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déplacement avec un virage",
+      "content": "Sur une grille de $4$ cases sur $4$, le robot part du coin en bas à gauche. Il avance de {{1}} cases vers le haut, tourne à {{2}}, puis avance de {{3}} cases vers la droite pour arriver sur la case d'arrivée.",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "droite",
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le robot part du coin en bas à gauche. Pour atteindre la case d'arrivée située 2 cases plus haut et 3 cases plus à droite, il doit d'abord avancer de 2 cases vers le haut, puis tourner à droite, et enfin avancer de 3 cases vers la droite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture d'un code de déplacement complet",
+      "content": "Complète le code de déplacement pour aller du point A au point B sur une grille de $3$ cases sur $3$ : {{1}} cases vers le haut, {{2}} cases vers la droite, {{3}} cases vers le haut.",
+      "correctAnswer": "",
+      "blanks": [
+        "1",
+        "2",
+        "1"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur une grille de 3 cases sur 3, le point A est en bas à gauche et le point B est en haut à droite. Un chemin possible consiste à monter de 1 case, aller à droite de 2 cases, puis monter de 1 case.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

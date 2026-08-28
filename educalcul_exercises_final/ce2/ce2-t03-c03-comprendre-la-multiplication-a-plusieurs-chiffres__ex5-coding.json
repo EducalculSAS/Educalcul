@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 162,
+  "_course_code": "ce2-t03-c03-comprendre-la-multiplication-a-plusieurs-chiffres",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Décomposer un facteur",
+  "title": "Décomposer un facteur pour multiplier",
+  "blocks": [
+    {
+      "title": "Multiplication de 12 par 3",
+      "content": "Écris un algorithme (en langage naturel ou en pseudo-code) qui calcule $12 × 3$ en décomposant $12$ en $10 + 2$.",
+      "correctAnswer": "1. Décomposer 12 en 10 + 2.\\n2. Multiplier chaque partie par 3 : 10 × 3 = 30 et 2 × 3 = 6.\\n3. Additionner les résultats : 30 + 6 = 36.\\nDonc 12 × 3 = 36.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On décompose le nombre 12 en 10 (dizaines) et 2 (unités). On multiplie chaque partie par 3, puis on additionne les produits partiels pour obtenir le résultat final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication de 34 par 5",
+      "content": "Écris un algorithme qui calcule $34 × 5$ en décomposant $34$ en $30 + 4$.",
+      "correctAnswer": "1. Décomposer 34 en 30 + 4.\\n2. Multiplier chaque partie par 5 : 30 × 5 = 150 et 4 × 5 = 20.\\n3. Additionner les résultats : 150 + 20 = 170.\\nDonc 34 × 5 = 170.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La décomposition de 34 en 30 (dizaines) et 4 (unités) permet de calculer 30 × 5 = 150 et 4 × 5 = 20, puis d'additionner pour obtenir 170.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général pour multiplier un nombre à deux chiffres par un chiffre",
+      "content": "Propose un algorithme générique (en pseudo-code) qui prend en entrée un nombre à deux chiffres $ab$ (où $a$ est le chiffre des dizaines et $b$ le chiffre des unités) et un multiplicateur $c$ (un chiffre), décompose $ab$ en $10a + b$, effectue les multiplications partielles et donne le produit final.",
+      "correctAnswer": "Algorithme MultiplicationDeuxChiffres\\nEntrée : a (chiffre des dizaines), b (chiffre des unités), c (multiplicateur)\\nDébut\\n    dizaines = 10 * a\\n    unites = b\\n    produit1 = dizaines * c\\n    produit2 = unites * c\\n    resultat = produit1 + produit2\\n    Afficher resultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décompose le nombre à deux chiffres en dizaines (10 × a) et unités (b), multiplie chaque partie par le multiplicateur c, puis additionne les deux produits partiels pour obtenir le produit final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

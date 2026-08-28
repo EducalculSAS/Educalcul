@@ -1,0 +1,381 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.691707+00:00",
+  "id": 69,
+  "code": "ce1-t01-c02",
+  "title": "Lire et écrire jusqu'à 199",
+  "description": "Cours structuré Educalcul : Lire et écrire jusqu'à 199.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Lire et écrire jusqu'à 199",
+    "objectif_global": "Lire et écrire jusqu'à 199",
+    "mini_lecons_imposees": [
+      "Lire les écritures chiffrées.",
+      "Écrire un nombre dicté.",
+      "Relier écriture, quantité et décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lire les écritures chiffrées.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir les nombres de 100 à 199"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les nombres jusqu'à $99$. Aujourd'hui, on passe la barre des $100$ ! Imagine une grande boîte qui contient exactement $100$ petits cubes. Quand tu as cette boîte pleine, tu as une **centaine**. On l'écrit $100$. C'est un chiffre $1$ suivi de deux zéros. Le premier zéro dit : \"il n'y a pas de dizaines\". Le deuxième zéro dit : \"il n'y a pas d'unités\"."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 0,
+              "caption": "1 centaine = 100"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, ajoutons des dizaines et des unités à côté de cette centaine. Si je mets $2$ dizaines ($20$) et $5$ unités ($5$), j'obtiens $125$. On lit : \"cent vingt-cinq\". Le mot **cent** ne change jamais, il ne prend pas de \"s\" quand il y en a une seule. Essaie de le dire tout haut : cent vingt-cinq."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres de 110 à 119 : attention aux oreilles !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entre $110$ et $119$, les mots sonnent un peu différemment. $110$ se dit **cent dix** (pas \"cent onze\"). $111$ se dit **cent onze**. $112$ : **cent douze**. $113$ : **cent treize**. $114$ : **cent quatorze**. $115$ : **cent quinze**. $116$ : **cent seize**. Ensuite, ça redevient régulier : $117$ = **cent dix-sept**, $118$ = **cent dix-huit**, $119$ = **cent dix-neuf**. Entraîne-toi à les chuchoter dans l'ordre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Les nombres de 110 à 119",
+              "min": 110,
+              "max": 119,
+              "points": [
+                {
+                  "value": 110,
+                  "label": "110"
+                },
+                {
+                  "value": 115,
+                  "label": "115"
+                },
+                {
+                  "value": 119,
+                  "label": "119"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire n'importe quel nombre jusqu'à 199"
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle est simple : tu dis le nombre de centaines (ici, toujours \"cent\"), puis le nombre des dizaines et unités comme d'habitude. Exemple : $134$ -> \"cent trente-quatre\". $157$ -> \"cent cinquante-sept\". $198$ -> \"cent quatre-vingt-dix-huit\". Attention à $180$ : on dit \"cent quatre-vingts\" (avec un \"s\" à quatre-vingts car il n'est pas suivi d'un autre chiffre). Et $199$ : \"cent quatre-vingt-dix-neuf\"."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 8,
+              "units": 7,
+              "caption": "187 = 1 centaine, 8 dizaines, 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire tous les nombres de $100$ à $199$. Dans la prochaine leçon, on va apprendre à les écrire quand on te les dicte. C'est l'inverse, mais tu verras, c'est tout aussi amusant !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis ce nombre à voix haute : $142$.",
+              "answer": "Cent quarante-deux",
+              "hint": "Décompose : 1 centaine, 4 dizaines, 2 unités.",
+              "explanation": "On dit \"cent\" pour la centaine, puis \"quarante-deux\" pour les dizaines et unités."
+            },
+            {
+              "question": "Comment lit-on $116$ ?",
+              "answer": "Cent seize",
+              "hint": "C'est un nombre spécial entre 110 et 119.",
+              "explanation": "De 111 à 116, les noms sont spéciaux : onze, douze, treize, quatorze, quinze, seize."
+            },
+            {
+              "question": "Écris en lettres le nombre $180$.",
+              "answer": "Cent quatre-vingts",
+              "hint": "Regarde la fin du nombre : 80 sans unité derrière.",
+              "explanation": "Quand quatre-vingts n'est pas suivi d'un autre chiffre, il prend un \"s\"."
+            }
+          ]
+        },
+        {
+          "title": "Écrire un nombre dicté.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un nombre dicté : la méthode du coffre-fort"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as trois tiroirs devant toi. Le tiroir du haut, c'est celui des **centaines**. Celui du milieu, c'est les **dizaines**. Celui du bas, c'est les **unités**. Quand on te dicte un nombre, tu remplis chaque tiroir avec le bon chiffre. Si on dit \"cent trente-six\", tu entends \"cent\" -> tu mets $1$ dans le tiroir des centaines. \"Trente\" -> tu mets $3$ dans le tiroir des dizaines. \"Six\" -> tu mets $6$ dans le tiroir des unités. Résultat : $136$."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 136,
+              "caption": "136 : 1 centaine, 3 dizaines, 6 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le piège du zéro invisible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne dit pas les dizaines ou les unités parce qu'elles valent zéro. Mais il faut quand même écrire le zéro pour garder la place ! Exemple : \"cent cinq\". Tu entends \"cent\" -> $1$ aux centaines. Tu n'entends pas de dizaine -> tu mets $0$ aux dizaines. Tu entends \"cinq\" -> $5$ aux unités. Ça donne $105$. Si tu oublies le zéro, tu écris $15$, ce qui n'est pas du tout le même nombre !"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 5,
+              "caption": "105 = 1 centaine, 0 dizaine, 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les nombres ronds : cent dix, cent vingt..."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le nombre se termine par \"dix\", \"vingt\", \"trente\"... jusqu'à \"quatre-vingts\", il n'y a pas d'unités. Il faut mettre un zéro à la place des unités. \"Cent quarante\" -> $1$ centaine, $4$ dizaines, $0$ unité = $140$. \"Cent quatre-vingts\" -> $1$ centaine, $8$ dizaines, $0$ unité = $180$. Attention : \"cent\" tout seul, c'est $100$ (deux zéros). \"Cent un\", c'est $101$ (zéro aux dizaines)."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 10,
+              "cols": 10,
+              "highlighted": 100,
+              "caption": "Une grille de 100 cases pour visualiser la centaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens fort ! Tu sais maintenant écrire n'importe quel nombre jusqu'à $199$ quand on te le dicte. La prochaine fois, on va jouer à relier l'écriture, la quantité avec des cubes, et la décomposition en additions. C'est comme trois langages pour le même nombre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On te dicte : \"cent vingt-trois\". Écris le nombre en chiffres.",
+              "answer": "123",
+              "hint": "1 centaine, 2 dizaines, 3 unités.",
+              "explanation": "Cent = 1 au hundreds, vingt = 2 aux dizaines, trois = 3 aux unités."
+            },
+            {
+              "question": "Écris en chiffres : \"cent sept\".",
+              "answer": "107",
+              "hint": "Il n'y a pas de dizaines, il faut un zéro.",
+              "explanation": "Cent = 1, zéro dizaine = 0, sept = 7. Donc 107."
+            },
+            {
+              "question": "Quel nombre écrit-on pour \"cent quatre-vingts\" ?",
+              "answer": "180",
+              "hint": "Huit dizaines, zéro unité.",
+              "explanation": "Cent = 1, quatre-vingts = 8 dizaines, pas d'unité = 0. Résultat : 180."
+            }
+          ]
+        },
+        {
+          "title": "Relier écriture, quantité et décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trois visages pour un même nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un nombre, c'est comme une personne qui a trois façons de se présenter. Première façon : son **écriture en chiffres** (comme $147$). Deuxième façon : sa **quantité** (des cubes, des jetons, des traits). Troisième façon : sa **décomposition** (une addition qui montre ce qu'il contient). Aujourd'hui, on apprend à passer de l'une à l'autre sans se tromper. C'est le super-pouvoir des mathématiciens !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "1 centaine",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4 dizaines",
+                  "value": 40,
+                  "tone": "green"
+                },
+                {
+                  "label": "7 unités",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "147 décomposé en 100 + 40 + 7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'écriture à la décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $162$. Le chiffre des centaines est $1$ -> ça fait $100$. Le chiffre des dizaines est $6$ -> ça fait $60$. Le chiffre des unités est $2$ -> ça fait $2$. On écrit la décomposition : $162 = 100 + 60 + 2$. C'est comme si on ouvrait le nombre pour voir ce qu'il a dans le ventre. Essaie avec $135$ : $100 + 30 + 5$. Et avec $190$ : $100 + 90 + 0$ (on peut ne pas écrire le $+ 0$ à la fin)."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 6,
+              "units": 2,
+              "caption": "162 = 100 + 60 + 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la quantité à l'écriture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine qu'on te donne des cubes : $1$ plaque de $100$, $3$ barres de $10$, et $8$ petits cubes. Tu comptes : $1$ centaine = $100$. $3$ dizaines = $30$. $8$ unités = $8$. Tu additionnes (dans ta tête ou sur un bout de papier) : $100 + 30 + 8 = 138$. Tu écris le nombre : $138$. C'est l'exercice inverse, et tu vas voir, c'est très satisfaisant de reconstruire le nombre !"
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cercle",
+                "carre",
+                "cercle",
+                "carre"
+              ],
+              "options": [
+                "cercle",
+                "triangle"
+              ],
+              "answer": "cercle",
+              "caption": "Un petit jeu de logique pour aérer le cerveau"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le grand mélange : toutes les représentations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne la décomposition et tu dois trouver le nombre. Exemple : $100 + 50 + 9 = ?$ Tu remets chaque paquet à sa place : $1$ centaine, $5$ dizaines, $9$ unités -> $159$. Parfois, on te donne le nombre en lettres : \"cent soixante-douze\" -> tu écris $172$ -> tu décomposes $100 + 70 + 2$. Tu vois, les trois langages disent la même chose. Tu deviens traducteur officiel des nombres !"
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Comparer des parts (petit rappel visuel)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire les nombres de 100 à 199 à voix haute.",
+                "J'écris correctement un nombre dicté, même avec des zéros.",
+                "Je relie l'écriture en chiffres, la quantité (cubes) et la décomposition (addition).",
+                "Je repère les centaines, dizaines et unités dans un nombre à 3 chiffres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici la décomposition : $100 + 20 + 6$. Quel est le nombre ?",
+              "answer": "126",
+              "hint": "Remets chaque terme à sa place : centaines, dizaines, unités.",
+              "explanation": "100 = 1 centaine, 20 = 2 dizaines, 6 = 6 unités. Donc 126."
+            },
+            {
+              "question": "Tu as 1 plaque de 100, 7 barres de 10 et 4 cubes. Écris le nombre.",
+              "answer": "174",
+              "hint": "Compte les centaines, puis les dizaines, puis les unités.",
+              "explanation": "1 centaine = 100, 7 dizaines = 70, 4 unités = 4. Total = 174."
+            },
+            {
+              "question": "Complète la décomposition de 153 : $153 = 100 + \\_\\_\\_ + 3$.",
+              "answer": "50",
+              "hint": "Regarde le chiffre des dizaines dans 153.",
+              "explanation": "Le chiffre des dizaines est 5, ça fait 5 dizaines = 50."
+            },
+            {
+              "question": "Écris en chiffres le nombre : \"cent quatre-vingt-onze\".",
+              "answer": "191",
+              "hint": "Cent = 1, quatre-vingt-onze = 91 (9 dizaines, 1 unité).",
+              "explanation": "Cent = 1 centaine. Quatre-vingt-onze = 9 dizaines et 1 unité. Donc 191."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

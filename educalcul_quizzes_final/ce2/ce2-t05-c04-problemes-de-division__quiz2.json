@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 181,
+  "_course_code": "ce2-t05-c04-problemes-de-division",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Groupement",
+  "title": "Quiz : Problèmes de division - Groupement",
+  "questions": [
+    {
+      "text": "Un boulanger a fabriqué $24$ pains. Il veut les ranger dans des caisses. Dans chaque caisse, il met $6$ pains. Combien de caisses lui faut-il ?",
+      "options": [
+        "Il lui faut $4$ caisses.",
+        "Il lui faut $3$ caisses.",
+        "Il lui faut $5$ caisses.",
+        "Il lui faut $18$ caisses."
+      ],
+      "correctAnswer": "Il lui faut $4$ caisses.",
+      "explanation": "C'est un problème de groupement : on connait le total ($24$ pains) et la taille de chaque groupe ($6$ pains par caisse). On cherche le nombre de groupes. Il faut faire la division $24 \\div 6 = 4$. L'option $3$ correspond à une erreur de table de multiplication ($6 \\times 3 = 18$). L'option $5$ est une approximation. L'option $18$ correspond à une soustraction ($24 - 6$) au lieu d'une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, il y a $28$ élèves. Le maître veut former des groupes de $4$ élèves pour un jeu. Combien de groupes y aura-t-il ?",
+      "options": [
+        "Il y aura $7$ groupes.",
+        "Il y aura $6$ groupes.",
+        "Il y aura $8$ groupes.",
+        "Il y aura $24$ groupes."
+      ],
+      "correctAnswer": "Il y aura $7$ groupes.",
+      "explanation": "On cherche le nombre de groupes de $4$ que l'on peut faire avec $28$ élèves. C'est la division $28 \\div 4$. En utilisant la table de $4$ : $4 \\times 7 = 28$. Donc $7$ groupes. L'option $6$ donne $4 \\times 6 = 24$ (il resterait $4$ élèves). L'option $8$ donne $32$ (trop). L'option $24$ est le résultat de $28 - 4$ (erreur d'opération).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une fleuriste a $35$ roses. Elle veut faire des bouquets de $5$ roses chacun. Combien de bouquets pourra-t-elle faire ?",
+      "options": [
+        "Elle pourra faire $7$ bouquets.",
+        "Elle pourra faire $6$ bouquets.",
+        "Elle pourra faire $8$ bouquets.",
+        "Elle pourra faire $30$ bouquets."
+      ],
+      "correctAnswer": "Elle pourra faire $7$ bouquets.",
+      "explanation": "Problème de groupement : total $35$, taille du groupe $5$. Calcul : $35 \\div 5 = 7$ car $5 \\times 7 = 35$. L'option $6$ correspond à $5 \\times 6 = 30$ (il reste $5$ roses, soit un bouquet de plus). L'option $8$ correspond à $5 \\times 8 = 40$ (pas assez de roses). L'option $30$ est une soustraction ($35 - 5$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un camion transporte $48$ cartons. On les décharge en faisant des piles de $8$ cartons. Combien de piles y aura-t-il ?",
+      "options": [
+        "Il y aura $6$ piles.",
+        "Il y aura $5$ piles.",
+        "Il y aura $7$ piles.",
+        "Il y aura $40$ piles."
+      ],
+      "correctAnswer": "Il y aura $6$ piles.",
+      "explanation": "On divise le total ($48$) par le nombre d'objets par pile ($8$). $48 \\div 8 = 6$ car $8 \\times 6 = 48$. L'option $5$ donne $8 \\times 5 = 40$ (il reste $8$ cartons, donc une pile de plus). L'option $7$ donne $56$ (impossible). L'option $40$ correspond à une soustraction ($48 - 8$) ou une confusion avec le résultat de $8 \\times 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la kermesse, on a $54$ bonbons. On veut remplir des sachets en mettant $9$ bonbons dans chaque sachet. Combien de sachets pourra-t-on remplir ?",
+      "options": [
+        "On pourra remplir $6$ sachets.",
+        "On pourra remplir $5$ sachets.",
+        "On pourra remplir $7$ sachets.",
+        "On pourra remplir $45$ sachets."
+      ],
+      "correctAnswer": "On pourra remplir $6$ sachets.",
+      "explanation": "C'est un groupement : $54$ bonbons au total, $9$ par sachet. Division : $54 \\div 9 = 6$ car $9 \\times 6 = 54$. L'option $5$ correspond à $9 \\times 5 = 45$ (il reste $9$ bonbons, soit un sachet entier de plus). L'option $7$ correspond à $63$ (trop). L'option $45$ est le résultat de la multiplication $9 \\times 5$ ou de la soustraction $54 - 9$, mais ce n'est pas le nombre de sachets.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

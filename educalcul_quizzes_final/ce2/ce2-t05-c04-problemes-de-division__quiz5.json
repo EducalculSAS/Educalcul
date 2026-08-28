@@ -1,0 +1,156 @@
+{
+  "_status": "done",
+  "_course_id": 181,
+  "_course_code": "ce2-t05-c04-problemes-de-division",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Partage",
+  "title": "Approfondissement : Problèmes de partage (Division)",
+  "questions": [
+    {
+      "text": "Luc a $18$ bonbons. Il les partage équitablement entre $3$ amis. Combien de bonbons chaque ami reçoit-il ?",
+      "options": [
+        "5 bonbons",
+        "6 bonbons",
+        "7 bonbons",
+        "9 bonbons"
+      ],
+      "correctAnswer": "6 bonbons",
+      "explanation": "Il s'agit d'un partage équitable : on divise le total ($18$) par le nombre de parts ($3$). L'opération est $18 \\div 3 = 6$. Chaque ami reçoit donc $6$ bonbons. L'option $9$ correspond à une division par $2$ ($18 \\div 2$), et $5$ ou $7$ sont des approximations incorrectes.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Ami 1",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Ami 2",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Ami 3",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "Partage de 18 bonbons en 3 parts égales"
+      }
+    },
+    {
+      "text": "Une institutrice a $45$ cahiers. Elle veut les ranger dans $5$ boîtes en mettant le même nombre de cahiers dans chaque boîte. Combien de cahiers met-elle dans chaque boîte ?",
+      "options": [
+        "7 cahiers",
+        "8 cahiers",
+        "9 cahiers",
+        "10 cahiers"
+      ],
+      "correctAnswer": "9 cahiers",
+      "explanation": "On partage le total ($45$) en $5$ groupes égaux. L'opération est $45 \\div 5$. On peut décomposer $45$ en $40 + 5$. $40 \\div 5 = 8$ et $5 \\div 5 = 1$, donc $8 + 1 = 9$. On peut aussi chercher le multiple de $5$ le plus proche : $5 \\times 9 = 45$. L'option $8$ oublie de diviser les $5$ unités restantes, et $10$ correspond à $50 \\div 5$.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Boîte 1",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 2",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 3",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 4",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Boîte 5",
+            "value": 9,
+            "tone": "green"
+          }
+        ],
+        "caption": "Partage de 45 cahiers en 5 boîtes"
+      }
+    },
+    {
+      "text": "Paul a $31$ billes. Il veut les partager équitablement entre $4$ copains. Combien de billes chaque copain reçoit-il et combien en reste-t-il ?",
+      "options": [
+        "7 billes chacun, 3 restantes",
+        "8 billes chacun, 1 restante",
+        "7 billes chacun, 1 restante",
+        "6 billes chacun, 7 restantes"
+      ],
+      "correctAnswer": "7 billes chacun, 3 restantes",
+      "explanation": "On effectue la division euclidienne de $31$ par $4$. On cherche le plus grand multiple de $4$ inférieur ou égal à $31$. $4 \\times 7 = 28$ et $4 \\times 8 = 32$ (trop grand). Chaque copain reçoit $7$ billes. Le reste est $31 - 28 = 3$ billes. L'option « 8 billes chacun » dépasse le total. L'option « 7 billes, 1 restante » calcule mal le reste ($31 - 28 = 3$, pas $1$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Copain 1",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Copain 2",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Copain 3",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Copain 4",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Reste",
+            "value": 3,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Partage de 31 billes entre 4 copains avec reste"
+      }
+    },
+    {
+      "text": "Maman a $50$ euros. Elle achète $2$ jeux à $12$ euros chacun. Elle partage l'argent qui lui reste équitablement entre ses $2$ enfants. Combien reçoit chaque enfant ?",
+      "options": [
+        "11 euros",
+        "12 euros",
+        "13 euros",
+        "14 euros"
+      ],
+      "correctAnswer": "13 euros",
+      "explanation": "C'est un problème à deux étapes. 1. Calculer le prix total des jeux : $2 \\times 12 = 24$ euros. 2. Calculer l'argent restant : $50 - 24 = 26$ euros. 3. Partager ce reste en $2$ parts égales : $26 \\div 2 = 13$ euros. Chaque enfant reçoit $13$ euros. L'option $12$ correspond au prix d'un jeu, $11$ et $14$ sont des erreurs de calcul sur la soustraction ou la division finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie a partagé ses autocollants entre $5$ cahiers. Elle a mis $9$ autocollants dans chaque cahier et il lui en reste $3$. Combien d'autocollants Julie avait-elle au départ ?",
+      "options": [
+        "42 autocollants",
+        "45 autocollants",
+        "48 autocollants",
+        "50 autocollants"
+      ],
+      "correctAnswer": "48 autocollants",
+      "explanation": "C'est un problème inverse : on connaît le nombre de parts ($5$), la taille de chaque part ($9$) et le reste ($3$). Pour retrouver le total, on fait : (nombre de parts $\\times$ taille d'une part) + reste. Soit $(5 \\times 9) + 3 = 45 + 3 = 48$. L'option $45$ oublie d'ajouter le reste. L'option $42$ correspond à $5 \\times 8 + 2$ (erreur sur la taille des parts).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

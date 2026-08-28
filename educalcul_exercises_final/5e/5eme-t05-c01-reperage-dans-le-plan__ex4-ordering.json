@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 400,
+  "_course_code": "5eme-t05-c01-reperage-dans-le-plan",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Application : Repérage dans le plan",
+  "title": "Repérage dans le plan : Ordre des étapes",
+  "blocks": [
+    {
+      "title": "Lire les coordonnées d'un point",
+      "content": "Range les étapes dans l'ordre chronologique pour lire les coordonnées du point $A(3 ; 2)$ sur un repère orthonormé.",
+      "items": [
+        "Repérer l'axe des abscisses (l'axe horizontal).",
+        "Lire la valeur sur l'axe des abscisses : $3$.",
+        "Repérer l'axe des ordonnées (l'axe vertical).",
+        "Lire la valeur sur l'axe des ordonnées : $2$.",
+        "Écrire les coordonnées du point : $A(3 ; 2)$."
+      ],
+      "explanation": "Pour lire les coordonnées d'un point, on commence toujours par l'axe des abscisses (horizontal) pour trouver la première coordonnée (l'abscisse). Ensuite, on repère l'axe des ordonnées (vertical) pour trouver la seconde coordonnée (l'ordonnée). On note enfin le couple entre parenthèses en séparant les deux nombres par un point-virgule.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Placer un point de coordonnées données",
+      "content": "Range les étapes dans l'ordre pour placer le point $B(-2 ; 4)$ dans un repère orthonormé.",
+      "items": [
+        "Partir de l'origine du repère $(0 ; 0)$.",
+        "Se déplacer de $2$ graduations vers la gauche sur l'axe des abscisses (car l'abscisse est $-2$).",
+        "Depuis cette position, se déplacer de $4$ graduations vers le haut (parallèlement à l'axe des ordonnées, car l'ordonnée est $4$).",
+        "Marquer le point et l'annoter $B$."
+      ],
+      "explanation": "Pour placer un point, on part toujours de l'origine. On se déplace d'abord horizontalement pour l'abscisse : à droite si elle est positive, à gauche si elle est négative. Ici $-2$ donc à gauche. Puis, depuis ce nouvel endroit, on se déplace verticalement pour l'ordonnée : vers le haut si positive, vers le bas si négative. Ici $4$ donc vers le haut. On marque enfin le point.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer des points par abscisse croissante",
+      "content": "Range les points suivants dans l'ordre de l'abscisse la plus petite à l'abscisse la plus grande.",
+      "items": [
+        "A(-5 ; 1)",
+        "B(-1 ; 3)",
+        "C(0 ; -2)",
+        "D(4 ; 0)"
+      ],
+      "explanation": "On compare uniquement les abscisses (le premier nombre du couple) : $-5 < -1 < 0 < 4$. L'ordre des points est donc A, puis B, puis C, puis D. Les ordonnées (le second nombre) ne servent pas pour ce classement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 338,
+  "_course_code": "6eme-t02-c03-comparer-et-placer-des-fractions",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Application : Comparer et placer des fractions",
+  "title": "Application : Comparer et placer des fractions",
+  "questions": [
+    {
+      "text": "Compare les deux fractions $\\frac{3}{8}$ et $\\frac{5}{8}$.",
+      "options": [
+        "$\\frac{3}{8} < \\frac{5}{8}$",
+        "$\\frac{3}{8} > \\frac{5}{8}$",
+        "$\\frac{3}{8} = \\frac{5}{8}$",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$\\frac{3}{8} < \\frac{5}{8}$",
+      "explanation": "Les deux fractions ont le même dénominateur (8). Pour les comparer, il suffit de regarder les numérateurs : 3 est plus petit que 5, donc $\\frac{3}{8}$ est plus petit que $\\frac{5}{8}$. L'option « On ne peut pas les comparer » est fausse car les dénominateurs sont identiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces affirmations est vraie pour comparer $\\frac{2}{5}$ et $\\frac{2}{7}$ ?",
+      "options": [
+        "$\\frac{2}{5} < \\frac{2}{7}$",
+        "$\\frac{2}{5} > \\frac{2}{7}$",
+        "$\\frac{2}{5} = \\frac{2}{7}$",
+        "Il faut d'abord les mettre au même dénominateur"
+      ],
+      "correctAnswer": "$\\frac{2}{5} > \\frac{2}{7}$",
+      "explanation": "Les deux fractions ont le même numérateur (2). Quand le numérateur est identique, la fraction la plus grande est celle qui a le plus petit dénominateur (les parts sont plus grosses). Comme 5 est plus petit que 7, $\\frac{2}{5}$ est plus grand que $\\frac{2}{7}$. Mettre au même dénominateur est une méthode possible mais pas obligatoire ici, et ce n'est pas la réponse à la question « laquelle est vraie ? ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les fractions $\\frac{3}{5}$, $\\frac{4}{7}$ et $\\frac{1}{2}$, laquelle est la plus grande ?",
+      "options": [
+        "$\\frac{3}{5}$",
+        "$\\frac{4}{7}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{5}{9}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5}$",
+      "explanation": "On peut les comparer à $\\frac{1}{2}$ : $\\frac{3}{5} = 0,6$ (plus grand que 0,5), $\\frac{4}{7} \\approx 0,57$ (plus grand que 0,5), $\\frac{1}{2} = 0,5$. Entre $\\frac{3}{5}$ et $\\frac{4}{7}$, on met au même dénominateur 35 : $\\frac{21}{35}$ et $\\frac{20}{35}$. Donc $\\frac{3}{5} > \\frac{4}{7} > \\frac{1}{2}$. La plus grande est $\\frac{3}{5}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, le point A est placé sur une graduation. Quelle fraction correspond au point A ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{4}{5}$",
+        "$\\frac{1}{2}$"
+      ],
+      "correctAnswer": "$\\frac{3}{5}$",
+      "explanation": "La droite graduée va de 0 à 1 et est divisée en 5 parties égales (dénominateur 5). Le point A se trouve sur la troisième graduation après 0, ce qui correspond à $\\frac{3}{5}$. $\\frac{2}{5}$ est la deuxième graduation, $\\frac{4}{5}$ la quatrième et $\\frac{1}{2}$ se trouverait au milieu (entre la deuxième et la troisième).",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 divisée en 5 parties égales",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.6,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Range les fractions $\\frac{2}{3}$, $\\frac{3}{4}$ et $\\frac{5}{6}$ dans l'ordre croissant.",
+      "options": [
+        "$\\frac{2}{3} < \\frac{3}{4} < \\frac{5}{6}$",
+        "$\\frac{5}{6} < \\frac{3}{4} < \\frac{2}{3}$",
+        "$\\frac{3}{4} < \\frac{2}{3} < \\frac{5}{6}$",
+        "$\\frac{2}{3} < \\frac{5}{6} < \\frac{3}{4}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3} < \\frac{3}{4} < \\frac{5}{6}$",
+      "explanation": "On met les trois fractions au même dénominateur, le PPCM de 3, 4 et 6 est 12. $\\frac{2}{3} = \\frac{8}{12}$, $\\frac{3}{4} = \\frac{9}{12}$, $\\frac{5}{6} = \\frac{10}{12}$. En comparant les numérateurs : $8 < 9 < 10$. L'ordre croissant est donc $\\frac{2}{3} < \\frac{3}{4} < \\frac{5}{6}$. Les autres options inversent l'ordre ou placent $\\frac{5}{6}$ avant $\\frac{3}{4}$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

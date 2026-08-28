@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 331,
+  "_course_code": "6eme-t01-c01-numeration-et-grands-nombres",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Lire / écrire",
+  "title": "Quiz : Lire et écrire les grands nombres (Approfondissement)",
+  "questions": [
+    {
+      "text": "Écris en chiffres le nombre : \"quatre millions trois cent mille soixante-quinze\".",
+      "options": [
+        "$4 300 075$",
+        "$4 300 75$",
+        "$4 030 075$",
+        "$4 300 007 5$"
+      ],
+      "correctAnswer": "$4 300 075$",
+      "explanation": "On décompose : 4 millions = $4 000 000$ ; 300 mille = $300 000$ ; 75 = $75$. En additionnant : $4 000 000 + 300 000 + 75 = 4 300 075$. On regroupe les chiffres par trois en partant de la droite : $4 300 075$. L'option B oublie le zéro des centaines de mille, l'option C met 30 mille au lieu de 300 mille, l'option D n'utilise pas les espaces corrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment lit-on correctement le nombre $1 050 008$ ?",
+      "options": [
+        "Un million cinquante mille huit",
+        "Un million cinq cent mille huit",
+        "Un million cinquante mille huit cents",
+        "Un million cinq cent huit"
+      ],
+      "correctAnswer": "Un million cinquante mille huit",
+      "explanation": "Le nombre s'écrit $1 050 008$. En partant de la gauche : 1 million ($1 000 000$), puis le groupe des milliers est $050$ soit cinquante mille ($50 000$), puis le groupe des unités est $008$ soit huit ($8$). Il n'y a ni centimes, ni centaines, ni dizaines dans les deux derniers groupes. L'option B lit 050 comme 500, l'option C ajoute \"cents\" inexistant, l'option D ignore les milliers.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $3 402 000$, quel est le chiffre des centaines de mille ?",
+      "options": [
+        "3",
+        "4",
+        "0",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "explanation": "Le tableau de position pour $3 402 000$ est : millions : 3 ; centaines de mille : 4 ; dizaines de mille : 0 ; milliers : 2 ; centaines : 0 ; dizaines : 0 ; unités : 0. Le chiffre des centaines de mille est donc 4. L'option 3 est le chiffre des millions, l'option 0 celui des dizaines de mille, l'option 2 celui des milliers.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 3402000,
+        "caption": "Tableau de position pour 3 402 000"
+      }
+    },
+    {
+      "text": "Quelle est l'écriture correcte avec espaces du nombre $56789012$ ?",
+      "options": [
+        "$56 789 012$",
+        "$5 678 901 2$",
+        "$567 890 12$",
+        "$56 78 90 12$"
+      ],
+      "correctAnswer": "$56 789 012$",
+      "explanation": "Pour espacer un grand nombre, on groupe les chiffres par trois en partant de la droite (unité). $56789012$ donne : $012$ (unités), $789$ (milliers), $56$ (millions). On écrit donc $56 789 012$. Les autres options ne respectent pas le groupement par trois (option B, C) ou utilisent des groupes de deux (option D).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris en chiffres : \"deux milliards cent quatre millions soixante-dix\".",
+      "options": [
+        "$2 104 000 070$",
+        "$2 140 000 070$",
+        "$2 004 000 070$",
+        "$2 104 070$"
+      ],
+      "correctAnswer": "$2 104 000 070$",
+      "explanation": "Deux milliards = $2 000 000 000$. Cent quatre millions = $104 000 000$ (attention : \"cent quatre\" = 104, pas 100 004). Soixante-dix = $70$. Total : $2 000 000 000 + 104 000 000 + 70 = 2 104 000 070$. L'option B lit \"cent quatre\" comme 140, l'option C comme 4 millions, l'option D oublie les milliards et millions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

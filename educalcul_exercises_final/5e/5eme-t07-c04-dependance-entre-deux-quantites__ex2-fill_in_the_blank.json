@@ -1,0 +1,69 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 413,
+  "_course_code": "5eme-t07-c04-dependance-entre-deux-quantites",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Graphique",
+  "title": "Graphiques et proportionnalité",
+  "blocks": [
+    {
+      "title": "Lecture d'un point sur un graphique",
+      "content": "Sur le graphique ci-dessous représentant la fonction $f(x)=3x$, le point $A$ a pour abscisse $2$. Son ordonnée est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Puisque la fonction est $f(x)=3x$, pour $x=2$ on a $f(2)=3 × 2 = 6$. Donc l'ordonnée du point A est 6.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=3x"
+      }
+    },
+    {
+      "title": "Reconnaître une proportionnalité",
+      "content": "Le graphique ci-dessous montre une droite passant par l'origine. Cela signifie que les deux quantités sont {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "proportionnelles|en proportion"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une droite qui passe par l'origine (0,0) correspond à une relation de proportionnalité entre les deux variables.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Droite passant par l'origine"
+      }
+    },
+    {
+      "title": "Calculer le coefficient de proportionnalité",
+      "content": "Sur le graphique, le point $B$ a pour coordonnées $(4,12)$. Le coefficient de proportionnalité (ou nombre multiplicateur) est {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coefficient de proportionnalité k est le quotient de l'ordonnée par l'abscisse : $k = 12 / 4 = 3$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=3x avec le point B(4,12)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 403,
+  "_course_code": "5eme-t05-c04-solides-et-volumes",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Prismes / cylindres selon programme",
+  "title": "Algorithmes pour volumes de prismes et cylindres",
+  "blocks": [
+    {
+      "title": "Volume d'un prisme droit",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo-code) qui calcule le volume $V$ d'un prisme droit connaissant l'aire de sa base $B$ et sa hauteur $h$.",
+      "correctAnswer": "Algorithme :\\n1. Lire B (aire de la base) et h (hauteur).\\n2. Calculer V = B * h.\\n3. Afficher V.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume d'un prisme droit est le produit de l'aire de sa base par sa hauteur. L'algorithme lit les deux grandeurs, effectue la multiplication et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction Python pour volume d'un cylindre",
+      "content": "Écrire une fonction Python nommée volume_cylindre qui prend en paramètres le rayon $r$ et la hauteur $h$ d'un cylindre et retourne son volume $V = \\pi r^2 h$. Utiliser la constante math.pi.",
+      "correctAnswer": "import math\\n\\ndef volume_cylindre(r, h):\\n    \"\"\"Retourne le volume d'un cylindre de rayon r et de hauteur h.\"\"\"\\n    return math.pi * r * r * h",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La formule du volume d'un cylindre est $V = \\pi r^2 h$. En Python, on importe le module math pour accéder à math.pi, on calcule r * r pour $r^2$ et on multiplie par h.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume total d'un solide composé",
+      "content": "Un solide est formé d'un prisme droit de base rectangulaire (longueur $L$, largeur $l$) et de hauteur $h_1$, surmonté d'un cylindre de rayon $r$ et de hauteur $h_2$. Écrire un algorithme qui calcule le volume total $V_{total}$ de ce solide.",
+      "correctAnswer": "Algorithme :\\n1. Lire L, l, h1, r, h2.\\n2. Calculer B_prisme = L * l.\\n3. Calculer V_prisme = B_prisme * h1.\\n4. Calculer V_cylindre = pi * r * r * h2.\\n4. Calculer V_total = V_prisme + V_cylindre.\\n5. Afficher V_total.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume total est la somme du volume du prisme ($B \\times h_1$ avec $B = L \\times l$) et du volume du cylindre ($\\pi r^2 h_2$). L'algorithme suit ces étapes de calcul séquentiellement.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

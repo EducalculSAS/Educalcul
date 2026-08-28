@@ -1,0 +1,494 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.682964+00:00",
+  "id": 66,
+  "code": "cp-t07-c11",
+  "title": "Lire un tableau à double entrée",
+  "description": "Cours structuré Educalcul : Lire un tableau à double entrée.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Lire un tableau à double entrée",
+    "objectif_global": "Lire un tableau à double entrée",
+    "mini_lecons_imposees": [
+      "Repérer ligne et colonne.",
+      "Trouver une case.",
+      "Répondre à une question de lecture."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Repérer ligne et colonne.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les lignes et les colonnes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans le monde des tableaux à double entrée ! Tu as déjà vu des listes, mais un tableau, c'est comme une petite grille bien rangée. Imagine les rangées de chaises dans la classe : chaque rangée va de la gauche vers la droite, on appelle ça une $ligne$. Et si tu regardes du haut vers le bas, chaque file de chaises forme une $colonne$. C'est comme deux chemins qui se croisent."
+            },
+            {
+              "type": "definition",
+              "term": "Ligne",
+              "definition": "Une ligne va de la gauche vers la droite, comme une rangée de chaises.",
+              "example": "La rangée $1$ contient Léa, Tom et Mia."
+            },
+            {
+              "type": "definition",
+              "term": "Colonne",
+              "definition": "Une colonne va du haut vers le bas, comme une file de chaises.",
+              "example": "La place $A$ contient Léa, Noa et Ana."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Place $A$",
+                "Place $B$",
+                "Place $C$"
+              ],
+              "rows": [
+                [
+                  "Rangée $1$",
+                  "Léa",
+                  "Tom",
+                  "Mia"
+                ],
+                [
+                  "Rangée $2$",
+                  "Noa",
+                  "Zoé",
+                  "Sam"
+                ],
+                [
+                  "Rangée $3$",
+                  "Ana",
+                  "Luc",
+                  "Eva"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prends ton doigt et pose-le sur la première rangée. Glisse-le tout doux vers la droite : tu parcours toute la $ligne$. Reviens au début, et descends ton doigt tout droit vers le bas : tu suis la $colonne$. C'est comme faire un L avec ton doigt : d'abord horizontal, puis vertical. Essaie sur la grille ci-dessus, tu verras, c'est très simple !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Trouver la ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ton doigt sur le nom de la rangée à gauche, par exemple la rangée $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Trouver la colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ton autre doigt sur le nom de la place en haut, par exemple la place $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Voir où ils se rejoignent",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais avancer tes deux doigts jusqu'à ce qu'ils se touchent. La case où ils se rencontrent, c'est l'intersection de la $ligne$ et de la $colonne$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme chaque case porte un prénom ! Dans la rangée $1$ et la place $C$, on trouve $Mia$. Et dans la rangée $3$, place $A$, c'est $Ana$. Les lignes et les colonnes sont comme des étiquettes qui donnent un nom à chaque case. Tu commences à voir comment on peut retrouver n'importe qui dans ce petit plan de classe ?"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Place $A$",
+                "Place $B$",
+                "Place $C$"
+              ],
+              "rows": [
+                [
+                  "Rangée $1$",
+                  "Léa",
+                  "Tom",
+                  "Mia"
+                ],
+                [
+                  "Rangée $2$",
+                  "Noa",
+                  "Zoé",
+                  "Sam"
+                ],
+                [
+                  "Rangée $3$",
+                  "Ana",
+                  "Luc",
+                  "Eva"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau de la classe, sur quelle ligne est assis $Tom$ ?",
+              "answer": "Rangée $1$",
+              "hint": "Regarde le nom à gauche de la ligne où se trouve $Tom$.",
+              "explanation": "$Tom$ est dans la première rangée en partant du haut, c'est la rangée $1$."
+            },
+            {
+              "question": "Si je suis la colonne place $B$ du haut vers le bas, quels prénoms je rencontre ?",
+              "answer": "$Tom$, $Zoé$, $Luc$",
+              "hint": "Descends ton doigt sur la colonne du milieu.",
+              "explanation": "La colonne place $B$ contient $Tom$ (rangée $1$), $Zoé$ (rangée $2$) et $Luc$ (rangée $3$)."
+            },
+            {
+              "question": "Complète : $Ana$ est à la rangée $...$ et à la place $...$",
+              "answer": "$3$ et $A$",
+              "hint": "Cherche $Ana$ dans le tableau, puis regarde sa rangée et sa place.",
+              "explanation": "$Ana$ se trouve à la troisième rangée, première place."
+            }
+          ]
+        },
+        {
+          "title": "Trouver une case.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver une case précise"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant repérer les lignes et les colonnes. Le jeu suivant, c'est de retrouver une case exacte, comme sur une carte au trésor ! Une $case$, c'est le petit carré où une ligne et une colonne se croisent. Pour la nommer, on donne d'abord sa ligne, puis sa colonne. C'est comme donner une adresse : le numéro de la rue, puis le numéro de la maison."
+            },
+            {
+              "type": "definition",
+              "term": "Case",
+              "definition": "Une case est l'intersection d'une ligne et d'une colonne. Elle contient une information unique.",
+              "example": "La case (rangée $2$, place $B$) contient $Zoé$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Maison",
+                "Jardin",
+                "Parc"
+              ],
+              "rows": [
+                [
+                  "Chien",
+                  "Niche",
+                  "Os",
+                  "Balle"
+                ],
+                [
+                  "Chat",
+                  "Panier",
+                  "Herbe",
+                  "Arbre"
+                ],
+                [
+                  "Oiseau",
+                  "Nid",
+                  "Branche",
+                  "Ciel"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver une case sans te tromper, tu as deux méthodes au choix. La première : cherche la ligne avec ton doigt índice, tiens-le bien fixe, puis cherche la colonne avec l'autre main et fais-les se rejoindre. La deuxième : commence par la colonne, descends le long de la ligne. Choisis celle qui te semble la plus naturelle, l'important c'est d'arriver au bon endroit !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Méthode 1 : Ligne puis colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Trouve le nom de la ligne à gauche. 2. Suit cette ligne vers la droite. 3. Trouve le nom de la colonne en haut. 4. Descends cette colonne vers le bas. 5. Là où ton doigt ligne et ton doigt colonne se touchent, c'est la case."
+                    }
+                  ]
+                },
+                {
+                  "title": "Méthode 2 : Colonne puis ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Trouve le nom de la colonne en haut. 2. Descends cette colonne. 3. Trouve le nom de la ligne à gauche. 4. Suit cette ligne vers la droite. 5. Le croisement est ta case."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous avec un nouveau tableau : les animaux et leurs cachettes. Regarde bien : le $Chien$ a sa $Niche$ à la $Maison$, son $Os$ au $Jardin$, sa $Balle$ au $Parc$. Le $Chat$ dort dans son $Panier$ à la $Maison$, joue dans l'$Herbe$ au $Jardin$, grimpe à l'$Arbre$ au $Parc$. L'$Oiseau$ a son $Nid$ à la $Maison$, se pose sur une $Branche$ au $Jardin$, vole dans le $Ciel$ au $Parc$. Chaque case raconte une petite histoire !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Maison",
+                "Jardin",
+                "Parc"
+              ],
+              "rows": [
+                [
+                  "Chien",
+                  "Niche",
+                  "Os",
+                  "Balle"
+                ],
+                [
+                  "Chat",
+                  "Panier",
+                  "Herbe",
+                  "Arbre"
+                ],
+                [
+                  "Oiseau",
+                  "Nid",
+                  "Branche",
+                  "Ciel"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le tableau des animaux, quelle cachette se trouve à la ligne $Chien$ et colonne $Maison$ ?",
+              "answer": "$Niche$",
+              "hint": "Trouve la ligne $Chien$, puis la colonne $Maison$, regarde où elles se croisent.",
+              "explanation": "À l'intersection de la ligne $Chien$ et de la colonne $Maison$, on trouve $Niche$."
+            },
+            {
+              "question": "Trouve la case à l'intersection de la ligne $Chat$ et de la colonne $Jardin$.",
+              "answer": "$Herbe$",
+              "hint": "Utilise tes deux doigts : un sur $Chat$ à gauche, un sur $Jardin$ en haut.",
+              "explanation": "La case ($Chat$, $Jardin$) contient $Herbe$."
+            },
+            {
+              "question": "Où se cache le $Nid$ ? Donne la ligne et la colonne.",
+              "answer": "Ligne $Oiseau$, colonne $Maison$",
+              "hint": "Cherche le mot $Nid$ dans le tableau, puis remonte à la ligne et va à la colonne.",
+              "explanation": "$Nid$ est sur la ligne $Oiseau$ et la colonne $Maison$."
+            }
+          ]
+        },
+        {
+          "title": "Répondre à une question de lecture.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre aux questions du tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau à double entrée, c'est comme un livre où on ne lit pas en lignes continues, mais où on saute à la case qu'on cherche. Quand on te pose une question, commence par identifier les deux indices : la ligne concernée et la colonne concernée. Par exemple : « Qui est à la rangée $2$, place $A$ ? » Les indices sont rangée $2$ et place $A$. Facile, non ?"
+            },
+            {
+              "type": "definition",
+              "term": "Tableau à double entrée",
+              "definition": "Un tableau organisé avec des lignes et des colonnes qui permettent de croiser deux informations pour trouver une donnée précise.",
+              "example": "Le plan de classe croise les rangées et les places pour situer chaque enfant."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "",
+                "Place $A$",
+                "Place $B$",
+                "Place $C$"
+              ],
+              "rows": [
+                [
+                  "Rangée $1$",
+                  "Léa",
+                  "Tom",
+                  "Mia"
+                ],
+                [
+                  "Rangée $2$",
+                  "Noa",
+                  "Zoé",
+                  "Sam"
+                ],
+                [
+                  "Rangée $3$",
+                  "Ana",
+                  "Luc",
+                  "Eva"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour répondre, suis la méthode en quatre temps : lis la question calmement, repère la ligne demandée, repère la colonne demandée, va à l'intersection et lis ce qu'il y a dedans. C'est comme ouvrir une porte : la ligne c'est le couloir, la colonne c'est le numéro de la porte, et la case c'est la pièce où se trouve la réponse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Lire la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quelle ligne ? Quelle colonne ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Trouver la ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le doigt sur le nom de la ligne à gauche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Trouver la colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose l'autre doigt sur le nom de la colonne en haut."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Lire la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais se rejoindre tes doigts, la case touchée donne la réponse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la question est un peu différente : « Combien d'enfants dans la rangée $3 $ ? » Là, il faut regarder toute la ligne et compter les cases remplies. Ou bien : « Dans quelle place est $Zoé$ ? » Il faut parcourir le tableau pour la trouver, puis lire l'en-tête de sa colonne. Tu deviens un vrai détective des tableaux !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'enfants par rangée",
+              "bars": [
+                {
+                  "label": "Rangée 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rangée 2",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Rangée 3",
+                  "value": 3,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer une $ligne$ (horizontal) et une $colonne$ (vertical) dans un tableau.",
+                "Je sais trouver une $case$ en croisant une $ligne$ et une $colonne$.",
+                "Je sais lire une question et aller chercher la réponse dans la bonne $case$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Question : Qui est à la rangée $2$, place $A$ ?",
+              "answer": "$Noa$",
+              "hint": "Va à la rangée $2$, puis place $A$, lis le prénom.",
+              "explanation": "À l'intersection de la rangée $2$ et de la place $A$, on trouve $Noa$."
+            },
+            {
+              "question": "Question : Combien d'enfants sont dans la rangée $3$ ?",
+              "answer": "$3$",
+              "hint": "Compte les cases remplies sur la ligne rangée $3$.",
+              "explanation": "La rangée $3$ contient $Ana$, $Luc$ et $Eva$, soit $3$ enfants."
+            },
+            {
+              "question": "Question : Dans quelle place est $Zoé$ ?",
+              "answer": "Place $B$",
+              "hint": "Trouve $Zoé$ dans le tableau, puis regarde l'en-tête de sa colonne.",
+              "explanation": "$Zoé$ se trouve sur la colonne place $B$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

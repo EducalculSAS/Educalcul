@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 483,
+  "_course_code": "3eme-t05-c05-trigonometrie-dans-le-triangle-rectangle",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Sinus / cosinus / tangente selon programme",
+  "title": "Quiz Trigonométrie - Sinus, Cosinus, Tangente (3e)",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle $ABC$, rectangle en $B$, on note $\\widehat{A}$ l'angle en $A$. Quelle expression correspond à $\\cos(\\widehat{A})$ ?",
+      "options": [
+        "$\\frac{AB}{AC}$",
+        "$\\frac{BC}{AC}$",
+        "$\\frac{AB}{BC}$",
+        "$\\frac{AC}{AB}$"
+      ],
+      "correctAnswer": "$\\frac{AB}{AC}$",
+      "explanation": "Dans un triangle rectangle, le cosinus d'un angle aigu est le rapport du côté adjacent sur l'hypoténuse. Pour l'angle $\\widehat{A}$, le côté adjacent est $AB$ et l'hypoténuse est $AC$, donc $\\cos(\\widehat{A}) = \\frac{AB}{AC}$. Les autres options correspondent au sinus ($\\frac{BC}{AC}$), à la tangente ($\\frac{AB}{BC}$) ou à l'inverse du cosinus ($\\frac{AC}{AB}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le même triangle, si $AB=6$ cm et $BC=8$ cm, quelle est la valeur de $\\tan(\\widehat{C})$ ?",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{6}{10}$",
+        "$\\frac{8}{10}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "L'angle $\\widehat{C}$ a pour côté opposé $AB=6$ cm et pour côté adjacent $BC=8$ cm. La tangente est le rapport opposé/adjacent : $\\tan(\\widehat{C}) = \\frac{6}{8} = \\frac{3}{4}$. L'option $\\frac{4}{3}$ serait l'inverse (cotangente), $\\frac{6}{10}$ et $\\frac{8}{10}$ correspondent à des rapports avec l'hypoténuse (qui vaut $10$ cm) et non à la tangente.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $\\sin(\\alpha)=\\frac{\\sqrt{3}}{2}$ avec $\\alpha$ un angle aigu. Quelle est la mesure de $\\alpha$ en degrés ?",
+      "options": [
+        "$30^{\\circ}$",
+        "$45^{\\circ}$",
+        "$60^{\\circ}$",
+        "$90^{\\circ}$"
+      ],
+      "correctAnswer": "$60^{\\circ}$",
+      "explanation": "Les valeurs remarquables du sinus pour les angles aigus sont : $\\sin 30^{\\circ}=1/2$, $\\sin 45^{\\circ}=\\sqrt{2}/2$, $\\sin 60^{\\circ}=\\sqrt{3}/2$, $\\sin 90^{\\circ}=1$. Comme $\\sin(\\alpha)=\\sqrt{3}/2$, l'angle $\\alpha$ est $60^{\\circ}$. Les autres options donnent des valeurs de sinus différentes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, l'angle $\\beta$ vaut $30^{\\circ}$ et l'hypoténuse mesure $10$ cm. Quelle est la longueur du côté adjacent à $\\beta$ ?",
+      "options": [
+        "$5\\sqrt{3}$ cm",
+        "$5$ cm",
+        "$10\\sqrt{3}$ cm",
+        "$\\frac{10}{\\sqrt{3}}$ cm"
+      ],
+      "correctAnswer": "$5\\sqrt{3}$ cm",
+      "explanation": "Le cosinus de $30^{\\circ}$ vaut $\\cos 30^{\\circ} = \\frac{\\sqrt{3}}{2}$. Le côté adjacent est $c \\times \\cos\\beta = 10 \\times \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}$ cm. L'option $5$ cm correspondrait à $\\cos 60^{\\circ}$, $10\\sqrt{3}$ cm serait trop grand (supérieur à l'hypoténuse) et $\\frac{10}{\\sqrt{3}}$ cm correspond à $10 \\times \\tan 30^{\\circ}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5$ m est appuyée contre un mur vertical. Le pied de l'échelle est à $3$ m du mur. Quel est l'angle que l'échelle forme avec le sol (arrondi au degré près) ?",
+      "options": [
+        "$53^{\\circ}$",
+        "$37^{\\circ}$",
+        "$45^{\\circ}$",
+        "$60^{\\circ}$"
+      ],
+      "correctAnswer": "$53^{\\circ}$",
+      "explanation": "L'échelle est l'hypoténuse ($5$ m), la distance du pied au mur est le côté adjacent ($3$ m). $\\cos \\theta = \\frac{3}{5} = 0,6$. L'angle dont le cosinus est $0,6$ est $\\theta \\approx 53^{\\circ}$ (arrondi). L'angle complémentaire $37^{\\circ}$ correspondrait au sinus ($\\frac{3}{5}$), $45^{\\circ}$ donnerait $\\cos = \\frac{\\sqrt{2}}{2} \\approx 0,707$ et $60^{\\circ}$ donnerait $\\cos = 0,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

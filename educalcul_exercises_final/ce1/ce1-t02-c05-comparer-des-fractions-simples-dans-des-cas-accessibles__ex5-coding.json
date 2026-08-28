@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 83,
+  "_course_code": "ce1-t02-c05-comparer-des-fractions-simples-dans-des-cas-accessibles",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Comparer avec même dénominateur",
+  "title": "Comparer des fractions de meme denominateur - Algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1 : Comparer deux fractions",
+      "content": "Ecrire un algorithme simple (en langage naturel ou pseudo-code) qui compare deux fractions ayant le meme denominateur, par exemple $3/8$ et $5/8$, et qui affiche laquelle est la plus grande.",
+      "correctAnswer": "Algorithme : 1. Lire les deux fractions. 2. Comme les denominateurs sont egaux, comparer les numerateurs. 3. Si numerateur1 > numerateur2 alors afficher 'La premiere fraction est plus grande'. Sinon si numerateur1 < numerateur2 afficher 'La deuxieme fraction est plus grande'. Sinon afficher 'Les deux fractions sont egales'.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Quand deux fractions ont le meme denominateur, elles representent des parts de meme taille. La fraction qui a le plus grand numerateur contient plus de parts, donc elle est plus grande. L'algorithme compare donc directement les numerateurs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2 : Trier une liste de fractions",
+      "content": "Proposer un algorithme (suite d'instructions) qui permet de classer par ordre croissant une liste de fractions ayant toutes le meme denominateur, par exemple $2/7$, $5/7$, $1/7$, $4/7$.",
+      "correctAnswer": "Algorithme : 1. Extraire les numerateurs de chaque fraction. 2. Trier les numerateurs par ordre croissant. 3. Reconstituer les fractions dans l'ordre des numerateurs tries. Le resultat pour l'exemple : $1/7$, $2/7$, $4/7$, $5/7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme le denominateur est identique pour toutes les fractions, l'ordre des fractions depend uniquement de l'ordre des numerateurs. Trier les numerateurs suffit donc pour trier les fractions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3 : Fonction de comparaison en pseudo-code Python",
+      "content": "Ecrire une fonction en pseudo-code (style Python) nommee comparer_fractions qui prend quatre parametres : num1, den1, num2, den2. On suppose que den1 = den2. La fonction renvoie 1 si la premiere fraction est plus grande, -1 si la seconde est plus grande, 0 si elles sont egales.",
+      "correctAnswer": "def comparer_fractions(num1, den1, num2, den2):\\n    if num1 > num2:\\n        return 1\\n    elif num1 < num2:\\n        return -1\\n    else:\\n        return 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction compare directement les numerateurs car les denominateurs sont egaux. Si le premier numerateur est plus grand, la premiere fraction est plus grande (retour 1). S'il est plus petit, la seconde est plus grande (retour -1). Sinon elles sont egales (retour 0).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

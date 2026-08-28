@@ -1,0 +1,502 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.183735+00:00",
+  "id": 545,
+  "code": "1ere-generale-t01-c05",
+  "title": "Bilan - Automatismes Première",
+  "description": "Cours structuré Educalcul : Bilan - Automatismes Première.",
+  "subject": "Automatismes",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Automatismes",
+    "titre_du_cours": "Bilan - Automatismes Première",
+    "objectif_global": "Bilan - Automatismes Première",
+    "mini_lecons_imposees": [
+      "Fluence.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Automatismes",
+      "lessons": [
+        {
+          "title": "Fluence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des nombres aux puissances de 10 : votre boussole numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! L'objectif n'est pas de tout réapprendre par cœur, mais de transformer ce que tu sais déjà en réflexes fiables, ceux qui te libèrent l'esprit pour la modélisation et le raisonnement. En Première scientifique, les nombres ne sont pas de simples symboles : ce sont des ordres de grandeur, des mesures physiques, des concentrations molaires. Commençons par le socle : l'écriture scientifique et les puissances de $10$. Tu connais la règle : un nombre s'écrit $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier. Mais au-delà de la règle, c'est l'intuition de l'échelle qui compte. Imagine la distance Terre-Soleil : $1,5 \\times 10^{11}\\,\\text{m}$. Ce $11$ ne te dit pas seulement \"décale la virgule\", il te crie \"c'est immense, c'est 150 milliards de mètres\"."
+            },
+            {
+              "type": "paragraph",
+              "content": "Travaillons l'automatisme inverse : passer de l'écriture scientifique à la notation décimale usuelle, et vice-versa, sans hésiter. Prends $6,02 \\times 10^{23}$ (le nombre d'Avogadro, star de la chimie). L'exposant $23$ signifie que tu as $23$ puissances de $10$ à multiplier, donc la virgule glisse de $23$ rangs vers la droite. Résultat : un $6$ suivi de $22$ zéros après le $02$. À l'inverse, le rayon de l'atome d'hydrogène, environ $5,3 \\times 10^{-11}\\,\\text{m}$, t'oblige à glisser la virgule de $11$ rangs vers la gauche : $0,000\\,000\\,000\\,053\\,\\text{m}$. Ce va-et-vient entre les deux écritures doit devenir aussi naturel que respirer."
+            },
+            {
+              "type": "scientific_notation_converter",
+              "value": 6.02,
+              "exponent": 23,
+              "caption": "Le nombre d'Avogadro : $6,02 \\times 10^{23}$, passer de l'infime à l'infiniment grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre pilier numérique : les pourcentages et coefficients multiplicateurs. En sciences, on compare souvent une valeur finale à une valeur initiale. Si une population bactérienne double, elle est multipliée par $2$, soit une augmentation de $100\\%$, coefficient $k = 2$. Si elle diminue de $30\\%$, on garde $70\\%$, coefficient $k = 0,7$. L'automatisme gagnant : \"augmentation de $t\\%$ $\\rightarrow$ $k = 1 + t/100$\", \"diminution de $t\\%$ $\\rightarrow$ $k = 1 - t/100$\". Et pour retrouver le taux à partir du coefficient : $t = 100(k-1)$ si $k>1$, $t = 100(1-k)$ si $k<1$. Entraîne-toi à faire ce petit calcul mental en quelques secondes, c'est la clé pour lire n'importe quel graphique d'évolution."
+            },
+            {
+              "type": "display_math",
+              "latex": "k = 1 + \\frac{t}{100} \\quad (\\text{augmentation}) \\qquad k = 1 - \\frac{t}{100} \\quad (\\text{diminution})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant le réflexe des grandeurs et des variations. Poursuivons avec le langage de l'algèbre, celui qui permet de transformer une situation concrète en équation exploitable. C'est le passage du \"combien ?\" au \"comment calculer ?\"."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul littéral : développer, factoriser, résoudre sans réfléchir"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algèbre en Première, c't la grammaire du raisonnement scientifique. Tu dois reconnaître instantanément les identités remarquables, non pas comme des formules à réciter, mais comme des motifs visuels. $(a+b)^2 = a^2 + 2ab + b^2$ : c'est un carré parfait, le terme du milieu est le double du produit. $(a-b)(a+b) = a^2 - b^2$ : c'est une différence de carrés, le terme du milieu a disparu. Quand tu vois $x^2 - 9$, ton cerveau doit crier \"$(x-3)(x+3)$\" avant même que tu n'aies le temps de réfléchir. De même, $4x^2 + 12x + 9$ doit t'apparaître comme $(2x+3)^2$ car $(2x)^2 = 4x^2$, $3^2=9$ et $2 \\times 2x \\times 3 = 12x$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la structure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'expression : est-ce un trinôme qui ressemble à $a^2 \\pm 2ab + b^2$ ? Ou une différence $a^2 - b^2$ ? Identifie $a$ et $b$ (ce peuvent être des expressions comme $2x$ ou $x+1$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le motif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c'est un carré : $(a \\pm b)^2$. Si c'est une différence : $(a-b)(a+b)$. Écris la factorisation directement sans poser de produit en croix."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier par développement mental",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Redéveloppe mentalement : $a^2$, $\\pm 2ab$, $b^2$. Si ça colle, c'est gagné. Cette vérification prend deux secondes et évite les erreurs de signe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une équation, c'est retrouver l'inconnu. Pour une équation du premier degré $ax+b=cx+d$, l'automatisme est : regrouper les $x$ à gauche, les nombres à droite, factoriser par $x$, diviser. Pour une équation produit-nul $(x-3)(2x+5)=0$, la règle d'or : un produit est nul si et seulement si l'un des facteurs est nul. Donc $x-3=0$ ou $2x+5=0$, d'où $x=3$ ou $x=-2,5$. Ne cherche pas à développer : la forme factorisée est ton amie, elle donne les solutions immédiatement."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "2x",
+                "+5"
+              ],
+              "rightTerms": [
+                "11"
+              ],
+              "caption": "Équation affine : $2x+5=11$. Isoler $x$ en faisant la même chose des deux côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algèbre est en place. Passons maintenant aux fonctions, ces machines à modéliser le réel. La fluidité ici, c'est de passer sans effort de l'équation au graphique, de la pente au coefficient directeur, du signe de la dérivée (même intuitive) aux variations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fonctions de référence et géométrie : lire un graphique comme une carte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois fonctions sont tes repères absolus : la fonction affine $f(x)=ax+b$, la fonction carré $f(x)=x^2$ et la fonction inverse $f(x)=1/x$. Pour l'affine, le coefficient $a$ est le taux de variation : si $x$ augmente de $1$, $f(x)$ augmente de $a$. L'ordonnée à l'origine $b$, c'est la valeur initiale ($x=0$). Sur un graphique, $a$ se lit au \"triangle de pente\" : avance de $1$ en abscisse, monte (ou descend) de $a$ en ordonnée. Si $a=2,5$, pour $2$ unités en $x$, tu montes de $5$ en $y$. Ce lien entre le calcul formel et la lecture graphique doit être instantané."
+            },
+            {
+              "type": "slope_triangle",
+              "a": 2.5,
+              "b": -1,
+              "xMin": -2,
+              "xMax": 5,
+              "caption": "Fonction affine $f(x)=2,5x-1$. Pente $2,5$ : pour $+1$ en $x$, $+2,5$ en $y$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Côté géométrie, deux théorèmes reviennent sans cesse : Pythagore et Thalès. Dans un triangle rectangle, l'hypoténuse au carré égale la somme des carrés des deux autres côtés. L'automatisme : identifier l'angle droit, nommer l'hypoténuse (le côté le plus long, face à l'angle droit), puis écrire $c^2 = a^2 + b^2$. Pour Thalès, il faut deux droites sécantes coupées par des parallèles. Le réflexe : écrire les égalités de rapports $\\frac{AB}{AC} = \\frac{AE}{AF} = \\frac{BE}{CF}$ en vérifiant l'ordre des sommets. Et en trigonométrie, dans le triangle rectangle, $\\cos = \\frac{\\text{côté adjacent}}{\\text{hypoténuse}}$, $\\sin = \\frac{\\text{côté opposé}}{\\text{hypoténuse}}$, $\\tan = \\frac{\\text{côté opposé}}{\\text{adjacent}}$. Ces trois ratios sont tes outils pour passer d'un angle à une longueur."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle rectangle en A. Hypoténuse a (BC). cos(B) = c/a, sin(B) = b/a."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu manies maintenant les nombres, les lettres et les figures. Il reste un domaine où l'automatisme te fait gagner un temps précieux : l'organisation des données et le langage du hasard. C'est souvent là que se jouent les points en contrôle continu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Statistiques et probabilités : les repères pour décider"
+            },
+            {
+              "type": "paragraph",
+              "content": "Face à une série de valeurs, tes trois compagnons sont la moyenne, la médiane et les quartiles. La moyenne $\\bar{x} = \\frac{\\text{somme des valeurs} \\times \\text{effectifs}}{\\text{effectif total}}$ est le centre de gravité : elle est sensible aux valeurs extrêmes. La médiane coupe la série en deux effectifs égaux : elle est robuste, elle ne bouge pas si le maximum double. Le premier quartile $Q_1$ laisse $25\\%$ des valeurs en dessous, le troisième $Q_3$ en laisse $75\\%$. L'écart interquartile $Q_3-Q_1$ mesure la dispersion du \"cœur\" de la série. Ces quatre nombres (min, $Q_1$, médiane, $Q_3$, max) construisent la boîte à moustaches, ton résumé visuel instantané."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Répartition d'effectifs : la médiane sépare la surface en deux parts égales.",
+              "bars": [
+                {
+                  "label": "[0;10[",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "[10;20[",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "[20;30[",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "[30;40[",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "[40;50[",
+                  "value": 5,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "En probabilités, le vocabulaire est ton premier outil. Un événement est une partie de l'univers $\\Omega$. $p(A)$ est sa probabilité. L'automatisme des bases : $p(\\overline{A}) = 1 - p(A)$ (l'événement contraire), $p(A \\cup B) = p(A) + p(B) - p(A \\cap B)$ (union), et si $A$ et $B$ sont incompatibles, $p(A \\cap B)=0$ donc $p(A \\cup B) = p(A)+p(B)$. Pour les probabilités conditionnelles, $p_A(B) = \\frac{p(A \\cap B)}{p(A)}$ se lit : \"sachant que $A$ est réalisé, quelle est la chance que $B$ arrive ?\". Un arbre de probabilités bien dessiné (branches = issues, étiquettes = probabilités) résout $90\\%$ des exercices du programme."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre à deux étages : issue A puis B. Multiplier sur les branches, additionner à l'arrivée.",
+              "branches": [
+                {
+                  "label": "A",
+                  "probability": "0.6",
+                  "children": [
+                    {
+                      "label": "B",
+                      "probability": "0.7"
+                    },
+                    {
+                      "label": "non B",
+                      "probability": "0.3"
+                    }
+                  ]
+                },
+                {
+                  "label": "non A",
+                  "probability": "0.4",
+                  "children": [
+                    {
+                      "label": "B",
+                      "probability": "0.2"
+                    },
+                    {
+                      "label": "non B",
+                      "probability": "0.8"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu viens de réactiver les quatre piliers numériques de ton année : nombres & puissances, algèbre & équations, fonctions & géométrie, stats & proba. Chaque exercice ciblé a réveillé un réflexe précis. Garde ce rythme : une notion, un automatisme, un exercice. La prochaine leçon, c'est ta checklist personnelle, ton tableau de bord pour les révisions et les contrôles. À tout de suite !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire en notation scientifique : $0,000\\,045$. Puis écrire en notation décimale : $3,14 \\times 10^4$.",
+              "answer": "$4,5 \\times 10^{-5}$ et $31\\,400$.",
+              "hint": "Compte les sauts de virgule. Vers la droite pour les puissances négatives (petits nombres), vers la gauche pour les positives (grands nombres).",
+              "explanation": "Pour $0,000\\,045$, la virgule saute 5 fois vers la droite pour se mettre après le $4$ : exposant $-5$. Pour $3,14 \\times 10^4$, la virgule saute 4 fois vers la gauche : $31\\,400$."
+            },
+            {
+              "question": "Factoriser l'expression $E = (2x+3)^2 - 25$. Résoudre ensuite l'équation $E = 0$.",
+              "answer": "$E = (2x-2)(2x+8) = 4(x-1)(x+4)$. Solutions : $x=1$ ou $x=-4$.",
+              "hint": "Reconnais une différence de deux carrés : $a^2 - b^2 = (a-b)(a+b)$ avec $a = 2x+3$ et $b=5$. Pour l'équation, utilise la règle du produit nul.",
+              "explanation": "$E = (2x+3)^2 - 5^2 = [(2x+3)-5] \\times [(2x+3)+5] = (2x-2)(2x+8)$. Pour $E=0$, on a $2x-2=0$ ou $2x+8=0$, donc $x=1$ ou $x=-4$."
+            },
+            {
+              "question": "Une fonction affine $f$ vérifie $f(1)=4$ et $f(3)=10$. Déterminer son expression $f(x)=ax+b$ et tracer son graphique dans un repère.",
+              "answer": "$f(x) = 3x + 1$.",
+              "hint": "Le coefficient directeur $a$ est le taux d'accroissement : $\\frac{f(3)-f(1)}{3-1}$. Ensuite trouve $b$ avec $f(1)=a+b$.",
+              "explanation": "$a = \\frac{10-4}{3-1} = 3$. Comme $f(1)=3\\times1+b=4$, on a $b=1$. Donc $f(x)=3x+1$. Le graphique coupe l'axe des ordonnées en $1$ et monte de $3$ pour $1$ en abscisse."
+            },
+            {
+              "question": "Dans une classe de $30$ élèves, $18$ font du sport, $12$ font de la musique et $5$ font les deux. Choisir un élève au hasard. Calculer la probabilité qu'il fasse du sport ou de la musique (ou les deux).",
+              "answer": "$\\frac{5}{6} \\approx 0,833$.",
+              "hint": "Utilise la formule de l'union : $p(S \\cup M) = p(S) + p(M) - p(S \\cap M)$. Les effectifs donnent les probabilités en divisant par $30$.",
+              "explanation": "$p(S) = 18/30$, $p(M) = 12/30$, $p(S \\cap M) = 5/30$. $p(S \\cup M) = 18/30 + 12/30 - 5/30 = 25/30 = 5/6$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ton tableau de bord : Nombres, calculs et grandeurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la deuxième et dernière leçon de ce bilan. Imagine cette page comme ton tableau de bord avant un grand départ : chaque voyante allumée en vert est une compétence que tu maîtrises en automatique. Pas de longs discours, des items précis, des exemples concrets, et à la fin, la checklist officielle pour cocher tes acquis. Commençons par le bloc « Nombres et calculs ». Ici, l'automatisme, c'est la fluidité entre les écritures : passer de $\\sqrt{50}$ à $5\\sqrt{2}$ sans poser de facteur, simplifier $\\frac{10^4 \\times 10^{-2}}{10^{-1}}$ en $10^3$ en additionnant les exposants ($4-2-(-1)=3$), ou encore manipuler les pourcentages à l'envers : retrouver la valeur initiale $V_i$ quand on connaît la finale $V_f$ et le taux $t$ ($V_i = V_f / k$). C'est aussi gérer les unités composées : convertir $90\\,\\text{km/h}$ en $25\\,\\text{m/s}$ en multipliant par $\\frac{1000}{3600}$ (ou en divisant par $3,6$) sans sortir la calculette."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Compétence-clé",
+                "Exemple flash",
+                "Je valide ?"
+              ],
+              "rows": [
+                [
+                  "Écriture scientifique / Puissances",
+                  "$0,000\\,007 = 7 \\times 10^{-6}$ ; $10^3 \\times 10^{-5} = 10^{-2}$",
+                  ""
+                ],
+                [
+                  "Calcul exact (radicaux, fractions)",
+                  "$\\sqrt{75} = 5\\sqrt{3}$ ; $\\frac{2}{3}+\\frac{5}{6} = \\frac{3}{2}$",
+                  ""
+                ],
+                [
+                  "Pourcentages & coefficients",
+                  "Augmentation $12\\% \\rightarrow k=1,12$ ; $V_f=112 \\rightarrow V_i=100$",
+                  ""
+                ],
+                [
+                  "Conversions d'unités",
+                  "$72\\,\\text{km/h} = 20\\,\\text{m/s}$ ; $3\\,\\text{cm}^2 = 300\\,\\text{mm}^2$",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as balayé le numérique. Passons au bloc « Algèbre et fonctions ». C'est le moteur de la modélisation. Les items à cocher ici concernent la reconnaissance immédiate des formes : développer $(x-4)(x+7)$ en $x^2+3x-28$ en une ligne, factoriser $x^2-6x+9$ en $(x-3)^2$ car c'est un carré parfait, résoudre $3(x-2)=15$ en deux lignes ($x-2=5 \\Rightarrow x=7$), et utiliser le trinôme $ax^2+bx+c$ : calculer $\\Delta$, trouver les racines, écrire la factorisation $a(x-x_1)(x-x_2)$, puis dresser le tableau de signes pour une inéquation. Sur les fonctions, l'automatisme est de lire l'ensemble de définition (exclure les zéros de dénominateurs, les radicaux négatifs), de calculer une image $f(2)$, de résoudre $f(x)=5$ graphiquement (intersection avec la horizontale $y=5$) ou algébriquement, et de lier le signe de la pente (coefficient directeur ou dérivée) aux variations : positif $\\rightarrow$ croissante, négatif $\\rightarrow$ décroissante."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": -2,
+              "upperBound": 3,
+              "lowerOpen": false,
+              "upperOpen": true,
+              "caption": "Ensemble de définition $[ -2 ; 3 [$. Visualiser les bornes incluses/exclues."
+            },
+            {
+              "type": "sign_table",
+              "caption": "Tableau de signes pour $(x+1)(x-3) \\ge 0$. Solution : $x \\le -1$ ou $x \\ge 3$.",
+              "variable": "x",
+              "rows": [
+                {
+                  "label": "x+1",
+                  "signs": [
+                    "-",
+                    "0",
+                    "+",
+                    "+"
+                  ]
+                },
+                {
+                  "label": "x-3",
+                  "signs": [
+                    "-",
+                    "-",
+                    "-",
+                    "0",
+                    "+"
+                  ]
+                },
+                {
+                  "label": "Produit",
+                  "signs": [
+                    "+",
+                    "0",
+                    "-",
+                    "0",
+                    "+"
+                  ]
+                }
+              ],
+              "limits": [
+                -1,
+                3
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'algèbre est sous contrôle. Troisième bloc : « Géométrie, mesures et vecteurs ». Ici, l'automatisme est visuel avant d'être calculatoire. Dessine le schéma ! Pour un triangle rectangle, identifier l'hypoténuse et appliquer Pythagore ($a^2=b^2+c^2$) ou les rapports trigonométriques ($\\cos$, $\\sin$, $\\tan$) selon ce qu'on cherche (longueur ou angle). Pour Thalès, vérifier la configuration (deux droites sécantes, lignes parallèles), écrire la chaîne d'égalité des rapports dans l'ordre des sommets, et calculer la quatrième proportionnelle. En vecteurs, le réflexe coordonnées : $\\vec{AB}(x_B-x_A; y_B-y_A)$, norme $\\|\\vec{u}\\| = \\sqrt{x^2+y^2}$, somme par le parallélogramme ou composante par composante, colinéarité $\\vec{u} \\wedge \\vec{v} = 0$ ($x_1y_2 - x_2y_1 = 0$). Ces gestes doivent sortir sans brouillon."
+            },
+            {
+              "type": "vector_addition_pad",
+              "ux": 3,
+              "uy": 1,
+              "vx": -1,
+              "vy": 2,
+              "caption": "Somme vectorielle $\\vec{u}+\\vec{v}$ par la méthode du parallélogramme (ou bout à bout)."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5",
+                "12",
+                "13"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle rectangle 5-12-13. Pythagore : $5^2+12^2=13^2$. $\\cos(B)=5/13$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier bloc avant la checklist finale : « Statistiques, probabilités et algorithme ». En stats, l'automatisme est de construire le tableau de valeurs-effectifs, calculer moyenne et médiane (attention à la parité de l'effectif total !), déterminer $Q_1$ et $Q_3$ (positions $n/4$ et $3n/4$), et tracer la boîte à moustaches. En probabilités, remplir un arbre pondéré, calculer le long des branches (produit), additionner à l'arrivée (somme des chemins menant à l'événement), et utiliser la formule des probabilités totales ou de Bayes si besoin. Côté algorithmique, lis le code comme un texte : initialisation, boucle `Pour` ou `Tant que`, affectation (`<-`), condition `Si...Alors...Sinon`, et sortie `Afficher`. Savoir exécuter une trace à la main pour $n=3$ ou $n=5$ est le test ultime de compréhension."
+            },
+            {
+              "type": "box_plot",
+              "caption": "Boîte à moustaches : min=2, Q1=5, médiane=7, Q3=10, max=14. L'écart interquartile = 5.",
+              "min": 2,
+              "q1": 5,
+              "median": 7,
+              "q3": 10,
+              "max": 14
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def somme_carres(n):\\n    s = 0\\n    for i in range(1, n+1):\\n        s = s + i*i\\n    return s\\n\\nprint(somme_carres(4))  # Affiche 30",
+              "language": "python",
+              "caption": "Algorithme simple : somme des carrés de 1 à n. Trace pour n=4 : 1+4+9+16=30."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant passé en revue les quatre grands domaines du programme. Chaque item du tableau, chaque schéma, chaque petit exercice était une piqûre de rappel pour ancrer le geste juste. Ce n'est pas de la révision passive, c'est de l'entraînement actif : ton cerveau a refait les connexions. La checklist qui suit est ton outil pour les prochaines semaines. Imprime-la, affiche-la, et coche sans pitié. Une case non cochée ? C'est ta priorité de travail du soir même. Tu as tous les outils pour finir l'année sereinement. Bravo pour ton investissement !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je passe fluide­ment de l'écriture décimale à l'écriture scientifique (puissances de 10) et je gère les ordres de grandeur.",
+                "Je simplifie les expressions avec radicaux ($\\sqrt{a^2b}=a\\sqrt{b}$) et fractions sans erreur de signe.",
+                "Je calcule un coefficient multiplicateur ($k=1\\pm t/100$) et je retrouve une valeur initiale à partir de la finale.",
+                "Je reconnais et j'applique les identités remarquables (carré, différence de carrés) pour factoriser instantanément.",
+                "Je résous toute équation du 1er degré et tout produit nul ; j'utilise le trinôme ($\\Delta$, racines, signes) pour les inéquations du 2e degré.",
+                "Je détermine l'ensemble de définition d'une fonction (dénominateur, racine) et je lis images/antécédents sur un graphique.",
+                "J'applique Pythagore, Thalès et les rapports trigonométriques (cos, sin, tan) dans un triangle rectangle.",
+                "Je calcule des coordonnées, une norme, une somme de vecteurs et je teste la colinéarité (determinant nul).",
+                "Je construis un tableau de valeurs-effectifs, je calcule moyenne, médiane, quartiles et je trace la boîte à moustaches.",
+                "Je complète un arbre de probabilités, j'applique la formule des probas totales et je calcule une probabilité conditionnelle.",
+                "Je lis et j'exécute une trace d'algorithme (boucles, conditions, variables) pour prédire le résultat affiché."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier $A = \\frac{\\sqrt{98} - \\sqrt{18}}{\\sqrt{2}}$. Donner la forme exacte la plus simple.",
+              "answer": "$4$.",
+              "hint": "Simplifie les radicaux du numérateur : $\\sqrt{98}=7\\sqrt{2}$, $\\sqrt{18}=3\\sqrt{2}$. Factorise $\\sqrt{2}$.",
+              "explanation": "$\\sqrt{98} = \\sqrt{49\\times2} = 7\\sqrt{2}$. $\\sqrt{18} = \\sqrt{9\\times2} = 3\\sqrt{2}$. Numérateur $= (7-3)\\sqrt{2} = 4\\sqrt{2}$. Division par $\\sqrt{2}$ donne $4$."
+            },
+            {
+              "question": "Soit $f(x) = \\frac{2x-1}{x+3}$. Déterminer l'ensemble de définition $D_f$. Résoudre $f(x) = 2$.",
+              "answer": "$D_f = \\mathbb{R} \\setminus \\{-3\\}$. L'équation $f(x)=2$ n'a pas de solution.",
+              "hint": "Le dénominateur ne doit pas être nul pour $D_f$. Pour l'équation, multiplie par $x+3$ (non nul sur $D_f$) et simplifie.",
+              "explanation": "$x+3 \\neq 0 \\Rightarrow x \\neq -3$. Équation : $2x-1 = 2(x+3) \\Leftrightarrow 2x-1 = 2x+6 \\Leftrightarrow -1=6$, impossible. Pas de solution."
+            },
+            {
+              "question": "Dans un repère, $A(2;5)$, $B(6;1)$, $C(4;3)$. Calculer les coordonnées de $\\vec{AB}$ et $\\vec{AC}$. En déduire si $A$, $B$, $C$ sont alignés.",
+              "answer": "$\\vec{AB}(4;-4)$, $\\vec{AC}(2;-2)$. Oui, alignés car $\\vec{AB} = 2\\vec{AC}$ (colinéaires).",
+              "hint": "$\\vec{AB}(x_B-x_A; y_B-y_A)$. Vérifie la proportionnalité des coordonnées (ou déterminant nul).",
+              "explanation": "$\\vec{AB}(6-2; 1-5) = (4;-4)$. $\\vec{AC}(4-2; 3-5) = (2;-2)$. $\\frac{4}{2} = \\frac{-4}{-2} = 2$, donc vecteurs colinéaires, points alignés."
+            },
+            {
+              "question": "Un algorithme :\\n`x <- 2`\\n`Pour i de 1 à 4 faire`\\n`   x <- x * 2`\\n`Fin pour`\\n`Afficher x`\\nQuelle valeur est affichée ?",
+              "answer": "$32$.",
+              "hint": "Suis la variable `x` pas à pas. Au départ $x=2$. La boucle tourne 4 fois : à chaque tour, $x$ est multiplié par $2$.",
+              "explanation": "Début : $x=2$. i=1 : $x=4$. i=2 : $x=8$. i=3 : $x=16$. i=4 : $x=32$. Fin boucle. Affichage $32$. C'est $2 \\times 2^4 = 32$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

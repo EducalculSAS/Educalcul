@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Construire",
+  "title": "Quiz : Construire des représentations d'une fonction affine",
+  "questions": [
+    {
+      "text": "Soit la fonction $f$ définie par $f(x) = 3x - 2$. Quel tableau de valeurs correspond à cette fonction pour les valeurs $x = -1$, $0$, $1$, $2$ ?",
+      "options": [
+        "x | -1 | 0 | 1 | 2\\nf(x) | -5 | -2 | 1 | 4",
+        "x | -1 | 0 | 1 | 2\\nf(x) | -1 | -2 | 1 | 4",
+        "x | -1 | 0 | 1 | 2\\nf(x) | -5 | 2 | 1 | 4",
+        "x | -1 | 0 | 1 | 2\\nf(x) | -5 | -2 | -1 | 4"
+      ],
+      "correctAnswer": "x | -1 | 0 | 1 | 2\\nf(x) | -5 | -2 | 1 | 4",
+      "explanation": "On calcule les images : $f(-1) = 3 \\times (-1) - 2 = -5$, $f(0) = 3 \\times 0 - 2 = -2$, $f(1) = 3 \\times 1 - 2 = 1$, $f(2) = 3 \\times 2 - 2 = 4$. Le premier tableau est le seul à contenir ces quatre valeurs exactes. Les autres options contiennent des erreurs de signe ou de calcul sur une des images.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs d'une fonction affine $g$.\\n\\nx | -2 | 0 | 2 | 4\\ng(x) | 5 | 3 | 1 | -1\\n\\nQuelle est l'expression de $g(x)$ ?",
+      "options": [
+        "g(x) = -x + 3",
+        "g(x) = x + 3",
+        "g(x) = -2x + 3",
+        "g(x) = 2x - 1"
+      ],
+      "correctAnswer": "g(x) = -x + 3",
+      "explanation": "Une fonction affine a la forme $g(x) = ax + b$. L'ordonnée à l'origine $b$ est la valeur pour $x = 0$, ici $g(0) = 3$, donc $b = 3$. Le coefficient directeur $a$ est le taux d'accroissement : quand $x$ augmente de $2$ (de $0$ à $2$), $g(x)$ diminue de $2$ (de $3$ à $1$), donc $a = -2 / 2 = -1$. L'expression est donc $g(x) = -x + 3$. L'option B a un signe erroné pour $a$, l'option C confond la variation totale et le coefficient directeur, l'option D a les deux signes inversés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La courbe ci-dessous représente une fonction affine $h$. Quelle est son expression ?",
+      "options": [
+        "h(x) = -0,5x + 2",
+        "h(x) = 0,5x + 2",
+        "h(x) = -2x + 2",
+        "h(x) = 2x - 0,5"
+      ],
+      "correctAnswer": "h(x) = -0,5x + 2",
+      "explanation": "La coupe avec l'axe des ordonnées (abscisse $0$) se fait à l'ordonnée $2$, donc $h(0) = 2$ : l'ordonnée à l'origine est $2$. La courbe est décroissante, le coefficient directeur est négatif. En partant de $(0 ; 2)$, pour avancer de $2$ unités en abscisse (jusqu'à $2$), on descend de $1$ unité en ordonnée (jusqu'à $1$). Le coefficient directeur est donc $-1 / 2 = -0,5$. L'expression est $h(x) = -0,5x + 2$. L'option B correspond à une courbe croissante, l'option C a un coefficient directeur trop fort, l'option D a une ordonnée à l'origine erronée.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-0.5*x+2",
+        "xmin": -2,
+        "xmax": 6,
+        "caption": "Représentation graphique de la fonction h"
+      }
+    },
+    {
+      "text": "Soit la fonction $f$ définie par $f(x) = -2x + 5$. Parmi les affirmations suivantes sur sa représentation graphique dans un repère orthonormé, laquelle est fausse ?",
+      "options": [
+        "La courbe coupe l'axe des ordonnées au point de coordonnées $(0 ; 5)$",
+        "La courbe coupe l'axe des abscisses au point d'abscisse $2,5$",
+        "La fonction est décroissante",
+        "La courbe passe par le point de coordonnées $(1 ; 2)$"
+      ],
+      "correctAnswer": "La courbe passe par le point de coordonnées $(1 ; 2)$",
+      "explanation": "L'ordonnée à l'origine est $5$ (option A vraie). L'abscisse à l'origine se trouve en résolvant $-2x + 5 = 0$, soit $x = 2,5$ (option B vraie). Le coefficient directeur est $-2 < 0$, la fonction est décroissante (option C vraie). Pour $x = 1$, $f(1) = -2 \\times 1 + 5 = 3$, le point $(1 ; 3)$ est sur la courbe, pas $(1 ; 2)$. L'option D est donc fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction $f$ définie par $f(x) = 4 - 2x$. Quel est le tableau de valeurs correct pour $x = -1$, $0$, $1$, $3$ ?",
+      "options": [
+        "x | -1 | 0 | 1 | 3\\nf(x) | 6 | 4 | 2 | -2",
+        "x | -1 | 0 | 1 | 3\\nf(x) | 2 | 4 | 6 | 10",
+        "x | -1 | 0 | 1 | 3\\nf(x) | 6 | 4 | 2 | 2",
+        "x | -1 | 0 | 1 | 3\\nf(x) | -2 | 4 | 6 | 10"
+      ],
+      "correctAnswer": "x | -1 | 0 | 1 | 3\\nf(x) | 6 | 4 | 2 | -2",
+      "explanation": "On calcule chaque image : $f(-1) = 4 - 2 \\times (-1) = 4 + 2 = 6$. $f(0) = 4 - 0 = 4$. $f(1) = 4 - 2 = 2$. $f(3) = 4 - 6 = -2$. Le premier tableau correspond exactement. L'option B inverse l'ordre (croissante au lieu de décroissante). L'option C donne une valeur positive pour $x=3$ (erreur de signe sur $-2 \\times 3$). L'option D confond $f(-1)$ et $f(3)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Hypothèses",
+  "title": "Réciproque de Thalès : Les hypothèses",
+  "questions": [
+    {
+      "text": "Dans un triangle $ABC$, on place les points $M$ sur $[AB]$ et $N$ sur $[AC]$. Quelle condition, parmi les suivantes, est une hypothèse INDISPENSABLE pour appliquer la réciproque du théorème de Thalès et affirmer que $(MN) \\parallel (BC)$ ?",
+      "options": [
+        "Les droites $(MN)$ et $(BC)$ sont parallèles.",
+        "Les points $A$, $M$, $B$ sont alignés et les points $A$, $N$, $C$ sont alignés.",
+        "Le rapport $\\frac{AM}{AB}$ est égal au rapport $\\frac{AN}{AC}$.",
+        "Les triangles $AMN$ et $ABC$ sont semblables."
+      ],
+      "correctAnswer": "Les points $A$, $M$, $B$ sont alignés et les points $A$, $N$, $C$ sont alignés.",
+      "explanation": "La réciproque de Thalès nécessite DEUX hypothèses principales : 1) L'alignement des points (A, M, B d'un côté et A, N, C de l'autre) dans le même ordre. 2) L'égalité des rapports (AM/AB = AN/AC). L'option A est la CONCLUSION, pas une hypothèse. L'option C est la deuxième hypothèse nécessaire, mais elle est INUTILE si la première (alignement) n'est pas vérifiée. L'option D est une conséquence (semblable), pas une hypothèse de départ. L'alignement est donc la condition de base indispensable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$. Les points $M$ et $N$ sont tels que $\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{1}{3}$. Cependant, le point $M$ n'appartient PAS au segment $[AB]$ (il est sur la droite $(AB)$ mais de l'autre côté de $B$ par rapport à $A$). Peut-on conclure que $(MN) \\parallel (BC)$ ?",
+      "options": [
+        "Oui, car les rapports sont égaux.",
+        "Non, car l'égalité des rapports n'est pas suffisante seule.",
+        "Non, car les points $A$, $M$, $B$ ne sont pas dans le même ordre (hypothèse d'alignement non respectée).",
+        "Oui, car le triangle $AMN$ est une réduction du triangle $ABC$."
+      ],
+      "correctAnswer": "Non, car les points $A$, $M$, $B$ ne sont pas dans le même ordre (hypothèse d'alignement non respectée).",
+      "explanation": "L'hypothèse d'alignement dans la réciproque de Thalès est stricte : les points doivent être alignés DANS LE MÊME ORDRE (soit A-M-B, soit M-A-B, etc., mais l'ordre relatif entre les deux droites doit être cohérent). Ici, si M est de l'autre côté de B par rapport à A, l'ordre est A-B-M sur la première droite, alors que sur l'autre on a vraisemblablement A-N-C. L'ordre n'est pas le même, l'hypothèse d'alignement (configuration) n'est pas remplie. On ne peut pas conclure au parallélisme. C'est un piège classique : l'égalité des rapports ne suffit pas si la configuration (ordre des points) n'est pas bonne.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère deux droites sécantes en $A$. Sur l'une, on a les points $B$ et $M$ ; sur l'autre, $C$ et $N$. On sait que $\\frac{AM}{AB} = \\frac{AN}{AC}$. Quelle affirmation est EXACTE concernant l'application de la réciproque de Thalès ?",
+      "options": [
+        "On peut toujours affirmer que $(MN) \\parallel (BC)$.",
+        "On ne peut rien affirmer car il manque l'hypothèse des droites parallèles.",
+        "On peut affirmer que $(MN) \\parallel (BC)$ seulement si les points sont dans l'ordre $A-M-B$ et $A-N-C$ (ou $M-A-B$ et $N-A-C$).",
+        "On peut affirmer que $(MN) \\parallel (BC)$ seulement si $M$ est entre $A$ et $B$."
+      ],
+      "correctAnswer": "On peut affirmer que $(MN) \\parallel (BC)$ seulement si les points sont dans l'ordre $A-M-B$ et $A-N-C$ (ou $M-A-B$ et $N-A-C$).",
+      "explanation": "La réciproque de Thalès s'applique dans deux configurations : la configuration 'standard' (sommet commun $A$, points $M$ et $N$ sur les côtés, ordre $A-M-B$ et $A-N-C$) ET la configuration 'papillon' (ordre $M-A-B$ et $N-A-C$). Dans les deux cas, l'ordre des points est IDENTIQUE sur les deux droites (le sommet $A$ est soit aux deux extrémités, soit aux deux milieux). L'option D est fausse car elle exclut le cas papillon ($M-A-B$). L'option A est fausse car si l'ordre est $A-M-B$ et $A-C-N$ (ordre différent), les droites ne sont pas parallèles (c'est le cas des antiparallèles). L'option B confond hypothèse et conclusion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, $M \\in [AB]$ et $N \\in [AC]$. On mesure $AM = 3$ cm, $AB = 5$ cm, $AN = 4,5$ cm et $AC = 7,5$ cm. Un élève écrit : \"Comme $\\frac{AM}{AB} = \\frac{3}{5} = 0,6$ et $\\frac{AN}{AC} = \\frac{4,5}{7,5} = 0,6$, alors d'après la réciproque de Thalès, $(MN) \\parallel (BC)$.\" Son raisonnement est-il correct ?",
+      "options": [
+        "Oui, il a vérifié l'égalité des rapports, c'est suffisant.",
+        "Non, il a oublié de vérifier que les points $A$, $M$, $B$ et $A$, $N$, $C$ sont alignés dans le bon ordre.",
+        "Non, il aurait dû calculer $\\frac{AM}{MB}$ et $\\frac{AN}{NC}$.",
+        "Non, car $M$ et $N$ sont sur les segments, donc les droites sont sécantes."
+      ],
+      "correctAnswer": "Non, il a oublié de vérifier que les points $A$, $M$, $B$ et $A$, $N$, $C$ sont alignés dans le bon ordre.",
+      "explanation": "Même si l'énoncé dit '$M \\in [AB]$ et $N \\in [AC]$' (ce qui garantit l'alignement et l'ordre $A-M-B$ et $A-N-C$), un raisonnement mathématique rigoureux doit EXPLICITER les hypothèses utilisées. L'élève a seulement vérifié l'égalité des rapports (2e hypothèse). Il doit citer explicitement la 1re hypothèse : l'alignement des points dans le même ordre (donné ici par l'appartenance aux segments). L'option C est fausse : on peut utiliser les rapports AM/AB et AN/AC (rapports de segments partagés), pas seulement les rapports de sections AM/MB. L'option D est absurde.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient deux droites $(d_1)$ et $(d_2)$ sécantes en $A$. Sur $(d_1)$, on a $M$ et $B$ tels que $A-M-B$. Sur $(d_2)$, on a $N$ et $C$ tels que $A-C-N$ (l'ordre est différent). On sait que $\\frac{AM}{AB} = \\frac{AN}{AC}$. Que peut-on conclure ?",
+      "options": [
+        "Les droites $(MN)$ et $(BC)$ sont parallèles.",
+        "Les droites $(MN)$ et $(BC)$ ne sont PAS parallèles.",
+        "Les triangles $AMN$ et $ABC$ sont semblables.",
+        "On ne peut rien conclure sans connaître les longueurs exactes."
+      ],
+      "correctAnswer": "Les droites $(MN)$ et $(BC)$ ne sont PAS parallèles.",
+      "explanation": "C'est le cas où l'hypothèse d'alignement 'dans le même ordre' n'est PAS respectée. Sur la première droite l'ordre est $A-M-B$ ($A$ est un extrémité), sur la seconde l'ordre est $A-C-N$ ($A$ est une extrémité mais $C$ est entre $A$ et $N$, alors que $M$ est entre $A$ et $B$). L'ordre relatif du sommet $A$ par rapport aux autres points n'est pas le même sur les deux droites (configuration 'en Z' ou antiparallèle). La réciproque de Thalès NE S'APPLIQUE PAS. En fait, dans ce cas, $(MN)$ et $(BC)$ sont sécantes (elles se coupent du côté opposé à $A$ par rapport au segment $MN$). Les triangles ne sont pas semblables au sens de la similitude directe (ils le sont en similitude indirecte / retournée).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

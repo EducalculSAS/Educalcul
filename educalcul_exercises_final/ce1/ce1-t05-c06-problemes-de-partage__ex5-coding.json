@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 113,
+  "_course_code": "ce1-t05-c06-problemes-de-partage",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Nombre de parts connu",
+  "title": "Problèmes de partage : Nombre de parts connu",
+  "blocks": [
+    {
+      "title": "Partage simple",
+      "content": "Il y a $12$ bonbons à partager équitablement entre $3$ enfants. Écris un algorithme (en langage naturel ou style Python) qui calcule combien de bonbons chaque enfant reçoit.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total $12$ et le nombre de parts $3$.\\n2. Calculer le quotient : $12 / 3 = 4$.\\n3. Afficher le résultat : chaque enfant reçoit $4$ bonbons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On connaît le total ($12$) et le nombre de parts ($3$). Pour trouver la valeur de chaque part, on divise le total par le nombre de parts. $12$ divisé par $3$ donne $4$. Donc chaque enfant reçoit $4$ bonbons.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Partage avec plus grands nombres",
+      "content": "Une enseignante a $24$ crayons. Elle veut les répartir équitablement dans $6$ boîtes. Écris un algorithme qui détermine le nombre de crayons par boîte.",
+      "correctAnswer": "Algorithme :\\n1. Lire le total $24$ et le nombre de parts $6$.\\n2. Effectuer la division : $24 / 6 = 4$.\\n3. Afficher : chaque boîte contient $4$ crayons.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total est $24$ crayons et le nombre de parts (boîtes) est $6$. La division $24 / 6$ donne $4$. Ainsi, chaque boîte reçoit $4$ crayons.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification du partage",
+      "content": "Il y a $30$ billes à partager entre $5$ enfants. Écris un algorithme qui calcule le nombre de billes par enfant et qui vérifie si le partage est exact (reste nul).",
+      "correctAnswer": "Algorithme :\\n1. Lire le total $30$ et le nombre de parts $5$.\\n2. Calculer le quotient : $30 / 5 = 6$.\\n3. Calculer le reste : $30 % 5 = 0$.\\n4. Si le reste est $0$, afficher \"Partage exact : chaque enfant a $6$ billes\". Sinon afficher \"Il reste des billes\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise $30$ par $5$, ce qui donne $6$ avec un reste de $0$. Le partage est donc exact, chaque enfant reçoit $6$ billes. L'algorithme vérifie le reste pour confirmer l'exactitude.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

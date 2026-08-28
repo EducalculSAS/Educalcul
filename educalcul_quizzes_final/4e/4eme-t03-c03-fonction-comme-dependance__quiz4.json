@@ -1,0 +1,102 @@
+{
+  "_status": "done",
+  "_course_id": 432,
+  "_course_code": "4eme-t03-c03-fonction-comme-dependance",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Application : Fonction comme dépendance",
+  "title": "Quiz : Fonction comme dépendance - Applications",
+  "questions": [
+    {
+      "text": "Le prix total d'un achat dépend du nombre d'articles achetés. Quelle est la variable dépendante ?",
+      "options": [
+        "Le nombre d'articles",
+        "Le prix total",
+        "Le prix unitaire",
+        "La quantité disponible"
+      ],
+      "correctAnswer": "Le prix total",
+      "explanation": "Dans cette situation, le prix total change en fonction du nombre d'articles. Le nombre d'articles est la variable indépendante (choisie librement), tandis que le prix total est la variable dépendante car il est déterminé par le nombre d'articles et le prix unitaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau ci-dessous donne des valeurs de $x$ et $y$. La variable $y$ est-elle une fonction de $x$ ?",
+      "options": [
+        "Oui, car à chaque $x$ correspond un seul $y$",
+        "Non, car les valeurs de $y$ ne sont pas proportionnelles",
+        "Oui, car les valeurs de $x$ augmentent",
+        "Non, car le tableau ne contient pas assez de données"
+      ],
+      "correctAnswer": "Oui, car à chaque $x$ correspond un seul $y$",
+      "explanation": "Une fonction associe à chaque valeur de la variable indépendante ($x$) une unique valeur de la variable dépendante ($y$). Dans le tableau, pour $x=1$ on a $y=2$, pour $x=2$ on a $y=4$, pour $x=3$ on a $y=6$ ; chaque $x$ a un seul $y$, donc $y$ est bien une fonction de $x$. La proportionnalité n'est pas nécessaire pour définir une fonction.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "1",
+            "2"
+          ],
+          [
+            "2",
+            "4"
+          ],
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le graphique ci-dessous représente la relation entre la distance parcourue (en km) et le temps (en h) pour un véhicule roulant à vitesse constante. Quelle affirmation est correcte ?",
+      "options": [
+        "La distance est une fonction du temps",
+        "Le temps est une fonction de la distance",
+        "Les deux variables sont indépendantes",
+        "Le graphique ne représente pas une fonction"
+      ],
+      "correctAnswer": "La distance est une fonction du temps",
+      "explanation": "Le graphique montre une droite passant par l'origine avec une pente positive, ce qui correspond à une relation de proportionnalité : distance = vitesse × temps. Pour chaque instant $t$ (variable indépendante), il existe une unique distance $d$ (variable dépendante). Donc la distance est une fonction du temps. L'inverse n'est pas nécessairement une fonction si la vitesse n'est pas constante, mais ici le graphique représente bien une fonction.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Distance en fonction du temps"
+      }
+    },
+    {
+      "text": "Le coût d'une location de vélo est donné par la formule $C = 5 + 2h$, où $h$ est le nombre d'heures. Quelle variable dépend de l'autre ?",
+      "options": [
+        "$h$ dépend de $C$",
+        "$C$ dépend de $h$",
+        "Les deux sont indépendantes",
+        "Aucune des deux"
+      ],
+      "correctAnswer": "$C$ dépend de $h$",
+      "explanation": "La formule exprime le coût total $C$ en fonction du nombre d'heures $h$. On choisit $h$ (variable indépendante) et on calcule $C$ (variable dépendante). Donc $C$ dépend de $h$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction $f$ qui associe à tout nombre $x$ le nombre $f(x) = 3x - 4$. Quelle affirmation est fausse ?",
+      "options": [
+        "$f$ est une fonction car à chaque $x$ correspond un unique $f(x)$",
+        "La variable indépendante est $x$",
+        "La variable dépendante est $f(x)$",
+        "La fonction $f$ n'est pas définie pour $x = 0$"
+      ],
+      "correctAnswer": "La fonction $f$ n'est pas définie pour $x = 0$",
+      "explanation": "La fonction $f(x)=3x-4$ est une fonction affine définie pour tout nombre réel $x$, y compris $x=0$ (on obtient $f(0)=-4$). Les trois premières affirmations sont vraies : $f$ est bien une fonction, $x$ est la variable indépendante, $f(x)$ la variable dépendante. La dernière affirmation est donc fausse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

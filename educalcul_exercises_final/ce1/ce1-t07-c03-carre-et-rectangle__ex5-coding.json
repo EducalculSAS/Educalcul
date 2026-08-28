@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 128,
+  "_course_code": "ce1-t07-c03-carre-et-rectangle",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Reconnaître visuellement",
+  "title": "Reconnaître les carrés et les rectangles - Algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme pour identifier un rectangle",
+      "content": "Écris une suite d'étapes (un algorithme) qui permet de dire si un quadrilatère est un rectangle. Utilise des mots simples : vérifier les angles, vérifier les côtés opposés.",
+      "correctAnswer": "Étape un : compter les côtés, il doit y en avoir quatre.\\nÉtape deux : vérifier que les quatre angles sont des angles droits ($90$ degrés).\\nÉtape trois : vérifier que les deux paires de côtés opposés ont la même longueur.\\nSi les trois conditions sont vraies, c'est un rectangle.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un rectangle est un quadrilatère qui a quatre angles droits et dont les côtés opposés sont égaux. L'algorithme teste ces trois propriétés dans l'ordre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour identifier un carré",
+      "content": "Écris un algorithme qui permet de dire si un quadrilatère est un carré. Pense aux angles et aux longueurs des côtés.",
+      "correctAnswer": "Étape un : compter les côtés, il doit y en avoir quatre.\\nÉtape deux : vérifier que les quatre angles sont des angles droits.\\nÉtape trois : vérifier que les quatre côtés ont la même longueur.\\nSi les trois conditions sont vraies, c'est un carré.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré est un rectangle particulier dont tous les côtés sont égaux. L'algorithme ajoute la condition que les quatre côtés sont égaux aux conditions du rectangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Classer plusieurs figures",
+      "content": "On te donne trois figures : un rectangle, un carré et un losange. Écris un algorithme qui, pour chaque figure, affiche \"carré\", \"rectangle\" ou \"autre\".",
+      "correctAnswer": "Pour chaque figure :\\nÉtape un : si la figure a quatre côtés, quatre angles droits et quatre côtés égaux → afficher \"carré\".\\nÉtape deux : sinon, si la figure a quatre côtés, quatre angles droits et côtés opposés égaux → afficher \"rectangle\".\\nÉtape trois : sinon → afficher \"autre\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste d'abord la condition la plus restrictive (carré), puis la condition du rectangle, et enfin classe les autres figures dans \"autre\". Le losange n'a pas d'angles droits, donc il sera classé \"autre\".",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

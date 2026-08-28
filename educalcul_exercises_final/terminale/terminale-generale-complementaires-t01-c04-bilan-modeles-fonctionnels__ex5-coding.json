@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 640,
+  "_course_code": "terminale-generale-complementaires-t01-c04-bilan-modeles-fonctionnels",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Approfondissement : Choix d'outil",
+  "title": "Choix d'outils pour les modèles fonctionnels",
+  "blocks": [
+    {
+      "title": "Recherche de valeur",
+      "content": "On considère une fonction $f$ modélisant l'évolution d'une population. On souhaite savoir si la population atteint $1000$ individus pour une valeur de $x$ comprise entre $0$ et $10$. Quel outil algorithmique est le plus approprié pour trouver cette valeur de $x$ avec une précision de $0.01$ et comment le structurer ?",
+      "correctAnswer": "L'outil le plus approprié est l'algorithme de dichotomie. Le raisonnement est le suivant : on définit l'intervalle $[0, 10]$, on vérifie que la fonction est continue et que $f(0) - 1000$ et $f(10) - 1000$ sont de signes opposés. Ensuite, on divise l'intervalle en deux répétitivement jusqu'à ce que la largeur de l'intervalle soit inférieure à $0.01$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme de dichotomie est l'outil standard pour trouver une racine d'une fonction continue sur un intervalle donné lorsque l'on peut garantir un changement de signe, assurant ainsi la convergence vers la solution.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'aire",
+      "content": "Soit une fonction $f$ définie sur $[a, b]$ représentant un débit d'eau en litres par seconde. On souhaite estimer le volume total d'eau écoulé entre l'instant $a$ et l'instant $b$. Proposez un algorithme simple utilisant des sommes pour approximer ce résultat.",
+      "correctAnswer": "On utilise une somme de Riemann. L'algorithme est le suivant : on divise l'intervalle $[a, b]$ en $n$ sous-intervalles de largeur $h = (b - a) / n$. On calcule la somme des aires des rectangles : $S = h \\times \\sum_{i=0}^{n-1} f(a + i \\times h)$. Plus $n$ est grand, plus l'approximation est précise.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le volume total correspond à l'intégrale de la fonction débit. L'outil algorithmique pour approximer une intégrale est la somme de Riemann, qui fragmente l'aire sous la courbe en rectangles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation de modèle",
+      "content": "On dispose d'un modèle fonctionnel $g(x)$ et de données expérimentales. On souhaite trouver la valeur de $x$ qui minimise l'écart entre le modèle et les données. Si la fonction $g$ est dérivable, quel outil numérique permet d'atteindre le minimum plus rapidement qu'une simple recherche exhaustive ?",
+      "correctAnswer": "L'outil approprié est l'algorithme de la descente de gradient. Le raisonnement est le suivant : on part d'une valeur initiale $x_{0}$. On met à jour la valeur de $x$ en suivant la direction opposée au gradient : $x_{n+1} = x_{n} - \\alpha \\times g'(x_{n})$, où $\\alpha$ est un pas d'apprentissage positif. On répète l'opération jusqu'à ce que $g'(x_{n})$ soit proche de $0$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour optimiser une fonction dérivable, la descente de gradient utilise l'information de la pente (la dérivée) pour se diriger vers le minimum, ce qui est bien plus efficace qu'un balayage complet des valeurs possibles.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

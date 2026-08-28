@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 529,
+  "_course_code": "2nde-t06-c03-statistiques-a-une-variable",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Approfondissement : Moyenne / médiane / quartiles selon programme",
+  "title": "Algorithmes pour moyenne médiane quartiles",
+  "blocks": [
+    {
+      "title": "Moyenne",
+      "content": "Écrire un algorithme qui calcule la moyenne d'une liste de nombres réels donnés en entrée.",
+      "correctAnswer": "Algorithme pour calculer la moyenne :\\n- Initialiser la somme à zéro.\\n- Pour chaque nombre de la liste, ajouter ce nombre à la somme.\\n- Compter le nombre d'éléments de la liste.\\n- Si le nombre d'éléments est supérieur à zéro, diviser la somme par le nombre d'éléments pour obtenir la moyenne.\\n- Afficher la moyenne.\\n- Sinon, afficher un message indiquant que la liste est vide.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt la liste pour accumuler la somme des valeurs. La moyenne est le quotient de la somme par le nombre d'éléments. Il faut vérifier que la liste n'est pas vide pour éviter une division par zéro.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Médiane",
+      "content": "Écrire un algorithme qui détermine la médiane d'une liste de nombres réels, triée ou non.",
+      "correctAnswer": "Algorithme pour déterminer la médiane :\\n- Trier la liste dans l'ordre croissant.\\n- Compter le nombre d'éléments.\\n- Si la liste est vide, afficher un message d'erreur.\\n- Si le nombre d'éléments est impair, la médiane est l'élément situé au milieu de la liste triée.\\n- Si le nombre d'éléments est pair, la médiane est la moyenne des deux éléments centraux de la liste triée.\\n- Afficher la médiane.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiane sépare la série en deux parties égales. Après tri, si l'effectif est impair, l'élément central est la médiane. Si l'effectif est pair, la médiane est la moyenne des deux éléments centraux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quartiles",
+      "content": "Écrire un algorithme qui calcule le premier quartile et le troisième quartile d'une liste de nombres réels.",
+      "correctAnswer": "Algorithme pour calculer les quartiles :\\n- Trier la liste dans l'ordre croissant.\\n- Compter le nombre d'éléments.\\n- Si la liste est vide, afficher un message d'erreur.\\n- Calculer la position du premier quartile comme le quart de (nombre d'éléments plus un).\\n- Calculer la position du troisième quartile comme les trois quarts de (nombre d'éléments plus un).\\n- Si la position est un entier, le quartile correspond à l'élément à cet indice dans la liste triée.\\n- Si la position n'est pas un entier, interpoler linéairement entre les deux éléments encadrant la position.\\n- Afficher le premier quartile et le troisième quartile.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les quartiles partagent les données en quatre parties égales. La méthode utilisée ici est l'interpolation linéaire sur les positions (effectif plus un) multipliées par vingt-cinq centièmes et soixante-quinze centièmes. L'interpolation permet d'obtenir une valeur précise même lorsque la position n'est pas un entier.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

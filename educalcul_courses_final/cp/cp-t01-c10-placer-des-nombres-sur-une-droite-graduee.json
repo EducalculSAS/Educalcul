@@ -1,0 +1,746 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.514626+00:00",
+  "id": 10,
+  "code": "cp-t01-c10",
+  "title": "Placer des nombres sur une droite graduée",
+  "description": "Cours structuré Educalcul : Placer des nombres sur une droite graduée.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Placer des nombres sur une droite graduée",
+    "objectif_global": "Placer des nombres sur une droite graduée",
+    "mini_lecons_imposees": [
+      "Repérer le sens croissant.",
+      "Placer un entier sur une graduation adaptée.",
+      "Lire un nombre à partir de sa position."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Repérer le sens croissant.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer le sens croissant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une longue route bien droite. Sur le bord, tu as planté des petits panneaux avec des nombres : $0$, $1$, $2$, $3$... jusqu'à $10$. C'est ta droite graduée ! Regarde bien : le premier panneau est $0$, puis en avançant tu rencontres $1$, puis $2$, puis $3$. Les nombres deviennent plus grands au fur et à mesure que tu marches vers la droite. C'est ce qu'on appelle le sens croissant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $10$. La flèche montre le sens où les nombres grandissent.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois la flèche au bout de la droite ? Elle pointe vers la droite. C'est elle qui te dit : \"C'est par ici que les nombres grandissent !\" Si tu poses ton doigt sur $2$ et que tu avances vers la flèche, tu tombes sur $3$, puis $4$, puis $5$. À chaque pas, le nombre augmente de $1$. C'est comme monter les marches d'un escalier : chaque marche est un nombre plus grand que la précédente."
+            },
+            {
+              "type": "definition",
+              "term": "Droite graduée",
+              "definition": "Une ligne droite sur laquelle on a repéré des nombres à intervalles réguliers. Elle permet de visualiser l'ordre des nombres.",
+              "example": "La règle de ta trousse est une droite graduée en centimètres."
+            },
+            {
+              "type": "definition",
+              "term": "Sens croissant",
+              "definition": "Le sens dans lequel les nombres deviennent plus grands. Sur une droite graduée classique, c'est le sens de la flèche, vers la droite.",
+              "example": "$2$, $3$, $4$, $5$ sont dans le sens croissant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde cette nouvelle droite. Elle commence aussi à $0$, mais les graduations sont plus espacées. La flèche est toujours là, fière et droite, elle pointe vers les grands nombres. Même si les traits sont plus loin les uns des autres, la règle ne change pas : quand tu suis la flèche, tu comptes $0$, $1$, $2$, $3$... Les nombres grandissent toujours dans le même sens. C'est comme si tu faisais de plus grands pas, mais tu montes quand même l'escalier !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $20$ par pas de $2$. La flèche indique toujours le sens croissant.",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                },
+                {
+                  "value": 16,
+                  "label": "16"
+                },
+                {
+                  "value": 18,
+                  "label": "18"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de poser ton doigt sur $4$. Si tu avances dans le sens de la flèche, quel est le nombre suivant ? C'est $6$ ! Et après $6$ ? C'est $8$. Tu vois, l'écart entre deux graduations est de $2$, mais le sens croissant ne change jamais. La flèche est ton guide fidèle : elle te montre toujours le chemin des nombres qui grandissent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on te donne une droite sans flèche. Pas de panique ! Tu peux la retrouver toi-même. Cherche le plus petit nombre écrit sur la droite, souvent $0$. Puis regarde le nombre d'à côté : s'il est plus grand (comme $1$ ou $2$), alors le sens croissant va de $0$ vers ce nombre. Tu peux dessiner toi-même une petite flèche au-dessus de la droite pour ne pas l'oublier. C'est ton repère, ta boussole pour les nombres !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $10$ sans flèche. À toi de deviner le sens croissant !",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant repérer le sens croissant sur n'importe quelle droite graduée. Rappelle-toi : la flèche (ou le fait que les nombres augmentent) t'indique la direction où les nombres deviennent plus grands. C'est la première étape pour te repérer comme un pro sur la droite des nombres. À la prochaine leçon, on apprendra à poser un nombre exactement sur sa graduation !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la droite graduée ci-dessous, dans quel sens les nombres grandissent-ils ? Vers la gauche ou vers la droite ?",
+              "answer": "Vers la droite.",
+              "hint": "Regarde la flèche à la fin de la droite. Elle pointe vers les nombres qui deviennent plus grands.",
+              "explanation": "La flèche indique le sens croissant. En allant vers la droite, on passe de $0$ à $1$, puis $2$, $3$... Les nombres augmentent."
+            },
+            {
+              "question": "Sur une droite graduée de $0$ à $20$ par pas de $2$, si je suis sur $8$ et que j'avance dans le sens croissant, sur quel nombre j'arrive ?",
+              "answer": "$10$",
+              "hint": "Compte deux graduations après $8$ dans le sens de la flèche.",
+              "explanation": "Les graduations sont $0, 2, 4, 6, 8, 10...$ Après $8$, le nombre suivant dans le sens croissant est $10$."
+            },
+            {
+              "question": "Voici une droite sans flèche : $0$, $1$, $2$, $3$, $4$, $5$. Dessine la flèche dans le bon sens.",
+              "answer": "La flèche part de $0$ et pointe vers $5$ (vers la droite).",
+              "hint": "Les nombres augmentent : $0 < 1 < 2 < 3 < 4 < 5$. La flèche va vers les plus grands.",
+              "explanation": "Comme les nombres deviennent plus grands quand on va de $0$ vers $5$, le sens croissant est vers la droite. On dessine la flèche dans ce sens."
+            }
+          ]
+        },
+        {
+          "title": "Placer un entier sur une graduation adaptée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer un entier sur une graduation adaptée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, tu vas devenir un as du placement ! Imagine que tu as une droite graduée, mais qu'il manque certains nombres. Tu dois deviner où se cachent les nombres manquants. C'est comme un jeu de cache-cache avec les chiffres. Regarde cette droite : elle va de $0$ à $10$, mais seulement $0$, $5$ et $10$ sont écrits. Les autres nombres ($1$, $2$, $3$, $4$, $6$, $7$, $8$, $9$) sont invisibles. Pourtant, ils ont chacun leur place précise !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $10$ avec seulement $0$, $5$ et $10$ écrits. Les petits traits sont les graduations pour les nombres manquants.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment trouver la place du $3$ ? Tu as deux repères : $0$ et $5$. Le $3$ est plus grand que $0$ et plus petit que $5$. Donc il se cache entre $0$ et $5$. Maintenant, compte les petits traits entre $0$ et $5$ : il y en a $4$ (pour $1$, $2$, $3$, $4$). Le $3$ est le troisième trait après $0$. Pose ton doigt sur $0$, saute un trait ($1$), saute un autre ($2$), et le troisième, c'est $3$ ! Tu viens de placer $3$ sur sa graduation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les nombres connus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les nombres déjà écrits sur la droite. Ici, $0$ et $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les intervalles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte le nombre de petits traits entre deux nombres connus. Entre $0$ et $5$, il y a $4$ intervalles, donc chaque trait vaut $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Avancer pas à pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En partant de $0$, avance d'autant de traits que le nombre que tu cherches. Pour $3$, avance de $3$ traits."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un nombre plus grand : le $7$. Regarde la même droite. Le $7$ est plus grand que $5$ et plus petit que $10$. Il se cache donc entre $5$ et $10$. Compte les traits entre $5$ et $10$ : il y en a encore $4$ (pour $6$, $7$, $8$, $9$). Le $7$ est le deuxième trait après $5$. Pose ton doigt sur $5$, saute un trait ($6$), le suivant c'est $7$ ! Tu as placé $7$. C'est comme faire des petits bonds de kangourou d'une graduation à l'autre."
+            },
+            {
+              "type": "number_line",
+              "caption": "Même droite, on place $7$ entre $5$ et $10$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, les graduations ne valent pas $1$. Regarde cette droite : elle va de $0$ à $20$, mais les grands traits sont $0$, $10$, $20$. Les petits traits entre $0$ et $10$ ? Ils valent $2$ chaque fois ! ($2$, $4$, $6$, $8$). Si tu veux placer $6$, tu vas entre $0$ et $10$. Tu comptes par $2$ : premier trait $2$, deuxième trait $4$, troisième trait $6$. Tu t'arrêtes là. Le pas entre deux graduations a changé, mais la méthode reste la même : repère, compte, pose !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $0$ à $20$ par pas de $10$, avec des sous-graduations de $2$ en $2$.",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le nombre à placer est exactement sur un grand trait déjà écrit ? C'est encore plus facile ! Par exemple, on te demande de placer $10$ sur la droite qui a déjà $0$, $10$, $20$. Tu n'as même pas à compter les petits traits : tu poses ton doigt directement sur le grand trait où est écrit $10$. C'est sa maison, il ne bouge pas. Tu viens de valider que $10$ est bien à sa place. C'est comme retrouver ton crochet à l'école : tu sais exactement où il est."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine une droite qui commence à $10$ et finit à $20$, avec des graduations de $1$ en $1$. Tu dois placer $14$. Le premier nombre écrit est $10$. Tu comptes $4$ traits vers la droite (sens croissant) : $11$, $12$, $13$, $14$. Tu poses ton point sur le quatrième trait. Même si la droite ne commence pas à $0$, la règle ne change pas : tu pars du nombre connu le plus proche et tu avances dans le sens croissant. Tu es prêt pour t'entraîner !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite graduée de $10$ à $20$ par pas de $1$. Place $14$.",
+              "min": 10,
+              "max": 20,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Super travail ! Tu sais maintenant placer n'importe quel nombre entier sur une graduation adaptée, que le pas soit de $1$, de $2$ ou de $10$, et même si la droite ne commence pas à $0$. La clé, c'est toujours de repérer les nombres écrits, de comprendre le pas entre deux graduations, et d'avancer dans le sens croissant. À la prochaine leçon, on fera l'inverse : on lira le nombre qui se cache derrière un point placé sur la droite !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $10$ avec seulement $0$, $5$ et $10$ écrits, sur quelle graduation se trouve le nombre $2$ ? (Compte les petits traits depuis $0$.)",
+              "answer": "Le deuxième petit trait après $0$.",
+              "hint": "Entre $0$ et $5$, il y a $4$ graduations pour $1$, $2$, $3$, $4$. Le $2$ est le deuxième.",
+              "explanation": "On part de $0$, on avance de $2$ graduations (car chaque petit trait vaut $1$) et on arrive sur $2$."
+            },
+            {
+              "question": "Sur une droite graduée de $0$ à $20$ avec des grands traits pour $0$, $10$, $20$ et des petits traits de $2$ en $2$, où placer le nombre $14$ ?",
+              "answer": "Entre $10$ et $20$, sur le deuxième petit trait après $10$ (car $10+2=12$, $12+2=14$).",
+              "hint": "Repère $10$, puis avance de $2$ en $2$ : $12$, puis $14$.",
+              "explanation": "Le pas est de $2$. Depuis $10$, deux pas de $2$ mènent à $14$."
+            },
+            {
+              "question": "On te demande de placer $10$ sur une droite où $10$ est déjà écrit en grand. Que fais-tu ?",
+              "answer": "Je pointe directement sur le grand trait où est écrit $10$.",
+              "hint": "Le nombre est déjà là, pas besoin de compter.",
+              "explanation": "Si le nombre est déjà indiqué par un grand trait, sa place est exactement sur ce trait."
+            },
+            {
+              "question": "Sur une droite de $10$ à $20$ (graduations de $1$), place $17$. Combien de traits comptes-tu depuis $10$ ?",
+              "answer": "$7$ traits.",
+              "hint": "Compte : $11$ (1), $12$ (2), $13$ (3), $14$ (4), $15$ (5), $16$ (6), $17$ (7).",
+              "explanation": "Depuis $10$, il faut avancer de $7$ graduations pour atteindre $17$."
+            }
+          ]
+        },
+        {
+          "title": "Lire un nombre à partir de sa position.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire un nombre à partir de sa position"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est l'heure de l'enquête ! Sur la droite graduée, un petit point rouge s'est posé quelque part. Mais quel nombre se cache sous ce point ? Tu vas jouer au détective pour le découvrir. Regarde cette droite : elle va de $0$ à $10$, avec tous les nombres écrits. Un point rouge est posé sur la graduation de $4$. Facile ! Tu lis le nombre juste en dessous : c'est $4$. Le point, c'est comme une flèche qui dit : \"Regarde ici, c'est moi le nombre !\""
+            },
+            {
+              "type": "number_line",
+              "caption": "Un point rouge sur la graduation $4$. Le nombre lu est $4$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 4,
+                  "label": "4",
+                  "color": "red"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 7,
+                  "label": "7"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, corsons l'affaire. Voici une droite où seuls $0$, $5$ et $10$ sont écrits. Un point bleu se cache sur le troisième petit trait après $0$. Comment deviner son nombre ? Tu sais que entre $0$ et $5$, chaque petit trait vaut $1$. Tu comptes : premier trait $1$, deuxième $2$, troisième $3$. Le point est sur $3$ ! Tu as lu le nombre sans qu'il soit écrit. C'est comme lire une carte au trésor : les graduations sont les indices, le point est le X qui marque l'endroit."
+            },
+            {
+              "type": "number_line",
+              "caption": "Un point bleu sur le troisième trait après $0$. C'est le nombre $3$.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 3,
+                  "label": "3",
+                  "color": "blue"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux nombres écrits qui encadrent le point. Ici, $0$ et $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Deviner le pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte combien de petits traits séparent les deux bornes. $4$ traits pour aller de $0$ à $5$, donc chaque trait vaut $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter depuis la borne inférieure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En partant de $0$, compte les traits jusqu'au point. $3$ traits -> le nombre est $3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons sur une droite à pas de $2$. La droite affiche $0$, $10$, $20$. Un point vert est placé sur le troisième petit trait après $10$. Les petits traits valent $2$ chacun. Depuis $10$, tu comptes : premier trait $12$, deuxième $14$, troisième $16$. Le point vert, c'est $16$ ! Tu as lu un nombre qui n'était écrit nulle part. C'est la magie de la droite graduée : elle te donne le pouvoir de deviner n'importe quel nombre, même invisible."
+            },
+            {
+              "type": "number_line",
+              "caption": "Un point vert sur le troisième petit trait après $10$. Chaque petit trait vaut $2$. Le nombre est $16$.",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 16,
+                  "label": "16",
+                  "color": "green"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le point n'est pas exactement sur un trait, mais pile entre deux traits ! Regarde : une droite de $0$ à $10$ par $1$. Un point orange est exactement au milieu entre $4$ et $5$. Quel nombre ? Ce n'est pas un entier ! C'est un nombre à virgule : $4,5$. Mais en CP, on ne travaille qu'avec les entiers. Donc si un point est entre deux graduations, on dit qu'il est \"entre $4$ et $5$\" ou \"à mi-chemin\". Plus tard, tu apprendras les nombres décimaux. Pour l'instant, souviens-toi : les nombres entiers habitent sur les traits, pas entre eux."
+            },
+            {
+              "type": "number_line",
+              "caption": "Un point orange entre $4$ et $5$. Ce n'est pas un nombre entier.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 4.5,
+                  "label": "4,5",
+                  "color": "orange"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier défi : une droite qui ne commence pas à $0$. Elle va de $15$ à $25$, avec des graduations de $1$. Un point violet est sur le quatrième trait après $15$. Tu pars de $15$ (le nombre écrit le plus proche à gauche). Tu comptes $4$ traits vers la droite : $16$, $17$, $18$, $19$. Le point violet, c'est $19$ ! Tu as réussi à lire un nombre sur une droite qui commence à $15$. La méthode est toujours la même : trouve le repère, comprends le pas, compte jusqu'au point. Tu es maintenant un expert de la lecture sur droite graduée !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Une droite de $15$ à $25$. Un point violet sur le quatrième trait après $15$ : c'est $19$.",
+              "min": 15,
+              "max": 25,
+              "points": [
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 19,
+                  "label": "19",
+                  "color": "purple"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations détective ! Tu as résolu toutes les énigmes. Tu sais maintenant : 1) Repérer le sens croissant grâce à la flèche. 2) Placer un nombre en comptant les graduations depuis un repère. 3) Lire un nombre en faisant le chemin inverse : du point vers le nombre. Ces trois super-pouvoirs te serviront tout au long de l'école pour comparer, ordonner et calculer avec les nombres jusqu'à $100$ et bien au-delà. Garde ta règle et ta droite graduée toujours près de toi, elles sont tes meilleures amies en maths !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer le sens croissant sur une droite graduée (la flèche pointe vers les grands nombres).",
+                "Je sais placer un nombre entier sur une graduation en comptant les pas depuis un nombre connu.",
+                "Je sais lire le nombre correspondant à un point placé sur la droite en retrouvant les bornes et en comptant.",
+                "Je comprends que le pas entre deux graduations peut être $1$, $2$, $5$ ou $10$ et j'adapte mon comptage."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de $0$ à $10$ (tous les nombres écrits), un point est sur la graduation $7$. Quel est ce nombre ?",
+              "answer": "$7$",
+              "hint": "Regarde le nombre écrit juste sous le point.",
+              "explanation": "Le point est exactement sur le trait où est écrit $7$. Le nombre lu est $7$."
+            },
+            {
+              "question": "Sur une droite avec seulement $0$, $5$, $10$ écrits, un point est sur le premier petit trait après $5$. Quel nombre représente ce point ?",
+              "answer": "$6$",
+              "hint": "Entre $5$ et $10$, chaque petit trait vaut $1$. Le premier après $5$ est $6$.",
+              "explanation": "On part de $5$, on avance d'une graduation (valeur $1$) et on arrive à $6$."
+            },
+            {
+              "question": "Un point est placé entre les graduations $4$ et $5$ sur une droite graduée en entiers. Peut-on dire que c'est un nombre entier ?",
+              "answer": "Non, c'est un nombre entre $4$ et $5$ (comme $4,5$), pas un entier.",
+              "hint": "Les nombres entiers sont sur les traits, pas entre eux.",
+              "explanation": "En CP, on ne place que des entiers sur les graduations. Un point entre deux traits ne correspond à aucun entier."
+            },
+            {
+              "question": "Sur une droite de $20$ à $30$ (graduations de $1$), un point est sur le $5^{\\text{ème}}$ trait après $20$. Quel est le nombre ?",
+              "answer": "$25$",
+              "hint": "Compte depuis $20$ : $21$ (1), $22$ (2), $23$ (3), $24$ (4), $25$ (5).",
+              "explanation": "En partant de $20$ et en avançant de $5$ graduations de $1$, on obtient $25$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

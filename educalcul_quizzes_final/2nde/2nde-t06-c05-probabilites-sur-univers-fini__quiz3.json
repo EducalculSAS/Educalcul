@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 531,
+  "_course_code": "2nde-t06-c05-probabilites-sur-univers-fini",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Questionnaire : Calculs de probabilités (Seconde)",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de 1 à 6. L'univers $\\Omega$ est équiprobable. On considère l'événement $A$ : \"obtenir un multiple de 3\". Quelle est la probabilité $P(A)$ ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/3$",
+      "explanation": "Les multiples de 3 dans $\\Omega = \\{1,2,3,4,5,6\\}$ sont 3 et 6. Il y a 2 issues favorables sur 6 issues équiprobables. La probabilité est $2/6 = 1/3$. L'option $1/6$ correspondrait à un seul chiffre, $1/2$ à trois chiffres et $2/3$ à quatre chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $\\Omega$ un univers fini équiprobable. On définit deux événements $A$ et $B$ incompatibles ($A \\cap B = \\emptyset$) tels que $P(A) = 0,35$ et $P(B) = 0,25$. Quelle est la valeur de $P(A \\cup B)$ ?",
+      "options": [
+        "$0,10$",
+        "$0,60$",
+        "$0,875$",
+        "$0,50$"
+      ],
+      "correctAnswer": "$0,60$",
+      "explanation": "Pour deux événements incompatibles, la probabilité de leur réunion est la somme de leurs probabilités : $P(A \\cup B) = P(A) + P(B) = 0,35 + 0,25 = 0,60$. L'option $0,10$ correspond à la différence, $0,50$ à une addition erronée ($0,35+0,15$) et $0,875$ n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une expérience aléatoire, un événement $A$ a pour probabilité $P(A) = \\frac{7}{20}$. Quelle est la probabilité de l'événement contraire $\\overline{A}$ ?",
+      "options": [
+        "$\\frac{7}{13}$",
+        "$\\frac{13}{20}$",
+        "$\\frac{7}{20}$",
+        "$\\frac{20}{13}$"
+      ],
+      "correctAnswer": "$\\frac{13}{20}$",
+      "explanation": "La somme des probabilités d'un événement et de son contraire vaut 1. $P(\\overline{A}) = 1 - P(A) = 1 - \\frac{7}{20} = \\frac{20}{20} - \\frac{7}{20} = \\frac{13}{20}$. L'option $\\frac{7}{13}$ inverse les termes, $\\frac{7}{20}$ confond avec $P(A)$ et $\\frac{20}{13}$ est l'inverse (supérieur à 1).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On interroge 200 lycéens sur leur série (Générale ou Technologique) et leur moyen de transport favori (Vélo ou Bus). Le tableau ci-dessous donne les effectifs. On choisit un élève au hasard. Quelle est la probabilité qu'il soit en série Générale ET qu'il préfère le Vélo ?",
+      "options": [
+        "$0,25$",
+        "$0,40$",
+        "$0,15$",
+        "$0,60$"
+      ],
+      "correctAnswer": "$0,25$",
+      "explanation": "Le tableau indique que 50 élèves sont en série Générale et préfèrent le Vélo. L'effectif total est 200. La probabilité est $50/200 = 1/4 = 0,25$. L'option $0,40$ correspond à la proportion de vélos sur le total ($80/200$), $0,60$ à la proportion de généraux ($120/200$) et $0,15$ à $30/200$ (Technologique + Vélo).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Vélo",
+          "Bus",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Générale",
+            "50",
+            "70",
+            "120"
+          ],
+          [
+            "Technologique",
+            "30",
+            "50",
+            "80"
+          ],
+          [
+            "Total",
+            "80",
+            "120",
+            "200"
+          ]
+        ],
+        "caption": "Répartition des 200 lycéens selon série et transport"
+      }
+    },
+    {
+      "text": "On considère deux événements $A$ et $B$ d'un même univers tels que $P(A) = 0,5$, $P(B) = 0,4$ et $P(A \\cap B) = 0,15$. Calculer $P(A \\cup B)$.",
+      "options": [
+        "$0,90$",
+        "$0,75$",
+        "$0,65$",
+        "$0,20$"
+      ],
+      "correctAnswer": "$0,75$",
+      "explanation": "On utilise la formule générale : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0,5 + 0,4 - 0,15 = 0,75$. L'option $0,90$ oublie de soustraire l'intersection, $0,65$ soustrait deux fois l'intersection ($0,9 - 0,25$) et $0,20$ ne correspond à aucune opération standard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

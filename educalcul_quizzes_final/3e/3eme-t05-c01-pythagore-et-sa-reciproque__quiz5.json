@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Choisir sens",
+  "title": "Quiz : Choisir le bon sens du théorème de Pythagore",
+  "questions": [
+    {
+      "text": "On considère un triangle dont les longueurs des côtés sont 3, 4 et 5. Laquelle des affirmations suivantes est correcte ?",
+      "options": [
+        "C'est un triangle rectangle car $3^2+4^2=5^2$",
+        "C'est un triangle rectangle car $5^2+3^2=4^2$",
+        "On ne peut pas conclure sur la nature du triangle",
+        "C'est un triangle rectangle car $3^2+5^2=4^2$"
+      ],
+      "correctAnswer": "C'est un triangle rectangle car $3^2+4^2=5^2$",
+      "explanation": "L'égalité $3^2+4^2=9+16=25=5^2$ vérifie la condition de la réciproque du théorème de Pythagore : si le carré du plus grand côté est égal à la somme des carrés des deux autres, alors le triangle est rectangle. Les autres égalités sont fausses.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 3,
+        "b": 4,
+        "c": 5,
+        "caption": "Triangle rectangle 3-4-5"
+      }
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés 6, 8 et 10. Quelle affirmation permet d'affirmer qu'il est rectangle ?",
+      "options": [
+        "On applique le théorème de Pythagore : $6^2+8^2=10^2$",
+        "On applique la réciproque du théorème de Pythagore : $6^2+8^2=10^2$",
+        "On applique le théorème de Thalès",
+        "On ne peut pas conclure"
+      ],
+      "correctAnswer": "On applique la réciproque du théorème de Pythagore : $6^2+8^2=10^2$",
+      "explanation": "Le théorème direct dit : si le triangle est rectangle alors $a^2+b^2=c^2$. Ici on connaît les longueurs et on veut déduire qu'il est rectangle, donc on utilise la réciproque. L'égalité $6^2+8^2=36+64=100=10^2$ est vérifiée, ce qui prouve que le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle dont les côtés mesurent 5, 12 et 13, on veut justifier qu'il est rectangle. Quel théorème faut-il invoquer ?",
+      "options": [
+        "Théorème de Pythagore",
+        "Réciproque du théorème de Pythagore",
+        "Théorème de Thalès",
+        "Aucun de ces théorèmes"
+      ],
+      "correctAnswer": "Réciproque du théorème de Pythagore",
+      "explanation": "On part des longueurs des côtés pour conclure que le triangle est rectangle. C'est exactement l'énoncé de la réciproque : si $a^2+b^2=c^2$ alors l'angle opposé au côté $c$ est droit. Le théorème direct ne permet pas ce raisonnement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle de côtés 7, 24 et 25. Pour démontrer qu'il est rectangle, quel raisonnement est correct ?",
+      "options": [
+        "On vérifie $7^2+24^2=25^2$ et on conclut par le théorème de Pythagore",
+        "On vérifie $7^2+24^2=25^2$ et on conclut par la réciproque du théorème de Pythagore",
+        "On utilise le théorème de Thalès",
+        "On ne peut pas démontrer qu'il est rectangle"
+      ],
+      "correctAnswer": "On vérifie $7^2+24^2=25^2$ et on conclut par la réciproque du théorème de Pythagore",
+      "explanation": "Le calcul $7^2+24^2=49+576=625=25^2$ montre que la condition de la réciproque est satisfaite. C'est donc la réciproque qui permet de déduire que le triangle est rectangle. Le théorème direct serait utilisé si l'on savait déjà que le triangle est rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit : « Comme $8^2+15^2=17^2$, le triangle est rectangle par le théorème de Pythagore. » Quelle est l'erreur ?",
+      "options": [
+        "Il confond le théorème et sa réciproque",
+        "Il a mal calculé les carrés",
+        "Le théorème de Pythagore ne s'applique pas aux triangles",
+        "Il a raison, il n'y a pas d'erreur"
+      ],
+      "correctAnswer": "Il confond le théorème et sa réciproque",
+      "explanation": "L'égalité $8^2+15^2=64+225=289=17^2$ est exacte, mais elle permet de conclure que le triangle est rectangle seulement par la réciproque du théorème de Pythagore. Le théorème direct affirme l'implication inverse : triangle rectangle ⇒ égalité des carrés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

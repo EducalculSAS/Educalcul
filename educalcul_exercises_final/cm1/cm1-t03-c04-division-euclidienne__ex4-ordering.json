@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 229,
+  "_course_code": "cm1-t03-c04-division-euclidienne",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Application : Division euclidienne",
+  "title": "Mise en ordre : Résolution de problèmes par division euclidienne",
+  "blocks": [
+    {
+      "title": "Problème 1 : Partage de bonbons",
+      "content": "Voici les étapes de la résolution du problème : « $37$ bonbons sont partagés équitablement entre $4$ enfants. Combien de bonbons chaque enfant reçoit-il et combien en reste-t-il ? » Replace-les dans l'ordre logique.",
+      "items": [
+        "J'identifie le nombre total de bonbons ($37$) et le nombre d'enfants ($4$).",
+        "Je cherche le multiple de $4$ le plus proche de $37$ sans le dépasser : $9 \\times 4 = 36$.",
+        "J'écris le quotient $9$ et je calcule le reste : $37 - 36 = 1$.",
+        "Je conclus : chaque enfant reçoit $9$ bonbons, il en reste $1$."
+      ],
+      "explanation": "On commence par identifier les données : le dividende ($37$) et le diviseur ($4$). On cherche ensuite combien de fois $4$ rentre dans $37$ (le quotient), ici $9$ car $9 \\times 4 = 36$. On calcule le reste par la différence $37 - 36 = 1$. Enfin, on formule la phrase de réponse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Conditionnement d'œufs",
+      "content": "Voici les étapes de la résolution du problème : « Un fermier a $62$ œufs à mettre dans des boîtes de $6$ œufs. Combien de boîtes pleines peut-il faire et combien d'œufs resteront-ils ? » Replace-les dans l'ordre logique.",
+      "items": [
+        "Je pose la division euclidienne : $62 \\div 6$.",
+        "Je détermine le quotient : $10$ car $10 \\times 6 = 60$ (le multiple de $6$ le plus proche de $62$ sans le dépasser).",
+        "Je calcule le reste : $62 - 60 = 2$.",
+        "Je réponds : le fermier peut faire $10$ boîtes pleines, il lui reste $2$ œufs."
+      ],
+      "explanation": "La situation est un groupement (faire des paquets de 6). On pose la division $62 \\div 6$. Le quotient $10$ donne le nombre de boîtes pleines ($10 \\times 6 = 60$). Le reste $2$ correspond aux œufs non conditionnés. La conclusion reprend les termes du problème.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Retrouver le nombre de départ",
+      "content": "Voici les étapes pour résoudre ce problème : « Un nombre divisé par $5$ donne un quotient de $12$ et un reste de $3$. Quel est ce nombre ? » Replace-les dans l'ordre logique.",
+      "items": [
+        "J'utilise la relation : Dividende = (Diviseur $\\times$ Quotient) + Reste.",
+        "Je multiplie le diviseur par le quotient : $5 \\times 12 = 60$.",
+        "J'ajoute le reste : $60 + 3 = 63$.",
+        "Le nombre cherché est $63$. Je vérifie : $63 \\div 5 = 12$ reste $3$."
+      ],
+      "explanation": "Il s'agit d'un problème inverse : on connaît le diviseur ($5$), le quotient ($12$) et le reste ($3$), on cherche le dividende. La relation fondamentale de la division euclidienne est : Dividende = (Diviseur $\\times$ Quotient) + Reste. On calcule $5 \\times 12 = 60$, puis $60 + 3 = 63$. La vérification confirme le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

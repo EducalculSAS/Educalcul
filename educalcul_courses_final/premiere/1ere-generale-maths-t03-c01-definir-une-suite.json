@@ -1,0 +1,475 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.310938+00:00",
+  "id": 582,
+  "code": "1ere-generale-maths-t03-c01",
+  "title": "Définir une suite",
+  "description": "Cours structuré Educalcul : Définir une suite.",
+  "subject": "Suites et modèles discrets",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Suites et modèles discrets",
+    "titre_du_cours": "Définir une suite",
+    "objectif_global": "Définir une suite",
+    "mini_lecons_imposees": [
+      "Explicite / récurrence.",
+      "Calculer termes.",
+      "Représenter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Suites et modèles discrets",
+      "lessons": [
+        {
+          "title": "Explicite / récurrence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une suite ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes chaque jour la hauteur d'une plante qui grandit, ou le solde de ton compte épargne après chaque versement mensuel. Tu obtiens une liste de nombres ordonnés : le premier jour, le deuxième jour, le troisième jour... En mathématiques, on appelle cela une $suite$. C'est une fonction dont l'ensemble de départ est $\\mathbb{N}$ (ou une partie de $\\mathbb{N}$ comme $\\mathbb{N}^*$) et l'ensemble d'arrivée est $\\mathbb{R}$. Pour chaque entier naturel $n$, on associe un unique nombre réel que l'on note $u_n$. L'entier $n$ s'appelle le $rang$ (ou l'indice) et $u_n$ est le $terme$ de rang $n$."
+            },
+            {
+              "type": "definition",
+              "term": "Suite",
+              "definition": "Une suite est une fonction définie sur $\\mathbb{N}$ (ou $\\mathbb{N}^*$) à valeurs dans $\\mathbb{R}$. On la note g\\\\\\\\'en\\\\\\\\'eralement $(u_n)_{n\\\\\\\\in\\\\\\\\mathbb{N}}$ ou $(u_n)_{n\\\\\\\\ge 0}$.",
+              "example": "La suite des nombres pairs : $u_n = 2n$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$. Le terme de rang 0 est $u_0=0$, le terme de rang 1 est $u_1=2$, etc."
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque bien la notation : l'indice $n$ est écrit en bas à droite de la lettre $u$. Cela se lit « $u$ indice $n$ » ou « terme de rang $n$ ». La suite tout entière est l'ensemble de tous ces termes, dans l'ordre. On peut la représenter par un tableau à deux lignes : la première ligne pour les rangs, la seconde pour les valeurs correspondantes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Rang $n$",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "$\\\\\\\\ldots$"
+              ],
+              "rows": [
+                [
+                  "Terme $u_n$",
+                  "0",
+                  "2",
+                  "4",
+                  "6",
+                  "8",
+                  "$\\\\\\\\ldots$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau montre la suite des nombres pairs. On voit tout de suite que le terme de rang $n$ vaut le double de $n$. C'est ce qu'on appelle une $définition$ $explicite$ : on a une formule directe qui donne $u_n$ en fonction de $n$ seulement. Mais il existe une autre façon de décrire une suite, comme nous allons le voir."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la distinction fondamentale entre les deux manières de définir une suite. C'est le cœur de cette leçon, et bien la comprendre t'évitera bien des confusions par la suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition explicite : la formule directe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite est définie de façon $explicite$ lorsqu'on donne une formule qui exprime $u_n$ directement en fonction de $n$. Concrètement, si je te dis : « La suite $(u_n)$ est définie par $u_n = 3n^2 - 2n + 5$ pour tout $n\\\\\\\\in\\\\\\\\mathbb{N}$ », tu peux calculer n'importe quel terme sans connaître les précédents. Il te suffit de remplacer $n$ par la valeur désirée. Par exemple, $u_{10} = 3\\\\\\\\times 10^2 - 2\\\\\\\\times 10 + 5 = 300 - 20 + 5 = 285$. C'est immédiat, puissant, et c'est souvent la forme qu'on préfère quand on veut aller vite."
+            },
+            {
+              "type": "definition",
+              "term": "Définition explicite",
+              "definition": "On donne une expression analytique $u_n = f(n)$ où $f$ est une fonction définie sur $\\mathbb{N}$ (ou un intervalle de $\\mathbb{N}$).",
+              "example": "$u_n = \\\\\\\\frac{n}{n+1}$ pour $n\\\\\\\\ge 1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention toutefois : la formule explicite n'est pas toujours simple à trouver. Parfois, la relation entre les termes est plus naturelle à exprimer en disant comment on passe de l'un au suivant. C'est là qu'intervient la définition par récurrence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les deux grandes familles en tête. Avant de passer aux exercices de calcul, regardons de plus près comment on reconnaît l'une ou l'autre à coup sûr, car les énoncés ne disent pas toujours explicitement « c'est une définition explicite » ou « c'est une définition par récurrence »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition par récurrence : la règle de passage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une suite est définie par $récurrence$ lorsqu'on donne : 1) un (ou plusieurs) terme(s) initial(aux), et 2) une relation qui exprime $u_{n+1}$ en fonction de $u_n$ (et éventuellement de $n$). Par exemple : « Soit la suite $(v_n)$ définie par $v_0 = 1$ et $v_{n+1} = 2 v_n + 3$ pour tout $n\\\\\\\\in\\\\\\\\mathbb{N}$ ». Ici, pas de formule directe en $n$. Pour connaître $v_5$, je suis obligé de calculer $v_1$, puis $v_2$, puis $v_3$, puis $v_4$, et enfin $v_5$, en appliquant la règle à chaque étape. C'est comme une recette de cuisine où chaque étape dépend du résultat de la précédente."
+            },
+            {
+              "type": "definition",
+              "term": "Définition par récurrence",
+              "definition": "On donne un terme initial (ou plusieurs) et une relation de récurrence $u_{n+1} = f(u_n, n)$ (souvent $u_{n+1} = f(u_n)$).",
+              "example": "$u_0 = 2$ et $u_{n+1} = \\\\\\\\sqrt{u_n + 2}$ pour $n\\\\\\\\ge 0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette façon de faire est extrêmement fréquente en modélisation : population d'une année sur l'autre, montant d'un placement avec intérêts composés, algorithmes itératifs... La représentation graphique en « toile d'araignée » (cobweb) est un outil visuel magnifique pour comprendre la dynamique de telles suites. Regardons celle de notre exemple $v_{n+1} = 2 v_n + 3$ avec $v_0=1$."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "2*x+3",
+              "u0": 1,
+              "iterations": 5,
+              "xMin": 0,
+              "xMax": 50,
+              "caption": "Représentation en toile d'araignée de la suite $v_{n+1}=2v_n+3$ avec $v_0=1$. On voit les termes s'éloigner rapidement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette figure, la courbe bleue représente la fonction $f(x)=2x+3$ et la droite pointillée est la première bissectrice $y=x$. Le processus part de $v_0$ sur l'axe horizontal, monte vers la courbe pour trouver $v_1$, revient sur la bissectrice pour reporter $v_1$ en abscisse, et ainsi de suite. C'est une manière très visuelle de voir la construction terme à terme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir les deux piliers de la définition d'une suite. Dans la prochaine leçon, nous allons nous entraîner à calculer des termes, que la définition soit explicite ou par récurrence, et nous verrons quelques astuces pour aller plus vite, notamment avec la calculatrice. Mais avant cela, assure-toi d'être à l'aise avec le vocabulaire : rang, terme, explicite, récurrence."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les définitions suivantes, lesquelles sont explicites et lesquelles sont par récurrence ?\\nA) $u_n = n^2 + 1$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$\\nB) $v_0 = 5$ et $v_{n+1} = v_n + 2$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$\\nC) $w_n = \\\\\\\\frac{1}{n+1}$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}^*$\\nD) $x_1 = 3$ et $x_{n+1} = \\\\\\\\frac{x_n}{2}$ pour $n\\\\\\\\ge 1$",
+              "answer": "A) Explicite. B) Récurrence. C) Explicite. D) Récurrence.",
+              "hint": "Cherche si la formule donne $u_n$ directement en fonction de $n$ (explicite) ou si elle donne $u_{n+1}$ en fonction de $u_n$ avec un terme initial (récurrence).",
+              "explanation": "Dans A et C, le terme de rang $n$ s'écrit directement avec $n$. Dans B et D, on a un terme initial et une relation qui lie un terme au suivant."
+            },
+            {
+              "question": "La suite $(a_n)$ est définie par $a_0 = 2$ et $a_{n+1} = 3a_n - 1$ pour tout $n\\\\\\\\in\\\\\\\\mathbb{N}$. Calcule $a_1$, $a_2$ et $a_3$.",
+              "answer": "$a_1 = 5$, $a_2 = 14$, $a_3 = 41$.",
+              "hint": "Applique la relation de récurrence étape par étape : $a_1 = 3a_0 - 1$, puis $a_2 = 3a_1 - 1$, etc.",
+              "explanation": "$a_1 = 3\\\\\\\\times 2 - 1 = 5$. $a_2 = 3\\\\\\\\times 5 - 1 = 14$. $a_3 = 3\\\\\\\\times 14 - 1 = 41$. On voit que les termes grandissent vite."
+            },
+            {
+              "question": "On donne la suite $(b_n)$ définie par $b_n = 2^n + n$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$. Exprime $b_{n+1}$ en fonction de $b_n$ et $n$. Cette relation permet-elle de définir la suite par récurrence ?",
+              "answer": "$b_{n+1} = 2b_n - n + 1$. Oui, avec $b_0=1$, cela définit la même suite par récurrence.",
+              "hint": "Calcule $b_{n+1} = 2^{n+1} + n + 1$. Essaie de faire apparaître $2^n + n$ qui est $b_n$.",
+              "explanation": "$b_{n+1} = 2\\\\\\\\times 2^n + n + 1 = 2(2^n + n) - 2n + n + 1 = 2b_n - n + 1$. Avec l'initialisation $b_0=1$, la récurrence $b_{n+1}=2b_n-n+1$ produit les mêmes termes. Une suite peut avoir les deux définitions !"
+            }
+          ]
+        },
+        {
+          "title": "Calculer termes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer les termes d'une suite donnée explicitement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette deuxième leçon ! Maintenant que tu sais reconnaître une définition explicite d'une définition par récurrence, nous allons nous concentrer sur le calcul effectif des termes. C'est une compétence de base, mais elle cache des pièges qu'il vaut mieux connaître maintenant pour ne pas les rencontrer en devoir. Quand la suite est donnée par une formule $u_n = f(n)$, le calcul est en principe direct : tu remplaces $n$ par la valeur voulue et tu laisses la calculatrice faire le travail. Mais attention à la syntaxe !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $u_n = \\\\\\\\frac{2n+1}{n^2+3}$ pour $n\\\\\\\\ge 1$. Si tu veux $u_5$, tu tapes $(2\\\\\\\\times 5+1)/(5^2+3)$. Les parenthèses sont cruciales : sans elles, la calculatrice ferait $2\\\\\\\\times 5+1/5^2+3$ ce qui est tout autre chose. Un bon réflexe : mets toujours le numérateur et le dénominateur entre parenthèses. De même, pour $u_n = \\\\\\\\sqrt{n^2+4}$, tape `sqrt(5^2+4)` et pas `sqrt(5^2)+4`."
+            },
+            {
+              "type": "definition",
+              "term": "Calcul explicite",
+              "definition": "Remplacer $n$ par la valeur entière désirée dans l'expression analytique $u_n = f(n)$ et calculer le résultat.",
+              "example": "Pour $u_n = (-1)^n \\\\\\\\times (n+2)$, $u_3 = (-1)^3 \\\\\\\\times 5 = -5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un autre point de vigilance : le domaine de définition. Si la suite est définie pour $n\\\\\\\\ge 2$, ne cherche pas $u_0$ ni $u_1$, ils n'existent pas ! Regarde toujours l'indice de départ indiqué dans l'énoncé : $n\\\\\\\\in\\\\\\\\mathbb{N}$, $n\\\\\\\\in\\\\\\\\mathbb{N}^*$, $n\\\\\\\\ge 3$, etc. C'est une erreur classique de calculer un terme qui n'a pas de sens."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la formule et le domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis l'expression $u_n = f(n)$ et note la condition sur $n$ (ex: $n\\\\\\\\ge 1$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Substituer la valeur de $n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque occurrence de $n$ par l'entier demandé, en conservant les parenthèses."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer dans l'ordre des priorités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puissances, puis multiplications/divisions, puis additions/soustractions. Utilise la calculatrice avec des parenthèses généreuses."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, passons au cas de la définition par récurrence. Là, on ne peut pas sauter directement au terme voulu : il faut cheminer pas à pas. C'est plus long, mais c'est aussi plus sûr si on est méthodique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer les termes d'une suite définie par récurrence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec une récurrence $u_{n+1} = f(u_n)$ et une valeur initiale $u_0$ (ou $u_1$), le calcul se fait obligatoirement dans l'ordre. Pour obtenir $u_5$, il faut $u_4$, donc $u_3$, donc $u_2$, donc $u_1$. On ne peut pas prendre de raccourci, sauf si on découvre une formule explicite (ce qu'on verra plus tard pour les suites arithmético-géométriques). La méthode est simple : on fait un petit tableau. On écrit la valeur initiale, puis on applique la fonction $f$ pour trouver la suivante, et ainsi de suite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec la suite $v_0 = 0.5$ et $v_{n+1} = \\\\\\\\frac{v_n}{2+v_n}$. Pour $v_1$ : $v_1 = \\\\\\\\frac{0.5}{2+0.5} = \\\\\\\\frac{0.5}{2.5} = 0.2$. Pour $v_2$ : $v_2 = \\\\\\\\frac{0.2}{2+0.2} = \\\\\\\\frac{0.2}{2.2} \\\\\\\\approx 0.0909$. On continue ainsi. Sur la calculatrice, utilise la touche `ANS` (ou `EXE` après avoir tapé la formule avec la variable) : tape la valeur initiale, valide, puis tape la formule en remplaçant $u_n$ par `ANS`, valide, et chaque nouvelle pression sur `EXE` donne le terme suivant. C'est un gain de temps énorme et ça évite les erreurs de recopie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Noter l'initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris clairement $u_0$ (ou $u_1$) = valeur donnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la relation une première fois",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $u_1 = f(u_0)$ (ou $u_2 = f(u_1)$ selon l'indice de départ)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Itérer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace l'indice dans la relation et calcule le terme suivant à partir du terme que tu viens de trouver. Répète jusqu'au rang désiré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si les termes évoluent de façon plausible (signe, ordre de grandeur) par rapport à la fonction $f$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent qu'on doive calculer beaucoup de termes, par exemple pour conjecturer une limite ou un comportement. Faire tout à la main devient fastidieux. Heureusement, ton calculatrice (ou un tableur, ou un petit programme Python) peut générer une liste de termes en un clin d'œil. Nous verrons cela en algorithme plus tard, mais sache que la touche `TABLE` (mode Tableau) sur certaines calculatrices permet d'entrer $u_n = f(n)$ pour l'explicite, ou le mode `RECUR` pour la récurrence. C'est un outil précieux pour avoir une vision d'ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier conseil pour cette leçon : quand tu calcules des termes, garde toujours quelques décimales exactes ou sous forme fractionnaire si possible. Arrondir trop tôt peut faire dériver les calculs suivants, surtout dans les récurrences où l'erreur s'amplifie. Note tes résultats avec une précision raisonnable (souvent 3 à 4 chiffres significatifs suffisent pour conjecturer), mais garde la valeur exacte en mémoire de la calculatrice pour l'étape d'après."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant calculer des termes, que la définition soit explicite ou par récurrence. Tu as aussi découvert l'astuce de la touche `ANS` pour les récurrences. Dans la prochaine leçon, nous allons voir comment représenter graphiquement une suite. C'est une étape cruciale pour « voir » le comportement de la suite : convergence, divergence, oscillations... Le graphique donne une intuition que le tableau de valeurs seul ne donne pas toujours."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite $(u_n)$ définie pour $n\\\\\\\\in\\\\\\\\mathbb{N}^*$ par $u_n = \\\\\\\\frac{n^2 - 1}{n+2}$. Calcule $u_1$, $u_2$ et $u_{10}$.",
+              "answer": "$u_1 = 0$, $u_2 = \\\\\\\\frac{3}{4} = 0.75$, $u_{10} = \\\\\\\\frac{99}{12} = 8.25$.",
+              "hint": "Remplace $n$ par 1, 2 et 10 dans la formule. Attention aux parenthèses pour $u_{10}$ : $(10^2-1)/(10+2)$.",
+              "explanation": "$u_1 = (1-1)/(1+2)=0$. $u_2 = (4-1)/(2+2)=3/4$. $u_{10} = (100-1)/(10+2)=99/12=8.25$."
+            },
+            {
+              "question": "La suite $(v_n)$ est définie par $v_0 = 10$ et $v_{n+1} = 0.8 v_n + 50$ pour tout $n\\\\\\\\in\\\\\\\\mathbb{N}$. Calcule $v_1$, $v_2$, $v_3$ et $v_4$.",
+              "answer": "$v_1 = 58$, $v_2 = 96.4$, $v_3 = 127.12$, $v_4 = 151.696$.",
+              "hint": "Utilise la méthode pas à pas : $v_1 = 0.8\\\\\\\\times 10 + 50$, puis $v_2 = 0.8\\\\\\\\times v_1 + 50$, etc. La touche ANS de la calculatrice est idéale.",
+              "explanation": "$v_1 = 8+50=58$. $v_2 = 0.8\\\\\\\\times 58 + 50 = 46.4+50=96.4$. $v_3 = 0.8\\\\\\\\times 96.4 + 50 = 77.12+50=127.12$. $v_4 = 0.8\\\\\\\\times 127.12 + 50 = 101.696+50=151.696$. La suite augmente."
+            },
+            {
+              "question": "On définit la suite $(w_n)$ par $w_0 = 2$ et $w_{n+1} = w_n^2 - 2$. Calcule $w_1$, $w_2$, $w_3$. Que remarques-tu ?",
+              "answer": "$w_1 = 2$, $w_2 = 2$, $w_3 = 2$. La suite est constante (stationnaire).",
+              "hint": "Calcule $w_1 = 2^2-2$, puis $w_2 = w_1^2-2$, etc. Regarde la valeur obtenue.",
+              "explanation": "$w_1 = 4-2=2$. $w_2 = 2^2-2=2$. $w_3 = 2^2-2=2$. Tous les termes valent 2. C'est une suite constante, cas particulier où la récurrence donne toujours la même valeur."
+            }
+          ]
+        },
+        {
+          "title": "Représenter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter une suite : pourquoi et comment ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la troisième et dernière leçon de ce cours. Tu sais définir une suite (explicite ou récurrence) et tu sais calculer ses termes. Mais une liste de nombres, même longue, reste abstraite. Le grand pouvoir des mathématiques, c'est de transformer du numérique en visuel. Représenter une suite, c'est passer du tableau de valeurs à un graphique. Cela permet de voir d'un coup d'œil si la suite augmente, diminue, oscille, semble converger vers une limite, ou part à l'infini. C'est la première étape de l'analyse d'une suite, bien avant les démonstrations rigoureuses."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a deux façons principales de représenter une suite : le $nuage$ $de$ $points$ dans un repère orthogonal (abscisse $n$, ordonnée $u_n$) et, pour les suites récurrentes, la $toile$ $d'araignée$ (cobweb) que nous avons aperçue en première leçon. Commençons par le nuage de points, qui fonctionne pour tout type de définition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le nuage de points : $(n, u_n)$ dans le plan"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer le nuage de points d'une suite $(u_n)$, on place les points de coordonnées $(n, u_n)$ pour $n = 0, 1, 2, \\\\\\\\dots$ jusqu'au rang qui nous intéresse. L'axe horizontal est l'axe des rangs (entiers), l'axe vertical est l'axe des valeurs (réels). Important : ce ne sont que des points isolés, on ne relie pas les points par des segments ! La suite n'est pas définie pour les valeurs non entières de $n$ (sauf si on la prolonge par une fonction sur $\\mathbb{R}$, mais c'est une autre histoire)."
+            },
+            {
+              "type": "definition",
+              "term": "Représentation graphique (nuage de points)",
+              "definition": "Dans un repère orthogonal, on représente les points $M_n(n, u_n)$ pour $n$ dans l'ensemble de définition de la suite. Les points ne sont pas reliés.",
+              "example": "Pour $u_n = \\\\\\\\frac{1}{n+1}$, les points sont $(0,1)$, $(1,0.5)$, $(2,0.33...)$, $(3,0.25)$, ... Ils se rapprochent de l'axe horizontal."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons la suite explicite $u_n = \\\\\\\\frac{n}{n+2}$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$. Ses premiers termes sont $u_0=0$, $u_1=\\\\frac{1}{3}\\approx0.33$, $u_2=0.5$, $u_3=0.6$, $u_4\\approx0.67$, $u_5\\approx0.71$. Si on place ces points, on voit qu'ils montent et semblent se rapprocher de la droite horizontale $y=1$. C'est une conjecture visuelle de convergence vers 1. Le graphique ci-dessous montre ce nuage de points."
+            },
+            {
+              "type": "graph",
+              "expression": "x/(x+2)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Nuage de points de la suite $u_n = n/(n+2)$ pour $n=0..10$. La courbe continue $y=x/(x+2)$ est tracée en pointillés pour guider l'œil, mais la suite ne consiste qu'en les points discrets."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, la courbe pointillée représente la fonction $f(x)=\\\\frac{x}{x+2}$ sur les réels. Les points de la suite sont exactement l'intersection de cette courbe avec les droites verticales $x=n$ pour $n$ entier. C'est une excellente façon de visualiser : la suite « échantillonne » la fonction aux entiers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la représentation spécifique aux suites récurrentes : la toile d'araignée. C'est un outil dynamique qui montre comment on construit les termes les uns après les autres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La toile d'araignée (cobweb) pour les suites récurrentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand la suite est donnée par $u_{n+1} = f(u_n)$, on peut la représenter dans un repère où les deux axes portent la même échelle et les mêmes unités (un repère orthonormé). On trace la courbe $y = f(x)$ et la droite $y = x$ (la première bissectrice). Le processus graphique est le suivant : on part de $u_0$ sur l'axe des abscisses, on monte verticalement jusqu'à la courbe $f$ pour atteindre l'ordonnée $u_1 = f(u_0)$, puis on va horizontalement jusqu'à la bissectrice pour reporter cette valeur en abscisse, puis on recommence : vertical vers $f$, horizontal vers la bissectrice, etc. Cela dessine un chemin en escaliers ou en spirale qu'on appelle toile d'araignée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette représentation est incroyablement riche. Elle montre en un coup d'œil si la suite converge vers un point fixe (intersection de $f$ et de la bissectrice), si elle diverge, si elle oscille autour de la limite, ou si elle a un comportement chaotique. C'est un outil de modélisation discret puissant, utilisé en économie, biologie, physique..."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "3.2*x*(1-x)",
+              "u0": 0.5,
+              "iterations": 20,
+              "xMin": 0,
+              "xMax": 1,
+              "caption": "Toile d'araignée pour la suite logistique $u_{n+1}=3.2 u_n(1-u_n)$ avec $u_0=0.5$. On voit une convergence vers un cycle d'ordre 2 (oscillation entre deux valeurs)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la fonction $f(x)=3.2x(1-x)$ (la fameuse application logistique) coupe la bissectrice en deux points : $0$ et $1-1/3.2 = 0.6875$. Mais la suite ne converge pas vers $0.6875$ ; elle oscille entre deux valeurs environ $0.513$ et $0.8$. La toile d'araignée le montre parfaitement : le chemin se stabilise sur un rectangle. C'est un comportement typique des systèmes discrets non linéaires. Tu verras tout cela en approfondissant l'étude des suites."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, sache qu'on peut aussi représenter une suite par un $diagramme$ $en$ $barres$ (ou diagramme en bâtons) où chaque terme est une barre verticale de hauteur $u_n$ au-dessus de l'abscisse $n$. C'est utile pour comparer des valeurs, mais le nuage de points reste la représentation standard en analyse. Quel que soit le mode choisi, l'objectif est le même : donner une image mentale du comportement de la suite. C'est cette intuition visuelle qui guidera tes démonstrations futures (monotonie, majoration, convergence)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant toutes les bases pour définir une suite, calculer ses termes et la représenter graphiquement. Ces trois compétences sont les piliers de l'étude des suites en Première spécialité. Tu vas les retrouver sans cesse dans les chapitres suivants : suites arithmétiques, géométriques, arithmético-géométriques, étude de convergence, modélisation... Garde toujours en tête le trio : définition → calcul → représentation. C'est le cycle vertueux de la compréhension."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais distinguer une définition explicite d'une définition par récurrence.",
+                "Je sais calculer des termes d'une suite donnée explicitement (en remplaçant $n$).",
+                "Je sais calculer des termes d'une suite donnée par récurrence (étape par étape, avec la touche ANS).",
+                "Je sais représenter une suite par un nuage de points $(n, u_n)$ dans un repère.",
+                "Je sais lire une toile d'araignée (cobweb) pour une suite récurrente $u_{n+1}=f(u_n)$.",
+                "Je connais le vocabulaire : rang, terme, initialisation, relation de récurrence, point fixe."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On représente la suite $(a_n)$ définie par $a_n = 2^n$ pour $n\\\\\\\\in\\\\\\\\mathbb{N}$ dans un repère orthogonal. Quelles sont les coordonnées des points $M_0$, $M_1$, $M_2$, $M_3$ ?",
+              "answer": "$M_0(0,1)$, $M_1(1,2)$, $M_2(2,4)$, $M_3(3,8)$.",
+              "hint": "L'abscisse est le rang $n$, l'ordonnée est la valeur $a_n = 2^n$.",
+              "explanation": "$a_0=1$, $a_1=2$, $a_2=4$, $a_3=8$. Les points sont $(0,1)$, $(1,2)$, $(2,4)$, $(3,8)$. Ils ne sont pas alignés, la croissance est exponentielle."
+            },
+            {
+              "question": "La suite $(b_n)$ est définie par $b_0 = 0.2$ et $b_{n+1} = 2 b_n (1 - b_n)$. Dessine (schématiquement) les premières étapes de la toile d'araignée. Vers quoi la suite semble-t-elle converger ?",
+              "answer": "La suite converge vers $0.5$ (point fixe attractif). La toile d'araignée spirale vers l'intersection de $y=2x(1-x)$ et $y=x$ autre que l'origine.",
+              "hint": "Les points fixes sont solutions de $x=2x(1-x)$. L'un est $0$, l'autre est $0.5$. Regarde la pente de $f$ en $0.5$ : $f'(x)=2-4x$, $f'(0.5)=0$ (attractif).",
+              "explanation": "La fonction $f(x)=2x(1-x)$ coupe $y=x$ en $x=0$ et $x=0.5$. En $0.5$, la dérivée est nulle, donc le point fixe est super-attractif. La toile d'araignée part de $0.2$, monte vers la courbe, revient sur la bissectrice, et converge très vite vers $(0.5,0.5)$."
+            },
+            {
+              "question": "Parmi les graphiques ci-dessous (imagine trois nuages de points), lequel correspond à une suite convergente, lequel à une suite divergente vers $+\\\\\\\\infty$, lequel à une suite oscillante ?\\nA) Points qui montent régulièrement et s'éloignent.\\nB) Points qui se rapprochent d'une horizontale.\\nC) Points qui alternent au-dessus et au-dessous d'une horizontale en se rapprochant.",
+              "answer": "A) Divergente vers $+\\\\\\\\infty$. B) Convergente. C) Oscillante convergente (alternée).",
+              "hint": "Convergent = points s'agglutinent près d'une droite horizontale. Divergent = points partent vers le haut ou le bas sans limite. Oscillant = points changent de côté par rapport à l'horizontale.",
+              "explanation": "Le nuage de points donne une lecture immédiate : B) les ordonnées ont une limite finie. A) les ordonnées croissent sans borne. C) les ordonnées oscillent autour de la limite en s'en rapprochant."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

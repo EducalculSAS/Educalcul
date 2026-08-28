@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 254,
+  "_course_code": "cm1-t06-c07-solides-et-patrons",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Patrons",
+  "title": "Quiz sur les patrons de solides",
+  "questions": [
+    {
+      "text": "Qu'est ce qu'un patron en géométrie ?",
+      "options": [
+        "Un dessin en trois dimensions d'un solide",
+        "Le plan d'un solide que l'on peut plier pour le construire",
+        "Une forme géométrique qui possède seulement des angles droits",
+        "La trace laissée par un solide posé sur une feuille"
+      ],
+      "correctAnswer": "Le plan d'un solide que l'on peut plier pour le construire",
+      "explanation": "Un patron est un développement à plat d'un solide. En le pliant le long de ses traits de pliage, on obtient le solide en trois dimensions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "De combien de faces est composé le patron d'un cube ?",
+      "options": [
+        "quatre faces",
+        "cinq faces",
+        "six faces",
+        "huit faces"
+      ],
+      "correctAnswer": "six faces",
+      "explanation": "Un cube possède six faces carrées identiques. Son patron doit donc obligatoirement être composé de six carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on utilise le patron d'un pavé droit, quelles figures peut on trouver pour ses faces ?",
+      "options": [
+        "Uniquement des cercles",
+        "Uniquement des triangles",
+        "Uniquement des carrés",
+        "Des rectangles ou des carrés"
+      ],
+      "correctAnswer": "Des rectangles ou des carrés",
+      "explanation": "Un pavé droit est un solide dont toutes les faces sont des rectangles. Le carré est un cas particulier de rectangle, donc on peut trouver les deux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe ce schéma. Quel solide peut on obtenir en pliant ce patron ?",
+      "options": [
+        "Une pyramide",
+        "Un cube",
+        "Un cylindre",
+        "Une sphère"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Le schéma présente six carrés disposés de façon à pouvoir être refermés pour former un cube.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron composé de six carrés"
+      }
+    },
+    {
+      "text": "Le patron d'une pyramide à base carrée est composé d'une base carrée et de combien de triangles ?",
+      "options": [
+        "deux triangles",
+        "trois triangles",
+        "quatre triangles",
+        "cinq triangles"
+      ],
+      "correctAnswer": "quatre triangles",
+      "explanation": "Puisque la base est un carré, elle possède quatre côtés. Chaque côté soutient une face latérale triangulaire qui se rejoint au sommet. Il faut donc quatre triangles.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

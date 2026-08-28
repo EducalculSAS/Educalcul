@@ -1,0 +1,436 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.295162+00:00",
+  "id": 577,
+  "code": "1ere-generale-maths-t02-c01",
+  "title": "Manipuler expressions algébriques",
+  "description": "Cours structuré Educalcul : Manipuler expressions algébriques.",
+  "subject": "Calcul numérique et algébrique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Calcul numérique et algébrique",
+    "titre_du_cours": "Manipuler expressions algébriques",
+    "objectif_global": "Manipuler expressions algébriques",
+    "mini_lecons_imposees": [
+      "Développer.",
+      "Factoriser.",
+      "Choisir forme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul numérique et algébrique",
+      "lessons": [
+        {
+          "title": "Développer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. La distributivité simple : le point de départ"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré à la manipulation des expressions algébriques. En Première spécialité, vous allez rencontrer des expressions de plus en plus complexes, et la clé pour les dompter, c'est la distributivité. Rappelons-nous : multiplier une somme par un nombre, c'est multiplier chaque terme de la somme par ce nombre. En langage mathématique, pour tous nombres réels $a$, $b$, $c$, on a l'égalité fondamentale $a(b+c) = ab + ac$. Cette propriété, vous la connaissez depuis le collège, mais ici elle devient un outil de travail quotidien, pas seulement une règle à réciter."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un rectangle dont la longueur est $x+3$ et la largeur $2$. Son aire s'écrit $2 \\times (x+3)$. Si on découpe ce rectangle en deux plus petits, l'un de dimensions $x$ par $2$, l'autre de $3$ par $2$, l'aire totale devient $2x + 6$. C'est exactement la distributivité : le facteur $2$ a été « distribué » à chacun des termes de la parenthèse. Cette image géométrique reste valable même quand les nombres deviennent des lettres, et elle nous aide à ne pas oublier de multiplier le second terme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le facteur extérieur et la somme entre parenthèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans l'expression $5(x-4)$, le facteur extérieur est $5$, la somme (ou différence) est $x-4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier le facteur par chaque terme à l'intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $5 \\times x = 5x$ et $5 \\times (-4) = -20$. Attention au signe moins !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la somme des résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $5x - 20$. L'expression est développée, il n'y a plus de parenthèses."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention aux signes",
+              "paragraphs": [
+                "Quand le facteur extérieur est négatif, les signes changent à l'intérieur : $-3(2x+5) = -6x -15$. Une astuce : écrivez d'abord le produit sans signe, puis décidez du signe final en appliquant la règle des signes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la distributivité simple est bien en place, nous allons voir comment elle s'étend naturellement quand deux sommes sont multipliées l'une par l'autre. C'est ce qu'on appelle la double distributivité, et c'est le moteur qui fait tourner toutes les identités remarquables."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Double distributivité : quand deux parenthèses se rencontrent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $(x+2)(x+5)$. Ici, pas de facteur unique devant une parenthèse, mais deux parenthèses. L'idée est de considérer la première parenthèse comme un bloc unique et de la distribuer sur la seconde : $(x+2) \\times x + (x+2) \\times 5$. Ensuite, on applique la distributivité simple sur chaque produit : $x \\times x + 2 \\times x + x \\times 5 + 2 \\times 5$. En regroupant, on obtient $x^2 + 7x + 10$. Cette méthode, parfois appelée « FOIL » (First, Outer, Inner, Last) dans les pays anglophones, garantit qu'aucun terme n'est oublié."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(c+d) = ac + ad + bc + bd"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un exemple avec des coefficients et des signes variés : $(3x-4)(2x+1)$. On multiplie chaque terme de la première par chaque terme de la seconde : $3x \\times 2x = 6x^2$, $3x \\times 1 = 3x$, $-4 \\times 2x = -8x$, $-4 \\times 1 = -4$. En simplifiant les termes en $x$ ($3x-8x = -5x$), on trouve $6x^2 -5x -4$. Prenez le temps d'écrire chaque produit intermédiaire sur votre brouillon ; c'est la meilleure assurance contre les erreurs de signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La double distributivité est puissante, mais il existe des cas si fréquents qu'ils méritent d'être mémorisés sous forme de formules toutes faites : ce sont les identités remarquables. Elles ne sont que des cas particuliers de la double distributivité, mais les connaître par cœur vous fera gagner un temps précieux aux examens."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Les trois identités remarquables à connaître par cœur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y en a trois, et seulement trois, à avoir en tête en permanence. La première : le carré d'une somme, $(a+b)^2 = a^2 + 2ab + b^2$. La seconde : le carré d'une différence, $(a-b)^2 = a^2 - 2ab + b^2$. La troisième : le produit de la somme par la différence, $(a-b)(a+b) = a^2 - b^2$. Remarquez la symétrie : dans les deux premiers, le terme du milieu est $\\pm 2ab$ ; dans le troisième, il n'y a pas de terme du milieu, les termes en $ab$ s'annulent."
+            },
+            {
+              "type": "definition",
+              "term": "Identité remarquable",
+              "definition": "Une égalité qui est vraie pour toutes les valeurs des variables qu'elle contient, et qui permet de passer rapidement d'une forme factorisée à une forme développée (ou l'inverse).",
+              "example": "Par exemple, $(x+7)^2 = x^2 + 14x + 49$ est une identité remarquable."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : ces formules ne s'appliquent que quand la structure correspond exactement. $(x+3)(x+5)$ n'est pas une identité remarquable directe, c'est une double distributivité classique. En revanche, $(x+3)(x-3)$ correspond à la troisième identité avec $a=x$ et $b=3$, donc $x^2 - 9$ immédiatement. Apprenez à repérer le pattern : même chose au début, même chose à la fin, signes opposés au milieu pour la troisième ; même chose au début, même chose à la fin, même signe pour les carrés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, voyons comment combiner ces outils sur des expressions plus longues, comme $(x+1)(x^2+2x+3)$ ou $(2x-3)^2 + (x+4)(x-4)$. La stratégie reste la même : identifiez chaque produit, développez-le avec la méthode adaptée (distributivité simple, double, ou identité), puis regroupez les termes semblables. C'est de l'algèbre pure, mais c'est aussi de l'organisation : rangez vos calculs, alignez les termes de même degré, et vous verrez que même les expressions les plus impressionnantes se laissent dompter."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développer et réduire l'expression $E = 4(3x - 5)$.",
+              "answer": "$12x - 20$",
+              "hint": "Appliquez la distributivité simple : multipliez $4$ par $3x$ puis par $-5$.",
+              "explanation": "On calcule $4 \\times 3x = 12x$ et $4 \\times (-5) = -20$. Donc $E = 12x - 20$."
+            },
+            {
+              "question": "Développer et réduire $F = (x+4)(x-2)$.",
+              "answer": "$x^2 + 2x - 8$",
+              "hint": "Utilisez la double distributivité (ou FOIL) : multipliez chaque terme de la première parenthèse par chaque terme de la seconde.",
+              "explanation": "On fait $x \\times x = x^2$, $x \\times (-2) = -2x$, $4 \\times x = 4x$, $4 \\times (-2) = -8$. En regroupant $-2x+4x = 2x$, on obtient $x^2 + 2x - 8$."
+            },
+            {
+              "question": "Développer en utilisant l'identité remarquable appropriée : $G = (2x+5)^2$.",
+              "answer": "$4x^2 + 20x + 25$",
+              "hint": "Repérez le carré d'une somme : $(a+b)^2 = a^2 + 2ab + b^2$ avec $a=2x$ et $b=5$.",
+              "explanation": "Ici $a=2x$, $b=5$. Donc $a^2 = 4x^2$, $2ab = 2 \\times 2x \\times 5 = 20x$, $b^2 = 25$. Résultat : $4x^2 + 20x + 25$."
+            },
+            {
+              "question": "Développer et réduire $H = (x-3)(x+3) + (x+2)^2$.",
+              "answer": "$2x^2 + 4x - 5$",
+              "hint": "Traitez chaque produit séparément : le premier est une identité remarquable (somme × différence), le second est un carré d'une somme. Puis additionnez.",
+              "explanation": "Premier produit : $(x-3)(x+3) = x^2 - 9$ (troisième identité). Second : $(x+2)^2 = x^2 + 4x + 4$ (première identité). Somme : $x^2 - 9 + x^2 + 4x + 4 = 2x^2 + 4x - 5$."
+            }
+          ]
+        },
+        {
+          "title": "Factoriser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Remettre en facteur : l'opération inverse du développement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir appris à développer, il est naturel de se demander : peut-on faire le chemin inverse ? La réponse est oui, et c'est même une compétence cruciale pour résoudre des équations, simplifier des fractions algébriques ou étudier le signe d'une expression. Factoriser, c'est transformer une somme en produit. Pour l'instant, nous allons nous concentrer sur la technique la plus basique : la mise en évidence d'un facteur commun."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenez l'expression $12x + 18$. Les deux termes sont des multiples de $6$ : $12x = 6 \\times 2x$ et $18 = 6 \\times 3$. On peut donc écrire $12x + 18 = 6(2x+3)$. On a « sorti » le facteur $6$ devant une parenthèse. C'est exactement l'inverse de la distributivité : au lieu de distribuer, on factorise. Cette idée simple est le socle de toute factorisation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Chercher un diviseur commun à tous les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regardez les coefficients et les parties littérales. Pour $15x^2 - 10x$, les coefficients $15$ et $10$ sont divisibles par $5$, et chaque terme contient au moins un $x$. Le facteur commun est donc $5x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser chaque terme par ce facteur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$15x^2 \\div 5x = 3x$ et $-10x \\div 5x = -2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le produit du facteur commun par la somme des quotients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$15x^2 - 10x = 5x(3x - 2)$. Vérifiez en développant : $5x \\times 3x = 15x^2$, $5x \\times (-2) = -10x$. Ça marche."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège fréquent",
+              "paragraphs": [
+                "Ne factorisez jamais qu'une partie de l'expression. $12x+18 = 2(6x+9)$ est vrai, mais ce n'est pas une factorisation complète car $6x+9$ admet encore un facteur commun $3$. La factorisation complète est $6(2x+3)$. Vérifiez toujours que ce qui reste dans la parenthèse n'a plus de facteur commun."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le facteur commun n'est pas un simple nombre ou une lettre, mais une expression entre parenthèses déjà présente. C'est le cas quand on a une somme de produits qui partagent un même facteur. Par exemple, $x(x+2) + 3(x+2)$. Ici, le facteur commun est la parenthèse $(x+2)$ elle-même. On la met en évidence : $(x+2)(x+3)$. Cette situation arrive très souvent après avoir développé une expression par double distributivité : on retrouve alors la forme factorisée d'origine."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Factoriser par regroupement : quand le facteur commun est une parenthèse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $ax + ay + bx + by$. Aucun facteur commun à tous les quatre termes. Mais si on regroupe les deux premiers et les deux derniers : $(ax+ay) + (bx+by) = a(x+y) + b(x+y)$. Maintenant, le facteur commun est $(x+y)$ : on factorise pour obtenir $(x+y)(a+b)$. Cette technique, appelée factorisation par regroupement, fonctionne dès qu'on peut créer des groupes qui révèlent un facteur commun. L'art consiste à bien choisir le regroupement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons sur $x^2 + 3x + 2x + 6$. Regroupons $(x^2+3x) + (2x+6) = x(x+3) + 2(x+3) = (x+3)(x+2)$. Remarquez que l'expression de départ était le développement de $(x+3)(x+2)$ sans que les termes semblables soient regroupés. Le regroupement nous a permis de retrouver la factorisation. C'est une méthode très utile pour factoriser des trinômes du type $x^2 + sx + p$ quand on ne voit pas tout de suite les identités remarquables."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux factorisations qui utilisent les identités remarquables à l'envers. Vous connaissez les trois formules pour développer ; elles servent tout autant pour factoriser, à condition de reconnaître le pattern. C'est là que l'entraînement paie : plus vous aurez développé d'expressions avec les identités remarquables, plus vous les reconnaîtrez instantanément sous forme développée."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Utiliser les identités remarquables à l'envers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les trois identités en sens inverse : $a^2 + 2ab + b^2 = (a+b)^2$, $a^2 - 2ab + b^2 = (a-b)^2$, $a^2 - b^2 = (a-b)(a+b)$. Pour les utiliser, il faut identifier $a$ et $b$ dans l'expression donnée. Prenez $x^2 + 10x + 25$. Le premier terme est $x^2$, donc $a = x$. Le dernier est $25 = 5^2$, donc $b = 5$. Le terme du milieu est $10x = 2 \\times x \\times 5 = 2ab$. C'est bon, on a le pattern du carré d'une somme : $x^2 + 10x + 25 = (x+5)^2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple : $4x^2 - 9$. Ici, pas de terme du milieu. $4x^2 = (2x)^2$, $9 = 3^2$. C'est une différence de deux carrés : $a^2 - b^2$ avec $a=2x$, $b=3$. Donc $4x^2 - 9 = (2x-3)(2x+3)$. Attention : la somme de deux carrés, $a^2 + b^2$, ne se factorise pas dans les réels (elle ne se factorise qu'en nombres complexes, ce qui est hors programme pour l'instant). Ne tentez pas de factoriser $x^2+4$, c'est impossible en staying dans $\\mathbb{R}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent qu'une expression nécessite une combinaison de méthodes : d'abord extraire un facteur commun, puis appliquer une identité remarquable sur ce qui reste. Par exemple, $2x^2 - 18 = 2(x^2 - 9) = 2(x-3)(x+3)$. Si on omet la première étape, on ne voit pas la différence de carrés. De même, $3x^2 + 12x + 12 = 3(x^2 + 4x + 4) = 3(x+2)^2$. La stratégie gagnante : toujours commencer par chercher un facteur commun global, puis regarder ce qui reste dans la parenthèse pour décider de la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factoriser complètement l'expression $A = 14x^2 - 21x$.",
+              "answer": "$7x(2x - 3)$",
+              "hint": "Cherchez le plus grand diviseur commun aux coefficients $14$ et $21$, et à la partie littérale $x^2$ et $x$.",
+              "explanation": "Le PGCD de $14$ et $21$ est $7$. La plus petite puissance de $x$ présente dans les deux termes est $x$. Le facteur commun est $7x$. En divisant : $14x^2 \\div 7x = 2x$, $-21x \\div 7x = -3$. Donc $A = 7x(2x-3)$."
+            },
+            {
+              "question": "Factoriser par regroupement : $B = x^2 + 5x + 2x + 10$.",
+              "answer": "$(x+5)(x+2)$",
+              "hint": "Regroupez les termes deux par deux de façon à faire apparaître un facteur commun entre parenthèses.",
+              "explanation": "On regroupe $(x^2+5x) + (2x+10) = x(x+5) + 2(x+5) = (x+5)(x+2)$."
+            },
+            {
+              "question": "Factoriser en utilisant une identité remarquable : $C = 9x^2 - 24x + 16$.",
+              "answer": "$(3x-4)^2$",
+              "hint": "Vérifiez si l'expression correspond à un carré d'une différence : $a^2 - 2ab + b^2$. Identifiez $a$ et $b$.",
+              "explanation": "$9x^2 = (3x)^2$, $16 = 4^2$, et $-24x = -2 \\times (3x) \\times 4$. C'est bien $(3x)^2 - 2(3x)(4) + 4^2 = (3x-4)^2$."
+            },
+            {
+              "question": "Factoriser complètement : $D = 5x^3 - 20x$.",
+              "answer": "$5x(x-2)(x+2)$",
+              "hint": "Commencez par extraire le facteur commun global, puis regardez ce qui reste entre parenthèses.",
+              "explanation": "Facteur commun : $5x$. $D = 5x(x^2 - 4)$. Le terme $x^2-4$ est une différence de carrés : $x^2 - 2^2 = (x-2)(x+2)$. Résultat final : $5x(x-2)(x+2)$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir forme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "1. Pourquoi développer ? Simplifier, dériver, étudier les variations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce cours, celle qui transforme la technique en stratégie. Savoir développer et factoriser, c'est bien ; savoir choisir la bonne forme selon le problème, c'est mieux. En Première, vous allez manipuler des expressions algébriques dans des contextes variés : résolution d'équations, étude de fonctions, calcul de limites, simplification de fractions. Chaque contexte a sa forme préférée. Commençons par les situations où le développement est roi."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on veut étudier les variations d'une fonction polynôme, la forme développée (somme de monômes) est idéale car elle permet de calculer la dérivée terme à terme. Par exemple, $f(x) = (x-2)(x+3)(x+1)$. Si on la développe, on obtient $f(x) = x^3 + 2x^2 -5x -6$. La dérivée $f'(x) = 3x^2 + 4x -5$ s'écrit immédiatement. Sous forme factorisée, la dérivation aurait demandé la règle du produit, plus lourde. De même, pour calculer une limite en $+\\infty$, le terme de plus haut degré (ici $x^3$) dicte le comportement, et il est visible directement dans la forme développée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre cas : la simplification d'une fraction algébrique quand le numérateur et le dénominateur sont des produits. Parfois, développer permet de voir des simplifications qui n'étaient pas évidentes. Prenez $\\frac{(x+2)(x-3)}{(x+2)(x+5)}$. Ici, la forme factorisée montre tout de suite la simplification par $x+2$. Mais si on vous donne $\\frac{x^2 - x -6}{x^2 + 7x +10}$, il faut factoriser numérateur et dénominateur pour simplifier. Donc : développer pour dériver ou voir le degré dominant, factoriser pour simplifier des fractions ou résoudre des équations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux situations où la forme factorisée s'impose. La plus classique est la résolution d'équations du type $P(x)=0$ où $P$ est un polynôme. La propriété du produit nul dit que si un produit de facteurs est nul, alors au moins l'un des facteurs est nul. C'est la clé pour résoudre les équations polynomiales. Si vous avez $(x-4)(2x+1)=0$, les solutions sont $x=4$ et $x=-\\frac{1}{2}$ immédiatement. Si l'équation est donnée sous forme développée, $2x^2 -7x -4 =0$, il faut d'abord factoriser pour utiliser le produit nul. C'est donc factoriser pour résoudre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "2. Pourquoi factoriser ? Résoudre, signer, simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'étude du signe d'une expression est un autre domaine où la factorisation brille. Pour savoir où $x^2 - 5x + 6$ est positif, on factorise en $(x-2)(x-3)$. Un produit de deux facteurs a le signe du produit de leurs signes. On fait un tableau de signes avec les racines $2$ et $3$, et on lit les intervalles où le produit est positif. Sous forme développée, impossible de faire un tableau de signes directement. La factorisation transforme une question d'inégalité en une analyse simple de signes de facteurs du premier degré."
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la simplification des fractions algébriques : $\\frac{x^2-4}{x^2-x-6}$. Factorisons numérateur et dénominateur : $\\frac{(x-2)(x+2)}{(x-3)(x+2)} = \\frac{x-2}{x-3}$ pour $x \\neq -2$. La forme factorisée révèle les facteurs communs à annuler. Sans factorisation, on ne voit pas la simplification possible. Retenons donc : pour résoudre une équation, pour étudier le signe, pour simplifier une fraction → factoriser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La réalité, c'est que les problèmes mélangent souvent les deux besoins. Prenez l'exemple de l'étude complète d'une fonction rationnelle $f(x) = \\frac{x^2-1}{x^2+2x+1}$. Pour le domaine, il faut factoriser le dénominateur : $(x+1)^2$, donc $x \\neq -1$. Pour simplifier, on factorise numérateur et dénominateur : $\\frac{(x-1)(x+1)}{(x+1)^2} = \\frac{x-1}{x+1}$. Pour dériver, on peut dériver la forme simplifiée $\\frac{x-1}{x+1}$ (quotient) ou développer la forme originale. Le choix dépend de ce qui semble le plus simple. C'est là que votre jugement mathématique entre en jeu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "3. Stratégie de choix : lire l'énoncé, anticiper la suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une checklist mentale à appliquer à chaque expression que vous rencontrez : 1) Quel est l'objectif final ? (Dériver, résoudre, simplifier, signer, calculer une limite). 2) Quelle forme rend cet objectif le plus facile ? 3) L'expression est-elle déjà sous une forme proche de l'idéale ? 4) Si non, quelles opérations (développement, factorisation, regroupement) me rapprochent du but ? Par exemple, si l'énoncé demande « Étudier les variations de $f(x) = (x^2-1)(x+2)$ », vous avez intérêt à développer pour obtenir un polynôme standard, puis dériver. Si l'énoncé demande « Résoudre $(x^2-1)(x+2)=0$ », la forme factorisée est déjà parfaite : il suffit d'appliquer le produit nul sur chaque facteur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut faire les deux à la suite : développer pour dériver, puis factoriser la dérivée pour faire son tableau de signes. C'est le cas typique de l'étude de fonction : $f(x) = x^3 - 3x + 2$. Dérivée $f'(x) = 3x^2 - 3 = 3(x^2-1) = 3(x-1)(x+1)$. On a développé pour dériver, puis factorisé pour signer. Cette gymnastique entre les deux formes est le cœur du travail algébrique en Première. Plus vous vous entraînerez à basculer de l'une à l'autre, plus ce sera fluide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, rappelons que développer et factoriser sont deux faces d'une même médaille. La distributivité est le fil conducteur : elle permet de passer de la forme factorisée (produit) à la forme développée (somme) et vice-versa. Les identités remarquables sont des raccourcis pour les aller-retours fréquents. Le regroupement est une astuce pour créer des facteurs communs quand ils ne sautent pas aux yeux. Et le choix de la forme dépend toujours du problème posé : dériver → développer ; résoudre/signer/simplifier → factoriser. Gardez cette boussole en tête, et vous naviguerez sans peine dans l'océan des expressions algébriques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer une expression par distributivité simple et double.",
+                "Je connais les trois identités remarquables et je sais les appliquer dans les deux sens.",
+                "Je sais factoriser en extrayant un facteur commun (nombre, lettre, ou parenthèse).",
+                "Je sais factoriser par regroupement de termes.",
+                "Je sais choisir la forme adaptée : développer pour dériver ou voir le degré dominant, factoriser pour résoudre, signer ou simplifier."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère la fonction $f(x) = (x-2)(x+1)^2$. Quelle forme privilégier pour calculer $f'(x)$ ? Effectuez la dérivation.",
+              "answer": "Forme développée : $f(x) = x^3 - 3x + 2$, donc $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$.",
+              "hint": "Développez d'abord l'expression pour obtenir un polynôme, puis dérivez terme à terme. Factorisez ensuite la dérivée pour l'étude de signe.",
+              "explanation": "On développe : $(x-2)(x^2+2x+1) = x^3+2x^2+x -2x^2-4x-2 = x^3 -3x -2$ ? Attention : $(x+1)^2 = x^2+2x+1$. $(x-2)(x^2+2x+1) = x(x^2+2x+1) -2(x^2+2x+1) = x^3+2x^2+x -2x^2-4x-2 = x^3 -3x -2$. Dérivée : $3x^2 -3 = 3(x^2-1) = 3(x-1)(x+1)$."
+            },
+            {
+              "question": "Résoudre l'équation $(2x-3)(x+4) = 0$.",
+              "answer": "$x = \\frac{3}{2}$ ou $x = -4$",
+              "hint": "Utilisez la propriété du produit nul : un produit est nul si et seulement si l'un au moins de ses facteurs est nul.",
+              "explanation": "Soit $2x-3=0 \\Rightarrow x=\\frac{3}{2}$, soit $x+4=0 \\Rightarrow x=-4$. L'ensemble des solutions est $\\left\\{\\frac{3}{2}, -4\\right\\}$."
+            },
+            {
+              "question": "Simplifier la fraction $\\frac{x^2+5x+6}{x^2+4x+4}$ pour $x \\neq -2$.",
+              "answer": "$\\frac{x+3}{x+2}$",
+              "hint": "Factorisez le numérateur et le dénominateur, puis simplifiez le facteur commun.",
+              "explanation": "Numérateur : $x^2+5x+6 = (x+2)(x+3)$. Dénominateur : $x^2+4x+4 = (x+2)^2$. Fraction : $\\frac{(x+2)(x+3)}{(x+2)^2} = \\frac{x+3}{x+2}$ pour $x \\neq -2$."
+            },
+            {
+              "question": "On donne $g(x) = \\frac{x^2-9}{x-3}$. Déterminer la forme la plus simple de $g(x)$ et préciser son ensemble de définition.",
+              "answer": "$g(x) = x+3$ pour $x \\neq 3$. Ensemble de définition : $\\mathbb{R} \\setminus \\{3\\}$.",
+              "hint": "Factorisez le numérateur (différence de carrés), simplifiez, et n'oubliez pas la restriction de départ.",
+              "explanation": "Numérateur : $x^2-9 = (x-3)(x+3)$. $g(x) = \\frac{(x-3)(x+3)}{x-3} = x+3$ pour $x \\neq 3$. L'ensemble de définition exclut $3$ car le dénominateur initial s'annule en $3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

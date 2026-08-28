@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Application : Problèmes algébriques",
+  "title": "Résolution de problèmes algébriques : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Problème 1 : Un nombre mystère",
+      "content": "Voici un problème : \"Je choisis un nombre, je le multiplie par 4, j'ajoute 12, j'obtiens 44. Quel est ce nombre ?\" Range les étapes de la résolution dans l'ordre logique, de la traduction à la conclusion.",
+      "items": [
+        "On note $x$ le nombre cherché.",
+        "On traduit le problème par l'équation $4x + 12 = 44$.",
+        "On résout l'équation : $4x = 32$ donc $x = 8$.",
+        "On conclut : le nombre cherché est 8."
+      ],
+      "explanation": "La résolution d'un problème algébrique suit toujours la même structure : 1) Choix de la variable inconnue ($x$). 2) Traduction des mots en langage mathématique (équation). 3) Résolution de l'équation par transformations successives. 4) Réponse à la question posée sous forme de phrase.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Dimensions d'un rectangle",
+      "content": "Le périmètre d'un rectangle est de 36 cm. Sa longueur est de 4 cm de plus que sa largeur. Range les étapes pour trouver les dimensions du rectangle.",
+      "items": [
+        "On note $x$ la largeur en cm, alors la longueur est $x + 4$.",
+        "On écrit la formule du périmètre : $2 \\times (x + x + 4) = 36$.",
+        "On simplifie et on résout : $4x + 8 = 36$ donc $4x = 28$ et $x = 7$.",
+        "On conclut : la largeur est 7 cm et la longueur est 11 cm."
+      ],
+      "explanation": "Il faut d'abord définir les inconnues en fonction l'une de l'autre (largeur $x$, longueur $x+4$). Ensuite, on utilise la formule du périmètre $P = 2 \\times (L + l)$ pour établir l'équation. La résolution donne la valeur de $x$, puis on calcule la seconde dimension avant de conclure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : Prix initial et réduction",
+      "content": "Un article est soldé à 20 %. Son prix soldé est de 48 €. Range les étapes pour retrouver son prix initial.",
+      "items": [
+        "On note $x$ le prix initial en euros.",
+        "Le prix soldé correspond à 80 % du prix initial, soit $0,8x$.",
+        "On établit l'équation $0,8x = 48$ et on résout : $x = 48 \\div 0,8 = 60$.",
+        "On conclut : le prix initial de l'article était de 60 €."
+      ],
+      "explanation": "Une réduction de 20 % signifie qu'on paie 80 % du prix initial (100 % - 20 % = 80 %). On note $x$ le prix initial. Le prix soldé s'écrit $0,8x$. L'équation $0,8x = 48$ se résout en divisant 48 par 0,8. On trouve 60 €, qu'on vérifie : 20 % de 60 = 12, 60 - 12 = 48.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

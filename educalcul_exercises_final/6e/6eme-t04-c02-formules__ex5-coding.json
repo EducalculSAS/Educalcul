@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 348,
+  "_course_code": "6eme-t04-c02-formules",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Approfondissement : Lire une formule",
+  "title": "Lecture de formules et écriture d'algorithmes",
+  "blocks": [
+    {
+      "title": "Périmètre d'un rectangle",
+      "content": "La formule du périmètre d'un rectangle est $P = 2 \\times (L + l)$. Écris un algorithme (en langage naturel ou avec une syntaxe simple type Python) qui demande les longueurs $L$ et $l$, calcule le périmètre $P$ et l'affiche.",
+      "correctAnswer": "Algorithme :\\n1. Demander L\\n2. Demander l\\n3. Calculer P = 2 * (L + l)\\n4. Afficher P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit la formule : le périmètre est deux fois la somme de la longueur et de la largeur. L'algorithme suit cet ordre : saisie des deux mesures, calcul de la somme, multiplication par 2, puis affichage du résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Aire d'un triangle",
+      "content": "La formule de l'aire d'un triangle est $A = \\frac{b \\times h}{2}$. Identifie les variables de la formule, puis écris un algorithme qui lit la base $b$ et la hauteur $h$, calcule l'aire $A$ et l'affiche.",
+      "correctAnswer": "Variables : b (base), h (hauteur), A (aire).\\nAlgorithme :\\n1. Demander b\\n2. Demander h\\n3. Calculer A = (b * h) / 2\\n4. Afficher A",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La formule montre qu'on multiplie la base par la hauteur, puis on divise le produit par 2. L'algorithme respecte cet ordre : saisie de b et h, multiplication, division par 2, affichage.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'un pavé droit",
+      "content": "Le volume d'un pavé droit se calcule avec la formule $V = L \\times l \\times h$. Écris un algorithme complet qui demande les trois dimensions, calcule le volume et l'affiche. Précise l'ordre des opérations effectué par l'algorithme.",
+      "correctAnswer": "Algorithme :\\n1. Demander L\\n2. Demander l\\n3. Demander h\\n4. Calculer V = L * l * h\\n5. Afficher V\\nOrdre des opérations : la multiplication est associative, on peut multiplier L par l, puis le résultat par h (ou dans n'importe quel ordre).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La formule indique le produit des trois dimensions. L'algorithme lit chaque dimension, effectue les multiplications successives (L * l puis * h) et affiche le volume final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

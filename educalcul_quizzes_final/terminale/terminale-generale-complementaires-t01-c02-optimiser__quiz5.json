@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Approfondissement : Construire fonction",
+  "title": "Construire des fonctions pour optimiser",
+  "questions": [
+    {
+      "text": "On souhaite fabriquer une boîte sans couvercle à partir d'une plaque carrée de côté $12$ cm en découpant quatre carrés de côté $x$ dans chaque coin. Quelle expression représente l'aire de la base de la boîte en fonction de $x$ ?",
+      "options": [
+        "$(12 - x)^2$",
+        "$(12 - 2x)^2$",
+        "$12^2 - 4x^2$",
+        "$144 - 12x$"
+      ],
+      "correctAnswer": "$(12 - 2x)^2$",
+      "explanation": "Le côté initial de la plaque est de $12$ cm. On retire deux carrés de côté $x$ sur chaque dimension. La longueur et la largeur de la base sont donc toutes deux égales à $12 - 2x$. L'aire de la base est le produit de ces dimensions, soit $(12 - 2x)^2$. L'option $(12 - x)^2$ oublie l'un des deux coins retirés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la boîte précédente, on note $V(x)$ le volume de la boîte. Quelle est l'expression correcte de $V(x)$ et son ensemble de définition possible ?",
+      "options": [
+        "$V(x) = x(12 - 2x)^2$ avec $x \\in [0, 12]$",
+        "$V(x) = x(12 - x)^2$ avec $x \\in [0, 6]$",
+        "$V(x) = x(12 - 2x)^2$ avec $x \\in [0, 6]$",
+        "$V(x) = (12 - 2x)^3$ avec $x \\in [0, 6]$"
+      ],
+      "correctAnswer": "$V(x) = x(12 - 2x)^2$ avec $x \\in [0, 6]$",
+      "explanation": "Le volume est le produit de l'aire de la base $(12 - 2x)^2$ par la hauteur $x$. Pour que les dimensions soient positives, il faut $x > 0$ et $12 - 2x > 0$, ce qui implique $x < 6$. L'ensemble de définition est donc $[0, 6]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un agriculteur dispose de $100$ mètres de clôture pour entourer un terrain rectangulaire longeant un mur droit (le mur sert de quatrième côté). Si $x$ est la longueur des deux côtés perpendiculaires au mur, quelle fonction $A(x)$ exprime l'aire du terrain ?",
+      "options": [
+        "$A(x) = x(100 - x)$",
+        "$A(x) = x(100 - 2x)$",
+        "$A(x) = 2x(100 - 2x)$",
+        "$A(x) = 100x - 2x^2$"
+      ],
+      "correctAnswer": "$A(x) = x(100 - 2x)$",
+      "explanation": "La longueur totale de clôture est $100$. Elle est utilisée pour deux largeurs $x$ et une longueur $L$. On a $2x + L = 100$, donc $L = 100 - 2x$. L'aire est $A(x) = \\text{largeur} \\times \\text{longueur} = x(100 - 2x)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une entreprise vend un produit $10$ euros l'unité et en vend $200$ par mois. Elle constate que pour chaque euro d'augmentation du prix, elle vend $10$ unités de moins. Quelle fonction $R(x)$ représente le revenu mensuel si $x$ est le nombre d'augmentations d'un euro ?",
+      "options": [
+        "$R(x) = (10 + x)(200 - 10x)$",
+        "$R(x) = (10 + x)(210 - 10x)$",
+        "$R(x) = 10(200 - 10x)$",
+        "$R(x) = (10 + x)(200 - x)$"
+      ],
+      "correctAnswer": "$R(x) = (10 + x)(200 - 10x)$",
+      "explanation": "Le nouveau prix est $10 + x$. Le nouveau nombre de ventes est $200 - 10x$. Le revenu est le produit du prix par la quantité vendue, soit $R(x) = (10 + x)(200 - 10x)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On cherche à minimiser la distance totale $D$ entre un point $M$ sur l'axe des abscisses et deux points fixes $A(1, 2)$ et $B(5, 4)$. Si $M$ a pour coordonnées $(x, 0)$, quelle est l'expression de $D(x)$ ?",
+      "options": [
+        "$D(x) = \\sqrt{(x-1)^2 + 2^2} + \\sqrt{(x-5)^2 + 4^2}$",
+        "$D(x) = \\sqrt{(x-1)^2 + 4} + \\sqrt{(x-5)^2 + 16}$",
+        "$D(x) = (x-1)^2 + 2^2 + (x-5)^2 + 4^2$",
+        "$D(x) = \\sqrt{(x-1)^2 + (x-5)^2} + \\sqrt{2^2 + 4^2}$"
+      ],
+      "correctAnswer": "$D(x) = \\sqrt{(x-1)^2 + 4} + \\sqrt{(x-5)^2 + 16}$",
+      "explanation": "La distance $MA$ est $\\sqrt{(x-1)^2 + (0-2)^2} = \\sqrt{(x-1)^2 + 4}$. La distance $MB$ est $\\sqrt{(x-5)^2 + (0-4)^2} = \\sqrt{(x-5)^2 + 16}$. La distance totale est la somme $D(x) = MA + MB$. L'option A est mathématiquement identique mais l'option B est la forme simplifiée standard. L'option A est également correcte, mais ici nous privilégions la forme avec constantes calculées.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

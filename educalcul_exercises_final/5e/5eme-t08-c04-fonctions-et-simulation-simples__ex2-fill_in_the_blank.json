@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Appeler",
+  "title": "Appeler une fonction en programmation",
+  "blocks": [
+    {
+      "title": "Appel simple sans argument",
+      "content": "Pour exécuter la fonction nommée $afficher\\_menu$ qui ne demande aucune information, on écrit l'instruction : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "afficher_menu()"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "En programmation, pour appeler (exécuter) une fonction qui ne prend pas de paramètre, on écrit son nom suivi de parenthèses vides. Ici, le nom de la fonction est $afficher\\_menu$, donc l'appel correct est $afficher\\_menu()$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Appel avec arguments",
+      "content": "La fonction $calculer\\_perimetre$ attend deux nombres : la longueur $L$ et la largeur $l$. Pour calculer le périmètre d'un rectangle de longueur $8$ et de largeur $5$, on écrit : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "calculer_perimetre(8, 5)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque une fonction attend des paramètres (ici la longueur et la largeur), on doit leur fournir des valeurs (arguments) entre les parenthèses, dans l'ordre attendu. On écrit donc $calculer\\_perimetre(8, 5)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Utiliser la valeur de retour",
+      "content": "La fonction $moyenne$ renvoie la moyenne de trois notes. Pour stocker le résultat de la moyenne des notes $12$, $15$ et $9$ dans la variable $m$, on écrit : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "m = moyenne(12, 15, 9)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction qui renvoie une valeur (retour) peut être utilisée dans une affectation. La variable $m$ reçoit la valeur retournée par l'appel $moyenne(12, 15, 9)$. L'instruction complète est donc $m = moyenne(12, 15, 9)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 367,
+  "_course_code": "6eme-t07-c05-bilan-espace-6e",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Solides et repérage",
+  "title": "Quiz : Solides et repérage - 6e",
+  "questions": [
+    {
+      "text": "Combien de faces, d'arêtes et de sommets possède un cube ?",
+      "options": [
+        "6 faces, 12 arêtes, 8 sommets",
+        "6 faces, 8 arêtes, 12 sommets",
+        "8 faces, 12 arêtes, 6 sommets",
+        "6 faces, 6 arêtes, 8 sommets"
+      ],
+      "correctAnswer": "6 faces, 12 arêtes, 8 sommets",
+      "explanation": "Un cube est un pavé droit qui a 6 faces carrées, 12 arêtes de même longueur et 8 sommets. L'option B inverse le nombre d'arêtes et de sommets. L'option C inverse le nombre de faces et de sommets. L'option D donne un nombre d'arêtes incorrect (6 au lieu de 12).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le patron ci-dessous. Peut-on le plier pour obtenir un cube ?",
+      "options": [
+        "Oui, c'est un des onze patrons possibles du cube.",
+        "Non, car deux faces opposées se retrouvent adjacentes.",
+        "Non, il manque une face pour former un cube.",
+        "Oui, mais seulement si on retourne le patron avant de le plier."
+      ],
+      "correctAnswer": "Oui, c'est un des onze patrons possibles du cube.",
+      "explanation": "La figure représente un développement classique du cube (souvent en forme de croix). Il fait bien partie des onze patrons distincts qui permettent de former un cube. Les faces sont au bon nombre (six) et bien disposées pour se rejoindre correctement au pliage sans se chevaucher ni laisser de trou.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Un solide est constitué de cubes unitaires empilés. Sa vue de face montre un rectangle de 3 cubes de haut sur 2 de large. Sa vue de dessus montre un rectangle de 4 cubes de long sur 2 de large. Quel est le volume de ce solide en cubes unitaires ?",
+      "options": [
+        "18 cubes",
+        "24 cubes",
+        "12 cubes",
+        "9 cubes"
+      ],
+      "correctAnswer": "24 cubes",
+      "explanation": "Le volume correspond au nombre total de cubes unitaires. Les dimensions du pavé droit formé sont : longueur 4 (vue de dessus), largeur 2 (commune aux deux vues), hauteur 3 (vue de face). Le volume est $4 \\times 2 \\times 3 = 24$ cubes unitaires. L'option A correspond à $3 \\times 2 \\times 3$, l'option C à $4 \\times 3$ (oubli de la largeur) et l'option D à $3 \\times 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un plan quadrillé, le point A a pour coordonnées $(2 ; 3)$. Comment se déplace-t-on de l'origine pour atteindre ce point ?",
+      "options": [
+        "On avance de 2 cases vers la droite puis de 3 cases vers le haut.",
+        "On avance de 3 cases vers la droite puis de 2 cases vers le haut.",
+        "On avance de 2 cases vers la gauche puis de 3 cases vers le bas.",
+        "On avance de 2 cases vers le haut puis de 3 cases vers la droite."
+      ],
+      "correctAnswer": "On avance de 2 cases vers la droite puis de 3 cases vers le haut.",
+      "explanation": "Dans un repère du plan, la première coordonnée (abscisse) correspond au déplacement horizontal (axe des x) : positif vers la droite. La deuxième coordonnée (ordonnée) correspond au déplacement vertical (axe des y) : positif vers le haut. Pour $(2 ; 3)$, on va donc 2 à droite et 3 en haut. L'option B inverse les coordonnées. L'option C utilise les directions opposées. L'option D inverse l'ordre des déplacements.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une carte au trésor quadrillée, le départ est à la case $(A ; 1)$. Les colonnes sont repérées par des lettres (A, B, C...) et les lignes par des chiffres (1, 2, 3...). On se déplace de 3 colonnes vers la droite et de 2 lignes vers le haut. Quelles sont les coordonnées de la case d'arrivée ?",
+      "options": [
+        "$(D ; 3)$",
+        "$(C ; 3)$",
+        "$(D ; 2)$",
+        "$(B ; 3)$"
+      ],
+      "correctAnswer": "$(D ; 3)$",
+      "explanation": "Le départ est $(A ; 1)$. Vers la droite, les lettres augmentent : A $\\to$ B (1), B $\\to$ C (2), C $\\to$ D (3). On arrive à la colonne D. Vers le haut, les chiffres augmentent : 1 $\\to$ 2 (1), 2 $\\\\to$ 3 (2). On arrive à la ligne 3. L'arrivée est donc $(D ; 3)$. L'option B ne décale que de 2 colonnes. L'option C ne monte que d'une ligne. L'option D ne décale que d'une colonne.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Application : Valeurs approchées et contrôle",
+  "title": "Mise en ordre : Valeurs approchées et contrôle",
+  "blocks": [
+    {
+      "title": "Arrondi à la dixième près",
+      "content": "Range les étapes dans l'ordre pour donner la valeur approchée de $12,347$ par arrondi à la dixième près.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer le chiffre des dixièmes : $3$.",
+        "Regarder le chiffre qui suit (centièmes) : $4$.",
+        "Comme $4 < 5$, le chiffre des dixièmes ne change pas.",
+        "Écrire le résultat : $12,3$."
+      ],
+      "explanation": "On identifie d'abord le chiffre de la dixième (3), puis on regarde le chiffre suivant (4). Comme il est strictement inférieur à 5, on conserve le chiffre des dixièmes. La valeur approchée par arrondi à la dixième près est $12,3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Contrôle d'ordre de grandeur d'un produit",
+      "content": "Range les étapes pour vérifier l'ordre de grandeur du produit $24 \\times 3,8$ dont on a trouvé $91,2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Arrondir les nombres : $24 \\approx 20$ et $3,8 \\approx 4$.",
+        "Calculer le produit approché : $20 \\times 4 = 80$.",
+        "Comparer $80$ au résultat exact $91,2$.",
+        "Conclure : l'ordre de grandeur est correct car $91,2$ est proche de $80$."
+      ],
+      "explanation": "On simplifie les nombres pour calculer mentalement ($20 \\times 4 = 80$). Le résultat exact $91,2$ est bien de l'ordre de $80$, le calcul est donc plausible.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Encadrement d'une somme",
+      "content": "Range les étapes pour encadrer la somme $15,4 + 28,7$ à l'unité près.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Arrondir chaque nombre à l'unité par défaut : $15$ et $28$.",
+        "Arrondir chaque nombre à l'unité par excès : $16$ et $29$.",
+        "Calculer la borne inférieure : $15 + 28 = 43$.",
+        "Calculer la borne supérieure : $16 + 29 = 45$.",
+        "Écrire l'encadrement : $43 < 15,4 + 28,7 < 45$."
+      ],
+      "explanation": "L'encadrement à l'unité près utilise la partie entière pour la borne inférieure (arrondi par défaut) et la partie entière plus 1 pour la borne supérieure (arrondi par excès). La somme exacte est $44,1$, bien comprise entre $43$ et $45$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

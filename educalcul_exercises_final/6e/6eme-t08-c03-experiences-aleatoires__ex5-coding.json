@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 370,
+  "_course_code": "6eme-t08-c03-experiences-aleatoires",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Approfondissement : Issues",
+  "title": "Exercices sur les issues d'expériences aléatoires - Algorithmes",
+  "blocks": [
+    {
+      "title": "Lancer d'un dé",
+      "content": "Écrire un algorithme qui affiche toutes les issues possibles lors du lancer d'un dé à six faces.",
+      "correctAnswer": "Début\\nPour chaque face de un à six\\n    Afficher face\\nFinPour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme parcourt les six faces du dé une par une et affiche chaque issue possible. Il y a six issues au total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lancer de deux pièces",
+      "content": "Écrire un algorithme qui affiche toutes les issues possibles lors du lancer de deux pièces de monnaie.",
+      "correctAnswer": "Début\\nPour chaque résultat de la première pièce (face, pile)\\n    Pour chaque résultat de la deuxième pièce (face, pile)\\n        Afficher résultat première pièce, résultat deuxième pièce\\n    FinPour\\nFinPour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise deux boucles imbriquées pour combiner chaque résultat de la première pièce avec chaque résultat de la deuxième pièce. Cela donne quatre issues : face-face, face-pile, pile-face, pile-pile.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expérience à deux étapes",
+      "content": "Écrire un algorithme qui calcule le nombre total d'issues possibles pour une expérience composée de deux étapes : d'abord lancer un dé à six faces, ensuite lancer une pièce de monnaie.",
+      "correctAnswer": "Début\\nNombreIssuesDé devient six\\nNombreIssuesPièce devient deux\\nTotal devient NombreIssuesDé multiplié par NombreIssuesPièce\\nAfficher Total\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre total d'issues d'une expérience à plusieurs étapes indépendantes est le produit du nombre d'issues de chaque étape. Ici, six issues pour le dé et deux pour la pièce donnent douze issues au total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

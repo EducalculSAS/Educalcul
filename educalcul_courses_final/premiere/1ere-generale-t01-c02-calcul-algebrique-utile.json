@@ -1,0 +1,577 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.166303+00:00",
+  "id": 542,
+  "code": "1ere-generale-t01-c02",
+  "title": "Calcul algébrique utile",
+  "description": "Cours structuré Educalcul : Calcul algébrique utile.",
+  "subject": "Automatismes",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Automatismes",
+    "titre_du_cours": "Calcul algébrique utile",
+    "objectif_global": "Calcul algébrique utile",
+    "mini_lecons_imposees": [
+      "Développer / factoriser simple.",
+      "Équations simples.",
+      "Formules."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Automatismes",
+      "lessons": [
+        {
+          "title": "Développer / factoriser simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les expressions algébriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons apprivoiser le langage des expressions algébriques. Une expression est une écriture qui mélange des nombres, des lettres et des signes d'opération ; elle ne contient pas de signe égal. Les lettres, que l'on appelle variables, représentent des nombres que l'on ne connaît pas encore ou qui peuvent changer. Par exemple, dans $3x + 5$, le $3$ est le coefficient de $x$ et le $5$ est un terme constant. Prends le temps de lire chaque phrase, imagine les nombres qui pourraient se cacher derrière les lettres, et tu verras que l'algèbre n'est qu'une façon ordonnée de parler de calculs que tu fais déjà au quotidien."
+            },
+            {
+              "type": "definition",
+              "term": "développement",
+              "definition": "Le développement consiste à réécrire un produit de sommes ou de différences sous forme d'une somme de termes simples, sans parenthèses.",
+              "example": "Par exemple, $(x+2)(x-3)$ se développe en $x^2 - x - 6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour développer un produit de deux binômes comme $(a+b)(c+d)$, on utilise la règle de la distributivité : chaque terme de la première parenthèse multiplie chaque terme de la seconde. Concrètement, on obtient $ac + ad + bc + bd$. Imagine que tu as deux paniers de fruits ; le premier contient $a$ pommes et $b$ poires, le second $c$ pommes et $d$ poires. En formant tous les couples possibles, tu comptes chaque combinaison une fois. Cette image mentale t'aide à ne rien oublier quand tu écris le développement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie les deux binômes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les deux parenthèses qui sont multipliées l'une par l'autre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie le premier terme du premier binôme par les deux termes du second",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $a \\times c$ puis $a \\times d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Multiplie le second terme du premier binôme par les deux termes du second",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $b \\times c$ puis $b \\times d$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Regroupe les termes semblables s'il y en a",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les termes qui portent la même puissance de la variable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(c+d) = ac + ad + bc + bd"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais développer un produit quelconque, nous allons découvrir trois formules qui reviennent sans cesse et qui te feront gagner un temps précieux. Ces formules s'appellent les produits remarquables car elles ont une structure particulière que l'on peut reconnaître du premier coup d'œil."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produits remarquables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier produit remarquable est le carré d'une somme : $(a+b)^2$. En appliquant la méthode du développement, on obtient $a^2 + 2ab + b^2$. Remarque le terme du milieu $2ab$ qui est le double du produit des deux termes. Cette régularité est la clé pour factoriser plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2 + 2ab + b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le second est le carré d'une différence : $(a-b)^2$. Le développement donne $a^2 - 2ab + b^2$. Seul le signe du terme central change par rapport au carré de la somme. Garde en tête que le signe moins se propage seulement sur le terme du milieu."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)^2 = a^2 - 2ab + b^2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le troisième produit remarquable est le produit de la somme par la différence : $(a+b)(a-b)$. Ici, les termes du milieu s'annulent et il ne reste que $a^2 - b^2$. C'est la fameuse identité de la différence de deux carrés, très utile pour factoriser rapidement."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)(a-b) = a^2 - b^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu comment développer, il est tout aussi important de savoir faire l'opération inverse : la factorisation. C'est comme remonter le fil d'un tricot pour retrouver les mailles d'origine."
+            },
+            {
+              "type": "definition",
+              "term": "factorisation",
+              "definition": "La factorisation consiste à réécrire une somme ou une différence sous forme d'un produit de facteurs plus simples.",
+              "example": "Par exemple, $x^2 - 9 = (x+3)(x-3)$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factorisation simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première technique est la mise en évidence d'un facteur commun. Si chaque terme d'une expression contient le même facteur, on peut le sortir devant une parenthèse. Par exemple, dans $6x^2 + 9x$, le facteur commun est $3x$, ce qui donne $3x(2x+3)$. Cette opération simplifie l'expression et prépare souvent la résolution d'équations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Cherche le plus grand facteur commun aux coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le PGCD des nombres qui multiplient les variables."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repère la plus petite puissance de chaque variable présente dans tous les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette puissance sera le facteur variable commun."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écris le facteur commun devant une parenthèse et divise chaque terme par ce facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le résultat de chaque division à l'intérieur de la parenthèse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "6x^2 + 9x = 3x(2x+3)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La seconde technique utilise la différence de deux carrés que nous venons de rencontrer. Si tu as une expression de la forme $A^2 - B^2$, tu peux l'écrire directement $(A+B)(A-B)$. Par exemple, $x^2 - 16$ devient $(x+4)(x-4)$ car $16 = 4^2$. Cette astuce évite de devoir deviner les facteurs."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^2 - 16 = (x+4)(x-4)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons mélanger développement et factorisation dans quelques exercices variés. L'idée est de t'habituer à passer d'une forme à l'autre selon ce que le problème demande. Prends le temps de lire chaque énoncé, choisis la stratégie la plus adaptée et vérifie toujours ton résultat en refaisant l'opération inverse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement mixte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les exercices qui suivent, tu devras parfois développer, parfois factoriser, et parfois faire les deux à la suite. C'est en variant les situations que tu construiras une vraie aisance algébrique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe l'expression $(2x+3)(x-4)$.",
+              "answer": "$2x^2 -5x -12$",
+              "hint": "Applique la distributivité terme à terme : $2x \\times x$, $2x \\times (-4)$, $3 \\times x$, $3 \\times (-4)$.",
+              "explanation": "On multiplie chaque terme de la première parenthèse par chaque terme de la seconde : $2x \\cdot x = 2x^2$, $2x \\cdot (-4) = -8x$, $3 \\cdot x = 3x$, $3 \\cdot (-4) = -12$. En regroupant $-8x+3x$, on obtient $-5x$. Le résultat final est $2x^2 -5x -12$."
+            },
+            {
+              "question": "Factorise l'expression $x^2 - 25$.",
+              "answer": "$(x+5)(x-5)$",
+              "hint": "Reconnais une différence de deux carrés : $25 = 5^2$.",
+              "explanation": "L'expression s'écrit $x^2 - 5^2$. D'après l'identité $(a+b)(a-b)=a^2-b^2$, avec $a=x$ et $b=5$, on obtient $(x+5)(x-5)$."
+            },
+            {
+              "question": "Développe puis factorise $ (3y-2)^2 $.",
+              "answer": "Développement : $9y^2 -12y +4$ ; Factorisation : $(3y-2)^2$",
+              "hint": "Utilise la formule du carré d'une différence $(a-b)^2 = a^2 -2ab + b^2$ avec $a=3y$, $b=2$.",
+              "explanation": "En posant $a=3y$ et $b=2$, on a $a^2 = 9y^2$, $-2ab = -12y$, $b^2 = 4$. Le développement donne $9y^2 -12y +4$. Comme c'est un carré parfait, la factorisation retourne à la forme initiale $(3y-2)^2$."
+            },
+            {
+              "question": "Factorise $12x^3y - 18x^2y^2$.",
+              "answer": "$6x^2y(2x - 3y)$",
+              "hint": "Cherche le PGCD des coefficients (12 et 18) et les plus petites puissances de $x$ et $y$ présentes dans les deux termes.",
+              "explanation": "Le PGCD de 12 et 18 est 6. La plus petite puissance de $x$ est $x^2$, celle de $y$ est $y$. Le facteur commun est $6x^2y$. En divisant chaque terme : $12x^3y \\div 6x^2y = 2x$, $-18x^2y^2 \\div 6x^2y = -3y$. On obtient $6x^2y(2x - 3y)$."
+            }
+          ]
+        },
+        {
+          "title": "Équations simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une équation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation est une égalité qui contient une inconnue, souvent notée $x$, et dont on cherche les valeurs qui la rendent vraie. Contrairement à une identité, qui est vraie pour toutes les valeurs de la variable, une équation n'est satisfaite que pour certaines valeurs précises, appelées solutions. Par exemple, $2x + 3 = 7$ est une équation : elle n'est vraie que pour $x = 2$. Prends un instant pour visualiser la balance : les deux côtés doivent avoir le même poids, et l'inconnue est le poids mystère que tu dois découvrir."
+            },
+            {
+              "type": "definition",
+              "term": "équation",
+              "definition": "Une équation est une égalité contenant au moins une inconnue, dont on cherche les valeurs (solutions) qui la vérifient.",
+              "example": "Exemple : $3x - 5 = 10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résoudre une équation du premier degré à une inconnue, on utilise des transformations qui ne changent pas l'ensemble des solutions : on peut ajouter ou soustraire le même nombre des deux côtés, multiplier ou diviser les deux côtés par un même nombre non nul. L'objectif est d'isoler l'inconnue d'un côté de l'égalité. Cette méthode est souvent comparée à l'action de maintenir une balance en équilibre tout en déplaçant des poids identiques des deux plateaux."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Simplifie chaque membre si nécessaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes semblables de chaque côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transfère les termes en $x$ d'un même côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute ou soustrais le terme en $x$ pour le regrouper à gauche (ou à droite)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Transfère les constantes de l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute ou soustrais les nombres pour isoler le terme en $x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Divise par le coefficient de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Obtiens $x$ seul et lis la solution."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "2x + 3 = 7 \\implies 2x = 4 \\implies x = 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois l'inconnue apparaît des deux côtés de l'égalité, comme dans $4x - 5 = 2x + 7$. La stratégie reste la même : on commence par rassembler tous les termes en $x$ d'un seul côté et les nombres de l'autre. Cette étape supplémentaire demande juste un peu plus d'attention aux signes. Imagine que tu veux réunir tous les objets marqués d'un $x$ dans le même tiroir avant de compter ce qui reste."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations avec l'inconnue des deux côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $4x - 5 = 2x + 7$. Soustrayons $2x$ des deux membres pour obtenir $2x - 5 = 7$. Ensuite, ajoutons $5$ des deux côtés : $2x = 12$. Enfin, divisons par $2$ : $x = 6$. Vérifie en remplaçant $x$ par $6$ dans l'équation d'origine : $4\\times6 -5 = 24-5 = 19$ et $2\\times6 +7 = 12+7 = 19$. Les deux membres sont égaux, la solution est correcte."
+            },
+            {
+              "type": "display_math",
+              "latex": "4x - 5 = 2x + 7 \\implies 2x = 12 \\implies x = 6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les équations peuvent aussi contenir des fractions, par exemple $\\frac{x}{3} + 2 = \\frac{x}{2} - 1$. La présence de dénominateurs peut sembler intimidante, mais il suffit de multiplier les deux membres par le plus petit commun multiple des dénominateurs pour les faire disparaître. Ici, le PPCM de $3$ et $2$ est $6$. En multipliant chaque terme par $6$, on obtient une équation sans fractions, beaucoup plus simple à résoudre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations avec fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode : $6 \\times (\\frac{x}{3} + 2) = 6 \\times (\\frac{x}{2} - 1)$. Cela donne $2x + 12 = 3x - 6$. On ramène les $x$ à gauche : $-x + 12 = -6$, puis $-x = -18$, donc $x = 18$. Vérifie : $\\frac{18}{3}+2 = 6+2=8$ et $\\frac{18}{2}-1 = 9-1=8$. L'égalité tient."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{x}{3} + 2 = \\frac{x}{2} - 1 \\implies 2x + 12 = 3x - 6 \\implies x = 18"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, les problèmes concrets se traduisent souvent en équations simples. Par exemple : « Un rectangle a une longueur supérieure de $5\\,cm$ à sa largeur. Son périmètre est de $50\\,cm $. Trouve les dimensions. » On note $x$ la largeur, la longueur est $x+5$. Le périmètre $2(x + x+5) = 50$ donne $4x+10=50$, puis $4x=40$ et $x=10$. La largeur est $10\\,cm$, la longueur $15\\,cm$. Cette modélisation est la clé pour passer du texte au calcul."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Problèmes menant à une équation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lis attentivement l'énoncé, identifie l'inconnue, écris la relation mathématique, puis résous l'équation obtenue avec les méthodes vues précédemment. N'hésite pas à faire un petit schéma pour visualiser la situation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous l'équation $5x - 8 = 2x + 7$.",
+              "answer": "$x = 5$",
+              "hint": "Soustrais $2x$ des deux côtés, puis ajoute $8$.",
+              "explanation": "On soustrait $2x$ : $3x - 8 = 7$. On ajoute $8$ : $3x = 15$. On divise par $3$ : $x = 5$. Vérification : $5\\times5 -8 = 25-8=17$ et $2\\times5+7=10+7=17$."
+            },
+            {
+              "question": "Résous $3x + 4 = 2x - 11$.",
+              "answer": "$x = -15$",
+              "hint": "Regroupe les $x$ à gauche et les nombres à droite.",
+              "explanation": "Soustrayons $2x$ : $x + 4 = -11$. Soustrayons $4$ : $x = -15$. Vérification : $3(-15)+4 = -45+4=-41$ et $2(-15)-11 = -30-11=-41$."
+            },
+            {
+              "question": "Résous $\\frac{x}{4} - 3 = \\frac{x}{2} + 1$.",
+              "answer": "$x = -16$",
+              "hint": "Multiplie les deux membres par $4$ pour éliminer les dénominateurs.",
+              "explanation": "Multiplier par $4$ : $x - 12 = 2x + 4$. Soustraire $x$ : $-12 = x + 4$. Soustraire $4$ : $x = -16$. Vérification : $\\frac{-16}{4}-3 = -4-3=-7$ et $\\frac{-16}{2}+1 = -8+1=-7$."
+            },
+            {
+              "question": "Un nombre augmenté de $7$ donne le triple de ce nombre diminué de $5$. Trouve ce nombre.",
+              "answer": "$6$",
+              "hint": "Note $x$ le nombre inconnu, traduit la phrase en équation.",
+              "explanation": "L'énoncé donne $x + 7 = 3x - 5$. Soustraire $x$ : $7 = 2x - 5$. Ajouter $5$ : $12 = 2x$. Diviser par $2$ : $x = 6$. Vérification : $6+7=13$ et $3\\times6-5=18-5=13$."
+            }
+          ]
+        },
+        {
+          "title": "Formules.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une formule ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une formule est une égalité qui exprime une relation générale entre plusieurs grandeurs. Elle contient des variables (les grandeurs qui peuvent varier) et parfois des constantes (des nombres fixes). Par exemple, la formule de l'aire d'un rectangle $A = L \\times l$ relie l'aire $A$, la longueur $L$ et la largeur $l$. Contrairement à une équation qu'on résout pour trouver une inconnue, une formule sert à calculer l'une des grandeurs quand les autres sont connues. Pense à une recette de cuisine : la formule te donne les proportions, tu n'as plus qu'à doser les ingrédients."
+            },
+            {
+              "type": "definition",
+              "term": "formule",
+              "definition": "Une formule est une égalité qui lie plusieurs variables et permet de calculer l'une d'elles en fonction des autres.",
+              "example": "Périmètre d'un carré : $P = 4c$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les sciences, les formules abondent : la vitesse $v = \\frac{d}{t}$, la force $F = m \\times a$, l'énergie cinétique $E_c = \\frac{1}{2} m v^2$. Chaque lettre a un sens précis et une unité associée. Il est essentiel de respecter les unités (mètres, secondes, kilogrammes) pour que le calcul ait un sens physique. Quand tu utilises une formule, commence toujours par lister les grandeurs connues, leurs unités, et la grandeur cherchée."
+            },
+            {
+              "type": "display_math",
+              "latex": "v = \\frac{d}{t}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, on a besoin d'exprimer une variable en fonction des autres, c'est-à-dire d'isoler cette variable dans la formule. Cette manipulation suit exactement les mêmes règles que la résolution d'équation : on applique les mêmes opérations aux deux membres pour garder l'égalité. La différence, c'est qu'on ne cherche pas une valeur numérique mais une expression littérale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Isoler une variable dans une formule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la formule du périmètre d'un rectangle $P = 2(L + l)$. Si on veut exprimer la longueur $L$ en fonction du périmètre $P$ et de la largeur $l$, on divise d'abord par $2$ : $\\frac{P}{2} = L + l$. Puis on soustrait $l$ : $L = \\frac{P}{2} - l$. Cette nouvelle formule permet de calculer directement la longueur quand on connaît le périmètre et la largeur."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie la variable à isoler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis la lettre que tu veux seule d'un côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utilise les opérations inverses pour la dégager",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si elle est multipliée, divise ; si elle est ajoutée, soustrais, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifie l'expression obtenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes, factorise si c'est utile."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "P = 2(L+l) \\implies L = \\frac{P}{2} - l"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les formules ne sont pas figées ; on peut les combiner, les substituer les unes dans les autres pour en déduire de nouvelles relations. Par exemple, en remplaçant $v$ par $\\frac{d}{t}$ dans la formule de l'énergie cinétique $E_c = \\frac{1}{2} m v^2$, on obtient $E_c = \\frac{1}{2} m \\left(\\frac{d}{t}\\right)^2 = \\frac{m d^2}{2 t^2}$. Cette expression relie directement l'énergie à la masse, la distance et le temps, ce qui peut être pratique selon les données dont on dispose."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Substitution et nouvelles formules"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple courant : la formule du volume d'un cylindre $V = \\pi r^2 h$. Si on connaît le diamètre $d = 2r$, on peut réécrire $V = \\pi \\left(\\frac{d}{2}\\right)^2 h = \\frac{\\pi d^2 h}{4}$. Ainsi, selon qu'on mesure le rayon ou le diamètre, on utilise la version la plus commode. Cette flexibilité est l'une des forces du calcul algébrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "V = \\pi r^2 h = \\frac{\\pi d^2 h}{4}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, vérifions que les formules respectent l'homogénéité des unités. Dans $v = \\frac{d}{t}$, si $d$ est en mètres ($m$) et $t$ en secondes ($s$), alors $v$ est en mètres par seconde ($m/s$). Si tu obtiens une expression où les unités ne s'accordent pas (par exemple ajouter des mètres à des secondes), c'est le signe qu'une erreur s'est glissée dans la manipulation. Contrôler les dimensions est un filet de sécurité précieux, surtout en physique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérification dimensionnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Applique ce contrôle à la formule $E_c = \\frac{1}{2} m v^2$. La masse $m$ est en kilogrammes ($kg$), la vitesse $v$ en $m/s$, donc $v^2$ est en $m^2/s^2$. Le produit $m v^2$ donne $kg \\cdot m^2 / s^2$, qui est bien l'unité de l'énergie (le joule). Cette cohérence te rassure sur la validité de la formule."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer un produit de deux binômes en utilisant la distributivité.",
+                "Je reconnais et j'applique les trois produits remarquables : carré d'une somme, carré d'une différence, somme fois différence.",
+                "Je sais factoriser en mettant en évidence un facteur commun et en utilisant la différence de deux carrés.",
+                "Je résous une équation du premier degré, même avec l'inconnue des deux côtés ou des fractions.",
+                "Je traduis un problème concret en équation et j'interprète la solution.",
+                "Je comprends ce qu'est une formule et je sais isoler n'importe quelle variable.",
+                "Je pratique la substitution dans les formules et je vérifie l'homogénéité des unités."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la formule $A = \\pi r^2$, exprime le rayon $r$ en fonction de l'aire $A$.",
+              "answer": "$r = \\sqrt{\\frac{A}{\\pi}}$",
+              "hint": "Divise par $\\pi$, puis prends la racine carrée (le rayon est positif).",
+              "explanation": "On divise les deux membres par $\\pi$ : $\\frac{A}{\\pi} = r^2$. Comme $r>0$, on prend la racine carrée : $r = \\sqrt{\\frac{A}{\\pi}}$."
+            },
+            {
+              "question": "La formule de la vitesse moyenne est $v = \\frac{d}{t}$. Si un véhicule parcourt $240\\,km$ en $3\\,h$, quelle est sa vitesse moyenne ?",
+              "answer": "$80\\,km/h$",
+              "hint": "Remplace $d$ par $240$ et $t$ par $3$ dans la formule.",
+              "explanation": "$v = \\frac{240}{3} = 80$. L'unité est $km/h$ car la distance est en km et le temps en h."
+            },
+            {
+              "question": "En partant de $V = \\pi r^2 h$, exprime la hauteur $h$ en fonction du volume $V$ et du rayon $r$.",
+              "answer": "$h = \\frac{V}{\\pi r^2}$",
+              "hint": "Divise les deux membres par $\\pi r^2$.",
+              "explanation": "On divise par $\\pi r^2$ : $h = \\frac{V}{\\pi r^2}$. Cette formule permet de calculer la hauteur si on connaît le volume et le rayon."
+            },
+            {
+              "question": "Vérifie l'homogénéité des unités dans la formule $F = m a$ (force = masse $\\times$ accélération). La masse est en $kg$, l'accélération en $m/s^2$. Quelle est l'unité de la force ?",
+              "answer": "$kg \\cdot m/s^2$ (newton)",
+              "hint": "Multiplie les unités de la masse et de l'accélération.",
+              "explanation": "$kg \\times (m/s^2) = kg \\cdot m / s^2$, qui est l'unité du newton ($N$). La formule est dimensionnellement cohérente."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

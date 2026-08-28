@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 503,
+  "_course_code": "2nde-t02-c01-expressions-algebriques",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Structure",
+  "title": "Algorithmes et structure des expressions algébriques",
+  "blocks": [
+    {
+      "title": "Développement d'un carré",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée deux nombres réels $a$ et $b$ et qui affiche le développement de $(a+b)^2$ sous la forme $a^2 + 2ab + b^2$. L'algorithme doit calculer séparément $a^2$, $2ab$ et $b^2$ avant de les additionner.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b\\n2. carre_a ← a * a\\n3. double_ab ← 2 * a * b\\n4. carre_b ← b * b\\n5. resultat ← carre_a + double_ab + carre_b\\n6. Afficher \"(a+b)^2 = \", carre_a, \" + \", double_ab, \" + \", carre_b, \" = \", resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique la formule remarquable $(a+b)^2 = a^2 + 2ab + b^2$. L'algorithme calcule chaque terme séparément pour montrer la structure du développement, puis les additionne pour obtenir le résultat final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factorisation d'un trinôme du second degré",
+      "content": "Écrire un algorithme qui, donnés trois entiers $b$ et $c$ (avec $a=1$), détermine si le trinôme $x^2 + bx + c$ peut se factoriser en $(x+p)(x+q)$ avec $p$ et $q$ entiers. Si c'est possible, l'algorithme affiche les valeurs de $p$ et $q$ ; sinon il affiche \"Non factorisable sur les entiers\".",
+      "correctAnswer": "Algorithme :\\n1. Lire b, c\\n2. trouvé ← Faux\\n3. Pour p de -|c| à |c| faire\\n4.     Si p ≠ 0 et c mod p = 0 alors\\n5.         q ← c / p\\n6.         Si p + q = b alors\\n7.             Afficher \"p = \", p, \" q = \", q\\n8.             trouvé ← Vrai\\n9.             Sortir de la boucle\\n10. Si trouvé = Faux alors\\n11.     Afficher \"Non factorisable sur les entiers\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour factoriser $x^2+bx+c$ en $(x+p)(x+q)$, il faut $p+q=b$ et $pq=c$. L'algorithme teste tous les diviseurs entiers $p$ de $c$ et vérifie si le $q$ correspondant satisfait la somme. La boucle parcourt les diviseurs possibles ; si aucun couple ne convient, le trinôme n'est pas factorisable sur $\\mathbb{Z}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification par regroupement des termes semblables",
+      "content": "On représente une expression algébrique comme une liste de termes, chaque terme étant un couple (coefficient, partie_littérale) où la partie_littérale est une chaîne de caractères (par exemple \"x^2\", \"xy\", \"\"). Écrire un algorithme qui prend une telle liste et renvoie une nouvelle liste où les termes ayant la même partie_littérale sont regroupés (leurs coefficients sont additionnés). Les termes dont le coefficient devient $0$ sont supprimés.",
+      "correctAnswer": "Algorithme :\\n1. Lire liste_termes (liste de couples (coeff, partie))\\n2. Créer dictionnaire regroupé vide\\n3. Pour chaque (coeff, partie) dans liste_termes faire\\n4.     Si partie dans regroupé alors\\n5.         regroupé[partie] ← regroupé[partie] + coeff\\n6.     Sinon\\n7.         regroupé[partie] ← coeff\\n8. Créer liste_simplifiée vide\\n9. Pour chaque partie, coeff_total dans regroupé faire\\n10.    Si coeff_total ≠ 0 alors\\n11.        Ajouter (coeff_total, partie) à liste_simplifiée\\n12. Renvoyer liste_simplifiée",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise un dictionnaire (table de hachage) pour accumuler les coefficients associés à chaque partie littérale. Après le parcours, il ne conserve que les termes dont le coefficient total est non nul, ce qui correspond à la simplification usuelle par regroupement des termes semblables.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

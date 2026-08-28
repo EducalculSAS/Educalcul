@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 449,
+  "_course_code": "4eme-t06-c05-bilan-espace-et-transformations-4e",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Checklist",
+  "title": "Quiz - Checklist Espace et transformations 4e",
+  "questions": [
+    {
+      "text": "Quelle transformation envoie le point $A(2,3)$ sur $A'(5,7)$ ?",
+      "options": [
+        "Translation",
+        "Rotation",
+        "Symétrie axiale",
+        "Homothétie"
+      ],
+      "correctAnswer": "Translation",
+      "explanation": "Le vecteur qui envoie A sur A' est $ (5-2, 7-3) = (3,4) $. Une translation est définie par un vecteur, donc c'est une translation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un repère orthonormé, l'image du point $B(1,2)$ par une rotation de centre $O(0,0)$ et d'angle $90^\\circ$ dans le sens direct est :",
+      "options": [
+        "$B'(-2,1)$",
+        "$B'(2,-1)$",
+        "$B'(-1,2)$",
+        "$B'(1,-2)$"
+      ],
+      "correctAnswer": "$B'(-2,1)$",
+      "explanation": "Une rotation de $90^\\circ$ direct autour de l'origine transforme $(x,y)$ en $(-y,x)$. Pour $B(1,2)$, on obtient $(-2,1)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La symétrie axiale par rapport à la droite d'équation $y = x$ envoie le point $C(3,5)$ sur :",
+      "options": [
+        "$C'(5,3)$",
+        "$C'(-3,-5)$",
+        "$C'(-5,-3)$",
+        "$C'(3,-5)$"
+      ],
+      "correctAnswer": "$C'(5,3)$",
+      "explanation": "La symétrie par rapport à $y=x$ échange les coordonnées : $(x,y)$ devient $(y,x)$. Donc $C(3,5)$ devient $C'(5,3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une homothétie de centre $O(0,0)$ et de rapport $k = -2$ envoie le point $D(4,-1)$ sur :",
+      "options": [
+        "$D'(-8,2)$",
+        "$D'(8,-2)$",
+        "$D'(-4,0.5)$",
+        "$D'(2,-0.5)$"
+      ],
+      "correctAnswer": "$D'(-8,2)$",
+      "explanation": "Une homothétie de centre $O$ et de rapport $k$ multiplie les coordonnées par $k$. Avec $k=-2$, $D(4,-1)$ donne $(-8,2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est une propriété commune à toutes les transformations du plan étudiées en 4e (translation, rotation, symétrie axiale, homothétie) ?",
+      "options": [
+        "Elles conservent les distances",
+        "Elles conservent les angles",
+        "Elles conservent le sens des angles orientés",
+        "Elles envoient une droite sur une droite"
+      ],
+      "correctAnswer": "Elles envoient une droite sur une droite",
+      "explanation": "Les translations, rotations, symétries axiales et homothéties sont toutes des applications affines : elles envoient toute droite sur une droite. Les autres propriétés ne sont pas partagées par l'homothétie (distances non conservées) ni par la symétrie (sens des angles inversé).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

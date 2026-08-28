@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 148,
+  "_course_code": "ce2-t01-c07-encadrer-et-intercaler",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Encadrer aux dizaines",
+  "title": "Encadrer aux dizaines : algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme en langage naturel qui, étant donné un nombre entier entre 0 et 99, trouve les deux dizaines qui l'encadrent (la dizaine inférieure et la dizaine supérieure).",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre N.\\n2. Calculer la dizaine inférieure : multiplier le quotient de la division entière de N par 10 par 10.\\n3. Calculer la dizaine supérieure : ajouter 10 à la dizaine inférieure.\\n4. Si N est un multiple de 10, la dizaine inférieure et la dizaine supérieure sont toutes les deux égales à N.\\n5. Afficher la dizaine inférieure et la dizaine supérieure.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour encadrer un nombre aux dizaines, on cherche le multiple de 10 le plus petit qui est supérieur ou égal au nombre (dizaine supérieure) et le multiple de 10 le plus grand qui est inférieur ou égal au nombre (dizaine inférieure). La division entière par 10 donne le chiffre des dizaines, qu'on multiplie par 10 pour obtenir la dizaine inférieure. En ajoutant 10, on obtient la dizaine supérieure. Si le nombre est déjà une dizaine, les deux sont égales au nombre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Adapter l'algorithme précédent pour qu'il fonctionne avec tout nombre entier positif (jusqu'à 999). Expliquer comment obtenir la dizaine inférieure et la dizaine supérieure à l'aide de la division entière et du modulo.",
+      "correctAnswer": "Algorithme étendu :\\n1. Lire le nombre N.\\n2. Calculer le chiffre des dizaines : D = (N // 10) % 10 (ou (N // 10) * 10 pour la dizaine inférieure).\\n3. La dizaine inférieure est (N // 10) * 10.\\n4. La dizaine supérieure est la dizaine inférieure + 10.\\n5. Si N % 10 == 0, alors les deux dizaines sont égales à N.\\n6. Afficher les deux dizaines.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour les nombres jusqu'à 999, la dizaine qui encadre le nombre correspond aux dizaines de la partie entière des centaines et dizaines. La division entière par 10 supprime les unités, puis en multipliant par 10 on retrouve la dizaine inférieure. Le modulo 10 permet de savoir si le nombre est exactement une dizaine (reste 0).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire une fonction Python nommée encadrer_dizaines qui prend en paramètre un entier positif et retourne un tuple (dizaine_inférieure, dizaine_supérieure). Tester la fonction avec les nombres 47, 80 et 123.",
+      "correctAnswer": "def encadrer_dizaines(n):\\n    dizaine_inf = (n // 10) * 10\\n    dizaine_sup = dizaine_inf + 10\\n    if n % 10 == 0:\\n        dizaine_sup = dizaine_inf\\n    return (dizaine_inf, dizaine_sup)\\n\\n# Tests\\nprint(encadrer_dizaines(47))   # (40, 50)\\nprint(encadrer_dizaines(80))   # (80, 80)\\nprint(encadrer_dizaines(123))  # (120, 130)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction utilise la division entière // pour obtenir le nombre de dizaines, puis multiplie par 10 pour la dizaine inférieure. La dizaine supérieure est obtenue en ajoutant 10, sauf si le nombre est un multiple de 10 (reste 0), auquel cas les deux dizaines sont égales au nombre. Les tests montrent les résultats attendus.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

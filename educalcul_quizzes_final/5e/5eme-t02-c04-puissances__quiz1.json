@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 387,
+  "_course_code": "5eme-t02-c04-puissances",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Notation",
+  "title": "Quiz : Notation des puissances (5e)",
+  "questions": [
+    {
+      "text": "Dans l'écriture $7^4$, comment nomme-t-on le chiffre 4 ?",
+      "options": [
+        "La base",
+        "L'exposant",
+        "Le produit",
+        "Le résultat"
+      ],
+      "correctAnswer": "L'exposant",
+      "explanation": "Dans une puissance $a^n$, le nombre du haut (ici 4) s'appelle l'exposant. Il indique combien de fois la base (ici 7) est multipliée par elle-même. La base est le nombre du bas (7).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle écriture en puissance correspond au produit $6 \\times 6 \\times 6 \\times 6 \\times 6$ ?",
+      "options": [
+        "$5^6$",
+        "$6^5$",
+        "$6 \\times 5$",
+        "$30$"
+      ],
+      "correctAnswer": "$6^5$",
+      "explanation": "On compte le nombre de facteurs identiques : le chiffre 6 apparaît 5 fois. La base est donc 6 et l'exposant est 5, ce qui s'écrit $6^5$. L'erreur fréquente est d'inverser la base et l'exposant ($5^6$) ou de faire une addition/multiplication simple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les phrases suivantes, laquelle décrit correctement la puissance $10^3$ ?",
+      "options": [
+        "Dix multiplié par trois",
+        "Dix puissance trois",
+        "Trois puissance dix",
+        "Dix plus trois"
+      ],
+      "correctAnswer": "Dix puissance trois",
+      "explanation": "On lit $a^n$ : « a puissance n » ou « a exposant n ». Ici, la base est 10 et l'exposant est 3, donc « dix puissance trois ». Cela signifie $10 \\times 10 \\times 10 = 1000$, et non $10 \\times 3 = 30$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est fausse ?",
+      "options": [
+        "$2^3 = 8$",
+        "$5^2 = 25$",
+        "$4^1 = 4$",
+        "$3^2 = 6$"
+      ],
+      "correctAnswer": "$3^2 = 6$",
+      "explanation": "Calculons chaque puissance : $2^3 = 2 \\times 2 \\times 2 = 8$ (vrai). $5^2 = 5 \\times 5 = 25$ (vrai). $4^1 = 4$ (vrai, tout nombre puissance 1 vaut lui-même). $3^2 = 3 \\times 3 = 9$, et non 6 (erreur classique : multiplier la base par l'exposant $3 \\times 2$ au lieu de multiplier la base par elle-même).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait que $2^5 = 32$. Sans tout recalculer, quel est la valeur de $2^6$ ?",
+      "options": [
+        "33",
+        "34",
+        "64",
+        "37"
+      ],
+      "correctAnswer": "64",
+      "explanation": "La propriété des puissances dit que $a^{n+1} = a^n \\times a$. Pour passer de l'exposant 5 à l'exposant 6, on multiplie le résultat précédent par la base 2 : $32 \\times 2 = 64$. Les autres options correspondent à des additions incorrectes ($32+1$, $32+2$, $32+5$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

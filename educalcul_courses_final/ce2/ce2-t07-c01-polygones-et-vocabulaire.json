@@ -1,0 +1,331 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.087601+00:00",
+  "id": 196,
+  "code": "ce2-t07-c01",
+  "title": "Polygones et vocabulaire",
+  "description": "Cours structuré Educalcul : Polygones et vocabulaire.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Polygones et vocabulaire",
+    "objectif_global": "Polygones et vocabulaire",
+    "mini_lecons_imposees": [
+      "Côtés et sommets.",
+      "Nommer triangles et quadrilatères.",
+      "Trier selon propriétés."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Côtés et sommets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Côtés et sommets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une part de pizza : elle a trois bords et trois pointes. En géométrie, on appelle cela un polygone. Un polygone est une figure fermée, tracée avec des segments de droite qui ne se croisent pas. Aujourd'hui, tu vas apprendre à repérer les côtés et les sommets de n'importe quel polygone."
+            },
+            {
+              "type": "definition",
+              "term": "Polygone",
+              "definition": "Une figure plane fermée, formée uniquement de segments de droite qui se rejoignent bout à bout sans se croiser.",
+              "example": "Un triangle, un carré, un pentagone sont des polygones."
+            },
+            {
+              "type": "definition",
+              "term": "Côté",
+              "definition": "Chacun des segments de droite qui forment le contour du polygone.",
+              "example": "Le triangle a $3$ côtés."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Le point où deux côtés consécutifs se rejoignent. C'est une « pointe » du polygone.",
+              "example": "Le carré a $4$ sommets."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle : 3 côtés et 3 sommets",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons un carré. Il a quatre côtés de même longueur et quatre sommets. Pour bien voir un côté, on peut poser une règle le long d'un bord. Essaie de compter les côtés et les sommets de ce carré en t'aidant du schéma ci-dessous."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 5,
+              "unit": "cm",
+              "caption": "Mesure d'un côté du carré : 5 cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les polygones sont partout autour de nous : un panneau « stop » a $8$ côtés (c'est un octogone), une ruche d'abeilles alvéoles en forme d'hexagones ($6$ côtés). Observe ta classe : peux-tu trouver un objet qui a $5$ côtés ? C'est un pentagone ! Entraîne-toi à les reconnaître en comptant leurs côtés et leurs sommets."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant nommer les éléments d'un polygone : les côtés sont les segments, les sommets sont les pointes. Dans la prochaine leçon, nous apprendrons à donner un nom précis aux triangles et aux quadrilatères."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de côtés et de sommets a le triangle ci-dessus ?",
+              "answer": "3 côtés et 3 sommets",
+              "hint": "Compte les segments qui forment le contour, puis les pointes où ils se rejoignent.",
+              "explanation": "Le triangle est un polygone à $3$ côtés et $3$ sommets. Chaque côté est un segment, chaque sommet est l'intersection de deux côtés."
+            },
+            {
+              "question": "Le carré a 4 côtés. Combien de sommets a-t-il ?",
+              "answer": "4 sommets",
+              "hint": "Chaque coin du carré est un sommet. Il y a autant de sommets que de côtés dans un polygone simple.",
+              "explanation": "Un carré est un quadrilatère : il a $4$ côtés et $4$ sommets. Les côtés sont de même longueur et les angles sont droits."
+            },
+            {
+              "question": "Un panneau de signalisation a la forme d'un octogone. Combien de côtés et de sommets possède-t-il ?",
+              "answer": "8 côtés et 8 sommets",
+              "hint": "Le préfixe « octo- » veut dire 8. Un octogone a 8 côtés et donc 8 sommets.",
+              "explanation": "Un octogone est un polygone à $8$ côtés et $8$ sommets. C'est la forme des panneaux « stop » en France."
+            }
+          ]
+        },
+        {
+          "title": "Nommer triangles et quadrilatères.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer triangles et quadrilatères"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà le triangle et le carré. Mais savais-tu qu'il existe plusieurs sortes de triangles et de quadrilatères ? Aujourd'hui, nous allons apprendre à les nommer précisément en observant leurs côtés et leurs angles."
+            },
+            {
+              "type": "definition",
+              "term": "Triangle",
+              "definition": "Polygone à $3$ côtés et $3$ sommets.",
+              "example": "Triangle équilatéral, isocèle, rectangle."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Polygone à $4$ côtés et $4$ sommets.",
+              "example": "Carré, rectangle, losange, parallélogramme, trapèze."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle rectangle : un angle droit marqué par un petit carré",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant les quadrilatères. Le carré est un quadrilatère particulier : ses $4$ côtés ont la même longueur et ses $4$ angles sont droits. Le rectangle a aussi $4$ angles droits, mais ses côtés deux à deux sont égaux. Le losange a $4$ côtés égaux, mais ses angles ne sont pas nécessairement droits. Essaie de les différencier en observant les figures ci-dessous."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Comparaison des longueurs : carré (tous égaux) et rectangle (deux longueurs différentes)",
+              "parts": [
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 4,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien retenir les noms, imagine une famille : le triangle est le plus petit polygone (3 côtés), le quadrilatère a 4 côtés. Parmi les quadrilatères, le carré est le « champion » : côtés égaux et angles droits. Le rectangle est son cousin (angles droits, côtés inégaux deux à deux). Le losange a les côtés égaux comme le carré, mais ses angles sont penchés. À toi de jouer pour les reconnaître !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant distinguer un triangle d'un quadrilatère, et nommer les principaux quadrilatères. Dans la prochaine leçon, nous allons trier ces figures selon leurs propriétés : angles droits, côtés égaux, parallélisme."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le nom du polygone à 3 côtés et 3 sommets ?",
+              "answer": "Triangle",
+              "hint": "Le préfixe « tri- » signifie 3.",
+              "explanation": "Un triangle est un polygone à $3$ côtés et $3$ sommets. C'est le polygone qui a le moins de côtés."
+            },
+            {
+              "question": "Parmi ces quadrilatères, lequel a 4 côtés de même longueur et 4 angles droits ?",
+              "answer": "Carré",
+              "hint": "C'est le quadrilatère le plus régulier : tous les côtés égaux, tous les angles droits.",
+              "explanation": "Le carré est un quadrilatère particulier : $4$ côtés de même longueur et $4$ angles droits. Le rectangle a aussi $4$ angles droits mais ses côtés ne sont pas tous égaux."
+            },
+            {
+              "question": "Classe ces figures : triangle, carré, rectangle, losange. Combien y a-t-il de triangles ? Combien de quadrilatères ?",
+              "answer": "1 triangle et 3 quadrilatères",
+              "hint": "Compte les côtés de chaque figure : 3 côtés = triangle, 4 côtés = quadrilatère.",
+              "explanation": "Le triangle a $3$ côtés. Le carré, le rectangle et le losange ont chacun $4$ côtés, ce sont donc des quadrilatères."
+            }
+          ]
+        },
+        {
+          "title": "Trier selon propriétés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trier selon propriétés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais nommer les polygones, nous allons les ranger dans des groupes selon leurs caractéristiques. C'est comme trier des bonbons : on met ensemble ceux qui ont la même couleur, la même forme ou le même goût. Ici, nous allons trier selon le nombre de côtés, la présence d'angles droits ou l'égalité des côtés."
+            },
+            {
+              "type": "definition",
+              "term": "Angle droit",
+              "definition": "Un angle qui mesure $90°$. On le marque souvent par un petit carré dans le coin.",
+              "example": "Les coins d'une feuille de papier sont des angles droits."
+            },
+            {
+              "type": "definition",
+              "term": "Polygone régulier",
+              "definition": "Un polygone qui a tous ses côtés de même longueur et tous ses angles de même mesure.",
+              "example": "Le triangle équilatéral et le carré sont des polygones réguliers."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de figures ayant un angle droit parmi 6 polygones",
+              "bars": [
+                {
+                  "label": "Avec angle droit",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Sans angle droit",
+                  "value": 2,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : sur $6$ polygones, $4$ ont au moins un angle droit (carré, rectangle, triangle rectangle, trapèze rectangle) et $2$ n'en ont pas (losange, parallélogramme). Essaie maintenant de trier toi-même une série de figures en cochant celles qui possèdent un angle droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre critère de tri : les côtés égaux. Un polygone régulier a tous ses côtés égaux et tous ses angles égaux. Parmi les quadrilatères, seul le carré est régulier. Le losange a les côtés égaux mais pas les angles. Le rectangle a les angles égaux (droits) mais pas les côtés. Observe bien ces différences pour bien les classer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as terminé ce cours sur les polygones. Tu sais maintenant repérer les côtés et les sommets, nommer les triangles et les quadrilatères, et les trier selon leurs propriétés. Continue à observer les formes autour de toi : la géométrie est partout !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les côtés et les sommets d'un polygone.",
+                "Je sais nommer un triangle, un carré, un rectangle et un losange.",
+                "Je sais reconnaître un angle droit dans une figure.",
+                "Je sais trier des polygones selon le nombre de côtés, la présence d'angles droits ou l'égalité des côtés."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures : triangle rectangle, carré, losange, pentagone, hexagone, lesquelles ont au moins un angle droit ?",
+              "answer": "Triangle rectangle et carré",
+              "hint": "Un angle droit est un angle de $90°$. Le carré en a 4, le triangle rectangle en a 1.",
+              "explanation": "Le triangle rectangle a un angle droit. Le carré a quatre angles droits. Le losange n'a pas d'angle droit (sauf cas particulier). Le pentagone et l'hexagone réguliers n'ont pas d'angle droit."
+            },
+            {
+              "question": "Coche les polygones qui ont tous leurs côtés de même longueur : triangle équilatéral, rectangle, losange, carré, trapèze.",
+              "answer": "Triangle équilatéral, losange, carré",
+              "hint": "Le rectangle a deux paires de côtés égaux, mais pas tous les quatre. Le trapèze n'a pas de côtés nécessairement égaux.",
+              "explanation": "Le triangle équilatéral a $3$ côtés égaux. Le losange a $4$ côtés égaux. Le carré a $4$ côtés égaux. Ce sont des polygones dont tous les côtés ont la même longueur."
+            },
+            {
+              "question": "Classe ces polygones dans le tableau : triangle, carré, rectangle, losange, pentagone, hexagone. Critères : nombre de côtés (3, 4, 5, 6).",
+              "answer": "3 côtés : triangle. 4 côtés : carré, rectangle, losange. 5 côtés : pentagone. 6 côtés : hexagone.",
+              "hint": "Compte les côtés de chaque figure et range-les dans la bonne colonne.",
+              "explanation": "Le triangle a $3$ côtés. Les quadrilatères (carré, rectangle, losange) en ont $4$. Le pentagone en a $5$, l'hexagone en a $6$. C'est le tri le plus simple : selon le nombre de côtés."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

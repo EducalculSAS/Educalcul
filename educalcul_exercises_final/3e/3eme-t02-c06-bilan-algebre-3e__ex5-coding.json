@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Développer, factoriser, résoudre",
+  "title": "Approfondissement : Développer, factoriser, résoudre",
+  "blocks": [
+    {
+      "title": "Étendre une expression",
+      "content": "Écrire un algorithme (ou une suite d'instructions style Python) qui prend en entrée une expression de la forme $(x+a)(x+b)$ et affiche son développement sous la forme $x^2 + (a+b)x + ab$. Appliquer l'algorithme à $a=3$ et $b=-2$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a et b.\\n2. Calculer somme = a + b.\\n3. Calculer produit = a * b.\\n4. Afficher \"x^2 + \" + somme + \"x + \" + produit.\\nPour a=3, b=-2 : somme = 1, produit = -6, développement : $x^2 + x - 6$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la distributivité : $(x+a)(x+b)=x^2+(a+b)x+ab$. En remplaçant a=3 et b=-2 on obtient $x^2 + (3-2)x + (3*(-2)) = x^2 + x -6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factoriser un trinôme",
+      "content": "Écrire un algorithme qui factorise un trinôme de la forme $x^2 + sx + p$ en cherchant deux nombres dont la somme vaut $s$ et le produit vaut $p$. Appliquer l'algorithme à $s=5$ et $p=6$.",
+      "correctAnswer": "Algorithme :\\n1. Lire s et p.\\n2. Pour chaque entier d de -|p| à |p| :\\n   si d != 0 et p % d == 0 :\\n       e = p // d\\n       si d + e == s :\\n           afficher (x + d)(x + e)\\n           arrêter.\\nPour s=5, p=6 : les diviseurs de 6 sont 1,2,3,6. Le couple (2,3) donne somme 5. Factorisation : $(x+2)(x+3)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On cherche deux nombres dont le produit est 6 et la somme 5. Les nombres 2 et 3 conviennent, donc $x^2+5x+6 = (x+2)(x+3)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résoudre une équation du second degré",
+      "content": "Écrire un algorithme qui résout une équation de la forme $ax^2+bx+c=0$ en calculant le discriminant $\\Delta = b^2-4ac$ et en affichant les solutions réelles s'il en existe. Appliquer l'algorithme à $a=2$, $b=-8$, $c=6$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c.\\n2. Calculer delta = b*b - 4*a*c.\\n3. Si delta < 0 : afficher \"Pas de solution réelle\".\\n4. Sinon si delta == 0 : x = -b/(2*a); afficher x.\\n5. Sinon : x1 = (-b - sqrt(delta))/(2*a); x2 = (-b + sqrt(delta))/(2*a); afficher x1, x2.\\nPour a=2, b=-8, c=6 : delta = 64 - 48 = 16 > 0. x1 = (8 - 4)/4 = 1, x2 = (8 + 4)/4 = 3. Solutions : $x=1$ et $x=3$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le discriminant est $\\Delta = (-8)^2 - 4*2*6 = 64 - 48 = 16$. Comme $\\Delta > 0$, deux solutions réelles : $x = \\frac{8 \\pm \\sqrt{16}}{4} = \\frac{8 \\pm 4}{4}$, donc $x=1$ et $x=3$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

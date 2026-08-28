@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 345,
+  "_course_code": "6eme-t03-c04-calcul-mental-et-ordre-de-grandeur",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Approfondissement : Stratégies",
+  "title": "Stratégies de calcul mental et ordre de grandeur",
+  "blocks": [
+    {
+      "title": "Estimation d'un produit par arrondi",
+      "content": "Écris un algorithme (ou une fonction en pseudo‑code) qui prend deux nombres entiers $a$ et $b$, les arrondit chacun à la dizaine la plus proche, puis renvoie le produit de ces arrondis comme estimation du produit $a \\times b$.",
+      "correctAnswer": "Algorithme EstimationProduit(a, b) :\\n    a_arrondi ← ArrondirÀLaDizaine(a)\\n    b_arrondi ← ArrondirÀLaDizaine(b)\\n    retourner a_arrondi × b_arrondi\\n\\nFonction ArrondirÀLaDizaine(x) :\\n    retour ((x + 5) // 10) × 10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On ajoute 5 pour gérer l'arrondi au plus proche, on effectue une division entière par 10 puis on multiplie par 10. Le produit des deux arrondis donne une estimation rapide du produit exact.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre de grandeur d'un nombre",
+      "content": "Propose un algorithme qui détermine l'ordre de grandeur (la puissance de 10) d'un nombre entier positif $n$. Par exemple, pour $n = 437$, l'algorithme doit renvoyer $10^2$ (car $100 \\le 437 < 1000$).",
+      "correctAnswer": "Algorithme OrdreDeGrandeur(n) :\\n    puissance ← 0\\n    tant que n ≥ 10 faire\\n        n ← n // 10\\n        puissance ← puissance + 1\\n    fin tant que\\n    retourner 10^puissance",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise successivement par 10 (division entière) jusqu'à obtenir un nombre strictement inférieur à 10. Le nombre de divisions effectuées correspond à l'exposant de la puissance de 10 encadrant le nombre initial.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Stratégie de regroupement pour une addition mentale",
+      "content": "Écris un algorithme qui, étant donné une liste de nombres entiers (par exemple [23, 47, 12, 38]), regroupe les nombres par paires dont la somme fait un multiple de 10 afin de faciliter le calcul mental, puis retourne la somme totale.",
+      "correctAnswer": "Algorithme SommeParRegroupement(liste) :\\n    total ← 0\\n    i ← 0\\n    tant que i < longueur(liste) faire\\n        si i+1 < longueur(liste) et (liste[i] + liste[i+1]) mod 10 = 0 alors\\n            total ← total + liste[i] + liste[i+1]\\n            i ← i + 2\\n        sinon\\n            total ← total + liste[i]\\n            i ← i + 1\\n        fin si\\n    fin tant que\\n    retourner total",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt la liste. Lorsque deux nombres consécutifs donnent une somme multiple de 10, on les additionne ensemble (ce qui est facile mentalement) et on avance de deux positions. Sinon, on ajoute le nombre seul. La somme finale est identique à la somme classique mais le regroupement facilite le calcul mental.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "_status": "done",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Bilan - Stats-probas 3e",
+  "title": "Bilan Statistiques et Probabilités - 3e",
+  "questions": [
+    {
+      "text": "On représente par une boîte à moustaches les notes sur 40 obtenues par une classe. Les valeurs caractéristiques sont : minimum 10, premier quartile 15, médiane 20, troisième quartile 30, maximum 40. Quelle est l'étendue interquartile de cette série ?",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "correctAnswer": "15",
+      "explanation": "L'étendue interquartile (EI) est la différence entre le troisième quartile (Q3) et le premier quartile (Q1). Ici Q3 = 30 et Q1 = 15, donc EI = 30 - 15 = 15. L'option 5 correspond à Q1 - Min, l'option 10 à Med - Q1, l'option 20 à Max - Q3.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Boîte à moustaches des notes sur 40",
+        "min": 10,
+        "q1": 15,
+        "median": 20,
+        "q3": 30,
+        "max": 40
+      }
+    },
+    {
+      "text": "Un élève a obtenu les notes suivantes avec leurs coefficients : 12 (coefficient 2), 15 (coefficient 3), 10 (coefficient 1), 14 (coefficient 2). Quelle est sa moyenne pondérée ?",
+      "options": [
+        "12,75",
+        "13,375",
+        "13,5",
+        "14"
+      ],
+      "correctAnswer": "13,375",
+      "explanation": "La moyenne pondérée est la somme des produits (note × coefficient) divisée par la somme des coefficients. Somme des produits = (12×2) + (15×3) + (10×1) + (14×2) = 24 + 45 + 10 + 28 = 107. Somme des coefficients = 2 + 3 + 1 + 2 = 8. Moyenne = 107 / 8 = 13,375. L'option 12,75 est la moyenne simple (somme des notes / 4), l'option 13,5 est une approximation, l'option 14 est la note maximale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un collège, on interroge 100 élèves sur leur pratique du sport. Le tableau de contingence ci-dessous résulte de l'enquête. On choisit un élève au hasard. Quelle est la probabilité que cet élève soit une fille sachant qu'il pratique un sport ?",
+      "options": [
+        "0,2",
+        "0,3",
+        "0,4",
+        "0,5"
+      ],
+      "correctAnswer": "0,4",
+      "explanation": "Il s'agit d'une probabilité conditionnelle : P(Fille | Sport) = Effectif (Fille et Sport) / Effectif (Sport). D'après le tableau, 20 filles font du sport sur 50 élèves qui font du sport au total. La probabilité est donc 20/50 = 0,4. L'option 0,2 correspond à 20/100 (probabilité conjointe), l'option 0,3 à 30/100, l'option 0,5 à 50/100 (proportion de sportifs).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Garçons",
+          "Filles",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Sport",
+            "30",
+            "20",
+            "50"
+          ],
+          [
+            "Pas de sport",
+            "20",
+            "30",
+            "50"
+          ],
+          [
+            "Total",
+            "50",
+            "50",
+            "100"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On compare deux séries statistiques A et B. La série A a une moyenne de 15 et une étendue de 10. La série B a une moyenne de 15 et une étendue de 20. Laquelle des affirmations suivantes est correcte ?",
+      "options": [
+        "La série A est plus dispersée que la série B",
+        "La série B est plus dispersée que la série A",
+        "Les deux séries ont la même dispersion",
+        "On ne peut pas comparer les dispersions"
+      ],
+      "correctAnswer": "La série B est plus dispersée que la série A",
+      "explanation": "L'étendue (différence entre le maximum et le minimum) est un indicateur de dispersion. Comme les deux séries ont la même moyenne (15), on compare directement les étendues. L'étendue de B (20) est supérieure à celle de A (10), donc les valeurs de B sont plus écartées autour de la moyenne : B est plus dispersée. Les autres options confondent étendue et position ou nient la comparabilité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient 4 boules rouges et 6 boules vertes. On tire une boule au hasard, on note sa couleur, on la remet dans l'urne. On effectue un second tirage dans les mêmes conditions. Quelle est la probabilité d'obtenir deux boules de couleurs différentes ?",
+      "options": [
+        "0,24",
+        "0,48",
+        "0,52",
+        "0,60"
+      ],
+      "correctAnswer": "0,48",
+      "explanation": "Les tirages sont indépendants (avec remise). P(Rouge) = 4/10 = 0,4 ; P(Vert) = 6/10 = 0,6. Les cas favorables pour des couleurs différentes sont : (Rouge puis Vert) ou (Vert puis Rouge). P(Rouge, Vert) = 0,4 × 0,6 = 0,24. P(Vert, Rouge) = 0,6 × 0,4 = 0,24. Probabilité totale = 0,24 + 0,24 = 0,48. L'option 0,24 ne compte qu'un seul ordre, l'option 0,52 est la probabilité de couleurs identiques (1 - 0,48), l'option 0,60 est P(Vert).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

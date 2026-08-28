@@ -1,0 +1,428 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.980702+00:00",
+  "id": 159,
+  "code": "ce2-t02-c08",
+  "title": "Bilan - Fractions et décimaux CE2",
+  "description": "Cours structuré Educalcul : Bilan - Fractions et décimaux CE2.",
+  "subject": "Fractions et nombres décimaux en contexte",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Fractions et nombres décimaux en contexte",
+    "titre_du_cours": "Bilan - Fractions et décimaux CE2",
+    "objectif_global": "Bilan - Fractions et décimaux CE2",
+    "mini_lecons_imposees": [
+      "Lire, représenter, comparer.",
+      "Relier fractions décimales et virgule.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions et nombres décimaux en contexte",
+      "lessons": [
+        {
+          "title": "Lire, représenter, comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Aujourd'hui, nous allons revoir comment lire une fraction, la montrer et la comparer. Une fraction, c'est simplement une façon de dire \"combien de parts on a prises sur un total découpé en parts égales\". Le chiffre du haut s'appelle le numérateur, celui du bas le dénominateur. Par exemple, dans $\\frac{3}{4}$, le numérateur $3$ nous dit qu'on a pris trois parts, et le dénominateur $4$ que le tout a été coupé en quatre parts identiques."
+            },
+            {
+              "type": "definition",
+              "term": "fraction",
+              "definition": "Une fraction représente une quantité obtenue en partageant un tout en parties égales ; elle s'écrit avec un numérateur au-dessus d'une barre et un dénominateur en dessous.",
+              "example": "$\\frac{3}{4}$ se lit \"trois quarts\"."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons la barre ci‑dessous : elle est divisée en quatre parties égales et trois sont colorées. Cela correspond exactement à la fraction $\\frac{3}{4}$. Essaie de la lire à voix haute : \"trois quarts\"."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Représentation de $\\frac{3}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une fraction, voyons comment la placer sur une droite graduée. La droite va de $0$ à $1$ ; chaque fraction trouve sa place entre ces deux nombres selon sa taille."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter sur une droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour placer $\\frac{1}{2}$, on coupe le segment $[0;1]$ en deux parties égales. Le point au milieu correspond à un demi. Si on veut placer $\\frac{3}{4}$, on divise en quatre parts et on compte trois traits à partir de zéro. Essaie d'imaginer la droite dans ta tête avant de regarder le dessin."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de $\\frac{1}{2}$ et $\\frac{3}{4}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, comparons deux fractions. Quand elles ont le même dénominateur, il suffit de regarder les numérateurs : le plus grand numérateur donne la plus grande fraction. Si les dénominateurs diffèrent, on peut les ramener au même dénominateur ou utiliser un dessin pour voir laquelle est plus grande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $\\frac{2}{5}$ et $\\frac{3}{5}$. Elles partagent le même dénominateur $5$, donc on compare $2$ et $3$. Évidemment, $3$ est plus grand, donc $\\frac{3}{5} > \\frac{2}{5}$. Le graphique à barres ci‑dessous le montre clairement : la barre des trois cinquièmes est plus longue."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de $\\frac{2}{5}$ et $\\frac{3}{5}$",
+              "bars": [
+                {
+                  "label": "2/5",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3/5",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la barre ci‑dessus, quelle fraction est colorée ?",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Compte le nombre de parties colorées et le nombre total de parties.",
+              "explanation": "La barre est divisée en $4$ parties égales, dont $3$ sont colorées, donc la fraction est $\\frac{3}{4}$."
+            },
+            {
+              "question": "Place la fraction $\\frac{1}{2}$ sur la droite graduée.",
+              "answer": "Au milieu entre $0$ et $1$.",
+              "hint": "Divise le segment $[0;1]$ en deux parties égales.",
+              "explanation": "Le point qui coupe le segment en deux parties égales correspond à $\\frac{1}{2}$."
+            },
+            {
+              "question": "Compare $\\frac{2}{5}$ et $\\frac{3}{5}$. Laquelle est la plus grande ?",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Les dénominateurs sont identiques, compare les numérateurs.",
+              "explanation": "Comme les deux fractions ont le même dénominateur $5$, celle qui a le numérateur le plus grand ($3$) est la plus grande."
+            }
+          ]
+        },
+        {
+          "title": "Relier fractions décimales et virgule.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est‑ce qu'une fraction décimale ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction décimale est une fraction dont le dénominateur est une puissance de $10$ : $10$, $100$, $1000$, etc. Cela veut dire qu'on a découpé le tout en $10$, $100$ ou $1000$ parts égales. Comme ces dénominateurs sont commodes, on peut les écrire avec une virgule, ce qui donne un nombre décimal."
+            },
+            {
+              "type": "definition",
+              "term": "fraction décimale",
+              "definition": "Fraction dont le dénominateur est $10$, $100$, $1000$ … ; elle se convertit directement en écriture décimale.",
+              "example": "$\\frac{7}{10} = 0,7$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la fraction $\\frac{7}{10}$. Le dénominateur $10$ indique des dixièmes. En écriture décimale, on place le chiffre $7$ juste après la virgule : $0,7$. C'est comme dire \"sept dixièmes\"."
+            },
+            {
+              "type": "fraction",
+              "numerator": 7,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "Fraction décimale $\\frac{7}{10}$"
+            },
+            {
+              "type": "display_math",
+              "latex": "0,7"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, intéressons‑nous aux dixièmes et aux centièmes sur une droite. Chaque graduation entre $0$ et $1$ peut être subdivisée en dix petits traits pour les dixièmes, et chaque dixième peut encore être divisé en dix pour obtenir les centièmes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les dixièmes et les centièmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite ci‑dessous, le point $0,1$ correspond à un dixième, le point $0,01$ à un centième. Essaie de repérer $0,25$ : c'est deux dixièmes et cinq centièmes, donc un peu après $0,2$ mais avant $0,3$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Repérage de $0,1$, $0,01$ et $0,25$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.1,
+                  "label": "0,1"
+                },
+                {
+                  "value": 0.01,
+                  "label": "0,01"
+                },
+                {
+                  "value": 0.25,
+                  "label": "0,25"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer d'une fraction décimale à l'écriture à virgule, on suit une méthode simple en trois étapes. D'abord, on regarde le nombre de zéros dans le dénominateur ; ensuite, on écrit le numérateur en ajoutant des zéros à gauche si nécessaire ; enfin, on place la virgule en partant de la droite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Passer de la fraction à la virgule"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les zéros",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $\\frac{56}{100}$, le dénominateur $100$ a deux zéros, donc on aura deux chiffres après la virgule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $56$. Comme il y a déjà deux chiffres, on n'ajoute pas de zéro."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On part de la droite du nombre $56$ et on compte deux positions vers la gauche : on obtient $0,56$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la fraction décimale $\\frac{7}{10}$ en notation décimale.",
+              "answer": "$0,7$",
+              "hint": "Le dénominateur $10$ a un zéro, donc un chiffre après la virgule.",
+              "explanation": "Un dixième s'écrit $0,1$ ; sept dixièmes donnent $0,7$."
+            },
+            {
+              "question": "Sur la droite, repère le nombre $0,25$.",
+              "answer": "Entre $0,2$ et $0,3$, plus près de $0,2$.",
+              "hint": "Deux dixièmes font $0,2$ ; ajoute cinq centièmes.",
+              "explanation": "$0,25 = 0,2 + 0,05$, donc le point se situe après $0,2$ et avant $0,3$."
+            },
+            {
+              "question": "Transforme $0,56$ en fraction décimale.",
+              "answer": "$\\frac{56}{100}$",
+              "hint": "Deux chiffres après la virgule → dénominateur $100$.",
+              "explanation": "Les deux chiffres après la virgule indiquent des centièmes, donc $56$ centièmes = $\\frac{56}{100}$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : lire et représenter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur la lecture d'une fraction. Imagine un gâteau coupé en huit parts égales. Si tu en prends cinq, tu as $\\frac{5}{8}$ du gâteau. Le numérateur $5$ te dit combien de parts tu as, le dénominateur $8$ en combien le gâteau a été divisé."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Cinq parts sur huit",
+              "parts": [
+                {
+                  "label": "Parties prises",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Restantes",
+                  "value": 3,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au lien entre fraction décimale et virgule. Rappelle‑toi : $0,3$ se lit \"trois dixièmes\" et s'écrit $\\frac{3}{10}$. Sur une droite, le point $0,3$ se trouve exactement à trois dixièmes à partir de zéro."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : fraction décimale et virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le dessin ci‑dessous montre la position de $0,3$ entre $0$ et $1$. Essaie de visualiser la distance : c'est un peu moins d'un tiers du chemin."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $0,3$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.3,
+                  "label": "0,3"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, mélangeons les deux mondes : comparer un nombre décimal et une fraction. Prenons $0,45$ et $\\frac{4}{10}$. Convertis $\\frac{4}{10}$ en $0,4$. Maintenant, compare $0,45$ et $0,4$ : $0,45$ a cinq centièmes de plus, donc il est plus grand."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer un décimal et une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique à barres illustre la différence : la barre de $0,45$ dépasse celle de $0,4$. C'est une bonne habitude de transformer la fraction en décimal (ou l'inverse) avant de comparer."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de $0,45$ et $0,4$",
+              "bars": [
+                {
+                  "label": "0,45",
+                  "value": 45,
+                  "tone": "green"
+                },
+                {
+                  "label": "0,4",
+                  "value": 40,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une fraction comme $\\frac{5}{8}$.",
+                "Je sais placer une fraction sur une droite graduée.",
+                "Je sais transformer une fraction décimale en nombre à virgule.",
+                "Je sais comparer deux nombres décimaux ou une fraction et un décimal."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lis la fraction $\\frac{5}{8}$ et dis combien de parts sur $8$ sont prises.",
+              "answer": "Cinq parts sur huit.",
+              "hint": "Le numérateur indique le nombre de parts prises.",
+              "explanation": "Dans $\\frac{5}{8}$, le numérateur $5$ montre que cinq parts sont prises sur les huit parts totales."
+            },
+            {
+              "question": "Écris $0,3$ sous forme de fraction décimale.",
+              "answer": "$\\frac{3}{10}$",
+              "hint": "Un chiffre après la virgule → dénominateur $10$.",
+              "explanation": "$0,3$ signifie trois dixièmes, donc $\\frac{3}{10}$."
+            },
+            {
+              "question": "Compare $0,45$ et $\\frac{4}{10}$.",
+              "answer": "$0,45$ est plus grand.",
+              "hint": "Transforme $\\frac{4}{10}$ en $0,4$ puis compare.",
+              "explanation": "$\\frac{4}{10}=0,4$. Comme $0,45 > 0,4$, le nombre $0,45$ est le plus grand."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

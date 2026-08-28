@@ -1,0 +1,94 @@
+{
+  "_status": "done",
+  "_course_id": 155,
+  "_course_code": "ce2-t02-c04-fractions-equivalentes-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Produire une équivalence par partage",
+  "title": "Quiz : Produire une fraction équivalente par partage",
+  "questions": [
+    {
+      "text": "On partage chaque partie d'une fraction $1/2$ en $2$ parts égales. Quelle est la nouvelle fraction obtenue ?",
+      "options": [
+        "$1/4$",
+        "$2/4$",
+        "$2/3$",
+        "$3/4$"
+      ],
+      "correctAnswer": "$2/4$",
+      "explanation": "Partager chaque demi en deux parts égales donne au total 4 parts (le dénominateur devient 4). Les 2 parts colorées représentent $2/4$. La fraction $1/4$ correspondrait à ne colorier qu'une seule des nouvelles parts. Les fractions $2/3$ et $3/4$ n'ont pas le même dénominateur que le résultat du partage.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Fraction de départ : 1/2"
+      }
+    },
+    {
+      "text": "Complète l'égalité pour obtenir une fraction équivalente à $1/3$ par partage : $1/3 = ... / 6$",
+      "options": [
+        "$1/6$",
+        "$2/6$",
+        "$3/6$",
+        "$4/6$"
+      ],
+      "correctAnswer": "$2/6$",
+      "explanation": "Pour passer du dénominateur 3 au dénominateur 6, on a multiplié par 2 (partage de chaque tiers en 2). Il faut faire la même chose au numérateur : $1 \\times 2 = 2$. La fraction équivalente est $2/6$. L'option $1/6$ oublie de multiplier le numérateur. Les options $3/6$ et $4/6$ correspondent à des multiplications par 3 et 4.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a une barre de chocolat divisée en $4$ parts égales. Il en mange $1$. Il coupe ensuite chaque part restante en $2$ petits morceaux. Quelle fraction de la barre entière représente un petit morceau ?",
+      "options": [
+        "$1/8$",
+        "$1/6$",
+        "$2/8$",
+        "$3/8$"
+      ],
+      "correctAnswer": "$1/8$",
+      "explanation": "La barre initiale a 4 parts. Chaque part est coupée en 2, ce qui fait $4 \\times 2 = 8$ morceaux au total (dénominateur 8). Un seul petit morceau correspond à $1/8$ de la barre. La fraction $2/8$ correspondrait à une part initiale non coupée (2 petits morceaux).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Barre de chocolat en 4 parts"
+      }
+    },
+    {
+      "text": "Parmi ces fractions, laquelle est équivalente à $2/5$ obtenue par un partage (multiplication des termes par le même nombre) ?",
+      "options": [
+        "$3/10$",
+        "$4/10$",
+        "$4/15$",
+        "$6/10$"
+      ],
+      "correctAnswer": "$4/10$",
+      "explanation": "Pour obtenir une fraction équivalente par partage, on multiplie le numérateur et le dénominateur par le même entier. $2/5 = (2\\times2)/(5\\times2) = 4/10$. L'option $6/10$ correspond à une multiplication par 3 au numérateur mais par 2 au dénominateur (erreur). $3/10$ et $4/15$ ne respectent pas la règle de multiplication par le même nombre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On partage chaque partie de la fraction $3/4$ en $3$ parts égales. Quelle est la fraction équivalente obtenue ?",
+      "options": [
+        "$3/12$",
+        "$6/12$",
+        "$9/12$",
+        "$9/7$"
+      ],
+      "correctAnswer": "$9/12$",
+      "explanation": "Partager chaque quart en 3 parts donne un nouveau dénominateur de $4 \\times 3 = 12$. Les 3 parts initiales deviennent chacune 3 parts, soit $3 \\times 3 = 9$ parts colorées. La nouvelle fraction est $9/12$. L'option $3/12$ oublie de multiplier le numérateur. $6/12$ correspond à un partage en 2 seulement. $9/7$ n'a pas de sens (addition des dénominateurs).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Fraction 3/4 avant partage"
+      }
+    }
+  ]
+}

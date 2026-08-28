@@ -1,0 +1,268 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.830655+00:00",
+  "id": 430,
+  "code": "4eme-t03-c01",
+  "title": "Pourcentages et évolutions",
+  "description": "Cours structuré Educalcul : Pourcentages et évolutions.",
+  "subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+    "titre_du_cours": "Pourcentages et évolutions",
+    "objectif_global": "Pourcentages et évolutions",
+    "mini_lecons_imposees": [
+      "Taux.",
+      "Coefficient multiplicateur simple.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+      "lessons": [
+        {
+          "title": "Taux.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es au supermarché avec tes parents. Tu vois deux paquets de gâteaux différents : un petit paquet de $200\\,g$ qui coûte $2\\,\\text{euro}$ et un grand paquet de $500\\,g$ qui coûte $4\\,\\text{euro}$. À première vue, on pourrait penser que le plus grand est forcément moins cher, mais comment en être certain ? C'est là qu'intervient la notion de taux. Le taux nous permet de ramener une situation à une unité commune pour pouvoir comparer des choses qui n'ont pas la même taille ou la même quantité. C'est un outil magique du quotidien : quand on parle de vitesse, de densité ou même de prix au kilo, on utilise sans le savoir des taux. Cela nous permet de transformer une information brute en une information comparable, nous aidant ainsi à prendre les meilleures décisions, comme choisir le paquet de gâteaux le plus économique."
+            },
+            {
+              "type": "paragraph",
+              "content": "En mathématiques, un taux est un quotient qui permet de comparer deux grandeurs différentes. Contrairement à un coefficient de proportionnalité classique qui compare souvent deux grandeurs de même nature, le taux lie deux unités distinctes, comme des kilomètres et des heures, ou des euros et des grammes. On le définit comme le rapport $\\frac{\\text{Valeur } 1}{\\text{Valeur } 2}$. Par exemple, si tu parcours $100\\,km$ en $2\\,h$, le taux est de $50\\,km/h$. Ce résultat nous indique quelle quantité de la première grandeur correspond à une seule unité de la seconde. C'est une notion fondamentale pour comprendre comment évoluent les choses dans le monde réel. Plus précisément, le taux nous donne une mesure de l'intensité d'un phénomène par rapport à une référence fixe, ce qui rend l'analyse objective et universelle, peu importe l'échelle de départ."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Taux} = \\frac{\\text{Valeur}}{\\text{Référence}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer un taux sans se tromper, je te propose de suivre ces trois étapes simples. Tout d'abord, identifie clairement les deux grandeurs que tu souhaites comparer et note leurs valeurs avec leurs unités respectives. Par exemple, si tu calcules une vitesse, note la distance en $km$ et le temps en $h$. Ensuite, effectue l'opération de division en plaçant la grandeur que tu veux exprimer par unité en haut de la fraction (le numérateur) et la grandeur de référence en bas (le dénominateur). Enfin, interprète ton résultat en créant une nouvelle unité composée. Si tu as divisé des $km$ par des $h$, ton résultat s'exprimera en $km/h$. Vérifie toujours que ton résultat a un sens concret : une vitesse de $5000\\,km/h$ pour un vélo serait un signe que tu as probablement inversé les nombres lors de ta division."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : Julie a lu $45$ pages d'un livre en $3$ heures. Nous voulons connaître son taux de lecture, c'est-à-dire le nombre de pages lues par heure. Étape $1$ : Les grandeurs sont $45$ pages et $3\\,h$. Étape $2$ : On divise le nombre de pages par le nombre d'heures, soit $\\frac{45}{3}$. Étape $3$ : Le calcul nous donne $15$. L'unité devient donc des pages par heure. Le résultat est $15\\,\\text{pages}/h$. Cela signifie que, en moyenne, Julie lit $15$ pages chaque heure. C'est un exemple simple car le nombre tombe juste, mais la méthode reste la même même si le résultat était un nombre à virgule, comme $15,2\\,\\text{pages}/h$. On voit ici que le taux simplifie l'information : on passe de deux chiffres ($45$ et $3$) à un seul chiffre représentatif ($15$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Allons un peu plus loin avec un exemple de densité. Une petite ville compte $12\\,000$ habitants et s'étend sur une surface de $30\\,km^2$. On cherche la densité de population, qui est le taux d'habitants par kilomètre carré. Ici, nous divisons le nombre total d'habitants par la surface totale : $\\frac{12\\,000}{30}$. Pour faciliter le calcul, on peut simplifier par $10$, ce qui nous donne $\\frac{1\\,200}{3}$. Le résultat est $400$. L'unité finale est donc des habitants par kilomètre carré, noté $400\\,\\text{hab}/km^2$. Ce taux nous permet de dire que, si la population était répartie de manière parfaitement uniforme, on trouverait exactement $400$ personnes sur chaque carré de $1\\,km$ de côté. C'est beaucoup plus parlant que de simplement donner le nombre d'habitants, car cela nous indique si la ville est très serrée ou plutôt aérée."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est l'inversion du numérateur et du dénominateur. Si tu calcules $\\frac{3\\,h}{45\\,pages}$ au lieu de $\\frac{45\\,pages}{3\\,h}$, tu trouveras $0,066...$ heures par page. Bien que mathématiquement correct, ce résultat n'est pas utile pour répondre à la question Combien de pages par heure ?. Il faut toujours se demander : Qu'est-ce que je veux exprimer par unité ?. Si c'est le nombre de pages, alors les pages vont en haut. Un autre piège est d'oublier les unités. Un nombre seul comme $15$ ne signifie rien en mathématiques appliquées. C'est l'unité $\\text{pages}/h$ qui donne tout son sens au taux. Enfin, fais attention aux unités de départ : si on te donne une distance en $km$ et un temps en minutes, mais qu'on demande un taux en $km/h$, tu dois d'abord convertir les minutes en heures avant de faire ta division."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un cycliste parcourt $54\\,km$ en $3\\,h$. Quel est son taux de vitesse moyen en $km/h$ ?",
+              "answer": "18\\,km/h",
+              "hint": "Divise la distance totale par le temps total.",
+              "explanation": "On calcule le quotient $\\frac{54}{3} = 18$. L'unité est le $km/h$. Le cycliste roule donc à $18\\,km/h$."
+            },
+            {
+              "question": "Un jardinier plante $120$ fleurs sur une surface de $15\\,m^2$. Quelle est la densité de fleurs par $m^2$ ?",
+              "answer": "8\\,fleurs/m^2",
+              "hint": "Divise le nombre de fleurs par la surface.",
+              "explanation": "Le calcul est $\\frac{120}{15} = 8$. Il y a donc $8$ fleurs pour chaque mètre carré."
+            },
+            {
+              "question": "Un sachet de $250\\,g$ de bonbons coûte $3,\\,50\\,\\text{euro}$. Quel est le prix pour $1\\,g$ de bonbon ?",
+              "answer": "0,014\\,\\text{euro}/g",
+              "hint": "Divise le prix total par la masse totale.",
+              "explanation": "On effectue $\\frac{3,50}{250} = 0,014$. Le prix est donc de $0,014\\,\\text{euro}$ par gramme."
+            }
+          ]
+        },
+        {
+          "title": "Coefficient multiplicateur simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as sûrement déjà vu ces affiches dans les magasins : Moins $30\\%$ sur tout le rayon chaussures ! Habituellement, on a tendance à calculer d'abord combien représentent ces $30\\%$ du prix, puis on soustrait ce montant au prix original. C'est une méthode qui marche, mais elle est un peu longue, n'est-ce pas ? Imagine maintenant que tu puisses trouver le nouveau prix en une seule multiplication. C'est là qu'intervient le coefficient multiplicateur. C'est comme un raccourci mathématique. Au lieu de faire deux étapes (calcul du pourcentage puis soustraction ou addition), on utilise un nombre unique qui fait tout le travail en une seule fois. Que ce soit pour calculer une hausse de prix, une remise lors des soldes ou même la croissance d'une plante, le coefficient multiplicateur est l'outil le plus efficace pour gagner du temps et éviter les erreurs de calcul."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le coefficient multiplicateur, souvent noté $CM$, est le nombre par lequel on multiplie une valeur initiale pour obtenir une valeur finale après une évolution. Cette évolution peut être une augmentation ou une diminution, exprimée en pourcentage. Le principe repose sur le fait que la valeur initiale représente $100\\%$, soit le nombre $1$. Si on augmente un prix de $10\\%$, on aura donc $100\\% + 10\\% = 110\\%$ de la valeur de départ. En écriture décimale, $110\\%$ s'écrit $1,10$. C'est notre coefficient multiplicateur. À l'inverse, si on diminue un prix de $10\\%$, on aura $100\\% - 10\\% = 90\\%$ de la valeur initiale, ce qui correspond à un $CM$ de $0,90$. En résumé, le coefficient multiplicateur transforme un pourcentage d'évolution en un nombre utilisable directement dans une multiplication, simplifiant ainsi radicalement tous les calculs de variation."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{cases} \\text{Hausse} \\implies CM = 1 + \\frac{p}{100} \\ \\text{Baisse} \\implies CM = 1 - \\frac{p}{100} \\end{cases}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver et utiliser un coefficient multiplicateur, suis scrupuleusement ces étapes. Premièrement, identifie si l'évolution est une hausse ou une baisse et note le pourcentage $p$. Deuxièmement, transforme ce pourcentage en nombre décimal en le divisant par $100$, on obtient ainsi le taux $t = \\frac{p}{100}$. Troisièmement, calcule le $CM$ selon le cas : pour une augmentation, on fait $1 + t$, et pour une diminution, on fait $1 - t$. Enfin, pour trouver la valeur finale, multiplie simplement la valeur initiale par ce coefficient multiplicateur. Par exemple, si tu as un objet à $50\\,\\text{euro}$ avec une hausse de $20\\%$, ton $CM$ est $1 + 0,20 = 1,20$. Ton calcul final sera $50 \\times 1,20 = 60\\,\\text{euro}$. Cette méthode est systématique et fonctionne pour n'importe quel pourcentage, même les plus complexes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons qu'un jeu vidéo coûte $60\\,\\text{euro}$ et que son prix augmente de $15\\%$ à cause de la forte demande. Nous cherchons le nouveau prix. Étape $1$ : C'est une augmentation de $15\\%$. Étape $2$ : Le taux décimal est $\\frac{15}{100} = 0,15$. Étape $3$ : On calcule le $CM$. Comme c'est une hausse, on fait $1 + 0,15 = 1,15$. Étape $4$ : On multiplie le prix initial par le $CM$, soit $60 \\times 1,15$. Le résultat est $69\\,\\text{euro}$. On remarque que c'est beaucoup plus rapide que de calculer $15\\%$ de $60$ (qui fait $9\\,\\text{euro}$) pour ensuite l'ajouter à $60$. Ici, l'opération unique a permis d'aboutir directement au prix final. Le coefficient $1,15$ signifie littéralement que le nouveau prix représente $115\\%$ du prix d'origine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons maintenant une promotion. Un manteau est affiché à $120\\,\\text{euro}$, mais il est soldé avec une réduction de $40\\%$. Quel est le prix final ? Étape $1$ : C'est une diminution de $40\\%$. Étape $2$ : Le taux décimal est $\\frac{40}{100} = 0,40$. Étape $3$ : On calcule le $CM$. Comme c'est une baisse, on fait $1 - 0,40 = 0,60$. Étape $4$ : On multiplie le prix initial par le $CM$, soit $120 \\times 0,60$. Le résultat est $72\\,\\text{euro}$. Dans ce cas, le coefficient $0,60$ nous indique qu'après la réduction, le client ne paie plus que $60\\%$ du prix initial. C'est une manière très efficace de voir les soldes : au lieu de regarder ce qu'on retire, on regarde ce qu'il reste à payer. C'est l'avantage majeur du coefficient multiplicateur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus classique est d'oublier le chiffre $1$ dans le calcul du $CM$. Certains élèves multiplient directement la valeur initiale par le taux décimal (par exemple $120 \\times 0,40$ dans l'exemple du manteau). Mais attention : cela donne le montant de la réduction ( $48\\,\\text{euro}$ ), et non le prix final ! Pour obtenir le prix final, il faut impérativement multiplier par $(1 - t)$ ou $(1 + t)$. Un autre point de vigilance concerne les augmentations de moins de $10\\%$. Par exemple, pour une hausse de $5\\%$, le $CM$ est $1,05$ et non $1,5$. Le $1,5$ correspondrait à une hausse de $50\\%$. Je te conseille de toujours écrire le pourcentage sous forme de fraction sur $100$ pour éviter ces erreurs de virgule. Enfin, rappelle-toi qu'un $CM$ supérieur à $1$ indique toujours une hausse, et un $CM$ compris entre $0$ et $1$ indique toujours une baisse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un article coûte $40\\,\\text{euro}$. Son prix augmente de $10\\%$. Quel est le coefficient multiplicateur et le nouveau prix ?",
+              "answer": "CM = 1,1 ; Prix = 44\\,\\text{euro}",
+              "hint": "Calcule d'abord le CM avec 1 + 0,1.",
+              "explanation": "Le CM est $1 + \\frac{10}{100} = 1,1$. Le nouveau prix est $40 \\times 1,1 = 44\\,\\text{euro}$."
+            },
+            {
+              "question": "Une population de $2\\,000$ personnes diminue de $5\\%$. Quel est le coefficient multiplicateur et la nouvelle population ?",
+              "answer": "CM = 0,95 ; Population = 1900",
+              "hint": "Calcule le CM avec 1 - 0,05.",
+              "explanation": "Le CM est $1 - \\frac{5}{100} = 0,95$. La population finale est $2\\,000 \\times 0,95 = 1\\,900$."
+            },
+            {
+              "question": "Le prix d'un abonnement passe de $10\\,\\text{euro}$ à $12\\,\\text{euro}$. Quel est le coefficient multiplicateur de cette évolution ?",
+              "answer": "1,2",
+              "hint": "Divise la valeur finale par la valeur initiale.",
+              "explanation": "Le CM se trouve en divisant la valeur finale par l'initiale : $\\frac{12}{10} = 1,2$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu gères ton propre petit commerce de cartes à collectionner. Un mois, tu décides d'augmenter tes prix de $10\\%$ car tes cartes deviennent rares. Le mois suivant, pour attirer plus de clients, tu décides de faire une promotion et de baisser tes prix de $10\\%$. Tu pourrais penser logiquement que tu es revenu au prix de départ, n'est-ce pas ? Eh bien, c'est là que les mathématiques nous surprennent ! En réalité, tu ne reviens pas au point de départ. Pourquoi ? Parce que la deuxième variation s'applique sur un prix qui a déjà changé. C'est l'une des applications les plus importantes et les plus piégeuses des pourcentages. Dans cette dernière leçon, nous allons apprendre à jongler avec ces évolutions, à retrouver des pourcentages cachés et à comprendre comment plusieurs changements s'accumulent pour transformer une valeur initiale."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'application des pourcentages ne se limite pas à calculer un nouveau prix. Il faut savoir faire le chemin inverse : retrouver le taux d'évolution quand on connaît la valeur de départ et la valeur d'arrivée. Le taux d'évolution $t$ est le quotient $\\frac{\\text{Valeur Finale} - \\text{Valeur Initiale}}{\\text{Valeur Initiale}}$. Ce résultat, multiplié par $100$, nous donne le pourcentage d'évolution. Une notion encore plus puissante est celle des évolutions successives. Lorsqu'une valeur subit plusieurs changements l'un après l'autre, on ne peut pas simplement additionner les pourcentages. On doit multiplier les coefficients multiplicateurs correspondants. Le produit de ces coefficients nous donne un coefficient multiplicateur global. C'est ce principe qui explique pourquoi une hausse de $10\\%$ suivie d'une baisse de $10\\%$ ne ramène pas à $0\\%$ de variation, mais aboutit en fait à une légère baisse globale de $1\\%$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer la variation : $\\text{Valeur Finale} - \\text{Valeur Initiale}$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Diviser par la valeur de départ : $\\frac{\\text{Variation}}{\\text{Valeur Initiale}}$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplier par $100$ pour obtenir le pourcentage $\\%$"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour maîtriser ces applications, voici les deux méthodes clés. Premièrement, pour retrouver un taux d'évolution, calcule la différence entre la valeur finale et initiale, puis divise ce résultat par la valeur initiale. Multiplie enfin par $100$ pour avoir le pourcentage. Deuxièmement, pour gérer des évolutions successives, transforme chaque pourcentage en coefficient multiplicateur individuel. Par exemple, $+10\\%$ devient $1,10$ et $-20\\%$ devient $0,80$. Multiplie ensuite tous ces coefficients entre eux pour obtenir le $CM_{\\text{global}}$. Ce $CM_{\\text{global}}$ te permet de calculer la valeur finale en une seule étape, ou de retrouver le taux global en faisant $CM_{\\text{global}} - 1$. Cette approche évite l'erreur fatale d'additionner les pourcentages, ce qui est l'erreur la plus fréquente en 4e et même au lycée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un collectionneur a acheté une pièce rare $200\\,\\text{euro}$ et l'a revendue $250\\,\\text{euro}$. Quel est le taux d'évolution ? Étape $1$ : On calcule la différence, soit $250 - 200 = 50\\,\\text{euro}$. Étape $2$ : On divise cette différence par la valeur de départ, soit $\\frac{50}{200}$. Étape $3$ : Le calcul nous donne $0,25$. Étape $4$ : On multiplie par $100$ pour obtenir le pourcentage, soit $0,25 \\times 100 = 25\\%$. L'augmentation est donc de $25\\%$. On peut vérifier cela avec le coefficient multiplicateur : $200 \\times 1,25 = 250$, ce qui confirme notre résultat. C'est une méthode très utile pour calculer la rentabilité d'un investissement ou l'augmentation d'un salaire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des cartes : un prix augmente de $10\\%$ puis diminue de $10\\%$. Quel est l'effet global ? Étape $1$ : On trouve les $CM$ individuels. Pour $+10\\%$, $CM_1 = 1,10$. Pour $-10\\%$, $CM_2 = 0,90$. Étape $2$ : On multiplie les deux coefficients : $1,10 \\times 0,90 = 0,99$. Étape $3$ : On analyse le $CM_{\\text{global}}$. Comme $0,99$ est inférieur à $1$, c'est une baisse. Étape $4$ : On calcule le taux global : $0,99 - 1 = -0,01$, soit $-1\\%$. Le prix final est donc $99\\%$ du prix initial. Si l'objet coûtait $100\\,\\text{euro}$, il coûterait maintenant $99\\,\\text{euro}$. On voit bien qu'additionner $+10$ et $-10$ pour obtenir $0$ aurait été une erreur, car la baisse de $10\\%$ s'est appliquée sur un montant plus élevé que le prix de base."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège absolu est l'addition des pourcentages. Je le répète car c'est l'erreur reine : si un prix augmente de $20\\%$ puis encore de $20\\%$, l'augmentation totale n'est pas de $40\\%$, mais de $44\\%$ ($1,20 \\times 1,20 = 1,44$). Rappelle-toi toujours que chaque nouvelle évolution s'applique sur la valeur la plus récente, et non sur la valeur initiale. Un autre piège est d'inverser les valeurs dans le calcul du taux d'évolution. Il faut toujours diviser par la valeur de DEPART. Si tu divises par la valeur finale, ton résultat sera faux. Enfin, attention aux signes : un taux d'évolution négatif signifie une baisse. Si tu trouves $-0,05$, c'est une baisse de $5\\%$, pas une hausse. Vérifie toujours la cohérence : si la valeur finale est plus petite, ton taux doit être négatif."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un téléphone coûtait $200\\,\\text{euro}$. Il coûte maintenant $170\\,\\text{euro}$. Quel est le taux d'évolution en pourcentage ?",
+              "answer": "-15%",
+              "hint": "Calcule la différence, puis divise par 200.",
+              "explanation": "Variation : $170 - 200 = -30$. Taux : $\\frac{-30}{200} = -0,15$. En pourcentage : $-15\\%$. C'est une baisse de $15\\%$."
+            },
+            {
+              "question": "Un prix subit deux hausses successives de $10\\%$. Quel est le coefficient multiplicateur global ?",
+              "answer": "1,21",
+              "hint": "Multiplie le CM de la première hausse par celui de la seconde.",
+              "explanation": "Chaque hausse de $10\\%$ a un $CM$ de $1,1$. Le $CM_{\\text{global}}$ est $1,1 \\times 1,1 = 1,21$."
+            },
+            {
+              "question": "La valeur d'un objet passe de $50\\,\\text{euro}$ à $60\\,\\text{euro}$. Quel est le coefficient multiplicateur ?",
+              "answer": "1,2",
+              "hint": "Divise la valeur finale par la valeur initiale.",
+              "explanation": "$\\frac{60}{50} = 1,2$. Le coefficient multiplicateur est donc $1,2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

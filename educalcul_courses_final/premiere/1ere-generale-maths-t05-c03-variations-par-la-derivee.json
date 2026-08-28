@@ -1,0 +1,381 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.363063+00:00",
+  "id": 597,
+  "code": "1ere-generale-maths-t05-c03",
+  "title": "Variations par la dérivée",
+  "description": "Cours structuré Educalcul : Variations par la dérivée.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Variations par la dérivée",
+    "objectif_global": "Variations par la dérivée",
+    "mini_lecons_imposees": [
+      "Signe de f'.",
+      "Tableau.",
+      "Extrema."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Signe de f'.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe de la dérivée et la monotonie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu conduises sur une route de montagne. La pente de la route à chaque instant, c'est exactement ce que mesure la dérivée de la fonction qui décrit ton altitude. Si la pente est positive, tu montes ; si elle est négative, tu descends ; si elle est nulle, tu es sur un palier. En mathématiques, on dit que la fonction est croissante quand sa dérivée est positive, décroissante quand elle est négative, et constante quand elle est nulle. Ce lien fondamental entre le signe de $f'$ et les variations de $f$ est le point de départ de toute l'étude des variations."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "x^3 - 3*x",
+              "x0": -1,
+              "xMin": -3,
+              "xMax": 3,
+              "caption": "Déplace le curseur pour voir comment la pente de la tangente (la dérivée) change de signe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'animation ci-dessus. Lorsque le point se trouve à gauche de $-1$, la tangente monte : la dérivée est positive, la fonction croît. Entre $-1$ et $1$, la tangente descend : la dérivée est négative, la fonction décroît. À droite de $1$, elle remonte encore. C'est visuellement évident, mais il faut maintenant le formuler rigoureusement. Le théorème fondamental dit : si $f$ est dérivable sur un intervalle $I$, alors $f$ est croissante sur $I$ si et seulement si $f'(x) \\ge 0$ pour tout $x \\in I$, et strictement croissante si $f'(x) > 0$ (sauf éventuellement en un nombre fini de points). L'analogue vaut pour la décroissance avec $f'(x) \\le 0$."
+            },
+            {
+              "type": "definition",
+              "term": "Monotonie",
+              "definition": "Une fonction est croissante sur un intervalle si pour tout $x_1 < x_2$ on a $f(x_1) \\le f(x_2)$. Elle est strictement croissante si l'inégalité est stricte. Décroissante : $f(x_1) \\ge f(x_2)$.",
+              "example": "La fonction $f(x)=x^3$ est strictement croissante sur $\\mathbb{R}$ car $f'(x)=3x^2 \\ge 0$ et ne s'annule qu'en $0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le principe est posé, voyons comment déterminer concrètement le signe de $f'$ pour une fonction donnée. La méthode standard consiste à calculer l'expression de $f'$, à la factoriser si possible, puis à étudier son signe à l'aide d'un tableau de signes. C'est exactement la même technique que pour résoudre une inéquation, mais ici l'inconnue est la variable de la fonction. Prenons l'exemple de $f(x) = x^3 - 3x^2 - 9x + 5$. Sa dérivée est $f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x+1)(x-3)$. Les racines de $f'$ sont $-1$ et $3$. Comme le coefficient du $x^2$ est positif ($3$), le trinôme est positif en dehors des racines et négatif entre elles. Ainsi $f' > 0$ sur $]-\\infty, -1[ \\cup ]3, +\\infty[$ et $f' < 0$ sur $]-1, 3[$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $f'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les règles de dérivation (somme, produit, puissance, fonctions usuelles) pour obtenir l'expression analytique de $f'(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Factoriser $f'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Factorise complètement $f'(x)$ pour faire apparaître ses racines. C'est souvent l'étape la plus délicate : n'hésite pas à mettre un facteur commun en évidence, à utiliser des identités remarquables ou à résoudre $f'(x)=0$ avec le discriminant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tableau de signes de $f'$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les racines sur une ligne, détermine le signe de chaque facteur sur chaque intervalle, puis le signe du produit. Rappelle-toi : un produit a le signe de la multiplication des signes de ses facteurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure sur les variations de $f$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur les intervalles où $f' > 0$, $f$ est strictement croissante. Là où $f' < 0$, $f$ est strictement décroissante. Là où $f' = 0$ (points isolés), $f$ a un extremum potentiel (on verra ça dans la leçon sur les extrema)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois que la dérivée ne soit pas un polynôme facile à factoriser. Si $f$ fait intervenir une exponentielle, un logarithme ou une fonction trigonométrique, l'étude du signe demande quelques adaptations. Par exemple, pour $f(x) = x e^x$, on a $f'(x) = e^x + x e^x = e^x(1+x)$. L'exponentielle $e^x$ est toujours strictement positive, donc le signe de $f'$ est exactement le signe de $(1+x)$. La fonction croît pour $x > -1$ et décroît pour $x < -1$. De même, si $f(x) = \\ln(x) - x$ sur $]0, +\\infty[$, alors $f'(x) = \\frac{1}{x} - 1 = \\frac{1-x}{x}$. Le dénominateur $x$ est positif sur le domaine, le numérateur $1-x$ change de signe en $1$. Donc $f' > 0$ sur $]0,1[$ et $f' < 0$ sur $]1, +\\infty[$. La clé est toujours de ramener l'étude du signe à des facteurs simples dont on connaît le signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = 2x^3 - 9x^2 + 12x - 5$. Détermine les intervalles de monotonie de $f$ sur $\\mathbb{R}$.",
+              "answer": "$f$ est strictement croissante sur $]-\\infty, 1] \\cup [2, +\\infty[$ et strictement décroissante sur $[1, 2]$.",
+              "hint": "Calcule $f'(x)$, factorise-le, puis fais un tableau de signes.",
+              "explanation": "$f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x-1)(x-2)$. Les racines sont $1$ et $2$. Le coefficient de $x^2$ est positif ($6$), donc $f' > 0$ hors $[1,2]$ et $f' < 0$ sur $]1,2[$."
+            },
+            {
+              "question": "Soit $g(x) = (x-3)e^x$. Étudie le signe de $g'$ et déduis les variations de $g$ sur $\\mathbb{R}$.",
+              "answer": "$g$ est strictement décroissante sur $]-\\infty, 2]$ et strictement croissante sur $[2, +\\infty[$.",
+              "hint": "Dérive $g$ en utilisant la règle du produit. Factorise $e^x$ (toujours positif).",
+              "explanation": "$g'(x) = e^x + (x-3)e^x = e^x(1 + x - 3) = e^x(x-2)$. Comme $e^x > 0$ pour tout $x$, le signe de $g'$ est celui de $x-2$. Donc $g' < 0$ pour $x < 2$, $g' = 0$ en $2$, $g' > 0$ pour $x > 2$."
+            },
+            {
+              "question": "Soit $h(x) = \\ln(x) + \\frac{1}{x}$ définie sur $]0, +\\infty[$. Montre que $h$ est décroissante sur $]0,1]$ et croissante sur $[1, +\\infty[$.",
+              "answer": "Voir explication.",
+              "hint": "Calcule $h'(x)$, mets au même dénominateur, étudie le signe du numérateur.",
+              "explanation": "$h'(x) = \\frac{1}{x} - \\frac{1}{x^2} = \\frac{x-1}{x^2}$. Le dénominateur $x^2$ est strictement positif sur $]0, +\\infty[$. Le numérateur $x-1$ est négatif sur $]0,1[$, nul en $1$, positif sur $]1, +\\infty[$. Donc $h' < 0$ sur $]0,1[$, $h' = 0$ en $1$, $h' > 0$ sur $]1, +\\infty[$."
+            }
+          ]
+        },
+        {
+          "title": "Tableau.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un tableau de variations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant déterminer sur quels intervalles une fonction croît ou décroît grâce au signe de sa dérivée. L'étape suivante est d'organiser ces informations dans un tableau de variations, qui est la synthèse visuelle standard en analyse. Ce tableau se lit de la gauche vers la droite, comme une frise chronologique : on y place les valeurs de $x$ dans l'ordre croissant, on indique la variation de $f$ par des flèches (montantes pour croissante, descendantes pour décroissante), et on note les valeurs de $f$ aux points clés (racines de $f'$, bornes du domaine, éventuelles limites). C'est un langage universel en mathématiques : une fois le tableau fait, n'importe qui peut lire instantanément le comportement global de la fonction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de la fonction $f(x) = x^3 - 3x^2 - 9x + 5$ que nous avons rencontrée. Nous avions trouvé $f'(x) = 3(x+1)(x-3)$, donc $f' > 0$ sur $]-\\infty, -1[ \\cup ]3, +\\infty[$ et $f' < 0$ sur $]-1, 3[$. Le domaine est $\\mathbb{R}$. Les points clés sont $-1$ et $3$. Calculons les images : $f(-1) = -1 - 3 + 9 + 5 = 10$ et $f(3) = 27 - 27 - 27 + 5 = -22$. Aux bornes, $\\lim_{x \\to -\\infty} f(x) = -\\infty$ et $\\lim_{x \\to +\\infty} f(x) = +\\infty$. Voici comment on remplit le tableau :"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\begin{array}{c|cccccc} x & -\\infty & & -1 & & 3 & & +\\infty \\\\ \\hline f'(x) & & + & 0 & - & 0 & + & \\\\ f(x) & -\\infty & \\nearrow & 10 & \\searrow & -22 & \\nearrow & +\\infty \\end{array}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction du tableau suit une procédure immuable que tu dois maîtriser parfaitement. D'abord, on écrit la ligne $x$ avec toutes les valeurs caractéristiques dans l'ordre croissant : bornes du domaine (souvent $\\pm\\infty$), racines de $f'$, et éventuellement points où $f'$ n'existe pas (mais où $f$ est continue). Ensuite, on remplit la ligne $f'$ avec les signes trouvés grâce au tableau de signes de la dérivée. On place des zéros aux endroits où $f'$ s'annule. La troisième ligne, celle de $f$, se remplit en partant des limites aux bornes, puis en suivant les flèches dictées par le signe de $f'$ : flèche montante ($\\nearrow$) si $f' > 0$, flèche descendante ($\\searrow$) si $f' < 0$, et on écrit la valeur exacte de $f$ aux points où $f' = 0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Domaine et limites aux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine l'ensemble de définition $D_f$. Calcule les limites de $f$ aux bornes de $D_f$ (souvent $\\pm\\infty$, parfois des valeurs excluses comme $0$ pour $\\ln$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dérivée et son signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f'$, détermine son domaine (généralement $D_f$ moins les points de non-dérivabilité), factorise $f'$ et fais son tableau de signes. Note les valeurs qui annulent $f'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Valeurs de $f$ aux points critiques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f(x)$ pour chaque $x$ qui annule $f'$ (et pour les bornes finies du domaine si elles appartiennent à $D_f$). Ces valeurs seront inscrites dans le tableau."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Remplissage du tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le tableau avec les $x$ dans l'ordre. Ligne $f'$ : signes et zéros. Ligne $f$ : limites aux bornes, puis flèches ($\\nearrow$ ou $\\searrow$) selon le signe de $f'$, et valeurs numériques aux points critiques."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la dérivée s'annule sans changer de signe. C'est le cas par exemple pour $f(x) = x^3$ où $f'(x) = 3x^2$ est positif partout sauf en $0$ où il est nul. La fonction est strictement croissante sur tout $\\mathbb{R}$, et le tableau de variations montre une flèche montante continue, avec simplement une valeur $f(0)=0$ indiquée. Il ne faut pas croire qu'un point où $f'=0$ est obligatoirement un extremum ! C'est une erreur classique. De même, si $f$ n'est pas dérivable en un point (par exemple $f(x) = |x|$ en $0$), on doit quand même insérer ce point dans le tableau de variations, en indiquant que $f'$ n'existe pas (souvent noté « ND » ou trait vertical), mais la variation de $f$ reste lisible grâce aux valeurs de part et d'autre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau de variations est aussi un outil pour résoudre des inéquations du type $f(x) > k$ ou $f(x) \\le m$. Une fois le tableau construit, il suffit de lire les intervalles où la courbe se trouve au-dessus ou au-dessous de la valeur cherchée. Par exemple, avec le tableau de $f(x) = x^3 - 3x^2 - 9x + 5$, l'inéquation $f(x) > 0$ se résout en regardant où la ligne $f$ prend des valeurs positives : on voit que $f$ est négative à $- \\infty$, devient positive après avoir coupé l'axe (il y a une racine entre $-1$ et $3$), puis redevient négative, puis positive à nouveau. La lecture graphique du tableau donne immédiatement les intervalles de solution. C'est pour cela que le tableau de variations est l'outil central de l'analyse de fonctions en Première."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = x^3 - 6x^2 + 9x + 2$. Construis le tableau de variations de $f$ sur $\\mathbb{R}$.",
+              "answer": "Tableau : $x$ : $-\\infty$, $1$, $3$, $+\\infty$ ; $f'$ : $+$, $0$, $-$, $0$, $+$ ; $f$ : $-\\infty$, $\\nearrow$, $6$, $\\searrow$, $2$, $\\nearrow$, $+\\infty$.",
+              "hint": "Calcule $f'$, factorise, trouve les racines, calcule $f(1)$ et $f(3)$, limites à $\\pm\\infty$.",
+              "explanation": "$f'(x) = 3x^2 - 12x + 9 = 3(x^2 - 4x + 3) = 3(x-1)(x-3)$. Racines : $1$ et $3$. $f' > 0$ hors $[1,3]$, $f' < 0$ sur $]1,3[$. $f(1)=6$, $f(3)=2$. Limites : $-\\infty$ et $+\\infty$."
+            },
+            {
+              "question": "Soit $g(x) = \\frac{x}{x^2+1}$ sur $\\mathbb{R}$. Dresse le tableau de variations de $g$.",
+              "answer": "$g$ croissante sur $[-1,1]$, décroissante sur $]-\\infty,-1]$ et $[1,+\\infty[$. $g(-1)=-\\frac12$, $g(1)=\\frac12$. Limites à $\\pm\\infty$ : $0$.",
+              "hint": "Dérive $g$ (quotient). Le dénominateur $(x^2+1)^2$ est toujours positif. Étudie le numérateur.",
+              "explanation": "$g'(x) = \\frac{(x^2+1) - x(2x)}{(x^2+1)^2} = \\frac{1-x^2}{(x^2+1)^2} = \\frac{(1-x)(1+x)}{(x^2+1)^2}$. Signe de $g'$ = signe de $(1-x)(1+x)$. Racines $-1$ et $1$. $g' > 0$ sur $]-1,1[$, $g' < 0$ ailleurs. $g(-1)=-1/2$, $g(1)=1/2$. Limites à $\\pm\\infty$ : $0$."
+            },
+            {
+              "question": "Soit $h(x) = x \\ln x$ sur $]0, +\\infty[$. Construis son tableau de variations.",
+              "answer": "$h$ décroissante sur $]0, 1/e]$, croissante sur $[1/e, +\\infty[$. Minimum $h(1/e) = -1/e$. Limite en $0^+$ : $0$. Limite en $+\\infty$ : $+\\infty$.",
+              "hint": "Dérive : $h'(x) = \\ln x + 1$. Résous $h'(x)=0$.",
+              "explanation": "$h'(x) = \\ln x + 1$. $h'(x)=0 \\Leftrightarrow \\ln x = -1 \\Leftrightarrow x = e^{-1} = 1/e$. Sur $]0, 1/e[$, $\\ln x < -1$ donc $h' < 0$. Sur $]1/e, +\\infty[$, $h' > 0$. $h(1/e) = (1/e)(-1) = -1/e$. $\\lim_{x\\to 0^+} x\\ln x = 0$."
+            },
+            {
+              "question": "À l'aide du tableau de variations de $f(x) = x^3 - 3x^2 - 9x + 5$ (donné dans le cours), résous l'inéquation $f(x) > 10$.",
+              "answer": "$x > 4$ (environ, car $f(4)=64-48-36+5=-15$... attends, recalculons : $f(4) = 64 - 48 - 36 + 5 = -15$. En fait $f(x)>10$ pour $x > x_0$ où $x_0$ est l'unique solution de $f(x)=10$ sur $]3, +\\infty[$. On ne peut pas donner la valeur exacte sans résoudre l'équation du 3e degré. L'exercice visait à lire le tableau : $f(x) > 10$ sur un intervalle de la forme $]\\alpha, +\\infty[$ avec $\\alpha > 3$.)",
+              "hint": "Regarde la ligne $f$ du tableau : où les valeurs sont-elles $> 10$ ?",
+              "explanation": "D'après le tableau, $f$ atteint $10$ en $x=-1$ (maximum local). Ensuite $f$ décroît jusqu'à $-22$, puis croît à nouveau. Elle repassera par la valeur $10$ une seconde fois pour $x > 3$. Donc $f(x) > 10$ pour $x \\in ]-1, \\alpha[$ ? Non, entre $-1$ et $3$, $f$ décroît de $10$ à $-22$, donc $f(x) < 10$. Pour $x > 3$, $f$ croît de $-22$ à $+\\infty$, donc il existe un unique $\\alpha > 3$ tel que $f(\\alpha)=10$, et $f(x) > 10$ pour $x > \\alpha$. La solution est $]\\alpha, +\\infty[$ où $\\alpha$ est la racine de $x^3-3x^2-9x-5=0$ dans $]3, +\\infty[$."
+            }
+          ]
+        },
+        {
+          "title": "Extrema.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les extrema : maximum et minimum"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire un tableau de variations, tu peux repérer les points hauts et points bas d'une fonction. Ce sont les extrema. Un maximum local (ou minimum local) est une valeur que la fonction atteint en un point et qui est plus grande (ou plus petite) que toutes les valeurs aux alentours. Sur le tableau, cela correspond exactement aux points où la flèche change de sens : une flèche montante suivie d'une flèche descendante signale un maximum local ; une flèche descendante suivie d'une montante signale un minimum local. En termes de dérivée, cela signifie que $f'$ change de signe : de positif à négatif pour un max, de négatif à positif pour un min. C'est le test de la dérivée première."
+            },
+            {
+              "type": "definition",
+              "term": "Extremum local",
+              "definition": "Soit $f$ définie sur un intervalle $I$ et $x_0 \\in I$. On dit que $f$ a un maximum local en $x_0$ s'il existe un intervalle ouvert $J$ contenant $x_0$ tel que $\\forall x \\in J, f(x) \\le f(x_0)$. Minimum local : $f(x) \\ge f(x_0)$.",
+              "example": "Pour $f(x)=x^3-3x$, $f$ a un maximum local $2$ en $-1$ et un minimum local $-2$ en $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe aussi un test de la dérivée seconde, souvent plus rapide quand la dérivée première est déjà factorisée. Si $f$ est deux fois dérivable et que $f'(x_0)=0$, alors : si $f''(x_0) > 0$, $f$ a un minimum local en $x_0$ (la courbe est convexe, elle « tient l'eau ») ; si $f''(x_0) < 0$, $f$ a un maximum local (courbe concave) ; si $f''(x_0)=0$, le test est inconclusif, il faut revenir au tableau de signes de $f'$. Reprenons $f(x)=x^3-3x$. $f'(x)=3x^2-3$, $f''(x)=6x$. En $x_0=-1$, $f'(-1)=0$ et $f''(-1)=-6 < 0$ : maximum local. En $x_0=1$, $f'(1)=0$ et $f''(1)=6 > 0$ : minimum local. C'est immédiat."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Test de la dérivée première",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f'$ change de signe de $+$ à $-$ en $x_0$ : maximum local. Si $f'$ change de $-$ à $+$ : minimum local. Si $f'$ ne change pas de signe : pas d'extremum (point d'inflexion avec tangente horizontale)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Test de la dérivée seconde",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f'(x_0)=0$ et $f''(x_0) > 0$ : minimum local. Si $f''(x_0) < 0$ : maximum local. Si $f''(x_0)=0$ : ne permet pas de conclure, utiliser le test de la dérivée première."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, les extrema locaux ne sont pas nécessairement des extrema globaux (aussi appelés maximum et minimum absolus). Un extremum global sur un intervalle $I$ est une valeur que la fonction atteint et qui est la plus grande (ou la plus petite) sur tout $I$. Pour trouver les extrema globaux sur un intervalle fermé $[a,b]$, il faut comparer les valeurs de $f$ aux points critiques (où $f'=0$ ou $f'$ n'existe pas) appartenant à $[a,b]$ et aux bornes $a$ et $b$. La plus grande de ces valeurs est le maximum global, la plus petite est le minimum global. C'est le théorème des valeurs extrêmes : une fonction continue sur un intervalle fermé atteint ses bornes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $f(x) = x^3 - 3x^2 - 9x + 5$ sur l'intervalle $[-2, 4]$. Les points critiques sont $-1$ et $3$ (racines de $f'$). Les bornes sont $-2$ et $4$. Calculons : $f(-2) = -8 -12 +18 +5 = 3$, $f(-1)=10$, $f(3)=-22$, $f(4)=64 -48 -36 +5 = -15$. Le maximum global sur $[-2,4]$ est $10$ (atteint en $-1$), le minimum global est $-22$ (atteint en $3$). Note que le maximum local en $-1$ est aussi le maximum global ici, mais ce n'est pas toujours le cas : si on prend l'intervalle $[0,4]$, le maximum global est $f(0)=5$ (borne), car le maximum local en $-1$ n'est pas dans l'intervalle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, sache que les extrema jouent un rôle crucial dans les problèmes d'optimisation : « Quelle dimension de boîte donne le volume maximal ? » « Quel prix maximise le bénéfice ? » La méthode est toujours la même : modéliser la quantité à optimiser par une fonction $f$, déterminer son domaine selon les contraintes du problème, étudier ses variations (tableau), identifier l'extremum global recherché, et conclure par une phrase répondant à la question posée. C'est la traduction concrète de tout l'outillage abstrait que nous venons de construire. Tu es maintenant prêt à affronter ces problèmes classiques du bac."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais relier le signe de $f'$ aux variations de $f$ (croissante/décroissante).",
+                "Je sais calculer $f'$, la factoriser et faire son tableau de signes.",
+                "Je sais construire un tableau de variations complet (valeurs, flèches, limites).",
+                "Je sais lire un tableau de variations pour trouver les extrema locaux.",
+                "Je connais les deux tests pour classifier un extremum (dérivée première et dérivée seconde).",
+                "Je sais déterminer les extrema globaux sur un intervalle fermé en comparant les valeurs aux points critiques et aux bornes.",
+                "Je sais utiliser le tableau de variations pour résoudre une inéquation $f(x) > k$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = x^3 - 3x$. Détermine les extrema locaux de $f$ en utilisant le test de la dérivée première.",
+              "answer": "Maximum local $2$ en $-1$ ; minimum local $-2$ en $1$.",
+              "hint": "Étudie le signe de $f'(x)=3x^2-3=3(x-1)(x+1)$ autour de $-1$ et $1$.",
+              "explanation": "$f'(x)=3(x-1)(x+1)$. Pour $x<-1$, $f'>0$ ; entre $-1$ et $1$, $f'<0$ ; pour $x>1$, $f'>0$. Donc $f'$ passe de $+$ à $-$ en $-1$ (max) et de $-$ à $+$ en $1$ (min). $f(-1)=2$, $f(1)=-2$."
+            },
+            {
+              "question": "Soit $g(x) = x^4 - 4x^2$. Utilise le test de la dérivée seconde pour classer les points critiques.",
+              "answer": "Maximum local $0$ en $0$ ; minima locaux $-4$ en $-2$ et en $2$.",
+              "hint": "Calcule $g'$ et $g''$. Trouve les racines de $g'$, évalue $g''$ en ces points.",
+              "explanation": "$g'(x)=4x^3-8x=4x(x^2-2)$. Racines : $0, -\\sqrt{2}, \\sqrt{2}$. $g''(x)=12x^2-8$. $g''(0)=-8<0$ : max en $0$ ($g(0)=0$). $g''(\\pm\\sqrt{2})=24-8=16>0$ : min en $\\pm\\sqrt{2}$ ($g(\\pm\\sqrt{2})=4-8=-4$)."
+            },
+            {
+              "question": "Trouve les extrema globaux de $h(x) = x^3 - 6x^2 + 9x + 2$ sur l'intervalle $[0, 4]$.",
+              "answer": "Maximum global $6$ en $x=1$ ; minimum global $2$ en $x=0$, $x=3$ et $x=4$.",
+              "hint": "Points critiques dans $[0,4]$ : racines de $h'$ dans cet intervalle. Compare $h$ aux points critiques et aux bornes $0$ et $4$.",
+              "explanation": "$h'(x)=3x^2-12x+9=3(x-1)(x-3)$. Points critiques : $1$ et $3$ (dans $[0,4]$). $h(0)=2$, $h(1)=6$, $h(3)=2$, $h(4)=64-96+36+2=6$. Max global = $6$ (atteint en $1$ et $4$). Min global = $2$ (atteint en $0$ et $3$)."
+            },
+            {
+              "question": "Un fabricant veut construire une boîte sans couvercle à base carrée en découpant des carrés aux quatre coins d'une feuille de carton de $30$ cm de côté et en relevant les côtés. Quelle doit être la taille des carrés découpés pour maximiser le volume de la boîte ?",
+              "answer": "Couper des carrés de côté $5$ cm pour un volume maximal de $2000$ cm$^3$.",
+              "hint": "Soit $x$ le côté du carré découpé. Volume $V(x) = x(30-2x)^2$. Domaine : $]0, 15[$. Étudie $V$ sur $[0,15]$.",
+              "explanation": "$V(x) = x(900 - 120x + 4x^2) = 4x^3 - 120x^2 + 900x$. $V'(x) = 12x^2 - 240x + 900 = 12(x^2 - 20x + 75) = 12(x-5)(x-15)$. Sur $[0,15]$, $V' > 0$ sur $[0,5[$, $V'(5)=0$, $V' < 0$ sur $]5,15]$. Maximum global en $x=5$. $V(5)=5 \\times 20^2 = 2000$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

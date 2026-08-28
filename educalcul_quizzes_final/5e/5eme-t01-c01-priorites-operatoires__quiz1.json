@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Lire expression",
+  "title": "Quiz : Lire une expression mathématique",
+  "questions": [
+    {
+      "text": "Quelle expression correspond à la phrase : \"Le produit de la somme de $a$ et $b$ par $c$ \" ?",
+      "options": [
+        "$a + b \\times c$",
+        "$(a + b) \\times c$",
+        "$a + (b \\times c)$",
+        "$a \\times b + c$"
+      ],
+      "correctAnswer": "$(a + b) \\times c$",
+      "explanation": "Le mot \"produit\" indique une multiplication. Les termes de cette multiplication sont \"la somme de $a$ et $b$\" d'un côté, et \"$c$\" de l'autre. La somme de $a$ et $b$ s'écrit $(a + b)$ ; elle doit être entre parenthèses pour être calculée avant la multiplication par $c$. L'option $a + b \\times c$ correspond à \"la somme de $a$ et du produit de $b$ par $c$\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle se lit : \"Le quotient de la différence de $x$ et $y$ par $3$ \" ?",
+      "options": [
+        "$x - y \\div 3$",
+        "$x - \\frac{y}{3}$",
+        "$\\frac{x - y}{3}$",
+        "$3 \\div (x - y)$"
+      ],
+      "correctAnswer": "$\\frac{x - y}{3}$",
+      "explanation": "Le \"quotient ... par 3\" indique une division par $3$. Le dividende (ce qui est au numérateur) est \"la différence de $x$ et $y$\", soit $x - y$. L'écriture fractionnée $\\frac{x - y}{3}$ respecte cet ordre : le numérateur est la différence, le dénominateur est $3$. L'option $x - y \\div 3$ se lit \"la différence de $x$ et du quotient de $y$ par $3$\". L'option $3 \\div (x - y)$ inverse les termes : c'est le quotient de $3$ par la différence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment lit-on correctement l'expression $5 \\times (x + 2)$ ?",
+      "options": [
+        "La somme du produit de $5$ par $x$ et de $2$",
+        "Le produit de $5$ par la somme de $x$ et $2$",
+        "Le produit de la somme de $5$ et $x$ par $2$",
+        "La somme de $5$ et du produit de $x$ par $2$"
+      ],
+      "correctAnswer": "Le produit de $5$ par la somme de $x$ et $2$",
+      "explanation": "L'opération principale est la multiplication (le produit) car les parenthèses isolent la somme $x + 2$. Le premier facteur est $5$, le second facteur est la somme $(x + 2)$. L'option 1 correspond à $5x + 2$. L'option 3 correspond à $(5 + x) \\times 2$. L'option 4 correspond à $5 + 2x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La phrase \"Le double de la différence entre $n$ et $4$\" se traduit par quelle expression ?",
+      "options": [
+        "$2 \\times n - 4$",
+        "$2 \\times (n - 4)$",
+        "$2n - 4$",
+        "$n - 4 \\times 2$"
+      ],
+      "correctAnswer": "$2 \\times (n - 4)$",
+      "explanation": "\"Le double de\" signifie \"multiplié par $2$\". Ce qui est doublé, c'est \"la différence entre $n$ et $4$\", soit $(n - 4)$. Il faut donc mettre la différence entre parenthèses avant de multiplier par $2$. Les options $2 \\times n - 4$ et $2n - 4$ (qui sont équivalentes) correspondent à \"la différence entre le double de $n$ et $4$\". L'option $n - 4 \\times 2$ correspond à \"la différence entre $n$ et le produit de $4$ par $2$\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'expression $\\frac{8 + x}{2}$. Quelle phrase la décrit exactement ?",
+      "options": [
+        "La somme de $8$ et du quotient de $x$ par $2$",
+        "Le quotient de la somme de $8$ et $x$ par $2$",
+        "Le quotient de $8$ par $2$ ajouté à $x$",
+        "La somme du quotient de $8$ par $2$ et de $x$"
+      ],
+      "correctAnswer": "Le quotient de la somme de $8$ et $x$ par $2$",
+      "explanation": "La barre de fraction (ou les parenthèses implicites au numérateur) indique que l'opération prioritaire est la somme $8 + x$ (au numérateur). Le résultat de cette somme est ensuite divisé par $2$ (le dénominateur). C'est donc le quotient de cette somme par $2$. L'option 1 correspond à $8 + \\frac{x}{2}$. Les options 3 et 4 correspondent à $\\frac{8}{2} + x$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

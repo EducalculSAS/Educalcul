@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 118,
+  "_course_code": "ce1-t06-c02-relier-metre-et-centimetre",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Comprendre 1 m = 100 cm",
+  "title": "Algorithmes de conversion mètre / centimètre",
+  "blocks": [
+    {
+      "title": "Convertir des mètres en centimètres",
+      "content": "Écris les instructions de l'algorithme qui permet de convertir une longueur donnée en mètres ($m$) en centimètres ($cm$). Rappelle-toi que $1 m = 100 cm$.",
+      "correctAnswer": "1. Prendre la longueur en mètres.\\n2. Multiplier ce nombre par 100.\\n3. Le résultat est la longueur en centimètres.\\n4. Afficher le résultat suivi de l'unité cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer des mètres aux centimètres, on utilise la relation $1 m = 100 cm$. Il faut donc multiplier le nombre de mètres par 100. L'algorithme décrit simplement ces étapes dans l'ordre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Convertir des centimètres en mètres",
+      "content": "Complète l'algorithme ci-dessous pour convertir une longueur en centimètres ($cm$) en mètres ($m$).\\n\\nALGORITHME Conversion_cm_vers_m\\nDÉBUT\\n    Afficher \"Entrez la longueur en cm :\"\\n    Lire longueur_cm\\n    ...\\n    Afficher longueur_m, \" m\"\\nFIN",
+      "correctAnswer": "longueur_m = longueur_cm / 100\\nou\\nlongueur_m = longueur_cm ÷ 100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour passer des centimètres aux mètres, il faut diviser par 100 car $1 m = 100 cm$. L'instruction manquante est donc la division du nombre de centimètres par 100 pour obtenir le nombre de mètres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme complet avec choix",
+      "content": "On veut écrire un algorithme qui demande à l'utilisateur s'il veut convertir des mètres en centimètres (choix 1) ou des centimètres en mètres (choix 2), puis qui effectue le calcul. Complète les parties entre crochets [...].\\n\\nDÉBUT\\nAfficher \"Choisissez : 1 pour m -> cm, 2 pour cm -> m\"\\nLire choix\\nSI choix = 1 ALORS\\n    Afficher \"Longueur en m :\"\\n    Lire L\\n    R = L * 100\\n    Afficher R, \" cm\"\\nSINON SI choix = 2 ALORS\\n    Afficher \"Longueur en cm :\"\\n    Lire L\\n    R = [...]\\n    Afficher R, \" m\"\\nSINON\\n    Afficher \"Choix invalide\"\\nFIN SI\\nFIN",
+      "correctAnswer": "L / 100\\nou\\nL ÷ 100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans la seconde branche du test (choix 2), on convertit des centimètres en mètres. Il faut donc diviser la longueur L lue (qui est en cm) par 100. L'instruction correcte est R = L / 100.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

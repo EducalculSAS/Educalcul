@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calculs",
+  "title": "Questionnaire Probabilités - Calculs (quatrième)",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Il y a trois faces paires sur six, donc la probabilité est $3/6 = 1/2$. Les autres options correspondent à des erreurs de comptage ou de simplification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu de cinquante-deux cartes. Quelle est la probabilité d'obtenir un cœur ?",
+      "options": [
+        "$1/4$",
+        "$1/13$",
+        "$1/2$",
+        "$1/52$"
+      ],
+      "correctAnswer": "$1/4$",
+      "explanation": "Il y a treize cœurs dans un jeu de cinquante-deux cartes, donc la probabilité est $13/52 = 1/4$. Les distracteurs proviennent d'une confusion entre le nombre de cœurs et le nombre total de cartes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce équilibrée et un dé à six faces. Quelle est la probabilité d'obtenir « pile » et un quatre ?",
+      "options": [
+        "$1/12$",
+        "$1/6$",
+        "$1/8$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$1/12$",
+      "explanation": "Les deux expériences sont indépendantes : la probabilité de pile est $1/2$ et celle d'obtenir un quatre au dé est $1/6$. Le produit donne $1/2 * 1/6 = 1/12$. Les autres choix correspondent à l'oubli de l'indépendance ou à une addition incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un sac, il y a trois boules rouges et cinq boules bleues. On tire une boule au hasard. Quelle est la probabilité de ne pas obtenir une boule rouge ?",
+      "options": [
+        "$3/8$",
+        "$5/8$",
+        "$1/2$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$5/8$",
+      "explanation": "Le sac contient huit boules au total. La probabilité de tirer une boule non rouge (donc bleue) est le nombre de boules bleues sur le total, soit $5/8$. L'option $3/8$ est la probabilité de tirer une rouge, $1/2$ et $2/5$ sont des approximations erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une boule dans le même sac, on la remet, puis on tire une seconde fois. Quelle est la probabilité d'obtenir au moins une boule rouge lors des deux tirages ?",
+      "options": [
+        "$9/64$",
+        "$15/64$",
+        "$39/64$",
+        "$55/64$"
+      ],
+      "correctAnswer": "$39/64$",
+      "explanation": "La probabilité de ne pas tirer de rouge à un tirage est $5/8$. Avec remise, les deux tirages sont indépendants, donc la probabilité de ne jamais avoir de rouge est $(5/8)^2 = 25/64$. La probabilité d'au moins un rouge est le complémentaire : $1 - 25/64 = 39/64$. Les autres valeurs correspondent à des calculs partiels ou à une mauvaise utilisation du complémentaire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

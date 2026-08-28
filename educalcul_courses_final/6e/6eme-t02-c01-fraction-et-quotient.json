@@ -1,0 +1,340 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.543562+00:00",
+  "id": 336,
+  "code": "6eme-t02-c01",
+  "title": "Fraction et quotient",
+  "description": "Cours structuré Educalcul : Fraction et quotient.",
+  "subject": "Fractions",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Fractions",
+    "titre_du_cours": "Fraction et quotient",
+    "objectif_global": "Fraction et quotient",
+    "mini_lecons_imposees": [
+      "Sens.",
+      "Représentation.",
+      "Écriture."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Sens.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager, c'est diviser"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ barres de chocolat identiques et que tu veux les partager équitablement entre $4$ copains. Personne ne veut en avoir plus que les autres, bien sûr. Tu coupes donc chaque barre en $4$ morceaux égaux, puis tu donnes à chaque copain un morceau venant de chaque barre. Au final, chaque personne reçoit $3$ petits morceaux. C'est exactement ce que l'écriture $\\frac{3}{4}$ veut dire : on a divisé $3$ par $4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction, c'est d'abord une histoire de partage. Quand tu vois $\\frac{5}{2}$, tu peux te dire : \"On a $5$ objets à répartir entre $2$ personnes\". Chaque personne reçoit $2$ objets entiers et il en reste un, qu'on coupe en deux. Le résultat du partage, c'est $2$ et demi, soit $2,5$. La fraction $\\frac{5}{2}$ est le nom exact de ce résultat, sans arrondi."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "3 barres partagées en 4 : chaque part vaut 3/4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons un peu l'histoire. Suppose que tu as $1$ seule pizza et que tu la coupes en $8$ parts égales. Si tu prends $3$ parts, tu as mangé $\\frac{3}{8}$ de la pizza. Ici, le nombre du haut ($3$) compte les parts prises, et le nombre du bas ($8$) compte en combien de parts égales le tout a été découpé. C'est la même idée : une fraction décrit une division, mais cette fois le dividende est $1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce qui est puissant, c'est que $\\frac{3}{8}$ est à la fois le partage de $1$ pizza en $8$ (chaque part vaut $\\frac{1}{8}$) et le résultat de la division $3 \\div 8$. Les deux points de vue racontent la même chose. C'est pour ça qu'on dit qu'une fraction écrit un quotient : le numérateur est le dividende, le dénominateur est le diviseur."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient",
+              "definition": "Résultat d'une division. Dans la fraction $\\frac{a}{b}$, $a$ est le numérateur (dividende) et $b$ est le dénominateur (diviseur). La fraction $\\frac{a}{b}$ est le quotient de $a$ par $b$.",
+              "example": "$\\frac{7}{3}$ est le quotient de $7$ par $3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas où le partage donne un nombre entier. Si tu as $12$ bonbons et $3$ amis, chacun reçoit $4$ bonbons. On écrit $\\frac{12}{3} = 4$. La fraction $\\frac{12}{3}$ est un autre nom pour le nombre $4$. Plus généralement, dès que le numérateur est un multiple du dénominateur, la fraction vaut un nombre entier. C'est une façon commode d'écrire une division qui tombe juste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si le numérateur est plus grand que le dénominateur sans être multiple ? Par exemple $\\frac{13}{5}$. On partage $13$ objets entre $5$ personnes : chacun a $2$ objets entiers, il en reste $3$ qu'on coupe en $5$. Chaque personne reçoit donc $2 + \\frac{3}{5}$. On appelle cela un nombre mixte, mais la fraction $\\frac{13}{5}$ reste une écriture parfaite du quotient. Tu verras dans la prochaine leçon comment on place tout cela sur une droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trois amis partagent équitablement 2 gâteaux identiques. Quelle fraction de gâteau chaque ami reçoit-il ? Écris la division correspondante.",
+              "answer": "$\\frac{2}{3}$ ; $2 \\div 3$",
+              "hint": "Le nombre de gâteaux est le numérateur, le nombre d'amis est le dénominateur.",
+              "explanation": "On a 2 gâteaux (dividende) partagés entre 3 amis (diviseur). Chaque ami reçoit 2/3 de gâteau. La fraction 2/3 est le quotient de 2 par 3."
+            },
+            {
+              "question": "Écris sous forme de fraction le quotient de 15 par 4. Puis dis si ce quotient est un nombre entier ou non.",
+              "answer": "$\\frac{15}{4}$ ; ce n'est pas un nombre entier car 15 n'est pas un multiple de 4.",
+              "hint": "Le quotient de a par b s'écrit a/b. Un quotient est entier si le numérateur est un multiple du dénominateur.",
+              "explanation": "Le quotient de 15 par 4 s'écrit 15/4. Comme 15 n'est pas dans la table de multiplication de 4 (4×3=12, 4×4=16), le résultat n'est pas un nombre entier."
+            },
+            {
+              "question": "Une bande de papier mesure 1 mètre. On la coupe en 5 morceaux de même longueur. Quelle est la longueur d'un morceau en mètres ? Écrits la fraction et la division.",
+              "answer": "$\\frac{1}{5}$ m ; $1 \\div 5$",
+              "hint": "Le mètre entier est divisé en 5 parties égales. Chaque partie est une fraction de l'unité.",
+              "explanation": "1 mètre divisé en 5 parts égales donne des morceaux de 1/5 mètre. La fraction 1/5 est le quotient de 1 par 5."
+            }
+          ]
+        },
+        {
+          "title": "Représentation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sur la droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà la droite graduée pour les nombres entiers : $0, 1, 2, 3...$ espacés régulièrement. Les fractions aussi ont leur place dessus ! Pour placer $\\frac{3}{4}$, on part de l'unité $1$. On divise le segment $[0;1]$ en $4$ parties égales (car le dénominateur est $4$). Le premier trait après $0$ marque $\\frac{1}{4}$, le deuxième $\\frac{2}{4}$, le troisième $\\frac{3}{4}$. C'est là que se trouve notre fraction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette construction marche pour n'importe quelle fraction entre $0$ et $1$. Le dénominateur te dit en combien de parts égales couper l'unité, le numérateur te dit combien de parts compter depuis $0$. C'est exactement comme si tu mesurais une longueur avec une règle graduée en quarts, en cinquièmes, en dixièmes..."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de 3/4 sur la droite graduée",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.25,
+                  "label": "1/4"
+                },
+                {
+                  "value": 0.5,
+                  "label": "2/4"
+                },
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et quand la fraction est plus grande que $1$, comme $\\frac{5}{3}$ ? Pas de panique : on continue la droite au-delà de $1$. On divise chaque unité ($[1;2]$, $[2;3]$, etc.) en $3$ parts égales. Depuis $0$, on compte $5$ parts de taille $\\frac{1}{3}$. On arrive au premier trait après $1$, c'est-à-dire à $1 + \\frac{2}{3}$. La fraction $\\frac{5}{3}$ se trouve donc entre $1$ et $2$, plus près de $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est là qu'on voit tout l'intérêt de la droite : elle montre visuellement que $\\frac{5}{3}$ et $1 \\frac{2}{3}$ désignent exactement le même point. Les deux écritures racontent la même histoire de partage, l'une en fraction \"impropre\" (numérateur plus grand), l'autre en nombre mixte (partie entière + fraction). Tu apprendras à passer de l'une à l'autre dans la prochaine leçon."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placement de 5/3 sur la droite graduée",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 1.6666666666666667,
+                  "label": "5/3"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée permet aussi de comparer deux fractions. Place $\\frac{2}{5}$ et $\\frac{3}{5}$ : même dénominateur, même découpage de l'unité. Il suffit de compter : $3$ parts, c'est plus loin que $2$ parts, donc $\\frac{3}{5} > \\frac{2}{5}$. Quand les dénominateurs diffèrent, par exemple $\\frac{1}{2}$ et $\\frac{3}{5}$, on peut subdiviser davantage (en dixièmes ici) pour les mettre sur la même échelle. C'est l'idée de la réduction au même dénominateur, qu'on verra plus tard."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce visuelle : plus le dénominateur est grand, plus les parts sont petites. $\\frac{1}{10}$ est un tout petit bout près de $0$, alors que $\\frac{1}{2}$ est exactement au milieu. Garde cette image en tête : le dénominateur décide de la \"finesse\" du découpage, le numérateur décide \"où on s'arrête\"."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de 0 à 1, on a divisé l'unité en 6 parties égales. Quel est le nom de la fraction située au 4e trait après 0 ?",
+              "answer": "$\\frac{4}{6}$",
+              "hint": "Le dénominateur est le nombre de parts de l'unité. Le numérateur est le nombre de parts comptées depuis 0.",
+              "explanation": "L'unité est divisée en 6 parts (dénominateur 6). Le 4e trait correspond à 4 parts comptées depuis 0, donc 4/6."
+            },
+            {
+              "question": "Place la fraction 7/4 sur une droite graduée allant de 0 à 3. Entre quels deux nombres entiers se trouve-t-elle ?",
+              "answer": "Entre 1 et 2 (plus précisément à 1 + 3/4).",
+              "hint": "Divise chaque unité en 4 parts. Compte 7 parts depuis 0.",
+              "explanation": "7/4 = 1 + 3/4. En comptant 7 quarts depuis 0 : 4 quarts font 1 entier, il reste 3 quarts. On se trouve donc entre 1 et 2, au 3e quart après 1."
+            },
+            {
+              "question": "Parmi les fractions 2/3 et 3/4, laquelle est la plus grande ? Justifie en utilisant l'image de la droite graduée.",
+              "answer": "$3/4$ est plus grand que $2/3$.",
+              "hint": "Imagine l'unité divisée en 12 parts (commun multiple de 3 et 4). Convertis les deux fractions en douzièmes.",
+              "explanation": "2/3 = 8/12 et 3/4 = 9/12. Sur la droite graduée en douzièmes, 9/12 est plus à droite que 8/12. Donc 3/4 > 2/3."
+            }
+          ]
+        },
+        {
+          "title": "Écriture.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Nommer les parties d'une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'écriture $\\frac{7}{5}$, chaque nombre a un rôle précis et un nom qu'il faut connaître par cœur. Le nombre du haut, $7$, s'appelle le énumérateur. Il compte combien de parts on prend ou combien d'objets on partage. Le nombre du bas, $5$, s'appelle le dénominateur. Il indique en combien de parts égales l'unité a été divisée (ou entre combien de personnes on partage). La barre de fraction, elle, se lit \"sur\" ou \"divisé par\"."
+            },
+            {
+              "type": "definition",
+              "term": "Numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction. Il représente le dividende dans la division, ou le nombre de parts prises.",
+              "example": "Dans $\\frac{4}{9}$, le numérateur est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Dénominateur",
+              "definition": "Le nombre écrit au-dessous de la barre de fraction. Il représente le diviseur dans la division, ou le nombre de parts égales de l'unité.",
+              "example": "Dans $\\frac{4}{9}$, le dénominateur est $9$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le vocabulaire est en place, regardons comment on lit une fraction à l'oral. Pour $\\frac{3}{8}$, on dit \"trois huitièmes\" : le numérateur s'énonce normalement (trois), le dénominateur prend la forme d'un ordinal (huitièmes). Attention aux cas particuliers : dénominateur $2$ $\\rightarrow$ \"demi\" (ex: $\\frac{5}{2}$ = \"cinq demis\"), dénominateur $3$ $\\rightarrow$ \"tiers\" (ex: $\\frac{2}{3}$ = \"deux tiers\"), dénominateur $4$ $\\rightarrow$ \"quarts\" (ex: $\\frac{3}{4}$ = \"trois quarts\"). Pour les autres, on ajoute \"-ième\" ou \"-ièmes\" : cinquièmes, sixièmes, dixièmes..."
+            },
+            {
+              "type": "paragraph",
+              "content": "Écouter la lecture aide à écrire la fraction sans se tromper. Si on te dicte \"sept cinquièmes\", tu entends \"sept\" (numérateur = $7$) et \"cinquièmes\" (dénominateur = $5$). Tu écris $\\frac{7}{5}$. Si on te dit \"quatre\", c'est le nombre entier $4$, qui s'écrit aussi $\\frac{4}{1}$ (quatre sur un, c'est-à-dire $4$ divisé par $1$). Tout nombre entier est une fraction de dénominateur $1$ !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 7,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "7/5 : 5 parts forment 1 entier, il en reste 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parlons des fractions supérieures à $1$, comme $\\frac{11}{4}$. On peut les écrire sous forme de énombre mixte : une partie entière et une fraction propre (inférieure à $1$). La méthode est simple : on fait la division euclidienne du numérateur par le dénominateur. $11 = 2 \\times 4 + 3$. Le quotient $2$ est la partie entière, le reste $3$ devient le nouveau numérateur, le dénominateur ne change pas. On obtient $2 \\frac{3}{4}$, qu'on lit \"deux et trois quarts\"."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Division euclidienne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le numérateur par le dénominateur. Pour 11/4 : 11 = 2 × 4 + 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les pièces",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quotient = 2 (partie entière). Reste = 3 (nouveau numérateur). Dénominateur = 4 (inchangé)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le nombre mixte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit 2 3/4. Cela se lit \"deux et trois quarts\"."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "L'opération inverse est tout aussi utile : transformer un nombre mixte en fraction impropre. Pour $3 \\frac{2}{5}$, on remet tout au même dénominateur. $3 = \\frac{15}{5}$ (car $3 \\times 5 = 15$). On ajoute le numérateur de la partie fractionnaire : $15 + 2 = 17$. Le résultat est $\\frac{17}{5}$. Vérification : $17 \\div 5 = 3$ reste $2$, ça revient au même !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer qu'une fraction écrit un quotient (un partage).",
+                "Je sais placer une fraction sur une droite graduée.",
+                "Je connais le vocabulaire : numérateur, dénominateur, barre de fraction.",
+                "Je sais lire et écrire une fraction (y compris les cas particuliers : demi, tiers, quarts).",
+                "Je sais transformer une fraction impropre en nombre mixte et inversement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la fraction 9/7, quel est le numérateur ? Quel est le dénominateur ? Comment lit-on cette fraction ?",
+              "answer": "Numérateur : 9. Dénominateur : 7. Lecture : neuf septièmes.",
+              "hint": "Le numérateur est en haut, le dénominateur en bas. Pour la lecture, le dénominateur 7 donne \"septièmes\".",
+              "explanation": "9 est au-dessus de la barre (numérateur), 7 est en-dessous (dénominateur). Comme le dénominateur n'est pas 2, 3 ou 4, on utilise la forme en -ièmes : septièmes."
+            },
+            {
+              "question": "Transforme la fraction impropre 17/6 en nombre mixte. Détaille le calcul.",
+              "answer": "2 5/6. Car 17 = 2 × 6 + 5.",
+              "hint": "Fais la division euclidienne de 17 par 6. Le quotient est la partie entière, le reste est le nouveau numérateur.",
+              "explanation": "17 divisé par 6 donne 2 reste 5. La partie entière est 2, la fraction restante est 5/6. On écrit 2 5/6."
+            },
+            {
+              "question": "Écris sous forme de fraction impropre le nombre mixte 4 3/8.",
+              "answer": "35/8",
+              "hint": "Remets la partie entière au dénominateur 8 : 4 = 32/8. Puis ajoute le numérateur 3.",
+              "explanation": "4 = 4 × 8 / 8 = 32/8. On ajoute 3/8 : 32/8 + 3/8 = 35/8. Vérification : 35 ÷ 8 = 4 reste 3."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

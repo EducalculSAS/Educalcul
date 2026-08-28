@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 259,
+  "_course_code": "cm1-t07-c04-moyenne-intuitive",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Partager équitablement un total",
+  "title": "Algorithmes pour partager équitablement un total",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de partage",
+      "content": "On veut partager $48$ bonbons équitablement entre $6$ enfants. Écris un algorithme (suite d'instructions simples) qui permet de trouver combien de bonbons chaque enfant reçoit. Utilise des mots comme « Début », « Fin », « Calculer », « Afficher ».",
+      "correctAnswer": "Début\\nNombreTotal ← 48\\nNombreEnfants ← 6\\nPartParEnfant ← NombreTotal / NombreEnfants\\nAfficher PartParEnfant\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme définit les valeurs de départ (total et nombre de parts), effectue la division pour trouver la valeur d'une part égale, puis affiche le résultat. Ici $48 / 6 = 8$, chaque enfant reçoit $8$ bonbons.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter un algorithme avec une variable",
+      "content": "Voici un algorithme incomplet pour partager une somme d'argent entre plusieurs personnes. Complète les lignes manquantes pour qu'il fonctionne pour n'importe quels nombres.\\n\\nDébut\\nSommeTotale ← 72\\nNombrePersonnes ← …\\n… ← SommeTotale / NombrePersonnes\\nAfficher PartDeChacun\\nFin",
+      "correctAnswer": "NombrePersonnes ← 8\\nPartDeChacun ← SommeTotale / NombrePersonnes",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut d'abord affecter une valeur à la variable 'NombrePersonnes' (par exemple 8). Ensuite, on calcule le partage en divisant 'SommeTotale' par 'NombrePersonnes' et on stocke le résultat dans la variable 'PartDeChacun' avant de l'afficher. Avec 8 personnes, $72 / 8 = 9$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Analyser un algorithme itératif (soustractions successives)",
+      "content": "On propose cet algorithme pour partager $20$ billes en tas de $4$ billes (pour savoir combien de tas on peut faire).\\n\\nDébut\\nTotal ← 20\\nTailleTas ← 4\\nNombreTas ← 0\\nTant que Total ≥ TailleTas faire\\n    Total ← Total - TailleTas\\n    NombreTas ← NombreTas + 1\\nFin Tant que\\nAfficher NombreTas\\nFin\\n\\nCombien de fois la boucle « Tant que » s'exécute-t-elle ? Quelle valeur est affichée à la fin ?",
+      "correctAnswer": "La boucle s'exécute 5 fois. La valeur affichée est 5.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cet algorithme simule la division par soustractions successives. Au départ Total=20. 1er tour : Total=16, NombreTas=1. 2e tour : Total=12, NombreTas=2. 3e tour : Total=8, NombreTas=3. 4e tour : Total=4, NombreTas=4. 5e tour : Total=0, NombreTas=5. Comme Total (0) n'est plus ≥ 4, la boucle s'arrête. On a fait 5 tas de 4 billes. C'est le résultat de $20 / 4 = 5$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 455,
+  "_course_code": "3eme-t01-c01-diviseurs-multiples-et-nombres-premiers",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Diviseurs, multiples et nombres premiers",
+  "title": "Application : Diviseurs, multiples et nombres premiers",
+  "questions": [
+    {
+      "text": "Quel est le PGCD de $48$ et $60$ ?",
+      "options": [
+        "12",
+        "6",
+        "24",
+        "4"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Le PGCD se trouve en décomposant les nombres en facteurs premiers : $48 = 2^4 \\times 3$ et $60 = 2^2 \\times 3 \\times 5$. Les facteurs communs sont $2^2 \\times 3 = 12$. Les autres options correspondent à des diviseurs partiels ou à des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le PPCM de $12$ et $18$ ?",
+      "options": [
+        "36",
+        "24",
+        "54",
+        "72"
+      ],
+      "correctAnswer": "36",
+      "explanation": "Le PPCM s'obtient en prenant la plus grande puissance de chaque facteur premier présent : $12 = 2^2 \\times 3$, $18 = 2 \\times 3^2$. Donc PPCM $= 2^2 \\times 3^2 = 36$. Les autres valeurs sont soit des multiples communs non minimaux, soit des résultats d'erreurs sur les puissances.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $97$ est-il un nombre premier ?",
+      "options": [
+        "Oui, c'est un nombre premier",
+        "Non, il est divisible par $7$",
+        "Non, il est divisible par $13$",
+        "Non, il est divisible par $3$"
+      ],
+      "correctAnswer": "Oui, c'est un nombre premier",
+      "explanation": "On teste la divisibilité par les nombres premiers inférieurs à $\\sqrt{97} \\approx 9,8$, soit $2,3,5,7$. $97$ n'est divisible par aucun d'eux, donc c'est un nombre premier. Les autres options proposent des diviseurs faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez la fraction $\\frac{84}{126}$ en utilisant le PGCD.",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{4}{5}$",
+        "$\\frac{5}{6}$"
+      ],
+      "correctAnswer": "$\\frac{2}{3}$",
+      "explanation": "Le PGCD de $84$ et $126$ est $42$ ($84 = 42 \\times 2$, $126 = 42 \\times 3$). En divisant numérateur et dénominateur par $42$, on obtient $\\frac{2}{3}$. Les autres fractions correspondent à des simplifications partielles ou erronées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle de dimensions $84$ cm sur $126$ cm doit être pavé par des carreaux carrés identiques de côté entier le plus grand possible. Quelle est la longueur du côté de ces carreaux ?",
+      "options": [
+        "$42$ cm",
+        "$21$ cm",
+        "$14$ cm",
+        "$7$ cm"
+      ],
+      "correctAnswer": "$42$ cm",
+      "explanation": "La longueur du côté du plus grand carré possible est le PGCD de $84$ et $126$. $84 = 2^2 \\times 3 \\times 7$, $126 = 2 \\times 3^2 \\times 7$, donc PGCD $= 2 \\times 3 \\times 7 = 42$. Les autres options sont des diviseurs communs mais pas le plus grand.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

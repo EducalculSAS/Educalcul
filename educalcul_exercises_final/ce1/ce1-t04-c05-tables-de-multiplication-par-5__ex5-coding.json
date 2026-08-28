@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 102,
+  "_course_code": "ce1-t04-c05-tables-de-multiplication-par-5",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Compter de 5 en 5",
+  "title": "Approfondissement : Compter de 5 en 5 - Algorithmes",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme pour afficher les dix premiers multiples de 5",
+      "content": "Écris un algorithme (en pseudo‑code) qui affiche les dix premiers multiples de $5$ en commençant par $5$.",
+      "correctAnswer": "Algorithme :\\nDébut\\nPour i de 1 à 10 faire\\n    Afficher $5 \\times i$\\nFin pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une boucle pour i de 1 à 10. À chaque tour, il calcule $5 \\times i$ et l'affiche. Ainsi on obtient $5, 10, 15, 20, 25, 30, 35, 40, 45, 50$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule du n-ième multiple de 5",
+      "content": "Donne la formule mathématique pour obtenir le n‑ième multiple de $5$ et écris un algorithme qui, pour une valeur donnée de $n$, affiche ce multiple.",
+      "correctAnswer": "Formule : $multiple = 5 \\times n$\\nAlgorithme :\\nDébut\\nLire n\\nmultiple ← $5 \\times n$\\nAfficher multiple\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le n‑ième multiple de $5$ est le produit de $5$ par $n$. L'algorithme lit la valeur de $n$, calcule le produit $5 \\times n$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compter de 5 en 5 jusqu'à une limite",
+      "content": "Écris un algorithme qui commence à $5$ et compte de $5$ en $5$ jusqu'à atteindre ou dépasser $50$, en affichant chaque nombre.",
+      "correctAnswer": "Algorithme :\\nDébut\\nnombre ← $5$\\nTant que nombre ≤ $50$ faire\\n    Afficher nombre\\n    nombre ← nombre + $5$\\nFin tant que\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la variable nombre à $5$. La boucle tant que continue tant que nombre est inférieur ou égal à $50$. À chaque itération, on affiche la valeur courante puis on ajoute $5$. Cela produit la suite $5, 10, 15, 20, 25, 30, 35, 40, 45, 50$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 291,
+  "_course_code": "cm2-t03-c03-division-euclidienne",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Technique",
+  "title": "La technique de la division euclidienne",
+  "questions": [
+    {
+      "text": "Dans la division $125$ divisé par $5$, comment appelle t on le nombre $125$ ?",
+      "options": [
+        "Le quotient",
+        "Le dividende",
+        "Le diviseur",
+        "Le reste"
+      ],
+      "correctAnswer": "Le dividende",
+      "explanation": "Le dividende est le nombre que l on souhaite partager ou diviser. Ici, on partage $125$ en $5$ parts.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour effectuer la division de $846$ par $3$, par quel chiffre commence t on l estimation du quotient ?",
+      "options": [
+        "Le chiffre $6$ des unités",
+        "Le chiffre $4$ des dizaines",
+        "Le chiffre $8$ des centaines",
+        "On commence par additionner tous les chiffres"
+      ],
+      "correctAnswer": "Le chiffre $8$ des centaines",
+      "explanation": "Dans la technique opératoire, on commence toujours par la gauche. On regarde si le premier chiffre du dividende, ici $8$, est supérieur ou égal au diviseur $3$. C est le cas, donc on commence par les centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on divise $47$ par $5$, on trouve un quotient de $9$ et un reste de $2$. Quelle règle est respectée ici ?",
+      "options": [
+        "Le reste doit être égal au diviseur",
+        "Le reste doit être toujours plus petit que le diviseur",
+        "Le reste doit être plus grand que le quotient",
+        "Le reste doit être un nombre pair"
+      ],
+      "correctAnswer": "Le reste doit être toujours plus petit que le diviseur",
+      "explanation": "Par définition, dans une division euclidienne, le reste doit être strictement inférieur au diviseur. Ici, $2$ est bien plus petit que $5$. Si le reste était de $6$, on pourrait encore diviser une fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l égalité qui permet de vérifier le résultat d une division avec un dividende $D$, un diviseur $d$, un quotient $q$ et un reste $r$ ?",
+      "options": [
+        "$D = d + q + r$",
+        "$D = q \\times r + d$",
+        "$D = d \\times q + r$",
+        "$D = (d + q) \\times r$"
+      ],
+      "correctAnswer": "$D = d \\times q + r$",
+      "explanation": "Pour vérifier une division, on multiplie le diviseur par le quotient et on ajoute le reste. Le résultat doit être égal au dividende initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On pose la division de $752$ par $4$. On trouve que dans $7$ centaines, il y a $1$ fois $4$ centaines et il reste $3$ centaines. Quelle est l étape suivante ?",
+      "options": [
+        "On écrit $3$ au quotient",
+        "On abaisse le chiffre $5$ et on considère $35$ dizaines",
+        "On recommence la division avec le nombre $3$",
+        "On s arrête car on a trouvé le reste"
+      ],
+      "correctAnswer": "On abaisse le chiffre $5$ et on considère $35$ dizaines",
+      "explanation": "Après avoir soustrait $4$ de $7$, le reste est $3$. On abaisse alors le chiffre des dizaines, le $5$, pour former le nombre $35$ que l on divise ensuite par $4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

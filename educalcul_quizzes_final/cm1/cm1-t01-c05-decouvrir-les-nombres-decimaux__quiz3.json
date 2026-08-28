@@ -1,0 +1,124 @@
+{
+  "_status": "done",
+  "_course_id": 215,
+  "_course_code": "cm1-t01-c05-decouvrir-les-nombres-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Relier à fractions décimales",
+  "title": "Relier nombres décimaux et fractions décimales",
+  "questions": [
+    {
+      "text": "Quelle fraction décimale correspond au nombre décimal $0,3$ ?",
+      "options": [
+        "$3/10$",
+        "$3/100$",
+        "$1/3$",
+        "$10/3$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "Le nombre $0,3$ se lit 'trois dixièmes'. Le chiffre 3 est au rang des dixièmes (premier chiffre après la virgule), ce qui s'écrit en fraction $3/10$. L'option $3/100$ correspondrait à $0,03$ (trois centièmes). Les options $1/3$ et $10/3$ ne sont pas des fractions décimales (dénominateur non multiple de 10).",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 10,
+        "shape": "bar",
+        "caption": "Représentation de 3 dixièmes"
+      }
+    },
+    {
+      "text": "La grille ci-dessous représente un nombre décimal. Quelle fraction décimale est équivalente ?",
+      "options": [
+        "$25/100$",
+        "$25/10$",
+        "$2/5$",
+        "$5/2$"
+      ],
+      "correctAnswer": "$25/100$",
+      "explanation": "La grille comporte 100 cases (10x10) et 25 sont coloriées. Cela représente 25 centièmes, soit la fraction $25/100$. En nombre décimal, cela s'écrit $0,25$. L'option $25/10$ vaut $2,5$. Les options $2/5$ et $5/2$ sont des fractions mais pas des fractions décimales (dénominateur non multiple de 10).",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 10,
+        "cols": 10,
+        "highlighted": 25,
+        "caption": "25 cases sur 100 coloriées"
+      }
+    },
+    {
+      "text": "Comment écrire la fraction décimale $47/100$ en nombre décimal ?",
+      "options": [
+        "$0,47$",
+        "$0,74$",
+        "$4,7$",
+        "$47$"
+      ],
+      "correctAnswer": "$0,47$",
+      "explanation": "Le dénominateur est 100 (centièmes), donc il faut deux chiffres après la virgule. Le numérateur 47 s'écrit avec le 4 au rang des dixièmes et le 7 au rang des centièmes : $0,47$. L'option $0,74$ inverse les chiffres. L'option $4,7$ correspond à $47/10$. L'option $47$ est un nombre entier.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 0.47,
+        "caption": "Tableau de position pour 47 centièmes"
+      }
+    },
+    {
+      "text": "Quelle écriture décimale correspond à la décomposition $2 + 4/10 + 5/100$ ?",
+      "options": [
+        "$2,45$",
+        "$2,045$",
+        "$24,5$",
+        "$2,54$"
+      ],
+      "correctAnswer": "$2,45$",
+      "explanation": "On place les chiffres selon leur valeur de position : 2 unités, 4 dixièmes (premier après la virgule) et 5 centièmes (deuxième après la virgule). Cela donne $2,45$. L'option $2,045$ ajouterait des millièmes. L'option $24,5$ décale les unités. L'option $2,54$ inverse les dixièmes et les centièmes.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Unités",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Dixièmes",
+            "value": 4,
+            "tone": "green"
+          },
+          {
+            "label": "Centièmes",
+            "value": 5,
+            "tone": "red"
+          }
+        ],
+        "caption": "Décomposition de 2,45"
+      }
+    },
+    {
+      "text": "Sur la droite graduée, le point A se trouve à $0,8$. Quelle fraction décimale correspond à cette position ?",
+      "options": [
+        "$8/10$",
+        "$8/100$",
+        "$80/10$",
+        "$10/8$"
+      ],
+      "correctAnswer": "$8/10$",
+      "explanation": "Le nombre $0,8$ se lit 'huit dixièmes'. Il correspond donc à la fraction $8/10$. On peut aussi l'écrire $80/100$ (quatre-vingts centièmes) mais cette option n'est pas proposée. L'option $8/100$ vaut $0,08$. L'option $80/10$ vaut $8$. L'option $10/8$ n'est pas une fraction décimale.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.8,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

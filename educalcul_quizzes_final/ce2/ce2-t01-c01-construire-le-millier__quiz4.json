@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 142,
+  "_course_code": "ce2-t01-c01-construire-le-millier",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Construire le millier",
+  "title": "Quiz : Construire le millier",
+  "questions": [
+    {
+      "text": "Combien de centaines forment $1000$ ?",
+      "options": [
+        "$10$ centaines",
+        "$100$ centaines",
+        "$1000$ centaines",
+        "$1$ centaine"
+      ],
+      "correctAnswer": "$10$ centaines",
+      "explanation": "Un millier correspond à $10$ centaines car $10 × 100 = 1000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si j'ai $7$ centaines, combien de dizaines faut-il ajouter pour obtenir $1000$ ?",
+      "options": [
+        "$30$ dizaines",
+        "$3$ dizaines",
+        "$300$ dizaines",
+        "$13$ dizaines"
+      ],
+      "correctAnswer": "$30$ dizaines",
+      "explanation": "$7$ centaines = $700$. $1000 - 700 = 300$. $300$ correspondent à $30$ dizaines car $30 × 10 = 300$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez la représentation en blocs de base 10 : $9$ centaines, $9$ dizaines et $9$ unités. Combien faut-il ajouter pour atteindre $1000$ ?",
+      "options": [
+        "$1$",
+        "$10$",
+        "$100$",
+        "$0$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "Le total affiché est $9 × 100 + 9 × 10 + 9 = 999$. Il manque $1$ pour faire $1000$.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 9,
+        "tens": 9,
+        "units": 9,
+        "caption": "Représentation de 999 en blocs de base 10"
+      }
+    },
+    {
+      "text": "Quel nombre suit $999$ ?",
+      "options": [
+        "$1000$",
+        "$990$",
+        "$100$",
+        "$1001$"
+      ],
+      "correctAnswer": "$1000$",
+      "explanation": "Le nombre qui suit $999$ est $1000$, car $999 + 1 = 1000$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment décomposer $1000$ en centaines, dizaines et unités ?",
+      "options": [
+        "$10$ centaines, $0$ dizaine, $0$ unité",
+        "$100$ centaines, $0$ dizaine, $0$ unité",
+        "$1$ centaine, $0$ dizaine, $0$ unité",
+        "$10$ centaines, $10$ dizaines, $10$ unités"
+      ],
+      "correctAnswer": "$10$ centaines, $0$ dizaine, $0$ unité",
+      "explanation": "$1000 = 10 × 100 + 0 × 10 + 0 × 1$, soit $10$ centaines, $0$ dizaine et $0$ unité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

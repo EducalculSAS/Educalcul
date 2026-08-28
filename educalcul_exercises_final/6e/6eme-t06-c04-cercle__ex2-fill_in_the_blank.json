@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Constructions",
+  "title": "Constructions de cercles",
+  "blocks": [
+    {
+      "title": "Vocabulaire de la construction",
+      "content": "Pour tracer un cercle, on utilise un {{1}} et on place sa pointe sur le {{2}} du cercle.",
+      "correctAnswer": "",
+      "blanks": [
+        "compas",
+        "centre"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le compas est l'instrument permettant de tracer un cercle. La pointe du compas se place sur le centre du cercle, qui est le point équidistant de tous les points du cercle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un cercle de centre et rayon donnés",
+      "content": "Pour tracer un cercle de centre $O$ et de rayon $3\\,cm$, on écarte les branches du compas jusqu'à obtenir une ouverture de ${{1}}\\,cm$, puis on pose la pointe sur le point ${{2}}$ et on fait tourner le compas.",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "O"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On règle l'ouverture du compas sur la longueur du rayon, ici $3\\,cm$. La pointe du compas se place sur le centre $O$. En faisant tourner le compas, la mine trace le cercle de centre $O$ et de rayon $3\\,cm$.",
+      "points": 2,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Compas pour tracer un cercle de centre O"
+      }
+    },
+    {
+      "title": "Construction d'un cercle de diamètre donné",
+      "content": "Si on veut tracer un cercle passant par deux points $A$ et $B$ et ayant pour centre le milieu de $[AB]$, on commence par construire le {{1}} de $[AB]$, puis on place la pointe du compas sur ce {{2}} et on règle l'ouverture sur la distance jusqu'à $A$ (ou $B$).",
+      "correctAnswer": "",
+      "blanks": [
+        "milieu",
+        "milieu"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le centre du cercle est le milieu du segment $[AB]$. On construit d'abord ce milieu (par la médiatrice par exemple). Ensuite, en plaçant la pointe du compas sur ce milieu et en réglant l'ouverture sur la distance jusqu'à $A$, on trace le cercle de diamètre $[AB]$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

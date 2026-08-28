@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Coefficient",
+  "title": "Repérer le coefficient directeur",
+  "blocks": [
+    {
+      "title": "Expression algébrique",
+      "content": "Relie chaque fonction linéaire à son coefficient directeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x) = 3x + 2$",
+          "right": "$3$"
+        },
+        {
+          "left": "$g(x) = -5x$",
+          "right": "$-5$"
+        },
+        {
+          "left": "$h(x) = 0,5x - 4$",
+          "right": "$0,5$"
+        },
+        {
+          "left": "$k(x) = 7$",
+          "right": "$0$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans l'expression d'une fonction linéaire $f(x) = ax + b$, le coefficient directeur est le nombre $a$ qui multiplie $x$. Pour $f(x) = 3x + 2$, $a = 3$. Pour $g(x) = -5x$, $a = -5$. Pour $h(x) = 0,5x - 4$, $a = 0,5$. Pour $k(x) = 7$, il n'y a pas de $x$, c'est une fonction constante, son coefficient directeur est $0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tableau de valeurs",
+      "content": "Relie chaque tableau de valeurs à coefficient directeur de la fonction linéaire correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x$ : 0 ; 1 ; 2\\n$y$ : 1 ; 4 ; 7",
+          "right": "$3$"
+        },
+        {
+          "left": "$x$ : 2 ; 4 ; 6\\n$y$ : 10 ; 4 ; -2",
+          "right": "$-3$"
+        },
+        {
+          "left": "$x$ : 1 ; 3 ; 5\\n$y$ : 2 ; 6 ; 10",
+          "right": "$2$"
+        },
+        {
+          "left": "$x$ : -1 ; 0 ; 1\\n$y$ : 5 ; 5 ; 5",
+          "right": "$0$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le coefficient directeur $a$ est le taux de variation : $a = \\frac{y_2 - y_1}{x_2 - x_1}$. Premier tableau : quand $x$ augmente de $1$, $y$ augmente de $3$, donc $a = 3$. Deuxième : quand $x$ augmente de $2$, $y$ diminue de $6$, donc $a = -6/2 = -3$. Troisième : $x$ augmente de $2$, $y$ augmente de $4$, donc $a = 4/2 = 2$. Quatrième : $y$ ne change pas, $a = 0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Description géométrique ou numérique",
+      "content": "Relie chaque description à son coefficient directeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Droite passant par $(0;0)$ et $(1;-2)$",
+          "right": "$-2$"
+        },
+        {
+          "left": "Droite passant par $(0;5)$ et $(3;5)$",
+          "right": "$0$"
+        },
+        {
+          "left": "Triangle de pente : horizontal $4$, vertical $-8$",
+          "right": "$-2$"
+        },
+        {
+          "left": "Fonction $f$ telle que $f(2)=8$ et $f(5)=2$",
+          "right": "$-2$"
+        }
+      ],
+      "items": [],
+      "explanation": "On calcule $a = \\frac{\\text{variation de } y}{\\text{variation de } x}$. Droite par $(0;0)$ et $(1;-2)$ : $a = (-2-0)/(1-0) = -2$. Droite horizontale par $(0;5)$ et $(3;5)$ : variation $y = 0$, donc $a = 0$. Triangle de pente : $a = -8/4 = -2$. Fonction $f$ : $a = (2-8)/(5-2) = -6/3 = -2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

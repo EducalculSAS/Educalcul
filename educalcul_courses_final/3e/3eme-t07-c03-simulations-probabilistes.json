@@ -1,0 +1,399 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.003057+00:00",
+  "id": 492,
+  "code": "3eme-t07-c03",
+  "title": "Simulations probabilistes",
+  "description": "Cours structuré Educalcul : Simulations probabilistes.",
+  "subject": "Algorithmique et préparation DNB",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Algorithmique et préparation DNB",
+    "titre_du_cours": "Simulations probabilistes",
+    "objectif_global": "Simulations probabilistes",
+    "mini_lecons_imposees": [
+      "Répéter.",
+      "Compter.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et préparation DNB",
+      "lessons": [
+        {
+          "title": "Répéter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances une pièce de monnaie une seule fois : tu obtiens soit pile, soit face, mais tu ne peux pas deviner laquelle. Si tu recommences l'expérience un grand nombre de fois, une régularité apparaît : la proportion de piles se rapproche de $0,5$. C'est l'idée fondamentale de la simulation probabiliste : répéter un grand nombre de fois un aléa pour en observer les fréquences. En 3e, nous allons apprendre à programmer cette répétition pour estimer des probabilités sans avoir à lancer physiquement des dés ou des pièces des centaines de fois."
+            },
+            {
+              "type": "definition",
+              "term": "Simulation probabiliste",
+              "definition": "Procédé qui consiste à reproduire artificiellement un grand nombre de fois une expérience aléatoire à l'aide d'un algorithme, afin d'observer les fréquences des différents résultats et d'estimer leurs probabilités.",
+              "example": "Simuler $1000$ lancers de dé pour estimer la probabilité d'obtenir un $6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi répéter ? Parce qu'un seul essai ne donne aucune information fiable. Si tu lances un dé une fois et obtiens un $3$, tu ne peux pas conclure que le $3$ est plus probable que les autres faces. En répétant l'expérience, les irrégularités dues au hasard s'atténuent et les fréquences se stabilisent autour des probabilités théoriques. C'est ce qu'on appelle la loi des grands nombres, que nous verrons plus en détail dans la prochaine leçon. Pour l'instant, retenons que la répétition est le moteur de toute simulation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Définir l'expérience aléatoire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie clairement ce que tu simules : lancer un dé, tirer une boule dans une urne, faire tourner une roulette, etc. Note les issues possibles et leurs probabilités théoriques si tu les connais."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir un générateur de nombres aléatoires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur une calculatrice ou en Python, la fonction $aleatoire()$ (ou $random()$) renvoie un nombre décimal entre $0$ (inclus) et $1$ (exclus). Pour simuler un dé à $6$ faces, on transformera ce nombre en un entier de $1$ à $6$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire la boucle de répétition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On utilise une structure \"Pour $i$ de $1$ à $N$ faire\" où $N$ est le nombre de répétitions (par exemple $1000$). À l'intérieur de la boucle, on génère un nombre aléatoire, on le convertit en issue de l'expérience, et on stocke ou on compte le résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Exécuter et collecter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lance l'algorithme. À la fin, tu disposeras d'une liste de $N$ résultats simulés. Nous verrons dans la leçon suivante comment les compter efficacement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons vu la structure générale d'un algorithme de simulation, regardons de plus près comment transformer un nombre aléatoire entre $0$ et $1$ en une issue concrète. C'est une étape cruciale : si la conversion est mal faite, la simulation ne respectera pas les probabilités voulues. Prenons l'exemple d'un dé truqué dont les probabilités sont : $P(1)=0,1$, $P(2)=0,2$, $P(3)=0,1$, $P(4)=0,3$, $P(5)=0,2$, $P(6)=0,1$. Comment écrire le test conditionnel ?"
+            },
+            {
+              "type": "display_math",
+              "latex": "x = aleatoire()\\n\\text{Si } x < 0,1 \\text{ alors face } 1\\n\\text{Sinon si } x < 0,3 \\text{ alors face } 2\\n\\text{Sinon si } x < 0,4 \\text{ alors face } 3\\n\\text{Sinon si } x < 0,7 \\text{ alors face } 4\\n\\text{Sinon si } x < 0,9 \\text{ alors face } 5\\n\\text{Sinon face } 6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que les seuils s'accumulent : $0,1$, puis $0,1+0,2=0,3$, puis $0,3+0,1=0,4$, etc. Cette méthode des intervalles successifs fonctionne pour toute distribution de probabilité discrète. Elle garantit que la proportion de fois où le nombre aléatoire tombe dans l'intervalle correspondant à une face est exactement égale à la probabilité de cette face. C'est la traduction algorithmique de la définition même de la probabilité comme mesure d'un ensemble d'issues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à la leçon suivante, essayons de simuler une expérience à deux étapes : lancer deux dés et regarder la somme. Ici, il faut répéter la génération de deux nombres aléatoires à chaque tour de boucle. On peut imbriquer deux instructions de tirage, ou mieux, créer une fonction $lancerDe()$ qu'on appelle deux fois. Cette modularité rend le code plus lisible et évite les erreurs de copier-coller. Dans le prochain exercice, tu écriras un algorithme complet pour simuler $500$ lancers de deux dés et afficher la liste des sommes obtenues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les bases pour programmer la répétition d'une expérience aléatoire. La clé est la boucle qui exécute le même bloc d'instructions un grand nombre de fois, en utilisant à chaque itération un nouveau nombre aléatoire. Dans la leçon \"Compter\", nous verrons comment transformer cette liste brute de résultats en fréquences exploitables, et comment choisir le nombre de répétitions $N$ pour obtenir une estimation fiable. Mais déjà, retiens qu'une simulation sans répétition n'est qu'un unique tirage, sans valeur statistique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en pseudo-code (ou en Python) un algorithme qui simule $100$ lancers d'une pièce de monnaie équilibrée et affiche le résultat de chaque lancer (\"Pile\" ou \"Face\").",
+              "answer": "Pour i de 1 à 100 faire\\n    x <- aleatoire()\\n    Si x < 0,5 alors afficher \"Pile\"\\n    Sinon afficher \"Face\"\\nFin pour",
+              "hint": "Utilise la fonction aleatoire() qui donne un nombre entre 0 et 1. La probabilité de Pile est 0,5.",
+              "explanation": "L'algorithme répète 100 fois : tire un nombre aléatoire, s'il est strictement inférieur à 0,5 c'est Pile, sinon c'est Face. Cela respecte l'équiprobabilité."
+            },
+            {
+              "question": "On veut simuler le tirage d'une carte dans un jeu de 32 cartes (valeurs : 7,8,9,10,Valet,Dame,Roi,As dans 4 couleurs). Donne la suite de tests conditionnels à écrire après x <- aleatoire() pour obtenir chaque carte avec la même probabilité.",
+              "answer": "Comme il y a 32 cartes équiprobables, chaque carte a une probabilité 1/32. Les seuils sont k/32 pour k de 1 à 31. Exemple : Si x < 1/32 alors carte 1, Sinon si x < 2/32 alors carte 2, ... Sinon carte 32.",
+              "hint": "32 issues équiprobalbles -> intervalles de longueur 1/32.",
+              "explanation": "La méthode des intervalles successifs s'applique : on partage [0,1[ en 32 intervalles de même longueur 1/32. Le k-ième intervalle correspond à la k-ième carte."
+            },
+            {
+              "question": "Écris un algorithme complet (avec initialisation, boucle, affichage final) qui simule 500 lancers de deux dés à 6 faces et stocke les sommes dans un tableau somme[500].",
+              "answer": "Tableau somme[500]\\nPour i de 1 à 500 faire\\n    d1 <- partie_entiere(aleatoire()*6)+1\\n    d2 <- partie_entiere(aleatoire()*6)+1\\n    somme[i] <- d1 + d2\\nFin pour\\nafficher somme",
+              "hint": "Pour un dé à 6 faces : partie_entiere(aleatoire()*6)+1 donne un entier entre 1 et 6.",
+              "explanation": "On génère deux dés indépendants par itération, on calcule leur somme, on la stocke. Après 500 itérations, le tableau contient 500 sommes comprises entre 2 et 12."
+            }
+          ]
+        },
+        {
+          "title": "Compter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant une liste de plusieurs centaines de résultats simulés : par exemple, les sommes de deux dés obtenues au fil de 500 lancers. Cette liste brute est indigeste : elle contient $500$ nombres entre $2$ et $12$. Pour en tirer une information probabiliste, nous devons les compter. Compter, c'est transformer une suite de résultats en un tableau de fréquences : pour chaque valeur possible, combien de fois est-elle apparue ? C'est la première étape pour comparer la simulation à la théorie."
+            },
+            {
+              "type": "definition",
+              "term": "Fréquence d'apparition",
+              "definition": "Pour une issue $A$ d'une expérience aléatoire répétée $N$ fois, la fréquence de $A$ est le quotient du nombre d'occurrences de $A$ par $N$. On la note souvent $f_N(A)$.",
+              "example": "Si sur $500$ lancers de deux dés la somme $7$ apparaît $82$ fois, sa fréquence est $f_{500}(7) = 82/500 = 0,164$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour compter efficacement, on utilise un tableau d'entiers (un compteur par issue possible) qu'on initialise à zéro. À chaque nouvelle simulation, on incrémente le compteur correspondant à l'issue observée. En algorithmique, cela s'écrit simplement : $compteur[issue] <- compteur[issue] + 1$. Cette opération est extrêmement rapide pour l'ordinateur, même pour des millions de répétitions. C'est toute la puissance de la simulation informatique : elle accomplit en une fraction de seconde ce qui prendrait des jours à un humain."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Initialiser les compteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Crée un tableau (ou un dictionnaire) avec une case pour chaque issue possible, toutes mises à $0$. Pour deux dés, les sommes vont de $2$ à $12$, donc $11$ cases."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Incrémenter pendant la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'intérieur de la boucle de répétition, après avoir obtenu l'issue (ici la somme), fais $compteur[somme] <- compteur[somme] + 1$. Ainsi, chaque essai alimente directement les statistiques."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer les fréquences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Après la boucle, pour chaque issue $k$, la fréquence est $f(k) = compteur[k] / N$. On peut alors afficher un tableau à deux colonnes : issue et fréquence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Visualiser (optionnel)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un diagramme en barres (bar_chart) permet de comparer visuellement les fréquences observées aux probabilités théoriques. Nous en ferons un dans l'exercice."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons compter, posons-nous une question essentielle : combien de répétitions $N$ sont nécessaires pour que les fréquences soient proches des probabilités théoriques ? C'est là qu'intervient la loi des grands nombres : plus $N$ est grand, plus les fréquentes se stabilisent. Mais \"grand\" est relatif. Pour une pièce équilibrée, $N=100$ donne déjà une fréquence de pile souvent entre $0,45$ et $0,55$. Pour un événement rare (probabilité $0,01$), il faut $N=10\\,000$ pour espérer l'observer environ $100$ fois et avoir une fréquence stable. En pratique, on choisit $N$ en fonction de la précision souhaitée et du temps de calcul disponible."
+            },
+            {
+              "type": "display_math",
+              "latex": "f_N(A) \\xrightarrow[N\\to\\infty]{} P(A)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette flèche signifie que la fréquence $f_N(A)$ tend vers la probabilité $P(A)$ quand le nombre de répétitions $N$ tend vers l'infini. C'est un théorème mathématique rigoureux, pas seulement une observation empirique. Il nous garantit qu'en augmentant $N$, notre estimation s'améliore inexorablement. Cependant, la convergence n'est pas monotone : la fréquence peut osciller autour de la probabilité avant de s'en approcher durablement. C'est pourquoi on regarde souvent l'évolution de la fréquence en fonction de $N$ (courbe de convergence) pour juger de la stabilité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que nous simisions un événement de probabilité théorique $0,3$. Après $N=200$ répétitions, nous obtenons une fréquence de $0,35$. Est-ce une mauvaise simulation ? Pas nécessairement. L'écart $|0,35-0,3| = 0,05$ est tout à fait plausible pour $N=200$. Pour quantifier cet écart, les statisticiens utilisent des intervalles de confiance, que nous aborderons dans la leçon \"Interpréter\". Pour l'instant, garde en tête que la fréquence observée fluctue naturellement autour de la probabilité théorique, et que la taille de cette fluctuation diminue quand $N$ augmente. Dans l'exercice suivant, tu vas comparer les fréquences obtenues pour différents $N$ sur la même expérience."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les outils pour répéter une expérience aléatoire (leçon 1) et pour compter les occurrences de chaque issue afin d'obtenir des fréquences (cette leçon). La prochaine étape, \"Interpréter\", consistera à donner du sens à ces fréquences : comment décider si la simulation est conforme à la théorie ? Comment construire un intervalle de confiance pour la probabilité inconnue ? Comment présenter tes résultats de manière rigoureuse ? C'est ce que nous verrons ensemble pour clore ce chapitre sur les simulations probabilistes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'algorithme suivant pour qu'il simule 1000 lancers de deux dés, compte les occurrences de chaque somme (de 2 à 12) et affiche le tableau des fréquences.\\n\\nTableau compteur[13] initialisé à 0\\nPour i de 1 à 1000 faire\\n    d1 <- ...\\n    d2 <- ...\\n    s <- d1 + d2\\n    compteur[s] <- compteur[s] + 1\\nFin pour\\nPour k de 2 à 12 faire\\n    afficher k, compteur[k]/1000\\nFin pour",
+              "answer": "d1 <- partie_entiere(aleatoire()*6)+1\\nd2 <- partie_entiere(aleatoire()*6)+1",
+              "hint": "Rappelle-toi la formule pour simuler un dé à 6 faces.",
+              "explanation": "On génère deux dés indépendants, on calcule leur somme s, on incrémente le compteur correspondant. Après la boucle, on divise chaque compteur par 1000 pour obtenir les fréquences."
+            },
+            {
+              "question": "On simule le lancer d'un dé équilibré. On note f_N(6) la fréquence du 6 après N lancers. Parmi les affirmations suivantes, laquelle est correcte ?\\nA) f_N(6) est toujours égale à 1/6.\\nB) f_N(6) tend vers 1/6 quand N augmente.\\nC) f_N(6) est supérieure à 1/6 pour tout N pair.\\nD) f_N(6) devient exactement 1/6 dès que N est multiple de 6.",
+              "answer": "B",
+              "hint": "Pense à la loi des grands nombres : convergence mais pas égalité exacte pour un N fini.",
+              "explanation": "La loi des grands nombres affirme que la fréquence converge vers la probabilité théorique quand le nombre d'essais tend vers l'infini. Pour tout N fini, la fréquence est une valeur aléatoire qui fluctue autour de 1/6."
+            },
+            {
+              "question": "On a simulé 500 fois une expérience à deux issues (Succès/Échec) de probabilité théorique p=0,4. On a obtenu 220 succès. Calcule la fréquence observée. Cette fréquence te semble-t-elle compatible avec p=0,4 ? Justifie brièvement.",
+              "answer": "Fréquence = 220/500 = 0,44. L'écart est de 0,04. Pour N=500, un écart de 0,04 est tout à fait plausible (intervalle de fluctuation environ [0,35;0,45] au seuil 95%). Donc oui, compatible.",
+              "hint": "Calcule 220/500. Rappelle-toi que la fluctuation typique est de l'ordre de 1/sqrt(N) ~ 0,045.",
+              "explanation": "La fréquence observée 0,44 diffère de 0,4 de 0,04. Pour N=500, l'erreur standard est sqrt(0,4*0,6/500) ≈ 0,022. L'écart de 0,04 correspond à moins de 2 écarts-types, ce qui est fréquent."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Nous avons simulé, nous avons compté, nous avons des fréquences. Maintenant, que faisons-nous de ces nombres ? Interpréter, c'est répondre à la question : \"Mes résultats de simulation sont-ils compatibles avec les probabilités théoriques ?\" ou, si la probabilité est inconnue : \"Quel intervalle de valeurs plausibles puis-je donner pour cette probabilité ?\" C'est le cœur de l'inférence statistique, et c'est exactement ce qu'on attend de toi au DNB : savoir lire un résultat de simulation, calculer une fréquence, et en déduire un intervalle de confiance au seuil de $95\\%$."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalle de confiance au seuil 95%",
+              "definition": "Pour une fréquence $f$ observée sur $N$ essais indépendants, un intervalle de confiance approximatif à $95\\%$ pour la probabilité $p$ est $\\left[ f - \\frac{1}{\\sqrt{N}} \\ ; \\ f + \\frac{1}{\\sqrt{N}} \\right]$. On dit que la vraie probabilité $p$ a $95\\%$ de chances d'appartenir à cet intervalle (si les conditions d'application sont respectées).",
+              "example": "Si $f=0,44$ pour $N=500$, l'intervalle est $\\left[0,44 - \\frac{1}{\\sqrt{500}} \\ ; \\ 0,44 + \\frac{1}{\\sqrt{500}} \\right] \\approx [0,395 \\ ; \\ 0,485]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : la formule $f \\pm 1/\\sqrt{N}$ est une approximation valable quand $N$ est assez grand (généralement $N \\ge 30$) et que la fréquence $f$ n'est pas trop proche de $0$ ou de $1$ (règle pratique : $Nf \\ge 5$ et $N(1-f) \\ge 5$). Si ces conditions ne sont pas remplies, l'intervalle peut dépasser $[0,1]$ et perdre son sens. Dans ce cas, on utilise des méthodes exactes (binomiales) que tu verras au lycée. Pour le brevet, on vérifie les conditions et on applique la formule."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les conditions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $Nf$ et $N(1-f)$. Si les deux sont $\\ge 5$, la formule approximative est utilisable. Sinon, signale-le et n'applique pas la formule aveuglément."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la marge d'erreur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La marge d'erreur est $1/\\sqrt{N}$. Elle ne dépend que de $N$, pas de $f$. Plus $N$ est grand, plus la marge est petite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire l'intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intervalle est $[f - 1/\\sqrt{N} \\ ; \\ f + 1/\\sqrt{N}]$. Arrondis les bornes à $10^{-3}$ ou $10^{-2}$ selon le contexte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter en phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exemple : \"Avec $95\\%$ de confiance, la probabilité de succès est comprise entre $0,395$ et $0,485$.\" N'oublie pas de mentionner le seuil $95\\%$ et la taille de l'échantillon $N$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons à notre simulation de deux dés. La probabilité théorique d'obtenir une somme de $7$ est $6/36 = 1/6 \\approx 0,1667$. Supposons qu'après $N=1000$ lancers simulés, nous ayons obtenu $f=0,158$ pour la somme $7$. L'intervalle de confiance à $95\\%$ est $[0,158 - 1/\\sqrt{1000} \\ ; \\ 0,158 + 1/\\sqrt{1000}] \\approx [0,126 \\ ; \\ 0,190]$. La valeur théorique $0,1667$ appartient bien à cet intervalle. On conclut que la simulation est compatible avec la théorie. Si la valeur théorique était en dehors, on suspecterait soit un bug dans l'algorithme, soit un dé truqué, soit un simple coup de malchance (risque de $5\\%$)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Intervalle de confiance pour la fréquence de la somme 7 (N=1000, f=0,158)",
+              "min": 0.1,
+              "max": 0.2,
+              "points": [
+                {
+                  "value": 0.158,
+                  "label": "f"
+                },
+                {
+                  "value": 0.1667,
+                  "label": "p théo"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0.126,
+                  "end": 0.19,
+                  "label": "IC 95%"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant que nous ne connaissions pas la probabilité théorique. La simulation nous sert alors à l'estimer. Par exemple, on simule un jeu dont on ignore l'équilibre. Après $N=2000$ parties, la fréquence de victoire est $f=0,512$. L'intervalle de confiance est $[0,512 - 1/\\sqrt{2000} \\ ; \\ 0,512 + 1/\\sqrt{2000}] \\approx [0,490 \\ ; \\ 0,534]$. Comme cet intervalle contient $0,5$, on ne peut pas affirmer que le jeu est favorable ou défavorable : il est compatible avec un jeu équilibré. Pour trancher, il faudrait augmenter $N$ pour réduire la marge d'erreur. C'est le dilemme classique : précision vs coût de calcul."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce cours, rappelle-toi les trois piliers : Répéter (programmer la boucle), Compter (obtenir les fréquences), Interpréter (construire et lire un intervalle de confiance). Ces trois compétences te permettront de résoudre n'importe quel problème de simulation probabiliste au DNB et au-delà. L'important n'est pas de mémoriser des formules, mais de comprendre le sens de chaque étape : pourquoi répète-t-on ? Pour stabiliser les fréquences. Pourquoi compte-t-on ? Pour résumer l'information. Pourquoi un intervalle ? Pour quantifier l'incertitude inhérente à tout échantillon fini. Bravo d'être arrivé au bout de ce parcours !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire un algorithme qui répète une expérience aléatoire N fois en utilisant une boucle et la fonction aleatoire().",
+                "Je sais transformer un nombre aléatoire entre 0 et 1 en une issue d'une expérience à probabilités données (méthode des intervalles).",
+                "Je sais initialiser des compteurs, les incrémenter dans la boucle et calculer les fréquences observées.",
+                "Je connais la formule de l'intervalle de confiance au seuil 95% : [f - 1/√N ; f + 1/√N] et je sais vérifier ses conditions d'application (Nf ≥ 5 et N(1-f) ≥ 5).",
+                "Je sais interpréter un intervalle de confiance : dire si une probabilité théorique est compatible avec la simulation, ou donner un intervalle plausible pour une probabilité inconnue."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a simulé 400 fois une expérience à deux issues. La fréquence de succès observée est f = 0,35. Vérifie les conditions d'application de l'intervalle de confiance approximatif. Puis calcule cet intervalle au seuil 95% (arrondi au millième).",
+              "answer": "Nf = 400*0,35 = 140 ≥ 5. N(1-f) = 400*0,65 = 260 ≥ 5. Conditions OK. Marge = 1/√400 = 1/20 = 0,05. Intervalle = [0,35 - 0,05 ; 0,35 + 0,05] = [0,300 ; 0,400].",
+              "hint": "Calcule Nf et N(1-f). La marge d'erreur est 1/√N.",
+              "explanation": "Les conditions sont satisfaites car 140 et 260 sont bien supérieurs à 5. La marge d'erreur est 1/√400 = 0,05. L'intervalle est [0,30 ; 0,40]."
+            },
+            {
+              "question": "La probabilité théorique de gagner à un jeu est p = 0,25. Après une simulation de N = 900 parties, on obtient une fréquence de victoire f = 0,22. La simulation est-elle compatible avec la théorie ? Justifie en calculant l'intervalle de confiance au seuil 95%.",
+              "answer": "Marge = 1/√900 = 1/30 ≈ 0,0333. Intervalle = [0,22 - 0,0333 ; 0,22 + 0,0333] = [0,1867 ; 0,2533]. p = 0,25 appartient à l'intervalle. Oui, la simulation est compatible.",
+              "hint": "Calcule 1/√900. Regarde si 0,25 est dans l'intervalle.",
+              "explanation": "L'intervalle de confiance à 95% est [0,1867 ; 0,2533]. La valeur théorique 0,25 se trouve à l'intérieur, donc on ne rejette pas l'hypothèse que la vraie probabilité est 0,25."
+            },
+            {
+              "question": "On veut estimer la probabilité p qu'un nouveau médicament soit efficace. On simule 2500 patients virtuels et on observe 1375 guérisons. Donne un intervalle de confiance au seuil 95% pour p. Peut-on affirmer que p > 0,5 ?",
+              "answer": "f = 1375/2500 = 0,55. Marge = 1/√2500 = 1/50 = 0,02. Intervalle = [0,53 ; 0,57]. Comme tout l'intervalle est > 0,5, on peut affirmer avec 95% de confiance que p > 0,5.",
+              "hint": "Calcule f, puis la marge. Regarde la borne inférieure de l'intervalle.",
+              "explanation": "La fréquence observée est 0,55. L'intervalle de confiance [0,53 ; 0,57] ne contient pas 0,5 et est entièrement au-dessus. On conclut que la probabilité d'efficacité est supérieure à 0,5 au seuil de confiance 95%."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

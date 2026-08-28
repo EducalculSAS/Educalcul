@@ -1,0 +1,48 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 115,
+  "_course_code": "ce1-t05-c08-problemes-a-deux-etapes",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Application : Problèmes à deux étapes",
+  "title": "Résoudre des problèmes à deux étapes : ordonner les opérations",
+  "blocks": [
+    {
+      "title": "Problème 1 : Les billes de Lucas",
+      "content": "Lucas a $45$ billes. Il en gagne $12$ puis il en perd $8$. Range les opérations dans l'ordre pour trouver combien il lui en reste à la fin.",
+      "items": [
+        "Étape 1 : J'ajoute les billes gagnées : $45 + 12 = 57$.",
+        "Étape 2 : Je retire les billes perdues : $57 - 8 = 49$.",
+        "Réponse : Il lui reste $49$ billes."
+      ],
+      "explanation": "On commence par le nombre initial de billes ($45$). La première action est un gain ($+12$), on fait donc l'addition $45 + 12 = 57$. La deuxième action est une perte ($-8$), on fait la soustraction $57 - 8 = 49$. Lucas a $49$ billes à la fin.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 2 : Les gâteaux de la fête",
+      "content": "Pour la fête, maman a fait $30$ gâteaux. Les enfants en ont mangé $18$. Ensuite, papa en a rapporté $15$ de plus. Range les opérations dans l'ordre pour trouver le nombre final de gâteaux.",
+      "items": [
+        "Étape 1 : Je retire les gâteaux mangés : $30 - 18 = 12$.",
+        "Étape 2 : J'ajoute les gâteaux rapportés : $12 + 15 = 27$.",
+        "Réponse : Il y a $27$ gâteaux maintenant."
+      ],
+      "explanation": "On part du total initial ($30$). La première action est une diminution (les enfants mangent), on soustrait : $30 - 18 = 12$. La deuxième action est une augmentation (papa en apporte), on additionne : $12 + 15 = 27$. Il reste $27$ gâteaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème 3 : L'argent de Léa",
+      "content": "Léa a $50$ €. Elle achète un livre à $23$ €. Puis sa grand-mère lui donne $10$ €. Range les opérations dans l'ordre pour savoir combien d'argent Léa possède à la fin.",
+      "items": [
+        "Étape 1 : Je retire le prix du livre : $50 - 23 = 27$.",
+        "Étape 2 : J'ajoute le cadeau de grand-mère : $27 + 10 = 37$.",
+        "Réponse : Léa a $37$ €."
+      ],
+      "explanation": "Léa commence avec $50$ €. Elle dépense $23$ € (soustraction) : $50 - 23 = 27$ €. Ensuite elle reçoit $10$ € (addition) : $27 + 10 = 37$ €. Léa possède $37$ € à la fin.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

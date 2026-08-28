@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 227,
+  "_course_code": "cm1-t03-c02-addition-et-soustraction-de-decimaux",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Aligner valeurs de position",
+  "title": "Algorithmes pour l'addition de nombres décimaux : alignement des valeurs de position",
+  "blocks": [
+    {
+      "title": "Algorithme d'alignement",
+      "content": "Écrire un algorithme en langage structuré (pseudo-code) qui décrit les étapes pour aligner correctement deux nombres décimaux $a$ et $b$ avant de les additionner. L'algorithme doit permettre de gérer le cas où les nombres n'ont pas le même nombre de chiffres après la virgule. Utiliser des instructions claires comme DEBUT, FIN, SI, ALORS, POUR, AFFICHER.",
+      "correctAnswer": "DEBUT\\n  LIRE a, b\\n  // Conversion en texte pour manipuler les chiffres\\n  chaineA <- ECRITURE(a)\\n  chaineB <- ECRITURE(b)\\n  // Recherche de la position de la virgule\\n  posVirguleA <- POSITION(chaineA, \",\")\\n  posVirguleB <- POSITION(chaineB, \",\")\\n  // Calcul du nombre de décimales\\n  nbDecA <- LONGUEUR(chaineA) - posVirguleA\\n  nbDecB <- LONGUEUR(chaineB) - posVirguleB\\n  // Alignement en ajoutant des zéros\\n  SI nbDecA < nbDecB ALORS\\n    AJOUTER (nbDecB - nbDecA) FOIS \"0\" A LA FIN DE chaineA\\n  SINON SI nbDecB < nbDecA ALORS\\n    AJOUTER (nbDecA - nbDecB) FOIS \"0\" A LA FIN DE chaineB\\n  FIN SI\\n  AFFICHER chaineA, chaineB\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par lire les deux nombres. Il les convertit en chaînes de caractères pour compter le nombre de chiffres après la virgule. Il calcule la différence entre ces deux longueurs et ajoute le nombre nécessaire de zéros à la fin du nombre qui a le moins de décimales. Ainsi, les deux nombres ont le même nombre de chiffres après la virgule et leurs valeurs de position (dixièmes, centièmes, etc.) sont alignées.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme d'addition colonne par colonne",
+      "content": "Deux nombres décimaux $a$ et $b$ sont déjà alignés (même nombre de chiffres après la virgule). Écrire la partie de l'algorithme qui effectue l'addition colonne par colonne, de la droite vers la gauche, en gérant les retenues. On suppose que les chiffres sont accessibles par index dans des tableaux $chiffresA$ et $chiffresB$ (indice 0 pour le chiffre le plus à droite). La variable $retenue$ est initialisée à 0.",
+      "correctAnswer": "resultat <- TABLEAU_VIDE\\nPOUR i DE 0 A TAILLE(chiffresA) - 1 FAIRE\\n  somme <- chiffresA[i] + chiffresB[i] + retenue\\n  chiffreResultat <- somme MODULO 10\\n  AJOUTER chiffreResultat AU DEBUT DE resultat\\n  SI somme >= 10 ALORS\\n    retenue <- 1\\n  SINON\\n    retenue <- 0\\n  FIN SI\\nFIN POUR\\nSI retenue = 1 ALORS\\n  AJOUTER 1 AU DEBUT DE resultat\\nFIN SI\\n// Remettre la virgule à la bonne position dans resultat\\nAFFICHER resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle parcourt les chiffres des unités vers la gauche (dizaines, centaines, dixièmes, etc.). À chaque étape, on additionne les deux chiffres correspondants et la retenue précédente. Le chiffre des unités de cette somme (modulo 10) devient le chiffre du résultat. Si la somme vaut 10 ou plus, la retenue pour l'étape suivante vaut 1, sinon 0. Après la boucle, s'il reste une retenue finale, on l'ajoute au début. Enfin, on replace la virgule au même rang que dans les nombres d'origine.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Fonction complète d'addition décimale",
+      "content": "Proposer un algorithme complet sous forme de fonction `AdditionDecimale(texteA, texteB)` qui prend deux nombres décimaux sous forme de texte (ex: \"12,5\" et \"3,75\"), réalise l'alignement des virgules, effectue l'addition et renvoie le résultat sous forme de texte. La fonction doit utiliser les étapes des deux questions précédentes.",
+      "correctAnswer": "FONCTION AdditionDecimale(texteA, texteB)\\n  // 1. Alignement\\n  posA <- POSITION(texteA, \",\")\\n  posB <- POSITION(texteB, \",\")\\n  decA <- LONGUEUR(texteA) - posA\\n  decB <- LONGUEUR(texteB) - posB\\n  SI decA < decB ALORS\\n    texteA <- texteA + \"0\" REPETE (decB - decA)\\n  SINON SI decB < decA ALORS\\n    texteB <- texteB + \"0\" REPETE (decA - decB)\\n  FIN SI\\n  // 2. Préparation tableaux chiffres (sans virgule)\\n  chaineSansVirguleA <- REMPLACER(texteA, \",\", \"\")\\n  chaineSansVirguleB <- REMPLACER(texteB, \",\", \"\")\\n  // Inverser pour avoir index 0 = unités\\n  tabA <- INVERSER(EN_TABLEAU(chaineSansVirguleA))\\n  tabB <- INVERSER(EN_TABLEAU(chaineSansVirguleB))\\n  // 3. Addition avec retenue\\n  retenue <- 0\\n  tabRes <- TABLEAU_VIDE\\n  POUR i DE 0 A LONGUEUR(tabA) - 1 FAIRE\\n    somme <- ENTIER(tabA[i]) + ENTIER(tabB[i]) + retenue\\n    AJOUTER (somme MODULO 10) A tabRes\\n    SI somme >= 10 ALORS retenue <- 1 SINON retenue <- 0 FIN SI\\n  FIN POUR\\n  SI retenue = 1 ALORS AJOUTER 1 A tabRes FIN SI\\n  // 4. Reconstruction résultat\\n  chaineRes <- INVERSER(tabRes) EN TEXTE\\n  // Insérer virgule au bon endroit (même position que texteA aligné)\\n  posVirguleRes <- LONGUEUR(chaineRes) - decA // decA = decB maintenant\\n  resultatFinal <- INSERER(chaineRes, \",\", posVirguleRes)\\n  RENVOYER resultatFinal\\nFIN FONCTION",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction structure le problème en quatre phases logiques. 1) Alignement : on compte les décimales et on complète par des zéros le plus court. 2) Préparation : on retire la virgule et on inverse l'ordre des chiffres pour faciliter l'indexation depuis la droite (index 0 = unités). 3) Calcul : boucle standard d'addition posant avec retenue. 4) Reconstruction : on remet les chiffres dans l'ordre, on replace la virgule au rang mémorisé (nombre de décimales alignées) et on renvoie le texte final.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

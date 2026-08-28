@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Lecture graphique",
+  "title": "Exercices de lecture graphique",
+  "blocks": [
+    {
+      "title": "Lecture d'une droite",
+      "content": "Relie chaque caractéristique de la droite à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pente de la droite",
+          "right": "$2$"
+        },
+        {
+          "left": "Ordonnée à l'origine",
+          "right": "$-3$"
+        },
+        {
+          "left": "Abscisse du point d'intersection avec l'axe des abscisses",
+          "right": "$1,5$"
+        },
+        {
+          "left": "Image de $2$ par la fonction",
+          "right": "$1$"
+        }
+      ],
+      "items": [],
+      "explanation": "La droite a pour équation $f(x)=2x-3$. Sa pente est $2$, son ordonnée à l'origine est $-3$. L'intersection avec l'axe des abscisses se trouve pour $2x-3=0$, soit $x=1,5$. L'image de $2$ est $f(2)=1$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2x-3",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=2x-3"
+      }
+    },
+    {
+      "title": "Lecture d'une parabole",
+      "content": "Relie chaque caractéristique de la parabole à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Abscisse du sommet",
+          "right": "$1$"
+        },
+        {
+          "left": "Ordonnée du sommet",
+          "right": "$-4$"
+        },
+        {
+          "left": "Plus petite abscisse d'intersection avec l'axe des abscisses",
+          "right": "$-1$"
+        },
+        {
+          "left": "Plus grande abscisse d'intersection avec l'axe des abscisses",
+          "right": "$3$"
+        },
+        {
+          "left": "Ordonnée à l'origine",
+          "right": "$-3$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fonction est $f(x)=x^2-2x-3$. Le sommet a pour abscisse $x_v = -b/(2a) = 1$ et pour ordonnée $f(1)=-4$. Les racines sont les solutions de $x^2-2x-3=0$, soit $x=-1$ et $x=3$. L'ordonnée à l'origine est $f(0)=-3$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-2x-3",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x)=x^2-2x-3"
+      }
+    },
+    {
+      "title": "Lecture d'une fonction cubique",
+      "content": "Relie chaque caractéristique du graphique à sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Abscisse du maximum local",
+          "right": "$-1$"
+        },
+        {
+          "left": "Ordonnée du maximum local",
+          "right": "$2$"
+        },
+        {
+          "left": "Abscisse du minimum local",
+          "right": "$1$"
+        },
+        {
+          "left": "Ordonnée du minimum local",
+          "right": "$-2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le graphique montre un maximum local au point de coordonnées $(-1;2)$ et un minimum local au point $(1;-2)$. On lit donc les abscisses $-1$ et $1$, et les ordonnées $2$ et $-2$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "x^3-3x",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de la fonction f(x)=x^3-3x"
+      }
+    }
+  ]
+}

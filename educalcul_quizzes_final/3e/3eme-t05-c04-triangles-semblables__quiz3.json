@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Applications",
+  "title": "Applications des triangles semblables - 3e",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, la droite $(DE)$ est parallèle à $(BC)$ avec $D \\in [AB]$ et $E \\in [AC]$. On a $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm. Quelle est la longueur de $EC$ ?",
+      "options": [
+        "2 cm",
+        "4 cm",
+        "6 cm",
+        "8 cm"
+      ],
+      "correctAnswer": "8 cm",
+      "explanation": "D'après le théorème de Thalès, $\\frac{AD}{AB} = \\frac{AE}{AC}$. Ici $AB = AD+DB = 9$ cm, donc $\\frac{3}{9} = \\frac{1}{3}$. On a $\\frac{AE}{AC} = \\frac{1}{3}$, donc $AC = 3 \\times AE = 12$ cm. Ainsi $EC = AC - AE = 12 - 4 = 8$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux triangles semblables $XYZ$ et $X'Y'Z'$ ont un rapport de similitude $k = 2,5$. Si le périmètre de $XYZ$ est $24$ cm, quel est le périmètre de $X'Y'Z'$ ?",
+      "options": [
+        "9,6 cm",
+        "12 cm",
+        "60 cm",
+        "48 cm"
+      ],
+      "correctAnswer": "60 cm",
+      "explanation": "Le périmètre d'une figure semblable est multiplié par le rapport de similitude. Donc $P' = k \\times P = 2,5 \\times 24 = 60$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un poteau vertical de $2,5$ m de haut projette une ombre de $4$ m au sol. Au même moment, un arbre projette une ombre de $12$ m. Quelle est la hauteur de l'arbre ?",
+      "options": [
+        "5 m",
+        "7,5 m",
+        "10 m",
+        "15 m"
+      ],
+      "correctAnswer": "7,5 m",
+      "explanation": "Les triangles formés par le poteau et son ombre, et par l'arbre et son ombre, sont semblables. Le rapport $\\frac{hauteur}{ombre}$ est constant : $\\frac{2,5}{4} = 0,625$. Hauteur de l'arbre $= 0,625 \\times 12 = 7,5$ m.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle rectangle $ABC$ rectangle en $A$, la hauteur issue de $A$ coupe l'hypoténuse $BC$ en $H$. On a $BH = 3$ cm et $HC = 12$ cm. Quelle est la longueur de $AH$ ?",
+      "options": [
+        "4 cm",
+        "6 cm",
+        "8 cm",
+        "9 cm"
+      ],
+      "correctAnswer": "6 cm",
+      "explanation": "Dans un triangle rectangle, la hauteur relative à l'hypoténuse vérifie $AH^2 = BH \\times HC$. Donc $AH^2 = 3 \\times 12 = 36$ et $AH = \\sqrt{36} = 6$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un plan d'architecte représente une pièce rectangulaire de dimensions réelles $6$ m sur $8$ m. Sur le plan, la longueur de $6$ m est tracée à $15$ cm. Quelle est la largeur de la pièce sur le plan ?",
+      "options": [
+        "18 cm",
+        "20 cm",
+        "22 cm",
+        "24 cm"
+      ],
+      "correctAnswer": "20 cm",
+      "explanation": "L'échelle du plan est $\\frac{15 \\text{ cm}}{6 \\text{ m}} = 2,5 \\text{ cm/m}$. La largeur réelle est $8$ m, donc sur le plan elle mesure $8 \\times 2,5 = 20$ cm.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

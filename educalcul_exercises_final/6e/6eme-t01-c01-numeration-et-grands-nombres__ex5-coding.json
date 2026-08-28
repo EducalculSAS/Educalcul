@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 331,
+  "_course_code": "6eme-t01-c01-numeration-et-grands-nombres",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Lire / écrire",
+  "title": "Approfondissement : Lire / écrire - Algorithmes",
+  "blocks": [
+    {
+      "title": "Décomposition en classes de milliers",
+      "content": "Écrire un algorithme (en pseudo‑code) qui prend en entrée un entier naturel $n$ (jusqu'à $999999999$) et affiche sa décomposition en millions, milliers et unités sous la forme « $a$ millions $b$ milliers $c$ » où $a$, $b$, $c$ sont des nombres à trois chiffres (avec zéros initiaux si nécessaire).",
+      "correctAnswer": "Algorithme : lire n ; millions ← partie entière de n / $1000000$ ; reste ← n modulo $1000000$ ; milliers ← partie entière de reste / $1000$ ; unités ← reste modulo $1000$ ; afficher millions, milliers, unités sur trois chiffres chacun (complétés par des zéros à gauche).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division euclidienne par $1000000$ pour isoler les millions, puis par $1000$ pour isoler les milliers, le reste donnant les unités. Chaque partie est formatée sur trois chiffres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écriture en lettres d'un nombre inférieur à 1000",
+      "content": "Écrire un algorithme qui prend en entrée un entier $n$ entre $0$ et $999$ et renvoie son écriture en lettres selon les règles françaises (par exemple $21$ → « vingt et un », $80$ → « quatre-vingts », $305$ → « trois cent cinq »).",
+      "correctAnswer": "Algorithme : disposer des tableaux pour les unités (zéro à neuf), les dizaines (dix, onze, ..., dix-neuf, vingt, trente, ..., quatre-vingt-dix) et les centaines ; décomposer $n$ en centaines, dizaines, unités ; construire la chaîne en suivant les règles : « cent » sans s au pluriel sauf si suivi de rien, « vingt » et « cent » prennent un s quand ils sont multipliés et non suivis d'un autre nombre, trait d'union entre les mots, « et » pour $21$, $31$, $41$, $51$, $61$, $71$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise la décomposition en centaines, dizaines, unités et des tables de correspondance pour construire l'écriture en respectant les particularités du français (trait d'union, « et », accords).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion d'un nombre écrit en lettres vers les chiffres",
+      "content": "Écrire un algorithme qui prend en entrée une chaîne de caractères représentant un nombre entier écrit en lettres (sans « et » superflus, jusqu'aux millions) et renvoie l'entier correspondant en chiffres. Par exemple « deux millions trois cent quarante-cinq mille six cent soixante-douze » → $2345672$.",
+      "correctAnswer": "Algorithme : découper la chaîne en groupes séparés par les mots « million » et « mille » ; pour chaque groupe, convertir le groupe de mots (jusqu'à $999$) en nombre à l'aide d'un sous-algorithme similaire au précédent ; multiplier le groupe des millions par $1000000$, celui des milliers par $1000$, additionner le groupe des unités ; retourner la somme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On reconnaît les mots-clés « million » et « mille » comme séparateurs d'ordres de grandeur. Chaque bloc est converti en nombre ($0$ à $999$) puis pondéré par sa classe (millions, milliers, unités). La somme donne le nombre final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

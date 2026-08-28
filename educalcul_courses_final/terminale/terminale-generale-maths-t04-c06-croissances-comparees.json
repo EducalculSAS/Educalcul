@@ -1,0 +1,824 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.655211+00:00",
+  "id": 695,
+  "code": "terminale-generale-maths-t04-c06",
+  "title": "Croissances comparées",
+  "description": "Cours structuré Educalcul : Croissances comparées.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Croissances comparées",
+    "objectif_global": "Croissances comparées",
+    "mini_lecons_imposees": [
+      "Exponentielle / puissances / logarithme.",
+      "Limites.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Exponentielle / puissances / logarithme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel sur les puissances et l'exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous retrouvons les bases des puissances pour construire la fonction exponentielle. Vous connaissez déjà la notation $a^n$ pour un entier naturel $n$, et vous savez que $a^0=1$ et $a^{-n}=1/a^n$. Ici, nous prolongeons cette idée à tout nombre réel $x$ en définissant la fonction exponentielle de base $e$, notée $\\exp(x)$ ou $e^x$, où $e\\approx2,71828$ est une constante fondamentale découverte au détour de l'étude des intérêts composés. Cette fonction a la propriété remarquable que sa dérivée est elle‑même, ce qui en fait l'outil central pour modéliser des croissances continues. Prenez le temps de visualiser la courbe : elle passe par $(0,1)$, elle est strictement croissante, et elle tend vers $0$ quand $x$ tend vers $-\\infty$ alors qu'elle s'envole vers $+\\infty$ quand $x$ tend vers $+\\infty$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\exp(x)=e^{x}"
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Courbe de la fonction exponentielle $y=e^{x}$"
+            },
+            {
+              "type": "definition",
+              "term": "Fonction exponentielle",
+              "definition": "La fonction exponentielle de base $e$ associe à tout réel $x$ le nombre $e^{x}$. Elle est continue, strictement croissante et vérifie $\\exp'(x)=\\exp(x)$.",
+              "example": "Par exemple $\\exp(1)=e\\approx2,718$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier que $a>0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation $\\exp(x)=a$ n'a de solution que si $a$ est strictement positif, car l'exponentielle ne prend que des valeurs positives."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le logarithme népérien des deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On utilise la propriété $\\ln(\\exp(x))=x$ pour obtenir $x=\\ln(a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution unique est $x=\\ln(a)$, définie pour tout $a>0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous maîtrisons l'exponentielle, nous allons rencontrer son inverse, le logarithme népérien, qui permet de « défaire » l'exponentiation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le logarithme népérien, inverse de l'exponentielle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le logarithme népérien, noté $\\ln$, est la fonction réciproque de l'exponentielle. Cela signifie que pour tout $x>0$, $\\ln(x)$ est l'unique réel $y$ tel que $e^{y}=x$. En d'autres termes, $\\ln(e^{x})=x$ pour tout réel $x$ et $e^{\\ln(x)}=x$ pour tout $x>0$. La courbe de $\\ln$ est le miroir de celle de $\\exp$ par rapport à la droite $y=x$ ; elle passe par $(1,0)$, elle est strictement croissante, elle tend vers $-\\infty$ quand $x\\to0^{+}$ et vers $+\\infty$ quand $x\\to+\\infty$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(e^{x})=x,\\quad e^{\\ln(x)}=x\\;(x>0)"
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.01,
+              "xmax": 5,
+              "caption": "Courbe du logarithme népérien $y=\\ln(x)$"
+            },
+            {
+              "type": "definition",
+              "term": "Logarithme népérien",
+              "definition": "Le logarithme népérien $\\ln(x)$ est l'exposant auquel il faut élever $e$ pour obtenir $x$. Il est défini pour $x>0$.",
+              "example": "$\\ln(1)=0$, $\\ln(e)=1$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier que $a$ est un réel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation $\\ln(x)=a$ admet une solution pour tout réel $a$, car l'image de $\\ln$ est $\\mathbb{R}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exponentier les deux côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On applique l'exponentielle : $e^{\\ln(x)}=e^{a}$, ce qui donne $x=e^{a}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La solution unique est $x=e^{a}$, toujours strictement positive."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec l'exponentielle et son inverse en main, nous pouvons maintenant manipuler les expressions logarithmiques grâce à leurs propriétés algébriques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales du logarithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les propriétés du logarithme découlent directement de celles de l'exponentielle. Pour tous nombres strictement positifs $a$ et $b$ et tout réel $r$, nous avons : $\\ln(ab)=\\ln a+\\ln b$, $\\ln\\left(\\frac{a}{b}\\right)=\\ln a-\\ln b$, et $\\ln(a^{r})=r\\ln a$. Ces règles transforment des produits en sommes, des quotients en différences et des puissances en produits, ce qui simplifie considérablement la résolution d'équations et le calcul de limites."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(ab)=\\ln a+\\ln b,\\quad \\ln\\left(\\frac{a}{b}\\right)=\\ln a-\\ln b,\\quad \\ln(a^{r})=r\\ln a"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier produits, quotients, puissances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez dans l'expression les multiplications, divisions et exposants."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer les règles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplacez chaque produit par une somme de logarithmes, chaque quotient par une différence, chaque puissance par un produit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regrouper les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Simplifiez l'expression obtenue en factorisant si possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent de devoir changer de base pour utiliser une calculatrice ou comparer des logarithmes. La formule de changement de base nous y aide."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Changement de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour toute base $a>0$, $a\\neq1$ et tout $x>0$, on a $\\log_{a}(x)=\\frac{\\ln x}{\\ln a}$. Cette identité permet de ramener tout logarithme au logarithme népérien, dont les valeurs sont tabulées ou programmées dans les machines. Elle se démontre en posant $y=\\log_{a}(x)$, donc $a^{y}=x$, puis en appliquant $\\ln$ des deux côtés."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log_{a}(x)=\\frac{\\ln x}{\\ln a}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre l'équation $\\exp(x)=5$.",
+              "answer": "$x=\\ln(5)$",
+              "hint": "Appliquez le logarithme népérien des deux côtés.",
+              "explanation": "Puisque $\\exp$ est bijective de $\\mathbb{R}$ vers $]0,+\\infty[$, on prend $\\ln$ des deux côtés : $\\ln(\\exp(x))=\\ln(5)$, donc $x=\\ln(5)$."
+            },
+            {
+              "question": "Résoudre $\\ln(x)=2$.",
+              "answer": "$x=e^{2}$",
+              "hint": "Exponentiez les deux côtés.",
+              "explanation": "En appliquant l'exponentielle : $e^{\\ln(x)}=e^{2}$, ce qui donne $x=e^{2}$."
+            },
+            {
+              "question": "Simplifier $\\ln\\left(\\frac{x^{3}\\sqrt{y}}{z^{2}}\\right)$ en utilisant les propriétés du logarithme.",
+              "answer": "$3\\ln x+\\frac{1}{2}\\ln y-2\\ln z$",
+              "hint": "Décomposez le quotient, le produit et les puissances.",
+              "explanation": "On écrit $\\ln(x^{3})+\\ln(\\sqrt{y})-\\ln(z^{2})$, puis $\\ln(\\sqrt{y})=\\frac{1}{2}\\ln y$, ce qui donne le résultat."
+            },
+            {
+              "question": "Exprimer $\\log_{10}(1000)$ en logarithme népérien et calculer sa valeur approchée.",
+              "answer": "$\\frac{\\ln 1000}{\\ln 10}\\approx 3$",
+              "hint": "Utilisez la formule de changement de base.",
+              "explanation": "D'après la formule, $\\log_{10}(1000)=\\frac{\\ln 1000}{\\ln 10}$. Comme $1000=10^{3}$, $\\ln 1000=3\\ln 10$, donc le quotient vaut $3$."
+            }
+          ]
+        },
+        {
+          "title": "Limites.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limites de l'exponentielle et du logarithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous étudions le comportement de l'exponentielle et du logarithme aux bornes de leurs ensembles de définition. Rappelons que $\\exp(x)$ tend vers $0$ lorsque $x\\to-\\infty$ et vers $+\\infty$ lorsque $x\\to+\\infty$. De son côté, $\\ln(x)$ tend vers $-\\infty$ quand $x\\to0^{+}$ et vers $+\\infty$ quand $x\\to+\\infty$. Ces limites sont les pierres angulaires pour comparer les croissances de fonctions très différentes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to-\\infty}\\exp(x)=0,\\quad \\lim_{x\\to+\\infty}\\exp(x)=+\\infty,\\quad \\lim_{x\\to0^{+}}\\ln(x)=-\\infty,\\quad \\lim_{x\\to+\\infty}\\ln(x)=+\\infty"
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Comportement de $\\exp(x)$ aux infinis"
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.01,
+              "xmax": 10,
+              "caption": "Comportement de $\\ln(x)$ près de $0$ et à l'infini"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la forme indéterminée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lorsque l'on rencontre une limite comme $\\lim_{x\\to+\\infty}\\frac{\\exp(x)}{x^{n}}$, on voit un rapport $\\frac{+\\infty}{+\\infty}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle de croissance comparée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'exponentielle domine toute puissance : $\\exp(x)$ croît plus vite que $x^{n}$ pour tout $n\\in\\mathbb{N}$. Donc la limite est $+\\infty$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $\\lim_{x\\to+\\infty}\\frac{\\exp(x)}{x^{n}}=+\\infty$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous venons de voir que l'exponentielle l'emporte sur toute puissance. Inversement, le logarithme croît plus lentement que toute puissance positive."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparaison des croissances : exponentielle versus puissance, logarithme versus puissance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tout entier $n\\ge1$, on a les comparaisons classiques : $\\lim_{x\\to+\\infty}\\frac{x^{n}}{\\exp(x)}=0$ et $\\lim_{x\\to+\\infty}\\frac{\\ln(x)}{x^{n}}=0$. La première exprime que l'exponentielle domine toute fonction polynomiale, la seconde que le logarithme est négligeable devant toute puissance de $x$. Ces résultats se démontrent aisément par des changements de variable ou par la règle de l'Hôpital, mais ils sont si souvent utilisés qu'ils deviennent des repères immédiats."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to+\\infty}\\frac{x^{n}}{\\exp(x)}=0,\\quad \\lim_{x\\to+\\infty}\\frac{\\ln(x)}{x^{n}}=0"
+            },
+            {
+              "type": "number_line",
+              "caption": "Position relative des fonctions pour de grandes valeurs de $x$",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "x"
+                },
+                {
+                  "value": 3,
+                  "label": "ln(x)"
+                },
+                {
+                  "value": 5,
+                  "label": "x^2"
+                },
+                {
+                  "value": 9,
+                  "label": "exp(x)"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser $x=\\ln(t)$ pour la limite $\\frac{\\ln(x)}{x^{n}}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En posant $x=\\ln(t)$, quand $x\\to+\\infty$, $t\\to+\\infty$ et la limite devient $\\frac{\\ln(\\ln(t))}{(\\ln t)^{n}}$, qui tend vers $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la croissance de l'exponentielle pour $\\frac{x^{n}}{\\exp(x)}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $\\frac{x^{n}}{\\exp(x)}=\\frac{x^{n}}{e^{x}}$. La dérivée du numérateur est polynomiale, celle du dénominateur est exponentielle, donc le rapport tend vers $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Retenir les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ces deux limites sont des outils standards pour résoudre une multitude de limites composées."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces comparaisons nous permettent d'énoncer un théorème général qui organise les croissances les plus courantes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème des croissances comparées"
+            },
+            {
+              "type": "paragraph",
+              "content": "On classe les fonctions par vitesse de croissance quand $x\\to+\\infty$ : les puissances de $\\ln(x)$ (les plus lentes), puis les puissances de $x$, puis les exponentielles $a^{x}$ avec $a>1$, puis les exponentielles d'exponentielles, etc. Plus formellement, pour tout $\\alpha>0$, $\\beta>0$, $\\gamma>1$, on a $\\ln(x)^{\\alpha}=o(x^{\\beta})$, $x^{\\beta}=o(\\gamma^{x})$, et $\\gamma^{x}=o(e^{x^{2}})$. Cette hiérarchie guide le calcul de limites de quotients de fonctions composées."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(x)^{\\alpha}=o(x^{\\beta}),\\quad x^{\\beta}=o(\\gamma^{x}),\\quad \\gamma^{x}=o(e^{x^{2}})"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le type de chaque facteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans un quotient, repérez si le numérateur et le dénominateur sont des puissances de logarithme, de $x$, d'exponentielle, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les ordres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Celui qui appartient à une classe supérieure domine l'autre, la limite du quotient est soit $0$, soit $+\\infty$ selon la position."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple, $\\frac{\\ln(x)^{3}}{x^{0.5}}\\to0$ car $\\ln^{3}=o(x^{0.5})$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus vite, on utilise souvent les équivalents au voisinage de l'infini ou de zéro, qui remplacent une fonction par une expression plus simple ayant le même comportement asymptotique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utilisation des équivalents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux fonctions $f$ et $g$ sont équivalentes en $+\\infty$ (on note $f\\sim g$) si $\\lim_{x\\to+\\infty}\\frac{f(x)}{g(x)}=1$. Les équivalents usuels sont : $\\exp(x)-1\\sim x$ en $0$, $\\ln(1+x)\\sim x$ en $0$, et pour de grandes valeurs, $\\exp(x)$ n'a pas d'équivalent polynomial, mais on peut écrire $\\ln(1+\\frac{1}{x})\\sim\\frac{1}{x}$. Ces remplacements transforment des limites compliquées en calculs élémentaires."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\exp(x)-1\\sim x\\;(x\\to0),\\quad \\ln(1+x)\\sim x\\;(x\\to0),\\quad \\ln\\left(1+\\frac{1}{x}\\right)\\sim\\frac{1}{x}\\;(x\\to+\\infty)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer une forme $\\frac{f(x)}{g(x)}$ avec $f,g\\to0$ ou $\\pm\\infty$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherchez une expression où le numérateur et le dénominateur tendent vers la même limite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Remplacer par les équivalents connus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Substituez $f(x)$ par son équivalent simple $f_{0}(x)$ et $g(x)$ par $g_{0}(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la limite simplifiée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La limite du quotient des équivalents est la limite cherchée, car le rapport tend vers $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\lim_{x\\to+\\infty}\\frac{x^{5}}{\\exp(x)}$.",
+              "answer": "$0$",
+              "hint": "L'exponentielle domine toute puissance.",
+              "explanation": "D'après la règle de croissance comparée, pour tout $n$, $\\frac{x^{n}}{\\exp(x)}\\to0$. Ici $n=5$, donc la limite est $0$."
+            },
+            {
+              "question": "Déterminer $\\lim_{x\\to+\\infty}\\frac{\\ln(x)}{\\sqrt{x}}$.",
+              "answer": "$0$",
+              "hint": "Le logarithme est négligeable devant toute puissance positive.",
+              "explanation": "Puisque $\\sqrt{x}=x^{1/2}$, on a $\\frac{\\ln(x)}{x^{1/2}}\\to0$ car $\\ln(x)=o(x^{\\alpha})$ pour tout $\\alpha>0$."
+            },
+            {
+              "question": "Classer par ordre de croissance croissante : $\\ln(x)^{2}$, $x^{3}$, $e^{x}$, $e^{x^{2}}$.",
+              "answer": "$\\ln(x)^{2} < x^{3} < e^{x} < e^{x^{2}}$",
+              "hint": "Utilisez la hiérarchie : puissances de logarithme, puissances de $x$, exponentielles simples, exponentielles composées.",
+              "explanation": "$\\ln(x)^{2}$ est une puissance de logarithme, $x^{3}$ une puissance de $x$, $e^{x}$ une exponentielle de base $e$, $e^{x^{2}}$ une exponentielle d'exponentielle ; chaque classe domine la précédente."
+            },
+            {
+              "question": "En utilisant les équivalents, trouver $\\lim_{x\\to0}\\frac{\\exp(2x)-1}{\\ln(1+3x)}$.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Remplacez $\\exp(2x)-1$ par $2x$ et $\\ln(1+3x)$ par $3x$.",
+              "explanation": "Au voisinage de $0$, $\\exp(2x)-1\\sim 2x$ et $\\ln(1+3x)\\sim 3x$. Le quotient tend vers $\\frac{2x}{3x}=\\frac{2}{3}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Étude de fonctions composées mêlant exponentielle et logarithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon met en pratique les outils acquis pour analyser des fonctions comme $f(x)=x^{a}e^{-x}$ ou $g(x)=\\frac{\\ln(x)}{x}$. Nous déterminons leurs domaines, leurs variations, leurs limites aux bornes et leurs éventuels extrema. La méthode repose sur la dérivation, l'utilisation des limites comparées et la résolution d'équations faisant intervenir $\\ln$ et $\\exp$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=x^{a}e^{-x}\\;(a>0),\\quad g(x)=\\frac{\\ln(x)}{x}\\;(x>0)"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2*exp(-x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Courbe de $f(x)=x^{2}e^{-x}$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)=x^{a}e^{-x}$, on utilise la règle du produit : $f'(x)=ax^{a-1}e^{-x}-x^{a}e^{-x}=x^{a-1}e^{-x}(a-x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Étudier le signe de la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le facteur $x^{a-1}e^{-x}$ est toujours positif sur $]0,+\\infty[$. Le signe dépend donc de $a-x$ : positif pour $x<a$, nul en $x=a$, négatif pour $x>a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure sur les variations et l'extremum",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction croît sur $]0,a]$, décroît sur $[a,+\\infty[$ et admet un maximum global en $x=a$ de valeur $f(a)=a^{a}e^{-a}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'étude des variations, il est naturel de chercher les asymptotes de ces courbes, notamment horizontales ou obliques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Détermination des asymptotes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $f(x)=x^{a}e^{-x}$, la limite en $+\\infty$ est $0$ (l'exponentielle domine), donc l'axe des abscisses $y=0$ est une asymptote horizontale. Pour $g(x)=\\frac{\\ln(x)}{x}$, la limite en $+\\infty$ est également $0$, même asymptote. En $0^{+}$, $g(x)\\to-\\infty$, il n'y a pas d'asymptote verticale car le domaine commence à $0$ exclu. Parfois, une asymptote oblique apparaît quand le degré du numérateur dépasse d'une unité celui du dénominateur, ce qui n'est pas le cas ici."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x\\to+\\infty}x^{a}e^{-x}=0,\\quad \\lim_{x\\to+\\infty}\\frac{\\ln(x)}{x}=0"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la limite en $+\\infty$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les croissances comparées : $x^{a}=o(e^{x})$ et $\\ln(x)=o(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier l'existence d'une asymptote oblique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez $\\lim_{x\\to+\\infty}\\frac{f(x)}{x}$. Si elle est finie et non nulle, il y a une asymptote oblique $y=ax+b$. Ici, la limite est $0$, donc pas d'asymptote oblique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Énoncer les asymptotes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Asymptote horizontale $y=0$ pour les deux fonctions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les inéquations exponentielles et logarithmiques reviennent souvent dans les problèmes de modélisation. Nous rappelons la méthode standard : isoler l'exponentielle ou le logarithme, puis appliquer la fonction inverse en respectant le domaine de définition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'inéquations exponentielles et logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'inéquation $\\exp(2x-1)>3$. On applique $\\ln$ des deux côtés (fonction croissante) : $2x-1>\\ln 3$, d'où $x>\\frac{\\ln 3+1}{2}$. Pour $\\ln(x^{2}-4)\\le 1$, on exponentie : $x^{2}-4\\le e$, avec la condition $x^{2}-4>0$. Cela donne $x\\in[-2,-2]\\cup[2,\\sqrt{e+4}]$ après intersection. La vigilance sur le domaine est cruciale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\exp(2x-1)>3\\implies 2x-1>\\ln 3,\\quad \\ln(x^{2}-4)\\le 1\\implies x^{2}-4\\le e\\;\\text{et}\\;x^{2}>4"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Isoler l'exponentielle ou le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mettez l'expression contenant $\\exp$ ou $\\ln$ seule d'un côté de l'inégalité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la fonction inverse (croissante)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c'est $\\exp$, appliquez $\\ln$ ; si c'est $\\ln$, appliquez $\\exp$. Le sens de l'inégalité est conservé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'inéquation algébrique obtenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traitez l'inéquation polynomiale ou rationnelle résultante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Intersecter avec le domaine de définition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N'oubliez pas les conditions $x>0$ pour $\\ln(x)$ ou l'argument positif pour $\\ln$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous illustrons la puissance de ces outils sur un problème concret de modélisation : la croissance d'une population soumise à une ressource limitée, modélisée par une fonction logistique, et la décroissance radioactive."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : modèle logistique et décroissance radioactive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le modèle logistique s'écrit $P(t)=\\frac{K}{1+ae^{-rt}}$ avec $K$ la capacité maximale, $r$ le taux de croissance intrinsèque, $a$ une constante liée à la population initiale. La limite quand $t\\to+\\infty$ est $K$, l'asymptote horizontale. La décroissance radioactive suit $N(t)=N_{0}e^{-\\lambda t}$, où $\\lambda>0$ est la constante de désintégration. La demi-vie $T_{1/2}$ satisfait $e^{-\\lambda T_{1/2}}=\\frac{1}{2}$, donc $T_{1/2}=\\frac{\\ln 2}{\\lambda}$. Ces formules sont des applications directes des limites et des propriétés du logarithme."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(t)=\\frac{K}{1+ae^{-rt}},\\quad N(t)=N_{0}e^{-\\lambda t},\\quad T_{1/2}=\\frac{\\ln 2}{\\lambda}"
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "exp(-x)",
+              "xMin": 0,
+              "xMax": 5,
+              "rectangles": 10,
+              "caption": "Approximation de l'intégrale de la décroissance exponentielle par rectangles de Riemann"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les paramètres du modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans un énoncé, repérez $K$, $r$, $a$ pour le logistique, ou $N_{0}$, $\\lambda$ pour la radioactivité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la limite à l'infini ou la demi-vie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez $\\lim_{t\\to+\\infty}e^{-rt}=0$ pour le logistique, et $\\ln 2$ pour la demi-vie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La population tend vers la capacité $K$ ; la quantité radioactive diminue de moitié tous les $T_{1/2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la fonction exponentielle et le logarithme népérien.",
+                "Je connais les limites fondamentales de $\\exp$ et $\\ln$ aux bornes.",
+                "Je sais comparer les croissances : exponentielle domine puissance domine logarithme.",
+                "J'utilise les équivalents pour calculer des limites rapidement.",
+                "Je sais étudier une fonction composée (variations, asymptotes).",
+                "Je résous des inéquations exponentielles et logarithmiques en respectant le domaine.",
+                "Je modélise une croissance logistique ou une décroissance radioactive."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Étudier les variations de $f(x)=x^{3}e^{-x}$ sur $]0,+\\infty[$ et donner son maximum.",
+              "answer": "Croissante sur $]0,3]$, décroissante sur $[3,+\\infty[$, maximum $f(3)=27e^{-3}$.",
+              "hint": "Calculez $f'(x)=x^{2}e^{-x}(3-x)$.",
+              "explanation": "La dérivée se factorise en $x^{2}e^{-x}(3-x)$. Le signe dépend de $3-x$. Donc maximum en $x=3$."
+            },
+            {
+              "question": "Trouver l'asymptote horizontale de $g(x)=\\frac{\\ln(x)}{x}$ quand $x\\to+\\infty$.",
+              "answer": "$y=0$",
+              "hint": "Comparez $\\ln(x)$ et $x$ à l'infini.",
+              "explanation": "Puisque $\\ln(x)=o(x)$, le quotient tend vers $0$, donc l'asymptote horizontale est l'axe des abscisses."
+            },
+            {
+              "question": "Résoudre l'inéquation $\\ln(x^{2}-1)\\ge 0$.",
+              "answer": "$x\\in(-\\infty,-\\sqrt{2}]\\cup[\\sqrt{2},+\\infty)$",
+              "hint": "Exponentiez et n'oubliez pas la condition $x^{2}-1>0$.",
+              "explanation": "$\\ln(x^{2}-1)\\ge0\\iff x^{2}-1\\ge1\\iff x^{2}\\ge2$. Avec $x^{2}>1$, l'intersection donne $|x|\\ge\\sqrt{2}$."
+            },
+            {
+              "question": "Une population suit le modèle logistique $P(t)=\\frac{1000}{1+9e^{-0,2t}}$. Quelle est la population initiale et la limite à long terme ?",
+              "answer": "Population initiale $P(0)=100$, limite $1000$.",
+              "hint": "Calculez $P(0)$ et la limite quand $t\\to+\\infty$.",
+              "explanation": "$P(0)=\\frac{1000}{1+9}=100$. Comme $e^{-0,2t}\\to0$, $P(t)\\to\\frac{1000}{1}=1000$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

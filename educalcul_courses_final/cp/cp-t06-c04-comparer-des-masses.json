@@ -1,0 +1,197 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.637245+00:00",
+  "id": 50,
+  "code": "cp-t06-c04",
+  "title": "Comparer des masses",
+  "description": "Cours structuré Educalcul : Comparer des masses.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Comparer des masses",
+    "objectif_global": "Comparer des masses",
+    "mini_lecons_imposees": [
+      "Utiliser plus lourd / plus léger.",
+      "Lire une balance simple.",
+      "Classer des objets."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Utiliser plus lourd / plus léger.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir plus lourd et plus léger"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, on va jouer au petit poids lourd ! Prends deux objets dans tes mains : une pomme et une plume. Ferme les yeux et sens laquelle tire le plus vers le bas. C'est elle qui est $plus\\ lourde$. L'autre, qui reste presque sans poids dans ta main, est $plus\\ légère$."
+            },
+            {
+              "type": "definition",
+              "term": "plus lourd",
+              "definition": "Un objet est plus lourd qu'un autre quand il attire plus fort vers le sol. Dans la main, on sent qu'il pèse davantage.",
+              "example": "Un livre est plus lourd qu'une feuille de papier."
+            },
+            {
+              "type": "definition",
+              "term": "plus léger",
+              "definition": "Un objet est plus léger qu'un autre quand il attire moins fort vers le sol. Dans la main, on le sent à peine.",
+              "example": "Une plume est plus légère qu'un caillou."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec ton cartable et ton doudou. Lequel te fatigue le bras plus vite ? C'est ton cartable, il est $plus\\ lourd$. Ton doudou est $plus\\ léger$. Parfois, deux objets ont la même masse : ils sont aussi lourds l'un que l'autre. On dit qu'ils ont la $même\\ masse$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5
+              ],
+              "right": [
+                2
+              ],
+              "caption": "Le côté gauche descend : l'objet de gauche est plus lourd."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant dire qui est le costaud et qui est la plume. La prochaine fois, on va regarder comment une balance nous montre la même chose sans même porter les objets."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde les deux objets. Lequel est plus lourd ?",
+              "answer": "La bouteille d'eau est plus lourde que le bouchon.",
+              "hint": "Imagine les tenir dans chaque main. Laquelle tire le plus vers le bas ?",
+              "explanation": "La bouteille contient de l'eau, elle a plus de matière que le petit bouchon en plastique. Donc elle est plus lourde."
+            }
+          ]
+        },
+        {
+          "title": "Lire une balance simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre la balance de Roberval"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu une balance chez le médecin ou à la cuisine ? C'est une grande règle avec deux plateaux aux bouts. Quand on pose quelque chose sur un plateau, il descend si c'est lourd. Le côté qui va vers le bas, c'est le côté du $plus\\ lourd$. Le côté qui monte en l'air, c'est le côté du $plus\\ léger$."
+            },
+            {
+              "type": "definition",
+              "term": "balance",
+              "definition": "Un outil avec deux plateaux qui permet de comparer la masse de deux objets sans les porter.",
+              "example": "On pose une orange à gauche et une fraise à droite. Le plateau de l'orange descend."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien : si les deux plateaux restent à la même hauteur, ni l'un ni l'autre ne bouge. Cela veut dire que les deux objets ont la $même\\ masse$. C'est comme quand tu tiens deux bonbons identiques, un dans chaque main : tu ne sens pas de différence."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                3,
+                3
+              ],
+              "right": [
+                6
+              ],
+              "caption": "Les deux côtés sont à la même hauteur : même masse."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Tu sais lire le verdict de la balance. Maintenant, on va utiliser ce pouvoir pour ranger plusieurs objets du plus petit poids au plus costaud."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la balance, le plateau de gauche est en bas, celui de droite est en haut. Que peux-tu dire ?",
+              "answer": "L'objet de gauche est plus lourd que l'objet de droite.",
+              "hint": "Le côté qui descend, c'est le côté du plus lourd.",
+              "explanation": "La balance penche vers la gauche, donc la masse de gauche attire plus fort vers le sol. Elle est plus lourde."
+            }
+          ]
+        },
+        {
+          "title": "Classer des objets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ranger des objets du plus léger au plus lourd"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine trois jouets sur ton tapis : une voiture en plastique, un gros camion en bois et une petite figurine. Tu veux les aligner du plus léger au plus lourd. Comment faire ? Tu prends la balance. D'abord, compare la voiture et le camion. Le camion gagne, il est plus lourd. Ensuite, compare la figurine et la voiture. La figurine est plus légère. Alors l'ordre est : figurine, voiture, camion."
+            },
+            {
+              "type": "paragraph",
+              "content": "Astuce de pro : commence par trouver le plus léger de tous. Compare deux objets, garde le plus léger, compare-le au suivant. Celui qui gagne à chaque fois, c'est le champion des plumes ! Pour le plus lourd, fais l'inverse : garde le plus costaud à chaque duel."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                1
+              ],
+              "right": [
+                2
+              ],
+              "caption": "Duel 1 : la figurine (gauche) contre la voiture (droite). La voiture descend."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Et si tu as quatre ou cinq objets ? Même méthode ! Tu fais des petits matchs deux par deux. À la fin, tu as une belle file du plumeau au champion poids lourd. C'est comme classer tes copains par taille, mais avec le poids."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire si un objet est plus lourd ou plus léger qu'un autre.",
+                "Je sais lire une balance : le côté qui descend est le plus lourd.",
+                "Je sais classer plusieurs objets du plus léger au plus lourd."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as une plume, un caillou et une brique. Classe-les du plus léger au plus lourd.",
+              "answer": "Plume, caillou, brique.",
+              "hint": "Compare la plume et le caillou, puis le gagnant avec la brique.",
+              "explanation": "La plume est le plus léger. Le caillou est plus lourd que la plume mais plus léger que la brique. La brique est le plus lourd."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

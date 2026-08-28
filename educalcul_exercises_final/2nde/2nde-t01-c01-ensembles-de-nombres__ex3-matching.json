@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Classer",
+  "title": "Classement dans les ensembles de nombres",
+  "blocks": [
+    {
+      "title": "Appartenance aux ensembles de base",
+      "content": "Relie chaque nombre à l'ensemble le plus petit (le plus précis) auquel il appartient parmi $\\mathbb{N}$, $\\mathbb{Z}$, $\\mathbb{Q}$ et $\\mathbb{R} \\setminus \\mathbb{Q}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$0$",
+          "right": "$\\mathbb{N}$"
+        },
+        {
+          "left": "$-3$",
+          "right": "$\\mathbb{Z}$"
+        },
+        {
+          "left": "$\\frac{2}{5}$",
+          "right": "$\\mathbb{Q}$"
+        },
+        {
+          "left": "$\\sqrt{4}$",
+          "right": "$\\mathbb{N}$"
+        },
+        {
+          "left": "$\\pi$",
+          "right": "$\\mathbb{R} \\setminus \\mathbb{Q}$"
+        }
+      ],
+      "items": [],
+      "explanation": "$0$ est un entier naturel. $-3$ est un entier relatif non naturel. $\\frac{2}{5}$ est un décimal (donc rationnel) non entier. $\\sqrt{4} = 2$ est un entier naturel. $\\pi$ est un nombre irrationnel connu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Notations d'intervalles",
+      "content": "Relie chaque intervalle à son écriture en notation ensembliste (en compréhension).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$[2 ; 5]$",
+          "right": "$\\{x \\in \\mathbb{R} \\mid 2 \\le x \\le 5\\}$"
+        },
+        {
+          "left": "$]-\\infty ; 3[$",
+          "right": "$\\{x \\in \\mathbb{R} \\mid x < 3\\}$"
+        },
+        {
+          "left": "$[0 ; +\\infty[$",
+          "right": "$\\{x \\in \\mathbb{R} \\mid x \\ge 0\\}$"
+        },
+        {
+          "left": "$]1 ; 4[$",
+          "right": "$\\{x \\in \\mathbb{R} \\mid 1 < x < 4\\}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Les crochets $[ \\ ]$ correspondent aux inégalités larges ($\\le, \\ge$), les parenthèses $] \\ [$ aux inégalités strictes ($<, >$). L'infini s'écrit toujours avec une parenthèse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rationnels et irrationnels",
+      "content": "Relie chaque expression à sa nature : nombre rationnel ($\\mathbb{Q}$) ou nombre irrationnel ($\\mathbb{R} \\setminus \\mathbb{Q}$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\sqrt{2}$",
+          "right": "Irrationnel"
+        },
+        {
+          "left": "$\\sqrt{9}$",
+          "right": "Rationnel"
+        },
+        {
+          "left": "$0,333...$",
+          "right": "Rationnel"
+        },
+        {
+          "left": "$\\sqrt{2} + 1$",
+          "right": "Irrationnel"
+        },
+        {
+          "left": "$(\\sqrt{5})^2$",
+          "right": "Rationnel"
+        }
+      ],
+      "items": [],
+      "explanation": "$\\sqrt{2}$ est irrationnel. $\\sqrt{9} = 3$ est entier donc rationnel. $0,333... = \\frac{1}{3}$ est rationnel. La somme d'un irrationnel et d'un rationnel ($\\sqrt{2}+1$) est irrationnelle. $(\\sqrt{5})^2 = 5$ est entier donc rationnel.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.142361+00:00",
+  "id": 536,
+  "code": "2nde-t07-c03",
+  "title": "Variables et affectations en Python",
+  "description": "Cours structuré Educalcul : Variables et affectations en Python.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Variables et affectations en Python",
+    "objectif_global": "Variables et affectations en Python",
+    "mini_lecons_imposees": [
+      "Lire.",
+      "Écrire.",
+      "Tester."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu organises une immense fête et que tu reçois des centaines d'invités. Pour ne pas t'embrouiller, tu décides d'utiliser des boîtes de rangement. Sur la première boîte, tu écris 'Nombre d'invités' et tu y glisses un papier avec le chiffre $150$. Sur une deuxième, tu écris 'Budget total' et tu y mets le montant $200$ euros. Si soudainement $10$ personnes annulent leur venue, tu ne jettes pas la boîte, tu retires simplement le papier et tu en mets un nouveau avec le chiffre $140$. En programmation, c'est exactement ce qui se passe avec les variables. Une variable est comme cette boîte : elle possède un nom (l'étiquette) et une valeur (le contenu). C'est l'outil fondamental qui permet à un programme de se souvenir d'une information pour l'utiliser plus tard. Sans elles, ton ordinateur serait comme une personne qui oublie tout instantanément après avoir lu une donnée. On utilise les variables pour stocker des scores, des noms d'utilisateurs, des coordonnées GPS ou même le résultat d'un calcul complexe. C'est le point de départ de toute logique informatique, et c'est beaucoup plus intuitif qu'il n'y paraît car cela imite notre façon humaine de classer des informations dans notre esprit."
+            },
+            {
+              "type": "paragraph",
+              "content": "En Python, une variable est un espace de stockage nommé dans la mémoire de l'ordinateur. On crée une variable par une opération appelée 'affectation'. Pour cela, on utilise le symbole $=$. Il ne faut pas le confondre avec l'égalité mathématique. Ici, le signe $=$, c'est comme une flèche qui dit : 'Prends la valeur à droite et range-la dans la boîte nommée à gauche'. Par exemple, si on écrit $score = 0$, on crée une variable nommée $score$ et on lui donne la valeur $0$. Python est un langage dynamique, ce qui signifie qu'on n'a pas besoin de lui dire à l'avance si on stocke un nombre ou du texte, il le devine tout seul. On distingue principalement trois types : les entiers ($int$) comme $15$ ou $-4$, les nombres à virgule ($float$) comme $3.14$ ou $10.5$, et les chaînes de caractères ($str$) comme 'Bonjour' ou 'Alice'. Pour nommer tes variables, Python impose quelques règles : le nom doit commencer par une lettre ou un tiret bas, et ne peut contenir que des lettres, des chiffres et des tirets bas. On utilise souvent le style 'snake_case', où les mots sont séparés par des tirets bas, comme $prix_unitaire$ ou $nombre_de_points$, pour rendre le code lisible."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Simulation d'affectations\\nscore = 0\\nscore = score + 10\\nage = 15\\nnom = 'Lucas'\\nprint(score) # Affiche 100",
+              "language": "python",
+              "caption": "Exemple d'affectation et mise à jour de variables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour créer et utiliser une variable efficacement, suis ces étapes précises. Premièrement, choisis un nom qui soit explicite. Évite les noms comme $x$ ou $a$ si la variable représente quelque chose de concret. Préfère $température_actuelle$ plutôt que $t$. Deuxièmement, utilise l'opérateur d'affectation $=$. Place toujours le nom de la variable à gauche et la valeur ou l'expression à calculer à droite. Par exemple, $rayon = 5$. Troisièmement, si tu veux modifier la valeur d'une variable, tu peux utiliser l'ancienne valeur pour calculer la nouvelle. C'est ce qu'on appelle l'auto-affectation. Si tu as $compteur = 10$ et que tu écris $compteur = compteur + 1$, l'ordinateur calcule d'abord la partie droite ($10 + 1 = 11$) puis range ce résultat dans $compteur$. La nouvelle valeur devient donc $11$. Enfin, vérifie toujours que tu n'utilises pas de mots réservés du langage Python, comme $print$ ou $if$, comme noms de variables, car cela provoquerait une erreur immédiate. C'est un processus simple : Nom $\\rightarrow$ Signe d'affectation $\\rightarrow$ Valeur $\\rightarrow$ Validation par le programme."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que nous voulons calculer le prix total de $3$ articles qui coûtent chacun $12.50$ euros. Nous allons créer deux variables pour rendre le code clair. D'abord, on définit le prix d'un seul article : $prix_{article} = 12.5$. Ensuite, on définit la quantité : $quantite = 3$. Pour obtenir le total, on crée une troisième variable qui effectue le calcul : $total = prix_{article} \\times quantite$. Si on demande à Python d'afficher $total$, il va chercher la valeur de $prix_{article}$ ($12.5$) et celle de $quantite$ ($3$), faire la multiplication et nous donner $37.5$. L'avantage ici est que si le prix de l'article change pour devenir $15$ euros, on a seulement besoin de modifier la première ligne : $prix_{article} = 15$. Le reste du programme, et surtout le calcul du $total$, reste identique et se met à jour automatiquement. C'est toute la puissance des variables : elles permettent de généraliser un calcul pour qu'il fonctionne avec n'importe quelles valeurs."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un cas plus dynamique, comme la gestion d'un personnage dans un jeu vidéo. Au départ, le joueur a $100$ points de vie et $0$ pièce d'or. On écrit : $points_{vie} = 100$ et $pieces_{or} = 0$. Le personnage trouve un coffre contenant $50$ pièces. On ne va pas réécrire $pieces_{or} = 50$ car cela effacerait ce qu'il avait déjà. On utilise l'affectation cumulative : $pieces_{or} = pieces_{or} + 50$. Le programme prend la valeur actuelle ($0$), ajoute $50$, et range $50$ dans la variable. Ensuite, le personnage tombe dans un piège et perd $20$ points de vie. On écrit : $points_{vie} = points_{vie} - 20$. Python calcule $100 - 20 = 80$ et met à jour la variable. À la fin de cette séquence, si on affiche les variables, on obtient $points_{vie}$ égal à $80$ et $pieces_{or}$ égal à $50$. Ce mécanisme permet de suivre l'évolution d'un état tout au long de l'exécution du programme, en s'appuyant sur les valeurs précédemment stockées."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus classique pour un débutant est de tenter d'affecter une valeur dans le mauvais sens. Écrire $10 = x$ provoquera une erreur de type 'SyntaxError'. Souviens-toi : la destination est toujours à gauche, la source à droite. Un autre piège courant est la confusion entre les types de données. Si tu crées une variable $age = '15'$ (avec des guillemets), Python considère que c'est du texte et non un nombre. Si tu essaies ensuite de faire $age + 1$, le programme plantera car on ne peut pas additionner du texte et un nombre. Un troisième point de vigilance concerne la casse : Python est sensible aux majuscules. Les variables $Score$, $score$ et $SCORE$ sont trois boîtes totalement différentes. Si tu crées $score = 10$ mais que tu demandes d'afficher $Score$, Python te répondra qu'il ne connaît pas cette variable ('NameError'). Enfin, attention aux noms de variables commençant par un chiffre, comme $1er_{prix} = 10$. C'est strictement interdit en Python et entraînera une erreur. Commence toujours par une lettre ou un underscore."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si j'exécute le code suivant : \\n`a = 5` \\n`b = 2` \\n`a = a + b` \\nQuelle est la valeur finale de la variable `a` ?",
+              "answer": "7",
+              "hint": "Calcule d'abord la partie droite de l'égalité avec les valeurs initiales, puis remplace a par ce résultat.",
+              "explanation": "On commence avec $a = 5$ et $b = 2$. L'instruction $a = a + b$ signifie qu'on prend l'ancienne valeur de $a$ ($5$), on lui ajoute $b$ ($2$), ce qui donne $7$. Cette nouvelle valeur $7$ est ensuite rangée dans $a$. la valeur finale est donc $7$."
+            }
+          ]
+        },
+        {
+          "title": "Écrire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu remarqué que presque toutes les applications que tu utilises te demandent des informations ? Que ce soit ton nom lors de la création d'un compte, ton âge pour vérifier un accès, ou le montant d'un virement bancaire, les programmes ont besoin de communiquer avec toi. Ils ne peuvent pas deviner tes données, ils doivent donc te les demander. En Python, c'est comme si le programme s'arrêtait un instant, te tendait un formulaire vide et attendait que tu le remplisses avant de continuer. Cette interaction transforme un programme statique, qui fait toujours la même chose, en un programme dynamique et personnalisé. Imagine un programme qui calcule ton IMC : il ne peut pas avoir un code différent pour chaque être humain sur Terre. À la place, il utilise une fonction pour lire ton poids et ta taille, stocke ces valeurs dans des variables, et effectue le calcul. C'est ce passage de l'utilisateur vers la mémoire de l'ordinateur que nous allons étudier. Apprendre à lire des données, c'est donner une voix et une oreille à ton code, lui permettant de s'adapter en temps réel à l'utilisateur qui se trouve derrière l'écran."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une information saisie au clavier, Python utilise la fonction `input()`. Cette fonction affiche un message (appelé 'invite') pour guider l'utilisateur, puis met le programme en pause jusqu'à ce que l'utilisateur appuie sur la touche Entrée. Par exemple, `nom = input('Quel est ton nom ? ')` créera une variable $nom$ contenant le texte tapé. Cependant, il y a un détail crucial : la fonction `input()` renvoie TOUJOURS une chaîne de caractères ($str$), même si l'utilisateur tape un nombre. Si tu tapes $25$, Python ne voit pas le nombre $25$, mais le texte '25'. C'est là qu'interviennent les fonctions de conversion, ou 'casting'. Pour transformer ce texte en nombre entier, on enveloppe l'input dans la fonction `int()`, comme ceci : `age = int(input('Ton âge : '))`. Si on a besoin d'un nombre à virgule, on utilise `float()`. Sans cette conversion, toute tentative de calcul mathématique sur une donnée lue avec `input()` provoquera une erreur, car Python refusera d'additionner un texte et un nombre. C'est une étape indispensable pour transformer une saisie brute en une donnée exploitable pour des calculs."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Dialogue interactif\\nnom = input('Ton nom ? ')\\nage_str = input('Ton age ? ')\\nage = int(age_str)\\nprint('Salut ' + nom + ', tu as ' + str(age) + ' ans!')",
+              "language": "python",
+              "caption": "Exemple de flux Saisie -> Conversion -> Affichage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour récupérer une donnée et l'utiliser dans un calcul, suis rigoureusement ces trois étapes. Étape 1 : L'invite. Utilise `input('Message pour l'utilisateur')`. Assure-toi que ton message est clair et se termine par un espace ou deux points pour que la saisie de l'utilisateur ne soit pas collée au texte. Étape 2 : La conversion. Si tu attends un nombre, place `int(` avant `input` et ferme la parenthèse à la fin. Par exemple : `valeur = int(input(...))`. Si c'est un prix ou une mesure, utilise `float(`. Étape 3 : L'affectation. Stocke le résultat dans une variable avec un nom explicite. Une fois que tu as fait cela, tu peux utiliser ta variable dans des opérations mathématiques normales. Par exemple, si tu as récupéré `nombre_heures`, tu peux calculer `salaire = nombre_heures * 15`. Un conseil important : teste toujours ton programme en tapant des valeurs différentes pour voir si le comportement reste cohérent. Si tu as oublié la conversion, tu le sauras immédiatement car Python t'affichera une erreur de type 'TypeError' dès que tu tenteras une opération mathématique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Créons un programme simple qui demande l'année actuelle et l'âge de l'utilisateur pour deviner son année de naissance. Le code serait le suivant : \\n`annee_actuelle = int(input('En quelle année sommes-nous ? '))` \\n`age = int(input('Quel âge as-tu ? '))` \\n`naissance = annee_actuelle - age` \\n`print('Tu es né en', naissance)`. \\nAnalysons ce qui se passe : d'abord, le programme demande l'année. Si l'utilisateur tape $2024$, `int()` transforme le texte '2024' en nombre $2024$ et le stocke dans `annee_actuelle`. Ensuite, il demande l'âge. Si l'utilisateur tape $15$, on stocke le nombre $15$ dans `age`. Enfin, le programme effectue la soustraction $2024 - 15 = 2009$. Le résultat $2009$ est stocké dans `naissance` et affiché à l'écran. Si on avait oublié le `int()`, Python aurait essayé de faire '2024' - '15', ce qui est impossible car on ne peut pas soustraire des mots, même si ces mots ressemblent à des chiffres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un programme pour calculer l'aire d'un rectangle. L'utilisateur doit saisir la longueur et la largeur, qui peuvent être des nombres à virgule. \\n`longueur = float(input('Entrez la longueur du rectangle : '))` \\n`largeur = float(input('Entrez la largeur du rectangle : '))` \\n`aire = longueur * largeur` \\n`print('L\\'aire du rectangle est de', aire, 'cm²')`. \\nIci, nous utilisons `float()` car une longueur peut être de $12.5$ $cm$ par exemple. Si l'utilisateur saisit $10.5$ pour la longueur et $4.2$ pour la largeur, Python calcule $10.5 \\times 4.2 = 44.1$. Le résultat $44.1$ est stocké dans la variable `aire`. Note que même si l'utilisateur saisit un nombre entier comme $10$, `float()` le transformera en $10.0$, ce qui permet au programme de rester flexible et de gérer tous les types de nombres décimaux sans planter. L'utilisation du symbole $cm^2$ dans le print permet de donner du sens au résultat numérique en lui associant une unité physique."
+            },
+            {
+              "type": "paragraph",
+              "content": " Le piège le plus courant est l'oubli systématique de `int()` ou `float()`. Beaucoup d'élèves écrivent `x = input('Nombre : ')` puis `print(x * 2)`. Si l'utilisateur tape $5$, Python ne fera pas $5 \\times 2 = 10$, mais il répétera le texte deux fois, affichant '55'. C'est parce que multiplier une chaîne de caractères par un entier en Python revient à la dupliquer. Un autre danger est la saisie d'un caractère non numérique dans un `int()`. Si le programme attend un entier et que l'utilisateur tape 'quinze' ou '15.5', Python générera une 'ValueError' car il ne sait pas comment convertir des lettres ou un point en nombre entier. Pour éviter cela, il faut toujours prévenir l'utilisateur dans le message de l'input (ex: 'Veuillez entrer un nombre entier'). Enfin, attention aux parenthèses : chaque parenthèse ouverte doit être fermée. Dans `int(input('...'))`, il y a deux parenthèses ouvrantes, donc il faut deux parenthèses fermantes à la fin. L'oubli de la dernière parenthèse est une erreur de syntaxe très fréquente."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la ligne de code Python qui demande à l'utilisateur son prix d'achat (qui peut être un nombre à virgule) et le stocke dans une variable nommée `prix`.",
+              "answer": "prix = float(input('Entrez le prix : '))",
+              "hint": "Pense à la fonction de conversion nécessaire pour les nombres à virgule et à la fonction de lecture.",
+              "explanation": "On utilise `input()` pour lire la saisie, `float()` pour permettre les nombres décimaux, et on affecte le tout à la variable `prix`."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es le gardien d'un parc d'attractions. Ton travail est simple : si une personne mesure plus de $120$ $cm$, elle a le droit de monter dans le grand huit. Sinon, elle doit aller vers les manèges pour enfants. Pour prendre cette décision, tu ne fais pas un calcul mathématique complexe, tu poses une question dont la réponse est soit 'Oui', soit 'Non'. C'est exactement ce que fait un ordinateur lorsqu'il 'teste' une condition. C'est ce qu'on appelle la logique conditionnelle. Sans elle, un programme serait comme un train sur un rail unique : il irait toujours tout droit, peu importe ce qui se passe. Grâce aux tests, le programme peut bifurquer. Il peut décider d'afficher un message d'erreur si un mot de passe est faux, de lancer une alerte si la température d'un moteur est trop haute, ou de donner un bonus si un joueur atteint $1000$ points. Le test est l'élément qui apporte l'intelligence au code, car il permet au programme de réagir différemment selon les données qu'il a lues et stockées dans ses variables. C'est le moment où le programme 'réfléchit' et choisit le chemin à suivre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour effectuer un test, Python utilise des opérateurs de comparaison qui renvoient toujours un résultat de type 'booléen' : soit `True` (Vrai), soit `False` (Faux). Les principaux sont : `==` pour vérifier l'égalité (attention, deux signes égal !), `!=` pour l'inégalité, `>` (supérieur), `<` (inférieur), `>=` (supérieur ou égal) et `<=` (inférieur ou égal). La structure de base est l'instruction `if` (qui signifie 'si'). Si la condition après le `if` est vraie, le bloc de code indenté juste en dessous est exécuté. Si on veut prévoir un autre cas, on utilise `elif` (contraction de 'else if', 'sinon si'). Enfin, le bloc `else` (sinon) capture tous les cas restants si aucune des conditions précédentes n'était vraie. Un point crucial en Python est l'indentation : le décalage vers la droite (généralement $4$ espaces) du code situé sous le `if`. C'est ce décalage qui indique à Python quelles instructions appartiennent au test. Si on oublie l'indentation, le programme ne saura pas quand le test s'arrête et renverra une 'IndentationError'."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Système de contrôle d'accès\\n// age = int(input('Age ? '))\\nif age >= 18:\\n    print('Accès autorisé')\\nelif age >= 15:\\n    print('Accès avec autorisation parentale')\\nelse:\\n    print('Accès refusé')",
+              "language": "python",
+              "caption": "Structure de décision avec if, elif et else"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un test logique robuste, suis cette méthodologie. Premièrement, définis clairement ta condition. Demande-toi : 'Quelle est la question Oui/Non que je pose ?'. Par exemple : 'L'utilisateur a-t-il plus de $18$ ans ?'. Deuxièmement, écris l'instruction `if` suivie de la comparaison et n'oublie JAMAIS les deux-points `:` à la fin de la ligne. Exemple : `if age >= 18:`. Troisièmement, crée le bloc de code à exécuter en allant à la ligne et en ajoutant une indentation. C'est ici que tu mets les actions liées au succès du test. Quatrièmement, si tu as d'autres possibilités, ajoute des `elif` avec leurs propres conditions et deux-points. Cinquièmement, termine éventuellement par un `else:` pour gérer le cas par défaut. Pour sortir du bloc de test, il suffit de revenir à l'alignement initial (supprimer l'indentation). Un conseil : teste toujours les valeurs limites. Si ton test est `if note >= 10:`, vérifie bien ce qui se passe quand la note est exactement $10$. C'est souvent là que se cachent les erreurs de logique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Créons un programme qui vérifie si un candidat a l'âge légal pour voter. \\n`age = int(input('Votre âge : '))` \\n`if age >= 18:` \\n`    print('Vous pouvez voter.')` \\n`else:` \\n`    print('Vous êtes trop jeune pour voter.')` \\nAnalysons le flux. Si l'utilisateur saisit $20$, la condition $20  18$ est `True`. Python entre dans le premier bloc et affiche 'Vous pouvez voter.'. Il ignore ensuite complètement le bloc `else`. Si l'utilisateur saisit $16$, la condition $16  18$ est `False`. Python saute le premier bloc, passe directement au `else` et affiche 'Vous êtes trop jeune pour voter.'. Ici, le `else` agit comme un filet de sécurité qui gère tous les âges strictement inférieurs à $18$. Le programme est simple et efficace car il couvre l'intégralité des possibilités mathématiques pour un nombre entier représentant un âge."
+            },
+            {
+              "type": "paragraph",
+              "content": "Montons d'un niveau avec un système de notation scolaire qui attribue une lettre selon la moyenne. \\n`moyenne = float(input('Entrez votre moyenne : '))` \\n`if moyenne >= 16:` \\n`    resultat = 'Très Bien'` \\n`elif moyenne >= 12:` \\n`    resultat = 'Bien'` \\n`elif moyenne >= 10:` \\n`    resultat = 'Passable'` \\n`else:` \\n`    resultat = 'Insuffisant'` \\n`print('Mention :', resultat)` \\nDans ce cas, l'ordre des `elif` est vital. Python teste les conditions l'une après l'autre. Si l'élève a $17$, la première condition `moyenne >= 16` est vraie, on affecte 'Très Bien' et on s'arrête là. Si on avait mis `moyenne >= 10` en premier, l'élève avec $17$ aurait reçu la mention 'Passable' car $17$ est bien supérieur à $10$, et Python ne regarderait même pas les lignes suivantes. On va donc toujours du critère le plus restrictif au moins restrictif. La variable `resultat` est mise à jour selon le chemin emprunté, puis affichée une seule fois à la fin pour éviter de répéter l'instruction `print` quatre fois."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège numéro un est l'utilisation d'un seul signe égal dans un test. Écrire `if age = 18:` provoquera une erreur immédiate car Python pense que tu essaies de faire une affectation dans un test. Pour comparer, il faut absolument utiliser `==`. Un autre problème fréquent est l'oubli des deux-points `:` à la fin de la ligne du `if`, du `elif` ou du `else`. C'est l'erreur de syntaxe la plus courante. Ensuite, il y a la confusion sur l'indentation. Certains élèves indentent tout leur code, ou alors oublient d'indenter le bloc sous le `if`. Rappelle-toi : tout ce qui est décalé vers la droite 'appartient' à la condition juste au-dessus. Enfin, attention à l'ordre des tests avec `elif`. Comme vu dans l'exemple des notes, si tu mets la condition la plus large en premier, les conditions plus précises ne seront jamais atteintes. Pense à ton code comme à un entonnoir : on filtre d'abord les cas particuliers avant de finir par le cas général."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le résultat de l'expression `15 != 15` en Python ?",
+              "answer": "False",
+              "hint": "L'opérateur != signifie 'est différent de'.",
+              "explanation": "L'expression demande si $15$ est différent de $15$. Comme $15$ est égal à $15$, l'affirmation 'est différent' est fausse, donc Python renvoie `False`."
+            },
+            {
+              "question": "Parmi ces trois lignes, laquelle est syntaxiquement correcte pour débuter un test ?\\n1) `if x > 10`\\n2) `if x > 10 :`\\n3) `if x > 10 then :`",
+              "answer": "2) if x > 10 :",
+              "hint": "Vérifie la présence des deux-points et l'absence de mots inutiles comme 'then'.",
+              "explanation": "En Python, la syntaxe obligatoire est `if` suivi de la condition et terminé par deux-points `:`. Le mot 'then' n'existe pas en Python contrairement à d'autres langages."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

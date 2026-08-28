@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparaison",
+  "title": "Quiz : Comparaison de séries statistiques (Moyenne, Médiane, Étendue)",
+  "questions": [
+    {
+      "text": "On compare les notes de deux classes de $3^{\\text{e}}$ à un même contrôle.\\nClasse A : moyenne $12$, médiane $11$, étendue $8$.\\nClasse B : moyenne $13$, médiane $13$, étendue $15$.\\nLaquelle des affirmations suivantes est correcte ?",
+      "options": [
+        "La classe A a une meilleure moyenne mais ses notes sont plus dispersées.",
+        "La classe B a une meilleure moyenne et ses notes sont moins dispersées.",
+        "La classe B a une meilleure moyenne mais ses notes sont plus dispersées.",
+        "Les deux classes ont la même médiane."
+      ],
+      "correctAnswer": "La classe B a une meilleure moyenne mais ses notes sont plus dispersées.",
+      "explanation": "La moyenne de la classe B ($13$) est supérieure à celle de la classe A ($12$), donc la classe B a globalement de meilleurs résultats. L'étendue de la classe B ($15$) est supérieure à celle de la classe A ($8$), ce qui signifie que les notes de la classe B sont plus écartées (plus dispersées) que celles de la classe A. La médiane de la classe B ($13$) est aussi supérieure à celle de la classe A ($11$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une série statistique contient les valeurs : $5 ; 7 ; 8 ; 9 ; 10 ; 12 ; 50$.\\nOn compare la moyenne et la médiane de cette série.\\nQuelle affirmation est vraie ?",
+      "options": [
+        "La moyenne est égale à la médiane car la série est symétrique.",
+        "La moyenne est inférieure à la médiane à cause de la valeur $5$.",
+        "La moyenne est supérieure à la médiane à cause de la valeur $50$.",
+        "La médiane ne peut pas être calculée car il y a une valeur aberrante."
+      ],
+      "correctAnswer": "La moyenne est supérieure à la médiane à cause de la valeur $50$.",
+      "explanation": "La série compte $7$ valeurs. La médiane est la $4^{\\text{e}}$ valeur ordonnée, soit $9$. La moyenne est $(5+7+8+9+10+12+50)/7 = 101/7 \\approx 14,4$. La valeur $50$ est une valeur aberrante (très grande) qui tire la moyenne vers le haut, la rendant supérieure à la médiane. La médiane, elle, est résistante aux valeurs extrêmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux séries ont la même moyenne $14$.\\nSérie 1 : étendue $6$.\\nSérie 2 : étendue $18$.\\nOn cherche la série la plus homogène (les valeurs les plus regroupées autour de la moyenne).\\nLaquelle choisir ?",
+      "options": [
+        "La série 1 car son étendue est plus petite.",
+        "La série 2 car son étendue est plus grande.",
+        "Les deux sont aussi homogènes car elles ont la même moyenne.",
+        "On ne peut pas comparer l'homogénéité avec seulement l'étendue."
+      ],
+      "correctAnswer": "La série 1 car son étendue est plus petite.",
+      "explanation": "L'étendue mesure la dispersion totale des valeurs (différence entre le max et le min). Une étendue plus petite ($6$ contre $18$) indique que les valeurs sont moins écartées, donc plus regroupées autour de la moyenne. La série 1 est donc plus homogène que la série 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare deux séries à l'aide de leurs boîtes à moustaches (box plots).\\nSérie X : minimum $10$, premier quartile $12$, médiane $15$, troisième quartile $18$, maximum $22$.\\nSérie Y : minimum $8$, premier quartile $13$, médiane $16$, troisième quartile $20$, maximum $28$.\\nLaquelle des affirmations est fausse ?",
+      "options": [
+        "La médiane de la série Y est supérieure à celle de la série X.",
+        "L'intervalle interquartile (IQ) de la série Y est plus grand que celui de la série X.",
+        "L'étendue de la série Y est plus grande que celle de la série X.",
+        "Le premier quartile de la série X est supérieur à celui de la série Y."
+      ],
+      "correctAnswer": "Le premier quartile de la série X est supérieur à celui de la série Y.",
+      "explanation": "Calculons : Médiane X=$15$, Médiane Y=$16$ -> Y > X (Vrai). IQ X = $18-12=6$, IQ Y = $20-13=7$ -> Y > X (Vrai). Étendue X = $22-10=12$, Étendue Y = $28-8=20$ -> Y > X (Vrai). Q1 X = $12$, Q1 Y = $13$ -> Q1 X ($12$) est inférieur à Q1 Y ($13$). L'affirmation 4 dit l'inverse, elle est donc fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un entraîneur hésite entre deux joueurs pour une finale.\\nJoueur A : moyenne de points par match $18$, étendue $25$.\\nJoueur B : moyenne de points par match $16$, étendue $6$.\\nL'entraîneur préfère la régularité (performances stables).\\nQuel joueur doit-il choisir et pourquoi ?",
+      "options": [
+        "Le joueur A car sa moyenne est plus élevée.",
+        "Le joueur B car sa moyenne est plus faible.",
+        "Le joueur A car son étendue est plus grande.",
+        "Le joueur B car son étendue est plus petite."
+      ],
+      "correctAnswer": "Le joueur B car son étendue est plus petite.",
+      "explanation": "La régularité correspond à une faible dispersion des résultats. L'étendue du joueur B ($6$) est beaucoup plus faible que celle du joueur A ($25$), ce qui signifie que les scores du joueur B varient peu d'un match à l'autre (il est régulier). Le joueur A, malgré une moyenne plus élevée, a des performances très irrégulières (étendue grande). Pour privilégier la régularité, on choisit le joueur B.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

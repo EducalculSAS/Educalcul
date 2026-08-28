@@ -1,0 +1,128 @@
+{
+  "_status": "done",
+  "_course_id": 338,
+  "_course_code": "6eme-t02-c03-comparer-et-placer-des-fractions",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Droite",
+  "title": "Approfondissement : Placer des fractions sur une droite graduée",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, l'intervalle $[0 ; 1]$ est divisé en $8$ parties égales. Quelle lettre correspond à l'abscisse de la fraction $\\frac{3}{4}$ ?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "C",
+      "explanation": "La fraction $\\frac{3}{4}$ est équivalente à $\\frac{6}{8}$ car $3 \\times 2 = 6$ et $4 \\times 2 = 8$. Sur une droite graduée en huitièmes, il faut compter $6$ graduations après $0$. Le point C se trouve à la $6^{\\text{e}}$ graduation, soit à l'abscisse $\\frac{6}{8} = \\frac{3}{4}$. Le point A est à $\\frac{1}{8}$, B à $\\frac{3}{8}$ et D à $\\frac{7}{8}$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1 par huitièmes",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.125,
+            "label": "A"
+          },
+          {
+            "value": 0.375,
+            "label": "B"
+          },
+          {
+            "value": 0.75,
+            "label": "C"
+          },
+          {
+            "value": 0.875,
+            "label": "D"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On souhaite placer le nombre $\\frac{5}{2}$ sur une droite graduée. Entre quels deux entiers consecutifs ce nombre se trouve-t-il ?",
+      "options": [
+        "Entre 1 et 2",
+        "Entre 2 et 3",
+        "Entre 3 et 4",
+        "Entre 0 et 1"
+      ],
+      "correctAnswer": "Entre 2 et 3",
+      "explanation": "Pour situer $\\frac{5}{2}$, on effectue la division euclidienne : $5 = 2 \\times 2 + 1$. Donc $\\frac{5}{2} = 2 + \\frac{1}{2} = 2,5$. Ce nombre est strictement supérieur à $2$ et strictement inférieur à $3$. Il se place donc entre les entiers $2$ et $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $1$ divisée en $12$ parties égales, on place les points $M$ (abscisse $\\frac{2}{3}$) et $N$ (abscisse $\\frac{3}{4}$). Lequel de ces deux points est le plus à droite ?",
+      "options": [
+        "Le point M",
+        "Le point N",
+        "Ils sont confondus",
+        "Impossible à savoir"
+      ],
+      "correctAnswer": "Le point N",
+      "explanation": "On met les fractions au même dénominateur (12) pour comparer leurs abscisses. $\\frac{2}{3} = \\frac{8}{12}$ et $\\frac{3}{4} = \\frac{9}{12}$. Puisque $\\frac{9}{12} > \\frac{8}{12}$, l'abscisse de N est plus grande que celle de M. Sur une droite graduée, les nombres augmentent vers la droite, donc N est à droite de M.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée en douzièmes",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.6666666666666666,
+            "label": "M"
+          },
+          {
+            "value": 0.75,
+            "label": "N"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "La droite ci-dessous est graduée par pas de $\\frac{1}{5}$ entre $1$ et $2$. Le point $A$ est placé sur la $3^{\\text{e}}$ graduation après $1$. Quelle est l'abscisse de $A$ ?",
+      "options": [
+        "$1 \\frac{2}{5}$",
+        "$1 \\frac{3}{5}$",
+        "$1 \\frac{4}{5}$",
+        "$\\frac{3}{5}$"
+      ],
+      "correctAnswer": "$1 \\frac{3}{5}$",
+      "explanation": "Le point de départ est l'entier $1$. Chaque graduation vaut $\\frac{1}{5}$. La première graduation après $1$ est $1 + \\frac{1}{5} = 1 \\frac{1}{5}$. La deuxième est $1 \\frac{2}{5}$. La troisième graduation correspond à $1 + 3 \\times \\frac{1}{5} = 1 + \\frac{3}{5} = 1 \\frac{3}{5}$. L'option $\\frac{3}{5}$ correspondrait à un placement entre $0$ et $1$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 1 à 2 graduée en cinquièmes",
+        "min": 1,
+        "max": 2,
+        "points": [
+          {
+            "value": 1.6,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On place la fraction $\\frac{11}{3}$ sur une droite graduée par pas de $\\frac{1}{3}$. En partant de $0$, combien de graduations faut-il compter pour atteindre ce point ?",
+      "options": [
+        "11",
+        "3",
+        "8",
+        "4"
+      ],
+      "correctAnswer": "11",
+      "explanation": "La fraction $\\frac{11}{3}$ signifie $11$ fois l'unité $\\frac{1}{3}$. Sur une droite où le pas de graduation est $\\frac{1}{3}$, chaque graduation représente une augmentation de $\\frac{1}{3}$. Pour atteindre $\\frac{11}{3}$, il faut donc avancer de $11$ graduations depuis l'origine $0$. On peut vérifier : $11 \\times \\frac{1}{3} = \\frac{11}{3}$. Notez que $\\frac{11}{3} = 3 \\frac{2}{3}$, ce qui se situe entre $3$ et $4$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

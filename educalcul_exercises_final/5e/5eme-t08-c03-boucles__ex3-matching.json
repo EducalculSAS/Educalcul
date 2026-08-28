@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Prédire",
+  "title": "Prédire le résultat d'algorithmes avec boucles",
+  "blocks": [
+    {
+      "title": "Boucles simples : initialisation et incrémentation",
+      "content": "Relie chaque algorithme à la valeur affichée à la fin de son exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Algorithme : $c \\leftarrow 0$ ; Pour $i$ de $1$ à $4$ faire $c \\leftarrow c + 1$ ; Fin pour ; Afficher $c$",
+          "right": "$4$"
+        },
+        {
+          "left": "Algorithme : $s \\leftarrow 0$ ; Pour $i$ de $1$ à $3$ faire $s \\leftarrow s + 2$ ; Fin pour ; Afficher $s$",
+          "right": "$6$"
+        },
+        {
+          "left": "Algorithme : $p \\leftarrow 1$ ; Pour $i$ de $1$ à $3$ faire $p \\leftarrow p \\times 2$ ; Fin pour ; Afficher $p$",
+          "right": "$8$"
+        },
+        {
+          "left": "Algorithme : $n \\leftarrow 10$ ; Pour $i$ de $1$ à $2$ faire $n \\leftarrow n - 3$ ; Fin pour ; Afficher $n$",
+          "right": "$4$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour le premier algorithme, $c$ commence à $0$ et on ajoute $1$ quatre fois : $0+1+1+1+1=4$. Pour le second, $s$ commence à $0$ et on ajoute $2$ trois fois : $0+2+2+2=6$. Pour le troisième, $p$ commence à $1$ et on multiplie par $2$ trois fois : $1\\times2\\times2\\times2=8$. Pour le quatrième, $n$ commence à $10$ et on soustrait $3$ deux fois : $10-3-3=4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles avec accumulateur et variable de boucle",
+      "content": "Relie chaque algorithme à la valeur affichée à la fin de son exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Algorithme : $s \\leftarrow 0$ ; Pour $k$ de $1$ à $4$ faire $s \\leftarrow s + k$ ; Fin pour ; Afficher $s$",
+          "right": "$10$"
+        },
+        {
+          "left": "Algorithme : $p \\leftarrow 1$ ; Pour $k$ de $1$ à $3$ faire $p \\leftarrow p \\times k$ ; Fin pour ; Afficher $p$",
+          "right": "$6$"
+        },
+        {
+          "left": "Algorithme : $s \\leftarrow 0$ ; Pour $k$ de $1$ à $5$ faire $s \\leftarrow s + 2$ ; Fin pour ; Afficher $s$",
+          "right": "$10$"
+        },
+        {
+          "left": "Algorithme : $n \\leftarrow 2$ ; Pour $i$ de $1$ à $4$ faire $n \\leftarrow n \\times 2$ ; Fin pour ; Afficher $n$",
+          "right": "$32$"
+        }
+      ],
+      "items": [],
+      "explanation": "Premier algorithme : somme des entiers de $1$ à $4$ : $1+2+3+4=10$. Second algorithme : factorielle de $3$ (produit des entiers de $1$ à $3$) : $1\\times1\\times2\\times3=6$. Troisième algorithme : on ajoute $2$ cinq fois à $0$ : $5\\times2=10$. Quatrième algorithme : suite géométrique, $n$ vaut $2$ puis multiplié par $2$ quatre fois : $2\\times2^4=2\\times16=32$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles imbriquées et boucle conditionnelle",
+      "content": "Relie chaque algorithme à la valeur affichée à la fin de son exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Algorithme : $c \\leftarrow 0$ ; Pour $i$ de $1$ à $2$ faire Pour $j$ de $1$ à $3$ faire $c \\leftarrow c + 1$ ; Fin pour ; Fin pour ; Afficher $c$",
+          "right": "$6$"
+        },
+        {
+          "left": "Algorithme : $x \\leftarrow 10$ ; Tant que $x > 4$ faire $x \\leftarrow x - 2$ ; Fin tant que ; Afficher $x$",
+          "right": "$4$"
+        },
+        {
+          "left": "Algorithme : $s \\leftarrow 0$ ; Pour $i$ de $1$ à $3$ faire Pour $j$ de $1$ à $i$ faire $s \\leftarrow s + 1$ ; Fin pour ; Fin pour ; Afficher $s$",
+          "right": "$6$"
+        },
+        {
+          "left": "Algorithme : $p \\leftarrow 1$ ; Pour $k$ de $2$ à $5$ faire $p \\leftarrow p \\times k$ ; Fin pour ; Afficher $p$",
+          "right": "$120$"
+        }
+      ],
+      "items": [],
+      "explanation": "Premier algorithme : boucle imbriquée simple, $2$ tours pour $i$ et $3$ tours pour $j$ à chaque fois, soit $2\\times3=6$ incrémentations. Second algorithme : boucle $TantQue$, $x$ prend les valeurs $10 \\to 8 \\to 6 \\to 4$ ; la condition $x>4$ devient fausse pour $4$, on affiche $4$. Troisième algorithme : boucles imbriquées dépendantes, pour $i=1$ on fait $1$ tour, $i=2$ on fait $2$ tours, $i=3$ on fait $3$ tours, total $1+2+3=6$. Quatrième algorithme : produit des entiers de $2$ à $5$ : $2\\times3\\times4\\times5=120$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,563 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.643589+00:00",
+  "id": 692,
+  "code": "terminale-generale-maths-t04-c03",
+  "title": "Identifier une forme indéterminée",
+  "description": "Cours structuré Educalcul : Identifier une forme indéterminée.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 56,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Identifier une forme indéterminée",
+    "objectif_global": "Identifier une forme indéterminée",
+    "mini_lecons_imposees": [
+      "0/0.",
+      "inf/inf.",
+      "inf-inf.",
+      "0×inf."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "0/0.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une forme indéterminée ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux formes indéterminées. En terminale spécialité mathématiques, vous allez rencontrer des limites qui, au premier abord, semblent ne pas avoir de sens précis. C'est le cas typique du quotient de deux fonctions qui tendent toutes les deux vers $0$. On écrit alors $\\lim_{x \\to a} f(x) = 0$ et $\\lim_{x \\to a} g(x) = 0$, et l'expression $\\frac{f(x)}{g(x)}$ prend la forme symbolique $\\frac{0}{0}$. Mais attention : cette écriture ne signifie pas que la limite vaut $0$ ou qu'elle n'existe pas. Elle signale simplement que la règle du quotient des limites ne s'applique pas directement, car le dénominateur tend vers $0$. Il faut alors transformer l'expression pour lever l'indétermination. Prenons le temps de bien comprendre pourquoi cette situation est délicate et comment la repérer avec certitude."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x \\to a} \\frac{f(x)}{g(x)} \\text{ avec } \\lim_{x \\to a} f(x)=0 \\text{ et } \\lim_{x \\to a} g(x)=0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginez deux courbes qui passent par le point d'abscisse $a$ et d'ordonnée $0$. Leur quotient au voisinage de $a$ est le rapport de leurs ordonnées. Comme les deux ordonnées sont très petites, leur rapport peut tendre vers n'importe quel nombre réel, vers $+\\infty$, vers $-\\infty$, ou ne pas avoir de limite du tout. C'est pour cela qu'on parle de forme indéterminée : la forme $\\frac{0}{0}$ ne détermine pas la limite. Pour illustrer, rappelons l'exemple classique de $\\frac{\\sin x}{x}$ quand $x \\to 0$. Le numérateur et le dénominateur tendent vers $0$, pourtant la limite vaut $1$. Un autre exemple : $\\frac{x^2}{x}$ tend vers $0$, tandis que $\\frac{x}{x^2}$ tend vers $\\infty$. Vous voyez que la forme $\\frac{0}{0}$ cache une grande variété de comportements."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Repère visuel",
+              "paragraphs": [
+                "Quand vous voyez un quotient dont le numérateur et le dénominateur tendent vers $0$, notez immédiatement « forme $\\frac{0}{0}$ » dans votre brouillon. Cela vous obligera à chercher une transformation (factorisation, rationalisation, utilisation de limites remarquables, développement limité) avant de conclure."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comment reconnaître une forme $\\frac{0}{0}$ dans une expression algébrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée générale est posée, voyons comment identifier concrètement une forme $\\frac{0}{0}$ face à une fonction définie par une formule. Supposons que l'on étudie la limite en $1$ de la fonction $h(x) = \\frac{x^2 - 1}{x - 1}$. En remplaçant $x$ par $1$, le numérateur devient $1^2 - 1 = 0$ et le dénominateur $1 - 1 = 0$. On a bien la forme $\\frac{0}{0}$. Mais attention : il ne suffit pas de remplacer $x$ par la valeur visée si la fonction n'est pas définie en ce point. La méthode rigoureuse consiste à calculer séparément les limites du numérateur et du dénominateur. Si les deux limites existent et sont égales à $0$, alors on est en présence de la forme $\\frac{0}{0}$. Prenons un exemple un peu plus subtil : $\\lim_{x \\to 0} \\frac{e^x - 1}{x}$. Ici, $e^x \\to 1$, donc $e^x - 1 \\to 0$, et $x \\to 0$. C'est encore une forme $\\frac{0}{0}$, qui est d'ailleurs la définition de la dérivée de l'exponentielle en $0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la limite du numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluez $\\lim_{x \\to a} f(x)$. Si ce n'est pas $0$, ce n'est pas une forme $\\frac{0}{0}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la limite du dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évaluez $\\lim_{x \\to a} g(x)$. Si ce n'est pas $0$, ce n'est pas une forme $\\frac{0}{0}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux limites sont $0$, on a une forme $\\frac{0}{0}$. Il faut alors transformer l'expression (factoriser, rationaliser, utiliser des limites remarquables, poser un changement de variable, etc.) pour lever l'indétermination."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à $\\frac{\\ln(1+x)}{x}$ quand $x \\to 0$. Numérateur : $\\ln(1+x) \\to \\ln 1 = 0$. Dénominateur : $x \\to 0$. C'est une forme $\\frac{0}{0}$. Vous connaissez sans doute la limite remarquable $\\lim_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1$. Mais si vous ne la connaissiez pas, vous pourriez utiliser le développement limité $\\ln(1+x) = x + o(x)$ pour obtenir directement la limite $1$. L'identification de la forme est la première marche, la résolution en est une autre que nous verrons plus tard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges fréquents et cas limites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois qu'un quotient ressemble à $\\frac{0}{0}$ mais n'en soit pas un. Par exemple, $\\frac{x}{x^2 + 1}$ en $x \\to 0$ : le numérateur tend vers $0$, mais le dénominateur tend vers $1$. La limite est $0$, il n'y a aucune indétermination. Inversement, $\\frac{x^2 + 1}{x}$ en $x \\to 0$ donne $\\frac{1}{0}$, ce qui n'est pas une forme indéterminée mais une limite infinie (signe selon le côté). Un autre piège : les fonctions par parties. Considérez $f(x) = \\frac{|x|}{x}$ pour $x \\neq 0$. En $0$, le numérateur $|x| \\to 0$ et le dénominateur $x \\to 0$, donc forme $\\frac{0}{0}$. Pourtant, la limite n'existe pas car les limites à gauche et à droite sont différentes ($-1$ et $+1$). La forme $\\frac{0}{0}$ ne garantit pas l'existence de la limite, elle impose juste de travailler davantage."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Ne confondez pas « forme indéterminée » et « limite qui n'existe pas ». La forme $\\frac{0}{0}$ signifie que la méthode directe échoue, pas que la limite n'existe pas. De même, une limite peut exister sans être une forme indéterminée (ex: $\\frac{x}{x+1} \\to 0$)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant repérer avec assurance une forme $\\frac{0}{0}$. Dans la prochaine leçon, nous aborderons la forme $\\frac{\\infty}{\\infty}$, qui est en quelque sorte la version « à l'infini » de celle-ci. Les techniques pour la reconnaître seront très similaires, mais les fonctions en jeu seront souvent des polynômes, des exponentielles ou des logarithmes quand la variable tend vers $\\pm\\infty$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les limites suivantes, lesquelles présentent une forme $\\frac{0}{0}$ ?\\n1. $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$\\n2. $\\lim_{x \\to 0} \\frac{\\sin(2x)}{x}$\\n3. $\\lim_{x \\to 1} \\frac{x^3 - 1}{x^2 + 1}$\\n4. $\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2}$",
+              "answer": "1, 2, 4",
+              "hint": "Calculez la limite du numérateur et du dénominateur séparément. Si les deux sont $0$, c'est une forme $\\frac{0}{0}$.",
+              "explanation": "1. Numérateur $2^2-4=0$, dénominateur $2-2=0$ → forme $\\frac{0}{0}$.\\n2. $\\sin(2x) \\to 0$, $x \\to 0$ → forme $\\frac{0}{0}$.\\n3. Numérateur $1-1=0$, dénominateur $1+1=2 \\neq 0$ → pas de forme $\\frac{0}{0}$ (limite $0$).\\n4. $\\cos x \\to 1$, donc $1-\\cos x \\to 0$, $x^2 \\to 0$ → forme $\\frac{0}{0}$."
+            },
+            {
+              "question": "La limite $\\lim_{x \\to 0} \\frac{e^{2x} - 1}{\\tan x}$ est-elle une forme $\\frac{0}{0}$ ? Justifiez.",
+              "answer": "Oui, car $e^{2x} \\to 1$ donc $e^{2x}-1 \\to 0$, et $\\tan x \\to 0$.",
+              "hint": "Rappelez-vous que $\\tan x = \\frac{\\sin x}{\\cos x}$ et que $\\sin x \\to 0$, $\\cos x \\to 1$.",
+              "explanation": "Numérateur : $e^{2x} \\to e^0 = 1$, donc $e^{2x}-1 \\to 0$. Dénominateur : $\\tan x = \\frac{\\sin x}{\\cos x}$, $\\sin x \\to 0$, $\\cos x \\to 1$, donc $\\tan x \\to 0$. Les deux limites sont $0$, c'est bien une forme $\\frac{0}{0}$."
+            },
+            {
+              "question": "Donnez un exemple de fonction $f(x)$ telle que $\\lim_{x \\to 0} f(x) = \\frac{0}{0}$ mais que la limite n'existe pas (finie ou infinie).",
+              "answer": "Par exemple $f(x) = \\frac{\\sin(1/x)}{x}$ pour $x \\neq 0$. Le numérateur $\\sin(1/x)$ n'a pas de limite en $0$ (oscille entre $-1$ et $1$), mais on peut considérer $f(x) = \\frac{|x|}{x}$ qui donne $\\frac{0}{0}$ et n'a pas de limite en $0$ (limites à gauche $-1$, à droite $+1$).",
+              "hint": "Pensez à une fonction qui change de signe selon le côté de $0$, comme la valeur absolue ou une fonction oscillante.",
+              "explanation": "L'exemple classique est $\\frac{|x|}{x}$. Numérateur $|x| \\to 0$, dénominateur $x \\to 0$, donc forme $\\frac{0}{0}$. Mais pour $x>0$, $\\frac{|x|}{x}=1$ ; pour $x<0$, $\\frac{|x|}{x}=-1$. La limite n'existe pas. Cela montre que la forme $\\frac{0}{0}$ ne garantit pas l'existence de la limite."
+            }
+          ]
+        },
+        {
+          "title": "inf/inf.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme $\\frac{\\infty}{\\infty}$ : quand le numérateur et le dénominateur s'envolent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir exploré la forme $\\frac{0}{0}$, nous nous tournons maintenant vers sa cousine « à l'infini » : la forme $\\frac{\\infty}{\\infty}$. Elle survient lorsque l'on étudie la limite d'un quotient $\\frac{f(x)}{g(x)}$ et que, séparément, $\\lim f(x) = +\\infty$ (ou $-\\infty$) et $\\lim g(x) = +\\infty$ (ou $-\\infty$). Le symbole $\\infty$ ici ne désigne pas un nombre, mais le fait que les valeurs deviennent arbitrairement grandes en valeur absolue. Tout comme pour $\\frac{0}{0}$, l'écriture $\\frac{\\infty}{\\infty}$ ne nous donne aucune information sur la limite du quotient : celle-ci peut être un réel, $+\\infty$, $-\\infty$, ou ne pas exister. C'est une indétermination qu'il faut lever par des manipulations algébriques ou des comparaisons de croissance."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x \\to a} \\frac{f(x)}{g(x)} \\text{ avec } \\lim_{x \\to a} f(x) = \\pm\\infty \\text{ et } \\lim_{x \\to a} g(x) = \\pm\\infty"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : la limite en $+\\infty$ de la fonction rationnelle $\\frac{3x^2 + 2x - 1}{5x^2 - 4x + 7}$. Le numérateur et le dénominateur sont des polynômes de degré $2$ à coefficient dominant positif, donc tous deux tendent vers $+\\infty$. On a bien la forme $\\frac{\\infty}{\\infty}$. Pour la lever, on factorise par la plus grande puissance de $x$ : $\\frac{x^2(3 + \\frac{2}{x} - \\frac{1}{x^2})}{x^2(5 - \\frac{4}{x} + \\frac{7}{x^2})} = \\frac{3 + \\frac{2}{x} - \\frac{1}{x^2}}{5 - \\frac{4}{x} + \\frac{7}{x^2}} \\to \\frac{3}{5}$. Autre exemple : $\\lim_{x \\to +\\infty} \\frac{e^x}{x^2}$. Ici, l'exponentielle tend vers $+\\infty$ et $x^2$ aussi, forme $\\frac{\\infty}{\\infty}$. Mais on sait que l'exponentielle domine tout polynôme, donc la limite est $+\\infty$. Vous voyez que la forme $\\frac{\\infty}{\\infty}$ cache elle aussi une grande variété de comportements."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de reconnaissance",
+              "paragraphs": [
+                "Dès que vous voyez une limite en $\\pm\\infty$ d'un quotient où le numérateur et le dénominateur sont des sommes de puissances, d'exponentielles, de logarithmes, ou des produits de tels termes, calculez mentalement la limite de chaque partie. Si les deux parties tendent vers $\\pm\\infty$, notez « forme $\\frac{\\infty}{\\infty}$ » et préparez-vous à factoriser par le terme dominant ou à utiliser des comparaisons de croissance."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparaison des croissances : l'outil pour lever $\\frac{\\infty}{\\infty}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lever une forme $\\frac{\\infty}{\\infty}$, il est essentiel de connaître la hiérarchie des croissances quand $x \\to +\\infty$ (ou $-\\infty$). Dans l'ordre croissant : les logarithmes ($\\ln x$), les puissances ($x^\\alpha$ avec $\\alpha>0$), les exponentielles ($e^x$, $a^x$ avec $a>1$), et les factorielles ($x!$). Plus précisément, pour tout $\\alpha>0$, $\\lim_{x \\to +\\infty} \\frac{\\ln x}{x^\\alpha} = 0$, $\\lim_{x \\to +\\infty} \\frac{x^\\alpha}{e^x} = 0$. Cela signifie que l'exponentielle « gagne » contre toute puissance, et toute puissance « gagne » contre le logarithme. Cette règle permet de trancher rapidement : si le numérateur est d'un ordre de croissance strictement supérieur à celui du dénominateur, la limite est $\\pm\\infty$ (signe selon les signes) ; si le dénominateur domine, la limite est $0$ ; s'ils sont du même ordre (même degré pour des polynômes, même base d'exponentielle), la limite est le rapport des coefficients dominants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les termes dominants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans le numérateur et le dénominateur, repérez les fonctions qui croissent le plus vite quand $x \\to \\pm\\infty$ (ex: $x^3$ domine $x^2$, $e^x$ domine $x^3$, $\\ln x$ est dominé par $x^\\alpha$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les ordres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'ordre du numérateur > ordre du dénominateur → limite $\\pm\\infty$. Si ordre numérateur < ordre dénominateur → limite $0$. Si même ordre → limite = rapport des coefficients dominants (pour polynômes) ou quotient des bases (pour exponentielles de même base)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Attention aux signes : $(-\\infty)/(-\\infty)$ peut donner $+\\infty$, $(+\\infty)/(-\\infty)$ donne $-\\infty$, etc. Si la limite est un réel, le signe est celui du quotient des coefficients dominants."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à $\\lim_{x \\to +\\infty} \\frac{2e^{2x} + 3x^5}{5e^{2x} - \\ln x}$. Les termes dominants sont $2e^{2x}$ au numérateur et $5e^{2x}$ au dénominateur (même ordre : exponentielle de base $e^2$). Le rapport des coefficients donne $\\frac{2}{5}$. Donc la limite est $\\frac{2}{5}$. Notez que la présence de $3x^5$ et $\\ln x$ ne change rien car ils sont négligeables devant $e^{2x}$. C'est la puissance de la comparaison de croissances."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : formes $\\frac{\\infty}{\\infty}$ déguisées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la forme $\\frac{\\infty}{\\infty}$ n'apparaît pas immédiatement sous la forme d'un quotient. Par exemple, la limite de $x \\ln x$ quand $x \\to +\\infty$ est un produit $\\infty \\times \\infty$, ce qui n'est pas indéterminé (ça donne $+\\infty$). Mais si l'on considère $\\frac{\\ln x}{1/x}$ en $x \\to +\\infty$, le numérateur $\\ln x \\to +\\infty$ et le dénominateur $1/x \\to 0^+$, ce n'est pas $\\frac{\\infty}{\\infty}$ mais $\\frac{\\infty}{0}$ qui donne $+\\infty$. En revanche, $\\frac{x}{\\ln x}$ en $x \\to +\\infty$ donne bien $\\frac{\\infty}{\\infty}$ (puisque $\\ln x \\to +\\infty$). Un cas subtil : $\\lim_{x \\to 0^+} \\frac{\\ln x}{1/x}$. Ici $\\ln x \\to -\\infty$ et $1/x \\to +\\infty$, donc forme $\\frac{\\infty}{\\infty}$ (avec des signes opposés). La limite est $-\\infty$ car $\\ln x$ est négligeable devant $1/x$ ? Attendez : on compare $\\ln x$ et $1/x$ quand $x \\to 0^+$. Posons $t = 1/x \\to +\\infty$, alors $\\ln x = -\\ln t$. L'expression devient $\\frac{-\\ln t}{t} \\to 0^-$. Donc la limite est $0$. C'est un exemple où la forme $\\frac{\\infty}{\\\\infty}$ (avec signes opposés) donne une limite finie. Soyez vigilant aux changements de variable qui transforment une forme en une autre."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Piège classique",
+              "paragraphs": [
+                "Ne confondez pas $\\frac{\\infty}{\\infty}$ et $\\frac{\\infty}{0}$. Si le dénominateur tend vers $0$ (et non vers $\\infty$), ce n'est pas une forme indéterminée : la limite est infinie (sauf si le numérateur tend aussi vers $0$, ce qui serait $\\frac{0}{0}$). Vérifiez toujours que le dénominateur tend bien vers $\\pm\\infty$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant l'identification de la forme $\\frac{\\infty}{\\infty}$ et les premières idées pour la lever. La prochaine leçon abordera la forme $\\infty - \\infty$, qui apparaît lorsqu'on soustrait deux fonctions qui tendent vers l'infini. Elle nécessite souvent de factoriser ou de rationaliser pour faire apparaître un quotient, ramenant parfois à une forme $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lesquelles des limites suivantes sont de la forme $\\frac{\\infty}{\\infty}$ ?\\n1. $\\lim_{x \\to +\\infty} \\frac{x^3 + 2x}{5x^2 - 1}$\\n2. $\\lim_{x \\to 0^+} \\frac{\\ln x}{x}$\\n3. $\\lim_{x \\to +\\infty} \\frac{e^x}{x^2}$\\n4. $\\lim_{x \\to -\\infty} \\frac{x^2}{e^x}$",
+              "answer": "1, 3",
+              "hint": "Calculez les limites du numérateur et du dénominateur. Pour 2, $\\ln x \\to -\\infty$ mais $x \\to 0$, ce n'est pas $\\infty$. Pour 4, $e^x \\to 0$, pas $\\infty$.",
+              "explanation": "1. Numérateur $x^3 \\to +\\infty$, dénominateur $5x^2 \\to +\\infty$ → forme $\\frac{\\infty}{\\infty}$.\\n2. $\\ln x \\to -\\infty$, $x \\to 0$ → forme $\\frac{\\infty}{0}$ (pas indéterminée).\\n3. $e^x \\to +\\infty$, $x^2 \\to +\\infty$ → forme $\\frac{\\infty}{\\infty}$.\\n4. $x^2 \\to +\\infty$, $e^x \\to 0$ → forme $\\frac{\\infty}{0}$ (limite $+\\infty$)."
+            },
+            {
+              "question": "Déterminez la limite $\\lim_{x \\to +\\infty} \\frac{4x^3 - 2x + 1}{7x^3 + 5x^2 - 3}$ en identifiant d'abord la forme.",
+              "answer": "Forme $\\frac{\\infty}{\\infty}$. Limite = $\\frac{4}{7}$.",
+              "hint": "Factorisez par $x^3$ au numérateur et au dénominateur.",
+              "explanation": "Numérateur et dénominateur tendent vers $+\\infty$ (polynômes de degré 3 à coefficients dominants positifs) → forme $\\frac{\\infty}{\\infty}$. Factorisons par $x^3$ : $\\frac{x^3(4 - 2/x^2 + 1/x^3)}{x^3(7 + 5/x - 3/x^3)} = \\frac{4 - 2/x^2 + 1/x^3}{7 + 5/x - 3/x^3} \\to \\frac{4}{7}$."
+            },
+            {
+              "question": "Parmi les paires de fonctions suivantes, laquelle(s) donnent une forme $\\frac{\\infty}{\\infty}$ quand $x \\to +\\infty$ ?\\nA) $f(x)=x^2$, $g(x)=\\ln x$\\nB) $f(x)=e^x$, $g(x)=x^5$\\nC) $f(x)=\\sqrt{x}$, $g(x)=\\ln x$\\nD) $f(x)=x^2$, $g(x)=e^{-x}$",
+              "answer": "A, B, C",
+              "hint": "Vérifiez que les deux tendent vers $+\\infty$. Pour D, $e^{-x} \\to 0$.",
+              "explanation": "A) $x^2 \\to +\\infty$, $\\ln x \\to +\\infty$ → $\\frac{\\infty}{\\infty}$.\\nB) $e^x \\to +\\infty$, $x^5 \\to +\\infty$ → $\\frac{\\infty}{\\infty}$.\\nC) $\\sqrt{x} \\to +\\infty$, $\\ln x \\to +\\infty$ → $\\frac{\\infty}{\\infty}$.\\nD) $x^2 \\to +\\infty$, $e^{-x} \\to 0$ → $\\frac{\\infty}{0}$ (pas indéterminée)."
+            }
+          ]
+        },
+        {
+          "title": "inf-inf.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme $\\infty - \\infty$ : quand deux infinis s'annulent... ou pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la troisième forme indéterminée classique : $\\infty - \\infty$. Elle se présente quand on étudie la limite d'une différence $f(x) - g(x)$ et que $\\lim f(x) = +\\infty$ (ou $-\\infty$) et $\\lim g(x) = +\\infty$ (ou $-\\infty$). L'intuition naïve pourrait dire « l'infini moins l'infini, ça fait zéro », mais c'est faux. Pensez à $x+1$ et $x$ quand $x \\to +\\infty$ : les deux tendent vers $+\\infty$, mais leur différence tend vers $1$. Ou $x^2 - x$ : différence tend vers $+\\infty$. Ou $\\sqrt{x^2+x} - x$ : différence tend vers $\\frac{1}{2}$. La forme $\\infty - \\infty$ est donc tout aussi indéterminée que les deux précédentes. La stratégie pour la lever consiste presque toujours à transformer la différence en un quotient (pour obtenir $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$) ou à factoriser par le terme dominant."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x \\to a} (f(x) - g(x)) \\text{ avec } \\lim f(x) = \\pm\\infty, \\lim g(x) = \\pm\\infty"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple emblématique : $\\lim_{x \\to +\\infty} (\\sqrt{x^2+x} - x)$. Ici, $\\sqrt{x^2+x} \\sim x$ pour de grands $x$, donc les deux termes tendent vers $+\\infty$. Pour lever l'indétermination, on multiplie par le conjugué : $\\frac{(\\sqrt{x^2+x} - x)(\\sqrt{x^2+x} + x)}{\\sqrt{x^2+x} + x} = \\frac{x^2+x - x^2}{\\sqrt{x^2+x} + x} = \\frac{x}{\\sqrt{x^2+x} + x}$. On a maintenant un quotient $\\frac{\\infty}{\\infty}$ (numérateur $x \\to +\\infty$, dénominateur $\\sim 2x \\to +\\infty$). En factorisant par $x$ : $\\frac{x}{x(\\sqrt{1+1/x} + 1)} = \\frac{1}{\\sqrt{1+1/x} + 1} \\to \\frac{1}{2}$. La limite est $\\frac{1}{2}$, pas $0$. Voyez comme la manipulation algébrique est cruciale."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Réflexe conjugué",
+              "paragraphs": [
+                "Dès que vous voyez une différence de racines carrées (ou plus généralement une différence où l'un des termes est une racine), pensez immédiatement à multiplier par le conjugué. C'est la technique standard pour transformer $\\infty - \\infty$ en quotient."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factorisation par le terme dominant : l'autre grande méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque la différence ne contient pas de racines mais des polynômes, des exponentielles ou des logarithmes, la factorisation par le terme dominant est souvent plus directe. Considérez $\\lim_{x \\to +\\infty} (x^3 + 2x^2 - x - (x^3 - 5x + 1))$. Les deux polynômes tendent vers $+\\infty$, forme $\\infty - \\infty$. En développant : $x^3 + 2x^2 - x - x^3 + 5x - 1 = 2x^2 + 4x - 1 \\to +\\infty$. On a simplement annulé les termes dominants de même ordre. Plus généralement, pour $f(x) - g(x)$, si $f$ et $g$ sont des sommes de termes, on factorise par le terme qui croît le plus vite. Par exemple, $\\lim_{x \\to +\\infty} (e^x + x^2 - e^x + \\ln x) = \\lim_{x \\to +\\infty} (x^2 + \\ln x) = +\\infty$. Les $e^x$ s'annulent, il reste une forme $\\infty$ (pas indéterminée). Mais si on a $e^x - e^x + 1$, cela tend vers $1$. La factorisation permet de voir quels termes survivent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les termes dominants de chaque fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez dans $f(x)$ et $g(x)$ les termes qui tendent vers $\\pm\\infty$ le plus vite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Factoriser par ce terme dominant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $f(x) = T(x) \\cdot (1 + \\epsilon_1(x))$, $g(x) = T(x) \\cdot (1 + \\epsilon_2(x))$ où $T(x)$ est le terme dominant commun (si ils ont le même ordre) ou le terme dominant de l'un d'eux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La différence devient $T(x)(\\epsilon_1(x) - \\epsilon_2(x))$. Étudiez la limite de ce produit. Si $T(x) \\to \\infty$ et la parenthèse tend vers un réel non nul, la limite est $\\pm\\infty$. Si la parenthèse tend vers $0$, on a une forme $0 \\times \\infty$ (voir prochaine leçon) ou une limite finie."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons à $\\lim_{x \\to +\\infty} (\\ln(x+1) - \\ln x)$. Ici, les deux logarithmes tendent vers $+\\infty$, forme $\\infty - \\infty$. On utilise la propriété des logarithmes : $\\ln(x+1) - \\ln x = \\ln\\left(\\frac{x+1}{x}\\right) = \\ln\\left(1+\\frac{1}{x}\\right)$. Quand $x \\to +\\infty$, $\\frac{1}{x} \\to 0$, donc $\\ln(1+1/x) \\sim 1/x \\to 0$. La limite est $0$. Notez que nous avons transformé la différence en un logarithme d'un quotient, ce qui a fait apparaître une forme $\\ln(1+u)$ avec $u \\to 0$, limitant finie. C'est une astuce spécifique aux logarithmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas mixtes et pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que la forme $\\infty - \\infty$ soit cachée dans une expression plus complexe. Par exemple, $\\lim_{x \\to 0^+} (\\frac{1}{x} - \\frac{1}{\\sin x})$. Quand $x \\to 0^+$, $\\frac{1}{x} \\to +\\infty$ et $\\frac{1}{\\sin x} \\to +\\infty$ (car $\\sin x \\to 0^+$). Forme $\\infty - \\infty$. On met au même dénominateur : $\\frac{\\sin x - x}{x \\sin x}$. Numérateur $\\sin x - x \\sim -x^3/6$, dénominateur $x \\sin x \\sim x^2$. Le quotient $\\sim -x/6 \\to 0$. La limite est $0$. Ici, la transformation en quotient a fait apparaître une forme $\\frac{0}{0}$ (puisque $\\sin x - x \\to 0$ et $x \\sin x \\to 0$). Vous voyez que $\\infty - \\infty$ se ramène souvent à $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$ après manipulation. Un piège fréquent : croire que $\\infty - \\infty = 0$ toujours. Rappelez-vous que $\\infty$ n'est pas un nombre, on ne peut pas faire l'arithmétique usuelle. Toujours transformer avant de conclure."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Erreur classique",
+              "paragraphs": [
+                "Ne simplifiez pas $\\infty - \\infty$ en $0$ mentalement. Écrivez toujours l'expression sous une forme algébrique manipulable (conjugué, factorisation, mise au même dénominateur, propriétés des logarithmes) avant de calculer la limite."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous savez maintenant identifier et commencer à lever la forme $\\infty - \\infty$. La dernière leçon de ce cours traitera de la forme $0 \\times \\infty$, qui est la forme indéterminée des produits. Elle se gère souvent en la transformant en quotient ($\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$), bouclant ainsi le cycle des quatre formes indéterminées fondamentales."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Identifiez la forme indéterminée de $\\lim_{x \\to +\\infty} (\\sqrt{x^2+3x} - x)$ et donnez la limite.",
+              "answer": "Forme $\\infty - \\infty$. Limite = $\\frac{3}{2}$.",
+              "hint": "Multipliez par le conjugué $\\sqrt{x^2+3x} + x$.",
+              "explanation": "Forme $\\infty - \\infty$. Multiplions par le conjugué : $\\frac{(\\sqrt{x^2+3x} - x)(\\sqrt{x^2+3x} + x)}{\\sqrt{x^2+3x} + x} = \\frac{x^2+3x - x^2}{\\sqrt{x^2+3x} + x} = \\frac{3x}{\\sqrt{x^2+3x} + x}$. Factorisons par $x$ : $\\frac{3x}{x(\\sqrt{1+3/x} + 1)} = \\frac{3}{\\sqrt{1+3/x} + 1} \\to \\frac{3}{2}$."
+            },
+            {
+              "question": "Quelle est la limite de $\\lim_{x \\to +\\infty} (\\ln(x^2+1) - 2\\ln x)$ ?",
+              "answer": "Forme $\\infty - \\infty$. Limite = $0$.",
+              "hint": "Utilisez les propriétés des logarithmes pour combiner les deux termes.",
+              "explanation": "$\\ln(x^2+1) - 2\\ln x = \\ln(x^2+1) - \\ln(x^2) = \\ln\\left(\\frac{x^2+1}{x^2}\\right) = \\ln\\left(1+\\frac{1}{x^2}\\right)$. Quand $x \\to +\\infty$, $1/x^2 \\to 0$, donc $\\ln(1+1/x^2) \\sim 1/x^2 \\to 0$."
+            },
+            {
+              "question": "La limite $\\lim_{x \\to 0^+} (\\frac{1}{x} - \\frac{1}{e^x-1})$ est-elle une forme $\\infty - \\infty$ ? Si oui, calculez-la.",
+              "answer": "Oui, forme $\\infty - \\infty$. Limite = $\\frac{1}{2}$.",
+              "hint": "Mettez au même dénominateur et utilisez le développement limité de $e^x$ en $0$.",
+              "explanation": "Quand $x \\to 0^+$, $\\frac{1}{x} \\to +\\infty$ et $e^x-1 \\sim x$, donc $\\frac{1}{e^x-1} \\to +\\infty$. Forme $\\infty - \\infty$. Mettons au même dénominateur : $\\frac{e^x-1 - x}{x(e^x-1)}$. Numérateur $e^x-1-x \\sim x^2/2$, dénominateur $x(e^x-1) \\sim x^2$. Le quotient tend vers $\\frac{1/2}{1} = \\frac{1}{2}$."
+            }
+          ]
+        },
+        {
+          "title": "0×inf.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La forme $0 \\times \\infty$ : le produit du très petit et du très grand"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la quatrième et dernière forme indéterminée fondamentale : $0 \\times \\infty$. Elle apparaît quand on étudie la limite d'un produit $f(x) \\cdot g(x)$ avec $\\lim f(x) = 0$ et $\\lim g(x) = \\pm\\infty$ (ou l'inverse). L'intuition « zéro fois infini = zéro » est trompeuse : pensez à $x \\cdot \\frac{1}{x} = 1$ pour $x \\to 0$ (mais $x \\to 0$, $1/x \\to \\infty$), ou $x^2 \\cdot \\frac{1}{x} = x \\to 0$, ou $x \\cdot \\frac{1}{x^2} = \\frac{1}{x} \\to \\infty$. Le produit peut tendre vers n'importe quel réel, vers $\\pm\\infty$, ou ne pas avoir de limite. C'est pourquoi on parle d'indétermination. La méthode universelle pour lever $0 \\times \\infty$ est de transformer le produit en quotient : soit $\\frac{f(x)}{1/g(x)}$ (forme $\\frac{0}{0}$), soit $\\frac{g(x)}{1/f(x)}$ (forme $\\frac{\\infty}{\\infty}$). Le choix dépend de laquelle des deux formes sera plus facile à traiter."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\lim_{x \\to a} f(x)g(x) \\text{ avec } \\lim f(x)=0, \\lim g(x)=\\pm\\infty"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique : $\\lim_{x \\to 0^+} x \\ln x$. Ici $x \\to 0^+$ et $\\ln x \\to -\\infty$. Forme $0 \\times \\infty$. On réécrit en $\\frac{\\ln x}{1/x}$ (forme $\\frac{\\infty}{\\infty}$) ou $\\frac{x}{1/\\ln x}$ (forme $\\frac{0}{0}$). La première est plus commode car on connaît la croissance : $\\ln x$ est négligeable devant $1/x$ (puisque $x \\ln x \\to 0$). En fait, posons $t = 1/x \\to +\\infty$, alors $x \\ln x = \\frac{\\ln(1/t)}{t} = -\\frac{\\ln t}{t} \\to 0$. La limite est $0$. Autre exemple : $\\lim_{x \\to +\\infty} e^{-x} \\sqrt{x}$. Ici $e^{-x} \\to 0$, $\\sqrt{x} \\to +\\infty$. Forme $0 \\times \\infty$. Réécrivons $\\frac{\\sqrt{x}}{e^x}$ (forme $\\frac{\\infty}{\\infty}$). L'exponentielle domine, limite $0$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Choix du quotient",
+              "paragraphs": [
+                "Quand vous avez $0 \\times \\infty$, essayez d'écrire le produit sous la forme $\\frac{\\text{celui qui tend vers } 0}{1/\\text{celui qui tend vers } \\infty}$ ou l'inverse. Choisissez la version qui vous donne une forme $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$ que vous savez traiter (factorisation, comparaison de croissances, limites remarquables, développements limités)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas fréquents : $x^\\alpha \\ln x$, $x^\\alpha e^{-x}$, et variations"
+            },
+            {
+              "type": "paragraph",
+              "content": "En terminale, vous rencontrerez souvent des produits de type $x^\\alpha \\ln x$ (quand $x \\to 0^+$ ou $x \\to +\\infty$) ou $x^\\alpha e^{-x}$ (quand $x \\to +\\infty$). Ce sont des formes $0 \\times \\infty$ (ou $\\infty \\times 0$) qu'il faut savoir lever rapidement. Pour $x \\to 0^+$, $x^\\alpha \\to 0$ (si $\\alpha>0$) et $\\ln x \\to -\\infty$. On réécrit $\\frac{\\ln x}{x^{-\\alpha}}$ (forme $\\frac{\\infty}{\\infty}$) et on utilise que toute puissance positive (même petite) domine le logarithme : $\\lim_{x \\to 0^+} x^\\alpha \\ln x = 0$ pour $\\alpha>0$. Pour $x \\to +\\infty$, $x^\\alpha \\to +\\infty$ et $e^{-x} \\to 0$, forme $\\infty \\times 0$. Réécrivons $\\frac{x^\\alpha}{e^x}$ (forme $\\frac{\\infty}{\\infty}$). L'exponentielle domine toute puissance, donc limite $0$. Ces résultats sont des « limites de référence » qu'il est bon de garder en mémoire pour aller vite dans les exercices."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les deux facteurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez $f(x)$ qui tend vers $0$ et $g(x)$ qui tend vers $\\pm\\infty$ (ou l'inverse)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la transformation en quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrivez $f(x)g(x) = \\frac{f(x)}{1/g(x)}$ (forme $\\frac{0}{0}$) ou $= \\frac{g(x)}{1/f(x)}$ (forme $\\frac{\\infty}{\\infty}$). Choisissez selon la facilité de calcul ultérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lever la nouvelle indétermination",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Traitez la forme $\\frac{0}{0}$ ou $\\frac{\\infty}{\\infty}$ obtenue avec les méthodes déjà vues (factorisation, comparaison, limites remarquables, développements limités, règle de l'Hôpital si autorisée)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $\\lim_{x \\to 0^+} x^2 \\ln(\\sin x)$. Ici $x^2 \\to 0$, $\\ln(\\sin x) \\to -\\infty$ (car $\\sin x \\to 0^+$). Forme $0 \\times \\infty$. On écrit $\\frac{\\ln(\\sin x)}{1/x^2}$ (forme $\\frac{\\infty}{\\infty}$). Utilisons les développements limités : $\\sin x \\sim x$, donc $\\ln(\\sin x) \\sim \\ln x$. Le quotient $\\sim \\frac{\\ln x}{1/x^2} = x^2 \\ln x \\to 0$ (puisque $\\alpha=2>0$). La limite est $0$. On voit que la composition de fonctions ne change pas l'ordre de croissance dominant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges subtils et formes $0 \\times \\infty$ déguisées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le produit n'est pas écrit explicitement. Par exemple, $\\lim_{x \\to 0} \\frac{\\sin x}{x}$ est un quotient, mais on peut le voir comme $\\sin x \\cdot \\frac{1}{x}$ avec $\\sin x \\to 0$ et $1/x \\to \\infty$ : c'est une forme $0 \\times \\infty$ déguisée ! Mais on la reconnaît plus naturellement comme $\\frac{0}{0}$. L'important est de savoir passer d'une forme à l'autre. Un autre piège : $\\lim_{x \\to 0} x \\cot x = \\lim_{x \\to 0} x \\frac{\\cos x}{\\sin x}$. Ici $x \\to 0$, $\\cot x \\to \\infty$ (car $\\sin x \\to 0$, $\\cos x \\to 1$). Forme $0 \\times \\infty$. On réécrit $\\frac{x}{\\tan x}$ (forme $\\frac{0}{0}$) et on trouve $1$. Attention aussi aux limites latérales : $\\lim_{x \\to 0} x \\ln|x|$ est une forme $0 \\times \\infty$ des deux côtés, et la limite est $0$ des deux côtés (par continuité de $x \\ln|x|$ prolongée par $0$ en $0$). Mais $\\lim_{x \\to 0} \\frac{1}{x} \\ln|x|$ est $\\infty \\times \\infty$ ? Non, $1/x \\to \\pm\\infty$, $\\ln|x| \\to -\\infty$, c'est $\\infty \\times \\infty$ (pas indéterminé, cela donne $-\\infty$ des deux côtés car le produit de deux grandeurs qui tendent vers $\\infty$ en valeur absolue tend vers $\\infty$). Ne confondez pas $0 \\times \\infty$ et $\\infty \\times \\infty$."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Distinction cruciale",
+              "paragraphs": [
+                "$0 \\times \\infty$ est indéterminé. $\\infty \\times \\infty$ (ou $(-\\infty) \\times (-\\infty)$, ou $(+\\infty) \\times (-\\infty)$) n'est PAS indéterminé : le produit tend vers $\\pm\\infty$ selon les signes. Vérifiez toujours qu'un facteur tend bien vers $0$ (et pas vers une constante non nulle) et l'autre vers $\\pm\\infty$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Vous avez maintenant parcouru les quatre formes indéterminées fondamentales : $\\frac{0}{0}$, $\\frac{\\infty}{\\infty}$, $\\infty - \\infty$ et $0 \\times \\infty$. Vous savez les identifier, comprendre pourquoi elles sont indéterminées, et vous avez entrevu les principales techniques pour les lever (factorisation, conjugué, mise au même dénominateur, transformation en quotient, comparaison de croissances, développements limités). Ce cours est la base pour aborder sereinement le calcul de limites en terminale et au-delà. Revenez-y dès que vous hésitez sur la nature d'une forme."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une forme $\\frac{0}{0}$ en calculant les limites du numérateur et du dénominateur.",
+                "Je sais identifier une forme $\\frac{\\infty}{\\infty}$ quand $x$ tend vers $\\pm\\infty$ ou vers une valeur où les deux fonctions explosent.",
+                "Je sais repérer une forme $\\infty - \\infty$ dans une différence de deux fonctions tendant vers l'infini.",
+                "Je sais détecter une forme $0 \\times \\infty$ dans un produit (ou un quotient réécrit en produit).",
+                "Je connais les transformations de base pour lever chaque forme : factorisation, conjugué, mise au même dénominateur, passage en quotient, comparaison de croissances.",
+                "Je ne confonds plus forme indéterminée et limite infinie ou nulle : je vérifie toujours les limites des parties avant de conclure."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "La limite $\\lim_{x \\to +\\infty} x e^{-x}$ est-elle une forme $0 \\times \\infty$ ? Justifiez et donnez la limite.",
+              "answer": "Oui, forme $0 \\times \\infty$ ($x \\to +\\infty$, $e^{-x} \\to 0$). Limite = $0$.",
+              "hint": "Réécrivez en $\\frac{x}{e^x}$ (forme $\\frac{\\infty}{\\infty}$) et comparez les croissances.",
+              "explanation": "$x \\to +\\infty$, $e^{-x} \\to 0$, donc forme $0 \\times \\infty$. On écrit $\\frac{x}{e^x}$. L'exponentielle domine toute puissance, donc la limite est $0$."
+            },
+            {
+              "question": "Calculez $\\lim_{x \\to 0^+} x^3 \\ln x$ en identifiant la forme.",
+              "answer": "Forme $0 \\times \\infty$. Limite = $0$.",
+              "hint": "Réécrivez en $\\frac{\\ln x}{x^{-3}}$ (forme $\\frac{\\infty}{\\infty}$) et utilisez que $x^\\alpha$ domine $\\ln x$ pour tout $\\alpha>0$.",
+              "explanation": "$x^3 \\to 0$, $\\ln x \\to -\\infty$ → forme $0 \\times \\infty$. On écrit $\\frac{\\ln x}{x^{-3}}$ (forme $\\frac{\\infty}{\\infty}$). Comme $\\alpha=3>0$, $x^3$ domine $\\ln x$, donc $x^3 \\ln x \\to 0$."
+            },
+            {
+              "question": "Parmi les expressions suivantes, lesquelles sont de la forme $0 \\times \\infty$ quand $x \\to 0^+$ ?\\n1. $x \\ln x$\\n2. $\\frac{\\ln x}{x}$\\n3. $\\frac{x}{\\ln x}$\\n4. $\\sqrt{x} \\ln x$",
+              "answer": "1, 4",
+              "hint": "Vérifiez qu'un facteur tend vers $0$ et l'autre vers $\\pm\\infty$. Pour 2, $\\ln x \\to -\\infty$, $x \\to 0$ → $\\frac{\\infty}{0}$ (pas $0 \\times \\infty$). Pour 3, $x \\to 0$, $\\ln x \\to -\\infty$ → $\\frac{0}{\\infty}$ (forme $0$, pas indéterminée).",
+              "explanation": "1. $x \\to 0$, $\\ln x \\to -\\infty$ → $0 \\times \\infty$.\\n2. Quotient $\\frac{\\ln x}{x}$ : numérateur $\\to -\\infty$, dénominateur $\\to 0$ → $\\frac{\\infty}{0}$ (limite $-\\infty$).\\n3. Quotient $\\frac{x}{\\ln x}$ : numérateur $\\to 0$, dénominateur $\\to -\\infty$ → $\\frac{0}{\\infty}$ (limite $0$).\\n4. $\\sqrt{x} \\to 0$, $\\ln x \\to -\\infty$ → $0 \\times \\infty$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

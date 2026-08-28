@@ -1,0 +1,83 @@
+{
+  "_status": "failed",
+  "_errors": [
+    "question 2: correctAnswer ne correspond à aucune option",
+    "question 3: correctAnswer ne correspond à aucune option",
+    "question 4: correctAnswer ne correspond à aucune option"
+  ],
+  "_course_id": 277,
+  "_course_code": "cm2-t01-c03-dixiemes-centiemes-et-milliemes",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Position après virgule",
+  "raw": {
+    "title": "Position des chiffres après la virgule",
+    "questions": [
+      {
+        "text": "Dans le nombre $12,45$, quel est le chiffre des dixièmes ?",
+        "options": [
+          "le chiffre $2$",
+          "le chiffre $4$",
+          "le chiffre $5$",
+          "le chiffre $1$"
+        ],
+        "correctAnswer": "le chiffre $4$",
+        "explanation": "Le premier chiffre situé immédiatement après la virgule représente les dixièmes. Ici, c'est le chiffre $4$. Le $2$ est le chiffre des unités et le $5$ est le chiffre des centièmes.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Dans le nombre $7,809$, que représente le chiffre $9$ ?",
+        "options": [
+          "les unités",
+          "les dixièmes",
+          "les centièmes",
+          "les millièmes"
+        ],
+        "correctAnswer": "les millièmes",
+        "explanation": "Le premier chiffre après la virgule est celui des dixièmes ($8$), le deuxième est celui des centièmes ($0$) et le troisième est celui des millièmes ($9$).",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Quel nombre possède le chiffre $6$ au rang des centièmes ?",
+        "options": [
+          "$6,12$",
+          "$1,64$",
+          "$12,06$",
+          "$12,60$"
+        ],
+        "correctAnswer": "12,06",
+        "explanation": "Le rang des centièmes est la deuxième position après la virgule. Dans $12,06$, le $6$ est bien à la deuxième place. Dans $1,64$ et $12,60$, le $6$ est au rang des dixièmes.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Si on ajoute $3$ millièmes au nombre $5,42$, quel nouveau nombre obtient on ?",
+        "options": [
+          "$5,423$",
+          "$5,452$",
+          "$5,72$",
+          "$8,423$"
+        ],
+        "correctAnswer": "5,423",
+        "explanation": "Le nombre $5,42$ peut s'écrire $5,420$ pour faire apparaître le rang des millièmes. En ajoutant $3$ millièmes, on remplace le $0$ par $3$, ce qui donne $5,423$.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Quel est le nombre qui a $2$ unités, $5$ centièmes et $8$ millièmes ?",
+        "options": [
+          "$2,58$",
+          "$2,058$",
+          "$2,508$",
+          "$25,8$"
+        ],
+        "correctAnswer": "2,058",
+        "explanation": "Le nombre a $2$ unités. Il n'y a pas de dixièmes mentionnés, on place donc un $0$ au premier rang après la virgule. Le $5$ va au rang des centièmes et le $8$ au rang des millièmes. On obtient donc $2,058$.",
+        "points": 1,
+        "figure": null
+      }
+    ]
+  }
+}

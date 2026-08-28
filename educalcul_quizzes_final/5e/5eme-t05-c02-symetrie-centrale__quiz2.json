@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Propriétés",
+  "title": "Quiz - Propriétés de la symétrie centrale",
+  "questions": [
+    {
+      "text": "Quelle est la définition de la symétrie centrale de centre $O$ ?",
+      "options": [
+        "$O$ est le milieu du segment $[MM']$ pour tout point $M$ et son image $M'$",
+        "$O$ est l'extrémité du segment $[MM']$",
+        "$O$ est le pied de la hauteur issue de $M$",
+        "$O$ est le centre du cercle circonscrit au triangle $MM'O$"
+      ],
+      "correctAnswer": "$O$ est le milieu du segment $[MM']$ pour tout point $M$ et son image $M'$",
+      "explanation": "Par définition, la symétrie centrale de centre $O$ associe à chaque point $M$ un point $M'$ tel que $O$ est le milieu du segment $[MM']$. Les autres propositions correspondent à d'autres notions géométriques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si un segment $AB$ est transformé par une symétrie centrale de centre $O$ en $A'B'$, quelle relation existe entre $AB$ et $A'B'$ ?",
+      "options": [
+        "Les segments $AB$ et $A'B'$ sont parallèles et de même longueur",
+        "Les segments $AB$ et $A'B'$ sont perpendiculaires",
+        "Les segments $AB$ et $A'B'$ ont des longueurs différentes",
+        "Les segments $AB$ et $A'B'$ se coupent en $O$"
+      ],
+      "correctAnswer": "Les segments $AB$ et $A'B'$ sont parallèles et de même longueur",
+      "explanation": "La symétrie centrale est une isométrie : elle conserve les longueurs et les angles. L'image d'un segment est un segment parallèle et de même longueur. Les autres affirmations sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Par une symétrie centrale de centre $O(0;0)$, l'image du point $M(3;-2)$ est :",
+      "options": [
+        "$M'(-3;2)$",
+        "$M'(3;2)$",
+        "$M'(-3;-2)$",
+        "$M'(2;-3)$"
+      ],
+      "correctAnswer": "$M'(-3;2)$",
+      "explanation": "La symétrie centrale par rapport à l'origine change les signes des coordonnées : $(x;y)$ devient $(-x;-y)$. Pour $M(3;-2)$, on obtient $M'(-3;2)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La composition de deux symétries centrales de centres $O_1$ et $O_2$ distincts est :",
+      "options": [
+        "Une translation de vecteur $2 * O_1O_2$",
+        "Une rotation de 180 degrés autour de $O_1$",
+        "Une symétrie axiale",
+        "Une homothétie de rapport -1"
+      ],
+      "correctAnswer": "Une translation de vecteur $2 * O_1O_2$",
+      "explanation": "La composition de deux symétries centrales de centres différents est une translation dont le vecteur est deux fois le vecteur qui va du premier centre au second. Ce n'est ni une rotation, ni une symétrie axiale, ni une homothétie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La symétrie centrale conserve-t-elle les angles ?",
+      "options": [
+        "Oui, elle conserve les angles",
+        "Non, elle double les angles",
+        "Elle inverse le sens des angles",
+        "Elle ne conserve pas les angles"
+      ],
+      "correctAnswer": "Oui, elle conserve les angles",
+      "explanation": "La symétrie centrale est une isométrie : elle préserve les distances, les longueurs et les mesures d'angles. Les angles ont la même mesure après la transformation, seul leur orientation peut changer.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

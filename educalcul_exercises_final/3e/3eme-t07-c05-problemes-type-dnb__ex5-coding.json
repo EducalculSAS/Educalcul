@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Choisir méthode",
+  "title": "Algorithmique : Choix de méthode",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Écrire un algorithme qui calcule la somme des $n$ premiers entiers naturels (de $1$ à $n$). Choisis la structure de boucle la plus adaptée (pour ou tant que) et justifie ton choix en une phrase.",
+      "correctAnswer": "Algorithme :\\nVariables : $n$, $somme$, $i$\\nDébut\\nLire $n$\\n$somme$ ← $0$\\nPour $i$ de $1$ à $n$ faire\\n    $somme$ ← $somme$ + $i$\\nFinPour\\nAfficher $somme$\\nFin\\nJustification : la boucle Pour est adaptée car le nombre d'itérations est connu à l'avance ($n$ fois).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle Pour car le nombre d'itérations est fixé par la valeur de $n$. La variable $somme$ accumule la somme successive. La complexité est linéaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum de trois nombres",
+      "content": "Écrire un algorithme qui détermine le plus grand de trois nombres entiers $a$, $b$, $c$. Choisis la méthode la plus simple (comparaisons successives ou fonction max) et explique pourquoi.",
+      "correctAnswer": "Algorithme :\\nVariables : $a$, $b$, $c$, $max$\\nDébut\\nLire $a$, $b$, $c$\\n$max$ ← $a$\\nSi $b$ > $max$ alors $max$ ← $b$\\nSi $c$ > $max$ alors $max$ ← $c$\\nAfficher $max$\\nFin\\nExplication : deux comparaisons suffisent, pas besoin de fonction supplémentaire, code clair et efficace.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise $max$ avec $a$, puis on compare successivement $b$ et $c$. Cette méthode utilise seulement des structures conditionnelles simples et évite l'appel à une fonction externe.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de primalité",
+      "content": "Écrire un algorithme qui teste si un entier $p > 1$ est premier. Choisis la méthode de division jusqu'à la racine carrée de $p$ et écris l'algorithme en pseudo‑code.",
+      "correctAnswer": "Algorithme :\\nVariables : $p$, $i$, $premier$\\nDébut\\nLire $p$\\n$premier$ ← Vrai\\nPour $i$ de $2$ à $\\sqrt{p}$ faire\\n    Si $p$ mod $i$ = $0$ alors\\n        $premier$ ← Faux\\n        Sortir de la boucle\\n    FinSi\\nFinPour\\nSi $premier$ alors Afficher « Premier » sinon Afficher « Non premier »\\nFin\\nJustification : on teste les diviseurs seulement jusqu'à $\\sqrt{p}$ car si $p$ a un diviseur plus grand, le quotient serait plus petit que $\\sqrt{p}$ et aurait déjà été détecté.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle Pour parcourt les entiers de $2$ à la partie entière de la racine carrée de $p$. Dès qu'un diviseur est trouvé, on arrête la boucle. Cela réduit le nombre d'itérations par rapport à un test jusqu'à $p-1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 249,
+  "_course_code": "cm1-t06-c02-mesurer-et-construire-des-angles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Utiliser rapporteur si prévu",
+  "title": "Mesurer et construire des angles : Utiliser le rapporteur",
+  "blocks": [
+    {
+      "title": "Vocabulaire du rapporteur",
+      "content": "Le rapporteur est l'instrument qui permet de {{1}} les angles. Il possède deux graduations : une dans le sens {{2}} et une dans le sens inverse. Pour mesurer, on place le {{3}} du rapporteur sur le sommet de l'angle.",
+      "correctAnswer": "",
+      "blanks": [
+        "mesurer",
+        "horaire|anti-horaire|trigonométrique",
+        "centre|point central|origine"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rapporteur sert à mesurer les angles. Il a deux échelles de graduation (de 0 à 180 degrés) : une dans le sens horaire (comme les aiguilles d'une montre) et l'autre dans le sens anti-horaire (ou trigonométrique). Le point central (le centre ou l'origine) doit être placé exactement sur le sommet de l'angle à mesurer.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lire une mesure sur le rapporteur",
+      "content": "Regarde la figure ci-dessous. L'angle représenté mesure {{1}} degrés.",
+      "correctAnswer": "",
+      "blanks": [
+        "60"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur la figure, le rapporteur est bien positionné : le centre est sur le sommet et le zéro de l'échelle est sur un côté de l'angle. On lit la valeur sur l'échelle qui commence à 0 du côté du premier côté de l'angle. La graduation correspondante est 60, donc l'angle mesure 60 degrés.",
+      "points": 2,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 60,
+        "caption": "Angle à mesurer avec le rapporteur"
+      }
+    },
+    {
+      "title": "Construire un angle donné",
+      "content": "Pour tracer un angle de $45^\\circ$, on place le centre du rapporteur sur le {{1}}, on repère le trait de graduation $45$ sur la bonne échelle, on marque un point puis on trace la {{2}} passant par ce point et le sommet.",
+      "correctAnswer": "",
+      "blanks": [
+        "sommet",
+        "demi-droite|droite|segment"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction d'un angle se fait en plusieurs étapes : 1) Tracer une première demi-droite (le premier côté). 2) Placer le centre du rapporteur sur le départ de cette demi-droite (le sommet). 3) Aligner le zéro du rapporteur sur la demi-droite. 4) Repérer la graduation 45 sur l'échelle correspondante et marquer un point. 5) Retirer le rapporteur et tracer le deuxième côté (une demi-droite) reliant le sommet au point marqué.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Propriétés",
+  "title": "Propriétés des fonctions de référence",
+  "blocks": [
+    {
+      "title": "Parité des fonctions",
+      "content": "Relie chaque fonction à sa parité (paire, impaire, ni l'une ni l'autre).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=x^2$",
+          "right": "paire"
+        },
+        {
+          "left": "$g(x)=x^3$",
+          "right": "impaire"
+        },
+        {
+          "left": "$h(x)=\\frac{1}{x}$",
+          "right": "impaire"
+        },
+        {
+          "left": "$k(x)=\\sqrt{x}$",
+          "right": "ni l'une ni l'autre"
+        }
+      ],
+      "items": [],
+      "explanation": "Une fonction est paire si $f(-x)=f(x)$ pour tout $x$ de son ensemble de définition, impaire si $f(-x)=-f(x)$. $x^2$ et $|x|$ sont paires, $x^3$ et $1/x$ sont impaires, $\\sqrt{x}$ n'est pas définie pour $x<0$ donc elle n'est ni paire ni impaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Domaine de définition",
+      "content": "Relie chaque fonction à son domaine de définition.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=\\frac{1}{x}$",
+          "right": "$\\mathbb{R}\\setminus\\{0\\}$"
+        },
+        {
+          "left": "$g(x)=\\sqrt{x}$",
+          "right": "$[0,+\\infty[$"
+        },
+        {
+          "left": "$h(x)=\\ln(x)$",
+          "right": "$]0,+\\infty[$"
+        },
+        {
+          "left": "$k(x)=x^2$",
+          "right": "$\\mathbb{R}$"
+        },
+        {
+          "left": "$m(x)=e^x$",
+          "right": "$\\mathbb{R}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le domaine de $1/x$ exclut $0$. La racine carrée demande $x\\ge0$. Le logarithme népérien demande $x>0$. Les fonctions polynomiales et l'exponentielle sont définies sur tout $\\mathbb{R}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Variations sur un intervalle",
+      "content": "Relie chaque fonction à son sens de variation sur l'intervalle indiqué.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=x^2$ sur $]-\\infty,0]$",
+          "right": "décroissante"
+        },
+        {
+          "left": "$g(x)=x^3$ sur $\\mathbb{R}$",
+          "right": "croissante"
+        },
+        {
+          "left": "$h(x)=\\frac{1}{x}$ sur $]0,+\\infty[$",
+          "right": "décroissante"
+        },
+        {
+          "left": "$k(x)=\\sqrt{x}$ sur $[0,+\\infty[$",
+          "right": "croissante"
+        }
+      ],
+      "items": [],
+      "explanation": "Le carré est décroissante sur les négatifs et croissante sur les positifs. Le cube est strictement croissante sur $\\mathbb{R}$. L'inverse $1/x$ est décroissante sur chaque intervalle ne contenant pas $0$. La racine carrée est croissante sur son domaine.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

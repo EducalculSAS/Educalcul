@@ -1,0 +1,286 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.914274+00:00",
+  "id": 138,
+  "code": "ce1-t08-c03",
+  "title": "Lire un diagramme en bâtons",
+  "description": "Cours structuré Educalcul : Lire un diagramme en bâtons.",
+  "subject": "Organisation et gestion de données",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Organisation et gestion de données",
+    "titre_du_cours": "Lire un diagramme en bâtons",
+    "objectif_global": "Lire un diagramme en bâtons",
+    "mini_lecons_imposees": [
+      "Lire axe et catégories.",
+      "Comparer hauteurs.",
+      "Répondre à des questions."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Organisation et gestion de données",
+      "lessons": [
+        {
+          "title": "Lire axe et catégories.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le diagramme en bâtons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as demandé à tes copains quel est leur fruit préféré. Pour voir les résultats d'un coup d'œil, on dessine un diagramme en bâtons. C'est comme une petite ville où chaque bâtiment représente un fruit. Regarde bien le dessin ci-dessous."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés des copains",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Oranges",
+                  "value": 4,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "En bas, tu vois une ligne horizontale. C'est l'axe des catégories. Chaque nom de fruit est écrit dessous : $Pommes$, $Bananes$, $Oranges$. Ces mots sont les catégories. Au-dessus de chaque nom, un rectangle monte vers le haut. Ce rectangle, on l'appelle un bâton. Sa hauteur nous dit combien de copains ont choisi ce fruit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire l'axe vertical"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le côté gauche, il y a une ligne verticale avec des petits traits et des chiffres : $0$, $1$, $2$, $3$, $4$, $5$. C'est l'axe des nombres. Chaque trait correspond à un copain de plus. Pour savoir la hauteur d'un bâton, tu poses ton doigt sur le haut du rectangle et tu regardes en face, sur l'axe vertical, à quel chiffre tu arrives."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec les pommes. Le bâton des pommes monte jusqu'au chiffre $5$. Donc $5$ copains aiment les pommes. Pour les bananes, le bâton s'arrête à $3$. Trois copains préfèrent les bananes. Et les oranges ? Le bâton va jusqu'à $4$. Quatre copains ont choisi les oranges."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais repérer les catégories sur l'axe du bas et lire la quantité sur l'axe de gauche. Dans la prochaine étape, nous allons comparer ces bâtons entre eux pour voir lequel est le plus grand."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de copains ont choisi les oranges ? Regarde le diagramme ci-dessus.",
+              "answer": "4",
+              "hint": "Suis le haut du bâton 'Oranges' vers la gauche jusqu'à l'axe des nombres.",
+              "explanation": "Le bâton des oranges monte jusqu'au trait qui correspond au chiffre 4 sur l'axe vertical. Donc 4 copains aiment les oranges."
+            }
+          ]
+        },
+        {
+          "title": "Comparer hauteurs.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les hauteurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà lu les trois bâtons : pommes $5$, bananes $3$, oranges $4$. Maintenant, amusons-nous à les comparer. C'est comme une course : le bâton qui monte le plus haut est le gagnant. Regarde le diagramme, tu vois tout de suite lequel est le plus grand ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés - comparaison",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Oranges",
+                  "value": 4,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le bâton des pommes arrive à $5$. C'est le plus haut. Donc les pommes sont le fruit le plus aimé. Le bâton des bananes s'arrête à $3$. C'est le plus petit. Les bananes sont le fruit le moins choisi. Les oranges sont au milieu avec $4$. On peut les ranger du plus petit au plus grand : bananes ($3$), oranges ($4$), pommes ($5$)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la différence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on veut savoir combien de copains en plus préfèrent les pommes aux bananes. C'est facile : on regarde l'écart entre les deux bâtons. Le bâton des pommes va à $5$, celui des bananes à $3$. On compte les traits entre $3$ et $5$ : $4$, $5$. Il y a $2$ traits d'écart. Donc $2$ copains de plus ont choisi les pommes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux faire pareil pour les oranges et les bananes. Les oranges sont à $4$, les bananes à $3$. L'écart est d'$1$ trait. Un copain de plus aime les oranges. Et entre les pommes et les oranges ? $5$ moins $4$ fait $1$. Un copain de plus pour les pommes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer les bâtons et calculer les écarts. Dans la dernière leçon, nous allons utiliser ces lectures pour répondre à des questions variées, comme le total de copains interrogés."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de copains de plus préfèrent les pommes aux oranges ?",
+              "answer": "1",
+              "hint": "Regarde la hauteur des deux bâtons et compte les traits d'écart.",
+              "explanation": "Le bâton des pommes monte à 5, celui des oranges à 4. La différence est de 1. Donc 1 copain de plus aime les pommes."
+            }
+          ]
+        },
+        {
+          "title": "Répondre à des questions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Répondre aux questions du diagramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un diagramme en bâtons, c'est comme une histoire en images. Pour répondre aux questions, il faut bien lire la consigne, trouver les bons bâtons et faire le petit calcul qui va bien. Reprenons notre diagramme des fruits : pommes $5$, bananes $3$, oranges $4$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés - bilan",
+              "bars": [
+                {
+                  "label": "Pommes",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bananes",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Oranges",
+                  "value": 4,
+                  "tone": "orange"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Question 1 : Combien de copains ont été interrogés en tout ? Il faut additionner les trois hauteurs : $5 + 3 + 4$. $5 + 3 = 8$, $8 + 4 = 12$. Il y a $12$ copains au total. Question 2 : Quel fruit est le plus populaire ? On cherche le bâton le plus haut : les pommes à $5$. Question 3 : Combien de copains n'ont pas choisi les bananes ? On ajoute les deux autres : $5 + 4 = 9$. Neuf copains préfèrent autre chose que les bananes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pour ne pas se tromper"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Souligne les mots importants : total, différence, plus grand, plus petit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repère les bâtons concernés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les catégories sur l'axe du bas et trouve les bons rectangles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lis les hauteurs sur l'axe vertical",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les chiffres pour chaque bâton choisi."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fais le calcul",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Addition pour un total, soustraction pour une différence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire un diagramme en bâtons de A à Z : repérer les catégories, comparer les hauteurs et répondre aux questions. Tu es prêt pour t'entraîner seul."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire les catégories sur l'axe horizontal.",
+                "Je sais lire la hauteur d'un bâton sur l'axe vertical.",
+                "Je sais comparer deux bâtons pour voir lequel est plus grand.",
+                "Je sais calculer la différence entre deux bâtons.",
+                "Je sais additionner plusieurs bâtons pour trouver un total.",
+                "Je sais répondre à des questions en suivant les 4 étapes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de copains ont été interrogés au total ?",
+              "answer": "12",
+              "hint": "Additionne les trois nombres : pommes + bananes + oranges.",
+              "explanation": "5 pommes + 3 bananes + 4 oranges = 12 copains au total."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

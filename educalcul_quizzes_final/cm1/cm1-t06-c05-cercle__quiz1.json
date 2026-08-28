@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 252,
+  "_course_code": "cm1-t06-c05-cercle",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Rayon / diamètre",
+  "title": "Quiz : Rayon et Diamètre du cercle",
+  "questions": [
+    {
+      "text": "Dans un cercle, comment le diamètre est-il lié au rayon ?",
+      "options": [
+        "Le diamètre est deux fois plus grand que le rayon",
+        "Le diamètre est deux fois plus petit que le rayon",
+        "Le diamètre est égal au rayon",
+        "Le diamètre est trois fois plus grand que le rayon"
+      ],
+      "correctAnswer": "Le diamètre est deux fois plus grand que le rayon",
+      "explanation": "Par définition, le diamètre est un segment qui passe par le centre du cercle et relie deux points du cercle. Il est composé de deux rayons alignés. Donc le diamètre vaut deux fois le rayon : $d = 2 \\times r$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, le segment [OA] est un rayon du cercle de centre O. Le segment [BC] passe par O et ses extrémités sont sur le cercle. Quel est le nom du segment [BC] ?",
+      "options": [
+        "Un rayon",
+        "Un diamètre",
+        "Une corde",
+        "Un arc"
+      ],
+      "correctAnswer": "Un diamètre",
+      "explanation": "Un diamètre est un segment qui relie deux points du cercle en passant par le centre. Sur la figure, [BC] passe par le centre O et ses extrémités B et C sont sur le cercle, c'est donc un diamètre. [OA] est un rayon car il relie le centre à un point du cercle.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O avec un rayon OA et un diamètre BC"
+      }
+    },
+    {
+      "text": "Un cercle a un diamètre de $12$ cm. Quelle est la longueur de son rayon ?",
+      "options": [
+        "$24$ cm",
+        "$6$ cm",
+        "$3$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$6$ cm",
+      "explanation": "Le rayon est la moitié du diamètre. Pour trouver le rayon, on divise le diamètre par $2$ : $12 \\div 2 = 6$. Le rayon mesure donc $6$ cm. L'option $24$ cm correspond à une multiplication par $2$ au lieu d'une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le rayon d'un cercle mesure $7$ cm. Quelle est la longueur de son diamètre ?",
+      "options": [
+        "$3,5$ cm",
+        "$14$ cm",
+        "$7$ cm",
+        "$21$ cm"
+      ],
+      "correctAnswer": "$14$ cm",
+      "explanation": "Le diamètre est le double du rayon. On multiplie la longueur du rayon par $2$ : $7 \\times 2 = 14$. Le diamètre mesure donc $14$ cm. L'option $3,5$ cm correspond à une division par $2$ (erreur inverse).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux cercles ont des diamètres de $10$ cm et $16$ cm. Quelle est la différence entre leurs rayons ?",
+      "options": [
+        "$3$ cm",
+        "$6$ cm",
+        "$13$ cm",
+        "$26$ cm"
+      ],
+      "correctAnswer": "$3$ cm",
+      "explanation": "On calcule d'abord les rayons : pour le premier cercle, $10 \\div 2 = 5$ cm ; pour le second, $16 \\div 2 = 8$ cm. La différence entre les rayons est $8 - 5 = 3$ cm. L'option $6$ cm est la différence des diamètres ($16 - 10$), pas des rayons.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

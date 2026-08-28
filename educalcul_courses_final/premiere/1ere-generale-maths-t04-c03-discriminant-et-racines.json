@@ -1,0 +1,537 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.340227+00:00",
+  "id": 591,
+  "code": "1ere-generale-maths-t04-c03",
+  "title": "Discriminant et racines",
+  "description": "Cours structuré Educalcul : Discriminant et racines.",
+  "subject": "Second degré et fonctions",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Second degré et fonctions",
+    "titre_du_cours": "Discriminant et racines",
+    "objectif_global": "Discriminant et racines",
+    "mini_lecons_imposees": [
+      "Calculer.",
+      "Nombre de racines.",
+      "Factoriser."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Second degré et fonctions",
+      "lessons": [
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le trinôme du second degré et son discriminant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré au discriminant ! Tu connais déjà les trinômes du second degré, ces expressions de la forme $ax^2+bx+c$ avec $a$ non nul. Aujourd'hui, nous allons découvrir un nombre unique, calculé à partir des coefficients $a$, $b$ et $c$, qui va nous révéler des informations précieuses sur les racines de l'équation associée. Ce nombre, c'est le discriminant, noté $\\Delta$ (la lettre grecque majuscule delta). Ne t'inquiète pas si la formule te semble un peu impressionnante au premier abord : nous allons la décortiquer ensemble, la tester sur des exemples concrets, et tu verras qu'elle devient très vite un réflexe naturel. Prends le temps de bien lire chaque étape, et n'hésite pas à refaire les calculs à côté sur ton cahier pour t'approprier la méthode."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\Delta = b^2 - 4ac"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette formule : $\\Delta = b^2 - 4ac$. Elle ne contient que des opérations que tu maîtrises déjà : un carré, une multiplication et une soustraction. Le coefficient $a$ est celui qui est devant $x^2$, $b$ devant $x$, et $c$ est le terme constant (sans $x$). Par exemple, pour le trinôme $3x^2 - 5x + 2$, nous avons $a=3$, $b=-5$ et $c=2$. Le discriminant sera alors $\\Delta = (-5)^2 - 4 \\times 3 \\times 2 = 25 - 24 = 1$. Observe comme le signe moins devant le $5$ est crucial : le carré de $-5$ donne $25$, pas $-25$. C'est une erreur fréquente, mais tu vas vite prendre l'habitude de mettre les coefficients entre parenthèses avant de les élever au carré. Essaie maintenant de calculer le discriminant de $2x^2 + 7x - 4$ : tu devrais trouver $\\Delta = 81$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as calculé ton premier discriminant, prenons un moment pour bien ancrer la technique de repérage des coefficients. C'est l'étape la plus importante : si tu identifies mal $a$, $b$ ou $c$, tout le calcul sera faussé. Nous allons utiliser un petit tableau pour visualiser cela clairement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les coefficients a, b et c sans se tromper"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le trinôme n'est pas écrit dans l'ordre standard $ax^2+bx+c$. Il peut manquer un terme, ou les termes peuvent être mélangés. La règle d'or : réécris toujours le trinôme dans l'ordre décroissant des puissances de $x$ avant de lire les coefficients. Si un terme est absent, son coefficient est $0$. Par exemple, $5 - 3x^2$ devient $-3x^2 + 0x + 5$, donc $a=-3$, $b=0$, $c=5$. De même, $x^2 - 6$ s'écrit $1x^2 + 0x - 6$, donc $a=1$, $b=0$, $c=-6$. Le tableau ci-dessous récapitule quelques cas classiques pour t'entraîner à lire les coefficients du premier coup."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Trinôme initial",
+                "Forme standard",
+                "a",
+                "b",
+                "c"
+              ],
+              "rows": [
+                [
+                  "$4x^2 - 2x + 9$",
+                  "$4x^2 - 2x + 9$",
+                  "$4$",
+                  "$-2$",
+                  "$9$"
+                ],
+                [
+                  "$-x^2 + 5x$",
+                  "$-1x^2 + 5x + 0$",
+                  "$-1$",
+                  "$5$",
+                  "$0$"
+                ],
+                [
+                  "$7 - 2x$",
+                  "$0x^2 - 2x + 7$",
+                  "$0$",
+                  "$-2$",
+                  "$7$"
+                ],
+                [
+                  "$x^2$",
+                  "$1x^2 + 0x + 0$",
+                  "$1$",
+                  "$0$",
+                  "$0$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à être à l'aise avec des nombres concrets. Mais en mathématiques, on rencontre souvent des trinômes qui contiennent une lettre, qu'on appelle un paramètre. Le discriminant devient alors une expression littérale en fonction de ce paramètre. C'est une compétence essentielle pour la suite, car elle permet d'étudier le nombre de racines selon la valeur du paramètre. Voyons comment procéder sur un exemple typique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Discriminant avec un paramètre : la même méthode, plus de rigueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons le trinôme $P(x) = 2x^2 + (k-1)x + 3$, où $k$ est un nombre réel. Les coefficients sont $a=2$, $b=k-1$ et $c=3$. Le discriminant s'écrit $\\Delta = (k-1)^2 - 4 \\times 2 \\times 3$. Attention : comme $b$ est une expression, il faut la mettre entre parenthèses avant de la carrer. Développons : $(k-1)^2 = k^2 - 2k + 1$. Donc $\\Delta = k^2 - 2k + 1 - 24 = k^2 - 2k - 23$. Cette expression du discriminant en fonction de $k$ nous servira dans la prochaine leçon pour savoir pour quelles valeurs de $k$ l'équation a deux racines, une racine double, ou aucune racine réelle. Remarque bien que la méthode de calcul ne change pas : on remplace simplement les coefficients numériques par leurs expressions littérales, en prenant soin des parenthèses."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\Delta = (k-1)^2 - 24 = k^2 - 2k - 23"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, résumons la procédure complète dans une fiche méthode que tu pourras consulter à tout moment. Cette méthode en quatre étapes te garantira de ne rien oublier, même sous le stress d'un contrôle. Elle est volontairement détaillée pour que tu puisses la suivre pas à pas au début, puis l'internaliser peu à peu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode pas à pas : calculer le discriminant $\\Delta$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le trinôme sous la forme standard $ax^2+bx+c$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Range les termes par puissances décroissantes de $x$. Complète les termes manquants avec un coefficient $0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier $a$, $b$ et $c$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le coefficient devant $x^2$ (c'est $a$), devant $x$ (c'est $b$), et le terme constant (c'est $c$). Note-les clairement, avec leur signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule $\\Delta = b^2 - 4ac$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $a$, $b$, $c$ par leurs valeurs. Mets $b$ entre parenthèses si c'est une expression ou un nombre négatif. Calcule $b^2$ et $4ac$ séparément, puis fais la soustraction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le discriminant est numérique, donne sa valeur exacte (entier, fraction, racine carrée). S'il contient un paramètre, développe et regroupe les termes semblables pour obtenir une expression polynomiale simplifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule le discriminant du trinôme $T(x) = 5x^2 - 3x + 7$.",
+              "answer": "$\\Delta = -131$",
+              "hint": "Identifie $a=5$, $b=-3$, $c=7$. Applique $\\Delta = b^2 - 4ac$. Attention au signe de $b$ au carré.",
+              "explanation": "On a $a=5$, $b=-3$, $c=7$. Donc $\\Delta = (-3)^2 - 4 \\times 5 \\times 7 = 9 - 140 = -131$."
+            },
+            {
+              "question": "Pour le trinôme $P(x) = -2x^2 + 8$, donne les coefficients $a$, $b$, $c$ puis calcule $\\Delta$.",
+              "answer": "$a=-2$, $b=0$, $c=8$, $\\Delta = 64$",
+              "hint": "Réécris le trinôme sous la forme standard : $-2x^2 + 0x + 8$.",
+              "explanation": "La forme standard est $-2x^2 + 0x + 8$, donc $a=-2$, $b=0$, $c=8$. $\\Delta = 0^2 - 4 \\times (-2) \\times 8 = 0 + 64 = 64$."
+            },
+            {
+              "question": "Exprime le discriminant de $Q(x) = x^2 + (m+2)x + m$ en fonction du paramètre $m$.",
+              "answer": "$\\Delta = m^2 + 4$",
+              "hint": "Identifie $a=1$, $b=m+2$, $c=m$. Calcule $(m+2)^2 - 4m$ et simplifie.",
+              "explanation": "$a=1$, $b=m+2$, $c=m$. $\\Delta = (m+2)^2 - 4 \\times 1 \\times m = m^2 + 4m + 4 - 4m = m^2 + 4$."
+            },
+            {
+              "question": "Calcule le discriminant de $R(x) = 3x^2 - 4x - 5$ et dis s'il est positif, nul ou négatif.",
+              "answer": "$\\Delta = 76$, positif",
+              "hint": "Utilise la méthode en quatre étapes. $a=3$, $b=-4$, $c=-5$.",
+              "explanation": "$a=3$, $b=-4$, $c=-5$. $\\Delta = (-4)^2 - 4 \\times 3 \\times (-5) = 16 + 60 = 76$. Comme $76 > 0$, le discriminant est positif."
+            }
+          ]
+        },
+        {
+          "title": "Nombre de racines.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le discriminant, clé du nombre de racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer $\\Delta$ avec aisance, nous allons voir pourquoi ce nombre est si puissant. Rappelle-toi la formule des racines de l'équation $ax^2+bx+c=0$ : $x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$. Cette formule montre que tout se joue au niveau de la racine carrée de $\\Delta$. Si $\\Delta$ est positif, la racine carrée existe et est un nombre réel non nul : le $\\pm$ donne deux valeurs distinctes. Si $\\Delta$ est nul, la racine carrée est $0$, le $\\pm$ ne change rien, il n'y a qu'une seule valeur (on parle de racine double). Si $\\Delta$ est négatif, la racine carrée n'existe pas dans les nombres réels : l'équation n'a pas de solution réelle. C'est toute la magie du discriminant : un seul nombre nous dit tout !"
+            },
+            {
+              "type": "display_math",
+              "latex": "x = \\\\frac{-b \\\\pm \\\\sqrt{\\\\Delta}}{2a}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser ce lien entre le signe de $\\Delta$ et les intersections de la parabole avec l'axe des abscisses, regardons trois représentations graphiques. Le graphique ci-dessous montre trois paraboles correspondant à des trinômes dont les discriminants sont respectivement positif, nul et négatif. Observe attentivement le nombre de points de rencontre avec l'axe horizontal."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas 1 : $\\Delta > 0$, deux racines réelles distinctes"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 4",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Parabole $y=x^2-4$ : $\\Delta=16>0$, deux intersections avec l'axe des abscisses ($x=-2$ et $x=2$)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la parabole coupe l'axe des abscisses en deux points distincts. Les abscisses de ces points sont les deux solutions de l'équation. Comme $\\Delta = 16 > 0$, la racine carrée $\\sqrt{16}=4$ est un nombre réel non nul, ce qui produit bien deux valeurs différentes dans la formule quadratique. Essaie de retrouver les racines en factorisant $x^2-4 = (x-2)(x+2)$ : tu tombes bien sur $2$ et $-2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons au cas où le discriminant s'annule. C'est une situation particulière, souvent source de confusion : on dit qu'il y a une racine double, mais cela ne veut pas dire qu'il y a deux racines égales ? En réalité, l'équation a une unique solution, mais elle compte pour deux au sens de la multiplicité. Graphiquement, la parabole est tangente à l'axe des abscisses."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas 2 : $\\Delta = 0$, une racine réelle double"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - 2x + 1",
+              "xmin": -2,
+              "xmax": 4,
+              "caption": "Parabole $y=x^2-2x+1$ : $\\Delta=0$, tangente à l'axe des abscisses en $x=1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "La parabole touche l'axe des abscisses en un seul point, sans le traverser. L'équation $x^2-2x+1=0$ a pour unique solution $x=1$. Dans la formule quadratique, $\\sqrt{\\Delta}=0$, donc $x = \\frac{-b}{2a}$ une seule fois. On note souvent $x_0$ cette racine double. C'est un cas important à reconnaître rapidement, car il permet d'écrire le trinôme sous la forme $a(x-x_0)^2$, ce qui simplifie beaucoup l'étude de signe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, examinons le cas où le discriminant est négatif. C'est souvent le plus déroutant au début : l'équation n'a pas de solution réelle. Mais cela ne veut pas dire qu'il ne se passe rien ! Graphiquement, la parabole ne rencontre jamais l'axe des abscisses : elle reste strictement au-dessus (si $a>0$) ou strictement en dessous (si $a<0$). Cette propriété est cruciale pour résoudre des inéquations quadratiques."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas 3 : $\\Delta < 0$, aucune racine réelle"
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 + 1",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Parabole $y=x^2+1$ : $\\Delta=-4<0$, aucune intersection avec l'axe des abscisses"
+            },
+            {
+              "type": "paragraph",
+              "content": "La parabole $y=x^2+1$ est toujours au-dessus de l'axe des abscisses (son minimum est $1$). L'équation $x^2+1=0$ n'admet aucune solution réelle car $x^2$ est toujours positif ou nul, on ne peut pas obtenir $-1$. Dans la formule, $\\sqrt{\\Delta}$ serait $\\sqrt{-4}$, qui n'est pas un nombre réel. Nous verrons plus tard (en Terminale) qu'on peut définir des nombres complexes pour donner un sens à cette racine, mais pour l'instant, dans l'ensemble des réels, on dit simplement : pas de solution."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, voici un tableau de synthèse que tu pourras apprendre par cœur. Il résume les trois cas de figure et te servira de référence rapide pour la suite du chapitre. Lis-le attentivement, puis essaie de le reproduire de mémoire sur une feuille."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Signe de $\\Delta$",
+                "Nombre de racines réelles",
+                "Forme des racines",
+                "Position de la parabole"
+              ],
+              "rows": [
+                [
+                  "$\\Delta > 0$",
+                  "Deux racines distinctes $x_1$ et $x_2$",
+                  "$x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$",
+                  "Coupe l'axe des abscisses en deux points"
+                ],
+                [
+                  "$\\Delta = 0$",
+                  "Une racine double $x_0$",
+                  "$x_0 = \\frac{-b}{2a}$",
+                  "Tangente à l'axe des abscisses"
+                ],
+                [
+                  "$\\Delta < 0$",
+                  "Aucune racine réelle",
+                  "Pas de solution dans $\\mathbb{R}$",
+                  "Ne coupe pas l'axe des abscisses (toujours au-dessus si $a>0$, en-dessous si $a<0$)"
+                ]
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit l'équation $2x^2 - 4x + 2 = 0$. Calcule son discriminant et détermine le nombre de solutions réelles.",
+              "answer": "$\\Delta = 0$, une racine double",
+              "hint": "Calcule $\\Delta = (-4)^2 - 4 \\times 2 \\times 2$.",
+              "explanation": "$a=2$, $b=-4$, $c=2$. $\\Delta = 16 - 16 = 0$. Donc une racine double $x_0 = \\frac{4}{4} = 1$."
+            },
+            {
+              "question": "L'équation $x^2 - 6x + 10 = 0$ a-t-elle des solutions réelles ? Justifie.",
+              "answer": "Non, $\\Delta = -4 < 0$, aucune solution réelle.",
+              "hint": "Calcule $\\Delta = (-6)^2 - 4 \\times 1 \\times 10$.",
+              "explanation": "$a=1$, $b=-6$, $c=10$. $\\Delta = 36 - 40 = -4$. Comme $\\Delta < 0$, l'équation n'a pas de solution dans $\\mathbb{R}$."
+            },
+            {
+              "question": "Détermine le nombre de racines réelles de $3x^2 + 5x - 2 = 0$ sans les calculer.",
+              "answer": "Deux racines distinctes car $\\Delta = 49 > 0$.",
+              "hint": "Calcule $\\Delta = 5^2 - 4 \\times 3 \\times (-2)$.",
+              "explanation": "$a=3$, $b=5$, $c=-2$. $\\Delta = 25 + 24 = 49 > 0$. L'équation admet deux racines réelles distinctes."
+            },
+            {
+              "question": "Pour quelle valeur de $k$ l'équation $x^2 + kx + 9 = 0$ a-t-elle une racine double ?",
+              "answer": "$k = 6$ ou $k = -6$",
+              "hint": "Une racine double $\\Leftrightarrow \\Delta = 0$. Calcule $\\Delta = k^2 - 36$ et résous $\\Delta = 0$.",
+              "explanation": "$a=1$, $b=k$, $c=9$. $\\Delta = k^2 - 36$. Pour une racine double, $\\Delta = 0 \\Rightarrow k^2 = 36 \\Rightarrow k = \\pm 6$."
+            }
+          ]
+        },
+        {
+          "title": "Factoriser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Factoriser un trinôme grâce à ses racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce chapitre, et c'est sans doute la plus satisfaisante : tu vas apprendre à réécrire n'importe quel trinôme du second degré sous forme factorisée, c'est-à-dire sous forme de produit. Cette écriture est incroyablement utile pour résoudre des équations, étudier le signe d'un trinôme, ou même calculer des limites plus tard. Le principe est simple : si tu connais les racines de l'équation associée, tu connais la factorisation. Rappelle-toi : un trinôme $ax^2+bx+c$ avec $a \\neq 0$ admet au plus deux racines réelles. Selon le signe du discriminant, nous avons trois cas de figure pour la factorisation sur les réels."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax^2+bx+c = a(x-x_1)(x-x_2) \\\\ \\text{si } \\\\Delta > 0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le cas $\\Delta > 0$. Le trinôme a deux racines distinctes $x_1$ et $x_2$. La factorisation s'écrit $a(x-x_1)(x-x_2)$. Le coefficient $a$ reste devant le produit. Par exemple, pour $2x^2 - 5x + 2$, nous avons $\\Delta = 9 > 0$, les racines sont $x_1 = 2$ et $x_2 = \\frac{1}{2}$. La factorisation est $2(x-2)(x-\\frac{1}{2})$. On peut aussi écrire $2 \\times (x-2) \\times (x-\\frac{1}{2}) = (x-2)(2x-1)$ en distribuant le $2$ dans l'un des facteurs. Les deux formes sont correctes, mais la forme $a(x-x_1)(x-x_2)$ est la plus systématique. Vérifie en développant : $2(x-2)(x-0,5) = 2(x^2 - 2,5x + 1) = 2x^2 - 5x + 2$. C'est bon !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant le cas où le discriminant est nul. Il n'y a qu'une seule racine $x_0$, mais elle est double. La factorisation s'écrit alors $a(x-x_0)^2$. C'est une écriture très compacte qui montre immédiatement que le trinôme est le produit d'un carré par le coefficient $a$. Prenons $3x^2 - 12x + 12$. Son discriminant est $\\Delta = 144 - 144 = 0$. La racine double est $x_0 = \\frac{12}{6} = 2$. La factorisation est $3(x-2)^2$. Développons pour vérifier : $3(x^2 - 4x + 4) = 3x^2 - 12x + 12$. Parfait. Remarque que l'on peut aussi écrire $(x-2)(3x-6)$, mais la forme canonique $a(x-x_0)^2$ est préférée car elle met en évidence la racine double."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas $\\Delta = 0$ : la factorisation par un carré"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $\\Delta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le discriminant. Si $\\Delta = 0$, passe à l'étape 2."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver la racine double $x_0$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule $x_0 = \\frac{-b}{2a}$. Note bien le signe moins devant $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la factorisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La factorisation est $a(x-x_0)^2$. Vérifie en développant si tu as un doute."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons le cas $\\Delta < 0$. Sur les nombres réels, le trinôme n'a pas de racine, donc il ne se factorise pas en produit de facteurs du premier degré à coefficients réels. On dit qu'il est **irréductible** sur $\\mathbb{R}$. Cependant, il garde un signe constant (celui de $a$) pour tout $x$. C'est une information précieuse pour l'étude de signe. Par exemple, $x^2 + x + 1$ a $\\Delta = 1 - 4 = -3 < 0$. Comme $a=1>0$, ce trinôme est strictement positif pour tout réel $x$. Il ne se factorise pas sur $\\mathbb{R}$, mais on peut l'écrire sous forme canonique $ (x+\\frac{1}{2})^2 + \\frac{3}{4} $, ce qui montre bien qu'il est toujours $\\ge \\frac{3}{4} > 0$. Nous verrons cette forme canonique dans un autre chapitre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas $\\Delta < 0$ : trinôme irréductible sur les réels"
+            },
+            {
+              "type": "display_math",
+              "latex": "x^2 + x + 1 = \\\\left(x+\\\\frac{1}{2}\\\\right)^2 + \\\\frac{3}{4} > 0 \\\\ \\forall x \\\\in \\\\mathbb{R}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce chapitre, récapitulons les trois formes de factorisation dans un tableau récapitulatif. Mais avant cela, je veux te féliciter : tu as maintenant toutes les clés pour manipuler les trinômes du second degré avec confiance. Tu sais calculer le discriminant, en déduire le nombre de racines, et factoriser le trinôme selon les cas. C'est une boîte à outils fondamentale qui te servira tout au long de l'année, que ce soit pour résoudre des équations, étudier des fonctions, ou aborder les suites récurrentes. Prends le temps de relire les trois leçons, de refaire les exercices, et surtout de t'approprier les raisonnements. Les mathématiques se construisent par la pratique et la réflexion, pas par la mémorisation passive."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Signe de $\\Delta$",
+                "Racines",
+                "Factorisation sur $\\mathbb{R}$",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "$\\Delta > 0$",
+                  "Deux racines distinctes $x_1, x_2$",
+                  "$a(x-x_1)(x-x_2)$",
+                  "$2x^2-5x+2 = 2(x-2)(x-\\frac{1}{2})$"
+                ],
+                [
+                  "$\\Delta = 0$",
+                  "Une racine double $x_0$",
+                  "$a(x-x_0)^2$",
+                  "$3x^2-12x+12 = 3(x-2)^2$"
+                ],
+                [
+                  "$\\Delta < 0$",
+                  "Aucune racine réelle",
+                  "Irréductible (ne se factorise pas)",
+                  "$x^2+x+1$ irréductible"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer le discriminant $\\Delta = b^2 - 4ac$ d'un trinôme $ax^2+bx+c$.",
+                "Je sais identifier les coefficients $a$, $b$, $c$ même si le trinôme n'est pas écrit dans l'ordre standard.",
+                "Je sais exprimer le discriminant en fonction d'un paramètre.",
+                "Je connais le lien entre le signe de $\\Delta$ et le nombre de racines réelles : $\\Delta>0 \\Rightarrow$ deux racines distinctes, $\\Delta=0 \\Rightarrow$ une racine double, $\\Delta<0 \\Rightarrow$ aucune racine réelle.",
+                "Je sais factoriser un trinôme selon le signe de $\\Delta$ : $a(x-x_1)(x-x_2)$, $a(x-x_0)^2$, ou je sais qu'il est irréductible sur $\\mathbb{R}$.",
+                "Je sais utiliser la factorisation pour résoudre une équation ou étudier le signe d'un trinôme."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise le trinôme $T(x) = 4x^2 - 4x - 3$.",
+              "answer": "$4(x+\\frac{1}{2})(x-\\frac{3}{2})$ ou $(2x+1)(2x-3)$",
+              "hint": "Calcule $\\Delta$, trouve les racines $x_1$ et $x_2$, puis écris $4(x-x_1)(x-x_2)$.",
+              "explanation": "$a=4$, $b=-4$, $c=-3$. $\\Delta = 16 + 48 = 64 > 0$. Racines : $x_1 = \\frac{4-8}{8} = -\\frac{1}{2}$, $x_2 = \\frac{4+8}{8} = \\frac{3}{2}$. Factorisation : $4(x+\\frac{1}{2})(x-\\frac{3}{2}) = (2x+1)(2x-3)$."
+            },
+            {
+              "question": "Factorise $P(x) = 5x^2 - 20x + 20$.",
+              "answer": "$5(x-2)^2$",
+              "hint": "Calcule $\\Delta$. S'il est nul, utilise la formule $a(x-x_0)^2$ avec $x_0 = -b/(2a)$.",
+              "explanation": "$a=5$, $b=-20$, $c=20$. $\\Delta = 400 - 400 = 0$. Racine double $x_0 = \\frac{20}{10} = 2$. Factorisation : $5(x-2)^2$."
+            },
+            {
+              "question": "Le trinôme $Q(x) = -2x^2 + 3x - 5$ est-il factorisable sur $\\mathbb{R}$ ? Justifie.",
+              "answer": "Non, il est irréductible sur $\\mathbb{R}$ car $\\Delta = -31 < 0$.",
+              "hint": "Calcule $\\Delta = 3^2 - 4 \\times (-2) \\times (-5)$.",
+              "explanation": "$a=-2$, $b=3$, $c=-5$. $\\Delta = 9 - 40 = -31 < 0$. Pas de racine réelle, donc pas de factorisation en facteurs du premier degré à coefficients réels."
+            },
+            {
+              "question": "Soit $R(x) = x^2 + (k-1)x + k$. Pour quelles valeurs de $k$ ce trinôme admet-il une factorisation à deux facteurs du premier degré distincts ?",
+              "answer": "$k < 3-2\\sqrt{2}$ ou $k > 3+2\\sqrt{2}$",
+              "hint": "Il faut $\\Delta > 0$. Calcule $\\Delta = (k-1)^2 - 4k = k^2 - 6k + 1$. Résous $k^2 - 6k + 1 > 0$.",
+              "explanation": "$a=1$, $b=k-1$, $c=k$. $\\Delta = (k-1)^2 - 4k = k^2 - 2k + 1 - 4k = k^2 - 6k + 1$. Les racines de $\\Delta=0$ sont $k = 3 \\pm 2\\sqrt{2}$. Le trinôme $\\Delta(k)$ est un trinôme à $a=1>0$, donc $\\Delta > 0$ en dehors des racines : $k < 3-2\\sqrt{2}$ ou $k > 3+2\\sqrt{2}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

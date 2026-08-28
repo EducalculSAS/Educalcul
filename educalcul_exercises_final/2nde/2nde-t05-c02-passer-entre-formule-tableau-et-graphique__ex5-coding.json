@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 521,
+  "_course_code": "2nde-t05-c02-passer-entre-formule-tableau-et-graphique",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Algorithmes et lecture de représentations de fonctions",
+  "blocks": [
+    {
+      "title": "Écriture d'un algorithme à partir d'une formule",
+      "content": "La fonction $f$ est définie par $f(x)=2x+3$. Écris un algorithme (en langage naturel ou pseudo‑code) qui affiche un tableau de valeurs de $f$ pour $x$ variant de $-2$ à $2$ par pas de $1$.",
+      "correctAnswer": "Algorithme :\\nDébut\\nPour x de -2 à 2 faire\\n    y ← 2*x + 3\\n    Afficher x, y\\nFin pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt les valeurs entières de $x$ de $-2$ à $2$. Pour chaque $x$, on calcule $y = 2x+3$ grâce à la formule donnée, puis on affiche le couple $(x,y)$. Cela produit le tableau : $(-2,-1), (-1,1), (0,3), (1,5), (2,7)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déduction de la formule et algorithme à partir d'un tableau",
+      "content": "On donne le tableau de valeurs suivant pour une fonction linéaire $g$ :\\n$x$ : -3 ; -1 ; 0 ; 2\\n$g(x)$ : -4 ; 0 ; 2 ; 6\\nDétermine l'expression de $g(x)$ sous la forme $ax+b$, puis écris un algorithme qui calcule $g(x)$ pour une valeur quelconque de $x$ entrée par l'utilisateur.",
+      "correctAnswer": "La fonction est $g(x)=2x+2$.\\nAlgorithme :\\nDébut\\nLire x\\ny ← 2*x + 2\\nAfficher y\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On observe que lorsque $x$ augmente de $2$, $g(x)$ augmente de $4$, donc le coefficient directeur $a = 4/2 = 2$. En utilisant le point $(0,2)$, on trouve $b=2$. La formule est $g(x)=2x+2$. L'algorithme lit $x$, calcule $y=2x+2$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'un graphique et algorithme d'évaluation",
+      "content": "Le graphique ci‑dessous représente une fonction quadratique $h$ dont le sommet est $S(1\\,;\\, -2)$ et qui passe par le point $A(3\\,;\\, 2)$. (Imaginons le graphique.)\\nÀ partir de ces informations, détermine l'expression de $h(x)$ sous la forme canonique $a(x-1)^2-2$, trouve la valeur de $a$, puis écris un algorithme qui, pour un $x$ donné, renvoie $h(x)$.",
+      "correctAnswer": "Le point $A(3,2)$ satisfait $2 = a(3-1)^2 - 2 = 4a - 2$, donc $4a = 4$ et $a = 1$. Ainsi $h(x) = (x-1)^2 - 2$.\\nAlgorithme :\\nDébut\\nLire x\\ny ← (x-1)*(x-1) - 2\\nAfficher y\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La forme canonique d'une parabole de sommet $(h,k)$ est $a(x-h)^2+k$. Ici $h=1$, $k=-2$. En remplaçant les coordonnées de $A$, on résout $2 = a(2)^2 - 2$ ce qui donne $a=1$. L'algorithme calcule $(x-1)^2-2$ pour tout $x$ entré.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

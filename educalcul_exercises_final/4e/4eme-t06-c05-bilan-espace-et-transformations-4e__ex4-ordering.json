@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 449,
+  "_course_code": "4eme-t06-c05-bilan-espace-et-transformations-4e",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Application : Bilan - Espace et transformations 4e",
+  "title": "Bilan : Ordonner les étapes de constructions et calculs",
+  "blocks": [
+    {
+      "title": "Symétrie axiale : construction",
+      "content": "Remets dans l'ordre chronologique les étapes de la construction du symétrique d'un point $A$ par rapport à une droite $(d)$ (axe de symétrie).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer la perpendiculaire à la droite $(d)$ passant par le point $A$.",
+        "Reporter la distance du point $A$ à la droite $(d)$ de l'autre côté de l'axe sur cette perpendiculaire.",
+        "Marquer le point image $A'$, symétrique de $A$ par rapport à $(d)$."
+      ],
+      "explanation": "La construction de la symétrie axiale suit un protocole précis : 1. On trace la perpendiculaire à l'axe passant par le point (propriété : l'axe est médiatrice du segment joignant le point à son image). 2. On reporte la distance à l'axe de l'autre côté sur cette perpendiculaire. 3. On obtient le point image.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Volume d'un prisme droit : calcul",
+      "content": "Classe les étapes du calcul du volume d'un prisme droit dont la base est un triangle rectangle de côtés $3\\,cm$ et $4\\,cm$, et dont la hauteur est $10\\,cm$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Calculer l'aire de la base triangulaire avec la formule $\\frac{b \\times h}{2}$ : $\\frac{3 \\times 4}{2} = 6\\,cm^2$.",
+        "Appliquer la formule du volume d'un prisme droit : $V = \\text{Aire}_{base} \\times \\text{hauteur}$.",
+        "Effectuer le calcul : $V = 6 \\times 10 = 60\\,cm^3$.",
+        "Conclure : le volume du prisme est de $60\\,cm^3$."
+      ],
+      "explanation": "Le calcul d'un volume de prisme droit suit toujours la même logique : 1. Calculer l'aire de la base (ici triangle rectangle : $3\\times4/2 = 6\\,cm^2$). 2. Écrire la formule $V = A_{base} \\times h$. 3. Remplacer et calculer ($6 \\times 10 = 60$). 4. Donner le résultat avec l'unité ($cm^3$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Homothétie : construction de l'image",
+      "content": "Range dans l'ordre les étapes pour construire l'image d'un triangle $ABC$ par l'homothétie de centre $O$ et de rapport $k = 2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer les demi-droites $[OA)$, $[OB)$ et $[OC)$.",
+        "Sur chaque demi-droite, placer les points $A'$, $B'$, $C'$ tels que $OA' = 2 \\times OA$, $OB' = 2 \\times OB$, $OC' = 2 \\times OC$.",
+        "Tracer les segments $[A'B']$, $[B'C']$ et $[C'A']$ pour obtenir le triangle $A'B'C'$, image de $ABC$."
+      ],
+      "explanation": "La construction de l'image par une homothétie de centre $O$ et rapport $k$ se fait en trois temps : 1. On trace les demi-droites passant par le centre et chaque sommet. 2. On place les images des sommets sur ces demi-droites en multipliant les distances par $|k|$ (ici $2$). 3. On relie les nouveaux sommets dans le même ordre pour former la figure image.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

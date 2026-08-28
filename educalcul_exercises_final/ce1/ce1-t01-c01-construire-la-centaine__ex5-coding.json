@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 68,
+  "_course_code": "ce1-t01-c01-construire-la-centaine",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Regrouper 10 dizaines",
+  "title": "Algorithme : Regrouper 10 dizaines pour former une centaine",
+  "blocks": [
+    {
+      "title": "Former une centaine",
+      "content": "On possède 10 paquets de 10 unités (10 dizaines). Écris les instructions pas à pas (l'algorithme) pour regrouper ces dizaines en une centaine et afficher le nombre total d'unités.",
+      "correctAnswer": "Début\\nNombre_de_dizaines = 10\\nNombre_de_centaines = 0\\nTant que Nombre_de_dizaines >= 10 faire\\n    Nombre_de_dizaines = Nombre_de_dizaines - 10\\n    Nombre_de_centaines = Nombre_de_centaines + 1\\nFin tant que\\nNombre_total_unites = Nombre_de_centaines * 100 + Nombre_de_dizaines * 10\\nAfficher \"Centaines : \" Nombre_de_centaines\\nAfficher \"Dizaines restantes : \" Nombre_de_dizaines\\nAfficher \"Total unités : \" Nombre_total_unites\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une boucle 'Tant que' pour retirer 10 dizaines tant que c'est possible. Chaque retrait de 10 dizaines crée 1 centaine. Au départ il y a 10 dizaines. La boucle s'exécute une fois : il reste 0 dizaine et on a 1 centaine. Le total d'unités est 1 * 100 + 0 * 10 = 100 unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Regrouper avec des dizaines en trop",
+      "content": "On possède 23 dizaines. Écris un algorithme qui forme le maximum de centaines possibles et qui indique combien de centaines on a formées et combien de dizaines il reste à la fin.",
+      "correctAnswer": "Début\\nNombre_de_dizaines = 23\\nNombre_de_centaines = 0\\nTant que Nombre_de_dizaines >= 10 faire\\n    Nombre_de_dizaines = Nombre_de_dizaines - 10\\n    Nombre_de_centaines = Nombre_de_centaines + 1\\nFin tant que\\nAfficher \"Nombre de centaines formées : \" Nombre_de_centaines\\nAfficher \"Nombre de dizaines restantes : \" Nombre_de_dizaines\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence avec 23 dizaines. La boucle tourne tant qu'il y a au moins 10 dizaines. 1er tour : 23 - 10 = 13 dizaines, 1 centaine. 2e tour : 13 - 10 = 3 dizaines, 2 centaines. 3e tour impossible car 3 < 10. Résultat : 2 centaines et 3 dizaines restantes. Cela correspond à 230 unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Decomposer un nombre en centaines et dizaines",
+      "content": "On donne le nombre 350. Écris un algorithme qui part de ce nombre pour trouver combien de centaines et combien de dizaines il contient, en utilisant l'idée que 10 dizaines font 1 centaine.",
+      "correctAnswer": "Début\\nNombre = 350\\nNombre_de_dizaines = Nombre / 10\\nNombre_de_centaines = 0\\nTant que Nombre_de_dizaines >= 10 faire\\n    Nombre_de_dizaines = Nombre_de_dizaines - 10\\n    Nombre_de_centaines = Nombre_de_centaines + 1\\nFin tant que\\nAfficher \"Centaines : \" Nombre_de_centaines\\nAfficher \"Dizaines : \" Nombre_de_dizaines\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On convertit d'abord le nombre 350 en dizaines : 350 / 10 = 35 dizaines. Ensuite, on applique le regroupement par 10. La boucle s'exécute 3 fois (35 -> 25 -> 15 -> 5). On obtient 3 centaines et il reste 5 dizaines. Résultat : 3 centaines et 5 dizaines, soit 350.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

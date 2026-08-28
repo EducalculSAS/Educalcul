@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Quiz : Applications de la simulation",
+  "questions": [
+    {
+      "text": "À quoi sert principalement une simulation en probabilités au collège ?",
+      "options": [
+        "Calculer une probabilité exacte par le raisonnement théorique.",
+        "Estimer une probabilité par une fréquence obtenue expérimentalement.",
+        "Déterminer l'ensemble des issues possibles d'une expérience aléatoire.",
+        "Prouver qu'une expérience aléatoire est équitable."
+      ],
+      "correctAnswer": "Estimer une probabilité par une fréquence obtenue expérimentalement.",
+      "explanation": "La simulation permet d'approcher une probabilité théorique en reproduisant un grand nombre de fois l'expérience aléatoire (grâce à un ordinateur, une calculatrice ou un programme) et en calculant la fréquence de l'événement étudié. C'est une application de la loi des grands nombres : plus le nombre d'essais est grand, plus la fréquence se rapproche de la probabilité. Les autres options correspondent au calcul théorique, à la modélisation ou à la vérification, pas à la simulation elle-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut simuler $N$ lancers d'un dé à six faces équilibré pour estimer la probabilité d'obtenir un 6. Dans l'algorithme, on utilise une variable `succes` initialisée à 0. Quelle instruction faut-il placer dans la boucle pour compter les succès ?",
+      "options": [
+        "Si résultat = 6 alors succes ← succes + 1",
+        "Si résultat = 6 alors N ← N + 1",
+        "Pour i de 1 à 6 faire",
+        "Afficher succes / 6"
+      ],
+      "correctAnswer": "Si résultat = 6 alors succes ← succes + 1",
+      "explanation": "La variable `succes` compte le nombre de fois où l'événement recherché (obtenir un 6) se produit. À chaque tour de boucle (chaque lancer simulé), si le résultat vaut 6, on incrémente `succes` de 1. L'option B modifie le nombre total d'essais $N$, ce qui fausse la simulation. L'option C est une structure de boucle pour 6 tours, pas un comptage conditionnel. L'option D est l'affichage final de la fréquence (à diviser par $N$, pas par 6).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule le tirage d'une boule dans une urne contenant 3 boules rouges et 2 boules bleues. On utilise une fonction `aleatoire()` qui renvoie un nombre décimal uniforme entre 0 (inclus) et 1 (exclus). Quelle condition tester pour dire : 'On a tiré une boule rouge' ?",
+      "options": [
+        "Si nombre < 0,3 alors rouge",
+        "Si nombre < 0,5 alors rouge",
+        "Si nombre < 0,6 alors rouge",
+        "Si nombre > 0,6 alors rouge"
+      ],
+      "correctAnswer": "Si nombre < 0,6 alors rouge",
+      "explanation": "La probabilité de tirer une boule rouge est $3/5 = 0,6$. Comme `aleatoire()` donne un nombre uniformément réparti entre 0 et 1, la proportion de nombres strictement inférieurs à 0,6 est exactement 0,6. Cela correspond à la probabilité voulue. L'option 0,3 correspondrait à 3 boules sur 10, l'option 0,5 à 1 chance sur 2, et l'option > 0,6 donnerait une probabilité de 0,4 (pour les bleues).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On simule le lancer d'une pièce de monnaie équilibrée ($N$ essais) et on observe la fréquence de 'Face' pour différentes valeurs de $N$. Que constate-t-on généralement ?",
+      "options": [
+        "La fréquence vaut exactement 0,5 dès que $N = 10$.",
+        "La fréquence fluctue beaucoup pour $N = 10$ et se stabilise autour de 0,5 pour $N = 10\\,000$.",
+        "La fréquence est toujours strictement supérieure à 0,5.",
+        "La fréquence s'éloigne de 0,5 quand $N$ augmente."
+      ],
+      "correctAnswer": "La fréquence fluctue beaucoup pour $N = 10$ et se stabilise autour de 0,5 pour $N = 10\\,000$.",
+      "explanation": "C'est l'illustration de la loi des grands nombres. Pour un petit nombre d'essais ($N=10$), le hasard fait que la fréquence observée peut être très différente de la probabilité théorique (0,5) : on peut avoir 3 Faces ou 7 Faces. Lorsque le nombre d'essais devient très grand ($N=10\\,000$), les fluctuations se compensent et la fréquence observée se rapproche beaucoup de 0,5 sans être exactement égale. Les autres affirmations sont fausses : la fréquence n'est jamais garantie exactement, n'est pas biaisée systématiquement au-dessus, et converge vers la probabilité au lieu de diverger.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le script Python suivant :\\n`from random import random`\\n`succes = 0`\\n`for i in range(1000):`\\n`    if random() < 0.25:`\\n`        succes = succes + 1`\\n`print(succes / 1000)`\\nQuelle probabilité ce script permet-il d'estimer ?",
+      "options": [
+        "La probabilité d'obtenir un nombre inférieur à 0,25 avec `random()` (soit 0,25).",
+        "La probabilité d'obtenir exactement 0,25 avec `random()`.",
+        "La probabilité d'obtenir un nombre supérieur à 0,75.",
+        "La probabilité d'exécuter la boucle 1000 fois."
+      ],
+      "correctAnswer": "La probabilité d'obtenir un nombre inférieur à 0,25 avec `random()` (soit 0,25).",
+      "explanation": "La fonction `random()` du module `random` en Python renvoie un nombre flottant uniformément distribué dans l'intervalle $[0, 1[$. La condition `random() < 0.25` est vraie exactement pour 25 % des valeurs possibles (celles entre 0 et 0,25). La variable `succes` compte le nombre de fois où cette condition est réalisée sur 1000 essais. La fréquence `succes / 1000` est donc une estimation de la probabilité $0,25$. La probabilité d'obtenir exactement 0,25 est nulle (continu). La probabilité d'être supérieur à 0,75 est aussi 0,25 mais ne correspond pas à la condition testée. La boucle s'exécute toujours 1000 fois (probabilité 1).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

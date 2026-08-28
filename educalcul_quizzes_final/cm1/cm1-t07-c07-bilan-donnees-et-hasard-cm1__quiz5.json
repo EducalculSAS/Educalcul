@@ -1,0 +1,121 @@
+{
+  "_status": "done",
+  "_course_id": 262,
+  "_course_code": "cm1-t07-c07-bilan-donnees-et-hasard-cm1",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Approfondissement : Lire / produire",
+  "title": "Données et hasard : Lire et produire",
+  "questions": [
+    {
+      "text": "Dans un tableau de données, que représente généralement la ligne d'en-tête ?",
+      "options": [
+        "Le résultat final du calcul",
+        "Le nom des catégories ou des informations recherchées",
+        "La somme de toutes les valeurs du tableau",
+        "Le numéro de la page du document"
+      ],
+      "correctAnswer": "Le nom des catégories ou des informations recherchées",
+      "explanation": "L'en-tête d'un tableau sert à identifier ce que contient chaque colonne ou chaque ligne. Par exemple, si on recense des fruits, l'en-tête sera le nom du fruit et la quantité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le graphique suivant. Quelle est la valeur du groupe Pommes ?",
+      "options": [
+        "quatre",
+        "six",
+        "huit",
+        "dix"
+      ],
+      "correctAnswer": "six",
+      "explanation": "En regardant la hauteur de la barre correspondant aux Pommes, on lit le nombre $6$ sur l'axe vertical.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de fruits préférés",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 6,
+            "tone": "red"
+          },
+          {
+            "label": "Bananes",
+            "value": 4,
+            "tone": "gold"
+          },
+          {
+            "label": "Poires",
+            "value": 8,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Si tu veux représenter la part de chaque couleur de billes dans un sac pour montrer la proportion sur un total, quel outil est le plus adapté ?",
+      "options": [
+        "Une droite graduée",
+        "Un diagramme circulaire",
+        "Une opération en colonnes",
+        "Un calendrier"
+      ],
+      "correctAnswer": "Un diagramme circulaire",
+      "explanation": "Le diagramme circulaire, aussi appelé camembert, est l'outil idéal pour montrer la répartition de différentes catégories par rapport à un ensemble total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le diagramme circulaire suivant, quelle catégorie représente la plus grande part ?",
+      "options": [
+        "Bleu",
+        "Rouge",
+        "Vert",
+        "Jaune"
+      ],
+      "correctAnswer": "Vert",
+      "explanation": "La part la plus large dans un diagramme circulaire correspond à la valeur la plus élevée. Ici, la section Vert a la valeur $10$, ce qui est supérieur aux autres.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 10,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Une classe a récolté des données : $5$ élèves aiment le football, $8$ élèves aiment le tennis et $3$ élèves aiment le basket. Combien d'élèves ont été interrogés au total pour produire ce graphique ?",
+      "options": [
+        "ten",
+        "treize",
+        "seize",
+        "dix-huit"
+      ],
+      "correctAnswer": "seize",
+      "explanation": "Pour trouver le total, on additionne les données de chaque catégorie : $5 + 8 + 3 = 16$. Il y a donc seize élèves au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

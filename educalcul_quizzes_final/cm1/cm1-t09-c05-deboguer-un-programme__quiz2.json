@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Tester",
+  "title": "Tester son programme informatique",
+  "questions": [
+    {
+      "text": "En informatique, que signifie tester un programme ?",
+      "options": [
+        "Écrire le programme le plus rapidement possible",
+        "Lancer le programme pour vérifier s'il fonctionne comme prévu",
+        "Supprimer toutes les lignes de code inutiles",
+        "Changer les couleurs de l'interface"
+      ],
+      "correctAnswer": "Lancer le programme pour vérifier s'il fonctionne comme prévu",
+      "explanation": "Tester consiste à exécuter le programme et observer si le résultat obtenu correspond au résultat attendu pour s'assurer qu'il n'y a pas d'erreurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si un programme ne donne pas le résultat attendu lors du test, comment appelle-t-on l'erreur trouvée ?",
+      "options": [
+        "Un virus informatique",
+        "Une mise à jour",
+        "Un bogue",
+        "Une variable"
+      ],
+      "correctAnswer": "Un bogue",
+      "explanation": "Un bogue est une erreur de logique ou de syntaxe dans un programme qui provoque un comportement anormal ou incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tester un programme qui doit calculer $10 + 5$, quelle est la meilleure méthode ?",
+      "options": [
+        "Lancer le programme une seule fois et espérer que cela marche",
+        "Demander à un camarade s'il pense que le programme est bon",
+        "Vérifier que le résultat affiché est bien $15$",
+        "Réécrire tout le programme depuis le début"
+      ],
+      "correctAnswer": "Vérifier que le résultat affiché est bien $15$",
+      "explanation": "On teste en comparant le résultat réel du programme avec le résultat mathématique attendu, qui est $10 + 5 = 15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pourquoi est-il important de tester son programme avec plusieurs valeurs différentes ?",
+      "options": [
+        "Pour que le programme soit plus joli",
+        "Pour s'assurer que le programme fonctionne dans tous les cas et pas seulement une fois",
+        "Pour rendre l'ordinateur plus rapide",
+        "Pour utiliser plus de mémoire sur la machine"
+      ],
+      "correctAnswer": "Pour s'assurer que le programme fonctionne dans tous les cas et pas seulement une fois",
+      "explanation": "Un programme peut fonctionner pour un nombre mais échouer pour un autre. Tester avec plusieurs valeurs permet de détecter des bogues cachés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'ordre logique pour corriger un programme qui ne fonctionne pas ?",
+      "options": [
+        "Supprimer le programme, tester, puis réfléchir",
+        "Réfléchir, supprimer le programme, tester",
+        "Tester, trouver le bogue, corriger le code, puis tester à nouveau",
+        "Corriger le code au hasard, tester, puis s'arrêter"
+      ],
+      "correctAnswer": "Tester, trouver le bogue, corriger le code, puis tester à nouveau",
+      "explanation": "Le cycle du débogage commence par le test pour identifier l'erreur, suivi de la correction, et se termine par un nouveau test pour vérifier que la correction a réussi.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

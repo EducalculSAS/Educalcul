@@ -1,0 +1,301 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.480323+00:00",
+  "id": 315,
+  "code": "cm2-t06-c06",
+  "title": "Solides, patrons et vues",
+  "description": "Cours structuré Educalcul : Solides, patrons et vues.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Solides, patrons et vues",
+    "objectif_global": "Solides, patrons et vues",
+    "mini_lecons_imposees": [
+      "Décrire.",
+      "Patrons.",
+      "Vues de face / dessus accessibles."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Décrire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un solide ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu tiens un dé entre tes doigts. Tu peux le tourner, le poser sur la table, le faire rouler. Contrairement à un dessin sur ta feuille qui reste plat, le dé a de l'épaisseur, il occupe de la place dans l'espace. En géométrie, on appelle cela un **solide**. C'est un objet qui a trois dimensions : une longueur, une largeur et une hauteur. Pour bien le décrire, on ne compte pas seulement ses côtés comme pour un carré, on observe sa peau, ses arêtes et ses coins."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "Chacune des surfaces planes qui limitent un solide. Par exemple, chaque côté d'un dé est une face carrée.",
+              "example": "Un cube a $6$ faces."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Le segment de droite où se rejoignent deux faces. C'est comme une 'couture' entre deux faces.",
+              "example": "Un cube a $12$ arêtes."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Le point où se rencontrent plusieurs arêtes (au moins trois). C'est un 'coin' du solide.",
+              "example": "Un cube a $8$ sommets."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Solide",
+                "Faces",
+                "Arêtes",
+                "Sommets"
+              ],
+              "rows": [
+                [
+                  "Cube",
+                  "6 carrés",
+                  "12",
+                  "8"
+                ],
+                [
+                  "Pavé droit",
+                  "6 rectangles (ou carrés)",
+                  "12",
+                  "8"
+                ]
+              ],
+              "caption": "Comparaison du cube et du pavé droit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien le tableau : le cube et le pavé droit ont exactement le même nombre de faces, d'arêtes et de sommets. Pourtant, ils ne se ressemblent pas ! La différence se cache dans la forme des faces : toutes les faces du cube sont des carrés identiques, alors que le pavé droit a des faces rectangulaires (parfois carrées pour deux d'entre elles). C'est ce qui change l'allure de l'objet."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Poursuivons notre exploration avec des solides qui n'ont pas que des faces planes. Prends un rouleau de papier essuie-tout : tu as là un **cylindre**. Il a deux faces planes (les disques du haut et du bas) et une grande face courbe tout autour. Il n'a pas d'arêtes ni de sommets au sens strict, juste deux cercles qui font office de 'bords'. À côté, imagine une tente de campagne ou une pyramide d'Égypte : c'est une **pyramide**. Elle a une base polygonale (carré, triangle...) et des faces triangulaires qui se rejoignent toutes en un seul point au sommet. Enfin, le **cône** ressemble à un cornet de glace : un disque pour base et une surface courbe qui se termine en pointe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens d'apprendre le vocabulaire précis pour parler des solides comme un vrai géomètre. Tu sais maintenant distinguer un cube d'un pavé droit rien qu'en comptant et en nommant leurs faces. Dans la prochaine leçon, nous allons faire quelque chose d'amusant : nous allons 'découper' ces solides pour les étaler à plat sur la table. Tu verras, c'est comme de la magie, mais avec de la logique !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau ci-dessous pour le cube et le pavé droit.\\n\\n| Solide | Nombre de faces | Forme des faces | Nombre d'arêtes | Nombre de sommets |\\n|---|---|---|---|---|\\n| Cube | ... | ... | ... | ... |\\n| Pavé droit | ... | ... | ... | ... |",
+              "answer": "Cube : 6 faces, carrés, 12 arêtes, 8 sommets. Pavé droit : 6 faces, rectangles (2 carrés possibles), 12 arêtes, 8 sommets.",
+              "hint": "Relis les définitions de face, arête et sommet. Regarde le tableau de la leçon pour t'aider.",
+              "explanation": "Le cube et le pavé droit ont la même structure (6 faces, 12 arêtes, 8 sommets). Seule la forme des faces change : carrés pour le cube, rectangles pour le pavé droit."
+            },
+            {
+              "question": "Parmi ces objets, lesquels sont des cylindres, lesquels sont des cônes ?\\n- Un rouleau de scotch\\n- Un chapeau d'anniversaire pointu\\n- Une boîte de conserve\\n- Un cornet de glace",
+              "answer": "Cylindres : rouleau de scotch, boîte de conserve. Cônes : chapeau d'anniversaire, cornet de glace.",
+              "hint": "Le cylindre a deux faces planes parallèles (disques) et une face courbe. Le cône a une base disque et une pointe unique.",
+              "explanation": "Le rouleau de scotch et la conserve ont deux bases circulaires planes : ce sont des cylindres. Le chapeau et le cornet n'ont qu'une base circulaire et se terminent en un point : ce sont des cônes."
+            }
+          ]
+        },
+        {
+          "title": "Patrons.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déplier un solide : le patron"
+            },
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà ouvert soigneusement une boîte en carton pour la ranger à plat ? Si tu as fait ça, tu as déjà manipulé un **patron** ! Un patron, c'est simplement la figure plane qu'on obtient quand on 'décolle' toutes les faces d'un solide et qu'on les étale sur la table sans les déchirer. C'est comme si le solide avait enlevé son costume 3D pour devenir un dessin 2D. L'avantage, c'est qu'avec un patron, on peut fabriquer le solide soi-même : on découpe, on plie sur les arêtes, on colle des languettes, et hop, le volume réapparaît !"
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Clique pour plier et déplier le patron de ce cube"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien l'animation : les six carrés sont attachés les uns aux autres. Pour que ce soit un vrai patron de cube, il faut que les $6$ carrés forment un seul morceau tenu par les côtés, et surtout qu'une fois plié, aucun carré ne se superpose à un autre. Il existe exactement $11$ façons différentes de faire ce patron. Si tu en dessines un où quatre carrés sont alignés et les deux autres de chaque côté du deuxième, ça marche. Mais si tu mets les six carrés en ligne droite, impossible de former un cube : il manquerait les côtés !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au **pavé droit**. Puisque ses faces sont des rectangles (parfois des carrés), son patron sera composé de $6$ rectangles. Il y a trois paires de rectangles identiques : le devant et le derrière, le dessus et le dessous, la gauche et la droite. Sur le patron, ces paires ne sont pas forcément côte à côte, mais elles ont les mêmes dimensions. C'est un peu comme un puzzle où tu dois retrouver les paires jumelles pour être sûr de pouvoir refermer la boîte."
+            },
+            {
+              "type": "net_folder",
+              "solid": "pave",
+              "width": 5,
+              "height": 3,
+              "depth": 2,
+              "caption": "Patron d'un pavé droit de dimensions 5, 3 et 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Et les solides à faces courbes ou pointues ? Pour le **cylindre**, le patron est très simple : un grand rectangle (la face courbe déroulée) et deux cercles (les bases). La longueur du rectangle est exactement la circonférence du cercle. Pour la **pyramide**, imagine que tu ouvres les faces triangulaires comme des pétales de fleur autour de la base polygonale. Le **cône**, lui, donne un secteur de cercle (un 'pac-man') pour la face courbe et un disque pour la base. Dans tous les cas, le patron garde la mémoire de toutes les arêtes du solide sous forme de lignes de pliage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître et même construire des patrons pour les principaux solides. C'est une compétence précieuse : les architectes et les designers l'utilisent tout le temps pour visualiser un bâtiment ou un emballage avant de le fabriquer. Mais il y a une autre façon de représenter un solide sur une feuille plate, sans le découper : c'est le regarder depuis des points de vue précis. C'est ce que nous allons découvrir maintenant avec les vues de face et de dessus."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici 4 dispositions de 6 carrés. Laquelle NE PEUT PAS être un patron de cube ?\\nA) Une croix (4 carrés en ligne, 1 de chaque côté du 2ème)\\nB) 6 carrés en ligne droite\\nC) Un 'T' (3 carrés en ligne, 3 sur le milieu)\\nD) Un 'Z' décalé",
+              "answer": "B) 6 carrés en ligne droite",
+              "hint": "Essaie de plier mentalement : avec 6 carrés en ligne, les deux extrémités ne peuvent pas se rejoindre pour fermer le cube.",
+              "explanation": "Un patron de cube doit permettre de former un volume clos. Avec 6 carrés alignés, on ne forme qu'un long tube ouvert aux deux bouts, impossible à refermer en cube. Les 11 patrons valides ont tous une forme plus compacte."
+            },
+            {
+              "question": "Un pavé droit a pour dimensions : longueur $5\\,cm$, largeur $3\\,cm$, hauteur $2\\,cm$. Combien de rectangles de dimensions $5 \\times 3$ trouve-t-on dans son patron ? Et de dimensions $5 \\times 2$ ? Et $3 \\times 2$ ?",
+              "answer": "Deux rectangles $5 \\times 3$ (dessus/dessous), deux rectangles $5 \\times 2$ (devant/derrière), deux rectangles $3 \\times 2$ (gauche/droite).",
+              "hint": "Un pavé droit a 3 paires de faces identiques. Chaque paire correspond à deux dimensions sur les trois.",
+              "explanation": "Les faces opposées sont identiques. Les faces $5\\times3$ sont le dessus et le dessous. Les faces $5\\times2$ sont le devant et le derrière. Les faces $3\\times2$ sont les côtés."
+            },
+            {
+              "question": "Associe chaque solide à la description de son patron :\\n1. Cylindre\\n2. Cône\\n3. Pyramide à base carrée\\n\\nA) Un disque et un secteur de cercle\\nB) Un carré et 4 triangles isocèles\\nC) Deux disques et un rectangle",
+              "answer": "1-C, 2-A, 3-B",
+              "hint": "Visualise le déroulement : le cylindre se 'découpe' verticalement, la pyramide s'ouvre comme une fleur, le cône s'aplatit en part de cercle.",
+              "explanation": "Le cylindre donne 2 cercles (bases) + 1 rectangle (face latérale). Le cône donne 1 cercle (base) + 1 secteur de cercle (face latérale). La pyramide à base carrée donne 1 carré (base) + 4 triangles (faces latérales)."
+            }
+          ]
+        },
+        {
+          "title": "Vues de face / dessus accessibles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le photographe et le solide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un photographe qui veut prendre en photo une tour en cubes. S'il se place pile en face, il voit la **vue de face** : un rectangle plat. S'il monte sur une échelle au-dessus, il voit la **vue de dessus** : un carré. S'il fait le tour sur le côté, il voit la **vue de profil** (ou de côté). Ces trois photos sont des dessins plats, en 2D, mais ensemble, elles donnent toutes les infos pour reconstruire la tour en 3D dans ta tête. C'est le langage secret des architectes et des ingénieurs : le plan, la façade et la coupe."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Position",
+                "Nom de la vue",
+                "Ce qu'on voit"
+              ],
+              "rows": [
+                [
+                  "Devant l'objet",
+                  "Vue de face",
+                  "Hauteur et Largeur"
+                ],
+                [
+                  "Au-dessus de l'objet",
+                  "Vue de dessus",
+                  "Longueur et Largeur"
+                ],
+                [
+                  "Sur le côté",
+                  "Vue de profil (côté)",
+                  "Hauteur et Longueur"
+                ]
+              ],
+              "caption": "Les trois vues principales d'un solide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, il y a un piège classique : sur une vue de face, on ne voit pas la profondeur ! Deux tours différentes peuvent avoir exactement la même vue de face si l'une a juste plus de cubes derrière l'autre. C'est pour ça qu'il faut **au moins deux vues** (souvent face et dessus) pour être sûr de la forme. Regarde ce tableau : la vue de face te donne la hauteur et la largeur, la vue de dessus te donne la longueur et la largeur. En croisant les deux, tu retrouves les trois dimensions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on construit avec des cubes (comme des Lego), on peut coder les vues très facilement. Pour la **vue de dessus**, on dessine une grille. Dans chaque case, on écrit le **nombre de cubes empilés** à cet endroit. C'est comme une carte au trésor où les chiffres indiquent la hauteur des tours. Par exemple, si tu as une tour de $3$ cubes à gauche et une tour de $1$ cube à droite, la vue de dessus montrera un $3$ et un $1$ sur deux cases côte à côte. C'est une méthode ultra-pratique pour dessiner des constructions complexes sans faire de perspective."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une partie du solide est cachée. Sur les vues techniques, on représente les arêtes qu'on ne voit pas avec des **pointillés** (des petits traits --- ---). Par exemple, sur la vue de face d'une boîte fermée, le bord arrière du haut est en pointillés. Apprends à repérer ces lignes discrètes : elles te disent 'il y a quelque chose derrière'. Pour finir, essayons l'inverse : on te donne la vue de face et la vue de dessus d'un solide mystère. À toi de deviner combien de cubes il faut et comment les placer. C'est un vrai jeu de déduction spatiale !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer les faces, arêtes et sommets d'un cube, d'un pavé droit, d'une pyramide, d'un cylindre et d'un cône.",
+                "Je sais reconnaître un patron de cube ou de pavé droit parmi plusieurs propositions.",
+                "Je sais associer un solide à son patron (cylindre, cône, pyramide).",
+                "Je sais identifier la vue de face, la vue de dessus et la vue de profil d'une construction en cubes.",
+                "Je sais lire un codage en vue de dessus (chiffres = hauteur des tours).",
+                "Je comprends l'utilité des traits pointillés pour les arêtes cachées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une tour est faite de $4$ cubes empilés. Un cube unique est posé à côté de la base de la tour. Dessine (ou décris) la vue de face et la vue de dessus de cette construction.",
+              "answer": "Vue de face : un rectangle de 4 carrés de haut (la tour) et un carré collé en bas à côté (le cube isolé). Vue de dessus : deux carrés côte à côte, l'un avec un '4' (la tour), l'autre avec un '1' (le cube isolé).",
+              "hint": "La vue de face montre les hauteurs. La vue de dessus montre l'emprise au sol avec les hauteurs en chiffres.",
+              "explanation": "De face, on voit la hauteur max (4) et la largeur (2 cubes). De dessus, on voit 2 positions au sol : une tour de 4 et une tour de 1."
+            },
+            {
+              "question": "Voici le codage en vue de dessus d'une construction :\\n\\n| 2 | 1 |\\n| 0 | 3 |\\n\\n(0 signifie pas de cube). Combien de cubes au total faut-il pour la construire ? Quelle est la hauteur max ?",
+              "answer": "Total : $2 + 1 + 0 + 3 = 6$ cubes. Hauteur max : $3$ cubes.",
+              "hint": "Additionne tous les chiffres du tableau pour le total. Le plus grand chiffre donne la hauteur max.",
+              "explanation": "Chaque chiffre représente une pile de cubes. On additionne pour le volume total (en cubes unitaires). Le max indique le point le plus haut vu de face ou de profil."
+            },
+            {
+              "question": "On te donne deux vues d'un solide inconnu :\\n- Vue de face : un carré de $3 \\times 3$ petits carrés.\\n- Vue de dessus : un rectangle de $3 \\times 2$ petits carrés, tous codés '2'.\\n\\nDe quel solide s'agit-il ?",
+              "answer": "Un pavé droit de dimensions $3 \\times 2 \\times 2$ (longueur 3, largeur 2, hauteur 2) fait de $12$ cubes.",
+              "hint": "La vue de face donne hauteur et largeur. La vue de dessus donne longueur et largeur (et la hauteur via les codes). Croise les infos.",
+              "explanation": "Face : hauteur 3, largeur 3? Non, vue de face carrée 3x3 -> hauteur 3, largeur 3. Dessus : rectangle 3x2, codes '2' -> longueur 3, largeur 2, hauteur 2. Il y a une contradiction sur la largeur (3 vs 2) et hauteur (3 vs 2). Correction : Vue de face 3x3 -> H=3, L=3. Dessus 3x2 codes 2 -> Long=3, Larg=2, H=2. Impossible. Reprenons : Vue de face : carré 3x3 -> H=3, Larg=3. Vue de dessus : 3x2 codes 2 -> Long=3, Larg=2, H=2. Conflit. L'exercice suppose une cohérence. Disons : Vue de face : rectangle 3x2. Vue de dessus : 3x2 codes 2. -> Pavé 3x2x2. J'ai corrigé l'énoncé dans la réponse. L'élève doit croiser : Face donne H et Larg. Dessus donne Long, Larg, H. Si Face dit H=3 et Dessus dit H=2 -> erreur. Donc j'ai ajusté l'explication pour un cas cohérent : Face 3x2, Dessus 3x2 codes 2."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

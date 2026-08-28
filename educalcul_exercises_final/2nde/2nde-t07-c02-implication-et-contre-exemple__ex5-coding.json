@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Si... alors",
+  "title": "Approfondissement : Si... alors - Algorithmes",
+  "blocks": [
+    {
+      "title": "Test d'une implication simple",
+      "content": "Écrire un algorithme (en pseudo-code ou en français structuré) qui, pour un entier $n$ donné, évalue la vérité de l'implication : $2\\mid n \\Rightarrow 4\\mid n$. L'algorithme doit afficher \"Vrai\" si l'implication est vérifiée pour ce $n$, sinon afficher \"Faux\" et donner un contre-exemple.",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$.\\n2. Si $n$ est pair :\\n      Si $n$ est multiple de $4$ : afficher \"Vrai\".\\n      Sinon : afficher \"Faux, contre-exemple : n = \" et la valeur de $n$.\\n   Sinon : afficher \"Vrai\" (antécédent faux, implication vraie).",
+      "explanation": "L'implication $2\\mid n \\Rightarrow 4\\mid n$ est fausse uniquement lorsque $n$ est pair mais n'est pas multiple de $4$ (par exemple $n=2$). Si $n$ est impair, l'antécédent est faux, donc l'implication est vraie par définition. L'algorithme teste d'abord la parité, puis la divisibilité par $4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de contre-exemples dans une liste",
+      "content": "Soit la liste L = [6, 12, 18, 24, 30, 36, 42, 48]. Écrire un algorithme qui parcourt cette liste et teste pour chaque élément $x$ l'implication : $6\\mid x \\Rightarrow 9\\mid x$. L'algorithme doit afficher tous les contre-exemples trouvés.",
+      "correctAnswer": "Algorithme :\\n1. Définir L = [6, 12, 18, 24, 30, 36, 42, 48].\\n2. Pour chaque $x$ dans L :\\n      Si $6\\mid x$ :\\n           Si $9\\nmid x$ : afficher \"Contre-exemple : \" et la valeur de $x$.\\n3. Fin.",
+      "explanation": "Tous les éléments de L sont divisibles par $6$. Parmi eux, ceux qui ne sont pas divisibles par $9$ sont des contre-exemples. On trouve $6, 12, 24, 30, 42, 48$. Seuls $18$ et $36$ sont divisibles par $9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Preuve par algorithme d'une propriété sur le produit de deux entiers",
+      "content": "On considère la proposition : $\\forall a,b \\in \\mathbb{Z},\\ 2\\mid (a\\times b) \\Rightarrow (2\\mid a \\lor 2\\mid b)$. Écrire un algorithme qui recherche un contre-exemple pour $a$ et $b$ dans l'intervalle $[-10, 10]$. Si aucun contre-exemple n'est trouvé, l'algorithme affiche \"Aucun contre-exemple trouvé, la proposition semble vraie\".",
+      "correctAnswer": "Algorithme :\\n1. Pour $a$ de $-10$ à $10$ :\\n      Pour $b$ de $-10$ à $10$ :\\n           Si $2\\mid (a\\times b)$ :\\n                Si $2\\nmid a$ et $2\\nmid b$ :\\n                     Afficher \"Contre-exemple : a = \" et la valeur de $a$, \" b = \" et la valeur de $b$.\\n                     Arrêter.\\n2. Afficher \"Aucun contre-exemple trouvé, la proposition semble vraie\".",
+      "explanation": "Le produit de deux entiers est pair si et seulement si au moins l'un des deux est pair. Donc il est impossible de trouver $a$ et $b$ tous deux impairs avec un produit pair. L'algorithme explore tous les couples dans l'intervalle et ne trouve aucun contre-exemple, confirmant la validité de la proposition.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

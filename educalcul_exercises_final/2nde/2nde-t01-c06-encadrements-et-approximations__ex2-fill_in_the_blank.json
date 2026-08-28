@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Erreur / précision",
+  "title": "Encadrements et approximations : Erreur et précision",
+  "blocks": [
+    {
+      "title": "Définition de l'erreur absolue",
+      "content": "L'erreur absolue d'une approximation $a$ d'une valeur exacte $x$ est la ${{1}}$ entre $x$ et $a$.",
+      "correctAnswer": "",
+      "blanks": [
+        "différence en valeur absolue|valeur absolue de la différence"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'erreur absolue correspond à la distance entre la valeur exacte et l'approximation, c'est-à-dire la valeur absolue de leur différence : $|x-a|$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Définition de l'erreur relative",
+      "content": "L'erreur relative est le quotient de l'erreur absolue par la ${{1}}$ (en valeur absolue).",
+      "correctAnswer": "",
+      "blanks": [
+        "valeur exacte|valeur vraie"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'erreur relative est le rapport entre l'erreur absolue et la valeur exacte (en valeur absolue) : $\\frac{|x-a|}{|x|}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'erreurs maximales",
+      "content": "Une longueur est mesurée $12,3\\,\\text{cm}$ avec une précision de $0,1\\,\\text{cm}$. L'erreur absolue maximale est de ${{1}}\\,\\text{cm}$ et l'erreur relative maximale (arrondie à $10^{-3}$) est de ${{2}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "0,05",
+        "0,004"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La précision de $0,1\\,\\text{cm}$ signifie que la mesure est arrondie au dixième de centimètre près. L'erreur absolue maximale est donc la moitié de cette précision : $0,1/2 = 0,05\\,\\text{cm}$. L'erreur relative maximale vaut $0,05 / 12,3 \\approx 0,004065$, arrondie à $10^{-3}$ donne $0,004$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

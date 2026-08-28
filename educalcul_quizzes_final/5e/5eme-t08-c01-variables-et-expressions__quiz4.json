@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Variables et expressions",
+  "title": "Quiz : Variables et expressions (5e)",
+  "questions": [
+    {
+      "text": "Dans un programme, on écrit $x = 5$ puis $y = x + 3$. Quelle est la valeur de $y$ ?",
+      "options": [
+        "5",
+        "8",
+        "3",
+        "15"
+      ],
+      "correctAnswer": "8",
+      "explanation": "On affecte $5$ à $x$. Ensuite $y$ reçoit la valeur de $x$ plus $3$, soit $5 + 3 = 8$. Les autres options correspondent à des erreurs : oublier l'addition (5), confondre avec la valeur de $x$ (3) ou multiplier (15).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $a = 4$ et $b = 7$. On calcule $2*a + b$. Quel est le résultat ?",
+      "options": [
+        "15",
+        "18",
+        "11",
+        "22"
+      ],
+      "correctAnswer": "15",
+      "explanation": "On remplace $a$ par $4$ et $b$ par $7$ : $2 * 4 + 7 = 8 + 7 = 15$. L'option 18 correspond à $2 * (4 + 7)$, 11 à $2 + 4 + 7$, 22 à $2 * 4 * 7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On commence avec $score = 10$. Puis on exécute $score = score + 5$ et ensuite $score = score * 2$. Quelle est la valeur finale de $score$ ?",
+      "options": [
+        "30",
+        "20",
+        "25",
+        "15"
+      ],
+      "correctAnswer": "30",
+      "explanation": "Après la première instruction $score$ vaut $10 + 5 = 15$. La deuxième instruction multiplie cette valeur par $2$ : $15 * 2 = 30$. Les autres options correspondent à arrêter après l'addition (15), à multiplier avant d'ajouter (20) ou à ajouter seulement 5 (25).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On initialise $i = 0$. On répète trois fois l'instruction $i = i + 2$. Quelle est la valeur de $i$ après la boucle ?",
+      "options": [
+        "6",
+        "4",
+        "2",
+        "8"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Au début $i = 0$. Première itération : $i = 0 + 2 = 2$. Deuxième : $i = 2 + 2 = 4$. Troisième : $i = 4 + 2 = 6$. L'option 4 correspond à deux itérations seulement, 2 à une seule, 8 à quatre itérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La formule du périmètre d'un rectangle est $perimetre = 2 * (longueur + largeur)$. Si $longueur = 5$ et $largeur = 3$, quel est le périmètre ?",
+      "options": [
+        "16",
+        "8",
+        "12",
+        "10"
+      ],
+      "correctAnswer": "16",
+      "explanation": "On substitue les valeurs : $2 * (5 + 3) = 2 * 8 = 16$. L'option 8 correspond à oublier le facteur 2, 12 à $2 * 5 + 3$, 10 à $5 + 3 + 2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

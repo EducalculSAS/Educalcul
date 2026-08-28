@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Retirer des parts identiques",
+  "title": "Quiz : Retirer des parts identiques (soustraction de fractions)",
+  "questions": [
+    {
+      "text": "Regarde la figure. Elle représente $\\frac{3}{4}$ d'un rectangle. Si on retire $\\frac{1}{4}$, quelle fraction reste-t-il ?",
+      "options": [
+        "$\\frac{2}{4}$",
+        "$\\frac{2}{0}$",
+        "$\\frac{4}{4}$",
+        "$\\frac{3}{3}$"
+      ],
+      "correctAnswer": "$\\frac{2}{4}$",
+      "explanation": "On a 3 parts sur 4. On en retire 1 part sur 4. Il reste 3 - 1 = 2 parts sur 4, soit $\\frac{2}{4}$. L'erreur $\\frac{2}{0}$ vient d'une soustraction des dénominateurs (interdite). $\\frac{4}{4}$ serait le tout. $\\frac{3}{3}$ ne correspond à rien ici.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Trois quarts hachurés"
+      }
+    },
+    {
+      "text": "Effectue la soustraction : $\\frac{5}{6} - \\frac{2}{6} = ?$",
+      "options": [
+        "$\\frac{3}{6}$",
+        "$\\frac{3}{12}$",
+        "$\\frac{7}{6}$",
+        "$\\frac{3}{0}$"
+      ],
+      "correctAnswer": "$\\frac{3}{6}$",
+      "explanation": "Les dénominateurs sont identiques (6), on garde le dénominateur 6. On soustrait les numérateurs : 5 - 2 = 3. Le résultat est $\\frac{3}{6}$. L'option $\\frac{3}{12}$ ajoute les dénominateurs. $\\frac{7}{6}$ additionne les numérateurs. $\\frac{3}{0}$ soustrait les dénominateurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a une barre de chocolat divisée en 8 parts égales. Il en a mangé 3 parts. Quelle fraction de la barre lui reste-t-il ?",
+      "options": [
+        "$\\frac{5}{8}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{5}{5}$",
+        "$\\frac{8}{5}$"
+      ],
+      "correctAnswer": "$\\frac{5}{8}$",
+      "explanation": "La barre entière fait $\\frac{8}{8}$. Léo a mangé $\\frac{3}{8}$. On retire : $\\frac{8}{8} - \\frac{3}{8} = \\frac{5}{8}$. L'option $\\frac{3}{8}$ est la fraction mangée, pas le reste. $\\frac{5}{5}$ et $\\frac{8}{5}$ n'ont pas de sens dans ce contexte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complète la soustraction : $\\frac{9}{10} - \\dots = \\frac{4}{10}$",
+      "options": [
+        "$\\frac{5}{10}$",
+        "$\\frac{5}{0}$",
+        "$\\frac{13}{10}$",
+        "$\\frac{4}{10}$"
+      ],
+      "correctAnswer": "$\\frac{5}{10}$",
+      "explanation": "Pour trouver le numérateur manquant, on fait l'opération inverse : 9 - 4 = 5. Le dénominateur ne change pas (10). Donc on a retiré $\\frac{5}{10}$. Vérification : $\\frac{9}{10} - \\frac{5}{10} = \\frac{4}{10}$. L'option $\\frac{5}{0}$ soustrait les dénominateurs. $\\frac{13}{10}$ additionne. $\\frac{4}{10}$ est le résultat, pas ce qu'on retire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces calculs, lequel donne $\\frac{2}{7}$ ?",
+      "options": [
+        "$\\frac{5}{7} - \\frac{3}{7}$",
+        "$\\frac{5}{7} - \\frac{2}{7}$",
+        "$\\frac{5}{7} - \\frac{3}{4}$",
+        "$\\frac{5}{7} + \\frac{3}{7}$"
+      ],
+      "correctAnswer": "$\\frac{5}{7} - \\frac{3}{7}$",
+      "explanation": "On teste chaque option : $\\frac{5}{7} - \\frac{3}{7} = \\frac{2}{7}$ (bon). $\\frac{5}{7} - \\frac{2}{7} = \\frac{3}{7}$. $\\frac{5}{7} - \\frac{3}{4}$ est impossible car dénominateurs différents (pas au programme CE1). $\\frac{5}{7} + \\frac{3}{7} = \\frac{8}{7}$ (addition).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

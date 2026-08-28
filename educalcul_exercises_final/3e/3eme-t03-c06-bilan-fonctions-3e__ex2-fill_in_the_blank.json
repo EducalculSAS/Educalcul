@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 472,
+  "_course_code": "3eme-t03-c06-bilan-fonctions-3e",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Fonctions - Vocabulaire et Propriétés",
+  "blocks": [
+    {
+      "title": "Vocabulaire fondamental",
+      "content": "Une fonction $f$ associe à tout nombre $x$ appartenant à son ensemble de définition un unique nombre $y$, appelé l'{{1}} de $x$ par $f$. On note $y = f(x)$. L'ensemble de toutes les images est appelé l'{{2}} de la fonction. Si $y = f(x)$, alors $x$ est un {{3}} de $y$.",
+      "correctAnswer": "",
+      "blanks": [
+        "image",
+        "ensemble image | ensemble des images",
+        "antécédent | antécédents"
+      ],
+      "explanation": "Rappel des définitions : $y$ est l'image de $x$ ; l'ensemble des images est l'ensemble image (ou ensemble d'arrivée) ; $x$ est un antécédent de $y$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction affine : forme et variation",
+      "content": "Une fonction affine s'écrit sous la forme $f(x) = {{1}}x + {{2}}$ où $a$ et $b$ sont des nombres fixes. Le nombre $a$ est le {{3}} ; il détermine le sens de variation : si $a > 0$, la fonction est {{4}} sur $\\mathbb{R}$ ; si $a < 0$, elle est {{5}} sur $\\mathbb{R}$. Le nombre $b$ est l'{{6}} (valeur de $f(0)$).",
+      "correctAnswer": "",
+      "blanks": [
+        "a",
+        "b",
+        "coefficient directeur | taux d'accroissement",
+        "strictement croissante | croissante",
+        "strictement décroissante | décroissante",
+        "ordonnée à l'origine"
+      ],
+      "explanation": "Forme canonique $f(x)=ax+b$. $a$ est le coefficient directeur (taux d'accroissement). Signe de $a$ donne la variation : $a>0 \\Rightarrow$ croissante, $a<0 \\Rightarrow$ décroissante. $b=f(0)$ est l'ordonnée à l'origine.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Caractérisation de la proportionnalité",
+      "content": "Une fonction est proportionnelle (ou linéaire) si et seulement si son expression est de la forme $f(x) = {{1}}x$ avec $a \\neq 0$. Son graphique est une {{2}} passant par l'{{3}} du repère. La propriété algébrique caractéristique est : pour tout nombre $k$ et tout $x$, $f(kx) = {{4}} f(x)$.",
+      "correctAnswer": "",
+      "blanks": [
+        "a",
+        "droite",
+        "origine",
+        "k | k fois"
+      ],
+      "explanation": "Fonction linéaire : $f(x)=ax$. Graphique : droite passant par l'origine $(0;0)$. Propriété : $f(kx)=a(kx)=k(ax)=k f(x)$. Le coefficient de proportionnalité est $a$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

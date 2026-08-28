@@ -1,0 +1,574 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.195203+00:00",
+  "id": 230,
+  "code": "cm1-t03-c05",
+  "title": "Multiples et diviseurs simples",
+  "description": "Cours structuré Educalcul : Multiples et diviseurs simples.",
+  "subject": "Calcul mental et quatre opérations",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Calcul mental et quatre opérations",
+    "titre_du_cours": "Multiples et diviseurs simples",
+    "objectif_global": "Multiples et diviseurs simples",
+    "mini_lecons_imposees": [
+      "Reconnaître multiples.",
+      "Chercher diviseurs simples.",
+      "Utiliser dans problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et quatre opérations",
+      "lessons": [
+        {
+          "title": "Reconnaître multiples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un multiple ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as des boîtes de $6$ crayons. Si tu en prends une, tu as $6$ crayons ; si tu en prends deux, tu as $12$ crayons ; trois boîtes te donnent $18$ crayons. Les nombres $6$, $12$, $18$ sont des multiples de $6$, car on les obtient en ajoutant $6$ plusieurs fois, ou en multipliant $6$ par $1$, $2$, $3$... Un multiple, c'est simplement le résultat d'une multiplication par un nombre entier. Aujourd'hui, tu vas apprendre à les repérer facilement, comme un détective qui reconnaît une empreinte."
+            },
+            {
+              "type": "definition",
+              "term": "Multiple",
+              "definition": "Un nombre est un multiple d'un autre nombre s'il est le produit de ce nombre par un entier. Par exemple, $15$ est un multiple de $3$ car $3 \\times 5 = 15$.",
+              "example": "Les multiples de $4$ sont $4$, $8$, $12$, $16$, $20$..."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les multiples les plus faciles à reconnaître : ceux de $2$, de $5$ et de $10$. Regarde les nombres pairs : $2$, $4$, $6$, $8$, $10$... Ils se terminent tous par $0$, $2$, $4$, $6$ ou $8$. C'est la signature des multiples de $2$. Pour les multiples de $5$, c'est encore plus simple : ils finissent toujours par $0$ ou par $5$. Et les multiples de $10$ ? Ils portent un $0$ à la fin, comme une étiquette. Essaie : $35$ est-il un multiple de $5$ ? Oui, car il finit par $5$. $42$ est-il un multiple de $2$ ? Oui, il finit par $2$. $100$ est-il un multiple de $10$ ? Évidemment !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Les multiples de $3$ jusqu'à $30$",
+              "min": 0,
+              "max": 30,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 18,
+                  "label": "18"
+                },
+                {
+                  "value": 21,
+                  "label": "21"
+                },
+                {
+                  "value": 24,
+                  "label": "24"
+                },
+                {
+                  "value": 27,
+                  "label": "27"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, intéressons-nous aux multiples de $3$ et de $4$. Pour $3$, il y a une astuce magique : additionne les chiffres du nombre. Si la somme est un multiple de $3$ ($3$, $6$, $9$, $12$...), alors le nombre entier est un multiple de $3$. Prends $27$ : $2+7=9$, qui est un multiple de $3$, donc $27$ est un multiple de $3$. Pour $4$, regarde les deux derniers chiffres : s'ils forment un nombre divisible par $4$, le nombre entier l'est aussi. $124$ ? Les deux derniers chiffres font $24$, qui est dans la table de $4$, donc $124$ est un multiple de $4$. C'est comme une clé qui ouvre la porte !"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Somme des chiffres",
+                "Multiple de 3 ?"
+              ],
+              "rows": [
+                [
+                  "12",
+                  "1+2=3",
+                  "Oui"
+                ],
+                [
+                  "25",
+                  "2+5=7",
+                  "Non"
+                ],
+                [
+                  "36",
+                  "3+6=9",
+                  "Oui"
+                ],
+                [
+                  "41",
+                  "4+1=5",
+                  "Non"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître les multiples des petits nombres. Mais comment trouver tous les multiples d'un nombre, par exemple de $6$, jusqu'à $50$ ? La méthode est simple : utilise la table de multiplication. Écris les produits successifs : $6 \\times 1 = 6$, $6 \\times 2 = 12$, $6 \\times 3 = 18$, et ainsi de suite, tant que le résultat ne dépasse pas $50$. C'est comme grimper les marches d'un escalier, une marche à la fois. Tu verras, avec un peu d'entraînement, tu les listeras sans même y penser."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide de quel nombre tu cherches les multiples (ici $6$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplie par $1$, $2$, $3$...",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $6 \\times 1$, $6 \\times 2$, $6 \\times 3$... note chaque résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Arrête-toi à la limite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dès qu'un résultat dépasse la limite demandée (ici $50$), arrête la liste."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de faire un grand pas : tu sais maintenant identifier les multiples de $2$, $3$, $4$, $5$, $10$ et même construire la liste des multiples de n'importe quel nombre. Cette compétence va te servir tout de suite pour la prochaine leçon, où nous allons jouer avec les diviseurs, les amis inséparables des multiples."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les nombres $14$, $23$, $30$, $45$, $52$, lesquels sont des multiples de $2$ ?",
+              "answer": "$14$, $30$, $52$",
+              "hint": "Regarde le dernier chiffre de chaque nombre.",
+              "explanation": "Un multiple de $2$ se termine toujours par $0$, $2$, $4$, $6$ ou $8$. $14$ finit par $4$, $30$ par $0$, $52$ par $2$. Les autres finissent par $3$ ou $5$."
+            },
+            {
+              "question": "Est-ce que $54$ est un multiple de $3$ ? Justifie ta réponse.",
+              "answer": "Oui, car $5+4=9$ et $9$ est un multiple de $3$.",
+              "hint": "Additionne les deux chiffres de $54$.",
+              "explanation": "La somme des chiffres de $54$ est $9$. Comme $9$ est dans la table de $3$, $54$ est un multiple de $3$. En effet, $3 \\times 18 = 54$."
+            },
+            {
+              "question": "Liste tous les multiples de $7$ qui sont inférieurs à $50$.",
+              "answer": "$7$, $14$, $21$, $28$, $35$, $42$, $49$",
+              "hint": "Utilise la table de $7$ : $7 \\times 1$, $7 \\times 2$... jusqu'à dépasser $50$.",
+              "explanation": "On multiplie $7$ par $1$, $2$, $3$, $4$, $5$, $6$, $7$. $7 \\times 8 = 56$ qui est plus grand que $50$, donc on s'arrête à $49$."
+            }
+          ]
+        },
+        {
+          "title": "Chercher diviseurs simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À la recherche des diviseurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais maintenant les multiples. Aujourd'hui, nous allons faire le chemin inverse : partir d'un nombre pour trouver ceux qui le \"fabriquent\". Imagine que tu as $12$ bonbons et tu veux les partager équitablement entre plusieurs amis, sans en couper. Combien d'amis peux-tu inviter ? $1$, $2$, $3$, $4$, $6$ ou $12$ amis. Ces nombres sont les diviseurs de $12$. Un diviseur, c'est un nombre qui permet de diviser exactement un autre nombre, sans reste. C'est comme une clé qui tourne parfaitement dans la serrure."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Un nombre entier est un diviseur d'un autre nombre entier si la division donne un quotient entier et un reste nul. Par exemple, $4$ est un diviseur de $20$ car $20 \\div 4 = 5$ reste $0$.",
+              "example": "Les diviseurs de $10$ sont $1$, $2$, $5$, $10$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver les diviseurs d'un nombre, on peut tester les divisions une par une. Prenons $18$. On commence par $1$ : $18 \\div 1 = 18$, reste $0$, donc $1$ et $18$ sont diviseurs. Ensuite $2$ : $18 \\div 2 = 9$, reste $0$, donc $2$ et $9$ sont diviseurs. $3$ : $18 \\div 3 = 6$, reste $0$, donc $3$ et $6$ sont diviseurs. $4$ : $18 \\div 4 = 4$ reste $2$, pas diviseur. $5$ : reste $3$, pas diviseur. On s'arrête quand le quotient devient plus petit que le diviseur testé. Ici, après $3$, le quotient $6$ est encore plus grand que $3$, mais après $4$ le quotient $4$ est égal au diviseur, on a déjà tout trouvé."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Diviseur testé",
+                "Division",
+                "Reste",
+                "Est diviseur ?"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "18 ÷ 1 = 18",
+                  "0",
+                  "Oui (1 et 18)"
+                ],
+                [
+                  "2",
+                  "18 ÷ 2 = 9",
+                  "0",
+                  "Oui (2 et 9)"
+                ],
+                [
+                  "3",
+                  "18 ÷ 3 = 6",
+                  "0",
+                  "Oui (3 et 6)"
+                ],
+                [
+                  "4",
+                  "18 ÷ 4 = 4",
+                  "2",
+                  "Non"
+                ],
+                [
+                  "5",
+                  "18 ÷ 5 = 3",
+                  "3",
+                  "Non"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque une chose formidable : les diviseurs vont toujours par paires ! Quand tu trouves un diviseur, tu as son partenaire automatiquement. Pour $18$, les paires sont $(1, 18)$, $(2, 9)$ et $(3, 6)$. Cela veut dire que tu n'as pas besoin de tester tous les nombres jusqu'à $18$. Tu testes seulement jusqu'à ce que le quotient devienne plus petit que le diviseur que tu testes. C'est un gain de temps énorme, surtout pour les grands nombres. Essaie avec $24$ : tu testerais $1$, $2$, $3$, $4$... et tu t'arrêterais vite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Commence par $1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$1$ et le nombre lui-même sont toujours diviseurs. Note la paire $(1, \\text{nombre})$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Teste $2$, $3$, $4$...",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la division. Si le reste est $0$, note la paire (diviseur, quotient)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Arrête-toi au bon moment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Quand le quotient devient plus petit que le diviseur testé, tu as tout trouvé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un nombre a peu de diviseurs, comme $13$ : seulement $1$ et $13$. On appelle ça un nombre premier, mais nous verrons ça plus tard. D'autres en ont beaucoup, comme $36$. Entraîne-toi à les lister proprement, en rangeant les paires dans l'ordre. Cela t'aidera à ne rien oublier et à voir la symétrie des diviseurs. C'est une gymnastique de l'esprit qui rend le calcul plus fluide."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de diviseurs de quelques nombres",
+              "bars": [
+                {
+                  "label": "12",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "13",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "18",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "24",
+                  "value": 8,
+                  "tone": "green"
+                },
+                {
+                  "label": "36",
+                  "value": 9,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens un expert des diviseurs ! Tu sais les chercher méthodiquement, repérer les paires et t'arrêter au bon moment. Cette compétence est précieuse : elle te permettra de simplifier des fractions, de résoudre des problèmes de partage et de comprendre la structure des nombres. Dans la dernière leçon, nous allons mettre multiples et diviseurs ensemble pour résoudre des situations concrètes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les diviseurs de $15$ ?",
+              "answer": "$1$, $3$, $5$, $15$",
+              "hint": "Teste les divisions par $1$, $2$, $3$... jusqu'à ce que le quotient soit plus petit que le diviseur.",
+              "explanation": "$15 \\div 1 = 15$ (paire $1, 15$). $15 \\div 2 = 7$ reste $1$ (non). $15 \\div 3 = 5$ (paire $3, 5$). $15 \\div 4 = 3$ reste $3$ (non). Le quotient $3$ est plus petit que $4$, on arrête. Les diviseurs sont $1, 3, 5, 15$."
+            },
+            {
+              "question": "En utilisant la méthode des paires, liste les diviseurs de $28$.",
+              "answer": "$1$, $2$, $4$, $7$, $14$, $28$",
+              "hint": "Teste $1$, $2$, $3$, $4$... note les paires.",
+              "explanation": "$28 \\div 1 = 28$ (1, 28). $28 \\div 2 = 14$ (2, 14). $28 \\div 3 = 9$ reste $1$ (non). $28 \\div 4 = 7$ (4, 7). $28 \\div 5 = 5$ reste $3$ (non). Le quotient $5$ est plus petit que $6$ (prochain test), on arrête. Diviseurs : 1, 2, 4, 7, 14, 28."
+            },
+            {
+              "question": "Parmi les nombres $2$, $3$, $4$, $5$, $6$, lesquels sont des diviseurs de $30$ ?",
+              "answer": "$2$, $3$, $5$, $6$",
+              "hint": "Fais les divisions $30 \\div 2$, $30 \\div 3$... et regarde le reste.",
+              "explanation": "$30 \\div 2 = 15$ reste $0$ (oui). $30 \\div 3 = 10$ reste $0$ (oui). $30 \\div 4 = 7$ reste $2$ (non). $30 \\div 5 = 6$ reste $0$ (oui). $30 \\div 6 = 5$ reste $0$ (oui)."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser dans problèmes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiples et diviseurs au secours des problèmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière étape de notre aventure : utiliser ce que tu as appris pour résoudre des problèmes de la vie courante. Les multiples et les diviseurs sont partout : quand tu achètes des paquets de biscuits (multiples), quand tu partages des cartes entre copains (diviseurs), ou quand tu cherches à former des groupes égaux. Le secret, c'est de bien lire l'énoncé pour savoir si on cherche un multiple (on ajoute, on multiplie) ou un diviseur (on partage, on divise)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier type de situation : les multiples. \"Les crayons sont vendus par boîtes de $8$. L'école en a besoin de $40$. Combien de boîtes faut-il acheter ?\" Ici, on cherche un multiple de $8$ qui fait $40$, ou combien de fois $8$ rentre dans $40$. C'est une division : $40 \\div 8 = 5$. Il faut $5$ boîtes. Le nombre de boîtes est un diviseur de $40$, mais le total de crayons est un multiple de $8$. Tu vois comme les deux notions sont liées ?"
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "40 crayons répartis en boîtes de 8",
+              "parts": [
+                {
+                  "label": "Boîte 1",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 4",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 5",
+                  "value": 8,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième situation : les diviseurs. \"Marie a $36$ autocollants. Elle veut les distribuer équitablement à ses amies, sans en garder. Combien d'amies peut-elle avoir au maximum ?\" Ici, on cherche les diviseurs de $36$ (sauf $36$ lui-même, sinon elle n'a pas d'amie !). Les diviseurs de $36$ sont $1, 2, 3, 4, 6, 9, 12, 18, 36$. Le maximum d'amies est $18$ (chacune reçoit $2$ autocollants). Mais si l'énoncé dit \"elle veut donner au moins $4$ autocollants à chacune\", alors on cherche un diviseur de $36$ tel que le quotient soit $\\ge 4$. $36 \\div 9 = 4$, donc $9$ amies maximum."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre d'amies",
+                "Autocollants par amie",
+                "Total"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "36",
+                  "36"
+                ],
+                [
+                  "2",
+                  "18",
+                  "36"
+                ],
+                [
+                  "3",
+                  "12",
+                  "36"
+                ],
+                [
+                  "4",
+                  "9",
+                  "36"
+                ],
+                [
+                  "6",
+                  "6",
+                  "36"
+                ],
+                [
+                  "9",
+                  "4",
+                  "36"
+                ],
+                [
+                  "12",
+                  "3",
+                  "36"
+                ],
+                [
+                  "18",
+                  "2",
+                  "36"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième situation : le mélange. \"Un boulanger a $60$ œufs. Il veut faire des gâteaux qui utilisent $6$ œufs chacun, et il veut remplir des boîtes de $4$ gâteaux. Combien de boîtes pourra-t-il remplir ?\" Décompose : d'abord, combien de gâteaux ? $60 \\div 6 = 10$ gâteaux (multiple de $6$). Ensuite, combien de boîtes de $4$ gâteaux ? $10 \\div 4 = 2$ boîtes pleines et $2$ gâteaux restants. Il remplit $2$ boîtes. Ici, tu as utilisé une division pour trouver un multiple (nombre de gâteaux), puis une autre division pour trouver un diviseur (nombre de boîtes). C'est la puissance de combiner les deux !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche-t-on un total (multiple) ou un partage (diviseur) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiple $\\rightarrow$ multiplication ou division inverse. Diviseur $\\rightarrow$ division."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifie le sens",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relis l'énoncé : ta réponse est-elle logique dans l'histoire ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as terminé ce cours sur les multiples et les diviseurs simples. Tu sais maintenant les reconnaître, les chercher et les utiliser pour résoudre des problèmes concrets. C'est une base solide pour la suite de l'année, notamment pour les fractions et les calculs plus complexes. Continue à t'entraîner avec les nombres qui t'entourent : les pages d'un livre, les marches d'un escalier, les parts d'un gâteau... Les mathématiques sont partout, et toi, tu as les clés pour les comprendre."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître les multiples de $2$, $3$, $4$, $5$, $10$.",
+                "Je sais lister les multiples d'un nombre jusqu'à une limite donnée.",
+                "Je sais trouver tous les diviseurs d'un nombre en testant les divisions.",
+                "Je sais utiliser les multiples pour résoudre des problèmes de regroupement.",
+                "Je sais utiliser les diviseurs pour résoudre des problèmes de partage équitable."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les cahiers sont vendus par paquets de $5$. La maîtresse veut $35$ cahiers. Combien de paquets doit-elle acheter ?",
+              "answer": "$7$ paquets",
+              "hint": "Cherche combien de fois $5$ rentre dans $35$.",
+              "explanation": "C'est un problème de multiple : $35$ est un multiple de $5$. $35 \\div 5 = 7$. Il faut $7$ paquets."
+            },
+            {
+              "question": "Paul a $48$ billes. Il veut les partager équitablement entre lui et ses amis, sans en garder. S'il a $5$ amis au total (lui compris), combien de billes chacun recevra-t-il ?",
+              "answer": "Ce n'est pas possible de partager équitablement entre $5$ personnes car $5$ n'est pas un diviseur de $48$.",
+              "hint": "Teste si $48 \\div 5$ donne un reste nul.",
+              "explanation": "$48 \\div 5 = 9$ reste $3$. Comme il y a un reste, le partage exact est impossible. Les diviseurs de $48$ sont $1, 2, 3, 4, 6, 8, 12, 16, 24, 48$. $5$ n'en fait pas partie."
+            },
+            {
+              "question": "Une usine produit $72$ jouets par jour. Elle les range dans des cartons de $6$ jouets, puis charge les cartons sur des palettes de $4$ cartons. Combien de palettes pleines par jour ?",
+              "answer": "$3$ palettes",
+              "hint": "D'abord trouve le nombre de cartons ($72 \\div 6$), puis le nombre de palettes (cartons $\\div 4$).",
+              "explanation": "Nombre de cartons : $72 \\div 6 = 12$ cartons. Nombre de palettes : $12 \\div 4 = 3$ palettes pleines. L'usine remplit $3$ palettes par jour."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

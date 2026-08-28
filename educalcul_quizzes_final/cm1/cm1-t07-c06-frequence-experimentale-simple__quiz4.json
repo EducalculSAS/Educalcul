@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Application : Fréquence expérimentale simple",
+  "title": "Quiz : Fréquence expérimentale simple",
+  "questions": [
+    {
+      "text": "Comment calcule-t-on la fréquence expérimentale d'un événement ?",
+      "options": [
+        "Nombre de succès / Nombre total d'essais",
+        "Nombre total d'essais / Nombre de succès",
+        "Nombre de succès * Nombre total d'essais",
+        "Nombre de succès + Nombre total d'essais"
+      ],
+      "correctAnswer": "Nombre de succès / Nombre total d'essais",
+      "explanation": "La fréquence expérimentale est le quotient du nombre de fois où l'événement s'est produit (succès) par le nombre total d'essais réalisés. Les autres opérations (division inverse, multiplication, addition) ne donnent pas cette proportion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces $20$ fois. On obtient le chiffre $6$ exactement $4$ fois. Quelle fraction représente la fréquence expérimentale d'obtenir un $6$ ?",
+      "options": [
+        "$4/20$",
+        "$1/5$",
+        "$1/4$",
+        "$4/6$"
+      ],
+      "correctAnswer": "$4/20$",
+      "explanation": "La fréquence expérimentale s'écrit sous forme de fraction avec le nombre de succès ($4$) au numérateur et le nombre total d'essais ($20$) au dénominateur, soit $4/20$. La fraction $1/5$ en est la forme simplifiée, mais la fréquence brute s'écrit avec les effectifs observés. $1/4$ et $4/6$ correspondent à des inversions ou confusions entre les nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous montre les résultats de $25$ tirages d'une boule dans un sac. Quelle est la fréquence expérimentale de tirer une boule bleue ?",
+      "options": [
+        "$12/25$",
+        "$8/25$",
+        "$5/25$",
+        "$12/20$"
+      ],
+      "correctAnswer": "$12/25$",
+      "explanation": "Le graphique indique que la boule bleue a été tirée $12$ fois sur un total de $25$ tirages ($8 + 12 + 5 = 25$). La fréquence est donc $12/25$. L'option $8/25$ correspond à la boule rouge, $5/25$ à la boule verte, et $12/20$ utilise un total incorrect.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Résultats de 25 tirages de boules",
+        "bars": [
+          {
+            "label": "Rouge",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans une expérience, on a relevé les fréquences expérimentales suivantes pour trois événements : Événement A : $3/10$, Événement B : $1/5$, Événement C : $4/20$. Quel événement a la plus grande fréquence expérimentale ?",
+      "options": [
+        "Événement A",
+        "Événement B",
+        "Événement C",
+        "Événements B et C"
+      ],
+      "correctAnswer": "Événement A",
+      "explanation": "Il faut comparer les valeurs : $3/10 = 0,3$ ; $1/5 = 0,2$ ; $4/20 = 0,2$. La plus grande valeur est $0,3$, qui correspond à l'Événement A. Les événements B et C ont la même fréquence ($0,2$), mais elle est plus petite que celle de A.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce de monnaie $50$ fois. La fréquence expérimentale de \"face\" est $0,38$. Combien de fois a-t-on obtenu \"face\" ?",
+      "options": [
+        "19",
+        "38",
+        "12",
+        "25"
+      ],
+      "correctAnswer": "19",
+      "explanation": "Le nombre de succès se calcule en multipliant le nombre total d'essais par la fréquence : $50 \\times 0,38 = 19$. On a donc obtenu \"face\" $19$ fois. L'option $38$ correspond à $50 \\times 0,38$ sans la virgule (erreur de placement), $12$ et $25$ sont des valeurs sans lien direct avec le calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Bilan général DNB",
+  "title": "Algorithme : Ordonnancement d'instructions",
+  "blocks": [
+    {
+      "title": "Calcul d'une moyenne",
+      "content": "Voici les étapes d'un algorithme permettant de calculer la moyenne de trois nombres. Replace-les dans l'ordre logique.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Demander les trois notes $a$, $b$ et $c$.",
+        "Calculer la somme $S = a + b + c$.",
+        "Calculer la moyenne $M = S / 3$.",
+        "Afficher la moyenne $M$."
+      ],
+      "explanation": "L'algorithme suit le traitement séquentiel des données : d'abord l'entrée des données (les trois notes), puis le calcul de la somme, ensuite le calcul de la moyenne à partir de cette somme, et enfin l'affichage du résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche du maximum",
+      "content": "Voici les instructions d'un programme qui détermine le plus grand de deux nombres. Replace-les dans l'ordre chronologique d'exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire les deux nombres $A$ et $B$.",
+        "Si $A > B$ alors affecter $A$ à $Max$.",
+        "Sinon affecter $B$ à $Max$.",
+        "Afficher la valeur de $Max$."
+      ],
+      "explanation": "On commence par lire les valeurs d'entrée. La structure conditionnelle compare ensuite $A$ et $B$ : si $A$ est strictement plus grand, $Max$ prend la valeur de $A$, sinon (cas où $B \\ge A$) $Max$ prend la valeur de $B$. L'affichage se fait obligatoirement après l'affectation de $Max$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle pour une somme",
+      "content": "Un algorithme calcule la somme des entiers de $1$ à $N$ saisi par l'utilisateur. Replace les lignes dans l'ordre correct.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Demander la valeur de $N$.",
+        "Initialiser la somme $S$ à $0$.",
+        "Pour $i$ allant de $1$ à $N$, faire $S \\leftarrow S + i$.",
+        "Afficher la somme $S$."
+      ],
+      "explanation": "L'ordre est imposé par la logique de l'algorithme itératif : saisie de la borne $N$, initialisation de l'accumulateur $S$ à l'élément neutre de l'addition ($0$), exécution de la boucle qui ajoute chaque entier $i$ à $S$, et enfin affichage du résultat final une fois la boucle terminée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

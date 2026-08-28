@@ -1,0 +1,152 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation de tableaux à deux variables qualitatives",
+  "blocks": [
+    {
+      "title": "Vocabulaire du tableau de contingence",
+      "content": "Relie chaque terme à sa définition ou son exemple dans un tableau croisant \"Sexe\" et \"Pratique sportive\".",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Effectif total",
+          "right": "Nombre total d'individus étudiés ($100$ ici)"
+        },
+        {
+          "left": "Effectif marginal",
+          "right": "Somme des effectifs d'une ligne ou d'une colonne (ex : $50$ filles)"
+        },
+        {
+          "left": "Effectif conditionnel",
+          "right": "Effectif d'une catégorie sachant une autre (ex : $30$ filles sportives)"
+        },
+        {
+          "left": "Fréquence conditionnelle",
+          "right": "Proportion d'une catégorie sachant une autre (ex : $30/50 = 0,6$)"
+        }
+      ],
+      "items": [],
+      "explanation": "L'effectif total est la somme de tous les effectifs ($100$). Les effectifs marginaux sont les totaux des lignes (ex : $50$ filles) et des colonnes (ex : $70$ sportifs). Un effectif conditionnel compte les individus vérifiant deux critères (ex : filles ET sportives = $30$). La fréquence conditionnelle est le quotient de l'effectif conditionnel par l'effectif marginal de la condition (ex : $30/50 = 0,6$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'effectifs et de fréquences",
+      "content": "Relie chaque question à sa valeur d'après le tableau ci-dessous.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Effectif total de l'enquête",
+          "right": "$100$"
+        },
+        {
+          "left": "Nombre de garçons non sportifs",
+          "right": "$10$"
+        },
+        {
+          "left": "Fréquence des sportifs parmi les filles",
+          "right": "$0,6$"
+        },
+        {
+          "left": "Fréquence des filles dans la population",
+          "right": "$0,5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le tableau donne directement les effectifs : total $100$, garçons non sportifs $10$. La fréquence des sportifs parmi les filles est l'effectif conditionnel ($30$) divisé par l'effectif marginal filles ($50$), soit $0,6$. La fréquence des filles est l'effectif marginal filles ($50$) divisé par le total ($100$), soit $0,5$.",
+      "points": 3,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Sport Oui",
+          "Sport Non",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Fille",
+            "30",
+            "20",
+            "50"
+          ],
+          [
+            "Garçon",
+            "40",
+            "10",
+            "50"
+          ],
+          [
+            "Total",
+            "70",
+            "30",
+            "100"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Test d'indépendance et conclusion",
+      "content": "Relie chaque affirmation à sa justification ou sa valeur pour déterminer s'il y a association entre le sexe et la pratique sportive (même tableau).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Fréquence des sportifs dans la population totale",
+          "right": "$0,7$"
+        },
+        {
+          "left": "Fréquence des sportifs chez les filles",
+          "right": "$0,6$"
+        },
+        {
+          "left": "Fréquence des sportifs chez les garçons",
+          "right": "$0,8$"
+        },
+        {
+          "left": "Conclusion sur l'indépendance",
+          "right": "Variables dépendantes (association) car les fréquences conditionnelles diffèrent de la fréquence marginale"
+        }
+      ],
+      "items": [],
+      "explanation": "Fréquence marginale des sportifs : $70/100 = 0,7$. Fréquence conditionnelle filles : $30/50 = 0,6$. Fréquence conditionnelle garçons : $40/50 = 0,8$. Comme $0,6 \\neq 0,7$ et $0,8 \\neq 0,7$, la pratique sportive dépend du sexe : les garçons sont plus souvent sportifs que les filles. Les variables ne sont pas indépendantes.",
+      "points": 4,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Sport Oui",
+          "Sport Non",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Fille",
+            "30",
+            "20",
+            "50"
+          ],
+          [
+            "Garçon",
+            "40",
+            "10",
+            "50"
+          ],
+          [
+            "Total",
+            "70",
+            "30",
+            "100"
+          ]
+        ]
+      }
+    }
+  ]
+}

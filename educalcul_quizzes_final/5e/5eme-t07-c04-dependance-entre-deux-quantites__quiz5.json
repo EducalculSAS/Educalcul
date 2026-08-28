@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 413,
+  "_course_code": "5eme-t07-c04-dependance-entre-deux-quantites",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Tableau de valeurs",
+  "title": "Approfondissement : Tableau de valeurs",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous donne le prix en euros en fonction du nombre de stylos achetés.\\nNombre de stylos : $2$ ; $4$ ; $6$ ; $8$\\nPrix en euros : $3$ ; $6$ ; $9$ ; $12$\\nQuel est le prix pour $6$ stylos ?",
+      "options": [
+        "$6$ €",
+        "$9$ €",
+        "$12$ €",
+        "$15$ €"
+      ],
+      "correctAnswer": "$9$ €",
+      "explanation": "Dans le tableau, on cherche la colonne où le nombre de stylos est $6$. La valeur correspondante dans la ligne « Prix en euros » est $9$. Le coefficient de proportionnalité est $1,5$ (prix = $1,5 \\times$ nombre), ce qui donne bien $1,5 \\times 6 = 9$. Les autres options correspondent à d'autres lignes du tableau ou à des calculs erronés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau de proportionnalité incomplet pour l'achat d'essence.\\nLitres : $10$ ; $15$ ; $20$ ; $25$\\nPrix en euros : $15$ ; $?$ ; $30$ ; $37,5$\\nQuelle valeur faut-il écrire à la place du point d'interrogation pour le prix de $15$ litres ?",
+      "options": [
+        "$20$ €",
+        "$22,50$ €",
+        "$25$ €",
+        "$30$ €"
+      ],
+      "correctAnswer": "$22,50$ €",
+      "explanation": "Le coefficient de proportionnalité se calcule avec une colonne complète : $15 \\div 10 = 1,5$ euro par litre. Pour $15$ litres, le prix est $15 \\times 1,5 = 22,50$ euros. On peut aussi raisonner par rapport à $10$ litres : $15$ litres est $1,5$ fois $10$ litres, donc le prix est $1,5 \\times 15 = 22,50$ euros. L'option $20$ € correspond à une addition de $5$, l'option $25$ € à une erreur de coefficient, et $30$ € est le prix pour $20$ litres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les quatre tableaux suivants, lequel représente une situation de proportionnalité ?",
+      "options": [
+        "Tableau A : $x = 1, 2, 3, 4$ ; $y = 2, 4, 6, 8$",
+        "Tableau B : $x = 1, 2, 3, 4$ ; $y = 3, 5, 7, 9$",
+        "Tableau C : $x = 1, 2, 3, 4$ ; $y = 1, 4, 9, 16$",
+        "Tableau D : $x = 1, 2, 3, 4$ ; $y = 5, 7, 10, 14$"
+      ],
+      "correctAnswer": "Tableau A : $x = 1, 2, 3, 4$ ; $y = 2, 4, 6, 8$",
+      "explanation": "Un tableau est de proportionnalité si le rapport $y/x$ est constant (coefficient de proportionnalité). Pour le Tableau A : $2/1=2$, $4/2=2$, $6/3=2$, $8/4=2$, le coefficient est constant ($k=2$). Tableau B : les différences sont constantes ($+2$) mais les rapports varient ($3, 2,5, 2,33...$), c'est une suite arithmétique. Tableau C : $y=x^2$, les rapports ne sont pas constants. Tableau D : les écarts ne sont pas constants, ce n'est ni proportionnel ni arithmétique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt $180$ km avec $15$ litres d'essence. On veut compléter un tableau de valeurs pour connaître la distance parcourue selon le volume d'essence.\\nLitres : $5$ ; $10$ ; $15$ ; $20$\\nKilomètres : $?$ ; $?$ ; $180$ ; $?$\\nQuelle distance la voiture parcourt-elle avec $20$ litres ?",
+      "options": [
+        "$200$ km",
+        "$220$ km",
+        "$240$ km",
+        "$260$ km"
+      ],
+      "correctAnswer": "$240$ km",
+      "explanation": "La consommation est proportionnelle. Le coefficient (km par litre) est $180 \\div 15 = 12$ km/L. Avec $20$ litres, la distance est $20 \\times 12 = 240$ km. On peut aussi utiliser le tableau : passer de $15$ à $20$ litres, c'est multiplier par $20/15 = 4/3$. La distance est $180 \\times 4/3 = 240$ km. L'option $200$ km suppose une consommation de $10$ km/L, $220$ km une erreur de calcul, $260$ km une addition incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une recette de gâteau, on utilise $300$ g de farine pour $4$ personnes. On construit le tableau de proportionnalité :\\nNombre de personnes : $2$ ; $4$ ; $6$ ; $8$\\nFarine en grammes : $?$ ; $300$ ; $?$ ; $?$\\nQuelle quantité de farine faut-il pour $8$ personnes ?",
+      "options": [
+        "$450$ g",
+        "$500$ g",
+        "$600$ g",
+        "$750$ g"
+      ],
+      "correctAnswer": "$600$ g",
+      "explanation": "Le coefficient de proportionnalité (grammes par personne) est $300 \\div 4 = 75$ g/personne. Pour $8$ personnes, il faut $8 \\times 75 = 600$ g. On peut aussi dire que $8$ personnes est le double de $4$ personnes, donc la quantité de farine double : $300 \\times 2 = 600$ g. L'option $450$ g correspond à $6$ personnes, $500$ g à une erreur de coefficient ($125$ g/personne), $750$ g à $10$ personnes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

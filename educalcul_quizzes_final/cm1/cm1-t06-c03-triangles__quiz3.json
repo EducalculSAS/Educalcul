@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 250,
+  "_course_code": "cm1-t06-c03-triangles",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Construire",
+  "title": "Construire des triangles",
+  "questions": [
+    {
+      "text": "Quels sont les deux instruments indispensables pour construire un triangle en connaissant les longueurs de ses trois côtés ?",
+      "options": [
+        "La règle et le rapporteur",
+        "La règle et le compas",
+        "L'équerre et le compas",
+        "Le rapporteur et l'équerre"
+      ],
+      "correctAnswer": "La règle et le compas",
+      "explanation": "Pour construire un triangle connaissant ses trois côtés (cas SSS), on trace un côté à la règle, puis on utilise le compas pour reporter les longueurs des deux autres côtés sous forme d'arcs de cercle. Leur intersection donne le troisième sommet. Le rapporteur et l'équerre ne servent pas pour cette construction précise.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Le compas permet de reporter des longueurs"
+      }
+    },
+    {
+      "text": "On veut construire le triangle $ABC$ tel que $AB = 5$ cm, $AC = 4$ cm et $BC = 3$ cm. Après avoir tracé le segment $[AB]$, quelle est l'étape suivante ?",
+      "options": [
+        "Tracer un cercle de centre $A$ et de rayon $5$ cm",
+        "Tracer un cercle de centre $A$ et de rayon $4$ cm et un cercle de centre $B$ et de rayon $3$ cm",
+        "Tracer la droite $(AC)$ à l'équerre",
+        "Mesurer l'angle $\\widehat{BAC}$ au rapporteur"
+      ],
+      "correctAnswer": "Tracer un cercle de centre $A$ et de rayon $4$ cm et un cercle de centre $B$ et de rayon $3$ cm",
+      "explanation": "Une fois la base $[AB]$ tracée, le sommet $C$ doit être à $4$ cm de $A$ (donc sur le cercle centre $A$ rayon $4$ cm) et à $3$ cm de $B$ (donc sur le cercle centre $B$ rayon $3$ cm). L'intersection de ces deux cercles donne le point $C$. L'option A utilise la mauvaise longueur ($AB$ au lieu de $AC$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Peut-on construire un triangle avec des côtés mesurant $3$ cm, $4$ cm et $9$ cm ?",
+      "options": [
+        "Oui, c'est un triangle rectangle",
+        "Oui, c'est un triangle isocèle",
+        "Non, car $3 + 4 < 9$",
+        "Non, car $3 + 4 > 9$"
+      ],
+      "correctAnswer": "Non, car $3 + 4 < 9$",
+      "explanation": "Dans tout triangle, la somme des longueurs de deux côtés est toujours strictement supérieure à la longueur du troisième côté (inégalité triangulaire). Ici, $3 + 4 = 7$ qui est strictement inférieur à $9$. Les arcs de cercle ne se rencontreraient pas, la construction est impossible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un triangle $DEF$ tel que $DE = 6$ cm, $\\widehat{EDF} = 40^\\circ$ et $DF = 5$ cm, dans quel ordre procède-t-on ?",
+      "options": [
+        "Tracer $[DE]$, tracer l'angle à $D$, reporter $DF$ sur le demi-droit",
+        "Tracer $[DF]$, tracer l'angle à $F$, reporter $DE$",
+        "Tracer les trois côtés à la règle",
+        "Tracer $[DE]$, tracer la médiatrice de $[DE]$"
+      ],
+      "correctAnswer": "Tracer $[DE]$, tracer l'angle à $D$, reporter $DF$ sur le demi-droit",
+      "explanation": "C'est la construction du cas SAS (côté-angle-côté). On trace le côté connu $[DE]$. Au point $D$, on construit l'angle donné de $40^\\circ$ à l'aide du rapporteur. Sur le demi-droit de l'angle, on reporte la longueur $DF = 5$ cm au compas pour obtenir le point $F$. Il reste à relier $F$ à $E$.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "D",
+        "caption": "Reporter la longueur DF au compas"
+      }
+    },
+    {
+      "text": "On construit un triangle rectangle $GHI$ rectangle en $H$ tel que $GH = 4$ cm et $HI = 3$ cm. Quel instrument est le plus adapté pour tracer l'angle droit en $H$ ?",
+      "options": [
+        "Le compas",
+        "Le rapporteur",
+        "L'équerre",
+        "La règle graduée seule"
+      ],
+      "correctAnswer": "L'équerre",
+      "explanation": "Pour tracer un angle droit (perpendiculaire) en un point d'une droite, l'équerre est l'instrument le plus simple et le plus précis au niveau CM1. On aligne le bord de l'équerre sur la droite $(GH)$ et on trace la perpendiculaire passant par $H$. Le rapporteur peut aussi mesurer $90^\\circ$ mais l'équerre est l'outil dédié à la perpendicularité. Le compas ne trace pas d'angles droits directement.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en H",
+        "vertexLabels": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sideLabels": [
+          "4 cm",
+          "3 cm",
+          "5 cm"
+        ],
+        "rightAngleAt": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Implication et contre-exemple",
+  "title": "Implication et contre-exemple : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Démarche générale",
+      "content": "Range les étapes de la démarche pour montrer qu'une implication est fausse par contre-exemple.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier l'hypothèse et la conclusion de l'implication.",
+        "Chercher un exemple où l'hypothèse est vraie.",
+        "Vérifier si la conclusion est fausse pour cet exemple.",
+        "Si c'est le cas, cet exemple est un contre-exemple.",
+        "Conclure que l'implication est fausse."
+      ],
+      "explanation": "La démarche logique pour réfuter une implication par contre-exemple suit toujours cet ordre : on commence par bien séparer la condition (hypothèse) de la conséquence (conclusion). On cherche ensuite un cas particulier qui satisfait la condition. Si dans ce cas la conséquence n'est pas vérifiée, on a trouvé un contre-exemple unique qui suffit à invalider l'implication entière.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exemple arithmétique",
+      "content": "On veut tester l'implication : « Si un entier est multiple de $6$, alors il est multiple de $4$ ». Range les étapes du raisonnement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Énoncer l'implication : « Si $n$ est multiple de $6$, alors $n$ est multiple de $4$ ».",
+        "Identifier l'hypothèse : « $n$ est multiple de $6$ » et la conclusion : « $n$ est multiple de $4$ ».",
+        "Tester la valeur $n = 6$ : l'hypothèse est vraie car $6$ est multiple de $6$.",
+        "Vérifier la conclusion : $6$ n'est pas multiple de $4$, elle est donc fausse.",
+        "Conclure : $6$ est un contre-exemple, l'implication est fausse."
+      ],
+      "explanation": "On applique la méthode générale. L'entier $6$ vérifie l'hypothèse (multiple de $6$) mais pas la conclusion (multiple de $4$). C'est donc un contre-exemple valide qui prouve que l'implication est fausse. Il suffit d'un seul contre-exemple.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Exemple algébrique",
+      "content": "On étudie l'implication : « Si $x^2 < 9$, alors $x < 3$ ». Range les étapes pour déterminer si elle est vraie ou fausse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'hypothèse : $x^2 < 9$ et la conclusion : $x < 3$.",
+        "Résoudre l'inéquation $x^2 < 9$ : on obtient $-3 < x < 3$.",
+        "Observer que tous les $x$ vérifiant l'hypothèse sont strictement inférieurs à $3$.",
+        "En déduire que la conclusion est vraie dès que l'hypothèse l'est.",
+        "Conclure qu'il n'existe pas de contre-exemple, l'implication est vraie."
+      ],
+      "explanation": "La résolution de $x^2 < 9$ donne l'intervalle $]-3; 3[$. Tout nombre de cet intervalle est strictement inférieur à $3$, donc la conclusion $x < 3$ est automatiquement vraie. Il est impossible de trouver un $x$ qui vérifie l'hypothèse sans vérifier la conclusion : il n'y a pas de contre-exemple, l'implication est vraie.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

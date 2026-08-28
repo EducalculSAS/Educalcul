@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Choisir sens",
+  "title": "Algorithme et réciproque de Pythagore : classifier un triangle",
+  "blocks": [
+    {
+      "title": "Identifier l'hypoténuse potentielle",
+      "content": "On veut écrire un algorithme qui détermine si trois longueurs données peuvent former un triangle rectangle. La première étape consiste à identifier la plus grande longueur (candidate pour être l'hypoténuse). Écrire en langage naturel (ou pseudo-code) les instructions pour :\\n1. Demander les trois longueurs $a$, $b$, $c$.\\n2. Ranger ces trois valeurs dans l'ordre croissant dans les variables $x$, $y$, $z$ (donc $z$ est la plus grande).\\n3. Afficher la valeur de $z$.",
+      "correctAnswer": "Algorithme :\\n1. Afficher \"Entrez trois longueurs :\"\\n2. Lire a, b, c\\n3. Si a > b alors échanger a et b\\n   Si b > c alors échanger b et c\\n   Si a > b alors échanger a et b\\n   (Maintenant a ≤ b ≤ c)\\n4. x ← a ; y ← b ; z ← c\\n5. Afficher \"La plus grande longueur est :\", z",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour appliquer le théorème de Pythagore ou sa réciproque, il faut tester l'égalité avec le carré de la plus grande longueur. L'algorithme utilise une méthode de tri simple (tri à bulles sur trois valeurs) pour ordonner $a$, $b$, $c$ dans $x \\le y \\le z$. Ainsi $z$ est la longueur de l'hypothétique hypoténuse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tester la nature du triangle",
+      "content": "Reprendre l'algorithme précédent. Après avoir ordonné les longueurs ($x \\le y \\le z$), compléter l'algorithme pour tester si le triangle est rectangle, acutangle ou obtusangle en utilisant la réciproque de Pythagore et ses extensions.\\nRappel :\\n- Si $x^2 + y^2 = z^2$ : triangle rectangle.\\n- Si $x^2 + y^2 > z^2$ : triangle acutangle.\\n- Si $x^2 + y^2 < z^2$ : triangle obtusangle.\\nÉcrire la structure conditionnelle complète (Si... Sinon Si... Sinon...).",
+      "correctAnswer": "Suite de l'algorithme :\\nCalculer carre_x ← x * x\\nCalculer carre_y ← y * y\\nCalculer carre_z ← z * z\\nSi carre_x + carre_y = carre_z Alors\\n    Afficher \"Triangle rectangle\"\\nSinon Si carre_x + carre_y > carre_z Alors\\n    Afficher \"Triangle acutangle\"\\nSinon\\n    Afficher \"Triangle obtusangle\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare la somme des carrés des deux plus petits côtés ($x^2 + y^2$) au carré du plus grand côté ($z^2$). L'égalité correspond au cas rectangle (réciproque de Pythagore). Si la somme est plus grande, l'angle opposé au plus grand côté est aigu (triangle acutangle). Si elle est plus petite, cet angle est obtus (triangle obtusangle). La structure \"Sinon Si\" permet de tester les cas de manière exclusive.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme Python complet avec vérification",
+      "content": "Écrire le code complet en Python d'une fonction `classifier_triangle(a, b, c)` qui :\\n1. Vérifie que les trois nombres sont strictement positifs.\\n2. Vérifie l'inégalité triangulaire (la somme des deux plus petits côtés doit être strictement supérieure au plus grand).\\n3. Si les longueurs ne forment pas un triangle, la fonction renvoie la chaîne \"Impossible\".\\n4. Sinon, elle renvoie \"Rectangle\", \"Acutangle\" ou \"Obtusangle\" selon le cas.\\nUtiliser une liste et la méthode `sort()` pour ordonner les longueurs.",
+      "correctAnswer": "def classifier_triangle(a, b, c):\\n    # 1. Vérification positivité\\n    if a <= 0 or b <= 0 or c <= 0:\\n        return \"Impossible\"\\n    \\n    # 2. Tri des côtés\\n    cotes = [a, b, c]\\n    cotes.sort()  # cotes[0] <= cotes[1] <= cotes[2]\\n    x, y, z = cotes[0], cotes[1], cotes[2]\\n    \\n    # 3. Inégalité triangulaire\\n    if x + y <= z:\\n        return \"Impossible\"\\n    \\n    # 4. Classification par Pythagore\\n    if x**2 + y**2 == z**2:\\n        return \"Rectangle\"\\n    elif x**2 + y**2 > z**2:\\n        return \"Acutangle\"\\n    else:\\n        return \"Obtusangle\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le code commence par valider les entrées (positivité). L'utilisation d'une liste et de `sort()` simplifie le tri pour identifier $z$ (le plus grand côté). L'inégalité triangulaire ($x + y > z$) est une condition nécessaire pour former un triangle quelconque. Enfin, la comparaison de $x^2 + y^2$ et $z^2$ permet la classification demandée. Les opérateurs `**` (puissance) et `==` (égalité) sont utilisés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

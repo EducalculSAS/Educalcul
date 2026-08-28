@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Calcul",
+  "title": "Quiz : Somme de vecteurs - Calcul",
+  "questions": [
+    {
+      "text": "Soient les vecteurs $u = (2; -3)$ et $v = (-1; 4)$. Calculez $u + v$.",
+      "options": [
+        "($1; 1$)",
+        "($3; 1$)",
+        "($1; 7$)",
+        "($3; 7$)"
+      ],
+      "correctAnswer": "($1; 1$)",
+      "explanation": "On additionne les composantes : $2 + (-1) = 1$ pour l'abscisse et $-3 + 4 = 1$ pour l'ordonnée. Donc $u+v = (1; 1)$. Les autres options correspondent à des erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": {
+        "type": "vector_addition_pad",
+        "ux": 2,
+        "uy": -3,
+        "vx": -1,
+        "vy": 4,
+        "caption": "Vecteurs u et v"
+      }
+    },
+    {
+      "text": "Soient $w = (5; -2)$ et $z = (-3; 6)$. Quelle est l'abscisse du vecteur $w + z$ ?",
+      "options": [
+        "$2$",
+        "$8$",
+        "$-2$",
+        "$5$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "L'abscisse de la somme est la somme des abscisses : $5 + (-3) = 2$. Les autres valeurs proviennent d'une addition erronée ou d'une confusion avec l'ordonnée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, on a $A(1;2)$, $B(4;5)$, $C(7;1)$. En utilisant la relation de Chasles $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$, déterminez les coordonnées du vecteur $\\overrightarrow{AC}$.",
+      "options": [
+        "($6; -1$)",
+        "($3; 3$)",
+        "($6; 3$)",
+        "($3; -1$)"
+      ],
+      "correctAnswer": "($6; -1$)",
+      "explanation": "$\\overrightarrow{AC} = C - A = (7-1; 1-2) = (6; -1)$. On peut aussi calculer $\\overrightarrow{AB} = (3;3)$ et $\\overrightarrow{BC} = (3;-4)$, leur somme donne $(6;-1)$. Les autres options correspondent à $\\overrightarrow{AB}$, $\\overrightarrow{BC}$ ou à une erreur de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $u = (a; 2)$ et $v = (3; b)$ tels que $u + v = (7; 5)$. Trouvez les valeurs de $a$ et $b$.",
+      "options": [
+        "$a=4$, $b=3$",
+        "$a=5$, $b=3$",
+        "$a=4$, $b=2$",
+        "$a=5$, $b=2$"
+      ],
+      "correctAnswer": "$a=4$, $b=3$",
+      "explanation": "On identifie les composantes : $a + 3 = 7$ donc $a = 4$ ; $2 + b = 5$ donc $b = 3$. Les autres couples ne satisfont pas les deux équations simultanément.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $u = (2; -1)$ et $v = (-3; 4)$. Quel vecteur est égal à $2u + v$ ?",
+      "options": [
+        "($1; 2$)",
+        "($1; 6$)",
+        "($7; 2$)",
+        "($7; 6$)"
+      ],
+      "correctAnswer": "($1; 2$)",
+      "explanation": "Calculons $2u = (4; -2)$. En ajoutant $v = (-3; 4)$, on obtient $(4-3; -2+4) = (1; 2)$. Les autres options correspondent à $u+v$, $2u-v$ ou à une erreur de multiplication.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

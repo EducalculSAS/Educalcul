@@ -1,0 +1,123 @@
+{
+  "_status": "done",
+  "_course_id": 85,
+  "_course_code": "ce1-t02-c07-retirer-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Interpréter le résultat",
+  "title": "Quiz : Interpréter le résultat d'une soustraction de fractions",
+  "questions": [
+    {
+      "text": "On a une barre de chocolat divisée en $8$ parts égales. Lucas en mange $3$ parts et Léa en mange $2$ parts. Quelle fraction de la barre reste-t-il ?",
+      "options": [
+        "Il reste $3/8$ de la barre",
+        "Il reste $5/8$ de la barre",
+        "Il reste $1/8$ de la barre",
+        "Il ne reste rien"
+      ],
+      "correctAnswer": "Il reste $3/8$ de la barre",
+      "explanation": "La barre entière vaut $8/8$. Lucas mange $3/8$ et Léa mange $2/8$, soit $5/8$ au total. On soustrait la part mangée : $8/8 - 5/8 = 3/8$. L'option 'Il reste $5/8$' correspond à la part mangée, pas au reste. L'option '$1/8$' serait le résultat si on soustrayait $3/8$ et $4/8$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 3,
+            "denominator": 8
+          },
+          {
+            "numerator": 2,
+            "denominator": 8
+          }
+        ],
+        "caption": "Parts mangées par Lucas (3/8) et Léa (2/8)"
+      }
+    },
+    {
+      "text": "Regarde la figure. La zone grisée représente le résultat de la soustraction $5/6 - 2/6$. Quelle phrase décrit correctement ce qui reste ?",
+      "options": [
+        "Il reste 2 parts sur 6",
+        "Il reste 3 parts sur 6",
+        "Il reste 5 parts sur 6",
+        "Il reste 1 part sur 6"
+      ],
+      "correctAnswer": "Il reste 3 parts sur 6",
+      "explanation": "On soustrait les numérateurs car le dénominateur est le même : $5 - 2 = 3$. Le dénominateur $6$ ne change pas. Le résultat est $3/6$, ce qui se lit '3 parts sur 6'. L'option '2 parts sur 6' correspond au numérateur soustrait. L'option '5 parts sur 6' est la fraction de départ.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 6,
+        "shape": "bar",
+        "caption": "Résultat visuel : 3 parts sur 6 grisées"
+      }
+    },
+    {
+      "text": "Julie a un ruban de $1$ mètre. Elle coupe un morceau de $4/10$ de mètre. Quelle fraction de mètre lui reste-t-il ?",
+      "options": [
+        "Il lui reste $4/10$ de mètre",
+        "Il lui reste $6/10$ de mètre",
+        "Il lui reste $10/10$ de mètre",
+        "Il lui reste $1/10$ de mètre"
+      ],
+      "correctAnswer": "Il lui reste $6/10$ de mètre",
+      "explanation": "Le ruban entier fait $1$ mètre, soit $10/10$ de mètre. On retire $4/10$. On calcule $10/10 - 4/10 = (10-4)/10 = 6/10$. L'erreur '$4/10'$ confond la partie coupée et le reste. L'erreur '$10/10'$ oublie de soustraire. L'erreur '$1/10'$ fait une erreur de calcul ($10-4=1$).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Coupe",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Reste",
+            "value": 6,
+            "tone": "green"
+          }
+        ],
+        "caption": "Ruban de 10/10 : 4/10 coupé, 6/10 restant"
+      }
+    },
+    {
+      "text": "Paul fait le calcul $7/9 - 3/9$. Il trouve $4/9$. Quelle phrase donne le sens de ce résultat ?",
+      "options": [
+        "Paul a enlevé 4 parts sur 9",
+        "Paul a gardé 4 parts sur 9",
+        "Paul a ajouté 4 parts sur 9",
+        "Paul a 9 parts en tout"
+      ],
+      "correctAnswer": "Paul a gardé 4 parts sur 9",
+      "explanation": "Soustraire, c'est enlever. On part de $7/9$ (7 parts). On en retire $3/9$ (3 parts). Ce qui n'a pas été enlevé, c'est ce qui reste, c'est-à-dire ce qu'on a gardé. $7 - 3 = 4$. Paul a donc gardé $4$ parts sur les $9$ du tout. L'option 'enlevé 4 parts' confond le résultat et la quantité retirée ($3/9$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, $9/12$ des élèves sont des filles. Le reste sont des garçons. Quelle fraction représente les garçons ?",
+      "options": [
+        "$9/12$",
+        "$3/12$",
+        "$12/12$",
+        "$6/12$"
+      ],
+      "correctAnswer": "$3/12$",
+      "explanation": "La classe entière est $12/12$. Les filles sont $9/12$. Les garçons sont le complément : $12/12 - 9/12 = 3/12$. On soustrait le numérateur des filles ($9$) du numérateur du tout ($12$). $12 - 9 = 3$. L'option '$9/12'$ est la fraction des filles. L'option '$12/12'$ est le tout. L'option '$6/12'$ correspond à une moitié ($6/12$), ce qui n'est pas le calcul demandé.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 9,
+            "denominator": 12
+          },
+          {
+            "numerator": 3,
+            "denominator": 12
+          }
+        ],
+        "caption": "Filles (9/12) et Garçons (3/12)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 522,
+  "_course_code": "2nde-t05-c03-variations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Lire extrema",
+  "title": "Lecture d'extrema : tableaux de variations et courbes",
+  "blocks": [
+    {
+      "title": "Extrema globaux et locaux sur un tableau",
+      "content": "On donne le tableau de variations de la fonction $f$ sur $[-2; 4]$ :\\n$\\begin{array}{c|cccc|c} x & -2 & & 1 & & 4 \\\\ \\hline f(x) & 3 & \\nearrow & 5 & \\searrow & 1 \\end{array}$\\nRelier chaque abscisse remarquable à la nature de l'extremum correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x = -2$",
+          "right": "Minimum local (borne gauche) valant 3"
+        },
+        {
+          "left": "$x = 1$",
+          "right": "Maximum global valant 5"
+        },
+        {
+          "left": "$x = 4$",
+          "right": "Minimum global valant 1"
+        }
+      ],
+      "items": [],
+      "explanation": "Sur l'intervalle $[-2; 4]$, la fonction croît d'abord de 3 à 5 sur $[-2; 1]$, puis décroît de 5 à 1 sur $[1; 4]$. \\n- En $x = -2$, la fonction vaut 3 et augmente juste après : c'est un minimum local (à la borne gauche).\\n- En $x = 1$, la fonction atteint 5, plus grande valeur sur tout l'intervalle : c'est le maximum global.\\n- En $x = 4$, la fonction vaut 1, plus petite valeur sur tout l'intervalle : c'est le minimum global.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Nature des extrema sur un intervalle découpé",
+      "content": "La fonction $g$ est définie sur $[0; 5]$ par le tableau de variations suivant :\\n$\\begin{array}{c|ccccc|c} x & 0 & & 2 & & 3 & & 5 \\\\ \\hline g(x) & 4 & \\searrow & 1 & \\nearrow & 3 & \\searrow & 0 \\end{array}$\\nRelier chaque abscisse d'extremum à sa nature et sa valeur.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x = 0$",
+          "right": "Maximum local (borne) valant 4"
+        },
+        {
+          "left": "$x = 2$",
+          "right": "Minimum global valant 1"
+        },
+        {
+          "left": "$x = 3$",
+          "right": "Maximum local valant 3"
+        },
+        {
+          "left": "$x = 5$",
+          "right": "Minimum global valant 0"
+        }
+      ],
+      "items": [],
+      "explanation": "La fonction décroît de 4 à 1 sur $[0; 2]$, croît de 1 à 3 sur $[2; 3]$, puis décroît de 3 à 0 sur $[3; 5]$.\\n- En $x=0$ (borne gauche), $g=4$ et la fonction décroît ensuite : maximum local valant 4.\\n- En $x=2$, $g=1$ est la plus petite valeur atteinte sur tout l'intervalle : minimum global valant 1.\\n- En $x=3$, $g=3$ est un pic local (croissance puis décroissance) : maximum local valant 3.\\n- En $x=5$ (borne droite), $g=0$ est la plus petite valeur atteinte (à égalité avec le minimum global mais c'est la borne) : minimum global valant 0.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Monotonie et extrema d'une courbe",
+      "content": "La fonction $h$ est définie sur $[-3; 3]$. Sa courbe représentative admet un maximum en $A(-1; 4)$ et un minimum en $B(2; -2)$. La fonction est croissante sur $[-3; -1]$, décroissante sur $[-1; 2]$ et croissante sur $[2; 3]$. Relier chaque intervalle de monotonie à l'extremum qui le borne.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Intervalle $[-3; -1]$",
+          "right": "Se termine par un maximum en $x = -1$"
+        },
+        {
+          "left": "Intervalle $[-1; 2]$",
+          "right": "Relie un maximum en $x = -1$ à un minimum en $x = 2$"
+        },
+        {
+          "left": "Intervalle $[2; 3]$",
+          "right": "Commence par un minimum en $x = 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'analyse de la monotonie permet de retrouver les extrema :\\n- Sur $[-3; -1]$, la fonction est croissante. Elle atteint donc son plus haut à la fin de l'intervalle, soit le maximum en $x=-1$.\\n- Sur $[-1; 2]$, la fonction est décroissante. Elle part du maximum en $x=-1$ et descend jusqu'au minimum en $x=2$.\\n- Sur $[2; 3]$, la fonction est croissante. Elle démarre donc du minimum en $x=2$ pour augmenter ensuite.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

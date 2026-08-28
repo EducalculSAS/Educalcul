@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 136,
+  "_course_code": "ce1-t08-c01-recueillir-des-donnees",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Faire un relevé",
+  "title": "Quiz : Faire un relevé (CE1)",
+  "questions": [
+    {
+      "text": "Quel outil utilise-t-on pour faire un relevé et compter des données au fur et à mesure ?",
+      "options": [
+        "Un tableau à double entrée",
+        "Un tableau de relevé avec des traits",
+        "Un graphique en barres",
+        "Une droite numérique"
+      ],
+      "correctAnswer": "Un tableau de relevé avec des traits",
+      "explanation": "Le tableau de relevé (ou tableau de comptage) sert à noter les données au fur et à mesure à l'aide de traits (souvent par groupes de 5). Le tableau à double entrée sert à croiser deux variables, le graphique en barres à représenter des résultats déjà comptés, et la droite numérique à situer des nombres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau de relevé, comment écrit-on le nombre $5$ ?",
+      "options": [
+        "$5$ traits verticaux",
+        "$4$ traits verticaux et $1$ trait diagonal",
+        "Un trait horizontal",
+        "Un cercle"
+      ],
+      "correctAnswer": "$4$ traits verticaux et $1$ trait diagonal",
+      "explanation": "La convention pour les relevés est de grouper les traits par $5$ : on trace $4$ traits verticaux ($||||$) et le $5^{\\text{e}}$ trait en diagonale pour barrer le groupe ($||||$). Cela permet de compter plus vite par paquets de $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le relevé ci-dessous. Combien d'élèves ont choisi le chat ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$5$",
+        "$1$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Sur la ligne 'Chat', il y a deux traits verticaux ($||$). Chaque trait correspond à un élève. Il n'y a pas de groupe de $5$ (traits barrés) donc le total est simplement $2$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Relevé"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "||||"
+          ],
+          [
+            "Chat",
+            "||"
+          ],
+          [
+            "Lapin",
+            "|||| |"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "La maîtresse note les jeux préférés : Billes : $||||$ $||$ ; Ballon : $||||$ ; Corde : $||$. Quel jeu est le plus populaire ?",
+      "options": [
+        "Billes",
+        "Ballon",
+        "Corde",
+        "Billes et Ballon"
+      ],
+      "correctAnswer": "Billes",
+      "explanation": "Il faut compter les traits pour chaque jeu. Billes : $5 + 2 = 7$ traits. Ballon : $5$ traits. Corde : $2$ traits. Le nombre le plus grand est $7$, donc les Billes sont le jeu le plus choisi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En reprenant le relevé des jeux (Billes : $7$, Ballon : $5$, Corde : $2$), combien d'élèves au total ont participé au sondage ?",
+      "options": [
+        "$12$",
+        "$14$",
+        "$15$",
+        "$13$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Pour trouver le total, on additionne les effectifs de chaque catégorie : $7$ (Billes) $+ 5$ (Ballon) $+ 2$ (Corde) $= 14$. Il y a donc $14$ élèves au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

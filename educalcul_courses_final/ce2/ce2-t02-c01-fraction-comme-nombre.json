@@ -1,0 +1,398 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.955419+00:00",
+  "id": 152,
+  "code": "ce2-t02-c01",
+  "title": "Fraction comme nombre",
+  "description": "Cours structuré Educalcul : Fraction comme nombre.",
+  "subject": "Fractions et nombres décimaux en contexte",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Fractions et nombres décimaux en contexte",
+    "titre_du_cours": "Fraction comme nombre",
+    "objectif_global": "Fraction comme nombre",
+    "mini_lecons_imposees": [
+      "Lire une fraction.",
+      "Repérer sa position sur une unité.",
+      "Distinguer fraction et simple coloriage."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions et nombres décimaux en contexte",
+      "lessons": [
+        {
+          "title": "Lire une fraction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une fraction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu partages une barre de chocolat entre deux amis. Chacun reçoit une moitié. En mathématiques, on écrit cela avec une fraction : le nombre du haut s'appelle le numérateur, le nombre du bas le dénominateur. Le numérateur dit combien de parts on prend, le dénominateur en combien de parts égales on a coupé le tout."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le nombre écrit au-dessus de la barre de fraction. Il indique le nombre de parts considérées.",
+              "example": "Dans $\\frac{3}{4}$, le numérateur est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le nombre écrit en dessous de la barre de fraction. Il indique en combien de parts égales l'unité a été divisée.",
+              "example": "Dans $\\frac{3}{4}$, le dénominateur est $4$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Une moitié : $\\frac{1}{2}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire une fraction simple, regardons comment on dit celles où le numérateur vaut $1$. C'est souvent la première étape pour se sentir à l'aise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les fractions simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le numérateur est $1$, on lit « un demi » pour $\\frac{1}{2}$, « un tiers » pour $\\frac{1}{3}$, « un quart » pour $\\frac{1}{4}$, « un cinquième » pour $\\frac{1}{5}$, et ainsi de suite. Le dénominateur donne le nom de la part. Essaie de lire $\\frac{1}{6}$ à voix haute : « un sixième »."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Un tiers : $\\frac{1}{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu commences à bien lire les fractions unitaires. Voyons maintenant ce qui se passe quand on prend plusieurs parts égales, comme deux tiers ou trois quarts."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand le numérateur est plus grand que 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu prends deux parts sur trois, on écrit $\\frac{2}{3}$ et on lit « deux tiers ». Pour $\\frac{3}{4}$, on dit « trois quarts ». La règle est simple : on lit le numérateur normalement (deux, trois, quatre…), puis le nom de la part donné par le dénominateur (tiers, quarts, cinquièmes…). Attention, pour $2$ on dit « deux », pas « second »."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Trois quarts : $\\frac{3}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire n'importe quelle fraction. Dans la prochaine leçon, nous verrons où ces fractions se placent sur une droite graduée."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment lit-on la fraction $\\frac{1}{5}$ ?",
+              "answer": "un cinquième",
+              "hint": "Regarde le dénominateur : $5$ donne « cinquième ».",
+              "explanation": "Le numérateur $1$ se lit « un », le dénominateur $5$ donne le nom de la part : « cinquième ». Donc « un cinquième »."
+            },
+            {
+              "question": "Écris en lettres la fraction $\\frac{2}{3}$.",
+              "answer": "deux tiers",
+              "hint": "Le numérateur est $2$, le dénominateur $3$ donne « tiers ».",
+              "explanation": "On lit le numérateur « deux » puis le nom de la part « tiers » : « deux tiers »."
+            },
+            {
+              "question": "Quelle fraction correspond à « quatre septièmes » ?",
+              "answer": "$\\frac{4}{7}$",
+              "hint": "Le numérateur est le nombre dit en premier, le dénominateur est celui qui donne le nom de la part.",
+              "explanation": "« Quatre » est le numérateur, « septièmes » indique que le dénominateur est $7$. Donc $\\frac{4}{7}$."
+            }
+          ]
+        },
+        {
+          "title": "Repérer sa position sur une unité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une droite pour les fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà la droite des nombres entiers. Pour placer les fractions, on zoome sur le segment entre $0$ et $1$. On le divise en parties égales selon le dénominateur. Par exemple, pour les demis, on coupe en $2$ ; pour les tiers, en $3$ ; pour les quarts, en $4$. Chaque trait de graduation représente une fraction."
+            },
+            {
+              "type": "number_line",
+              "caption": "Fractions entre 0 et 1",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.3333333333333333,
+                  "label": "1/3"
+                },
+                {
+                  "value": 0.6666666666666666,
+                  "label": "2/3"
+                },
+                {
+                  "value": 0.25,
+                  "label": "1/4"
+                },
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois que $\\frac{1}{2}$ se trouve pile au milieu. Maintenant, apprenons à placer une fraction précise en comptant les graduations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Placer une fraction sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour poser $\\frac{3}{5}$, divise le segment $[0;1]$ en $5$ parts égales. Compte $3$ traits à partir de $0$ : le troisième trait correspond à $\\frac{3}{5}$. Essaie mentalement : $\\frac{2}{5}$ est le deuxième trait, $\\frac{4}{5}$ le quatrième. Plus le numérateur est grand, plus la fraction est proche de $1$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Placer 3/5",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.6,
+                  "label": "3/5"
+                },
+                {
+                  "value": 0.4,
+                  "label": "2/5"
+                },
+                {
+                  "value": 0.8,
+                  "label": "4/5"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais placer des fractions, comparons-les sur la droite. C'est très visuel : celle qui est plus à droite est la plus grande."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer des fractions sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde $\\frac{1}{3}$ et $\\frac{1}{2}$. Sur la droite, $\\frac{1}{2}$ est plus à droite que $\\frac{1}{3}$, donc $\\frac{1}{2} > \\frac{1}{3}$. De même, $\\frac{3}{4}$ est plus à droite que $\\frac{2}{3}$. Pour comparer deux fractions de même dénominateur, il suffit de regarder les numérateurs : le plus grand numérateur donne la plus grande fraction."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparaison 1/3 et 1/2",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.3333333333333333,
+                  "label": "1/3"
+                },
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une image mentale pour situer les fractions. La prochaine leçon t'aidera à ne pas confondre une fraction avec un simple coloriage."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite de 0 à 1 divisée en 4 parts égales, quel trait correspond à $\\frac{3}{4}$ ?",
+              "answer": "le troisième trait après 0",
+              "hint": "Compte les graduations en partant de 0.",
+              "explanation": "Le segment est divisé en 4 parties. Le premier trait est $\\frac{1}{4}$, le deuxième $\\frac{2}{4}$, le troisième $\\frac{3}{4}$."
+            },
+            {
+              "question": "Place $\\frac{2}{5}$ sur la droite. Combien de traits comptes-tu depuis 0 ?",
+              "answer": "2",
+              "hint": "Le numérateur indique le nombre de parts à compter.",
+              "explanation": "On divise en 5 parts égales. Le numérateur 2 signifie qu'on s'arrête au deuxième trait."
+            },
+            {
+              "question": "Laquelle est plus grande : $\\frac{2}{5}$ ou $\\frac{3}{5}$ ?",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Même dénominateur : compare les numérateurs.",
+              "explanation": "Les deux fractions ont le même dénominateur $5$. Comme $3 > 2$, $\\frac{3}{5}$ est plus grande."
+            }
+          ]
+        },
+        {
+          "title": "Distinguer fraction et simple coloriage.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Colorier ne suffit pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on colore une partie d'une figure et on croit avoir représenté une fraction. Attention ! Pour qu'un coloriage montre une fraction, les parts doivent être égales. Si tu découpes un rectangle en quatre parts de tailles différentes et que tu en couleurs une, ce n'est pas $\\frac{1}{4}$ car les parts ne sont pas identiques."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "circle",
+              "caption": "Un quart correct : 4 parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici pourquoi l'égalité des parts est essentielle. La fraction exprime un partage équitable."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les parts doivent être égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fraction comme $\\frac{2}{5}$ signifie : on a divisé l'unité en $5$ parts **exactement de la même taille**, et on en a pris $2$. Si les parts sont inégales, on ne peut pas écrire de fraction. C'est comme partager un gâteau : chaque part doit être équitable pour que ce soit juste."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Deux cinquièmes : 5 parts égales, 2 colorées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rappelons qu'une fraction n'est pas seulement un dessin colorié. C'est un **nombre** à part entière, qui a sa place sur la droite graduée, tout comme $2$ ou $10$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fraction est un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu écris $\\frac{3}{4}$, tu désignes une quantité précise, celle qui est à trois quarts du chemin entre $0$ et $1$. Ce nombre peut être ajouté, soustrait, comparé. Le coloriage n'est qu'une aide visuelle, pas la fraction elle-même."
+            },
+            {
+              "type": "number_line",
+              "caption": "3/4 est un nombre sur la droite",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire une fraction (numérateur et dénominateur).",
+                "Je sais placer une fraction sur une droite de 0 à 1.",
+                "Je sais qu'une fraction demande des parts égales, pas juste un coloriage.",
+                "Je comprends qu'une fraction est un nombre comme les autres."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pourquoi un rectangle découpé en 4 parts inégales ne montre-t-il pas $\\frac{1}{4}$ ?",
+              "answer": "Parce que les parts ne sont pas égales.",
+              "hint": "La fraction suppose un partage équitable.",
+              "explanation": "Une fraction représente une part sur un total de parts **identiques**. Si les parts sont de tailles différentes, on ne peut pas dire quelle fraction est colorée."
+            },
+            {
+              "question": "Quelle condition doit être respectée pour qu'un coloriage représente $\\frac{2}{5}$ ?",
+              "answer": "La figure doit être divisée en 5 parts égales.",
+              "hint": "Regarde le dénominateur.",
+              "explanation": "Le dénominateur $5$ indique le nombre de parts égales. Il faut donc 5 parties de même taille, dont 2 sont colorées."
+            },
+            {
+              "question": "Est-ce que $\\frac{3}{4}$ est un nombre ?",
+              "answer": "Oui, c'est un nombre qui se place entre 0 et 1.",
+              "hint": "Repense à la droite graduée.",
+              "explanation": "Toute fraction correspond à un point sur la droite des nombres. $\\frac{3}{4}$ est le point situé aux trois quarts de la distance entre 0 et 1."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Tester",
+  "title": "Tester des conditions algorithmiques",
+  "blocks": [
+    {
+      "title": "Condition simple",
+      "content": "Dans un algorithme, on veut tester si la variable $a$ est strictement supérieure à $15$. Écrire la condition à placer après le mot‑clé « si ».",
+      "correctAnswer": "a > 15",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition « strictement supérieure à 15 » se traduit par l'opérateur de comparaison $>$ entre la variable $a$ et la valeur $15$, ce qui donne $a > 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Valeur de vérité",
+      "content": "Quelle est la valeur de vérité de la condition $8 \\le 8$ ?",
+      "correctAnswer": "Vrai",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'opérateur $\\le$ signifie « inférieur ou égal ». Comme $8$ est égal à $8$, la condition est vérifiée, donc sa valeur de vérité est Vrai.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Combinaison de conditions",
+      "content": "On veut exécuter une instruction seulement si $x$ est strictement supérieur à $3$ **et** strictement inférieur à $7$. Complétez la condition : « si $x > 3$ ____ $x < 7$ alors … »",
+      "correctAnswer": "et",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour que les deux conditions soient simultanément vraies, on utilise l'opérateur logique « et » entre $x > 3$ et $x < 7$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

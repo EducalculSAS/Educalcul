@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 203,
+  "_course_code": "ce2-t07-c08-programmes-de-construction-simples",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Vérifier la figure",
+  "title": "Vérifier une figure issue d'un programme de construction",
+  "blocks": [
+    {
+      "title": "Vocabulaire du programme",
+      "content": "Relie chaque instruction du programme de construction à l'élément géométrique qu'elle permet d'obtenir.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Tracer un segment $[AB]$ de $5$ cm",
+          "right": "Un côté du polygone"
+        },
+        {
+          "left": "Tracer la perpendiculaire à $(AB)$ passant par $A$",
+          "right": "Un angle droit en $A$"
+        },
+        {
+          "left": "Reporter la longueur $5$ cm sur cette perpendiculaire pour obtenir $D$",
+          "right": "Un deuxième côté de même longueur"
+        },
+        {
+          "left": "Tracer la parallèle à $(AB)$ passant par $D$",
+          "right": "Le côté opposé parallèle à $[AB]$"
+        }
+      ],
+      "items": [],
+      "explanation": "Le programme construit un carré étape par étape : le segment initial est un côté, la perpendiculaire crée l'angle droit, le report de longueur assure l'égalité des côtés adjacents, et la parallèle garantit que le dernier côté est parallèle au premier.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Programme et figure obtenue",
+      "content": "Relie chaque programme de construction à la figure qu'il permet d'obtenir.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "1. Tracer $[AB]=4$ cm. 2. Perp. en $A$ et $B$. 3. Reporter $4$ cm sur les perp. ($C$, $D$). 4. Tracer $[CD]$.",
+          "right": "Un carré de côté $4$ cm"
+        },
+        {
+          "left": "1. Tracer $[EF]=6$ cm. 2. Perp. en $E$ et $F$. 3. Reporter $3$ cm sur les perp. ($G$, $H$). 4. Tracer $[GH]$.",
+          "right": "Un rectangle de $6$ cm sur $3$ cm"
+        },
+        {
+          "left": "1. Tracer un cercle centre $O$ rayon $3$ cm.",
+          "right": "Un cercle de rayon $3$ cm"
+        },
+        {
+          "left": "1. Tracer $[IJ]=5$ cm. 2. Cercle centre $I$ rayon $5$ cm. 3. Cercle centre $J$ rayon $5$ cm. 4. Relier $I$, $J$ à une intersection $K$.",
+          "right": "Un triangle équilatéral de côté $5$ cm"
+        }
+      ],
+      "items": [],
+      "explanation": "Le premier programme utilise quatre côtés égaux et des angles droits : c'est un carré. Le second a deux paires de côtés égaux et des angles droits : c'est un rectangle. Le troisième trace uniquement la circonférence. Le quatrième utilise la propriété des triangles équilatéraux (trois côtés égaux) via l'intersection de deux cercles de même rayon.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier les propriétés",
+      "content": "Pour le programme de construction d'un carré ci-contre, relie chaque propriété de la figure finale à l'étape du programme qui la garantit.\\n\\nProgramme :\\n1. Tracer $[AB]=5$ cm.\\n2. Tracer la perpendiculaire à $(AB)$ en $A$.\\n3. Tracer la perpendiculaire à $(AB)$ en $B$.\\n4. Reporter $5$ cm sur ces perpendiculaires pour obtenir $D$ et $C$.\\n5. Tracer $[DC]$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "L'angle $\\widehat{DAB}$ est un angle droit.",
+          "right": "Étape 2 : Tracer la perpendiculaire en $A$."
+        },
+        {
+          "left": "Les côtés $[AB]$ et $[DC]$ sont parallèles.",
+          "right": "Étapes 2 et 3 : Deux perpendiculaires à une même droite sont parallèles."
+        },
+        {
+          "left": "Les quatre côtés mesurent $5$ cm.",
+          "right": "Étape 1 (longueur $AB$) et Étape 4 (report de $5$ cm)."
+        },
+        {
+          "left": "La figure est un quadrilatère.",
+          "right": "Étape 5 : Relier $D$ et $C$ ferme le polygone à 4 côtés."
+        }
+      ],
+      "items": [],
+      "explanation": "L'angle droit vient de la construction de la perpendiculaire (étape 2). Le parallélisme des côtés opposés résulte de la propriété : deux droites perpendiculaires à une même troisième droite sont parallèles (étapes 2 et 3). L'égalité des quatre côtés est assurée par la longueur initiale (étape 1) et le report de cette même longueur sur les deux perpendiculaires (étape 4). Le tracé du dernier segment (étape 5) ferme la figure pour en faire un quadrilatère.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

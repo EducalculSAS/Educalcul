@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 127,
+  "_course_code": "ce1-t07-c02-reconnaitre-les-polygones",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Trier polygones / non-polygones",
+  "title": "Tri polygones et non-polygones",
+  "questions": [
+    {
+      "text": "Quelle est la caractéristique principale d'un polygone ?",
+      "options": [
+        "Il a des côtés courbes",
+        "Il est ouvert",
+        "Il est fermé et ses côtés sont des segments de droite",
+        "Il a toujours quatre côtés"
+      ],
+      "correctAnswer": "Il est fermé et ses côtés sont des segments de droite",
+      "explanation": "Un polygone est une figure plane fermée, délimitée par une ligne brisée qui est une suite de segments de droite. Les figures avec des côtés courbes comme le cercle ou les figures qui ne sont pas fermées ne sont pas des polygones.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces figures, laquelle est un polygone ?",
+      "options": [
+        "Un cercle",
+        "Un carré",
+        "Une ligne brisée ouverte",
+        "Un cœur"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Le carré est une figure fermée composée de $4$ segments de droite de même longueur. Le cercle a un côté courbe, la ligne brisée ouverte n'est pas fermée, et le cœur a des côtés courbes. Seuls les côtés droits et la fermeture définissent un polygone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces figures n'est PAS un polygone ?",
+      "options": [
+        "Un triangle",
+        "Un rectangle",
+        "Un cercle",
+        "Un pentagone"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Le triangle ($3$ côtés), le rectangle ($4$ côtés) et le pentagone ($5$ côtés) sont des figures fermées formées uniquement de segments de droite. Le cercle est une courbe fermée continue, il ne possède aucun segment de droite, ce n'est donc pas un polygone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On dessine une figure fermée qui a trois côtés droits et un côté arrondi. Est-ce un polygone ?",
+      "options": [
+        "Oui, car elle est fermée",
+        "Oui, car elle a des côtés droits",
+        "Non, car elle a un côté courbe",
+        "Non, car elle n'a pas de sommet"
+      ],
+      "correctAnswer": "Non, car elle a un côté courbe",
+      "explanation": "La définition du polygone impose que tous les côtés soient des segments de droite. Dès qu'un seul côté est courbe, la figure n'est plus un polygone, même si elle est fermée et qu'elle possède des sommets.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de polygones dans cette liste : triangle, cercle, carré, ligne ouverte, rectangle, cœur ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "On compte les figures fermées à côtés droits : le triangle ($3$ côtés), le carré ($4$ côtés) et le rectangle ($4$ côtés) sont des polygones. Le cercle et le cœur ont des courbes, la ligne ouverte n'est pas fermée. Il y a donc $3$ polygones au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

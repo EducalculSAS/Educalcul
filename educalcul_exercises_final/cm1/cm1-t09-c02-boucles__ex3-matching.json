@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 270,
+  "_course_code": "cm1-t09-c02-boucles",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Simplifier programme",
+  "title": "Simplification de boucles",
+  "blocks": [
+    {
+      "title": "Boucles simples",
+      "content": "Relie chaque suite d'instructions à la boucle qui permet de la simplifier.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Avancer, Avancer, Avancer",
+          "right": "Répéter $3$ fois : Avancer"
+        },
+        {
+          "left": "Tourner, Tourner, Tourner, Tourner",
+          "right": "Répéter $4$ fois : Tourner"
+        },
+        {
+          "left": "Sauter, Sauter",
+          "right": "Répéter $2$ fois : Sauter"
+        }
+      ],
+      "explanation": "Une boucle permet de remplacer la répétition d'une même instruction. Si une action est écrite $3$ fois, on utilise Répéter $3$ fois.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles avec plusieurs actions",
+      "content": "Relie chaque séquence d'actions à sa boucle simplifiée.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Avancer, Tourner, Avancer, Tourner",
+          "right": "Répéter $2$ fois : Avancer, Tourner"
+        },
+        {
+          "left": "Sauter, Avancer, Sauter, Avancer, Sauter, Avancer",
+          "right": "Répéter $3$ fois : Sauter, Avancer"
+        },
+        {
+          "left": "Avancer, Avancer, Tourner, Avancer, Avancer, Tourner",
+          "right": "Répéter $2$ fois : Avancer, Avancer, Tourner"
+        }
+      ],
+      "explanation": "Lorsque plusieurs instructions se répètent dans le même ordre, on place tout le bloc d'instructions à l'intérieur de la boucle et on indique le nombre de répétitions du bloc entier.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyse de répétitions",
+      "content": "Relie chaque instruction simplifiée à la suite d'actions correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Répéter $4$ fois : Avancer, Tourner",
+          "right": "Avancer, Tourner, Avancer, Tourner, Avancer, Tourner, Avancer, Tourner"
+        },
+        {
+          "left": "Répéter $3$ fois : Sauter, Tourner, Avancer",
+          "right": "Sauter, Tourner, Avancer, Sauter, Tourner, Avancer, Sauter, Tourner, Avancer"
+        },
+        {
+          "left": "Répéter $2$ fois : Tourner, Tourner",
+          "right": "Tourner, Tourner, Tourner, Tourner"
+        }
+      ],
+      "explanation": "Pour retrouver la suite d'actions, on écrit le contenu de la boucle autant de fois que le nombre indiqué. Par exemple, Répéter $2$ fois : Tourner, Tourner donne quatre instructions Tourner au total.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

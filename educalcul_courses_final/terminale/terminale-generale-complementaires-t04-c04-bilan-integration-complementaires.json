@@ -1,0 +1,343 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.522092+00:00",
+  "id": 652,
+  "code": "terminale-generale-complementaires-t04-c04",
+  "title": "Bilan - Intégration complémentaires",
+  "description": "Cours structuré Educalcul : Bilan - Intégration complémentaires.",
+  "subject": "Calculs d'aires et intégrales",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Calculs d'aires et intégrales",
+    "titre_du_cours": "Bilan - Intégration complémentaires",
+    "objectif_global": "Bilan - Intégration complémentaires",
+    "mini_lecons_imposees": [
+      "Aire et moyenne.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calculs d'aires et intégrales",
+      "lessons": [
+        {
+          "title": "Aire et moyenne.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La valeur moyenne d'une fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu notes la température extérieure toutes les minutes pendant une heure. Pour connaître la température moyenne, tu additionnes les soixante relevés et tu divises par soixante. Mais que faire si la température varie de façon continue, sans que tu puisses la mesurer qu'à des instants précis ? C'est là qu'intervient l'intégrale : elle permet de passer d'une somme discrète à une somme continue. La valeur moyenne d'une fonction $f$ sur un intervalle $[a,b]$ est exactement ce que l'intégrale nous donne, ramenée à la longueur de l'intervalle."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur moyenne d'une fonction",
+              "definition": "Soit $f$ une fonction intégrable sur $[a,b]$. La valeur moyenne de $f$ sur $[a,b]$ est le nombre réel $m$ défini par $m = \\frac{1}{b-a} \\int_a^b f(x) \\, dx$.",
+              "example": "Pour $f(x)=x^2$ sur $[0,2]$, la valeur moyenne est $\\frac{1}{2} \\int_0^2 x^2 dx = \\frac{1}{2} \\left[ \\frac{x^3}{3} \\right]_0^2 = \\frac{4}{3}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "m = \\frac{1}{b-a} \\int_a^b f(x) \\, dx"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule est une généralisation naturelle de la moyenne arithmétique. Si tu divises $[a,b]$ en $n$ sous-intervalles de même largeur $\\Delta x = \\frac{b-a}{n}$ et que tu choisis un point $x_i^*$ dans chaque sous-intervalle, la somme de Riemann $\\frac{1}{n} \\sum_{i=1}^n f(x_i^*)$ tend vers la valeur moyenne quand $n$ tend vers l'infini. C'est pourquoi l'intégrale, qui est la limite de ces sommes, divisée par la longueur $b-a$, donne exactement cette moyenne continue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : le rectangle équivalent"
+            },
+            {
+              "type": "paragraph",
+              "content": "Géométriquement, $\\int_a^b f(x) dx$ représente l'aire du domaine compris entre la courbe $y=f(x)$, l'axe des abscisses et les droites $x=a$, $x=b$ (aire algébrique si $f$ prend des valeurs négatives). La valeur moyenne $m$ est la hauteur d'un rectangle de base $[a,b]$ qui a exactement la même aire que ce domaine. En d'autres termes, si tu « aplatis » la courbe pour en faire un rectangle de même largeur, la hauteur de ce rectangle est la valeur moyenne."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 10,
+              "caption": "Aire sous $y=x^2$ sur $[0,2]$ et rectangle de même aire (hauteur $4/3$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la figure, tu vois les rectangles de Riemann qui approximent l'aire sous la parabole. Quand tu augmentes le nombre de rectangles, leur somme se rapproche de l'intégrale. Le rectangle bleu, lui, a pour hauteur la valeur moyenne $4/3$ et pour base $[0,2]$ ; son aire est exactement $\\frac{8}{3}$, égale à $\\int_0^2 x^2 dx$. C'est une façon visuelle de comprendre que la moyenne « équilibre » les parties au-dessus et en-dessous de la courbe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de la valeur moyenne pour les intégrales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $f$ est continue sur $[a,b]$, il existe au moins un point $c \\in [a,b]$ tel que $f(c) = \\frac{1}{b-a} \\int_a^b f(x) dx$. Ce théorème garantit que la fonction atteint effectivement sa valeur moyenne en au moins un point de l'intervalle. C'est l'analogue continu du fait qu'une liste de nombres a toujours au moins un élément égal à la moyenne (si tous les nombres sont égaux) ou bien la moyenne se situe entre le minimum et le maximum."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Encadrer l'intégrale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $m = \\min_{[a,b]} f$ et $M = \\max_{[a,b]} f$. Par monotonie de l'intégrale, $m(b-a) \\le \\int_a^b f(x) dx \\le M(b-a)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Diviser par $b-a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $m \\le \\frac{1}{b-a} \\int_a^b f(x) dx \\le M$. La valeur moyenne est donc comprise entre le minimum et le maximum de $f$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer le théorème des valeurs intermédiaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme $f$ est continue, elle prend toutes les valeurs entre $m$ et $M$. Il existe donc $c \\in [a,b]$ tel que $f(c)$ soit exactement cette valeur moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple de $f(x) = \\sin x$ sur $[0, \\pi]$. L'intégrale vaut $2$, la longueur de l'intervalle est $\\pi$, donc la valeur moyenne est $2/\\pi \\approx 0,6366$. Le théorème assure qu'il existe $c \\in [0,\\pi]$ tel que $\\sin c = 2/\\pi$. En l'occurrence, $c = \\arcsin(2/\\pi) \\approx 0,69$ radians (environ $39,5^\\circ$). On voit bien que la courbe du sinus coupe la ligne horizontale $y=2/\\pi$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : vitesse moyenne, température moyenne, centre de masse"
+            },
+            {
+              "type": "paragraph",
+              "content": "La valeur moyenne n'est pas qu'un outil théorique. Si un véhicule se déplace avec une vitesse $v(t)$ (en m/s) pendant un temps $T$, la distance parcourue est $\\int_0^T v(t) dt$. La vitesse moyenne est alors $\\frac{1}{T} \\int_0^T v(t) dt$, c'est-à-dire la vitesse constante qui aurait permis de parcourir la même distance en même temps. De même, pour une tige de longueur $L$ dont la densité linéique varie selon $x$ comme $\\rho(x)$, la masse totale est $\\int_0^L \\rho(x) dx$ et la densité moyenne est $\\frac{1}{L} \\int_0^L \\rho(x) dx$. Le centre de masse (barycentre) de la tige a pour abscisse $\\frac{\\int_0^L x \\rho(x) dx}{\\int_0^L \\rho(x) dx}$, qui est une moyenne pondérée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons une tige de $1$ mètre dont la densité est $\\rho(x) = 2x + 1$ (en kg/m). La masse totale est $\\int_0^1 (2x+1) dx = [x^2+x]_0^1 = 2$ kg. La densité moyenne est $2/1 = 2$ kg/m. L'abscisse du centre de masse est $\\frac{\\int_0^1 x(2x+1) dx}{2} = \\frac{[\\frac{2}{3}x^3 + \\frac{1}{2}x^2]_0^1}{2} = \\frac{\\frac{2}{3}+\\frac{1}{2}}{2} = \\frac{7}{12} \\approx 0,583$ m. Remarque que le centre de masse n'est pas au milieu car la densité augmente avec $x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer la valeur moyenne de la fonction $f(x) = 3x^2 - 2x + 1$ sur l'intervalle $[1, 4]$.",
+              "answer": "$\\frac{1}{3} \\int_1^4 (3x^2 - 2x + 1) dx = \\frac{1}{3} \\left[ x^3 - x^2 + x \\right]_1^4 = \\frac{1}{3} ( (64-16+4) - (1-1+1) ) = \\frac{1}{3} (52 - 1) = 17$.",
+              "hint": "Calcule d'abord une primitive de $f$, puis évalue la différence aux bornes, et enfin divise par la longueur de l'intervalle ($4-1=3$).",
+              "explanation": "La primitive de $3x^2$ est $x^3$, celle de $-2x$ est $-x^2$, celle de $1$ est $x$. L'intégrale définie vaut $F(4)-F(1) = (64-16+4) - (1-1+1) = 52 - 1 = 51$. La longueur de l'intervalle est $3$, donc la moyenne est $51/3 = 17$."
+            },
+            {
+              "question": "On considère la fonction $g(x) = e^{-x}$ sur $[0, 2]$. Déterminer la valeur moyenne de $g$ et tracer (schématiquement) le rectangle de même aire que le domaine sous la courbe.",
+              "answer": "Valeur moyenne = $\\frac{1}{2} \\int_0^2 e^{-x} dx = \\frac{1}{2} \\left[ -e^{-x} \\right]_0^2 = \\frac{1}{2} ( -e^{-2} + 1 ) = \\frac{1 - e^{-2}}{2} \\approx 0,432$. Le rectangle a pour base $[0,2]$ et pour hauteur cette valeur.",
+              "hint": "Une primitive de $e^{-x}$ est $-e^{-x}$. N'oublie pas de diviser par $2-0=2$.",
+              "explanation": "L'intégrale $\\int_0^2 e^{-x} dx = [-e^{-x}]_0^2 = -e^{-2} - (-1) = 1 - e^{-2}$. La longueur de l'intervalle est $2$, donc la moyenne est $(1 - e^{-2})/2$. Le rectangle équivalent a une hauteur de $(1 - e^{-2})/2$ et une largeur de $2$, donc son aire est $1 - e^{-2}$, exactement l'aire sous la courbe."
+            },
+            {
+              "question": "Soit $h(x) = \\cos x$ sur $[0, \\pi/2]$. Vérifier que le théorème de la valeur moyenne pour les intégrales s'applique et trouver une valeur de $c$ telle que $h(c)$ soit égal à la valeur moyenne.",
+              "answer": "La fonction est continue sur $[0,\\pi/2]$, donc le théorème s'applique. Valeur moyenne = $\\frac{1}{\\pi/2} \\int_0^{\\pi/2} \\cos x \\, dx = \\frac{2}{\\pi} [\\sin x]_0^{\\pi/2} = \\frac{2}{\\pi}$. Il faut $c$ tel que $\\cos c = 2/\\pi$, soit $c = \\arccos(2/\\pi) \\approx 0,88$ rad.",
+              "hint": "Calcule l'intégrale de $\\cos x$ (primitive $\\sin x$), divise par $\\pi/2$, puis résous $\\cos c = \\text{valeur moyenne}$.",
+              "explanation": "L'intégrale vaut $\\sin(\\pi/2) - \\sin 0 = 1$. La longueur de l'intervalle est $\\pi/2$, donc la moyenne est $1/(\\pi/2) = 2/\\pi$. Comme $2/\\pi \\approx 0,6366$ est bien entre $-1$ et $1$, l'équation $\\cos c = 2/\\pi$ a une solution unique dans $[0,\\pi/2]$ car $\\cos$ est strictement décroissante sur cet intervalle. Cette solution est $c = \\arccos(2/\\pi)$."
+            },
+            {
+              "question": "Un objet se déplace sur une droite avec une vitesse $v(t) = 4 - t^2$ (en m/s) pour $t \\in [0, 2]$ secondes. Calculer sa vitesse moyenne et la distance parcourue.",
+              "answer": "Distance = $\\int_0^2 (4 - t^2) dt = \\left[ 4t - \\frac{t^3}{3} \\right]_0^2 = 8 - \\frac{8}{3} = \\frac{16}{3}$ m. Vitesse moyenne = $\\frac{1}{2} \\times \\frac{16}{3} = \\frac{8}{3}$ m/s $\\approx 2,67$ m/s.",
+              "hint": "La distance est l'intégrale de la vitesse. La vitesse moyenne est la distance divisée par la durée totale ($2$ s).",
+              "explanation": "On intègre $4 - t^2$ de $0$ à $2$ : primitive $4t - t^3/3$. La valeur en $2$ est $8 - 8/3 = 16/3$, en $0$ elle est $0$. La distance est $16/3$ mètres. La durée est $2$ secondes, donc la vitesse moyenne est $(16/3)/2 = 8/3$ m/s. Cela signifie que si l'objet avait bougé à la vitesse constante $8/3$ m/s pendant $2$ s, il aurait parcouru la même distance."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : l'intégrale définie et ses propriétés fondamentales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons ce bilan par le cœur du sujet : l'intégrale définie $\\int_a^b f(x) dx$. Rappelle-toi qu'elle est définie comme la limite des sommes de Riemann quand le pas de la subdivision tend vers zéro. Elle possède des propriétés algébriques qui en font un outil souple : la linéarité ($\\int (\\alpha f + \\beta g) = \\alpha \\int f + \\beta \\int g$), la relation de Chasles ($\\int_a^b + \\int_b^c = \\int_a^c$), et la monotonie (si $f \\le g$ alors $\\int f \\le \\int g$). Ces règles sont valables pour toutes les fonctions intégrables au sens de Riemann, c'est-à-dire continues par morceaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b (\\alpha f(x) + \\beta g(x)) \\, dx = \\alpha \\int_a^b f(x) \\, dx + \\beta \\int_a^b g(x) \\, dx"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour illustrer la linéarité. Soit $f(x) = 2x + 3\\sin x$ sur $[0, \\pi]$. Au lieu de chercher une primitive de la somme directement, on peut calculer $\\int_0^{\\pi} 2x \\, dx$ et $\\int_0^{\\pi} 3\\sin x \\, dx$ séparément. La première vaut $[x^2]_0^{\\pi} = \\pi^2$, la seconde vaut $3[-\\cos x]_0^{\\pi} = 3(1+1)=6$. L'intégrale totale est donc $\\pi^2 + 6$. Cette décomposition simplifie grandement le travail, surtout quand les primitives sont connues."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème fondamental du calcul : le lien intégrale – primitive"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est le théorème qui a révolutionné le calcul intégral : si $F$ est une primitive de $f$ sur $[a,b]$ (c'est-à-dire $F' = f$), alors $\\int_a^b f(x) dx = F(b) - F(a)$. En pratique, pour calculer une intégrale définie, il suffit de trouver une primitive (indéfinie) et de faire la différence aux bornes. Attention : toute primitive convient, car les constantes s'annulent dans la soustraction. C'est pour cela qu'on écrit souvent $\\int f(x) dx = F(x) + C$ pour l'intégrale indéfinie, mais pour l'intégrale définie, on utilise $F(b)-F(a)$ sans constante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver une primitive $F$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les tables de primitives usuelles : puissances, exponentielle, logarithme, fonctions trigonométriques, et les règles de dérivation inverse (linéarité, changement de variable, intégration par parties)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Évaluer aux bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $F(b)$ et $F(a)$, puis fais la différence $F(b) - F(a)$. Vérifie que $F$ est bien définie et continue sur $[a,b]$ (sinon, découpe l'intervalle aux points de discontinuité)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f \\ge 0$, le résultat est l'aire du domaine sous la courbe. Si $f$ change de signe, c'est l'aire algébrique (aire au-dessus de l'axe moins aire en-dessous)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $f(x) = \\frac{1}{x}$ sur $[1, e]$. Une primitive est $\\ln x$. L'intégrale vaut $\\ln e - \\ln 1 = 1 - 0 = 1$. Géométriquement, l'aire sous l'hyperbole $y=1/x$ entre $1$ et $e$ est exactement $1$ unité d'aire. C'est une propriété remarquable du logarithme népérien : il mesure l'aire sous cette courbe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul d'aires : entre courbes, par rapport à l'axe des ordonnées"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intégrale ne sert pas qu'à calculer l'aire sous une courbe par rapport à l'axe des abscisses. Si on a deux courbes $y = f(x)$ et $y = g(x)$ avec $f(x) \\ge g(x)$ sur $[a,b]$, l'aire du domaine compris entre elles est $\\int_a^b (f(x) - g(x)) dx$. De même, si la courbe s'exprime mieux sous la forme $x = h(y)$, l'aire par rapport à l'axe des ordonnées est $\\int_c^d h(y) dy$. Le choix de la variable d'intégration dépend de la simplicité de l'expression : parfois intégrer en $y$ évite de devoir inverser une fonction."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Aire entre $y=x^2$ et $y=x+2$ (en bleu) sur $[-1,2]$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons l'aire entre la parabole $y = x^2$ et la droite $y = x + 2$. Les intersections sont solutions de $x^2 = x+2$, soit $x^2 - x - 2 = 0$, donc $x = -1$ et $x = 2$. Sur $[-1,2]$, la droite est au-dessus de la parabole. L'aire cherchée est $\\int_{-1}^2 ((x+2) - x^2) dx = \\left[ \\frac{x^2}{2} + 2x - \\frac{x^3}{3} \\right]_{-1}^2$. En $2$ : $2 + 4 - 8/3 = 6 - 8/3 = 10/3$. En $-1$ : $1/2 - 2 + 1/3 = -7/6$. La différence est $10/3 - (-7/6) = 20/6 + 7/6 = 27/6 = 9/2 = 4,5$ unités d'aire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valeur moyenne et techniques d'intégration : substitution et parties"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur la valeur moyenne, mais cette fois avec des intégrales qui demandent un changement de variable ou une intégration par parties. Rappelle la formule de changement de variable : $\\int_a^b f(g(x)) g'(x) dx = \\int_{g(a)}^{g(b)} f(u) du$ avec $u = g(x)$. Et l'intégration par parties : $\\int_a^b u(x) v'(x) dx = [u(x)v(x)]_a^b - \\int_a^b u'(x) v(x) dx$. Ces techniques sont indispensables pour calculer des moyennes de fonctions composées ou produits."
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple : valeur moyenne de $f(x) = x e^{x^2}$ sur $[0, 1]$. L'intégrale $\\int_0^1 x e^{x^2} dx$ se calcule par le changement de variable $u = x^2$, $du = 2x dx$, donc $x dx = du/2$. Les bornes : $u(0)=0$, $u(1)=1$. L'intégrale devient $\\int_0^1 e^u \\frac{du}{2} = \\frac{1}{2} [e^u]_0^1 = \\frac{e-1}{2}$. La longueur de l'intervalle est $1$, donc la valeur moyenne est $\\frac{e-1}{2} \\approx 0,859$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre exemple : valeur moyenne de $g(x) = \\ln x$ sur $[1, e]$. Utilisons l'intégration par parties avec $u = \\ln x$, $v' = 1$, donc $u' = 1/x$, $v = x$. $\\int_1^e \\ln x \\, dx = [x \\ln x]_1^e - \\int_1^e x \\cdot \\frac{1}{x} dx = (e \\cdot 1 - 0) - \\int_1^e 1 dx = e - (e-1) = 1$. La moyenne est $1/(e-1) \\approx 0,582$. Remarque que l'aire sous $\\ln x$ de $1$ à $e$ est exactement $1$, ce qui est cohérent avec l'exemple du logarithme vu plus haut."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir la valeur moyenne d'une fonction sur un intervalle et l'interpréter géométriquement.",
+                "Je sais appliquer le théorème de la valeur moyenne pour les intégrales (existence d'un point $c$).",
+                "Je maîtrise les propriétés de linéarité et de Chasles pour l'intégrale définie.",
+                "Je sais utiliser le théorème fondamental du calcul pour calculer une intégrale définie via une primitive.",
+                "Je sais calculer des aires entre deux courbes ou par rapport à l'axe des ordonnées.",
+                "Je sais effectuer un changement de variable et une intégration par parties sur une intégrale définie.",
+                "Je sais résoudre des problèmes concrets (vitesse moyenne, centre de masse, etc.) en modélisant par une intégrale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $\\int_{-1}^{2} (3x^2 - 4x + 5) \\, dx$ en utilisant la linéarité de l'intégrale.",
+              "answer": "$\\int_{-1}^{2} 3x^2 dx = [x^3]_{-1}^{2} = 8 - (-1) = 9$. $\\int_{-1}^{2} -4x dx = [-2x^2]_{-1}^{2} = -8 - (-2) = -6$. $\\int_{-1}^{2} 5 dx = [5x]_{-1}^{2} = 10 - (-5) = 15$. Somme = $9 - 6 + 15 = 18$.",
+              "hint": "Décompose l'intégrale en trois intégrales simples : puissances, terme linéaire, constante. Calcule chaque primitive et évalue aux bornes.",
+              "explanation": "On utilise la linéarité : l'intégrale de la somme est la somme des intégrales. Pour $3x^2$, primitive $x^3$ ; pour $-4x$, primitive $-2x^2$ ; pour $5$, primitive $5x$. On évalue chacune en $2$ et en $-1$, on fait les différences, on additionne. Le résultat final est $18$."
+            },
+            {
+              "question": "Soit $f(x) = \\frac{2x}{x^2+1}$. Calculer $\\int_0^1 f(x) \\, dx$ en trouvant une primitive adaptée.",
+              "answer": "Une primitive est $\\ln(x^2+1)$. En effet, $(\\ln(x^2+1))' = \\frac{2x}{x^2+1}$. L'intégrale vaut $\\ln(1^2+1) - \\ln(0^2+1) = \\ln 2 - \\ln 1 = \\ln 2$.",
+              "hint": "Remarque que le numérateur est la dérivée du dénominateur (à une constante près). Pense à la primitive de $u'/u$.",
+              "explanation": "La fonction est de la forme $u'/u$ avec $u(x)=x^2+1$. Une primitive est $\\ln|u(x)| = \\ln(x^2+1)$ (positif). On évalue en $1$ : $\\ln 2$, en $0$ : $\\ln 1 = 0$. La différence donne $\\ln 2$."
+            },
+            {
+              "question": "Déterminer l'aire du domaine borné par les courbes $y = x^3$ et $y = x$ sur l'intervalle où elles s'intersectent.",
+              "answer": "Intersections : $x^3 = x \\Rightarrow x(x^2-1)=0 \\Rightarrow x=-1, 0, 1$. Sur $[-1,0]$, $x^3 \\ge x$ (car $x$ négatif), sur $[0,1]$, $x \\ge x^3$. Aire = $\\int_{-1}^0 (x^3 - x) dx + \\int_0^1 (x - x^3) dx = \\left[ \\frac{x^4}{4} - \\frac{x^2}{2} \\right]_{-1}^0 + \\left[ \\frac{x^2}{2} - \\frac{x^4}{4} \\right]_0^1 = (0 - (1/4 - 1/2)) + (1/2 - 1/4 - 0) = 1/4 + 1/4 = 1/2$.",
+              "hint": "Trouve d'abord les points d'intersection. Détermine sur chaque sous-intervalle laquelle des deux courbes est au-dessus. Intègre la différence dans le bon ordre.",
+              "explanation": "Les courbes se coupent en $-1$, $0$, $1$. Entre $-1$ et $0$, $x^3$ est au-dessus de $x$ (ex: en $-0.5$, $-0.125 > -0.5$). Entre $0$ et $1$, $x$ est au-dessus. L'aire totale est la somme des intégrales de la différence dans le bon sens. Chaque intégrale vaut $1/4$, total $1/2$."
+            },
+            {
+              "question": "Calculer la valeur moyenne de la fonction $h(x) = x \\cos(x^2)$ sur l'intervalle $[0, \\sqrt{\\pi/2}]$.",
+              "answer": "Changement de variable $u = x^2$, $du = 2x dx$, $x dx = du/2$. Bornes : $u(0)=0$, $u(\\sqrt{\\pi/2}) = \\pi/2$. $\\int_0^{\\sqrt{\\pi/2}} x \\cos(x^2) dx = \\int_0^{\\pi/2} \\cos u \\, \\frac{du}{2} = \\frac{1}{2} [\\sin u]_0^{\\pi/2} = \\frac{1}{2}$. Longueur de l'intervalle = $\\sqrt{\\pi/2}$. Valeur moyenne = $\\frac{1/2}{\\sqrt{\\pi/2}} = \\frac{1}{\\sqrt{2\\pi}}$.",
+              "hint": "Le facteur $x$ devant $\\cos(x^2)$ suggère le changement de variable $u = x^2$. N'oublie pas de convertir les bornes et de diviser par la longueur de l'intervalle.",
+              "explanation": "On pose $u=x^2$, alors $du=2x dx$, donc $x dx = du/2$. L'intégrale devient $\\frac12 \\int_0^{\\pi/2} \\cos u \\, du = \\frac12 (1-0) = 1/2$. La longueur de l'intervalle initial est $\\sqrt{\\pi/2} - 0 = \\sqrt{\\pi/2}$. La moyenne est $(1/2) / \\sqrt{\\pi/2} = 1/\\sqrt{2\\pi}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

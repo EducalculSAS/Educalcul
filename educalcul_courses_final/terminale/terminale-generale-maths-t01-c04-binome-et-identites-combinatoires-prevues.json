@@ -1,0 +1,552 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.590042+00:00",
+  "id": 676,
+  "code": "terminale-generale-maths-t01-c04",
+  "title": "Binôme et identités combinatoires prévues",
+  "description": "Cours structuré Educalcul : Binôme et identités combinatoires prévues.",
+  "subject": "Dénombrement et algèbre",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Dénombrement et algèbre",
+    "titre_du_cours": "Binôme et identités combinatoires prévues",
+    "objectif_global": "Binôme et identités combinatoires prévues",
+    "mini_lecons_imposees": [
+      "Développer.",
+      "Interpréter.",
+      "Utiliser."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Dénombrement et algèbre",
+      "lessons": [
+        {
+          "title": "Développer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le binôme de Newton : développement général"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment écrire le développement d'une puissance d'une somme, c'est-à-dire $(a+b)^n$ avec $n$ un entier naturel. Cette formule, connue sous le nom de binôme de Newton, est un outil central en algèbre et en combinatoire. Elle permet de transformer une expression compacte en une somme de termes dont les coefficients sont des nombres entiers que l'on retrouve dans le triangle de Pascal. Prenons le temps de bien comprendre d'où viennent ces coefficients et comment les calculer sans avoir à multiplier la somme par elle-même $n$ fois."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^{k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation $\\binom{n}{k}$ se lit « $n$ parmi $k$ » et désigne le coefficient binomial. Il compte le nombre de façons de choisir $k$ objets parmi $n$ sans tenir compte de l'ordre. Dans le développement, chaque terme correspond à un choix précis : on sélectionne $k$ fois le deuxième élément $b$ et les $n-k$ fois restantes le premier élément $a$. Le coefficient $\\binom{n}{k}$ indique combien de sélections différentes produisent le même monôme $a^{n-k}b^{k}$. C'est cette interprétation combinatoire qui rend la formule à la fois élégante et puissante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le produit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $(a+b)^n$ comme le produit de $n$ facteurs identiques $(a+b)(a+b)\\cdots(a+b)$. Chaque facteur contribue soit par un $a$, soit par un $b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir les $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour obtenir un terme contenant exactement $k$ facteurs $b$, il faut choisir lesquels des $n$ facteurs fourniront ce $b$. Le nombre de choix possibles est $\\binom{n}{k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Rassembler les termes semblables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les choix qui placent les $b$ aux mêmes positions donnent le même monôme $a^{n-k}b^{k}$. En les additionnant, le coefficient devant ce monôme devient $\\binom{n}{k}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la démonstration est claire, mettons-la en pratique avec un premier exercice ciblé sur le développement pur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les coefficients et le triangle de Pascal"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les coefficients $\\binom{n}{k}$ pour un $n$ fixé forment la $n$-ième ligne du triangle de Pascal. Cette construction géométrique permet de les obtenir récursivement : chaque nombre est la somme des deux nombres au-dessus de lui. Pour $n=5$, la ligne est $1, 5, 10, 10, 5, 1$. Visualisons cette distribution avec un diagramme en barres."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Coefficients du développement de $(a+b)^5$",
+              "bars": [
+                {
+                  "label": "k=0",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=2",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=3",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=4",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=5",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observez la symétrie : $\\binom{5}{k} = \\binom{5}{5-k}$. Cette propriété reflète le fait que choisir $k$ objets parmi $5$ revient à choisir les $5-k$ objets qui ne sont pas pris. Nous allons maintenant vérifier cette symétrie sur un exemple concret."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Terme général et exemples numériques"
+            },
+            {
+              "type": "display_math",
+              "latex": "T_{k+1} = \\binom{n}{k} a^{n-k} b^{k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le terme d'indice $k$ (en commençant à $k=0$) s'écrit $T_{k+1} = \\binom{n}{k} a^{n-k} b^{k}$. Pour $(2u+v)^6$, le terme contenant $v^3$ correspond à $k=3$ : son coefficient est $\\binom{6}{3}=20$ et la partie en $u$ est $(2u)^{3}=8u^{3}$, ce qui donne $20 \\times 8 u^{3} v^{3} = 160 u^{3} v^{3}$. Entraînons-nous à identifier et calculer ce terme général."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant toutes les clés pour développer n'importe quel binôme. Dans la prochaine leçon, nous donnerons du sens à ces coefficients en les interprétant comme des nombres de choix, des chemins ou des probabilités."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développez $(x+2)^4$ en utilisant la formule du binôme.",
+              "answer": "$x^4 + 8x^3 + 24x^2 + 32x + 16$",
+              "hint": "Identifiez $a=x$, $b=2$, $n=4$ et calculez les coefficients $\\binom{4}{k}$ pour $k=0\\ldots4$.",
+              "explanation": "On a $\\binom{4}{0}=1$, $\\binom{4}{1}=4$, $\\binom{4}{2}=6$, $\\binom{4}{3}=4$, $\\binom{4}{4}=1$. Les termes sont $1\\cdot x^4\\cdot2^0$, $4\\cdot x^3\\cdot2^1$, $6\\cdot x^2\\cdot2^2$, $4\\cdot x^1\\cdot2^3$, $1\\cdot x^0\\cdot2^4$, ce qui donne $x^4+8x^3+24x^2+32x+16$."
+            },
+            {
+              "question": "Quels sont les coefficients du développement de $(3y-1)^5$ ?",
+              "answer": "$243, -405, 270, -90, 15, -1$",
+              "hint": "Utilisez $\\binom{5}{k}$ et les puissances de $3y$ et $-1$.",
+              "explanation": "Les coefficients binomiaux pour $n=5$ sont $1,5,10,10,5,1$. Les termes sont $\\binom{5}{k}(3y)^{5-k}(-1)^k$. En calculant chaque terme, on obtient $243y^5 -405y^4 +270y^3 -90y^2 +15y -1$. Les coefficients numériques sont donc $243, -405, 270, -90, 15, -1$."
+            },
+            {
+              "question": "Écrivez le terme général du développement de $(2u+v)^6$.",
+              "answer": "$\\binom{6}{k} (2u)^{6-k} v^{k}$",
+              "hint": "Repérez $a=2u$, $b=v$, $n=6$ et appliquez la formule $T_{k+1} = \\binom{n}{k} a^{n-k} b^{k}$.",
+              "explanation": "D'après la formule du binôme, le terme d'indice $k$ est $\\binom{6}{k} (2u)^{6-k} v^{k}$. On peut aussi l'écrire $\\binom{6}{k} 2^{6-k} u^{6-k} v^{k}$."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation combinatoire des coefficients"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous changeons de perspective : au lieu de voir $\\binom{n}{k}$ comme un simple coefficient algébrique, nous l'interprétons comme le nombre de parties à $k$ éléments d'un ensemble à $n$ éléments. Cette lecture donne une intuition profonde aux identités du binôme et permet de démontrer des égalités sans calculs lourds. Imaginez un groupe de $n$ personnes : choisir un comité de $k$ membres se fait de $\\binom{n}{k}$ façons. C'est exactement le coefficient qui apparaît devant $a^{n-k}b^{k}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{k=0}^{n} \\binom{n}{k} = 2^{n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'identité $\\sum_{k=0}^{n} \\binom{n}{k} = 2^{n}$ s'explique en comptant les sous-ensembles d'un ensemble à $n$ éléments. Chaque élément peut être soit dans le sous-ensemble, soit hors de celui-ci : deux choix indépendants par élément, donc $2^n$ sous-ensembles au total. En classant ces sous-ensembles selon leur cardinal $k$, on récupère la somme des coefficients binomiaux. C'est une preuve purement combinatoire, sans développement algébrique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Modéliser les choix",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque des $n$ éléments, on décide s'il appartient au sous-ensemble (choix 1) ou non (choix 0). Cela donne $2^n$ chaînes de $n$ bits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Grouper par nombre de 1",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les chaînes contenant exactement $k$ bits à 1 correspondent aux sous-ensembles à $k$ éléments. Leur nombre est $\\binom{n}{k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme sur $k$ de $\\binom{n}{k}$ compte donc toutes les chaînes, soit $2^n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons de mettre en œuvre cette idée sur un exercice qui demande de retrouver $2^n$ par une somme de coefficients."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Somme alternée et parité"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{k=0}^{n} (-1)^{k} \\binom{n}{k} = 0 \\quad (n\\ge 1)"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'identité alternée s'obtient en évaluant $(1-1)^n$ avec la formule du binôme. Combinatoirement, elle dit que le nombre de sous-ensembles de cardinal pair équivaut au nombre de sous-ensembles de cardinal impair (pour $n\\ge1$). On peut le voir en associant chaque sous-ensemble à son complémentaire : l'un a cardinal $k$, l'autre $n-k$, et leurs parités sont opposées quand $n$ est impair ; quand $n$ est pair, un argument d'involution sur un élément fixé fonctionne également. Cette symétrie est au cœur de nombreux raisonnements parité en combinatoire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser $a=1, b=-1$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $(a+b)^n$, on prend $a=1$, $b=-1$. Le développement donne $\\sum_{k=0}^{n} \\binom{n}{k} 1^{n-k}(-1)^{k} = \\sum_{k=0}^{n} (-1)^{k} \\binom{n}{k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer $(1-1)^n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le membre de gauche vaut $0^n = 0$ pour tout $n\\ge1$. Donc la somme alternée est nulle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions cette propriété sur un cas numérique avant de passer à l'identité de Vandermonde."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identité de Vandermonde"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\binom{m+n}{r} = \\sum_{k=0}^{r} \\binom{m}{k} \\binom{n}{r-k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'identité de Vandermonde compte les façons de choisir $r$ objets parmi deux groupes disjoints de tailles $m$ et $n$. On peut choisir $k$ objets dans le premier groupe et $r-k$ dans le second ; en sommant sur $k$, on obtient toutes les possibilités. C'est une généralisation naturelle du coefficient binomial et elle apparaît souvent dans les problèmes de chemins sur une grille ou de convolution de suites."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "k",
+                "\\binom{m}{k}",
+                "\\binom{n}{r-k}",
+                "Produit"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "\\binom{m}{0}",
+                  "\\binom{n}{r}",
+                  "\\binom{m}{0}\\binom{n}{r}"
+                ],
+                [
+                  "1",
+                  "\\binom{m}{1}",
+                  "\\binom{n}{r-1}",
+                  "\\binom{m}{1}\\binom{n}{r-1}"
+                ],
+                [
+                  "\\vdots",
+                  "\\vdots",
+                  "\\vdots",
+                  "\\vdots"
+                ],
+                [
+                  "r",
+                  "\\binom{m}{r}",
+                  "\\binom{n}{0}",
+                  "\\binom{m}{r}\\binom{n}{0}"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau ci-dessus illustre la décomposition pour un $r$ fixé. Chaque ligne correspond à une valeur de $k$ et le produit des deux coefficients donne le nombre de choix pour ce $k$. La somme de la dernière colonne est exactement $\\binom{m+n}{r}$. Nous allons maintenant appliquer cette identité dans un exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vu comment les coefficients binomiaux racontent des histoires de choix, de parité et de regroupement. La prochaine leçon montrera comment exploiter ces identités pour simplifier des expressions, calculer des limites ou résoudre des problèmes de probabilités."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculez $\\sum_{k=0}^{6} \\binom{6}{k}$ sans développer le binôme.",
+              "answer": "$64$",
+              "hint": "Utilisez l'identité $\\sum_{k=0}^{n} \\binom{n}{k} = 2^{n}$ avec $n=6$.",
+              "explanation": "D'après l'interprétation combinatoire, la somme des coefficients de la ligne $n=6$ du triangle de Pascal vaut $2^{6}=64$."
+            },
+            {
+              "question": "Vérifiez que $\\sum_{k=0}^{5} (-1)^{k} \\binom{5}{k} = 0$.",
+              "answer": "$0$",
+              "hint": "Évaluez $(1-1)^5$ avec la formule du binôme.",
+              "explanation": "On a $(1-1)^5 = 0^5 = 0$. Le développement donne $\\sum_{k=0}^{5} \\binom{5}{k} 1^{5-k}(-1)^k = \\sum_{k=0}^{5} (-1)^k \\binom{5}{k}$, donc la somme est $0$."
+            },
+            {
+              "question": "En utilisant l'identité de Vandermonde, calculez $\\sum_{k=0}^{3} \\binom{4}{k} \\binom{5}{3-k}$.",
+              "answer": "$\\binom{9}{3} = 84$",
+              "hint": "Identifiez $m=4$, $n=5$, $r=3$ dans la formule de Vandermonde.",
+              "explanation": "Vandermonde donne $\\binom{4+5}{3} = \\binom{9}{3} = \\frac{9\\times8\\times7}{3\\times2\\times1} = 84$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications du binôme : probabilités, approximations et identités avancées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon met en pratique tout ce que nous avons construit. Le binôme de Newton n'est pas seulement une formule de développement : c'est un pont entre l'algèbre, la combinatoire et l'analyse. Nous verrons comment il modélise les lois binomiales en probabilités, comment il fournit des approximations précises pour $(1+u)^n$ quand $u$ est petit, et comment des identités comme celle de Chu-Vandermonde ou les sommes de puissances de coefficients simplifient des calculs complexes. Chaque application sera illustrée par un exemple concret, puis vous testerez votre compréhension."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(X=k) = \\binom{n}{k} p^{k} (1-p)^{n-k}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La loi binomiale décrit le nombre de succès $X$ dans $n$ épreuves indépendantes de probabilité $p$. La formule est exactement le terme général du développement de $(p + (1-p))^n = 1^n = 1$, ce qui garantit que la somme des probabilités vaut $1$. Visualisons la distribution pour $n=10$, $p=0.3$ à l'aide d'un graphique."
+            },
+            {
+              "type": "graph",
+              "expression": "binomial(10,0.3)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Distribution binomiale pour n=10, p=0.3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique montre la forme en cloche asymétrique. Le pic se situe près de $k=np=3$. Cette représentation aide à estimer des probabilités comme $P(X\\le 2)$ sans calculer chaque terme. Passons à un exercice qui utilise cette idée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Approximation par le binôme et développement limité"
+            },
+            {
+              "type": "display_math",
+              "latex": "(1+u)^n = 1 + nu + \\frac{n(n-1)}{2}u^2 + o(u^2) \\quad (u\\to 0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand $u$ est petit, les termes d'ordre supérieur à $2$ deviennent négligeables. Cette approximation est la base du développement limité d'ordre $2$ de la fonction $x \\mapsto (1+x)^n$ au voisinage de $0$. Elle permet, par exemple, de calculer $\\sqrt{1.02} = (1+0.02)^{1/2} \\approx 1 + \\frac{1}{2}\\cdot0.02 - \\frac{1}{8}\\cdot0.02^2$. Nous allons détailler la méthode pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier $n$ et $u$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $(1+u)^n$, repérez l'exposant $n$ (peut être non entier) et le petit paramètre $u$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire les deux premiers termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le développement donne $1 + n u + \\frac{n(n-1)}{2}u^2 + \\cdots$. On s'arrête à l'ordre souhaité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Évaluer le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le terme suivant est de l'ordre de $u^3$. Si $|u|<0.1$, l'erreur est souvent inférieure à $10^{-4}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, appliquons cette approximation pour estimer une racine carrée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Identités de Chu-Vandermonde et sommes de puissances"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sum_{k=0}^{n} \\binom{n}{k}^2 = \\binom{2n}{n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'identité $\\sum_{k=0}^{n} \\binom{n}{k}^2 = \\binom{2n}{n}$ est un cas particulier de Chu-Vandermonde avec $m=n=r$. Elle compte les façons de choisir $n$ objets parmi $2n$ en séparant les $2n$ objets en deux groupes de $n$. Choisir $k$ dans le premier et $n-k$ dans le second donne $\\binom{n}{k}\\binom{n}{n-k} = \\binom{n}{k}^2$ ; la somme sur $k$ donne le total. Cette identité apparaît dans l'étude des coefficients du développement de $(1+x)^{2n}$ et dans l'évaluation d'intégrales comme $\\int_0^1 (1-x^2)^n dx$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser $m=n=r$ dans Vandermonde",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a $\\binom{n+n}{n} = \\sum_{k=0}^{n} \\binom{n}{k} \\binom{n}{n-k}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\binom{n}{n-k} = \\binom{n}{k}$, donc le terme du produit devient $\\binom{n}{k}^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme des carrés des coefficients de la ligne $n$ vaut le coefficient central de la ligne $2n$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un exercice qui combine plusieurs identités pour simplifier une expression."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer $(a+b)^n$ avec la formule du binôme.",
+                "J'interprète les coefficients $\\binom{n}{k}$ comme des nombres de choix.",
+                "J'utilise les identités $\\sum \\binom{n}{k}=2^n$ et $\\sum (-1)^k \\binom{n}{k}=0$ dans des preuves.",
+                "Je sais appliquer le binôme pour approximer $(1+u)^n$ quand $u$ est petit."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une pièce équilibrée est lancée 8 fois. Quelle est la probabilité d'obtenir exactement 3 faces ?",
+              "answer": "$\\binom{8}{3} \\left(\\frac{1}{2}\\right)^8 = \\frac{56}{256} = \\frac{7}{32}$",
+              "hint": "Utilisez la loi binomiale avec $n=8$, $p=1/2$, $k=3$.",
+              "explanation": "Le nombre de suites avec 3 faces est $\\binom{8}{3}=56$. Chaque suite a une probabilité $(1/2)^8$. Le produit donne $56/256 = 7/32$."
+            },
+            {
+              "question": "Donnez une approximation de $\\sqrt{1.04}$ au $10^{-4}$ près en utilisant le développement limité d'ordre 2.",
+              "answer": "$1.0198$",
+              "hint": "Écrivez $\\sqrt{1.04} = (1+0.04)^{1/2}$ et appliquez $1 + \\frac{1}{2}u - \\frac{1}{8}u^2$ avec $u=0.04$.",
+              "explanation": "On a $1 + 0.5\\times0.04 - 0.125\\times0.0016 = 1 + 0.02 - 0.0002 = 1.0198$. L'erreur est de l'ordre de $u^3 \\approx 6.4\\times10^{-5}$, donc la précision $10^{-4}$ est atteinte."
+            },
+            {
+              "question": "Simplifiez $\\sum_{k=0}^{5} \\binom{5}{k} \\binom{7}{5-k}$.",
+              "answer": "$\\binom{12}{5} = 792$",
+              "hint": "Reconnaissez l'identité de Vandermonde avec $m=5$, $n=7$, $r=5$.",
+              "explanation": "Vandermonde donne $\\binom{5+7}{5} = \\binom{12}{5} = \\frac{12\\times11\\times10\\times9\\times8}{5\\times4\\times3\\times2\\times1} = 792$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

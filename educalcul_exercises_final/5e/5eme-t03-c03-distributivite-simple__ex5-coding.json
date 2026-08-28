@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 391,
+  "_course_code": "5eme-t03-c03-distributivite-simple",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Développer k(a+b)",
+  "title": "Algorithmes et distributivité : développer k(a+b)",
+  "blocks": [
+    {
+      "title": "Algorithme en langage naturel",
+      "content": "Écrire un algorithme en langage naturel (pseudo-code) qui permet de développer l'expression $k \\times (a + b)$ pour des valeurs numériques données de $k$, $a$ et $b$. L'algorithme doit calculer et afficher les deux produits partiels $k \\times a$ et $k \\times b$, puis leur somme finale.",
+      "correctAnswer": "1. Demander les valeurs de k, a et b.\\n2. Calculer produit1 = k * a.\\n3. Calculer produit2 = k * b.\\n4. Calculer somme = produit1 + produit2.\\n5. Afficher produit1, produit2 et somme.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distributivité simple s'écrit $k(a+b) = ka + kb$. L'algorithme suit cette règle en trois étapes de calcul : multiplication de $k$ par $a$, multiplication de $k$ par $b$, puis addition des deux résultats.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Script Python à compléter",
+      "content": "Compléter le script Python ci-dessous pour qu'il développe l'expression $k \\times (a + b)$ avec $k=5$, $a=12$ et $b=8$, puis affiche le détail du calcul sous la forme : $5 \\times 12 + 5 \\times 8 = 100$.\\n\\nk = 5\\na = 12\\nb = 8\\n# Compléter les lignes suivantes\\nproduit1 = ...\\nproduit2 = ...\\nresultat = ...\\nprint(f\"{k} \\times {a} + {k} \\times {b} = {resultat}\")",
+      "correctAnswer": "produit1 = k * a\\nproduit2 = k * b\\nresultat = produit1 + produit2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On affecte à produit1 le calcul $k \\times a$ (soit $5 \\times 12 = 60$) et à produit2 le calcul $k \\times b$ (soit $5 \\times 8 = 40$). La variable resultat stocke la somme $60 + 40 = 100$. L'instruction print utilise une f-string pour afficher l'égalité complète.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Détection et correction d'erreur",
+      "content": "Un élève a écrit l'algorithme suivant pour développer $k \\times (a + b)$ :\\n1. Lire k, a, b\\n2. calcul ← k * a + b\\n3. Afficher calcul\\n\\nIdentifier l'erreur commise par rapport à la propriété de distributivité et réécrire correctement l'étape 2.",
+      "correctAnswer": "Erreur : l'algorithme calcule $k \\times a + b$ au lieu de $k \\times a + k \\times b$. Le terme $b$ n'est pas multiplié par $k$. Correction de l'étape 2 : calcul ← k * a + k * b.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distributivité impose de multiplier le facteur $k$ par chaque terme à l'intérieur de la parenthèse : $k(a+b) = ka + kb$. Dans l'algorithme erroné, seul $a$ est multiplié par $k$ ; $b$ est simplement ajouté. Il faut donc ajouter la multiplication $k * b$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

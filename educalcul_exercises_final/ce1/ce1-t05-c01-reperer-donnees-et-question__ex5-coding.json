@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 108,
+  "_course_code": "ce1-t05-c01-reperer-donnees-et-question",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Séparer informations utiles et inutiles",
+  "title": "Séparer les informations utiles et inutiles - Algorithmes CE1",
+  "blocks": [
+    {
+      "title": "Problème des pommes",
+      "content": "Il y a $12$ pommes dans un panier. $3$ pommes sont pourries. Le panier est rouge. Combien de pommes bonnes reste-t-il ? Écris un algorithme pour le résoudre.",
+      "correctAnswer": "Étape 1 : Lire le total de pommes ($12$).\\nÉtape 2 : Lire le nombre de pommes pourries ($3$).\\nÉtape 3 : Ignorer la couleur du panier (information inutile).\\nÉtape 4 : Calculer les pommes bonnes = $12$ - $3$ = $9$.\\nÉtape 5 : Afficher $9$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total de pommes ($12$) et le nombre de pommes pourries ($3$) sont les données utiles. La couleur du panier ne sert pas. On soustrait $3$ de $12$ pour obtenir $9$ pommes bonnes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de la classe",
+      "content": "Dans une classe il y a $20$ élèves. $8$ sont des garçons. $5$ élèves portent des lunettes. La classe a un tableau noir. Combien y a-t-il de filles ? Écris un algorithme pour le résoudre.",
+      "correctAnswer": "Étape 1 : Lire le total d'élèves ($20$).\\nÉtape 2 : Lire le nombre de garçons ($8$).\\nÉtape 3 : Ignorer le nombre de porteurs de lunettes ($5$) et le tableau noir (informations inutiles).\\nÉtape 4 : Calculer le nombre de filles = $20$ - $8$ = $12$.\\nÉtape 5 : Afficher $12$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver le nombre de filles, on utilise le total d'élèves ($20$) et le nombre de garçons ($8$). Le nombre de lunettes ($5$) et le tableau noir ne changent pas le calcul. On soustrait $8$ de $20$ pour obtenir $12$ filles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème des bonbons",
+      "content": "Un magasin possède $50$ bonbons. Le matin il en vend $12$. L'après-midi il en vend $15$. $3$ bonbons sont perdus. Le magasin ouvre à $9$ heures. Combien de bonbons restent-ils ? Écris un algorithme pour le résoudre.",
+      "correctAnswer": "Étape 1 : Lire le stock initial ($50$).\\nÉtape 2 : Lire les ventes du matin ($12$).\\nÉtape 3 : Lire les ventes de l'après-midi ($15$).\\nÉtape 4 : Lire les bonbons perdus ($3$).\\nÉtape 5 : Ignorer l'heure d'ouverture ($9$ heures) (information inutile).\\nÉtape 6 : Calculer le reste = $50$ - $12$ - $15$ - $3$ = $20$.\\nÉtape 7 : Afficher $20$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les quantités initiales ($50$), vendues le matin ($12$), vendues l'après-midi ($15$) et perdues ($3$) sont utiles. L'heure d'ouverture ($9$ heures) ne sert pas. On effectue les soustractions successives : $50$ - $12$ = $38$, $38$ - $15$ = $23$, $23$ - $3$ = $20$ bonbons restants.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

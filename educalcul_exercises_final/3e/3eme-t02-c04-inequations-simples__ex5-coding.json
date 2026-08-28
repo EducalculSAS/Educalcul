@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 464,
+  "_course_code": "3eme-t02-c04-inequations-simples",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Résoudre",
+  "title": "Résolution d'inéquations simples : algorithmes",
+  "blocks": [
+    {
+      "title": "Algorithme pour $ax + b < c$ avec $a>0$",
+      "content": "Écrire un algorithme (ou un code en pseudo‑Python) qui résout une inéquation de la forme $ax + b < c$ en supposant $a > 0$. L'algorithme doit afficher l'ensemble des solutions sous forme d'intervalle.",
+      "correctAnswer": "1. Lire les valeurs de a, b, c.\\n2. Vérifier que a > 0 (sinon afficher une erreur).\\n3. Calculer limite = (c - b) / a.\\n4. Afficher : L'ensemble des solutions est ]-∞ ; limite[ .",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme $a>0$, on peut diviser par $a$ sans changer le sens de l'inéquation. On isole $x$ : $ax < c-b$ donc $x < (c-b)/a$. L'intervalle est ouvert à droite car l'inéquation est stricte.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour $ax + b \\ge c$ avec $a$ quelconque",
+      "content": "Écrire un algorithme qui résout $ax + b \\ge c$ pour tout réel $a \\neq 0$. L'algorithme doit tester le signe de $a$ et inverser le sens de l'inéquation si $a < 0$. Afficher l'intervalle solution.",
+      "correctAnswer": "1. Lire a, b, c.\\n2. Si a = 0 alors afficher \"Pas d'inéquation du premier degré\" et arrêter.\\n3. Calculer limite = (c - b) / a.\\n4. Si a > 0 alors afficher : L'ensemble des solutions est [limite ; +∞[ .\\n5. Si a < 0 alors afficher : L'ensemble des solutions est ]-∞ ; limite] .",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole $x$ : $ax \\ge c-b$. Si $a>0$, la division conserve le sens, $x \\ge (c-b)/a$. Si $a<0$, la division inverse le sens, $x \\le (c-b)/a$. L'inéquation est large donc l'intervalle est fermé du côté de la limite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application à $3x - 7 > 2x + 5$",
+      "content": "Pour l'inéquation $3x - 7 > 2x + 5$, écrire un algorithme pas à pas (ou un code) qui isole $x$ et détermine l'ensemble des solutions. Préciser la solution finale.",
+      "correctAnswer": "1. Lire les coefficients : a1=3, b1=-7, a2=2, b2=5.\\n2. Soustraire a2*x des deux côtés : (3-2)x - 7 > 5  →  x - 7 > 5.\\n3. Ajouter 7 des deux côtés : x > 12.\\n4. Afficher : L'ensemble des solutions est ]12 ; +∞[ .",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On regroupe les termes en $x$ à gauche : $3x-2x > 5+7$ ce qui donne $x > 12$. Comme l'inéquation est stricte, l'intervalle est ouvert à 12.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

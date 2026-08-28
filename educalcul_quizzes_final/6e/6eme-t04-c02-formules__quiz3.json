@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 348,
+  "_course_code": "6eme-t04-c02-formules",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Interpréter résultat",
+  "title": "Quiz : Interpréter un résultat (Formules)",
+  "questions": [
+    {
+      "text": "Un carré a un côté de $5$ cm. On calcule $4 \\times 5 = 20$. Que représente le nombre $20$ ?",
+      "options": [
+        "L'aire du carré",
+        "Le périmètre du carré",
+        "La longueur d'un côté",
+        "Le volume du carré"
+      ],
+      "correctAnswer": "Le périmètre du carré",
+      "explanation": "La formule du périmètre d'un carré est $P = 4 \\times c$. Ici $c = 5$ cm, donc $P = 4 \\times 5 = 20$ cm. Le résultat $20$ est une longueur, c'est le périmètre. L'aire serait $5 \\times 5 = 25$ cm². Le volume n'existe pas pour une figure plane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur de $8$ cm et une largeur de $3$ cm. On calcule $8 \\times 3 = 24$. Quelle unité associer au résultat ?",
+      "options": [
+        "$24$ cm",
+        "$24$ cm$^2$",
+        "$24$ cm$^3$",
+        "$24$ sans unité"
+      ],
+      "correctAnswer": "$24$ cm$^2$",
+      "explanation": "L'aire d'un rectangle se calcule par $A = L \\times l = 8 \\times 3 = 24$. Comme on multiplie deux longueurs exprimées en cm, l'unité de surface est le centimètre carré, noté cm$^2$. Le cm sert pour une longueur, le cm$^3$ pour un volume.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le périmètre d'un rectangle est $20$ cm. Sa longueur est $6$ cm. On utilise la formule $P = 2 \\times (L + l)$. Après calcul, on trouve $l = 4$. Que représente ce $4$ ?",
+      "options": [
+        "Le périmètre",
+        "La longueur",
+        "La largeur",
+        "L'aire"
+      ],
+      "correctAnswer": "La largeur",
+      "explanation": "On a $P = 20$ et $L = 6$. La formule donne $20 = 2 \\times (6 + l)$. En divisant par $2$ : $10 = 6 + l$. Donc $l = 10 - 6 = 4$ cm. Ce résultat est la largeur (la dimension manquante), pas la longueur (qui est $6$), ni le périmètre ($20$), ni l'aire ($6 \\times 4 = 24$ cm$^2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jardin rectangulaire mesure $10$ m de long et $4$ m de large. On veut l'entourer de grillage vendu par rouleaux de $5$ m. Le périmètre est $28$ m. On calcule $28 \\div 5 = 5,6$. Comment interpréter ce résultat pour l'achat ?",
+      "options": [
+        "Il faut acheter $5$ rouleaux",
+        "Il faut acheter $6$ rouleaux",
+        "Il faut acheter $5,6$ rouleaux",
+        "Le jardin mesure $5,6$ m de tour"
+      ],
+      "correctAnswer": "Il faut acheter $6$ rouleaux",
+      "explanation": "Le périmètre est $2 \\times (10 + 4) = 28$ m. Chaque rouleau fait $5$ m. $28 \\div 5 = 5,6$. On ne peut pas acheter $0,6$ de rouleau, il faut arrondir au supérieur pour avoir assez de grillage, donc $6$ rouleaux. $5$ rouleaux ne feraient que $25$ m, ce qui est insuffisant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compare un carré de côté $6$ cm et un rectangle de longueur $8$ cm et largeur $3$ cm. Le carré a un périmètre de $24$ cm et une aire de $36$ cm$^2$. Le rectangle a un périmètre de $22$ cm et une aire de $24$ cm$^2$. Quelle affirmation est correcte ?",
+      "options": [
+        "Le carré a un plus grand périmètre et une plus grande aire",
+        "Le rectangle a un plus grand périmètre et une plus grande aire",
+        "Le carré a un plus grand périmètre mais le rectangle a une plus grande aire",
+        "Le rectangle a un plus grand périmètre mais le carré a une plus grande aire"
+      ],
+      "correctAnswer": "Le carré a un plus grand périmètre et une plus grande aire",
+      "explanation": "Carré : $P = 4 \\times 6 = 24$ cm, $A = 6 \\times 6 = 36$ cm$^2$. Rectangle : $P = 2 \\times (8 + 3) = 22$ cm, $A = 8 \\times 3 = 24$ cm$^2$. On compare : $24 > 22$ pour le périmètre et $36 > 24$ pour l'aire. Le carré est plus grand dans les deux mesures.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

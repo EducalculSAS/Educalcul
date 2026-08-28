@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 333,
+  "_course_code": "6eme-t01-c03-arrondis-et-valeurs-approchees",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Choisir précision",
+  "title": "Quiz : Choisir la précision d'un arrondi",
+  "questions": [
+    {
+      "text": "Quelle est la valeur approchée de $3,14159$ arrondie à l'entier ?",
+      "options": [
+        "$3$",
+        "$3,1$",
+        "$3,14$",
+        "$4$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Pour arrondir à l'entier, on regarde le chiffre des dixièmes qui est $1$. Comme $1 < 5$, on conserve la partie entière $3$. Les autres options correspondent à un arrondi au dixième, au centième ou à l'entier supérieur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une longueur mesure $12,347$ mètres. Quelle est sa valeur approchée au décimètre près ?",
+      "options": [
+        "$12,3$ m",
+        "$12,35$ m",
+        "$12,34$ m",
+        "$12,4$ m"
+      ],
+      "correctAnswer": "$12,3$ m",
+      "explanation": "Le décimètre correspond au dixième de mètre, donc on arrondit à une décimale. Le chiffre des centièmes est $4$ ($<5$), on garde $12,3$ m. L'option $12,35$ m arrondit au centième, $12,34$ m tronque, $12,4$ m arrondit à l'entier supérieur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un article coûte $19,987$ euros. Quel est son prix arrondi au centime d'euro près ?",
+      "options": [
+        "$19,98$ €",
+        "$19,99$ €",
+        "$20,00$ €",
+        "$19,9$ €"
+      ],
+      "correctAnswer": "$19,99$ €",
+      "explanation": "Le centime d'euro est le centième d'euro, soit deux décimales. Le troisième chiffre après la virgule est $7$ ($\\ge 5$), on arrondit le centième $8$ à $9$, ce qui donne $19,99$ €. Les autres options correspondent à un arrondi au dixième, à l'euro supérieur ou à une troncature.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un chronomètre affiche $12,3456$ secondes. Quelle valeur faut-il afficher pour un arrondi au centième de seconde ?",
+      "options": [
+        "$12,34$ s",
+        "$12,35$ s",
+        "$12,3$ s",
+        "$12,346$ s"
+      ],
+      "correctAnswer": "$12,35$ s",
+      "explanation": "Le centième de seconde correspond à deux décimales. Le troisième chiffre après la virgule est $5$, donc on arrondit le centième $4$ à $5$, ce qui donne $12,35$ s. L'option $12,34$ s tronque, $12,3$ s arrondit au dixième, $12,346$ s garde trois décimales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une distance mesurée vaut $0,00456$ mètre. Quelle est sa valeur approchée au millième de mètre près ?",
+      "options": [
+        "$0,004$ m",
+        "$0,005$ m",
+        "$0,0046$ m",
+        "$0,0045$ m"
+      ],
+      "correctAnswer": "$0,005$ m",
+      "explanation": "Le millième de mètre correspond à trois décimales. Le quatrième chiffre après la virgule est $5$, donc on arrondit le millième $4$ à $5$, ce qui donne $0,005$ m. Les autres options correspondent à une troncature, à un arrondi au dix-millième ou à une erreur de lecture.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

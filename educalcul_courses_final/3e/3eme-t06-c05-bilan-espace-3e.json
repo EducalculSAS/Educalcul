@@ -1,0 +1,484 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.995768+00:00",
+  "id": 489,
+  "code": "3eme-t06-c05",
+  "title": "Bilan - Espace 3e",
+  "description": "Cours structuré Educalcul : Bilan - Espace 3e.",
+  "subject": "Transformations, espace et grandeurs",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Transformations, espace et grandeurs",
+    "titre_du_cours": "Bilan - Espace 3e",
+    "objectif_global": "Bilan - Espace 3e",
+    "mini_lecons_imposees": [
+      "Transformations, sections, volumes.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace et grandeurs",
+      "lessons": [
+        {
+          "title": "Transformations, sections, volumes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les transformations de l'espace : un rappel en douceur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan d'espace ! Tu as déjà croisé la plupart de ces idées au fil de l'année, et l'objectif ici n'est pas de t'assommer sous les définitions, mais de remettre chaque notion à sa place pour que tu te sentes à l'aise le jour de l'évaluation. Commençons par les transformations : translation, rotation, symétrie axiale, symétrie centrale et homothétie. En 3e, on ne se contente plus de les reconnaître sur une figure plane ; on les manipule dans l'espace, avec des solides. Rappelle-toi : une translation, c'est comme glisser un objet sur une table sans le tourner. Chaque point du solide parcourt le même vecteur. Une rotation, c'est faire pivoter le solide autour d'un axe (une droite) d'un certain angle. La symétrie axiale par rapport à une droite, c'est le miroir : chaque point va de l'autre côté de l'axe, à la même distance. La symétrie centrale par rapport à un point, c'est le demi-tour : le point devient le milieu du segment qui joint l'original à son image. Enfin, l'homothétie, avec son centre et son rapport $k$, agrandit ou réduit le solide en gardant sa forme."
+            },
+            {
+              "type": "definition",
+              "term": "Isométrie",
+              "definition": "Transformation qui conserve les longueurs, les angles, les aires et les volumes. Translation, rotation, symétrie axiale et symétrie centrale sont des isométries.",
+              "example": "Si tu tournes un cube de 90° autour d'un axe passant par les centres de deux faces opposées, toutes ses arêtes gardent la même longueur."
+            },
+            {
+              "type": "definition",
+              "term": "Homothétie",
+              "definition": "Transformation qui multiplie toutes les distances par un nombre $k$ (le rapport). Si $|k|>1$, c'est un agrandissement ; si $|k|<1$, c'est une réduction ; si $k<0$, il y a aussi un renversement (symétrie centrale composée).",
+              "example": "Une homothétie de centre $O$ et de rapport $2$ transforme un tétraèdre en un tétraèdre deux fois plus grand dans chaque dimension."
+            },
+            {
+              "type": "display_math",
+              "latex": "k = \\frac{\\text{longueur image}}{\\text{longueur initiale}} = \\frac{\\text{volume image}^{1/3}}{\\text{volume initial}^{1/3}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la transformation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la figure : y a-t-il un vecteur évident (translation) ? Un centre et un angle (rotation) ? Une droite miroir (symétrie axiale) ? Un point milieu (symétrie centrale) ? Un centre et un rapport (homothétie) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'image d'un solide",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis les sommets caractéristiques. Pour chaque sommet, applique la règle de la transformation (ex : pour une rotation, trace le cercle de centre l'axe, mesure l'angle). Relie les images des sommets dans le même ordre que l'original."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les invariants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Longueurs conservées ? Angles conservés ? Parallélisme conservé ? Pour une homothétie, les longueurs sont multipliées par $|k|$, les aires par $k^2$, les volumes par $|k|^3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sections de solides : quand le plan coupe le volume"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux sections. Imagine un couteau qui tranche un fromage : la trace de la lame sur le fromage, c'est la section. En géométrie, un plan coupe un solide. La section est une figure plane (souvent un polygone). Ce qui est puissant, c'est qu'on peut souvent deviner la forme de la section sans tout redessiner en 3D, grâce à quelques propriétés simples. Si le plan est parallèle à une face du solide, la section a la même forme que cette face. Si le plan coupe un prisme ou un cylindre parallèlement à sa base, la section est congruente à la base. Si le plan coupe une pyramide ou un cône parallèlement à la base, la section est une figure semblable à la base (homothétie du sommet). Et quand le plan n'est pas parallèle ? On utilise la propriété des sections de plans parallèles : deux plans parallèles coupent un même plan selon deux droites parallèles. C'est la clé pour construire une section complexe étape par étape."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Section d'un cube par un plan passant par trois arêtes non coplanaires : on obtient un triangle équilatéral.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "a",
+                "a"
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "Section plane",
+              "definition": "Intersection d'un solide avec un plan. C'est une figure plane (polygone, cercle, ellipse, parabole, hyperbole selon le solide et l'inclinaison).",
+              "example": "Un plan coupant un cylindre parallèlement à son axe donne un rectangle. Un plan incliné donne une ellipse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer les intersections avec les arêtes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plan rencontre les arêtes du solide en des points. Marque ces points sur la perspective ou sur le patron. Ce sont les sommets de la section."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser les parallélismes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le plan coupe deux faces parallèles (ex : les bases d'un prisme), les droites d'intersection sont parallèles. Trace-les. Si le plan passe par le sommet d'une pyramide, la section est un triangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Relier les points dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les points se suivent sur le pourtour du solide. Relie-les pour obtenir le polygone section. Vérifie la nature du polygone (triangle, quadrilatère, pentagone...)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volumes : formules, astuces et pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième pilier de ce bilan : les volumes. Tu connais les formules, mais sais-tu pourquoi elles marchent et comment ne pas les confondre ? Pour un prisme droit (pavé droit, cylindre, prisme à base quelconque), le volume est l'aire de la base multipliée par la hauteur : $V = B \\times h$. Pour une pyramide ou un cône, c'est le tiers de ce produit : $V = \\frac{1}{3} B \\times h$. Pour une sphère de rayon $R$, $V = \\frac{4}{3} \\pi R^3$. Attention : la hauteur, c'est la distance perpendiculaire entre la base et le sommet (ou l'autre base), pas la longueur d'une arête inclinée ! C'est l'erreur numéro un. Autre piège : les unités. Si les longueurs sont en $cm$, le volume est en $cm^3$. Si tu mélanges $cm$ et $m$, convertis tout avant de calculer. Et quand un solide est composé (ex : un silo = cylindre + demi-sphère), décompose, calcule chaque volume, puis additionne."
+            },
+            {
+              "type": "display_math",
+              "latex": "V_{\\text{prisme}} = B \\times h \\qquad V_{\\text{pyramide}} = \\frac{1}{3} B \\times h \\qquad V_{\\text{sphère}} = \\frac{4}{3} \\pi R^3"
+            },
+            {
+              "type": "definition",
+              "term": "Hauteur d'un solide",
+              "definition": "Distance perpendiculaire entre la base et le sommet (pyramide, cône) ou entre les deux bases (prisme, cylindre). Ce n'est pas la longueur d'une arête oblique.",
+              "example": "Dans une pyramide à base carrée de côté 6 cm et d'arête latérale 5 cm, la hauteur n'est pas 5 cm : il faut utiliser Pythagore dans le triangle rectangle formé par la hauteur, la demi-diagonale de la base et l'arête."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le solide et sa formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prisme droit ? $V = B h$. Pyramide ou cône ? $V = \\frac{1}{3} B h$. Sphère ? $V = \\frac{4}{3} \\pi R^3$. Solide composé ? Décompose en solides simples."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'aire de la base $B$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Selon la forme de la base : carré ($c^2$), rectangle ($L \\times l$), triangle ($\\frac{b \\times h}{2}$), cercle ($\\pi R^2$), losange ($\\frac{d_1 \\times d_2}{2}$)... Unités en $cm^2$ ou $m^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trouver la vraie hauteur $h$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si elle n'est pas donnée directement, utilise Pythagore, Thalès, ou la trigonométrie dans un triangle rectangle bien choisi. Vérifie que $h$ est bien perpendiculaire à la base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Calculer et conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule. Exprime le résultat dans l'unité demandée ($cm^3$, $m^3$, $L$...). $1 \\, L = 1 \\, dm^3 = 1000 \\, cm^3$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas mêlés : transformations, sections et volumes ensemble"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exercices du brevet aiment mélanger les trois thèmes. Un classique : on te donne une pyramide, on la coupe par un plan parallèle à la base (section semblable à la base), on te demande le volume de la petite pyramide du sommet. Là, tu combines : homothétie (pour trouver le rapport de réduction $k$), aires (la base de la petite pyramide a une aire multipliée par $k^2$), volume (multiplié par $k^3$). Un autre classique : un solide subit une translation ou une rotation, et on te demande de prouver que son volume n'a pas changé (isométrie). Ou bien : on tisse un patron, on le plie, on calcule le volume du solide obtenu. La clé, c'est de ne pas tout mélanger dans ta tête. Identifie d'abord quelle notion est sollicitée à chaque question. Si c'est une section, dessine-la. Si c'est un volume, liste les données. Si c'est une transformation, repère ses caractéristiques (vecteur, centre, angle, rapport)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si homothétie de rapport } k : \\quad \\frac{\\text{aire image}}{\\text{aire initiale}} = k^2, \\quad \\frac{\\text{volume image}}{\\text{volume initial}} = |k|^3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends l'habitude d'écrire explicitement : « Par homothétie de rapport $k$, les volumes sont multipliés par $|k|^3$. » Ça montre au correcteur que tu sais pourquoi tu fais ce calcul. Et si tu bloques sur une question, passe à la suivante : les questions sont souvent indépendantes. Tu as tous les outils maintenant. Fais confiance à ton année de travail !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un cube $ABCDEFGH$ d'arête $6\\,cm$ subit une homothétie de centre $A$ et de rapport $k = \\frac{1}{2}$. Quelle est la longueur de l'arête de l'image du cube ? Quel est le volume de l'image ?",
+              "answer": "Longueur de l'arête image : $3\\,cm$. Volume de l'image : $27\\,cm^3$.",
+              "hint": "L'homothétie multiplie toutes les longueurs par $|k|$. Le volume est multiplié par $|k|^3$.",
+              "explanation": "Le rapport est $k = \\frac{1}{2}$. L'arête initiale vaut $6\\,cm$, donc l'arête image vaut $6 \\times \\frac{1}{2} = 3\\,cm$. Le volume initial est $6^3 = 216\\,cm^3$. Le volume image est $216 \\times \\left(\\frac{1}{2}\\right)^3 = 216 \\times \\frac{1}{8} = 27\\,cm^3$. On peut aussi calculer directement $3^3 = 27\\,cm^3$."
+            },
+            {
+              "question": "Un cylindre de rayon $4\\,cm$ et de hauteur $10\\,cm$ est coupé par un plan parallèle à sa base, à $3\\,cm$ du sommet (le cylindre est posé sur sa base). Quelle est la forme de la section ? Quel est son aire ?",
+              "answer": "La section est un disque de rayon $4\\,cm$. Son aire est $16\\pi \\,cm^2 \\approx 50,27\\,cm^2$.",
+              "hint": "Un plan parallèle à la base d'un cylindre le coupe selon une figure identique à la base.",
+              "explanation": "Le plan est parallèle à la base (un cercle de rayon $4\\,cm$). Par propriété des sections de plans parallèles, la section est un cercle de même rayon que la base, donc $4\\,cm$. Son aire est $\\pi \\times 4^2 = 16\\pi \\,cm^2$. La distance au sommet ($3\\,cm$) ne change pas le rayon, elle ne sert qu'à localiser la hauteur de la section."
+            },
+            {
+              "question": "Une pyramide régulière à base carrée a une hauteur de $12\\,cm$ et un côté de base de $8\\,cm$. On la coupe par un plan parallèle à la base à $4\\,cm$ du sommet. Calcule le volume de la petite pyramide sommitale.",
+              "answer": "Volume de la petite pyramide : $\\frac{256}{27}\\,cm^3 \\approx 9,48\\,cm^3$.",
+              "hint": "La section est un carré homothétique à la base. Le rapport d'homothétie est le rapport des hauteurs.",
+              "explanation": "La hauteur de la grande pyramide est $12\\,cm$, celle de la petite est $4\\,cm$. Le rapport d'homothétie (sommet comme centre) est $k = \\frac{4}{12} = \\frac{1}{3}$. L'aire de la base initiale est $8^2 = 64\\,cm^2$. L'aire de la base de la petite pyramide est $64 \\times \\left(\\frac{1}{3}\\right)^2 = \\frac{64}{9}\\,cm^2$. Son volume est $\\frac{1}{3} \\times \\frac{64}{9} \\times 4 = \\frac{256}{27}\\,cm^3$. On pouvait aussi faire $V_{\\text{grand}} = \\frac{1}{3} \\times 64 \\times 12 = 256\\,cm^3$ puis multiplier par $|k|^3 = \\frac{1}{27}$."
+            },
+            {
+              "question": "Un pavé droit de dimensions $5\\,cm \\times 6\\,cm \\times 8\\,cm$ subit une rotation de $90^\\circ$ autour d'un axe passant par les centres de deux faces opposées. Quel est le volume du pavé après rotation ? Justifie.",
+              "answer": "Le volume reste $240\\,cm^3$.",
+              "hint": "Une rotation est une isométrie : elle conserve toutes les longueurs, donc le volume.",
+              "explanation": "La rotation est une isométrie. Elle conserve les longueurs, les angles, les aires et les volumes. Le volume initial est $5 \\times 6 \\times 8 = 240\\,cm^3$. Après rotation, le solide a exactement les mêmes dimensions (seule son orientation change), donc son volume est inchangé : $240\\,cm^3$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réviser malin : organise tes fiches par familles de problèmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon, c'est ta boîte à outils pour le jour J. Au lieu de relire passivement ton cahier, active ta mémoire en classant les situations types. Pour l'espace en 3e, il y a trois grandes familles : les problèmes de transformation (on te donne un solide et une transformation, tu construis l'image ou tu prouves une propriété), les problèmes de section (un plan coupe un solide, tu détermines la section, sa nature, parfois son aire), et les problèmes de volume (calcul direct, volume après transformation, volume d'un tronçon après section). À chaque famille, associe tes \"réflexes\" : pour une transformation, note le vecteur, le centre, l'angle ou le rapport ; pour une section, repère les intersections avec les arêtes et utilise les parallélismes ; pour un volume, identifie la formule, calcule $B$ et $h$ proprement. Cette leçon va passer en revue chaque famille avec des exemples frais, différents de ceux qu'on a vus tout à l'heure, pour que tu aies plusieurs images mentales en réserve."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les transformations. Imagine un tétraèdre régulier (quatre faces équilatérales) de côté $a$. On lui applique une symétrie centrale par rapport au centre de gravité du tétraèdre. Que se passe-t-il ? Le tétraèdre se superpose exactement à lui-même, mais les sommets sont permutés deux à deux. C'est une propriété magique des solides réguliers : leur centre de symétrie (s'il existe) coïncide avec leur centre de gravité. Pour un pavé droit, la symétrie centrale par rapport au centre du pavé échange les sommets opposés. Réflexe : si on te demande l'image d'un point $M$ par symétrie centrale de centre $O$, trace le segment $[MO]$, prolonge-le de l'autre côté pour que $O$ en soit le milieu. C'est tout. Pas besoin de repère compliqué."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Symétrie centrale d'un tétraèdre : le centre $O$ est le milieu de chaque segment joignant deux sommets opposés.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "a",
+                "a"
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "Centre de symétrie d'un solide",
+              "definition": "Point $O$ tel que la symétrie centrale de centre $O$ laisse le solide globalement invariant (l'image du solide est le solide lui-même). Les pavés droits, les parallélépipèdes, les sphères, les cylindres et cônes de révolution en ont un.",
+              "example": "Le centre d'un cube est son centre de symétrie. Celui d'une pyramide régulière n'en a pas (sauf si on considère la symétrie axiale)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sections : la méthode du « filet » pour ne rien oublier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les sections, la technique qui marche à tous les coups, c'est de traiter le solide face par face. Imagine que le plan de section est un filet de pêche : il traverse le solide et « attrape » les arêtes une par une. Sur chaque face que le plan rencontre, il laisse une trace : un segment. Ce segment relie deux points d'intersection du plan avec les arêtes de cette face. Comme les faces sont planes, ce segment est une droite. Et comme deux faces adjacentes se coupent suivant une arête, les segments des deux faces se rejoignent au point où le plan coupe cette arête commune. Donc : (1) trouve tous les points où le plan coupe les arêtes du solide ; (2) sur chaque face, relie les deux points appartenant à cette face ; (3) l'ensemble de ces segments forme le polygone section. Astuce : si le plan est parallèle à une arête, il ne la coupe pas (ou la coupe à l'infini) : sur les faces contenant cette arête, la trace du plan sera parallèle à cette arête."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Propriété fondamentale : Deux plans parallèles coupent un troisième plan selon deux droites parallèles.}"
+            },
+            {
+              "type": "definition",
+              "term": "Plan secant",
+              "definition": "Plan qui coupe un solide (intersection non vide). S'il ne fait qu'effleurer le solide (un point ou une droite), on dit qu'il est tangent (pour les solides courbes) ou qu'il passe par un sommet/arête.",
+              "example": "Un plan passant par le sommet d'un cône et coupant sa base selon une corde est un plan secant : la section est un triangle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Volumes : les conversions d'unités, ton filet de sécurité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Combien de points perdus parce qu'on a oublié de convertir $cm$ en $m$ avant de calculer un volume en $m^3$ ? Faisons le point une bonne fois pour toutes. $1\\,m = 100\\,cm$, donc $1\\,m^2 = 10\\,000\\,cm^2$ et $1\\,m^3 = 1\\,000\\,000\\,cm^3$. Pour les litres : $1\\,L = 1\\,dm^3 = 1000\\,cm^3$. $1\\,m^3 = 1000\\,L$. Réflexe : avant toute formule, convertis toutes les longueurs dans la MÊME unité. Si l'énoncé donne la base en $cm$ et la hauteur en $m$, passe tout en $cm$ (ou tout en $m$, ou tout en $dm$). Écris l'unité à chaque ligne de calcul. Et pour les solides composés, calcule chaque volume dans la même unité, additionne, puis convertis seulement à la fin si l'énoncé le demande. Un exemple concret : une piscine de $10\\,m \\times 5\\,m \\times 1,5\\,m$ (profondeur moyenne). Volume = $75\\,m^3 = 75\\,000\\,L$. Si on te demande le temps de remplissage avec un débit de $5\\,m^3/h$, c'est $75 \\div 5 = 15\\,h$. Simple, si les unités sont cohérentes."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Correspondances d'unités de volume : chaque marche multiplie ou divise par 1000.",
+              "bars": [
+                {
+                  "label": "km³",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "hm³",
+                  "value": 1000,
+                  "tone": "blue"
+                },
+                {
+                  "label": "dam³",
+                  "value": 1000000,
+                  "tone": "green"
+                },
+                {
+                  "label": "m³",
+                  "value": 1000000000,
+                  "tone": "gold"
+                },
+                {
+                  "label": "dm³ (L)",
+                  "value": 1000000000000,
+                  "tone": "red"
+                },
+                {
+                  "label": "cm³",
+                  "value": 1000000000000000,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le grand mélange : sujets type brevet et astuces de lecture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les sujets de brevet adorent enchaîner : « La pyramide $SABCD$ a une base carrée de côté $6\\,cm$. Sa hauteur $SO$ mesure $8\\,cm$. 1. Calcule le volume. 2. On coupe par un plan parallèle à la base passant par le milieu de $SO$. Quelle est la nature de la section ? Calcule son aire. 3. Calcule le volume du tronc de pyramide obtenu. » Vois comme les trois thèmes s'imbriquent : volume direct, puis section (homothétie de rapport $1/2$), puis volume par différence ($V_{\\text{grand}} - V_{\\text{petit}}$). Lis tout l'énoncé avant de commencer. Repère les données communes. Ici, la hauteur $8\\,cm$ et le côté $6\\,cm$ servent à tout. Pour la question 2, le rapport est $1/2$ car le plan passe par le milieu de la hauteur. L'aire de la section est $6^2 \\times (1/2)^2 = 9\\,cm^2$. Pour la question 3, $V_{\\text{grand}} = 96\\,cm^3$, $V_{\\text{petit}} = 96 \\times (1/2)^3 = 12\\,cm^3$, donc tronc = $84\\,cm^3$. Ne recalcule pas tout : utilise les rapports ! C'est plus rapide et moins risqué."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lecture active",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Surligne les données numériques. Identifie le solide. Note les transformations ou sections annoncées. Repère les questions qui sont indépendantes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Croquis annoté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais un schéma rapide (pas de la 3D parfaite, un schéma de principe). Marque les cotes, les parallélismes, les milieux, les centres. C'est ton brouillon de travail, soigne-le."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Une question = une méthode",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Question volume ? Formule + $B$ + $h$. Question section ? Points sur arêtes + parallélismes. Question transformation ? Caractéristiques (vecteur, centre, rapport) + construction. Écris la propriété utilisée en une phrase."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérification cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le volume du tronc est-il inférieur au volume total ? L'aire de section est-elle plausible ? L'image par homothétie de rapport $<1$ est-elle plus petite ? Si quelque chose cloche, relis ton calcul d'unités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une translation, rotation, symétrie axiale, symétrie centrale, homothétie dans l'espace et en donner les caractéristiques (vecteur, centre, angle, rapport).",
+                "Je sais construire l'image d'un solide par ces transformations et j'identifie ce qui est conservé (longueurs, angles, volumes) ou modifié (volumes multipliés par $|k|^3$ en homothétie).",
+                "Je sais déterminer la section d'un solide par un plan : je trouve les intersections avec les arêtes, j'utilise les parallélismes entre traces sur faces parallèles, je relie les points dans l'ordre.",
+                "Je connais les formules de volume : prisme/cylindre $V=Bh$, pyramide/cône $V=\\frac{1}{3}Bh$, sphère $V=\\frac{4}{3}\\pi R^3$, et je sais les appliquer en distinguant hauteur et arête oblique.",
+                "Je gère les conversions d'unités de volume ($cm^3$, $dm^3=L$, $m^3$) sans erreur : je convertis AVANT de calculer.",
+                "Je sais décomposer un solide composé pour en calculer le volume, et utiliser les rapports d'homothétie ($k^2$ pour les aires, $|k|^3$ pour les volumes) pour aller vite.",
+                "Je lis tout l'énoncé avant de commencer, je fais un croquis annoté, j'écris les propriétés utilisées, et je vérifie la cohérence de mes résultats."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un tétraèdre régulier d'arête $a$ admet un centre de symétrie $O$. Vrai ou faux ? Justifie.",
+              "answer": "Faux. Un tétraèdre régulier n'a pas de centre de symétrie (aucun point n'est le milieu de segments joignant deux sommets opposés, car il n'y a pas de sommets opposés deux à deux).",
+              "hint": "Un centre de symétrie échange les sommets deux à deux. Combien de sommets a un tétraèdre ?",
+              "explanation": "Un tétraèdre a 4 sommets. Pour avoir un centre de symétrie, il faudrait pouvoir les apparier en paires de sommets opposés par rapport à ce centre. Or 4 est pair, mais dans un tétraèdre, chaque sommet est adjacent aux trois autres : il n'y a pas de « sommet opposé » unique. La symétrie centrale n'existe pas. En revanche, il a des axes de symétrie (rotations d'ordre 3)."
+            },
+            {
+              "question": "Un cône de révolution de hauteur $15\\,cm$ et de rayon de base $6\\,cm$ est coupé par un plan parallèle à la base à $5\\,cm$ du sommet. Donne la nature et l'aire de la section.",
+              "answer": "La section est un disque de rayon $2\\,cm$. Son aire est $4\\pi \\,cm^2 \\approx 12,57\\,cm^2$.",
+              "hint": "Le plan est parallèle à la base : la section est un cercle homothétique à la base. Le rapport est le rapport des hauteurs.",
+              "explanation": "Le plan est parallèle à la base (un cercle). La section est donc un cercle. Le sommet du cône est le centre d'homothétie qui envoie la base sur la section. La hauteur du cône est $15\\,cm$, la distance du sommet au plan est $5\\,cm$. Le rapport d'homothétie est $k = \\frac{5}{15} = \\frac{1}{3}$. Le rayon de la base est $6\\,cm$, donc le rayon de la section est $6 \\times \\frac{1}{3} = 2\\,cm$. L'aire est $\\pi \\times 2^2 = 4\\pi \\,cm^2$."
+            },
+            {
+              "question": "Un réservoir d'eau a la forme d'un pavé droit de dimensions $2\\,m \\times 1,5\\,m \\times 1\\,m$. On le remplit avec un tuyau de débit $200\\,L/min$. Au bout de combien de temps le réservoir est-il plein ? Donne la réponse en heures et minutes.",
+              "answer": "1 heure 15 minutes.",
+              "hint": "Calcule le volume en $m^3$, convertis en litres, divise par le débit en $L/min$, convertis en heures.",
+              "explanation": "Volume = $2 \\times 1,5 \\times 1 = 3\\,m^3 = 3000\\,L$. Débit = $200\\,L/min$. Temps = $3000 / 200 = 15\\,min$. Le réservoir se remplit en 15 minutes."
+            },
+            {
+              "question": "Une pyramide $SABCD$ à base carrée de côté $10\\,cm$ a une hauteur $SO = 12\\,cm$. On la coupe par un plan parallèle à la base passant par un point $H$ sur $SO$ tel que $SH = 3\\,cm$. 1. Nature et aire de la section. 2. Volume du tronc de pyramide restant.",
+              "answer": "1. Carré de côté $2,5\\,cm$, aire $6,25\\,cm^2$. 2. Volume du tronc $\\approx 393,75\\,cm^3$ (exact : $\\frac{3150}{8} = 393,75\\,cm^3$).",
+              "hint": "Rapport d'homothétie $k = SH/SO = 3/12 = 1/4$. Aire section = aire base $\\times k^2$. Volume petit = volume grand $\\times |k|^3$. Tronc = grand - petit.",
+              "explanation": "1. Le plan est parallèle à la base, donc la section est un carré homothétique à la base. Centre d'homothétie : le sommet $S$. Rapport $k = \\frac{SH}{SO} = \\frac{3}{12} = \\frac{1}{4}$. Côté de la base = $10\\,cm$, côté de la section = $10 \\times \\frac{1}{4} = 2,5\\,cm$. Aire = $2,5^2 = 6,25\\,cm^2$. 2. Volume grand = $\\frac{1}{3} \\times 10^2 \\times 12 = 400\\,cm^3$. Volume petit = $400 \\times \\left(\\frac{1}{4}\\right)^3 = 400 \\times \\frac{1}{64} = 6,25\\,cm^3$. Volume tronc = $400 - 6,25 = 393,75\\,cm^3$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

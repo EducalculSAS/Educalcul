@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 200,
+  "_course_code": "ce2-t07-c05-cercle-centre-rayon-diametre",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Nommer éléments",
+  "title": "Le cercle : nommer les éléments",
+  "questions": [
+    {
+      "text": "Sur un cercle, comment appelle-t-on la distance du centre à n'importe quel point du cercle ?",
+      "options": [
+        "Le rayon",
+        "Le diamètre",
+        "Le périmètre",
+        "Le centre"
+      ],
+      "correctAnswer": "Le rayon",
+      "explanation": "Le rayon est le segment qui relie le centre du cercle à un point situé sur le cercle. Le diamètre relie deux points du cercle en passant par le centre, le périmètre est la longueur du tour du cercle, et le centre est le point milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces phrases définit correctement un diamètre ?",
+      "options": [
+        "Un segment qui relie deux points du cercle en passant par le centre.",
+        "Un segment qui relie le centre à un point du cercle.",
+        "La moitié du rayon.",
+        "Le tour du cercle."
+      ],
+      "correctAnswer": "Un segment qui relie deux points du cercle en passant par le centre.",
+      "explanation": "Un diamètre est un segment dont les extrémités sont sur le cercle et qui passe par le centre. Le segment centre-cercle est un rayon. Le diamètre est le double du rayon, pas la moitié. Le tour du cercle est le périmètre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si le rayon d'un cercle mesure $4$ cm, quelle est la longueur de son diamètre ?",
+      "options": [
+        "$8$ cm",
+        "$2$ cm",
+        "$4$ cm",
+        "$16$ cm"
+      ],
+      "correctAnswer": "$8$ cm",
+      "explanation": "Le diamètre est toujours égal au double du rayon. Si le rayon vaut $4$ cm, le diamètre vaut $4 \\times 2 = 8$ cm. L'erreur classique est de diviser par deux (donnant $2$ cm) ou de garder la même valeur ($4$ cm).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un cercle de centre O, le segment [AB] passe par O et les points A et B sont sur le cercle. Comment nomme-t-on le segment [AB] ?",
+      "options": [
+        "Un diamètre",
+        "Un rayon",
+        "Une corde",
+        "Un arc"
+      ],
+      "correctAnswer": "Un diamètre",
+      "explanation": "Un segment qui relie deux points du cercle (A et B) et qui passe par le centre (O) est un diamètre. Un rayon relie le centre à un seul point du cercle. Une corde relie deux points du cercle sans passer par le centre. Un arc est une partie du contour du cercle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la figure ci-dessous, le point M est sur le cercle de centre O. Comment nomme-t-on le segment [OM] ?",
+      "options": [
+        "Un rayon",
+        "Un diamètre",
+        "Une corde",
+        "Le centre"
+      ],
+      "correctAnswer": "Un rayon",
+      "explanation": "Le segment [OM] relie le centre O à un point M situé sur le cercle. C'est la définition exacte d'un rayon. Ce n'est pas un diamètre car il ne relie pas deux points du cercle. Ce n'est pas une corde car il part du centre. Le centre est le point O, pas le segment.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Cercle de centre O. Le point M est sur le cercle."
+      }
+    }
+  ]
+}

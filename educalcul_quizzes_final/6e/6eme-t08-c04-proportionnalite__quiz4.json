@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 371,
+  "_course_code": "6eme-t08-c04-proportionnalite",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Application : Proportionnalité",
+  "title": "Applications de la proportionnalité - 6e",
+  "questions": [
+    {
+      "text": "Un cycliste parcourt $15$ km en $1$ heure. En conservant la même allure, quelle distance parcourra-t-il en $3$ heures ?",
+      "options": [
+        "$30$ km",
+        "$45$ km",
+        "$50$ km",
+        "$60$ km"
+      ],
+      "correctAnswer": "$45$ km",
+      "explanation": "La distance parcourue est proportionnelle au temps mis. Le coefficient de proportionnalité (la vitesse) est de $15$ km/h. Pour $3$ heures, on multiplie la distance de référence par $3$ : $15 \\times 3 = 45$ km. L'option $30$ km correspond à une multiplication par $2$, $50$ km et $60$ km ne correspondent pas au coefficient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour faire un gâteau pour $4$ personnes, il faut $200$ g de farine. Quelle quantité de farine faut-il pour $10$ personnes ?",
+      "options": [
+        "$400$ g",
+        "$500$ g",
+        "$600$ g",
+        "$800$ g"
+      ],
+      "correctAnswer": "$500$ g",
+      "explanation": "C'est un tableau de proportionnalité. On cherche le coefficient pour passer de $4$ à $10$ personnes : $10 \\div 4 = 2,5$. On multiplie la quantité de farine par $2,5$ : $200 \\times 2,5 = 500$ g. On peut aussi calculer la quantité pour $1$ personne ($200 \\div 4 = 50$ g) puis multiplier par $10$ ($50 \\times 10 = 500$ g).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robinet laisse couler $12$ litres d'eau en $3$ minutes. Combien de litres couleront en $7$ minutes si le débit reste constant ?",
+      "options": [
+        "$21$ L",
+        "$24$ L",
+        "$28$ L",
+        "$35$ L"
+      ],
+      "correctAnswer": "$28$ L",
+      "explanation": "Le débit est constant, donc volume et temps sont proportionnels. D'abord, on trouve le débit par minute : $12 \\div 3 = 4$ L/min. Ensuite, on multiplie par $7$ minutes : $4 \\times 7 = 28$ L. L'erreur courante est de faire $12 + 7 = 19$ ou $12 \\times 2 = 24$ (option B) au lieu de chercher le coefficient unitaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture consomme $6$ litres d'essence pour parcourir $100$ km. Combien de litres pour parcourir $250$ km ?",
+      "options": [
+        "$12$ L",
+        "$15$ L",
+        "$18$ L",
+        "$20$ L"
+      ],
+      "correctAnswer": "$15$ L",
+      "explanation": "La consommation est proportionnelle à la distance. Le coefficient pour passer de $100$ à $250$ km est $250 \\div 100 = 2,5$. On multiplie la consommation par $2,5$ : $6 \\times 2,5 = 15$ L. On peut aussi calculer la consommation au km : $6 \\div 100 = 0,06$ L/km, puis $0,06 \\times 250 = 15$ L.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix de $5$ stylos identiques est de $12,50$ €. Quel est le prix de $8$ stylos ?",
+      "options": [
+        "$18,50$ €",
+        "$19,00$ €",
+        "$20,00$ €",
+        "$21,50$ €"
+      ],
+      "correctAnswer": "$20,00$ €",
+      "explanation": "Le prix est proportionnel au nombre de stylos. Prix d'un stylo : $12,50 \\div 5 = 2,50$ €. Prix de $8$ stylos : $2,50 \\times 8 = 20,00$ €. L'erreur fréquente est d'additionner $12,50$ et le prix de $3$ stylos mal calculé, ou d'arrondir le prix unitaire à $2,5$ sans faire la multiplication exacte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

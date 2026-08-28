@@ -1,0 +1,77 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 138,
+  "_course_code": "ce1-t08-c03-lire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Comparer hauteurs",
+  "title": "Comparer les hauteurs sur un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Comparer deux bâtons",
+      "content": "En observant le diagramme, on voit que le bâton du **Chien** est {{1}} que le bâton du **Chat**.",
+      "correctAnswer": "",
+      "blanks": [
+        "plus haut"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le bâton du Chien monte jusqu'à $8$ alors que celui du Chat s'arrête à $6$. Comme $8 > 6$, le bâton du Chien est plus haut.",
+      "points": 2,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés des élèves de CE1",
+        "bars": [
+          {
+            "label": "Chien",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Lapin",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Oiseau",
+            "value": 2,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Calculer la différence",
+      "content": "Il y a {{1}} vote(s) de plus pour le **Chien** que pour le **Chat**.",
+      "correctAnswer": "",
+      "blanks": [
+        "$2$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver le nombre de votes en plus, on fait la différence entre la hauteur du Chien et celle du Chat : $8 - 6 = 2$. Il y a donc $2$ votes de plus pour le Chien.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identifier le plus petit et lire sa valeur",
+      "content": "L'**Oiseau** a le bâton le {{1}} haut. Sa hauteur correspond à {{2}} vote(s).",
+      "correctAnswer": "",
+      "blanks": [
+        "moins|le moins",
+        "$2$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "En comparant toutes les hauteurs : Chien ($8$), Chat ($6$), Lapin ($3$), Oiseau ($2$). Le plus bas est l'Oiseau avec $2$ votes. On lit la hauteur en regardant le chiffre en face du haut du bâton.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

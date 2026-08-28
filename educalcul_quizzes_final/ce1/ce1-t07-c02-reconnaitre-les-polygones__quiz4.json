@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 127,
+  "_course_code": "ce1-t07-c02-reconnaitre-les-polygones",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Reconnaître les polygones",
+  "title": "Quiz : Reconnaître les polygones (Application)",
+  "questions": [
+    {
+      "text": "Laquelle de ces figures est un polygone ?",
+      "options": [
+        "Un cercle",
+        "Un carré",
+        "Une ligne brisée ouverte",
+        "Un cœur"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Un polygone est une figure fermée, formée uniquement de segments de droite. Le cercle a une courbe, la ligne brisée n'est pas fermée, le cœur a des courbes. Le carré est bien un polygone (un quadrilatère).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien de côtés a un pentagone ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Le préfixe « penta- » signifie cinq. Un pentagone est un polygone à cinq côtés et cinq sommets.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe ce triangle. Combien a-t-il de côtés ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Un triangle est un polygone à trois côtés et trois sommets. La figure montre les trois sommets A, B, C et les trois côtés a, b, c.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Parmi ces noms, lequel ne correspond pas à un polygone ?",
+      "options": [
+        "Triangle",
+        "Carré",
+        "Cercle",
+        "Losange"
+      ],
+      "correctAnswer": "Cercle",
+      "explanation": "Le cercle est une figure courbe, il n'est pas formé de segments de droite. Triangle, carré et losange sont des polygones.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un polygone a six sommets. Combien a-t-il de côtés ?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Dans tout polygone simple, le nombre de côtés est égal au nombre de sommets. S'il y a six sommets, il y a donc six côtés (c'est un hexagone).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

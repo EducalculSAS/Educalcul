@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 98,
+  "_course_code": "ce1-t04-c01-tables-d-addition",
+  "_level": "ce1",
+  "_subject": "Calcul mental et tables",
+  "_subtheme": "Approfondissement : Mémoriser faits fréquents",
+  "title": "Approfondissement : Mémoriser faits fréquents - Algorithmes d'addition",
+  "blocks": [
+    {
+      "title": "Stratégie du double pour $7 + 8$",
+      "content": "Écris un algorithme en langage naturel (étapes numérotées) pour calculer $7 + 8$ en utilisant la stratégie du double du plus petit nombre.",
+      "correctAnswer": "1. Identifier le plus petit nombre : $7$.\\n2. Calculer le double de $7$ : $7 + 7 = 14$.\\n3. Ajouter $1$ car $8$ est $1$ de plus que $7$ : $14 + 1 = 15$.\\n4. Conclure que $7 + 8 = 15$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le fait connu $7+7=14$ (double) et on ajoute la différence entre $8$ et $7$ qui est $1$. Cela donne $14+1=15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction complément à 10",
+      "content": "Écris une fonction en pseudo‑code (style Python) nommée somme_complement_10(a, b) qui retourne la somme de a et b en utilisant la stratégie du complément à 10. On suppose que a ≤ 10 et b ≤ 10.",
+      "correctAnswer": "def somme_complement_10(a, b):\\n    # On veut faire a + b\\n    # On complète a à 10 si possible\\n    if a + b <= 10:\\n        return a + b\\n    else:\\n        complement = 10 - a\\n        return 10 + (b - complement)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction vérifie si la somme dépasse 10. Si non, elle retourne la somme directe. Sinon, elle calcule le complément de a à 10 (10 - a), l'ajoute à a pour faire 10, puis ajoute le reste de b (b - complement). Par exemple pour $8+5$ : complement = $2$, $10 + (5-2) = 13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme table de $5$",
+      "content": "Écris un algorithme (avec une boucle) qui affiche toutes les additions de la table de $5$ de $5+1$ jusqu'à $5+10$.",
+      "correctAnswer": "pour i de 1 à 10 :\\n    afficher \"5 + \" + i + \" = \" + (5 + i)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle parcourt les nombres de $1$ à $10$. À chaque itération, elle calcule $5 + i$ et affiche l'addition correspondante. Cela produit les lignes : $5+1=6$, $5+2=7$, ..., $5+10=15$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

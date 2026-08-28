@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 381,
+  "_course_code": "5eme-t01-c03-valeurs-approchees-et-controle",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Arrondir",
+  "title": "Arrondir des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Arrondi à l'unité",
+      "content": "Arrondis $3,456$ à l'unité près.",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des dixièmes est 4, qui est strictement inférieur à 5, donc on conserve la partie entière 3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au dixième",
+      "content": "Arrondis $12,347$ au dixième près.",
+      "correctAnswer": "12,3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des centièmes est 4 (<5), donc le dixième reste 3 et on obtient 12,3.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondi au centième",
+      "content": "Arrondis $0,9876$ au centième près.",
+      "correctAnswer": "0,99",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des millièmes est 7 (≥5), on arrondit le centième 8 à 9, ce qui donne 0,99.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

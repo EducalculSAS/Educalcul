@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 467,
+  "_course_code": "3eme-t03-c01-vocabulaire-des-fonctions",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Tableau",
+  "title": "Quiz - Vocabulaire des fonctions : Tableau",
+  "questions": [
+    {
+      "text": "Lequel des tableaux suivants représente une fonction ?",
+      "options": [
+        "Tableau A : $x=1,2,3$ ; $y=4,5,6$",
+        "Tableau B : $x=1,1,2$ ; $y=3,4,5$",
+        "Tableau C : $x=0,0,1$ ; $y=2,3,4$",
+        "Tableau D : $x=2,3,3$ ; $y=5,6,7$"
+      ],
+      "correctAnswer": "Tableau A : $x=1,2,3$ ; $y=4,5,6$",
+      "explanation": "Une fonction associe à chaque valeur de $x$ une unique valeur de $y$. Dans le tableau A, chaque $x$ est distinct, donc c'est une fonction. Les tableaux B, C et D présentent des $x$ répétés avec des $y$ différents, ce qui viole la définition d'une fonction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la fonction $f$ donnée par le tableau ci‑dessous, quelle est l'image de $3$ ?\\n$x$ : $1$, $2$, $3$, $4$\\n$y$ : $2$, $5$, $8$, $11$",
+      "options": [
+        "$2$",
+        "$5$",
+        "$8$",
+        "$11$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Dans le tableau, la ligne $x=3$ correspond à $y=8$. Par définition, l'image de $3$ par $f$ est $f(3)=8$. Les autres valeurs correspondent aux images de $1$, $2$ et $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Toujours pour la même fonction $f$, quel(s) antécédent(s) a (ont) l'image $11$ ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "On cherche $x$ tel que $f(x)=11$. Dans le tableau, la seule ligne où $y=11$ est $x=4$. Donc l'unique antécédent de $11$ est $4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction $g$ est définie par le tableau suivant :\\n$x$ : $0$, $1$, $2$, $3$\\n$y$ : $1$, $4$, $7$, $10$\\nEst‑ce une fonction linéaire ?",
+      "options": [
+        "Oui, le taux d'accroissement est constant",
+        "Non, le taux d'accroissement n'est pas constant",
+        "Oui, car les valeurs de $y$ augmentent",
+        "Non, car les valeurs de $x$ ne sont pas égales"
+      ],
+      "correctAnswer": "Oui, le taux d'accroissement est constant",
+      "explanation": "Pour une fonction linéaire, le taux d'accroissement $\\frac{\\Delta y}{\\Delta x}$ doit être constant. Ici, $\\Delta y = 3$ à chaque augmentation de $1$ de $x$, donc le taux est constant ($3$). Les autres affirmations sont soit insuffisantes (les $y$ augmentent aussi pour des fonctions non linéaires) soit sans rapport.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Complétez le tableau de la fonction linéaire $h$ :\\n$x$ : $0$, $1$, $2$, $3$\\n$y$ : $2$, $?$, $8$, $11$",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La fonction est linéaire, donc le taux d'accroissement est constant. Entre $x=0$ ($y=2$) et $x=3$ ($y=11$), $\\Delta y = 9$ pour $\\Delta x = 3$, soit un taux de $3$. Ainsi $h(1)=2+3=5$, $h(2)=5+3=8$ (cohérent avec le tableau). La valeur manquante est $5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

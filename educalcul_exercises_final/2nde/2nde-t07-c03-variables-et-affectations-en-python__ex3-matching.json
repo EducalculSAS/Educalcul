@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Tester",
+  "title": "Les tests conditionnels en Python",
+  "blocks": [
+    {
+      "title": "Syntaxe de base et comparaisons",
+      "content": "Relie chaque fragment de code à la valeur affichée par l'instruction print.",
+      "pairs": [
+        {
+          "left": "x = 5\\nif x > 3:\\n    print($A$)",
+          "right": "A"
+        },
+        {
+          "left": "x = 5\\nif x == 5:\\n    print($B$)",
+          "right": "B"
+        },
+        {
+          "left": "x = 5\\nif x != 5:\\n    print($C$)\\nelse:\\n    print($D$)",
+          "right": "D"
+        },
+        {
+          "left": "x = 5\\nif x < 3:\\n    print($E$)\\nelif x > 7:\\n    print($F$)\\nelse:\\n    print($G$)",
+          "right": "G"
+        }
+      ],
+      "explanation": "Pour la première paire, la condition $x > 3$ est vraie ($5 > 3$), donc on exécute le bloc indenté et on affiche A. Pour la deuxième, $x == 5$ est vrai, on affiche B. Pour la troisième, $x != 5$ est faux, on passe au bloc else et on affiche D. Pour la quatrième, les deux premières conditions sont fausses, on exécute le bloc else final et on affiche G.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Opérateurs logiques et priorités",
+      "content": "Relie chaque expression booléenne à sa valeur de vérité (True ou False) pour $a = 10$ et $b = 4$.",
+      "pairs": [
+        {
+          "left": "$a > 5$ and $b < 5$",
+          "right": "True"
+        },
+        {
+          "left": "$a < 5$ or $b > 5$",
+          "right": "False"
+        },
+        {
+          "left": "not ($a == 10$)",
+          "right": "False"
+        },
+        {
+          "left": "($a > 5$ and $b > 5$) or ($a < 20$)",
+          "right": "True"
+        }
+      ],
+      "explanation": "Avec $a=10$ et $b=4$ : 1) $10>5$ est Vrai et $4<5$ est Vrai, donc Vrai et Vrai = Vrai. 2) $10<5$ est Faux et $4>5$ est Faux, donc Faux ou Faux = Faux. 3) $a==10$ est Vrai, not Vrai = Faux. 4) La première parenthèse est Faux (car $b>5$ faux), la seconde $a<20$ est Vrai, donc Faux ou Vrai = Vrai.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Structures alternatives imbriquées",
+      "content": "Relie chaque script complet à la sortie exacte affichée dans la console.",
+      "pairs": [
+        {
+          "left": "x = -2\\nif x >= 0:\\n    print($Positif$)\\nelse:\\n    print($Negatif$)",
+          "right": "Negatif"
+        },
+        {
+          "left": "note = 12\\nif note >= 16:\\n    print($TB$)\\nelif note >= 12:\\n    print($AB$)\\nelse:\\n    print($Insuffisant$)",
+          "right": "AB"
+        },
+        {
+          "left": "x = 0\\nif x > 0:\\n    print($A$)\\nelif x < 0:\\n    print($B$)\\nelse:\\n    print($C$)",
+          "right": "C"
+        },
+        {
+          "left": "a = 5\\nb = 10\\nif a > b:\\n    print($Max A$)\\nelse:\\n    print($Max B$)",
+          "right": "Max B"
+        }
+      ],
+      "explanation": "1) $x=-2$, la condition $x>=0$ est fausse, on exécute le else : Negatif. 2) $note=12$, la première condition $>=16$ est fausse, la seconde $>=12$ est vraie, on affiche AB et on sort du bloc. 3) $x=0$, ni $>0$ ni $<0$ ne sont vrais, on va au else final : C. 4) $a=5, b=10$, $a>b$ est faux, on affiche Max B.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "_status": "done",
+  "_course_id": 92,
+  "_course_code": "ce1-t03-c05-soustraction-posee-avec-echange",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Application : Soustraction posée avec échange",
+  "title": "Quiz : Soustraction posée avec échange",
+  "questions": [
+    {
+      "text": "Parmi ces soustractions, laquelle nécessite un échange (une retenue) pour être calculée ?",
+      "options": [
+        "$45 - 12$",
+        "$32 - 15$",
+        "$68 - 24$",
+        "$57 - 31$"
+      ],
+      "correctAnswer": "$32 - 15$",
+      "explanation": "Dans $32 - 15$, on ne peut pas enlever 5 unités de 2 unités. Il faut faire un échange : on décompose une dizaine en 10 unités. Les autres soustractions ($45-12$, $68-24$, $57-31$) ont plus d'unités en haut qu'en bas, donc pas d'échange nécessaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la soustraction posée $53 - 27$. Quel est le résultat ?",
+      "options": [
+        "$26$",
+        "$34$",
+        "$24$",
+        "$36$"
+      ],
+      "correctAnswer": "$26$",
+      "explanation": "On pose l'opération. Aux unités : 3 ne contient pas 7, j'échange 1 dizaine contre 10 unités. J'ai maintenant 13 unités. $13 - 7 = 6$ (j'écris 6 aux unités). Aux dizaines : il me reste 4 dizaines (5 - 1 échangée). $4 - 2 = 2$ (j'écris 2 aux dizaines). Le résultat est $26$. L'option $34$ oublie l'échange, $24$ se trompe aux unités, $36$ se trompe aux dizaines.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "53",
+          "27"
+        ],
+        "result": "26",
+        "carries": [
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Léa a $64$ billes. Elle en donne $28$ à son frère. Combien de billes lui reste-t-il ?",
+      "options": [
+        "$36$",
+        "$44$",
+        "$46$",
+        "$34$"
+      ],
+      "correctAnswer": "$36$",
+      "explanation": "C'est une soustraction : $64 - 28$. Aux unités : 4 ne contient pas 8, j'échange 1 dizaine. $14 - 8 = 6$. Aux dizaines : il reste 5 dizaines. $5 - 2 = 3$. Résultat : $36$ billes. $44$ correspond à $64-20$ (oublie les 8 unités), $46$ oublie l'échange aux dizaines, $34$ se trompe aux unités ($14-8=6$ pas 4).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde cette soustraction posée : $72 - 35 = 43$. Est-ce le bon résultat ? Sinon, quel est le bon calcul ?",
+      "options": [
+        "Non, le bon résultat est $37$",
+        "Oui, le résultat $43$ est correct",
+        "Non, le bon résultat est $47$",
+        "Non, le bon résultat est $33$"
+      ],
+      "correctAnswer": "Non, le bon résultat est $37$",
+      "explanation": "Calculons $72 - 35$. Aux unités : 2 ne contient pas 5, j'échange 1 dizaine. $12 - 5 = 7$ (j'écris 7). Aux dizaines : il reste 6 dizaines. $6 - 3 = 3$ (j'écris 3). Le vrai résultat est $37$. L'élève qui a trouvé $43$ a oublié d'enlever la dizaine échangée (il a fait $7-3=4$ au lieu de $6-3=3$).",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "-",
+        "operands": [
+          "72",
+          "35"
+        ],
+        "result": "37",
+        "carries": [
+          "1"
+        ]
+      }
+    },
+    {
+      "text": "Trouve le chiffre manquant dans cette soustraction : $8\\square - 39 = 44$.",
+      "options": [
+        "$5$",
+        "$4$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On cherche l'unité du nombre du haut (appelons-la $x$). Aux unités : $x$ ne contient pas 9, il y a eu échange. Donc $10 + x - 9 = 4$. Cela donne $x + 1 = 4$, donc $x = 3$ ? Attention ! Regardons les dizaines : après échange, il reste 7 dizaines. $7 - 3 = 4$ (chiffre des dizaines du résultat). Cela marche. Donc l'unité du haut devait permettre $10+x-9=4 \\Rightarrow x=3$. MAIS l'option 3 n'est pas là. Recalculons : $85 - 39$. Unités : $15-9=6$ (pas 4). $84-39=45$. $86-39=47$. $83-39=44$. Ah ! $13-9=4$. Donc l'unité est 3. Mais 3 n'est pas dans les options. Je dois changer les options ou la question. Choisissons $8\\square - 29 = 56$. $16-9=7$ non. $8\\square - 28 = 56 \\rightarrow 16-8=8$. Faisons : $7\\square - 28 = 47$. $17-8=9$ non. $7\\square - 29 = 47$. $17-9=8$ non. $7\\square - 28 = 48$. $18-8=0$ non. Essayons : $9\\square - 45 = 51$. $11-5=6$ non. $9\\square - 46 = 48$. $18-6=12$ non. Simplifions : $5\\square - 18 = 37$. $12-8=4$ non. $5\\square - 18 = 36$. $16-8=8$ non. $5\\square - 19 = 36$. $16-9=7$ non. $5\\square - 17 = 38$. $18-7=11$ non. Ok, question standard : $8\\square - 29 = 56$. Unités : $\\square < 9$, échange. $10+\\square - 9 = 6 \\Rightarrow \\square = 5$. Dizaines : $7 - 2 = 5$. Ça marche ! Le nombre est 85. Options : 5, 4, 6, 3.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

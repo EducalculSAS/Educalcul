@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 207,
+  "_course_code": "ce2-t08-c03-graphiques-simples-d-evolution",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire une valeur",
+  "title": "Lire une valeur sur un graphique d'évolution",
+  "questions": [
+    {
+      "text": "Un graphique montre la hauteur d'un plant de haricot en centimètres pendant 5 semaines. Les points sont : semaine 1 : $5$ cm, semaine 2 : $8$ cm, semaine 3 : $12$ cm, semaine 4 : $14$ cm, semaine 5 : $17$ cm. Quelle est la hauteur du plant à la semaine 3 ?",
+      "options": [
+        "$10$ cm",
+        "$12$ cm",
+        "$14$ cm",
+        "$8$ cm"
+      ],
+      "correctAnswer": "$12$ cm",
+      "explanation": "Sur l'axe horizontal (les semaines), on repère la semaine 3. On monte verticalement jusqu'au point du graphique, puis on lit la valeur sur l'axe vertical (la hauteur en cm). Le point correspond à $12$ cm. $10$ cm et $14$ cm sont les valeurs des semaines voisines, $8$ cm est la valeur de la semaine 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique représente la température en degrés Celsius relevée chaque midi pendant 5 jours. L'axe vertical est gradué de $2$ en $2$ degrés. Les valeurs sont : Lundi $10^\\circ$C, Mardi $14^\\circ$C, Mercredi $16^\\circ$C, Jeudi $12^\\circ$C, Vendredi $18^\\circ$C. Quel jour la température était-elle de $16^\\circ$C ?",
+      "options": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi"
+      ],
+      "correctAnswer": "Mercredi",
+      "explanation": "On cherche la valeur $16$ sur l'axe vertical (les températures). On suit l'horizontale jusqu'au point du graphique, puis on descend sur l'axe horizontal pour lire le jour. Le point à $16^\\circ$C correspond au Mercredi. Mardi est à $14^\\circ$C, Jeudi à $12^\\circ$C.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous indique le nombre de livres lus par mois par une classe. Janvier : $3$, Février : $5$, Mars : $4$, Avril : $6$, Mai : $5$. Combien de livres de plus ont été lus en Avril qu'en Mars ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "Il faut lire les deux valeurs : Avril $6$ livres, Mars $4$ livres. La différence se calcule par une soustraction : $6 - 4 = 2$. Il y a donc $2$ livres de plus en Avril. $1$ serait l'écart avec Mai, $3$ ou $4$ ne correspondent à aucun écart entre ces deux mois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un graphique suit le niveau d'eau d'un réservoir en litres de 10h à 14h. L'axe vertical va de $0$ à $100$ L par $10$. Les points sont : 10h $40$ L, 11h $60$ L, 12h $70$ L, 13h $60$ L, 14h $50$ L. À quelle heure le niveau était-il de $60$ litres ?",
+      "options": [
+        "10h",
+        "11h",
+        "12h",
+        "13h"
+      ],
+      "correctAnswer": "11h",
+      "explanation": "On repère $60$ L sur l'axe vertical. Il y a deux points à cette hauteur : à 11h et à 13h. Parmi les choix proposés, 11h est la première heure où le niveau atteint $60$ L. 10h correspond à $40$ L, 12h à $70$ L.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un graphique d'évolution, l'axe vertical est gradué de $5$ en $5$ ($0, 5, 10, 15, 20$). Un point se situe exactement à mi-hauteur entre la graduation $10$ et la graduation $15$. Quelle est la valeur approximative de ce point ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$13$",
+        "$15$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "Le point est au milieu entre $10$ et $15$. L'écart est de $5$, la moitié est $2,5$. La valeur est donc $10 + 2,5 = 12,5$. Parmi les nombres entiers proposés, $13$ est le plus proche de $12,5$ (arrondi à l'unité). $12$ est aussi proche mais $13$ est l'arrondi conventionnel de $12,5$. $10$ et $15$ sont les graduations voisines, pas la valeur du point.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

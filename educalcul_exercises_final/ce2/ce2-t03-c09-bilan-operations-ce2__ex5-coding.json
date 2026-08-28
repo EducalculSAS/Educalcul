@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 168,
+  "_course_code": "ce2-t03-c09-bilan-operations-ce2",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Approfondissement : Techniques opératoires",
+  "title": "Approfondissement des techniques opératoires - Algorithmes",
+  "blocks": [
+    {
+      "title": "Addition en colonnes",
+      "content": "Écris un algorithme clair, étape par étape, pour additionner deux nombres entiers à deux chiffres (par exemple $34 + 27$) en utilisant la méthode en colonnes. Utilise un langage simple.",
+      "correctAnswer": "1. Écrire les deux nombres l'un sous l'autre en alignant les unités et les dizaines.\\n2. Additionner les chiffres des unités : $4 + 7 = 11$. Écrire 1 dans la colonne des unités et retenir 1 dizaine.\\n3. Additionner les chiffres des dizaines en ajoutant la retenue : $3 + 2 + 1 = 6$. Écrire 6 dans la colonne des dizaines.\\n4. Lire le résultat : $61$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme décrit la procédure standard d'addition en colonnes : alignement, addition des unités avec retenue, addition des dizaines avec la retenue, lecture du total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Soustraction avec retenue",
+      "content": "Écris un algorithme pour soustraire un nombre à deux chiffres d'un autre nombre à deux chiffres (par exemple $52 - 38$) en gérant la retenue. Présente les étapes dans l'ordre.",
+      "correctAnswer": "1. Écrire les deux nombres l'un sous l'autre en alignant les unités et les dizaines.\\n2. Regarder les unités : $2 - 8$ impossible, emprunter 1 dizaine au chiffre des dizaines du haut (5 devient 4, 2 devient 12).\\n3. Soustraire les unités : $12 - 8 = 4$. Écrire 4 dans la colonne des unités.\\n4. Soustraire les dizaines après l'emprunt : $4 - 3 = 1$. Écrire 1 dans la colonne des dizaines.\\n5. Lire le résultat : $14$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme montre la technique de la retenue (emprunt) pour la soustraction en colonnes : alignement, emprunt si nécessaire, soustraction des unités puis des dizaines, lecture du résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication en colonnes",
+      "content": "Écris un algorithme pour multiplier un nombre à deux chiffres par un chiffre (par exemple $46 \\times 3$) avec la méthode en colonnes. Décris chaque étape.",
+      "correctAnswer": "1. Écrire le nombre à deux chiffres au-dessus et le chiffre multiplicateur en dessous, alignés à droite.\\n2. Multiplier le chiffre des unités du haut par le multiplicateur : $6 \\times 3 = 18$. Écrire 8 dans la colonne des unités et retenir 1 dizaine.\\n3. Multiplier le chiffre des dizaines du haut par le multiplicateur : $4 \\times 3 = 12$. Ajouter la retenue : $12 + 1 = 13$. Écrire 13 à gauche du 8 (dizaines et centaines).\\n4. Lire le résultat : $138$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme détaille la multiplication en colonnes : alignement, multiplication des unités avec retenue, multiplication des dizaines avec ajout de la retenue, lecture du produit final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

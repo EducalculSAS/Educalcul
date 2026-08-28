@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Bilan - Algorithmique 6e",
+  "title": "Bilan Algorithmique : Associer scripts et résultats",
+  "blocks": [
+    {
+      "title": "Affectations et calculs simples",
+      "content": "Relie chaque script à la valeur finale de la variable après son exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "a ← 5 puis a ← a + 3",
+          "right": "$8$"
+        },
+        {
+          "left": "b ← 10 puis b ← b - 4",
+          "right": "$6$"
+        },
+        {
+          "left": "c ← 7 puis c ← c × 2",
+          "right": "$14$"
+        },
+        {
+          "left": "d ← 20 puis d ← d ÷ 5",
+          "right": "$4$"
+        }
+      ],
+      "items": [],
+      "explanation": "On exécute les instructions dans l'ordre. Pour le premier : a vaut 5, puis on ajoute 3, donc a = 8. Pour le second : b = 10 puis b = 10 - 4 = 6. Pour le troisième : c = 7 puis c = 7 × 2 = 14. Pour le quatrième : d = 20 puis d = 20 ÷ 5 = 4.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucles « Répéter »",
+      "content": "Relie chaque script avec une boucle à la valeur finale de la variable.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "x ← 0 puis Répéter 4 fois : x ← x + 2",
+          "right": "$8$"
+        },
+        {
+          "left": "y ← 1 puis Répéter 3 fois : y ← y × 2",
+          "right": "$8$"
+        },
+        {
+          "left": "z ← 10 puis Répéter 5 fois : z ← z - 1",
+          "right": "$5$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour x : on commence à 0, on ajoute 2 quatre fois : 0+2+2+2+2 = 8. Pour y : on commence à 1, on multiplie par 2 trois fois : 1×2×2×2 = 8. Pour z : on commence à 10, on retire 1 cinq fois : 10-1-1-1-1-1 = 5.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tests conditionnels « Si ... Sinon »",
+      "content": "Relie chaque script conditionnel à la valeur finale de la variable n.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "n ← 15 ; Si n > 10 alors n ← n - 5 sinon n ← n + 5",
+          "right": "$10$"
+        },
+        {
+          "left": "n ← 5 ; Si n > 10 alors n ← n - 5 sinon n ← n + 5",
+          "right": "$10$"
+        },
+        {
+          "left": "n ← 12 ; Si n ≤ 10 alors n ← n × 2 sinon n ← n ÷ 2",
+          "right": "$6$"
+        }
+      ],
+      "items": [],
+      "explanation": "Premier script : n=15, la condition n>10 est vraie, on fait n = 15 - 5 = 10. Deuxième script : n=5, la condition n>10 est fausse, on fait le sinon : n = 5 + 5 = 10. Troisième script : n=12, la condition n≤10 est fausse, on fait le sinon : n = 12 ÷ 2 = 6.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

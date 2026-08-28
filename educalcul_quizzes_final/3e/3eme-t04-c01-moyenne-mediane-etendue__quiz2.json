@@ -1,0 +1,84 @@
+{
+  "_status": "done",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interprétation",
+  "title": "Interprétation : moyenne, médiane, étendue",
+  "questions": [
+    {
+      "text": "Pour une série statistique de $11$ valeurs, la médiane est $12$ et la moyenne est $15$. Que peut-on en déduire sur la forme de la distribution ?",
+      "options": [
+        "La distribution est symétrique.",
+        "Il y a plus de valeurs inférieures à $12$ que supérieures.",
+        "La présence de valeurs élevées tire la moyenne vers le haut.",
+        "Toutes les valeurs sont comprises entre $12$ et $15$."
+      ],
+      "correctAnswer": "La présence de valeurs élevées tire la moyenne vers le haut.",
+      "explanation": "La médiane ($12$) sépare la série en deux parts égales : $50\\%$ des valeurs sont $\\le 12$ et $50\\%$ sont $\\ge 12$. La moyenne ($15$) est supérieure à la médiane. Cela signifie que les valeurs les plus grandes (à droite de la médiane) sont plus éloignées de la médiane que les valeurs les plus petites (à gauche), ce qui « tire » la moyenne vers le haut. La distribution est donc asymétrique à droite (étalée vers les grandes valeurs). L'option A est fausse car dans une distribution symétrique, moyenne = médiane. L'option B est fausse par définition de la médiane. L'option D est fausse car la médiane est une valeur de la série (rang 6), il y a donc des valeurs $\\le 12$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la série : $5 ; 6 ; 7 ; 8 ; 50$. Laquelle des affirmations suivantes est exacte ?",
+      "options": [
+        "La moyenne représente bien l'ensemble de la série.",
+        "La médiane est sensible à la valeur extrême $50$.",
+        "La médiane rend mieux compte de la valeur « typique » de la série que la moyenne.",
+        "L'étendue de cette série est $7$."
+      ],
+      "correctAnswer": "La médiane rend mieux compte de la valeur « typique » de la série que la moyenne.",
+      "explanation": "Calculons : moyenne $= (5+6+7+8+50)/5 = 76/5 = 15,2$. Médiane $= 7$ (valeur centrale). L'étendue $= 50 - 5 = 45$. La valeur $50$ est une valeur aberrante (extrême). Elle influence fortement la moyenne ($15,2$) qui ne correspond à aucune valeur de la série et ne reflète pas le « centre » du nuage de points principal ($5$ à $8$). La médiane ($7$) n'est pas affectée par cette valeur extrême et se situe au cœur du groupe principal. C'est donc un meilleur indicateur de position centrale ici. L'option A est fausse. L'option B est fausse : la médiane est robuste, c'est la moyenne qui est sensible. L'option D est fausse (étendue $= 45$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux classes de troisième passent le même contrôle. Les deux classes ont une moyenne de $12/20$. La classe A a une étendue de $4$ points, la classe B une étendue de $16$ points. Que peut-on affirmer ?",
+      "options": [
+        "La classe B est plus homogène que la classe A.",
+        "La classe A est plus homogène que la classe B.",
+        "Les deux classes ont la même homogénéité car la moyenne est identique.",
+        "On ne peut pas comparer l'homogénéité avec l'étendue."
+      ],
+      "correctAnswer": "La classe A est plus homogène que la classe B.",
+      "explanation": "L'étendue mesure l'écart entre la note maximale et la note minimale. Une étendue faible ($4$ pour la classe A) indique que les notes sont resserrées autour de la moyenne : les élèves ont tous un niveau proche, la série est homogène. Une étendue grande ($16$ pour la classe B) indique une grande dispersion : il y a de très bonnes notes et de très mauvaises notes, la série est hétérogène. La moyenne seule ne renseigne pas sur la dispersion. L'option A inverse le raisonnement. L'option C confond moyenne et dispersion. L'option D est fausse : l'étendue est un indicateur de dispersion (donc d'homogénéité), même s'il est grossier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une entreprise de $10$ salariés, $9$ employés gagnent $2\\,000\\,\\text{€}$ par mois et le dirigeant gagne $20\\,000\\,\\text{€}$. Le dirigeant annonce : « La rémunération moyenne dans l'entreprise est de $3\\,800\\,\\text{€}$ ». Un représentant syndical répond : « La rémunération typique d'un salarié est de $2\\,000\\,\\text{€}$ ». Quel indicateur statistique utilise chacun ?",
+      "options": [
+        "Le dirigeant utilise la médiane, le syndicaliste utilise la moyenne.",
+        "Le dirigeant utilise la moyenne, le syndicaliste utilise la médiane.",
+        "Tous deux utilisent la moyenne.",
+        "Tous deux utilisent la médiane."
+      ],
+      "correctAnswer": "Le dirigeant utilise la moyenne, le syndicaliste utilise la médiane.",
+      "explanation": "Calculons la moyenne : $(9 \\times 2\\,000 + 20\\,000) / 10 = 38\\,000 / 10 = 3\\,800\\,\\text{€}$. Le dirigeant utilise bien la moyenne, qui est fortement tirée vers le haut par le salaire exceptionnel du dirigeant. La série ordonnée est : $2\\,000$ (9 fois) puis $20\\,000$. La médiane (valeur au milieu pour $10$ valeurs, moyenne des rangs 5 et 6) est $2\\,000\\,\\text{€}$. Le syndicaliste utilise la médiane, qui représente la valeur « typique » (celle de la grande majorité des employés) sans être influencée par la valeur extrême du dirigeant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On observe le diagramme en boîte (box-plot) ci-dessous. Laquelle des affirmations est **fausse** ?",
+      "options": [
+        "L'étendue de la série est $20$.",
+        "La médiane de la série est $14$.",
+        "50 % des valeurs sont comprises entre $10$ et $18$.",
+        "La moyenne de la série est $14$."
+      ],
+      "correctAnswer": "La moyenne de la série est $14$.",
+      "explanation": "Sur le box-plot : minimum $= 5$, maximum $= 25$, premier quartile $Q_1 = 10$, médiane $= 14$, troisième quartile $Q_3 = 18$. L'étendue $= 25 - 5 = 20$ (vrai). La médiane est $14$ (vrai). L'intervalle interquartile $[Q_1 ; Q_3] = [10 ; 18]$ contient exactement $50\\%$ des valeurs (vrai). En revanche, **un diagramme en boîte ne permet jamais de connaître la valeur de la moyenne** ; on ne connaît que la médiane. La moyenne pourrait être $14$ si la distribution est symétrique, mais elle pourrait être différente (supérieure si étalée à droite, inférieure si étalée à gauche). L'affirmation D est donc nécessairement fausse car non déductible du graphique.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Diagramme en boîte des notes",
+        "min": 5,
+        "q1": 10,
+        "median": 14,
+        "q3": 18,
+        "max": 25
+      }
+    }
+  ]
+}

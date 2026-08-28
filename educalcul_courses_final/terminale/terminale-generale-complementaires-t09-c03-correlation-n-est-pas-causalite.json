@@ -1,0 +1,423 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.576098+00:00",
+  "id": 671,
+  "code": "terminale-generale-complementaires-t09-c03",
+  "title": "Corrélation n'est pas causalité",
+  "description": "Cours structuré Educalcul : Corrélation n'est pas causalité.",
+  "subject": "Corrélation et causalité",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Corrélation et causalité",
+    "titre_du_cours": "Corrélation n'est pas causalité",
+    "objectif_global": "Corrélation n'est pas causalité",
+    "mini_lecons_imposees": [
+      "Variables confondantes.",
+      "Exemples.",
+      "Argumenter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Corrélation et causalité",
+      "lessons": [
+        {
+          "title": "Variables confondantes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Variables confondantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons explorer ensemble ce que l'on appelle une variable confondante. Imaginez que vous observez deux phénomènes qui semblent liés : par exemple, les ventes de glaces augmentent en même temps que le nombre de noyades dans les piscines. Au premier abord, on pourrait croire que manger de la glace provoque des noyades, mais il existe une troisième grandeur, la température extérieure, qui influence les deux. Cette troisième grandeur est ce que nous nommons une variable confondante. Comprendre ce mécanisme est essentiel pour ne pas tirer de conclusions hâtives à partir de simples corrélations."
+            },
+            {
+              "type": "definition",
+              "term": "Variable confondante",
+              "definition": "Une variable confondante est une grandeur qui n'est pas l'objet principal de l'étude, mais qui est liée à la fois à la variable explicative et à la variable réponse, créant ainsi une association trompeuse entre elles.",
+              "example": "Dans l'exemple des glaces et des noyades, la température est la variable confondante."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour visualiser cette situation, nous pouvons utiliser un diagramme de Venn où trois ensembles se chevauchent : l'ensemble des jours chauds, l'ensemble des ventes de glaces élevées et l'ensemble des noyades nombreuses. La zone d'intersection des trois ensembles montre précisément les jours où la variable confondante agit simultanément sur les deux autres variables. Cette représentation aide à voir que la corrélation observée entre glaces et noyades n'est pas directe, elle est médiatisée par la chaleur."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Intersection entre température, ventes de glaces et noyades",
+              "sets": [
+                {
+                  "label": "Température élevée",
+                  "color": "red"
+                },
+                {
+                  "label": "Ventes de glaces",
+                  "color": "blue"
+                },
+                {
+                  "label": "Noyades",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les variables observées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notez les deux variables dont vous avez mesuré la corrélation, par exemple $X$ (ventes de glaces) et $Y$ (noyades)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Rechercher une troisième variable plausible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pensez à une grandeur $Z$ qui pourrait influencer $X$ et $Y$ simultanément, comme la température, le niveau de revenus, ou l'heure de la journée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les corrélations $X$–$Z$ et $Y$–$Z$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculez les coefficients de corrélation entre $X$ et $Z$, puis entre $Y$ et $Z$. Si les deux sont forts, $Z$ est un candidat sérieux pour être une variable confondante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Contrôler l'effet de $Z$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez une régression multiple ou une analyse stratifiée pour voir si la relation $X$–$Y$ persiste après avoir pris en compte $Z$. Si elle disparaît, la corrélation initiale était due à $Z$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons une méthode pour détecter une variable confondante, penchons-nous sur l'impact concret qu'elle peut avoir sur le coefficient de corrélation de Pearson. Ce coefficient, noté $r$, mesure la force d'une relation linéaire entre deux variables. Lorsqu'une variable confondante est présente, $r$ peut être fortement gonflé, donnant l'illusion d'une relation directe là où il n'y en a pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "r_{XY} = \\frac{\\sum (X_i-\\bar{X})(Y_i-\\bar{Y})}{\\sqrt{\\sum (X_i-\\bar{X})^2 \\sum (Y_i-\\bar{Y})^2}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si une variable $Z$ est corrélée positivement avec $X$ et $Y$, le numérateur de la formule ci‑dessus augmente artificiellement, car les écarts $(X_i-\\bar{X})$ et $(Y_i-\\bar{Y})$ tendent à avoir le même signe grâce à l'influence commune de $Z$. Le dénominateur, lui, ne compense pas cet effet, si bien que $r_{XY}$ se rapproche de $1$ même en l'absence de lien causal direct. C'est pourquoi il est crucial de toujours se demander : « Y a‑t‑il une variable cachée qui pourrait expliquer cette corrélation ? » avant de conclure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer ces idées, examinons un exemple chiffré simple. Supposons que nous ayons observé $n=10$ jours. Les ventes de glaces $X$ (en centaines d'unités) et le nombre de noyades $Y$ sont relevés, ainsi que la température moyenne $Z$ (en degrés Celsius). Les données sont les suivantes : $X = (2,3,4,5,6,7,8,9,10,11)$, $Y = (1,2,2,3,4,5,5,6,7,8)$, $Z = (15,18,20,22,24,26,28,30,32,34)$. On calcule $r_{XY} \\approx 0,96$, $r_{XZ} \\approx 0,99$, $r_{YZ} \\approx 0,98$. La corrélation entre $X$ et $Y$ est extrêmement forte, mais elle disparaît presque totalement si l'on regarde la corrélation partielle en contrôlant $Z$. Cela illustre parfaitement comment une variable confondante peut créer une corrélation spurious."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'exemple des glaces et des noyades, quelle est la variable confondante et pourquoi joue‑t‑elle ce rôle ?",
+              "answer": "La variable confondante est la température extérieure, car elle influence à la fois les ventes de glaces (plus il fait chaud, plus on achète de glaces) et le nombre de noyades (plus il fait chaud, plus les gens se baignent).",
+              "hint": "Pensez à ce qui change en même temps que les deux phénomènes observés.",
+              "explanation": "Une variable confondante est liée aux deux variables étudiées. Ici, la chaleur est la cause commune qui fait augmenter simultanément les deux mesures, créant une corrélation sans lien de causalité direct."
+            },
+            {
+              "question": "Si le coefficient de corrélation $r_{XY}$ vaut $0,9$ mais que $r_{XZ}=0,85$ et $r_{YZ}=0,88$, que pouvez‑vous conjecturer sur la relation entre $X$ et $Y$ ?",
+              "answer": "Il est probable qu'une grande partie de la corrélation entre $X$ et $Y$ soit due à la variable $Z$. La relation directe entre $X$ et $Y$ pourrait être faible, voire nulle, après contrôle de $Z$.",
+              "hint": "Comparez la magnitude des corrélations avec $Z$.",
+              "explanation": "Lorsque $Z$ est fortement corrélée aux deux variables, elle peut expliquer une grande partie de leur covariation. Une analyse partielle ou une régression multiple permettrait de quantifier l'effet résiduel de $X$ sur $Y$."
+            },
+            {
+              "question": "À partir des données numériques données ($X$, $Y$, $Z$), calculez la corrélation partielle entre $X$ et $Y$ en contrôlant $Z$ (vous pouvez utiliser la formule $r_{XY\\cdot Z} = \\frac{r_{XY} - r_{XZ}r_{YZ}}{\\sqrt{(1-r_{XZ}^2)(1-r_{YZ}^2)}}$). Quelle conclusion tirez‑vous ?",
+              "answer": "En insérant les valeurs $r_{XY}=0,96$, $r_{XZ}=0,99$, $r_{YZ}=0,98$, on obtient $r_{XY\\cdot Z} \\approx 0,12$. La corrélation partielle est très faible, ce qui montre que la relation apparente entre ventes de glaces et noyades est presque entièrement expliquée par la température.",
+              "hint": "Appliquez la formule de corrélation partielle avec les trois coefficients fournis.",
+              "explanation": "La corrélation partielle mesure l'association entre $X$ et $Y$ après avoir éliminé l'influence linéaire de $Z$. Une valeur proche de zéro indique qu'il n'y a pas de lien direct résiduel."
+            }
+          ]
+        },
+        {
+          "title": "Exemples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette deuxième leçon, nous allons passer en revue plusieurs exemples concrets où la confusion entre corrélation et causalité peut mener à des interprétations erronées. L'objectif est d'affiner votre regard critique en vous montrant des situations variées, allant des études de santé publique aux données économiques, en passant par des observations du quotidien. Chaque exemple sera l'occasion de réactiver la méthode de détection des variables confondantes que nous avons vue précédemment, tout en introduisant de nouveaux pièges à éviter."
+            },
+            {
+              "type": "definition",
+              "term": "Corrélation",
+              "definition": "La corrélation est une mesure statistique qui quantifie la force et la direction d'une relation linéaire entre deux variables quantitatives. Elle ne renseigne pas sur l'existence d'un lien de cause à effet.",
+              "example": "Un coefficient de corrélation de $0,8$ entre la pointure et la taille indique une forte relation linéaire, mais porter de grandes chaussures ne fait pas grandir."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par un classique : la relation entre la pointure des chaussures et le niveau de lecture chez les enfants. Les données montrent une corrélation positive forte. Pourtant, il serait absurde de conclure que chausser du $42$ améliore la lecture. La variable confondante ici est l'âge : les enfants plus âgés ont généralement des pieds plus grands et un niveau de lecture plus avancé. Cet exemple illustre comment une variable temporelle, souvent négligée, peut créer une corrélation spurious."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Corrélation observée entre pointure et score de lecture par tranche d'âge",
+              "bars": [
+                {
+                  "label": "6 ans",
+                  "value": 0.3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "8 ans",
+                  "value": 0.55,
+                  "tone": "green"
+                },
+                {
+                  "label": "10 ans",
+                  "value": 0.78,
+                  "tone": "gold"
+                },
+                {
+                  "label": "12 ans",
+                  "value": 0.92,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un exemple tiré de l'épidémiologie : la consommation de café et le risque de cancer du poumon. De nombreuses études observationnelles ont trouvé une corrélation positive entre le nombre de tasses de café bues par jour et l'incidence du cancer du poumon. Ici, la variable confondante majeure est le tabagisme : les grands consommateurs de café sont souvent aussi de grands fumeurs. Le tabac, et non le café, est la cause réelle du risque accru. Ce cas montre l'importance de collecter des données sur les habitudes de vie pour pouvoir ajuster les analyses."
+            },
+            {
+              "type": "display_math",
+              "latex": "RR_{adjusted} = \\frac{RR_{brut}}{RR_{tabac}^{\\beta}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "En ajustant le risque relatif brut ($RR_{brut}$) à l'aide du risque relatif associé au tabac ($RR_{tabac}$) et d'un coefficient d'exposition $\\beta$, on obtient un risque ajusté qui se rapproche de $1$, indiquant l'absence d'effet causal du café. Cette formule simplifiée illustre le principe de la régression de Cox ou de la stratification, outils standards pour contrôler les confondants dans les études de cohorte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un troisième exemple, plus ludique, concerne la corrélation entre le nombre de films dans lesquels Nicolas Cage a joué dans une année donnée et le nombre de noyades en piscine aux États-Unis la même année. Sur une période de dix ans, le coefficient de corrélation atteint $0,66$. Évidemment, il n'y a aucun mécanisme causal reliant la filmographie de l'acteur aux accidents aquatiques. La variable confondante est ici purement fortuite : les deux séries temporelles présentent une tendance croissante sur la période, ce qui génère une corrélation spurious par simple coïncidence de tendances. Ce phénomène, souvent appelé « corrélation par tendance commune », rappelle qu'une corrélation élevée sur des séries temporelles ne prouve rien sans analyse de stationnarité."
+            },
+            {
+              "type": "number_line",
+              "caption": "Évolution parallèle de deux séries sans lien causal",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 2,
+                  "label": "Année 1"
+                },
+                {
+                  "value": 5,
+                  "label": "Année 5"
+                },
+                {
+                  "value": 9,
+                  "label": "Année 10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Identifiez la variable confondante dans l'exemple pointure–lecture et expliquez pourquoi elle produit une corrélation spurious.",
+              "answer": "La variable confondante est l'âge de l'enfant. Les enfants plus âgés ont naturellement des pieds plus grands (pointure plus élevée) et un niveau de lecture plus avancé du fait de leur scolarité plus longue. L'âge influence les deux variables simultanément, créant une corrélation sans lien causal direct.",
+              "hint": "Quelle caractéristique commune augmente avec l'âge et affecte les deux mesures ?",
+              "explanation": "Lorsque l'âge n'est pas pris en compte, la corrélation observée mélange l'effet de la croissance physique et de l'apprentissage scolaire. En stratifiant par âge, la corrélation au sein de chaque classe d'âge disparaît pratiquement."
+            },
+            {
+              "question": "Dans l'étude café–cancer du poumon, si le risque relatif brut est $RR_{brut}=2,5$, le risque relatif pour le tabac est $RR_{tabac}=10$ et $\\beta=0,3$, calculez le risque relatif ajusté et interprétez le résultat.",
+              "answer": "Le risque relatif ajusté vaut $RR_{adjusted} = 2,5 / 10^{0,3} \\approx 2,5 / 2,0 \\approx 1,25$. Après ajustement, l'association entre café et cancer du poumon devient faible et non significative, suggérant que le tabac explique la majeure partie de l'effet observé.",
+              "hint": "Appliquez la formule donnée en remplaçant les valeurs numériques.",
+              "explanation": "L'ajustement divise le risque brut par la contribution estimée du confondant. Un résultat proche de $1$ indique l'absence d'effet causal indépendant du café."
+            },
+            {
+              "question": "Pourquoi une corrélation de $0,66$ entre les films de Nicolas Cage et les noyades ne prouve‑t‑elle aucune relation causale ?",
+              "answer": "Les deux séries augmentent simplement avec le temps (tendance commune). Cette coïncidence de tendances produit une corrélation spurious. Il n'existe aucun mécanisme plausible reliant la filmographie aux accidents de piscine, et l'analyse de stationnarité montrerait que les séries ne sont pas stationnaires.",
+              "hint": "Réfléchissez à la nature des séries temporelles et aux tendances sous‑jacentes.",
+              "explanation": "Une corrélation entre deux séries qui montent toutes les deux au fil des ans peut être entièrement artifactuelle. La méthode appropriée consiste à différencier les séries ou à tester la cointégration avant d'inférer un lien."
+            }
+          ]
+        },
+        {
+          "title": "Argumenter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Argumenter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon vous donne les clés pour construire un argumentaire solide lorsque vous devez défendre l'idée qu'une corrélation observée ne signifie pas causalité. Nous verrons comment structurer un raisonnement, quels outils statistiques mobiliser, et comment présenter vos conclusions de façon claire et convaincante, que ce soit à l'écrit dans un rapport ou à l'oral lors d'un exposé. L'accent sera mis sur la rigueur logique, la transparence des hypothèses et l'utilisation appropriée des méthodes de contrôle des variables confondantes."
+            },
+            {
+              "type": "definition",
+              "term": "Argumentation statistique",
+              "definition": "L'argumentation statistique consiste à présenter, de manière structurée et étayée par des données, un raisonnement qui explique pourquoi une association observée ne peut être interprétée comme une relation de cause à effet, en identifiant les biais potentiels et en proposant des analyses alternatives.",
+              "example": "Dans un mémoire, on écrit : « La corrélation entre $X$ et $Y$ est de $0,78$, mais après ajustement sur $Z$, la corrélation partielle tombe à $0,12$, ce qui suggère que $Z$ est un confondant majeur. »"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Formuler l'hypothèse de travail",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Énoncez clairement la corrélation observée et la tentation d'inférer une causalité. Par exemple : « Les données montrent une corrélation de $0,7$ entre la publicité télévisée et les ventes ; on pourrait croire que la publicité cause l'augmentation des ventes. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les variables confondantes plausibles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Faites un brainstorming des facteurs tiers : saisonnalité, promotions concomitantes, évolution du marché, notoriété de la marque. Classez-les par pertinence supposée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Collecter ou simuler les données nécessaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les données existent, extrayez les séries temporelles ou les tableaux de contingence. Sinon, concevez une expérience randomisée (test A/B) pour isoler l'effet de la publicité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer les méthodes de contrôle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la régression multiple, l'appariement par score de propension, ou l'analyse en composantes principales pour neutraliser l'influence des confondants identifiés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Présenter les résultats avec nuance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Montrez les coefficients bruts et ajustés, les intervalles de confiance, et discutez des limites résiduelles (variables non mesurées, biais de sélection). Concluez par une phrase du type : « Bien que la corrélation initiale soit forte, l'analyse ajustée ne révèle pas d'effet causal significatif de la publicité sur les ventes. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Un outil puissant pour argumenter en faveur de la causalité est l'essai contrôlé randomisé (ECR). Dans un ECR, les sujets sont affectés aléatoirement au groupe traitement ou au groupe contrôle, ce qui équilibre, en moyenne, toutes les variables confondantes, connues ou inconnues. La différence de moyennes entre les deux groupes fournit alors un estimateur non biaisé de l'effet causal moyen (ATE). Cette propriété repose sur le théorème de randomisation : l'assignation aléatoire rend le traitement indépendant des facteurs de confusion potentiels."
+            },
+            {
+              "type": "display_math",
+              "latex": "ATE = E[Y | T=1] - E[Y | T=0]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque vous argumenter à partir d'un ECR, soulignez que la randomisation garantit l'absence de confusion systématique, mais rappelez aussi les conditions de validité interne : respect du protocole, absence de contamination entre groupes, mesure fiable de l'outcome. Si ces conditions ne sont pas remplies, l'estimateur peut rester biaisé. C'est pourquoi il est crucial de décrire précisément le design de l'étude dans votre argumentaire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons les limites inhérentes à toute argumentation basée sur des données observationnelles. Même avec des méthodes sophistiquées (régression, instrumental variables, difference-in-differences), il subsiste toujours le risque de variables confondantes non observées. Pour renforcer votre discours, vous pouvez : (1) réaliser des analyses de sensibilité (ex. calculer le coefficient de corrélation partielle nécessaire pour annuler l'effet), (2) citer des études quasi-expérimentales convergentes, (3) reconnaître explicitement l'incertitude résiduelle. Cette honnêteté intellectuelle renforce la crédibilité de votre conclusion plutôt que de l'affaiblir."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def sensitivity_analysis(r_xy, r_xz, r_yz):\\n    \"\"\"Retourne la corrélation partielle r_xy.z\"\"\"\\n    num = r_xy - r_xz * r_yz\\n    den = ((1 - r_xz**2) * (1 - r_yz**2))**0.5\\n    return num / den\\n\\n# Exemple d'utilisation\\nprint(sensitivity_analysis(0.78, 0.65, 0.70))",
+              "language": "python",
+              "caption": "Fonction Python pour calculer la corrélation partielle et tester la robustesse d'une association"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une variable confondante et donner un exemple concret.",
+                "Je sais expliquer pourquoi une forte corrélation ne prouve pas une causalité.",
+                "Je sais appliquer la méthode en quatre étapes pour détecter un confondant.",
+                "Je sais construire un argumentaire structuré : hypothèse, confondants, données, contrôle, conclusion nuancée.",
+                "Je connais l'intérêt et les limites de l'essai contrôlé randomisé pour établir la causalité.",
+                "Je sais réaliser une analyse de sensibilité simple pour tester la robustesse d'une association."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédigez, en suivant les cinq étapes décrites, un court argumentaire (5-6 phrases) montrant que la corrélation entre le nombre de bibliothèques municipales et le taux de diplômés dans une ville ne prouve pas que les bibliothèques augmentent le niveau d'éducation.",
+              "answer": "On observe une corrélation positive entre le nombre de bibliothèques et le taux de diplômés. L'hypothèse de travail serait que les bibliothèques causent la réussite scolaire. Les variables confondantes plausibles sont le revenu moyen des habitants, l'investissement municipal dans l'éducation, et la densité urbaine. En collectant ces données et en ajustant par régression multiple, l'effet des bibliothèques devient non significatif. On conclut donc que la corrélation initiale s'explique principalement par le niveau socio‑économique de la ville.",
+              "hint": "Suivez l'ordre : hypothèse, confondants, données, contrôle, conclusion.",
+              "explanation": "Cet exercice vérifie que vous savez structurer un raisonnement complet, de l'observation brute à la conclusion prudente, en nommant explicitement les confondants et la méthode de contrôle."
+            },
+            {
+              "question": "Dans un essai randomisé testant un nouveau programme de soutien scolaire, le groupe traitement (n=120) obtient une moyenne de 14,2/20 et le groupe contrôle (n=118) une moyenne de 12,8/20. Calculez l'ATE et donnez son interprétation.",
+              "answer": "L'ATE = 14,2 - 12,8 = 1,4 points. Cela signifie que, en moyenne, le programme augmente la note de 1,4 points par rapport à l'absence de programme, sous réserve que la randomisation ait bien équilibré les groupes.",
+              "hint": "Utilisez la formule ATE = moyenne_traitement - moyenne_controle.",
+              "explanation": "La différence de moyennes dans un ECR bien conduit est un estimateur non biaisé de l'effet causal moyen. L'interprétation doit mentionner l'hypothèse de randomisation réussie."
+            },
+            {
+              "question": "Expliquez pourquoi, même après une régression multiple ajustant sur cinq variables, il reste possible qu'une variable confondante non mesurée biaise l'estimation de l'effet causal.",
+              "answer": "La régression ne contrôle que les variables incluses dans le modèle. Si un facteur influent (par exemple la motivation intrinsèque des élèves) n'a pas été mesuré, il peut rester corrélé à la fois au traitement et à l'outcome, créant un biais résiduel. Les analyses de sensibilité permettent de quantifier l'ampleur nécessaire de ce biais pour annuler l'effet observé.",
+              "hint": "Pensez à la distinction entre variables observées et non observées.",
+              "explanation": "Aucune méthode statistique ne peut corriger un confondant totalement absent des données. La transparence sur cette limite est une marque de rigueur scientifique."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 431,
+  "_course_code": "4eme-t03-c02-vitesse-et-grandeurs-composees",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Formule",
+  "title": "Quiz : La formule de la vitesse",
+  "questions": [
+    {
+      "text": "Quelle est la formule liant la vitesse $v$, la distance $d$ et le temps $t$ ?",
+      "options": [
+        "v = d / t",
+        "v = t / d",
+        "v = d * t",
+        "d = v / t"
+      ],
+      "correctAnswer": "v = d / t",
+      "explanation": "La vitesse est une grandeur composée définie comme le quotient de la distance parcourue par le temps mis pour la parcourir. On divise donc la distance par le temps : $v = \\frac{d}{t}$. L'option $v = t / d$ inverse les grandeurs, $v = d * t$ confond avec une aire ou un produit, et $d = v / t$ est une erreur de manipulation algébrique (la formule correcte transformée est $d = v \\times t$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt $30$ km en $2$ heures. Quelle est sa vitesse moyenne ?",
+      "options": [
+        "15 km/h",
+        "60 km/h",
+        "0,067 km/h",
+        "32 km/h"
+      ],
+      "correctAnswer": "15 km/h",
+      "explanation": "On applique la formule $v = \\frac{d}{t}$. Ici $d = 30$ km et $t = 2$ h. Le calcul donne $v = \\frac{30}{2} = 15$ km/h. L'option $60$ km/h correspond au produit $d \\times t$ (erreur fréquente). L'option $0,067$ km/h correspond à l'inverse $t/d$. L'option $32$ km/h correspond à la somme $d+t$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture roule à $90$ km/h pendant $3$ heures. Quelle distance a-t-elle parcourue ?",
+      "options": [
+        "270 km",
+        "30 km",
+        "27 km",
+        "93 km"
+      ],
+      "correctAnswer": "270 km",
+      "explanation": "Pour trouver la distance, on utilise la formule transformée $d = v \\times t$. On multiplie la vitesse par le temps : $90 \\times 3 = 270$ km. L'option $30$ km correspond à la division $v / t$ (confusion avec la formule de la vitesse). L'option $27$ km est une erreur de calcul (oubli du zéro). L'option $93$ km correspond à l'addition $v + t$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un train parcourt $420$ km à une vitesse moyenne de $140$ km/h. Combien de temps a duré le trajet ?",
+      "options": [
+        "3 h",
+        "58800 h",
+        "0,33 h",
+        "280 h"
+      ],
+      "correctAnswer": "3 h",
+      "explanation": "Pour trouver le temps, on utilise la formule $t = \\frac{d}{v}$. On divise la distance par la vitesse : $420 \\div 140 = 3$ heures. L'option $58800$ h est le produit $d \\times v$. L'option $0,33$ h est l'inverse $v / d$. L'option $280$ h correspond à la soustraction $d - v$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un coureur met $25$ minutes pour parcourir $5$ km. Quelle est sa vitesse en km/h ?",
+      "options": [
+        "12 km/h",
+        "0,2 km/h",
+        "7,2 km/h",
+        "125 km/h"
+      ],
+      "correctAnswer": "12 km/h",
+      "explanation": "Attention aux unités : le temps doit être en heures. $25$ minutes $= \\frac{25}{60} = \\frac{5}{12}$ heure. On calcule $v = \\frac{d}{t} = 5 \\div \\frac{5}{12} = 5 \\times \\frac{12}{5} = 12$ km/h. L'option $0,2$ km/h utilise le temps en minutes sans conversion ($5/25$). L'option $7,2$ km/h correspond à une conversion erronée ($25$ min $= 0,25$ h). L'option $125$ km/h est le produit $d \\times t$ (en minutes).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

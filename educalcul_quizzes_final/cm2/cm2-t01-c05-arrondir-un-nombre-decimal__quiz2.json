@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Choisir précision",
+  "title": "Quiz : Choisir la précision d'arrondi",
+  "questions": [
+    {
+      "text": "On veut arrondir le nombre $12,47$ à l'entier le plus proche. Quel est le résultat ?",
+      "options": [
+        "$12$",
+        "$13$",
+        "$12,4$",
+        "$12,5$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Pour arrondir à l'entier, on regarde le chiffre des dixièmes (ici $4$). Comme $4 < 5$, on arrondit à l'entier inférieur, donc $12$. Les réponses $12,4$ et $12,5$ correspondent à un arrondi au dixième, et $13$ serait l'arrondi si le chiffre des dixièmes était $\\ge 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'arrondi de $3,86$ au dixième le plus proche ?",
+      "options": [
+        "$3,8$",
+        "$3,9$",
+        "$3,86$",
+        "$4$"
+      ],
+      "correctAnswer": "$3,9$",
+      "explanation": "L'arrondi au dixième se fait en regardant le chiffre des centièmes (ici $6$). Comme $6 \\ge 5$, on arrondit le dixième supérieur : $3,8$ devient $3,9$. La réponse $3,8$ serait obtenue en tronquant, $3,86$ est le nombre exact, et $4$ est l'arrondi à l'entier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un article coûte $12,49\\ \\text{€}$. Si on arrondit ce prix à l'euro le plus proche, quelle valeur obtient-on ?",
+      "options": [
+        "$12\\ \\text{€}$",
+        "$12,5\\ \\text{€}$",
+        "$13\\ \\text{€}$",
+        "$12,49\\ \\text{€}$"
+      ],
+      "correctAnswer": "$12\\ \\text{€}$",
+      "explanation": "Arrondir à l'euro signifie arrondir à l'entier. Le chiffre des dixièmes est $4$ ($<5$), donc on arrondit à l'entier inférieur : $12\\ \\text{€}$. $12,5\\ \\text{€}$ est un arrondi au dixième d'euro, $13\\ \\text{€}$ serait l'arrondi si les dixièmes étaient $\\ge 5$, et $12,49\\ \\text{€}$ est le prix exact.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les nombres suivants, lequel donne $5,6$ lorsqu'on l'arrondit au dixième ?",
+      "options": [
+        "$5,64$",
+        "$5,54$",
+        "$5,65$",
+        "$5,74$"
+      ],
+      "correctAnswer": "$5,64$",
+      "explanation": "Pour obtenir $5,6$ au dixième, le chiffre des centièmes doit être $<5$ (pour ne pas arrondir le dixième à $5,7$) ou le nombre doit être compris entre $5,55$ et $5,64\\ldots$ mais parmi les choix, seul $5,64$ a des centièmes $4$ ($<5$) et un dixième $6$. $5,54$ arrondit à $5,5$, $5,65$ arrondit à $5,7$, $5,74$ arrondit à $5,7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un chronomètre affiche $12,347\\ \\text{s}$ pour une course. Le règlement demande d'arrondir au centième de seconde. Quel temps officiel est enregistré ?",
+      "options": [
+        "$12,34\\ \\text{s}$",
+        "$12,35\\ \\text{s}$",
+        "$12,3\\ \\text{s}$",
+        "$12,4\\ \\text{s}$"
+      ],
+      "correctAnswer": "$12,35\\ \\text{s}$",
+      "explanation": "L'arrondi au centième regarde le chiffre des millièmes (ici $7$). Comme $7 \\ge 5$, on arrondit le centième supérieur : $12,34$ devient $12,35$. $12,34$ serait l'arrondi par troncature, $12,3$ est l'arrondi au dixième, et $12,4$ est l'arrondi au dixième si on arrondissait $12,35$ au dixième.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

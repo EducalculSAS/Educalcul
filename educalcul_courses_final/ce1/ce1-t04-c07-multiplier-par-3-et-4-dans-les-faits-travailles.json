@@ -1,0 +1,334 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.798540+00:00",
+  "id": 104,
+  "code": "ce1-t04-c07",
+  "title": "Multiplier par 3 et 4 dans les faits travaillés",
+  "description": "Cours structuré Educalcul : Multiplier par 3 et 4 dans les faits travaillés.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Multiplier par 3 et 4 dans les faits travaillés",
+    "objectif_global": "Multiplier par 3 et 4 dans les faits travaillés",
+    "mini_lecons_imposees": [
+      "Construire les résultats.",
+      "Utiliser décomposition.",
+      "Automatiser progressivement."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Construire les résultats.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire les résultats de la table de 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà l'addition. La multiplication, c'est ajouter plusieurs fois le même nombre. Par exemple, $3 \\\\times 4$ veut dire 4 + 4 + 4. Imagine trois paniers, dans chaque panier il y a quatre pommes. Combien de pommes au total ? C'est comme faire un saut de 4, trois fois de suite. C'est une façon rapide de compter quand il y a beaucoup d'objets identiques. Tu vas voir que le résultat est 12."
+            },
+            {
+              "type": "definition",
+              "term": "multiplication",
+              "definition": "C'est ajouter plusieurs fois le même nombre.",
+              "example": "$3 \\\\times 4 = 12$"
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "3 groupes de 4 carrés"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons la table de 4. C'est la même idée mais avec quatre groupes. Tu vas construire toi-même les résultats en ajoutant 3 quatre fois. C'est un peu comme marcher par pas de 3, quatre étapes. Tu verras que l'ordre ne change pas le total, c'est la commutativité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire les résultats de la table de 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour $4 \\\\times 3$, tu as quatre groupes de trois objets. Compte-les : 3 + 3 + 3 + 3 = 12. Le produit est le même que pour $3 \\\\times 4$."
+            },
+            {
+              "type": "definition",
+              "term": "produit",
+              "definition": "C'est le résultat d'une multiplication.",
+              "example": "$4 \\\\times 3 = 12$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut continuer pour écrire les premiers résultats de chaque table. Voici les premiers produits : $3 \\\\times 1 = 3$, $3 \\\\times 2 = 6$, $3 \\\\times 3 = 9$, $3 \\\\times 4 = 12$, $3 \\\\times 5 = 15$. Pour la table de 4 : $4 \\\\times 1 = 4$, $4 \\\\times 2 = 8$, $4 \\\\times 3 = 12$, $4 \\\\times 4 = 16$, $4 \\\\times 5 = 20$. Essaie de les réciter à voix haute pour les mémoriser. Plus tu les répètes, plus ils deviendront automatiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $3 \\\\times 4$ ?",
+              "answer": "12",
+              "hint": "Compte les carrés sur la grille.",
+              "explanation": "3 groupes de 4 donnent 12."
+            },
+            {
+              "question": "Combien font $4 \\\\times 3$ ?",
+              "answer": "12",
+              "hint": "Pense aux 4 groupes de 3.",
+              "explanation": "4 fois 3 font aussi 12."
+            },
+            {
+              "question": "Quel est le résultat de $3 \\\\times 5$ ?",
+              "answer": "15",
+              "hint": "Regarde la liste des produits de la table de 3.",
+              "explanation": "3 fois 5 font 15."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la décomposition pour multiplier par 3"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour multiplier un nombre à deux chiffres par 3, on peut le couper en dizaines et en unités. Regarde le nombre 12 : il y a 1 dizaine et 2 unités. Cette séparation s'appelle la décomposition. Elle aide à faire le calcul en étapes simples. D'abord on multiplie la dizaine, puis les unités, et on additionne les deux résultats. C'est une méthode qui rend le calcul mental plus facile."
+            },
+            {
+              "type": "definition",
+              "term": "décomposition",
+              "definition": "C'est séparer un nombre en dizaines et en unités pour calculer plus facilement.",
+              "example": "12 = 10 + 2"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "12 = 1 dizaine et 2 unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sépare le nombre en dizaines et en unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier chaque partie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie la dizaine par 3, puis les unités par 3."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les deux produits pour obtenir le total."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La même astuce fonctionne pour multiplier par 4. Tu vas voir que c'est tout aussi facile."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplier par 4 avec la décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons 14 : 1 dizaine et 4 unités. $4 \\\\times 10 = 40$ et $4 \\\\times 4 = 16$. En additionnant, on obtient 56. C'est comme ajouter 40 et 16, ce que tu sais faire déjà. La décomposition rend le gros calcul petit à petit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant avec un autre nombre. Tu vas devenir très vite à l'aise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraîne-toi avec un nombre à deux chiffres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis 15. Décompose-le : 1 dizaine et 5 unités. Multiplie chaque partie par 3 : $3 \\\\times 10 = 30$, $3 \\\\times 5 = 15$. Total : 45. Tu peux vérifier en ajoutant 30 et 15. C'est la même méthode, juste avec d'autres chiffres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $3 \\\\times 12$ en décomposant 12.",
+              "answer": "36",
+              "hint": "Décompose 12 en 10 et 2, puis multiplie chaque partie par 3.",
+              "explanation": "$3 \\\\times 10 = 30$, $3 \\\\times 2 = 6$, $30 + 6 = 36$."
+            },
+            {
+              "question": "Calcule $4 \\\\times 14$.",
+              "answer": "56",
+              "hint": "Décompose 14 en 10 et 4.",
+              "explanation": "$4 \\\\times 10 = 40$, $4 \\\\times 4 = 16$, $40 + 16 = 56$."
+            },
+            {
+              "question": "Calcule $3 \\\\times 15$.",
+              "answer": "45",
+              "hint": "Décompose 15 en 10 et 5.",
+              "explanation": "$3 \\\\times 10 = 30$, $3 \\\\times 5 = 15$, $30 + 15 = 45$."
+            }
+          ]
+        },
+        {
+          "title": "Automatiser progressivement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Automatiser les tables de 3 et de 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour que les réponses viennent vite, il faut les répéter souvent. Tu peux jouer à des jeux de cartes, chanter les tables ou les écrire chaque jour. Plus tu t'exerces, plus ton cerveau garde les résultats sans effort. C'est ce qu'on appelle automatiser. Chaque petit entraînement compte."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de faits appris jusqu'à 10",
+              "bars": [
+                {
+                  "label": "Table de 3",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Table de 4",
+                  "value": 10,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, testons ta rapidité sur la table de 4. Tu vas voir que tu connais déjà beaucoup de produits. Continue à les dire à voix haute pour les fixer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappeler la table de 4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie de dire les produits de 4 sans hésiter : $4 \\\\times 1 = 4$, $4 \\\\times 2 = 8$, $4 \\\\times 3 = 12$, $4 \\\\times 4 = 16$, $4 \\\\times 5 = 20$, $4 \\\\times 6 = 24$, $4 \\\\times 7 = 28$, $4 \\\\times 8 = 32$, $4 \\\\times 9 = 36$, $4 \\\\times 10 = 40$. Répète-les plusieurs fois jusqu'à ce que ce soit fluide. Tu verras que ça devient naturel."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Mélangeons les deux tables pour un petit défi. C'est un bon moyen de vérifier que tu ne les confonds pas. Tu es prêt ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Défi mixte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Donne le résultat de $3 \\\\times 8$ et de $4 \\\\times 5$. Tu peux les dire à voix haute ou les écrire. Si tu bloques, repense aux groupes d'objets que tu as construits au début. C'est normal d'hésiter, l'entraînement fait la différence."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais multiplier par 3 jusqu'à 10.",
+                "Je sais multiplier par 4 jusqu'à 10.",
+                "Je sais décomposer un nombre à deux chiffres pour multiplier.",
+                "Je réponds vite aux petits calculs."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le produit de $3 \\\\times 7$ ?",
+              "answer": "21",
+              "hint": "Rappelle-toi la table de 3.",
+              "explanation": "$3 \\\\times 7 = 21$."
+            },
+            {
+              "question": "Quel est le produit de $4 \\\\times 6$ ?",
+              "answer": "24",
+              "hint": "Rappelle-toi la table de 4.",
+              "explanation": "$4 \\\\times 6 = 24$."
+            },
+            {
+              "question": "Donne les résultats de $3 \\\\times 8$ et $4 \\\\times 5$.",
+              "answer": "24 et 20",
+              "hint": "Utilise les tables que tu as apprises.",
+              "explanation": "$3 \\\\times 8 = 24$ et $4 \\\\times 5 = 20$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

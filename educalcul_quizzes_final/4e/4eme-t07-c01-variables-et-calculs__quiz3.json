@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 450,
+  "_course_code": "4eme-t07-c01-variables-et-calculs",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Tracer état",
+  "title": "Quiz : Tracer l'état des variables",
+  "questions": [
+    {
+      "text": "On affecte $5$ à $a$, puis $3$ à $b$, puis on exécute $a ← a + b$. Quelle est la valeur finale de $a$ ?",
+      "options": [
+        "$5$",
+        "$3$",
+        "$8$",
+        "$2$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Au début $a = 5$ et $b = 3$. L'instruction $a ← a + b$ calcule $5 + 3 = 8$ et affecte ce résultat à $a$. Les autres options correspondent à la valeur initiale de $a$ ($5$), à la valeur de $b$ ($3$) ou à une soustraction incorrecte ($2$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme suivant : $i ← 1$ ; $s ← 0$ ; Tant que $i ≤ 4$ faire $s ← s + i$ ; $i ← i + 1$ ; Fin Tant que. Quelle est la valeur de $s$ à la fin de la boucle ?",
+      "options": [
+        "$6$",
+        "$10$",
+        "$15$",
+        "$4$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "La boucle ajoute successivement les valeurs de $i$ : $1 + 2 + 3 + 4 = 10$. L'option $6$ correspond à la somme jusqu'à $3$, $15$ à la somme jusqu'à $5$, et $4$ à la dernière valeur de $i$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'algorithme : $x ← -2$ ; Si $x > 0$ alors $y ← 1$ sinon $y ← -1$ ; Fin Si. Quelle est la valeur de $y$ après exécution ?",
+      "options": [
+        "$1$",
+        "$-1$",
+        "$0$",
+        "$2$"
+      ],
+      "correctAnswer": "$-1$",
+      "explanation": "La condition $x > 0$ est fausse car $x$ vaut $-2$. On exécute donc la branche sinon qui affecte $-1$ à $y$. L'option $1$ serait choisie si la condition était vraie, $0$ et $2$ n'apparaissent jamais.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute les instructions : $a ← 10$ ; $b ← 4$ ; $a ← a - b$ ; $b ← a + b$. Quelles sont les valeurs finales de $a$ et $b$ ?",
+      "options": [
+        "$a$ = $6$ et $b$ = $10$",
+        "$a$ = $6$ et $b$ = $4$",
+        "$a$ = $10$ et $b$ = $6$",
+        "$a$ = $4$ et $b$ = $6$"
+      ],
+      "correctAnswer": "$a$ = $6$ et $b$ = $10$",
+      "explanation": "Après $a ← a - b$, $a$ vaut $10 - 4 = 6$. Ensuite $b ← a + b$ utilise la nouvelle valeur de $a$ ($6$) et l'ancienne valeur de $b$ ($4$) : $6 + 4 = 10$. Donc $a = 6$ et $b = 10$. Les autres options mélangent les valeurs avant/après l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On trace l'algorithme : $i ← 1$ ; $j ← 1$ ; Tant que $i ≤ 3$ faire Tant que $j ≤ 2$ faire $j ← j + 1$ ; Fin Tant que ; $i ← i + 1$ ; Fin Tant que. Quelles sont les valeurs finales de $i$ et $j$ ?",
+      "options": [
+        "$i$ = $4$ et $j$ = $3$",
+        "$i$ = $3$ et $j$ = $2$",
+        "$i$ = $4$ et $j$ = $2$",
+        "$i$ = $3$ et $j$ = $3$"
+      ],
+      "correctAnswer": "$i$ = $4$ et $j$ = $3$",
+      "explanation": "Au premier tour externe ($i=1$), la boucle interne incrémente $j$ de $1$ à $3$ (car $j ≤ 2$). Après, $j=3$. Les tours suivants ($i=2$ puis $i=3$) ne rentrent pas dans la boucle interne car $j=3 > 2$. $i$ est incrémenté jusqu'à $4$ pour sortir de la boucle externe. Finalement $i=4$, $j=3$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

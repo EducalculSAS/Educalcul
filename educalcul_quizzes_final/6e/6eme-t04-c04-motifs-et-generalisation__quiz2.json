@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Prédire",
+  "title": "Quiz : Prédire à partir d'un motif",
+  "questions": [
+    {
+      "text": "On considère la suite de nombres : $2, 5, 8, 11, 14, \\ldots$ Quelle est la régularité pour passer d'un terme au suivant ?",
+      "options": [
+        "On ajoute 2",
+        "On ajoute 3",
+        "On multiplie par 2",
+        "On ajoute 1 puis on multiplie par 2"
+      ],
+      "correctAnswer": "On ajoute 3",
+      "explanation": "Pour trouver la régularité, on calcule la différence entre deux termes consécutifs : $5 - 2 = 3$, $8 - 5 = 3$, $11 - 8 = 3$. La différence est constante et vaut 3. Il s'agit d'une suite arithmétique de raison 3 : on ajoute 3 à chaque fois. L'option 'On ajoute 2' correspond à la différence entre le premier terme et le rang 1, ce qui est une confusion fréquente. Les autres options ne correspondent pas aux calculs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici les premiers termes d'une suite : $3, 7, 11, 15, \\ldots$ Quel sera le 6$^e$ terme de cette suite ?",
+      "options": [
+        "18",
+        "19",
+        "21",
+        "23"
+      ],
+      "correctAnswer": "23",
+      "explanation": "La suite augmente de 4 à chaque fois ($7-3=4$, $11-7=4$, $15-11=4$). Le 5$^e$ terme est $15 + 4 = 19$. Le 6$^e$ terme est $19 + 4 = 23$. On peut aussi utiliser la formule : premier terme + (rang - 1) $\\times$ raison = $3 + (6-1) \\times 4 = 3 + 20 = 23$. L'option 19 correspond au 5$^e$ terme (erreur de comptage d'un rang). L'option 21 correspond à une addition de 6 au lieu de 4 au dernier terme connu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pavage est construit avec des carrés. À l'étape 1, il y a 4 carrés. À l'étape 2, il y a 7 carrés. À l'étape 3, il y a 10 carrés. Si on continue ce motif, combien y aura-t-il de carrés à l'étape 10 ?",
+      "options": [
+        "28",
+        "31",
+        "34",
+        "37"
+      ],
+      "correctAnswer": "31",
+      "explanation": "Le nombre de carrés augmente de 3 à chaque étape ($7-4=3$, $10-7=3$). C'est une suite arithmétique de premier terme 4 et de raison 3. Pour trouver l'étape 10, on part de l'étape 1 (4 carrés) et on ajoute 3 neuf fois (pour aller de l'étape 1 à l'étape 10) : $4 + 9 \\times 3 = 4 + 27 = 31$. L'option 28 correspond à $4 + 8 \\times 3$ (erreur : on a ajouté 3 seulement 8 fois au lieu de 9). L'option 34 correspond à $4 + 10 \\times 3$ (erreur : on a ajouté 3 dix fois). L'option 37 correspond à un départ de l'étape 0 à 7 carrés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On construit des figures avec des allumettes. La figure 1 utilise 3 allumettes (un triangle). La figure 2 utilise 5 allumettes (deux triangles collés). La figure 3 utilise 7 allumettes (trois triangles collés). Combien d'allumettes pour la figure 20 ?",
+      "options": [
+        "39",
+        "41",
+        "43",
+        "45"
+      ],
+      "correctAnswer": "41",
+      "explanation": "On observe la suite du nombre d'allumettes : $3, 5, 7, \\ldots$ La raison est 2 (on ajoute 2 allumettes à chaque nouveau triangle collé). La figure 1 a 3 allumettes. Pour la figure 20, on part de la figure 1 et on ajoute 2 allumettes 19 fois : $3 + 19 \\times 2 = 3 + 38 = 41$. L'option 39 correspond à $20 \\times 2 - 1$ (formule incorrecte). L'option 43 correspond à $3 + 20 \\times 2$ (on a ajouté 20 fois au lieu de 19). L'option 45 correspond à $20 \\times 2 + 5$ (pas de logique apparente).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre de carreaux nécessaire pour border un bassin carré suit la règle : $4 \\times c + 4$, où $c$ est la longueur du côté du bassin en mètres. Combien de carreaux pour un bassin de côté 12 m ?",
+      "options": [
+        "48",
+        "52",
+        "56",
+        "60"
+      ],
+      "correctAnswer": "52",
+      "explanation": "Il suffit d'appliquer la formule donnée : $4 \\times c + 4$. On remplace $c$ par 12 : $4 \\times 12 + 4 = 48 + 4 = 52$. L'option 48 correspond au calcul $4 \\times 12$ en oubliant le '+ 4' final (les 4 carreaux des coins). L'option 56 correspond à $4 \\times 14$ (erreur sur la valeur de $c$). L'option 60 correspond à $4 \\times 15$ ou $5 \\times 12$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

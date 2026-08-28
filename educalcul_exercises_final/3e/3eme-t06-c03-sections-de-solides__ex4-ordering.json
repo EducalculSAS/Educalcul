@@ -1,0 +1,58 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 487,
+  "_course_code": "3eme-t06-c03-sections-de-solides",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Sections de solides",
+  "title": "Sections de solides : Mise en ordre des étapes de construction",
+  "blocks": [
+    {
+      "title": "Méthode générale",
+      "content": "Range les étapes dans l'ordre logique pour construire la section d'un polyèdre par un plan.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer les points d'intersection du plan secant avec les arêtes du solide.",
+        "Relier ces points deux à deux à l'intérieur de chaque face du solide.",
+        "Le polygone ainsi obtenu est la section recherchée."
+      ],
+      "explanation": "La construction d'une section suit toujours ce protocole : 1. On trouve où le plan coupe les arêtes (points d'intersection). 2. On relie ces points situés sur une même face car l'intersection d'un plan avec une face (plan) est une droite. 3. L'ensemble de ces segments forme le polygone de section.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Section d'un cube",
+      "content": "Range les affirmations dans l'ordre du raisonnement pour déterminer la section d'un cube par un plan parallèle à l'une de ses faces.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le plan de coupe est parallèle à une face du cube.",
+        "Il coupe les quatre arêtes perpendiculaires à cette face.",
+        "La section est un carré isométrique à la face de référence."
+      ],
+      "explanation": "Si un plan est parallèle à une face d'un cube, il est perpendiculaire aux quatre arêtes qui coupent cette face. L'intersection avec le cube est donc un carré de même dimension que la face (isométrique), situé à une certaine distance de celle-ci.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Section d'une pyramide",
+      "content": "Range les étapes dans l'ordre pour décrire la section d'une pyramide à base carrée par un plan parallèle à sa base.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Le plan de coupe est parallèle à la base de la pyramide.",
+        "Il intersecte les quatre arêtes latérales.",
+        "La section est un carré homothétique à la base.",
+        "Le centre de la section, le sommet de la pyramide et le centre de la base sont alignés."
+      ],
+      "explanation": "Un plan parallèle à la base d'une pyramide coupe les arêtes latérales en des points qui déterminent un polygone homothétique à la base (ici un carré). Le centre d'homothétie est le sommet de la pyramide, donc les centres de la base et de la section sont alignés avec le sommet.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

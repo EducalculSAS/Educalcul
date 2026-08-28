@@ -1,0 +1,103 @@
+{
+  "_status": "done",
+  "_course_id": 119,
+  "_course_code": "ce1-t06-c03-mesurer-et-comparer-des-masses",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Comparer des masses",
+  "title": "Comparer des masses - CE1",
+  "questions": [
+    {
+      "text": "Regarde la balance. Le plateau de gauche descend plus bas que celui de droite. Que peux-tu dire des masses des deux objets ?",
+      "options": [
+        "L'objet de gauche a une masse plus grande que celui de droite",
+        "L'objet de droite a une masse plus grande que celui de gauche",
+        "Les deux objets ont la même masse",
+        "Il est impossible de comparer leurs masses"
+      ],
+      "correctAnswer": "L'objet de gauche a une masse plus grande que celui de droite",
+      "explanation": "Sur une balance à deux plateaux, le côté qui descend est le plus lourd. Comme le plateau de gauche est plus bas, l'objet de gauche a une masse plus grande (il est plus lourd) que l'objet de droite.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          5
+        ],
+        "right": [
+          2
+        ],
+        "caption": "Balance penchée vers la gauche : l'objet de gauche est plus lourd."
+      }
+    },
+    {
+      "text": "On place une masse de $1$ kg sur le plateau de gauche et une masse de $2$ kg sur le plateau de droite. Dans quel sens la balance va-t-elle pencher ?",
+      "options": [
+        "La balance penche vers la gauche",
+        "La balance penche vers la droite",
+        "La balance reste en équilibre",
+        "La balance se casse"
+      ],
+      "correctAnswer": "La balance penche vers la droite",
+      "explanation": "La masse de $2$ kg est plus grande que la masse de $1$ kg. Le plateau de droite est donc plus lourd et descend, la balance penche vers la droite.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          1
+        ],
+        "right": [
+          2
+        ],
+        "caption": "Comparaison de 1 kg à gauche et 2 kg à droite."
+      }
+    },
+    {
+      "text": "La boîte bleue est plus lourde que la boîte rouge. La boîte rouge est plus lourde que la boîte jaune. Laquelle de ces affirmations est vraie ?",
+      "options": [
+        "La boîte jaune est la plus lourde",
+        "La boîte bleue est la plus légère",
+        "La boîte jaune est la plus légère",
+        "La boîte rouge est plus lourde que la boîte bleue"
+      ],
+      "correctAnswer": "La boîte jaune est la plus légère",
+      "explanation": "On compare par transitivité : bleue > rouge et rouge > jaune. Donc bleue > rouge > jaune. La boîte jaune est celle qui a la plus petite masse, c'est la plus légère.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac de farine a une masse de $1$ kg. Un cartable est plus lourd que le sac de farine. Une peluche est plus légère que le sac de farine. Classe ces trois objets de la plus grande masse à la plus petite masse.",
+      "options": [
+        "Cartable, sac de farine, peluche",
+        "Peluche, sac de farine, cartable",
+        "Sac de farine, cartable, peluche",
+        "Cartable, peluche, sac de farine"
+      ],
+      "correctAnswer": "Cartable, sac de farine, peluche",
+      "explanation": "Le cartable est plus lourd que $1$ kg (sac de farine), donc il a la plus grande masse. La peluche est plus légère que $1$ kg, donc elle a la plus petite masse. L'ordre décroissant est : cartable > sac de farine > peluche.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une balance en équilibre, il y a un objet mystère et une masse de $1$ kg sur le plateau de gauche. Sur le plateau de droite, il y a une masse de $3$ kg. Quelle est la masse de l'objet mystère ?",
+      "options": [
+        "$1$ kg",
+        "$2$ kg",
+        "$3$ kg",
+        "$4$ kg"
+      ],
+      "correctAnswer": "$2$ kg",
+      "explanation": "La balance est en équilibre, donc la masse totale à gauche est égale à la masse totale à droite. À droite : $3$ kg. À gauche : masse de l'objet + $1$ kg. Il faut trouver le nombre qui ajouté à $1$ donne $3$. $3 - 1 = 2$. La masse de l'objet est $2$ kg.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          1
+        ],
+        "right": [
+          3
+        ],
+        "caption": "Équilibre : objet + 1 kg à gauche, 3 kg à droite."
+      }
+    }
+  ]
+}

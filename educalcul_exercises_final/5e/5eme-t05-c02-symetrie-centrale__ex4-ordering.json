@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Application : Symétrie centrale",
+  "title": "Applications de la symétrie centrale",
+  "blocks": [
+    {
+      "title": "Construction du symétrique d'un point",
+      "content": "Range les étapes dans l'ordre pour construire le symétrique d'un point par rapport à un centre donné.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Tracer le segment reliant le point au centre.",
+        "Prolonger ce segment de la même longueur de l'autre côté du centre.",
+        "Marquer le point obtenu, c'est le symétrique."
+      ],
+      "explanation": "La symétrie centrale d'un point A par rapport à un centre O consiste à trouver le point A' tel que O soit le milieu du segment [AA']. On trace d'abord le segment [AO], on le prolonge au-delà de O de la même longueur pour obtenir A', puis on marque ce point.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés de la symétrie centrale et parallélogramme",
+      "content": "Range les affirmations dans l'ordre logique pour démontrer qu'un quadrilatère dont les diagonales ont le même milieu est un parallélogramme.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Les diagonales ont le même milieu.",
+        "Ce milieu commun est le centre de symétrie du quadrilatère.",
+        "Le quadrilatère est invariant par symétrie centrale par rapport à ce centre.",
+        "Donc c'est un parallélogramme."
+      ],
+      "explanation": "Si les diagonales d'un quadrilatère se coupent en leur milieu commun, ce point est le centre d'une symétrie centrale qui échange les sommets opposés. L'invariance par cette symétrie implique que les côtés opposés sont parallèles, ce qui caractérise un parallélogramme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées de l'image d'un triangle par symétrie centrale",
+      "content": "Range les étapes pour déterminer les coordonnées des sommets de l'image d'un triangle par une symétrie centrale de centre O(0;0).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les coordonnées des sommets du triangle, par exemple $A(2;3)$, $B(-1;4)$, $C(0;-2)$.",
+        "Appliquer la règle : l'image de $(x;y)$ est $(-x;-y)$ à chaque sommet.",
+        "Obtenir les coordonnées des sommets de l'image, ici $A'(-2;-3)$, $B'(1;-4)$, $C'(0;2)$.",
+        "Tracer le triangle image."
+      ],
+      "explanation": "La symétrie centrale par rapport à l'origine transforme tout point $(x;y)$ en $(-x;-y)$. On applique cette transformation à chaque sommet du triangle initial pour obtenir les coordonnées des sommets de l'image, puis on trace le nouveau triangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

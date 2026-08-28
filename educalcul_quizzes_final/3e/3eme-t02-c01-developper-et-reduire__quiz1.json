@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 461,
+  "_course_code": "3eme-t02-c01-developper-et-reduire",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Distributivité",
+  "title": "Quiz sur la distributivité (3e)",
+  "questions": [
+    {
+      "text": "Développez l'expression $3(x+4)$.",
+      "options": [
+        "$3x+12$",
+        "$3x+4$",
+        "$3x+7$",
+        "$3x-12$"
+      ],
+      "correctAnswer": "$3x+12$",
+      "explanation": "On multiplie le terme extérieur $3$ par chaque terme à l'intérieur de la parenthèse : $3 \\times x = 3x$ et $3 \\times 4 = 12$. L'expression développée est donc $3x+12$. Les autres choix correspondent à des oublis de multiplication ou à des erreurs de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez l'expression $-2(5 - y)$.",
+      "options": [
+        "$-10 - 2y$",
+        "$-10 + 2y$",
+        "$10 - 2y$",
+        "$10 + 2y$"
+      ],
+      "correctAnswer": "$-10 + 2y$",
+      "explanation": "On distribue $-2$ : $-2 \\times 5 = -10$ et $-2 \\times (-y) = +2y$. Le résultat est $-10 + 2y$. Le premier choix oublie le changement de signe pour le second terme, les deux derniers inversent le signe du premier terme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez et réduisez $4(2x - 3) + 5(x + 2)$.",
+      "options": [
+        "$13x - 2$",
+        "$13x + 2$",
+        "$3x - 2$",
+        "$13x - 22$"
+      ],
+      "correctAnswer": "$13x - 2$",
+      "explanation": "On développe chaque produit : $4 \\times 2x = 8x$, $4 \\times (-3) = -12$, $5 \\times x = 5x$, $5 \\times 2 = 10$. On additionne les termes en $x$ : $8x + 5x = 13x$. On additionne les constantes : $-12 + 10 = -2$. L'expression réduite est $13x - 2$. Les distracteurs proviennent d'erreurs de signes ou d'addition des coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des expressions suivantes est équivalente à $6a + 9b$ ?",
+      "options": [
+        "$3(2a+3b)$",
+        "$3(2a+9b)$",
+        "$6(a+3b)$",
+        "$9(2a+b)$"
+      ],
+      "correctAnswer": "$3(2a+3b)$",
+      "explanation": "On factorise le plus grand commun diviseur des coefficients $6$ et $9$, qui est $3$ : $6a + 9b = 3(2a + 3b)$. Les autres choix ne respectent pas la factorisation correcte : le second laisse $9b$ non factorisé, le troisième factorise $6$ mais laisse $9b$ incomplet, le quatrième factorise $9$ mais modifie le terme en $a$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Développez $(x+2)(x-3)$ en utilisant la distributivité.",
+      "options": [
+        "$x^2 - x - 6$",
+        "$x^2 + x - 6$",
+        "$x^2 - 5x - 6$",
+        "$x^2 - x + 6$"
+      ],
+      "correctAnswer": "$x^2 - x - 6$",
+      "explanation": "On applique la distributivité (méthode FOIL) : $x \\times x = x^2$, $x \\times (-3) = -3x$, $2 \\times x = 2x$, $2 \\times (-3) = -6$. On regroupe les termes en $x$ : $-3x + 2x = -x$. Le résultat final est $x^2 - x - 6$. Les autres options correspondent à des erreurs de signes ou de coefficients lors du regroupement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

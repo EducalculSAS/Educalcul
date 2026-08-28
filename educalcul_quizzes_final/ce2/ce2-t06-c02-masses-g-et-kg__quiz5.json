@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_course_id": 188,
+  "_course_code": "ce2-t06-c02-masses-g-et-kg",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Lire une masse",
+  "title": "Quiz : Lire une masse (g et kg)",
+  "questions": [
+    {
+      "text": "Sur l'écran d'une balance numérique, on voit s'afficher : $2$ kg $500$ g. Quelle est la masse indiquée en kilogrammes ?",
+      "options": [
+        "2,5 kg",
+        "2,05 kg",
+        "2,500 kg",
+        "25 kg"
+      ],
+      "correctAnswer": "2,5 kg",
+      "explanation": "500 g représente la moitié d'un kilogramme, soit 0,5 kg. On ajoute donc 2 kg et 0,5 kg, ce qui donne 2,5 kg. L'option 2,05 kg correspondrait à 2 kg et 50 g. L'option 2,500 kg est une écriture possible mais non simplifiée (2,5 kg est la forme standard). L'option 25 kg est une erreur de conversion (multiplication par 10 au lieu de division).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une balance à cadran graduée en kilogrammes a un trait tous les 100 g. L'aiguille se trouve exactement sur le 3e trait après le chiffre $1$. Quelle est la masse de l'objet ?",
+      "options": [
+        "1 kg 300 g",
+        "1 kg 30 g",
+        "1 kg 3 g",
+        "1 kg 3000 g"
+      ],
+      "correctAnswer": "1 kg 300 g",
+      "explanation": "Le cadran indique les kilogrammes (1, 2, 3...). Les traits intermédiaires représentent les hectogrammes (100 g). Le 1er trait après 1 kg vaut 1 kg 100 g, le 2e vaut 1 kg 200 g, le 3e vaut 1 kg 300 g. L'option 1 kg 30 g confondrait avec des graduations de 10 g (decigrammes). L'option 1 kg 3 g confondrait avec des graduations de 1 g. L'option 1 kg 3000 g équivaut à 4 kg, ce qui est l'erreur de lire le nombre de traits comme des grammes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la balance de Roberval ci-dessous. Elle est en équilibre. Quelle est la masse de la pomme ?",
+      "options": [
+        "300 g",
+        "200 g",
+        "500 g",
+        "100 g"
+      ],
+      "correctAnswer": "300 g",
+      "explanation": "Sur le plateau de droite, il y a trois masses de 100 g chacune. La masse totale des poids est donc $100 + 100 + 100 = 300$ g. Comme la balance est en équilibre, la masse de la pomme (plateau de gauche) est égale à la masse totale des poids, soit 300 g. L'option 200 g correspondrait à seulement deux poids. L'option 500 g serait une addition erronée (ajout de la pomme). L'option 100 g correspondrait à un seul poids.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          100,
+          100,
+          100
+        ],
+        "right": [
+          0
+        ],
+        "caption": "Balance en équilibre : pomme à gauche, trois masses de 100 g à droite"
+      }
+    },
+    {
+      "text": "Tu dois peser un sac de farine. Quelle unité de mesure est la plus adaptée et quelle lecture est plausible pour ce sac standard ?",
+      "options": [
+        "Kilogramme : 1 kg",
+        "Gramme : 1 g",
+        "Kilogramme : 100 kg",
+        "Gramme : 500 g"
+      ],
+      "correctAnswer": "Kilogramme : 1 kg",
+      "explanation": "Un sac de farine standard pèse environ 1 kilogramme. L'unité adaptée pour des objets de cette masse est le kilogramme (kg). 1 g (option B) est la masse d'un trombone, bien trop léger. 100 kg (option C) est la masse d'un homme adulte, bien trop lourd pour un sac de farine. 500 g (option D) est une masse possible pour un petit paquet, mais l'unité 'gramme' n'est pas l'unité principale pour exprimer cette masse (on dirait 0,5 kg) et ce n'est pas le format standard d'un sac de farine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une balance graduée de $0$ à $1$ kg, il y a 10 graduations espacées régulièrement. L'aiguille indique la 7e graduation après $0$. Quelle est la masse en grammes ?",
+      "options": [
+        "700 g",
+        "70 g",
+        "7 g",
+        "7 kg"
+      ],
+      "correctAnswer": "700 g",
+      "explanation": "L'intervalle total est de 1 kg, soit 1000 g. Il y a 10 graduations, donc chaque graduation vaut $1000 \\div 10 = 100$ g. La 7e graduation correspond à $7 \\times 100 = 700$ g. L'option 70 g correspondrait à une division par 100 au lieu de 10 (graduations de 10 g). L'option 7 g correspondrait à une graduation de 1 g. L'option 7 kg oublie la conversion kg/g et la lecture de l'échelle (1 kg max).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

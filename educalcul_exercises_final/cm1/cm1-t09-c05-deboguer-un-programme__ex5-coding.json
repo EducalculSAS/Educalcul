@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 273,
+  "_course_code": "cm1-t09-c05-deboguer-un-programme",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Repérer erreur",
+  "title": "Déboguer un programme : Repérer l'erreur",
+  "blocks": [
+    {
+      "title": "Le robot égaré",
+      "content": "Un élève veut qu'un robot avance de $3$ cases et tourne à droite. Il écrit le programme suivant :\\nAvancer\\nAvancer\\nTourner à droite\\nAvancer\\nQuelle est l'erreur dans ce programme pour atteindre l'objectif ?",
+      "correctAnswer": "Le robot n'avance que $2$ fois avant de tourner, au lieu de $3$ fois. Il manque une instruction Avancer avant le tournant.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'objectif est d'avancer $3$ fois. Dans le code, on lit : Avancer (une fois), Avancer (deux fois), puis Tourner. Le robot a donc parcouru seulement $2$ cases.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le carré imparfait",
+      "content": "Pour dessiner un carré, un élève utilise une boucle. Il écrit :\\nRépéter $3$ fois :\\nAvancer de $10$ cm\\nTourner à droite de $90$ degrés\\nCe programme ne dessine pas un carré complet. Pourquoi ?",
+      "correctAnswer": "Un carré a $4$ côtés, mais la boucle ne se répète que $3$ fois. Il faut changer le nombre de répétitions et mettre $4$ au lieu de $3$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré possède $4$ segments de même longueur et $4$ angles droits. Si on répète l'action seulement $3$ fois, on obtient un rectangle ouvert avec seulement $3$ côtés.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Le calcul erroné",
+      "content": "Un programme doit calculer le double d'un nombre choisi par l'utilisateur. Voici le code :\\nChoisir un nombre X\\nCalculer $X + 2$\\nAfficher le résultat\\nCe programme est faux. Quelle instruction doit on modifier pour obtenir le double du nombre ?",
+      "correctAnswer": "Il faut remplacer l'instruction Calculer $X + 2$ par l'instruction Calculer $X \\times 2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le double d'un nombre correspond à une multiplication par $2$. L'addition de $2$ permet de trouver le nombre suivant deux fois, mais pas le double. Par exemple pour le nombre $5$, le double est $10$ ($5 \\times 2$), alors que $5 + 2$ donne $7$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

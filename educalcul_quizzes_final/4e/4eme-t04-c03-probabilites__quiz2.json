@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Événements",
+  "title": "Quiz sur les événements (Probabilités) - 4e",
+  "questions": [
+    {
+      "text": "Quel est le nom de l'événement qui se réalise à coup sûr lors d'une expérience aléatoire ?",
+      "options": [
+        "Événement certain",
+        "Événement impossible",
+        "Événement contraire",
+        "Événement élémentaire"
+      ],
+      "correctAnswer": "Événement certain",
+      "explanation": "Un événement certain est celui qui se produit à chaque réalisation de l'expérience aléatoire. L'événement impossible ne se produit jamais, l'événement contraire est le complémentaire d'un événement donné, et un événement élémentaire ne contient qu'un seul résultat possible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la probabilité de l'événement A est $0,3$, quelle est la probabilité de l'événement contraire $\\overline{A}$ ?",
+      "options": [
+        "$0,3$",
+        "$0,7$",
+        "$1$",
+        "$0$"
+      ],
+      "correctAnswer": "$0,7$",
+      "explanation": "La somme des probabilités d'un événement et de son contraire vaut toujours $1$. Donc $P(\\overline{A}) = 1 - P(A) = 1 - 0,3 = 0,7$. Les autres options correspondent à des erreurs courantes : confondre avec $P(A)$, penser que le contraire a probabilité $1$ ou $0$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux événements A et B sont incompatibles. Si $P(A)=0,4$ et $P(B)=0,2$, quelle est la probabilité de l'événement $A \\cup B$ ?",
+      "options": [
+        "$0,6$",
+        "$0,8$",
+        "$0,2$",
+        "$0,4$"
+      ],
+      "correctAnswer": "$0,6$",
+      "explanation": "Pour des événements incompatibles (mutuellement exclusifs), $P(A \\cup B) = P(A) + P(B) = 0,4 + 0,2 = 0,6$. L'option $0,8$ correspondrait à une addition erronée, $0,2$ à une confusion avec l'intersection (qui est $0$), et $0,4$ à ne prendre que $P(A)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux événements A et B sont indépendants. Si $P(A)=0,5$ et $P(B)=0,4$, quelle est la probabilité de l'événement $A \\cap B$ ?",
+      "options": [
+        "$0,9$",
+        "$0,2$",
+        "$0,1$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,2$",
+      "explanation": "Pour des événements indépendants, $P(A \\cap B) = P(A) \\times P(B) = 0,5 \\times 0,4 = 0,2$. L'option $0,9$ serait la somme (erreur), $0,1$ correspondrait à une multiplication mal faite ($0,5 \\times 0,2$), et $0,5$ à ne considérer que $P(A)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces équilibrées. L'événement « obtenir un nombre pair » est :",
+      "options": [
+        "Événement certain",
+        "Événement impossible",
+        "Événement aléatoire",
+        "Événement contraire"
+      ],
+      "correctAnswer": "Événement aléatoire",
+      "explanation": "Les issues possibles sont $\\{1,2,3,4,5,6\\}$. Les nombres pairs sont $\\{2,4,6\\}$, soit trois issues sur six. Cet événement peut se produire ou non, il n'est ni certain (probabilité $1$) ni impossible (probabilité $0$). C'est donc un événement aléatoire. L'événement contraire serait « obtenir un nombre impair ».",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

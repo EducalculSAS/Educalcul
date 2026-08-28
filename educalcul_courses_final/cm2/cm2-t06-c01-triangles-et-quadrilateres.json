@@ -1,0 +1,508 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.463425+00:00",
+  "id": 310,
+  "code": "cm2-t06-c01",
+  "title": "Triangles et quadrilatères",
+  "description": "Cours structuré Educalcul : Triangles et quadrilatères.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Triangles et quadrilatères",
+    "objectif_global": "Triangles et quadrilatères",
+    "mini_lecons_imposees": [
+      "Classer par propriétés.",
+      "Construire.",
+      "Coder."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Classer par propriétés.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer les triangles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons apprendre à ranger les triangles et les quadrilatères selon leurs propriétés. Tu vas voir que chaque figure géométrique possède des caractéristiques précises, comme la longueur de ses côtés ou la mesure de ses angles, qui permettent de la classer dans une famille bien définie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les triangles. Un triangle est une figure fermée à trois côtés. Selon les longueurs de ses côtés, on distingue trois grandes familles : le triangle équilatéral, dont les trois côtés ont la même longueur ; le triangle isocèle, qui a exactement deux côtés de même longueur ; et le triangle scalène, dont les trois côtés sont tous différents. Selon les angles, on parle de triangle rectangle lorsqu'un angle mesure $90^{\\circ}$, de triangle acutangle si tous les angles sont inférieurs à $90^{\\circ}$, et de triangle obtusangle si l'un d'entre eux dépasse $90^{\\circ}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir classer un triangle n'est pas seulement un exercice scolaire : cela aide à résoudre des problèmes concrets, comme calculer la hauteur d'un arbre en utilisant un triangle rectangle, ou vérifier qu'une charpente est bien équilibrée grâce à un triangle isocèle."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle avec angle droit marqué",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "definition",
+              "term": "triangle équilatéral",
+              "definition": "Triangle dont les trois côtés ont la même longueur et les trois angles mesurent $60^{\\circ}$.",
+              "example": "Un triangle de côté $5\\,cm$ est équilatéral."
+            },
+            {
+              "type": "definition",
+              "term": "triangle isocèle",
+              "definition": "Triangle qui possède exactement deux côtés de même longueur. Les angles opposés à ces côtés sont aussi égaux.",
+              "example": "Un triangle avec deux côtés de $6\\,cm$ et une base de $4\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "triangle rectangle",
+              "definition": "Triangle qui possède un angle droit ($90^{\\circ}$). Le côté opposé à l'angle droit s'appelle l'hypoténuse.",
+              "example": "Un triangle dont les côtés de l'angle droit mesurent $3\\,cm$ et $4\\,cm$."
+            },
+            {
+              "type": "display_math",
+              "latex": "180^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux quadrilatères, des figures à quatre côtés. Comme pour les triangles, on les regroupe d'après leurs côtés et leurs angles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer les quadrilatères"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le carré a quatre côtés égaux et quatre angles droits. Le rectangle a quatre angles droits, mais seulement les côtés opposés sont égaux. Le losange a quatre côtés égaux, sans exiger d'angles droits. Le parallélogramme a ses côtés opposés parallèles deux à deux. Enfin, le trapèze possède au moins une paire de côtés parallèles."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces distinctions sont utiles au quotidien. Par exemple, un carreau de carrelage est souvent un carré, une feuille de papier un rectangle, un cerf‑volant peut avoir la forme d'un losange, et une table de picnic peut être un parallélogramme."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Figure",
+                "Côtés égaux",
+                "Angles droits",
+                "Côtés parallèles"
+              ],
+              "rows": [
+                [
+                  "Carré",
+                  "4",
+                  "4",
+                  "2 paires"
+                ],
+                [
+                  "Rectangle",
+                  "2 paires opposées",
+                  "4",
+                  "2 paires"
+                ],
+                [
+                  "Losange",
+                  "4",
+                  "0",
+                  "2 paires"
+                ],
+                [
+                  "Parallélogramme",
+                  "2 paires opposées",
+                  "0",
+                  "2 paires"
+                ],
+                [
+                  "Trapèze",
+                  "0 ou 1 paire",
+                  "0 ou 1",
+                  "1 paire"
+                ]
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "carré",
+              "definition": "Quadrilatère à quatre côtés égaux et quatre angles droits.",
+              "example": "Un carré de côté $4\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "rectangle",
+              "definition": "Quadrilatère à quatre angles droits, côtés opposés égaux.",
+              "example": "Un rectangle de $6\\,cm$ sur $4\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "losange",
+              "definition": "Quadrilatère à quatre côtés égaux, angles non nécessairement droits.",
+              "example": "Un losange de côté $5\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "parallélogramme",
+              "definition": "Quadrilatère dont les côtés opposés sont parallèles deux à deux.",
+              "example": "Un parallélogramme de base $7\\,cm$ et hauteur $3\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "trapèze",
+              "definition": "Quadrilatère qui a au moins une paire de côtés parallèles.",
+              "example": "Un trapèze rectangle avec une base de $8\\,cm$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine que tu as devant toi cinq figures : un triangle équilatéral, un triangle rectangle, un carré, un losange et un trapèze. Écris le nom de la famille de chacune."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous verrons comment tracer ces figures avec précision à l'aide d'une règle, d'un compas et d'une équerre."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Observe le triangle ci‑dessous (triangle rectangle). Quelle est sa famille selon les angles ?",
+              "answer": "Triangle rectangle",
+              "hint": "Regarde l'angle marqué par un petit carré.",
+              "explanation": "Un triangle rectangle possède un angle de $90^{\\circ}$, repéré par le petit carré."
+            },
+            {
+              "question": "Parmi les figures suivantes, laquelle est un losange ? Un quadrilatère à quatre côtés égaux sans angle droit obligatoire.",
+              "answer": "Losange",
+              "hint": "Cherche les quatre côtés de même longueur.",
+              "explanation": "Le losange a quatre côtés égaux, contrairement au rectangle qui a des angles droits."
+            },
+            {
+              "question": "Trie ces figures : triangle équilatéral, triangle rectangle, carré, losange, trapèze. Écris le nom de la famille pour chacune.",
+              "answer": "Triangle équilatéral -> triangle équilatéral ; triangle rectangle -> triangle rectangle ; carré -> carré ; losange -> losange ; trapèze -> trapèze.",
+              "hint": "Utilise les propriétés vues plus haut.",
+              "explanation": "Chaque figure appartient à une famille précise grâce à ses côtés et angles."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle connaissant ses trois côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un triangle quand on connaît les trois longueurs, on utilise la règle et le compas. La première chose à vérifier, c'est que les trois mesures respectent l'inégalité triangulaire : la somme de deux côtés doit être strictement supérieure au troisième. Si cette condition n'est pas remplie, le triangle n'existe pas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un triangle dont les côtés mesurent $5\\,cm$, $6\\,cm$ et $7\\,cm$. On commence par tracer le côté le plus long, ici $7\\,cm$, qui servira de base. Ensuite, on place la pointe du compas sur une extrémité de la base et on trace un arc de cercle de rayon $5\\,cm$. On fait de même de l'autre extrémité avec un rayon de $6\\,cm$. Les deux arcs se coupent en un point ; c'est le troisième sommet du triangle. Il ne reste plus qu'à relier ce sommet aux deux extrémités de la base."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment de $7\\,cm$ avec la règle. Nomme les extrémités $A$ et $B$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Arc de rayon $5\\,cm$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur $A$, ouvre‑le à $5\\,cm$ et trace un arc de cercle au‑dessus du segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Arc de rayon $6\\,cm$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'ouverture, place la pointe sur $B$, ouvre à $6\\,cm$ et trace un second arc qui coupe le premier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Compléter le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nomme le point d'intersection $C$. Trace les segments $AC$ et $BC$. Le triangle $ABC$ est construit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a+b>c"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire un triangle par ses trois côtés, voyons comment faire quand on connaît un angle droit et les deux côtés qui le forment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un triangle rectangle se construit facilement avec une équerre (ou un rapporteur) et une règle. On trace d'abord un segment pour l'un des côtés de l'angle droit, puis on place l'équerre à son extrémité pour tracer le second côté perpendiculaire. La longueur de chaque côté est reportée avec la règle. Enfin, on relie les deux extrémités libres pour obtenir l'hypoténuse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment horizontal de $3\\,cm$. Nomme‑le $AB$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre sur $B$ de façon que le bord coïncide avec $AB$. Trace un segment vertical de $4\\,cm$ vers le haut. Nomme l'extrémité $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $A$ et $C$ avec la règle. Le triangle $ABC$ est rectangle en $B$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "a^2+b^2=c^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quadrilatères se construisent aussi à la règle et à l'équerre. Pour un carré, il suffit de tracer un côté, de reporter la même longueur trois fois en tournant l'équerre de $90^{\\circ}$ à chaque fois. Pour un rectangle, on alterne les deux longueurs données."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un carré et un rectangle"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Carré de côté $4\\,cm$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment $AB = 4\\,cm$. À $A$, place l'équerre et trace $AD = 4\\,cm$ perpendiculaire. À $B$, trace $BC = 4\\,cm$ perpendiculaire. Relie $C$ et $D$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Rectangle $6\\,cm \\times 4\\,cm$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace $AB = 6\\,cm$. À $A$, trace $AD = 4\\,cm$ perpendiculaire. À $B$, trace $BC = 4\\,cm$ perpendiculaire. Relie $C$ et $D$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon suivante, nous apprendrons à coder les propriétés des figures pour les décrire rapidement sans les redessiner."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Construction SSS : trace un triangle dont les côtés mesurent $5\\,cm$, $6\\,cm$ et $7\\,cm$. Quelle est la première étape ?",
+              "answer": "Tracer le côté le plus long, ici $7\\,cm$.",
+              "hint": "Commence par le côté le plus long pour poser la base.",
+              "explanation": "On pose la base, puis on trace les arcs de cercle aux extrémités avec les autres longueurs."
+            },
+            {
+              "question": "Construction triangle rectangle : trace un triangle rectangle dont les côtés de l'angle droit mesurent $3\\,cm$ et $4\\,cm$. Quelle est la longueur de l'hypoténuse ?",
+              "answer": "$5\\,cm$",
+              "hint": "Utilise le théorème de Pythagore.",
+              "explanation": "Dans un triangle rectangle, $3^2+4^2=5^2$, donc l'hypoténuse mesure $5\\,cm$."
+            },
+            {
+              "question": "Construction d'un carré : trace un carré de côté $4\\,cm$. Quelle est la mesure de chaque angle ?",
+              "answer": "$90^{\\circ}$",
+              "hint": "Un carré a quatre angles droits.",
+              "explanation": "Par définition, un carré possède quatre angles droits et quatre côtés égaux."
+            }
+          ]
+        },
+        {
+          "title": "Coder.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder les côtés égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on dessine une figure, on peut ajouter de petits signes pour montrer que deux côtés ont la même longueur. C'est ce qu'on appelle le codage. Pour les côtés égaux, on trace un trait court sur chacun des côtés concernés. Si une figure a deux paires de côtés égaux, on utilise un trait simple pour la première paire et un double trait pour la seconde."
+            },
+            {
+              "type": "definition",
+              "term": "code des côtés égaux",
+              "definition": "Petits traits identiques placés sur les segments de même longueur.",
+              "example": "Sur un triangle isocèle, un trait sur chacun des deux côtés égaux."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = AC"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les angles droits se codent eux aussi. On place un petit carré dans l'angle pour indiquer qu'il mesure $90^{\\circ}$. C'est le symbole universel en géométrie. Si une figure a plusieurs angles droits, on met un carré dans chacun d'eux."
+            },
+            {
+              "type": "definition",
+              "term": "code de l'angle droit",
+              "definition": "Un petit carré tracé à l'intérieur de l'angle.",
+              "example": "Dans un rectangle, un carré dans chacun des quatre coins."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour montrer que deux côtés sont parallèles, on utilise des flèches. Une flèche simple sur chaque côté d'une première paire, et une double flèche sur chaque côté de la seconde paire. Ainsi, un parallélogramme porte une flèche simple sur les deux côtés horizontaux et une double flèche sur les deux côtés obliques."
+            },
+            {
+              "type": "definition",
+              "term": "code des parallèles",
+              "definition": "Flèches identiques placées sur les segments parallèles.",
+              "example": "Un parallélogramme avec une flèche simple sur $AB$ et $CD$, double flèche sur $BC$ et $AD$."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB \\parallel CD"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, associons les codes pour décrire une figure complète. Regarde un triangle qui porte deux traits sur deux de ses côtés et un carré dans un angle. Ces marques disent que le triangle a deux côtés égaux et un angle droit : c'est un triangle rectangle isocèle. Le codage permet de transmettre l'information essentielle sans avoir à redessiner la figure."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais classer les triangles et les quadrilatères d'après leurs propriétés.",
+                "Je sais construire un triangle connaissant ses trois côtés.",
+                "Je sais construire un triangle rectangle avec une équerre.",
+                "Je sais coder les côtés égaux, les angles droits et les parallèles sur une figure."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le dessin d'un triangle isocèle, place les marques habituelles pour indiquer les deux côtés égaux.",
+              "answer": "Deux traits courts sur les deux côtés égaux.",
+              "hint": "Utilise un petit trait sur chaque côté de même longueur.",
+              "explanation": "Les traits identiques montrent que les côtés ont la même longueur."
+            },
+            {
+              "question": "Dans un rectangle, comment coder les quatre angles droits ?",
+              "answer": "Un petit carré dans chaque coin.",
+              "hint": "Le carré marque un angle de $90^{\\circ}$.",
+              "explanation": "Le petit carré est le symbole standard pour un angle droit."
+            },
+            {
+              "question": "Sur un parallélogramme, indique les paires de côtés parallèles avec le code adapté.",
+              "answer": "Deux flèches simples sur un couple de côtés opposés, deux flèches doubles sur l'autre couple.",
+              "hint": "Une flèche pour une paire, deux flèches pour l'autre.",
+              "explanation": "Les flèches identiques signalent des côtés parallèles."
+            },
+            {
+              "question": "Regarde la figure codée ci‑dessous (triangle avec deux traits sur deux côtés, un carré dans un angle). Décris la figure en mots.",
+              "answer": "C'est un triangle rectangle isocèle.",
+              "hint": "Les traits indiquent deux côtés égaux, le carré un angle droit.",
+              "explanation": "La combinaison des codes montre un triangle à la fois rectangle et isocèle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

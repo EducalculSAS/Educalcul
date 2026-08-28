@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 387,
+  "_course_code": "5eme-t02-c04-puissances",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Notation",
+  "title": "Algorithmes et puissances : notation et calcul",
+  "blocks": [
+    {
+      "title": "Calcul d'une puissance entière positive",
+      "content": "Écrire un algorithme (en langage naturel ou style Python) qui calcule $a^n$ pour un nombre $a$ (décimal ou entier) et un exposant $n$ entier naturel non nul. L'algorithme demande les valeurs de $a$ et $n$, effectue le calcul par multiplications successives (boucle), puis affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Demander a (nombre) et n (entier naturel > 0).\\n2. resultat <- a\\n3. Pour i allant de 2 à n faire\\n       resultat <- resultat * a\\n   Fin pour\\n4. Afficher resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise le résultat avec la valeur de $a$ (ce qui correspond à $a^1$). Ensuite, on répète la multiplication par $a$ exactement $n-1$ fois pour obtenir $a^n$. La boucle 'Pour i de 2 à n' exécute le bloc $n-1$ fois. Si $n=1$, la boucle ne s'exécute pas et le résultat reste $a$, ce qui est correct.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de l'écriture scientifique",
+      "content": "Écrire un algorithme qui prend en entrée un nombre décimal positif $x$ (différent de 0) et qui détermine son écriture scientifique sous la forme $m \\times 10^e$ avec $1 \\le m < 10$ et $e$ entier relatif. L'algorithme doit afficher la mantisse $m$ et l'exposant $e$.",
+      "correctAnswer": "Algorithme :\\n1. Demander x (nombre décimal > 0).\\n2. e <- 0\\n3. m <- x\\n4. Tant que m >= 10 faire\\n       m <- m / 10\\n       e <- e + 1\\n   Fin tant que\\n5. Tant que m < 1 faire\\n       m <- m * 10\\n       e <- e - 1\\n   Fin tant que\\n6. Afficher m, e",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part de $m=x$ et $e=0$. Si $m \\ge 10$, on divise $m$ par 10 (décale la virgule à gauche) et on incrémente $e$ jusqu'à ce que $1 \\le m < 10$. Si $m < 1$, on multiplie $m$ par 10 (décale la virgule à droite) et on décrémente $e$ jusqu'à ce que $1 \\le m < 10$. À la fin, $x = m \\times 10^e$ avec $m$ dans l'intervalle requis.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion notation scientifique vers décimale",
+      "content": "Écrire un algorithme qui convertit un nombre donné sous forme scientifique $m \\times 10^e$ (avec $1 \\le m < 10$ et $e$ entier relatif) en notation décimale usuelle. L'algorithme demande $m$ et $e$, calcule la valeur décimale en déplaçant la virgule de $m$ de $|e|$ rangs (à droite si $e>0$, à gauche si $e<0$), puis affiche le nombre obtenu.",
+      "correctAnswer": "Algorithme :\\n1. Demander m (nombre, 1 <= m < 10) et e (entier relatif).\\n2. resultat <- m\\n3. Si e > 0 alors\\n       Pour i de 1 à e faire\\n           resultat <- resultat * 10\\n       Fin pour\\n   Sinon si e < 0 alors\\n       Pour i de 1 à -e faire\\n           resultat <- resultat / 10\\n       Fin pour\\n   Fin si\\n4. Afficher resultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part de la mantisse $m$. Si l'exposant $e$ est positif, on multiplie $m$ par 10 exactement $e$ fois (décalage de la virgule à droite). Si $e$ est négatif, on divise $m$ par 10 exactement $|e|$ fois, c'est-à-dire $-e$ fois (décalage de la virgule à gauche). Si $e=0$, aucune opération n'est faite et le résultat est $m$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

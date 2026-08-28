@@ -1,0 +1,434 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.729599+00:00",
+  "id": 720,
+  "code": "terminale-generale-maths-t08-c01",
+  "title": "Listes et traitement de données",
+  "description": "Cours structuré Educalcul : Listes et traitement de données.",
+  "subject": "Algorithmique, logique et automatismes",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Algorithmique, logique et automatismes",
+    "titre_du_cours": "Listes et traitement de données",
+    "objectif_global": "Listes et traitement de données",
+    "mini_lecons_imposees": [
+      "Parcourir.",
+      "Accumuler.",
+      "Tester."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique, logique et automatismes",
+      "lessons": [
+        {
+          "title": "Parcourir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une liste en Python ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "En algorithmique, une liste est une collection ordonnée d'éléments. Contrairement à un ensemble mathématique, l'ordre compte et un même élément peut apparaître plusieurs fois. En Python, on écrit une liste entre crochets, par exemple $L = [3, 7, 1, 7, 9]$. Chaque élément possède un indice : le premier est à l'indice $0$, le second à l'indice $1$, et ainsi de suite. La longueur de la liste, notée $\\text{len}(L)$, vaut $5$ ici. On accède à un élément par $L[i]$ ; attention, $L[5]$ provoquerait une erreur car les indices valides vont de $0$ à $\\text{len}(L)-1$."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "L = [3, 7, 1, 7, 9]\\nprint(\"Longueur :\", len(L))\\nprint(\"Premier :\", L[0])\\nprint(\"Dernier :\", L[len(L)-1])\\nprint(\"L[2] :\", L[2])",
+              "language": "python",
+              "caption": "Accès aux éléments d'une liste par leur indice"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une propriété fondamentale : les listes sont mutables. On peut modifier un élément sur place avec une affectation $L[i] = \\text{nouvelle\\_valeur}$. Cela change la liste originale, sans en créer une nouvelle. Cette mutabilité distingue les listes des chaînes de caractères ou des tuples, qui sont immuables. En algorithmique, on exploite souvent cette mutabilité pour trier ou transformer une liste sans allocation mémoire supplémentaire."
+            },
+            {
+              "type": "definition",
+              "term": "Liste (Python)",
+              "definition": "Collection ordonnée, mutable, d'éléments accessibles par indice entier de $0$ à $\\text{len}(L)-1$.",
+              "example": "L = [2, 5, 2, 8] ; len(L) = 4 ; L[1] = 5 ; L[1] = 9 modifie la liste en [2, 9, 2, 8]."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons accéder aux éléments un par un, voyons comment les visiter tous, l'un après l'autre, sans écrire manuellement chaque indice. C'est l'idée du parcours : appliquer le même traitement à chaque élément, dans l'ordre, du premier au dernier. Python propose plusieurs façons de le faire, chacune adaptée à des besoins légèrement différents."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parcours direct : « pour chaque élément »"
+            },
+            {
+              "type": "paragraph",
+              "content": "La syntaxe la plus naturelle en Python est $\\texttt{for\\ x\\ in\\ L:}$. La variable $x$ prend successivement la valeur de chaque élément de la liste, du premier au dernier. À l'intérieur de la boucle, $x$ est une copie de l'élément courant : modifier $x$ ne modifie pas la liste originale. Ce parcours est idéal quand on a seulement besoin de lire les valeurs, par exemple pour les afficher, calculer une somme, ou tester une propriété sur chaque élément."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "L = [3, 7, 1, 7, 9]\\nfor x in L:\\n    print(x, end=\" \")\\nprint()\\n# Affichage : 3 7 1 7 9",
+              "language": "python",
+              "caption": "Parcours direct avec for x in L"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un piège classique : si l'on écrit $\\texttt{for\\ x\\ in\\ L:\\ x = x * 2}$, on ne fait que changer la variable locale $x$, la liste $L$ reste inchangée. Pour modifier la liste en place lors d'un parcours direct, il faut passer par les indices (voir plus bas) ou construire une nouvelle liste. Ce parcours direct est aussi utilisable sur tout itérable : chaîne de caractères, tuple, range, dictionnaire (par défaut sur les clés)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'indice lui-même est nécessaire : pour modifier l'élément sur place, pour accéder à l'élément suivant ou précédent, ou pour parcourir deux listes de même longueur en parallèle. Python offre alors $\\texttt{for\\ i\\ in\\ range(len(L)):}$. La variable $i$ parcourt les indices valides $0, 1, \\dots, \\text{len}(L)-1$. L'élément courant s'obtient par $L[i]$, et l'affectation $L[i] = \\dots$ modifie bien la liste."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "L = [3, 7, 1, 7, 9]\\nfor i in range(len(L)):\\n    L[i] = L[i] * 2\\nprint(L)\\n# Résultat : [6, 14, 2, 14, 18]",
+              "language": "python",
+              "caption": "Parcours par indices pour modification sur place"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce schéma est la base de nombreux algorithmes classiques : recherche du maximum, tri à bulles, inversion de liste. On peut aussi parcourir les indices dans l'ordre inverse avec $\\texttt{range(len(L)-1, -1, -1)}$, utile pour supprimer des éléments en cours de parcours sans décaler les indices restants. Une alternative moderne en Python est $\\texttt{for\\ i, x\\ in\\ enumerate(L):}$ qui donne à la fois l'indice et la valeur, très pratique pour afficher un numéro de ligne ou construire un dictionnaire d'indices."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une troisième forme, moins courante mais instructive : le parcours par boucle $\\texttt{while}$. On initialise un indice $i = 0$, on continue $\\texttt{while\\ i < len(L):}$, et on incrémente $i$ à chaque tour. Cette forme rend explicite la mécanique de la boucle : condition de continuation, corps de boucle, incrémentation. Elle est utile quand le pas n'est pas constant (par exemple sauter des éléments selon une condition) ou quand on doit modifier la liste en cours de route (insertion, suppression) sans perturber le contrôle de la boucle. En pratique, $\\texttt{for}$ est préféré pour sa lisibilité et sa sécurité."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "L = [3, 7, 1, 7, 9]\\ni = 0\\nwhile i < len(L):\\n    print(f\"Indice {i} : {L[i]}\")\\n    i += 1",
+              "language": "python",
+              "caption": "Parcours équivalent avec une boucle while"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la liste $L = [12, 5, 8, 5, 3]$. Écrire un programme qui affiche chaque élément de $L$ sur une ligne séparée, précédé de son indice (format : « Indice 0 : 12 »).",
+              "answer": "for i in range(len(L)):\\n    print(f\"Indice {i} : {L[i]}\")",
+              "hint": "Utilisez une boucle for avec range(len(L)) pour avoir accès à l'indice i et à la valeur L[i].",
+              "explanation": "La boucle for i in range(len(L)) fait varier i de 0 à 4. À chaque tour, L[i] donne l'élément correspondant. Le f-string permet d'afficher l'indice et la valeur dans le format demandé."
+            },
+            {
+              "question": "Écrire une fonction `double_elements(L)` qui modifie la liste $L$ reçue en argument en doublant chaque élément (la fonction ne retourne rien). Tester avec $L = [1, 4, 2]$.",
+              "answer": "def double_elements(L):\\n    for i in range(len(L)):\\n        L[i] = L[i] * 2\\n\\nL = [1, 4, 2]\\ndouble_elements(L)\\nprint(L)  # Affiche [2, 8, 4]",
+              "hint": "Il faut modifier la liste sur place, donc utiliser les indices avec L[i] = ...",
+              "explanation": "Le parcours par indices permet l'affectation L[i] = L[i] * 2 qui modifie réellement la liste originale. Un parcours direct `for x in L: x = x * 2` n'aurait pas fonctionné car x est une copie locale."
+            },
+            {
+              "question": "Écrire un programme qui affiche les éléments de la liste $L = [10, 20, 30, 40, 50]$ dans l'ordre inverse (du dernier au premier), un par ligne, sans utiliser de fonction prédéfinie comme `reversed` ou le slicing `[::-1]`.",
+              "answer": "L = [10, 20, 30, 40, 50]\\nfor i in range(len(L)-1, -1, -1):\\n    print(L[i])",
+              "hint": "range(debut, fin, pas) avec un pas négatif : range(4, -1, -1) donne 4, 3, 2, 1, 0.",
+              "explanation": "len(L) vaut 5, les indices vont de 0 à 4. range(len(L)-1, -1, -1) génère 4, 3, 2, 1, 0. On accède alors à L[4], L[3], ..., L[0] dans cet ordre."
+            },
+            {
+              "question": "Écrire une fonction `compter_positifs(L)` qui retourne le nombre d'éléments strictement positifs dans la liste $L$. Utiliser un parcours direct `for x in L:`.",
+              "answer": "def compter_positifs(L):\\n    compteur = 0\\n    for x in L:\\n        if x > 0:\\n            compteur += 1\\n    return compteur\\n\\nprint(compter_positifs([-2, 5, 0, 8, -1]))  # Affiche 2",
+              "hint": "Initialisez un compteur à 0 avant la boucle. Incrémentez-le quand la condition x > 0 est vraie.",
+              "explanation": "Le parcours direct `for x in L:` suffit car on ne fait que lire les valeurs. La variable `compteur` accumule le nombre d'éléments vérifiant la condition. C'est un premier exemple du motif « accumuler » que nous verrons en détail dans la prochaine leçon."
+            }
+          ]
+        },
+        {
+          "title": "Accumuler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le motif accumulateur : initialiser, mettre à jour, restituer"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'accumulation est un schéma algorithmique universel : on part d'une valeur initiale (souvent neutre pour l'opération), on parcourt une liste, et à chaque étape on combine la valeur accumulée avec l'élément courant pour produire la nouvelle valeur accumulée. À la fin du parcours, l'accumulateur contient le résultat global. Ce motif couvre la somme, le produit, le comptage, la recherche de maximum, la construction d'une nouvelle liste, la concaténation de chaînes, etc. La clé est d'identifier l'opération de combinaison et l'élément neutre associé."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Somme : neutre 0, combinaison +\\nsomme = 0\\nfor x in [3, 7, 1, 7, 9]:\\n    somme += x\\nprint(somme)  # 27\\n\\n# Produit : neutre 1, combinaison *\\nproduit = 1\\nfor x in [3, 7, 1, 7, 9]:\\n    produit *= x\\nprint(produit)  # 1323",
+              "language": "python",
+              "caption": "Accumulation pour la somme et le produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarquez la symétrie : pour la somme, l'élément neutre est $0$ car $x+0=x$ ; pour le produit, c'est $1$ car $x\\times1=x$. Pour le maximum, on initialise avec le premier élément de la liste (ou $-\\infty$ si la liste peut être vide), et la combinaison est $\\max(\\text{accu}, x)$. Pour le minimum, symétriquement avec $+\\infty$ ou le premier élément. Ce pattern se généralise : tout monoïde (ensemble muni d'une opération associative avec neutre) donne lieu à un accumulateur. En Python, les fonctions `sum`, `math.prod`, `max`, `min` font ce travail, mais savoir l'écrire à la main est indispensable pour les opérations personnalisées."
+            },
+            {
+              "type": "definition",
+              "term": "Accumulateur",
+              "definition": "Variable qui agrège progressivement une information au fil d'un parcours, selon une opération de combinaison associative avec élément neutre.",
+              "example": "Somme : accu = 0 ; pour x dans L : accu = accu + x. Maximum : accu = L[0] ; pour x dans L : accu = max(accu, x)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà des agrégats numériques, l'accumulateur peut construire une structure de données : une nouvelle liste. C'est le motif « filtrer » ou « transformer » (map). On initialise une liste vide $R = []$, on parcourt la liste source, et pour chaque élément on décide soit de l'ajouter à $R$ (filtrage), soit d'y ajouter sa version transformée (map). L'opération de combinaison est ici l'ajout en queue de liste (`append`), dont l'élément neutre est la liste vide. Cette construction itérative est la base de la programmation fonctionnelle (`filter`, `map`), mais l'écriture explicite en boucle reste plus lisible et plus flexible quand la logique est complexe."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Filtrer : garder les pairs\\nL = [3, 7, 1, 7, 9, 4, 2, 8]\\nR = []\\nfor x in L:\\n    if x % 2 == 0:\\n        R.append(x)\\nprint(R)  # [4, 2, 8]\\n\\n# Transformer (map) : carrés\\nR2 = []\\nfor x in L:\\n    R2.append(x * x)\\nprint(R2)  # [9, 49, 1, 49, 81, 16, 4, 64]",
+              "language": "python",
+              "caption": "Construction de nouvelles listes par accumulation (filtrer et transformer)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une subtilité importante : `append` modifie la liste sur place et retourne `None`. Ne pas écrire `R = R.append(x)` qui mettrait `None` dans `R` ! De même, `R = R + [x]` crée une nouvelle liste à chaque tour (coût quadratique en temps), alors que `R.append(x)` est en temps constant amorti. Pour de grosses listes, cette différence est cruciale. On peut aussi pré-allouer une liste de la bonne taille avec `[None] * len(L)` et remplir par indices, mais `append` est l'idiome Python standard."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, plusieurs accumulateurs travaillent en parallèle au cours d'un même parcours. Exemple classique : séparer les pairs et les impairs en une seule passe. On initialise `pairs = []` et `impairs = []`, puis pour chaque $x$ on l'ajoute à la liste appropriée. Cela évite de parcourir deux fois la liste source. Autre exemple : calculer simultanément la somme et le produit, ou le minimum et le maximum. Le gain en complexité temporelle est négligeable (même ordre de grandeur), mais le gain en passe unique sur les données peut être significatif si la liste est un flux (générateur, fichier lu ligne par ligne) qu'on ne peut pas relire."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "L = [3, 7, 1, 7, 9, 4, 2, 8]\\npairs = []\\nimpairs = []\\nsomme = 0\\nfor x in L:\\n    somme += x\\n    if x % 2 == 0:\\n        pairs.append(x)\\n    else:\\n        impairs.append(x)\\nprint(\"Somme :\", somme)\\nprint(\"Pairs :\", pairs)\\nprint(\"Impairs :\", impairs)",
+              "language": "python",
+              "caption": "Plusieurs accumulateurs en un seul parcours"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi accumuler dans un dictionnaire pour compter les occurrences de chaque valeur (histogramme). L'accumulateur est alors un dictionnaire `compteurs = {}`, et pour chaque $x$ on fait `compteurs[x] = compteurs.get(x, 0) + 1`. La méthode `get(clé, défaut)` évite une erreur si la clé n'existe pas encore. Ce motif est la base du comptage de fréquences, de l'indexation de documents, de la détection de doublons. En Python, `collections.Counter` automatise cela, mais comprendre le mécanisme manuel permet de l'adapter (par exemple pondérer les occurrences)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas particulier d'accumulation est la réduction (ou « fold ») : combiner tous les éléments avec une opération binaire associative pour produire une seule valeur. La somme, le produit, le maximum, la concaténation de chaînes sont des réductions. En programmation fonctionnelle, `functools.reduce` encapsule ce schéma : `reduce(lambda a, b: a+b, L, 0)` pour la somme. L'avantage de l'écriture explicite en boucle est la lisibilité et la possibilité d'insérer de la logique conditionnelle, des effets de bord (affichage, écriture fichier), ou de gérer des cas particuliers (liste vide) sans devoir fournir un élément neutre artificiel. En algorithmique, on préfère souvent la boucle explicite pour sa clarté pédagogique."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "from functools import reduce\\nL = [3, 7, 1, 7, 9]\\n# Réduction équivalente à la somme\\nsomme = reduce(lambda a, b: a + b, L, 0)\\nprint(somme)  # 27\\n\\n# Même chose avec une boucle explicite (plus lisible)\\nsomme2 = 0\\nfor x in L:\\n    somme2 += x\\nprint(somme2)",
+              "language": "python",
+              "caption": "Réduction avec functools.reduce vs boucle explicite"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire une fonction `somme_carres(L)` qui retourne la somme des carrés des éléments de la liste $L$. Exemple : `somme_carres([2, 3, 4])` retourne $4+9+16 = 29$.",
+              "answer": "def somme_carres(L):\\n    s = 0\\n    for x in L:\\n        s += x * x\\n    return s\\n\\nprint(somme_carres([2, 3, 4]))  # 29",
+              "hint": "Initialisez l'accumulateur à 0. À chaque tour, ajoutez x*x (ou x**2).",
+              "explanation": "L'accumulateur `s` commence à 0 (neutre de l'addition). Pour chaque élément x, on ajoute x². C'est une accumulation classique où l'opération de combinaison est « ajouter le carré de l'élément courant »."
+            },
+            {
+              "question": "Écrire une fonction `filtrer_superieurs(L, seuil)` qui retourne une nouvelle liste contenant seulement les éléments de $L$ strictement supérieurs à `seuil`. La liste originale ne doit pas être modifiée.",
+              "answer": "def filtrer_superieurs(L, seuil):\\n    R = []\\n    for x in L:\\n        if x > seuil:\\n            R.append(x)\\n    return R\\n\\nprint(filtrer_superieurs([5, 12, 3, 18, 7], 10))  # [12, 18]",
+              "hint": "Créez une liste vide R. Parcourez L. Si x > seuil, faites R.append(x). Retournez R à la fin.",
+              "explanation": "On construit une nouvelle liste R par accumulation. Le test `x > seuil` décide de l'inclusion. `append` ajoute en queue en temps constant. La liste originale L n'est jamais modifiée."
+            },
+            {
+              "question": "Écrire une fonction `separer_pairs_impairs(L)` qui retourne un tuple de deux listes : la première contient les éléments pairs de $L$, la seconde les éléments impairs. Faire en un seul parcours.",
+              "answer": "def separer_pairs_impairs(L):\\n    pairs = []\\n    impairs = []\\n    for x in L:\\n        if x % 2 == 0:\\n            pairs.append(x)\\n        else:\\n            impairs.append(x)\\n    return (pairs, impairs)\\n\\nprint(separer_pairs_impairs([1, 4, 7, 2, 9, 6]))  # ([4, 2, 6], [1, 7, 9])",
+              "hint": "Deux accumulateurs (pairs, impairs) initialisés comme listes vides. Un seul parcours, un test de parité à chaque tour.",
+              "explanation": "Un seul parcours suffit pour remplir les deux accumulateurs. Le test `x % 2 == 0` détermine la parité. On retourne un tuple `(pairs, impairs)` pour garder les deux résultats ensemble."
+            },
+            {
+              "question": "Écrire une fonction `histogramme(L)` qui retourne un dictionnaire associant à chaque valeur distincte de $L$ son nombre d'occurrences. Exemple : `histogramme([2, 5, 2, 8, 5, 2])` retourne `{2: 3, 5: 2, 8: 1}`.",
+              "answer": "def histogramme(L):\\n    d = {}\\n    for x in L:\\n        d[x] = d.get(x, 0) + 1\\n    return d\\n\\nprint(histogramme([2, 5, 2, 8, 5, 2]))  # {2: 3, 5: 2, 8: 1}",
+              "hint": "Utilisez un dictionnaire d. La méthode d.get(x, 0) renvoie la valeur actuelle pour la clé x, ou 0 si la clé n'existe pas encore.",
+              "explanation": "L'accumulateur est un dictionnaire. Pour chaque x, on incrémente son compteur. `d.get(x, 0)` évite une KeyError pour la première occurrence. C'est le motif standard pour compter les fréquences en un seul passage."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester au fil du parcours : le motif « garde-fou »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tester une condition sur les éléments d'une liste est l'opération de base de tout algorithme de recherche, de filtrage ou de validation. Le schéma universel : on parcourt la liste, et pour chaque élément on évalue un prédicat (une fonction booléenne). Selon le but, on agit différemment : on s'arrête dès qu'on a trouvé (recherche d'existence, recherche du premier), on continue pour tout compter (comptage conditionnel), ou on construit une sous-liste (filtrage). La place du test dans la boucle et la réaction à `True`/`False` déterminent l'algorithme."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Recherche du premier pair : on s'arrête dès qu'on trouve\\nL = [3, 7, 1, 7, 9, 4, 2, 8]\\nfor x in L:\\n    if x % 2 == 0:\\n        print(\"Premier pair trouvé :\", x)\\n        break\\nelse:\\n    print(\"Aucun pair dans la liste\")\\n# Affiche : Premier pair trouvé : 4",
+              "language": "python",
+              "caption": "Recherche avec arrêt précoce (break) et clause else de boucle"
+            },
+            {
+              "type": "paragraph",
+              "content": "La clause `else` d'une boucle `for` en Python est une particularité élégante : le bloc `else` s'exécute seulement si la boucle s'est terminée normalement, sans rencontrer de `break`. C'est l'outil idéal pour détecter l'absence de l'élément cherché. Sans `else`, il faudrait une variable booléenne `trouve = False` qu'on met à `True` dans le `if`, puis tester après la boucle. La version `for/else` est plus concise et exprime directement l'intention : « pour chaque élément, si condition alors traiter et sortir ; sinon (si aucun ne convient) faire ceci »."
+            },
+            {
+              "type": "definition",
+              "term": "Prédicat",
+              "definition": "Fonction qui prend un élément en entrée et retourne un booléen (True/False). En algorithmique, c'est la condition testée sur chaque élément.",
+              "example": "lambda x: x > 0  (positif), lambda x: x % 2 == 0 (pair), lambda x: x in ensemble (appartenance)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut tester une propriété sur l'ensemble de la liste : « tous les éléments vérifient-ils la condition ? » ou « au moins un élément la vérifie-t-il ? ». Ces quantificateurs universel ($\\forall$) et existentiel ($\\exists$) s'implémentent naturellement par parcours. Pour « tout » : on suppose `True` au départ, et dès qu'un contre-exemple apparaît, on passe à `False` et on peut `break`. Pour « au moins un » : on suppose `False`, et dès qu'un exemple valide apparaît, on passe à `True` et on `break`. Python fournit `all()` et `any()` qui font exactement cela, mais l'écriture manuelle permet d'insérer des traitements annexes (journalisation, comptage des échecs, etc.)."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Tous positifs ?\\nL = [3, 7, 1, 7, 9]\\ntous_pos = True\\nfor x in L:\\n    if x <= 0:\\n        tous_pos = False\\n        break\\nprint(\"Tous positifs :\", tous_pos)  # True\\n\\n# Au moins un pair ?\\nau_moins_un_pair = False\\nfor x in L:\\n    if x % 2 == 0:\\n        au_moins_un_pair = True\\n        break\\nprint(\"Au moins un pair :\", au_moins_un_pair)  # False",
+              "language": "python",
+              "caption": "Quantificateurs universel et existentiel par parcours explicite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux listes vides : `all([])` retourne `True` (vacuité universelle), `any([])` retourne `False`. En boucle explicite, si on initialise `tous_pos = True` et qu'on ne rentre jamais dans la boucle, le résultat reste `True` : cohérent. Pour « au moins un », `False` initial reste `False` : cohérent aussi. Cette convention mathématique (vacuité) est importante à connaître pour ne pas être surpris sur des cas limites."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Recherche d'indice et recherche dichotomique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on cherche l'indice d'un élément (et pas seulement sa valeur), le parcours par indices s'impose : `for i in range(len(L)): if L[i] == cible: return i`. Si la liste est triée, on peut utiliser la recherche dichotomique (binaire) qui divise l'intervalle de recherche par deux à chaque étape, passant d'une complexité $O(n)$ à $O(\\log n)$. L'invariant de boucle : la cible, si elle est dans la liste, se trouve toujours entre `gauche` et `droite` inclus. On calcule `milieu = (gauche + droite) // 2`, on compare `L[milieu]` à la cible, et on réduit l'intervalle. C'est un classique algorithmique à maîtriser parfaitement."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def recherche_dichotomique(L, cible):\\n    \"\"\"L doit être triée dans l'ordre croissant.\"\"\"\\n    gauche = 0\\n    droite = len(L) - 1\\n    while gauche <= droite:\\n        milieu = (gauche + droite) // 2\\n        if L[milieu] == cible:\\n            return milieu\\n        elif L[milieu] < cible:\\n            gauche = milieu + 1\\n        else:\\n            droite = milieu - 1\\n    return -1  # non trouvé\\n\\nL = [1, 3, 4, 7, 9, 12, 15]\\nprint(recherche_dichotomique(L, 7))   # 3\\nprint(recherche_dichotomique(L, 5))   # -1\\nprint(recherche_dichotomique(L, 15))  # 6",
+              "language": "python",
+              "caption": "Recherche dichotomique (binaire) sur liste triée"
+            },
+            {
+              "type": "paragraph",
+              "content": "La condition de boucle `gauche <= droite` (et non `<`) garantit qu'on teste aussi le cas où un seul élément reste (`gauche == droite`). L'invariant est maintenu : si la cible est dans la liste, elle est dans $[\\text{gauche}, \\text{droite}]$. La complexité en temps est $O(\\log_2 n)$ : pour une liste de $10^6$ éléments, au plus 20 itérations. En Python, le module `bisect` implémente cela en C (donc plus vite), mais comprendre l'algorithme est requis pour l'adapter (recherche du premier/dernier égal, recherche d'intervalle, etc.)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Validation de données : tester pour garantir l'intégrité"
+            },
+            {
+              "type": "paragraph",
+              "content": "En traitement de données réelles, les listes proviennent souvent de sources externes (fichiers, API, saisie utilisateur) et peuvent contenir des valeurs aberrantes, manquantes, ou de mauvais type. Avant tout calcul, on valide : on teste chaque élément pour s'assurer qu'il respecte les contraintes attendues (type, intervalle, format). Une stratégie robuste : parcourir la liste, accumuler les erreurs dans une liste `erreurs`, et à la fin soit lever une exception si `erreurs` n'est pas vide, soit retourner les données nettoyées. Cela évite d'arrêter au premier problème et donne un rapport complet."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def valider_ages(liste_ages):\\n    erreurs = []\\n    for i, age in enumerate(liste_ages):\\n        if not isinstance(age, int):\\n            erreurs.append(f\"Indice {i} : type inattendu {type(age).__name__}\")\\n        elif age < 0 or age > 120:\\n            erreurs.append(f\"Indice {i} : âge hors plage [0, 120] -> {age}\")\\n    if erreurs:\\n        raise ValueError(\"Données invalides :\\n\" + \"\\n\".join(erreurs))\\n    return liste_ages\\n\\ntry:\\n    valider_ages([25, 30, -5, 40])\\nexcept ValueError as e:\\n    print(e)\\n# Affiche l'erreur pour l'indice 2 (âge -5)",
+              "language": "python",
+              "caption": "Validation de données avec accumulation des erreurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette approche « collecter toutes les erreurs » est standard dans les formulaires web, les pipelines ETL (Extract-Transform-Load), et les compilateurs. Elle sépare la détection (parcours + tests) de la réaction (lever exception, logger, corriger automatiquement). On peut aussi retourner un tuple `(valides, invalides)` pour traiter les deux flux séparément. Le test `isinstance(age, int)` vérifie le type ; `age < 0 or age > 120` vérifie l'intervalle métier. Combiner plusieurs prédicats avec `and`/`or` permet des règles complexes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Filtrage avancé : prédicats composés et fermeture"
+            },
+            {
+              "type": "paragraph",
+              "content": "On compose souvent plusieurs prédicats : « pair ET positif », « multiple de 3 OU multiple de 5 », « non vide ET commence par une majuscule ». En Python, on écrit `if x % 2 == 0 and x > 0:` ou on définit des fonctions prédicats réutilisables : `est_pair = lambda x: x % 2 == 0`. La composition `and`/`or` suit la logique booléenne avec court-circuit : `A and B` n'évalue `B` que si `A` est vrai. Cela permet d'écrire des gardes : `if x != 0 and 10/x > 2:` évite la division par zéro. Pour des prédicats complexes, les définir à part (`def est_valide(x): ...`) rend le code lisible et testable."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "# Prédicats réutilisables\\nest_pair = lambda x: x % 2 == 0\\nest_positif = lambda x: x > 0\\ndans_intervalle = lambda x, a, b: a <= x <= b\\n\\nL = [-4, -2, 0, 3, 6, 9, 12]\\n# Pairs ET positifs\\nR1 = [x for x in L if est_pair(x) and est_positif(x)]\\nprint(\"Pairs et positifs :\", R1)  # [6, 12]\\n\\n# Dans [0, 10] OU pairs négatifs\\nR2 = [x for x in L if dans_intervalle(x, 0, 10) or (est_pair(x) and x < 0)]\\nprint(\"Dans [0,10] ou pairs négatifs :\", R2)  # [-4, -2, 0, 3, 6, 9]",
+              "language": "python",
+              "caption": "Composition de prédicats pour filtrage avancé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les compréhensions de liste (`[x for x in L if cond]`) sont la syntaxe Python idiomatique pour filtrer/transformer en une ligne. Elles sont plus concises et souvent plus rapides qu'une boucle `append` explicite. Cependant, elles sont moins flexibles : pas d'instructions multiples, pas de `break`, pas de gestion d'erreurs facile. En algorithmique, on les utilise pour les cas simples ; pour la logique métier complexe, la boucle explicite reste préférable. Savoir passer de l'une à l'autre est une compétence clé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais parcourir une liste avec `for x in L` (lecture seule) et `for i in range(len(L))` (modification sur place).",
+                "Je sais utiliser un accumulateur pour calculer une somme, un produit, un maximum, ou construire une nouvelle liste.",
+                "Je sais initialiser correctement l'accumulateur selon l'opération (0 pour somme, 1 pour produit, [] pour liste, {} pour dictionnaire).",
+                "Je sais tester une condition sur chaque élément avec `if` à l'intérieur de la boucle.",
+                "Je sais utiliser `break` pour arrêter une recherche dès que l'élément est trouvé, et la clause `else` de la boucle pour le cas « non trouvé ».",
+                "Je sais implémenter les quantificateurs « tous » (`all`) et « au moins un » (`any`) par parcours explicite.",
+                "Je connais le principe de la recherche dichotomique sur liste triée (complexité $O(\\log n)$).",
+                "Je sais valider une liste de données en accumulant les erreurs pour un rapport complet.",
+                "Je sais combiner des prédicats avec `and` / `or` et utiliser des fonctions lambda pour la réutilisation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire une fonction `premier_pair(L)` qui retourne le premier élément pair de la liste $L$, ou `None` s'il n'y en a pas. Utiliser `for/else`.",
+              "answer": "def premier_pair(L):\\n    for x in L:\\n        if x % 2 == 0:\\n            return x\\n    return None  # ou le bloc else: return None\\n\\nprint(premier_pair([1, 3, 5, 8, 9]))  # 8\\nprint(premier_pair([1, 3, 5]))        # None",
+              "hint": "Parcourez avec `for x in L:`. Si `x % 2 == 0`, retournez x immédiatement. Si la boucle finit sans retourner, retournez None.",
+              "explanation": "Le `return` dans le `if` sort de la fonction immédiatement (équivalent à `break` + retour). Si aucun pair n'est trouvé, la boucle se termine normalement et on atteint le `return None` final. La clause `else` du `for` n'est pas nécessaire ici car le `return` dans le corps gère le cas trouvé."
+            },
+            {
+              "question": "Écrire une fonction `tous_dans_intervalle(L, a, b)` qui retourne `True` si tous les éléments de $L$ sont dans l'intervalle $[a, b]$ (bornes incluses), `False` sinon. Gérer le cas liste vide (retourner `True`).",
+              "answer": "def tous_dans_intervalle(L, a, b):\\n    for x in L:\\n        if x < a or x > b:\\n            return False\\n    return True\\n\\nprint(tous_dans_intervalle([3, 5, 7], 0, 10))   # True\\nprint(tous_dans_intervalle([3, 15, 7], 0, 10))  # False\\nprint(tous_dans_intervalle([], 0, 10))          # True",
+              "hint": "Parcourez la liste. Si un élément viole la condition (x < a ou x > b), retournez False immédiatement. Si la boucle finit, retournez True.",
+              "explanation": "C'est le quantificateur universel. La liste vide retourne True par vacuité (aucun contre-exemple n'existe). L'arrêt précoce (`return False`) évite de parcourir le reste inutilement."
+            },
+            {
+              "question": "Écrire une fonction `indice_derniere_occurrence(L, valeur)` qui retourne l'indice de la dernière occurrence de `valeur` dans $L$, ou -1 si absent. Parcourir dans l'ordre inverse.",
+              "answer": "def indice_derniere_occurrence(L, valeur):\\n    for i in range(len(L)-1, -1, -1):\\n        if L[i] == valeur:\\n            return i\\n    return -1\\n\\nprint(indice_derniere_occurrence([2, 5, 2, 8, 2], 2))  # 4\\nprint(indice_derniere_occurrence([2, 5, 2, 8, 2], 7))  # -1",
+              "hint": "Utilisez range(len(L)-1, -1, -1) pour avoir les indices du dernier au premier. Retournez dès qu'on trouve.",
+              "explanation": "Le parcours inverse garantit que la première correspondance trouvée est la dernière occurrence dans l'ordre naturel. Complexité $O(n)$ au pire cas. Si la liste est triée, on pourrait adapter la dichotomique pour trouver la borne droite."
+            },
+            {
+              "question": "Écrire une fonction `valider_notes(notes)` qui vérifie que `notes` est une liste d'entiers tous compris entre 0 et 20 inclus. Si invalide, lever une `ValueError` avec un message listant tous les problèmes (indice, valeur, raison). Si valide, retourner la liste inchangée.",
+              "answer": "def valider_notes(notes):\\n    erreurs = []\\n    for i, note in enumerate(notes):\\n        if not isinstance(note, int):\\n            erreurs.append(f\"Indice {i} : {note!r} n'est pas un entier\")\\n        elif note < 0 or note > 20:\\n            erreurs.append(f\"Indice {i} : {note} hors intervalle [0, 20]\")\\n    if erreurs:\\n        raise ValueError(\"Notes invalides :\\n\" + \"\\n\".join(erreurs))\\n    return notes\\n\\ntry:\\n    valider_notes([12, 15, 25, 8])\\nexcept ValueError as e:\\n    print(e)",
+              "hint": "Utilisez enumerate pour avoir l'indice. Testez le type avec isinstance(note, int). Testez l'intervalle. Accumulez les messages d'erreur. Levez l'exception à la fin si la liste erreurs n'est pas vide.",
+              "explanation": "On accumule tous les problèmes au lieu de s'arrêter au premier. `enumerate` donne l'indice et la valeur. `isinstance` vérifie le type. La f-string avec `!r` affiche la représentation (utile pour voir les guillemets sur les chaînes). L'exception regroupe tout pour un rapport complet."
+            },
+            {
+              "question": "Écrire une fonction `filtrer_compose(L)` qui retourne les éléments de $L$ qui sont soit (pairs et positifs), soit (impairs et négatifs). Utiliser une compréhension de liste avec des prédicats nommés.",
+              "answer": "def filtrer_compose(L):\\n    est_pair = lambda x: x % 2 == 0\\n    est_positif = lambda x: x > 0\\n    est_negatif = lambda x: x < 0\\n    return [x for x in L if (est_pair(x) and est_positif(x)) or (not est_pair(x) and est_negatif(x))]\\n\\nprint(filtrer_compose([-5, -4, -2, 0, 3, 4, 7, 8]))  # [-5, 4, 8]",
+              "hint": "Définissez des lambdas pour la parité et le signe. Dans la compréhension, combinez avec and/or. Attention : 0 n'est ni positif ni négatif.",
+              "explanation": "Les prédicats nommés rendent la condition lisible. La condition `(pair et positif) ou (impair et négatif)` exclut 0 (ni positif ni négatif) et les pairs négatifs / impairs positifs. La compréhension de liste est concise pour ce filtrage pur sans effets de bord."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

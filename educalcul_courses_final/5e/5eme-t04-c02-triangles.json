@@ -1,0 +1,741 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.725546+00:00",
+  "id": 396,
+  "code": "5eme-t04-c02",
+  "title": "Triangles",
+  "description": "Cours structuré Educalcul : Triangles.",
+  "subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Géométrie plane : angles, triangles et parallélogrammes",
+    "titre_du_cours": "Triangles",
+    "objectif_global": "Triangles",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Constructions.",
+      "Inégalités / somme des angles selon programme."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane : angles, triangles et parallélogrammes",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un triangle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet consacré aux triangles. Un triangle est une figure plane fermée, formée de trois segments qui se rejoignent deux à deux en trois points que l'on appelle sommets. Chaque segment porte le nom de côté, et l'angle formé par deux côtés consécutifs porte le nom d'angle du triangle. Pour parler d'un triangle, on utilise souvent des lettres majuscules pour les sommets, par exemple $A$, $B$, $C$, et on note les côtés opposés par des lettres minuscules $a$, $b$, $c$ respectivement. Cette notation sera très utile tout au long du cours, car elle permet d'écrire des relations claires entre longueurs et mesures d'angles. Prenons le temps de bien visualiser la figure : imagine un morceau de papier découpé en trois bandes que tu colles bout à bout pour former une forme close. C'est exactement l'idée d'un triangle, une forme simple mais qui cache de nombreuses propriétés fascinantes."
+            },
+            {
+              "type": "definition",
+              "term": "triangle",
+              "definition": "Figure plane fermée formée de trois segments qui se rejoignent deux à deux en trois points appelés sommets.",
+              "example": "Le triangle $ABC$ a pour sommets $A$, $B$, $C$."
+            },
+            {
+              "type": "definition",
+              "term": "côté",
+              "definition": "Chacun des trois segments qui forment le contour du triangle.",
+              "example": "Le côté $a$ est le segment $BC$."
+            },
+            {
+              "type": "definition",
+              "term": "angle",
+              "definition": "Figure formée par deux demi-droites issues d'un même sommet ; dans un triangle, c'est l'angle entre deux côtés consécutifs.",
+              "example": "L'angle $\\widehat{BAC}$ est l'angle au sommet $A$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avec ses côtés a, b, c",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons nommer les éléments d'un triangle, nous allons voir comment les classer selon la longueur de leurs côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les triangles selon leurs côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "On distingue trois familles principales. Le triangle équilatéral a ses trois côtés de même longueur ; il possède aussi trois angles égaux, chacun mesurant $60^\\circ$. Le triangle isocèle a exactement deux côtés de même longueur ; les angles opposés à ces côtés sont alors égaux. Enfin, le triangle quelconque (ou scalène) a ses trois côtés de longueurs toutes différentes, et ses trois angles sont également tous différents. Pour reconnaître la famille, il suffit de mesurer ou de comparer les trois longueurs. Par exemple, un triangle dont les côtés mesurent $5\\,cm$, $5\\,cm$ et $8\\,cm$ est isocèle car deux côtés coïncident."
+            },
+            {
+              "type": "definition",
+              "term": "triangle équilatéral",
+              "definition": "Triangle dont les trois côtés ont la même longueur.",
+              "example": "Un triangle de côtés $5\\,cm$, $5\\,cm$, $5\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "triangle isocèle",
+              "definition": "Triangle qui possède au moins deux côtés de même longueur.",
+              "example": "Côtés $5\\,cm$, $5\\,cm$, $8\\,cm$."
+            },
+            {
+              "type": "definition",
+              "term": "triangle quelconque",
+              "definition": "Triangle dont les trois côtés ont des longueurs toutes différentes.",
+              "example": "Côtés $4\\,cm$, $5\\,cm$, $6\\,cm$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les côtés, c'est au tour des angles de nous offrir une autre classification très utile."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les triangles selon leurs angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "On regarde cette fois la mesure des angles. Un triangle rectangle possède un angle droit, c'est-à-dire un angle de $90^\\circ$. Un triangle acutangle a ses trois angles aigus, tous strictement inférieurs à $90^\\circ$. Un triangle obtusangle contient un angle obtus, c'est-à-dire supérieur à $90^\\circ$. Notez qu'un triangle ne peut pas avoir deux angles droits ni deux angles obtus, car la somme des trois angles est toujours $180^\\circ$. Ainsi, en mesurant un seul angle, on peut souvent deviner la famille : si tu trouves un angle de $90^\\circ$, tu es sûr d'avoir un triangle rectangle."
+            },
+            {
+              "type": "definition",
+              "term": "triangle rectangle",
+              "definition": "Triangle qui possède un angle droit ($90^\\circ$).",
+              "example": "Angle $\\widehat{B}=90^\\circ$."
+            },
+            {
+              "type": "definition",
+              "term": "triangle acutangle",
+              "definition": "Triangle dont les trois angles sont aigus (inférieurs à $90^\\circ$).",
+              "example": "Angles $50^\\circ$, $60^\\circ$, $70^\\circ$."
+            },
+            {
+              "type": "definition",
+              "term": "triangle obtusangle",
+              "definition": "Triangle qui possède un angle obtus (supérieur à $90^\\circ$).",
+              "example": "Angle $\\widehat{C}=110^\\circ$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons maintenant à une propriété fondamentale qui relie tous les triangles, quelle que soit leur forme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La somme des angles d'un triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans n'importe quel triangle, la somme des mesures des trois angles intérieurs vaut invariablement $180^\\circ$. Pour s'en convaincre, trace une droite parallèle au côté $BC$ passant par le sommet $A$. Les angles alternes-internes formés avec $AB$ et $AC$ sont égaux aux angles $\\widehat{B}$ et $\\widehat{C}$. Sur la droite parallèle, les trois angles $\\widehat{B}$, $\\widehat{A}$, $\\widehat{C}$ se suivent et forment un angle plat, qui mesure $180^\\circ$. Cette propriété est un outil puissant : si tu connais deux angles, tu trouves le troisième par simple soustraction."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\alpha+\\beta+\\gamma=180^\\circ"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la parallèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On dessine une droite passant par $A$ et parallèle à $BC$. Cette droite forme avec les côtés $AB$ et $AC$ des angles alternes-internes égaux aux angles $\\widehat{B}$ et $\\widehat{C}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer les angles sur la parallèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur cette droite, les trois angles $\\widehat{B}$, $\\widehat{A}$, $\\widehat{C}$ se suivent et forment un angle plat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un angle plat mesure $180^\\circ$, donc $\\alpha+\\beta+\\gamma=180^\\circ$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le triangle $ABC$, quel côté est opposé au sommet $A$ ?",
+              "answer": "$BC$",
+              "hint": "Le côté opposé à un sommet ne passe pas par ce sommet.",
+              "explanation": "Le côté opposé au sommet $A$ est le segment qui relie les deux autres sommets $B$ et $C$, donc $BC$."
+            },
+            {
+              "question": "Un triangle a trois côtés de longueurs $5\\,cm$, $5\\,cm$ et $8\\,cm$. Comment l'appelle-t-on ?",
+              "answer": "Triangle isocèle",
+              "hint": "Deux côtés ont la même longueur.",
+              "explanation": "Comme deux côtés mesurent $5\\,cm$, le triangle est isocèle."
+            },
+            {
+              "question": "Un triangle possède un angle de $90^\\circ$. Quel est son nom ?",
+              "answer": "Triangle rectangle",
+              "hint": "Un angle droit mesure $90^\\circ$.",
+              "explanation": "La présence d'un angle droit classe le triangle comme rectangle."
+            },
+            {
+              "question": "Quelle est la somme des trois angles d'un triangle ?",
+              "answer": "$180^\\circ$",
+              "hint": "Trace une parallèle à un côté par le sommet opposé.",
+              "explanation": "En traçant une parallèle, les angles alternes-internes montrent que la somme vaut un angle plat, soit $180^\\circ$."
+            }
+          ]
+        },
+        {
+          "title": "Constructions.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle connaissant trois côtés (SSS)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction SSS (côté-côté-côté) permet de tracer un triangle quand on connaît les trois longueurs. La première étape consiste à tracer l'un des côtés, par exemple le plus court, à l'aide de la règle. Ensuite, on place la pointe du compas sur un des extrémités de ce côté et on ouvre le compas à la longueur du deuxième côté ; on trace un arc de cercle. On fait de même depuis l'autre extrémité avec la troisième longueur. L'intersection des deux arcs donne le troisième sommet. Il suffit alors de relier ce sommet aux deux extrémités du premier côté pour obtenir le triangle cherché. Cette méthode fonctionne à condition que les trois longueurs respectent l'inégalité triangulaire, sinon les arcs ne se coupent pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec la règle, trace un segment de la longueur du premier côté donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer le premier arc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur une extrémité du segment, règle l'ouverture sur la longueur du deuxième côté, et trace un arc de cercle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le second arc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'ouverture, place la pointe sur l'autre extrémité du segment, règle sur la longueur du troisième côté, et trace un second arc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Identifier le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intersection des deux arcs (il y en a deux, symétriques) donne le troisième sommet. Relie-le aux extrémités du premier côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "area_decomposer",
+              "caption": "Décomposition de l'aire du triangle en rectangle équivalent",
+              "shapes": [
+                {
+                  "width": 6,
+                  "height": 4,
+                  "label": "Rectangle base × hauteur"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la construction quand on connaît deux côtés et l'angle qu'ils forment."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle connaissant deux côtés et l'angle compris (SAS)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode SAS (côté-angle-côté) commence elle aussi par tracer l'un des deux côtés connus. À l'une de ses extrémités, on construit l'angle donné à l'aide du rapporteur ou du compas (report d'angle). La deuxième côté connu part alors de cette extrémité selon la direction fixée par l'angle ; on reporte sa longueur sur le compas et on trace un arc qui coupe la demi-droite de l'angle. Le point d'intersection est le troisième sommet. On relie ensuite ce sommet à l'autre extrémité du premier côté. Cette construction est toujours possible si l'angle est strictement entre $0^\\circ$ et $180^\\circ$ et si les longueurs sont positives."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment correspondant à l'un des deux côtés donnés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'une des extrémités, construis l'angle donné (rapporteur ou report au compas)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter le second côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la demi-droite de l'angle, reporte la longueur du second côté à l'aide du compas ; marque le point."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie ce point à l'autre extrémité du premier côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons à présent le cas où l'on connaît deux angles et le côté qui les sépare."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle connaissant deux angles et le côté compris (ASA)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction ASA (angle-côté-angle) débute par le tracé du côté connu. À chaque extrémité de ce côté, on construit l'angle correspondant (les deux angles donnés). Les deux demi-droites issues de ces angles se coupent en un point unique : c'est le troisième sommet. On obtient ainsi le triangle. Cette méthode fonctionne pour tout couple d'angles dont la somme est strictement inférieure à $180^\\circ$, ce qui est toujours vrai pour un triangle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le côté connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment de la longueur du côté donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire le premier angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À une extrémité, construis le premier angle donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire le second angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À l'autre extrémité, construis le second angle donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Trouver le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux demi-droites se coupent ; ce point est le troisième sommet. Relie-le aux extrémités du côté initial."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par la construction particulière d'un triangle rectangle quand on connaît l'hypoténuse et un côté de l'angle droit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle rectangle connaissant l'hypoténuse et un côté (RHS)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La construction RHS (angle droit-hypoténuse-côté) utilise le fait que l'angle droit est fixé. Trace d'abord l'hypoténuse. À l'une de ses extrémités, construis un angle droit (à l'équerre ou au compas). Sur la demi-droite de cet angle droit, reporte la longueur du côté connu à l'aide du compas ; tu obtiens un point. Mais ce point ne suffit pas : le troisième sommet doit aussi être à la distance de l'hypoténuse de l'autre extrémité. Il faut donc tracer un cercle de centre l'autre extrémité de l'hypoténuse et de rayon égal à l'hypoténuse. L'intersection de ce cercle avec la demi-droite de l'angle droit donne le sommet de l'angle droit. Relie ce sommet aux deux bouts de l'hypoténuse."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment de la longueur de l'hypoténuse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À une extrémité, construis un angle droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter le côté connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la demi-droite de l'angle droit, reporte la longueur du côté donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer le cercle de l'hypoténuse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec l'autre extrémité de l'hypoténuse comme centre, trace un cercle de rayon égal à l'hypoténuse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'intersection du cercle et de la demi-droite donne le sommet de l'angle droit. Relie-le aux deux bouts de l'hypoténuse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour construire un triangle avec les côtés $4\\,cm$, $5\\,cm$, $6\\,cm$, quelle est la première étape ?",
+              "answer": "Tracer un segment de longueur $4\\,cm$.",
+              "hint": "Commence par poser le côté le plus court ou le premier donné.",
+              "explanation": "On trace d'abord un côté, ici $4\\,cm$, puis on utilise le compas pour les autres longueurs."
+            },
+            {
+              "question": "Dans la construction SAS, après avoir tracé le premier côté, que fait-on avec l'angle donné ?",
+              "answer": "On construit l'angle au bout du côté tracé.",
+              "hint": "Utilise le rapporteur ou le compas pour reporter l'angle.",
+              "explanation": "L'angle compris est reporté à l'extrémité du premier côté pour déterminer la direction du second côté."
+            },
+            {
+              "question": "Pour ASA, on connaît deux angles et le côté entre eux. Quelle est la première action ?",
+              "answer": "Tracer le côté connu.",
+              "hint": "Le côté connu sert de base.",
+              "explanation": "On pose le côté, puis on reporte les deux angles à ses extrémités."
+            },
+            {
+              "question": "Dans la construction RHS, on a l'hypoténuse $10\\,cm$ et un côté $6\\,cm$. Comment obtient-on le troisième sommet ?",
+              "answer": "Tracer un cercle de rayon $6\\,cm$ centré sur un bout de l'hypoténuse et un cercle de rayon $10\\,cm$ centré sur l'autre bout ; leur intersection donne le sommet.",
+              "hint": "Le troisième sommet est à la fois à $6\\,cm$ d'un bout et à $10\\,cm$ de l'autre.",
+              "explanation": "L'intersection des deux cercles donne le point qui satisfait les deux distances."
+            }
+          ]
+        },
+        {
+          "title": "Inégalités / somme des angles selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'inégalité triangulaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'inégalité triangulaire est une règle fondamentale : dans tout triangle, la somme des longueurs de deux côtés quelconques est strictement supérieure à la longueur du troisième côté. En d'autres termes, pour des côtés $a$, $b$, $c$, on a toujours $a+b>c$, $a+c>b$ et $b+c>a$. Si cette condition n'est pas respectée, les trois segments ne peuvent pas se refermer pour former un triangle. Par exemple, avec des longueurs $3\\,cm$, $4\\,cm$ et $8\\,cm$, la somme des deux plus petits côtés ($3+4=7$) n'atteint pas le plus grand ($8$) ; il est donc impossible de construire un tel triangle. Cette propriété est très utile pour vérifier rapidement si trois mesures peuvent être les côtés d'un triangle."
+            },
+            {
+              "type": "definition",
+              "term": "inégalité triangulaire",
+              "definition": "Dans tout triangle, la somme de deux côtés est strictement supérieure au troisième côté.",
+              "example": "Pour $a=5$, $b=7$, $c=10$ : $5+7>10$ (vrai), $5+10>7$ (vrai), $7+10>5$ (vrai)."
+            },
+            {
+              "type": "number_line",
+              "caption": "Comparaison des longueurs 3, 4 et 8 sur une droite graduée",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "a"
+                },
+                {
+                  "value": 4,
+                  "label": "b"
+                },
+                {
+                  "value": 8,
+                  "label": "c"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette inégalité a une conséquence directe sur la relation entre les côtés et les angles opposés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relation entre côtés et angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle, le plus grand côté est toujours opposé au plus grand angle, et le plus petit côté est opposé au plus petit angle. Cette correspondance permet de comparer des angles rien qu'en regardant les longueurs, ou inversement. Par exemple, si dans un triangle le côté $a$ mesure $9\\,cm$, le côté $b$ mesure $6\\,cm$ et le côté $c$ mesure $5\\,cm$, alors l'angle opposé à $a$ (noté $\\alpha$) est le plus grand, l'angle opposé à $b$ ($\\beta$) est intermédiaire, et l'angle opposé à $c$ ($\\gamma$) est le plus petit. Cette propriété se démontre en utilisant l'inégalité triangulaire et le fait que la somme des angles est constante."
+            },
+            {
+              "type": "definition",
+              "term": "angle opposé",
+              "definition": "Angle dont le sommet n'appartient pas au côté considéré ; il est situé en face de ce côté.",
+              "example": "Dans $\\triangle ABC$, l'angle opposé au côté $a=BC$ est $\\widehat{A}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "a>b>c \\Rightarrow \\alpha>\\beta>\\gamma"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons maintenant à la somme des angles pour en donner une démonstration rigoureuse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Démonstration de la somme des angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit un triangle $ABC$. Par le sommet $A$, on trace une droite parallèle à la droite $(BC)$. Cette parallèle coupe les droites $(AB)$ et $(AC)$ en $A$ bien sûr. Les angles alternes-internes formés sont : l'angle entre $(AB)$ et la parallèle, qui est égal à $\\widehat{B}$ ; l'angle entre $(AC)$ et la parallèle, qui est égal à $\\widehat{C}$. Sur la parallèle, ces deux angles et l'angle $\\widehat{A}$ se suivent et forment un angle plat. Un angle plat mesure $180^\\circ$. Donc $\\widehat{A}+\\widehat{B}+\\widehat{C}=180^\\circ$. Cette démonstration utilise seulement les propriétés des parallèles et des angles alternes-internes, qui sont acquises au cycle 3."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la parallèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par $A$, trace une droite parallèle à $(BC)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les angles alternes-internes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'angle entre $(AB)$ et la parallèle vaut $\\widehat{B}$ ; l'angle entre $(AC)$ et la parallèle vaut $\\widehat{C}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Somme sur la parallèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les trois angles $\\widehat{B}$, $\\widehat{A}$, $\\widehat{C}$ forment un angle plat, donc leur somme est $180^\\circ$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\alpha+\\beta+\\gamma=180^\\circ"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, découvrons un théorème très pratique qui relie un angle extérieur aux angles intérieurs non adjacents."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de l'angle extérieur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prolonge un côté d'un triangle, par exemple $BC$ au-delà de $C$. L'angle formé entre ce prolongement et l'autre côté $AC$ est appelé angle extérieur en $C$. Le théorème affirme que cet angle extérieur est égal à la somme des deux angles intérieurs qui ne sont pas adjacents à lui, c'est-à-dire les angles en $A$ et en $B$. En symboles, si $\\delta$ est l'angle extérieur en $C$, alors $\\delta = \\alpha + \\beta$. Cela découle directement de la somme des angles du triangle ($\\alpha+\\beta+\\gamma=180^\\circ$) et du fait que $\\gamma+\\delta=180^\\circ$ (angles supplémentaires). Ce théorème permet souvent de trouver un angle manquant sans connaître les trois angles du triangle."
+            },
+            {
+              "type": "definition",
+              "term": "angle extérieur",
+              "definition": "Angle formé par un côté d'un triangle et le prolongement du côté adjacent.",
+              "example": "En prolongeant $BC$ après $C$, l'angle entre $AC$ et le prolongement est l'angle extérieur en $C$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Prolonger un côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prolonge le côté $BC$ au-delà de $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier l'angle extérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'angle entre le prolongement et $AC$ est l'angle extérieur $\\delta$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser les angles supplémentaires",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'angle intérieur $\\gamma$ et l'angle extérieur $\\delta$ sont supplémentaires : $\\gamma+\\delta=180^\\circ$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\alpha+\\beta+\\gamma=180^\\circ$, on a $\\delta = 180^\\circ-\\gamma = \\alpha+\\beta$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir un triangle et nommer ses éléments.",
+                "Je sais classer les triangles d'après leurs côtés et leurs angles.",
+                "Je sais construire un triangle avec les bonnes données (SSS, SAS, ASA, RHS).",
+                "Je connais l'inégalité triangulaire et la relation côtés-angles.",
+                "Je sais démontrer que la somme des angles vaut $180^\\circ$ et utiliser le théorème de l'angle extérieur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si les longueurs $3\\,cm$, $4\\,cm$, $8\\,cm$ peuvent former un triangle.",
+              "answer": "Non",
+              "hint": "La somme des deux plus petites doit être strictement supérieure à la plus grande.",
+              "explanation": "$3+4=7$ qui n'est pas supérieur à $8$, donc impossible."
+            },
+            {
+              "question": "Dans un triangle, le plus grand côté est opposé à quel angle ?",
+              "answer": "Au plus grand angle.",
+              "hint": "Plus le côté est long, plus l'angle opposé est grand.",
+              "explanation": "C'est une propriété directe : l'ordre des longueurs suit l'ordre des angles opposés."
+            },
+            {
+              "question": "Quelle est la somme des angles d'un triangle ?",
+              "answer": "$180^\\circ$",
+              "hint": "Trace une parallèle à un côté par le sommet opposé.",
+              "explanation": "Les angles alternes-internes forment un angle plat."
+            },
+            {
+              "question": "Si un angle extérieur d'un triangle vaut $120^\\circ$ et l'angle intérieur adjacent vaut $50^\\circ$, quelle est la valeur de l'autre angle intérieur non adjacent ?",
+              "answer": "$70^\\circ$",
+              "hint": "L'angle extérieur est égal à la somme des deux angles intérieurs non adjacents.",
+              "explanation": "L'angle extérieur $120^\\circ$ = $50^\\circ$ + x, donc x = $70^\\circ$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

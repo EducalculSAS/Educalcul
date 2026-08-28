@@ -1,0 +1,87 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 122,
+  "_course_code": "ce1-t06-c06-rendre-une-monnaie-simple",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Vérifier somme payée et rendu",
+  "title": "Vérifier la somme payée et le rendu de monnaie",
+  "blocks": [
+    {
+      "title": "Vérification simple",
+      "content": "Relie chaque situation à la bonne vérification.",
+      "pairs": [
+        {
+          "left": "Pomme à $2$ €, je donne $5$ €, on me rend $3$ €.",
+          "right": "$2 + 3 = 5$, c'est juste."
+        },
+        {
+          "left": "Stylo à $3$ €, je donne $5$ €, on me rend $1$ €.",
+          "right": "$3 + 1 = 4 \\neq 5$, c'est faux."
+        },
+        {
+          "left": "Livre à $4$ €, je donne $10$ €, on me rend $6$ €.",
+          "right": "$4 + 6 = 10$, c'est juste."
+        },
+        {
+          "left": "Bonbon à $1$ €, je donne $2$ €, on me rend $2$ €.",
+          "right": "$1 + 2 = 3 \\neq 2$, c'est faux."
+        }
+      ],
+      "explanation": "Pour vérifier si le rendu est correct, on additionne le prix de l'article et la monnaie rendue. Si le total est égal à la somme donnée, c'est juste. Sinon, c'est faux. Exemple : $2 + 3 = 5$ (juste), $3 + 1 = 4$ diffèrent de $5$ (faux).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver la bonne monnaie",
+      "content": "Relie chaque achat à la monnaie qu'il faut rendre.",
+      "pairs": [
+        {
+          "left": "Je paie $5$ € pour un article à $2$ €.",
+          "right": "On me rend $3$ €."
+        },
+        {
+          "left": "Je paie $10$ € pour un article à $4$ €.",
+          "right": "On me rend $6$ €."
+        },
+        {
+          "left": "Je paie $20$ € pour un article à $12$ €.",
+          "right": "On me rend $8$ €."
+        },
+        {
+          "left": "Je paie $5$ € pour un article à $3$ €.",
+          "right": "On me rend $2$ €."
+        }
+      ],
+      "explanation": "La monnaie à rendre est la différence entre la somme donnée et le prix de l'article. On peut calculer en ajoutant au prix jusqu'à la somme donnée : $2 + 3 = 5$, $4 + 6 = 10$, $12 + 8 = 20$, $3 + 2 = 5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Compléter l'égalité",
+      "content": "Relie chaque égalité à la valeur manquante pour vérifier le paiement.",
+      "pairs": [
+        {
+          "left": "$5$ € = $2$ € + ...",
+          "right": "$3$ €"
+        },
+        {
+          "left": "$10$ € = ... + $4$ €",
+          "right": "$6$ €"
+        },
+        {
+          "left": "... = $7$ € + $3$ €",
+          "right": "$10$ €"
+        },
+        {
+          "left": "$20$ € = $15$ € + ...",
+          "right": "$5$ €"
+        }
+      ],
+      "explanation": "La somme donnée est toujours égale au prix de l'article plus la monnaie rendue. Il faut trouver le nombre manquant : $5 = 2 + 3$, $10 = 6 + 4$, $10 = 7 + 3$, $20 = 15 + 5$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

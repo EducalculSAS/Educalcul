@@ -1,0 +1,264 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.916497+00:00",
+  "id": 461,
+  "code": "3eme-t02-c01",
+  "title": "Développer et réduire",
+  "description": "Cours structuré Educalcul : Développer et réduire.",
+  "subject": "Calcul littéral, équations et inéquations",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Calcul littéral, équations et inéquations",
+    "titre_du_cours": "Développer et réduire",
+    "objectif_global": "Développer et réduire",
+    "mini_lecons_imposees": [
+      "Distributivité.",
+      "Identités remarquables si programme applicable.",
+      "Réduire."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral, équations et inéquations",
+      "lessons": [
+        {
+          "title": "Distributivité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es le responsable d'un petit club de jeux. Tu veux offrir un pack de bienvenue à chaque nouveau membre. Ce pack contient $1$ jeu de cartes et $2$ dés. Si tu as $5$ membres qui s'inscrivent, tu ne vas pas compter les objets un par un. Tu vas te dire : je distribue $5$ fois le jeu de cartes et $5$ fois les $2$ dés. En mathématiques, c'est exactement ce que nous faisons avec la distributivité. On prend un nombre (ou une lettre) qui se trouve devant une parenthèse et on le 'distribue' à chaque élément qui se cache à l'intérieur. C'est comme si le nombre extérieur frappait à la porte de la parenthèse et saluait chaque personne présente dans la pièce. Cette technique nous permet de transformer un produit, c'est-à-dire une multiplication, en une somme ou une différence. C'est une étape fondamentale pour simplifier des expressions complexes et résoudre des équations plus tard dans l'année. Ne t'inquiète pas si cela semble abstrait au début, c'est un mécanisme très logique que nous allons décomposer ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développer une expression, c'est transformer un produit en une somme ou une différence. On utilise pour cela la propriété de la distributivité. La distributivité simple s'écrit ainsi : $k \\times (a + b) = k \\times a + k \\times b$. Ici, le nombre $k$ est distribué sur $a$ puis sur $b$. On multiplie le terme extérieur par chaque terme intérieur. Il existe aussi la distributivité double, que l'on rencontre souvent en $3\\mathrm{{e}}$. Elle intervient quand on a deux parenthèses multipliées entre elles, comme $(a + b)(c + d)$. Dans ce cas, chaque terme de la première parenthèse doit être multiplié par chaque terme de la seconde. La formule est : $(a + b)(c + d) = a \\times c + a \\times d + b \\times c + b \\times d$. On obtient donc quatre termes avant de pouvoir simplifier. Il est crucial de comprendre que le signe devant le nombre fait partie du nombre lui-même. Si on a $-3(x + 2)$, c'est le nombre $-3$ que l'on distribue, et non le $3$ positif. C'est l'erreur la plus courante, mais avec de la vigilance, tu vas vite maîtriser ce jeu de multiplication."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "3(x + 2)"
+              ],
+              "rightTerms": [
+                "3x",
+                "+ 6"
+              ],
+              "caption": "Développer 3(x + 2) revient à distribuer le 3 sur chaque terme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne jamais s'embrouiller lors d'un développement, je te conseille de suivre scrupuleusement ces étapes : \\n\\nD'abord, pour une distributivité simple, identifie le terme situé devant la parenthèse. Ensuite, trace mentalement ou avec un crayon des flèches partant de ce terme vers chaque élément à l'intérieur de la parenthèse. Effectue alors les multiplications une par une. \\n\\nPour une distributivité double, la méthode est similaire mais plus dense. \\nEtape $1$ : Prends le premier terme de la première parenthèse et multiplie-le par le premier terme de la seconde, puis par le deuxième.\\nEtape $2$ : Prends le deuxième terme de la première parenthèse et multiplie-le également par le premier terme de la seconde, puis par le deuxième.\\nEtape $3$ : Écris tous les résultats à la suite en respectant les signes. \\n\\nUn conseil d'ami : écris toujours l'étape intermédiaire des multiplications avant de calculer le résultat final. Par exemple, écris $3 \\times 2x$ avant d'écrire $6x$. Cela permet de repérer immédiatement une erreur de signe ou de calcul si le résultat final te semble bizarre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple simple suivant : on veut développer l'expression $A = 4(3x - 5)$. \\n\\nIci, nous avons une distributivité simple. Le terme à distribuer est $4$. \\n\\nD'abord, on multiplie $4$ par le premier terme de la parenthèse : $4 \\times 3x = 12x$. \\nEnsuite, on multiplie $4$ par le second terme, en faisant bien attention au signe moins : $4 \\times (-5) = -20$. \\n\\nOn assemble les deux résultats pour obtenir l'expression développée : $A = 12x - 20$. \\n\\nRemarque bien que le $4$ a été utilisé deux fois. On ne multiplie pas seulement le premier terme, on distribue le $4$ à tout le monde. Si tu avais oublié le $-5$, ton résultat aurait été $12x$, ce qui serait faux car tu aurais ignoré une partie de l'expression originale. On a transformé un produit (le $4$ multiplié par le bloc) en une différence ( $12x$ moins $20$ ). C'est l'essence même du développement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à un cas plus stimulant avec une distributivité double : $B = (2x + 3)(x - 4)$. \\n\\nNous allons suivre la méthode des flèches étape par étape. \\n\\nPremière partie : on distribue $2x$ sur la seconde parenthèse. \\n$2x \\times x = 2x^{2}$ \\n$2x \\times (-4) = -8x$ \\n\\nDeuxième partie : on distribue $+3$ sur la seconde parenthèse. \\n$3 \\times x = 3x$ \\n$3 \\times (-4) = -12$ \\n\\nMaintenant, on met tout bout à bout : $B = 2x^{2} - 8x + 3x - 12$. \\n\\nOn peut aller plus loin en regroupant les termes qui se ressemblent (les $x$ ensemble). \\n$-8x + 3x$ donne $-5x$. \\n\\nLe résultat final est donc $B = 2x^{2} - 5x - 12$. \\n\\nC'est un exercice plus long, mais si tu respectes l'ordre (premier terme, puis second terme), tu ne risques pas d'oublier un produit. On a commencé avec deux blocs multipliés, et on finit avec une expression sans parenthèses."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège numéro un, et c'est le plus redoutable, est la gestion du signe moins devant la parenthèse. Si tu as $-2(x - 3)$, beaucoup d'élèves écrivent $-2x - 6$. C'est une erreur ! Il faut multiplier $-2$ par $-3$, ce qui donne $+6$ car moins par moins fait plus. Le résultat correct est $-2x + 6$. \\n\\nUn autre piège classique survient dans la distributivité double : oublier de multiplier le deuxième terme de la première parenthèse. On s'arrête souvent après avoir fait $a \\times c$ et $a \\times d$, en oubliant totalement $b \\times c$ et $b \\times d$. Pour éviter cela, je te suggère de compter : une distributivité double doit toujours générer $4$ termes dans l'étape intermédiaire. Si tu n'en as que $2$ ou $3$, c'est que tu as sauté une étape. \\n\\nEnfin, attention à la multiplication des $x$. N'oublie jamais que $x \\times x = x^{2}$. Écrire $2x$ au lieu de $2x^{2}$ lors du développement de $(2x)(x)$ est une erreur fréquente qui change totalement la nature du résultat."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe l'expression suivante : $C = 7(2x - 3)$.",
+              "answer": "14x - 21",
+              "hint": "Multiplie le 7 par 2x, puis le 7 par -3.",
+              "explanation": "On effectue $7 \\times 2x = 14x$ et $7 \\times (-3) = -21$. L'expression est donc $14x - 21$."
+            },
+            {
+              "question": "Développe l'expression suivante : $D = (x + 5)(x + 2)$.",
+              "answer": "x^2 + 7x + 10",
+              "hint": "Utilise la double distributivité : x*x, x*2, 5*x, puis 5*2.",
+              "explanation": "On a $x \\times x = x^{2}$, $x \\times 2 = 2x$, $5 \\times x = 5x$ et $5 \\times 2 = 10$. On somme le tout : $x^{2} + 2x + 5x + 10$. En simplifiant $2x + 5x$, on obtient $x^{2} + 7x + 10$."
+            },
+            {
+              "question": "Développe et simplifie : $E = -3(x - 4)$.",
+              "answer": "-3x + 12",
+              "hint": "Attention au signe : -3 multiplié par -4 donne un résultat positif.",
+              "explanation": "On a $-3 \\times x = -3x$ et $-3 \\times (-4) = +12$. L'expression est $-3x + 12$."
+            }
+          ]
+        },
+        {
+          "title": "Identités remarquables si programme applicable.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Parfois, en mathématiques, on tombe sur des situations qui reviennent tellement souvent que les chercheurs ont créé des 'raccourcis'. Imagine que tu doives calculer $101^{2}$ de tête. Tu pourrais faire $101 \\times 101$ avec une pose d'opération longue, ou tu pourrais te dire que $101$ c'est $100 + 1$. En utilisant un raccourci spécial, tu trouverais le résultat bien plus vite. C'est exactement le rôle des identités remarquables. Ce sont des formules figées qui nous permettent de développer certaines expressions instantanément, sans même avoir besoin de faire toutes les étapes de la distributivité. Au début, on a l'impression que c'est encore plus de choses à apprendre, mais c'est en réalité un gain de temps énorme. C'est comme apprendre des mots-clés dans une langue étrangère : une fois que tu les reconnais, tu comprends la phrase tout de suite sans avoir à traduire chaque lettre. Nous allons voir les trois formes principales qui sont les piliers du calcul littéral en $3\\mathrm{{e}}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe trois identités remarquables fondamentales. \\n\\nLa première est le carré d'une somme : $(a + b)^{2} = a^{2} + 2ab + b^{2}$. Ici, le terme $2ab$ est appelé le double produit. C'est l'élément le plus important car on l'oublie souvent. \\n\\nLa deuxième est le carré d'une différence : $(a - b)^{2} = a^{2} - 2ab + b^{2}$. Elle ressemble beaucoup à la première, mais le signe du double produit devient négatif. \\n\\nLa troisième est la différence de deux carrés : $(a - b)(a + b) = a^{2} - b^{2}$. C'est sans doute la plus élégante car les termes centraux s'annulent, laissant un résultat très court. \\n\\nIl est essentiel de bien identifier qui est '$a$' et qui est '$b$' dans ton expression avant d'appliquer la formule. Par exemple, dans $(3x + 2)^{2}$, le terme $a$ est $3x$ et le terme $b$ est $2$. Si tu confonds les deux ou si tu oublies d'élever $3x$ au carré (en oubliant de mettre le $3$ au carré), le résultat sera faux. Ces formules sont des outils de puissance : elles transforment un produit complexe en une somme simple."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2 + 2ab + b^2 \\ (a-b)^2 = a^2 - 2ab + b^2 \\ (a-b)(a+b) = a^2 - b^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour utiliser les identités remarquables sans te tromper, je te suggère cette routine : \\n\\nEtape $1$ : Analyse la forme de l'expression. Est-ce une parenthèse au carré ? Si oui, regarde le signe à l'intérieur. Si c'est un plus, c'est la formule $1$. Si c'est un moins, c'est la formule $2$. Est-ce deux parenthèses identiques avec un signe différent ? Alors c'est la formule $3$. \\n\\nEtape $2$ : Identifie précisément $a$ et $b$. Écris-les au brouillon. Par exemple : $a = 5x$, $b = 4$. \\n\\nEtape $3$ : Applique la formule en remplaçant les lettres par tes valeurs, en utilisant des parenthèses pour ne pas faire d'erreur de signe. \\n\\nEtape $4$ : Calcule les carrés et le double produit. \\n\\nPar exemple, pour $(a+b)^{2}$, calcule $a^{2}$, puis calcule $2 \\times a \\times b$, puis calcule $b^{2}$. \\n\\nEnfin, assemble le tout. En prenant ce temps de réflexion, tu éviteras l'erreur classique de simplement mettre un carré sur chaque terme sans calculer le double produit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Développons ensemble l'expression $F = (3x + 4)^{2}$. \\n\\nOn reconnaît ici la forme $(a + b)^{2}$ avec $a = 3x$ et $b = 4$. \\n\\nAppliquons la formule $a^{2} + 2ab + b^{2}$ : \\n\\nD'abord le carré du premier terme : $(3x)^{2} = 3^{2} \\times x^{2} = 9x^{2}$. Attention, on n'oublie pas de mettre le $3$ au carré ! \\nEnsuite le double produit : $2 \\times 3x \\times 4 = 24x$. \\nEnfin le carré du second terme : $4^{2} = 16$. \\n\\nOn assemble le tout : $F = 9x^{2} + 24x + 16$. \\n\\nSi on avait utilisé la distributivité classique $(3x + 4)(3x + 4)$, on aurait trouvé $9x^{2} + 12x + 12x + 16$, ce qui nous ramène bien à $9x^{2} + 24x + 16$. L'identité remarquable nous a permis d'arriver au résultat plus directement, en sautant l'étape des quatre termes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Étudions maintenant l'expression $G = (5x - 2)(5x + 2)$. \\n\\nIci, on a deux parenthèses quasi identiques, seule la différence de signe les sépare. C'est la forme $(a - b)(a + b)$ avec $a = 5x$ et $b = 2$. \\n\\nC'est l'identité la plus rapide à calculer car la formule est simplement $a^{2} - b^{2}$. \\n\\nCalculons $a^{2}$ : $(5x)^{2} = 25x^{2}$. \\nCalculons $b^{2}$ : $2^{2} = 4$. \\n\\nLe résultat est donc instantanément : $G = 25x^{2} - 4$. \\n\\nC'est magique, n'est-ce pas ? On a évité tout le processus de double distributivité car on sait que les termes en $x$ vont s'annuler : $5x \\times 2$ donne $10x$, et $5x \\times (-2)$ donne $-10x$. Comme $10x - 10x = 0$, il ne reste que les deux carrés. C'est pour cela que cette formule est extrêmement utile pour simplifier des calculs complexes."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus catastrophique, et la plus fréquente, est de croire que $(a + b)^{2} = a^{2} + b^{2}$. C'est ce que j'appelle le 'piège du carré distributeur'. Beaucoup d'élèves oublient totalement le double produit $2ab$. N'oublie jamais que le carré d'une somme n'est pas la somme des carrés. Imagine un carré de côté $a+b$ : sa surface ne comprend pas seulement les deux petits carrés $a^{2}$ et $b^{2}$, mais aussi deux rectangles de surface $ab$. \\n\\nUn autre point de vigilance concerne les signes dans la formule $(a - b)^{2} = a^{2} - 2ab + b^{2}$. Note bien que le dernier terme $b^{2}$ est TOUJOURS positif, car un carré est toujours positif (ou nul). On ne met jamais un signe moins devant le dernier terme d'un carré. \\n\\nEnfin, attention aux coefficients. Dans $(4x)^{2}$, le résultat est $16x^{2}$ et non $4x^{2}$. Le carré s'applique à tout le bloc, y compris au chiffre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe en utilisant une identité remarquable : $H = (2x + 3)^{2}$.",
+              "answer": "4x^2 + 12x + 9",
+              "hint": "C'est la forme (a+b)^2. N'oublie pas le double produit 2ab.",
+              "explanation": "a=2x, b=3. On a (2x)^2 + 2*2x*3 + 3^2 = 4x^2 + 12x + 9."
+            },
+            {
+              "question": "Développe l'expression $I = (4x - 7)(4x + 7)$.",
+              "answer": "16x^2 - 49",
+              "hint": "Reconnais la forme (a-b)(a+b).",
+              "explanation": "a=4x, b=7. Le résultat est a^2 - b^2, soit (4x)^2 - 7^2 = 16x^2 - 49."
+            },
+            {
+              "question": "Développe l'expression $J = (3x - 5)^{2}$.",
+              "answer": "9x^2 - 30x + 25",
+              "hint": "Attention au signe du double produit pour (a-b)^2.",
+              "explanation": "a=3x, b=5. On a (3x)^2 - 2*3x*5 + 5^2 = 9x^2 - 30x + 25."
+            }
+          ]
+        },
+        {
+          "title": "Réduire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que ta chambre est un peu en désordre. Tu as des piles de livres, des tas de crayons et quelques figurines éparpillées. Si tu veux savoir exactement ce que tu possèdes, tu ne vas pas simplement dire : j'ai 15 objets. Tu vas regrouper les livres ensemble, les crayons ensemble et les figurines ensemble. Tu diras : j'ai 5 livres, 7 crayons et 3 figurines. Réduire une expression algébrique, c'est exactement la même chose ! On ne mélange pas les torchons et les serviettes, ou plutôt, on ne mélange pas les $x^{2}$, les $x$ et les nombres seuls. Réduire, c'est faire le ménage dans l'expression pour qu'elle soit la plus courte et la plus lisible possible. C'est l'étape finale indispensable après tout développement. Une expression non réduite est comme une phrase trop longue et confuse ; une expression réduite est claire, nette et précise. C'est ce qui permet de conclure un exercice de façon élégante et professionnelle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Réduire une expression consiste à additionner ou soustraire les termes semblables. Des termes sont dits semblables s'ils ont exactement la même partie littérale, c'est-à-dire les mêmes lettres élevées aux mêmes puissances. \\n\\nOn peut imaginer des familles : \\nLa famille des $x^{2}$ : elle comprend tous les termes qui finissent par $x^{2}$, comme $3x^{2}$, $-5x^{2}$ ou $x^{2}$ (qui est en fait $1x^{2}$). \\nLa famille des $x$ : elle comprend les termes comme $2x$, $-8x$ ou $-x$. \\nLa famille des constantes : ce sont les nombres seuls, comme $12$, $-4$ ou $0,5$. \\n\\nL'astuce fondamentale est la suivante : on peut additionner deux membres d'une même famille, mais il est strictement interdit d'additionner des membres de familles différentes. Par exemple, $3x + 2x$ donne $5x$ car ils sont tous les deux des $x$. En revanche, $3x + 2x^{2}$ ne peut pas être simplifié. Ils ne sont pas de la même famille. C'est l'erreur la plus fréquente en $3\\mathrm{{e}}$. Réduire, c'est donc simplement compter combien on a d'éléments dans chaque famille à la fin du calcul."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Quantités de chaque famille dans L = 4x^2 - 5x + 2 - x^2 + 3x - 7",
+              "bars": [
+                {
+                  "label": "x^2",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "x",
+                  "value": -2,
+                  "tone": "red"
+                },
+                {
+                  "label": "nombres",
+                  "value": -5,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour réduire une expression sans rien oublier et sans faire d'erreur de signe, je te conseille cette méthode rigoureuse : \\n\\nEtape $1$ : Identifie toutes les familles présentes dans l'expression. Souligne-les de couleurs différentes si tu as des stylos, ou entoure-les. \\n\\nEtape $2$ : Regroupe les termes de chaque famille ensemble. Attention : prends toujours le signe qui se trouve DEVANT le terme. Si tu vois $- 4x$, le signe est le moins. \\n\\nEtape $3$ : Calcule la somme pour chaque famille séparément. \\nPour les $x^{2}$, fais le calcul des coefficients. \\nPour les $x$, fais le calcul des coefficients. \\nPour les nombres, fais le calcul final. \\n\\nEtape $4$ : Réécris l'expression finale en rangeant les familles dans l'ordre décroissant des puissances. On commence généralement par les $x^{2}$, puis les $x$, et on termine par le nombre seul. \\n\\nPar exemple, si tu as $-2x + 5 + x^{2} + 3x - 1$, tu regroupes : $x^{2}$ seul, $(-2x + 3x)$ et $(5 - 1)$. Ce qui donne $x^{2} + x + 4$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Simplifions l'expression suivante : $K = 5x + 3 - 2x + 8$. \\n\\nIci, nous avons deux familles : la famille des $x$ et la famille des nombres. \\n\\nRegroupons les $x$ d'un côté : $5x - 2x$. On calcule les coefficients $5 - 2 = 3$, donc on a $3x$. \\nRegroupons les nombres de l'autre côté : $3 + 8$. On calcule $3 + 8 = 11$. \\n\\nL'expression réduite est donc $K = 3x + 11$. \\n\\nNote bien que je n'ai pas essayé d'additionner $3x$ et $11$. Pourquoi ? Parce que $3x$ représente une quantité inconnue et $11$ est une valeur fixe. Ils ne parlent pas la même langue. Si tu avais écrit $14x$, ce serait comme dire que 3 pommes et 11 euros font 14 pommes-euros, ce qui n'a aucun sens !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à un exemple plus complet avec trois familles : $L = 4x^{2} - 5x + 2 - x^{2} + 3x - 7$. \\n\\nC'est un peu plus long, donc soyons méthodiques. \\n\\n1. La famille des $x^{2}$ : on a $4x^{2}$ et $-x^{2}$. \\nLe calcul est $4 - 1 = 3$. On obtient donc $3x^{2}$. \\n\\n2. La famille des $x$ : on a $-5x$ et $+3x$. \\nLe calcul est $-5 + 3 = -2$. On obtient donc $-2x$. \\n\\n3. La famille des nombres : on a $+2$ et $-7$. \\nLe calcul est $2 - 7 = -5$. On obtient donc $-5$. \\n\\nOn assemble maintenant les trois résultats dans l'ordre : $L = 3x^{2} - 2x - 5$. \\n\\nL'expression est maintenant réduite. On ne peut plus rien simplifier car chaque terme appartient à une famille différente. C'est la forme la plus élégante et la plus utile pour la suite du cours."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est la confusion entre $x$ et $x^{2}$. Beaucoup d'élèves, dans le feu de l'action, additionnent $2x^{2} + 3x$ et écrivent $5x^{3}$ ou $5x^{2}$. C'est strictement interdit ! Rappelle-toi l'image des familles : les $x^{2}$ sont des carrés et les $x$ sont des segments. On ne peut pas additionner une surface et une longueur. \\n\\nUn autre piège concerne le coefficient $1$. Quand on voit un terme comme $-x$, il ne faut pas oublier que c'est la même chose que $-1x$. Lors du calcul, si tu ne vois pas de chiffre, imagine qu'il y a un $1$ caché. Par exemple, $x^{2} + x^{2}$ fait $2x^{2}$, et non $x^{4}$. On additionne les quantités, on ne multiplie pas les lettres. \\n\\nEnfin, fais très attention aux signes lors du regroupement. Une erreur classique est de déplacer un terme sans son signe. Si tu as $5 + 3x - 8$, le signe moins appartient au $8$, pas au $3x$. Si tu écris $5 - 8 + 3x$, c'est correct. Si tu écris $5 + 8 - 3x$ par erreur, tout ton calcul sera faussé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Réduis l'expression : $M = 4x - 7 + 2x + 10$.",
+              "answer": "6x + 3",
+              "hint": "Regroupe les x ensemble et les nombres ensemble.",
+              "explanation": "(4x + 2x) + (-7 + 10) = 6x + 3."
+            },
+            {
+              "question": "Réduis l'expression : $N = 2x^{2} + 5x - 4 - x^{2} + 2x + 1$.",
+              "answer": "x^2 + 7x - 3",
+              "hint": "Il y a trois familles : x^2, x, et les nombres.",
+              "explanation": "Famille x^2 : 2x^2 - x^2 = x^2. Famille x : 5x + 2x = 7x. Famille nombres : -4 + 1 = -3. On obtient x^2 + 7x - 3."
+            },
+            {
+              "question": "Réduis l'expression : $P = 3x + 4 - 5x - 8 + x$.",
+              "answer": "-x - 4",
+              "hint": "Fais attention aux signes et n'oublie pas que x est égal à 1x.",
+              "explanation": "x : 3x - 5x + 1x = -x. Nombres : 4 - 8 = -4. Le résultat est -x - 4."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

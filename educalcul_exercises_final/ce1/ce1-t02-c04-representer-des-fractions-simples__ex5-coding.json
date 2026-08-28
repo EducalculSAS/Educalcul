@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 82,
+  "_course_code": "ce1-t02-c04-representer-des-fractions-simples",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Approfondissement : Colorier une fraction",
+  "title": "Approfondissement : Colorier une fraction",
+  "blocks": [
+    {
+      "title": "Colorier la moitié d'un rectangle",
+      "content": "Écris un algorithme en langage naturel pour colorier la fraction $1/2$ d'un rectangle divisé en deux parties égales.",
+      "correctAnswer": "Algorithme : 1. Diviser le rectangle en 2 parties égales. 2. Colorier 1 partie sur les 2.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On divise le rectangle en deux parts égales car le dénominateur est 2. Le numérateur 1 indique qu'une seule part doit être colorée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Colorier les trois quarts d'un cercle",
+      "content": "Écris un algorithme en langage naturel pour colorier la fraction $3/4$ d'un cercle divisé en quatre parties égales.",
+      "correctAnswer": "Algorithme : 1. Diviser le cercle en 4 parties égales. 2. Colorier 3 parties sur les 4.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le dénominateur 4 demande de partager le cercle en quatre parts égales. Le numérateur 3 demande de colorier trois de ces parts.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme général pour colorier une fraction",
+      "content": "Propose un algorithme sous forme de pseudo-code (style Python) qui prend en entrée un numérateur $k$ et un dénominateur $n$ et qui décrit les étapes pour colorier la fraction $k/n$ d'une figure divisée en $n$ parties égales.",
+      "correctAnswer": "Pseudo-code :\\nFONCTION colorier_fraction(k, n):\\n    SI k > n ALORS ERREUR\\n    DIVISER la figure en n parties égales\\n    POUR i DE 1 À k FAIRE\\n        COLORIER la partie i\\n    FIN POUR\\nFIN FONCTION",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme vérifie que le numérateur ne dépasse pas le dénominateur, puis divise la figure en n parties égales. Une boucle colore les k premières parties.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

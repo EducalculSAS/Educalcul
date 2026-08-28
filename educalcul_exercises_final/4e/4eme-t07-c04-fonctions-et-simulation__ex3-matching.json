@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Simuler",
+  "title": "Simulation et programmation",
+  "blocks": [
+    {
+      "title": "Instructions de base",
+      "content": "Relie chaque instruction Python à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$from\\ random\\ import\\ randint$",
+          "right": "Importer la fonction pour générer un entier aléatoire"
+        },
+        {
+          "left": "$n = randint(1, 6)$",
+          "right": "Simuler un lancer de dé à 6 faces"
+        },
+        {
+          "left": "$for\\ i\\ in\\ range(100):$",
+          "right": "Répéter l'expérience 100 fois"
+        },
+        {
+          "left": "$compteur = compteur + 1$",
+          "right": "Incrémenter le compteur de succès"
+        }
+      ],
+      "items": [],
+      "explanation": "L'instruction $from\\ random\\ import\\ randint$ charge la fonction nécessaire. $randint(1, 6)$ renvoie un entier entre 1 et 6 inclus, ce qui modélise un dé. La boucle $for\\ i\\ in\\ range(100):$ permet de répéter le tirage 100 fois. Enfin, $compteur = compteur + 1$ (ou $compteur += 1$) ajoute 1 au compteur à chaque succès.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modéliser une expérience",
+      "content": "Relie chaque ligne de code à l'expérience aléatoire qu'elle simule.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$n = randint(1, 2)$",
+          "right": "Lancer une pièce de monnaie (1 = Pile, 2 = Face)"
+        },
+        {
+          "left": "$n = randint(1, 6)$",
+          "right": "Lancer un dé à 6 faces numérotées de 1 à 6"
+        },
+        {
+          "left": "$n = random()$",
+          "right": "Obtenir un nombre décimal aléatoire entre 0 et 1"
+        },
+        {
+          "left": "$couleur = choice([\\'rouge\\', \\'bleu\\', \\'vert\\'])$",
+          "right": "Tirer une couleur au hasard parmi rouge, bleu, vert"
+        }
+      ],
+      "items": [],
+      "explanation": "$randint(a, b)$ donne un entier entre $a$ et $b$ : pour une pièce on utilise 1 et 2, pour un dé 1 et 6. $random()$ (du module $random$) donne un flottant dans $[0, 1[$. $choice(liste)$ pioche un élément dans la liste fournie, ici une chaîne de caractères pour la couleur.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Structure d'une simulation de fréquence",
+      "content": "Relie chaque étape de l'algorithme à son rôle pour estimer une probabilité par simulation.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$nb\\_succes = 0$",
+          "right": "Initialiser le compteur de succès à zéro avant la boucle"
+        },
+        {
+          "left": "$for\\ i\\ in\\ range(N):$",
+          "right": "Répéter l'expérience un grand nombre $N$ de fois"
+        },
+        {
+          "left": "$if\\ condition:\\ nb\\_succes += 1$",
+          "right": "Tester la condition de succès et incrémenter le cas échéant"
+        },
+        {
+          "left": "$frequence = nb\\_succes / N$",
+          "right": "Calculer la fréquence observée à la fin de la simulation"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour estimer une probabilité par simulation (loi des grands nombres), on initialise un compteur ($nb\\_succes = 0$). On exécute une boucle $N$ fois ($for\\ i\\ in\\ range(N):$). À l'intérieur, si l'événement recherché se produit ($if\\ condition:$), on incrémente le compteur. Finalement, la fréquence $nb\\_succes / N$ approxime la probabilité.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

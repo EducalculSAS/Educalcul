@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 530,
+  "_course_code": "2nde-t06-c04-donnees-a-deux-variables-qualitatives-selon-programme",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Tableau croisé",
+  "title": "Tableau croisé - Effectifs et fréquences",
+  "blocks": [
+    {
+      "title": "Compléter une case manquante",
+      "content": "Dans une classe de 30 élèves, on a relevé le genre (Garçon, Fille) et le sport favori (Football, Basketball). Le tableau croisé des effectifs est le suivant :\\n- Garçons Football : 8\\n- Garçons Basketball : 5\\n- Filles Football : 6\\n- Filles Basketball : ?\\nLe total des élèves est $30$. Combien de filles ont choisi le basketball ?",
+      "correctAnswer": "11",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des effectifs connus est $8 + 5 + 6 = 19$. Puisque le total est $30$, l'effectif manquant est $30 - 19 = 11$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effectif marginal",
+      "content": "En utilisant le même tableau (avec la case complétée), quel est l'effectif marginal des filles ?",
+      "correctAnswer": "17",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'effectif marginal des filles est la somme des effectifs de la ligne Filles : $6 + 11 = 17$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fréquence conditionnelle",
+      "content": "Parmi les élèves qui pratiquent le football, quelle est la proportion de filles ? Exprimez votre réponse sous forme de fraction irréductible.",
+      "correctAnswer": "3/7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total des élèves pratiquant le football est $8 + 6 = 14$. Parmi eux, $6$ sont des filles. La proportion est donc $\\frac{6}{14} = \\frac{3}{7}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

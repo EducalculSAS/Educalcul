@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_course_id": 145,
+  "_course_code": "ce2-t01-c04-valeur-de-position-m-c-d-u",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Échanger entre unités de numération",
+  "title": "Échanger entre unités de numération (M-C-D-U)",
+  "questions": [
+    {
+      "text": "Combien de dizaines faut-il regrouper pour former une centaine ?",
+      "options": [
+        "10 dizaines",
+        "100 dizaines",
+        "1 dizaine",
+        "1000 dizaines"
+      ],
+      "correctAnswer": "10 dizaines",
+      "explanation": "Dans le système décimal, 10 unités forment 1 dizaine, 10 dizaines forment 1 centaine et 10 centaines forment 1 mille. Pour obtenir 1 centaine, il faut donc regrouper exactement 10 dizaines. L'option '100 dizaines' correspond à 10 centaines (soit 1 mille), '1 dizaine' ne vaut que 10 unités et '1000 dizaines' vaut 100 centaines.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 0,
+        "tens": 10,
+        "units": 0,
+        "caption": "10 barres de dizaines regroupées en 1 plaque de centaine"
+      }
+    },
+    {
+      "text": "Si j'échange 1 centaine en dizaines, combien de dizaines obtiens-je ?",
+      "options": [
+        "1 dizaine",
+        "10 dizaines",
+        "100 dizaines",
+        "0 dizaine"
+      ],
+      "correctAnswer": "10 dizaines",
+      "explanation": "L'échange entre les unités de numération suit la base 10. 1 centaine vaut 10 dizaines. Si on décompose 1 plaque de centaine (base 10), on obtient exactement 10 barres de dizaines. L'option '1 dizaine' correspond à la valeur d'une barre, '100 dizaines' serait 10 centaines et '0 dizaine' est incorrect car l'échange est possible.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 1,
+        "tens": 0,
+        "units": 0,
+        "caption": "1 plaque de centaine à échanger"
+      }
+    },
+    {
+      "text": "Le nombre 23 dizaines s'écrit avec des centaines et des dizaines :",
+      "options": [
+        "2 centaines 3 dizaines",
+        "23 centaines",
+        "3 centaines 2 dizaines",
+        "2 centaines 3 unités"
+      ],
+      "correctAnswer": "2 centaines 3 dizaines",
+      "explanation": "Il faut regrouper les dizaines par paquets de 10 pour former des centaines. 23 dizaines = 20 dizaines + 3 dizaines. Puisque 10 dizaines = 1 centaine, 20 dizaines = 2 centaines. Il reste 3 dizaines. Le nombre s'écrit donc 2 centaines 3 dizaines (soit 230). L'option '23 centaines' vaut 2300, '3 centaines 2 dizaines' vaut 320 et '2 centaines 3 unités' vaut 203.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 2,
+        "tens": 3,
+        "units": 0,
+        "caption": "Représentation de 23 dizaines (2 centaines et 3 dizaines)"
+      }
+    },
+    {
+      "text": "Dans le nombre 407, j'échange 1 centaine en dizaines. Combien y a-t-il de dizaines au total maintenant ?",
+      "options": [
+        "0 dizaine",
+        "10 dizaines",
+        "7 dizaines",
+        "4 dizaines"
+      ],
+      "correctAnswer": "10 dizaines",
+      "explanation": "Le nombre 407 contient 4 centaines, 0 dizaine et 7 unités. Si on échange 1 centaine, elle devient 10 dizaines. On a alors 3 centaines restantes et 10 dizaines (plus les 7 unités). Le nombre total de dizaines est donc 10. L'option '0 dizaine' est la valeur initiale avant échange, '7 dizaines' confond avec les unités et '4 dizaines' confond avec le nombre de centaines initial.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 407,
+        "caption": "Tableau de position du nombre 407 avant échange"
+      }
+    },
+    {
+      "text": "Quel échange permet d'écrire le nombre 5 centaines 17 dizaines sous sa forme standard ?",
+      "options": [
+        "17 dizaines = 1 centaine 7 dizaines",
+        "5 centaines = 50 dizaines",
+        "7 dizaines = 1 centaine",
+        "17 dizaines = 17 unités"
+      ],
+      "correctAnswer": "17 dizaines = 1 centaine 7 dizaines",
+      "explanation": "Pour écrire le nombre sous forme standard (un seul chiffre par colonne), il faut que le nombre de dizaines soit inférieur à 10. On a 17 dizaines. On échange 10 dizaines contre 1 centaine. 17 dizaines = 10 dizaines + 7 dizaines = 1 centaine 7 dizaines. On ajoute cette centaine aux 5 centaines initiales pour obtenir 6 centaines 7 dizaines (soit 670). Les autres options ne permettent pas de réduire le nombre de dizaines à moins de 10.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 5,
+        "tens": 17,
+        "units": 0,
+        "caption": "Représentation initiale : 5 centaines et 17 dizaines"
+      }
+    }
+  ]
+}

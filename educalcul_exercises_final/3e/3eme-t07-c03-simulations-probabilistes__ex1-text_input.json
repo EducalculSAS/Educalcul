@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Répéter",
+  "title": "Simulations probabilistes : Répéter",
+  "blocks": [
+    {
+      "title": "Boucle de répétition simple",
+      "content": "Dans un algorithme, on écrit : Pour i de 1 à N faire ... FinPour. Si N = $800$, combien de fois le bloc d'instructions à l'intérieur de la boucle sera-t-il exécuté ?",
+      "correctAnswer": "800",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle Pour i de 1 à N exécute le bloc d'instructions exactement N fois, car i prend toutes les valeurs entières de 1 à N inclus. Donc pour N = $800$, il y a $800$ itérations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'une expérience aléatoire",
+      "content": "On simule $5000$ fois le lancer d'un dé à 6 faces équilibré. On compte le nombre de fois où le résultat est pair. Quelle est la valeur attendue (approchée) de ce compteur ?",
+      "correctAnswer": "2500",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La probabilité d'obtenir un nombre pair (2, 4 ou 6) sur un dé à 6 faces est $3/6 = 1/2$. En répétant l'expérience $5000$ fois, le nombre attendu de résultats pairs est $5000 × 1/2 = 2500$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Affichage de la fréquence",
+      "content": "Après avoir répété $10000$ fois l'expérience « lancer deux dés et regarder si la somme est 7 », la variable $nbSucces$ contient le nombre de succès. Quelle instruction permet d'afficher la fréquence observée de cet événement ?",
+      "correctAnswer": "Afficher nbSucces/10000",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fréquence observée est le quotient du nombre de succès sur le nombre total d'essais. Il faut donc afficher $nbSucces / 10000$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 339,
+  "_course_code": "6eme-t02-c04-fraction-d-une-quantite",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Calculer",
+  "title": "Algorithmes pour calculer une fraction d'une quantité",
+  "blocks": [
+    {
+      "title": "Algorithme simple",
+      "content": "Écrire un algorithme en langage naturel qui permet de calculer le quart de $28$.",
+      "correctAnswer": "Début\\nNombre ← 28\\nRésultat ← Nombre ÷ 4\\nAfficher Résultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer une fraction unitaire (comme $1/4$) d'une quantité, on divise cette quantité par le dénominateur. Ici, $28 ÷ 4 = 7$. L'algorithme décrit simplement cette opération.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec multiplication et division",
+      "content": "Écrire un algorithme sous forme de script Python qui calcule les trois cinquièmes de $35$ et affiche le résultat.",
+      "correctAnswer": "quantite = 35\\nnumerateur = 3\\ndenominateur = 5\\nresultat = quantite * numerateur / denominateur\\nprint(resultat)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour calculer une fraction $3/5$ d'une quantité, on multiplie la quantité par le numérateur ($35 \\times 3 = 105$) puis on divise le produit par le dénominateur ($105 ÷ 5 = 21$). Le script Python effectue ce calcul en une ligne ou en deux étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction générale",
+      "content": "Proposer un algorithme sous forme de fonction nommée fraction_quantite qui prend trois paramètres : la quantité Q, le numérateur n et le dénominateur d. La fonction doit retourner la valeur de la fraction $n/d$ de $Q$.",
+      "correctAnswer": "Fonction fraction_quantite(Q, n, d)\\n    Début\\n        Si d = 0 Alors\\n            Afficher \"Erreur : division par zéro\"\\n            Retourner 0\\n        Fin Si\\n        Résultat ← (Q * n) / d\\n        Retourner Résultat\\n    Fin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Une fonction généralisée permet de réutiliser le calcul pour n'importe quels nombres. On vérifie que le dénominateur n'est pas nul pour éviter une erreur. Le calcul suit la règle : multiplier la quantité par le numérateur, puis diviser par le dénominateur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

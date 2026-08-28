@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 193,
+  "_course_code": "ce2-t06-c07-perimetre-d-une-figure",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Comprendre contour",
+  "title": "Algorithmes pour tracer le contour de figures",
+  "blocks": [
+    {
+      "title": "Tracer un carré",
+      "content": "Un robot se déplace sur une feuille quadrillée. Écris l'algorithme (la liste d'instructions) pour qu'il trace le contour d'un carré de côté $5$ cm. Le robot part du coin en bas à gauche et avance vers la droite. Utilise les instructions : AVANCE $n$ cm, TOURNE À DROITE.",
+      "correctAnswer": "AVANCE 5 cm\\nTOURNE À DROITE\\nAVANCE 5 cm\\nTOURNE À DROITE\\nAVANCE 5 cm\\nTOURNE À DROITE\\nAVANCE 5 cm\\nTOURNE À DROITE",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour tracer un carré, il faut répéter 4 fois la même action : avancer la longueur du côté puis tourner à angle droit (90 degrés). Comme le côté mesure 5 cm, l'instruction est AVANCE 5 cm suivie de TOURNE À DROITE, le tout répété 4 fois pour refermer le contour.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un rectangle avec une boucle",
+      "content": "Le robot doit maintenant tracer le contour d'un rectangle de longueur $6$ cm et de largeur $4$ cm. Écris l'algorithme en utilisant une boucle REPÈTE 2 FOIS pour éviter de réécrire les mêmes instructions. Les instructions disponibles sont : AVANCE $n$ cm, TOURNE À DROITE, REPÈTE 2 FOIS [ ... ].",
+      "correctAnswer": "REPÈTE 2 FOIS [\\n  AVANCE 6 cm\\n  TOURNE À DROITE\\n  AVANCE 4 cm\\n  TOURNE À DROITE\\n]",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le contour d'un rectangle alterne une longueur et une largeur. Comme il y a deux longueurs et deux largeurs, on peut regrouper la séquence (AVANCE 6 cm, TOURNE À DROITE, AVANCE 4 cm, TOURNE À DROITE) dans une boucle REPÈTE 2 FOIS. Cela trace les 4 côtés et referme la figure.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Compléter l'algorithme d'une figure en L",
+      "content": "On veut tracer le contour de la figure ci-dessous (forme en L) sans lever le crayon. Les côtés mesurent tous $3$ cm. L'algorithme a commencé mais il est incomplet. Complète les lignes manquantes pour refermer le contour.\\nDÉBUT\\nAVANCE 3 cm\\nTOURNE À DROITE\\nAVANCE 3 cm\\nTOURNE À GAUCHE\\nAVANCE 3 cm\\nTOURNE À GAUCHE\\n... (à compléter) ...\\nFIN",
+      "correctAnswer": "AVANCE 3 cm\\nTOURNE À DROITE\\nAVANCE 3 cm\\nTOURNE À DROITE\\nAVANCE 3 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La figure en L a 6 côtés de 3 cm. Après les 4 premières instructions, le robot a tracé 3 côtés et se trouve au niveau du 'creux' du L, orienté vers le bas. Il lui faut : AVANCE 3 cm (descendre), TOURNE À DROITE (aller à gauche), AVANCE 3 cm (base du L), TOURNE À DROITE (monter), AVANCE 3 cm (dernier côté vertical) pour rejoindre le point de départ.",
+      "points": 3,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 4,
+        "highlighted": 6,
+        "caption": "Figure en L composée de 6 carrés unitaires (côtés 3 cm)"
+      }
+    }
+  ]
+}

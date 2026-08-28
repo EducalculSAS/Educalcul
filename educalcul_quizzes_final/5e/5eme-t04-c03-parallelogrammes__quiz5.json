@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 397,
+  "_course_code": "5eme-t04-c03-parallelogrammes",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Approfondissement : Propriétés",
+  "title": "Approfondissement : Propriétés des parallélogrammes",
+  "questions": [
+    {
+      "text": "Dans un parallélogramme $ABCD$, quelles sont les deux propriétés fondamentales qui concernent les côtés opposés ?",
+      "options": [
+        "Ils sont parallèles et ils ont la même longueur",
+        "Ils sont perpendiculaires et ils ont la même longueur",
+        "Ils sont parallèles et ils se coupent en leur milieu",
+        "Ils ont la même longueur et ils sont alignés"
+      ],
+      "correctAnswer": "Ils sont parallèles et ils ont la même longueur",
+      "explanation": "Par définition, un parallélogramme est un quadrilatère dont les côtés opposés sont parallèles deux à deux. La propriété directe qui en découle est que ces côtés opposés sont aussi de même longueur. L'option B confond avec un rectangle (perpendiculaires). L'option C décrit la propriété des diagonales, pas des côtés. L'option D est impossible pour un polygone convexe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $EFGH$ un parallélogramme. Si l'angle $\\widehat{E}$ mesure $70^\\circ$, quelle est la mesure de l'angle $\\widehat{F}$ ?",
+      "options": [
+        "110°",
+        "70°",
+        "20°",
+        "180°"
+      ],
+      "correctAnswer": "110°",
+      "explanation": "Dans un parallélogramme, deux angles consécutifs sont supplémentaires (leur somme vaut $180^\\circ$). Comme $\\widehat{E}$ et $\\widehat{F}$ sont consécutifs, on a $\\widehat{F} = 180^\\circ - 70^\\circ = 110^\\circ$. L'angle opposé $\\widehat{G}$ vaut $70^\\circ$ et l'angle $\\widehat{H}$ vaut $110^\\circ$. L'option B correspond à l'angle opposé, pas au consécutif. L'option C n'a pas de sens géométrique ici. L'option D est la somme des deux angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les diagonales $[AC]$ et $[BD]$ d'un parallélogramme $ABCD$ se coupent en $I$. Quelle phrase exprime exactement la propriété des diagonales ?",
+      "options": [
+        "Le point $I$ est le milieu de $[AC]$ et le milieu de $[BD]$",
+        "Les diagonales sont perpendiculaires et se coupent en leur milieu",
+        "Les diagonales ont la même longueur et se coupent en leur milieu",
+        "Le point $I$ est le milieu de $[AB]$ et de $[CD]$"
+      ],
+      "correctAnswer": "Le point $I$ est le milieu de $[AC]$ et le milieu de $[BD]$",
+      "explanation": "La propriété caractéristique des diagonales d'un parallélogramme est qu'elles se coupent en leur milieu commun. $I$ est donc le milieu de chaque diagonale. L'option B ajoute la perpendicularité qui ne vaut que pour le losange (cas particulier). L'option C ajoute l'égalité des longueurs qui ne vaut que pour le rectangle (cas particulier). L'option D confond les diagonales avec les côtés opposés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne un quadrilatère $IJKL$ dont les diagonales se coupent en leur milieu. Que peut-on affirmer avec certitude ?",
+      "options": [
+        "$IJKL$ est un parallélogramme",
+        "$IJKL$ est un rectangle",
+        "$IJKL$ est un losange",
+        "$IJKL$ est un carré"
+      ],
+      "correctAnswer": "$IJKL$ est un parallélogramme",
+      "explanation": "La réciproque de la propriété des diagonales est vraie : si les diagonales d'un quadrilatère se coupent en leur milieu, alors c'est un parallélogramme. C'est une propriété de caractérisation. On ne peut pas affirmer que c'est un rectangle, un losange ou un carré car ces figures nécessitent des conditions supplémentaires (angles droits pour le rectangle, côtés égaux pour le losange, les deux pour le carré).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le parallélogramme $MNOP$ a un centre de symétrie $S$. Laquelle des affirmations suivantes est fausse ?",
+      "options": [
+        "L'image du point $M$ par la symétrie de centre $S$ est le point $O$",
+        "L'image de la droite $(MN)$ par la symétrie de centre $S$ est la droite $(OP)$",
+        "L'image du segment $[MP]$ par la symétrie de centre $S$ est le segment $[NO]$",
+        "L'image de l'angle $\\widehat{M}$ par la symétrie de centre $S$ est l'angle $\\widehat{N}$"
+      ],
+      "correctAnswer": "L'image de l'angle $\\widehat{M}$ par la symétrie de centre $S$ est l'angle $\\widehat{N}$",
+      "explanation": "Le centre de symétrie d'un parallélogramme est l'intersection des diagonales. La symétrie centrale échange les sommets opposés : $M$ devient $O$ et $N$ devient $P$. Elle échange donc les côtés opposés ($MN$ avec $OP$, $MP$ avec $NO$) et les angles opposés ($\\widehat{M}$ avec $\\widehat{O}$, $\\widehat{N}$ avec $\\widehat{P}$). L'angle $\\widehat{M}$ est l'opposé de $\\widehat{O}$, pas de $\\widehat{N}$ (qui est consécutif à $\\widehat{M}$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Approfondissement : Hypothèses",
+  "title": "Quiz : Hypothèses du théorème de Pythagore (4e)",
+  "questions": [
+    {
+      "text": "Quelle est l'hypothèse indispensable pour pouvoir appliquer le théorème de Pythagore à un triangle ?",
+      "options": [
+        "Le triangle doit être rectangle",
+        "Le triangle doit être isocèle",
+        "Le triangle doit être équilatéral",
+        "Le triangle doit avoir un angle de 60 degrés"
+      ],
+      "correctAnswer": "Le triangle doit être rectangle",
+      "explanation": "Le théorème de Pythagore ne s'applique qu'aux triangles rectangles. Les autres types de triangles (isocèle, équilatéral, angle de 60°) ne garantissent pas la relation $a^2+b^2=c^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, quel côté est l'hypoténuse ?",
+      "options": [
+        "Le côté le plus long, opposé à l'angle droit",
+        "Le côté adjacent à l'angle droit",
+        "Le côté le plus court",
+        "Le côté qui forme l'angle droit"
+      ],
+      "correctAnswer": "Le côté le plus long, opposé à l'angle droit",
+      "explanation": "Par définition, l'hypoténuse est le côté opposé à l'angle droit ; c'est toujours le côté le plus long du triangle rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un triangle dont les longueurs des côtés sont 5, 12 et 13. Quelle vérification permet de conclure qu'il est rectangle ?",
+      "options": [
+        "Vérifier que $5^2 + 12^2 = 13^2$",
+        "Vérifier que $5 + 12 = 13$",
+        "Vérifier que $5^2 + 13^2 = 12^2$",
+        "Vérifier que $12^2 + 13^2 = 5^2$"
+      ],
+      "correctAnswer": "Vérifier que $5^2 + 12^2 = 13^2$",
+      "explanation": "Le théorème de Pythagore (et sa réciproque) stipule que si le carré du plus grand côté égale la somme des carrés des deux autres, le triangle est rectangle. Ici $5^2+12^2=25+144=169=13^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si dans un triangle on a $a^2 + b^2 = c^2$, que peut-on déduire ?",
+      "options": [
+        "Le triangle est rectangle avec l'angle droit opposé au côté de longueur $c$",
+        "Le triangle est isocèle",
+        "Le triangle est équilatéral",
+        "Le triangle a un angle de 45 degrés"
+      ],
+      "correctAnswer": "Le triangle est rectangle avec l'angle droit opposé au côté de longueur $c$",
+      "explanation": "La réciproque du théorème de Pythagore affirme que l'égalité des carrés implique que le triangle est rectangle et que l'angle droit est opposé au côté $c$ (l'hypoténuse).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle ABC, on connaît AB = 8, BC = 6, AC = 10. Laquelle de ces affirmations est correcte ?",
+      "options": [
+        "Le triangle est rectangle en B car $6^2 + 8^2 = 10^2$",
+        "Le triangle est rectangle en A car $8^2 + 10^2 = 6^2$",
+        "Le triangle est rectangle en C car $6^2 + 10^2 = 8^2$",
+        "On ne peut pas conclure sans connaître les angles"
+      ],
+      "correctAnswer": "Le triangle est rectangle en B car $6^2 + 8^2 = 10^2$",
+      "explanation": "Le côté le plus long est AC = 10, donc c'est l'hypoténuse. L'angle droit est opposé à ce côté, soit en B. On vérifie $6^2+8^2=36+64=100=10^2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

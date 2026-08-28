@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Arrondis",
+  "title": "Arrondis dans les calculs de distances",
+  "blocks": [
+    {
+      "title": "Arrondis simples",
+      "content": "Relie chaque nombre à son arrondi demandé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$12,346$ arrondi au dixième",
+          "right": "$12,3$"
+        },
+        {
+          "left": "$0,987$ arrondi au centième",
+          "right": "$0,99$"
+        },
+        {
+          "left": "$5,4$ arrondi à l'unité",
+          "right": "$5$"
+        },
+        {
+          "left": "$100,05$ arrondi au dixième",
+          "right": "$100,1$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour arrondir au dixième, on regarde le chiffre des centièmes : $12,3\\mathbf{4}6 \\to 12,3$ (car $4 < 5$) ; $100,0\\mathbf{5} \\to 100,1$ (car $5 \\ge 5$). Pour arrondir au centième, on regarde le chiffre des millièmes : $0,98\\mathbf{7} \\to 0,99$ (car $7 \\ge 5$). Pour arrondir à l'unité, on regarde le chiffre des dixièmes : $5,\\mathbf{4} \\to 5$ (car $4 < 5$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Arrondis de longueurs calculées",
+      "content": "Relie chaque expression de longueur à sa valeur arrondie comme indiqué (rappel : $\\sqrt{a^2+b^2}$ pour l'hypoténuse).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$\\sqrt{20}$ arrondi au dixième",
+          "right": "$4,5$"
+        },
+        {
+          "left": "$\\sqrt{75}$ arrondi au centième",
+          "right": "$8,66$"
+        },
+        {
+          "left": "$\\sqrt{99}$ arrondi à l'unité",
+          "right": "$10$"
+        },
+        {
+          "left": "Diagonale d'un rectangle $5$ cm $\\times$ $5$ cm arrondie au dixième de cm",
+          "right": "$7,1$ cm"
+        }
+      ],
+      "items": [],
+      "explanation": "$\\sqrt{20} \\approx 4,472 \\to 4,5$ au dixième. $\\sqrt{75} \\approx 8,660 \\to 8,66$ au centième. $\\sqrt{99} \\approx 9,95 \\to 10$ à l'unité. La diagonale du carré de côté $5$ cm vaut $\\sqrt{5^2+5^2} = \\sqrt{50} \\approx 7,071 \\to 7,1$ cm au dixième.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vocabulaire et encadrements",
+      "content": "Relie chaque terme ou instruction à la bonne valeur ou expression pour le nombre $\\pi \\approx 3,14159...$",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Arrondi de $\\pi$ au centième",
+          "right": "$3,14$"
+        },
+        {
+          "left": "Arrondi de $\\pi$ au millième",
+          "right": "$3,142$"
+        },
+        {
+          "left": "Truncature (partie décimale coupée) de $\\pi$ au dixième",
+          "right": "$3,1$"
+        },
+        {
+          "left": "Encadrement de $\\pi$ au centième près",
+          "right": "$3,14 \\le \\pi < 3,15$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'arrondi au centième regarde le millième ($1$) : $3,14\\mathbf{1} \\to 3,14$. L'arrondi au millième regarde le dix-millième ($5$) : $3,141\\mathbf{5} \\to 3,142$. La truncature au dixième coupe après le premier chiffre décimal : $3,\\mathbf{1}4159... \\to 3,1$. L'encadrement au centième près donne l'intervalle $[3,14 ; 3,15[$ car $\\pi \\approx 3,1415...$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

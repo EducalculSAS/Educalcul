@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Algorithme",
+  "title": "Quiz Algorithme - Simulation",
+  "questions": [
+    {
+      "text": "Dans un algorithme de simulation, quelle instruction permet d'obtenir un entier aléatoire compris entre 1 et 6 inclus ?",
+      "options": [
+        "ALEA() * 6 + 1",
+        "ENT(ALEA() * 6) + 1",
+        "ALEA(1,6)",
+        "HASARD(6)"
+      ],
+      "correctAnswer": "ENT(ALEA() * 6) + 1",
+      "explanation": "La fonction ALEA() renvoie un nombre réel entre 0 (inclus) et 1 (exclus). En le multipliant par 6, on obtient un réel dans [0,6). La fonction ENT prend la partie entière, ce qui donne un entier de 0 à 5. En ajoutant 1, on obtient un entier de 1 à 6. Les autres propositions ne garantissent pas un entier uniforme dans cet intervalle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle structure de boucle permet de répéter exactement 1000 fois une série d'instructions dans un algorithme ?",
+      "options": [
+        "TantQue i < 1000 Faire ... FinTantQue",
+        "Pour i de 1 à 1000 Faire ... FinPour",
+        "Repeter 1000 Faire ... JusquA",
+        "Si i <= 1000 Alors ... FinSi"
+      ],
+      "correctAnswer": "Pour i de 1 à 1000 Faire ... FinPour",
+      "explanation": "La structure « Pour i de 1 à 1000 Faire ... FinPour » exécute le bloc d'instructions exactement 1000 fois, avec i prenant les valeurs 1,2,...,1000. « TantQue » dépend d'une condition qui peut ne pas être satisfaite 1000 fois, « Repeter ... JusquA » n'est pas une syntaxe standard, et « Si » ne crée pas de boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir simulé $10000$ lancers d'un dé équilibré, on a obtenu $1680$ fois le résultat 6. Quelle expression donne la fréquence observée du 6 ?",
+      "options": [
+        "$1680 / 10000$",
+        "$10000 / 1680$",
+        "$1680 * 10000$",
+        "$1680 + 10000$"
+      ],
+      "correctAnswer": "$1680 / 10000$",
+      "explanation": "La fréquence observée d'un événement est le quotient du nombre d'occurrences de cet événement sur le nombre total d'essais. Ici, 1680 occurrences sur 10000 essais donnent $1680 / 10000 = 0,168$. Les autres expressions correspondent à l'inverse, au produit ou à la somme, qui n'ont pas de sens probabiliste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Selon la loi des grands nombres, que se passe-t-il pour la fréquence observée d'un événement lorsque le nombre de simulations augmente ?",
+      "options": [
+        "Elle diverge de la probabilité théorique",
+        "Elle reste constante quelle que soit le nombre de simulations",
+        "Elle converge vers la probabilité théorique",
+        "Elle oscille sans tendance"
+      ],
+      "correctAnswer": "Elle converge vers la probabilité théorique",
+      "explanation": "La loi des grands nombres affirme que, lorsque le nombre d'essais indépendants tend vers l'infini, la fréquence relative d'un événement tend vers sa probabilité théorique. Elle ne diverge pas, ne reste pas constante (sauf cas trivial) et ne présente pas d'oscillations indéfinies sans tendance.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour simuler le tirage d'une carte parmi un jeu de 52 cartes, on génère un entier $k$ entre 1 et 52. Les cœurs correspondent aux valeurs 1 à 13. Quel test permet de savoir si la carte tirée est un cœur ?",
+      "options": [
+        "Si k <= 13 Alors ... FinSi",
+        "Si k >= 13 Alors ... FinSi",
+        "Si k = 13 Alors ... FinSi",
+        "Si k > 13 Alors ... FinSi"
+      ],
+      "correctAnswer": "Si k <= 13 Alors ... FinSi",
+      "explanation": "Les cœurs occupent les 13 premières valeurs (1 à 13). Le test « k <= 13 » est vrai exactement pour ces valeurs. « k >= 13 » serait vrai pour 13 à 52, « k = 13 » seulement pour la treizième carte, et « k > 13 » pour les 39 autres cartes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

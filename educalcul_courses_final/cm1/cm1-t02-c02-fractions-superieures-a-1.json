@@ -1,0 +1,463 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.162871+00:00",
+  "id": 220,
+  "code": "cm1-t02-c02",
+  "title": "Fractions supérieures à 1",
+  "description": "Cours structuré Educalcul : Fractions supérieures à 1.",
+  "subject": "Fractions",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Fractions",
+    "titre_du_cours": "Fractions supérieures à 1",
+    "objectif_global": "Fractions supérieures à 1",
+    "mini_lecons_imposees": [
+      "Plusieurs unités.",
+      "Écriture entier + fraction.",
+      "Représenter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Plusieurs unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand on a plus d'un tout"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux barres de chocolat identiques. Tu en manges une entière, puis tu coupes la deuxième en $4$ parts égales et tu en manges $3$. Combien as-tu mangé au total ? Une barre entière plus $3$ quarts d'une autre. On peut le dire autrement : tu as mangé $7$ quarts de barre au total. Écrivons cela : $\\frac{7}{4}$. Le numérateur $7$ est plus grand que le dénominateur $4$. C'est ce qu'on appelle une fraction supérieure à $1$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 4
+                }
+              ],
+              "caption": "Un entier et trois quarts réunis donnent sept quarts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien les reglettes : la première barre représente $1$ tout entier, soit $\\frac{4}{4}$. La deuxième barre montre seulement $3$ parts sur $4$. Si on les met bout à bout, on compte $4+3 = 7$ parts de la même taille. Chaque part vaut un quart. Donc on a bien $7$ quarts. C'est exactement comme si on avait découpé les deux barres en quarts dès le début : on obtiendrait $8$ quarts au total, et $7$ sont mangés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter les parts pour comparer à 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir si une fraction est plus grande que $1$, il suffit de comparer le numérateur et le dénominateur. Si le numérateur est plus grand que le dénominateur, la fraction dépasse un tout. Par exemple $\\frac{5}{3}$ : on a $5$ tiers. Comme $3$ tiers font $1$ entier, il nous reste $2$ tiers en plus. Donc $\\frac{5}{3}$ est bien supérieur à $1$. Essaie avec $\\frac{8}{5}$ : $5$ cinquièmes font $1$, il reste $3$ cinquièmes. La fraction vaut $1$ et $\\frac{3}{5}$."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 1.6666666666666667,
+                  "label": "5/3"
+                },
+                {
+                  "value": 2.3333333333333335,
+                  "label": "7/3"
+                }
+              ],
+              "caption": "Les fractions 5/3 et 7/3 se placent après 1 sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, on voit que $\\frac{5}{3}$ se trouve après $1$, entre $1$ et $2$. Plus le numérateur est grand par rapport au dénominateur, plus la fraction s'éloigne de $1$ vers la droite. C'est une façon visuelle de comprendre qu'on a plusieurs unités. Chaque saut d'un dénominateur nous fait avancer d'une unité entière."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des exemples du quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pense à une recette de crêpes : il faut $\\frac{3}{2}$ litre de lait. La bouteille contient $1$ litre. Il te faut donc une bouteille entière plus une demi-bouteille. C'est exactement $\\frac{3}{2} = 1 + \\frac{1}{2}$. Ou encore : tu as $5$ amis et $3$ pizzas coupées chacune en $4$ parts. Chaque ami mange $3$ parts. Au total, on a mangé $5 \\times 3 = 15$ parts. Comme chaque pizza a $4$ parts, on a mangé $\\frac{15}{4}$ pizzas. C'est bien plus que $3$ pizzas entières !"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Parts de pizza mangées : 15 parts = 15/4 pizzas",
+              "bars": [
+                {
+                  "label": "Pizza 1",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Pizza 2",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Pizza 3",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Restant",
+                  "value": 3,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique à barres montre bien les $3$ pizzas entières ($4+4+4=12$ parts) et les $3$ parts supplémentaires. On compte $15$ parts au total, soit $\\frac{15}{4}$. Cette fraction est supérieure à $1$ car $15 > 4$. Elle est même supérieure à $3$ car $15 > 12$. Tu vois, les fractions supérieures à $1$ apparaissent tout le temps dans la vie de tous les jours, sans qu'on s'en aperçoive forcément."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces fractions, lesquelles sont supérieures à $1$ ? $\\frac{3}{5}, \\frac{7}{4}, \\frac{2}{2}, \\frac{9}{8}, \\frac{4}{9}$",
+              "answer": "$\\frac{7}{4}, \\frac{2}{2}, \\frac{9}{8}$",
+              "hint": "Compare le numérateur et le dénominateur de chaque fraction.",
+              "explanation": "Une fraction est supérieure ou égale à $1$ quand son numérateur est plus grand ou égal à son dénominateur. $\\frac{7}{4}$ : $7>4$. $\\frac{2}{2}$ : $2=2$ (égale à $1$). $\\frac{9}{8}$ : $9>8$. Les autres ont un numérateur plus petit que le dénominateur."
+            },
+            {
+              "question": "Représente la fraction $\\frac{11}{3}$ sur une droite graduée de $0$ à $4$. Entre quels deux nombres entiers se trouve-t-elle ?",
+              "answer": "Entre $3$ et $4$",
+              "hint": "Combien de fois $3$ rentre-t-il dans $11$ ?",
+              "explanation": "$11 \\div 3 = 3$ reste $2$. Donc $\\frac{11}{3} = 3 + \\frac{2}{3}$. Elle se place entre $3$ et $4$, à deux tiers du chemin."
+            },
+            {
+              "question": "Une tarte est coupée en $6$ parts égales. Lucas en mange $4$, puis il prend une deuxième tarte identique et en mange $3$ parts. Quelle fraction de tarte a-t-il mangée au total ?",
+              "answer": "$\\frac{7}{6}$",
+              "hint": "Compte le nombre total de parts mangées. Chaque tarte a $6$ parts.",
+              "explanation": "Première tarte : $4$ parts. Deuxième tarte : $3$ parts. Total : $4+3=7$ parts. Comme chaque part vaut un sixième, Lucas a mangé $\\frac{7}{6}$ de tarte. C'est une fraction supérieure à $1$ car $7>6$."
+            }
+          ]
+        },
+        {
+          "title": "Écriture entier + fraction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la fraction impropre au nombre mixte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer les fractions supérieures à $1$, voyons comment les écrire d'une autre façon, souvent plus pratique. Prenons $\\frac{7}{4}$. On a vu que cela fait $1$ entier ($4$ quarts) plus $3$ quarts. On écrit alors : $1 \\frac{3}{4}$. C'est ce qu'on appelle un nombre mixte : un nombre entier accompagné d'une fraction propre (inférieure à $1$). Les deux écritures disent la même quantité, mais le nombre mixte montre tout de suite combien d'entiers il y a."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                {
+                  "numerator": 3,
+                  "denominator": 4
+                }
+              ],
+              "caption": "7/4 = 1 entier et 3/4"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour passer de $\\frac{7}{4}$ à $1 \\frac{3}{4}$, on fait une division euclidienne : $7 \\div 4 = 1$ reste $3$. Le quotient $1$ devient la partie entière. Le reste $3$ devient le nouveau numérateur. Le dénominateur ne change pas, il reste $4$. Cette méthode marche pour toutes les fractions supérieures à $1$. C'est comme si on regroupait les parts par paquets de la taille du dénominateur : chaque paquet fait un entier."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode pas à pas"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diviser le numérateur par le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $\\frac{11}{5}$, je calcule $11 \\div 5$. Le quotient est $2$, le reste est $1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le quotient comme partie entière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le $2$ devient le nombre entier devant la fraction : $2$ ..."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le reste comme nouveau numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le reste $1$ devient le numérateur de la fraction : $2 \\frac{1}{5}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Garder le même dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur reste $5$. Résultat final : $\\frac{11}{5} = 2 \\frac{1}{5}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre temps est fiable à tous les coups. Elle transforme n'importe quelle fraction impropre en nombre mixte. Le nombre mixte se lit \"deux et un cinquième\". C'est beaucoup plus facile à visualiser que onze cinquièmes : on imagine tout de suite deux objets entiers et un petit morceau en plus."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le chemin inverse : du nombre mixte à la fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a un nombre mixte et on veut retrouver la fraction impropre. C'est l'opération inverse. Prenons $3 \\frac{2}{7}$. Il y a $3$ entiers. Chaque entier vaut $7$ septièmes. Donc les $3$ entiers valent $3 \\times 7 = 21$ septièmes. On ajoute les $2$ septièmes restants : $21 + 2 = 23$ septièmes. La fraction impropre est $\\frac{23}{7}$. La règle : on multiplie l'entier par le dénominateur, on ajoute le numérateur, on garde le dénominateur."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 3.2857142857142856,
+              "caption": "3 + 2/7 ≈ 3,29 sur le tableau de numération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vérifions avec la division : $23 \\div 7 = 3$ reste $2$. On retrouve bien $3 \\frac{2}{7}$. Les deux écritures sont équivalentes, on passe de l'une à l'autre sans perdre d'information. Choisis l'écriture la plus commode selon ce que tu fais : le nombre mixte pour comparer ou estimer, la fraction impropre pour calculer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la fraction $\\frac{13}{6}$ sous forme de nombre mixte.",
+              "answer": "$2 \\frac{1}{6}$",
+              "hint": "Fais la division $13 \\div 6$. Quotient et reste ?",
+              "explanation": "$13 \\div 6 = 2$ reste $1$. Le quotient $2$ est la partie entière. Le reste $1$ est le nouveau numérateur. Le dénominateur reste $6$. Donc $\\frac{13}{6} = 2 \\frac{1}{6}$."
+            },
+            {
+              "question": "Transforme le nombre mixte $4 \\frac{3}{8}$ en fraction impropre.",
+              "answer": "$\\frac{35}{8}$",
+              "hint": "Multiplie l'entier par le dénominateur, puis ajoute le numérateur.",
+              "explanation": "$4 \\times 8 = 32$. $32 + 3 = 35$. Le dénominateur reste $8$. Donc $4 \\frac{3}{8} = \\frac{35}{8}$."
+            },
+            {
+              "question": "Complète l'égalité : $\\frac{17}{5} = \\square \\frac{\\square}{5}$",
+              "answer": "$3 \\frac{2}{5}$",
+              "hint": "Combien de fois $5$ rentre-t-il dans $17$ ? Et quel est le reste ?",
+              "explanation": "$17 \\div 5 = 3$ reste $2$. La partie entière est $3$. Le numérateur de la fraction est $2$. Le dénominateur reste $5$. Résultat : $3 \\frac{2}{5}$."
+            }
+          ]
+        },
+        {
+          "title": "Représenter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Sur la droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Représenter une fraction supérieure à $1$ sur une droite graduée aide à bien voir où elle se situe. Prenons $\\frac{9}{4}$. D'abord, on repère les nombres entiers : $0, 1, 2, 3...$ Puis on divise chaque intervalle entre deux entiers en $4$ parts égales (car le dénominateur est $4$). On compte $9$ quarts à partir de $0$ : $4$ quarts nous amènent à $1$, $4$ quarts de plus nous amènent à $2$, il reste $1$ quart. On se trouve donc entre $2$ et $3$, au premier trait après $2$. C'est exactement $2 \\frac{1}{4}$."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 4,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 2.25,
+                  "label": "9/4"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                }
+              ],
+              "caption": "9/4 se place entre 2 et 3, au premier quart après 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque comme la droite graduée fait le lien direct avec le nombre mixte. Chaque fois qu'on franchit un nombre entier, on a compté un dénominateur de parts. Pour $\\frac{9}{4}$, on a franchi $2$ entiers (donc $2 \\times 4 = 8$ quarts) et il reste $1$ quart. La position sur la droite confirme le calcul : partie entière $2$, fraction $\\frac{1}{4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Avec des aires : rectangles et cercles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre façon très concrète de représenter $\\frac{11}{3}$, c'est de dessiner des rectangles. Chaque rectangle représente $1$ entier. On le divise en $3$ parties égales (tiers). Pour $\\frac{11}{3}$, il faut $11$ tiers. On remplit entièrement $3$ rectangles ($3 \\times 3 = 9$ tiers), et dans le quatrième rectangle, on colorie seulement $2$ tiers sur $3$. On voit immédiatement qu'on a $3$ rectangles pleins et un morceau du quatrième. C'est la représentation visuelle de $3 \\frac{2}{3}$."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 1
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 3
+                }
+              ],
+              "caption": "11/3 = 3 entiers et 2/3 : trois bandes pleines et deux tiers de la quatrième"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec des cercles, c'est pareil : on dessine des disques entiers qu'on partage en parts égales. Pour $\\frac{7}{3}$, on fait $2$ disques complets divisés en $3$ (cela fait $6$ tiers), et un troisième disque où on colorie seulement $1$ tiers. Les représentations en aires (rectangles, cercles, barres) sont idéales pour comparer deux fractions supérieures à $1$ : on voit tout de suite laquelle a plus d'entiers ou plus de parts colorées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Avec des collections d'objets"
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi utiliser des collections : des jetons, des cubes, des fruits. Imaginons qu'un paquet contient $5$ bonbons. Si j'ai $\\frac{13}{5}$ paquet de bonbons, cela veut dire que j'ai $13$ bonbons au total. Je peux former $2$ paquets complets ($2 \\times 5 = 10$ bonbons) et il me reste $3$ bonbons à l'unité. Visuellement, je vois $2$ paquets fermés et $3$ bonbons à côté. C'est exactement $2 \\frac{3}{5}$ paquet. Cette représentation par collections est très proche de ce qu'on fait quand on partage des objets dans la vie courante."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paquet 1",
+                  "value": 5,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Paquet 2",
+                  "value": 5,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Reste",
+                  "value": 3,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "13 bonbons = 2 paquets de 5 + 3 bonbons = 2 3/5 paquets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le schéma en barres (diagramme en bandes) résume bien la situation : deux grandes bandes de valeur $5$ (les paquets pleins) et une petite bande de valeur $3$ (le reste). La somme fait $13$. Chaque grande bande représente $1$ entier. La petite bande représente $\\frac{3}{5}$ d'un paquet. Tu as maintenant trois façons de représenter une fraction supérieure à $1$ : sur une droite, par des aires, par des collections. Choisis celle qui t'aide le mieux à comprendre le problème posé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître une fraction supérieure à 1 (numérateur > dénominateur).",
+                "Je sais transformer une fraction impropre en nombre mixte par division.",
+                "Je sais transformer un nombre mixte en fraction impropre (entier × dénominateur + numérateur).",
+                "Je sais placer une fraction > 1 sur une droite graduée.",
+                "Je sais représenter une fraction > 1 par des aires (rectangles, cercles) ou des collections."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Place la fraction $\\frac{14}{5}$ sur une droite graduée de $0$ à $3$. Entre quels entiers se trouve-t-elle ?",
+              "answer": "Entre $2$ et $3$",
+              "hint": "Combien de fois $5$ rentre-t-il dans $14$ ?",
+              "explanation": "$14 \\div 5 = 2$ reste $4$. Donc $\\frac{14}{5} = 2 \\frac{4}{5}$. Elle se place entre $2$ et $3$, à $4$ cinquièmes du chemin après $2$."
+            },
+            {
+              "question": "Dessine une représentation en rectangles de la fraction $\\frac{8}{3}$. Combien de rectangles pleins et combien de tiers dans le dernier ?",
+              "answer": "2 rectangles pleins et 2 tiers dans le troisième",
+              "hint": "Divise 8 par 3. Le quotient donne les rectangles pleins, le reste les tiers restants.",
+              "explanation": "$8 \\div 3 = 2$ reste $2$. Il faut $2$ rectangles entièrement coloriés (chacun divisé en $3$), et dans le troisième rectangle, on colore $2$ parts sur $3$. Cela fait $2 \\frac{2}{3}$."
+            },
+            {
+              "question": "Un sachet contient $6$ billes. Zoé a $\\frac{20}{6}$ sachet de billes. Combien de sachets pleins a-t-elle ? Combien de billes en plus ? Écris le nombre mixte.",
+              "answer": "3 sachets pleins et 2 billes, soit $3 \\frac{2}{6}$",
+              "hint": "Fais la division $20 \\div 6$.",
+              "explanation": "$20 \\div 6 = 3$ reste $2$. Zoé a $3$ sachets complets ($3 \\times 6 = 18$ billes) et $2$ billes en plus. Le nombre mixte est $3 \\frac{2}{6}$ (qu'on pourrait simplifier en $3 \\frac{1}{3}$ plus tard)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

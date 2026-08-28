@@ -1,0 +1,308 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.230946+00:00",
+  "id": 560,
+  "code": "1ere-generale-t04-c05",
+  "title": "Bilan - Variation linéaire",
+  "description": "Cours structuré Educalcul : Bilan - Variation linéaire.",
+  "subject": "Variation linéaire",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Variation linéaire",
+    "titre_du_cours": "Bilan - Variation linéaire",
+    "objectif_global": "Bilan - Variation linéaire",
+    "mini_lecons_imposees": [
+      "Fonctions et suites.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Variation linéaire",
+      "lessons": [
+        {
+          "title": "Fonctions et suites.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La variation linéaire : un même phénomène, deux regards"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu suis ton budget mensuel : chaque semaine, tu ajoutes exactement $20$ euros à ton épargne. Si tu traces l'évolution de ton épargne en fonction du temps, tu obtiens une droite. Si tu ne regardes que les soldes à la fin de chaque semaine, tu as une liste de nombres qui augmentent toujours de la même quantité. C'est là tout le sujet de cette leçon : la variation linéaire peut être décrite soit par une fonction continue, soit par une suite discrète. Nous allons voir comment passer de l'une à l'autre sans perdre le fil."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction linéaire",
+              "definition": "Une fonction $f$ définie sur $\\mathbb{R}$ (ou un intervalle) est linéaire s'il existe deux nombres réels $a$ et $b$ tels que pour tout $x$, $f(x)=ax+b$. Le nombre $a$ est le coefficient directeur (ou taux de variation), $b$ est l'ordonnée à l'origine.",
+              "example": "La fonction $f(x)=3x+5$ est linéaire avec $a=3$ et $b=5$."
+            },
+            {
+              "type": "graph",
+              "expression": "3*x+5",
+              "xmin": -2,
+              "xmax": 5,
+              "caption": "Représentation graphique de la fonction linéaire $f(x)=3x+5$. Le trait continu montre que la variation est définie pour tout réel."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur ce graphique, tu vois une droite qui monte régulièrement. Le coefficient directeur $a=3$ signifie que pour une augmentation de $1$ de l'abscisse, l'ordonnée augmente de $3$. C'est ce qu'on appelle un taux de variation constant. Dans notre exemple d'épargne, si $x$ représente le nombre de semaines et $f(x)$ le total épargné, alors $a=20$ et $b$ serait le montant initial. La droite prolonge le phénomène au-delà des semaines entières : elle te dit aussi ce qui se passerait après $2,5$ semaines."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La suite arithmétique : la version discrète"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons à notre épargne. Si tu ne notes le solde qu'à la fin de chaque semaine, tu obtiens une liste : $u_0$ (montant initial), $u_1=u_0+20$, $u_2=u_1+20$, etc. C'est une suite arithmétique. La particularité ? On ne connaît les valeurs qu'aux entiers naturels. Pourtant, la règle de construction est exactement la même : on ajoute toujours le même nombre, la raison."
+            },
+            {
+              "type": "definition",
+              "term": "Suite arithmétique",
+              "definition": "Une suite $(u_n)$ est arithmétique s'il existe un réel $r$ (la raison) tel que pour tout entier naturel $n$, $u_{n+1}=u_n+r$. On peut aussi l'écrire sous forme explicite : $u_n=u_0+nr$.",
+              "example": "La suite définie par $u_0=50$ et $u_{n+1}=u_n+20$ est arithmétique de raison $20$. Son terme général est $u_n=50+20n$."
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "x+20",
+              "u0": 50,
+              "iterations": 6,
+              "xMin": 0,
+              "xMax": 150,
+              "caption": "Visualisation de la suite arithmétique $u_{n+1}=u_n+20$ avec $u_0=50$. L'escalier montre les sauts discrets de $20$ en $20$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'escalier : chaque marche a la même hauteur $r=20$. Contrairement à la droite continue, la suite ne donne des valeurs qu'aux points $n=0,1,2,\\dots$. C'est parfait pour modéliser des phénomènes qui se comptent par étapes (semaines, mois, nombre d'objets). Mais attention : la suite ne te dit rien sur ce qui se passe entre deux semaines. Si tu as besoin d'une valeur intermédiaire, c'est la fonction linéaire qu'il faut utiliser."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le pont entre les deux mondes"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est ici que la magie opère. Une fonction linéaire $f(x)=ax+b$ définit naturellement une suite arithmétique en la restreignant aux entiers : $u_n=f(n)=an+b$. Réciproquement, toute suite arithmétique $u_n=u_0+nr$ prolonge une fonction linéaire $f(x)=rx+u_0$. Le coefficient directeur $a$ de la fonction est exactement la raison $r$ de la suite. L'ordonnée à l'origine $b$ correspond au premier terme $u_0$."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=ax+b \\quad\\Longleftrightarrow\\quad u_n=an+b \\text{ avec } r=a,\\; u_0=b"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette correspondance est un outil puissant. Quand un problème parle d'une évolution régulière, tu as le choix de l'outil : si on te demande une valeur à un instant non entier (ex: après $3,2$ heures), utilise la fonction. Si on ne s'intéresse qu'aux étapes discrètes (ex: nombre de marches gravies), la suite est plus naturelle. Dans les deux cas, le taux de variation constant est le même nombre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le type de variation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère si la grandeur change de manière continue (temps, distance) ou par étapes (nombre d'objets, semaines)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le modèle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Continue → fonction linéaire $f(x)=ax+b$. Discrète → suite arithmétique $u_n=u_0+nr$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le taux de variation (ou raison) $a=r$ se calcule souvent par $\\frac{\\text{variation de } y}{\\text{variation de } x}$. La valeur initiale donne $b$ ou $u_0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Répondre à la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la formule explicite pour calculer la valeur cherchée, ou résous l'équation si on cherche l'indice ou l'abscisse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode en quatre étapes te servira de fil conducteur pour tous les exercices de modélisation. Elle évite de confondre les notations et te rappelle que derrière les symboles, il y a toujours la même idée : une augmentation (ou diminution) constante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une entreprise de location de vélos facture un forfait de $15$ euros plus $8$ euros par heure de location. On note $x$ le nombre d'heures (réel positif) et $f(x)$ le prix total en euros. Écrire l'expression de $f(x)$. Le prix est-il proportionnel au temps ? Justifier.",
+              "answer": "$f(x)=8x+15$. Non, car $f(0)=15\\neq0$ : la droite ne passe pas par l'origine.",
+              "hint": "Identifie le forfait (ordonnée à l'origine) et le tarif horaire (coefficient directeur). La proportionnalité exige $b=0$.",
+              "explanation": "Le forfait de $15$ euros correspond à $b=15$. Le tarif horaire de $8$ euros correspond à $a=8$. Donc $f(x)=8x+15$. Comme $b\\neq0$, ce n'est pas une proportionnalité."
+            },
+            {
+              "question": "Un épargnant place $200$ euros sur un livret. Chaque mois, il ajoute $50$ euros. On note $u_n$ la somme sur le livret après $n$ mois ($n$ entier naturel). Préciser $u_0$ et la raison $r$. Donner la formule explicite de $u_n$. Combien y a-t-il après $12$ mois ?",
+              "answer": "$u_0=200$, $r=50$. $u_n=200+50n$. Après $12$ mois : $u_{12}=200+50\\times12=800$ euros.",
+              "hint": "Le montant initial est $u_0$. La raison est ce qui s'ajoute chaque mois. Remplace $n$ par $12$ dans la formule explicite.",
+              "explanation": "Au début ($n=0$), il y a $200$ euros donc $u_0=200$. Chaque mois on ajoute $50$, donc $r=50$. La forme explicite est $u_n=u_0+nr=200+50n$. Pour $n=12$, $u_{12}=200+600=800$."
+            },
+            {
+              "question": "Une bactérie se divise en deux toutes les $20$ minutes. On note $v_n$ le nombre de bactéries après $n$ périodes de $20$ minutes, avec $v_0=1$. Cette suite est-elle arithmétique ? Justifier. Si on veut modéliser le nombre de bactéries en fonction du temps continu $t$ (en minutes), quelle fonction utiliser ?",
+              "answer": "Non, ce n'est pas une suite arithmétique car $v_{n+1}=2v_n$ (raison multiplicative). Pour le temps continu, on utilise une fonction exponentielle $f(t)=2^{t/20}$, pas une fonction linéaire.",
+              "hint": "Regarde comment passe-t-on de $v_n$ à $v_{n+1}$ : addition ou multiplication ? Une variation linéaire suppose une addition constante.",
+              "explanation": "La division en deux signifie que le nombre double : $v_{n+1}=2v_n$. C'est une suite géométrique, pas arithmétique (la variation n'est pas additive constante). Pour un temps continu, le modèle est exponentiel : $f(t)=2^{t/20}$. La variation linéaire ne s'applique pas ici."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître la variation linéaire sous toutes ses coutures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux lunettes pour observer une même réalité : la fonction linéaire pour le continu, la suite arithmétique pour le discret. Mais dans un énoncé, l'information ne se présente pas toujours sous la forme d'une formule toute faite. Parfois, c'est un tableau de valeurs, parfois un graphique, parfois une phrase du type « chaque jour, la quantité augmente de $5$ ». Ton premier réflexe doit être de détecter la constance du taux de variation. Si tu divises la variation de la grandeur par la variation du temps (ou de l'indice) et que tu tombes toujours sur le même nombre, c'est gagné : tu es en présence d'une variation linéaire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$ (heures)",
+                "$y$ (km)"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "10"
+                ],
+                [
+                  "1",
+                  "16"
+                ],
+                [
+                  "2",
+                  "22"
+                ],
+                [
+                  "3",
+                  "28"
+                ]
+              ],
+              "caption": "Tableau de valeurs : la différence successive des $y$ est constante ($+6$), donc variation linéaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : à chaque heure de plus, la distance augmente de $6$ km. Le taux de variation est $6$ km/h. Tu peux donc écrire la fonction $f(x)=6x+10$ ou la suite $u_n=10+6n$ selon que tu as besoin d'une valeur à $1,5$ h ou seulement aux heures entières. Cette lecture en « differences successives » est ton outil numéro un pour repérer la linéarité sans faire de graphique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer le taux de variation et basculer d'un modèle à l'autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la variation linéaire identifiée, il faut extraire les deux nombres qui la définissent entièrement : le taux de variation (coefficient directeur $a$ ou raison $r$) et la valeur initiale ($b$ ou $u_0$). Le calcul du taux se fait toujours par un quotient de différences : $\\frac{y_2-y_1}{x_2-x_1}$ pour une fonction, $\\frac{u_{n+1}-u_n}{1}=u_{n+1}-u_n$ pour une suite. C'est le même calcul, juste écrit différemment. Ensuite, tu choisis ton modèle en fonction de la question : temps continu → fonction ; étapes discrètes → suite."
+            },
+            {
+              "type": "display_math",
+              "latex": "a = \\frac{f(x_2)-f(x_1)}{x_2-x_1} \\quad\\text{et}\\quad r = u_{n+1}-u_n"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : une voiture parcourt $130$ km en $1$ h, puis $260$ km en $2$ h. Le taux est $\\frac{260-130}{2-1}=130$ km/h. Si on sait qu'au départ (à $t=0$) elle avait déjà fait $20$ km, la fonction est $f(t)=130t+20$. Si on ne s'intéresse qu'aux heures pleines, la suite des kilométrages est $u_n=20+130n$. Remarque que $a=r=130$ : le nombre est identique, seul le domaine d'application change."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser et résoudre un problème complet"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les problèmes d'examen ou de la vie courante mélangent souvent les deux points de vue. Un énoncé peut te donner des données discrètes (relevés hebdomadaires) et te demander une prévision à une date non entière. Ou l'inverse : une loi continue (vitesse constante) et une question sur le nombre d'étapes franchies. La méthode en quatre étapes que nous avons vue en leçon précédente reste ta meilleure alliée. Relis-la, imprègne-toi de son rythme, et tu verras que la résolution devient presque mécanique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons : un réservoir contient $500$ litres. Une fuite fait perdre $12$ litres par heure. On veut savoir combien il reste après $3,5$ heures, et après combien d'heures entières il sera vide. Pour la première question, temps continu → fonction $V(t)=500-12t$. $V(3,5)=500-42=458$ litres. Pour la seconde, on cherche un entier $n$ tel que $V(n)\\le0$ → suite $u_n=500-12n$. On résout $500-12n\\le0$ → $n\\ge41,66$ → $n=42$ heures entières. Tu vois comme le même nombre $-12$ sert de coefficient directeur et de raison, mais l'interprétation du résultat diffère."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier une variation linéaire à partir d'un tableau, d'un graphique ou d'un énoncé.",
+                "Je sais calculer le taux de variation (coefficient directeur ou raison) par un quotient de différences.",
+                "Je sais écrire l'expression d'une fonction linéaire $f(x)=ax+b$ ou le terme général d'une suite arithmétique $u_n=u_0+nr$.",
+                "Je sais choisir le modèle adapté : fonction pour une variable continue, suite pour un indice entier.",
+                "Je sais passer de la fonction à la suite (restriction aux entiers) et de la suite à la fonction (prolongement).",
+                "Je sais résoudre une équation du type $ax+b=c$ pour trouver un antécédent ou un rang.",
+                "Je sais interpréter le coefficient directeur / la raison comme une vitesse, un tarif horaire, un débit, etc.",
+                "Je sais vérifier qu'une situation n'est pas linéaire (variation non constante, suite géométrique, etc.)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne le tableau ci-dessous. La variation est-elle linéaire ? Si oui, donner le taux de variation et l'expression de la fonction linéaire $f$ qui y correspond.\\n$x$ : $0$ ; $2$ ; $5$ ; $7$\\n$y$ : $4$ ; $10$ ; $19$ ; $25$",
+              "answer": "Oui, variation linéaire. Taux $a=3$. Fonction : $f(x)=3x+4$.",
+              "hint": "Calcule $\\frac{y_2-y_1}{x_2-x_1}$ pour plusieurs paires de points. Si le résultat est constant, c'est linéaire. Ensuite, $b=y$ quand $x=0$.",
+              "explanation": "Les différences : $(10-4)/(2-0)=3$, $(19-10)/(5-2)=3$, $(25-19)/(7-5)=3$. Taux constant $a=3$. Pour $x=0$, $y=4$ donc $b=4$. Fonction $f(x)=3x+4$."
+            },
+            {
+              "question": "Une suite arithmétique $(u_n)$ vérifie $u_3=14$ et $u_7=30$. Déterminer la raison $r$ et le premier terme $u_0$. Écrire $u_n$ en fonction de $n$.",
+              "answer": "$r=4$, $u_0=2$, $u_n=2+4n$.",
+              "hint": "Utilise la formule explicite $u_n=u_0+nr$. Tu as deux équations avec deux inconnues ($u_0$ et $r$). Soustrais-les pour éliminer $u_0$.",
+              "explanation": "$u_3=u_0+3r=14$ et $u_7=u_0+7r=30$. En soustrayant : $4r=16$ donc $r=4$. Ensuite $u_0=14-3\\times4=2$. Donc $u_n=2+4n$."
+            },
+            {
+              "question": "Un abonnement à une salle de sport coûte $30$ euros par mois plus une inscription de $50$ euros. On note $C(m)$ le coût total après $m$ mois ($m$ réel positif). \\n1. Écrire $C(m)$. \\n2. Un adhérent a payé $290$ euros au total. Depuis combien de mois est-il inscrit ? \\n3. Si on ne compte que les mois entiers, quelle suite arithmétique décrit le coût ?",
+              "answer": "1. $C(m)=30m+50$. 2. $8$ mois. 3. $u_n=50+30n$ ($n$ entier naturel).",
+              "hint": "1. Identifie le fixe ($b$) et le variable ($a$). 2. Résous $30m+50=290$. 3. Restreins la fonction aux entiers : $u_n=C(n)$.",
+              "explanation": "1. Inscription $50$ → $b=50$. Mensualité $30$ → $a=30$. Donc $C(m)=30m+50$. 2. $30m+50=290 \\Rightarrow 30m=240 \\Rightarrow m=8$. 3. Pour les mois entiers, on pose $n=m\\in\\mathbb{N}$ : $u_n=30n+50$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

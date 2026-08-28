@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 245,
+  "_course_code": "cm1-t05-c05-aire-par-pavage",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Unité d'aire",
+  "title": "Quiz : L'unité d'aire au CM1",
+  "questions": [
+    {
+      "text": "Quelle est l'unité de mesure d'aire la plus adaptée pour mesurer la surface d'une feuille de papier A4 ?",
+      "options": [
+        "Le mètre carré ($m^2$)",
+        "Le centimètre carré ($cm^2$)",
+        "Le kilomètre carré ($km^2$)",
+        "Le mètre ($m$)"
+      ],
+      "correctAnswer": "Le centimètre carré ($cm^2$)",
+      "explanation": "Une feuille A4 a des dimensions d'environ 21 cm sur 29,7 cm. Son aire est d'environ 623 $cm^2$. Le $m^2$ est trop grand (1 $m^2$ = 10 000 $cm^2$), le $km^2$ est immense, et le mètre ($m$) est une unité de longueur, pas d'aire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On pave un rectangle avec des carrés de 1 cm de côté. Si on compte 24 carrés, quelle est l'aire de ce rectangle ?",
+      "options": [
+        "24 cm",
+        "24 $cm^2$",
+        "24 $m^2$",
+        "12 $cm^2$"
+      ],
+      "correctAnswer": "24 $cm^2$",
+      "explanation": "Chaque carré utilisé pour paver a une aire de 1 $cm^2$ (côté 1 cm). En en comptant 24, l'aire totale est de 24 fois 1 $cm^2$, soit 24 $cm^2$. L'option '24 cm' confond longueur et aire. '12 $cm^2$' serait une erreur de comptage.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 6,
+        "highlighted": 24,
+        "caption": "Rectangle pavé de 24 carrés unitaires (1 cm x 1 cm)"
+      }
+    },
+    {
+      "text": "Combien de centimètres carrés ($cm^2$) y a-t-il dans 1 décimètre carré ($dm^2$) ?",
+      "options": [
+        "10 $cm^2$",
+        "100 $cm^2$",
+        "1 000 $cm^2$",
+        "10 000 $cm^2$"
+      ],
+      "correctAnswer": "100 $cm^2$",
+      "explanation": "1 décimètre (dm) = 10 centimètres (cm). Un carré de 1 $dm^2$ a un côté de 1 dm, soit 10 cm. Son aire est donc 10 cm $\\times$ 10 cm = 100 $cm^2$. L'erreur '10 $cm^2$' vient d'une confusion avec la conversion de longueur (1 dm = 10 cm) sans élever au carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La surface d'une salle de classe est d'environ 50... Quelle unité convient ?",
+      "options": [
+        "$m^2$",
+        "$cm^2$",
+        "$km^2$",
+        "$dm^2$"
+      ],
+      "correctAnswer": "$m^2$",
+      "explanation": "Une salle de classe typique mesure environ 8 m sur 6 m, soit 48 $m^2$. 50 $cm^2$ est minuscule (taille d'une carte postale). 50 $km^2$ est immense (taille d'une ville). 50 $dm^2$ correspond à 0,5 $m^2$, encore trop petit pour une pièce.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a un côté de 5 cm. On veut exprimer son aire en $mm^2$. Quelle est la bonne valeur ?",
+      "options": [
+        "25 $mm^2$",
+        "250 $mm^2$",
+        "2 500 $mm^2$",
+        "25 000 $mm^2$"
+      ],
+      "correctAnswer": "2 500 $mm^2$",
+      "explanation": "L'aire du carré est 5 cm $\\times$ 5 cm = 25 $cm^2$. Puisque 1 cm = 10 mm, 1 $cm^2$ = 10 mm $\\times$ 10 mm = 100 $mm^2$. Donc 25 $cm^2$ = 25 $\\times$ 100 $mm^2$ = 2 500 $mm^2$. L'option 250 $mm^2$ oublie de multiplier par 10 deux fois (une par dimension).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

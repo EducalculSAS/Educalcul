@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 253,
+  "_course_code": "cm1-t06-c06-symetrie-axiale",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Vérifier",
+  "title": "Symétrie axiale : Vérifier",
+  "questions": [
+    {
+      "text": "Comment peut-on vérifier concrètement si une droite tracée sur une figure en papier est un axe de symétrie pour cette figure ?",
+      "options": [
+        "En mesurant tous les angles de la figure avec un rapporteur.",
+        "En pliant la feuille le long de la droite pour voir si les deux parties se superposent parfaitement.",
+        "En traçant des droites parallèles à la droite donnée.",
+        "En coloriant les deux moitiés de la figure avec des couleurs différentes."
+      ],
+      "correctAnswer": "En pliant la feuille le long de la droite pour voir si les deux parties se superposent parfaitement.",
+      "explanation": "La méthode du pliage est la définition même de la symétrie axiale en géométrie pratique au cycle 3. Si les deux parties de la figure se superposent exactement lorsque l'on plie le long de la droite, alors cette droite est un axe de symétrie. Les autres options ne permettent pas de vérifier la superposition des points symétriques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a un point $A$ et son image $A'$ par symétrie axiale par rapport à une droite $d$. Quelle propriété géométrique permet de vérifier rigoureusement que $A'$ est bien le symétrique de $A$ ?",
+      "options": [
+        "La droite $d$ passe par le milieu de $[AA']$ et est parallèle à $[AA']$.",
+        "La droite $d$ passe par le milieu de $[AA']$ et est perpendiculaire à $[AA']$.",
+        "Les points $A$ et $A'$ sont à la même distance de l'origine du repère.",
+        "Le segment $[AA']$ est horizontal."
+      ],
+      "correctAnswer": "La droite $d$ passe par le milieu de $[AA']$ et est perpendiculaire à $[AA']$.",
+      "explanation": "Par définition, l'axe de symétrie est la médiatrice du segment qui joint un point à son symétrique. Cela implique deux conditions indispensables : l'axe passe par le milieu du segment (équidistance) et il est perpendiculaire à ce segment. L'option A confond perpendiculaire et parallèle, ce qui est une erreur fréquente. Les options C et D ne sont pas des propriétés générales de la symétrie axiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier qu'un quadrilatère $ABCD$ est symétrique par rapport à une droite $d$, quelle démarche est la plus correcte ?",
+      "options": [
+        "Vérifier que les sommets $A$ et $C$ sont symétriques et que $B$ et $D$ sont symétriques par rapport à $d$.",
+        "Vérifier seulement que les sommets $A$ et $B$ sont symétriques par rapport à $d$.",
+        "Mesurer la longueur des quatre côtés du quadrilatère.",
+        "Vérifier que la droite $d$ passe par le centre du quadrilatère."
+      ],
+      "correctAnswer": "Vérifier que les sommets $A$ et $C$ sont symétriques et que $B$ et $D$ sont symétriques par rapport à $d$.",
+      "explanation": "Une figure est symétrique par rapport à une droite si et seulement si chaque point de la figure a son symétrique dans la figure. Pour un polygone, il suffit de vérifier que chaque sommet a son symétrique parmi les autres sommets. Vérifier seulement deux sommets (option B) ne garantit pas la symétrie de l'ensemble. Mesurer les côtés (option C) ne prouve pas la symétrie axiale (un losange a quatre côtés égaux mais n'a pas forcément d'axe de symétrie selon une droite donnée). Le centre (option D) concerne la symétrie centrale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quels instruments de géométrie sont indispensables pour vérifier, sur une figure tracée, qu'une droite $d$ est bien la médiatrice d'un segment $[AA']$ (donc l'axe de symétrie de $A$ et $A'$) ?",
+      "options": [
+        "Le compas seulement.",
+        "La règle graduée seulement.",
+        "L'équerre et la règle graduée.",
+        "Le rapporteur seulement."
+      ],
+      "correctAnswer": "L'équerre et la règle graduée.",
+      "explanation": "Pour vérifier qu'une droite est la médiatrice d'un segment, il faut contrôler deux choses : 1) qu'elle passe par le milieu du segment (mesure des demi-segments avec la règle graduée) et 2) qu'elle est perpendiculaire au segment (vérification de l'angle droit avec l'équerre). Le compas sert à construire, pas à vérifier une figure déjà tracée. La règle seule ne vérifie pas la perpendicularité. Le rapporteur vérifie l'angle mais pas le milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a tracé le point $B'$ symétrique du point $B$ par rapport à la droite $d$. Elle a vérifié que $B$ et $B'$ sont à la même distance de la droite $d$. Elle pense avoir fini. Quelle vérification essentielle a-t-elle oubliée ?",
+      "options": [
+        "Vérifier que $B$ et $B'$ sont de part et d'autre de la droite $d$.",
+        "Vérifier que la droite $(BB')$ est perpendiculaire à $d$.",
+        "Vérifier que $B'$ est plus loin de $d$ que $B$.",
+        "Vérifier que la droite $d$ est horizontale."
+      ],
+      "correctAnswer": "Vérifier que la droite $(BB')$ est perpendiculaire à $d$.",
+      "explanation": "La condition d'équidistance (même distance à la droite) est nécessaire mais pas suffisante. Tous les points d'une droite parallèle à $d$ sont à la même distance de $d$. Pour que $B'$ soit le symétrique de $B$, le segment $[BB']$ doit être coupé par $d$ à son milieu ET être perpendiculaire à $d$. L'option A est une conséquence de la symétrie mais ne suffit pas à la définir seule (deux points de part et d'autre peuvent ne pas être symétriques). L'option C est fausse (distances égales). L'option D est sans rapport avec la définition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

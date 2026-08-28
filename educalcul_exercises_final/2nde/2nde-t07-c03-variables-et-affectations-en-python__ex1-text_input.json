@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Lire",
+  "title": "Lecture de données en Python",
+  "blocks": [
+    {
+      "title": "Fonction de lecture",
+      "content": "Quelle fonction Python permet de lire une ligne de texte entrée au clavier ?",
+      "correctAnswer": "input()",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction input() attend que l'utilisateur tape du texte et appuie sur Entrée, puis renvoie la chaîne de caractères saisie (sans le saut de ligne final).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion en entier",
+      "content": "Si l'utilisateur tape 42, que renvoie l'expression int(input()) ?",
+      "correctAnswer": "42",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "input() renvoie la chaîne \"42\". La fonction int() convertit cette chaîne en l'entier 42.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture de plusieurs entiers",
+      "content": "Quelle instruction lit une ligne, la sépare en morceaux et convertit chaque morceau en entier pour obtenir une liste nommée valeurs ?",
+      "correctAnswer": "valeurs = list(map(int, input().split()))",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "input().split() découpe la ligne en une liste de chaînes. map(int, ...) applique int à chaque chaîne. list(...) transforme le résultat en liste d'entiers.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

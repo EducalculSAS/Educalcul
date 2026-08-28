@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Somme de vecteurs",
+  "title": "Applications de la somme de vecteurs",
+  "questions": [
+    {
+      "text": "Soient les vecteurs $\\vec{u} = (2, 3)$ et $\\vec{v} = (-1, 4)$. Quelle est la somme $\\vec{u} + \\vec{v}$ ?",
+      "options": [
+        "$(1, 7)$",
+        "$(3, -1)$",
+        "$(1, -1)$",
+        "$(3, 7)$"
+      ],
+      "correctAnswer": "$(1, 7)$",
+      "explanation": "On additionne les composantes correspondantes : $2 + (-1) = 1$ pour la première composante et $3 + 4 = 7$ pour la seconde. La somme est donc $(1, 7)$. Les autres options correspondent à des erreurs de signe ou d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, on considère les vecteurs $\\vec{AB}$ et $\\vec{BC}$. Quelle est la somme $\\vec{AB} + \\vec{BC}$ ?",
+      "options": [
+        "$\\vec{AC}$",
+        "$\\vec{CA}$",
+        "$\\vec{0}$",
+        "$\\vec{AB}$"
+      ],
+      "correctAnswer": "$\\vec{AC}$",
+      "explanation": "D'après la relation de Chasles, $\\vec{AB} + \\vec{BC} = \\vec{AC}$. Le vecteur $\\vec{CA}$ est l'opposé, le vecteur nul correspondrait à un parcours fermé, et $\\vec{AB}$ ignore le second vecteur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $\\vec{AB} = (2, 1)$, $\\vec{BC} = (-3, 4)$ et $\\vec{CD} = (1, -2)$. En utilisant la relation de Chasles, déterminez $\\vec{AD}$.",
+      "options": [
+        "$(0, 3)$",
+        "$(0, 5)$",
+        "$(1, 3)$",
+        "$(-1, 3)$"
+      ],
+      "correctAnswer": "$(0, 3)$",
+      "explanation": "La relation de Chasles donne $\\vec{AD} = \\vec{AB} + \\vec{BC} + \\vec{CD}$. En additionnant les composantes : $2 + (-3) + 1 = 0$ et $1 + 4 + (-2) = 3$. Donc $\\vec{AD} = (0, 3)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un bateau a une vitesse propre $\\vec{v_1} = (5, 2)$ km/h par rapport à l'eau. Le courant a une vitesse $\\vec{v_2} = (-1, 3)$ km/h. Quelle est la vitesse résultante du bateau par rapport au sol ?",
+      "options": [
+        "$(4, 5)$",
+        "$(6, 5)$",
+        "$(4, -1)$",
+        "$(6, -1)$"
+      ],
+      "correctAnswer": "$(4, 5)$",
+      "explanation": "La vitesse résultante est la somme vectorielle $\\vec{v_1} + \\vec{v_2} = (5 + (-1), 2 + 3) = (4, 5)$. Les autres options proviennent d'additions incorrectes des composantes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un parallélogramme $ABCD$, on sait que $\\vec{AB} = (3, -2)$ et $\\vec{AD} = (-1, 4)$. Quel est le vecteur diagonal $\\vec{AC}$ ?",
+      "options": [
+        "$(2, 2)$",
+        "$(4, 2)$",
+        "$(2, -6)$",
+        "$(4, -6)$"
+      ],
+      "correctAnswer": "$(2, 2)$",
+      "explanation": "Le diagonal $\\vec{AC}$ est la somme des deux côtés adjacents : $\\vec{AC} = \\vec{AB} + \\vec{AD} = (3 + (-1), -2 + 4) = (2, 2)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

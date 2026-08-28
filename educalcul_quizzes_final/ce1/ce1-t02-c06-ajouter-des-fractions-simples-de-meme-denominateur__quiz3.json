@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_course_id": 84,
+  "_course_code": "ce1-t02-c06-ajouter-des-fractions-simples-de-meme-denominateur",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Vérifier par dessin",
+  "title": "Quiz : Verifier l'addition de fractions par le dessin",
+  "questions": [
+    {
+      "text": "Regarde les deux bandes de fractions. Quelle addition permettent-elles de verifier ?",
+      "options": [
+        "$1/4 + 1/4 = 2/4$",
+        "$1/4 + 2/4 = 3/4$",
+        "$2/4 + 1/4 = 3/4$",
+        "$1/4 + 1/4 = 1/4$"
+      ],
+      "correctAnswer": "$1/4 + 1/4 = 2/4$",
+      "explanation": "La premiere bande montre une partie sur quatre coloriée, c'est $1/4$. La deuxieme bande montre aussi une partie sur quatre coloriée, c'est encore $1/4$. En les mettant bout a bout, on obtient deux parties sur quatre coloriées, soit $2/4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Deux bandes representant 1/4 chacune"
+      }
+    },
+    {
+      "text": "Ce cercle representent le resultat d'une addition de fractions de meme denominateur. Quelle est cette addition ?",
+      "options": [
+        "$1/3 + 1/3$",
+        "$2/3 + 1/3$",
+        "$1/3 + 2/3$",
+        "$2/3 + 2/3$"
+      ],
+      "correctAnswer": "$1/3 + 1/3$",
+      "explanation": "Le cercle est divise en trois parties egales (denominateur 3). Deux parties sont colorees (numerateur 2). Cela correspond a l'addition d'un tiers plus un tiers, ce qui fait deux tiers.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 3,
+        "shape": "circle",
+        "caption": "Cercle represente 2/3"
+      }
+    },
+    {
+      "text": "Pour verifier le calcul $1/2 + 1/2$ par un dessin, que dois-tu faire ?",
+      "options": [
+        "Je divise une forme en deux parties egales et je colorie les deux parties.",
+        "Je divise une forme en deux parties egales et je colorie une partie.",
+        "Je divise une forme en quatre parties egales et je colorie deux parties.",
+        "Je divise une forme en trois parties egales et je colorie deux parties."
+      ],
+      "correctAnswer": "Je divise une forme en deux parties egales et je colorie les deux parties.",
+      "explanation": "L'addition $1/2 + 1/2$ signifie qu'on met ensemble deux moities. Le denominateur reste 2, donc on divise en deux parties. Le numerateur devient $1+1=2$, donc on colorie les deux parties pour obtenir le tout.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le dessin montre deux barres de meme longueur. La premiere a $1/4$ de coloree, la seconde a $2/4$ de coloree. Quelle est l'addition et son resultat ?",
+      "options": [
+        "$1/4 + 2/4 = 3/4$",
+        "$1/4 + 2/4 = 3/8$",
+        "$1/4 + 1/4 = 2/4$",
+        "$2/4 + 2/4 = 4/4$"
+      ],
+      "correctAnswer": "$1/4 + 2/4 = 3/4$",
+      "explanation": "On additionne les numerateurs : $1 + 2 = 3$. Le denominateur ne change pas, il reste 4. Le resultat est donc $3/4$, ce que montre bien la barre superieure si on la complete.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 4
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Barres 1/4 et 2/4"
+      }
+    },
+    {
+      "text": "Leo calcule $1/4 + 2/4$. Il dessine un rectangle divise en quatre parties egales et en colorie trois. Son dessin est-il correct pour verifier ?",
+      "options": [
+        "Oui, car $1 + 2 = 3$ parties sur quatre sont colorees.",
+        "Non, il a colore trop de parties.",
+        "Non, le denominateur devient huit quand on additionne.",
+        "Non, il aurait du faire deux rectangles separes."
+      ],
+      "correctAnswer": "Oui, car $1 + 2 = 3$ parties sur quatre sont colorees.",
+      "explanation": "Pour verifier une addition de meme denominateur, on garde le meme denominateur (4 parties) et on additionne les numerateurs ($1+2=3$). Le dessin de Leo montre exactement trois parties sur quatre colorees, ce qui correspond au resultat $3/4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Rectangle 3/4 colore"
+      }
+    }
+  ]
+}

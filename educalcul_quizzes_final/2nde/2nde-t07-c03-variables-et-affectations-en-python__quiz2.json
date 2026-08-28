@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 536,
+  "_course_code": "2nde-t07-c03-variables-et-affectations-en-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Écrire",
+  "title": "Quiz Python : Écrire des instructions",
+  "questions": [
+    {
+      "text": "Quelle instruction assigne correctement la valeur 7 à la variable x ?",
+      "options": [
+        "x = 7",
+        "7 = x",
+        "x == 7",
+        "assign x 7"
+      ],
+      "correctAnswer": "x = 7",
+      "explanation": "En Python, l'affectation s'écrit variable = valeur. L'opérateur == teste l'égalité, et 7 = x est une syntaxe invalide car la cible doit être une variable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel code affiche la valeur stockée dans la variable a ?",
+      "options": [
+        "print(a)",
+        "print \"a\"",
+        "echo a",
+        "write a"
+      ],
+      "correctAnswer": "print(a)",
+      "explanation": "La fonction print() affiche la valeur de l'expression passée en argument. print \"a\" affiche la chaîne littérale \"a\", echo et write n'existent pas en Python.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction affecte à la variable s la somme des variables x et y ?",
+      "options": [
+        "s = x + y",
+        "s = x - y",
+        "s = x * y",
+        "s = x / y"
+      ],
+      "correctAnswer": "s = x + y",
+      "explanation": "L'opérateur + réalise l'addition. Les autres options effectuent respectivement une soustraction, une multiplication et une division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces lignes est un commentaire en Python ?",
+      "options": [
+        "# Ceci est un commentaire",
+        "// Ceci est un commentaire",
+        "/* Ceci est un commentaire */",
+        "-- Ceci est un commentaire"
+      ],
+      "correctAnswer": "# Ceci est un commentaire",
+      "explanation": "En Python, tout texte après le symbole # sur une ligne est ignoré par l'interpréteur. Les autres syntaxes proviennent d'autres langages (C, Java, SQL).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel code échange correctement les valeurs des variables a et b ?",
+      "options": [
+        "a, b = b, a",
+        "a = b; b = a",
+        "swap(a, b)",
+        "a = b, b = a"
+      ],
+      "correctAnswer": "a, b = b, a",
+      "explanation": "Le déballage de tuple permet l'échange simultané sans variable temporaire. La seconde option écrase a avant d'affecter b, la troisième n'existe pas en standard, la quatrième est une syntaxe invalide.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

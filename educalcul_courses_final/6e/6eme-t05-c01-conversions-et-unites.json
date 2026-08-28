@@ -1,0 +1,658 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.591708+00:00",
+  "id": 352,
+  "code": "6eme-t05-c01",
+  "title": "Conversions et unités",
+  "description": "Cours structuré Educalcul : Conversions et unités.",
+  "subject": "Grandeurs et mesures",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Conversions et unités",
+    "objectif_global": "Conversions et unités",
+    "mini_lecons_imposees": [
+      "Longueur, masse, capacité.",
+      "Convertir.",
+      "Problèmes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Longueur, masse, capacité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les grandeurs de longueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier volet où nous allons découvrir ensemble les unités qui permettent de mesurer les longueurs. Tu as déjà croisé le mètre dans la vie de tous les jours, par exemple quand tu mesures ta taille ou la largeur d'une table. Le système métrique organise ces unités par puissances de dix : le kilomètre pour les grandes distances, l'hectomètre et le décamètre pour des mesures intermédiaires, puis le mètre, le décimètre, le centimètre et le millimètre pour les détails les plus fins. Chaque nom porte en lui l'indice de sa taille, ce qui rend la mémorisation plus naturelle."
+            },
+            {
+              "type": "definition",
+              "term": "mètre",
+              "definition": "Le mètre est l'unité de base pour mesurer une longueur. Il correspond à la distance que la lumière parcourt dans le vide en une fraction de seconde.",
+              "example": "La hauteur d'une porte standard est d'environ 2 m."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Équivalence en mètres"
+              ],
+              "rows": [
+                [
+                  "kilomètre",
+                  "km",
+                  "1000 m"
+                ],
+                [
+                  "hectomètre",
+                  "hm",
+                  "100 m"
+                ],
+                [
+                  "décamètre",
+                  "dam",
+                  "10 m"
+                ],
+                [
+                  "mètre",
+                  "m",
+                  "1 m"
+                ],
+                [
+                  "décimètre",
+                  "dm",
+                  "0,1 m"
+                ],
+                [
+                  "centimètre",
+                  "cm",
+                  "0,01 m"
+                ],
+                [
+                  "millimètre",
+                  "mm",
+                  "0,001 m"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les longueurs n'ont plus de secret pour toi, passons aux grandeurs qui nous permettent de peser les objets. Tu verras que la logique reste la même : une unité de base et des multiples ou sous-multiples qui suivent la même règle de dix."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les grandeurs de masse"
+            },
+            {
+              "type": "paragraph",
+              "content": "La masse se mesure avec le kilogramme comme référence. C'est l'unité que tu retrouves sur les emballages alimentaires, sur les balances de cuisine ou quand tu fais tes courses. Autour du kilogramme gravitent l'hectogramme, le décagramme, le gramme, le décigramme, le centigramme et le milligramme. Chaque nom te donne un indice sur sa grandeur : plus le préfixe est grand, plus l'unité est grande, et inversement."
+            },
+            {
+              "type": "definition",
+              "term": "kilogramme",
+              "definition": "Le kilogramme est l'unité de base pour mesurer une masse. C'est la masse d'un litre d'eau pure à 4 °C.",
+              "example": "Un sac de farine pèse souvent 1 kg."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Équivalence en kilogrammes"
+              ],
+              "rows": [
+                [
+                  "kilogramme",
+                  "kg",
+                  "1 kg"
+                ],
+                [
+                  "hectogramme",
+                  "hg",
+                  "0,1 kg"
+                ],
+                [
+                  "décagramme",
+                  "dag",
+                  "0,01 kg"
+                ],
+                [
+                  "gramme",
+                  "g",
+                  "0,001 kg"
+                ],
+                [
+                  "décigramme",
+                  "dg",
+                  "0,0001 kg"
+                ],
+                [
+                  "centigramme",
+                  "cg",
+                  "0,00001 kg"
+                ],
+                [
+                  "milligramme",
+                  "mg",
+                  "0,000001 kg"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les longueurs et les masses, il nous reste à explorer les capacités, c'est-à-dire les volumes de liquides ou de substances que l'on peut verser. Tu vas voir que le litre joue le même rôle central que le mètre ou le kilogramme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les grandeurs de capacité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le litre est l'unité de référence pour la capacité. Il correspond au volume d'un cube de 10 cm de côté, ce qui le rend facile à visualiser. Autour du litre, on trouve le kilolitre, l'hectolitre, le décalitre, le décilitre, le centilitre et le millilitre. Chaque nom suit la même logique de puissances de dix, ce qui te permettra plus tard de passer de l'un à l'autre sans effort."
+            },
+            {
+              "type": "definition",
+              "term": "litre",
+              "definition": "Le litre est l'unité de base pour mesurer un volume liquide. Un litre correspond au volume d'un cube de 10 cm de côté.",
+              "example": "Une bouteille d'eau contient souvent 1 L."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Symbole",
+                "Équivalence en litres"
+              ],
+              "rows": [
+                [
+                  "kilolitre",
+                  "kL",
+                  "1000 L"
+                ],
+                [
+                  "hectolitre",
+                  "hL",
+                  "100 L"
+                ],
+                [
+                  "décalitre",
+                  "daL",
+                  "10 L"
+                ],
+                [
+                  "litre",
+                  "L",
+                  "1 L"
+                ],
+                [
+                  "décilitre",
+                  "dL",
+                  "0,1 L"
+                ],
+                [
+                  "centilitre",
+                  "cL",
+                  "0,01 L"
+                ],
+                [
+                  "millilitre",
+                  "mL",
+                  "0,001 L"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu connais maintenant les trois familles d'unités de base du système métrique. Garde ces tableaux en tête, ils seront tes meilleurs alliés pour la suite du cours."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle unité du système métrique utilises-tu pour mesurer la longueur d'une salle de classe ?",
+              "answer": "mètre",
+              "hint": "Pense à l'unité de base pour la longueur.",
+              "explanation": "Le mètre est l'unité de base pour la longueur dans le système métrique."
+            },
+            {
+              "question": "Quelle unité utilises-tu pour exprimer la masse d'un sac de farine de 1 kg ?",
+              "answer": "kilogramme",
+              "hint": "C'est l'unité de base pour la masse.",
+              "explanation": "Le kilogramme est l'unité de base de la masse."
+            },
+            {
+              "question": "Quelle unité permet de mesurer le volume d'une bouteille d'eau de 1 L ?",
+              "answer": "litre",
+              "hint": "Unité de base pour la capacité.",
+              "explanation": "Le litre est l'unité de base pour la capacité."
+            }
+          ]
+        },
+        {
+          "title": "Convertir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le principe de conversion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Convertir, c'est simplement changer d'unité sans changer la quantité. Dans le système métrique, tout repose sur les puissances de dix : pour passer d'une unité à une autre, il suffit de déplacer la virgule. Si tu vas vers une unité plus petite (par exemple de mètre en centimètre), tu décaleras la virgule vers la droite ; si tu vas vers une unité plus grande (de mètre en kilomètre), tu la décaleras vers la gauche. Cette régularité rend la conversion prévisible et rassurante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère l'unité de départ et l'unité d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le tableau des unités et note où se trouve ton unité de départ et celle où tu veux aller."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte le nombre de sauts entre les deux unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque colonne du tableau correspond à un saut d'une puissance de dix. Compte combien de colonnes séparent les deux unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Décale la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu vas vers une unité plus petite, décale la virgule vers la droite du nombre de sauts comptés. Si tu vas vers une unité plus grande, décale-la vers la gauche."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "1 km = 1000 m"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant la méthode en main pour les longueurs. Appliquons-la aux masses, où la même logique s'applique avec le kilogramme comme référence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir les masses"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les masses, le tableau est identique en structure : kilogramme, hectogramme, décagramme, gramme, décigramme, centigramme, milligramme. Le nombre de sauts entre deux unités te dit de combien de rangs déplacer la virgule. Par exemple, pour passer de 3 kg en grammes, tu comptes trois sauts vers la droite (kg → hg → dag → g) et tu écris 3000 g. La régularité te permet de gagner en confiance à chaque nouvel exercice."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie l'unité de départ et l'unité cible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note si tu pars du kilogramme, du gramme ou d'une autre unité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte les sauts sur le tableau des masses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque colonne représente un facteur 10. Compte les colonnes entre les deux unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déplace la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vers la droite pour aller vers le petit (kg → g), vers la gauche pour aller vers le grand (g → kg)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "1 kg = 1000 g"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les capacités suivent exactement le même schéma. Le litre est ton point de repère, et les préfixes te guident pour déplacer la virgule sans hésitation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convertir les capacités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le tableau des capacités aligne kilolitre, hectolitre, décalitre, litre, décilitre, centilitre, millilitre. Si tu dois transformer 0,5 L en millilitres, tu comptes trois sauts vers la droite (L → dL → cL → mL) et tu obtiens 500 mL. Cette symétrie entre les trois grandeurs te permet de réutiliser la même méthode, ce qui renforce ton automatisme."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis l'unité de départ et l'unité d'arrivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le litre, le millilitre ou le centilitre selon l'énoncé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compte les sauts sur le tableau des capacités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque colonne équivaut à multiplier ou diviser par 10."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Décale la virgule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vers la droite pour les unités plus petites, vers la gauche pour les plus grandes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "1 L = 1000 mL"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant convertir dans les trois domaines. La clé est de visualiser le tableau et de compter les sauts ; avec un peu d'entraînement, ce geste deviendra instinctif."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Convertis 2 km en mètres.",
+              "answer": "2000 m",
+              "hint": "Combien de sauts entre km et m sur le tableau ?",
+              "explanation": "Il y a trois sauts (km → hm → dam → m), donc on décale la virgule de trois rangs vers la droite : 2 → 2000."
+            },
+            {
+              "question": "Transforme 3 kg en grammes.",
+              "answer": "3000 g",
+              "hint": "Compte les sauts de kg jusqu'à g.",
+              "explanation": "Trois sauts vers la droite (kg → hg → dag → g) donnent 3000 g."
+            },
+            {
+              "question": "Exprime 0,5 L en millilitres.",
+              "answer": "500 mL",
+              "hint": "Combien de colonnes entre L et mL ?",
+              "explanation": "Trois sauts vers la droite (L → dL → cL → mL) transforment 0,5 en 500."
+            }
+          ]
+        },
+        {
+          "title": "Problèmes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème de longueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois acheter du ruban pour décorer une salle de fête. La salle mesure 12 m de long et tu veux faire le tour complet. Le ruban est vendu par rouleaux de 3 m. Combien de rouleaux dois-tu acheter ? Pour résoudre ce problème, commence par lire attentivement l'énoncé, identifie les données (longueur de la salle, longueur d'un rouleau), vérifie que les unités sont homogènes (ici tout est en mètres), puis effectue le calcul : 12 m ÷ 3 m = 4 rouleaux. La conversion n'est pas nécessaire ici, mais l'habitude de vérifier les unités t'évitera des erreurs plus tard."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lis et souligne les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les nombres et leurs unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifie l'homogénéité des unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce n'est pas le cas, convertis avant de calculer."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectue l'opération demandée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, une division pour trouver le nombre de rouleaux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Rédige la réponse en phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "N'oublie pas l'unité dans ta phrase finale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à un problème où la conversion sera indispensable. Tu verras que la méthode reste la même, seul un pas de conversion s'ajoute."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un problème de masse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu prépares une recette qui demande 2,5 kg de farine. Ton sac de farine indique 2500 g. Est-ce que tu as assez de farine ? D'abord, note que les unités diffèrent : kilogramme et gramme. Convertis 2,5 kg en grammes en déplaçant la virgule de trois rangs vers la droite (kg → hg → dag → g) : 2,5 kg = 2500 g. Les deux quantités sont égales, donc tu as exactement la quantité nécessaire. Ce genre de situation montre à quel point la conversion est utile au quotidien."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifie les grandeurs et leurs unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, kilogramme et gramme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertis pour avoir la même unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise le tableau des masses et décale la virgule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare ou calcule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici, une simple égalité suffit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclus par une phrase",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indique si la quantité est suffisante."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons avec un problème de capacité où tu devras convertir et additionner. Cela te permettra de réinvestir tout ce que tu as appris."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un problème de capacité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une fête, tu achètes 3 bouteilles de jus de 1,5 L chacune et 6 cannettes de 33 cL. Quelle quantité totale de jus as-tu en litres ? Commence par convertir les centilitres en litres : 33 cL = 0,33 L (deux sauts vers la gauche). Multiplie 0,33 L par 6 = 1,98 L. Ajoute le volume des bouteilles : 3 × 1,5 L = 4,5 L. Total = 4,5 L + 1,98 L = 6,48 L. Tu as maintenant le volume total en litres, prêt à être communiqué."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Liste les quantités avec leurs unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Bouteilles en litres, cannettes en centilitres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Convertis toutes les quantités dans la même unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis le litre comme unité commune."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Effectue les multiplications puis l'addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule chaque groupe puis additionne."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Donne le résultat final avec l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime la réponse en litres."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant traversé les trois piliers du cours : connaître les unités, savoir convertir et résoudre des problèmes concrets. Chaque étape t'a permis de renforcer tes repères et d'acquérir de l'autonomie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier l'unité adaptée à une grandeur.",
+                "Je sais convertir entre unités du même système.",
+                "Je sais résoudre un problème en plusieurs étapes avec des conversions."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une salle mesure 12 m de périmètre. Des rouleaux de ruban font 3 m chacun. Combien de rouleaux faut-il ?",
+              "answer": "4 rouleaux",
+              "hint": "Divise le périmètre par la longueur d'un rouleau.",
+              "explanation": "12 m ÷ 3 m = 4. Il faut 4 rouleaux."
+            },
+            {
+              "question": "Tu as 2,5 kg de farine. Le sac indique 2500 g. As-tu assez de farine ?",
+              "answer": "Oui, exactement la quantité nécessaire.",
+              "hint": "Convertis 2,5 kg en grammes.",
+              "explanation": "2,5 kg = 2500 g, donc les quantités sont égales."
+            },
+            {
+              "question": "3 bouteilles de 1,5 L et 6 cannettes de 33 cL. Quel volume total en litres ?",
+              "answer": "6,48 L",
+              "hint": "Convertis les centilitres en litres avant d'additionner.",
+              "explanation": "33 cL = 0,33 L. 6 × 0,33 L = 1,98 L. 3 × 1,5 L = 4,5 L. Total = 4,5 + 1,98 = 6,48 L."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

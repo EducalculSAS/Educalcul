@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Définition",
+  "title": "Approfondissement : Définition de la racine carrée",
+  "questions": [
+    {
+      "text": "Laquelle des affirmations suivantes donne la définition correcte de la racine carrée principale d'un nombre réel $a \\ge 0$ ?",
+      "options": [
+        "Le nombre $x$ tel que $x^2 = a$",
+        "Le nombre non négatif $x$ tel que $x^2 = a$",
+        "Le nombre positif $x$ tel que $x^2 = a$",
+        "Le nombre $x$ tel que $x = a^2$"
+      ],
+      "correctAnswer": "Le nombre non négatif $x$ tel que $x^2 = a$",
+      "explanation": "La racine carrée principale, notée $\\sqrt{a}$, est définie comme l'unique nombre réel non négatif dont le carré est $a$. L'option A admet aussi la solution négative, l'option C exclut le cas $a=0$, et l'option D confond racine et carré.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de $\\sqrt{9}$ ?",
+      "options": [
+        "3",
+        "-3",
+        "$\\pm 3$",
+        "9"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Par définition, $\\sqrt{9}$ désigne la racine carrée principale de $9$, c'est-à-dire le nombre non négatif dont le carré est $9$. Ce nombre est $3$. Les options $-3$ et $\\pm 3$ correspondent aux solutions de l'équation $x^2=9$, mais pas à la notation $\\sqrt{9}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour tout réel $a$, l'expression $\\sqrt{a^2}$ est égale à :",
+      "options": [
+        "$a$",
+        "$|a|$",
+        "$-a$",
+        "$a^2$"
+      ],
+      "correctAnswer": "$|a|$",
+      "explanation": "Puisque $\\sqrt{a^2}$ doit être non négatif, elle vaut la valeur absolue de $a$. Si $a \\ge 0$, $\\sqrt{a^2}=a$ ; si $a<0$, $\\sqrt{a^2}=-a$. Les autres options ne respectent pas la non‑négativité pour tout $a$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'expression $\\sqrt{x-4}$ est définie dans $\\mathbb{R}$ pour quelles valeurs de $x$ ?",
+      "options": [
+        "$x \\ge 4$",
+        "$x > 4$",
+        "$x \\le 4$",
+        "$x < 4$"
+      ],
+      "correctAnswer": "$x \\ge 4$",
+      "explanation": "Le radicande $x-4$ doit être supérieur ou égal à $0$ pour que la racine carrée soit un réel. Cela donne $x-4 \\ge 0$, donc $x \\ge 4$. Les autres intervalles ne garantissent pas un radicande non négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez $\\sqrt{50}$ sous la forme $k\\sqrt{m}$ avec $k,m$ entiers et $m$ sans facteur carré.",
+      "options": [
+        "$5\\sqrt{2}$",
+        "$25\\sqrt{2}$",
+        "$10\\sqrt{5}$",
+        "$5\\sqrt{5}$"
+      ],
+      "correctAnswer": "$5\\sqrt{2}$",
+      "explanation": "$50 = 25 \\times 2$, donc $\\sqrt{50} = \\sqrt{25 \\times 2} = \\sqrt{25}\\sqrt{2} = 5\\sqrt{2}$. Les autres propositions correspondent à des décompositions erronées (par exemple $25\\sqrt{2}$ aurait un facteur $25$ hors racine, $10\\sqrt{5}$ donnerait $100\\times5=500$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

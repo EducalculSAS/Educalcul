@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Approfondissement : Faces, arêtes, sommets",
+  "title": "Approfondissement : Faces, arêtes, sommets",
+  "questions": [
+    {
+      "text": "Comment appelle-t-on le segment de droite formé par l'intersection de deux faces d'un polyèdre ?",
+      "options": [
+        "Une arête",
+        "Un sommet",
+        "Une face",
+        "Une diagonale"
+      ],
+      "correctAnswer": "Une arête",
+      "explanation": "Une arête est par définition l'intersection de deux faces planes d'un polyèdre. Un sommet est le point de rencontre de plusieurs arêtes, une face est une surface plane polygonale, et une diagonale relie deux sommets non consécutifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien d'arêtes compte un cube ?",
+      "options": [
+        "$6$",
+        "$8$",
+        "$12$",
+        "$10$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Un cube a $6$ faces carrées. Chaque face a $4$ côtés, ce qui ferait $6 × 4 = 24$ côtés au total, mais chaque arête est partagée par $2$ faces. Le nombre d'arêtes est donc $24 ÷ 2 = 12$. On peut aussi retenir qu'un cube a $12$ arêtes, $8$ sommets et $6$ faces.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "Une pyramide à base carrée a $5$ faces. Combien a-t-elle de sommets ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Une pyramide à base carrée possède $4$ sommets sur sa base carrée et $1$ sommet au sommet de la pyramide, soit $4 + 1 = 5$ sommets au total. Elle a aussi $8$ arêtes ($4$ sur la base et $4$ latérales).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les solides suivants, lequel n'a aucune arête ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Un cylindre",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un cylindre",
+      "explanation": "Le cylindre est composé de deux faces planes (des disques) et d'une surface courbe. La rencontre entre une face plane et la surface courbe forme une courbe, pas un segment de droite ; on ne parle donc pas d'arête pour un cylindre (ni pour un cône ou une sphère). Le cube, le pavé droit et la pyramide sont des polyèdres qui possèdent des arêtes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un solide a $6$ faces rectangulaires, $12$ arêtes et $8$ sommets. De quel solide s'agit-il ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide à base triangulaire",
+        "Un cône"
+      ],
+      "correctAnswer": "Un pavé droit",
+      "explanation": "Le pavé droit a exactement $6$ faces (toutes rectangulaires), $12$ arêtes et $8$ sommets. Le cube a aussi $6$ faces, $12$ arêtes et $8$ sommets, mais ses faces sont des carrés (cas particulier de rectangles). L'énoncé précise « faces rectangulaires », ce qui correspond à la définition générale du pavé droit. La pyramide à base triangulaire a $4$ faces et le cône a une surface courbe.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

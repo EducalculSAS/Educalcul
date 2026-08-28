@@ -1,0 +1,435 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.192040+00:00",
+  "id": 229,
+  "code": "cm1-t03-c04",
+  "title": "Division euclidienne",
+  "description": "Cours structuré Educalcul : Division euclidienne.",
+  "subject": "Calcul mental et quatre opérations",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Calcul mental et quatre opérations",
+    "titre_du_cours": "Division euclidienne",
+    "objectif_global": "Division euclidienne",
+    "mini_lecons_imposees": [
+      "Quotient et reste.",
+      "Technique accessible.",
+      "Vérification q×d+r."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et quatre opérations",
+      "lessons": [
+        {
+          "title": "Quotient et reste.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient et reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $23$ bonbons et que tu veux les partager équitablement entre $4$ amis. Chaque ami recevra le même nombre de bonbons, et il en restera peut‑être quelques‑uns qui ne peuvent pas former un nouveau groupe complet. C'est exactement ce que fait la division euclidienne : elle sépare un nombre (le dividende) en plusieurs paquets de même taille (le diviseur) et nous dit combien de paquets nous obtenons (le quotient) ainsi que ce qui reste (le reste)."
+            },
+            {
+              "type": "definition",
+              "term": "Dividende",
+              "definition": "Le nombre que l'on partage, ici $23$.",
+              "example": "Dans $23 \\div 4$, le dividende est $23$."
+            },
+            {
+              "type": "definition",
+              "term": "Diviseur",
+              "definition": "Le nombre qui indique la taille de chaque paquet, ici $4$.",
+              "example": "Dans $23 \\div 4$, le diviseur est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Quotient",
+              "definition": "Le nombre de paquets complets que l'on peut former.",
+              "example": "Ici, on forme $5$ paquets de $4$, donc le quotient est $5$."
+            },
+            {
+              "type": "definition",
+              "term": "Reste",
+              "definition": "Ce qui ne suffit pas pour faire un paquet de plus, toujours plus petit que le diviseur.",
+              "example": "Il reste $3$ bonbons, donc le reste est $3$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "Le nombre $23$ décomposé en $2$ dizaines et $3$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver le quotient et le reste sans faire de dessin, on peut retirer des groupes de $4$ bonbons un par un jusqu'à ce qu'il n'en reste plus assez pour un nouveau groupe. Essaie de compter combien de groupes de $4$ tu peux retirer de $23$ avant de t'arrêter."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Première soustraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$23 - 4 = 19$ (un premier paquet)"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Continuer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$19 - 4 = 15$ (deuxième paquet), $15 - 4 = 11$ (troisième), $11 - 4 = 7$ (quatrième), $7 - 4 = 3$ (cinquième). On s'arrête car $3 < 4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Groupes de $4$ sur une droite jusqu'à $23$",
+              "min": 0,
+              "max": 24,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "1"
+                },
+                {
+                  "value": 8,
+                  "label": "2"
+                },
+                {
+                  "value": 12,
+                  "label": "3"
+                },
+                {
+                  "value": 16,
+                  "label": "4"
+                },
+                {
+                  "value": 20,
+                  "label": "5"
+                },
+                {
+                  "value": 23,
+                  "label": "reste"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une façon plus compacte d'écrire le résultat est d'utiliser l'égalité $23 = 4 \\times 5 + 3$. Le symbole $\\times$ rappelle la multiplication, le $+$ ajoute ce qui reste. Cette écriture montre d'un coup d'œil le quotient ($5$) et le reste ($3$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "23 = 4 \\times 5 + 3"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les mots‑clés et une première méthode pour trouver quotient et reste. Dans la prochaine leçon, nous verrons comment poser la division comme on le fait sur une feuille, ce qui sera encore plus rapide pour les grands nombres."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Partage $17$ billes entre $3$ enfants. Combien de billes chaque enfant reçoit‑il ? Combien en reste‑t‑il ?",
+              "answer": "Chaque enfant reçoit $5$ billes, il reste $2$ billes.",
+              "hint": "Forme des groupes de $3$ jusqu'à ne plus pouvoir en faire un complet.",
+              "explanation": "On forme $5$ groupes de $3$ ($3 \\times 5 = 15$). Il reste $17 - 15 = 2$ billes, ce qui est plus petit que $3$."
+            },
+            {
+              "question": "En utilisant la méthode des soustractions successives, trouve le quotient et le reste de $28 \\div 6$.",
+              "answer": "Quotient $4$, reste $4$.",
+              "hint": "Soustray $6$ plusieurs fois depuis $28$ et compte les soustractions.",
+              "explanation": "$28-6=22$ (1), $22-6=16$ (2), $16-6=10$ (3), $10-6=4$ (4). On s'arrête car $4<6$. Donc $4$ groupes, reste $4$."
+            },
+            {
+              "question": "Écris l'égalité de vérification pour $31 \\div 5$ sous la forme $dividende = diviseur \\times quotient + reste$.",
+              "answer": "$31 = 5 \\times 6 + 1$",
+              "hint": "Trouve d'abord le quotient et le reste, puis replace-les dans la formule.",
+              "explanation": "$5 \\times 6 = 30$, il reste $1$ pour atteindre $31$. L'égalité devient $31 = 5 \\times 6 + 1$."
+            }
+          ]
+        },
+        {
+          "title": "Technique accessible.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Technique accessible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais ce que sont le quotient et le reste, nous allons apprendre à poser la division comme on le fait sur le papier. Cette technique, appelée algorithme de division, permet de traiter des nombres plus grands sans devoir soustraire encore et encore. Nous allons la découvrir pas à pas avec un exemple concret : $152 \\div 4$."
+            },
+            {
+              "type": "definition",
+              "term": "Algorithme de division",
+              "definition": "Procédé écrit qui décompose la division en plusieurs étapes simples : diviser, multiplier, soustraire, abaisser le chiffre suivant.",
+              "example": "Pour $152 \\div 4$, on commence par le chiffre des centaines."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 152,
+              "caption": "Le nombre $152$ décomposé en centaines, dizaines, unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons comment l'algorithme avance. On commence par le chiffre le plus à gauche du dividende. On se demande : combien de fois $4$ rentre‑t‑il dans $1$ (la centaine) ? La réponse est $0$, donc on regarde les deux premiers chiffres : $15$ (centaines et dizaines)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diviser les dizaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4$ rentre $3$ fois dans $15$ car $4 \\times 3 = 12$ et $4 \\times 4 = 16$ serait trop grand. On écrit $3$ au-dessus de la dizaine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier et soustraire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On multiplie $3 \\times 4 = 12$, on écrit $12$ sous $15$ et on soustrait : $15 - 12 = 3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Abaisser l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On abaisse le $2$ des unités à côté du $3$ pour former $32$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4$ rentre $8$ fois dans $32$ ($4 \\times 8 = 32$). On écrit $8$ au-dessus des unités, on soustrait $32 - 32 = 0$. Le reste est $0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "152 = 4 \\times 38 + 0"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, après avoir abaissé le dernier chiffre, il reste un nombre plus petit que le diviseur. C'est le reste final. Par exemple, avec $157 \\div 4$, les trois premières étapes sont identiques, mais à la fin on obtient $37$ au lieu de $32$. $4$ rentre $9$ fois dans $37$ ($4 \\times 9 = 36$) et il reste $1$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Reste final de $1$ pour $157 \\div 4$",
+              "min": 0,
+              "max": 40,
+              "points": [
+                {
+                  "value": 36,
+                  "label": "9×4"
+                },
+                {
+                  "value": 37,
+                  "label": "reste 1"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode complète pour poser une division à un chiffre. Essaie de t'entraîner sur plusieurs nombres pour que les gestes deviennent automatiques. La prochaine leçon te montrera comment vérifier ton résultat en un clin d'œil."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pose la division $84 \\div 3$ avec l'algorithme et donne le quotient et le reste.",
+              "answer": "Quotient $28$, reste $0$.",
+              "hint": "Commence par le chiffre des dizaines : $3$ rentre $2$ fois dans $8$.",
+              "explanation": "$3 \\times 2 = 6$, $8-6=2$, abaisse $4$ → $24$, $3 \\times 8 = 24$, reste $0$. Résultat $28$."
+            },
+            {
+              "question": "Effectue la division $215 \\div 6$ en posant l'algorithme. Indique le quotient et le reste.",
+              "answer": "Quotient $35$, reste $5$.",
+              "hint": "Traite d'abord les centaines et dizaines ensemble ($21$), puis abaisse l'unité.",
+              "explanation": "$6 \\times 3 = 18$ dans $21$, reste $3$, abaisse $5$ → $35$, $6 \\times 5 = 30$, reste $5$."
+            },
+            {
+              "question": "Pour $93 \\div 4$, écris les étapes successives (diviser, multiplier, soustraire, abaisser) et donne le résultat final.",
+              "answer": "Quotient $23$, reste $1$.",
+              "hint": "Commence par $9$ (dizaines), puis abaisse $3$.",
+              "explanation": "$4 \\times 2 = 8$ dans $9$, reste $1$, abaisse $3$ → $13$, $4 \\times 3 = 12$, reste $1$."
+            }
+          ]
+        },
+        {
+          "title": "Vérification q×d+r.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérification q×d+r"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir posé une division, il est très utile de vérifier que le calcul est correct. La règle est simple : multiplier le quotient par le diviseur, puis ajouter le reste. Si le total retrouvez le dividende de départ, tout est bon. C'est une sécurité qui t'évite les erreurs bêtes, surtout quand les nombres deviennent grands."
+            },
+            {
+              "type": "definition",
+              "term": "Vérification",
+              "definition": "Opération qui consiste à calculer $quotient \\times diviseur + reste$ et à comparer le résultat au dividende initial.",
+              "example": "Pour $152 \\div 4 = 38$ reste $0$, on vérifie $38 \\times 4 + 0 = 152$."
+            },
+            {
+              "type": "display_math",
+              "latex": "quotient \\times diviseur + reste = dividende"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment faire cette vérification étape par étape. Prenons l'exemple $215 \\div 6 = 35$ reste $5$. On commence par multiplier le quotient par le diviseur, puis on ajoute le reste."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $35 \\times 6$. Tu peux le faire en décomposant : $30 \\times 6 = 180$ et $5 \\times 6 = 30$, donc $180 + 30 = 210$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Addition du reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute le reste $5$ : $210 + 5 = 215$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparaison",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total $215$ est exactement le dividende de départ, donc la division est correcte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column_operation",
+              "operator": "*",
+              "operands": [
+                "35",
+                "6"
+              ],
+              "result": "210",
+              "carries": [
+                "3"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive parfois que l'on fasse une petite erreur dans la multiplication ou dans l'addition du reste. Si le total ne correspond pas au dividende, reprends calmement chaque étape : vérifie d'abord la multiplication, puis l'addition. Souvent, l'erreur se cache dans le report d'une retenue ou dans l'oubli du reste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent est d'oublier que le reste doit être strictement plus petit que le diviseur. Si ton reste est égal ou supérieur au diviseur, c'est qu'il manque un paquet dans le quotient. Rajoute $1$ au quotient et refais la vérification."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier dividende, diviseur, quotient et reste.",
+                "Je sais poser une division à un chiffre avec l'algorithme.",
+                "Je sais vérifier mon résultat avec $q \\times d + r$.",
+                "Je repère les erreurs courantes (reste trop grand, oublie de retenue)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie la division $93 \\div 4 = 23$ reste $1$ en calculant $23 \\times 4 + 1$.",
+              "answer": "$23 \\times 4 = 92$, $92 + 1 = 93$, le dividende est retrouvé.",
+              "hint": "Décompose $23 \\times 4$ en $20 \\times 4 + 3 \\times 4$.",
+              "explanation": "$20 \\times 4 = 80$, $3 \\times 4 = 12$, $80+12=92$, plus le reste $1$ donne $93$."
+            },
+            {
+              "question": "Tu as trouvé $157 \\div 4 = 39$ reste $1$. La vérification donne-t‑elle le bon dividende ?",
+              "answer": "Non, $39 \\times 4 + 1 = 157$ ? $39 \\times 4 = 156$, $156+1=157$ → oui, c'est correct.",
+              "hint": "Multiplie $39$ par $4$ puis ajoute $1$.",
+              "explanation": "Le calcul donne bien $157$, donc la division est correcte."
+            },
+            {
+              "question": "Pour $84 \\div 5$, un élève a écrit quotient $16$ reste $4$. Vérifie et dis si c'est juste.",
+              "answer": "Faux. $16 \\times 5 + 4 = 80 + 4 = 84$ → le calcul donne $84$, mais le reste $4$ est inférieur à $5$, donc la division est correcte. (Note : le quotient exact est $16$ reste $4$.)",
+              "hint": "Applique la formule de vérification.",
+              "explanation": "La vérification confirme le résultat, donc l'élève a raison."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

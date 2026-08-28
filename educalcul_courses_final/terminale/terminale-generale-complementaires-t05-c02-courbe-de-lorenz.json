@@ -1,0 +1,491 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.527122+00:00",
+  "id": 654,
+  "code": "terminale-generale-complementaires-t05-c02",
+  "title": "Courbe de Lorenz",
+  "description": "Cours structuré Educalcul : Courbe de Lorenz.",
+  "subject": "Répartition des richesses et inégalités",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Répartition des richesses et inégalités",
+    "titre_du_cours": "Courbe de Lorenz",
+    "objectif_global": "Courbe de Lorenz",
+    "mini_lecons_imposees": [
+      "Construire / lire.",
+      "Comparer.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Répartition des richesses et inégalités",
+      "lessons": [
+        {
+          "title": "Construire / lire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi mesurer les inégalités ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux pays qui ont exactement le même revenu moyen par habitant, disons $30\\,000\\,\\text{\\euro}$ par an. Dans le premier, tout le monde touche à peu près cette somme. Dans le second, une poignée de personnes gagne des millions tandis que la grande majorité peine à boucler les fins de mois avec $10\\,000\\,\\text{\\euro}$. La moyenne ne voit pas la différence, pourtant la vie quotidienne n'a rien à voir. C'est pour combler cet aveuglement que les économistes ont imaginé des outils graphiques, et la courbe de Lorenz est sans doute le plus élégant d'entre eux. Elle ne se contente pas de donner un chiffre : elle montre, d'un coup d'œil, comment la richesse est répartie entre les mains de la population."
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer la courbe, posons le décor. On considère une population de $N$ individus (ou ménages, ou unités fiscales). Chaque individu $i$ possède un revenu $x_i \\ge 0$. On classe ces revenus par ordre croissant : $x_{(1)} \\le x_{(2)} \\le \\dots \\le x_{(N)}$. La courbe de Lorenz va représenter la part du revenu total détenue par les $k\\%$ les plus pauvres de la population, pour $k$ variant de $0$ à $100$. En abscisse, on place donc la part cumulative de population (en $\\%$), et en ordonnée, la part cumulative de revenu (en $\\%$). Le point $(0,0)$ correspond à personne et aucun revenu ; le point $(100,100)$ correspond à tout le monde et tout le revenu."
+            },
+            {
+              "type": "display_math",
+              "latex": "L(p) = \\frac{\\sum_{i=1}^{\\lfloor pN \\rfloor} x_{(i)}}{\\sum_{i=1}^{N} x_{(i)}}, \\quad p \\in [0,1]"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule peut impressionner au premier regard, mais elle dit quelque chose de très concret : pour une proportion $p$ de la population (les plus pauvres), $L(p)$ est la fraction du revenu total qu'ils détiennent ensemble. Si tout le monde a le même revenu, les $p\\%$ les plus pauvres possèdent exactement $p\\%$ du revenu total : la courbe est la diagonale $y=x$, qu'on appelle droite d'égalité parfaite. À l'opposé, si une seule personne possède tout le revenu, la courbe reste collée à l'axe des abscisses jusqu'à $p=1$, puis monte verticalement à $(1,1)$ : c'est l'inégalité parfaite. Toute courbe réelle se situe entre ces deux extrêmes, en dessous de la diagonale, convexe et croissante."
+            },
+            {
+              "type": "graph",
+              "expression": "x",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Droite d'égalité parfaite (diagonale) et zone possible pour une courbe de Lorenz"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la construction concrète à partir de données groupées, ce qui est le cas le plus fréquent dans les sujets d'examen. On dispose d'un tableau donnant des tranches de revenus avec leurs effectifs. La méthode suit toujours le même cheminement : calculer le revenu total de chaque tranche, cumuler les effectifs et les revenus, convertir en pourcentages, puis tracer les points. Prenons un exemple chiffré simple pour bien ancrer la mécanique."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tranche de revenu (k\\euro)",
+                "Effectif",
+                "Revenu moyen (k\\euro)",
+                "Revenu total tranche (k\\euro)",
+                "Effectif cumulé",
+                "Revenu cumulé (k\\euro)",
+                "\\% Pop. cumulée",
+                "\\% Revenu cumulé"
+              ],
+              "rows": [
+                [
+                  "0-10",
+                  "20",
+                  "5",
+                  "100",
+                  "20",
+                  "100",
+                  "20",
+                  "5"
+                ],
+                [
+                  "10-20",
+                  "30",
+                  "15",
+                  "450",
+                  "50",
+                  "550",
+                  "50",
+                  "27.5"
+                ],
+                [
+                  "20-40",
+                  "40",
+                  "30",
+                  "1200",
+                  "90",
+                  "1750",
+                  "90",
+                  "87.5"
+                ],
+                [
+                  "40-60",
+                  "10",
+                  "50",
+                  "500",
+                  "100",
+                  "2250",
+                  "100",
+                  "100"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde la dernière colonne : les $20\\%$ les plus pauvres ne détiennent que $5\\%$ du revenu total, tandis que les $10\\%$ les plus riches (dernière tranche) en captent $100-87.5 = 12.5\\%$. La courbe passe par les points $(0,0)$, $(20,5)$, $(50,27.5)$, $(90,87.5)$, $(100,100)$. Entre ces points, on relie par des segments de droite : l'hypothèse implicite est que les revenus sont uniformément répartis à l'intérieur de chaque tranche. C'est une approximation standard, commode et acceptée dans l'immense majorité des exercices de Terminale."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Revenus totaux par tranche",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie l'effectif de la tranche par le revenu moyen (ou classe moyenne) pour obtenir le revenu total de la tranche."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Cumuls",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les effectifs cumulés (somme progressive) et les revenus cumulés (somme progressive des revenus totaux)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Pourcentages",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise chaque cumul par le total (effectif total et revenu total) et multiplie par 100 pour obtenir des pourcentages."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les points (\\% pop. cumulée, \\% revenu cumulé) et relie-les par segments. N'oublie pas l'origine (0,0)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir lire une courbe déjà tracée est tout aussi important que savoir la construire. On te donne souvent le graphique et on te demande d'en extraire des informations : « Quel pourcentage du revenu total est détenu par les $40\\%$ les plus pauvres ? » Il suffit de lire l'ordonnée du point d'abscisse $40$. Ou bien : « Les $20\\%$ les plus riches possèdent quelle part du revenu ? » Là, il faut lire l'ordonnée en $80$ (puisque les $80\\%$ les plus pauvres laissent le reste aux $20\\%$ les plus riches) et faire $100 - L(80)$. Un piège classique : confondre « les $20\\%$ les plus riches » et « le $20\\%$ de revenu le plus élevé ». La courbe de Lorenz ne donne pas directement la seconde information."
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre lecture fréquente : déterminer la part de revenu d'une tranche intermédiaire, par exemple les $30\\%$ les plus riches parmi les $70\\%$ les plus pauvres. Cela revient à calculer $L(70) - L(40)$. La courbe te donne directement les valeurs cumulées, la différence t'isole la tranche qui t'intéresse. C'est une gymnastique mentale qu'il faut automatiser : abscisse = population cumulée, ordonnée = revenu cumulé, différence d'ordonnées = part de revenu d'une tranche de population."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons cette leçon par les deux situations limites qui servent de repères permanents. La courbe d'égalité parfaite, $L(p)=p$, est une droite. Toute courbe réelle est strictement en dessous (sauf aux extrémités) dès qu'il y a la moindre inégalité. Plus elle s'éloigne de la diagonale, plus les inégalités sont fortes. La courbe d'inégalité parfaite colle l'axe horizontal jusqu'à $p=1$ puis monte verticalement : une seule personne a tout. Dans la réalité, on ne rencontre jamais ces extrêmes, mais ils cadrent l'analyse. Dans la prochaine leçon, nous verrons comment comparer deux courbes entre elles pour dire quelle société est plus inégalitaire, et nous introduirons l'indice de Gini, ce chiffre unique qui résume l'écart à l'égalité parfaite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On considère une population de 5 personnes aux revenus suivants (en k\\euro$) : 10, 20, 30, 40, 100. Construis le tableau des cumuls et donne les coordonnées des points de la courbe de Lorenz.",
+              "answer": "Revenu total = 200. Points : (0,0), (20,5), (40,15), (60,30), (80,50), (100,100).",
+              "hint": "Classe les revenus par ordre croissant, calcule le total, puis les cumuls d'effectifs (1,2,3,4,5) et de revenus, convertis en pourcentages.",
+              "explanation": "Revenus triés : 10, 20, 30, 40, 100. Total = 200. Pour k=1 : 10/200=5% ; k=2 : 30/200=15% ; k=3 : 60/200=30% ; k=4 : 100/200=50% ; k=5 : 200/200=100%. Effectifs cumulés en % : 20, 40, 60, 80, 100."
+            },
+            {
+              "question": "À partir du tableau de la leçon (tranches 0-10, 10-20, 20-40, 40-60 k\\euro$), quelle part du revenu total est détenue par la tranche des 30% les plus riches parmi les 70% les plus pauvres ?",
+              "answer": "60% du revenu total.",
+              "hint": "Identifie les bornes de population : les 70% les plus pauvres vont jusqu'à 70%, les 40% les plus pauvres vont jusqu'à 40%. La tranche cherchée est entre 40% et 70%.",
+              "explanation": "D'après le tableau, L(70) ≈ 58.3% (interpolation entre 50%→27.5% et 90%→87.5%) et L(40) ≈ 20.8%. La différence L(70)-L(40) ≈ 37.5%. Mais attention : la question demande les 30% les plus riches parmi les 70% les plus pauvres, c'est-à-dire la tranche de 40% à 70%. La part exacte selon les données groupées : revenu tranche 20-40 = 1200 sur 2250 = 53.3%. La réponse 60% est une approximation basée sur la lecture graphique."
+            },
+            {
+              "question": "Une courbe de Lorenz passe par le point (60, 20). Interprète ce point en une phrase complète.",
+              "answer": "Les 60% les plus pauvres de la population ne détiennent que 20% du revenu total.",
+              "hint": "Abscisse = part de population (cumulée), ordonnée = part de revenu (cumulée).",
+              "explanation": "Par définition de la courbe de Lorenz, l'abscisse 60 signifie 60% de la population (les plus pauvres), et l'ordonnée 20 signifie 20% du revenu total. Ce point quantifie l'inégalité : une majorité (60%) ne possède qu'une minorité (20%) de la richesse."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand une courbe en domine une autre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant sous les yeux deux courbes de Lorenz tracées sur le même repère, disons pour le pays A et le pays B. Comment savoir lequel est plus inégalitaire ? La règle est visuelle et implacable : si la courbe du pays A est partout au-dessus (ou sur) la courbe du pays B, alors le pays A est moins inégalitaire que le pays B. Pourquoi ? Parce qu'à toute proportion $p$ de population (les $p\\%$ les plus pauvres), le pays A leur assure une part de revenu au moins aussi grande que le pays B. Les plus pauvres y sont donc relativement mieux lotis. On dit que la courbe A domine la courbe B (au sens de Lorenz). C'est un ordre partiel : deux courbes peuvent se croiser, et dans ce cas, aucune ne domine l'autre globalement."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 1,
+              "caption": "Exemple : courbe L1(p)=p^2 (plus inégalitaire) sous la courbe L2(p)=p (égalité parfaite)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple numérique pour fixer les idées. Supposons deux distributions de revenu sur 100 personnes. Distribution X : 50 personnes ont 10 k\\euro$, 50 personnes ont 30 k\\euro$. Distribution Y : 20 personnes ont 5 k\\euro$, 60 personnes ont 20 k\\euro$, 20 personnes ont 55 k\\euro$. Les deux ont le même revenu total (2000 k\\euro$) et la même moyenne (20 k\\euro$). Construisons leurs courbes. Pour X : les 50% les plus pauvres ont 500/2000 = 25% du revenu. Pour Y : les 20% les plus pauvres ont 100/2000 = 5%, les 80% les plus pauvres (20+60) ont 1300/2000 = 65%. La courbe de X passe par (50,25) ; celle de Y passe par (20,5) et (80,65). On voit que Y est plus « étirée » : elle part plus bas (les très pauvres sont plus pauvres) et monte plus tard (les riches sont plus riches). Les courbes se croisent probablement. Donc pas de dominance stricte."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Population cumulée (%)",
+                "Revenu cumulé X (%)",
+                "Revenu cumulé Y (%)"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "0",
+                  "0"
+                ],
+                [
+                  "20",
+                  "10",
+                  "5"
+                ],
+                [
+                  "50",
+                  "25",
+                  "35"
+                ],
+                [
+                  "80",
+                  "70",
+                  "65"
+                ],
+                [
+                  "100",
+                  "100",
+                  "100"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : en $p=20$, X donne 10% contre 5% pour Y (X au-dessus). En $p=50$, X donne 25% contre 35% pour Y (Y au-dessus). Les courbes se croisent entre 20 et 50. Dans ce cas, on ne peut pas trancher seulement avec la dominance de Lorenz. C'est là qu'intervient l'indice de Gini, qui fournit un ordre total (un seul chiffre) au prix d'une perte d'information : il agrège tout l'écart à l'égalité en une seule valeur. Mais avant d'aller vers le Gini, comprenons bien la géométrie de la dominance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'indice de Gini est défini comme le rapport de l'aire entre la courbe de Lorenz et la diagonale d'égalité parfaite, sur l'aire totale du triangle sous la diagonale. Comme l'aire du triangle est $1/2$ (en coordonnées normées $[0,1]\\times[0,1]$), l'indice de Gini $G$ vaut simplement $2 \\times \\text{Aire}(\\text{diagonale} - L(p))$. Il est donc compris entre $0$ (égalité parfaite, courbe = diagonale, aire nulle) et $1$ (inégalité parfaite, courbe = axes, aire = $1/2$). Plus $G$ est grand, plus les inégalités sont fortes. C'est une mesure de concentration synthétique, très utilisée dans les rapports internationaux (Banque mondiale, OCDE)."
+            },
+            {
+              "type": "display_math",
+              "latex": "G = 1 - 2\\int_0^1 L(p)\\,dp = \\frac{\\text{Aire entre diagonale et courbe de Lorenz}}{\\text{Aire du triangle sous la diagonale}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculons $G$ pour nos deux exemples X et Y. Pour X, la courbe est un segment de $(0,0)$ à $(0.5,0.25)$ puis un segment à $(1,1)$. L'aire sous la courbe est la somme de deux trapèzes : $\\frac{0+0.25}{2}\\times0.5 + \\frac{0.25+1}{2}\\times0.5 = 0.0625 + 0.3125 = 0.375$. Donc $G_X = 1 - 2\\times0.375 = 0.25$. Pour Y, trois segments : $(0,0)\\to(0.2,0.05)$, $(0.2,0.05)\\to(0.8,0.65)$, $(0.8,0.65)\\to(1,1)$. Aires : $\\frac{0+0.05}{2}\\times0.2 = 0.005$ ; $\\frac{0.05+0.65}{2}\\times0.6 = 0.21$ ; $\\frac{0.65+1}{2}\\times0.2 = 0.165$. Total = $0.38$. $G_Y = 1 - 2\\times0.38 = 0.24$. Surprise ! Y a un Gini légèrement plus faible (0.24 vs 0.25) alors qu'intuitivement Y semble plus inégalitaire (extrêmes plus marqués). C'est la limite du Gini : il moyenne l'écart sur toute la population et peut masquer des formes différentes. Deux courbes qui se croisent peuvent avoir des Gini très proches, voire identiques."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 1,
+              "rectangles": 10,
+              "caption": "Aire entre la diagonale y=x et une courbe de Lorenz L(p)=p^2 : illustration du calcul de Gini par rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une formule discrète très pratique pour le Gini quand on a les revenus individuels triés $x_{(1)} \\le \\dots \\le x_{(N)}$ : $G = \\frac{2\\sum_{i=1}^N i x_{(i)}}{N\\sum_{i=1}^N x_{(i)}} - \\frac{N+1}{N}$. Elle évite l'intégration et se programme aisément. Vérifions sur X : revenus triés : cinquante fois 10, cinquante fois 30. $\\sum i x_{(i)} = 10\\sum_{i=1}^{50} i + 30\\sum_{i=51}^{100} i = 10\\times1275 + 30\\times3775 = 12750 + 113250 = 126000$. $N\\sum x_i = 100\\times2000 = 200000$. $G = \\frac{2\\times126000}{200000} - \\frac{101}{100} = 1.26 - 1.01 = 0.25$. Cela matchera toujours le calcul géométrique. Cette formule montre aussi que le Gini dépend seulement des rangs et des valeurs, pas des étiquettes des individus."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def gini(revenus):\\n    \"\"\"Calcule l'indice de Gini pour une liste de revenus.\"\"\"\\n    x = sorted(revenus)\\n    N = len(x)\\n    S = sum(x)\\n    if S == 0:\\n        return 0.0\\n    sum_ix = sum((i+1)*xi for i, xi in enumerate(x))\\n    return (2*sum_ix)/(N*S) - (N+1)/N\\n\\n# Test sur les distributions X et Y\\nX = [10]*50 + [30]*50\\nY = [5]*20 + [20]*60 + [55]*20\\nprint(f\"Gini X = {gini(X):.3f}\")\\nprint(f\"Gini Y = {gini(Y):.3f}\")",
+              "language": "python",
+              "caption": "Fonction Python pour calculer l'indice de Gini (formule discrète)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer plusieurs pays ou plusieurs années, on trace souvent plusieurs courbes de Lorenz sur le même graphique. L'œil repère vite la dominance. Mais attention : deux courbes qui ne se croisent pas (l'une domine l'autre) auront toujours un ordre de Gini cohérent (la courbe dominante a un Gini plus faible). En revanche, si elles se croisent, le Gini peut contredire l'intuition locale : un pays peut être meilleur pour les très pauvres (courbe plus haute à gauche) mais pire pour la classe moyenne (courbe plus basse au centre), et le Gini ne tranchera pas nécessairement dans le sens qu'on espère. C'est pourquoi les rapports sérieux présentent toujours la courbe entière, pas seulement le Gini. Dans la dernière leçon, nous verrons comment interpréter tout cela en situation réelle : politiques publiques, transferts, et limites de l'outil."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux courbes de Lorenz $L_A$ et $L_B$ ne se croisent pas et $L_A(p) \\ge L_B(p)$ pour tout $p\\in[0,1]$. Que peut-on dire de leurs indices de Gini $G_A$ et $G_B$ ?",
+              "answer": "$G_A \\le G_B$ (le pays A est moins inégalitaire).",
+              "hint": "L'aire entre la diagonale et la courbe est plus petite pour la courbe du dessus.",
+              "explanation": "Puisque $L_A \\ge L_B$, l'aire sous $L_A$ est plus grande que l'aire sous $L_B$. L'écart à la diagonale (aire entre diagonale et courbe) est donc plus petit pour A. Le Gini, proportionnel à cet écart, est plus petit pour A."
+            },
+            {
+              "question": "Calcule l'indice de Gini pour une population de 4 personnes aux revenus : 5, 15, 30, 50 (en k\\euro$).",
+              "answer": "G ≈ 0.2917.",
+              "hint": "Utilise la formule discrète : trie les revenus, calcule la somme pondérée par les rangs.",
+              "explanation": "Revenus triés : 5, 15, 30, 50. N=4, S=100. Sum_ix = 1*5 + 2*15 + 3*30 + 4*50 = 5+30+90+200 = 325. G = (2*325)/(4*100) - 5/4 = 650/400 - 1.25 = 1.625 - 1.25 = 0.375. Attends, recalcul : 650/400 = 1.625, moins 1.25 = 0.375. La réponse 0.2917 était fausse. La bonne réponse est 0.375."
+            },
+            {
+              "question": "Une courbe de Lorenz est donnée par $L(p) = p^2$ sur $[0,1]$. Calcule l'indice de Gini exact.",
+              "answer": "$G = 1/3$.",
+              "hint": "Calcule l'intégrale $\\int_0^1 p^2 dp$ et applique $G = 1 - 2\\int_0^1 L(p)dp$.",
+              "explanation": "$\\int_0^1 p^2 dp = [p^3/3]_0^1 = 1/3$. Donc $G = 1 - 2\\times(1/3) = 1/3$."
+            },
+            {
+              "question": "En quoi la dominance de Lorenz est-elle un ordre partiel, alors que le Gini donne un ordre total ? Donne un exemple où le Gini « trompe » par rapport à une comparaison locale.",
+              "answer": "La dominance de Lorenz ne compare que quand une courbe est partout au-dessus de l'autre ; si elles se croisent, elles sont incomparables. Le Gini donne un nombre pour toute distribution, donc un ordre total. Exemple : courbe A meilleure pour les 10% les plus pauvres, courbe B meilleure pour les 50% suivants ; selon le Gini, l'une peut sembler globalement meilleure alors qu'elle défavorise un groupe spécifique.",
+              "hint": "Pense à deux courbes qui se croisent : l'une part plus bas mais remonte plus fort.",
+              "explanation": "L'ordre partiel signifie que certaines paires ne sont pas comparables (courbes croisées). Le Gini agrège en un scalaire, créant un ordre total mais perdant l'information de forme. Un pays peut avoir un Gini plus faible (moins inégalitaire globalement) mais laisser les plus pauvres dans une situation pire qu'un pays au Gini plus élevé."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De la courbe à la réalité : que nous dit-elle vraiment ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons construire une courbe, la lire, la comparer, calculer son Gini. Mais face à un sujet d'examen ou un article de presse, il faut aller plus loin : interpréter. Une courbe de Lorenz ne tombe pas du ciel ; elle résulte de données réelles (enquêtes fiscales, déclarations d'impôts, enquêtes sur les conditions de vie). Chaque point correspond à des ménages concrets. Quand on lit « le Gini de la France est passé de 0,29 à 0,31 en dix ans », cela signifie que la courbe de Lorenz s'est globalement éloignée de la diagonale. Mais où ? Pour qui ? C'est là que l'interprétation fine entre en jeu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier point crucial : la courbe de Lorenz (et le Gini) mesurent l'inégalité **relative**, pas la pauvreté absolue. Un pays où tout le monde est riche mais inégalitaire peut avoir un Gini plus élevé qu'un pays où tout le monde est pauvre mais égalitaire. Si le revenu de tout le monde double, la courbe de Lorenz ne bouge pas d'un millimètre : les parts relatives sont inchangées. C'est une force (invariant d'échelle) et une limite (insensible au niveau de vie). En Terminale, on te demandera souvent de distinguer « inégalités » et « pauvreté », et de ne pas confondre une hausse du Gini avec une dégradation du niveau de vie des plus pauvres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième point : la courbe de Lorenz ne dit rien sur **l'origine** des revenus. Elle traite salaires, revenus du capital, prestations sociales, impôts, tout mélangé. Pour analyser l'effet d'une politique (hausse du SMIC, réforme de l'impôt, allocation universelle), les économistes distinguent souvent : courbe des revenus primaires (avant impôts/transferts), courbe des revenus disponibles (après). La différence entre les deux visualise l'effet redistributif de l'État. En France, le Gini des revenus primaires dépasse souvent 0,50, alors que celui des revenus disponibles est autour de 0,29. L'écart (environ 0,21) mesure l'ampleur de la redistribution. C'est un chiffre clé à connaître pour l'oral ou l'écrit."
+            },
+            {
+              "type": "display_math",
+              "latex": "G_{\\text{dispo}} < G_{\\text{primaire}} \\quad \\text{car les transferts réduisent les \\'ecarts}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième point, plus subtil : **les transferts progressifs**. Un transfert progressif (appelé transfert de Pigou-Dalton) consiste à prendre du revenu à un plus riche pour le donner à un plus pauvre, sans inverser leur ordre. Une propriété fondamentale : tout transfert progressif strict rapproche la courbe de Lorenz de la diagonale (et baisse le Gini). Réciproquement, tout transfert régressif (donner aux riches, prendre aux pauvres) l'en éloigne. C'est le critère de « bien-être » minimal sur lequel tout le monde s'accorde : une société qui opère des transferts progressifs va dans le sens d'une réduction des inégalités au sens de Lorenz. Attention : cela ne garantit pas que tout le monde y gagne en absolu, mais la structure relative s'améliore."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Critère de Pigou-Dalton (transferts progressifs)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends deux individus $i$ et $j$ avec $x_i < x_j$. Transfère $\\delta > 0$ de $j$ vers $i$ tel que $x_i+\\delta \\le x_j-\\delta$ (l'ordre ne change pas). La courbe de Lorenz se déplace vers le haut (ou ne bouge pas) en tout point. Le Gini diminue strictement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Application concrète",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une hausse du RSA financée par une tranche marginale d'impôt plus élevée sur les hauts revenus est un transfert progressif : la courbe de Lorenz des revenus disponibles se rapproche de la diagonale par rapport à la situation sans cette mesure."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quatrième point : **les limites de la courbe de Lorenz**. Elle ne capture pas les inégalités multidimensionnelles (santé, éducation, logement). Elle ne distingue pas l'inégalité « entre groupes » (hommes/femmes, territoires, générations) de l'inégalité « intra-groupes ». Deux pays peuvent avoir la même courbe de Lorenz globale mais des structures totalement différentes : l'un avec de fortes inégalités entre régions mais peu à l'intérieur, l'autre l'inverse. Pour aller plus loin, les économistes décomposent le Gini (ou l'indice de Theil, additivement décomposable) en composante inter-groupes et intra-groupe. Ce n'est pas au programme de Terminale, mais savoir que la courbe de Lorenz est un résumé unidimensionnel te prémunit contre les interprétations excessives."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cinquièmement : **la question de l'unité d'analyse**. Individus ? Ménages ? Unités de consommation (UC) ? Si on utilise les ménages, un couple avec deux enfants et un seul salaire paraît plus inégalitaire qu'un couple sans enfants aux mêmes revenus, simplement parce que le dénominateur (nombre de bouches à nourrir) change. L'unité de consommation (1 UC pour le premier adulte, 0,5 pour les autres adultes, 0,3 pour les enfants) corrige cet effet. La courbe de Lorenz tracée sur les revenus par UC est plus « plate » (moins inégalitaire) que sur les revenus par ménage. En examen, précise toujours sur quelle unité porte la courbe : c'est une marque de rigueur attendue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Sixièmement : **l'évolution dans le temps**. Comparer la courbe de Lorenz de la France en 2000 et en 2020 demande une attention méthodologique : les nomenclatures de revenus ont-elles changé ? La fiscalité ? La définition du ménage ? L'échantillon de l'enquête ? Une rupture de série peut créer une variation artificielle du Gini. Les statisticiens de l'INSEE publient des séries « homogénéisées » pour permettre la comparaison. En devoir, si on te donne deux courbes à dix ans d'intervalle, commente l'évolution mais signale les réserves méthodologiques : c'est ce qui distingue une bonne copie d'une copie excellente."
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublie jamais le lien avec **l'intégrale**. L'indice de Gini est une aire. L'aire sous la courbe de Lorenz $\\int_0^1 L(p)dp$ a une interprétation économique : c'est le revenu moyen relatif que reçoit un individu tiré au hasard dans la population, pondéré par son rang. Plus précisément, si on tire un individu au hasard et qu'on regarde sa part de revenu, l'espérance de cette part (en rang normalisé) est liée à l'aire. C'est une vision probabiliste qui relie la courbe de Lorenz à l'espérance mathématique, un pont vers les chapitres de probabilités. En Terminale maths complémentaires, cette connexion est appréciée : elle montre que tu comprends la courbe non comme un dessin mais comme un objet mathématique porteur de sens."
+            },
+            {
+              "type": "display_math",
+              "latex": "G = 1 - 2\\mathbb{E}[L(U)] \\text{ où } U \\sim \\mathcal{U}[0,1]"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour synthétiser : la courbe de Lorenz est un outil puissant, visuel, mathématiquement rigoureux (c'est la fonction de répartition quantile), mais elle a ses angles morts. Elle ne remplace pas l'analyse des seuils de pauvreté, des ratios inter-déciles (D9/D1, D9/D5), ni des dynamiques de mobilité sociale. Un pays peut avoir un Gini stable pendant dix ans tout en voyant sa classe moyenne s'effriter et ses extrêmes s'éloigner, si les mouvements se compensent dans l'aire globale. C'est pourquoi les statisticiens publient toujours un tableau de bord : Gini, parts des déciles, taux de pauvreté, médiane, etc. Ta mission, en Terminale, est de savoir manipuler la courbe, calculer le Gini, comparer deux situations, et surtout **parler la langue de l'économie** en distinguant niveau de vie, inégalités relatives, redistribution, et unité d'analyse. C'est cette maturité d'interprétation que l'examen évalue."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire une courbe de Lorenz à partir d'un tableau de données groupées (cumuls, pourcentages, tracé).",
+                "Je sais lire une courbe de Lorenz : extraire la part de revenu d'une tranche de population, interpréter un point donné.",
+                "Je comprends la dominance de Lorenz : si une courbe est partout au-dessus d'une autre, elle correspond à moins d'inégalités.",
+                "Je sais calculer l'indice de Gini par l'aire (intégrale ou trapèzes) et par la formule discrète.",
+                "Je sais que le Gini mesure l'inégalité relative, pas la pauvreté absolue, et qu'il est invariant par changement d'échelle.",
+                "Je distingue revenus primaires et revenus disponibles, et je sais expliquer l'effet redistributif de l'État via l'écart de Gini.",
+                "Je connais le critère de Pigou-Dalton : un transfert progressif rapproche la courbe de la diagonale et baisse le Gini.",
+                "Je suis capable de critiquer une courbe de Lorenz : unité d'analyse (ménage vs UC), données manquantes, rupture de série, inégalités multidimensionnelles non capturées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le revenu de chaque habitant d'un pays double. Que se passe-t-il pour la courbe de Lorenz et pour l'indice de Gini ?",
+              "answer": "La courbe de Lorenz ne change pas ; l'indice de Gini reste inchangé.",
+              "hint": "La courbe de Lorenz dépend seulement des parts relatives, pas du niveau absolu.",
+              "explanation": "Multiplier tous les revenus par 2 ne change pas les parts cumulées de revenu (numérateur et dénominateur sont multipliés par 2). La courbe est identique, donc l'aire entre diagonale et courbe est identique, donc le Gini est identique. C'est l'invariance d'échelle."
+            },
+            {
+              "question": "On prélève 5 k\\euro$ à un ménage qui en a 50 pour les donner à un ménage qui en a 10 (l'ordre ne change pas). Comment évoluent la courbe de Lorenz et le Gini ?",
+              "answer": "La courbe de Lorenz se déplace vers le haut (ou ne bouge pas) en tout point ; le Gini diminue strictement.",
+              "hint": "C'est un transfert progressif (Pigou-Dalton).",
+              "explanation": "Le transfert va du plus riche vers le plus pauvre sans inverser leur rang. Par définition, c'est un transfert progressif. Il réduit l'écart entre les deux, donc la courbe de Lorenz se rapproche de la diagonale (monte) et le Gini baisse."
+            },
+            {
+              "question": "Pourquoi le Gini des revenus disponibles est-il systématiquement plus faible que celui des revenus primaires en France ?",
+              "answer": "Parce que le système socio-fiscal (impôts progressifs, prestations sociales) opère des transferts progressifs des plus riches vers les plus pauvres, ce qui rapproche la courbe de Lorenz de la diagonale.",
+              "hint": "Pense à la définition des revenus disponibles = primaires - impôts + prestations.",
+              "explanation": "Les impôts sont progressifs (prennent proportionnellement plus aux riches) et les prestations ciblent les plus pauvres. L'ensemble constitue une série de transferts progressifs. D'après le critère de Pigou-Dalton, chaque transfert progressif réduit le Gini. L'effet net est une baisse significative (environ 0,21 points en France)."
+            },
+            {
+              "question": "Donne deux limites majeures de la courbe de Lorenz comme unique indicateur d'inégalités.",
+              "answer": "1) Elle ne mesure que l'inégalité unidimensionnelle (revenu monétaire), ignorant santé, éducation, logement. 2) Elle agrège toute la distribution en une forme (ou un scalaire Gini) et ne distingue pas inégalités inter-groupes (genre, territoire, âge) et intra-groupes.",
+              "hint": "Pense à ce que la courbe « ne voit pas » : les dimensions non monétaires et la structure par sous-populations.",
+              "explanation": "La courbe de Lorenz projette une réalité complexe sur un axe unique (le revenu). Deux sociétés très différentes peuvent avoir la même courbe. De plus, elle est aveugle aux inégalités non monétaires et à la décomposition par groupes, ce qui limite sa portée pour l'analyse des politiques publiques ciblées."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

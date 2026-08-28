@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 283,
+  "_course_code": "cm2-t02-c02-fractions-equivalentes",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Multiplier numérateur et dénominateur dans cas simples",
+  "title": "Algorithme des fractions équivalentes",
+  "blocks": [
+    {
+      "title": "L'idée de base",
+      "content": "Pour trouver une fraction équivalente à $\\frac{1}{3}$ en multipliant, on utilise un nombre entier $n$. Écris le raisonnement structuré pour calculer le nouveau numérateur et le nouveau dénominateur si on choisit $n = 2$.",
+      "correctAnswer": "Numérateur : $1 \\times 2 = 2$\\nDenominator : $3 \\times 2 = 6$\\nLa fraction équivalente est $\\frac{2}{6}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour obtenir une fraction équivalente, on doit multiplier le numérateur et le dénominateur par le même nombre. Ici, $1 \\times 2 = 2$ et $3 \\times 2 = 6$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 3,
+        "shape": "bar",
+        "caption": "Fraction de départ"
+      }
+    },
+    {
+      "title": "L'algorithme général",
+      "content": "Imagine que tu crées un programme informatique. On donne en entrée une fraction avec un numérateur $N$ et un dénominateur $D$, ainsi qu'un multiplicateur $M$. Écris les étapes de l'algorithme pour afficher la fraction équivalente.",
+      "correctAnswer": "Etape $1$ : Multiplier $N$ par $M$ pour trouver le nouveau numérateur\\nEtape $2$ : Multiplier $D$ par $M$ pour trouver le nouveau dénominateur\\nEtape $3$ : Afficher le résultat sous la forme d'une fraction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme suit la règle mathématique : pour ne pas changer la valeur de la fraction, on applique la même multiplication en haut et en bas.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application au code",
+      "content": "Voici un début de code : \\nNouveau\\_Numérateur = $N \\times M$\\nNouveau\\_Dénominateur = $D \\times M$\\nSi $N = 3$, $D = 4$ et $M = 5$, quel est le résultat final produit par cet algorithme ?",
+      "correctAnswer": "Nouveau\\_Numérateur : $3 \\times 5 = 15$\\nNouveau\\_Dénominateur : $4 \\times 5 = 20$\\nRésultat : $\\frac{15}{20}$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En appliquant les valeurs au code, on multiplie le numérateur $3$ par $5$ pour obtenir $15$, et le dénominateur $4$ par $5$ pour obtenir $20$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Fraction initiale"
+      }
+    }
+  ]
+}

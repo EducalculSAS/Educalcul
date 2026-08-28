@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 331,
+  "_course_code": "6eme-t01-c01-numeration-et-grands-nombres",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Numération et grands nombres",
+  "title": "Applications de la numération : mise en ordre",
+  "blocks": [
+    {
+      "title": "Ordre croissant de grands nombres",
+      "content": "Range les nombres suivants par ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "3 456 789",
+        "34 567 890",
+        "345 678 901",
+        "3 456 789 012"
+      ],
+      "explanation": "On compare d'abord le nombre de chiffres (l'ordre de grandeur). $3 456 789$ a 7 chiffres (millions), $34 567 890$ en a 8 (dizaines de millions), $345 678 901$ en a 9 (centaines de millions) et $3 456 789 012$ en a 10 (milliards). Le plus petit est donc celui qui a le moins de chiffres, puis on suit l'augmentation du nombre de chiffres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant avec nombres à même nombre de chiffres",
+      "content": "Range les nombres suivants par ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "3 000 400",
+        "3 040 000",
+        "3 400 000",
+        "34 000 000"
+      ],
+      "explanation": "Les trois premiers nombres ont 7 chiffres (millions), le dernier en a 8 (dizaines de millions), il est donc le plus grand. Pour les trois premiers, on compare chiffre par chiffre en partant de la gauche : les millions sont identiques (3), on compare les centaines de milliers : $0 < 4$, donc $3 000 400 < 3 400 000$. Pour départager $3 000 400$ et $3 040 000$, on regarde les dizaines de milliers : $0 < 4$, donc $3 000 400 < 3 040 000$. L'ordre final est : $3 000 400 < 3 040 000 < 3 400 000 < 34 000 000$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Mise en ordre de distances réelles",
+      "content": "Range ces distances par ordre croissant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "40 075 km",
+        "384 400 km",
+        "149 600 000 km",
+        "778 000 000 km"
+      ],
+      "explanation": "On identifie l'ordre de grandeur de chaque distance : $40 075$ km (circonférence de la Terre) est dans les dizaines de milliers (5 chiffres) ; $384 400$ km (distance Terre-Lune) est dans les centaines de milliers (6 chiffres) ; $149 600 000$ km (distance Terre-Soleil) est dans les centaines de millions (9 chiffres) ; $778 000 000$ km (distance Terre-Jupiter environ) est aussi dans les centaines de millions (9 chiffres) mais le chiffre des centaines de millions est 7 contre 1 pour le Soleil, donc elle est plus grande. L'ordre croissant est donc : $40 075 < 384 400 < 149 600 000 < 778 000 000$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

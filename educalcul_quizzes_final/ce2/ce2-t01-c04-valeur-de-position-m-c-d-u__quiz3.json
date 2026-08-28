@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 145,
+  "_course_code": "ce2-t01-c04-valeur-de-position-m-c-d-u",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Expliquer l'effet d'un zéro",
+  "title": "Quiz : L'effet du zéro dans l'écriture des nombres",
+  "questions": [
+    {
+      "text": "Dans le nombre $405$, que représente le chiffre $0$ ?",
+      "options": [
+        "Zéro unité",
+        "Zéro dizaine",
+        "Zéro centaine",
+        "Rien du tout, on ne l'écrit pas"
+      ],
+      "correctAnswer": "Zéro dizaine",
+      "explanation": "Dans le nombre $405$, les chiffres occupent des positions précises : le $4$ est au rang des centaines ($400$), le $0$ est au rang des dizaines ($0 \\times 10 = 0$) et le $5$ est au rang des unités. Le zéro indique qu'il n'y a aucune dizaine. Il sert de \"marqueur de position\" pour que le $4$ reste aux centaines et le $5$ aux unités. Sans lui, le nombre serait $45$ (quarante-cinq) et non $405$ (quatre cent cinq).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pourquoi les nombres $208$ et $28$ sont-ils différents ?",
+      "options": [
+        "Parce que le $0$ vaut $10$",
+        "Parce que le $0$ indique qu'il n'y a pas de dizaine dans $208$",
+        "Parce que le $2$ a changé de place",
+        "Parce que le $8$ vaut $80$ dans $208$"
+      ],
+      "correctAnswer": "Parce que le $0$ indique qu'il n'y a pas de dizaine dans $208$",
+      "explanation": "Dans $208$, le $0$ se trouve au rang des dizaines. Il montre qu'il y a $0$ dizaine. Cela permet au $2$ de rester au rang des centaines ($200$) et au $8$ au rang des unités. Dans $28$, le $2$ est au rang des dizaines ($20$) et le $8$ aux unités. Le zéro est donc indispensable pour garder la valeur de position des autres chiffres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On dicte le nombre \"six cent trois\". Quelle écriture en chiffres est correcte ?",
+      "options": [
+        "$63$",
+        "$603$",
+        "$630$",
+        "$6003$"
+      ],
+      "correctAnswer": "$603$",
+      "explanation": "\"Six cent trois\" signifie $6$ centaines ($600$), $0$ dizaine (car \"trois\" suit directement \"cent\" sans mot pour les dizaines comme \"vingt\" ou \"trente\") et $3$ unités. Il faut donc écrire un $0$ au rang des dizaines pour garder la place : $603$. L'option $63$ fait soixante-trois, $630$ fait six cent trente et $6003$ fait six mille trois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le tableau de numération ci-dessous. Que signifie le $0$ au milieu du nombre ?",
+      "options": [
+        "Il n'a aucune utilité",
+        "Il signifie qu'il n'y a pas de centaine",
+        "Il signifie qu'il n'y a pas de dizaine",
+        "Il signifie que le nombre s'arrête là"
+      ],
+      "correctAnswer": "Il signifie qu'il n'y a pas de dizaine",
+      "explanation": "Le tableau montre le nombre $502$ : $5$ au rang des centaines, $0$ au rang des dizaines et $2$ au rang des unités. Le zéro occupe la colonne des dizaines. Il indique qu'il y a $0$ groupe de dix. Sans ce zéro, les chiffres se décaleraient et le nombre deviendrait $52$ (cinquante-deux).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 502,
+        "caption": "Tableau de numération pour 502"
+      }
+    },
+    {
+      "text": "Dans le nombre $1\\,002$, à quoi servent les deux zéros ?",
+      "options": [
+        "Ils ne servent à rien, on pourrait les enlever",
+        "Ils indiquent qu'il n'y a ni centaine ni dizaine",
+        "Ils indiquent qu'il n'y a ni mille ni unité",
+        "Ils font que le nombre vaut $12$"
+      ],
+      "correctAnswer": "Ils indiquent qu'il n'y a ni centaine ni dizaine",
+      "explanation": "Le nombre $1\\,002$ se décompose en $1$ mille, $0$ centaine, $0$ dizaine et $2$ unités. Le premier zéro (après le $1$) occupe la place des centaines, le second occupe la place des dizaines. Ils sont les \"gardiens des places\" : ils empêchent le $1$ de glisser vers les centaines et le $2$ de glisser vers les dizaines. Sans eux, le nombre s'écrirait $12$ (douze) et vaudrait mille fois moins.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

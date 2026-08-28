@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 532,
+  "_course_code": "2nde-t06-c06-simulation",
+  "_level": "2nde",
+  "_subject": "Statistiques, information chiffrée et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Simulation : mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Simulation d'une expérience aléatoire simple",
+      "content": "Rangez les étapes dans l'ordre chronologique pour simuler un lancer de dé équilibré à l'aide d'un générateur de nombres aléatoires uniformes sur [0,1].",
+      "items": [
+        "Définir l'expérience aléatoire et les issues possibles.",
+        "Associer chaque issue à un intervalle de valeurs du générateur.",
+        "Générer un nombre aléatoire uniforme entre 0 et 1.",
+        "Déterminer l'issue correspondante selon l'intervalle.",
+        "Répéter l'opération un grand nombre de fois pour obtenir un échantillon."
+      ],
+      "explanation": "Il faut d'abord définir l'expérience et ses issues, puis associer des intervalles au générateur uniforme, générer un nombre, déterminer l'issue, et répéter pour obtenir un échantillon représentatif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation de probabilité par Monte-Carlo",
+      "content": "Placez les étapes dans l'ordre correct pour estimer une probabilité grâce à la méthode de Monte-Carlo.",
+      "items": [
+        "Modéliser l'expérience aléatoire par un algorithme de simulation.",
+        "Exécuter l'algorithme un grand nombre de fois N.",
+        "Compter le nombre de succès k observés.",
+        "Calculer la fréquence k/N comme estimation de la probabilité.",
+        "Évaluer la précision de l'estimation (par exemple intervalle de confiance)."
+      ],
+      "explanation": "La méthode de Monte-Carlo consiste à modéliser l'expérience, la simuler de nombreuses fois, compter les succès, calculer la fréquence comme estimation, puis évaluer la précision.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'une loi binomiale et intervalle de confiance",
+      "content": "Ordonnez les étapes pour simuler une loi binomiale B(n,p) et en déduire un intervalle de confiance au seuil 95 %.",
+      "items": [
+        "Choisir les paramètres n et p de la loi binomiale.",
+        "Simuler N échantillons de taille n en répétant n fois une variable de Bernoulli de paramètre p.",
+        "Pour chaque échantillon, calculer le nombre de succès X_i.",
+        "Calculer la moyenne X̄ et l'écart type s des X_i.",
+        "Construire l'intervalle de confiance X̄ ± 1,96 s/√N."
+      ],
+      "explanation": "Pour simuler une loi binomiale, on choisit les paramètres, on génère des échantillons en répétant des variables de Bernoulli, on compte les succès par échantillon, on calcule moyenne et écart type, puis on construit l'intervalle de confiance au seuil 95 %.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

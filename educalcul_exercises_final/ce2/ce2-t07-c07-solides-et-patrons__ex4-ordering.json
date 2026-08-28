@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 202,
+  "_course_code": "ce2-t07-c07-solides-et-patrons",
+  "_level": "ce2",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Application : Solides et patrons",
+  "title": "Solides et patrons : Ordre des opérations",
+  "blocks": [
+    {
+      "title": "Vérifier un patron de cube",
+      "content": "Range les étapes dans l'ordre chronologique pour vérifier si un patron donné peut former un cube.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Compter le nombre de carrés (il doit y en avoir 6).",
+        "Vérifier que les carrés sont bien joints par des côtés entiers.",
+        "Plier mentalement le patron le long des traits pour former le volume.",
+        "S'assurer que toutes les faces se rejoignent sans trou ni chevauchement pour former un cube fermé."
+      ],
+      "explanation": "Pour valider un patron de cube, on commence par compter les faces : un cube a 6 faces, donc 6 carrés. Ensuite, on vérifie la connexion : les carrés doivent être attachés par un côté complet, pas juste un coin. Puis on simule le pliage pour voir si le volume se forme. Enfin, on contrôle que le solide est bien fermé, sans face manquante ni faces qui se superposent.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 3,
+        "height": 3,
+        "depth": 3,
+        "caption": "Exemple de patron de cube valide"
+      }
+    },
+    {
+      "title": "Construire un pavé droit à partir de son patron",
+      "content": "Classe les actions dans l'ordre pour fabriquer un pavé droit en carton à partir de son patron découpé.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Marquer les plis en repliant soigneusement le long de chaque trait.",
+        "Appliquer de la colle sur les languettes prévues à cet effet.",
+        "Rabattre les faces latérales vers le haut pour former les parois.",
+        "Maintenir les languettes collées quelques instants jusqu'à ce que le solide tienne tout seul."
+      ],
+      "explanation": "La construction suit un ordre logique : on prépare d'abord les plis pour que le carton plie net aux bons endroits. Ensuite, on met la colle sur les languettes (les petites bandes ajoutées pour l'assemblage). On relève ensuite les faces pour donner la forme du pavé. Enfin, on presse les languettes collées contre les faces adjacentes pour assurer la solidité du montage.",
+      "points": 2,
+      "figure": {
+        "type": "net_folder",
+        "solid": "rectangular_prism",
+        "width": 4,
+        "height": 3,
+        "depth": 2,
+        "caption": "Patron d'un pavé droit avec languettes"
+      }
+    },
+    {
+      "title": "Passer du solide au patron",
+      "content": "Range les étapes dans l'ordre pour obtenir le patron d'un cube en le faisant rouler sur une feuille de papier.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Poser le cube sur une face et tracer son contour au crayon.",
+        "Faire basculer le cube sur une face adjacente non encore tracée.",
+        "Tracer le contour de cette nouvelle face collée à la précédente.",
+        "Répéter l'opération jusqu'à ce que les 6 faces soient tracées sur la feuille.",
+        "Découper la figure obtenue pour récupérer le patron du cube."
+      ],
+      "explanation": "Cette méthode appelée 'rouler le solide' permet de construire un patron. On commence par tracer la face du dessous. On bascule le cube sur un côté pour tracer la face voisine, bord à bord avec la première. On continue de faire rouler le cube sur ses arêtes pour tracer toutes les faces une par une. Une fois les 6 faces reportées, la figure plane découpée est un patron du cube.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

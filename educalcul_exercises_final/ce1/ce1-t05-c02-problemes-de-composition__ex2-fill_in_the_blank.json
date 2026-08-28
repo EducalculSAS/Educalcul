@@ -1,0 +1,114 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 109,
+  "_course_code": "ce1-t05-c02-problemes-de-composition",
+  "_level": "ce1",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Chercher une partie",
+  "title": "Problèmes de composition : chercher une partie",
+  "blocks": [
+    {
+      "title": "Les oiseaux sur le fil",
+      "content": "Il y a $12$ oiseaux sur un fil. $7$ sont des moineaux, les autres sont des mésanges.\\nPour trouver le nombre de mésanges, je retire le nombre de moineaux du total.\\nJe calcule $12 - 7 = {{1}}$.\\nIl y a {{2}} mésanges.",
+      "correctAnswer": "",
+      "blanks": [
+        "5",
+        "5|cinq"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est un problème de composition où l'on connaît le total ($12$) et une partie ($7$ moineaux). Pour trouver l'autre partie (les mésanges), on soustrait la partie connue du total : $12 - 7 = 5$. Il y a donc $5$ mésanges.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 12,
+            "tone": "gray"
+          },
+          {
+            "label": "Moineaux",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Mésanges",
+            "value": 5,
+            "tone": "green"
+          }
+        ],
+        "caption": "Représentation du total et des deux parties"
+      }
+    },
+    {
+      "title": "Les livres de la bibliothèque",
+      "content": "La bibliothèque possède $45$ livres. $23$ sont des albums, le reste sont des documentaires.\\nJe cherche le nombre de documentaires.\\nJe fais $45 - 23 = {{1}}$.\\nIl y a {{2}} documentaires.",
+      "correctAnswer": "",
+      "blanks": [
+        "22",
+        "22|vingt-deux"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On connaît le nombre total de livres ($45$) et le nombre d'albums ($23$). Les documentaires forment l'autre partie. On effectue la soustraction $45 - 23$. $5 - 3 = 2$ (unités) et $4 - 2 = 2$ (dizaines), ce qui donne $22$. Il y a $22$ documentaires.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 45,
+            "tone": "gray"
+          },
+          {
+            "label": "Albums",
+            "value": 23,
+            "tone": "blue"
+          },
+          {
+            "label": "Documentaires",
+            "value": 22,
+            "tone": "green"
+          }
+        ],
+        "caption": "Représentation du total et des deux parties"
+      }
+    },
+    {
+      "title": "Les élèves de l'école",
+      "content": "Dans une école, il y a $63$ élèves. $27$ sont en CP, les autres sont en CE1.\\nPour savoir combien d'élèves sont en CE1, je calcule $63 - 27 = {{1}}$.\\nIl y a {{2}} élèves en CE1.",
+      "correctAnswer": "",
+      "blanks": [
+        "36",
+        "36|trente-six"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le total est $63$ élèves. La partie connue est les CP ($27$). La partie demandée est les CE1. On soustrait $27$ à $63$. Comme on ne peut pas faire $3 - 7$ aux unités, on fait une retenue : on décompose une dizaine en $10$ unités. $13 - 7 = 6$ (unités). Il reste $5$ dizaines. $5 - 2 = 3$ (dizaines). Le résultat est $36$. Il y a $36$ élèves en CE1.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Total",
+            "value": 63,
+            "tone": "gray"
+          },
+          {
+            "label": "CP",
+            "value": 27,
+            "tone": "blue"
+          },
+          {
+            "label": "CE1",
+            "value": 36,
+            "tone": "green"
+          }
+        ],
+        "caption": "Représentation du total et des deux parties"
+      }
+    }
+  ]
+}

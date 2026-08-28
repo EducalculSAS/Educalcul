@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 360,
+  "_course_code": "6eme-t06-c04-cercle",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Constructions",
+  "title": "Constructions géométriques liées au cercle - 6e",
+  "questions": [
+    {
+      "text": "Quelle est la première étape pour tracer un cercle de centre O et de rayon $r$ à l'aide d'un compas ?",
+      "options": [
+        "Placer la pointe du compas sur O et ouvrir le compas à la longueur $r$.",
+        "Tracer un segment de longueur $r$ puis le reporter.",
+        "Tracer un diamètre passant par O.",
+        "Mesurer $r$ avec une règle et le reporter sur le papier."
+      ],
+      "correctAnswer": "Placer la pointe du compas sur O et ouvrir le compas à la longueur $r$.",
+      "explanation": "La construction d'un cercle avec un compas consiste à fixer la pointe au centre O et à régler l'écartement du compas sur la longueur du rayon $r$. Les autres options décrivent des étapes inutiles ou incorrectes pour cette construction de base.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire la médiatrice d'un segment AB, quelle propriété utilise-t-on ?",
+      "options": [
+        "Les points équidistants de A et B appartiennent à la médiatrice.",
+        "La médiatrice passe par le milieu de AB et est parallèle à AB.",
+        "La médiatrice est le lieu des points alignés avec A et B.",
+        "La médiatrice est le cercle de centre A passant par B."
+      ],
+      "correctAnswer": "Les points équidistants de A et B appartiennent à la médiatrice.",
+      "explanation": "La médiatrice d'un segment est l'ensemble des points du plan qui sont à égale distance des deux extrémités du segment. C'est cette propriété qui permet de la tracer à l'aide d'un compas en traçant deux arcs de même rayon centrés en A et en B.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment construire un angle égal à un angle donné $\\widehat{XOY}$ en un point P sur une droite ?",
+      "options": [
+        "Tracer un arc de cercle centré en O coupant les côtés, reporter le même rayon en P, tracer un arc, puis reporter la longueur de l'interception.",
+        "Mesurer l'angle avec un rapporteur et le reporter.",
+        "Tracer une parallèle à OX passant par P.",
+        "Tracer le symétrique de O par rapport à P."
+      ],
+      "correctAnswer": "Tracer un arc de cercle centré en O coupant les côtés, reporter le même rayon en P, tracer un arc, puis reporter la longueur de l'interception.",
+      "explanation": "La construction à la règle et au compas d'un angle égal consiste à reproduire l'interception de l'arc sur les côtés de l'angle original. L'utilisation du rapporteur n'est pas une construction géométrique classique, et les autres options ne produisent pas un angle égal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces constructions permet de tracer une tangente à un cercle de centre O passant par un point extérieur A ?",
+      "options": [
+        "Tracer le segment OA, construire son milieu M, tracer le cercle de centre M passant par O et A, les intersections avec le cercle donné donnent les points de tangence.",
+        "Tracer le diamètre passant par A.",
+        "Tracer le cercle de centre A et de rayon OA.",
+        "Tracer la médiatrice de OA."
+      ],
+      "correctAnswer": "Tracer le segment OA, construire son milieu M, tracer le cercle de centre M passant par O et A, les intersections avec le cercle donné donnent les points de tangence.",
+      "explanation": "La méthode classique utilise le fait que l'angle inscrit dans un demi-cercle est droit. Le cercle de diamètre OA coupe le cercle donné en deux points ; les droites reliant A à ces points sont les tangentes. Les autres propositions ne donnent pas les points de tangence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire un cercle passant par trois points non alignés A, B, C, quelle est la méthode ?",
+      "options": [
+        "Construire les médiatrices de AB et BC, leur intersection est le centre du cercle.",
+        "Tracer les segments AB, BC, CA et prendre leur milieu.",
+        "Tracer le cercle de centre A passant par B.",
+        "Tracer la bissectrice de l'angle ABC."
+      ],
+      "correctAnswer": "Construire les médiatrices de AB et BC, leur intersection est le centre du cercle.",
+      "explanation": "Le centre du cercle circonscrit à un triangle est l'intersection des médiatrices de deux côtés du triangle. Ce point est équidistant des trois sommets, ce qui permet de tracer le cercle passant par A, B et C. Les autres options ne localisent pas correctement le centre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

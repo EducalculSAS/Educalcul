@@ -1,0 +1,175 @@
+{
+  "_status": "done",
+  "_course_id": 407,
+  "_course_code": "5eme-t06-c03-diagrammes-et-representations",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Diagrammes et représentations",
+  "title": "Quiz : Diagrammes et représentations (5e)",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente les sports préférés d'une classe de 5e. Combien d'élèves ont choisi le football ?",
+      "options": [
+        "10 élèves",
+        "12 élèves",
+        "8 élèves",
+        "5 élèves"
+      ],
+      "correctAnswer": "12 élèves",
+      "explanation": "Sur le diagramme, la barre correspondant au sport « Football » monte jusqu'à la graduation 12 sur l'axe vertical (effectifs). Les autres valeurs correspondent au tennis (8), à la natation (10) et au judo (5).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Sports préférés de la classe",
+        "bars": [
+          {
+            "label": "Football",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Tennis",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Natation",
+            "value": 10,
+            "tone": "navy"
+          },
+          {
+            "label": "Judo",
+            "value": 5,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme circulaire montre la répartition des animaux de compagnie chez 40 élèves. La part « Chien » occupe 30 % du cercle. Combien d'élèves ont un chien ?",
+      "options": [
+        "10 élèves",
+        "12 élèves",
+        "15 élèves",
+        "20 élèves"
+      ],
+      "correctAnswer": "12 élèves",
+      "explanation": "Il faut calculer 30 % de 40 élèves. $30 \\% \\times 40 = 0,3 \\times 40 = 12$. Donc 12 élèves ont un chien. Les autres options correspondent à 25 %, 37,5 % et 50 % de l'effectif total.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Animaux de compagnie (40 élèves)",
+        "slices": [
+          {
+            "label": "Chat",
+            "value": 50,
+            "tone": "blue"
+          },
+          {
+            "label": "Chien",
+            "value": 30,
+            "tone": "green"
+          },
+          {
+            "label": "Oiseau",
+            "value": 10,
+            "tone": "navy"
+          },
+          {
+            "label": "Autre",
+            "value": 10,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "On souhaite représenter la répartition des notes (sur 20) obtenues par les élèves de la classe à un contrôle. Quel type de diagramme est le plus adapté ?",
+      "options": [
+        "Un diagramme en barres",
+        "Un diagramme circulaire",
+        "Une boîte à moustaches",
+        "Un histogramme"
+      ],
+      "correctAnswer": "Un diagramme en barres",
+      "explanation": "Les notes sur 20 sont des valeurs numériques discrètes (entiers de 0 à 20). En 5e, le diagramme en barres est l'outil standard pour représenter la distribution d'une variable quantitative discrète (effectif pour chaque valeur). Le diagramme circulaire est réservé aux proportions de catégories qualitatives. La boîte à moustaches et l'histogramme sont étudiés plus tard (cycle 4) pour des effectifs plus grands ou variables continues.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres indique le nombre de livres lus par Lucas du lundi au vendredi. La moyenne quotidienne est de 7 livres. Combien de livres a-t-il lus le mercredi ?",
+      "options": [
+        "7 livres",
+        "9 livres",
+        "10 livres",
+        "8 livres"
+      ],
+      "correctAnswer": "9 livres",
+      "explanation": "La moyenne sur 5 jours est de 7, donc le total des livres lus dans la semaine est $5 \\times 7 = 35$. Les barres connues donnent : Lundi 5, Mardi 8, Jeudi 6, Vendredi 7. La somme de ces quatre jours est $5 + 8 + 6 + 7 = 26$. Le nombre du mercredi est $35 - 26 = 9$ livres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Livres lus par Lucas (lundi à vendredi)",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 0,
+            "tone": "gray"
+          },
+          {
+            "label": "Jeudi",
+            "value": 6,
+            "tone": "navy"
+          },
+          {
+            "label": "Vendredi",
+            "value": 7,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau ci-dessous donne le nombre de garçons et de filles dans deux classes de 5e. Dans quelle classe le nombre total d'élèves est-il le plus grand ?",
+      "options": [
+        "La 5e A",
+        "La 5e B",
+        "Les deux classes ont le même effectif",
+        "On ne peut pas le savoir"
+      ],
+      "correctAnswer": "La 5e A",
+      "explanation": "Il faut calculer le total pour chaque classe. Pour la 5e A : $14 + 12 = 26$ élèves. Pour la 5e B : $15 + 10 = 25$ élèves. L'effectif de la 5e A (26) est strictement supérieur à celui de la 5e B (25).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Classe",
+          "Garçons",
+          "Filles"
+        ],
+        "rows": [
+          [
+            "5e A",
+            "14",
+            "12"
+          ],
+          [
+            "5e B",
+            "15",
+            "10"
+          ]
+        ]
+      }
+    }
+  ]
+}

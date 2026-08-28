@@ -1,0 +1,452 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.184120+00:00",
+  "id": 226,
+  "code": "cm1-t03-c01",
+  "title": "Addition et soustraction d'entiers",
+  "description": "Cours structuré Educalcul : Addition et soustraction d'entiers.",
+  "subject": "Calcul mental et quatre opérations",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Calcul mental et quatre opérations",
+    "titre_du_cours": "Addition et soustraction d'entiers",
+    "objectif_global": "Addition et soustraction d'entiers",
+    "mini_lecons_imposees": [
+      "Mental / posé.",
+      "Retenues et échanges.",
+      "Estimation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et quatre opérations",
+      "lessons": [
+        {
+          "title": "Mental / posé.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer en ligne ou en colonne ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu es au marché avec $15$ euros dans ta poche. Tu veux acheter un livre à $7$ euros et un cahier à $5$ euros. Est-ce que tu as assez ? Dans ta tête, tu fais $7 + 5 = 12$, il te reste $3$ euros. C'est du calcul mental : rapide, sans papier, parfait pour les petits nombres du quotidien. Mais si le livre coûte $247$ euros et le cahier $186$ euros, l'addition devient trop lourde à garder en mémoire. C'est là que le calcul posé entre en scène, comme un petit échafaudage qui tient les chiffres bien droits pour ne pas les mélanger."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien poser une addition ou une soustraction, la règle d'or est l'alignement : les unités sous les unités, les dizaines sous les dizaines, les centaines sous les centaines. Si tu écris $247 + 186$ en décalant les chiffres, tu risques d'additionner des centaines avec des dizaines, et le résultat sera faux. Prends le temps de tracer tes colonnes proprement, comme si tu rangeais des boîtes sur des étagères : chaque chiffre à sa place."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 247,
+              "caption": "247 : 2 centaines, 4 dizaines, 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant comment on écrit l'addition posée. On place le premier nombre au-dessus, le second en dessous, le trait de séparation, et on commence toujours par la colonne des unités, à droite. Pour $247 + 186$, on additionne $7 + 6 = 13$. On écrit le $3$ dans la colonne des unités, et le $1$ (qui vaut une dizaine) on le met en petit au-dessus de la colonne des dizaines : c'est une retenue, on y reviendra. Ensuite $4 + 8 + 1 = 13$ dizaines, on écrit $3$ et on retient $1$ centaine. Enfin $2 + 1 + 1 = 4$ centaines. Le total est $433$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "247",
+                "186"
+              ],
+              "result": "433",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la soustraction posée, même principe : on aligne, on commence par les unités. Si le chiffre du haut est plus petit que celui du bas, on ne peut pas enlever directement. Par exemple $52 - 28$ : dans les unités, $2 - 8$ impossible. On va chercher une dizaine dans la colonne de gauche, on la transforme en $10$ unités. Le $5$ dizaines devient $4$ dizaines, et les $2$ unités deviennent $12$ unités. Maintenant $12 - 8 = 4$, et $4 - 2 = 2$ dizaines. Résultat : $24$."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "52",
+                "28"
+              ],
+              "result": "24",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Alors, mental ou posé ? Pose-toi la question : est-ce que je peux le faire dans ma tête sans me tromper ? Si les nombres ont trois chiffres ou plus, ou s'il y a plusieurs retenues, le posé est ton filet de sécurité. Pour $50 + 30$ ou $100 - 45$, le mental est plus vite. Entraîne-toi à repérer les additions faciles (compléments à $10$, à $100$) pour gagner du temps. Le bon calculateur, c'est celui qui choisit l'outil adapté à la situation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule mentalement : $45 + 30$, $100 - 60$, $250 + 100$, $80 - 30$.",
+              "answer": "$75$, $40$, $350$, $50$",
+              "hint": "Repère les dizaines et les centaines, ajoute ou enlève seulement les chiffres des dizaines ou des centaines.",
+              "explanation": "Pour $45 + 30$, on ajoute $3$ dizaines à $4$ dizaines : $7$ dizaines = $75$. Pour $100 - 60$, on enlève $6$ dizaines de $10$ dizaines : $4$ dizaines = $40$."
+            },
+            {
+              "question": "Pose et calcule : $362 + 148$.",
+              "answer": "$510$",
+              "hint": "Aligne bien les chiffres : unités sous unités, dizaines sous dizaines, centaines sous centaines. Commence par la colonne des unités.",
+              "explanation": "$2 + 8 = 10$, j'écris $0$ unité, je retiens $1$ dizaine. $6 + 4 + 1 = 11$ dizaines, j'écris $1$ dizaine, je retiens $1$ centaine. $3 + 1 + 1 = 5$ centaines. Résultat : $510$."
+            },
+            {
+              "question": "Pose et calcule : $405 - 178$.",
+              "answer": "$227$",
+              "hint": "Dans les unités, $5 - 8$ impossible. Va chercher une dizaine... mais il y a $0$ dizaine ! Il faut aller chercher aux centaines.",
+              "explanation": "Je transforme $1$ centaine en $10$ dizaines : $0$ dizaine devient $10$ dizaines. Je prête $1$ dizaine aux unités : $10$ dizaines devient $9$ dizaines, $5$ unités devient $15$ unités. $15 - 8 = 7$, $9 - 7 = 2$, $3 - 1 = 2$. Résultat : $227$."
+            },
+            {
+              "question": "Pour chaque calcul, choisis : mental ou posé ? $600 + 300$, $428 + 195$, $50 - 15$, $1000 - 250$.",
+              "answer": "Mental, Posé, Mental, Mental",
+              "hint": "Regarde le nombre de chiffres et s'il y a des retenues compliquées. Les centaines rondes se font bien en mental.",
+              "explanation": "$600 + 300 = 900$ (centaines rondes). $428 + 195$ a trois chiffres et des retenues : posé. $50 - 15 = 35$ (complément à $10$). $1000 - 250 = 750$ (dizaines/centaines rondes)."
+            }
+          ]
+        },
+        {
+          "title": "Retenues et échanges.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les chiffres débordent : retenues et échanges"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà vu qu'en addition, quand la somme d'une colonne dépasse $9$, on ne peut pas tout écrire dans cette colonne. On garde le chiffre des unités sur place, et le chiffre des dizaines « monte » au-dessus de la colonne suivante. C'est la retenue. Mais sais-tu pourquoi on fait ça ? C'est un échange : $10$ unités, ça fait exactement $1$ dizaine. On regroupe $10$ petites billes pour en faire une grosse, comme quand on change dix pièces de $1$ euro contre un billet de $10$ euros. La valeur ne change pas, seulement la façon de la ranger."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 13,
+              "caption": "13 unités = 1 dizaine + 3 unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Additionner les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $268 + 157$, on commence par $8 + 7 = 15$. J'écris $5$ dans la colonne des unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Noter la retenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le $1$ de $15$ vaut une dizaine. Je l'écris en petit au-dessus de la colonne des dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les dizaines avec la retenue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Maintenant $6 + 5 + 1 (retenue) = 12$ dizaines. J'écris $2$ dans les dizaines, je retiens $1$ centaine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additionner les centaines",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2 + 1 + 1 (retenue) = 4$ centaines. Résultat final : $425$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "En soustraction, c'est l'inverse : quand le chiffre du haut est trop petit, on « casse » une unité de la colonne de gauche. Une centaine, ça fait $10$ dizaines. Une dizaine, ça fait $10$ unités. On échange une grosse pièce contre dix petites pour pouvoir enlever ce qu'on doit. C'est comme si tu avais un billet de $10$ euros et que tu devais payer $3$ euros : tu changes ton billet en dix pièces de $1$ euro, tu donnes $3$ pièces, il t'en reste $7$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 12,
+              "caption": "1 centaine = 10 dizaines, puis 1 dizaine = 10 unités"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regarder les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $302 - 145$, unités : $2 - 5$ impossible. Je regarde les dizaines : $0$, je ne peux pas prendre. Je vais aux centaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Casser une centaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je transforme $1$ centaine en $10$ dizaines. Il reste $2$ centaines, j'ai maintenant $10$ dizaines."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Casser une dizaine pour les unités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je prends $1$ dizaine sur les $10$, il m'en reste $9$. Je la transforme en $10$ unités : $2 + 10 = 12$ unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Soustraire colonne par colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$12 - 5 = 7$ unités. $9 - 4 = 5$ dizaines. $2 - 1 = 1$ centaine. Résultat : $157$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a plusieurs retenues ou plusieurs échanges dans le même calcul. Pas de panique : on traite chaque colonne dans l'ordre, de la droite vers la gauche, sans se presser. Si tu dois faire deux échanges de suite (comme dans $1000 - 1$), note bien chaque changement : la centaine devient $9$ centaines + $10$ dizaines, puis une dizaine devient $9$ dizaines + $10$ unités. Écris les petites retenues au-dessus des colonnes pour ne rien oublier, c'est ton pense-bête."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "1000",
+                "1"
+              ],
+              "result": "999",
+              "carries": [
+                "1",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Une astuce de pro pour vérifier : l'addition et la soustraction sont des opérations inverses. Si tu as calculé $425 - 157 = 268$, refais l'addition $268 + 157$. Si tu retrouves $425$, ton calcul est bon. Si ce n'est pas le même nombre, reprends ton posé tranquillement, colonne par colonne. C'est comme relire un message avant de l'envoyer : ça évite les bêtises."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule posé : $476 + 289$.",
+              "answer": "$765$",
+              "hint": "Ajoute les unités : $6 + 9 = 15$. Écris $5$, retiens $1$. Continue avec les dizaines en ajoutant la retenue.",
+              "explanation": "$6 + 9 = 15$ (j'écris $5$, je retiens $1$). $7 + 8 + 1 = 16$ (j'écris $6$, je retiens $1$). $4 + 2 + 1 = 7$. Résultat : $765$."
+            },
+            {
+              "question": "Calcule posé : $503 - 267$.",
+              "answer": "$236$",
+              "hint": "Unités : $3 - 7$ impossible. Les dizaines sont à $0$. Il faut aller chercher aux centaines.",
+              "explanation": "Je transforme $1$ centaine en $10$ dizaines : $5$ centaines $\\rightarrow$ $4$ centaines, $0$ dizaine $\\rightarrow$ $10$ dizaines. Je prête $1$ dizaine aux unités : $10$ dizaines $\\rightarrow$ $9$ dizaines, $3$ unités $\\rightarrow$ $13$ unités. $13 - 7 = 6$, $9 - 6 = 3$, $4 - 2 = 2$. Résultat : $236$."
+            },
+            {
+              "question": "Calcule : $8002 - 3987$.",
+              "answer": "$4015$",
+              "hint": "Il y a des zéros au milieu. Prends ton temps pour faire les échanges un par un, de la gauche vers la droite.",
+              "explanation": "Je casse $1$ millier en $10$ centaines ($7$ milliers, $10$ centaines). Je casse $1$ centaine en $10$ dizaines ($9$ centaines, $10$ dizaines). Je casse $1$ dizaine en $10$ unités ($9$ dizaines, $12$ unités). $12-7=5$, $9-8=1$, $9-9=0$, $7-3=4$. Résultat : $4015$."
+            },
+            {
+              "question": "Vérifie si ce calcul est correct en faisant l'opération inverse : $642 - 289 = 353$.",
+              "answer": "Non, le résultat exact est $353$ (le calcul donné est correct).",
+              "hint": "Additionne le résultat trouvé ($353$) au nombre qu'on a soustrait ($289$). Dois-tu retrouver $642$ ?",
+              "explanation": "$353 + 289 = 642$. L'addition retrouve le nombre de départ, donc la soustraction $642 - 289 = 353$ est correcte."
+            }
+          ]
+        },
+        {
+          "title": "Estimation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer pour voir si ça tient la route"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de te lancer dans un long calcul posé, il est malin de faire une estimation. C'est comme regarder la météo avant de sortir : ça te donne une idée approximative pour ne pas être surpris. Si tu dois additionner $487 + 312$, tu peux arrondir chaque nombre à la centaine la plus proche : $487$ est plus près de $500$ que de $400$, et $312$ est plus près de $300$ que de $400$. Ton estimation : $500 + 300 = 800$. Le vrai résultat sera aux alentours de $800$, pas $1200$ ni $500$."
+            },
+            {
+              "type": "number_line",
+              "min": 400,
+              "max": 600,
+              "points": [
+                {
+                  "value": 487,
+                  "label": "487"
+                },
+                {
+                  "value": 500,
+                  "label": "500"
+                }
+              ],
+              "caption": "487 est plus près de 500 que de 400"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour arrondir à la dizaine ou à la centaine, regarde le chiffre juste à droite de celle qui t'intéresse. Pour arrondir $487$ à la centaine, regarde les dizaines : c'est $8$. Comme $8 \\ge 5$, on arrondit à la centaine supérieure : $500$. Pour $312$, le chiffre des dizaines est $1$ ($< 5$), on arrondit à la centaine inférieure : $300$. Cette règle du « $5$ ou plus, j'arrondis au-dessus » marche aussi pour les dizaines : $64$ s'arrondit à $60$ (unité $4 < 5$), $67$ s'arrondit à $70$ (unité $7 \\ge 5$)."
+            },
+            {
+              "type": "number_line",
+              "min": 60,
+              "max": 80,
+              "points": [
+                {
+                  "value": 64,
+                  "label": "64"
+                },
+                {
+                  "value": 67,
+                  "label": "67"
+                },
+                {
+                  "value": 70,
+                  "label": "70"
+                }
+              ],
+              "caption": "Arrondi à la dizaine : 64 → 60, 67 → 70"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilisons l'arrondi pour estimer une addition. Tu as $268 + 415$. Arrondis à la centaine : $268 \\rightarrow 300$ (dizaine $6 \\ge 5$), $415 \\rightarrow 400$ (dizaine $1 < 5$). Somme estimée : $300 + 400 = 700$. Si tu fais le calcul exact et que tu trouves $683$, c'est cohérent : $683$ est bien proche de $700$. Si tu avais trouvé $1083$, l'estimation t'aurait alerté tout de suite : « Attends, c'est trop grand ! » L'estimation, c'est ton filet de sécurité."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Estimation vs résultat exact",
+              "bars": [
+                {
+                  "label": "Estimation",
+                  "value": 700,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Résultat exact",
+                  "value": 683,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour une soustraction, même principe. $842 - 367$ : arrondis à la centaine. $842 \\rightarrow 800$ (dizaine $4 < 5$), $367 \\rightarrow 400$ (dizaine $6 \\ge 5$). Différence estimée : $800 - 400 = 400$. Le calcul exact donne $475$. L'estimation ($400$) et le résultat ($475$) sont dans le même tiroir, c'est bon signe. Attention : en soustraction, arrondir les deux nombres dans le même sens (tous les deux à la centaine inférieure ou supérieure) donne une estimation plus fiable. Essaie plusieurs arrondis pour voir lequel colle le mieux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "L'estimation n'est pas une perte de temps, c'un investissement. Elle t'évite de refaire tout un calcul posé parce qu'une retenue a été oubliée. Avant chaque calcul un peu long, prends dix secondes pour arrondir et additionner ou soustraire mentalement les nombres arrondis. Note ton estimation en petit à côté du calcul. À la fin, compare : si l'écart est gros, relis ton posé. Si l'écart est petit (quelques dizaines), ton calcul est probablement bon. C'est la méthode des mathématiciens : estimer, calculer, vérifier."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais additionner et soustraire en posant l'opération correctement.",
+                "Je sais gérer les retenues en addition et les échanges en soustraction.",
+                "Je sais arrondir un nombre à la dizaine ou à la centaine la plus proche.",
+                "Je sais estimer une somme ou une différence avant de calculer.",
+                "Je sais vérifier mon résultat posé grâce à l'estimation ou à l'opération inverse."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis à la centaine : $248$, $562$, $739$, $104$.",
+              "answer": "$200$, $600$, $700$, $100$",
+              "hint": "Regarde le chiffre des dizaines : s'il est 5 ou plus, arrondis à la centaine du dessus ; sinon, à la centaine du dessous.",
+              "explanation": "$248$ : dizaine $4 < 5 \\rightarrow 200$. $562$ : dizaine $6 \\ge 5 \\rightarrow 600$. $739$ : dizaine $3 < 5 \\rightarrow 700$. $104$ : dizaine $0 < 5 \\rightarrow 100$."
+            },
+            {
+              "question": "Estime le résultat de $374 + 289$ en arrondissant à la centaine.",
+              "answer": "Estimation : $700$ (calcul exact : $663$)",
+              "hint": "Arrondis chaque nombre à la centaine, puis additionne les centaines.",
+              "explanation": "$374 \\rightarrow 400$ (dizaine $7 \\ge 5$). $289 \\rightarrow 300$ (dizaine $8 \\ge 5$). $400 + 300 = 700$. Le résultat exact $663$ est proche de $700$."
+            },
+            {
+              "question": "Estime le résultat de $925 - 468$ en arrondissant à la centaine.",
+              "answer": "Estimation : $400$ (calcul exact : $457$)",
+              "hint": "Arrondis les deux nombres à la centaine, puis fais la soustraction.",
+              "explanation": "$925 \\rightarrow 900$ (dizaine $2 < 5$). $468 \\rightarrow 500$ (dizaine $6 \\ge 5$). $900 - 500 = 400$. Le résultat exact $457$ est dans le voisinage."
+            },
+            {
+              "question": "Tu as calculé $563 + 287 = 750$. L'estimation à la centaine te donne $600 + 300 = 900$. Que dois-tu faire ?",
+              "answer": "Revoir mon calcul posé car l'écart est trop grand.",
+              "hint": "Compare ton résultat ($750$) à l'estimation ($900$). Sont-ils dans le même tiroir ?",
+              "explanation": "L'estimation $900$ et le résultat $750$ diffèrent de $150$, c'est trop. Le calcul exact est $563 + 287 = 850$. Il y a eu une erreur de retenue dans les dizaines."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

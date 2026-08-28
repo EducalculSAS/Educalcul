@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Développer, factoriser, résoudre",
+  "title": "Quiz - Approfondissement : Développer, factoriser, résoudre",
+  "questions": [
+    {
+      "text": "Développez et simplifiez l'expression $(2x-3)(x+4)$.",
+      "options": [
+        "$2x^2+5x-12$",
+        "$2x^2+8x-12$",
+        "$2x^2+5x+12$",
+        "$2x^2-5x-12$"
+      ],
+      "correctAnswer": "$2x^2+5x-12$",
+      "explanation": "On utilise la distributivité : $(2x-3)(x+4)=2x\\cdot x+2x\\cdot4-3\\cdot x-3\\cdot4=2x^2+8x-3x-12=2x^2+5x-12$. Les autres options correspondent à des erreurs de signes ou de coefficients.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorisez complètement le trinôme $x^2-9x+20$.",
+      "options": [
+        "$(x-4)(x-5)$",
+        "$(x+4)(x+5)$",
+        "$(x-2)(x-10)$",
+        "$(x-1)(x-20)$"
+      ],
+      "correctAnswer": "$(x-4)(x-5)$",
+      "explanation": "On cherche deux nombres dont la somme est $-9$ et le produit $20$. Ces nombres sont $-4$ et $-5$, donc $x^2-9x+20=(x-4)(x-5)$. Les autres propositions donnent soit un mauvais signe, soit un mauvais produit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $3(2x-1)=4x+5$.",
+      "options": [
+        "$x=4$",
+        "$x=3$",
+        "$x=2$",
+        "$x=5$"
+      ],
+      "correctAnswer": "$x=4$",
+      "explanation": "On développe : $6x-3=4x+5$. On regroupe les $x$ : $6x-4x=5+3$, donc $2x=8$ et $x=4$. Les autres valeurs ne satisfont pas l'équation originale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $2x-7 < 3(x-2)$.",
+      "options": [
+        "$x > -1$",
+        "$x < -1$",
+        "$x > 1$",
+        "$x < 1$"
+      ],
+      "correctAnswer": "$x > -1$",
+      "explanation": "On développe le second membre : $2x-7 < 3x-6$. On soustrait $2x$ : $-7 < x-6$. On ajoute $6$ : $-1 < x$, ce qui s'écrit $x > -1$. Les autres intervalles ne correspondent pas à la manipulation correcte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $(x+2)^2 = 25$.",
+      "options": [
+        "$x=3$ ou $x=-7$",
+        "$x=5$ ou $x=-5$",
+        "$x=7$ ou $x=-3$",
+        "$x=2$ ou $x=-2$"
+      ],
+      "correctAnswer": "$x=3$ ou $x=-7$",
+      "explanation": "On développe : $x^2+4x+4=25$, donc $x^2+4x-21=0$. On factorise : $(x+7)(x-3)=0$. Les solutions sont $x=-7$ et $x=3$. Les autres paires ne vérifient pas l'équation initiale.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

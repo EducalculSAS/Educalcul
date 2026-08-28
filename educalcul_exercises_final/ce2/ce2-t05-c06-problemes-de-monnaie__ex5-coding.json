@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 183,
+  "_course_code": "ce2-t05-c06-problemes-de-monnaie",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Prix total",
+  "title": "Algorithmes : Calcul du prix total",
+  "blocks": [
+    {
+      "title": "Prix de deux articles",
+      "content": "Écris un algorithme qui permet de calculer le prix total de deux articles. L'algorithme doit demander le prix du premier article, puis le prix du second article, les additionner et afficher le résultat.",
+      "correctAnswer": "Algorithme PrixTotalDeuxArticles\\nDébut\\n    Afficher \"Entrez le prix du premier article : \"\\n    Lire prix1\\n    Afficher \"Entrez le prix du second article : \"\\n    Lire prix2\\n    total ← prix1 + prix2\\n    Afficher \"Le prix total est : \", total\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par demander les deux prix à l'utilisateur (instruction Lire). Il stocke ces valeurs dans des variables (prix1 et prix2). Il effectue ensuite l'addition et stocke le résultat dans la variable total. Enfin, il affiche ce total.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Prix de trois articles",
+      "content": "Écris un algorithme qui calcule le prix total de trois articles. L'algorithme doit demander les prix un par un, les additionner au fur et à mesure dans une variable « total » et afficher le résultat final.",
+      "correctAnswer": "Algorithme PrixTotalTroisArticles\\nDébut\\n    total ← 0\\n    Pour i de 1 à 3 faire\\n        Afficher \"Entrez le prix de l'article \", i, \" : \"\\n        Lire prix\\n        total ← total + prix\\n    Fin Pour\\n    Afficher \"Le prix total est : \", total\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise la variable total à $0$. Une boucle « Pour » répète trois fois les instructions : demander le prix, le lire, et l'ajouter à total (total ← total + prix). À la fin de la boucle, total contient la somme des trois prix, que l'on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Prix total avec quantité",
+      "content": "Écris un algorithme qui calcule le prix total pour un achat de plusieurs articles identiques. L'algorithme doit demander le prix unitaire d'un article et la quantité achetée, calculer le prix total (prix unitaire × quantité) et l'afficher.",
+      "correctAnswer": "Algorithme PrixTotalQuantite\\nDébut\\n    Afficher \"Entrez le prix unitaire : \"\\n    Lire prixUnitaire\\n    Afficher \"Entrez la quantité : \"\\n    Lire quantite\\n    total ← prixUnitaire * quantite\\n    Afficher \"Le prix total est : \", total\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme lit deux valeurs : le prix unitaire (prix d'un seul article) et la quantité (nombre d'articles). Le prix total s'obtient par la multiplication de ces deux nombres (prixUnitaire * quantite). Le résultat est stocké dans total puis affiché.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

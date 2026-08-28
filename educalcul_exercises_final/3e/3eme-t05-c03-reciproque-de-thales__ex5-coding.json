@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Hypothèses",
+  "title": "Algorithme et réciproque de Thalès : vérification des hypothèses",
+  "blocks": [
+    {
+      "title": "Vérification des rapports",
+      "content": "On considère un triangle $ABC$. Les points $M$ et $N$ appartiennent respectivement aux segments $[AB]$ et $[AC]$. On donne les longueurs : $AB = 12$, $AC = 15$, $AM = 4,8$ et $AN = 6$. Écris un algorithme (en langage naturel ou style Python) qui calcule les rapports $\\frac{AM}{AB}$ et $\\frac{AN}{AC}$, les compare, et affiche \"Les droites (MN) et (BC) sont parallèles\" si les rapports sont égaux, sinon affiche \"Les droites (MN) et (BC) ne sont pas parallèles\".",
+      "correctAnswer": "ALGORITHME\\nVariables : AB, AC, AM, AN, rapport1, rapport2\\nDébut\\n  AB ← 12\\n  AC ← 15\\n  AM ← 4,8\\n  AN ← 6\\n  rapport1 ← AM / AB\\n  rapport2 ← AN / AC\\n  Si rapport1 = rapport2 Alors\\n    Afficher \"Les droites (MN) et (BC) sont parallèles\"\\n  Sinon\\n    Afficher \"Les droites (MN) et (BC) ne sont pas parallèles\"\\n  Fin Si\\nFin",
+      "explanation": "L'algorithme implémente directement la condition de la réciproque de Thalès : si $\\frac{AM}{AB} = \\frac{AN}{AC}$, alors $(MN) \\parallel (BC)$. Ici, $\\frac{4,8}{12} = 0,4$ et $\\frac{6}{15} = 0,4$. Les rapports sont égaux, donc l'algorithme affichera le premier message.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'une longueur pour le parallélisme",
+      "content": "Dans le triangle $ABC$, $M \\in [AB]$ et $N \\in [AC]$. On sait que $AB = 10$, $AC = 14$ et $AM = 4$. Écris un algorithme qui détermine la valeur de $AN$ pour que les droites $(MN)$ et $(BC)$ soient parallèles. L'algorithme doit calculer le rapport $k = \\frac{AM}{AB}$, puis en déduire $AN = k \\times AC$, et afficher le résultat.",
+      "correctAnswer": "ALGORITHME\\nVariables : AB, AC, AM, k, AN\\nDébut\\n  AB ← 10\\n  AC ← 14\\n  AM ← 4\\n  k ← AM / AB\\n  AN ← k * AC\\n  Afficher \"Pour que (MN) // (BC), il faut AN = \", AN\\nFin",
+      "explanation": "Pour que $(MN) \\parallel (BC)$, il faut $\\frac{AM}{AB} = \\frac{AN}{AC}$. On calcule $k = \\frac{4}{10} = 0,4$. Alors $AN = k \\times AC = 0,4 \\times 14 = 5,6$. L'algorithme affiche $AN = 5,6$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Test complet avec ordre des points",
+      "content": "On donne un triangle $ABC$ et des points $M$ sur la droite $(AB)$, $N$ sur la droite $(AC)$. Écris un algorithme complet qui :\\n1. Demande à l'utilisateur les valeurs de $AB$, $AC$, $AM$, $AN$ (longueurs algébriques, positives si le point est sur le rayon, négatives sinon).\\n2. Vérifie que $M$ est distinct de $A$ et $B$, et $N$ distinct de $A$ et $C$.\\n3. Calcule les rapports $r_1 = \\frac{AM}{AB}$ et $r_2 = \\frac{AN}{AC}$.\\n4. Si $r_1 = r_2$, affiche \"Droites parallèles (réciproque de Thalès)\", sinon affiche \"Droites non parallèles\".\\n5. Si $r_1 = r_2$ et $r_1 > 0$, ajoute \"Les points M et N sont sur les segments [AB] et [AC]\" ; si $r_1 < 0$, ajoute \"Les points M et N sont en dehors des segments\".",
+      "correctAnswer": "ALGORITHME\\nVariables : AB, AC, AM, AN, r1, r2\\nDébut\\n  Afficher \"Entrez AB : \"; Saisir AB\\n  Afficher \"Entrez AC : \"; Saisir AC\\n  Afficher \"Entrez AM : \"; Saisir AM\\n  Afficher \"Entrez AN : \"; Saisir AN\\n  Si AM = 0 OU AM = AB OU AN = 0 OU AN = AC Alors\\n    Afficher \"Erreur : M ou N confondu avec A, B ou C\"\\n  Sinon\\n    r1 ← AM / AB\\n    r2 ← AN / AC\\n    Si r1 = r2 Alors\\n      Afficher \"Droites parallèles (réciproque de Thalès)\"\\n      Si r1 > 0 Alors\\n        Afficher \"M et N sont sur les segments [AB] et [AC]\"\\n      Sinon\\n        Afficher \"M et N sont en dehors des segments [AB] et [AC]\"\\n      Fin Si\\n    Sinon\\n      Afficher \"Droites non parallèles\"\\n    Fin Si\\n  Fin Si\\nFin",
+      "explanation": "Cet algorithme gère le cas général avec des longueurs algébriques. L'égalité des rapports $r_1 = r_2$ est la condition nécessaire et suffisante pour le parallélisme (réciproque de Thalès). Le signe du rapport indique la position relative : $r > 0$ signifie que $M$ et $N$ sont sur les segments (même orientation), $r < 0$ signifie qu'ils sont sur les prolongements (configuration en 'papillon' ou extérieur). La vérification des points distincts évite la division par zéro ou le cas dégénéré.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

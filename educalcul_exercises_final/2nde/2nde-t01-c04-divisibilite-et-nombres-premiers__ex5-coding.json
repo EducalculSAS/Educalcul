@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Multiples / diviseurs",
+  "title": "Algorithmes sur les diviseurs et multiples",
+  "blocks": [
+    {
+      "title": "Liste des diviseurs",
+      "content": "Écrire un algorithme qui prend en entrée un entier naturel $n$ strictement positif et qui affiche la liste de tous ses diviseurs positifs dans l'ordre croissant. On utilisera une boucle « Pour » variant de $1$ à $n$.",
+      "correctAnswer": "Algorithme :\\nVariables : n, i (entiers)\\nDébut\\n  Afficher \"Entrez un entier n > 0 : \"\\n  Lire n\\n  Pour i de 1 à n faire\\n    Si n modulo i = 0 Alors\\n      Afficher i\\n    Fin Si\\n  Fin Pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste tous les entiers $i$ de $1$ à $n$. Si le reste de la division euclidienne de $n$ par $i$ est nul ($n \\bmod i = 0$), alors $i$ divise $n$ et on l'affiche. La boucle « Pour » garantit l'ordre croissant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "PGCD par l'algorithme d'Euclide",
+      "content": "Écrire un algorithme qui calcule le PGCD de deux entiers naturels $a$ et $b$ strictement positifs en utilisant l'algorithme d'Euclide (par soustractions successives ou par divisions euclidiennes successives). L'algorithme affichera le résultat final.",
+      "correctAnswer": "Algorithme (version divisions euclidiennes) :\\nVariables : a, b, r (entiers)\\nDébut\\n  Afficher \"Entrez a > 0 : \"\\n  Lire a\\n  Afficher \"Entrez b > 0 : \"\\n  Lire b\\n  Tant que b ≠ 0 faire\\n    r ← a modulo b\\n    a ← b\\n    b ← r\\n  Fin Tant que\\n  Afficher \"Le PGCD est : \", a\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme d'Euclide repose sur la propriété : $\\text{PGCD}(a,b) = \\text{PGCD}(b, r)$ où $r$ est le reste de la division de $a$ par $b$. On répète l'opération jusqu'à obtenir un reste nul. Le dernier reste non nul (stocké dans $a$) est le PGCD.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposition en facteurs premiers",
+      "content": "Écrire un algorithme qui effectue la décomposition en facteurs premiers d'un entier $n \\ge 2$ entré par l'utilisateur. L'algorithme affichera chaque facteur premier avec son exposant (par exemple pour $60$ : $2^2 \\times 3^1 \\times 5^1$).",
+      "correctAnswer": "Algorithme :\\nVariables : n, d, compteur (entiers)\\nDébut\\n  Afficher \"Entrez n ≥ 2 : \"\\n  Lire n\\n  d ← 2\\n  Tant que n > 1 faire\\n    compteur ← 0\\n    Tant que n modulo d = 0 faire\\n      n ← n / d\\n      compteur ← compteur + 1\\n    Fin Tant que\\n    Si compteur > 0 Alors\\n      Afficher d, \"^\", compteur\\n      Si n > 1 Alors Afficher \" × \"\\n    Fin Si\\n    d ← d + 1\\n  Fin Tant que\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste les diviseurs potentiels $d$ en partant de $2$. Pour chaque $d$, on compte combien de fois il divise $n$ (boucle intérieure). On divise $n$ par $d$ à chaque fois. Quand $d$ ne divise plus $n$, on affiche $d$ et son exposant s'il est non nul, puis on incrémente $d$. La boucle s'arrête quand $n$ devient $1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

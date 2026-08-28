@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 393,
+  "_course_code": "5eme-t03-c05-generaliser-avec-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Programme de calcul",
+  "title": "Quiz : Approfondissement - Programme de calcul (5e)",
+  "questions": [
+    {
+      "text": "Un programme de calcul demande : « Choisis un nombre x, ajoute 5, puis multiplie le résultat par 3 ». Quelle expression algébrique correspond exactement à ce programme ?",
+      "options": [
+        "$3(x+5)$",
+        "$3x+5$",
+        "$x+5*3$",
+        "$3x+15$"
+      ],
+      "correctAnswer": "$3(x+5)$",
+      "explanation": "Le programme indique d'abord d'ajouter 5 au nombre choisi x, ce qui donne x+5, puis de multiplier ce résultat par 3. L'expression qui traduit fidèlement cet ordre est 3(x+5). L'option 3x+5 correspond à multiplier x par 3 puis ajouter 5, ce qui n'est pas l'ordre demandé. L'option x+5*3 respecte mal la priorité des opérations. L'option 3x+15 est la forme développée de 3(x+5), mais elle n'est pas l'expression directe du programme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En utilisant le programme de la question précédente, si le nombre de départ est 4, quel est le résultat final ?",
+      "options": [
+        "27",
+        "17",
+        "12",
+        "9"
+      ],
+      "correctAnswer": "27",
+      "explanation": "On part de 4. On ajoute 5 : 4+5 = 9. On multiplie par 3 : 9 × 3 = 27. Les autres réponses correspondent à des erreurs de calcul ou d'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme de calcul : « Choisis un nombre, ajoute 7, multiplie le résultat par 2 ». Si le résultat final est 30, quel était le nombre de départ ?",
+      "options": [
+        "8",
+        "15",
+        "23",
+        "4"
+      ],
+      "correctAnswer": "8",
+      "explanation": "Soit x le nombre de départ. Le programme donne 2(x+7) = 30. En divisant par 2 : x+7 = 15. En soustrayant 7 : x = 8. Les autres valeurs ne satisfont pas l'équation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris l'expression algébrique simplifiée du programme suivant : « Choisis un nombre x, multiplie par 5, ajoute 3, puis multiplie le tout par 2 ».",
+      "options": [
+        "$10x+6$",
+        "$10x+3$",
+        "$5x+6$",
+        "$2(5x+3)$"
+      ],
+      "correctAnswer": "$10x+6$",
+      "explanation": "Le programme se traduit par 2 × (5x + 3) = 10x + 6 après distribution. L'option 10x+3 oublie de multiplier le 3 par 2. L'option 5x+6 oublie le facteur 2 sur le 5x. L'option 2(5x+3) est l'expression non simplifiée, la question demande la forme simplifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le programme : « Choisis un nombre, multiplie par 4, ajoute 12 ». Un élève écrit l'expression $4x+12$. Est-ce correct ?",
+      "options": [
+        "Oui, l'expression est correcte",
+        "Non, il faut écrire $4(x+12)$",
+        "Non, il faut écrire $4x+3$",
+        "Non, il faut écrire $x+48$"
+      ],
+      "correctAnswer": "Oui, l'expression est correcte",
+      "explanation": "Le programme indique de multiplier le nombre choisi x par 4, ce qui donne 4x, puis d'ajouter 12. L'expression 4x+12 respecte exactement cet ordre. L'option 4(x+12) correspondrait à ajouter 12 avant de multiplier. Les deux dernières options sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Bilan - Logique et algorithmique Seconde",
+  "title": "Bilan : Logique et algorithmique - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Raisonnement par l'absurde",
+      "content": "Rangez les étapes suivantes dans l'ordre logique pour construire un raisonnement par l'absurde visant à démontrer une proposition P.",
+      "items": [
+        "On suppose que la proposition P est fausse.",
+        "On en déduit une contradiction (un fait impossible ou contraire à une hypothèse).",
+        "On conclut que la proposition P est nécessairement vraie."
+      ],
+      "explanation": "Un raisonnement par l'absurde suit toujours ce schéma : 1) On suppose le contraire de ce qu'on veut prouver (P fausse). 2) On déroule les conséquences logiques jusqu'à obtenir une contradiction. 3) Comme l'hypothèse de départ mène à une impossibilité, elle est fausse, donc la proposition P est vraie.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme : Boucle Tant que",
+      "content": "Remettez dans l'ordre les instructions de cet algorithme qui affiche les entiers de 0 à 9 à l'aide d'une boucle « Tant que ».",
+      "items": [
+        "Affecter 0 à la variable n",
+        "Tant que n < 10 faire",
+        "    Afficher n",
+        "    Affecter n + 1 à n",
+        "Fin Tant que"
+      ],
+      "explanation": "L'initialisation de la variable de boucle (n = 0) doit précéder la condition de la boucle. À l'intérieur de la boucle, on effectue le traitement (affichage) puis la modification de la variable (incrémentation) avant de revenir tester la condition. La boucle s'arrête quand n vaut 10 (condition n < 10 devenue fausse).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Démonstration d'une inclusion",
+      "content": "Classer les étapes pour démontrer que l'ensemble A est inclus dans l'ensemble B ($A \\subset B$).",
+      "items": [
+        "Soit x un élément quelconque de A.",
+        "En utilisant la définition de A, on exprime les propriétés de x.",
+        "On montre que ces propriétés impliquent que x appartient à B.",
+        "Puisque c'est vrai pour tout x dans A, on conclut que $A \\subset B$."
+      ],
+      "explanation": "Pour prouver une inclusion $A \\subset B$, la méthode standard est : 1) Prendre un élément arbitraire x dans A. 2) Utiliser la définition de A pour connaître les caractéristiques de x. 3) Démontrer que ces caractéristiques satisfont la condition d'appartenance à B. 4) Conclure par généralisation (le choix de x était arbitraire).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

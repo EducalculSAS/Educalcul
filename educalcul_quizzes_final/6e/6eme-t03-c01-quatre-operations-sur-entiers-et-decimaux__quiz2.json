@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 342,
+  "_course_code": "6eme-t03-c01-quatre-operations-sur-entiers-et-decimaux",
+  "_level": "6e",
+  "_subject": "Calcul et automatismes",
+  "_subtheme": "Calculer",
+  "title": "Évaluation Calculer, quatre opérations sur entiers et décimaux",
+  "questions": [
+    {
+      "text": "Calcule $12,5 + 3,7$.",
+      "options": [
+        "$16,2$",
+        "$15,2$",
+        "$16,12$",
+        "$15,12$"
+      ],
+      "correctAnswer": "$16,2$",
+      "explanation": "En ajoutant les parties entières $12 + 3 = 15$ et les parties décimales $0,5 + 0,7 = 1,2$, on obtient $15 + 1,2 = 16,2$. Les autres réponses correspondent à des erreurs de report ou d'alignement des virgules.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $20,4 - 8,9$.",
+      "options": [
+        "$11,5$",
+        "$12,5$",
+        "$11,4$",
+        "$12,4$"
+      ],
+      "correctAnswer": "$11,5$",
+      "explanation": "On soustrait les parties entières $20 - 8 = 12$ puis les parties décimales $0,4 - 0,9$. Comme $0,4 < 0,9$, on emprunte une unité à la partie entière : $12$ devient $11$ et $0,4$ devient $1,4$. On a alors $1,4 - 0,9 = 0,5$. Le résultat final est $11 + 0,5 = 11,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $6 \\times 2,5$.",
+      "options": [
+        "$15$",
+        "$12,5$",
+        "$15,5$",
+        "$12$"
+      ],
+      "correctAnswer": "$15$",
+      "explanation": "Multiplier un nombre entier par un décimal revient à multiplier par le nombre sans virgule puis à placer la virgule. $6 \\times 25 = 150$, comme il y a un chiffre après la virgule dans $2,5$, on place la virgule pour obtenir $15,0$ soit $15$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $14,4 \\div 3$.",
+      "options": [
+        "$4,8$",
+        "$4,6$",
+        "$5,8$",
+        "$4,2$"
+      ],
+      "correctAnswer": "$4,8$",
+      "explanation": "On divise la partie entière $14 \\div 3 = 4$ reste $2$. On abaisse la partie décimale $4$ pour obtenir $24$ dixièmes. $24 \\div 3 = 8$ dixièmes, soit $0,8$. Le quotient est $4 + 0,8 = 4,8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $5 + 3 \\times 2 - 4 \\div 2$ en respectant l'ordre des opérations.",
+      "options": [
+        "$9$",
+        "$10$",
+        "$8$",
+        "$7$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "On effectue d'abord la multiplication et la division : $3 \\times 2 = 6$ et $4 \\div 2 = 2$. L'expression devient $5 + 6 - 2$. On additionne puis on soustrait de gauche à droite : $5 + 6 = 11$, $11 - 2 = 9$. Les autres réponses proviennent d'un calcul de gauche à droite sans respecter la priorité des opérations.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "_status": "failed",
+  "_errors": [
+    "question 1: correctAnswer ne correspond à aucune option",
+    "question 2: correctAnswer ne correspond à aucune option",
+    "question 3: correctAnswer ne correspond à aucune option",
+    "question 4: correctAnswer ne correspond à aucune option"
+  ],
+  "_course_id": 291,
+  "_course_code": "cm2-t03-c03-division-euclidienne",
+  "_level": "cm2",
+  "_subject": "Calcul et techniques opératoires",
+  "_subtheme": "Approfondissement : Quotient / reste",
+  "raw": {
+    "title": "Approfondissement : Quotient et reste",
+    "questions": [
+      {
+        "text": "Dans une division euclidienne, quelle est la condition obligatoire concernant le reste ?",
+        "options": [
+          "Le reste doit être toujours égal à $0$",
+          "Le reste doit être plus petit que le diviseur",
+          "Le reste doit être plus grand que le quotient",
+          "Le reste doit être plus petit que le dividende"
+        ],
+        "correctAnswer": "Le reste doit être plus petit que le diviseur",
+        "explanation": "Par définition, dans une division euclidienne, le reste doit être un nombre entier naturel strictement inférieur au diviseur. S'il était plus grand ou égal, on pourrait encore retirer une fois le diviseur du dividende.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Si on divise $127$ par $5$, quel est le reste de cette division ?",
+        "options": [
+          "$0$",
+          "$1$",
+          "$2$",
+          "$3$"
+        ],
+        "correctAnswer": "2",
+        "explanation": "On cherche combien de fois $5$ rentre dans $127$. On a $5 \\times 25 = 125$. Le reste est donc $127 - 125 = 2$. Le reste est bien inférieur au diviseur $5$.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Un quotient est de $14$ et le reste est de $3$ avec un diviseur de $6$. Quel est le dividende ?",
+        "options": [
+          "$87$",
+          "$81$",
+          "$78$",
+          "$17$"
+        ],
+        "correctAnswer": "87",
+        "explanation": "Pour retrouver le dividende, on utilise la formule : dividende = (quotient $\\times$ diviseur) $+$ reste. Ici, on calcule $(14 \\times 6) + 3$. Comme $14 \\times 6 = 84$, on a $84 + 3 = 87$.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "On divise un nombre par $8$. Le reste possible ne peut pas être lequel de ces nombres ?",
+        "options": [
+          "$0$",
+          "$4$",
+          "$7$",
+          "$9$"
+        ],
+        "correctAnswer": "9",
+        "explanation": "Le reste doit obligatoirement être strictement inférieur au diviseur. Si le diviseur est $8$, le reste peut être $0, 1, 2, 3, 4, 5, 6$ ou $7$. Le nombre $9$ est impossible car il est supérieur à $8$.",
+        "points": 1,
+        "figure": null
+      },
+      {
+        "text": "Je cherche un nombre qui, divisé par $7$, donne un quotient de $12$ et le plus grand reste possible. Quel est ce nombre ?",
+        "options": [
+          "$84$",
+          "$90$",
+          "$91$",
+          "$92$"
+        ],
+        "correctAnswer": "90",
+        "explanation": "Le plus grand reste possible pour un diviseur de $7$ est $6$. On applique la formule : dividends = (quotient $\\times$ diviseur) $+$ reste. On calcule $(12 \\times 7) + 6$. Comme $12 \\times 7 = 84$, on a $84 + 6 = 90$.",
+        "points": 1,
+        "figure": null
+      }
+    ]
+  }
+}

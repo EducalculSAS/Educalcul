@@ -1,0 +1,741 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.987282+00:00",
+  "id": 486,
+  "code": "3eme-t06-c02",
+  "title": "Transformations et compositions simples",
+  "description": "Cours structuré Educalcul : Transformations et compositions simples.",
+  "subject": "Transformations, espace et grandeurs",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Transformations, espace et grandeurs",
+    "titre_du_cours": "Transformations et compositions simples",
+    "objectif_global": "Transformations et compositions simples",
+    "mini_lecons_imposees": [
+      "Image.",
+      "Propriétés.",
+      "Reconnaître."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Transformations, espace et grandeurs",
+      "lessons": [
+        {
+          "title": "Image.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une image ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu déplaces une feuille de papier sur la table sans la tourner ni la retourner. Chaque point de la feuille se retrouve à un nouvel endroit. Ce nouvel endroit est ce qu'on appelle l'image du point de départ. La transformation qui a produit ce déplacement s'appelle une translation. En géométrie, une transformation est une règle qui associe à chaque point du plan un autre point du plan. Le point de départ s'appelle l'antécédent, et le point obtenu est son image. C'est un peu comme une fonction en mathématiques, mais ici on travaille avec des figures dans le plan. Tu verras que cette idée d'image est la clé pour comprendre toutes les transformations que nous allons étudier : translation, rotation, symétrie axiale, et même leurs compositions. Prends le temps de bien visualiser : si tu as un triangle ABC et que tu le translates, tu obtiens un triangle A'B'C'. Les points A', B', C' sont les images respectives de A, B, C. Le triangle A'B'C' est l'image du triangle ABC. Cette notion d'image te permettra plus tard de reconnaître quelle transformation a été appliquée rien qu'en regardant la figure de départ et la figure finale."
+            },
+            {
+              "type": "definition",
+              "term": "image",
+              "definition": "L'image d'un point $M$ par une transformation $t$ est le point $M'$ obtenu en appliquant $t$ à $M$. On note $M' = t(M)$.",
+              "example": "Si $t$ est la translation de vecteur $\\vec{v}$, alors $M'$ est le point tel que $\\overrightarrow{MM'} = \\vec{v}$."
+            },
+            {
+              "type": "definition",
+              "term": "antécédent",
+              "definition": "L'antécédent d'un point $M'$ par une transformation $t$ est le point $M$ tel que $t(M) = M'$. C'est le point de départ avant la transformation.",
+              "example": "Dans la translation de vecteur $\\vec{v}$, $M$ est l'antécédent de $M'$."
+            },
+            {
+              "type": "definition",
+              "term": "translation",
+              "definition": "Une translation est une transformation qui déplace chaque point du plan selon un même vecteur $\\vec{v}$. Elle ne change ni les distances, ni les angles, ni l'orientation des figures.",
+              "example": "La translation de vecteur $\\vec{v} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ envoie $A(1,2)$ sur $A'(4,0)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Soit le triangle $ABC$ avec $A(1,1)$, $B(4,1)$, $C(2,4)$. Appliquons la translation de vecteur $\\vec{v} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$. Pour trouver l'image de $A$, on ajoute les composantes du vecteur aux coordonnées de $A$ : $A'(1+3, 1+2) = A'(4,3)$. De même, $B'(4+3, 1+2) = B'(7,3)$ et $C'(2+3, 4+2) = C'(5,6)$. Le triangle $A'B'C'$ est exactement le même triangle que $ABC$, mais décalé de $3$ unités vers la droite et de $2$ unités vers le haut. Remarque que les longueurs des côtés n'ont pas changé : $AB = A'B'$, $BC = B'C'$, $CA = C'A'$. C'est une propriété fondamentale des translations : ce sont des isométries, c'est-à-dire des transformations qui conservent les distances."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle ABC et son image A'B'C' par la translation de vecteur (3,2)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le vecteur de translation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le vecteur $\\vec{v}$ qui définit la translation. Il est souvent donné sous la forme $\\vec{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$ ou par deux points $U$ et $V$ tels que $\\vec{v} = \\overrightarrow{UV}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter les composantes du vecteur aux coordonnées du point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le point de départ est $M(x_M, y_M)$, alors son image $M'$ a pour coordonnées $x_{M'} = x_M + x$ et $y_{M'} = y_M + y$. C'est une simple addition composante par composante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier que la figure image est congruente à la figure de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace les segments $MM'$ pour plusieurs points. Ils doivent être tous parallèles, de même longueur et de même sens que $\\vec{v}$. Cela confirme que la transformation est bien une translation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais comment construire l'image d'un point par une translation, nous allons découvrir une autre transformation très importante : la rotation. Elle aussi conserve les distances, mais elle fait tourner la figure autour d'un point fixe."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La rotation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une rotation fait pivoter tout le plan autour d'un point appelé centre de rotation. Chaque point tourne d'un même angle, dans le même sens (généralement le sens trigonométrique, c'est-à-dire inverse des aiguilles d'une montre). Le centre de rotation reste immobile : c'est le seul point qui est son propre image. Si tu tournes une feuille de papier autour d'un pointeau planté au centre, chaque point de la feuille décrit un arc de cercle centré sur le pointeau. L'angle de rotation est la mesure de cet arc. Par exemple, une rotation de $90^{\\circ}$ autour de l'origine $O(0,0)$ envoie le point $A(1,0)$ sur $A'(0,1)$, le point $B(0,1)$ sur $B'(-1,0)$, etc. Les distances $OA$, $OB$ ne changent pas, et l'angle $\\angle AOB$ devient $\\angle A'OB'$ qui a la même mesure. C'est encore une isométrie."
+            },
+            {
+              "type": "definition",
+              "term": "rotation",
+              "definition": "Une rotation de centre $O$ et d'angle $\\alpha$ (orienté) est la transformation qui à tout point $M$ associe le point $M'$ tel que $OM = OM'$ et $\\angle (\\overrightarrow{OM}, \\overrightarrow{OM'}) = \\alpha$. Le centre $O$ est invariant : $O' = O$.",
+              "example": "Rotation de centre $O(0,0)$ et d'angle $90^{\\circ}$ : $M(2,1) \\mapsto M'(-1,2)$."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle ABC et son image A'B'C' par une rotation de 90° autour de O"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le centre et l'angle de rotation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le point $O$ qui ne bouge pas et l'angle $\\alpha$ (souvent donné en degrés, avec un sens : positif pour le sens trigonométrique, négatif pour le sens horaire)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'image d'un point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $OM$. À l'aide d'un rapporteur, construis l'angle $\\alpha$ avec sommet $O$ et premier côté $\\overrightarrow{OM}$. Sur le second côté, reporte la longueur $OM$ pour obtenir $M'$. Si tu as les coordonnées, utilise les formules de rotation : pour $\\alpha = 90^{\\circ}$, $(x,y) \\mapsto (-y, x)$ ; pour $\\alpha = 180^{\\circ}$, $(x,y) \\mapsto (-x, -y)$ ; pour $\\alpha = -90^{\\circ}$, $(x,y) \\mapsto (y, -x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la conservation des distances et des angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure $OM$ et $OM'$ : ils doivent être égaux. Mesure l'angle entre $\\overrightarrow{OM}$ et $\\overrightarrow{OM'}$ : il doit valoir $\\alpha$. Fais-le pour au moins deux points de la figure pour être sûr."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après la translation et la rotation, il nous reste une troisième transformation fondamentale : la symétrie axiale. Elle est un peu différente car elle renverse l'orientation de la figure, comme un miroir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La symétrie axiale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place un miroir le long d'une droite $d$. L'image d'un point $M$ est le point $M'$ situé de l'autre côté du miroir, à la même distance de $d$, et tel que le segment $MM'$ soit perpendiculaire à $d$ et coupé en son milieu par $d$. La droite $d$ est appelée axe de symétrie. Tous les points de l'axe sont invariants : ils sont leurs propres images. Contrairement à la translation et à la rotation, la symétrie axiale change l'orientation : si tu parcours un triangle dans le sens trigonométrique, son image sera parcourue dans le sens horaire. C'est ce qu'on appelle une isométrie indirecte, alors que translation et rotation sont des isométries directes. Pourtant, les longueurs et les angles sont conservés."
+            },
+            {
+              "type": "definition",
+              "term": "symétrie axiale",
+              "definition": "La symétrie axiale d'axe $d$ associe à tout point $M$ le point $M'$ tel que $d$ soit la médiatrice du segment $[MM']$. Si $M \\in d$, alors $M' = M$.",
+              "example": "Symétrie par rapport à l'axe des abscisses (droite $y=0$) : $M(x,y) \\mapsto M'(x,-y)$."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle ABC et son image A'B'C' par symétrie axiale d'axe d"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'axe de symétrie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la droite $d$ (souvent donnée par une équation comme $x = 2$ ou $y = -x$). C'est la ligne qui joue le rôle de miroir."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'image d'un point",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace la perpendiculaire à $d$ passant par $M$. Soit $H$ l'intersection de cette perpendiculaire avec $d$. Le point $M'$ est le symétrique de $M$ par rapport à $H$ : $H$ est le milieu de $[MM']$. En coordonnées, si $d$ est l'axe des abscisses, $M(x,y) \\mapsto M'(x,-y)$ ; si $d$ est l'axe des ordonnées, $M(x,y) \\mapsto M'(-x,y)$ ; si $d$ est la droite $y=x$, $M(x,y) \\mapsto M'(y,x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier les propriétés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $d$ est bien la médiatrice de $[MM']$ pour plusieurs points. Vérifie aussi que les distances entre points images sont égales aux distances entre points d'origine, mais que l'orientation est inversée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les bases pour construire l'image d'un point ou d'une figure par les trois transformations élémentaires. Dans la prochaine leçon, nous allons explorer les propriétés communes à ces transformations et voir ce qui se passe quand on les compose entre elles."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la translation de vecteur $\\vec{v} = \\begin{pmatrix} -2 \\\\ 5 \\end{pmatrix}$. Donne les coordonnées de l'image du point $P(3, -1)$.",
+              "answer": "P'(1, 4)",
+              "hint": "Ajoute les composantes du vecteur aux coordonnées de P : $x_{P'} = 3 + (-2)$, $y_{P'} = -1 + 5$.",
+              "explanation": "On calcule $x_{P'} = 3 - 2 = 1$ et $y_{P'} = -1 + 5 = 4$. Donc $P'(1,4)$."
+            },
+            {
+              "question": "Le triangle $ABC$ a pour sommets $A(2,1)$, $B(5,1)$, $C(3,4)$. On effectue une rotation de centre $O(0,0)$ et d'angle $180^{\\circ}$. Donne les coordonnées des images $A', B', C'$.",
+              "answer": "A'(-2,-1), B'(-5,-1), C'(-3,-4)",
+              "hint": "Une rotation de $180^{\\circ}$ autour de l'origine change $(x,y)$ en $(-x,-y)$.",
+              "explanation": "Applique la formule : $A(2,1) \\mapsto A'(-2,-1)$ ; $B(5,1) \\mapsto B'(-5,-1)$ ; $C(3,4) \\mapsto C'(-3,-4)$."
+            },
+            {
+              "question": "Soit la symétrie axiale par rapport à la droite $d$ d'équation $x = 2$. Quel est l'image du point $M(5,3)$ ?",
+              "answer": "M'(-1,3)",
+              "hint": "L'axe $x=2$ est vertical. La distance horizontale de M à l'axe est $5-2=3$. L'image se trouve à la même distance de l'autre côté : $2-3 = -1$. L'ordonnée ne change pas.",
+              "explanation": "Le point $M(5,3)$ est à $3$ unités à droite de la droite $x=2$. Son symétrique $M'$ est à $3$ unités à gauche, donc d'abscisse $2-3 = -1$. L'ordonnée reste $3$. Donc $M'(-1,3)$."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés des transformations élémentaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as appris à construire l'image d'un point par une translation, une rotation ou une symétrie axiale. Maintenant, nous allons examiner ce que ces trois transformations ont en commun et en quoi elles diffèrent. Toutes les trois sont des isométries : elles conservent les distances entre les points, les longueurs des segments, les mesures des angles, les aires et les périmètres. C'est une propriété fondamentale qui te permettra de reconnaître une isométrie rien qu'en comparant une figure et son image. Cependant, elles ne se comportent pas toutes de la même façon vis-à-vis de l'orientation. La translation et la rotation sont des isométries directes : elles conservent le sens de parcours d'une figure (sens trigonométrique). La symétrie axiale, elle, est une isométrie indirecte : elle inverse l'orientation. Si tu as un triangle orienté dans le sens trigonométrique, son image par symétrie axiale sera orientée dans le sens horaire. Cette distinction est cruciale quand on compose plusieurs transformations."
+            },
+            {
+              "type": "definition",
+              "term": "isométrie",
+              "definition": "Une transformation du plan qui conserve les distances entre tous les couples de points. Elle conserve donc les longueurs, les angles, les aires et les périmètres.",
+              "example": "Translation, rotation, symétrie axiale sont des isométries."
+            },
+            {
+              "type": "definition",
+              "term": "isométrie directe",
+              "definition": "Une isométrie qui conserve l'orientation du plan (le sens trigonométrique). Les translations et les rotations sont directes.",
+              "example": "Une rotation de $90^{\\circ}$ conserve l'orientation."
+            },
+            {
+              "type": "definition",
+              "term": "isométrie indirecte",
+              "definition": "Une isométrie qui renverse l'orientation du plan. La symétrie axiale est indirecte.",
+              "example": "La symétrie par rapport à l'axe des abscisses change le sens de parcours d'un triangle."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M,N) = d(M',N') \\quad \\text{pour toute isom\\'etrie}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour bien sentir la différence. Trace un triangle $ABC$ orienté dans le sens trigonométrique (par exemple $A(0,0)$, $B(3,0)$, $C(1,2)$). Applique une translation de vecteur $\\vec{v} = (2,1)$. Le triangle $A'B'C'$ aura la même orientation. Applique maintenant une rotation de $90^{\\circ}$ autour de l'origine. Le triangle $A''B''C''$ aura encore la même orientation. Mais si tu appliques une symétrie axiale par rapport à l'axe des abscisses, le triangle $A'''B'''C'''$ sera orienté dans le sens horaire. Essaie de le faire sur papier : tu verras que l'ordre des sommets change de sens. C'est cette propriété d'orientation qui nous servira à distinguer les transformations composées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as bien compris les propriétés de base, intéressons-nous à la composition de deux transformations. Composer deux transformations, c'est les appliquer l'une après l'autre. Par exemple, faire une translation puis une rotation. Le résultat est une nouvelle transformation. Nous allons voir que la composition de deux translations est encore une translation, que la composition de deux rotations est une rotation (ou une translation si la somme des angles est un multiple de $360^{\\circ}$), et que la composition de deux symétries axiales donne soit une translation, soit une rotation selon la position de leurs axes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composition de deux translations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $t_1$ la translation de vecteur $\\vec{u}$ et $t_2$ la translation de vecteur $\\vec{v}$. Si on applique $t_1$ puis $t_2$ à un point $M$, on obtient $M'' = t_2(t_1(M))$. Le vecteur total de déplacement est $\\vec{u} + \\vec{v}$. En effet, $M$ va en $M'$ tel que $\\overrightarrow{MM'} = \\vec{u}$, puis $M'$ va en $M''$ tel que $\\overrightarrow{M'M''} = \\vec{v}$. Par la relation de Chasles, $\\overrightarrow{MM''} = \\overrightarrow{MM'} + \\overrightarrow{M'M''} = \\vec{u} + \\vec{v}$. Donc la composition $t_2 \\circ t_1$ est la translation de vecteur $\\vec{u} + \\vec{v}$. L'ordre n'a pas d'importance : $t_1 \\circ t_2$ donne le même vecteur somme. C'est une propriété très pratique : pour composer plusieurs translations, il suffit d'additionner leurs vecteurs."
+            },
+            {
+              "type": "display_math",
+              "latex": "t_{\\vec{v}} \\circ t_{\\vec{u}} = t_{\\vec{u}+\\vec{v}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les vecteurs des deux translations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère $\\vec{u}$ et $\\vec{v}$ sous forme de coordonnées $\\begin{pmatrix} x_1 \\\\ y_1 \\end{pmatrix}$ et $\\begin{pmatrix} x_2 \\\\ y_2 \\end{pmatrix}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les vecteurs composante par composante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le vecteur résultant est $\\begin{pmatrix} x_1+x_2 \\\\ y_1+y_2 \\end{pmatrix}$. C'est le vecteur de la translation composée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la translation résultante",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour trouver l'image d'un point $M$, ajoute les composantes du vecteur somme aux coordonnées de $M$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la composition de deux rotations. Si les deux rotations ont le même centre, la composition est une rotation de centre ce centre commun et d'angle la somme des deux angles. Si les centres sont différents, la composition est encore une rotation (sauf cas particulier où la somme des angles est un multiple de $360^{\\circ}$, auquel cas c'est une translation). Le centre de la rotation composée n'est pas trivial à trouver, mais on peut le construire géométriquement en utilisant les intersections de certaines droites. Pour l'instant, retiens la règle simple : même centre -> angle somme ; centres différents -> rotation (sauf cas translation)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composition de deux rotations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons deux rotations $r_1$ de centre $O_1$ et d'angle $\\alpha_1$, et $r_2$ de centre $O_2$ et d'angle $\\alpha_2$. Si $O_1 = O_2 = O$, alors $r_2 \\circ r_1$ est la rotation de centre $O$ et d'angle $\\alpha_1 + \\alpha_2$. Si $\\alpha_1 + \\alpha_2 = 360^{\\circ}k$ ($k$ entier), la composition est l'identité (ou une translation nulle). Si les centres sont distincts, la composition est une rotation d'angle $\\alpha_1 + \\alpha_2$ dont le centre est l'unique point invariant de la composition. On peut le trouver en résolvant $r_2(r_1(M)) = M$, mais une méthode géométrique consiste à tracer les images de deux points distincts et à construire le centre comme intersection des médiatrices des segments joignant chaque point à son image finale. C'est un peu plus avancé, mais sache que la composition de deux rotations est toujours une rotation ou une translation."
+            },
+            {
+              "type": "display_math",
+              "latex": "r_{O_2,\\alpha_2} \\circ r_{O_1,\\alpha_1} = r_{O,\\alpha_1+\\alpha_2} \\text{ ou translation si } \\alpha_1+\\alpha_2 \\equiv 0 \\pmod{360}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, examinons la composition de deux symétries axiales. C'est un cas très intéressant car le résultat dépend entièrement de la position relative des deux axes. Si les deux axes sont parallèles, la composition est une translation. Le vecteur de cette translation est perpendiculaire aux axes, orienté du premier axe vers le second, et sa longueur est le double de la distance entre les deux axes. Si les deux axes se coupent en un point $O$, la composition est une rotation de centre $O$ et d'angle égal au double de l'angle orienté du premier axe vers le second. Si les axes sont confondus, la composition est l'identité. Ces résultats sont fondamentaux et te permettront de reconnaître rapidement une composition de symétries."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Composition de deux symétries axiales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soient $s_1$ la symétrie d'axe $d_1$ et $s_2$ la symétrie d'axe $d_2$. Si $d_1 \\parallel d_2$, alors $s_2 \\circ s_1$ est la translation de vecteur $\\vec{v}$ tel que $\\vec{v}$ est perpendiculaire aux axes, orienté de $d_1$ vers $d_2$, et $|\\vec{v}| = 2 \\times d(d_1,d_2)$ où $d(d_1,d_2)$ est la distance entre les deux droites parallèles. Si $d_1$ et $d_2$ se coupent en $O$ avec un angle orienté $\\theta$ (de $d_1$ vers $d_2$), alors $s_2 \\circ s_1$ est la rotation de centre $O$ et d'angle $2\\theta$. Note que l'ordre compte : $s_1 \\circ s_2$ donne le vecteur opposé ou l'angle opposé. C'est une propriété très utile pour décomposer une translation ou une rotation en produit de deux symétries."
+            },
+            {
+              "type": "display_math",
+              "latex": "s_{d_2} \\circ s_{d_1} = \\begin{cases} t_{\\vec{v}} & \\text{si } d_1 \\parallel d_2 \\\\ r_{O,2\\theta} & \\text{si } d_1 \\cap d_2 = \\{O\\} \\end{cases}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Déterminer la position relative des axes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie si les axes sont parallèles, sécants ou confondus. C'est la première décision qui dicte le type de transformation composée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Cas axes parallèles -> translation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la distance $d$ entre les deux droites. Le vecteur de translation a pour longueur $2d$, est perpendiculaire aux axes, et pointe du premier axe vers le second (dans l'ordre de la composition)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Cas axes sécants -> rotation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $O$ le point d'intersection. Mesure l'angle orienté $\\theta$ du premier axe vers le second. L'angle de rotation est $2\\theta$. Le centre est $O$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier avec un point test",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un point simple (par exemple l'origine ou un point sur un axe) et applique les deux symétries successives. Vérifie que le résultat coïncide avec la translation ou la rotation trouvée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vue d'ensemble des propriétés des transformations élémentaires et de leurs compositions deux à deux. Dans la dernière leçon, nous allons apprendre à reconnaître quelle transformation (ou composition) a été appliquée en observant seulement la figure de départ et la figure finale."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la nature de la transformation qui conserve les distances mais inverse l'orientation ?",
+              "answer": "Une symétrie axiale (isométrie indirecte).",
+              "hint": "Rappelle-toi la différence entre isométrie directe et indirecte.",
+              "explanation": "Les translations et rotations conservent l'orientation (directes). La symétrie axiale la renverse (indirecte)."
+            },
+            {
+              "question": "Soit $t_1$ la translation de vecteur $\\vec{u} = \\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$ et $t_2$ la translation de vecteur $\\vec{v} = \\begin{pmatrix} -5 \\\\ 4 \\end{pmatrix}$. Donne le vecteur de la translation composée $t_2 \\circ t_1$.",
+              "answer": "$\\begin{pmatrix} -3 \\\\ 1 \\end{pmatrix}$",
+              "hint": "Additionne les composantes : $2+(-5) = -3$, $-3+4 = 1$.",
+              "explanation": "Le vecteur de la composition est $\\vec{u}+\\vec{v} = (2-5, -3+4) = (-3, 1)$."
+            },
+            {
+              "question": "Deux rotations de centres distincts $O_1$ et $O_2$ et d'angles $60^{\\circ}$ et $120^{\\circ}$ sont composées. Quelle est la nature de la transformation obtenue et quel est son angle ?",
+              "answer": "Une rotation d'angle $180^{\\circ}$ (demi-tour).",
+              "hint": "La somme des angles est $60+120 = 180^{\\circ}$. Comme les centres sont distincts, c'est une rotation de cet angle.",
+              "explanation": "La composition de deux rotations de centres différents est une rotation d'angle égal à la somme des angles, ici $180^{\\circ}$."
+            },
+            {
+              "question": "Soient $d_1$ la droite $x=1$ et $d_2$ la droite $x=4$. Quelle est la transformation composée $s_{d_2} \\circ s_{d_1}$ ?",
+              "answer": "Translation de vecteur $\\begin{pmatrix} 6 \\\\ 0 \\end{pmatrix}$ (vers la droite).",
+              "hint": "Les axes sont parallèles verticaux. Distance entre eux = 3. Vecteur translation = 2 * distance = 6, horizontal, orienté de $d_1$ vers $d_2$.",
+              "explanation": "Distance entre $x=1$ et $x=4$ est $3$. Le vecteur de translation a pour composantes $(2 \\times 3, 0) = (6,0)$, orienté vers la droite (de $d_1$ vers $d_2$)."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une transformation à partir de deux figures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les leçons précédentes, tu as appris à construire des images et à composer des transformations. Maintenant, nous allons faire l'inverse : on te donne une figure initiale et sa figure finale, et tu dois déterminer quelle transformation (ou composition) a été utilisée. C'est un travail de détective géométrique. Tu vas utiliser les propriétés que nous avons vues : conservation des distances, conservation ou inversion de l'orientation, existence de points fixes, direction des déplacements. Chaque type de transformation laisse une signature particulière. Par exemple, si tous les points se déplacent selon le même vecteur, c'est une translation. S'il y a un point fixe et que les autres tournent autour, c'est une rotation. S'il y a une droite entière de points fixes, c'est une symétrie axiale. Si aucun point n'est fixe mais que l'orientation est conservée, cela peut être une composition de deux symétries à axes parallèles (donc une translation) ou une composition de deux rotations. Si l'orientation est inversée et qu'il n'y a pas de droite de points fixes, c'est peut-être une glissement-réflexion (composition d'une symétrie et d'une translation parallèle à l'axe). Nous allons passer en revue les cas les plus fréquents."
+            },
+            {
+              "type": "definition",
+              "term": "glissement-réflexion",
+              "definition": "Composition d'une symétrie axiale et d'une translation dont le vecteur est parallèle à l'axe de symétrie. C'est une isométrie indirecte sans point fixe ni axe de points fixes.",
+              "example": "Symétrie par rapport à l'axe $x=0$ suivie d'une translation de vecteur $(3,0)$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la translation. Comment la repérer ? Prends deux points correspondants $A$ et $A'$, $B$ et $B'$. Trace les vecteurs $\\overrightarrow{AA'}$ et $\\overrightarrow{BB'}$. S'ils sont égaux (même direction, même sens, même longueur), alors la transformation est une translation de ce vecteur. De plus, l'orientation de la figure est conservée. Il n'y a aucun point fixe (sauf si le vecteur est nul). C'est le test le plus simple : vecteurs de déplacement identiques pour tous les points."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Figure initiale et figure finale liées par une translation"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir deux paires de points correspondants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie sur la figure initiale deux points $A, B$ et leurs images $A', B'$ sur la figure finale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les vecteurs de déplacement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule ou mesure $\\overrightarrow{AA'}$ et $\\overrightarrow{BB'}$. S'ils sont identiques, c'est une translation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'orientation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que le sens de parcours de la figure est le même (direct). Si oui, tu as confirmé la translation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la rotation. Sa signature est la présence d'un unique point fixe : le centre de rotation. Tous les autres points se déplacent sur des arcs de cercle centrés en ce point. Pour le trouver, prends deux paires de points correspondants $A,A'$ et $B,B'$. Trace les médiatrices des segments $[AA']$ et $[BB']$. Leur intersection est le centre $O$. L'angle de rotation est l'angle orienté $\\angle AOA'$ (ou $\\angle BOB'$, qui doit être le même). L'orientation est conservée. Si tu ne trouves qu'un seul point fixe et que les distances au centre sont conservées, c'est une rotation."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Figure initiale et figure finale liées par une rotation"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le centre par intersection des médiatrices",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace les médiatrices de $[AA']$ et $[BB']$. Leur intersection donne $O$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesurer l'angle de rotation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mesure l'angle orienté $\\angle AOA'$ (dans le sens trigonométrique). C'est l'angle de la rotation."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la conservation des distances au centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $OA = OA'$, $OB = OB'$, etc. Si tout concorde, c'est bien une rotation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la symétrie axiale, la signature est une droite entière de points fixes : l'axe de symétrie. Si tu observes que tous les points d'une droite restent en place, et que les autres points sont symétriques par rapport à cette droite, c'est une symétrie axiale. L'orientation est inversée. Pour trouver l'axe, il suffit de tracer la médiatrice d'un segment joignant un point à son image : cette médiatrice est l'axe. Vérifie avec un second couple de points que leur médiatrice est la même droite."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Figure initiale et figure finale liées par une symétrie axiale"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier une droite de points fixes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche une droite sur laquelle les points ne bougent pas. C'est l'axe candidat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la symétrie par médiatrices",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour un couple $M, M'$, trace la médiatrice de $[MM']$. Elle doit coïncider avec l'axe trouvé. Répète pour un autre couple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'inversion d'orientation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parcours la figure initiale et sa figure image : le sens doit être opposé (trigonométrique vs horaire)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il arrive que la transformation ne soit ni une translation, ni une rotation, ni une symétrie axiale simple, mais une composition de deux transformations. Par exemple, un glissement-réflexion : c'est une symétrie axiale suivie d'une translation parallèle à l'axe. Sa signature : aucun point fixe, orientation inversée, mais il existe une droite (l'axe de la symétrie) qui est globale invariante (elle est envoyée sur elle-même, mais les points glissent le long). Pour la reconnaître, cherche une droite qui est globalement conservée (chaque point de la droite a son image sur la même droite) et vérifie que l'orientation est inversée. Si en plus les déplacements le long de cette droite sont constants, c'est un glissement-réflexion. Un autre cas fréquent : la composition de deux symétries à axes parallèles, qui est une translation (déjà vue). La composition de deux symétries à axes sécants est une rotation (centre à l'intersection, angle double). En analysant les points fixes, l'orientation et les déplacements, tu pourras classer n'importe quelle isométrie du plan."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas composés : glissement-réflexion et autres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'entraîner, imagine une figure $F$ et son image $F'$. Tu observes que : (1) il n'y a aucun point fixe ; (2) l'orientation est inversée ; (3) il existe une droite $d$ telle que l'image de $d$ est $d$ elle-même (mais les points de $d$ ne sont pas fixes, ils glissent). Alors la transformation est un glissement-réflexion d'axe $d$ et de vecteur de translation parallèle à $d$. Si au contraire l'orientation est conservée et qu'il n'y a pas de point fixe, mais que tous les vecteurs de déplacement sont égaux, c'est une translation. Si l'orientation est conservée et qu'il y a un point fixe unique, c'est une rotation. Si l'orientation est inversée et qu'il y a une droite de points fixes, c'est une symétrie axiale. Ce petit guide de diagnostic te sera très utile pour les exercices et pour les problèmes de géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant toutes les clés pour comprendre les transformations du plan, leurs propriétés, leurs compositions et pour les reconnaître à partir de figures. Ce cours t'a permis de passer de la construction d'images à l'analyse de transformations, en passant par la découverte des propriétés fondamentales. Continue à t'entraîner avec des figures variées pour ancrer ces réflexes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'image et l'antécédent d'un point par une transformation.",
+                "Je sais construire l'image d'un point par une translation, une rotation, une symétrie axiale.",
+                "Je connais les propriétés des isométries : conservation des distances, angles, aires ; distinction directe/indirecte.",
+                "Je sais composer deux translations, deux rotations, deux symétries axiales et identifier le résultat.",
+                "Je sais reconnaître une translation, une rotation, une symétrie axiale ou un glissement-réflexion à partir de deux figures."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne un triangle $ABC$ et son image $A'B'C'$. Les vecteurs $\\overrightarrow{AA'}$, $\\overrightarrow{BB'}$, $\\overrightarrow{CC'}$ sont tous égaux à $\\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$. Quelle est la transformation ?",
+              "answer": "Translation de vecteur $\\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$.",
+              "hint": "Si tous les vecteurs de déplacement sont identiques, c'est une translation.",
+              "explanation": "La définition même d'une translation : chaque point se déplace selon le même vecteur."
+            },
+            {
+              "question": "Une figure $F$ et son image $F'$ ont un unique point commun $O$ qui est fixe. Les distances $OA$ et $OA'$ sont égales pour tout point $A$ de $F$. L'orientation est conservée. De quelle transformation s'agit-il ?",
+              "answer": "Une rotation de centre $O$.",
+              "hint": "Point fixe unique + conservation distances au centre + orientation conservée = rotation.",
+              "explanation": "Ces trois indices caractérisent exactement une rotation."
+            },
+            {
+              "question": "On observe qu'une droite $d$ est point par point invariante (chaque point de $d$ est son propre image). L'orientation de la figure est inversée. Quelle transformation ?",
+              "answer": "Symétrie axiale d'axe $d$.",
+              "hint": "Droite de points fixes + inversion orientation = symétrie axiale.",
+              "explanation": "Seule la symétrie axiale laisse une droite globalement fixe point par point et inverse l'orientation."
+            },
+            {
+              "question": "Une figure $F$ est transformée en $F'$. Il n'y a aucun point fixe. L'orientation est inversée. Il existe une droite $d$ telle que l'image de $d$ est $d$ (mais les points de $d$ ne sont pas fixes). De plus, les déplacements le long de $d$ sont constants. Quelle transformation ?",
+              "answer": "Glissement-réflexion d'axe $d$.",
+              "hint": "Aucun point fixe, orientation inversée, droite globalement invariante avec translation parallèle = glissement-réflexion.",
+              "explanation": "C'est la définition même du glissement-réflexion : composition d'une symétrie axiale et d'une translation parallèle à l'axe."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,340 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.626079+00:00",
+  "id": 46,
+  "code": "cp-t05-c08",
+  "title": "Bilan - Résolution de problèmes CP",
+  "description": "Cours structuré Educalcul : Bilan - Résolution de problèmes CP.",
+  "subject": "Résolution de problèmes",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Bilan - Résolution de problèmes CP",
+    "objectif_global": "Bilan - Résolution de problèmes CP",
+    "mini_lecons_imposees": [
+      "Choisir une représentation.",
+      "Choisir une opération.",
+      "Checklist de méthode."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Choisir une représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une représentation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $23$ pommes dans ton panier. Pour les montrer sans les compter une par une, tu peux grouper les pommes par paquets de dix. Ainsi tu vois $2$ paquets de dix et $3$ pommes seules."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 3,
+              "caption": "$23$ : $2$ dizaines et $3$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons essayer une autre façon de représenter une quantité, avec des pièces de monnaie."
+            },
+            {
+              "type": "paragraph",
+              "content": "Suppose que tu veux payer $5$ euros pour un jouet. Tu peux prendre une pièce de $2$ euros, une pièce de $2$ euros et une pièce de $1$ euro. Le porte‑monnaie montre exactement la somme."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                200,
+                200,
+                100
+              ],
+              "target": 500,
+              "caption": "$5$ euros avec deux pièces de $2$ euros et une pièce de $1$ euro"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Ensuite, nous verrons comment une droite numérique peut t’aider à situer un nombre par rapport aux autres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite graduée de $0$ à $10$, place un point sur $7$. Tu vois tout de suite que $7$ est plus grand que $5$ et plus petit que $9$. C’est une représentation visuelle très claire."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "7"
+                }
+              ],
+              "caption": "Place le point sur $7$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant trois outils pour montrer un nombre : les paquets de dix, les pièces de monnaie et la droite numérique. Choisis celui qui te semble le plus simple pour le problème que tu résous."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de dizaines et d’unités y a‑t‑il dans $23$ ?",
+              "answer": "$2$ dizaines et $3$ unités",
+              "hint": "Regarde les paquets de dix.",
+              "explanation": "Le chiffre des dizaines est $2$, celui des unités est $3$."
+            },
+            {
+              "question": "Quelles pièces utilises‑tu pour faire $5$ euros ?",
+              "answer": "Deux pièces de $2$ euros et une pièce de $1$ euro",
+              "hint": "Pense aux pièces de $2$ et $1$ euro.",
+              "explanation": "$2+2+1 = 5$."
+            },
+            {
+              "question": "Sur une droite de $0$ à $10$, où places‑tu le point pour $7$ ?",
+              "answer": "Sur la graduation $7$.",
+              "hint": "Compte les graduations depuis $0$.",
+              "explanation": "Le point se trouve à la septième graduation."
+            }
+          ]
+        },
+        {
+          "title": "Choisir une opération.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une opération"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu mets ensemble deux groupes, tu fais une addition. Par exemple, tu as $4$ billes rouges et $3$ billes bleues. En les réunissant, tu comptes $7$ billes en tout."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "4",
+                "3"
+              ],
+              "result": "7",
+              "carries": [],
+              "caption": "$4+3=7$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant une situation où l’on enlève quelque chose, ce qui demande une soustraction pour la résoudre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $9$ bonbons et que tu en donnes $4$ à ton ami. Il te reste $5$ bonbons. C’est une soustraction : $9$ moins $4$ égal $5$."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                9
+              ],
+              "right": [
+                4,
+                5
+              ],
+              "caption": "$9 = 4 + 5$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut comparer deux quantités pour savoir laquelle est plus grande, cela utilise aussi la soustraction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu as $6$ crayons et ton camarade en a $10$, tu peux poser les deux nombres sur une droite numérique. La distance entre $6$ et $10$ montre que ton camarade a $4$ crayons de plus."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "caption": "Compare $6$ et $10$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître trois types de situations : ajouter, enlever ou comparer. À chaque fois, choisis l’opération qui correspond à l’action décrite dans l’énoncé pour bien réussir."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu as $4$ billes rouges et $3$ billes bleues, combien as‑tu de billes en tout ?",
+              "answer": "$7$ billes",
+              "hint": "Ajoute les deux groupes.",
+              "explanation": "$4+3 = 7$."
+            },
+            {
+              "question": "Tu as $9$ bonbons, tu en donnes $4$. Combien t’en reste‑il ?",
+              "answer": "$5$ bonbons",
+              "hint": "Retire $4$ de $9$.",
+              "explanation": "$9-4 = 5$."
+            },
+            {
+              "question": "Toi tu as $6$ crayons, ton ami en a $10$. De combien ton ami a‑t‑il plus ?",
+              "answer": "$4$ crayons de plus",
+              "hint": "Compte la distance sur la droite numérique.",
+              "explanation": "$10-6 = 4$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist de méthode.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist de méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première étape, c’est de lire le problème jusqu’au bout. Repère la question qui est posée, souvent à la fin de la phrase. Entoure les nombres importants comme $8$ ou $12$ pour ne pas les oublier."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Étape 1 : Lire",
+              "paragraphs": [
+                "Lis le problème jusqu’au bout et entoure les nombres comme $8$ et $12$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois la question claire, tu peux décider comment montrer les données avec un dessin ou un schéma."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour représenter $8$ pommes et $12$ poires, tu peux utiliser des regroupements de dix. Dessine un paquet de dix pommes et trois pommes seules, puis un paquet de dix poires et deux poires seules. Cette image t’aide à voir les quantités."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Un demi : $1/2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois les quantités, il faut choisir l’opération : addition si tu rassembles, soustraction si tu retires."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ecris le calcul en colonne : $8$ plus $12$ égal $20$. Vérifie ton résultat en recomptant les fruits dans ton dessin. Si tout correspond, tu as résolu le problème."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "8",
+                "12"
+              ],
+              "result": "20",
+              "carries": [
+                "1"
+              ],
+              "caption": "$8+12=20$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Rappelle-toi ces trois gestes à chaque exercice : lire, représenter, calculer. La liste ci‑dessous te servira de mémoire pour ne rien oublier."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je lis le problème et je repère la question.",
+                "Je choisis une représentation adaptée.",
+                "Je décide de l’opération et je calcule.",
+                "Je vérifie mon résultat."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le problème « Paul a $8$ pommes et Léa a $12$ poires. Combien de fruits ont‑ils ensemble ? », quelle est la question ?",
+              "answer": "Combien de fruits ont‑ils ensemble ?",
+              "hint": "Cherche la phrase qui se termine par un point d’interrogation.",
+              "explanation": "La question demande le total des fruits."
+            },
+            {
+              "question": "Comment représenterais‑tu $8$ pommes et $12$ poires avec des paquets de dix ?",
+              "answer": "Un paquet de dix pommes et $3$ pommes seules, un paquet de dix poires et $2$ poires seules.",
+              "hint": "Décompose chaque nombre en dizaines et unités.",
+              "explanation": "$8 = 0$ dizaine $8$ unités, $12 = 1$ dizaine $2$ unités."
+            },
+            {
+              "question": "Fais l’addition en colonne pour $8 + 12$.",
+              "answer": "$20$",
+              "hint": "Aligne les unités sous les unités.",
+              "explanation": "$8+12 = 20$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

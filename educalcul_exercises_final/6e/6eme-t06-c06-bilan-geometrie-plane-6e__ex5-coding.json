@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 362,
+  "_course_code": "6eme-t06-c06-bilan-geometrie-plane-6e",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Constructions et propriétés",
+  "title": "Approfondissement : Constructions et propriétés - Algorithmes",
+  "blocks": [
+    {
+      "title": "Construction de la médiatrice",
+      "content": "Écrire un algorithme (en pseudo-code) qui décrit les étapes pour tracer la médiatrice d'un segment $AB$ à la règle et au compas.",
+      "correctAnswer": "Algorithme :\\n1. Placer la pointe du compas sur $A$ et tracer un arc de cercle de rayon supérieur à la moitié de $AB$.\\n2. Sans changer l'ouverture, placer la pointe sur $B$ et tracer un second arc coupant le premier en deux points $M$ et $N$.\\n3. Tracer la droite $(MN)$ à la règle. Cette droite est la médiatrice de $AB$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiatrice est l'ensemble des points équidistants de $A$ et $B$. Les deux arcs de même rayon garantissent que $M$ et $N$ sont à égale distance de $A$ et $B$. La droite passant par $M$ et $N$ est donc la médiatrice.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test d'existence d'un triangle",
+      "content": "Écrire un algorithme en pseudo-code qui prend en entrée trois longueurs $a$, $b$, $c$ et affiche \"Triangle possible\" si elles satisfont l'inégalité triangulaire, sinon \"Triangle impossible\".",
+      "correctAnswer": "Algorithme :\\nLire $a$, $b$, $c$\\nSi $a + b > c$ et $a + c > b$ et $b + c > a$ alors\\n    Afficher \"Triangle possible\"\\nSinon\\n    Afficher \"Triangle impossible\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle existe si et seulement si la somme de deux côtés est strictement supérieure au troisième côté pour les trois combinaisons. L'algorithme teste ces trois conditions.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul de l'aire d'un triangle",
+      "content": "Écrire un algorithme (formule) qui calcule l'aire $A$ d'un triangle connaissant sa base $b$ et sa hauteur $h$. Exprimer le résultat en utilisant la formule $A = \\frac{1}{2} \\times b \\times h$.",
+      "correctAnswer": "Algorithme :\\n1. Lire la base $b$ et la hauteur $h$.\\n2. Calculer $A = \\frac{1}{2} \\times b \\times h$ (ou $A = (b \\times h) / 2$).\\n3. Afficher $A$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'aire d'un triangle est la moitié du produit de la base par la hauteur correspondante. La formule $A = \\frac{1}{2} b h$ s'applique pour tout triangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 353,
+  "_course_code": "6eme-t05-c02-perimetres",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Calculer",
+  "title": "Calculer des périmètres",
+  "questions": [
+    {
+      "text": "Un carré a une longueur de côté de $5$ cm. Quel est son périmètre ?",
+      "options": [
+        "10 cm",
+        "15 cm",
+        "20 cm",
+        "25 cm"
+      ],
+      "correctAnswer": "20 cm",
+      "explanation": "Le périmètre d'un carré se calcule en multipliant la longueur d'un côté par $4$ (car il a $4$ côtés de même longueur). Ici, $5 \\times 4 = 20$. L'option 10 cm correspond à $5 \\times 2$ (seulement deux côtés), 15 cm à $5 \\times 3$ et 25 cm à $5 \\times 5$ (comme pour l'aire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle mesure $12$ cm de long et $5$ cm de large. Quelle est la formule correcte pour calculer son périmètre ?",
+      "options": [
+        "$12 \\times 5$",
+        "$12 + 5$",
+        "$2 \\times (12 + 5)$",
+        "$12 \\times 12 + 5 \\times 5$"
+      ],
+      "correctAnswer": "$2 \\times (12 + 5)$",
+      "explanation": "Le périmètre d'un rectangle est la somme de ses quatre côtés : deux longueurs et deux largeurs. La formule est donc $2 \\times (\\text{longueur} + \\text{largeur})$ soit $2 \\times (12 + 5) = 34$ cm. L'option $12 \\times 5$ calcule l'aire. L'option $12 + 5$ ne fait la somme que d'un seul couple de côtés. La dernière option n'a pas de sens géométrique ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle équilatéral a un périmètre de $36$ cm. Quelle est la longueur d'un de ses côtés ?",
+      "options": [
+        "9 cm",
+        "12 cm",
+        "18 cm",
+        "6 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "Un triangle équilatéral a ses trois côtés de même longueur. Pour trouver la longueur d'un côté, on divise le périmètre total par $3$ : $36 \\div 3 = 12$ cm. L'option 9 cm correspond à une division par $4$ (comme pour un carré), 18 cm à une division par $2$ et 6 cm à une division par $6$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La figure ci-dessous est un polygone régulier à $6$ côtés (hexagone) dont chaque côté mesure $4$ cm. Quel est son périmètre ?",
+      "options": [
+        "20 cm",
+        "24 cm",
+        "10 cm",
+        "28 cm"
+      ],
+      "correctAnswer": "24 cm",
+      "explanation": "Un polygone régulier a tous ses côtés de même longueur. Un hexagone a $6$ côtés. Le périmètre est donc $6 \\times 4 = 24$ cm. L'option 20 cm correspond à $5 \\times 4$ (pentagone), 10 cm à une addition simple ($4+4+...$ incomplète) et 28 cm à $7 \\times 4$ (heptagone).",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "cercle",
+          "carre"
+        ],
+        "options": [
+          "cercle",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Hexagone régulier de côté 4 cm (représentation schématique)"
+      }
+    },
+    {
+      "text": "Un rectangle a un périmètre de $50$ cm. Sa longueur est de $14$ cm. Quelle est sa largeur ?",
+      "options": [
+        "11 cm",
+        "22 cm",
+        "36 cm",
+        "6 cm"
+      ],
+      "correctAnswer": "11 cm",
+      "explanation": "Le périmètre $P = 2 \\times (L + l)$. On a $50 = 2 \\times (14 + l)$. On divise par $2$ : $25 = 14 + l$. Donc $l = 25 - 14 = 11$ cm. L'option 22 cm correspond à $50 - 2 \\times 14$ (oubli de diviser par 2). L'option 36 cm correspond à $50 - 14$ (soustraction d'une seule longueur). L'option 6 cm ne correspond à aucune étape logique standard.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 436,
+  "_course_code": "4eme-t04-c02-effectifs-et-frequences",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Pourcentages",
+  "title": "Quiz : Les pourcentages (4e)",
+  "questions": [
+    {
+      "text": "Calcule 15 % de 240.",
+      "options": [
+        "30",
+        "36",
+        "40",
+        "24"
+      ],
+      "correctAnswer": "36",
+      "explanation": "Pour calculer 15 % de 240, on multiplie 240 par 15/100 ou par 0,15. $240 \\times 0,15 = 36$. L'option 30 correspond à 12,5 %, l'option 40 à environ 16,7 % et l'option 24 à 10 %.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de 30 élèves, il y a 12 filles. Quel est le pourcentage de filles dans la classe ?",
+      "options": [
+        "25 %",
+        "30 %",
+        "40 %",
+        "60 %"
+      ],
+      "correctAnswer": "40 %",
+      "explanation": "Le pourcentage se calcule en divisant l'effectif partiel (12) par l'effectif total (30) puis en multipliant par 100. $(12 / 30) \\times 100 = 0,4 \\times 100 = 40 \\%$. L'option 25 % correspondrait à 7,5 élèves, 30 % à 9 élèves et 60 % à 18 élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Catégorie",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Garçons",
+            "18"
+          ],
+          [
+            "Filles",
+            "12"
+          ],
+          [
+            "Total",
+            "30"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le prix d'un jeu vidéo a augmenté de 20 % et coûte maintenant 60 €. Quel était son prix initial ?",
+      "options": [
+        "48 €",
+        "50 €",
+        "52 €",
+        "72 €"
+      ],
+      "correctAnswer": "50 €",
+      "explanation": "Une augmentation de 20 % correspond à un coefficient multiplicateur de $1 + 0,20 = 1,2$. Le prix initial multiplié par 1,2 donne 60 €. Prix initial $= 60 / 1,2 = 50$ €. L'option 48 € est le résultat erroné si on retire 20 % de 60 (ce qui ne revient pas au prix initial). L'option 72 € correspond à une augmentation de 20 % sur 60 €.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pull coûte 50 €. Il est soldé à -30 %, puis une remise supplémentaire de -10 % est appliquée sur le prix soldé. Quel est le prix final ?",
+      "options": [
+        "30 €",
+        "31,50 €",
+        "35 €",
+        "45 €"
+      ],
+      "correctAnswer": "31,50 €",
+      "explanation": "On applique les pourcentages successivement. Première remise : coefficient $0,7$. Prix soldé $= 50 \\times 0,7 = 35$ €. Deuxième remise : coefficient $0,9$ sur le prix soldé. Prix final $= 35 \\times 0,9 = 31,50$ €. Attention : on ne peut pas additionner les pourcentages (-40 % donnerait 30 €, option incorrecte). L'option 35 € correspond au prix après la première remise seulement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un collège, 40 % des élèves prennent le bus. Parmi ces élèves, 25 % sont en classe de 4e. Quel pourcentage des élèves du collège sont des élèves de 4e qui prennent le bus ?",
+      "options": [
+        "10 %",
+        "15 %",
+        "65 %",
+        "100 %"
+      ],
+      "correctAnswer": "10 %",
+      "explanation": "Il s'agit d'un pourcentage d'un pourcentage. On multiplie les deux proportions : $40 \\% \\times 25 \\% = 0,4 \\times 0,25 = 0,10 = 10 \\%$. L'option 15 % correspond à une addition (erreur fréquente). L'option 65 % n'a pas de sens ici. L'option 100 % serait la totalité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

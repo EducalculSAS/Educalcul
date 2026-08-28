@@ -1,0 +1,60 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Réciproque de Thalès",
+  "title": "Applications de la réciproque de Thalès",
+  "blocks": [
+    {
+      "title": "Démonstration de parallélisme dans un triangle",
+      "content": "Dans le triangle $ABC$, les points $D$ et $E$ appartiennent respectivement aux côtés $[AB]$ et $[AC]$. On donne $AD = 3$ cm, $DB = 2$ cm, $AE = 4,5$ cm et $EC = 3$ cm. Rangez les étapes suivantes dans l'ordre pour montrer que $(DE) \\parallel (BC)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire les longueurs des segments $AB$ et $AC$ en additionnant les parties connues.",
+        "Calculer les rapports $\\frac{AD}{AB}$ et $\\frac{AE}{AC}$.",
+        "Comparer les deux rapports obtenus.",
+        "Conclure par la réciproque du théorème de Thalès que $(DE) \\parallel (BC)$."
+      ],
+      "explanation": "On a $AB = AD + DB = 3 + 2 = 5$ cm et $AC = AE + EC = 4,5 + 3 = 7,5$ cm. Les rapports sont $\\frac{AD}{AB} = \\frac{3}{5} = 0,6$ et $\\frac{AE}{AC} = \\frac{4,5}{7,5} = 0,6$. Les deux rapports sont égaux, donc par la réciproque de Thalès, la droite $(DE)$ est parallèle à $(BC)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification de parallélisme dans un quadrilatère",
+      "content": "Soit un quadrilatère $MNPQ$ avec $M,N,P,Q$ dans cet ordre. Les diagonales se coupent en $O$. On a $MO = 4$ cm, $OP = 6$ cm, $NO = 3$ cm, $OQ = 4,5$ cm. Rangez les étapes pour déterminer si $(MN) \\parallel (PQ)$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les triangles formés par les diagonales : $\\triangle MON$ et $\\triangle POQ$.",
+        "Calculer les rapports $\\frac{MO}{OP}$ et $\\frac{NO}{OQ}$.",
+        "Vérifier l'égalité des deux rapports.",
+        "En déduire par la réciproque de Thalès que $(MN) \\parallel (PQ)$."
+      ],
+      "explanation": "Les triangles $\\triangle MON$ et $\\triangle POQ$ partagent l'angle en $O$. On calcule $\\frac{MO}{OP} = \\frac{4}{6} = \\frac{2}{3}$ et $\\frac{NO}{OQ} = \\frac{3}{4,5} = \\frac{2}{3}$. Les rapports sont égaux, donc par la réciproque de Thalès, les droites $(MN)$ et $(PQ)$ sont parallèles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application concrète : ombre d'un poteau",
+      "content": "Un poteau vertical de $2,40$ m projette une ombre de $1,60$ m. À côté, un arbre projette une ombre de $4$ m. On suppose que les rayons du soleil sont parallèles. Rangez les étapes pour trouver la hauteur de l'arbre en utilisant la réciproque de Thalès.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Modéliser la situation par deux triangles rectangles semblables formés par les objets et leurs ombres.",
+        "Écrire l'égalité des rapports entre hauteur et longueur d'ombre : $\\frac{2,40}{1,60} = \\frac{h}{4}$.",
+        "Calculer le rapport $\\frac{2,40}{1,60} = 1,5$.",
+        "Résoudre l'équation $1,5 = \\frac{h}{4}$ pour obtenir $h = 6$ m."
+      ],
+      "explanation": "Les deux triangles rectangles (poteau/ombre et arbre/ombre) sont semblables car les rayons du soleil sont parallèles. Le rapport hauteur/ombre est constant : $\\frac{2,40}{1,60} = 1,5$. On a donc $1,5 = \\frac{h}{4}$, d'où $h = 1,5 \\times 4 = 6$ m. La hauteur de l'arbre est 6 mètres.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

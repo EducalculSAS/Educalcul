@@ -1,0 +1,439 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.141000+00:00",
+  "id": 213,
+  "code": "cm1-t01-c03",
+  "title": "Comparer, ranger et encadrer les entiers",
+  "description": "Cours structuré Educalcul : Comparer, ranger et encadrer les entiers.",
+  "subject": "Nombres entiers et nombres décimaux",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Nombres entiers et nombres décimaux",
+    "titre_du_cours": "Comparer, ranger et encadrer les entiers",
+    "objectif_global": "Comparer, ranger et encadrer les entiers",
+    "mini_lecons_imposees": [
+      "Comparer par rang.",
+      "Encadrer.",
+      "Arrondir dans des cas simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et nombres décimaux",
+      "lessons": [
+        {
+          "title": "Comparer par rang.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer par le rang"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons apprendre à comparer des nombres entiers en regardant leur place sur une droite graduée. Tu vas voir que la position d'un nombre sur la droite nous dit tout de suite s'il est plus grand ou plus petit qu'un autre. C'est une idée très concrète que tu utilises déjà quand tu comptes des objets ou quand tu regardes les étages d'un immeuble."
+            },
+            {
+              "type": "definition",
+              "term": "comparer",
+              "definition": "Comparer deux nombres, c'est décider lequel est le plus grand, le plus petit ou s'ils sont égaux.",
+              "example": "On compare $12$ et $9$ : $12$ est plus grand."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour commencer, imagine une droite numérotée de $0$ à $1000$. Chaque trait représente un nombre entier. Si tu places $345$ et $567$ sur cette droite, tu vois immédiatement que $567$ se trouve plus à droite, donc il est plus grand. Essaie de visualiser la distance entre les deux points : plus l'écart est large, plus la différence est grande."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $345$ et $567$ sur la droite",
+              "min": 0,
+              "max": 1000,
+              "points": [
+                {
+                  "value": 345,
+                  "label": "345"
+                },
+                {
+                  "value": 567,
+                  "label": "567"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment la droite nous aide, regardons une méthode rapide pour comparer sans dessin. La première chose à faire est de compter le nombre de chiffres de chaque nombre. Un nombre à trois chiffres est toujours plus grand qu'un nombre à deux chiffres, peu importe les chiffres eux‑mêmes. Si les deux nombres ont le même nombre de chiffres, on compare le chiffre le plus à gauche, puis le suivant en cas d'égalité."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Compter les chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte le nombre de chiffres de chaque nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Comparer le nombre de chiffres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les nombres n'ont pas le même nombre de chiffres, celui qui en a le plus est le plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Comparer chiffre par chiffre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sinon, compare les chiffres de gauche à droite jusqu'à trouver une différence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ranger plusieurs nombres du plus petit au plus grand, on applique la même idée à toute la liste. On commence par regrouper les nombres selon leur nombre de chiffres, puis on trie chaque groupe en comparant les chiffres de gauche à droite. Imagine que tu as les nombres $12$, $345$, $78$, $9$, $560$ : tu mets d'abord $9$, puis $12$, $78$, $345$, $560$. C'est exactement ce que fait un bibliothécaire quand il range les livres par numéro."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "9",
+                "12",
+                "78",
+                "345",
+                "560"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Pour comparer vite, compte d'abord les chiffres. Un nombre à trois chiffres bat toujours un nombre à deux chiffres."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas comparer seulement le premier chiffre si les nombres n'ont pas le même nombre de chiffres. Par exemple, $9$ n'est pas plus grand que $12$ même si $9 > 1$."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel de ces deux nombres est le plus grand : $345$ ou $567$ ?",
+              "answer": "$567$",
+              "hint": "Regarde la position sur la droite graduée.",
+              "explanation": "Sur la droite, $567$ se trouve à droite de $345$, donc il est plus grand."
+            },
+            {
+              "question": "Compare $482$ et $479$ en utilisant la méthode des chiffres de gauche à droite.",
+              "answer": "$482 > 479$",
+              "hint": "Compare d'abord les centaines, puis les dizaines.",
+              "explanation": "Les deux ont $4$ centaines, puis $8$ dizaines contre $7$ dizaines, donc $482$ est plus grand."
+            },
+            {
+              "question": "Range les nombres $9$, $12$, $78$, $345$, $560$ du plus petit au plus grand.",
+              "answer": "$9, 12, 78, 345, 560$",
+              "hint": "Regroupe d'abord par nombre de chiffres.",
+              "explanation": "Un chiffre : $9$ ; deux chiffres : $12$, $78$ ; trois chiffres : $345$, $560$. À l'intérieur de chaque groupe, compare les chiffres de gauche à droite."
+            }
+          ]
+        },
+        {
+          "title": "Encadrer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer un nombre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon nous allons voir comment encadrer un nombre entier entre deux repères commodes, comme des multiples de $10$, de $100$ ou de $1000$. Encadrer, c'est trouver deux bornes qui entourent le nombre sans le dépasser. C'est très utile pour estimer un résultat ou pour placer un nombre sur une droite."
+            },
+            {
+              "type": "definition",
+              "term": "encadrer",
+              "definition": "Encadrer un nombre, c'est trouver deux nombres repères (souvent des multiples de $10$, $100$…) entre lesquels il se situe.",
+              "example": "$473$ est encadré par $470$ et $480$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons d'abord un tableau qui montre comment on trouve les dizaines voisines de $473$ et les centaines voisines de $1245$. Le tableau donne directement le multiple inférieur et le multiple supérieur pour chaque nombre."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Multiple inférieur",
+                "Multiple supérieur"
+              ],
+              "rows": [
+                [
+                  "473",
+                  "470",
+                  "480"
+                ],
+                [
+                  "1245",
+                  "1200",
+                  "1300"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser la composition d'un nombre, on peut utiliser des blocs de base dix. Prenons $473$ : il contient $4$ centaines, $7$ dizaines et $3$ unités. Ces blocs montrent pourquoi les dizaines voisines sont $470$ et $480$ : on ajoute ou on retire une dizaine."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 4,
+              "tens": 7,
+              "units": 3,
+              "caption": "473 : 4 centaines, 7 dizaines, 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois on veut un encadrement plus large, par exemple au millier près. Pour $3678$, les milliers les plus proches sont $3000$ et $4000$. On écrit alors $3000 \\le 3678 \\le 4000$. La méthode est toujours la même : repère la position visée, trouve le multiple juste en dessous et celui juste au-dessus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Choisir la position",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la position visée (dizaine, centaine, millier)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Trouver les bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve le multiple inférieur et le multiple supérieur de cette position."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Écrire l'encadrement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'encadrement sous la forme $multiple_inf \\le nombre \\le multiple_sup$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Utilise les repères de la table de numération : les dizaines, les centaines, les milliers."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ne confonds pas encadrer et arrondir. Encadrer donne deux bornes, arrondir donne une seule valeur approximative."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Encadre le nombre $473$ entre deux multiples de $10$.",
+              "answer": "$470 \\le 473 \\le 480$",
+              "hint": "Regarde les dizaines voisines.",
+              "explanation": "Les dizaines les plus proches sont $470$ et $480$, donc $473$ se situe entre eux."
+            },
+            {
+              "question": "Encadre $1245$ entre deux multiples de $100$.",
+              "answer": "$1200 \\le 1245 \\le 1300$",
+              "hint": "Regarde les centaines voisines.",
+              "explanation": "Les centaines les plus proches sont $1200$ et $1300$."
+            },
+            {
+              "question": "Donne un encadrement de $3678$ au millier près.",
+              "answer": "$3000 \\le 3678 \\le 4000$",
+              "hint": "Identifie les milliers juste en dessous et juste au-dessus.",
+              "explanation": "Le millier inférieur est $3000$, le supérieur $4000$."
+            }
+          ]
+        },
+        {
+          "title": "Arrondir dans des cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir simplement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Arrondir un nombre, c'est le remplacer par une valeur plus simple, souvent un multiple de $10$, de $100$ ou de $1000$. La règle est facile : on regarde le chiffre juste à droite de la position visée. S'il est $5$ ou plus, on monte ; sinon on descend. Cette leçon te montrera comment faire pour la dizaine, la centaine et le millier."
+            },
+            {
+              "type": "definition",
+              "term": "arrondir",
+              "definition": "Arrondir un nombre, c'est le remplacer par une valeur plus simple (multiple de $10$, $100$…) en suivant la règle du $5$.",
+              "example": "$84$ arrondi à la dizaine donne $80$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la dizaine. Place $84$ dans un tableau de numération : les dizaines valent $8$, les unités $4$. Comme le chiffre des unités est $4$ (inférieur à $5$), on garde les dizaines et on met zéro aux unités. Le résultat est $80$."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 84,
+              "caption": "84 dans le tableau de numération"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la centaine. Pour $1276$, les centaines valent $2$, les dizaines $7$. Le chiffre des dizaines est $7$ (supérieur ou égal à $5$), donc on augmente les centaines de $1$ (elles deviennent $3$) et on met des zéros aux dizaines et aux unités. On obtient $1300$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Repérer le chiffre cible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère le chiffre de la position cible (dizaine, centaine…)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Regarder le chiffre à droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le chiffre immédiatement à droite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Appliquer la règle du 5",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce chiffre est $5$ ou plus, augmente le chiffre cible de $1$ et mets des zéros à droite ; sinon, garde le chiffre cible et mets des zéros."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant un mélange : arrondis $5432$ au millier le plus proche. Les milliers valent $5$, les centaines $4$. Le chiffre des centaines est $4$ (inférieur à $5$), donc on garde les milliers et on met des zéros aux centaines, dizaines, unités. Le résultat est $5000$."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "$84$ → $80$ (dizaine)",
+                "$1276$ → $1300$ (centaine)",
+                "$5432$ → $5000$ (millier)"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Regarde seulement le chiffre juste à droite de la position visée : s'il est $5$ ou plus, on monte, sinon on descend."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ne pas oublier de regarder le chiffre des unités pour arrondir à la dizaine, ni le chiffre des dizaines pour la centaine. C'est la seule règle à retenir."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux nombres en regardant le nombre de chiffres.",
+                "Je sais encadrer un nombre entre deux multiples de 10, 100 ou 1000.",
+                "Je sais arrondir un nombre à la dizaine, à la centaine ou au millier près."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis $84$ à la dizaine la plus proche.",
+              "answer": "$80$",
+              "hint": "Regarde le chiffre des unités.",
+              "explanation": "Le chiffre des unités est $4$, inférieur à $5$, donc on arrondit à la dizaine inférieure $80$."
+            },
+            {
+              "question": "Arrondis $1276$ à la centaine la plus proche.",
+              "answer": "$1300$",
+              "hint": "Regarde le chiffre des dizaines.",
+              "explanation": "Le chiffre des dizaines est $7$, supérieur ou égal à $5$, donc on arrondit à la centaine supérieure $1300$."
+            },
+            {
+              "question": "Arrondis $5432$ au millier le plus proche.",
+              "answer": "$5000$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines est $4$, inférieur à $5$, donc on arrondit au millier inférieur $5000$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Calcul de probabilités dans les expériences à deux étapes",
+  "blocks": [
+    {
+      "title": "Expérience à deux étapes indépendantes",
+      "content": "Une urne contient $3$ boules rouges et $2$ boules bleues. On effectue deux tirages successifs **avec remise**.\\nLa probabilité d'obtenir une boule rouge au premier tirage est ${{1}}$.\\nLa probabilité d'obtenir une boule bleue au second tirage est ${{2}}$.\\nLa probabilité de l'événement « rouge puis bleu » est donc ${{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "3/5|0,6",
+        "2/5|0,4",
+        "6/25|0,24"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Avec remise, les tirages sont indépendants. Le total est de $5$ boules. $P(\\text{Rouge}) = 3/5$. $P(\\text{Bleu}) = 2/5$. La probabilité de l'intersection (ordre imposé) est le produit : $(3/5) \\times (2/5) = 6/25 = 0,24$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expérience à deux étapes dépendantes",
+      "content": "Une urne contient $4$ boules vertes et $1$ boule jaune. On effectue deux tirages successifs **sans remise**.\\nAu premier tirage, la probabilité d'obtenir une boule verte est ${{1}}$.\\nSi la première boule est verte, il reste $4$ boules dont $1$ jaune. La probabilité d'obtenir une boule jaune au second tirage est ${{2}}$.\\nLa probabilité de l'événement « verte puis jaune » est ${{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "4/5|0,8",
+        "1/4|0,25",
+        "1/5|0,2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sans remise, les tirages sont dépendants. Premier tirage : $4$ vertes sur $5$ au total, donc $4/5$. Si une verte est sortie, il reste $3$ vertes et $1$ jaune ($4$ boules). $P(\\text{Jaune} | \\text{Verte}) = 1/4$. Probabilité composée : $(4/5) \\times (1/4) = 4/20 = 1/5 = 0,2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule des probabilités totales et réunion",
+      "content": "On considère deux événements $A$ et $B$ tels que $P(A) = 0,6$, $P(B | A) = 0,5$ et $P(B | \\overline{A}) = 0,3$.\\nLa probabilité de l'intersection $A \\cap B$ vaut ${{1}}$.\\nLa probabilité de l'événement $B$ (formule des probabilités totales) vaut ${{2}}$.\\nOn en déduit que $P(A \\cup B) = ${{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "0,3",
+        "0,42",
+        "0,72"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "$P(A \\cap B) = P(A) \\times P(B | A) = 0,6 \\times 0,5 = 0,3$.\\n$P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = P(A)P(B|A) + P(\\overline{A})P(B|\\overline{A}) = 0,3 + (1-0,6) \\times 0,3 = 0,3 + 0,12 = 0,42$.\\n$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0,6 + 0,42 - 0,3 = 0,72$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

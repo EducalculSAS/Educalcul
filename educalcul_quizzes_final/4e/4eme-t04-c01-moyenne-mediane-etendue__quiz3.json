@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 435,
+  "_course_code": "4eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer les mesures statistiques",
+  "questions": [
+    {
+      "text": "Dans une série de notes symétrique, la moyenne et la médiane sont égales. Dans une série asymétrique avec quelques valeurs très élevées, que peut-on dire de la moyenne par rapport à la médiane ?",
+      "options": [
+        "La moyenne est inférieure à la médiane",
+        "La moyenne est égale à la médiane",
+        "La moyenne est supérieure à la médiane",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "La moyenne est supérieure à la médiane",
+      "explanation": "Lorsque la distribution est étirée vers les grandes valeurs (asymétrie à droite), les valeurs extrêmes tirent la moyenne vers le haut tandis que la médiane, qui ne dépend que de l'ordre, reste plus basse. Donc la moyenne devient supérieure à la médiane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux séries de données ont les étendues suivantes : série A : $15$, série B : $22$. Laquelle a la plus grande dispersion ?",
+      "options": [
+        "Série A",
+        "Série B",
+        "Les deux ont la même dispersion",
+        "Impossible à savoir"
+      ],
+      "correctAnswer": "Série B",
+      "explanation": "L'étendue est la différence entre la valeur maximale et la valeur minimale. Une étendue plus grande indique une dispersion plus importante. Comme $22 > 15$, la série B est plus dispersée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un diagramme en boîte présente les valeurs suivantes : minimum $2$, premier quartile $5$, médiane $7$, troisième quartile $10$, maximum $14$. Laquelle des affirmations compare correctement l'étendue de la boîte et l'étendue totale ?",
+      "options": [
+        "L'étendue de la boîte est plus grande que l'étendue totale",
+        "L'étendue de la boîte est égale à l'étendue totale",
+        "L'étendue de la boîte est plus petite que l'étendue totale",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "L'étendue de la boîte est plus petite que l'étendue totale",
+      "explanation": "L'étendue de la boîte (intervalle interquartile) vaut $Q_3 - Q_1 = 10 - 5 = 5$. L'étendue totale vaut $max - min = 14 - 2 = 12$. Puisque $5 < 12$, l'étendue de la boîte est plus petite que l'étendue totale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux classes ont passé le même contrôle. La classe 1 a une moyenne de $12$ et une médiane de $13$. La classe 2 a une moyenne de $13$ et une médiane de $12$. Quelle affirmation décrit correctement l'asymétrie des deux distributions ?",
+      "options": [
+        "La classe 1 est asymétrique à droite",
+        "La classe 2 est asymétrique à gauche",
+        "Les deux classes sont symétriques",
+        "La classe 1 est asymétrique à gauche et la classe 2 à droite"
+      ],
+      "correctAnswer": "La classe 1 est asymétrique à gauche et la classe 2 à droite",
+      "explanation": "Si la moyenne est inférieure à la médiane, la distribution est étirée vers les petites valeurs (asymétrie à gauche). Pour la classe 1, $12 < 13$ donc asymétrie à gauche. Si la moyenne est supérieure à la médiane, la distribution est étirée vers les grandes valeurs (asymétrie à droite). Pour la classe 2, $13 > 12$ donc asymétrie à droite.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève compare ses résultats en mathématiques et en français. En mathématiques, ses notes ont une moyenne de $14$ et une étendue de $6$. En français, la moyenne est $13$ et l'étendue $10$. Quelle matière montre des résultats plus homogènes ?",
+      "options": [
+        "Mathématiques",
+        "Français",
+        "Les deux sont aussi homogènes",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Mathématiques",
+      "explanation": "L'homogénéité d'une série se mesure par sa dispersion : plus l'étendue est faible, plus les valeurs sont proches les unes des autres. L'étendue en mathématiques ($6$) est plus petite qu'en français ($10$), donc les notes en mathématiques sont plus homogènes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

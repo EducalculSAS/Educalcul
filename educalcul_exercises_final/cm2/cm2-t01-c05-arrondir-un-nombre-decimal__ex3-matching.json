@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 279,
+  "_course_code": "cm2-t01-c05-arrondir-un-nombre-decimal",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Contrôler l'erreur de façon intuitive",
+  "title": "Vérifier l'arrondi d'un nombre",
+  "blocks": [
+    {
+      "title": "Écarts à l'unité",
+      "content": "Relie chaque nombre arrondi à l'unité à l'écart qui permet de vérifier si l'arrondi est possible.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$4,2$ arrondi à $4$",
+          "right": "l'écart est de $0,2$"
+        },
+        {
+          "left": "$7,8$ arrondi à $8$",
+          "right": "l'écart est de $0,2$"
+        },
+        {
+          "left": "$12,5$ arrondi à $13$",
+          "right": "l'écart est de $0,5$"
+        }
+      ],
+      "explanation": "Pour vérifier l'arrondi, on calcule la différence entre le nombre et son arrondi. Ici, $4 - 4,2$ donne un écart de $0,2$. Pour $7,8$ et $8$, $8 - 7,8$ donne $0,2$. Pour $12,5$ et $13$, $13 - 12,5$ donne $0,5$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Cohérence de l'arrondi",
+      "content": "Relie chaque arrondi au dixième à l'affirmation qui permet d'en contrôler la validité.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$6,34$ arrondi à $6,3$",
+          "right": "le nombre est plus proche de $6,3$ que de $6,4$"
+        },
+        {
+          "left": "$9,17$ arrondi à $9,2$",
+          "right": "le nombre est plus proche de $9,2$ que de $9,1$"
+        },
+        {
+          "left": "$2,55$ arrondi à $2,6$",
+          "right": "le nombre est exactement au milieu de $2,5$ et $2,6$"
+        }
+      ],
+      "explanation": "Un arrondi est correct si le nombre initial est plus proche de la valeur arrondie que de la valeur suivante ou précédente. $6,34$ est à $0,04$ de $6,3$ et à $0,06$ de $6,4$. $9,17$ est à $0,03$ de $9,2$ et à $0,07$ de $9,1$. $2,55$ est à égale distance des deux, on arrondit alors au supérieur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation et erreur",
+      "content": "Relie chaque nombre à l'estimation qui permet de détecter rapidement une erreur d'arrondi.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$14,92$ arrondi à $15$",
+          "right": "le résultat doit être très proche de $15$"
+        },
+        {
+          "left": "$14,11$ arrondi à $14$",
+          "right": "le résultat doit être très proche de $14$"
+        },
+        {
+          "left": "$20,49$ arrondi à $20$",
+          "right": "le résultat doit être très proche de $20$"
+        }
+      ],
+      "explanation": "Contrôler intuitivement signifie vérifier que la valeur arrondie ne s'éloigne pas trop du nombre de départ. $14,92$ est presque $15$, donc l'arrondi à $15$ est cohérent. $14,11$ est proche de $14$, et $20,49$ est proche de $20$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

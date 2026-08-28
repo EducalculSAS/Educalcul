@@ -1,0 +1,395 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.159528+00:00",
+  "id": 219,
+  "code": "cm1-t02-c01",
+  "title": "Fraction comme nombre",
+  "description": "Cours structuré Educalcul : Fraction comme nombre.",
+  "subject": "Fractions",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Fractions",
+    "titre_du_cours": "Fraction comme nombre",
+    "objectif_global": "Fraction comme nombre",
+    "mini_lecons_imposees": [
+      "Quotient / partage dans sens accessible.",
+      "Droite graduée.",
+      "Comparer à 1."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Fractions",
+      "lessons": [
+        {
+          "title": "Quotient / partage dans sens accessible.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager équitablement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as trois gâteaux identiques et quatre amis affamés. Pour que chacun reçoive la même part, tu découpes chaque gâteau en quatre morceaux égaux. Chaque ami reçoit alors trois morceaux, soit trois quarts d’un gâteau. C’est ainsi que naît l’idée de fraction : une partie d’un tout partageé équitablement. Tu peux visualiser cela en pensant à une pizza coupée en quatre parts : si tu en prends trois, tu as les trois quarts de la pizza."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Trois quarts : 3 parts sur 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu vois le partage, regardons comment on note cette situation avec une écriture mathématique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le partage sous forme de division"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le partage de trois gâteaux entre quatre personnes s’écrit $3 \\div 4$ ou, plus simplement, sous la forme d’une fraction $\\frac{3}{4}$. Le nombre du haut, le numérateur, compte les parts prises. Le nombre du bas, le dénominateur, indique en combien de parts égales le tout a été divisé. Cette écriture compacte permet de garder la trace du partage sans redessiner les gâteaux. Note que le trait de fraction peut se lire comme « divisé par » : $\\frac{3}{4}$ se lit « trois divisé par quatre »."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte le nombre total d’objets partagés (ici 3)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte en combien de parts égales on partage (ici 4)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris la fraction avec le total au numérateur et le nombre de parts au dénominateur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, entraînons-nous à repérer la fraction cachée dans d’autres petites histoires de partage."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la fraction dans un énoncé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une situation : « Léa a 5 barres de chocolat qu’elle veut partager équitablement entre 2 copains. » Chaque copain reçoit 5 demies barres, c’est-à-dire $\\frac{5}{2}$. On peut aussi dire que chaque part vaut deux barres et demie. Essaie maintenant avec 7 bonbons partagés entre 3 enfants : chaque enfant reçoit $\\frac{7}{3}$ bonbons, soit deux bonbons entiers et un tiers de bonbon."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{5}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si tu partages 2 gâteaux entre 5 amis, quelle fraction de gâteau reçoit chaque ami ?",
+              "answer": "$\\frac{2}{5}$",
+              "hint": "Compte le nombre de gâteaux (numérateur) et le nombre d’amis (dénominateur).",
+              "explanation": "Il y a 2 gâteaux partagés en 5 parts égales, donc chaque part vaut 2/5."
+            },
+            {
+              "question": "Écris la fraction qui correspond au partage de 7 bonbons entre 3 enfants.",
+              "answer": "$\\frac{7}{3}$",
+              "hint": "Le numérateur est le total d’objets, le dénominateur le nombre de parts.",
+              "explanation": "7 bonbons divisés en 3 parts égales donnent 7/3."
+            },
+            {
+              "question": "Dans l’énoncé « Paul a 4 barres de chocolat qu’il partage entre 2 copains », quelle fraction représente la part d’un copain ?",
+              "answer": "$\\frac{4}{2}$ ou $2$",
+              "hint": "4 barres pour 2 personnes, chaque personne reçoit 4/2 = 2 barres entières.",
+              "explanation": "4 divisé par 2 donne 2, la fraction 4/2 se simplifie en 2."
+            }
+          ]
+        },
+        {
+          "title": "Droite graduée.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La droite graduée, un chemin pour les fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà la droite des nombres entiers. Pour y placer des fractions, on découpe chaque intervalle entre deux entiers en autant de parts égales que le dénominateur l’indique. Ainsi, pour poser $\\frac{3}{4}$, on divise l’espace entre 0 et 1 en quatre segments identiques et on compte trois traits à partir de zéro. Chaque segment représente un quart, et le troisième trait marque exactement les trois quarts."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "caption": "Position de 3/4 sur la droite"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment repérer une fraction dont le numérateur est plus grand que le dénominateur, comme $\\frac{5}{4}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les fractions supérieures à 1 sur la droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque le numérateur dépasse le dénominateur, la fraction se trouve au‑delà de 1. Pour $\\frac{5}{4}$, on compte d’abord un entier (4/4 = 1) puis il reste un quart. On avance donc d’un pas entier jusqu’à 1, puis d’un quart supplémentaire. La droite graduée montre bien ce décalage : le point se situe entre 1 et 2, plus proche de 1."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver la partie entière",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le numérateur par le dénominateur pour obtenir la partie entière (5 ÷ 4 = 1)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le reste de la division devient le nouveau numérateur (5 - 4 = 1)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer sur la droite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Marque l’entier trouvé, puis ajoute la fraction restante (1/4) à partir de cet entier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore cette leçon, pratiquons la lecture de plusieurs fractions sur une même droite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire plusieurs fractions sur une même droite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur une droite allant de 0 à 3, on peut placer $\\frac{1}{2}$, $\\frac{3}{2}$, $\\frac{5}{2}$ et $\\frac{7}{2}$. Chacune correspond à un demi, un et demi, deux et demi, trois et demi. Observe les intervalles réguliers : ils ont tous la même longueur, ce qui confirme que l’unité est bien découpée en deux parts égales. Essaie de nommer la fraction qui se trouve au trait numéro 5 en partant de zéro."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{1}{2}, \\frac{3}{2}, \\frac{5}{2}, \\frac{7}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur une droite graduée de 0 à 1 divisée en 4 parties égales, à quelle graduation se trouve la fraction $\\frac{3}{4}$ ?",
+              "answer": "Au troisième trait après 0.",
+              "hint": "Compte 3 segments sur 4 depuis zéro.",
+              "explanation": "Chaque segment vaut 1/4, trois segments donnent 3/4."
+            },
+            {
+              "question": "Place la fraction $\\frac{5}{4}$ sur une droite graduée. Entre quels deux entiers se trouve-t-elle ?",
+              "answer": "Entre 1 et 2.",
+              "hint": "5/4 = 1 + 1/4.",
+              "explanation": "La partie entière est 1, il reste 1/4, donc la fraction est entre 1 et 2."
+            },
+            {
+              "question": "Sur une droite de 0 à 3 graduée en demis, quelles fractions correspondent aux points 0,5 ; 1,5 ; 2,5 ?",
+              "answer": "$\\frac{1}{2}, \\frac{3}{2}, \\frac{5}{2}$",
+              "hint": "Chaque grand trait vaut 1/2.",
+              "explanation": "Les graduations de 0,5 correspondent à 1/2, 3/2, 5/2."
+            }
+          ]
+        },
+        {
+          "title": "Comparer à 1.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une fraction face à l’unité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Comparer une fraction à 1, c’est se demander si la part est plus petite, égale ou plus grande qu’un tout. Si le numérateur est plus petit que le dénominateur, comme $\\frac{2}{5}$, la fraction est inférieure à 1. S’ils sont égaux, $\\frac{4}{4}$, elle vaut exactement 1. Si le numérateur est plus grand, $\\frac{7}{3}$, elle dépasse 1. Cette règle simple permet de situer immédiatement la fraction par rapport à l’unité sans calcul compliqué."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 2,
+                  "denominator": 5
+                },
+                {
+                  "numerator": 4,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 7,
+                  "denominator": 3
+                }
+              ],
+              "caption": "Comparaison visuelle à 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, utilisons la droite graduée pour vérifier ces comparaisons."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier sur la droite graduée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Place $\\frac{2}{5}$ entre 0 et 1 : elle se trouve avant le trait de 1. Place $\\frac{4}{4}$ exactement sur le trait 1. Place $\\frac{7}{3}$ : 3/3 = 1, il reste 4/3, donc on va à 1 puis on ajoute 1 et 1/3, on arrive à 2 et 1/3. La droite confirme le classement : les fractions inférieures à 1 sont à gauche de 1, celles supérieures à droite."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 3,
+              "points": [
+                {
+                  "value": 0.4,
+                  "label": "2/5"
+                },
+                {
+                  "value": 1,
+                  "label": "4/4"
+                },
+                {
+                  "value": 2.333,
+                  "label": "7/3"
+                }
+              ],
+              "caption": "Position des fractions par rapport à 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, entraînons-nous à classer rapidement une série de fractions par rapport à 1."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer une liste de fractions"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une liste : $\\frac{3}{8}$, $\\frac{5}{5}$, $\\frac{9}{4}$, $\\frac{1}{2}$, $\\frac{11}{6}$. Regarde chaque numérateur et dénominateur : $\\frac{3}{8}$ et $\\frac{1}{2}$ sont < 1, $\\frac{5}{5}$ = 1, $\\frac{9}{4}$ et $\\frac{11}{6}$ > 1. Essaie de les ranger du plus petit au plus grand en t’aidant de cette règle simple. Tu peux aussi les placer sur une droite imaginaire pour vérifier l’ordre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{3}{8}, \\frac{1}{2}, \\frac{5}{5}, \\frac{9}{4}, \\frac{11}{6}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une fraction pour décrire un partage équitable.",
+                "Je sais placer une fraction sur une droite graduée.",
+                "Je sais comparer une fraction à 1 en regardant le numérateur et le dénominateur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{2}{5}$ à 1. Est-elle plus petite, égale ou plus grande ?",
+              "answer": "Plus petite.",
+              "hint": "Regarde le numérateur et le dénominateur.",
+              "explanation": "2 < 5, donc la fraction est inférieure à 1."
+            },
+            {
+              "question": "Où se trouve $\\frac{7}{3}$ par rapport à 1 sur la droite graduée ?",
+              "answer": "Au-delà de 1, entre 2 et 3.",
+              "hint": "7/3 = 2 + 1/3.",
+              "explanation": "La partie entière est 2, il reste 1/3, donc elle est supérieure à 1."
+            },
+            {
+              "question": "Classe ces fractions par rapport à 1 : $\\frac{3}{8}$, $\\frac{5}{5}$, $\\frac{9}{4}$, $\\frac{1}{2}$, $\\frac{11}{6}$.",
+              "answer": "Inférieures à 1 : 3/8, 1/2. Égale à 1 : 5/5. Supérieures à 1 : 9/4, 11/6.",
+              "hint": "Compare numérateur et dénominateur.",
+              "explanation": "3<8, 1<2 => <1 ; 5=5 => =1 ; 9>4, 11>6 => >1."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 390,
+  "_course_code": "5eme-t03-c02-structure-d-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Approfondissement : Somme / produit / différence",
+  "title": "Algorithmes et structure d'expressions : somme, produit, différence",
+  "blocks": [
+    {
+      "title": "Identifier la structure et calculer",
+      "content": "On considère l'expression $E = 7x + 12$.\\n1. Quelle est la structure de cette expression (somme, produit, différence) ?\\n2. Écris un algorithme (style Python) qui demande la valeur de $x$ à l'utilisateur, calcule la valeur de $E$ et l'affiche.",
+      "correctAnswer": "1. C'est une somme (somme de $7x$ et $12$).\\n2. Algorithme :\\nx = float(input(\"Entrez x : \"))\\nE = 7 * x + 12\\nprint(\"La valeur de E est :\", E)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expression $E = 7x + 12$ est une addition de deux termes : $7x$ et $12$. C'est donc une somme. L'algorithme utilise une variable pour stocker $x$, calcule $7 \\times x + 12$ en respectant la priorité de la multiplication, puis affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle et structure produit",
+      "content": "On considère l'expression $F = 5 \\times (x - 3)$.\\n1. Quelle est la structure principale de cette expression ?\\n2. Écris un algorithme qui affiche la valeur de $F$ pour toutes les valeurs entières de $x$ comprises entre $0$ et $4$ inclus.",
+      "correctAnswer": "1. C'est un produit (produit de $5$ et de $(x-3)$).\\n2. Algorithme :\\npour x de 0 à 4 :\\n    F = 5 * (x - 3)\\n    print(\"x =\", x, \", F =\", F)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'expression $F = 5 \\times (x - 3)$ est une multiplication entre le nombre $5$ et la quantité $(x-3)$. Sa structure principale est donc un produit. La boucle « pour x de 0 à 4 » permet de tester les cinq valeurs demandées. Les parenthèses sont obligatoires pour calculer la différence $x-3$ avant de multiplier par $5$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Construire l'expression et la fonction",
+      "content": "On veut traduire le programme de calcul suivant :\\n« Choisir un nombre $x$, soustraire $4$, multiplier le résultat par $6$, puis ajouter $10$ ».\\n1. Écris l'expression littérale correspondante en respectant l'ordre des opérations.\\n2. Écris une fonction Python nommée `programme` qui prend $x$ en paramètre et renvoie le résultat final.",
+      "correctAnswer": "1. L'expression est $6 \\times (x - 4) + 10$ ou $6(x - 4) + 10$.\\n2. Fonction Python :\\ndef programme(x):\\n    return 6 * (x - 4) + 10",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme décrit une suite d'opérations : la différence $x-4$ (soustraire 4), puis le produit par $6$ (multiplier le résultat), puis la somme avec $10$ (ajouter 10). L'expression s'écrit donc $6(x-4)+10$. La fonction Python utilise `return` pour renvoyer la valeur calculée. Les parenthèses autour de `x - 4` assurent que la soustraction est faite avant la multiplication.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

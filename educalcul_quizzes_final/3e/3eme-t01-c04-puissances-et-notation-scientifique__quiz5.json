@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Règles",
+  "title": "Quiz : Règles des puissances et notation scientifique",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $2^3 \\times 2^4$.",
+      "options": [
+        "$2^7$",
+        "$2^{12}$",
+        "$4^7$",
+        "$2^1$"
+      ],
+      "correctAnswer": "$2^7$",
+      "explanation": "Lorsqu'on multiplie deux puissances de même base, on additionne les exposants : $2^3 \\times 2^4 = 2^{3+4} = 2^7$. Les autres options correspondent à des erreurs fréquentes : multiplier les exposants, changer la base ou soustraire les exposants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $(3^2)^3$.",
+      "options": [
+        "$3^5$",
+        "$3^6$",
+        "$9^3$",
+        "$3^8$"
+      ],
+      "correctAnswer": "$3^6$",
+      "explanation": "La règle de la puissance d'une puissance impose de multiplier les exposants : $(3^2)^3 = 3^{2 \\times 3} = 3^6$. L'option $3^5$ ajoute les exposants, $9^3$ change la base sans modifier l'exposant, et $3^8$ multiplie incorrectement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie la fraction $\\frac{5^8}{5^3}$.",
+      "options": [
+        "$5^5$",
+        "$5^{11}$",
+        "$5^{24}$",
+        "$5^{-5}$"
+      ],
+      "correctAnswer": "$5^5$",
+      "explanation": "Pour diviser deux puissances de même base, on soustrait l'exposant du dénominateur à celui du numérateur : $5^8 / 5^3 = 5^{8-3} = 5^5$. Les distracteurs correspondent à l'addition, la multiplication ou l'inversion des exposants.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écris $0,00045$ en notation scientifique.",
+      "options": [
+        "$4,5 \\times 10^{-4}$",
+        "$45 \\times 10^{-5}$",
+        "$4,5 \\times 10^{4}$",
+        "$0,45 \\times 10^{-3}$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^{-4}$",
+      "explanation": "Il faut placer la virgule après le premier chiffre non nul (4,5) et compter le nombre de déplacements vers la droite (4) ce qui donne un exposant négatif : $4,5 \\times 10^{-4}$. Les autres propositions ne respectent pas la forme normalisée (un seul chiffre avant la virgule) ou ont un signe d'exposant incorrect.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue le produit $(2 \\times 10^3) \\times (3 \\times 10^{-2})$.",
+      "options": [
+        "$6 \\times 10^1$",
+        "$6 \\times 10^5$",
+        "$5 \\times 10^1$",
+        "$6 \\times 10^{-6}$"
+      ],
+      "correctAnswer": "$6 \\times 10^1$",
+      "explanation": "On multiplie les coefficients ($2 \\times 3 = 6$) et on additionne les exposants des puissances de 10 ($3 + (-2) = 1$) : $6 \\times 10^1$. Les autres réponses résultent d'erreurs sur l'addition des exposants ou sur la multiplication des coefficients.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

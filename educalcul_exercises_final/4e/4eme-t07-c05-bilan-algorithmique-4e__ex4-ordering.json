@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 454,
+  "_course_code": "4eme-t07-c05-bilan-algorithmique-4e",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Application : Bilan - Algorithmique 4e",
+  "title": "Bilan Algorithmique 4e - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Algorithme aire rectangle",
+      "content": "Remettez les étapes dans l'ordre pour obtenir l'algorithme qui calcule l'aire d'un rectangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire $longueur$ et $largeur$.",
+        "Calculer $aire$ en multipliant $longueur$ par $largeur$.",
+        "Afficher $aire$.",
+        "Fin."
+      ],
+      "explanation": "L'algorithme commence par la lecture des deux mesures, puis effectue le calcul du produit pour obtenir l'aire, affiche le résultat et se termine.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme maximum trois nombres",
+      "content": "Remettez les étapes dans l'ordre pour obtenir l'algorithme qui détermine le maximum de trois nombres.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire $a$, $b$, $c$.",
+        "$max \\leftarrow a$.",
+        "Si $b > max$ alors $max \\leftarrow b$.",
+        "Si $c > max$ alors $max \\leftarrow c$.",
+        "Afficher $max$."
+      ],
+      "explanation": "On lit d'abord les trois nombres, on initialise le maximum avec le premier, on compare ensuite le deuxième et le troisième pour mettre à jour le maximum si nécessaire, puis on affiche la valeur finale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme somme entiers",
+      "content": "Remettez les étapes dans l'ordre pour obtenir l'algorithme qui calcule la somme des entiers de 1 à $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Lire $n$.",
+        "$somme \\leftarrow 0$.",
+        "Pour $i$ de $1$ à $n$ faire $somme \\leftarrow somme + i$.",
+        "Fin pour.",
+        "Afficher $somme$."
+      ],
+      "explanation": "L'algorithme lit la borne $n$, initialise la somme à zéro, utilise une boucle pour ajouter chaque entier de 1 à $n$ à la somme, termine la boucle et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

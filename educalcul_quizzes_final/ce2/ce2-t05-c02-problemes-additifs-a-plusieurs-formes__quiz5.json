@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 179,
+  "_course_code": "ce2-t05-c02-problemes-additifs-a-plusieurs-formes",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Composition",
+  "title": "Quiz : Problèmes additifs - Composition",
+  "questions": [
+    {
+      "text": "Il y a $12$ pommes au total. $5$ sont rouges. Combien de pommes sont vertes ?",
+      "options": [
+        "7",
+        "8",
+        "6",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "explanation": "On connaît le total $12$ et une partie $5$. Pour trouver l'autre partie, on soustrait : $12 - 5 = 7$. Les autres options correspondent à des erreurs de calcul ou à une confusion entre addition et soustraction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe, il y a $9$ garçons et $11$ filles. Combien d'élèves y a-t-il au total ?",
+      "options": [
+        "20",
+        "19",
+        "21",
+        "18"
+      ],
+      "correctAnswer": "20",
+      "explanation": "Il faut additionner les deux parties : $9 + 11 = 20$. Les distracteurs proviennent d'oublis de retenue ou d'addition erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Il y a $4$ billes rouges, $6$ billes bleues et $5$ billes vertes. Combien de billes y a-t-il en tout ?",
+      "options": [
+        "15",
+        "14",
+        "16",
+        "13"
+      ],
+      "correctAnswer": "15",
+      "explanation": "On additionne les trois parties : $4 + 6 + 5 = 15$. Les autres réponses correspondent à des oublis d'une partie ou à des erreurs d'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le total est $18$. On connaît deux parties : $7$ et $5$. Quelle est la troisième partie ?",
+      "options": [
+        "6",
+        "5",
+        "7",
+        "4"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On soustrait les parties connues du total : $18 - 7 - 5 = 6$. Les distracteurs proviennent d'une soustraction incomplète ou d'une confusion avec les valeurs données.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme en bande ci-dessous. Le total est $18$. La première partie vaut $7$, la deuxième $5$. Trouve la valeur de la partie inconnue.",
+      "options": [
+        "6",
+        "7",
+        "5",
+        "4"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Le diagramme montre un total de $18$ divisé en trois parties. En retirant $7$ et $5$, il reste $18 - 7 - 5 = 6$. Les autres options ne respectent pas la relation partie-partie-tout.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie 1",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 2",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Inconnue",
+            "value": 0,
+            "tone": "gray"
+          }
+        ],
+        "caption": "Diagramme en bande représentant le total 18"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 463,
+  "_course_code": "3eme-t02-c03-equations",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Approfondissement : Premier degré",
+  "title": "Algorithmes pour équations du premier degré",
+  "blocks": [
+    {
+      "title": "Résolution de $ax + b = 0$",
+      "content": "Écrire un algorithme en langage naturel ou en pseudo‑code qui résout une équation du premier degré de la forme $ax + b = 0$ avec $a \\neq 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs de a et b.\\n2. Si a = 0 alors afficher \"Ce n'est pas une équation du premier degré\" et arrêter.\\n3. Calculer x = -b / a.\\n4. Afficher la valeur de x.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation $ax + b = 0$ se transforme en $ax = -b$ puis $x = -b/a$ sous la condition $a \\neq 0$. L'algorithme vérifie cette condition avant d'effectuer la division.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution de $\\frac{ax + b}{c} = d$",
+      "content": "Adapter l'algorithme précédent pour résoudre une équation du type $\\frac{ax + b}{c} = d$ avec $c \\neq 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les valeurs de a, b, c et d.\\n2. Si c = 0 alors afficher \"Dénominateur nul\" et arrêter.\\n3. Multiplier les deux membres par c : $ax + b = c \\times d$.\\n4. Si a = 0 alors afficher \"Ce n'est pas une équation du premier degré\" et arrêter.\\n5. Calculer x = (c * d - b) / a.\\n6. Afficher la valeur de x.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On élimine le dénominateur en multipliant par $c$, ce qui ramène à une équation de la forme $ax + b = cd$. On applique ensuite la même méthode que pour $ax + b = 0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème conduit à une équation du premier degré",
+      "content": "Un nombre ajouté à son triple donne 28. Écrire un algorithme qui trouve ce nombre.",
+      "correctAnswer": "Algorithme :\\n1. Soit x le nombre cherché.\\n2. L'équation est $x + 3x = 28$.\\n3. Simplifier : $4x = 28$.\\n4. Calculer x = 28 / 4.\\n5. Afficher x (le nombre est 7).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le problème se traduit par l'équation $x + 3x = 28$, soit $4x = 28$. La division par 4 donne $x = 7$. L'algorithme suit ces étapes de traduction, simplification et calcul.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

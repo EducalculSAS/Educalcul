@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 440,
+  "_course_code": "4eme-t05-c01-theoreme-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Hypothèses",
+  "title": "Hypothèses du théorème de Pythagore",
+  "blocks": [
+    {
+      "title": "Condition sur le triangle",
+      "content": "Quelle est la condition nécessaire sur le triangle pour pouvoir appliquer le théorème de Pythagore ?",
+      "correctAnswer": "triangle rectangle",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le théorème de Pythagore ne s'applique que dans un triangle rectangle, c'est-à-dire un triangle qui possède un angle droit.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Identification de l'hypoténuse",
+      "content": "Dans un triangle rectangle $ABC$, l'angle droit est en $A$. Quel côté est l'hypoténuse ?",
+      "correctAnswer": "BC",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle, l'hypoténuse est le côté opposé à l'angle droit. Comme l'angle droit est en $A$, le côté opposé est $BC$.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Vérification d'un triplet pythagoricien",
+      "content": "Les longueurs $5$, $12$ et $13$ peuvent-elles être les côtés d'un triangle rectangle ?",
+      "correctAnswer": "Oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie l'égalité $5^2+12^2=13^2$ : $25+144=169$, ce qui est vrai. Donc ces longueurs forment un triangle rectangle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

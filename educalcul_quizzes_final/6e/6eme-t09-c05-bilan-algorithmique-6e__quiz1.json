@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Variables, boucles, conditions",
+  "title": "Quiz Algorithmique 6e - Variables, boucles, conditions",
+  "questions": [
+    {
+      "text": "Dans l'algorithme suivant, quelle est la valeur de la variable $x$ après l'exécution ? $x ← 5 ; x ← x + 3$",
+      "options": [
+        "$8$",
+        "$5$",
+        "$3$",
+        "$15$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "La première instruction affecte $5$ à $x$. La seconde ajoute $3$ à la valeur actuelle de $x$, donc $5 + 3 = 8$. Les autres options correspondent à une lecture erronée de l'affectation ou à une addition incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'instruction « Pour $i$ de $1$ à $4$ faire … fin pour » exécute le bloc d'instructions combien de fois ?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "La boucle « Pour » parcourt les valeurs entières de $1$ jusqu'à $4$ incluses, soit $4$ itérations. Les valeurs $3$, $5$ ou $2$ ne correspondent pas au nombre d'entiers dans cet intervalle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme : $a ← 12$ ; Si $a > 10$ alors $b ← 1$ sinon $b ← 0$ fin si. Quelle valeur prend la variable $b$ à la fin ?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$12$",
+        "$-1$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "La condition $a > 10$ est vraie car $a = 12$. Donc l'instruction du « alors » s'exécute et affecte $1$ à $b$. La branche « sinon » est ignorée, les autres valeurs sont impossibles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat final de la variable $s$ après l'exécution de l'algorithme suivant ? $s ← 0$ ; Pour $i$ de $1$ à $3$ faire $s ← s + i$ fin pour",
+      "options": [
+        "$6$",
+        "$5$",
+        "$3$",
+        "$9$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La boucle ajoute successivement $1$, $2$ et $3$ à $s$ : $0+1=1$, $1+2=3$, $3+3=6$. Les autres options correspondent à une omission d'une itération ou à une addition erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme : $n ← 7$ ; Tant que $n > 0$ faire $n ← n - 2$ fin tant que. Quelle est la valeur finale de $n$ ?",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$0$",
+        "$2$"
+      ],
+      "correctAnswer": "$-1$",
+      "explanation": "La boucle soustrait $2$ tant que $n$ est strictement positif. Les valeurs successives sont $7 → 5 → 3 → 1 → -1$. Lorsque $n$ devient $-1$, la condition $n > 0$ est fausse et la boucle s'arrête, laissant $n = -1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

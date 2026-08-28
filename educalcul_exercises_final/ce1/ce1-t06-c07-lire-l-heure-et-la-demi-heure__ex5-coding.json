@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 123,
+  "_course_code": "ce1-t06-c07-lire-l-heure-et-la-demi-heure",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Lire aiguilles",
+  "title": "Lecture de l'heure et de la demi-heure : algorithme de lecture des aiguilles",
+  "blocks": [
+    {
+      "title": "Question $1$ : Heure pile",
+      "content": "Regarde l'horloge ci-dessous. Écris les étapes (un algorithme simple) pour lire l'heure indiquée par la petite aiguille.",
+      "correctAnswer": "$1$. Regarder la petite aiguille. $2$. Noter le chiffre sur lequel elle pointe. $3$. Dire l'heure : il est $3$ heures.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La petite aiguille indique l'heure. À $3$ heures, elle pointe sur le $3$.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 3,
+        "minutes": 0,
+        "caption": "Horloge indiquant $3$ heures",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Question $2$ : Demi-heure",
+      "content": "Regarde l'horloge ci-dessous. Écris un algorithme qui permet de lire l'heure et la demi-heure en observant les deux aiguilles.",
+      "correctAnswer": "$1$. Regarder la petite aiguille : elle est entre $4$ et $5$. $2$. Regarder la grande aiguille : elle pointe sur $6$. $3$. Conclure : il est $4$ heures et demie.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La grande aiguille sur $6$ indique $30$ minutes, la petite entre $4$ et $5$ indique $4$ heures.",
+      "points": 2,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 30,
+        "caption": "Horloge indiquant $4$ heures et demie",
+        "interactive": false
+      }
+    },
+    {
+      "title": "Question $3$ : Algorithme général",
+      "content": "Écris un algorithme (en langage naturel ou style algorithmique) qui, pour n'importe quelle position des aiguilles, affiche l'heure (heures et minutes) quand la grande aiguille est sur $12$ (heures pile) ou sur $6$ (demi-heure).",
+      "correctAnswer": "algorithme lire_heure(petite_aiguille, grande_aiguille):\\n    si grande_aiguille == $12$:\\n        heure = petite_aiguille\\n        afficher 'Il est ' + heure + ' heures'\\n    sinon si grande_aiguille == $6$:\\n        heure = petite_aiguille\\n        afficher 'Il est ' + heure + ' heures et demie'\\n    sinon:\\n        afficher 'Heure non gérée'",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme teste la position de la grande aiguille : sur $12$ c'est l'heure pile, sur $6$ c'est la demi-heure. La petite aiguille donne l'heure.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

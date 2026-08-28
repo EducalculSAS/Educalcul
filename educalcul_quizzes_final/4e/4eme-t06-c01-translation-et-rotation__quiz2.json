@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 445,
+  "_course_code": "4eme-t06-c01-translation-et-rotation",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Propriétés",
+  "title": "Quiz : Propriétés des translations et rotations",
+  "questions": [
+    {
+      "text": "Quelle propriété est commune à la translation et à la rotation dans le plan ?",
+      "options": [
+        "Elles conservent les longueurs et les angles.",
+        "Elles ont un centre fixe.",
+        "Elles inversent l'orientation des figures.",
+        "Elles transforment une droite en une courbe."
+      ],
+      "correctAnswer": "Elles conservent les longueurs et les angles.",
+      "explanation": "La translation et la rotation sont toutes deux des isométries du plan : elles conservent les longueurs, les angles, les aires et l'orientation. La translation n'a pas de centre fixe (sauf si le vecteur est nul), la rotation a un centre fixe, et aucune ne transforme une droite en courbe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une translation de vecteur $\\vec{v}$. Quelle affirmation est vraie pour tout point $M$ ?",
+      "options": [
+        "Le point $M$ et son image $M'$ sont alignés avec le vecteur $\\vec{v}$ et $MM' = \\vec{v}$.",
+        "Le point $M$ est le milieu de $[MM']$.",
+        "La distance $MM'$ dépend de la position de $M$.",
+        "La translation change la mesure des angles."
+      ],
+      "correctAnswer": "Le point $M$ et son image $M'$ sont alignés avec le vecteur $\\vec{v}$ et $MM' = \\vec{v}$.",
+      "explanation": "Par définition, une translation de vecteur $\\vec{v}$ envoie tout point $M$ sur $M'$ tel que $\\overrightarrow{MM'} = \\vec{v}$. Donc $M$, $M'$ et la direction de $\\vec{v}$ sont alignés, la longueur $MM'$ vaut la norme de $\\vec{v}$ et est indépendante de $M$. La translation conserve les angles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une rotation de centre $O$ et d'angle $90^\\circ$ envoie le point $A$ sur $A'$. Quelle relation lie $OA$ et $OA'$ ?",
+      "options": [
+        "$OA = OA'$ et l'angle $\\widehat{AOA'} = 90^\\circ$.",
+        "$OA = 2 \\times OA'$.",
+        "$OA$ et $OA'$ sont perpendiculaires mais $OA \\neq OA'$.",
+        "$A'$ est le symétrique de $A$ par rapport à $O$."
+      ],
+      "correctAnswer": "$OA = OA'$ et l'angle $\\widehat{AOA'} = 90^\\circ$.",
+      "explanation": "Une rotation conserve les distances au centre : $OA = OA'$. L'angle orienté $\\widehat{AOA'}$ vaut exactement l'angle de rotation, ici $90^\\circ$. Les segments $OA$ et $OA'$ sont donc perpendiculaires et de même longueur. La symétrie par rapport à $O$ correspond à une rotation de $180^\\circ$, pas $90^\\circ$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On compose deux translations de vecteurs $\\vec{u}$ et $\\vec{v}$. La transformation obtenue est :",
+      "options": [
+        "Une translation de vecteur $\\vec{u} + \\vec{v}$.",
+        "Une rotation de centre le milieu de $\\vec{u}$ et $\\vec{v}$.",
+        "Une symétrie axiale.",
+        "Une homothétie de rapport $2$."
+      ],
+      "correctAnswer": "Une translation de vecteur $\\vec{u} + \\vec{v}$.",
+      "explanation": "La composition de deux translations est une translation dont le vecteur est la somme des deux vecteurs. C'est une propriété fondamentale du groupe des translations. Ce n'est ni une rotation, ni une symétrie, ni une homothétie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des transformations suivantes n'est pas une isométrie (ne conserve pas les distances) ?",
+      "options": [
+        "Translation.",
+        "Rotation.",
+        "Symétrie axiale.",
+        "Homothétie de rapport $2$."
+      ],
+      "correctAnswer": "Homothétie de rapport $2$.",
+      "explanation": "Les translations, rotations et symétries axiales sont des isométries : elles conservent toutes les distances. Une homothétie de rapport $2$ multiplie toutes les distances par $2$, elle ne conserve donc pas les longueurs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

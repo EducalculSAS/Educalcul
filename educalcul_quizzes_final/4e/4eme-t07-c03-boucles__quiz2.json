@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 452,
+  "_course_code": "4eme-t07-c03-boucles",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Compter",
+  "title": "Quiz Algorithmique : Compter avec les boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nPour i de 1 à $7$ faire\\n    Afficher \"Tour\"\\nFin pour\\nCombien de fois le mot \"Tour\" est-il affiché ?",
+      "options": [
+        "$6$ fois",
+        "$7$ fois",
+        "$8$ fois",
+        "$1$ fois"
+      ],
+      "correctAnswer": "$7$ fois",
+      "explanation": "La boucle « Pour i de 1 à 7 » exécute les instructions qui la composent pour chaque valeur entière de $i$ entre $1$ et $7$ inclus. Il y a exactement $7$ valeurs ($1, 2, 3, 4, 5, 6, 7$), donc $7$ itérations et $7$ affichages. L'erreur classique est de croire que la borne finale est exclue (donnant $6$) ou de ne compter que le premier tour.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'algorithme ci-dessous :\\nCompteur $\\leftarrow$ $0$\\nPour i de $2$ à $10$ pas $2$ faire\\n    Compteur $\\leftarrow$ Compteur $+$ $1$\\nFin pour\\nQuelle est la valeur finale de la variable Compteur ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$10$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "La boucle « Pour i de 2 à 10 pas 2 » fait varier $i$ avec les valeurs $2, 4, 6, 8, 10$. Il y a $5$ valeurs distinctes. La variable Compteur est initialisée à $0$ et incrémentée de $1$ à chaque tour, elle vaut donc $5$ à la fin. L'erreur fréquente est de calculer $(10-2)/2 = 4$ en oubliant d'inclure la borne de départ, ou de confondre la valeur finale de $i$ ($10$) avec le nombre de tours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la liste suivante :\\nNotes $\\leftarrow$ [$12$, $8$, $15$, $12$, $10$, $12$, $14$]\\nOn exécute cet algorithme :\\nNb $\\leftarrow$ $0$\\nPour chaque Note dans Notes faire\\n    Si Note $=$ $12$ alors\\n        Nb $\\leftarrow$ Nb $+$ $1$\\n    Fin si\\nFin pour\\nQuelle valeur affiche Nb à la fin ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$7$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "L'algorithme parcourt la liste élément par élément et compte le nombre de fois où la valeur est exactement $12$. Dans la liste [$12$, $8$, $15$, $12$, $10$, $12$, $14$], la note $12$ apparaît aux positions $1$, $4$ et $6$, soit $3$ fois. La variable Nb vaut donc $3$. L'option $7$ correspond à la longueur totale de la liste, $2$ est un sous-compte et $4$ une surestimation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme imbriqué suivant :\\nTotal $\\leftarrow$ $0$\\nPour i de $1$ à $4$ faire\\n    Pour j de $1$ à $3$ faire\\n        Total $\\leftarrow$ Total $+$ $1$\\n    Fin pour\\nFin pour\\nQuelle est la valeur finale de Total ?",
+      "options": [
+        "$7$",
+        "$12$",
+        "$10$",
+        "$8$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "La boucle extérieure (sur $i$) effectue $4$ tours ($i = 1, 2, 3, 4$). Pour chacun de ces tours, la boucle intérieure (sur $j$) effectue $3$ tours ($j = 1, 2, 3$). L'instruction « Total $\\leftarrow$ Total $+$ $1$ » se trouve à l'intérieur des deux boucles, elle est donc exécutée $4 \\times 3 = 12$ fois. Total vaut $12$. L'option $7$ correspond à une addition ($4+3$) au lieu d'une multiplication, $8$ et $10$ sont des approximations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec une boucle conditionnelle :\\nx $\\leftarrow$ $20$\\nCompteur $\\leftarrow$ $0$\\nTant que x $>$ $5$ faire\\n    x $\\leftarrow$ x $-$ $3$\\n    Compteur $\\leftarrow$ Compteur $+$ $1$\\nFin tant que\\nQuelle est la valeur de Compteur à la fin de l'exécution ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On simule pas à pas :\\nDébut : x=$20$, Compteur=$0$.\\nTour 1 : x=$17$ ($>5$), Compteur=$1$.\\nTour 2 : x=$14$ ($>5$), Compteur=$2$.\\nTour 3 : x=$11$ ($>5$), Compteur=$3$.\\nTour 4 : x=$8$ ($>5$), Compteur=$4$.\\nTour 5 : x=$5$ (condition $5 > 5$ fausse), on sort de la boucle.\\nLa boucle a tourné $5$ fois. Compteur vaut $5$. L'erreur $4$ vient d'un arrêt prématuré (penser que $x=5$ continue), $6$ ou $7$ d'une mauvaise soustraction ou condition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

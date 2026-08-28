@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Application : Motifs et généralisation",
+  "title": "Motifs et généralisation : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Ordre des étapes pour trouver un terme d'un motif géométrique",
+      "content": "Voici un motif de figures qui se répète : un cercle, deux carrés, trois triangles, puis à nouveau un cercle, deux carrés, trois triangles, et ainsi de suite. Range les étapes dans l'ordre logique pour déterminer quelle est la $15$e figure du motif.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier la régularité du motif (cycle de 6 figures)",
+        "Compter le nombre de figures dans un cycle complet",
+        "Calculer le nombre de cycles complets avant le $15$e terme",
+        "Déterminer la position dans le cycle pour le $15$e terme",
+        "Conclure la forme de la $15$e figure"
+      ],
+      "explanation": "Le motif se répète tous les 6 figures (1 cercle + 2 carrés + 3 triangles = 6). Pour trouver la 15e figure, on divise 15 par 6 : 15 = 2 × 6 + 3. Il y a 2 cycles complets (12 figures) et il reste 3 figures dans le cycle suivant. La 3e figure du cycle est un triangle (1 cercle, 2 carrés, 3 triangles). Donc la 15e figure est un triangle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des étapes pour trouver le 20e terme d'une suite arithmétique",
+      "content": "On considère la suite numérique : $2$, $5$, $8$, $11$, ... Range les étapes dans l'ordre pour déterminer le $20$e terme de cette suite.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Observer la différence entre deux termes consécutifs",
+        "Écrire la règle de récurrence de la suite",
+        "Exprimer le terme général en fonction de $n$",
+        "Remplacer $n$ par $20$ dans la formule du terme général",
+        "Calculer la valeur du $20$e terme"
+      ],
+      "explanation": "La différence entre deux termes consécutifs est constante : $5-2=3$, $8-5=3$, donc la suite est arithmétique de raison $3$. Le premier terme est $2$. La règle de récurrence est $u_{n+1}=u_n+3$ avec $u_1=2$. Le terme général est $u_n = 2 + (n-1) \\times 3 = 3n -1$. En remplaçant $n$ par $20$, on obtient $u_{20} = 3 \\times 20 - 1 = 60 - 1 = 59$. Le 20e terme vaut 59.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre des étapes pour généraliser un motif d'allumettes",
+      "content": "On construit des figures avec des allumettes. Le nombre d'allumettes pour les quatre premières figures est : $4$, $7$, $10$, $13$. Range les étapes pour établir la formule donnant le nombre d'allumettes en fonction du numéro de figure $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer l'augmentation constante du nombre d'allumettes",
+        "Déduire le coefficient directeur de la relation",
+        "Trouver le nombre d'allumettes pour la figure de numéro $1$ (ou $0$)",
+        "Écrire l'expression algébrique du nombre d'allumettes en fonction de $n$",
+        "Vérifier la formule avec les premières valeurs connues"
+      ],
+      "explanation": "On observe que le nombre d'allumettes augmente de $3$ à chaque figure ($7-4=3$, $10-7=3$, $13-10=3$). Le coefficient directeur est donc $3$. La première figure (numéro $1$) utilise $4$ allumettes. On peut écrire la relation sous la forme $A(n) = 3n + b$. En utilisant $n=1$, $4 = 3 \\times 1 + b$, donc $b = 1$. La formule est $A(n) = 3n + 1$. Vérification : $n=1 \\rightarrow 4$, $n=2 \\rightarrow 7$, $n=3 \\rightarrow 10$, $n=4 \\rightarrow 13$. La formule est correcte.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

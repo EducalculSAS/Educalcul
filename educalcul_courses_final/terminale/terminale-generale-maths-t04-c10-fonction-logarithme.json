@@ -1,0 +1,655 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.669460+00:00",
+  "id": 699,
+  "code": "terminale-generale-maths-t04-c10",
+  "title": "Fonction logarithme",
+  "description": "Cours structuré Educalcul : Fonction logarithme.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Fonction logarithme",
+    "objectif_global": "Fonction logarithme",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Dérivée.",
+      "Équations / inéquations."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition et domaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon consacrée aux propriétés de la fonction logarithme. Nous allons commencer par poser les bases : qu'est‑ce qu'un logarithme, comment le noter et quel est son domaine de définition. Rappelle‑toi que le logarithme naturel, noté $\\ln$, est la fonction réciproque de l'exponentielle de base $e$. Cela signifie que pour tout nombre strictement positif $x$, il existe un unique réel $y$ tel que $e^{y}=x$, et ce $y$ est précisément $\\ln x$. Cette relation d'équivalence est la clé de voûte de tout le cours : elle permet de passer du monde multiplicatif à celui de l'addition, et inversement. Le domaine de définition est donc l'intervalle ouvert $]0,+\\infty[$, car l'exponentielle ne prend jamais de valeurs négatives ni nulles. Sur la droite numérique, on visualise cet intervalle comme une demi‑droite qui commence juste après zéro et s'étend indéfiniment vers la droite. Nous allons maintenant matérialiser cette idée avec une droite graduée interactive."
+            },
+            {
+              "type": "definition",
+              "term": "logarithme naturel",
+              "definition": "Le logarithme naturel d'un nombre strictement positif $x$ est l'unique réel $y$ tel que $e^{y}=x$. On le note $\\ln x$.",
+              "example": "Par exemple $\\ln 1 = 0$ car $e^{0}=1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln x = y \\iff e^{y}=x"
+            },
+            {
+              "type": "number_line",
+              "caption": "Domaine de définition de la fonction logarithme naturel",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0 (exclu)"
+                },
+                {
+                  "value": 1,
+                  "label": "1"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 0,
+                  "max": 10,
+                  "label": "]0,+\\infty["
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition et le domaine sont bien ancrés, nous pouvons explorer les propriétés algébriques qui font du logarithme un outil puissant pour transformer les produits en sommes, les quotients en différences et les puissances en produits. Ces règles découlent directement de la définition comme fonction réciproque de l'exponentielle et elles seront nos compagnons de route pour simplifier les expressions et résoudre les équations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quatre propriétés de base du logarithme naturel s'énoncent ainsi : le logarithme d'un produit est la somme des logarithmes, le logarithme d'un quotient est la différence des logarithmes, le logarithme d'une puissance ramène l'exposant en facteur, et le changement de base permet de passer d'une base à une autre. Toutes ces formules sont des conséquences immédiates de la relation $e^{\\ln x}=x$ et des règles de l'exponentielle. Par exemple, pour montrer que $\\ln(ab)=\\ln a+\\ln b$, on pose $u=\\ln a$ et $v=\\ln b$, puis on utilise $e^{u+v}=e^{u}e^{v}=ab$ et on applique le logarithme des deux côtés. C'est une démonstration courte mais éclairante que nous allons détailler pas à pas."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(ab)=\\ln a+\\ln b"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln\\left(\\frac{a}{b}\\right)=\\ln a-\\ln b"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(a^{r})=r\\ln a"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\log_{a}x=\\frac{\\ln x}{\\ln a}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Poser les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soient $a>0$ et $b>0$. On note $u=\\ln a$ et $v=\\ln b$. Par définition, $e^{u}=a$ et $e^{v}=b$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la propriété de l'exponentielle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a $e^{u+v}=e^{u}e^{v}=ab$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puisque $\\ln$ est la réciproque de l'exponentielle, $\\ln(ab)=u+v=\\ln a+\\ln b$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces propriétés ne sont pas de simples formules à mémoriser ; ce sont des leviers qui transforment des calculs compliqués en opérations additives beaucoup plus simples. Dans la prochaine partie, nous verrons comment la monotonie et les limites de $\\ln$ nous renseignent sur sa forme graphique et sur son comportement aux bornes de son domaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Monotonie, limites et asymptotes"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction $\\ln$ est strictement croissante sur $]0,+\\infty[$ : si $0<x<y$ alors $\\ln x<\\ln y$. Cette monotonie découle du fait que l'exponentielle est strictement croissante et que deux fonctions réciproques d'une bijection croissante conservent l'ordre. Quant aux limites, on a $\\lim_{x\\to 0^{+}}\\ln x=-\\infty$ et $\\lim_{x\\to +\\infty}\\ln x=+\\infty$. La courbe possède donc une asymptote verticale l'axe des ordonnées ($x=0$) et elle s'éloigne indéfiniment vers le haut à droite. Le graphique ci‑dessous illustre cette forme caractéristique, avec le point remarquable $(1,0)$ où la courbe coupe l'axe des abscisses."
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.01,
+              "xmax": 8,
+              "caption": "Courbe de la fonction logarithme naturel"
+            },
+            {
+              "type": "number_line",
+              "caption": "Comportement aux bornes du domaine",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "-\\infty"
+                },
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 3,
+                  "label": "+\\infty"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la monotonie et les limites en main, nous pouvons maintenant aborder la résolution d'équations et d'inéquations logarithmiques, mais cela fera l'objet des leçons suivantes. Pour l'instant, entraînez‑vous à manipuler les propriétés que nous venons de démontrer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier l'expression $\\ln(8) + \\ln(2) - \\ln(4)$ en un seul logarithme naturel.",
+              "answer": "\\ln(4)",
+              "hint": "Utilisez les propriétés de somme et de différence des logarithmes.",
+              "explanation": "On applique $\\ln a + \\ln b = \\ln(ab)$ et $\\ln a - \\ln b = \\ln(a/b)$. Donc $\\ln(8)+\\ln(2)=\\ln(16)$ et $\\ln(16)-\\ln(4)=\\ln(16/4)=\\ln(4)$."
+            },
+            {
+              "question": "Démontrer que $\\ln\\left(\\frac{x^{3}}{y^{2}}\\right)=3\\ln x-2\\ln y$ pour $x>0, y>0$.",
+              "answer": "3\\ln x-2\\ln y",
+              "hint": "Appliquez la propriété de la puissance puis celle du quotient.",
+              "explanation": "\\ln(x^{3}/y^{2}) = \\ln(x^{3}) - \\ln(y^{2}) = 3\\ln x - 2\\ln y."
+            },
+            {
+              "question": "Déterminer le signe de $\\ln(0,5)$ et justifier votre réponse à l'aide de la monotonie de $\\ln$.",
+              "answer": "Négatif",
+              "hint": "Comparez $0,5$ à $1$ et rappelez‑vous que $\\ln 1 = 0$.",
+              "explanation": "Puisque $0<0,5<1$ et que $\\ln$ est strictement croissante, $\\ln(0,5) < \\ln(1)=0$. Donc le logarithme est négatif."
+            }
+          ]
+        },
+        {
+          "title": "Dérivée.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée du logarithme naturel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous abordons la dérivation de la fonction logarithme naturel. C'est un moment charnière : la dérivée de $\\ln x$ est remarquablement simple, $\\frac{1}{x}$, et elle ouvre la porte à la dérivation de toutes les fonctions logarithmiques, quel que soit leur base. La démonstration repose sur le fait que $\\ln$ est la réciproque de l'exponentielle, dont la dérivée est elle‑même. En utilisant la formule de dérivation des fonctions inverses, on obtient le résultat sans calculs lourds. Nous allons dérouler cette preuve étape par étape, puis nous verrons comment l'étendre aux logarithmes de base quelconque."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Rappel de la formule des fonctions inverses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $f$ est dérivable et strictement monotone sur un intervalle, et si $f'(x)\\neq 0$, alors sa réciproque $f^{-1}$ est dérivable et $(f^{-1})'(y)=\\frac{1}{f'(f^{-1}(y))}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer à $f(x)=e^{x}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La fonction exponentielle $f(x)=e^{x}$ est dérivable sur $\\mathbb{R}$ avec $f'(x)=e^{x}$. Sa réciproque est $\\ln$, définie sur $]0,+\\infty[$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la dérivée de $\\ln$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $x>0$, $(\\ln)'(x)=\\frac{1}{f'(\\ln x)}=\\frac{1}{e^{\\ln x}}=\\frac{1}{x}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\ln x)' = \\frac{1}{x}, \\quad x>0"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule est d'une élégance rare : la dérivée du logarithme est simplement l'inverse de la variable. Elle permet de dériver n'importe quelle composition faisant intervenir $\\ln$, grâce à la règle de la chaîne. Par exemple, pour $u(x)>0$, $(\\ln u(x))' = \\frac{u'(x)}{u(x)}$. C'est un outil indispensable pour l'étude de fonctions, la recherche de tangentes ou la résolution d'équations différentielles simples."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dérivée du logarithme de base quelconque"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout logarithme de base $a>0$, $a\\neq 1$, s'exprime à l'aide du logarithne naturel par la formule de changement de base : $\\log_{a}x = \\frac{\\ln x}{\\ln a}$. Puisque $\\ln a$ est une constante, la dérivation devient immédiate : $(\\log_{a}x)' = \\frac{1}{x\\ln a}$. Cette relation montre que la dérivée d'un logarithme de base $a$ est proportionnelle à $\\frac{1}{x}$, le coefficient de proportionnalité étant l'inverse du logarithme naturel de la base. Nous allons illustrer cette règle sur des exemples concrets, notamment lorsque la base est $10$ (logarithme décimal) ou $e$ (logarithme naturel, où $\\ln e = 1$)."
+            },
+            {
+              "type": "display_math",
+              "latex": "(\\log_{a}x)' = \\frac{1}{x\\ln a}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire avec le logarithme naturel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $f(x)=\\log_{a}x = \\frac{\\ln x}{\\ln a}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver le numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur $\\ln x$ a pour dérivée $\\frac{1}{x}$, le dénominateur $\\ln a$ est constant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donc $f'(x)=\\frac{1}{x\\ln a}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous maîtrisons la dérivée de tout logarithme, nous pouvons l'utiliser pour tracer des tangentes, étudier la croissance de fonctions composées ou encore résoudre des problèmes d'optimisation où une fonction logarithmique intervient. La prochaine partie mettra en pratique ces idées à travers la détermination d'une tangente en un point donné."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications : tangentes et optimisation"
+            },
+            {
+              "type": "paragraph",
+              "content": "La dérivée donne la pente de la tangente à la courbe en un point. Pour la fonction $f(x)=\\ln x$, la tangente au point d'abscisse $x_{0}>0$ a pour équation $y = \\frac{1}{x_{0}}(x-x_{0}) + \\ln x_{0}$. Cette formule permet de construire des approximations affines locales, très utiles en analyse numérique. De plus, lorsque l'on cherche les extrema d'une fonction contenant un logarithme, on annule sa dérivée, ce qui conduit souvent à une équation simple du type $\\frac{u'(x)}{u(x)}=0$, c'est‑à‑dire $u'(x)=0$ sous la condition $u(x)>0$. Nous allons voir un exemple complet où l'on maximise une fonction de la forme $x\\mapsto x\\ln x$ sur $]0,+\\infty[$."
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.2,
+              "xmax": 5,
+              "caption": "Tangente à la courbe de ln en x=2"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)=x\\ln x$, $f'(x)=\\ln x + 1$ (produit)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Annuler la dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\ln x + 1 = 0 \\implies \\ln x = -1 \\implies x = e^{-1}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $0<x<e^{-1}$, $f'(x)<0$ ; pour $x>e^{-1}$, $f'(x)>0$. Donc $x=e^{-1}$ est un minimum global."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces techniques de dérivation et d'optimisation seront réutilisées dans la résolution d'équations et d'inéquations logarithmiques, qui feront l'objet de la dernière leçon de ce module."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer la dérivée de $f(x)=\\ln(3x^{2}+1)$ sur son domaine de définition.",
+              "answer": "\\frac{6x}{3x^{2}+1}",
+              "hint": "Utilisez la règle de la chaîne : $(\\ln u)' = u'/u$.",
+              "explanation": "Posons $u(x)=3x^{2}+1$. Alors $u'(x)=6x$ et $f'(x)=u'(x)/u(x)=6x/(3x^{2}+1)$."
+            },
+            {
+              "question": "Donner la dérivée de $g(x)=\\log_{5}(x^{3}+2)$.",
+              "answer": "\\frac{3x^{2}}{(x^{3}+2)\\ln 5}",
+              "hint": "Appliquez la formule $(\\log_{a}u)' = u'/(u\\ln a)$.",
+              "explanation": "Ici $a=5$, $u(x)=x^{3}+2$, $u'(x)=3x^{2}$. Donc $g'(x)=\\frac{3x^{2}}{(x^{3}+2)\\ln 5}$."
+            },
+            {
+              "question": "Trouver l'équation de la tangente à la courbe $y=\\ln x$ au point d'abscisse $x=4$.",
+              "answer": "y = \\frac{1}{4}(x-4) + \\ln 4",
+              "hint": "La pente est $1/4$ et le point est $(4,\\ln 4)$.",
+              "explanation": "La dérivée en $4$ vaut $1/4$. L'équation de la tangente : $y - \\ln 4 = \\frac{1}{4}(x-4)$."
+            }
+          ]
+        },
+        {
+          "title": "Équations / inéquations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette dernière leçon du module est consacrée à la résolution d'équations et d'inéquations faisant intervenir des logarithmes. La stratégie générale consiste à utiliser les propriétés algébriques vues dans la première leçon pour ramener l'équation à une forme simple, puis à exponentier pour éliminer le logarithme. Il est crucial de vérifier que les solutions obtenues appartiennent bien au domaine de définition de chaque logarithme présent dans l'équation d'origine. Nous allons illustrer cette méthode sur plusieurs cas de figure, du plus simple au plus élaboré, en prenant le temps d'expliquer chaque manipulation."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Regrouper les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les propriétés de somme, différence et puissance pour n'avoir qu'un seul logarithme de chaque côté de l'égalité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Exponentier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez la fonction exponentielle (ou la base correspondante) des deux côtés pour faire disparaître le logarithme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation algébrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vous obtenez une équation polynomiale ou rationnelle usuelle. Résolvez-la."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier l'appartenance au domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Chaque solution doit rendre strictement positifs tous les arguments des logarithmes initiaux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\ln(x-1) + \\ln(x+2) = \\ln 6 \\implies (x-1)(x+2)=6"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir exponentié, on obtient une équation du second degré qu'il faut résoudre, puis tester les racines par rapport aux conditions $x-1>0$ et $x+2>0$. Cette vérification élimine les solutions parasites qui apparaîtraient si l'on oubliait le domaine. Dans la prochaine partie, nous verrons comment adapter ce raisonnement aux inéquations, où le sens de l'inégalité peut changer selon la base du logarithme."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'inéquations logarithmiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les inéquations logarithmiques suivent le même schéma, mais il faut prêter une attention particulière à la monotonie de la fonction logarithme. Pour une base $a>1$, la fonction $\\log_{a}$ est croissante, donc l'inéquation $\\log_{a}u(x) > \\log_{a}v(x)$ est équivalente à $u(x) > v(x)$ sous la condition $u(x)>0, v(x)>0$. Si la base est comprise entre $0$ et $1$, la fonction est décroissante et le sens de l'inégalité s'inverse. Nous allons détailler la procédure pas à pas, en insistant sur la construction d'un tableau de signes ou d'une droite numérique pour visualiser l'ensemble des solutions."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mettre au même dénominateur / même base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Réécrivez tous les logarithmes avec la même base si nécessaire, grâce à la formule de changement de base."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Isoler le logarithme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ramenez tous les termes logarithmiques d'un côté pour obtenir une expression de la forme $\\log_{a}(U(x)) \\gtreqless \\log_{a}(V(x))$ ou $\\log_{a}(U(x)) \\gtreqless C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la monotonie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $a>1$, l'inéquation devient $U(x) \\gtreqless V(x)$ (ou $U(x) \\gtreqless a^{C}$). Si $0<a<1$, le sens s'inverse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Résoudre l'inéquation algébrique et croiser avec le domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résolvez l'inéquation obtenue, puis intersectez l'ensemble des solutions avec les conditions de positivité des arguments."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Ensemble des solutions d'une inéquation logarithmique typique",
+              "min": -2,
+              "max": 6,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": 0,
+                  "max": 3,
+                  "label": "Interdit (domaine)"
+                },
+                {
+                  "min": 3,
+                  "max": 6,
+                  "label": "Solutions"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La maîtrise de ces techniques vous permettra d'aborder sereinement les problèmes mêlant logarithmes et exponentielles, comme la résolution d'équations de la forme $a^{\\ln x}=b$ ou de systèmes où apparaissent à la fois $\\ln$ et $e^{x}$. La dernière série d'exercices vous offrira l'occasion de mettre tout cela en pratique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations mixtes et systèmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'une équation fasse intervenir à la fois un logarithme et une exponentielle, par exemple $e^{\\ln(x+1)}=x^{2}$. Dans ce cas, on simplifie d'abord l'expression en utilisant la relation $e^{\\ln u}=u$ (pour $u>0$), ce qui ramène l'équation à une forme polynomiale. Pour les systèmes, on peut exprimer une variable en fonction de l'autre grâce au logarithme, puis substituer dans la seconde équation. La clé reste toujours de respecter les domaines de définition à chaque étape. Nous allons voir un exemple complet où l'on résout le système $\\begin{cases}\\ln x + \\ln y = 1 \\\\ e^{x}y = e\\end{cases}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Combiner les logarithmes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\ln x + \\ln y = \\ln(xy) = 1 \\implies xy = e$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Substituer dans la seconde équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La seconde équation donne $e^{x}y = e$. En remplaçant $y = e/x$, on obtient $e^{x}\\cdot e/x = e \\implies e^{x+1}/x = e \\implies e^{x}/x = 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre $e^{x}=x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cette équation n'a pas de solution élémentaire ; on la résout numériquement ou graphiquement. On trouve $x \\approx 0,567$ (constante d'Omega). Alors $y = e/x \\approx 4,81$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -1,
+              "xmax": 2,
+              "caption": "Intersection de $y=e^{x}$ et $y=x$ pour illustrer la solution numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant toutes les clés pour manipuler les logarithmes dans les contextes les plus variés : propriétés algébriques, dérivation, résolution d'équations et d'inéquations, et même systèmes mixtes. La checklist ci‑dessous récapitule les compétences que vous devez avoir acquises à l'issue de ce module."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le logarithme naturel et donner son domaine de définition.",
+                "Je sais énoncer et démontrer les propriétés fondamentales : produit, quotient, puissance, changement de base.",
+                "Je sais calculer la dérivée de $\\ln x$ et de $\\log_{a}x$ et l'appliquer à des fonctions composées.",
+                "Je sais tracer la tangente à la courbe de $\\ln$ en un point donné.",
+                "Je sais résoudre une équation logarithmique en respectant les conditions de domaine.",
+                "Je sais résoudre une inéquation logarithmique en tenant compte de la monotonie selon la base.",
+                "Je sais aborder un système mêlant logarithmes et exponentielles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résoudre l'équation $\\ln(x-2) + \\ln(x+3) = \\ln 14$.",
+              "answer": "x = 4",
+              "hint": "Regroupez les logarithmes, exponentiez, puis résolvez le trinôme et vérifiez le domaine.",
+              "explanation": "On a $\\ln((x-2)(x+14))$? Wait. Actually $\\ln(x-2)+\\ln(x+3)=\\ln((x-2)(x+3))$. L'équation devient $(x-2)(x+3)=14 \\implies x^{2}+x-6=14 \\implies x^{2}+x-20=0 \\implies (x+5)(x-4)=0$. Les solutions candidates sont $-5$ et $4$. Le domaine impose $x-2>0$ et $x+3>0$, donc $x>2$. Seule $x=4$ est admissible."
+            },
+            {
+              "question": "Résoudre l'inéquation $\\log_{2}(x+1) > 3$.",
+              "answer": "x > 7",
+              "hint": "La base $2>1$, donc la fonction est croissante. Exponentiez en base $2$.",
+              "explanation": "Puisque la base $2>1$, $\\log_{2}(x+1) > 3 \\iff x+1 > 2^{3}=8 \\iff x > 7$. La condition de domaine $x+1>0$ donne $x>-1$, qui est automatiquement satisfaite pour $x>7$."
+            },
+            {
+              "question": "Résoudre le système $\\begin{cases} \\ln x - \\ln y = \\ln 2 \\\\ xy = 8 \\end{cases}$.",
+              "answer": "x = 4, y = 2",
+              "hint": "Transformez la première équation en quotient, puis utilisez la seconde pour obtenir une équation en une variable.",
+              "explanation": "La première équation donne $\\ln(x/y)=\\ln 2 \\implies x/y=2 \\implies x=2y$. En substituant dans $xy=8$, on a $2y^{2}=8 \\implies y^{2}=4 \\implies y=2$ (car $y>0$). Donc $x=4$. Le couple $(4,2)$ satisfait les conditions de domaine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

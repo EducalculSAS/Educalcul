@@ -1,0 +1,291 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.878361+00:00",
+  "id": 127,
+  "code": "ce1-t07-c02",
+  "title": "Reconnaître les polygones",
+  "description": "Cours structuré Educalcul : Reconnaître les polygones.",
+  "subject": "Espace et géométrie",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Reconnaître les polygones",
+    "objectif_global": "Reconnaître les polygones",
+    "mini_lecons_imposees": [
+      "Figure fermée avec côtés droits.",
+      "Trier polygones / non-polygones.",
+      "Nommer triangle, quadrilatère."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Figure fermée avec côtés droits.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une figure fermée ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prends un fil et que tu le poses sur la table en formant un tour complet, sans laisser d'espace. Le fil rejoint son point de départ : tu as créé une figure fermée. C'est comme une barrière tout autour d'un jardin, les animaux ne peuvent pas sortir. Si le fil ne se rejoint pas, il y a une ouverture, c'est une figure ouverte."
+            },
+            {
+              "type": "definition",
+              "term": "Figure fermée",
+              "definition": "Une figure dont le contour forme un tour complet sans aucune ouverture.",
+              "example": "Un carré, un cercle, un triangle sont des figures fermées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les côtés droits, c'est quoi ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regarde le bord de ta règle ou le côté de ton cahier. C'est une ligne bien droite, qui ne courbe pas. On appelle ça un côté droit. Dans une figure, les côtés sont les segments qui forment le contour. Passe ton doigt le long du bord de la table : c'est droit, ça ne tourne pas."
+            },
+            {
+              "type": "definition",
+              "term": "Côté droit",
+              "definition": "Un segment de droite qui ne s'incline pas, il va tout droit.",
+              "example": "Les quatre côtés d'un carré sont des côtés droits."
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une figure est fermée et que tous ses côtés sont droits, elle porte un nom spécial : c'est un polygone. Regarde ce triangle : il a trois côtés droits et il est bien fermé. C'est donc un polygone."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "caption": "Triangle ABC : $3$ côtés droits, $3$ sommets"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant reconnaître une figure fermée et repérer les côtés droits. Dans la prochaine leçon, nous allons jouer à trier des formes : polygones d'un côté, non-polygones de l'autre. Prêt à devenir trieur expert ?"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Regarde cette figure : un carré. Est-ce une figure fermée avec des côtés droits ? Réponds oui ou non.",
+              "answer": "Oui",
+              "hint": "Compte les côtés et vérifie si le contour se referme.",
+              "explanation": "Le carré a quatre côtés droits et son contour forme un tour complet sans ouverture. C'est une figure fermée à côtés droits."
+            },
+            {
+              "question": "Voici un cercle. Est-ce une figure fermée avec des côtés droits ?",
+              "answer": "Non",
+              "hint": "Le contour est-il droit ou courbe ?",
+              "explanation": "Le cercle est fermé mais son contour est courbe, il n'a pas de côtés droits."
+            },
+            {
+              "question": "Une ligne brisée qui ne se referme pas : est-ce un polygone ?",
+              "answer": "Non",
+              "hint": "Le contour est-il fermé ?",
+              "explanation": "Les côtés sont droits mais la figure n'est pas fermée. Il faut les deux conditions pour être un polygone."
+            }
+          ]
+        },
+        {
+          "title": "Trier polygones / non-polygones.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : le club des polygones"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour faire partie du club des polygones, une figure doit remplir deux conditions strictes : être fermée comme une boîte, et n'avoir que des côtés droits comme des bâtons. Si une seule condition manque, la figure reste dehors. C'est comme un jeu avec une règle simple : tout droit, tout fermé."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention aux pièges !",
+              "paragraphs": [
+                "Le cercle est fermé mais son contour est courbe, pas droit. Donc ce n'est pas un polygone.",
+                "Une ligne brisée qui ne se referme pas a des côtés droits, mais elle n'est pas fermée. Pas de polygone non plus."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "À nous de trier !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Devant toi, il y a plusieurs formes : un carré, un rond, un triangle, un cœur, un rectangle ouvert, un losange. Observe chaque contour avec ton doigt. Demande-toi : est-ce que ça se referme ? Est-ce que tous les bords sont droits ? Pose les polygones dans un panier, les autres dans un autre."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 6,
+              "caption": "Six formes à observer : lesquelles sont des polygones ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu sais faire le tri ! Maintenant que tu distingues les polygones des autres figures, nous allons apprendre à les appeler par leur vrai nom selon leur nombre de côtés. C'est parti pour les étiquettes !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans ce groupe : triangle, rectangle, cercle, losange, ligne brisée ouverte. Combien y a-t-il de polygones ?",
+              "answer": "3",
+              "hint": "Vérifie pour chaque forme : fermée ? côtés droits ?",
+              "explanation": "Triangle, rectangle et losange sont fermés et ont des côtés droits. Le cercle est courbe, la ligne est ouverte."
+            },
+            {
+              "question": "Colorie les polygones parmi : hexagone, ovale, pentagone, spirale.",
+              "answer": "Hexagone et pentagone",
+              "hint": "Regarde si le contour est fait seulement de segments droits.",
+              "explanation": "Hexagone et pentagone ont des côtés droits et sont fermés. L'ovale et la spirale ont des courbes."
+            },
+            {
+              "question": "Vrai ou faux : un polygone peut avoir des côtés courbes.",
+              "answer": "Faux",
+              "hint": "Rappelle-toi la règle du club des polygones.",
+              "explanation": "Par définition, un polygone n'a que des côtés droits. Dès qu'il y a une courbe, ce n'est plus un polygone."
+            }
+          ]
+        },
+        {
+          "title": "Nommer triangle, quadrilatère.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle : trois côtés, trois sommets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien ce triangle. Compte ses côtés en touchant chaque bord : un, deux, trois. Compte maintenant ses coins, on dit ses sommets : un, deux, trois. Un triangle a toujours trois côtés droits et trois sommets. Peu importe sa taille ou sa forme, s'il a trois côtés, c'est un triangle."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "caption": "Triangle ABC : $3$ côtés, $3$ sommets"
+            },
+            {
+              "type": "definition",
+              "term": "Triangle",
+              "definition": "Polygone à trois côtés et trois sommets.",
+              "example": "Un triangle rectangle, un triangle équilatéral sont des triangles."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le quadrilatère : quatre côtés, quatre sommets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici maintenant un carré, un rectangle, un losange. Compte leurs côtés : un, deux, trois, quatre. Compte leurs sommets : un, deux, trois, quatre. Toutes ces figures ont quatre côtés droits et quatre sommets. On les appelle quadrilatères. Le mot vient de 'quatre' en latin."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Polygone à quatre côtés et quatre sommets.",
+              "example": "Carré, rectangle, losange, trapèze sont des quadrilatères."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 3,
+              "highlighted": 4,
+              "caption": "Quatre quadrilatères différents : compte les côtés à chaque fois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un triangle est grand, parfois petit. Parfois il a un angle droit, parfois non. Mais il garde toujours ses trois côtés. Pareil pour les quadrilatères : carrés, rectangles, losanges sont tous des quadrilatères même s'ils n'ont pas la même allure. L'essentiel, c'est le nombre de côtés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu peux reconnaître un polygone, le trier parmi d'autres figures, et lui donner son nom s'il a trois ou quatre côtés. C'est une grande étape en géométrie !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire si une figure est fermée ou ouverte.",
+                "Je sais repérer les côtés droits sur un contour.",
+                "Je sais reconnaître un polygone (fermé et côtés droits).",
+                "Je sais nommer un triangle (3 côtés) et un quadrilatère (4 côtés)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de côtés a un triangle ?",
+              "answer": "$3$",
+              "hint": "Compte les côtés du triangle sur l'image.",
+              "explanation": "Un triangle a toujours trois côtés droits."
+            },
+            {
+              "question": "Combien de sommets a un quadrilatère ?",
+              "answer": "$4$",
+              "hint": "Les sommets sont les coins où deux côtés se rejoignent.",
+              "explanation": "Un quadrilatère a quatre côtés et donc quatre sommets."
+            },
+            {
+              "question": "Nomine cette figure : un polygone à $4$ côtés droits.",
+              "answer": "Quadrilatère",
+              "hint": "Quatre côtés -> quadri...",
+              "explanation": "Tout polygone à quatre côtés s'appelle quadrilatère : carré, rectangle, losange, etc."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

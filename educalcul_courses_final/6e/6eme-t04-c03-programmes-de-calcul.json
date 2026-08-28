@@ -1,0 +1,462 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.584002+00:00",
+  "id": 349,
+  "code": "6eme-t04-c03",
+  "title": "Programmes de calcul",
+  "description": "Cours structuré Educalcul : Programmes de calcul.",
+  "subject": "Algèbre et problèmes",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Algèbre et problèmes",
+    "titre_du_cours": "Programmes de calcul",
+    "objectif_global": "Programmes de calcul",
+    "mini_lecons_imposees": [
+      "Suivre.",
+      "Comparer.",
+      "Remonter un programme simple."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Algèbre et problèmes",
+      "lessons": [
+        {
+          "title": "Suivre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un programme de calcul ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un petit robot qui reçoit une consigne précise : « Prends un nombre, ajoute $5$, puis multiplie le résultat par $2$ ». Ce robot, c'est toi quand tu suis un **programme de calcul** ! Un programme de calcul, c'est simplement une suite d'opérations écrites dans un ordre bien précis. On te donne une recette, et ton travail est de l'appliquer étape par étape, sans en changer l'ordre. C'est comme suivre une recette de cuisine : si tu mets le sucre avant la farine ou après, le gâteau ne sera pas le même. En mathématiques, l'ordre des opérations est sacré."
+            },
+            {
+              "type": "definition",
+              "term": "Programme de calcul",
+              "definition": "Une suite ordonnée d'opérations (addition, soustraction, multiplication, division) à effectuer sur un nombre de départ pour obtenir un résultat final.",
+              "example": "Exemple : « Choisis un nombre, ajoute $3$, multiplie par $4$ »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien commencer, il faut identifier le **nombre de départ**. C'est le nombre que tu choisis librement au tout début. Ensuite, tu lis la première instruction, tu fais le calcul, tu notes le résultat intermédiaire, et tu passes à l'instruction suivante. Ne jamais sauter une étape ! Prenons un exemple concret : le programme « Choisis un nombre, ajoute $7$, puis divise par $2$ ». Si je choisis $5$ comme nombre de départ, j'ajoute $7$ : $5+7=12$. Ensuite je divise par $2$ : $12\\div2=6$. Mon résultat final est $6$. Facile, non ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris ton nombre de départ bien en évidence. C'est ta base de travail."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la première instruction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue l'opération demandée sur ton nombre actuel. Note le nouveau résultat."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer jusqu'à la fin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Répète l'étape 2 pour chaque instruction suivante, en utilisant à chaque fois le dernier résultat obtenu."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Résultat final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dernier nombre obtenu est la réponse du programme pour ton nombre de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons ensemble avec un programme un peu plus long : « Choisis un nombre, multiplie par $3$, soustrait $4$, ajoute $10$ ». Prends le nombre $2$. Première instruction : $2\\times3=6$. Deuxième : $6-4=2$. Troisième : $2+10=12$. Le résultat final est $12$. Tu vois, on avance pas à pas, comme sur un sentier balisé. Si tu te perds, reviens à l'étape précédente et vérifie ton calcul. Maintenant, à toi de jouer avec le premier exercice !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser un tableau pour ne rien oublier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le programme comporte plusieurs étapes, il est très utile de faire un petit tableau de suivi. Cela t'évite de te tromper dans les calculs intermédiaires et te permet de tout voir d'un coup d'œil. Dans la première colonne, tu notes l'étape (étape 0 : nombre de départ, étape 1, étape 2...). Dans la deuxième colonne, tu écris l'opération à faire. Dans la troisième, tu notes le résultat obtenu. C'est une méthode d'organisation que les mathématiciens adorent car elle rend le raisonnement clair et facile à relire."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Opération",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "0 (départ)",
+                  "Choisir $8$",
+                  "$8$"
+                ],
+                [
+                  "1",
+                  "$\\times 5$",
+                  "$40$"
+                ],
+                [
+                  "2",
+                  "$-12$",
+                  "$28$"
+                ],
+                [
+                  "3",
+                  "$\\div 4$",
+                  "$7$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau pour le programme « Choisis un nombre, multiplie par $5$, soustrait $12$, divise par $4$ » avec le nombre $8$. À l'étape 0, j'écris mon nombre de départ. À l'étape 1, j'applique $\\times5$ : $8\\times5=40$. À l'étape 2, je fais $-12$ sur le résultat précédent : $40-12=28$. À l'étape 3, je fais $\\div4$ : $28\\div4=7$. Le résultat final est $7$. Ce tableau est ton meilleur allié : il te sert de trace écrite et te permet de vérifier chaque ligne tranquillement. Essaie de faire ton propre tableau pour l'exercice suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire important : nombre de départ et résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Fixons bien les mots pour ne plus jamais les confondre. Le **nombre de départ** (ou nombre initial) est le nombre que **tu choisis** au tout début. C'est ton entrée dans le programme. Le **résultat final** (ou nombre d'arrivée) est le nombre que tu obtiens **à la fin**, après avoir exécuté toutes les instructions. Entre les deux, il y a les **résultats intermédiaires** : ce sont les nombres que tu obtiens après chaque étape, avant la suivante. Dans l'exemple du tableau, $8$ est le nombre de départ, $40$, $28$ sont des résultats intermédiaires, et $7$ est le résultat final. Retiens bien cette distinction, elle sera cruciale pour la suite du chapitre !"
+            },
+            {
+              "type": "definition",
+              "term": "Nombre de départ",
+              "definition": "Le nombre choisi librement au début du programme. C'est la valeur d'entrée.",
+              "example": "Dans « Choisis un nombre... », le nombre choisi est le nombre de départ."
+            },
+            {
+              "type": "definition",
+              "term": "Résultat final",
+              "definition": "Le nombre obtenu après avoir exécuté toutes les instructions du programme. C'est la valeur de sortie.",
+              "example": "À la fin du programme, on lit le résultat final."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as bien compris comment suivre un programme pas à pas et comment t'organiser avec un tableau, tu es prêt pour le dernier exercice de cette leçon. Ensuite, nous verrons comment comparer deux programmes entre eux. C'est parti !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Suis le programme de calcul ci-dessous pour le nombre de départ $6$.\\n\\nProgramme : « Choisis un nombre, ajoute $4$, multiplie par $3$, soustrait $5$ ».\\n\\nQuel est le résultat final ?",
+              "answer": "$25$",
+              "hint": "Fais les opérations dans l'ordre : d'abord $+4$, puis $\\times3$, puis $-5$. Note chaque résultat intermédiaire.",
+              "explanation": "Nombre de départ : $6$. Étape 1 : $6+4=10$. Étape 2 : $10\\times3=30$. Étape 3 : $30-5=25$. Le résultat final est $25$."
+            },
+            {
+              "question": "Complète le tableau de suivi pour le programme « Choisis un nombre, multiplie par $2$, ajoute $10$, divise par $4$ » avec le nombre de départ $9$.\\n\\n| Étape | Opération | Résultat |\\n|-------|-----------|----------|\\n| 0     | Choisir $9$ | $9$      |\\n| 1     | $\\times 2$ | ?        |\\n| 2     | $+10$     | ?        |\\n| 3     | $\\div 4$  | ?        |",
+              "answer": "Étape 1 : $18$ ; Étape 2 : $28$ ; Étape 3 : $7$",
+              "hint": "Calcule $9\\times2$, puis ajoute $10$ au résultat, puis divise le tout par $4$.",
+              "explanation": "Étape 1 : $9\\times2=18$. Étape 2 : $18+10=28$. Étape 3 : $28\\div4=7$. Le résultat final est $7$."
+            },
+            {
+              "question": "Pour le programme « Choisis un nombre, soustrait $3$, multiplie par $5$, ajoute $20$ », donne le résultat final si le nombre de départ est $12$.",
+              "answer": "$65$",
+              "hint": "Soustrais $3$ à $12$, multiplie le résultat par $5$, puis ajoute $20$.",
+              "explanation": "Départ : $12$. $12-3=9$. $9\\times5=45$. $45+20=65$. Résultat final : $65$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester plusieurs nombres de départ"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as appris à suivre un programme pour un seul nombre de départ. Mais la force d'un programme de calcul, c'est qu'il fonctionne pour **n'importe quel** nombre de départ ! Imagine que tu as deux programmes différents. Comment savoir s'ils donnent toujours le même résultat ? La méthode la plus simple : on teste avec plusieurs nombres de départ. On prend $0$, $1$, $5$, $10$, voire un nombre décimal comme $2,5$ ou un nombre négatif comme $-3$. Si à chaque fois les deux programmes donnent le même résultat final, on commence à suspecter qu'ils sont **équivalents**. C'est une démarche de scientifique : on fait des expériences pour formuler une hypothèse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple amusant. Programme A : « Choisis un nombre, ajoute $2$, multiplie par $3$ ». Programme B : « Choisis un nombre, multiplie par $3$, ajoute $6$ ». Testons avec $4$. A : $(4+2)\\times3=18$. B : $4\\times3+6=18$. Même résultat ! Testons avec $0$. A : $(0+2)\\times3=6$. B : $0\\times3+6=6$. Encore pareil. Testons avec $-1$. A : $(-1+2)\\times3=3$. B : $-1\\times3+6=3$. Cela sent l'équivalence ! Mais attention, quelques essais ne suffisent pas pour en être certain à 100 %. En mathématiques, on cherchera plus tard une preuve. Pour l'instant, on s'entraîne à comparer méthodiquement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre de départ",
+                "Programme A : $(x+2)\\times3$",
+                "Programme B : $x\\times3+6$"
+              ],
+              "rows": [
+                [
+                  "$4$",
+                  "$18$",
+                  "$18$"
+                ],
+                [
+                  "$0$",
+                  "$6$",
+                  "$6$"
+                ],
+                [
+                  "$-1$",
+                  "$3$",
+                  "$3$"
+                ],
+                [
+                  "$2,5$",
+                  "$13,5$",
+                  "$13,5$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau comparatif. Il montre clairement que pour ces quatre nombres de départ très différents (entier positif, zéro, négatif, décimal), les deux programmes donnent exactement les mêmes résultats. C'est une forte indication qu'ils sont équivalents. Mais注意 : si tu trouves **un seul** nombre de départ pour lequel les résultats diffèrent, alors les programmes ne sont **pas** équivalents. Un seul contre-exemple suffit pour casser l'égalité ! C'est une règle d'or en maths. Maintenant, essaie de comparer deux programmes par toi-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Deux programmes qui se ressemblent mais ne sont pas équivalents"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive souvent que deux programmes aient presque les mêmes opérations mais dans un ordre différent. L'ordre change tout ! Rappelle-toi la priorité des opérations : les multiplications et divisions priment sur les additions et soustractions, sauf s'il y a des parenthèses. Un programme de calcul, lui, impose son propre ordre, étape par étape. C'est pour cela que « ajoute $2$ puis multiplie par $3$ » n'est pas la même chose que « multiplie par $3$ puis ajoute $2$ ». Dans le premier cas, l'addition se fait **avant** la multiplication (comme s'il y avait des parenthèses autour de l'addition). Dans le second, la multiplication se fait **avant** l'addition. Essaie avec le nombre $5$ : premier programme : $(5+2)\\times3=21$. Second : $5\\times3+2=17$. Les résultats sont différents ! Donc les programmes ne sont pas équivalents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un piège classique : « Choisis un nombre, multiplie par $4$, ajoute $8$ » versus « Choisis un nombre, ajoute $8$, multiplie par $4$ ». Testons avec $3$. Premier : $3\\times4+8=20$. Second : $(3+8)\\times4=44$. C'est radicalement différent ! L'ordre des instructions est la clé. Quand tu compares deux programmes, lis-les très attentivement : la première instruction du premier programme correspond-elle à la première instruction du second ? Si l'ordre change, méfiance. C'est souvent là que se cache la différence. À toi de débusquer l'intrus dans l'exercice suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La notion d'équivalence : même résultat pour **tous** les nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "On dit que deux programmes sont **équivalents** s'ils donnent le même résultat final **pour tout nombre de départ possible**. Pas seulement pour $2$ ou $3$, mais pour $0$, pour $-15$, pour $1000$, pour $0,25$... pour **n'importe quel** nombre. C'est une définition exigeante ! Pour l'instant, au collège, on ne peut pas tester tous les nombres (il y en a une infinité). On teste donc une bonne variété de nombres : des positifs, des négatifs, des décimaux, zéro. Si ça marche à chaque fois, on conjecture (on suppose) qu'ils sont équivalents. Plus tard, en 4e et 3e, tu apprendras à le **prouver** avec le calcul littéral (les lettres). Mais déjà, ton intuition se construit en testant beaucoup de cas."
+            },
+            {
+              "type": "definition",
+              "term": "Programmes équivalents",
+              "definition": "Deux programmes de calcul sont équivalents s'ils produisent le même résultat final pour **chaque** nombre de départ possible.",
+              "example": "« Ajoute $2$ puis multiplie par $3$ » et « Multiplie par $3$ puis ajoute $6$ » sont équivalents."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention au piège du « ça a l'air de marcher ». Parfois, deux programmes donnent le même résultat pour quelques nombres mais pas pour tous. Par exemple, « Multiplie par $2$, ajoute $4$ » et « Ajoute $2$, multiplie par $2$ ». Testons avec $1$ : premier donne $6$, second donne $6$. Testons avec $2$ : premier donne $8$, second donne $8$. Ça a l'air équivalent ! Mais testons avec $0$ : premier donne $4$, second donne $4$. Toujours pareil ? Essayons avec $-1$ : premier : $-1\\times2+4=2$. Second : $(-1+2)\\times2=2$. En fait, ces deux-là **sont** équivalents (on verra pourquoi plus tard). Mais si on change un chiffre : « Multiplie par $2$, ajoute $5$ » vs « Ajoute $2$, multiplie par $2$ ». Avec $1$ : $7$ vs $6$. Différent ! Un seul test suffit pour dire non. Dernier exercice pour t'entraîner à cette vigilance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare les deux programmes ci-dessous en testant les nombres de départ $0$, $5$ et $-2$. Sont-ils équivalents d'après tes tests ?\\n\\nProgramme 1 : « Choisis un nombre, ajoute $5$, multiplie par $2$ ».\\nProgramme 2 : « Choisis un nombre, multiplie par $2$, ajoute $10$ ».",
+              "answer": "Oui, d'après ces tests ils donnent les mêmes résultats : pour $0 \\rightarrow 10$ et $10$ ; pour $5 \\rightarrow 20$ et $20$ ; pour $-2 \\rightarrow 6$ et $6$.",
+              "hint": "Calcule chaque programme pour les trois nombres. Note les résultats dans un tableau.",
+              "explanation": "Pour $0$ : P1 $(0+5)\\times2=10$, P2 $0\\times2+10=10$. Pour $5$ : P1 $(5+5)\\times2=20$, P2 $5\\times2+10=20$. Pour $-2$ : P1 $(-2+5)\\times2=6$, P2 $-2\\times2+10=6$. Résultats identiques pour ces trois tests."
+            },
+            {
+              "question": "Voici deux programmes :\\nA : « Choisis un nombre, multiplie par $3$, soustrait $6$ ».\\nB : « Choisis un nombre, soustrait $2$, multiplie par $3$ ».\\nTeste avec les nombres $4$ et $10$. Les programmes sont-ils équivalents ? Justifie.",
+              "answer": "Non, ils ne sont pas équivalents. Pour $4$ : A donne $6$, B donne $6$. Pour $10$ : A donne $24$, B donne $24$. Attends, ils donnent le même résultat pour ces deux tests ! Mais ce n'est pas une preuve. (En fait, ils SONT équivalents, mais on ne peut pas en être sûr avec seulement deux tests).",
+              "hint": "Calcule A et B pour $4$, puis pour $10$. Compare les résultats.",
+              "explanation": "Pour $4$ : A : $4\\times3-6=6$ ; B : $(4-2)\\times3=6$. Pour $10$ : A : $10\\times3-6=24$ ; B : $(10-2)\\times3=24$. Les résultats coïncident pour ces deux valeurs, mais il faudrait tester d'autres nombres pour conjecturer l'équivalence."
+            },
+            {
+              "question": "Parmi les paires de programmes ci-dessous, laquelle est **certainement pas équivalente** (tu as trouvé un contre-exemple) ?\\n1. « $\\times2$ puis $+4$ » et « $+2$ puis $\\times2$ »\\n2. « $+3$ puis $\\times5$ » et « $\\times5$ puis $+15$ »\\n3. « $-4$ puis $\\times3$ » et « $\\times3$ puis $-4$ »",
+              "answer": "La paire 3. Avec le nombre $0$ : premier donne $-12$, second donne $-4$. Résultats différents.",
+              "hint": "Teste chaque paire avec un nombre simple comme $0$ ou $1$. Cherche une paire où les résultats diffèrent.",
+              "explanation": "Paire 1 : avec $1$ : $(1\\times2)+4=6$ et $(1+2)\\times2=6$ (même). Paire 2 : avec $1$ : $(1+3)\\times5=20$ et $1\\times5+15=20$ (même). Paire 3 : avec $0$ : $(0-4)\\times3=-12$ et $0\\times3-4=-4$. Différent ! Donc pas équivalents."
+            }
+          ]
+        },
+        {
+          "title": "Remonter un programme simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'idée de « remonter » le programme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, tu connaissais le nombre de départ et tu cherchais le résultat final. Aujourd'hui, on inverse le jeu : on te donne le **résultat final** et tu dois retrouver le **nombre de départ** ! C'est comme si tu avais le gâteau fini et que tu devais deviner quels ingrédients ont été mis au début. Pour cela, il faut **remonter le programme à l'envers**, en partant de la fin vers le début. À chaque étape, tu fais l'**opération inverse** de celle qui est écrite. Si le programme dit « ajoute $5$ », toi tu fais « soustrait $5$ ». S'il dit « multiplie par $4$ », tu fais « divise par $4$ ». C'est le principe de la balance : pour défaire ce qui a été fait, on fait l'action contraire."
+            },
+            {
+              "type": "definition",
+              "term": "Opération inverse",
+              "definition": "L'opération qui annule l'effet de la première. L'addition et la soustraction sont inverses. La multiplication et la division sont inverses.",
+              "example": "L'inverse de « $+7$ » est « $-7$ ». L'inverse de « $\\times 3$ » est « $\\div 3$ »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple simple : le programme est « Choisis un nombre, ajoute $6$, multiplie par $2$ ». Le résultat final est $20$. Quel était le nombre de départ ? On part de $20$. La dernière instruction était « multiplie par $2$ ». L'inverse, c'est « divise par $2$ » : $20\\div2=10$. L'instruction d'avant était « ajoute $6$ ». L'inverse, c'est « soustrait $6$ » : $10-6=4$. Le nombre de départ était $4$. Vérifions en descendant : $4+6=10$, $10\\times2=20$. Ça marche ! Tu vois, on défait le fil emmêlé en tirant sur le bon bout."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire le programme à l'envers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis le programme de la fin vers le début. Note les opérations inverses dans l'ordre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la première inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Partis du résultat final. Fais l'opération inverse de la dernière instruction du programme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Continuer jusqu'au début",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends le résultat obtenu et applique l'opération inverse de l'instruction précédente. Répète jusqu'à la première instruction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relance le programme normalement avec le nombre de départ trouvé. Tu dois retomber sur le résultat final donné."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un cas un peu plus corsé : programme « Choisis un nombre, multiplie par $5$, soustrait $15$, divise par $2$ ». Résultat final : $10$. On remonte. Dernière instruction : « divise par $2$ » $\\rightarrow$ inverse : « multiplie par $2$ » : $10\\times2=20 $. Instruction d'avant : « soustrait $15$ » $\\rightarrow$ inverse : « ajoute $15$ » : $20+15=35 $. Première instruction : « multiplie par $5$ » $\\rightarrow$ inverse : « divise par $5$ » : $35\\div5=7 $. Le nombre de départ est $7$. Vérification : $7\\times5=35$, $35-15=20$, $20\\div2=10$. Parfait ! Maintenant, c'est à toi de jouer au détective."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Attention aux pièges : l'ordre inverse et les parenthèses implicites"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus fréquent, c'est de faire les inverses dans le mauvais ordre. Il faut **impérativement** commencer par l'inverse de la **dernière** instruction, puis l'avant-dernière, etc. Si tu fais l'inverse de la première instruction en premier, tu te trompes. Imagine : tu as mis tes chaussettes puis tes chaussures. Pour enlever, tu enlèves d'abord les chaussures (dernière action), puis les chaussettes (première action). En maths, c'est pareil : on défait dans l'ordre inverse. Un autre piège : les programmes avec des divisions ou soustractions. L'inverse de « soustrait $8$ » est bien « ajoute $8$ ». L'inverse de « divise par $4$ » est « multiplie par $4$ ». Mais attention : si le programme dit « divise par $3$ puis ajoute $2$ », l'ordre inverse est : 1. soustrait $2$, 2. multiplie par $3$. Ne confonds pas avec « multiplie par $3$ puis soustrait $2$ » !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le programme : « Choisis un nombre, divise par $4$, ajoute $7$ ». Résultat final : $10$. Si tu fais n'importe quoi : tu commences par l'inverse de « divise par $4$ » (donc $\\times4$) : $10\\times4=40$, puis inverse de « ajoute $7$ » ($-7$) : $33$. Vérification : $33\\div4=8,25$, $+7=15,25 \\neq 10$. Faux ! La bonne méthode : on commence par la fin. Inverse de « ajoute $7$ » : $10-7=3$. Inverse de « divise par $4$ » : $3\\times4=12$. Vérification : $12\\div4=3$, $+7=10$. Gagné ! L'ordre est vital. Entraîne-toi sur l'exercice suivant pour bien ancrer ce réflexe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Remonter un programme avec plusieurs opérations du même type"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, un programme enchaîne deux additions ou deux multiplications. Le principe reste exactement le même : on remonte étape par étape, une par une. Par exemple : « Choisis un nombre, ajoute $3$, ajoute $5$, multiplie par $2$ ». Résultat : $24$. On remonte : inverse de « $\\times2$ » $\\rightarrow \\div2$ : $24\\div2=12$. Inverse de « $+5$ » $\\rightarrow -5$ : $12-5=7$. Inverse de « $+3$ » $\\rightarrow -3$ : $7-3=4$. Départ = $4$. Vérification : $4+3=7$, $+5=12$, $\\times2=24$. C'est mécanique, il suffit de ne pas se presser. Si tu as un doute, écris le programme à l'envers sur ton brouillon avec les opérations inverses, puis suis ta liste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier conseil pour briller : quand tu as trouvé ton nombre de départ, **vérifie toujours** en refaisant le programme dans le bon sens. C'est la meilleure assurance contre les erreurs de calcul ou d'inversion. Si tu retombes sur le résultat final donné, tu es certain à 100 % d'avoir raison. Cette habitude de vérification te servira toute ta scolarité, même au lycée ! Tu es maintenant prêt pour le dernier exercice de ce cours, puis pour le bilan final."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais suivre un programme de calcul étape par étape en notant les résultats intermédiaires.",
+                "Je sais utiliser un tableau pour organiser les étapes d'un programme.",
+                "Je connais le vocabulaire : nombre de départ, résultat intermédiaire, résultat final.",
+                "Je sais comparer deux programmes en testant plusieurs nombres de départ (positifs, négatifs, zéro, décimaux).",
+                "Je sais qu'un seul contre-exemple suffit pour dire que deux programmes ne sont pas équivalents.",
+                "Je sais remonter un programme simple : partir du résultat final et faire les opérations inverses dans l'ordre inverse.",
+                "Je sais vérifier ma réponse en relançant le programme dans le sens normal."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On a appliqué le programme « Choisis un nombre, multiplie par $3$, ajoute $9$ » et on a obtenu $30$. Quel était le nombre de départ ?",
+              "answer": "$7$",
+              "hint": "Remonte : inverse de « ajoute $9$ » est « soustrait $9$ », puis inverse de « multiplie par $3$ » est « divise par $3$ ».",
+              "explanation": "Résultat final $30$. Étape 1 (inverse de +9) : $30-9=21$. Étape 2 (inverse de $\\times3$) : $21\\div3=7$. Nombre de départ : $7$. Vérification : $7\\times3=21$, $21+9=30$."
+            },
+            {
+              "question": "Le programme est : « Choisis un nombre, soustrait $4$, multiplie par $6$ ». Le résultat final est $36$. Trouve le nombre de départ.",
+              "answer": "$10$",
+              "hint": "Commence par défaire la multiplication par $6$, puis défais la soustraction de $4$.",
+              "explanation": "Résultat $36$. Inverse de $\\times6$ : $36\\div6=6$. Inverse de $-4$ : $6+4=10$. Nombre de départ : $10$. Vérification : $10-4=6$, $6\\times6=36$."
+            },
+            {
+              "question": "Un programme mystère donne le résultat $15$ pour un nombre de départ inconnu. Le programme est : « Choisis un nombre, ajoute $2$, divise par $3$, multiplie par $5$ ». Quel est le nombre de départ ?",
+              "answer": "$7$",
+              "hint": "Remonte dans l'ordre inverse : d'abord divise par $5$, puis multiplie par $3$, puis soustrait $2$.",
+              "explanation": "Résultat $15$. Inverse de $\\times5$ : $15\\div5=3$. Inverse de $\\div3$ : $3\\times3=9$. Inverse de $+2$ : $9-2=7$. Nombre de départ : $7$. Vérification : $7+2=9$, $9\\div3=3$, $3\\times5=15$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 385,
+  "_course_code": "5eme-t02-c02-additionner-et-soustraire-des-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Règles",
+  "title": "Règles d'addition et de soustraction des nombres relatifs",
+  "blocks": [
+    {
+      "title": "Règle des signes pour l'addition",
+      "content": "Pour additionner deux nombres relatifs de même signe, on {{1}} leurs valeurs absolues et on conserve le {{2}} commun. Pour additionner deux nombres relatifs de signes contraires, on {{3}} leurs valeurs absolues et on prend le signe du nombre dont la valeur absolue est la plus grande.",
+      "blanks": [
+        "additionne",
+        "signe",
+        "soustrait"
+      ],
+      "correctAnswer": "",
+      "explanation": "C'est la règle fondamentale : même signe -> addition des valeurs absolues, signe conservé ; signes contraires -> soustraction des valeurs absolues (la plus grande moins la plus petite), signe du nombre de plus grande valeur absolue.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer le signe du résultat",
+      "content": "Donne le signe du résultat des sommes suivantes sans calculer la valeur exacte :\\n$A = (-12) + (-5)$ : le signe est {{1}}.\\n$B = 8 + (-15)$ : le signe est {{2}}.\\n$C = (-20) + 20$ : le résultat est {{3}} (ni positif, ni négatif).",
+      "blanks": [
+        "négatif",
+        "négatif",
+        "nul"
+      ],
+      "correctAnswer": "",
+      "explanation": "A : deux nombres négatifs, somme négative. B : signes contraires, $|-15| > |8|$, le signe est celui de -15 donc négatif. C : nombres opposés, la somme est nulle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Transformer une soustraction en addition",
+      "content": "Pour soustraire un nombre relatif, on {{1}} son {{2}}.\\nComplète les égalités :\\n$5 - (-3) = 5 {{1}} {{2}}$.\\n$(-7) - 4 = (-7) {{1}} {{2}}$.",
+      "blanks": [
+        "ajoute",
+        "opposé",
+        "+",
+        "3",
+        "+",
+        "-4"
+      ],
+      "correctAnswer": "",
+      "explanation": "La soustraction d'un nombre équivaut à l'addition de son opposé. L'opposé de -3 est 3. L'opposé de 4 est -4. Attention aux signes dans l'écriture finale.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

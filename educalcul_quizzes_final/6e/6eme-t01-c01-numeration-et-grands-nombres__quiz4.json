@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 331,
+  "_course_code": "6eme-t01-c01-numeration-et-grands-nombres",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Numération et grands nombres",
+  "title": "Application : Numération et grands nombres",
+  "questions": [
+    {
+      "text": "On décompose le nombre $4\\,205\\,307$ de la manière suivante : $4\\times 1\\,000\\,000 + 2\\times 100\\,000 + 0\\times 10\\,000 + 5\\times 1\\,000 + 3\\times 100 + 0\\times 10 + 7$. Quelle est l'écriture en lettres de ce nombre ?",
+      "options": [
+        "Quatre millions deux cent cinq mille trois cent sept",
+        "Quatre millions deux cent cinq mille trois cent soixante-dix",
+        "Quatre millions deux cent cinquante mille trois cent sept",
+        "Quarante-deux millions cinq mille trois cent sept"
+      ],
+      "correctAnswer": "Quatre millions deux cent cinq mille trois cent sept",
+      "explanation": "Le nombre s'écrit en groupes de trois chiffres en partant de la droite : 4 (millions) | 205 (mille) | 307 (unités). Le groupe des millions est 'quatre millions'. Le groupe des milliers est 'deux cent cinq mille' (le 0 des dizaines de milliers ne se lit pas mais marque l'absence de dizaines de milliers). Le groupe des unités est 'trois cent sept'. L'option B confond 07 et 70. L'option C lit 205 comme 250. L'option D place mal le séparateur des millions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les quatre nombres suivants, lequel est le plus grand ?",
+      "options": [
+        "$3\\,450\\,000$",
+        "$3\\,045\\,000$",
+        "$34\\,500\\,000$",
+        "$345\\,000$"
+      ],
+      "correctAnswer": "$34\\,500\\,000$",
+      "explanation": "Pour comparer des grands nombres, on compte d'abord le nombre de chiffres (ou on regarde la classe la plus haute). $34\\,500\\,000$ a 8 chiffres (classe des dizaines de millions), alors que les trois autres n'en ont que 7 (classe des millions). C'est donc le plus grand. $345\\,000$ n'a que 6 chiffres. Entre $3\\,450\\,000$ et $3\\,045\\,000$, le premier est plus grand car il a 4 cent mille contre 0.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le nombre $82\\,406\\,159$, que représente le chiffre 2 ?",
+      "options": [
+        "2 millions",
+        "2 dizaines de millions",
+        "2 cent mille",
+        "2 mille"
+      ],
+      "correctAnswer": "2 millions",
+      "explanation": "En plaçant le nombre dans un tableau de numération (millions, centaines de milliers, dizaines de milliers, milliers, centaines, dizaines, unités) : 8 dizaines de millions | 2 millions | 4 centaines de milliers | 0 dizaines de milliers | 6 milliers | 1 centaine | 5 dizaines | 9 unités. Le chiffre 2 est dans la colonne des millions, il représente donc 2 millions ($2\\times 1\\,000\\,000$).",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 82406159,
+        "caption": "Tableau de numération pour 82 406 159"
+      }
+    },
+    {
+      "text": "La population d'une ville est de $1\\,234\\,567$ habitants. Quel est l'arrondi de cette population au million le plus proche ?",
+      "options": [
+        "$1\\,000\\,000$",
+        "$1\\,200\\,000$",
+        "$1\\,300\\,000$",
+        "$2\\,000\\,000$"
+      ],
+      "correctAnswer": "$1\\,000\\,000$",
+      "explanation": "Pour arrondir au million, on regarde le chiffre des centaines de milliers. Ici, c'est 2 (dans $1\\,234\\,567$). Comme 2 est strictement inférieur à 5, on arrondit par défaut : on conserve le chiffre des millions (1) et on met des zéros derrière. L'arrondi est donc $1\\,000\\,000$. L'option B est l'arrondi au cent mille. L'option D serait l'arrondi si le chiffre des centaines de milliers était 5 ou plus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un pays compte $67\\,450\\,000$ habitants. Un autre pays en compte $82\\,105\\,000$. Quelle est la différence de population entre ces deux pays ?",
+      "options": [
+        "$14\\,655\\,000$",
+        "$15\\,345\\,000$",
+        "$14\\,755\\,000$",
+        "$15\\,655\\,000$"
+      ],
+      "correctAnswer": "$14\\,655\\,000$",
+      "explanation": "Il faut calculer la soustraction : $82\\,105\\,000 - 67\\,450\\,000$. On pose l'opération en colonnes :\\n  82 105 000\\n- 67 450 000\\n------------\\n  14 655 000\\nLes distracteurs correspondent à des erreurs de retenues fréquentes (oubli de retenue sur les centaines de milliers ou les dizaines de millions).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

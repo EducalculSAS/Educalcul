@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 458,
+  "_course_code": "3eme-t01-c04-puissances-et-notation-scientifique",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Approfondissement : Règles",
+  "title": "Approfondissement : Règles des puissances et notation scientifique - Algorithmes",
+  "blocks": [
+    {
+      "title": "Produit de puissances de même base",
+      "content": "Écrire un algorithme (en pseudo‑code ou en Python) qui prend en entrée une base $a$ (non nulle) et deux entiers $m$ et $n$, et qui affiche le résultat de $a^m \\times a^n$ en utilisant la règle des puissances de même base. L'algorithme doit retourner la valeur $a^{m+n}$ sans calculer les puissances intermédiaires.",
+      "correctAnswer": "Algorithme produit_puissances(a, m, n):\\n    // Vérifier que a ≠ 0\\n    si a = 0 alors\\n        afficher \"Base non valide\"\\n        retourner\\n    fin si\\n    k ← m + n\\n    résultat ← a ^ k\\n    afficher résultat\\n    retourner résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle des puissances de même base stipule que $a^m \\times a^n = a^{m+n}$. L'algorithme additionne simplement les exposants m et n, puis calcule la puissance unique $a^{m+n}$. Cela évite de calculer $a^m$ et $a^n$ séparément, ce qui est plus efficace surtout pour de grands exposants.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion de la notation scientifique vers l'écriture décimale",
+      "content": "Écrire une fonction (en pseudo‑code ou en Python) qui reçoit un nombre en notation scientifique sous la forme d'un couple $(m, e)$ où $m$ est la mantisse (un nombre réel tel que $1 \\le |m| < 10$) et $e$ l'exposant entier, et qui renvoie l'écriture décimale correspondante. La fonction doit gérer les exposants positifs et négatifs.",
+      "correctAnswer": "Fonction sci_vers_decimal(m, e):\\n    // m : mantisse, e : exposant entier\\n    si e ≥ 0 alors\\n        // Décaler la virgule vers la droite de e positions\\n        résultat ← m * 10^e\\n    sinon\\n        // Décaler la virgule vers la gauche de |e| positions\\n        résultat ← m / 10^|e|\\n    fin si\\n    retourner résultat",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un nombre en notation scientifique s'écrit $m \\times 10^e$. Si $e$ est positif, on multiplie $m$ par $10^e$ (décalage de la virgule à droite). Si $e$ est négatif, on divise $m$ par $10^{|e|}$ (décalage à gauche). La fonction implémente exactement cette règle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une expression combinant plusieurs règles",
+      "content": "Écrire un algorithme qui simplifie l'expression $\\frac{(a^m)^n \\times a^p}{a^q}$ en une seule puissance $a^k$. L'algorithme prend en entrée les entiers $m, n, p, q$ (avec $a \\neq 0$) et affiche l'exposant $k$ calculé à partir des règles : puissance d'une puissance, produit et quotient de puissances de même base.",
+      "correctAnswer": "Algorithme simplifier_expression(m, n, p, q):\\n    // Calcul de l'exposant final k\\n    // (a^m)^n = a^{m*n}\\n    // a^{m*n} * a^p = a^{m*n + p}\\n    // division par a^q : soustraire q\\n    k ← m * n + p - q\\n    afficher \"L'expression se simplifie en a^\" + k\\n    retourner k",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique successivement les règles : $(a^m)^n = a^{m \\times n}$, puis le produit $a^{m n} \\times a^p = a^{m n + p}$, enfin le quotient $\\frac{a^{m n + p}}{a^q} = a^{m n + p - q}$. L'algorithme calcule directement $k = m \\times n + p - q$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

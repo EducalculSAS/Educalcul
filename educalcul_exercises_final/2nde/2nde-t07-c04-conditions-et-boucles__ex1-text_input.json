@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "If",
+  "title": "Exécution d'instructions conditionnelles",
+  "blocks": [
+    {
+      "title": "Test simple",
+      "content": "On exécute l'algorithme suivant :\\n$ x \\leftarrow 5 $\\n$ \\textbf{Si } x > 3 \\textbf{ Alors} $\\n$ \\quad x \\leftarrow x + 2 $\\n$ \\textbf{Sinon} $\\n$ \\quad x \\leftarrow x - 1 $\\n$ \\textbf{Fin Si} $\\n$ \\textbf{Afficher } x $\\nQuelle valeur est affichée ?",
+      "correctAnswer": "7",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $x$ vaut initialement $5$. La condition $x > 3$ est vraie car $5 > 3$. On exécute donc l'instruction du « Alors » : $x \\leftarrow 5 + 2 = 7$. L'instruction du « Sinon » est ignorée. La valeur affichée est $7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Condition avec modulo",
+      "content": "On exécute l'algorithme suivant :\\n$ a \\leftarrow 10 $\\n$ b \\leftarrow 4 $\\n$ \\textbf{Si } a \\bmod b = 0 \\textbf{ Alors} $\\n$ \\quad a \\leftarrow a / b $\\n$ \\textbf{Sinon} $\\n$ \\quad a \\leftarrow a \\times b $\\n$ \\textbf{Fin Si} $\\n$ \\textbf{Afficher } a $\\nQuelle valeur est affichée ?",
+      "correctAnswer": "40",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a $a = 10$ et $b = 4$. Le reste de la division euclidienne de $10$ par $4$ est $2$ (car $10 = 2 \\times 4 + 2$). Donc $a \\bmod b = 2$, qui est différent de $0$. La condition est fausse. On exécute la branche « Sinon » : $a \\leftarrow 10 \\times 4 = 40$. La valeur affichée est $40$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Si imbriqués",
+      "content": "On exécute l'algorithme suivant :\\n$ x \\leftarrow -2 $\\n$ y \\leftarrow 3 $\\n$ \\textbf{Si } x < 0 \\textbf{ Alors} $\\n$ \\quad \\textbf{Si } y > 0 \\textbf{ Alors} $\\n$ \\quad \\quad x \\leftarrow x + y $\\n$ \\quad \\textbf{Sinon} $\\n$ \\quad \\quad x \\leftarrow x - y $\\n$ \\quad \\textbf{Fin Si} $\\n$ \\textbf{Sinon} $\\n$ \\quad x \\leftarrow 0 $\\n$ \\textbf{Fin Si} $\\n$ \\textbf{Afficher } x $\\nQuelle valeur est affichée ?",
+      "correctAnswer": "1",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La variable $x$ vaut $-2$ et $y$ vaut $3$. Le premier test $x < 0$ est vrai ($-2 < 0$). On entre dans le premier « Alors » qui contient un second « Si ». Le second test $y > 0$ est vrai ($3 > 0$). On exécute l'instruction $x \\leftarrow x + y$, soit $x \\leftarrow -2 + 3 = 1$. Les autres branches ne sont pas exécutées. La valeur affichée est $1$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

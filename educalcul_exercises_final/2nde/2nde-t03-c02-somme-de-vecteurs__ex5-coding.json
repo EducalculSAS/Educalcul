@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Relation de Chasles",
+  "title": "Relation de Chasles : algorithmes de somme de vecteurs",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrire un algorithme qui calcule les coordonnées du vecteur somme $\\vec{u}+\\vec{v}$ à partir des coordonnées de $\\vec{u}(x_u, y_u)$ et $\\vec{v}(x_v, y_v)$.",
+      "correctAnswer": "Algorithme SommeVecteurs\\nEntrées : x_u, y_u, x_v, y_v (réels)\\nSorties : x_s, y_s (réels)\\nDébut\\n    x_s ← x_u + x_v\\n    y_s ← y_u + y_v\\n    Afficher (x_s, y_s)\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux vecteurs s'effectue composante par composante : l'abscisse du vecteur somme est la somme des abscisses, l'ordonnée du vecteur somme est la somme des ordonnées. Cela correspond directement à la relation de Chasles pour deux vecteurs.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Écrire un algorithme qui, étant donné une liste de $n$ vecteurs $\\vec{v_1}, \\vec{v_2}, \\dots, \\vec{v_n}$ avec leurs coordonnées, calcule le vecteur somme $\\sum_{i=1}^{n} \\vec{v_i}$ en utilisant la relation de Chasles de manière itérative.",
+      "correctAnswer": "Algorithme SommeListeVecteurs\\nEntrées : n (entier), tableaux X[1..n], Y[1..n] (réels)\\nSorties : x_s, y_s (réels)\\nDébut\\n    x_s ← 0\\n    y_s ← 0\\n    Pour i de 1 à n faire\\n        x_s ← x_s + X[i]\\n        y_s ← y_s + Y[i]\\n    FinPour\\n    Afficher (x_s, y_s)\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise le vecteur somme à zéro. Puis on parcourt la liste des vecteurs et on ajoute chaque composante au vecteur somme. Cette boucle réalise l'application répétée de la relation de Chasles : $\\vec{v_1}+\\vec{v_2}+\\dots+\\vec{v_n}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrire un algorithme qui vérifie la relation de Chasles pour trois points $A$, $B$, $C$ : $\\vec{AB} + \\vec{BC} = \\vec{AC}$. L'algorithme prend en entrée les coordonnées de $A(x_A, y_A)$, $B(x_B, y_B)$, $C(x_C, y_C)$ et affiche « Vrai » si l'égalité est satisfaite (à une tolérance près) et « Faux » sinon.",
+      "correctAnswer": "Algorithme VerifieChasles\\nEntrées : x_A, y_A, x_B, y_B, x_C, y_C (réels)\\nSorties : message (chaîne)\\nConstante : EPSILON ← 1e-9\\nDébut\\n    // Vecteurs\\n    x_AB ← x_B - x_A\\n    y_AB ← y_B - y_A\\n    x_BC ← x_C - x_B\\n    y_BC ← y_C - y_B\\n    x_AC ← x_C - x_A\\n    y_AC ← y_C - y_A\\n    // Somme AB + BC\\n    x_som ← x_AB + x_BC\\n    y_som ← y_AB + y_BC\\n    // Test avec tolérance\\n    Si |x_som - x_AC| < EPSILON et |y_som - y_AC| < EPSILON Alors\\n        message ← \"Vrai\"\\n    Sinon\\n        message ← \"Faux\"\\n    FinSi\\n    Afficher message\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule les trois vecteurs $\\vec{AB}$, $\\vec{BC}$ et $\\vec{AC}$ à partir des coordonnées des points. On additionne $\\vec{AB}$ et $\\vec{BC}$ composante par composante, puis on compare le résultat à $\\vec{AC}$ en utilisant une tolérance EPSILON pour tenir compte des erreurs d'arrondi. Si les deux composantes sont suffisamment proches, la relation de Chasles est vérifiée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

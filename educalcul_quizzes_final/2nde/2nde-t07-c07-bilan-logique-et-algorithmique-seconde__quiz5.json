@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 540,
+  "_course_code": "2nde-t07-c07-bilan-logique-et-algorithmique-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Notations, code, automatismes",
+  "title": "Quiz : Notations, code et automatismes algorithmique",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$S \\leftarrow 0$\\n$\\textbf{Pour } i \\textbf{ de } 1 \\textbf{ à } 5 \\textbf{ faire}$\\n$\\quad S \\leftarrow S + i \\times 2$\\n$\\textbf{Fin pour}$\\n$\\textbf{Afficher } S$\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "40"
+      ],
+      "correctAnswer": "30",
+      "explanation": "La boucle parcourt les valeurs de $i$ de $1$ à $5$. À chaque itération, on ajoute $i \\times 2$ à $S$.\\n$S = 2 \\times (1 + 2 + 3 + 4 + 5) = 2 \\times 15 = 30$.\\nL'option 10 correspond à la somme sans le facteur 2. L'option 20 correspond à une boucle qui s'arrêterait à 4. L'option 40 est une erreur de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient les variables $a$ et $b$ initialisées par $a \\leftarrow 10$ et $b \\leftarrow 5$. On exécute la structure conditionnelle :\\n$\\textbf{Si } (a > 5) \\textbf{ ET } (b < 10) \\textbf{ Alors}$\\n$\\quad x \\leftarrow 1$\\n$\\textbf{Sinon}$\\n$\\quad x \\leftarrow 0$\\n$\\textbf{Fin Si}$\\nQuelle est la valeur de $x$ après exécution ?",
+      "options": [
+        "0",
+        "1",
+        "Erreur d'exécution",
+        "Indéterminée"
+      ],
+      "correctAnswer": "1",
+      "explanation": "La condition utilise l'opérateur logique ET. Les deux sous-conditions doivent être vraies.\\n$a > 5$ est vrai car $10 > 5$.\\n$b < 10$ est vrai car $5 < 10$.\\nL'ensemble de la condition est donc vrai, on exécute la branche Alors : $x \\leftarrow 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le tableau (liste) $T$ défini par $T \\leftarrow [10, 20, 30, 40, 50]$ (indices commençant à $0$).\\nAprès exécution des instructions :\\n$k \\leftarrow 2$\\n$\\textbf{Afficher } T[k]$\\nQuelle valeur est affichée ?",
+      "options": [
+        "20",
+        "30",
+        "40",
+        "Erreur : indice hors limites"
+      ],
+      "correctAnswer": "30",
+      "explanation": "En algorithmique (et en Python), les indices des tableaux commencent à $0$.\\n$T[0] = 10$, $T[1] = 20$, $T[2] = 30$, $T[3] = 40$, $T[4] = 50$.\\nPuisque $k = 2$, l'élément affiché est $T[2] = 30$.\\nL'option 20 correspond à un indexage débutant à $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant avec une boucle $TantQue$ :\\n$x \\leftarrow 20$\\n$\\textbf{TantQue } x > 5 \\textbf{ faire}$\\n$\\quad x \\leftarrow x - 6$\\n$\\textbf{Fin TantQue}$\\n$\\textbf{Afficher } x$\\nQuelle valeur est affichée ?",
+      "options": [
+        "2",
+        "8",
+        "14",
+        "5"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On suit la valeur de $x$ pas à pas :\\nDébut : $x = 20$.\\n1er tour : $20 > 5$ vrai, $x$ devient $20 - 6 = 14$.\\n2e tour : $14 > 5$ vrai, $x$ devient $14 - 6 = 8$.\\n3e tour : $8 > 5$ vrai, $x$ devient $8 - 6 = 2$.\\n4e tour : $2 > 5$ faux, on sort de la boucle.\\nLa valeur affichée est $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la fonction suivante :\\n$\\textbf{Fonction } f(n)$\\n$\\quad r \\leftarrow 1$\\n$\\quad \\textbf{Pour } i \\textbf{ de } 1 \\textbf{ à } n \\textbf{ faire}$\\n$\\quad\\quad r \\leftarrow r \\times 2$\\n$\\quad \\textbf{Fin pour}$\\n$\\quad \\textbf{Retourner } r$\\n$\\textbf{Fin Fonction}$\\nQuel est le résultat de l'appel $f(4)$ ?",
+      "options": [
+        "8",
+        "16",
+        "32",
+        "64"
+      ],
+      "correctAnswer": "16",
+      "explanation": "La fonction calcule $2^n$ en multipliant $r$ par $2$, $n$ fois.\\nPour $n=4$ : $r$ vaut successivement $1, 2, 4, 8, 16$.\\nLe résultat retourné est $16 = 2^4$.\\nL'option 8 correspond à $f(3)$, l'option 32 à $f(5)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

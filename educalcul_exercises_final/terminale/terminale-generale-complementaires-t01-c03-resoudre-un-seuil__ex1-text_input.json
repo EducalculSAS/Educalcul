@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 639,
+  "_course_code": "terminale-generale-complementaires-t01-c03-resoudre-un-seuil",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Équation / lecture",
+  "title": "Résolution de seuils et lecture de fonctions",
+  "blocks": [
+    {
+      "title": "Lecture graphique d'un seuil",
+      "content": "Soit $f$ une fonction modélisant l'évolution d'une population. Le seuil critique est fixé à $1000$ individus. À l'aide du graphique, déterminez la valeur de $x$ pour laquelle $f(x) = 1000$.",
+      "correctAnswer": "5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'abscisse du point d'intersection entre la courbe de la fonction $f$ et la droite horizontale d'équation $y = 1000$ correspond à la valeur $x = 5$.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "1000 * (1.2^x)",
+        "xmin": 0,
+        "xmax": 10,
+        "caption": "Évolution de la population en fonction du temps $x$"
+      }
+    },
+    {
+      "title": "Équation de seuil exponentielle",
+      "content": "Le montant d'un placement évolue selon la fonction $M(t) = 2000 \\times e^{0,05t}$ où $t$ est le temps en années. On cherche le moment où le montant atteint le seuil de $3000$ euros. Résolvez l'équation $2000 \\times e^{0,05t} = 3000$ et donnez la valeur de $t$ arrondie à l'unité.",
+      "correctAnswer": "8",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On a $e^{0,05t} = \\frac{3000}{2000} = 1,5$. En appliquant le logarithme népérien, on obtient $0,05t = \\ln(1,5)$, soit $t = \\frac{\\ln(1,5)}{0,05} \\approx 8,11$. Arrondi à l'unité, $t = 8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Seuil et fonction rationnelle",
+      "content": "Le coût moyen de production d'un objet est donné par $C(x) = \\frac{500}{x} + 10$ où $x$ est le nombre d'objets produits. Pour quelle valeur de $x$ le coût moyen atteintèt le seuil de $15$ euros ?",
+      "correctAnswer": "100",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $\\frac{500}{x} + 10 = 15$, ce qui donne $\\frac{500}{x} = 5$. En multipliant par $x$ et en divisant par $5$, on trouve $x = \\frac{500}{5} = 100$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

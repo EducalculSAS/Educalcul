@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 370,
+  "_course_code": "6eme-t08-c03-experiences-aleatoires",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Fréquences",
+  "title": "Quiz sur les fréquences",
+  "questions": [
+    {
+      "text": "Dans une expérience aléatoire, on répète l'expérience $20$ fois et on observe l'événement A $5$ fois. Quelle est la fréquence de l'événement A exprimée sous forme de fraction non simplifiée ?",
+      "options": [
+        "$5/20$",
+        "$5/15$",
+        "$20/5$",
+        "$1/4$"
+      ],
+      "correctAnswer": "$5/20$",
+      "explanation": "La fréquence d'un événement est le quotient du nombre d'occurrences de cet événement sur le nombre total d'essais. Ici, l'événement A est observé $5$ fois sur $20$ essais, donc la fréquence est $5/20$. Les autres options correspondent à des erreurs : $5/15$ utilise un dénominateur incorrect, $20/5$ inverse le quotient, $1/4$ est la fraction simplifiée mais la question demande la forme non simplifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces $30$ fois. Le visage $4$ apparaît $6$ fois. Quelle est la fréquence d'apparition du $4$ sous forme de fraction non simplifiée ?",
+      "options": [
+        "$6/30$",
+        "$6/24$",
+        "$30/6$",
+        "$1/5$"
+      ],
+      "correctAnswer": "$6/30$",
+      "explanation": "La fréquence se calcule en divisant le nombre d'apparitions du $4$ ($6$) par le nombre total de lancers ($30$), ce qui donne $6/30$. L'option $6/24$ utilise un total erroné, $30/6$ inverse le quotient, et $1/5$ est la forme simplifiée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente les résultats de $25$ tirages d'une boule dans un sac contenant des boules rouges, bleues et vertes. D'après le diagramme, quelle est la fréquence de la couleur rouge ?",
+      "options": [
+        "$8/25$",
+        "$8/20$",
+        "$25/8$",
+        "$1/3$"
+      ],
+      "correctAnswer": "$8/25$",
+      "explanation": "Le diagramme indique que la barre rouge a une valeur de $8$, ce qui signifie que la boule rouge a été tirée $8$ fois sur $25$ tirages au total. La fréquence est donc $8/25$. L'option $8/20$ utilise un total incorrect, $25/8$ inverse le quotient, et $1/3$ est une approximation.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fréquences des couleurs tirées",
+        "bars": [
+          {
+            "label": "Rouge",
+            "value": 8,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans deux expériences, on observe les fréquences suivantes : Expérience 1 : $12$ fois sur $40$ ; Expérience 2 : $9$ fois sur $30$. Laquelle des affirmations est vraie ?",
+      "options": [
+        "Les deux fréquences sont égales",
+        "La fréquence de l'expérience 1 est plus grande",
+        "La fréquence de l'expérience 2 est plus grande",
+        "On ne peut pas comparer"
+      ],
+      "correctAnswer": "Les deux fréquences sont égales",
+      "explanation": "La fréquence de l'expérience 1 est $12/40 = 0,3$ et celle de l'expérience 2 est $9/30 = 0,3$. Elles sont donc égales. Les autres affirmations sont fausses.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une boule au hasard dans un sac contenant $3$ boules rouges, $5$ bleues et $2$ vertes. On remet la boule et on recommence $50$ fois. On obtient $15$ rouges, $25$ bleues, $10$ vertes. Quelle est la fréquence de la couleur bleue ?",
+      "options": [
+        "$25/50$",
+        "$25/40$",
+        "$50/25$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$25/50$",
+      "explanation": "La fréquence de la couleur bleue est le nombre de tirages bleus ($25$) divisé par le nombre total de tirages ($50$), soit $25/50$. L'option $25/40$ utilise un total erroné, $50/25$ inverse le quotient, et $1/2$ est la forme simplifiée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.280212+00:00",
+  "id": 259,
+  "code": "cm1-t07-c04",
+  "title": "Moyenne intuitive",
+  "description": "Cours structuré Educalcul : Moyenne intuitive.",
+  "subject": "Données et probabilités",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Données et probabilités",
+    "titre_du_cours": "Moyenne intuitive",
+    "objectif_global": "Moyenne intuitive",
+    "mini_lecons_imposees": [
+      "Partager équitablement un total.",
+      "Calculer dans cas simples.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Données et probabilités",
+      "lessons": [
+        {
+          "title": "Partager équitablement un total.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager équitablement un total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as une boîte de 12 bonbons et que tu veux les donner à trois amis pour que personne ne soit jaloux. Tu poses la boîte sur la table et tu commences à distribuer un bonbon à chaque ami, puis un deuxième, jusqu'à ce que la boîte soit vide. Chaque ami reçoit exactement quatre bonbons, et tout le monde est content."
+            },
+            {
+              "type": "definition",
+              "term": "partage équitable",
+              "definition": "Donner la même quantité à chaque personne, sans faveur ni oubli.",
+              "example": "12 bonbons partagés entre 3 amis donnent 4 bonbons par ami."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Partage de 12 bonbons entre 3 amis",
+              "bars": [
+                {
+                  "label": "Ami 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Ami 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Ami 3",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce geste de donner la même quantité à chaque personne s'appelle un partage équitable. Le mot « équitable » veut dire que chacun reçoit la même part, sans faveur ni oubli. Dans notre exemple, le total de 12 bonbons est divisé en trois parts égales, ce qui donne 4 bonbons par ami."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne tous les objets que tu veux partager. Ici, le total est 12."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de personnes vont recevoir une part ? Ici, 3 amis."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la division $12 \\div 3 = 4$. Le résultat est la part de chacun."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction_strips",
+              "caption": "Chaque ami reçoit un tiers du total",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 3
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le total ne se partage pas parfaitement. Si tu as 13 bonbons pour trois amis, chaque ami reçoit 4 bonbons et il en reste 1. Ce reste montre qu'un partage parfaitement équitable n'est pas possible sans couper un bonbon."
+            },
+            {
+              "type": "number_line",
+              "caption": "Vérifier le partage sur une droite graduée",
+              "min": 0,
+              "max": 13,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "1re part"
+                },
+                {
+                  "value": 8,
+                  "label": "2e part"
+                },
+                {
+                  "value": 12,
+                  "label": "3e part"
+                },
+                {
+                  "value": 13,
+                  "label": "Total"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette idée de diviser le total par le nombre de parts est la base de ce que l'on appelle la moyenne. Même si le mot « moyenne » peut sembler compliqué, c'est simplement le résultat d'un partage équitable."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un autre exemple : tu as 20 crayons à répartir entre 4 camarades. En faisant $20 \\div 4 = 5$, chaque camarade reçoit 5 crayons. Le calcul est le même, seulement les nombres changent."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as 15 billes à partager équitablement entre 3 amis. Combien de billes reçoit chaque ami ?",
+              "answer": "5",
+              "hint": "Divise le total par le nombre d'amis.",
+              "explanation": "15 divisé par 3 fait 5, donc chaque ami reçoit 5 billes."
+            },
+            {
+              "question": "Si tu as 18 autocollants et 6 copains, quelle est la part de chaque copain ?",
+              "answer": "3",
+              "hint": "Utilise la division.",
+              "explanation": "18 divisé par 6 = 3."
+            },
+            {
+              "question": "Tu as 14 bonbons pour 4 enfants. Combien de bonbons chaque enfant reçoit-il et combien en reste-t-il ?",
+              "answer": "Chaque enfant reçoit 3 bonbons, il reste 2 bonbons.",
+              "hint": "Fais la division euclidienne.",
+              "explanation": "14 divisé par 4 donne 3 avec un reste de 2."
+            }
+          ]
+        },
+        {
+          "title": "Calculer dans cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer dans cas simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais partager un total, nous allons donner un nom à ce résultat : la moyenne. La moyenne d'une série de nombres, c'est le nombre que chaque personne recevrait si l'on mettait tous les objets ensemble et qu'on les redistribuait équitablement."
+            },
+            {
+              "type": "definition",
+              "term": "moyenne",
+              "definition": "Résultat de la division du total par le nombre de valeurs.",
+              "example": "Moyenne de 8 et 12 : (8+12) ÷ 2 = 10."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour calculer une moyenne simple, il suffit de faire deux étapes : d'abord additionner tous les nombres, ensuite diviser la somme par le nombre de nombres. Par exemple, avec les notes 8 et 12, la somme est $8+12=20$. Il y a 2 notes, donc la moyenne est $20 \\div 2 = 10$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Moyenne de 8 et 12",
+              "bars": [
+                {
+                  "label": "Note 1",
+                  "value": 8,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Note 2",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "Moyenne",
+                  "value": 10,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec trois nombres : 5, 7 et 9. L'addition donne $5+7+9 = 21$. Il y a 3 nombres, donc la moyenne est $21 \\div 3 = 7$. Remarque que 7 est exactement la valeur du milieu, ce qui arrive souvent quand les nombres sont réguliers."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note chaque valeur que tu veux moyenner."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule la somme de toutes les valeurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien y a-t-il de valeurs ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Diviser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise la somme par le nombre de valeurs pour obtenir la moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "fraction_strips",
+              "caption": "Visualiser 16 divisé en 3 parts égales",
+              "fractions": [
+                {
+                  "numerator": 16,
+                  "denominator": 3
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la division ne tombe pas juste. Avec 4, 5 et 6, la somme est $15$. Divisé par 3, cela donne $5$ exactement. Mais avec 4, 5 et 7, la somme est $16$, divisé par 3 donne $5$ reste $1$. On peut écrire la moyenne sous forme de fraction $16/3$ ou en décimal $5,33$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'aider à visualiser la division, tu peux utiliser des réglettes de fractions. Place une réglette de longueur 16 et coupe-la en 3 parts égales ; chaque part mesure un peu plus de 5."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne de 6 et 14.",
+              "answer": "10",
+              "hint": "Additionne puis divise par 2.",
+              "explanation": "6+14=20, 20÷2=10."
+            },
+            {
+              "question": "Trouve la moyenne de 3, 8 et 10.",
+              "answer": "7",
+              "hint": "Somme = 21, divise par 3.",
+              "explanation": "3+8+10=21, 21÷3=7."
+            },
+            {
+              "question": "Quelle est la moyenne de 2, 5 et 9 ?",
+              "answer": "16/3 soit environ 5,33",
+              "hint": "Somme = 16, divise par 3.",
+              "explanation": "2+5+9=16, 16÷3 = 5,33."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais calculer une moyenne, il est important de comprendre ce qu'elle raconte. La moyenne est une valeur typique qui résume un ensemble de nombres. Si tu connais la moyenne des notes d'une classe, tu as une idée rapide du niveau général sans lire chaque note."
+            },
+            {
+              "type": "definition",
+              "term": "valeur typique",
+              "definition": "Nombre qui représente le centre d'un ensemble de données.",
+              "example": "Pour 10, 11, 12, 13, 14 la valeur typique est 12."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons cinq élèves qui ont obtenu 10, 11, 12, 13 et 14. La somme est 60, divisé par 5 donne une moyenne de 12. Sur un diagramme en barres, tu vois que la plupart des barres sont proches de 12, ce qui confirme que 12 est bien représentatif."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Notes de cinq élèves et leur moyenne",
+              "bars": [
+                {
+                  "label": "Élève 1",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Élève 2",
+                  "value": 11,
+                  "tone": "green"
+                },
+                {
+                  "label": "Élève 3",
+                  "value": 12,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Élève 4",
+                  "value": 13,
+                  "tone": "red"
+                },
+                {
+                  "label": "Élève 5",
+                  "value": 14,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Moyenne",
+                  "value": 12,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais si un élève a une note très différente, la moyenne peut changer. Ajoutons une note de 20 à la liste précédente. La somme devient 80, divisé par 6 donne environ 13,3. La moyenne a monté, alors que la plupart des élèves sont restés entre 10 et 14."
+            },
+            {
+              "type": "number_line",
+              "caption": "Dispersion des notes avec une valeur atypique",
+              "min": 8,
+              "max": 22,
+              "points": [
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 11,
+                  "label": "11"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 13,
+                  "label": "13"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 13.33,
+                  "label": "Moyenne"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est pour cela qu'il faut regarder aussi la dispersion des nombres. Un diagramme en barres avec une barre très haute signale une valeur atypique. Dans ce cas, la moyenne ne reflète pas parfaitement le groupe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourtant, la moyenne reste utile pour comparer deux groupes. Si la classe A a une moyenne de 11 et la classe B une moyenne de 13, on peut dire que, globalement, la classe B a de meilleurs résultats, même si certains élèves de A sont meilleurs que certains de B."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Comparaison des moyennes de deux classes",
+              "slices": [
+                {
+                  "label": "Classe A (moyenne 11)",
+                  "value": 11,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Classe B (moyenne 13)",
+                  "value": 13,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie de tous les jours, tu utilises la moyenne sans t'en rendre compte. Quand tu regardes la météo et qu'on te donne la température moyenne de la semaine, tu sais à peu près comment t'habiller. C'est une information compacte qui aide à décider."
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, souviens-toi que la moyenne ne raconte pas tout. Elle cache les écarts. Pour bien comprendre un ensemble de données, il faut aussi observer les valeurs minimales, maximales et la forme de la distribution."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partager un total équitablement.",
+                "Je sais calculer une moyenne simple.",
+                "Je sais interpréter une moyenne et repérer une valeur atypique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une classe a les notes 8, 9, 10, 11, 12. Quelle est la moyenne ?",
+              "answer": "10",
+              "hint": "Additionne et divise par 5.",
+              "explanation": "Somme = 50, 50 ÷ 5 = 10."
+            },
+            {
+              "question": "Ajoute une note de 20 à la liste précédente. Quelle est la nouvelle moyenne ?",
+              "answer": "35/3 soit environ 11,67",
+              "hint": "Nouvelle somme 70, divise par 6.",
+              "explanation": "50 + 20 = 70, 70 ÷ 6 = 35/3 ≈ 11,67."
+            },
+            {
+              "question": "Deux classes ont des moyennes 11 et 13. Laquelle a globalement de meilleurs résultats ?",
+              "answer": "La classe avec la moyenne 13.",
+              "hint": "Compare les deux moyennes.",
+              "explanation": "Une moyenne plus élevée indique un niveau global supérieur."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

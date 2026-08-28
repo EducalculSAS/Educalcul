@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 261,
+  "_course_code": "cm1-t07-c06-frequence-experimentale-simple",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Compter succès",
+  "title": "Compter les succès en probabilités",
+  "questions": [
+    {
+      "text": "Léa lance une pièce $10$ fois. Elle obtient $6$ fois pile et $4$ fois face. Si le succès est d'obtenir pile, combien de succès a t elle obtenu ?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$10$",
+        "$0$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Le succès est défini comme l'obtention de pile. Puisque Léa a obtenu pile $6$ fois, elle a donc réalisé $6$ succès.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un joueur tire $20$ cartes d'un jeu. Il tire $7$ cartes rouges et $13$ cartes noires. Si le succès est de tirer une carte noire, quel est le nombre de succès ?",
+      "options": [
+        "$7$",
+        "$20$",
+        "$13$",
+        "$6$"
+      ],
+      "correctAnswer": "$13$",
+      "explanation": "Ici, le succès correspond aux cartes noires. Le joueur a tiré $13$ cartes noires, donc il y a $13$ succès.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie lance un dé $15$ fois. Elle obtient les résultats suivants : $2$, $5$, $1$, $6$, $4$, $2$, $3$, $6$, $6$, $1$, $2$, $4$, $6$, $5$, $6$. Si le succès est d'obtenir le chiffre $6$, combien de succès y a t il ?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "On compte le nombre de fois où le chiffre $6$ apparaît dans la liste : il apparaît $5$ fois. Il y a donc $5$ succès.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un sac, on tire $12$ boules une par une en les remettant. On obtient $3$ boules vertes, $5$ boules bleues et $4$ boules rouges. Si le succès est de ne pas tirer une boule bleue, combien de succès a t on ?",
+      "options": [
+        "$5$",
+        "$3$",
+        "$4$",
+        "$7$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Le succès est de ne pas tirer bleu. On additionne donc les boules vertes et rouges : $3 + 4 = 7$. Il y a $7$ succès.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot lance un dé $30$ fois. On sait qu'il a obtenu le chiffre $4$ exactement $8$ fois. Si le succès est d'obtenir un chiffre impair, et que le robot a obtenu $11$ chiffres pairs au total (dont le $4$), combien de succès a t il obtenu ?",
+      "options": [
+        "$11$",
+        "$19$",
+        "$22$",
+        "$8$"
+      ],
+      "correctAnswer": "$19$",
+      "explanation": "Le succès est d'obtenir un chiffre impair. Le nombre total de lancers est $30$. On retire les lancers pairs : $30 - 11 = 19$. Il y a donc $19$ succès.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

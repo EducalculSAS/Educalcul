@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 396,
+  "_course_code": "5eme-t04-c02-triangles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Constructions",
+  "title": "Quiz : Constructions de triangles (5e)",
+  "questions": [
+    {
+      "text": "Pour construire un triangle en connaissant les longueurs de ses trois côtés (cas SSS), quel instrument est indispensable en plus de la règle graduée ?",
+      "options": [
+        "Le compas",
+        "Le rapporteur",
+        "L'équerre",
+        "Le compas et le rapporteur"
+      ],
+      "correctAnswer": "Le compas",
+      "explanation": "La construction SSS repose sur l'intersection de deux cercles. On trace d'abord un côté avec la règle, puis on utilise le compas pour tracer un cercle de centre à une extrémité et de rayon égal à la longueur du deuxième côté, et un second cercle de centre à l'autre extrémité et de rayon égal au troisième côté. L'intersection donne le troisième sommet. Le rapporteur sert à mesurer des angles (cas SAS ou ASA), l'équerre à tracer des perpendiculaires, mais aucun des deux ne permet de reporter une longueur sans la mesurer.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut construire le triangle ABC tel que AB = $6$ cm, AC = $5$ cm et l'angle A = $40\\degree$ (cas SAS). Après avoir tracé le segment [AB], quelle est l'étape suivante ?",
+      "options": [
+        "Tracer un cercle de centre A et de rayon $5$ cm",
+        "Placer le rapporteur en A pour tracer l'angle de $40\\degree$",
+        "Tracer un cercle de centre B et de rayon $5$ cm",
+        "Mesurer $5$ cm sur la règle et reporter sur la droite (AB)"
+      ],
+      "correctAnswer": "Placer le rapporteur en A pour tracer l'angle de $40\\degree$",
+      "explanation": "Dans le cas SAS (côté-angle-côté), l'angle est compris entre les deux côtés connus. Après avoir tracé le premier côté [AB], il faut construire l'angle donné en A à l'aide du rapporteur. La demi-droite issue de cet angle servira ensuite à reporter la longueur du deuxième côté AC = $5$ cm (au compas ou à la règle). Tracer un cercle de centre A et de rayon $5$ cm trop tôt ne permettrait pas de respecter l'angle imposé. Le cercle de centre B correspond au cas SSS.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quels instruments sont strictement nécessaires pour construire un triangle en connaissant deux angles et le côté compris (cas ASA), par exemple AB = $7$ cm, angle A = $50\\degree$ et angle B = $60\\degree$ ?",
+      "options": [
+        "Règle et compas uniquement",
+        "Règle et rapporteur uniquement",
+        "Règle, compas et rapporteur",
+        "Compas et rapporteur uniquement"
+      ],
+      "correctAnswer": "Règle et rapporteur uniquement",
+      "explanation": "Pour le cas ASA, on trace le côté connu [AB] à la règle. Ensuite, on utilise le rapporteur pour tracer l'angle en A et l'angle en B. Les deux demi-droites se coupent en C, ce qui termine le triangle. Le compas n'est pas nécessaire car aucune longueur n'est à reporter sur une demi-droite (contrairement au cas SAS) et aucun cercle n'est à tracer (contrairement au cas SSS).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève tente de construire un triangle avec des côtés de longueurs $3$ cm, $4$ cm et $8$ cm en utilisant la méthode SSS (tracé de deux cercles). Quel sera le résultat ?",
+      "options": [
+        "Le triangle se construit normalement",
+        "Les deux cercles ne se coupent pas",
+        "Les deux cercles sont tangents extérieurement",
+        "L'angle obtenu est un angle droit"
+      ],
+      "correctAnswer": "Les deux cercles ne se coupent pas",
+      "explanation": "L'inégalité triangulaire stipule que dans tout triangle, la somme de deux côtés doit être strictement supérieure au troisième côté. Ici, $3 + 4 = 7$, qui est strictement inférieur à $8$. Géométriquement, le cercle de centre A et de rayon $3$ cm et le cercle de centre B (avec AB = $8$ cm) et de rayon $4$ cm sont trop éloignés pour se rencontrer : la distance entre les centres ($8$ cm) est supérieure à la somme des rayons ($7$ cm). Ils n'ont donc aucun point d'intersection, le triangle est impossible à construire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a construit un triangle DEF avec DE = $5$ cm, EF = $6$ cm et DF = $7$ cm (cas SSS). On construit ensuite un triangle D'E'F' avec exactement les mêmes trois longueurs. Quelle propriété géométrique relie ces deux triangles ?",
+      "options": [
+        "Ils ont la même aire mais pas la même forme",
+        "Ils sont semblables mais pas isométriques",
+        "Ils sont isométriques (superposables)",
+        "Ils sont nécessairement différents"
+      ],
+      "correctAnswer": "Ils sont isométriques (superposables)",
+      "explanation": "Le cas SSS (trois côtés) est un cas d'égalité des triangles. Deux triangles qui ont les trois côtés respectifs égaux sont isométriques, c'est-à-dire qu'on peut les faire coïncider parfaitement par un déplacement (translation, rotation, symétrie). Ils ont donc la même forme, la même aire, les mêmes angles. Ils ne sont pas seulement semblables (même forme, taille proportionnelle), ils sont identiques en taille. L'option 'nécessairement différents' est fausse car la construction SSS conduit à une figure unique à isométrie près (deux positions symétriques par rapport au premier côté tracé, mais superposables par retournement).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

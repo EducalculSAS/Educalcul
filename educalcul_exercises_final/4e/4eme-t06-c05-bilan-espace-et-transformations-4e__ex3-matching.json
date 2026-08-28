@@ -1,0 +1,99 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 449,
+  "_course_code": "4eme-t06-c05-bilan-espace-et-transformations-4e",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Bilan - Espace et transformations 4e",
+  "title": "Bilan : Espace et transformations",
+  "blocks": [
+    {
+      "title": "Vocabulaire des transformations",
+      "content": "Relie chaque transformation à sa définition.",
+      "pairs": [
+        {
+          "left": "Translation",
+          "right": "Déplacement de tous les points d'une figure selon un même vecteur"
+        },
+        {
+          "left": "Rotation",
+          "right": "Transformation qui fait tourner une figure autour d'un point (centre) d'un angle donné"
+        },
+        {
+          "left": "Symétrie axiale",
+          "right": "Transformation qui associe à chaque point son symétrique par rapport à une droite (axe)"
+        },
+        {
+          "left": "Symétrie centrale",
+          "right": "Transformation qui associe à chaque point son symétrique par rapport à un point (centre), équivalent à une rotation de $180^{\\circ}$"
+        },
+        {
+          "left": "Homothétie",
+          "right": "Transformation qui agrandit ou réduit une figure par rapport à un centre avec un rapport $k$"
+        }
+      ],
+      "explanation": "La translation glisse la figure sans la tourner (vecteur). La rotation tourne autour d'un centre. La symétrie axiale reflète par rapport à une droite. La symétrie centrale est une rotation de $180^{\\circ}$ (demi-tour). L'homothétie change la taille (rapport $k$) en gardant la forme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés des transformations",
+      "content": "Relie chaque propriété à la ou aux transformations qui la vérifient toujours.",
+      "pairs": [
+        {
+          "left": "Conserve les longueurs",
+          "right": "Translation, rotation, symétrie axiale, symétrie centrale (isométries)"
+        },
+        {
+          "left": "Conserve les angles",
+          "right": "Toutes les transformations listées (isométries et homothétie)"
+        },
+        {
+          "left": "Conserve l'orientation (sens direct/indirect)",
+          "right": "Translation, rotation, homothétie de rapport $k>0$"
+        },
+        {
+          "left": "Transforme un segment en segment parallèle",
+          "right": "Translation, homothétie, symétrie centrale (rotation de $180^{\\circ}$)"
+        },
+        {
+          "left": "Le centre (ou axe) est le seul ensemble de points fixes",
+          "right": "Rotation (centre), symétrie axiale (axe), symétrie centrale (centre), homothétie (centre)"
+        }
+      ],
+      "explanation": "Les isométries (translation, rotations, symétries) conservent les longueurs. Toutes conservent les mesures d'angles. L'orientation est conservée sauf pour les symétries axiales (miroir) et l'homothétie de rapport négatif. Un segment et son image sont parallèles pour la translation, l'homothétie et la symétrie centrale (cas particulier de rotation de $180^{\\circ}$). Les points fixes définissent l'élément caractéristique de la transformation.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Repérage et vecteurs",
+      "content": "Relie chaque notion à sa description ou sa notation dans un repère.",
+      "pairs": [
+        {
+          "left": "Vecteur $\\overrightarrow{AB}$",
+          "right": "Défini par son origine $A$, son extrémité $B$, sa direction (droite $AB$), son sens (de $A$ vers $B$) et sa norme $AB$"
+        },
+        {
+          "left": "Vecteur nul $\\vec{0}$",
+          "right": "Vecteur dont l'origine et l'extrémité sont confondues, norme nulle, direction et sens indéfinis"
+        },
+        {
+          "left": "Vecteurs égaux",
+          "right": "Même direction, même sens, même norme (peuvent avoir des origines différentes)"
+        },
+        {
+          "left": "Vecteurs opposés",
+          "right": "Même direction, sens contraires, même norme (ex: $\\overrightarrow{AB}$ et $\\overrightarrow{BA}$)"
+        },
+        {
+          "left": "Coordonnées d'un vecteur $\\vec{u}(x;y)$",
+          "right": "Abscisse $x$ et ordonnée $y$ du point image de l'origine $O$ par la translation de vecteur $\\vec{u}$"
+        }
+      ],
+      "explanation": "Un vecteur est caractérisé par 4 éléments : origine, direction, sens, norme. Le vecteur nul a une norme de 0. Deux vecteurs sont égaux s'ils ont même direction, même sens, même norme (ils sont 'parallèles, même sens, même longueur'). Ils sont opposés s'ils ont même direction, sens contraires, même norme. Dans un repère, les coordonnées $(x;y)$ du vecteur correspondent aux coordonnées du point $M$ tel que $\\overrightarrow{OM}=\\vec{u}$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

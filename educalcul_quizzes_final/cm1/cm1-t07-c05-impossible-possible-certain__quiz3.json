@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 260,
+  "_course_code": "cm1-t07-c05-impossible-possible-certain",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Expériences simples",
+  "title": "Quiz : Expériences simples (CM1)",
+  "questions": [
+    {
+      "text": "Qu'appelle-t-on une expérience aléatoire ?",
+      "options": [
+        "Une expérience dont on connaît le résultat à l'avance.",
+        "Une expérience que l'on peut reproduire indéfiniment dans les mêmes conditions et dont on ne peut pas prédire le résultat.",
+        "Une expérience qui ne fonctionne qu'une seule fois.",
+        "Une expérience où il n'y a qu'un seul résultat possible."
+      ],
+      "correctAnswer": "Une expérience que l'on peut reproduire indéfiniment dans les mêmes conditions et dont on ne peut pas prédire le résultat.",
+      "explanation": "Une expérience aléatoire se caractérise par deux choses : on peut la refaire autant de fois qu'on veut dans les mêmes conditions (reproductible) et on est incapable de savoir à l'avance quel sera le résultat (imprévisible). L'option A décrit une expérience déterministe. L'option C est fausse car on peut la répéter. L'option D est fausse car s'il n'y a qu'un résultat possible, ce n'est pas aléatoire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance une pièce de monnaie équilibrée. Quels sont les résultats possibles de cette expérience ?",
+      "options": [
+        "\"Face\" seulement.",
+        "\"Pile\" seulement.",
+        "\"Face\" ou \"Pile\".",
+        "\"Face\", \"Pile\" ou \"Côté\"."
+      ],
+      "correctAnswer": "\"Face\" ou \"Pile\".",
+      "explanation": "Une pièce de monnaie standard a deux faces distinctes : une face (souvent avec un symbole) et une pile (souvent avec la valeur). Lorsque qu'on la lance, elle retombe nécessairement sur l'une ou l'autre. Tomber sur la tranche (\"Côté\") est un événement négligeable, impossible à considérer comme un résultat standard au CM1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Parmi les événements suivants, lequel est **certain** ?",
+      "options": [
+        "Obtenir un $7$.",
+        "Obtenir un nombre pair.",
+        "Obtenir un nombre compris entre $1$ et $6$.",
+        "Obtenir un $3$."
+      ],
+      "correctAnswer": "Obtenir un nombre compris entre $1$ et $6$.",
+      "explanation": "Un événement est certain s'il se réalise à coup sûr, quelle que soit l'issue de l'expérience. Comme le dé ne porte que les nombres $1$, $2$, $3$, $4$, $5$, $6$, le résultat sera obligatoirement un nombre compris entre $1$ et $6$. Obtenir un $7$ est impossible. Obtenir un nombre pair ou un $3$ sont des événements possibles mais pas certains (on peut obtenir un nombre impair ou un autre chiffre).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On fait tourner la flèche du disque ci-dessous. Quel événement est **impossible** ?",
+      "options": [
+        "La flèche s'arrête sur du rouge.",
+        "La flèche s'arrête sur du bleu.",
+        "La flèche s'arrête sur du vert.",
+        "La flèche s'arrête sur du jaune."
+      ],
+      "correctAnswer": "La flèche s'arrête sur du vert.",
+      "explanation": "Le disque est divisé en quatre secteurs : deux rouges, un bleu et un jaune. Il n'y a aucun secteur vert. Par conséquent, il est impossible que la flèche s'arrête sur du vert. Les trois autres couleurs sont présentes sur le disque, ces événements sont donc possibles (le rouge est même le plus probable).",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Disque pour l'expérience aléatoire",
+        "slices": [
+          {
+            "label": "Rouge",
+            "value": 2,
+            "tone": "red"
+          },
+          {
+            "label": "Bleu",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "Jaune",
+            "value": 1,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans un sac opaque, il y a $3$ billes rouges et $2$ billes bleues. On tire une bille au hasard. Quelle affirmation est **vraie** ?",
+      "options": [
+        "Il est certain de tirer une bille rouge.",
+        "Il est impossible de tirer une bille bleue.",
+        "Il est possible de tirer une bille rouge.",
+        "Il est certain de tirer une bille verte."
+      ],
+      "correctAnswer": "Il est possible de tirer une bille rouge.",
+      "explanation": "Le sac contient des billes rouges et des billes bleues. Tirer une bille rouge est possible car il y en a $3$ dans le sac. Ce n'est pas certain car on pourrait tomber sur une bille bleue ($2$ billes bleues). Tirer une bille bleue est possible (pas impossible). Tirer une bille verte est impossible car il n'y en a pas dans le sac.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

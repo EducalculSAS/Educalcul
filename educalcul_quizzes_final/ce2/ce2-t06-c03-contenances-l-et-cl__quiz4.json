@@ -1,0 +1,111 @@
+{
+  "_status": "done",
+  "_course_id": 189,
+  "_course_code": "ce2-t06-c03-contenances-l-et-cl",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Contenances : L et cL",
+  "title": "Quiz : Applications sur les contenances (L et cL)",
+  "questions": [
+    {
+      "text": "Combien y a-t-il de centilitres dans $3$ litres ?",
+      "options": [
+        "30 cL",
+        "300 cL",
+        "3 cL",
+        "33 cL"
+      ],
+      "correctAnswer": "300 cL",
+      "explanation": "Pour passer des litres aux centilitres, on multiplie par $100$ car $1$ L $= 100$ cL. Donc $3$ L $= 3 \\times 100 = 300$ cL. L'option 30 cL correspond à une multiplication par 10 (erreur de conversion), 3 cL oublie la conversion, et 33 cL est une addition incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bouteille contient $500$ cL de jus. Combien cela fait-il en litres ?",
+      "options": [
+        "50 L",
+        "0,5 L",
+        "5 L",
+        "500 L"
+      ],
+      "correctAnswer": "5 L",
+      "explanation": "Pour passer des centilitres aux litres, on divise par $100$ car $100$ cL $= 1$ L. Donc $500$ cL $= 500 \\div 100 = 5$ L. L'option 50 L correspond à une division par 10, 0,5 L correspond à 50 cL, et 500 L oublie la conversion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul verse $1$ L $50$ cL d'eau dans un seau, puis il ajoute $2$ L $20$ cL. Quelle est la contenance totale dans le seau ?",
+      "options": [
+        "3 L 70 cL",
+        "3 L 7 cL",
+        "4 L 20 cL",
+        "370 cL"
+      ],
+      "correctAnswer": "3 L 70 cL",
+      "explanation": "On additionne les litres entre eux : $1 + 2 = 3$ L. On additionne les centilitres entre eux : $50 + 20 = 70$ cL. Le total est donc $3$ L $70$ cL. L'option 3 L 7 cL oublie le zéro des dizaines de cL. 4 L 20 cL ferait l'erreur de convertir 100 cL en 1 L alors qu'on n'a que 70 cL. 370 cL est la valeur totale en cL seulement, mais la question attend l'écriture mixte habituelle.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "1 L 50 cL",
+            "value": 150,
+            "tone": "blue"
+          },
+          {
+            "label": "2 L 20 cL",
+            "value": 220,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Addition de deux contenances"
+      }
+    },
+    {
+      "text": "Une bouteille de $1$ L de limonade est entamée. Il en reste $70$ cL. Combien en a-t-on bu ?",
+      "options": [
+        "30 cL",
+        "3 L",
+        "1 L 30 cL",
+        "930 cL"
+      ],
+      "correctAnswer": "30 cL",
+      "explanation": "La bouteille totale fait $1$ L, soit $100$ cL. Il reste $70$ cL. La quantité bue est la différence : $100 - 70 = 30$ cL. L'option 3 L est une erreur d'unité (confusion L et cL). 1 L 30 cL additionne au lieu de soustraire. 930 cL correspond à $1000 - 70$ (erreur $1$ L $= 1000$ cL au lieu de $100$ cL).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une recette, maman a besoin de $2$ L $50$ cL de lait. Elle a déjà $2$ bouteilles de $1$ L et $1$ briquette de $50$ cL. Est-ce suffisant ?",
+      "options": [
+        "Oui, cela fait exactement 2 L 50 cL",
+        "Non, il manque 50 cL",
+        "Non, il manque 1 L",
+        "Oui, cela fait 3 L"
+      ],
+      "correctAnswer": "Oui, cela fait exactement 2 L 50 cL",
+      "explanation": "Maman possède $2 \\times 1$ L $= 2$ L et $1 \\times 50$ cL $= 50$ cL. Au total, elle a $2$ L $50$ cL. C'est exactement la quantité demandée par la recette. Les autres options correspondent à des erreurs de calcul du total possédé (ex: oublier la briquette de 50 cL ou additionner 2 L + 1 L).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "1 L",
+            "value": 100,
+            "tone": "blue"
+          },
+          {
+            "label": "1 L",
+            "value": 100,
+            "tone": "blue"
+          },
+          {
+            "label": "50 cL",
+            "value": 50,
+            "tone": "green"
+          }
+        ],
+        "caption": "Total de lait disponible"
+      }
+    }
+  ]
+}

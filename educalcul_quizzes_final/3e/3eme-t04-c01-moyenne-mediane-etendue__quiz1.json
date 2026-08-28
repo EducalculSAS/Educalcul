@@ -1,0 +1,99 @@
+{
+  "_status": "done",
+  "_course_id": 473,
+  "_course_code": "3eme-t04-c01-moyenne-mediane-etendue",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Calcul",
+  "title": "Quiz : Calculs statistiques (moyenne, médiane, étendue)",
+  "questions": [
+    {
+      "text": "Calcule la moyenne de la série suivante : $12$ ; $15$ ; $18$ ; $21$ ; $24$.",
+      "options": [
+        "$17$",
+        "$18$",
+        "$19$",
+        "$20$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "La moyenne est la somme des valeurs divisée par l'effectif total. La somme est $12 + 15 + 18 + 21 + 24 = 90$. L'effectif est $5$. La moyenne vaut $90 / 5 = 18$. L'option $17$ correspondrait à une somme de $85$, $19$ à une somme de $95$ et $20$ à une somme de $100$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la moyenne de la série : $5$ ; $8$ ; $11$ ; $14$ ?",
+      "options": [
+        "$9$",
+        "$9,5$",
+        "$10$",
+        "$8,5$"
+      ],
+      "correctAnswer": "$9,5$",
+      "explanation": "La somme des valeurs est $5 + 8 + 11 + 14 = 38$. L'effectif est $4$. La moyenne est $38 / 4 = 9,5$. L'option $9$ oublie la division décimale, $10$ arrondit à l'entier supérieur et $8,5$ correspondrait à une somme de $34$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La série statistique ci-dessous est présentée dans le tableau. Détermine sa médiane.",
+      "options": [
+        "$3$",
+        "$5$",
+        "$7$",
+        "$9$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Il faut d'abord ordonner la série : $2$ ; $3$ ; $5$ ; $7$ ; $9$. L'effectif est $5$ (impair), la médiane est la valeur centrale, soit la $3^{\\text{e}}$ valeur : $5$. L'option $3$ est la deuxième valeur, $7$ la quatrième et $9$ la dernière.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Valeurs"
+        ],
+        "rows": [
+          [
+            "3"
+          ],
+          [
+            "7"
+          ],
+          [
+            "2"
+          ],
+          [
+            "9"
+          ],
+          [
+            "5"
+          ]
+        ],
+        "caption": "Série statistique pour la question 3"
+      }
+    },
+    {
+      "text": "La médiane de la série $10$ ; $20$ ; $30$ ; $40$ ; $50$ ; $60$ est :",
+      "options": [
+        "$30$",
+        "$35$",
+        "$40$",
+        "$45$"
+      ],
+      "correctAnswer": "$35$",
+      "explanation": "La série est déjà ordonnée. L'effectif est $6$ (pair). La médiane est la moyenne des deux valeurs centrales (la $3^{\\text{e}}$ et la $4^{\\text{e}}$) : $(30 + 40) / 2 = 35$. L'option $30$ prend seulement la première valeur centrale, $40$ la seconde et $45$ est la moyenne de $40$ et $50$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'étendue de la série $100$ ; $45$ ; $82$ ; $110$ ; $63$ vaut :",
+      "options": [
+        "$55$",
+        "$65$",
+        "$75$",
+        "$110$"
+      ],
+      "correctAnswer": "$65$",
+      "explanation": "L'étendue est la différence entre la valeur maximale et la valeur minimale. Le maximum est $110$, le minimum est $45$. Étendue $= 110 - 45 = 65$. L'option $55$ correspond à $100 - 45$, $75$ à $110 - 35$ (erreur de lecture du minimum) et $110$ confond étendue et maximum.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

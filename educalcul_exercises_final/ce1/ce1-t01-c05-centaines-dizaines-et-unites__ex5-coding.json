@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 72,
+  "_course_code": "ce1-t01-c05-centaines-dizaines-et-unites",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Identifier la valeur de chaque chiffre",
+  "title": "Algorithmes : Valeur des chiffres (centaines, dizaines, unités)",
+  "blocks": [
+    {
+      "title": "Décomposer un nombre",
+      "content": "Voici un algorithme pour trouver la valeur de chaque chiffre du nombre $352$. Complète les étapes manquantes.\\n1. Écrire le nombre : $352$.\\n2. Identifier le chiffre des centaines : ...\\n3. Calculer sa valeur : ... × $100$ = ...\\n4. Identifier le chiffre des dizaines : ...\\n5. Calculer sa valeur : ... × $10$ = ...\\n6. Identifier le chiffre des unités : ...\\n7. Calculer sa valeur : ... × $1$ = ...",
+      "correctAnswer": "1. Écrire le nombre : $352$.\\n2. Identifier le chiffre des centaines : $3$.\\n3. Calculer sa valeur : $3$ × $100$ = $300$.\\n4. Identifier le chiffre des dizaines : $5$.\\n5. Calculer sa valeur : $5$ × $10$ = $50$.\\n6. Identifier le chiffre des unités : $2$.\\n7. Calculer sa valeur : $2$ × $1$ = $2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit le nombre de gauche à droite. Le premier chiffre représente le nombre de centaines, le second le nombre de dizaines, le troisième le nombre d'unités. On multiplie chaque chiffre par la valeur de sa position (100, 10 ou 1) pour obtenir sa valeur numérique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconstituer un nombre",
+      "content": "Écris un algorithme (une suite d'instructions ordonnées) pour trouver le nombre entier correspondant à la décomposition suivante : $4$ centaines, $7$ dizaines et $1$ unité.\\nUtilise les mots-clés : DÉBUT, CALCULER, AJOUTER, AFFICHER, FIN.",
+      "correctAnswer": "DÉBUT\\nnombre ← $0$\\nCALCULER valeur_centaines ← $4$ × $100$ = $400$\\nAJOUTER nombre ← nombre + valeur_centaines\\nCALCULER valeur_dizaines ← $7$ × $10$ = $70$\\nAJOUTER nombre ← nombre + valeur_dizaines\\nCALCULER valeur_unites ← $1$ × $1$ = $1$\\nAJOUTER nombre ← nombre + valeur_unites\\nAFFICHER nombre\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme part de zéro. Il calcule la valeur numérique de chaque groupe (centaines, dizaines, unités) par multiplication, puis additionne chaque résultat à la variable 'nombre'. L'affichage final donne $471$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modifier un chiffre",
+      "content": "On part du nombre $268$. Écris un algorithme en trois étapes pour obtenir le nouveau nombre si on ajoute $3$ dizaines au chiffre des dizaines.\\nÉtape 1 : Noter la valeur de chaque chiffre du nombre de départ.\\nÉtape 2 : Modifier la valeur des dizaines.\\nÉtape 3 : Reconstituer le nouveau nombre.",
+      "correctAnswer": "Étape 1 : Décomposition de $268$ :\\n- Chiffre des centaines : $2$ → valeur $200$\\n- Chiffre des dizaines : $6$ → valeur $60$\\n- Chiffre des unités : $8$ → valeur $8$\\nÉtape 2 : Nouveau chiffre des dizaines = $6 + 3 = 9$ → nouvelle valeur $90$.\\nÉtape 3 : Addition des valeurs : $200 + 90 + 8 = 298$.\\nLe nouveau nombre est $298$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole d'abord la valeur de position de chaque chiffre. On modifie seulement la valeur concernée (ici les dizaines passent de $60$ à $90$). On recalcule le total en additionnant la valeur des centaines (inchangée), la nouvelle valeur des dizaines et la valeur des unités (inchangée).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

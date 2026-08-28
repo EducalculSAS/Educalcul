@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 369,
+  "_course_code": "6eme-t08-c02-moyenne-et-indicateurs-simples",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter la moyenne et les indicateurs simples",
+  "blocks": [
+    {
+      "title": "Calcul et interprétation de base",
+      "content": "Dans une classe, on note le nombre de pages lues chaque jour pendant une semaine : $10$, $14$, $12$, $8$, $16$, $14$, $10$. La moyenne est {{1}}. L'étendue de cette série est {{2}}. La médiane est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12",
+        "8",
+        "12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des valeurs est $10+14+12+8+16+14+10 = 84$. Il y a $7$ valeurs, donc la moyenne est $84 \\div 7 = 12$. L'étendue est la différence entre le maximum ($16$) et le minimum ($8$) : $16 - 8 = 8$. Pour la médiane, on trie la série : $8, 10, 10, 12, 14, 14, 16$. La valeur centrale (4e) est $12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Effet d'une valeur ajoutée sur la moyenne",
+      "content": "Un tableau présente les notes sur $20$ de $5$ élèves : Alice $14$, Bob $10$, Charlie $12$, David $16$, Eve $12$. La moyenne de ces notes est {{1}}. La note la plus fréquente (mode) est {{2}}. Si on ajoute un élève ayant $14$, la nouvelle moyenne devient {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "12,8",
+        "12",
+        "13"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des notes est $14+10+12+16+12 = 64$. La moyenne est $64 \\div 5 = 12,8$. Le mode est la valeur la plus fréquente : $12$ apparait deux fois. En ajoutant la note $14$, la nouvelle somme est $64+14=78$ pour $6$ élèves, la nouvelle moyenne est $78 \\div 6 = 13$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux séries",
+      "content": "Pour comparer deux séries statistiques, on utilise la {{1}} comme indicateur de position et l'{{2}} comme indicateur de dispersion. Si la série A a une moyenne de $15$ et une étendue de $10$, et la série B une moyenne de $15$ et une étendue de $20$, on peut dire que la série B est {{3}} dispersée que la série A.",
+      "correctAnswer": "",
+      "blanks": [
+        "moyenne",
+        "étendue",
+        "plus"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne (ou la médiane) est un indicateur de position (centre de la série). L'étendue (ou l'intervalle interquartile) est un indicateur de dispersion (éparpillement). Comme les moyennes sont égales ($15$), on compare les étendues : $20 > 10$, donc la série B est plus dispersée.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

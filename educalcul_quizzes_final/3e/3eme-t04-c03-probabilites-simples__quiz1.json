@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 475,
+  "_course_code": "3eme-t04-c03-probabilites-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Univers",
+  "title": "Quiz : L'univers d'une expérience aléatoire (3e)",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$. Quel est l'univers $\\Omega$ de cette expérience aléatoire ?",
+      "options": [
+        "{1, 2, 3, 4, 5}",
+        "{1, 2, 3, 4, 5, 6}",
+        "{pair, impair}",
+        "{1, 2, 3, 4, 5, 6, 7}"
+      ],
+      "correctAnswer": "{1, 2, 3, 4, 5, 6}",
+      "explanation": "L'univers (ou espace des possibles) est l'ensemble de tous les résultats possibles d'une expérience aléatoire. Pour un dé à six faces numérotées de $1$ à $6$, les issues possibles sont exactement les six nombres entiers de $1$ à $6$. L'option A oublie le $6$, l'option C regroupe les résultats en événements (pair/impair) mais ne donne pas les issues élémentaires, et l'option D ajoute un résultat impossible ($7$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance deux fois une pièce de monnaie équilibrée. On note l'ordre des résultats (par exemple : Pile puis Face). Quelle est la cardinalité de l'univers $\\Omega$ (le nombre d'éléments de $\\Omega$) ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "4",
+      "explanation": "L'univers contient tous les couples ordonnés possibles : (Pile, Pile), (Pile, Face), (Face, Pile), (Face, Face). Il y a donc $4$ issues équiprobables. L'erreur courante est de ne pas distinguer l'ordre et de compter seulement $3$ résultats (2 Piles, 1 de chaque, 2 Faces), ce qui correspond à l'option B, mais l'ordre compte ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient $3$ boules rouges, $2$ boules vertes et $1$ boule bleue. On prélève une boule au hasard. Laquelle des affirmations suivantes sur l'univers $\\Omega$ est exacte ?",
+      "options": [
+        "Ω = {rouge, vert, bleu} et tous les résultats sont équiprobables.",
+        "Ω = {rouge, vert, bleu} mais les résultats ne sont pas équiprobables.",
+        "Ω = {1, 2, 3, 4, 5, 6} car il y a 6 boules.",
+        "Ω = {rouge, rouge, rouge, vert, vert, bleu}."
+      ],
+      "correctAnswer": "Ω = {rouge, vert, bleu} mais les résultats ne sont pas équiprobables.",
+      "explanation": "L'univers est l'ensemble des issues possibles distinctes observées : les trois couleurs. Cependant, les probabilités ne sont pas égales : $P(\\text{rouge}) = 3/6$, $P(\\text{vert}) = 2/6$, $P(\\text{bleu}) = 1/6$. L'option A est fausse car elle affirme l'équiprobabilité. L'option C confond le nombre de boules et l'univers des couleurs. L'option D liste les boules individuelles (issues élémentaires si on les numérote), ce qui n'est pas l'univers usuel pour l'événement 'couleur tirée'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On fait tourner une flèche au centre d'un disque divisé en $5$ secteurs angulaires égaux numérotés $1, 2, 3, 4, 5$. On considère l'événement $E$ : \"Le numéro obtenu est un multiple de $3$\". Comment s'écrit $E$ en tant que partie de l'univers $\\Omega$ ?",
+      "options": [
+        "E = {3}",
+        "E = {3, 6}",
+        "E = {1, 3, 5}",
+        "E = ∅"
+      ],
+      "correctAnswer": "E = {3}",
+      "explanation": "L'univers est $\\Omega = \\{1, 2, 3, 4, 5\\}$. Un événement est une partie de $\\Omega$. Les multiples de $3$ appartenant à $\\Omega$ sont uniquement le nombre $3$ ($6$ n'est pas dans $\\Omega$). L'événement $E$ est donc le singleton $\\{3\\}$. L'option B inclut $6$ qui est impossible. L'option C correspond aux nombres impairs. L'option D (ensemble vide) signifierait qu'aucun multiple de $3$ n'est possible, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces numérotées de $1$ à $6$ et on lance une pièce de monnaie. On note le résultat du dé et la face de la pièce (P ou F). Quel est le nombre total d'issues possibles (cardinal de l'univers $\\Omega$) ?",
+      "options": [
+        "8",
+        "12",
+        "18",
+        "24"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Il s'agit d'une expérience composée de deux expériences indépendantes. Le dé a $6$ issues possibles, la pièce en a $2$. D'après le principe de multiplication, le nombre total de couples (résultat du dé, face de la pièce) est $6 \\times 2 = 12$. L'option $8$ correspond à $6+2$ (addition au lieu de multiplication). Les options $18$ et $24$ ne correspondent à aucun calcul standard pour cette situation.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

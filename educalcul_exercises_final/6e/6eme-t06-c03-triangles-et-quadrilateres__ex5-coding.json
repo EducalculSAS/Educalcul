@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Propriétés",
+  "title": "Algorithmes et propriétés des triangles et quadrilatères",
+  "blocks": [
+    {
+      "title": "Classification d'un triangle d'après ses côtés",
+      "content": "Écrire un algorithme (ou une fonction en Python) qui prend en entrée les trois longueurs $a$, $b$, $c$ d'un triangle et affiche le type de triangle selon ses côtés : équilatéral, isocèle ou scalène.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c\\n2. Si a = b et b = c alors afficher \"équilatéral\"\\n3. Sinon si a = b ou b = c ou a = c alors afficher \"isocèle\"\\n4. Sinon afficher \"scalène\"\\n\\nEn Python :\\ndef type_triangle(a, b, c):\\n    if a == b == c:\\n        return \"équilatéral\"\\n    elif a == b or b == c or a == c:\\n        return \"isocèle\"\\n    else:\\n        return \"scalène\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les trois longueurs. Si les trois sont égales, le triangle est équilatéral. Si exactement deux sont égales, il est isocèle. Sinon, les trois sont différentes : triangle scalène. L'ordre des tests garantit que le cas équilatéral est détecté avant le cas isocèle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test du parallélogramme",
+      "content": "Écrire un algorithme qui, étant données les quatre longueurs des côtés d'un quadrilatère dans l'ordre $AB$, $BC$, $CD$, $DA$, détermine si ce quadrilatère est un parallélogramme (propriété : les côtés opposés sont égaux deux à deux).",
+      "correctAnswer": "Algorithme :\\n1. Lire AB, BC, CD, DA\\n2. Si AB = CD et BC = DA alors afficher \"Parallélogramme\"\\n3. Sinon afficher \"Pas un parallélogramme\"\\n\\nEn Python :\\ndef est_parallelogramme(AB, BC, CD, DA):\\n    return AB == CD and BC == DA",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un parallélogramme, les côtés opposés sont égaux. Il suffit de vérifier que le premier côté equals le troisième et le deuxième equals le quatrième. Si les deux égalités sont vraies, le quadrilatère est un parallélogramme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détection d'un triangle rectangle",
+      "content": "Écrire un algorithme qui, étant données les trois longueurs des côtés d'un triangle, détermine si ce triangle est rectangle en utilisant le théorème de Pythagore. On suppose que les longueurs sont données dans n'importe quel ordre.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c\\n2. Trier les trois nombres pour avoir x ≤ y ≤ z\\n3. Si x^2 + y^2 = z^2 alors afficher \"Triangle rectangle\"\\n4. Sinon afficher \"Pas rectangle\"\\n\\nEn Python :\\ndef est_rectangle(a, b, c):\\n    cotes = sorted([a, b, c])\\n    return cotes[0]**2 + cotes[1]**2 == cotes[2]**2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le théorème de Pythagore stipule que dans un triangle rectangle, le carré de l'hypoténuse (le plus grand côté) est égal à la somme des carrés des deux autres côtés. On trie d'abord les longueurs pour identifier l'hypoténuse, puis on teste l'égalité.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

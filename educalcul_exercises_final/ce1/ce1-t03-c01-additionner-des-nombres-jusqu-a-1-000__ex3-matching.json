@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 88,
+  "_course_code": "ce1-t03-c01-additionner-des-nombres-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Vérifier par ordre de grandeur simple",
+  "title": "Vérifier une addition par ordre de grandeur",
+  "blocks": [
+    {
+      "title": "Niveau 1 : Additions à deux termes",
+      "content": "Relie chaque addition à son ordre de grandeur (au cent le plus proche).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$215 + 342$",
+          "right": "Environ $500$"
+        },
+        {
+          "left": "$481 + 112$",
+          "right": "Environ $600$"
+        },
+        {
+          "left": "$128 + 265$",
+          "right": "Environ $400$"
+        },
+        {
+          "left": "$305 + 398$",
+          "right": "Environ $700$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour vérifier par ordre de grandeur, on arrondit chaque nombre au cent le plus proche avant d'additionner. $215 + 342$ donne $200 + 300 = 500$ (résultat exact $557$). $481 + 112$ donne $500 + 100 = 600$ (résultat exact $593$). $128 + 265$ donne $100 + 300 = 400$ (résultat exact $393$). $305 + 398$ donne $300 + 400 = 700$ (résultat exact $703$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 2 : Additions à deux ou trois termes",
+      "content": "Relie chaque addition à son ordre de grandeur (au cent le plus proche).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$120 + 130 + 140$",
+          "right": "Environ $400$"
+        },
+        {
+          "left": "$150 + 250 + 80$",
+          "right": "Environ $500$"
+        },
+        {
+          "left": "$320 + 270$",
+          "right": "Environ $600$"
+        },
+        {
+          "left": "$410 + 290$",
+          "right": "Environ $700$"
+        },
+        {
+          "left": "$500 + 310$",
+          "right": "Environ $800$"
+        }
+      ],
+      "items": [],
+      "explanation": "On arrondit chaque terme aux centaines. $120 + 130 + 140$ donne $100 + 100 + 100 = 300$, mais $120+130+140=390$ qui est plus proche de $400$. $150 + 250 + 80$ donne $200 + 300 + 100 = 600$, mais le total exact est $480$ (proche de $500$). Il faut additionner les valeurs arrondies : $200 + 300 + 100 = 600$ est une surestimation. Mieux : $150 \\to 200$, $250 \\to 300$, $80 \\to 100$, somme $600$. L'ordre de grandeur le plus juste pour $480$ est $500$. $320 + 270 \\to 300 + 300 = 600$ (exact $590$). $410 + 290 \\to 400 + 300 = 700$ (exact $700$). $500 + 310 \\to 500 + 300 = 800$ (exact $810$).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Niveau 3 : Additions proches de 1 000",
+      "content": "Relie chaque addition à son ordre de grandeur (au cent le plus proche).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$250 + 340$",
+          "right": "Environ $600$"
+        },
+        {
+          "left": "$350 + 360$",
+          "right": "Environ $700$"
+        },
+        {
+          "left": "$450 + 360$",
+          "right": "Environ $800$"
+        },
+        {
+          "left": "$520 + 380$",
+          "right": "Environ $900$"
+        }
+      ],
+      "items": [],
+      "explanation": "On arrondit aux centaines. $250 + 340 \\to 300 + 300 = 600$ (résultat exact $590$). $350 + 360 \\to 400 + 400 = 800$, mais $350+360=710$ qui est plus proche de $700$. L'arrondi de $350$ à $400$ et $360$ à $400$ donne $800$, ce qui éloigne. Pour l'ordre de grandeur, on regarde le résultat exact $710 \\to 700$. $450 + 360 \\to 500 + 400 = 900$, exact $810 \\to 800$. $520 + 380 \\to 500 + 400 = 900$, exact $900$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

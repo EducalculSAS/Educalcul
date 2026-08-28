@@ -1,0 +1,443 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.089922+00:00",
+  "id": 523,
+  "code": "2nde-t05-c04",
+  "title": "Fonctions de référence du programme",
+  "description": "Cours structuré Educalcul : Fonctions de référence du programme.",
+  "subject": "Fonctions, représentations et variations",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Fonctions, représentations et variations",
+    "titre_du_cours": "Fonctions de référence du programme",
+    "objectif_global": "Fonctions de référence du programme",
+    "mini_lecons_imposees": [
+      "Carré / inverse / racine ou autres prévues.",
+      "Graphes.",
+      "Propriétés."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions, représentations et variations",
+      "lessons": [
+        {
+          "title": "Carré / inverse / racine ou autres prévues.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fonction carrée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons faire connaissance avec trois fonctions incontournables du programme de seconde. Commençons par la fonction carrée, celle qui associe à tout nombre $x$ son carré $x^2$. C'est une fonction définie sur l'ensemble des réels $\\mathbb{R}$ ; son ensemble d'arrivée est l'intervalle $[0, +\\infty)$. Imagine un jardinier qui plante des carrés de plus en plus grands : la surface grandit très vite, et le graphique de cette fonction a la forme d'une parabole qui s'ouvre vers le haut, symétrique par rapport à l'axe des ordonnées."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction carrée",
+              "definition": "La fonction carrée est l'application $f : \\mathbb{R} \\to [0, +\\infty)$ définie par $f(x) = x^2$. Elle est paire, c'est-à-dire que $f(-x) = f(x)$ pour tout $x$.",
+              "example": "Par exemple $f(3) = 9$ et $f(-3) = 9$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphe de la fonction carrée $f(x)=x^2$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la fonction carrée n'a plus de secret pour toi, passons à sa cousine un peu plus mystérieuse : la fonction inverse. Elle apparaît naturellement quand on cherche à \"annuler\" une multiplication, et son graphique a une allure très caractéristique avec deux branches qui ne se touchent jamais."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fonction inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction inverse associe à tout nombre non nul $x$ son inverse multiplicatif $\\frac{1}{x}$. Son domaine de définition est $\\mathbb{R}^* = \\mathbb{R} \\setminus \\{0\\}$ et son ensemble d'arrivée est aussi $\\mathbb{R}^*$. Le graphique est une hyperbole constituée de deux branches situées dans le premier et le troisième quadrant. Elle est impaire : $f(-x) = -f(x)$. C'est une fonction qui \"explose\" près de zéro et qui s'aplatit loin de l'origine."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction inverse",
+              "definition": "La fonction inverse est l'application $f : \\mathbb{R}^* \\to \\mathbb{R}^*$ définie par $f(x) = \\frac{1}{x}$. Elle est impaire et strictement décroissante sur chacun de ses deux intervalles de définition $(-\\infty,0)$ et $(0,+\\infty)$.",
+              "example": "Par exemple $f(2) = 0,5$ et $f(-4) = -0,25$."
+            },
+            {
+              "type": "graph",
+              "expression": "1/x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Graphe de la fonction inverse $f(x)=\\frac{1}{x}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant deux fonctions bien différentes : l'une qui monte sans cesse, l'autre qui a deux branches séparées. La troisième fonction de référence, la racine carrée, va nous permettre de \"revenir\" du carré vers le nombre de départ, mais seulement pour les nombres positifs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fonction racine carrée"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction racine carrée associe à tout nombre $x \\ge 0$ l'unique nombre positif $y$ tel que $y^2 = x$. On la note $\\sqrt{x}$. Son domaine de définition est $[0, +\\infty)$ et son ensemble d'arrivée est aussi $[0, +\\infty)$. Son graphique est la moitié droite de la parabole $y^2 = x$, c'est-à-dire une courbe qui part de l'origine et qui s'incline doucement vers la droite. Elle est strictement croissante et concave."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction racine carrée",
+              "definition": "La fonction racine carrée est l'application $f : [0, +\\infty) \\to [0, +\\infty)$ définie par $f(x) = \\sqrt{x}$. Elle est la fonction réciproque de la fonction carrée restreinte aux nombres positifs.",
+              "example": "Par exemple $f(9) = 3$ et $f(0,25) = 0,5$."
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Graphe de la fonction racine carrée $f(x)=\\sqrt{x}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une vision d'ensemble des trois fonctions de référence : carrée, inverse et racine carrée. Chacune a son domaine, son image, sa forme graphique et ses propriétés d'algèbre. Dans la prochaine leçon, nous apprendrons à tracer ces graphiques avec précision et à les transformer."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $f( -4 )$ pour la fonction carrée $f(x)=x^2$.",
+              "answer": "16",
+              "hint": "Rappelle-toi que le carré d'un nombre négatif est positif.",
+              "explanation": "On remplace $x$ par $-4$ : $f(-4)=(-4)^2 = 16$."
+            },
+            {
+              "question": "Détermine l'image de $-\\frac{1}{2}$ par la fonction inverse $f(x)=\\frac{1}{x}$.",
+              "answer": "-2",
+              "hint": "L'inverse d'une fraction s'obtient en échangeant numérateur et dénominateur.",
+              "explanation": "$f(-\\frac{1}{2}) = \\frac{1}{-\\frac{1}{2}} = -2$."
+            },
+            {
+              "question": "Quel est $f(16)$ pour la fonction racine carrée $f(x)=\\sqrt{x}$ ?",
+              "answer": "4",
+              "hint": "Cherche le nombre positif dont le carré donne 16.",
+              "explanation": "$\\sqrt{16}=4$ car $4^2=16$."
+            }
+          ]
+        },
+        {
+          "title": "Graphes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tracer les graphes des fonctions de référence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de tracer, il est utile de construire un petit tableau de valeurs. Choisis quelques $x$ simples (par exemple $-3,-2,-1,0,1,2,3$ pour la carrée, et des valeurs positives pour la racine, des valeurs non nulles pour l'inverse). Calcule les $y$ correspondants, puis repère les points dans un repère orthonormé. Relie les points en respectant la forme générale : parabole pour le carré, deux branches d'hyperbole pour l'inverse, demi-parabole pour la racine."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir des valeurs de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour la fonction carrée, prends des entiers symétriques autour de zéro. Pour l'inverse, évite zéro et prends des valeurs comme $-3,-2,-1,-\\frac12,\\frac12,1,2,3$. Pour la racine, prends des carrés parfaits : $0,1,4,9,16$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les $y$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule de chaque fonction. Note les résultats dans un tableau à deux colonnes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer les points",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur une feuille quadrillée, marque chaque couple $(x,y)$. Utilise la même échelle sur les deux axes pour conserver les proportions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Dessiner la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie les points par un trait lisse. Vérifie que la courbe de la carrée est symétrique par rapport à l'axe des ordonnées, que l'inverse a deux branches distinctes, et que la racine ne part que de l'origine vers la droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Graphe de $f(x)=x^2$ obtenu par tableau de valeurs"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois à l'aise avec le tracé de base, nous pouvons explorer comment modifier ces graphiques sans refaire tout le tableau. Les transformations élémentaires (translation, homothétie, symétrie) s'appliquent à toutes les fonctions de référence et permettent de gagner un temps précieux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Transformations simples : translation et homothétie"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si on remplace $x$ par $x-a$ dans l'expression, le graphe se déplace de $a$ unités vers la droite (si $a>0$) ou vers la gauche (si $a<0$). Si on multiplie toute la fonction par un coefficient $k$, le graphe s'étire verticalement ( $|k|>1$ ) ou se comprime ( $|k|<1$ ), et change de sens si $k$ est négatif. Par exemple, $g(x) = (x-2)^2$ est le graphe de la carrée décalé de 2 vers la droite, et $h(x) = -3\\frac{1}{x}$ retourne l'hyperbole et l'étire par 3."
+            },
+            {
+              "type": "display_math",
+              "latex": "g(x) = (x-2)^2"
+            },
+            {
+              "type": "graph",
+              "expression": "(x-2)^2",
+              "xmin": -2,
+              "xmax": 6,
+              "caption": "Graphe de $g(x)=(x-2)^2$, translation à droite de 2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir tracer et transformer, c'est bien, mais il faut aussi être capable de lire des informations directement sur un graphe : trouver l'abscisse d'un point donné, repérer les intercepts, deviner le domaine et l'ensemble d'arrivée, ou encore identifier une asymptote. C'est ce que nous allons pratiquer maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire des informations sur un graphe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le graphe de la fonction inverse, tu vois deux branches qui s'approchent indéfiniment des axes sans jamais les toucher. L'axe des abscisses ($y=0$) est une asymptote horizontale, l'axe des ordonnées ($x=0$) une asymptote verticale. Le domaine est l'union de deux intervalles ouverts $(-\\infty,0) \\cup (0,+\\infty)$. Pour la racine carrée, le graphe commence à l'origine et ne remonte que pour $x\\ge0$ ; le domaine est $[0,+\\infty)$ et l'ensemble d'arrivée le même. La carrée, elle, couvre tout $\\mathbb{R}$ en abscisses et seulement les valeurs positives en ordonnées."
+            },
+            {
+              "type": "interval_builder",
+              "min": -5,
+              "max": 5,
+              "lowerBound": 0,
+              "upperBound": 5,
+              "lowerOpen": false,
+              "upperOpen": true,
+              "caption": "Domaine de la fonction racine carrée : $[0,5)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant tracer, transformer et interpréter les graphiques des trois fonctions de référence. La prochaine leçon approfondira leurs propriétés algébriques : monotonie, parité, asymptotes et variations, pour que tu puisses raisonner sur elles sans toujours avoir besoin du dessin."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne les coordonnées du point d'intersection du graphe de $f(x)=x^2$ avec la droite $y=9$.",
+              "answer": "(-3,9) et (3,9)",
+              "hint": "Résous $x^2=9$.",
+              "explanation": "L'équation $x^2=9$ admet deux solutions $x=3$ et $x=-3$, donc deux points d'intersection."
+            },
+            {
+              "question": "Quelle transformation appliquer à $f(x)=\\frac{1}{x}$ pour obtenir $g(x)=-\\frac{2}{x}$ ?",
+              "answer": "Homothétie de rapport -2 (étirement par 2 et symétrie par rapport à l'origine).",
+              "hint": "Compare les coefficients devant $\\frac{1}{x}$.",
+              "explanation": "Multiplier la fonction par $-2$ correspond à une homothétie de rapport $-2$ par rapport à l'origine."
+            },
+            {
+              "question": "Sur le graphe de $f(x)=\\sqrt{x}$, quel est l'ensemble d'arrivée ?",
+              "answer": "$[0,+\\infty)$",
+              "hint": "Regarde les valeurs prises par $y$ sur la courbe.",
+              "explanation": "La racine carrée ne donne que des nombres positifs ou nuls, donc l'ensemble d'arrivée est $[0,+\\infty)$."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Domaine et ensemble d'arrivée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque fonction de référence possède un domaine de définition précis, c'est-à-dire l'ensemble des $x$ pour lesquels l'expression a un sens. Pour la fonction carrée, tout réel convient, donc le domaine est $\\mathbb{R}$. Pour l'inverse, il faut exclure zéro, d'où $\\mathbb{R}^*$. Pour la racine carrée, l'expression $\\sqrt{x}$ n'a de sens que pour $x\\ge0$, donc le domaine est $[0,+\\infty)$. L'ensemble d'arrivée, aussi appelé image, est l'ensemble des valeurs $f(x)$ effectivement atteintes. La carrée ne prend que des valeurs positives ou nulles, son image est $[0,+\\infty)$. L'inverse prend toutes les valeurs non nulles, son image est $\\mathbb{R}^*$. La racine carrée a la même image que son domaine."
+            },
+            {
+              "type": "definition",
+              "term": "Domaine de définition",
+              "definition": "L'ensemble des valeurs que la variable $x$ peut prendre pour que l'expression de la fonction soit définie.",
+              "example": "Pour $f(x)=\\frac{1}{x}$, le domaine est $\\mathbb{R}^*$."
+            },
+            {
+              "type": "definition",
+              "term": "Ensemble d'arrivée (image)",
+              "definition": "L'ensemble des valeurs $f(x)$ obtenues quand $x$ parcourt le domaine.",
+              "example": "Pour $f(x)=x^2$, l'image est $[0,+\\infty)$."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Tableau de variations de la fonction carrée sur $\\mathbb{R}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Connaître le domaine et l'image, c'est la base. Mais pour comparer deux fonctions ou résoudre des inéquations, il faut savoir comment elles évoluent : sont-elles croissantes, décroissantes ? Ont-elles des symétries ? C'est l'objet de la monotonie et de la parité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Monotonie et parité"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction carrée est décroissante sur $(-\\infty,0]$ et croissante sur $[0,+\\infty)$. Elle est paire : $f(-x)=f(x)$, ce qui se voit graphiquement par une symétrie par rapport à l'axe des ordonnées. La fonction inverse est strictement décroissante sur chacun de ses deux intervalles $(-\\infty,0)$ et $(0,+\\infty)$. Elle est impaire : $f(-x)=-f(x)$, son graphe est symétrique par rapport à l'origine. La racine carrée est strictement croissante sur tout son domaine $[0,+\\infty)$ ; elle n'a pas de parité car son domaine n'est pas symétrique par rapport à zéro."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Étudier le signe de la différence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour montrer qu'une fonction est croissante sur un intervalle, on prend $x_1 < x_2$ et on regarde le signe de $f(x_2)-f(x_1)$. Si ce signe est positif, la fonction est croissante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer à la carrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $x_1 < x_2$ dans $[0,+\\infty)$. Alors $x_2^2 - x_1^2 = (x_2-x_1)(x_2+x_1) > 0$, donc $f$ est croissante. Sur $(-\\infty,0]$, le même calcul donne un signe négatif, donc décroissante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier la parité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $f(-x)=(-x)^2=x^2=f(x)$ pour la carrée (paire). Pour l'inverse, $f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$ (impaire)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "Symétrie par rapport à l'axe des ordonnées (fonction paire)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, certaines fonctions présentent des asymptotes : des droites que le graphe approche sans jamais toucher. La fonction inverse en est l'exemple type, avec une asymptote verticale $x=0$ et une asymptote horizontale $y=0$. La carrée et la racine carrée n'ont pas d'asymptotes, leurs courbes s'éloignent à l'infini sans se rapprocher d'une droite fixe. Comprendre ce comportement aide à prévoir la forme du graphe pour de très grandes valeurs de $x$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Asymptotes et comportement à l'infini"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la fonction inverse, quand $x$ tend vers $0$ par valeurs positives, $f(x)$ tend vers $+\\infty$ ; par valeurs négatives, $f(x)$ tend vers $-\\infty$. C'est l'asymptote verticale $x=0$. Quand $|x|$ devient très grand, $f(x)$ tend vers $0$, d'où l'asymptote horizontale $y=0$. Pour la carrée, quand $x \\to \\pm\\infty$, $f(x) \\to +\\infty$ sans asymptote. Pour la racine, quand $x \\to +\\infty$, $f(x) \\to +\\infty$ mais plus lentement que la droite $y=x$."
+            },
+            {
+              "type": "sign_table",
+              "caption": "Signe de $f(x)=\\frac{1}{x}$ sur son domaine"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour analyser les fonctions de référence : domaine, image, monotonie, parité, asymptotes et variations. Ces outils te serviront tout au long de l'année pour étudier des fonctions plus complexes, les composer, les dériver et les intégrer."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner le domaine et l'ensemble d'arrivée des fonctions carrée, inverse et racine carrée.",
+                "Je sais tracer leurs graphiques et appliquer des translations ou homothéties.",
+                "Je sais déterminer la monotonie et la parité de chacune.",
+                "Je sais identifier les asymptotes de la fonction inverse et expliquer l'absence d'asymptotes pour les deux autres.",
+                "Je peux lire sur un graphe des informations comme les intercepts, le domaine et l'image."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est le domaine de définition de $f(x)=\\sqrt{x-3}$ ?",
+              "answer": "$[3,+\\infty)$",
+              "hint": "L'expression sous la racine doit être positive ou nulle.",
+              "explanation": "On impose $x-3 \\ge 0$, donc $x \\ge 3$."
+            },
+            {
+              "question": "La fonction $f(x)=\\frac{1}{x}$ est-elle paire, impaire ou aucune des deux ?",
+              "answer": "Impaire",
+              "hint": "Teste $f(-x)$ et compare à $f(x)$ et $-f(x)$.",
+              "explanation": "$f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$, donc la fonction est impaire."
+            },
+            {
+              "question": "Quelle est l'asymptote horizontale de $f(x)=\\frac{1}{x}$ ?",
+              "answer": "$y=0$",
+              "hint": "Regarde la limite de $f(x)$ quand $x$ tend vers $\\pm\\infty$.",
+              "explanation": "Quand $|x|$ devient très grand, $\\frac{1}{x}$ tend vers $0$, donc la droite $y=0$ est asymptote horizontale."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

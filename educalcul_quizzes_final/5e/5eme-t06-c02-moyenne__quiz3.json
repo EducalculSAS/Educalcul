@@ -1,0 +1,105 @@
+{
+  "_status": "done",
+  "_course_id": 406,
+  "_course_code": "5eme-t06-c02-moyenne",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer deux séries",
+  "title": "Quiz : Comparer deux séries statistiques",
+  "questions": [
+    {
+      "text": "On considère les deux séries de notes suivantes :\\nSérie A : $12$, $14$, $16$, $10$, $8$.\\nSérie B : $15$, $13$, $11$, $9$, $17$.\\nLaquelle des affirmations suivantes est exacte ?",
+      "options": [
+        "La moyenne de la série A est supérieure à celle de la série B.",
+        "La moyenne de la série B est supérieure à celle de la série A.",
+        "Les deux moyennes sont égales.",
+        "On ne peut pas comparer les moyennes car les notes sont différentes."
+      ],
+      "correctAnswer": "La moyenne de la série B est supérieure à celle de la série A.",
+      "explanation": "Moyenne de A = $(12+14+16+10+8) / 5 = 60 / 5 = 12$. Moyenne de B = $(15+13+11+9+17) / 5 = 65 / 5 = 13$. Comme $13 > 12$, la moyenne de la série B est strictement supérieure à celle de la série A.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Notes des deux séries",
+        "headers": [
+          "Série A",
+          "Série B"
+        ],
+        "rows": [
+          [
+            "12",
+            "15"
+          ],
+          [
+            "14",
+            "13"
+          ],
+          [
+            "16",
+            "11"
+          ],
+          [
+            "10",
+            "9"
+          ],
+          [
+            "8",
+            "17"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Dans un collège, deux classes de cinquième ont passé le même contrôle.\\nLa classe 1 compte $25$ élèves et sa moyenne est de $14$.\\nLa classe 2 compte $20$ élèves et sa moyenne est de $12$.\\nEn se basant uniquement sur les moyennes, que peut-on conclure ?",
+      "options": [
+        "La classe 1 a de meilleurs résultats que la classe 2.",
+        "La classe 2 a de meilleurs résultats que la classe 1.",
+        "Les deux classes ont le même niveau.",
+        "Il est impossible de comparer les deux classes car les effectifs sont différents."
+      ],
+      "correctAnswer": "La classe 1 a de meilleurs résultats que la classe 2.",
+      "explanation": "La moyenne est un indicateur de position qui résume le niveau global d'une série. Ici, la moyenne de la classe 1 ($14$) est strictement supérieure à celle de la classe 2 ($12$). On en déduit que, globalement, la classe 1 a obtenu de meilleurs résultats. La différence d'effectifs n'empêche pas la comparaison des moyennes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux séries statistiques ont la même moyenne ($10$).\\nSérie 1 : $10$, $10$, $10$, $10$.\\nSérie 2 : $0$, $0$, $20$, $20$.\\nLaquelle des affirmations est vraie ?",
+      "options": [
+        "La série 1 est plus homogène que la série 2.",
+        "La série 2 est plus homogène que la série 1.",
+        "Les deux séries ont la même dispersion car elles ont la même moyenne.",
+        "On ne peut pas comparer l'homogénéité sans connaître la médiane."
+      ],
+      "correctAnswer": "La série 1 est plus homogène que la série 2.",
+      "explanation": "L'homogénéité (ou dispersion) mesure à quel point les valeurs sont regroupées autour de la moyenne. Dans la série 1, toutes les valeurs sont égales à la moyenne : la dispersion est nulle (série parfaitement homogène). Dans la série 2, les valeurs s'écartent beaucoup de la moyenne ($0$ et $20$) : la dispersion est forte. Avoir la même moyenne ne garantit pas la même dispersion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une série statistique contient quatre nombres : $12$, $15$, $18$ et $x$.\\nLa moyenne de cette série est $16$.\\nQuelle est la valeur de $x$ ?",
+      "options": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "correctAnswer": "19",
+      "explanation": "La somme des valeurs = moyenne $\\times$ effectif = $16 \\times 4 = 64$. La somme des valeurs connues est $12 + 15 + 18 = 45$. La valeur manquante est $x = 64 - 45 = 19$. On vérifie : $(12+15+18+19)/4 = 64/4 = 16$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un groupe d'élèves est composé de deux sous-groupes.\\nSous-groupe 1 : $10$ élèves, moyenne $12$.\\nSous-groupe 2 : $15$ élèves, moyenne $16$.\\nQuelle est la moyenne de l'ensemble du groupe ?",
+      "options": [
+        "14",
+        "14,4",
+        "14,5",
+        "13,5"
+      ],
+      "correctAnswer": "14,4",
+      "explanation": "Il faut calculer la moyenne pondérée par les effectifs. Somme totale = $(10 \\times 12) + (15 \\times 16) = 120 + 240 = 360$. Effectif total = $10 + 15 = 25$. Moyenne globale = $360 / 25 = 14,4$. Attention : la moyenne des deux moyennes $(12+16)/2 = 14$ est fausse car les effectifs sont différents.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

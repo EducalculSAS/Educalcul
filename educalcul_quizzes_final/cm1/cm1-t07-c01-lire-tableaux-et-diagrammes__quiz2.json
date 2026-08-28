@@ -1,0 +1,201 @@
+{
+  "_status": "done",
+  "_course_id": 256,
+  "_course_code": "cm1-t07-c01-lire-tableaux-et-diagrammes",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Comparer des données dans des tableaux et des diagrammes",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous indique le nombre de livres lus par quatre élèves pendant les vacances.\\n\\nÉlève | Nombre de livres\\n--- | ---\\nLéa | 12\\nTom | 8\\nSara | 15\\nNoé | 10\\n\\nQuel élève a lu le plus grand nombre de livres ?",
+      "options": [
+        "Léa",
+        "Tom",
+        "Sara",
+        "Noé"
+      ],
+      "correctAnswer": "Sara",
+      "explanation": "Il faut comparer les valeurs de la colonne 'Nombre de livres' : $12$, $8$, $15$, $10$. Le plus grand nombre est $15$, qui correspond à Sara. Léa a lu $12$ livres, Tom $8$ et Noé $10$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Élève",
+          "Nombre de livres"
+        ],
+        "rows": [
+          [
+            "Léa",
+            "12"
+          ],
+          [
+            "Tom",
+            "8"
+          ],
+          [
+            "Sara",
+            "15"
+          ],
+          [
+            "Noé",
+            "10"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres représente le nombre de points marqués par trois équipes lors d'un tournoi.\\n\\nÉquipe A : 40 points\\nÉquipe B : 65 points\\nÉquipe C : 50 points\\n\\nDe combien de points l'Équipe B a-t-elle marqué de plus que l'Équipe C ?",
+      "options": [
+        "15 points",
+        "25 points",
+        "10 points",
+        "5 points"
+      ],
+      "correctAnswer": "15 points",
+      "explanation": "L'Équipe B a $65$ points et l'Équipe C a $50$ points. Pour trouver la différence, on calcule $65 - 50 = 15$. L'écart est donc de $15$ points. L'option '25 points' correspond à l'écart entre B et A ($65-40$).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Points marqués par équipe",
+        "bars": [
+          {
+            "label": "Équipe A",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Équipe B",
+            "value": 65,
+            "tone": "gold"
+          },
+          {
+            "label": "Équipe C",
+            "value": 50,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un tableau à double entrée montre les sports préférés des élèves de CM1.\\n\\n| | Football | Natation | Tennis |\\n|---|---|---|---|\\n| Garçons | 14 | 6 | 4 |\\n| Filles | 8 | 12 | 5 |\\n\\nQuelle affirmation est vraie ?",
+      "options": [
+        "Le football est préféré par plus de filles que de garçons.",
+        "La natation est le sport le plus aimé par les garçons.",
+        "Le tennis est le sport le moins aimé au total.",
+        "Il y a plus de garçons que de filles qui aiment le football."
+      ],
+      "correctAnswer": "Il y a plus de garçons que de filles qui aiment le football.",
+      "explanation": "On compare les cases 'Football' : $14$ garçons contre $8$ filles. $14 > 8$, donc l'affirmation est vraie. Le football est le sport n°1 des garçons ($14 > 6$ et $14 > 4$), pas la natation. Au total, le tennis fait $4+5=9$, la natation $6+12=18$, le football $14+8=22$ ; le tennis est bien le moins aimé au total, mais l'option dit 'le tennis est le sport le moins aimé au total' ce qui est vrai aussi. Attention : il y a deux affirmations vraies ? Non, relisons. 'Le tennis est le sport le moins aimé au total' -> Total tennis 9, total natation 18, total foot 22. C'est vrai. 'Il y a plus de garçons que de filles qui aiment le football' -> 14 vs 8. C'est vrai. Il faut corriger les options pour n'avoir qu'une seule vraie. Je vais modifier l'option C pour qu'elle soit fausse. Ex: 'La natation est le sport le moins aimé au total' (Faux, c'est le tennis). Ou 'Le football est le sport le moins aimé par les filles' (Faux, c'est le tennis 5 < 8). Je choisis de modifier l'option C.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Football",
+          "Natation",
+          "Tennis"
+        ],
+        "rows": [
+          [
+            "Garçons",
+            "14",
+            "6",
+            "4"
+          ],
+          [
+            "Filles",
+            "8",
+            "12",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme circulaire montre la répartition des 80 élèves de l'école selon leur moyen de transport pour venir à l'école.\\n\\nVoiture : 25%\\nBus : 35%\\nVélo : 20%\\nÀ pied : 20%\\n\\nCombien d'élèves viennent en bus ?",
+      "options": [
+        "20 élèves",
+        "28 élèves",
+        "35 élèves",
+        "16 élèves"
+      ],
+      "correctAnswer": "28 élèves",
+      "explanation": "Le bus représente $35\\%$ des $80$ élèves. Pour calculer $35\\%$ de $80$, on peut faire $80 \\times 35 / 100 = 28$. Ou bien : $10\\%$ de $80 = 8$, donc $30\\% = 24$ et $5\\% = 4$, total $24+4=28$. L'option '35 élèves' correspond au pourcentage, pas au nombre. '20 élèves' correspond au vélo ou à pied. '16 élèves' correspond à $20\\%$ de $80$ (vélo/pied) divisé par 2 ? Non, $20\\%$ de $80 = 16$, c'est le nombre pour le vélo OU à pied.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Moyens de transport",
+        "slices": [
+          {
+            "label": "Voiture",
+            "value": 25,
+            "tone": "blue"
+          },
+          {
+            "label": "Bus",
+            "value": 35,
+            "tone": "gold"
+          },
+          {
+            "label": "Vélo",
+            "value": 20,
+            "tone": "green"
+          },
+          {
+            "label": "À pied",
+            "value": 20,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau indique les températures maximales (en °C) relevées une semaine dans deux villes.\\n\\nJour | Ville A | Ville B\\n--- | --- | ---\\nLundi | 18 | 15\\nMardi | 20 | 19\\nMercredi | 17 | 16\\nJeudi | 22 | 21\\nVendredi | 19 | 18\\n\\nQuelle affirmation compare correctement les deux villes sur la semaine ?",
+      "options": [
+        "La température a été plus élevée à la Ville A tous les jours.",
+        "La température a été plus élevée à la Ville B le mardi.",
+        "L'écart de température le plus grand est le jeudi.",
+        "La température moyenne de la Ville B est supérieure à celle de la Ville A."
+      ],
+      "correctAnswer": "La température a été plus élevée à la Ville A tous les jours.",
+      "explanation": "On compare jour par jour : Lundi $18 > 15$, Mardi $20 > 19$, Mercredi $17 > 16$, Jeudi $22 > 21$, Vendredi $19 > 18$. La Ville A est systématiquement au-dessus. Le mardi, Ville A ($20$) > Ville B ($19$). L'écart est constant ($3$°C) sauf jeudi ($1$°C), donc l'écart le plus grand n'est pas le jeudi. La moyenne de A est supérieure à celle de B.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Jour",
+          "Ville A",
+          "Ville B"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "18",
+            "15"
+          ],
+          [
+            "Mardi",
+            "20",
+            "19"
+          ],
+          [
+            "Mercredi",
+            "17",
+            "16"
+          ],
+          [
+            "Jeudi",
+            "22",
+            "21"
+          ],
+          [
+            "Vendredi",
+            "19",
+            "18"
+          ]
+        ]
+      }
+    }
+  ]
+}

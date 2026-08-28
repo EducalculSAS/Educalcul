@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Arrondis",
+  "title": "Quiz - Arrondis dans le triangle rectangle",
+  "questions": [
+    {
+      "text": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $5$ cm et $7$ cm. On calcule la longueur de l'hypoténuse avec le théorème de Pythagore. Quelle est la valeur arrondie au centimètre le plus proche ?",
+      "options": [
+        "9 cm",
+        "8 cm",
+        "8,6 cm",
+        "8,5 cm"
+      ],
+      "correctAnswer": "9 cm",
+      "explanation": "L'hypoténuse vaut $\\sqrt{5^2+7^2}=\\sqrt{74}\\approx 8,602$ cm. Arrondi au centimètre le plus proche, on regarde le premier chiffre après la virgule : $6\\ge5$, donc on arrondit à $9$ cm. L'option 8 cm correspond à une troncature, 8,6 cm à un arrondi au dixième, 8,5 cm à une confusion avec la valeur 8,5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule la longueur de l'hypoténuse d'un triangle rectangle dont les côtés de l'angle droit mesurent $8$ cm et $10$ cm. Donnez la valeur arrondie au dixième de centimètre.",
+      "options": [
+        "12,8 cm",
+        "12,9 cm",
+        "12,81 cm",
+        "13 cm"
+      ],
+      "correctAnswer": "12,8 cm",
+      "explanation": "L'hypoténuse vaut $\\sqrt{8^2+10^2}=\\sqrt{164}\\approx 12,806$ cm. Pour arrondir au dixième, on regarde le chiffre des centièmes : $0<5$, donc on conserve $12,8$ cm. L'option 12,9 cm arrondit à tort le chiffre des centièmes, 12,81 cm donne deux décimales, 13 cm arrondit à l'entier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux segments mesurent $1,234$ m et $2,567$ m. On additionne ces longueurs. Quelle est la somme arrondie au centième de mètre ?",
+      "options": [
+        "3,80 m",
+        "3,81 m",
+        "3,8 m",
+        "3,801 m"
+      ],
+      "correctAnswer": "3,80 m",
+      "explanation": "La somme exacte est $1,234+2,567=3,801$ m. Arrondi au centième (deux chiffres après la virgule), on regarde le millième : $1<5$, donc on obtient $3,80$ m. L'option 3,81 m arrondit à tort le millième, 3,8 m arrondit au dixième, 3,801 m ne fait pas d'arrondi.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ cm et $11$ cm. On calcule l'hypoténuse, puis on ajoute $2,5$ cm. Quelle est la valeur finale arrondie au centimètre le plus proche ?",
+      "options": [
+        "15 cm",
+        "15,0 cm",
+        "15,5 cm",
+        "16 cm"
+      ],
+      "correctAnswer": "15 cm",
+      "explanation": "L'hypoténuse vaut $\\sqrt{6^2+11^2}=\\sqrt{157}\\approx 12,529$ cm. En ajoutant $2,5$ cm, on obtient $15,029$ cm. Arrondi au centimètre le plus proche, le chiffre des dixièmes est $0<5$, donc on arrondit à $15$ cm. L'option 15,0 cm correspond à un arrondi au dixième, 15,5 cm et 16 cm sont des arrondis excessifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La longueur de l'hypoténuse d'un triangle rectangle est $123,456$ cm. Exprimez cette longueur en mètres et arrondissez au dixième de mètre.",
+      "options": [
+        "1,2 m",
+        "1,3 m",
+        "1,23 m",
+        "1,24 m"
+      ],
+      "correctAnswer": "1,2 m",
+      "explanation": "On convertit en mètres : $123,456\\text{ cm}=1,23456$ m. Arrondi au dixième de mètre, on regarde le centième : $3<5$, donc on obtient $1,2$ m. L'option 1,3 m arrondit à tort, 1,23 m et 1,24 m sont des arrondis au centième.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

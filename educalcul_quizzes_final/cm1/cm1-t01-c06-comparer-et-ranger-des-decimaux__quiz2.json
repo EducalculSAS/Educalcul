@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Ajouter zéros inutiles conceptuellement",
+  "title": "Quiz : Ajouter des zéros inutiles pour comparer des décimaux",
+  "questions": [
+    {
+      "text": "Pour comparer $0,4$ et $0,36$, on peut ajouter un zéro inutile à $0,4$. Quelle écriture permet de comparer facilement les deux nombres ?",
+      "options": [
+        "$0,04$",
+        "$0,40$",
+        "$4,0$",
+        "$0,400$"
+      ],
+      "correctAnswer": "$0,40$",
+      "explanation": "Ajouter un zéro à droite de la partie décimale ne change pas la valeur du nombre : $0,4 = 0,40$. Cela permet d'aligner les chiffres au rang des centièmes : 40 centièmes contre 36 centièmes. $0,04$ vaut 4 centièmes (valeur changée), $4,0$ vaut 4 unités et $0,400$ va jusqu'au millième (inutile ici).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa veut comparer $3,5$ et $3,52$. Elle écrit $3,5 = 3,50$. Cette écriture est-elle correcte pour comparer ?",
+      "options": [
+        "Oui, car $3,5$ et $3,50$ représentent la même quantité et ont le même nombre de chiffres après la virgule.",
+        "Non, car ajouter un zéro change la valeur du nombre.",
+        "Non, il faut écrire $3,05$ pour avoir le même nombre de chiffres.",
+        "Oui, mais seulement si on ajoute deux zéros pour obtenir $3,500$."
+      ],
+      "correctAnswer": "Oui, car $3,5$ et $3,50$ représentent la même quantité et ont le même nombre de chiffres après la virgule.",
+      "explanation": "$3,5$ vaut 3 unités et 5 dixièmes. $3,50$ vaut 3 unités, 5 dixièmes et 0 centième. La valeur est identique. Écrire $3,50$ aligne les deux nombres au rang des centièmes pour comparer chiffre à chiffre : 50 centièmes > 52 centièmes est faux, on voit bien que 50 < 52. $3,05$ change la valeur (3 unités et 5 centièmes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut ranger dans l'ordre croissant : $2,6$ ; $2,58$ ; $2,603$. Quelle écriture avec zéros inutiles permet de tous les aligner au millième près ?",
+      "options": [
+        "$2,600$ ; $2,580$ ; $2,603$",
+        "$2,6$ ; $2,58$ ; $2,603$",
+        "$2,60$ ; $2,58$ ; $2,603$",
+        "$2,600$ ; $2,58$ ; $2,603$"
+      ],
+      "correctAnswer": "$2,600$ ; $2,580$ ; $2,603$",
+      "explanation": "Le nombre avec le plus de décimales est $2,603$ (3 chiffres après la virgule, au millième). Il faut compléter les autres pour avoir 3 décimales : $2,6$ devient $2,600$ (on ajoute deux zéros), $2,58$ devient $2,580$ (on ajoute un zéro). Ainsi on compare 2600 millièmes, 2580 millièmes et 2603 millièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Paul compare $0,7$ et $0,09$. Il dit : \"$0,7$ s'écrit $0,07$, donc $0,07 < 0,09$, donc $0,7 < 0,09$.\" Quelle est l'erreur de Paul ?",
+      "options": [
+        "Il a ajouté un zéro au mauvais endroit : $0,7 = 0,70$ et non $0,07$.",
+        "Il a oublié d'ajouter un zéro à $0,09$.",
+        "Il a inversé les signes $<$ et $>$.",
+        "$0,7$ est bien plus petit que $0,09$ car 7 < 9."
+      ],
+      "correctAnswer": "Il a ajouté un zéro au mauvais endroit : $0,7 = 0,70$ et non $0,07$.",
+      "explanation": "Un zéro inutile s'ajoute à DROITE de la partie décimale. $0,7$ (7 dixièmes) s'écrit $0,70$ (70 centièmes). Paul a écrit $0,07$ (7 centièmes), ce qui divise le nombre par 10. En corrigeant : $0,70 > 0,09$ (70 centièmes > 9 centièmes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est FAUSSE au sujet des zéros inutiles dans les nombres décimaux ?",
+      "options": [
+        "Ajouter un zéro à droite de la partie décimale ne change pas la valeur du nombre.",
+        "$12,5$ et $12,50$ sont deux écritures du même nombre.",
+        "Pour comparer $4,2$ et $4,19$, on peut écrire $4,20$ et $4,19$.",
+        "Le zéro inutile doit toujours être placé immédiatement après la virgule."
+      ],
+      "correctAnswer": "Le zéro inutile doit toujours être placé immédiatement après la virgule.",
+      "explanation": "C'est faux. Placer un zéro immédiatement après la virgule change la valeur (ex: $4,2 \\neq 4,02$). Le zéro inutile se place à la FIN de la partie décimale (à droite) : $4,2 = 4,20$. Les trois autres affirmations sont vraies : la valeur ne change pas, $12,5 = 12,50$, et aligner à $4,20$ permet de comparer avec $4,19$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

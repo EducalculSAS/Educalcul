@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Variables, conditions, boucles",
+  "title": "Approfondissement : Variables, conditions, boucles",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$ a \\leftarrow 5 $\\n$ b \\leftarrow 3 $\\n$ a \\leftarrow a + b $\\n$ b \\leftarrow a - b $\\nQuelles sont les valeurs finales de $a$ et $b$ ?",
+      "options": [
+        "$a = 5$ et $b = 3$",
+        "$a = 8$ et $b = 3$",
+        "$a = 8$ et $b = 5$",
+        "$a = 5$ et $b = 8$"
+      ],
+      "correctAnswer": "$a = 8$ et $b = 5$",
+      "explanation": "Au début, $a$ vaut $5$ et $b$ vaut $3$. La ligne $a \\leftarrow a + b$ calcule $5 + 3 = 8$ et stocke $8$ dans $a$. La ligne suivante $b \\leftarrow a - b$ utilise la nouvelle valeur de $a$ ($8$) et l'ancienne valeur de $b$ ($3$) : $8 - 3 = 5$. $b$ devient donc $5$. Les valeurs finales sont $a=8$ et $b=5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit l'algorithme ci-dessous :\\n$ age \\leftarrow 12 $\\nSI $ age \\ge 18 $ ALORS\\n  AFFICHER \"Majeur\"\\nSINON\\n  AFFICHER \"Mineur\"\\nFIN SI\\nQue va afficher cet algorithme ?",
+      "options": [
+        "Majeur",
+        "Mineur",
+        "12",
+        "Erreur"
+      ],
+      "correctAnswer": "Mineur",
+      "explanation": "La variable $age$ vaut $12$. La condition $age \\ge 18$ est fausse car $12$ n'est pas supérieur ou égal à $18$. Le programme exécute donc la branche SINON et affiche \"Mineur\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le script suivant :\\n$ somme \\leftarrow 0 $\\nREPETER $ 4 $ FOIS\\n  $ somme \\leftarrow somme + 2 $\\nFIN REPETER\\nAFFICHER $ somme $\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "$ 2 $",
+        "$ 4 $",
+        "$ 6 $",
+        "$ 8 $"
+      ],
+      "correctAnswer": "$ 8 $",
+      "explanation": "La boucle s'exécute exactement $4$ fois. À chaque tour, on ajoute $2$ à la variable $somme$. Au départ $somme=0$. Après le 1er tour : $2$. Après le 2e : $4$. Après le 3e : $6$. Après le 4e : $8$. La valeur affichée est donc $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un algorithme :\\n$ n \\leftarrow 10 $\\nREPETER $ 3 $ FOIS\\n  $ n \\leftarrow n - 2 $\\nFIN REPETER\\nAFFICHER $ n $\\nQuel est le résultat affiché ?",
+      "options": [
+        "$ 10 $",
+        "$ 8 $",
+        "$ 6 $",
+        "$ 4 $"
+      ],
+      "correctAnswer": "$ 4 $",
+      "explanation": "La variable $n$ commence à $10$. La boucle répète $3$ fois l'instruction $n \\leftarrow n - 2$. 1er tour : $10-2=8$. 2e tour : $8-2=6$. 3e tour : $6-2=4$. À la fin, $n$ vaut $4$, qui est affiché.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'algorithme suivant demande 5 nombres et affiche le plus grand :\\n$ max \\leftarrow 0 $\\nREPETER $ 5 $ FOIS\\n  LIRE $ x $\\n  SI $ x > max $ ALORS\\n    $ max \\leftarrow x $\\n  FIN SI\\nFIN REPETER\\nAFFICHER $ max $\\nSi on entre les nombres $ 3 $, $ 7 $, $ 2 $, $ 9 $, $ 5 $ (dans cet ordre), que affiche l'algorithme ?",
+      "options": [
+        "$ 3 $",
+        "$ 7 $",
+        "$ 9 $",
+        "$ 5 $"
+      ],
+      "correctAnswer": "$ 9 $",
+      "explanation": "On suit l'exécution pas à pas. $max=0$. 1er nombre $3$ : $3>0$ donc $max=3$. 2e nombre $7$ : $7>3$ donc $max=7$. 3e nombre $2$ : $2>7$ faux, $max$ reste $7$. 4e nombre $9$ : $9>7$ donc $max=9$. 5e nombre $5$ : $5>9$ faux, $max$ reste $9$. L'affichage final est $9$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

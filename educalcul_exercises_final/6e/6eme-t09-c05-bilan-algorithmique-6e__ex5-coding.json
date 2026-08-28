@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 378,
+  "_course_code": "6eme-t09-c05-bilan-algorithmique-6e",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Approfondissement : Variables, boucles, conditions",
+  "title": "Algorithmique : Variables, boucles et conditions",
+  "blocks": [
+    {
+      "title": "Variables et calculs séquentiels",
+      "content": "On exécute l'algorithme suivant :\\n$a \\leftarrow 12$\\n$b \\leftarrow 5$\\n$a \\leftarrow a + b$\\n$b \\leftarrow a - b$\\n$\\mathtt{Afficher}\\ a,\\ b$\\nQuelles valeurs sont affichées à la fin de l'exécution ?",
+      "correctAnswer": "L'algorithme affiche 17 et 12.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au début, $a$ vaut 12 et $b$ vaut 5.\\nL'instruction $a \\leftarrow a + b$ calcule $12 + 5 = 17$ et stocke le résultat dans $a$. Maintenant $a = 17$.\\nL'instruction $b \\leftarrow a - b$ calcule $17 - 5 = 12$ (car $b$ vaut encore 5) et stocke le résultat dans $b$. Maintenant $b = 12$.\\nL'affichage final donne donc $a = 17$ et $b = 12$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Boucle avec accumulateur",
+      "content": "On exécute l'algorithme suivant :\\n$somme \\leftarrow 0$\\n$\\mathtt{Pour}\\ i\\ \\mathtt{allant}\\ \\mathtt{de}\\ 1\\ \\mathtt{\\grave{a}}\\ 6\\ \\mathtt{faire}$\\n$\\quad somme \\leftarrow somme + i$\\n$\\mathtt{Fin\\ Pour}$\\n$\\mathtt{Afficher}\\ somme$\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "correctAnswer": "L'algorithme affiche 21.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle répète l'instruction $somme \\leftarrow somme + i$ pour $i$ prenant successivement les valeurs 1, 2, 3, 4, 5, 6.\\nOn calcule la somme : $0 + 1 = 1$, puis $1 + 2 = 3$, puis $3 + 3 = 6$, puis $6 + 4 = 10$, puis $10 + 5 = 15$, puis $15 + 6 = 21$.\\nLa variable $somme$ vaut donc 21 à la fin de la boucle.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Condition dans une boucle",
+      "content": "On exécute l'algorithme suivant :\\n$compteur \\leftarrow 0$\\n$\\mathtt{Pour}\\ n\\ \\mathtt{allant}\\ \\mathtt{de}\\ 1\\ \\mathtt{\\grave{a}}\\ 10\\ \\mathtt{faire}$\\n$\\quad \\mathtt{Si}\\ n \\times 3 > 15\\ \\mathtt{Alors}$\\n$\\quad\\quad compteur \\leftarrow compteur + 1$\\n$\\quad \\mathtt{Fin\\ Si}$\\n$\\mathtt{Fin\\ Pour}$\\n$\\mathtt{Afficher}\\ compteur$\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "correctAnswer": "L'algorithme affiche 5.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La boucle fait varier $n$ de 1 à 10. La condition $n \\times 3 > 15$ est équivalente à $n > 5$.\\nLes valeurs de $n$ qui satisfont la condition sont donc 6, 7, 8, 9 et 10. Il y a 5 valeurs.\\nLa variable $compteur$ est incrémentée de 1 pour chacune de ces 5 valeurs, elle vaut donc 5 à la fin.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

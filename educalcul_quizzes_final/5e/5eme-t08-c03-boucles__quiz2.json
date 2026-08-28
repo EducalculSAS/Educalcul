@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Compter",
+  "title": "Quiz : Les boucles pour compter",
+  "questions": [
+    {
+      "text": "Dans un programme de type Scratch, on utilise le bloc \"Répéter $10$ fois\". Combien de fois les instructions placées à l'intérieur de ce bloc seront-elles exécutées ?",
+      "options": [
+        "$9$ fois",
+        "$10$ fois",
+        "$11$ fois",
+        "Cela dépend des instructions"
+      ],
+      "correctAnswer": "$10$ fois",
+      "explanation": "Le bloc \"Répéter $10$ fois\" est une boucle bornée : le nombre indiqué ($10$) correspond exactement au nombre d'itérations. Les instructions internes s'exécutent donc précisément $10$ fois, ni plus ni moins. L'option $9$ fois correspond à une confusion avec un indice qui irait de $0$ à $9$, mais le bloc Scratch compte les passages, pas les indices.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En Python, on écrit la boucle : `for i in range(1, 6):`. Combien de fois le corps de la boucle va-t-il s'exécuter ?",
+      "options": [
+        "$4$ fois",
+        "$5$ fois",
+        "$6$ fois",
+        "$7$ fois"
+      ],
+      "correctAnswer": "$5$ fois",
+      "explanation": "La fonction `range(1, 6)` génère la suite des entiers à partir de $1$ (inclus) jusqu'à $6$ (exclus). Les valeurs prises par `i` sont donc $1, 2, 3, 4, 5$. Il y a $5$ valeurs, donc $5$ itérations. L'erreur classique est de croire que la borne finale $6$ est incluse (donc $6$ fois) ou de soustraire les bornes sans ajouter $1$ ($6-1=5$ mais on pense $4$ fois par erreur de décompte).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le code suivant : `for k in range(0, 10, 2):`. Combien d'itérations cette boucle va-t-elle effectuer ?",
+      "options": [
+        "$4$ fois",
+        "$5$ fois",
+        "$6$ fois",
+        "$10$ fois"
+      ],
+      "correctAnswer": "$5$ fois",
+      "explanation": "Le troisième argument de `range` est le pas (step), ici $2$. La boucle parcourt les nombres pairs de $0$ inclus à $10$ exclus : $0, 2, 4, 6, 8$. Cela donne $5$ valeurs. On peut calculer : $(10 - 0) / 2 = 5$. L'option $10$ fois oublie le pas, l'option $4$ fois oublie d'inclure le $0$ ou le $8$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On imbrique deux boucles : la boucle externe répète $3$ fois, la boucle interne répète $4$ fois. Combien de fois l'instruction tout au fond (dans la boucle interne) sera-t-elle exécutée au total ?",
+      "options": [
+        "$7$ fois",
+        "$12$ fois",
+        "$3$ fois",
+        "$4$ fois"
+      ],
+      "correctAnswer": "$12$ fois",
+      "explanation": "Pour chaque tour de la boucle externe ($3$ tours), la boucle interne effectue un cycle complet de $4$ tours. Le nombre total d'exécutions de l'instruction interne est le produit du nombre de tours de chaque boucle : $3 \\times 4 = 12$. L'option $7$ fois correspond à une addition ($3+4$) au lieu d'une multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute cet algorithme :\\n`n <- 0`\\n`Tant que n < 5 faire`\\n`    n <- n + 1`\\n`Fin Tant que`\\nCombien de fois la condition `n < 5` est-elle évaluée à \"Vrai\" (ce qui déclenche le corps de la boucle) ?",
+      "options": [
+        "$4$ fois",
+        "$5$ fois",
+        "$6$ fois",
+        "Une infinité de fois"
+      ],
+      "correctAnswer": "$5$ fois",
+      "explanation": "La variable `n` commence à $0$. La condition `n < 5` est vraie pour `n = 0, 1, 2, 3, 4`. À chaque fois, `n` augmente de $1$. Après le $5^{\\text{ème}}$ tour, `n` vaut $5$, la condition devient fausse et la boucle s'arrête. Le corps a donc été exécuté $5$ fois. L'option $4$ fois correspond à une initialisation à $1$ ou une condition `<= 4`. L'option $6$ fois compte l'évaluation finale qui est fausse.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

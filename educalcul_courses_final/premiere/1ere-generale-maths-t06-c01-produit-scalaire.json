@@ -1,0 +1,432 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.381673+00:00",
+  "id": 604,
+  "code": "1ere-generale-maths-t06-c01",
+  "title": "Produit scalaire",
+  "description": "Cours structuré Educalcul : Produit scalaire.",
+  "subject": "Géométrie : produit scalaire et repérage",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Géométrie : produit scalaire et repérage",
+    "titre_du_cours": "Produit scalaire",
+    "objectif_global": "Produit scalaire",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Calculs.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie : produit scalaire et repérage",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le produit scalaire : une rencontre entre grandeurs et angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu pousses un chariot de courses avec une force $\\vec{F}$. Le chariot avance d'un déplacement $\\vec{d}$. Le travail fourni, cette énergie que tu dépenses, ne dépend pas seulement de l'intensité de ta poussée ni de la distance parcourue : il dépend aussi de l'angle entre ta force et le mouvement. Si tu pousses exactement dans le sens du déplacement, tout ton effort est utile. Si tu pousses perpendiculairement, le chariot ne bouge pas dans cette direction et ton travail est nul. C'est précisément pour mesurer cette \"adéquation\" entre deux vecteurs que les mathématiciens ont inventé le produit scalaire. Dans cette leçon, nous allons le définir, le comprendre géométriquement et poser les bases qui nous serviront tout au long de l'année en géométrie analytique et en physique."
+            },
+            {
+              "type": "definition",
+              "term": "Produit scalaire",
+              "definition": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs du plan ou de l'espace. On appelle produit scalaire de $\\vec{u}$ et $\\vec{v}$, et on note $\\vec{u} \\cdot \\vec{v}$, le nombre réel défini par : $\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\times \\|\\vec{v}\\| \\times \\cos(\\widehat{\\vec{u},\\vec{v}})$, où $\\widehat{\\vec{u},\\vec{v}}$ désigne l'angle orienté entre les deux vecteurs (choisi dans $[0,\\pi]$). Par convention, si l'un des deux vecteurs est nul, le produit scalaire vaut $0$.",
+              "example": "Si $\\|\\vec{u}\\|=3$, $\\|\\vec{v}\\|=4$ et l'angle entre eux est $60^\\circ$, alors $\\vec{u} \\cdot \\vec{v} = 3 \\times 4 \\times \\cos 60^\\circ = 12 \\times 0,5 = 6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien cette formule : elle marie trois ingrédients. D'abord les normes $\\|\\vec{u}\\|$ et $\\|\\vec{v}\\|$, qui sont des longueurs, toujours positives ou nulles. Ensuite le cosinus de l'angle, qui oscille entre $-1$ et $1$. Le signe du produit scalaire vient donc entièrement de $\\cos(\\widehat{\\vec{u},\\vec{v}})$. Si l'angle est aigu ($<90^\\circ$), le cosinus est positif : les vecteurs pointent \"globalement dans le même sens\". Si l'angle est obtus ($>90^\\circ$), le cosinus est négatif : ils s'opposent. Et si l'angle est droit ($=90^\\circ$), le cosinus est nul : le produit scalaire s'annule. C'est une propriété fondamentale que nous allons rencontrer sans cesse : deux vecteurs non nuls sont orthogonaux si et seulement si leur produit scalaire vaut $0$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les normes et l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Données : deux vecteurs $\\vec{u}$ et $\\vec{v}$. Calcule ou relève leurs normes $\\|\\vec{u}\\|$ et $\\|\\vec{v}\\|$. Détermine l'angle $\\theta = \\widehat{\\vec{u},\\vec{v}}$ (souvent donné dans l'énoncé ou déductible d'une figure)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\cos \\theta$ (attention : ton angle est en degrés ou en radians ? Adapte ta calculatrice). Multiplie : $\\|\\vec{u}\\| \\times \\|\\vec{v}\\| \\times \\cos \\theta$. Le résultat est un nombre réel, sans unité (ou avec l'unité produit des unités des normes si c'est de la physique)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Interpréter le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le résultat est $>0$, l'angle est aigu. Si $<0$, l'angle est obtus. Si $=0$, les vecteurs sont orthogonaux (ou l'un est nul). Cette interprétation immédiate est l'un des grands atouts du produit scalaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\|\\vec{v}\\| \\cos(\\widehat{\\vec{u},\\vec{v}})"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret pour ancrer la définition. Supposons un vecteur $\\vec{u}$ de norme $5$ et un vecteur $\\vec{v}$ de norme $2$. Si l'angle entre eux vaut $120^\\circ$, alors $\\cos 120^\\circ = -\\frac{1}{2}$. Le produit scalaire vaut $5 \\times 2 \\times (-\\frac{1}{2}) = -5$. Le nombre négatif nous dit immédiatement que l'angle est obtus, sans même avoir à tracer la figure. Essaie maintenant de faire varier l'angle mentalement : quand l'angle passe de $0$ à $\\pi$, le cosinus diminue de $1$ à $-1$, donc le produit scalaire décrit une courbe continue. C'est cette continuité qui rend l'outil si puissant pour étudier des problèmes d'optimisation ou de géométrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition est posée, explorons ses propriétés algébriques. Elles vont nous permettre de calculer des produits scalaires sans toujours passer par les normes et les angles, ce qui est souvent plus simple quand on connaît les coordonnées. Mais avant d'arriver aux coordonnées (ce sera la prochaine leçon), notons déjà trois propriétés essentielles qui découlent directement de la définition : la symétrie, la bilinéarité et la relation avec la norme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés fondamentales du produit scalaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première propriété saute aux yeux : l'ordre n'importe pas. $\\vec{u} \\cdot \\vec{v} = \\vec{v} \\cdot \\vec{u}$. C'est la commutativité (ou symétrie). Elle vient du fait que $\\cos(\\widehat{\\vec{u},\\vec{v}}) = \\cos(\\widehat{\\vec{v},\\vec{u}})$ car le cosinus est une fonction paire. La deuxième est la distributivité par rapport à l'addition : $\\vec{u} \\cdot (\\vec{v} + \\vec{w}) = \\vec{u} \\cdot \\vec{v} + \\vec{u} \\cdot \\vec{w}$. On peut \"factoriser\" ou \"développer\" comme avec les nombres. La troisième est l'homogénéité : pour tout réel $k$, $(k\\vec{u}) \\cdot \\vec{v} = k(\\vec{u} \\cdot \\vec{v})$. Ces deux dernières ensemble font qu'on dit que le produit scalaire est bilinéaire : il est linéaire par rapport à chacun de ses deux arguments quand l'autre est fixé."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Attention : pas d'associativité",
+              "paragraphs": [
+                "L'expression $(\\vec{u} \\cdot \\vec{v}) \\cdot \\vec{w}$ n'a pas de sens : $\\vec{u} \\cdot \\vec{v}$ est un nombre, on ne peut pas faire le produit scalaire d'un nombre et d'un vecteur. De même, $\\vec{u} \\cdot (\\vec{v} \\cdot \\vec{w})$ est impossible. Le produit scalaire n'est pas associatif, il ne combine que deux vecteurs à la fois."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Une conséquence majestueuse de la bilinéarité est la relation entre le produit scalaire et la norme. En prenant $\\vec{v} = \\vec{u}$ dans la définition, on obtient $\\vec{u} \\cdot \\vec{u} = \\|\\vec{u}\\|^2 \\cos 0 = \\|\\vec{u}\\|^2$. Donc la norme d'un vecteur est la racine carrée de son produit scalaire par lui-même : $\\|\\vec{u}\\| = \\sqrt{\\vec{u} \\cdot \\vec{u}}$. C'est la porte d'entrée vers le calcul analytique : si on sait exprimer le produit scalaire en coordonnées, on obtient immédiatement la norme et la distance. C'est exactement ce que nous ferons dans la leçon suivante."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u} \\cdot \\vec{u} = \\|\\vec{u}\\|^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons cette leçon par une caractérisation élégante de l'orthogonalité, qui est sans doute l'application la plus fréquente du produit scalaire en géométrie. Nous avons déjà vu que si $\\vec{u} \\perp \\vec{v}$ (et vecteurs non nuls), alors $\\cos(\\widehat{\\vec{u},\\vec{v}}) = 0$ donc $\\vec{u} \\cdot \\vec{v} = 0$. Réciproquement, si $\\vec{u} \\cdot \\vec{v} = 0$ et que les deux vecteurs sont non nuls, alors $\\|\\vec{u}\\| \\|\\vec{v}\\| \\cos \\theta = 0$ impose $\\cos \\theta = 0$, donc $\\theta = \\frac{\\pi}{2}$. Les vecteurs sont orthogonaux. C'est un critère \"si et seulement si\" d'une puissance incroyable : pour savoir si deux droites sont perpendiculaires, il suffit de calculer un produit scalaire de vecteurs directeurs. Plus besoin de reporter des angles ou d'utiliser le théorème de Pythagore dans chaque exercice : l'algèbre tranche instantanément."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Vecteur nul",
+              "paragraphs": [
+                "Le vecteur nul $\\vec{0}$ est orthogonal à tous les vecteurs par convention (son produit scalaire avec n'importe quel vecteur vaut $0$). Mais attention : dans un énoncé, si on te dit \"$\\vec{u}$ et $\\vec{v}$ sont orthogonaux\", on sous-entend souvent qu'ils sont non nuls, sauf précision contraire."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de traverser le cœur de la définition du produit scalaire. Tu sais maintenant qu'il transforme une question géométrique (angle, orthogonalité) en un calcul numérique simple. Dans la prochaine leçon, nous allons voir comment exprimer ce produit scalaire à l'aide des coordonnées dans un repère orthonormé. C'est là que l'outil devient une machine à calculer ultra-rapide, et que nous pourrons démontrer des formules comme celle d'Al-Kashi ou la longueur de la médiane d'un triangle. Prépare-toi : les coordonnées vont nous libérer des cosinus !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs de normes respectives $4$ et $7$. L'angle $\\widehat{\\vec{u},\\vec{v}}$ mesure $135^\\circ$. Calculer $\\vec{u} \\cdot \\vec{v}$. Quel est le signe du résultat ? Que t'apprend-il sur l'angle ?",
+              "answer": "$\\vec{u} \\cdot \\vec{v} = 4 \\times 7 \\times \\cos 135^\\circ = 28 \\times (-\\frac{\\sqrt{2}}{2}) = -14\\sqrt{2} \\approx -19,8$. Le résultat est négatif, ce qui confirme que l'angle est obtus (supérieur à $90^\\circ$).",
+              "hint": "Rappelle-toi que $\\cos 135^\\circ = -\\cos 45^\\circ = -\\frac{\\sqrt{2}}{2}$. Multiplie les normes par cette valeur.",
+              "explanation": "On applique directement la définition : produit des normes par le cosinus de l'angle. Le signe négatif du cosinus (angle obtus) donne un produit scalaire négatif."
+            },
+            {
+              "question": "Soient $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ trois vecteurs tels que $\\vec{a} \\cdot \\vec{b} = 3$, $\\vec{a} \\cdot \\vec{c} = -2$ et $\\|\\vec{a}\\| = 2$. Calculer $\\vec{a} \\cdot (2\\vec{b} - 3\\vec{c})$ et $\\|\\vec{a}\\|^2$.",
+              "answer": "$\\vec{a} \\cdot (2\\vec{b} - 3\\vec{c}) = 2(\\vec{a} \\cdot \\vec{b}) - 3(\\vec{a} \\cdot \\vec{c}) = 2 \\times 3 - 3 \\times (-2) = 6 + 6 = 12$. $\\|\\vec{a}\\|^2 = (2)^2 = 4$.",
+              "hint": "Utilise la bilinéarité : développe le produit scalaire par rapport à la somme et sors les coefficients.",
+              "explanation": "La bilinéarité permet de développer : $\\vec{a} \\cdot (2\\vec{b} - 3\\vec{c}) = 2\\vec{a} \\cdot \\vec{b} - 3\\vec{a} \\cdot \\vec{c}$. On remplace par les valeurs données. Pour la norme, on utilise $\\|\\vec{a}\\|^2 = \\vec{a} \\cdot \\vec{a}$."
+            },
+            {
+              "question": "Dans un plan muni d'un repère orthonormé, on considère les points $A(1;2)$, $B(4;6)$ et $C(3;1)$. Déterminer si le triangle $ABC$ est rectangle en $A$ en utilisant le produit scalaire des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+              "answer": "$\\overrightarrow{AB} = (3;4)$, $\\overrightarrow{AC} = (2;-1)$. $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 \\times 2 + 4 \\times (-1) = 6 - 4 = 2 \\neq 0$. Les vecteurs ne sont pas orthogonaux, donc le triangle n'est pas rectangle en $A$.",
+              "hint": "Calcule d'abord les coordonnées des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. Utilise ensuite la formule du produit scalaire en coordonnées (qui sera vue en détail next lesson) : $(x;y) \\cdot (x';y') = xx' + yy'$.",
+              "explanation": "On vérifie l'orthogonalité par le produit scalaire nul. Ici le produit vaut $2$, donc l'angle n'est pas droit. Note : on a anticipé la formule en coordonnées de la prochaine leçon."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produit scalaire et coordonnées : la clé du calcul efficace"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons défini le produit scalaire géométriquement : normes, angle, cosinus. C'est magnifique pour comprendre, mais dès qu'on veut calculer concrètement, on se heurte souvent à un problème : on ne connaît pas toujours les normes et l'angle. En revanche, en classe de Première spécialité, nous travaillons presque toujours dans un repère orthonormé où les vecteurs ont des coordonnées simples. La grande nouvelle, c'est qu'il existe une formule purement algébrique pour le produit scalaire en coordonnées, qui ne fait intervenir ni racine carrée, ni cosinus. Elle va devenir ton outil de travail quotidien : plus besoin de sortir la calculatrice en mode \"degrés\" pour un cosinus, quelques multiplications et une addition suffisent."
+            },
+            {
+              "type": "definition",
+              "term": "Produit scalaire en coordonnées (repère orthonormé)",
+              "definition": "Dans un repère orthonormé du plan, pour deux vecteurs $\\vec{u}(x;y)$ et $\\vec{v}(x';y')$, on a : $\\vec{u} \\cdot \\vec{v} = xx' + yy'$. Dans l'espace, pour $\\vec{u}(x;y;z)$ et $\\vec{v}(x';y';z')$ : $\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz'$.",
+              "example": "$\\vec{u}(2;-3)$ et $\\vec{v}(4;5)$ donnent $\\vec{u} \\cdot \\vec{v} = 2 \\times 4 + (-3) \\times 5 = 8 - 15 = -7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi cette formule si simple fonctionne-t-elle ? C'est une conséquence directe de la bilinéarité et du fait que les vecteurs de la base orthonormée $\\vec{i}, \\vec{j}$ ont pour produit scalaire $\\vec{i} \\cdot \\vec{i} = 1$, $\\vec{j} \\cdot \\vec{j} = 1$ et $\\vec{i} \\cdot \\vec{j} = 0$. Écris $\\vec{u} = x\\vec{i} + y\\vec{j}$ et $\\vec{v} = x'\\vec{i} + y'\\vec{j}$, développe grâce à la distributivité, et tous les termes croisés s'annulent. Il ne reste que $xx' + yy'$. C'est une démonstration courte mais essentielle : elle montre que la formule en coordonnées n'est pas une définition supplémentaire, c'est un théorème qui découle de la définition géométrique dans le cadre particulier d'une base orthonormée. Attention : cette formule n'est valable que dans un repère orthonormé ! Dans une base non orthonormée, les produits scalaires des vecteurs de base ne sont plus $0$ ou $1$, et la formule change."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le repère",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que le repère est orthonormé (axes perpendiculaires, même unité). Si ce n'est pas précisé, suppose-le par défaut en spécialité maths. Sinon, tu ne peux pas utiliser $xx'+yy'$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les coordonnées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les composantes $(x,y)$ de $\\vec{u}$ et $(x',y')$ de $\\vec{v}$. Si on te donne des points $A$ et $B$, le vecteur $\\overrightarrow{AB}$ a pour coordonnées $(x_B - x_A ; y_B - y_A)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $xx' + yy'$ (ou $xx' + yy' + zz'$ dans l'espace). C'est ton produit scalaire. Tu peux ensuite en déduire le cosinus de l'angle si tu calcules aussi les normes via $\\|\\vec{u}\\| = \\sqrt{x^2+y^2}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\vec{u}(x;y) \\cdot \\vec{v}(x';y') = xx' + yy'"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un exemple un peu plus riche pour bien fixer la méthode. On donne les points $A(2;-1)$, $B(5;3)$ et $C(0;4)$. On veut calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ et en déduire la mesure de l'angle $\\widehat{BAC}$ arrondie au degré près. D'abord les vecteurs : $\\overrightarrow{AB} = (5-2 ; 3-(-1)) = (3;4)$. $\\overrightarrow{AC} = (0-2 ; 4-(-1)) = (-2;5)$. Produit scalaire : $3 \\times (-2) + 4 \\times 5 = -6 + 20 = 14$. Normes : $\\|\\overrightarrow{AB}\\| = \\sqrt{3^2+4^2} = 5$. $\\|\\overrightarrow{AC}\\| = \\sqrt{(-2)^2+5^2} = \\sqrt{29}$. Cosinus de l'angle : $\\cos(\\widehat{BAC}) = \\frac{14}{5\\sqrt{29}} \\approx 0,52$. Donc l'angle vaut environ $59^\\circ$. Remarque comme le calcul du produit scalaire a été immédiat, sans aucune fonction trigonométrique. Le cosinus n'intervient qu'à la toute fin, pour l'interprétation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons calculer le produit scalaire en coordonnées, nous pouvons en déduire des formules classiques de géométrie analytique. La première est la formule de la distance entre deux points, qui n'est que la norme du vecteur les reliant : $AB = \\|\\overrightarrow{AB}\\| = \\sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}$. La seconde est la relation d'Al-Kashi (ou théorème du cosinus) sous forme vectorielle. Pour tout triangle $ABC$, $\\overrightarrow{CB} = \\overrightarrow{CA} + \\overrightarrow{AB}$. En calculant $\\|\\overrightarrow{CB}\\|^2 = (\\overrightarrow{CA} + \\overrightarrow{AB})^2$ (le carré étant le produit scalaire du vecteur par lui-même), on développe grâce à la bilinéarité : $\\|\\overrightarrow{CB}\\|^2 = \\|\\overrightarrow{CA}\\|^2 + \\|\\overrightarrow{AB}\\|^2 + 2\\overrightarrow{CA} \\cdot \\overrightarrow{AB}$. Or $\\overrightarrow{CA} \\cdot \\overrightarrow{AB} = \\|\\overrightarrow{CA}\\| \\|\\overrightarrow{AB}\\| \\cos(\\widehat{CAB})$. On retrouve exactement la formule $a^2 = b^2 + c^2 - 2bc \\cos A$ (avec un signe dû à l'orientation des vecteurs). C'est une démonstration vectorielle d'une élégance rare, qui évite tout dessin et toute construction de hauteur."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB^2 = (x_B-x_A)^2 + (y_B-y_A)^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre application immédiate des coordonnées est le calcul de la longueur de la médiane d'un triangle. Soit $ABC$ un triangle, $I$ le milieu de $[BC]$. On veut exprimer $AI$ en fonction des côtés. $\\overrightarrow{AI} = \\frac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC})$. Alors $AI^2 = \\|\\overrightarrow{AI}\\|^2 = \\frac{1}{4} \\|\\overrightarrow{AB} + \\overrightarrow{AC}\\|^2 = \\frac{1}{4}(\\|\\overrightarrow{AB}\\|^2 + \\|\\overrightarrow{AC}\\|^2 + 2\\overrightarrow{AB} \\cdot \\overrightarrow{AC})$. En remplaçant le produit scalaire par $\\frac{1}{2}(AB^2+AC^2-BC^2)$ (formule issue d'Al-Kashi), on obtient la célèbre formule de la médiane : $m_a^2 = \\frac{2b^2+2c^2-a^2}{4}$. Cette formule, qu'on doit souvent apprendre par cœur, devient ici une simple conséquence du calcul vectoriel. Plus besoin de la mémoriser : tu sais la redémontrer en deux lignes."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Formule de la médiane",
+              "paragraphs": [
+                "Dans un triangle $ABC$ de côtés $a=BC$, $b=CA$, $c=AB$, la médiane issue de $A$ a pour longueur $m_a$ donnée par $m_a^2 = \\frac{2b^2+2c^2-a^2}{4}$. Elle s'obtient en exprimant $\\overrightarrow{AI} = \\frac{1}{2}(\\overrightarrow{AB}+\\overrightarrow{AC})$ et en développant le carré."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au terme de cette leçon sur les calculs. Tu maîtrises maintenant la formule en coordonnées $xx'+yy'$, tu sais l'appliquer pour trouver des produits scalaires, des normes, des distances, des cosinus d'angles, et tu as vu comment elle permet de redémontrer proprement les grandes formules de la géométrie du triangle (Al-Kashi, médiane). Dans la prochaine leçon, nous allons changer de perspective : au lieu de calculer, nous allons interpréter. Que signifie géométriquement le nombre que nous venons de calculer ? Comment le produit scalaire nous permet-il de caractériser des droites, des cercles, des locus ? C'est là que la puissance de l'outil se déploie pleinement pour résoudre des problèmes de géométrie analytique."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un repère orthonormé, on donne $\\vec{u}(3;-2)$ et $\\vec{v}(-1;4)$. Calculer $\\vec{u} \\cdot \\vec{v}$, $\\|\\vec{u}\\|$ et $\\|\\vec{v}\\|$. En déduire $\\cos(\\widehat{\\vec{u},\\vec{v}})$.",
+              "answer": "$\\vec{u} \\cdot \\vec{v} = 3 \\times (-1) + (-2) \\times 4 = -3 - 8 = -11$. $\\|\\vec{u}\\| = \\sqrt{3^2+(-2)^2} = \\sqrt{13}$. $\\|\\vec{v}\\| = \\sqrt{(-1)^2+4^2} = \\sqrt{17}$. $\\cos(\\widehat{\\vec{u},\\vec{v}}) = \\frac{-11}{\\sqrt{13}\\sqrt{17}} = -\\frac{11}{\\sqrt{221}} \\approx -0,74$.",
+              "hint": "Applique la formule $xx'+yy'$ pour le produit scalaire. Pour les normes, utilise $\\sqrt{x^2+y^2}$. Le cosinus est le quotient du produit scalaire par le produit des normes.",
+              "explanation": "Calcul direct en coordonnées. Le cosinus négatif indique un angle obtus."
+            },
+            {
+              "question": "Soit un triangle $ABC$ tel que $AB=5$, $AC=7$ et $\\angle BAC = 60^\\circ$. Calculer $BC^2$ en utilisant la relation d'Al-Kashi sous forme vectorielle.",
+              "answer": "$\\overrightarrow{CB} = \\overrightarrow{CA} + \\overrightarrow{AB}$. $BC^2 = \\|\\overrightarrow{CB}\\|^2 = \\|\\overrightarrow{CA}\\|^2 + \\|\\overrightarrow{AB}\\|^2 + 2\\overrightarrow{CA} \\cdot \\overrightarrow{AB} = 7^2 + 5^2 + 2 \\times 7 \\times 5 \\times \\cos 60^\\circ = 49 + 25 + 70 \\times 0,5 = 74 + 35 = 109$. Donc $BC = \\sqrt{109}$.",
+              "hint": "Exprime $\\overrightarrow{CB}$ comme somme de $\\overrightarrow{CA}$ et $\\overrightarrow{AB}$. Développe le carré (produit scalaire du vecteur par lui-même) et utilise la définition géométrique pour le produit scalaire du milieu.",
+              "explanation": "On utilise $\\|\\vec{u}+\\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2 + 2\\vec{u}\\cdot\\vec{v}$ avec $\\vec{u}=\\overrightarrow{CA}$, $\\vec{v}=\\overrightarrow{AB}$. L'angle entre $\\overrightarrow{CA}$ et $\\overrightarrow{AB}$ est l'angle $A$ (ou son supplémentaire selon l'orientation, mais le cosinus est le même car $\\cos(\\pi-\\theta)=-\\cos\\theta$ et les vecteurs sont orientés différemment ; ici on prend l'angle entre les vecteurs tels qu'ils sont définis, ce qui donne directement la formule d'Al-Kashi)."
+            },
+            {
+              "question": "Dans un triangle $ABC$, on a $AB=6$, $AC=8$, $BC=10$. Calculer la longueur de la médiane issue de $A$ en utilisant la formule vectorielle.",
+              "answer": "Soit $I$ le milieu de $[BC]$. $\\overrightarrow{AI} = \\frac{1}{2}(\\overrightarrow{AB}+\\overrightarrow{AC})$. $AI^2 = \\frac{1}{4}(AB^2+AC^2+2\\overrightarrow{AB}\\cdot\\overrightarrow{AC})$. On a $\\overrightarrow{AB}\\cdot\\overrightarrow{AC} = \\frac{AB^2+AC^2-BC^2}{2} = \\frac{36+64-100}{2} = 0$. Donc $AI^2 = \\frac{1}{4}(36+64+0) = 25$, soit $AI=5$. (On pouvait aussi remarquer que $6^2+8^2=10^2$, donc triangle rectangle en $A$, et la médiane à l'hypoténuse vaut la moitié de l'hypoténuse : $5$.)",
+              "hint": "Utilise la formule $AI^2 = \\frac{1}{4}(AB^2+AC^2+2\\overrightarrow{AB}\\cdot\\overrightarrow{AC})$ et exprime le produit scalaire au milieu à l'aide d'Al-Kashi : $\\overrightarrow{AB}\\cdot\\overrightarrow{AC} = \\frac{AB^2+AC^2-BC^2}{2}$.",
+              "explanation": "On combine la formule de la médiane issue de la définition vectorielle et la relation d'Al-Kashi pour éliminer le produit scalaire. Ici le triangle est rectangle, ce qui simplifie le calcul."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : projection, orthogonalité et équations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons définir le produit scalaire, nous savons le calculer en coordonnées. Il est temps de comprendre ce qu'il \"veut dire\" géométriquement, au-delà de la simple formule. Le nombre $\\vec{u} \\cdot \\vec{v}$ n'est pas qu'un résultat de calcul : c'est la mesure algébrique de la projection orthogonale de $\\vec{u}$ sur la droite portée par $\\vec{v}$, multipliée par la longueur de $\\vec{v}$. Autrement dit, si tu laisses tomber une perpendiculaire depuis l'extrémité de $\\vec{u}$ sur la droite de $\\vec{v}$, le segment signé que tu obtiens sur cette droite, multiplié par $\\|\\vec{v}\\|$, donne exactement le produit scalaire. Cette interprétation par la projection est la clé pour écrire des équations de droites, de cercles, et pour résoudre des problèmes de distance minimale."
+            },
+            {
+              "type": "definition",
+              "term": "Projection orthogonale (mesure algébrique)",
+              "definition": "Soient $\\vec{u}$ et $\\vec{v} \\neq \\vec{0}$. La mesure algébrique de la projection orthogonale de $\\vec{u}$ sur la droite dirigée par $\\vec{v}$ est le nombre $p = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|}$. Elle est positive si la projection est dans le sens de $\\vec{v}$, négative dans le sens opposé. Le vecteur projection est $\\vec{p} = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|^2} \\vec{v}$.",
+              "example": "Si $\\vec{u}(3;4)$ et $\\vec{v}(1;0)$ (vecteur unitaire horizontal), $\\vec{u} \\cdot \\vec{v} = 3$. La projection de $\\vec{u}$ sur l'axe horizontal a pour mesure algébrique $3$ : c'est simplement l'abscisse de $\\vec{u}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde comme cette définition unifie tout. Le produit scalaire $\\vec{u} \\cdot \\vec{v}$ est le produit de la norme de $\\vec{v}$ par la mesure algébrique de la projection de $\\vec{u}$ sur $\\vec{v}$. Si $\\vec{v}$ est un vecteur unitaire (norme $1$), le produit scalaire donne directement la mesure algébrique de la projection. C'est pour cela que dans un repère orthonormé, les coordonnées d'un vecteur $\\vec{u}(x;y)$ sont exactement les produits scalaires avec les vecteurs de base : $x = \\vec{u} \\cdot \\vec{i}$, $y = \\vec{u} \\cdot \\vec{j}$. Les coordonnées ne sont rien d'autre que des projections sur les axes !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la droite support",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu as un vecteur $\\vec{v}$ (non nul) qui donne la direction de la droite sur laquelle tu projettes. Si on te donne une droite cartésienne, un vecteur directeur fera l'affaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le produit scalaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $\\vec{u} \\cdot \\vec{v}$ (avec la formule en coordonnées si tu as les composantes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par la norme de $\\vec{v}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La mesure algébrique de la projection est $p = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|}$. Si tu veux le vecteur projection, multiplie $p$ par le vecteur unitaire $\\frac{\\vec{v}}{\\|\\vec{v}\\|}$, ce qui donne $\\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|^2} \\vec{v}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "p = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|}, \\quad \\vec{p} = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|^2} \\vec{v}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette notion de projection nous ouvre les portes de l'équation cartésienne d'une droite. Une droite $(D)$ dans le plan peut se définir comme l'ensemble des points $M(x;y)$ tels que le vecteur $\\overrightarrow{AM}$ (où $A$ est un point fixe de la droite) est orthogonal à un vecteur normal $\\vec{n}(a;b)$. La condition d'orthogonalité s'écrit $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. En coordonnées, $\\overrightarrow{AM}(x-x_A ; y-y_A)$ et $\\vec{n}(a;b)$, donc $(x-x_A)a + (y-y_A)b = 0$, soit $ax + by + c = 0$ avec $c = -ax_A - by_A$. C'est la forme cartésienne classique, mais ici elle tombe naturellement du produit scalaire : la droite est l'ensemble des points dont le vecteur position par rapport à $A$ a une projection nulle sur $\\vec{n}$. C'est une façon très puissante de voir les choses : l'équation cartésienne n'est qu'une condition d'orthogonalité."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Poussons l'interprétation plus loin. Le produit scalaire permet aussi d'écrire l'équation d'un cercle. Un cercle de centre $I$ et de rayon $R$ est l'ensemble des points $M$ tels que $IM = R$, c'est-à-dire $\\|\\overrightarrow{IM}\\|^2 = R^2$. Or $\\|\\overrightarrow{IM}\\|^2 = \\overrightarrow{IM} \\cdot \\overrightarrow{IM}$. En coordonnées, si $I(a;b)$ et $M(x;y)$, cela donne $(x-a)^2 + (y-b)^2 = R^2$. Mais on peut aussi voir les choses différemment : pour un point $M$ fixe, l'ensemble des points $X$ tels que $\\overrightarrow{MX} \\cdot \\vec{u} = k$ (avec $\\vec{u}$ vecteur unitaire) est une droite perpendiculaire à $\\vec{u}$. En faisant varier $k$, on balaye le plan par des droites parallèles. Le produit scalaire avec un vecteur unitaire donne donc une coordonnée le long de cet axe. C'est l'idée de base des coordonnées curvilignes et des changements de repère."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Équation d'une droite par produit scalaire",
+              "paragraphs": [
+                "Droite $(D)$ de point $A$ et de vecteur normal $\\vec{n}(a;b)$ : $\\overrightarrow{AM} \\cdot \\vec{n} = 0 \\Leftrightarrow a(x-x_A)+b(y-y_A)=0$. Vecteur directeur $\\vec{u}(-b;a)$ (car $\\vec{u} \\cdot \\vec{n} = -ab+ab=0$)."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par une application magnifique : la distance d'un point à une droite. Soit $(D)$ une droite d'équation cartésienne $ax+by+c=0$ et un point $M_0(x_0;y_0)$. Un vecteur normal est $\\vec{n}(a;b)$. La distance $d(M_0, (D))$ est la valeur absolue de la mesure algébrique de la projection de $\\overrightarrow{AM_0}$ sur $\\vec{n}$, où $A$ est un point quelconque de la droite. On a $d = \\frac{|\\overrightarrow{AM_0} \\cdot \\vec{n}|}{\\|\\vec{n}\\|} = \\frac{|a(x_0-x_A)+b(y_0-y_A)|}{\\sqrt{a^2+b^2}}$. Comme $A$ appartient à la droite, $ax_A+by_A+c=0$, donc $ax_A+by_A = -c$. Le numérateur devient $|ax_0+by_0+c|$. La formule tombe : $d(M_0, (D)) = \\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$. Tu n'as pas à la mémoriser : tu la redémontres en une ligne en utilisant la projection orthogonale. C'est la beauté du produit scalaire : il transforme des problèmes de distances en calculs algébriques simples."
+            },
+            {
+              "type": "display_math",
+              "latex": "d(M_0, (D)) = \\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voici au terme de ce cours sur le produit scalaire. Tu as maintenant une vision complète : définition géométrique (normes, angle, cosinus), calcul effectif en coordonnées ($xx'+yy'$), et interprétation par la projection orthogonale qui donne accès aux équations de droites, de cercles et aux formules de distance. Ce trio définition-calcul-interprétation est le moteur de toute la géométrie analytique du lycée. Dans les prochains chapitres, nous utiliserons cet outil pour étudier les cercles, les sphères, les plans dans l'espace, et même pour aborder les suites géométriques ou l'optimisation. Garde toujours en tête l'image mentale : le produit scalaire mesure \"combien\" d'un vecteur va dans le sens de l'autre. C'est une boussole algébrique pour naviguer en géométrie."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir le produit scalaire de deux vecteurs par la formule $\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\|\\vec{v}\\| \\cos(\\widehat{\\vec{u},\\vec{v}})$.",
+                "Je sais calculer un produit scalaire en coordonnées dans un repère orthonormé : $xx' + yy'$.",
+                "Je connais les propriétés : symétrie, bilinéarité, $\\vec{u} \\cdot \\vec{u} = \\|\\vec{u}\\|^2$.",
+                "Je sais utiliser le produit scalaire pour tester l'orthogonalité : $\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0$ (vecteurs non nuls).",
+                "Je sais exprimer la projection orthogonale d'un vecteur sur un autre et calculer sa mesure algébrique.",
+                "Je sais écrire l'équation cartésienne d'une droite à partir d'un point et d'un vecteur normal : $\\overrightarrow{AM} \\cdot \\vec{n} = 0$.",
+                "Je sais retrouver la formule de la distance d'un point à une droite par projection : $d = \\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$.",
+                "Je sais redémontrer la relation d'Al-Kashi et la formule de la médiane à l'aide du produit scalaire."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $\\vec{u}(2;-1)$ et $\\vec{v}(3;4)$. Calculer la mesure algébrique de la projection orthogonale de $\\vec{u}$ sur la droite dirigée par $\\vec{v}$. Donner une valeur approchée au centième.",
+              "answer": "$\\vec{u} \\cdot \\vec{v} = 2 \\times 3 + (-1) \\times 4 = 6 - 4 = 2$. $\\|\\vec{v}\\| = \\sqrt{3^2+4^2} = 5$. Mesure algébrique $p = \\frac{2}{5} = 0,4$.",
+              "hint": "Calcule d'abord le produit scalaire, puis la norme de $\\vec{v}$, et divise.",
+              "explanation": "La mesure algébrique de la projection de $\\vec{u}$ sur $\\vec{v}$ est $\\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{v}\\|}$. Ici le résultat est positif, la projection est dans le même sens que $\\vec{v}$."
+            },
+            {
+              "question": "Déterminer une équation cartésienne de la droite $(D)$ passant par $A(1;-2)$ et ayant pour vecteur normal $\\vec{n}(3;-1)$. Vérifier que le point $B(0;-5)$ appartient à $(D)$.",
+              "answer": "Équation : $3(x-1) - 1(y+2) = 0 \\iff 3x - 3 - y - 2 = 0 \\iff 3x - y - 5 = 0$. Pour $B(0;-5)$ : $3 \\times 0 - (-5) - 5 = 5 - 5 = 0$. Le point $B$ appartient à la droite.",
+              "hint": "Utilise la condition $\\overrightarrow{AM} \\cdot \\vec{n} = 0$ avec $M(x;y)$. Pour vérifier, remplace les coordonnées de $B$ dans l'équation trouvée.",
+              "explanation": "On applique la méthode du produit scalaire nul avec un vecteur normal. L'équation obtenue est sous forme normale $ax+by+c=0$."
+            },
+            {
+              "question": "Calculer la distance du point $M_0(2;3)$ à la droite $(D)$ d'équation $4x - 3y + 1 = 0$.",
+              "answer": "$d = \\frac{|4 \\times 2 - 3 \\times 3 + 1|}{\\sqrt{4^2+(-3)^2}} = \\frac{|8 - 9 + 1|}{\\sqrt{25}} = \\frac{0}{5} = 0$. Le point $M_0$ appartient à la droite (distance nulle).",
+              "hint": "Applique la formule $d = \\frac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$ avec $a=4, b=-3, c=1$.",
+              "explanation": "Le numérateur est nul, ce qui signifie que les coordonnées de $M_0$ satisfont l'équation de la droite. La distance est donc zéro."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

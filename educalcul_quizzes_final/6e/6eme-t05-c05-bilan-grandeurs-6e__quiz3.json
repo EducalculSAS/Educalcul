@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 356,
+  "_course_code": "6eme-t05-c05-bilan-grandeurs-6e",
+  "_level": "6e",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Bilan - Grandeurs 6e",
+  "title": "Bilan Grandeurs 6e : Conversions et Calculs",
+  "questions": [
+    {
+      "text": "Quelle est l'écriture en mètres de la longueur $2,5$ km ?",
+      "options": [
+        "250 m",
+        "2 500 m",
+        "25 000 m",
+        "250 000 m"
+      ],
+      "correctAnswer": "2 500 m",
+      "explanation": "Pour convertir des kilomètres en mètres, on multiplie par 1 000 (trois sauts vers la droite dans le tableau des longueurs : km -> hm -> dam -> m). $2,5 \\times 1\\,000 = 2\\,500$. Donc $2,5$ km = $2\\,500$ m. L'option 250 m correspondrait à une multiplication par 100 (oubli d'un saut), 25 000 m à une multiplication par 10 000 (saut en trop) et 250 000 m à une multiplication par 100 000.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On convertit la masse $4,05$ kg en grammes. Quel est le résultat ?",
+      "options": [
+        "405 g",
+        "4 050 g",
+        "40 500 g",
+        "405 000 g"
+      ],
+      "correctAnswer": "4 050 g",
+      "explanation": "Pour passer des kilogrammes aux grammes, on effectue trois sauts vers la droite dans le tableau des masses (kg -> hg -> dag -> g), ce qui revient à multiplier par 1 000. $4,05 \\times 1\\,000 = 4\\,050$. On décale la virgule de trois rangs vers la droite. L'option 405 g oublie un zéro (multiplication par 100), 40 500 g ajoute un zéro en trop (multiplication par 10 000) et 405 000 g en ajoute deux (multiplication par 100 000).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une aire de $5,2$ m² correspond à combien de dm² ?",
+      "options": [
+        "52 dm²",
+        "520 dm²",
+        "5 200 dm²",
+        "0,52 dm²"
+      ],
+      "correctAnswer": "520 dm²",
+      "explanation": "Dans le tableau des aires, chaque changement d'unité vaut un facteur 100 (et non 10 comme pour les longueurs). Pour passer de m² à dm², il y a un seul saut (m² -> dm²), on multiplie donc par 100. $5,2 \\times 100 = 520$. L'erreur classique est de multiplier par 10 (donnant 52 dm²) comme pour les longueurs, ou par 1 000 (donnant 5 200 dm²) en confondant avec le tableau des volumes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un récipient contient $0,75$ L de jus. Quelle est cette contenance en millilitres (mL) ?",
+      "options": [
+        "75 mL",
+        "750 mL",
+        "7 500 mL",
+        "0,75 mL"
+      ],
+      "correctAnswer": "750 mL",
+      "explanation": "L'unité de base pour la capacité est le litre (L). Pour passer des litres aux millilitres, on fait trois sauts vers la droite (L -> dL -> cL -> mL), on multiplie donc par 1 000. $0,75 \\times 1\\,000 = 750$. On peut aussi savoir que $1$ L = $1\\,000$ mL, donc $0,75$ L = $\\frac{3}{4}$ de 1 000 = 750 mL. L'option 75 mL correspond à une multiplication par 100 (oubli d'un saut), 7 500 mL à une multiplication par 10 000.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un film commence à 14 h 25 et se termine à 16 h 10. Quelle est sa durée ?",
+      "options": [
+        "1 h 15 min",
+        "1 h 45 min",
+        "2 h 15 min",
+        "2 h 45 min"
+      ],
+      "correctAnswer": "1 h 45 min",
+      "explanation": "On calcule la durée par paliers : de 14 h 25 à 15 h 00, il s'écoule 35 minutes (car $60 - 25 = 35$). De 15 h 00 à 16 h 00, il s'écoule 1 heure. De 16 h 00 à 16 h 10, il s'écoule 10 minutes. Total : 1 heure + 35 minutes + 10 minutes = 1 heure 45 minutes. L'erreur fréquente est de soustraire directement $25$ de $10$ aux minutes sans gérer la retenue d'heure, ce qui mènerait à 1 h 85 min (incorrect) ou 2 h 15 min (si on ajoute 1 h à tort).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

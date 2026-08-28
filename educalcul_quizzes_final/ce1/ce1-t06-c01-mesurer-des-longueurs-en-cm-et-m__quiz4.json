@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 117,
+  "_course_code": "ce1-t06-c01-mesurer-des-longueurs-en-cm-et-m",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Mesurer des longueurs en cm et m",
+  "title": "Quiz : Mesurer des longueurs en cm et m (Application)",
+  "questions": [
+    {
+      "text": "Regarde la règle graduée ci-dessous. Quelle est la longueur du segment bleu ?",
+      "options": [
+        "5 cm",
+        "6 cm",
+        "7 cm",
+        "8 cm"
+      ],
+      "correctAnswer": "7 cm",
+      "explanation": "Le segment commence au repère 0 et se termine exactement au repère 7. La longueur est donc de 7 cm. Les autres réponses correspondent à une lecture décalée d'un cran sur la règle.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 7,
+        "unit": "cm",
+        "caption": "Règle graduée montrant un segment de 7 cm"
+      }
+    },
+    {
+      "text": "Quelle unité de mesure est la plus adaptée pour mesurer la hauteur d'une porte de classe ?",
+      "options": [
+        "2 cm",
+        "20 cm",
+        "2 m",
+        "20 m"
+      ],
+      "correctAnswer": "2 m",
+      "explanation": "Une porte standard mesure environ 2 mètres de haut. 2 cm ou 20 cm sont beaucoup trop courts (taille d'un doigt ou d'une règle). 20 m correspond à la hauteur d'un immeuble de 6 à 7 étages.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On mesure un crayon avec une règle. Le début du crayon est au repère $3$ cm et la mine arrive au repère $11$ cm. Quelle est la longueur du crayon ?",
+      "options": [
+        "7 cm",
+        "8 cm",
+        "9 cm",
+        "14 cm"
+      ],
+      "correctAnswer": "8 cm",
+      "explanation": "Quand la mesure ne commence pas à 0, il faut faire la différence entre les deux repères : $11 - 3 = 8$. Le crayon mesure 8 cm. L'erreur fréquente est d'additionner ($14$) ou de mal compter les intervalles ($7$ ou $9$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range ces longueurs dans l'ordre croissant (de la plus petite à la plus grande) : $45$ cm, $1$ m, $90$ cm, $50$ cm.",
+      "options": [
+        "$45$ cm, $50$ cm, $90$ cm, $1$ m",
+        "$1$ m, $90$ cm, $50$ cm, $45$ cm",
+        "$45$ cm, $90$ cm, $50$ cm, $1$ m",
+        "$50$ cm, $45$ cm, $1$ m, $90$ cm"
+      ],
+      "correctAnswer": "$45$ cm, $50$ cm, $90$ cm, $1$ m",
+      "explanation": "Il faut convertir toutes les mesures dans la même unité pour comparer. $1$ m = $100$ cm. On compare alors : $45 < 50 < 90 < 100$. L'ordre croissant est donc $45$ cm, $50$ cm, $90$ cm, $1$ m.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un ruban mesure $1$ m. On coupe un morceau de $30$ cm. Quelle est la longueur du ruban qui reste ?",
+      "options": [
+        "70 cm",
+        "130 cm",
+        "30 cm",
+        "1 m 30 cm"
+      ],
+      "correctAnswer": "70 cm",
+      "explanation": "Il faut soustraire la partie coupée au total. $1$ m = $100$ cm. $100 - 30 = 70$. Il reste 70 cm. L'erreur classique est d'additionner ($130$) ou de ne pas convertir le mètre en centimètres.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

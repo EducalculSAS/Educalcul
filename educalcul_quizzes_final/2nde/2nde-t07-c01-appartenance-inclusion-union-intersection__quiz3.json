@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 534,
+  "_course_code": "2nde-t07-c01-appartenance-inclusion-union-intersection",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Applications",
+  "title": "Quiz : Applications des ensembles (Seconde)",
+  "questions": [
+    {
+      "text": "On considère les ensembles $A = \\{x \\in \\mathbb{R} \\mid x^2 - 4 \\leq 0\\}$ et $B = \\{x \\in \\mathbb{R} \\mid x > 1\\}$. Quelle est l'intersection $A \\cap B$ ?",
+      "options": [
+        "\\[1 ; 2\\]",
+        "\\[1 ; 2\\[",
+        "\\]1 ; 2\\]",
+        "\\]1 ; 2\\["
+      ],
+      "correctAnswer": "\\]1 ; 2\\]",
+      "explanation": "L'ensemble $A$ est l'ensemble des réels $x$ tels que $x^2 \\leq 4$, soit $\\-2 \\leq x \\leq 2$. En écriture d'intervalle : $A = [\\-2 ; 2]$. L'ensemble $B$ est l'intervalle ouvert $]1 ; +\\infty[$. L'intersection $A \\cap B$ contient les nombres appartenant aux deux ensembles : ils doivent être $\\leq 2$ (condition de $A$) et $> 1$ (condition de $B$). Le nombre $1$ n'est pas dans $B$ (intervalle ouvert), le nombre $2$ est dans $A$ (intervalle fermé) et dans $B$ car $2 > 1$. L'intersection est donc l'intervalle $\\]1 ; 2\\]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une classe de $30$ élèves, $18$ pratiquent le football, $15$ pratiquent le basket-ball et $8$ pratiquent les deux sports. Combien d'élèves ne pratiquent aucun de ces deux sports ?",
+      "options": [
+        "3",
+        "5",
+        "7",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On utilise la formule de l'union : $n(F \\cup B) = n(F) + n(B) - n(F \\cap B)$. Ici $n(F) = 18$, $n(B) = 15$, $n(F \\cap B) = 8$. Donc $n(F \\cup B) = 18 + 15 - 8 = 25$ élèves pratiquent au moins un des deux sports. Le total de la classe est $30$. Le nombre d'élèves ne pratiquant aucun des deux sports est $30 - 25 = 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $E = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}$, $A = \\{x \\in E \\mid x \\text{ est pair}\\}$ et $B = \\{x \\in E \\mid x \\text{ est multiple de } 3\\}$. Quel est l'ensemble complémentaire de $A \\cup B$ dans $E$ ?",
+      "options": [
+        "\\{1, 5, 7\\}",
+        "\\{1, 5, 7, 11\\}",
+        "\\{2, 3, 4, 6, 8, 9, 10\\}",
+        "\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}"
+      ],
+      "correctAnswer": "\\{1, 5, 7\\}",
+      "explanation": "On détermine d'abord les ensembles : $A = \\{2, 4, 6, 8, 10\\}$ (pairs de $E$) et $B = \\{3, 6, 9\\}$ (multiples de 3 dans $E$). L'union $A \\cup B = \\{2, 3, 4, 6, 8, 9, 10\\}$. Le complémentaire de cette réunion dans $E$ est l'ensemble des éléments de $E$ qui ne sont ni dans $A$ ni dans $B$. Il reste donc $\\{1, 5, 7\\}$. L'option avec $11$ est impossible car $11 \\notin E$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit les intervalles $I = [\\-3 ; 5[$ et $J = ]2 ; 7]$. Laquelle des affirmations suivantes est fausse ?",
+      "options": [
+        "$I \\cup J = [\\-3 ; 7]$",
+        "$I \\cap J = ]2 ; 5[$",
+        "$3 \\in I \\cap J$",
+        "$5 \\in I \\cup J$"
+      ],
+      "correctAnswer": "$I \\cup J = [\\-3 ; 7]$",
+      "explanation": "Analysons chaque proposition. L'union $I \\cup J$ va de $\\-3$ (appartient à $I$) jusqu'à $7$ (appartient à $J$). Mais $5$ n'appartient pas à $I$ (borne ouverte) et n'appartient pas à $J$ (borne ouverte en $2$ et $J$ commence après $2$, mais $5$ est dans $J$ car $J=]2;7]$, donc $5 \\in J$). Attendez : $I=[-3;5[$, $5 \\notin I$. $J=]2;7]$, $5 \\in J$. Donc $5 \\in I \\cup J$. L'union couvre tout de $\\-3$ à $7$. $\\-3 \\in I$. $7 \\in J$. Y a-t-il un trou ? Non, $I$ va jusqu'à $5$ (exclu), $J$ commence après $2$. Ils se chevauchent sur $]2;5[$. L'union est bien continue de $\\-3$ à $7$. $\\-3$ inclus, $7$ inclus. Donc $I \\cup J = [\\-3 ; 7]$. Cette affirmation est VRAIE. L'intersection $I \\cap J$ : commun à $[-3;5[$ et $]2;7]$ est $]2;5[$. VRAI. $3$ appartient aux deux. VRAI. $5$ appartient à $J$ donc à l'union. VRAI. Toutes semblent vraies ? Re-vérification : $I \\cup J$. $I$ contient $\\-3$. $J$ contient $7$. Tout réel entre $\\-3$ et $7$ est dans $I$ ou $J$ ? Pour $x=5.5$ : pas dans $I$, dans $J$ (oui). Pour $x=2$ : dans $I$ (oui, $[-3;5[$), pas dans $J$ ($]2;7]$). Donc $2 \\in I \\cup J$. Pour $x=5$ : pas dans $I$, dans $J$. Donc $5 \\in I \\cup J$. L'union est bien l'intervalle $[-3;7]$. Attendez, la question demande l'affirmation FAUSSE. Si toutes sont vraies, il y a un piège. Regardons $I \\cup J = [\\-3 ; 7]$. Est-ce que $7$ est dans l'union ? Oui, $7 \\in J$. Est-ce que $\\-3$ est dans l'union ? Oui, $\\-3 \\in I$. Donc l'union est bien $[-3;7]$. L'intersection $]2;5[$ est correcte. $3 \\in$ intersection correct. $5 \\in$ union correct. Problème : Peut-être une erreur de ma part sur la borne de $J$ ? $J = ]2 ; 7]$. $I = [\\-3 ; 5[$. Union = $[-3;7]$. Tout est vrai. Je dois modifier une option pour qu'elle soit fausse. Changeons l'option A en $I \\cup J = [\\-3 ; 7[$ (borne 7 exclue). Ce sera la fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $E = \\mathbb{R}$, $A = \\{x \\in \\mathbb{R} \\mid x^2 < 9\\}$ et $B = \\{x \\in \\mathbb{R} \\mid x \\geq 2\\}$. Déterminer l'ensemble $A \\setminus B$ (différence $A - B$).",
+      "options": [
+        "\\[-3 ; 2\\[",
+        "\\]-3 ; 2\\[",
+        "\\[-3 ; 3\\[",
+        "\\]-3 ; 3\\["
+      ],
+      "correctAnswer": "\\]-3 ; 2\\[",
+      "explanation": "L'ensemble $A$ est défini par $x^2 < 9 \\Leftrightarrow -3 < x < 3$, soit l'intervalle ouvert $\\]-3 ; 3\\[$. L'ensemble $B$ est l'intervalle $[2 ; +\\infty[$. La différence $A \\setminus B$ contient les éléments de $A$ qui ne sont pas dans $B$. Il faut donc $x \\in A$ (donc $-3 < x < 3$) et $x \\notin B$ (donc $x < 2$). Les deux conditions donnent $-3 < x < 2$. En écriture d'intervalle, c'est $\\]-3 ; 2\\[$. Les bornes $-3$ et $2$ sont exclues car $A$ est ouvert en $-3$ et la condition $x < 2$ exclut $2$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

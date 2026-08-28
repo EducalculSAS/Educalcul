@@ -1,0 +1,59 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 442,
+  "_course_code": "4eme-t05-c03-distance-et-triangle-rectangle",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Problèmes",
+  "title": "Problèmes avec le théorème de Pythagore",
+  "blocks": [
+    {
+      "title": "Hypoténuse d'un triangle rectangle",
+      "content": "Dans un triangle rectangle, les deux côtés de l'angle droit mesurent $6$ cm et $8$ cm. Calcule la longueur de l'hypoténuse.",
+      "correctAnswer": "10 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le théorème de Pythagore : $6^2 + 8^2 = 36 + 64 = 100$. La racine carrée de $100$ est $10$. Donc l'hypoténuse mesure $10$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "6 cm",
+          "8 cm",
+          "?"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "title": "Hauteur atteinte par une échelle",
+      "content": "Une échelle de $5$ m est appuyée contre un mur. Le pied de l'échelle est à $3$ m du mur. À quelle hauteur le sommet de l'échelle touche-t-il le mur ?",
+      "correctAnswer": "4 m",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le théorème de Pythagore dans le triangle rectangle formé par l'échelle, le mur et le sol : $3^2 + h^2 = 5^2$. Donc $h^2 = 25 - 9 = 16$ et $h = 4$. La hauteur est de $4$ m.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Côté inconnu d'un rectangle",
+      "content": "Un champ rectangulaire a une diagonale de $130$ m et un côté de $50$ m. Détermine la longueur de l'autre côté.",
+      "correctAnswer": "120 m",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans le rectangle, la diagonale forme un triangle rectangle avec les deux côtés. On a $50^2 + b^2 = 130^2$. Ainsi $b^2 = 16900 - 2500 = 14400$ et $b = 120$. L'autre côté mesure $120$ m.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Contre-exemple",
+  "title": "Contre-exemples : association",
+  "blocks": [
+    {
+      "title": "Nombres entiers et propriétés arithmétiques",
+      "content": "Relie chaque affirmation à un contre-exemple qui la contredit.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Tous les nombres entiers sont positifs.",
+          "right": "$-3$"
+        },
+        {
+          "left": "Tous les nombres pairs sont divisibles par $4$.",
+          "right": "$2$"
+        },
+        {
+          "left": "Tous les carrés sont supérieurs à $10$.",
+          "right": "$9$"
+        },
+        {
+          "left": "Tous les nombres premiers sont impairs.",
+          "right": "$2$"
+        }
+      ],
+      "items": [],
+      "explanation": "L'affirmation « Tous les nombres entiers sont positifs » est fausse car $-3$ est un entier négatif. « Tous les nombres pairs sont divisibles par 4 » est contredite par $2$, qui est pair mais non multiple de 4. « Tous les carrés sont supérieurs à 10 » est fausse puisque $3^2 = 9 < 10$. Enfin, « Tous les nombres premiers sont impairs » est contredite par $2$, l'unique nombre premier pair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Figures géométriques",
+      "content": "Relie chaque affirmation géométrique à un contre-exemple adapté.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Tous les triangles sont rectangles.",
+          "right": "Triangle équilatéral"
+        },
+        {
+          "left": "Tous les quadrilatères ont des angles droits.",
+          "right": "Losange"
+        },
+        {
+          "left": "Tous les cercles ont un rayon entier.",
+          "right": "Cercle de rayon $1,5$"
+        },
+        {
+          "left": "Tous les polygones réguliers ont un nombre pair de côtés.",
+          "right": "Triangle équilatéral"
+        }
+      ],
+      "items": [],
+      "explanation": "Un triangle équilatéral n'a aucun angle droit, donc il contredit la première affirmation. Un losange est un quadrilatère dont les angles ne sont pas droits en général. Un cercle de rayon $1,5$ montre qu'un rayon n'est pas nécessairement un entier. Enfin, le triangle équilatéral est un polygone régulier à trois côtés, nombre impair.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonctions et propriétés algébriques",
+      "content": "Relie chaque affirmation sur les fonctions à un contre-exemple.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Toute fonction linéaire est croissante.",
+          "right": "$f(x) = -2x + 3$"
+        },
+        {
+          "left": "Toute fonction quadratique a un maximum.",
+          "right": "$f(x) = x^2$"
+        },
+        {
+          "left": "Toute fonction paire est constante.",
+          "right": "$f(x) = x^2$"
+        },
+        {
+          "left": "Toute fonction impaire est croissante.",
+          "right": "$f(x) = -x^3$"
+        }
+      ],
+      "items": [],
+      "explanation": "La fonction linéaire $f(x) = -2x + 3$ a un coefficient directeur négatif, donc elle est décroissante. La fonction quadratique $f(x) = x^2$ est convexe et possède un minimum, pas de maximum. La fonction $f(x) = x^2$ est paire ($f(-x)=f(x)$) mais non constante. Enfin, $f(x) = -x^3$ est impaire ($f(-x)=-f(x)$) et décroissante sur $\\mathbb{R}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

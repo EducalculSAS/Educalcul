@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 220,
+  "_course_code": "cm1-t02-c02-fractions-superieures-a-1",
+  "_level": "cm1",
+  "_subject": "Fractions",
+  "_subtheme": "Approfondissement : Plusieurs unités",
+  "title": "Algorithmes sur les fractions supérieures à 1",
+  "blocks": [
+    {
+      "title": "Conversion d'une fraction impropre en nombre mixte",
+      "content": "Écrire un algorithme (en pseudo-code) qui prend en entrée un numérateur $n$ et un dénominateur $d$ (avec $n \\ge d > 0$) et qui affiche la partie entière $q$ et le nouveau numérateur $r$ de la fraction propre restante, de sorte que $\\frac{n}{d} = q + \\frac{r}{d}$.",
+      "correctAnswer": "Algorithme :\\nÉtape 1 : lire n, d\\nÉtape 2 : calculer q = n // d (division entière)\\nÉtape 3 : calculer r = n % d (reste de la division)\\nÉtape 4 : afficher q, r, d\\nSi r = 0 afficher seulement q.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise la division euclidienne de n par d. Le quotient q est le nombre d'unités entières contenues dans la fraction, le reste r est le numérateur de la fraction propre restante. Ainsi $\\frac{n}{d}=q+\\frac{r}{d}$ avec $0 \\le r < d$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de deux fractions de même dénominateur et conversion",
+      "content": "Écrire un algorithme qui reçoit deux numérateurs $n_1$, $n_2$ et un dénominateur commun $d$ ($d>0$), calcule la somme $\\frac{n_1}{d}+\\frac{n_2}{d}$, puis transforme le résultat en nombre mixte (partie entière et fraction propre).",
+      "correctAnswer": "Algorithme :\\nÉtape 1 : lire n1, n2, d\\nÉtape 2 : calculer n = n1 + n2\\nÉtape 3 : calculer q = n // d\\nÉtape 4 : calculer r = n % d\\nÉtape 5 : afficher q, r, d\\nSi r = 0 afficher seulement q.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux fractions de même dénominateur s'obtient en ajoutant les numérateurs. Le numérateur obtenu peut être supérieur ou égal au dénominateur, on applique alors la division euclidienne pour extraire la partie entière q et le reste r, ce qui donne le nombre mixte $q+\\frac{r}{d}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux fractions supérieures à 1",
+      "content": "Écrire un algorithme qui compare deux fractions impropres $\\frac{a}{b}$ et $\\frac{c}{d}$ (avec $a,b,c,d>0$) et affiche laquelle est la plus grande. Indication : on peut les ramener au même dénominateur ou convertir chacune en nombre mixte.",
+      "correctAnswer": "Algorithme (méthode du même dénominateur) :\\nÉtape 1 : lire a, b, c, d\\nÉtape 2 : calculer num1 = a * d\\nÉtape 3 : calculer num2 = c * b\\nÉtape 4 : si num1 > num2 afficher \"a/b est plus grand\"\\nÉtape 5 : sinon si num1 < num2 afficher \"c/d est plus grand\"\\nÉtape 6 : sinon afficher \"les deux fractions sont égales\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour comparer $\\frac{a}{b}$ et $\\frac{c}{d}$, on les met au même dénominateur $bd$ en multipliant le numérateur de la première par $d$ et celui de la seconde par $b$. On compare alors les deux nouveaux numérateurs. Cette méthode évite la conversion en nombre mixte et fonctionne pour toutes fractions positives.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

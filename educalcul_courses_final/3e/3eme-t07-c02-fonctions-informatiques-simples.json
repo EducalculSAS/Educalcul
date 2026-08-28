@@ -1,0 +1,539 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.000306+00:00",
+  "id": 491,
+  "code": "3eme-t07-c02",
+  "title": "Fonctions informatiques simples",
+  "description": "Cours structuré Educalcul : Fonctions informatiques simples.",
+  "subject": "Algorithmique et préparation DNB",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Algorithmique et préparation DNB",
+    "titre_du_cours": "Fonctions informatiques simples",
+    "objectif_global": "Fonctions informatiques simples",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Appeler.",
+      "Tester."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Algorithmique et préparation DNB",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une fonction ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu écris un programme, tu as souvent besoin de répéter le même calcul ou la même série d'instructions plusieurs fois. Au lieu de copier-coller le code à chaque endroit, tu peux regrouper ces instructions dans un bloc réutilisable que l'on appelle une fonction. Une fonction possède un nom, elle peut recevoir des informations extérieures appelées paramètres, elle exécute une suite d'étapes précises et elle peut renvoyer un résultat, que l'on nomme valeur de retour. Ce mécanisme permet de structurer ton programme, de le rendre plus lisible et d'éviter les erreurs dues à la duplication. Dans cette leçon, nous allons découvrir comment définir une fonction en algorithmique, quelles sont les règles de syntaxe à respecter et comment choisir des noms clairs pour que ton code reste compréhensible plusieurs mois plus tard."
+            },
+            {
+              "type": "definition",
+              "term": "fonction",
+              "definition": "Bloc d'instructions identifié par un nom, qui peut accepter des paramètres, effectuer un traitement et renvoyer une valeur de retour.",
+              "example": "fonction carre(x) : retourner x * x"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'idée générale est posée, regardons de plus près la syntaxe exacte qu'il faut respecter pour que l'ordinateur comprenne ta définition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La syntaxe de définition"
+            },
+            {
+              "type": "paragraph",
+              "content": "La définition d'une fonction suit toujours le même schéma. Tu commences par le mot-clé qui indique la création d'une fonction, puis tu donnes un nom significatif, ensuite tu ouvres une parenthèse pour lister les paramètres séparés par des virgules, tu fermes la parenthèse et tu indiques le type de la valeur de retour si le langage l'exige. Le corps de la fonction est délimité par une indentation ou par des accolades selon le langage, et chaque instruction à l'intérieur s'exécute quand la fonction est appelée. Il est important de respecter l'ordre : mot-clé, nom, liste de paramètres, deux-points ou flèche de retour, puis bloc d'instructions. Une omission, comme oublier les deux-points, provoque une erreur de syntaxe que l'interpréteur signale immédiatement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le mot-clé",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le mot-clé qui déclenche la définition, par exemple \"fonction\" en pseudo-code ou \"def\" en Python."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Nommer la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donne un nom en minuscules avec des mots collés ou séparés par des underscores, par exemple \"calculer_aire\"."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lister les paramètres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place entre parenthèses les noms des données d'entrée, séparés par des virgules, sans oublier leur type si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Écrire le corps et le retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indente les instructions, termine par \"retourner\" ou \"return\" suivi de l'expression à renvoyer."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment tout cela s'assemble sur un exemple concret que tu pourras tester toi-même."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Un premier exemple concret"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu veuilles calculer le carré d'un nombre. Tu écris une fonction nommée carre qui prend un paramètre x de type nombre et qui renvoie x multiplié par x. En pseudo-code cela s'écrit : fonction carre(x) : retourner x * x. Quand tu appelles carre(5), le programme remplace x par 5, effectue la multiplication et te donne 25. Ce même bloc peut être réutilisé pour carre(12), carre(-3) ou n'importe quelle autre valeur sans réécrire la multiplication. L'avantage est double : le code est plus court et si tu découvres une erreur dans la formule, tu la corriges à un seul endroit."
+            },
+            {
+              "type": "definition",
+              "term": "paramètre",
+              "definition": "Variable locale qui reçoit la valeur fournie lors de l'appel de la fonction.",
+              "example": "x dans fonction carre(x)"
+            },
+            {
+              "type": "definition",
+              "term": "valeur de retour",
+              "definition": "Résultat que la fonction renvoie à l'endroit où elle a été appelée.",
+              "example": "x * x dans l'exemple du carré"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, rappelons quelques habitudes qui rendent tes fonctions faciles à lire et à maintenir."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bonnes pratiques de nommage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisir un nom explicite est une habitude qui te servira tout au long de tes projets. Privilégie des verbes d'action comme calculer, afficher, convertir suivis du nom de ce qui est manipulé : calculerAireRectangle, afficherMessageBienvenue. Évite les abréviations obscures comme calcAr ou fn1. Ajoute un court commentaire au début de la fonction pour décrire ce qu'elle fait, quels paramètres elle attend et ce qu'elle renvoie. Cette documentation intégrée aide tes camarades et ton futur toi-même à comprendre le but de la fonction sans lire tout le corps. Enfin, limite la taille d'une fonction à une seule tâche bien délimitée ; si elle devient trop longue, découpe-la en plusieurs fonctions plus petites."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Un bon nom de fonction se lit comme une phrase : \"calculerPerimetre\" dit exactement ce que fait le bloc."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les trois éléments principaux qui composent une fonction ?",
+              "answer": "Un nom, une liste de paramètres (éventuellement vide) et un corps d'instructions qui peut renvoyer une valeur de retour.",
+              "hint": "Relis la définition de \"fonction\" et repère les mots-clés nom, paramètres, valeur de retour.",
+              "explanation": "Une fonction est identifiée par son nom, elle peut recevoir des données via ses paramètres et elle produit un résultat grâce à sa valeur de retour."
+            },
+            {
+              "question": "Dans quel ordre doit-on écrire les éléments lors de la définition d'une fonction en pseudo-code ?",
+              "answer": "Mot-clé de définition, nom de la fonction, liste de paramètres entre parenthèses, deux-points, corps indenté, instruction de retour.",
+              "hint": "Suis les quatre étapes présentées dans le bloc \"Étapes\".",
+              "explanation": "L'ordre strict évite les erreurs de syntaxe : mot-clé, nom, paramètres, délimiteur de bloc, instructions, retour."
+            },
+            {
+              "question": "Écris la définition en pseudo-code d'une fonction \"cube\" qui prend un nombre \"n\" et renvoie son cube (n * n * n).",
+              "answer": "fonction cube(n) : retourner n * n * n",
+              "hint": "Inspire-toi de l'exemple \"carre\" et remplace la multiplication par trois facteurs.",
+              "explanation": "La fonction porte le nom cube, accepte un paramètre n et retourne le produit de n trois fois."
+            },
+            {
+              "question": "Lequel de ces noms respecte le mieux les bonnes pratiques ? A) fn1 B) calculerSurfaceCercle C) calcSurf",
+              "answer": "B) calculerSurfaceCercle",
+              "hint": "Cherche un verbe d'action suivi d'un nom clair, sans abréviation.",
+              "explanation": "calculerSurfaceCercle est explicite, utilise un verbe et décrit exactement ce que fait la fonction."
+            }
+          ]
+        },
+        {
+          "title": "Appeler.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appeler une fonction : les bases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois qu'une fonction est définie, elle ne fait rien tant qu'on ne la demande pas d'agir. L'action de demander son exécution s'appelle un appel de fonction. Pour l'appeler, tu écris son nom suivi de parenthèses dans lesquelles tu glisses les arguments, c'est-à-dire les valeurs concrètes que tu veux lui donner. Si la fonction n'attend aucun paramètre, les parenthèses restent vides mais elles sont obligatoires. L'appel peut se faire n'importe où dans ton programme : dans le programme principal, à l'intérieur d'une autre fonction, ou même dans une condition ou une boucle. Chaque appel crée une nouvelle exécution indépendante du corps de la fonction, avec ses propres valeurs de paramètres."
+            },
+            {
+              "type": "definition",
+              "term": "appel de fonction",
+              "definition": "Instruction qui déclenche l'exécution du corps d'une fonction en lui fournissant des arguments.",
+              "example": "carre(7)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons maintenant comment exploiter le résultat que la fonction nous renvoie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la valeur de retour"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une fonction se termine par une instruction de retour, elle produit une valeur que tu peux stocker dans une variable, afficher directement, ou transmettre comme argument à une autre fonction. Par exemple, après avoir défini \"carre\", tu peux écrire : resultat = carre(4) ; afficher(resultat). La variable \"resultat\" reçoit alors la valeur 16. Tu peux aussi chaîner les appels : afficher(carre(3) + carre(4)) affichera 25. Il est crucial de ne pas oublier d'assigner ou d'utiliser la valeur de retour, sinon le calcul est effectué mais le résultat est perdu. Cette erreur silencieuse est fréquente chez les débutants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'appel avec arguments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tape le nom de la fonction, ouvre une parenthèse, mets les valeurs séparées par des virgules, ferme la parenthèse."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Capturer le retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place une variable à gauche d'un signe d'affectation avant l'appel, par exemple \"x = carre(5)\"."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Exploiter la variable",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise \"x\" dans un affichage, un calcul ou un test ultérieur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction peut très bien en appeler une autre, ce qui permet de construire des programmes modulaires."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appeler une fonction depuis une autre fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une fonction \"perimetreCarre\" qui doit calculer le périmètre d'un carré dont on connaît le côté. Tu peux réutiliser ta fonction \"carre\" pour obtenir l'aire, mais ici tu as besoin de la longueur du côté multipliée par 4. Tu écris donc : fonction perimetreCarre(cote) : retourner 4 * cote. À l'intérieur de \"perimetreCarre\", tu n'appelles pas \"carre\", tu fais simplement le calcul. Mais si tu avais une fonction \"double\" qui renvoie 2 * x, tu pourrais écrire : fonction perimetreCarre(cote) : retourner double(double(cote)). Chaque appel imbriqué s'exécute complètement avant de rendre la main à la fonction appelante. Cette composition rend le code plus lisible et évite de répéter la même formule."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Appel",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "carre(3)",
+                  "9"
+                ],
+                [
+                  "perimetreCarre(5)",
+                  "20"
+                ],
+                [
+                  "double(double(2))",
+                  "8"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, identifions les pièges classiques qui font planter un appel de fonction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Erreurs fréquentes à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "La première erreur est d'oublier les parenthèses : écrire \"carre 5\" au lieu de \"carre(5)\" provoque une erreur de syntaxe. La deuxième est de passer un nombre d'arguments incorrect : si la fonction attend deux paramètres et que tu n'en donnes qu'un, l'interpréteur signale un mismatch. La troisième est de confondre le nom de la fonction avec une variable du même nom, ce qui masque la fonction. Enfin, ne pas utiliser la valeur de retour quand elle est nécessaire entraîne des résultats inattendus. Relis toujours tes appels avant de lancer le programme."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Les parenthèses sont obligatoires même s'il n'y a aucun argument : \"initialiser()\" et non \"initialiser\"."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Que se passe-t-il si tu écris \"carre 5\" sans parenthèses ?",
+              "answer": "L'interpréteur signale une erreur de syntaxe car les parenthèses sont obligatoires pour indiquer un appel.",
+              "hint": "Rappelle-toi la règle des parenthèses vue dans la définition d'un appel.",
+              "explanation": "Sans parenthèses, le langage ne reconnaît pas l'instruction comme un appel de fonction."
+            },
+            {
+              "question": "Comment stocker le résultat de \"carre(6)\" dans une variable \"a\" ?",
+              "answer": "a = carre(6)",
+              "hint": "Utilise le signe d'affectation avant l'appel.",
+              "explanation": "L'affectation capture la valeur de retour pour la réutiliser ensuite."
+            },
+            {
+              "question": "Écris une fonction \"double\" qui prend un nombre \"x\" et renvoie 2 * x, puis montre comment l'appeler deux fois imbriquées pour obtenir 4 * 3.",
+              "answer": "fonction double(x) : retourner 2 * x ; double(double(3))",
+              "hint": "Définis d'abord \"double\", puis appelle-la deux fois de suite.",
+              "explanation": "Le premier double(3) donne 6, le second double(6) donne 12, soit 4 * 3."
+            },
+            {
+              "question": "Quelle erreur survient si tu appelles \"perimetreCarre\" avec deux arguments ?",
+              "answer": "Erreur de nombre d'arguments : la fonction n'en attend qu'un seul.",
+              "hint": "Vérifie la liste des paramètres dans la définition.",
+              "explanation": "Le nombre d'arguments fournis doit correspondre exactement au nombre de paramètres déclarés."
+            }
+          ]
+        },
+        {
+          "title": "Tester.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi tester ses fonctions ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire une fonction sans la tester, c'est comme construire une voiture sans jamais la faire rouler. Les tests permettent de vérifier que la fonction produit le bon résultat pour des entrées variées, y compris les cas limites comme zéro, les nombres négatifs ou les valeurs très grandes. En détectant les erreurs tôt, tu gagnes du temps et tu évites que des bugs ne se propagent dans tout le programme. Dans le cadre du DNB, on attend de toi que tu sois capable de proposer des cas de test pertinents et de les exécuter mentalement ou sur machine. Cette leçon te donne une méthode simple pour organiser tes tests."
+            },
+            {
+              "type": "definition",
+              "term": "cas de test",
+              "definition": "Couple composé d'une entrée donnée à la fonction et du résultat attendu pour cette entrée.",
+              "example": "Entrée : 5 → Attendu : 25 pour la fonction carre"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons à la rédaction concrète de ces cas de test."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire des cas de test efficaces"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un bon jeu de tests couvre trois catégories : les cas nominaux (valeurs typiques), les cas limites (zéro, un, valeurs maximales) et les cas d'erreur (entrées invalides si la fonction doit les gérer). Pour chaque cas, note l'entrée, le résultat attendu et, si possible, une brève justification. Par exemple, pour une fonction \"factorielle\" tu testerais : 0 → 1 (cas limite), 1 → 1 (cas nominal simple), 5 → 120 (cas nominal), -1 → erreur (cas d'erreur). Présente tes tests sous forme de tableau pour une lecture rapide. Cette habitude te sera utile aussi bien en algorithmique qu'en mathématiques pour vérifier tes formules."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Entrée",
+                "Résultat attendu",
+                "Commentaire"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "1",
+                  "Factorielle de zéro"
+                ],
+                [
+                  "5",
+                  "120",
+                  "Cas nominal"
+                ],
+                [
+                  "-2",
+                  "Erreur",
+                  "Entrée invalide"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tes cas sont prêts, voyons comment les exécuter automatiquement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser des assertions pour valider"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans de nombreux langages, l'instruction \"assert\" permet de vérifier une condition : si elle est fausse, le programme s'arrête et signale l'erreur. Tu peux écrire : assert carre(4) == 16. Si la fonction renvoie 16, l'assertion passe silencieusement ; sinon, elle lève une exception. Place plusieurs assertions à la suite pour couvrir ton tableau de tests. Cette technique transforme tes cas de test en un script de validation qui s'exécute en un clic. Attention : les assertions ne remplacent pas une analyse réfléchie des résultats, elles ne font que confirmer que le code se comporte comme prévu pour les entrées choisies."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Préparer la liste des tests",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reprends ton tableau et écris une ligne \"assert\" par cas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lancer le script",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exécute le programme ; si aucune erreur n'apparaît, tous les tests passent."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Analyser un échec",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si une assertion échoue, relis la fonction, vérifie le calcul pour l'entrée concernée et corrige."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons le débogage quand un test ne passe pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déboguer une fonction qui échoue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque ton assertion signale une différence, commence par relire le message d'erreur : il t'indique la ligne, l'entrée testée et la valeur obtenue. Ajoute temporairement des affichages (print) à l'intérieur de la fonction pour observer les valeurs intermédiaires. Vérifie les conditions aux limites : as-tu bien géré le zéro ? Les nombres négatifs ? La division par zéro ? Corrige l'erreur, relance les tests et assure-toi que tous passent. N'oublie pas de retirer les affichages de débogage une fois le problème résolu, pour garder le code propre. Cette boucle test‑corrige‑test est le cœur de la méthode scientifique appliquée à la programmation."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Conseil",
+              "paragraphs": [
+                "Garde ton tableau de tests à jour à chaque modification de la fonction ; c'est ta documentation vivante."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une fonction avec nom, paramètres et retour.",
+                "Je sais appeler une fonction et utiliser sa valeur de retour.",
+                "Je sais composer des fonctions en les appelant les unes dans les autres.",
+                "Je sais écrire un tableau de cas de test couvrant cas nominaux, limites et erreurs.",
+                "Je sais utiliser des assertions pour valider automatiquement mes fonctions.",
+                "Je sais déboguer une fonction qui ne passe pas ses tests."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelles sont les trois catégories de cas de test à prévoir pour une fonction ?",
+              "answer": "Cas nominaux, cas limites, cas d'erreur.",
+              "hint": "Repense aux exemples donnés pour la factorielle.",
+              "explanation": "Ces trois catégories assurent une couverture large : valeurs typiques, bornes et entrées invalides."
+            },
+            {
+              "question": "Complète le tableau de test pour la fonction \"cube\" (n * n * n) avec les entrées -2, 0, 3.",
+              "answer": "Entrée -2 → -8 ; Entrée 0 → 0 ; Entrée 3 → 27",
+              "hint": "Calcule le cube de chaque nombre.",
+              "explanation": "Le cube d'un négatif reste négatif, le cube de zéro est zéro, le cube de trois est vingt-sept."
+            },
+            {
+              "question": "Écris l'instruction d'assertion pour vérifier que \"carre(7)\" renvoie 49.",
+              "answer": "assert carre(7) == 49",
+              "hint": "Utilise l'opérateur d'égalité double égal.",
+              "explanation": "L'assertion compare la valeur retournée par l'appel à la valeur attendue."
+            },
+            {
+              "question": "Si l'assertion \"assert double(5) == 11\" échoue, quelle est la première action à mener ?",
+              "answer": "Lire le message d'erreur pour connaître la valeur réellement retournée, puis vérifier le corps de \"double\".",
+              "hint": "Le message d'erreur indique la valeur obtenue.",
+              "explanation": "L'échec montre que la fonction ne calcule pas 2 * 5 ; il faut inspecter son code."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

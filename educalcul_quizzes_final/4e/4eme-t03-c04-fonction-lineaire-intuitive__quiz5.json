@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 433,
+  "_course_code": "4eme-t03-c04-fonction-lineaire-intuitive",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Approfondissement : Proportionnalité",
+  "title": "Approfondissement : Proportionnalité",
+  "questions": [
+    {
+      "text": "Dans le tableau suivant, les valeurs de $x$ et $y$ sont-elles proportionnelles ?\\n$x$ : 1, 2, 3, 4\\n$y$ : 3, 6, 9, 12",
+      "options": [
+        "Oui, le rapport $y/x$ est constant et vaut 3",
+        "Non, le rapport $y/x$ n'est pas constant",
+        "Oui, le rapport $x/y$ est constant et vaut 3",
+        "Non, car $y$ n'est pas un multiple de $x$"
+      ],
+      "correctAnswer": "Oui, le rapport $y/x$ est constant et vaut 3",
+      "explanation": "Pour chaque paire, $y/x = 3/1 = 6/2 = 9/3 = 12/4 = 3$. Le rapport est constant, donc $x$ et $y$ sont proportionnels avec coefficient 3. Les autres réponses confondent le sens du rapport ou affirment à tort une non-proportionnalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau proportionnel donne $x = 1 \\rightarrow y = 4$, $x = 2 \\rightarrow y = 8$, $x = 3 \\rightarrow y = 12$. Quelle est la valeur de $y$ pour $x = 5$ ?",
+      "options": [
+        "16",
+        "20",
+        "24",
+        "18"
+      ],
+      "correctAnswer": "20",
+      "explanation": "Le coefficient de proportionnalité est $k = y/x = 4$. Donc $y = k \\times x = 4 \\times 5 = 20$. Les autres nombres correspondent à des multiplications erronées (par 4, 6, 3,6).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La figure ci-dessous représente une droite passant par l'origine et le point $(2,6)$. Quel est le coefficient de proportionnalité de cette fonction linéaire ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Le coefficient de proportionnalité (la pente) est $k = \\frac{6-0}{2-0} = 3$. La droite a pour équation $y = 3x$. Les autres valeurs correspondent à des erreurs de lecture des coordonnées ou à l'utilisation de l'ordonnée au lieu du rapport.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Droite passant par l'origine et le point (2,6)"
+      }
+    },
+    {
+      "text": "Une recette pour 4 personnes utilise 250 g de farine. Combien de farine faut-il pour 10 personnes ?",
+      "options": [
+        "625 g",
+        "500 g",
+        "750 g",
+        "600 g"
+      ],
+      "correctAnswer": "625 g",
+      "explanation": "La quantité de farine est proportionnelle au nombre de personnes. Le coefficient est $250/4 = 62,5$ g par personne. Pour 10 personnes : $62,5 \\times 10 = 625$ g. Les autres réponses proviennent de calculs avec un coefficient mal déterminé (par 2, par 3, par 2,4).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le prix d'un article passe de 40 euros à 52 euros. Quel est le pourcentage d'augmentation ?",
+      "options": [
+        "20 %",
+        "25 %",
+        "30 %",
+        "15 %"
+      ],
+      "correctAnswer": "30 %",
+      "explanation": "L'augmentation absolue est $52 - 40 = 12$ euros. Le pourcentage d'augmentation est $\\frac{12}{40} \\times 100 = 30\\%$. Les autres pourcentages correspondent à des divisions par 60, 48 ou 80 au lieu de 40.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

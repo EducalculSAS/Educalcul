@@ -1,0 +1,343 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.579143+00:00",
+  "id": 672,
+  "code": "terminale-generale-complementaires-t09-c04",
+  "title": "Bilan - Corrélation et causalité",
+  "description": "Cours structuré Educalcul : Bilan - Corrélation et causalité.",
+  "subject": "Corrélation et causalité",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Corrélation et causalité",
+    "titre_du_cours": "Bilan - Corrélation et causalité",
+    "objectif_global": "Bilan - Corrélation et causalité",
+    "mini_lecons_imposees": [
+      "Lecture critique.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Corrélation et causalité",
+      "lessons": [
+        {
+          "title": "Lecture critique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lecture critique : comprendre le contexte"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon du bilan. Ici, nous allons apprendre à lire une étude statistique avec le même regard qu'un détective examine une scène de crime : on ne se contente pas du titre, on cherche les indices cachés. Une corrélation forte entre deux variables ne signifie jamais, à elle seule, que l'une cause l'autre. Pour ne pas tirer de conclusions hâtives, il faut d'abord identifier les variables mesurées, la population concernée et la manière dont les données ont été collectées. Prenons l'exemple d'un article affirmant que « les élèves qui dorment plus de 9 heures ont de meilleures notes ». La variable explicative est la durée de sommeil, la variable réponse est la moyenne des notes, mais l'échantillon pourrait ne concerner qu'un seul lycée privé. Ce détail change totalement la portée de l'affirmation."
+            },
+            {
+              "type": "display_math",
+              "latex": "r = \\frac{\\sum_{i=1}^{n} (x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum_{i=1}^{n} (x_i-\\bar{x})^2 \\; \\sum_{i=1}^{n} (y_i-\\bar{y})^2}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La formule ci‑dessus définit le coefficient de corrélation linéaire $r$. Il mesure l'intensité et le sens d'une relation linéaire entre deux variables quantitatives $x$ et $y$. Sa valeur est toujours comprise entre $-1$ et $1$. Un $r$ proche de $1$ indique une forte corrélation positive, un $r$ proche de $-1$ une forte corrélation négative, et un $r$ près de $0$ l'absence de liaison linéaire. Attention toutefois : $r$ ne capture que les liens linéaires. Une relation en forme de parabole peut donner un $r$ faible alors que les variables sont parfaitement liées. De plus, $r$ ne dit rien sur la causalité. C'est pourquoi il faut toujours l'accompagner d'un graphique de dispersion et d'une analyse du contexte."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les variables et leur nature",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notez quelle variable est présentée comme cause potentielle (explicative) et quelle variable est présentée comme effet (réponse). Vérifiez si elles sont quantitatives continues, discrètes ou qualitatives."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Examiner la méthode de collecte",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demandez‑vous : l'échantillon est‑il aléatoire ? Représente‑t‑il la population cible ? Quelle est sa taille $n$ ? Un échantillon de $30$ personnes tirées dans un seul club de sport ne permet pas de généraliser à tous les adolescents."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Rechercher des facteurs confondants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un facteur confondant est une variable tierce qui influence à la fois la cause supposée et l'effet observé. Dans l'exemple du sommeil, le niveau socio‑économique des familles pourrait influencer à la fois la durée de sommeil (environnement plus calme) et les résultats scolaires (accès à des ressources). Si l'étude ne contrôle pas ce facteur, la corrélation observée peut être trompeuse."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons posé les bases de la lecture critique, penchons‑nous sur la taille de l'échantillon et sur ce qu'elle implique pour la fiabilité d'une corrélation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La taille de l'échantillon et la représentativité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un coefficient de corrélation calculé sur $10$ observations peut être très différent de celui obtenu sur $1\\,000$ observations, même si les deux nuages de points ont une allure similaire. Avec un petit $n$, le hasard produit facilement des valeurs extrêmes de $r$. Les intervalles de confiance pour $r$ s'élargissent quand $n$ diminue, ce qui signifie que l'incertitude sur la vraie corrélation dans la population est grande. Imaginons deux études sur le lien entre heures d'écran et trouble de l'attention : la première interroge $25$ adolescents, la seconde en interroge $500$. La seconde permettra de détecter une corrélation faible mais réelle, tandis que la première risque de ne rien trouver ou de trouver une corrélation forte purement due au hasard. De plus, la représentativité compte autant que la taille : un échantillon de $500$ élèves tous issus du même quartier aisé ne reflète pas la diversité nationale."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étude",
+                "Taille $n$",
+                "Population ciblée",
+                "Corrélation observée $r$"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "25",
+                  "Un lycée privé",
+                  "0,68"
+                ],
+                [
+                  "B",
+                  "500",
+                  "Échantillon national stratifié",
+                  "0,22"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir vu l'impact de la taille et de la représentativité, il est temps d'aborder les facteurs confondants, ces variables invisibles qui peuvent créer l'illusion d'une causalité là où il n'y en a pas."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les facteurs confondants : le piège invisible"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un facteur confondant est une variable qui n'est pas l'objet de l'étude mais qui influence simultanément les deux variables observées. Prenons une enquête qui montre une corrélation positive entre la vente de glaces et le nombre de noyades. La variable confondante est la température estivale : quand il fait chaud, on achète plus de glaces et on se baigne davantage, ce qui augmente le risque de noyade. Si l'on concluait que manger de la glace cause la noyade, on commettrait une erreur logique majeure. Dans les études médicales, l'âge, le sexe, le tabagisme ou le niveau d'activité physique sont souvent des confondants. Les chercheurs utilisent alors des méthodes d'ajustement (régression multiple, stratification, appariement) pour neutraliser leur effet. En lisant une étude, vérifiez toujours si les auteurs mentionnent avoir contrôlé les principaux confondants connus."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention",
+              "paragraphs": [
+                "Une corrélation sans contrôle des confondants ne prouve jamais une relation de cause à effet."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, retenez que la lecture critique repose sur trois piliers : la nature des variables, la qualité de l'échantillon et la prise en compte des confondants. Ces outils vous permettront de distinguer une simple association statistique d'une véritable relation causale."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une étude rapporte une corrélation de $r = 0,75$ entre le nombre de livres à la maison et la réussite scolaire, basée sur $n = 30$ élèves d'un même quartier. Quels sont les deux principaux limites de cette conclusion ?",
+              "answer": "La taille de l'échantillon est trop petite pour généraliser et l'échantillon n'est pas représentatif (un seul quartier). De plus, aucun facteur confondant (niveau socio‑économique, implication parentale) n'a été contrôlé.",
+              "hint": "Pensez à la fois à la taille $n$ et à la diversité de la population étudiée.",
+              "explanation": "Avec $n=30$, l'intervalle de confiance de $r$ est large, donc la corrélation vraie dans la population pourrait être bien plus faible. Le fait que tous les élèves viennent du même quartier introduit un biais de sélection : le niveau socio‑économique, qui influence à la fois le nombre de livres et la réussite, n'a pas été neutralisé."
+            },
+            {
+              "question": "Expliquez pourquoi une corrélation de $r = 0,22$ obtenue sur $n = 500$ sujets représentatifs peut être plus informative qu'une corrélation de $r = 0,68$ sur $n = 25$ sujets non représentatifs.",
+              "answer": "La grande taille et la représentativité de l'échantillon B réduisent l'incertitude statistique et limitent les biais de sélection, rendant l'estimation de la corrélation populationnelle plus fiable malgré sa valeur plus faible.",
+              "hint": "Comparez la précision de l'estimateur (liée à $n$) et la validité externe (représentativité).",
+              "explanation": "L'erreur standard de $r$ diminue avec la racine carrée de $n$ ; pour $n=500$ elle est environ $\\sqrt{25/500}=0,22$ fois celle pour $n=25$. De plus, l'échantillon stratifié assure que la relation observée s'applique à l'ensemble de la population, ce qui n'est pas le cas pour le petit échantillon localisé."
+            },
+            {
+              "question": "Donnez un exemple concret de facteur confondant dans une étude liant la consommation de café au risque de maladie cardiovasculaire, et décrivez comment les chercheurs pourraient le contrôler.",
+              "answer": "Le tabagisme est un confondant classique : les gros buveurs de café fument souvent plus. Les chercheurs peuvent l'ajuster en incluant la variable « nombre de cigarettes par jour » dans un modèle de régression multiple, ou en stratifiant l'analyse selon le statut tabagique.",
+              "hint": "Identifiez une variable liée à la fois à l'exposition (café) et à l'issue (maladie cardiaque).",
+              "explanation": "Si on ne tient pas compte du tabagisme, l'excès de risque observé chez les buveurs de café pourrait être entièrement dû au tabac. L'ajustement statistique isole l'effet propre du café en comparant des sujets ayant le même niveau de tabagisme."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist : évaluer une étude statistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette seconde leçon, nous transformons les réflexions de la lecture critique en une liste de vérification pratique. Imaginez que vous êtes journaliste scientifique : avant de relayer une découverte, vous devez vous assurer que l'étude tient la route. La checklist ci‑dessous rassemble les questions essentielles à se poser, dans l'ordre logique où elles surgissent lors de la lecture. Chaque item est formulé pour être répondu par « oui », « non » ou « information manquante ». Cette approche structurée évite d'oublier un point crucial sous le coup de l'enthousiasme ou de la pression du délai."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Question de recherche et hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'étude énonce‑t‑elle clairement sa question principale et ses hypothèses ? Les variables d'intérêt (exposition et issue) sont‑elles définies sans ambiguïté ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Conception et échantillonnage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le plan d'étude (expérimental, observationnel longitudinal, transversal) est‑il décrit ? L'échantillon est‑il aléatoire, stratifié, de commodité ? La taille $n$ est‑elle justifiée par un calcul de puissance ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Mesure des variables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les instruments de mesure (questionnaires, capteurs, dossiers médicaux) sont‑ils validés ? La fiabilité (test‑retest, cohérence interne) et la validité (contenu, critère) sont‑elles rapportées ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Gestion des confondants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les principaux confondants connus sont‑ils identifiés ? Une méthode d'ajustement (régression, appariement, stratification) est‑elle appliquée ? L'analyse de sensibilité est‑elle présentée ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "5. Analyse statistique et présentation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les tests utilisés correspondent‑ils au type de variables et au plan d'étude ? Les intervalles de confiance et les $p$‑values sont‑ils fournis ? Les graphiques (nuage de points, diagrammes en boîte) accompagnent‑ils les résultats ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "6. Interprétation et limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les auteurs distinguent‑ils association et causalité ? Les limites (biais de sélection, mesure, taille) sont‑elles discutées honnêtement ? Les conclusions vont‑elles au‑delà de ce que les données permettent ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ancrer la checklist, appliquons‑la à un cas concret : une prépublication affirmant que « la méditation quotidienne de 10 minutes réduit le taux de cortisol de 15 % »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple d'application de la checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'article précise la question : « La méditation de pleine conscience diminue‑t‑elle le cortisol salivaire chez des adultes stressés ? ». L'exposition est la pratique quotidienne de 10 minutes pendant 8 semaines, l'issue est le taux de cortisol mesuré au réveil. Le plan est un essai randomisé contrôlé avec $n=60$ participants (30 méditation, 30 liste d'attente). La randomisation est décrite, le calcul de puissance vise une taille d'effet de $d=0,6$ avec $\\alpha=0,05$ et $1-\\beta=0,80$. Les mesures de cortisol utilisent un kit ELISA validé (CV intra‑essai $<5\\%$). Les confondants (âge, sexe, heure de réveil, consommation de caféine) sont équilibrés par la randomisation et ajustés dans une analyse de covariance. Les résultats présentent la différence moyenne ajustée avec IC à 95 % et $p=0,03$. Un nuage de points avec droite de régression illustre la relation. Les auteurs concluent prudemment : « Nos résultats suggèrent un effet bénéfique, mais la taille modeste de l'échantillon et l'absence de suivi à long terme limitent la généralisation. »"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{IC}_{95\\%} = \\hat{\\Delta} \\pm 1,96 \\times \\text{SE}(\\hat{\\Delta})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Même une étude bien conçue peut contenir des pièges subtils. La checklist aide à les repérer avant de partager l'information."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges fréquents à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier piège : confondre significativité statistique et importance pratique. Un $p<0,05$ avec un effet minuscule (par exemple une réduction de cortisol de $0,2\\%$) n'a pas de sens clinique. Deuxième piège : le « p‑hacking » ou la multiplicité des tests non corrigée. Si les auteurs ont testé dix issues différentes et ne rapportent que celle qui est significative, le risque d'erreur de type I explose. Troisième piège : l'extrapolation au‑delà de la population étudiée. Un essai sur des étudiants universitaires en bonne santé ne permet pas d'affirmer que la méditation aide les patients atteints de syndrome de Cushing. Quatrième piège : l'absence de déclaration pré‑enregistrée du protocole. Sans pré‑enregistrement, on ne peut exclure que l'analyse a été modifiée après coup pour obtenir un résultat favorable. Cinquième piège : le biais de publication. Les études aux résultats nuls restent souvent dans les tiroirs, faussant la méta‑analyse ultérieure."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Bon à savoir",
+              "paragraphs": [
+                "Une checklist ne remplace pas l'expertise statistique, mais elle structure le regard critique et réduit les oublis."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant d'une méthode complète pour lire, évaluer et communiquer sur les études de corrélation. La dernière étape est de mémoriser les points clés sous forme de liste de vérification rapide."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Identifier clairement la question de recherche, l'exposition et l'issue.",
+                "Vérifier le plan d'étude, la randomisation et la taille de l'échantillon.",
+                "S'assurer que les mesures sont validées et fiables.",
+                "Contrôler la prise en compte des facteurs confondants connus.",
+                "Examiner la pertinence des tests statistiques, les IC et les $p$‑values.",
+                "Distinguier association et causalité dans l'interprétation.",
+                "Repérer les limites déclarées et les éventuels biais de publication.",
+                "Évaluer l'importance pratique de l'effet, pas seulement sa significativité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vous lisez un communiqué de presse annonçant : « Une étude montre que manger du chocolat noir améliore la mémoire (p = 0,04) ». En appliquant la checklist, citez trois questions prioritaires à poser avant de relayer l'information.",
+              "answer": "1) Quel est le plan d'étude (randomisé, observationnel) et la taille de l'échantillon ? 2) La mesure de la mémoire est‑elle validée et le taux de cacao standardisé ? 3) Les confondants (âge, niveau d'éducation, mode de vie) ont‑ils été ajustés ?",
+              "hint": "Repérez les items 1, 3 et 4 de la checklist.",
+              "explanation": "Le communiqué ne donne aucune information sur la méthodologie. Sans savoir si l'étude est randomisée, si la mémoire a été testée avec un outil fiable, et si les facteurs socio‑économiques ont été contrôlés, le résultat ne peut être considéré comme probant."
+            },
+            {
+              "question": "Dans l'exemple de la méditation, l'intervalle de confiance à 95 % pour la différence moyenne ajustée de cortisol est $[-2,8 ; -0,4]$ µg/dL. Que pouvez‑vous conclure sur la significativité et la pertinence clinique ?",
+              "answer": "L'intervalle ne contient pas 0, donc l'effet est statistiquement significatif au seuil 5 %. La borne supérieure $-0,4$ µg/dL indique une réduction modeste ; la pertinence clinique dépend du seuil jugé cliniquement important par les endocrinologues.",
+              "hint": "Rappelez le lien entre IC et test d'hypothèse, puis séparez signification statistique et importance pratique.",
+              "explanation": "Puisque 0 n'appartient pas à l'IC, l'hypothèse nulle d'absence de différence est rejetée. Toutefois, une réduction moyenne de $1,6$ µg/dL (milieu de l'intervalle) peut être trop faible pour modifier la prise en charge médicale ; c'est une question de jugement clinique, pas de statistique."
+            },
+            {
+              "question": "Un article teste 12 résultats secondaires sans correction de multiplicité et ne rapporte que celui avec $p=0,03$. Expliquez pourquoi cela constitue un p‑hacking et comment la checklist vous alerte.",
+              "answer": "Tester de multiples hypothèses sans ajuster le seuil (ex. Bonferroni) gonfle le risque d'erreur de type I global. La checklist item 5 (analyse statistique) et item 6 (interprétation) signalent l'absence de correction et la sélection du résultat favorable.",
+              "hint": "Pensez au nombre de tests effectués et au seuil effectif.",
+              "explanation": "Avec 12 tests indépendants au seuil 0,05, la probabilité d'au moins un faux positif est $1-(0,95)^{12}\\approx 0,46$. Ne rapporter que le $p=0,03$ cache cette inflation. La checklist impose de vérifier la correction de multiplicité et la transparence sur l'ensemble des analyses menées."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

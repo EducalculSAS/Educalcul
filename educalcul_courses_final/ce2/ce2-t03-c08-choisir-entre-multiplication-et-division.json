@@ -1,0 +1,535 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.009327+00:00",
+  "id": 167,
+  "code": "ce2-t03-c08",
+  "title": "Choisir entre multiplication et division",
+  "description": "Cours structuré Educalcul : Choisir entre multiplication et division.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Choisir entre multiplication et division",
+    "objectif_global": "Choisir entre multiplication et division",
+    "mini_lecons_imposees": [
+      "Identifier la structure.",
+      "Représenter.",
+      "Justifier le calcul."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Identifier la structure.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les groupes égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu ouvres ton placard et que tu vois $4$ boîtes de feutres. Sur chaque boîte, il est écrit qu'il y a $6$ feutres dedans. Tu veux savoir combien tu as de feutres $au$ $total$ sans tout sortir. Regarde bien : tu as des groupes (les boîtes) et chaque groupe a exactement la $même$ $taille$ ($6$ feutres). C'est la grande idée de la multiplication : on réunit plusieurs groupes identiques pour trouver un total."
+            },
+            {
+              "type": "definition",
+              "term": "Multiplication",
+              "definition": "C'est l'opération qui permet de calculer un total quand on connaît le nombre de groupes et le nombre d'objets dans chaque groupe, à condition que tous les groupes soient égaux.",
+              "example": "$4$ boîtes de $6$ feutres $\\rightarrow$ $4 \\times 6$"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Boîte 1",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 6,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 4",
+                  "value": 6,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "4 groupes de même taille : 6 feutres par boîte"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons d'histoire. Luc a ramassé $20$ jolies billes dans le jardin. Il veut les donner à ses $4$ copains pour que $chacun$ $ait$ $la$ $même$ $chose$. Ici, tu ne cherches pas un total, tu le connais déjà ($20$). Tu connais aussi le nombre de parts ($4$ copains). Ce que tu ne sais pas, c'est ce qu'il y a $dans$ $une$ $seule$ $part$. C'est une situation de partage équitable, et pour la résoudre, on utilise la division."
+            },
+            {
+              "type": "definition",
+              "term": "Division (partage)",
+              "definition": "C'est l'opération qui permet de trouver la taille d'une part quand on connaît le total et le nombre de parts égales.",
+              "example": "$20$ billes partagées entre $4$ $\\rightarrow$ $20 \\div 4$"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 20",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Part 1",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 2",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 3",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 4",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ],
+              "caption": "On partage 20 en 4 parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un troisième cas, très fréquent, qui utilise aussi la division mais où la question est différente. Imagine une caisse de $24$ œufs. Tu dois les ranger dans des boîtes de $6$ œufs. Tu connais le total ($24$) et tu connais la taille d'un groupe ($6$ œufs par boîte). Mais tu ne sais pas $combien$ $de$ $groupes$ (combien de boîtes) tu vas pouvoir remplir. On appelle ça faire des paquets ou du groupement. Le calcul est encore une division : $24 \\div 6$."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce pour choisir",
+              "paragraphs": [
+                "Je cherche le $total$ ? $\\rightarrow$ Multiplication.",
+                "Je connais le total et je veux la taille d'une part ? $\\rightarrow$ Division (partage).",
+                "Je connais le total et je veux le nombre de groupes ? $\\rightarrow$ Division (groupement)."
+              ]
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 24",
+                  "value": 24,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Boîte 1 (6)",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 2 (6)",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 3 (6)",
+                  "value": 6,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 4 (6)",
+                  "value": 6,
+                  "tone": "red"
+                }
+              ],
+              "caption": "On groupe 24 par paquets de 6 : on compte les paquets"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le problème : 'Il y a 6 tables. Autour de chaque table, 4 enfants sont assis. Combien d'enfants au total ?', quelle opération choisis-tu ?",
+              "answer": "Multiplication",
+              "hint": "Est-ce qu'on réunit des groupes égaux ou est-ce qu'on sépare un total ?",
+              "explanation": "On a 6 groupes (les tables) de même taille (4 enfants). On cherche le total. C'est une multiplication : $6 \\times 4$."
+            },
+            {
+              "question": "Léa a 18 autocollants. Elle veut en donner 3 à chaque amie. Combien d'amies pourront en recevoir ?",
+              "answer": "Division",
+              "hint": "On connaît le total (18) et la taille du groupe (3). On cherche le nombre de groupes.",
+              "explanation": "On fait des paquets de 3 avec 18. C'est une division (groupement) : $18 \\div 3$."
+            },
+            {
+              "question": "Papa a acheté 15 bonbons pour ses 3 enfants. Ils les partagent équitablement. Combien de bonbons par enfant ?",
+              "answer": "Division",
+              "hint": "On connaît le total (15) et le nombre de parts (3). On cherche la taille d'une part.",
+              "explanation": "On partage 15 en 3 parts égales. C'est une division (partage) : $15 \\div 3$."
+            }
+          ]
+        },
+        {
+          "title": "Représenter.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner pour voir clair"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de sortir ton stylo pour calculer, prends le temps de faire un petit dessin. C'est comme tracer une carte au trésor : ça t'évite de te perdre ! Le schéma en barres (ou diagramme en bandes) est parfait pour ça. Pour une multiplication, on dessine une grande barre au-dessus qui représente le total qu'on cherche. En dessous, on aligne des petites barres de la même longueur : ce sont nos groupes égaux. Chaque petite barre porte le nombre d'objets du groupe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je lis : '5 pots de confiture, 4 fruits par pot'. Je repère : nombre de groupes = $5$, taille du groupe = $4$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer les groupes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je dessine $5$ rectangles collés les uns aux autres. J'écris $4$ dans chacun. Ils font tous la même largeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : La barre du total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Au-dessus, je trace une grande barre qui couvre les 5 petits. J'écris un point d'interrogation : c'est ce que je cherche."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total ?",
+                  "value": 20,
+                  "tone": "navy"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "Modèle en barres pour 5 × 4"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour un problème de partage, le dessin change de sens. Prenons : '18 cartes Pokémon à partager entre 3 frères'. Cette fois, je connais le total ($18$). Je dessine une seule grande barre et j'écris $18$ dedans. Comme il faut faire $3$ parts égales, je coupe ma grande barre en $3$ tronçons de la même largeur. La question est dans un seul tronçon : combien y a-t-il dedans ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : La barre du total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je dessine un grand rectangle. J'écris $18$ au milieu. C'est tout ce que j'ai au départ."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Couper en parts égales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je trace $2$ traits verticaux pour faire $3$ parts. Je veille à ce qu'elles aient la même largeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : La question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans une part, j'écris '?'. C'est le nombre de cartes pour un seul frère."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 18",
+                  "value": 18,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Part 1 ?",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 2 ?",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "Part 3 ?",
+                  "value": 6,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Partage de 18 en 3 parts égales"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde maintenant le groupement : '20 élèves font la queue. On les range par rangées de 4. Combien de rangées ?' Je dessine la barre du total ($20$). Mais cette fois, je ne sais pas en combien de parts la couper. Je sais juste que chaque part (chaque rangée) doit mesurer $4$. Alors, je découpe ma barre en tronçons de $4$ en $4$ jusqu'au bout. Je compte le nombre de tronçons : c'est ma réponse !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total : 20",
+                  "value": 20,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Rangée 1 (4)",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Rangée 2 (4)",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Rangée 3 (4)",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Rangée 4 (4)",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Rangée 5 (4)",
+                  "value": 4,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Groupement de 20 par paquets de 4 : 5 rangées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Le dessin te montre exactement ce qui manque. S'il manque la grande barre du haut, c'est une multiplication. S'il manque une petite part en bas (partage) ou le nombre de tronçons (groupement), c'est une division. C'est pour ça qu'on dit que le schéma 'représente' le problème : il met en image la structure invisible du texte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le schéma en barres pour : '4 boîtes de 8 crayons'. Combien de petites barres dessines-tu ? Quel nombre écris-tu dedans ?",
+              "answer": "4 petites barres, le nombre 8 dans chacune.",
+              "hint": "Le nombre de boîtes donne le nombre de barres. Le contenu d'une boîte donne le nombre dans la barre.",
+              "explanation": "C'est une multiplication. 4 groupes (boîtes) de taille 8 (crayons). On dessine 4 barres égales avec 8 dedans."
+            },
+            {
+              "question": "Tu dessines le partage de 15 billes entre 5 enfants. Combien de parts faut-il faire dans la grande barre ?",
+              "answer": "5 parts",
+              "hint": "Le nombre de parts, c'est le nombre de personnes qui reçoivent.",
+              "explanation": "On partage entre 5 enfants, donc on coupe le total (15) en 5 parts égales."
+            },
+            {
+              "question": "Pour ranger 24 livres par paquets de 6, tu découpes la barre de 24 en tronçons de 6. Combien de tronçons obtiens-tu ?",
+              "answer": "4 tronçons",
+              "hint": "Compte combien de fois 6 rentre dans 24 en ajoutant des tronçons.",
+              "explanation": "C'est du groupement. 24 divisé par 6 fait 4. On obtient 4 paquets (tronçons)."
+            },
+            {
+              "question": "Voici un schéma : une grande barre '30' coupée en 5 parts égales avec '?' dans une part. Écris le problème qui va avec.",
+              "answer": "Exemple : 30 bonbons partagés entre 5 enfants. Combien par enfant ?",
+              "hint": "Total connu = 30. Nombre de parts = 5. On cherche la taille d'une part.",
+              "explanation": "Le schéma montre un total divisé en 5 parts égales. C'est un problème de partage (division)."
+            }
+          ]
+        },
+        {
+          "title": "Justifier le calcul.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire le calcul et répondre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ton schéma est prêt, il est beau, il est clair. Maintenant, il faut passer au langage des mathématiques : l'écriture en chiffres. Reprenons l'exemple des $5$ pots de $4$ fruits. Le schéma montre $5$ groupes de $4$. On écrit la multiplication : $5 \\times 4$. Le signe $\\times$ se lit 'fois' ou 'multiplié par'. On peut le calculer mentalement ($5, 10, 15, 20$) ou le poser en colonne si les nombres sont plus grands. Le résultat, $20$, c'est le total qu'on cherchait."
+            },
+            {
+              "type": "display_math",
+              "latex": "5 \\times 4 = 20"
+            },
+            {
+              "type": "column_operation",
+              "operator": "\\times",
+              "operands": [
+                "5",
+                "4"
+              ],
+              "result": "20",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la division, l'écriture dépend de la question, mais le symbole est le même : $\\div$ (ou $:$). Si je partage $18$ cartes entre $3$ frères, j'écris $18 \\div 3$. Je lis : '18 divisé par 3' ou 'Combien de fois 3 dans 18 ?'. Le résultat est $6$. Si je fais des paquets de $4$ avec $20$ cahiers, j'écris $20 \\div 4$. Le résultat est $5$ (le nombre de paquets). Dans les deux cas, le total est au début de l'écriture."
+            },
+            {
+              "type": "display_math",
+              "latex": "18 \\div 3 = 6 \\quad\\text{et}\\quad 20 \\div 4 = 5"
+            },
+            {
+              "type": "column_operation",
+              "operator": "\\div",
+              "operands": [
+                "18",
+                "3"
+              ],
+              "result": "6",
+              "carries": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, un calcul tout seul ne suffit pas ! En mathématiques, on doit toujours finir par une $phrase$ $réponse$ écrite en toutes lettres. Ça prouve qu'on a compris la question. Pour les fruits : 'Il y a 20 fruits au total.' Pour les cartes : 'Chaque frère reçoit 6 cartes.' Pour les cahiers : 'On peut faire 5 paquets.' Et le secret des champions, c'est la $vérification$ : on refait le chemin inverse. $6 \\times 3 = 18$ ? Oui. $5 \\times 4 = 20$ ? Oui. Si ça marche, ton calcul est bon !"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Le réflexe vérification",
+              "paragraphs": [
+                "Multiplication trouvée ? $\\rightarrow$ Fais la division inverse.",
+                "Division trouvée ? $\\rightarrow$ Fais la multiplication inverse.",
+                "Si tu retrouves le total de départ, c'est gagné !"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer si un problème demande une multiplication (groupes égaux -> total) ou une division (total -> part ou nombre de groupes).",
+                "Je sais représenter le problème avec un schéma en barres (multiplication, partage ou groupement).",
+                "J'écris l'opération correcte (× ou ÷) en regardant mon schéma.",
+                "Je calcule le résultat (mental ou posé).",
+                "J'écris une phrase réponse complète avec l'unité (ex: '20 fruits').",
+                "Je vérifie mon calcul avec l'opération inverse."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule : 6 × 7 = ?",
+              "answer": "42",
+              "hint": "Compte par 7 : 7, 14, 21, 28, 35, 42. Ou par 6 : 6, 12, 18, 24, 30, 36, 42.",
+              "explanation": "6 groupes de 7 font 42. C'est la table de 7 ou la table de 6."
+            },
+            {
+              "question": "Pose et effectue la division : 28 ÷ 4.",
+              "answer": "7",
+              "hint": "Combien de fois 4 dans 28 ? 4 × 7 = 28.",
+              "explanation": "28 divisé par 4 fait 7. Vérification : 7 × 4 = 28."
+            },
+            {
+              "question": "Problème : 'Un pâtissier a fait 36 cookies. Il les met dans des boîtes de 6. Combien de boîtes remplit-il ?' Écris l'opération, le calcul et la phrase réponse.",
+              "answer": "Opération : 36 ÷ 6 = 6. Phrase : Il remplit 6 boîtes.",
+              "hint": "Total = 36. Taille du paquet = 6. On cherche le nombre de paquets -> Division.",
+              "explanation": "C'est un groupement. 36 ÷ 6 = 6. Vérification : 6 × 6 = 36. Phrase réponse : Il remplit 6 boîtes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

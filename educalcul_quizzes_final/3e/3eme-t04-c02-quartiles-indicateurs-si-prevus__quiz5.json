@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Lire",
+  "title": "Approfondissement : Lire et interpréter les quartiles",
+  "questions": [
+    {
+      "text": "On étudie les notes sur 20 d'une classe de 3e. Le premier quartile est $Q_1 = 11$ et le troisième quartile est $Q_3 = 15$. Quelle affirmation est correcte ?",
+      "options": [
+        "25 % des élèves ont une note strictement inférieure à 11.",
+        "50 % des élèves ont une note comprise entre 11 et 15.",
+        "75 % des élèves ont une note strictement supérieure à 15.",
+        "La médiane de la série est exactement 13."
+      ],
+      "correctAnswer": "50 % des élèves ont une note comprise entre 11 et 15.",
+      "explanation": "Par définition, le premier quartile $Q_1$ sépare les 25 % des valeurs les plus petites des 75 % restantes. Le troisième quartile $Q_3$ sépare les 75 % des valeurs les plus petites des 25 % les plus grandes. L'intervalle $[Q_1 ; Q_3]$ contient donc les 50 % des valeurs centrales (de 25 % à 75 %). L'option A est fausse car 25 % des notes sont inférieures ou égales à $Q_1$ (pas strictement). L'option C est fausse car 25 % sont supérieures à $Q_3$. L'option D est fausse car la médiane n'est pas nécessairement la moyenne de $Q_1$ et $Q_3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un diagramme en boîte (boxplot) représente les salaires mensuels (en euros) d'une entreprise. La boîte s'étend de 1 800 à 2 400, la médiane est à 2 100, les moustaches vont de 1 500 à 3 000. Quelle lecture est exacte ?",
+      "options": [
+        "La moitié des salaires sont compris entre 1 800 et 2 400 euros.",
+        "Le salaire moyen est de 2 100 euros.",
+        "25 % des salaires sont supérieurs à 3 000 euros.",
+        "L'écart interquartile est de 1 200 euros."
+      ],
+      "correctAnswer": "La moitié des salaires sont compris entre 1 800 et 2 400 euros.",
+      "explanation": "Sur un diagramme en boîte, la boîte représente l'intervalle interquartile $[Q_1 ; Q_3]$. Elle contient 50 % des données (de 25 % à 75 %). Ici $Q_1 = 1800$ et $Q_3 = 2400$. La médiane (2 100) est la valeur centrale, pas la moyenne (option B fausse). Les moustaches indiquent le minimum (1 500) et le maximum (3 000) hors valeurs aberrantes, donc 0 % au-dessus de 3 000 (option C fausse). L'écart interquartile est $Q_3 - Q_1 = 600$, pas 1 200 (option D fausse).",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Salaires mensuels en euros",
+        "min": 1500,
+        "q1": 1800,
+        "median": 2100,
+        "q3": 2400,
+        "max": 3000
+      }
+    },
+    {
+      "text": "Deux séries statistiques A et B ont même effectif total. Pour la série A : $Q_1 = 10$, $Q_3 = 20$. Pour la série B : $Q_1 = 12$, $Q_3 = 18$. On peut affirmer que :",
+      "options": [
+        "La série A est moins dispersée que la série B autour de la médiane.",
+        "Les 50 % valeurs centrales de la série A sont plus étalées que celles de la série B.",
+        "La médiane de la série A est nécessairement supérieure à celle de la série B.",
+        "Le minimum de la série A est 10 et son maximum est 20."
+      ],
+      "correctAnswer": "Les 50 % valeurs centrales de la série A sont plus étalées que celles de la série B.",
+      "explanation": "La dispersion des 50 % valeurs centrales se mesure par l'écart interquartile (EIQ) $= Q_3 - Q_1$. Pour A : $EIQ = 20 - 10 = 10$. Pour B : $EIQ = 18 - 12 = 6$. Comme $10 > 6$, la série A a ses valeurs centrales plus étalées (plus dispersées) que la série B. L'option A dit l'inverse. La position des quartiles ne donne aucune information sur les médianes respectives (option C) ni sur le minimum et le maximum (option D).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère un diagramme en boîte où la boîte est très courte (écart interquartile faible) mais les moustaches sont très longues. Que peut-on en déduire sur la distribution des données ?",
+      "options": [
+        "Les données sont symétriques autour de la médiane.",
+        "La majorité des données (50 % centrales) sont très regroupées, mais il existe des valeurs extrêmes éloignées.",
+        "L'écart-type de la série est nécessairement faible.",
+        "Les quartiles $Q_1$ et $Q_3$ sont confondus avec le minimum et le maximum."
+      ],
+      "correctAnswer": "La majorité des données (50 % centrales) sont très regroupées, mais il existe des valeurs extrêmes éloignées.",
+      "explanation": "Une boîte courte signifie un écart interquartile ($Q_3 - Q_1$) faible : les 50 % de données centrales sont concentrées près de la médiane. De longues moustaches indiquent que le minimum et le maximum (ou les valeurs non aberrantes extrêmes) sont loin de la boîte, donc des valeurs extrêmes existent. La symétrie (option A) n'est pas garantie (la médiane peut être décentrée dans la boîte). L'écart-type (option C) peut être élevé à cause des valeurs extrêmes. L'option D est fausse car si $Q_1$ et $Q_3$ étaient confondus aux extrêmes, la boîte couvrirait toute l'étendue.",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Boîte courte, moustaches longues",
+        "min": 0,
+        "q1": 45,
+        "median": 50,
+        "q3": 55,
+        "max": 100
+      }
+    },
+    {
+      "text": "Dans une classe, les résultats à un test donnent le boxplot ci-contre. On sait que $Q_1 = 8$, $\\text{Médiane} = 12$, $Q_3 = 16$. Quel pourcentage d'élèves a obtenu une note supérieure ou égale à 12 ?",
+      "options": [
+        "25 %",
+        "50 %",
+        "75 %",
+        "100 %"
+      ],
+      "correctAnswer": "50 %",
+      "explanation": "La médiane (12) partage la population en deux parties égales : 50 % des élèves ont une note inférieure ou égale à la médiane, et 50 % ont une note supérieure ou égale à la médiane. La question porte sur 'supérieure ou égale à 12', ce qui correspond exactement à la moitié supérieure de la distribution. $Q_1 = 8$ correspond à 25 % en dessous, $Q_3 = 16$ correspond à 75 % en dessous (donc 25 % au-dessus).",
+      "points": 1,
+      "figure": {
+        "type": "box_plot",
+        "caption": "Notes sur 20",
+        "min": 4,
+        "q1": 8,
+        "median": 12,
+        "q3": 16,
+        "max": 19
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 79,
+  "_course_code": "ce1-t02-c01-partager-une-unite-en-parts-egales",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Reconnaître un partage équitable",
+  "title": "Reconnaître un partage équitable",
+  "blocks": [
+    {
+      "title": "Disque partagé en deux",
+      "content": "Regarde le disque ci-dessous. Est-il divisé en parts égales ? Réponds par oui ou non.",
+      "correctAnswer": "Oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le disque est divisé en $2$ parties de même superficie. Chaque partie représente une moitié du disque. C'est donc un partage équitable en deux parts égales.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "circle",
+        "caption": "Un disque divisé en deux parts égales"
+      }
+    },
+    {
+      "title": "Bande partagée inégalement",
+      "content": "Observe la bande ci-dessous. Est-elle partagée équitablement ? Réponds par oui ou non.",
+      "correctAnswer": "Non",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La bande est divisée en deux parties de tailles différentes : l'une vaut $2$ unités de longueur, l'autre en vaut $5$. Comme les parts n'ont pas la même grandeur, ce n'est pas un partage équitable.",
+      "points": 2,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie 1",
+            "value": 2,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 2",
+            "value": 5,
+            "tone": "red"
+          }
+        ],
+        "caption": "Une bande divisée en deux parties inégales"
+      }
+    },
+    {
+      "title": "Nombre de parts égales",
+      "content": "Combien y a-t-il de parts égales sur cette bande ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La bande est divisée en $3$ parties de même grandeur. On dit qu'elle est partagée en trois tiers. Il y a donc $3$ parts égales.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 3
+          }
+        ],
+        "caption": "Une bande divisée en trois parts égales"
+      }
+    }
+  ]
+}

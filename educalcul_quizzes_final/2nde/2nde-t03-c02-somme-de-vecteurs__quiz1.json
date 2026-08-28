@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Relation de Chasles",
+  "title": "Relation de Chasles - Quiz",
+  "questions": [
+    {
+      "text": "Quelle est la relation de Chasles pour trois points A, B, C ?",
+      "options": [
+        "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{BC} = \\vec{CA}$",
+        "$\\vec{AB} - \\vec{BC} = \\vec{AC}$",
+        "$\\vec{BA} + \\vec{BC} = \\vec{AC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+      "explanation": "La relation de Chasles affirme que la somme des vecteurs consécutifs $\\vec{AB}$ et $\\vec{BC}$ donne le vecteur $\\vec{AC}$. Les autres options inversent l'ordre, changent le signe ou utilisent le vecteur inverse $\\vec{BA}$, ce qui est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $\\vec{u} = \\vec{AB}$ et $\\vec{v} = \\vec{BC}$, comment exprime-t-on $\\vec{AC}$ d'après la relation de Chasles ?",
+      "options": [
+        "$\\vec{u} + \\vec{v}$",
+        "$\\vec{u} - \\vec{v}$",
+        "$\\vec{v} - \\vec{u}$",
+        "$\\vec{u} \\times \\vec{v}$"
+      ],
+      "correctAnswer": "$\\vec{u} + \\vec{v}$",
+      "explanation": "D'après Chasles, $\\vec{AC} = \\vec{AB} + \\vec{BC} = \\vec{u} + \\vec{v}$. La soustraction ou le produit vectoriel ne correspondent pas à la relation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un quadrilatère ABCD, que vaut $\\vec{AB} + \\vec{BC} + \\vec{CD}$ selon la relation de Chasles ?",
+      "options": [
+        "$\\vec{AD}$",
+        "$\\vec{DA}$",
+        "$\\vec{AC}$",
+        "$\\vec{BD}$"
+      ],
+      "correctAnswer": "$\\vec{AD}$",
+      "explanation": "En appliquant Chasles successivement : $\\vec{AB} + \\vec{BC} = \\vec{AC}$, puis $\\vec{AC} + \\vec{CD} = \\vec{AD}$. Les autres vecteurs ne correspondent pas à la somme des trois côtés consécutifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{AB} = \\vec{u}$, $\\vec{BC} = \\vec{v}$, $\\vec{CD} = \\vec{w}$. Exprimez $\\vec{AD}$ en utilisant la relation de Chasles.",
+      "options": [
+        "$\\vec{u} + \\vec{v} + \\vec{w}$",
+        "$\\vec{u} + \\vec{v} - \\vec{w}$",
+        "$\\vec{u} - \\vec{v} + \\vec{w}$",
+        "$-\\vec{u} - \\vec{v} - \\vec{w}$"
+      ],
+      "correctAnswer": "$\\vec{u} + \\vec{v} + \\vec{w}$",
+      "explanation": "$\\vec{AD} = \\vec{AB} + \\vec{BC} + \\vec{CD} = \\vec{u} + \\vec{v} + \\vec{w}$ par application répétée de Chasles. Les signes négatifs seraient incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Données A(1,2), B(4,6), C(7,3). Calculez $\\vec{AC}$ en utilisant la relation de Chasles $\\vec{AB} + \\vec{BC}$.",
+      "options": [
+        "$(6,1)$",
+        "$(6,7)$",
+        "$(0,1)$",
+        "$(6,-1)$"
+      ],
+      "correctAnswer": "$(6,1)$",
+      "explanation": "$\\vec{AB} = (4-1, 6-2) = (3,4)$ et $\\vec{BC} = (7-4, 3-6) = (3,-3)$. Leur somme est $(3+3, 4-3) = (6,1)$, ce qui est $\\vec{AC}$. Les autres paires ne correspondent pas à cette addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

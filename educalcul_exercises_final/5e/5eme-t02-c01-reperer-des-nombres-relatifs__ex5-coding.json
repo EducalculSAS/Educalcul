@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 384,
+  "_course_code": "5eme-t02-c01-reperer-des-nombres-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Approfondissement : Droite graduée",
+  "title": "Algorithmes sur la droite graduée",
+  "blocks": [
+    {
+      "title": "Placer un entier relatif",
+      "content": "Écrire un algorithme (en pseudo‑code ou style Python) qui, étant donné un entier relatif $n$ compris entre $-10$ et $10$, affiche les étapes pour le repérer sur une droite graduée allant de $-10$ à $10$. L'algorithme doit indiquer le point de départ, le sens de déplacement et le nombre de graduations à franchir.",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$.\\n2. Si $n \\ge 0$ alors direction ← \"vers la droite\" sinon direction ← \"vers la gauche\".\\n3. distance ← valeur absolue de $n$.\\n4. Afficher \"Partir de l'origine (0).\"\\n5. Afficher \"Aller \" + direction + \" de \" + distance + \" graduation(s).\"\\n6. Afficher \"Arrivé au point \" + $n$ + \".\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On part toujours de l'origine $0$. Si $n$ est positif ou nul, on se déplace vers la droite (les nombres augmentent). Si $n$ est négatif, on se déplace vers la gauche (les nombres diminuent). Le nombre de graduations à franchir correspond à la valeur absolue $|n|$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer l'éloignement de deux entiers",
+      "content": "Écrire un algorithme qui prend en entrée deux entiers relatifs $a$ et $b$ (chacun entre $-10$ et $10$) et qui détermine lequel est le plus éloigné de zéro sur la droite graduée. L'algorithme doit afficher le nombre le plus éloigné et indiquer s'il se trouve à gauche ou à droite de l'origine.",
+      "correctAnswer": "Algorithme :\\n1. Lire $a$, $b$.\\n2. distA ← valeur absolue de $a$.\\n3. distB ← valeur absolue de $b$.\\n4. Si distA > distB alors\\n      plusLoin ← $a$\\n   Sinon si distB > distA alors\\n      plusLoin ← $b$\\n   Sinon\\n      plusLoin ← \"les deux sont à la même distance\".\\n5. Si plusLoin ≠ \"les deux sont à la même distance\" alors\\n      Si plusLoin > 0 alors position ← \"à droite\" sinon position ← \"à gauche\".\\n      Afficher \"Le nombre le plus éloigné est \" + plusLoin + \" (\" + position + \" de l'origine).\"\\n   Sinon\\n      Afficher \"Les deux nombres sont à la même distance de zéro.\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La distance à l'origine est donnée par la valeur absolue. On compare $|a|$ et $|b|$. Le plus grand correspond au nombre le plus éloigné. Son signe indique la direction : positif → droite, négatif → gauche. En cas d'égalité, les deux sont à même distance.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le milieu de deux points",
+      "content": "Écrire un algorithme qui, étant donnés deux entiers relatifs $x$ et $y$ (entre $-10$ et $10$), calcule le milieu $m$ de ces deux points sur la droite graduée et affiche sa coordonnée. Le milieu est défini par $m = \\frac{x + y}{2}$. L'algorithme doit aussi préciser si $m$ est un entier ou un nombre décimal.",
+      "correctAnswer": "Algorithme :\\n1. Lire $x$, $y$.\\n2. somme ← $x + y$.\\n3. m ← somme / 2.\\n4. Afficher \"Le milieu de \" + $x$ + \" et \" + $y$ + \" est \" + m + \".\"\\n5. Si m est un entier (c'est‑à‑dire somme modulo 2 = 0) alors\\n      Afficher \"C'est un nombre entier.\"\\n   Sinon\\n      Afficher \"C'est un nombre décimal (demi‑entier).\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le milieu de deux nombres sur une droite graduée est la moyenne arithmétique $(x+y)/2$. On calcule la somme, on divise par $2$. Si la somme est paire, le résultat est un entier ; sinon c'est un demi‑entier (ex. $3/2 = 1,5$).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "_status": "done",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Application : Bilan général DNB",
+  "title": "Bilan Algorithmique - Préparation DNB",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n\\nVariables : a, b, i en entier\\na prend la valeur 10\\nb prend la valeur 0\\nPour i de 1 à 5 faire\\n    a prend la valeur a - 1\\n    b prend la valeur b + a\\nFin pour\\nAfficher b\\n\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "35",
+        "40",
+        "45",
+        "50"
+      ],
+      "correctAnswer": "35",
+      "explanation": "On suit pas à pas la boucle 'Pour i de 1 à 5' :\\n- Initialisation : a = 10, b = 0.\\n- i = 1 : a devient 9, b devient 0 + 9 = 9.\\n- i = 2 : a devient 8, b devient 9 + 8 = 17.\\n- i = 3 : a devient 7, b devient 17 + 7 = 24.\\n- i = 4 : a devient 6, b devient 24 + 6 = 30.\\n- i = 5 : a devient 5, b devient 30 + 5 = 35.\\nLa boucle s'arrête, on affiche b qui vaut 35. L'option 40 correspondrait à une boucle jusqu'à 6, 45 à une initialisation différente, 50 à une erreur de décompte.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Étape i",
+          "a",
+          "b"
+        ],
+        "rows": [
+          [
+            "Initialisation",
+            "10",
+            "0"
+          ],
+          [
+            "1",
+            "9",
+            "9"
+          ],
+          [
+            "2",
+            "8",
+            "17"
+          ],
+          [
+            "3",
+            "7",
+            "24"
+          ],
+          [
+            "4",
+            "6",
+            "30"
+          ],
+          [
+            "5",
+            "5",
+            "35"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On considère le programme Python suivant :\\n\\nx = 7\\nif x > 5:\\n    if x < 10:\\n        print('A')\\n    else:\\n        print('B')\\nelse:\\n    print('C')\\n\\nQue se passe-t-il lors de l'exécution ?",
+      "options": [
+        "Le programme affiche A",
+        "Le programme affiche B",
+        "Le programme affiche C",
+        "Le programme ne fait rien"
+      ],
+      "correctAnswer": "Le programme affiche A",
+      "explanation": "La variable x vaut 7. La première condition 'x > 5' est vraie (7 > 5), on entre dans le premier bloc 'if'. La seconde condition 'x < 10' est aussi vraie (7 < 10), on exécute donc 'print(\"A\")'. Les blocs 'else' correspondants sont ignorés. L'affichage est bien la lettre A.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la liste L définie par : L = [10, 20, 30, 40, 50].\\nOn exécute le code suivant :\\n\\ns = 0\\nfor i in range(1, 4):\\n    s = s + L[i]\\nprint(s)\\n\\nQuelle valeur est affichée ?",
+      "options": [
+        "90",
+        "100",
+        "60",
+        "150"
+      ],
+      "correctAnswer": "90",
+      "explanation": "En Python, les indices commencent à 0. La liste L a 5 éléments : L[0]=10, L[1]=20, L[2]=30, L[3]=40, L[4]=50.\\nLa boucle 'for i in range(1, 4)' parcourt les valeurs 1, 2, 3 (4 est exclu).\\n- i=1 : s = 0 + L[1] = 20.\\n- i=2 : s = 20 + L[2] = 50.\\n- i=3 : s = 50 + L[3] = 90.\\nLa somme finale est 90. L'option 100 correspondrait à range(0,4), 60 à range(1,3), 150 à la somme totale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut programmer le tracé d'un polygone régulier à n côtés avec un logiciel de type Scratch (ou Python turtle).\\nL'algorithme est :\\nRépéter n fois\\n    Avancer de 50 pas\\n    Tourner de (360 / n) degrés\\nFin répéter\\n\\nQuelle valeur faut-il donner à n pour tracer un hexagone régulier ?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Un hexagone régulier a six côtés. La variable n représente le nombre de côtés (et le nombre de répétitions). Pour tracer un hexagone, il faut donc répéter les instructions 6 fois. L'angle de rotation à chaque étape est 360 / 6 = 60 degrés. L'option 5 donne un pentagone, 7 un heptagone, 8 un octogone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme de calcul du PGCD (algorithme d'Euclide) avec les valeurs initiales a = 48 et b = 18 :\\n\\nTant que b ≠ 0 faire\\n    r ← a mod b  (reste de la division euclidienne de a par b)\\n    a ← b\\n    b ← r\\nFin tant que\\nAfficher a\\n\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "6",
+        "12",
+        "18",
+        "48"
+      ],
+      "correctAnswer": "6",
+      "explanation": "On trace l'algorithme :\\n- Début : a=48, b=18.\\n- Tour 1 : r = 48 mod 18 = 12. a devient 18, b devient 12.\\n- Tour 2 : r = 18 mod 12 = 6. a devient 12, b devient 6.\\n- Tour 3 : r = 12 mod 6 = 0. a devient 6, b devient 0.\\n- Condition b ≠ 0 devient fausse, on sort de la boucle.\\nOn affiche a qui vaut 6. C'est bien le PGCD de 48 et 18. 12 est le premier reste, 18 est la valeur initiale de b, 48 la valeur initiale de a.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

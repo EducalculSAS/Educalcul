@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Calculer",
+  "title": "Calculer avec le théorème de Pythagore et sa réciproque",
+  "blocks": [
+    {
+      "title": "Calcul de l'hypoténuse",
+      "content": "Dans un triangle rectangle, les côtés de l'angle droit mesurent $6$ cm et $8$ cm. La longueur de l'hypoténuse est {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le théorème de Pythagore : $6^2 + 8^2 = 36 + 64 = 100$. La racine carrée de $100$ est $10$, donc l'hypoténuse mesure $10$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'un côté de l'angle droit",
+      "content": "Dans un triangle rectangle, l'hypoténuse mesure $13$ cm et un côté de l'angle droit mesure $5$ cm. La longueur de l'autre côté de l'angle droit est {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "12"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après le théorème de Pythagore, $13^2 = 5^2 + x^2$. Soit $169 = 25 + x^2$, donc $x^2 = 144$ et $x = 12$. L'autre côté mesure $12$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification de la réciproque",
+      "content": "Les longueurs $7$ cm, $24$ cm et $25$ cm forment-elles un triangle rectangle ? Réponds par « oui » ou « non » : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "oui"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On vérifie si $7^2 + 24^2 = 25^2$. $49 + 576 = 625$ et $25^2 = 625$. L'égalité est vraie, donc c'est un triangle rectangle. La réponse est « oui ».",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

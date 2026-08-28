@@ -1,0 +1,52 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Comparer",
+  "title": "Comparaison de programmes de calcul",
+  "blocks": [
+    {
+      "title": "Évaluation numérique",
+      "content": "Le programme A consiste à multiplier par 3 puis ajouter 5. Le programme B consiste à ajouter 5 puis multiplier par 3. Pour le nombre de départ $x = 4$, le résultat du programme A est {{1}} et celui du programme B est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "17",
+        "27"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour $x=4$, programme A : $4 \\times 3 = 12$, puis $12+5=17$. Programme B : $4+5=9$, puis $9 \\times 3 = 27$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Expression littérale",
+      "content": "L'expression littérale du programme B (ajouter 5 puis multiplier par 3) est $3(x+5)$. En la développant, on obtient {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "3x+15"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On développe $3(x+5) = 3 \\times x + 3 \\times 5 = 3x + 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'égalité",
+      "content": "On considère maintenant le programme A : multiplier par 2 puis ajouter 5, et le programme B : multiplier par 3 puis soustraire 1. Pour quelle valeur de $x$ les deux programmes donnent-ils le même résultat ? $x = {{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "6"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $2x+5 = 3x-1 \\Rightarrow 5+1 = 3x-2x \\Rightarrow 6 = x$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

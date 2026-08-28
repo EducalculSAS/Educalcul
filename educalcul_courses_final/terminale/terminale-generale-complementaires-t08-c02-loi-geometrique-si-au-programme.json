@@ -1,0 +1,475 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.562069+00:00",
+  "id": 666,
+  "code": "terminale-generale-complementaires-t08-c02",
+  "title": "Loi géométrique si au programme",
+  "description": "Cours structuré Educalcul : Loi géométrique si au programme.",
+  "subject": "Temps d'attente",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Temps d'attente",
+    "titre_du_cours": "Loi géométrique si au programme",
+    "objectif_global": "Loi géométrique si au programme",
+    "mini_lecons_imposees": [
+      "Probabilité.",
+      "Espérance.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Temps d'attente",
+      "lessons": [
+        {
+          "title": "Probabilité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une histoire d'attente : la première réussite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu lances un dé équilibré encore et encore, dans l'espoir d'obtenir enfin un $6$. Combien de lancers faut-il attendre en moyenne ? Et quelle est la probabilité exacte que ce premier $6$ apparaisse précisément au $4^{\\text{ème}}$ essai, ou bien avant le $10^{\\text{ème}}$ ? C'est exactement le genre de question que la loi géométrique permet de résoudre avec élégance. Nous sommes ici dans le cadre d'expériences de Bernoulli répétées indéfiniment : chaque lancer est indépendant des autres, la probabilité de succès (obtenir un $6$) reste constante et vaut $p = \\frac{1}{6}$, et nous comptons le nombre d'essais nécessaires pour obtenir le tout premier succès. Cette variable aléatoire, notons-la $X$, suit une loi géométrique de paramètre $p$. C'est un outil fondamental pour modéliser des temps d'attente, des délais avant un événement rare, ou le nombre de tentatives avant une première réussite."
+            },
+            {
+              "type": "definition",
+              "term": "Loi géométrique",
+              "definition": "Une variable aléatoire $X$ suit une loi géométrique de paramètre $p$ (avec $0 < p < 1$) si elle prend ses valeurs dans $\\mathbb{N}^* = \\{1, 2, 3, \\dots\\}$ et si pour tout entier $k \\ge 1$, $\\mathbb{P}(X = k) = (1-p)^{k-1} p$. On note $X \\sim \\mathcal{G}(p)$.",
+              "example": "Si $p = 0,2$, alors $\\mathbb{P}(X=1)=0,2$, $\\mathbb{P}(X=2)=0,8 \\times 0,2 = 0,16$, $\\mathbb{P}(X=3)=0,8^2 \\times 0,2 = 0,128$, etc."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du dé. Pour que le premier $6$ survienne au $4^{\\text{ème}}$ lancer, il faut avoir échoué trois fois de suite (probabilité $\\frac{5}{6}$ à chaque fois) puis réussir la quatrième fois (probabilité $\\frac{1}{6}$). Par indépendance, on multiplie : $\\left(\\frac{5}{6}\\right)^3 \\times \\frac{1}{6} = \\frac{125}{1296} \\approx 0,096$. La formule générale $(1-p)^{k-1}p$ capture exactement ce raisonnement : $k-1$ échecs suivis d'un succès. Remarque bien que $X$ ne peut pas valoir $0$ : il faut au minimum un essai pour espérer réussir. C'est une différence notable avec d'autres lois de dénombrement que tu as pu croiser."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Probabilités $\\mathbb{P}(X=k)$ pour $X \\sim \\mathcal{G}(1/6)$",
+              "bars": [
+                {
+                  "label": "k=1",
+                  "value": 0.1667,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=2",
+                  "value": 0.1389,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=3",
+                  "value": 0.1157,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=4",
+                  "value": 0.0965,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=5",
+                  "value": 0.0804,
+                  "tone": "blue"
+                },
+                {
+                  "label": "k=6",
+                  "value": 0.067,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de calculer des probabilités ponctuelles. Mais souvent, on s'intéresse à la probabilité d'avoir réussi *avant* un certain rang, ou *après* un certain nombre d'essais. C'est là qu'interviennent les probabilités cumulées, ou fonction de répartition. Au lieu d'additionner une à une les valeurs de la formule $(1-p)^{k-1}p$, il existe une astuce majeure, bien plus rapide et qui évite les erreurs de calcul : raisonner par l'événement contraire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La fonction de répartition : l'astuce du complémentaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'événement $\\{X \\le k\\}$ signifie : \"le premier succès a lieu au plus au $k^{\\text{ème}}$ essai\". Son contraire, $\\{X > k\\}$, signifie : \"il n'y a eu aucun succès lors des $k$ premiers essais\". Or, l'absence de succès sur $k$ essais indépendants, c'est simplement $k$ échecs de suite, dont la probabilité est $(1-p)^k$. Par conséquent, $\\mathbb{P}(X \\le k) = 1 - \\mathbb{P}(X > k) = 1 - (1-p)^k$. C'est une formule compacte, puissante, qu'il faut savoir écrire sans hésiter. De même, $\\mathbb{P}(X > k) = (1-p)^k$ et $\\mathbb{P}(X \\ge k) = (1-p)^{k-1}$. Ces formules te permettront de répondre instantanément à des questions comme : \"Quelle est la chance d'avoir obtenu mon $6$ avant le $10^{\\text{ème}}$ lancer ?\""
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{P}(X \\le k) = 1 - (1-p)^k \\quad \\text{et} \\quad \\mathbb{P}(X > k) = (1-p)^k"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'événement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce une probabilité ponctuelle $\\mathbb{P}(X=k)$ ou cumulative $\\mathbb{P}(X \\le k)$, $\\mathbb{P}(X > k)$, etc. ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ponctuelle : $(1-p)^{k-1}p$. Cumulative $\\le k$ : $1-(1-p)^k$. Cumulative $> k$ : $(1-p)^k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $p$ et $k$ par leurs valeurs. Utilise la calculatrice pour les puissances. Donne un arrondi si demandé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une propriété fascinante, presque contre-intuitive, qui caractérise la loi géométrique parmi toutes les lois discrètes sur $\\mathbb{N}^*$ : la propriété d'absence de mémoire. Imagine que tu as déjà lancé le dé $5$ fois sans obtenir de $6$. Quelle est la probabilité qu'il faille encore au moins $3$ lancers de plus pour voir le premier $6$ ? L'intuition pourrait dire que la probabilité a changé car \"on est en retard\". Mais non ! Les dés n'ont pas de mémoire. La probabilité qu'il faille attendre $3$ lancers de plus, sachant qu'on a déjà attendu $5$ lancers, est exactement la même que la probabilité d'attendre au moins $3$ lancers dès le départ. Mathématiquement : $\\mathbb{P}(X > m+n \\mid X > m) = \\mathbb{P}(X > n)$. C'est cette propriété qui fait de la loi géométrique l'unique analogue discret de la loi exponentielle que tu rencontreras peut-être plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\forall m,n \\in \\mathbb{N}, \\quad \\mathbb{P}(X > m+n \\mid X > m) = \\mathbb{P}(X > n) = (1-p)^n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de passer à l'espérance, prenons le temps de vérifier que les probabilités de la loi géométrique forment bien un système complet : leur somme pour $k$ allant de $1$ à l'infini doit valoir $1$. C'est la somme d'une série géométrique de raison $q = 1-p$ (avec $|q|<1$) et de premier terme $p$ : $\\sum_{k=1}^{\\infty} p q^{k-1} = \\frac{p}{1-q} = \\frac{p}{p} = 1$. Tout est cohérent. Cette vérification n'est pas qu'une formalité : elle garantit que notre modèle probabiliste est valide. Nous avons maintenant tous les outils pour calculer n'importe quelle probabilité liée à un premier succès. Passons à la mesure centrale de cette distribution : l'espérance."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance une pièce de monnaie équilibrée jusqu'à obtenir la première face. On note $X$ le nombre de lancers effectués. Calculer $\\mathbb{P}(X=3)$ et $\\mathbb{P}(X \\le 4)$.",
+              "answer": "$\\mathbb{P}(X=3) = 0,125$ ; $\\mathbb{P}(X \\le 4) = 0,9375$",
+              "hint": "Identifie $p$. Pour $\\mathbb{P}(X=3)$, utilise la formule ponctuelle. Pour $\\mathbb{P}(X \\le 4)$, utilise la formule cumulative $1-(1-p)^k$.",
+              "explanation": "Ici $p = 0,5$. $\\mathbb{P}(X=3) = (1-0,5)^{2} \\times 0,5 = 0,25 \\times 0,5 = 0,125$. $\\mathbb{P}(X \\le 4) = 1 - (1-0,5)^4 = 1 - 0,5^4 = 1 - 0,0625 = 0,9375$."
+            },
+            {
+              "question": "Une machine produit des pièces avec un taux de défaut de $2\\%$. Les pièces sont contrôlées une par une. Quelle est la probabilité que la première pièce défectueuse soit trouvée après le $50^{\\text{ème}}$ contrôle (c'est-à-dire au $51^{\\text{ème}}$ ou plus) ?",
+              "answer": "$(0,98)^{50} \\approx 0,364$",
+              "hint": "L'événement \"après le 50ème\" signifie $X > 50$. Utilise la formule $\\mathbb{P}(X > k) = (1-p)^k$.",
+              "explanation": "On cherche $\\mathbb{P}(X > 50)$. Avec $p=0,02$, $1-p = 0,98$. Donc $\\mathbb{P}(X > 50) = 0,98^{50} \\approx 0,3642$. Il y a environ $36\\%$ de chances de ne pas trouver de défaut dans les 50 premiers contrôles."
+            },
+            {
+              "question": "Soit $X \\sim \\mathcal{G}(0,3)$. Vérifier numériquement la propriété d'absence de mémoire pour $m=2$ et $n=4$ : calculer $\\mathbb{P}(X > 6 \\mid X > 2)$ et comparer à $\\mathbb{P}(X > 4)$.",
+              "answer": "Les deux valent $0,2401$. La propriété est vérifiée.",
+              "hint": "Utilise la définition de la probabilité conditionnelle : $\\mathbb{P}(A|B) = \\frac{\\mathbb{P}(A \\cap B)}{\\mathbb{P}(B)}$. Ici $A = \\{X>6\\}$, $B = \\{X>2\\}$. Comme $A \\subset B$, $A \\cap B = A$.",
+              "explanation": "$\\mathbb{P}(X>6) = 0,7^6 = 0,117649$. $\\mathbb{P}(X>2) = 0,7^2 = 0,49$. $\\mathbb{P}(X>6 | X>2) = 0,117649 / 0,49 = 0,2401$. $\\mathbb{P}(X>4) = 0,7^4 = 0,2401$. Égalité exacte."
+            }
+          ]
+        },
+        {
+          "title": "Espérance.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combien d'essais en moyenne ? L'espérance mathématique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous savons maintenant calculer la probabilité de chaque valeur possible de $X$. Une question naturelle se pose : si l'on répète l'expérience un très grand nombre de fois (lancer le dé jusqu'au premier $6$, recommencer, etc.), quelle sera la valeur moyenne du nombre d'essais nécessaires ? C'est la définition même de l'espérance $\\mathbb{E}(X)$. Pour une loi géométrique, l'intuition donne souvent le bon résultat : si la probabilité de succès est $p$, on s'attend à réussir une fois sur $1/p$ essais. Pour un dé ($p=1/6$), on s'attend à $6$ lancers en moyenne. Pour une pièce ($p=1/2$), $2$ lancers. Pour un événement rare avec $p=0,01$, $100$ essais. Cette intuition est correcte, mais en Terminale, nous devons savoir la démontrer rigoureusement, car c'est le cœur de la modélisation mathématique : passer de l'intuition à la preuve."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\mathbb{E}(X) = \\frac{1}{p}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La démonstration utilise la définition de l'espérance pour une variable discrète : $\\mathbb{E}(X) = \\sum_{k=1}^{\\infty} k \\mathbb{P}(X=k) = \\sum_{k=1}^{\\infty} k (1-p)^{k-1} p$. On reconnaît la dérivée d'une série géométrique. Rappelons que pour $|q|<1$, $\\sum_{k=0}^{\\infty} q^k = \\frac{1}{1-q}$. En dérivant par rapport à $q$, on obtient $\\sum_{k=1}^{\\infty} k q^{k-1} = \\frac{1}{(1-q)^2}$. En posant $q = 1-p$, on a $1-q = p$. La somme devient $p \\times \\frac{1}{p^2} = \\frac{1}{p}$. C'est une manipulation classique sur les séries entières qu'il faut savoir refaire seul, car elle réapparaît souvent (loi de Poisson, exponentielle, etc.)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la définition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{E}(X) = \\sum_{k=1}^{\\infty} k \\cdot p(1-p)^{k-1}$"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Factoriser et poser $q=1-p$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{E}(X) = p \\sum_{k=1}^{\\infty} k q^{k-1}$ avec $|q|<1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Utiliser la série dérivée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\sum_{k=1}^{\\infty} k q^{k-1} = \\frac{d}{dq} \\left( \\sum_{k=0}^{\\infty} q^k \\right) = \\frac{d}{dq} \\left( \\frac{1}{1-q} \\right) = \\frac{1}{(1-q)^2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\mathbb{E}(X) = p \\cdot \\frac{1}{(1-q)^2} = p \\cdot \\frac{1}{p^2} = \\frac{1}{p}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'espérance donne la position centrale de la distribution, mais elle ne dit rien de sa dispersion. Deux variables peuvent avoir la même moyenne $1/p$ mais des comportements très différents : l'une très concentrée autour de sa moyenne, l'autre très éparpillée. La variance $V(X)$ quantifie cet éparpillement. Pour la loi géométrique, la formule est $V(X) = \\frac{1-p}{p^2}$. Remarque que la variance est toujours supérieure à l'espérance (sauf si $p=1$, cas trivial), ce qui traduit une dispersion importante, typique des temps d'attente : on peut avoir de très longues séries d'échecs avant le premier succès, ce qui tire la variance vers le haut. L'écart-type $\\sigma(X) = \\frac{\\sqrt{1-p}}{p}$ a l'avantage d'être dans la même unité que $X$ (nombre d'essais)."
+            },
+            {
+              "type": "display_math",
+              "latex": "V(X) = \\frac{1-p}{p^2} \\quad \\text{et} \\quad \\sigma(X) = \\frac{\\sqrt{1-p}}{p}"
+            },
+            {
+              "type": "paragraph",
+              "content": "La démonstration de la variance est un peu plus technique mais suit le même esprit : on calcule $\\mathbb{E}(X^2)$ ou, plus astucieux, $\\mathbb{E}[X(X-1)]$ qui fait apparaître une dérivée seconde de la série géométrique. $\\mathbb{E}[X(X-1)] = \\sum k(k-1) p q^{k-1} = p q \\sum k(k-1) q^{k-2} = p q \\frac{2}{(1-q)^3} = \\frac{2(1-p)}{p^2}$. Ensuite, $V(X) = \\mathbb{E}(X^2) - [\\mathbb{E}(X)]^2 = \\mathbb{E}[X(X-1)] + \\mathbb{E}(X) - \\frac{1}{p^2} = \\frac{2(1-p)}{p^2} + \\frac{1}{p} - \\frac{1}{p^2} = \\frac{2-2p+p-1}{p^2} = \\frac{1-p}{p^2}$. C'est un exercice type de bac qu'il faut savoir présenter proprement, en justifiant la permutation de la somme et de la dérivée (convergence normale sur tout segment $[0, q_0]$ avec $q_0<1$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons ces formules à des situations concrètes pour en sentir la portée. Reprenons l'exemple du contrôle qualité : une chaîne de production livre $2\\%$ de pièces défectueuses ($p=0,02$). En moyenne, il faut contrôler $\\mathbb{E}(X) = 1/0,02 = 50$ pièces pour trouver le premier défaut. L'écart-type est $\\sigma = \\sqrt{0,98}/0,02 \\approx 49,5$. Cet écart-type, presque aussi grand que la moyenne, nous dit que le nombre de pièces à contrôler est très imprévisible : parfois on trouve un défaut tout de suite (au 1er essai), parfois il faut en contrôler 150 ou 200. Cette forte variabilité est une signature de la loi géométrique pour les petits $p$. C'est une information cruciale pour un responsable qualité : prévoir un stock de pièces de rechange basé seulement sur la moyenne $50$ serait risqué, car la moitié du temps, il en faudra plus, et parfois beaucoup plus."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Espérance et écart-type selon $p$",
+              "bars": [
+                {
+                  "label": "p=0,5",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "p=0,2",
+                  "value": 5,
+                  "tone": "green"
+                },
+                {
+                  "label": "p=0,1",
+                  "value": 10,
+                  "tone": "gold"
+                },
+                {
+                  "label": "p=0,05",
+                  "value": 20,
+                  "tone": "red"
+                },
+                {
+                  "label": "p=0,02",
+                  "value": 50,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin dans la pratique, il est souvent utile de simuler une loi géométrique sur machine, par exemple pour vérifier une formule ou illustrer la dispersion par un histogramme. En algorithmique, on utilise une boucle \"Tant que\" : on tire un nombre aléatoire uniforme $U$ sur $[0,1]$ ; tant que $U > p$, on incrémente un compteur et on retire un nouveau $U$ ; quand $U \\le p$, on s'arrête, le compteur donne la valeur simulée de $X$. Cette méthode, dite \"par inversion de la fonction de répartition\", est exacte et très rapide. Nous allons l'implémenter en Python pour visualiser la forme de la distribution et confirmer nos calculs théoriques."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "import random\\nimport matplotlib.pyplot as plt\\n\\ndef geometric_simulation(p, n_trials=10000):\\n    \"\"\"Simule n_tirages d'une variable géométrique G(p).\"\"\"\\n    samples = []\\n    for _ in range(n_trials):\\n        k = 1\\n        while random.random() > p:\\n            k += 1\\n        samples.append(k)\\n    return samples\\n\\n# Exemple d'utilisation pour p = 0.2\\np = 0.2\\ndata = geometric_simulation(p)\\nmean_emp = sum(data)/len(data)\\nvar_emp = sum((x-mean_emp)**2 for x in data)/len(data)\\nprint(f\"p = {p}\")\\nprint(f\"Moyenne empirique : {mean_emp:.3f} (théorique : {1/p:.3f})\")\\nprint(f\"Variance empirique : {var_emp:.3f} (théorique : {(1-p)/p**2:.3f})\")\\n\\n# Histogramme (affiché si environnement graphique dispo)\\n# plt.hist(data, bins=range(1, max(data)+2), density=True, alpha=0.7)\\n# plt.title(f'Loi géométrique G({p}) simulée')\\n# plt.show()",
+              "caption": "Simulation Python d'une loi géométrique par méthode de l'inverse"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant une maîtrise complète des probabilités, de l'espérance et de la variance de la loi géométrique, ainsi qu'un outil algorithmique pour la simuler. Ces résultats théoriques sont solides : l'espérance $1/p$ et la variance $(1-p)/p^2$ sont des formules exactes, valables pour tout $p \\in ]0,1[$. La simulation, elle, apporte une validation empirique et une intuition visuelle précieuse, surtout quand on veut communiquer des résultats à des non-spécialistes. Nous allons voir dans la dernière leçon comment articuler tout cela pour résoudre des problèmes concrets de modélisation et faire les bons choix d'interprétation."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $X \\sim \\mathcal{G}(0,25)$. Calculer $\\mathbb{E}(X)$, $V(X)$ et $\\sigma(X)$. Donner les valeurs exactes puis des approximations décimales.",
+              "answer": "$\\mathbb{E}(X)=4$, $V(X)=12$, $\\sigma(X)=2\\sqrt{3} \\approx 3,464$",
+              "hint": "Applique directement les formules $1/p$, $(1-p)/p^2$, $\\sqrt{1-p}/p$ avec $p=1/4$.",
+              "explanation": "$p=0,25=1/4$. $\\mathbb{E}(X)=1/(1/4)=4$. $V(X)=(3/4)/(1/16)=12$. $\\sigma(X)=\\sqrt{12}=2\\sqrt{3} \\approx 3,464$."
+            },
+            {
+              "question": "Un joueur de basket réussit ses lancers francs avec une probabilité $p=0,8$. Il s'entraîne jusqu'à rater un lancer (le \"succès\" est ici le raté). Soit $Y$ le nombre de lancers effectués. Calculer l'espérance et l'écart-type de $Y$. Interpréter.",
+              "answer": "$\\mathbb{E}(Y)=5$, $\\sigma(Y) \\approx 4,47$. En moyenne, il rate au 5ème lancer, mais l'écart-type montre une grande variabilité.",
+              "hint": "Attention : le \"succès\" de la variable aléatoire est le raté, donc $p = 1 - 0,8 = 0,2$. Applique les formules avec ce $p$.",
+              "explanation": "L'événement d'intérêt (arrêt) est le raté, sa probabilité est $p=0,2$. $\\mathbb{E}(Y)=1/0,2=5$. $V(Y)=0,8/0,04=20$. $\\sigma(Y)=\\sqrt{20}=2\\sqrt{5} \\approx 4,47$."
+            },
+            {
+              "question": "Pour $X \\sim \\mathcal{G}(p)$, on sait que $\\mathbb{E}(X) = 1/p$. En utilisant la relation $\\mathbb{E}[X(X-1)] = \\frac{2(1-p)}{p^2}$, retrouver la formule de la variance $V(X) = \\frac{1-p}{p^2}$.",
+              "answer": "$V(X) = \\frac{2(1-p)}{p^2} + \\frac{1}{p} - \\frac{1}{p^2} = \\frac{1-p}{p^2}$",
+              "hint": "Rappelle que $V(X) = \\mathbb{E}(X^2) - [\\mathbb{E}(X)]^2$ et que $\\mathbb{E}(X^2) = \\mathbb{E}[X(X-1)] + \\mathbb{E}(X)$.",
+              "explanation": "$\\mathbb{E}(X^2) = \\mathbb{E}[X(X-1)] + \\mathbb{E}(X) = \\frac{2(1-p)}{p^2} + \\frac{1}{p} = \\frac{2-2p+p}{p^2} = \\frac{2-p}{p^2}$. $V(X) = \\frac{2-p}{p^2} - \\frac{1}{p^2} = \\frac{1-p}{p^2}$."
+            },
+            {
+              "question": "Le code Python ci-dessus simule une loi géométrique. Expliquer pourquoi la condition `while random.random() > p:` correspond bien à l'algorithme d'inversion de la fonction de répartition.",
+              "answer": "On tire $U \\sim U[0,1]$. Si $U > p$, alors $U \\in (p, 1]$, ce qui correspond à l'échec (car $F(1)=p$). On continue tant qu'on échoue. On s'arrête quand $U \\le p$, ce qui correspond au succès.",
+              "explanation": "La fonction de répartition est $F(k) = 1-(1-p)^k$. La méthode d'inversion cherche le plus petit $k$ tel que $U \\le F(k)$. Pour $k=1$, $F(1)=p$. Si $U \\le p$, on retourne $1$ (succès immédiat). Si $U > p$, on a échoué au premier essai, on incrémente $k$ et on retire. La boucle `while U > p` compte exactement le nombre d'échecs avant le premier $U \\le p$."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître une situation géométrique : les conditions du modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir calculer des probabilités, une espérance ou une variance, c'est indispensable. Mais la compétence clé en mathématiques complémentaires, c'est de savoir *quand* utiliser la loi géométrique pour modéliser une situation réelle. Ce n'est pas automatique : il faut vérifier que les hypothèses du modèle sont satisfaites. Rappelle-toi les trois piliers : 1) On répète une même épreuve de manière indépendante (le résultat d'un essai n'influence pas le suivant). 2) La probabilité de succès $p$ est constante d'un essai à l'autre (pas d'usure, pas d'apprentissage, pas de fatigue qui change la donne). 3) La variable aléatoire observée est le *numéro du premier succès* (donc $X \\in \\{1, 2, 3, \\dots\\}$). Si l'une de ces conditions manque, la loi géométrique n'est pas le bon modèle, ou n'est qu'une approximation."
+            },
+            {
+              "type": "definition",
+              "term": "Modélisation par une loi géométrique",
+              "definition": "On modélise par $X \\sim \\mathcal{G}(p)$ le nombre d'essais jusqu'au premier succès si : (1) Les essais sont indépendants. (2) La probabilité de succès $p$ est identique à chaque essai. (3) On s'arrête au premier succès. Attention : le tirage sans remise (ex: piocher des cartes) ne donne PAS une loi géométrique car $p$ change (utiliser loi hypergéométrique ou binomial selon le cas).",
+              "example": "Lancer une fléchette jusqu'à toucher le centre : OUI si l'adresse ne change pas. Tirer des boules dans une urne sans remise jusqu'à avoir une rouge : NON, $p$ change."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple complet, typique de ce que l'on peut rencontrer en épreuve. Un centre d'appels reçoit des appels. On estime que $15\\%$ des appels aboutissent à une vente ($p=0,15$). Les appels sont indépendants. Un opérateur prend les appels les uns après les autres. On s'intéresse au nombre d'appels $N$ qu'il doit prendre pour réaliser sa première vente de la journée. Première question : $N$ suit-elle une loi géométrique ? Oui, les trois conditions sont réunies : indépendance des appels (hypothèse raisonnable), $p$ constant ($15\\%$ à chaque fois), et on compte jusqu'à la première vente. Deuxième question : quelle est la probabilité qu'il fasse sa première vente avant ou au $5^{\\text{ème}}$ appel ? On calcule $\\mathbb{P}(N \\le 5) = 1 - (1-0,15)^5 = 1 - 0,85^5 \\approx 0,556$. Il a un peu plus d'une chance sur deux de vendre dans ses 5 premiers appels."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Indépendance ? $p$ constant ? Variable = rang du 1er succès ? Si oui $\\rightarrow \\mathcal{G}(p)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Probabilité ponctuelle ($k$ précis) ? Cumulative ($\\le k$, $> k$) ? Espérance ? Variance ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule adaptée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ponctuelle : $(1-p)^{k-1}p$. Cumulative $\\le k$ : $1-(1-p)^k$. Espérance : $1/p$. Variance : $(1-p)/p^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remettre le nombre dans le contexte. \"Il y a 55,6% de chances que...\" \"En moyenne, il faut 6,67 appels...\""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la situation est un peu plus subtile. Imagine un système de sauvegarde automatique qui s'exécute toutes les heures. La probabilité qu'une sauvegarde échoue (erreur disque, réseau coupé) est $p=0,02$, indépendamment des autres heures. On veut savoir combien de sauvegardes réussies auront lieu *avant* le premier échec. Si on note $Y$ ce nombre de succès avant le premier échec, alors $Y = X - 1$ où $X \\sim \\mathcal{G}(p)$ est le numéro de l'essai de l'échec. $Y$ prend ses valeurs dans $\\mathbb{N} = \\{0, 1, 2, \\dots\\}$. C'est ce qu'on appelle parfois la loi géométrique « décalée » ou loi de Pascal d'ordre 1. Ses probabilités sont $\\mathbb{P}(Y=k) = (1-p)^k p$ pour $k \\ge 0$. Son espérance est $\\mathbb{E}(Y) = \\frac{1-p}{p}$ et sa variance est la même $\\frac{1-p}{p^2}$. Il est crucial de bien identifier ce qu'on compte : le numéro de l'essai gagnant ($X$, valeurs dans $\\mathbb{N}^*$) ou le nombre d'échecs avant ($Y$, valeurs dans $\\mathbb{N}$). Les formules diffèrent légèrement pour l'espérance."
+            },
+            {
+              "type": "display_math",
+              "latex": "Si Y = X-1 avec X \\sim \\mathcal{G}(p) : \\mathbb{P}(Y=k) = (1-p)^k p \\ (k\\ge 0), \\quad \\mathbb{E}(Y) = \\frac{1-p}{p}, \\quad V(Y) = \\frac{1-p}{p^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, abordons un point souvent source de confusion : l'approximation par la loi exponentielle. Si l'on considère un processus en temps continu où les événements surviennent au hasard avec un taux constant $\\lambda$, le temps d'attente avant le premier événement suit une loi exponentielle de paramètre $\\lambda$. Si l'on discrétise le temps en pas de $\\Delta t$, et que l'on pose $p = \\lambda \\Delta t$ (pour $\\Delta t$ petit), le nombre de pas avant le premier événement suit approximativement une loi géométrique $\\mathcal{G}(p)$. C'est le lien profond entre les deux lois : la géométrique est la version discrète de l'exponentielle, et toutes deux partagent la propriété d'absence de mémoire. En Terminale complémentaire, vous n'avez pas à démontrer cette convergence, mais savoir qu'elle existe aide à comprendre pourquoi la géométrique modélise si bien les « temps d'attente » discrets. Nous avons fait le tour des concepts essentiels : définition, calculs de probabilités, espérance, variance, modélisation, simulation. Il est temps de faire le bilan."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une variable aléatoire suivant une loi géométrique $\\mathcal{G}(p)$ et écrire sa loi de probabilité $\\mathbb{P}(X=k) = (1-p)^{k-1}p$.",
+                "Je sais calculer des probabilités cumulées $\\mathbb{P}(X \\le k) = 1-(1-p)^k$ et $\\mathbb{P}(X > k) = (1-p)^k$ en utilisant l'événement contraire.",
+                "Je connais et je sais démontrer les formules de l'espérance $\\mathbb{E}(X) = 1/p$ et de la variance $V(X) = (1-p)/p^2$ (via la série dérivée).",
+                "Je sais vérifier les conditions de modélisation (indépendance, $p$ constant, premier succès) avant d'appliquer la loi géométrique.",
+                "Je sais distinguer le « numéro du premier succès » ($X \\in \\mathbb{N}^*$) du « nombre d'échecs avant le premier succès » ($Y \\in \\mathbb{N}$) et adapter les formules d'espérance.",
+                "Je suis capable d'écrire un algorithme de simulation (boucle while) pour estimer des probabilités ou illustrer la dispersion."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les situations suivantes, lesquelles peuvent être modélisées par une loi géométrique ? Justifier brièvement. A) On tire des cartes d'un jeu de 52 cartes sans remise jusqu'à obtenir un As. B) On lance une fléchette jusqu'à toucher le centre, la probabilité de toucher le centre est constante à chaque lancer. C) On observe les naissances dans un hôpital jusqu'à la naissance d'un garçon (probabilité 0,51).",
+              "answer": "A) Non (sans remise, $p$ change). B) Oui (indépendance, $p$ constant, premier succès). C) Oui (indépendance raisonnable, $p$ constant, premier succès).",
+              "hint": "Vérifie pour chaque cas : indépendance ? $p$ constant ? Variable = rang du 1er succès ?",
+              "explanation": "A) Sans remise, la probabilité d'avoir un As change à chaque tirage (hypergéométrique). B) Conditions remplies : $\\mathcal{G}(p)$. C) Les naissances sont considérées indépendantes, $p=0,51$ constant : $\\mathcal{G}(0,51)$."
+            },
+            {
+              "question": "Un serveur web reçoit des requêtes. La probabilité qu'une requête provoque une erreur 500 est $p=0,005$. Les requêtes sont indépendantes. On note $X$ le numéro de la requête qui provoque la première erreur. 1) Quelle est la loi de $X$ ? 2) Calculer la probabilité qu'il n'y ait aucune erreur parmi les 100 premières requêtes. 3) Calculer l'espérance et l'écart-type de $X$.",
+              "answer": "1) $X \\sim \\mathcal{G}(0,005)$. 2) $\\mathbb{P}(X > 100) = 0,995^{100} \\approx 0,606$. 3) $\\mathbb{E}(X)=200$, $\\sigma(X) \\approx 199,5$.",
+              "hint": "1) Vérifie les hypothèses. 2) \"Aucune erreur parmi les 100 premières\" = $X > 100$. 3) Formules directes.",
+              "explanation": "1) Indépendance, $p$ constant, premier succès $\\rightarrow \\mathcal{G}(0,005)$. 2) $\\mathbb{P}(X>100) = (1-0,005)^{100} = 0,995^{100} \\approx 0,6058$. 3) $\\mathbb{E}(X)=1/0,005=200$. $V(X)=0,995/0,000025=39800$. $\\sigma=\\sqrt{39800} \\approx 199,5$. L'écart-type $\\approx$ l'espérance : forte dispersion."
+            },
+            {
+              "question": "On considère une variable $Y$ suivant une loi géométrique « décalée » (nombre d'échecs avant le premier succès) de paramètre $p=0,4$. Calculer $\\mathbb{P}(Y=2)$, $\\mathbb{E}(Y)$ et $V(Y)$. Comparer $\\mathbb{E}(Y)$ à $\\mathbb{E}(X)$ où $X=Y+1$.",
+              "answer": "$\\mathbb{P}(Y=2)=0,144$, $\\mathbb{E}(Y)=1,5$, $V(Y)=3,75$. $\\mathbb{E}(X) = \\mathbb{E}(Y)+1 = 2,5 = 1/0,4$.",
+              "hint": "Pour $Y$ : $\\mathbb{P}(Y=k) = (1-p)^k p$ ($k\\ge 0$). $\\mathbb{E}(Y) = (1-p)/p$. $V(Y) = (1-p)/p^2$. Rappelle $X = Y+1$.",
+              "explanation": "$p=0,4, q=0,6$. $\\mathbb{P}(Y=2) = 0,6^2 \\times 0,4 = 0,144$. $\\mathbb{E}(Y) = 0,6/0,4 = 1,5$. $V(Y) = 0,6/0,16 = 3,75$. $X=Y+1 \\Rightarrow \\mathbb{E}(X)=1,5+1=2,5 = 1/0,4$. Cohérent."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

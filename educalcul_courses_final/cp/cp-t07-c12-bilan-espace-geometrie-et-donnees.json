@@ -1,0 +1,360 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.685789+00:00",
+  "id": 67,
+  "code": "cp-t07-c12",
+  "title": "Bilan - Espace, géométrie et données",
+  "description": "Cours structuré Educalcul : Bilan - Espace, géométrie et données.",
+  "subject": "Espace, géométrie et données",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Espace, géométrie et données",
+    "titre_du_cours": "Bilan - Espace, géométrie et données",
+    "objectif_global": "Bilan - Espace, géométrie et données",
+    "mini_lecons_imposees": [
+      "Mélanger reconnaissance, repérage et données.",
+      "Choisir le bon vocabulaire.",
+      "Checklist des acquis."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Espace, géométrie et données",
+      "lessons": [
+        {
+          "title": "Mélanger reconnaissance, repérage et données.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "On retrouve nos formes préférées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, on fait un grand mélange ! Tu vas revoir les solides que tu connais bien : le cube, la sphère et la pyramide. Regarde autour de toi : un dé est un $cube$, un ballon est une $sphère$, et le toit d'une maison ressemble à une $pyramide$. Touche-les si tu peux : le cube a des faces plates, la sphère est toute ronde, la pyramide a une pointe."
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cube",
+                "sphere",
+                "pyramide",
+                "cube",
+                "sphere"
+              ],
+              "options": [
+                "pyramide",
+                "cube"
+              ],
+              "answer": "pyramide",
+              "caption": "Quelle forme vient ensuite dans la suite ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on joue à cache-cache avec les mots de position. Imagine ton doudou sur l'étagère : il est $au\\ dessus$ des livres. Ton chat dort $sous$ la table. Ta tasse est $à\\ côté$ de ton assiette. Et toi, tu es $entre$ papa et maman sur le canapé. Ces mots aident à dire exactement où sont les choses."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 5,
+              "caption": "Colorie la case qui est au dessus de la case 1 et à côté de la case 6."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce petit tableau : $4$ enfants aiment le rouge, $3$ aiment le bleu, $5$ aiment le vert. C'est facile de voir quelle couleur gagne ! Le vert a le plus de croix. Le bleu en a le moins. On appelle ça lire des $données$. C'est comme compter les votes pour le goûter."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Couleurs préférées de la classe",
+              "bars": [
+                {
+                  "label": "Rouge",
+                  "value": 4,
+                  "tone": "red"
+                },
+                {
+                  "label": "Bleu",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Vert",
+                  "value": 5,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de mélanger formes, positions et comptages. C'est comme faire une salade de fruits : chaque ingrédient garde son goût, mais ensemble c'est encore meilleur. La prochaine fois, on va choisir les mots les plus justes pour tout décrire."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces objets, lesquels sont des cubes ? Une boîte de jeu, un ballon, un dé, une boule de neige.",
+              "answer": "Une boîte de jeu et un dé sont des cubes.",
+              "hint": "Cherche les objets qui ont $6$ faces carrées toutes plates.",
+              "explanation": "Le cube a $6$ faces carrées. Le ballon et la boule de neige sont des sphères, ils sont tout ronds."
+            },
+            {
+              "question": "Le nounours est sur la chaise. La chaise est devant la table. Où est le nounours par rapport à la table ?",
+              "answer": "Le nounours est devant la table (et au-dessus du sol).",
+              "hint": "Dessine la scène : nounours → chaise → table.",
+              "explanation": "Si le nounours est sur la chaise et la chaise devant la table, alors le nounours se trouve aussi devant la table."
+            },
+            {
+              "question": "Sur le graphique, quelle couleur a deux croix de plus que le bleu ?",
+              "answer": "Le vert a deux croix de plus que le bleu ($5 - 3 = 2$).",
+              "hint": "Compte les croix du bleu, puis cherche celle qui en a deux de plus.",
+              "explanation": "Le bleu a $3$ croix. Le rouge en a $4$ (une de plus). Le vert en a $5$ (deux de plus). C'est donc le vert."
+            }
+          ]
+        },
+        {
+          "title": "Choisir le bon vocabulaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les mots justes pour les solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais déjà nommer les solides. Maintenant, on apprend les mots d'expert pour les décrire ! Un $cube$ a $6$ $faces$ carrées, $12$ $arêtes$ (les traits où deux faces se touchent) et $8$ $sommets$ (les pointes). La $sphère$ n'a aucune arête, elle $roule$ tout le temps. La $pyramide$ a une $base$ carrée et $4$ faces triangulaires qui se rejoignent au $sommet$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Une pyramide : base carrée et 4 faces triangulaires",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les positions, on utilise des mots très précis. $À\\ gauche$ et $à\\ droite$ : lève la main qui tient ton crayon, c'est ta main droite ! $Devant$ et $derrière$ : quand tu fais la queue, tu es derrière ton copain. $Au\\ dessus$ et $en\\ dessous$ : l'oiseau vole au-dessus de l'arbre, les racines sont en dessous. $Entre$ : tu es entre deux amis."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 5,
+              "highlighted": 7,
+              "caption": "Montre la case qui est entre la case 6 et la case 8."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec les données, on dit : ce tableau $représente$ les fruits préférés. La $barre$ la plus haute montre le fruit le $plus\\ choisi$. La plus basse, le $moins\\ choisi$. On peut aussi dire : $combien$ de enfants ont choisi la pomme ? $5$ enfants. C'est le $nombre$ ou la $quantité$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fruits préférés : pomme, banane, fraise",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 5,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 4,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils pleine de mots précis : faces, arêtes, sommets pour les solides ; gauche, droite, entre pour les places ; représente, quantité, plus choisi pour les données. Choisir le bon mot, c'est comme prendre la bonne clé pour ouvrir la bonne porte : tout devient clair !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de faces a un cube ? Combien de sommets ?",
+              "answer": "Un cube a $6$ faces et $8$ sommets.",
+              "hint": "Compte sur un dé : les faces carrées et les pointes.",
+              "explanation": "Chaque face est un carré ($6$ au total). Les sommets sont les $8$ coins où trois arêtes se rencontrent."
+            },
+            {
+              "question": "Dans la classe, Léa est à gauche de Tom. Tom est à gauche de Maya. Qui est au milieu ?",
+              "answer": "Tom est au milieu.",
+              "hint": "Place-les dans l'ordre : Léa — Tom — Maya.",
+              "explanation": "Si Léa est à gauche de Tom, et Tom à gauche de Maya, l'ordre est Léa, puis Tom, puis Maya. Tom est donc entre les deux."
+            },
+            {
+              "question": "Sur le graphique des fruits, quel fruit est le moins choisi ? Combien d'enfants l'ont choisi ?",
+              "answer": "La banane est le moins choisie, par $3$ enfants.",
+              "hint": "Cherche la barre la plus basse.",
+              "explanation": "La barre de la banane monte jusqu'à $3$. Celle de la fraise monte à $4$, celle de la pomme à $5$. La plus basse est la banane."
+            }
+          ]
+        },
+        {
+          "title": "Checklist des acquis.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Je sais reconnaître et nommer les solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette collection : un cube en bois, une balle en mousse, une pyramide en carton, une boîte de céréales (pavé droit), un rouleau de scotch (cylindre). Tu sais les trier : ceux qui roulent (sphère, cylindre) et ceux qui glissent (cube, pavé droit, pyramide). Tu sais dire : « Ceci est un cube, il a des faces carrées. »"
+            },
+            {
+              "type": "pattern_maker",
+              "sequence": [
+                "cube",
+                "cylinder",
+                "sphere",
+                "cube",
+                "cylinder"
+              ],
+              "options": [
+                "sphere",
+                "pyramid"
+              ],
+              "answer": "sphere",
+              "caption": "Quel solide vient compléter la suite ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Je sais me repérer et décrire une position"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le tapis de jeu, tu places ton petit bonhomme : $au\\ centre$, $en\\ haut\\ à\\ gauche$, $en\\ bas\\ à\\ droite$, $entre$ deux cubes. Tu suis un chemin : « avance de $2$ cases, tourne à droite, avance de $1$ case ». Tu arrives pile sur la case marquée ! C'est comme un jeu de l'oie géant."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 4,
+              "highlighted": 10,
+              "caption": "Départ case 1 : avance 3, tourne droite, avance 1. Où es-tu ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Je sais lire et comparer des données simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "La maîtresse a demandé : « Quel est ton animal préféré ? » Les réponses : $6$ chats, $4$ chiens, $2$ lapins. Tu sais lire le tableau : le chat gagne avec $6$ voix. Le lapin est dernier avec $2$. Tu sais dire : « Il y a $4$ chats de plus que de lapins » car $6 - 2 = 4$. Tu compares les quantités sans te tromper."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Animaux préférés de la classe",
+              "bars": [
+                {
+                  "label": "Chat",
+                  "value": 6,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Chien",
+                  "value": 4,
+                  "tone": "brown"
+                },
+                {
+                  "label": "Lapin",
+                  "value": 2,
+                  "tone": "pink"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je reconnais le cube, la sphère, la pyramide, le pavé droit, le cylindre.",
+                "Je sais dire : face, arête, sommet, base, roule, glisse.",
+                "Je place un objet : au-dessus, en dessous, à gauche, à droite, devant, derrière, entre.",
+                "Je suis un déplacement sur un quadrillage (avance, tourne).",
+                "Je lis un tableau ou un graphique à barres simples.",
+                "Je compare : le plus, le moins, la différence entre deux quantités.",
+                "J'utilise le vocabulaire précis pour tout expliquer."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces solides, lesquels roulent ? Cube, sphère, cylindre, pyramide, pavé droit.",
+              "answer": "La sphère et le cylindre roulent.",
+              "hint": "Essaie de les faire rouler sur la table mentalement.",
+              "explanation": "La sphère est toute ronde, le cylindre a des faces courbes. Le cube, la pyramide et le pavé droit ont des faces plates : ils glissent mais ne roulent pas."
+            },
+            {
+              "question": "Tu es sur la case départ (en bas à gauche). Tu avances de $2$ cases vers le haut, puis $1$ case à droite. Où es-tu ?",
+              "answer": "Tu es sur la case qui est à $2$ cases du bas et $1$ case de la gauche.",
+              "hint": "Compte les cases comme au jeu de l'oie : haut, haut, droite.",
+              "explanation": "Départ : coin bas-gauche. $2$ cases vers le haut → tu montes de deux lignes. $1$ case à droite → tu décalages d'une colonne. C'est ta position finale."
+            },
+            {
+              "question": "Sur le graphique des animaux, combien y a-t-il de chats de plus que de chiens ?",
+              "answer": "Il y a $2$ chats de plus que de chiens ($6 - 4 = 2$).",
+              "hint": "Regarde la hauteur des barres : chat $6$, chien $4$.",
+              "explanation": "La barre du chat monte à $6$, celle du chien à $4$. La différence est $6 - 4 = 2$. Il y a donc $2$ voix de plus pour le chat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

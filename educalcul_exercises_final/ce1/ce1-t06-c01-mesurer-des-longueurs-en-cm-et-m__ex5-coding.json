@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 117,
+  "_course_code": "ce1-t06-c01-mesurer-des-longueurs-en-cm-et-m",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Choisir l'unité",
+  "title": "Choisir l'unité de mesure appropriée (cm ou m)",
+  "blocks": [
+    {
+      "title": "Algorithme simple pour choisir l'unité",
+      "content": "Écris un algorithme (en langage naturel ou pseudo-code) qui, étant donné une longueur exprimée en centimètres, affiche l'unité de mesure la plus adaptée entre le centimètre ($cm$) et le mètre ($m$). Rappelle que $1 m = 100 cm$.",
+      "correctAnswer": "Algorithme :\\n- Lire la longueur en centimètres.\\n- Si longueur < 100 alors afficher \"cm\".\\n- Sinon afficher \"m\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare la longueur à $100$ cm car $1 m = 100 cm$. Si la longueur est plus petite que $100$ cm, on exprime la mesure en centimètres, sinon en mètres.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour une liste de longueurs",
+      "content": "Adapte l'algorithme précédent pour qu'il traite une liste de longueurs données en centimètres (par exemple $[45, 120, 75, 200]$) et affiche pour chacune l'unité correspondante ($cm$ ou $m$).",
+      "correctAnswer": "Algorithme :\\n- Pour chaque longueur dans la liste :\\n    - Si longueur < 100 alors afficher \"cm\".\\n    - Sinon afficher \"m\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On parcourt la liste avec une boucle et on applique le même test à chaque élément.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application de l'algorithme",
+      "content": "En utilisant ton algorithme, détermine l'unité pour les longueurs suivantes : $30$ cm, $150$ cm, $95$ cm, $210$ cm. Écris les résultats sous la forme d'une liste de couples (longueur, unité), par exemple (30, cm).",
+      "correctAnswer": "(30, cm), (150, m), (95, cm), (210, m)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "30 < 100 -> cm ; 150 >= 100 -> m ; 95 < 100 -> cm ; 210 >= 100 -> m.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

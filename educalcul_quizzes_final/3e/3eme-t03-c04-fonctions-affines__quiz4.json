@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 470,
+  "_course_code": "3eme-t03-c04-fonctions-affines",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Application : Fonctions affines",
+  "title": "Applications des fonctions affines - 3e",
+  "questions": [
+    {
+      "text": "Un taxi facture une prise en charge de $5$ € plus $2$ € par kilomètre parcouru. Quelle fonction affine $f$ donne le prix $f(x)$ en euros pour $x$ kilomètres ?",
+      "options": [
+        "$f(x)=2x+5$",
+        "$f(x)=5x+2$",
+        "$f(x)=2x-5$",
+        "$f(x)=5x-2$"
+      ],
+      "correctAnswer": "$f(x)=2x+5$",
+      "explanation": "Le prix total est la somme de la prise en charge fixe ($5$ €) et du coût variable ($2$ € par km). Donc $f(x)=2x+5$. Les autres options inversent les coefficients ou changent les signes, ce qui ne correspond pas à l'énoncé.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction affine $f(x)=3x+2$. Quelle est la valeur de $f(5)$ ?",
+      "options": [
+        "$17$",
+        "$15$",
+        "$13$",
+        "$19$"
+      ],
+      "correctAnswer": "$17$",
+      "explanation": "On remplace $x$ par $5$ : $f(5)=3\\times5+2=15+2=17$. Les distracteurs correspondent à des erreurs de calcul (oubli du $+2$, multiplication par $3$ mal faite, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fonction affine $f$ passe par les points $(1,5)$ et $(3,11)$. Quelle est son expression ?",
+      "options": [
+        "$f(x)=3x+2$",
+        "$f(x)=2x+3$",
+        "$f(x)=3x-2$",
+        "$f(x)=2x+1$"
+      ],
+      "correctAnswer": "$f(x)=3x+2$",
+      "explanation": "Le coefficient directeur est $\\frac{11-5}{3-1}=\\frac{6}{2}=3$. En utilisant le point $(1,5)$ : $5=3\\times1+b \\Rightarrow b=2$. Donc $f(x)=3x+2$. Les autres options donnent soit un mauvais coefficient directeur, soit un mauvais ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci‑dessous représente une fonction affine. Elle passe par les points $(0,4)$ et $(2,10)$. Quelle est son équation ?",
+      "options": [
+        "$y=3x+4$",
+        "$y=2x+4$",
+        "$y=3x+2$",
+        "$y=4x+3$"
+      ],
+      "correctAnswer": "$y=3x+4$",
+      "explanation": "L'ordonnée à l'origine est $4$ (point $(0,4)$). Le coefficient directeur est $\\frac{10-4}{2-0}=3$. L'équation est donc $y=3x+4$. Les distracteurs mélangent coefficient directeur et ordonnée à l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "3*x+4",
+        "xmin": -1,
+        "xmax": 3,
+        "caption": "Droite passant par (0,4) et (2,10)"
+      }
+    },
+    {
+      "text": "Une entreprise a un coût de production modélisé par $C(x)=40x+1200$ (en euros) et un revenu par $R(x)=70x$. Pour quel nombre $x$ d'unités produites l'entreprise atteint-elle le seuil de rentabilité ($C(x)=R(x)$) ?",
+      "options": [
+        "$40$",
+        "$30$",
+        "$50$",
+        "$60$"
+      ],
+      "correctAnswer": "$40$",
+      "explanation": "On résout $40x+1200=70x \\Rightarrow 30x=1200 \\Rightarrow x=40$. Les autres valeurs correspondent à des erreurs de résolution (mauvaise soustraction, division incorrecte).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Choisir une échelle simple",
+  "title": "Choisir une échelle simple pour un diagramme en bâtons",
+  "blocks": [
+    {
+      "title": "Échelle pour une hauteur donnée",
+      "content": "Dans un diagramme en bâtons, la plus grande valeur à représenter est $18$. On veut que la barre la plus haute mesure exactement $6$ bâtons. Quelle échelle simple (nombre d'unités par bâton) faut-il choisir ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver l'échelle, on divise la plus grande valeur par le nombre de bâtons souhaité : $18 \\div 6 = 3$. Donc chaque bâton représente $3$ unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de la plus grande échelle simple",
+      "content": "Les effectifs à représenter sont $2$, $4$, $6$ et $8$. Parmi les échelles simples $1$, $2$, $5$ et $10$ unités par bâton, quelle est la plus grande échelle qui donne un nombre entier de bâtons pour chaque effectif ?",
+      "correctAnswer": "2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On teste chaque échelle : avec $1$ on obtient $2,4,6,8$ bâtons (entiers) ; avec $2$ on obtient $1,2,3,4$ bâtons (entiers) ; avec $5$ ou $10$ certains effectifs ne donnent pas un nombre entier de bâtons. La plus grande échelle convenable est donc $2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lecture d'une valeur sur le diagramme",
+      "content": "Un diagramme en bâtons utilise une échelle de $4$ unités par bâton. Si une barre mesure $5$ bâtons, quelle valeur cette barre représente-t-elle ?",
+      "correctAnswer": "20",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La valeur représentée est le produit du nombre de bâtons par l'échelle : $5 \\times 4 = 20$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

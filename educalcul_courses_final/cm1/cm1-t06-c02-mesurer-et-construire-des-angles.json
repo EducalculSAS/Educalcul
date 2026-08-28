@@ -1,0 +1,475 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.248901+00:00",
+  "id": 249,
+  "code": "cm1-t06-c02",
+  "title": "Mesurer et construire des angles",
+  "description": "Cours structuré Educalcul : Mesurer et construire des angles.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Mesurer et construire des angles",
+    "objectif_global": "Mesurer et construire des angles",
+    "mini_lecons_imposees": [
+      "Comparer.",
+      "Utiliser rapporteur si prévu.",
+      "Construire."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Comparer.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un angle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux rayons qui partent du même point. Ce point de départ, on l'appelle le $sommet$ de l'angle. Les deux rayons sont les $côtés$ de l'angle. Pour bien visualiser, pense à une porte que tu ouvres : la charnière, c'est le sommet, et les deux bords de la porte, ce sont les côtés. Plus tu ouvres la porte, plus l'angle est grand. En géométrie, on note souvent un angle avec trois lettres, par exemple $\\widehat{ABC}$, où $B$ est le sommet, au milieu."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Le point commun aux deux côtés de l'angle.",
+              "example": "Dans $\\widehat{ABC}$, le sommet est $B$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle, ce n'est pas une longueur qu'on mesure en centimètres. C'est une $ouverture$. Pour comparer deux angles, on ne sort pas la règle, on regarde lequel est le plus « ouvert ». Si tu as un angle tout petit, comme l'extrémité d'une part de gâteau fine, et un angle très grand, comme une porte grande ouverte, tu vois tout de suite la différence. Mais quand les angles sont proches, l'œil peut se tromper. Il faut une méthode."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer en superposant"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode la plus simple pour comparer deux angles, c'est de les superposer. Tu prends une feuille de papier calque, tu recopies le premier angle dessus, puis tu poses ton calque sur le deuxième angle en faisant coïncider les sommets et un côté. Si le deuxième côté de ton calque tombe à l'intérieur du deuxième angle, alors le premier est plus petit. S'il déborde, il est plus grand. S'il tombe pile dessus, ils sont égaux. C'est comme essayer un gabarit : est-ce que cette forme passe dans celle-là ?"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Recopier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose ton calque sur le premier angle. Trace les deux côtés et marque le sommet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Superposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le sommet du calque sur le sommet du deuxième angle. Fais coïncider un côté."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde où se trouve l'autre côté du calque par rapport au deuxième angle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'angle droit, notre repère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais bien l'angle droit : c'est l'angle d'une feuille de papier, d'un coin de table, d'un carré. Il mesure $90^{\\circ}$, mais pour l'instant, on n'utilise pas encore les degrés. On l'utilise comme un $étalon$, une référence. Un angle plus petit qu'un angle droit, on l'appelle un angle $aigu$. Un angle plus grand, c'est un angle $obtus$. C'est très utile : devant n'importe quel angle, tu peux te demander : « Est-il plus petit ou plus grand que le coin de ma feuille ? » Cela te donne déjà une première idée de sa taille."
+            },
+            {
+              "type": "definition",
+              "term": "Angle aigu",
+              "definition": "Un angle plus petit qu'un angle droit.",
+              "example": "L'angle d'une part de pizza fine."
+            },
+            {
+              "type": "definition",
+              "term": "Angle obtus",
+              "definition": "Un angle plus grand qu'un angle droit.",
+              "example": "L'angle d'une porte entrouverte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer des angles par ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu sais comparer deux angles. Et si tu en as trois, quatre, cinq à ranger du plus petit au plus grand ? Tu procèdes par paires. Tu prends les deux premiers, tu les compares, tu notes le plus petit. Puis tu compares le troisième avec celui qui est en tête, et ainsi de suite. C'est comme ranger des bâtons par taille : tu ne regardes pas tout en même temps, tu fais des duels. Attention : quand les angles sont très proches, la superposition au calque reste la seule méthode fiable. Ton œil peut te dire « ils ont l'air pareils », mais le calque tranchera."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces trois angles, lequel est le plus grand ? Utilise la méthode du calque pour le vérifier. Angle A : ouverture étroite. Angle B : ouverture moyenne. Angle C : ouverture large.",
+              "answer": "L'angle C est le plus grand.",
+              "hint": "Superpose l'angle A sur B, puis le plus grand des deux sur C.",
+              "explanation": "En superposant, tu vois que A est plus petit que B, et B est plus petit que C. Donc C est le plus grand."
+            },
+            {
+              "question": "Tu as deux angles dessinés sur ta feuille. Le premier a un côté horizontal vers la droite et l'autre côté monte un peu. Le second a aussi un côté horizontal vers la droite mais l'autre côté monte beaucoup plus. Lequel est le plus grand ?",
+              "answer": "Le second angle est le plus grand.",
+              "hint": "Imagine que tu ouvres une porte : plus le côté monte, plus l'ouverture est grande.",
+              "explanation": "Les deux angles partagent un côté. Celui dont l'autre côté s'éloigne le plus de l'horizontale a la plus grande ouverture."
+            },
+            {
+              "question": "Classe ces angles par rapport à l'angle droit : angle de $30^{\\circ}$, angle de $90^{\\circ}$, angle de $120^{\\circ}$, angle de $45^{\\circ}$. Note « aigu », « droit » ou « obtus » pour chacun.",
+              "answer": "$30^{\\circ}$ : aigu. $90^{\\circ}$ : droit. $120^{\\circ}$ : obtus. $45^{\\circ}$ : aigu.",
+              "hint": "Compare chaque angle à $90^{\\circ}$ : plus petit = aigu, égal = droit, plus grand = obtus.",
+              "explanation": "L'angle droit est la référence. $30$ et $45$ sont inférieurs à $90$ (aigus). $90$ est l'angle droit. $120$ est supérieur à $90$ (obtus)."
+            },
+            {
+              "question": "Tu as quatre angles : $\\widehat{ABC}$, $\\widehat{DEF}$, $\\widehat{GHI}$, $\\widehat{JKL}$. Tu les as comparés deux à deux au calque. Résultat : $\\widehat{ABC} < \\widehat{DEF}$, $\\widehat{GHI} < \\widehat{ABC}$, $\\widehat{JKL} > \\widehat{DEF}$. Range-les du plus petit au plus grand.",
+              "answer": "$\\widehat{GHI} < \\widehat{ABC} < \\widehat{DEF} < \\widehat{JKL}$",
+              "hint": "Place d'abord celui qui est plus petit que $\\widehat{ABC}$, puis $\\widehat{ABC}$, puis $\\widehat{DEF}$, puis celui qui est plus grand que $\\widehat{DEF}$.",
+              "explanation": "$\\widehat{GHI}$ est le plus petit (plus petit que $\\widehat{ABC}$). Vient $\\widehat{ABC}$. Vient $\\widehat{DEF}$ (plus grand que $\\widehat{ABC}$). $\\widehat{JKL}$ est le plus grand (plus grand que $\\widehat{DEF}$)."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser rapporteur si prévu.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir le rapporteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, on comparait les angles sans leur donner de nombre. Maintenant, on va pouvoir les $mesurer$. L'outil, c'est le $rapporteur$. Regarde-le bien : c'est un demi-cercle gradué de $0$ à $180$. Au centre du bord plat, il y a un petit trou ou une marque : c'est le $centre$ du rapporteur. Il y a deux échelles de chiffres : une qui va de $0$ à $180$ dans un sens, l'autre de $180$ à $0$ dans l'autre sens. Les deux donnent le même résultat, il faut juste choisir celle qui commence à $0$ sur le côté où tu poses ton angle."
+            },
+            {
+              "type": "definition",
+              "term": "Rapporteur",
+              "definition": "Instrument en forme de demi-cercle gradué pour mesurer les angles en degrés.",
+              "example": "Un rapporteur scolaire mesure de $0^{\\circ}$ à $180^{\\circ}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'unité de mesure, c'est le $degré$, noté avec un petit cercle en exposant : $^{\\circ}$. Un angle droit, notre référence, mesure exactement $90^{\\circ}$. Un angle plat (une ligne droite) en mesure $180^{\\circ}$. Le tour complet ferait $360^{\\circ}$, mais ton rapporteur s'arrête à $180$ : il mesure les angles « normaux », ceux qui sont plus petits qu'un angle plat."
+            },
+            {
+              "type": "display_math",
+              "latex": "90^{\\circ} = \\text{angle droit}, \\quad 180^{\\circ} = \\text{angle plat}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode en trois temps"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mesurer un angle au rapporteur, c'est comme suivre une recette. Si tu rates une étape, le résultat est faux. Voici les trois gestes à faire dans l'ordre, sans te presser. D'abord, place le $centre$ du rapporteur exactement sur le $sommet$ de ton angle. C'est l'étape la plus importante : si le centre glisse d'un millimètre, ta lecture sera fausse. Ensuite, fais tourner le rapporteur pour que le $côté$ de ton angle qui part du sommet coïncide avec la $ligne des zéros$ (le bord plat gradué $0$). Enfin, sans bouger le rapporteur, regarde où le $deuxième côté$ de l'angle coupe les graduations. Le chiffre en face, c'est la mesure."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Centre sur le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le petit trou du rapporteur doit être pile sur le point du sommet."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Côté sur le zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Aligne un côté de l'angle avec la graduation $0$ du rapporteur (bord plat)."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Lire la graduation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Suis le deuxième côté jusqu'aux chiffres. Choisis l'échelle qui commence à $0$ de ton côté."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mesurer un angle aigu et un angle obtus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie sur un angle aigu, par exemple $40^{\\circ}$. Tu places le centre, tu alignes un côté sur $0$, le deuxième côté coupe l'échelle à $40$. Facile. Maintenant, un angle obtus, disons $130^{\\circ}$. Même méthode : centre sur le sommet, un côté sur $0$. Le deuxième côté va couper les graduations plus loin, après $90$. Tu lis $130$. Attention : sur ton rapporteur, il y a deux rangées de chiffres. Pour $130$, tu lis sur l'échelle qui monte de $0$ à $180$ en partant de ton côté aligné. L'autre échelle indiquerait $50$ (car $180 - 130 = 50$), ce serait l'angle supplémentaire, pas ton angle. Vérifie toujours : ton angle a-t-il l'air plus grand ou plus petit qu'un angle droit ? Si il a l'air plus grand, la mesure doit être supérieure à $90$."
+            },
+            {
+              "type": "definition",
+              "term": "Degré",
+              "definition": "Unité de mesure des angles. Un tour complet = $360^{\\circ}$.",
+              "example": "Angle droit = $90^{\\circ}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trois erreurs reviennent souvent. Première erreur : le centre du rapporteur n'est pas exactement sur le sommet. Résultat : tu mesures un angle décalé. Deuxième erreur : tu lis sur la mauvaise échelle. Tu as aligné ton côté sur $0$ à gauche, mais tu lis les chiffres qui montent de droite à gauche. Troisième erreur : les côtés de ton angle sont trop courts, ils n'atteignent pas les graduations. Solution : prolonge-les au crayon à papier avec ta règle, ça ne change pas l'angle, ça aide juste à lire. Prends le temps de bien faire chaque geste. Mesurer, c'est de la précision, pas de la vitesse."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Centre mal placé sur le sommet",
+                "Mauvaise échelle lue (lire $50$ au lieu de $130$) ",
+                "Côtés trop courts pour atteindre les graduations"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur ton rapporteur, tu vois deux rangées de chiffres. L'une va de $0$ à $180$ de gauche à droite, l'autre de $0$ à $180$ de droite à gauche. Laquelle utilises-tu pour mesurer un angle dont le côté aligné est à gauche ?",
+              "answer": "Celle qui va de $0$ à $180$ de gauche à droite (celle qui commence à $0$ du côté où est ton angle).",
+              "hint": "Choisis l'échelle dont le $0$ est sur le côté où tu as aligné ton angle.",
+              "explanation": "Si ton côté est sur le $0$ de gauche, tu lis les chiffres qui augmentent vers la droite. L'autre échelle est pour un angle placé du côté droit."
+            },
+            {
+              "question": "Tu mesures un angle. Tu as bien mis le centre sur le sommet, aligné un côté sur $0$. Le deuxième côté passe entre les graduations $60$ et $70$, plus près de $60$. Quelle est la mesure approximative ?",
+              "answer": "Environ $62^{\\circ}$ ou $63^{\\circ}$.",
+              "hint": "Regarde les petites graduations entre $60$ et $70$. Chaque trait vaut souvent $1^{\\circ}$ ou $2^{\\circ}$.",
+              "explanation": "Les grands traits sont les dizaines ($60$, $70$). Les petits traits sont les unités. Compte depuis $60$."
+            },
+            {
+              "question": "Un angle a l'air plus ouvert qu'un angle droit. Tu le mesures et tu trouves $75^{\\circ}$. Est-ce possible ? Que s'est-il passé ?",
+              "answer": "Non, ce n'est pas possible. Tu as lu sur la mauvaise échelle (tu as lu l'angle supplémentaire).",
+              "hint": "Un angle plus grand que l'angle droit doit mesurer plus de $90^{\\circ}$. $75 < 90$.",
+              "explanation": "Si l'angle paraît obtus ($> 90^{\\circ}$), la mesure doit être $> 90$. $75^{\\circ}$ est aigu. Tu as lu l'autre échelle : $180 - 75 = 105^{\\circ}$, ce qui est bien obtus."
+            },
+            {
+              "question": "Tu veux mesurer $\\widehat{MNP}$ de $115^{\\circ}$. Les côtés $NM$ et $NP$ font seulement $3$ cm. Les graduations du rapporteur sont à $5$ cm du centre. Que fais-tu ?",
+              "answer": "Je prolonge les côtés $NM$ et $NP$ à la règle pour qu'ils atteignent les graduations.",
+              "hint": "Prolonger un côté ne change pas l'angle, ça aide juste à lire la graduation.",
+              "explanation": "L'angle est défini par la direction des demi-droites, pas par la longueur des segments tracés. Prolonger au crayon à papier est la bonne méthode."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un angle donné"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, c'est l'opération inverse : on te donne une mesure, par exemple $50^{\\circ}$, et tu dois $dessiner$ l'angle qui correspond. C'est comme une construction : tu as le plan (la mesure), tu réalises l'ouvrage. Tu as besoin de ton rapporteur, de ta règle et d'un crayon bien taillé. La méthode est symétrique de la mesure : au lieu de lire une graduation, tu vas la $repérer$ et la $marquer$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "1. Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment (ou une demi-droite) avec ta règle. Marque le sommet $O$ à une extrémité."
+                    }
+                  ]
+                },
+                {
+                  "title": "2. Placer le rapporteur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Centre du rapporteur sur $O$, graduation $0$ sur le segment tracé."
+                    }
+                  ]
+                },
+                {
+                  "title": "3. Repérer la mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche la graduation demandée (ex: $50$) sur la bonne échelle. Fais un petit trait au crayon."
+                    }
+                  ]
+                },
+                {
+                  "title": "4. Tracer le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Retire le rapporteur. Trace le segment (ou demi-droite) qui relie $O$ à ton petit trait."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire l'angle droit et l'angle plat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux angles sont si importants qu'on doit savoir les construire sans même regarder les chiffres : l'angle droit ($90^{\\circ}$) et l'angle plat ($180^{\\circ}$). Pour l'angle droit, tu places ton rapporteur, tu cherches $90$ (souvent marqué d'un trait plus gros ou d'un petit carré), tu marques, tu traces. Mais il y a une astuce : ton rapporteur a souvent un bord droit. Si tu places ce bord le long de ton premier côté, le bord perpendiculaire du rapporteur te donne directement la direction de l'angle droit. Pour l'angle plat, c'est encore plus simple : tu prolonges ton premier côté en ligne droite de l'autre côté du sommet. Les deux côtés forment une ligne, l'angle est plat, $180^{\\circ}$."
+            },
+            {
+              "type": "definition",
+              "term": "Angle plat",
+              "definition": "Angle mesurant $180^{\\circ}$. Ses deux côtés forment une ligne droite.",
+              "example": "Une ligne tracée sur une feuille, le sommet au milieu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle connaissant deux angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un défi passionnant : on te donne un segment $AB$ de $6$ cm, et deux angles : $\\widehat{BAC} = 50^{\\circ}$ et $\\widehat{ABC} = 60^{\\circ}$. Tu dois construire le triangle $ABC$. Tu as déjà la base $AB$. À $A$, tu construis un angle de $50^{\\circ}$ (méthode apprise tout à l'heure). À $B$, tu construis un angle de $60^{\\circ}$ du même côté de la ligne $AB$. Les deux nouveaux côtés se croisent en un point : c'est $C$. Ton triangle est fini ! Vérifie : la somme des trois angles d'un triangle fait toujours $180^{\\circ}$. Ici $50 + 60 = 110$, donc le troisième angle $\\widehat{ACB}$ doit faire $70^{\\circ}$. Tu peux le mesurer pour contrôler."
+            },
+            {
+              "type": "display_math",
+              "latex": "50^{\\circ} + 60^{\\circ} + 70^{\\circ} = 180^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier sa construction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une construction géométrique, ça se vérifie. Une fois ton angle tracé, remets ton rapporteur dessus et mesure-le. Tu dois retrouver la mesure demandée, ou une valeur très proche (à $1^{\\circ}$ ou $2^{\\circ}$ près selon la précision de ton trait). Si tu as $48^{\\circ}$ au lieu de $50^{\\circ}$, regarde pourquoi : ton centre a-t-il glissé ? As-tu lu la bonne graduation ? Ton trait de marque était-il net ? C'est en corrigeant tes petites erreurs que tu deviens précis. La géométrie, c'est l'art de la rigueur douce : on prend son temps, on soigne son trait, on vérifie, on recommence si besoin. Chaque angle bien construit est une petite victoire."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce de pro",
+              "paragraphs": [
+                "Utilise un crayon à papier bien taillé (mine HB). Un trait épais cache la graduation et crée l'incertitude. Un trait fin, c'est la précision."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer le sommet et les côtés d'un angle.",
+                "Je sais comparer deux angles par superposition au calque.",
+                "Je sais reconnaître un angle aigu, un angle droit, un angle obtus.",
+                "Je sais placer correctement le rapporteur pour mesurer un angle.",
+                "Je sais lire la bonne échelle sur le rapporteur (celle qui commence à 0 de mon côté).",
+                "Je sais construire un angle d'une mesure donnée en 4 étapes.",
+                "Je sais construire un angle droit ($90^{\\circ}$) et un angle plat ($180^{\\circ}$).",
+                "Je sais construire un triangle en connaissant un côté et les deux angles adjacents.",
+                "Je sais vérifier ma construction en remesurant l'angle obtenu."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Constructis un angle de $35^{\\circ}$ de sommet $O$. Décris les 4 étapes dans l'ordre.",
+              "answer": "1. Tracer une demi-droite $[OX$. 2. Placer le rapporteur : centre sur $O$, $0$ sur $[OX$. 3. Repérer $35^{\\circ}$ et marquer un point $P$. 4. Tracer la demi-droite $[OP$. L'angle $\\widehat{XOP}$ mesure $35^{\\circ}$.",
+              "hint": "Suis la méthode : tracer, placer, repérer, tracer.",
+              "explanation": "C'est la procédure standard de construction d'un angle au rapporteur. L'ordre est crucial."
+            },
+            {
+              "question": "Tu dois construire un angle droit de sommet $M$ dont un côté est la droite $(MN)$. Comment faire sans lire les graduations ?",
+              "answer": "Placer le bord droit du rapporteur sur $(MN)$, le centre sur $M$, tracer le long du bord perpendiculaire du rapporteur.",
+              "hint": "Le rapporteur a un angle droit gravé dans sa forme (bord plat + bord perpendiculaire).",
+              "explanation": "Le rapporteur est un demi-cercle : son diamètre et son rayon au milieu forment un angle droit. On l'utilise comme une équerre."
+            },
+            {
+              "question": "On te donne $AB = 5$ cm. Construis le triangle $ABC$ tel que $\\widehat{BAC} = 40^{\\circ}$ et $\\widehat{ABC} = 70^{\\circ}$. Quelle est la mesure de $\\widehat{ACB}$ ?",
+              "answer": "$\\widehat{ACB} = 70^{\\circ}$ car $40 + 70 + 70 = 180$.",
+              "hint": "La somme des angles d'un triangle vaut $180^{\\circ}$. Calcule $180 - (40 + 70)$.",
+              "explanation": "$40 + 70 = 110$. $180 - 110 = 70$. Le troisième angle mesure $70^{\\circ}$. Le triangle est isocèle en $B$ et $C$."
+            },
+            {
+              "question": "Tu as construit un angle censé mesurer $60^{\\circ}$. En remesurant, tu trouves $57^{\\circ}$. Donne deux causes possibles de cet écart.",
+              "answer": "1. Le centre du rapporteur a glissé lors du tracé du deuxième côté. 2. Le trait de repérage à $60^{\\circ}$ était trop épais ou mal placé, décalant le tracé final.",
+              "hint": "Pense aux trois pièges : centre, lecture, traits trop courts/épais.",
+              "explanation": "Un écart de $3^{\\circ}$ vient souvent d'un placement imparfait du centre ou d'un trait de repérage imprécis. Recommence en soignant ces deux points."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 410,
+  "_course_code": "5eme-t07-c01-reconnaitre-la-proportionnalite",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Coefficient",
+  "title": "Quiz : Le coefficient de proportionnalité",
+  "questions": [
+    {
+      "text": "Voici un tableau de proportionnalité :\\n$x$ : 2, 5, 8\\n$y$ : 6, 15, 24\\nQuel est le coefficient de proportionnalité qui permet de passer de la ligne $x$ à la ligne $y$ ?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Pour trouver le coefficient, on divise une valeur de la deuxième ligne par la valeur correspondante de la première ligne : $6 \\div 2 = 3$, $15 \\div 5 = 3$, $24 \\div 8 = 3$. Le coefficient est bien 3. Les autres options correspondent à des erreurs de calcul ou de lecture du tableau.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "2",
+            "6"
+          ],
+          [
+            "5",
+            "15"
+          ],
+          [
+            "8",
+            "24"
+          ]
+        ],
+        "caption": "Tableau de proportionnalité"
+      }
+    },
+    {
+      "text": "Dans un tableau de proportionnalité, on passe de la première ligne à la deuxième ligne en multipliant par le coefficient. Si les valeurs correspondantes sont 7 sur la première ligne et 35 sur la deuxième, quel est ce coefficient ?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Le coefficient de proportionnalité s'obtient en divisant la valeur d'arrivée par la valeur de départ : $35 \\div 7 = 5$. On vérifie : $7 \\times 5 = 35$. L'option 4 donnerait 28, l'option 6 donnerait 42, l'option 7 donnerait 49.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau de proportionnalité a pour coefficient 4. Si une valeur de la première ligne est 12, quelle est la valeur correspondante sur la deuxième ligne ?",
+      "options": [
+        "3",
+        "16",
+        "48",
+        "4"
+      ],
+      "correctAnswer": "48",
+      "explanation": "Pour passer de la première à la deuxième ligne, on multiplie par le coefficient : $12 \\times 4 = 48$. L'option 3 correspond à une division ($12 \\div 4$), l'option 16 à une addition ($12 + 4$), l'option 4 à une confusion avec le coefficient lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les séries de valeurs suivantes, laquelle ne correspond PAS à un tableau de proportionnalité ?",
+      "options": [
+        "Première ligne : 1, 2, 3 ; Deuxième ligne : 3, 6, 9",
+        "Première ligne : 2, 4, 6 ; Deuxième ligne : 5, 10, 15",
+        "Première ligne : 3, 5, 7 ; Deuxième ligne : 7, 11, 15",
+        "Première ligne : 10, 20, 30 ; Deuxième ligne : 2, 4, 6"
+      ],
+      "correctAnswer": "Première ligne : 3, 5, 7 ; Deuxième ligne : 7, 11, 15",
+      "explanation": "On teste le rapport (division) pour chaque paire :\\nOption A : $3/1=3$, $6/2=3$, $9/3=3$ -> proportionnel (coeff 3).\\nOption B : $5/2=2,5$, $10/4=2,5$, $15/6=2,5$ -> proportionnel (coeff 2,5).\\nOption C : $7/3 \\approx 2,33$, $11/5=2,2$, $15/7 \\approx 2,14$ -> les rapports ne sont pas égaux, ce n'est pas proportionnel (c'est une suite arithmétique de raison 4).\\nOption D : $2/10=0,2$, $4/20=0,2$, $6/30=0,2$ -> proportionnel (coeff 0,2).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture parcourt 180 km en 3 heures à vitesse constante. Quel est le coefficient de proportionnalité entre la distance parcourue (en km) et le temps mis (en h) ?",
+      "options": [
+        "50",
+        "60",
+        "70",
+        "3"
+      ],
+      "correctAnswer": "60",
+      "explanation": "Le coefficient de proportionnalité (la vitesse) est le quotient de la distance par le temps : $180 \\div 3 = 60$ km/h. L'option 3 confond le temps et le coefficient. Les options 50 et 70 sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}
